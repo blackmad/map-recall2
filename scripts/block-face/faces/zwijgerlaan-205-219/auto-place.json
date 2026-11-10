@@ -1,0 +1,507 @@
+{
+ "face": "zwijgerlaan-205-219",
+ "street": "Willem de Zwijgerlaan",
+ "library": "landlust",
+ "stripDate": "2024-12-17",
+ "seconds": 10.5,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012122849",
+   "address": "Willem de Zwijgerlaan 205",
+   "builtYear": 1934,
+   "widthM": 9.01,
+   "eavesM": 14.7,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 0.91,
+    "toM": 0.91,
+    "depthM": 0.34,
+    "centre": 0.101,
+    "lineRD": [
+     [
+      119283.6893125,
+      487796.18049999996
+     ],
+     [
+      119282.2233125,
+      487803.97349999996
+     ]
+    ]
+   },
+   "strip": {
+    "wall": "#372c1d",
+    "wallRaw": "#3c3324",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 904,
+     "confidence": 0.21,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": "left",
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 1.15,
+     "bayCentre": 0.13,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 12.52,
+       "widthM": 0.95,
+       "centre": 0.39
+      },
+      {
+       "atM": 11.25,
+       "widthM": 0.8,
+       "centre": 0.94
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.15
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "no front on the strip: sky over the roof in 46 % of columns (< 75 %): the strip shows a nearer wall, fence or tree, not the front",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012094828",
+   "address": "Willem de Zwijgerlaan 209",
+   "builtYear": 1934,
+   "widthM": 6.55,
+   "eavesM": 14.72,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#59432f",
+    "wallRaw": "#413626",
+    "skyline": {
+     "eavesM": 21.8,
+     "eavesRow": 32,
+     "confidence": 0.39,
+     "crown": {
+      "widthM": 0.57,
+      "riseM": 0.8,
+      "topWidthM": 0.55,
+      "centre": 0.25
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 13.97,
+       "widthM": 1.35,
+       "centre": 0.32
+      },
+      {
+       "atM": 13.15,
+       "widthM": 1.3,
+       "centre": 0.28
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.12
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012113440",
+   "address": "Willem de Zwijgerlaan 211",
+   "builtYear": 1934,
+   "widthM": 3.97,
+   "eavesM": 15.78,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#332819",
+    "wallRaw": "#3b3327",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 904,
+     "confidence": 0.1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": "left",
+    "accentShare": 0.001,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.15
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "no front on the strip: sky over the roof in 28 % of columns (< 75 %): the strip shows a nearer wall, fence or tree, not the front",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012071588",
+   "address": "Willem de Zwijgerlaan 213",
+   "builtYear": 1934,
+   "widthM": 6.19,
+   "eavesM": 16.02,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#543f2b",
+    "wallRaw": "#42382b",
+    "skyline": {
+     "eavesM": 19.8,
+     "eavesRow": 112,
+     "confidence": 0.78,
+     "crown": {
+      "widthM": 1.43,
+      "riseM": 2.8,
+      "topWidthM": 0.38,
+      "centre": 0.29
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": "left",
+    "accentSide": "right",
+    "accentShare": 0.002,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 14.07,
+       "widthM": 5.1,
+       "centre": 0.55
+      },
+      {
+       "atM": 5,
+       "widthM": 0.9,
+       "centre": 0.83
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.14
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": {
+    "pandId": "0363100012071588",
+    "ncc": 0.185,
+    "nccRaw": 0.185,
+    "shiftM": [
+     -0.15,
+     -0.15
+    ],
+    "usable": 0.79,
+    "abstain": null,
+    "verdict": "PASS",
+    "reasons": [],
+    "wall": {
+     "photo": "#54402d",
+     "model": "#74573b",
+     "dL": 0.09
+    },
+    "glazing": {
+     "photo": 0.35,
+     "model": 0.34
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.466,
+    "footOffsetM": 0.72
+   },
+   "challengers": {
+    "landlust-1937-three-axis-four~m": 0.185,
+    "landlust-1937-erker-attic~m": 0.112,
+    "landlust-1937-erker-attic": 0.114,
+    "landlust-1937-three-axis-four": 0.386,
+    "landlust-1938-pair-attic~m": 0.082,
+    "landlust-1938-pair-attic": 0.129
+   }
+  },
+  {
+   "pandId": "0363100012118131",
+   "address": "Willem de Zwijgerlaan 215",
+   "builtYear": 1934,
+   "widthM": 6.18,
+   "eavesM": 16.03,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#5a432e",
+    "wallRaw": "#443a2d",
+    "skyline": {
+     "eavesM": 16.15,
+     "eavesRow": 258,
+     "confidence": 0.81,
+     "crown": {
+      "widthM": 1.52,
+      "riseM": 4.08,
+      "topWidthM": 0.33,
+      "centre": 0.87
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": "right",
+    "accentSide": "left",
+    "accentShare": 0.007,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 14.07,
+       "widthM": 5.67,
+       "centre": 0.5
+      },
+      {
+       "atM": 7.55,
+       "widthM": 1.23,
+       "centre": 0.15
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.13
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.131 < 0.15 (photo vs model body; likeness.ts FAIL: window shape square vs photo tall)",
+   "likeness": {
+    "pandId": "0363100012118131",
+    "ncc": 0.131,
+    "nccRaw": 0.131,
+    "shiftM": [
+     0.05,
+     -0.35
+    ],
+    "usable": 0.78,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "window shape square vs photo tall"
+    ],
+    "wall": {
+     "photo": "#5b432e",
+     "model": "#7a5a3e",
+     "dL": 0.092
+    },
+    "glazing": {
+     "photo": 0.35,
+     "model": 0.34
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.459,
+    "footOffsetM": 0.72
+   },
+   "challengers": {
+    "landlust-1937-three-axis-four": 0.131,
+    "landlust-1937-erker-attic": 0.101,
+    "landlust-1937-erker-attic~m": 0.171,
+    "landlust-1937-three-axis-four~m": 0.298,
+    "landlust-1938-pair-attic": 0.09,
+    "landlust-1938-pair-attic~m": 0.13
+   }
+  },
+  {
+   "pandId": "0363100012100401",
+   "address": "Willem de Zwijgerlaan 217",
+   "builtYear": 1934,
+   "widthM": 6.6,
+   "eavesM": 15.92,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#322718",
+    "wallRaw": "#3c3e36",
+    "skyline": {
+     "eavesM": 21.88,
+     "eavesRow": 29,
+     "confidence": 0.33,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": "left",
+    "accentSide": "left",
+    "accentShare": 0.001,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 13.97,
+       "widthM": 1.2,
+       "centre": 0.21
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.19
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "no front on the strip: sky over the roof in 72 % of columns (< 75 %): the strip shows a nearer wall, fence or tree, not the front",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012149837",
+   "address": "Willem de Zwijgerlaan 219",
+   "builtYear": 1934,
+   "widthM": 9,
+   "eavesM": 14.83,
+   "storeys3dbag": 0,
+   "bagBay": null,
+   "strip": {
+    "wall": "#3e3222",
+    "wallRaw": "#403425",
+    "skyline": {
+     "eavesM": 15.8,
+     "eavesRow": 272,
+     "confidence": 0.85,
+     "crown": {
+      "widthM": 1.65,
+      "riseM": 6.8,
+      "topWidthM": 0.42,
+      "centre": 0.15
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 1.15,
+     "bayCentre": 0.81,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 13.63,
+       "widthM": 1.27,
+       "centre": 0.64
+      },
+      {
+       "atM": 13.03,
+       "widthM": 2.05,
+       "centre": 0.51
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.09
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best landlust-1924-bestevaer-half-block: built 1934, type 1923-1926; stair block 9 m, type 5.7-7.6 m; 3DBAG eaves 14.83 m = 5 storeys of the type's 3.17 m, type 4)",
+   "best": {
+    "type": "landlust-1924-bestevaer-half-block",
+    "score": 0,
+    "veto": [
+     "built 1934, type 1923-1926",
+     "stair block 9 m, type 5.7-7.6 m",
+     "3DBAG eaves 14.83 m = 5 storeys of the type's 3.17 m, type 4"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 15.8 m vs the type's 13.2 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": null,
+      "note": "3DBAG bouwlagen 0 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 2 vs 2 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

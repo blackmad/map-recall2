@@ -1,0 +1,503 @@
+{
+ "street": "Madurastraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-09T23:32:46.404Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012165935",
+   "addresses": [
+    "Madurastraat 36"
+   ],
+   "groundUnits": [
+    {
+     "address": "Madurastraat 36-H",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000732549"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012157366",
+   "addresses": [
+    "Madurastraat 34"
+   ],
+   "groundUnits": [
+    {
+     "address": "Madurastraat 34-H",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000732541"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012164080",
+   "addresses": [
+    "Madurastraat 32"
+   ],
+   "groundUnits": [
+    {
+     "address": "Madurastraat 32-H",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010000732537"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012163009",
+   "addresses": [
+    "Madurastraat 30"
+   ],
+   "groundUnits": [
+    {
+     "address": "Madurastraat 30-H",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000732528"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012164008",
+   "addresses": [
+    "Madurastraat 28"
+   ],
+   "groundUnits": [
+    {
+     "address": "Madurastraat 28-H",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000732524"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012167145",
+   "addresses": [
+    "Madurastraat 26"
+   ],
+   "groundUnits": [
+    {
+     "address": "Madurastraat 26-H",
+     "use": "woonfunctie",
+     "areaM2": 137,
+     "bagId": "0363010000732520"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012162353",
+   "addresses": [
+    "Madurastraat 24"
+   ],
+   "groundUnits": [
+    {
+     "address": "Madurastraat 24-H",
+     "use": "woonfunctie",
+     "areaM2": 135,
+     "bagId": "0363010000732517"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012158806",
+   "addresses": [
+    "Madurastraat 22A",
+    "Madurastraat 22B",
+    "Madurastraat 22C",
+    "Madurastraat 22D",
+    "Madurastraat 22E",
+    "Madurastraat 22F",
+    "Madurastraat 22G",
+    "Madurastraat 22H",
+    "Madurastraat 22K"
+   ],
+   "groundUnits": [
+    {
+     "address": "Madurastraat 22A",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010010914575"
+    },
+    {
+     "address": "Madurastraat 22B",
+     "use": "woonfunctie",
+     "areaM2": 26,
+     "bagId": "0363010010914576"
+    },
+    {
+     "address": "Madurastraat 22C",
+     "use": "woonfunctie",
+     "areaM2": 26,
+     "bagId": "0363010010914577"
+    },
+    {
+     "address": "Madurastraat 22D",
+     "use": "woonfunctie",
+     "areaM2": 26,
+     "bagId": "0363010010914578"
+    },
+    {
+     "address": "Madurastraat 22E",
+     "use": "woonfunctie",
+     "areaM2": 26,
+     "bagId": "0363010010914579"
+    },
+    {
+     "address": "Madurastraat 22F",
+     "use": "woonfunctie",
+     "areaM2": 26,
+     "bagId": "0363010010914580"
+    },
+    {
+     "address": "Madurastraat 22G",
+     "use": "woonfunctie",
+     "areaM2": 26,
+     "bagId": "0363010010914581"
+    },
+    {
+     "address": "Madurastraat 22H",
+     "use": "woonfunctie",
+     "areaM2": 26,
+     "bagId": "0363010010914582"
+    },
+    {
+     "address": "Madurastraat 22K",
+     "use": "woonfunctie",
+     "areaM2": 26,
+     "bagId": "0363010010914583"
+    }
+   ],
+   "units": 9,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012159187",
+   "addresses": [
+    "Madurastraat 20",
+    "Madurastraat 20E",
+    "Madurastraat 20F",
+    "Madurastraat 20G",
+    "Madurastraat 20D",
+    "Madurastraat 20A",
+    "Madurastraat 20B",
+    "Madurastraat 20C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Madurastraat 20-H",
+     "use": "woonfunctie",
+     "areaM2": 40,
+     "bagId": "0363010000732509"
+    },
+    {
+     "address": "Madurastraat 20E",
+     "use": "woonfunctie",
+     "areaM2": 28,
+     "bagId": "0363010012069620"
+    },
+    {
+     "address": "Madurastraat 20F",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010012069621"
+    },
+    {
+     "address": "Madurastraat 20G",
+     "use": "woonfunctie",
+     "areaM2": 27,
+     "bagId": "0363010012069622"
+    },
+    {
+     "address": "Madurastraat 20D",
+     "use": "woonfunctie",
+     "areaM2": 28,
+     "bagId": "0363010012069623"
+    },
+    {
+     "address": "Madurastraat 20A",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010012069624"
+    },
+    {
+     "address": "Madurastraat 20B",
+     "use": "woonfunctie",
+     "areaM2": 28,
+     "bagId": "0363010012069625"
+    },
+    {
+     "address": "Madurastraat 20C",
+     "use": "woonfunctie",
+     "areaM2": 28,
+     "bagId": "0363010012069626"
+    }
+   ],
+   "units": 11,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012163748",
+   "addresses": [
+    "Madurastraat 18"
+   ],
+   "groundUnits": [
+    {
+     "address": "Madurastraat 18-H",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010000732505"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012161748",
+   "addresses": [
+    "Madurastraat 16"
+   ],
+   "groundUnits": [
+    {
+     "address": "Madurastraat 16-H",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000732500"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012164515",
+   "addresses": [
+    "Madurastraat 14A",
+    "Madurastraat 14B",
+    "Madurastraat 14C",
+    "Madurastraat 14D",
+    "Madurastraat 14E"
+   ],
+   "groundUnits": [
+    {
+     "address": "Madurastraat 14A",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000732491"
+    },
+    {
+     "address": "Madurastraat 14B",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000732492"
+    },
+    {
+     "address": "Madurastraat 14C",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000732493"
+    },
+    {
+     "address": "Madurastraat 14D",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000732494"
+    },
+    {
+     "address": "Madurastraat 14E",
+     "use": "woonfunctie",
+     "areaM2": 83,
+     "bagId": "0363010001037226"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012166875",
+   "addresses": [
+    "Madurastraat 12"
+   ],
+   "groundUnits": [
+    {
+     "address": "Madurastraat 12-H",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000732483"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012153224",
+   "addresses": [
+    "Madurastraat 10"
+   ],
+   "groundUnits": [
+    {
+     "address": "Madurastraat 10-H",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000732474"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012157786",
+   "addresses": [
+    "Madurastraat 6A",
+    "Madurastraat 6B",
+    "Madurastraat 6C",
+    "Madurastraat 6D",
+    "Madurastraat 6E",
+    "Madurastraat 8A",
+    "Madurastraat 8B",
+    "Madurastraat 8C",
+    "Madurastraat 8D",
+    "Madurastraat 8E"
+   ],
+   "groundUnits": [
+    {
+     "address": "Madurastraat 6A",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010001026084"
+    },
+    {
+     "address": "Madurastraat 6B",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010001026085"
+    },
+    {
+     "address": "Madurastraat 6C",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010001026086"
+    },
+    {
+     "address": "Madurastraat 6D",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010001026087"
+    },
+    {
+     "address": "Madurastraat 6E",
+     "use": "woonfunctie",
+     "areaM2": 87,
+     "bagId": "0363010001026088"
+    },
+    {
+     "address": "Madurastraat 8A",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010001026089"
+    },
+    {
+     "address": "Madurastraat 8B",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010001026090"
+    },
+    {
+     "address": "Madurastraat 8C",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010001026091"
+    },
+    {
+     "address": "Madurastraat 8D",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010001026092"
+    },
+    {
+     "address": "Madurastraat 8E",
+     "use": "woonfunctie",
+     "areaM2": 89,
+     "bagId": "0363010001026093"
+    }
+   ],
+   "units": 10,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012070857",
+   "addresses": [
+    "Madurastraat 2B",
+    "Madurastraat 2A",
+    "Madurastraat 2C",
+    "Madurastraat 2E",
+    "Madurastraat 2G",
+    "Madurastraat 2D",
+    "Madurastraat 2F"
+   ],
+   "groundUnits": [
+    {
+     "address": "Madurastraat 2B",
+     "use": "woonfunctie",
+     "areaM2": 92,
+     "bagId": "0363010000630855"
+    },
+    {
+     "address": "Madurastraat 2A",
+     "use": "woonfunctie",
+     "areaM2": 107,
+     "bagId": "0363010000630359"
+    },
+    {
+     "address": "Madurastraat 2C",
+     "use": "woonfunctie",
+     "areaM2": 92,
+     "bagId": "0363010000748731"
+    },
+    {
+     "address": "Madurastraat 2E",
+     "use": "woonfunctie",
+     "areaM2": 92,
+     "bagId": "0363010000810194"
+    },
+    {
+     "address": "Madurastraat 2G",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000817851"
+    },
+    {
+     "address": "Madurastraat 2D",
+     "use": "woonfunctie",
+     "areaM2": 107,
+     "bagId": "0363010000944066"
+    },
+    {
+     "address": "Madurastraat 2F",
+     "use": "woonfunctie",
+     "areaM2": 107,
+     "bagId": "0363010000945504"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  }
+ ]
+}

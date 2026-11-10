@@ -14,13 +14,18 @@
 
 import { HEIGHT_BAND_METRES, type HeightBand } from '../poiCatalog';
 import { buildSpoilerIndex, POI_ROOF_HEIGHT_METRES, type SpoilerIndex } from '../orientationPois';
+import { withheldNames } from '../ownMap/labelPolicy';
 import {
   categoryClass, distanceFade, labelAllowed, labelBudget, labelPriority, planLabels, VENUE_RADIUS_M,
   type LabelCandidate, type LabelRules, type Rect, type ScreenCandidate,
 } from './labelPlan';
 import { COVER_POLL_MS, isCoveredState } from './coveredState';
 import { labelCss, labelFont, LABEL_FADE_CSS_MS, LABEL_ROOT_CLASS, PILL_CLASS, PILL_FONT } from './labelStyle';
+import { fitPillText } from './pillText';
+import { RoadShields, roadShieldsEnabled } from './roadShields';
 import { dedupeLabelCandidates, screenDuplicateIds, type MarkedPlace } from './labelDedupe';
+import { setDrawnKeys, sharedLedger } from '../game/labelDrawLedger';
+import { nameKey } from '../game/landmarkQuestion';
 
 /** The MapLibre layers this overlay replaces. */
 export const REPLACED_LAYER_IDS = [
@@ -133,6 +138,11 @@ export class LabelOverlay {
   private readonly sizes = new Map<string, { width: number; height: number }>();
   private candidates: LabelCandidate[] = [];
   private byId = new Map<string, LabelCandidate>();
+  /** `nameKey` per candidate, for the label-draw ledger. */
+  private nameKeys = new WeakMap<LabelCandidate, string>();
+  /** `labelAllowed` per candidate under `allowedKey` (see `allowed`). */
+  private allowedOf = new WeakMap<LabelCandidate, boolean>();
+  private allowedKey: Pick<LabelRules, 'hiddenName' | 'hiddenNames' | 'spoilerIndex' | 'quizQuiet' | 'labelsOff'> = { hiddenName: '\u0000', spoilerIndex: null, quizQuiet: false, labelsOff: false };
   /** Landmark footprints (lng/lat), so a hit on the landmark's own walls is not an occluder. */
   private footprints = new Map<string, unknown>();
   private ownReach = new Map<string, number>();
@@ -153,11 +163,14 @@ export class LabelOverlay {
   duplicates: Array<{ name: string; keptId: string; reason: string }> = [];
   /** Candidate ids the last plan left out as a second label on screen (a marker's place, another spelling). */
   screenDuplicates: string[] = [];
+  /** Road number shields once per ref per stretch (#259; `?roadShields=0` keeps the basemap's). */
+  readonly shields: RoadShields | null;
   /** Last plan's counts, for the e2e and the debug overlay. */
   stats = { candidates: 0, inView: 0, occluded: 0, drawn: 0, budget: 0 };
 
   constructor(private readonly vm: VectorMapLike, private readonly game: () => GameLike) {
     const map: AnyMap = vm.map;
+    this.shields = roadShieldsEnabled() ? new RoadShields(map) : null;
     const container: HTMLElement = map.getContainer();
     const style = document.createElement('style');
     style.textContent = labelCss();
@@ -201,12 +214,14 @@ export class LabelOverlay {
     }
   }
 
-  /** A label under the pointer (CSS px of the map canvas): a click selects its venue. */
+  /** A label's name under the pointer (CSS px of the map canvas): a click selects its venue. */
   hitTest(x: number, y: number): { id: string; landmarkId: string; name: string; lngLat: [number, number]; poi: true; featureTarget: null } | null {
     for (const [id, el] of this.elements) {
       if (!this.drawn.has(id)) continue;
       const c = this.byId.get(id);
-      const box = el.getBoundingClientRect(), origin = this.root.getBoundingClientRect();
+      // The name is the target, not the whole label: its stem and dot hang below the text at the text's full width,
+      // a band over the canal under a quay label that opened its card (lane S2, #314).
+      const box = (el.querySelector('.n') ?? el).getBoundingClientRect(), origin = this.root.getBoundingClientRect();
       if (!c || x < box.left - origin.left || x > box.right - origin.left || y < box.top - origin.top || y > box.bottom - origin.top) continue;
       return { id: c.id, landmarkId: c.id, name: c.name, lngLat: [c.lng, c.lat], poi: true, featureTarget: null };
     }
@@ -217,8 +232,9 @@ export class LabelOverlay {
     const map: AnyMap = this.vm.map;
     if (!map || !styleReady(map)) return;
     this.hideReplacedLayers(map);
-    if (this.syncCovered()) return;
     const now = performance.now();
+    this.shields?.frame(now);
+    if (this.syncCovered()) return;
     if (!this.job && now - this.lastPlan >= PLAN_INTERVAL_MS) {
       this.lastPlan = now;
       this.fit(map.getContainer());
@@ -287,14 +303,33 @@ export class LabelOverlay {
     const hiddenName = game?.quizPromptName || game?.quizCandidateName || game?._silentPass?.name || '';
     if (hiddenName !== this.hiddenName) { this.hiddenName = hiddenName; this.hiddenIndex = null; }
     return {
-      // Not `_labelsVisible`: the D toggle hides street names but keeps the
+      // Not `_labelsVisible`: the T toggle hides street names but keeps the
       // orientation POIs on purpose (vector-map.js `_hideLabels`).
       labelsOff: false,
       hiddenName,
+      hiddenNames: withheldNames(game || {}),
       spoilerIndex: this.vm._spoilerIndex || (hiddenName ? (this.hiddenIndex ??= buildSpoilerIndex([hiddenName])) : null),
       quizQuiet: !!this.vm._quizQuietMap,
       isLabelled: () => false,
     };
+  }
+
+  /**
+   * `labelAllowed`, remembered per candidate while the rules' inputs hold (the
+   * asked name, the withheld array, the spoiler index, the quiet map): the plan
+   * screens ~5,700 candidates four times a second, and the withheld screen made
+   * that 13 ms a plan on merged main (#287).
+   */
+  private allowed(rules: LabelRules, c: LabelCandidate): boolean {
+    const key = this.allowedKey;
+    if (key.hiddenName !== rules.hiddenName || key.hiddenNames !== rules.hiddenNames || key.spoilerIndex !== rules.spoilerIndex
+      || key.quizQuiet !== rules.quizQuiet || key.labelsOff !== rules.labelsOff) {
+      this.allowedKey = { hiddenName: rules.hiddenName, hiddenNames: rules.hiddenNames, spoilerIndex: rules.spoilerIndex, quizQuiet: rules.quizQuiet, labelsOff: rules.labelsOff };
+      this.allowedOf = new WeakMap();
+    }
+    let ok = this.allowedOf.get(c);
+    if (ok === undefined) this.allowedOf.set(c, ok = labelAllowed(rules, c.cls, c.name));
+    return ok;
   }
 
   /** Clip-space projection of a point `heightM` above the ground. */
@@ -420,7 +455,8 @@ export class LabelOverlay {
     el.style.opacity = '0';
     const name = document.createElement('div');
     name.className = 'n';
-    name.textContent = c.name;
+    // A pill shows whole words and an ellipsis past its cap, never a hard cut (#259).
+    name.textContent = pill ? fitPillText(c.name) : c.name;
     name.style.font = pill ? PILL_FONT : labelFont(c.cls);
     el.append(name, Object.assign(document.createElement('div'), { className: 's' }), Object.assign(document.createElement('div'), { className: 'd' }));
     this.root.appendChild(el);
@@ -489,7 +525,7 @@ export class LabelOverlay {
     for (const c of this.candidates) {
       const riderDistM = rider ? Math.hypot((c.lng - rider[0]) * mPerLng, (c.lat - rider[1]) * 111320) : Infinity;
       if (c.cls === 'venue' && riderDistM > VENUE_RADIUS_M) continue;
-      if (!labelAllowed(rules, c.cls, c.name)) continue;
+      if (!this.allowed(rules, c)) continue;
       const p = project(c.lng, c.lat, c.heightM);
       if (p.behind || p.x < 0 || p.y < 0 || p.x > width || p.y > height || p.ndcZ > 1) continue;
       // Beyond the fade range: never drawn, so never worth a ray pick.
@@ -545,6 +581,18 @@ export class LabelOverlay {
     });
     const previous = this.drawn;
     this.drawn = new Map(plan.map(p => [p.id, p.opacity]));
+    // The label-draw ledger (#281): the landmark question never asks about a name drawn in the last 30 s.
+    // Keys cached per candidate; the ledger writes only when the drawn set changes (#287).
+    const keys = new Set<string>();
+    for (const p of plan) {
+      if (p.opacity <= 0.05) continue;
+      const c = this.byId.get(p.id);
+      if (!c) continue;
+      let key = this.nameKeys.get(c);
+      if (key === undefined) this.nameKeys.set(c, key = nameKey(c.name || ''));
+      if (key) keys.add(key);
+    }
+    setDrawnKeys(sharedLedger(window as never), 'overlay', keys, performance.now());
     // Elements not drawn go once their fade-out has run its course (the plan
     // interval is shorter than the fade, so "not in the last plan" cut the
     // fade short and the label blinked out at a third strength).

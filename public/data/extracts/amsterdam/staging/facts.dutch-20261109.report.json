@@ -1,0 +1,1322 @@
+[
+ {
+  "id": "extract_landmarks_1692085215",
+  "name": "Westerkerk",
+  "buurt": "Grachtengordel",
+  "status": "filled",
+  "nlUrl": "https://nl.wikipedia.org/wiki/Westerkerk_(Amsterdam)",
+  "facts": 3,
+  "filled": 1,
+  "opening": true
+ },
+ {
+  "id": "extract_landmarks_1588171596",
+  "name": "Hollandsche Schouwburg",
+  "buurt": "Plantage",
+  "status": "filled",
+  "nlUrl": "https://nl.wikipedia.org/wiki/Hollandsche_Schouwburg",
+  "facts": 2,
+  "filled": 1,
+  "opening": true
+ },
+ {
+  "id": "extract_landmarks_352379234",
+  "name": "H'ART Museum",
+  "buurt": "Weesperbuurt",
+  "status": "filled",
+  "nlUrl": "https://nl.wikipedia.org/wiki/H'ART_Museum",
+  "facts": 2,
+  "filled": 2,
+  "opening": true
+ },
+ {
+  "id": "extract_landmarks_1375175685",
+  "name": "Mint Tower",
+  "buurt": "Centrum",
+  "status": "filled",
+  "nlUrl": "https://nl.wikipedia.org/wiki/Munttoren_(Amsterdam)",
+  "facts": 4,
+  "filled": 1,
+  "opening": true
+ },
+ {
+  "id": "extract_landmarks_1311905515",
+  "name": "Portugese Synagoge",
+  "buurt": "Nieuwmarkt/Lastage",
+  "status": "article silent on the facts",
+  "nlUrl": "https://nl.wikipedia.org/wiki/Portugees-Isra%C3%ABlietische_Synagoge",
+  "facts": 4,
+  "filled": 0,
+  "opening": false
+ },
+ {
+  "id": "extract_landmarks_25101431",
+  "name": "Rembrandt House",
+  "buurt": "Nieuwmarkt/Lastage",
+  "status": "article silent on the facts",
+  "nlUrl": "https://nl.wikipedia.org/wiki/Rembrandthuis",
+  "facts": 2,
+  "filled": 0,
+  "opening": false
+ },
+ {
+  "id": "extract_landmarks_512243549",
+  "name": "Rijksmuseum",
+  "buurt": "Museumkwartier",
+  "status": "article silent on the facts",
+  "nlUrl": "https://nl.wikipedia.org/wiki/Rijksmuseum_Amsterdam",
+  "facts": 4,
+  "filled": 0,
+  "opening": false
+ },
+ {
+  "id": "extract_landmarks_1027016792",
+  "name": "Montelbaanstoren",
+  "buurt": "Nieuwmarkt/Lastage",
+  "status": "filled",
+  "nlUrl": "https://nl.wikipedia.org/wiki/Montelbaanstoren",
+  "facts": 2,
+  "filled": 1,
+  "opening": true
+ },
+ {
+  "id": "extract_landmarks_684653190",
+  "name": "Zuiderkerk",
+  "buurt": "Nieuwmarkt/Lastage",
+  "status": "filled",
+  "nlUrl": "https://nl.wikipedia.org/wiki/Zuiderkerk_(Amsterdam)",
+  "facts": 4,
+  "filled": 2,
+  "opening": true
+ },
+ {
+  "id": "extract_landmarks_211818595",
+  "name": "Museum Van Loon",
+  "buurt": "Grachtengordel",
+  "status": "filled",
+  "nlUrl": "https://nl.wikipedia.org/wiki/Museum_Van_Loon",
+  "facts": 4,
+  "filled": 1,
+  "opening": true
+ },
+ {
+  "id": "extract_landmarks_1875254501",
+  "name": "Foam",
+  "buurt": "Grachtengordel",
+  "status": "article silent on the facts",
+  "nlUrl": "https://nl.wikipedia.org/wiki/FOAM",
+  "facts": 4,
+  "filled": 0,
+  "opening": false
+ },
+ {
+  "id": "extract_landmarks_614625734",
+  "name": "Anne Frank House",
+  "buurt": "Grachtengordel",
+  "status": "article silent on the facts",
+  "nlUrl": "https://nl.wikipedia.org/wiki/Anne_Frank_Huis",
+  "facts": 4,
+  "filled": 0,
+  "opening": false
+ },
+ {
+  "id": "extract_landmarks_239964759",
+  "name": "New Church",
+  "buurt": "Centrum",
+  "status": "article silent on the facts",
+  "nlUrl": "https://nl.wikipedia.org/wiki/Nieuwe_Kerk_(Amsterdam)",
+  "facts": 3,
+  "filled": 0,
+  "opening": false
+ },
+ {
+  "id": "extract_landmarks_1522513904",
+  "name": "Old Church",
+  "buurt": "Centrum",
+  "status": "article silent on the facts",
+  "nlUrl": "https://nl.wikipedia.org/wiki/Oude_Kerk_(Amsterdam)",
+  "facts": 2,
+  "filled": 0,
+  "opening": false
+ },
+ {
+  "id": "extract_landmarks_800803152",
+  "name": "Monument Indië-Nederland",
+  "buurt": "Stadionbuurt",
+  "status": "filled",
+  "nlUrl": "https://nl.wikipedia.org/wiki/Monument_Indi%C3%AB-Nederland",
+  "facts": 4,
+  "filled": 2,
+  "opening": true
+ },
+ {
+  "id": "extract_landmarks_984169544",
+  "name": "DeLaMar",
+  "buurt": "Centrum",
+  "status": "article silent on the facts",
+  "nlUrl": "https://nl.wikipedia.org/wiki/DeLaMar",
+  "facts": 2,
+  "filled": 0,
+  "opening": false
+ },
+ {
+  "id": "extract_landmarks_1586263374",
+  "name": "Melkweg",
+  "buurt": "Centrum",
+  "status": "article silent on the facts",
+  "nlUrl": "https://nl.wikipedia.org/wiki/Melkweg_(Amsterdam)",
+  "facts": 4,
+  "filled": 0,
+  "opening": false
+ },
+ {
+  "id": "extract_landmarks_1988238017",
+  "name": "OT301",
+  "buurt": "Vondelparkbuurt",
+  "status": "no nl article",
+  "nlUrl": "",
+  "facts": 4,
+  "filled": 0,
+  "opening": false
+ },
+ {
+  "id": "extract_landmarks_1862244163",
+  "name": "El Tawheed",
+  "buurt": "Kinkerbuurt",
+  "status": "article silent on the facts",
+  "nlUrl": "https://nl.wikipedia.org/wiki/Stichting_El_Tawheed",
+  "facts": 1,
+  "filled": 0,
+  "opening": false
+ },
+ {
+  "id": "extract_landmarks_626684803",
+  "name": "Concertgebouw",
+  "buurt": "Museumkwartier",
+  "status": "filled",
+  "nlUrl": "https://nl.wikipedia.org/wiki/Koninklijk_Concertgebouw",
+  "facts": 4,
+  "filled": 2,
+  "opening": true
+ },
+ {
+  "id": "extract_landmarks_1523176628",
+  "name": "Moco Museum",
+  "buurt": "Museumkwartier",
+  "status": "article silent on the facts",
+  "nlUrl": "https://nl.wikipedia.org/wiki/Moco_Museum",
+  "facts": 3,
+  "filled": 0,
+  "opening": false
+ },
+ {
+  "id": "extract_landmarks_1917401076",
+  "name": "Obrechtkerk",
+  "buurt": "Museumkwartier",
+  "status": "filled",
+  "nlUrl": "https://nl.wikipedia.org/wiki/Obrechtkerk",
+  "facts": 2,
+  "filled": 1,
+  "opening": true
+ },
+ {
+  "id": "extract_landmarks_1993361519",
+  "name": "Haarlemmermeerstation",
+  "buurt": "Schinkelbuurt",
+  "status": "filled",
+  "nlUrl": "https://nl.wikipedia.org/wiki/Station_Amsterdam_Haarlemmermeer",
+  "facts": 4,
+  "filled": 3,
+  "opening": true
+ },
+ {
+  "id": "extract_landmarks_2070637412",
+  "name": "Van Gogh Museum",
+  "buurt": "Museumkwartier",
+  "status": "filled",
+  "nlUrl": "https://nl.wikipedia.org/wiki/Van_Gogh_Museum",
+  "facts": 5,
+  "filled": 2,
+  "opening": true
+ },
+ {
+  "id": "extract_landmarks_2001162595",
+  "name": "Artis",
+  "buurt": "Plantage",
+  "status": "article silent on the facts",
+  "nlUrl": "https://nl.wikipedia.org/wiki/Artis",
+  "facts": 2,
+  "filled": 0,
+  "opening": false
+ },
+ {
+  "id": "extract_landmarks_435355441",
+  "name": "Dutch Resistance Museum",
+  "buurt": "Plantage",
+  "status": "article silent on the facts",
+  "nlUrl": "https://nl.wikipedia.org/wiki/Verzetsmuseum_Amsterdam",
+  "facts": 2,
+  "filled": 0,
+  "opening": false
+ },
+ {
+  "id": "extract_landmarks_1632187034",
+  "name": "Westermoskee",
+  "buurt": "Chassébuurt",
+  "status": "article silent on the facts",
+  "nlUrl": "https://nl.wikipedia.org/wiki/Westermoskee",
+  "facts": 3,
+  "filled": 0,
+  "opening": false
+ },
+ {
+  "id": "extract_landmarks_273619808",
+  "name": "Jewish Museum",
+  "buurt": "Nieuwmarkt/Lastage",
+  "status": "article silent on the facts",
+  "nlUrl": "https://nl.wikipedia.org/wiki/Joods_Museum_(Nederland)",
+  "facts": 1,
+  "filled": 0,
+  "opening": false
+ },
+ {
+  "id": "extract_landmarks_1327496450",
+  "name": "National Holocaust Museum",
+  "buurt": "Plantage",
+  "status": "article silent on the facts",
+  "nlUrl": "https://nl.wikipedia.org/wiki/Nationaal_Holocaustmuseum",
+  "facts": 4,
+  "filled": 0,
+  "opening": false
+ },
+ {
+  "id": "extract_landmarks_1719479765",
+  "name": "Stedelijk Museum Amsterdam",
+  "buurt": "Museumkwartier",
+  "status": "filled",
+  "nlUrl": "https://nl.wikipedia.org/wiki/Stedelijk_Museum_Amsterdam",
+  "facts": 2,
+  "filled": 1,
+  "opening": true
+ },
+ {
+  "id": "extract_landmarks_1939633952",
+  "name": "Internationaal Theater Amsterdam",
+  "buurt": "Centrum",
+  "status": "article silent on the facts",
+  "nlUrl": "https://nl.wikipedia.org/wiki/Stadsschouwburg_Amsterdam",
+  "facts": 2,
+  "filled": 0,
+  "opening": false
+ },
+ {
+  "id": "extract_landmarks_1369065076",
+  "name": "Micropia",
+  "buurt": "Plantage",
+  "status": "article silent on the facts",
+  "nlUrl": "https://nl.wikipedia.org/wiki/Micropia",
+  "facts": 1,
+  "filled": 0,
+  "opening": false
+ },
+ {
+  "id": "extract_landmarks_1925449487",
+  "name": "Oosterkerk",
+  "buurt": "Wittenburg",
+  "status": "article silent on the facts",
+  "nlUrl": "https://nl.wikipedia.org/wiki/Oosterkerk_(Amsterdam)",
+  "facts": 1,
+  "filled": 0,
+  "opening": false
+ },
+ {
+  "id": "extract_landmarks_1974741421",
+  "name": "Nationaal Holocaust Namenmonument",
+  "buurt": "Weesperbuurt",
+  "status": "filled",
+  "nlUrl": "https://nl.wikipedia.org/wiki/Holocaust_Namenmonument",
+  "facts": 2,
+  "filled": 1,
+  "opening": true
+ },
+ {
+  "id": "extract_landmarks_204772388",
+  "name": "Marseille House",
+  "buurt": "Grachtengordel",
+  "status": "filled",
+  "nlUrl": "https://nl.wikipedia.org/wiki/Huis_Marseille",
+  "facts": 3,
+  "filled": 1,
+  "opening": true
+ },
+ {
+  "id": "extract_landmarks_301593654",
+  "name": "Amsterdam Pipe Museum",
+  "buurt": "Centrum",
+  "status": "filled",
+  "nlUrl": "https://nl.wikipedia.org/wiki/Amsterdam_Pipe_Museum",
+  "facts": 1,
+  "filled": 1,
+  "opening": true
+ },
+ {
+  "id": "extract_landmarks_1124317571",
+  "name": "Artis Bibliotheek",
+  "buurt": "Plantage",
+  "status": "filled",
+  "nlUrl": "https://nl.wikipedia.org/wiki/Artis_Bibliotheek",
+  "facts": 2,
+  "filled": 1,
+  "opening": true
+ },
+ {
+  "id": "extract_landmarks_1164156962",
+  "name": "Cat Cabinet",
+  "buurt": "Grachtengordel",
+  "status": "filled",
+  "nlUrl": "https://nl.wikipedia.org/wiki/KattenKabinet",
+  "facts": 2,
+  "filled": 1,
+  "opening": true
+ },
+ {
+  "id": "extract_landmarks_1742509310",
+  "name": "NIOD Institute for War, Holocaust, and Genocide Studies",
+  "buurt": "Grachtengordel",
+  "status": "article silent on the facts",
+  "nlUrl": "https://nl.wikipedia.org/wiki/NIOD_Instituut_voor_Oorlogs-%2C_Holocaust-_en_Genocidestudies",
+  "facts": 3,
+  "filled": 0,
+  "opening": false
+ },
+ {
+  "id": "extract_landmarks_1675243450",
+  "name": "De Balie",
+  "buurt": "Centrum",
+  "status": "article silent on the facts",
+  "nlUrl": "https://nl.wikipedia.org/wiki/De_Balie",
+  "facts": 3,
+  "filled": 0,
+  "opening": false
+ },
+ {
+  "id": "extract_landmarks_11127803",
+  "name": "Canal Ring Area of Amsterdam",
+  "buurt": "Weesperbuurt",
+  "status": "filled",
+  "nlUrl": "https://nl.wikipedia.org/wiki/Grachtengordel_(Amsterdam)",
+  "facts": 4,
+  "filled": 2,
+  "opening": true
+ },
+ {
+  "id": "extract_landmarks_150139570",
+  "name": "Sint-Franciscus Xaveriuskerk",
+  "buurt": "Grachtengordel",
+  "status": "filled",
+  "nlUrl": "https://nl.wikipedia.org/wiki/De_Krijtberg",
+  "facts": 5,
+  "filled": 1,
+  "opening": true
+ },
+ {
+  "id": "extract_landmarks_417591223",
+  "name": "Torture Museum",
+  "buurt": "Centrum",
+  "status": "article silent on the facts",
+  "nlUrl": "https://nl.wikipedia.org/wiki/Torture_Museum_(Amsterdam)",
+  "facts": 4,
+  "filled": 0,
+  "opening": false
+ },
+ {
+  "id": "extract_landmarks_953524097",
+  "name": "Rasphuispoort",
+  "buurt": "Centrum",
+  "status": "filled",
+  "nlUrl": "https://nl.wikipedia.org/wiki/Rasphuis_(Amsterdam)",
+  "facts": 3,
+  "filled": 1,
+  "opening": true
+ },
+ {
+  "id": "extract_landmarks_1617200654",
+  "name": "Universiteit van Amsterdam",
+  "buurt": "Centrum",
+  "status": "article silent on the facts",
+  "nlUrl": "https://nl.wikipedia.org/wiki/Universiteit_van_Amsterdam",
+  "facts": 3,
+  "filled": 0,
+  "opening": false
+ },
+ {
+  "id": "extract_landmarks_600078703",
+  "name": "University of Amsterdam",
+  "buurt": "Centrum",
+  "status": "article silent on the facts",
+  "nlUrl": "https://nl.wikipedia.org/wiki/Universiteit_van_Amsterdam",
+  "facts": 2,
+  "filled": 0,
+  "opening": false
+ },
+ {
+  "id": "extract_landmarks_855923099",
+  "name": "Boom Chicago",
+  "buurt": "Jordaan",
+  "status": "article silent on the facts",
+  "nlUrl": "https://nl.wikipedia.org/wiki/Boom_Chicago",
+  "facts": 3,
+  "filled": 0,
+  "opening": false
+ },
+ {
+  "id": "extract_landmarks_2001179186",
+  "name": "Arcam",
+  "buurt": "Rapenburg",
+  "status": "article silent on the facts",
+  "nlUrl": "https://nl.wikipedia.org/wiki/ARCAM",
+  "facts": 1,
+  "filled": 0,
+  "opening": false
+ },
+ {
+  "id": "extract_landmarks_1697896624",
+  "name": "Pathé Tuschinski Cinema",
+  "buurt": "Grachtengordel",
+  "status": "article silent on the facts",
+  "nlUrl": "https://nl.wikipedia.org/wiki/Koninklijk_Theater_Tuschinski",
+  "facts": 3,
+  "filled": 0,
+  "opening": false
+ },
+ {
+  "id": "extract_landmarks_643362629",
+  "name": "Begijnhofkapel",
+  "buurt": "Centrum",
+  "status": "article silent on the facts",
+  "nlUrl": "https://nl.wikipedia.org/wiki/Begijnhofkapel_(Amsterdam)",
+  "facts": 4,
+  "filled": 0,
+  "opening": false
+ },
+ {
+  "id": "extract_landmarks_916929647",
+  "name": "De Kleine Komedie",
+  "buurt": "Grachtengordel",
+  "status": "article silent on the facts",
+  "nlUrl": "https://nl.wikipedia.org/wiki/De_Kleine_Komedie",
+  "facts": 3,
+  "filled": 0,
+  "opening": false
+ },
+ {
+  "id": "extract_landmarks_1149389771",
+  "name": "Nederlandse Film en Televisie Academie",
+  "buurt": "Valkenburg",
+  "status": "filled",
+  "nlUrl": "https://nl.wikipedia.org/wiki/Nederlandse_Filmacademie",
+  "facts": 5,
+  "filled": 1,
+  "opening": true
+ },
+ {
+  "id": "extract_landmarks_1981243123",
+  "name": "Decembermoorden",
+  "buurt": "Nieuwmarkt/Lastage",
+  "status": "filled",
+  "nlUrl": "https://nl.wikipedia.org/wiki/Decembermoorden",
+  "facts": 3,
+  "filled": 1,
+  "opening": false
+ },
+ {
+  "id": "extract_landmarks_784457716",
+  "name": "Mozes en Aäronkerk",
+  "buurt": "Nieuwmarkt/Lastage",
+  "status": "article silent on the facts",
+  "nlUrl": "https://nl.wikipedia.org/wiki/Mozes_en_A%C3%A4ronkerk",
+  "facts": 4,
+  "filled": 0,
+  "opening": false
+ },
+ {
+  "id": "extract_landmarks_1225009678",
+  "name": "Academie van Bouwkunst",
+  "buurt": "Nieuwmarkt/Lastage",
+  "status": "article silent on the facts",
+  "nlUrl": "https://nl.wikipedia.org/wiki/Academie_van_Bouwkunst",
+  "facts": 4,
+  "filled": 0,
+  "opening": false
+ },
+ {
+  "id": "extract_landmarks_1428677427",
+  "name": "Rialto",
+  "buurt": "Nieuwe Pijp",
+  "status": "filled",
+  "nlUrl": "https://nl.wikipedia.org/wiki/Rialto_(filmtheaters)",
+  "facts": 3,
+  "filled": 1,
+  "opening": true
+ },
+ {
+  "id": "extract_landmarks_2044416411",
+  "name": "Felix Meritis",
+  "buurt": "Grachtengordel",
+  "status": "filled",
+  "nlUrl": "https://nl.wikipedia.org/wiki/Felix_Meritis",
+  "facts": 4,
+  "filled": 1,
+  "opening": false
+ },
+ {
+  "id": "extract_landmarks_275245540",
+  "name": "Allard Pierson Museum",
+  "buurt": "Centrum",
+  "status": "article silent on the facts",
+  "nlUrl": "https://nl.wikipedia.org/wiki/Allard_Pierson_Museum",
+  "facts": 1,
+  "filled": 0,
+  "opening": false
+ },
+ {
+  "id": "extract_landmarks_1383482004",
+  "name": "Amsterdamse Hogeschool voor de Kunsten",
+  "buurt": "Uilenburg",
+  "status": "article silent on the facts",
+  "nlUrl": "https://nl.wikipedia.org/wiki/Amsterdamse_Hogeschool_voor_de_Kunsten",
+  "facts": 5,
+  "filled": 0,
+  "opening": false
+ },
+ {
+  "id": "extract_landmarks_968719411",
+  "name": "Academie voor Theater en Dans",
+  "buurt": "Uilenburg",
+  "status": "filled",
+  "nlUrl": "https://nl.wikipedia.org/wiki/Academie_voor_Theater_en_Dans",
+  "facts": 5,
+  "filled": 2,
+  "opening": true
+ },
+ {
+  "id": "extract_landmarks_604950476",
+  "name": "Voormalige Schouwburgpoort",
+  "buurt": "Grachtengordel",
+  "status": "article silent on the facts",
+  "nlUrl": "https://nl.wikipedia.org/wiki/Schouwburg_van_Van_Campen",
+  "facts": 2,
+  "filled": 0,
+  "opening": false
+ },
+ {
+  "id": "extract_landmarks_1614063354",
+  "name": "Huis aan 3 grachten",
+  "buurt": "Centrum",
+  "status": "filled",
+  "nlUrl": "https://nl.wikipedia.org/wiki/Huis_aan_de_Drie_Grachten",
+  "facts": 3,
+  "filled": 1,
+  "opening": true
+ },
+ {
+  "id": "extract_landmarks_941219842",
+  "name": "Houseboat Museum",
+  "buurt": "Jordaan",
+  "status": "no nl article",
+  "nlUrl": "",
+  "facts": 4,
+  "filled": 0,
+  "opening": false
+ },
+ {
+  "id": "extract_landmarks_1490092282",
+  "name": "Begijnhof",
+  "buurt": "Centrum",
+  "status": "article silent on the facts",
+  "nlUrl": "https://nl.wikipedia.org/wiki/Begijnhof_(Amsterdam)",
+  "facts": 1,
+  "filled": 0,
+  "opening": false
+ },
+ {
+  "id": "extract_landmarks_154293883",
+  "name": "Willet-Holthuysen",
+  "buurt": "Grachtengordel",
+  "status": "filled",
+  "nlUrl": "https://nl.wikipedia.org/wiki/Huis_Willet-Holthuysen",
+  "facts": 5,
+  "filled": 1,
+  "opening": true
+ },
+ {
+  "id": "extract_landmarks_1386134518",
+  "name": "Equestrian statue of Queen Wilhelmina",
+  "buurt": "Centrum",
+  "status": "article silent on the facts",
+  "nlUrl": "https://nl.wikipedia.org/wiki/Ruiterstandbeeld_koningin_Wilhelmina_(Amsterdam)",
+  "facts": 1,
+  "filled": 0,
+  "opening": false
+ },
+ {
+  "id": "extract_landmarks_560548170",
+  "name": "Huis De Pinto",
+  "buurt": "Nieuwmarktbuurt",
+  "status": "article silent on the facts",
+  "nlUrl": "https://nl.wikipedia.org/wiki/Huis_De_Pinto",
+  "facts": 4,
+  "filled": 0,
+  "opening": false
+ },
+ {
+  "id": "extract_landmarks_1137362739",
+  "name": "Royal Theater Carré",
+  "buurt": "Weesperbuurt",
+  "status": "article silent on the facts",
+  "nlUrl": "https://nl.wikipedia.org/wiki/Koninklijk_Theater_Carr%C3%A9",
+  "facts": 4,
+  "filled": 0,
+  "opening": false
+ },
+ {
+  "id": "extract_landmarks_1875483593",
+  "name": "Nemo",
+  "buurt": "Rapenburg",
+  "status": "filled",
+  "nlUrl": "https://nl.wikipedia.org/wiki/NEMO_Science_Museum",
+  "facts": 3,
+  "filled": 1,
+  "opening": true
+ },
+ {
+  "id": "extract_landmarks_681957397",
+  "name": "Eye Filmmuseum",
+  "buurt": "Overhoeks",
+  "status": "article silent on the facts",
+  "nlUrl": "https://nl.wikipedia.org/wiki/Eye_Filmmuseum",
+  "facts": 2,
+  "filled": 0,
+  "opening": false
+ },
+ {
+  "id": "extract_landmarks_736156087",
+  "name": "Agnietenkapel (UvA)",
+  "buurt": "Centrum",
+  "status": "article silent on the facts",
+  "nlUrl": "https://nl.wikipedia.org/wiki/Agnietenkapel",
+  "facts": 4,
+  "filled": 0,
+  "opening": false
+ },
+ {
+  "id": "extract_landmarks_2083029836",
+  "name": "Amsterdam Museum",
+  "buurt": "Centrum",
+  "status": "filled",
+  "nlUrl": "https://nl.wikipedia.org/wiki/Amsterdam_Museum",
+  "facts": 4,
+  "filled": 1,
+  "opening": true
+ },
+ {
+  "id": "extract_landmarks_1198863663",
+  "name": "The Amsterdam Dungeon",
+  "buurt": "Centrum",
+  "status": "filled",
+  "nlUrl": "https://nl.wikipedia.org/wiki/Amsterdam_Dungeon",
+  "facts": 5,
+  "filled": 1,
+  "opening": true
+ },
+ {
+  "id": "extract_landmarks_1570040251",
+  "name": "Oost-Indisch Huis",
+  "buurt": "Centrum",
+  "status": "filled",
+  "nlUrl": "https://nl.wikipedia.org/wiki/Oost-Indisch_Huis_(Amsterdam)",
+  "facts": 6,
+  "filled": 3,
+  "opening": false
+ },
+ {
+  "id": "extract_landmarks_1800555343",
+  "name": "Dutch East Indian Company",
+  "buurt": "Centrum",
+  "status": "filled",
+  "nlUrl": "https://nl.wikipedia.org/wiki/Oost-Indisch_Huis_(Amsterdam)",
+  "facts": 2,
+  "filled": 2,
+  "opening": false
+ },
+ {
+  "id": "extract_landmarks_961954901",
+  "name": "The National Maritime Museum",
+  "buurt": "Marineterrein",
+  "status": "filled",
+  "nlUrl": "https://nl.wikipedia.org/wiki/Het_Scheepvaartmuseum",
+  "facts": 2,
+  "filled": 1,
+  "opening": true
+ },
+ {
+  "id": "extract_landmarks_914627337",
+  "name": "Heineken Experience",
+  "buurt": "Oude Pijp",
+  "status": "article silent on the facts",
+  "nlUrl": "https://nl.wikipedia.org/wiki/Heineken_Experience",
+  "facts": 2,
+  "filled": 0,
+  "opening": false
+ },
+ {
+  "id": "extract_landmarks_56521997",
+  "name": "Walloon Church",
+  "buurt": "Centrum",
+  "status": "filled",
+  "nlUrl": "https://nl.wikipedia.org/wiki/Waalse_Kerk_(Amsterdam)",
+  "facts": 2,
+  "filled": 1,
+  "opening": true
+ },
+ {
+  "id": "extract_landmarks_1601841225",
+  "name": "De Papegaai",
+  "buurt": "Centrum",
+  "status": "article silent on the facts",
+  "nlUrl": "https://nl.wikipedia.org/wiki/De_Papegaai_(Amsterdam)",
+  "facts": 3,
+  "filled": 0,
+  "opening": false
+ },
+ {
+  "id": "extract_landmarks_1186438994",
+  "name": "AFC",
+  "buurt": "Vivaldi",
+  "status": "filled",
+  "nlUrl": "https://nl.wikipedia.org/wiki/Amsterdamsche_Football_Club",
+  "facts": 3,
+  "filled": 1,
+  "opening": true
+ },
+ {
+  "id": "extract_landmarks_7630368",
+  "name": "Homomonument",
+  "buurt": "Grachtengordel",
+  "status": "filled",
+  "nlUrl": "https://nl.wikipedia.org/wiki/Homomonument_(Amsterdam)",
+  "facts": 3,
+  "filled": 2,
+  "opening": true
+ },
+ {
+  "id": "extract_landmarks_1219441645",
+  "name": "The Shipping House",
+  "buurt": "Nieuwmarkt/Lastage",
+  "status": "filled",
+  "nlUrl": "https://nl.wikipedia.org/wiki/Scheepvaarthuis",
+  "facts": 3,
+  "filled": 1,
+  "opening": true
+ },
+ {
+  "id": "extract_landmarks_444968372",
+  "name": "Christelijke Gereformeerde Kerk - Amstelkerk",
+  "buurt": "Grachtengordel",
+  "status": "article silent on the facts",
+  "nlUrl": "https://nl.wikipedia.org/wiki/Amstelkerk_(Amsterdam)",
+  "facts": 1,
+  "filled": 0,
+  "opening": false
+ },
+ {
+  "id": "extract_landmarks_1227471359",
+  "name": "Madame Tussauds Amsterdam",
+  "buurt": "Centrum",
+  "status": "filled",
+  "nlUrl": "https://nl.wikipedia.org/wiki/Madame_Tussauds_Amsterdam",
+  "facts": 2,
+  "filled": 1,
+  "opening": true
+ },
+ {
+  "id": "extract_landmarks_433737872",
+  "name": "Noorderkerk",
+  "buurt": "Jordaan",
+  "status": "article silent on the facts",
+  "nlUrl": "https://nl.wikipedia.org/wiki/Noorderkerk_(Amsterdam)",
+  "facts": 1,
+  "filled": 0,
+  "opening": false
+ },
+ {
+  "id": "extract_landmarks_339731654",
+  "name": "Amsterdam Tulip Museum",
+  "buurt": "Jordaan",
+  "status": "article silent on the facts",
+  "nlUrl": "https://nl.wikipedia.org/wiki/Amsterdam_Tulip_Museum",
+  "facts": 3,
+  "filled": 0,
+  "opening": false
+ },
+ {
+  "id": "extract_landmarks_1639802179",
+  "name": "Vrije Universiteit Amsterdam",
+  "buurt": "VU-kwartier",
+  "status": "article silent on the facts",
+  "nlUrl": "https://nl.wikipedia.org/wiki/Vrije_Universiteit_Amsterdam",
+  "facts": 5,
+  "filled": 0,
+  "opening": false
+ },
+ {
+  "id": "extract_landmarks_903098984",
+  "name": "Plaquette 7 mei 1945",
+  "buurt": "Centrum",
+  "status": "article silent on the facts",
+  "nlUrl": "https://nl.wikipedia.org/wiki/Schietpartij_op_de_Dam_op_7_mei_1945",
+  "facts": 3,
+  "filled": 0,
+  "opening": false
+ },
+ {
+  "id": "extract_landmarks_741048430",
+  "name": "Hash Marihuana & Hemp Museum",
+  "buurt": "Centrum",
+  "status": "article silent on the facts",
+  "nlUrl": "https://nl.wikipedia.org/wiki/Hash_Marihuana_%26_Hemp_Museum",
+  "facts": 4,
+  "filled": 0,
+  "opening": false
+ },
+ {
+  "id": "extract_landmarks_1988696513",
+  "name": "OCCII",
+  "buurt": "Schinkelbuurt",
+  "status": "filled",
+  "nlUrl": "https://nl.wikipedia.org/wiki/OCCII",
+  "facts": 2,
+  "filled": 2,
+  "opening": true
+ },
+ {
+  "id": "extract_landmarks_1958595244",
+  "name": "Wine buyers' guildhall",
+  "buurt": "Centrum",
+  "status": "article silent on the facts",
+  "nlUrl": "https://nl.wikipedia.org/wiki/Wijnkopersgildehuis",
+  "facts": 1,
+  "filled": 0,
+  "opening": false
+ },
+ {
+  "id": "extract_landmarks_720777797",
+  "name": "National Monument",
+  "buurt": "Centrum",
+  "status": "article silent on the facts",
+  "nlUrl": "https://nl.wikipedia.org/wiki/Nationaal_Monument_op_de_Dam",
+  "facts": 4,
+  "filled": 0,
+  "opening": false
+ },
+ {
+  "id": "extract_landmarks_740511540",
+  "name": "Embassy of the Free Mind",
+  "buurt": "Grachtengordel",
+  "status": "filled",
+  "nlUrl": "https://nl.wikipedia.org/wiki/Embassy_of_the_Free_Mind",
+  "facts": 3,
+  "filled": 2,
+  "opening": true
+ },
+ {
+  "id": "extract_landmarks_554373448",
+  "name": "Het Huis met den Hoofden",
+  "buurt": "Grachtengordel",
+  "status": "filled",
+  "nlUrl": "https://nl.wikipedia.org/wiki/Huis_met_de_Hoofden",
+  "facts": 6,
+  "filled": 3,
+  "opening": true
+ },
+ {
+  "id": "extract_landmarks_1775562999",
+  "name": "Red Light District",
+  "buurt": "Centrum",
+  "status": "article silent on the facts",
+  "nlUrl": "https://nl.wikipedia.org/wiki/De_Wallen",
+  "facts": 2,
+  "filled": 0,
+  "opening": false
+ },
+ {
+  "id": "extract_landmarks_1367642197",
+  "name": "Gerrit Rietveld Academie",
+  "buurt": "Zuidas",
+  "status": "filled",
+  "nlUrl": "https://nl.wikipedia.org/wiki/Gerrit_Rietveld_Academie",
+  "facts": 5,
+  "filled": 2,
+  "opening": true
+ },
+ {
+  "id": "extract_landmarks_1054259843",
+  "name": "De Duif",
+  "buurt": "Centrum",
+  "status": "filled",
+  "nlUrl": "https://nl.wikipedia.org/wiki/De_Duif_(kerk)",
+  "facts": 4,
+  "filled": 1,
+  "opening": true
+ },
+ {
+  "id": "extract_landmarks_1695083526",
+  "name": "De Ateliers",
+  "buurt": "Oude Pijp",
+  "status": "article silent on the facts",
+  "nlUrl": "https://nl.wikipedia.org/wiki/De_Ateliers",
+  "facts": 1,
+  "filled": 0,
+  "opening": false
+ },
+ {
+  "id": "extract_landmarks_1273422573",
+  "name": "Multatuli Museum",
+  "buurt": "Grachtengordel",
+  "status": "article silent on the facts",
+  "nlUrl": "https://nl.wikipedia.org/wiki/Multatuli_Museum",
+  "facts": 4,
+  "filled": 0,
+  "opening": false
+ },
+ {
+  "id": "extract_landmarks_1884008891",
+  "name": "Badhuistheater",
+  "buurt": "Oost",
+  "status": "filled",
+  "nlUrl": "https://nl.wikipedia.org/wiki/Badhuistheater",
+  "facts": 4,
+  "filled": 3,
+  "opening": false
+ },
+ {
+  "id": "extract_landmarks_944681607",
+  "name": "Fo Guang Shan He Hua Tempel",
+  "buurt": "Centrum",
+  "status": "filled",
+  "nlUrl": "https://nl.wikipedia.org/wiki/He_Hua_Tempel",
+  "facts": 4,
+  "filled": 1,
+  "opening": true
+ },
+ {
+  "id": "extract_landmarks_342809743",
+  "name": "Royal Palace",
+  "buurt": "Centrum",
+  "status": "article silent on the facts",
+  "nlUrl": "https://nl.wikipedia.org/wiki/Paleis_op_de_Dam",
+  "facts": 2,
+  "filled": 0,
+  "opening": false
+ },
+ {
+  "id": "extract_landmarks_1399359542",
+  "name": "West India House",
+  "buurt": "Centrum",
+  "status": "filled",
+  "nlUrl": "https://nl.wikipedia.org/wiki/West-Indisch_Huis_(Amsterdam)",
+  "facts": 2,
+  "filled": 1,
+  "opening": true
+ },
+ {
+  "id": "extract_landmarks_754896207",
+  "name": "Wereldmuseum Amsterdam",
+  "buurt": "Oost",
+  "status": "filled",
+  "nlUrl": "https://nl.wikipedia.org/wiki/Wereldmuseum_Amsterdam",
+  "facts": 2,
+  "filled": 1,
+  "opening": true
+ },
+ {
+  "id": "extract_landmarks_742782013",
+  "name": "International Institute of Social History",
+  "buurt": "Oostelijk Havengebied",
+  "status": "filled",
+  "nlUrl": "https://nl.wikipedia.org/wiki/Internationaal_Instituut_voor_Sociale_Geschiedenis",
+  "facts": 4,
+  "filled": 1,
+  "opening": false
+ },
+ {
+  "id": "extract_landmarks_1651446989",
+  "name": "Bimhuis",
+  "buurt": "Oostelijk Havengebied",
+  "status": "article silent on the facts",
+  "nlUrl": "https://nl.wikipedia.org/wiki/Bimhuis",
+  "facts": 2,
+  "filled": 0,
+  "opening": false
+ },
+ {
+  "id": "extract_landmarks_1627616501",
+  "name": "Warmoesstraat",
+  "buurt": "Centrum",
+  "status": "article silent on the facts",
+  "nlUrl": "https://nl.wikipedia.org/wiki/Warmoesstraat_(Amsterdam)",
+  "facts": 2,
+  "filled": 0,
+  "opening": false
+ },
+ {
+  "id": "extract_landmarks_1912967098",
+  "name": "Muziekgebouw",
+  "buurt": "Oostelijk Havengebied",
+  "status": "article silent on the facts",
+  "nlUrl": "https://nl.wikipedia.org/wiki/Muziekgebouw_aan_'t_IJ",
+  "facts": 3,
+  "filled": 0,
+  "opening": false
+ },
+ {
+  "id": "extract_landmarks_1875699888",
+  "name": "W139",
+  "buurt": "Centrum",
+  "status": "article silent on the facts",
+  "nlUrl": "https://nl.wikipedia.org/wiki/W139",
+  "facts": 2,
+  "filled": 0,
+  "opening": false
+ },
+ {
+  "id": "extract_landmarks_769225968",
+  "name": "Ons' Lieve Heer op Solder",
+  "buurt": "Centrum",
+  "status": "article silent on the facts",
+  "nlUrl": "https://nl.wikipedia.org/wiki/Museum_Ons'_Lieve_Heer_op_Solder",
+  "facts": 1,
+  "filled": 0,
+  "opening": false
+ },
+ {
+  "id": "extract_landmarks_889547307",
+  "name": "De Schreeuw",
+  "buurt": "Oost",
+  "status": "article silent on the facts",
+  "nlUrl": "https://nl.wikipedia.org/wiki/De_Schreeuw_(beeld)",
+  "facts": 2,
+  "filled": 0,
+  "opening": false
+ },
+ {
+  "id": "extract_landmarks_1272308587",
+  "name": "Co-kathedrale Basiliek van Sint Nicolaas",
+  "buurt": "Centrum",
+  "status": "filled",
+  "nlUrl": "https://nl.wikipedia.org/wiki/Co-kathedrale_basiliek_van_de_Heilige_Nicolaas",
+  "facts": 3,
+  "filled": 1,
+  "opening": true
+ },
+ {
+  "id": "extract_landmarks_1791250152",
+  "name": "Our Lord in the Attic",
+  "buurt": "Centrum",
+  "status": "article silent on the facts",
+  "nlUrl": "https://nl.wikipedia.org/wiki/Museum_Ons'_Lieve_Heer_op_Solder",
+  "facts": 4,
+  "filled": 0,
+  "opening": false
+ },
+ {
+  "id": "extract_landmarks_240585875",
+  "name": "Weepers' Tower",
+  "buurt": "Centrum",
+  "status": "article silent on the facts",
+  "nlUrl": "https://nl.wikipedia.org/wiki/Schreierstoren",
+  "facts": 2,
+  "filled": 0,
+  "opening": false
+ },
+ {
+  "id": "extract_landmarks_799279783",
+  "name": "Central Station",
+  "buurt": "Centrum",
+  "status": "filled",
+  "nlUrl": "https://nl.wikipedia.org/wiki/Station_Amsterdam_Centraal",
+  "facts": 5,
+  "filled": 1,
+  "opening": true
+ },
+ {
+  "id": "extract_landmarks_1104215352",
+  "name": "Berlage's Stock Market",
+  "buurt": "Centrum",
+  "status": "filled",
+  "nlUrl": "https://nl.wikipedia.org/wiki/Beurs_van_Berlage",
+  "facts": 5,
+  "filled": 2,
+  "opening": true
+ },
+ {
+  "id": "extract_landmarks_305692154",
+  "name": "Funerary museum",
+  "buurt": "Oost",
+  "status": "article silent on the facts",
+  "nlUrl": "https://nl.wikipedia.org/wiki/Museum_Tot_Zover",
+  "facts": 1,
+  "filled": 0,
+  "opening": false
+ },
+ {
+  "id": "extract_landmarks_322904136",
+  "name": "Levensboom",
+  "buurt": "West",
+  "status": "filled",
+  "nlUrl": "https://nl.wikipedia.org/wiki/Levensboom%2C_Monument_van_Besef",
+  "facts": 4,
+  "filled": 2,
+  "opening": false
+ },
+ {
+  "id": "extract_landmarks_175435208",
+  "name": "Sexmuseum",
+  "buurt": "Centrum",
+  "status": "article silent on the facts",
+  "nlUrl": "https://nl.wikipedia.org/wiki/Sexmuseum",
+  "facts": 2,
+  "filled": 0,
+  "opening": false
+ },
+ {
+  "id": "extract_landmarks_975578776",
+  "name": "Museum Het Schip",
+  "buurt": "Spaarndammerbuurt",
+  "status": "filled",
+  "nlUrl": "https://nl.wikipedia.org/wiki/Museum_Het_Schip",
+  "facts": 3,
+  "filled": 1,
+  "opening": true
+ },
+ {
+  "id": "extract_landmarks_1117288073",
+  "name": "Westergasfabriek",
+  "buurt": "West",
+  "status": "article silent on the facts",
+  "nlUrl": "https://nl.wikipedia.org/wiki/Westergas",
+  "facts": 4,
+  "filled": 0,
+  "opening": false
+ },
+ {
+  "id": "extract_landmarks_410506186",
+  "name": "Zeeburgia",
+  "buurt": "Oost",
+  "status": "article silent on the facts",
+  "nlUrl": "https://nl.wikipedia.org/wiki/AVV_Zeeburgia",
+  "facts": 3,
+  "filled": 0,
+  "opening": false
+ },
+ {
+  "id": "extract_landmarks_2127899711",
+  "name": "Amsterdam University College",
+  "buurt": "Oost",
+  "status": "article silent on the facts",
+  "nlUrl": "https://nl.wikipedia.org/wiki/Amsterdam_University_College",
+  "facts": 5,
+  "filled": 0,
+  "opening": false
+ },
+ {
+  "id": "extract_landmarks_286524339",
+  "name": "Ziggo Dome",
+  "buurt": "Zuidoost",
+  "status": "article silent on the facts",
+  "nlUrl": "https://nl.wikipedia.org/wiki/Ziggo_Dome",
+  "facts": 3,
+  "filled": 0,
+  "opening": false
+ },
+ {
+  "id": "extract_landmarks_1248010277",
+  "name": "AFAS Live",
+  "buurt": "Zuidoost",
+  "status": "article silent on the facts",
+  "nlUrl": "https://nl.wikipedia.org/wiki/AFAS_Live",
+  "facts": 3,
+  "filled": 0,
+  "opening": false
+ },
+ {
+  "id": "extract_landmarks_896870985",
+  "name": "De Boom die alles zag",
+  "buurt": "Zuidoost",
+  "status": "no nl article",
+  "nlUrl": "",
+  "facts": 3,
+  "filled": 0,
+  "opening": false
+ },
+ {
+  "id": "extract_landmarks_815052556",
+  "name": "Science Park Amsterdam",
+  "buurt": "Oost",
+  "status": "filled",
+  "nlUrl": "https://nl.wikipedia.org/wiki/Amsterdam_Science_Park",
+  "facts": 4,
+  "filled": 1,
+  "opening": true
+ },
+ {
+  "id": "extract_landmarks_1901613593",
+  "name": "Museum Vrolik",
+  "buurt": "Zuidoost",
+  "status": "filled",
+  "nlUrl": "https://nl.wikipedia.org/wiki/Museum_Vrolik",
+  "facts": 2,
+  "filled": 1,
+  "opening": true
+ },
+ {
+  "id": "extract_landmarks_673680307",
+  "name": "Djame Masdjied Taibah",
+  "buurt": "Zuidoost",
+  "status": "article silent on the facts",
+  "nlUrl": "https://nl.wikipedia.org/wiki/Moskee_Taibah",
+  "facts": 1,
+  "filled": 0,
+  "opening": false
+ },
+ {
+  "id": "extract_landmarks_1829365058",
+  "name": "Blauwe Moskee",
+  "buurt": "Nieuw-West",
+  "status": "article silent on the facts",
+  "nlUrl": "https://nl.wikipedia.org/wiki/Blauwe_Moskee_(Amsterdam)",
+  "facts": 3,
+  "filled": 0,
+  "opening": false
+ },
+ {
+  "id": "extract_landmarks_524443608",
+  "name": "Rozenoord",
+  "buurt": "Zuid",
+  "status": "article silent on the facts",
+  "nlUrl": "https://nl.wikipedia.org/wiki/Fusilladeplaats_Rozenoord",
+  "facts": 2,
+  "filled": 0,
+  "opening": false
+ },
+ {
+  "id": "extract_landmarks_43239787",
+  "name": "Stadhuis",
+  "buurt": "Weesp",
+  "status": "article silent on the facts",
+  "nlUrl": "https://nl.wikipedia.org/wiki/Stadhuis_van_Weesp",
+  "facts": 4,
+  "filled": 0,
+  "opening": false
+ }
+]

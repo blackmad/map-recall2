@@ -2,6 +2,1034 @@
   "note": "Visible changes to the ride, newest first. One entry per shipped fix the player can see; models themselves are listed by the feed. Fields: date (YYYY-MM-DD, the day it reached main), title, text, where [lng, lat] optional, images optional: [{src, alt, caption?}] where src is a path in github.com/blackmad/map-recall2-screenshots (whats-new/YYYY-MM-DD-slug.jpg, before/after pairs welcome) or a full https URL. Link a screenshot whenever the change can be seen; keep the pictures out of this repository.",
   "notes": [
     {
+      "date": "2026-11-10",
+      "title": "Free Ride pins stand at their landmark",
+      "text": "In Free Ride a landmark's pin now stands at the landmark itself rather than at the nearest street or canal, which by boat could be hundreds of metres away. Pins step onto the quay when the point is in the water and off a building's roof onto the street.",
+      "images": []
+    },
+    {
+      "date": "2026-11-10",
+      "title": "Trees no longer blink",
+      "text": "As you ride or fly, new trees now fade in and old ones fade out instead of the whole row of trees swapping at once, and a landmark arriving in the distance no longer leaves a see-through moment where the building it replaces was.",
+      "images": []
+    },
+    {
+      "date": "2026-11-10",
+      "title": "Calmer distant landmarks",
+      "text": "From the air, landmarks appearing in the distance and the far city handing over to nearer buildings now fade in instead of snapping.",
+      "images": []
+    },
+    {
+      "date": "2026-11-10",
+      "title": "Ground no longer turns sky-blue",
+      "text": "Since this morning's horizon change, wide open ground on the city's edge (IJburg, Houthaven) could take the sky's colour. Haze is now measured per pixel, so the ground keeps its own colour close by and only fades with real distance.",
+      "where": [
+        5.01181,
+        52.351982
+      ],
+      "images": [
+        {
+          "src": "ui/2026-11-10-sky-blue-ground/ijburg-before.jpg",
+          "alt": "IJburg new-builds with the open ground drawn in the sky's blue",
+          "caption": "Before: the ground took the sky colour."
+        },
+        {
+          "src": "ui/2026-11-10-sky-blue-ground/ijburg-after.jpg",
+          "alt": "The same IJburg view with the ground in its own sandy colour",
+          "caption": "After."
+        }
+      ]
+    },
+    {
+      "date": "2026-11-10",
+      "title": "Landmarks no longer flicker in the distance",
+      "text": "From the air, a landmark switching between its simple and detailed model now dissolves from one to the other instead of popping, and far landmarks fade into the same haze as the city around them. Kit buildings far away cross-fade as they load too.",
+      "images": [
+        {
+          "src": "ui/2026-11-10-p3-pop-in/westerkerk-air-main-vs-lane.jpg",
+          "alt": "The Westerkerk from the air, before and after: the far landmarks now sit in the haze",
+          "caption": "Westerkerk from the air: before (left), after (right)."
+        }
+      ]
+    },
+    {
+      "date": "2026-11-10",
+      "title": "Pins stay on land in Free Ride",
+      "text": "A place's pin now stands on the quay, not in the canal, and tapping the water beside a pin no longer opens its card. By boat, tapping your canal still names it.",
+      "where": [
+        4.8839,
+        52.3745
+      ],
+      "images": [
+        {
+          "src": "ui/2026-11-10-s2-water-taps/westermarkt-desktop-before.jpg",
+          "alt": "Before: Westermarkt in Free Ride, with pins whose dots sit in the Prinsengracht",
+          "caption": "Before: the pins' dots stood in the canal."
+        },
+        {
+          "src": "ui/2026-11-10-s2-water-taps/westermarkt-desktop-after.jpg",
+          "alt": "After: Westermarkt in Free Ride, with the pins standing on the quay",
+          "caption": "After: the pins stand on the quay."
+        },
+        {
+          "src": "ui/2026-11-10-s2-water-taps/westermarkt-phone-before.jpg",
+          "alt": "Before, on a phone: Westermarkt pins over the water",
+          "caption": "Phone, before."
+        },
+        {
+          "src": "ui/2026-11-10-s2-water-taps/westermarkt-phone-after.jpg",
+          "alt": "After, on a phone: Westermarkt pins on land",
+          "caption": "Phone, after."
+        }
+      ]
+    },
+    {
+      "date": "2026-11-10",
+      "title": "A horizon instead of an edge",
+      "text": "The far city now fades into the sky haze at a fixed distance, so buildings no longer pop in and out far away; distant landmarks also stop flickering in and out.",
+      "images": [
+        {
+          "src": "ui/2026-11-09-p2-pop-in/westerkerk-air-main-vs-lane.jpg",
+          "alt": "The Westerkerk from the air, before and after: the far city now fades into haze instead of ending at an edge",
+          "caption": "Westerkerk from the air: before (left), after (right)"
+        },
+        {
+          "src": "ui/2026-11-09-p2-pop-in/rijksmuseum-air-main-vs-lane.jpg",
+          "alt": "The Rijksmuseum from the air, before and after: the skyline stays, the far edge is hazier",
+          "caption": "Rijksmuseum from the air: before (left), after (right)"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-10",
+      "title": "More Dutch on Dutch cards",
+      "text": "In the Dutch game, 56 more landmarks now tell their facts in Dutch, each sentence taken word for word from the Dutch Wikipedia article and linked to it. Where the Dutch article does not say the same thing, the card stays in English rather than guess.",
+      "images": []
+    },
+    {
+      "date": "2026-11-09",
+      "title": "Bike paths through parks",
+      "text": "Park and garden paths where bikes are allowed are now on the bike map, so paths like the one off the Javaplantsoen promenade lead on instead of stopping short: from the end of the promenade to the Kramatweg is now a 103 m ride instead of a 625 m detour.",
+      "images": []
+    },
+    {
+      "date": "2026-11-09",
+      "title": "Roofs stay on their walls",
+      "text": "About 1,700 roofs hung more than a metre past their walls, some over the street. They are now cut at the walls, and listed canal houses with an irregular plan get their gable instead of a flat lid.",
+      "images": [
+        {
+          "src": "ui/2026-11-10-note-shots/roofs-spui-desktop-before.jpg",
+          "alt": "Rooftops by the Spui from above, before the roof fix",
+          "caption": "Before, at the Spui."
+        },
+        {
+          "src": "ui/2026-11-10-note-shots/roofs-spui-desktop-after.jpg",
+          "alt": "The same rooftops by the Spui after the roofs were cut at their walls",
+          "caption": "After, at the Spui."
+        }
+      ]
+    },
+    {
+      "date": "2026-11-09",
+      "title": "Free Ride: step off the ferry at any quay",
+      "text": "In Free Ride the ferry no longer has to reach a pier: steer it into any quay with a street beside it and you are back on your bike.",
+      "images": [
+        {
+          "src": "ui/2026-11-09-f3-ferry-free-ride/desktop-before-aboard-at-quay.jpg",
+          "alt": "Before: the ferry vessel pressed against the quay with the Ferry from banner, unable to land",
+          "caption": "Before: stuck against De Ruijterkade, 61 m from the pier."
+        },
+        {
+          "src": "ui/2026-11-09-f3-ferry-free-ride/desktop-after-landed-on-quay.jpg",
+          "alt": "After: the bike back on the quay street",
+          "caption": "After: landed on the quay street in about a second."
+        }
+      ]
+    },
+    {
+      "date": "2026-11-09",
+      "title": "The ride opens on a finished city",
+      "text": "The loading screen now waits, up to ten seconds, for the part of the city you will see first to be built, so the first frame no longer shows grey stand-ins in the distance. If it runs out of time it says \"Building the city…\" and fades into the ride. Starts on a desktop take a few seconds longer.",
+      "images": [
+        {
+          "src": "ui/2026-11-09-s1-start-settle/westermarkt-desktop-warm-first-frame-main-vs-lane.jpg",
+          "alt": "Westermarkt first frame before and after: grey stand-ins on the left, built baked cells on the right",
+          "caption": "Westermarkt, first frame, before (left) and after (right)."
+        },
+        {
+          "src": "ui/2026-11-09-s1-start-settle/marineterrein-desktop-warm-first-frame-main-vs-lane.jpg",
+          "alt": "Marineterrein first frame before and after",
+          "caption": "Marineterrein, first frame, before and after; the ground now lands under the loading screen too."
+        }
+      ]
+    },
+    {
+      "date": "2026-11-09",
+      "title": "A tidier pause card",
+      "text": "The pause card now fits its contents, centres every line, says where you are heading, and no longer shows a quiz score in Free Ride.",
+      "images": [
+        {
+          "src": "ui/2026-11-09-p1-pause-card/pause-desktop-1280x720-en-free-before.jpg",
+          "alt": "The old pause card: keycaps running off to the right and a 0 of 0 named tally",
+          "caption": "Before: keycaps off centre, \"0 of 0 named\" on a free ride."
+        },
+        {
+          "src": "ui/2026-11-09-p1-pause-card/pause-desktop-1280x720-en-free-after.jpg",
+          "alt": "The new pause card: centred heading, subtitle, keycaps on one centred row",
+          "caption": "After: centred, with the ride context."
+        }
+      ]
+    },
+    {
+      "date": "2026-11-09",
+      "title": "No more \"An artwork.\" cards",
+      "text": "Tapping a thin map label (a sculpture with nothing but its name) opened a BUILDING card that said only \"An artwork.\" It now opens the building under the label, or the sculpture's real story: the Brettensuite pieces along the Brettenpad show their route, artist and Wikipedia link.",
+      "images": [
+        {
+          "src": "ui/2026-11-09-d1-artwork-placeholders/iphone-brettensuite-before-after.jpg",
+          "alt": "Before: a BUILDING card reading An artwork. After: a SCULPTURE card with the Brettensuite series text and a Wikipedia link",
+          "caption": "Brettensuite 11/20, before and after."
+        }
+      ]
+    },
+    {
+      "date": "2026-11-09",
+      "title": "A dead end turns you round",
+      "text": "Riding into the end of a park path whose real exit is a flight of steps (Javaplantsoen, from a player's screenshot) left the bike standing with the throttle open. After a second and a half of pushing forward without moving, the bike now turns itself round so you can ride on. The paths themselves are being added to the bike map next.",
+      "images": []
+    },
+    {
+      "date": "2026-11-09",
+      "title": "Short phones keep the bike in view",
+      "text": "On small phones the question card covered the bike. It now sits lower and more compactly, with a 2×2 answer grid, so you can still see where you are riding.",
+      "images": []
+    },
+    {
+      "date": "2026-11-09",
+      "title": "Dutch ledes and Dutch map labels",
+      "text": "In the Dutch game, landmark cards and the arrival open with the Dutch article's own first lines (164 places), and the map labels match the cards: Munttoren, not Mint Tower. Nothing is machine-translated.",
+      "images": [
+        {
+          "src": "ui/2026-11-09-r3-dutch-2/after-arrival-dokwerker-desktop.jpg",
+          "alt": "The Dutch arrival card for De Dokwerker with its Dutch lede",
+          "caption": "The Dutch arrival opens with the Dutch lede."
+        },
+        {
+          "src": "ui/2026-11-09-r3-dutch-2/after-label-desktop.jpg",
+          "alt": "Dutch landmark labels on the map",
+          "caption": "Map labels in Dutch, matching the cards."
+        }
+      ]
+    },
+    {
+      "date": "2026-11-09",
+      "title": "A new personal best says so",
+      "text": "When you set a personal best, the arrival card could still read \"Personal best 00:03.899\" as if an older record stood: the ride timer ticked a few frames past the moment the best was saved, so your own time looked slower than itself. The card now trusts the save and shows \"★ New personal best\".",
+      "images": []
+    },
+    {
+      "date": "2026-11-09",
+      "title": "Phone buttons, stamp line and the pause card fit",
+      "text": "\"Reeks beëindigen\" shortens to \"Stop reeks\" when the long form would touch its button edges; the stamp line and the plaque drop their tally and step down a size before any ellipsis, so \"naar Pathé Tuschinski Cinema\" reads whole. The pause card's keycaps wrap to two rows instead of running past the card. On phones the What's New notice is a banner above the page with 44 px targets, not a toast over the heading.",
+      "images": [
+        {
+          "src": "ui/2026-11-09-r2-phone-fit/pause-card-desktop-after.jpg",
+          "alt": "The pause card with its keycaps on two rows",
+          "caption": "Pause card keycaps on two rows."
+        },
+        {
+          "src": "ui/2026-11-09-r2-phone-fit/landing-toast-phone-after.jpg",
+          "alt": "The What's New banner above the landing page on a phone",
+          "caption": "The notice no longer covers the heading."
+        }
+      ]
+    },
+    {
+      "date": "2026-11-09",
+      "title": "A reload in the middle of a run keeps your leg",
+      "text": "Reloading the page during the second or later stop of a run used to drop you on the route setup card with a different destination while the run was still open. The leg is now saved whenever it is loading, riding or paused, so a reload keeps you riding to the same stop. The destination readout now shows the route left (1.4 km) instead of the straight line (1.1 km), so it agrees with the landing's \"about 1.5 km\".",
+      "images": [
+        {
+          "src": "ui/2026-11-09-r2-run-start/B-04b-after-reload-desktop-after.jpg",
+          "alt": "After a reload the same leg keeps riding",
+          "caption": "Same leg after a reload."
+        }
+      ]
+    },
+    {
+      "date": "2026-11-09",
+      "title": "Het spel spreekt Nederlands",
+      "text": "In the Dutch game the answer feedback is now Dutch (\"Goed — Munttoren (+86 pnt · bonus nieuwe naam)\") and place names are Dutch on every card: the destination pill says NIEUWE KERK, the landmark card MUNTTOREN, the arrival Koninklijk Theater Tuschinski. Twenty-one Dutch names were added from the landmarks' own Dutch Wikipedia titles and Wikidata labels; nothing was machine-translated. The share picture stays English for now.",
+      "images": [
+        {
+          "src": "ui/2026-11-09-r2-dutch/C-01-ride-start-desktop-after.jpg",
+          "alt": "The Dutch ride start with the pill reading NIEUWE KERK",
+          "caption": "The destination pill in Dutch."
+        },
+        {
+          "src": "ui/2026-11-09-r2-dutch/C-q1-after-phone-after.jpg",
+          "alt": "The phone landmark card reading MUNTTOREN · Genoteerd",
+          "caption": "Munttoren asked, Munttoren shown."
+        }
+      ]
+    },
+    {
+      "date": "2026-11-09",
+      "title": "The landmark question sticks to buildings",
+      "text": "\"Which building is this?\" is no longer asked about a bust or a statue, and its four choices are all buildings. Only 18 of the 193 askable landmarks are statues or memorials, too few for fair four-name questions, so they keep their drive-by card instead. The question's neighbourhood now matches the plaque.",
+      "images": []
+    },
+    {
+      "date": "2026-11-09",
+      "title": "Keycaps light up on every card",
+      "text": "The pause card and the run card now highlight their key buttons when the mouse rests on them, the way the arrival card already did. Distances on the landing page and the home-learning pill are now written the same way everywhere: one decimal under 10 km, whole kilometres above, and \"about\" (\"ongeveer\" in Dutch) only when the length is an estimate.",
+      "images": [
+        {
+          "src": "ui/2026-11-09-ui-debts/pause-before.jpg",
+          "alt": "The pause card with the mouse away from its keycaps",
+          "caption": "Pause card, no hover."
+        },
+        {
+          "src": "ui/2026-11-09-ui-debts/pause-hover.jpg",
+          "alt": "The pause card with the Resume keycap highlighted under the mouse",
+          "caption": "The keycap darkens under the pointer."
+        }
+      ]
+    },
+    {
+      "date": "2026-11-09",
+      "title": "Landmarks come back for review",
+      "text": "A landmark you name correctly is asked again after 1 day, then 3, then 7, then every 21 days. One you miss comes back on your next ride, and never twice in one ride. Before this a landmark you had named right was never asked again, and one you missed could be asked again straight after a reload. \"Clear all data\" clears this too.",
+      "images": []
+    },
+    {
+      "date": "2026-11-09",
+      "title": "IJselbuurt has its story",
+      "text": "Arriving in the IJselbuurt now tells you where the name comes from: the north-western corner of Berlage's Plan Zuid, built in the 1920s and 30s in the Amsterdam School style, named like its neighbours after a Dutch river, the IJssel. Every one of the 65 daily-ride finish neighbourhoods now has a sourced story.",
+      "images": []
+    },
+    {
+      "date": "2026-11-09",
+      "title": "The knowledge map holds every buurt you know",
+      "text": "The knowledge map now zooms out to hold every neighbourhood you know, so names learned in Noord, IJburg, Nieuw-West or Zuidoost are no longer cut off at the edge. It also opens from a 58 kB outline file instead of a megabyte of boundaries.",
+      "images": [
+        {
+          "src": "ui/2026-11-09-knowledge-map-fit/outer-desktop.jpg",
+          "alt": "The knowledge map on desktop zoomed out to 24 by 18 km holding Noord, IJburg, Nieuw-West and Zuidoost",
+          "caption": "Outer districts now fit the frame."
+        },
+        {
+          "src": "ui/2026-11-09-knowledge-map-fit/outer-iphone.jpg",
+          "alt": "The same map on a phone",
+          "caption": "And on the phone."
+        }
+      ]
+    },
+    {
+      "date": "2026-11-09",
+      "title": "Short phones keep the bike in view",
+      "text": "On a short phone the drive-by card is now a single row with the Noticed button, so it no longer covers your bike. The results footer drops its optional items instead of cutting the Dutch line mid-list, and the STAMPED seal sits clear of long neighbourhood names on the postcard.",
+      "images": [
+        {
+          "src": "ui/2026-11-09-phone-polish/driveby-390x664-after.jpg",
+          "alt": "A 390×664 phone: the one-row drive-by card with its Noticed button sits below the bike",
+          "caption": "The one-row card on a short phone."
+        },
+        {
+          "src": "ui/2026-11-09-phone-polish/arrival-nl-390x664-after.jpg",
+          "alt": "The Dutch arrival card on a 390×664 phone with its footer line complete",
+          "caption": "The Dutch footer fits."
+        }
+      ]
+    },
+    {
+      "date": "2026-11-09",
+      "title": "Share a whole run",
+      "text": "After a run, the run card has Share run: one picture of the whole run, every leg as one line, each stop a numbered dot, with the buurt, your stops, points and names. A stop you did not name stays a number.",
+      "images": [
+        {
+          "src": "ui/2026-11-09-run-card-share/02-run-card-share-keycap-phone.jpg",
+          "alt": "The run card on a phone after three stops, with New run, Route setup and Share run buttons",
+          "caption": "Share run on the run card."
+        },
+        {
+          "src": "ui/2026-11-09-run-card-share/03-run-picture-from-ride-phone.jpg",
+          "alt": "The shared picture: the legs as one line with three numbered dots, RUN · Centrum · 3 stops · 2 names · 602 points, the stops listed",
+          "caption": "The run as one picture."
+        }
+      ]
+    },
+    {
+      "date": "2026-11-09",
+      "title": "Labels fade instead of popping",
+      "text": "Map labels in the new engine now fade in and out over a third of a second instead of popping, so a name hidden ahead of a landmark question leaves like any other label. Add ?labelFade=0 to the address to see the old behaviour.",
+      "images": [
+        {
+          "src": "ui/2026-11-09-own-label-fade/before-withhold-strip.jpg",
+          "alt": "Before: six frames in which a withheld label disappears between one frame and the next",
+          "caption": "Before: gone in one frame."
+        },
+        {
+          "src": "ui/2026-11-09-own-label-fade/after-withhold-strip.jpg",
+          "alt": "After: the same label thinning over six frames",
+          "caption": "After: a 300 ms fade."
+        }
+      ]
+    },
+    {
+      "date": "2026-11-09",
+      "title": "The Dutch game speaks Dutch on arrival",
+      "text": "In Dutch, the arrival card, the pause card, the ride HUD, the neighbourhood plaque and the landmark card now read Dutch throughout: BRONZEN LINT, Zonder hulp, Nieuw persoonlijk record, AANGEKOMEN, BESTEMMING. Place names and encyclopaedia text stay as their sources give them.",
+      "images": [
+        {
+          "src": "ui/2026-11-09-dutch-strings/before-04-arrival-iphone.jpg",
+          "alt": "Before: the Dutch arrival card on a phone with ARRIVED, BRONZE RIBBON, Recall and Unaided in English",
+          "caption": "Before: English labels in the Dutch game."
+        },
+        {
+          "src": "ui/2026-11-09-dutch-strings/after-04-arrival-iphone.jpg",
+          "alt": "After: the same card reading AANGEKOMEN, BRONZEN LINT, Herinnering and Zonder hulp",
+          "caption": "After: Dutch throughout."
+        }
+      ]
+    },
+    {
+      "date": "2026-11-09",
+      "title": "From 17 November, every finish buurt takes its turn",
+      "text": "Some buurten share a key in the daily draw, and the same place in them won every time while another never finished a ride all year. From 17 November the daily ride rotates the finish within such a buurt, so every place sees at least one arrival a year. The rides already announced for 10 to 16 November are unchanged.",
+      "images": []
+    },
+    {
+      "date": "2026-11-09",
+      "title": "Twenty-one more buurten tell their story on arrival",
+      "text": "When a daily ride ends in Borneo-eiland, KNSM-eiland, the Oostelijk Havengebied, Buitenveldert, IJburg, Nieuwmarkt, Overtoomse Sluis, the Prinses Irenebuurt, Sluisbuurt, Sportheldenbuurt, the VU-kwartier, Valkenburg or the Gouden Bocht, and now also the Rijnbuurt, Scheldebuurt, Westindische Buurt, Van Galenbuurt, Buitenveldert-West, Gelderlandpleinbuurt or Molenwijkpark, the arrival card carries a short sourced paragraph about the buurt instead of an empty line. The Nieuwmarkt paragraph now tells the Lastage's story too.",
+      "images": [
+        {
+          "src": "ui/2026-11-09-buurt-extracts/daily-2026-11-12-arrived-desktop.jpg",
+          "alt": "The arrival card after the 12 November daily ride to KNSM-eiland, with the new paragraph about the island",
+          "caption": "KNSM-eiland's arrival card, now with its paragraph."
+        }
+      ]
+    },
+    {
+      "date": "2026-11-09",
+      "title": "Thumb-sized buttons on the phone",
+      "text": "On the phone the Noticed button is now a full thumb-sized button, and the tips line under the card steps aside while a card is open. The arrival card's keys stay thumb-sized even when the card has to shrink. Collecting every place in a neighbourhood now shows its stamped postcard on the phone too, and when the coin is out of view the radar points to it.",
+      "images": [
+        {
+          "src": "ui/2026-11-09-phone-cards/driveby-noticed-phone-before.jpg",
+          "alt": "Before: a drive-by card on a phone with a small Noticed pill and the tips line overlapping its bottom",
+          "caption": "Before: the tips line covered the pill."
+        },
+        {
+          "src": "ui/2026-11-09-phone-cards/driveby-noticed-phone-after.jpg",
+          "alt": "After: the Noticed pill is 44 px tall and the tips line is gone while the card is up",
+          "caption": "After: a full-height button, nothing over it."
+        },
+        {
+          "src": "ui/2026-11-09-phone-cards/stamp-postcard-phone-after.jpg",
+          "alt": "The Marineterrein stamped postcard shown on a phone",
+          "caption": "The stamped postcard, now on the phone too."
+        }
+      ]
+    },
+    {
+      "date": "2026-11-09",
+      "title": "Every checklist keeps to its own buurt",
+      "text": "Each Free Ride checklist now holds only the places in its buurt, and the plaque keeps that list's name while you stand at one of them. The replica ship is now called VOC ship Amsterdam, and the Maritime Museum has one name everywhere. A landmark card and a postcard no longer stack: the postcard waits its turn.",
+      "images": [
+        {
+          "src": "ui/2026-11-09-collection-rule/entry-desktop.jpg",
+          "alt": "Entering Marineterrein on the desktop: the plaque names the buurt and its checklist counts 2 of 5 places",
+          "caption": "The plaque and the checklist agree on the buurt."
+        },
+        {
+          "src": "ui/2026-11-09-collection-rule/3-postcard-desktop.jpg",
+          "alt": "The Jordaan postcard rising after the Westerkerk card closed",
+          "caption": "The postcard waited for the card to close."
+        }
+      ]
+    },
+    {
+      "date": "2026-11-09",
+      "title": "Points add up, and every ride can be shared at once",
+      "text": "Each stop's arrival card now counts the chain bonus it earned, and the run line and the run card show the same figures. Every ride you are dealt carries its share link from the moment it starts, so the Share key is always there on arrival.",
+      "images": [
+        {
+          "src": "ui/2026-11-09-run-points/02-arrival2-phone.jpg",
+          "alt": "The second stop's arrival card on a phone showing 252 points with its +5 % chain bonus",
+          "caption": "The arrival card counts this stop's bonus."
+        },
+        {
+          "src": "ui/2026-11-09-run-points/04-run-card-phone.jpg",
+          "alt": "The run card on a phone: 130, 252 +5 %, 99 +10 %, total 481",
+          "caption": "The run card agrees."
+        },
+        {
+          "src": "ui/2026-11-09-run-points/05-share-keycap-at-once.jpg",
+          "alt": "The Torture Museum to Pathé Tuschinski arrival on a phone, now with the Share key",
+          "caption": "Share is there on every arrival."
+        }
+      ]
+    },
+    {
+      "date": "2026-11-09",
+      "title": "The landmark question is back, and it keeps its secret",
+      "text": "The landmark quiz no longer asks about a building whose name was just on the map. As you ride up to the building in question, its name and the other three choices quietly fade from the map before the question appears, and a building whose drive-by card you just saw is not asked either.",
+      "images": [
+        {
+          "src": "ui/2026-11-09-landmark-reveal/01-before-label-at-start-desktop.jpg",
+          "alt": "Before: the Brakke Grond label on screen at the start of the ride that then asked about it",
+          "caption": "Before: the label that gave the answer away."
+        },
+        {
+          "src": "ui/2026-11-09-landmark-reveal/02-approach-withheld-desktop.jpg",
+          "alt": "Riding toward the candidate building with its label and the three other choices withheld from the map",
+          "caption": "The approach, with the four names withheld."
+        },
+        {
+          "src": "ui/2026-11-09-landmark-reveal/03-question-desktop.jpg",
+          "alt": "The question open over the lit building, no choice named on the map",
+          "caption": "The question."
+        }
+      ]
+    },
+    {
+      "date": "2026-11-09",
+      "title": "One passport, one number",
+      "text": "The landing page, the arrival card and the stamp album now count the same buurt stamps out of 89, Free Ride stamps included, and a destination is a first visit rather than a stamp. In Dutch the arrival and run cards are Dutch throughout, and a landmark question asks about the Anne Frank Huis. Album captions no longer cut a name short.",
+      "images": [
+        {
+          "src": "ui/2026-11-09-stamps-dutch/02-arrival-spec-desktop.jpg",
+          "alt": "The arrival card's stamp line reading 3 of 89 buurt stamps, the same count as the landing and the album",
+          "caption": "One count on every surface."
+        },
+        {
+          "src": "ui/2026-11-09-stamps-dutch/03-album-junk-desktop.jpg",
+          "alt": "The stamp album at 8 of 89 with captions that wrap at the name's seam",
+          "caption": "Captions wrap instead of cutting."
+        },
+        {
+          "src": "ui/2026-11-09-stamps-dutch/05-arrival-nl-desktop.jpg",
+          "alt": "The Dutch arrival card with every line in Dutch",
+          "caption": "The arrival card in Dutch."
+        },
+        {
+          "src": "ui/2026-11-09-stamps-dutch/06-run-card-nl-desktop.jpg",
+          "alt": "The Dutch run card",
+          "caption": "The run card in Dutch."
+        }
+      ]
+    },
+    {
+      "date": "2026-11-09",
+      "title": "The landmark question is paused for a day",
+      "text": "\"Which building is this?\" is off until it stops asking about a building whose name was just on the map: a ride review caught the Brakke Grond's label on screen five seconds before the question about it, and nothing may be revealed before the answer. Drive-by cards stay. A reload inside a run now picks the run's leg back up instead of restarting Today's ride.",
+      "images": [
+        {
+          "src": "ui/2026-11-09-ride-review-gameplay/r1-02c-label-crop-desktop.jpg",
+          "alt": "The map at the start of Today's ride with the Vlaams Cultuurhuis De Brakke Grond label on screen, five seconds before the question about it",
+          "caption": "The label that gave the answer away."
+        }
+      ]
+    },
+    {
+      "date": "2026-11-10",
+      "title": "Today's ride runs buurt to buurt",
+      "text": "Today's ride now runs buurt to buurt: Overhoeks to the Helmersbuurt, Sportheldenbuurt to KNSM-eiland, between one and a half and five kilometres by the real route, and the card shows that distance exactly. No neighbourhood turns up twice in a week; the ride starts on a quiet unnamed street that gives no answer away, and may end on any street, since nothing is asked after arrival and the card names the buurt. Arriving in a buurt, the card describes the neighbourhood itself. From 10 November; earlier days keep the ride they had.",
+      "images": [
+        {
+          "src": "ui/2026-11-09-daily-pool/story-returning.jpg",
+          "alt": "The returning player's landing with Today's ride named by its two buurten",
+          "caption": "Today's ride, buurt to buurt."
+        },
+        {
+          "src": "ui/2026-11-09-daily-pool/daily-2026-11-10-arrived-desktop.jpg",
+          "alt": "The arrival card at the Jordaan after the 10 November daily ride from Overhoeks",
+          "caption": "Arrived in the Jordaan."
+        },
+        {
+          "src": "ui/2026-11-09-daily-pool/jordaan-arrival-neighbourhood-blurb-desktop.jpg",
+          "alt": "The arrival card at the Jordaan describing the neighbourhood itself instead of the nearest landmark",
+          "caption": "A buurt arrival describes the neighbourhood."
+        }
+      ]
+    },
+    {
+      "date": "2026-11-09",
+      "title": "The arrival card's keys are buttons too",
+      "text": "Point at Next stop, Share this route, Route setup or End run on a desktop and the key darkens, the cursor turns to a hand, and a click does what the key does.",
+      "images": [
+        {
+          "src": "ui/2026-11-09-finish-keycap-clicks/before-hover.jpg",
+          "alt": "Before: the mouse over Next stop with no cue that it is clickable",
+          "caption": "Before."
+        },
+        {
+          "src": "ui/2026-11-09-finish-keycap-clicks/after-hover.jpg",
+          "alt": "After: the mouse over Share this route, the keycap darkened and its caption underlined",
+          "caption": "After."
+        }
+      ]
+    },
+    {
+      "date": "2026-11-09",
+      "title": "Share a ride as a picture",
+      "text": "Share this route on the arrival card now offers a picture of the ride: the route's silhouette on postcard paper, with destination, distance, time and ribbon. The link still travels with it, and the name of an open question never appears; a withheld destination reads RIDE over its buurt instead.",
+      "images": [
+        {
+          "src": "ui/2026-11-09-g6-share-card/storybook-card-desktop.jpg",
+          "alt": "The 1200 by 630 share card: the route silhouette on linen paper with destination, distance, time and ribbon",
+          "caption": "The share card."
+        },
+        {
+          "src": "ui/2026-11-09-g6-share-card/storybook-card-quarter-scale.jpg",
+          "alt": "The same card at a quarter of its size, still legible",
+          "caption": "At a quarter of its size."
+        },
+        {
+          "src": "ui/2026-11-09-g6-share-card/storybook-redacted-ride-buurt.jpg",
+          "alt": "A share card whose destination is withheld: it reads RIDE over the buurt name",
+          "caption": "A withheld destination reads RIDE over its buurt."
+        }
+      ]
+    },
+    {
+      "date": "2026-11-09",
+      "title": "Your city knowledge has a map, and the passport is a stamp album",
+      "text": "The Knowledge screen draws the city as a paper map: every buurt is shaded by how well you know its names, a dashed rim marks names due, and a tap shows just that buurt's names. The passport is a stamp album, one stamp per buurt with the day you earned it, and the arrival card shows a new stamp as a stamp. No street names are drawn, so nothing under question is given away.",
+      "images": [
+        {
+          "src": "ui/2026-11-09-g5-knowledge/knowledge-desktop-after.jpg",
+          "alt": "The Knowledge screen on desktop: the city as a paper map shaded by mastery per buurt, with the legend and the review queue",
+          "caption": "The knowledge map on desktop."
+        },
+        {
+          "src": "ui/2026-11-09-g5-knowledge/knowledge-phone-album-after.jpg",
+          "alt": "The stamp album on a phone: earned buurt stamps with dates, then the unearned ones",
+          "caption": "The stamp album on a phone."
+        },
+        {
+          "src": "ui/2026-11-09-g5-knowledge/arrival-stamp-phone.jpg",
+          "alt": "The arrival card on a phone showing a newly earned passport stamp as a stamp",
+          "caption": "A new stamp on the arrival card."
+        }
+      ]
+    },
+    {
+      "date": "2026-11-09",
+      "title": "Today's ride, and a landing page that knows you",
+      "text": "Come back and the landing page greets you with your streak and stamps, Today's ride (the same route for everyone on a given day, never a pair from the last seven days), Continue with the names due, and Free Ride. The board under Today's ride marks your fastest time; distances read as estimates (about 1.7 km).",
+      "images": [
+        {
+          "src": "ui/2026-11-09-g2-landing/landing-returning-desktop-v2.jpg",
+          "alt": "The landing page for a returning player on desktop: Welcome back with streak and stamps, Today's ride, Continue and Free Ride cards",
+          "caption": "The returning player's landing on desktop."
+        },
+        {
+          "src": "ui/2026-11-09-g2-landing/landing-returning-iphone-v2.jpg",
+          "alt": "The same landing page on a phone, the three cards stacked",
+          "caption": "On a phone."
+        }
+      ]
+    },
+    {
+      "date": "2026-11-09",
+      "title": "Free Ride has a collection",
+      "text": "Each neighbourhood lists its places, the postcard and plaque say how many you have opened, and opening them all stamps the neighbourhood in your passport. A small enamel coin marks the nearest place you have not seen; tap it or ride through it. Only one card is up at a time while you collect.",
+      "images": [
+        {
+          "src": "ui/2026-11-09-g4-collection/ride-desktop-entry-one-card-v2.jpg",
+          "alt": "Free Ride on desktop: the neighbourhood checklist card with places opened so far, one card up",
+          "caption": "The neighbourhood's places, one card up."
+        },
+        {
+          "src": "ui/2026-11-09-g4-collection/ride-desktop-stamped-v2.jpg",
+          "alt": "The postcard after the last place opened: the neighbourhood stamped in the passport",
+          "caption": "All opened: the neighbourhood is stamped."
+        },
+        {
+          "src": "ui/2026-11-09-g4-collection/ride-phone-entry-v2.jpg",
+          "alt": "Free Ride on a phone with the enamel coin marking the nearest unseen place",
+          "caption": "On the phone, the coin marks the nearest unseen place."
+        }
+      ]
+    },
+    {
+      "date": "2026-11-09",
+      "title": "Which building is this?",
+      "text": "When a hand-built landmark comes into view, the ride may ask you to name it from four buildings in the same neighbourhood; a right answer stamps it in your passport. Drive-by cards now have a Noticed button, and Free Ride can quiz you on landmarks too (Quiz me on landmarks). The four choices are never shown on the map or in the HUD before you answer.",
+      "images": [
+        {
+          "src": "ui/2026-11-09-g3-landmark-question/ride-desktop-question-open.jpg",
+          "alt": "A landmark question card with four building names, the landmark in view ahead",
+          "caption": "The question, with the building in view."
+        },
+        {
+          "src": "ui/2026-11-09-g3-landmark-question/storybook-landmark-card-noticed-phone.jpg",
+          "alt": "A drive-by landmark card on a phone with its Noticed button",
+          "caption": "Drive-by card with Noticed."
+        }
+      ]
+    },
+    {
+      "date": "2026-11-09",
+      "title": "Rides now chain into a run",
+      "text": "After each arrival, Next stop deals a place 1–3 km on that favours streets you have not learned yet, and every further stop adds 5 % to its points, up to 25 %. End run shows the run card: your stops stamped in order, the total, the best streak and the names learned. A reload inside a run picks the dealt leg back up.",
+      "images": [
+        {
+          "src": "ui/2026-11-09-g1-run/storybook-finish-card-run.png",
+          "alt": "The arrival card with the run line and the Next stop and End run actions",
+          "caption": "The arrival card shows the run so far."
+        },
+        {
+          "src": "ui/2026-11-09-g1-run/storybook-run-card-phone.png",
+          "alt": "The run card on a phone: stops stamped in order, total, best streak, names learned",
+          "caption": "The run card."
+        }
+      ]
+    },
+    {
+      "date": "2026-11-09",
+      "title": "Phone arrival titles fit, tours are back as cards, What's New says hello once",
+      "text": "A long destination now fits the arrival card on a phone instead of ending in '…'. Tours are back as a row of cards under More options, the settings panel shows your account while you ride, and the landing page mentions what is new once per update. The help table no longer lists a sound key that did nothing.",
+      "images": [
+        {
+          "src": "ui/2026-11-09-g7-polish/phone-arrival-title-before.jpg",
+          "alt": "Before: the phone arrival card cuts a long destination name off with an ellipsis",
+          "caption": "Before."
+        },
+        {
+          "src": "ui/2026-11-09-g7-polish/phone-arrival-title-after.jpg",
+          "alt": "After: the full destination name wraps inside the arrival card",
+          "caption": "After."
+        },
+        {
+          "src": "ui/2026-11-09-g7-polish/tours-row-phone.jpg",
+          "alt": "Tour cards as a sideways-scrolling row under More options on a phone",
+          "caption": "Tours as a row of cards."
+        },
+        {
+          "src": "ui/2026-11-09-g7-polish/settings-chip-phone.jpg",
+          "alt": "The settings panel with the signed-in account chip on a phone",
+          "caption": "Your account in the settings panel."
+        }
+      ]
+    },
+    {
+      "date": "2026-11-09",
+      "title": "Two more flat blocks get their windows back",
+      "text": "The Balboaplein 48 block in Bos en Lommer and the Revaleiland 437 courtyard block on Java-eiland now show brick window grids instead of one flat red wall. Every installed model was ridden past from the air and compared with the city's own facade and the aerial photo; these two were the only remaining flat boxes, 17 more are being looked at closer.",
+      "where": [
+        4.853,
+        52.3785
+      ],
+      "images": [
+        {
+          "src": "engine/2026-11-09-blank-installs-audit/i147097-before.jpg",
+          "alt": "Before: the Balboaplein 48 block as a flat orange-red box from the air",
+          "caption": "Balboaplein 48, before."
+        },
+        {
+          "src": "engine/2026-11-09-blank-installs-audit/i147097-after.jpg",
+          "alt": "After: the same block with the city's brick window grid",
+          "caption": "Balboaplein 48, after."
+        },
+        {
+          "src": "engine/2026-11-09-blank-installs-audit/i250186-before.jpg",
+          "alt": "Before: the Revaleiland 437 courtyard block as a flat red box with its courtyard filled in",
+          "caption": "Revaleiland 437, before."
+        },
+        {
+          "src": "engine/2026-11-09-blank-installs-audit/i250186-after.jpg",
+          "alt": "After: the same block with window grids and the courtyard open",
+          "caption": "Revaleiland 437, after."
+        }
+      ]
+    },
+    {
+      "date": "2026-11-09",
+      "title": "The ground no longer depends on loading order",
+      "text": "The ground near bridges and tunnel ramps no longer changes depending on which order the cells around you loaded. Bridge decks and tunnel cuts that span two cells are now planned the same way whichever cell asks first, so a crossing never gets a second deck on top of the first and a ramp wall never moves between rides.",
+      "where": [
+        4.9515,
+        52.3655
+      ],
+      "images": []
+    },
+    {
+      "date": "2026-11-09",
+      "title": "More roofs take their colour from the photo",
+      "text": "Roofs on about 1,800 newer buildings, mostly small sheds and gap fills, now take their colour from the aerial photo, and about 9,800 hard-to-read flat roofs lean toward their photo colour instead of a generic grey. Low-confidence readings only tilt the flat-roof colour; they are never drawn at full measured weight.",
+      "images": [
+        {
+          "src": "engine/2026-11-09-roof-facts-02/u1-nieuwmarkt-after.png",
+          "alt": "Aerial view over the Nieuwmarkt after the publish: flat roofs at their measured mid-grey with lips and roof boxes, pitched roofs in their photo colours",
+          "caption": "Over the Nieuwmarkt after the publish."
+        }
+      ]
+    },
+    {
+      "date": "2026-11-09",
+      "title": "A place's name now tells you about its building",
+      "text": "Tapping a place's name on the map now also tells you about the building it is in: when it was built and how tall it is, under the place's name. The tap finds the building whose footprint holds the label's point, or the nearest wall within six metres, and never a building standing in front of the place.",
+      "where": [
+        4.8716,
+        52.3797
+      ],
+      "images": [
+        {
+          "src": "ui/2026-11-09-card-label-pand/desktop-before.jpg",
+          "alt": "Before: the card for a tapped place name gives only what the place is and its address",
+          "caption": "Before: the place only."
+        },
+        {
+          "src": "ui/2026-11-09-card-label-pand/desktop.jpg",
+          "alt": "After: the card adds the building's year, period and height under the place's name",
+          "caption": "After, desktop."
+        },
+        {
+          "src": "ui/2026-11-09-card-label-pand/phone.jpg",
+          "alt": "The same card on a phone",
+          "caption": "After, phone."
+        }
+      ]
+    },
+    {
+      "date": "2026-11-09",
+      "title": "The ground around you finishes sooner",
+      "text": "At the start of a ride the ground right around you now finishes building half a second to a second and a half sooner on the same start. The ground builders used to let a tile outside your block jump the queue when it sat next to one they already held; a free builder now only picks among tiles of the same level and the same side of your block.",
+      "images": []
+    },
+    {
+      "date": "2026-11-09",
+      "title": "The IJ-tunnel's west ramp keeps its wall",
+      "text": "The IJ-tunnel's west ramp now keeps its wall all the way down: no more street draped into the trench halfway along. The east bank rises nine metres in one run, which the wall scan had read as too wide to be a wall, so the wall stopped for 48 metres and the verge above folded into the cutting.",
+      "where": [
+        4.9116,
+        52.372
+      ],
+      "images": [
+        {
+          "src": "engine/2026-11-09-ramp-gap/before-ij-ramp-gap-across.png",
+          "alt": "Before: the ramp's east wall ends mid-way and the grass verge folds into the trench",
+          "caption": "Before."
+        },
+        {
+          "src": "engine/2026-11-09-ramp-gap/after-ij-ramp-gap-across.png",
+          "alt": "After: one continuous wall along the ramp with the verge intact above it",
+          "caption": "After."
+        }
+      ]
+    },
+    {
+      "date": "2026-11-09",
+      "title": "The ground is there when the ride starts",
+      "text": "The ground under the camera now begins building during the loading screen and is in place about a second sooner after the reveal, and the ride is revealed no later than before. The ground builders no longer queue up behind each other: each takes the next most urgent cell as soon as it is free, prefers cells next to ones it already holds, and a finished cell is never built twice.",
+      "images": []
+    },
+    {
+      "date": "2026-11-09",
+      "title": "Clean tunnel mouths under the Prins Hendrikkade",
+      "text": "The IJ-tunnel's mouths under the Prins Hendrikkade junction are clean: no more pale paving sheets hanging into the mouths, and the street over the tunnel no longer sags beside the ramps' cycle path. The height model had dropped the covered junction by two metres, so the mouth tops sat in a dip and the ground beyond them draped into the trenches; the mouths now rise to the street and the ground is cut at their faces.",
+      "where": [
+        4.9108,
+        52.3722
+      ],
+      "images": [
+        {
+          "src": "engine/2026-11-09-ramp-sides/strip-ortho-before-after.jpg",
+          "alt": "The Rapenburg junction, the tunnel mouths and the IJ-ramp walls: the aerial photograph, before and after",
+          "caption": "Orthophoto | before | after at three poses."
+        }
+      ]
+    },
+    {
+      "date": "2026-11-08",
+      "title": "A smoother start",
+      "text": "When the loading screen lifts, the view no longer slides down into place over the first quarter second, and the big landmarks next to where your ride begins (the Rijksmuseum at Museumplein, Centraal Station) are already in place instead of popping in a moment later. The first frame you see is the frame the ride starts from. Measured on a Mac the largest change in any frame after the reveal fell from 7-13 % of the picture to under 1 %, at a cost of about a tenth of a second before the ride starts.",
+      "where": [
+        4.8868,
+        52.3596
+      ],
+      "images": [
+        {
+          "src": "engine/2026-11-08-reveal-light/desktop-reveal-before-after.png",
+          "alt": "Museumplein at the reveal and a quarter second later, before (the camera slides down 1.8 m) and after (already in place)",
+          "caption": "The reveal frame and +270 ms. Before row | after row."
+        },
+        {
+          "src": "engine/2026-11-08-reveal-swap/desktop-reveal-swap-before-after.png",
+          "alt": "Museumplein at the reveal and 300 ms later, before (the Rijksmuseum pops from its block shell to the full model) and after (already the full model)",
+          "caption": "The Rijksmuseum at the reveal and +300 ms. Before row | after row."
+        }
+      ]
+    },
+    {
+      "date": "2026-11-08",
+      "title": "Bridges keep their road",
+      "text": "The carriageway and the red cycle path now run unbroken across the Kattenburgerbrug and the Prins Hendrikkade bridges instead of breaking into a pale band at each end, and a junction mouth draws one red crossing, not two. At the Beltbrug a grass verge no longer greys the cycle path. The cause was the ground-level footways under each bridge end, drawn at kerb height above the deck.",
+      "where": [
+        4.9165,
+        52.3733
+      ],
+      "images": [
+        {
+          "src": "engine/2026-11-08-r5c1/strip-ortho-before-after-chase.jpg",
+          "alt": "Six bridges and junctions: the aerial photograph, before and after; the roads now run across the decks and each mouth has one red crossing",
+          "caption": "Orthophoto | before | after at six bridges."
+        }
+      ]
+    },
+    {
+      "date": "2026-11-08",
+      "title": "Tunnel ramps and junctions tidied",
+      "text": "The IJ-tunnel ramps no longer have pale paving and grass sheets hanging over their walls: ground that crossed a tunnel wall is now cut at the wall, each side at its own level. Across the city the tiny stray paving specks and kerb stubs at junctions are gone (12,000 slivers merged into their neighbours, 2,300 kerb stubs under 1.5 m removed), visibly at Muntplein and by Arcam on the Prins Hendrikkade. Some pale sheets remain along the ramp sides that have no wall; that is the next fix.",
+      "where": [
+        4.9095,
+        52.3735
+      ],
+      "images": [
+        {
+          "src": "engine/2026-11-08-r5c2/strip-ortho-before-after.jpg",
+          "alt": "Rapenburg, the IJ-tunnel ramp walls, Muntplein and Prins Hendrikkade: the aerial photograph, before and after",
+          "caption": "Orthophoto | before | after."
+        }
+      ]
+    },
+    {
+      "date": "2026-11-08",
+      "title": "Flat roofs read as roofs, not bright slabs",
+      "text": "Flat roofs seen from the air are no longer one bright slab. Their tone now matches the aerial photograph (14 of the 15 largest lids around the Nieuwmarkt sit within a shade of it, against 4 before), the surface carries the grain and seams of gravel and membrane, large roofs show a roof box, and a parapet lip appears as you come closer. The city's simplified shells were re-baked with the same roofs.",
+      "where": [
+        4.9005,
+        52.3715
+      ],
+      "images": [
+        {
+          "src": "engine/2026-11-08-r5e/u1-user-main-lane.jpg",
+          "alt": "Nieuwmarkt from the air: the user's shot with bright flat lids, the same frame on main, and the frame with measured roof tones and roof boxes",
+          "caption": "Nieuwmarkt. User | before | after."
+        },
+        {
+          "src": "engine/2026-11-08-r5e/u1-lid-luma.png",
+          "alt": "Per-lid brightness swatches for the fifteen largest flat roofs: orthophoto, before, after",
+          "caption": "The fifteen largest lids: orthophoto | before | after."
+        }
+      ]
+    },
+    {
+      "date": "2026-11-08",
+      "title": "Tapping a named place says what it is",
+      "text": "Tapping a named place now tells you what it is (a Sikh gurdwara, a Roman Catholic church, a gift shop), even when the building record itself is blank. The Shri Guru Nanak Gurdwara Sahib used to say it had no name or date; its card now reads \"A Sikh gurdwara at Schakelstraat 21\" with a link to its map source. About 900 places got a clearer description (62 Protestant and 61 Roman Catholic churches, 45 mosques, shop kinds such as \"a gift shop\" instead of \"a gift\"), and 722 public artworks became tappable.",
+      "where": [
+        4.8528,
+        52.3815
+      ],
+      "images": [
+        {
+          "src": "ui/2026-11-08-card-poi/strip-before-after-gurdwara.png",
+          "alt": "The Gurdwara card before (no name or date in the map data) and after (A Sikh gurdwara at Schakelstraat 21)",
+          "caption": "Before | after."
+        }
+      ]
+    },
+    {
+      "date": "2026-11-08",
+      "title": "Flying over the city is easier on your computer",
+      "text": "Panning the city from the air no longer runs the fan flat out. While the camera flies it draws at 30 frames a second and redraws the sun's shadows only every few frames; the moment you stop, the view is drawn at full rate and full sharpness again. Measured on an M4 Pro Mac the graphics card went from fully busy to about a third while panning, with the still picture unchanged.",
+      "where": [
+        4.8765,
+        52.3785
+      ],
+      "images": [
+        {
+          "src": "engine/2026-11-08-r5f/r5f-fan-1x.png",
+          "alt": "Frederik Hendrikbuurt from the air: moving frames before and after, and the still frame, which is identical",
+          "caption": "Frederik Hendrikbuurt. Moving: before | 0.8 scale (opt-in) | after. Still: before | after."
+        }
+      ]
+    },
+    {
+      "date": "2026-11-08",
+      "title": "Three flat boxes get their windows back",
+      "text": "Three large blocks that drew as flat, windowless boxes from the air now show window grids: Van Oldenbarneveldtstraat 48-56, the Van der Palmkade serpentine block and the Rijksakademie ranges by the Singelgracht. Their installed models had almost no windows (3 % glass or less, where a punched-window block has 15-30 %), so the city's own facade draws there instead.",
+      "where": [
+        4.8745,
+        52.3792
+      ],
+      "images": [
+        {
+          "src": "engine/2026-11-08-r5d/vob-user-off-after.jpg",
+          "alt": "Van Oldenbarneveldtstraat 48-56 from the air: the user's shot of the flat ochre box, the same box with the fix off, and the glazed front after",
+          "caption": "Van Oldenbarneveldtstraat 48-56. User | fix off | after."
+        }
+      ]
+    },
+    {
+      "date": "2026-11-08",
+      "title": "Road numbers once per road, place names in full",
+      "text": "Road numbers appear once per stretch of road, and place names are no longer cut off mid-word. Around Sloterdijk the A10, A5 and S101 badges repeated every few hundred metres along the same road; each road now carries one badge per visible stretch. Long place names such as Canal Ring Area of Amsterdam and Amsterdam Sloterdijk Station are shown in full instead of ending in a cut word.",
+      "where": [
+        4.8371,
+        52.3889
+      ],
+      "images": [
+        {
+          "src": "ui/2026-11-08-labels/sloterdijk-before.png",
+          "alt": "Sloterdijk from the air, before: the A10, A5 and S101 badges repeated along each road",
+          "caption": "Sloterdijk, before."
+        },
+        {
+          "src": "ui/2026-11-08-labels/sloterdijk-after.png",
+          "alt": "Sloterdijk from the air, after: one badge per road stretch",
+          "caption": "Sloterdijk, after."
+        },
+        {
+          "src": "ui/2026-11-08-labels/hortus-before.png",
+          "alt": "The Hortus, before: place-name pills cut off mid-word",
+          "caption": "Hortus, before."
+        },
+        {
+          "src": "ui/2026-11-08-labels/hortus-after.png",
+          "alt": "The Hortus, after: place names shown in full",
+          "caption": "Hortus, after."
+        }
+      ]
+    },
+    {
+      "date": "2026-11-08",
+      "title": "Roofs sit back on their walls",
+      "text": "Roofs sit back on their walls along the Stadhouderskade, the Singelgracht and the Geldersekade. The simplified city shells drawn from the air and at a distance used each roof's full fitted box, so on skewed or irregular blocks the roof stuck out past the walls, sometimes by a whole street's width. Those roofs are now trimmed at the walls, as the close-up buildings always were.",
+      "where": [
+        4.8832,
+        52.3618
+      ],
+      "images": [
+        {
+          "src": "engine/2026-11-08-roofs-offset/singelgracht-before-after-2x.png",
+          "alt": "The block at Stadhouderskade and Hobbemastraat seen across the Singelgracht, before and after: the grey roof slab that hung over the street now sits on the walls",
+          "caption": "Across the Singelgracht toward Hobbemastraat. Before | after."
+        }
+      ]
+    },
+    {
+      "date": "2026-11-08",
+      "title": "The Weesperstraat slab no longer shimmers",
+      "text": "The tall 1962 slab on Weesperstraat no longer shimmers while you ride past it. On desktop, where a facade's window grid shrinks to a few pixels, the renderer now blends nine samples across each pixel instead of one, which takes the moiré out of the long wall; a little fine detail at that distance is traded for calm. Phones keep the previous behaviour for now.",
+      "where": [
+        4.9079,
+        52.3647
+      ],
+      "images": [
+        {
+          "src": "engine/2026-11-07-r4d/r4d-s3-user-dpr2.jpg",
+          "alt": "The Weesperstraat slab at the user's pose: the user's shot, main, with footprint taps, and taps with a wider tier band; below, 4x crops of the wall",
+          "caption": "Left to right: your shot, before, with the taps (now the default), and the wider-band variant that was not taken. Bottom rows: 4x crops of the slab wall."
+        }
+      ]
+    },
+    {
       "date": "2026-11-08",
       "title": "Flying over the city is smooth",
       "text": "Two more fixes for the flight over Amsterdam on desktop. The map now loads only the ground within about a kilometre and a half of where you are looking, instead of the whole view at once (the far horizon is drawn by the simpler far tier, as before), so a new district no longer arrives as one big parcel. And the trees update about four times faster from the air: each map tile's trees are prepared once and only reassembled when something changes. On a three-minute flight across the city there are now no frames over a tenth of a second (there were 9 to 10 after the last fix, 38 to 52 before it). Nothing looks different up close. Add ?ringFootprint=0 or ?treesIncremental=0 to the ride link to compare. Phones are unchanged until measured.",

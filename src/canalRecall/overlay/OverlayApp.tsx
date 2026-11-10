@@ -1,7 +1,9 @@
 import { useCallback, useEffect, useMemo, useRef, useState, useSyncExternalStore, type FormEvent, type ReactNode } from 'react';
 import { SiteSwitch } from '../../components/SiteSwitch.tsx';
 import { AccountChip } from '../../components/AccountChip.tsx';
+import { TourCards } from './TourCards.tsx';
 import { canalPageLinks } from '../../siteLinks.ts';
+import { freeRideLandmarkQuizEnabled } from '../featureFlags.ts';
 import { ArrowLeft, BookOpenCheck, ChevronDown, Clock3, Search } from 'lucide-react';
 import {
   ASK_BUDGETS,
@@ -29,6 +31,7 @@ import {
 } from './enamelIcons.tsx';
 import { useT, type Translate } from '../../i18n/useT.ts';
 import { LanguageSwitch } from '../../components/LanguageSwitch.tsx';
+import { KnowledgeAtlas, useKnowledgeAtlasFilter } from './KnowledgeAtlas.tsx';
 
 /** The ride's own links to the landing page and Map Quest, by where this page is served. */
 const siteLinksHere = canalPageLinks(typeof location === 'undefined' ? '/' : location.pathname);
@@ -501,11 +504,13 @@ function KnowledgeReviewScreen({
   const [query, setQuery] = useState('');
   const t = useT();
   const filters = knowledgeFilters(t);
+  const atlas = useKnowledgeAtlasFilter(() => setFilter('all'));
   const visibleItems = useMemo(() => {
     const term = query.trim().toLocaleLowerCase();
     return review.items.filter(item => (filter === 'all' || item.status === filter)
+      && atlas.includes(item.key)
       && (!term || item.name.toLocaleLowerCase().includes(term) || cityLabel(item.cityId).toLocaleLowerCase().includes(term)));
-  }, [filter, query, review.items]);
+  }, [filter, query, review.items, atlas]);
   const maxActivity = Math.max(1, ...review.activity.map(day => day.reviews));
   // A full-screen view takes focus, and Escape leaves it, like any dialog.
   const backRef = useRef<HTMLButtonElement | null>(null);
@@ -537,6 +542,8 @@ function KnowledgeReviewScreen({
           {review.due ? t('knowledge.plan', { count: review.due }) : t('knowledge.nothingDue')}
         </button>
       </header>
+
+      <KnowledgeAtlas items={review.items} selection={atlas.selection} onSelect={atlas.select} />
 
       {review.tracked === 0 ? (
         <div className="knowledge-empty">
@@ -748,7 +755,6 @@ export function OverlayApp({
     value.startsWith('#') ? t(value.slice(1) as Parameters<Translate>[0], params) : value;
   const accountLabel = accountValue(state.account.label);
   const accountNote = accountValue(state.account.note, { count: state.account.noteCount ?? 0 });
-  const accountButton = accountValue(state.account.buttonLabel);
   const prefs = state.prefs;
   const [knowledgeRefresh, setKnowledgeRefresh] = useState(0);
   const knowledgeNow = useMemo(() => Date.now(), [knowledgeRefresh]);
@@ -931,6 +937,11 @@ export function OverlayApp({
               gloss={prefs.routePattern === 'free' ? t('setup.route.freeHint') : undefined}
               keepGloss
             />
+            {/* Free Ride asks nothing (user 2026-11-09, F1 #311): the G3 opt-in toggle shows only with `?freeRideQuiz=1` (featureFlags.ts). */}
+            {prefs.routePattern === 'free' && freeRideLandmarkQuizEnabled(typeof location === 'undefined' ? '' : location.search) && <ToggleGroup label={t('setup.freeRideLandmarkQuiz')}>
+              <ToggleTile id="free-ride-landmark-quiz" checked={prefs.landmarkQuiz} onChange={landmarkQuiz => patch({ landmarkQuiz })}
+                title={t('setup.freeRideLandmarkQuiz')} hint={t('setup.freeRideLandmarkQuizHint')} />
+            </ToggleGroup>}
             {/* Difficulty grades the questions, and Free Ride asks none. */}
             {prefs.routePattern !== 'free' && <ChoiceRow
               label={t('setup.difficulty')}
@@ -983,6 +994,7 @@ export function OverlayApp({
               }}
             >
               <summary>{t('setup.moreOptions')}</summary>
+              <TourCards tours={state.tours} />
               <ChoiceRow
                 label={t('setup.difficulty.harder')}
                 name="difficulty-extra"
@@ -1082,15 +1094,17 @@ export function OverlayApp({
             </div>
             <div className="setup-account-actions">
               <a id="settings-progress-link" className="account-button enamel-quiet" href={siteLinksHere.progress}>{t('settings.progress')}</a>
-              <button
+              {/* The same chip as route setup (G7, #277): the rider's avatar and
+                  name while riding, or Sign in; its menu holds Sign out. */}
+              <AccountChip
                 id="settings-account-button"
-                type="button"
-                className="account-button enamel-quiet"
-                disabled={state.account.busy}
-                onClick={() => callbacks.onAccountClick()}
-              >
-                {accountButton}
-              </button>
+                user={accountSignedIn ? { label: accountLabel, photoURL: state.account.photoURL } : null}
+                available={state.account.available !== false}
+                busy={state.account.busy}
+                onSignIn={() => callbacks.onAccountClick()}
+                onSignOut={() => callbacks.onAccountClick()}
+                progressHref={siteLinksHere.progress}
+              />
             </div>
           </div>
           <div className="enamel-setup-scroll-wrap">

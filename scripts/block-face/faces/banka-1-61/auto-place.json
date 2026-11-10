@@ -1,0 +1,1890 @@
+{
+ "face": "banka-1-61",
+ "street": "Bankastraat",
+ "library": "indische-buurt",
+ "stripDate": "2023-01-02",
+ "seconds": 8.59,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012077315",
+   "address": "Bankastraat 1A",
+   "builtYear": 2005,
+   "widthM": 32.43,
+   "eavesM": 11.97,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#4c443d",
+    "wallRaw": "#504942",
+    "skyline": {
+     "eavesM": 16.13,
+     "eavesRow": 206,
+     "confidence": 0.65,
+     "crown": {
+      "widthM": 4.92,
+      "riseM": 3.15,
+      "topWidthM": 3.9,
+      "centre": 0.08
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 11,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.142,
+    "structure": {
+     "bayWidthM": 1.25,
+     "bayCentre": 0.3,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 11.07,
+       "widthM": 2.5,
+       "centre": 0.19
+      },
+      {
+       "atM": 8.15,
+       "widthM": 1.65,
+       "centre": 0.2
+      },
+      {
+       "atM": 6.27,
+       "widthM": 1.23,
+       "centre": 0.68
+      },
+      {
+       "atM": 5.9,
+       "widthM": 0.8,
+       "centre": 0.96
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.13
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best indisch-1912-java-mansard-arches: built 2005, type 1910-1914; frontage 32.43 m, type 5.6-6.4 m)",
+   "best": {
+    "type": "indisch-1912-java-mansard-arches",
+    "score": 0,
+    "veto": [
+     "built 2005, type 1910-1914",
+     "frontage 32.43 m, type 5.6-6.4 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 11.97 m = 4 storeys of 2.99 m vs the type's 3.08 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.089 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 11 vs 4 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012160383",
+   "address": "Bankastraat 7C",
+   "builtYear": 1902,
+   "widthM": 5.18,
+   "eavesM": 15.09,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6c544b",
+    "wallRaw": "#625448",
+    "skyline": {
+     "eavesM": 14.63,
+     "eavesRow": 266,
+     "confidence": 0.66,
+     "crown": {
+      "widthM": 1.48,
+      "riseM": 6.65,
+      "topWidthM": 0.33,
+      "centre": 0.84
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.104,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 13.57,
+       "widthM": 2.7,
+       "centre": 0.45
+      },
+      {
+       "atM": 13.28,
+       "widthM": 1.18,
+       "centre": 0.87
+      },
+      {
+       "atM": 12.75,
+       "widthM": 0.95,
+       "centre": 0.49
+      },
+      {
+       "atM": 12.45,
+       "widthM": 0.9,
+       "centre": 0.8
+      },
+      {
+       "atM": 9.9,
+       "widthM": 1.02,
+       "centre": 0.49
+      },
+      {
+       "atM": 9.6,
+       "widthM": 0.95,
+       "centre": 0.49
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.07
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best indisch-1912-java-mansard-arches: built 1902, type 1910-1914; frontage 5.18 m, type 5.6-6.4 m)",
+   "best": {
+    "type": "indisch-1912-java-mansard-arches",
+    "score": 0,
+    "veto": [
+     "built 1902, type 1910-1914",
+     "frontage 5.18 m, type 5.6-6.4 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 15.09 m = 4 storeys of 3.77 m vs the type's 3.08 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.078 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 3 vs 4 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012162952",
+   "address": "Bankastraat 9",
+   "builtYear": 1902,
+   "widthM": 5.21,
+   "eavesM": 15.14,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6c5c56",
+    "wallRaw": "#51463e",
+    "skyline": {
+     "eavesM": 20.55,
+     "eavesRow": 29,
+     "confidence": 0.69,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "curtain",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.011,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 13.35,
+       "widthM": 1,
+       "centre": 0.16
+      },
+      {
+       "atM": 12.9,
+       "widthM": 1,
+       "centre": 0.48
+      },
+      {
+       "atM": 12.22,
+       "widthM": 1.1,
+       "centre": 0.19
+      },
+      {
+       "atM": 9.45,
+       "widthM": 0.85,
+       "centre": 0.85
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best indisch-1912-java-mansard-arches: built 1902, type 1910-1914)",
+   "best": {
+    "type": "indisch-1912-java-mansard-arches",
+    "score": 0,
+    "veto": [
+     "built 1902, type 1910-1914"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 15.14 m = 4 storeys of 3.79 m vs the type's 3.08 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.006 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012158325",
+   "address": "Bankastraat 11B",
+   "builtYear": 1902,
+   "widthM": 5.2,
+   "eavesM": 15.11,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6d5d54",
+    "wallRaw": "#64564b",
+    "skyline": {
+     "eavesM": 17.27,
+     "eavesRow": 160,
+     "confidence": 0.98,
+     "crown": {
+      "widthM": 1.07,
+      "riseM": 3.7,
+      "topWidthM": 0.28,
+      "centre": 0.51
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": "left",
+    "accentSide": "right",
+    "accentShare": 0.09,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 12.92,
+       "widthM": 0.82,
+       "centre": 0.18
+      },
+      {
+       "atM": 9.77,
+       "widthM": 0.88,
+       "centre": 0.19
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.04
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best indisch-1912-java-mansard-arches: built 1902, type 1910-1914)",
+   "best": {
+    "type": "indisch-1912-java-mansard-arches",
+    "score": 0,
+    "veto": [
+     "built 1902, type 1910-1914"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 15.11 m = 4 storeys of 3.78 m vs the type's 3.08 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.067 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 3 vs 4 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012152653",
+   "address": "Bankastraat 13B",
+   "builtYear": 1902,
+   "widthM": 5.21,
+   "eavesM": 15.13,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#827064",
+    "wallRaw": "#6d6053",
+    "skyline": {
+     "eavesM": 19.43,
+     "eavesRow": 74,
+     "confidence": 0.53,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 3,
+    "columns": null,
+    "frontClass": "curtain",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.139,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 13.47,
+       "widthM": 1.38,
+       "centre": 0.16
+      },
+      {
+       "atM": 12.88,
+       "widthM": 0.88,
+       "centre": 0.51
+      },
+      {
+       "atM": 12.27,
+       "widthM": 1.02,
+       "centre": 0.82
+      },
+      {
+       "atM": 6.88,
+       "widthM": 0.95,
+       "centre": 0.41
+      },
+      {
+       "atM": 6.57,
+       "widthM": 0.9,
+       "centre": 0.42
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.06
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best indisch-1912-java-mansard-arches: built 1902, type 1910-1914)",
+   "best": {
+    "type": "indisch-1912-java-mansard-arches",
+    "score": 0,
+    "veto": [
+     "built 1902, type 1910-1914"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 15.13 m = 4 storeys of 3.78 m vs the type's 3.08 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.107 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012158422",
+   "address": "Bankastraat 15",
+   "builtYear": 1905,
+   "widthM": 5.32,
+   "eavesM": 16.04,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#705446",
+    "wallRaw": "#6d5a4c",
+    "skyline": {
+     "eavesM": 15.3,
+     "eavesRow": 239,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.55,
+      "riseM": 5.85,
+      "topWidthM": 0.15,
+      "centre": 0.48
+     }
+    },
+    "stucco": false,
+    "bands": 2,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.151,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 14.03,
+       "widthM": 1.8,
+       "centre": 0.21
+      },
+      {
+       "atM": 13.72,
+       "widthM": 1.8,
+       "centre": 0.21
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.08
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best indisch-1912-java-mansard-arches: built 1905, type 1910-1914)",
+   "best": {
+    "type": "indisch-1912-java-mansard-arches",
+    "score": 0,
+    "veto": [
+     "built 1905, type 1910-1914"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 16.04 m = 4 storeys of 4.01 m vs the type's 3.08 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.122 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 3 vs 4 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012152591",
+   "address": "Bankastraat 17C",
+   "builtYear": 1902,
+   "widthM": 5.28,
+   "eavesM": 16.04,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#876555",
+    "wallRaw": "#7f6659",
+    "skyline": {
+     "eavesM": 19.13,
+     "eavesRow": 86,
+     "confidence": 0.54,
+     "crown": {
+      "widthM": 1.25,
+      "riseM": 2.15,
+      "topWidthM": 0.6,
+      "centre": 0.72
+     }
+    },
+    "stucco": false,
+    "bands": 6,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.254,
+    "structure": {
+     "bayWidthM": 0.45,
+     "bayCentre": 0.18,
+     "balconies": false,
+     "why": "no dark open axis, 2 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 13.95,
+       "widthM": 4.33,
+       "centre": 0.52
+      },
+      {
+       "atM": 13.65,
+       "widthM": 1.63,
+       "centre": 0.33
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.07
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best indisch-1912-java-mansard-arches: built 1902, type 1910-1914)",
+   "best": {
+    "type": "indisch-1912-java-mansard-arches",
+    "score": 0,
+    "veto": [
+     "built 1902, type 1910-1914"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 16.04 m = 4 storeys of 4.01 m vs the type's 3.08 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.227 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012160050",
+   "address": "Bankastraat 19",
+   "builtYear": 1902,
+   "widthM": 5.09,
+   "eavesM": 15.31,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#8b6c55",
+    "wallRaw": "#847261",
+    "skyline": {
+     "eavesM": 18.9,
+     "eavesRow": 95,
+     "confidence": 0.56,
+     "crown": {
+      "widthM": 1.23,
+      "riseM": 2.38,
+      "topWidthM": 0.15,
+      "centre": 0.42
+     }
+    },
+    "stucco": false,
+    "bands": 2,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.213,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 2 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 13.72,
+       "widthM": 1.27,
+       "centre": 0.86
+      },
+      {
+       "atM": 9.9,
+       "widthM": 1.55,
+       "centre": 0.25
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.08
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best indisch-1912-java-mansard-arches: built 1902, type 1910-1914; frontage 5.09 m, type 5.6-6.4 m)",
+   "best": {
+    "type": "indisch-1912-java-mansard-arches",
+    "score": 0,
+    "veto": [
+     "built 1902, type 1910-1914",
+     "frontage 5.09 m, type 5.6-6.4 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 15.31 m = 4 storeys of 3.83 m vs the type's 3.08 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.161 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 3 vs 4 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012161217",
+   "address": "Bankastraat 21",
+   "builtYear": 1902,
+   "widthM": 5.14,
+   "eavesM": 15.07,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#7f695e",
+    "wallRaw": "#695a4e",
+    "skyline": {
+     "eavesM": 17.82,
+     "eavesRow": 138,
+     "confidence": 0.56,
+     "crown": {
+      "widthM": 2.77,
+      "riseM": 3.45,
+      "topWidthM": 0.3,
+      "centre": 0.69
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.116,
+    "structure": {
+     "bayWidthM": 0.53,
+     "bayCentre": 0.18,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 9.82,
+       "widthM": 0.85,
+       "centre": 0.42
+      },
+      {
+       "atM": 6.97,
+       "widthM": 0.85,
+       "centre": 0.42
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.05
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best indisch-1912-java-mansard-arches: built 1902, type 1910-1914; frontage 5.14 m, type 5.6-6.4 m)",
+   "best": {
+    "type": "indisch-1912-java-mansard-arches",
+    "score": 0,
+    "veto": [
+     "built 1902, type 1910-1914",
+     "frontage 5.14 m, type 5.6-6.4 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 15.07 m = 4 storeys of 3.77 m vs the type's 3.08 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.074 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 3 vs 4 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012158823",
+   "address": "Bankastraat 23",
+   "builtYear": 1902,
+   "widthM": 5.12,
+   "eavesM": 15.31,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#765b49",
+    "wallRaw": "#6e6153",
+    "skyline": {
+     "eavesM": 15.82,
+     "eavesRow": 218,
+     "confidence": 0.72,
+     "crown": {
+      "widthM": 1.18,
+      "riseM": 5.45,
+      "topWidthM": 0.65,
+      "centre": 0.12
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.084,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 13.3,
+       "widthM": 1.85,
+       "centre": 0.2
+      },
+      {
+       "atM": 6.85,
+       "widthM": 0.93,
+       "centre": 0.36
+      },
+      {
+       "atM": 4.75,
+       "widthM": 0.82,
+       "centre": 0.12
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.06
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best indisch-1912-java-mansard-arches: built 1902, type 1910-1914; frontage 5.12 m, type 5.6-6.4 m)",
+   "best": {
+    "type": "indisch-1912-java-mansard-arches",
+    "score": 0,
+    "veto": [
+     "built 1902, type 1910-1914",
+     "frontage 5.12 m, type 5.6-6.4 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 15.31 m = 4 storeys of 3.83 m vs the type's 3.08 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.078 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 3 vs 4 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012164891",
+   "address": "Bankastraat 25",
+   "builtYear": 1902,
+   "widthM": 5.12,
+   "eavesM": 15.47,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#836a5a",
+    "wallRaw": "#7a6456",
+    "skyline": {
+     "eavesM": 19.07,
+     "eavesRow": 88,
+     "confidence": 0.51,
+     "crown": {
+      "widthM": 0.63,
+      "riseM": 2.05,
+      "topWidthM": 0.05,
+      "centre": 0.36
+     }
+    },
+    "stucco": false,
+    "bands": 3,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.278,
+    "structure": {
+     "bayWidthM": 0.72,
+     "bayCentre": 0.52,
+     "balconies": true,
+     "why": "balcony slabs stacked at 9.77 m (1.77 m wide), 6.92 m (1.82 m wide)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 9.77,
+       "widthM": 1.77,
+       "centre": 0.52
+      },
+      {
+       "atM": 6.92,
+       "widthM": 1.82,
+       "centre": 0.51
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.12
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best indisch-1912-java-mansard-arches: built 1902, type 1910-1914; frontage 5.12 m, type 5.6-6.4 m)",
+   "best": {
+    "type": "indisch-1912-java-mansard-arches",
+    "score": 0,
+    "veto": [
+     "built 1902, type 1910-1914",
+     "frontage 5.12 m, type 5.6-6.4 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 15.47 m = 4 storeys of 3.87 m vs the type's 3.08 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.237 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 3 vs 4 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012167385",
+   "address": "Bankastraat 27A",
+   "builtYear": 1902,
+   "widthM": 5.07,
+   "eavesM": 15.44,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#755e49",
+    "wallRaw": "#6e6052",
+    "skyline": {
+     "eavesM": 17.07,
+     "eavesRow": 168,
+     "confidence": 0.97,
+     "crown": {
+      "widthM": 2.83,
+      "riseM": 4.2,
+      "topWidthM": 0.25,
+      "centre": 0.7
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.072,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 2 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 13.72,
+       "widthM": 1.38,
+       "centre": 0.15
+      },
+      {
+       "atM": 6.97,
+       "widthM": 1.25,
+       "centre": 0.68
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.04
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best indisch-1912-java-mansard-arches: built 1902, type 1910-1914; frontage 5.07 m, type 5.6-6.4 m)",
+   "best": {
+    "type": "indisch-1912-java-mansard-arches",
+    "score": 0,
+    "veto": [
+     "built 1902, type 1910-1914",
+     "frontage 5.07 m, type 5.6-6.4 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 15.44 m = 4 storeys of 3.86 m vs the type's 3.08 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.057 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 3 vs 4 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012166770",
+   "address": "Bankastraat 29B",
+   "builtYear": 1905,
+   "widthM": 4.86,
+   "eavesM": 15.23,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#5f4c40",
+    "wallRaw": "#5b5046",
+    "skyline": {
+     "eavesM": 14.55,
+     "eavesRow": 269,
+     "confidence": 0.71,
+     "crown": {
+      "widthM": 1.93,
+      "riseM": 6.72,
+      "topWidthM": 0.15,
+      "centre": 0.53
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.07,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 9.6,
+       "widthM": 0.82,
+       "centre": 0.55
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.06
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best indisch-1912-java-mansard-arches: built 1905, type 1910-1914; frontage 4.86 m, type 5.6-6.4 m)",
+   "best": {
+    "type": "indisch-1912-java-mansard-arches",
+    "score": 0,
+    "veto": [
+     "built 1905, type 1910-1914",
+     "frontage 4.86 m, type 5.6-6.4 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 15.23 m = 4 storeys of 3.81 m vs the type's 3.08 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.051 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 3 vs 4 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012156008",
+   "address": "Bankastraat 31C",
+   "builtYear": 1905,
+   "widthM": 5.2,
+   "eavesM": 15.34,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#57453b",
+    "wallRaw": "#5c4f46",
+    "skyline": {
+     "eavesM": 19.07,
+     "eavesRow": 88,
+     "confidence": 0.87,
+     "crown": {
+      "widthM": 1.35,
+      "riseM": 2.2,
+      "topWidthM": 0.2,
+      "centre": 0.14
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "blank",
+    "doorSide": "right",
+    "accentSide": "left",
+    "accentShare": 0.059,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 12.65,
+       "widthM": 0.82,
+       "centre": 0.21
+      },
+      {
+       "atM": 9.57,
+       "widthM": 1.05,
+       "centre": 0.52
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.03
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best indisch-1912-java-mansard-arches: built 1905, type 1910-1914)",
+   "best": {
+    "type": "indisch-1912-java-mansard-arches",
+    "score": 0,
+    "veto": [
+     "built 1905, type 1910-1914"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 15.34 m = 4 storeys of 3.83 m vs the type's 3.08 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.046 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012157049",
+   "address": "Bankastraat 33",
+   "builtYear": 1902,
+   "widthM": 5.13,
+   "eavesM": 15.33,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#544137",
+    "wallRaw": "#52473e",
+    "skyline": {
+     "eavesM": 18.82,
+     "eavesRow": 98,
+     "confidence": 0.78,
+     "crown": {
+      "widthM": 0.75,
+      "riseM": 2.45,
+      "topWidthM": 0.17,
+      "centre": 0.92
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.009,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 12.18,
+       "widthM": 1.07,
+       "centre": 0.8
+      },
+      {
+       "atM": 9.7,
+       "widthM": 1.02,
+       "centre": 0.54
+      },
+      {
+       "atM": 7.07,
+       "widthM": 1.23,
+       "centre": 0.3
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.03
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best indisch-1912-java-mansard-arches: built 1902, type 1910-1914; frontage 5.13 m, type 5.6-6.4 m)",
+   "best": {
+    "type": "indisch-1912-java-mansard-arches",
+    "score": 0,
+    "veto": [
+     "built 1902, type 1910-1914",
+     "frontage 5.13 m, type 5.6-6.4 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 15.33 m = 4 storeys of 3.83 m vs the type's 3.08 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.006 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012164378",
+   "address": "Bankastraat 35",
+   "builtYear": 1902,
+   "widthM": 5.11,
+   "eavesM": 15.42,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#574a43",
+    "wallRaw": "#574d43",
+    "skyline": {
+     "eavesM": 18.15,
+     "eavesRow": 125,
+     "confidence": 0.58,
+     "crown": {
+      "widthM": 1.63,
+      "riseM": 2.9,
+      "topWidthM": 0.17,
+      "centre": 0.17
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.042,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 12.65,
+       "widthM": 0.82,
+       "centre": 0.2
+      },
+      {
+       "atM": 9.57,
+       "widthM": 1.05,
+       "centre": 0.52
+      },
+      {
+       "atM": 6.57,
+       "widthM": 0.88,
+       "centre": 0.51
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.05
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best indisch-1912-java-mansard-arches: built 1902, type 1910-1914; frontage 5.11 m, type 5.6-6.4 m)",
+   "best": {
+    "type": "indisch-1912-java-mansard-arches",
+    "score": 0,
+    "veto": [
+     "built 1902, type 1910-1914",
+     "frontage 5.11 m, type 5.6-6.4 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 15.42 m = 4 storeys of 3.85 m vs the type's 3.08 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.032 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 3 vs 4 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012160057",
+   "address": "Bankastraat 37C",
+   "builtYear": 1902,
+   "widthM": 5.25,
+   "eavesM": 15.42,
+   "storeys3dbag": 0,
+   "bagBay": null,
+   "strip": {
+    "wall": "#5a453a",
+    "wallRaw": "#594d44",
+    "skyline": {
+     "eavesM": 18.88,
+     "eavesRow": 96,
+     "confidence": 0.93,
+     "crown": {
+      "widthM": 0.72,
+      "riseM": 1.6,
+      "topWidthM": 0.55,
+      "centre": 0.07
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 4,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.111,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "balcony slabs stacked at 9.88 m (1.6 m wide), 7.1 m (1.38 m wide)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 9.88,
+       "widthM": 1.6,
+       "centre": 0.3
+      },
+      {
+       "atM": 9.57,
+       "widthM": 0.85,
+       "centre": 0.53
+      },
+      {
+       "atM": 7.1,
+       "widthM": 1.38,
+       "centre": 0.29
+      },
+      {
+       "atM": 5.15,
+       "widthM": 0.88,
+       "centre": 0.23
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.05
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best indisch-1912-java-mansard-arches: built 1902, type 1910-1914)",
+   "best": {
+    "type": "indisch-1912-java-mansard-arches",
+    "score": 0,
+    "veto": [
+     "built 1902, type 1910-1914"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 15.42 m = 4 storeys of 3.85 m vs the type's 3.08 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": null,
+      "note": "3DBAG bouwlagen 0 vs 5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.089 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 4 vs 4 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012162736",
+   "address": "Bankastraat 39A",
+   "builtYear": 1902,
+   "widthM": 4.99,
+   "eavesM": 15.88,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#322a24",
+    "wallRaw": "#5e5247",
+    "skyline": {
+     "eavesM": 19.27,
+     "eavesRow": 80,
+     "confidence": 0.92,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": null,
+    "frontClass": "blank",
+    "doorSide": "right",
+    "accentSide": "left",
+    "accentShare": 0.102,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "balcony slabs stacked at 10.1 m (1.25 m wide), 7.25 m (1.27 m wide)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 12.88,
+       "widthM": 0.82,
+       "centre": 0.2
+      },
+      {
+       "atM": 10.1,
+       "widthM": 1.25,
+       "centre": 0.77
+      },
+      {
+       "atM": 9.8,
+       "widthM": 1.13,
+       "centre": 0.51
+      },
+      {
+       "atM": 7.25,
+       "widthM": 1.27,
+       "centre": 0.79
+      },
+      {
+       "atM": 6.57,
+       "widthM": 0.85,
+       "centre": 0.48
+      },
+      {
+       "atM": 5.38,
+       "widthM": 0.8,
+       "centre": 0.21
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.04
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best indisch-1912-java-mansard-arches: built 1902, type 1910-1914; frontage 4.99 m, type 5.6-6.4 m)",
+   "best": {
+    "type": "indisch-1912-java-mansard-arches",
+    "score": 0,
+    "veto": [
+     "built 1902, type 1910-1914",
+     "frontage 4.99 m, type 5.6-6.4 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 15.88 m = 4 storeys of 3.97 m vs the type's 3.08 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.084 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012160244",
+   "address": "Bankastraat 41A",
+   "builtYear": 1902,
+   "widthM": 5.1,
+   "eavesM": 15.52,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#2b2925",
+    "wallRaw": "#54483f",
+    "skyline": {
+     "eavesM": 19.15,
+     "eavesRow": 85,
+     "confidence": 0.67,
+     "crown": {
+      "widthM": 1.77,
+      "riseM": 2.13,
+      "topWidthM": 0.23,
+      "centre": 0.47
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "curtain",
+    "doorSide": "right",
+    "accentSide": "left",
+    "accentShare": 0.058,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 3 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 10.13,
+       "widthM": 2.67,
+       "centre": 0.61
+      },
+      {
+       "atM": 9.82,
+       "widthM": 1.25,
+       "centre": 0.54
+      },
+      {
+       "atM": 7.27,
+       "widthM": 1.45,
+       "centre": 0.24
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.07
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best indisch-1912-java-mansard-arches: built 1902, type 1910-1914; frontage 5.1 m, type 5.6-6.4 m)",
+   "best": {
+    "type": "indisch-1912-java-mansard-arches",
+    "score": 0,
+    "veto": [
+     "built 1902, type 1910-1914",
+     "frontage 5.1 m, type 5.6-6.4 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 15.52 m = 4 storeys of 3.88 m vs the type's 3.08 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.044 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012162476",
+   "address": "Bankastraat 43A",
+   "builtYear": 1902,
+   "widthM": 5.1,
+   "eavesM": 15.83,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#664e41",
+    "wallRaw": "#5d5145",
+    "skyline": {
+     "eavesM": 20.3,
+     "eavesRow": 39,
+     "confidence": 0.44,
+     "crown": {
+      "widthM": 0.65,
+      "riseM": 0.97,
+      "topWidthM": 0.55,
+      "centre": 0.16
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 2,
+    "frontClass": "columns",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.089,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 12.82,
+       "widthM": 1.02,
+       "centre": 0.2
+      },
+      {
+       "atM": 10.13,
+       "widthM": 1.18,
+       "centre": 0.77
+      },
+      {
+       "atM": 7.27,
+       "widthM": 0.9,
+       "centre": 0.82
+      },
+      {
+       "atM": 6.6,
+       "widthM": 0.97,
+       "centre": 0.49
+      },
+      {
+       "atM": 5.32,
+       "widthM": 0.9,
+       "centre": 0.19
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.06
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best indisch-1912-java-mansard-arches: built 1902, type 1910-1914; frontage 5.1 m, type 5.6-6.4 m)",
+   "best": {
+    "type": "indisch-1912-java-mansard-arches",
+    "score": 0,
+    "veto": [
+     "built 1902, type 1910-1914",
+     "frontage 5.1 m, type 5.6-6.4 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 15.83 m = 4 storeys of 3.96 m vs the type's 3.08 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.074 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 2 vs 4 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

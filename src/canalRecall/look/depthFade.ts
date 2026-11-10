@@ -25,6 +25,8 @@
 // look review. The player's "Distance haze" switch (preferences `distanceHaze`) turns it off at runtime without a
 // recompile: the fog range moves out of reach (`distanceHazeOn`).
 
+import { DEPTH_FADE_LIMIT_ONLY, DRAW_LIMIT_GENTLE_FAR_GLSL, drawLimitFlag, drawLimitFogFragment, landmarkHazeFlag } from '../engine/drawLimit';
+
 export const DEPTH_FADE_DEFAULT = true;
 /** The fade starts at this multiple of the eye-to-centre distance... */
 export const DEPTH_FADE_NEAR = 0.8;
@@ -122,9 +124,23 @@ export function depthFadeDetail(dist: number, range: { near: number; far: number
 
 const g = (x: number) => (Number.isInteger(x) ? `${x}.0` : `${x}`);
 
-/** fog_vertex measuring the eye distance of the eye-relative world. */
+/**
+ * fog_vertex measuring the eye distance of the eye-relative world. The eye-relative POSITION is the varying and the
+ * fragment takes its length (`vFogDepth` is a macro there): a per-vertex length interpolated across a big triangle
+ * over-estimates the distance inside it (a ground quad kilometres wide read ~2 km at its near edge, and the draw
+ * limit's opaque ramp painted that ground sky-blue at IJburg; lane P4 #330, regression of P2 3ce65889f).
+ */
+// The per-vertex `vFogDepth` is still written: a fragment compiled from a bundle built before this change declares it
+// (an undeclared vertex output would fail to link and the material would vanish), and such a fragment keeps the old
+// reading until its bundle is rebuilt.
 export const DEPTH_FADE_FOG_VERTEX = /* glsl */`#ifdef USE_FOG
+	vFogEye = mvPosition.xyz;
 	vFogDepth = length( mvPosition.xyz );
+#endif`;
+/** fog_pars_vertex: the eye-relative position varying (see DEPTH_FADE_FOG_VERTEX), and the old per-vertex depth. */
+export const DEPTH_FADE_FOG_PARS_VERTEX = /* glsl */`#ifdef USE_FOG
+	varying vec3 vFogEye;
+	varying float vFogDepth;
 #endif`;
 
 /** fog_fragment: desaturate, then part-way to the haze tone (`fogColor`), between fogNear and fogFar. */
@@ -142,7 +158,8 @@ export const DEPTH_FADE_FOG_FRAGMENT = depthFadeFogFragment(1);
  * fog_pars_fragment, so it declares them itself (DEPTH_FADE_DETAIL_PARS) and the chunk then skips them.
  */
 const FOG_PARS = `uniform vec3 fogColor;
-	varying float vFogDepth;
+	varying vec3 vFogEye;
+	#define vFogDepth length( vFogEye )
 	#ifdef FOG_EXP2
 		uniform float fogDensity;
 	#else
@@ -160,7 +177,11 @@ export const DEPTH_FADE_DETAIL_PARS = /* glsl */`
 #endif
 `;
 /** GLSL (inside `#ifdef USE_FOG`, after DEPTH_FADE_DETAIL_PARS): the detail weight at `dist` metres. */
-export const DEPTH_FADE_DETAIL_GLSL = (dist: string, strength = depthFadeStrength()): string => `${g(Math.min(1, strength))} * smoothstep(max(${g(DEPTH_FADE_DETAIL_FROM_M)}, fogNear), max(max(${g(DEPTH_FADE_DETAIL_FULL_M)}, fogNear + (fogFar - fogNear) * ${g(DEPTH_FADE_DETAIL_SPAN)}), max(${g(DEPTH_FADE_DETAIL_FROM_M)}, fogNear) + 1.0), ${dist})`;
+export const DEPTH_FADE_DETAIL_GLSL = (dist: string, strength = depthFadeStrength(), limit = drawLimitFlag()): string => {
+  // With the draw limit (engine/drawLimit.ts) fogFar is packed: the gentle fade's far edge is unpacked from it.
+  const far = limit ? DRAW_LIMIT_GENTLE_FAR_GLSL : 'fogFar';
+  return `${g(Math.min(1, strength))} * smoothstep(max(${g(DEPTH_FADE_DETAIL_FROM_M)}, fogNear), max(max(${g(DEPTH_FADE_DETAIL_FULL_M)}, fogNear + (${far} - fogNear) * ${g(DEPTH_FADE_DETAIL_SPAN)}), max(${g(DEPTH_FADE_DETAIL_FROM_M)}, fogNear) + 1.0), ${dist})`;
+};
 
 const installed = new WeakSet<object>();
 /** Swap three's fog chunks (once per three copy). Call before the first program compiles. */
@@ -168,12 +189,31 @@ export function installDepthFade(THREE: { ShaderChunk: Record<string, string> })
   if (installed.has(THREE.ShaderChunk)) return;
   installed.add(THREE.ShaderChunk);
   THREE.ShaderChunk.fog_vertex = DEPTH_FADE_FOG_VERTEX;
-  THREE.ShaderChunk.fog_fragment = depthFadeFogFragment();
+  THREE.ShaderChunk.fog_pars_vertex = DEPTH_FADE_FOG_PARS_VERTEX;
+  // `?drawLimit` (engine/drawLimit.ts, lane P2 #325): the same fade, then opaque haze at the draw limit.
+  if (drawLimitFlag()) { const strength = depthFadeStrength(); THREE.ShaderChunk.fog_fragment = drawLimitFogFragment(DEPTH_FADE_DESATURATE * strength, DEPTH_FADE_HAZE * strength); }
+  else THREE.ShaderChunk.fog_fragment = depthFadeFogFragment();
   THREE.ShaderChunk.fog_pars_fragment = DEPTH_FADE_FOG_PARS_FRAGMENT;
 }
 
 /** Material marker for a landmark's fog-free copy. */
 export const DEPTH_FADE_OPT_OUT = 'canalRecallDepthFadeOptOut';
+
+/** A landmark opt-out material: fog off, or (draw limit + landmarkHaze, lane P3 #328) the limit's ramp only. */
+export function isDepthFadeOptOut(material: { fog?: boolean; userData?: Record<string, unknown> } | null | undefined): boolean {
+  return !!material && (material.fog === false || !!material.userData?.[DEPTH_FADE_OPT_OUT]);
+}
+
+/**
+ * Make `material` a landmark opt-out in place: fog off, or with `landmarkHaze` (engine/drawLimit.ts) its fog kept and
+ * DEPTH_FADE_LIMIT_ONLY defined (a fresh defines object: a ShaderMaterial's may be shared with its source).
+ */
+export function optOutFog(material: { fog?: boolean; defines?: Record<string, unknown>; userData?: Record<string, unknown> }, limitHaze = landmarkHazeFlag()): void {
+  // A material that never took fog (an unlit ShaderMaterial has no fog uniforms) stays fog-free.
+  if (limitHaze && material.fog !== false) { material.defines = { ...(material.defines ?? {}), [DEPTH_FADE_LIMIT_ONLY]: '' }; }
+  else material.fog = false;
+  material.userData = { ...(material.userData ?? {}), [DEPTH_FADE_OPT_OUT]: true };
+}
 
 type FadeMaterial = {
   fog?: boolean; isShaderMaterial?: boolean; uniforms?: unknown; defines?: unknown; userData?: Record<string, unknown>;
@@ -187,16 +227,16 @@ const optOutCopies = new WeakMap<object, FadeMaterial>();
  * uniform still drives it. A material that already skips fog comes back as it is.
  */
 export function depthFadeOptOutMaterial(material: FadeMaterial): FadeMaterial {
-  if (!material || material.fog === false) return material;
+  if (!material || isDepthFadeOptOut(material)) return material;
   let copy = optOutCopies.get(material);
   if (!copy) {
     copy = material.clone();
-    copy.fog = false;
     if (material.isShaderMaterial) copy.uniforms = material.uniforms;
     if (material.defines) copy.defines = material.defines;
     if (material.onBeforeCompile) copy.onBeforeCompile = material.onBeforeCompile;
     if (material.customProgramCacheKey) copy.customProgramCacheKey = material.customProgramCacheKey;
-    copy.userData = { ...material.userData, [DEPTH_FADE_OPT_OUT]: true };
+    copy.userData = { ...material.userData };
+    optOutFog(copy as Parameters<typeof optOutFog>[0]);
     optOutCopies.set(material, copy);
   }
   return copy;
@@ -209,7 +249,7 @@ export function depthFadeOptOutMaterial(material: FadeMaterial): FadeMaterial {
  */
 export function depthFadeOptOut(root: { traverse(fn: (o: any) => void): void }, variantOf?: (material: any) => any): number {
   const twin = (m: FadeMaterial): FadeMaterial => {
-    if (m?.fog === false) return m;
+    if (isDepthFadeOptOut(m)) return m;
     const v = variantOf && m?.userData?.cityLook ? variantOf(m) : null;
     return v ?? depthFadeOptOutMaterial(m);
   };

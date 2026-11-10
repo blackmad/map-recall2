@@ -1300,7 +1300,9 @@ class GameRouteRuntime {
     const replay = () => { this._setupRace(); this.state = GameState.RACING; this._beginIntro(); };
     if (!from || this.travelMode === 'transit') { replay(); return; }
     this._reviewRoute = this._pickReviewRide(this.routePois, from);
-    const dest = this._reviewRoute ? this._reviewRoute.to : this._pickDestinationNear(from, this.routeFrom ? this.routeFrom.id : null);
+    // In a run (chainedRunRuntime.ts) the next stop is dealt 1–3 km on; null outside one.
+    const runStop = !this._reviewRoute && typeof this._pickRunNextStop === 'function' ? this._pickRunNextStop(from) : null;
+    const dest = this._reviewRoute ? this._reviewRoute.to : runStop || this._pickDestinationNear(from, this.routeFrom ? this.routeFrom.id : null);
     if (!dest) { replay(); return; }
     this._launchPoiRoute(from, dest);
   }
@@ -1345,6 +1347,16 @@ class GameRouteRuntime {
     history.replaceState(null, '', window.location.pathname);
   }
 
+  /** Remove `?ride=` from the address once the landing card's ride has started, without a navigation. */
+  _dropRideParam() {
+    try {
+      const url = new URL(window.location.href);
+      if (!url.searchParams.has('ride')) return;
+      url.searchParams.delete('ride');
+      window.history.replaceState(window.history.state, '', url.toString());
+    } catch {}
+  }
+
   _checkShareLink() {
     // `?tour=<id>` (the landing page's tour links) picks the tour and starts it.
     const tourParam = new URLSearchParams(window.location.search).get('tour');
@@ -1358,6 +1370,34 @@ class GameRouteRuntime {
       this._startConfiguredRoute();
       return;
     }
+    // The landing page's cards for a returning player (G2, src/canalRecall/landing/): `?ride=daily` rides
+    // today's pair (routeSelection.dailyRidePair, the same for everyone on an Amsterdam date) and
+    // `?ride=review` is a surprise ride with Plan review on, which passes the names due (pickReviewRoute).
+    const landingRide = new URLSearchParams(window.location.search).get('ride');
+    // A reload inside a run resumes the dealt leg before any landing card re-runs (#280: `?ride=daily`
+    // stayed in the URL and restarted Today's ride, counting its stop twice); the param is dropped
+    // once the ride has started, so a later reload is a plain reload.
+    const openRunLeg = landingRide && typeof this._runResumeLeg === 'function' && !window.location.hash.startsWith('#race=') ? this._runResumeLeg() : null;
+    if (openRunLeg) {
+      this._dropRideParam();
+      this._overlay.store.setSetupOpen(false);
+      this._launchPoiRoute(openRunLeg.from, openRunLeg.to, { explicitDestination: true });
+      return;
+    }
+    if ((landingRide === 'daily' || landingRide === 'review') && !window.location.hash.startsWith('#race=')) {
+      this._dropRideParam();
+      const session = window.__canalRecallSession = window.__canalRecallSession || {};
+      session.landingCardChosen = landingRide;
+      const Route = window.CanalRecallRoute;
+      // The daily pair is a street ride (buurt to buurt; the default travel mode is boat and the waterways cannot reach a buurt centroid, #279).
+      this._overlay.store.patchPrefs({ cityId: 'amsterdam', routePattern: 'surprise', ...(landingRide === 'review' ? { skipMastered: true } : {}), ...(landingRide === 'daily' ? { travelMode: 'car' } : {}) }, this._overlayZoom());
+      this._applyPrefsToRuntime(this._prefs());
+      const pair = landingRide === 'daily' && Route && Route.dailyRidePair
+        ? Route.dailyRidePair(Route.dailyRideDateKey(), this._curatedRoutePois()) : null;
+      if (pair) this._launchPoiRoute(pair.from, pair.to, { explicitDestination: true });
+      else this._startConfiguredRoute();
+      return;
+    }
     if (new URLSearchParams(window.location.search).get('ferry') === 'F3') {
       this._overlay.store.patchPrefs({ cityId: 'amsterdam', travelMode: 'car', viewMode: 'chase' }, this._overlayZoom());
       this._ferryPreviewRef = 'F3';
@@ -1369,6 +1409,9 @@ class GameRouteRuntime {
       return;
     }
     const hash = window.location.hash;
+    // A reload inside a run (chainedRunRuntime.ts, G1) resumes the dealt leg instead of opening route setup.
+    const runLeg = !hash.startsWith('#race=') && typeof this._runResumeLeg === 'function' ? this._runResumeLeg() : null;
+    if (runLeg) { this._overlay.store.setSetupOpen(false); this._launchPoiRoute(runLeg.from, runLeg.to, { explicitDestination: true }); return; }
     if (!hash.startsWith('#race=')) return;
     const parts = hash.slice(6).split(',').map(Number);
     if (parts.length !== 6 || parts.some(n => !isFinite(n))) return;
@@ -2079,6 +2122,19 @@ class GameRouteRuntime {
       this.trackMode = TRACK_MODE_POINT_TO_POINT;
       this.renderer.preRenderTrack(this.track);
 
+      // Generate shareable URL with the route, before the race is set up: written after the
+      // up-to-4 s map-settle hold, an arrival inside it found no link and no Share keycap (#282).
+      if (startLL && finishLL) {
+        const raceHash = `#race=${keyCenter.lat.toFixed(4)},${keyCenter.lng.toFixed(4)},${startLL.lat.toFixed(4)},${startLL.lng.toFixed(4)},${finishLL.lat.toFixed(4)},${finishLL.lng.toFixed(4)}`;
+        // Only the copy/share action gets the route. Writing it into the
+        // address bar made every reload, restored tab and autocompleted URL
+        // replay the last route and skip the destination picker (user,
+        // 2026-10-09: "the same destination EVERY time I start the game").
+        this._shareUrl = `${window.location.origin}${window.location.pathname}${raceHash}`;
+      } else {
+        this._shareUrl = null;
+      }
+
       // Step 5: Setup race
       this.loadingMessage = routeText('ride.load.settling');
       this.loadingProgress = 0.92;
@@ -2090,7 +2146,8 @@ class GameRouteRuntime {
       // 4 s (was 2.8): under ?engine=own the facades check holds until the look's atlas is bound (#129: never race
       // without facades); in the chase-and-submit probe flow the 2.8 s cut that short (atlas unbound at racing).
       if (!world) {
-        await this._waitForMapSettle(4000);
+        // Lane S1 (#313): one 10 s cap over this hold and the intro's, the city in the first frame (startHold.ts).
+        await (this._startHoldWait ? this._startHoldWait('ride') : this._waitForMapSettle(4000));
         if (stale()) return;
       }
 
@@ -2101,18 +2158,6 @@ class GameRouteRuntime {
       this._raceKey = (startLL && finishLL)
         ? `${keyCenter.lat.toFixed(3)},${keyCenter.lng.toFixed(3)}_${startLL.lat.toFixed(3)},${startLL.lng.toFixed(3)}_${finishLL.lat.toFixed(3)},${finishLL.lng.toFixed(3)}`
         : null;
-
-      // Generate shareable URL
-      if (startLL && finishLL) {
-        const raceHash = `#race=${keyCenter.lat.toFixed(4)},${keyCenter.lng.toFixed(4)},${startLL.lat.toFixed(4)},${startLL.lng.toFixed(4)},${finishLL.lat.toFixed(4)},${finishLL.lng.toFixed(4)}`;
-        // Only the copy/share action gets the route. Writing it into the
-        // address bar made every reload, restored tab and autocompleted URL
-        // replay the last route and skip the destination picker (user,
-        // 2026-10-09: "the same destination EVERY time I start the game").
-        this._shareUrl = `${window.location.origin}${window.location.pathname}${raceHash}`;
-      } else {
-        this._shareUrl = null;
-      }
 
       // Riding on there is no loading screen to hide the overview tiles
       // behind; the flight starts at once and they stream in under it.
@@ -2125,7 +2170,7 @@ class GameRouteRuntime {
       // still up; see _prepareIntro.
       if (!world && this._prepareIntro()) {
         this.loadingMessage = routeText('ride.load.findingWay');
-        await this._waitForMapSettle(1800);
+        await (this._startHoldWait ? this._startHoldWait('intro') : this._waitForMapSettle(1800));
         if (stale()) return;
       }
 

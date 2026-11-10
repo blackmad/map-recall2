@@ -1,0 +1,154 @@
+{
+ "schemaVersion": 1,
+ "kind": "house-type",
+ "id": "jordaan-1900-gable-rebuild",
+ "district": "jordaan",
+ "description": "Jordaan gable houses that BAG dates after 1870 (rebuilds, restorations and infill behind a restored gable): the same 4-6.6 m red-brown brick front, ground storey and two or three upper storeys, drawn with the neck-gable body; the strip skyline must read a bell or point gable (rise 2.0-5.5 m, top 0.2-0.9 m) or the type is vetoed. Pick by cluster, not by one face: 32 held pands of 21 faces in the first batch",
+ "fit": {
+  "widthM": [
+   3.6,
+   6.6
+  ],
+  "storeys": [
+   3,
+   4
+  ]
+ },
+ "match": {
+  "years": [
+   1871,
+   2025
+  ],
+  "yearSlack": 0,
+  "eavesM": [
+   7.5,
+   9.3
+  ],
+  "roof": "pitched",
+  "stucco": false,
+  "crownMatch": true,
+  "crownStrict": true,
+  "materialVeto": true,
+  "baysByWidth": [
+   {
+    "maxWidthM": 4.6,
+    "bays": 2
+   },
+   {
+    "maxWidthM": 99,
+    "bays": 3
+   }
+  ],
+  "crowns": {
+   "bell": {
+    "riseM": [
+     2.0,
+     5.5
+    ],
+    "topWidthM": [
+     0.2,
+     0.9
+    ]
+   }
+  },
+  "note": "Held-pand cluster, Bloemgrachtbuurt batch 2026-10-29 (scripts/block-face/faces/*/auto-place.json, skyline read under clean sky): narrow gable pands built 1871-1910 (16 pands, 11 faces: eaves median 10.9 m, width 4.7 m, crown rise 3.2 m, top 0.5 m) and after 1910 (16 pands, 10 faces: eaves 11.3 m, width 5.2 m, rise 2.8 m, top 0.4 m). They share the neck-gable's body (3.6-6.6 m, 3-4 storeys); only the BAG year kept them out. Bell/point crown only: a neck gable (top 0.9-3.0 m) is not in the cluster. Likeness of the shared body is NOT verified here; the Opus strip review judges it. match.eavesM [7.5, 9.3] only sets the storey pitch (mid / 3 storeys = 2.8 m) so that 3 storeys at 7.6-9.2 m and 4 at 10-11.5 m (pitch 2.6-2.9 m) both score as this type; the cluster eaves run 7.6-13.1 m",
+  "mirrorForDoor": "left"
+ },
+ "body": {
+  "storeys": 3,
+  "bays": 3,
+  "storeyHeights": [
+   3.1,
+   2.65,
+   2.65
+  ],
+  "windows": "small-over-one",
+  "windowSurround": "sill",
+  "windowHeights": [
+   0.55,
+   0.67,
+   0.65
+  ],
+  "headLines": [
+   0.8,
+   0.85,
+   0.82
+  ],
+  "windowShare": 0.5,
+  "cornice": "none"
+ },
+ "crowns": {
+  "neck": {
+   "gable": "neck",
+   "crownRise": 1.35,
+   "atticWindows": 1,
+   "hoist": true,
+   "note": "Bloemgracht 80-128 (168157): a neck gable 8.8-12.3 m with one attic light and the hoist beam over it"
+  },
+  "bell": {
+   "gable": "bell",
+   "crownRise": 1.3,
+   "atticWindows": 1,
+   "note": "Bloemgracht 16-32 (173345): a bell gable 8.6-11.3 m, one attic light"
+  }
+ },
+ "grounds": {
+  "door-left": {
+   "doorBay": 0,
+   "basement": "none",
+   "note": "house door on the left axis; a pand whose door reads on the right is mirrored (mirrorForDoor), so a two-axis front keeps a valid door bay"
+  }
+ },
+ "palettes": {
+  "dark-brick-jordaan": {
+   "brick": "#6b4a3e",
+   "frame": "white-painted",
+   "door": "#26302a",
+   "stone": "#ebe8df",
+   "cornice": "#ebe8df",
+   "stoneMaterial": "painted"
+  }
+ },
+ "roof": {
+  "material": "red-tile",
+  "squareSaddle": true
+ },
+ "rhythm": {
+  "bays": "2 axes under 4.6 m, else 3",
+  "identicalBays": "every upper storey alike",
+  "windowsPerStorey": "ground: door + window(s) | upper: 2 or 3",
+  "symmetry": "symmetric above the ground",
+  "groundFloor": "a house door and windows, or a small shop",
+  "signage": "per shop",
+  "roofline": "neck or bell gable with one attic light and a hoist beam",
+  "photoRows": [
+   1,
+   3,
+   3
+  ],
+  "photoGroundRows": 1,
+  "photoGables": 1,
+  "schemaLimits": [
+   "the sandstone scrolls (klauwstukken) beside the neck are not drawn",
+   "the gable cap ornaments are not drawn"
+  ]
+ },
+ "evidence": [
+  {
+   "face": "bloemgracht-80-128",
+   "pands": [
+    "168157",
+    "571976"
+   ],
+   "citation": "strip.jpg 2024-12 at 0.42x with a metre grid: ground to 3.4 m; window rows 3.9-5.7 and 6.5-8.2 m; gable foot 8.8 m, neck top 12.3 m"
+  },
+  {
+   "face": "bloemgracht-16-32",
+   "pands": [
+    "173345",
+    "172780"
+   ],
+   "citation": "strip.jpg 2024-12: bell gables 8.6-11.3 m over the same rows"
+  }
+ ]
+}

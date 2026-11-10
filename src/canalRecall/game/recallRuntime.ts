@@ -62,6 +62,7 @@ import { bridgeNameAskable } from './notableBridges';
 import { bridgeWayNetwork, carriedStreetName, isBridgeWayName, routeQuestionRoadName } from './bridgeStreetName';
 import { nearestRouteIndex } from './routeSelection';
 import { acceptedBridgeAnswers, bridgeDisplayNamesOf, displayBridgeName } from '../bridgeDisplayNames';
+import { clearLandmarkReviews } from './landmarkReview';
 
 /** Metres: how close another way must come to a deck end to continue it. */
 const BRIDGE_END_TOUCH_METRES = 3;
@@ -88,6 +89,7 @@ const SUBJECT_I18N = {
   bridge: { label: 'prompt.label.bridge', placeholder: 'prompt.placeholder.bridge' },
   line: { label: 'prompt.label.line', placeholder: 'prompt.placeholder.line' },
   stop: { label: 'prompt.label.stop', placeholder: 'prompt.placeholder.stop' },
+  landmark: { label: 'prompt.label.landmark', placeholder: 'prompt.placeholder.landmark' },
 } as const;
 
 export class GameRecallRuntime {
@@ -175,6 +177,7 @@ export class GameRecallRuntime {
           clearHomeGeocodeCache(localStorage);
           clearPlaceStreak(localStorage);
           clearPassport(localStorage);
+          clearLandmarkReviews(localStorage);
           try { localStorage.removeItem(ROTATION_STORAGE_KEY); } catch { /* private mode */ }
           this._factRotation = { history: {}, shown: 0, recentKinds: [] };
           this._explorationSnapshot = emptyExploration();
@@ -1050,9 +1053,10 @@ export class GameRecallRuntime {
       recallFeature,
       recallStore: this.recall,
       revealName: (revealed: string) => this._revealName(revealed),
+      say: t,
     });
     void result;
-    this.quizFeedback = `That was ${this._shownName(name)}`;
+    this.quizFeedback = t('answer.silentPass', { name: this._shownName(name) });
     this._silentPass = null;
     this.quizCurrentName = name;
     this.quizCandidateName = '';
@@ -1295,6 +1299,8 @@ export class GameRecallRuntime {
    */
   _submitCanalAnswer(selectedAnswer: string | null, noIdea = false): void {
     if (!this.quizPromptName || !this.player || this._silentPass) return;
+    // "Which building is this?" files a stamp, not a street (landmarkQuestionRuntime.ts).
+    if (this.quizPromptKind === 'landmark') { this._submitLandmarkAnswer(selectedAnswer, noIdea); return; }
     this._silentPass = null;
     const correctName = this.quizPromptName;
     const answer = selectedAnswer == null ? this._promptInput.value : selectedAnswer;
@@ -1338,6 +1344,7 @@ export class GameRecallRuntime {
       // A bridge is asked under its official spelling and typed either way.
       displayName: this._shownName(correctName),
       acceptedAnswers: acceptedBridgeAnswers(bridgeDisplayNamesOf(this.bridges), correctName),
+      say: t,
       answer,
       noIdea,
       score: {

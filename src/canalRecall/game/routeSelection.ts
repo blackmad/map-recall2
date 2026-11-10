@@ -7,34 +7,37 @@
 // setup screen is built out of, so they live here rather than in the form.
 
 import type { WorldPoint } from './worldTypes';
+import { notabilityFameFactor } from './poiNotability';
 import {
-  notabilityFameFactor,
-  notabilityScore,
-  notabilityWeight,
-  type PoiNotability,
-} from './poiNotability';
+  HOME_MIN_TRIP_KM,
+  ROUTE_POI_MAX_PAIR_KM,
+  kmBetween,
+  pickDestinationNear,
+  pickWeighted,
+  randomIndex,
+  randomUnit,
+  type ChooseIndex,
+  type ChooseUnit,
+  type RoutePoi,
+} from './surprisePick';
+export {
+  HOME_MIN_TRIP_KM,
+  ROUTE_POI_MAX_PAIR_KM,
+  SURPRISE_MIN_PAIR_KM,
+  kmBetween,
+  pickDestinationNear,
+  randomIndex,
+  randomUnit,
+  type ChooseIndex,
+  type ChooseUnit,
+  type RoutePoi,
+} from './surprisePick';
 export { mergeManualPoiFeatures, manualPoiForCuratedId } from './manualPoiCatalog';
 
 import { HOME_RECENT_WINDOW } from './recentDestinations';
 export * from './recentDestinations';
 
-export interface RoutePoi extends PoiNotability {
-  id: string;
-  name: string;
-  lat: number;
-  lng: number;
-  landmarkId?: string;
-}
-
 export { isTeachableRouteDestination, type RouteDestinationFeature } from './routeDestinationContent';
-
-/**
- * Both ends of a route must sit inside the single OSM window fetched around
- * their midpoint, so candidates are capped by distance from each other —
- * otherwise a Weesp fort could be paired with Westerpark and half the route
- * would fall outside the loaded network.
- */
-export const ROUTE_POI_MAX_PAIR_KM = 6;
 
 /** How many nearby stand-ins to snap-test before giving up on routing. */
 export const RETARGET_ATTEMPTS = 25;
@@ -48,8 +51,6 @@ export const HOME_RADIUS_KNOWN_TO_EXPAND = 3;
 export const HOME_RADIUS_MASTERED_MIN = 0.45;
 /** Soft overshoot so the frontier is not a hard wall. */
 export const HOME_RADIUS_OVERSHOOT = 1.15;
-/** Destinations closer than this feel like a stub trip. */
-export const HOME_MIN_TRIP_KM = 0.2;
 /**
  * A landmark this close to a recent destination counts as that destination.
  * Magna Plaza, Multatuli, De Dolphijn and Huis Bartolotti sit within 200 m
@@ -59,86 +60,11 @@ export const HOME_MIN_TRIP_KM = 0.2;
 export const RECENT_NEAR_KM = 0.35;
 /** The next home ride starts where the last one ended and must leave it. */
 export const HOME_NEXT_MIN_KM = 0.5;
-/**
- * A surprise destination closer than this is re-drawn: Micropia and Artis are 45 m apart, both snap to Plantage
- * Kerklaan, and the ride ended "Start and finish are too close" (MIN_START_FINISH_DIST, 67 m) instead of starting.
- */
-export const SURPRISE_MIN_PAIR_KM = HOME_MIN_TRIP_KM;
-
 export interface MasterySample {
   lat: number;
   lng: number;
   /** 0..1 familiarity at that place. */
   mastery: number;
-}
-
-export function kmBetween(
-  a: { lat: number; lng: number },
-  b: { lat: number; lng: number },
-): number {
-  const latKm = (a.lat - b.lat) * 111.32;
-  const lngKm = (a.lng - b.lng) * 111.32 * Math.cos(a.lat * Math.PI / 180);
-  return Math.hypot(latKm, lngKm);
-}
-
-/** Injected so route generation is deterministic under test. */
-export type ChooseIndex = (count: number) => number;
-
-export const randomIndex: ChooseIndex = count => Math.floor(Math.random() * count);
-
-/** Injected so weighted picks stay deterministic under test. */
-export type ChooseUnit = () => number;
-
-export const randomUnit: ChooseUnit = () => Math.random();
-
-function pickWeighted<T>(
-  entries: readonly { item: T; weight: number }[],
-  chooseUnit: ChooseUnit,
-): T | null {
-  const positive = entries.filter(entry => entry.weight > 0);
-  if (positive.length === 0) return null;
-  const total = positive.reduce((sum, entry) => sum + entry.weight, 0);
-  let tick = chooseUnit() * total;
-  for (const entry of positive) {
-    tick -= entry.weight;
-    if (tick <= 0) return entry.item;
-  }
-  return positive[positive.length - 1]?.item ?? null;
-}
-
-/**
- * A destination for a trip starting at `from`.
- *
- * Prefers somewhere within pairing range, but falls back to the whole pool
- * rather than returning nothing: a start with no near neighbour should still
- * produce a trip, and the loader's own window check is what ultimately rejects
- * an impossible pair.
- *
- * Weighted by notability so the more recognisable landmarks come up more
- * often, with an exponential temperature that keeps some variety in the mix.
- * A bare POI with no enrichment still gets a stable baseline weight, so this
- * degrades to a uniform pick.
- */
-export function pickDestinationNear(
-  pois: readonly RoutePoi[],
-  from: { id: string; lat: number; lng: number },
-  chooseUnit: ChooseUnit = randomUnit,
-  alsoExcludeId: string | null = null,
-): RoutePoi | null {
-  const candidates = pois.filter(poi => poi.id !== from.id && poi.id !== alsoExcludeId);
-  if (candidates.length === 0) return null;
-  const inRange = candidates.filter(poi => kmBetween(poi, from) <= ROUTE_POI_MAX_PAIR_KM);
-  const pool = inRange.length > 0 ? inRange : candidates;
-  const scored = pool.map(poi => ({
-    item: poi,
-    weight: notabilityWeight(notabilityScore(poi)),
-  }));
-  const pick = pickWeighted(scored, chooseUnit);
-  // A neighbour is drawn again from the places far enough away. A pick that is far enough is returned as it was,
-  // after the same draws, so every ride that started before starts the same.
-  if (!pick || kmBetween(pick, from) >= SURPRISE_MIN_PAIR_KM) return pick;
-  const apart = scored.filter(entry => kmBetween(entry.item, from) >= SURPRISE_MIN_PAIR_KM);
-  return apart.length ? pickWeighted(apart, chooseUnit) ?? pick : pick;
 }
 
 /**
@@ -165,7 +91,8 @@ export function homeLearningRadiusKm(
   return radius;
 }
 
-function localFamiliarity(
+/** Mean mastery of the practised names within `bandKm` of `point` (0 = untouched). */
+export function localFamiliarity(
   point: { lat: number; lng: number },
   samples: readonly MasterySample[],
   bandKm = 0.6,
@@ -844,6 +771,19 @@ export {
   pointInGeocodeViewbox,
   resolveGpsOrigin,
 } from './gpsOrigin.ts';
+
+// Today's ride (dailyRide.ts): the surprise picker's draws seeded by the date,
+// so the ride can launch the pair the landing page names (`?ride=daily`).
+// From DAILY_POOL_CUTOVER `dailyRidePair` draws from the buurt pool (#279).
+export {
+  DAILY_POOL_CUTOVER,
+  DAILY_RIDE_TIME_ZONE,
+  dailyPoolPair,
+  dailyRideDateKey,
+  dailyRideLabel,
+  dailyRidePair,
+  dailyRideRouteId,
+} from './dailyRide';
 
 // ---------------------------------------------------------------------------
 // Which way the vehicle faces at the start.

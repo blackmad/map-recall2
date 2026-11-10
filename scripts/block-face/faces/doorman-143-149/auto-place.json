@@ -1,0 +1,296 @@
+{
+ "face": "doorman-143-149",
+ "street": "Karel Doormanstraat",
+ "library": "landlust",
+ "stripDate": "2024-11-21",
+ "seconds": 4.74,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012114345",
+   "address": "Karel Doormanstraat 143",
+   "builtYear": 1925,
+   "widthM": 6.18,
+   "eavesM": 12.78,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#745f48",
+    "wallRaw": "#584936",
+    "skyline": {
+     "eavesM": 13.53,
+     "eavesRow": 188,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": "left",
+    "accentShare": 0.039,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.08
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.111 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.19)",
+   "likeness": {
+    "pandId": "0363100012114345",
+    "ncc": 0.111,
+    "nccRaw": 0.111,
+    "shiftM": [
+     -0.05,
+     0.4
+    ],
+    "usable": 0.85,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.19"
+    ],
+    "wall": {
+     "photo": "#76614b",
+     "model": "#8e7458",
+     "dL": 0.073
+    },
+    "glazing": {
+     "photo": 0.31,
+     "model": 0.26
+    },
+    "columns": {
+     "photo": 2,
+     "model": 2
+    },
+    "iou": 0.356,
+    "footOffsetM": 1.7
+   },
+   "challengers": {
+    "landlust-1924-bestevaer-half-block": 0.111,
+    "landlust-1924-bestevaer-half-block~m": 0.215,
+    "landlust-1935-slot-block-four": -0.002,
+    "landlust-1935-slot-block-four~m": -0.013
+   }
+  },
+  {
+   "pandId": "0363100012136562",
+   "address": "Karel Doormanstraat 145",
+   "builtYear": 1925,
+   "widthM": 6.45,
+   "eavesM": 12.72,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6c523b",
+    "wallRaw": "#5c4d39",
+    "skyline": {
+     "eavesM": 13.43,
+     "eavesRow": 192,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": "right",
+    "accentShare": 0.099,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.11
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Karel Doormanstraat 143-149: a one-off front the stair-block type does not describe",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012157577",
+   "address": "Karel Doormanstraat 147",
+   "builtYear": 1912,
+   "widthM": 6.15,
+   "eavesM": 13.67,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6c4e3a",
+    "wallRaw": "#564b3d",
+    "skyline": {
+     "eavesM": 13.45,
+     "eavesRow": 191,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": "right",
+    "accentShare": 0.039,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 5.88,
+       "widthM": 1.48,
+       "centre": 0.46
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.13
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best landlust-1924-bestevaer-half-block: built 1912, type 1923-1926)",
+   "best": {
+    "type": "landlust-1924-bestevaer-half-block",
+    "score": 0,
+    "veto": [
+     "built 1912, type 1923-1926"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "strip cornice 13.45 m vs the type's 13.2 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 4 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.028 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 2 vs 2 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012165745",
+   "address": "Karel Doormanstraat 149",
+   "builtYear": 1912,
+   "widthM": 6.15,
+   "eavesM": 10.78,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#2a2316",
+    "wallRaw": "#514333",
+    "skyline": {
+     "eavesM": 11.82,
+     "eavesRow": 256,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.48,
+      "riseM": 1.23,
+      "topWidthM": 0.97,
+      "centre": 0.52
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.008,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.97 m at 0.52 (light 0.28): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.97,
+       "centre": 0.52,
+       "light": 0.28
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.12
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best landlust-1924-bestevaer-half-block: built 1912, type 1923-1926; 3DBAG eaves 10.78 m = 3 storeys of the type's 3.17 m, type 4; strip shows balconies (dark open axis 0.97 m at 0.52 (light 0.28): no brick spandrel between the storeys))",
+   "best": {
+    "type": "landlust-1924-bestevaer-half-block",
+    "score": 0,
+    "veto": [
+     "built 1912, type 1923-1926",
+     "3DBAG eaves 10.78 m = 3 storeys of the type's 3.17 m, type 4",
+     "strip shows balconies (dark open axis 0.97 m at 0.52 (light 0.28): no brick spandrel between the storeys)"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 11.82 m vs the type's 13.2 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.006 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

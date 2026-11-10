@@ -75,6 +75,11 @@ export interface GameCoreHost {
   /** Non-empty while a recall question is open. The HUD must not cover it, and
    *  nothing may reveal a name while it is up. */
   quizPromptName: string;
+  /** While a landmark question is open: all four choice names, withheld from
+   *  every label surface with the asked name (G3, landmarkQuestionRuntime.ts). */
+  quizWithheldNames?: string[];
+  /** The approached landmark candidate's choices, withheld before its question opens (#281). */
+  landmarkApproachWithheld?: string[];
   /** Subject of the open prompt (`line` / `stop` / `street` / …). Transit uses
    *  this so stop/street questions do not blank the sticky line plaque. */
   quizPromptSubject: string;
@@ -101,11 +106,13 @@ export interface GameCoreHost {
   /** Shared gate for quiz / feedback / cards / POI labels (overview stays up). */
   _teachingGate(): import('./teachingSurface.ts').TeachingGateInput;
   /** Tap targets for the arrival card's actions, on touch. */
-  _finishButtonBounds?: Array<{ x: number; y: number; w: number; h: number; id: 'again' | 'route' | 'copy' }>;
+  _finishButtonBounds?: Array<{ x: number; y: number; w: number; h: number; id: 'again' | 'route' | 'copy' | 'end' }>;
   /** Where the arrival card was last drawn, in canvas units; e2e checks it fits. */
   _finishCardBounds?: { x: number; y: number; w: number; h: number };
   /** Tap targets for the pause card (resume / new route / copy). */
   _pauseButtonBounds?: Array<{ x: number; y: number; w: number; h: number; id: 'resume' | 'route' | 'copy' }>;
+  /** The last drawn pause card's layout (#319), read by the pause-card spec. */
+  _pauseCardLayout?: import('./pauseCard').PauseCardLayout;
   _runPauseAction?(id: 'resume' | 'route' | 'copy'): void;
   _openRouteSetup?(): void;
 
@@ -170,8 +177,20 @@ export interface LandmarkHost extends GameCoreHost {
   /** What the player has already been told, carried between sessions. */
   _factRotation: RotationState;
 
-  _neighborhoodNotice: { name: string; kind?: string; imageArea?: string } | null;
+  _neighborhoodNotice: { name: string; kind?: string; imageArea?: string; stamped?: boolean } | null;
   _neighborhoodNoticeTimer: number;
+  /** Free Ride's collection (freeRideRuntime.ts): the postcard's "3 of 9 places", '' when there is no list. */
+  _freeRideChecklistCaption?(hood: string): string;
+  /** Checklist places near a point, anchoring the plaque's buurt (placeBuurt.ts, #284). */
+  _freeRidePlaceAnchors?(x: number, y: number): import('./placeBuurt').PlaceAnchor[];
+  /** True while Free Ride's collection runs: the postcard then obeys the one-card rule. */
+  _freeRideCollectionOn?(): boolean;
+  /** Consumes a pending passport-stamp postcard for this neighbourhood. */
+  _freeRideTakeStampPostcard?(hood: string): boolean;
+  /** Whether this neighbourhood's stamped postcard waits: it shows on a phone too (#286). */
+  _freeRideStampWaiting?(hood: string | null | undefined): boolean;
+  /** The touch hint strip is drawn this frame (presentationRuntime), so phone cards stack above it (#286). */
+  _touchHintShowing?(): boolean;
   _neighborhoodCandidate: string;
   _neighborhoodCandidateTimer: number;
   _previousNeighborhood: string;
@@ -345,13 +364,15 @@ export interface RecallHost extends GameCoreHost {
   _routeError?: HTMLElement;
   _skipMastered: HTMLInputElement | null;
   _overlay?: import('../overlay/mount.ts').CanalOverlayHandle;
+  /** "Which building is this?" answers land here (landmarkQuestionRuntime.ts). */
+  _submitLandmarkAnswer(selectedAnswer: string | null, noIdea?: boolean): void;
 
   /** Owned by other subsystems. */
   _savePreferences(): void;
   _setRouteError(message: string): void;
   _showStreetKnowledge(name: string, type?: 'street' | 'water' | 'bridge' | 'line', replaceOpenCard?: boolean): void;
   _clearLandmarkNotice(): void;
-  _neighborhoodNotice: { name: string; kind?: string; imageArea?: string } | null;
+  _neighborhoodNotice: { name: string; kind?: string; imageArea?: string; stamped?: boolean } | null;
   _neighborhoodNoticeTimer: number;
   _explorationSnapshot?: Exploration | null;
   _reclaimKeyboardFocus?(): void;
@@ -359,8 +380,18 @@ export interface RecallHost extends GameCoreHost {
 
 /** Frame composition, the menu, the pause overlay and the finish card. */
 export interface PresentationHost extends GameCoreHost {
+  /** Chained stops (chainedRunRuntime.ts): per-frame clock, arrival record, run line and card. */
+  _runTick(): void;
+  _recordRunStop(): void;
+  _runArrivalLine(): string | null;
+  _runArrivalPoints(): number | null;
+  _runCard?: import('./chainedRun').OpenRun | null;
+  _renderRunCard(run: import('./chainedRun').OpenRun): void;
+  _runFinishTap(id: 'again' | 'route' | 'copy' | 'end'): void;
   /** Free Ride (freeRideRuntime.ts): the plaque line, markers, bar and taps. */
   _freeRideTally(): string;
+  /** The current neighbourhood's unopened checklist places, for the radar. */
+  _freeRideRadarPlaces(): WorldPoint[];
   _renderFreeRideMarkers(): void;
   _placeFreeRideBar(): void;
   _freeRideClick(x: number, y: number, clientX: number, clientY: number): boolean;
@@ -406,6 +437,15 @@ export interface PresentationHost extends GameCoreHost {
 
   loadingMessage: string;
   loadingProgress: number;
+  /** game-route.js: hold the loading screen until the world view settles or maxMs passes; outcome on `_lastMapSettle`. */
+  _waitForMapSettle?(maxMs?: number): Promise<void>;
+  _lastMapSettle?: { ms: number; timedOut: boolean; engine?: string; pending?: string[] } | null;
+  /** Lane S1 (#313, presentationRuntime.ts _startHoldWait): the start holds so far, and the reveal's dissolve. */
+  _startHold?: { spentMs: number; capped: boolean; holds: Array<{ kind: 'ride' | 'intro'; ms: number; capMs: number; timedOut: boolean; pending: string[] }> } | null;
+  _revealDissolve?: { at: number; capped: boolean } | null;
+  /** True while a start hold waits: the loading frame ticks the held world (presentationRuntime._tickHeldWorld). */
+  _startHoldTicking?: boolean;
+  _startHoldTickAt?: number | null;
   showMiniMap: boolean;
   gameyFeatures: boolean;
   viewMode: ViewMode;
@@ -425,6 +465,8 @@ export interface PresentationHost extends GameCoreHost {
   routeTo: { id: string; name: string; reviewStop?: string; landmarkId?: string; tourStop?: boolean; tourRevealName?: string };
   routePath: WorldPoint[] | null;
   _liveRoutePath: WorldPoint[] | null;
+  /** routeRemaining.ts suffix sums for the destination readout, per routePath. */
+  _routeRemainingCache?: import('./routeRemaining.ts').RemainingCache | null;
   /** Length of the route planned at the start — the efficiency reference,
    *  because the live line is consumed as the player advances. */
   _plannedRouteLengthPx: number;
@@ -487,8 +529,12 @@ export interface PresentationHost extends GameCoreHost {
   _assistUsage: Partial<Record<RibbonAid, boolean>>;
 
   _raceKey: string | null;
+  /** Set by `_saveBestTime`: this ride's time was written as the route's best. */
+  _bestJustSet?: boolean;
   _shareUrl: string | null;
   _copiedTimer: number;
+  /** The ridden path, sampled for the share card (shareCard.ts). */
+  _shareTrail?: import('../shareCard').ShareTrail | null;
   _menuQuote: { text: string; character: string } | null;
   _debugMode: boolean;
   /** Hit targets for the debug overlay's tool links, recomputed as it draws. */
@@ -506,6 +552,9 @@ export interface PresentationHost extends GameCoreHost {
   _recenterBtnBounds: LinkBounds | null;
   _landmarkCardBounds: LinkBounds | null;
   _landmarkCloseBounds?: LinkBounds | null;
+  /** The drive-by card's "Noticed" pill (G3); a tap counts the landmark toward its buurt's passport. */
+  _landmarkActionBounds?: LinkBounds | null;
+  _noticeLandmark(): boolean;
   _clearLandmarkNotice(): void;
   _runFinishAction(id: 'again' | 'route' | 'copy'): void;
   _expandLandmarkNotice(): void;

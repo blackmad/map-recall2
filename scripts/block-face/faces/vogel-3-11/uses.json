@@ -1,0 +1,73 @@
+{
+ "street": "Vierde Vogelstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched n/a (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012147662",
+   "addresses": [
+    "Vierde Vogelstraat 3"
+   ],
+   "groundUnits": [
+    {
+     "address": "Vierde Vogelstraat 3",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010001012354"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012137379",
+   "addresses": [
+    "Vierde Vogelstraat 5"
+   ],
+   "groundUnits": [
+    {
+     "address": "Vierde Vogelstraat 5",
+     "use": "woonfunctie",
+     "areaM2": 35,
+     "bagId": "0363010000556805"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012071224",
+   "addresses": [
+    "Vierde Vogelstraat 7"
+   ],
+   "groundUnits": [
+    {
+     "address": "Vierde Vogelstraat 7",
+     "use": "woonfunctie",
+     "areaM2": 37,
+     "bagId": "0363010000556807"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012120077",
+   "addresses": [
+    "Vierde Vogelstraat 11"
+   ],
+   "groundUnits": [
+    {
+     "address": "Vierde Vogelstraat 11",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010001012356"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  }
+ ]
+}

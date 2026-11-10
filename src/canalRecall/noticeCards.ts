@@ -12,6 +12,8 @@
 // the part worth testing; the paint pass is just `ctx` calls in order.
 
 import { hudSurface } from './hudTheme.ts';
+import { language, t } from '../i18n/index.ts';
+import { kindLabel } from './cardKindLabel.ts';
 
 export interface TextMeasurer {
   (text: string, font: string): number;
@@ -41,6 +43,15 @@ export interface LandmarkCardProps {
   maxBodyLines?: number;
   /** The card holds more than its body: a folded card still opens to the rest. */
   hasMore?: boolean;
+  /** A one-tap action under the body ("Noticed" on a drive-by card, G3).
+   *  Absent, the layout is byte-identical to a card without one. */
+  action?: string;
+  /** The pill's height: 26 on desktop; a touch screen asks for
+   *  TOUCH_ACTION_HEIGHT, the 44 px tap-target floor (#286). */
+  actionHeight?: number;
+  /** A short phone: the pill sits on the header row and the card has no photo or body,
+   *  so it stays below the bike (390×664, #292). Needs `action`. */
+  inlineAction?: boolean;
 }
 
 export interface LandmarkCardLayout {
@@ -76,6 +87,8 @@ export interface LandmarkCardLayout {
    *  (user request 2026-10-03), so every card needs a way to put it away. */
   close: Rect;
   closeHit: Rect;
+  /** The action pill, relative to the card; absent without `action`. */
+  action?: Rect;
 }
 
 const CARD_WIDTH = 480;
@@ -118,13 +131,21 @@ const NAME_GAP = 10;
 const MORE_GAP = 16;
 /** "More" is the action that opens the panel, so it reads as a link with an
  *  arrow rather than as one more chip beside the category. */
-const MORE_LABEL = 'MORE ›';
+const moreLabel = (): string => t('card.more');
 /** The close glyph's box, and the header room it reserves beside "more". */
 const CLOSE_SIZE = 14;
 const CLOSE_ROOM = CLOSE_SIZE + 10;
 /** Side of the square corner region a tap on the close takes: a finger is
  *  wider than the glyph. */
 const CLOSE_HIT = 40;
+/** The action pill under the body: 26 px on desktop, where it is clicked. On a
+ *  phone it is drawn at the 44 px tap-target floor, with a larger label: the
+ *  ride review (#280, defect 7) measured the 26 px plate as a thumb target. */
+const ACTION_HEIGHT = 26;
+export const TOUCH_ACTION_HEIGHT = 44;
+const actionFont = (height: number): string => `800 ${height >= TOUCH_ACTION_HEIGHT ? 13 : 11}px ${hudSurface.fontMono}`;
+const ACTION_GAP = 10;
+const ACTION_PAD_X = 12;
 
 /**
  * Badges that fit on one row of the text column. On a 320 px phone
@@ -172,6 +193,7 @@ export function measureLandmarkCard(
    *  margins; setting the width after measuring only clipped the text. */
   cardWidth: number = CARD_WIDTH,
 ): LandmarkCardLayout {
+  if (props.inlineAction && props.action) return measureInlineActionCard(props, measure, cardWidth);
   const hasImage = !!props.hasImage;
   const imageWidth = hasImage ? IMAGE_WIDTH : 0;
   const textLeft = hasImage ? IMAGE_INSET + imageWidth + IMAGE_GUTTER : PAD_X;
@@ -196,13 +218,14 @@ export function measureLandmarkCard(
   if (props.factKind && props.body) pushBadge(props.factKind.toUpperCase(), 'fact');
   // The language chip is a claim about the body text, so it only makes sense
   // when there is body text to be in that language.
-  if (props.extractLang && props.extractLang !== 'en' && props.body) {
+  // A Dutch lede in the Dutch game needs no chip (#307).
+  if (props.extractLang && props.extractLang !== 'en' && props.extractLang !== language() && props.body) {
     pushBadge(props.extractLang.toUpperCase(), 'lang');
   }
-  if (props.hasArticle) pushBadge(props.articleLabel || 'W  WIKIPEDIA', 'article');
+  if (props.hasArticle) pushBadge(props.articleLabel || t('card.wikipedia'), 'article');
   // Nothing else on a canvas card says it can be clicked, so the cut body has
   // to advertise the panel that holds the rest of it.
-  if (truncated || props.hasMore) pushBadge(MORE_LABEL, 'more');
+  if (truncated || props.hasMore) pushBadge(moreLabel(), 'more');
   // The header row shares its right end with the close "×".
   const headerColumn = columnWidth - CLOSE_ROOM;
   badges = fitBadges(badges, headerColumn, measure);
@@ -259,9 +282,16 @@ export function measureLandmarkCard(
   const textBottom = lines.length
     ? bodyBaseline + (lines.length - 1) * LINE_STEP + BODY_DESCENT
     : headerBottom;
+  // The action pill sits under the text column, right-aligned, so the corridor
+  // side of the card (and its photo) keeps its shape.
+  const actionHeight = props.actionHeight ?? ACTION_HEIGHT;
+  // A tall pill gets wider padding too, so it reads as a button, not a bar.
+  const actionPadX = actionHeight >= TOUCH_ACTION_HEIGHT ? ACTION_PAD_X + 6 : ACTION_PAD_X;
+  const actionWidth = props.action ? Math.ceil(measure(props.action.toUpperCase(), actionFont(actionHeight))) + actionPadX * 2 : 0;
+  const actionTop = props.action ? Math.round(textBottom + ACTION_GAP) : 0;
   const height = Math.max(
     hasImage ? IMAGE_INSET * 2 + IMAGE_HEIGHT : 0,
-    Math.round(textBottom + PAD_BOTTOM),
+    Math.round((props.action ? actionTop + actionHeight : textBottom) + PAD_BOTTOM),
   );
 
   return {
@@ -283,7 +313,66 @@ export function measureLandmarkCard(
     truncated,
     close: { x: width - PAD_RIGHT - CLOSE_SIZE + 3, y: Math.round(rowCentre - CLOSE_SIZE / 2), width: CLOSE_SIZE, height: CLOSE_SIZE },
     closeHit: { x: width - CLOSE_HIT, y: 0, width: CLOSE_HIT, height: CLOSE_HIT },
+    ...(props.action ? {
+      action: { x: width - PAD_RIGHT - actionWidth, y: height - PAD_BOTTOM - actionHeight, width: actionWidth, height: actionHeight },
+    } : {}),
   };
+}
+
+/** The one-row card for a short phone: name, then the action pill, then the close.
+ *  The pill is the touch height, so the card is that plus an air margin each side. */
+function measureInlineActionCard(props: LandmarkCardProps, measure: TextMeasurer, cardWidth: number): LandmarkCardLayout {
+  const actionHeight = props.actionHeight ?? TOUCH_ACTION_HEIGHT;
+  const actionPadX = actionHeight >= TOUCH_ACTION_HEIGHT ? ACTION_PAD_X + 6 : ACTION_PAD_X;
+  const actionWidth = Math.ceil(measure((props.action || '').toUpperCase(), actionFont(actionHeight))) + actionPadX * 2;
+  const height = actionHeight + 16;
+  const width = cardWidth;
+  const actionX = width - PAD_RIGHT - CLOSE_ROOM - actionWidth - 4;
+  const nameRoom = Math.max(40, actionX - PAD_X - NAME_GAP);
+  let displayName = props.name || '';
+  if (measure(displayName.toUpperCase(), NAME_FONT) > nameRoom) {
+    while (displayName.length > 6 && measure(`${displayName}…`.toUpperCase(), NAME_FONT) > nameRoom) displayName = displayName.slice(0, -1);
+    displayName += '…';
+  }
+  const headerTop = Math.round((height - BADGE_HEIGHT) / 2);
+  const rowCentre = height / 2;
+  return {
+    width, height, imageWidth: 0, imageHeight: IMAGE_HEIGHT, textLeft: PAD_X, badges: [],
+    headerTop, badgeHeight: BADGE_HEIGHT, headerInline: false,
+    nameX: PAD_X, nameBaseline: Math.round(rowCentre + NAME_CAP / 2), bodyBaseline: height, lineStep: LINE_STEP,
+    displayName, lines: [], truncated: false,
+    close: { x: width - PAD_RIGHT - CLOSE_SIZE + 3, y: Math.round(rowCentre - CLOSE_SIZE / 2), width: CLOSE_SIZE, height: CLOSE_SIZE },
+    closeHit: { x: width - CLOSE_HIT, y: 0, width: CLOSE_HIT, height: CLOSE_HIT },
+    action: { x: actionX, y: Math.round((height - actionHeight) / 2), width: actionWidth, height: actionHeight },
+  };
+}
+
+/** Draw the action pill `measureLandmarkCard` placed: a copper-outlined plate,
+ *  filled once done ("Noted"). Drawn by the runtime after the card itself. */
+export function drawCardAction(
+  ctx: CanvasRenderingContext2D, rect: Rect, cardX: number, cardY: number, label: string, done: boolean,
+): void {
+  const x = cardX + rect.x, y = cardY + rect.y;
+  const r = rect.height / 2;
+  ctx.save();
+  ctx.beginPath();
+  ctx.moveTo(x + r, y);
+  ctx.arcTo(x + rect.width, y, x + rect.width, y + rect.height, r);
+  ctx.arcTo(x + rect.width, y + rect.height, x, y + rect.height, r);
+  ctx.arcTo(x, y + rect.height, x, y, r);
+  ctx.arcTo(x, y, x + rect.width, y, r);
+  ctx.closePath();
+  ctx.fillStyle = done ? 'rgba(47,111,71,.12)' : 'rgba(180,104,44,.10)';
+  ctx.fill();
+  ctx.lineWidth = 1.25;
+  ctx.strokeStyle = done ? '#2f6f47' : '#8a4a18';
+  ctx.stroke();
+  ctx.font = actionFont(rect.height);
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+  ctx.fillStyle = done ? '#2f6f47' : '#8a4a18';
+  ctx.fillText(label.toUpperCase(), x + rect.width / 2, y + rect.height / 2 + 0.5);
+  ctx.restore();
 }
 
 /**
@@ -362,6 +451,12 @@ export interface PostcardProps {
   /** City name for the caption; defaults keep Amsterdam cards unchanged. */
   cityName?: string;
   provinceCaption?: string;
+  /** Free Ride's collection (game/freeRideCollection.ts): "3 of 9 places", shown in place of the caption. */
+  checklist?: string;
+  /** The neighbourhood's list was just completed: the heading says so. */
+  stamped?: boolean;
+  /** A phone: a stamped card moves its name below the seal and lets it shrink further (#292). */
+  compact?: boolean;
 }
 
 export interface PostcardLayout {
@@ -374,6 +469,11 @@ export interface PostcardLayout {
   /** Shrunk until the name fits the card; never below the floor. */
   nameFontSize: number;
   caption: string;
+  /** Baselines of the name and the caption, relative to the card's top. */
+  nameBaseline: number;
+  captionBaseline: number;
+  /** The STAMPED seal's centre and radius relative to the card; absent when not stamped. */
+  seal?: { x: number; y: number; r: number };
 }
 
 const POSTCARD_WIDTH = 390;
@@ -397,21 +497,32 @@ export function measurePostcard(
   const available = Math.max(60, cardWidth - textLeft - 18);
   let nameFontSize = NAME_MAX;
   const fontAt = (size: number) => `800 ${size}px system-ui, sans-serif`;
-  while (nameFontSize > NAME_MIN && measure(props.name || '', fontAt(nameFontSize)) > available) {
+  // The phone's stamped card draws the seal in the top-right corner and sets the
+  // name on a lower line, so the name has the whole text column. The renderer
+  // draws it in capitals; the old fit measured it as typed, so it ran wide.
+  const lowered = !!(props.stamped && props.compact);
+  const floor = lowered ? 13 : NAME_MIN;
+  const shown = lowered ? (props.name || '').toUpperCase() : props.name || '';
+  while (nameFontSize > floor && measure(shown, fontAt(nameFontSize)) > available) {
     nameFontSize -= 1;
   }
   return {
+    nameBaseline: lowered ? 76 : 58,
+    captionBaseline: lowered ? 95 : 80,
+    ...(lowered ? { seal: { x: cardWidth - 36, y: 30, r: 24 } } : {}),
     width: cardWidth,
     height: POSTCARD_HEIGHT,
     photoWidth: POSTCARD_PHOTO_WIDTH,
     textLeft,
     nameFontSize,
     name: props.name || '',
-    heading: `ENTERING ${String(props.kind || 'NEIGHBORHOOD').toUpperCase()}`,
+    heading: props.stamped ? t('postcard.stamp') : props.kind ? t('postcard.entering', { kind: kindLabel(props.kind) }) : t('postcard.enteringNeighborhood'),
     // Crediting the photo matters when it was borrowed from the containing
     // district rather than taken in this neighborhood.
-    caption: props.imageArea
-      ? `Photo: ${props.imageArea} · ${props.cityName || 'Amsterdam'}`
+    caption: props.checklist
+      ? `${props.checklist} · ${props.cityName || 'Amsterdam'}`
+      : props.imageArea
+      ? t('postcard.photo', { area: props.imageArea, city: props.cityName || 'Amsterdam' })
       : `${props.cityName || 'Amsterdam'}${props.provinceCaption ? ` · ${props.provinceCaption}` : ''}`,
   };
 }

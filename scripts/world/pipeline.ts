@@ -18,13 +18,14 @@ import { dropNestedDuplicates } from '../../src/canalRecall/buildingNesting.js';
 import { constructionYearEnricher, roofFactsEnricher, composeEnrichers, roofFactsEnabled } from '../../src/canalRecall/genericFacades.js';
 import { gameDecorator, gameFeatureDecorator } from '../../src/canalRecall/galleryPipeline.js';
 import { setShopfronts } from '../../src/canalRecall/shopfronts.js';
+import { registerFactsEnabled, registerFactsFromExtract, type RegisterFactsMap } from '../../src/canalRecall/facade/registerRecipe.js';
 import { gameTileEnricher } from '../../src/canalRecall/gameTileEnricher.js';
 import { buildingCell } from '../../src/canalRecall/world/cellGrid.js';
 
 export const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '../..');
 export const EXTRACT = path.join(ROOT, 'public/data/extracts/amsterdam');
 export const COVERS = path.join(ROOT, 'public/canal-drive/models/covers.json');
-export const GLOBAL_INPUTS = ['monument-gables.json', 'landmark-buildings.json', 'shopfronts.json', 'rail-infra-buildings.json'].map(f => path.join(EXTRACT, f)).concat([COVERS]);
+export const GLOBAL_INPUTS = ['monument-gables.json', 'landmark-buildings.json', 'shopfronts.json', 'rail-infra-buildings.json', 'industrial-buildings.json'].map(f => path.join(EXTRACT, f)).concat([COVERS]);
 export type Feature = { type: 'Feature'; properties: Record<string, unknown>; geometry: any };
 export type Row = { tile: string; ordinal: number; raw: Feature; styled: Feature; cell: string };
 
@@ -36,7 +37,7 @@ export function inputHash(files: string[]): string {
 }
 /** Source files whose code decides the baked output: a change to any of them invalidates every cell. */
 export const CODE = ['src/canalRecall/buildingNesting.ts', 'src/canalRecall/genericFacades.ts', 'src/canalRecall/galleryPipeline.ts', 'src/canalRecall/buildingTilesBrowser.ts',
-  'src/canalRecall/roofMesh.ts', 'src/canalRecall/landmarkKits.ts', 'src/canalRecall/landmarkFrontData.ts', 'src/canalRecall/shopfronts.ts', 'src/canalRecall/monumentGables.ts', 'src/canalRecall/gameTileEnricher.ts', 'src/canalRecall/railInfraBuildings.ts',
+  'src/canalRecall/roofMesh.ts', 'src/canalRecall/landmarkKits.ts', 'src/canalRecall/landmarkFrontData.ts', 'src/canalRecall/shopfronts.ts', 'src/canalRecall/monumentGables.ts', 'src/canalRecall/gameTileEnricher.ts', 'src/canalRecall/railInfraBuildings.ts', 'src/canalRecall/industrial/industrialTable.ts', 'src/canalRecall/industrial/industrialClass.ts',
   'src/canalRecall/roofs/roofFacts.ts', 'src/canalRecall/buildingContextIndex.ts', 'src/canalRecall/world/cellFormat.ts', 'src/canalRecall/world/cellGrid.ts', 'src/canalRecall/world/cellPolicy.ts', 'scripts/world/compile.ts', 'scripts/world/pipeline.ts', 'scripts/world/browserMath.ts', 'scripts/world/useBrowserMath.ts'].map(f => path.join(ROOT, f));
 
 export const readJson = (p: string) => JSON.parse(fs.readFileSync(p, 'utf8'));
@@ -53,16 +54,22 @@ const fileFetch = (async (input: string | URL | Request) => {
 }) as typeof fetch;
 
 /** The decorator inputs vector-map loads (monument gables, landmark ids, shopfronts) and the chain. */
-export function gameChain() {
+/** The published register facts (monument-facts.json, no sourceText) when the flag is on and the file exists; REGISTER_FACTS=0 turns it off. */
+function publishedRegisterFacts(): RegisterFactsMap | undefined {
+  const file = path.join(EXTRACT, 'monument-facts.json');
+  return registerFactsEnabled(null, process.env.REGISTER_FACTS) && fs.existsSync(file) ? registerFactsFromExtract(readJson(file)) : undefined;
+}
+export function gameChain(options: { registerFacts?: RegisterFactsMap | null } = {}) {
+  const registerFacts = options.registerFacts === null ? undefined : options.registerFacts ?? publishedRegisterFacts();
   const gablesJson = readJson(path.join(EXTRACT, 'monument-gables.json'));
   const gables = new Map(Object.entries(gablesJson.buildings ?? {})) as any;
   const listed = new Set<string>(gablesJson.listedLandmarks ?? []);
   const landmarkIds = new Set<string>();
   for (const list of Object.values<string[]>(readJson(path.join(EXTRACT, 'landmark-buildings.json')).buildings ?? {})) for (const id of list) landmarkIds.add(String(id));
   setShopfronts(readJson(path.join(EXTRACT, 'shopfronts.json')));
-  const decorate = gameDecorator({ gables, landmarkIds, listed }) as (f: Feature) => Feature;
+  const decorate = gameDecorator({ gables, landmarkIds, listed, registerFacts }) as (f: Feature) => Feature;
   /** What vector-map installs with setFeatureDecorator (the streamer applies decorateBuildingFeature itself). */
-  const featureDecorator = gameFeatureDecorator({ gables, landmarkIds, listed }) as (f: Feature) => Feature;
+  const featureDecorator = gameFeatureDecorator({ gables, landmarkIds, listed, registerFacts }) as (f: Feature) => Feature;
   // Years, roof facts and the rail infrastructure table: the own engine's live path calls the same function
   // (gameTileEnricher.ts), and the runtime adopts cells without enriching, so the rail table must be baked here.
   const enricher = gameTileEnricher({ constructionYearEnricher, roofFactsEnricher, composeEnrichers, roofFactsEnabled }, FILE_BASE, { fetch: fileFetch, search: '' });

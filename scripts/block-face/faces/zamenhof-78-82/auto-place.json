@@ -1,0 +1,175 @@
+{
+ "face": "zamenhof-78-82",
+ "street": "Zamenhofstraat",
+ "library": "vogelbuurt",
+ "stripDate": "2025-09-22",
+ "seconds": 0.44,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012097992",
+   "address": "Zamenhofstraat 82",
+   "builtYear": 1919,
+   "widthM": 5,
+   "eavesM": 4.24,
+   "storeys3dbag": 2,
+   "bagBay": null,
+   "strip": {
+    "wall": "#434544",
+    "wallRaw": "#3d3f3e",
+    "skyline": {
+     "eavesM": 6,
+     "eavesRow": 124,
+     "confidence": 0.92,
+     "crown": {
+      "widthM": 1.02,
+      "riseM": 2.32,
+      "topWidthM": 0.35,
+      "centre": 0.89
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 4,
+    "frontClass": "ribbon",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "one-storey front (eaves <= 6 m): no balcony",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 3.1,
+       "widthM": 4.6,
+       "centre": 0.5
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.05
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012112593",
+   "address": "Zamenhofstraat 80",
+   "builtYear": 1918,
+   "widthM": 5,
+   "eavesM": 4.22,
+   "storeys3dbag": 2,
+   "bagBay": null,
+   "strip": {
+    "wall": "#2b3134",
+    "wallRaw": "#333a35",
+    "skyline": {
+     "eavesM": 5.88,
+     "eavesRow": 129,
+     "confidence": 0.94,
+     "crown": {
+      "widthM": 1.15,
+      "riseM": 3.22,
+      "topWidthM": 0.35,
+      "centre": 0.38
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "curtain",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0.38,
+     "bayCentre": 0.12,
+     "balconies": false,
+     "why": "one-storey front (eaves <= 6 m): no balcony",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.08
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Opus strip verdict 2026-11-10: a hedge hides the door (verdict)",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012062919",
+   "address": "Zamenhofstraat 78",
+   "builtYear": 1919,
+   "widthM": 5,
+   "eavesM": 4.41,
+   "storeys3dbag": 2,
+   "bagBay": null,
+   "strip": {
+    "wall": "#242a33",
+    "wallRaw": "#393b3b",
+    "skyline": {
+     "eavesM": 6.03,
+     "eavesRow": 123,
+     "confidence": 0.92,
+     "crown": {
+      "widthM": 1.05,
+      "riseM": 2.25,
+      "topWidthM": 0.53,
+      "centre": 0.89
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 5,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "one-storey front (eaves <= 6 m): no balcony",
+     "openAxes": [
+      {
+       "widthM": 1.73,
+       "centre": 0.61,
+       "light": 0.15
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 3.08,
+       "widthM": 4.6,
+       "centre": 0.5
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Opus strip verdict 2026-11-10: window about 1 m off the photo (verdict)",
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

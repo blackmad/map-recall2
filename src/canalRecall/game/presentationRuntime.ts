@@ -30,20 +30,28 @@ import {
   savePassport,
   stampNewNeighborhoods,
 } from './neighborhoodPassport';
+import { drawArrivalStamp, ARRIVAL_STAMP_HEIGHT, stampCardEnabled } from '../stampArrival';
+import { loadStampArt } from '../stampArtLoader';
+import { stampCount } from '../stampAlbum';
 import { finishStory } from './finishStory';
 import { missionBrief } from './missionBrief';
 import { introFrame, introOverview, introPlan, playerZoom } from './introFlight';
+import { introHoldCapMs, revealDissolveAlpha, startHoldCapMs, startHoldEnabled, startHoldMessageKey, startHoldTickDue, startHoldTicks } from '../engine/startHold';
 import { boatZoomScale, ferryZoomScale, transitZoomScale, vehicleZoomScale } from './vehicleZoomScale';
 import { glyphBox, startTagCentreY, type ScreenBox } from './vehicleScreenBox';
 import { COLD_OPEN_ENABLED } from './coldOpenReview';
 import { isCar, isBoat, isTransit, isPitchedView } from './modes';
 // Free Ride's methods ride in this bundle (they draw over this frame).
 import { installFreeRide } from './freeRideRuntime';
+import { installChainedRun } from './chainedRunRuntime';
+import { readSightings, sightingCredit } from './landmarkQuestion';
+import { withheldNames } from '../ownMap/labelPolicy';
 import { zoomBadgeShouldFlash, zoomBadgeText } from '../hudCopy';
 import { travelProfile } from './travelProfile';
 import { routePlaqueName } from './recallRules';
 import { bridgeDisplayNamesOf, displayBridgeName } from '../bridgeDisplayNames';
-import { finishBlurb } from './finishBlurb';
+import { buurtFinishBlurb, finishBlurb } from './finishBlurb';
+import { fitFinishTitle, type FinishTitleLayout } from './finishTitle';
 import { commitShownFact } from '../facts/factStore';
 import { StreetLabelCandidates } from './streetLabelCandidates';
 import { occlusionWanted, StreetLabelOcclusion } from '../labels/streetLabelOcclusion';
@@ -59,7 +67,15 @@ import { easeSightline, landmarkSightline, relativeTo, NO_SIGHTLINE, type Sightl
 import { nearestRouteIndex, RADAR_RADIUS_M, radarLocal, radarRadiusForSpeed, RadarMap } from './radar';
 import { gameWorldToLngLat, type GameLoaderFrame } from '../ownMap/frame';
 import { revealOnEnter, utilityBlockedByCards, utilityVisibility } from './utilityTuck';
-import { t as tr } from '../../i18n/index.ts';
+import { CATALOGS, t as tr, type MessageKey } from '../../i18n/index.ts';
+import { placeName } from './landmarkNamesNl.ts';
+import { kindLabel } from '../cardKindLabel.ts';
+import { extendShareTrail } from '../shareCard';
+import { fitFooterItems, type FooterItem } from './footerFit';
+import { drawKeycapAction } from './keycapAction';
+import { formatRideDistance } from './rideDistance';
+import { remainingRouteDistance } from './routeRemaining';
+import { drawPauseCard, pauseCardLayout, pauseStatsText, type PauseAction } from './pauseCard';
 
 /** Safari's trackpad / multi-touch gesture event (not in lib.dom). */
 interface SafariGestureEvent extends UIEvent { rotation: number; scale: number }
@@ -189,6 +205,71 @@ export class GamePresentationRuntime {
     this.vectorMap.sync(this.camera, this.osmLoader, this.canvas);
     this.vectorMap.setFerryTerminals?.(this.track, this.osmLoader);
     return true;
+  }
+
+  /**
+   * The start's loading holds (lane S1 #313): the ride-pose hold and the intro hold share one cap (10 s,
+   * `?startHoldCap=` for the sweep; the intro keeps at least 1.8 s); after 1.5 s the loading line says the city is
+   * being built; a hold that ends on its cap arms the reveal's dissolve. `?startHold=0` is today's 4 s / 1.8 s.
+   * game-route.js calls it in place of `_waitForMapSettle(4000)` and `_waitForMapSettle(1800)`.
+   */
+  async _startHoldWait(kind: 'ride' | 'intro'): Promise<void> {
+    if (!this._waitForMapSettle) return;
+    const search = new URLSearchParams(window.location.search);
+    const w = window as unknown as { __canalRecallStartHold?: unknown };
+    if (!startHoldEnabled(w.__canalRecallStartHold ?? search.get('startHold'))) { await this._waitForMapSettle(kind === 'ride' ? 4000 : 1800); return; }
+    if (kind === 'ride' || !this._startHold) this._startHold = { spentMs: 0, capped: false, holds: [] };
+    const hold = this._startHold;
+    const cap = startHoldCapMs(search.get('startHoldCap'));
+    const capMs = kind === 'ride' ? cap : introHoldCapMs(hold.spentMs, cap);
+    const base = kind === 'ride' ? 'ride.load.settling' : 'ride.load.findingWay';
+    const started = performance.now();
+    const timer = setInterval(() => {
+      if (this.state !== GameState.LOADING) return;
+      const key = startHoldMessageKey(performance.now() - started, base);
+      if (key !== base) this.loadingMessage = tr(key as MessageKey);
+    }, 250);
+    // While this hold waits, the loading frame ticks the world (_tickHeldWorld): the hold ends when the city is built.
+    this._startHoldTicking = true;
+    try { await this._waitForMapSettle(capMs); } finally { clearInterval(timer); this._startHoldTicking = false; }
+    const out = this._lastMapSettle;
+    const ms = out?.ms ?? Math.round(performance.now() - started);
+    hold.spentMs += ms;
+    hold.capped = !!out?.timedOut;
+    hold.holds.push({ kind, ms, capMs, timedOut: !!out?.timedOut, pending: out?.pending ?? [] });
+    // The dissolve follows the last hold before racing: armed when it ended on its cap.
+    this._revealDissolve = hold.capped ? { at: -1, capped: true } : null;
+  }
+
+  /**
+   * Under the loading screen, while a start hold waits (lane S1 #313): run the world's settle tick (ground, far and
+   * baked tiers at the held camera) at 10 Hz desktop / 4 Hz touch. The game never synced the world while loading, so
+   * the baked cells the aim planned stayed undrawn and far prisms stood in for them until the reveal.
+   */
+  _tickHeldWorld(): void {
+    if (!this._startHoldTicking) return;
+    const view = this.vectorMap as unknown as { settleTick?(): void } | null;
+    if (!view?.settleTick) return;
+    const now = performance.now();
+    let touch = false;
+    try { touch = !!window.matchMedia?.('(pointer: coarse)')?.matches; } catch { /* fine pointer */ }
+    if (!startHoldTicks(touch) || !startHoldTickDue(now, this._startHoldTickAt, touch)) return;
+    this._startHoldTickAt = now;
+    try { view.settleTick(); } catch (error) { console.warn('start hold tick', error); this._startHoldTicking = false; }
+  }
+
+  /** Paint the loading screen over the first ~600 ms of the ride after a capped hold (startHold.ts revealDissolveAlpha). */
+  _drawRevealDissolve(ctx: CanvasRenderingContext2D): void {
+    const d = this._revealDissolve;
+    if (!d || this.state === GameState.LOADING) return;
+    const now = performance.now();
+    if (d.at < 0) d.at = now;
+    const alpha = revealDissolveAlpha(now - d.at, d.capped);
+    if (alpha <= 0) { this._revealDissolve = null; return; }
+    ctx.save();
+    ctx.globalAlpha = alpha;
+    this.loadingScreen.draw(ctx, this.loadingMessage, 1);
+    ctx.restore();
   }
 
   /** The zoom to save as the player's: the flight's landing zoom while one owns the camera (introFlight.ts playerZoom). */
@@ -415,6 +496,9 @@ export class GamePresentationRuntime {
       if (Math.hypot(event.clientX - lastMouse.x, event.clientY - lastMouse.y) > 2) revealUtility();
       lastMouse = { x: event.clientX, y: event.clientY };
       this.hud.hoverPoint = this._eventPoint(event);
+      // The arrival and pause cards' keycaps are click targets too (#278): say so with the cursor. game.js's canvas
+      // mousemove has already set the cursor for this event; this window listener runs after it and only adds.
+      if (event.target === this.canvas && this._overCardAction(this.hud.hoverPoint)) this.canvas.style.cursor = 'pointer';
     }, { passive: true });
     window.addEventListener('keydown', event => {
       if (!STEERING_KEYS.has(event.key)) revealUtility();
@@ -443,16 +527,26 @@ export class GamePresentationRuntime {
         const hit = (bounds: { x: number; y: number; w: number; h: number }) => x >= bounds.x && x <= bounds.x + bounds.w && y >= bounds.y && y <= bounds.y + bounds.h;
         const finish = this.state === GameState.FINISHED && this._finishButtonBounds?.find(hit);
         const pause = this.state === GameState.PAUSED && this._pauseButtonBounds?.find(hit);
-        if (finish) this._runFinishAction(finish.id);
+        if (finish) this._runFinishTap(finish.id);
         else if (pause && this._runPauseAction) this._runPauseAction(pause.id);
         else if (this._recenterBtnBounds && hit(this._recenterBtnBounds)) this._recenterCamera();
         else if (this._landmarkCloseBounds && hit(this._landmarkCloseBounds)) this._clearLandmarkNotice();
+        else if (this._landmarkActionBounds && hit(this._landmarkActionBounds)) this._noticeLandmark();
         else if (this._landmarkCardBounds && hit(this._landmarkCardBounds)) this._expandLandmarkNotice();
         else if (this.freeRide && this.state === GameState.RACING) this._freeRideClick(x, y, event.clientX, event.clientY);
         else this._inspectBuildingAt(event.clientX, event.clientY);
       }
       dragging = false;
     });
+  }
+
+  /** The arrival or pause card action under a canvas point (logical units, as `_eventPoint` returns), or null. */
+  _overCardAction(point: { x: number; y: number } | null | undefined): string | null {
+    if (!point) return null;
+    const bounds = this.state === GameState.FINISHED ? this._finishButtonBounds
+      : this.state === GameState.PAUSED ? this._pauseButtonBounds : null;
+    const hit = bounds?.find(b => point.x >= b.x && point.x <= b.x + b.w && point.y >= b.y && point.y <= b.y + b.h);
+    return hit ? hit.id : null;
   }
 
   /** True while a DOM overlay owns the screen — quiz, utility, or article. */
@@ -509,10 +603,24 @@ export class GamePresentationRuntime {
   /** The destination as the ride may show it: with any street or water name
    *  from this track hidden, so "Keizersgrachtkerk" cannot answer the
    *  Keizersgracht question. The arrival card still shows the real name. */
+  /**
+   * What the destination readout says is left (R2-10, #302): the planned route from the rider to the finish
+   * (routeRemaining.ts), so the start says the route's length, as the landing's Today's ride card does, and not
+   * the straight line. With no planned path, the straight line as before.
+   */
+  _hudDistanceToFinishPx(): number {
+    if (this.hud && !this.hud.formatKm) this.hud.formatKm = km => formatRideDistance(km, { routed: true });
+    const player = this.player;
+    if (!player) return 0;
+    const { distance, cache } = remainingRouteDistance(this.routePath, player, this.track.finishPoint, this._routeRemainingCache);
+    this._routeRemainingCache = cache;
+    return distance;
+  }
+
   _destinationLabel(): string {
     // A review stop's name is the answer; it shows only on arrival.
     if (isReviewStop(this.routeTo) && !this.routeTo.name) return REVIEW_STOP_LABEL;
-    const name = this.routeTo?.name || '';
+    const name = placeName(this.routeTo?.name || '');
     // Mask only the answer of the question open right now. Masking every
     // street in the ride cut most destinations to "…kerk" for the whole ride
     // (user report 2026-09-28, "this should not cut off my destination");
@@ -542,7 +650,10 @@ export class GamePresentationRuntime {
    * sits below the plaque and minimap; on desktop between the top cards.
    */
   _renderFerryNotice(player: Pick<Vehicle, 'ferryOrigin' | 'ferryDestinations' | 'ferryNearest'>, showMiniMap: boolean): void {
-    if (!player.ferryOrigin) return;
+    // Free Ride: the vessel is free on the water and lands at any street-side
+    // quay (ferry/travel.ts freeLanding), so there is no pier to steer for
+    // (user 2026-11-09, "not force me along an invisible path").
+    if (!player.ferryOrigin || this.freeRide) return;
     const ctx = this.ctx;
     const layout = this._hudRects();
     const top = layout.mode === 'compact'
@@ -596,10 +707,18 @@ export class GamePresentationRuntime {
   // ---- The frame ----
 
   _render(): void {
+    this._renderFrame();
+    // Lane S1 (#313): after a capped start hold the loading screen dissolves over the ride's first ~600 ms.
+    if (this._revealDissolve) this._drawRevealDissolve(this.ctx);
+  }
+
+  _renderFrame(): void {
     this._syncViewportSize();
     const ctx = this.ctx;
     ctx.clearRect(0, 0, CANVAS_W, CANVAS_H);
     this.hud.beginFrame?.();
+    // Chained stops (chainedRunRuntime.ts): the run's clock, idle end, E key.
+    this._runTick();
 
     // The arrival card is a full-screen modal; on a phone the settings and help
     // buttons sat on top of its actions in the bottom-right corner.
@@ -636,6 +755,16 @@ export class GamePresentationRuntime {
         const buttons = [...utility.children].map(child => child.getBoundingClientRect());
         if (card && utilityBlockedByCards(buttons, [card.getBoundingClientRect()])) revealed = false;
       }
+      // The same for the canvas's bottom card (a drive-by or tapped place card):
+      // on a phone "Report a problem" and settings crowded its edge (#286).
+      if (revealed && riding && this._landmarkCardBounds) {
+        const b = this._landmarkCardBounds;
+        const canvas = this.canvas.getBoundingClientRect();
+        const kx = canvas.width / CANVAS_W, ky = canvas.height / CANVAS_H;
+        const card = { left: canvas.left + b.x * kx, top: canvas.top + b.y * ky, right: canvas.left + (b.x + b.w) * kx, bottom: canvas.top + (b.y + b.h) * ky };
+        const buttons = [...utility.children].map(child => child.getBoundingClientRect());
+        if (utilityBlockedByCards(buttons, [card])) revealed = false;
+      }
       // The whole cluster tucks (feedback, build stamp too). A phone used to
       // keep Feedback up, and it sat on a quiz answer ("Plantage Kerklaan",
       // 390×844 frame 2026-10-16); a tap on the map brings it back.
@@ -652,10 +781,13 @@ export class GamePresentationRuntime {
     }
     if (this.state === GameState.LOADING) {
       this.loadingScreen.draw(ctx, this.loadingMessage, this.loadingProgress);
+      this._tickHeldWorld();
       return;
     }
     if (!this.player) return;
     const player = this.player;
+    // The ridden path for the share card (G6, src/canalRecall/shareCard.ts).
+    if (this.state === GameState.RACING) this._shareTrail = extendShareTrail(this._shareTrail, player, player, this._playerDistancePx());
 
     this.hud.setTime(this.raceTime);
     // Only the player's own zoom flashes the badge. The intro flight and the
@@ -762,12 +894,19 @@ export class GamePresentationRuntime {
     // Withheld in every form, not only the exact way name: a compound, a stem
     // or a bridge's printed official name that says it (mapLabelSpoils).
     const asked = this.quizPromptName || this.quizCandidateName || '';
+    // A landmark question withholds every choice, not only the answer (G3).
+    const withheld = withheldNames(this);
     const shownText = (text: string) => displayBridgeName(bridgeDisplayNamesOf(this.bridges), text);
-    if (!this._labelSpoilCache || this._labelSpoilCache.asked !== asked) this._labelSpoilCache = { asked, spoils: new Map() };
+    const spoilKey = withheld.length ? `${asked}\u0000${withheld.join('\u0000')}` : asked;
+    if (!this._labelSpoilCache || this._labelSpoilCache.asked !== spoilKey) this._labelSpoilCache = { asked: spoilKey, spoils: new Map() };
     const spoilCache = this._labelSpoilCache.spoils;
     const spoils = (text: string) => {
       let hit = spoilCache.get(text);
-      if (hit === undefined) { hit = mapLabelSpoils(text, shownText(text), asked); spoilCache.set(text, hit); }
+      if (hit === undefined) {
+        hit = (!!asked && mapLabelSpoils(text, shownText(text), asked))
+          || withheld.some(name => mapLabelSpoils(text, shownText(text), name));
+        spoilCache.set(text, hit);
+      }
       return hit;
     };
     // A name whose street a building hides is not drawn: the canvas paints
@@ -778,7 +917,7 @@ export class GamePresentationRuntime {
     // Free Ride asks nothing, so every street and canal is named.
     // Names fade and follow their street on screen (labels/labelFade.ts, #122).
     const placement = (this._streetLabelPlacement ||= new StreetLabelPlacement());
-    if (free) this.track.drawLabels(ctx, this.camera, () => true, '', player, this._freeRideLabelCandidates(), shownText, hiddenBy, placement);
+    if (free) this.track.drawLabels(ctx, this.camera, text => !(withheld.length && spoils(text)), '', player, this._freeRideLabelCandidates(), shownText, hiddenBy, placement);
     else this.track.drawLabels(ctx, this.camera,
       (text, x, y) => (this._mapLabelNames.has(text) || this._isPlaceKnown(text, x, y)) && !(asked && spoils(text)),
       asked, player,
@@ -848,7 +987,7 @@ export class GamePresentationRuntime {
         this.track.finishPoint.x, this.track.finishPoint.y, this.camera)
       : null;
     const destinationLabel = this._destinationLabel();
-    const distanceToFinish = this.track.getDistanceToFinish(player.x, player.y);
+    const distanceToFinish = this._hudDistanceToFinishPx();
     const merged = this._hudRects().destinationInRecall;
     this.hud.drawPlaque(ctx, {
       routeName: visibleRouteName,
@@ -908,13 +1047,26 @@ export class GamePresentationRuntime {
       } else {
         this.hud.drawStick(ctx, this.input.stickView);
       }
-      // Parked at the start of a street-follow ride, the hint stays up: it is
-      // the only thing saying a press sets off.
-      const parked = this.controlMode === 'street' && !!this.player?.streetFollowView?.parked;
-      if (this.input.showTouchHint || parked) this.hud.drawTouchHint(ctx, this.controlMode);
+      if (this._touchHintShowing()) this.hud.drawTouchHint(ctx, this.controlMode);
     }
     if (this.state === GameState.PAUSED) this._renderPaused();
     if (this.state === GameState.FINISHED) this._renderFinish();
+  }
+
+  /** Whether the touch hint strip is drawn over the d-pad. Parked at the
+   *  start of a street-follow ride it stays up: it is the only thing saying a
+   *  press sets off. The phone's bottom cards stack above it (#286). */
+  _touchHintShowing(): boolean {
+    if (!this._hudRects().dpad || this.state !== GameState.RACING || this._overlayOpen() || this._intro) return false;
+    // A bottom card up on the phone takes the hint's place for as long as it
+    // is open: the strip ran over the card's Noticed pill, and stacking the
+    // card above it pushed the card over the bike (#286). The pad's arrows
+    // still pulse while parked.
+    const cards = this as unknown as { _landmarkNotice?: unknown; _landmarkNoticeAlpha?: number; _neighborhoodNotice?: unknown; _neighborhoodNoticeTimer?: number };
+    if (this.viewport?.mode === 'compact' && ((cards._landmarkNotice && (cards._landmarkNoticeAlpha ?? 0) > 0)
+      || (cards._neighborhoodNotice && (cards._neighborhoodNoticeTimer ?? 0) > 0))) return false;
+    const parked = this.controlMode === 'street' && !!this.player?.streetFollowView?.parked;
+    return !!this.input.showTouchHint || parked;
   }
 
   /** The plaque's optional lines: quiz feedback (or the home-ring note) and a
@@ -941,7 +1093,7 @@ export class GamePresentationRuntime {
       && this.viewport.mode === 'compact'
       && Number.isFinite(this._homeLearningRadiusKm)
       && this._homeLearningRadiusKm > 0
-      ? `Learning near home · ~${this._homeLearningRadiusKm.toFixed(1)} km`
+      ? `Learning near home · ${formatRideDistance(this._homeLearningRadiusKm, { aboutWord: tr('ride.distance.about') })}`
       : '';
     return { feedback: this.quizFeedback || homeLearningNote, restrictionNote };
   }
@@ -1086,10 +1238,13 @@ export class GamePresentationRuntime {
       destination: finish && !this.freeRide ? local(finish.x, finish.y) : null,
       route,
       routeIndex: this._radarRouteIndex ?? 0,
+      places: this.freeRide ? this._freeRideRadarPlaces().map(p => local(p.x, p.y)) : null,
     }, range[0]);
   }
 
   _radarAt?: number;
+  /** The arrival title as last laid out (size and lines), read by tests. */
+  _finishTitleLayout?: FinishTitleLayout;
 
   /** Only while the player is settling in. It used to sit permanently on top
    *  of the recall panel. */
@@ -1100,7 +1255,7 @@ export class GamePresentationRuntime {
     const surface = window.CanalRecallUi.hudSurface;
     // Bare text over the map was unreadable on white streets; this is the same
     // navy plate as every other readout, sized to the line.
-    const text = '?  help   ·   G  settings   ·   M  map   ·   O  north   ·   D  labels   ·   B  buildings   ·   P  pause';
+    const text = tr('ride.controlsHint');
     ctx.save();
     ctx.globalAlpha = Math.min(1, CONTROLS_HINT_DURATION - this.raceTime);
     ctx.font = `600 11px ${surface.fontMono}`;
@@ -1370,109 +1525,41 @@ export class GamePresentationRuntime {
 
   _renderPaused(): void {
     const ctx = this.ctx;
-    const cx = CANVAS_W / 2;
     const compact = this.viewport.mode === 'compact';
-    const cardW = Math.min(400, CANVAS_W - 24);
-    const padX = compact ? 18 : 28;
-    const cardX = cx - cardW / 2;
-
     ctx.fillStyle = 'rgba(28,24,18,0.34)';
     ctx.fillRect(0, 0, CANVAS_W, CANVAS_H);
 
-    type PauseAction = { id: 'resume' | 'route' | 'copy'; key: string; caption: string };
+    // #319: the card hugs its content and centres every line (pauseCard.ts).
     const actions: PauseAction[] = [
-      { id: 'resume', key: 'P / ESC', caption: 'Resume' },
-      { id: 'route', key: 'M', caption: 'Route setup' },
+      { id: 'resume', key: 'P / ESC', caption: tr('ride.resume') },
+      { id: 'route', key: 'M', caption: tr('ride.routeSetup') },
     ];
-    if (this._shareUrl) {
-      actions.push({
-        id: 'copy',
-        key: 'C',
-        caption: this._copiedTimer > 0 ? tr('ride.linkCopied') : tr('ride.shareRoute'),
-      });
-    }
-
-    const BUTTON_H = 44;
-    const BUTTON_GAP = 8;
-    const titleH = compact ? 56 : 64;
-    const statsH = 28;
-    const actionsH = compact
-      ? actions.length * BUTTON_H + (actions.length - 1) * BUTTON_GAP
-      : 28;
-    const cardH = 20 + titleH + actionsH + statsH + 18;
-    const cardY = (CANVAS_H - cardH) / 2;
-
-    // The same paper plate as the arrival card. This was the last surface of
-    // the old arcade skin: 78% black, yellow Courier, and ink captions that
-    // vanished on it ("New route" was invisible on a phone).
-    this.hud.paperCard(ctx, { x: cardX, y: cardY, width: cardW, height: cardH }, { solid: true, radius: 12 });
-
-    ctx.fillStyle = INK;
-    ctx.font = `800 ${compact ? 30 : 36}px ${window.CanalRecallUi.hudSurface.fontPlaque}`;
-    ctx.textAlign = 'center';
-    ctx.fillText('PAUSED', cx, cardY + (compact ? 40 : 46));
-
-    const pauseButtons: NonNullable<typeof this._pauseButtonBounds> = [];
-    this._pauseButtonBounds = pauseButtons;
-    let y = cardY + titleH;
-
-    if (compact) {
-      for (const action of actions) {
-        const primary = action.id === 'resume';
-        const bounds = { x: cardX + padX, y, w: cardW - padX * 2, h: BUTTON_H };
-        ctx.fillStyle = primary ? COPPER : 'rgba(31,28,23,.05)';
-        roundRect(ctx, bounds.x, bounds.y, bounds.w, bounds.h, 12);
-        ctx.fill();
-        if (!primary) {
-          ctx.strokeStyle = RULE;
-          ctx.lineWidth = 1;
-          ctx.stroke();
-        }
-        ctx.fillStyle = primary ? '#1f1c17' : (action.id === 'copy' && this._copiedTimer > 0 ? GOOD : INK);
-        ctx.font = '700 14px system-ui, sans-serif';
-        ctx.fillText(action.caption, bounds.x + bounds.w / 2, y + 28);
-        pauseButtons.push({ ...bounds, id: action.id });
-        y += BUTTON_H + BUTTON_GAP;
-      }
-    } else {
-      ctx.textAlign = 'left';
-      let ax = cardX + padX;
-      for (const action of actions) {
-        ctx.font = `700 11px ${window.CanalRecallUi.hudSurface.fontMono}`;
-        const keyW = ctx.measureText(action.key).width + 14;
-        ctx.fillStyle = 'rgba(31,28,23,.08)';
-        roundRect(ctx, ax, y + 2, keyW, 20, 5);
-        ctx.fill();
-        ctx.fillStyle = INK;
-        ctx.fillText(action.key, ax + 7, y + 16);
-        const captionX = ax + keyW + 8;
-        ctx.font = '12px system-ui, sans-serif';
-        ctx.fillStyle = action.id === 'copy' && this._copiedTimer > 0 ? GOOD : MUTED;
-        ctx.fillText(action.caption, captionX, y + 16);
-        const captionW = ctx.measureText(action.caption).width;
-        pauseButtons.push({
-          x: ax,
-          y: y - 4,
-          w: keyW + 8 + captionW + 8,
-          h: 28,
-          id: action.id,
-        });
-        ax = captionX + captionW + 22;
-      }
-      y += 28;
-    }
-
-    ctx.textAlign = 'center';
-    ctx.font = `500 12px ${window.CanalRecallUi.hudSurface.fontUi}`;
-    ctx.fillStyle = MUTED;
-    // Kilometres, like every other readout, and names rather than an
-    // unlabelled percentage: what you learned is the progress.
-    const kilometres = this._playerDistancePx() / PIXELS_PER_METER / 1000;
-    ctx.fillText(
-      `${this.hud.formatTime(this.raceTime)}  ·  ${kilometres.toFixed(2)} km  ·  ${this.quizCorrect} of ${this.quizAttempts} named`,
-      cx,
-      y + 18,
-    );
+    const copied = this._copiedTimer > 0;
+    if (this._shareUrl) actions.push({ id: 'copy', key: 'C', caption: copied ? tr('ride.linkCopied') : tr('ride.shareRoute') });
+    const free = !!this.freeRide;
+    const destination = free ? '' : this._destinationLabel();
+    const subtitle = free
+      ? [tr('freeRide.badge'), this.currentNeighborhood].filter(Boolean).join('  ·  ')
+      : destination ? tr('hud.toDestination', { name: destination }) : '';
+    const stats = pauseStatsText((key, vars) => tr(key, vars), {
+      timeS: this.raceTime,
+      km: this._playerDistancePx() / PIXELS_PER_METER / 1000,
+      correct: this.quizCorrect,
+      attempts: this.quizAttempts,
+      freeRide: free,
+    });
+    const surface = window.CanalRecallUi.hudSurface;
+    const fonts = { plaque: surface.fontPlaque, ui: surface.fontUi, mono: surface.fontMono };
+    const measure = (text: string, font: string) => { ctx.font = font; return ctx.measureText(text).width; };
+    const layout = pauseCardLayout(measure, { title: tr('ride.paused'), subtitle, stats, actions }, { width: CANVAS_W, height: CANVAS_H, compact }, fonts);
+    this._pauseCardLayout = layout;
+    this._pauseButtonBounds = drawPauseCard(ctx, layout, actions, {
+      ink: INK, muted: MUTED, copper: COPPER, rule: RULE, good: GOOD, fontMono: surface.fontMono,
+      paper: rect => this.hud.paperCard(ctx, { x: rect.x, y: rect.y, width: rect.w, height: rect.h }, { solid: true, radius: 12 }),
+      roundRect,
+      doneId: copied ? 'copy' : null,
+      mouse: compact ? null : this.hud.hoverPoint,
+    });
   }
 
   // ---- The arrival card ----
@@ -1486,6 +1573,10 @@ export class GamePresentationRuntime {
    * a 38 px stopwatch said it did.
    */
   _renderFinish(): void {
+    // Chained stops: the arrival joins the run once; an ended run shows its card instead.
+    this._recordRunStop();
+    if (this._runCard) { this._renderRunCard(this._runCard); return; }
+    const runText = this._runArrivalLine();
     const ctx = this.ctx;
     ctx.fillStyle = 'rgba(28,24,18,.34)';
     ctx.fillRect(0, 0, CANVAS_W, CANVAS_H);
@@ -1502,7 +1593,9 @@ export class GamePresentationRuntime {
     const exploration = this._explorationSnapshot && this._explorationSnapshot.totalRoutes > 0
       ? this._explorationSnapshot : null;
     const ribbon = gamey ? this._ribbon : null;
-    const landmark = this._finishLandmark();
+    // A daily-ride buurt finish tells the neighbourhood, not the nearest landmark (#279).
+    const buurt = buurtFinishBlurb(this.routeTo as { name?: string; buurtPlace?: boolean } | null, (this as unknown as { neighborhoods?: Array<{ name: string; wikipediaExtract?: string }> }).neighborhoods);
+    const landmark = buurt ? null : this._finishLandmark();
     const tour = this._tourArrival || null;
     const stamp = this._finishStamp || null;
     const image = landmark ? this._landmarkImages?.get(landmark.id) : undefined;
@@ -1520,37 +1613,49 @@ export class GamePresentationRuntime {
     let bestText = '';
     if (this._raceKey) {
       const stored = getBestTime(localStorage, this._raceKey);
-      if (stored && this.raceTime <= stored.time) bestText = '★  New personal best';
-      else if (stored) bestText = `Personal best  ${this.hud.formatTime(stored.time)}`;
+      // The timer ticks a few frames past the save (measured +0.05 s on 2026-11-09),
+      // so a best set this ride read as an old one; the save records whether it wrote.
+      if (stored && (this._bestJustSet || this.raceTime <= stored.time)) bestText = tr('ride.personalBest.new');
+      else if (stored) bestText = tr('ride.personalBest.old', { time: this.hud.formatTime(stored.time) });
     }
 
     // The card has to fit the screen (user report 2026-10-02: on a laptop
     // the actions ran off the bottom). It is built at the roomiest density
     // first; each further level tightens spacing and shortens the prose, and
     // only if the tightest still overflows is the whole card scaled down.
+    // The phone buttons' drawn height in card units. A card that still overflows
+    // at the tightest spacing is shrunk whole (below), which drew the 44 px
+    // buttons at 42.8 CSS px on a 390×664 phone (#286); they grow by the inverse
+    // of that shrink so the drawn target stays ≥ 44 px.
+    let touchButtonH = 44;
     const buildBlocks = (level: number): CardBlock[] => {
       const blocks: CardBlock[] = [];
 
-      blocks.push({ height: 74, draw: (top) => {
+      // A long destination was cut to "Vondelpark Open Air…" on a 414-wide
+      // phone (G7, #277): step the size down, then take a second line.
+      const title = fitFinishTitle(ctx, placeName(this.routeTo.name), innerW);
+      this._finishTitleLayout = title;
+      const titleExtra = (title.lines.length - 1) * title.lineHeight;
+      blocks.push({ height: 74 + titleExtra, draw: (top) => {
         ctx.textAlign = 'left';
         ctx.fillStyle = ACCENT; ctx.font = `700 11px ${window.CanalRecallUi.hudSurface.fontMono}`;
-        ctx.fillText(tour?.completed ? 'TOUR COMPLETE' : 'ARRIVED', cardX + padX, top + 11);
-        ctx.fillStyle = INK; ctx.font = '800 26px system-ui, sans-serif';
-        ctx.fillText(wrapText(ctx, this.routeTo.name, innerW, 1)[0], cardX + padX, top + 42);
+        ctx.fillText(tour?.completed ? tr('ride.arrival.tourDone') : tr('ride.arrival.header'), cardX + padX, top + 11);
+        ctx.fillStyle = INK; ctx.font = `800 ${title.size}px system-ui, sans-serif`;
+        title.lines.forEach((line, index) => ctx.fillText(line, cardX + padX, top + 42 + index * title.lineHeight));
         ctx.fillStyle = MUTED; ctx.font = '13px system-ui, sans-serif';
         // Long tour stop names ran off a phone card.
-        ctx.fillText(wrapText(ctx, `${this.routeFrom.name}  →  ${this.routeTo.name}`, innerW, 1)[0], cardX + padX, top + 64);
+        ctx.fillText(wrapText(ctx, `${placeName(this.routeFrom.name)}  →  ${placeName(this.routeTo.name)}`, innerW, 1)[0], cardX + padX, top + 64 + titleExtra);
       } });
 
       // The tightest level drops the encyclopedia blurb: the heading already
       // names the place, and scaling the card would shrink the touch targets.
       // A tour stop keeps its sourced "why" line at every level, shortened.
-      if ((landmark && level < 3) || tour) {
+      if (((landmark || buurt?.text) && level < 3) || tour) {
         const photo = hasImage ? (level >= 2 ? 64 : 88) : 0;
         const textX = cardX + padX + (hasImage ? photo + 16 : 0);
         const textW = cardX + cardW - padX - textX;
         ctx.font = '12px system-ui, sans-serif';
-        const blurb = wrapText(ctx, tour ? tour.why : this._finishBlurbText(landmark!), textW,
+        const blurb = wrapText(ctx, tour ? tour.why : buurt ? buurt.text : this._finishBlurbText(landmark!), textW,
           tour ? [4, 3, 3, 3][level] : [hasImage ? 4 : 3, 3, 2, 2][level]);
         const height = Math.max(photo, 20 + blurb.length * 17) + 14;
         blocks.push({ height, draw: (top) => {
@@ -1567,12 +1672,14 @@ export class GamePresentationRuntime {
           ctx.textAlign = 'left';
           ctx.fillStyle = MUTED; ctx.font = `700 11px ${window.CanalRecallUi.hudSurface.fontMono}`;
           if (tour) {
-            const where = `${tour.title.toUpperCase()}  ·  STOP ${tour.stopIndex + 1} OF ${tour.stopCount}`;
+            const where = tr('ride.arrival.tourStop', { title: tour.title.toUpperCase(), stop: tour.stopIndex + 1, count: tour.stopCount });
             const credit = [tour.sourceHost, tour.checked].filter(Boolean).join('  ·  ');
             ctx.fillText(wrapText(ctx, credit ? `${where}  ·  ${credit.toUpperCase()}` : where, textW, 1)[0], textX, top + 10);
+          } else if (buurt) {
+            ctx.fillText(tr('ride.arrival.neighborhoodWiki'), textX, top + 10);
           } else {
-            const kind = String(landmark!.type || 'landmark').toUpperCase();
-            ctx.fillText(landmark!.wikipediaUrl ? `${kind}  ·  W  WIKIPEDIA` : kind, textX, top + 10);
+            const kind = kindLabel(String(landmark!.type || 'landmark'));
+            ctx.fillText(landmark!.wikipediaUrl ? `${kind}  ·  ${tr('card.wikipedia')}` : kind, textX, top + 10);
           }
           ctx.fillStyle = BODY; ctx.font = '12px system-ui, sans-serif';
           blurb.forEach((line, index) => ctx.fillText(line, textX, top + 30 + index * 17));
@@ -1589,21 +1696,29 @@ export class GamePresentationRuntime {
         { label: recallNoun, value: `${this.quizCorrect}/${this.quizAttempts}` },
       ] : [];
       stats.push(
-        { label: 'Time', value: this.hud.formatTime(this.raceTime).slice(0, -2) },
-        { label: 'Distance', value: `${(this._playerDistancePx() / PIXELS_PER_METER / 1000).toFixed(2)} km` },
+        { label: tr('ride.stat.time'), value: this.hud.formatTime(this.raceTime).slice(0, -2) },
+        { label: tr('ride.stat.distance'), value: `${(this._playerDistancePx() / PIXELS_PER_METER / 1000).toFixed(2)} km` },
       );
-      if (gamey && this.quizAttempts > 0) stats.splice(1, 0, { label: 'Points', value: String(this.quizPoints) });
+      // The run's scoring rule (chainedRun.ts scoreStop, #282): the bonus this stop earned is in its Points.
+      if (gamey && this.quizAttempts > 0) stats.splice(1, 0, { label: tr('ride.stat.points'), value: String(this._runArrivalPoints() ?? this.quizPoints) });
 
-      const footerBits = [
-        this.routeDifficulty.charAt(0).toUpperCase() + this.routeDifficulty.slice(1),
-        profile.label,
-        this.viewMode.replace('-', ' ').replace(/^./, c => c.toUpperCase()),
+      // The setup screen's own words for difficulty and view (#283), so the
+      // Dutch card does not read "Medium · Chase".
+      const difficultyKey = `setup.difficulty.${this.routeDifficulty}`;
+      const viewKey = `setup.view.${String(this.viewMode).replace(/-up$/, '')}`;
+      const known = (key: string): key is MessageKey => key in CATALOGS.en;
+      // Ranks decide what goes first when the line is wider than the card
+      // (footerFit.ts): the view, then the difficulty, then the streak.
+      const footerBits: FooterItem[] = [
+        { text: known(difficultyKey) ? tr(difficultyKey) : this.routeDifficulty.charAt(0).toUpperCase() + this.routeDifficulty.slice(1), rank: 1 },
+        { text: profile.label, rank: 3 },
+        { text: known(viewKey) ? tr(viewKey) : this.viewMode.replace('-', ' ').replace(/^./, c => c.toUpperCase()), rank: 0 },
       ];
-      if (gamey && this.quizBestStreak >= 2) footerBits.push(`Best streak ${this.quizBestStreak}`);
+      if (gamey && this.quizBestStreak >= 2) footerBits.push({ text: tr('ride.bestStreak', { count: this.quizBestStreak }), rank: 2 });
       // Tighter levels fold the personal best into this line rather than give
       // it a row of its own.
       const bestInFooter = level >= 1 && !!bestText;
-      if (bestInFooter) footerBits.unshift(bestText.replace('★  ', '★ '));
+      if (bestInFooter) footerBits.unshift({ text: bestText.replace(/^★  /, '★ '), rank: 9 });
 
       // Five stats across a 600 px card is four columns of comfortable space; the
       // same five across a 366 px phone card ran "420", "03:33" and "0.00 km"
@@ -1628,7 +1743,7 @@ export class GamePresentationRuntime {
           ctx.fillText(stat.label, sx, sy + 42);
         });
         ctx.fillStyle = MUTED; ctx.font = '11px system-ui, sans-serif';
-        ctx.fillText(wrapText(ctx, footerBits.join('  ·  '), innerW, 1)[0], cx, top + statRows * ROW_H + 18);
+        ctx.fillText(fitFooterItems(footerBits, innerW, text => ctx.measureText(text).width), cx, top + statRows * ROW_H + 18);
       } });
 
       if (ribbon) {
@@ -1641,13 +1756,14 @@ export class GamePresentationRuntime {
         const known = exploration.learnedWaterways.length + exploration.learnedStreets.length
           + exploration.learnedTransitLines.length + exploration.learnedTransitStops.length;
         const totals: string[] = [];
-        if (known > 0) totals.push(`${known} names`);
-        if (exploration.visitedNeighborhoods.length > 0) totals.push(`${exploration.visitedNeighborhoods.length} neighborhoods`);
-        if (exploration.seenLandmarks.length > 0) totals.push(`${exploration.seenLandmarks.length} landmarks`);
+        const count = (key: 'count.names' | 'count.neighborhoods' | 'count.landmarks', n: number): string => tr(`${key}.${n === 1 ? 'one' : 'other'}`, { count: n });
+        if (known > 0) totals.push(count('count.names', known));
+        if (exploration.visitedNeighborhoods.length > 0) totals.push(count('count.neighborhoods', exploration.visitedNeighborhoods.length));
+        if (exploration.seenLandmarks.length > 0) totals.push(count('count.landmarks', exploration.seenLandmarks.length));
         const gain = this._explorationRouteGain;
         const story = finishStory({
           gain: gain || { newNames: 0, newNeighborhoods: 0, newLandmarks: 0 },
-          destinationName: this.routeTo?.name || '',
+          destinationName: placeName(this.routeTo?.name || ''),
           cityName: this._cityDisplayName(),
           newPassportStamps: this._finishPassportFresh || [],
           placeStreak: { days: [], current: 0, best: 0 },
@@ -1657,18 +1773,23 @@ export class GamePresentationRuntime {
         // Prefer live streak label computed at save time.
         if (this._finishPlaceStreakLabel) story.streak = this._finishPlaceStreakLabel;
         const fresh: string[] = [];
-        if (gain && gain.newNames > 0) fresh.push(`${gain.newNames} names`);
-        if (gain && gain.newNeighborhoods > 0) fresh.push(`${gain.newNeighborhoods} neighborhoods`);
-        if (gain && gain.newLandmarks > 0) fresh.push(`${gain.newLandmarks} landmarks`);
+        if (gain && gain.newNames > 0) fresh.push(count('count.names', gain.newNames));
+        if (gain && gain.newNeighborhoods > 0) fresh.push(count('count.neighborhoods', gain.newNeighborhoods));
+        if (gain && gain.newLandmarks > 0) fresh.push(count('count.landmarks', gain.newLandmarks));
         const knowledgeStacked = compact;
         // Wrapped to the card: on a phone "You made it to … · 2 new names, 1
         // landmark" ran past the right edge. Tighter levels keep fewer lines.
         ctx.font = '12px system-ui, sans-serif';
         // Whole sentences only: cutting a wrapped one after its first line
         // left "… · 2" hanging.
-        const lineBudget = [Infinity, 4, 2, 1][level];
+        // At the tightest level a run's line takes the story's last line, so the card does not grow.
+        const lineBudget = [Infinity, 4, 2, runText ? 0 : 1][level];
         const storyLines: string[] = [];
-        for (const sentence of [story.headline, story.detail, story.passport, story.streak, story.guestTease]) {
+        // G5: the passport stamp is drawn as a stamp (below), not a sentence;
+        // ?stampCard=0 keeps the sentence.
+        const passportFresh = this._finishPassportFresh || [];
+        const stampCard = passportFresh.length > 0 && stampCardEnabled(typeof location === 'undefined' ? '' : location.search);
+        for (const sentence of [story.headline, story.detail, stampCard ? null : story.passport, story.streak, story.guestTease]) {
           if (!sentence) continue;
           const room = lineBudget - storyLines.length;
           // A first sentence too long for the budget keeps its lead clause
@@ -1689,7 +1810,7 @@ export class GamePresentationRuntime {
         blocks.push({ height: knowledgeH, rule: true, draw: (top) => {
           ctx.textAlign = 'left';
           ctx.fillStyle = MUTED; ctx.font = `700 11px ${window.CanalRecallUi.hudSurface.fontMono}`;
-          ctx.fillText('CITY KNOWLEDGE', cardX + padX, top + 12);
+          ctx.fillText(tr('ride.arrival.cityKnowledge'), cardX + padX, top + 12);
           ctx.fillStyle = BODY; ctx.font = '12px system-ui, sans-serif';
           if (knowledgeStacked) {
             ctx.fillText(totals.join('  ·  ') || tr('ride.startExploring'), cardX + padX, top + 30);
@@ -1702,7 +1823,7 @@ export class GamePresentationRuntime {
             ctx.textAlign = 'left';
             ctx.fillStyle = ACCENT;
             ctx.font = '11px system-ui, sans-serif';
-            ctx.fillText(`+${fresh.join(', +')} first-time`, cardX + padX, y);
+            ctx.fillText(tr('ride.arrival.firstTime', { bits: fresh.join(', +') }), cardX + padX, y);
             y += 16;
           }
           ctx.textAlign = 'left';
@@ -1713,6 +1834,25 @@ export class GamePresentationRuntime {
             y += 16;
           }
         } });
+        if (stampCard) {
+          // The one stamp count (stampAlbum.ts stampCount, #283): the landing
+          // and the album read the same number.
+          let held = { earned: 0, total: 0 };
+          try { held = stampCount(localStorage); } catch { /* private mode */ }
+          blocks.push({ height: ARRIVAL_STAMP_HEIGHT + 12, rule: true, draw: (top) => {
+            drawArrivalStamp(ctx, {
+              name: passportFresh[0],
+              isNew: true,
+              x: cardX + padX,
+              y: top + 4,
+              width: innerW,
+              fontMono: window.CanalRecallUi.hudSurface.fontMono,
+              more: passportFresh.length - 1,
+              held: held.earned,
+              total: held.total,
+            });
+          } });
+        }
       }
 
       if (bestText && !bestInFooter) {
@@ -1724,14 +1864,37 @@ export class GamePresentationRuntime {
         } });
       }
 
+      // The run so far (chainedRun.ts): one line, above the stamp and actions.
+      const drawRun = (top: number): void => {
+        if (!runText) return;
+        ctx.textAlign = 'left';
+        ctx.font = `700 11px ${window.CanalRecallUi.hudSurface.fontMono}`;
+        ctx.fillStyle = ACCENT;
+        const runLabel = tr('ride.arrival.run');
+        ctx.fillText(runLabel, cardX + padX, top + 13);
+        const textX = cardX + padX + ctx.measureText(runLabel).width + 12;
+        const lineW = cardX + cardW - padX - textX;
+        ctx.fillStyle = INK; ctx.font = '700 13px system-ui, sans-serif';
+        // A phone fits the whole line a size smaller rather than cut the bonus off.
+        if (ctx.measureText(runText).width > lineW) ctx.font = '600 12px system-ui, sans-serif';
+        ctx.fillText(wrapText(ctx, runText, lineW, 1)[0], textX, top + 13);
+      };
+      // At the tightest level the run line and the stamp share one block, 16 px apart.
+      const foldRun = !!runText && !!stamp && level >= 3;
+      if (runText && !foldRun) blocks.push({ height: 20, rule: level < 3, draw: drawRun });
+
       // The stamp this arrival earned: one line just above the actions, so the
       // moment sits low on the card and never covers the road.
       if (stamp) {
-        blocks.push({ height: 20, draw: (top) => {
+        blocks.push({ height: foldRun ? 34 : 20, draw: (blockTop) => {
+          if (foldRun) drawRun(blockTop - 2);
+          const top = foldRun ? blockTop + 14 : blockTop;
           ctx.textAlign = 'left';
+          // A stamp is a buurt (#283): the buurt stamp is drawn above
+          // (drawArrivalStamp); a destination or a tour is a visit, never a stamp.
           const label = stamp.kind === 'tour'
-            ? (stamp.isNew ? 'TOUR STAMP' : 'TOUR STAMP AGAIN')
-            : (stamp.isNew ? 'NEW STAMP' : 'STAMP AGAIN');
+            ? tr(stamp.isNew ? 'ride.arrival.tourDone' : 'ride.arrival.tourAgain')
+            : tr(stamp.isNew ? 'ride.arrival.placeNew' : 'ride.arrival.placeAgain');
           ctx.font = `700 11px ${window.CanalRecallUi.hudSurface.fontMono}`;
           const labelW = ctx.measureText(label).width;
           ctx.fillStyle = ACCENT;
@@ -1740,29 +1903,42 @@ export class GamePresentationRuntime {
           ctx.fill();
           ctx.fillText(label, cardX + padX + 18, top + 13);
           ctx.fillStyle = INK; ctx.font = '700 13px system-ui, sans-serif';
-          const tally = stamp.kind === 'poi' && stamp.total > 0 ? `  ·  ${stamp.earned} of ${stamp.total}` : '';
+          const tally = stamp.kind === 'poi' && stamp.total > 0 ? `  ·  ${tr('ride.arrival.placeTally', { earned: stamp.earned, total: stamp.total })}` : '';
           const textX = cardX + padX + 18 + labelW + 10;
-          ctx.fillText(wrapText(ctx, `${stamp.name}${tally}`, cardX + cardW - padX - textX, 1)[0], textX, top + 13);
+          const lineRoom = cardX + cardW - padX - textX;
+          // R2-5 (#304): drop whole items rather than cut one mid-word. The tally goes first, then the name
+          // steps down a size; only a name that still overflows is ellipsised. The name is the display
+          // name for the language (#303).
+          const stampName = placeName(stamp.name);
+          let lineText = `${stampName}${tally}`;
+          if (ctx.measureText(lineText).width > lineRoom) lineText = stampName;
+          if (ctx.measureText(lineText).width > lineRoom) ctx.font = '700 12px system-ui, sans-serif';
+          ctx.fillText(wrapText(ctx, lineText, lineRoom, 1)[0], textX, top + 13);
         } });
       }
 
       // A phone has no ENTER, ESC or C, so the keycaps that document the actions
       // on a keyboard are the actions themselves on touch: full-width buttons
       // with 44 px targets, hit-tested against `_finishButtonBounds`.
-      type FinishAction = { id: 'again' | 'route' | 'copy'; key: string; caption: string };
+      type FinishAction = { id: 'again' | 'route' | 'copy' | 'end'; key: string; caption: string };
       const actions: FinishAction[] = [
         // Say what happens: 'again' deals another route with these settings,
         // 'route' goes back to setup. "Continue" / "Finish" said neither.
-        { id: 'again', key: 'ENTER', caption: tour && !tour.completed ? tr('ride.nextStop') : tr('ride.nextRoute') },
+        // In a run the next ride is the run's next stop.
+        { id: 'again', key: 'ENTER', caption: (tour && !tour.completed) || runText ? tr('ride.nextStop') : tr('ride.nextRoute') },
       ];
+      // A run's one extra action. On a phone it shares the primary row, so
+      // the card gains no row of buttons.
+      const endRun: FinishAction | null = runText ? { id: 'end', key: 'E', caption: tr('ride.endRun') } : null;
       // Route setup on both layouts: a tap target on the phone, M on desktop,
       // the same key as the pause menu. Escape stays unbound here (user
       // request 2026-09-28); desktop lacked the action (clarity review 14).
-      actions.push({ id: 'route', key: compact ? '' : 'M', caption: 'Route setup' });
+      actions.push({ id: 'route', key: compact ? '' : 'M', caption: tr('ride.routeSetup') });
       if (this._shareUrl) {
         actions.push({ id: 'copy', key: 'C', caption: this._copiedTimer > 0 ? tr('ride.linkCopied') : tr('ride.shareRoute') });
       }
-      const BUTTON_H = 44, BUTTON_GAP = 8;
+      if (endRun && !compact) actions.push(endRun);
+      const BUTTON_H = touchButtonH, BUTTON_GAP = 8;
       // A short phone pairs the secondary actions on one row rather than
       // shrinking the whole card, so every target stays 44 px tall.
       const pairSecondary = compact && level >= 2 && actions.length === 3;
@@ -1780,9 +1956,23 @@ export class GamePresentationRuntime {
               const primary = action.id === 'again';
               const paired = pairSecondary && index > 0;
               const halfW = (fullW - BUTTON_GAP) / 2;
+              // End run takes the primary row's right third.
+              const endW = primary && endRun ? Math.round(fullW * 0.36) : 0;
               const bounds = paired
                 ? { x: cardX + padX + (index - 1) * (halfW + BUTTON_GAP), y: by, w: halfW, h: BUTTON_H }
-                : { x: cardX + padX, y: by, w: fullW, h: BUTTON_H };
+                : { x: cardX + padX, y: by, w: endW ? fullW - endW - BUTTON_GAP : fullW, h: BUTTON_H };
+              if (endW && endRun) {
+                const endBounds = { x: cardX + padX + fullW - endW, y: by, w: endW, h: BUTTON_H };
+                ctx.fillStyle = 'rgba(31,28,23,.05)';
+                roundRect(ctx, endBounds.x, endBounds.y, endBounds.w, endBounds.h, 12);
+                ctx.fill();
+                ctx.strokeStyle = RULE; ctx.lineWidth = 1; ctx.stroke();
+                ctx.textAlign = 'center'; ctx.fillStyle = INK; ctx.font = '700 14px system-ui, sans-serif';
+                // R2-5 (#304): a caption keeps 8 px each side; when the long one does not, the short form is used.
+                const endCaption = ctx.measureText(endRun.caption).width + 16 <= endBounds.w ? endRun.caption : tr('ride.endRunShort');
+                ctx.fillText(endCaption, endBounds.x + endBounds.w / 2, by + BUTTON_H / 2 + 6);
+                finishButtons.push({ ...endBounds, id: endRun.id });
+              }
               ctx.fillStyle = primary ? COPPER : 'rgba(31,28,23,.05)';
               roundRect(ctx, bounds.x, bounds.y, bounds.w, bounds.h, 12);
               ctx.fill();
@@ -1792,7 +1982,7 @@ export class GamePresentationRuntime {
               ctx.textAlign = 'center';
               ctx.fillStyle = primary ? '#1f1c17' : (action.caption === 'Link copied' ? GOOD : INK);
               ctx.font = '700 14px system-ui, sans-serif';
-              ctx.fillText(action.caption, bounds.x + bounds.w / 2, by + 28);
+              ctx.fillText(action.caption, bounds.x + bounds.w / 2, by + BUTTON_H / 2 + 6);
               finishButtons.push({ ...bounds, id: action.id });
               if (!paired || index === actions.length - 1) by += BUTTON_H + BUTTON_GAP;
             });
@@ -1801,22 +1991,15 @@ export class GamePresentationRuntime {
           }
           ctx.textAlign = 'left';
           let ax = cardX + padX;
+          const mouse = this.hud.hoverPoint;
           for (const action of actions) {
-            ctx.font = `700 11px ${window.CanalRecallUi.hudSurface.fontMono}`;
-            const keyW = ctx.measureText(action.key).width + 14;
-            ctx.fillStyle = 'rgba(31,28,23,.08)';
-            roundRect(ctx, ax, top + 4, keyW, 20, 5);
-            ctx.fill();
-            ctx.fillStyle = INK;
-            ctx.fillText(action.key, ax + 7, top + 18);
-            ax += keyW + 8;
-            ctx.fillStyle = action.caption === 'Link copied' ? GOOD : MUTED;
-            ctx.font = '12px system-ui, sans-serif';
-            ctx.fillText(action.caption, ax, top + 18);
-            const captionW = ctx.measureText(action.caption).width;
-            // The keycap and its caption are a click target too.
-            finishButtons.push({ x: ax - keyW - 8, y: top, w: keyW + 8 + captionW, h: 28, id: action.id });
-            ax += captionW + 22;
+            // The action under the mouse (#278): unscaled cards only, where the drawn box is the hit box.
+            const drawn = drawKeycapAction(ctx, roundRect, { x: ax, top }, action, {
+              ink: INK, muted: MUTED, fontMono: window.CanalRecallUi.hudSurface.fontMono,
+              captionColour: action.caption === 'Link copied' ? GOOD : undefined,
+            }, scale === 1 ? mouse : null);
+            finishButtons.push({ ...drawn.bounds, id: action.id });
+            ax = drawn.endX + 22;
           }
         },
       });
@@ -1853,7 +2036,13 @@ export class GamePresentationRuntime {
       (index === 0 ? 0 : block.rule ? GAP * 2 : GAP);
     // Last resort: shrink the whole card about its top centre. The touch
     // buttons' hit boxes are mapped through the same transform below.
-    const scale = Math.min(1, room / cardH);
+    let scale = Math.min(1, room / cardH);
+    for (let pass = 0; compact && scale < 1 && touchButtonH * scale < 44 && pass < 4; pass++) {
+      touchButtonH = Math.ceil((44 / scale) * 4) / 4;
+      blocks = buildBlocks(level);
+      cardH = measureCard(level, blocks);
+      scale = Math.min(1, room / cardH);
+    }
     const cardY = scale < 1 ? MARGIN : Math.max(MARGIN, Math.min(
       Math.round((CANVAS_H - cardH) / 2), CANVAS_H - cardH - bottomReserve));
     ctx.save();
@@ -1943,6 +2132,7 @@ export class GamePresentationRuntime {
     ctx.globalAlpha = 1;
 
     // Rosette: two tails under a struck medal.
+    const ribbonLabel = tr(`ribbon.${ribbon.id}` as MessageKey);
     const medalX = boxX + 42, medalY = boxY + 32, medalR = 20;
     ctx.fillStyle = ribbon.color;
     ctx.globalAlpha = 0.75;
@@ -1968,15 +2158,15 @@ export class GamePresentationRuntime {
     ctx.font = `700 18px ${window.CanalRecallUi.hudSurface.fontMono}`;
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
-    ctx.fillText(ribbon.id === 'none' ? '·' : ribbon.label[0], medalX, medalY + 1);
+    ctx.fillText(ribbon.id === 'none' ? '·' : ribbonLabel[0], medalX, medalY + 1);
     ctx.textBaseline = 'alphabetic';
 
     const textX = boxX + 76;
     ctx.textAlign = 'left';
     ctx.fillStyle = ribbon.color;
     ctx.font = `700 19px ${window.CanalRecallUi.hudSurface.fontMono}`;
-    ctx.fillText(ribbon.label, textX, boxY + 26);
-    const labelWidth = ctx.measureText(ribbon.label).width;
+    ctx.fillText(ribbonLabel, textX, boxY + 26);
+    const labelWidth = ctx.measureText(ribbonLabel).width;
     ctx.fillStyle = '#94A3B8';
     ctx.font = `11px ${window.CanalRecallUi.hudSurface.fontMono}`;
     ctx.fillText(`${Math.round(ribbon.score * 100)}%`, textX + labelWidth + 12, boxY + 26);
@@ -1990,10 +2180,11 @@ export class GamePresentationRuntime {
       ctx.font = `11px ${window.CanalRecallUi.hudSurface.fontMono}`;
       // On a phone "Efficiency 100%" ran past the box; the bar already shows
       // the share, so a narrow column keeps the name and drops the number.
-      let axisText = `${axis.label} ${Math.round(axis.score * 100)}%`;
+      const axisLabel = tr(`ribbon.axis.${axis.id}` as MessageKey);
+      let axisText = `${axisLabel} ${Math.round(axis.score * 100)}%`;
       if (ctx.measureText(axisText).width > w) {
         ctx.font = `10px ${window.CanalRecallUi.hudSurface.fontMono}`;
-        axisText = axis.label;
+        axisText = axisLabel;
       }
       ctx.fillText(axisText, x, boxY + 45);
       ctx.fillStyle = 'rgba(148,163,184,.25)';
@@ -2034,7 +2225,7 @@ export class GamePresentationRuntime {
 
   _saveBestTime(): void {
     try {
-      recordBestTime(localStorage, this._raceKey, {
+      this._bestJustSet = recordBestTime(localStorage, this._raceKey, {
         time: this.raceTime,
         date: new Date().toISOString(),
         distance: pixelsToMiles(this._playerDistancePx(), PIXELS_PER_METER),
@@ -2100,8 +2291,15 @@ export class GamePresentationRuntime {
         after,
         this._visitedNeighborhoods,
         readPassport(localStorage),
+        undefined,
+        // Landmarks noticed on a drive-by card or named in a question (G3).
+        sightingCredit(readSightings(localStorage)),
       );
-      if (stamped.fresh.length) savePassport(localStorage, stamped.passport);
+      if (stamped.fresh.length) {
+        savePassport(localStorage, stamped.passport);
+        // The arrival card draws the stamp; fetch its postcard art now.
+        if (stampCardEnabled(typeof location === 'undefined' ? '' : location.search)) void loadStampArt();
+      }
       this._finishPassportFresh = stamped.fresh;
       return after;
     } catch (error) {
@@ -2120,5 +2318,6 @@ export class GamePresentationRuntime {
 (window as unknown as { CanalRecallRadar?: unknown }).CanalRecallRadar = { RadarMap, radarLocal, RADAR_RADIUS_M };
 
 installFreeRide(GamePresentationRuntime);
+installChainedRun(GamePresentationRuntime);
 window.CanalRecallGameModules = window.CanalRecallGameModules || [];
 window.CanalRecallGameModules.push(GamePresentationRuntime);

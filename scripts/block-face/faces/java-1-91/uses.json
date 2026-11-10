@@ -1,0 +1,595 @@
+{
+ "street": "Javastraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-09T23:23:51.828Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012114339",
+   "addresses": [
+    "Javastraat 1"
+   ],
+   "groundUnits": [
+    {
+     "address": "Javastraat 1-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 135,
+     "bagId": "0363010000579367"
+    }
+   ],
+   "units": 7,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2348208248,
+     "lngLat": [
+      4.9316324,
+      52.3635979
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "1",
+      "addr:postcode": "1094GX",
+      "addr:street": "Javastraat",
+      "amenity": "pub",
+      "check_date": "2025-03-31",
+      "check_date:opening_hours": "2025-03-31",
+      "name": "Cafe Biljart Gijs de Rooy",
+      "opening_hours": "Mo-Th 14:00-01:00, Fr,Sa 14:00-03:00, Su 14:00-24:00",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-11-09T23:23:51.828Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012166139",
+   "addresses": [
+    "Javastraat 3"
+   ],
+   "groundUnits": [
+    {
+     "address": "Javastraat 3-H",
+     "use": "winkelfunctie",
+     "areaM2": 100,
+     "bagId": "0363010000689105"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2348208258,
+     "lngLat": [
+      4.931723,
+      52.3636026
+     ],
+     "tags": {
+      "check_date:opening_hours": "2026-10-15",
+      "female": "yes",
+      "name": "Bahia Beauty Center",
+      "opening_hours": "Tu-Sa 09:30-18:00; Mo 13:00-18:00",
+      "shop": "hairdresser",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-11-09T23:23:51.828Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012156240",
+   "addresses": [
+    "Javastraat 5"
+   ],
+   "groundUnits": [
+    {
+     "address": "Javastraat 5-H",
+     "use": "winkelfunctie",
+     "areaM2": 105,
+     "bagId": "0363010000689116"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 12699450225,
+     "lngLat": [
+      4.9318038,
+      52.3636135
+     ],
+     "tags": {
+      "name": "Majesteit Taart",
+      "opening_hours": "Tu-Fr 10:00-16:00; Sa 10:00-17:00",
+      "shop": "bakery"
+     },
+     "fetchedAt": "2026-11-09T23:23:51.828Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012156603",
+   "addresses": [
+    "Javastraat 7"
+   ],
+   "groundUnits": [
+    {
+     "address": "Javastraat 7-H",
+     "use": "winkelfunctie",
+     "areaM2": 140,
+     "bagId": "0363010000689124"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 12699439077,
+     "lngLat": [
+      4.9318849,
+      52.3636268
+     ],
+     "tags": {
+      "name": "Alkan Floors",
+      "shop": "flooring"
+     },
+     "fetchedAt": "2026-11-09T23:23:51.828Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012154207",
+   "addresses": [
+    "Javastraat 9"
+   ],
+   "groundUnits": [
+    {
+     "address": "Javastraat 9-H",
+     "use": "winkelfunctie",
+     "areaM2": 140,
+     "bagId": "0363010000689132"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2013949645,
+     "lngLat": [
+      4.9319958,
+      52.3635327
+     ],
+     "tags": {
+      "amenity": "waste_disposal"
+     },
+     "fetchedAt": "2026-11-09T23:23:51.828Z",
+     "match": "frontage",
+     "distanceM": 7.9
+    },
+    {
+     "type": "node",
+     "id": 12437544847,
+     "lngLat": [
+      4.931968,
+      52.3636413
+     ],
+     "tags": {
+      "amenity": "restaurant",
+      "check_date": "2025-12-08",
+      "check_date:opening_hours": "2025-12-08",
+      "cuisine": "indian",
+      "name": "Saeed's Curry House",
+      "opening_hours": "Mo-Sa 10:00-18:00; Su 11:00-18:00",
+      "website": "https://www.saeedscurryhouse-amsterdam.nl/"
+     },
+     "fetchedAt": "2026-11-09T23:23:51.828Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012166239",
+   "addresses": [
+    "Javastraat 11"
+   ],
+   "groundUnits": [
+    {
+     "address": "Javastraat 11-H",
+     "use": "winkelfunctie",
+     "areaM2": 295,
+     "bagId": "0363010000689140"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012160251",
+   "addresses": [
+    "Javastraat 13"
+   ],
+   "groundUnits": [
+    {
+     "address": "Javastraat 13-H",
+     "use": "winkelfunctie",
+     "areaM2": 209,
+     "bagId": "0363010000689148"
+    },
+    {
+     "address": "Javastraat 13-4",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 56,
+     "bagId": "0363010000855165"
+    }
+   ],
+   "units": 7,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2348208254,
+     "lngLat": [
+      4.9321272,
+      52.3636612
+     ],
+     "tags": {
+      "diet:halal": "only",
+      "name": "Yakhlaf",
+      "shop": "supermarket",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-11-09T23:23:51.828Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012164513",
+   "addresses": [
+    "Javastraat 15"
+   ],
+   "groundUnits": [
+    {
+     "address": "Javastraat 15-H",
+     "use": "winkelfunctie,woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010000689156"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012154130",
+   "addresses": [
+    "Javastraat 17"
+   ],
+   "groundUnits": [
+    {
+     "address": "Javastraat 17-H",
+     "use": "winkelfunctie",
+     "areaM2": 76,
+     "bagId": "0363010000689164"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2348208245,
+     "lngLat": [
+      4.9322751,
+      52.3636774
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "17-1",
+      "addr:postcode": "1094GX",
+      "addr:street": "Javastraat",
+      "beauty": "nails",
+      "name": "New World Nails",
+      "opening_hours": "Mo-Sa 10:00-18:00; Su 12:00-18:00",
+      "shop": "beauty",
+      "source": "BAG",
+      "source:date": "2014-03-24"
+     },
+     "fetchedAt": "2026-11-09T23:23:51.828Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012160811",
+   "addresses": [
+    "Javastraat 19"
+   ],
+   "groundUnits": [
+    {
+     "address": "Javastraat 19-H",
+     "use": "winkelfunctie",
+     "areaM2": 112,
+     "bagId": "0363010000689172"
+    }
+   ],
+   "units": 6,
+   "osm": [
+    {
+     "type": "node",
+     "id": 12693102839,
+     "lngLat": [
+      4.9323491,
+      52.3636905
+     ],
+     "tags": {
+      "addr:housenumber": "19",
+      "addr:street": "Javastraat",
+      "name": "Wash-O-Matic",
+      "opening_hours": "Mo-Su 08:00-21:00",
+      "self_service": "yes",
+      "shop": "laundry"
+     },
+     "fetchedAt": "2026-11-09T23:23:51.828Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012236050",
+   "addresses": [
+    "Javastraat 21",
+    "Javastraat 23"
+   ],
+   "groundUnits": [
+    {
+     "address": "Javastraat 21-H",
+     "use": "winkelfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000689179"
+    },
+    {
+     "address": "Javastraat 23-H",
+     "use": "winkelfunctie",
+     "areaM2": 112,
+     "bagId": "0363010000689188"
+    }
+   ],
+   "units": 10,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2348208261,
+     "lngLat": [
+      4.9325146,
+      52.3636939
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "23-H",
+      "addr:postcode": "1094GZ",
+      "addr:street": "Javastraat",
+      "amenity": "restaurant",
+      "cuisine": "seafood",
+      "name": "Yemen Seafood Restaurant",
+      "opening_hours": "Mo-Su 13:00-23:00",
+      "phone": "+31 6 1000 0627",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://yemenrestaurant.nl"
+     },
+     "fetchedAt": "2026-11-09T23:23:51.828Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 12693224776,
+     "lngLat": [
+      4.9324332,
+      52.3637023
+     ],
+     "tags": {
+      "addr:housenumber": "21",
+      "addr:street": "Javastraat",
+      "check_date:opening_hours": "2026-10-06",
+      "name": "Toko Man Li Ho",
+      "opening_hours": "We-Sa 11:00-19:00; Su 12:00-18:00",
+      "shop": "convenience"
+     },
+     "fetchedAt": "2026-11-09T23:23:51.828Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012124656",
+   "addresses": [
+    "Javastraat 25",
+    "Javastraat 27"
+   ],
+   "groundUnits": [
+    {
+     "address": "Javastraat 25-H",
+     "use": "winkelfunctie",
+     "areaM2": 241,
+     "bagId": "0363010000689196"
+    },
+    {
+     "address": "Javastraat 27-H",
+     "use": "winkelfunctie",
+     "areaM2": 223,
+     "bagId": "0363010001002769"
+    }
+   ],
+   "units": 10,
+   "osm": [
+    {
+     "type": "node",
+     "id": 12685186945,
+     "lngLat": [
+      4.9326145,
+      52.3637281
+     ],
+     "tags": {
+      "check_date:opening_hours": "2026-10-15",
+      "name": "Furkan Impex",
+      "opening_hours": "Mo-Sa 09:00-18:00",
+      "shop": "houseware"
+     },
+     "fetchedAt": "2026-11-09T23:23:51.828Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012155800",
+   "addresses": [
+    "Javastraat 29"
+   ],
+   "groundUnits": [
+    {
+     "address": "Javastraat 29-H",
+     "use": "winkelfunctie",
+     "areaM2": 99,
+     "bagId": "0363010000689212"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2348208251,
+     "lngLat": [
+      4.9327326,
+      52.3637389
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "29",
+      "addr:postcode": "1094GZ",
+      "addr:street": "Javastraat",
+      "check_date:opening_hours": "2026-10-15",
+      "name": "Kardaş",
+      "opening_hours": "Mo-Su 06:00-18:00",
+      "shop": "bakery",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-11-09T23:23:51.828Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012153404",
+   "addresses": [
+    "Javastraat 31A",
+    "Javastraat 31B",
+    "Javastraat 31C",
+    "Javastraat 31D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Javastraat 31A",
+     "use": "winkelfunctie",
+     "areaM2": 130,
+     "bagId": "0363010000689220"
+    },
+    {
+     "address": "Javastraat 31B",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000689221"
+    },
+    {
+     "address": "Javastraat 31C",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000689222"
+    },
+    {
+     "address": "Javastraat 31D",
+     "use": "woonfunctie",
+     "areaM2": 118,
+     "bagId": "0363010000689223"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 12699420336,
+     "lngLat": [
+      4.9328085,
+      52.3637488
+     ],
+     "tags": {
+      "craft": "electronics_repair",
+      "name": "GSM King"
+     },
+     "fetchedAt": "2026-11-09T23:23:51.828Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012237101",
+   "addresses": [
+    "Javastraat 33",
+    "Javastraat 35"
+   ],
+   "groundUnits": [
+    {
+     "address": "Javastraat 33-H",
+     "use": "kantoorfunctie,woonfunctie",
+     "areaM2": 64,
+     "bagId": "0363010000689228"
+    },
+    {
+     "address": "Javastraat 35-H",
+     "use": "kantoorfunctie,woonfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000979744"
+    },
+    {
+     "address": "Javastraat 35-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 242,
+     "bagId": "0363010012073611"
+    }
+   ],
+   "units": 11,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2348208242,
+     "lngLat": [
+      4.932936,
+      52.3637639
+     ],
+     "tags": {
+      "name": "Daily Java",
+      "shop": "convenience"
+     },
+     "fetchedAt": "2026-11-09T23:23:51.828Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

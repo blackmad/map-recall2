@@ -1,0 +1,154 @@
+{
+ "street": "Jan Haringstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched n/a (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012066992",
+   "addresses": [
+    "Jan Haringstraat 13"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Haringstraat 13-H",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000685111"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012098683",
+   "addresses": [
+    "Jan Haringstraat 15"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Haringstraat 15-H",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000685118"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012144291",
+   "addresses": [
+    "Jan Haringstraat 15A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Haringstraat 15A-H",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000685121"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012100954",
+   "addresses": [
+    "Jan Haringstraat 17"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Haringstraat 17-H",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000685128"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012117681",
+   "addresses": [
+    "Jan Haringstraat 17A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Haringstraat 17A-H",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000685131"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012152159",
+   "addresses": [
+    "Jan Haringstraat 19"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Haringstraat 19-H",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000685138"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012132169",
+   "addresses": [
+    "Jan Haringstraat 21"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Haringstraat 21-H",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000685144"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012093972",
+   "addresses": [
+    "Jan Haringstraat 23"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Haringstraat 23-H",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000685148"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012105956",
+   "addresses": [
+    "Jan Haringstraat 25",
+    "Jan Haringstraat 27"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Haringstraat 27",
+     "use": "woonfunctie",
+     "areaM2": 77,
+     "bagId": "0363010000685156"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

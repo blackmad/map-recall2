@@ -1,0 +1,73 @@
+{
+ "street": "Pelikaanstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched n/a (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012117906",
+   "addresses": [
+    "Pelikaanstraat 10"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pelikaanstraat 10-H",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000772793"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012108792",
+   "addresses": [
+    "Pelikaanstraat 8"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pelikaanstraat 8-H",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000772789"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012137878",
+   "addresses": [
+    "Pelikaanstraat 6"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pelikaanstraat 6-H",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000772785"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012086013",
+   "addresses": [
+    "Pelikaanstraat 4"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pelikaanstraat 4-H",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000772781"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  }
+ ]
+}

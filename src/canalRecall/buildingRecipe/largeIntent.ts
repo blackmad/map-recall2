@@ -13,13 +13,14 @@ import {signBoardsProblems} from '../blockBuilding/signBoards.ts';
 import {claddingProblems} from './claddingIntent.ts';
 import {wallFamilyProblems} from './wallFamily.ts';
 import {FLOOR_BAND_LIMITS} from '../blockBuilding/components.ts';
-import {GROUP_WALL_MATERIALS, LARGE_HOUSE_CROWNS, ROOF_MATERIALS, SOURCE_KINDS, SWATCHES, WALL_MATERIALS, validateIntent, type BuildingIntent, type LargeBuildingIntent} from './intent.ts';
+import {GROUP_WALL_MATERIALS, LARGE_HOUSE_CROWNS, OTHER_WINDOW_GRID, ROOF_MATERIALS, SOURCE_KINDS, SWATCHES, WALL_MATERIALS, validateIntent, type BuildingIntent, type LargeBuildingIntent} from './intent.ts';
 import {LARGE_GROUNDS, LARGE_SYSTEMS, LARGE_WINDOWS} from '../blockBuilding/systems.ts';
 import {ARCH_KINDS} from '../blockBuilding/arch.ts';
 import {stoneDressingsProblems} from './stoneDressingsIntent.ts';
+import {ribbonStoreysProblems} from './ribbonStoreysIntent.ts';
 
 const COORDINATE_KEYS = /^(x|y|z|left|right|top|bottom|width|height|depth|offset|position|coordinates|ring|vertices|plane)(M)?$|M$/;
-const WALL_KEYS = ['wallSurfaces', 'street', 'mainSurface', 'system', 'storeys', 'alignWith', 'baysPerStorey', 'ground', 'windows', 'entrance', 'signage', 'garageDoors', 'garageBays', 'stringCourses', 'cornice', 'piers', 'balconies', 'blankStoreys', 'glazedStoreys', 'police', 'palette', 'arches', 'hoist', 'sills', 'frames', 'deepBars', 'nameBoards', 'crosses', 'curve', 'wallMaterial', 'tiltedBays', 'screen', 'stoneStoreys', 'brickStoreys', 'pilasters', 'lantern', 'gateways', 'hallDoors', 'windowShape', 'windowPattern', 'hand', 'hall', 'columns', 'wallSplit', 'arcade', 'glazing', 'courses', 'souterrain', 'spandrels', 'floorBands', 'groundFactor', 'shell', 'openBays', 'meshScreen', 'loggias', 'plinth', 'houses', 'dressings', 'windowGroup', 'storeyShapes', 'cladding', 'arcadePiers', 'windowBox', 'storeyFactors', 'gallery', 'mansard', 'signBoards', 'falseFront', 'sideLight', 'bayWindows', 'loggiaBands', 'groundPiers', 'boxBalconies', 'stackedBlocks', 'balconyBands', 'wallFamily'];
+const WALL_KEYS = ['wallSurfaces', 'street', 'mainSurface', 'system', 'storeys', 'alignWith', 'baysPerStorey', 'ground', 'windows', 'entrance', 'signage', 'garageDoors', 'garageBays', 'stringCourses', 'cornice', 'piers', 'balconies', 'blankStoreys', 'glazedStoreys', 'police', 'palette', 'arches', 'hoist', 'sills', 'frames', 'deepBars', 'nameBoards', 'crosses', 'curve', 'wallMaterial', 'tiltedBays', 'screen', 'stoneStoreys', 'brickStoreys', 'pilasters', 'lantern', 'gateways', 'hallDoors', 'windowShape', 'windowPattern', 'hand', 'hall', 'columns', 'wallSplit', 'arcade', 'glazing', 'courses', 'souterrain', 'spandrels', 'floorBands', 'groundFactor', 'shell', 'openBays', 'meshScreen', 'loggias', 'plinth', 'houses', 'dressings', 'windowGroup', 'storeyShapes', 'cladding', 'arcadePiers', 'windowBox', 'storeyFactors', 'gallery', 'mansard', 'signBoards', 'falseFront', 'sideLight', 'bayWindows', 'loggiaBands', 'groundPiers', 'boxBalconies', 'stackedBlocks', 'balconyBands', 'wallFamily', 'ribbonStoreys'];
 const HOUSE_KEYS = ['schemaVersion', 'kind', 'id', 'pandId', 'address', 'sources', 'walls', 'otherWalls', 'roofPlant', 'roof', 'palette', 'closedBands', 'layeredKit', 'shellRepair', 'footprint', 'groundClamp', 'budgetTriangles', 'measured', 'draftedBy', 'crown', 'notes'];
 const SIGN_TEXT = /^[A-Za-z0-9&'. -]{1,60}$/;
 
@@ -65,7 +66,7 @@ export function validateLargeIntent(input: unknown): LargeBuildingIntent {
     for (const k of Object.keys(m ?? {})) if (!['date', 'groups', 'otherWalls'].includes(k)) problems.push(`measured.${k}: unknown field (date, groups, otherWalls)`);
   }
   if (intent?.draftedBy !== undefined) oneOf(intent.draftedBy, ['factory'], 'draftedBy');
-  if (intent?.otherWalls !== undefined) oneOf(intent.otherWalls, LARGE_SYSTEMS, 'otherWalls');
+  if (intent?.otherWalls !== undefined) oneOf(intent.otherWalls, [...LARGE_SYSTEMS, OTHER_WINDOW_GRID], 'otherWalls');
   bool(intent?.roofPlant, 'roofPlant'); bool(intent?.closedBands, 'closedBands'); bool(intent?.layeredKit, 'layeredKit'); bool(intent?.shellRepair, 'shellRepair');
   if (intent?.footprint !== undefined) oneOf(intent.footprint, ['lod22', 'bag', 'core'], 'footprint');
   if (intent?.groundClamp !== undefined && typeof intent.groundClamp !== 'boolean') problems.push('groundClamp: boolean');
@@ -92,7 +93,11 @@ export function validateLargeIntent(input: unknown): LargeBuildingIntent {
   if (intent?.roof !== undefined) {
     const r = intent.roof;
     oneOf(r?.material, ROOF_MATERIALS, 'roof.material');
-    for (const k of Object.keys(r ?? {})) if (!['material', 'flat', 'surfaces', 'flatHex', 'pitchedHex', 'levelRooftop'].includes(k)) problems.push(`roof.${k}: unknown field (material, flat, surfaces, flatHex, pitchedHex, levelRooftop)`);
+    for (const k of Object.keys(r ?? {})) if (!['material', 'flat', 'surfaces', 'flatHex', 'pitchedHex', 'levelRooftop', 'tidy'].includes(k)) problems.push(`roof.${k}: unknown field (material, flat, surfaces, flatHex, pitchedHex, levelRooftop, tidy)`);
+    if (r?.tidy !== undefined) {
+      for (const k of Object.keys(r.tidy ?? {})) if (k !== 'evidence') problems.push(`roof.tidy.${k}: unknown field (evidence)`);
+      if (typeof r.tidy?.evidence !== 'string' || !r.tidy.evidence.trim()) problems.push('roof.tidy.evidence: say why the 3DBAG roof planes are noise here (photo ids, user note)');
+    }
     if (r?.levelRooftop !== undefined) {
       for (const k of Object.keys(r.levelRooftop ?? {})) if (k !== 'evidence') problems.push(`roof.levelRooftop.${k}: unknown field (evidence)`);
       if (typeof r.levelRooftop?.evidence !== 'string' || !r.levelRooftop.evidence.trim()) problems.push('roof.levelRooftop.evidence: say what shows the rooftop is not the 3DBAG plane field (photo ids, user note)');
@@ -457,6 +462,7 @@ export function validateLargeIntent(input: unknown): LargeBuildingIntent {
       if (w.baysPerStorey === undefined) problems.push(`${at2} needs baysPerStorey`);
       if (w.piers) problems.push(`${at2}: not with piers (full-height piers on every bay)`);
     }
+    if (w.ribbonStoreys !== undefined) problems.push(...ribbonStoreysProblems(w, at));
     if (w.plinth !== undefined) {
       const pl = w.plinth, at2 = `${at}.plinth`;
       if (!pl || typeof pl !== 'object') problems.push(`${at2}: object {storeys, bays, lights, sill, h, pier, transom, factor}`);

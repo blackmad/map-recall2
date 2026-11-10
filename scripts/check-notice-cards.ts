@@ -10,6 +10,7 @@
 import assert from 'node:assert/strict';
 import {
   coverCrop, measureLandmarkCard, measurePostcard, placeOnlyDetail, wrapToLines,
+  TOUCH_ACTION_HEIGHT,
 } from '../src/canalRecall/noticeCards';
 
 /** Monospace is a fair stand-in: width is proportional to character count. */
@@ -170,6 +171,15 @@ const stub = (text: string, font: string) => {
     'the name starts at or past the photo edge, never under it');
 }
 
+// Free Ride's collection (G4): the checklist replaces the caption; a completed list says so in the heading.
+{
+  const card = measurePostcard({ name: 'Marineterrein', imageArea: 'Centrum', checklist: '3 of 9 places' }, stub);
+  assert.equal(card.caption, '3 of 9 places · Amsterdam');
+  assert.equal(card.heading, 'ENTERING NEIGHBORHOOD');
+  assert.equal(measurePostcard({ name: 'Marineterrein', checklist: 'all 9 places', stamped: true }, stub).heading, 'PASSPORT STAMP');
+  assert.equal(measurePostcard({ name: 'Marineterrein', checklist: '' }, stub).caption, 'Amsterdam', 'no list, no change');
+}
+
 // A borrowed photo is credited to the district it was actually taken in.
 {
   assert.equal(measurePostcard({ name: 'X', imageArea: 'Zuid' }, stub).caption,
@@ -251,6 +261,22 @@ const stub = (text: string, font: string) => {
   assert.deepEqual(wrapToLines('', 100, 2, stub, '10px monospace'), []);
   const single = wrapToLines('Supercalifragilisticexpialidocious', 10, 2, stub, '10px monospace');
   assert.equal(single.length, 1, 'a single unbreakable word is kept rather than dropped');
+}
+
+// The drive-by card's Noticed pill (#286): 26 px on desktop, the 44 px
+// tap-target floor when a touch screen asks for it, inside the card's bottom
+// padding either way; absent, the card is the same as before.
+{
+  const props = { name: 'Concertgebouw', category: 'LANDMARK', body: 'A concert hall in Amsterdam.' };
+  const plain = measureLandmarkCard(props, stub);
+  const desk = measureLandmarkCard({ ...props, action: 'Noticed' }, stub);
+  const touch = measureLandmarkCard({ ...props, action: 'Noticed', actionHeight: TOUCH_ACTION_HEIGHT }, stub);
+  assert.equal(desk.action!.height, 26, 'the desktop pill keeps its 26 px');
+  assert.equal(touch.action!.height, 44, 'the phone pill is a 44 px tap target');
+  assert.equal(touch.height - desk.height, 18, 'the card grows by the pill, nothing else');
+  assert.ok(touch.action!.y + touch.action!.height <= touch.height - 12, 'the pill sits inside the bottom padding');
+  assert.equal(measureLandmarkCard({ ...props, actionHeight: TOUCH_ACTION_HEIGHT }, stub).height, plain.height,
+    'no action: actionHeight changes nothing');
 }
 
 process.stdout.write('Notice card checks passed.\n');

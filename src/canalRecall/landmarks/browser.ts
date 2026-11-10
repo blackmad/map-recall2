@@ -41,12 +41,14 @@ export { ALL_MANUAL_LANDMARKS, MANUAL_LANDMARKS, MANUAL_ORDINARY_BUILDINGS } fro
 import modelVersions from './modelAssetVersions.json';
 import { ORDINARY_BUILDINGS, ORDINARY_BUILDING_VERSIONS, ORDINARY_CATEGORY_BUILDINGS, STREET_SURVEY_HOUSES } from './ordinaryModels';
 import { MANUAL_LANDMARKS as manualModels } from './manualModels';
+import { installDraws } from './blankInstalls';
 export { ORDINARY_BUILDINGS, ORDINARY_CATEGORY_BUILDINGS, STREET_SURVEY_HOUSES };
 export { BUILDING_CATEGORIES, CATEGORY_LABEL, countsAsLandmark } from '../buildingCategory';
 /** Everything the game draws: every placed manual model (landmarks + manual
  * ordinary blocks) and the ordinary-buildings catalogue (both categories).
- * Drawing is not landmark status — see SIGNATURE_MODELS for that. */
-export const GAME_BUILDING_MODELS = [...manualModels, ...ORDINARY_BUILDINGS];
+ * Drawing is not landmark status — see SIGNATURE_MODELS for that. A measured blank install (blankInstalls.ts, #264)
+ * yields to the generic facade; `?bareFronts=0` draws it again. Its covers.json entry hides pands only while it is shown. */
+export const GAME_BUILDING_MODELS = [...manualModels, ...ORDINARY_BUILDINGS.filter(m => installDraws(m.id))];
 export const MODEL_ASSET_VERSIONS = { ...modelVersions, ...ORDINARY_BUILDING_VERSIONS };
 export { SharedAssetCache } from './sharedAssetCache';
 export { streetChunksEnabled, heldStreetChunks, streetSurveyMode, withoutStreetSurveys, applyStreetChunks, chunkSpecFor, pandIndexForFace } from './ordinaryChunks';

@@ -42,6 +42,14 @@ test('only deliberate cognates remain identical in Dutch', () => {
     'Route', 'Scores', 'Zoom', 'Zoom {percent}%',
     'Start route', 'Start tour',
     'EN', 'NL', 'English', 'Nederlands', 'Cockpit', 'Expert', 'Cartoon', 'Tours', 'Tour', 'min', 'Water', 'In {context}', 'Hint', 'Bonus', '{count} landmark', '{count} landmarks', 'Wikipedia ↗', 'Account', 'Quiz', 'Ride Amsterdam', '{km} km radius', 'Landmark', 'Park',
+    // The run card (#283): Dutch says "stop" for a stop on a ride too.
+    // The arrival and card badges (#290): the same word in both languages.
+    'W  WIKIPEDIA', 'MUSEUM',
+    'Stops', 'STOPS', 'stop', 'stops', '{count} stop', '{count} stops', '{count} {stops}{from}{to}{names}.',
+    // The share picture (#295): a run's stop is "stop" in Dutch as well.
+    'Stop {n}',
+    // The pause card's stats without a quiz tally (#319): time and kilometres read the same.
+    '{time}  ·  {km} km',
   ]);
   const suspicious = untranslatedKeys().filter((key) => !allowed.has(en[key]));
   assert.deepEqual(suspicious, []);

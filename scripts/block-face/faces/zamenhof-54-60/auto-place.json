@@ -1,0 +1,318 @@
+{
+ "face": "zamenhof-54-60",
+ "street": "Zamenhofstraat",
+ "library": "vogelbuurt",
+ "stripDate": "2025-09-22",
+ "seconds": 5.92,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [
+  {
+   "face": "zamenhof-54-60-r1",
+   "pands": [
+    "0363100012064187",
+    "0363100012151653"
+   ],
+   "passed": true,
+   "triangles": 1006
+  }
+ ],
+ "pands": [
+  {
+   "pandId": "0363100012064187",
+   "address": "Zamenhofstraat 60",
+   "builtYear": 1918,
+   "widthM": 5,
+   "eavesM": 4.15,
+   "storeys3dbag": 2,
+   "bagBay": null,
+   "strip": {
+    "wall": "#575d5a",
+    "wallRaw": "#444341",
+    "skyline": {
+     "eavesM": 5.83,
+     "eavesRow": 141,
+     "confidence": 0.72,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "curtain",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "one-storey front (eaves <= 6 m): no balcony",
+     "openAxes": [
+      {
+       "widthM": 0.68,
+       "centre": 0.29,
+       "light": 0.36
+      },
+      {
+       "widthM": 0.7,
+       "centre": 0.92,
+       "light": 0.12
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 2.95,
+       "widthM": 4.6,
+       "centre": 0.5
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "placed",
+   "type": "vogel-1918-timber-band-cottage",
+   "score": 1,
+   "placement": {
+    "type": "vogel-1918-timber-band-cottage"
+   },
+   "notes": [
+    "door right",
+    "crown half-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012064187",
+    "ncc": 0.432,
+    "nccRaw": 0.432,
+    "shiftM": [
+     0.15,
+     -0.4
+    ],
+    "usable": 0.97,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "wall dL +0.17",
+     "glazing  mean 0.17 vs photo 0.54"
+    ],
+    "wall": {
+     "photo": "#48474a",
+     "model": "#8e6c5a",
+     "dL": 0.171
+    },
+    "glazing": {
+     "photo": 0.54,
+     "model": 0.17
+    },
+    "columns": {
+     "photo": null,
+     "model": null
+    },
+    "iou": 0.201
+   },
+   "challengers": {
+    "vogel-1918-timber-band-cottage": 0.432,
+    "vogel-1918-timber-band-cottage~m": 0.233
+   }
+  },
+  {
+   "pandId": "0363100012151653",
+   "address": "Zamenhofstraat 58",
+   "builtYear": 1918,
+   "widthM": 5,
+   "eavesM": 4.21,
+   "storeys3dbag": 2,
+   "bagBay": null,
+   "strip": {
+    "wall": "#2d303b",
+    "wallRaw": "#3a3e37",
+    "skyline": {
+     "eavesM": 5.55,
+     "eavesRow": 152,
+     "confidence": 0.76,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "one-storey front (eaves <= 6 m): no balcony",
+     "openAxes": [
+      {
+       "widthM": 2.27,
+       "centre": 0.25,
+       "light": 0.22
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.24
+   },
+   "status": "placed",
+   "type": "vogel-1918-timber-band-cottage",
+   "score": 1,
+   "placement": {
+    "type": "vogel-1918-timber-band-cottage",
+    "mirror": true
+   },
+   "notes": [
+    "door unread: mirrored, the opposite of 064187",
+    "crown half-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012151653",
+    "ncc": 0.293,
+    "nccRaw": 0.293,
+    "shiftM": [
+     0,
+     -0.4
+    ],
+    "usable": 0.78,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "wall dL -0.14",
+     "glazing  mean 0.15 vs photo 0.54"
+    ],
+    "wall": {
+     "photo": "#4e4f54",
+     "model": "#2c2b30",
+     "dL": -0.139
+    },
+    "glazing": {
+     "photo": 0.54,
+     "model": 0.15
+    },
+    "columns": {
+     "photo": null,
+     "model": null
+    },
+    "iou": 0.179
+   },
+   "challengers": {
+    "vogel-1918-timber-band-cottage~m": 0.293,
+    "vogel-1918-timber-band-cottage": 0.199
+   }
+  },
+  {
+   "pandId": "0363100012149443",
+   "address": "Zamenhofstraat 56",
+   "builtYear": 1918,
+   "widthM": 5,
+   "eavesM": 4.22,
+   "storeys3dbag": 2,
+   "bagBay": null,
+   "strip": {
+    "wall": "#2e313c",
+    "wallRaw": "#383f3a",
+    "skyline": {
+     "eavesM": 5.65,
+     "eavesRow": 148,
+     "confidence": 0.77,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "ribbon",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "one-storey front (eaves <= 6 m): no balcony",
+     "openAxes": [
+      {
+       "widthM": 1.6,
+       "centre": 0.17,
+       "light": 0.1
+      },
+      {
+       "widthM": 1.75,
+       "centre": 0.57,
+       "light": 0.16
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.15
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Opus strip verdict 2026-11-10: model window sits about 1 m off the photo and no doors are visible (verdict)",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012146996",
+   "address": "Zamenhofstraat 54",
+   "builtYear": 1918,
+   "widthM": 5,
+   "eavesM": 4.15,
+   "storeys3dbag": 2,
+   "bagBay": null,
+   "strip": {
+    "wall": "#2d313c",
+    "wallRaw": "#41413f",
+    "skyline": {
+     "eavesM": 5.78,
+     "eavesRow": 143,
+     "confidence": 0.76,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "ribbon",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "one-storey front (eaves <= 6 m): no balcony",
+     "openAxes": [
+      {
+       "widthM": 1.88,
+       "centre": 0.38,
+       "light": 0.18
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 2.95,
+       "widthM": 3.65,
+       "centre": 0.4
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Opus strip verdict 2026-11-10: model window sits about 1 m off the photo and no doors are visible (verdict)",
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

@@ -220,3 +220,74 @@ export function trackEdgeStall(
   state.frames = steering && guard !== 'on-road' ? 1 : 0;
   return state.frames;
 }
+
+export interface DeadEndState {
+  frames: number;
+  anchorX: number;
+  anchorY: number;
+  anchorAngle: number;
+}
+
+/** Net movement (px, ~1.3 m) under which a bike pushing forward counts as going nowhere. */
+export const DEAD_END_RADIUS = 4;
+/**
+ * Frames (60 fps) of forward push without net movement before the bike turns
+ * round by itself: 1.5 s, three times the edge-stall hand-over, so a rider
+ * steering out of a kerb is never overruled.
+ */
+export const DEAD_END_TURN_FRAMES = 90;
+/** The rider has turned the bike this far (rad) since the stall began: they are handling it. */
+const DEAD_END_HEADING_RESET = Math.PI / 4;
+
+export interface DeadEndInput {
+  /** Throttle (or cruise) is asking the bike to move. */
+  wantsForward: boolean;
+  guard: RoadGuardResult;
+  x: number;
+  y: number;
+  angle: number;
+  /** A turn-round is already under way. */
+  turning?: boolean;
+}
+
+/**
+ * Whether a bike held against the end of a way with forward pushed should be
+ * turned round now. At a cul-de-sac whose real exit is a footway, steps or a
+ * crossing the extract leaves out, forward meets the shoulder guard every
+ * frame and the bike stands, throttle open, until the rider finds the
+ * turn-round (user report 2026-11-09, "I'm stuck here", the east end of the
+ * Javaplantsoen promenade at the steps to Insulindeweg). The stall must begin
+ * off the asphalt, is judged on net movement from where it began (as
+ * `trackEdgeStall`), and resets once the rider has turned the bike 45° or
+ * more themselves. Mutates `state`; true once, on the frame the caller should
+ * start the turn-round (it then resets).
+ */
+export function trackDeadEnd(
+  state: DeadEndState,
+  input: DeadEndInput,
+  radius = DEAD_END_RADIUS,
+  turnFrames = DEAD_END_TURN_FRAMES,
+): boolean {
+  const { wantsForward, guard, x, y, angle, turning } = input;
+  if (!wantsForward || turning) {
+    state.frames = 0;
+    return false;
+  }
+  if (
+    state.frames > 0
+    && Math.hypot(x - state.anchorX, y - state.anchorY) <= radius
+    && Math.abs(normalizeAngle(angle - state.anchorAngle)) < DEAD_END_HEADING_RESET
+  ) {
+    state.frames++;
+    if (state.frames >= turnFrames) {
+      state.frames = 0;
+      return true;
+    }
+    return false;
+  }
+  state.anchorX = x;
+  state.anchorY = y;
+  state.anchorAngle = angle;
+  state.frames = guard !== 'on-road' ? 1 : 0;
+  return false;
+}

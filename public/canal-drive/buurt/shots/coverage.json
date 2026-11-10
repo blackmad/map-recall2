@@ -275,7 +275,6 @@
   "plan": 2,
   "lacks": [
    "photo borrowed from Rivierenbuurt",
-   "intro",
    "buildings",
    "bridges"
   ]
@@ -365,7 +364,7 @@
  },
  {
   "slug": "landlust",
-  "buildings": 7,
+  "buildings": 30,
   "kits": 0,
   "facts": 17,
   "origins": 56,
@@ -908,7 +907,6 @@
   "plan": 2,
   "lacks": [
    "photo borrowed from De Baarsjes",
-   "intro",
    "trivia",
    "bridges"
   ]

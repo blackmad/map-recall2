@@ -132,6 +132,13 @@ and the look-consistency lane (2026-10-13). Code owners: `src/canalRecall/look/p
   to be evidence, and reports label it as such (`buildingAppearance.ts`).
 - Photo look: real Amsterdam range, reds dominate, brick lightness
   **0.30–0.60** (`CITY_BRICK_LIGHTNESS`); stucco keeps hue, lifts lightness.
+- **Palette level** (`look/paletteLevel.ts`, lane palette-level 2026-11-09, `?paletteLevel=0` for the before): one global
+  CIE-LCH transform on the generic photo-look walls' tint (`threeBuildingFeatures.ts` end of `meshBuildingFor`; landmarks,
+  large recipes, kit walls and the GLB `cityWallTint` path are untouched). The numbers (L* -1.0, C* x0.91) are the negated
+  sun-side medians of (rendered - measured) over the buurt profiles' wall swatches; the rendered side is the browser-measured
+  tint transfer (`tests/e2e/palette-level.spec.ts`, tint attribute overwritten on the live chunks; mean error 0.5 dE76) so the
+  Node table (`scripts/look/palette-level-table.ts`) needs no render. A sun-facing generic wall draws its swatch x1.03-1.05
+  (SUNNY_EXPOSURE by design); the shade side draws 0.55 of that in linear light, so the sun-side median is the level target.
 - Storybook = natural palette, hue −4°, saturation ×1.15, lightness +0.03.
   Cartoon = saturation ×1.7 + 0.08, lightness ×1.08 above L 0.35; darks (glass,
   iron) never lift, so windows read (`LOOK_VARIANTS[*].tone`).

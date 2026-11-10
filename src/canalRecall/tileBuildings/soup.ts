@@ -205,3 +205,31 @@ export function soupHash(b: BucketMap): string {
 
 /** Translate a part so its canonical origin is at 0 (the unit mesh). */
 export const toCanonical = (b: BucketMap, origin: [number, number, number]): BucketMap => transformBuckets(b, translation(-origin[0], -origin[1], -origin[2]));
+
+/** A part's structure and bounding extents: same signature = same buckets and vertex counts, whatever the coordinates. */
+export function structureOf(role: string, b: BucketMap): {signature: string; extents: [number, number, number]} {
+  const lo = [Infinity, Infinity, Infinity], hi = [-Infinity, -Infinity, -Infinity];
+  for (const v of b.values()) for (let i = 0; i < v.positions.length; i++) { lo[i % 3] = Math.min(lo[i % 3], v.positions[i]); hi[i % 3] = Math.max(hi[i % 3], v.positions[i]); }
+  const signature = role + '|' + [...b.values()].filter(v => v.positions.length).sort((a, c) => (a.key < c.key ? -1 : 1)).map(v => `${v.key}:${v.positions.length}`).join(',');
+  return {signature, extents: [hi[0] - lo[0], hi[1] - lo[1], hi[2] - lo[2]]};
+}
+
+export interface NearRepeats { groups: number; parts: number; within: number; withinParts: number; withinSavedTriangles: number }
+
+/**
+ * The ceiling for snapping fitted widths and heights to a grid (plan C2 "quantise to 5 cm"): of the parts that share a
+ * structure, how many also agree on every bounding extent to within `quantumM`, and the triangles instancing them would
+ * save. Parts that differ in structure (another window layout, another crown) can never share a unit.
+ */
+export function nearRepeats(parts: {structure: ReturnType<typeof structureOf>; triangles: number}[], quantumM = 0.05): NearRepeats {
+  const groups = new Map<string, typeof parts>();
+  for (const p of parts) (groups.get(p.structure.signature) ?? groups.set(p.structure.signature, []).get(p.structure.signature)!).push(p);
+  const out: NearRepeats = {groups: 0, parts: 0, within: 0, withinParts: 0, withinSavedTriangles: 0};
+  for (const g of groups.values()) {
+    if (g.length < 2) continue;
+    out.groups++; out.parts += g.length;
+    const spread = Math.max(...[0, 1, 2].map(k => Math.max(...g.map(x => x.structure.extents[k])) - Math.min(...g.map(x => x.structure.extents[k]))));
+    if (spread <= quantumM) { out.within++; out.withinParts += g.length; out.withinSavedTriangles += g[0].triangles * (g.length - 1); }
+  }
+  return out;
+}

@@ -1285,7 +1285,10 @@ class VectorBasemap {
     // Listed buildings whose register description names their gable (monument-gables.json) draw that gable.
     const gables = this._monumentGables;
     const named = gables && gables.size && api.withMonumentGable ? (feature) => api.withMonumentGable(feature, gables) : (feature) => feature;
-    const decorate = withRoofs ? (feature) => api.decorateRoof(named(Facades.decorateFacade(feature))) : Facades.decorateFacade;
+    // The register's facade facts (monument-facts.json: era, wall finish, stated extras) read before the facade; `?registerFacts=0` skips them.
+    const facts = this._registerFacts;
+    const registered = facts && facts.size && api && api.withRegisterFacts ? (feature) => api.withRegisterFacts(feature, facts) : (feature) => feature;
+    const decorate = withRoofs ? (feature) => api.decorateRoof(named(Facades.decorateFacade(registered(feature)))) : (feature) => Facades.decorateFacade(registered(feature));
     // Landmark buildings (churches, museums, Centraal…) keep their own form: no generic facade or roof.
     if (!this._landmarkBuildingIds) this._landmarkBuildingIds = new Set();
     const base = api && api.exceptLandmarks ? api.exceptLandmarks(decorate, this._landmarkBuildingIds, this._listedLandmarks) : decorate;
@@ -1310,6 +1313,23 @@ class VectorBasemap {
       this._applyFeatureDecorator();
     } catch (error) {
       console.warn('Monument gables unavailable; listed buildings get period gables.', error);
+    }
+  }
+
+  /** The monuments register's parsed facade facts (monument-facts.json), fetched once; re-decorates when they arrive. */
+  async _loadRegisterFacts() {
+    if (this._registerFactsRequested) return;
+    this._registerFactsRequested = true;
+    try {
+      const api = window.CanalRecallThreeBuildings;
+      if (!api || !api.registerFactsEnabled || !api.registerFactsEnabled(window.location.search)) return;
+      const response = await fetch(this._extractFile('monument-facts.json'));
+      if (!response.ok) return;
+      const data = await response.json();
+      this._registerFacts = new Map(Object.entries(data.buildings || {}));
+      this._applyFeatureDecorator();
+    } catch (error) {
+      console.warn('Register facts unavailable; listed buildings keep their BAG-year looks.', error);
     }
   }
 
@@ -1545,6 +1565,7 @@ class VectorBasemap {
       this._applyFeatureDecorator();
       this._loadLandmarkBuildingIds();
       this._loadMonumentGables();
+      this._loadRegisterFacts();
     }
     let available = false;
     try {
@@ -1908,7 +1929,7 @@ class VectorBasemap {
   setPlaces(landmarks, boundaries) {
     this._pendingPlaces = { landmarks: landmarks || [], boundaries: boundaries || [] };
     if (!this.map || !this.map.getSource('amsterdam-pois')) return;
-    const pois = this._pendingPlaces.landmarks.filter(item => item.center && (item.manualPoi || item.nativeKitPoi || ((item.prominenceScore || 0) >= 220 && !this._spoils(item.name)))).map(item => ({ type: 'Feature', properties: { id: item.id, name: item.name }, geometry: { type: 'Point', coordinates: [item.center[1], item.center[0]] } }));
+    const pois = this._pendingPlaces.landmarks.filter(item => item.center && (item.manualPoi || item.nativeKitPoi || ((item.prominenceScore || 0) >= 220 && !this._spoils(item.name) && !(item.sourceName && this._spoils(item.sourceName))))).map(item => ({ type: 'Feature', properties: { id: item.id, name: item.name }, geometry: { type: 'Point', coordinates: [item.center[1], item.center[0]] } }));
     const polygons = [], labels = [];
     for (const boundary of this._pendingPlaces.boundaries.filter(item => item.kind === 'neighbourhood' && item.geometry)) {
       for (const polygon of boundary.geometry) {
@@ -2312,6 +2333,8 @@ class VectorBasemap {
   }
 
   setPlayerBike(player, loader, visible, zoomScale = 1) {
+    // The rider cover's way ahead off the route reads the bike's heading (streetVisibility.ts, lane F4 #320).
+    if (player) { this._coverRiderAngle = Number.isFinite(player.angle) ? player.angle : null; if (loader) this._coverLoader = loader; }
     if (!this._playerBike || !player || !loader) return;
     this._playerBike.zoomScale = zoomScale;
     const lngLat = this.worldToLngLat(player.x, player.y, loader);
@@ -2416,6 +2439,19 @@ class VectorBasemap {
     return !!(this._playerTransit && this._playerTransit.ready);
   }
 
+  // A tapped label's building (#258 follow-up): the surface under the tap and under the label's drawn anchor, kept when
+  // its footprint holds the label's point (engine/labelPand.ts), so the card adds that pand's year to the place's name.
+  _withLabelPand(label, surface, mapCanvas) {
+    const attach = window.CanalRecallEngine && window.CanalRecallEngine.withLabelPand;
+    const drawn = this._drawn();
+    if (!attach || !drawn || !Array.isArray(label.lngLat)) return label;
+    const at = drawn.project(label.lngLat);
+    const w = mapCanvas.clientWidth, h = mapCanvas.clientHeight;
+    const under = [this._signatureLandmarks, this._threeBuildings, this._tileBuildings]
+      .map(layer => layer && layer.inspectAtScreen ? layer.inspectAtScreen(at.x, at.y, w, h) : null);
+    return attach(label, [surface, ...under]);
+  }
+
   inspectBuilding(cssX, cssY, canvasRect) {
     // After a WebGL context loss MapLibre drops its style; a tap then hit
     // map.getLayer on null (Sentry CANAL-RECALL-H, Chrome Mobile).
@@ -2433,7 +2469,7 @@ class VectorBasemap {
     // Curated POIs must win over the much larger building extrusion under the
     // pointer. The hit box is forgiving because dots are intentionally small.
     let poiResult = this._labelOverlay ? this._labelOverlay.hitTest(pixel.x, pixel.y) : null;
-    if (poiResult) return poiResult;
+    if (poiResult) return this._withLabelPand(poiResult, surface, mapCanvas);
     const poiLayers = ['poi-labels'].filter(id => this.map.getLayer(id));
     // MapLibre's feature query and unproject ignore the deck lift; the tap is on what was drawn (_drawn).
     const queryPixel = this._drawn().queryPixel(pixel);
@@ -2451,7 +2487,7 @@ class VectorBasemap {
   }
     // An explicitly clicked visible POI label selects that venue, including
     // genuine venues sharing one model. Otherwise use the nearest real mesh.
-    if (poiResult) return poiResult;
+    if (poiResult) return this._withLabelPand(poiResult, surface, mapCanvas);
     if (surface) return surface;
     // The hidden basemap cannot stand in for the complete city's actual mesh.
     if (this._completeCityHasBuildings && this._threeBuildings?.ready) return poiResult;
@@ -2477,6 +2513,10 @@ class VectorBasemap {
   }
 
   setRoute(routePath, loader, visible) {
+    if (loader && routePath !== this._coverRouteRef) {
+      this._coverRouteRef = routePath;
+      this._coverRoute = routePath && routePath.length > 1 ? routePath.map(point => this.worldToLngLat(point.x, point.y, loader)) : null;
+    }
     if (!this.map || !loader || this._styleGone() || !this.map.getSource('navigation-route')) return;
     // Trees are thinned against the route whether or not its line is drawn.
     if (routePath && routePath.length > 1 && routePath !== this._treeRouteRef) {
@@ -2548,6 +2588,7 @@ class VectorBasemap {
   }
 
   setStreetHighlights(track, loader, learnedNames, activeName, activeSegmentIndex, routePath = null) {
+    if (track && loader) { this._coverTrack = track; this._coverLoader = loader; }
     if (!this.ready || !track || !loader || this._styleGone() || !this.map.getSource('active-street')) return;
     const activeKey = `${activeName || ''}:${activeSegmentIndex}`;
     if (activeKey !== this._activeStreetKey || routePath !== this._activeStreetRoute) {
@@ -3046,7 +3087,12 @@ class VectorBasemap {
           // Without MapLibre's copy of the streamed buildings (phones), the streamer answers.
           const city = this._completeCity;
           if (city && city.isPublishing === false) features.push(...city.featuresAt(rider[0], rider[1]));
-          const cover = helpers.coveringBuilding(features, rider);
+          // Route-aware (streetVisibility.ts streetCoverInWorld, lane F4 #320): a bump into a house front never
+          // covers, only a passage the route or the road underfoot runs through. `?coverRoute=0`: the point rule.
+          const routeAware = typeof helpers.streetCoverInWorld === 'function' && !/[?&]coverRoute=0\b/.test(window.location.search || '');
+          const cover = routeAware
+            ? helpers.streetCoverInWorld(features, { rider, route: this._coverRoute, track: this._coverTrack, loader: this._coverLoader, riderAngle: this._coverRiderAngle })
+            : helpers.coveringBuilding(features, rider);
           coveredNow = !!cover;
           if (cover) this._riderCoverId = String(cover.properties && cover.properties.id != null ? cover.properties.id : cover.id);
         } catch (_) { coveredNow = false; }
@@ -3062,7 +3108,12 @@ class VectorBasemap {
   _applyRiderCover(covered, opacity) {
     // In the three.js looks the three layer is what the rider sees: the building over the rider
     // goes (a faded beige slab over beige ground still hid the corridor), the rest stay solid.
-    if (this._threeBuildings) this._threeBuildings.setHidden('cover', covered && this._threeOwnsTops() && this._riderCoverId ? [this._riderCoverId] : []);
+    // Ghosted (a screen door), never hidden: a building does not vanish at street level (lane F4 #320).
+    const coverIds = covered && this._threeOwnsTops() && this._riderCoverId ? [this._riderCoverId] : [];
+    if (this._threeBuildings) {
+      if (typeof this._threeBuildings.setGhosted === 'function') this._threeBuildings.setGhosted('cover', coverIds);
+      else this._threeBuildings.setHidden('cover', coverIds);
+    }
     if (covered) {
       this._riderCoverOpacity = new Map();
       for (const layer of this.map.getStyle().layers || []) {

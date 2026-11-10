@@ -2,10 +2,10 @@
   "city": "amsterdam",
   "zoom": 14,
   "generatedAt": "2026-09-03T21:20:05.136Z",
-  "features": 349854,
+  "features": 350964,
   "tiles": 295,
-  "totalBytes": 112387850,
-  "totalGzipBytes": 15621360,
+  "totalBytes": 113219609,
+  "totalGzipBytes": 15738600,
   "tileList": [
     "14/8405/5378",
     "14/8405/5379",
@@ -315,6 +315,10 @@
   "bagGapSupplement": {
     "version": "bag-gaps-v1",
     "source": "scripts/data/bag-gaps/bag-gaps-supplement.geojson (BAG WFS footprint, AHN dsm/dtm 05m height)",
-    "features": 1795
+    "sources": [
+      "scripts/data/bag-gaps/bag-gaps-supplement.geojson (BAG WFS footprint, AHN dsm/dtm 05m height)",
+      "scripts/data/bag-gaps/new-pands-supplement.geojson"
+    ],
+    "features": 2905
   }
 }

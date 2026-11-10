@@ -17,7 +17,15 @@
  * and reads unchanged, so an old extract stays valid until it is rebuilt.
  */
 export const ROAD_CELL_VERSION = 2 as const;
-export const ROAD_CELL_VERSIONS: readonly number[] = [1, 2];
+/**
+ * 3 (engine round 5, R5-C2 #263): the junction slivers merged into their longest same-level neighbour and the kerb stubs
+ * dropped (roadSlivers.ts dissolveSlivers). Same schema; published under `cells-v3/` beside the version-2 `cells/`
+ * (manifest `v3`), so `?roadSlivers=0` reads today's cells.
+ */
+export const ROAD_CELL_VERSION_SLIVERS = 3 as const;
+export const ROAD_CELL_VERSIONS: readonly number[] = [1, 2, 3];
+/** Where the version-3 cells live in roads-v1. */
+export const ROAD_CELLS_V3_DIR = 'cells-v3';
 export const ROADS_MANIFEST_VERSION = 1 as const;
 export const ROADS_EXTRACT = 'roads-v1';
 export const ROADS_ATTRIBUTION = 'BGT © Kadaster (CC0 1.0)';
@@ -66,7 +74,7 @@ export interface RoadSurface {
 }
 
 export interface RoadCell {
-  version: 1 | 2;
+  version: 1 | 2 | 3;
   key: string;
   /** Polygons whose interior point lies in this cell. */
   surfaces: RoadSurface[];
@@ -82,6 +90,13 @@ export interface RoadsManifest {
   fetched: string;
   attribution: string;
   report?: Record<string, unknown>;
+  /** The version-3 cells (slivers merged) are published under ROAD_CELLS_V3_DIR for every listed cell. */
+  v3?: boolean;
+}
+
+/** The directory a runtime reads roads-v1 cells from: the version-3 cells when the manifest publishes them. */
+export function roadCellDir(m: Pick<RoadsManifest, 'v3'>): string {
+  return m.v3 === true ? ROAD_CELLS_V3_DIR : 'cells';
 }
 
 // ------------------------------------------------------------------ classification

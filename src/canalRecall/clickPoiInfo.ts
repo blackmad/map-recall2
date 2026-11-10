@@ -1,4 +1,6 @@
 /** Mapped information for the actual building selected by the mesh picker. */
+import { isLabelOnly, poiChipEnglish, poiChipKey } from './poiCardPolicy';
+import { language, t } from '../i18n/index.ts';
 import type { BuildingHit, GeoJsonFeature, LandmarkNotice } from './game/worldTypes';
 
 export type PolygonGeometry = Extract<GeoJsonFeature['geometry'], { type: 'Polygon' | 'MultiPolygon' }>;
@@ -37,7 +39,12 @@ export function poiInsideBuilding(point: readonly number[], geometry: PolygonGeo
     && !rings.slice(1).some(hole => inRing(point, hole)));
 }
 
-const osmUrl = (id: string) => `https://www.openstreetmap.org/${({ n: 'node', w: 'way', r: 'relation' } as Record<string, string>)[id[0]]}/${id.slice(1)}`;
+/** The chip for a mapped place: its kind in English (CAFÉ), its category in Dutch. */
+export const poiChipLabel = (row: Readonly<ClickPoiRow>): string =>
+  language() === 'en' ? poiChipEnglish(row) : t(poiChipKey(row[4]) as Parameters<typeof t>[0]).toUpperCase();
+
+const normalName = (name: string | null | undefined) => (name || '').normalize('NFC').toLocaleLowerCase('nl').trim();
+export const osmUrl = (id: string) => `https://www.openstreetmap.org/${({ n: 'node', w: 'way', r: 'relation' } as Record<string, string>)[id[0]]}/${id.slice(1)}`;
 const cell = (lng: number, lat: number) => `${Math.floor(lng * 1000)}/${Math.floor(lat * 1000)}`;
 
 export class ClickPoiIndex {
@@ -69,15 +76,39 @@ export class ClickPoiIndex {
     // A venue may have both its entrance node and its building mapped.
     const seen = new Set<string>();
     return found.filter(row => {
-      const key = row[1].normalize('NFC').toLocaleLowerCase('nl').trim();
+      const key = normalName(row[1]);
       if (seen.has(key)) return false;
       seen.add(key); return true;
     });
   }
 
+  /**
+   * The mapped place a drawn POI label stands for: the same name, nearest to
+   * the label's point and within `maxMetres`. A tap on a label carries only
+   * its text and point (labelLayer.ts hitTest), no footprint, so `contained`
+   * cannot answer it (user shot 2026-11-08, the Sloterdijk gurdwara).
+   */
+  named(name: string | null | undefined, lngLat: readonly number[] | null | undefined, maxMetres = 60): ClickPoiRow | null {
+    const key = normalName(name);
+    if (!key || !lngLat || !Number.isFinite(lngLat[0]) || !Number.isFinite(lngLat[1])) return null;
+    const [lng, lat] = lngLat;
+    const cx = Math.floor(lng * 1000), cy = Math.floor(lat * 1000);
+    const mx = 111320 * Math.cos(lat * Math.PI / 180), my = 110540;
+    let best: ClickPoiRow | null = null, bestM = maxMetres;
+    for (let x = cx - 1; x <= cx + 1; x++) for (let y = cy - 1; y <= cy + 1; y++) {
+      for (const row of this.cells.get(`${x}/${y}`) ?? []) {
+        if (normalName(row[1]) !== key) continue;
+        const metres = Math.hypot((row[2] - lng) * mx, (row[3] - lat) * my);
+        if (metres <= bestM) { best = row; bestM = metres; }
+      }
+    }
+    return best;
+  }
+
   card(building: BuildingHit): LandmarkNotice | null {
     if (!building.footprint) return null;
-    const places = this.contained(building.footprint);
+    // A place with nothing beyond its kind ("X is mapped as an artwork") is a label, not a card: the building answers.
+    const places = this.contained(building.footprint).filter(row => !isLabelOnly(row));
     if (!places.length) return null;
     // A mapped mall describes the physical complex; its tenant shops belong
     // in the remaining information rather than naming the entire building.
@@ -91,7 +122,7 @@ export class ClickPoiIndex {
     const first = places[0];
     return {
       id: `clicked-poi-${building.id}`, name: places.length > 1 ? `${first[1]} + ${places.length - 1} mapped places` : first[1],
-      type: first[4], detail: `${first[1]} is mapped as ${first[5] || first[4]}${first[6] ? ` at ${first[6]}` : ''}.`,
+      type: first[4], typeLabel: poiChipLabel(first), detail: `${first[1]} is mapped as ${first[5] || first[4]}${first[6] ? ` at ${first[6]}` : ''}.`,
       longDetail: summaries.join('\n\n'), factTexts: paragraphs,
       sourceUrl: osmUrl(first[0]), lngLat: [first[2], first[3]], featureTarget: building.featureTarget,
     };

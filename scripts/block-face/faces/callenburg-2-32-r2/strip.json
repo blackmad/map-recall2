@@ -1,0 +1,155 @@
+{
+ "face": "callenburg-2-32-r2",
+ "image": "staging/block-face/callenburg-2-32-r2/strip.jpg",
+ "pixelsPerMetre": 40,
+ "width": 1536,
+ "height": 619,
+ "groundNAP": 0.634,
+ "heightM": 15.48,
+ "frame": {
+  "midRD": [
+   119081.64039583334,
+   487916.66400000005
+  ],
+  "uRD": [
+   0.21448784302657517,
+   -0.9767266583818665
+  ],
+  "nRD": [
+   -0.9767266583818665,
+   -0.21448784302657517
+  ]
+ },
+ "x0M": -19.21,
+ "x1M": 19.19,
+ "date": "2024-11-21",
+ "coverage": 1,
+ "spans": [
+  {
+   "pandId": "0363100012095699",
+   "x0M": -19.21,
+   "x1M": -6.39,
+   "px": [
+    0,
+    513
+   ],
+   "date": "2024-11-21",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "terdam_21112024_Track37_Sphere_00036",
+     "timestamp": "2024-11-21T11:43:43Z",
+     "distanceM": 12.5,
+     "obliquityDeg": 9.1,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "terdam_21112024_Track37_Sphere_00037",
+     "timestamp": "2024-11-21T11:43:44Z",
+     "distanceM": 12.7,
+     "obliquityDeg": 13.9,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "terdam_21112024_Track37_Sphere_00035",
+     "timestamp": "2024-11-21T11:43:42Z",
+     "distanceM": 14.3,
+     "obliquityDeg": 30.4,
+     "missingFraction": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012125512",
+   "x0M": -6.41,
+   "x1M": 6.39,
+   "px": [
+    512,
+    1024
+   ],
+   "date": "2024-11-21",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "terdam_21112024_Track37_Sphere_00039",
+     "timestamp": "2024-11-21T11:43:46Z",
+     "distanceM": 12.3,
+     "obliquityDeg": 3.4,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "terdam_21112024_Track37_Sphere_00040",
+     "timestamp": "2024-11-21T11:43:47Z",
+     "distanceM": 12.9,
+     "obliquityDeg": 18.1,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "terdam_21112024_Track37_Sphere_00038",
+     "timestamp": "2024-11-21T11:43:45Z",
+     "distanceM": 13.4,
+     "obliquityDeg": 23.3,
+     "missingFraction": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012105359",
+   "x0M": 6.39,
+   "x1M": 19.19,
+   "px": [
+    1024,
+    1536
+   ],
+   "date": "2024-11-21",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "terdam_21112024_Track37_Sphere_00042",
+     "timestamp": "2024-11-21T11:43:48Z",
+     "distanceM": 12.4,
+     "obliquityDeg": 4.1,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "terdam_21112024_Track37_Sphere_00041",
+     "timestamp": "2024-11-21T11:43:47Z",
+     "distanceM": 12.9,
+     "obliquityDeg": 18,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "terdam_21112024_Track37_Sphere_00043",
+     "timestamp": "2024-11-21T11:43:48Z",
+     "distanceM": 13.8,
+     "obliquityDeg": 25.6,
+     "missingFraction": 0
+    }
+   ]
+  }
+ ],
+ "candidatesByDate": {
+  "2019-01-07": 8,
+  "2022-06-27": 8,
+  "2025-09-26": 8,
+  "2021-03-24": 8,
+  "2016-06-22": 8,
+  "2019-04-16": 8,
+  "2019-12-10": 8,
+  "2018-06-14": 8,
+  "2020-05-14": 8,
+  "2024-11-21": 8,
+  "2017-04-20": 8,
+  "2022-12-12": 0,
+  "2020-05-08": 0
+ },
+ "description": "Rectified orthographic elevation of the whole face on the frontage planes: x = chunk-frame metres along the face (left→right seen from the street) from x0M, y = metres above the shared ground (groundNAP) from the bottom; grey = no panorama data. Per-pand spans list the panoramas median-fused for that frontage.",
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (CC BY 4.0; faces and number plates blurred by the publisher)",
+ "croppedFrom": {
+  "face": "callenburg-2-32",
+  "px": [
+   1537,
+   3073
+  ]
+ }
+}

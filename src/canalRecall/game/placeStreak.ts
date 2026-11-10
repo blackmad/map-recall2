@@ -30,10 +30,10 @@ function dayOffset(key: string, delta: number): string {
   return date.toISOString().slice(0, 10);
 }
 
-function recompute(days: string[]): PlaceStreak {
+function recompute(days: string[], now = Date.now()): PlaceStreak {
   const unique = [...new Set(days)].sort();
   if (unique.length === 0) return emptyPlaceStreak();
-  const today = utcDayKey();
+  const today = utcDayKey(now);
   const yesterday = dayOffset(today, -1);
   let current = 0;
   let cursor = unique.includes(today) ? today : unique.includes(yesterday) ? yesterday : '';
@@ -51,12 +51,13 @@ function recompute(days: string[]): PlaceStreak {
   return { days: unique.slice(-90), current, best: Math.max(best, current) };
 }
 
-export function readPlaceStreak(store: KeyValueStore): PlaceStreak {
+/** `now` decides which day is today (the landing page passes its own clock). */
+export function readPlaceStreak(store: Pick<KeyValueStore, 'getItem'>, now = Date.now()): PlaceStreak {
   try {
     const raw = store.getItem(PLACE_STREAK_STORAGE_KEY);
     if (!raw) return emptyPlaceStreak();
     const parsed = JSON.parse(raw) as Partial<PlaceStreak>;
-    return recompute(Array.isArray(parsed.days) ? parsed.days.map(String) : []);
+    return recompute(Array.isArray(parsed.days) ? parsed.days.map(String) : [], now);
   } catch {
     return emptyPlaceStreak();
   }
@@ -65,9 +66,9 @@ export function readPlaceStreak(store: KeyValueStore): PlaceStreak {
 /** Record a day where the player added at least one new name to the collection. */
 export function notePlaceDay(store: KeyValueStore, now = Date.now()): PlaceStreak {
   const day = utcDayKey(now);
-  const prior = readPlaceStreak(store);
+  const prior = readPlaceStreak(store, now);
   if (prior.days.includes(day)) return prior;
-  const next = recompute([...prior.days, day]);
+  const next = recompute([...prior.days, day], now);
   try {
     store.setItem(PLACE_STREAK_STORAGE_KEY, JSON.stringify(next));
   } catch {

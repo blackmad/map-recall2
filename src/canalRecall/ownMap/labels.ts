@@ -57,6 +57,8 @@ export interface PlacedLabel {
   glyphs?: PlacedGlyph[];
   /** Line labels: the street points (local metres) under the first, middle and last glyph (occlusion tests them). */
   anchors?: Vec2[];
+  /** Drawn at this opacity (labelFade.ts); absent: 1. */
+  alpha?: number;
 }
 
 type Box = [number, number, number, number];
@@ -260,8 +262,10 @@ export function drawPlacedLabels(ctx: CanvasRenderingContext2D, placed: readonly
   ctx.textAlign = 'center';
   ctx.textBaseline = 'middle';
   ctx.lineJoin = 'round';
+  let faded = false;
   for (const l of placed) {
     const p = paint[l.kind];
+    if (l.alpha !== undefined && l.alpha < 1) { ctx.globalAlpha = l.alpha; faded = true; } else if (faded) { ctx.globalAlpha = 1; faded = false; }
     ctx.font = p.font(l.size);
     ctx.strokeStyle = p.halo; ctx.lineWidth = p.haloWidth * 2; ctx.fillStyle = p.fill;
     if (l.glyphs) {
@@ -275,4 +279,5 @@ export function drawPlacedLabels(ctx: CanvasRenderingContext2D, placed: readonly
       ctx.fillText(l.text, l.x!, l.y!);
     }
   }
+  if (faded) ctx.globalAlpha = 1;
 }

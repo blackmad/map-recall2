@@ -1,0 +1,1666 @@
+{
+ "source": "public/data/extracts/amsterdam",
+ "osm": "highways-all.geojson",
+ "generatedAt": "2026-11-09T20:49:10.735Z",
+ "routingBefore": 47259,
+ "routingAfter": 47532,
+ "candidates": {
+  "rideable": 565,
+  "service": 7582
+ },
+ "alreadyCarried": {
+  "rideable": 84,
+  "service": 7557
+ },
+ "unconnected": {
+  "rideable": 26,
+  "service": 23
+ },
+ "added": {
+  "rideable": 273,
+  "service": 0
+ },
+ "prunedStubs": 184,
+ "junctionsSpliced": 48,
+ "addedNamed": 90,
+ "ways": [
+  {
+   "id": "routing_47699",
+   "osm": "w4270151",
+   "klass": "rideable",
+   "name": "Zeeburgerstraat"
+  },
+  {
+   "id": "routing_47700",
+   "osm": "w4726772",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_47701",
+   "osm": "w4726773",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_47702",
+   "osm": "w4729527",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_47704",
+   "osm": "w4731684",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_47706",
+   "osm": "w7044288",
+   "klass": "rideable",
+   "name": "Delle Alpihof"
+  },
+  {
+   "id": "routing_47707",
+   "osm": "w7044291",
+   "klass": "rideable",
+   "name": "Bernabeuhof"
+  },
+  {
+   "id": "routing_47708",
+   "osm": "w7044347",
+   "klass": "rideable",
+   "name": "Delle Alpihof"
+  },
+  {
+   "id": "routing_47709",
+   "osm": "w7044868",
+   "klass": "rideable",
+   "name": "Archimedeslaan"
+  },
+  {
+   "id": "routing_47710",
+   "osm": "w7046000",
+   "klass": "rideable",
+   "name": "Alexanderkade"
+  },
+  {
+   "id": "routing_47711",
+   "osm": "w7049170",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_47712",
+   "osm": "w7051322",
+   "klass": "rideable",
+   "name": "Hoekenrodepad"
+  },
+  {
+   "id": "routing_47713",
+   "osm": "w7051404",
+   "klass": "rideable",
+   "name": "Hoekenrodepad"
+  },
+  {
+   "id": "routing_47715",
+   "osm": "w7378378",
+   "klass": "rideable",
+   "name": "Van Beuningenplein"
+  },
+  {
+   "id": "routing_47716",
+   "osm": "w7384267",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_47718",
+   "osm": "w9652192",
+   "klass": "rideable",
+   "name": "Han Rensenbrinkpad"
+  },
+  {
+   "id": "routing_47721",
+   "osm": "w10528015",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_47722",
+   "osm": "w10528016",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_47723",
+   "osm": "w10528018",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_47724",
+   "osm": "w10528019",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_47725",
+   "osm": "w10528020",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_47726",
+   "osm": "w10528021",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_47727",
+   "osm": "w10528022",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_47728",
+   "osm": "w10528023",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_47729",
+   "osm": "w10528024",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_47730",
+   "osm": "w10528025",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_47731",
+   "osm": "w10528027",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_47732",
+   "osm": "w10528028",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_47733",
+   "osm": "w10528031",
+   "klass": "rideable",
+   "name": "Klaartje de Zwarte - Walvischbrug"
+  },
+  {
+   "id": "routing_47734",
+   "osm": "w10528032",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_47736",
+   "osm": "w10531221",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_47738",
+   "osm": "w12519633",
+   "klass": "rideable",
+   "name": "Leusdenhof"
+  },
+  {
+   "id": "routing_47740",
+   "osm": "w12720258",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_47742",
+   "osm": "w12882273",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_47743",
+   "osm": "w12882274",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_47744",
+   "osm": "w12882275",
+   "klass": "rideable",
+   "name": "Slingerlaan"
+  },
+  {
+   "id": "routing_47745",
+   "osm": "w12882276",
+   "klass": "rideable",
+   "name": "Mien Ruysbrug"
+  },
+  {
+   "id": "routing_47746",
+   "osm": "w12882277",
+   "klass": "rideable",
+   "name": "Slingerlaan"
+  },
+  {
+   "id": "routing_47747",
+   "osm": "w12882278",
+   "klass": "rideable",
+   "name": "Elgar Vosbrug"
+  },
+  {
+   "id": "routing_47748",
+   "osm": "w12882280",
+   "klass": "rideable",
+   "name": "Lindelaan"
+  },
+  {
+   "id": "routing_47749",
+   "osm": "w12882285",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_47750",
+   "osm": "w15073030",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_47751",
+   "osm": "w16819101",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_47752",
+   "osm": "w21817555",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_47753",
+   "osm": "w21817586",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_47754",
+   "osm": "w22099343",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_47757",
+   "osm": "w26308796",
+   "klass": "rideable",
+   "name": "Eksterlaan"
+  },
+  {
+   "id": "routing_47758",
+   "osm": "w27090099",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_47761",
+   "osm": "w28365988",
+   "klass": "rideable",
+   "name": "Pancrasstraat"
+  },
+  {
+   "id": "routing_47762",
+   "osm": "w29396358",
+   "klass": "rideable",
+   "name": "Oostenburgervoorstraat"
+  },
+  {
+   "id": "routing_47763",
+   "osm": "w30133429",
+   "klass": "rideable",
+   "name": "Kippebrug"
+  },
+  {
+   "id": "routing_47764",
+   "osm": "w30133431",
+   "klass": "rideable",
+   "name": "Wittenburgerkade"
+  },
+  {
+   "id": "routing_47766",
+   "osm": "w31262833",
+   "klass": "rideable",
+   "name": "Brug 141"
+  },
+  {
+   "id": "routing_47767",
+   "osm": "w31738308",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_47768",
+   "osm": "w31738434",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_47769",
+   "osm": "w31738456",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_47770",
+   "osm": "w33912376",
+   "klass": "rideable",
+   "name": "Voorzitter Stekbrug"
+  },
+  {
+   "id": "routing_47771",
+   "osm": "w33912377",
+   "klass": "rideable",
+   "name": "Han Lammersbrug"
+  },
+  {
+   "id": "routing_47772",
+   "osm": "w35393680",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_47773",
+   "osm": "w35687061",
+   "klass": "rideable",
+   "name": "Werkspoorbrug"
+  },
+  {
+   "id": "routing_47774",
+   "osm": "w37481777",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_47775",
+   "osm": "w37481778",
+   "klass": "rideable",
+   "name": "Alexanderkade"
+  },
+  {
+   "id": "routing_47776",
+   "osm": "w37481781",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_47777",
+   "osm": "w37704993",
+   "klass": "rideable",
+   "name": "Slijkstraat"
+  },
+  {
+   "id": "routing_47778",
+   "osm": "w37828016",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_47780",
+   "osm": "w37844704",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_47781",
+   "osm": "w38054668",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_47784",
+   "osm": "w38352824",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_47785",
+   "osm": "w38352826",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_47786",
+   "osm": "w38352827",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_47787",
+   "osm": "w41177690",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_47788",
+   "osm": "w44003373",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_47789",
+   "osm": "w46916147",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_47793",
+   "osm": "w68584816",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_47795",
+   "osm": "w77028591",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_47796",
+   "osm": "w87088435",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_47797",
+   "osm": "w87088438",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_47798",
+   "osm": "w87088439",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_47799",
+   "osm": "w102787125",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_47800",
+   "osm": "w108389212",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_47801",
+   "osm": "w109704921",
+   "klass": "rideable",
+   "name": "IJpromenade"
+  },
+  {
+   "id": "routing_47802",
+   "osm": "w109876427",
+   "klass": "rideable",
+   "name": "Ed van der Elskenhof"
+  },
+  {
+   "id": "routing_47803",
+   "osm": "w109876429",
+   "klass": "rideable",
+   "name": "Ed van der Elskenhof"
+  },
+  {
+   "id": "routing_47805",
+   "osm": "w116044716",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_47806",
+   "osm": "w116044717",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_47807",
+   "osm": "w116044720",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_47809",
+   "osm": "w120555382",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_47810",
+   "osm": "w124659058",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_47811",
+   "osm": "w126484533",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_47812",
+   "osm": "w126563758",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_47813",
+   "osm": "w126563759",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_47814",
+   "osm": "w126564958",
+   "klass": "rideable",
+   "name": "Nelson Mandelapark"
+  },
+  {
+   "id": "routing_47817",
+   "osm": "w128636345",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_47818",
+   "osm": "w132607909",
+   "klass": "rideable",
+   "name": "Nelson Mandelapark"
+  },
+  {
+   "id": "routing_47819",
+   "osm": "w132612651",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_47820",
+   "osm": "w133909727",
+   "klass": "rideable",
+   "name": "Jesse Owenshof"
+  },
+  {
+   "id": "routing_47821",
+   "osm": "w133909728",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_47826",
+   "osm": "w146259106",
+   "klass": "rideable",
+   "name": "Javaplantsoen"
+  },
+  {
+   "id": "routing_47828",
+   "osm": "w152385175",
+   "klass": "rideable",
+   "name": "Kantershof"
+  },
+  {
+   "id": "routing_47829",
+   "osm": "w152401989",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_47830",
+   "osm": "w152401998",
+   "klass": "rideable",
+   "name": "Nelson Mandelapark"
+  },
+  {
+   "id": "routing_47831",
+   "osm": "w152402006",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_47834",
+   "osm": "w152409592",
+   "klass": "rideable",
+   "name": "Nelson Mandelapark"
+  },
+  {
+   "id": "routing_47836",
+   "osm": "w158540448",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_47837",
+   "osm": "w158540452",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_47838",
+   "osm": "w160503543",
+   "klass": "rideable",
+   "name": "Schelvisch Hoofd"
+  },
+  {
+   "id": "routing_47839",
+   "osm": "w161939159",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_47840",
+   "osm": "w165339479",
+   "klass": "rideable",
+   "name": "Middenpad"
+  },
+  {
+   "id": "routing_47842",
+   "osm": "w167788808",
+   "klass": "rideable",
+   "name": "Nelson Mandelapark"
+  },
+  {
+   "id": "routing_47848",
+   "osm": "w179622330",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_47849",
+   "osm": "w179622332",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_47850",
+   "osm": "w179622333",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_47851",
+   "osm": "w181748122",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_47859",
+   "osm": "w202663970",
+   "klass": "rideable",
+   "name": "Albert Helmanbrug"
+  },
+  {
+   "id": "routing_47860",
+   "osm": "w202663972",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_47861",
+   "osm": "w208192254",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_47863",
+   "osm": "w211952511",
+   "klass": "rideable",
+   "name": "Maasdrielhof"
+  },
+  {
+   "id": "routing_47865",
+   "osm": "w221282079",
+   "klass": "rideable",
+   "name": "Waterpoortweg"
+  },
+  {
+   "id": "routing_47867",
+   "osm": "w224116022",
+   "klass": "rideable",
+   "name": "Vondelpark"
+  },
+  {
+   "id": "routing_47868",
+   "osm": "w224116023",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_47872",
+   "osm": "w230165070",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_47873",
+   "osm": "w230165084",
+   "klass": "rideable",
+   "name": "Mijndenhof"
+  },
+  {
+   "id": "routing_47874",
+   "osm": "w230165089",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_47876",
+   "osm": "w232732827",
+   "klass": "rideable",
+   "name": "Millingenhof"
+  },
+  {
+   "id": "routing_47877",
+   "osm": "w232732831",
+   "klass": "rideable",
+   "name": "Opheusdenhof"
+  },
+  {
+   "id": "routing_47878",
+   "osm": "w232732833",
+   "klass": "rideable",
+   "name": "Meernhof"
+  },
+  {
+   "id": "routing_47879",
+   "osm": "w232732835",
+   "klass": "rideable",
+   "name": "Millingenhof"
+  },
+  {
+   "id": "routing_47880",
+   "osm": "w232732839",
+   "klass": "rideable",
+   "name": "Opheusdenhof"
+  },
+  {
+   "id": "routing_47881",
+   "osm": "w233088924",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_47882",
+   "osm": "w233088925",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_47883",
+   "osm": "w233088926",
+   "klass": "rideable",
+   "name": "Groenebrug"
+  },
+  {
+   "id": "routing_47884",
+   "osm": "w233784615",
+   "klass": "rideable",
+   "name": "Haagwindeweg"
+  },
+  {
+   "id": "routing_47886",
+   "osm": "w244777495",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_47888",
+   "osm": "w255641291",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_47889",
+   "osm": "w255641292",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_47890",
+   "osm": "w261257780",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_47891",
+   "osm": "w261352556",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_47892",
+   "osm": "w268782108",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_47893",
+   "osm": "w268782109",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_47899",
+   "osm": "w290636867",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_47901",
+   "osm": "w293261983",
+   "klass": "rideable",
+   "name": "Kees Schererhof"
+  },
+  {
+   "id": "routing_47902",
+   "osm": "w300521680",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_47903",
+   "osm": "w304632378",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_47909",
+   "osm": "w316564379",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_47910",
+   "osm": "w318344978",
+   "klass": "rideable",
+   "name": "Flevopark"
+  },
+  {
+   "id": "routing_47911",
+   "osm": "w318344979",
+   "klass": "rideable",
+   "name": "Flevopark"
+  },
+  {
+   "id": "routing_47914",
+   "osm": "w357536440",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_47915",
+   "osm": "w357536441",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_47916",
+   "osm": "w370011970",
+   "klass": "rideable",
+   "name": "Meernhof"
+  },
+  {
+   "id": "routing_47917",
+   "osm": "w370011999",
+   "klass": "rideable",
+   "name": "Millingenhof"
+  },
+  {
+   "id": "routing_47919",
+   "osm": "w376383016",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_47923",
+   "osm": "w384598644",
+   "klass": "rideable",
+   "name": "Maasdrielhof"
+  },
+  {
+   "id": "routing_47926",
+   "osm": "w384598647",
+   "klass": "rideable",
+   "name": "Maasdrielhof"
+  },
+  {
+   "id": "routing_47929",
+   "osm": "w388105860",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_47930",
+   "osm": "w388440307",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_47931",
+   "osm": "w389963708",
+   "klass": "rideable",
+   "name": "Erasmusgracht"
+  },
+  {
+   "id": "routing_47932",
+   "osm": "w403541823",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_47934",
+   "osm": "w417015598",
+   "klass": "rideable",
+   "name": "Twentestraat"
+  },
+  {
+   "id": "routing_47936",
+   "osm": "w424381683",
+   "klass": "rideable",
+   "name": "Elzenlaan"
+  },
+  {
+   "id": "routing_47941",
+   "osm": "w424381689",
+   "klass": "rideable",
+   "name": "Berkenlaan"
+  },
+  {
+   "id": "routing_47942",
+   "osm": "w424381690",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_47943",
+   "osm": "w424381691",
+   "klass": "rideable",
+   "name": "Maluslaan"
+  },
+  {
+   "id": "routing_47944",
+   "osm": "w424381692",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_47946",
+   "osm": "w442862274",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_47947",
+   "osm": "w442862277",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_47950",
+   "osm": "w472239424",
+   "klass": "rideable",
+   "name": "Fazantenlaan"
+  },
+  {
+   "id": "routing_47953",
+   "osm": "w483554874",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_47957",
+   "osm": "w489977390",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_47958",
+   "osm": "w493543673",
+   "klass": "rideable",
+   "name": "Alexanderkade"
+  },
+  {
+   "id": "routing_47959",
+   "osm": "w495864821",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_47961",
+   "osm": "w505918957",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_47962",
+   "osm": "w505918964",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_47963",
+   "osm": "w533016812",
+   "klass": "rideable",
+   "name": "Violette Corneliushof"
+  },
+  {
+   "id": "routing_47969",
+   "osm": "w564051591",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_47970",
+   "osm": "w564051592",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_47971",
+   "osm": "w564053450",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_47972",
+   "osm": "w564053452",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_47973",
+   "osm": "w564053454",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_47974",
+   "osm": "w564053455",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_47975",
+   "osm": "w565745751",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_47976",
+   "osm": "w581620842",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_47978",
+   "osm": "w589938981",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_47981",
+   "osm": "w621800088",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_47982",
+   "osm": "w621800090",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_47983",
+   "osm": "w676881472",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_47984",
+   "osm": "w676881473",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_47985",
+   "osm": "w676881474",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_47986",
+   "osm": "w676881475",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_47989",
+   "osm": "w677871517",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_47990",
+   "osm": "w677871518",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_47995",
+   "osm": "w677871529",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_47998",
+   "osm": "w677871537",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_47999",
+   "osm": "w677871539",
+   "klass": "rideable",
+   "name": "Essenlaan"
+  },
+  {
+   "id": "routing_48000",
+   "osm": "w681320029",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_48006",
+   "osm": "w785915919",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_48007",
+   "osm": "w785915921",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_48010",
+   "osm": "w814013604",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_48011",
+   "osm": "w814013605",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_48012",
+   "osm": "w814013606",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_48014",
+   "osm": "w823491285",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_48016",
+   "osm": "w826448225",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_48017",
+   "osm": "w826448226",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_48020",
+   "osm": "w831387656",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_48021",
+   "osm": "w831387657",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_48026",
+   "osm": "w898580147",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_48028",
+   "osm": "w898580161",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_48029",
+   "osm": "w899584720",
+   "klass": "rideable",
+   "name": "Delle Alpihof"
+  },
+  {
+   "id": "routing_48031",
+   "osm": "w913896455",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_48033",
+   "osm": "w914324929",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_48034",
+   "osm": "w915624616",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_48035",
+   "osm": "w917156623",
+   "klass": "rideable",
+   "name": "Slingerlaan"
+  },
+  {
+   "id": "routing_48037",
+   "osm": "w917156631",
+   "klass": "rideable",
+   "name": "Slingerlaan"
+  },
+  {
+   "id": "routing_48038",
+   "osm": "w917156646",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_48042",
+   "osm": "w1005058051",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_48043",
+   "osm": "w1005058052",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_48044",
+   "osm": "w1005058053",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_48045",
+   "osm": "w1009154404",
+   "klass": "rideable",
+   "name": "Delle Alpihof"
+  },
+  {
+   "id": "routing_48046",
+   "osm": "w1009154409",
+   "klass": "rideable",
+   "name": "Bernabeuhof"
+  },
+  {
+   "id": "routing_48048",
+   "osm": "w1047713241",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_48049",
+   "osm": "w1047713242",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_48055",
+   "osm": "w1082657978",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_48060",
+   "osm": "w1102559208",
+   "klass": "rideable",
+   "name": "Elzenlaan"
+  },
+  {
+   "id": "routing_48061",
+   "osm": "w1108158839",
+   "klass": "rideable",
+   "name": "Zeeburgerdijk"
+  },
+  {
+   "id": "routing_48063",
+   "osm": "w1110348172",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_48064",
+   "osm": "w1115585198",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_48065",
+   "osm": "w1115654610",
+   "klass": "rideable",
+   "name": "Flevopark"
+  },
+  {
+   "id": "routing_48066",
+   "osm": "w1115654611",
+   "klass": "rideable",
+   "name": "Flevopark"
+  },
+  {
+   "id": "routing_48067",
+   "osm": "w1115656291",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_48068",
+   "osm": "w1121125620",
+   "klass": "rideable",
+   "name": "Meernhof"
+  },
+  {
+   "id": "routing_48071",
+   "osm": "w1126366381",
+   "klass": "rideable",
+   "name": "Lindelaan"
+  },
+  {
+   "id": "routing_48075",
+   "osm": "w1152993529",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_48077",
+   "osm": "w1163531365",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_48083",
+   "osm": "w1178623879",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_48084",
+   "osm": "w1181068816",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_48085",
+   "osm": "w1181068820",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_48088",
+   "osm": "w1185607007",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_48089",
+   "osm": "w1185607008",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_48091",
+   "osm": "w1185640821",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_48092",
+   "osm": "w1199798491",
+   "klass": "rideable",
+   "name": "Nieuwe Osdorpergracht"
+  },
+  {
+   "id": "routing_48093",
+   "osm": "w1207014136",
+   "klass": "rideable",
+   "name": "IJpromenade"
+  },
+  {
+   "id": "routing_48094",
+   "osm": "w1215816330",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_48095",
+   "osm": "w1217339263",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_48100",
+   "osm": "w1299464442",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_48101",
+   "osm": "w1305039708",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_48102",
+   "osm": "w1305039709",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_48103",
+   "osm": "w1305039710",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_48105",
+   "osm": "w1310799428",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_48106",
+   "osm": "w1310799429",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_48108",
+   "osm": "w1319740159",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_48110",
+   "osm": "w1344377121",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_48113",
+   "osm": "w1349032235",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_48114",
+   "osm": "w1349032236",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_48115",
+   "osm": "w1349032238",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_48116",
+   "osm": "w1352771932",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_48120",
+   "osm": "w1374372590",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_48124",
+   "osm": "w1379392178",
+   "klass": "rideable",
+   "name": "Nelson Mandelapark"
+  },
+  {
+   "id": "routing_48125",
+   "osm": "w1379392180",
+   "klass": "rideable",
+   "name": "Nelson Mandelapark"
+  },
+  {
+   "id": "routing_48126",
+   "osm": "w1379392181",
+   "klass": "rideable",
+   "name": "Nelson Mandelapark"
+  },
+  {
+   "id": "routing_48127",
+   "osm": "w1379392186",
+   "klass": "rideable",
+   "name": "Nelson Mandelapark"
+  },
+  {
+   "id": "routing_48128",
+   "osm": "w1379393993",
+   "klass": "rideable",
+   "name": "Nelson Mandelapark"
+  },
+  {
+   "id": "routing_48130",
+   "osm": "w1396591567",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_48131",
+   "osm": "w1408624078",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_48134",
+   "osm": "w1429690994",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_48135",
+   "osm": "w1434027078",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_48136",
+   "osm": "w1434027148",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_48137",
+   "osm": "w1447144966",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_48139",
+   "osm": "w1468009257",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_48146",
+   "osm": "w1526733877",
+   "klass": "rideable",
+   "name": "Alexanderkade"
+  },
+  {
+   "id": "routing_48147",
+   "osm": "w1526733878",
+   "klass": "rideable",
+   "name": "Alexanderkade"
+  },
+  {
+   "id": "routing_48148",
+   "osm": "w1526733879",
+   "klass": "rideable",
+   "name": "Alexanderkade"
+  },
+  {
+   "id": "routing_48152",
+   "osm": "w1544302879",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_48154",
+   "osm": "w1551577917",
+   "klass": "rideable",
+   "name": ""
+  },
+  {
+   "id": "routing_48155",
+   "osm": "w1551592257",
+   "klass": "rideable",
+   "name": ""
+  }
+ ]
+}

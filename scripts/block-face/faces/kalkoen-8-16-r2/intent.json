@@ -1,0 +1,129 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "kalkoen-8-16-r2",
+ "street": "Kalkoenstraat",
+ "sources": [
+  {
+   "id": "strip-2018-07-30",
+   "kind": "street-panorama",
+   "capturedAt": "2018-07-30",
+   "image": "staging/block-face/kalkoen-8-16-r2/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "auto-place (blockFace/autoPlace.ts)",
+  "passes": 1,
+  "note": "auto-placed from the vogelbuurt library (buurt Vogelbuurt-Noord); scores and holds in scripts/block-face/faces/kalkoen-8-16/auto-place.json"
+ },
+ "types": [
+  "vogel-1921-two-storey-dormer-row"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012109590",
+   "slug": "kalkoen-109590",
+   "address": "Kalkoenstraat 10",
+   "type": {
+    "type": "vogel-1921-two-storey-dormer-row",
+    "mirror": true,
+    "measuredPalette": {
+     "brick": "#6c5b55",
+     "evidence": "strip 2018-07-30 span 763-1017: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#494240"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2018-07-30",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "bays": "narrow window over the door, wide window",
+    "identicalBays": "no",
+    "windowsPerStorey": "ground: door + wide window | 1: narrow + wide",
+    "symmetry": "mirror pairs about the party wall",
+    "groundFloor": "double doors paired across the party wall",
+    "signage": "none",
+    "roofline": "grey cornice slab; a flat dormer over the wide window, a crow-stepped gable on block ends",
+    "photoRows": [
+     2,
+     2,
+     1
+    ],
+    "photoGroundRows": 1,
+    "citation": "auto-place: vogel-1921-two-storey-dormer-row scored 1 on storeys 1, roof 1, stucco 1; strip 2018-07-30 span 763-1017"
+   }
+  },
+  {
+   "pandId": "0363100012105550",
+   "slug": "kalkoen-105550",
+   "address": "Kalkoenstraat 8",
+   "type": {
+    "type": "vogel-1921-two-storey-dormer-row",
+    "measuredPalette": {
+     "brick": "#73635b",
+     "evidence": "strip 2018-07-30 span 1017-1278: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#4a4542"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2018-07-30",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "bays": "narrow window over the door, wide window",
+    "identicalBays": "no",
+    "windowsPerStorey": "ground: door + wide window | 1: narrow + wide",
+    "symmetry": "mirror pairs about the party wall",
+    "groundFloor": "double doors paired across the party wall",
+    "signage": "none",
+    "roofline": "grey cornice slab; a flat dormer over the wide window, a crow-stepped gable on block ends",
+    "photoRows": [
+     2,
+     2,
+     1
+    ],
+    "photoGroundRows": 1,
+    "citation": "auto-place: vogel-1921-two-storey-dormer-row scored 1 on storeys 1, roof 1, stucco 1; strip 2018-07-30 span 1017-1278"
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "auto-place: low attic behind the cornice; the strips show sky over the cornices of the type rows"
+  },
+  "measuredEaves": [
+   {
+    "pand": "0363100012109590",
+    "stripRow": 295,
+    "evidence": "auto-place: the vogel-1921-two-storey-dormer-row cornice line 6.45 m (measured on its exemplar strips; this pand's skyline unread); 3DBAG/PDOK eaves 6.96 m"
+   },
+   {
+    "pand": "0363100012105550",
+    "stripRow": 295,
+    "evidence": "auto-place: the vogel-1921-two-storey-dormer-row cornice line 6.45 m (measured on its exemplar strips; this pand's skyline unread); 3DBAG/PDOK eaves 6.92 m"
+   }
+  ]
+ }
+}

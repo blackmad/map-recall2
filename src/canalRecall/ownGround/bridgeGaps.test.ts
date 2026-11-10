@@ -108,3 +108,18 @@ test('survey edges stop at ground-level survey and reach farther with capM (dry 
   assert.equal(surveyDeckEdges(deck(), onDeck)!.left[20], 3 + EDGE_NO_OUTLINE_M, 'no outline: capped at half-width + 2 m');
   assert.equal(surveyDeckEdges(deck(), onDeck, undefined, 20)!.left[20], 15.25, 'capM: out to the polygon');
 });
+
+test('narrowDryDeck: a dry way deck keeps a core half-width so the survey polygon, not the OSM width, sets the sides (Ringweg-Zuid 7381715)', async () => {
+  const { dryWayDeckProfile, narrowDryDeck, DRY_CORE_HALF_M } = await import('./wayDecks.js');
+  const wide = dryWayDeckProfile({ id: 7, name: 'ring', points: [[0, 0], [60, 0]] as [number, number][], halfWidth: 10 }, () => true, () => false)!;
+  narrowDryDeck(wide);
+  assert.ok(wide.halfWidth.every(h => h === DRY_CORE_HALF_M), 'narrowed to the core');
+  assert.equal(wide.sides, undefined);
+  assert.ok(wide.bbox[3] - wide.bbox[1] <= 2 * DRY_CORE_HALF_M + 1e-9, 'the box shrinks with it');
+  // surveyDeckEdges then walks out from the core: it stops at ground-level road (y > 5) instead of the OSM half-width of 10
+  const edges = surveyDeckEdges(wide, (x, y) => y >= -2 && y <= 5, (x, y) => y > 5, 20)!;
+  assert.ok(edges.left[40] > 4.5 && edges.left[40] <= 5.5, `left edge ${edges.left[40]}`);
+  const narrow = dryWayDeckProfile({ id: 8, name: 'busway', points: [[0, 0], [60, 0]] as [number, number][], halfWidth: 1 }, () => true, () => false)!;
+  narrowDryDeck(narrow);
+  assert.ok(narrow.halfWidth.every(h => h === 1), 'a narrower way is left alone');
+});

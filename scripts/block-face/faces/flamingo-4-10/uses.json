@@ -1,0 +1,73 @@
+{
+ "street": "Flamingostraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched n/a (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012063000",
+   "addresses": [
+    "Flamingostraat 10"
+   ],
+   "groundUnits": [
+    {
+     "address": "Flamingostraat 10-H",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000636476"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012087661",
+   "addresses": [
+    "Flamingostraat 8"
+   ],
+   "groundUnits": [
+    {
+     "address": "Flamingostraat 8-H",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000636472"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012066422",
+   "addresses": [
+    "Flamingostraat 6"
+   ],
+   "groundUnits": [
+    {
+     "address": "Flamingostraat 6-H",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010000636468"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012129921",
+   "addresses": [
+    "Flamingostraat 4"
+   ],
+   "groundUnits": [
+    {
+     "address": "Flamingostraat 4-H",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000636464"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  }
+ ]
+}

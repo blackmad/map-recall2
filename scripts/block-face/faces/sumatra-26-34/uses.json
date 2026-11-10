@@ -1,0 +1,189 @@
+{
+ "street": "Sumatrastraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T00:16:55.806Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012164534",
+   "addresses": [
+    "Sumatrastraat 34"
+   ],
+   "groundUnits": [
+    {
+     "address": "Sumatrastraat 34-H",
+     "use": "winkelfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000823216"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2348168274,
+     "lngLat": [
+      4.9352463,
+      52.3639484
+     ],
+     "tags": {
+      "female": "yes",
+      "male": "yes",
+      "name": "Barbershop Murat",
+      "opening_hours": "Mo-Sa 10:00-19:00",
+      "shop": "hairdresser"
+     },
+     "fetchedAt": "2026-11-10T00:16:55.806Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012164660",
+   "addresses": [
+    "Sumatrastraat 32"
+   ],
+   "groundUnits": [
+    {
+     "address": "Sumatrastraat 32-H",
+     "use": "winkelfunctie",
+     "areaM2": 62,
+     "bagId": "0363010000823209"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2348168307,
+     "lngLat": [
+      4.9352231,
+      52.3640163
+     ],
+     "tags": {
+      "check_date:opening_hours": "2026-10-22",
+      "female:signed": "no",
+      "male:signed": "no",
+      "name": "Kwiyasse",
+      "opening_hours": "We-Sa 10:00-18:30",
+      "shop": "hairdresser",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-11-10T00:16:55.806Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012093447",
+   "addresses": [
+    "Sumatrastraat 30"
+   ],
+   "groundUnits": [
+    {
+     "address": "Sumatrastraat 30-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000823205"
+    },
+    {
+     "address": "Sumatrastraat 30-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 101,
+     "bagId": "0363010012077522"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012147446",
+   "addresses": [
+    "Sumatrastraat 28"
+   ],
+   "groundUnits": [
+    {
+     "address": "Sumatrastraat 28-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000823201"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2348168280,
+     "lngLat": [
+      4.9351809,
+      52.3641288
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "28-H",
+      "addr:postcode": "1094ND",
+      "addr:street": "Sumatrastraat",
+      "alt_name": "Nelis Oost",
+      "amenity": "restaurant",
+      "check_date": "2026-11-09",
+      "check_date:opening_hours": "2026-11-09",
+      "contact:instagram": "themeetsrestaurant",
+      "contact:phone": "+31 6 36 29 20 69",
+      "diet:vegan": "yes",
+      "diet:vegetarian": "only",
+      "email": "hello@themeets.nl",
+      "internet_access": "wlan",
+      "level": "0",
+      "name": "The Meets",
+      "opening_hours": "Tu-Sa 17:30-23:00",
+      "smoking": "no",
+      "website": "https://www.themeets.nl/",
+      "website:menu": "https://www.themeets.nl/menu-drinks",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-11-10T00:16:55.806Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012123220",
+   "addresses": [
+    "Sumatrastraat 26"
+   ],
+   "groundUnits": [
+    {
+     "address": "Sumatrastraat 26-H",
+     "use": "winkelfunctie",
+     "areaM2": 40,
+     "bagId": "0363010000823197"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2348155464,
+     "lngLat": [
+      4.9351593,
+      52.3641757
+     ],
+     "tags": {
+      "check_date": "2026-10-03",
+      "check_date:opening_hours": "2026-10-03",
+      "craft": "tailor",
+      "name": "Sezar",
+      "opening_hours": "Tu-Fr 09:00-18:00; Mo,Sa 09:00-17:00"
+     },
+     "fetchedAt": "2026-11-10T00:16:55.806Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,212 @@
+{
+ "face": "zamenhof-14-20",
+ "street": "Zamenhofstraat",
+ "library": "vogelbuurt",
+ "stripDate": "2025-09-22",
+ "seconds": 0.16,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012135860",
+   "address": "Zamenhofstraat 20",
+   "builtYear": 1918,
+   "widthM": 5,
+   "eavesM": 4.26,
+   "storeys3dbag": 2,
+   "bagBay": null,
+   "strip": {
+    "wall": "#5c6262",
+    "wallRaw": "#525254",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 377,
+     "confidence": 0.2,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0.75,
+     "bayCentre": 0.92,
+     "balconies": false,
+     "why": "one-storey front (eaves <= 6 m): no balcony",
+     "openAxes": [
+      {
+       "widthM": 0.95,
+       "centre": 0.9,
+       "light": 0.75
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 3.05,
+       "widthM": 1.52,
+       "centre": 0.5
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "no front on the strip: sky over the roof in 62 % of columns (< 75 %): the strip shows a nearer wall, fence or tree, not the front",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012101216",
+   "address": "Zamenhofstraat 18",
+   "builtYear": 1918,
+   "widthM": 5,
+   "eavesM": 4.27,
+   "storeys3dbag": 2,
+   "bagBay": null,
+   "strip": {
+    "wall": "#384047",
+    "wallRaw": "#505052",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 377,
+     "confidence": 0.16,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "one-storey front (eaves <= 6 m): no balcony",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "no front on the strip: sky over the roof in 31 % of columns (< 75 %): the strip shows a nearer wall, fence or tree, not the front",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012108165",
+   "address": "Zamenhofstraat 16",
+   "builtYear": 1918,
+   "widthM": 5,
+   "eavesM": 4.25,
+   "storeys3dbag": 2,
+   "bagBay": null,
+   "strip": {
+    "wall": "#4d5262",
+    "wallRaw": "#5d5e5b",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 377,
+     "confidence": 0.08,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0.47,
+     "bayCentre": 0.05,
+     "balconies": false,
+     "why": "one-storey front (eaves <= 6 m): no balcony",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "no front on the strip: sky over the roof in 66 % of columns (< 75 %): the strip shows a nearer wall, fence or tree, not the front",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012124024",
+   "address": "Zamenhofstraat 14",
+   "builtYear": 1918,
+   "widthM": 5,
+   "eavesM": 4.27,
+   "storeys3dbag": 2,
+   "bagBay": null,
+   "strip": {
+    "wall": null,
+    "wallRaw": "#545658",
+    "skyline": {
+     "eavesM": 7.5,
+     "eavesRow": 77,
+     "confidence": 0.43,
+     "crown": {
+      "widthM": 0.6,
+      "riseM": 1.85,
+      "topWidthM": 0.35,
+      "centre": 0.66
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "curtain",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "one-storey front (eaves <= 6 m): no balcony",
+     "openAxes": [
+      {
+       "widthM": 0.63,
+       "centre": 0.07,
+       "light": 0.56
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 2.92,
+       "widthM": 1.68,
+       "centre": 0.57
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "no front on the strip: sky over the roof in 74 % of columns (< 75 %): the strip shows a nearer wall, fence or tree, not the front",
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

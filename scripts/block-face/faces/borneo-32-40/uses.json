@@ -1,0 +1,191 @@
+{
+ "street": "Borneostraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-09T23:26:16.605Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012117241",
+   "addresses": [
+    "Borneostraat 40"
+   ],
+   "groundUnits": [
+    {
+     "address": "Borneostraat 40",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 927,
+     "bagId": "0363010001020974"
+    },
+    {
+     "address": "Bankastraat 63",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 1,
+     "bagId": "0363010001020975"
+    }
+   ],
+   "units": 2,
+   "osm": [
+    {
+     "type": "node",
+     "id": 12699351538,
+     "lngLat": [
+      4.9347266,
+      52.3649768
+     ],
+     "tags": {
+      "amenity": "place_of_worship",
+      "name": "UKGR Evangelisch Centrum",
+      "religion": "christian"
+     },
+     "fetchedAt": "2026-11-09T23:26:16.605Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012067136",
+   "addresses": [
+    "Borneostraat 38"
+   ],
+   "groundUnits": [
+    {
+     "address": "Borneostraat 38-H",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000592324"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2827528373,
+     "lngLat": [
+      4.9343737,
+      52.3651589
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "38-H",
+      "addr:postcode": "1094CL",
+      "addr:street": "Borneostraat",
+      "healthcare": "physiotherapist",
+      "name": "Borneopraktijk",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://borneopraktijk.nl/"
+     },
+     "fetchedAt": "2026-11-09T23:26:16.605Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012141428",
+   "addresses": [
+    "Borneostraat 36A",
+    "Borneostraat 36B",
+    "Borneostraat 36C",
+    "Borneostraat 36D",
+    "Borneostraat 36E"
+   ],
+   "groundUnits": [
+    {
+     "address": "Borneostraat 36A",
+     "use": "woonfunctie",
+     "areaM2": 74,
+     "bagId": "0363010000592316"
+    },
+    {
+     "address": "Borneostraat 36B",
+     "use": "woonfunctie",
+     "areaM2": 62,
+     "bagId": "0363010000592317"
+    },
+    {
+     "address": "Borneostraat 36C",
+     "use": "woonfunctie",
+     "areaM2": 62,
+     "bagId": "0363010000592318"
+    },
+    {
+     "address": "Borneostraat 36D",
+     "use": "woonfunctie",
+     "areaM2": 62,
+     "bagId": "0363010000592319"
+    },
+    {
+     "address": "Borneostraat 36E",
+     "use": "woonfunctie",
+     "areaM2": 62,
+     "bagId": "0363010001041653"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012078037",
+   "addresses": [
+    "Borneostraat 34A",
+    "Borneostraat 34B",
+    "Borneostraat 34C",
+    "Borneostraat 34D",
+    "Borneostraat 34E"
+   ],
+   "groundUnits": [
+    {
+     "address": "Borneostraat 34A",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010000592309"
+    },
+    {
+     "address": "Borneostraat 34B",
+     "use": "woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010000592310"
+    },
+    {
+     "address": "Borneostraat 34C",
+     "use": "woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010000592311"
+    },
+    {
+     "address": "Borneostraat 34D",
+     "use": "woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010000592312"
+    },
+    {
+     "address": "Borneostraat 34E",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010001041645"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012153798",
+   "addresses": [
+    "Borneostraat 32"
+   ],
+   "groundUnits": [
+    {
+     "address": "Borneostraat 32-H",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010000592304"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

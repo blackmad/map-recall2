@@ -25,13 +25,19 @@ import { SharedFrame } from '../rendererShared/sharedFrame';
 import { mapLibreSky } from '../look/sunny';
 import { FrameHost, type FrameSimulation } from './frameHost';
 import { guardFrameHost } from './frameGuards';
-import { settleChecks } from './settle';
+import { SETTLE_GROUND_RADIUS_M, settleChecks } from './settle';
+import { RevealSurface, revealLightEnabled } from './revealSurface';
+import { isRideAim, poseCamera, revealLandmarkBudget, revealPose, revealSwapBudget, revealSwapEnabled } from './revealLandmarks';
+import { censusGrid, startHoldEnabled, startTierCensus, type StartTierCensus, type StartTierSample } from './startHold';
+import { cellKeyOf, cellOf } from '../world/cellGrid';
+import { isTouchPointer, START_SETTLE_GROUND_RADIUS_M, START_SETTLE_LEGACY_CAP_MS, StartSettleHold, startSettleCoveredFrameMs, startSettleGates, startSettleCapMs, startSettleEnabled, type StartSettleStep } from './startSettle';
 import { CameraMap, EngineCamera, unitsPerMetre, mercatorX, mercatorY } from './cameraMap';
 import { GameCameraSolver, lngLatToWorld, worldToLngLat, type GameCamera, type LoaderFrame } from './gameCamera';
 import { clearCamera, clearanceResidents, residentIndex } from './cameraClearance';
+import { clearEye, coverAheadPoints, easePullIn, eyeInsideBuilding, footprintsNear, footprintTopM, nearPlaneReachM, EYE_WALL_MARGIN_M, type Eye } from './streetVisibility';
 import { RiderCoverTracker } from './riderCover';
 import { idleScheduler } from './idleBoxGrid';
-import { coverRouteFlag, roadAheadPoints, routeAheadPoints, type LngLat as CoverLngLat } from '../coveredPassage';
+import { coverRouteFlag, footprintContains, routeAheadPoints, type LngLat as CoverLngLat } from '../coveredPassage';
 import { decodeOverviewBytes, fetchOverviewBytes, OverviewLayer, overviewTileGrid, OVERVIEW_TILE_MIN_TRIANGLES } from './overviewLayer';
 import { overviewFromPool } from '../ownMap/overviewPool';
 import { awaitWorkerPool } from './workerPool';
@@ -41,9 +47,11 @@ import { FlatLines, type LngLatLine } from './overlays/flatLines';
 import { FarShells, farCellOrigin, farShellsEnabled } from './farShells';
 import { BakedCoarse, bakedCoarseEnabled, bakedBytesEnabled, bakedReleaseM } from './bakedCoarse';
 import { PacedDelivery, arrivalPaceOption } from './arrivalPace';
-import { isAerialView } from '../rendererShared/aerialView';
+import { AERIAL_EYE_MIN_M, eyeHeightM, isAerialView } from '../rendererShared/aerialView';
+import { AerialPower, aerialLeversFromQuery } from './aerialPower';
 import { BASE_REFRESH_BUDGET_MS } from '../rendererShared/baseRefreshBudget';
 import { ToonPost, toonLookFlag } from './toonLook';
+import { CorridorPost, corridorFocusFlag } from './corridorFocus';
 import { SmaaPost, smaaFlag } from './postAA';
 import { COVER_POLL_MS, isCoveredState } from '../labels/coveredState';
 import { AERIAL_POI_MAX, LabelLayer, type PointLabel } from './overlays/labelLayer';
@@ -57,8 +65,11 @@ import { CityExtras } from './cityExtras';
 import { gameTileEnricher } from '../gameTileEnricher';
 import { LandmarkHighlight } from './landmarkHighlight';
 import { LabelOcclusion } from './labelOcclusion';
+import { withLabelPand } from './labelPand';
 import { SpoilerSources } from './spoilerSources';
 import { groundCentre, groundViewFlag } from '../ownGround/groundResidency';
+import { clearBackM, FPS_EYE_HEIGHT_M, fpsPose, fpsRequested, headBobM, stepFpsYaw, FPS_FAR_CAP_M, FPS_NEAR_DIVISOR, type FpsPose } from './fpsCamera';
+import { DEFAULT_FOV_DEG, MAX_PITCH_DEG } from '../ownMap/mapCamera';
 
 declare const CANVAS_W: number;
 declare const CANVAS_H: number;
@@ -147,6 +158,10 @@ export class OwnWorldView implements WorldViewOracles {
   readonly camera: WorldCamera;
   readonly _sharedFrame: SharedFrame;
   _renderGovernor: any = null;
+  /** Power from the air (engine/aerialPower.ts, lane R5-F #266): pacing, scale and shadow levers while the camera flies. */
+  _aerialPower: AerialPower | null = null;
+  /** The pixel ratio before the aerial scale lowered it (restored when the camera settles). */
+  private aerialBaseRatio: number | null = null;
   /** The quality tier chosen at start, its settings and the probe numbers (also on window.__canalPerf). */
   qualityTier: { tier: QualityTier; reasons: string[]; settings: Record<string, unknown>; probe: unknown } | null = null;
   _cameraTilt = 0;
@@ -230,6 +245,7 @@ export class OwnWorldView implements WorldViewOracles {
   private buildingLookNow: BuildingLookId = 'photo';
   /** The toon look's palette pass (`?look=toon`, #161); null otherwise. */
   private toonPost: ToonPost | null = null;
+  private corridorPost: CorridorPost | null = null;
   /** `?smaa=1` (lane R3-A #230): SMAA 1x over the resolved frame, before the toon remap. */
   private smaaPost: SmaaPost | null = null;
   private buildingLookLocked = false;
@@ -335,6 +351,7 @@ export class OwnWorldView implements WorldViewOracles {
     if (urlLook) { this.buildingLookNow = urlLook; this.buildingLookLocked = true; }
     // The toon look (#161) starts from the Cartoon buildings look; an explicit ?buildings3d= still wins.
     const toon = toonLookFlag();
+    const corridor = corridorFocusFlag();
     if (toon && !urlLook) { this.buildingLookNow = 'cartoon'; this.buildingLookLocked = true; }
     const three = W().CanalRecallThree;
     if (!three?.THREE) throw new Error('OwnWorldView needs window.CanalRecallThree');
@@ -352,9 +369,14 @@ export class OwnWorldView implements WorldViewOracles {
     this.host = new FrameHost(THREE, container, {
       render: () => this.renderFrame(),
       // The game's loading screen (GameState.LOADING, presentationRuntime.ts) paints over the world opaquely.
-      coveredFrameMs: () => (W().canalRecallGame?.state === LOADING_STATE ? COVERED_FRAME_MS : null),
-      ...(toon || smaa ? { post: (renderer: any, width: number, height: number) => {
+      // While the cold-start hold is armed (holdRidePose) the covered world renders faster: the ground installs one cell
+      // per rendered frame and the idle checks run on render, so at 1 Hz the start pose's cells were still missing at
+      // the 6 s cap (R5-B2 #261). startSettle.ts startSettleCoveredFrameMs.
+      coveredFrameMs: () => (W().canalRecallGame?.state === LOADING_STATE ? (this._startPose || this._startShellsBusy ? startSettleCoveredFrameMs(isTouchPointer(W())) : COVERED_FRAME_MS) : null),
+      ...(toon || smaa || corridor ? { post: (renderer: any, width: number, height: number) => {
         if (smaa) (this.smaaPost ??= new SmaaPost(THREE)).apply(renderer, width, height);
+        // Corridor emphasis first: the toon palette then remaps what it leaves.
+        if (corridor) (this.corridorPost ??= new CorridorPost(THREE)).apply(renderer, width, height);
         if (toon) (this.toonPost ??= new ToonPost(THREE)).apply(renderer, width, height);
       } } : {}),
     }, { antialias, pixelRatio: Math.min(dpr, cap), clearColor: clear, renderOnChange: flag('renderOnChange', '__canalRecallRenderOnChange', true), clearGuard: flag('skyClear', '__canalRecallSkyClear', true) });
@@ -451,7 +473,14 @@ export class OwnWorldView implements WorldViewOracles {
     const maxPitch = prefs && Number.isFinite(prefs.MAP_MAX_PITCH) ? Math.max(60, prefs.MAP_MAX_PITCH) : 60;
     this.cameraMap = new CameraMap(this.host, { center: [4.9041, 52.3676], zoom: 17, maxPitch });
     // Settled (WorldCamera.whenIdle, game-route.js _waitForMapSettle) means every loader has caught up with the view.
-    for (const [name, busy] of settleChecks(this)) this.cameraMap.addIdleCheck(name, busy);
+    // Once the cold-start hold is armed (holdRidePose), and until the loading screen goes, it owns the ground question: settle.ts's 300 m box, judged at
+    // the racing pose, held 5/5 cold desktop starts to the 6 s cap with no ground cell built (R5-B2 #261).
+    for (const [name, busy] of settleChecks(this)) this.cameraMap.addIdleCheck(name, name === 'ownGround' ? () => (this.startHoldOwnsGround() ? false : busy()) : busy);
+    // ?startSettle=0 registers nothing here: the hold is today's settleChecks alone (startSettle.ts).
+    if (this.startSettleOn) this.cameraMap.addIdleCheck('startSettle', () => this.startSettleBusy());
+    // Lane S1 (#313): under the loading screen, no stand-in (far prisms where a baked cell is still coming, a runtime
+    // shell where a detail chunk is still coming) within 600 m in the frame the player will see (startHold.ts).
+    if (this.startHoldOn) this.cameraMap.addIdleCheck('startShells', () => this.startShellsBusy());
     this.camera = this.cameraMap.api;
     const shadows = flag('shadows', '__canalRecallShadows', settings.shadows);
     this._sharedFrame = new SharedFrame(THREE, this.cameraMap, {
@@ -466,13 +495,15 @@ export class OwnWorldView implements WorldViewOracles {
     const guards = guardFrameHost(this.host, {
       governor: flag('governor', '__canalRecallGovernor', true),
       fixedPixelRatio: new URLSearchParams(W().location?.search ?? '').has('dpr'),
-      active: () => !!W().canalRecallGame && W().canalRecallGame.state === 4,
+      // A paced or scaled aerial flight (aerialPower.ts) is not a slow machine: its frames are not judged.
+      active: () => !!W().canalRecallGame && W().canalRecallGame.state === 4 && !this.aerialFlying(),
       setShadows: shadows ? on => this._sharedFrame.setShadows(on) : undefined,
       restoredOk: () => !!this._sharedFrame.renderer,
       probe: () => this.graphicsProbe(),
       maxPixelRatio: explicitDpr ? undefined : Math.min(dpr, cap, settings.dprCap),
     });
     this._renderGovernor = guards.governor;
+    this._aerialPower = new AerialPower(aerialLeversFromQuery(W().location?.search ?? '', W()));
     // Perf HUD (engine/perfHud.ts, lane R1-C #225): `?perfHud=1` or "Show performance"; `__canalPerf.snapshot()` is the
     // same numbers for the ride heartbeat and the stall report (rideHeartbeat.ts).
     W().__canalPerf = { ...(W().__canalPerf ?? {}), snapshot: (p99Ms: number | null = null) => this.perfSnapshot(p99Ms) };
@@ -483,7 +514,11 @@ export class OwnWorldView implements WorldViewOracles {
     this._sharedFrame.register('engine-transit', this._lines.transit, { order: -55 });
     this._sharedFrame.register('engine-cycle', this._lines.cycle, { order: -50 });
     // `?labelLazyPolicy=0`: the eager label rebuild (every named street re-tested in the frame the policy changes).
-    this._labels = new LabelLayer(container, () => this.labelPolicy(), { lazyPolicy: flag('labelLazyPolicy', '__canalRecallLabelLazyPolicy', true) });
+    // `?labelFade=0`: labels pop in and out in one frame, as before #288 (they ease over 300 ms by default).
+    this._labels = new LabelLayer(container, () => this.labelPolicy(), {
+      lazyPolicy: flag('labelLazyPolicy', '__canalRecallLabelLazyPolicy', true), fade: flag('labelFade', '__canalRecallLabelFade', true),
+      repaint: () => this.host?.triggerRepaint(),
+    });
     // Paper over the map (menu, setup, loading) hides the labels without waiting for a repaint: a state change need
     // not move the map, so the check also runs on its own slow clock, as the MapLibre overlay's (labels/labelOverlay.ts).
     const syncCovered = () => { if (this._labels.setCovered(isCoveredState(W().canalRecallGame?.state))) this.host.triggerRepaint(); };
@@ -608,7 +643,7 @@ export class OwnWorldView implements WorldViewOracles {
   }
 
   /** Monument gables, listed landmarks, landmark building ids: what the live tile path decorates with (vector-map.js). */
-  private decoration: { gables: Map<string, unknown> | null; listed: Set<string> | undefined; landmarks: Set<string> } = { gables: null, listed: undefined, landmarks: new Set() };
+  private decoration: { gables: Map<string, unknown> | null; listed: Set<string> | undefined; landmarks: Set<string>; registerFacts?: Map<string, unknown> } = { gables: null, listed: undefined, landmarks: new Set() };
 
   /**
    * The building decorator, as vector-map.js `_applyFeatureDecorator` builds it: facade, monument gable, roof, landmark
@@ -621,7 +656,10 @@ export class OwnWorldView implements WorldViewOracles {
     if (!api || !Facades || !city) return;
     const { gables, listed, landmarks } = this.decoration;
     const named = gables?.size && api.withMonumentGable ? (f: any) => api.withMonumentGable(f, gables) : (f: any) => f;
-    const decorate = api.decorateRoof ? (f: any) => api.decorateRoof(named(Facades.decorateFacade(f))) : Facades.decorateFacade;
+    // Register facts (facade/registerRecipe.ts) read before the facade so the era, wall family and forced extras follow the register.
+    const facts = this.decoration.registerFacts;
+    const registered = facts?.size && api.withRegisterFacts ? (f: any) => api.withRegisterFacts(f, facts) : (f: any) => f;
+    const decorate = api.decorateRoof ? (f: any) => api.decorateRoof(named(Facades.decorateFacade(registered(f)))) : (f: any) => Facades.decorateFacade(registered(f));
     const base = api.exceptLandmarks ? api.exceptLandmarks(decorate, landmarks, listed) : decorate;
     city.setFeatureDecorator(api.decorateKitRoof ? (f: any) => api.decorateShopfront(api.decorateFront(api.decorateKitRoof(base(f)))) : base);
   }
@@ -636,6 +674,12 @@ export class OwnWorldView implements WorldViewOracles {
         if (!data) return;
         this.decoration.gables = new Map(Object.entries(data.buildings || {}));
         this.decoration.listed = new Set(data.listedLandmarks || []);
+        this.decorateCity();
+      }),
+      // The monuments register's facts (monument-facts.json, published by the integrator); `?registerFacts=0` skips them.
+      json('monument-facts.json').then(data => {
+        if (!data || !api?.registerFactsEnabled?.(W().location?.search)) return;
+        this.decoration.registerFacts = new Map(Object.entries(data.buildings || {}));
         this.decorateCity();
       }),
       json('landmark-buildings.json').then(data => {
@@ -666,6 +710,8 @@ export class OwnWorldView implements WorldViewOracles {
       this._ownGround = new api.OwnGround(three.THREE, this._sharedFrame, {
         repaint: () => this.host.triggerRepaint(),
         setBasemapGroundHidden: () => { /* no basemap */ },
+        // The start neighbourhood builds during the hold (ownGround/groundPrefetch.ts, R5-A #260).
+        startView: () => { const c = this.cameraMap.camera; return { lngLat: [c.lng, c.lat], zoom: c.zoom, pitch: c.pitch }; },
       }, { workerUrl: new URL(OWN_GROUND_WORKER, W().location.href).href, ...budget });
       await this._ownGround.load(this.absoluteExtractRoot());
       if (this._threeBuildings?.setWaterLevel) this._threeBuildings.setWaterLevel(this._ownGround.waterLevelM());
@@ -731,7 +777,8 @@ export class OwnWorldView implements WorldViewOracles {
         attach: entry => tb.bakedCoarseHost()?.attach(entry),
         detach: entry => tb.bakedCoarseHost()?.detach(entry),
         swapSlots: () => !!tb.bakedCoarseHost()?.swapSlots(),
-        farReady: (key: string) => !!this._farShells?.ready?.(key),
+        // Lane R4-K (#255): not where a near detail chunk draws inside the cell (its far part stays hidden there).
+        farReady: (key: string) => !!this._farShells?.ready?.(key) && !tb.farShellHost?.()?.nearInCell?.(key),
         fetchShell: (key: string, signal: AbortSignal, exact?: boolean, compact?: boolean) => world.shell(key, signal, base, exact, compact),
         available: () => available,
         coverageChanged: () => tb.bakedCoarseHost()?.regroup(),
@@ -739,7 +786,7 @@ export class OwnWorldView implements WorldViewOracles {
         repaint: () => this.host.triggerRepaint(),
       }, { touch: coarse(), paceInstalls: !!arrivalPaceOption()?.baked, compact: bakedBytesEnabled(), releaseM: bakedReleaseM() });
       this._bakedCoarse = baked;
-      host.setGate({ plan: (cells: ReadonlySet<string>) => baked.plan(cells), covers: (cell: string) => baked.covers(cell), drawn: (cell: string) => baked.drawn(cell), contextLost: () => baked.contextLost() });
+      host.setGate({ plan: (cells: ReadonlySet<string>) => baked.plan(cells), covers: (cell: string) => baked.covers(cell), drawn: (cell: string) => baked.drawn(cell), holdsFar: (cell: string) => baked.holdsFar(cell), contextLost: () => baked.contextLost() });
       host.setFrame(() => baked.frame());
     }
     const baked = this._bakedCoarse;
@@ -761,6 +808,19 @@ export class OwnWorldView implements WorldViewOracles {
   }
 
   private riderSurface(): any { return this._ownGround && this._ownGround.ready ? this._ownGround : null; }
+  /** Reveal prime (revealSurface.ts, #267): `?revealLight=0` or `window.__canalRecallRevealLight = false` turns it off. */
+  private readonly revealSurface = new RevealSurface(revealLightEnabled(W().__canalRecallRevealLight ?? new URLSearchParams(W().location?.search ?? '').get('revealLight')));
+  /** The height the vehicle calls will ease towards (setPlayerBike / setPlayerBoat / setPlayerTransit), at the rider. */
+  private revealSurfaceTarget(surface: any, at: [number, number]): number {
+    const mode = W().canalRecallGame?.travelMode;
+    let h: number | undefined;
+    try {
+      if (mode === 'boat') h = surface.waterLevelAt ? surface.waterLevelAt(at) : surface.waterLevelM?.();
+      else if (mode !== 'transit' && surface.riderPose) h = surface.riderPose(at, this.riderAngle ?? 0, this._playerBike?.surfaceContactOffsets?.())?.heightM;
+      if (!Number.isFinite(h)) h = surface.heightAt(at);
+    } catch (_) { h = undefined; }
+    return Number.isFinite(h) ? h as number : this.riderSurfaceM;
+  }
   private easeRiderSurface(target: number): number {
     const v = Number.isFinite(target) ? target : 0, d = v - this.riderSurfaceM;
     this.riderSurfaceM = Math.abs(d) < 0.01 ? v : this.riderSurfaceM + d * 0.35;
@@ -869,16 +929,16 @@ export class OwnWorldView implements WorldViewOracles {
     const names: ReadonlySet<string> = g._mapLabelNames instanceof Set ? g._mapLabelNames : new Set();
     const known: ReadonlyMap<string, any> = g._knownPlaces instanceof Map ? g._knownPlaces : new Map();
     const spoilers = this.spoilersSuspended ? [] : this.spoilerNames;
-    const key = `${names.size}|${known.size}|${spoilers.length}|${g.quizPromptName || ''}|${g.quizCandidateName || ''}|${this.quizQuiet}|${this._labelsVisible}`;
+    const key = `${names.size}|${known.size}|${spoilers.length}|${g.quizPromptName || ''}|${g.quizCandidateName || ''}|${(g.quizWithheldNames || []).join(',')}|${(g.landmarkApproachWithheld || []).join(',')}|${this.quizQuiet}|${this._labelsVisible}`;
     if (this.policyCache?.key !== key) {
       const loader = this.loader;
       const ctx = gameLabelContext({
         mapLabelNames: names, knownPlaces: known, knownRadius: 600 * 3,
-        quizPromptName: g.quizPromptName, quizCandidateName: g.quizCandidateName,
+        quizPromptName: g.quizPromptName, quizCandidateName: g.quizCandidateName, quizWithheldNames: g.quizWithheldNames, landmarkApproachWithheld: g.landmarkApproachWithheld,
         spoilerNames: spoilers, spoilerIndex: this.spoilerIndexFor(spoilers), quizQuiet: this.quizQuiet,
         toWorld: (x, y) => { const [lng, lat] = fromLocal(x, y); return loader && loader._lastCenterLat != null ? lngLatToWorld(lng, lat, loader) : { x: NaN, y: NaN }; },
       });
-      // Street and water names on the map only with the labels toggle on (D), as the basemap's were.
+      // Street and water names on the map only with the labels toggle on (T), as the basemap's were.
       const labelsOn = this._labelsVisible;
       const isLabelled = ctx.isLabelled;
       this.policyCache = { key, ctx: { ...ctx, isLabelled: (t, x, y) => labelsOn && isLabelled(t, x, y), revision: key } as LabelContext };
@@ -992,6 +1052,143 @@ export class OwnWorldView implements WorldViewOracles {
     this.host.triggerRepaint();
   }
 
+  /** Lane S1 (#313): the start hold's census check; `?startHold=0` (or `__canalRecallStartHold = false`) restores today's hold. */
+  private readonly startHoldOn: boolean = startHoldEnabled(W().__canalRecallStartHold ?? new URLSearchParams(W().location?.search ?? '').get('startHold'));
+  /** The last census the start hold judged (probes read it), and whether it was still holding. */
+  lastStartCensus: (StartTierCensus & { at: number }) | null = null;
+  private _startShellsBusy = false;
+
+  /**
+   * Which tier owns the ground under each point of a 24 × 16 grid over the view, within 1 km of the view centre
+   * (startHold.ts): the facade layer's detail chunk, a drawn baked coarse cell, a runtime coarse shell, far prisms
+   * standing in for a baked cell not drawn yet (`farPending`), or nothing.
+   */
+  startTierCensus(): StartTierCensus | null {
+    const cam = this.camera, canvas = this.host.canvas;
+    if (!cam || !canvas) return null;
+    const c = cam.center(), kx = 111_320 * Math.cos(c.lat * Math.PI / 180), ky = 110_574;
+    const tb = this._threeBuildings, bc = this._bakedCoarse;
+    const samples: StartTierSample[] = [];
+    for (const p of censusGrid(canvas.clientWidth || canvas.width, canvas.clientHeight || canvas.height)) {
+      const ll = cam.unproject(p);
+      if (!ll) continue;
+      const distanceM = Math.hypot((ll.lng - c.lng) * kx, (ll.lat - c.lat) * ky);
+      if (!(distanceM <= 1000)) continue;
+      const t: { owner: StartTierSample['owner']; wanted: boolean } = tb?.tierAt?.(ll.lng, ll.lat) ?? { owner: 'none', wanted: false };
+      if (t.owner !== 'facade' && bc) {
+        const cell = cellKeyOf(...cellOf(ll.lng, ll.lat));
+        if (bc.drawn(cell)) t.owner = 'baked';
+        else if (t.owner === 'none' && bc.covers(cell)) t.owner = 'farPending';
+      }
+      samples.push({ distanceM, owner: t.owner, wanted: t.wanted });
+    }
+    return startTierCensus(samples, undefined, isTouchPointer(W()));
+  }
+
+  /**
+   * Busy while the loading screen is up and the census finds a stand-in within 600 m. The tiers advance because the
+   * game's loading frame runs settleTick() while a start hold waits (presentationRuntime._tickHeldWorld): they only
+   * advanced from sync, which the game does not run under the loading screen, so a baked cell planned at the aim
+   * stayed undrawn (far prisms, grey lids) until the reveal.
+   */
+  private startShellsBusy(): boolean {
+    if (W().canalRecallGame?.state !== LOADING_STATE) { this._startShellsBusy = false; return false; }
+    const census = this.startTierCensus();
+    this.lastStartCensus = census && { ...census, at: Math.round(performance.now()) };
+    this._startShellsBusy = !!census && census.standIns > 0;
+    return this._startShellsBusy;
+  }
+
+  /** Cold-start hold (startSettle.ts): on unless `?startSettle=0`. Off, nothing below runs and the hold is today's. */
+  private readonly startSettleOn: boolean = startSettleEnabled(W().__canalRecallStartSettle ?? new URLSearchParams(W().location?.search ?? '').get('startSettle'));
+  private readonly _startSettle = new StartSettleHold(() => this.startSettleCapMs(), startSettleGates(W().__canalRecallStartSettleGround ?? new URLSearchParams(W().location?.search ?? '').get('startSettleGround')));
+  /** The game camera the ride will open on, handed over before the hold (holdRidePose); null once the hold ends. */
+  private _startPose: { camera: GameCamera & { projector?: unknown }; loader: LoaderFrame; canvas: HTMLCanvasElement } | null = null;
+
+  /** The cold-start hold's cap for this device (startSettle.ts); today's 4 s with `?startSettle=0`. game-route.js passes it to `_waitForMapSettle`. */
+  startSettleCapMs(): number {
+    return this.startSettleOn ? startSettleCapMs(isTouchPointer(W())) : START_SETTLE_LEGACY_CAP_MS;
+  }
+
+  /** The last start-hold decision (for the measurement script), or null before the hold has asked. */
+  startSettleStatus(): StartSettleStep | null { return this._startSettle.last; }
+
+  /** Measurement (scripts/start-settle-cold.mjs, R5-B2 #261): the own camera's pose and the start tiers judged at it. */
+  startSettleProbe(): { lng: number; lat: number; zoom: number; pitch: number; bearing: number; groundReady: boolean; groundCentre: boolean; detailCentre: [number, number] | null; detailTiles: number | null; groundWhy: Record<string, unknown> | null } {
+    const cam = this.cameraMap.camera, g: any = this._ownGround, tb: any = this._threeBuildings;
+    return {
+      lng: cam.lng, lat: cam.lat, zoom: cam.zoom, pitch: cam.pitch, bearing: cam.bearing,
+      groundReady: !!g?.ready, groundCentre: this.groundCentreLanded(),
+      detailCentre: tb?.rider ?? null, detailTiles: tb?.detailTiles?.size ?? null,
+      groundWhy: g ? this.groundCentreWhy() : null,
+    };
+  }
+
+  /** Measurement: why the ground's camera cell does or does not read landed (gameGround.coversRect's conditions). */
+  private groundCentreWhy(): Record<string, unknown> {
+    const cam = this.cameraMap.camera, g: any = this._ownGround;
+    const [x, y] = toLocal(cam.lng, cam.lat), r = SETTLE_GROUND_RADIUS_M, keys = new Set<string>();
+    for (let i = 0; i <= 3; i++) for (let j = 0; j <= 3; j++) keys.add(String(g.store?.cellAt?.(x - r + 2 * r * i / 3, y - r + 2 * r * j / 3)));
+    const k = [...keys];
+    return {
+      visible: g.visibleAtZoom?.(g.zoom), zoom: g.zoom, presence: g.presenceUniform?.value, resident: g.resident?.size, loadingCells: g.loadingCells,
+      workerReady: g.workerReady, workerReadyAt: g.startup?.workerReadyAt != null ? Math.round(g.startup.workerReadyAt) : null, built: g.stats?.cellsBuilt, discards: g.discards ? { ...g.discards } : null, gen: g.gen, workers: g.workers?.length, radiusM: g.radiusM,
+      cells: k, missing: k.filter(c => !g.resident?.has(c)), fading: k.filter(c => g.fading?.has(c)), pending: k.filter(c => g.pending?.has(c)),
+    };
+  }
+
+  /**
+   * The own ground has drawn the cell under the camera centre (true when there is no own ground). The start hold asks
+   * for that one ~1 km cell, not settle.ts's 300 m box: the box spans up to four cells, and on a cold desktop start the
+   * worker had built one cell by 6-8 s (R5-B2 #261), so the box held every start to the cap.
+   */
+  private groundCentreLanded(): boolean {
+    const cam = this.cameraMap.camera, g: any = this._ownGround;
+    if (!g) return true;
+    const [x, y] = toLocal(cam.lng, cam.lat), r = START_SETTLE_GROUND_RADIUS_M;
+    return !!g.ready && (!g.coversRect || !!g.coversRect(x - r, y - r, x + r, y + r));
+  }
+
+
+  /**
+   * The game hands over its camera before the cold-start hold (game-route.js, R5-B2 #261): the held frames then run
+   * this view's own sync with it, so the tiers load and are judged at the pose the first racing frame draws (chase
+   * centre ahead of the rider, the ride's zoom, pitch and bearing, the detail block and city rider), not at the pose
+   * aimAtWorld left. Measured: that pose differed from the racing one, so a hold that settled still popped after the
+   * reveal. Nothing with `?startSettle=0`.
+   */
+  holdRidePose(camera: GameCamera & { projector?: unknown }, loader: LoaderFrame, canvas: HTMLCanvasElement): void {
+    if (!this.startSettleOn || this._startSettle.done) return;
+    this._startPose = { camera, loader, canvas };
+    this._startHeld = true;
+  }
+  private _startHeld = false;
+  /** The cold-start hold was armed and the loading screen is still up: settle.ts's ownGround check stands down. */
+  private startHoldOwnsGround(): boolean { return this._startHeld && W().canalRecallGame?.state === LOADING_STATE; }
+
+  /**
+   * One-shot idle check for the cold start: busy while the buildings, far ring or baked coarse tier (and with
+   * `?startSettleGround=1` the ground's camera cell) is still loading at the start pose; idle until holdRidePose arms it. Each poll first advances the world at the ride's pose (sync with the
+   * handed-over game camera), so the held frames fetch and build (the game's own
+   * sync does not run under the loading screen; checkIdle polls this from the held frames). Ends at settled or the cap.
+   */
+  private startSettleBusy(): boolean {
+    // Armed only by the cold-start hold's holdRidePose: any earlier whenIdle or pendingWork() caller (menu, world prep,
+    // a perf sampler) polled R5-B's always-armed check, started its clock at page load and latched it done before the
+    // hold began, which is why that change measured no difference on desktop.
+    if (!this._startPose) return false;
+    const busy = this._startSettle.poll(performance.now(), () => {
+      const p = this._startPose!;
+      this.sync(p.camera, p.loader, p.canvas);
+      this.host.triggerRepaint();
+    }, () => {
+      const w = this.worldSettled();
+      return { groundCentre: this.groundCentreLanded(), buildings: w.buildings, far: w.far, baked: w.baked };
+    });
+    if (!busy) this._startPose = null;
+    return busy;
+  }
+
   /** Every streaming tier landed for the current view: ground, city tiles, facades, far and baked coarse (dissolves included). */
   worldSettled(): { settled: boolean; ground: boolean; city: boolean; buildings: boolean; far: boolean; baked: boolean; detail: Record<string, unknown> } {
     const g: any = this._ownGround, c: any = this._completeCity?.status?.(), tb: any = this._threeBuildings;
@@ -1003,6 +1200,33 @@ export class OwnWorldView implements WorldViewOracles {
     const far = !fs || fs.pending === 0;
     const baked = !bs || !bs.enabled || (bs.pending === 0 && bs.fading === 0 && bs.cells + (bs.released ?? 0) >= bs.covered); // released cells (R4-I) are drawn by the far tier
     return { settled: ground && city && buildings && far && baked, ground, city, buildings, far, baked, detail: { groundFading: fading, city: c && { inFlight: c.inFlight, queued: c.queued, styling: !!c.styling }, buildingsPending: tb?.pending?.length ?? 0, far: fs && { pending: fs.pending }, baked: bs && { covered: bs.covered, cells: bs.cells, drawn: bs.drawn, fading: bs.fading, pending: bs.pending } } };
+  }
+
+  /** The aerial levers hold the frame rate or the pixel ratio below native this frame. */
+  private aerialFlying(): boolean {
+    const d = this._aerialPower?.decision;
+    return !!d && (d.frameMs != null || d.scale !== 1);
+  }
+
+  /** Lane R5-F (#266): this frame's aerial power decision, applied to the frame host and the shared frame. */
+  private applyAerialPower(view: { lngLat: [number, number]; zoom: number; bearing: number; detached?: boolean; introFlat: number }, pitch: number): void {
+    const power = this._aerialPower!, before = power.decision;
+    const d = power.update({
+      now: performance.now(), aerial: view.introFlat === 0 && isAerialView(view.zoom, pitch, view.lngLat[1]), detached: !!view.detached,
+      high: view.introFlat === 0 && eyeHeightM(view.zoom, pitch, view.lngLat[1]) >= AERIAL_EYE_MIN_M,
+      lng: view.lngLat[0], lat: view.lngLat[1], zoom: view.zoom, pitch, bearing: view.bearing,
+    });
+    this.host.minFrameMs = d.frameMs;
+    if (d.scale !== before.scale) {
+      // Inside the game frame, before this frame's render: the resized canvas is drawn at once (never shown cleared).
+      if (d.scale !== 1) { this.aerialBaseRatio = this.host.getPixelRatio(); this.host.setPixelRatio(this.aerialBaseRatio * d.scale); }
+      else if (this.aerialBaseRatio != null) { this.host.setPixelRatio(this.aerialBaseRatio); this.aerialBaseRatio = null; }
+    }
+    const frame = this._sharedFrame;
+    if (frame) {
+      frame.shadowEvery = d.shadowEvery;
+      if (d.shadowMapSize !== before.shadowMapSize) frame.setShadowMapSize(d.shadowMapSize);
+    }
   }
 
   setExtractRoot(path: string): void { if (path) this.extractPath = path.replace(/\/$/, ''); }
@@ -1054,6 +1278,34 @@ export class OwnWorldView implements WorldViewOracles {
     this.cameraMap.jumpTo({ center: [lng, lat], zoom: Number.isFinite(p.options.zoom) ? p.options.zoom : this.camera.zoom() || 17, bearing: p.options.bearing ?? 0, pitch: p.options.pitch ?? globalNum('TOPDOWN_TILT_DEGREES', 14) });
     this._threeBuildings?.setDetailCentre?.(lng, lat);
     this._completeCity?.followCamera?.();
+    this.handRevealPose(p.worldX, p.worldY, p.loader);
+  }
+
+  /** Reveal landmarks (revealLandmarks.ts, #268): `?revealSwap=0` or `window.__canalRecallRevealSwap = false` hands nothing over. */
+  private readonly revealSwapOn: boolean = revealSwapEnabled(W().__canalRecallRevealSwap ?? new URLSearchParams(W().location?.search ?? '').get('revealSwap'));
+  /** What the last ride aim handed the landmark models (measurement and specs); null when none was handed over. */
+  revealHandover: { lngLat: [number, number]; zoom: number; bearing: number; pitch: number; budget: number } | null = null;
+
+  /**
+   * The game's ride aim under the loading screen (`_setupRace`): the landmark models nearest the first racing frame load
+   * now, at that frame's pose and level, a bounded few, so the nearest one is drawn at the reveal instead of landing
+   * 200-280 ms after it (revealLandmarks.ts). The hold's camera, its tiers and the game are untouched.
+   */
+  private handRevealPose(worldX: number, worldY: number, loader: LoaderFrame): void {
+    const signature = this.extras?.signature;
+    if (!this.revealSwapOn || typeof signature?.setRevealPose !== 'function') return;
+    const game = W().canalRecallGame;
+    if (!isRideAim({ covered: game?.state === LOADING_STATE, worldX, worldY, camera: game?.camera })) return;
+    const canvas: HTMLCanvasElement | undefined = game.canvas;
+    const scale = canvas?.getBoundingClientRect ? canvas.getBoundingClientRect().width / CANVAS_W : 0;
+    if (!(scale > 0)) return;
+    const pose = revealPose(game.camera, loader, {
+      pitchForViewMode: m => this.pitchForViewMode(m), zoomOffsetForViewMode: m => this.zoomOffsetForViewMode(m),
+      landmarkView: this.landmarkView, displayScale: scale, now: performance.now(),
+    }, this.solver.pitchSmoothed);
+    const budget = revealSwapBudget(new URLSearchParams(W().location?.search ?? '').get('revealSwapN'), revealLandmarkBudget(isTouchPointer(W())));
+    this.revealHandover = { lngLat: pose.lngLat, zoom: pose.zoom, bearing: pose.bearing, pitch: pose.pitch, budget };
+    signature.setRevealPose(poseCamera(() => this.host.viewport(), pose, 0, this.cameraMap.camera.maxPitch), budget);
   }
 
   resizeToViewport(): void {
@@ -1078,8 +1330,20 @@ export class OwnWorldView implements WorldViewOracles {
       landmarkView: this.landmarkView, displayScale: canvas.getBoundingClientRect().width / CANVAS_W, now: performance.now(),
     });
     const surface = this.riderSurface();
+    // The first sync after the loading screen lifts draws the camera at the rider's ground height, not at 0 easing
+    // down over ~8 frames (revealSurface.ts, #267). `?revealLight=0`: today's reveal.
+    if (this.revealSurface.shouldPrime({ covered: W().canalRecallGame?.state === LOADING_STATE, introFlat: view.introFlat, detached: view.detached, surfaceReady: !!surface })) {
+      this.riderSurfaceM = this.revealSurfaceTarget(surface, view.subject);
+    }
     const elevation = surface ? (view.detached || view.introFlat > 0 ? 0 : this.riderSurfaceM) : 0;
-    if (view.needsClearance && this._completeCity?.sampleFeatures) {
+    // First-person view (`?cam=fps`, V): the eye on the rider at 1.6 m (engine/fpsCamera.ts). It replaces the chase solve.
+    const fps = this.fps && !view.detached && view.introFlat === 0 && this.riderAngle != null && (camera.viewMode === 'chase' || camera.viewMode === 'cockpit') ? this.solveFps(view, elevation) : null;
+    if (!fps && this.fpsDrawn) { this.leaveFps(); W().__canalRecallFpsHidePin = false; }
+    this.fpsDrawn = !!fps;
+    // The legacy canvas draws the DESTINATION pin and pill over the map; at eye level it reads as an address sign on a
+    // facade, so renderer.js skips it while this is set (racing only: the finish card shows it again).
+    W().__canalRecallFpsHidePin = !!fps && W().canalRecallGame?.state === 4;
+    if (!fps && view.needsClearance && this._completeCity?.sampleFeatures) {
       const result = clearCamera(view.pitch, view.lngLat, view.subject, pitch => {
         const probe = new EngineCamera(() => this.host.viewport(), { center: view.lngLat, zoom: view.zoom, bearing: view.bearing, pitch, elevation, maxPitch: this.cameraMap.camera.maxPitch });
         const e = probe.eye();
@@ -1088,8 +1352,15 @@ export class OwnWorldView implements WorldViewOracles {
       if (result) this.solver.safePitch = result.safePitch;
       (this as any)._lastCameraClearance = result;
     }
-    const pitch = this.solver.applyClearance(view, !!camera.reducedMotion);
+    const eased = fps ? fps.pitch : this.solver.applyClearance(view, !!camera.reducedMotion);
     lap('camera solve and clearance');
+    // The eye never enters a building (streetVisibility.ts, lane F4 #320): chunks draw FrontSide, so a camera inside a
+    // house drew none of it. Checked every frame; pulled in at once, eased back out. `?eyeClear=0` turns it off.
+    const eye = fps ? { pitch: fps.pitch, zoom: fps.zoom } : this.eyeClear && !view.detached && view.introFlat === 0 && eased > 0 ? this.clearEyeFor(view, eased, elevation) : { pitch: eased, zoom: view.zoom };
+    if (fps) { view.lngLat = fps.center; view.bearing = fps.bearing; }
+    const pitch = eye.pitch;
+    const drawZoom = eye.zoom;
+    lap('eye clearance');
     const city = this._completeCity;
     if (view.introFlat > 0 && city?.setSuspended) {
       city.setSuspended(true);
@@ -1097,11 +1368,13 @@ export class OwnWorldView implements WorldViewOracles {
     }
     // Landmark models and trees hold what the driving view loaded: "visible" at city scale is all of Amsterdam.
     if (view.introFlat > 0) this.extras.setSuspended(true);
+    // A start flight owns the camera until it lands: no reveal hand-over loads at a pose it has not reached (#268).
+    if (view.introFlat > 0 && this.revealHandover) { this.revealHandover = null; this.extras.signature?.setRevealPose?.(null); }
     if (view.introFlat === 0) this.introLanding = false;
     if (this._ownGround) {
       // Panned off the rider (RE-CENTER showing), the ground's ring follows the view, not the rider (#232: the user's
       // S4 corridor 2.8 km from the rider drew from the far ring, no ballast beds); `?groundView=0` follows the rider.
-      this._ownGround.update(groundCentre(view, this.groundView), view.introFlat > 0 ? 0 : view.zoom, pitch);
+      this._ownGround.update(groundCentre(view, this.groundView), view.introFlat > 0 ? 0 : view.zoom, pitch, view.lngLat);
       lap('ground update: own ground');
       const aerialGround = this.groundBasesAerialOn && view.introFlat === 0 && isAerialView(view.zoom, pitch, view.lngLat[1]);
       this.syncGroundConsumers(phases ? lap : undefined, aerialGround, view.lngLat);
@@ -1109,8 +1382,16 @@ export class OwnWorldView implements WorldViewOracles {
     lap('ground update');
     this.updateFarShells(view.subject, view.introFlat > 0 ? 0 : (this._ownGround?.farRadiusM ?? 0));
     lap('far shells');
-    this.cameraMap.jumpTo({ center: view.lngLat, zoom: view.zoom, bearing: view.bearing, pitch, elevation });
+    // The first-person lens (wider fov, a finer near plane, a capped far plane); put back once, on leaving.
+    // The game caps the chase camera (pitch 75, zoom 22); a 1.6 m eye needs pitch 85 and ~zoom 22.4, lifted while it is on.
+    const cam = this.cameraMap.camera;
+    if (fps && !this.fpsLensSet) this.fpsSaved = { maxPitch: cam.maxPitch, maxZoom: cam.maxZoom };
+    const lens = fps ? { fovDeg: fps.fovDeg, nearDivisor: FPS_NEAR_DIVISOR, farCapM: FPS_FAR_CAP_M, maxPitch: MAX_PITCH_DEG, maxZoom: Math.max(cam.maxZoom, 24) }
+      : this.fpsLensSet ? { fovDeg: DEFAULT_FOV_DEG, nearDivisor: 50, farCapM: Infinity, maxPitch: this.fpsSaved?.maxPitch, maxZoom: this.fpsSaved?.maxZoom } : {};
+    this.fpsLensSet = !!fps;
+    this.cameraMap.jumpTo({ center: view.lngLat, zoom: drawZoom, bearing: view.bearing, pitch, elevation, ...lens });
     lap('jumpTo and move listeners');
+    if (this._aerialPower?.any) this.applyAerialPower(view, pitch);
     this.lastSubject = view.subject;
     // From the air the detail block keeps its last plan (detailRing.ts detailBlockFrozen, lane R3-G #242): panning at
     // ~150 m no longer builds and dissolves detail tiles at every z16 edge the subject crosses. Not during the intro.
@@ -1154,6 +1435,105 @@ export class OwnWorldView implements WorldViewOracles {
     else tb?.setHidden?.('cover', ids);
     this.riderCovered = r.covered;
   }
+  // ---- first-person camera (engine/fpsCamera.ts, issue #171) ----
+  private fps = (() => { try { return fpsRequested(globalThis.location?.search ?? '', globalThis.localStorage?.getItem('canalRecallCam') ?? null); } catch { return false; } })();
+  private fpsBob = (() => { try { return new URLSearchParams(globalThis.location?.search ?? '').get('bob') === '1'; } catch { return false; } })();
+  private fpsYaw: number | null = null;
+  private fpsAt = 0;
+  private fpsBack: number | null = null;
+  private fpsStuckId: string | null = null;
+  private fpsDrawn = false;
+  private fpsLensSet = false;
+  private fpsSaved: { maxPitch: number; maxZoom: number } | null = null;
+  /** Measurement: the last first-person pose and its clearance (specs read it). */
+  _fpsStuckInfo: unknown = null;
+  _lastFps: { pose: FpsPose; backM: number; stuckId: string | null; elevation: number } | null = null;
+  fpsCameraOn(): boolean { return this.fps; }
+  setFpsCamera(on: boolean): void {
+    this.fps = on;
+    try { globalThis.localStorage?.setItem('canalRecallCam', on ? 'fps' : 'chase'); } catch { /* storage may be blocked */ }
+    this.host.triggerRepaint();
+  }
+  private readonly fpsKey = (() => {
+    try {
+      globalThis.addEventListener?.('keydown', (e: KeyboardEvent) => {
+        if (e.code !== 'KeyV' || e.repeat || e.ctrlKey || e.metaKey || e.altKey) return;
+        const t = e.target as HTMLElement | null, tag = t?.tagName;
+        if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT' || t?.isContentEditable) return;
+        this.setFpsCamera(!this.fps);
+      });
+    } catch { /* no window */ }
+    return true;
+  })();
+  private leaveFps(): void {
+    this.fpsYaw = null; this.fpsBack = null;
+    if (this.fpsStuckId) { this.fpsStuckId = null; this._threeBuildings?.setGhosted?.('eye', []); }
+  }
+  private solveFps(view: { subject: [number, number] }, elevation: number): FpsPose {
+    const now = performance.now(), dt = this.fpsAt ? (now - this.fpsAt) / 1000 : 0;
+    this.fpsAt = now;
+    this.fpsYaw = stepFpsYaw(this.fpsYaw, (this.riderAngle! + Math.PI / 2) * 180 / Math.PI, dt);
+    const speed = Number(W().canalRecallGame?.player?.speed) || 0, pxPerM = 3;
+    const bobM = this.fpsBob ? headBobM(Number(W().canalRecallGame?.player?.distancePx) / pxPerM || 0, speed / pxPerM) : 0;
+    const vp = this.host.viewport(), maxPitchDeg = MAX_PITCH_DEG;
+    const base = { rider: view.subject, bearingDeg: this.fpsYaw, viewportHeightPx: vp.height, bobM, maxPitchDeg };
+    let backM = 0, stuckId: string | null = null;
+    const city = this._completeCity as { sampleFeatures?(limit: number): any[] } | null;
+    if (this.eyeClear && city?.sampleFeatures) {
+      const resident = clearanceResidents(city as { sampleFeatures(limit: number): any[] });
+      const probe = fpsPose({ ...base });
+      const aspect = vp.width / Math.max(1, vp.height);
+      const reach = 0.2 + nearPlaneReachM(probe.distanceM / FPS_NEAR_DIVISOR, probe.fovDeg, aspect);
+      const blockerAt = (back: number) => { const p = fpsPose({ ...base, backM: back }); return eyeInsideBuilding({ lngLat: p.eye.lngLat, altitude: elevation + p.eye.heightM }, resident, reach); };
+      const wanted = clearBackM(back => !!blockerAt(back));
+      let next = wanted ?? (this.fpsBack ?? 0);
+      // In at once, out eased and held where the eased eye would be in a wall.
+      if (wanted != null && this.fpsBack != null && wanted < this.fpsBack) { next = Math.max(wanted, this.fpsBack - 0.04); if (blockerAt(next)) next = this.fpsBack; }
+      backM = next; this.fpsBack = backM > 0 ? backM : null;
+      if (wanted == null) {
+        // The rider is inside a footprint (a covered passage): ghost it rather than lose the view.
+        const f = blockerAt(0) as { properties?: Record<string, unknown>; id?: unknown } | null;
+        stuckId = f ? String(f.properties?.id ?? f.id ?? '') || null : null;
+        this._fpsStuckInfo = f ? { id: stuckId, top: footprintTopM(f.properties), exact: !!eyeInsideBuilding({ lngLat: fpsPose({ ...base }).eye.lngLat, altitude: elevation + FPS_EYE_HEIGHT_M }, resident, 0), eye: fpsPose({ ...base }).eye.lngLat, elevation, reach } : null;
+      }
+      if (stuckId !== this.fpsStuckId) { this.fpsStuckId = stuckId; this._threeBuildings?.setGhosted?.('eye', stuckId ? [stuckId] : []); }
+    }
+    const pose = fpsPose({ ...base, backM });
+    this._lastFps = { pose, backM, stuckId, elevation };
+    return pose;
+  }
+  private readonly eyeClear = (() => { try { return new URLSearchParams(globalThis.location?.search ?? '').get('eyeClear') !== '0'; } catch { return true; } })();
+  /** The drawn pull-in fraction and pitch cap (null: none), and the building ghosted while the eye cannot get out. */
+  private eyeFraction: number | null = null;
+  private eyePitch: number | null = null;
+  private eyeStuckId: string | null = null;
+  /** Measurement: the last eye clearance (specs read it). */
+  _lastEyeClearance: { insideId: string | null; fraction: number; pitch: number; stuck: boolean } | null = null;
+  private clearEyeFor(view: { lngLat: [number, number]; zoom: number; bearing: number }, pitch: number, elevation: number): { pitch: number; zoom: number } {
+    const city = this._completeCity as { sampleFeatures?(limit: number): any[] } | null;
+    if (!city?.sampleFeatures) return { pitch, zoom: view.zoom };
+    const resident = clearanceResidents(city as { sampleFeatures(limit: number): any[] });
+    const vp = this.host.viewport(), fov = this.cameraMap.camera.fovDeg, aspect = vp.width / Math.max(1, vp.height);
+    const eyeAt = (p: number, f: number): Eye | null => {
+      const e = new EngineCamera(() => vp, { center: view.lngLat, zoom: view.zoom + Math.log2(1 / f), bearing: view.bearing, pitch: p, elevation, maxPitch: this.cameraMap.camera.maxPitch }).eye();
+      return { lngLat: [e.lng, e.lat], altitude: e.altitudeM };
+    };
+    const full = eyeAt(pitch, 1);
+    if (!full) return { pitch, zoom: view.zoom };
+    const kx = 111_320 * Math.cos(view.lngLat[1] * Math.PI / 180);
+    const distance = Math.hypot((full.lngLat[0] - view.lngLat[0]) * kx, (full.lngLat[1] - view.lngLat[1]) * 111_320, full.altitude - elevation);
+    const reach = (f: number) => EYE_WALL_MARGIN_M + nearPlaneReachM(f * distance / 50, fov, aspect);
+    const r = clearEye(pitch, eyeAt, resident, reach);
+    // In at once; out eased, and held where the eased eye would be inside a wall.
+    let fraction = easePullIn(this.eyeFraction, r.fraction), capped = r.pitch < pitch ? r.pitch : Math.min(pitch, easePullIn(this.eyePitch ?? pitch, pitch));
+    if ((fraction > r.fraction || capped > r.pitch) && eyeInsideBuilding(eyeAt(capped, fraction)!, resident, reach(fraction))) { fraction = this.eyeFraction ?? r.fraction; capped = this.eyePitch ?? r.pitch; }
+    this.eyeFraction = fraction >= 1 ? null : fraction;
+    this.eyePitch = capped >= pitch ? null : capped;
+    const stuck = r.stuck ? r.insideId : null;
+    if (stuck !== this.eyeStuckId) { this.eyeStuckId = stuck; this._threeBuildings?.setGhosted?.('eye', stuck ? [stuck] : []); }
+    this._lastEyeClearance = { insideId: r.insideId, fraction, pitch: capped, stuck: r.stuck };
+    return { pitch: capped, zoom: view.zoom + Math.log2(1 / fraction) };
+  }
   private readonly coverRoute = coverRouteFlag();
   private readonly coverDim = (() => { try { return new URLSearchParams(globalThis.location?.search ?? '').get('coverDim') !== '0'; } catch { return true; } })();
   /** The route as lng/lat for the cover rule (kept when the route line is not drawn), and its source array. */
@@ -1164,16 +1544,11 @@ export class OwnWorldView implements WorldViewOracles {
   private coverLoader: LoaderFrame | null = null;
   private riderAngle: number | null = null;
   private coverAhead(rider: CoverLngLat): readonly CoverLngLat[] {
-    const onRoute = routeAheadPoints(this.coverRouteCoords, rider);
-    if (onRoute) return onRoute;
+    // streetVisibility.ts coverAheadPoints: the rule vector-map.js runs too (lane F4 #320).
     const track = this.coverTrack, loader = this.coverLoader;
-    if (!track?.getNearestRoad || !loader || loader._lastCenterLat == null) return [];
-    const w = lngLatToWorld(rider[0], rider[1], loader);
-    const road = track.getNearestRoad(w.x, w.y, this.riderAngle);
-    if (!road || !Number.isFinite(road.angle)) return [];
-    // World x east, y south: a world angle `a` is compass bearing a + π/2. Along the road, the way the bike faces.
-    const forward = this.riderAngle == null || Math.cos(road.angle - this.riderAngle) >= 0 ? road.angle : road.angle + Math.PI;
-    return roadAheadPoints(worldToLngLat(road.x, road.y, loader), forward + Math.PI / 2);
+    const onRoad = !routeAheadPoints(this.coverRouteCoords, rider) && track?.getNearestRoad && loader && loader._lastCenterLat != null
+      ? (() => { const w = lngLatToWorld(rider[0], rider[1], loader); return track.getNearestRoad!(w.x, w.y, this.riderAngle); })() : null;
+    return coverAheadPoints({ rider, route: this.coverRouteCoords, road: onRoad && loader ? { lngLat: worldToLngLat(onRoad.x, onRoad.y, loader), angle: onRoad.angle } : null, riderAngle: this.riderAngle });
   }
 
   projectWorld(worldX: number, worldY: number, loader: LoaderFrame, canvas: HTMLCanvasElement): ScreenPoint {
@@ -1202,6 +1577,15 @@ export class OwnWorldView implements WorldViewOracles {
     return this._overview.isWater(lng, lat);
   }
 
+  /** Whether a world point stands inside a resident building footprint (Free Ride pins keep off facades, S5 #333);
+   *  false before the footprints are up. */
+  isFootprint(worldX: number, worldY: number, loader: LoaderFrame): boolean {
+    const resident = this._completeCity?.residentFeatures?.();
+    if (!resident?.length || !loader || loader._lastCenterLat == null) return false;
+    const at = worldToLngLat(worldX, worldY, loader) as [number, number];
+    return footprintsNear(at, 1, resident).some((f: any) => footprintContains(f.geometry, at));
+  }
+
   /** Picking: the facades' own screen-space pick (prismPick) — the nearest surface under the pixel. */
   inspectBuilding(cssX: number, cssY: number, canvasRect: DOMRect): any {
     if (!this.ready || !canvasRect) return null;
@@ -1209,9 +1593,24 @@ export class OwnWorldView implements WorldViewOracles {
     const x = cssX * vp.width / canvasRect.width, y = cssY * vp.height / canvasRect.height;
     // A drawn POI label wins the click (vector-map.js inspectBuilding: `_labelOverlay.hitTest` before the surface).
     const label = this._labels.hitTest(x, y);
-    if (label) return label;
-    // Landmark models first; the nearer surface wins (vector-map.js inspectBuilding).
+    // The label's text and point carry no pand, so the card had its name but not its building's year (#258): pick the
+    // building under the tap and under the label's own anchor, and keep the one that holds the label's point.
+    if (label) return withLabelPand(label, [this.surfaceAt(x, y), this.surfaceAt(...this.anchorOnScreen(label.lngLat))]);
+    return this.surfaceAt(x, y);
+  }
+  /** Landmark models first; the nearer surface wins (vector-map.js inspectBuilding). Viewport px. */
+  private surfaceAt(x: number, y: number): any {
+    const vp = this.host.viewport();
+    if (!Number.isFinite(x) || !Number.isFinite(y)) return null;
     return this.extras.pick(x, y, vp.width, vp.height, this._threeBuildings?.inspectAtScreen?.(x, y, vp.width, vp.height) ?? null);
+  }
+  /** A ground point on screen, viewport px, lifted with the own ground as `projectWorld` lifts it. */
+  private anchorOnScreen(lngLat: [number, number]): [number, number] {
+    const p = this.camera.project(lngLat);
+    const lift = this._ownGround?.ready ? this._ownGround.screenLift(lngLat) : null;
+    if (!lift) return [p.x, p.y];
+    const vp = this.host.viewport();
+    return [p.x + lift[0] / 2 * vp.width, p.y - lift[1] / 2 * vp.height];
   }
 
   // ---- vehicles ----
@@ -1226,7 +1625,7 @@ export class OwnWorldView implements WorldViewOracles {
       const pose = surface.riderPose(lngLat, player.angle, bike.surfaceContactOffsets?.());
       bike.setSurfacePose?.(this.easeRiderSurface(pose.heightM) + 0.22, pose.pitch);
     }
-    bike.update(lngLat, player.angle, visible, player.steerInput || 0, player.distancePx || 0);
+    bike.update(lngLat, player.angle, visible && !this.fpsDrawn, player.steerInput || 0, player.distancePx || 0);
   }
   setPlayerBoat(player: any, loader: LoaderFrame, visible: boolean, zoomScale = 1): void {
     const boat = this._playerBoat;

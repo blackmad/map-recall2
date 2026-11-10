@@ -163,7 +163,7 @@ export const STRIP: readonly (readonly [string, string])[] = [
   ['buildingsModelled', 'individually modelled buildings'],
   ['placesToVisit', 'places to ride to'],
   ['factsToDiscover', 'facts to discover'],
-  ['streetsAndCanals', 'streets and canals to name'],
+  ['streetsAndCanals', 'canals and streets to name'],
   ['neighbourhoods', 'neighbourhoods to collect'],
   ['zooAnimals', 'animals in the zoo'],
 ];

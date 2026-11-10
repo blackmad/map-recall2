@@ -245,6 +245,8 @@ class HUD {
 
   _destinationDistance(distancePx) {
     const meters = Math.max(0, distancePx / PIXELS_PER_METER);
+    // One km format with the landing (rideDistance.ts formatRideDistance, set as formatKm by the presentation runtime).
+    if (meters >= 1000 && this.formatKm) return this.formatKm(meters / 1000);
     return meters >= 1000 ? `${(meters / 1000).toFixed(1)} km` : `${Math.round(meters)} m`;
   }
 
@@ -414,11 +416,15 @@ class HUD {
     ctx.font = this._font(700, 11, surface.fontMono);
     const tallyWidth = ctx.measureText(tally + streakText).width;
     let destWidth = 0;
-    const destName = destination?.name ? hudText('hud.toDestination', { name: destination.name }) : '';
+    let destName = destination?.name ? hudText('hud.toDestination', { name: destination.name }) : '';
+    // R2-5 (#304): drop whole items, never an ellipsis mid-word. The destination keeps what the score leaves;
+    // the neighbourhood is shown only when it fits whole beside both; a destination that still does not fit
+    // loses its "to" prefix before it is cut.
+    ctx.font = this._font(500, 12, surface.fontUi);
+    const roomForDest = Math.max(60, inner - tallyWidth - 14);
+    if (destName && ctx.measureText(destName).width > roomForDest && ctx.measureText(destination.name).width <= roomForDest) destName = destination.name;
     if (destName) {
-      ctx.font = this._font(500, 12, surface.fontUi);
-      const room = Math.max(60, inner * 0.45);
-      const fitted = this._fit(ctx, destName, room);
+      const fitted = this._fit(ctx, destName, roomForDest);
       destWidth = ctx.measureText(fitted).width + 10;
       ctx.fillStyle = surface.inkMuted;
       ctx.textAlign = 'right';
@@ -429,10 +435,10 @@ class HUD {
     if (neighborhood) {
       ctx.font = this._font(500, 12, surface.fontUi);
       ctx.fillStyle = surface.inkMuted;
-      const hood = this._fit(ctx, neighborhood, Math.max(0, inner - destWidth - tallyWidth - 14));
-      if (hood && hood !== '…') {
-        ctx.fillText(`${hood} · `, x, y);
-        x += ctx.measureText(`${hood} · `).width;
+      const hoodText = `${neighborhood} · `;
+      if (ctx.measureText(hoodText).width <= inner - destWidth - tallyWidth - 14) {
+        ctx.fillText(hoodText, x, y);
+        x += ctx.measureText(hoodText).width;
       }
     }
     ctx.font = this._font(700, 11, surface.fontMono);
@@ -758,6 +764,8 @@ class HUD {
     // hint centred on it started at x = -62.
     const x = Math.max(8, Math.min(pad.cx - width / 2, CANVAS_W - width - 8));
     const rect = { x, y: pad.bounds.y - 30, width, height: 22 };
+    // Where it was drawn, for the phone-cards spec (#286): nothing may sit under it.
+    this._touchHintDrawn = { x: rect.x, y: rect.y, w: rect.width, h: rect.height, at: performance.now() };
     this.paperCard(ctx, rect, { radius: 9 });
     ctx.fillStyle = theme.inkMuted;
     ctx.fillText(text, x + width / 2, rect.y + rect.height / 2);

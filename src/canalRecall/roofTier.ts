@@ -88,7 +88,7 @@ vec3 roofTierColour(vec3 fine, vec2 uv, float layer, float dist) {
 }`;
 
 /**
- * The footprint prefilter of the facade cell sample (lane R4-D #246, `?cellTaps=1`, off by default: CELL_TAPS_DEFAULT).
+ * The footprint prefilter of the facade cell sample (lane R4-D #246, `?cellTaps=1`; desktop on, touch off since 2026-11-08: CELL_TAPS_DESKTOP_DEFAULT / CELL_TAPS_TOUCH_DEFAULT).
  *
  * At the user's S3 pose (`s3-slab-user`) the slab's long street wall is plain minification at 16-32 texels per device
  * pixel (R3-D #233): the sampler reads mip 4-5 of the 256 px cell, where the window pitch is near the texel pitch, and
@@ -103,7 +103,21 @@ vec3 roofTierColour(vec3 fine, vec2 uv, float layer, float dist) {
  * analytic windows' edge filter by that factor where the taps are on, so the glazing bars are filtered with the wall
  * (look/windowSdf.ts reads `cellTapW`).
  */
-export const CELL_TAPS_DEFAULT = false;
+/**
+ * Desktop default ON (2026-11-08, the user's call on #247 after R4-D: "trust your rec", option 1, no wider band): the
+ * slab on Weesperstraat stops shimmering at the user's S3 pose. Touch stays off (R4-D: no threshold serves both the
+ * slab and S2 on the iPhone). `?cellTaps=0|1` overrides either.
+ */
+export const CELL_TAPS_DESKTOP_DEFAULT = true;
+export const CELL_TAPS_TOUCH_DEFAULT = false;
+/** The default for this device: a coarse pointer (touch) takes CELL_TAPS_TOUCH_DEFAULT, else CELL_TAPS_DESKTOP_DEFAULT. */
+export function cellTapsDefault(w: any = globalThis): boolean {
+  let touch = false;
+  try { touch = !!w?.matchMedia?.('(pointer: coarse)')?.matches; } catch { /* no matchMedia */ }
+  return touch ? CELL_TAPS_TOUCH_DEFAULT : CELL_TAPS_DESKTOP_DEFAULT;
+}
+/** @deprecated the device-split defaults above; kept for the R4-D test's name. */
+export const CELL_TAPS_DEFAULT = CELL_TAPS_DESKTOP_DEFAULT;
 /**
  * Default knobs, the measured best (#246 hand-back, desktop DPR 2): threshold 20 texels per framebuffer pixel (scaled by
  * the policy's tierScale, like the tier), 3 x 3 tent taps 1 px apart, each read at 0.85 x the pixel's gradient. At
@@ -172,12 +186,12 @@ const tapsParam = (name: string): string | null => {
   try { return typeof URLSearchParams === 'function' ? new URLSearchParams(((globalThis as Record<string, unknown>).location as { search?: string } | undefined)?.search ?? '').get(name) : null; } catch { return null; }
 };
 
-/** `?cellTaps=1` / `=0` (or `window.__canalRecallCellTaps`); unasked, CELL_TAPS_DEFAULT. Off: no define, no uniform. */
+/** `?cellTaps=1` / `=0` (or `window.__canalRecallCellTaps`); unasked, the device default (cellTapsDefault). Off: no define, no uniform. */
 export function cellTapsEnabled(): boolean {
   const asked = (globalThis as Record<string, unknown>).__canalRecallCellTaps ?? tapsParam('cellTaps');
   if (asked === false || asked === '0' || asked === 'false' || asked === 'off') return false;
   if (asked === true || asked === '1' || asked === 'true' || asked === 'on') return true;
-  return CELL_TAPS_DEFAULT;
+  return cellTapsDefault();
 }
 
 /** The knobs for this page: `?cellTapsAt=` (threshold), `?cellTapsN=` (2, 4, 9), `?cellTapsSpread=`, `?cellTapsGrad=`, `?cellTapsSdf=`. */
@@ -275,7 +289,7 @@ void cellTierSample(vec3 p, float dist, out vec3 c, out vec2 m) {
 #ifdef CELL_TIER_PROBE
   cellFarTier = far;
 #endif
-#ifdef USE_FOG
+#if defined( USE_FOG ) && ! defined( DEPTH_FADE_LIMIT_ONLY )
   far = max(far, ${DEPTH_FADE_DETAIL_GLSL('dist')});
 #endif
 #ifdef CELL_TIER_PROBE

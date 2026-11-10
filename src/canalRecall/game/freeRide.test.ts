@@ -83,12 +83,17 @@ test('a tap hits the marker label or its stem', () => {
   assert.equal(markerAt(placed, 400, 300 - MARKER_STEM - 12)?.key, 'm');
   assert.equal(markerAt(placed, 400, 299)?.key, 'm');
   assert.equal(markerAt(placed, 600, 300), null);
+  // Beside the stem, under the plate's ends, is the canal below the pill, not the pill (lane S2, #314).
+  assert.equal(markerAt(placed, 445, 300 - 4), null);
+  assert.equal(markerAt(placed, 404, 300 - 4)?.key, 'm');
 });
 
 test('marker labels cut long names on a word', () => {
   assert.equal(markerLabel('Westerkerk'), 'Westerkerk');
   const cut = markerLabel('Nationaal Monument op de Dam en het Koninklijk Paleis');
-  assert.ok(cut.length <= 26, cut);
+  assert.ok(cut.length <= 36, cut);
+  assert.equal(markerLabel('Canal Ring Area of Amsterdam inside the Singelgracht'), 'Canal Ring Area of Amsterdam inside…');
+  assert.equal(markerLabel('Hortus Botanicus greenhouses'), 'Hortus Botanicus greenhouses');
   assert.ok(cut.endsWith('…'));
   assert.ok(!cut.includes(' …'));
 });

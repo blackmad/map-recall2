@@ -23,6 +23,7 @@
  *   a lifted detail chunk stripes through the complementary dissolve, swap-zfight at s1-hoftuin). A cell installed
  *   without its CPU copy is fetched again when it comes within that radius.
  */
+import { LeavingFades, popFadeFlag } from './popFade.js';
 import { CELL_GRID, cellBounds, parseCellKey } from '../world/cellGrid.js';
 import { shellOrigin } from '../world/shellMesh.js';
 import type { BakedRange } from '../world/bakedCellArrays.js';
@@ -291,6 +292,12 @@ export class BakedCoarse {
   covers(cell: string): boolean { return this.enabled && this.covered.has(cell); }
   /** Whether the cell's mesh is installed and done dissolving in (the far tier then hides its part). */
   drawn(cell: string): boolean { const r = this.residents.get(cell); return !!r && r.drawn; }
+  /**
+   * With the release on (lane R4-K #255): the cell is covered but its mesh is not drawn (released to the far tier, or
+   * still arriving / dissolving in after a return), so the far prisms stand in for it until `drawn` (farPartHidden).
+   * Always false with the release off: the far tier's tile-wide hand-over is unchanged there.
+   */
+  holdsFar(cell: string): boolean { return this.enabled && this.releaseM !== null && this.covered.has(cell) && !this.drawn(cell); }
 
   /**
    * The facade layer's resident cells (the cells of its buildings): re-plan when they change. Called from inside its
@@ -336,7 +343,9 @@ export class BakedCoarse {
     }
     this.released = next;
     if (this.ready.length) this.ready = this.ready.filter(r => !next.has(r.data.key));
-    if (back.length) this.pump(this.lastWant);
+    // A cell back from the far tier is fetched again, also one the plan only keeps (hysteresis: released cells count as
+    // held in replan, lane R4-K), which `lastWant` does not list.
+    if (back.length) { const want = new Set(this.lastWant); this.pump([...this.lastWant, ...back.filter(k => this.covered.has(k) && !want.has(k))]); }
     this.host.repaint();
   }
 
@@ -348,7 +357,7 @@ export class BakedCoarse {
     if (!anchor) return false;
     this.planAt = this.at ? [this.at[0], this.at[1]] : null;
     const available = this.host.available();
-    const { want, keep } = planBakedCells(anchor[0], anchor[1], this.wanted, available, this.budget, key => this.knownTriangles.get(key) ?? (available.get(key) ?? 0) * TRIS_PER_GZ_BYTE, this.residents.keys());
+    const { want, keep } = planBakedCells(anchor[0], anchor[1], this.wanted, available, this.budget, key => this.knownTriangles.get(key) ?? (available.get(key) ?? 0) * TRIS_PER_GZ_BYTE, [...this.residents.keys(), ...this.released]);
     for (const key of [...this.residents.keys()]) if (!keep.has(key)) this.drop(key);
     for (const [key, c] of [...this.inflight]) if (!keep.has(key)) { c.abort(); this.inflight.delete(key); }
     const covered = new Set([...keep].filter(k => !this.failed.has(k)));
@@ -455,7 +464,7 @@ export class BakedCoarse {
       lifted: keepPositions, liftable: keepPositions && (data.positionUnit ?? 1) === 1,
       ...(clone ? { fade: { start: performance.now(), clone, source: material } } : {}),
       ...(keepPositions ? { lift: { positions, unit, pending: [...ranges.keys()], applied: new Map<string, number>() } } : {}) };
-    if (old) this.drop(data.key);
+    if (old) this.drop(data.key, true);
     this.host.attach(r);
     scene.add(mesh);
     this.fetchedBytes += data.gzBytes; this.uploads += r.bytes;
@@ -532,21 +541,28 @@ export class BakedCoarse {
         else { if (material) r.mesh.material = material; r.fade.clone.dispose?.(); delete r.fade; r.drawn = true; repaint = true; }
       } else if (material && r.mesh.material !== material) r.mesh.material = material;
     }
+    if (this.leaving?.step(now, material?.uniforms?.cityFade?.value ?? 1)) repaint = true;
     if (repaint) this.host.repaint();
   }
 
-  private drop(key: string): void {
+  /** `?popFade` (lane P2 #325): a drawn cell given back dissolves out instead of vanishing. */
+  private readonly leaving: LeavingFades | null = popFadeFlag() ? new LeavingFades() : null;
+  private drop(key: string, now = false): void {
     const r = this.residents.get(key);
     if (!r) return;
     this.residents.delete(key);
     this.host.detach(r);
-    r.mesh.parent?.remove(r.mesh);
-    r.mesh.geometry.dispose();
+    const release = () => { r.mesh.parent?.remove(r.mesh); r.mesh.geometry.dispose(); };
+    const from = r.fade ? r.fade.clone.uniforms.cityFade.value : 1;
     r.fade?.clone.dispose?.();
+    // Not a re-install of the same cell (install drops the old mesh after adding the new one: no overlap wanted).
+    if (!now && this.leaving && r.mesh.visible !== false && from > 0.05 && this.leaving.leave(r.mesh, this.host.fadeMaterial(from), release)) { this.host.repaint(); return; }
+    release();
   }
 
   clear(): void {
-    for (const key of [...this.residents.keys()]) this.drop(key);
+    this.leaving?.flush();
+    for (const key of [...this.residents.keys()]) this.drop(key, true);
     for (const c of this.inflight.values()) c.abort();
     this.inflight.clear(); this.queue = []; this.ready = []; this.released = new Set(); this.lastWant = [];
     this.at = null; this.planAt = null;

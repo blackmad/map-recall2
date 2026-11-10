@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import {apply, det3, mergeBuckets, mul, partHash, rotationY, soupHash, splitRoles, toCanonical, transformBuckets, translation, triangles, type BucketMap} from './soup.ts';
+import {apply, det3, nearRepeats, structureOf, mergeBuckets, mul, partHash, rotationY, soupHash, splitRoles, toCanonical, transformBuckets, translation, triangles, type BucketMap} from './soup.ts';
 import {decomposeTRS, writeBucketUnit, writeMeshTile} from './writeTile.ts';
 import {bucketTris, compareTriangles, decodeMeshTile, decodeUnit} from './readTile.ts';
 import {mercatorFromModel, rotationForBearing, surveyedSpec, tileFromMercator, tileFromModel} from './placement.ts';
@@ -102,4 +102,14 @@ test('writer round trip: two identical bodies become one unit with two instances
   assert.equal(compareTriangles(bucketTris(transformBuckets(mergeBuckets(...houses[0].values()), toTile)), broken).pass, false);
   const moved = decoded.pands[1].map(t => ({...t, p: t.p.map((v, i) => (i % 3 === 0 ? v + 0.01 : v))}));
   assert.equal(compareTriangles(bucketTris(transformBuckets(mergeBuckets(...houses[1].values()), toTile)), moved).pass, false);
+});
+
+test('nearRepeats: a 3 cm wider twin is within 5 cm, a 20 cm wider one is not, a different structure never counts', () => {
+  const part = (b: BucketMap) => ({structure: structureOf('body', b), triangles: triangles(b)});
+  const base = house(0, 6), twin = house(10, 6.03), wide = house(20, 6.2);
+  const r = nearRepeats([part(base), part(twin)]);
+  assert.deepEqual([r.groups, r.parts, r.within, r.withinParts, r.withinSavedTriangles], [1, 2, 1, 2, triangles(base)]);
+  assert.equal(nearRepeats([part(base), part(wide)]).within, 0);
+  const odd = house(30, 6); odd.delete('2a3a42_door');
+  assert.equal(nearRepeats([part(base), part(odd)]).groups, 0);
 });

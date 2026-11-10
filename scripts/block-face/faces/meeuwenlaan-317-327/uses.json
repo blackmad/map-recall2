@@ -1,0 +1,218 @@
+{
+ "street": "Meeuwenlaan",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T02:07:19.759Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012066068",
+   "addresses": [
+    "Meeuwenlaan 317"
+   ],
+   "groundUnits": [
+    {
+     "address": "Meeuwenlaan 317",
+     "use": "winkelfunctie,woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000741047"
+    },
+    {
+     "address": "Merelstraat 13",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010000742394"
+    }
+   ],
+   "units": 2,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2848620102,
+     "lngLat": [
+      4.924556,
+      52.3901455
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "317",
+      "addr:postcode": "1022AL",
+      "addr:street": "Meeuwenlaan",
+      "name": "Aitmaten",
+      "shop": "supermarket",
+      "source": "BAG",
+      "source:date": "2014-05-07",
+      "website": "https://aitmaten-supermarkt.nl/"
+     },
+     "fetchedAt": "2026-11-10T02:07:19.759Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012107449",
+   "addresses": [
+    "Meeuwenlaan 319",
+    "Meeuwenlaan 321"
+   ],
+   "groundUnits": [
+    {
+     "address": "Meeuwenlaan 319",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000741048"
+    },
+    {
+     "address": "Meeuwenlaan 321-H",
+     "use": "winkelfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000741049"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2848620113,
+     "lngLat": [
+      4.9244955,
+      52.3902865
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "321-H",
+      "addr:postcode": "1022AL",
+      "addr:street": "Meeuwenlaan",
+      "amenity": "fast_food",
+      "cuisine": "sandwich",
+      "name": "Grand Sandwich House",
+      "source": "BAG",
+      "source:date": "2014-05-07"
+     },
+     "fetchedAt": "2026-11-10T02:07:19.759Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012085420",
+   "addresses": [
+    "Meeuwenlaan 323",
+    "Meeuwenlaan 325"
+   ],
+   "groundUnits": [
+    {
+     "address": "Meeuwenlaan 323-H",
+     "use": "winkelfunctie,woonfunctie",
+     "areaM2": 13,
+     "bagId": "0363010000741051"
+    },
+    {
+     "address": "Meeuwenlaan 325",
+     "use": "woonfunctie",
+     "areaM2": 75,
+     "bagId": "0363010000741053"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2848620115,
+     "lngLat": [
+      4.9244949,
+      52.3903229
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "323-H",
+      "addr:postcode": "1022AL",
+      "addr:street": "Meeuwenlaan",
+      "name": "Lequin",
+      "shop": "hairdresser",
+      "source": "BAG",
+      "source:date": "2014-05-07",
+      "website": "https://www.facebook.com/Lequin-haarsalon-783731638340925/"
+     },
+     "fetchedAt": "2026-11-10T02:07:19.759Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012115389",
+   "addresses": [
+    "Meeuwenlaan 327"
+   ],
+   "groundUnits": [
+    {
+     "address": "Meeuwenlaan 327-H",
+     "use": "winkelfunctie",
+     "areaM2": 44,
+     "bagId": "0363010001021843"
+    }
+   ],
+   "units": 2,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2848620118,
+     "lngLat": [
+      4.9244791,
+      52.3904215
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "327-H",
+      "addr:postcode": "1022AL",
+      "addr:street": "Meeuwenlaan",
+      "healthcare": "clinic",
+      "name": "Healing People",
+      "source": "BAG",
+      "source:date": "2014-05-07",
+      "sport": "yoga"
+     },
+     "fetchedAt": "2026-11-10T02:07:19.759Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 2848620120,
+     "lngLat": [
+      4.9244383,
+      52.3904841
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "329-H",
+      "addr:postcode": "1022AL",
+      "addr:street": "Meeuwenlaan",
+      "amenity": "fast_food",
+      "check_date": "2024-09-02",
+      "drive_through": "no",
+      "indoor_seating": "yes",
+      "level": "0",
+      "name": "Pont Neuf",
+      "opening_hours": "09:00-21:00",
+      "outdoor_seating": "yes",
+      "payment:cash": "yes",
+      "payment:contactless": "yes",
+      "payment:mastercard": "yes",
+      "payment:visa": "yes",
+      "phone": "+31 20 845 4295",
+      "source": "BAG",
+      "source:date": "2014-05-07",
+      "website": "https://pontneufamsterdam.nl"
+     },
+     "fetchedAt": "2026-11-10T02:07:19.759Z",
+     "match": "frontage",
+     "distanceM": 4.9
+    }
+   ]
+  }
+ ]
+}

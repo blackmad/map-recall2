@@ -1,0 +1,117 @@
+{
+ "street": "De Rijpgracht",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T01:55:35.502Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012079479",
+   "addresses": [
+    "De Rijpgracht 24"
+   ],
+   "groundUnits": [
+    {
+     "address": "Joris van Andringastraat 2-H",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000695440"
+    },
+    {
+     "address": "De Rijpgracht 24-H",
+     "use": "woonfunctie",
+     "areaM2": 63,
+     "bagId": "0363010000618576"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012128075",
+   "addresses": [
+    "De Rijpgracht 22"
+   ],
+   "groundUnits": [
+    {
+     "address": "De Rijpgracht 22-H",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000618569"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012112059",
+   "addresses": [
+    "De Rijpgracht 20"
+   ],
+   "groundUnits": [
+    {
+     "address": "De Rijpgracht 20",
+     "use": "woonfunctie",
+     "areaM2": 196,
+     "bagId": "0363010000618564"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012103314",
+   "addresses": [
+    "De Rijpgracht 18"
+   ],
+   "groundUnits": [
+    {
+     "address": "De Rijpgracht 18-H",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000618557"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012119748",
+   "addresses": [
+    "De Rijpgracht 16"
+   ],
+   "groundUnits": [
+    {
+     "address": "De Rijpgracht 16-H",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000618550"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012067932",
+   "addresses": [
+    "De Rijpgracht 14"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan den Haenstraat 1-H",
+     "use": "woonfunctie",
+     "areaM2": 40,
+     "bagId": "0363010000683884"
+    },
+    {
+     "address": "De Rijpgracht 14-H",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000618543"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  }
+ ]
+}

@@ -1,0 +1,1226 @@
+{
+ "buurt": "vogelbuurt-noord",
+ "library": "vogelbuurt",
+ "generatedAt": "2026-11-10T07:08:52.131Z",
+ "seconds": 6.43,
+ "totals": {
+  "faces": 55,
+  "pands": 252,
+  "placed": 44
+ },
+ "faces": [
+  {
+   "face": "flamingo-14-28",
+   "street": "Flamingostraat",
+   "pands": 8,
+   "placed": 0,
+   "held": 8,
+   "runs": [],
+   "seconds": 1.89,
+   "byType": {},
+   "installed": 0,
+   "holds": {
+    "evidence": 0,
+    "match": 0,
+    "likeness": 2,
+    "run": 1,
+    "review": 5
+   }
+  },
+  {
+   "face": "flamingo-15-21",
+   "street": "Flamingostraat",
+   "pands": 4,
+   "placed": 0,
+   "held": 4,
+   "runs": [],
+   "seconds": 2.16,
+   "byType": {},
+   "installed": 0,
+   "holds": {
+    "evidence": 0,
+    "match": 0,
+    "likeness": 3,
+    "run": 1,
+    "review": 0
+   }
+  },
+  {
+   "face": "flamingo-3-9",
+   "street": "Flamingostraat",
+   "pands": 4,
+   "placed": 0,
+   "held": 4,
+   "runs": [],
+   "seconds": 3.03,
+   "byType": {},
+   "installed": 0,
+   "holds": {
+    "evidence": 0,
+    "match": 0,
+    "likeness": 3,
+    "run": 1,
+    "review": 0
+   }
+  },
+  {
+   "face": "flamingo-4-10",
+   "street": "Flamingostraat",
+   "pands": 4,
+   "placed": 0,
+   "held": 4,
+   "runs": [],
+   "seconds": 0.28,
+   "byType": {},
+   "installed": 0,
+   "holds": {
+    "evidence": 0,
+    "match": 0,
+    "likeness": 0,
+    "run": 0,
+    "review": 4
+   }
+  },
+  {
+   "face": "kalkoen-13-17",
+   "street": "Kalkoenstraat",
+   "pands": 3,
+   "placed": 0,
+   "held": 3,
+   "runs": [],
+   "seconds": 0.2,
+   "byType": {},
+   "installed": 0,
+   "holds": {
+    "evidence": 0,
+    "match": 0,
+    "likeness": 0,
+    "run": 0,
+    "review": 3
+   }
+  },
+  {
+   "face": "kalkoen-18-26",
+   "street": "Kalkoenstraat",
+   "pands": 5,
+   "placed": 2,
+   "held": 3,
+   "runs": [
+    {
+     "face": "kalkoen-18-26-r1",
+     "pands": [
+      "0363100012123527",
+      "0363100012086436"
+     ],
+     "passed": true,
+     "triangles": 1317
+    }
+   ],
+   "seconds": 9.23,
+   "byType": {
+    "vogel-1921-two-storey-dormer-row": 2
+   },
+   "installed": 0,
+   "holds": {
+    "evidence": 1,
+    "match": 0,
+    "likeness": 2,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "kalkoen-2-6",
+   "street": "Kalkoenstraat",
+   "pands": 3,
+   "placed": 0,
+   "held": 3,
+   "runs": [],
+   "seconds": 0.23,
+   "byType": {},
+   "installed": 0,
+   "holds": {
+    "evidence": 3,
+    "match": 0,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "kalkoen-28-34",
+   "street": "Kalkoenstraat",
+   "pands": 4,
+   "placed": 3,
+   "held": 1,
+   "runs": [
+    {
+     "face": "kalkoen-28-34-r1",
+     "pands": [
+      "0363100012133141",
+      "0363100012111141",
+      "0363100012123147"
+     ],
+     "passed": true,
+     "triangles": 1938
+    }
+   ],
+   "seconds": 5.84,
+   "byType": {
+    "vogel-1921-two-storey-dormer-row": 3
+   },
+   "installed": 0,
+   "holds": {
+    "evidence": 1,
+    "match": 0,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "kalkoen-5-9",
+   "street": "Kalkoenstraat",
+   "pands": 3,
+   "placed": 0,
+   "held": 3,
+   "runs": [],
+   "seconds": 2.87,
+   "byType": {},
+   "installed": 0,
+   "holds": {
+    "evidence": 0,
+    "match": 0,
+    "likeness": 1,
+    "run": 2,
+    "review": 0
+   }
+  },
+  {
+   "face": "kalkoen-8-16",
+   "street": "Kalkoenstraat",
+   "pands": 5,
+   "placed": 4,
+   "held": 1,
+   "runs": [
+    {
+     "face": "kalkoen-8-16-r1",
+     "pands": [
+      "0363100012125954",
+      "0363100012099283"
+     ],
+     "passed": true,
+     "triangles": 1259
+    },
+    {
+     "face": "kalkoen-8-16-r2",
+     "pands": [
+      "0363100012109590",
+      "0363100012105550"
+     ],
+     "passed": true,
+     "triangles": 1273
+    }
+   ],
+   "seconds": 9.03,
+   "byType": {
+    "vogel-1921-two-storey-dormer-row": 4
+   },
+   "installed": 0,
+   "holds": {
+    "evidence": 0,
+    "match": 0,
+    "likeness": 0,
+    "run": 0,
+    "review": 1
+   }
+  },
+  {
+   "face": "meeuwenplein-1-7",
+   "street": "Meeuwenplein",
+   "pands": 4,
+   "placed": 3,
+   "held": 1,
+   "runs": [
+    {
+     "face": "meeuwenplein-1-7-r1",
+     "pands": [
+      "0363100012082803",
+      "0363100012084066",
+      "0363100012065418"
+     ],
+     "passed": true,
+     "triangles": 1899
+    }
+   ],
+   "seconds": 4.09,
+   "byType": {
+    "vogel-1921-two-storey-dormer-row": 3
+   },
+   "installed": 0,
+   "holds": {
+    "evidence": 0,
+    "match": 1,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "meeuwenplein-29-39",
+   "street": "Meeuwenplein",
+   "pands": 6,
+   "placed": 2,
+   "held": 4,
+   "runs": [
+    {
+     "face": "meeuwenplein-29-39-r1",
+     "pands": [
+      "0363100012131749",
+      "0363100012129900"
+     ],
+     "passed": true,
+     "triangles": 1311
+    }
+   ],
+   "seconds": 5.79,
+   "byType": {
+    "vogel-1921-two-storey-dormer-row": 2
+   },
+   "installed": 0,
+   "holds": {
+    "evidence": 0,
+    "match": 0,
+    "likeness": 3,
+    "run": 1,
+    "review": 0
+   }
+  },
+  {
+   "face": "meeuwenplein-41-45",
+   "street": "Meeuwenplein",
+   "pands": 3,
+   "placed": 3,
+   "held": 0,
+   "runs": [
+    {
+     "face": "meeuwenplein-41-45",
+     "pands": [
+      "0363100012107162",
+      "0363100012116125",
+      "0363100012078630"
+     ],
+     "passed": true,
+     "triangles": 1945
+    }
+   ],
+   "seconds": 3.61,
+   "byType": {
+    "vogel-1921-two-storey-dormer-row": 3
+   },
+   "installed": 0,
+   "holds": {
+    "evidence": 0,
+    "match": 0,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "meeuwenplein-9-19",
+   "street": "Meeuwenplein",
+   "pands": 6,
+   "placed": 3,
+   "held": 3,
+   "runs": [
+    {
+     "face": "meeuwenplein-9-19-r1",
+     "pands": [
+      "0363100012074442",
+      "0363100012140709",
+      "0363100012116850"
+     ],
+     "passed": true,
+     "triangles": 2039
+    }
+   ],
+   "seconds": 7.93,
+   "byType": {
+    "vogel-1921-two-storey-dormer-row": 3
+   },
+   "installed": 0,
+   "holds": {
+    "evidence": 0,
+    "match": 0,
+    "likeness": 2,
+    "run": 1,
+    "review": 0
+   }
+  },
+  {
+   "face": "pelikaan-13-27",
+   "street": "Pelikaanstraat",
+   "pands": 8,
+   "placed": 0,
+   "held": 8,
+   "runs": [],
+   "seconds": 4.91,
+   "byType": {},
+   "installed": 0,
+   "holds": {
+    "evidence": 0,
+    "match": 1,
+    "likeness": 2,
+    "run": 3,
+    "review": 2
+   }
+  },
+  {
+   "face": "pelikaan-16-22",
+   "street": "Pelikaanstraat",
+   "pands": 4,
+   "placed": 3,
+   "held": 1,
+   "runs": [
+    {
+     "face": "pelikaan-16-22-r1",
+     "pands": [
+      "0363100012097975",
+      "0363100012111816",
+      "0363100012128530"
+     ],
+     "passed": true,
+     "triangles": 2012
+    }
+   ],
+   "seconds": 6.07,
+   "byType": {
+    "vogel-1921-two-storey-dormer-row": 3
+   },
+   "installed": 0,
+   "holds": {
+    "evidence": 1,
+    "match": 0,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "pelikaan-3-9",
+   "street": "Pelikaanstraat",
+   "pands": 4,
+   "placed": 2,
+   "held": 2,
+   "runs": [
+    {
+     "face": "pelikaan-3-9-r1",
+     "pands": [
+      "0363100012119758",
+      "0363100012124605"
+     ],
+     "passed": true,
+     "triangles": 1321
+    }
+   ],
+   "seconds": 4.29,
+   "byType": {
+    "vogel-1921-two-storey-dormer-row": 2
+   },
+   "installed": 0,
+   "holds": {
+    "evidence": 0,
+    "match": 0,
+    "likeness": 0,
+    "run": 0,
+    "review": 2
+   }
+  },
+  {
+   "face": "pelikaan-4-10",
+   "street": "Pelikaanstraat",
+   "pands": 4,
+   "placed": 0,
+   "held": 4,
+   "runs": [],
+   "seconds": 0.12,
+   "byType": {},
+   "installed": 0,
+   "holds": {
+    "evidence": 3,
+    "match": 0,
+    "likeness": 0,
+    "run": 1,
+    "review": 0
+   }
+  },
+  {
+   "face": "pluvierplein-4-10",
+   "street": "Pluvierplein",
+   "pands": 4,
+   "placed": 0,
+   "held": 4,
+   "runs": [],
+   "seconds": 0.26,
+   "byType": {},
+   "installed": 0,
+   "holds": {
+    "evidence": 4,
+    "match": 0,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "pluvierplein-5-15",
+   "street": "Pluvierplein",
+   "pands": 6,
+   "placed": 0,
+   "held": 6,
+   "runs": [],
+   "seconds": 1.76,
+   "byType": {},
+   "installed": 0,
+   "holds": {
+    "evidence": 0,
+    "match": 0,
+    "likeness": 2,
+    "run": 0,
+    "review": 4
+   }
+  },
+  {
+   "face": "vogel-1-15",
+   "street": "Lange Vogelstraat",
+   "pands": 7,
+   "placed": 3,
+   "held": 4,
+   "runs": [
+    {
+     "face": "vogel-1-15-r1",
+     "pands": [
+      "0363100012114049",
+      "0363100012117598",
+      "0363100012135488"
+     ],
+     "passed": true,
+     "triangles": 1490
+    }
+   ],
+   "seconds": 8.92,
+   "byType": {
+    "vogel-1918-timber-band-cottage": 3
+   },
+   "installed": 0,
+   "holds": {
+    "evidence": 1,
+    "match": 0,
+    "likeness": 3,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "vogel-13-21",
+   "street": "Brede Vogelstraat",
+   "pands": 4,
+   "placed": 0,
+   "held": 4,
+   "runs": [],
+   "seconds": 1.25,
+   "byType": {},
+   "installed": 0,
+   "holds": {
+    "evidence": 0,
+    "match": 2,
+    "likeness": 1,
+    "run": 1,
+    "review": 0
+   }
+  },
+  {
+   "face": "vogel-13-23",
+   "street": "Vierde Vogelstraat",
+   "pands": 3,
+   "placed": 0,
+   "held": 3,
+   "runs": [],
+   "seconds": 0.2,
+   "byType": {},
+   "installed": 0,
+   "holds": {
+    "evidence": 1,
+    "match": 2,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "vogel-15-21",
+   "street": "Vijfde Vogelstraat",
+   "pands": 4,
+   "placed": 0,
+   "held": 4,
+   "runs": [],
+   "seconds": 1.55,
+   "byType": {},
+   "installed": 0,
+   "holds": {
+    "evidence": 1,
+    "match": 0,
+    "likeness": 2,
+    "run": 1,
+    "review": 0
+   }
+  },
+  {
+   "face": "vogel-16-20",
+   "street": "Vierde Vogelstraat",
+   "pands": 3,
+   "placed": 0,
+   "held": 3,
+   "runs": [],
+   "seconds": 0.12,
+   "byType": {},
+   "installed": 0,
+   "holds": {
+    "evidence": 1,
+    "match": 1,
+    "likeness": 0,
+    "run": 1,
+    "review": 0
+   }
+  },
+  {
+   "face": "vogel-17-23",
+   "street": "Eerste Vogelstraat",
+   "pands": 4,
+   "placed": 0,
+   "held": 4,
+   "runs": [],
+   "seconds": 2.24,
+   "byType": {},
+   "installed": 0,
+   "holds": {
+    "evidence": 0,
+    "match": 1,
+    "likeness": 2,
+    "run": 1,
+    "review": 0
+   }
+  },
+  {
+   "face": "vogel-17-31",
+   "street": "Lange Vogelstraat",
+   "pands": 8,
+   "placed": 0,
+   "held": 8,
+   "runs": [],
+   "seconds": 2.44,
+   "byType": {},
+   "installed": 0,
+   "holds": {
+    "evidence": 1,
+    "match": 5,
+    "likeness": 2,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "vogel-18-30",
+   "street": "Eerste Vogelstraat",
+   "pands": 6,
+   "placed": 0,
+   "held": 6,
+   "runs": [],
+   "seconds": 0.99,
+   "byType": {},
+   "installed": 0,
+   "holds": {
+    "evidence": 1,
+    "match": 1,
+    "likeness": 1,
+    "run": 3,
+    "review": 0
+   }
+  },
+  {
+   "face": "vogel-18-32",
+   "street": "Lange Vogelstraat",
+   "pands": 7,
+   "placed": 0,
+   "held": 7,
+   "runs": [],
+   "seconds": 0.43,
+   "byType": {},
+   "installed": 0,
+   "holds": {
+    "evidence": 3,
+    "match": 3,
+    "likeness": 0,
+    "run": 1,
+    "review": 0
+   }
+  },
+  {
+   "face": "vogel-19-29",
+   "street": "Derde Vogelstraat",
+   "pands": 5,
+   "placed": 0,
+   "held": 5,
+   "runs": [],
+   "seconds": 1.14,
+   "byType": {},
+   "installed": 0,
+   "holds": {
+    "evidence": 0,
+    "match": 3,
+    "likeness": 1,
+    "run": 1,
+    "review": 0
+   }
+  },
+  {
+   "face": "vogel-2-16",
+   "street": "Eerste Vogelstraat",
+   "pands": 7,
+   "placed": 0,
+   "held": 7,
+   "runs": [],
+   "seconds": 0.35,
+   "byType": {},
+   "installed": 0,
+   "holds": {
+    "evidence": 2,
+    "match": 1,
+    "likeness": 0,
+    "run": 1,
+    "review": 3
+   }
+  },
+  {
+   "face": "vogel-2-16-122155",
+   "street": "Lange Vogelstraat",
+   "pands": 7,
+   "placed": 3,
+   "held": 4,
+   "runs": [
+    {
+     "face": "vogel-2-16-122155-r1",
+     "pands": [
+      "0363100012065836",
+      "0363100012091400",
+      "0363100012138008"
+     ],
+     "passed": true,
+     "triangles": 1477
+    }
+   ],
+   "seconds": 6.36,
+   "byType": {
+    "vogel-1918-timber-band-cottage": 3
+   },
+   "installed": 0,
+   "holds": {
+    "evidence": 4,
+    "match": 0,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "vogel-2-6",
+   "street": "Vierde Vogelstraat",
+   "pands": 3,
+   "placed": 0,
+   "held": 3,
+   "runs": [],
+   "seconds": 0.21,
+   "byType": {},
+   "installed": 0,
+   "holds": {
+    "evidence": 0,
+    "match": 1,
+    "likeness": 0,
+    "run": 1,
+    "review": 1
+   }
+  },
+  {
+   "face": "vogel-20-30",
+   "street": "Brede Vogelstraat",
+   "pands": 4,
+   "placed": 0,
+   "held": 4,
+   "runs": [],
+   "seconds": 0.25,
+   "byType": {},
+   "installed": 0,
+   "holds": {
+    "evidence": 0,
+    "match": 4,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "vogel-22-34",
+   "street": "Derde Vogelstraat",
+   "pands": 5,
+   "placed": 0,
+   "held": 5,
+   "runs": [],
+   "seconds": 0.28,
+   "byType": {},
+   "installed": 0,
+   "holds": {
+    "evidence": 1,
+    "match": 3,
+    "likeness": 0,
+    "run": 1,
+    "review": 0
+   }
+  },
+  {
+   "face": "vogel-3-11",
+   "street": "Vierde Vogelstraat",
+   "pands": 4,
+   "placed": 2,
+   "held": 2,
+   "runs": [
+    {
+     "face": "vogel-3-11-r1",
+     "pands": [
+      "0363100012137379",
+      "0363100012071224"
+     ],
+     "passed": true,
+     "triangles": 608
+    }
+   ],
+   "seconds": 4.25,
+   "byType": {
+    "vogel-1918-cottage-3axis": 1,
+    "vogel-1918-cottage-2axis": 1
+   },
+   "installed": 0,
+   "holds": {
+    "evidence": 0,
+    "match": 2,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "vogel-3-15",
+   "street": "Eerste Vogelstraat",
+   "pands": 6,
+   "placed": 2,
+   "held": 4,
+   "runs": [
+    {
+     "face": "vogel-3-15-r1",
+     "pands": [
+      "0363100012101772",
+      "0363100012132959"
+     ],
+     "passed": true,
+     "triangles": 629
+    }
+   ],
+   "seconds": 3.47,
+   "byType": {
+    "vogel-1918-cottage-2axis": 1,
+    "vogel-1918-cottage-3axis": 1
+   },
+   "installed": 0,
+   "holds": {
+    "evidence": 1,
+    "match": 2,
+    "likeness": 0,
+    "run": 1,
+    "review": 0
+   }
+  },
+  {
+   "face": "vogel-3-9",
+   "street": "Korte Vogelstraat",
+   "pands": 4,
+   "placed": 0,
+   "held": 4,
+   "runs": [],
+   "seconds": 0.13,
+   "byType": {},
+   "installed": 0,
+   "holds": {
+    "evidence": 1,
+    "match": 1,
+    "likeness": 0,
+    "run": 2,
+    "review": 0
+   }
+  },
+  {
+   "face": "vogel-4-10",
+   "street": "Tweede Vogelstraat",
+   "pands": 4,
+   "placed": 0,
+   "held": 4,
+   "runs": [],
+   "seconds": 0.16,
+   "byType": {},
+   "installed": 0,
+   "holds": {
+    "evidence": 0,
+    "match": 3,
+    "likeness": 0,
+    "run": 1,
+    "review": 0
+   }
+  },
+  {
+   "face": "vogel-4-14",
+   "street": "Brede Vogelstraat",
+   "pands": 4,
+   "placed": 0,
+   "held": 4,
+   "runs": [],
+   "seconds": 0.28,
+   "byType": {},
+   "installed": 0,
+   "holds": {
+    "evidence": 0,
+    "match": 3,
+    "likeness": 0,
+    "run": 1,
+    "review": 0
+   }
+  },
+  {
+   "face": "vogel-4-8",
+   "street": "Vijfde Vogelstraat",
+   "pands": 3,
+   "placed": 0,
+   "held": 3,
+   "runs": [],
+   "seconds": 0.13,
+   "byType": {},
+   "installed": 0,
+   "holds": {
+    "evidence": 0,
+    "match": 2,
+    "likeness": 0,
+    "run": 1,
+    "review": 0
+   }
+  },
+  {
+   "face": "vogel-5-11",
+   "street": "Brede Vogelstraat",
+   "pands": 4,
+   "placed": 0,
+   "held": 4,
+   "runs": [],
+   "seconds": 2.95,
+   "byType": {},
+   "installed": 0,
+   "holds": {
+    "evidence": 0,
+    "match": 1,
+    "likeness": 1,
+    "run": 2,
+    "review": 0
+   }
+  },
+  {
+   "face": "vogel-5-15",
+   "street": "Derde Vogelstraat",
+   "pands": 5,
+   "placed": 0,
+   "held": 5,
+   "runs": [],
+   "seconds": 0.32,
+   "byType": {},
+   "installed": 0,
+   "holds": {
+    "evidence": 1,
+    "match": 2,
+    "likeness": 0,
+    "run": 1,
+    "review": 1
+   }
+  },
+  {
+   "face": "vogel-5-15-144429",
+   "street": "Tweede Vogelstraat",
+   "pands": 4,
+   "placed": 0,
+   "held": 4,
+   "runs": [],
+   "seconds": 0.24,
+   "byType": {},
+   "installed": 0,
+   "holds": {
+    "evidence": 3,
+    "match": 1,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "vogel-6-14",
+   "street": "Korte Vogelstraat",
+   "pands": 4,
+   "placed": 0,
+   "held": 4,
+   "runs": [],
+   "seconds": 0.19,
+   "byType": {},
+   "installed": 0,
+   "holds": {
+    "evidence": 2,
+    "match": 1,
+    "likeness": 0,
+    "run": 1,
+    "review": 0
+   }
+  },
+  {
+   "face": "vogel-6-18",
+   "street": "Derde Vogelstraat",
+   "pands": 5,
+   "placed": 0,
+   "held": 5,
+   "runs": [],
+   "seconds": 0.5,
+   "byType": {},
+   "installed": 0,
+   "holds": {
+    "evidence": 0,
+    "match": 4,
+    "likeness": 0,
+    "run": 1,
+    "review": 0
+   }
+  },
+  {
+   "face": "vogelplantsoen-7-11",
+   "street": "Vogelplantsoen",
+   "pands": 3,
+   "placed": 0,
+   "held": 3,
+   "runs": [],
+   "seconds": 2.17,
+   "byType": {},
+   "installed": 0,
+   "holds": {
+    "evidence": 0,
+    "match": 1,
+    "likeness": 2,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "vogelplantsoen-8-12",
+   "street": "Vogelplantsoen",
+   "pands": 3,
+   "placed": 2,
+   "held": 1,
+   "runs": [
+    {
+     "face": "vogelplantsoen-8-12-r1",
+     "pands": [
+      "0363100012079772",
+      "0363100012087797"
+     ],
+     "passed": true,
+     "triangles": 1019
+    }
+   ],
+   "seconds": 4.11,
+   "byType": {
+    "vogel-1918-timber-band-cottage": 2
+   },
+   "installed": 0,
+   "holds": {
+    "evidence": 0,
+    "match": 1,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "zamenhof-14-20",
+   "street": "Zamenhofstraat",
+   "pands": 4,
+   "placed": 0,
+   "held": 4,
+   "runs": [],
+   "seconds": 0.16,
+   "byType": {},
+   "installed": 0,
+   "holds": {
+    "evidence": 4,
+    "match": 0,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "zamenhof-46-52",
+   "street": "Zamenhofstraat",
+   "pands": 4,
+   "placed": 0,
+   "held": 4,
+   "runs": [],
+   "seconds": 0.36,
+   "byType": {},
+   "installed": 0,
+   "holds": {
+    "evidence": 0,
+    "match": 2,
+    "likeness": 0,
+    "run": 1,
+    "review": 1
+   }
+  },
+  {
+   "face": "zamenhof-54-60",
+   "street": "Zamenhofstraat",
+   "pands": 4,
+   "placed": 2,
+   "held": 2,
+   "runs": [
+    {
+     "face": "zamenhof-54-60-r1",
+     "pands": [
+      "0363100012064187",
+      "0363100012151653"
+     ],
+     "passed": true,
+     "triangles": 1006
+    }
+   ],
+   "seconds": 5.92,
+   "byType": {
+    "vogel-1918-timber-band-cottage": 2
+   },
+   "installed": 0,
+   "holds": {
+    "evidence": 0,
+    "match": 0,
+    "likeness": 0,
+    "run": 0,
+    "review": 2
+   }
+  },
+  {
+   "face": "zamenhof-6-12",
+   "street": "Zamenhofstraat",
+   "pands": 4,
+   "placed": 2,
+   "held": 2,
+   "runs": [
+    {
+     "face": "zamenhof-6-12-r1",
+     "pands": [
+      "0363100012122427",
+      "0363100012085003"
+     ],
+     "passed": true,
+     "triangles": 1016
+    }
+   ],
+   "seconds": 4.92,
+   "byType": {
+    "vogel-1918-timber-band-cottage": 2
+   },
+   "installed": 0,
+   "holds": {
+    "evidence": 0,
+    "match": 0,
+    "likeness": 1,
+    "run": 0,
+    "review": 1
+   }
+  },
+  {
+   "face": "zamenhof-62-76",
+   "street": "Zamenhofstraat",
+   "pands": 7,
+   "placed": 0,
+   "held": 7,
+   "runs": [],
+   "seconds": 0.41,
+   "byType": {},
+   "installed": 0,
+   "holds": {
+    "evidence": 0,
+    "match": 7,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "zamenhof-78-82",
+   "street": "Zamenhofstraat",
+   "pands": 3,
+   "placed": 0,
+   "held": 3,
+   "runs": [],
+   "seconds": 0.44,
+   "byType": {},
+   "installed": 0,
+   "holds": {
+    "evidence": 0,
+    "match": 0,
+    "likeness": 0,
+    "run": 1,
+    "review": 2
+   }
+  },
+  {
+   "face": "zamenhof-84-90",
+   "street": "Zamenhofstraat",
+   "pands": 4,
+   "placed": 3,
+   "held": 1,
+   "runs": [
+    {
+     "face": "zamenhof-84-90-r1",
+     "pands": [
+      "0363100012130936",
+      "0363100012118660",
+      "0363100012141264"
+     ],
+     "passed": true,
+     "triangles": 1476
+    }
+   ],
+   "seconds": 6.42,
+   "byType": {
+    "vogel-1918-timber-band-cottage": 3
+   },
+   "installed": 0,
+   "holds": {
+    "evidence": 0,
+    "match": 1,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  }
+ ]
+}

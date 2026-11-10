@@ -15,6 +15,15 @@ export const PASSPORT_MIN_NAMES = 8;
 
 export interface NeighborhoodPassport {
   stamped: string[];
+  /** hood -> YYYY-MM-DD when it was stamped (G5 stamp album). Absent on
+   *  passports saved before dates were kept. */
+  dates?: Record<string, string>;
+}
+
+/** Local calendar day, YYYY-MM-DD. */
+export function localDay(time = Date.now()): string {
+  const date = new Date(time);
+  return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
 }
 
 export function emptyPassport(): NeighborhoodPassport {
@@ -26,7 +35,14 @@ export function readPassport(store: { getItem(key: string): string | null }): Ne
     const raw = store.getItem(PASSPORT_STORAGE_KEY);
     if (!raw) return emptyPassport();
     const parsed = JSON.parse(raw) as Partial<NeighborhoodPassport>;
-    return { stamped: Array.isArray(parsed.stamped) ? parsed.stamped.map(String) : [] };
+    const dates: Record<string, string> = {};
+    if (parsed.dates && typeof parsed.dates === 'object') {
+      for (const [hood, at] of Object.entries(parsed.dates)) if (typeof at === 'string') dates[hood] = at;
+    }
+    return {
+      stamped: Array.isArray(parsed.stamped) ? parsed.stamped.map(String) : [],
+      ...(Object.keys(dates).length ? { dates } : {}),
+    };
   } catch {
     return emptyPassport();
   }
@@ -61,9 +77,14 @@ export function stampNewNeighborhoods(
   visitedThisRoute: Iterable<string>,
   prior: NeighborhoodPassport,
   minNames = PASSPORT_MIN_NAMES,
+  /** Landmarks noticed on a drive-by card or named in a question
+   *  (landmarkQuestion.ts sightings): each counts as one known name. */
+  landmarkCredit = 0,
+  today = localDay(),
 ): { passport: NeighborhoodPassport; fresh: string[] } {
   const known = exploration.learnedWaterways.length + exploration.learnedStreets.length
-    + exploration.learnedTransitLines.length + exploration.learnedTransitStops.length;
+    + exploration.learnedTransitLines.length + exploration.learnedTransitStops.length
+    + Math.max(0, landmarkCredit);
   if (known < minNames) return { passport: prior, fresh: [] };
 
   const stamped = new Set(prior.stamped);
@@ -75,5 +96,8 @@ export function stampNewNeighborhoods(
     stamped.add(hood);
     fresh.push(hood);
   }
-  return { passport: { stamped: [...stamped].sort() }, fresh };
+  if (!fresh.length) return { passport: prior, fresh };
+  const dates = { ...(prior.dates || {}) };
+  for (const hood of fresh) dates[hood] = today;
+  return { passport: { stamped: [...stamped].sort(), dates }, fresh };
 }

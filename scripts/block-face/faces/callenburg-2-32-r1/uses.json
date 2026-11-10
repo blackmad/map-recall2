@@ -1,0 +1,67 @@
+{
+ "street": "Gerard Callenburgstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T01:57:49.900Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012063379",
+   "addresses": [
+    "Gerard Callenburgstraat 28",
+    "Gerard Callenburgstraat 30"
+   ],
+   "groundUnits": [
+    {
+     "address": "Gerard Callenburgstraat 28-H",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010000643329"
+    },
+    {
+     "address": "Gerard Callenburgstraat 30-H",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010000643335"
+    },
+    {
+     "address": "Gerard Callenburgstraat 28-H",
+     "use": "woonfunctie",
+     "areaM2": 89,
+     "bagId": "0363010001988085"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012107097",
+   "addresses": [
+    "Gerard Callenburgstraat 24",
+    "Gerard Callenburgstraat 26"
+   ],
+   "groundUnits": [
+    {
+     "address": "Gerard Callenburgstraat 24-H",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000643317"
+    },
+    {
+     "address": "Gerard Callenburgstraat 26-H",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010000643323"
+    },
+    {
+     "address": "Gerard Callenburgstraat 26-H",
+     "use": "woonfunctie",
+     "areaM2": 89,
+     "bagId": "0363010001988084"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  }
+ ]
+}

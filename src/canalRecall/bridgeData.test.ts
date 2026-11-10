@@ -186,3 +186,17 @@ test('named regression: a rotated trivia fact keeps the origin first and the reg
   // No origin and no register: the catalog card is unchanged.
   assert.deepEqual(streetCardWithRotatedFact({ wikipediaExtract: 'A lede.' }, rotated), rotated);
 });
+
+test('answer feedback speaks the caller\'s language (R2-2, #303)', async () => {
+  const { translate } = await import('../i18n/index.ts');
+  const score = { attempts: 0, correct: 0, points: 0, streak: 0, bestStreak: 0 };
+  const base = { correctName: 'Munttoren', score, difficultyMultiplier: 0.86, gameyFeatures: true, revealName: () => {} };
+  const nl = (key: Parameters<typeof translate>[1], params?: Record<string, string | number>) => translate('nl', key, params);
+  assert.equal(submitAnswer({ ...base, answer: 'munttoren', noveltyMultiplier: 1, say: nl }).feedback, 'Goed — Munttoren  (+86 pnt)');
+  assert.equal(submitAnswer({ ...base, answer: 'munttoren', noveltyMultiplier: 1.15, say: nl }).feedback, 'Goed — Munttoren  (+99 pnt · bonus nieuwe naam)');
+  assert.equal(submitAnswer({ ...base, answer: 'x', say: nl }).feedback, 'Niet helemaal — dit is Munttoren');
+  assert.equal(submitAnswer({ ...base, answer: '', noIdea: true, say: nl }).feedback, 'Dit is Munttoren');
+  assert.equal(submitAnswer({ ...base, answer: '', passed: true, say: nl }).feedback, 'Voorbij — dat was Munttoren');
+  // No `say`: English, byte-identical to the strings before #303.
+  assert.equal(submitAnswer({ ...base, answer: 'munttoren', noveltyMultiplier: 1.15 }).feedback, 'Correct — Munttoren  (+99 pts · new name bonus)');
+});

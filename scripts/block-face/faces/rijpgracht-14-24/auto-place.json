@@ -1,0 +1,387 @@
+{
+ "face": "rijpgracht-14-24",
+ "street": "De Rijpgracht",
+ "library": "landlust",
+ "stripDate": "2024-11-21",
+ "seconds": 0.94,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012079479",
+   "address": "De Rijpgracht 24",
+   "builtYear": 1934,
+   "widthM": 6.37,
+   "eavesM": 10.03,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#7f4c34",
+    "wallRaw": "#553b2c",
+    "skyline": {
+     "eavesM": 10.3,
+     "eavesRow": 213,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": "left",
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 9.13,
+       "widthM": 1.07,
+       "centre": 0.91
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.02
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012128075",
+   "address": "De Rijpgracht 22",
+   "builtYear": 1934,
+   "widthM": 8.03,
+   "eavesM": 10.13,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#754831",
+    "wallRaw": "#5c3f2f",
+    "skyline": {
+     "eavesM": 10.3,
+     "eavesRow": 213,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 5,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.04,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 8.93,
+       "widthM": 1.2,
+       "centre": 0.31
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best landlust-1924-bestevaer-half-block: built 1934, type 1923-1926; stair block 8.03 m, type 5.7-7.6 m; 3DBAG eaves 10.13 m = 3 storeys of the type's 3.17 m, type 4)",
+   "best": {
+    "type": "landlust-1924-bestevaer-half-block",
+    "score": 0,
+    "veto": [
+     "built 1934, type 1923-1926",
+     "stair block 8.03 m, type 5.7-7.6 m",
+     "3DBAG eaves 10.13 m = 3 storeys of the type's 3.17 m, type 4"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 10.3 m vs the type's 13.2 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 4 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.013 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 5 vs 2 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012112059",
+   "address": "De Rijpgracht 20",
+   "builtYear": 1934,
+   "widthM": 6.46,
+   "eavesM": 10.2,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#523523",
+    "wallRaw": "#563b2b",
+    "skyline": {
+     "eavesM": 10.43,
+     "eavesRow": 208,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": "right",
+    "accentSide": "left",
+    "accentShare": 0.002,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 9.15,
+       "widthM": 1.98,
+       "centre": 0.17
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: De Rijpgracht 14-24: a three-axis front with an arched door and three ground windows; the erker-window type draws a wide ground window and a square door (ground bays 3 vs 2)",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012103314",
+   "address": "De Rijpgracht 18",
+   "builtYear": 1934,
+   "widthM": 6.37,
+   "eavesM": 10.09,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#503524",
+    "wallRaw": "#523929",
+    "skyline": {
+     "eavesM": 10.32,
+     "eavesRow": 212,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": "left",
+    "accentSide": "left",
+    "accentShare": 0.002,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 9.2,
+       "widthM": 1.93,
+       "centre": 0.84
+      },
+      {
+       "atM": 8.9,
+       "widthM": 0.88,
+       "centre": 0.45
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: De Rijpgracht 14-24: a three-axis front with an arched door and three ground windows; the erker-window type draws a wide ground window and a square door (ground bays 3 vs 2)",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012119748",
+   "address": "De Rijpgracht 16",
+   "builtYear": 1934,
+   "widthM": 8.03,
+   "eavesM": 10.1,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6a432f",
+    "wallRaw": "#5a3f2f",
+    "skyline": {
+     "eavesM": 10.32,
+     "eavesRow": 212,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 5,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.021,
+    "structure": {
+     "bayWidthM": 0.65,
+     "bayCentre": 0.04,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 9.05,
+       "widthM": 0.85,
+       "centre": 0.18
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.02
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best landlust-1924-bestevaer-half-block: built 1934, type 1923-1926; stair block 8.03 m, type 5.7-7.6 m; 3DBAG eaves 10.1 m = 3 storeys of the type's 3.17 m, type 4)",
+   "best": {
+    "type": "landlust-1924-bestevaer-half-block",
+    "score": 0,
+    "veto": [
+     "built 1934, type 1923-1926",
+     "stair block 8.03 m, type 5.7-7.6 m",
+     "3DBAG eaves 10.1 m = 3 storeys of the type's 3.17 m, type 4"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 10.32 m vs the type's 13.2 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 4 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.008 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 5 vs 2 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012067932",
+   "address": "De Rijpgracht 14",
+   "builtYear": 1934,
+   "widthM": 6.35,
+   "eavesM": 10.03,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6f4933",
+    "wallRaw": "#523828",
+    "skyline": {
+     "eavesM": 10.35,
+     "eavesRow": 211,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.6 m at 0.05 (light 0.21): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.6,
+       "centre": 0.05,
+       "light": 0.21
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 9.2,
+       "widthM": 3.63,
+       "centre": 0.62
+      },
+      {
+       "atM": 8.9,
+       "widthM": 0.95,
+       "centre": 0.46
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

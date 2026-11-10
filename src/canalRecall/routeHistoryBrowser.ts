@@ -15,6 +15,11 @@ import {
   type ShareOutcome, type SharePoi,
 } from './shareRoute';
 import { HOME_GEOCODE_CACHE_KEY } from './game/progressStore';
+import {
+  renderShareCard, shareCardFileName, SHARE_CARD_LABELS_EN,
+  type ShareCardInput, type ShareCardLabels, type ShareCardPoint, type ShareCardRibbon, type ShareTrail,
+} from './shareCard';
+import { renderRunShareCard, runPlace, runShareFileName, RUN_SHARE_LABELS_EN, type RunShareInput } from './runShareCard';
 
 interface Poi { id?: string; name?: string; lat?: number; lng?: number }
 
@@ -67,6 +72,8 @@ export function recordFinishedRide(game: RideHost, now = Date.now()): RideRecord
     const recall = (window as unknown as { CanalRecallStoreModule?: CanalRecallStoreGlobal }).CanalRecallStoreModule;
     void recall?.store.saveRide(record);
     window.dispatchEvent(new CustomEvent('canal-ride-recorded', { detail: record }));
+    // Ready the share card while the arrival card draws (G6).
+    setTimeout(() => { try { prepareShareCard(game as ShareHost); } catch (reason) { console.warn('Share card:', reason); } }, 0);
     return record;
   } catch (reason) {
     console.warn('Could not record ride history:', reason);
@@ -85,6 +92,177 @@ export interface ShareHost {
   _shareUrl?: string | null;
   _tour?: { tour?: { id?: string }; completed?: boolean } | null;
   _copiedTimer?: number;
+  /** For the share card (G6): game.js GameState.FINISHED is 5. */
+  state?: number;
+  raceTime?: number;
+  player?: (ShareCardPoint & { distancePx?: number }) | null;
+  routePath?: ShareCardPoint[] | null;
+  track?: { startPoint?: ShareCardPoint; finishPoint?: ShareCardPoint } | null;
+  gameyFeatures?: boolean;
+  _ribbon?: ShareCardRibbon | null;
+  _shareTrail?: ShareTrail | null;
+  quizPromptName?: string | null;
+  quizCandidateName?: string | null;
+  _silentPass?: { name?: string } | null;
+  _shareCard?: PreparedCard | null;
+  /** The buurt the rider is in (landmarkRuntime); at arrival, the destination's. */
+  currentNeighborhood?: string | null;
+  /** The run card on show (chainedRunRuntime.ts): its share is the run's picture (#295). */
+  _runCard?: { stopCount: number } | null;
+  _runShareInput?(): RunShareInput | null;
+}
+
+const FINISHED = 5;
+/** constants.js PIXELS_PER_METER. */
+const PX_PER_M = 3;
+
+interface PreparedCard { key: string; blob: Blob | null; fileName: string; ms: number; width: number; height: number; texts: string[] }
+
+type I18nWindow = Window & { CanalI18n?: { t(key: string): string } };
+function say(key: string, fallback: string): string {
+  try {
+    const text = (window as I18nWindow).CanalI18n?.t(key);
+    return text && text !== key ? text : fallback;
+  } catch { return fallback; }
+}
+
+/** `?shareCard=0` keeps the link-only share. */
+export function shareCardEnabled(search = typeof location === 'undefined' ? '' : location.search): boolean {
+  return new URLSearchParams(search).get('shareCard') !== '0';
+}
+
+function bumpSession(key: string): void {
+  const win = window as Window & { __canalRecallSession?: Record<string, unknown> };
+  win.__canalRecallSession ||= {};
+  const session = win.__canalRecallSession;
+  session[key] = (typeof session[key] === 'number' ? session[key] as number : 0) + 1;
+}
+
+/** What the card shows for this arrival. The route is the ridden trail, else the planned path. */
+export function shareCardInput(game: ShareHost): ShareCardInput {
+  const trail = game._shareTrail && game._shareTrail.owner === game.player ? game._shareTrail.points : [];
+  const finish = game.track?.finishPoint;
+  let route: ShareCardPoint[] = trail.length >= 2 ? [...trail] : (game.routePath ?? []).slice();
+  if (route.length >= 2 && game.player && Number.isFinite(game.player.x)) route.push({ x: game.player.x, y: game.player.y });
+  if (route.length < 2 && game.track?.startPoint && finish) route = [game.track.startPoint, finish];
+  const mode = game.travelMode === 'boat' ? say('shareCard.byBoat', 'By boat')
+    : game.travelMode === 'transit' ? say('shareCard.byTransit', 'By tram and metro')
+      : say('shareCard.byBike', 'By bike');
+  const labels: ShareCardLabels = {
+    ...SHARE_CARD_LABELS_EN,
+    arrived: say('shareCard.destination', SHARE_CARD_LABELS_EN.arrived),
+    ride: say('shareCard.ride', SHARE_CARD_LABELS_EN.ride),
+    distance: say('shareCard.distance', SHARE_CARD_LABELS_EN.distance),
+    time: say('shareCard.time', SHARE_CARD_LABELS_EN.time),
+  };
+  return {
+    route,
+    destination: game.routeTo?.name || labels.fallbackPlace,
+    distanceM: (game.player?.distancePx ?? 0) / PX_PER_M,
+    timeS: game.raceTime ?? 0,
+    ribbon: game.gameyFeatures && game._ribbon ? game._ribbon : null,
+    modeLabel: mode,
+    area: game.currentNeighborhood || null,
+    // The open question's answer, as labels/labelOverlay.ts hides it on the map.
+    hiddenNames: [game.quizPromptName, game.quizCandidateName, game._silentPass?.name],
+    labels,
+  };
+}
+
+function hiddenKey(game: ShareHost): string {
+  return [game.quizPromptName, game.quizCandidateName, game._silentPass?.name].map(n => n || '').join('|');
+}
+
+/**
+ * Draws the arrival's share card and starts encoding it, so the share tap can
+ * hand the system sheet a ready file (iOS needs the tap's activation).
+ */
+export function prepareShareCard(game: ShareHost): PreparedCard | null {
+  if (!shareCardEnabled() || game.state !== FINISHED || typeof document === 'undefined') return null;
+  if (game._runCard) return prepareRunShareCard(game);
+  const input = shareCardInput(game);
+  const key = `${hiddenKey(game)}#${input.destination}#${input.area ?? ''}#${input.route.length}#${Math.round(input.distanceM)}`;
+  if (game._shareCard && game._shareCard.key === key) return game._shareCard;
+  const { canvas, layout, ms } = renderShareCard(input, (w, h) => Object.assign(document.createElement('canvas'), { width: w, height: h }));
+  const card: PreparedCard = {
+    key, blob: null, fileName: shareCardFileName(input.destination), ms,
+    width: canvas.width, height: canvas.height, texts: layout.texts.map(t => t.text),
+  };
+  game._shareCard = card;
+  (window as unknown as { __canalShareCard?: { canvas: HTMLCanvasElement; card: PreparedCard } }).__canalShareCard = { canvas, card };
+  canvas.toBlob(blob => { card.blob = blob; }, 'image/png');
+  return card;
+}
+
+/** The run card's picture (#295): every leg, the stops numbered, RUN over the buurt or city. */
+function prepareRunShareCard(game: ShareHost): PreparedCard | null {
+  const input = game._runShareInput?.();
+  if (!input || !input.stops.length) return null;
+  const key = `run#${hiddenKey(game)}#${input.stops.map(s => `${s.number}:${s.name}:${s.path?.length ?? 0}`).join(',')}#${input.summary}`;
+  if (game._shareCard && game._shareCard.key === key) return game._shareCard;
+  const { canvas, layout, ms } = renderRunShareCard(input, (w, h) => Object.assign(document.createElement('canvas'), { width: w, height: h }));
+  const place = runPlace(input, { ...RUN_SHARE_LABELS_EN, ...input.labels });
+  const card: PreparedCard = {
+    key, blob: null, fileName: runShareFileName(game._runCard?.stopCount ?? input.stops.length, place), ms,
+    width: canvas.width, height: canvas.height, texts: layout.texts.map(t => t.text),
+  };
+  game._shareCard = card;
+  (window as unknown as { __canalShareCard?: { canvas: HTMLCanvasElement; card: PreparedCard } }).__canalShareCard = { canvas, card };
+  canvas.toBlob(blob => { card.blob = blob; }, 'image/png');
+  return card;
+}
+
+async function cardBlob(game: ShareHost): Promise<PreparedCard | null> {
+  const card = prepareShareCard(game);
+  if (!card) return null;
+  if (card.blob) return card;
+  const canvas = (window as unknown as { __canalShareCard?: { canvas: HTMLCanvasElement } }).__canalShareCard?.canvas;
+  if (!canvas) return null;
+  card.blob = await new Promise<Blob | null>(resolve => canvas.toBlob(resolve, 'image/png'));
+  return card.blob ? card : null;
+}
+
+function download(blob: Blob, fileName: string): void {
+  const url = URL.createObjectURL(blob);
+  const a = Object.assign(document.createElement('a'), { href: url, download: fileName });
+  a.style.display = 'none';
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 10_000);
+}
+
+export type PictureOutcome = ShareOutcome | 'saved';
+
+/**
+ * "Share this route" on the arrival card (G6): the share card PNG with the
+ * link through the system sheet where it takes files, else the PNG is saved
+ * and the link copied. Null when there is no card to offer (mid-ride, or
+ * `?shareCard=0`), and the link-only share runs instead.
+ */
+export async function sharePicture(game: ShareHost, link: { url: string; title: string; text: string } | null): Promise<PictureOutcome | null> {
+  const card = await cardBlob(game);
+  if (!card || !card.blob) return null;
+  bumpSession('sharePictures');
+  const file = typeof File === 'function' ? new File([card.blob], card.fileName, { type: 'image/png' }) : null;
+  const nav = navigator as Navigator & { canShare?: (data: ShareData) => boolean };
+  const data: ShareData = { files: file ? [file] : [], title: link?.title ?? 'Ride Amsterdam', text: link ? `${link.text} ${link.url}` : 'Ride Amsterdam' };
+  if (file && typeof nav.share === 'function' && typeof nav.canShare === 'function' && nav.canShare({ files: [file] })) {
+    try {
+      await nav.share(data);
+      return 'shared';
+    } catch (error) {
+      if (error && (error as { name?: string }).name === 'AbortError') return 'cancelled';
+    }
+  }
+  download(card.blob, card.fileName);
+  let copied = false;
+  if (link && nav.clipboard?.writeText) {
+    try { await nav.clipboard.writeText(link.url); copied = true; } catch { /* blocked clipboard */ }
+  }
+  if (copied) game._copiedTimer = 2;
+  showToast(copied ? say('shareCard.savedAndCopied', 'Picture saved · link copied') : say('shareCard.saved', 'Picture saved'));
+  return 'saved';
 }
 
 let toastTimer: ReturnType<typeof setTimeout> | undefined;
@@ -130,6 +308,15 @@ export async function shareRide(game: ShareHost): Promise<ShareOutcome> {
     publicPois: game.routePois ?? [],
     privatePlaces: [game.homeBase, game.gpsOrigin, ...homes].filter(Boolean),
   });
+  // At arrival the share is a picture, with the link when there is a safe one.
+  if (game.state === FINISHED && shareCardEnabled()) {
+    const picture = await sharePicture(game, share);
+    if (picture) {
+      const outcome: ShareOutcome = picture === 'saved' ? 'copied' : picture;
+      (window as unknown as { __canalLastShare?: { url: string; outcome: ShareOutcome; picture: boolean } }).__canalLastShare = { url: share?.url ?? '', outcome, picture: true };
+      return outcome;
+    }
+  }
   if (!share) {
     showToast('This route starts at a private place, so it cannot be shared');
     return 'failed';

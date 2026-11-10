@@ -214,6 +214,8 @@ export interface Hud {
     /** Replaces the score line (Free Ride has no score). */
     tally?: string | null;
   }): void;
+  /** km → text for the destination readout (rideDistance.ts formatRideDistance, set by the presentation runtime). */
+  formatKm?: (km: number) => string;
   /** Destination card; the finish arrow draws inside it when `arrowAngle` is set. */
   drawDestination(
     ctx: CanvasRenderingContext2D, name: string, distancePx: number,
@@ -299,6 +301,8 @@ export interface VectorMap {
   /** The own ground drapes the route and question highlight; the canvas must not draw flat copies. */
   ownGroundDrapesOverlays?(): boolean;
   isWater(x: number, y: number, loader: OsmLoader): boolean;
+  /** A world point inside a resident building footprint (own engine only). */
+  isFootprint?(x: number, y: number, loader: OsmLoader): boolean;
   inspectBuilding(cssX: number, cssY: number, canvasRect: DOMRect): BuildingHit | null;
   setActiveLandmark(landmark: LandmarkNotice | null): void;
   setPlaces(landmarks: unknown, boundaries: unknown): void;

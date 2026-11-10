@@ -1,0 +1,532 @@
+{
+ "street": "Pelikaanstraat",
+ "seed": "0363100012104432",
+ "members": [
+  "0363100012119758",
+  "0363100012124605"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "run of pelikaan-3-9: 104432 held (auto-place.json)"
+  },
+  {
+   "side": "right",
+   "reason": "run of pelikaan-3-9: 153865 held (auto-place.json)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012063621",
+   "reason": "sightline to Pelikaanstraat crosses 0363100012110748"
+  },
+  {
+   "pandId": "0363100012065418",
+   "reason": "sightline to Pelikaanstraat crosses 0363100012125113"
+  },
+  {
+   "pandId": "0363100012065687",
+   "reason": "frontage 70.9 m from Pelikaanstraat"
+  },
+  {
+   "pandId": "0363100012065881",
+   "reason": "sightline to Pelikaanstraat crosses 0363100012115096"
+  },
+  {
+   "pandId": "0363100012071384",
+   "reason": "frontage 66.5 m from Pelikaanstraat"
+  },
+  {
+   "pandId": "0363100012071968",
+   "reason": "frontage 68.4 m from Pelikaanstraat"
+  },
+  {
+   "pandId": "0363100012074267",
+   "reason": "sightline to Pelikaanstraat crosses 0363100012074442"
+  },
+  {
+   "pandId": "0363100012074442",
+   "reason": "sightline to Pelikaanstraat crosses 0363100012116421"
+  },
+  {
+   "pandId": "0363100012076719",
+   "reason": "frontage 88.8 m from Pelikaanstraat"
+  },
+  {
+   "pandId": "0363100012082803",
+   "reason": "sightline to Pelikaanstraat crosses 0363100012065418"
+  },
+  {
+   "pandId": "0363100012083296",
+   "reason": "sightline to Pelikaanstraat crosses 0363100012103325"
+  },
+  {
+   "pandId": "0363100012083297",
+   "reason": "sightline to Pelikaanstraat crosses 0363100012083296"
+  },
+  {
+   "pandId": "0363100012083680",
+   "reason": "sightline to Pelikaanstraat crosses 0363100012086855"
+  },
+  {
+   "pandId": "0363100012084066",
+   "reason": "sightline to Pelikaanstraat crosses 0363100012065418"
+  },
+  {
+   "pandId": "0363100012084287",
+   "reason": "sightline to Pelikaanstraat crosses 0363100012121384"
+  },
+  {
+   "pandId": "0363100012090659",
+   "reason": "sightline to Pelikaanstraat crosses 0363100012131893"
+  },
+  {
+   "pandId": "0363100012091888",
+   "reason": "sightline to Pelikaanstraat crosses 0363100012120713"
+  },
+  {
+   "pandId": "0363100012092470",
+   "reason": "sightline to Pelikaanstraat crosses 0363100012105550"
+  },
+  {
+   "pandId": "0363100012093505",
+   "reason": "sightline to Pelikaanstraat crosses 0363100012153865"
+  },
+  {
+   "pandId": "0363100012093848",
+   "reason": "sightline to Pelikaanstraat crosses 0363100012065905"
+  },
+  {
+   "pandId": "0363100012097235",
+   "reason": "frontage 35.2 m from Pelikaanstraat"
+  },
+  {
+   "pandId": "0363100012098633",
+   "reason": "sightline to Pelikaanstraat crosses 0363100012063621"
+  },
+  {
+   "pandId": "0363100012099283",
+   "reason": "sightline to Pelikaanstraat crosses 0363100012092470"
+  },
+  {
+   "pandId": "0363100012099649",
+   "reason": "sightline to Pelikaanstraat crosses 0363100012063621"
+  },
+  {
+   "pandId": "0363100012100976",
+   "reason": "frontage 33.1 m from Pelikaanstraat"
+  },
+  {
+   "pandId": "0363100012105550",
+   "reason": "no frontage on Pelikaanstraat: No footprint edge faces Pelikaanstraat"
+  },
+  {
+   "pandId": "0363100012106396",
+   "reason": "frontage 34.7 m from Pelikaanstraat"
+  },
+  {
+   "pandId": "0363100012108158",
+   "reason": "frontage 31.2 m from Pelikaanstraat"
+  },
+  {
+   "pandId": "0363100012109590",
+   "reason": "sightline to Pelikaanstraat crosses 0363100012105550"
+  },
+  {
+   "pandId": "0363100012110710",
+   "reason": "frontage 34.2 m from Pelikaanstraat"
+  },
+  {
+   "pandId": "0363100012116850",
+   "reason": "sightline to Pelikaanstraat crosses 0363100012074442"
+  },
+  {
+   "pandId": "0363100012117253",
+   "reason": "no frontage on Pelikaanstraat: No footprint edge faces Pelikaanstraat"
+  },
+  {
+   "pandId": "0363100012125954",
+   "reason": "sightline to Pelikaanstraat crosses 0363100012092470"
+  },
+  {
+   "pandId": "0363100012130020",
+   "reason": "sightline to Pelikaanstraat crosses 0363100012108368"
+  },
+  {
+   "pandId": "0363100012131662",
+   "reason": "frontage 46.9 m from Pelikaanstraat"
+  },
+  {
+   "pandId": "0363100012131749",
+   "reason": "frontage 99.1 m from Pelikaanstraat"
+  },
+  {
+   "pandId": "0363100012132122",
+   "reason": "sightline to Pelikaanstraat crosses 0363100012131893"
+  },
+  {
+   "pandId": "0363100012132131",
+   "reason": "frontage 30.9 m from Pelikaanstraat"
+  },
+  {
+   "pandId": "0363100012132794",
+   "reason": "frontage 32.7 m from Pelikaanstraat"
+  },
+  {
+   "pandId": "0363100012132795",
+   "reason": "sightline to Pelikaanstraat crosses 0363100012083296"
+  },
+  {
+   "pandId": "0363100012135120",
+   "reason": "frontage 41.3 m from Pelikaanstraat"
+  },
+  {
+   "pandId": "0363100012137973",
+   "reason": "sightline to Pelikaanstraat crosses 0363100012087361"
+  },
+  {
+   "pandId": "0363100012138277",
+   "reason": "frontage 42.9 m from Pelikaanstraat"
+  },
+  {
+   "pandId": "0363100012140709",
+   "reason": "sightline to Pelikaanstraat crosses 0363100012074442"
+  },
+  {
+   "pandId": "0363100012141500",
+   "reason": "sightline to Pelikaanstraat crosses 0363100012087399"
+  },
+  {
+   "pandId": "0363100012142951",
+   "reason": "frontage 94.3 m from Pelikaanstraat"
+  },
+  {
+   "pandId": "0363100012148193",
+   "reason": "frontage 36.4 m from Pelikaanstraat"
+  },
+  {
+   "pandId": "0363100012191196",
+   "reason": "sightline to Pelikaanstraat crosses 0363100012087361"
+  },
+  {
+   "pandId": "0363100012191197",
+   "reason": "sightline to Pelikaanstraat crosses 0363100012108368"
+  },
+  {
+   "pandId": "0363100012191198",
+   "reason": "sightline to Pelikaanstraat crosses 0363100012120713"
+  },
+  {
+   "pandId": "0363100012191199",
+   "reason": "sightline to Pelikaanstraat crosses 0363100012065905"
+  },
+  {
+   "pandId": "0363100012191200",
+   "reason": "sightline to Pelikaanstraat crosses 0363100012121384"
+  },
+  {
+   "pandId": "0363100012191201",
+   "reason": "sightline to Pelikaanstraat crosses 0363100012086855"
+  },
+  {
+   "pandId": "0363100012191202",
+   "reason": "sightline to Pelikaanstraat crosses 0363100012131012"
+  },
+  {
+   "pandId": "0363100012191203",
+   "reason": "sightline to Pelikaanstraat crosses 0363100012131893"
+  },
+  {
+   "pandId": "0363100012191204",
+   "reason": "sightline to Pelikaanstraat crosses 0363100012087399"
+  },
+  {
+   "pandId": "0363100012191205",
+   "reason": "sightline to Pelikaanstraat crosses 0363100012131012"
+  },
+  {
+   "pandId": "0363100012194275",
+   "reason": "sightline to Pelikaanstraat crosses 0363100012087361"
+  },
+  {
+   "pandId": "0363100012194276",
+   "reason": "sightline to Pelikaanstraat crosses 0363100012108368"
+  },
+  {
+   "pandId": "0363100012194277",
+   "reason": "sightline to Pelikaanstraat crosses 0363100012120713"
+  },
+  {
+   "pandId": "0363100012194278",
+   "reason": "sightline to Pelikaanstraat crosses 0363100012065905"
+  },
+  {
+   "pandId": "0363100012194279",
+   "reason": "sightline to Pelikaanstraat crosses 0363100012121384"
+  },
+  {
+   "pandId": "0363100012194280",
+   "reason": "sightline to Pelikaanstraat crosses 0363100012086855"
+  },
+  {
+   "pandId": "0363100012194281",
+   "reason": "sightline to Pelikaanstraat crosses 0363100012131893"
+  },
+  {
+   "pandId": "0363100012194282",
+   "reason": "sightline to Pelikaanstraat crosses 0363100012087399"
+  },
+  {
+   "pandId": "0363100012194283",
+   "reason": "sightline to Pelikaanstraat crosses 0363100012131012"
+  },
+  {
+   "pandId": "0363100012194284",
+   "reason": "sightline to Pelikaanstraat crosses 0363100012131012"
+  },
+  {
+   "pandId": "0363100012194491",
+   "reason": "sightline to Pelikaanstraat crosses 0363100012194490"
+  },
+  {
+   "pandId": "0363100012194492",
+   "reason": "sightline to Pelikaanstraat crosses 0363100012115096"
+  },
+  {
+   "pandId": "0363100012194493",
+   "reason": "sightline to Pelikaanstraat crosses 0363100012115096"
+  },
+  {
+   "pandId": "0363100012194494",
+   "reason": "sightline to Pelikaanstraat crosses 0363100012115096"
+  },
+  {
+   "pandId": "0363100012198362",
+   "reason": "sightline to Pelikaanstraat crosses 0363100012124605"
+  },
+  {
+   "pandId": "0363100012198916",
+   "reason": "sightline to Pelikaanstraat crosses 0363100012104432"
+  },
+  {
+   "pandId": "0363100012198918",
+   "reason": "sightline to Pelikaanstraat crosses 0363100012104432"
+  },
+  {
+   "pandId": "0363100012198919",
+   "reason": "no frontage on Pelikaanstraat: No footprint edge faces Pelikaanstraat"
+  },
+  {
+   "pandId": "0363100012198920",
+   "reason": "sightline to Pelikaanstraat crosses 0363100012119758"
+  },
+  {
+   "pandId": "0363100012198921",
+   "reason": "sightline to Pelikaanstraat crosses 0363100012198363"
+  },
+  {
+   "pandId": "0363100012198922",
+   "reason": "sightline to Pelikaanstraat crosses 0363100012153865"
+  },
+  {
+   "pandId": "0363100012206424",
+   "reason": "sightline to Pelikaanstraat crosses 0363100012119758"
+  },
+  {
+   "pandId": "0363100012206425",
+   "reason": "sightline to Pelikaanstraat crosses 0363100012124605"
+  },
+  {
+   "pandId": "0363100012206426",
+   "reason": "sightline to Pelikaanstraat crosses 0363100012198917"
+  },
+  {
+   "pandId": "0363100012206427",
+   "reason": "frontage 37.0 m from Pelikaanstraat"
+  },
+  {
+   "pandId": "0363100012206428",
+   "reason": "frontage 38.8 m from Pelikaanstraat"
+  },
+  {
+   "pandId": "0363100012206429",
+   "reason": "sightline to Pelikaanstraat crosses 0363100012104432"
+  },
+  {
+   "pandId": "0363100012206430",
+   "reason": "sightline to Pelikaanstraat crosses 0363100012153865"
+  },
+  {
+   "pandId": "0363100012206431",
+   "reason": "frontage 33.1 m from Pelikaanstraat"
+  },
+  {
+   "pandId": "0363100012206432",
+   "reason": "frontage 31.1 m from Pelikaanstraat"
+  },
+  {
+   "pandId": "0363100012215950",
+   "reason": "sightline to Pelikaanstraat crosses 0363100012086013"
+  },
+  {
+   "pandId": "0363100012215951",
+   "reason": "sightline to Pelikaanstraat crosses 0363100012086013"
+  },
+  {
+   "pandId": "0363100012215952",
+   "reason": "frontage 41.2 m from Pelikaanstraat"
+  },
+  {
+   "pandId": "0363100012215954",
+   "reason": "frontage 36.7 m from Pelikaanstraat"
+  },
+  {
+   "pandId": "0363100012215955",
+   "reason": "frontage 38.8 m from Pelikaanstraat"
+  },
+  {
+   "pandId": "0363100012215956",
+   "reason": "sightline to Pelikaanstraat crosses 0363100012215960"
+  },
+  {
+   "pandId": "0363100012215957",
+   "reason": "no frontage on Pelikaanstraat: No footprint edge faces Pelikaanstraat"
+  },
+  {
+   "pandId": "0363100012215958",
+   "reason": "no frontage on Pelikaanstraat: No footprint edge faces Pelikaanstraat"
+  },
+  {
+   "pandId": "0363100012215961",
+   "reason": "sightline to Pelikaanstraat crosses 0363100012137878"
+  },
+  {
+   "pandId": "0363100012215962",
+   "reason": "sightline to Pelikaanstraat crosses 0363100012215960"
+  },
+  {
+   "pandId": "0363100012215963",
+   "reason": "sightline to Pelikaanstraat crosses 0363100012108792"
+  },
+  {
+   "pandId": "0363100012215964",
+   "reason": "frontage 31.2 m from Pelikaanstraat"
+  },
+  {
+   "pandId": "0363100012215965",
+   "reason": "sightline to Pelikaanstraat crosses 0363100012117906"
+  },
+  {
+   "pandId": "0363100012215966",
+   "reason": "sightline to Pelikaanstraat crosses 0363100012117906"
+  },
+  {
+   "pandId": "0363100012215967",
+   "reason": "frontage 39.5 m from Pelikaanstraat"
+  },
+  {
+   "pandId": "0363100012215968",
+   "reason": "frontage 31.8 m from Pelikaanstraat"
+  },
+  {
+   "pandId": "0363100012215970",
+   "reason": "sightline to Pelikaanstraat crosses 0363100012215969"
+  },
+  {
+   "pandId": "0363100012215971",
+   "reason": "sightline to Pelikaanstraat crosses 0363100012086013"
+  },
+  {
+   "pandId": "0363100012227075",
+   "reason": "frontage 66.8 m from Pelikaanstraat"
+  },
+  {
+   "pandId": "0363100012227076",
+   "reason": "frontage 86.9 m from Pelikaanstraat"
+  },
+  {
+   "pandId": "0363100012227077",
+   "reason": "frontage 88.6 m from Pelikaanstraat"
+  },
+  {
+   "pandId": "0363100012069269",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012086013",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012097975",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012108792",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012110748",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012111816",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012115096",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012116421",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012117906",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012128530",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012137878",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012194490",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012215960",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012215969",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012119758",
+   "alongM": 6.52,
+   "widthM": 6.67,
+   "eavesM": 7.02,
+   "roofMaxM": 11.78,
+   "storeys3dbag": 3,
+   "builtYear": 1924,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012124605",
+   "alongM": 13.06,
+   "widthM": 6.4,
+   "eavesM": 6.72,
+   "roofMaxM": 11.69,
+   "storeys3dbag": 3,
+   "builtYear": 1924,
+   "uncertainty": []
+  }
+ ],
+ "runOf": "pelikaan-3-9"
+}

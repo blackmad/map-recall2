@@ -1,0 +1,78 @@
+{
+ "street": "Merelstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T02:08:40.619Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012122296",
+   "addresses": [
+    "Merelstraat 12",
+    "Merelstraat 14"
+   ],
+   "groundUnits": [
+    {
+     "address": "Merelstraat 12-H",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010000742392"
+    },
+    {
+     "address": "Merelstraat 14-H",
+     "use": "woonfunctie",
+     "areaM2": 63,
+     "bagId": "0363010000742395"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012070874",
+   "addresses": [
+    "Merelstraat 8",
+    "Merelstraat 10"
+   ],
+   "groundUnits": [
+    {
+     "address": "Merelstraat 10-H",
+     "use": "woonfunctie",
+     "areaM2": 63,
+     "bagId": "0363010000742389"
+    },
+    {
+     "address": "Merelstraat 8-H",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000742385"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012064330",
+   "addresses": [
+    "Merelstraat 4",
+    "Merelstraat 6"
+   ],
+   "groundUnits": [
+    {
+     "address": "Merelstraat 4-H",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010000742378"
+    },
+    {
+     "address": "Merelstraat 6-H",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000742382"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

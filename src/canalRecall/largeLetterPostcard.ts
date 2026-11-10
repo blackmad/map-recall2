@@ -730,6 +730,37 @@ function layoutGlyphs(
   return glyphs;
 }
 
+/** Cards at least this tall for their width are "square" (the G5 passport stamp). */
+export const SQUARE_CARD_ASPECT = 0.8;
+
+/**
+ * The square variant's fit (G5 stamps). A stamp's band is narrow for the
+ * height-driven two-line size, so a long line ("NIEUWMARKT", "STAATSLIEDEN")
+ * laid out at the minimum stretch ran past the band and the paint squeeze did
+ * not bring its ink back: the first and last letters were clipped. On a square
+ * card the size shrinks until every line fits the band at that minimum
+ * stretch, and a single line until it fits at its fitted scale. Landscape
+ * cards return `fitted` untouched (byte-identical layouts).
+ */
+function squareFit<T extends { lines: string[]; fontSize: number; horizontalScale: number }>(
+  fitted: T,
+  width: number,
+  height: number,
+  bandWidth: number,
+  measure: TextMeasurer,
+): T {
+  if (height < width * SQUARE_CARD_ASPECT) return fitted;
+  let fontSize = fitted.fontSize;
+  const stretch = fitted.lines.length > 1 ? PREFERRED_MIN_STRETCH : fitted.horizontalScale;
+  for (let guard = 0; guard < 40 && fontSize > 8; guard++) {
+    const widest = Math.max(...fitted.lines.map(line => measureLineWidth(line, nameFontAt(fontSize), fontSize, measure)));
+    // A little air: the outline and the extrusion shelf paint past the advance boxes.
+    if (widest * stretch <= bandWidth * 0.94) break;
+    fontSize = Math.max(8, Math.floor(fontSize * Math.min(0.98, (bandWidth * 0.94) / (widest * stretch))));
+  }
+  return fontSize === fitted.fontSize ? fitted : { ...fitted, fontSize };
+}
+
 export function measureLargeLetterPostcard(
   props: LargeLetterPostcardProps,
   measure: TextMeasurer,
@@ -770,7 +801,7 @@ export function measureLargeLetterPostcard(
   const fittedRaw = fitName(display, bandWidth, nameMeasure, Math.max(NAME_MIN, nameMax));
   // Two-line billboards must stay shorter — OUD WEST at ~50%H/line blew the clip
   // and stacked extrusion into a mid-word seam.
-  const fitted = fittedRaw.lines.length > 1
+  const fittedCard = fittedRaw.lines.length > 1
     ? {
       ...fittedRaw,
       fontSize: Math.min(
@@ -780,6 +811,7 @@ export function measureLargeLetterPostcard(
       ),
     }
     : fittedRaw;
+  const fitted = squareFit(fittedCard, width, height, bandWidth, nameMeasure);
 
   const lineCount = fitted.lines.length;
   // Two-line billboards nest like Atlantic City — tight stack, one plane.

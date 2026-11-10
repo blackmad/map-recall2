@@ -1,14 +1,26 @@
-import { useCallback } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { PERF_HUD_ID, PERF_HUD_NARROW_STYLE, PERF_HUD_STYLE, perfHudLine } from '../../src/canalRecall/engine/perfHud';
+import { describeBuilding } from '../../src/canalRecall/buildingFacts';
+import { landmarkLede, splitDetail } from '../../src/canalRecall/game/landmarkData';
 
 type Scenario = 'default' | 'bike-home' | 'bike-here' | 'transit' | 'advanced' | 'advanced-cartoon' | 'advanced-questions-off' | 'advanced-haze-off' | 'advanced-perf-hud' | 'hud' | 'neighborhood' | 'neighborhood-fallback'
   | 'stacked-notices' | 'finish' | 'finish-calm' | 'finish-calm-bare' | 'finish-bike' | 'finish-transit'
   | 'landmark-card' | 'landmark-card-bare' | 'landmark-card-touch' | 'landmark-panel' | 'landmark-panel-dutch'
   | 'landmark-card-folded' | 'landmark-card-folded-touch'
+  // G3 (#273): "Which building is this?", and the drive-by card's "Noticed" pill.
+  | 'question-landmark' | 'touch-question-landmark' | 'landmark-card-noticed' | 'landmark-card-noticed-touch' | 'landmark-card-noticed-touch-hint'
+  // R2-3 (#303): ride C's Mint Tower card in the Dutch game reads "Munttoren", as its question did.
+  | 'landmark-card-noticed-mint' | 'landmark-card-noticed-mint-touch'
+  // #281: approaching the candidate, before its question opens: its name and the distractors' are withheld from the map.
+  | 'landmark-approach' | 'landmark-approach-touch'
   // Cards with no photo that arrive from data rather than Wikipedia: a named
   // bridge's origin (municipal register) and a clicked building's facts.
   | 'landmark-card-bridge' | 'landmark-card-building' | 'landmark-card-bridge-touch' | 'landmark-card-building-touch'
+  // A tapped POI label on a building the register knows nothing about (#258): the place says what it is.
+  | 'landmark-card-building-place' | 'landmark-card-building-place-touch'
+  // The same label tap once the pand under the label is found: the place, then its building's year (#258 follow-up).
+  | 'landmark-card-building-label-pand' | 'landmark-card-building-label-pand-touch'
   // A named bridge with no origin: the city's bridge register alone.
   | 'landmark-card-bridge-register' | 'landmark-card-bridge-register-touch'
   // A street's name origin, the most common card while driving.
@@ -27,7 +39,10 @@ type Scenario = 'default' | 'bike-home' | 'bike-here' | 'transit' | 'advanced' |
   | 'touch-prompt' | 'touch-settings' | 'finish-touch' | 'finish-calm-bare-touch'
   // Every optional block at once: photo, ribbon, first-time gains, guest
   // tease and a personal best (user report 2026-10-02: ran off the screen).
-  | 'finish-full' | 'finish-full-touch'
+  | 'finish-full' | 'finish-full-touch' | 'finish-stamp' | 'finish-stamp-touch'
+  // R2-4 (#307): the Dutch arrival at a landmark whose nl article lede the extract kept (De Dokwerker).
+  | 'finish-dutch-lede' | 'finish-dutch-lede-touch'
+  | 'finish-run' | 'finish-run-touch' | 'finish-run-card' | 'finish-run-card-touch' | 'finish-run-card-calm' | 'finish-run-card-calm-touch'
   | 'landmark-panel-touch'
   | 'stacked-notices-touch' | 'neighborhood-fallback-touch' | 'neighborhood-touch'
   // Aboard a cycling IJ ferry: the departure/destination notice under the plaque.
@@ -46,6 +61,8 @@ type Scenario = 'default' | 'bike-home' | 'bike-here' | 'transit' | 'advanced' |
   | 'touch-onboarding-ride' | 'touch-onboarding-name' | 'touch-onboarding-score'
   // A home route on a phone: the Feedback / How to play row under Start.
   | 'touch-setup-home'
+  // G7 (#277): tours as cover cards under More options; Settings with the account chip signed in.
+  | 'advanced-tours' | 'touch-advanced-tours' | 'settings-signed-in' | 'touch-settings-signed-in'
 ;
 
 /** A landmark name well past the card's line (63 characters): the string the
@@ -115,7 +132,7 @@ function CanalDriveFrame({ scenario = 'default', perfHud = false }: { scenario?:
     if (win && scenario.includes('touch')) win.canalRecallForceTouch = true;
     const setupStories = new Set([
       'default', 'bike-home', 'bike-here', 'transit', 'advanced', 'advanced-cartoon', 'advanced-questions-off', 'advanced-haze-off', 'advanced-perf-hud', 'knowledge',
-      'touch-setup', 'touch-setup-transit', 'touch-setup-here', 'touch-knowledge', 'touch-setup-home',
+      'touch-setup', 'touch-setup-transit', 'touch-setup-here', 'touch-knowledge', 'touch-setup-home', 'advanced-tours', 'touch-advanced-tours',
       ...Object.keys(ONBOARDING_STEP),
     ]);
     if (setupStories.has(scenario)) doc.body.classList.add('storybook-setup');
@@ -148,6 +165,23 @@ function CanalDriveFrame({ scenario = 'default', perfHud = false }: { scenario?:
       });
     }
     if (scenario === 'advanced' && overlay) overlay.store.setAdvancedOpen(true);
+    if ((scenario === 'advanced-tours' || scenario === 'touch-advanced-tours') && overlay) {
+      // The tour catalogue as the ride lists it (no stop names); a 30-character title tests the wrap.
+      overlay.store.setTours([
+        { id: 'jewish-amsterdam', title: 'Jewish Amsterdam', theme: 'history', stopCount: 7, checked: 'checked 2026-10-17' },
+        { id: 'golden-age-canal-ring', title: 'Golden Age canal ring', theme: 'architecture', stopCount: 6, checked: null },
+        { id: 'art-museums', title: 'Art museums', theme: 'art', stopCount: 5, checked: null },
+        { id: 'churches-and-towers', title: 'Churches and towers of the old centre', theme: 'skyline', stopCount: 6, checked: null },
+        { id: 'pizza', title: 'Pizza', theme: 'food', stopCount: 5, checked: 'checked 2026-10-17' },
+      ]);
+      overlay.store.setAdvancedOpen(true);
+    }
+    if ((scenario === 'settings-signed-in' || scenario === 'touch-settings-signed-in') && overlay) {
+      overlay.store.setAccount({ label: 'Annemarie van der Heijden-Vos', note: '214 names synced', buttonLabel: 'Sign out', busy: false, signedIn: true, photoURL: null });
+      overlay.store.setSetupOpen(false);
+      overlay.store.setSettingsOpen?.(true);
+      if (!overlay.store.setSettingsOpen) doc.getElementById('open-settings')?.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+    }
     if (scenario === 'advanced-cartoon' && overlay) { patchPrefs({ buildingLook: 'cartoon' }); overlay.store.setAdvancedOpen(true); }
     // The rider's questions-per-minute setting, set to Off, with its row scrolled into view.
     if (scenario === 'advanced-questions-off' && overlay) {
@@ -211,12 +245,23 @@ function CanalDriveFrame({ scenario = 'default', perfHud = false }: { scenario?:
       || scenario === 'neighborhood-fallback-touch'
       || scenario.startsWith('finish')
       || scenario.startsWith('landmark') || scenario.startsWith('touch-hud')
-      || scenario === 'touch-prompt' || scenario === 'touch-settings') {
+      || scenario === 'touch-prompt' || scenario === 'touch-settings'
+      || scenario === 'question-landmark' || scenario === 'touch-question-landmark') {
       overlay?.store.setSetupOpen(false);
       const drawWhenReady = () => {
         const game = (frame.contentWindow as typeof frame.contentWindow & { canalRecallGame?: any })?.canalRecallGame;
         if (!game?.ctx || !game?.hud) { window.setTimeout(drawWhenReady, 50); return; }
         game._render = () => undefined;
+        // The stubbed _render never runs the game's utility tuck, so the
+        // cluster sat on the arrival card's Share button and on the question
+        // card's fourth choice and "No idea" in these stories only (G7, #277;
+        // tests/e2e/g7-phone-layout.spec.ts pins the real game). Apply what
+        // the game does: hidden on the arrival card, tucked over a question.
+        const utility = doc.getElementById('utility-buttons');
+        if (utility) {
+          if (scenario.startsWith('finish')) utility.style.display = 'none';
+          else if (scenario === 'touch-prompt') utility.classList.add('tucked', 'tucked-all');
+        }
         const ctx = game.ctx as CanvasRenderingContext2D;
         // Re-measure before drawing: the force-touch flag is set on load, so
         // the game's first _resize may have run in desktop mode.
@@ -279,17 +324,74 @@ function CanalDriveFrame({ scenario = 'default', perfHud = false }: { scenario?:
             axes: [{ label: 'Recall', score: 0.5 }, { label: 'Unaided', score: 0 }, { label: 'Efficiency', score: 1 }],
           };
           game._shareUrl = 'x'; game._copiedTimer = 0; game._raceKey = null;
+          // G5: an arrival that earned a passport stamp shows it as a stamp.
+          if (scenario.startsWith('finish-stamp')) {
+            game.quizCorrect = 4; game.quizAttempts = 5; game.quizPoints = 370; game.quizBestStreak = 3;
+            game._explorationRouteGain = { newNames: 2, newNeighborhoods: 1, newLandmarks: 0 };
+            game._finishPassportFresh = ['Grachtengordel'];
+            win.localStorage.setItem('canalRecall.neighborhoodPassport.v1', JSON.stringify({ stamped: ['Grachtengordel', 'Jordaan', 'Oude Pijp'] }));
+            // The stamp art is its own bundle; the card shows the plain stamp until it lands.
+            const art = doc.createElement('script');
+            art.src = 'js/stamp-art.bundle.js';
+            art.onload = () => {
+              const loaded = (win as unknown as { CanalRecallStampArt?: { loadStampFont: () => Promise<unknown> } }).CanalRecallStampArt;
+              void loaded?.loadStampFont().then(() => renderFinish());
+            };
+            doc.head.appendChild(art);
+          }
           if (scenario.startsWith('finish-full')) {
             game.quizCorrect = 4; game.quizAttempts = 5; game.quizPoints = 370; game.quizBestStreak = 3;
             game._explorationRouteGain = { newNames: 2, newNeighborhoods: 0, newLandmarks: 1 };
             game._raceKey = 'story-full';
             win.localStorage.setItem('satb_bestTimes', JSON.stringify({ 'story-full': { time: 200 } }));
           }
+          // The single-ride states keep today's card (as `?run=0`); the run states opt in.
+          game._runsOff = !scenario.startsWith('finish-run');
+          if (scenario.startsWith('finish-run')) {
+            // Chained stops (G1): two stops already in the open run, so this
+            // arrival is the third; the run-card states then end the run.
+            const now = Date.now();
+            const stop = (id: string, name: string, points: number, bonus: number, names: string[], at: number) => ({
+              id, name, basePoints: points, points: Math.round(points * (1 + bonus)), bonus, bestStreak: 2, names, at,
+            });
+            // Ride review #280's seeding (#282): rides of 130 / 240 / 90, so the card reads
+            // 99 points (+10 %), the run line 481, and the run card 130 · 252 +5 % · 99 +10 %.
+            const stops = [
+              stop('westerkerk', 'Westerkerk', 130, 0, ['Prinsengracht', 'Bloemgracht'], now - 900_000),
+              stop('rijks', 'Rijksmuseum', 240, 0.05, ['Spiegelgracht', 'Nieuwe Spiegelstraat'], now - 300_000),
+            ];
+            game.quizPoints = 90;
+            win.localStorage.setItem('canalRecall.openRun.v1', JSON.stringify({
+              version: 1, startedAt: now - 1_200_000, lastActiveAt: now - 60_000, startName: 'Noordermarkt',
+              stopCount: 2, totalPoints: 130 + 252, bestStreak: 2,
+              names: ['Prinsengracht', 'Bloemgracht', 'Spiegelgracht', 'Nieuwe Spiegelstraat'], stops,
+            }));
+            Object.assign(game, { _runLoaded: false, _run: null, _runCard: null, _runRecordedKey: '' });
+            game.routeFrom = { id: 'rijks', name: 'Rijksmuseum' };
+            game._rideNamedNames = ['Vondelstraat'];
+            if (scenario.startsWith('finish-run-card')) {
+              game._recordRunStop();
+              game._endRunFromCard();
+            }
+          }
           game.landmarks = [{
             id: 'theater', name: 'Vondelpark Open Air Theater', type: 'landmark',
             longDetail: 'The Vondelpark Open Air Theatre in Amsterdam has staged free performances every summer since 1865, when the park itself was still new, and it remains one of the oldest open-air stages in the Netherlands.',
             wikipediaUrl: 'https://en.wikipedia.org/wiki/Vondelpark_Open_Air_Theatre',
           }];
+          if (scenario.startsWith('finish-dutch-lede')) {
+            // landmarks.json's De Dokwerker row (extract_landmarks_1098130181), through the game's own lede rule.
+            const dokwerker = {
+              wikipediaExtract: 'De Dokwerker is a statue and monument on Jonas Daniël Meijerplein in Amsterdam in memory of the February Strike of 1941.',
+              wikipediaExtractOriginal: 'De Dokwerker is een beeld en monument op het Jonas Daniël Meijerplein in Amsterdam ter nagedachtenis aan de Februaristaking van 1941.\nHet standbeeld is in opdracht van het Amsterdamse gemeentebestuur ontworpen en gemaakt door de beeldhouwer Mari Andriessen.\nDe Haarlemse timmerman/aannemer Willem Termetz, die Andriessen al voor de oorlog kende, heeft in 1951 ',
+              wikipediaExtractOriginalLang: 'nl',
+            };
+            const lede = landmarkLede(dokwerker, 'nl');
+            game.routeTo = { id: 'theater', name: 'De Dokwerker' };
+            game.landmarks = [{ id: 'theater', name: 'De Dokwerker', type: 'landmark', ...splitDetail(lede.text), extractLang: lede.lang, wikipediaUrl: 'https://nl.wikipedia.org/wiki/De_Dokwerker' }];
+            game._facts = new Map();
+            game._finishBlurb = null;
+          }
           if (bare) {
             game._landmarkImages = new Map();
             renderFinish();
@@ -323,6 +425,22 @@ function CanalDriveFrame({ scenario = 'default', perfHud = false }: { scenario?:
               longDetail: 'Around 1670, a ferry bridge was built over the Amstel, which was so narrow that it was only suitable for pedestrians. '
                 + 'Although this bridge was officially called the Kerkstraatbrug, it soon became known as the Magere Brug.',
             }
+            : scenario.startsWith('landmark-card-building-label-pand')
+            ? {
+              // The gurdwara's label point lies in pand 0363100012106767 (building-tiles 14/8412/5382); its
+              // building-facts row is [1964, -1, 0] and its tile height 4.79 m.
+              id: 'clicked-own:Shri Guru Nanak Gurdwara Sahib:4.84901', type: 'building',
+              sourceUrl: 'https://www.openstreetmap.org/node/2628741158',
+              ...describeBuilding([1964, -1, 0], 4.79, 'Shri Guru Nanak Gurdwara Sahib',
+                { name: 'Shri Guru Nanak Gurdwara Sahib', kind: 'a Sikh gurdwara', address: 'Schakelstraat 21' }),
+            }
+            : scenario.startsWith('landmark-card-building-place')
+            ? {
+              id: 'clicked-own:Shri Guru Nanak Gurdwara Sahib:4.84901', type: 'building',
+              sourceUrl: 'https://www.openstreetmap.org/node/2628741158',
+              ...describeBuilding(null, undefined, 'Shri Guru Nanak Gurdwara Sahib',
+                { name: 'Shri Guru Nanak Gurdwara Sahib', kind: 'a Sikh gurdwara', address: 'Schakelstraat 21' }),
+            }
             : {
               id: 'clicked-NL.IMBAG.Pand.0363100012169999', name: 'Built 1665', type: 'building',
               detail: 'A warehouse, built in 1665, in the Dutch Golden Age. A national monument (rijksmonument). About 13 m tall, some 4 storeys.',
@@ -337,7 +455,7 @@ function CanalDriveFrame({ scenario = 'default', perfHud = false }: { scenario?:
           const dutch = scenario.startsWith('landmark-panel-dutch');
           const bare = scenario.startsWith('landmark-card-bare');
           const long = scenario.startsWith('landmark-card-long');
-          const name = long ? LONG_LANDMARK_NAME : 'Oude Kerk';
+          const name = long ? LONG_LANDMARK_NAME : scenario.startsWith('landmark-card-noticed-mint') ? 'Mint Tower' : 'Oude Kerk';
           // The photo is keyed by the notice's id when it arrives; the long-name
           // card is the same stand-in painting under its own name.
           const id = long ? 'rijksmuseum' : 'oude-kerk';
@@ -364,6 +482,15 @@ function CanalDriveFrame({ scenario = 'default', perfHud = false }: { scenario?:
           };
           game._landmarkNoticeAlpha = 1;
           game.currentNeighborhood = long ? 'Museumkwartier' : 'De Wallen';
+          if (scenario.startsWith('landmark-card-noticed')) {
+            // A fresh drive-by card for a landmark of the ride offers "Noticed" (G3).
+            game.landmarks = [...(game.landmarks || []).filter((l: { id: string }) => l.id !== id), { id, name, x: 0, y: 0 }];
+            game._landmarkSightingsCache = {};
+            game._landmarkNoticeSource = 'drive-by';
+            game._landmarkNoticeState = { ...(game._landmarkNoticeState || {}), elapsed: 1 };
+            // With the touch hint up, the card stacks above the strip (#286).
+            if (scenario.endsWith('-hint')) game._touchHintShowing = () => true;
+          }
           if (scenario.startsWith('landmark-card-folded')) {
             // A drive-by card past its fold (teachingPacer.cardCollapsed): no photo, one fact in two lines.
             game._landmarkNoticeSource = 'drive-by';
@@ -379,6 +506,11 @@ function CanalDriveFrame({ scenario = 'default', perfHud = false }: { scenario?:
           paint.onload = () => {
             game._landmarkImages.set(id, paint);
             game._renderLandmarkNotice();
+            if (scenario.endsWith('-hint')) {
+              game._syncHudLayout?.();
+              game.hud.drawStreetPad(game.ctx, null);
+              game.hud.drawTouchHint(game.ctx, 'street');
+            }
             if (!scenario.startsWith('landmark-card')) game._expandLandmarkNotice();
           };
           paint.src = game._landmarkNotice.imageUrl;
@@ -422,6 +554,34 @@ function CanalDriveFrame({ scenario = 'default', perfHud = false }: { scenario?:
             hood.src = `data:image/svg+xml,${encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="600" height="400"><rect width="600" height="400" fill="#9fc1c7"/><rect y="210" width="600" height="190" fill="#6d8a70"/><path d="M30 250V110h120v140M190 250V70h150v180M380 250V125h180v125" fill="#b95c45"/><path d="M0 290h600v80H0z" fill="#759bb5"/></svg>')}`;
           };
           paint.src = game._landmarkNotice.imageUrl;
+          return;
+        }
+        if (scenario === 'landmark-approach' || scenario === 'landmark-approach-touch') {
+          // No card yet and no name on the map: the four choices the question
+          // will offer are withheld from every label layer (labelPolicy
+          // withheldNames), so the overlay drops them at its own fade.
+          game._syncHudLayout();
+          game.player = game.player || { x: 0, y: 0, angle: 0, speed: 0, vx: 0, vy: 0 };
+          game.landmarkApproachWithheld = ['Westerkerk', 'Homomonument', 'Anne Frank House', 'Huis Bartolotti'];
+          game._clearLandmarkNotice?.();
+          return;
+        }
+        if (scenario === 'question-landmark' || scenario === 'touch-question-landmark') {
+          game._syncHudLayout();
+          game.routeOptions.answerMode = 'multiple';
+          game.player = game.player || { x: 0, y: 0, angle: 0, speed: 0, vx: 0, vy: 0 };
+          const frameMath = (frame.contentWindow as unknown as { Math: Math }).Math;
+          const random = frameMath.random;
+          frameMath.random = () => 0.42;
+          // The question as landmarkQuestionRuntime opens it; the answer is only on a button.
+          game._openQuizPrompt({
+            kind: 'landmark', name: 'Westerkerk', subject: 'landmark',
+            question: 'Which building is this?',
+            context: 'On the right · Grachtengordel-West',
+            choices: ['Westerkerk', 'Homomonument', 'Anne Frank House', 'Huis Bartolotti'],
+          });
+          game._dressLandmarkPrompt();
+          frameMath.random = random;
           return;
         }
         if (scenario === 'touch-prompt' || scenario === 'touch-settings') {
@@ -628,6 +788,11 @@ export const LiveHudRadarPhone: Story = {
 export const FinishCard: Story = { args: { scenario: 'finish' } };
 /** Every block at once; the card must still fit a laptop screen. */
 export const FinishCardFull: Story = { args: { scenario: 'finish-full' } };
+export const FinishCardPassportStamp: Story = { args: { scenario: 'finish-stamp' } };
+export const PortraitFinishCardPassportStamp: Story = {
+  args: { scenario: 'finish-stamp-touch' },
+  parameters: { viewport: { defaultViewport: 'mobile1' } },
+};
 export const FinishCardFullPhone: Story = {
   args: { scenario: 'finish-full-touch' },
   parameters: { viewport: { defaultViewport: 'mobile1' } },
@@ -647,6 +812,41 @@ export const FinishCardBikePhone: Story = {
   globals: phone,
 };
 export const FinishCardTransit: Story = { args: { scenario: 'finish-transit' } };
+/** Chained stops (G1): the third stop of a run, with the run line and End run. */
+export const FinishCardRun: Story = { args: { scenario: 'finish-run' } };
+export const FinishCardRunPhone: Story = { args: { scenario: 'finish-run-touch' }, globals: phone };
+/** The run card after End run: three stamped stops, total, best streak, names, story. */
+export const RunCard: Story = { args: { scenario: 'finish-run-card' } };
+export const RunCardPhone: Story = { args: { scenario: 'finish-run-card-touch' }, globals: phone };
+/** Calm mode: no points, no chain bonus. */
+/** The Dutch game (#283): the frame shares Storybook's origin, so the language
+ *  pref is set before the frame loads and put back when the story unmounts. */
+function DutchFrame({ scenario }: { scenario: Scenario }) {
+  const KEY = 'canalRecall.language.v1';
+  const [previous] = useState(() => {
+    try {
+      const before = localStorage.getItem(KEY);
+      localStorage.setItem(KEY, 'nl');
+      return before;
+    } catch { return null; }
+  });
+  useEffect(() => () => {
+    try { if (previous === null) localStorage.removeItem(KEY); else localStorage.setItem(KEY, previous); } catch { /* private mode */ }
+  }, [previous]);
+  return <CanalDriveFrame scenario={scenario} />;
+}
+export const FinishCardRunDutch: Story = { args: { scenario: 'finish-run' }, render: () => <DutchFrame scenario="finish-run" /> };
+export const FinishCardRunDutchPhone: Story = { args: { scenario: 'finish-run-touch' }, render: () => <DutchFrame scenario="finish-run-touch" />, globals: phone };
+/** #292: the Dutch arrival footer on a phone keeps whole items (the view and difficulty go first) instead of a mid-list cut. */
+/** R2-4 (#307): the Dutch arrival prints the nl article's own lede where the extract kept it (De Dokwerker). */
+export const FinishDutchLede: Story = { args: { scenario: 'finish-dutch-lede' }, render: () => <DutchFrame scenario="finish-dutch-lede" /> };
+export const FinishDutchLedePhone: Story = { args: { scenario: 'finish-dutch-lede-touch' }, render: () => <DutchFrame scenario="finish-dutch-lede-touch" />, globals: phone };
+export const FinishFullDutchPhone: Story = { args: { scenario: 'finish-full-touch' }, render: () => <DutchFrame scenario="finish-full-touch" />, globals: phone };
+export const RunCardDutch: Story = { args: { scenario: 'finish-run-card' }, render: () => <DutchFrame scenario="finish-run-card" /> };
+export const RunCardDutchPhone: Story = { args: { scenario: 'finish-run-card-touch' }, render: () => <DutchFrame scenario="finish-run-card-touch" />, globals: phone };
+
+export const RunCardCalm: Story = { args: { scenario: 'finish-run-card-calm' } };
+export const RunCardCalmPhone: Story = { args: { scenario: 'finish-run-card-calm-touch' }, globals: phone };
 export const FinishCardTransitPhone: Story = {
   args: { scenario: 'finish-transit-touch' },
   globals: phone,
@@ -668,6 +868,20 @@ export const LandmarkCardFoldedMobile: Story = {
   parameters: { viewport: { defaultViewport: 'mobile1' } },
 };
 /** Landmark card when the extract has no image. */
+/** G3: "Which building is this?" — the landmark question, desktop and phone. */
+export const LandmarkQuestion: Story = { args: { scenario: 'question-landmark' } };
+/** #281: riding up to the landmark the question will ask about; its name and the three distractors' are off the map. */
+export const LandmarkApproachWithheld: Story = { args: { scenario: 'landmark-approach' } };
+export const LandmarkApproachWithheldPhone: Story = { args: { scenario: 'landmark-approach-touch' }, globals: phone };
+export const LandmarkQuestionPhone: Story = { args: { scenario: 'touch-question-landmark' }, globals: phone };
+/** G3: a drive-by card with its one-tap "Noticed". */
+export const LandmarkCardNoticed: Story = { args: { scenario: 'landmark-card-noticed' } };
+export const LandmarkCardNoticedPhone: Story = { args: { scenario: 'landmark-card-noticed-touch' }, globals: phone };
+/** #286: the phone's Noticed pill at 44 px, the card above the touch hint strip and the street pad. */
+export const LandmarkCardNoticedHintPhone: Story = { args: { scenario: 'landmark-card-noticed-touch-hint' }, globals: phone };
+/** R2-3 (#303): the drive-by card after a Dutch landmark answer names the place as the question did (Munttoren, not MINT TOWER). */
+export const LandmarkCardNoticedDutch: Story = { args: { scenario: 'landmark-card-noticed-mint' }, render: () => <DutchFrame scenario="landmark-card-noticed-mint" /> };
+export const LandmarkCardNoticedDutchPhone: Story = { args: { scenario: 'landmark-card-noticed-mint-touch' }, render: () => <DutchFrame scenario="landmark-card-noticed-mint-touch" />, globals: phone };
 export const LandmarkCardBare: Story = { args: { scenario: 'landmark-card-bare' } };
 /** No photo on a phone either: the card is text alone, and still fits. */
 export const LandmarkCardBarePhone: Story = {
@@ -710,6 +924,18 @@ export const PortraitBridgeRegisterCard: Story = {
 };
 export const PortraitBridgeOriginCard: Story = {
   args: { scenario: 'landmark-card-bridge-touch' },
+  parameters: { viewport: { defaultViewport: 'mobile2' } },
+};
+/** A tapped POI label on a blank building (#258): the title is the place, the body what it is. */
+export const BuildingPlaceCard: Story = { args: { scenario: 'landmark-card-building-place' } };
+export const PortraitBuildingPlaceCard: Story = {
+  args: { scenario: 'landmark-card-building-place-touch' },
+  parameters: { viewport: { defaultViewport: 'mobile2' } },
+};
+/** The tapped label with the pand under it resolved: the place's name and kind, then the building's year (#258 follow-up). */
+export const BuildingLabelPandCard: Story = { args: { scenario: 'landmark-card-building-label-pand' } };
+export const PortraitBuildingLabelPandCard: Story = {
+  args: { scenario: 'landmark-card-building-label-pand-touch' },
   parameters: { viewport: { defaultViewport: 'mobile2' } },
 };
 export const PortraitBuildingFactsCard: Story = {
@@ -882,5 +1108,18 @@ export const IntroScorePhone: Story = {
 
 export const PortraitKnowledgeReview: Story = {
   args: { scenario: 'touch-knowledge' },
+  parameters: { viewport: { defaultViewport: 'mobile2' } },
+};
+
+/** G7 (#277): tours as cover cards under More options, desktop and phone. */
+export const AdvancedOptionsTours: Story = { args: { scenario: 'advanced-tours' } };
+export const AdvancedOptionsToursPhone: Story = {
+  args: { scenario: 'touch-advanced-tours' },
+  parameters: { viewport: { defaultViewport: 'mobile2' } },
+};
+/** G7 (#277): the settings panel while riding, with the account chip signed in (long name). */
+export const SettingsSignedIn: Story = { args: { scenario: 'settings-signed-in' } };
+export const PortraitSettingsSignedIn: Story = {
+  args: { scenario: 'touch-settings-signed-in' },
   parameters: { viewport: { defaultViewport: 'mobile2' } },
 };

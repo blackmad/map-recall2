@@ -33,6 +33,7 @@ import {
 } from './freeRide';
 import { isWorthACard } from './landmarkData';
 import { isBoat } from './modes';
+import { bridgeMarkerAnchor, facadeNudge, freeRideWayTapAllowed, landAnchor, tapOnOpenWater, type IsWater } from './freeRideWater';
 import type { LandmarkHost } from './host';
 import type { Hud, Track } from './collaborators';
 import { DEFAULT_NOTICE_CONFIG, type NoticeHold } from './landmarkNotice';
@@ -42,6 +43,36 @@ import type { HudLayout } from '../hudLayout';
 import { StreetLabelCandidates, type StreetLabelAnchor } from './streetLabelCandidates';
 import { t as tr } from '../../i18n/index.ts';
 import { LabelFade } from '../labels/labelFade';
+import {
+  buildChecklists,
+  checklistLine,
+  checklistProgress,
+  collectionEnabled,
+  corridorAhead,
+  CORRIDOR_AHEAD_M,
+  CORRIDOR_HALF_WIDTH_PX,
+  distanceAlpha,
+  noteOpened,
+  overCorridor,
+  pickTokenPlace,
+  readCollection,
+  ridesThrough,
+  saveCollection,
+  stampIfComplete,
+  TOKEN_NEAR_PX as TOKEN_NEAR_PX_CSS,
+  TOKEN_RADIUS_M,
+  TOKEN_RIDE_THROUGH_M,
+  tokenSizePx,
+  type Checklist,
+  type ChecklistProgress,
+  type CollectionPlace,
+  type CollectionState,
+  type Corridor,
+} from './freeRideCollection';
+import { drawCollectedToken, drawDiscoveryToken } from './freeRideCollectionDraw';
+import { readPassport, savePassport } from './neighborhoodPassport';
+import { buurtAt, PLACE_AT_MAX_M, placeReach, type PlaceAnchor } from './placeBuurt';
+import { bumpSessionCounter } from './sessionCounters';
 
 /** A tap within this many world px of a way's edge names it (~5 m). */
 const WAY_TAP_SLOP_PX = 15;
@@ -68,6 +99,13 @@ export interface FreeRideHost extends LandmarkHost {
   _freeRideBar?: HTMLElement | null;
   _freeRideBarKey?: string;
   _freeRideLabels?: { labels: unknown; names: Set<string>; index: StreetLabelCandidates<StreetLabelAnchor> } | null;
+  /** The collection (freeRideCollection.ts); null unless `?collection=1` (off by default, F1 #311). */
+  _freeRideCollection?: FreeRideCollectionState | null;
+  /** Every buurt's places list, kept whether or not the collection runs: the
+   *  plaque's place-buurt rule (placeBuurt.ts) needs it in every Free Ride. */
+  _freeRideLists?: FreeRideListsCache | null;
+  _neighborhoodAt(x: number, y: number): { name: string } | null;
+  _toWorld?(lat: number, lon: number): WorldPoint | null;
 
   _showLandmarkNotice(notice: LandmarkNotice, hold: NoticeHold, source?: NoticeSource): void;
   _showStreetKnowledge(name: string, type?: 'street' | 'water' | 'bridge' | 'line', replaceOpenCard?: boolean): void;
@@ -76,6 +114,44 @@ export interface FreeRideHost extends LandmarkHost {
   _hudRects(): HudLayout;
   _openRouteSetup?(): void;
 }
+
+export interface FreeRideListsCache {
+  lists: Map<string, Checklist> | null;
+  listsFrom: { places: unknown; neighborhoods: unknown } | null;
+  /** Place key → its neighbourhood's list name. */
+  hoodOfKey: Map<string, string>;
+  /** Place key → how far it reaches for the plaque (world px; placeBuurt.ts). */
+  reach?: Map<string, number>;
+}
+
+export interface FreeRideCollectionState {
+  state: CollectionState;
+  opened: Set<string>;
+  /** The landmark carrying the discovery token, and where it was last drawn. */
+  token: (CollectionPlace & { distance: number }) | null;
+  tokenScreen: { key: string; x: number; y: number; size: number; alpha: number } | null;
+  /** Why the token was not drawn last frame (for the spec), null when drawn or absent. */
+  tokenHidden: 'offscreen' | 'corridor' | 'hud' | null;
+  /** The corridor as last projected, for the spec and the debug overlay. */
+  corridor: Corridor | null;
+  /** Set when a list was completed: the plaque says so for a few seconds. */
+  stampMoment: { hood: string; until: number } | null;
+  /** A completed list whose stamped postcard waits for the bottom band (one-card rule). */
+  stampPostcard: string | null;
+  /** The coin just collected by riding through it on a phone: it flips, then goes. */
+  collected: { x: number; y: number; at: number } | null;
+}
+
+/** How long the collected coin's flip lasts (ms). */
+const COLLECT_FLIP_MS = 600;
+
+const CHECKLIST_COPY = {
+  count: (opened: number, total: number) => tr('freeRide.checklist', { opened, total }),
+  done: (total: number) => tr('freeRide.checklistDone', { total }),
+};
+
+/** How long the plaque says "stamped" after a list is completed (s). */
+const STAMP_MOMENT_SECONDS = 6;
 
 export interface GameFreeRideRuntime extends FreeRideHost {}
 
@@ -108,6 +184,15 @@ export class GameFreeRideRuntime {
     this._freeRideMarkers = [];
     this._freeRideRefresh = 0;
     this._freeRideOpened = new Set();
+    this._freeRideCollection = null;
+    if (this._freeRideLists) this._freeRideLists.reach = undefined;
+    if (collectionEnabled(typeof location === 'undefined' ? '' : location.search)) {
+      const state = readCollection(typeof localStorage === 'undefined' ? null : localStorage);
+      this._freeRideCollection = {
+        state, opened: new Set(state.opened),
+        token: null, tokenScreen: null, tokenHidden: null, corridor: null, stampMoment: null, stampPostcard: null, collected: null,
+      };
+    }
     this._showFreeRideBar(true);
   }
 
@@ -119,6 +204,7 @@ export class GameFreeRideRuntime {
     this.freeRide = false;
     this._freeRideMarkers = [];
     this._freeRideNearby = [];
+    this._freeRideCollection = null;
     const map = this.vectorMap;
     map?.setSpoilersSuspended?.(false);
     if (restore && !restore.labels) map?.setLabelsVisible?.(false);
@@ -156,7 +242,7 @@ export class GameFreeRideRuntime {
     const second = secondMarkerIds(worth);
     for (const landmark of worth) {
       if (second.has(String(landmark.id))) continue;
-      places.push({ key: landmark.id, kind: 'landmark', name: landmark.name, x: landmark.x, y: landmark.y });
+      places.push({ key: landmark.id, kind: 'landmark', name: landmark.name, x: landmark.x, y: landmark.y, prominence: landmark.prominenceScore });
     }
     for (const bridge of this.bridges || []) {
       const name = bridge.displayName || bridge.name;
@@ -171,13 +257,39 @@ export class GameFreeRideRuntime {
 
   _updateFreeRide(dt: number): void {
     if (!this.freeRide || !this.player) return;
+    const collection = this._freeRideCollection;
+    // Riding through the token opens its card (checked every frame: at bike speed 0.4 s is 2 m).
+    if (collection?.token && this.state === GameState.RACING && !collection.opened.has(collection.token.key)
+      && ridesThrough(this.player, collection.token, TOKEN_RIDE_THROUGH_M * PIXELS_PER_METER)
+      && this._landmarkNotice?.id !== collection.token.key) {
+      if (this.viewport?.mode === 'compact') {
+        // A phone collects the place but opens no card by itself (no auto pop-ups on the phone); a tap opens it.
+        const token = collection.token;
+        collection.collected = { x: token.x, y: token.y, at: performance.now() };
+        this._noteFreeRideOpened(token.key);
+        collection.token = null;
+      } else {
+        this._openFreeRideLandmark(collection.token.key);
+        collection.token = null;
+      }
+    }
     this._freeRideRefresh = (this._freeRideRefresh ?? 0) - dt;
     if (this._freeRideRefresh > 0) return;
     this._freeRideRefresh = FREE_RIDE_REFRESH_SECONDS;
-    this._freeRideNearby = nearbyPlaces(this.player, this._freeRideCatalog(), {
+    const catalog = this._freeRideCatalog();
+    this._freeRideNearby = this._freeRideOnLand(nearbyPlaces(this.player, catalog, {
       radiusPx: FREE_RIDE_MARKER_RADIUS_M * PIXELS_PER_METER,
       bridgeRadiusPx: FREE_RIDE_BRIDGE_RADIUS_M * PIXELS_PER_METER,
-    });
+    }));
+    if (collection) {
+      const list = this._freeRideChecklist(this.currentNeighborhood);
+      const progress = checklistProgress(list, collection.opened);
+      collection.token = pickTokenPlace(this.player, catalog.filter(place => place.kind === 'landmark'), collection.opened, {
+        radius: TOKEN_RADIUS_M * PIXELS_PER_METER,
+        prefer: new Set(progress?.remaining ?? []),
+      });
+      if (collection.token) this._ensureLandmarkImage(this.landmarks.find(l => l.id === collection.token!.key) ?? null);
+    }
     // The photo is ready by the time the rider taps.
     for (const place of this._freeRideNearby) {
       if (place.kind !== 'landmark') continue;
@@ -185,10 +297,117 @@ export class GameFreeRideRuntime {
     }
   }
 
-  /** The plaque's line in place of the score. */
+  /** The plaque's line in place of the score: the current neighbourhood's
+   *  checklist when it has one ("3 of 9 places"; the plaque names the
+   *  neighbourhood on the line above), else the places opened this ride. */
   _freeRideTally(): string {
+    const collection = this._freeRideCollection;
+    if (collection) {
+      const moment = collection.stampMoment;
+      if (moment && moment.until > performance.now()) return tr('freeRide.stamped');
+      const progress = this._freeRideChecklistProgress(this.currentNeighborhood);
+      if (progress) return checklistLine(this.currentNeighborhood, progress, { underQuestion: this.quizCurrentName, copy: CHECKLIST_COPY }).count;
+    }
     const { key, count } = freeRideTallyKey(this._freeRideOpened?.size ?? 0);
     return tr(key, { count });
+  }
+
+  /** Every neighbourhood's checklist, built once per catalogue and boundary set
+   *  (with the collection off too: the plaque's place anchors read it). */
+  _freeRideChecklists(): Map<string, Checklist> | null {
+    const collection = (this._freeRideLists ||= { lists: null, listsFrom: null, hoodOfKey: new Map() });
+    const places = this._freeRideCatalog();
+    const from = collection.listsFrom;
+    if (collection.lists && from && from.places === places && from.neighborhoods === this.neighborhoods) return collection.lists;
+    const landmarks = places.filter(place => place.kind === 'landmark');
+    // A place's buurt is the buurt of its own centre (#284): the game point is
+    // snapped onto the nearest way and can sit across a boundary.
+    const byId = new Map((this.landmarks || []).map(landmark => [String(landmark.id), landmark]));
+    const lists = buildChecklists(landmarks, place => {
+      const lngLat = byId.get(String(place.key))?.lngLat;
+      const centre = lngLat ? this._toWorld?.(lngLat[1], lngLat[0]) : null;
+      return buurtAt(this.neighborhoods || [], centre?.x ?? place.x, centre?.y ?? place.y);
+    });
+    collection.lists = lists;
+    collection.listsFrom = { places, neighborhoods: this.neighborhoods };
+    collection.hoodOfKey = new Map();
+    for (const list of lists.values()) for (const place of list.places) collection.hoodOfKey.set(place.key, list.hood);
+    return lists;
+  }
+
+  /** The checklist places near a point, as anchors for the plaque's buurt
+   *  (placeBuurt.ts): while the rider stands at a place, the plaque names the
+   *  buurt whose checklist holds it. Empty outside Free Ride; kept with the
+   *  collection off (F1, #311: the placeBuurt rule stays). */
+  _freeRidePlaceAnchors(x: number, y: number): PlaceAnchor[] {
+    if (!this.freeRide) return [];
+    const lists = this._freeRideChecklists();
+    const collection = this._freeRideLists;
+    if (!lists || !collection) return [];
+    const max = PLACE_AT_MAX_M * PIXELS_PER_METER;
+    const reaches = (collection.reach ||= new Map());
+    const anchors: PlaceAnchor[] = [];
+    for (const list of lists.values()) {
+      for (const place of list.places) {
+        if (Math.abs(place.x - x) > max || Math.abs(place.y - y) > max) continue;
+        let reach = reaches.get(place.key);
+        if (reach === undefined) {
+          const road = this.track?.getNearestRoad?.(place.x, place.y);
+          reach = placeReach(road?.dist ?? null, PIXELS_PER_METER);
+          if (road) reaches.set(place.key, reach);
+        }
+        anchors.push({ x: place.x, y: place.y, hood: list.hood, reach });
+      }
+    }
+    return anchors;
+  }
+
+  _freeRideChecklist(hood: string | null | undefined): Checklist | null {
+    if (!hood) return null;
+    return this._freeRideChecklists()?.get(hood) ?? null;
+  }
+
+  _freeRideChecklistProgress(hood: string | null | undefined): ChecklistProgress | null {
+    const collection = this._freeRideCollection;
+    if (!collection) return null;
+    return checklistProgress(this._freeRideChecklist(hood), collection.opened);
+  }
+
+  _freeRideCollectionOn(): boolean {
+    return !!this.freeRide && !!this._freeRideCollection;
+  }
+
+  _freeRideTakeStampPostcard(hood: string): boolean {
+    const collection = this._freeRideCollection;
+    if (!this.freeRide || !collection || collection.stampPostcard !== hood) return false;
+    collection.stampPostcard = null;
+    return true;
+  }
+
+  _freeRideStampWaiting(hood: string | null | undefined): boolean {
+    return !!hood && !!this.freeRide && this._freeRideCollection?.stampPostcard === hood;
+  }
+
+  /** The postcard's checklist caption for a neighbourhood, or '' (no list, or the collection is off). */
+  _freeRideChecklistCaption(hood: string): string {
+    if (!this.freeRide) return '';
+    const progress = this._freeRideChecklistProgress(hood);
+    return progress ? checklistLine(hood, progress, { underQuestion: this.quizCurrentName, copy: CHECKLIST_COPY }).count : '';
+  }
+
+  /** The current neighbourhood's unopened places, for the radar, and the
+   *  coin's place whenever the coin is not drawn in frame: off screen, over
+   *  the corridor or under the HUD, the radar carries its bearing (#286; on a
+   *  phone the coin was off screen at 6 of 7 stops, ride review #280). */
+  _freeRideRadarPlaces(): WorldPoint[] {
+    const collection = this._freeRideCollection;
+    if (!this.freeRide || !collection) return [];
+    const list = this._freeRideChecklist(this.currentNeighborhood);
+    const places: WorldPoint[] = list ? list.places.filter(place => !collection.opened.has(place.key)) : [];
+    const token = collection.token;
+    if (token && !collection.tokenScreen && !collection.opened.has(token.key)
+      && !places.some(place => Math.hypot(place.x - token.x, place.y - token.y) < 1)) places.push({ x: token.x, y: token.y });
+    return places;
   }
 
   /** Draw the markers, nearest first, keeping off the HUD, the open card and
@@ -210,8 +429,11 @@ export class GameFreeRideRuntime {
     ctx.font = font;
     const requests: Array<MarkerRequest & { label: string; kind: FreeRideNearby['kind'] }> = [];
     for (const place of nearby || []) {
+      // No choice of a "Which building is this?" question is named while it is open (G3).
+      if (this.quizPromptName && (place.name === this.quizPromptName || this.quizWithheldNames?.includes(place.name))) continue;
+      if (this.landmarkApproachWithheld?.includes(place.name)) continue;
       const at = this.camera.worldToScreen(place.x, place.y);
-      const label = markerLabel(place.name);
+      const label = markerLabel(place.name, undefined, text => ctx.measureText(text).width);
       const width = Math.ceil(ctx.measureText(label).width) + height + 8;
       requests.push({ key: place.key, kind: place.kind, label, anchorX: at.x, anchorY: at.y, width, height });
       last.set(place.key, { x: place.x, y: place.y, label, kind: place.kind, width, height });
@@ -232,7 +454,12 @@ export class GameFreeRideRuntime {
     ].filter((r): r is ScreenRect => !!r);
     const placed = layoutMarkers(requests, { width: CANVAS_W, height: CANVAS_H }, blocked);
     const activeId = this._landmarkNotice?.id || '';
-    const draw = (key: string, kind: FreeRideNearby['kind'], label: string, anchorX: number, anchorY: number, box: ScreenRect, alpha: number) => {
+    const collection = this._freeRideCollection;
+    // Markers fade with distance (user 2026-10-30), with the collection on or off (F1, #311).
+    const distanceOf = new Map((nearby || []).map(place => [place.key, place.distance / PIXELS_PER_METER]));
+    const far = (key: string) => distanceAlpha(distanceOf.get(key) ?? Infinity);
+    const draw = (key: string, kind: FreeRideNearby['kind'], label: string, anchorX: number, anchorY: number, box: ScreenRect, rawAlpha: number) => {
+      const alpha = rawAlpha * (activeId === key ? 1 : far(key));
       const active = activeId === key || (kind === 'bridge' && this._landmarkNotice?.name === nearby?.find(p => p.key === key)?.name);
       const dot = kind === 'bridge' ? BRIDGE_COLOUR : surface.arrow;
       // Stem and the anchor dot on the place itself.
@@ -293,6 +520,48 @@ export class GameFreeRideRuntime {
     }
     ctx.restore();
     this._freeRideMarkers = placed;
+    if (collection) this._renderFreeRideToken(blocked);
+  }
+
+  /** The discovery token on the landmark that carries it: smaller and
+   *  fainter with distance, never over the corridor ahead or a HUD card. */
+  _renderFreeRideToken(blocked: readonly ScreenRect[]): void {
+    const collection = this._freeRideCollection;
+    if (!collection || !this.player) return;
+    collection.tokenScreen = null;
+    collection.tokenHidden = null;
+    const collected = collection.collected;
+    if (collected) {
+      const t = (performance.now() - collected.at) / COLLECT_FLIP_MS;
+      if (t >= 1) collection.collected = null;
+      else {
+        const at = this.camera.worldToScreen(collected.x, collected.y);
+        const size = TOKEN_NEAR_PX_CSS / Math.max(0.01, this.canvas.getBoundingClientRect().width / CANVAS_W);
+        drawCollectedToken(this.ctx, at.x, at.y, size, t);
+      }
+    }
+    const vehicle = this.camera.worldToScreen(this.player.x, this.player.y);
+    collection.corridor = {
+      path: [vehicle, ...corridorAhead(this.player, CORRIDOR_AHEAD_M * PIXELS_PER_METER).slice(1)
+        .map(point => this.camera.worldToScreen(point.x, point.y))],
+      halfWidth: CORRIDOR_HALF_WIDTH_PX,
+    };
+    const token = collection.token;
+    if (!token || collection.opened.has(token.key)) return;
+    const live = Math.hypot(token.x - this.player.x, token.y - this.player.y) / PIXELS_PER_METER;
+    // The size cap is in CSS px; the canvas may be drawn larger or smaller than it is shown.
+    const shown = this.canvas.getBoundingClientRect().width;
+    const cssPerCanvas = shown > 0 ? shown / CANVAS_W : 1;
+    const size = tokenSizePx(live) / cssPerCanvas;
+    const alpha = distanceAlpha(live);
+    const at = this.camera.worldToScreen(token.x, token.y);
+    const r = size / 2;
+    if (!Number.isFinite(at.x) || at.x < r || at.y < r || at.x > CANVAS_W - r || at.y > CANVAS_H - r) { collection.tokenHidden = 'offscreen'; return; }
+    if (overCorridor(at, r, collection.corridor)) { collection.tokenHidden = 'corridor'; return; }
+    if (blocked.some(b => at.x + r > b.x && at.x - r < b.x + b.w && at.y + r > b.y && at.y - r < b.y + b.h)) { collection.tokenHidden = 'hud'; return; }
+    collection.tokenHidden = null;
+    drawDiscoveryToken(this.ctx, at.x, at.y, size, alpha);
+    collection.tokenScreen = { key: token.key, x: at.x, y: at.y, size, alpha };
   }
 
   /** The Free ride · Exit bar in canvas units, so markers keep off it. */
@@ -304,6 +573,39 @@ export class GameFreeRideRuntime {
     if (!box.width || !canvas.width) return null;
     const sx = CANVAS_W / canvas.width, sy = CANVAS_H / canvas.height;
     return { x: (box.left - canvas.left) * sx, y: (box.top - canvas.top) * sy, w: box.width * sx, h: box.height * sy };
+  }
+
+  /** The engine's water test (water.json), or null before the water index is up. */
+  _freeRideIsWater(): IsWater | null {
+    const map = this.vectorMap;
+    if (!map?.isWater || !this.osmLoader) return null;
+    return (x, y) => map.isWater(x, y, this.osmLoader);
+  }
+
+  /** Marker anchors off open water (lane S2, #314): a bridge on its deck where it reaches land at the end nearer the
+   *  rider, a landmark whose point lies in a canal on the nearest quay; a place with no land in reach gets no marker. */
+  _freeRideOnLand(nearby: FreeRideNearby[]): FreeRideNearby[] {
+    const isWater = this._freeRideIsWater();
+    if (!this.player) return nearby;
+    const out: FreeRideNearby[] = [];
+    const own = new Map<string, WorldPoint>();
+    for (const landmark of this.landmarks || []) {
+      if (Number.isFinite(landmark.ownX) && Number.isFinite(landmark.ownY)) own.set(String(landmark.id), { x: landmark.ownX!, y: landmark.ownY! });
+    }
+    const map = this.vectorMap;
+    const inFootprint = map?.isFootprint && this.osmLoader ? (x: number, y: number) => map.isFootprint!(x, y, this.osmLoader) : null;
+    for (const placed of nearby) {
+      // A landmark's pin stands at its own point (S5, #333); the catalogue keeps the snapped point for routing and tokens.
+      const ownPoint = placed.kind === 'landmark' ? own.get(String(placed.key)) : undefined;
+      const place = ownPoint ? { ...placed, x: ownPoint.x, y: ownPoint.y } : placed;
+      const bridge = place.kind === 'bridge' ? this.bridges?.find(b => `bridge:${b.id}` === place.key) : null;
+      const at = bridge ? bridgeMarkerAnchor(bridge.lines, place, this.player, isWater) : landAnchor(place, isWater);
+      if (!at) continue;
+      // A landmark pin that stands inside a footprint moves to open ground within 15 m (S5, #333).
+      const final = ownPoint && inFootprint ? facadeNudge(at, isWater, inFootprint).point : at;
+      out.push(final.x === placed.x && final.y === placed.y ? placed : { ...place, x: final.x, y: final.y });
+    }
+    return out;
   }
 
   /** The marker under a canvas point, for the hover cursor. */
@@ -318,15 +620,42 @@ export class GameFreeRideRuntime {
    * Returns true when something opened.
    */
   _freeRideClick(x: number, y: number, clientX: number, clientY: number): boolean {
-    const marker = this._freeRideMarkerAt(x, y);
+    // Open water answers only through a pill itself (lanes S2/S2b, #314): no plate slop, no stem, no statue on the
+    // quay, no landmark, no street beside it. A boat's tap on its water names that canal (ruling 2026-11-09): the
+    // water's own card, from a deliberate tap on the water body only, through the one bottom card like any other.
+    const onWater = this._freeRideTapOnWater(clientX, clientY);
+    const token = this._freeRideCollection?.tokenScreen;
+    if (token && Math.hypot(x - token.x, y - token.y) <= token.size / 2 + (onWater ? 0 : 10)) return this._openFreeRideLandmark(token.key);
+    const marker = this.freeRide ? markerAt(this._freeRideMarkers || [], x, y, onWater ? 0 : 6, !onWater) : null;
     if (marker) return this._openFreeRidePlace(marker.key);
     const before = this._landmarkNotice;
-    this._inspectBuildingAt(clientX, clientY);
+    if (!onWater) this._inspectBuildingAt(clientX, clientY);
     if (this._landmarkNotice && this._landmarkNotice !== before) {
       this._noteFreeRideOpened(this._landmarkNotice.id);
       return true;
     }
+    if (!freeRideWayTapAllowed(onWater, isBoat(this.travelMode))) return false;
     return this._openFreeRideWayAt(clientX, clientY);
+  }
+
+  /** True when the tap lands on open water: nothing drawn (building, model, label) over a ground point that is water. */
+  _freeRideTapOnWater(clientX: number, clientY: number): boolean {
+    const isWater = this._freeRideIsWater();
+    const rect = this.canvas.getBoundingClientRect();
+    const world = isWater ? this.vectorMap.screenToWorld?.(clientX - rect.left, clientY - rect.top, rect, this.osmLoader) : null;
+    if (!isWater || !world || !isWater(world.x, world.y)) return false;
+    return tapOnOpenWater(this.vectorMap.inspectBuilding(clientX - rect.left, clientY - rect.top, rect), true);
+  }
+
+  /** Open a landmark's card by id (the token's place need not have a marker). */
+  _openFreeRideLandmark(key: string): boolean {
+    const landmark = this.landmarks.find(l => l.id === key);
+    if (!landmark) return false;
+    this.quizFeedback = '';
+    this._showLandmarkNotice(landmark, { kind: 'sticky' }, 'click');
+    this.vectorMap.setActiveLandmark(landmark);
+    this._noteFreeRideOpened(key);
+    return true;
   }
 
   _openFreeRidePlace(key: string): boolean {
@@ -392,7 +721,35 @@ export class GameFreeRideRuntime {
   }
 
   _noteFreeRideOpened(id: string): void {
-    (this._freeRideOpened ||= new Set()).add(id);
+    const ride = (this._freeRideOpened ||= new Set());
+    if (!id || ride.has(id)) return;
+    ride.add(id);
+    bumpSessionCounter('placesOpened');
+    const collection = this._freeRideCollection;
+    if (!collection || collection.opened.has(id)) return;
+    collection.opened.add(id);
+    collection.state = noteOpened(collection.state, id);
+    const store = typeof localStorage === 'undefined' ? null : localStorage;
+    this._freeRideChecklists();
+    const hood = this._freeRideLists?.hoodOfKey.get(id);
+    if (hood) {
+      const progress = this._freeRideChecklistProgress(hood);
+      const today = new Date().toISOString().slice(0, 10);
+      const stamped = stampIfComplete(collection.state, store ? readPassport(store) : { stamped: [] }, hood, progress, today);
+      if (stamped.fresh) {
+        collection.state = stamped.state;
+        if (store) savePassport(store, stamped.passport);
+        bumpSessionCounter('stampsEarned');
+        collection.stampMoment = { hood, until: performance.now() + STAMP_MOMENT_SECONDS * 1000 };
+        // The postcard comes back with the stamp on it, once the landmark card
+        // just opened has closed (one-card rule; landmarkRuntime). On a phone
+        // too: it is the once-per-buurt reward, not a per-place pop-up, and a
+        // plaque line alone read as no payoff (ride review #280, defect 10).
+        collection.stampPostcard = hood;
+        this._postcardPending = hood;
+      }
+    }
+    saveCollection(store, collection.state);
   }
 
   /** The "Free ride · Exit" bar: where the destination card sits on a wide

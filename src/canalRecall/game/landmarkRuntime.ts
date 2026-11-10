@@ -9,6 +9,7 @@
 // Methods are copied onto `Game.prototype` by `game.js`, so `this` is the Game
 // instance. The interface merged into the class below is what types it.
 
+import { noteCardShown, sharedLedger } from './labelDrawLedger';
 import {
   buildBridges,
   type WaterLineFeature,
@@ -18,7 +19,9 @@ import {
   neighborhoodAt,
 } from './landmarkData';
 import type { RoadSegment } from './collaborators';
-import { ClickPoiIndex, type ClickPoiFile } from '../clickPoiInfo';
+import { ClickPoiIndex, osmUrl, poiChipLabel, type ClickPoiFile } from '../clickPoiInfo';
+import { artHasSubstance, hasCardSubstance } from '../poiCardPolicy';
+import type { ClickPoiRow } from '../clickPoiInfo';
 import type {
   BoundaryFeature,
   BridgeCrossingIndex,
@@ -38,24 +41,33 @@ import {
   buildFactIndex,
   commitShownFact,
   factCardText,
+  keepDutchLede,
   loadRotationState,
 } from '../facts/factStore';
 import type { FactsFile } from '../facts/factTypes';
 import type { FactChoice } from '../facts/factRotation';
 import type { LandmarkHost } from './host';
 import type { BuildingHit, Landmark, LandmarkNotice, Neighborhood, WorldPoint } from './worldTypes';
+import { factsIdOf } from '../engine/labelPand';
 import { buildRouteKnowledgeIndex, routeKnowledgeFor, shouldOfferStreetKnowledge, streetCardText, streetCardWithRotatedFact, type StreetNameOrigin } from './routeKnowledge';
 import { canShowDriveByCard, canShowMiniMap, canShowPostcard, canShowTeachingCard } from './teachingSurface';
+import { drawPassportStamp } from './freeRideCollectionDraw';
 import { isTransit } from './modes';
 import { BuildingFactStore, describeBuilding } from '../buildingFacts';
 import { articleCard, type BuildingArticle } from '../buildingArticles';
-import { StreetArtIndex, streetArtCard, type StreetArtFile } from '../streetArt';
+import { StreetArtIndex, streetArtCard, streetArtKindPhrase, type StreetArtFile } from '../streetArt';
 import { manualPoiBuildingIds, mergeManualPoiFeatures } from './manualPoiCatalog';
+import { withDisplayNames } from './placeNames';
+import { plaqueBuurtAt } from './placeBuurt';
 import type { BridgeRegisterFile } from '../bridgeRegister';
 import { cardCollapsed, foldedCardLine, FOLDED_BODY_LINES } from './teachingPacer';
+import { drawCardAction } from '../noticeCards';
 import { loadEntryCounts, postcardForLull, postcardOnEntry, recordEntry } from './postcardPacing';
 import { DRIVE_BY_RADIUS, driveByGapElapsed, mayReplaceNotice, pathAhead, pickDriveBy, type NoticeSource, type Rider } from './driveByTrigger';
-import { t as tr } from '../../i18n/index.ts';
+import { language, t as tr } from '../../i18n/index.ts';
+import { localisedPlaces, placeName } from './landmarkNamesNl.ts';
+import { kindLabel } from '../cardKindLabel.ts';
+import { GameLandmarkQuestionRuntime, installLandmarkQuestion } from './landmarkQuestionRuntime';
 import {
   buildCorridorStreetIndex,
   distanceToPath,
@@ -77,13 +89,18 @@ async function readJson<T>(response: Response, fallback: T): Promise<T> {
   }
 }
 
-export interface GameLandmarkRuntime extends LandmarkHost {}
+export interface GameLandmarkRuntime extends LandmarkHost, GameLandmarkQuestionRuntime {}
 
 /** Files the ride start waits for, in the order `_loadLandmarks` reads them. */
 export const START_EXTRACTS = [
   'landmarks.json', 'boundaries.json', 'neighborhoods-enriched.json',
   'bridges.json', 'bridge-crossings.json', 'streets.json', 'water.json',
 ] as const;
+
+/** The mapped row a tapped POI label stands for, from its text and point. */
+function safeLabelRow(host: { _clickPoiInfo?: ClickPoiIndex | null }, name: string, building: BuildingHit): ClickPoiRow | null {
+  return name ? host._clickPoiInfo?.named?.(name, building.lngLat) ?? null : null;
+}
 
 export class GameLandmarkRuntime {
   // ---- Clicking a building ----
@@ -139,11 +156,18 @@ export class GameLandmarkRuntime {
    *  sentence as told. */
   _showLandmarkNotice(notice: LandmarkNotice, hold: NoticeHold, source: NoticeSource = 'click', streetEntry?: StreetKnowledgeEntry): void {
     if (this._landmarkNotice) this.vectorMap?.setActiveLandmark(null);
+    // One bottom card: the landmark card takes the slot from a postcard.
+    if (this._neighborhoodNotice) {
+      this._neighborhoodNotice = null;
+      this._neighborhoodNoticeTimer = 0;
+    }
     this._landmarkNotice = this._withRotatedFact(notice, streetEntry);
     this._landmarkNoticeHold = hold;
     this._landmarkNoticeSource = source;
     this._landmarkNoticeState = openNotice();
     if (source !== 'arrival') this._lastTriviaAt = this.raceTime;
+    // A card that names a landmark keeps it out of the landmark question for a minute (#281).
+    if (source === 'drive-by' && notice.name) noteCardShown(sharedLedger(window as never), notice.name, performance.now());
     // A deliberate request must be readable immediately, even when slow
     // rendering advances the capped simulation clock only a little per frame.
     // Automatic cards retain their normal fade-in.
@@ -174,6 +198,8 @@ export class GameLandmarkRuntime {
       notice.detail || notice.longDetail,
     );
     if (!chosen) return notice;
+    // The Dutch game keeps a Dutch lede over a fact with no Dutch text (#307).
+    if (!streetEntry && keepDutchLede(chosen.choice.fact, notice.extractLang)) return notice;
     this._commitFact(chosen.choice);
     // A street/bridge card keeps its name origin first and its register line.
     const text = streetEntry ? streetCardWithRotatedFact(streetEntry, chosen.text) : chosen.text;
@@ -239,7 +265,25 @@ export class GameLandmarkRuntime {
     // rather than "no building details".
     // A monument's own name can carry a quiz answer ("Pakhuis Prinsengracht");
     // screen it like every other label before it becomes a title.
-    let row = this._buildingFacts?.lookup(building.id) ?? null;
+    // A tapped POI label stands on a building the view resolved (engine/labelPand.ts): its year and facts are that
+    // pand's, under the place's name (#258 follow-up).
+    // A POI label that has nothing to say beyond its kind (an artwork named only
+    // "Brettensuite 11/20") is not a card: street art for the same OSM id speaks
+    // for it, else the tap lands on the building under the label, else nothing
+    // (lane D1, user 2026-11-09 "why are so many things an artwork?").
+    if (building.poi && !building.footprint) {
+      const labelled = safeLabelRow(this, buildingName, building);
+      if (labelled && !hasCardSubstance(labelled, this._streetArt?.byId(labelled[0]))) {
+        const under = building.pand;
+        if (!under) return null;
+        return this._cardForClickedBuilding({ id: under.id, lngLat: building.lngLat, footprint: under.footprint as BuildingHit['footprint'],
+          height: under.height, featureTarget: under.featureTarget as BuildingHit['featureTarget'] ?? null });
+      }
+      const art = labelled && labelled[4] === 'art' ? this._streetArt?.byId(labelled[0]) : null;
+      if (art && artHasSubstance(art)) return { ...streetArtCard(art, !!spoils?.call(this.vectorMap, art.name)), featureTarget: building.featureTarget ?? null };
+    }
+    const pand = building.poi ? building.pand : undefined;
+    let row = this._buildingFacts?.lookup(factsIdOf(building)) ?? null;
     const monument = row && row.length > 3 ? row[3] : undefined;
     if (row && monument?.n && spoils?.call(this.vectorMap, monument.n)) {
       const { n: _hidden, ...rest } = monument;
@@ -248,7 +292,16 @@ export class GameLandmarkRuntime {
     // A street-chunk pand reports its address as its name; an address names
     // a street the game may be about to ask for.
     const safeName = buildingName && spoils?.call(this.vectorMap, buildingName) ? '' : buildingName;
-    const facts = describeBuilding(row, building.height, safeName);
+    // A tap on a drawn POI label (labelLayer.ts hitTest) carries the label's
+    // text and point but no footprint, so `card` above cannot place it; its
+    // mapped row says what the place is. The label's text titled the card
+    // over "no name or date" (user shot 2026-11-08, the Sloterdijk gurdwara).
+    const labelRow = safeName && building.poi && !building.footprint
+      ? this._clickPoiInfo?.named?.(safeName, building.lngLat) ?? null : null;
+    const labelArt = labelRow && labelRow[4] === 'art' ? this._streetArt?.byId(labelRow[0]) : null;
+    const place = labelRow ? { name: labelRow[1], kind: labelArt && labelArt.k !== 'artwork' ? streetArtKindPhrase(labelArt.k) : labelRow[5], address: labelRow[6] }
+      : safeName && building.poi ? { name: safeName } : null;
+    const facts = describeBuilding(row, building.height ?? pand?.height, safeName, place);
     // Every drawn building answers a click (user report 2026-10-10, "why does
     // this building not let me click on it?" — a post-war tower with only a
     // year and a height). From 2026-10-04 only listed monuments with an
@@ -257,6 +310,8 @@ export class GameLandmarkRuntime {
     // size are what the register knows; `describeBuilding` never invents more.
     if (!row || !article) this._requestBuildingFacts(building);
     const id = `clicked-${building.id || building.lngLat.join('-')}`;
+    // The label's building takes the highlight a tap on its walls would.
+    const featureTarget = building.featureTarget ?? (pand?.featureTarget as BuildingHit['featureTarget'] | undefined) ?? null;
     if (article) {
       // The article names the building and opens the card; the register line
       // follows in the expanded panel. Its title is screened like any label.
@@ -268,10 +323,12 @@ export class GameLandmarkRuntime {
     return {
       id,
       name: facts.name,
-      type: 'building',
+      type: labelRow ? labelRow[4] : 'building',
+      ...(labelRow ? { typeLabel: poiChipLabel(labelRow) } : {}),
       detail: facts.detail,
       lngLat: building.lngLat,
-      featureTarget: building.featureTarget,
+      featureTarget,
+      ...(labelRow ? { sourceUrl: osmUrl(labelRow[0]) } : {}),
     };
   }
 
@@ -308,7 +365,7 @@ export class GameLandmarkRuntime {
     if (inFlight.has(plainId)) return;
     inFlight.add(plainId);
     void store.ensureAt(building.lngLat[0], building.lngLat[1]).then(() => {
-      if (!stillOpen() || (!store.lookup(building.id) && !store.article(building.id))) return;
+      if (!stillOpen() || (!store.lookup(factsIdOf(building)) && !store.article(building.id))) return;
       const card = this._cardForClickedBuilding(building);
       const open = this._landmarkNotice;
       if (!card || !open || !cardIds.has(open.id)) return;
@@ -427,7 +484,8 @@ export class GameLandmarkRuntime {
           readJson<StreetKnowledgeEntry[]>(streetResponse, []),
           readJson<StreetKnowledgeEntry[]>(waterResponse, []),
         ]);
-      const features = mergeManualPoiFeatures(rawFeatures, this.cityId || 'amsterdam');
+      // One spelling per place (#284): every surface below reads the display name.
+      const features = withDisplayNames(mergeManualPoiFeatures(rawFeatures, this.cityId || 'amsterdam'));
       const streetKnowledge: StreetKnowledgeEntry[] = [];
 
       this._facts = buildFactIndex(null);
@@ -488,7 +546,8 @@ export class GameLandmarkRuntime {
         // A bridge's official spelling is an answer too.
         ...bridgeFeatures.map(bridge => ({ name: bridge.displayName })),
       ].map(item => (item as { name?: string }).name || '').filter(Boolean));
-      this.vectorMap.setPlaces(features, boundaries);
+      // Map and 3D labels name a landmark as every card does (placeName, #307).
+      this.vectorMap.setPlaces(localisedPlaces(features), boundaries);
 
       const metersPerDegreeLat = 111320;
       const metersPerDegreeLng = 111320 * Math.cos(centerLat * Math.PI / 180);
@@ -504,6 +563,15 @@ export class GameLandmarkRuntime {
           ? toWorld([lat, lng])
           : this.osmLoader.latLngToGamePoint(lat, lng, centerLat, centerLng, segments, false)
       ));
+      // Free Ride pins stand at the landmark itself, not at the road/canal point the route targets snap to (S5, #333).
+      if (!isTransit(this.travelMode)) {
+        for (const landmark of this.landmarks) {
+          if (!landmark.lngLat) continue;
+          const own = toWorld([landmark.lngLat[1], landmark.lngLat[0]]);
+          landmark.ownX = own.x;
+          landmark.ownY = own.y;
+        }
+      }
       const landmarks = this.landmarks;
 
       // Photos are fetched as the player approaches, not up front. Preloading
@@ -569,7 +637,11 @@ export class GameLandmarkRuntime {
     }
     if (!this.player) return;
 
-    const detectedHood = this._neighborhoodAt(this.player.x, this.player.y);
+    // The plaque's rule (placeBuurt.ts): the finest buurt holding the rider,
+    // or, standing at a Free Ride checklist place, the buurt of its list.
+    const plaqueHood = plaqueBuurtAt(this.neighborhoods, this.player.x, this.player.y,
+      this._freeRidePlaceAnchors?.(this.player.x, this.player.y) ?? []);
+    const detectedHood = plaqueHood ? this.neighborhoods.find(area => area.name === plaqueHood) ?? null : null;
     const transition = CanalRecallNeighborhood.advanceNeighborhood({
       current: this.currentNeighborhood,
       candidate: this._neighborhoodCandidate,
@@ -598,7 +670,9 @@ export class GameLandmarkRuntime {
       }
       const priorEntries = recordEntry(typeof localStorage === 'undefined' ? null : localStorage,
         cityId, this._neighborhoodEntries.counts, this.currentNeighborhood);
-      this._postcardPending = postcardOnEntry({
+      // Free Ride's collection: every entry to a neighbourhood with a checklist says how far along it is.
+      const checklistEntry = !!this.freeRide && !!this._freeRideChecklistCaption?.(this.currentNeighborhood);
+      this._postcardPending = checklistEntry || postcardOnEntry({
         now: this.raceTime, priorEntries, lastTriviaAt: this._lastTriviaAt ?? null, lastPostcardAt: this._lastPostcardAt ?? null,
       }) ? this.currentNeighborhood : null;
     } else if (this.currentNeighborhood && !this._postcardPending && postcardForLull({
@@ -607,12 +681,25 @@ export class GameLandmarkRuntime {
     })) {
       this._postcardPending = this.currentNeighborhood;
     }
+    // One bottom card at a time, in every mode (G4's rule, #284): a landmark
+    // card closes a postcard that is up (`_showLandmarkNotice`); a postcard
+    // waits while a landmark card is open (and is dropped if the rider
+    // leaves). A postcard whose time is up is no longer active.
+    if (this._neighborhoodNotice && (this._neighborhoodNoticeTimer <= 0 || this._landmarkNotice)) {
+      this._neighborhoodNoticeTimer = 0;
+      this._neighborhoodNotice = null;
+    }
     if (this._postcardPending && this._postcardPending === this.currentNeighborhood
-      && this.viewport?.mode !== 'compact' && canShowPostcard(this.viewport?.mode, this._teachingGate()) && this.raceTime > NEIGHBORHOOD_NOTICE_GRACE) {
+      && !this._landmarkNotice
+      // A phone keeps entry postcards off its bottom band, but not the stamp:
+      // finishing a buurt's checklist is the once-per-buurt reward (#286).
+      && (this.viewport?.mode !== 'compact' || !!this._freeRideStampWaiting?.(this._postcardPending))
+      && canShowPostcard(this.viewport?.mode, this._teachingGate()) && this.raceTime > NEIGHBORHOOD_NOTICE_GRACE) {
       this._postcardPending = null;
       this._lastPostcardAt = this.raceTime;
       if (hood) this._ensureNeighborhoodImage(hood);
-      this._neighborhoodNotice = hood || { name: this.currentNeighborhood };
+      const stamped = !!this._freeRideTakeStampPostcard?.(this.currentNeighborhood);
+      this._neighborhoodNotice = { ...(hood || { name: this.currentNeighborhood }), stamped };
       this._neighborhoodNoticeTimer = NEIGHBORHOOD_NOTICE_SECONDS;
     }
 
@@ -638,6 +725,9 @@ export class GameLandmarkRuntime {
       }
       candidates.push(landmark);
     }
+    // A modelled landmark in view may be asked about before its card opens
+    // (landmarkQuestionRuntime.ts); the question then owns the slot.
+    if (this._tryLandmarkQuestion()) return;
     // Free Ride marks places and opens a card on a tap; nothing pops up by itself.
     if (this.freeRide) return;
     if (!canShowDriveByCard(this.viewport?.mode, this._teachingGate())) return;
@@ -646,7 +736,9 @@ export class GameLandmarkRuntime {
       this._landmarkNoticeSource ?? null, this._landmarkNoticeHold, this._landmarkNoticeState.elapsed)) return;
     // Look ahead along where the rider is going, so the card is up before
     // they reach the landmark rather than as they pass it.
-    const nearest = pickDriveBy(candidates, ahead);
+    // The landmark being approached for a question is not named by a card first (#281).
+    const approached = this._landmarkApproach?.landmark.id;
+    const nearest = pickDriveBy(approached ? candidates.filter(landmark => landmark.id !== approached) : candidates, ahead);
     if (nearest && nearest.id !== this._landmarkNotice?.id) {
       this._seenLandmarks.add(nearest.id);
       this._seenLandmarkNames.add(nearest.name);
@@ -705,6 +797,7 @@ export class GameLandmarkRuntime {
     // over open map after the card faded out.
     this._landmarkCardBounds = null;
     this._landmarkCloseBounds = null;
+    this._landmarkActionBounds = null;
     if (!lm) return;
     if (!canShowTeachingCard(this._teachingGate())) return;
     const ctx = this.ctx;
@@ -717,24 +810,35 @@ export class GameLandmarkRuntime {
     // keeps its full text for the expanded panel, and a card the rider
     // clicked open never folds (see teachingPacer.cardCollapsed).
     const collapsed = cardCollapsed(this._landmarkNoticeSource, this._landmarkNoticeState.elapsed);
-    const img = collapsed ? null : this._landmarkImages && this._landmarkImages.get(lm.id);
+    // A short phone has no room under the bike for a photo and a body: the card is one row with the
+    // Noticed pill beside the name (390×664, #292). Taller phones and desktop keep the full card.
+    const shortPhone = this.viewport?.mode === 'compact' && (this.viewport?.height ?? Infinity) < 800 && !!this._landmarkCardAction();
+    const img = collapsed || shortPhone ? null : this._landmarkImages && this._landmarkImages.get(lm.id);
     const hasImage = !!(img && img.complete && img.naturalWidth > 0);
     const cards = window.CanalRecallCards;
     const measure = (text: string, font: string): number => { ctx.font = font; return ctx.measureText(text).width; };
+    // A drive-by card offers "Noticed" (G3): one tap counts it toward the buurt's passport.
+    const action = this._landmarkCardAction();
     const card = cards.measureLandmarkCard({
-      name: lm.name,
+      name: placeName(lm.name || ''),
       body: collapsed ? foldedCardLine(lm) : lm.longDetail || lm.detail || cards.placeOnlyDetail(
         lm.type,
         this.currentNeighborhood,
         this._cityDisplayName(),
       ),
-      category: lm.type ? lm.type.toUpperCase() : '',
+      category: lm.type ? kindLabel(lm.type) : '',
       factKind: lm.factKind,
       extractLang: lm.extractLang,
       hasArticle: !!(lm.wikipediaUrl || lm.sourceUrl),
-      articleLabel: lm.wikipediaUrl ? 'W  WIKIPEDIA' : 'W  SOURCE',
+      articleLabel: lm.wikipediaUrl ? tr('card.wikipedia') : tr('card.source'),
       hasImage,
       ...(collapsed ? { maxBodyLines: FOLDED_BODY_LINES, hasMore: (lm.longDetail || lm.detail || '').trim() !== foldedCardLine(lm) } : {}),
+      ...(action ? { action: action.label } : {}),
+      // A finger, not a pointer: the pill is a 44 px tap target on a phone (#286).
+      // Three body lines then, so the taller pill does not push the card over the bike (414×896, #286).
+      ...(action && (this.viewport?.touch || this.viewport?.mode === 'compact')
+        ? { actionHeight: cards.TOUCH_ACTION_HEIGHT, ...(collapsed ? {} : { maxBodyLines: 3 }) } : {}),
+      ...(shortPhone ? { inlineAction: true } : {}),
     }, measure, window.CanalRecallUi.landmarkCardWidth(this.viewport));
 
     // Trivia belongs at the bottom of the screen. Across the top it sat exactly
@@ -751,6 +855,7 @@ export class GameLandmarkRuntime {
       minimapVisible: canShowMiniMap(this.showMiniMap, this._teachingGate()),
       zoomVisible: this._zoomBadgeTimer > 0,
       controlsVisible: !this.input.isMobile && this.raceTime < CONTROLS_HINT_DURATION,
+      touchHintVisible: !!this._touchHintShowing?.(),
     });
     // On a phone the card spans the width it is given rather than its measured
     // desktop width, so a 480 px card cannot hang off a 390 px screen.
@@ -760,7 +865,10 @@ export class GameLandmarkRuntime {
     ctx.save();
     ctx.globalAlpha = Math.max(0, alpha);
     this.renderer.drawLandmarkCard(ctx, card, cardX, cardY, hasImage && img ? img : null);
+    if (action && card.action) drawCardAction(ctx, card.action, cardX, cardY, action.label, action.done);
     ctx.restore();
+    this._landmarkActionBounds = action && card.action
+      ? { x: cardX + card.action.x, y: cardY + card.action.y, w: card.action.width, h: card.action.height } : null;
     this._landmarkCardBounds = { x: cardX, y: cardY, w: card.width, h: card.height };
     this._landmarkCloseBounds = { x: cardX + card.closeHit.x, y: cardY + card.closeHit.y, w: card.closeHit.width, h: card.closeHit.height };
   }
@@ -796,21 +904,22 @@ export class GameLandmarkRuntime {
       chip.textContent = label;
       badges.appendChild(chip);
     };
-    if (lm.type) pushBadge(lm.type.toUpperCase().replace(/_/g, ' '), 'category');
+    if (lm.typeLabel) pushBadge(lm.typeLabel, 'category');
+    else if (lm.type) pushBadge(lm.type.toUpperCase().replace(/_/g, ' '), 'category');
     if (lm.factKind) pushBadge(lm.factKind.toUpperCase(), 'fact');
-    if (lm.extractLang && lm.extractLang !== 'en') {
+    if (lm.extractLang && lm.extractLang !== 'en' && lm.extractLang !== language()) {
       // Say plainly that this is not the English article rather than leaving
       // the reader to work out why the text is Dutch.
       pushBadge(`${lm.extractLang.toUpperCase()} — NOT TRANSLATED YET`, 'lang');
     }
 
-    (panel.querySelector('#landmark-panel-title') as HTMLElement).textContent = lm.name || '';
+    (panel.querySelector('#landmark-panel-title') as HTMLElement).textContent = placeName(lm.name || '');
     (panel.querySelector('#landmark-panel-body') as HTMLElement).textContent = body;
 
     const image = panel.querySelector('#landmark-panel-image') as HTMLImageElement;
     if (lm.imageUrl) {
       image.src = lm.imageUrl;
-      image.alt = lm.name || '';
+      image.alt = placeName(lm.name || '');
       image.hidden = false;
     } else {
       image.removeAttribute('src');
@@ -868,6 +977,9 @@ export class GameLandmarkRuntime {
         hasImage,
         cityName: city?.name || this._cityDisplayName?.() || 'Amsterdam',
         provinceCaption: city?.provinceCaption || '',
+        checklist: this._freeRideChecklistCaption?.(hood.name) || '',
+        stamped: !!hood.stamped,
+        compact: this.viewport?.mode === 'compact',
       },
       measure,
       window.CanalRecallUi.postcardWidth(this.viewport));
@@ -877,6 +989,7 @@ export class GameLandmarkRuntime {
       postcardHeight: card.height,
       neighborhoodVisible: !!this.currentNeighborhood,
       minimapVisible: canShowMiniMap(this.showMiniMap, this._teachingGate()),
+      touchHintVisible: !!this._touchHintShowing?.(),
     });
     const cardX = bottomLayout.postcard.x;
     const baseCardY = bottomLayout.postcard.y;
@@ -888,9 +1001,17 @@ export class GameLandmarkRuntime {
     ctx.save();
     ctx.globalAlpha = Math.max(0, alpha);
     this.renderer.drawPostcard(ctx, card, cardX, cardY, hasImage && img ? img : null);
+    if (hood.stamped) {
+      // The phone card carries its own seal box (below the name's column); desktop keeps the original.
+      const seal = card.seal ?? { x: card.width - 46, y: card.height / 2, r: 34 };
+      drawPassportStamp(ctx, cardX + seal.x, cardY + seal.y, seal.r, 'Stamped',
+        Math.min(1, (duration - this._neighborhoodNoticeTimer) / 0.25), window.CanalRecallUi.hudSurface.fontPlaque);
+    }
     ctx.restore();
   }
 }
+
+installLandmarkQuestion(GameLandmarkRuntime);
 
 window.CanalRecallGameModules = window.CanalRecallGameModules || [];
 window.CanalRecallGameModules.push(GameLandmarkRuntime);

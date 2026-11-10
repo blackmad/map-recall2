@@ -1,0 +1,34 @@
+[
+ {
+  "front": "wall-valschermkade",
+  "panoId": "TMX7316010203-001143_pano_0001_000796",
+  "timestamp": "2019-04-26T09:52:57.345050Z",
+  "url": "https://t1.data.amsterdam.nl/panorama/2019/04/26/TMX7316010203-001143/pano_0001_000796/equirectangular/panorama_4000.jpg",
+  "cameraRD": [
+   117883.42003887186,
+   483983.7765925988
+  ],
+  "headingDeg": 181.87902463417134,
+  "fovDeg": 110,
+  "pitchDeg": 14.916926101645373,
+  "distanceM": 10.89269974815436,
+  "image": "artifacts/building-recipes/pand-126563/photo-wall-valschermkade.jpg",
+  "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+ },
+ {
+  "front": "wall-anthony-fokkerweg",
+  "panoId": "TMX7316010203-002492_pano_0005_001578",
+  "timestamp": "2022-03-30T09:21:37.899810Z",
+  "url": "https://t1.data.amsterdam.nl/panorama/2022/03/30/TMX7316010203-002492/pano_0005_001578/equirectangular/panorama_4000.jpg",
+  "cameraRD": [
+   117818.47754324976,
+   483940.4153344444
+  ],
+  "headingDeg": 89.9994810673063,
+  "fovDeg": 72.91636122040106,
+  "pitchDeg": 3.6206278373914422,
+  "distanceM": 45.881831752126466,
+  "image": "artifacts/building-recipes/pand-126563/photo-wall-anthony-fokkerweg.jpg",
+  "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+ }
+]

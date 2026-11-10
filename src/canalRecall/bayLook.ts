@@ -11,7 +11,22 @@ import type { ArchitecturalRecipe } from './streetAppearance.js';
 import type { FacadeStyle } from './genericFacades.js';
 import { profileTraits, unitDraw, type BuurtProfile, type ProfileTraits } from './buurtProfiles/profiles.js';
 import { modernPandWall } from './buurtProfiles/modernPandWalls.js';
-import { modernFacadesEnabled, modernVocabulary, type ModernFacts, type ModernVocabulary } from './modernFacades.js';
+import { shopGrammarEnabled, shopGroundHex } from './shopGrammar.js';
+import { modernFacadesEnabled, modernUseFor, modernVocabulary, type ModernFacts, type ModernVocabulary } from './modernFacades.js';
+import { contemporaryLookFor, newbuildFamilyEnabled, type ContemporaryLook } from './contemporaryFamily.js';
+
+/**
+ * The contemporary family's tall preset (contemporaryFamily.ts, `?newbuildFamily=1`): two tall windows to the floor per
+ * bay in dark frames, a French-balcony rail across each, on brick. Only in the array with the flag on, so the layer
+ * table (and the baked shells' layer hash) is byte-identical without it.
+ */
+export const TALL_FRENCH_BALCONY = { windows: 2, shape: 'rect', shutters: false, paintedFrames: false, family: 'punched', openingOccupancy: .46, openingHeight: .80, sash: 'plain', trimDensity: 'restrained', lintel: 'none', frameTone: 'dark', wallMaterial: 'brick', facadeAssembly: 'french-balcony' } as const;
+/**
+ * The contemporary family's balcony-band preset (`?newbuildFamily=1`, BAY_STYLES.modern[10]): wide windows in dark
+ * frames behind a pale balustrade band across every upper storey, for the fronts the panorama sheet shows banded
+ * (contemporary-walls.json `bands`).
+ */
+export const BALCONY_BAND = { windows: 2, shape: 'rect', shutters: false, paintedFrames: false, family: 'punched', openingOccupancy: .74, openingHeight: .78, sash: 'plain', trimDensity: 'restrained', lintel: 'none', frameTone: 'dark', wallMaterial: 'brick', facadeAssembly: 'balcony-band' } as const;
 
 export const BAY_KINDS = ['upper', 'ground', 'groundDoor', ...SHOP_KINDS, 'plain'] as const satisfies readonly BayKind[];
 const isShopKind = (kind: string) => (SHOP_KINDS as readonly string[]).includes(kind);
@@ -69,18 +84,30 @@ export const BAY_STYLES: Record<Archetype, readonly BayStyle[]> = {
     { windows: 1, shape: 'rect', shutters: false, paintedFrames: false, family: 'ribbon' },
     { windows: 1, shape: 'rect', shutters: false, paintedFrames: false, family: 'curtain' },
     { windows: 3, shape: 'rect', shutters: false, paintedFrames: false, family: 'punched', openingOccupancy: .57, openingHeight: .70, sash: 'paired-transom', trimDensity: 'restrained', lintel: 'none', wallMaterial: 'smooth', facadeAssembly: 'stacked-open-balcony' },
+    ...(newbuildFamilyEnabled() ? [TALL_FRENCH_BALCONY, BALCONY_BAND] : []),
   ],
 };
 const ARCHETYPES = Object.keys(BAY_STYLES) as Archetype[];
 
 type Entry = { archetype: Archetype; style: number; kind: (typeof BAY_KINDS)[number]; layer: number; restrainedShop?: boolean; originalMasonry?: boolean };
+/**
+ * A restrained shopfront (bayTextures.ts `quietShopAt`) reads its kind twice: the bar's fascia ink and the valance of
+ * the mapped cafe/restaurant kinds. Every other kind paints the same pixels, colour and mask, in every look (pinned by
+ * contemporaryFamilyOn.test.ts), so with the contemporary family on the seven restrained kinds share three cells per
+ * archetype, each named by the kind that owns it (shopCafe, shopBar, shopWindow): 16 layers freed for the family's 6.
+ * The procedural array is CELL_LAYER_COUNT cells, four roofs, the bay cells and the glass-block cell, and stood at
+ * exactly 256 byte layers before (paintLookAtlas.ts lookAtlasLayers). Flag off: one cell per kind, the layer table and
+ * the baked shells' hash (world/shellLayers.ts) as before.
+ */
+const RESTRAINED_SHOP_CELL: Record<ShopKind, ShopKind> = { groundShop: 'shopCafe', shopCafe: 'shopCafe', shopBar: 'shopBar', shopWindow: 'shopWindow', shopDeli: 'shopWindow', shopFlorist: 'shopWindow', shopBike: 'shopWindow' };
+const sharedRestrainedShops = newbuildFamilyEnabled();
 // Shop cells are shared by period and art direction, not every opening preset.
 // Share only cells whose painter output is identical. Upper cells do not draw
 // ground assemblies; side-entry ground and groundDoor both paint the same door.
 function cellKey(archetype: Archetype, style: number, kind: BayKind, restrainedShop = false): string {
   const variant = { ...BAY_STYLES[archetype][style] };
   if (kind === 'plain') return `${archetype}|plain|${variant.wallMaterial ?? (archetype === 'modern' ? 'smooth' : 'brick')}`;
-  if (isShopKind(kind)) return `${archetype}|${kind}|${restrainedShop}`;
+  if (isShopKind(kind)) return `${archetype}|${restrainedShop && sharedRestrainedShops ? RESTRAINED_SHOP_CELL[kind as ShopKind] : kind}|${restrainedShop}`;
   if (kind === 'upper') delete variant.groundAssembly;
   if (kind === 'groundDoor' && variant.groundAssembly === 'tall-side-entry') kind = 'ground';
   return `${archetype}|${kind}|${JSON.stringify(variant)}`;
@@ -93,8 +120,10 @@ for (const archetype of ARCHETYPES) for (const [style] of BAY_STYLES[archetype].
   if (!cellLayers.has(key)) { cellLayers.set(key, entries.length); entries.push({ archetype, style, kind }); }
 }
 for (const archetype of ARCHETYPES) for (const kind of SHOP_KINDS) {
-  cellLayers.set(cellKey(archetype, 0, kind, true), entries.length);
-  entries.push({ archetype, style: 0, kind, restrainedShop: true });
+  const key = cellKey(archetype, 0, kind, true);
+  if (cellLayers.has(key)) continue;
+  cellLayers.set(key, entries.length);
+  entries.push({ archetype, style: 0, kind: sharedRestrainedShops ? RESTRAINED_SHOP_CELL[kind] : kind, restrainedShop: true });
 }
 // A source-supported brick wall must not inherit the smooth modern fallback
 // from an absent construction year. This cell contains original generated pixels.
@@ -182,29 +211,32 @@ export function bayStyleForTraits(id: string, archetype: Archetype, traits: Prof
  * dated post-1945 building: the era x use rule picks the preset and the wall instead of the hash and the buurt
  * profile (whose eras were measured on pre-1945 fronts). Absent, or `?modernFacades=0`: every pick is as before.
  */
-export function bayLookFor(id: string, year: number | null, heightM: number, look: Look, shopfront?: ShopKind | 'quiet', recipe?: ArchitecturalRecipe, periodWall?: string, profile?: BuurtProfile | null, modern?: Pick<ModernFacts, 'footprintM2' | 'buildingType'>) {
+export function bayLookFor(id: string, year: number | null, heightM: number, look: Look, shopfront?: ShopKind | 'quiet', recipe?: ArchitecturalRecipe, periodWall?: string, profile?: BuurtProfile | null, modern?: Pick<ModernFacts, 'footprintM2' | 'buildingType'> & { at?: readonly [number, number] }) {
   const buurt = !recipe && look === 'photo' && profile ? profile : null;
   const archetype: Archetype = recipe?.facadeAssembly === 'stacked-iron-balcony' ? 'c19' : recipe ? (recipe.family === 'masonry' ? (recipe.period === 'c19' || recipe.period === 'school' ? recipe.period : 'canal') : 'modern')
     : year === null && buurt?.dominantEra && heightM < 28 ? buurt.dominantEra : archetypeFor(id, year, heightM);
-  const vocab: ModernVocabulary | null = modern && !recipe && look === 'photo' && archetype === 'modern' && modernFacadesEnabled() ? modernVocabulary({ id, year, heightM, ...modern }, buurt?.eras.modern, modernPandWall(id)) : null;
-  const era = vocab ? undefined : buurt?.eras[archetype], traits = era ? profileTraits(id, era) : null;
-  const h = hashSeed(id), style = vocab ? vocab.styleIndex : traits && (traits.pale !== null || traits.dark !== null || traits.arch !== null || traits.tall !== null) ? bayStyleForTraits(id, archetype, traits) : bayStyleForRecipe(id, archetype, recipe);
+  // The contemporary family (`?newbuildFamily=1`): measured new-build walls and window shapes, every textured look.
+  const contemporary: ContemporaryLook | null = modern && !recipe && archetype === 'modern' ? contemporaryLookFor({ id, year, heightM, use: modernUseFor({ id, year, heightM, ...modern }), at: modern.at }) : null;
+  const vocab: ModernVocabulary | null = !contemporary && modern && !recipe && look === 'photo' && archetype === 'modern' && modernFacadesEnabled() ? modernVocabulary({ id, year, heightM, ...modern }, buurt?.eras.modern, modernPandWall(id)) : null;
+  const era = vocab || contemporary ? undefined : buurt?.eras[archetype], traits = era ? profileTraits(id, era) : null;
+  const h = hashSeed(id), style = contemporary ? contemporary.styleIndex : vocab ? vocab.styleIndex : traits && (traits.pale !== null || traits.dark !== null || traits.arch !== null || traits.tall !== null) ? bayStyleForTraits(id, archetype, traits) : bayStyleForRecipe(id, archetype, recipe);
   // Without the extract: a third of buildings (or the buurt's measured share), picking among the original four shopfronts.
   const shop = (recipe?.facadeAssembly || recipe?.entranceAssembly || recipe?.openingGroup) && !shopfront ? false : shopfront ? shopfront !== 'quiet'
-    : buurt?.shopShare !== undefined ? unitDraw(id, 'shop') < buurt.shopShare : (h >>> 13) % 3 === 0;
+    : (buurt?.shopfrontShare ?? buurt?.shopShare) !== undefined ? unitDraw(id, 'shop') < (buurt!.shopfrontShare ?? buurt!.shopShare!) : (h >>> 13) % 3 === 0;
   const shopKind = shopfront && shopfront !== 'quiet' ? shopfront : SHOP_KINDS[(h >>> 17) % 4];
   const palette = paletteFor(id, archetype, look);
   const walls = PERIOD_WALLS[look][archetype];
   if (walls) palette.wall = walls[(hashSeed(id) >>> 7) % walls.length];
   if (traits?.wall) palette.wall = traits.wall;
   if (vocab) { palette.wall = vocab.wall; if (vocab.accent) palette.accent = vocab.accent; }
+  if (contemporary) palette.wall = lookHex(contemporary.wall, look);
   if (periodWall && look === 'photo') palette.wall = periodWall;
   if (recipe?.wallHex) palette.wall = lookHex(recipe.wallHex, look);
   // A shop's ground floor is painted, and the paint is its own colour, not the brick's.
   const paints = GROUND_PAINTS[look];
   return {
-    archetype, style, ...(vocab ? { modern: vocab } : {}), variant: { archetype, ...BAY_STYLES[archetype][style] }, ...(traits?.wall && !periodWall && !recipe?.wallHex ? { profileWall: traits.wall } : {}), layout: ARCHETYPE_LAYOUT[archetype], wallHex: palette.wall, accentHex: recipe?.openingGroup ? lookHex(recipe.frameHex ?? '#f1ede2', look) : palette.accent,
-    groundHex: recipe?.groundWallHex ? lookHex(recipe.groundWallHex, look) : shop ? paints[(h >>> 21) % paints.length] : undefined,
+    archetype, style, ...(vocab ? { modern: vocab } : {}), ...(contemporary ? { contemporary } : {}), variant: { archetype, ...BAY_STYLES[archetype][style] }, ...(traits?.wall && !periodWall && !recipe?.wallHex ? { profileWall: traits.wall } : {}), layout: ARCHETYPE_LAYOUT[archetype], wallHex: palette.wall, accentHex: recipe?.openingGroup ? lookHex(recipe.frameHex ?? '#f1ede2', look) : palette.accent,
+    groundHex: recipe?.groundWallHex ? lookHex(recipe.groundWallHex, look) : shop ? (shopfront && shopfront !== 'quiet' && shopGrammarEnabled() ? shopGroundHex(id, look) : paints[(h >>> 21) % paints.length]) : undefined,
     layers: { upper: bayLayer(archetype, style, 'upper'), ground: bayLayer(archetype, style, shop && !recipe?.openingGroup && !(recipe?.facadeAssembly === 'stacked-open-balcony' && (shopKind === 'shopWindow' || shopKind === 'groundShop')) ? shopKind : 'ground', !!recipe && recipe.trimDensity !== 'ornate'), door: bayLayer(archetype, style, 'groundDoor') },
     plain: bayLayer(archetype, style, 'plain'),
   };

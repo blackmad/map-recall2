@@ -1,0 +1,175 @@
+{
+ "face": "kalkoen-13-17",
+ "street": "Kalkoenstraat",
+ "library": "vogelbuurt",
+ "stripDate": "2017-12-28",
+ "seconds": 0.2,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012137382",
+   "address": "Kalkoenstraat 13",
+   "builtYear": 1924,
+   "widthM": 6.66,
+   "eavesM": 7.31,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#635753",
+    "wallRaw": "#4b423d",
+    "skyline": {
+     "eavesM": 12.55,
+     "eavesRow": 56,
+     "confidence": 0.36,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.046,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Opus strip verdict 2026-11-10: step-gable run kalkoen-13-17; held until the coordinator sends the correctly mirrored non-gable pands back for another Opus look",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012100538",
+   "address": "Kalkoenstraat 15",
+   "builtYear": 1924,
+   "widthM": 6.16,
+   "eavesM": 6.87,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#5d4f49",
+    "wallRaw": "#4e433b",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 558,
+     "confidence": 0.06,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 1.7 m at 0.17 (light 0.25): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.7,
+       "centre": 0.17,
+       "light": 0.25
+      },
+      {
+       "widthM": 0.63,
+       "centre": 0.39,
+       "light": 0.25
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Opus strip verdict 2026-11-10: step-gable run kalkoen-13-17; held until the coordinator sends the correctly mirrored non-gable pands back for another Opus look",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012139726",
+   "address": "Kalkoenstraat 17",
+   "builtYear": 1924,
+   "widthM": 6.43,
+   "eavesM": 6.85,
+   "storeys3dbag": 3,
+   "bagBay": {
+    "fromM": 0.17,
+    "toM": 0.17,
+    "depthM": 0.31,
+    "centre": 0.026
+   },
+   "strip": {
+    "wall": "#62544f",
+    "wallRaw": "#4f463f",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 558,
+     "confidence": 0.1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.85 m at 0.09 (light 0.26): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.85,
+       "centre": 0.09,
+       "light": 0.26
+      },
+      {
+       "widthM": 1.63,
+       "centre": 0.56,
+       "light": 0.33
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 5.95,
+       "widthM": 1.1,
+       "centre": 0.09
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Opus strip verdict 2026-11-10: step-gable run kalkoen-13-17; held until the coordinator sends the correctly mirrored non-gable pands back for another Opus look",
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

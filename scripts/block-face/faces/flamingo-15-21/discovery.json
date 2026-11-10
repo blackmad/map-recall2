@@ -1,0 +1,957 @@
+{
+ "street": "Flamingostraat",
+ "seed": "0363100012150102",
+ "members": [
+  "0363100012150102",
+  "0363100012108326",
+  "0363100012116656",
+  "0363100012097125"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "trimmed at 0363100012150102 (face continues: 194595)"
+  },
+  {
+   "side": "right",
+   "reason": "trimmed at 0363100012097125 (face continues: 111326)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012061542",
+   "reason": "no frontage on Flamingostraat: No footprint edge faces Flamingostraat"
+  },
+  {
+   "pandId": "0363100012063621",
+   "reason": "frontage 74.6 m from Flamingostraat"
+  },
+  {
+   "pandId": "0363100012065687",
+   "reason": "frontage 49.0 m from Flamingostraat"
+  },
+  {
+   "pandId": "0363100012065881",
+   "reason": "sightline to Flamingostraat crosses 0363100012108326"
+  },
+  {
+   "pandId": "0363100012065905",
+   "reason": "frontage 71.2 m from Flamingostraat"
+  },
+  {
+   "pandId": "0363100012069269",
+   "reason": "frontage 99.3 m from Flamingostraat"
+  },
+  {
+   "pandId": "0363100012070701",
+   "reason": "frontage 49.1 m from Flamingostraat"
+  },
+  {
+   "pandId": "0363100012071384",
+   "reason": "frontage 39.5 m from Flamingostraat"
+  },
+  {
+   "pandId": "0363100012073820",
+   "reason": "no frontage on Flamingostraat: No footprint edge faces Flamingostraat"
+  },
+  {
+   "pandId": "0363100012076719",
+   "reason": "frontage 45.1 m from Flamingostraat"
+  },
+  {
+   "pandId": "0363100012077955",
+   "reason": "frontage 36.6 m from Flamingostraat"
+  },
+  {
+   "pandId": "0363100012080458",
+   "reason": "no frontage on Flamingostraat: No footprint edge faces Flamingostraat"
+  },
+  {
+   "pandId": "0363100012080475",
+   "reason": "sightline to Flamingostraat crosses 0363100012087661"
+  },
+  {
+   "pandId": "0363100012083680",
+   "reason": "frontage 84.4 m from Flamingostraat"
+  },
+  {
+   "pandId": "0363100012084287",
+   "reason": "frontage 86.5 m from Flamingostraat"
+  },
+  {
+   "pandId": "0363100012085446",
+   "reason": "frontage 33.7 m from Flamingostraat"
+  },
+  {
+   "pandId": "0363100012086071",
+   "reason": "sightline to Flamingostraat crosses 0363100012100888"
+  },
+  {
+   "pandId": "0363100012086436",
+   "reason": "sightline to Flamingostraat crosses 0363100012086071"
+  },
+  {
+   "pandId": "0363100012086855",
+   "reason": "frontage 62.5 m from Flamingostraat"
+  },
+  {
+   "pandId": "0363100012087361",
+   "reason": "no frontage on Flamingostraat: No footprint edge faces Flamingostraat"
+  },
+  {
+   "pandId": "0363100012087399",
+   "reason": "no frontage on Flamingostraat: No footprint edge faces Flamingostraat"
+  },
+  {
+   "pandId": "0363100012089126",
+   "reason": "frontage 52.9 m from Flamingostraat"
+  },
+  {
+   "pandId": "0363100012090659",
+   "reason": "no frontage on Flamingostraat: No footprint edge faces Flamingostraat"
+  },
+  {
+   "pandId": "0363100012090671",
+   "reason": "frontage 30.9 m from Flamingostraat"
+  },
+  {
+   "pandId": "0363100012091888",
+   "reason": "frontage 91.7 m from Flamingostraat"
+  },
+  {
+   "pandId": "0363100012091921",
+   "reason": "frontage 66.5 m from Flamingostraat"
+  },
+  {
+   "pandId": "0363100012092470",
+   "reason": "frontage 80.0 m from Flamingostraat"
+  },
+  {
+   "pandId": "0363100012093848",
+   "reason": "frontage 89.0 m from Flamingostraat"
+  },
+  {
+   "pandId": "0363100012096845",
+   "reason": "frontage 31.4 m from Flamingostraat"
+  },
+  {
+   "pandId": "0363100012097235",
+   "reason": "frontage 61.6 m from Flamingostraat"
+  },
+  {
+   "pandId": "0363100012097975",
+   "reason": "no frontage on Flamingostraat: No footprint edge faces Flamingostraat"
+  },
+  {
+   "pandId": "0363100012098271",
+   "reason": "sightline to Flamingostraat crosses 0363100012129921"
+  },
+  {
+   "pandId": "0363100012098633",
+   "reason": "frontage 62.6 m from Flamingostraat"
+  },
+  {
+   "pandId": "0363100012099283",
+   "reason": "frontage 73.7 m from Flamingostraat"
+  },
+  {
+   "pandId": "0363100012099505",
+   "reason": "frontage 36.6 m from Flamingostraat"
+  },
+  {
+   "pandId": "0363100012099649",
+   "reason": "frontage 69.1 m from Flamingostraat"
+  },
+  {
+   "pandId": "0363100012100275",
+   "reason": "frontage 40.3 m from Flamingostraat"
+  },
+  {
+   "pandId": "0363100012100345",
+   "reason": "frontage 36.9 m from Flamingostraat"
+  },
+  {
+   "pandId": "0363100012100538",
+   "reason": "sightline to Flamingostraat crosses 0363100012131876"
+  },
+  {
+   "pandId": "0363100012100888",
+   "reason": "sightline to Flamingostraat crosses 0363100012123718"
+  },
+  {
+   "pandId": "0363100012101319",
+   "reason": "frontage 35.7 m from Flamingostraat"
+  },
+  {
+   "pandId": "0363100012105550",
+   "reason": "frontage 92.7 m from Flamingostraat"
+  },
+  {
+   "pandId": "0363100012108368",
+   "reason": "no frontage on Flamingostraat: No footprint edge faces Flamingostraat"
+  },
+  {
+   "pandId": "0363100012109590",
+   "reason": "frontage 86.3 m from Flamingostraat"
+  },
+  {
+   "pandId": "0363100012110748",
+   "reason": "frontage 80.1 m from Flamingostraat"
+  },
+  {
+   "pandId": "0363100012111141",
+   "reason": "sightline to Flamingostraat crosses 0363100012097690"
+  },
+  {
+   "pandId": "0363100012111816",
+   "reason": "no frontage on Flamingostraat: No footprint edge faces Flamingostraat"
+  },
+  {
+   "pandId": "0363100012113533",
+   "reason": "sightline to Flamingostraat crosses 0363100012122496"
+  },
+  {
+   "pandId": "0363100012113975",
+   "reason": "no frontage on Flamingostraat: No footprint edge faces Flamingostraat"
+  },
+  {
+   "pandId": "0363100012114430",
+   "reason": "frontage 36.2 m from Flamingostraat"
+  },
+  {
+   "pandId": "0363100012115096",
+   "reason": "no frontage on Flamingostraat: No footprint edge faces Flamingostraat"
+  },
+  {
+   "pandId": "0363100012115376",
+   "reason": "no frontage on Flamingostraat: No footprint edge faces Flamingostraat"
+  },
+  {
+   "pandId": "0363100012117253",
+   "reason": "frontage 66.9 m from Flamingostraat"
+  },
+  {
+   "pandId": "0363100012118945",
+   "reason": "frontage 36.9 m from Flamingostraat"
+  },
+  {
+   "pandId": "0363100012120713",
+   "reason": "no frontage on Flamingostraat: No footprint edge faces Flamingostraat"
+  },
+  {
+   "pandId": "0363100012121384",
+   "reason": "frontage 68.0 m from Flamingostraat"
+  },
+  {
+   "pandId": "0363100012122196",
+   "reason": "frontage 36.6 m from Flamingostraat"
+  },
+  {
+   "pandId": "0363100012123147",
+   "reason": "sightline to Flamingostraat crosses 0363100012097690"
+  },
+  {
+   "pandId": "0363100012123527",
+   "reason": "sightline to Flamingostraat crosses 0363100012086071"
+  },
+  {
+   "pandId": "0363100012123718",
+   "reason": "no frontage on Flamingostraat: No footprint edge faces Flamingostraat"
+  },
+  {
+   "pandId": "0363100012124227",
+   "reason": "no frontage on Flamingostraat: No footprint edge faces Flamingostraat"
+  },
+  {
+   "pandId": "0363100012124330",
+   "reason": "sightline to Flamingostraat crosses 0363100012086978"
+  },
+  {
+   "pandId": "0363100012125954",
+   "reason": "frontage 67.6 m from Flamingostraat"
+  },
+  {
+   "pandId": "0363100012128368",
+   "reason": "no frontage on Flamingostraat: No footprint edge faces Flamingostraat"
+  },
+  {
+   "pandId": "0363100012128530",
+   "reason": "no frontage on Flamingostraat: No footprint edge faces Flamingostraat"
+  },
+  {
+   "pandId": "0363100012129900",
+   "reason": "sightline to Flamingostraat crosses 0363100012136105"
+  },
+  {
+   "pandId": "0363100012130020",
+   "reason": "frontage 94.9 m from Flamingostraat"
+  },
+  {
+   "pandId": "0363100012131012",
+   "reason": "no frontage on Flamingostraat: No footprint edge faces Flamingostraat"
+  },
+  {
+   "pandId": "0363100012131662",
+   "reason": "frontage 70.9 m from Flamingostraat"
+  },
+  {
+   "pandId": "0363100012131749",
+   "reason": "frontage 32.3 m from Flamingostraat"
+  },
+  {
+   "pandId": "0363100012131893",
+   "reason": "no frontage on Flamingostraat: No footprint edge faces Flamingostraat"
+  },
+  {
+   "pandId": "0363100012133141",
+   "reason": "sightline to Flamingostraat crosses 0363100012097690"
+  },
+  {
+   "pandId": "0363100012137382",
+   "reason": "sightline to Flamingostraat crosses 0363100012100538"
+  },
+  {
+   "pandId": "0363100012137973",
+   "reason": "frontage 98.4 m from Flamingostraat"
+  },
+  {
+   "pandId": "0363100012138277",
+   "reason": "no frontage on Flamingostraat: No footprint edge faces Flamingostraat"
+  },
+  {
+   "pandId": "0363100012138874",
+   "reason": "sightline to Flamingostraat crosses 0363100012136105"
+  },
+  {
+   "pandId": "0363100012139726",
+   "reason": "sightline to Flamingostraat crosses 0363100012131876"
+  },
+  {
+   "pandId": "0363100012141500",
+   "reason": "no frontage on Flamingostraat: No footprint edge faces Flamingostraat"
+  },
+  {
+   "pandId": "0363100012141895",
+   "reason": "no frontage on Flamingostraat: No footprint edge faces Flamingostraat"
+  },
+  {
+   "pandId": "0363100012142951",
+   "reason": "frontage 38.7 m from Flamingostraat"
+  },
+  {
+   "pandId": "0363100012144524",
+   "reason": "frontage 59.8 m from Flamingostraat"
+  },
+  {
+   "pandId": "0363100012145013",
+   "reason": "frontage 34.9 m from Flamingostraat"
+  },
+  {
+   "pandId": "0363100012147533",
+   "reason": "sightline to Flamingostraat crosses 0363100012097690"
+  },
+  {
+   "pandId": "0363100012149277",
+   "reason": "no frontage on Flamingostraat: No footprint edge faces Flamingostraat"
+  },
+  {
+   "pandId": "0363100012151060",
+   "reason": "sightline to Flamingostraat crosses 0363100012136105"
+  },
+  {
+   "pandId": "0363100012151759",
+   "reason": "no frontage on Flamingostraat: No footprint edge faces Flamingostraat"
+  },
+  {
+   "pandId": "0363100012155017",
+   "reason": "frontage 36.3 m from Flamingostraat"
+  },
+  {
+   "pandId": "0363100012188201",
+   "reason": "sightline to Flamingostraat crosses 0363100012066422"
+  },
+  {
+   "pandId": "0363100012188202",
+   "reason": "sightline to Flamingostraat crosses 0363100012066422"
+  },
+  {
+   "pandId": "0363100012188205",
+   "reason": "sightline to Flamingostraat crosses 0363100012188206"
+  },
+  {
+   "pandId": "0363100012188208",
+   "reason": "sightline to Flamingostraat crosses 0363100012188206"
+  },
+  {
+   "pandId": "0363100012188209",
+   "reason": "sightline to Flamingostraat crosses 0363100012188206"
+  },
+  {
+   "pandId": "0363100012188210",
+   "reason": "frontage 35.9 m from Flamingostraat"
+  },
+  {
+   "pandId": "0363100012188211",
+   "reason": "frontage 33.5 m from Flamingostraat"
+  },
+  {
+   "pandId": "0363100012188212",
+   "reason": "no frontage on Flamingostraat: No footprint edge faces Flamingostraat"
+  },
+  {
+   "pandId": "0363100012188213",
+   "reason": "sightline to Flamingostraat crosses 0363100012188212"
+  },
+  {
+   "pandId": "0363100012188214",
+   "reason": "sightline to Flamingostraat crosses 0363100012063000"
+  },
+  {
+   "pandId": "0363100012188215",
+   "reason": "sightline to Flamingostraat crosses 0363100012188212"
+  },
+  {
+   "pandId": "0363100012188216",
+   "reason": "sightline to Flamingostraat crosses 0363100012063000"
+  },
+  {
+   "pandId": "0363100012188217",
+   "reason": "sightline to Flamingostraat crosses 0363100012188212"
+  },
+  {
+   "pandId": "0363100012188218",
+   "reason": "sightline to Flamingostraat crosses 0363100012087661"
+  },
+  {
+   "pandId": "0363100012188219",
+   "reason": "sightline to Flamingostraat crosses 0363100012087661"
+  },
+  {
+   "pandId": "0363100012188833",
+   "reason": "frontage 51.9 m from Flamingostraat"
+  },
+  {
+   "pandId": "0363100012188834",
+   "reason": "frontage 50.9 m from Flamingostraat"
+  },
+  {
+   "pandId": "0363100012188835",
+   "reason": "frontage 49.9 m from Flamingostraat"
+  },
+  {
+   "pandId": "0363100012188836",
+   "reason": "frontage 45.6 m from Flamingostraat"
+  },
+  {
+   "pandId": "0363100012188837",
+   "reason": "frontage 45.0 m from Flamingostraat"
+  },
+  {
+   "pandId": "0363100012188838",
+   "reason": "frontage 32.3 m from Flamingostraat"
+  },
+  {
+   "pandId": "0363100012188839",
+   "reason": "frontage 32.0 m from Flamingostraat"
+  },
+  {
+   "pandId": "0363100012188841",
+   "reason": "no frontage on Flamingostraat: No footprint edge faces Flamingostraat"
+  },
+  {
+   "pandId": "0363100012188842",
+   "reason": "no frontage on Flamingostraat: No footprint edge faces Flamingostraat"
+  },
+  {
+   "pandId": "0363100012188843",
+   "reason": "frontage 46.4 m from Flamingostraat"
+  },
+  {
+   "pandId": "0363100012188845",
+   "reason": "no frontage on Flamingostraat: No footprint edge faces Flamingostraat"
+  },
+  {
+   "pandId": "0363100012188847",
+   "reason": "frontage 31.7 m from Flamingostraat"
+  },
+  {
+   "pandId": "0363100012188848",
+   "reason": "sightline to Flamingostraat crosses 0363100012073820"
+  },
+  {
+   "pandId": "0363100012188849",
+   "reason": "sightline to Flamingostraat crosses 0363100012073820"
+  },
+  {
+   "pandId": "0363100012188850",
+   "reason": "sightline to Flamingostraat crosses 0363100012073820"
+  },
+  {
+   "pandId": "0363100012191196",
+   "reason": "no frontage on Flamingostraat: No footprint edge faces Flamingostraat"
+  },
+  {
+   "pandId": "0363100012191197",
+   "reason": "no frontage on Flamingostraat: No footprint edge faces Flamingostraat"
+  },
+  {
+   "pandId": "0363100012191198",
+   "reason": "frontage 86.9 m from Flamingostraat"
+  },
+  {
+   "pandId": "0363100012191199",
+   "reason": "frontage 86.0 m from Flamingostraat"
+  },
+  {
+   "pandId": "0363100012191200",
+   "reason": "frontage 80.9 m from Flamingostraat"
+  },
+  {
+   "pandId": "0363100012191201",
+   "reason": "frontage 80.3 m from Flamingostraat"
+  },
+  {
+   "pandId": "0363100012191203",
+   "reason": "no frontage on Flamingostraat: No footprint edge faces Flamingostraat"
+  },
+  {
+   "pandId": "0363100012191204",
+   "reason": "no frontage on Flamingostraat: No footprint edge faces Flamingostraat"
+  },
+  {
+   "pandId": "0363100012194275",
+   "reason": "no frontage on Flamingostraat: No footprint edge faces Flamingostraat"
+  },
+  {
+   "pandId": "0363100012194276",
+   "reason": "no frontage on Flamingostraat: No footprint edge faces Flamingostraat"
+  },
+  {
+   "pandId": "0363100012194277",
+   "reason": "frontage 84.8 m from Flamingostraat"
+  },
+  {
+   "pandId": "0363100012194278",
+   "reason": "frontage 83.8 m from Flamingostraat"
+  },
+  {
+   "pandId": "0363100012194279",
+   "reason": "frontage 78.7 m from Flamingostraat"
+  },
+  {
+   "pandId": "0363100012194280",
+   "reason": "frontage 78.0 m from Flamingostraat"
+  },
+  {
+   "pandId": "0363100012194281",
+   "reason": "no frontage on Flamingostraat: No footprint edge faces Flamingostraat"
+  },
+  {
+   "pandId": "0363100012194282",
+   "reason": "no frontage on Flamingostraat: No footprint edge faces Flamingostraat"
+  },
+  {
+   "pandId": "0363100012194284",
+   "reason": "no frontage on Flamingostraat: No footprint edge faces Flamingostraat"
+  },
+  {
+   "pandId": "0363100012194481",
+   "reason": "sightline to Flamingostraat crosses 0363100012150102"
+  },
+  {
+   "pandId": "0363100012194482",
+   "reason": "sightline to Flamingostraat crosses 0363100012150102"
+  },
+  {
+   "pandId": "0363100012194483",
+   "reason": "sightline to Flamingostraat crosses 0363100012150102"
+  },
+  {
+   "pandId": "0363100012194484",
+   "reason": "frontage 40.9 m from Flamingostraat"
+  },
+  {
+   "pandId": "0363100012194485",
+   "reason": "frontage 39.0 m from Flamingostraat"
+  },
+  {
+   "pandId": "0363100012194486",
+   "reason": "sightline to Flamingostraat crosses 0363100012111326"
+  },
+  {
+   "pandId": "0363100012194487",
+   "reason": "sightline to Flamingostraat crosses 0363100012111326"
+  },
+  {
+   "pandId": "0363100012194488",
+   "reason": "sightline to Flamingostraat crosses 0363100012111326"
+  },
+  {
+   "pandId": "0363100012194489",
+   "reason": "sightline to Flamingostraat crosses 0363100012111326"
+  },
+  {
+   "pandId": "0363100012194490",
+   "reason": "no frontage on Flamingostraat: No footprint edge faces Flamingostraat"
+  },
+  {
+   "pandId": "0363100012194491",
+   "reason": "no frontage on Flamingostraat: No footprint edge faces Flamingostraat"
+  },
+  {
+   "pandId": "0363100012194492",
+   "reason": "frontage 65.0 m from Flamingostraat"
+  },
+  {
+   "pandId": "0363100012194493",
+   "reason": "frontage 63.3 m from Flamingostraat"
+  },
+  {
+   "pandId": "0363100012194494",
+   "reason": "frontage 61.6 m from Flamingostraat"
+  },
+  {
+   "pandId": "0363100012194590",
+   "reason": "frontage 53.9 m from Flamingostraat"
+  },
+  {
+   "pandId": "0363100012194591",
+   "reason": "frontage 53.2 m from Flamingostraat"
+  },
+  {
+   "pandId": "0363100012194592",
+   "reason": "frontage 45.6 m from Flamingostraat"
+  },
+  {
+   "pandId": "0363100012194593",
+   "reason": "frontage 44.9 m from Flamingostraat"
+  },
+  {
+   "pandId": "0363100012194594",
+   "reason": "sightline to Flamingostraat crosses 0363100012194595"
+  },
+  {
+   "pandId": "0363100012215952",
+   "reason": "frontage 87.2 m from Flamingostraat"
+  },
+  {
+   "pandId": "0363100012215954",
+   "reason": "frontage 70.7 m from Flamingostraat"
+  },
+  {
+   "pandId": "0363100012215955",
+   "reason": "frontage 68.2 m from Flamingostraat"
+  },
+  {
+   "pandId": "0363100012215956",
+   "reason": "frontage 87.9 m from Flamingostraat"
+  },
+  {
+   "pandId": "0363100012215957",
+   "reason": "frontage 82.9 m from Flamingostraat"
+  },
+  {
+   "pandId": "0363100012215958",
+   "reason": "frontage 81.1 m from Flamingostraat"
+  },
+  {
+   "pandId": "0363100012215964",
+   "reason": "frontage 90.3 m from Flamingostraat"
+  },
+  {
+   "pandId": "0363100012215965",
+   "reason": "frontage 90.0 m from Flamingostraat"
+  },
+  {
+   "pandId": "0363100012215966",
+   "reason": "frontage 89.3 m from Flamingostraat"
+  },
+  {
+   "pandId": "0363100012215967",
+   "reason": "frontage 88.9 m from Flamingostraat"
+  },
+  {
+   "pandId": "0363100012227068",
+   "reason": "sightline to Flamingostraat crosses 0363100012227067"
+  },
+  {
+   "pandId": "0363100012227070",
+   "reason": "sightline to Flamingostraat crosses 0363100012227069"
+  },
+  {
+   "pandId": "0363100012227071",
+   "reason": "no frontage on Flamingostraat: No footprint edge faces Flamingostraat"
+  },
+  {
+   "pandId": "0363100012227073",
+   "reason": "no frontage on Flamingostraat: No footprint edge faces Flamingostraat"
+  },
+  {
+   "pandId": "0363100012227074",
+   "reason": "no frontage on Flamingostraat: No footprint edge faces Flamingostraat"
+  },
+  {
+   "pandId": "0363100012227075",
+   "reason": "frontage 40.0 m from Flamingostraat"
+  },
+  {
+   "pandId": "0363100012227076",
+   "reason": "frontage 43.3 m from Flamingostraat"
+  },
+  {
+   "pandId": "0363100012227077",
+   "reason": "frontage 41.4 m from Flamingostraat"
+  },
+  {
+   "pandId": "0363100012227078",
+   "reason": "frontage 33.9 m from Flamingostraat"
+  },
+  {
+   "pandId": "0363100012227079",
+   "reason": "frontage 33.4 m from Flamingostraat"
+  },
+  {
+   "pandId": "0363100012227080",
+   "reason": "frontage 32.0 m from Flamingostraat"
+  },
+  {
+   "pandId": "0363100012227081",
+   "reason": "frontage 31.5 m from Flamingostraat"
+  },
+  {
+   "pandId": "0363100012227082",
+   "reason": "sightline to Flamingostraat crosses 0363100012085241"
+  },
+  {
+   "pandId": "0363100012227083",
+   "reason": "sightline to Flamingostraat crosses 0363100012085241"
+  },
+  {
+   "pandId": "0363100012227084",
+   "reason": "sightline to Flamingostraat crosses 0363100012121759"
+  },
+  {
+   "pandId": "0363100012227085",
+   "reason": "sightline to Flamingostraat crosses 0363100012085241"
+  },
+  {
+   "pandId": "0363100012227086",
+   "reason": "sightline to Flamingostraat crosses 0363100012121759"
+  },
+  {
+   "pandId": "0363100012227087",
+   "reason": "frontage 37.7 m from Flamingostraat"
+  },
+  {
+   "pandId": "0363100012233392",
+   "reason": "sightline to Flamingostraat crosses 0363100012137809"
+  },
+  {
+   "pandId": "0363100012233393",
+   "reason": "sightline to Flamingostraat crosses 0363100012137809"
+  },
+  {
+   "pandId": "0363100012233394",
+   "reason": "sightline to Flamingostraat crosses 0363100012137809"
+  },
+  {
+   "pandId": "0363100012233395",
+   "reason": "sightline to Flamingostraat crosses 0363100012106346"
+  },
+  {
+   "pandId": "0363100012233396",
+   "reason": "sightline to Flamingostraat crosses 0363100012106346"
+  },
+  {
+   "pandId": "0363100012233397",
+   "reason": "sightline to Flamingostraat crosses 0363100012120930"
+  },
+  {
+   "pandId": "0363100012233398",
+   "reason": "sightline to Flamingostraat crosses 0363100012120930"
+  },
+  {
+   "pandId": "0363100012233399",
+   "reason": "sightline to Flamingostraat crosses 0363100012120930"
+  },
+  {
+   "pandId": "0363100012233400",
+   "reason": "sightline to Flamingostraat crosses 0363100012120930"
+  },
+  {
+   "pandId": "0363100012233401",
+   "reason": "sightline to Flamingostraat crosses 0363100012106346"
+  },
+  {
+   "pandId": "0363100012233402",
+   "reason": "frontage 30.5 m from Flamingostraat"
+  },
+  {
+   "pandId": "0363100012234557",
+   "reason": "sightline to Flamingostraat crosses 0363100012086978"
+  },
+  {
+   "pandId": "0363100012234558",
+   "reason": "sightline to Flamingostraat crosses 0363100012098790"
+  },
+  {
+   "pandId": "0363100012234559",
+   "reason": "sightline to Flamingostraat crosses 0363100012098790"
+  },
+  {
+   "pandId": "0363100012234560",
+   "reason": "sightline to Flamingostraat crosses 0363100012070462"
+  },
+  {
+   "pandId": "0363100012234561",
+   "reason": "sightline to Flamingostraat crosses 0363100012070462"
+  },
+  {
+   "pandId": "0363100012234562",
+   "reason": "sightline to Flamingostraat crosses 0363100012141395"
+  },
+  {
+   "pandId": "0363100012234563",
+   "reason": "sightline to Flamingostraat crosses 0363100012069013"
+  },
+  {
+   "pandId": "0363100012234564",
+   "reason": "sightline to Flamingostraat crosses 0363100012137809"
+  },
+  {
+   "pandId": "0363100012247993",
+   "reason": "sightline to Flamingostraat crosses 0363100012116656"
+  },
+  {
+   "pandId": "0363100012247994",
+   "reason": "sightline to Flamingostraat crosses 0363100012116656"
+  },
+  {
+   "pandId": "0363100012063000",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012066422",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012069013",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012070462",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012086978",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012087661",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012092344",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012097690",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012098790",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012106346",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012117268",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012120930",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012124114",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012125723",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012129921",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012130426",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012136196",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012137809",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012141395",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012148040",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012188206",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012150102",
+   "alongM": 0,
+   "widthM": 6.74,
+   "eavesM": 7.47,
+   "roofMaxM": 11.87,
+   "storeys3dbag": 3,
+   "builtYear": 1924,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012108326",
+   "alongM": 6.43,
+   "widthM": 6.12,
+   "eavesM": 7.07,
+   "roofMaxM": 11.8,
+   "storeys3dbag": 3,
+   "builtYear": 1924,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012116656",
+   "alongM": 12.7,
+   "widthM": 6.43,
+   "eavesM": 7.09,
+   "roofMaxM": 11.79,
+   "storeys3dbag": 3,
+   "builtYear": 1924,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012097125",
+   "alongM": 19.05,
+   "widthM": 6.28,
+   "eavesM": 6.98,
+   "roofMaxM": 12.12,
+   "storeys3dbag": 3,
+   "builtYear": 1924,
+   "uncertainty": []
+  }
+ ]
+}

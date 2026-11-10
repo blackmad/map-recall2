@@ -14,7 +14,7 @@
  */
 import {ROOF_COLOURS} from './fit.ts';
 import type {BuildingFacts} from './facts.ts';
-import {swatch, type LargeBuildingIntent, type LargeWallIntent, type RoofMaterial} from './intent.ts';
+import {OTHER_WINDOW_GRID, swatch, type LargeBuildingIntent, type LargeWallIntent, type RoofMaterial} from './intent.ts';
 import {buildHost, insidePanel, pointInRing, type Panel} from '../blockBuilding/panels.ts';
 import {MeshBuilder} from '../blockBuilding/mesh.ts';
 import type {P3, SurfaceSet} from '../blockBuilding/types.ts';
@@ -36,9 +36,12 @@ import type {StoneDressings} from '../blockBuilding/dressings.ts';
 import {roofHeightAt} from './facts.ts';
 import {prepareShell, strictMergeClasses, type ShellRepairReport} from './shellRepair.ts';
 import {levelRoofAbove, rooftopLevel, type RoofLevelReport} from './roofLevel.ts';
+import {tidyRoof, type RoofTidyReport} from './roofTidy.ts';
 import {houseCuts, rowCoherence, spanEaves, spanTop} from './rowSplit.ts';
 
 /** The kit's dark glass, when the intent has no (measured) `palette.glass`. */
+/** The block-kit slot of a large house's unlisted walls under `otherWalls: 'window-grid'` (painted like `wall`). */
+export const WINDOW_GRID_WALL_SLOT = 'wall@grid';
 export const KIT_GLASS = '#2a3a42';
 
 /** A split fraction of a panel snapped to the nearest bay boundary (bays of ~`pitchM` filling the panel; never the ends). */
@@ -101,6 +104,8 @@ export interface LargeGroupFit {
   loggiaDepthM?: number;
   /** row split (intent `houses`): the main panel cut into houses, each with its own spec system, wall slot, eaves and crown */
   houses?: {panel: number; segs: LargeHouseFit[]};
+  /** storeys drawn as ribbon bands (intent `ribbonStoreys`): a blank system with them is a front the photo judges */
+  ribbonStoreys?: number[];
   /** facade cladding (intent `cladding`, blockBuilding/cladding.ts): heights, profile and its sheet and line slots */
   cladding?: CladdingFit;
   /** free-standing piers and beam over a storey band on their own pitch (intent `arcadePiers`, blockBuilding/arcadePiers.ts), in the group's stone */
@@ -135,7 +140,7 @@ export interface LargeBuildingRecipe {
   panelGroup: number[];
   /** group index per `set.walls` entry: the compose `mergeKey`, so panels never span two groups (with `shellRepair`, (group + 1) * 100000 + strict coplanar class) */
   wallGroup: number[];
-  groups: LargeGroupFit[]; other: {system: LargeSystemName; specSystem: string};
+  groups: LargeGroupFit[]; other: {system: LargeSystemName; specSystem: string; /** `otherWalls: 'window-grid'`: the unlisted walls' slot (WINDOW_GRID_WALL_SLOT) */ windowGrid?: true};
   roofPlant: PlantBox[]; recessM: number;
   roof: LargeRoofFit;
   wallMaterial: 'brick' | 'stucco';
@@ -161,6 +166,8 @@ export interface LargeFitReport {
   shellRepair?: ShellRepairReport;
   /** only with `roof.levelRooftop` (roofLevel.ts) */
   roofLevel?: RoofLevelReport;
+  /** only with `roof.tidy` (roofTidy.ts) */
+  roofTidy?: RoofTidyReport;
 }
 
 /**
@@ -335,17 +342,25 @@ export function shellOfWalls(walls: readonly {surface?: number}[]): number[] {
 }
 
 /** The facts the fit works on: the shell-repaired facts when the intent opts in (shellRepair.ts), else the input. */
-export function largeShellFacts(intent: LargeBuildingIntent, facts: BuildingFacts): {facts: BuildingFacts; shell?: ShellRepairReport; roofLevel?: RoofLevelReport} {
+export function largeShellFacts(intent: LargeBuildingIntent, facts: BuildingFacts): {facts: BuildingFacts; shell?: ShellRepairReport; roofLevel?: RoofLevelReport; roofTidy?: RoofTidyReport} {
   const shelled: {facts: BuildingFacts; shell?: ShellRepairReport} = !intent.shellRepair && (intent.footprint ?? 'lod22') === 'lod22' ? {facts}
     : (r => ({facts: r.facts, shell: r.report}))(prepareShell(facts, {repair: !!intent.shellRepair, footprint: intent.footprint ?? 'lod22'}));
-  if (!intent.roof?.levelRooftop) return shelled;
-  // roof.levelRooftop (roofLevel.ts): the rooftop above the photographed fronts becomes one flat level, after any shell repair
-  const levelled = levelRoofAbove(shelled.facts, rooftopLevel(shelled.facts, intent.walls.flatMap(w => w.wallSurfaces)));
-  return {...shelled, facts: levelled.facts, roofLevel: levelled.report};
+  let out: {facts: BuildingFacts; shell?: ShellRepairReport; roofLevel?: RoofLevelReport; roofTidy?: RoofTidyReport} = shelled;
+  if (intent.roof?.levelRooftop) {
+    // roof.levelRooftop (roofLevel.ts): the rooftop above the photographed fronts becomes one flat level, after any shell repair
+    const levelled = levelRoofAbove(shelled.facts, rooftopLevel(shelled.facts, intent.walls.flatMap(w => w.wallSurfaces)));
+    out = {...shelled, facts: levelled.facts, roofLevel: levelled.report};
+  }
+  if (intent.roof?.tidy) {
+    // roof.tidy (roofTidy.ts): level merge, sliver fold and spike clamp away from the photographed fronts
+    const tidy = tidyRoof(out.facts, {frontSurfaces: intent.walls.flatMap(w => w.wallSurfaces)});
+    out = {...out, facts: tidy.facts, roofTidy: tidy.report};
+  }
+  return out;
 }
 
 export function fitLarge(intent: LargeBuildingIntent, inputFacts: BuildingFacts): {recipe: LargeBuildingRecipe; report: LargeFitReport; facts: BuildingFacts} {
-  const {facts, shell, roofLevel} = largeShellFacts(intent, inputFacts);
+  const {facts, shell, roofLevel, roofTidy} = largeShellFacts(intent, inputFacts);
   const warnings: string[] = [];
   const {set, anchorRD} = largeSurfaceSet(facts, intent.groundClamp ? {groundClamp: true} : {});
   const known = new Set(set.walls.map(w => w.surface!));
@@ -449,6 +464,14 @@ export function fitLarge(intent: LargeBuildingIntent, inputFacts: BuildingFacts)
     const gpSlot = w.groundPiers ? `frame@gp${gi}` : undefined, gpPlinth = w.groundPiers?.plinth ? `frame@gpp${gi}` : undefined;
     if (gpSlot) palette[gpSlot] = swatch(w.groundPiers!.colour);
     if (gpPlinth) palette[gpPlinth] = swatch(w.groundPiers!.plinth!.colour);
+    // Ribbon storeys: the band's own frame colour and its spandrel and head panels, slots of their own per entry (`frame@rs<g>k<k>`, `spandrel@rs<g>k<k>`, `spandrel@rh<g>k<k>`).
+    const ribbonSlots = (w.ribbonStoreys ?? []).map((r, k) => {
+      const frame = r.frame ? `frame@rs${gi}k${k}` : slots.frame, spandrel = r.spandrel ? `spandrel@rs${gi}k${k}` : undefined, head = r.head ? `spandrel@rh${gi}k${k}` : undefined;
+      if (r.frame) palette[frame] = swatch(r.frame);
+      if (spandrel) palette[spandrel] = swatch(r.spandrel!.colour);
+      if (head) palette[head] = swatch(r.head!.colour);
+      return {frame, spandrel, head};
+    });
     const bandRail = (k: number) => { const c = w.loggiaBands?.[k]?.colour; if (!c) return slots.frame; const sl = `rail@lb${gi}k${k}`; palette[sl] = swatch(c); return sl; };
     const boxFrame = w.windowBox?.frame ? `frame@wb${gi}` : undefined;
     if (boxFrame) palette[boxFrame] = swatch(w.windowBox!.frame!);
@@ -535,6 +558,8 @@ export function fitLarge(intent: LargeBuildingIntent, inputFacts: BuildingFacts)
       })} : {}),
       ...(w.groundPiers ? {groundPiers: {every: w.groundPiers.every, first: w.groundPiers.first ?? 0, w: r3(w.groundPiers.w * pitchM), out: 0.12, top: r3(st.heights[0]), slot: gpSlot!,
         ...(gpPlinth ? {plinth: {h: r3(w.groundPiers.plinth!.h * st.heights[0]), slot: gpPlinth}} : {})}} : {}),
+      ...(w.ribbonStoreys ? {ribbonStoreys: w.ribbonStoreys.map((r, k) => ({storeys: r.storeys.filter(q => q < st.heights.length), ...(r.bays ? {bays: [...r.bays]} : {}), sill: r.sill, h: r.h, lights: r.lights,
+        ...(r.rows ? {rows: [...r.rows]} : {}), ...(r.spandrel ? {spandrel: {h: r.spandrel.h, slot: ribbonSlots[k].spandrel!}} : {}), ...(r.head ? {head: {h: r.head.h, slot: ribbonSlots[k].head!}} : {}), frame: ribbonSlots[k].frame})), bays} : {}),
       ...(w.loggias ? {loggias: {storeys: [...w.loggias.storeys], ...(w.loggias.bays ? {bays: [...w.loggias.bays]} : {}), w: w.loggias.w ?? LOGGIA.w, h: w.loggias.h ?? LOGGIA.h, sill: w.loggias.sill ?? LOGGIA.sill, deep: w.loggias.deep ?? LOGGIA.deep, rail: w.loggias.rail ?? LOGGIA.rail, lights: w.loggias.lights ?? LOGGIA.lights, railSlot: railSlot ?? slots.frame}, bays} : {})};
     systems[specSystem] = largeSystem(w.system, sysOpts);
     // Row split: per house its own eaves (the 3DBAG wall over its span, row-coherent), storey lines, bays, window shape
@@ -593,6 +618,7 @@ export function fitLarge(intent: LargeBuildingIntent, inputFacts: BuildingFacts)
       ...(w.windowBox ? {windowBox: fitWindowBox(w.windowBox, {frame: boxFrame ?? slots.frame, glass: slots.glass, ...(boxDeck ? {deck: boxDeck} : {})}, main ? main.uMax - main.uMin : undefined, bays)} : {}),
       ...(w.signBoards ? {signBoards: w.signBoards.map((b, k) => { const sl = `signboard@g${gi}k${k}`; palette[sl] = swatch(b.colour ?? pal.door); return {along: [b.along[0], b.along[1]] as [number, number], up: [b.up[0], b.up[1]] as [number, number], slot: sl}; })} : {}),
       ...(w.falseFront ? {falseFront: {slot: cladSlot ?? slots.wall}} : {}),
+      ...(w.ribbonStoreys ? {ribbonStoreys: w.ribbonStoreys.flatMap(r => r.storeys)} : {}),
       ...(w.boxBalconies ? {boxBalconies: fitBoxBalconies(w.boxBalconies, w.boxBalconies.colour ? (palette[`box@g${gi}`] = swatch(w.boxBalconies.colour), `box@g${gi}`) : slots.frame)} : {}),
       ...(w.balconyBands ? {balconyBands: fitBalconyBands(w.balconyBands, {slab: w.balconyBands.colour ? (palette[`slab@bb${gi}`] = swatch(w.balconyBands.colour), `slab@bb${gi}`) : slots.stone, rail: w.balconyBands.railColour ? (palette[`rail@bb${gi}`] = swatch(w.balconyBands.railColour), `rail@bb${gi}`) : slots.frame, glass: slots.glass})} : {}),
       ...(w.stackedBlocks ? {stackedBlocks: fitStackedBlocks(w.stackedBlocks, {wall: slots.wall, frame: slots.frame, glass: slots.glass, rail: (palette[`rail@sb${gi}`] = STACKED_BLOCK_RAIL, `rail@sb${gi}`)})} : {}),
@@ -604,24 +630,28 @@ export function fitLarge(intent: LargeBuildingIntent, inputFacts: BuildingFacts)
         ...(w.loggiaBands ?? []).map(b => r3(((st.lines[b.storeys[0] + 1] ?? st.lines[b.storeys[0]]) - st.lines[b.storeys[0]]) * (b.deep ?? LOGGIA_BAND.deep))))} : {}), slots});
   });
   // Unlisted walls: one system at the civic storey height and the system's default pitch.
-  const otherName = intent.otherWalls ?? 'blank', otherTop = Math.max(0, ...panels.map(p => p.vMax));
+  // `window-grid`: blank geometry; the unlisted walls take their own slot (WINDOW_GRID_WALL_SLOT, same colour as `wall`)
+  // whose material the exporter marks `windowGrid`, and the city look paints windows on it in the shader.
+  const windowGrid = intent.otherWalls === OTHER_WINDOW_GRID;
+  if (windowGrid) palette[WINDOW_GRID_WALL_SLOT] = palette.wall;
+  const otherName: LargeSystemName = windowGrid || !intent.otherWalls ? 'blank' : intent.otherWalls as LargeSystemName, otherTop = Math.max(0, ...panels.map(p => p.vMax));
   const otherLines = storeyLines(otherTop, true, undefined, civicM, year !== null && year < 1945 ? 1.15 : 1, otherTop);
   systems.other = largeSystem(otherName, {pitchM: DEFAULT_PITCH_M[otherName], lines: otherLines.lines, ground: 'system', slots: {frame: 'frame', stone: 'stone', glass: 'glass', door: 'door', curtain: 'frame'}});
   // Measured groups (intent `measured`): their own wall, arch-ring and glass slots also carry the measured colour into the
   // look (with the wall, glass and split slots pushed above); deduplicated.
   for (const gi of intent.measured?.groups ?? []) { const g = groups[gi]; if (g) measuredSlots.push(...[g.slots.wall, `arch@g${gi}`, g.slots.glass, ...(g.brickStoreys?.map(b => b.slot) ?? [])].filter(sl => sl !== 'wall' && sl !== 'glass' && palette[sl] !== undefined)); }
   // `measured.otherWalls`: palette.brick was measured too (the rear and courtyard walls of the same brick as the fronts)
-  if (intent.measured?.otherWalls) measuredSlots.push('wall');
+  if (intent.measured?.otherWalls) measuredSlots.push('wall', ...(windowGrid ? [WINDOW_GRID_WALL_SLOT] : []));
   const unlistedSurfaces = byShell ? set.walls.filter((_, wi) => groupOfWall[wi] === undefined).map(w => w.surface!) : set.walls.map(w => w.surface!).filter(s => !groupOfSurface.has(s));
   const spec: BlockSpec = {id: intent.id, pandId: intent.pandId, name: intent.address, palette, levels: {groundM: civicM, storeyM: civicM}, systems, default: 'other', roofSlot: 'roof', wallSlot: 'wall'};
   const roofPlant = intent.roofPlant ? placeRoofPlant(set) : [];
   if (intent.roofPlant && !roofPlant.length) warnings.push('roofPlant: no flat roof of 40 m² with room for a lift overrun');
-  const recipe: LargeBuildingRecipe = {id: intent.id, pandId: intent.pandId, anchorRD, set, spec, panelGroup, wallGroup, groups, other: {system: otherName, specSystem: 'other'}, roofPlant, recessM: LARGE_RECESS_M,
+  const recipe: LargeBuildingRecipe = {id: intent.id, pandId: intent.pandId, anchorRD, set, spec, panelGroup, wallGroup, groups, other: {system: otherName, specSystem: 'other', ...(windowGrid ? {windowGrid: true as const} : {})}, roofPlant, recessM: LARGE_RECESS_M,
     roof: largeRoofFit(intent.roof, facts, anchorRD), wallMaterial: (pal.wallMaterial === 'painted-brick' ? 'brick' : pal.wallMaterial) ?? 'brick', ...(Object.keys(panelSystem).length ? {panelSystem} : {}), ...(Object.keys(slotMaterial).length ? {slotMaterial} : {}), ...(lanterns.length ? {lanterns} : {}), ...(measuredSlots.length ? {measuredSlots: [...new Set(measuredSlots)]} : {})};
   const report: LargeFitReport = {
     groups: groups.map(g => ({index: g.index, system: g.system, panels: g.panels.length, surfaces: g.surfaces.length, widthM: g.widthM, eavesM: g.eavesM, storeys: g.storeys, storeyHeightsM: g.storeyHeightsM, bays: g.bays, pitchM: g.pitchM, entrance: !!g.entrance, garageDoors: g.garage?.bays.length ?? 0})),
     panels: panels.map(p => ({index: p.index, group: panelGroup[p.index], system: panelGroup[p.index] >= 0 ? groups[panelGroup[p.index]].system : otherName, widthM: r3(p.uMax - p.uMin), heightM: r3(p.vMax), bearingDeg: Math.round(bearingOfNormal(p.n)), surfaces: p.walls.map(wi => set.walls[wi].surface!)})),
-    unlistedSurfaces, warnings, ...(shell ? {shellRepair: shell} : {}), ...(roofLevel ? {roofLevel} : {}),
+    unlistedSurfaces, warnings, ...(shell ? {shellRepair: shell} : {}), ...(roofLevel ? {roofLevel} : {}), ...(roofTidy ? {roofTidy} : {}),
   };
   return {recipe, report, facts};
 }

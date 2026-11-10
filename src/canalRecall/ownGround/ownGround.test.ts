@@ -2321,6 +2321,34 @@ test('rail tracks: a bridge rides the line between its ends, a level crossing is
   assert.ok(Math.abs(west.stats.metres + east.stats.metres - whole.stats.metres) < 1e-6);
 });
 
+// Lane rails-class 2026-11-10 (feedback 2026-11-09: the Arlandabrug / Kimpoweg tram and rail crossings "very broken"):
+// a piece that ends a few metres short of a carriageway, or lies along a street, was raised 0.32 m over the asphalt.
+test('rail tracks: the bed is flat on any street within its half width plus the bed reach, not only where a piece crosses the centreline', async () => {
+  const { railMeshes, crossingTest, onStreetTest, segmentDistance, RAIL_SECTION } = await import('./railTracks');
+  assert.equal(segmentDistance([0, 0], [10, 0], [5, -3], [5, 3]), 0, 'crossing segments');
+  assert.ok(Math.abs(segmentDistance([0, 0], [10, 0], [14, 3], [14, 9]) - 5) < 1e-9, 'end to end');
+  // A 7 m street (half 3.5) whose centreline starts 2 m off the track at x = 50 and never crosses it: the old test
+  // misses it, the bed (3.5 + 1.55 m of reach) lies on its surface.
+  const way = [{ kind: 'rail' as const, bridge: false, service: false, points: [[0, 0], [100, 0]] as Vec2[] }];
+  const street: [Vec2, Vec2][] = [[[50, 2], [50, 12]]], strips: [Vec2, Vec2, number][] = [[[50, 2], [50, 12], 3.5]];
+  const only = crossingTest(street), onStreet = onStreetTest(strips);
+  const top = (m: ReturnType<typeof railMeshes>, x: number) => { const z: number[] = []; for (let i = 0; i < m.ballast.positions.length; i += 3) if (Math.abs(m.ballast.positions[i] - x) < 0.01) z.push(m.ballast.positions[i + 2]); return Math.max(...z); };
+  const before = railMeshes({ ways: way, inCell: () => true, height: () => 0, atGrade: only });
+  const after = railMeshes({ ways: way, inCell: () => true, height: () => 0, atGrade: (a, b) => only(a, b) || onStreet(a, b) });
+  const nearEdge = (m: ReturnType<typeof railMeshes>) => { let worst = 0; for (let i = 0; i < m.ballast.positions.length; i += 3) { const x = m.ballast.positions[i]; if (x > 46.6 && x < 53.4) worst = Math.max(worst, m.ballast.positions[i + 2]); } return worst; };
+  assert.ok(nearEdge(before) > RAIL_SECTION.topLift * 0.5, `before: the bed stands over the carriageway (${nearEdge(before)})`);
+  assert.ok(nearEdge(after) < RAIL_SECTION.flatLift + 1e-6, `after: flat on the carriageway (${nearEdge(after)})`);
+  assert.ok(Math.abs(top(after, 0) - RAIL_SECTION.topLift) < 1e-6, 'raised well away from it');
+  // A street 20 m off the track changes nothing: byte-identical.
+  const far = onStreetTest([[[0, 20], [100, 20], 3.5]]);
+  const plain = railMeshes({ ways: way, inCell: () => true, height: () => 0 }), withFar = railMeshes({ ways: way, inCell: () => true, height: () => 0, atGrade: (a, b) => far(a, b) });
+  assert.deepEqual(withFar.ballast.positions, plain.ballast.positions);
+  // A tram along the street (parallel, centre 1 m off the street's centreline) is flat its whole length.
+  const along = onStreetTest([[[0, 1], [100, 1], 3.5]]);
+  const tram = railMeshes({ ways: way, inCell: () => true, height: () => 0, atGrade: along });
+  assert.ok(tram.stats.levelCrossingMetres > 99, `${tram.stats.levelCrossingMetres}`);
+});
+
 // Rail levels (railProfile.ts; lane rail-look 2026-10-31, three player notes on build 04e3c88).
 test('rail levels: a bridge chain runs level between its embankments, whatever the fill under its ends', async () => {
   const { railLevels, levelAt } = await import('./railProfile');

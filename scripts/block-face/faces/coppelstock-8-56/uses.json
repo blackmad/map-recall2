@@ -1,0 +1,311 @@
+{
+ "street": "Coppelstockstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched n/a (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012090556",
+   "addresses": [
+    "Coppelstockstraat 56"
+   ],
+   "groundUnits": [
+    {
+     "address": "Coppelstockstraat 56-H",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000608762"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012149997",
+   "addresses": [
+    "Coppelstockstraat 52",
+    "Coppelstockstraat 54"
+   ],
+   "groundUnits": [
+    {
+     "address": "Coppelstockstraat 52-H",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010000608746"
+    },
+    {
+     "address": "Coppelstockstraat 54-H",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000608754"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012132905",
+   "addresses": [
+    "Coppelstockstraat 46",
+    "Coppelstockstraat 48",
+    "Coppelstockstraat 50G",
+    "Coppelstockstraat 50F",
+    "Coppelstockstraat 50H",
+    "Coppelstockstraat 50L",
+    "Coppelstockstraat 50K",
+    "Coppelstockstraat 50B",
+    "Coppelstockstraat 50A",
+    "Coppelstockstraat 50C",
+    "Coppelstockstraat 50E",
+    "Coppelstockstraat 50D",
+    "Coppelstockstraat 50"
+   ],
+   "groundUnits": [
+    {
+     "address": "Coppelstockstraat 50G",
+     "use": "kantoorfunctie",
+     "areaM2": 18,
+     "bagId": "0363010012063840"
+    },
+    {
+     "address": "Coppelstockstraat 50F",
+     "use": "kantoorfunctie",
+     "areaM2": 19,
+     "bagId": "0363010012063841"
+    },
+    {
+     "address": "Coppelstockstraat 50H",
+     "use": "kantoorfunctie",
+     "areaM2": 18,
+     "bagId": "0363010012063842"
+    },
+    {
+     "address": "Coppelstockstraat 50L",
+     "use": "kantoorfunctie",
+     "areaM2": 18,
+     "bagId": "0363010012063843"
+    },
+    {
+     "address": "Coppelstockstraat 50K",
+     "use": "kantoorfunctie",
+     "areaM2": 18,
+     "bagId": "0363010012063844"
+    },
+    {
+     "address": "Coppelstockstraat 50B",
+     "use": "kantoorfunctie",
+     "areaM2": 24,
+     "bagId": "0363010012063845"
+    },
+    {
+     "address": "Coppelstockstraat 50A",
+     "use": "kantoorfunctie",
+     "areaM2": 13,
+     "bagId": "0363010012063846"
+    },
+    {
+     "address": "Coppelstockstraat 50C",
+     "use": "kantoorfunctie",
+     "areaM2": 15,
+     "bagId": "0363010012063847"
+    },
+    {
+     "address": "Coppelstockstraat 50E",
+     "use": "kantoorfunctie",
+     "areaM2": 18,
+     "bagId": "0363010012063848"
+    },
+    {
+     "address": "Coppelstockstraat 50D",
+     "use": "kantoorfunctie",
+     "areaM2": 15,
+     "bagId": "0363010012063849"
+    },
+    {
+     "address": "Coppelstockstraat 46-H",
+     "use": "woonfunctie",
+     "areaM2": 81,
+     "bagId": "0363010000608728"
+    },
+    {
+     "address": "Coppelstockstraat 50",
+     "use": "industriefunctie",
+     "areaM2": 319,
+     "bagId": "0363010000608741"
+    }
+   ],
+   "units": 18,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012131416",
+   "addresses": [
+    "Coppelstockstraat 44"
+   ],
+   "groundUnits": [
+    {
+     "address": "Coppelstockstraat 44-H",
+     "use": "woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010000608721"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012133707",
+   "addresses": [
+    "Coppelstockstraat 42"
+   ],
+   "groundUnits": [
+    {
+     "address": "Coppelstockstraat 42-H",
+     "use": "woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010000608714"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012100357",
+   "addresses": [
+    "Coppelstockstraat 24",
+    "Coppelstockstraat 26",
+    "Coppelstockstraat 28",
+    "Coppelstockstraat 30",
+    "Coppelstockstraat 32",
+    "Coppelstockstraat 34",
+    "Coppelstockstraat 36",
+    "Coppelstockstraat 38",
+    "Coppelstockstraat 40"
+   ],
+   "groundUnits": [
+    {
+     "address": "Coppelstockstraat 24",
+     "use": "woonfunctie",
+     "areaM2": 75,
+     "bagId": "0363010000608678"
+    },
+    {
+     "address": "Coppelstockstraat 28",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010000608683"
+    },
+    {
+     "address": "Coppelstockstraat 32",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010000608691"
+    },
+    {
+     "address": "Coppelstockstraat 36",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010000608702"
+    },
+    {
+     "address": "Coppelstockstraat 38",
+     "use": "woonfunctie",
+     "areaM2": 59,
+     "bagId": "0363010000608706"
+    },
+    {
+     "address": "Coppelstockstraat 40",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000608710"
+    },
+    {
+     "address": "Coppelstockstraat 26",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000608680"
+    },
+    {
+     "address": "Coppelstockstraat 30",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000608687"
+    },
+    {
+     "address": "Coppelstockstraat 34",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000608698"
+    }
+   ],
+   "units": 9,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012089525",
+   "addresses": [
+    "Coppelstockstraat 8",
+    "Coppelstockstraat 10",
+    "Coppelstockstraat 12",
+    "Coppelstockstraat 14",
+    "Coppelstockstraat 16",
+    "Coppelstockstraat 18",
+    "Coppelstockstraat 20",
+    "Coppelstockstraat 22"
+   ],
+   "groundUnits": [
+    {
+     "address": "Coppelstockstraat 8",
+     "use": "woonfunctie",
+     "areaM2": 86,
+     "bagId": "0363010000608670"
+    },
+    {
+     "address": "Coppelstockstraat 16",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010000608674"
+    },
+    {
+     "address": "Coppelstockstraat 18",
+     "use": "woonfunctie",
+     "areaM2": 75,
+     "bagId": "0363010000608675"
+    },
+    {
+     "address": "Coppelstockstraat 14",
+     "use": "woonfunctie",
+     "areaM2": 78,
+     "bagId": "0363010000608673"
+    },
+    {
+     "address": "Coppelstockstraat 12",
+     "use": "woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010000608672"
+    },
+    {
+     "address": "Coppelstockstraat 22",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000608677"
+    },
+    {
+     "address": "Coppelstockstraat 10",
+     "use": "woonfunctie",
+     "areaM2": 78,
+     "bagId": "0363010000608671"
+    },
+    {
+     "address": "Coppelstockstraat 20",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010000608676"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  }
+ ]
+}

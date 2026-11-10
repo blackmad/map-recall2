@@ -4,6 +4,7 @@
  * measured furniture as unit boxes in their colours). Picks pands from the staged roof-facts in a box.
  *
  *   tsx scripts/roofs/contact-sheet.mts [--facts=artifacts/roofs/roof-facts] [--bbox=4.862,52.362,4.877,52.370] [--n=40] [--out=artifacts/roofs/contact-kinkerbuurt.png]
+ *     [--ids=ids.json (a JSON array of pand ids; replaces the bbox)] [--tiles=<bag-tiles/14 dir, e.g. an older build's for removed pands>]
  */
 import fs from 'node:fs';
 import path from 'node:path';
@@ -24,9 +25,11 @@ const facts = new Map<string, RoofFact>();
 for (const x of fs.readdirSync(path.join(FACTS, '14')).filter(n => /^\d+$/.test(n))) for (const f of fs.readdirSync(path.join(FACTS, '14', x)).filter(n => n.endsWith('.json.gz')))
   for (const [id, fact] of decodeRoofFactTile(JSON.parse(zlib.gunzipSync(fs.readFileSync(path.join(FACTS, '14', x, f))).toString('utf8')) as RoofFactTile)) facts.set(id, fact);
 const [minX, minY] = lngLatToRd(w0, s0), [maxX, maxY] = lngLatToRd(e0, n0);
+const idsFile = arg('ids', ''), only = idsFile ? new Set<string>(JSON.parse(fs.readFileSync(path.resolve(idsFile), 'utf8'))) : null;
 const candidates: Pand[] = [];
-for (const p of readPands(path.resolve('public/data/extracts/amsterdam/bag-tiles/14'))) {
+for (const p of readPands(path.resolve(arg('tiles', 'public/data/extracts/amsterdam/bag-tiles/14')))) {
   const cx = (p.bbox[0] + p.bbox[2]) / 2, cy = (p.bbox[1] + p.bbox[3]) / 2;
+  if (only) { if (only.has(p.id) && facts.has(p.id)) candidates.push(p); continue; }
   if (cx < minX || cx > maxX || cy < minY || cy > maxY || p.areaM2 < 40 || !facts.has(p.id)) continue;
   candidates.push(p);
 }

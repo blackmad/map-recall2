@@ -1,0 +1,20 @@
+{
+  "generatedAt": "2026-11-10",
+  "anchors": [
+    "hornweg-terminal",
+    "zaanstraat-rail-yard"
+  ],
+  "stackYards": [
+    {
+      "id": "hornweg-terminal",
+      "areaM2": 232537,
+      "aisles": 35,
+      "boxes": 1720
+    }
+  ],
+  "sidingLines": {
+    "hornweg-terminal": 16,
+    "zaanstraat-rail-yard": 89
+  },
+  "firstRunRejected": "industrial+aisles heuristic matched 20 substations/fuel/waste sites; replaced by reviewed anchors"
+}

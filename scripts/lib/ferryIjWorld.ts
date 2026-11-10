@@ -7,6 +7,9 @@
  * 3 per metre, about the game's fixed origin.
  */
 import { readFileSync } from 'node:fs';
+import { gunzipSync } from 'node:zlib';
+import { WaterIndex } from '../../src/canalRecall/engine/waterIndex';
+import { decodeOverview } from '../../src/canalRecall/ownMap/overviewFormat';
 import { ferrySegments, type FerryLink, type Point, type Segment, type Terminal } from '../../src/canalRecall/ferry/network';
 import type { TransitNetwork } from '../../src/canalRecall/transit/network';
 import type { FerryGame, FerryMoveResult, FerryPlayer } from '../../src/canalRecall/ferry/travel';
@@ -31,6 +34,13 @@ function inRing(ring: Ring, lat: number, lon: number): boolean {
   return inside;
 }
 
+/** The game's own water test (engine/waterIndex.ts over own-map-v1/overview.json.gz), city-wide. */
+export function overviewWaterTest(): (x: number, y: number) => boolean {
+  const file = JSON.parse(gunzipSync(readFileSync('public/data/extracts/amsterdam/own-map-v1/overview.json.gz')).toString());
+  const index = new WaterIndex(decodeOverview(file).water);
+  return (x, y) => { const [lat, lon] = toLatLon({ x, y }); return index.isWater(lon, lat); };
+}
+
 export function ijWaterTest(fixturePath = 'scripts/fixtures/ferry-water-ij.json'): (x: number, y: number) => boolean {
   const fixture = JSON.parse(readFileSync(fixturePath, 'utf8')) as Fixture;
   const polygons = Object.values(fixture.areas).flatMap(a => a.polygons).map(p => {
@@ -47,18 +57,18 @@ export function ijWaterTest(fixturePath = 'scripts/fixtures/ferry-water-ij.json'
 type RoutingStreet = { highway?: string; path?: Array<[number, number]>; paths?: Array<Array<[number, number]>> };
 
 /** Terminals and links exactly as the game builds them, land accesses snapped to routed streets. */
-export function ijFerryWorld(): { segments: Segment[]; links: FerryLink[]; terminals: Map<string, Terminal> } {
+export function ijFerryWorld(box = { south: 52.374, north: 52.41, west: 4.87, east: 4.93 }): { segments: Segment[]; links: FerryLink[]; terminals: Map<string, Terminal>; land: Segment[] } {
   const network = JSON.parse(readFileSync('public/data/extracts/amsterdam/transit-network.json', 'utf8')) as TransitNetwork;
   const routing = JSON.parse(readFileSync('public/data/extracts/amsterdam/streets-routing.json', 'utf8')) as RoutingStreet[];
   const land: Segment[] = [];
   for (const street of routing) for (const path of street.paths ?? (street.path ? [street.path] : [])) {
-    if (path.length < 2 || !path.some(([lat, lon]) => lat > 52.374 && lat < 52.41 && lon > 4.87 && lon < 4.93)) continue;
+    if (path.length < 2 || !path.some(([lat, lon]) => lat > box.south && lat < box.north && lon > box.west && lon < box.east)) continue;
     land.push({ points: path.map(([lat, lon]) => toWorld(lat, lon)), width: 18, type: street.highway || 'residential', name: '' });
   }
   const segments = ferrySegments(network, land, toWorld);
   const links = segments.flatMap(s => (s.ferryLink ? [s.ferryLink] : []));
   const terminals = new Map(links.flatMap(l => [l.from, l.to]).map(t => [t.id, t]));
-  return { segments, links, terminals };
+  return { segments, links, terminals, land };
 }
 
 type FerryRuntime = {
@@ -118,4 +128,54 @@ export function sail(runtime: FerryRuntime, world: ReturnType<typeof ijFerryWorl
   }
   const nearest = Math.min(...[...world.terminals.values()].map(t => Math.hypot(t.x - player.x, t.y - player.y))) / PX_PER_M;
   return { result: still > 120 ? 'stalled' : 'sailing', dockedAt: null, frames, blockedFrames, aground, endMetres: nearest, end: { ...player } };
+}
+
+/**
+ * `getNearestRoad` over a track's segments (ferry lines skipped; the
+ * runtime itself skips terminal accesses), like road-network.js: the nearest
+ * point within `reach` px, its tangent and distance. Use it with
+ * `[...world.segments, ...world.land]` as the track's segments.
+ */
+export function nearestRoadOf(segments: readonly Segment[], reach = 60) {
+  const spans: Array<{ segIdx: number; a: Point; b: Point }> = [];
+  segments.forEach((s, segIdx) => { if (s.type !== 'ferry') for (let i = 1; i < s.points.length; i++) spans.push({ segIdx, a: s.points[i - 1], b: s.points[i] }); });
+  return (x: number, y: number) => {
+    let best: { segIdx: number; x: number; y: number; angle: number; dist: number } | null = null;
+    for (const { segIdx, a, b } of spans) {
+      if (Math.max(a.x, b.x) < x - reach || Math.min(a.x, b.x) > x + reach || Math.max(a.y, b.y) < y - reach || Math.min(a.y, b.y) > y + reach) continue;
+      const dx = b.x - a.x, dy = b.y - a.y;
+      const t = Math.max(0, Math.min(1, ((x - a.x) * dx + (y - a.y) * dy) / (dx * dx + dy * dy || 1)));
+      const px = a.x + t * dx, py = a.y + t * dy, dist = Math.hypot(x - px, y - py);
+      if (dist <= reach && (!best || dist < best.dist)) best = { segIdx, x: px, y: py, angle: Math.atan2(dy, dx), dist };
+    }
+    return best;
+  };
+}
+
+export type Helm = { result: 'sailing' | 'docked' | 'landed'; seconds: number; minWindowMetres: number; end: Point };
+
+/**
+ * A rider aboard holding forward and steering (at most 1.6 rad/s) towards
+ * `heading`, for `seconds` at 60 fps; the vessel accelerates 150 px/s² to its
+ * top speed. `minWindowMetres` is the least net movement over any 5 s window:
+ * zero means the vessel stood still for 5 s with the throttle open.
+ */
+export function helm(runtime: FerryRuntime, game: FerryGame, isWater: (x: number, y: number) => boolean, heading: number, seconds: number): Helm {
+  const p = game.player, dt = 1 / 60, trail: Point[] = [];
+  let minWindow = Infinity;
+  for (let f = 0; f < seconds * 60; f++) {
+    const d = Math.atan2(Math.sin(heading - p.angle), Math.cos(heading - p.angle));
+    p.angle += Math.max(-1.6 * dt, Math.min(1.6 * dt, d));
+    p.speed = Math.min(p.maxSpeed, p.speed + 150 * dt);
+    const previous = { x: p.x, y: p.y };
+    p.x += Math.cos(p.angle) * p.speed * dt; p.y += Math.sin(p.angle) * p.speed * dt;
+    const result = runtime.afterFerryMove(game, previous, isWater);
+    if (result === 'docked' || result === 'landed') return { result, seconds: f / 60, minWindowMetres: minWindow, end: { x: p.x, y: p.y } };
+    trail.push({ x: p.x, y: p.y });
+    if (trail.length > 300) {
+      const o = trail[trail.length - 301];
+      minWindow = Math.min(minWindow, Math.hypot(p.x - o.x, p.y - o.y) / PX_PER_M);
+    }
+  }
+  return { result: 'sailing', seconds, minWindowMetres: minWindow, end: { x: p.x, y: p.y } };
 }

@@ -4,6 +4,7 @@
 // borrows which photograph — is decided here so it can be tested directly.
 
 import { normaliseAnswer } from '../answerPath';
+import { language as interfaceLanguage } from '../../i18n/index.ts';
 import type {
   BoundaryFeature,
   BridgeCrossingIndex,
@@ -89,6 +90,24 @@ export function splitDetail(text: string | undefined): DetailText {
 }
 
 /**
+ * The text a landmark card opens with, and its language. English: the curated
+ * `funFact`, else the encyclopedia lede (as before). Dutch game: the article's
+ * own Dutch lede where the extract kept it (`wikipediaExtractOriginal`, 164 of
+ * 427 landmarks), ahead of the English fun fact and the English translation of
+ * that same lede (R2-4, #307). Never a machine translation: no Dutch original,
+ * the English text stands. The card's Wikipedia link is already that Dutch
+ * article (`wikipediaUrl`), so the provenance travels with the text.
+ */
+export function landmarkLede(
+  feature: Pick<LandmarkFeature, 'funFact' | 'wikipediaExtract' | 'wikipediaExtractLang' | 'wikipediaExtractOriginal' | 'wikipediaExtractOriginalLang'>,
+  lang: string,
+): { text: string; lang: string } {
+  const original = feature.wikipediaExtractOriginal?.trim();
+  if (lang === 'nl' && original && feature.wikipediaExtractOriginalLang === 'nl') return { text: original, lang: 'nl' };
+  return { text: feature.funFact || feature.wikipediaExtract || '', lang: feature.wikipediaExtractLang || 'en' };
+}
+
+/**
  * The English article title carried on the feature itself, when the extract
  * builder already found one. An OSM `wikipedia` tag is nearly always the Dutch
  * article ("nl:Blauwbrug"), and filling an English card from it showed the
@@ -120,6 +139,17 @@ export function pointInPolygon(x: number, y: number, ring: readonly WorldPoint[]
     if (((a.y > y) !== (b.y > y)) && x < (b.x - a.x) * (y - a.y) / (b.y - a.y) + a.x) inside = !inside;
   }
   return inside;
+}
+
+/** Summed absolute area of world rings (square world px). */
+export function ringsArea(rings: readonly (readonly WorldPoint[])[]): number {
+  let area = 0;
+  for (const ring of rings) {
+    let twice = 0;
+    for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) twice += ring[j].x * ring[i].y - ring[i].x * ring[j].y;
+    area += Math.abs(twice) / 2;
+  }
+  return area;
 }
 
 /** Finest first: a point inside De Pijp is in De Pijp, not in Zuid. Relies on
@@ -166,6 +196,7 @@ function displayGeometry(feature: LandmarkFeature, center: LatLng): GeoJsonFeatu
 export function buildLandmarks(
   features: readonly LandmarkFeature[],
   project: (lat: number, lng: number, feature: LandmarkFeature) => WorldPoint | null,
+  lang: string = interfaceLanguage(),
 ): Landmark[] {
   const landmarks: Landmark[] = [];
   for (const feature of features) {
@@ -173,7 +204,8 @@ export function buildLandmarks(
     if (!center) continue;
     const point = project(center[0], center[1], feature);
     if (!point) continue;
-    const { detail, longDetail } = splitDetail(feature.funFact || feature.wikipediaExtract || '');
+    const lede = landmarkLede(feature, lang);
+    const { detail, longDetail } = splitDetail(lede.text);
     landmarks.push({
       id: feature.id,
       name: feature.name,
@@ -192,7 +224,7 @@ export function buildLandmarks(
       buildingIds: feature.buildingIds,
       wikidata: feature.wikidata || '',
       wikipedia: feature.wikipedia || '',
-      extractLang: feature.wikipediaExtractLang || 'en',
+      extractLang: lede.lang,
       wikipediaPageviews60d: feature.wikipediaPageviews60d,
       wikidataSitelinks: feature.wikidataSitelinks,
       heritage: feature.heritage,
@@ -249,7 +281,11 @@ export function buildNeighborhoods(
       };
     })
     .filter(hood => hood.rings.length)
-    .sort((a, b) => b.rank - a.rank);
+    // Finest first; of two same-rank areas that overlap (the Oud-Zuid and
+    // Schinkelbuurt quarters), the smaller is the finer (#284, as knowledgeMap.buurtAt).
+    .map(hood => ({ hood, area: ringsArea(hood.rings) }))
+    .sort((a, b) => b.hood.rank - a.hood.rank || a.area - b.area)
+    .map(({ hood }) => hood);
 
   for (const hood of neighborhoods) {
     if (hood.imageUrl) continue;

@@ -5,6 +5,7 @@
 // the same afternoon looked different on a tree, a landmark and the bike.
 // Now there is one sky, one sun and one shadow map in an east/north/up world.
 
+import { lightHierarchyFlag, withLightHierarchy } from './lightHierarchy';
 import type { Vec3 } from './frameMath.js';
 import { fitShadowCamera, shadowHalfSizeForZoom, type ShadowFit } from './shadowFit.js';
 import { SUNNY_LIGHT, sceneLookFrom, type SceneLook } from '../look/sunny.js';
@@ -67,7 +68,10 @@ export const SUNNY_LIGHT_RIG: Required<LightRigOptions> = { ...DEFAULT_LIGHT_RIG
 export const lightRigFor = (look: SceneLook): Required<LightRigOptions> => (look === 'sunny' ? SUNNY_LIGHT_RIG : LEGACY_LIGHT_RIG);
 
 /** The rig the page draws with (`?look=`, default sunny). */
-export const activeLightRig = (search?: string): Required<LightRigOptions> => lightRigFor(sceneLookFrom(search));
+export const activeLightRig = (search?: string): Required<LightRigOptions> => {
+  const rig = lightRigFor(sceneLookFrom(search));
+  return lightHierarchyFlag(search) ? withLightHierarchy(rig) : rig;
+};
 
 /** Unit vector toward the sun in ENU. */
 export function sunDirection(azimuthDeg: number, elevationDeg: number): Vec3 {
@@ -180,6 +184,12 @@ export type LightRig = {
   follow(focusAbs: Vec3, zoom: number, toWorld: (abs: Vec3) => Vec3, snapStepM?: number): ShadowFit;
   /** Move the sun (time of day, debugging). Takes effect on the next follow(). */
   setSun(azimuthDeg: number, elevationDeg: number): void;
+  /**
+   * Resize the sun's shadow map (engine/aerialPower.ts `?aerialShadowMap=0`: 1024² from the air). The old map's render
+   * target is released and three allocates the new one at the next shadow redraw; the caller forces that redraw.
+   * Returns whether the size changed.
+   */
+  setShadowMapSize(size: number): boolean;
 };
 
 export function createLightRig(THREE: any, overrides: LightRigOptions = {}, base: Required<LightRigOptions> = activeLightRig()): LightRig {
@@ -224,6 +234,15 @@ export function createLightRig(THREE: any, overrides: LightRigOptions = {}, base
       toSun[0] = next[0]; toSun[1] = next[1]; toSun[2] = next[2];
       options.sunAzimuthDeg = azimuthDeg; options.sunElevationDeg = elevationDeg;
       lastHalf = 0;
+    },
+    setShadowMapSize(size) {
+      if (!(size > 0) || size === options.shadowMapSize) return false;
+      options.shadowMapSize = size;
+      sun.shadow.mapSize.set(size, size);
+      sun.shadow.map?.dispose?.();
+      sun.shadow.map = null;
+      lastHalf = 0;
+      return true;
     },
   };
   return rig;

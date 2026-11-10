@@ -24,6 +24,7 @@ import type {StripStructure} from './stripStructure.ts';
 import {rgbToLab, type FrontClass, type Rgb} from '../buildingRecipe/measureFacade.ts';
 import type {FrontBump} from './bayOutline.ts';
 import type {ShopfrontIntent} from '../buildingRecipe/intent.ts';
+import {materialVetoes, stripWallMaterial} from './wallMaterial.ts';
 
 /** How a library type is recognised (`match` in scripts/block-face/types/<district>/<id>.json). */
 export interface TypeMatchRule {
@@ -102,6 +103,19 @@ export interface TypeMatchRule {
    */
   crownMatch?: true;
   /**
+   * With `crownMatch`: a skyline read under clean sky that is sky-bounded (`skylineBounded`) and fits none of `crowns`
+   * VETOES the type instead of only scoring 0 (Jordaan, #113 round 2: a neck-gable skyline scored a cornice house 0 on
+   * one criterion of seven and still placed it). Unread or unbounded skylines veto nothing. Absent = byte-identical.
+   */
+  crownStrict?: true;
+  /**
+   * The strip's wall material vetoes (wallMaterial.ts): grey render over a type without `stucco: true`, near-black paint
+   * over a type without `blackPaint: true`. Absent = byte-identical (`stucco` stays a weighted criterion).
+   */
+  materialVeto?: true;
+  /** The type is drawn painted black (the black-paint wall material does not veto it). */
+  blackPaint?: true;
+  /**
    * The crown a pand of this type takes when its strip skyline is no evidence (2026-11-01, #152): unread, matching no
    * variant, or not sky-bounded (`skylineBounded`: it stands over the pand's 3DBAG roof max, ends on foliage, or is a
    * narrow mass at one party wall). The note then says "crown from type". Transvaalbuurt 1908-1914 rows: bare branches
@@ -119,6 +133,19 @@ export interface TypeMatchRule {
    * Absent = 3DBAG eaves, byte-identical.
    */
   frontEavesM?: number;
+  /**
+   * With `frontEavesM`: keep the 3DBAG roof (no `frontRoof` re-pitch) although the line is under 3DBAG's eaves. A one-storey
+   * cottage under a long tiled roof (Vogelbuurt-Noord 1918, gutter 3.2 m, 3DBAG eaves a mean of 4.1-4.8 m over the slope)
+   * has no attic band to re-pitch; its survey roof already stands at the gutter on the facade. Absent = byte-identical.
+   */
+  keepSurveyRoof?: boolean;
+  /**
+   * With `frontEavesM`: do not score the strip skyline against the line. Where the skyline is a gable apex or a dormer top
+   * (Vogelbuurt 1921 rows: crow-stepped gable ends 12.6 m, flat dormers 7.3 m over a 6.4 m cornice) it reads 8-13 m on
+   * the same design, so it is no evidence of the cornice; 3DBAG eaves are not compared either, the house is drawn at the
+   * line. Absent = scored, byte-identical.
+   */
+  frontEavesUnscored?: boolean;
   /**
    * With `frontEavesM`: the top of a wall dormer that spans most of the front, where the strip skyline reads it instead
    * of the cornice (Derde Helmersstraat 54-64: crenellated wall dormers over two of three axes, skyline 17.4-18.2 m
@@ -294,7 +321,8 @@ export function scoreType(t: MatchableType, ev: PandEvidence): TypeScore {
   if (ev.builtYear === null) veto.push('no build year');
   else if (ev.builtYear < m.years[0] - slack || ev.builtYear > m.years[1] + slack) veto.push(`built ${ev.builtYear}, type ${m.years.join('-')}`);
   veto.push(...frontageVetoes(t, ev));
-  if (m.frontEavesM !== undefined) {
+  if (m.frontEavesM !== undefined && m.frontEavesUnscored) { /* drawn at the line, not scored */ }
+  else if (m.frontEavesM !== undefined) {
     const sky = ev.strip?.skyline, read = sky && sky.confidence >= SKYLINE_MIN_CONFIDENCE ? sky.eavesM : null;
     const off = read === null ? null : Math.min(Math.abs(read - m.frontEavesM), m.frontSkylineM === undefined ? Infinity : Math.abs(read - m.frontSkylineM));
     criteria.push({key: 'eaves', weight: W.eaves, score: off === null ? null : off <= 0.5 ? 1 : off <= 1 ? 0.5 : 0, note: read === null ? `strip cornice unread (type line ${m.frontEavesM} m; 3DBAG ${r2(ev.eavesM)} m not compared)` : `strip cornice ${r2(read)} m vs the type's ${m.frontEavesM} m${m.frontSkylineM === undefined ? '' : ` (wall-dormer skyline ${m.frontSkylineM} m)`}`});
@@ -333,6 +361,12 @@ export function scoreType(t: MatchableType, ev: PandEvidence): TypeScore {
     const sky = usable ? s!.skyline : null, read = !!sky && sky.confidence >= SKYLINE_MIN_CONFIDENCE, hit = read ? crownRuleFor(t, sky!.crown) : null;
     criteria.push({key: 'crown', weight: 3, score: read ? (hit ? 1 : 0) : null, note: read ? `skyline ${sky!.crown ? `crown rise ${sky!.crown.riseM} m, top ${sky!.crown.topWidthM} m` : 'no crown'} ${hit ? `fits ${hit}` : 'fits no crown of the type'}` : 'skyline unread'});
   }
+  if (m.crownStrict && m.crowns && usable) {
+    const sky = s!.skyline;
+    if (sky && sky.confidence >= SKYLINE_MIN_CONFIDENCE && skylineBounded(sky, s!.skyBound, ev.roofMaxM).ok && !crownRuleFor(t, sky.crown))
+      veto.push(`skyline ${sky.crown ? `crown rise ${sky.crown.riseM} m, top ${sky.crown.topWidthM} m` : 'no crown'} fits no crown of the type`);
+  }
+  if (m.materialVeto && usable) veto.push(...materialVetoes(m, stripWallMaterial({stucco: s!.palette.stucco, wall: s!.wall})));
   const want = baysFor(t, ev.widthM);
   if (usable && s!.columns !== null) criteria.push({key: 'columns', weight: W.columns, score: s!.columns === want ? 1 : Math.abs(s!.columns - want) === 1 ? 0.4 : 0, note: `strip columns ${s!.columns} vs ${want} bays`});
   const scored = criteria.filter(c => c.score !== null), wsum = scored.reduce((a, c) => a + c.weight, 0);

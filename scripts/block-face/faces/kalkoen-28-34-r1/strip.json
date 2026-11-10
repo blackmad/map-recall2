@@ -1,0 +1,118 @@
+{
+ "face": "kalkoen-28-34-r1",
+ "image": "staging/block-face/kalkoen-28-34-r1/strip.jpg",
+ "pixelsPerMetre": 40,
+ "width": 757,
+ "height": 558,
+ "groundNAP": 0.861,
+ "heightM": 13.95,
+ "frame": {
+  "midRD": [
+   123479.34324999999,
+   489079.98633333336
+  ],
+  "uRD": [
+   -0.933607704675311,
+   0.35829687937644294
+  ],
+  "nRD": [
+   0.35829687937644294,
+   0.933607704675311
+  ]
+ },
+ "x0M": -9.43,
+ "x1M": 9.5,
+ "date": "2017-12-28",
+ "coverage": 0.25,
+ "spans": [
+  {
+   "pandId": "0363100012133141",
+   "x0M": -9.43,
+   "x1M": -3.23,
+   "px": [
+    0,
+    248
+   ],
+   "date": "2025-09-22",
+   "fallbackDate": true,
+   "panoramas": [
+    {
+     "panoId": "recording_2025-09-22_10-53-43_00248",
+     "timestamp": "2025-09-22T11:00:20Z",
+     "distanceM": 5.1,
+     "obliquityDeg": 41.1,
+     "missingFraction": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012111141",
+   "x0M": -3.23,
+   "x1M": 3.2,
+   "px": [
+    248,
+    505
+   ],
+   "date": "2024-09-10",
+   "fallbackDate": true,
+   "panoramas": [
+    {
+     "panoId": "recording_2024-09-10_06-50-03_02926",
+     "timestamp": "2024-09-10T07:48:42Z",
+     "distanceM": 5.3,
+     "obliquityDeg": 44.9,
+     "missingFraction": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012123147",
+   "x0M": 3.2,
+   "x1M": 9.5,
+   "px": [
+    505,
+    757
+   ],
+   "date": "2020-06-02",
+   "fallbackDate": true,
+   "panoramas": [
+    {
+     "panoId": "TMX7316010203-001733_pano_0000_001478",
+     "timestamp": "2020-06-02T11:16:46.756200Z",
+     "distanceM": 5.4,
+     "obliquityDeg": 43.9,
+     "missingFraction": 0
+    }
+   ]
+  }
+ ],
+ "candidatesByDate": {
+  "2017-05-15": 0,
+  "2017-12-28": 1,
+  "2025-09-22": 1,
+  "2021-06-17": 1,
+  "2020-06-02": 1,
+  "2018-07-30": 1,
+  "2022-05-11": 1,
+  "2019-06-28": 0,
+  "2024-09-10": 1,
+  "2016-08-05": 1,
+  "2020-09-16": 0,
+  "2017-05-18": 0,
+  "2019-12-12": 0,
+  "2021-02-17": 0,
+  "2020-05-29": 0,
+  "2021-06-15": 0,
+  "2022-05-10": 0,
+  "2021-09-20": 0
+ },
+ "description": "Rectified orthographic elevation of the whole face on the frontage planes: x = chunk-frame metres along the face (left→right seen from the street) from x0M, y = metres above the shared ground (groundNAP) from the bottom; grey = no panorama data. Per-pand spans list the panoramas median-fused for that frontage.",
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (CC BY 4.0; faces and number plates blurred by the publisher)",
+ "croppedFrom": {
+  "face": "kalkoen-28-34",
+  "px": [
+   268,
+   1025
+  ]
+ }
+}

@@ -1,0 +1,101 @@
+{
+ "face": "pelikaan-4-10",
+ "image": "staging/block-face/pelikaan-4-10/strip.jpg",
+ "pixelsPerMetre": 40,
+ "width": 1035,
+ "height": 569,
+ "groundNAP": 0.908,
+ "heightM": 14.23,
+ "frame": {
+  "midRD": [
+   123342.42087500001,
+   489130.83725
+  ],
+  "uRD": [
+   -0.7206816969173722,
+   -0.6932661045574757
+  ],
+  "nRD": [
+   -0.6932661045574757,
+   0.7206816969173722
+  ]
+ },
+ "x0M": -13.08,
+ "x1M": 12.79,
+ "date": "2019-11-15",
+ "coverage": 0,
+ "spans": [
+  {
+   "pandId": "0363100012117906",
+   "x0M": -13.08,
+   "x1M": -6.66,
+   "px": [
+    0,
+    257
+   ],
+   "date": "2019-11-15",
+   "fallbackDate": false,
+   "panoramas": []
+  },
+  {
+   "pandId": "0363100012108792",
+   "x0M": -6.66,
+   "x1M": 0.3,
+   "px": [
+    257,
+    536
+   ],
+   "date": "2019-11-15",
+   "fallbackDate": false,
+   "panoramas": []
+  },
+  {
+   "pandId": "0363100012137878",
+   "x0M": 0.3,
+   "x1M": 6.5,
+   "px": [
+    535,
+    783
+   ],
+   "date": "2019-11-15",
+   "fallbackDate": false,
+   "panoramas": []
+  },
+  {
+   "pandId": "0363100012086013",
+   "x0M": 6.5,
+   "x1M": 12.79,
+   "px": [
+    783,
+    1034
+   ],
+   "date": "2025-09-22",
+   "fallbackDate": true,
+   "panoramas": [
+    {
+     "panoId": "recording_2025-09-22_10-53-43_00286",
+     "timestamp": "2025-09-22T11:01:18Z",
+     "distanceM": 6.2,
+     "obliquityDeg": 43.9,
+     "missingFraction": 0
+    }
+   ]
+  }
+ ],
+ "candidatesByDate": {
+  "2022-05-11": 0,
+  "2025-09-22": 0,
+  "2016-08-05": 0,
+  "2019-06-28": 0,
+  "2022-10-03": 0,
+  "2020-06-02": 0,
+  "2024-09-10": 0,
+  "2021-06-17": 0,
+  "2018-07-30": 0,
+  "2017-05-15": 0,
+  "2024-10-22": 0,
+  "2019-11-15": 0
+ },
+ "description": "Rectified orthographic elevation of the whole face on the frontage planes: x = chunk-frame metres along the face (left→right seen from the street) from x0M, y = metres above the shared ground (groundNAP) from the bottom; grey = no panorama data. Per-pand spans list the panoramas median-fused for that frontage.",
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (CC BY 4.0; faces and number plates blurred by the publisher)"
+}

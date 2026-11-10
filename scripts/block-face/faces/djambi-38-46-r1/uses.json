@@ -1,0 +1,41 @@
+{
+ "street": "Djambistraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched n/a (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012125682",
+   "addresses": [
+    "Djambistraat 40"
+   ],
+   "groundUnits": [
+    {
+     "address": "Djambistraat 40-H",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000624805"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012113540",
+   "addresses": [
+    "Djambistraat 38"
+   ],
+   "groundUnits": [
+    {
+     "address": "Lampongstraat 22",
+     "use": "woonfunctie",
+     "areaM2": 78,
+     "bagId": "0363010000717217"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

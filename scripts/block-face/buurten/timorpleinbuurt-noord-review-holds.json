@@ -1,0 +1,121 @@
+{
+ "note": "Pands held after reviewing the auto-place strip sheets at full size against the photo (scripts/block-face/auto-place.ts reads this file: a listed pand is held at stage 'review' with its reason). Remove an entry when a type or kit change makes the pand read right, and review the sheet again.",
+ "reviewed": "2026-11-10",
+ "holds": [
+  {
+   "pandId": "0363100012104596",
+   "address": "Madurastraat 45A",
+   "reason": "a different 1913 front (grouped windows, three iron balconies on a stacked axis, a bell-shaped roof): the Javastraat mansard type matched it on year, storeys and eaves alone"
+  },
+  {
+   "pandId": "0363100012146568",
+   "address": "Madurastraat 47",
+   "reason": "a different 1913 front (three-light windows and a wide balcony bay): not the Javastraat arched-window design"
+  },
+  {
+   "pandId": "0363100012147446",
+   "address": "Sumatrastraat 28",
+   "reason": "a 1915 front with square-headed paired windows, green iron balconies on every storey and a flat mansard: the arched Javastraat type draws arches that are not there"
+  },
+  {
+   "pandId": "0363100012123220",
+   "address": "Sumatrastraat 26",
+   "reason": "same 1915 Sumatrastraat design as 28: square heads, green iron balconies, a flat mansard"
+  },
+  {
+   "pandId": "0363100012149516",
+   "address": "Djambistraat 5",
+   "reason": "a different design (pointed brick gable over the pair, narrow paired windows, no arched pair, white timber dormers, double door); strip-verdict 2026-11-10"
+  },
+  {
+   "pandId": "0363100012104592",
+   "address": "Djambistraat 7",
+   "reason": "a different design, as 5 (pointed brick gable, narrow paired windows, white timber dormers, double door)"
+  },
+  {
+   "pandId": "0363100012117530",
+   "address": "Djambistraat 25",
+   "reason": "ghosted double-exposure photo and the run's one gate FAIL (gap 0.4 m); resolve the boundary first"
+  },
+  {
+   "pandId": "0363100012095414",
+   "address": "Djambistraat 27",
+   "reason": "the photo puts the whole arched pair inside this pand while the strip gutter sits about 0.7 m above its neighbours against 3DBAG 12.70 m; resolve boundary/registration first"
+  },
+  {
+   "pandId": "0363100012113301",
+   "address": "Soendastraat 30",
+   "reason": "a different front (narrow paired windows, white timber dormer, the gabled corner beside it)"
+  },
+  {
+   "pandId": "0363100012092089",
+   "address": "Soendastraat 8",
+   "reason": "a different design (paired narrow windows, timber dormer with hoist, gable, eaves 13.39 m)"
+  },
+  {
+   "pandId": "0363100012074710",
+   "address": "Borneostraat 13",
+   "reason": "does not read as the four-axis pair design: a wide window over a door on the left and no narrow pair"
+  },
+  {
+   "pandId": "0363100012084255",
+   "address": "Borneostraat 21",
+   "reason": "a different design (three-light narrow groups, cream surrounds, single-leaf door, tiled roof with box dormers) and hidden behind a sculpture/fence"
+  },
+  {
+   "pandId": "0363100012133599",
+   "address": "Borneostraat 23",
+   "reason": "a different design as 21 (three-light narrow groups, cream surrounds, single-leaf door, box dormers)"
+  },
+  {
+   "pandId": "0363100012102480",
+   "address": "Borneostraat 25",
+   "reason": "a different design as 21 (three-light narrow groups, cream surrounds, single-leaf door, box dormers)"
+  },
+  {
+   "pandId": "0363100012113540",
+   "address": "Djambistraat 38",
+   "reason": "corner front mostly behind a tree with a higher flat cornice and no dormer in the photo, where the model draws one"
+  },
+  {
+   "pandId": "0363100012125682",
+   "address": "Djambistraat 40",
+   "reason": "the door-side group is three narrow lights, not two: a trio variant (bays 3,5,5,5) that needs its own type; held rather than drawn with two lights"
+  },
+  {
+   "pandId": "0363100012145601",
+   "address": "Borneostraat 19",
+   "reason": "its shared pointed gable is centred on the 19|21 party wall and 21 is held as a different design; a half gable cannot be drawn alone"
+  },
+  {
+   "pandId": "0363100012090483",
+   "address": "Borneostraat 15",
+   "reason": "the shared pointed gables stand on the 13|15 and 17|19 party walls (round-3 verdict), so each front carries the far half of a gable whose partner (13 or 19) is held; held until 13 and 19 are built. Mirror pin kept (true)"
+  },
+  {
+   "pandId": "0363100012108761",
+   "address": "Borneostraat 17",
+   "reason": "the shared pointed gables stand on the 13|15 and 17|19 party walls (round-3 verdict), so each front carries the far half of a gable whose partner (13 or 19) is held; held until 13 and 19 are built. Mirror pin kept (false)"
+  },
+  {
+   "pandId": "0363100012108617",
+   "address": "Djambistraat 23",
+   "reason": "round 4: with the dark 0.12 m frame and inset 0.15 m the half-width reveal passes the GLB audit on Djambistraat 9-21 and Soendastraat, but on this pand (the last of the run) 3 opening parts (0.95 m2, the door leaf at depth 0.3 m near x 17.0) still reach past the wall silhouette, with the door on either side; cause not found, audit not loosened"
+  },
+  {
+   "pandId": "0363100012085970",
+   "address": "Javastraat 119",
+   "reason": "dark brick hooded dormer, not the white pediment of the Java type: a different dormer the kit type does not draw (kit gap); mirror pinned from the photo"
+  },
+  {
+   "pandId": "0363100012110585",
+   "address": "Javastraat 121",
+   "reason": "tall stepped brick dormer-gable the Java type omits (kit gap); mirror pinned from the photo"
+  },
+  {
+   "pandId": "0363100012067472",
+   "address": "Javastraat 95",
+   "reason": "round 5: not in the approved set; with it in the run its neighbours 97 and 99 exceed the 3000-triangle budget (3125, 3068) and its own wall renders +0.11 light; mirror pin (false) kept"
+  }
+ ]
+}

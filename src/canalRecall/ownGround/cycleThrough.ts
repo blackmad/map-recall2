@@ -41,8 +41,58 @@ export const THROUGH_RAISED_M = 4;
 const RAISED = new Set(['berm', 'island']);
 const STEP = 1;
 
-export interface ThroughStats { drawn: number; skipped: { long: number; bent: number; unbracketed: number }; metres: number }
+export interface ThroughStats { drawn: number; skipped: { long: number; bent: number; unbracketed: number; /** redDedupe: the run lay on the survey's cycle-crossing red. */ owned?: number }; metres: number; /** Runs on bridge ways (bridgeCarry). */ bridges?: number; /** Runs whose width came from the adjoining BGT fietspad (redDedupe). */ bgtWidth?: number }
 export const emptyThroughStats = (): ThroughStats => ({ drawn: 0, skipped: { long: 0, bent: 0, unbracketed: 0 }, metres: 0 });
+
+/**
+ * Lane R5-C1 (issue #262) options, each off by default (the build before it):
+ *   bridges   the red runs on across a bridge way when the way continues (bridgeCarry), on `deckHeight` there;
+ *   owned     a run whose triangles lie on the survey's cycle-crossing red for over THROUGH_OWNED_SHARE is not drawn:
+ *             one red owner per junction mouth (redDedupe; surveyMarkings' crossing is aligned with the zebra);
+ *   bgtWidth  the band's width is the adjoining BGT fietspad's measured width, not the OSM tag or prior (redDedupe).
+ */
+export interface ThroughOptions { bridges?: boolean; deckHeight?: HeightFn; owned?: (x: number, y: number) => boolean; bgtWidth?: boolean }
+/** A run is the survey crossing's when this share of its triangles' centroids lies on that red. */
+export const THROUGH_OWNED_SHARE = 0.25;
+/** The fietspad's width is read this far out of the run (past the mouth's kerb radius), clamped to a fietspad's range. */
+export const BGT_WIDTH_PROBE_M = 1.5, BGT_WIDTH_MIN_M = 1.2, BGT_WIDTH_MAX_M = 4.0;
+
+/**
+ * The BGT fietspad's width at `p` across direction `d`: the contiguous `cycle` class through the point's nearest cycle
+ * station, sampled every 0.1 m up to 3 m either side. Null when no fietspad lies under or within 1 m of the point.
+ */
+export function fietspadWidthAt(index: RoadIndex, p: Vec2, d: Vec2, bridge = false): number | null {
+  const n: Vec2 = [-d[1], d[0]], at = (t: number) => index.classAt(p[0] + n[0] * t, p[1] + n[1] * t, bridge) === 'cycle';
+  let c: number | null = null;
+  for (const t of [0, 0.25, -0.25, 0.5, -0.5, 0.75, -0.75, 1, -1]) if (at(t)) { c = t; break; }
+  if (c === null) return null;
+  let a = c, b = c;
+  while (b - c < 3 && at(b + 0.1)) b += 0.1;
+  while (c - a < 3 && at(a - 0.1)) a -= 0.1;
+  return b - a + 0.1;
+}
+
+/** A point test over a mesh's triangles in plan (the survey's cycle-crossing red): 4 m buckets. */
+export function meshCover(m: MeshArrays): (x: number, y: number) => boolean {
+  const B = 4, grid = new Map<string, number[]>(), p = m.positions, idx = m.indices;
+  for (let t = 0; t < idx.length; t += 3) {
+    const a = idx[t] * 3, b = idx[t + 1] * 3, c = idx[t + 2] * 3;
+    for (let i = Math.floor(Math.min(p[a], p[b], p[c]) / B); i <= Math.floor(Math.max(p[a], p[b], p[c]) / B); i++)
+      for (let j = Math.floor(Math.min(p[a + 1], p[b + 1], p[c + 1]) / B); j <= Math.floor(Math.max(p[a + 1], p[b + 1], p[c + 1]) / B); j++) {
+        const k = `${i}:${j}`; (grid.get(k) ?? grid.set(k, []).get(k)!).push(t);
+      }
+  }
+  return (x, y) => {
+    for (const t of grid.get(`${Math.floor(x / B)}:${Math.floor(y / B)}`) ?? []) {
+      const a = idx[t] * 3, b = idx[t + 1] * 3, c = idx[t + 2] * 3;
+      const d = (p[b + 1] - p[c + 1]) * (p[a] - p[c]) + (p[c] - p[b]) * (p[a + 1] - p[c + 1]);
+      if (Math.abs(d) < 1e-12) continue;
+      const u = ((p[b + 1] - p[c + 1]) * (x - p[c]) + (p[c] - p[b]) * (y - p[c + 1])) / d, v = ((p[c + 1] - p[a + 1]) * (x - p[c]) + (p[a] - p[c]) * (y - p[c + 1])) / d;
+      if (u >= 0 && v >= 0 && u + v <= 1) return true;
+    }
+    return false;
+  };
+}
 
 const isCycleway = (w: LocalWay) => w.tags.highway === 'cycleway';
 const key = (p: Vec2) => `${Math.round(p[0] * 10)}:${Math.round(p[1] * 10)}`;
@@ -88,14 +138,16 @@ const norm = (v: Vec2): Vec2 => { const l = Math.hypot(v[0], v[1]) || 1; return 
  * Red bands across the carriageway where the cycleways of `ways` (only those `own` accepts are drawn; all of them link
  * the ends) cross it between two fietspad stretches. Emits into `m` (the cell's `cycle` layer) and returns the stats.
  */
-export function cycleThrough(m: MeshArrays, ways: readonly LocalWay[], own: (w: LocalWay) => boolean, index: RoadIndex, height: HeightFn): ThroughStats {
+export function cycleThrough(m: MeshArrays, ways: readonly LocalWay[], own: (w: LocalWay) => boolean, index: RoadIndex, height0: HeightFn, opts: ThroughOptions = {}): ThroughStats {
   const stats = emptyThroughStats();
   const cycle = ways.filter(isCycleway);
   const ends = new Map<string, LocalWay[]>();
   for (const w of cycle) for (const p of [w.points[0], w.points[w.points.length - 1]]) (ends.get(key(p)) ?? ends.set(key(p), []).get(key(p))!).push(w);
   const cosMax = Math.cos(THROUGH_MAX_TURN_DEG * Math.PI / 180);
   for (const w of cycle) {
-    if (!own(w) || w.points.length < 2 || (w.tags.bridge && w.tags.bridge !== 'no') || w.tags.tunnel === 'yes') continue;
+    const onBridge = !!w.tags.bridge && w.tags.bridge !== 'no';
+    if (!own(w) || w.points.length < 2 || (onBridge && !opts.bridges) || w.tags.tunnel === 'yes') continue;
+    const height = onBridge && opts.deckHeight ? opts.deckHeight : height0;
     const st = stations(w.points), total = st[st.length - 1];
     const n = Math.floor(total / STEP) + 1, cls: (string | null)[] = [];
     for (let i = 0; i < n; i++) { const p = pointAt(w.points, st, Math.min(i * STEP, total)); cls.push(index.classAt(p[0], p[1])); }
@@ -138,16 +190,40 @@ export function cycleThrough(m: MeshArrays, ways: readonly LocalWay[], own: (w: 
       if (!side(i0, -1) || !side(j, 1)) { stats.skipped.unbracketed++; continue; }
       // The carriage stretch at the lane lift, the raised mouth pieces either side at the sidewalk top.
       const c0 = Math.max(0, (i0 + before - 0.5) * STEP), c1 = Math.min(total, (j - after + 0.5) * STEP), raisedLift = SIDEWALK_TOP - LIFT.carriageway;
-      const from = m.indices.length;
-      ribbon(m, sub(w.points, st, c0, c1), 0, throughWidth(w), height, ROAD_MARK_LIFT.lane, { step: STEP });
+      const from = m.indices.length, fromPos = m.positions.length;
+      // redDedupe: the adjoining fietspad's measured width (the narrower of the two ends), else the tag or prior.
+      let width = throughWidth(w);
+      if (opts.bgtWidth) {
+        const ends: number[] = [];
+        for (const [s, dir] of [[s0 - BGT_WIDTH_PROBE_M, 1], [s1 + BGT_WIDTH_PROBE_M, 1]] as const) {
+          if (s < 0 || s > total) continue;
+          const q = pointAt(w.points, st, s), q2 = pointAt(w.points, st, Math.min(total, Math.max(0, s + dir)));
+          const dd = norm([q2[0] - q[0], q2[1] - q[1]]), v = fietspadWidthAt(index, q, dd, onBridge);
+          if (v !== null) ends.push(v);
+        }
+        if (ends.length) { width = Math.max(BGT_WIDTH_MIN_M, Math.min(BGT_WIDTH_MAX_M, Math.min(...ends))); stats.bgtWidth = (stats.bgtWidth ?? 0) + 1; }
+      }
+      ribbon(m, sub(w.points, st, c0, c1), 0, width, height, ROAD_MARK_LIFT.lane, { step: STEP });
       clipToCarriage(m, from, index);
       const onRaised: HeightFn = (x, y) => height(x, y) + raisedLift;
       for (const [a0, a1] of [[s0, c0], [c1, s1]]) {
         if (a1 - a0 < 0.5) continue;
         const at = m.indices.length;
-        ribbon(m, sub(w.points, st, a0, a1), 0, throughWidth(w), onRaised, ROAD_MARK_LIFT.lane, { step: STEP });
+        ribbon(m, sub(w.points, st, a0, a1), 0, width, onRaised, ROAD_MARK_LIFT.lane, { step: STEP });
         clipToCarriage(m, at, index, true);
       }
+      // redDedupe: one red owner per mouth. The survey's cycle crossing (surveyMarkings) is laid beside the zebra with
+      // its blocks; where it already covers the run, the ribbon is not drawn over it a second time.
+      if (opts.owned && m.indices.length > from) {
+        let on = 0, n = 0;
+        const p = m.positions, idx = m.indices;
+        for (let t = from; t < idx.length; t += 3) {
+          const A = idx[t] * 3, B = idx[t + 1] * 3, C = idx[t + 2] * 3;
+          n++; if (opts.owned((p[A] + p[B] + p[C]) / 3, (p[A + 1] + p[B + 1] + p[C + 1]) / 3)) on++;
+        }
+        if (on >= THROUGH_OWNED_SHARE * n) { idx.length = from; p.length = fromPos; m.uvs.length = fromPos / 3 * 2; if (m.colors) m.colors.length = fromPos; stats.skipped.owned = (stats.skipped.owned ?? 0) + 1; continue; }
+      }
+      if (onBridge) stats.bridges = (stats.bridges ?? 0) + 1;
       stats.drawn++; stats.metres += len;
     }
   }

@@ -1,11 +1,11 @@
 import { expect, test, type Page } from '@playwright/test';
-import { readFileSync } from 'node:fs';
+import { budget } from './helpers/budget';
 
 // Engine programme P1: camera parity under `?engine=own`. The own engine rides the start flight and the Anne Frank
 // House → Rijksmuseum route; every sampled camera (centre, zoom, bearing, pitch, elevation, fov) is replayed in a
 // second page whose world view is MapLibre (the oracle), and the ground points the engine put at six screen probes
 // must land within the budget there. The own page never constructs maplibregl.Map; the oracle is a separate page.
-const PARITY_PX: number = JSON.parse(readFileSync('tests/perf/budgets.json', 'utf8')).entries.cameraParityPx.value;
+const PARITY_PX: number = budget('cameraParityPx');
 
 type Pose = { phase: 'intro' | 'ride'; lng: number; lat: number; zoom: number; bearing: number; pitch: number; elevation: number; fovDeg: number; w: number; h: number; probes: Array<[number, number, number, number]> };
 

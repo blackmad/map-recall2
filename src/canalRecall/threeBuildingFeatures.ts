@@ -6,12 +6,14 @@ import type {SurveyedMeshBinding} from './surveyedEnvelopeMeshBinding.js';
 import type { ChunkHostOpeningConfig } from './hostWallOpenings.js';
 import { CELL_LAYER_COUNT, STYLE_DIMS, cellLayer } from './facadeCells.js';
 import { ROOF_CELL_M } from './roofCells.js';
-import { roofPlanForFeature, type RoofPlan } from './roofMesh.js';
+import { roofPlanForFeature, roofTrianglesForOutline, roofTrianglesForOutlineUncut, type RoofDims, type RoofPlan } from './roofMesh.js';
 import { sourceVisualRoof } from './sourceVisualRoof.js';
 import { BAY_LAYER_COUNT, BAY_STYLES, FATIH_MASONRY_LAYER, bayLayer, bayLookFor } from './bayLook.js';
 import { paletteFor } from './bayTextures.js';
-import { BARE_WALL_HEX, DEFAULT_FACADE_WALL_HEX, DEFAULT_SHOP_SIGN_HEX, FLAT_ROOF_GREYS, ROOF_SLOT_TONES, cellSetOf, hexToRgb, lookHex, roofTone, type BuildingLook } from './look/palette.js';
-import { decodeFurniture, roofSlotHex } from './roofs/roofSlots.js';
+import { BARE_WALL_HEX, DEFAULT_FACADE_WALL_HEX, DEFAULT_SHOP_SIGN_HEX, FLAT_ROOF_GREYS, LOOK_VARIANTS, ROOF_SLOT_TONES, cellSetOf, hexToRgb, lookHex, roofTone, type BuildingLook } from './look/palette.js';
+import { decodeFurniture, MIN_CONFIDENCE, roofSlotHex } from './roofs/roofSlots.js';
+import { FLAT_LID_EXPOSURE, flatRoofPriorHex, flatRoofToneEnabled, lowConfidenceReading, mappedTowardPrior, roofStampConfident, scaleHex } from './roofs/flatRoofTone.js';
+import { BOX_MIN_M2, LIP_MIN_M2, flatRoofSurfaceEnabled, flatRoofSurfaceLayer } from './roofs/flatRoofSurface.js';
 import { isRoofSlot } from './roofs/roofFacts.js';
 import { largeTierSystem, plinthHex } from './largeBuildingTier.js';
 import type { Look, ShopKind } from './bayTextures.js';
@@ -27,7 +29,10 @@ import { SegmentGrid } from './streetFronts.js';
 import { ccwRing, designInLook, gardenRoomDesign, gardenRoomGlassHex, gardenRoomLidHex, gardenRoomRule, gardenRoomTriangles, glassEdge, mainHouse, nearestStreetPoint, partyWalls, HOUSE_REACH_M, type Neighbour, type Pt } from './gardenRooms.js';
 import { GARDEN_ROOM_TONES } from './look/palette.js';
 import { buurtProfileAt } from './buurtProfiles/data.js';
-import { profileWallBeatsMaterial } from './buurtProfiles/profiles.js';
+import { SETBACK_CLADDING_HEX, SETBACK_INSET_M, SETBACK_STOREY_M, insetRing } from './contemporaryFamily.js';
+import { profileWallBeatsMaterial, storeyScaleOf } from './buurtProfiles/profiles.js';
+import { levelWallHex } from './look/paletteLevel.js';
+import { industrialKitEnabled, industrialMeshSpec, industrialWallHex } from './industrial/industrialKit.js';
 
 /** 'untextured' draws with the procedural cells' flat layer only: plain colours, real shapes (look/palette.ts). */
 export type { BuildingLook };
@@ -52,12 +57,37 @@ const roofHexFor = (look: BuildingLook, plan: RoofPlan) => roofTone(look, plan.m
 
 /** The roof-facts stamp (roofs/roofFacts.ts) as a display colour, texture cell and measured furniture; null without one. */
 function measuredRoofOf(p: Record<string, unknown>, look: BuildingLook): { hex: string; cell: 'tile' | 'slate' | 'flat'; furniture?: MeshBuilding['measuredRoof'] } | null {
-  if (!isRoofSlot(p.roofSlot)) return null;
+  // A low-confidence stamp (sidecar at --min-confidence=0.2) only biases the flat-roof prior (applyFlatRoof).
+  if (!isRoofSlot(p.roofSlot) || !roofStampConfident(p, MIN_CONFIDENCE)) return null;
   const rgb = typeof p.roofMeasured === 'string' && /^#[0-9a-f]{6}$/i.test(p.roofMeasured) ? hexToRgb(p.roofMeasured) : null;
   const base = roofSlotHex(p.roofSlot, rgb), hex = cellSetOf(look) === 'procedural' ? base : lookHex(base, look);
   const encoded = typeof p.roofFurniture === 'string' && p.roofFurniture ? p.roofFurniture.split(',').map(Number) : [];
   const furniture = encoded.length || p.roofTerrace ? { furniture: decodeFurniture(encoded), terrace: p.roofTerrace === true } : undefined;
   return { hex, cell: ROOF_SLOT_TONES[p.roofSlot].cell, furniture };
+}
+
+/**
+ * Lane R5-E (#265): an unmeasured, unmapped flat roof takes its build-year band's prior (`?flatRoofTone=0` keeps the
+ * hashed slot base), and a flat lid gets its own surface layer, a parapet lip from LIP_MIN_M2 and a generic roof box
+ * from BOX_MIN_M2 without measured furniture (`?flatRoofSurface=0` keeps the shared flat cell and nothing on top).
+ */
+function applyFlatRoof(building: MeshBuilding, p: Record<string, unknown>, look: BuildingLook, id: string, measured: ReturnType<typeof measuredRoofOf>, mapped: boolean, cells: ReturnType<typeof cellSetOf>, areaM2: number): void {
+  if (!building.lid) return;
+  if (flatRoofToneEnabled()) {
+    const year = p.constructionYear === null || p.constructionYear === undefined || !Number.isFinite(Number(p.constructionYear)) ? null : Number(p.constructionYear);
+    const prior = flatRoofPriorHex(id, year, measured ? null : lowConfidenceReading(p, MIN_CONFIDENCE), MIN_CONFIDENCE);
+    const priorHex = cells === 'procedural' ? prior : lookHex(prior, look);
+    let hex = building.lid.hex;
+    if (!measured && !mapped) hex = priorHex;
+    else if (!measured && mapped) hex = mappedTowardPrior(hex, priorHex);
+    // The lid's render gain (1.135 at U1) is a look-cells figure; procedural and cartoon lids keep their tint.
+    if (cells !== 'procedural' && !LOOK_VARIANTS[look].cartoonRoofCells) hex = scaleHex(hex, FLAT_LID_EXPOSURE);
+    building.lid = { ...building.lid, hex };
+  }
+  if (!flatRoofSurfaceEnabled() || LOOK_VARIANTS[look].cartoonRoofCells) return;
+  const surfaceLayer = flatRoofSurfaceLayer(cells);
+  if (surfaceLayer !== null) building.lid = { ...building.lid, surfaceLayer };
+  building.flatRoof = { lip: areaM2 >= LIP_MIN_M2, box: areaM2 >= BOX_MIN_M2 && !building.measuredRoof?.furniture.length, areaM2 };
 }
 
 /**
@@ -101,17 +131,22 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook, coarse = f
   if (!polygons.length || !Number.isFinite(heightM)) return null;
   const id = String(p.id ?? '');
   let building: MeshBuilding;
-  let plain: number, roofBase: number, layout: FacadeStyle, profileWall: string | undefined, spandrelAccent: string | undefined;
+  let plain: number, roofBase: number, layout: FacadeStyle, profileWall: string | undefined, spandrelAccent: string | undefined, quietGround: number | undefined;
   if (cellSetOf(look) !== 'procedural') {
     const year = p.constructionYear === null || p.constructionYear === undefined || !Number.isFinite(Number(p.constructionYear)) ? null : Number(p.constructionYear);
     const at = polygons[0]?.[0]?.[0];
-    const bay = bayLookFor(id, year, Number(p.height) || heightM, look as Look, shopfrontOf(p), undefined, periodWallOf(p), at ? buurtProfileAt(at[0], at[1]) : null,
-      year !== null && year >= 1945 ? { footprintM2: footprintAreaM2(feature.geometry), buildingType: typeof p.buildingType === 'string' ? p.buildingType : null } : undefined);
+    const profile = at ? buurtProfileAt(at[0], at[1]) : null;
+    const bay = bayLookFor(id, year, Number(p.height) || heightM, look as Look, shopfrontOf(p), undefined, periodWallOf(p), profile,
+      year !== null && year >= 1945 ? { footprintM2: footprintAreaM2(feature.geometry), buildingType: typeof p.buildingType === 'string' ? p.buildingType : null, at: at ? [at[0], at[1]] as const : undefined } : undefined);
     profileWall = bay.profileWall; spandrelAccent = bay.modern?.accent;
     building = { id, polygons, heightM, minHeightM, style: bay.layout, wallHex: bay.wallHex, accentHex: bay.accentHex, layers: bay.layers, groundHex: bay.groundHex };
+    const storeyScale = storeyScaleOf(profile?.eras[bay.archetype], STYLE_DIMS[bay.layout].storey);
+    if (storeyScale !== 1) building.storeyScale = storeyScale;
     building.openings = bayVariantOpenings({ ...bay.variant, kind: 'upper' }, look as Look);
     plain = bay.plain; roofBase = BAY_LAYER_COUNT; layout = bay.layout; building.plainLayer = bay.plain;
+    quietGround = bayLayer(bay.archetype, bay.style, 'ground');
     if ((FACADE_STYLES as readonly string[]).includes(String(p.facadeStyle)) && p.facadeStyle !== bay.layout) building.period = p.facadeStyle as FacadeStyle;
+    if (bay.contemporary?.setback) building.setbackCrown = true;
   } else {
     layout = (FACADE_STYLES as readonly string[]).includes(String(p.facadeStyle)) ? p.facadeStyle as FacadeStyle : 'c19';
     building = { id, polygons, heightM, minHeightM, style: layout, wallHex: typeof p.sideColour === 'string' ? p.sideColour : DEFAULT_FACADE_WALL_HEX, shop: layout !== 'tower' && (shopfrontOf(p) ? shopfrontOf(p) !== 'quiet' : hashShop(id)) };
@@ -119,11 +154,13 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook, coarse = f
     plain = cellLayer(layout, 'plain', lookVariant(id)); roofBase = CELL_LAYER_COUNT; building.plainLayer = plain;
   }
   // A sourced hex color survives PHOTO decoration; material-only hues remain explicitly display priors.
+  let sourcedWall: string | undefined;
   if (look === 'photo') {
     // A buurt profile's measured wall (bayLook.ts) outranks a city-wide material-family hue of the same family.
     const materialPrior = profileWall && profileWallBeatsMaterial(p.material, profileWall) ? undefined : p.facadeMaterialColourPrior;
     const sourced = [p.facadeMappedColour, p.sideColourSource === 'measured-accepted' ? p.sideColour : undefined, materialPrior].find(v => typeof v === 'string' && /^#[0-9a-f]{6}$/i.test(v));
     if (sourced) building.wallHex = String(sourced);
+    sourcedWall = sourced ? String(sourced) : undefined;
   }
   const front = shopfrontOf(p);
   building.shopfront = front ? front !== 'quiet' : false;
@@ -150,6 +187,8 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook, coarse = f
   const measured = measuredRoofOf(p, look);
   building.lid = { hex: measured?.hex ?? mapped ?? FLAT_ROOF_GREYS[lookVariant(id) % FLAT_ROOF_GREYS.length], flatLayer: roofBase + 3 };
   if (measured?.furniture) building.measuredRoof = measured.furniture;
+  // A real flat roof (no planned pitched roof): lane R5-E's tone and surface (roofs/flatRoofTone.ts, flatRoofSurface.ts).
+  if ((!p.roofPlanned || p.roofShape === 'parapet') && !p.kitRoof && !p.kitWall && look !== 'untextured') applyFlatRoof(building, p, look, id, measured, !!mapped, cellSetOf(look), footprintAreaM2(feature.geometry));
   if (p.gardenShed) {
     // A back-garden shed (gardenSheds.ts): bare walls in a weathered muted colour, a tarred flat lid, nothing else.
     building.bare = true; building.wallHex = shedWallHex(id); building.lid = { hex: SHED_LID_HEX, flatLayer: roofBase + 3 };
@@ -188,18 +227,61 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook, coarse = f
       }
     }
   }
+  // The industrial kit (industrial/industrialKit.ts): tanks, silos and sheds the industrial table names lose the house
+  // grammar; offices on an estate keep their windows but not a guessed shopfront. Without the stamp, nothing changes.
+  const industrial = typeof p.industrial === 'string' && look !== 'untextured' && !p.kitWall && !p.frontCarrier && !p.gardenShed && industrialKitEnabled() ? p.industrial : null;
+  if (industrial === 'office') {
+    if (!building.shopfront && !p.largeTier) { building.shop = false; if (building.layers && quietGround !== undefined) building.layers = { ...building.layers, ground: quietGround }; building.groundHex = undefined; }
+  } else if (industrial === 'tank' || industrial === 'silo' || industrial === 'shed' || industrial === 'works') {
+    const cells = cellSetOf(look), tone = (hex: string) => cells === 'procedural' ? hex : lookHex(hex, look as Look);
+    building.bare = true; building.plainWalls = false;
+    building.wallHex = sourcedWall ?? tone(industrialWallHex(id, industrial));
+    const surface = (industrial === 'shed' || industrial === 'works') && flatRoofSurfaceEnabled() ? flatRoofSurfaceLayer(cells) : null;
+    building.plainLayer = surface ?? roofBase + 3;
+    building.layers = undefined; building.groundHex = undefined; building.openings = undefined; building.parapetM = undefined; building.layoutScale = undefined;
+    building.shop = false; building.shopfront = false; building.signature = undefined; building.chain = undefined;
+    if (industrial === 'tank') { building.roof = undefined; building.flatRoof = undefined; building.measuredRoof = undefined; }
+    building.industrial = industrialMeshSpec(id, industrial, heightM - minHeightM, footprintAreaM2(feature.geometry), tone);
+  }
   // Facade extras for every faced building; the plain and Untextured looks stay light.
   // Never on a landmark kit's walls: church hosts drew hoist beams and stray strips (user 2026-10-03).
   building.extras = !building.bare && !p.kitWall && !p.largeTier && look !== 'untextured';
+  if (Array.isArray(p.registerForce) && p.registerForce.length && building.extras) building.registerForce = p.registerForce as string[];
   if (look === 'untextured') {
     // Untextured: one flat layer for every wall and roof face, so only colour and shape remain.
     const flat = roofBase + 3;
     building.bare = true; building.plainLayer = flat;
     if (building.roof) building.roof = { ...building.roof, layers: { slope: flat, plain: flat, dormer: flat } };
   }
+  // The city-wide palette level (look/paletteLevel.ts, `?paletteLevel=0` for the before): generic photo-look walls only; a
+  // landmark kit, a large recipe and a bare shed keep their authored colour.
+  if (look === 'photo' && !p.kitWall && !p.kitWallHex && !p.largeTier && !building.bare) building.wallHex = levelWallHex(building.wallHex);
   return building;
 }
 
+
+/**
+ * The contemporary family's set-back top storey (contemporaryFamily.ts): the body stops a storey short under its own
+ * flat lid (the terrace), and the top storey stands SETBACK_INSET_M in from the outer walls, glazed in the curtain
+ * cell under anthracite panel cladding. Only for a faced flat-roofed building the family marked, with a clean inset
+ * outline (insetRing); anything else draws as before.
+ */
+export function withSetbackCrown(b: MeshBuilding, look: BuildingLook): MeshBuilding[] {
+  if (!b.setbackCrown || b.bare || b.roof || !b.lid || !b.layers || b.surveyedEnvelope || b.polygons.length !== 1) return [b];
+  const top = b.heightM, bodyTop = top - SETBACK_STOREY_M;
+  if (bodyTop - b.minHeightM < 2 * SETBACK_STOREY_M) return [b];
+  const inset = insetRing(b.polygons[0][0], SETBACK_INSET_M);
+  if (!inset) return [b];
+  const cladding = lookHex(SETBACK_CLADDING_HEX, look);
+  const body: MeshBuilding = { ...b, heightM: bodyTop, setbackCrown: false, measuredRoof: undefined, flatRoof: b.flatRoof ? { ...b.flatRoof, box: false } : undefined };
+  const crown: MeshBuilding = {
+    ...b, id: `${b.id}:setback`, polygons: [[inset]], minHeightM: bodyTop, heightM: top, setbackCrown: false,
+    wallHex: cladding, accentHex: cladding, groundHex: undefined, layers: { upper: bayLayer('modern', 7, 'upper'), ground: bayLayer('modern', 7, 'upper'), door: bayLayer('modern', 7, 'upper') },
+    shop: false, shopfront: false, signature: undefined, chain: undefined, extras: false, streetAppearance: undefined, gardenRoom: undefined,
+    flatRoof: b.flatRoof ? { ...b.flatRoof, lip: false } : undefined, period: undefined,
+  };
+  return [body, crown];
+}
 
 /** `gardenRoom: rule` for a shed that is a garden room (gardenRooms.ts), nothing otherwise. */
 const gardenRoomMark = (f: Feature): { gardenRoom?: string } => {
@@ -247,8 +329,33 @@ function gardenRoomTrisFor(f: Feature, building: MeshBuilding, look: BuildingLoo
  */
 export const shellRoofPlan = (plan: RoofPlan): RoofPlan => ({
   ...plan, kind: SHELL_ROOF_KIND[plan.kind] ?? plan.kind, dormers: false, chimney: false, accents: false, shutters: false, streetRidge: undefined, streetEnds: undefined, sourceCrownFront: undefined,
-  gable: 'plain', clipToOutline: false, pieces: plan.pieces?.map(p => ({ ...p, plan: shellRoofPlan(p.plan) })),
+  gable: 'plain', clipToOutline: plan.clipToOutline, pieces: plan.pieces?.map(p => ({ ...p, plan: shellRoofPlan(p.plan) })),
 });
+/**
+ * #257 (user shots 2026-11-08, the Stadhouderskade by the Hobbemastraat and the Geldersekade): where the detail cuts
+ * a planned roof at the walls (roofMesh planBuildingRoof `clipToOutline`: a fitted box over a skewed wall, or an
+ * irregular block roofed from its fitted box), the shell used to drop the cut and drew the whole box, up to 22 m of
+ * roof beyond walls that stop at the eaves. The cut costs triangles (each slope is cut per outline triangle), and a
+ * third of the planned roofs carry it for an eaves line a few decimetres out, invisible from a shell's distance; so a
+ * shell cuts only where its uncut box stands more than this far past the walls.
+ */
+export const SHELL_ROOF_HANG_CLIP_M = 1;
+const KX_SHELL = 111_320 * Math.cos(ORIGIN.lat * Math.PI / 180), KY_SHELL = 110_540;
+/** How far (m) the roof of `plan` built uncut over `outer` (lng/lat) stands past the outline at most, from above. */
+export function roofHangM(outer: readonly number[][], plan: RoofPlan, dims: RoofDims): number {
+  const ring = outer.map(([lng, lat]) => [(lng - ORIGIN.lng) * KX_SHELL, (lat - ORIGIN.lat) * KY_SHELL]);
+  if (ring.length > 1 && ring[0][0] === ring[ring.length - 1][0] && ring[0][1] === ring[ring.length - 1][1]) ring.pop();
+  const inside = (x: number, y: number) => { let r = false; for (let a = 0, b = ring.length - 1; a < ring.length; b = a++) if ((ring[a][1] > y) !== (ring[b][1] > y) && x < (ring[b][0] - ring[a][0]) * (y - ring[a][1]) / (ring[b][1] - ring[a][1]) + ring[a][0]) r = !r; return r; };
+  const toWall = (x: number, y: number) => { let d = Infinity; for (let a = 0; a < ring.length; a++) { const p = ring[a], q = ring[(a + 1) % ring.length], dx = q[0] - p[0], dy = q[1] - p[1], t = Math.max(0, Math.min(1, ((x - p[0]) * dx + (y - p[1]) * dy) / (dx * dx + dy * dy || 1))); d = Math.min(d, Math.hypot(x - p[0] - t * dx, y - p[1] - t * dy)); } return d; };
+  let hang = 0;
+  for (const t of roofTrianglesForOutlineUncut(outer, ORIGIN, plan, 0, dims, KX_SHELL)) for (const [x, y] of t.p) if (!inside(x, y)) hang = Math.max(hang, toWall(x, y));
+  return hang;
+}
+/** The shell's roof plan for a building: shellRoofPlan, cut at the walls only where the uncut roof hangs past them (#257). */
+export function shellRoofPlanFor(outer: readonly number[][], plan: RoofPlan, dims: RoofDims): RoofPlan {
+  const low = shellRoofPlan(plan);
+  return low.clipToOutline && roofHangM(outer, low, dims) <= SHELL_ROOF_HANG_CLIP_M ? { ...low, clipToOutline: false } : low;
+}
 /** Two-pitch and broken roofs read as a hip from a shell's distance (a mansard's kink is a few pixels); 6–9× fewer triangles. */
 const SHELL_ROOF_KIND: Partial<Record<RoofPlan['kind'], RoofPlan['kind']>> = { mansard: 'hipped', mansardHip: 'hipped', school: 'hipped', halfHipped: 'hipped', sawtooth: 'pitched' };
 /** A parapet roof is flat behind its parapet: the shell's lid at the same height already draws it. */
@@ -278,7 +385,7 @@ export function buildFeatureChunk(features: readonly Feature[], look: BuildingLo
     }
     if (building && shellRoof && building.roof && !building.surveyedEnvelope && shellRoofed(building.roof.plan)) {
       // Walls (and their windows) stop at the eaves under the low-poly planned roof, in the detail's roof colour.
-      building.roof = { ...building.roof, plan: shellRoofPlan(building.roof.plan), lowPoly: true };
+      building.roof = { ...building.roof, plan: shellRoofPlanFor(building.polygons[0]?.[0] ?? [], building.roof.plan, building.roof.dims), lowPoly: true };
       building.extras = false;
     } else if (building && (mode === 'coarse' || mode === 'shell')) {
       // Keep textured windows and ground-floor doors at every distance. Simplify
@@ -288,10 +395,11 @@ export function buildFeatureChunk(features: readonly Feature[], look: BuildingLo
       building.heightM = f.properties.kitRoof ? wallTopHeightM(f.properties) : Number(f.properties.height) || building.heightM;
       building.roof = undefined;
       building.extras = false;
+      if (building.flatRoof) building.flatRoof = { ...building.flatRoof, coarse: true };
       // Continue into local facade context below: coarse LOD drops relief and
       // shaped roofs, while its existing cheap window cells keep the street rhythm.
     }
-    if (building && mode !== 'shell' && profiles.length && look !== 'untextured' && !f.properties.kitWall && !f.properties.frontCarrier && !f.properties.largeTier && !f.properties.gardenShed) {
+    if (building && mode !== 'shell' && profiles.length && look !== 'untextured' && !f.properties.kitWall && !f.properties.frontCarrier && !f.properties.largeTier && !f.properties.gardenShed && !building.industrial) {
       const localProfiles = profilesNearBuilding(profiles, building.polygons);
       if (!localProfiles.length) return building;
       const p = f.properties;
@@ -300,7 +408,7 @@ export function buildFeatureChunk(features: readonly Feature[], look: BuildingLo
       building.streetAppearance = { profiles: localProfiles, look, sourceHeightM: Number(f.properties.height) || building.heightM, year: p.constructionYear == null || !Number.isFinite(Number(p.constructionYear)) ? null : Number(p.constructionYear), mappedWallHex, shopfront: shopfrontOf(p), periodWallHex: periodWallOf(p) };
     }
     return building;
-  }).filter((b): b is MeshBuilding => !!b), ORIGIN, mode === 'coarse' ? 'walls' : mode, streets, contextFeatures.map(f=>{const roofed=(mode==='coarse'||mode==='shell')&&!!chunkOptions.shellRoofs&&!f.properties.gardenShed&&!f.properties.kitRoof;const b=meshBuildingFor(f,look,(mode==='coarse'||mode==='shell')&&!roofed);if(b){const binding=surveyedEnvelopes.get(b.id),g=f.geometry as {type?:string;coordinates?:number[][][]};if(binding&&binding.nativeParentId===b.id&&g.type==='Polygon'&&binding.installedFootprintFingerprint===envelopeFootprintFingerprint(g as {type:'Polygon';coordinates:number[][][]})&&binding.nativeMetadata.aggregateHeightM===Number(f.properties.height)&&binding.nativeMetadata.constructionYear===Number(f.properties.constructionYear)&&binding.meshOrigin.lng===ORIGIN.lng&&binding.meshOrigin.lat===ORIGIN.lat)b.surveyedEnvelope=binding;}if(b&&(mode==='coarse'||mode==='shell')&&!(roofed&&b.roof&&shellRoofed(b.roof.plan))){b.heightM=f.properties.kitRoof?wallTopHeightM(f.properties):Number(f.properties.height)||b.heightM;b.roof=undefined;}return b;}).filter((b):b is MeshBuilding=>!!b), hostOpenings);
+  }).filter((b): b is MeshBuilding => !!b).flatMap(b => b.setbackCrown ? withSetbackCrown(b, look) : [b]), ORIGIN, mode === 'coarse' ? 'walls' : mode, streets, contextFeatures.map(f=>{const roofed=(mode==='coarse'||mode==='shell')&&!!chunkOptions.shellRoofs&&!f.properties.gardenShed&&!f.properties.kitRoof;const b=meshBuildingFor(f,look,(mode==='coarse'||mode==='shell')&&!roofed);if(b){const binding=surveyedEnvelopes.get(b.id),g=f.geometry as {type?:string;coordinates?:number[][][]};if(binding&&binding.nativeParentId===b.id&&g.type==='Polygon'&&binding.installedFootprintFingerprint===envelopeFootprintFingerprint(g as {type:'Polygon';coordinates:number[][][]})&&binding.nativeMetadata.aggregateHeightM===Number(f.properties.height)&&binding.nativeMetadata.constructionYear===Number(f.properties.constructionYear)&&binding.meshOrigin.lng===ORIGIN.lng&&binding.meshOrigin.lat===ORIGIN.lat)b.surveyedEnvelope=binding;}if(b&&(mode==='coarse'||mode==='shell')&&!(roofed&&b.roof&&shellRoofed(b.roof.plan))){b.heightM=f.properties.kitRoof?wallTopHeightM(f.properties):Number(f.properties.height)||b.heightM;b.roof=undefined;}return b;}).filter((b):b is MeshBuilding=>!!b), hostOpenings);
   if (!garden.length || mode === 'extras') return chunk;
   const flatLayer = (cellSetOf(look) === 'procedural' ? CELL_LAYER_COUNT : BAY_LAYER_COUNT) + 3;
   return appendAllotmentHouses(chunk, garden, ORIGIN, flatLayer, mode === 'coarse' || mode === 'shell');

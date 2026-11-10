@@ -538,6 +538,14 @@ export const ROAD_SPOTS: RoadSpot[] = [
   { id: 'kinkerbrug-postjesweg', label: 'Kinkerbrug: Postjesweg over the Kostverlorenvaart (Het Sieraad, The Coffee Bridge, looking south-east)', at: [4.86005, 52.36460], bearing: 120, halfM: 40, backM: 30 },
   // User 2026-10-31 (artifacts/bridge-roads/user-otter-bridge.png, by the De Otter mill card): the same fault on the Beltbrug.
   { id: 'beltbrug-jan-van-galenstraat', label: 'Beltbrug: Jan van Galenstraat over the Kostverlorenvaart (De Otter, looking east)', at: [4.86984, 52.37540], bearing: 110, halfM: 40, backM: 30 },
+  // User aerial shots 2026-11-08 (engine round 5, U3; screenshots repo engine/2026-11-08-user-shots/roads-*.png): "the
+  // roads still look like a mess … missing continuity at bridges, looks chaotic, grey clipping through red" (lane R5-C1,
+  // issue #262). The Kattenburgerbrug (BRU0274, a flat movable footprint) over the Nieuwe Vaart, looking north-west at
+  // the Prins Hendrikkade junction; the Prins Hendrikkade × IJtunnel ramps junction (Rapenburg label), looking west-north-west;
+  // the Prins Hendrikkade bridge over the Schippersgracht mouth (BRU0487, red fietspad on the south side), looking west.
+  { id: 'kattenburgerbrug-user', label: 'Kattenburgerbrug: Prins Hendrikkade over the Nieuwe Vaart (Arcam, looking north-west)', at: [4.91420, 52.37092], bearing: 330, halfM: 45, backM: 30 },
+  { id: 'rapenburg-ijtunnel-user', label: 'Prins Hendrikkade × IJtunnel ramps (Rapenburg, looking west-north-west)', at: [4.91080, 52.37180], bearing: 290, halfM: 45, backM: 30 },
+  { id: 'schippersgracht-brug-user', label: 'Prins Hendrikkade bridge over the Schippersgracht mouth (BRU0487, looking west)', at: [4.91279, 52.37102], bearing: 270, halfM: 40, backM: 30 },
   { id: 'nassaukade-rotterdammerbrug', label: 'Nassaukade tram curve by the Singelgracht, Rotterdammerbrug bascule (keeper\'s house, barrier posts)', at: [4.8791, 52.3818], bearing: 30, halfM: 50, backM: 30 },
 ];
 /** Where a rider stands to look at a spot: `backM` behind `at` along the bearing (lng/lat, bearing degrees from north). */
@@ -572,5 +580,9 @@ export const BRIDGE_GAPS: BridgeGapRegression[] = [
   { id: 'centraal-busstation-platform', label: 'Centraal bus station IJzijde platform lane (dry way deck): 425 → 0 m²', way: 328208284, at: [4.89945, 52.38003], maxGapM2: 5, pinMin: 380, dry: true },
   { id: 'nieuwe-leeuwarderweg-viaduct', label: 'Nieuwe Leeuwarderweg viaduct over the metro, Noord (dry way deck): 1364 → 13.5 m²', way: 1275368974, at: [4.93098, 52.40118], maxGapM2: 30, pinMin: 1200, dry: true },
   { id: 'nieuwe-leeuwarderweg-7042467', label: 'Nieuwe Leeuwarderweg at the Buikslotermeerplein ramps (dry way deck, survey-wide): 477 → 128 m²', way: 7042467, at: [4.93883, 52.40721], maxGapM2: 160, pinMin: 450, dry: true },
+  // Round 2 (lane bridge-gaps-2, 2026-11-09): the largest remaining systemic cause was step 3 being off: viaducts over land the survey draws as deck with no road under them. Measured with dryWayDecks on.
+  { id: 'vertrekpassage-682669315', label: 'Vertrekpassage viaduct at Schiphol, 409 m (dry way deck): 3021 → 15 m²', way: 682669315, at: [4.76281, 52.30985], maxGapM2: 40, pinMin: 2500, dry: true },
+  { id: 'westrandweg-1093974657', label: 'Westrandweg viaduct piece at Sloterdijk, 289 m (dry way deck): 2780 → 4 m²', way: 1093974657, at: [4.80403, 52.39321], maxGapM2: 20, pinMin: 2200, dry: true },
+  { id: 'ringweg-zuid-7381715', label: 'Ringweg-Zuid slip viaduct (dry way deck, core half-width: the OSM 10.1 m reached over ground-level road, 328 m² before the narrowing): 150 → 75 m²', way: 7381715, at: [4.85811, 52.33779], maxGapM2: 110, pinMin: 120, dry: true },
   { id: 'langbroekdreef-way-deck', label: 'Langbroekdreef way deck, Gaasperdam: 224 → 96 m²', way: 9538865, at: [4.97474, 52.30606], maxGapM2: 120, pinMin: 190 },
 ];

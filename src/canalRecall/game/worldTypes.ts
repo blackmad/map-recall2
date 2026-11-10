@@ -41,6 +41,8 @@ export interface LandmarkNotice {
   id: string;
   name: string;
   type?: string;
+  /** Chip words shown instead of `type` (already translated): ARTWORK, CAFÉ, never BUILDING for a mapped node. */
+  typeLabel?: string;
   detail?: string;
   longDetail?: string;
   /** Set when `detail` includes a generated fact rather than only the article
@@ -68,6 +70,10 @@ export interface Landmark extends LandmarkNotice {
   type: string;
   x: number;
   y: number;
+  /** The extract's own point in world px, before the road/canal snap of `x`/`y` (boat and bike only). Free Ride
+   *  pins stand here (lane S5, #333); route targets keep the snapped `x`/`y`. */
+  ownX?: number;
+  ownY?: number;
   lngLat: LngLat;
   detail: string;
   longDetail: string;
@@ -141,6 +147,10 @@ export interface BuildingHit {
   height?: number;
   /** The exact installed mesh owner's plan, including its courtyard holes. */
   footprint?: import('../clickPoiInfo').PolygonGeometry;
+  /** Set when the click hit a drawn POI label: `name` is the label's text, `lngLat` its point. */
+  poi?: boolean;
+  /** For a label hit: the building under the label (engine/labelPand.ts), whose id keys the facts register. */
+  pand?: import('../engine/labelPand').LabelPand;
   lngLat: LngLat;
   geojson?: GeoJsonFeatureCollection;
   featureTarget: FeatureTarget | null;

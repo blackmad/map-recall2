@@ -1,0 +1,459 @@
+{
+ "schemaVersion": 1,
+ "kind": "house-type",
+ "id": "timor-1910-five",
+ "district": "timorpleinbuurt",
+ "description": "DRAFT (scripts/block-face/draft-type.ts (src/canalRecall/blockFace/typeDraft.ts)) for the review turn. Timorpleinbuurt-Noord family 1910-1914, 5 storeys, 4.9-6.4 m wide: 47 pands on 4 block faces; median cornice 12.91 m, 3 window columns, wall #63554c. Pane layout, head kind, cornice kind, crowns and ground variants are NOT measured: see draft.unmeasured.",
+ "fit": {
+  "widthM": [
+   5.5,
+   6.2
+  ],
+  "storeys": [
+   4
+  ]
+ },
+ "match": {
+  "years": [
+   1912,
+   1913
+  ],
+  "eavesM": [
+   12.1,
+   14.5
+  ],
+  "storeys3dbag": [
+   4,
+   5
+  ],
+  "roof": "pitched",
+  "baysByWidth": [
+   {
+    "maxWidthM": 99,
+    "bays": 3
+   }
+  ],
+  "stucco": false,
+  "note": "drafted: 47 pands, 4 faces; see draft.fields for n and spread of every number"
+ },
+ "body": {
+  "storeys": 4,
+  "bays": 3,
+  "cornice": "simple",
+  "windows": "sash",
+  "storeyHeights": [
+   3.42,
+   2.83,
+   3,
+   2.82
+  ],
+  "windowHeights": [
+   0.68,
+   0.68,
+   0.71,
+   0.71
+  ],
+  "headLines": [
+   0.84,
+   0.84,
+   0.85,
+   0.87
+  ]
+ },
+ "crowns": {
+  "plain": {
+   "gable": "cornice",
+   "note": "placeholder: 38 of 47 pands show a skyline crown over the cornice (draft.observations); the crown kind is for the review turn"
+  }
+ },
+ "palettes": {
+  "measured": {
+   "door": "black",
+   "brick": "#63554c",
+   "frame": "#a9a89e",
+   "stone": "#a9a89e",
+   "cornice": "#6c5b52"
+  }
+ },
+ "roof": {
+  "material": "slate",
+  "source": "front",
+  "rise": 0.25,
+  "pitchDeg": 45,
+  "evidence": "draft placeholder: 47 pands, 3DBAG roof shape slanted; the covering and pitch are not measured"
+ },
+ "rhythm": {
+  "bays": "3 window axes (most frequent window-column count on the opening mask (47 of 47 pands; a miscount loses a window, so the mode, not the median))",
+  "windowsPerStorey": "ground: not read | upper storeys: 3 each",
+  "symmetry": "not measured (draft)",
+  "groundFloor": "not measured (draft): the ground storey is not read",
+  "signage": "not measured (draft)",
+  "roofline": "38 of 47 pands show a skyline crown over the cornice (kind not measured)",
+  "citation": "drafted from 47 pand spans of 4 strips: scripts/block-face/draft-type.ts (src/canalRecall/blockFace/typeDraft.ts)",
+  "photoRows": [
+   1,
+   3,
+   3,
+   3
+  ],
+  "photoGroundRows": 1
+ },
+ "evidence": [
+  {
+   "face": "java-93-149",
+   "pands": [
+    "067472",
+    "132949",
+    "138717",
+    "120527",
+    "098497",
+    "126147",
+    "120784",
+    "150083",
+    "103232",
+    "141749",
+    "085970",
+    "110585"
+   ],
+   "citation": "drafted from 12 pand spans of the java-93-149 strip (draft.fields carry the medians)"
+  },
+  {
+   "face": "djambi-1-35",
+   "pands": [
+    "113498",
+    "149516",
+    "104592",
+    "131961",
+    "100535",
+    "110582",
+    "099261",
+    "129720",
+    "077761",
+    "072833",
+    "108617",
+    "117530",
+    "095414",
+    "145454",
+    "089626"
+   ],
+   "citation": "drafted from 15 pand spans of the djambi-1-35 strip (draft.fields carry the medians)"
+  },
+  {
+   "face": "soenda-2-36",
+   "pands": [
+    "084401",
+    "113301",
+    "150368",
+    "069113",
+    "062527",
+    "081321",
+    "107809",
+    "111204",
+    "063047",
+    "136122",
+    "068591",
+    "092864",
+    "092089",
+    "066054",
+    "069682"
+   ],
+   "citation": "drafted from 15 pand spans of the soenda-2-36 strip (draft.fields carry the medians)"
+  },
+  {
+   "face": "zeeburgerdijk-50-84",
+   "pands": [
+    "074063",
+    "123386",
+    "093210",
+    "139587",
+    "119301"
+   ],
+   "citation": "drafted from 5 pand spans of the zeeburgerdijk-50-84 strip (draft.fields carry the medians)"
+  }
+ ],
+ "notes": [
+  "Draft, not installed. Medians over 47 pands; refused below 8 pands or 3 faces."
+ ],
+ "draft": {
+  "generator": "scripts/block-face/draft-type.ts (src/canalRecall/blockFace/typeDraft.ts)",
+  "generatedAt": "2026-11-09",
+  "buurt": "Timorpleinbuurt-Noord",
+  "family": "1910-1914:5:4.9-6.4",
+  "n": 47,
+  "faces": {
+   "java-93-149": 12,
+   "djambi-1-35": 15,
+   "soenda-2-36": 15,
+   "zeeburgerdijk-50-84": 5
+  },
+  "pands": [
+   "0363100012067472",
+   "0363100012132949",
+   "0363100012138717",
+   "0363100012120527",
+   "0363100012098497",
+   "0363100012126147",
+   "0363100012120784",
+   "0363100012150083",
+   "0363100012103232",
+   "0363100012141749",
+   "0363100012085970",
+   "0363100012110585",
+   "0363100012113498",
+   "0363100012149516",
+   "0363100012104592",
+   "0363100012131961",
+   "0363100012100535",
+   "0363100012110582",
+   "0363100012099261",
+   "0363100012129720",
+   "0363100012077761",
+   "0363100012072833",
+   "0363100012108617",
+   "0363100012117530",
+   "0363100012095414",
+   "0363100012145454",
+   "0363100012089626",
+   "0363100012084401",
+   "0363100012113301",
+   "0363100012150368",
+   "0363100012069113",
+   "0363100012062527",
+   "0363100012081321",
+   "0363100012107809",
+   "0363100012111204",
+   "0363100012063047",
+   "0363100012136122",
+   "0363100012068591",
+   "0363100012092864",
+   "0363100012092089",
+   "0363100012066054",
+   "0363100012069682",
+   "0363100012074063",
+   "0363100012123386",
+   "0363100012093210",
+   "0363100012139587",
+   "0363100012119301"
+  ],
+  "fields": {
+   "body.storeys": {
+    "source": "mode of the storeys over 47 pands (window storeys + ground where the strip profile was read, else 3DBAG)",
+    "share": 0.7,
+    "stat": {
+     "n": 47,
+     "median": 4,
+     "p25": 4,
+     "p75": 4,
+     "min": 3,
+     "max": 5
+    },
+    "note": "3DBAG storeys median 5 (it counts an attic the windows do not show)"
+   },
+   "match.years": {
+    "source": "BAG build year, p10..p90 over the family",
+    "stat": {
+     "n": 47,
+     "median": 1913,
+     "p25": 1913,
+     "p75": 1913,
+     "min": 1910,
+     "max": 1913
+    }
+   },
+   "fit.widthM": {
+    "source": "BAG/3DBAG front width, p10..p90 (rounded outward to 0.1 m)",
+    "stat": {
+     "n": 47,
+     "median": 6,
+     "p25": 5.5,
+     "p75": 6.01,
+     "min": 5.1,
+     "max": 6.33
+    }
+   },
+   "match.eavesM": {
+    "source": "3DBAG eaves, p10..p90 (rounded outward to 0.1 m)",
+    "stat": {
+     "n": 47,
+     "median": 12.91,
+     "p25": 12.68,
+     "p75": 13.1,
+     "min": 11.87,
+     "max": 15.19
+    }
+   },
+   "body.bays": {
+    "source": "most frequent window-column count on the opening mask (47 of 47 pands; a miscount loses a window, so the mode, not the median)",
+    "stat": {
+     "n": 47,
+     "median": 3,
+     "p25": 3,
+     "p75": 3,
+     "min": 1,
+     "max": 4
+    },
+    "share": 0.55,
+    "note": "counts 3/3/3 (quartiles), 3 on 55.32 % of the counted pands"
+   },
+   "body.storeyHeights": {
+    "source": "storey profile on the opening mask: ground = first floor line, upper = floor-to-floor, last = to the eaves (33 of 47 pands; 46 read, the rest show another storey count)",
+    "stat": {
+     "n": 33,
+     "median": 2.83,
+     "p25": 2.3,
+     "p75": 2.97,
+     "min": 1.83,
+     "max": 5.65
+    },
+    "note": "per storey medians (m): 3.42, 2.83, 3, 2.82; IQR ground 0.25, upper 0.67/0.15/0.52 - WIDE: over the soft limit, check against the photo"
+   },
+   "body.windowHeights": {
+    "source": "window row extent / storey height per storey (33 of 47 pands)",
+    "stat": {
+     "n": 33,
+     "median": 0.68,
+     "p25": 0.63,
+     "p75": 0.73,
+     "min": 0.55,
+     "max": 0.85
+    },
+    "note": "per upper storey medians 0.68, 0.71, 0.71, IQR 0.1/0.08/0.17; ground entry repeats storey 1"
+   },
+   "body.headLines": {
+    "source": "window head height / storey height per storey (33 of 47 pands)",
+    "stat": {
+     "n": 33,
+     "median": 0.84,
+     "p25": 0.82,
+     "p75": 0.87,
+     "min": 0.77,
+     "max": 0.93
+    },
+    "note": "per upper storey medians 0.84, 0.85, 0.87, IQR 0.05/0.05/0.18 - WIDE: over the soft limit; ground entry repeats storey 1"
+   },
+   "palettes.measured.brick": {
+    "source": "median RGB of the per-pand wall colour (palette-from-strip.ts / stripPalette.ts)",
+    "colour": {
+     "n": 47,
+     "hex": "#63554c",
+     "spread": 14.5,
+     "max": 35.5
+    }
+   },
+   "palettes.measured.frame": {
+    "source": "median per-pand frame colour",
+    "colour": {
+     "n": 44,
+     "hex": "#a9a89e",
+     "spread": 12.1,
+     "max": 30.6
+    }
+   },
+   "palettes.measured.stone": {
+    "source": "median per-pand accent colour",
+    "colour": {
+     "n": 44,
+     "hex": "#a9a89e",
+     "spread": 12.1,
+     "max": 30.6
+    }
+   },
+   "palettes.measured.cornice": {
+    "source": "median per-pand cornice colour",
+    "colour": {
+     "n": 47,
+     "hex": "#6c5b52",
+     "spread": 17.5,
+     "max": 181.7
+    }
+   },
+   "match.baysByWidth": {
+    "source": "window columns by frontage width band (bands with >= 3 pands): <99: 3"
+   }
+  },
+  "omitted": {},
+  "unmeasured": [
+   "body.windows (pane layout)",
+   "body.windowHead (head kind: flat / segmental / round)",
+   "body.cornice kind (simple is a placeholder; presence is measured)",
+   "crowns (kind, dormers, gable: only the skyline rise is measured)",
+   "grounds (door side, shop; the ground storey is not read)",
+   "roof.material (3DBAG gives the shape, not the covering)",
+   "palettes.*.door",
+   "body.windowHeights[0] (ground storey repeats the first upper storey)"
+  ],
+  "observations": {
+   "skyline.eavesM": {
+    "source": "strip skyline cornice line (40 of 47 pands read under clean sky)",
+    "stat": {
+     "n": 40,
+     "median": 13.72,
+     "p25": 11.99,
+     "p75": 16.86,
+     "min": 11.65,
+     "max": 18.77
+    },
+    "note": "3DBAG median 12.91 m"
+   },
+   "autocorrelated bay columns": {
+    "source": "measureFacade pitch, 44 pands",
+    "stat": {
+     "n": 44,
+     "median": 3,
+     "p25": 3,
+     "p75": 3,
+     "min": 2,
+     "max": 8
+    }
+   },
+   "window width (m)": {
+    "source": "median width of the opening-column runs, 47 pands",
+    "stat": {
+     "n": 47,
+     "median": 1.1,
+     "p25": 1,
+     "p75": 1.4,
+     "min": 0.8,
+     "max": 3.6
+    }
+   },
+   "glazing share (upper storeys)": {
+    "source": "measureFacade not-wall share, 47 pands",
+    "stat": {
+     "n": 47,
+     "median": 0.44,
+     "p25": 0.31,
+     "p75": 0.52,
+     "min": 0.1,
+     "max": 0.7
+    }
+   },
+   "skyline crown": {
+    "source": "strip skyline: columns standing > 0.6 m over the cornice line",
+    "share": 0.81,
+    "stat": {
+     "n": 38,
+     "median": 2.46,
+     "p25": 2.12,
+     "p75": 2.92,
+     "min": 1.25,
+     "max": 5.12
+    },
+    "note": "median width 1.94 m; the crown kind is not measured"
+   },
+   "bands": {
+    "source": "palette band-row runs between 4.4 m and the cornice, 4 of 47 pands",
+    "share": 0.09,
+    "stat": {
+     "n": 6,
+     "median": 10.34,
+     "p25": 10.13,
+     "p75": 10.69,
+     "min": 6.56,
+     "max": 12.44
+    },
+    "note": "band kind (storey / lintel / speklagen / painted) is not measured; heights are the run centres above the ground"
+   }
+  }
+ }
+}

@@ -1,0 +1,405 @@
+{
+ "street": "Meeuwenplein",
+ "seed": "0363100012106396",
+ "members": [
+  "0363100012106396",
+  "0363100012082803",
+  "0363100012084066",
+  "0363100012065418"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "trimmed at 0363100012106396 (face continues: 135120)"
+  },
+  {
+   "side": "right",
+   "reason": "trimmed at 0363100012065418 (face continues: 125113)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012065980",
+   "reason": "frontage 87.3 m from Meeuwenplein"
+  },
+  {
+   "pandId": "0363100012069269",
+   "reason": "frontage 52.8 m from Meeuwenplein"
+  },
+  {
+   "pandId": "0363100012071968",
+   "reason": "frontage 63.3 m from Meeuwenplein"
+  },
+  {
+   "pandId": "0363100012083296",
+   "reason": "frontage 60.9 m from Meeuwenplein"
+  },
+  {
+   "pandId": "0363100012083297",
+   "reason": "frontage 63.4 m from Meeuwenplein"
+  },
+  {
+   "pandId": "0363100012086013",
+   "reason": "sightline to Meeuwenplein crosses 0363100012074442"
+  },
+  {
+   "pandId": "0363100012087361",
+   "reason": "frontage 102.9 m from Meeuwenplein"
+  },
+  {
+   "pandId": "0363100012087399",
+   "reason": "frontage 96.9 m from Meeuwenplein"
+  },
+  {
+   "pandId": "0363100012090659",
+   "reason": "frontage 99.3 m from Meeuwenplein"
+  },
+  {
+   "pandId": "0363100012091888",
+   "reason": "frontage 123.3 m from Meeuwenplein"
+  },
+  {
+   "pandId": "0363100012092470",
+   "reason": "frontage 52.7 m from Meeuwenplein"
+  },
+  {
+   "pandId": "0363100012093505",
+   "reason": "frontage 52.3 m from Meeuwenplein"
+  },
+  {
+   "pandId": "0363100012099283",
+   "reason": "frontage 52.6 m from Meeuwenplein"
+  },
+  {
+   "pandId": "0363100012100976",
+   "reason": "frontage 34.1 m from Meeuwenplein"
+  },
+  {
+   "pandId": "0363100012103325",
+   "reason": "frontage 57.2 m from Meeuwenplein"
+  },
+  {
+   "pandId": "0363100012104432",
+   "reason": "sightline to Meeuwenplein crosses 0363100012125113"
+  },
+  {
+   "pandId": "0363100012105550",
+   "reason": "frontage 53.2 m from Meeuwenplein"
+  },
+  {
+   "pandId": "0363100012108158",
+   "reason": "frontage 46.1 m from Meeuwenplein"
+  },
+  {
+   "pandId": "0363100012108792",
+   "reason": "frontage 35.8 m from Meeuwenplein"
+  },
+  {
+   "pandId": "0363100012109590",
+   "reason": "frontage 53.1 m from Meeuwenplein"
+  },
+  {
+   "pandId": "0363100012110710",
+   "reason": "sightline to Meeuwenplein crosses 0363100012106396"
+  },
+  {
+   "pandId": "0363100012110748",
+   "reason": "frontage 76.2 m from Meeuwenplein"
+  },
+  {
+   "pandId": "0363100012117253",
+   "reason": "frontage 31.3 m from Meeuwenplein"
+  },
+  {
+   "pandId": "0363100012117906",
+   "reason": "frontage 42.6 m from Meeuwenplein"
+  },
+  {
+   "pandId": "0363100012119758",
+   "reason": "frontage 32.2 m from Meeuwenplein"
+  },
+  {
+   "pandId": "0363100012124605",
+   "reason": "frontage 38.8 m from Meeuwenplein"
+  },
+  {
+   "pandId": "0363100012128368",
+   "reason": "frontage 78.4 m from Meeuwenplein"
+  },
+  {
+   "pandId": "0363100012130020",
+   "reason": "frontage 117.3 m from Meeuwenplein"
+  },
+  {
+   "pandId": "0363100012131012",
+   "reason": "frontage 85.3 m from Meeuwenplein"
+  },
+  {
+   "pandId": "0363100012131893",
+   "reason": "frontage 90.9 m from Meeuwenplein"
+  },
+  {
+   "pandId": "0363100012132122",
+   "reason": "frontage 93.5 m from Meeuwenplein"
+  },
+  {
+   "pandId": "0363100012132131",
+   "reason": "frontage 40.4 m from Meeuwenplein"
+  },
+  {
+   "pandId": "0363100012132794",
+   "reason": "frontage 66.8 m from Meeuwenplein"
+  },
+  {
+   "pandId": "0363100012132795",
+   "reason": "frontage 65.7 m from Meeuwenplein"
+  },
+  {
+   "pandId": "0363100012137878",
+   "reason": "sightline to Meeuwenplein crosses 0363100012074442"
+  },
+  {
+   "pandId": "0363100012137973",
+   "reason": "frontage 111.3 m from Meeuwenplein"
+  },
+  {
+   "pandId": "0363100012141500",
+   "reason": "frontage 105.3 m from Meeuwenplein"
+  },
+  {
+   "pandId": "0363100012153865",
+   "reason": "frontage 44.9 m from Meeuwenplein"
+  },
+  {
+   "pandId": "0363100012191196",
+   "reason": "frontage 111.8 m from Meeuwenplein"
+  },
+  {
+   "pandId": "0363100012191197",
+   "reason": "frontage 113.6 m from Meeuwenplein"
+  },
+  {
+   "pandId": "0363100012191202",
+   "reason": "frontage 89.3 m from Meeuwenplein"
+  },
+  {
+   "pandId": "0363100012191203",
+   "reason": "frontage 99.9 m from Meeuwenplein"
+  },
+  {
+   "pandId": "0363100012191204",
+   "reason": "frontage 101.7 m from Meeuwenplein"
+  },
+  {
+   "pandId": "0363100012191205",
+   "reason": "frontage 87.4 m from Meeuwenplein"
+  },
+  {
+   "pandId": "0363100012194275",
+   "reason": "frontage 110.9 m from Meeuwenplein"
+  },
+  {
+   "pandId": "0363100012194281",
+   "reason": "frontage 99.0 m from Meeuwenplein"
+  },
+  {
+   "pandId": "0363100012194282",
+   "reason": "frontage 100.8 m from Meeuwenplein"
+  },
+  {
+   "pandId": "0363100012194283",
+   "reason": "frontage 86.8 m from Meeuwenplein"
+  },
+  {
+   "pandId": "0363100012194284",
+   "reason": "frontage 88.4 m from Meeuwenplein"
+  },
+  {
+   "pandId": "0363100012198362",
+   "reason": "frontage 41.2 m from Meeuwenplein"
+  },
+  {
+   "pandId": "0363100012198363",
+   "reason": "frontage 51.3 m from Meeuwenplein"
+  },
+  {
+   "pandId": "0363100012198916",
+   "reason": "sightline to Meeuwenplein crosses 0363100012125113"
+  },
+  {
+   "pandId": "0363100012198917",
+   "reason": "sightline to Meeuwenplein crosses 0363100012084066"
+  },
+  {
+   "pandId": "0363100012198918",
+   "reason": "sightline to Meeuwenplein crosses 0363100012084066"
+  },
+  {
+   "pandId": "0363100012198919",
+   "reason": "sightline to Meeuwenplein crosses 0363100012125113"
+  },
+  {
+   "pandId": "0363100012198920",
+   "reason": "frontage 39.5 m from Meeuwenplein"
+  },
+  {
+   "pandId": "0363100012198921",
+   "reason": "frontage 51.7 m from Meeuwenplein"
+  },
+  {
+   "pandId": "0363100012198922",
+   "reason": "frontage 51.7 m from Meeuwenplein"
+  },
+  {
+   "pandId": "0363100012206424",
+   "reason": "frontage 40.3 m from Meeuwenplein"
+  },
+  {
+   "pandId": "0363100012206425",
+   "reason": "frontage 41.9 m from Meeuwenplein"
+  },
+  {
+   "pandId": "0363100012206426",
+   "reason": "sightline to Meeuwenplein crosses 0363100012082803"
+  },
+  {
+   "pandId": "0363100012206427",
+   "reason": "sightline to Meeuwenplein crosses 0363100012106396"
+  },
+  {
+   "pandId": "0363100012206428",
+   "reason": "sightline to Meeuwenplein crosses 0363100012106396"
+  },
+  {
+   "pandId": "0363100012206429",
+   "reason": "frontage 30.6 m from Meeuwenplein"
+  },
+  {
+   "pandId": "0363100012206430",
+   "reason": "frontage 52.5 m from Meeuwenplein"
+  },
+  {
+   "pandId": "0363100012206431",
+   "reason": "frontage 58.1 m from Meeuwenplein"
+  },
+  {
+   "pandId": "0363100012206432",
+   "reason": "frontage 57.3 m from Meeuwenplein"
+  },
+  {
+   "pandId": "0363100012215950",
+   "reason": "sightline to Meeuwenplein crosses 0363100012116850"
+  },
+  {
+   "pandId": "0363100012215951",
+   "reason": "sightline to Meeuwenplein crosses 0363100012116850"
+  },
+  {
+   "pandId": "0363100012215952",
+   "reason": "sightline to Meeuwenplein crosses 0363100012138277"
+  },
+  {
+   "pandId": "0363100012215956",
+   "reason": "frontage 43.4 m from Meeuwenplein"
+  },
+  {
+   "pandId": "0363100012215957",
+   "reason": "frontage 45.0 m from Meeuwenplein"
+  },
+  {
+   "pandId": "0363100012215958",
+   "reason": "frontage 45.1 m from Meeuwenplein"
+  },
+  {
+   "pandId": "0363100012215960",
+   "reason": "frontage 47.9 m from Meeuwenplein"
+  },
+  {
+   "pandId": "0363100012215961",
+   "reason": "sightline to Meeuwenplein crosses 0363100012074267"
+  },
+  {
+   "pandId": "0363100012215962",
+   "reason": "frontage 47.4 m from Meeuwenplein"
+  },
+  {
+   "pandId": "0363100012215963",
+   "reason": "frontage 31.3 m from Meeuwenplein"
+  },
+  {
+   "pandId": "0363100012215964",
+   "reason": "frontage 31.3 m from Meeuwenplein"
+  },
+  {
+   "pandId": "0363100012215965",
+   "reason": "frontage 37.3 m from Meeuwenplein"
+  },
+  {
+   "pandId": "0363100012215966",
+   "reason": "frontage 39.1 m from Meeuwenplein"
+  },
+  {
+   "pandId": "0363100012215967",
+   "reason": "sightline to Meeuwenplein crosses 0363100012148193"
+  },
+  {
+   "pandId": "0363100012215968",
+   "reason": "sightline to Meeuwenplein crosses 0363100012074267"
+  },
+  {
+   "pandId": "0363100012215969",
+   "reason": "sightline to Meeuwenplein crosses 0363100012116421"
+  },
+  {
+   "pandId": "0363100012215970",
+   "reason": "sightline to Meeuwenplein crosses 0363100012074442"
+  },
+  {
+   "pandId": "0363100012215971",
+   "reason": "sightline to Meeuwenplein crosses 0363100012116850"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012106396",
+   "alongM": 0,
+   "widthM": 6.52,
+   "eavesM": 8.16,
+   "roofMaxM": 13.16,
+   "storeys3dbag": 4,
+   "builtYear": 1927,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012082803",
+   "alongM": 6.29,
+   "widthM": 6.07,
+   "eavesM": 7.7,
+   "roofMaxM": 12.75,
+   "storeys3dbag": 3,
+   "builtYear": 1927,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012084066",
+   "alongM": 12.73,
+   "widthM": 6.81,
+   "eavesM": 7.54,
+   "roofMaxM": 12.58,
+   "storeys3dbag": 3,
+   "builtYear": 1924,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012065418",
+   "alongM": 19.26,
+   "widthM": 6.26,
+   "eavesM": 7.33,
+   "roofMaxM": 12.4,
+   "storeys3dbag": 3,
+   "builtYear": 1924,
+   "uncertainty": []
+  }
+ ]
+}

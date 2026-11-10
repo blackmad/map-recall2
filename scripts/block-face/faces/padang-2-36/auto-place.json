@@ -1,0 +1,618 @@
+{
+ "face": "padang-2-36",
+ "street": "Padangstraat",
+ "library": "indische-buurt",
+ "stripDate": "2025-09-26",
+ "seconds": 1.06,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012146653",
+   "address": "Padangstraat 32",
+   "builtYear": 1913,
+   "widthM": 13.4,
+   "eavesM": 6.91,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#8e8c86",
+    "wallRaw": "#908d87",
+    "skyline": {
+     "eavesM": 8.45,
+     "eavesRow": 178,
+     "confidence": 1,
+     "crown": {
+      "widthM": 3.38,
+      "riseM": 2.08,
+      "topWidthM": 0.75,
+      "centre": 0.85
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 1.82,
+     "bayCentre": 0.1,
+     "balconies": true,
+     "why": "dark open axis 1.1 m at 0.4 (light 0.45): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 2,
+       "centre": 0.1,
+       "light": 0.54
+      },
+      {
+       "widthM": 1.1,
+       "centre": 0.4,
+       "light": 0.45
+      },
+      {
+       "widthM": 1.1,
+       "centre": 0.55,
+       "light": 0.34
+      },
+      {
+       "widthM": 2.02,
+       "centre": 0.86,
+       "light": 0.43
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.05
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best indisch-1912-java-mansard-arches: frontage 13.4 m, type 5.6-6.4 m)",
+   "best": {
+    "type": "indisch-1912-java-mansard-arches",
+    "score": 0,
+    "veto": [
+     "frontage 13.4 m, type 5.6-6.4 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 6.91 m = 4 storeys of 1.73 m vs the type's 3.08 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 0,
+      "note": "3DBAG bouwlagen 3 vs 5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.098 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 2 vs 4 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012063489",
+   "address": "Padangstraat 26",
+   "builtYear": 1913,
+   "widthM": 13.59,
+   "eavesM": 6.94,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#8e8d87",
+    "wallRaw": "#8d8d85",
+    "skyline": {
+     "eavesM": 8.5,
+     "eavesRow": 176,
+     "confidence": 1,
+     "crown": {
+      "widthM": 3.67,
+      "riseM": 2.35,
+      "topWidthM": 0.5,
+      "centre": 0.85
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 1.88,
+     "bayCentre": 0.12,
+     "balconies": true,
+     "why": "dark open axis 2 m at 0.12 (light 0.46): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 2,
+       "centre": 0.12,
+       "light": 0.46
+      },
+      {
+       "widthM": 1.1,
+       "centre": 0.42,
+       "light": 0.54
+      },
+      {
+       "widthM": 1.15,
+       "centre": 0.56,
+       "light": 0.62
+      },
+      {
+       "widthM": 1.98,
+       "centre": 0.86,
+       "light": 0.48
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.12
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best indisch-1912-java-mansard-arches: frontage 13.59 m, type 5.6-6.4 m)",
+   "best": {
+    "type": "indisch-1912-java-mansard-arches",
+    "score": 0,
+    "veto": [
+     "frontage 13.59 m, type 5.6-6.4 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 6.94 m = 4 storeys of 1.74 m vs the type's 3.08 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 0,
+      "note": "3DBAG bouwlagen 3 vs 5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.166 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 3 vs 4 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012146406",
+   "address": "Padangstraat 20",
+   "builtYear": 1913,
+   "widthM": 16.91,
+   "eavesM": 6.94,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#88877f",
+    "wallRaw": "#8a8d7e",
+    "skyline": {
+     "eavesM": 8.43,
+     "eavesRow": 179,
+     "confidence": 1,
+     "crown": {
+      "widthM": 4.8,
+      "riseM": 2.77,
+      "topWidthM": 0.63,
+      "centre": 0.38
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 1.82,
+     "bayCentre": 0.41,
+     "balconies": true,
+     "why": "dark open axis 0.95 m at 0.03 (light 0.16): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.95,
+       "centre": 0.03,
+       "light": 0.16
+      },
+      {
+       "widthM": 2.45,
+       "centre": 0.18,
+       "light": 0.16
+      },
+      {
+       "widthM": 2,
+       "centre": 0.41,
+       "light": 0.4
+      },
+      {
+       "widthM": 1.55,
+       "centre": 0.62,
+       "light": 0.3
+      },
+      {
+       "widthM": 1.95,
+       "centre": 0.8,
+       "light": 0.42
+      },
+      {
+       "widthM": 1.05,
+       "centre": 0.97,
+       "light": 0.31
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.44
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best indisch-1912-java-mansard-arches: frontage 16.91 m, type 5.6-6.4 m)",
+   "best": {
+    "type": "indisch-1912-java-mansard-arches",
+    "score": 0,
+    "veto": [
+     "frontage 16.91 m, type 5.6-6.4 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 6.94 m = 4 storeys of 1.74 m vs the type's 3.08 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 0,
+      "note": "3DBAG bouwlagen 3 vs 5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012129419",
+   "address": "Padangstraat 14",
+   "builtYear": 1913,
+   "widthM": 16.91,
+   "eavesM": 7.28,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#888881",
+    "wallRaw": "#858877",
+    "skyline": {
+     "eavesM": 8.5,
+     "eavesRow": 176,
+     "confidence": 0.97,
+     "crown": {
+      "widthM": 7.33,
+      "riseM": 4.4,
+      "topWidthM": 0.68,
+      "centre": 0.76
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 5,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.034,
+    "structure": {
+     "bayWidthM": 1.82,
+     "bayCentre": 0.2,
+     "balconies": true,
+     "why": "dark open axis 1.07 m at 0.03 (light 0.23): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.07,
+       "centre": 0.03,
+       "light": 0.23
+      },
+      {
+       "widthM": 1.93,
+       "centre": 0.2,
+       "light": 0.54
+      },
+      {
+       "widthM": 1.32,
+       "centre": 0.38,
+       "light": 0.27
+      },
+      {
+       "widthM": 2,
+       "centre": 0.59,
+       "light": 0.09
+      },
+      {
+       "widthM": 3.95,
+       "centre": 0.87,
+       "light": 0.06
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.47
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best indisch-1912-java-mansard-arches: frontage 16.91 m, type 5.6-6.4 m)",
+   "best": {
+    "type": "indisch-1912-java-mansard-arches",
+    "score": 0,
+    "veto": [
+     "frontage 16.91 m, type 5.6-6.4 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 7.28 m = 4 storeys of 1.82 m vs the type's 3.08 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 0,
+      "note": "3DBAG bouwlagen 3 vs 5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012098659",
+   "address": "Padangstraat 8",
+   "builtYear": 1913,
+   "widthM": 13.59,
+   "eavesM": 7.33,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#8e8c85",
+    "wallRaw": "#8e8c85",
+    "skyline": {
+     "eavesM": 8.8,
+     "eavesRow": 164,
+     "confidence": 1,
+     "crown": {
+      "widthM": 3.42,
+      "riseM": 2.13,
+      "topWidthM": 1,
+      "centre": 0.14
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.189,
+    "structure": {
+     "bayWidthM": 1.8,
+     "bayCentre": 0.14,
+     "balconies": true,
+     "why": "dark open axis 1.88 m at 0.88 (light 0.31): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.93,
+       "centre": 0.14,
+       "light": 0.65
+      },
+      {
+       "widthM": 1.02,
+       "centre": 0.44,
+       "light": 0.58
+      },
+      {
+       "widthM": 1,
+       "centre": 0.58,
+       "light": 0.53
+      },
+      {
+       "widthM": 1.88,
+       "centre": 0.88,
+       "light": 0.31
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.05
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best indisch-1912-java-mansard-arches: frontage 13.59 m, type 5.6-6.4 m)",
+   "best": {
+    "type": "indisch-1912-java-mansard-arches",
+    "score": 0,
+    "veto": [
+     "frontage 13.59 m, type 5.6-6.4 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 7.33 m = 4 storeys of 1.83 m vs the type's 3.08 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 0,
+      "note": "3DBAG bouwlagen 3 vs 5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.117 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 3 vs 4 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012093873",
+   "address": "Padangstraat 2",
+   "builtYear": 1913,
+   "widthM": 13.4,
+   "eavesM": 7.6,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#8c8e89",
+    "wallRaw": "#928f88",
+    "skyline": {
+     "eavesM": 8.5,
+     "eavesRow": 176,
+     "confidence": 1,
+     "crown": {
+      "widthM": 3.85,
+      "riseM": 2.43,
+      "topWidthM": 0.47,
+      "centre": 0.16
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 10,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.384,
+    "structure": {
+     "bayWidthM": 0.95,
+     "bayCentre": 0.59,
+     "balconies": true,
+     "why": "dark open axis 1.1 m at 0.12 (light 0.45): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.1,
+       "centre": 0.12,
+       "light": 0.45
+      },
+      {
+       "widthM": 0.85,
+       "centre": 0.59,
+       "light": 0.52
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 6.85,
+       "widthM": 0.82,
+       "centre": 0.47
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.05
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best indisch-1912-java-mansard-arches: frontage 13.4 m, type 5.6-6.4 m)",
+   "best": {
+    "type": "indisch-1912-java-mansard-arches",
+    "score": 0,
+    "veto": [
+     "frontage 13.4 m, type 5.6-6.4 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 7.6 m = 4 storeys of 1.9 m vs the type's 3.08 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 0,
+      "note": "3DBAG bouwlagen 4 vs 5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.178 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 10 vs 4 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

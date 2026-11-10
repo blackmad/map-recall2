@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { depthFadeColour, depthFadeDetail, depthFadeFlag, depthFadeFogFragment, depthFadeRange, depthFadeStrength, distanceHazeOn, installDepthFade, setDistanceHaze, DEPTH_FADE_DEFAULT, DEPTH_FADE_DETAIL_GLSL, DEPTH_FADE_MIN_NEAR_M } from './depthFade.ts';
+import { depthFadeColour, depthFadeDetail, depthFadeFlag, depthFadeFogFragment, depthFadeRange, depthFadeStrength, distanceHazeOn, installDepthFade, setDistanceHaze, DEPTH_FADE_DEFAULT, DEPTH_FADE_FOG_PARS_FRAGMENT, DEPTH_FADE_FOG_VERTEX, DEPTH_FADE_DETAIL_GLSL, DEPTH_FADE_MIN_NEAR_M } from './depthFade.ts';
 
 test('depthFadeFlag: on by default, ?depthFade=0 off', () => {
   const gl = globalThis as { __canalRecallDepthFade?: unknown };
@@ -63,7 +63,9 @@ test('the Distance haze switch: on unless the game turned it off', () => {
 test('installDepthFade swaps both fog chunks, once', () => {
   const THREE = { ShaderChunk: { fog_vertex: 'a', fog_fragment: 'b' } as Record<string, string> };
   installDepthFade(THREE);
-  assert.match(THREE.ShaderChunk.fog_vertex, /length\( mvPosition\.xyz \)/);
+  assert.match(THREE.ShaderChunk.fog_vertex, /vFogEye = mvPosition\.xyz/);
+  assert.match(THREE.ShaderChunk.fog_pars_vertex, /varying vec3 vFogEye/);
+  assert.match(THREE.ShaderChunk.fog_pars_fragment, /#define vFogDepth length\( vFogEye \)/);
   assert.match(THREE.ShaderChunk.fog_fragment, /fadeLuma/);
   THREE.ShaderChunk.fog_vertex = 'x';
   installDepthFade(THREE);
@@ -71,6 +73,9 @@ test('installDepthFade swaps both fog chunks, once', () => {
 });
 
 test('a landmark fragment at the full fade range keeps its unfaded colour', async () => {
+  // The fog-free path (`?landmarkHaze=0`; the limit-only haze of lane P3 is pinned in engine/levelDissolve.test.ts).
+  (globalThis as { __canalRecallLandmarkHaze?: boolean }).__canalRecallLandmarkHaze = false;
+  try {
   const THREE = await import('three');
   const { depthFadeOptOut, DEPTH_FADE_OPT_OUT, DEPTH_FADE_FAR, depthFadeColour: fade } = await import('./depthFade.ts');
   const hook = () => {};
@@ -95,6 +100,24 @@ test('a landmark fragment at the full fade range keeps its unfaded colour', asyn
   const drawn = (m: { fog?: boolean }) => (m.fog === false ? rgb : fade(rgb, haze, dist, range));
   assert.deepEqual(drawn(twin), rgb);
   assert.notDeepEqual(drawn(wall), rgb);
+  } finally { delete (globalThis as { __canalRecallLandmarkHaze?: boolean }).__canalRecallLandmarkHaze; }
+});
+
+test('with the draw limit on, a landmark twin keeps fog for the limit ramp only (lane P3, `?landmarkHaze`)', async () => {
+  const THREE = await import('three');
+  const { depthFadeOptOut, DEPTH_FADE_OPT_OUT } = await import('./depthFade.ts');
+  const { DEPTH_FADE_LIMIT_ONLY } = await import('../engine/drawLimit.ts');
+  const wall = new THREE.MeshLambertMaterial();
+  wall.defines = { CITY_LOOK: '' };
+  const spire = new THREE.Mesh(new THREE.BufferGeometry(), wall), tower = new THREE.Group();
+  tower.add(spire);
+  assert.equal(depthFadeOptOut(tower), 1);
+  const twin = spire.material as InstanceType<typeof THREE.MeshLambertMaterial>;
+  assert.equal(twin.fog, true);
+  assert.deepEqual(twin.defines, { CITY_LOOK: '', [DEPTH_FADE_LIMIT_ONLY]: '' });
+  assert.deepEqual(wall.defines, { CITY_LOOK: '' }, 'the source keeps its defines');
+  assert.equal(twin.userData[DEPTH_FADE_OPT_OUT], true);
+  assert.equal(depthFadeOptOut(tower), 0, 'idempotent');
 });
 
 test('city-look landmark materials move to their noFade variant, which the highlight swaps keep', async () => {
@@ -115,6 +138,26 @@ test('city-look landmark materials move to their noFade variant, which the highl
   const uniforms = createCityUniforms(THREE);
   assert.equal(createCityLookMaterial(THREE, v, uniforms).fog, true);
   const crisp = createCityLookMaterial(THREE, { ...v, noFade: true }, uniforms);
-  assert.equal(crisp.fog, false);
+  // Lane P3 (#328): with the draw limit on, noFade keeps fog for the limit's ramp only (`?landmarkHaze=0`: fog off).
+  assert.equal(crisp.fog, true);
+  assert.equal(crisp.defines?.DEPTH_FADE_LIMIT_ONLY, '');
+  (globalThis as { __canalRecallLandmarkHaze?: boolean }).__canalRecallLandmarkHaze = false;
+  try { assert.equal(createCityLookMaterial(THREE, { ...v, noFade: true, side: 1 }, uniforms).fog, false); }
+  finally { delete (globalThis as { __canalRecallLandmarkHaze?: boolean }).__canalRecallLandmarkHaze; }
   assert.equal(crisp.userData.cityVariant.noFade, true, 'highlighted()/dimmed() rebuild from the variant, keeping noFade');
+});
+
+test('fog depth (lane P4 #330): the eye position is interpolated, not its length, so a big ground triangle is not hazed near the eye', () => {
+  // The IJburg regression: a ground quad kilometres wide; a fragment 20 m from the eye. Interpolating per-vertex
+  // lengths reads ~kilometres there (the old chunk; the draw limit painted it sky), interpolating the position reads 20 m.
+  const verts = [[-3000, -9, -20], [3000, -9, -20], [0, -9, -6000]];
+  const bary = [0.5, 0.5, 0];
+  const len = (v: number[]) => Math.hypot(v[0], v[1], v[2]);
+  const oldDepth = bary.reduce((s, b, i) => s + b * len(verts[i]), 0);
+  const pos = [0, 1, 2].map(k => bary.reduce((s, b, i) => s + b * verts[i][k], 0));
+  assert.ok(oldDepth > 2000, `old ${oldDepth}`);
+  assert.ok(Math.abs(len(pos) - Math.hypot(9, 20)) < 1e-6);
+  assert.match(DEPTH_FADE_FOG_VERTEX, /vFogEye = mvPosition\.xyz;/);
+  // The fragment reads the interpolated position; the per-vertex depth stays only for fragments of older bundles.
+  assert.match(DEPTH_FADE_FOG_PARS_FRAGMENT, /#define vFogDepth length\( vFogEye \)/);
 });

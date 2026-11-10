@@ -9,9 +9,12 @@
 // Plus the game's own point labels: the just-answered street name (drawn on
 // the road ahead, as answeredStreetNameLayer did) and the ferry landings.
 
+import { setDrawn, sharedLedger } from '../../game/labelDrawLedger';
 import { framePhases } from '../framePhases';
 import { LABEL_ROOT_CLASS } from '../../labels/labelStyle';
 import { placeLabels, drawPlacedLabels, LabelPlacement, type LabelCandidate, type LabelKind, type LabelPaint, type PlacedLabel } from '../../ownMap/labels';
+import { OwnLabelFade, type DrawnLabel } from '../../ownMap/labelFade';
+import { calmLabels, labelCalmFlag } from '../../ownMap/labelCalm';
 import { neighbourhoodLabelVisible, poiLabelVisible, streetLabelVisible, type LabelContext } from '../../ownMap/labelPolicy';
 import { interpolateStops, STREET_STYLE } from '../../ownMap/style';
 import { toLocal, type Vec2 } from '../../ownMap/frame';
@@ -133,6 +136,8 @@ export class LabelLayer {
    * names fill the free room. Set by the world view while aerial (`?labelSticky=0` off).
    */
   sticky = false;
+  /** Calm frame (#161 lever 3, `?labelCalm=1`): at most six POI names, corridor first, none in the top third, shops within 150 m. */
+  calm = labelCalmFlag();
   /** Line labels try only centres that can land on screen (ownMap/labels.ts; `?labelClipTries=0` off, lane R3-F #241). */
   clipTries = true;
   /** From the air while the camera moves (world view, with the budget): full placements at most this often, ms. */
@@ -163,8 +168,18 @@ export class LabelLayer {
     const moved = !front !== !prior || (!!front && !!prior && Math.hypot(front[0] - prior[0], front[1] - prior[1]) > 0.5);
     return { hidden, moved };
   }
-  /** Every label drawn in the last frame (specs read it: nothing under question may be among them). */
+  /** The last placement's winners (hit tests, churn; the label-budget and policy tests read it). */
   placed: PlacedLabel[] = [];
+  /**
+   * Every label drawn in the last frame with its alpha (#288): the winners fading in or at full strength, then the
+   * labels still fading out after losing their place. Specs read it (nothing under question may be among them) and the
+   * label ledger records its names: a fading-out label counts as drawn until its alpha is 0.
+   */
+  drawn: DrawnLabel[] = [];
+  /** Labels ease in and out over 300 ms (ownMap/labelFade.ts, `?labelFade=0` off: null). */
+  fade: OwnLabelFade | null = new OwnLabelFade();
+  /** Asks the host for another frame while a fade is under way with a still camera. */
+  private readonly repaint: (() => void) | null;
   visible = true;
   zoom = 0;
 
@@ -177,8 +192,10 @@ export class LabelLayer {
   /** Menu, setup and loading paint paper over the map: nothing is drawn and the root is hidden (setCovered). */
   covered = false;
 
-  constructor(container: HTMLElement, private readonly policy: () => LabelContext, options: { lazyPolicy?: boolean; schedule?: (step: () => void) => void } = {}) {
+  constructor(container: HTMLElement, private readonly policy: () => LabelContext, options: { lazyPolicy?: boolean; schedule?: (step: () => void) => void; fade?: boolean; repaint?: () => void } = {}) {
     this.lazyPolicy = options.lazyPolicy ?? true;
+    if (options.fade === false) this.fade = null;
+    this.repaint = options.repaint ?? null;
     this.schedule = options.schedule ?? (step => { const g = globalThis as { requestIdleCallback?: (cb: () => void, o?: { timeout: number }) => void }; if (g.requestIdleCallback) g.requestIdleCallback(step, { timeout: 200 }); else setTimeout(step, 0); });
     const doc = container.ownerDocument;
     this.root = doc.createElement('div');
@@ -336,9 +353,15 @@ export class LabelLayer {
     const policy = shows ? this.policy() : null;
     lap('policy');
     if (policy) {
-      const key = `${policy.hiddenName}|${policy.quizQuiet}|${(policy as { revision?: unknown }).revision ?? ''}|${this.pois.length}|${!!this.data}`;
+      const key = `${policy.hiddenName}|${(policy.hiddenNames || []).join(',')}|${policy.quizQuiet}|${(policy as { revision?: unknown }).revision ?? ''}|${this.pois.length}|${!!this.data}`;
       if (key !== this.ctxKey) {
         this.ctxKey = key;
+        // The name a question has just asked leaves at once, as before (the question is already open: no tell); every
+        // other name the policy now withholds (the landmark approach's, #281) fades out like any other label.
+        if (this.fade && policy.hiddenName) {
+          const asked: LabelContext = { ...policy, hiddenNames: [], spoilerIndex: null, quizQuiet: false };
+          this.fade.dropWhere(l => l.text === policy.hiddenName || !poiLabelVisible(asked, l.text));
+        }
         if (!this.lazyPolicy) this.rebuild(policy);
         else {
           this.policyCtx = policy; this.policyRev++;
@@ -350,14 +373,14 @@ export class LabelLayer {
     const rev = shows ? this.rev : -2;
     // A still camera and unchanged inputs: the canvas already holds this frame.
     // (A budgeted full placement still under way is finished first, still camera or not.)
-    if (!resized && pose && this.drawnPose && rev === this.drawnRev && samePose(pose, this.drawnPose) && !this.pendingFull) { this.stats.skipped++; return; }
+    if (!resized && pose && this.drawnPose && rev === this.drawnRev && samePose(pose, this.drawnPose) && !this.pendingFull && !this.fade?.active) { this.stats.skipped++; return; }
     const priorPose = this.drawnPose;
     this.drawnRev = rev;
     this.drawnPose = pose ?? null;
     this.ctx.setTransform(1, 0, 0, 1, 0, 0);
     this.ctx.clearRect(0, 0, w, h);
     this.placed = [];
-    if (!shows) return;
+    if (!shows) { this.drawn = []; this.fade?.clear(); setDrawn(sharedLedger(globalThis as never), 'engine', [], performance.now()); return; }
     // Which labels win only changes when the camera has moved enough (or every 400 ms while it creeps); in between
     // the last winners are re-placed at the new projection (cheap: a handful of labels, not every candidate).
     const now = performance.now();
@@ -502,6 +525,15 @@ export class LabelLayer {
       if (due.length) this.placed = this.placed.filter(l => this.winners.has(l.id) && !this.hiddenCopies.has(keys.get(l)!));
     }
     lap(full ? 'occlusion (full)' : 'occlusion (between)');
+    // Label budget (#161 lever 3, `?labelCalm=1`): thin the POI winners before they are recorded as winners.
+    if (this.calm) {
+      this.placed = calmLabels(this.placed, {
+        width: vp.width, height: vp.height,
+        distanceOf: l => { const at = original.get(l.id)?.at, t = frame.target; return at && t ? Math.hypot(at[0] - t[0], at[1] - t[1]) : null; },
+        isLandmark: l => this.aerialPoiIds.has(l.id),
+        isGamePoint: l => (original.get(l.id)?.priority ?? 0) >= 1e6,
+      });
+    }
     if (full) {
       const ms = performance.now() - now;
       this.stats.fullMs += ms; this.stats.lastFullMs = ms; this.stats.occluded = occluded;
@@ -515,9 +547,19 @@ export class LabelLayer {
       this.winners = next;
       this.stats.full++;
     } else this.stats.winnersOnly++;
+    // The fade (#288): winners ease in, losers ease out where their anchors now project.
+    if (this.fade) {
+      const anchorOf = (l: PlacedLabel): Vec2 | null => l.anchors?.[1] ?? this.drawAt.get(l.id) ?? original.get(l.id)?.at ?? null;
+      this.drawn = this.fade.update(this.placed, now, anchorOf, project);
+    } else this.drawn = this.placed.map(l => ({ ...l, alpha: 1 }));
+    lap('fade');
     this.ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
-    drawPlacedLabels(this.ctx, this.placed, LABEL_PAINT);
+    drawPlacedLabels(this.ctx, this.drawn, LABEL_PAINT);
+    // The label-draw ledger (#281): the landmark question never asks about a name drawn in the last 30 s; a label still
+    // fading out is drawn.
+    setDrawn(sharedLedger(globalThis as never), 'engine', this.drawn.map(l => l.text), performance.now());
     lap('paint');
+    if (this.fade?.active) this.repaint?.();
   }
 }
 

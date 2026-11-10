@@ -1,0 +1,38 @@
+{
+ "street": "Jan den Haenstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched n/a (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012140098",
+   "addresses": [
+    "Jan den Haenstraat 3",
+    "Jan den Haenstraat 5"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan den Haenstraat 3-H",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000683888"
+    },
+    {
+     "address": "Jan den Haenstraat 5-H",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000683895"
+    },
+    {
+     "address": "Jan den Haenstraat 3-H",
+     "use": "woonfunctie",
+     "areaM2": 85,
+     "bagId": "0363010012084910"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  }
+ ]
+}

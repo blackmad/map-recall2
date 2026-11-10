@@ -2,7 +2,7 @@
 // Run: node --import tsx --test src/canalRecall/engine/farShells.test.ts
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { cellDistanceM, farCellOrigin, farShellBudget, farShellsEnabled, FarShells, planFarCells, type FarCellData, type FarShellHost } from './farShells.js';
+import { cellDistanceM, farCellOrigin, farPartHidden, farShellBudget, farShellsEnabled, FarShells, nearTileCells, planFarCells, tileBounds, type FarCellData, type FarShellHost } from './farShells.js';
 import { CELL_GRID, cellBounds } from '../world/cellGrid.js';
 import { shellOrigin } from '../world/shellMesh.js';
 
@@ -43,9 +43,9 @@ test('farCellOrigin is the shell origin of the key', () => {
 });
 
 // A minimal three stand-in: enough for install / hidden / drop.
-class Attr { needsUpdate = false; constructor(public array: any, public itemSize: number) {} }
-class Geometry { attrs = new Map<string, Attr>(); index: Attr | null = null; disposed = false; setAttribute(n: string, a: Attr) { this.attrs.set(n, a); } getAttribute(n: string) { return this.attrs.get(n)!; } setIndex(a: Attr) { this.index = a; } deleteAttribute(n: string) { this.attrs.delete(n); } computeBoundingSphere() {} dispose() { this.disposed = true; } }
-class Mesh { name = ''; visible = true; parent: any = null; castShadow = true; receiveShadow = true; userData: any = {}; position = { set: (..._: number[]) => {} }; scale = { set: (..._: number[]) => {} }; constructor(public geometry: Geometry, public material: any) {} }
+class Attr { needsUpdate = false; constructor(public array: any, public itemSize: number) {} get count() { return this.array.length / this.itemSize; } }
+class Geometry { attrs = new Map<string, Attr>(); index: Attr | null = null; disposed = false; boundingSphere: unknown = null; get attributes() { return Object.fromEntries(this.attrs); } setAttribute(n: string, a: Attr) { this.attrs.set(n, a); } getAttribute(n: string) { return this.attrs.get(n)!; } setIndex(a: Attr | null) { this.index = a; } deleteAttribute(n: string) { this.attrs.delete(n); } computeBoundingSphere() {} dispose() { this.disposed = true; } }
+class Mesh { name = ''; visible = true; parent: any = null; castShadow = true; receiveShadow = true; userData: any = {}; position = { set: (..._: number[]) => {}, copy: (_: unknown) => {} }; scale = { set: (..._: number[]) => {}, copy: (_: unknown) => {} }; constructor(public geometry: Geometry, public material: any) {} }
 const THREE = { BufferGeometry: Geometry, BufferAttribute: Attr, Mesh };
 
 function harness(drawn: Set<string>) {
@@ -109,4 +109,80 @@ test('FarShells: an AbortError (a dead worker) is retried; another error is not 
   console.warn = warn;
   assert.equal(calls, 3);
   assert.equal(far.stats().failed, 1);
+});
+
+test('farPartHidden (lane R4-K #255): per cell where the baked tier covers it, tile-wide (R2-B) where it does not', () => {
+  const base = { bakedDrawn: false, bakedHolds: false, coarseTile: false, nearTile: false, nearCell: false };
+  assert.equal(farPartHidden(base), false, 'nothing draws the tile: shown');
+  assert.equal(farPartHidden({ ...base, bakedDrawn: true }), true, 'a drawn baked cell hides it');
+  assert.equal(farPartHidden({ ...base, coarseTile: true }), true, 'uncovered: the tile\'s coarse chunk hides it');
+  assert.equal(farPartHidden({ ...base, nearTile: true }), true, 'uncovered: a near chunk anywhere in the tile hides it');
+  // Released (held): the tile's coarse chunk and a near chunk in another cell of the tile draw none of its buildings.
+  assert.equal(farPartHidden({ ...base, bakedHolds: true, coarseTile: true, nearTile: true }), false, 'released: shown under other cells\' chunks');
+  assert.equal(farPartHidden({ ...base, bakedHolds: true, nearTile: true, nearCell: true }), true, 'released: a near chunk inside the cell hides it');
+});
+
+test('nearTileCells: z16 detail keys grouped by z14 tile with the world cells their bounds touch', () => {
+  // The zuidas-rails-high regression (#255): four near chunks in z14 8415/5384 hid that part in six canal-belt cells.
+  const [w, s, e, n] = tileBounds(14, 8415, 5384);
+  assert.ok(w < e && s < n);
+  const z16 = '33660/21536'; // the NW z16 child of 8415/5384
+  const m = nearTileCells([z16, 'junk'], 16, 14);
+  assert.deepEqual([...m.keys()], ['8415/5384']);
+  const cells = m.get('8415/5384')!;
+  const [cw, cs, ce, cn] = tileBounds(16, 33660, 21536);
+  for (const c of cells) { const [i, j] = c.split('_').map(Number); const [bw, bs, be, bn] = cellBounds(i, j); assert.ok(bw < ce && be > cw && bs < cn && bn > cs, `${c} touches the z16 tile`); }
+  assert.ok(cells.size >= 1 && cells.size <= 4, 'a 600 m z16 tile touches at most four 1 km cells');
+  // The z14 tile touches more cells than any one of its z16 children.
+  const all = nearTileCells(['33660/21536', '33663/21539'], 16, 14).get('8415/5384')!;
+  assert.ok(all.size > cells.size);
+});
+
+test('FarShells (lane P4 #330, farHandFade): the hand-over dissolves through a ghost that shares the cell\'s buffers', async () => {
+  const drawn = new Set<string>();
+  const { host, added } = harness(drawn);
+  const clones: { uniforms: { cityFade: { value: number } }; disposed: boolean; dispose(): void }[] = [];
+  host.fadeMaterial = (v: number) => { const c = { uniforms: { cityFade: { value: v } }, disposed: false, dispose() { this.disposed = true; } }; clones.push(c); return c; };
+  const far = new FarShells(host, { budget: { cells: 1, triangles: 1e6 } });
+  far.update(centre[0], centre[1], 3000);
+  await settle(); await settle();
+  assert.equal(added.length, 1);
+  const cell = added[0], hidden = cell.geometry.getAttribute('hidden');
+  far.frame(performance.now() + 1000); // the cell's own arrival dissolve ends
+  // Out: the cell hides part a at once; a ghost draws part a alone and fades out.
+  drawn.add('a'); far.frame();
+  assert.equal(added.length, 2);
+  const ghost = added[1];
+  assert.deepEqual([...hidden.array], [1, 1, 0, 0]);
+  assert.deepEqual([...ghost.geometry.getAttribute('hidden').array], [0, 0, 1, 1]);
+  assert.equal(ghost.geometry.getAttribute('position'), cell.geometry.getAttribute('position'), 'buffers shared');
+  far.frame(performance.now() + 300);
+  const out = clones[clones.length - 1];
+  assert.ok(out.uniforms.cityFade.value > 0.3 && out.uniforms.cityFade.value < 0.7, `${out.uniforms.cityFade.value}`);
+  far.frame(performance.now() + 700);
+  assert.equal(added.length, 1, 'ghost gone');
+  assert.ok(ghost.geometry.disposed && out.disposed);
+  assert.ok(cell.geometry.getAttribute('position'), 'the cell keeps its buffers');
+  assert.equal(ghost.geometry.attrs.size, 1, 'the ghost freed only its own hidden byte');
+  // In: the part stays hidden on the cell until the ghost has dissolved in, then the cell draws it again.
+  drawn.clear(); far.frame();
+  assert.equal(added.length, 2);
+  assert.deepEqual([...hidden.array], [1, 1, 0, 0]);
+  far.frame(performance.now() + 700);
+  assert.equal(added.length, 1);
+  assert.deepEqual([...hidden.array], [0, 0, 0, 0]);
+  // A drop mid-hand-over takes the ghost with it.
+  drawn.add('b'); far.frame();
+  assert.equal(added.length, 2);
+  far.update(centre[0], centre[1], 0);
+  far.frame(performance.now() + 2000);
+  assert.equal(added.length, 0);
+});
+
+test('farHandFadeFlag: on by default, off with ?farHandFade=0 or ?popFade=0', async () => {
+  const { farHandFadeFlag } = await import('./popFade.js');
+  const g = globalThis as { __canalRecallFarHandFade?: unknown; __canalRecallPopFade?: unknown };
+  assert.equal(farHandFadeFlag(), true);
+  g.__canalRecallFarHandFade = '0'; assert.equal(farHandFadeFlag(), false); delete g.__canalRecallFarHandFade;
+  g.__canalRecallPopFade = false; assert.equal(farHandFadeFlag(), false); delete g.__canalRecallPopFade;
 });

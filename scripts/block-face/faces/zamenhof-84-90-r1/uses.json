@@ -1,0 +1,57 @@
+{
+ "street": "Zamenhofstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched n/a (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012130936",
+   "addresses": [
+    "Zamenhofstraat 90"
+   ],
+   "groundUnits": [
+    {
+     "address": "Zamenhofstraat 90",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000877910"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012118660",
+   "addresses": [
+    "Zamenhofstraat 88"
+   ],
+   "groundUnits": [
+    {
+     "address": "Zamenhofstraat 88",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000877909"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012141264",
+   "addresses": [
+    "Zamenhofstraat 86"
+   ],
+   "groundUnits": [
+    {
+     "address": "Zamenhofstraat 86",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000877908"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  }
+ ]
+}

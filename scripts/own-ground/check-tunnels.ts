@@ -10,12 +10,18 @@ import { join } from 'node:path';
 import { GroundStore, toLocal } from '../../src/canalRecall/ownGround/groundStore.ts';
 import { cutMedianQuads, insideCut, locateCut, type Cut } from '../../src/canalRecall/ownGround/tunnels.ts';
 import { describeCut } from './probe-cuts.ts';
+import { steepInBand, wallsAlong } from './rampBand.ts';
+import { buildCell, type BuiltCell } from '../../src/canalRecall/ownGround/groundCell.ts';
 import { TUNNEL_SITES, type TunnelSite } from '../../src/canalRecall/ownGround/tunnelRegressions.ts';
 
 const ROOT = 'public/data/extracts/amsterdam';
 const args = process.argv.slice(2), only = args.filter(a => !a.startsWith('--'));
-const store = new GroundStore(async p => { const b = readFileSync(join(ROOT, p)); return new Uint8Array(b[0] === 0x1f && b[1] === 0x8b ? gunzipSync(b) : b); });
+const fetchBytes = async (p: string) => { const b = readFileSync(join(ROOT, p)); return new Uint8Array(b[0] === 0x1f && b[1] === 0x8b ? gunzipSync(b) : b); };
+const flags = { ...(args.includes('--portalEnds=0') ? { portalEnds: false } : {}), ...(args.includes('--rampGaps=0') ? { rampGaps: false } : {}) };
+const store = new GroundStore(fetchBytes, flags);
 await store.init();
+// The wall-band pins build cells as the game draws them, with the roads-v1 surfaces (whose sheets drape at a run end).
+let roadStore: GroundStore | null = null;
 let failed = 0;
 const fail = (site: TunnelSite, msg: string) => { failed++; console.log(`  FAIL ${site.id}: ${msg}`); };
 for (const site of TUNNEL_SITES) {
@@ -61,12 +67,33 @@ for (const site of TUNNEL_SITES) {
     console.log(`  ground at ${q.join(',')}: ${g.toFixed(2)}, cut floors around ${lo.toFixed(2)}..${hi.toFixed(2)} (relief ${s.relief(qx, qy).toFixed(2)})`);
     if (!(lo <= hi) || g < lo - 0.1 || g > hi + 0.3) fail(site, `ground at ${q.join(',')} ${g.toFixed(2)} is not on the cut floors ${lo.toFixed(2)}..${hi.toFixed(2)}`);
   }
+  for (const q of e.groundOverCover ?? []) {
+    // The street beside the mouths: the wall tops at the mouths within 25 m (the land the trench is cut from).
+    const [qx, qy] = toLocal(q[0], q[1]), g = s.ground(qx, qy);
+    const rims = s.cuts.flatMap(c => c.portals.filter(p => !p.open && Math.hypot(c.x[p.at] - qx, c.y[p.at] - qy) <= 25).map(p => Math.max(c.rimL[p.at], c.rimR[p.at])));
+    const street = Math.max(...rims);
+    console.log(`  ground over the cover at ${q.join(',')}: ${g.toFixed(2)}, street (mouth wall tops within 25 m) ${rims.length ? street.toFixed(2) : '-'} (relief ${s.relief(qx, qy).toFixed(2)})`);
+    if (!rims.length || Math.abs(g - street) > 0.5) fail(site, `ground over the cover at ${q.join(',')} ${g.toFixed(2)} is not at the street ${rims.length ? street.toFixed(2) : '-'}`);
+  }
   for (const q of e.grassAt ?? []) {
     const [qx, qy] = toLocal(q[0], q[1]);
     const inQuad = (r: [number, number][]) => { let k = false; for (let i = 0, j = r.length - 1; i < r.length; j = i++) if ((r[i][1] > qy) !== (r[j][1] > qy) && qx < r[j][0] + (r[i][0] - r[j][0]) * (qy - r[j][1]) / (r[i][1] - r[j][1])) k = !k; return k; };
     const hit = s.cuts.some(c => cutMedianQuads(c, () => true).some(inQuad));
     console.log(`  median grass at ${q.join(',')}: ${hit ? 'yes' : 'no'}`);
     if (!hit) fail(site, `no median grass at ${q.join(',')}`);
+  }
+  if (e.wallBand) {
+    // The LOD 0 cells under the band, built as the game does (every neighbour prepared first: the full set of cuts).
+    if (!roadStore) { roadStore = new GroundStore(fetchBytes, { roads: true, ...flags }); await roadStore.init(); }
+    const rs = roadStore, line = e.wallBand.line.map(q => toLocal(q[0], q[1])), side = e.wallBand.side === 'L' ? 1 : -1;
+    const keys = new Set(line.map(q => rs.cellAt(q[0], q[1])));
+    for (const k of keys) for (const n of GroundStore.neighbours(k)) if (rs.covers(n)) await rs.prepareCell(n);
+    const cells: BuiltCell[] = [];
+    for (const k of keys) if (rs.covers(k)) cells.push(buildCell(await rs.cellInput(k, 0)));
+    const w = wallsAlong(rs.surface.cuts, line, side), b = steepInBand(cells, rs.surface.cuts, line, side, e.wallBand.reachM);
+    console.log(`  wall band (${e.wallBand.side}): walled ${w.walled}/${w.samples} samples${w.open.length ? `, open at ${w.open.join(',')} m` : ''}; steep sheets ${b.n} / ${b.m2.toFixed(1)} m² ${JSON.stringify(b.bins)}`);
+    if (w.walled < w.samples) fail(site, `no ${e.wallBand.side} wall at ${w.open.length} of ${w.samples} samples along the band`);
+    if (b.n) fail(site, `${b.n} steep sheet triangles (${b.m2.toFixed(1)} m²) in the band, expected 0`);
   }
   if (e.rideMaxClimbM !== undefined && e.ride) {
     // The riding height along the routed way through the passage: the climb above the lower portal level.

@@ -1,0 +1,164 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "pelikaan-16-22-r1",
+ "street": "Pelikaanstraat",
+ "sources": [
+  {
+   "id": "strip-2021-02-17",
+   "kind": "street-panorama",
+   "capturedAt": "2021-02-17",
+   "image": "staging/block-face/pelikaan-16-22-r1/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "auto-place (blockFace/autoPlace.ts)",
+  "passes": 1,
+  "note": "auto-placed from the vogelbuurt library (buurt Vogelbuurt-Noord); scores and holds in scripts/block-face/faces/pelikaan-16-22/auto-place.json"
+ },
+ "types": [
+  "vogel-1921-two-storey-dormer-row"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012097975",
+   "slug": "pelikaan-097975",
+   "address": "Pelikaanstraat 22",
+   "type": {
+    "type": "vogel-1921-two-storey-dormer-row",
+    "measuredPalette": {
+     "brick": "#58565e",
+     "evidence": "strip 2024-10-22 span 0-259: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#5f4f4a"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2021-02-17",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "bays": "narrow window over the door, wide window",
+    "identicalBays": "no",
+    "windowsPerStorey": "ground: door + wide window | 1: narrow + wide",
+    "symmetry": "mirror pairs about the party wall",
+    "groundFloor": "double doors paired across the party wall",
+    "signage": "none",
+    "roofline": "grey cornice slab; a flat dormer over the wide window, a crow-stepped gable on block ends",
+    "photoRows": [
+     2,
+     2,
+     1
+    ],
+    "photoGroundRows": 1,
+    "citation": "auto-place: vogel-1921-two-storey-dormer-row scored 1 on storeys 1, roof 1, stucco 1; strip 2024-10-22 span 0-259"
+   }
+  },
+  {
+   "pandId": "0363100012111816",
+   "slug": "pelikaan-111816",
+   "address": "Pelikaanstraat 20",
+   "type": {
+    "type": "vogel-1921-two-storey-dormer-row",
+    "mirror": true,
+    "measuredPalette": {
+     "brick": "#4e413c",
+     "evidence": "strip 2020-06-02 span 259-515: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#484544"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2021-02-17",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "bays": "narrow window over the door, wide window",
+    "identicalBays": "no",
+    "windowsPerStorey": "ground: door + wide window | 1: narrow + wide",
+    "symmetry": "mirror pairs about the party wall",
+    "groundFloor": "double doors paired across the party wall",
+    "signage": "none",
+    "roofline": "grey cornice slab; a flat dormer over the wide window, a crow-stepped gable on block ends",
+    "photoRows": [
+     2,
+     2,
+     1
+    ],
+    "photoGroundRows": 1,
+    "citation": "auto-place: vogel-1921-two-storey-dormer-row scored 1 on storeys 1, roof 1, stucco 1; strip 2020-06-02 span 259-515"
+   }
+  },
+  {
+   "pandId": "0363100012128530",
+   "slug": "pelikaan-128530",
+   "address": "Pelikaanstraat 18",
+   "type": {
+    "type": "vogel-1921-two-storey-dormer-row",
+    "measuredPalette": {
+     "brick": "#524844",
+     "evidence": "strip 2020-06-02 span 514-773: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#62605f"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2021-02-17",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "bays": "narrow window over the door, wide window",
+    "identicalBays": "no",
+    "windowsPerStorey": "ground: door + wide window | 1: narrow + wide",
+    "symmetry": "mirror pairs about the party wall",
+    "groundFloor": "double doors paired across the party wall",
+    "signage": "none",
+    "roofline": "grey cornice slab; a flat dormer over the wide window, a crow-stepped gable on block ends",
+    "photoRows": [
+     2,
+     2,
+     1
+    ],
+    "photoGroundRows": 1,
+    "citation": "auto-place: vogel-1921-two-storey-dormer-row scored 1 on storeys 1, roof 1, stucco 1; strip 2020-06-02 span 514-773"
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "auto-place: low attic behind the cornice; the strips show sky over the cornices of the type rows"
+  },
+  "measuredEaves": [
+   {
+    "pand": "0363100012097975",
+    "stripRow": 297,
+    "evidence": "auto-place: the vogel-1921-two-storey-dormer-row cornice line 6.45 m (measured on its exemplar strips; this pand's skyline unread); 3DBAG/PDOK eaves 7.01 m"
+   }
+  ]
+ }
+}

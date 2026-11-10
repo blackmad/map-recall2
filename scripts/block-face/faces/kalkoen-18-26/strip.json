@@ -1,0 +1,179 @@
+{
+ "face": "kalkoen-18-26",
+ "image": "staging/block-face/kalkoen-18-26/strip.jpg",
+ "pixelsPerMetre": 40,
+ "width": 1291,
+ "height": 556,
+ "groundNAP": 0.842,
+ "heightM": 13.89,
+ "frame": {
+  "midRD": [
+   123434.69875000001,
+   489102.31629999995
+  ],
+  "uRD": [
+   -0.8635156836956533,
+   0.5043219844619394
+  ],
+  "nRD": [
+   0.5043219844619394,
+   0.8635156836956533
+  ]
+ },
+ "x0M": -16.12,
+ "x1M": 16.16,
+ "date": "2025-09-22",
+ "coverage": 0.8,
+ "spans": [
+  {
+   "pandId": "0363100012123718",
+   "x0M": -16.12,
+   "x1M": -9.66,
+   "px": [
+    0,
+    259
+   ],
+   "date": "2025-09-22",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "recording_2025-09-22_10-53-43_00208",
+     "timestamp": "2025-09-22T10:59:44Z",
+     "distanceM": 29.7,
+     "obliquityDeg": 2.3,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "recording_2025-09-22_10-53-43_00207",
+     "timestamp": "2025-09-22T10:59:43Z",
+     "distanceM": 25.1,
+     "obliquityDeg": 6.3,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "recording_2025-09-22_10-53-43_00206",
+     "timestamp": "2025-09-22T10:59:42Z",
+     "distanceM": 20.4,
+     "obliquityDeg": 11.1,
+     "missingFraction": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012100888",
+   "x0M": -9.66,
+   "x1M": -3.08,
+   "px": [
+    259,
+    522
+   ],
+   "date": "2025-09-22",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "recording_2025-09-22_10-53-43_00207",
+     "timestamp": "2025-09-22T10:59:43Z",
+     "distanceM": 26.6,
+     "obliquityDeg": 20.4,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "recording_2025-09-22_10-53-43_00206",
+     "timestamp": "2025-09-22T10:59:42Z",
+     "distanceM": 22.6,
+     "obliquityDeg": 27.5,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "recording_2025-09-22_10-53-43_00205",
+     "timestamp": "2025-09-22T10:59:41Z",
+     "distanceM": 18.7,
+     "obliquityDeg": 36,
+     "missingFraction": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012086071",
+   "x0M": -3.08,
+   "x1M": 3.2,
+   "px": [
+    522,
+    773
+   ],
+   "date": "2025-09-22",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "recording_2025-09-22_10-53-43_00207",
+     "timestamp": "2025-09-22T10:59:43Z",
+     "distanceM": 29.5,
+     "obliquityDeg": 32.2,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "recording_2025-09-22_10-53-43_00206",
+     "timestamp": "2025-09-22T10:59:42Z",
+     "distanceM": 26.2,
+     "obliquityDeg": 40.1,
+     "missingFraction": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012123527",
+   "x0M": 3.2,
+   "x1M": 9.52,
+   "px": [
+    773,
+    1026
+   ],
+   "date": "2025-09-22",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "recording_2025-09-22_10-53-43_00171",
+     "timestamp": "2025-09-22T10:58:17Z",
+     "distanceM": 5.2,
+     "obliquityDeg": 40.4,
+     "missingFraction": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012086436",
+   "x0M": 9.52,
+   "x1M": 16.16,
+   "px": [
+    1026,
+    1291
+   ],
+   "date": "2022-05-11",
+   "fallbackDate": true,
+   "panoramas": [
+    {
+     "panoId": "TMX7316010203-002572_pano_0000_002554",
+     "timestamp": "2022-05-11T06:58:48.955740Z",
+     "distanceM": 5.1,
+     "obliquityDeg": 40,
+     "missingFraction": 0
+    }
+   ]
+  }
+ ],
+ "candidatesByDate": {
+  "2022-05-11": 3,
+  "2016-08-05": 3,
+  "2025-09-22": 3,
+  "2019-06-28": 2,
+  "2021-06-17": 2,
+  "2018-07-30": 3,
+  "2017-12-28": 0,
+  "2020-06-02": 2,
+  "2017-05-15": 2,
+  "2024-09-10": 3,
+  "2022-10-03": 0
+ },
+ "description": "Rectified orthographic elevation of the whole face on the frontage planes: x = chunk-frame metres along the face (left→right seen from the street) from x0M, y = metres above the shared ground (groundNAP) from the bottom; grey = no panorama data. Per-pand spans list the panoramas median-fused for that frontage.",
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (CC BY 4.0; faces and number plates blurred by the publisher)"
+}

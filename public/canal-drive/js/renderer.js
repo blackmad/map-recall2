@@ -158,6 +158,8 @@ class Renderer {
   }
 
   _drawDestination(camera, track) {
+    // First-person camera (engine/ownWorldView.ts sets this while racing): at eye level the pin reads as an address sign.
+    if (window.__canalRecallFpsHidePin) { this.destinationPillRect = { x: -9999, y: -9999, width: 0, height: 0 }; return; }
     const ctx = this.ctx;
     const destination = camera.worldToScreen(track.finishPoint.x, track.finishPoint.y);
     // Pin and pill, in canvas px, so map labels keep clear of them.
@@ -174,10 +176,11 @@ class Renderer {
     // Centre the ink in the pill by its measured bounds. A fixed alphabetic
     // baseline at y 32 sat the caps on the pill's bottom edge (user 2026-10-16).
     ctx.textBaseline = 'alphabetic';
-    const ink = ctx.measureText('DESTINATION');
+    const pinLabel = window.CanalI18n ? window.CanalI18n.t('hud.destination') : 'DESTINATION';
+    const ink = ctx.measureText(pinLabel);
     const ascent = ink.actualBoundingBoxAscent || 7;
     const descent = ink.actualBoundingBoxDescent || 0;
-    ctx.fillText('DESTINATION', 0, 28 + (ascent - descent) / 2);
+    ctx.fillText(pinLabel, 0, 28 + (ascent - descent) / 2);
     ctx.fillStyle = surface.arrow;
     ctx.strokeStyle = surface.ink;
     ctx.lineWidth = 2;
@@ -494,10 +497,10 @@ class Renderer {
     ctx.fillText(card.heading.toUpperCase(), textX, y + 27);
     ctx.fillStyle = surface.ink;
     ctx.font = `800 ${card.nameFontSize}px ${surface.fontPlaque}`;
-    ctx.fillText(card.name.toUpperCase(), textX, y + 58);
+    ctx.fillText(card.name.toUpperCase(), textX, y + (card.nameBaseline ?? 58));
     ctx.fillStyle = surface.inkMuted;
     ctx.font = `500 12px ${surface.fontUi}`;
-    ctx.fillText(card.caption, textX, y + 80);
+    ctx.fillText(card.caption, textX, y + (card.captionBaseline ?? 80));
     ctx.restore();
 
     ctx.strokeStyle = surface.border;

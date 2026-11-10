@@ -1,0 +1,98 @@
+{
+ "note": "Palette pins (blockFace/reviewPalettes.ts). 2025-09-22 and 2021-02-17 panoramas carry a cyan/purple cast: the trim-normalised wall of the Pluvierplein and Pelikaanstraat 22 fronts came out green and purple while the same brick reads grey-brown on the neighbours.",
+ "reviewed": "2026-11-10 (lane, from the sheets)",
+ "pins": [
+  {
+   "pandId": "0363100012070701",
+   "type": "vogel-1921-two-storey-dormer-row",
+   "palette": {
+    "brick": "#968a80"
+   },
+   "reason": "Pluvierplein (2025-09-22, cyan cast: sky #7fd3e0 at the top of the strip): measured wall #929690 / #868e82 is the cast, the neighbouring Pelikaanstraat brick reads #a9a097 on the same strip; one warm grey for the plein"
+  },
+  {
+   "pandId": "0363100012151759",
+   "type": "vogel-1921-two-storey-dormer-row",
+   "palette": {
+    "brick": "#968a80"
+   },
+   "reason": "Pluvierplein (2025-09-22, cyan cast: sky #7fd3e0 at the top of the strip): measured wall #929690 / #868e82 is the cast, the neighbouring Pelikaanstraat brick reads #a9a097 on the same strip; one warm grey for the plein"
+  },
+  {
+   "pandId": "0363100012149277",
+   "type": "vogel-1921-two-storey-dormer-row",
+   "palette": {
+    "brick": "#968a80"
+   },
+   "reason": "Pluvierplein (2025-09-22, cyan cast: sky #7fd3e0 at the top of the strip): measured wall #929690 / #868e82 is the cast, the neighbouring Pelikaanstraat brick reads #a9a097 on the same strip; one warm grey for the plein"
+  },
+  {
+   "pandId": "0363100012125723",
+   "type": "vogel-1921-two-storey-dormer-row",
+   "palette": {
+    "brick": "#968a80"
+   },
+   "reason": "Pluvierplein (2025-09-22, cyan cast: sky #7fd3e0 at the top of the strip): measured wall #929690 / #868e82 is the cast, the neighbouring Pelikaanstraat brick reads #a9a097 on the same strip; one warm grey for the plein"
+  },
+  {
+   "pandId": "0363100012097975",
+   "type": "vogel-1921-two-storey-dormer-row",
+   "palette": {
+    "brick": "#5f4f4a"
+   },
+   "reason": "Pelikaanstraat 22 (2021-02-17): measured #5e5a61 is purple; its neighbours 20 and 18 read #5f4f4a and #64554e on the same strip"
+  },
+  {
+   "pandId": "0363100012116125",
+   "type": "vogel-1921-two-storey-dormer-row",
+   "palette": {
+    "brick": "#50463f"
+   },
+   "reason": "Meeuwenplein 43 (tree over the front): the measurement failed and the type default is red; the neighbours 41 and 45 read #50463b and #4e423d"
+  },
+  {
+   "pandId": "0363100012085241",
+   "type": "vogel-1921-two-storey-dormer-row",
+   "palette": {
+    "frame": "#2f4a3b",
+    "cornice": "#3b5a47"
+   },
+   "reason": "Flamingostraat 3-9 (2025-09-22, the best-exposed strip of the buurt): dark green window sashes and a dark green gutter fascia, white sills"
+  },
+  {
+   "pandId": "0363100012144600",
+   "type": "vogel-1921-two-storey-dormer-row",
+   "palette": {
+    "frame": "#2f4a3b",
+    "cornice": "#3b5a47"
+   },
+   "reason": "Flamingostraat 3-9 (2025-09-22, the best-exposed strip of the buurt): dark green window sashes and a dark green gutter fascia, white sills"
+  },
+  {
+   "pandId": "0363100012091234",
+   "type": "vogel-1921-two-storey-dormer-row",
+   "palette": {
+    "frame": "#2f4a3b",
+    "cornice": "#3b5a47"
+   },
+   "reason": "Flamingostraat 3-9 (2025-09-22, the best-exposed strip of the buurt): dark green window sashes and a dark green gutter fascia, white sills"
+  },
+  {
+   "pandId": "0363100012121759",
+   "type": "vogel-1921-two-storey-dormer-row",
+   "palette": {
+    "frame": "#2f4a3b",
+    "cornice": "#3b5a47"
+   },
+   "reason": "Flamingostraat 3-9 (2025-09-22, the best-exposed strip of the buurt): dark green window sashes and a dark green gutter fascia, white sills"
+  },
+  {
+   "pandId": "0363100012111141",
+   "type": "vogel-1921-two-storey-dormer-row",
+   "palette": {
+    "brick": "#6e625e"
+   },
+   "reason": "Kalkoenstraat 30 (2017-12-28): photo wall is neutral purple-grey #5d5b5c-#696a6c, lighter than its neighbours; the batch wall fit drew green #53695c. Opus review 2026-11-10."
+  }
+ ]
+}

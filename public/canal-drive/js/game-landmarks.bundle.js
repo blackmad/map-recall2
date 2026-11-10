@@ -1,416 +1,166 @@
 "use strict";
 (() => {
-  // src/canalRecall/answerPath.ts
-  function normaliseAnswer(value) {
-    return value.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
+  // src/canalRecall/featureFlags.ts
+  var FREE_RIDE_LANDMARK_QUIZ_DEFAULT = false;
+  function queryFlag(search2, name, fallback) {
+    const match = new RegExp(`[?&]${name}=([^&#]*)`).exec(search2 || "");
+    if (!match) return fallback;
+    const value = match[1].toLowerCase();
+    if (value === "1" || value === "true" || value === "on") return true;
+    if (value === "0" || value === "false" || value === "off") return false;
+    return fallback;
+  }
+  function freeRideLandmarkQuizEnabled(search2) {
+    return queryFlag(search2, "freeRideQuiz", FREE_RIDE_LANDMARK_QUIZ_DEFAULT);
   }
 
-  // src/canalRecall/game/landmarkData.ts
-  var GENERIC_BRIDGE_NAME_PATTERN = /^\s*(brug\s*)?\d+\s*$/i;
-  var NEIGHBORHOOD_KIND_RANKS = {
-    city_block: 5,
-    neighbourhood: 4,
-    neighborhood: 4,
-    quarter: 3,
-    locality: 2,
-    suburb: 1
-  };
-  function sentences(text) {
-    return text.split(/(?<=[.!?])\s/);
+  // src/canalRecall/game/landmarkQuestion.ts
+  var LANDMARK_QUESTION_RADIUS_M = 150;
+  var LANDMARK_QUESTION_HALF_CONE = 55 * Math.PI / 180;
+  var SAME_COMPLEX_M = 40;
+  var LANDMARK_CHOICE_COUNT = 4;
+  var FILLER_MAX_M = 900;
+  function nameKey(name) {
+    return name.normalize("NFKD").replace(/[̀-ͯ]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
   }
-  function sentencesUpTo(parts, max) {
-    let out = "";
-    for (const part of parts) {
-      const next = out ? `${out} ${part}` : part;
-      if (next.length > max) break;
-      out = next;
+  function inViewCone(rider, point, radiusPx, halfCone = LANDMARK_QUESTION_HALF_CONE) {
+    const dx = point.x - rider.x, dy = point.y - rider.y;
+    const distance = Math.hypot(dx, dy);
+    if (distance > radiusPx) return false;
+    if (distance < 1) return true;
+    const heading = rider.speed < 0 ? rider.angle + Math.PI : rider.angle;
+    let off = Math.atan2(dy, dx) - heading;
+    off = Math.atan2(Math.sin(off), Math.cos(off));
+    return Math.abs(off) <= halfCone;
+  }
+  function landmarkChoices(answer, pool, options) {
+    const count = options.count ?? LANDMARK_CHOICE_COUNT;
+    const taken = /* @__PURE__ */ new Set([nameKey(answer.name)]);
+    const near = (a, b) => Math.hypot(a.x - b.x, a.y - b.y);
+    const eligible2 = pool.filter((other) => other.id !== answer.id && !!other.name && near(other, answer) > options.sameComplexPx);
+    const byDistance = (a, b) => near(a, answer) - near(b, answer) || a.name.localeCompare(b.name);
+    const sameHood = answer.hood ? eligible2.filter((other) => other.hood === answer.hood).sort(byDistance) : [];
+    const filler = eligible2.filter((other) => !(answer.hood && other.hood === answer.hood) && near(other, answer) <= options.fillerMaxPx).sort(byDistance);
+    const picked = [];
+    for (const other of [...sameHood, ...filler]) {
+      if (picked.length >= count - 1) break;
+      const key = nameKey(other.name);
+      if (!key || taken.has(key)) continue;
+      if ([...taken].some((seen) => seen.includes(key) || key.includes(seen))) continue;
+      taken.add(key);
+      picked.push(other.name);
     }
-    if (out || !parts.length) return out;
-    const cut = parts[0].slice(0, max - 1);
-    const space = cut.lastIndexOf(" ");
-    return `${(space > max / 2 ? cut.slice(0, space) : cut).trimEnd()}\u2026`;
+    if (picked.length < count - 1) return null;
+    const choices = [answer.name, ...picked];
+    return options.shuffle ? options.shuffle(choices) : choices;
   }
-  function splitDetail(text) {
-    const parts = sentences((text || "").trim()).filter(Boolean);
-    return {
-      detail: sentencesUpTo(parts.slice(0, 1), 150),
-      longDetail: sentencesUpTo(parts.slice(0, 3), 280)
-    };
+  function landmarkWithheldNames(answer, choices) {
+    return [...new Set([answer, ...choices].filter(Boolean))];
   }
-  function pointInPolygon(x, y, ring) {
-    let inside = false;
-    for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) {
-      const a = ring[i], b = ring[j];
-      if (a.y > y !== b.y > y && x < (b.x - a.x) * (y - a.y) / (b.y - a.y) + a.x) inside = !inside;
-    }
-    return inside;
+  function mayAskLandmark(slot) {
+    return !slot.questionOpen && !slot.streetCandidate && !slot.feedbackVisible && !slot.utilityOpen;
   }
-  function neighborhoodAt(neighborhoods, x, y) {
-    return neighborhoods.find((hood) => hood.rings.some((ring) => pointInPolygon(x, y, ring))) || null;
+  var LANDMARK_QUESTIONS_DEFAULT_ON = true;
+  function landmarkQuestionsEnabled(search2, mode) {
+    const flag = /[?&]landmarkQuestions=([^&]*)/.exec(search2 || "");
+    if (flag && (flag[1] === "0" || flag[1] === "false" || flag[1] === "off")) return false;
+    const optedIn = !!flag && (flag[1] === "1" || flag[1] === "true" || flag[1] === "on");
+    if (!LANDMARK_QUESTIONS_DEFAULT_ON && !optedIn) return false;
+    return mode.freeRide ? mode.freeRideQuiz && freeRideLandmarkQuizEnabled(search2) : true;
   }
-  function displayGeometry(feature, center) {
-    const sourcePaths = feature.paths || (feature.path ? [feature.path] : []);
-    const geometryFeatures = sourcePaths.filter((path) => path && path.length > 1).map((path) => {
-      const coordinates = path.map(([lat, lng]) => [lng, lat]);
-      const first = coordinates[0], last = coordinates[coordinates.length - 1];
-      const closed = coordinates.length > 3 && first[0] === last[0] && first[1] === last[1];
-      return {
-        type: "Feature",
-        properties: {},
-        geometry: closed ? { type: "Polygon", coordinates: [coordinates] } : { type: "LineString", coordinates }
-      };
-    });
-    if (!geometryFeatures.length) {
-      geometryFeatures.push({
-        type: "Feature",
-        properties: {},
-        geometry: { type: "Point", coordinates: [center[1], center[0]] }
-      });
-    }
-    return geometryFeatures;
-  }
-  function buildLandmarks(features, project) {
-    const landmarks = [];
-    for (const feature of features) {
-      const center = feature.center || feature.path && feature.path[0];
-      if (!center) continue;
-      const point = project(center[0], center[1], feature);
-      if (!point) continue;
-      const { detail, longDetail } = splitDetail(feature.funFact || feature.wikipediaExtract || "");
-      landmarks.push({
-        id: feature.id,
-        name: feature.name,
-        type: feature.type || "",
-        imageUrl: feature.wikipediaImageUrl || "",
-        x: point.x,
-        y: point.y,
-        lngLat: [center[1], center[0]],
-        detail,
-        longDetail,
-        prominenceScore: feature.prominenceScore || 0,
-        wikipediaUrl: feature.wikipediaUrl || "",
-        sourceUrl: feature.sourceUrl,
-        researchSourceUrl: feature.researchSourceUrl,
-        researchDetail: feature.researchDetail,
-        buildingIds: feature.buildingIds,
-        wikidata: feature.wikidata || "",
-        wikipedia: feature.wikipedia || "",
-        extractLang: feature.wikipediaExtractLang || "en",
-        wikipediaPageviews60d: feature.wikipediaPageviews60d,
-        wikidataSitelinks: feature.wikidataSitelinks,
-        heritage: feature.heritage,
-        wikidataInstanceOf: feature.wikidataInstanceOf,
-        geojson: { type: "FeatureCollection", features: displayGeometry(feature, center) }
-      });
-    }
-    return landmarks;
-  }
-  function isLocatorMapImage(url) {
-    if (!url) return false;
-    return /Map[_-]NL[_-]|Map_-_NL[_-]|\/Map_NL_|locator.?map|_kaart\./i.test(url);
-  }
-  function buildNeighborhoods(boundaries, enrichments, toWorld) {
-    const enrichmentByName = new Map(enrichments.map((entry) => [entry.name, entry]));
-    const neighborhoods = boundaries.filter((boundary) => boundary.geometry && NEIGHBORHOOD_KIND_RANKS[boundary.kind]).map((boundary) => {
-      const enriched = enrichmentByName.get(boundary.name);
-      const rawUrl = enriched?.imageUrl || "";
-      return {
-        name: boundary.name,
-        kind: boundary.kind,
-        rank: NEIGHBORHOOD_KIND_RANKS[boundary.kind],
-        rings: (boundary.geometry || []).map((polygon) => (polygon[0] || []).map(toWorld)).filter((ring) => ring.length > 2),
-        wikipediaExtract: enriched?.wikipediaExtract || "",
-        imageUrl: isLocatorMapImage(rawUrl) ? "" : rawUrl,
-        imageAttribution: isLocatorMapImage(rawUrl) ? "" : enriched?.imageAttribution || ""
-      };
-    }).filter((hood) => hood.rings.length).sort((a, b) => b.rank - a.rank);
-    for (const hood of neighborhoods) {
-      if (hood.imageUrl) continue;
-      const sample = hood.rings[0] && hood.rings[0][0];
-      if (!sample) continue;
-      const parent = neighborhoods.find((candidate) => candidate.rank < hood.rank && candidate.imageUrl && candidate.rings.some((ring) => pointInPolygon(sample.x, sample.y, ring)));
-      if (parent) {
-        hood.imageUrl = parent.imageUrl;
-        hood.imageAttribution = parent.imageAttribution;
-        hood.imageArea = parent.name;
-      }
-    }
-    return neighborhoods;
-  }
-  var CROSSING_WATER_LINE_METERS = 90;
-  function crossingWaterLines(waters, waterway, center, toWorld, radiusMeters = CROSSING_WATER_LINE_METERS) {
-    const lines = [];
-    const mLat = 111320;
-    const mLng = 111320 * Math.cos(center[0] * Math.PI / 180);
-    const local = ([lat, lng]) => ({ x: (lng - center[1]) * mLng, y: (lat - center[0]) * mLat });
-    for (const water of waters) {
-      if (water.name !== waterway) continue;
-      for (const path of water.paths || (water.path ? [water.path] : [])) {
-        for (let i = 1; i < (path || []).length; i++) {
-          const a = local(path[i - 1]), b = local(path[i]);
-          const dx = b.x - a.x, dy = b.y - a.y;
-          const len2 = dx * dx + dy * dy;
-          const t2 = len2 ? Math.max(0, Math.min(1, -(a.x * dx + a.y * dy) / len2)) : 0;
-          if (Math.hypot(a.x + dx * t2, a.y + dy * t2) > radiusMeters) continue;
-          lines.push([toWorld(path[i - 1]), toWorld(path[i])]);
-        }
-      }
-    }
-    return lines;
-  }
-  function buildBridges(features, crossingIndex, toWorld, waters = []) {
-    const bridges = [];
-    for (const feature of features) {
-      const sourcePaths = feature.paths || (feature.path ? [feature.path] : []);
-      const lines = sourcePaths.map((path) => (path || []).map(toWorld)).filter((line) => line.length > 1);
-      if (!feature.name || lines.length === 0 || GENERIC_BRIDGE_NAME_PATTERN.test(feature.name)) continue;
-      if (feature.carriesRailway && !feature.carriesRoad) continue;
-      const published = (crossingIndex.bridges || {})[feature.id];
-      let source;
-      if (published && published.length) {
-        source = published;
-      } else if (feature.center) {
-        source = [{
-          index: 0,
-          center: feature.center,
-          waterway: null,
-          waterwayType: null,
-          waterDistractors: [],
-          spans: lines.length
-        }];
-      } else {
-        continue;
-      }
-      bridges.push({
-        id: feature.id,
-        name: feature.name,
-        ...feature.displayName ? { displayName: feature.displayName } : {},
-        lines,
-        crossings: source.map((crossing) => {
-          const waterLines = crossing.waterway && waters.length ? crossingWaterLines(waters, crossing.waterway, crossing.center, toWorld) : [];
-          return { ...crossing, ...toWorld(crossing.center), ...waterLines.length ? { waterLines } : {} };
-        }),
-        distractors: (feature.distractors || []).filter((name) => !GENERIC_BRIDGE_NAME_PATTERN.test(name)),
-        wikipediaUrl: feature.wikipediaUrl || "",
-        detail: splitDetail(feature.wikipediaExtract).detail
-      });
-    }
-    return bridges;
-  }
-  function isWorthACard(landmark) {
-    return !!(landmark.detail || landmark.longDetail || landmark.imageUrl || landmark.wikipediaUrl);
-  }
-
-  // src/canalRecall/clickPoiInfo.ts
-  function validPoiWebsite(value) {
-    if (typeof value !== "string" || !value.trim()) return "";
+  var LANDMARK_SIGHTINGS_KEY = "canalRecall.landmarkSightings.v1";
+  function readSightings(store) {
     try {
-      const url = new URL(/^[a-z]+:/i.test(value.trim()) ? value.trim() : `https://${value.trim()}`);
-      return /^(https?:)$/.test(url.protocol) && url.hostname.includes(".") && !url.username && !url.password ? url.href : "";
+      const raw = store?.getItem(LANDMARK_SIGHTINGS_KEY);
+      if (!raw) return {};
+      const parsed = JSON.parse(raw);
+      const out = {};
+      for (const [id, value] of Object.entries(parsed || {})) {
+        if (!value || value.how !== "noticed" && value.how !== "named") continue;
+        out[id] = { hood: String(value.hood || ""), how: value.how, at: Number(value.at) || 0 };
+      }
+      return out;
     } catch {
-      return "";
+      return {};
     }
   }
-  function inRing(point, ring) {
-    let inside = false;
-    const [x, y] = point;
-    for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) {
-      const [ax, ay] = ring[j], [bx, by] = ring[i];
-      const cross = (x - ax) * (by - ay) - (y - ay) * (bx - ax);
-      if (Math.abs(cross) < 1e-14 && x >= Math.min(ax, bx) && x <= Math.max(ax, bx) && y >= Math.min(ay, by) && y <= Math.max(ay, by)) return true;
-      if (ay > y !== by > y && x < (bx - ax) * (y - ay) / (by - ay) + ax) inside = !inside;
+  function saveSightings(store, sightings) {
+    try {
+      store?.setItem(LANDMARK_SIGHTINGS_KEY, JSON.stringify(sightings));
+    } catch {
     }
-    return inside;
   }
-  function poiInsideBuilding(point, geometry) {
-    const polygons = geometry.type === "Polygon" ? [geometry.coordinates] : geometry.coordinates;
-    return polygons.some((rings) => rings.length && inRing(point, rings[0]) && !rings.slice(1).some((hole) => inRing(point, hole)));
+  function noteSighting(sightings, id, hood, how, at) {
+    const existing = sightings[id];
+    if (existing && (existing.how === "named" || existing.how === how)) return { sightings, isNew: false };
+    return { sightings: { ...sightings, [id]: { hood: hood || existing?.hood || "", how, at } }, isNew: true };
   }
-  var osmUrl = (id) => `https://www.openstreetmap.org/${{ n: "node", w: "way", r: "relation" }[id[0]]}/${id.slice(1)}`;
-  var cell = (lng, lat) => `${Math.floor(lng * 1e3)}/${Math.floor(lat * 1e3)}`;
-  var ClickPoiIndex = class {
-    cells = /* @__PURE__ */ new Map();
-    rows = [];
-    constructor(file) {
-      if (file?.version !== 1 || !Array.isArray(file.points)) return;
-      for (const row of file.points) {
-        if (!Array.isArray(row) || !/^[nwr]\d+$/.test(row[0]) || !row[1] || !Number.isFinite(row[2]) || !Number.isFinite(row[3])) continue;
-        this.rows.push(row);
-        const key = cell(row[2], row[3]);
-        const group = this.cells.get(key) ?? [];
-        group.push(row);
-        this.cells.set(key, group);
-      }
-    }
-    contained(geometry) {
-      const polygons = geometry.type === "Polygon" ? [geometry.coordinates] : geometry.coordinates;
-      const outer = polygons.flatMap((rings) => rings[0] ?? []);
-      if (!outer.length) return [];
-      const xs = outer.map((p) => Math.floor(p[0] * 1e3)), ys = outer.map((p) => Math.floor(p[1] * 1e3));
-      const minX = Math.min(...xs), maxX = Math.max(...xs), minY = Math.min(...ys), maxY = Math.max(...ys);
-      const candidates = [];
-      if ((maxX - minX + 1) * (maxY - minY + 1) > 2e3) candidates.push(...this.rows);
-      else for (let x = minX; x <= maxX; x++) for (let y = minY; y <= maxY; y++) candidates.push(...this.cells.get(`${x}/${y}`) ?? []);
-      const found = candidates.filter((row) => poiInsideBuilding([row[2], row[3]], geometry)).sort((a, b) => Number(!!b[8]) - Number(!!a[8]) || Number(!!b[7]) - Number(!!a[7]) || a[0].localeCompare(b[0]));
-      const seen = /* @__PURE__ */ new Set();
-      return found.filter((row) => {
-        const key = row[1].normalize("NFC").toLocaleLowerCase("nl").trim();
-        if (seen.has(key)) return false;
-        seen.add(key);
-        return true;
-      });
-    }
-    card(building) {
-      if (!building.footprint) return null;
-      const places = this.contained(building.footprint);
-      if (!places.length) return null;
-      const title = places.findIndex((row) => row[1] === building.name || row[5] === "a mall");
-      if (title > 0) places.unshift(...places.splice(title, 1));
-      const summaries = places.slice(0, 8).map((row) => `${row[1]} is mapped as ${row[5] || row[4]}${row[6] ? ` at ${row[6]}` : ""}.` + (row[8] ? ` ${row[8]}` : ""));
-      const paragraphs = summaries.map((summary, i) => summary + (validPoiWebsite(places[i][7]) ? `
-Website: ${validPoiWebsite(places[i][7])}` : "") + `
-Map source: ${osmUrl(places[i][0])}`);
-      const first = places[0];
-      return {
-        id: `clicked-poi-${building.id}`,
-        name: places.length > 1 ? `${first[1]} + ${places.length - 1} mapped places` : first[1],
-        type: first[4],
-        detail: `${first[1]} is mapped as ${first[5] || first[4]}${first[6] ? ` at ${first[6]}` : ""}.`,
-        longDetail: summaries.join("\n\n"),
-        factTexts: paragraphs,
-        sourceUrl: osmUrl(first[0]),
-        lngLat: [first[2], first[3]],
-        featureTarget: building.featureTarget
-      };
-    }
-  };
-
-  // src/canalRecall/game/landmarkNotice.ts
-  var DEFAULT_NOTICE_CONFIG = {
-    exitRadius: 480,
-    minSeconds: 6,
-    fadeSeconds: 0.8
-  };
-  function openNotice() {
-    return { elapsed: 0, fadeRemaining: null };
+  function bumpSessionCounter(target, key) {
+    if (!target) return 0;
+    const session = target.__canalRecallSession ||= {};
+    const next = (Number(session[key]) || 0) + 1;
+    session[key] = next;
+    return next;
   }
-  function clamp01(value) {
-    return value < 0 ? 0 : value > 1 ? 1 : value;
-  }
-  function advanceNotice(state, hold, playerPosition, dt, config = DEFAULT_NOTICE_CONFIG) {
-    const elapsed = state.elapsed + dt;
-    let held;
-    switch (hold.kind) {
-      case "sticky":
-        held = true;
-        break;
-      case "timed":
-        held = elapsed < hold.seconds;
-        break;
-      case "proximity": {
-        if (!playerPosition) {
-          held = true;
-          break;
-        }
-        const distance = Math.hypot(hold.anchor.x - playerPosition.x, hold.anchor.y - playerPosition.y);
-        held = distance <= config.exitRadius || elapsed < config.minSeconds;
-        break;
-      }
-    }
-    const fadeRemaining = held ? null : (state.fadeRemaining === null ? config.fadeSeconds : state.fadeRemaining) - dt;
-    const next = { elapsed, fadeRemaining };
-    const fadeIn = clamp01(elapsed / config.fadeSeconds);
-    const fadeOut = fadeRemaining === null ? 1 : clamp01(fadeRemaining / config.fadeSeconds);
-    return {
-      state: next,
-      alpha: Math.min(fadeIn, fadeOut),
-      visible: fadeRemaining === null || fadeRemaining > 0
-    };
+  function questionContext(side, buurt) {
+    return buurt ? `${side} \xB7 ${buurt}` : side;
   }
 
-  // src/canalRecall/facts/factRotation.ts
-  function emptyRotationState() {
-    return { history: {}, shown: 0, recentKinds: [] };
+  // src/canalRecall/game/labelDrawLedger.ts
+  var LABEL_RECENT_MS = 3e4;
+  var CARD_RECENT_MS = 6e4;
+  var LANDMARK_APPROACH_RADIUS_M = 300;
+  var APPROACH_KEEP_FACTOR = 1.25;
+  var APPROACH_KEEP_EXTRA_CONE = 20 * Math.PI / 180;
+  var MIN_MATCH_KEY = 4;
+  function createLedger() {
+    return { current: /* @__PURE__ */ new Map(), lastDrawn: /* @__PURE__ */ new Map(), cards: /* @__PURE__ */ new Map() };
   }
-  var RECENT_KIND_MEMORY = 3;
-  function factKey(featureId, fact) {
-    const normalised = fact.text.toLowerCase().replace(/[^\p{L}\p{N}]+/gu, "");
-    let hash = 2166136261;
-    for (let index = 0; index < normalised.length; index++) {
-      hash ^= normalised.charCodeAt(index);
-      hash = Math.imul(hash, 16777619);
-    }
-    return `${featureId}:${(hash >>> 0).toString(36)}`;
+  function noteCardShown(ledger, name, at) {
+    const key = nameKey(name || "");
+    if (key) ledger.cards.set(key, at);
   }
-  var KIND_APPEAL = {
-    surprise: 5,
-    naming: 4,
-    culture: 3,
-    people: 3,
-    history: 2,
-    design: 1
-  };
-  function chooseFact(featureId, facts, state) {
-    if (!facts.length) return null;
-    const scored = facts.map((fact) => {
-      const key = factKey(featureId, fact);
-      const lastShown = state.history[key];
-      const seen = lastShown !== void 0;
-      const recency = state.recentKinds.indexOf(fact.kind);
-      const kindPenalty = recency < 0 ? 0 : (RECENT_KIND_MEMORY - recency) * 2;
-      return {
-        fact,
-        key,
-        seen,
-        lastShown: lastShown ?? -1,
-        score: (seen ? 0 : 100) + KIND_APPEAL[fact.kind] - kindPenalty
-      };
-    });
-    scored.sort((a, b) => (
-      // Unseen first; then among seen, the one shown longest ago; then appeal.
-      Number(b.score > 0 && !b.seen) - Number(a.score > 0 && !a.seen) || (a.seen && b.seen ? a.lastShown - b.lastShown : 0) || b.score - a.score
-    ));
-    const best = scored[0];
-    return { fact: best.fact, key: best.key, repeat: best.seen };
+  function namesMatch(labelKey, landmarkKey) {
+    if (!labelKey || !landmarkKey) return false;
+    if (labelKey === landmarkKey) return true;
+    const [short, long] = labelKey.length < landmarkKey.length ? [labelKey, landmarkKey] : [landmarkKey, labelKey];
+    return short.length >= MIN_MATCH_KEY && ` ${long} `.includes(` ${short} `);
   }
-  function recordShown(state, choice) {
-    const shown = state.shown + 1;
-    return {
-      history: { ...state.history, [choice.key]: shown },
-      shown,
-      recentKinds: [choice.fact.kind, ...state.recentKinds].slice(0, RECENT_KIND_MEMORY)
-    };
+  function lastMatch(map, key) {
+    let best = null;
+    for (const [other, time] of map) if (namesMatch(other, key) && (best === null || time > best)) best = time;
+    return best;
   }
-  function expandedFacts(facts, shownText, limit = 3) {
-    return facts.filter((fact) => fact.text !== shownText).slice().sort((a, b) => KIND_APPEAL[b.kind] - KIND_APPEAL[a.kind]).slice(0, limit);
+  function lastLabelDrawn(ledger, name, now) {
+    const key = nameKey(name || "");
+    if (!key) return null;
+    for (const drawn of ledger.current.values()) for (const other of drawn) if (namesMatch(other, key)) return now;
+    return lastMatch(ledger.lastDrawn, key);
   }
-  function pruneHistory(state, maxEntries = 4e3) {
-    const entries = Object.entries(state.history);
-    if (entries.length <= maxEntries) return state;
-    const kept = entries.sort((a, b) => b[1] - a[1]).slice(0, maxEntries);
-    return { ...state, history: Object.fromEntries(kept) };
+  function lastCardShown(ledger, name) {
+    return lastMatch(ledger.cards, nameKey(name || ""));
   }
-
-  // src/canalRecall/facts/factQuality.ts
-  var CATEGORY_WORDS = "bridge|street|canal|park|square|church|museum|building|monument|neighbourhood|neighborhood|district|area|tower|gate|house|hotel|theatre|theater|station|market|island|quay|harbour|harbor|cemetery|garden|school|university|synagogue|mosque|windmill|lock|sluice|library|hall|palace|mill|club|stadium|arena|prison|hospital|brewery|factory|chapel|gallery|zoo|dock|street|lane|road|avenue|tunnel|fountain|statue";
-  var LEDE_RESTATEMENT = new RegExp(
-    `^\\s*(the\\s+)?[^.]{2,60}?\\s+(is|was)\\s+(a|an|the)\\s+(\\w+[- ]){0,3}(${CATEGORY_WORDS})\\b[^.]{0,40}\\b(in|of|on|near|at|situated at|located at)\\s+(the\\s+)?[A-Z0-9][^.]{0,40}\\.?\\s*$`,
-    "i"
-  );
-  var FILLER_CLAUSE = new RegExp(
-    "\\s*,\\s+(?:(?:marking|showcasing|highlighting|demonstrating|reflecting|contributing|offering|underscoring|emphasi[sz]ing|solidifying|cementing|symboli[sz]ing|illustrating|making it|cementing its)\\b[^,]*|(?:a|an|the)\\s+(?:\\w+\\s+){0,2}(?:striking|significant|notable|remarkable|hidden|unique|key|major|important|impressive|beloved|popular)\\s+(?:\\w+\\s+){0,2}(?:feature|milestone|achievement|aspect|element|landmark|detail|addition|space|example|part|symbol|sight)[^,]*)\\s*\\.?\\s*$",
-    "i"
-  );
-  function words(text) {
-    return text.toLowerCase().match(/[\p{L}\p{N}]+/gu) || [];
+  function landmarkSkipReason(ledger, name, now) {
+    const drawn = lastLabelDrawn(ledger, name, now);
+    if (drawn !== null && now - drawn < LABEL_RECENT_MS) return "labelRecent";
+    const card = lastCardShown(ledger, name);
+    if (card !== null && now - card < CARD_RECENT_MS) return "cardRecent";
+    return null;
   }
-  function similarity(a, b) {
-    const left = new Set(words(a));
-    const right = new Set(words(b));
-    if (!left.size || !right.size) return 0;
-    let shared2 = 0;
-    for (const word of left) if (right.has(word)) shared2++;
-    return shared2 / Math.min(left.size, right.size);
+  function sharedLedger(target = globalThis) {
+    if (!target) return createLedger();
+    return target.__canalRecallLabelLedger ||= createLedger();
+  }
+  function bumpSkipCounter(target, seen, id, reason) {
+    if (!target || seen.has(`${id}:${reason}`)) return false;
+    seen.add(`${id}:${reason}`);
+    const session = target.__canalRecallSession ||= {};
+    const skips = session.landmarkSkips ||= { labelRecent: 0, cardRecent: 0 };
+    skips[reason] = (Number(skips[reason]) || 0) + 1;
+    return true;
+  }
+  function approachKept(rider, point, bandPx, halfCone = LANDMARK_QUESTION_HALF_CONE) {
+    return inViewCone(rider, point, bandPx * APPROACH_KEEP_FACTOR, halfCone + APPROACH_KEEP_EXTRA_CONE);
   }
 
   // src/i18n/messages/en.ts
@@ -462,12 +212,17 @@ Map source: ${osmUrl(places[i][0])}`);
     "setup.route.hereHint": "Start from where you are now",
     "setup.route.free": "Free ride",
     "setup.route.freeHint": "No route, no questions: ride anywhere and tap what you pass",
+    "setup.freeRideLandmarkQuiz": "Quiz me on landmarks",
+    "setup.freeRideLandmarkQuizHint": "A modelled building in view, four names, one right",
     "freeRide.badge": "Free ride",
     "freeRide.exit": "Exit",
     "freeRide.exitLabel": "Leave free ride and go back to setup",
     "freeRide.tallyNone": "Tap a marker or a building",
     "freeRide.tallyOne": "1 place opened",
     "freeRide.tallyMany": "{count} places opened",
+    "freeRide.checklist": "{opened} of {total} places",
+    "freeRide.checklistDone": "all {total} places",
+    "freeRide.stamped": "Stamped in your passport",
     "setup.difficulty": "Difficulty",
     "setup.difficulty.easy": "Easy",
     "setup.difficulty.medium": "Medium",
@@ -491,6 +246,7 @@ Map source: ${osmUrl(places[i][0])}`);
     "setup.tours": "Tours",
     "setup.tours.none": "No tour",
     "setup.tours.stops": "{count} stops by bike, one leg at a time",
+    "setup.tours.cardStops": "{count} stops by bike",
     "setup.tours.checked": " \xB7 {checked}, shops change",
     "setup.tours.brief": "Ride the {tour} tour stop by stop. Each arrival tells you why it is on the list.",
     "setup.homeAddress": "Home address",
@@ -558,7 +314,7 @@ Map source: ${osmUrl(places[i][0])}`);
     "knowledge.plan": "Plan review \xB7 {count} due",
     "knowledge.nothingDue": "Nothing due now",
     "knowledge.emptyTitle": "Your map starts with one answer",
-    "knowledge.emptyBody": "Complete a route and recall a street, canal, bridge, stop, or line. It will appear here with its next review time.",
+    "knowledge.emptyBody": "Complete a route and recall a canal, street, bridge, stop, or line. It will appear here with its next review time.",
     "knowledge.firstRoute": "Choose a first route",
     "knowledge.summary": "Knowledge summary",
     "knowledge.dueNow": "due now",
@@ -569,6 +325,33 @@ Map source: ${osmUrl(places[i][0])}`);
     "knowledge.recallRate": "Recall rate",
     "knowledge.reviewsLogged": "Reviews logged",
     "knowledge.mapKey": "Map key",
+    // --- Knowledge map and passport stamps (G5) ---
+    "kmap.title": "Knowledge map",
+    "kmap.tapHint": "Tap a buurt to filter",
+    "kmap.loading": "Map loading",
+    "kmap.legendUnit": "Buurts",
+    "kmap.mastered": "Mastered",
+    "kmap.known": "Known",
+    "kmap.learning": "Learning",
+    "kmap.fog": "Not yet ridden",
+    "kmap.due": "Names due",
+    "kmap.aria": "Map of Amsterdam by buurt: {mastered} mastered, {known} known, {learning} learning",
+    "kmap.filter.one": "{name} \xB7 {count} name",
+    "kmap.filter.other": "{name} \xB7 {count} names",
+    "kmap.wholeCity": "Whole city",
+    "stamps.title": "Passport",
+    "stamps.bodyEarned": "One stamp per buurt, earned on a quiz ride by naming it. Stamps from Free Ride stay",
+    "stamps.bodyEmpty": "Know eight names, then ride into a buurt on a quiz ride to earn its stamp",
+    "stamps.countAria": "{earned} of {total} stamps",
+    "stamps.all": "All {total} buurts",
+    "stamps.new": "New stamp",
+    "stamps.stamped": "Stamped",
+    "stamps.notYet": "Not yet",
+    "stamps.cardLabel": "NEW PASSPORT STAMP",
+    "stamps.cardLabelAgain": "PASSPORT STAMP",
+    "stamps.more": "+{count} more",
+    "stamps.held.one": "{count} stamp in the passport",
+    "stamps.held.other": "{count} stamps in the passport",
     "knowledge.status.due": "Due for review",
     "knowledge.status.learning": "Learning",
     "knowledge.status.known": "Known",
@@ -665,6 +448,7 @@ Map source: ${osmUrl(places[i][0])}`);
     "ride.load.renderingTrams": "Rendering tram lines\u2026",
     "ride.load.renderingWaterways": "Rendering waterways\u2026",
     "ride.load.settling": "Settling the map\u2026",
+    "ride.load.buildingCity": "Building the city\u2026",
     "ride.load.ready": "Ready!",
     "ride.load.findingWay": "Finding your way\u2026",
     "ride.error.noStartPoint": "No reachable starting point is available for this destination.",
@@ -734,6 +518,8 @@ Map source: ${osmUrl(places[i][0])}`);
     "prompt.placeholder.bridge": "Bridge name",
     "prompt.placeholder.line": "Line name",
     "prompt.placeholder.stop": "Stop name",
+    "prompt.label.landmark": "Landmark",
+    "prompt.placeholder.landmark": "Building name",
     "prompt.waterway": "Waterway",
     "prompt.turn": "You made a turn",
     "prompt.submit": "Submit answer",
@@ -776,6 +562,17 @@ Map source: ${osmUrl(places[i][0])}`);
     "mission.warmUp": "Warm up with one overdue name",
     "mission.arrive": "Arrive knowing more of {city}",
     // --- Map Quest quiz ------------------------------------------------------
+    // Answer feedback (R2-2, #303): answerPath.ts composes these.
+    "answer.passed": "Passed \u2014 that was {name}",
+    "answer.silentPass": "That was {name}",
+    "answer.reveal": "This is {name}",
+    "answer.wrong": "Not quite \u2014 this is {name}",
+    "answer.correct": "Correct \u2014 {name}",
+    "answer.correctPoints": "Correct \u2014 {name}  (+{points} pts)",
+    "answer.correctNewCycle": "Correct \u2014 {name}  (+{points} pts \xB7 new name + cycle track bonus)",
+    "answer.correctNew": "Correct \u2014 {name}  (+{points} pts \xB7 new name bonus)",
+    "answer.correctCycle": "Correct \u2014 {name}  (+{points} pts \xB7 cycle track bonus)",
+    "answer.correctStreak": "Correct \u2014 {name}  (+{points} pts \xB7 {streak} in a row)",
     "quiz.pinpoint": "Pinpoint",
     "quiz.pinpointHint": "Place the named feature on the map",
     "quiz.guessName": "Guess Name",
@@ -1003,11 +800,85 @@ Map source: ${osmUrl(places[i][0])}`);
     "ride.nextStop": "Next stop",
     "ride.routeSetup": "Route setup",
     "ride.shareRoute": "Share this route",
+    "ride.distance.about": "about",
+    "ride.shareRun": "Share run",
     "ride.linkCopied": "Link copied",
+    // --- Arrival and run cards (#283) ---
+    "stamps.heldOf": "{count} of {total} buurt stamps",
+    "ride.arrival.placeNew": "FIRST VISIT",
+    "ride.arrival.placeAgain": "VISITED AGAIN",
+    "ride.arrival.placeTally": "{earned} of {total} places",
+    "ride.arrival.tourDone": "TOUR COMPLETE",
+    "ride.arrival.tourAgain": "TOUR AGAIN",
+    "ride.arrival.tourStop": "{title}  \xB7  STOP {stop} OF {count}",
+    "ride.arrival.run": "RUN",
+    "ride.arrival.cityKnowledge": "CITY KNOWLEDGE",
+    "ride.arrival.firstTime": "+{bits} first-time",
+    "ride.endRun": "End run",
+    "ride.endRunShort": "End run",
+    "ride.newRun": "New run",
+    "ride.stat.time": "Time",
+    "ride.stat.distance": "Distance",
+    "ride.stat.points": "Points",
+    "ride.stat.stops": "Stops",
+    "ride.stat.names": "Names",
+    "ride.stat.bestStreak": "Best streak",
+    "ride.bestStreak": "Best streak {count}",
+    "count.names.one": "{count} name",
+    "count.names.other": "{count} names",
+    "count.neighborhoods.one": "{count} neighbourhood",
+    "count.neighborhoods.other": "{count} neighbourhoods",
+    "count.landmarks.one": "{count} landmark",
+    "count.landmarks.other": "{count} landmarks",
+    "count.stops.one": "{count} stop",
+    "count.stops.other": "{count} stops",
+    "count.points": "{points} points",
+    "run.chain": "chain +{percent} %",
+    "run.complete": "RUN COMPLETE",
+    "run.stops": "STOPS",
+    "run.stopsLast": "STOPS  \xB7  LAST {shown} OF {count}",
+    "run.story": "{count} {stops}{from}{to}{names}.",
+    "run.storyFrom": " from {name}",
+    "run.storyTo": " to {name}",
+    "run.storyNames": ", {names} on the map",
+    "run.storyStop.one": "stop",
+    "run.storyStop.other": "stops",
+    "run.numberWords": "No,One,Two,Three,Four,Five,Six,Seven,Eight,Nine,Ten,Eleven,Twelve",
+    "shareCard.destination": "DESTINATION",
+    "shareCard.ride": "RIDE",
+    "shareCard.distance": "DISTANCE",
+    "shareCard.time": "TIME",
+    "shareCard.byBike": "By bike",
+    "shareCard.byBoat": "By boat",
+    "shareCard.byTransit": "By tram and metro",
+    "shareCard.saved": "Picture saved",
+    "shareCard.savedAndCopied": "Picture saved \xB7 link copied",
+    "shareCard.runStop": "Stop {n}",
+    "shareCard.runEarlier": "+{count} earlier",
     "ride.startExploring": "Start exploring",
     "ride.noCycling": "No cycling in real life",
     "ride.wikipediaLink": "Wikipedia \u2197",
+    "ride.landmarkQuestion.heading": "Which building is this?",
+    "ride.landmarkQuestion.ahead": "Ahead",
+    "ride.landmarkQuestion.left": "On the left",
+    "ride.landmarkQuestion.right": "On the right",
+    "ride.landmarkNoticed.action": "Noticed",
+    "ride.landmarkNoticed.done": "Noted",
     "ride.researchSource": "Research source \u2197",
+    "poi.chip.art": "Artwork",
+    "poi.chip.food": "Food and drink",
+    "poi.chip.shop": "Shop",
+    "poi.chip.lodging": "Lodging",
+    "poi.chip.culture": "Culture",
+    "poi.chip.education": "Education",
+    "poi.chip.civic": "Public service",
+    "poi.chip.bike": "Cycling",
+    "poi.chip.worship": "Place of worship",
+    "poi.chip.leisure": "Leisure",
+    "poi.chip.health": "Health",
+    "poi.chip.market": "Market",
+    "poi.chip.place": "Place",
+    "poi.seriesPart": "Part {n} of {m} of {series}.",
     "ride.rules.title": "HOW TO PLAY",
     "ride.rules.bike1": "1. Use WASD or the arrow keys to steer the bike",
     "ride.rules.bike2": "2. Stay on mapped streets; the road guard keeps you on the network",
@@ -1035,7 +906,41 @@ Map source: ${osmUrl(places[i][0])}`);
     "finish.passport": "Passport: {stamps}",
     "finish.youKnow": "You know {name}",
     "finish.streakFirst": "First new place today",
-    "finish.streakDays": "{count}-day place streak"
+    "finish.streakDays": "{count}-day place streak",
+    // --- Arrival ribbon, pause card, pins and cards (#290) ---------------------
+    "ribbon.gold": "GOLD RIBBON",
+    "ribbon.silver": "SILVER RIBBON",
+    "ribbon.bronze": "BRONZE RIBBON",
+    "ribbon.none": "ROUTE COMPLETE",
+    "ribbon.axis.recall": "Recall",
+    "ribbon.axis.aids": "Unaided",
+    "ribbon.axis.efficiency": "Efficiency",
+    "ride.arrival.header": "ARRIVED",
+    "ride.personalBest.new": "\u2605  New personal best",
+    "ride.personalBest.old": "Personal best  {time}",
+    "ride.arrival.neighborhoodWiki": "NEIGHBOURHOOD  \xB7  W  WIKIPEDIA",
+    "ride.paused": "PAUSED",
+    "ride.resume": "Resume",
+    "ride.pauseSummary": "{time}  \xB7  {km} km  \xB7  {correct} of {attempts} named",
+    "ride.pauseStats": "{time}  \xB7  {km} km",
+    "ride.controlsHint": "?  help   \xB7   G  settings   \xB7   M  map   \xB7   O  north   \xB7   T  labels   \xB7   B  buildings   \xB7   P  pause",
+    "hud.destination": "DESTINATION",
+    "card.wikipedia": "W  WIKIPEDIA",
+    "card.source": "W  SOURCE",
+    "card.more": "MORE \u203A",
+    "postcard.stamp": "PASSPORT STAMP",
+    "postcard.enteringNeighborhood": "ENTERING NEIGHBORHOOD",
+    "postcard.entering": "ENTERING {kind}",
+    "postcard.photo": "Photo: {area} \xB7 {city}",
+    "kind.landmark": "LANDMARK",
+    "kind.museum": "MUSEUM",
+    "kind.library": "LIBRARY",
+    "kind.university": "UNIVERSITY",
+    "kind.cinema": "CINEMA",
+    "kind.musicVenue": "MUSIC VENUE",
+    "kind.bridge": "BRIDGE",
+    "kind.church": "CHURCH",
+    "kind.neighborhood": "NEIGHBORHOOD"
   };
 
   // src/i18n/messages/nl.ts
@@ -1087,12 +992,17 @@ Map source: ${osmUrl(places[i][0])}`);
     "setup.route.hereHint": "Start waar je nu bent",
     "setup.route.free": "Vrij rijden",
     "setup.route.freeHint": "Geen route, geen vragen: rijd waar je wilt en tik op wat je ziet",
+    "setup.freeRideLandmarkQuiz": "Overhoor me op gebouwen",
+    "setup.freeRideLandmarkQuizHint": "Een gemodelleerd gebouw in zicht, vier namen, \xE9\xE9n goed",
     "freeRide.badge": "Vrij rijden",
     "freeRide.exit": "Stoppen",
     "freeRide.exitLabel": "Stop met vrij rijden en ga terug naar het startscherm",
     "freeRide.tallyNone": "Tik op een markering of een gebouw",
     "freeRide.tallyOne": "1 plek geopend",
     "freeRide.tallyMany": "{count} plekken geopend",
+    "freeRide.checklist": "{opened} van {total} plekken",
+    "freeRide.checklistDone": "alle {total} plekken",
+    "freeRide.stamped": "Gestempeld in je paspoort",
     "setup.difficulty": "Moeilijkheid",
     "setup.difficulty.easy": "Makkelijk",
     "setup.difficulty.medium": "Gemiddeld",
@@ -1116,6 +1026,7 @@ Map source: ${osmUrl(places[i][0])}`);
     "setup.tours": "Tours",
     "setup.tours.none": "Geen tour",
     "setup.tours.stops": "{count} stops per fiets, etappe voor etappe",
+    "setup.tours.cardStops": "{count} stops per fiets",
     "setup.tours.checked": " \xB7 {checked}, winkels wisselen",
     "setup.tours.brief": "Rijd de tour {tour} stop voor stop. Bij elke stop zie je waarom die op de lijst staat.",
     "setup.homeAddress": "Thuisadres",
@@ -1183,7 +1094,7 @@ Map source: ${osmUrl(places[i][0])}`);
     "knowledge.plan": "Herhaling plannen \xB7 {count} te doen",
     "knowledge.nothingDue": "Nu niets te doen",
     "knowledge.emptyTitle": "Je kaart begint met \xE9\xE9n antwoord",
-    "knowledge.emptyBody": "Rijd een route en noem een straat, gracht, brug, halte of lijn. Die verschijnt hier met het volgende herhaalmoment.",
+    "knowledge.emptyBody": "Rijd een route en noem een gracht, straat, brug, halte of lijn. Die verschijnt hier met het volgende herhaalmoment.",
     "knowledge.firstRoute": "Kies een eerste route",
     "knowledge.summary": "Kennisoverzicht",
     "knowledge.dueNow": "nu te doen",
@@ -1194,6 +1105,33 @@ Map source: ${osmUrl(places[i][0])}`);
     "knowledge.recallRate": "Trefferquote",
     "knowledge.reviewsLogged": "Herhalingen gedaan",
     "knowledge.mapKey": "Legenda",
+    // --- Knowledge map and passport stamps (G5) ---
+    "kmap.title": "Kenniskaart",
+    "kmap.tapHint": "Tik op een buurt om te filteren",
+    "kmap.loading": "Kaart laden",
+    "kmap.legendUnit": "Buurten",
+    "kmap.mastered": "Beheerst",
+    "kmap.known": "Bekend",
+    "kmap.learning": "Aan het leren",
+    "kmap.fog": "Nog niet bereden",
+    "kmap.due": "Namen te herhalen",
+    "kmap.aria": "Kaart van Amsterdam per buurt: {mastered} beheerst, {known} bekend, {learning} aan het leren",
+    "kmap.filter.one": "{name} \xB7 {count} naam",
+    "kmap.filter.other": "{name} \xB7 {count} namen",
+    "kmap.wholeCity": "Hele stad",
+    "stamps.title": "Paspoort",
+    "stamps.bodyEarned": "E\xE9n stempel per buurt, verdiend in een quizrit door de namen te kennen. Stempels uit Vrij rijden blijven",
+    "stamps.bodyEmpty": "Ken acht namen en fiets dan in een quizrit een buurt in om de stempel te verdienen",
+    "stamps.countAria": "{earned} van {total} stempels",
+    "stamps.all": "Alle {total} buurten",
+    "stamps.new": "Nieuwe stempel",
+    "stamps.stamped": "Gestempeld",
+    "stamps.notYet": "Nog niet",
+    "stamps.cardLabel": "NIEUWE PASPOORTSTEMPEL",
+    "stamps.cardLabelAgain": "PASPOORTSTEMPEL",
+    "stamps.more": "+{count} meer",
+    "stamps.held.one": "{count} stempel in het paspoort",
+    "stamps.held.other": "{count} stempels in het paspoort",
     "knowledge.status.due": "Toe aan herhaling",
     "knowledge.status.learning": "Lerend",
     "knowledge.status.known": "Bekend",
@@ -1290,6 +1228,7 @@ Map source: ${osmUrl(places[i][0])}`);
     "ride.load.renderingTrams": "Tramlijnen tekenen\u2026",
     "ride.load.renderingWaterways": "Waterwegen tekenen\u2026",
     "ride.load.settling": "De kaart wordt bijgewerkt\u2026",
+    "ride.load.buildingCity": "De stad wordt opgebouwd\u2026",
     "ride.load.ready": "Klaar!",
     "ride.load.findingWay": "Je route wordt gezocht\u2026",
     "ride.error.noStartPoint": "Er is geen bereikbaar startpunt voor deze bestemming.",
@@ -1359,6 +1298,8 @@ Map source: ${osmUrl(places[i][0])}`);
     "prompt.placeholder.bridge": "Naam van de brug",
     "prompt.placeholder.line": "Naam van de lijn",
     "prompt.placeholder.stop": "Naam van de halte",
+    "prompt.label.landmark": "Bezienswaardigheid",
+    "prompt.placeholder.landmark": "Naam van het gebouw",
     "prompt.waterway": "Waterweg",
     "prompt.turn": "Je sloeg af",
     "prompt.submit": "Antwoord insturen",
@@ -1401,6 +1342,17 @@ Map source: ${osmUrl(places[i][0])}`);
     "mission.warmUp": "Warm op met \xE9\xE9n naam die te laat is",
     "mission.arrive": "Kom aan met meer kennis van {city}",
     // --- Map Quest-quiz ------------------------------------------------------
+    // Antwoordfeedback (R2-2, #303).
+    "answer.passed": "Voorbij \u2014 dat was {name}",
+    "answer.silentPass": "Dat was {name}",
+    "answer.reveal": "Dit is {name}",
+    "answer.wrong": "Niet helemaal \u2014 dit is {name}",
+    "answer.correct": "Goed \u2014 {name}",
+    "answer.correctPoints": "Goed \u2014 {name}  (+{points} pnt)",
+    "answer.correctNewCycle": "Goed \u2014 {name}  (+{points} pnt \xB7 bonus nieuwe naam + fietspad)",
+    "answer.correctNew": "Goed \u2014 {name}  (+{points} pnt \xB7 bonus nieuwe naam)",
+    "answer.correctCycle": "Goed \u2014 {name}  (+{points} pnt \xB7 fietspadbonus)",
+    "answer.correctStreak": "Goed \u2014 {name}  (+{points} pnt \xB7 {streak} op rij)",
     "quiz.pinpoint": "Aanwijzen",
     "quiz.pinpointHint": "Zet de genoemde plek op de kaart",
     "quiz.guessName": "Naam raden",
@@ -1628,11 +1580,85 @@ Map source: ${osmUrl(places[i][0])}`);
     "ride.nextStop": "Volgende stop",
     "ride.routeSetup": "Route instellen",
     "ride.shareRoute": "Deel deze route",
+    "ride.distance.about": "ongeveer",
+    "ride.shareRun": "Deel reeks",
     "ride.linkCopied": "Link gekopieerd",
+    // --- Arrival and run cards (#283) ---
+    "stamps.heldOf": "{count} van {total} buurtstempels",
+    "ride.arrival.placeNew": "EERSTE BEZOEK",
+    "ride.arrival.placeAgain": "WEER BEZOCHT",
+    "ride.arrival.placeTally": "{earned} van {total} plekken",
+    "ride.arrival.tourDone": "TOCHT VOLTOOID",
+    "ride.arrival.tourAgain": "TOCHT OPNIEUW",
+    "ride.arrival.tourStop": "{title}  \xB7  STOP {stop} VAN {count}",
+    "ride.arrival.run": "REEKS",
+    "ride.arrival.cityKnowledge": "KENNIS VAN DE STAD",
+    "ride.arrival.firstTime": "+{bits} voor het eerst",
+    "ride.endRun": "Reeks be\xEBindigen",
+    "ride.endRunShort": "Stop reeks",
+    "ride.newRun": "Nieuwe reeks",
+    "ride.stat.time": "Tijd",
+    "ride.stat.distance": "Afstand",
+    "ride.stat.points": "Punten",
+    "ride.stat.stops": "Stops",
+    "ride.stat.names": "Namen",
+    "ride.stat.bestStreak": "Beste reeks",
+    "ride.bestStreak": "Beste reeks {count}",
+    "count.names.one": "{count} naam",
+    "count.names.other": "{count} namen",
+    "count.neighborhoods.one": "{count} buurt",
+    "count.neighborhoods.other": "{count} buurten",
+    "count.landmarks.one": "{count} bezienswaardigheid",
+    "count.landmarks.other": "{count} bezienswaardigheden",
+    "count.stops.one": "{count} stop",
+    "count.stops.other": "{count} stops",
+    "count.points": "{points} punten",
+    "run.chain": "keten +{percent} %",
+    "run.complete": "REEKS VOLTOOID",
+    "run.stops": "STOPS",
+    "run.stopsLast": "STOPS  \xB7  LAATSTE {shown} VAN {count}",
+    "run.story": "{count} {stops}{from}{to}{names}.",
+    "run.storyFrom": " van {name}",
+    "run.storyTo": " naar {name}",
+    "run.storyNames": ", {names} op de kaart",
+    "run.storyStop.one": "stop",
+    "run.storyStop.other": "stops",
+    "run.numberWords": "Geen,E\xE9n,Twee,Drie,Vier,Vijf,Zes,Zeven,Acht,Negen,Tien,Elf,Twaalf",
+    "shareCard.destination": "BESTEMMING",
+    "shareCard.ride": "RIT",
+    "shareCard.distance": "AFSTAND",
+    "shareCard.time": "TIJD",
+    "shareCard.byBike": "Per fiets",
+    "shareCard.byBoat": "Per boot",
+    "shareCard.byTransit": "Per tram en metro",
+    "shareCard.saved": "Afbeelding opgeslagen",
+    "shareCard.savedAndCopied": "Afbeelding opgeslagen \xB7 link gekopieerd",
+    "shareCard.runStop": "Stop {n}",
+    "shareCard.runEarlier": "+{count} eerder",
     "ride.startExploring": "Begin met verkennen",
     "ride.noCycling": "Geen fietsen in het echt",
     "ride.wikipediaLink": "Wikipedia \u2197",
+    "ride.landmarkQuestion.heading": "Welk gebouw is dit?",
+    "ride.landmarkQuestion.ahead": "Recht vooruit",
+    "ride.landmarkQuestion.left": "Links",
+    "ride.landmarkQuestion.right": "Rechts",
+    "ride.landmarkNoticed.action": "Gezien",
+    "ride.landmarkNoticed.done": "Genoteerd",
     "ride.researchSource": "Bron \u2197",
+    "poi.chip.art": "Kunstwerk",
+    "poi.chip.food": "Eten en drinken",
+    "poi.chip.shop": "Winkel",
+    "poi.chip.lodging": "Overnachting",
+    "poi.chip.culture": "Cultuur",
+    "poi.chip.education": "Onderwijs",
+    "poi.chip.civic": "Publieke dienst",
+    "poi.chip.bike": "Fietsen",
+    "poi.chip.worship": "Gebedshuis",
+    "poi.chip.leisure": "Vrije tijd",
+    "poi.chip.health": "Gezondheid",
+    "poi.chip.market": "Markt",
+    "poi.chip.place": "Plek",
+    "poi.seriesPart": "Deel {n} van {m} van {series}.",
     "ride.rules.title": "HOE SPEEL JE",
     "ride.rules.bike1": "1. Stuur de fiets met WASD of de pijltjestoetsen",
     "ride.rules.bike2": "2. Blijf op gemapte straten; de wegbeveiliging houdt je op het netwerk",
@@ -1651,8 +1677,8 @@ Map source: ${osmUrl(places[i][0])}`);
     "finish.newNames.other": "{count} nieuwe namen",
     "finish.newNeighborhoods.one": "{count} nieuwe buurt",
     "finish.newNeighborhoods.other": "{count} nieuwe buurten",
-    "finish.newLandmarks.one": "{count} landmark",
-    "finish.newLandmarks.other": "{count} landmarks",
+    "finish.newLandmarks.one": "{count} bezienswaardigheid",
+    "finish.newLandmarks.other": "{count} bezienswaardigheden",
     "finish.arrivedWith": "Je bent bij {destination} \xB7 {bits}",
     "finish.arrived": "Aangekomen bij {destination}",
     "finish.sticks": "Die kennis blijft hangen op je kaart van {city}.",
@@ -1660,7 +1686,41 @@ Map source: ${osmUrl(places[i][0])}`);
     "finish.passport": "Paspoort: {stamps}",
     "finish.youKnow": "Je kent {name}",
     "finish.streakFirst": "Eerste nieuwe plek vandaag",
-    "finish.streakDays": "{count} dagen op rij nieuwe plekken"
+    "finish.streakDays": "{count} dagen op rij nieuwe plekken",
+    // --- Arrival ribbon, pause card, pins and cards (#290) ---------------------
+    "ribbon.gold": "GOUDEN LINT",
+    "ribbon.silver": "ZILVEREN LINT",
+    "ribbon.bronze": "BRONZEN LINT",
+    "ribbon.none": "ROUTE VOLTOOID",
+    "ribbon.axis.recall": "Herinnering",
+    "ribbon.axis.aids": "Zonder hulp",
+    "ribbon.axis.efficiency": "Effici\xEBntie",
+    "ride.arrival.header": "AANGEKOMEN",
+    "ride.personalBest.new": "\u2605  Nieuw persoonlijk record",
+    "ride.personalBest.old": "Persoonlijk record  {time}",
+    "ride.arrival.neighborhoodWiki": "BUURT  \xB7  W  WIKIPEDIA",
+    "ride.paused": "PAUZE",
+    "ride.resume": "Hervatten",
+    "ride.pauseSummary": "{time}  \xB7  {km} km  \xB7  {correct} van {attempts} benoemd",
+    "ride.pauseStats": "{time}  \xB7  {km} km",
+    "ride.controlsHint": "?  help   \xB7   G  instellingen   \xB7   M  kaart   \xB7   O  noord   \xB7   T  labels   \xB7   B  gebouwen   \xB7   P  pauze",
+    "hud.destination": "BESTEMMING",
+    "card.wikipedia": "W  WIKIPEDIA",
+    "card.source": "W  BRON",
+    "card.more": "MEER \u203A",
+    "postcard.stamp": "PASPOORTSTEMPEL",
+    "postcard.enteringNeighborhood": "JE BETREEDT DE BUURT",
+    "postcard.entering": "JE BETREEDT: {kind}",
+    "postcard.photo": "Foto: {area} \xB7 {city}",
+    "kind.landmark": "BEZIENSWAARDIGHEID",
+    "kind.museum": "MUSEUM",
+    "kind.library": "BIBLIOTHEEK",
+    "kind.university": "UNIVERSITEIT",
+    "kind.cinema": "BIOSCOOP",
+    "kind.musicVenue": "MUZIEKPODIUM",
+    "kind.bridge": "BRUG",
+    "kind.church": "KERK",
+    "kind.neighborhood": "BUURT"
   };
 
   // src/i18n/language.ts
@@ -1725,6 +1785,486 @@ Map source: ${osmUrl(places[i][0])}`);
       return String(key);
     }
     return fill(template, params);
+  }
+
+  // src/canalRecall/answerPath.ts
+  function normaliseAnswer(value) {
+    return value.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
+  }
+
+  // src/canalRecall/game/landmarkData.ts
+  var GENERIC_BRIDGE_NAME_PATTERN = /^\s*(brug\s*)?\d+\s*$/i;
+  var NEIGHBORHOOD_KIND_RANKS = {
+    city_block: 5,
+    neighbourhood: 4,
+    neighborhood: 4,
+    quarter: 3,
+    locality: 2,
+    suburb: 1
+  };
+  function sentences(text) {
+    return text.split(/(?<=[.!?])\s/);
+  }
+  function sentencesUpTo(parts, max) {
+    let out = "";
+    for (const part of parts) {
+      const next = out ? `${out} ${part}` : part;
+      if (next.length > max) break;
+      out = next;
+    }
+    if (out || !parts.length) return out;
+    const cut = parts[0].slice(0, max - 1);
+    const space = cut.lastIndexOf(" ");
+    return `${(space > max / 2 ? cut.slice(0, space) : cut).trimEnd()}\u2026`;
+  }
+  function splitDetail(text) {
+    const parts = sentences((text || "").trim()).filter(Boolean);
+    return {
+      detail: sentencesUpTo(parts.slice(0, 1), 150),
+      longDetail: sentencesUpTo(parts.slice(0, 3), 280)
+    };
+  }
+  function landmarkLede(feature, lang) {
+    const original = feature.wikipediaExtractOriginal?.trim();
+    if (lang === "nl" && original && feature.wikipediaExtractOriginalLang === "nl") return { text: original, lang: "nl" };
+    return { text: feature.funFact || feature.wikipediaExtract || "", lang: feature.wikipediaExtractLang || "en" };
+  }
+  function pointInPolygon(x, y, ring) {
+    let inside = false;
+    for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) {
+      const a = ring[i], b = ring[j];
+      if (a.y > y !== b.y > y && x < (b.x - a.x) * (y - a.y) / (b.y - a.y) + a.x) inside = !inside;
+    }
+    return inside;
+  }
+  function ringsArea(rings) {
+    let area = 0;
+    for (const ring of rings) {
+      let twice = 0;
+      for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) twice += ring[j].x * ring[i].y - ring[i].x * ring[j].y;
+      area += Math.abs(twice) / 2;
+    }
+    return area;
+  }
+  function neighborhoodAt(neighborhoods, x, y) {
+    return neighborhoods.find((hood) => hood.rings.some((ring) => pointInPolygon(x, y, ring))) || null;
+  }
+  function displayGeometry(feature, center) {
+    const sourcePaths = feature.paths || (feature.path ? [feature.path] : []);
+    const geometryFeatures = sourcePaths.filter((path) => path && path.length > 1).map((path) => {
+      const coordinates = path.map(([lat, lng]) => [lng, lat]);
+      const first = coordinates[0], last = coordinates[coordinates.length - 1];
+      const closed = coordinates.length > 3 && first[0] === last[0] && first[1] === last[1];
+      return {
+        type: "Feature",
+        properties: {},
+        geometry: closed ? { type: "Polygon", coordinates: [coordinates] } : { type: "LineString", coordinates }
+      };
+    });
+    if (!geometryFeatures.length) {
+      geometryFeatures.push({
+        type: "Feature",
+        properties: {},
+        geometry: { type: "Point", coordinates: [center[1], center[0]] }
+      });
+    }
+    return geometryFeatures;
+  }
+  function buildLandmarks(features, project, lang = language()) {
+    const landmarks = [];
+    for (const feature of features) {
+      const center = feature.center || feature.path && feature.path[0];
+      if (!center) continue;
+      const point = project(center[0], center[1], feature);
+      if (!point) continue;
+      const lede = landmarkLede(feature, lang);
+      const { detail, longDetail } = splitDetail(lede.text);
+      landmarks.push({
+        id: feature.id,
+        name: feature.name,
+        type: feature.type || "",
+        imageUrl: feature.wikipediaImageUrl || "",
+        x: point.x,
+        y: point.y,
+        lngLat: [center[1], center[0]],
+        detail,
+        longDetail,
+        prominenceScore: feature.prominenceScore || 0,
+        wikipediaUrl: feature.wikipediaUrl || "",
+        sourceUrl: feature.sourceUrl,
+        researchSourceUrl: feature.researchSourceUrl,
+        researchDetail: feature.researchDetail,
+        buildingIds: feature.buildingIds,
+        wikidata: feature.wikidata || "",
+        wikipedia: feature.wikipedia || "",
+        extractLang: lede.lang,
+        wikipediaPageviews60d: feature.wikipediaPageviews60d,
+        wikidataSitelinks: feature.wikidataSitelinks,
+        heritage: feature.heritage,
+        wikidataInstanceOf: feature.wikidataInstanceOf,
+        geojson: { type: "FeatureCollection", features: displayGeometry(feature, center) }
+      });
+    }
+    return landmarks;
+  }
+  function isLocatorMapImage(url) {
+    if (!url) return false;
+    return /Map[_-]NL[_-]|Map_-_NL[_-]|\/Map_NL_|locator.?map|_kaart\./i.test(url);
+  }
+  function buildNeighborhoods(boundaries, enrichments, toWorld) {
+    const enrichmentByName = new Map(enrichments.map((entry) => [entry.name, entry]));
+    const neighborhoods = boundaries.filter((boundary) => boundary.geometry && NEIGHBORHOOD_KIND_RANKS[boundary.kind]).map((boundary) => {
+      const enriched = enrichmentByName.get(boundary.name);
+      const rawUrl = enriched?.imageUrl || "";
+      return {
+        name: boundary.name,
+        kind: boundary.kind,
+        rank: NEIGHBORHOOD_KIND_RANKS[boundary.kind],
+        rings: (boundary.geometry || []).map((polygon) => (polygon[0] || []).map(toWorld)).filter((ring) => ring.length > 2),
+        wikipediaExtract: enriched?.wikipediaExtract || "",
+        imageUrl: isLocatorMapImage(rawUrl) ? "" : rawUrl,
+        imageAttribution: isLocatorMapImage(rawUrl) ? "" : enriched?.imageAttribution || ""
+      };
+    }).filter((hood) => hood.rings.length).map((hood) => ({ hood, area: ringsArea(hood.rings) })).sort((a, b) => b.hood.rank - a.hood.rank || a.area - b.area).map(({ hood }) => hood);
+    for (const hood of neighborhoods) {
+      if (hood.imageUrl) continue;
+      const sample = hood.rings[0] && hood.rings[0][0];
+      if (!sample) continue;
+      const parent = neighborhoods.find((candidate) => candidate.rank < hood.rank && candidate.imageUrl && candidate.rings.some((ring) => pointInPolygon(sample.x, sample.y, ring)));
+      if (parent) {
+        hood.imageUrl = parent.imageUrl;
+        hood.imageAttribution = parent.imageAttribution;
+        hood.imageArea = parent.name;
+      }
+    }
+    return neighborhoods;
+  }
+  var CROSSING_WATER_LINE_METERS = 90;
+  function crossingWaterLines(waters, waterway, center, toWorld, radiusMeters = CROSSING_WATER_LINE_METERS) {
+    const lines = [];
+    const mLat = 111320;
+    const mLng = 111320 * Math.cos(center[0] * Math.PI / 180);
+    const local = ([lat, lng]) => ({ x: (lng - center[1]) * mLng, y: (lat - center[0]) * mLat });
+    for (const water of waters) {
+      if (water.name !== waterway) continue;
+      for (const path of water.paths || (water.path ? [water.path] : [])) {
+        for (let i = 1; i < (path || []).length; i++) {
+          const a = local(path[i - 1]), b = local(path[i]);
+          const dx = b.x - a.x, dy = b.y - a.y;
+          const len2 = dx * dx + dy * dy;
+          const t2 = len2 ? Math.max(0, Math.min(1, -(a.x * dx + a.y * dy) / len2)) : 0;
+          if (Math.hypot(a.x + dx * t2, a.y + dy * t2) > radiusMeters) continue;
+          lines.push([toWorld(path[i - 1]), toWorld(path[i])]);
+        }
+      }
+    }
+    return lines;
+  }
+  function buildBridges(features, crossingIndex, toWorld, waters = []) {
+    const bridges = [];
+    for (const feature of features) {
+      const sourcePaths = feature.paths || (feature.path ? [feature.path] : []);
+      const lines = sourcePaths.map((path) => (path || []).map(toWorld)).filter((line) => line.length > 1);
+      if (!feature.name || lines.length === 0 || GENERIC_BRIDGE_NAME_PATTERN.test(feature.name)) continue;
+      if (feature.carriesRailway && !feature.carriesRoad) continue;
+      const published = (crossingIndex.bridges || {})[feature.id];
+      let source;
+      if (published && published.length) {
+        source = published;
+      } else if (feature.center) {
+        source = [{
+          index: 0,
+          center: feature.center,
+          waterway: null,
+          waterwayType: null,
+          waterDistractors: [],
+          spans: lines.length
+        }];
+      } else {
+        continue;
+      }
+      bridges.push({
+        id: feature.id,
+        name: feature.name,
+        ...feature.displayName ? { displayName: feature.displayName } : {},
+        lines,
+        crossings: source.map((crossing) => {
+          const waterLines = crossing.waterway && waters.length ? crossingWaterLines(waters, crossing.waterway, crossing.center, toWorld) : [];
+          return { ...crossing, ...toWorld(crossing.center), ...waterLines.length ? { waterLines } : {} };
+        }),
+        distractors: (feature.distractors || []).filter((name) => !GENERIC_BRIDGE_NAME_PATTERN.test(name)),
+        wikipediaUrl: feature.wikipediaUrl || "",
+        detail: splitDetail(feature.wikipediaExtract).detail
+      });
+    }
+    return bridges;
+  }
+  function isWorthACard(landmark) {
+    return !!(landmark.detail || landmark.longDetail || landmark.imageUrl || landmark.wikipediaUrl);
+  }
+
+  // src/canalRecall/poiCardPolicy.ts
+  var isLabelOnly = (row) => !row[6] && !row[7] && !row[8];
+  var artHasSubstance = (art) => !!art && !!(art.e || art.a || art.y || art.s);
+  var hasCardSubstance = (row, art) => !isLabelOnly(row) || row[4] === "art" && artHasSubstance(art);
+  var CATEGORY_CHIP = {
+    art: "artwork",
+    food: "food and drink",
+    shop: "shop",
+    lodging: "lodging",
+    culture: "culture",
+    education: "education",
+    civic: "public service",
+    bike: "cycling",
+    worship: "place of worship",
+    leisure: "leisure",
+    health: "health",
+    market: "market"
+  };
+  var poiChipKey = (category) => `poi.chip.${CATEGORY_CHIP[category] ? category : "place"}`;
+  function poiChipEnglish(row) {
+    const phrase = (row[5] || "").replace(/^(a|an|the)\s+/i, "").trim();
+    return (phrase || CATEGORY_CHIP[row[4]] || "place").toUpperCase();
+  }
+
+  // src/canalRecall/clickPoiInfo.ts
+  function validPoiWebsite(value) {
+    if (typeof value !== "string" || !value.trim()) return "";
+    try {
+      const url = new URL(/^[a-z]+:/i.test(value.trim()) ? value.trim() : `https://${value.trim()}`);
+      return /^(https?:)$/.test(url.protocol) && url.hostname.includes(".") && !url.username && !url.password ? url.href : "";
+    } catch {
+      return "";
+    }
+  }
+  function inRing(point, ring) {
+    let inside = false;
+    const [x, y] = point;
+    for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) {
+      const [ax, ay] = ring[j], [bx, by] = ring[i];
+      const cross = (x - ax) * (by - ay) - (y - ay) * (bx - ax);
+      if (Math.abs(cross) < 1e-14 && x >= Math.min(ax, bx) && x <= Math.max(ax, bx) && y >= Math.min(ay, by) && y <= Math.max(ay, by)) return true;
+      if (ay > y !== by > y && x < (bx - ax) * (y - ay) / (by - ay) + ax) inside = !inside;
+    }
+    return inside;
+  }
+  function poiInsideBuilding(point, geometry) {
+    const polygons = geometry.type === "Polygon" ? [geometry.coordinates] : geometry.coordinates;
+    return polygons.some((rings) => rings.length && inRing(point, rings[0]) && !rings.slice(1).some((hole) => inRing(point, hole)));
+  }
+  var poiChipLabel = (row) => language() === "en" ? poiChipEnglish(row) : t(poiChipKey(row[4])).toUpperCase();
+  var normalName = (name) => (name || "").normalize("NFC").toLocaleLowerCase("nl").trim();
+  var osmUrl = (id) => `https://www.openstreetmap.org/${{ n: "node", w: "way", r: "relation" }[id[0]]}/${id.slice(1)}`;
+  var cell = (lng, lat) => `${Math.floor(lng * 1e3)}/${Math.floor(lat * 1e3)}`;
+  var ClickPoiIndex = class {
+    cells = /* @__PURE__ */ new Map();
+    rows = [];
+    constructor(file) {
+      if (file?.version !== 1 || !Array.isArray(file.points)) return;
+      for (const row of file.points) {
+        if (!Array.isArray(row) || !/^[nwr]\d+$/.test(row[0]) || !row[1] || !Number.isFinite(row[2]) || !Number.isFinite(row[3])) continue;
+        this.rows.push(row);
+        const key = cell(row[2], row[3]);
+        const group = this.cells.get(key) ?? [];
+        group.push(row);
+        this.cells.set(key, group);
+      }
+    }
+    contained(geometry) {
+      const polygons = geometry.type === "Polygon" ? [geometry.coordinates] : geometry.coordinates;
+      const outer = polygons.flatMap((rings) => rings[0] ?? []);
+      if (!outer.length) return [];
+      const xs = outer.map((p) => Math.floor(p[0] * 1e3)), ys = outer.map((p) => Math.floor(p[1] * 1e3));
+      const minX = Math.min(...xs), maxX = Math.max(...xs), minY = Math.min(...ys), maxY = Math.max(...ys);
+      const candidates = [];
+      if ((maxX - minX + 1) * (maxY - minY + 1) > 2e3) candidates.push(...this.rows);
+      else for (let x = minX; x <= maxX; x++) for (let y = minY; y <= maxY; y++) candidates.push(...this.cells.get(`${x}/${y}`) ?? []);
+      const found = candidates.filter((row) => poiInsideBuilding([row[2], row[3]], geometry)).sort((a, b) => Number(!!b[8]) - Number(!!a[8]) || Number(!!b[7]) - Number(!!a[7]) || a[0].localeCompare(b[0]));
+      const seen = /* @__PURE__ */ new Set();
+      return found.filter((row) => {
+        const key = normalName(row[1]);
+        if (seen.has(key)) return false;
+        seen.add(key);
+        return true;
+      });
+    }
+    /**
+     * The mapped place a drawn POI label stands for: the same name, nearest to
+     * the label's point and within `maxMetres`. A tap on a label carries only
+     * its text and point (labelLayer.ts hitTest), no footprint, so `contained`
+     * cannot answer it (user shot 2026-11-08, the Sloterdijk gurdwara).
+     */
+    named(name, lngLat, maxMetres = 60) {
+      const key = normalName(name);
+      if (!key || !lngLat || !Number.isFinite(lngLat[0]) || !Number.isFinite(lngLat[1])) return null;
+      const [lng, lat] = lngLat;
+      const cx = Math.floor(lng * 1e3), cy = Math.floor(lat * 1e3);
+      const mx = 111320 * Math.cos(lat * Math.PI / 180), my = 110540;
+      let best = null, bestM = maxMetres;
+      for (let x = cx - 1; x <= cx + 1; x++) for (let y = cy - 1; y <= cy + 1; y++) {
+        for (const row of this.cells.get(`${x}/${y}`) ?? []) {
+          if (normalName(row[1]) !== key) continue;
+          const metres = Math.hypot((row[2] - lng) * mx, (row[3] - lat) * my);
+          if (metres <= bestM) {
+            best = row;
+            bestM = metres;
+          }
+        }
+      }
+      return best;
+    }
+    card(building) {
+      if (!building.footprint) return null;
+      const places = this.contained(building.footprint).filter((row) => !isLabelOnly(row));
+      if (!places.length) return null;
+      const title = places.findIndex((row) => row[1] === building.name || row[5] === "a mall");
+      if (title > 0) places.unshift(...places.splice(title, 1));
+      const summaries = places.slice(0, 8).map((row) => `${row[1]} is mapped as ${row[5] || row[4]}${row[6] ? ` at ${row[6]}` : ""}.` + (row[8] ? ` ${row[8]}` : ""));
+      const paragraphs = summaries.map((summary, i) => summary + (validPoiWebsite(places[i][7]) ? `
+Website: ${validPoiWebsite(places[i][7])}` : "") + `
+Map source: ${osmUrl(places[i][0])}`);
+      const first = places[0];
+      return {
+        id: `clicked-poi-${building.id}`,
+        name: places.length > 1 ? `${first[1]} + ${places.length - 1} mapped places` : first[1],
+        type: first[4],
+        typeLabel: poiChipLabel(first),
+        detail: `${first[1]} is mapped as ${first[5] || first[4]}${first[6] ? ` at ${first[6]}` : ""}.`,
+        longDetail: summaries.join("\n\n"),
+        factTexts: paragraphs,
+        sourceUrl: osmUrl(first[0]),
+        lngLat: [first[2], first[3]],
+        featureTarget: building.featureTarget
+      };
+    }
+  };
+
+  // src/canalRecall/game/landmarkNotice.ts
+  var DEFAULT_NOTICE_CONFIG = {
+    exitRadius: 480,
+    minSeconds: 6,
+    fadeSeconds: 0.8
+  };
+  function openNotice() {
+    return { elapsed: 0, fadeRemaining: null };
+  }
+  function clamp01(value) {
+    return value < 0 ? 0 : value > 1 ? 1 : value;
+  }
+  function advanceNotice(state, hold, playerPosition, dt, config = DEFAULT_NOTICE_CONFIG) {
+    const elapsed = state.elapsed + dt;
+    let held;
+    switch (hold.kind) {
+      case "sticky":
+        held = true;
+        break;
+      case "timed":
+        held = elapsed < hold.seconds;
+        break;
+      case "proximity": {
+        if (!playerPosition) {
+          held = true;
+          break;
+        }
+        const distance = Math.hypot(hold.anchor.x - playerPosition.x, hold.anchor.y - playerPosition.y);
+        held = distance <= config.exitRadius || elapsed < config.minSeconds;
+        break;
+      }
+    }
+    const fadeRemaining = held ? null : (state.fadeRemaining === null ? config.fadeSeconds : state.fadeRemaining) - dt;
+    const next = { elapsed, fadeRemaining };
+    const fadeIn = clamp01(elapsed / config.fadeSeconds);
+    const fadeOut = fadeRemaining === null ? 1 : clamp01(fadeRemaining / config.fadeSeconds);
+    return {
+      state: next,
+      alpha: Math.min(fadeIn, fadeOut),
+      visible: fadeRemaining === null || fadeRemaining > 0
+    };
+  }
+
+  // src/canalRecall/facts/factRotation.ts
+  function emptyRotationState() {
+    return { history: {}, shown: 0, recentKinds: [] };
+  }
+  var RECENT_KIND_MEMORY = 3;
+  function factKey(featureId, fact) {
+    const normalised = fact.text.toLowerCase().replace(/[^\p{L}\p{N}]+/gu, "");
+    let hash = 2166136261;
+    for (let index = 0; index < normalised.length; index++) {
+      hash ^= normalised.charCodeAt(index);
+      hash = Math.imul(hash, 16777619);
+    }
+    return `${featureId}:${(hash >>> 0).toString(36)}`;
+  }
+  var KIND_APPEAL = {
+    surprise: 5,
+    naming: 4,
+    culture: 3,
+    people: 3,
+    history: 2,
+    design: 1
+  };
+  function chooseFact(featureId, facts, state) {
+    if (!facts.length) return null;
+    const scored = facts.map((fact) => {
+      const key = factKey(featureId, fact);
+      const lastShown = state.history[key];
+      const seen = lastShown !== void 0;
+      const recency = state.recentKinds.indexOf(fact.kind);
+      const kindPenalty = recency < 0 ? 0 : (RECENT_KIND_MEMORY - recency) * 2;
+      return {
+        fact,
+        key,
+        seen,
+        lastShown: lastShown ?? -1,
+        score: (seen ? 0 : 100) + KIND_APPEAL[fact.kind] - kindPenalty
+      };
+    });
+    scored.sort((a, b) => (
+      // Unseen first; then among seen, the one shown longest ago; then appeal.
+      Number(b.score > 0 && !b.seen) - Number(a.score > 0 && !a.seen) || (a.seen && b.seen ? a.lastShown - b.lastShown : 0) || b.score - a.score
+    ));
+    const best = scored[0];
+    return { fact: best.fact, key: best.key, repeat: best.seen };
+  }
+  function recordShown(state, choice) {
+    const shown = state.shown + 1;
+    return {
+      history: { ...state.history, [choice.key]: shown },
+      shown,
+      recentKinds: [choice.fact.kind, ...state.recentKinds].slice(0, RECENT_KIND_MEMORY)
+    };
+  }
+  function expandedFacts(facts, shownText, limit = 3) {
+    return facts.filter((fact) => fact.text !== shownText).slice().sort((a, b) => KIND_APPEAL[b.kind] - KIND_APPEAL[a.kind]).slice(0, limit);
+  }
+  function pruneHistory(state, maxEntries = 4e3) {
+    const entries = Object.entries(state.history);
+    if (entries.length <= maxEntries) return state;
+    const kept = entries.sort((a, b) => b[1] - a[1]).slice(0, maxEntries);
+    return { ...state, history: Object.fromEntries(kept) };
+  }
+
+  // src/canalRecall/facts/factQuality.ts
+  var CATEGORY_WORDS = "bridge|street|canal|park|square|church|museum|building|monument|neighbourhood|neighborhood|district|area|tower|gate|house|hotel|theatre|theater|station|market|island|quay|harbour|harbor|cemetery|garden|school|university|synagogue|mosque|windmill|lock|sluice|library|hall|palace|mill|club|stadium|arena|prison|hospital|brewery|factory|chapel|gallery|zoo|dock|street|lane|road|avenue|tunnel|fountain|statue";
+  var LEDE_RESTATEMENT = new RegExp(
+    `^\\s*(the\\s+)?[^.]{2,60}?\\s+(is|was)\\s+(a|an|the)\\s+(\\w+[- ]){0,3}(${CATEGORY_WORDS})\\b[^.]{0,40}\\b(in|of|on|near|at|situated at|located at)\\s+(the\\s+)?[A-Z0-9][^.]{0,40}\\.?\\s*$`,
+    "i"
+  );
+  var FILLER_CLAUSE = new RegExp(
+    "\\s*,\\s+(?:(?:marking|showcasing|highlighting|demonstrating|reflecting|contributing|offering|underscoring|emphasi[sz]ing|solidifying|cementing|symboli[sz]ing|illustrating|making it|cementing its)\\b[^,]*|(?:a|an|the)\\s+(?:\\w+\\s+){0,2}(?:striking|significant|notable|remarkable|hidden|unique|key|major|important|impressive|beloved|popular)\\s+(?:\\w+\\s+){0,2}(?:feature|milestone|achievement|aspect|element|landmark|detail|addition|space|example|part|symbol|sight)[^,]*)\\s*\\.?\\s*$",
+    "i"
+  );
+  function words(text) {
+    return text.toLowerCase().match(/[\p{L}\p{N}]+/gu) || [];
+  }
+  function similarity(a, b) {
+    const left = new Set(words(a));
+    const right = new Set(words(b));
+    if (!left.size || !right.size) return 0;
+    let shared2 = 0;
+    for (const word of left) if (right.has(word)) shared2++;
+    return shared2 / Math.min(left.size, right.size);
   }
 
   // src/canalRecall/facts/factTypes.ts
@@ -1836,9 +2376,9 @@ Map source: ${osmUrl(places[i][0])}`);
     return { detail: `${lead} ${factText2}`, opening: lead };
   }
   var ROTATION_STORAGE_KEY = "canalRecall.factRotation.v1";
-  function loadRotationState(storage2) {
+  function loadRotationState(storage3) {
     try {
-      const raw = storage2?.getItem(ROTATION_STORAGE_KEY);
+      const raw = storage3?.getItem(ROTATION_STORAGE_KEY);
       if (!raw) return emptyRotationState();
       const parsed = JSON.parse(raw);
       return {
@@ -1850,9 +2390,9 @@ Map source: ${osmUrl(places[i][0])}`);
       return emptyRotationState();
     }
   }
-  function saveRotationState(storage2, state) {
+  function saveRotationState(storage3, state) {
     try {
-      storage2?.setItem(ROTATION_STORAGE_KEY, JSON.stringify(pruneHistory(state)));
+      storage3?.setItem(ROTATION_STORAGE_KEY, JSON.stringify(pruneHistory(state)));
     } catch {
     }
   }
@@ -1880,10 +2420,18 @@ Map source: ${osmUrl(places[i][0])}`);
       }
     };
   }
-  function commitShownFact(storage2, state, choice) {
+  function keepDutchLede(fact, ledeLang) {
+    return language() === "nl" && ledeLang === "nl" && !fact.textNl;
+  }
+  function commitShownFact(storage3, state, choice) {
     const next = recordShown(state, choice);
-    saveRotationState(storage2, next);
+    saveRotationState(storage3, next);
     return next;
+  }
+
+  // src/canalRecall/engine/labelPand.ts
+  function factsIdOf(hit) {
+    return hit.poi && hit.pand ? hit.pand.id : hit.id;
   }
 
   // src/canalRecall/bridgeRegister.ts
@@ -2021,9 +2569,294 @@ Map source: ${osmUrl(places[i][0])}`);
     return enabled && !input.utilityOpen;
   }
 
+  // src/canalRecall/engine/toonLook.ts
+  function toonLookFlag() {
+    const g = globalThis;
+    const asked = g.__canalRecallLook ?? (typeof URLSearchParams === "function" ? new URLSearchParams(g.location?.search ?? "").get("look") : null);
+    return asked === "toon";
+  }
+
+  // src/canalRecall/look/toonFronts.ts
+  var TOON_FRONT_BRICK = ["#a8503a", "#9a4a38", "#8c4632", "#b05a40", "#7a3b2c"];
+  var TOON_FRONT_DARK = ["#2b2d2c", "#2f4a3a", "#5a2a26", "#25344a"];
+  var TOON_FRONT_LIGHT = ["#e8dfc9", "#f1eee6", "#d3b184", "#e2d5ba"];
+  var TOON_WALLS = [
+    TOON_FRONT_BRICK[0],
+    TOON_FRONT_BRICK[0],
+    TOON_FRONT_BRICK[1],
+    TOON_FRONT_BRICK[2],
+    TOON_FRONT_BRICK[3],
+    TOON_FRONT_BRICK[4],
+    TOON_FRONT_DARK[0],
+    TOON_FRONT_DARK[1],
+    TOON_FRONT_DARK[2],
+    TOON_FRONT_LIGHT[0],
+    TOON_FRONT_LIGHT[2]
+  ];
+  var TOON_ACCENTS = ["#2f4a3a", "#25344a", "#5a2a26", "#2b2d2c", "#e0a526"];
+  var TOON_PERIOD_WALLS = {
+    canal: [TOON_FRONT_BRICK[4], TOON_FRONT_BRICK[4], TOON_FRONT_BRICK[1], TOON_FRONT_BRICK[2], TOON_FRONT_DARK[0], TOON_FRONT_DARK[1], TOON_FRONT_LIGHT[0]],
+    c19: [TOON_FRONT_BRICK[0], TOON_FRONT_BRICK[3], TOON_FRONT_BRICK[1], TOON_FRONT_LIGHT[3], TOON_FRONT_LIGHT[2], TOON_FRONT_LIGHT[0]],
+    school: [TOON_FRONT_BRICK[2], TOON_FRONT_BRICK[4], TOON_FRONT_BRICK[1], TOON_FRONT_BRICK[3]]
+  };
+  var TOON_GROUND_PAINTS = ["#f1eee6", "#f1eee6", "#f1eee6", "#e8dfc9", "#e8dfc9", "#2b2d2c", "#2f4a3a", "#5a2a26", "#25344a", "#8b8f8c"];
+  function toonFrontsActive() {
+    if (!toonLookFlag()) return false;
+    const g = globalThis;
+    return (g.__canalRecallToonFronts ?? (typeof URLSearchParams === "function" ? new URLSearchParams(g.location?.search ?? "").get("toonFronts") : null)) !== "candy";
+  }
+
+  // src/canalRecall/look/palette.ts
+  var PHOTO_WALL_CELL_MEAN = 225;
+  var PHOTO_CALM = { wallPull: 0.7, glassLift: 0.5, liftBrick: true };
+  var DRAWN_CALM = { wallPull: 0.35, glassLift: 0.25, liftBrick: false };
+  var LOOK_VARIANTS = {
+    photo: { cells: "photo", shadeBands: 0, flatColour: false, ...PHOTO_CALM, cartoonRoofCells: false, outline: false, litWallGain: 255 / PHOTO_WALL_CELL_MEAN },
+    procedural: { cells: "procedural", shadeBands: 0, flatColour: false, ...PHOTO_CALM, cartoonRoofCells: false, outline: false, litWallGain: 1 },
+    untextured: { cells: "procedural", shadeBands: 0, flatColour: true, ...PHOTO_CALM, cartoonRoofCells: false, outline: false, litWallGain: 1 },
+    // Storybook warms and lifts the natural palette a little, as an illustrator would.
+    storybook: {
+      cells: "storybook",
+      shadeBands: 0,
+      flatColour: false,
+      ...DRAWN_CALM,
+      cartoonRoofCells: false,
+      outline: true,
+      litWallGain: 1,
+      tone: { hueShift: -4, satMul: 1.15, satAdd: 0, keepDarkBelow: 0, lightMul: 1, lightAdd: 0.03, lightMax: 0.9 }
+    },
+    // Cartoon: punchy but not neon; darks (glass, iron) stay dark so windows still read.
+    cartoon: {
+      cells: "cartoon",
+      shadeBands: 3,
+      flatColour: false,
+      ...DRAWN_CALM,
+      cartoonRoofCells: true,
+      outline: true,
+      litWallGain: 1,
+      tone: { hueShift: 0, satMul: 1.7, satAdd: 0.08, keepDarkBelow: 0.35, lightMul: 1.08, lightAdd: 0, lightMax: 0.85 }
+    }
+  };
+  var MEASURED_SLATE = ["#76808f", "#606b79", "#8c939c"];
+  var ROOF_TONES = {
+    procedural: { tile: ["#b5543a", "#a8482f", "#c0603f", "#9c4a35"], slate: MEASURED_SLATE },
+    untextured: { tile: ["#b5543a", "#a8482f", "#c0603f", "#9c4a35"], slate: MEASURED_SLATE },
+    photo: { tile: ["#b5543a", "#a8482f", "#c0603f", "#9c4a35"], slate: MEASURED_SLATE },
+    storybook: { tile: ["#b9553a", "#a94a33", "#c46a45"], slate: ["#556070", "#4a5666", "#657282"] },
+    cartoon: { tile: ["#e85a3c", "#f08a2b", "#d94a3a"], slate: ["#3f5f8f", "#2f4a78", "#4f7bb0"] }
+  };
+  var ROOF_SLOT_TONES = {
+    "gravel": { hex: "#9e9281", luma: [112, 156], cell: "flat" },
+    "bitumen-dark": { hex: "#56585e", luma: [62, 96], cell: "flat" },
+    "bitumen-light": { hex: "#a99b84", luma: [150, 182], cell: "flat" },
+    "white-membrane": { hex: "#d9d9d3", luma: [196, 228], cell: "flat" },
+    "pantile-red": { hex: "#b5543a", luma: [84, 124], cell: "tile" },
+    "pantile-dark": { hex: "#6a5248", luma: [64, 98], cell: "tile" },
+    "slate": { hex: "#76808f", luma: [62, 140], cell: "slate" },
+    "zinc": { hex: "#9aa1a6", luma: [138, 176], cell: "slate" },
+    "sedum": { hex: "#7a8350", luma: [96, 132], cell: "flat" },
+    "solar": { hex: "#2e3a52", luma: [44, 70], cell: "flat" },
+    "terrace": { hex: "#a38d74", luma: [124, 162], cell: "flat" },
+    "glass": { hex: "#8fa3ad", luma: [130, 170], cell: "flat" }
+  };
+  var FLAT_ROOF_TONES = { gravel: ROOF_SLOT_TONES.gravel.hex, membrane: ROOF_SLOT_TONES["white-membrane"].hex, bitumen: ROOF_SLOT_TONES["bitumen-dark"].hex, pebble: ROOF_SLOT_TONES["bitumen-light"].hex };
+  var FLAT_ROOF_GREYS = [FLAT_ROOF_TONES.gravel, FLAT_ROOF_TONES.membrane, FLAT_ROOF_TONES.bitumen, FLAT_ROOF_TONES.pebble];
+  var CITY_ROOF = { tile: ROOF_TONES.photo.tile, slate: ROOF_TONES.photo.slate, flat: FLAT_ROOF_GREYS };
+  var ILLUSTRATED_WALLS = ["#d9674a", "#e58a5c", "#eab85f", "#f0dfb8", "#e5a396", "#9dbb9b", "#7ea3c2", "#c9714a", "#f2c14e", "#b9a1c9"];
+  var ILLUSTRATED_ACCENTS = ["#2a8c8c", "#e0a526", "#d9453d", "#2c4a7c", "#7a3b6e", "#2f6b45", "#4aa3d9"];
+  var ILLUSTRATED = {
+    canal: { walls: ILLUSTRATED_WALLS, accents: ILLUSTRATED_ACCENTS },
+    c19: { walls: ILLUSTRATED_WALLS, accents: ILLUSTRATED_ACCENTS },
+    school: { walls: ["#9c5a42", "#8a4b3a", "#a8664c", "#7a4a40"], accents: ["#2c4a7c", "#2a8c8c", "#e0a526"] },
+    modern: { walls: ["#f4efe6", "#dcdcd6", "#e9d9c0", "#b9c4cc", "#f0c9a9"], accents: ["#2a8c8c", "#d9453d", "#2c4a7c", "#e0a526"] }
+  };
+  var PHOTO_PASTEL = ["#ffffff", "#f2d9c8", "#d9b9a4", "#e6c9b0", "#c9a38c", "#f0e4d2", "#ffd9b0", "#e8c0b0", "#d0c8c0"];
+  var PHOTO_DARK_ACCENTS = ["#243a2f", "#1f2a3a", "#3a1f1c", "#222222", "#2f4a3c", "#6b2b2b", "#2c3e50"];
+  var PALETTES = {
+    cartoon: ILLUSTRATED,
+    storybook: ILLUSTRATED,
+    photo: {
+      canal: { walls: PHOTO_PASTEL, accents: PHOTO_DARK_ACCENTS },
+      c19: { walls: PHOTO_PASTEL, accents: PHOTO_DARK_ACCENTS },
+      school: { walls: ["#b89080", "#a88070", "#9c7868"], accents: ["#1f2a3a", "#243a2f", "#3a1f1c"] },
+      modern: { walls: ["#f2f2ee", "#d8d8d2", "#e8dcc8", "#c8d0d4"], accents: ["#2c3e50", "#6b2b2b", "#243a2f"] }
+    }
+  };
+  var CARTOON_WALLS = ["#e8573d", "#e8573d", "#ee7f2c", "#f2b92e", "#f2b92e", "#2a9d8f", "#4672b0", "#f3e6c8", "#d96a4d"];
+  var PERIOD_WALLS = {
+    photo: {
+      canal: ["#7a3b2c", "#7a3b2c", "#6b3428", "#8c4632", "#9a5846", "#b05a40", "#4a2e26", "#2e2a27", "#3e4a40", "#5d605a", "#e4ddcd"],
+      c19: ["#b05a40", "#b05a40", "#bd6a45", "#a24d38", "#c58b5e", "#d3b184", "#e2d5ba", "#e2d5ba", "#d9c5a4", "#9a5846"],
+      school: ["#8c4a38", "#7a4535", "#9a5240", "#6e3d33", "#a85a3c", "#5e3a32", "#b0603f"],
+      modern: ["#c9b79a", "#b9ad9a", "#a8a49c", "#d3c6ad", "#8f8a82", "#bfb3a0", "#9c7a62", "#b05a40"]
+    },
+    storybook: {
+      canal: ["#b9583f", "#9a4a38", "#7a4a3c", "#4a5048", "#3f4a5a", "#ead9b0", "#c8664a"],
+      c19: ["#c8664a", "#d98b5f", "#e0b36a", "#ead9b0", "#d9b995", "#c9a08c", "#c8664a"],
+      school: ["#a8553f", "#9a5a48", "#b87a5c", "#c8664a", "#8a4e40"],
+      modern: null
+    },
+    cartoon: {
+      canal: ["#d9453d", "#a8433a", "#3b3b4a", "#2a9d8f", "#4672b0", "#fffaf0", "#e8573d"],
+      c19: ["#e8573d", "#ee7f2c", "#f2b92e", "#f3e6c8", "#d96a4d", "#f2b92e"],
+      school: ["#d96a4d", "#e8573d", "#b9583f", "#ee7f2c"],
+      modern: null
+    }
+  };
+  var GROUND_PAINTS = {
+    photo: ["#f1eee6", "#f1eee6", "#f1eee6", "#e8dfc9", "#e8dfc9", "#2b2d2c", "#2f4a3a", "#5a2a26", "#25344a", "#8b8f8c"],
+    storybook: ["#f6f1e4", "#f6f1e4", "#f6f1e4", "#efe2c2", "#efe2c2", "#3a3d3c", "#3f6a52", "#8a3b33", "#3a527a", "#a3a8a4"],
+    cartoon: ["#fffaf0", "#fffaf0", "#fffaf0", "#ffe9b8", "#ffe9b8", "#3b3b4a", "#2a9d8f", "#d9453d", "#4672b0", "#f2b92e"]
+  };
+  if (toonFrontsActive()) {
+    for (const period of ["canal", "c19", "school"]) PERIOD_WALLS.cartoon[period] = TOON_PERIOD_WALLS[period];
+    const toonSet = { walls: [...TOON_WALLS], accents: [...TOON_ACCENTS] };
+    PALETTES.cartoon = { canal: toonSet, c19: toonSet, school: toonSet, modern: PALETTES.cartoon.modern };
+    CARTOON_WALLS.splice(0, CARTOON_WALLS.length, ...TOON_WALLS);
+    GROUND_PAINTS.cartoon = TOON_GROUND_PAINTS;
+  }
+  var PERIOD_PRIORS = {
+    canal: { label: "canal-house centre (before 1860)", wall: PERIOD_WALLS.photo.canal[0], roof: ROOF_TONES.photo.tile[0] },
+    c19: { label: "19th-century ring (1860-1914)", wall: PERIOD_WALLS.photo.c19[0], roof: ROOF_TONES.photo.tile[1] },
+    school: { label: "Amsterdamse School (1915-1944)", wall: PERIOD_WALLS.photo.school[0], roof: ROOF_TONES.photo.slate[0] },
+    modern: { label: "post-war and contemporary (1945+)", wall: PERIOD_WALLS.photo.modern[0], roof: FLAT_ROOF_GREYS[0] }
+  };
+  var BRICK_CELL_MEAN = PHOTO_WALL_CELL_MEAN / 255;
+  var GLASS_TINT_CELL_W = 32;
+  var GLASS_TINT_CELL_H = 64;
+  var PANE_LUMA = [157.19, 92.83, 69.17];
+  var STREAK_LUMA = 240.95;
+  var STREAK_ALPHA = 0.16;
+  var PANE_SCALE = 255 / (PANE_LUMA[0] + (STREAK_LUMA - PANE_LUMA[0]) * STREAK_ALPHA);
+  function glassTintCellValue(x, y) {
+    const t2 = y / (GLASS_TINT_CELL_H - 1);
+    const base = t2 < 0.5 ? PANE_LUMA[0] + (PANE_LUMA[1] - PANE_LUMA[0]) * (t2 / 0.5) : PANE_LUMA[1] + (PANE_LUMA[2] - PANE_LUMA[1]) * ((t2 - 0.5) / 0.5);
+    const left = 5 - 15 * y / 35, right = 17 - 15 * y / 35, streak = y < 35 && x + 0.5 >= left && x + 0.5 < right;
+    return Math.min(255, Math.round((streak ? base + (STREAK_LUMA - base) * STREAK_ALPHA : base) * PANE_SCALE));
+  }
+  var GLASS_TINT_CELL_MEAN = (() => {
+    let sum = 0;
+    for (let y = 0; y < GLASS_TINT_CELL_H; y++) for (let x = 0; x < GLASS_TINT_CELL_W; x++) sum += glassTintCellValue(x, y);
+    return sum / (GLASS_TINT_CELL_W * GLASS_TINT_CELL_H);
+  })();
+  var STONE_CELL_MEAN = 228 / 255;
+  var HIGHLIGHT_CORAL = "#ff8033";
+
+  // src/canalRecall/hudTheme.ts
+  var enamelTheme = {
+    enamel: "#0b3a8c",
+    enamelBright: "#1450b8",
+    enamelDeep: "#072861",
+    night: "#071430",
+    ink: "#ffffff",
+    inkMuted: "rgba(255,255,255,0.72)",
+    inkDim: "rgba(255,255,255,0.86)",
+    line: "rgba(255,255,255,0.28)",
+    /** Rivet / gold accent (plaque corners, selected hairline). */
+    rivet: "#c4a35a",
+    rivetDeep: "#8a7040",
+    /** Copper stamp (Start / Confirm). */
+    copper: "#b87333",
+    copperHi: "#d9a05b",
+    copperDeep: "#8a5524",
+    copperMid: "#c9844a",
+    fontPlaque: '"Barlow Condensed", "Arial Narrow", "Helvetica Neue Condensed", sans-serif'
+  };
+  var daylightTheme = {
+    paper: "#f4efe5",
+    paperRaised: "#fbf8f2",
+    paperSunk: "#ebe4d6",
+    ink: "#1f1c17",
+    /** 6.3:1 on paper — secondary copy. */
+    inkMuted: "#5f584d",
+    line: "rgba(31,28,23,0.14)",
+    lineStrong: "rgba(31,28,23,0.26)",
+    fill: "rgba(31,28,23,0.045)",
+    fillHover: "rgba(31,28,23,0.085)",
+    accent: "#b4682c",
+    /** Copper dark enough for text on paper (≈6:1). */
+    accentInk: "#8a4a18",
+    accentSoft: "rgba(180,104,44,0.13)",
+    scrim: "rgba(28,24,18,0.38)",
+    danger: "#a8321f"
+  };
+  var paperTheme = {
+    paper: enamelTheme.enamel,
+    paperRaised: enamelTheme.enamelBright,
+    paperMuted: enamelTheme.enamelDeep,
+    ink: enamelTheme.ink,
+    inkMuted: enamelTheme.inkMuted,
+    line: enamelTheme.line,
+    moss: enamelTheme.enamelBright,
+    mossDark: enamelTheme.enamelDeep,
+    mossSoft: "rgba(20,80,184,0.28)",
+    terracotta: enamelTheme.copper,
+    ochre: enamelTheme.rivet
+  };
+  var hudSurface = {
+    /** Always-on readouts sitting directly on the map. */
+    card: "rgba(251,248,242,0.9)",
+    /** Cards you stop and read: the trivia card, the postcard. */
+    cardSolid: "rgba(251,248,242,0.97)",
+    /** Hairline border. */
+    border: "rgba(31,28,23,0.14)",
+    borderStrong: "rgba(180,104,44,0.6)",
+    /** Drop shadow under a card that floats over the map. */
+    shadow: "rgba(31,28,23,0.22)",
+    /** The thumbstick, which sits over the map and must not hide it. */
+    control: "rgba(251,248,242,0.72)",
+    controlPressed: daylightTheme.accent,
+    controlInk: "rgba(31,28,23,0.62)",
+    /** Thumbstick knob at rest. */
+    controlKnob: "rgba(31,28,23,0.2)",
+    /** Type on the paper plate. */
+    ink: daylightTheme.ink,
+    inkMuted: daylightTheme.inkMuted,
+    accent: daylightTheme.accentInk,
+    /** The destination's one accent in the world: the finish arrow and pin wear the landmark highlight's coral
+     *  (look/highlight.ts, LOOK §Highlight), so "go there" on the HUD and the lit building on the map match. */
+    arrow: HIGHLIGHT_CORAL,
+    fontPlaque: enamelTheme.fontPlaque,
+    /** A loaded face first: canvas ignores `ui-monospace`, so HUD numerals fell
+     *  through to Courier/Menlo. index.html loads JetBrains Mono. */
+    fontMono: '"JetBrains Mono", Menlo, Consolas, monospace',
+    fontUi: 'system-ui, -apple-system, "Segoe UI", sans-serif'
+  };
+
+  // src/canalRecall/game/freeRideCollectionDraw.ts
+  function drawPassportStamp(ctx, x, y, radius, label, alpha, fontFamily) {
+    if (!(alpha > 0)) return;
+    ctx.save();
+    ctx.globalAlpha = Math.min(1, alpha) * 0.9;
+    ctx.translate(x, y);
+    ctx.rotate(-0.21);
+    ctx.strokeStyle = daylightTheme.accent;
+    ctx.fillStyle = daylightTheme.accent;
+    ctx.lineWidth = 2.5;
+    ctx.beginPath();
+    ctx.arc(0, 0, radius, 0, Math.PI * 2);
+    ctx.stroke();
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.arc(0, 0, radius - 5, 0, Math.PI * 2);
+    ctx.stroke();
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+    ctx.font = `800 ${Math.round(radius * 0.36)}px ${fontFamily}`;
+    ctx.fillText(label.toUpperCase(), 0, 1);
+    ctx.restore();
+  }
+
   // src/canalRecall/game/modes.ts
   function isTransit(mode) {
     return mode === "transit";
+  }
+
+  // src/canalRecall/placeKind.ts
+  function withArticle(phrase) {
+    const text = phrase.trim();
+    if (!text || /^(a|an|the)\s/i.test(text)) return text;
+    return `${/^[aeiou]/i.test(text) ? "an" : "a"} ${text}`;
   }
 
   // src/canalRecall/buildingFacts.ts
@@ -2127,30 +2960,47 @@ Map source: ${osmUrl(places[i][0])}`);
     if (!heightMetres || !(heightMetres > 2.5)) return null;
     return Math.max(1, Math.round(heightMetres / 3.2));
   }
-  function describeBuilding(row, heightMetres, name = "") {
+  var NOTHING_KNOWN = {
+    anonymous: "This building has no name or date in the map data.",
+    named: "The map data has no date for this building.",
+    place: "A mapped place; the map data has no date for its building."
+  };
+  var NOTHING_KNOWN_SET = new Set(Object.values(NOTHING_KNOWN));
+  var saysNothingKnown = (detail) => NOTHING_KNOWN_SET.has(detail);
+  var sameName = (a, b) => !!a && a.normalize("NFC").toLocaleLowerCase("nl").trim() === b.normalize("NFC").toLocaleLowerCase("nl").trim();
+  function placeSentence(place, title) {
+    if (!place?.name) return "";
+    const kind = (place.kind || "").trim(), at = place.address ? ` at ${place.address}` : "";
+    if (sameName(place.name, title)) return kind ? `${capitalise2(kind)}${at}.` : at ? `A mapped place${at}.` : "";
+    return `${place.name} is ${kind || "a mapped place"}${at}.`;
+  }
+  function describeBuilding(row, heightMetres, name = "", place = null) {
     const storeys = storeysFor(heightMetres);
     const type = row && row[1] >= 0 ? TYPE_LABELS[BUILDING_TYPES[row[1]]] : "";
     const monument = row && row.length > 3 ? row[3] : null;
     const monumentYear = monument?.y ? Number(monument.y.slice(0, 4)) : NaN;
     const year = plausibleYear(monumentYear) ? monumentYear : row && plausibleYear(row[0]) ? row[0] : null;
     const years = plausibleYear(monumentYear) ? monument.y : year ? String(year) : "";
-    const shownName = name || monument?.n || "";
+    const shownName = name || monument?.n || place?.name || "";
     const title = shownName || (year ? `Built ${year}` : type ? capitalise2(type) : "No building details");
     const parts = [];
+    const placeText = placeSentence(place, title);
+    if (placeText) parts.push(placeText);
     const designed = monument?.a ? `, designed by ${monument.a}` : "";
     if (year) {
-      parts.push(type ? `A ${type}, built in ${years}, ${periodOf(year)}${designed}.` : `Built in ${years}, ${periodOf(year)}${designed}.`);
+      parts.push(type ? `${capitalise2(withArticle(type))}, built in ${years}, ${periodOf(year)}${designed}.` : `Built in ${years}, ${periodOf(year)}${designed}.`);
     } else if (designed) {
       parts.push(`Designed by ${monument.a}.`);
-    } else if (type && shownName) {
-      parts.push(`A ${type}.`);
+    } else if (type && shownName && !placeText) {
+      parts.push(`${capitalise2(withArticle(type))}.`);
     }
     const heritage = row ? HERITAGE_LABELS[row[2]] : "";
     const purpose = monument?.f != null && MONUMENT_FUNCTIONS[monument.f] && monument.f > 0 ? `Originally built for ${MONUMENT_FUNCTIONS[monument.f][1]}.` : "";
     if (heritage) parts.push(heritage);
     if (purpose) parts.push(purpose);
-    if (storeys) parts.push(`About ${Math.round(heightMetres)} m tall, some ${storeys} ${storeys === 1 ? "storey" : "storeys"}.`);
-    return { name: title, detail: parts.join(" ") || "This building has no name or date in the map data." };
+    if (storeys) parts.push(`About ${Math.round(heightMetres)} m tall, ${storeys === 1 ? "one storey" : `some ${storeys} storeys`}.`);
+    const nothing = shownName ? place?.name ? NOTHING_KNOWN.place : NOTHING_KNOWN.named : NOTHING_KNOWN.anonymous;
+    return { name: title, detail: parts.join(" ") || nothing };
   }
   var capitalise2 = (text) => text.charAt(0).toUpperCase() + text.slice(1);
   function factTileOf(lng, lat) {
@@ -2254,7 +3104,7 @@ Map source: ${osmUrl(places[i][0])}`);
 
   // src/canalRecall/buildingArticles.ts
   function registerLineUnderArticle(factDetail) {
-    return /^This building has no /.test(factDetail) ? "" : factDetail;
+    return saysNothingKnown(factDetail) ? "" : factDetail;
   }
   function articleCard(article, facts, titleSpoils = false) {
     const register = registerLineUnderArticle(facts.detail);
@@ -2280,6 +3130,7 @@ ${register}` : article.e,
   var cellOf = (lng, lat) => `${Math.floor(lng * 2e3)}:${Math.floor(lat * 4e3)}`;
   var StreetArtIndex = class {
     cells = /* @__PURE__ */ new Map();
+    ids = /* @__PURE__ */ new Map();
     size;
     constructor(file) {
       let n = 0;
@@ -2287,9 +3138,14 @@ ${register}` : article.e,
         if (!point || typeof point.name !== "string" || !Number.isFinite(point.lng) || !Number.isFinite(point.lat)) continue;
         const key = cellOf(point.lng, point.lat);
         (this.cells.get(key) ?? this.cells.set(key, []).get(key)).push(point);
+        if (point.id) this.ids.set(point.id, point);
         n++;
       }
       this.size = n;
+    }
+    /** The record for one OSM or Wikidata id: how a mapped artwork node finds its text. */
+    byId(id) {
+      return id && this.ids.get(id) || null;
     }
     nearest(lng, lat, radiusMetres = STREET_ART_CLICK_METRES) {
       const cx = Math.floor(lng * 2e3), cy = Math.floor(lat * 4e3);
@@ -2318,13 +3174,16 @@ ${register}` : article.e,
     installation: "An art installation",
     artwork: "An artwork"
   };
+  var streetArtKindPhrase = (k) => (KIND_LABEL[k] ?? "An artwork").toLowerCase();
   function streetArtFallbackDetail(point) {
     const by = point.a ? ` by ${point.a}` : "";
     const year = point.y ? ` (${point.y})` : "";
+    if (point.k === "artwork") return point.a ? `By ${point.a}${year}.` : point.y ? `From ${point.y}.` : "Mapped as public art.";
     return `${KIND_LABEL[point.k] ?? "An artwork"}${by}${year}, mapped here.`;
   }
   function streetArtCard(point, titleSpoils = false) {
-    const detail = point.e || streetArtFallbackDetail(point);
+    const part = point.s && point.n && point.m ? t("poi.seriesPart", { n: point.n, m: point.m, series: point.s }) : "";
+    const detail = part ? [part, point.e].filter(Boolean).join(" ") : point.e || streetArtFallbackDetail(point);
     const register = point.e && (point.a || point.y) ? streetArtFallbackDetail(point) : "";
     return {
       id: `street-art-${point.id}`,
@@ -5647,6 +6506,55 @@ ${register}` : detail,
     return [...merged.values()];
   }
 
+  // src/canalRecall/game/placeNames.ts
+  var BY_WIKIDATA = {
+    // nl:Amsterdam (schip, 1990), the replica East Indiaman moored at the museum.
+    Q478353: "VOC ship Amsterdam"
+  };
+  var BY_NAME = {
+    "The National Maritime Museum": "National Maritime Museum",
+    Nemo: "NEMO Science Museum",
+    "H'ART Museum": "H\u2019ART Museum"
+  };
+  function landmarkDisplayName(feature) {
+    const byId = feature.wikidata ? BY_WIKIDATA[feature.wikidata] : void 0;
+    if (byId) return byId;
+    return BY_NAME[feature.name] ?? feature.name;
+  }
+  function withDisplayNames(features) {
+    const renamed = /* @__PURE__ */ new Map();
+    for (const feature of features) {
+      const shown = landmarkDisplayName(feature);
+      if (shown !== feature.name) renamed.set(feature.name, shown);
+    }
+    if (!renamed.size) return [...features];
+    return features.map((feature) => {
+      const name = landmarkDisplayName(feature);
+      const distractors = feature.distractors?.some((d) => renamed.has(d) || d in BY_NAME) ? feature.distractors.map((d) => renamed.get(d) ?? BY_NAME[d] ?? d) : feature.distractors;
+      return name === feature.name && distractors === feature.distractors ? feature : { ...feature, name, distractors };
+    });
+  }
+
+  // src/canalRecall/game/placeBuurt.ts
+  function buurtAt(hoods, x, y) {
+    return neighborhoodAt(hoods, x, y)?.name ?? null;
+  }
+  function anchorAt(anchors, x, y) {
+    let best = null;
+    let bestDistance = Infinity;
+    for (const anchor of anchors) {
+      const distance = Math.hypot(anchor.x - x, anchor.y - y);
+      if (distance <= anchor.reach && distance < bestDistance) {
+        best = anchor;
+        bestDistance = distance;
+      }
+    }
+    return best;
+  }
+  function plaqueBuurtAt(hoods, x, y, anchors = []) {
+    return anchorAt(anchors, x, y)?.hood ?? buurtAt(hoods, x, y);
+  }
+
   // src/canalRecall/game/teachingPacer.ts
   var PREEMPT_AFTER_SECONDS = 6;
   var CLICK_PREEMPT_AFTER_SECONDS = 20;
@@ -5690,22 +6598,65 @@ ${register}` : detail,
     return text.trim();
   }
 
+  // src/canalRecall/cardKindLabel.ts
+  function camel(raw) {
+    return raw.trim().toLowerCase().split(/[^a-z0-9]+/).filter(Boolean).map((part, index) => index === 0 ? part : part[0].toUpperCase() + part.slice(1)).join("");
+  }
+  function kindLabel(raw) {
+    const text = String(raw || "").trim();
+    if (!text) return "";
+    const key = `kind.${camel(text)}`;
+    return key in CATALOGS.en ? t(key) : text.toUpperCase();
+  }
+
+  // src/canalRecall/noticeCards.ts
+  var BADGE_FONT = `700 11px ${hudSurface.fontMono}`;
+  var NAME_FONT = `800 16px ${hudSurface.fontPlaque}`;
+  var BODY_FONT = `500 11px ${hudSurface.fontUi}`;
+  var CLOSE_SIZE = 14;
+  var CLOSE_ROOM = CLOSE_SIZE + 10;
+  var TOUCH_ACTION_HEIGHT = 44;
+  var actionFont = (height) => `800 ${height >= TOUCH_ACTION_HEIGHT ? 13 : 11}px ${hudSurface.fontMono}`;
+  function drawCardAction(ctx, rect, cardX, cardY, label, done) {
+    const x = cardX + rect.x, y = cardY + rect.y;
+    const r = rect.height / 2;
+    ctx.save();
+    ctx.beginPath();
+    ctx.moveTo(x + r, y);
+    ctx.arcTo(x + rect.width, y, x + rect.width, y + rect.height, r);
+    ctx.arcTo(x + rect.width, y + rect.height, x, y + rect.height, r);
+    ctx.arcTo(x, y + rect.height, x, y, r);
+    ctx.arcTo(x, y, x + rect.width, y, r);
+    ctx.closePath();
+    ctx.fillStyle = done ? "rgba(47,111,71,.12)" : "rgba(180,104,44,.10)";
+    ctx.fill();
+    ctx.lineWidth = 1.25;
+    ctx.strokeStyle = done ? "#2f6f47" : "#8a4a18";
+    ctx.stroke();
+    ctx.font = actionFont(rect.height);
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+    ctx.fillStyle = done ? "#2f6f47" : "#8a4a18";
+    ctx.fillText(label.toUpperCase(), x + rect.width / 2, y + rect.height / 2 + 0.5);
+    ctx.restore();
+  }
+
   // src/canalRecall/game/postcardPacing.ts
   var storageKey = (cityId) => `canalRecall.neighborhoodEntries.${cityId}`;
-  function loadEntryCounts(storage2, cityId) {
+  function loadEntryCounts(storage3, cityId) {
     try {
-      const raw = storage2?.getItem(storageKey(cityId));
+      const raw = storage3?.getItem(storageKey(cityId));
       const parsed = raw ? JSON.parse(raw) : {};
       return new Map(Object.entries(parsed).filter((e) => typeof e[1] === "number"));
     } catch {
       return /* @__PURE__ */ new Map();
     }
   }
-  function recordEntry(storage2, cityId, counts, name) {
+  function recordEntry(storage3, cityId, counts, name) {
     const prior = counts.get(name) ?? 0;
     counts.set(name, prior + 1);
     try {
-      storage2?.setItem(storageKey(cityId), JSON.stringify(Object.fromEntries(counts)));
+      storage3?.setItem(storageKey(cityId), JSON.stringify(Object.fromEntries(counts)));
     } catch {
     }
     return prior;
@@ -5872,6 +6823,588 @@ ${register}` : detail,
     return sinceEvent(now, lastShownAt) >= DRIVE_BY_MIN_GAP_SECONDS;
   }
 
+  // src/canalRecall/game/landmarkNamesNl.ts
+  var LANDMARK_NAMES_NL = Object.freeze({
+    "Anne Frank House": "Anne Frank Huis",
+    "Auschwitz Memorial": "Auschwitzmonument",
+    "Berlage's Stock Market": "Beurs van Berlage",
+    "Buchenwald Memorial": "Buchenwaldmonument",
+    "Dutch Resistance Museum": "Verzetsmuseum",
+    "English Reformed Church": "Engelse Hervormde Kerk",
+    "Equestrian statue of Queen Wilhelmina": "Ruiterstandbeeld koningin Wilhelmina",
+    "Gerard Dou Synagogue": "Synagoge Gerard Doustraat",
+    "International Institute of Social History": "Internationaal Instituut voor Sociale Geschiedenis",
+    "Jewish Museum": "Joods Museum",
+    "Marseille House": "Huis Marseille",
+    "Mint Tower": "Munttoren",
+    "Museum of the Canals": "Grachtenmuseum",
+    "National Holocaust Museum": "Nationaal Holocaustmuseum",
+    "New Church": "Nieuwe Kerk",
+    "NIOD Institute for War, Holocaust, and Genocide Studies": "NIOD Instituut voor Oorlogs-, Holocaust- en Genocidestudies",
+    "Old Church": "Oude Kerk",
+    "Our Lord in the Attic": "Ons' Lieve Heer op Solder",
+    "Red Light District": "De Wallen",
+    "Rembrandt House": "Rembrandthuis",
+    "Royal Palace": "Paleis op de Dam",
+    "The National Maritime Museum": "Het Scheepvaartmuseum",
+    "The Shipping House": "Scheepvaarthuis",
+    "University of Amsterdam": "Universiteit van Amsterdam",
+    "Vondelpark Open Air Theater": "Vondelpark Openluchttheater",
+    "Walloon Church": "Waalse Kerk",
+    "Weepers' Tower": "Schreierstoren",
+    "West India House": "West-Indisch Huis",
+    "West Indian Warehouse": "West-Indisch Pakhuis",
+    "Zuiderkerk Tower": "Zuiderkerkstoren",
+    // R2-3 (#303): the landmarks' own nl Wikipedia titles (landmarks.json
+    // `wikipedia`), disambiguators dropped; where Wikidata's nl label is the
+    // shorter usual form it is used instead (cited per row).
+    "Central Station": "Amsterdam Centraal",
+    // nl:Station Amsterdam Centraal; Wikidata Q50719 nl label
+    "Canal Ring Area of Amsterdam": "Grachtengordel",
+    // nl:Grachtengordel (Amsterdam)
+    "Path\xE9 Tuschinski Cinema": "Koninklijk Theater Tuschinski",
+    // nl:Koninklijk Theater Tuschinski
+    "Royal Theater Carr\xE9": "Koninklijk Theater Carr\xE9",
+    // nl:Koninklijk Theater Carré
+    "Dutch National Opera & Ballet": "Nationale Opera & Ballet",
+    // nl:Nationale Opera en Ballet; Wikidata Q1325514 nl label
+    "National Monument": "Nationaal Monument op de Dam",
+    // nl:Nationaal Monument op de Dam
+    "Cat Cabinet": "KattenKabinet",
+    // nl:KattenKabinet
+    "Dutch East Indian Company": "Oost-Indisch Huis",
+    // nl:Oost-Indisch Huis (Amsterdam)
+    "Wine buyers' guildhall": "Wijnkopersgildehuis",
+    // nl:Wijnkopersgildehuis
+    "Funerary museum": "Museum Tot Zover",
+    // nl:Museum Tot Zover (sitelink of Q2383603)
+    "Ravensbr\xFCck memorial": "Vrouwen van Ravensbr\xFCck",
+    // nl:Vrouwen van Ravensbrück 1940-1945; Wikidata Q42171765 nl label
+    "Amsterdam Memorial to the Canadian Liberators": "Amsterdam dankt zijn Canadezen",
+    // nl:Amsterdam dankt zijn Canadezen
+    "Shadow quay": "De Schaduwkade",
+    // nl:De Schaduwkade
+    "Jewish WW2 resistance memorial": "Joods Verzetsmonument",
+    // nl:Joods Verzetsmonument
+    "Royal Tropical Institute": "KIT-gebouw"
+    // nl:KIT-gebouw
+  });
+  var LANDMARK_NAMES_NL_WIKIDATA = Object.freeze({
+    "Houseboat Museum": { nl: "Woonbootmuseum", wikidata: "Q14544962" },
+    "Museum of Bags and Purses": { nl: "Tassenmuseum Hendrikje", wikidata: "Q2077489" },
+    "Diamond Museum Amsterdam": { nl: "Diamantmuseum", wikidata: "Q1208561" },
+    "Olympic Stadium": { nl: "Olympisch Stadion", wikidata: "Q503319" },
+    "Walen Gate": { nl: "Walenpoortje", wikidata: "Q17288856" },
+    "Spinhuis Gate": { nl: "Spinhuispoort", wikidata: "Q17306709" }
+  });
+  var EXTRACT_NAME_OF = new Map(
+    Object.entries(BY_NAME).map(([extract, shown]) => [shown, extract])
+  );
+  function dutchName(name) {
+    return LANDMARK_NAMES_NL[name] ?? LANDMARK_NAMES_NL_WIKIDATA[name]?.nl;
+  }
+  function landmarkDisplayName2(name, language2) {
+    if (language2 !== "nl" || !name) return name;
+    const extract = EXTRACT_NAME_OF.get(name);
+    return dutchName(name) ?? (extract ? dutchName(extract) : void 0) ?? name;
+  }
+  function placeName(name) {
+    return landmarkDisplayName2(name, language());
+  }
+  function localisedPlaces(places, display = placeName) {
+    return places.map((place) => {
+      const shown = place.name ? display(place.name) : place.name;
+      return shown === place.name ? place : { ...place, name: shown, sourceName: place.name };
+    });
+  }
+
+  // src/canalRecall/game/landmarkKind.ts
+  var MEMORIAL_CLASSES = /* @__PURE__ */ new Set([
+    "Q179700",
+    // statue
+    "Q860861",
+    // sculpture
+    "Q575759",
+    // memorial / war memorial
+    "Q5003624",
+    // memorial
+    "Q4989906",
+    // monument
+    "Q20011797"
+    // memorial (names)
+  ]);
+  var BUILDING_CLASSES = /* @__PURE__ */ new Set([
+    "Q33506",
+    "Q207694",
+    "Q2087181",
+    "Q16970",
+    "Q108325",
+    "Q34627",
+    "Q24354",
+    "Q41253",
+    "Q3947",
+    "Q41176",
+    "Q12518",
+    "Q82117",
+    "Q31855",
+    "Q28564",
+    "Q811979",
+    "Q1060829",
+    "Q2772772",
+    "Q1329623"
+  ]);
+  var MEMORIAL_NAME = /\b(monument|memorial|statue|standbeeld|bust|beeld)\b|monument\b/i;
+  function landmarkKind(landmark) {
+    const classes = landmark.wikidataInstanceOf ?? [];
+    if (classes.some((id) => BUILDING_CLASSES.has(id))) return "building";
+    if (classes.some((id) => MEMORIAL_CLASSES.has(id))) return "memorial";
+    if (landmark.type && landmark.type !== "landmark") return "building";
+    return MEMORIAL_NAME.test(landmark.name) ? "memorial" : "building";
+  }
+  var isBuildingLandmark = (landmark) => landmarkKind(landmark) === "building";
+
+  // src/canalRecall/recallExposure.ts
+  var EXPOSURE_FIRST_INTERVAL_MS = 30 * 60 * 1e3;
+  var EXPOSURE_MAX_INTERVAL_MS = 24 * 60 * 60 * 1e3;
+
+  // src/canalRecall/game/landmarkReview.ts
+  var LANDMARK_REVIEW_STORAGE_KEY = "canalRecall.landmarkReview.v1";
+  var LANDMARK_REVIEW_DAYS = [1, 3, 7, 21];
+  var LANDMARK_MISSED_INTERVAL_MS = EXPOSURE_FIRST_INTERVAL_MS;
+  var LANDMARK_REVIEW_MAX_ENTRIES = 200;
+  var DAY_MS = 864e5;
+  function reviewIntervalMs(step) {
+    const days = LANDMARK_REVIEW_DAYS[Math.min(LANDMARK_REVIEW_DAYS.length, Math.max(1, step)) - 1];
+    return days * DAY_MS;
+  }
+  function nextDue(state, outcome, now) {
+    const rights = state?.rights ?? 0;
+    const misses = state?.misses ?? 0;
+    if (outcome === "right") {
+      const step = (state?.step ?? 0) + 1;
+      return { step, dueAt: now + reviewIntervalMs(step), lastAskedAt: now, rights: rights + 1, misses };
+    }
+    return { step: 0, dueAt: now + LANDMARK_MISSED_INTERVAL_MS, lastAskedAt: now, rights, misses: misses + 1 };
+  }
+  function isDue(state, now) {
+    return !!state && now >= state.dueAt;
+  }
+  function reviewKind(state, now) {
+    if (!state) return "new-unlearned";
+    return isDue(state, now) ? "due-review" : "known";
+  }
+  function pickAskable(candidates, states, now, rng = Math.random) {
+    let best = null;
+    for (const candidate of candidates) {
+      const kind = reviewKind(states[candidate.id], now);
+      if (kind === "known") continue;
+      const rank = kind === "due-review" ? 0 : 1;
+      const distance = candidate.distance ?? 0;
+      const better = !best || rank < best.rank || rank === best.rank && (distance < best.distance || distance === best.distance && rng() < 0.5);
+      if (better) best = { candidate, kind, rank, distance };
+    }
+    return best && { candidate: best.candidate, kind: best.kind };
+  }
+  function seedFromSightings(states, sightings) {
+    let out = states;
+    for (const [id, sighting] of Object.entries(sightings)) {
+      if (sighting.how !== "named" || out[id]) continue;
+      if (out === states) out = { ...states };
+      const at = sighting.at || 0;
+      out[id] = { step: 1, dueAt: at + reviewIntervalMs(1), lastAskedAt: at, rights: 1, misses: 0 };
+    }
+    return out;
+  }
+  function capReviews(states, max = LANDMARK_REVIEW_MAX_ENTRIES) {
+    const ids = Object.keys(states);
+    if (ids.length <= max) return states;
+    ids.sort((a, b) => states[b].lastAskedAt - states[a].lastAskedAt || a.localeCompare(b));
+    const out = {};
+    for (const id of ids.slice(0, max)) out[id] = states[id];
+    return out;
+  }
+  function readLandmarkReviews(store) {
+    try {
+      const raw = store?.getItem(LANDMARK_REVIEW_STORAGE_KEY);
+      if (!raw) return {};
+      const parsed = JSON.parse(raw);
+      const out = {};
+      for (const [id, value] of Object.entries(parsed || {})) {
+        if (!value || !Number.isFinite(value.dueAt)) continue;
+        out[id] = {
+          step: Math.max(0, Math.floor(Number(value.step) || 0)),
+          dueAt: Number(value.dueAt),
+          lastAskedAt: Number(value.lastAskedAt) || 0,
+          rights: Math.max(0, Number(value.rights) || 0),
+          misses: Math.max(0, Number(value.misses) || 0)
+        };
+      }
+      return out;
+    } catch {
+      return {};
+    }
+  }
+  function saveLandmarkReviews(store, states) {
+    try {
+      store?.setItem(LANDMARK_REVIEW_STORAGE_KEY, JSON.stringify(capReviews(states)));
+    } catch {
+    }
+  }
+  function recordLandmarkOutcome(store, states, id, outcome, now) {
+    const next = capReviews({ ...states, [id]: nextDue(states[id], outcome, now) });
+    saveLandmarkReviews(store, next);
+    return next;
+  }
+
+  // src/canalRecall/game/questionBudget.ts
+  var DEFAULT_MAX_ASKS_PER_MINUTE = 5;
+  var BUDGET_WINDOW_SECONDS = 60;
+  var EMPTY_BUDGET = { asks: [] };
+  function resolveSettings(settings) {
+    const raw = settings?.maxAsksPerMinute;
+    return { maxAsksPerMinute: raw == null || Number.isNaN(raw) ? DEFAULT_MAX_ASKS_PER_MINUTE : Math.max(0, raw) };
+  }
+  function recentAsks(state, now) {
+    return state.asks.filter((at) => at <= now && now - at < BUDGET_WINDOW_SECONDS);
+  }
+  function minGapSeconds(settings) {
+    const max = settings.maxAsksPerMinute;
+    if (!(max > 0) || !Number.isFinite(max)) return 0;
+    return BUDGET_WINDOW_SECONDS / max / 2;
+  }
+  function priorityOf(event) {
+    if (event.kind === "due-review") return "review";
+    return event.teachingStreet ? "teaching" : "rest";
+  }
+  function decideQuestion(state, event, now, settingsInput) {
+    const settings = resolveSettings(settingsInput);
+    if (event.kind === "known") return { action: "skip", reason: "known" };
+    const unlearned = event.kind === "new-unlearned";
+    const declined = (reason) => unlearned ? { action: "reveal-after-pass", reason } : { action: "skip", reason };
+    const max = settings.maxAsksPerMinute;
+    if (max === 0) return unlearned ? { action: "reveal-after-pass", reason: "budget" } : { action: "skip", reason: "off" };
+    const priority = priorityOf(event);
+    if (!Number.isFinite(max)) return { action: "ask", priority };
+    const recent = recentAsks(state, now);
+    const remaining = max - recent.length;
+    if (remaining < 1) return declined("budget");
+    const last = recent.length ? recent[recent.length - 1] : -Infinity;
+    if (now - last < minGapSeconds(settings)) return declined("spacing");
+    if (priority === "rest" && remaining < 2) return { action: "reveal-after-pass", reason: "reserved" };
+    return { action: "ask", priority };
+  }
+  function recordAsk(state, now) {
+    return { asks: [...recentAsks(state, now), now] };
+  }
+
+  // src/canalRecall/game/silentPass.ts
+  function questionFreezesRide(open, silent) {
+    return open && !silent;
+  }
+  function answerHoldMayHide(holdIsCurrent, questionOpen, silent) {
+    return holdIsCurrent && !questionFreezesRide(questionOpen, silent);
+  }
+
+  // src/canalRecall/game/landmarkQuestionRuntime.ts
+  var AHEAD_HALF_ANGLE = 15 * Math.PI / 180;
+  var LANDMARK_ICON = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 10 12 4l9 6"/><path d="M5 10v9M19 10v9M9.5 19v-5h5v5M3 20h18"/></svg>';
+  function storage2() {
+    try {
+      return typeof localStorage === "undefined" ? null : localStorage;
+    } catch {
+      return null;
+    }
+  }
+  function search() {
+    try {
+      return typeof location === "undefined" ? "" : location.search || "";
+    } catch {
+      return "";
+    }
+  }
+  function shuffle(items) {
+    for (let i = items.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [items[i], items[j]] = [items[j], items[i]];
+    }
+    return items;
+  }
+  var GameLandmarkQuestionRuntime = class {
+    /** Whether this ride asks landmark questions (flag, Free Ride opt-in). */
+    _landmarkQuestionsOn() {
+      const prefs = (this._overlay ?? window.CanalRecallOverlay?.getOverlay?.())?.store.getState().prefs;
+      return landmarkQuestionsEnabled(search(), { freeRide: !!this.freeRide, freeRideQuiz: !!prefs?.landmarkQuiz });
+    }
+    _landmarkSightings() {
+      return this._landmarkSightingsCache ??= readSightings(storage2());
+    }
+    /** The review schedule, with landmarks named before it existed seeded on the first rung (#300). */
+    _landmarkReviews() {
+      return this._landmarkReviewsCache ??= seedFromSightings(readLandmarkReviews(storage2()), this._landmarkSightings());
+    }
+    _noteLandmarkSighting(landmark, how) {
+      const hood = this._neighborhoodAt(landmark.x, landmark.y)?.name || this.currentNeighborhood || "";
+      const step = noteSighting(this._landmarkSightings(), landmark.id, hood, how, Date.now());
+      if (!step.isNew) return false;
+      this._landmarkSightingsCache = step.sightings;
+      saveSightings(storage2(), step.sightings);
+      return true;
+    }
+    /** Landmark ids with a hand-built model (the manual catalogue). */
+    _landmarkIsModelled(id) {
+      if (!this._modelledLandmarkIds) {
+        this._modelledLandmarkIds = /* @__PURE__ */ new Set();
+        for (const spec of MANUAL_LANDMARKS) {
+          const landmarkId = spec.landmarkId;
+          if (landmarkId) this._modelledLandmarkIds.add(landmarkId);
+        }
+      }
+      return this._modelledLandmarkIds.has(id);
+    }
+    /**
+     * Per frame, from `_updateLandmarks` before the drive-by pick. Two steps (#281):
+     *
+     * 1. The candidate. A modelled landmark with a card, in view inside the
+     *    approach band (LANDMARK_APPROACH_RADIUS_M), whose name no label layer has
+     *    drawn in the last 30 s and whose drive-by card has not shown in the last
+     *    60 s (labelDrawLedger.ts), becomes the candidate: its four choices are
+     *    dealt now and every one of them is withheld from the map
+     *    (`landmarkApproachWithheld`), so the labels leave at the label budget's
+     *    own fade before the question can open. Kept, with hysteresis, while the
+     *    rider still approaches it; released (the labels fade back) when not.
+     * 2. The question. Within 150 m and the cone, the slot free and the budget
+     *    with a slot: the question opens with the dealt choices. True when one
+     *    opened (the drive-by pick then stands down this frame).
+     */
+    _tryLandmarkQuestion() {
+      if (!this.player || this.player.ferryOrigin || !this._landmarkQuestionsOn()) {
+        this._releaseLandmarkApproach();
+        return false;
+      }
+      const player = this.player;
+      const approach = this._landmarkApproachCandidate();
+      if (!approach) return false;
+      const gate = this._teachingGate();
+      if (!mayAskLandmark({
+        questionOpen: !!this.quizPromptName || !!this._silentPass,
+        streetCandidate: !!this.quizCandidateName,
+        feedbackVisible: !!this.quizFeedback || gate.promptVisible,
+        utilityOpen: gate.utilityOpen
+      })) return false;
+      const chosen = approach.landmark;
+      if (!inViewCone(player, chosen, LANDMARK_QUESTION_RADIUS_M * PIXELS_PER_METER)) return false;
+      const budget = decideQuestion(this._questionBudget || EMPTY_BUDGET, { name: chosen.name, kind: approach.kind }, this.raceTime, {
+        maxAsksPerMinute: this._askBudgetPerMinute()
+      });
+      if (budget.action !== "ask") return false;
+      (this._landmarkAsked ||= /* @__PURE__ */ new Set()).add(chosen.id);
+      this._questionBudget = recordAsk(this._questionBudget || EMPTY_BUDGET, this.raceTime);
+      this._landmarkQuestion = { id: chosen.id, name: chosen.name, hood: approach.hood };
+      const lang = language();
+      const shownChoices = approach.choices.map((name) => landmarkDisplayName2(name, lang));
+      this.quizWithheldNames = landmarkWithheldNames(chosen.name, [...approach.choices, ...shownChoices, landmarkDisplayName2(chosen.name, lang)]);
+      this._landmarkApproach = null;
+      this.landmarkApproachWithheld = [];
+      const heading = player.speed < 0 ? player.angle + Math.PI : player.angle;
+      const off = Math.atan2(chosen.y - player.y, chosen.x - player.x) - heading;
+      const bearing = Math.atan2(Math.sin(off), Math.cos(off));
+      const side = Math.abs(bearing) < AHEAD_HALF_ANGLE ? t("ride.landmarkQuestion.ahead") : bearing < 0 ? t("ride.landmarkQuestion.left") : t("ride.landmarkQuestion.right");
+      this._openQuizPrompt({
+        kind: "landmark",
+        name: landmarkDisplayName2(chosen.name, lang),
+        subject: "landmark",
+        question: t("ride.landmarkQuestion.heading"),
+        // The plaque's buurt (placeBuurt.ts, L5), so the card and the plaque name one buurt (R2-8).
+        context: questionContext(side, this.currentNeighborhood || approach.hood),
+        choices: shownChoices
+      });
+      this._dressLandmarkPrompt();
+      this.vectorMap?.setActiveLandmark(chosen);
+      bumpSessionCounter(window, "landmarksAsked");
+      return true;
+    }
+    /** Drop the approached candidate; its labels fade back in (#281). */
+    _releaseLandmarkApproach() {
+      if (!this._landmarkApproach && !this.landmarkApproachWithheld?.length) return;
+      this._landmarkApproach = null;
+      this.landmarkApproachWithheld = [];
+    }
+    /** The landmark being approached (step 1 of `_tryLandmarkQuestion`): kept
+     *  while still approached, else the nearest eligible one in the band. */
+    _landmarkApproachCandidate() {
+      const player = this.player;
+      const bandPx = LANDMARK_APPROACH_RADIUS_M * PIXELS_PER_METER;
+      const held = this._landmarkApproach;
+      if (held) {
+        const live = this.landmarks.find((landmark) => landmark.id === held.landmark.id);
+        if (live && !this._seenLandmarks.has(live.id) && approachKept(player, live, bandPx)) return held;
+        this._releaseLandmarkApproach();
+      }
+      const asked = this._landmarkAsked ||= /* @__PURE__ */ new Set();
+      const reviews = this._landmarkReviews();
+      const wallNow = Date.now();
+      const destination = this.routeTo?.landmarkId || (typeof this.routeTo?.id === "string" && this.routeTo.id.startsWith("lm-") ? this.routeTo.id.slice(3) : "");
+      const skip = new Set(asked);
+      if (destination) skip.add(destination);
+      const ledger = sharedLedger(window);
+      const now = performance.now();
+      const session = window;
+      const skipped = this._landmarkSkipsSeen ||= /* @__PURE__ */ new Set();
+      const candidates = this.landmarks.filter((landmark) => {
+        if (skip.has(landmark.id) || this._seenLandmarks.has(landmark.id) || reviewKind(reviews[landmark.id], wallNow) === "known") return false;
+        if (Math.abs(landmark.x - player.x) > bandPx || Math.abs(landmark.y - player.y) > bandPx) return false;
+        if (!isWorthACard(landmark) || !isBuildingLandmark(landmark) || !this._landmarkIsModelled(landmark.id)) return false;
+        if (landmark.name === this.routeTo?.name) return false;
+        if (!inViewCone(player, landmark, bandPx)) return false;
+        const shown = landmarkDisplayName2(landmark.name, language());
+        const reason = landmarkSkipReason(ledger, landmark.name, now) ?? (shown !== landmark.name ? landmarkSkipReason(ledger, shown, now) : null);
+        if (reason) {
+          bumpSkipCounter(session, skipped, landmark.id, reason);
+          return false;
+        }
+        return true;
+      });
+      const pick = pickAskable(
+        candidates.map((landmark) => ({ id: landmark.id, landmark, distance: Math.hypot(landmark.x - player.x, landmark.y - player.y) })),
+        reviews,
+        wallNow
+      );
+      if (!pick) return null;
+      const chosen = pick.candidate.landmark;
+      const withHood = (landmark) => ({
+        id: landmark.id,
+        name: landmark.name,
+        x: landmark.x,
+        y: landmark.y,
+        hood: this._neighborhoodAt(landmark.x, landmark.y)?.name ?? null
+      });
+      const answer = withHood(chosen);
+      const pool = this.landmarks.filter((landmark) => isWorthACard(landmark) && isBuildingLandmark(landmark) && Math.hypot(landmark.x - chosen.x, landmark.y - chosen.y) <= FILLER_MAX_M * PIXELS_PER_METER).map(withHood);
+      const choices = landmarkChoices(answer, pool, {
+        sameComplexPx: SAME_COMPLEX_M * PIXELS_PER_METER,
+        fillerMaxPx: FILLER_MAX_M * PIXELS_PER_METER,
+        shuffle
+      });
+      if (!choices) {
+        asked.add(chosen.id);
+        return null;
+      }
+      this._landmarkApproach = { landmark: chosen, choices, hood: answer.hood || "", since: now, kind: pick.kind };
+      const approachLang = language();
+      this.landmarkApproachWithheld = landmarkWithheldNames(chosen.name, [...choices, ...choices.map((name) => landmarkDisplayName2(name, approachLang)), landmarkDisplayName2(chosen.name, approachLang)]);
+      return this._landmarkApproach;
+    }
+    /** The chip reads "Landmark" with a building icon (the legacy chip table
+     *  has no landmark row; the Storybook state calls this too). */
+    _dressLandmarkPrompt() {
+      this._promptKind.dataset.kind = "landmark";
+      const icon = this._promptKind.firstElementChild;
+      if (icon) icon.innerHTML = LANDMARK_ICON;
+    }
+    /** `_submitCanalAnswer` hands a landmark question here: scored like a
+     *  street, filed as a stamp instead of a street recall row. */
+    _submitLandmarkAnswer(selectedAnswer, noIdea = false) {
+      const asked = this._landmarkQuestion;
+      if (!asked || !this.quizPromptName || !this.player) return;
+      const correctName = this.quizPromptName;
+      const answer = selectedAnswer == null ? this._promptInput?.value ?? "" : selectedAnswer;
+      const result = CanalRecallAnswerPath.submitAnswer({
+        correctName,
+        displayName: correctName,
+        say: t,
+        answer,
+        noIdea,
+        score: {
+          attempts: this.quizAttempts,
+          correct: this.quizCorrect,
+          points: this.quizPoints,
+          streak: this.quizStreak,
+          bestStreak: this.quizBestStreak
+        },
+        difficultyMultiplier: DIFFICULTY_SCORE_MULTIPLIERS[this.routeDifficulty] || 0.85,
+        noveltyMultiplier: 1.15,
+        gameyFeatures: this.gameyFeatures,
+        recallFeature: null,
+        recallStore: null,
+        revealName: (name) => this._revealName(name)
+      });
+      const correct = result.wasCorrect;
+      window.CanalRecallAnalytics?.answer(this, correct, noIdea);
+      this.quizAttempts = result.attempts;
+      this.quizCorrect = result.correct;
+      this.quizPoints = result.points;
+      this.quizStreak = result.streak;
+      this.quizBestStreak = result.bestStreak;
+      this.quizFeedback = result.feedback;
+      this._promptFeedback.textContent = result.feedback;
+      this._promptFeedback.style.color = result.feedbackColor;
+      this._markAnsweredChoices(correctName, answer, correct);
+      const landmark = this.landmarks.find((item) => item.id === asked.id) || null;
+      this._landmarkReviewsCache = recordLandmarkOutcome(
+        storage2(),
+        this._landmarkReviews(),
+        asked.id,
+        correct ? "right" : noIdea ? "no-idea" : "wrong",
+        Date.now()
+      );
+      if (correct && landmark) {
+        window.CanalCollection?.record({ id: landmark.id, name: landmark.name, how: "named" });
+        this._noteLandmarkSighting(landmark, "named");
+        bumpSessionCounter(window, "landmarksNamed");
+      }
+      if (landmark) {
+        this._seenLandmarks.add(landmark.id);
+        this._seenLandmarkNames.add(landmark.name);
+      }
+      this.quizPromptKind = "route";
+      this.quizPromptName = "";
+      this.quizPromptSubject = "";
+      this._landmarkQuestion = null;
+      this.quizWithheldNames = [];
+      this.vectorMap?.setActiveLandmark(null);
+      const holdToken = this._answerHoldToken = (this._answerHoldToken || 0) + 1;
+      setTimeout(() => {
+        if (!answerHoldMayHide(holdToken === this._answerHoldToken, !!this.quizPromptName, !!this._silentPass)) return;
+        this._prompt.style.display = "none";
+        document.getElementById("canal-card")?.classList.remove("answered");
+        this.quizFeedback = "";
+        if (typeof this._reclaimKeyboardFocus === "function") this._reclaimKeyboardFocus();
+        else this.canvas.focus();
+        if (landmark) {
+          this._showLandmarkNotice(landmark, { kind: "sticky" }, "drive-by");
+          this.vectorMap?.setActiveLandmark(landmark);
+        }
+      }, correct ? ANSWER_HOLD_CORRECT : ANSWER_HOLD_WRONG);
+    }
+    /** The drive-by card's "Noticed": the landmark counts toward its buurt's
+     *  passport (neighborhoodPassport.ts credit). */
+    _noticeLandmark() {
+      const notice = this._landmarkNotice;
+      if (!notice) return false;
+      const landmark = this.landmarks.find((item) => item.id === notice.id);
+      if (!landmark) return false;
+      const fresh = this._noteLandmarkSighting(landmark, "noticed");
+      if (fresh) bumpSessionCounter(window, "landmarksNoticed");
+      return fresh;
+    }
+    /** Whether the open card offers "Noticed": a drive-by card for a real
+     *  landmark, and "Noted" once it has been tapped. */
+    _landmarkCardAction() {
+      const notice = this._landmarkNotice;
+      if (!notice || this._landmarkNoticeSource !== "drive-by") return null;
+      if (!this.landmarks.some((item) => item.id === notice.id)) return null;
+      if (/[?&]landmarkQuestions=(0|false|off)(&|$)/.test(search())) return null;
+      const done = !!this._landmarkSightings()[notice.id];
+      return { label: done ? t("ride.landmarkNoticed.done") : t("ride.landmarkNoticed.action"), done };
+    }
+  };
+  function installLandmarkQuestion(target) {
+    for (const name of Object.getOwnPropertyNames(GameLandmarkQuestionRuntime.prototype)) {
+      if (name === "constructor") continue;
+      Object.defineProperty(target.prototype, name, Object.getOwnPropertyDescriptor(GameLandmarkQuestionRuntime.prototype, name));
+    }
+  }
+
   // src/canalRecall/transit/corridorStreets.ts
   function pointToSegDist(px, py, ax, ay, bx, by) {
     const dx = bx - ax;
@@ -5950,6 +7483,9 @@ ${register}` : detail,
     "streets.json",
     "water.json"
   ];
+  function safeLabelRow(host, name, building) {
+    return name ? host._clickPoiInfo?.named?.(name, building.lngLat) ?? null : null;
+  }
   var GameLandmarkRuntime = class {
     // ---- Clicking a building ----
     _inspectBuildingAt(clientX, clientY) {
@@ -5988,11 +7524,16 @@ ${register}` : detail,
      *  sentence as told. */
     _showLandmarkNotice(notice, hold, source = "click", streetEntry) {
       if (this._landmarkNotice) this.vectorMap?.setActiveLandmark(null);
+      if (this._neighborhoodNotice) {
+        this._neighborhoodNotice = null;
+        this._neighborhoodNoticeTimer = 0;
+      }
       this._landmarkNotice = this._withRotatedFact(notice, streetEntry);
       this._landmarkNoticeHold = hold;
       this._landmarkNoticeSource = source;
       this._landmarkNoticeState = openNotice();
       if (source !== "arrival") this._lastTriviaAt = this.raceTime;
+      if (source === "drive-by" && notice.name) noteCardShown(sharedLedger(window), notice.name, performance.now());
       if (source === "click") this._landmarkNoticeState.elapsed = DEFAULT_NOTICE_CONFIG.fadeSeconds;
       this._landmarkNoticeAlpha = source === "click" ? 1 : 0;
       this._ensureLandmarkImage(this._landmarkNotice);
@@ -6015,6 +7556,7 @@ ${register}` : detail,
         notice.detail || notice.longDetail
       );
       if (!chosen) return notice;
+      if (!streetEntry && keepDutchLede(chosen.choice.fact, notice.extractLang)) return notice;
       this._commitFact(chosen.choice);
       const text = streetEntry ? streetCardWithRotatedFact(streetEntry, chosen.text) : chosen.text;
       return { ...notice, ...text };
@@ -6061,16 +7603,37 @@ ${register}` : detail,
         if (!article) this._requestBuildingFacts(building);
         return article ? this._poiCardWithArticle(mapped, article) : mapped;
       }
-      let row = this._buildingFacts?.lookup(building.id) ?? null;
+      if (building.poi && !building.footprint) {
+        const labelled = safeLabelRow(this, buildingName, building);
+        if (labelled && !hasCardSubstance(labelled, this._streetArt?.byId(labelled[0]))) {
+          const under = building.pand;
+          if (!under) return null;
+          return this._cardForClickedBuilding({
+            id: under.id,
+            lngLat: building.lngLat,
+            footprint: under.footprint,
+            height: under.height,
+            featureTarget: under.featureTarget ?? null
+          });
+        }
+        const art = labelled && labelled[4] === "art" ? this._streetArt?.byId(labelled[0]) : null;
+        if (art && artHasSubstance(art)) return { ...streetArtCard(art, !!spoils?.call(this.vectorMap, art.name)), featureTarget: building.featureTarget ?? null };
+      }
+      const pand = building.poi ? building.pand : void 0;
+      let row = this._buildingFacts?.lookup(factsIdOf(building)) ?? null;
       const monument = row && row.length > 3 ? row[3] : void 0;
       if (row && monument?.n && spoils?.call(this.vectorMap, monument.n)) {
         const { n: _hidden, ...rest } = monument;
         row = [row[0], row[1], row[2], rest];
       }
       const safeName = buildingName && spoils?.call(this.vectorMap, buildingName) ? "" : buildingName;
-      const facts = describeBuilding(row, building.height, safeName);
+      const labelRow = safeName && building.poi && !building.footprint ? this._clickPoiInfo?.named?.(safeName, building.lngLat) ?? null : null;
+      const labelArt = labelRow && labelRow[4] === "art" ? this._streetArt?.byId(labelRow[0]) : null;
+      const place = labelRow ? { name: labelRow[1], kind: labelArt && labelArt.k !== "artwork" ? streetArtKindPhrase(labelArt.k) : labelRow[5], address: labelRow[6] } : safeName && building.poi ? { name: safeName } : null;
+      const facts = describeBuilding(row, building.height ?? pand?.height, safeName, place);
       if (!row || !article) this._requestBuildingFacts(building);
       const id = `clicked-${building.id || building.lngLat.join("-")}`;
+      const featureTarget = building.featureTarget ?? pand?.featureTarget ?? null;
       if (article) {
         return {
           id,
@@ -6083,10 +7646,12 @@ ${register}` : detail,
       return {
         id,
         name: facts.name,
-        type: "building",
+        type: labelRow ? labelRow[4] : "building",
+        ...labelRow ? { typeLabel: poiChipLabel(labelRow) } : {},
         detail: facts.detail,
         lngLat: building.lngLat,
-        featureTarget: building.featureTarget
+        featureTarget,
+        ...labelRow ? { sourceUrl: osmUrl(labelRow[0]) } : {}
       };
     }
     /** A mapped venue whose building also has an article: the lede leads, the
@@ -6115,7 +7680,7 @@ ${register}` : detail,
       if (inFlight.has(plainId)) return;
       inFlight.add(plainId);
       void store.ensureAt(building.lngLat[0], building.lngLat[1]).then(() => {
-        if (!stillOpen() || !store.lookup(building.id) && !store.article(building.id)) return;
+        if (!stillOpen() || !store.lookup(factsIdOf(building)) && !store.article(building.id)) return;
         const card = this._cardForClickedBuilding(building);
         const open = this._landmarkNotice;
         if (!card || !open || !cardIds.has(open.id)) return;
@@ -6231,7 +7796,7 @@ ${register}` : detail,
           readJson(streetResponse, []),
           readJson(waterResponse, [])
         ]);
-        const features = mergeManualPoiFeatures(rawFeatures, this.cityId || "amsterdam");
+        const features = withDisplayNames(mergeManualPoiFeatures(rawFeatures, this.cityId || "amsterdam"));
         const streetKnowledge = [];
         this._facts = buildFactIndex(null);
         this._factRotation = loadRotationState(
@@ -6283,7 +7848,7 @@ ${register}` : detail,
           // A bridge's official spelling is an answer too.
           ...bridgeFeatures.map((bridge) => ({ name: bridge.displayName }))
         ].map((item) => item.name || "").filter(Boolean));
-        this.vectorMap.setPlaces(features, boundaries);
+        this.vectorMap.setPlaces(localisedPlaces(features), boundaries);
         const metersPerDegreeLat = 111320;
         const metersPerDegreeLng = 111320 * Math.cos(centerLat * Math.PI / 180);
         const toWorld = ([lat, lng]) => ({
@@ -6291,6 +7856,14 @@ ${register}` : detail,
           y: -(lat - centerLat) * metersPerDegreeLat * PIXELS_PER_METER + this.osmLoader._lastOffsetY
         });
         this.landmarks = buildLandmarks(features, (lat, lng, feature) => feature.manualPoi || isTransit(this.travelMode) ? toWorld([lat, lng]) : this.osmLoader.latLngToGamePoint(lat, lng, centerLat, centerLng, segments, false));
+        if (!isTransit(this.travelMode)) {
+          for (const landmark of this.landmarks) {
+            if (!landmark.lngLat) continue;
+            const own = toWorld([landmark.lngLat[1], landmark.lngLat[0]]);
+            landmark.ownX = own.x;
+            landmark.ownY = own.y;
+          }
+        }
         const landmarks = this.landmarks;
         this._landmarkImages = /* @__PURE__ */ new Map();
         this._landmarkImageRequests = /* @__PURE__ */ new Set();
@@ -6339,7 +7912,13 @@ ${register}` : detail,
         }
       }
       if (!this.player) return;
-      const detectedHood = this._neighborhoodAt(this.player.x, this.player.y);
+      const plaqueHood = plaqueBuurtAt(
+        this.neighborhoods,
+        this.player.x,
+        this.player.y,
+        this._freeRidePlaceAnchors?.(this.player.x, this.player.y) ?? []
+      );
+      const detectedHood = plaqueHood ? this.neighborhoods.find((area) => area.name === plaqueHood) ?? null : null;
       const transition = CanalRecallNeighborhood.advanceNeighborhood({
         current: this.currentNeighborhood,
         candidate: this._neighborhoodCandidate,
@@ -6363,7 +7942,8 @@ ${register}` : detail,
           this._neighborhoodEntries.counts,
           this.currentNeighborhood
         );
-        this._postcardPending = postcardOnEntry({
+        const checklistEntry = !!this.freeRide && !!this._freeRideChecklistCaption?.(this.currentNeighborhood);
+        this._postcardPending = checklistEntry || postcardOnEntry({
           now: this.raceTime,
           priorEntries,
           lastTriviaAt: this._lastTriviaAt ?? null,
@@ -6377,11 +7957,16 @@ ${register}` : detail,
       })) {
         this._postcardPending = this.currentNeighborhood;
       }
-      if (this._postcardPending && this._postcardPending === this.currentNeighborhood && this.viewport?.mode !== "compact" && canShowPostcard(this.viewport?.mode, this._teachingGate()) && this.raceTime > NEIGHBORHOOD_NOTICE_GRACE) {
+      if (this._neighborhoodNotice && (this._neighborhoodNoticeTimer <= 0 || this._landmarkNotice)) {
+        this._neighborhoodNoticeTimer = 0;
+        this._neighborhoodNotice = null;
+      }
+      if (this._postcardPending && this._postcardPending === this.currentNeighborhood && !this._landmarkNotice && (this.viewport?.mode !== "compact" || !!this._freeRideStampWaiting?.(this._postcardPending)) && canShowPostcard(this.viewport?.mode, this._teachingGate()) && this.raceTime > NEIGHBORHOOD_NOTICE_GRACE) {
         this._postcardPending = null;
         this._lastPostcardAt = this.raceTime;
         if (hood) this._ensureNeighborhoodImage(hood);
-        this._neighborhoodNotice = hood || { name: this.currentNeighborhood };
+        const stamped = !!this._freeRideTakeStampPostcard?.(this.currentNeighborhood);
+        this._neighborhoodNotice = { ...hood || { name: this.currentNeighborhood }, stamped };
         this._neighborhoodNoticeTimer = NEIGHBORHOOD_NOTICE_SECONDS;
       }
       const routePath = this.routePath;
@@ -6401,6 +7986,7 @@ ${register}` : detail,
         }
         candidates.push(landmark);
       }
+      if (this._tryLandmarkQuestion()) return;
       if (this.freeRide) return;
       if (!canShowDriveByCard(this.viewport?.mode, this._teachingGate())) return;
       if (!driveByGapElapsed(this._lastDriveByAt, this.raceTime)) return;
@@ -6409,7 +7995,8 @@ ${register}` : detail,
         this._landmarkNoticeHold,
         this._landmarkNoticeState.elapsed
       )) return;
-      const nearest = pickDriveBy(candidates, ahead);
+      const approached = this._landmarkApproach?.landmark.id;
+      const nearest = pickDriveBy(approached ? candidates.filter((landmark) => landmark.id !== approached) : candidates, ahead);
       if (nearest && nearest.id !== this._landmarkNotice?.id) {
         this._seenLandmarks.add(nearest.id);
         this._seenLandmarkNames.add(nearest.name);
@@ -6456,33 +8043,41 @@ ${register}` : detail,
       const lm = this._landmarkNotice;
       this._landmarkCardBounds = null;
       this._landmarkCloseBounds = null;
+      this._landmarkActionBounds = null;
       if (!lm) return;
       if (!canShowTeachingCard(this._teachingGate())) return;
       const ctx = this.ctx;
       const alpha = this._landmarkNoticeAlpha;
       if (alpha <= 0) return;
       const collapsed = cardCollapsed(this._landmarkNoticeSource, this._landmarkNoticeState.elapsed);
-      const img = collapsed ? null : this._landmarkImages && this._landmarkImages.get(lm.id);
+      const shortPhone = this.viewport?.mode === "compact" && (this.viewport?.height ?? Infinity) < 800 && !!this._landmarkCardAction();
+      const img = collapsed || shortPhone ? null : this._landmarkImages && this._landmarkImages.get(lm.id);
       const hasImage = !!(img && img.complete && img.naturalWidth > 0);
       const cards = window.CanalRecallCards;
       const measure = (text, font) => {
         ctx.font = font;
         return ctx.measureText(text).width;
       };
+      const action = this._landmarkCardAction();
       const card = cards.measureLandmarkCard({
-        name: lm.name,
+        name: placeName(lm.name || ""),
         body: collapsed ? foldedCardLine(lm) : lm.longDetail || lm.detail || cards.placeOnlyDetail(
           lm.type,
           this.currentNeighborhood,
           this._cityDisplayName()
         ),
-        category: lm.type ? lm.type.toUpperCase() : "",
+        category: lm.type ? kindLabel(lm.type) : "",
         factKind: lm.factKind,
         extractLang: lm.extractLang,
         hasArticle: !!(lm.wikipediaUrl || lm.sourceUrl),
-        articleLabel: lm.wikipediaUrl ? "W  WIKIPEDIA" : "W  SOURCE",
+        articleLabel: lm.wikipediaUrl ? t("card.wikipedia") : t("card.source"),
         hasImage,
-        ...collapsed ? { maxBodyLines: FOLDED_BODY_LINES, hasMore: (lm.longDetail || lm.detail || "").trim() !== foldedCardLine(lm) } : {}
+        ...collapsed ? { maxBodyLines: FOLDED_BODY_LINES, hasMore: (lm.longDetail || lm.detail || "").trim() !== foldedCardLine(lm) } : {},
+        ...action ? { action: action.label } : {},
+        // A finger, not a pointer: the pill is a 44 px tap target on a phone (#286).
+        // Three body lines then, so the taller pill does not push the card over the bike (414×896, #286).
+        ...action && (this.viewport?.touch || this.viewport?.mode === "compact") ? { actionHeight: cards.TOUCH_ACTION_HEIGHT, ...collapsed ? {} : { maxBodyLines: 3 } } : {},
+        ...shortPhone ? { inlineAction: true } : {}
       }, measure, window.CanalRecallUi.landmarkCardWidth(this.viewport));
       const postcardShowing = !!(this._neighborhoodNotice && this._neighborhoodNoticeTimer > 0) && canShowTeachingCard(this._teachingGate());
       const bottomLayout = window.CanalRecallUi.hudLayout({
@@ -6495,14 +8090,17 @@ ${register}` : detail,
         neighborhoodVisible: !!this.currentNeighborhood,
         minimapVisible: canShowMiniMap(this.showMiniMap, this._teachingGate()),
         zoomVisible: this._zoomBadgeTimer > 0,
-        controlsVisible: !this.input.isMobile && this.raceTime < CONTROLS_HINT_DURATION
+        controlsVisible: !this.input.isMobile && this.raceTime < CONTROLS_HINT_DURATION,
+        touchHintVisible: !!this._touchHintShowing?.()
       });
       const cardX = bottomLayout.landmark.x;
       const cardY = bottomLayout.landmark.y;
       ctx.save();
       ctx.globalAlpha = Math.max(0, alpha);
       this.renderer.drawLandmarkCard(ctx, card, cardX, cardY, hasImage && img ? img : null);
+      if (action && card.action) drawCardAction(ctx, card.action, cardX, cardY, action.label, action.done);
       ctx.restore();
+      this._landmarkActionBounds = action && card.action ? { x: cardX + card.action.x, y: cardY + card.action.y, w: card.action.width, h: card.action.height } : null;
       this._landmarkCardBounds = { x: cardX, y: cardY, w: card.width, h: card.height };
       this._landmarkCloseBounds = { x: cardX + card.closeHit.x, y: cardY + card.closeHit.y, w: card.closeHit.width, h: card.closeHit.height };
     }
@@ -6531,17 +8129,18 @@ ${lm.researchDetail}` : originalBody;
         chip.textContent = label;
         badges.appendChild(chip);
       };
-      if (lm.type) pushBadge(lm.type.toUpperCase().replace(/_/g, " "), "category");
+      if (lm.typeLabel) pushBadge(lm.typeLabel, "category");
+      else if (lm.type) pushBadge(lm.type.toUpperCase().replace(/_/g, " "), "category");
       if (lm.factKind) pushBadge(lm.factKind.toUpperCase(), "fact");
-      if (lm.extractLang && lm.extractLang !== "en") {
+      if (lm.extractLang && lm.extractLang !== "en" && lm.extractLang !== language()) {
         pushBadge(`${lm.extractLang.toUpperCase()} \u2014 NOT TRANSLATED YET`, "lang");
       }
-      panel.querySelector("#landmark-panel-title").textContent = lm.name || "";
+      panel.querySelector("#landmark-panel-title").textContent = placeName(lm.name || "");
       panel.querySelector("#landmark-panel-body").textContent = body;
       const image = panel.querySelector("#landmark-panel-image");
       if (lm.imageUrl) {
         image.src = lm.imageUrl;
-        image.alt = lm.name || "";
+        image.alt = placeName(lm.name || "");
         image.hidden = false;
       } else {
         image.removeAttribute("src");
@@ -6596,7 +8195,10 @@ ${lm.researchDetail}` : originalBody;
           imageArea: hood.imageArea,
           hasImage,
           cityName: city?.name || this._cityDisplayName?.() || "Amsterdam",
-          provinceCaption: city?.provinceCaption || ""
+          provinceCaption: city?.provinceCaption || "",
+          checklist: this._freeRideChecklistCaption?.(hood.name) || "",
+          stamped: !!hood.stamped,
+          compact: this.viewport?.mode === "compact"
         },
         measure,
         window.CanalRecallUi.postcardWidth(this.viewport)
@@ -6606,7 +8208,8 @@ ${lm.researchDetail}` : originalBody;
         tripWidth: 180,
         postcardHeight: card.height,
         neighborhoodVisible: !!this.currentNeighborhood,
-        minimapVisible: canShowMiniMap(this.showMiniMap, this._teachingGate())
+        minimapVisible: canShowMiniMap(this.showMiniMap, this._teachingGate()),
+        touchHintVisible: !!this._touchHintShowing?.()
       });
       const cardX = bottomLayout.postcard.x;
       const baseCardY = bottomLayout.postcard.y;
@@ -6615,9 +8218,22 @@ ${lm.researchDetail}` : originalBody;
       ctx.save();
       ctx.globalAlpha = Math.max(0, alpha);
       this.renderer.drawPostcard(ctx, card, cardX, cardY, hasImage && img ? img : null);
+      if (hood.stamped) {
+        const seal = card.seal ?? { x: card.width - 46, y: card.height / 2, r: 34 };
+        drawPassportStamp(
+          ctx,
+          cardX + seal.x,
+          cardY + seal.y,
+          seal.r,
+          "Stamped",
+          Math.min(1, (duration - this._neighborhoodNoticeTimer) / 0.25),
+          window.CanalRecallUi.hudSurface.fontPlaque
+        );
+      }
       ctx.restore();
     }
   };
+  installLandmarkQuestion(GameLandmarkRuntime);
   window.CanalRecallGameModules = window.CanalRecallGameModules || [];
   window.CanalRecallGameModules.push(GameLandmarkRuntime);
 })();

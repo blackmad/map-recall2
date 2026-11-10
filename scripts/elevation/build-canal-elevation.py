@@ -119,6 +119,14 @@ def main() -> None:
     parser.add_argument('--extra-profiles', action='append', default=[],
                         help='more bridge-surfaces files (e.g. bridge-surfaces-v2.json from scripts/elevation/build-bridge-surfaces-v2.ts); '
                              'their endpoints do not enter the quay-freeboard median')
+    parser.add_argument('--land-fixes', default=None,
+                        help='GeoJSON of land polygons (lng/lat) cut out of the water union: water the OSM/BGT snapshot still '
+                             'draws where AHN shows filled land (scripts/land-mask/find-filled-water.py). Absent: byte-identical output.')
+    parser.add_argument('--land-patches', default=None,
+                        help='JSON of hand-confirmed land patches (lng/lat ring + bufferM), e.g. scripts/land-mask/land-patches.json')
+    parser.add_argument('--keep-water-under', default=None,
+                        help='houseboats.json: boat footprints (+ --berth-m) are removed from every land fix, so moored boats stay on water')
+    parser.add_argument('--berth-m', type=float, default=4.0)
     args = parser.parse_args()
 
     water_path = os.path.join(args.source, 'terrain/amsterdam/raw/basemap-water.geojson')
@@ -158,6 +166,32 @@ def main() -> None:
     water = water.simplify(SIMPLIFY_M, preserve_topology=True)
     water_polys = [orient(p, 1.0) for p in polygons(water) if p.area >= MIN_WATER_AREA_M2]
     water = MultiPolygon(water_polys)
+    if args.land_fixes or args.land_patches:
+        auto, hand = [], []
+        if args.land_fixes:
+            with open(args.land_fixes) as fh:
+                auto += [project_geom(shape(f['geometry'])).buffer(0.3) for f in json.load(fh)['features']]
+        if args.land_patches:
+            with open(args.land_patches) as fh:
+                hand += [project_geom(shape(p['geometry']) if 'geometry' in p else Polygon(p['ring'])).buffer(p.get('bufferM', 1.0)) for p in json.load(fh)['patches']]
+        fixes = auto + hand
+        before = sum(p.area for p in water_polys)
+        # Cut only the polygons a fix touches, in place: the other rings and the cell ordering stay byte-identical.
+        auto_cut, hand_cut = unary_union(auto) if auto else Polygon(), unary_union(hand) if hand else Polygon()
+        if args.keep_water_under:
+            # Moored boats stay on water (houseboat-land regression, user 2026-10-14): detected fills give up each boat's
+            # footprint plus a berth; hand-confirmed patches give up the footprint plus 1 m only.
+            with open(args.keep_water_under) as fh:
+                hulls = [project_geom(Polygon(b['ring'])) for b in json.load(fh)['boats']]
+            berth = [h.buffer(args.berth_m) for h in hulls if h.buffer(args.berth_m).intersects(auto_cut)]
+            hand_berth = [h.buffer(1.0) for h in hulls if h.buffer(1.0).intersects(hand_cut)]
+            auto_cut = auto_cut.difference(unary_union(berth)) if berth else auto_cut
+            hand_cut = hand_cut.difference(unary_union(hand_berth)) if hand_berth else hand_cut
+            print(f'land fixes: {len(berth)} berths (+{args.berth_m} m) cut out of detected fills, {len(hand_berth)} hulls (+1 m) out of patches', file=sys.stderr)
+        cut = unary_union([auto_cut, hand_cut])
+        water_polys = [orient(q, 1.0) for part in water_polys for q in (polygons(part.difference(cut).simplify(SIMPLIFY_M, preserve_topology=True)) if part.intersects(cut) else [part]) if q.area >= MIN_WATER_AREA_M2]
+        water = MultiPolygon(water_polys)
+        print(f'land fixes: {len(fixes)} polygons cut, {(before - water.area):.0f} m2 of water removed', file=sys.stderr)
     print(f'water union: {len(water_polys)} polygons, {water.area / 1e6:.2f} km2', file=sys.stderr)
 
     # ---- shorelines: every ring edge except where water meets the coverage edge --
@@ -314,6 +348,8 @@ def main() -> None:
             'water': {'file': 'terrain/amsterdam/raw/basemap-water.geojson', 'sha256': sha256(water_path), 'snapshot': 'OpenFreeMap 20261004_113936_pt z14'},
             'profiles': {'file': 'bridges/amsterdam-measured/raw/bridge-surfaces-v1.json', 'sha256': sha256(profiles_path), 'method': 'AHN dsm_05m deck / dtm_05m approaches'},
             'register': {'file': args.register, 'sha256': sha256(args.register)},
+            **({'landPatches': {'file': os.path.basename(args.land_patches), 'sha256': sha256(args.land_patches)}} if args.land_patches else {}),
+            **({'landFixes': {'file': os.path.basename(args.land_fixes), 'sha256': sha256(args.land_fixes), 'method': 'water cut where AHN dtm_05m is above +0.8 m NAP (canal level -0.4): new land the OSM/BGT snapshot predates'}} if args.land_fixes else {}),
             'waterLevel': 'https://www.agv.nl/siteassets/werk-in-uitvoering/waterpeil/peilbesluitenamsterdam.pdf',
         },
         'attribution': 'Water © OpenStreetMap contributors / OpenMapTiles via OpenFreeMap; heights AHN (PDOK, CC0); bridges Gemeente Amsterdam',

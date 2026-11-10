@@ -12,8 +12,9 @@ loop got here: the 2026-10-13 entry in `public/canal-drive/HISTORY.md`
 Pick a route (home to a landmark, a surprise ride, a review ride, or a transit
 line). Ride it. The map teaches by showing places, not by quizzing: street
 cards, drive-by landmark cards, neighbourhood postcards. Now and then the ride
-asks one multiple-choice question about the street the rider is on, in a band
-at the bottom, while the bike keeps moving. Every answer feeds spaced
+asks one multiple-choice question about the street the rider is on, in a card
+at the bottom, and the bike waits until it is answered. A budget of at most
+five questions a minute keeps the ride flowing. Every answer feeds spaced
 repetition, which decides what comes back on a later ride. The finish card
 reports recall, points and what the rider now knows.
 
@@ -22,10 +23,13 @@ reports recall, points and what the rider now knows.
 1. Geographic learning outranks arcade spectacle. The street or canal under
    question is never named by the HUD or the map before the answer. A name may
    be revealed only after the rider has left that street.
-2. The ride is the lesson, the question is the check. A question must not stop
-   the vehicle. Measured on the seeded Anne Frank to Rijksmuseum ride, the old
-   freezing design cost 10 prompts, 4.8 per minute and 30 s frozen; the budget
-   design costs 3 prompts, 1.9 per minute and 0 s frozen.
+2. The ride is the lesson, the question is the check. A question holds the
+   vehicle until it is answered (`questionFreezesRide`, user decision
+   2026-10-13), so what keeps the centre from stopping every block is the
+   per-minute budget, not a moving card. Measured on the seeded Anne Frank to
+   Rijksmuseum ride, ask-everything cost 10 prompts and 4.8 per minute; the
+   budget (2 a minute at the time of that measurement) cost 3 prompts and 1.9
+   per minute. The default is now 5 a minute (`DEFAULT_MAX_ASKS_PER_MINUTE`).
 3. One thing talks to the rider at a time (the one-card rule), and everything
    that talks is paced from one clock, `raceTime`, which restarts at 0 each
    ride. A timestamp later than now belongs to an earlier ride and never
@@ -44,10 +48,11 @@ Pure. It sees the ride clock and one candidate name event and answers
 | `new-unlearned` | never answered correctly here; `teachingStreet` marks streets the route is meant to teach |
 | `known` | known and not due: always `skip` |
 
-- Budget: `DEFAULT_MAX_ASKS_PER_MINUTE = 2` over a rolling
+- Budget: `DEFAULT_MAX_ASKS_PER_MINUTE = 5` over a rolling
   `BUDGET_WINDOW_SECONDS = 60`. `0` turns route questions off (unlearned names
   are still revealed after passing); `Infinity` restores ask-everything.
-- Spacing: `minGapSeconds` is half the even spacing, 15 s at the default, so
+- Spacing: `minGapSeconds` is half the even spacing, 6 s at the default of
+  5 a minute (15 s at 2 a minute), so
   two asks can cluster a little but never land back to back.
 - Priority is due-review, then new teaching-street name, then everything
   else. It is enforced by reserving the last slot of the minute for the first
@@ -115,8 +120,9 @@ out and, through the one-card rule, blocked every card until the next question.
 - `game.js` `_quizFreezesRide()` is the frame-loop hook: true for every open
   question, false for a silent pass (a withheld name with no card).
 - `tests/e2e/question-budget.spec.ts` rides the seeded route twice
-  (ask-everything, then the budget) and asserts at most two asks a rolling
-  minute, a zeroed speed at every question, no early reveal, and at least
+  (ask-everything, then a budget of 2 set through `game.maxAsksPerMinute`,
+  below the default of 5 so the rationing is visible) and asserts at most
+  two asks a rolling minute, a zeroed speed at every question, no early reveal, and at least
   one silent-pass reveal.
 - Spaced repetition itself and the review-ride planner live outside
   `game/`. `tests/e2e/review-ride.spec.ts` (seeded origin, mulberry32) pins

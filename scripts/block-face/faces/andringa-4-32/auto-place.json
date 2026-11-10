@@ -1,0 +1,689 @@
+{
+ "face": "andringa-4-32",
+ "street": "Joris van Andringastraat",
+ "library": "landlust",
+ "stripDate": "2024-11-21",
+ "seconds": 7.51,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [
+  {
+   "face": "andringa-4-32-r1",
+   "pands": [
+    "0363100012124713",
+    "0363100012103458"
+   ],
+   "passed": true,
+   "triangles": 5373
+  }
+ ],
+ "pands": [
+  {
+   "pandId": "0363100012100981",
+   "address": "Joris van Andringastraat 32",
+   "builtYear": 1934,
+   "widthM": 6.41,
+   "eavesM": 10.1,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#654128",
+    "wallRaw": "#6a4933",
+    "skyline": {
+     "eavesM": 11,
+     "eavesRow": 160,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.75,
+      "riseM": 2,
+      "topWidthM": 0.45,
+      "centre": 0.15
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 7,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": "right",
+    "accentShare": 0.001,
+    "structure": {
+     "bayWidthM": 0.93,
+     "bayCentre": 0.57,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.03
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best landlust-1934-slot-block: stair block 6.41 m, type 11.8-13.6 m)",
+   "best": {
+    "type": "landlust-1934-slot-block",
+    "score": 0,
+    "veto": [
+     "stair block 6.41 m, type 11.8-13.6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "strip cornice 11 m vs the type's 10.1 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 4 vs 3/4"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.001 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 7 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012131573",
+   "address": "Joris van Andringastraat 28",
+   "builtYear": 1934,
+   "widthM": 12.8,
+   "eavesM": 10.11,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6b462c",
+    "wallRaw": "#684a32",
+    "skyline": {
+     "eavesM": 11.6,
+     "eavesRow": 136,
+     "confidence": 1,
+     "crown": {
+      "widthM": 3.98,
+      "riseM": 2.2,
+      "topWidthM": 1.45,
+      "centre": 0.57
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": "left",
+    "accentSide": "left",
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 1.07,
+     "bayCentre": 0.18,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 9.05,
+       "widthM": 1.07,
+       "centre": 0.38
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.05
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best landlust-1934-slot-block scores 0.69 < 0.7 (strip cornice 11.6 m vs the type's 10.1 m)",
+   "best": {
+    "type": "landlust-1934-slot-block",
+    "score": 0.69,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 11.6 m vs the type's 10.1 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 4 vs 3/4"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012148995",
+   "address": "Joris van Andringastraat 24",
+   "builtYear": 1934,
+   "widthM": 12.8,
+   "eavesM": 10.09,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#66432b",
+    "wallRaw": "#644630",
+    "skyline": {
+     "eavesM": 13.57,
+     "eavesRow": 57,
+     "confidence": 0.64,
+     "crown": {
+      "widthM": 1.23,
+      "riseM": 1.43,
+      "topWidthM": 0.33,
+      "centre": 0.8
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.001,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.04
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best landlust-1934-slot-block scores 0.69 < 0.7 (strip cornice 13.57 m vs the type's 10.1 m)",
+   "best": {
+    "type": "landlust-1934-slot-block",
+    "score": 0.69,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 13.57 m vs the type's 10.1 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 4 vs 3/4"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.001 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012131228",
+   "address": "Joris van Andringastraat 20",
+   "builtYear": 1934,
+   "widthM": 12.84,
+   "eavesM": 10.17,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#614129",
+    "wallRaw": "#60432d",
+    "skyline": {
+     "eavesM": 12.3,
+     "eavesRow": 108,
+     "confidence": 0.76,
+     "crown": {
+      "widthM": 3.45,
+      "riseM": 2.7,
+      "topWidthM": 0.63,
+      "centre": 0.15
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0.75,
+     "bayCentre": 0.94,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.06
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best landlust-1934-slot-block scores 0.69 < 0.7 (strip cornice 12.3 m vs the type's 10.1 m)",
+   "best": {
+    "type": "landlust-1934-slot-block",
+    "score": 0.69,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 12.3 m vs the type's 10.1 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 4 vs 3/4"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012125261",
+   "address": "Joris van Andringastraat 14",
+   "builtYear": 1934,
+   "widthM": 19.17,
+   "eavesM": 10.25,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#68452d",
+    "wallRaw": "#644731",
+    "skyline": {
+     "eavesM": 10.85,
+     "eavesRow": 166,
+     "confidence": 0.93,
+     "crown": {
+      "widthM": 4.4,
+      "riseM": 1.95,
+      "topWidthM": 2.25,
+      "centre": 0.55
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 4,
+    "frontClass": "columns",
+    "doorSide": "left",
+    "accentSide": "left",
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.04
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best landlust-1934-slot-block: stair block 19.17 m, type 11.8-13.6 m)",
+   "best": {
+    "type": "landlust-1934-slot-block",
+    "score": 0,
+    "veto": [
+     "stair block 19.17 m, type 11.8-13.6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "strip cornice 10.85 m vs the type's 10.1 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 4 vs 3/4"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 4 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012124713",
+   "address": "Joris van Andringastraat 10",
+   "builtYear": 1934,
+   "widthM": 12.82,
+   "eavesM": 10.25,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#66432b",
+    "wallRaw": "#694832",
+    "skyline": {
+     "eavesM": 10.22,
+     "eavesRow": 191,
+     "confidence": 1,
+     "crown": {
+      "widthM": 3.23,
+      "riseM": 1.43,
+      "topWidthM": 3.2,
+      "centre": 0.26
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.002,
+    "structure": {
+     "bayWidthM": 1.07,
+     "bayCentre": 0.17,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.06
+   },
+   "status": "placed",
+   "type": "landlust-1934-slot-block",
+   "score": 1,
+   "placement": {
+    "type": "landlust-1934-slot-block",
+    "measuredPalette": {
+     "brick": "#66432b",
+     "evidence": "strip 2024-11-21 span 2560-3073: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "crown": "zinc-dormers-inward"
+   },
+   "notes": [
+    "door unread",
+    "crown zinc-dormers-inward: reviewer pin (Andringastraat (round-5 review 2026-11-10): the photo's two zinc dormers sit further inward, flanking the slot lights)"
+   ],
+   "likeness": {
+    "pandId": "0363100012124713",
+    "ncc": 0.478,
+    "nccRaw": 0.478,
+    "shiftM": [
+     0,
+     -0.1
+    ],
+    "usable": 0.9,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.35 mean 0.22 vs photo 0.47",
+     "columns 6 vs photo 3"
+    ],
+    "wall": {
+     "photo": "#6d432a",
+     "model": "#875939",
+     "dL": 0.08
+    },
+    "glazing": {
+     "photo": 0.47,
+     "model": 0.22
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.372
+   },
+   "challengers": {
+    "landlust-1934-slot-block": 0.478,
+    "landlust-1934-slot-block~m": 0.477
+   }
+  },
+  {
+   "pandId": "0363100012103458",
+   "address": "Joris van Andringastraat 6",
+   "builtYear": 1934,
+   "widthM": 12.8,
+   "eavesM": 10.05,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#67432a",
+    "wallRaw": "#6b4932",
+    "skyline": {
+     "eavesM": 10.6,
+     "eavesRow": 176,
+     "confidence": 1,
+     "crown": {
+      "widthM": 3.58,
+      "riseM": 1.2,
+      "topWidthM": 1.6,
+      "centre": 0.28
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.002,
+    "structure": {
+     "bayWidthM": 1.02,
+     "bayCentre": 0.8,
+     "balconies": true,
+     "why": "dark open axis 0.63 m at 0.43 (light 0.31): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.63,
+       "centre": 0.43,
+       "light": 0.31
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.03
+   },
+   "status": "placed",
+   "type": "landlust-1934-slot-block",
+   "score": 1,
+   "placement": {
+    "type": "landlust-1934-slot-block",
+    "measuredPalette": {
+     "brick": "#67432a",
+     "evidence": "strip 2024-11-21 span 3073-3585: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "crown": "zinc-dormers-inward"
+   },
+   "notes": [
+    "door unread",
+    "crown zinc-dormers-inward: reviewer pin (Andringastraat (round-5 review 2026-11-10): the photo's two zinc dormers sit further inward, flanking the slot lights)"
+   ],
+   "likeness": {
+    "pandId": "0363100012103458",
+    "ncc": 0.431,
+    "nccRaw": 0.431,
+    "shiftM": [
+     -0.05,
+     0.2
+    ],
+    "usable": 0.94,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.34 mean 0.21 vs photo 0.38",
+     "columns 6 vs photo 2"
+    ],
+    "wall": {
+     "photo": "#804c30",
+     "model": "#885938",
+     "dL": 0.031
+    },
+    "glazing": {
+     "photo": 0.38,
+     "model": 0.21
+    },
+    "columns": {
+     "photo": 2,
+     "model": 3
+    },
+    "iou": 0.291
+   },
+   "challengers": {
+    "landlust-1934-slot-block": 0.431,
+    "landlust-1934-slot-block~m": 0.428
+   }
+  },
+  {
+   "pandId": "0363100012083022",
+   "address": "Joris van Andringastraat 4",
+   "builtYear": 1934,
+   "widthM": 6.39,
+   "eavesM": 10.05,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#66422a",
+    "wallRaw": "#64442e",
+    "skyline": {
+     "eavesM": 11.45,
+     "eavesRow": 142,
+     "confidence": 1,
+     "crown": {
+      "widthM": 3.05,
+      "riseM": 1.55,
+      "topWidthM": 0.6,
+      "centre": 0.26
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 6,
+    "frontClass": "columns",
+    "doorSide": "right",
+    "accentSide": "left",
+    "accentShare": 0.002,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.04
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best landlust-1934-slot-block: stair block 6.39 m, type 11.8-13.6 m)",
+   "best": {
+    "type": "landlust-1934-slot-block",
+    "score": 0,
+    "veto": [
+     "stair block 6.39 m, type 11.8-13.6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 11.45 m vs the type's 10.1 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 4 vs 3/4"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.001 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 6 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

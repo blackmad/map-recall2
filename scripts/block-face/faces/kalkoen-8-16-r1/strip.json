@@ -1,0 +1,92 @@
+{
+ "face": "kalkoen-8-16-r1",
+ "image": "staging/block-face/kalkoen-8-16-r1/strip.jpg",
+ "pixelsPerMetre": 40,
+ "width": 503,
+ "height": 553,
+ "groundNAP": 0.869,
+ "heightM": 13.83,
+ "frame": {
+  "midRD": [
+   123388.3835,
+   489131.30725
+  ],
+  "uRD": [
+   -0.8178729657114309,
+   0.5753988286035943
+  ],
+  "nRD": [
+   0.5753988286035943,
+   0.8178729657114309
+  ]
+ },
+ "x0M": -6.28,
+ "x1M": 6.29,
+ "date": "2018-07-30",
+ "coverage": 1,
+ "spans": [
+  {
+   "pandId": "0363100012125954",
+   "x0M": -6.28,
+   "x1M": 0,
+   "px": [
+    0,
+    251
+   ],
+   "date": "2018-07-30",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "TMX7316010203-000885_pano_0001_002317",
+     "timestamp": "2018-07-30T09:24:42.535080Z",
+     "distanceM": 5,
+     "obliquityDeg": 33,
+     "missingFraction": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012099283",
+   "x0M": 0,
+   "x1M": 6.29,
+   "px": [
+    251,
+    503
+   ],
+   "date": "2018-07-30",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "TMX7316010203-000885_pano_0001_002318",
+     "timestamp": "2018-07-30T09:24:43.565070Z",
+     "distanceM": 5.8,
+     "obliquityDeg": 44.1,
+     "missingFraction": 0
+    }
+   ]
+  }
+ ],
+ "candidatesByDate": {
+  "2021-06-17": 3,
+  "2017-05-15": 3,
+  "2022-05-11": 2,
+  "2018-07-30": 4,
+  "2022-10-03": 2,
+  "2019-06-28": 3,
+  "2025-09-22": 2,
+  "2016-08-05": 2,
+  "2024-09-10": 0,
+  "2020-06-02": 3,
+  "2024-10-22": 3,
+  "2017-12-28": 0
+ },
+ "description": "Rectified orthographic elevation of the whole face on the frontage planes: x = chunk-frame metres along the face (left→right seen from the street) from x0M, y = metres above the shared ground (groundNAP) from the bottom; grey = no panorama data. Per-pand spans list the panoramas median-fused for that frontage.",
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (CC BY 4.0; faces and number plates blurred by the publisher)",
+ "croppedFrom": {
+  "face": "kalkoen-8-16",
+  "px": [
+   0,
+   503
+  ]
+ }
+}

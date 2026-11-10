@@ -2,7 +2,9 @@
 // partition per own-ground 1 km cell, from the cache fetch-bgt-roads.ts fills.
 //
 //   npx tsx scripts/own-ground/fetch-bgt-roads.ts [--cells a,b]
-//   npx tsx scripts/own-ground/build-bgt-roads.ts [--cells a,b] [--tol 0.1] [--budget-kb 350] [--out dir]
+//   npx tsx scripts/own-ground/build-bgt-roads.ts [--cells a,b] [--tol 0.1] [--budget-kb 350] [--out dir] [--slivers]
+//   (--slivers, engine round 5 R5-C2: also write the version-3 cells, roadSlivers.ts dissolveSlivers, to <out>/cells-v3/
+//   and mark the manifest `v3`; scripts/own-ground/build-road-slivers.ts does the same from published cells)
 //   # review artifacts/own-ground/staging/roads-v1/report.json, then publish the reviewed cells:
 //   cp artifacts/own-ground/staging/roads-v1/cells/<key>.json.gz public/data/extracts/amsterdam/roads-v1/cells/
 //   (and write a cells.json listing only the published cells)
@@ -36,7 +38,8 @@ import { crossSection, isFietsstraat, type OsmGroundExtract } from '../../src/ca
 import { classOf, fallbackClasses, ownClasses, type SurfaceClass } from '../../src/canalRecall/ownGround/bgtWidth.ts';
 import { distToLine, encodeLine, inRings, interiorPoint, polygonArea } from '../../src/canalRecall/ownGround/parks.ts';
 import { TopoSimplifier, vertexKey } from '../../src/canalRecall/ownGround/topoSimplify.ts';
-import { ROADS_ATTRIBUTION, ROAD_CELL_BUDGET_GZ, ROAD_CELL_VERSION, ANCILLARY_SQUARE_MAX_M2, ancillaryClass, fietsstraatSection, kerbBetween, roadCellProblems, roadMesh, type RoadCell, type RoadClass, type RoadSurface, type RoadsManifest } from '../../src/canalRecall/ownGround/roadCells.ts';
+import { dissolveSlivers } from '../../src/canalRecall/ownGround/roadSlivers.ts';
+import { ROAD_CELLS_V3_DIR, ROADS_ATTRIBUTION, ROAD_CELL_BUDGET_GZ, ROAD_CELL_VERSION, ANCILLARY_SQUARE_MAX_M2, ancillaryClass, fietsstraatSection, kerbBetween, roadCellProblems, roadMesh, type RoadCell, type RoadClass, type RoadSurface, type RoadsManifest } from '../../src/canalRecall/ownGround/roadCells.ts';
 
 type Vec2 = [number, number];
 type LngLat = [number, number];
@@ -55,6 +58,7 @@ const DECK_REACH_M = 5;
 const TOL = Number(argOf('--tol') ?? 0.1);
 const TOL_LEVER = 0.15;
 const BUDGET = Number(argOf('--budget-kb') ?? ROAD_CELL_BUDGET_GZ / 1024) * 1024;
+const SLIVERS = process.argv.includes('--slivers');
 const onlyCells = argOf('--cells')?.split(',').map(s => s.trim()).filter(Boolean) ?? null;
 
 // ------------------------------------------------------------------ geometry
@@ -289,6 +293,7 @@ function main(): void {
 
   rmSync(OUT, { recursive: true, force: true });
   mkdirSync(`${OUT}/cells`, { recursive: true });
+  if (SLIVERS) mkdirSync(`${OUT}/${ROAD_CELLS_V3_DIR}`, { recursive: true });
 
   const byClass: Record<string, number> = {}, byH: Record<string, number> = {}, byMesh: Record<string, number> = {}, byClassH: Record<string, number> = {};
   const dropped: Dropped = { status: 0, ended: 0, functie: {}, below: 0, degenerate: 0 };
@@ -449,6 +454,7 @@ function main(): void {
     // A cell with no wegdeel at all (8_-1, open water) is not published: the runtime keeps the bands there.
     if (!built.cell.surfaces.length) { emptyCells.push(key); return; }
     writeFileSync(`${OUT}/cells/${key}.json.gz`, gz);
+    if (SLIVERS) writeFileSync(`${OUT}/${ROAD_CELLS_V3_DIR}/${key}.json.gz`, gzipSync(Buffer.from(JSON.stringify(dissolveSlivers(built.cell).cell)), { level: 9 }));
     gzPerCell[key] = gz.length;
 
     // Tallies.
@@ -508,7 +514,7 @@ function main(): void {
     highOverDeck: { overDeck: highOverDeck, noDeck: highNoDeck.length, noDeckAreaM2: Math.round(highNoDeckArea), samples: highNoDeck.slice(0, 60) },
   };
   const published = keys.filter(k => !emptyCells.includes(k));
-  const out: RoadsManifest = { version: 1, cells: published, fetched: fetched || new Date().toISOString().slice(0, 10) + 'T00:00:00Z', attribution: ROADS_ATTRIBUTION, report: { built: report.built, cells: published.length, gzBytes: { total, max: report.gzBytes.max, median: report.gzBytes.median }, polygons, kerbRuns: kerbRunsN, coverWays: coverTotal } };
+  const out: RoadsManifest = { version: 1, cells: published, fetched: fetched || new Date().toISOString().slice(0, 10) + 'T00:00:00Z', attribution: ROADS_ATTRIBUTION, report: { built: report.built, cells: published.length, gzBytes: { total, max: report.gzBytes.max, median: report.gzBytes.median }, polygons, kerbRuns: kerbRunsN, coverWays: coverTotal }  }, ...(SLIVERS ? { v3: true } : {}) };
   writeFileSync(`${OUT}/cells.json`, JSON.stringify(out));
   writeFileSync(`${OUT}/report.json`, JSON.stringify(report, null, 1));
   const { perCell, ...gzSummary } = report.gzBytes;

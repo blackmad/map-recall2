@@ -30,6 +30,9 @@ export interface LabelContext {
   isLabelled: (text: string, x: number, y: number) => boolean;
   /** `quizPromptName || quizCandidateName`: never drawn, whatever else says. */
   hiddenName: string;
+  /** Every choice of an open landmark question (G3, `quizWithheldNames`):
+   *  a labelled distractor would name the lit building by elimination. */
+  hiddenNames?: readonly string[];
   /** `buildSpoilerIndex` of every quiz-eligible name (extract + track). */
   spoilerIndex: SpoilerIndex | null;
   /** `setQuizQuietMap(true)`: POI and neighbourhood names off. */
@@ -45,6 +48,7 @@ export interface LabelContext {
 export function streetLabelVisible(ctx: LabelContext, text: string, x: number, y: number): boolean {
   if (!text) return false;
   if (ctx.hiddenName && (text === ctx.hiddenName || normalisedName(text) === normalisedName(ctx.hiddenName))) return false;
+  if (ctx.hiddenNames?.some(hidden => text === hidden || normalisedName(text) === normalisedName(hidden))) return false;
   return ctx.isLabelled(text, x, y);
 }
 
@@ -69,6 +73,7 @@ export function poiLabelVisible(ctx: LabelContext, name: string): boolean {
   if (ctx.spoilerIndex && poiNameSpoils(name, ctx.spoilerIndex)) return false;
   // The asked name is always a spoiler, even if the index has not caught up.
   if (ctx.hiddenName && poiNameSpoils(name, hiddenIndex(ctx.hiddenName))) return false;
+  if (ctx.hiddenNames?.length && poiNameSpoils(name, withheldIndex(ctx.hiddenNames))) return false;
   return true;
 }
 /** The asked name's own index, one per name, so poiNameSpoils' memo holds across POIs and rebuilds. */
@@ -76,6 +81,41 @@ let hiddenIndexOf: { name: string; index: SpoilerIndex } | null = null;
 function hiddenIndex(name: string): SpoilerIndex {
   if (hiddenIndexOf?.name !== name) hiddenIndexOf = { name, index: buildSpoilerIndex([name]) };
   return hiddenIndexOf.index;
+}
+
+/** The withheld set's index, rebuilt only when the set changes. */
+let withheldIndexOf: { key: string; index: SpoilerIndex } | null = null;
+function withheldIndex(names: readonly string[]): SpoilerIndex {
+  const key = names.join('\u0000');
+  if (withheldIndexOf?.key !== key) withheldIndexOf = { key, index: buildSpoilerIndex(names) };
+  return withheldIndexOf.index;
+}
+
+/** The names withheld while a question is open: the asked name plus, for a
+ *  landmark question, every choice (G3); and, before it opens, the candidate
+ *  landmark's and its distractors' names while the rider approaches it
+ *  (`landmarkApproachWithheld`, #281), so the map never names the building
+ *  it is about to ask about. */
+export function withheldNames(game: {
+  quizPromptName?: string | null; quizWithheldNames?: readonly string[] | null; landmarkApproachWithheld?: readonly string[] | null;
+}): readonly string[] {
+  const asked = game.quizPromptName && game.quizWithheldNames?.length ? game.quizWithheldNames : NO_NAMES;
+  const approach = game.landmarkApproachWithheld?.length ? game.landmarkApproachWithheld : NO_NAMES;
+  // The label overlay asks every plan (#287): the same inputs hand back the
+  // same array, so callers can cache per withheld set by identity.
+  const last = lastWithheld;
+  if (last && last.asked === asked && last.approach === approach && sameNames(last.askedCopy, asked) && sameNames(last.approachCopy, approach)) return last.out;
+  const out = Object.freeze(approach.length ? [...new Set([...asked, ...approach])] : [...asked]);
+  lastWithheld = { asked, approach, askedCopy: [...asked], approachCopy: [...approach], out };
+  return out;
+}
+const NO_NAMES: readonly string[] = Object.freeze([]);
+let lastWithheld: { asked: readonly string[]; approach: readonly string[]; askedCopy: string[]; approachCopy: string[]; out: readonly string[] } | null = null;
+/** The game may refill an array in place; compare its contents too. */
+function sameNames(a: readonly string[], b: readonly string[]): boolean {
+  if (a.length !== b.length) return false;
+  for (let i = 0; i < a.length; i++) if (a[i] !== b[i]) return false;
+  return true;
 }
 
 export function neighbourhoodLabelVisible(ctx: LabelContext): boolean {
@@ -93,6 +133,10 @@ export function gameLabelContext(game: {
   knownRadius: number;
   quizPromptName?: string | null;
   quizCandidateName?: string | null;
+  /** Every choice of an open landmark question (G3). */
+  quizWithheldNames?: readonly string[] | null;
+  /** The approached candidate's choices, before its question opens (#281). */
+  landmarkApproachWithheld?: readonly string[] | null;
   spoilerNames: Iterable<string>;
   /** A prebuilt index of `spoilerNames` (the caller keeps it while the names are unchanged). */
   spoilerIndex?: SpoilerIndex;
@@ -110,6 +154,7 @@ export function gameLabelContext(game: {
       return isPlaceKnown(places, w.x, w.y, game.knownRadius);
     },
     hiddenName: game.quizPromptName || game.quizCandidateName || '',
+    hiddenNames: withheldNames(game),
     spoilerIndex: game.spoilerIndex ?? buildSpoilerIndex(game.spoilerNames),
     quizQuiet: game.quizQuiet,
   };

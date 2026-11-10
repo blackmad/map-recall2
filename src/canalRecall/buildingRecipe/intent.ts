@@ -12,6 +12,7 @@ import type {BoxBalconyIntent} from '../blockBuilding/boxBalcony.ts';
 import type {BalconyBandsIntent} from '../blockBuilding/balconyBands.ts';
 import type {StackedBlocksIntent} from '../blockBuilding/stackedBlocks.ts';
 import type {RoofLevelIntent} from './roofLevel.ts';
+import type {RoofTidyIntent} from './roofTidy.ts';
 import type {LargeGround, LargeSystemName, LargeWindow} from '../blockBuilding/systems.ts';
 import {brickStripeProblems, type BrickStripeZone} from './brickStripes.ts';
 import {stairLightProblems, type StairLightIntent} from './stairLight.ts';
@@ -38,6 +39,8 @@ import type {SignBoardIntent} from '../blockBuilding/signBoards.ts';
  * rise plumb from the eaves for `shouldered.shoulder` before a shallow rake climbs `rise` to a point (or a flat top
  * `flatTop` wide). Needs `shouldered`.
  */
+/** `otherWalls` value: blank walls painted with the city look's shader window grid (look/cityLook.ts WINDOW_GRID_LAYER). */
+export const OTHER_WINDOW_GRID = 'window-grid' as const;
 export const GABLES = ['spout', 'neck', 'raised-neck', 'bell', 'step', 'point', 'cornice', 'flat', 'shouldered'] as const;
 export type GableIntent = typeof GABLES[number];
 /** `frieze`: a tall (1.6 m) plain attic frieze with its cornice, in the cornice colour (18th-c. fronts; oculi in it are not drawn). */
@@ -81,7 +84,7 @@ export const BASEMENTS = ['none', 'windows', 'stoop', 'stoop-and-windows'] as co
  * light: Jan Evertsenstraat 45-53). `casement-sidelights-toplight` a wide fixed light between two narrow side lights under a
  * top light across all three (bars at 0.14 and 0.86, a transom at 0.86: Polanenstraat 229-311, 1935).
  */
-export const WINDOWS = ['sash', 'sash-small-panes', 'cross', 'plain', 'arched', 'shop', 'two-light', 'ladder', 'sash-6-over-6', 'sash-8-over-8', 'sash-9-over-9', 'six-pane', 't-window', 'small-over-one', 'cross-transom', 'casement-toplight', 'casement-gridded-toplight', 'casement-triple', 'casement-toplight-double', 'casement-gridded-toplight-double', 'casement-pair', 'casement-small-panes', 'casement-sidelights-toplight'] as const;
+export const WINDOWS = ['sash', 'sash-small-panes', 'cross', 'plain', 'arched', 'shop', 'two-light', 'ladder', 'sash-6-over-6', 'sash-8-over-8', 'sash-9-over-9', 'six-pane', 't-window', 'small-over-one', 'cross-transom', 'casement-toplight', 'casement-transom', 'casement-gridded-toplight', 'casement-triple', 'casement-toplight-double', 'casement-gridded-toplight-double', 'casement-pair', 'casement-small-panes', 'casement-sidelights-toplight'] as const;
 export type WindowKind = typeof WINDOWS[number];
 /** `relieving`: a flat-headed window under a segmental relieving arch (brick tympanum), the 17th-c. canal front. */
 export const WINDOW_HEADS = ['flat', 'segmental', 'round', 'relieving'] as const;
@@ -100,8 +103,8 @@ export const TYMPANUM_FILLS = ['stone', 'band', 'dark'] as const;
  * wall luma on the 2024-11-21 Nassaukade strip, 0.67 and 0.68 on 150, 0.73 and 0.80 on 147; the mean.
  */
 export const DARK_TYMPANUM_K = 0.72;
-/** Arch ring colour: the palette's `stone` (white-painted or natural sandstone), `band` brick, or the `frame` paint. */
-export const ARCH_RING_COLOURS = ['stone', 'band', 'frame'] as const;
+/** Arch ring colour: the palette's `stone` (white-painted or natural sandstone), `band` brick, the `frame` paint, or the `wall` brick (a brick-on-edge ring in the wall's own colour). */
+export const ARCH_RING_COLOURS = ['stone', 'band', 'frame', 'wall'] as const;
 /** Window height as a share of its storey height, ground storey first: medians of the canal-belt survey (`windowHeights: "diminishing"`). */
 export const DIMINISHING_WINDOW_HEIGHTS = [0.73, 0.76, 0.72, 0.72, 0.7, 0.68] as const;
 export const WINDOW_PROPORTIONS = ['standard', 'tall'] as const;
@@ -212,7 +215,20 @@ export const DORMER_STYLES = ['plain', 'pediment', 'pointed', 'box', 'flat', 'ar
  * and the facade top behind which the dormer stands (round 3: the fully glazed front reached 6 cm over the eaves and
  * failed the GLB audit, opening-outside 2.5 m2).
  */
-export const DORMER_BODIES = ['stone', 'brick', 'timber'] as const;
+export const DORMER_BODIES = ['stone', 'brick', 'timber', 'zinc', 'zinc-band'] as const;
+/**
+ * `dormerBody: "zinc-band"` (Landlust slot blocks, Haenstraat, Zwijgerlaan, Callenburgstraat 2-32, Andringastraat; round-4
+ * review): a painted-zinc box dormer: smooth mid-grey cheeks, a mostly glazed front of three lights and a dark flat cap
+ * overhanging the front. Pair with `dormerWindow` (the glass band's width, apron and height). Absent = byte-identical.
+ */
+/** Party-wall dormer fascia (Treslong 5-35, round-5 review): a pale grey-beige board on the cap's front edge, 17 cm deep, so the dark cap does not merge into the roof. */
+export const PARTY_DORMER_FASCIA = {colour: '#9a988c', heightM: 0.17} as const;
+export const ZINC_BAND = {cheek: '#6f7275', cap: '#3e4144', capOverhangM: 0.15} as const;
+/**
+ * `dormerBody: "zinc"` (Landlust 1932-1940 tiled-roof fronts, Leijnsenstraat 2-30, Coppelstockstraat 29-49): a box dormer
+ * clad in the roof's own covering (the grey zinc cheeks and flat top read as a continuation of the slope). Its cheeks and back
+ * take the roof surface; with `dormerStyle: "box"` the front is the plain flat-topped box. Absent = byte-identical.
+ */
 /** `dormerBody: "timber"`: the apron under the window (m) and the post share of the dormer width each side (clamped). */
 export const TIMBER_DORMER = {apronM: 0.35, sideShare: 0.16, sideMinM: 0.12, sideMaxM: 0.35} as const;
 /**
@@ -395,6 +411,24 @@ export interface FrontIntent {
   dormers?: number;
   /** 0-based bay (left-to-right, as seen from the street) holding the main door; null = no door. */
   doorBay: number | null;
+  /**
+   * Further ground bays that hold a door like `doorBay` (Landlust slot blocks 1934-1937: two door pairs per block, each pair
+   * under one flat `groundCanopy` slab). 0-based, other than `doorBay`; needs a `doorBay`. Absent = byte-identical.
+   */
+  extraDoorBays?: number[];
+  /**
+   * Every door bay (`doorBay` and `extraDoorBays`) holds two doors side by side, each half the bay wide, instead of one door
+   * centred in it. Absent = one door.
+   */
+  doorPairs?: boolean;
+  /**
+   * A row of identical house doors side by side across a span of the front (Landlust slot blocks 1933-1937: four doors of
+   * 0.75 m in a run about 4.7 m wide under one continuous `groundCanopy` slab). `from`..`to` are fractions of the front's
+   * width, `count` doors of `leaf` metres each, evenly spread over the span. Replaces the `doorBay` door (which stays as the
+   * anchor for the portiek reveal and the mirror); the row is symmetric about its own centre and a mirrored front reverses
+   * its fractions. The doors are single leaves without a fanlight (the canopy slab rests on their heads). Absent = byte-identical.
+   */
+  doorRow?: {from: number; to: number; count: number; leaf: number};
   /**
    * The house door is a round-arched portiek opening (Amsterdam School, Polanenstraat 229-311, Spaarndammerdijk 247-299):
    * `span` m wide (0.8..2.6), its semicircular head's crown `apex` m over the ground storey floor (1.8..4, at least
@@ -718,6 +752,18 @@ export interface FrontIntent {
    * pediment or pointed front) in the wall colour; the frame, bars and pane stay trim and glass.
    */
   dormerBody?: typeof DORMER_BODIES[number];
+  /**
+   * A measured window in a solid dormer front (Djambistraat 1-35, Soendastraat 2-36, 1913: a 2.0 m pointed brick dormer holding
+   * a 0.85 m two-light window over an apron): the window is `light` wide (0.4..2, clamped to leave 0.1 m posts) and sits on an
+   * apron of `apron` (0..1.2) in the dormer front, whatever the body material; `tall` (0.3..2, optional) is the window's own height, a brick head wall closing the rest of the dormer body above it (Djambistraat: a 0.85 m window under 1.1 m cheeks); absent, the window runs to the top of the body. Absent = the body's own front (timber: the
+   * TIMBER_DORMER apron and posts; brick/stone/trim: the opening is the whole front), byte-identical.
+   */
+  dormerWindow?: {light: number; apron: number; tall?: number};
+  /**
+   * Lights in every dormer window (2..8; Vogelbuurt-Noord 1918 box dormers 5-6 narrow lights, the 1921 rows 4): the window's
+   * vertical bars are spaced evenly. Absent = one bar at the middle (two lights), byte-identical.
+   */
+  dormerLights?: number;
   /** Several gables on one front: each `{from, to}` (inclusive bay axes) carries one crown of the front's gable type; eaves line between them. Not together with `crownAt`/`crownBays`. */
   crownGroups?: {from: number; to: number}[];
   /**
@@ -751,6 +797,13 @@ export interface FrontIntent {
   gridAt?: {from: number; to: number};
   /** Dormers at these spans (fractions of the front from the viewer's left; one entry per dormer) instead of evenly spaced: a dormer against a party wall is one half of a dormer shared with the neighbour. */
   dormerAt?: {from: number; to: number}[];
+  /**
+   * The (single) dormer is one half of a dormer that straddles this front's party wall (Treslong 5-35: one cream box per pair
+   * of pands, the right half of the left pand and the left half of its mirrored neighbour): no cheek on the wall side, the
+   * frame there runs to the wall so the halves read as one frame with one centre mullion, the cap runs to the wall and
+   * overhangs the front. Needs one dormer with a `dormerAt` span near the party wall and a box style. Absent = byte-identical.
+   */
+  dormerParty?: boolean;
   /**
    * Measured dormer size and place on the slope: the sill `sill` (m, 0.05..2) over the eaves line, the dormer's height `rise`
    * (0.6..2.5) and its front's `setback` (0.05..2) behind the facade, instead of the style default (sill 0.05 m, setback
@@ -908,6 +961,12 @@ export interface PaletteIntent {
    * of drawing the overcast reading. Exported with the tint as `tintWhitePoint`. House palette only.
    */
   whitePoint?: string;
+  /**
+   * Sash colour (Lampongstraat, Borneostraat 1914: red casements and glazing bars inside cream outer frames): the glazing
+   * bars of the upper-storey windows (ids `s<n>-b<k>`) are drawn in this colour (the `joinery` material) while the outer
+   * frame keeps `frame`. Absent = the bars take the frame colour, byte-identical.
+   */
+  sash?: string;
   /** Large tier only: the glazing colour (default the kit's dark glass `#2a3a42`); measured from the photo by `measure.ts`. */
   glass?: string;
   /** Glass-block band colour measured on the strip (`awning.glassBlocks`): the band is exported as its own measured glass material. */
@@ -979,6 +1038,13 @@ export interface RoofIntent {
    * brick/roof-tile overlap the GLB audit fails (Transvaalbuurt 1911 point gables, 2026-11-01). Absent = byte-identical.
    */
   rakeClear?: boolean;
+  /**
+   * `true`: the roof's depth axis is square to the frontage chord for a saddle under a gable crown too (recipeRoof.ts
+   * `RecipeRoofInput.squareSaddle`). The roof normally runs along the BAG facade normal; where that leans off the chord
+   * (0.5 degrees on Bloemstraat 174650) the ridge drifts sideways with depth (0.1 m at 12 m) and the saddle's flank climbs
+   * over the crown's concave shoulder in the front view (`roof-behind-crown`: 0.11 m over, limit 0.05). Absent = byte-identical.
+   */
+  squareSaddle?: boolean;
   evidence?: string;
 }
 
@@ -1013,6 +1079,17 @@ export interface LargeHouseIntent {
   windowShape?: LargeWindowShape;
   /** the photo skyline confirms this house's 3DBAG eaves off the row line: no row-coherence clamp */
   ownEaves?: boolean;
+}
+/** One ribbon-storey entry (`LargeWallIntent.ribbonStoreys`); proportions of the storey and the bay only, never metres. */
+export interface RibbonStoreyIntent {
+  storeys: number[];
+  bays?: number[];
+  sill: number; h: number;
+  lights: number;
+  rows?: number[];
+  spandrel?: {h: number; colour: string};
+  head?: {h: number; colour: string};
+  frame?: string;
 }
 export interface LargeWallIntent {
   /** 3DBAG LoD2.2 WallSurface indices (shell boundary index) of this wall group. */
@@ -1290,6 +1367,17 @@ export interface LargeWallIntent {
    */
   plinth?: {storeys?: number[]; bays?: number[]; lights: number; sill?: number; h?: number; pier?: number; transom?: number; factor?: number};
   /**
+   * Ribbon storeys (kit gap "ribbon under punched", 2026-11-10): on each entry's `storeys` (0 = ground) one continuous band
+   * of glazing across the bays (or the listed `bays`) in place of the storey's windows, the frames of neighbouring bays
+   * touching as one post. Measured per storey from the photo: from `sill` to `sill + h` of the storey, `lights` lights per
+   * bay (its own mullion pitch, independent of the punched rows), horizontal glazing bars at `rows` fractions of the band
+   * height (transoms, ascending), an opaque `spandrel` panel (borstwering) filling the band's lowest `spandrel.h` in its own
+   * colour, an opaque `head` panel filling its top `head.h` (a shopfront strip's coloured fascia lights), and the band's
+   * own `frame` colour. A clerestory over a punched brick ground (Vliegtuigstraat 1952), a glazed
+   * first floor under punched office storeys, an office ribbon in a blank panel front. Absent: byte-identical.
+   */
+  ribbonStoreys?: RibbonStoreyIntent[];
+  /**
    * A layered screen of pale panels over the wall on the listed `storeys` (expanded-metal mesh, perforated sheet): one panel
    * per bay, `joint` m apart (default 0.06), from `from` to `to` of the storey's height (defaults 0.15 and 0.92, leaving
    * the slab edges in the wall colour), in `colour`; bays with an opening are left open (the window shows). The 2006
@@ -1388,8 +1476,12 @@ export interface LargeBuildingIntent {
   id: string; pandId: string; address: string;
   sources: IntentSource[];
   walls: LargeWallIntent[];
-  /** System for wall surfaces no group lists (default `blank`). */
-  otherWalls?: LargeSystemName;
+  /**
+   * System for wall surfaces no group lists (default `blank`). `window-grid`: blank geometry (no added triangles) whose
+   * wall material carries `windowGrid`, so the city look paints a window grid on it in the shader (rear and courtyard
+   * walls no photo shows: lane newbuild-kit-20261110, feedback 75242f30 "why no windows").
+   */
+  otherWalls?: LargeSystemName | typeof OTHER_WINDOW_GRID;
   /**
    * A crown block that overhangs the shell on the named bearings (Salt, Haarlemmerweg 940: the top six storeys
    * cantilever over the canal corner above a recessed glazed base). The crown keeps the dominant front's bay pattern
@@ -1487,6 +1579,11 @@ export interface LargeRoofIntent {
    * unchanged output.
    */
   levelRooftop?: RoofLevelIntent;
+  /**
+   * Tidy the 3DBAG roof planes (roofTidy.ts): merge flat levels within 0.5 m, fold slivers under 4 m², clamp lone
+   * spikes; planes near the photographed fronts stay. Absent: unchanged output.
+   */
+  tidy?: RoofTidyIntent;
 }
 
 export type BuildingIntent = CanalHouseIntent | LargeBuildingIntent;
@@ -1538,6 +1635,17 @@ export function validateIntent(input: unknown): CanalHouseIntent {
     if (f.atticWindows !== undefined) count(f.atticWindows, `${at}.atticWindows`, 0, 6);
     if (f.dormers !== undefined) count(f.dormers, `${at}.dormers`, 0, 8);
     if (f.doorBay !== null) count(f.doorBay, `${at}.doorBay`, 0, Math.max(0, bays[0] - 1));
+    if (f.extraDoorBays !== undefined) {
+      if (f.doorBay === null) problems.push(`${at}.extraDoorBays: needs a doorBay`);
+      else if (!Array.isArray(f.extraDoorBays) || !f.extraDoorBays.length || f.extraDoorBays.some((b, i) => !Number.isInteger(b) || b < 0 || b > bays[0] - 1 || b === f.doorBay || f.extraDoorBays!.indexOf(b) !== i)) problems.push(`${at}.extraDoorBays: distinct ground bays 0..${bays[0] - 1}, not the doorBay`);
+      if (f.shopfront || f.groundFront || f.doorArch) problems.push(`${at}.extraDoorBays: not with a shopfront, ground front or doorArch`);
+    }
+    if (f.doorRow !== undefined) {
+      const r = f.doorRow as unknown as Record<string, unknown>, n = (v: unknown, a: number, b: number) => typeof v === 'number' && v >= a && v <= b;
+      if (!r || typeof r !== 'object' || Object.keys(r).some(k => !['from', 'to', 'count', 'leaf'].includes(k)) || !n(r.from, 0, 1) || !n(r.to, 0, 1) || (r.to as number) - (r.from as number) < 0.1 || !Number.isInteger(r.count) || !n(r.count, 2, 6) || !n(r.leaf, 0.6, 1.6)) problems.push(`${at}.doorRow: {from, to (fractions of the front, span >= 0.1), count 2..6, leaf 0.6..1.6 m}`);
+      if (f.doorBay === null || f.doorArch || f.shopfront || f.groundFront || f.extraDoorBays || f.doorPairs) problems.push(`${at}.doorRow: needs a doorBay and no doorArch, shopfront, groundFront, extraDoorBays or doorPairs`);
+    }
+    if (f.doorPairs !== undefined && (typeof f.doorPairs !== 'boolean' || f.doorBay === null || f.doorArch)) problems.push(`${at}.doorPairs: true, with a doorBay and no doorArch`);
     if (f.doorArch !== undefined) {
       const d = f.doorArch as unknown as Record<string, unknown>, n = (v: unknown, a: number, b: number) => typeof v === 'number' && v >= a && v <= b;
       if (!d || typeof d !== 'object' || Object.keys(d).some(k => k !== 'span' && k !== 'apex') || !n(d.span, 0.8, 2.6) || !n(d.apex, 1.8, 4) || (d.apex as number) < (d.span as number) / 2 + 1.2) problems.push(`${at}.doorArch: {span 0.8..2.6 m, apex 1.8..4 m and at least span / 2 + 1.2}`);
@@ -1783,10 +1891,11 @@ export function validateIntent(input: unknown): CanalHouseIntent {
     if (intent.roof.form !== 'saddle' || intent.roof.pitchDeg === undefined) problems.push('roof.hip: needs form "saddle" and a measured pitchDeg');
   }
   if (intent?.roof?.rakeClear !== undefined && intent.roof.rakeClear !== true) problems.push('roof.rakeClear: true or absent');
+  if (intent?.roof?.squareSaddle !== undefined && intent.roof.squareSaddle !== true) problems.push('roof.squareSaddle: true or absent');
   if (intent?.roof?.evidence !== undefined && typeof intent.roof.evidence !== 'string') problems.push('roof.evidence: a string (what on the photo shows the roof form)');
-  if (intent?.roof && Object.keys(intent.roof).some(k => !['material', 'source', 'form', 'pitchDeg', 'rise', 'rearPitchDeg', 'crossGables', 'hip', 'rakeClear', 'evidence'].includes(k))) problems.push(`roof: unknown field ${Object.keys(intent.roof).filter(k => !['material', 'source', 'form', 'pitchDeg', 'rise', 'rearPitchDeg', 'crossGables', 'hip', 'rakeClear', 'evidence'].includes(k)).join(', ')}`);
+  if (intent?.roof && Object.keys(intent.roof).some(k => !['material', 'source', 'form', 'pitchDeg', 'rise', 'rearPitchDeg', 'crossGables', 'hip', 'rakeClear', 'squareSaddle', 'evidence'].includes(k))) problems.push(`roof: unknown field ${Object.keys(intent.roof).filter(k => !['material', 'source', 'form', 'pitchDeg', 'rise', 'rearPitchDeg', 'crossGables', 'hip', 'rakeClear', 'squareSaddle', 'evidence'].includes(k)).join(', ')}`);
   for (const k of ['brick', 'frame', 'door'] as const) colour(intent?.palette?.[k], `palette.${k}`);
-  for (const k of ['shutters', 'stone', 'band', 'cornice', 'glassBlock'] as const) if (intent?.palette?.[k] !== undefined) colour(intent.palette[k], `palette.${k}`);
+  for (const k of ['shutters', 'stone', 'band', 'cornice', 'glassBlock', 'sash'] as const) if (intent?.palette?.[k] !== undefined) colour(intent.palette[k], `palette.${k}`);
   if (intent?.palette?.wallMaterial !== undefined) oneOf(intent.palette.wallMaterial, WALL_MATERIALS, 'palette.wallMaterial');
   if (intent?.palette?.stoneMaterial !== undefined) oneOf(intent.palette.stoneMaterial, ['painted'], 'palette.stoneMaterial');
   if (intent?.palette?.wallTint !== undefined) {
@@ -2058,8 +2167,9 @@ function historicProblems(f: FrontIntent, at: string, colour: (v: unknown, where
   if (f.dormerBody !== undefined) {
     if (!(DORMER_BODIES as readonly unknown[]).includes(f.dormerBody)) problems.push(`${at}.dormerBody: one of ${DORMER_BODIES.join(', ')} (or leave it out)`);
     if (!f.dormers) problems.push(`${at}.dormerBody: needs dormers >= 1`);
-    if (f.dormerStyle === 'box') problems.push(`${at}.dormerBody: a box dormer is brick`);
+    if (f.dormerStyle === 'box' && f.dormerBody !== 'zinc' && f.dormerBody !== 'zinc-band' && f.dormerBody !== 'stone') problems.push(`${at}.dormerBody: a box dormer is brick (or zinc, or stone)`);
   }
+  if (f.dormerParty !== undefined && (f.dormerParty !== true || f.dormers !== 1 || !f.dormerAt || f.dormerStyle !== 'box')) problems.push(`${at}.dormerParty: true, with dormers 1, a dormerAt span and dormerStyle "box"`);
   if (f.crownGroups !== undefined) {
     if (f.crownAt !== undefined || f.crownBays !== undefined) problems.push(`${at}.crownGroups: not together with crownAt/crownBays`);
     if (f.gable === 'flat' || (f.gable === 'cornice' && (!f.crownCap || f.crownCap === 'flat'))) problems.push(`${at}.crownGroups: the front has no crown to repeat (gable ${f.gable})`);
@@ -2092,6 +2202,16 @@ function historicProblems(f: FrontIntent, at: string, colour: (v: unknown, where
     if (!z || typeof z !== 'object' || Array.isArray(z) || Object.keys(z).some(k => k !== 'reach') || (z.reach !== undefined && !(typeof z.reach === 'number' && z.reach >= 0.3 && z.reach <= 1.5))) problems.push(`${at}.dormerHoist: {reach?: 0.3..1.5 m in front of the dormer}`);
     if (!f.dormers || f.dormerStyle === 'box' || f.dormerStyle === 'flat') problems.push(`${at}.dormerHoist: needs plain, pediment, pointed or arched dormers`);
     if (f.hoist) problems.push(`${at}.dormerHoist: not with hoist (one beam per dormer replaces the facade beam)`);
+  }
+  if (f.dormerWindow !== undefined) {
+    const z = f.dormerWindow as {light?: unknown; apron?: unknown; tall?: unknown};
+    if (!f.dormers) problems.push(`${at}.dormerWindow: only with dormers`);
+    else if (f.roofFront === 'mansard') problems.push(`${at}.dormerWindow: not on a mansard`);
+    else if (!z || typeof z !== 'object' || Object.keys(z).some(k => !['light', 'apron', 'tall'].includes(k)) || !(typeof z.light === 'number' && z.light >= 0.4 && z.light <= 2) || !(typeof z.apron === 'number' && z.apron >= 0 && z.apron <= 1.2) || (z.tall !== undefined && !(typeof z.tall === 'number' && z.tall >= 0.3 && z.tall <= 2))) problems.push(`${at}.dormerWindow: {light 0.4..2, apron 0..1.2, tall? 0.3..2}`);
+  }
+  if (f.dormerLights !== undefined) {
+    if (!f.dormers) problems.push(`${at}.dormerLights: only with dormers`);
+    else if (!Number.isInteger(f.dormerLights) || f.dormerLights < 2 || f.dormerLights > 8) problems.push(`${at}.dormerLights: integer 2..8`);
   }
   if (f.dormerSize !== undefined) {
     const z = f.dormerSize as {sill?: unknown; rise?: unknown; setback?: unknown};

@@ -1,0 +1,487 @@
+{
+ "note": "Faces a reviewer restricted to their design after reading the strips (blockFace/reviewCrowns.ts typesForFace), and mirrors read from the window pair of the photo (not from the door, which hedges hide). Written by the lane that placed them, for an Opus strip review.",
+ "reviewed": "2026-11-10 (lane, from the sheets; not an Opus review)",
+ "pins": [
+  {
+   "face": "flamingo-3-9",
+   "types": [
+    "vogel-1921-two-storey-dormer-row"
+   ],
+   "reason": "1921-28 two-storey rows with a wide upper window, a narrow window over the paired door, flat dormers and gable block ends (2018-2025 strips): the cottage types match on year alone and are vetoed by frontage"
+  },
+  {
+   "face": "flamingo-4-10",
+   "types": [
+    "vogel-1921-two-storey-dormer-row"
+   ],
+   "reason": "1921-28 two-storey rows with a wide upper window, a narrow window over the paired door, flat dormers and gable block ends (2018-2025 strips): the cottage types match on year alone and are vetoed by frontage"
+  },
+  {
+   "face": "flamingo-14-28",
+   "types": [
+    "vogel-1921-two-storey-dormer-row"
+   ],
+   "reason": "1921-28 two-storey rows with a wide upper window, a narrow window over the paired door, flat dormers and gable block ends (2018-2025 strips): the cottage types match on year alone and are vetoed by frontage"
+  },
+  {
+   "face": "flamingo-15-21",
+   "types": [
+    "vogel-1921-two-storey-dormer-row"
+   ],
+   "reason": "1921-28 two-storey rows with a wide upper window, a narrow window over the paired door, flat dormers and gable block ends (2018-2025 strips): the cottage types match on year alone and are vetoed by frontage"
+  },
+  {
+   "face": "kalkoen-2-6",
+   "types": [
+    "vogel-1921-two-storey-dormer-row"
+   ],
+   "reason": "1921-28 two-storey rows with a wide upper window, a narrow window over the paired door, flat dormers and gable block ends (2018-2025 strips): the cottage types match on year alone and are vetoed by frontage"
+  },
+  {
+   "face": "kalkoen-5-9",
+   "types": [
+    "vogel-1921-two-storey-dormer-row"
+   ],
+   "reason": "1921-28 two-storey rows with a wide upper window, a narrow window over the paired door, flat dormers and gable block ends (2018-2025 strips): the cottage types match on year alone and are vetoed by frontage"
+  },
+  {
+   "face": "kalkoen-8-16",
+   "types": [
+    "vogel-1921-two-storey-dormer-row"
+   ],
+   "reason": "1921-28 two-storey rows with a wide upper window, a narrow window over the paired door, flat dormers and gable block ends (2018-2025 strips): the cottage types match on year alone and are vetoed by frontage"
+  },
+  {
+   "face": "kalkoen-13-17",
+   "types": [
+    "vogel-1921-two-storey-dormer-row"
+   ],
+   "reason": "1921-28 two-storey rows with a wide upper window, a narrow window over the paired door, flat dormers and gable block ends (2018-2025 strips): the cottage types match on year alone and are vetoed by frontage"
+  },
+  {
+   "face": "kalkoen-18-26",
+   "types": [
+    "vogel-1921-two-storey-dormer-row"
+   ],
+   "reason": "1921-28 two-storey rows with a wide upper window, a narrow window over the paired door, flat dormers and gable block ends (2018-2025 strips): the cottage types match on year alone and are vetoed by frontage"
+  },
+  {
+   "face": "kalkoen-28-34",
+   "types": [
+    "vogel-1921-two-storey-dormer-row"
+   ],
+   "reason": "1921-28 two-storey rows with a wide upper window, a narrow window over the paired door, flat dormers and gable block ends (2018-2025 strips): the cottage types match on year alone and are vetoed by frontage"
+  },
+  {
+   "face": "meeuwenplein-1-7",
+   "types": [
+    "vogel-1921-two-storey-dormer-row"
+   ],
+   "reason": "1921-28 two-storey rows with a wide upper window, a narrow window over the paired door, flat dormers and gable block ends (2018-2025 strips): the cottage types match on year alone and are vetoed by frontage"
+  },
+  {
+   "face": "meeuwenplein-9-19",
+   "types": [
+    "vogel-1921-two-storey-dormer-row"
+   ],
+   "reason": "1921-28 two-storey rows with a wide upper window, a narrow window over the paired door, flat dormers and gable block ends (2018-2025 strips): the cottage types match on year alone and are vetoed by frontage"
+  },
+  {
+   "face": "meeuwenplein-29-39",
+   "types": [
+    "vogel-1921-two-storey-dormer-row"
+   ],
+   "reason": "1921-28 two-storey rows with a wide upper window, a narrow window over the paired door, flat dormers and gable block ends (2018-2025 strips): the cottage types match on year alone and are vetoed by frontage"
+  },
+  {
+   "face": "meeuwenplein-41-45",
+   "types": [
+    "vogel-1921-two-storey-dormer-row"
+   ],
+   "reason": "1921-28 two-storey rows with a wide upper window, a narrow window over the paired door, flat dormers and gable block ends (2018-2025 strips): the cottage types match on year alone and are vetoed by frontage"
+  },
+  {
+   "face": "pelikaan-3-9",
+   "types": [
+    "vogel-1921-two-storey-dormer-row"
+   ],
+   "reason": "1921-28 two-storey rows with a wide upper window, a narrow window over the paired door, flat dormers and gable block ends (2018-2025 strips): the cottage types match on year alone and are vetoed by frontage"
+  },
+  {
+   "face": "pelikaan-4-10",
+   "types": [
+    "vogel-1921-two-storey-dormer-row"
+   ],
+   "reason": "1921-28 two-storey rows with a wide upper window, a narrow window over the paired door, flat dormers and gable block ends (2018-2025 strips): the cottage types match on year alone and are vetoed by frontage"
+  },
+  {
+   "face": "pelikaan-13-27",
+   "types": [
+    "vogel-1921-two-storey-dormer-row"
+   ],
+   "reason": "1921-28 two-storey rows with a wide upper window, a narrow window over the paired door, flat dormers and gable block ends (2018-2025 strips): the cottage types match on year alone and are vetoed by frontage"
+  },
+  {
+   "face": "pelikaan-16-22",
+   "types": [
+    "vogel-1921-two-storey-dormer-row"
+   ],
+   "reason": "1921-28 two-storey rows with a wide upper window, a narrow window over the paired door, flat dormers and gable block ends (2018-2025 strips): the cottage types match on year alone and are vetoed by frontage"
+  },
+  {
+   "face": "pluvierplein-4-10",
+   "types": [
+    "vogel-1921-two-storey-dormer-row"
+   ],
+   "reason": "1921-28 two-storey rows with a wide upper window, a narrow window over the paired door, flat dormers and gable block ends (2018-2025 strips): the cottage types match on year alone and are vetoed by frontage"
+  },
+  {
+   "face": "pluvierplein-5-15",
+   "types": [
+    "vogel-1921-two-storey-dormer-row"
+   ],
+   "reason": "1921-28 two-storey rows with a wide upper window, a narrow window over the paired door, flat dormers and gable block ends (2018-2025 strips): the cottage types match on year alone and are vetoed by frontage"
+  },
+  {
+   "face": "zamenhof-6-12",
+   "types": [
+    "vogel-1918-timber-band-cottage"
+   ],
+   "reason": "Zamenhofstraat, Lange Vogelstraat and Vogelplantsoen (2025-09-22 strips): a dark boarded band 3.0-4.0 m under the gutter and a wide box dormer; the brick cottage types have no such band"
+  },
+  {
+   "face": "zamenhof-14-20",
+   "types": [
+    "vogel-1918-timber-band-cottage"
+   ],
+   "reason": "Zamenhofstraat, Lange Vogelstraat and Vogelplantsoen (2025-09-22 strips): a dark boarded band 3.0-4.0 m under the gutter and a wide box dormer; the brick cottage types have no such band"
+  },
+  {
+   "face": "zamenhof-46-52",
+   "types": [
+    "vogel-1918-timber-band-cottage"
+   ],
+   "reason": "Zamenhofstraat, Lange Vogelstraat and Vogelplantsoen (2025-09-22 strips): a dark boarded band 3.0-4.0 m under the gutter and a wide box dormer; the brick cottage types have no such band"
+  },
+  {
+   "face": "zamenhof-54-60",
+   "types": [
+    "vogel-1918-timber-band-cottage"
+   ],
+   "reason": "Zamenhofstraat, Lange Vogelstraat and Vogelplantsoen (2025-09-22 strips): a dark boarded band 3.0-4.0 m under the gutter and a wide box dormer; the brick cottage types have no such band"
+  },
+  {
+   "face": "zamenhof-62-76",
+   "types": [
+    "vogel-1918-timber-band-cottage"
+   ],
+   "reason": "Zamenhofstraat, Lange Vogelstraat and Vogelplantsoen (2025-09-22 strips): a dark boarded band 3.0-4.0 m under the gutter and a wide box dormer; the brick cottage types have no such band"
+  },
+  {
+   "face": "zamenhof-78-82",
+   "types": [
+    "vogel-1918-timber-band-cottage"
+   ],
+   "reason": "Zamenhofstraat, Lange Vogelstraat and Vogelplantsoen (2025-09-22 strips): a dark boarded band 3.0-4.0 m under the gutter and a wide box dormer; the brick cottage types have no such band"
+  },
+  {
+   "face": "zamenhof-84-90",
+   "types": [
+    "vogel-1918-timber-band-cottage"
+   ],
+   "reason": "Zamenhofstraat, Lange Vogelstraat and Vogelplantsoen (2025-09-22 strips): a dark boarded band 3.0-4.0 m under the gutter and a wide box dormer; the brick cottage types have no such band"
+  },
+  {
+   "face": "vogel-1-15",
+   "types": [
+    "vogel-1918-timber-band-cottage"
+   ],
+   "reason": "Zamenhofstraat, Lange Vogelstraat and Vogelplantsoen (2025-09-22 strips): a dark boarded band 3.0-4.0 m under the gutter and a wide box dormer; the brick cottage types have no such band"
+  },
+  {
+   "face": "vogel-2-16-122155",
+   "types": [
+    "vogel-1918-timber-band-cottage"
+   ],
+   "reason": "Zamenhofstraat, Lange Vogelstraat and Vogelplantsoen (2025-09-22 strips): a dark boarded band 3.0-4.0 m under the gutter and a wide box dormer; the brick cottage types have no such band"
+  },
+  {
+   "face": "vogel-17-31",
+   "types": [
+    "vogel-1918-timber-band-cottage"
+   ],
+   "reason": "Zamenhofstraat, Lange Vogelstraat and Vogelplantsoen (2025-09-22 strips): a dark boarded band 3.0-4.0 m under the gutter and a wide box dormer; the brick cottage types have no such band"
+  },
+  {
+   "face": "vogel-18-32",
+   "types": [
+    "vogel-1918-timber-band-cottage"
+   ],
+   "reason": "Zamenhofstraat, Lange Vogelstraat and Vogelplantsoen (2025-09-22 strips): a dark boarded band 3.0-4.0 m under the gutter and a wide box dormer; the brick cottage types have no such band"
+  },
+  {
+   "face": "vogelplantsoen-7-11",
+   "types": [
+    "vogel-1918-timber-band-cottage"
+   ],
+   "reason": "Zamenhofstraat, Lange Vogelstraat and Vogelplantsoen (2025-09-22 strips): a dark boarded band 3.0-4.0 m under the gutter and a wide box dormer; the brick cottage types have no such band"
+  },
+  {
+   "face": "vogelplantsoen-8-12",
+   "types": [
+    "vogel-1918-timber-band-cottage"
+   ],
+   "reason": "Zamenhofstraat, Lange Vogelstraat and Vogelplantsoen (2025-09-22 strips): a dark boarded band 3.0-4.0 m under the gutter and a wide box dormer; the brick cottage types have no such band"
+  },
+  {
+   "face": "vogel-4-14",
+   "types": [
+    "vogel-1918-cottage-2axis",
+    "vogel-1918-cottage-3axis"
+   ],
+   "reason": "Brede, Derde, Eerste, Korte, Tweede, Vierde and Vijfde Vogelstraat (2016-2025 strips): brick one-storey cottages with a plain gutter and no dormer band"
+  },
+  {
+   "face": "vogel-20-30",
+   "types": [
+    "vogel-1918-cottage-2axis",
+    "vogel-1918-cottage-3axis"
+   ],
+   "reason": "Brede, Derde, Eerste, Korte, Tweede, Vierde and Vijfde Vogelstraat (2016-2025 strips): brick one-storey cottages with a plain gutter and no dormer band"
+  },
+  {
+   "face": "vogel-5-11",
+   "types": [
+    "vogel-1918-cottage-2axis",
+    "vogel-1918-cottage-3axis"
+   ],
+   "reason": "Brede, Derde, Eerste, Korte, Tweede, Vierde and Vijfde Vogelstraat (2016-2025 strips): brick one-storey cottages with a plain gutter and no dormer band"
+  },
+  {
+   "face": "vogel-13-21",
+   "types": [
+    "vogel-1918-cottage-2axis",
+    "vogel-1918-cottage-3axis"
+   ],
+   "reason": "Brede, Derde, Eerste, Korte, Tweede, Vierde and Vijfde Vogelstraat (2016-2025 strips): brick one-storey cottages with a plain gutter and no dormer band"
+  },
+  {
+   "face": "vogel-6-18",
+   "types": [
+    "vogel-1918-cottage-2axis",
+    "vogel-1918-cottage-3axis"
+   ],
+   "reason": "Brede, Derde, Eerste, Korte, Tweede, Vierde and Vijfde Vogelstraat (2016-2025 strips): brick one-storey cottages with a plain gutter and no dormer band"
+  },
+  {
+   "face": "vogel-22-34",
+   "types": [
+    "vogel-1918-cottage-2axis",
+    "vogel-1918-cottage-3axis"
+   ],
+   "reason": "Brede, Derde, Eerste, Korte, Tweede, Vierde and Vijfde Vogelstraat (2016-2025 strips): brick one-storey cottages with a plain gutter and no dormer band"
+  },
+  {
+   "face": "vogel-5-15",
+   "types": [
+    "vogel-1918-cottage-2axis",
+    "vogel-1918-cottage-3axis"
+   ],
+   "reason": "Brede, Derde, Eerste, Korte, Tweede, Vierde and Vijfde Vogelstraat (2016-2025 strips): brick one-storey cottages with a plain gutter and no dormer band"
+  },
+  {
+   "face": "vogel-19-29",
+   "types": [
+    "vogel-1918-cottage-2axis",
+    "vogel-1918-cottage-3axis"
+   ],
+   "reason": "Brede, Derde, Eerste, Korte, Tweede, Vierde and Vijfde Vogelstraat (2016-2025 strips): brick one-storey cottages with a plain gutter and no dormer band"
+  },
+  {
+   "face": "vogel-2-16",
+   "types": [
+    "vogel-1918-cottage-2axis",
+    "vogel-1918-cottage-3axis"
+   ],
+   "reason": "Brede, Derde, Eerste, Korte, Tweede, Vierde and Vijfde Vogelstraat (2016-2025 strips): brick one-storey cottages with a plain gutter and no dormer band"
+  },
+  {
+   "face": "vogel-18-30",
+   "types": [
+    "vogel-1918-cottage-2axis",
+    "vogel-1918-cottage-3axis"
+   ],
+   "reason": "Brede, Derde, Eerste, Korte, Tweede, Vierde and Vijfde Vogelstraat (2016-2025 strips): brick one-storey cottages with a plain gutter and no dormer band"
+  },
+  {
+   "face": "vogel-3-15",
+   "types": [
+    "vogel-1918-cottage-2axis",
+    "vogel-1918-cottage-3axis"
+   ],
+   "reason": "Brede, Derde, Eerste, Korte, Tweede, Vierde and Vijfde Vogelstraat (2016-2025 strips): brick one-storey cottages with a plain gutter and no dormer band"
+  },
+  {
+   "face": "vogel-17-23",
+   "types": [
+    "vogel-1918-cottage-2axis",
+    "vogel-1918-cottage-3axis"
+   ],
+   "reason": "Brede, Derde, Eerste, Korte, Tweede, Vierde and Vijfde Vogelstraat (2016-2025 strips): brick one-storey cottages with a plain gutter and no dormer band"
+  },
+  {
+   "face": "vogel-6-14",
+   "types": [
+    "vogel-1918-cottage-2axis",
+    "vogel-1918-cottage-3axis"
+   ],
+   "reason": "Brede, Derde, Eerste, Korte, Tweede, Vierde and Vijfde Vogelstraat (2016-2025 strips): brick one-storey cottages with a plain gutter and no dormer band"
+  },
+  {
+   "face": "vogel-3-9",
+   "types": [
+    "vogel-1918-cottage-2axis",
+    "vogel-1918-cottage-3axis"
+   ],
+   "reason": "Brede, Derde, Eerste, Korte, Tweede, Vierde and Vijfde Vogelstraat (2016-2025 strips): brick one-storey cottages with a plain gutter and no dormer band"
+  },
+  {
+   "face": "vogel-4-10",
+   "types": [
+    "vogel-1918-cottage-2axis",
+    "vogel-1918-cottage-3axis"
+   ],
+   "reason": "Brede, Derde, Eerste, Korte, Tweede, Vierde and Vijfde Vogelstraat (2016-2025 strips): brick one-storey cottages with a plain gutter and no dormer band"
+  },
+  {
+   "face": "vogel-5-15-144429",
+   "types": [
+    "vogel-1918-cottage-2axis",
+    "vogel-1918-cottage-3axis"
+   ],
+   "reason": "Brede, Derde, Eerste, Korte, Tweede, Vierde and Vijfde Vogelstraat (2016-2025 strips): brick one-storey cottages with a plain gutter and no dormer band"
+  },
+  {
+   "face": "vogel-2-6",
+   "types": [
+    "vogel-1918-cottage-2axis",
+    "vogel-1918-cottage-3axis"
+   ],
+   "reason": "Brede, Derde, Eerste, Korte, Tweede, Vierde and Vijfde Vogelstraat (2016-2025 strips): brick one-storey cottages with a plain gutter and no dormer band"
+  },
+  {
+   "face": "vogel-16-20",
+   "types": [
+    "vogel-1918-cottage-2axis",
+    "vogel-1918-cottage-3axis"
+   ],
+   "reason": "Brede, Derde, Eerste, Korte, Tweede, Vierde and Vijfde Vogelstraat (2016-2025 strips): brick one-storey cottages with a plain gutter and no dormer band"
+  },
+  {
+   "face": "vogel-3-11",
+   "types": [
+    "vogel-1918-cottage-2axis",
+    "vogel-1918-cottage-3axis"
+   ],
+   "reason": "Brede, Derde, Eerste, Korte, Tweede, Vierde and Vijfde Vogelstraat (2016-2025 strips): brick one-storey cottages with a plain gutter and no dormer band"
+  },
+  {
+   "face": "vogel-13-23",
+   "types": [
+    "vogel-1918-cottage-2axis",
+    "vogel-1918-cottage-3axis"
+   ],
+   "reason": "Brede, Derde, Eerste, Korte, Tweede, Vierde and Vijfde Vogelstraat (2016-2025 strips): brick one-storey cottages with a plain gutter and no dormer band"
+  },
+  {
+   "face": "vogel-4-8",
+   "types": [
+    "vogel-1918-cottage-2axis",
+    "vogel-1918-cottage-3axis"
+   ],
+   "reason": "Brede, Derde, Eerste, Korte, Tweede, Vierde and Vijfde Vogelstraat (2016-2025 strips): brick one-storey cottages with a plain gutter and no dormer band"
+  },
+  {
+   "face": "vogel-15-21",
+   "types": [
+    "vogel-1918-cottage-2axis",
+    "vogel-1918-cottage-3axis"
+   ],
+   "reason": "Brede, Derde, Eerste, Korte, Tweede, Vierde and Vijfde Vogelstraat (2016-2025 strips): brick one-storey cottages with a plain gutter and no dormer band"
+  }
+ ],
+ "mirrors": [
+  {
+   "pandId": "0363100012144600",
+   "type": "vogel-1921-two-storey-dormer-row",
+   "mirror": true,
+   "reason": "Flamingostraat 5 (2025-09-22): wide window left, narrow window right, door right; the authored orientation is door left"
+  },
+  {
+   "pandId": "0363100012074442",
+   "type": "vogel-1921-two-storey-dormer-row",
+   "mirror": false,
+   "reason": "Meeuwenplein 9 (2019-11-15): narrow window left, wide right (authored orientation)"
+  },
+  {
+   "pandId": "0363100012140709",
+   "type": "vogel-1921-two-storey-dormer-row",
+   "mirror": true,
+   "reason": "Meeuwenplein 11: wide window left, narrow right (mirrored; the doors of 11 and 13 pair at their party wall)"
+  },
+  {
+   "pandId": "0363100012116850",
+   "type": "vogel-1921-two-storey-dormer-row",
+   "mirror": false,
+   "reason": "Meeuwenplein 13: narrow window left, wide right (authored orientation)"
+  },
+  {
+   "pandId": "0363100012107162",
+   "type": "vogel-1921-two-storey-dormer-row",
+   "mirror": true,
+   "reason": "Meeuwenplein 41: wide window left, narrow right, door right"
+  },
+  {
+   "pandId": "0363100012116125",
+   "type": "vogel-1921-two-storey-dormer-row",
+   "mirror": false,
+   "reason": "Meeuwenplein 43 (behind a tree): the door pairs with 41's at the party wall, so it stands on the left"
+  },
+  {
+   "pandId": "0363100012114049",
+   "type": "vogel-1918-timber-band-cottage",
+   "mirror": true,
+   "reason": "Lange Vogelstraat 1 (2025-09-22): door left, window right"
+  },
+  {
+   "pandId": "0363100012135488",
+   "type": "vogel-1918-timber-band-cottage",
+   "mirror": true,
+   "reason": "Lange Vogelstraat 5: door left, window right"
+  },
+  {
+   "pandId": "0363100012064115",
+   "type": "vogel-1918-timber-band-cottage",
+   "mirror": true,
+   "reason": "Zamenhofstraat 12 (gridded crop of zamenhof-6-12): window at 2.0-4.0 m of 5, door on the left against the next pair"
+  },
+  {
+   "pandId": "0363100012122427",
+   "type": "vogel-1918-timber-band-cottage",
+   "mirror": false,
+   "reason": "Zamenhofstraat 10: window 1.06-3.0 m, door at 4.07-4.8 m (gridded crop): the authored orientation"
+  },
+  {
+   "pandId": "0363100012085003",
+   "type": "vogel-1918-timber-band-cottage",
+   "mirror": true,
+   "reason": "Zamenhofstraat 8: door at 0-0.8 m beside 10's door, window 1.9-3.9 m"
+  },
+  {
+   "pandId": "0363100012110286",
+   "type": "vogel-1918-timber-band-cottage",
+   "mirror": false,
+   "reason": "Zamenhofstraat 6: window 1.0-3.0 m, door at the right edge"
+  }
+ ]
+}

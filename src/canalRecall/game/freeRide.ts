@@ -12,6 +12,7 @@
 // off only while a free ride is running and restores it when the ride ends.
 
 import type { WorldPoint } from './worldTypes';
+import { fitPillText, PILL_MAX_CHARS } from '../labels/pillText';
 import { dedupeLabelCandidates } from '../labels/labelDedupe';
 import type { LabelCandidate } from '../labels/labelPlan';
 
@@ -47,8 +48,8 @@ export const FREE_RIDE_REFRESH_SECONDS = 0.4;
  *  pitched camera's own reach is four screens; projecting every anchor in it
  *  each frame would cost what the quiz modes saved (streetLabelCandidates.ts). */
 export const FREE_RIDE_LABEL_REACH_M = 450;
-/** Marker labels are cut to this many characters. */
-export const FREE_RIDE_LABEL_MAX_CHARS = 26;
+/** Marker labels show this many characters at most (the pill cap, labels/pillText.ts; 26 cut "Canal Ring Area of Amsterdam", #259). */
+export const FREE_RIDE_LABEL_MAX_CHARS = PILL_MAX_CHARS;
 
 export type FreeRideKind = 'landmark' | 'bridge';
 
@@ -57,6 +58,8 @@ export interface FreeRidePlace extends WorldPoint {
   key: string;
   kind: FreeRideKind;
   name: string;
+  /** A landmark's prominence score: orders a neighbourhood's checklist (freeRideCollection.ts). */
+  prominence?: number;
 }
 
 export interface FreeRideNearby extends FreeRidePlace {
@@ -172,25 +175,27 @@ export function layoutMarkers(
   return placed;
 }
 
-/** The marker under a tap, generous by a few pixels and including the stem
- *  down to the anchor dot. Topmost (last drawn) wins. */
-export function markerAt(placed: readonly PlacedMarker[], x: number, y: number, slop = 6): PlacedMarker | null {
+/** The marker under a tap: its label plate, generous by a few pixels, and its
+ *  stem down to the anchor dot, only a finger wide around the stem. The stem
+ *  band used to be the plate's full width, a strip of open canal under every
+ *  bridge pill that opened its card (lane S2, #314). Over open water a tap
+ *  takes the plate only (`slop` 0, `stem` false): the plate's slop and the
+ *  stem were most of the pin cards still opened from water (S2b, 2026-11-10).
+ *  Topmost (last drawn) wins. */
+export const MARKER_STEM_HALF_WIDTH = 8;
+export function markerAt(placed: readonly PlacedMarker[], x: number, y: number, slop = 6, stem = true): PlacedMarker | null {
   for (let i = placed.length - 1; i >= 0; i--) {
-    const { box, anchorY } = placed[i];
-    if (x >= box.x - slop && x <= box.x + box.w + slop && y >= box.y - slop && y <= Math.max(box.y + box.h, anchorY) + slop) {
-      return placed[i];
-    }
+    const { box, anchorX, anchorY } = placed[i];
+    const onPlate = x >= box.x - slop && x <= box.x + box.w + slop && y >= box.y - slop && y <= box.y + box.h + slop;
+    const onStem = stem && Math.abs(x - anchorX) <= MARKER_STEM_HALF_WIDTH && y >= box.y + box.h && y <= anchorY + slop;
+    if (onPlate || onStem) return placed[i];
   }
   return null;
 }
 
-/** Cut a long name for a marker label, on a word where one is near. */
-export function markerLabel(name: string, maxChars = FREE_RIDE_LABEL_MAX_CHARS): string {
-  const text = name.trim().replace(/\s+/g, ' ');
-  if (text.length <= maxChars) return text;
-  const cut = text.slice(0, maxChars - 1);
-  const space = cut.lastIndexOf(' ');
-  return `${(space > maxChars * 0.6 ? cut.slice(0, space) : cut).replace(/[\s,;:–-]+$/, '')}…`;
+/** A marker's label: the whole name up to the pill cap, else whole words and "…" (labels/pillText.ts, #259). */
+export function markerLabel(name: string, maxChars = FREE_RIDE_LABEL_MAX_CHARS, measure?: (text: string) => number): string {
+  return fitPillText(name, { maxChars, measure });
 }
 
 /** The plaque's tally line in Free Ride, in place of the quiz score. */

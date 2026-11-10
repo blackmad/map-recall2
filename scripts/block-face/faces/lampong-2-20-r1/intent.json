@@ -1,0 +1,173 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "lampong-2-20-r1",
+ "street": "Lampongstraat",
+ "sources": [
+  {
+   "id": "strip-2025-09-26",
+   "kind": "street-panorama",
+   "capturedAt": "2025-09-26",
+   "image": "staging/block-face/lampong-2-20-r1/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "auto-place (blockFace/autoPlace.ts)",
+  "passes": 1,
+  "note": "auto-placed from the indische-buurt library (buurt Timorpleinbuurt-Noord); scores and holds in scripts/block-face/faces/lampong-2-20/auto-place.json"
+ },
+ "types": [
+  "indisch-1914-red-sash-pairs"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012140561",
+   "slug": "lampong-140561",
+   "address": "Lampongstraat 10",
+   "type": {
+    "type": "indisch-1914-red-sash-pairs",
+    "measuredPalette": {
+     "brick": "#7c8183",
+     "evidence": "strip 2025-09-26 span 1300-1540: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#807c6d"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2025-09-26",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: indisch-1914-red-sash-pairs scored 1 on eaves 1, storeys 1, roof 1, stucco 1; strip 2025-09-26 span 1300-1540"
+   }
+  },
+  {
+   "pandId": "0363100012150248",
+   "slug": "lampong-150248",
+   "address": "Lampongstraat 8",
+   "type": {
+    "type": "indisch-1914-red-sash-pairs",
+    "measuredPalette": {
+     "brick": "#7e8485",
+     "evidence": "strip 2025-09-26 span 1540-1780: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#807c6d"
+    },
+    "mirror": true
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2025-09-26",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: indisch-1914-red-sash-pairs scored 1 on eaves 1, storeys 1, roof 1, stucco 1; strip 2025-09-26 span 1540-1780"
+   }
+  },
+  {
+   "pandId": "0363100012085260",
+   "slug": "lampong-085260",
+   "address": "Lampongstraat 6",
+   "type": {
+    "type": "indisch-1914-red-sash-pairs",
+    "measuredPalette": {
+     "brick": "#7b8083",
+     "evidence": "strip 2025-09-26 span 1780-2032: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#807c6d"
+    },
+    "mirror": true
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2025-09-26",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: indisch-1914-red-sash-pairs scored 1 on eaves 1, storeys 1, roof 1, stucco 1; strip 2025-09-26 span 1780-2032"
+   }
+  },
+  {
+   "pandId": "0363100012064007",
+   "slug": "lampong-064007",
+   "address": "Lampongstraat 4",
+   "type": {
+    "type": "indisch-1914-red-sash-pairs",
+    "measuredPalette": {
+     "brick": "#7e8487",
+     "evidence": "strip 2025-09-26 span 2032-2284: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#807c6d"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2025-09-26",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: indisch-1914-red-sash-pairs scored 1 on eaves 1, storeys 1, roof 1, stucco 1; strip 2025-09-26 span 2032-2284"
+   }
+  },
+  {
+   "pandId": "0363100012112381",
+   "slug": "lampong-112381",
+   "address": "Lampongstraat 2",
+   "type": {
+    "type": "indisch-1914-red-sash-pairs",
+    "measuredPalette": {
+     "brick": "#7a7f82",
+     "evidence": "strip 2025-09-26 span 2284-2536: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#807c6d"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2025-09-26",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: indisch-1914-red-sash-pairs scored 1 on eaves 1, storeys 1, roof 1, stucco 1; strip 2025-09-26 span 2284-2536"
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "auto-place: low attic behind the cornice; the strips show sky over the cornices of the type rows"
+  }
+ }
+}

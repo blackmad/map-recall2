@@ -22,7 +22,7 @@ import type { OsmGroundExtract } from './osmGround.js';
 import type { ParksCell, ParksManifest } from './parks.js';
 import { decodePhotoEvidence, EMPTY_EVIDENCE, isPhotoEvidence, PHOTO_EVIDENCE_FILE, type PhotoEvidence } from './photoEvidence.js';
 import { wetGroundRings } from './wetGround.js';
-import { decodeRoadLine, ROAD_CELL_VERSIONS, type RoadCell, type RoadsManifest } from './roadCells.js';
+import { decodeRoadLine, roadCellDir, ROAD_CELL_VERSIONS, type RoadCell, type RoadsManifest } from './roadCells.js';
 import { decodeMarks, isRoadMarksCell, type RoadMark, type RoadMarksManifest } from './roadMarks.js';
 import { decodePlatforms, decodeRail, isRailCell, RAIL_EXTRACT, type RailManifest, type RailPlatform, type RailWay } from './railTracks.js';
 import type { CourtyardsCell, CourtyardsManifest } from './courtyards.js';
@@ -30,7 +30,7 @@ import { openUnderFootbridges, waterZAt, type OpeningDeck, type WaterGeometry } 
 import { openUnderHouseboats, type Boat } from './moorings.js';
 import type { CellDetail, CellInput } from './groundCell.js';
 import { farBlockCells, type FarBlockInput } from './farRing.js';
-import { cutWays, isTunnelTags, planCutsSteps, type CutWay } from './tunnels.js';
+import { cutWays, isTunnelTags, planCutsSteps, type Cut, type CutWay } from './tunnels.js';
 import { pageFrameBudget } from './frameBudget.js';
 import { retrying } from './groundResidency.js';
 
@@ -82,7 +82,7 @@ export const pacer = (budgetMs = PACE_BUDGET_MS): (() => Promise<void>) => {
 export const CUT_REACH_M = 600;
 import { deckReach, movableApproaches, pointInRing } from './decks.js';
 import { prepareWays, isBridgeWay } from './streets.js';
-import { WAY_DECK_CLEAR_M, WAY_OPENING_REACH_M, bridgeWayBundles, capDeckSides, deckEdgeSides, setDeckSides, ROAD_EDGE_REACH_MAX_M, roadEdgeSides, joinChains, groupWayDecks, wayDeckCrossing, dryWayDeckProfile, isWayDeckFamily, wayDeckHighway, wayOpeningDeck, type WayDeckInput } from './wayDecks.js';
+import { WAY_DECK_CLEAR_M, WAY_OPENING_REACH_M, bridgeWayBundles, capDeckSides, deckEdgeSides, setDeckSides, ROAD_EDGE_REACH_MAX_M, roadEdgeSides, joinChains, groupWayDecks, wayDeckCrossing, WAY_DECK_GROUP_M, dryWayDeckProfile, narrowDryDeck, isWayDeckFamily, wayDeckHighway, wayOpeningDeck, type WayDeckInput } from './wayDecks.js';
 import { RoadIndex } from './roadSurfaces.js';
 import { DRY_EDGE_M, edgesBox, surveyDeckEdges } from './bridgeGaps.js';
 import { landedPlatformRings } from './landedPlatforms.js';
@@ -98,6 +98,10 @@ export const EXTRACTS = { relief: 'ground-height-v1', osm: 'own-ground-osm-v1', 
 export const WATER_Z = -1.77;
 /** Relief loaded this far around a cell before it is built (decks and streets reach past its edge). */
 export const CELL_RELIEF_PAD_M = 350;
+/** cellInput reads the decks and cuts whose box meets the cell ± this, metres. */
+export const CELL_INPUT_PAD_M = 200;
+/** Deterministic way decks: bridge ways whose boxes lie within this of each other may join (CHAIN_JOIN_M) or group (WAY_DECK_GROUP_M) and are planned together, metres. */
+export const WAY_DECK_LINK_M = WAY_DECK_GROUP_M + 1;
 
 /** Fetch an extract file (path relative to the extract root), gunzipped. */
 export type FetchBytes = (path: string) => Promise<Uint8Array>;
@@ -205,9 +209,44 @@ export function* groundCrossingSteps(osms: readonly (OsmGroundExtract | null)[])
   });
 }
 
-export function waterTest(polygons: readonly (readonly (readonly Vec2[])[])[]): (x: number, y: number) => boolean {
+export function waterTest(polygons: readonly (readonly (readonly Vec2[])[])[], banded = true): (x: number, y: number) => boolean {
+  if (banded) return bandedWaterTest(polygons);
   const polys = polygons.map(poly => { let a = Infinity, b = Infinity, c = -Infinity, d = -Infinity; for (const [px, py] of poly[0] ?? []) { a = Math.min(a, px); b = Math.min(b, py); c = Math.max(c, px); d = Math.max(d, py); } return { poly, box: [a, b, c, d] }; });
   return (x, y) => polys.some(({ poly, box }) => { if (x < box[0] || x > box[2] || y < box[1] || y > box[3]) return false; let inside = false; for (const ring of poly) for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) { const [xi, yi] = ring[i], [xj, yj] = ring[j]; if ((yi > y) !== (yj > y) && x < (xj - xi) * (y - yi) / (yj - yi) + xi) inside = !inside; } return inside; });
+}
+
+/** Height of one band of a water polygon's edge index, metres (bandedWaterTest). */
+export const WATER_BAND_M = 8;
+
+/**
+ * waterTest with each polygon's edges indexed by horizontal band (lane R5-A #260 step 4). Measured 2026-11-09: a LOD 0
+ * cell's input spent ~0.5 s in wetGroundRings, nearly all of it in this test, because a canal polygon's box covers most
+ * of a cell and the plain test walks every edge of it for every sample. A point in band k only tests the edges whose
+ * y-range meets band k; an edge it skips lies wholly above or below the point's y and could not toggle the crossing
+ * parity, and the edges it tests run the same comparison in the same arithmetic, so the answer is exactly the plain
+ * test's (`banded = false`, `?groundPlanShare=0`).
+ */
+function bandedWaterTest(polygons: readonly (readonly (readonly Vec2[])[])[]): (x: number, y: number) => boolean {
+  const B = WATER_BAND_M;
+  const polys = polygons.map(poly => {
+    let a = Infinity, b = Infinity, c = -Infinity, d = -Infinity;
+    for (const [px, py] of poly[0] ?? []) { a = Math.min(a, px); b = Math.min(b, py); c = Math.max(c, px); d = Math.max(d, py); }
+    const n = b <= d ? Math.floor((d - b) / B) + 1 : 0, lists: number[][] = Array.from({ length: n }, () => []);
+    for (const ring of poly) for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) {
+      const [xi, yi] = ring[i], [xj, yj] = ring[j];
+      // Bands [b + kB, b + (k+1)B] the edge's y-range meets (closed: a point on a band line tests both neighbours' edges).
+      const k0 = Math.max(0, Math.floor((Math.min(yi, yj) - b) / B)), k1 = Math.min(n - 1, Math.floor((Math.max(yi, yj) - b) / B));
+      for (let k = k0; k <= k1; k++) lists[k].push(xi, yi, xj, yj);
+    }
+    return { box: [a, b, c, d] as const, bands: lists.map(l => Float64Array.from(l)) };
+  });
+  return (x, y) => polys.some(({ box, bands }) => {
+    if (x < box[0] || x > box[2] || y < box[1] || y > box[3]) return false;
+    const e = bands[Math.min(bands.length - 1, Math.floor((y - box[1]) / B))];
+    let inside = false;
+    for (let i = 0; i < e.length; i += 4) { const xi = e[i], yi = e[i + 1], xj = e[i + 2], yj = e[i + 3]; if ((yi > y) !== (yj > y) && x < (xj - xi) * (y - yi) / (yj - yi) + xi) inside = !inside; }
+    return inside;
+  });
 }
 
 export class GroundStore {
@@ -256,6 +295,27 @@ export class GroundStore {
   private measuredByCell = new Map<string, BridgeExtract['measured']>();
   private fallbackByCell = new Map<string, BridgeExtract['fallback']>();
   readonly loadedBytes = { relief: 0, water: 0, osm: 0, parks: 0, roads: 0, courtyards: 0 };
+  /**
+   * Lane R5-A #260 step 4 (measurement only): told the CPU each data-in phase took, by phase and key (parse per extract,
+   * relief tiles, decks, way decks, tunnel cuts, the input's assembly). Null (the default): nothing is timed.
+   */
+  phaseHook: ((phase: string, key: string, ms: number) => void) | null = null;
+  /**
+   * Ground determinism (#260 follow-up, diagnostics only): told which plan placed a shared result. `wayDeck`: an OSM
+   * bridge way given to a way-deck plan (id: the way id), `deck`: a way deck placed (id: its profile id), `cutScan`: a way
+   * scanned for cuts (negative: a tunnel run tried as a slot), `cut`: a cut placed. `plan`: the cell whose plan did it.
+   */
+  planTrace: ((kind: 'wayDeck' | 'deck' | 'cutScan' | 'cut', id: string, plan: string) => void) | null = null;
+  private timed<T>(phase: string, key: string, fn: () => T): T {
+    const hook = this.phaseHook;
+    if (!hook) return fn();
+    const t = performance.now();
+    try { return fn(); } finally { hook(phase, key, performance.now() - t); }
+  }
+  /** A phase's wall time from `t0`, less what it spent waiting (`waitMs`), told to the hook. */
+  private told(phase: string, key: string, t0: number, waitMs = 0): void { this.phaseHook?.(phase, key, performance.now() - t0 - waitMs); }
+  /** Await `p`, adding the wait to `box.ms` (a phase's own CPU excludes waiting for a fetch). */
+  private async waited<T>(p: Promise<T>, box: { ms: number }): Promise<T> { const t = performance.now(); try { return await p; } finally { box.ms += performance.now() - t; } }
 
   /** `parks`: load the parks-v1 extract (BGT park surfaces and furniture, parks.ts); off with `?parks=0`. */
   /** `courtyards`: load the courtyards-v1 extract (BGT courtyard and back-garden cover); off for the regression's before. */
@@ -266,7 +326,7 @@ export class GroundStore {
    * the predictor decode of every tile under the rider's ring leave the main thread; the motion profile had
    * them in 100–200 ms bursts, docs/perf-motion-stutter-20261016.md). Same decode, same heights.
    */
-  constructor(private readonly fetchBytes: FetchBytes, private readonly options: { parks?: boolean; courtyards?: boolean; openings?: boolean; moorings?: boolean; approaches?: boolean; clipDecks?: boolean; roads?: boolean; reliefTile?: ReliefTileLoader; /** Decks for OSM bridge ways the extract does not carry (wayDecks.ts); default on. */ wayDecks?: boolean; /** Deck ends landed under the survey (footprints over the reach, covered tops sunk past the span); default on, off only for the regression's pin. */ deckEnds?: boolean; /** Way decks run on over a hole in the relief past the water (wayDecks.ts HOLE_M); default on. */ wayDeckHoles?: boolean; /** Bridge ways meeting end to end join before the way decks are drawn (wayDecks.ts joinChains); default on. */ wayDeckChains?: boolean; /** Open the water under OSM bridge ways whose water stops at the bridge (wayDecks.ts WAY_OPENING_REACH_M); default on, off only for the regression's before. */ wayOpenings?: boolean; /** roads-v1: way decks widen to the road surfaces' outer edges (wayDecks.ts roadEdgeSides); default on. */ wayDeckCarriage?: boolean; /** Road surfaces carried across bridges without gaps (lane road-bridge-gaps 2026-11-01, issue #178); default on, off: `?bridgeGaps=0` (the A/B's before). */ bridgeGaps?: boolean; /** bridgeGaps step 3: way decks for bridge ways over land (wayDecks.ts dryWayDeckProfile); default off (integrator 2026-11-02: slivers and hairlines at the bus station, the IJtunnel trench height), `?dryWayDecks=1` turns it on. */ dryWayDecks?: boolean; /** Tunnel cuts: ramps into tunnels and slots through embankments (tunnels.ts); default on. */ tunnels?: boolean; /** Railway tracks from rail-v1 (railTracks.ts); default on. */ rails?: boolean; /** Rail cell and manifest fetches retried, a failed cell fetch never cached as "no rails" (groundResidency.ts, #232); default on, off: `?railRetry=0`. */ railRetry?: boolean; /** Rail fetch backoff, ms (groundResidency.ts RAIL_RETRY_MS; tests pass short ones). */ railRetryMs?: readonly number[]; /** The rail manifest's cell keys as the main thread loaded them (the worker is handed them: one source of truth, #232); absent: fetch cells.json. */ railManifest?: readonly string[]; /** Rail corridors in the far ring (farRing.ts); default on, off: `?farRail=0`. */ farRails?: boolean; /** Far rail bands draped on the far land (farRing.ts FAR_RAIL_STEP_M, #232); default on, off: `?farRailDrape=0`. */ farRailDrape?: boolean; /** Rail levels and the never-under-the-ground floor (railProfile.ts); default on, off: the #145 build (for measuring). */ railLevels?: boolean; /** Piers, girders and railings under the rail decks (railBridge.ts); default on, off: the round-2 build (for measuring). */ railBridges?: boolean; /** rail-v1 as shipped in build 04e3c88 (railTracks `legacy`): the rail regressions' pre-fix build only. */ railLegacy?: boolean; /** roads-v1 ground polygons over water at street height count as decks for the water mask (wetGround.ts); default on, off only for the regression's pin. */ wetGround?: boolean; /** The main thread's store: it prepares cells (decks, way decks, tunnel cuts) and answers heights but never builds one (the worker does), so cells keep only what prepareCell reads: OSM ways without the areas, road surfaces without kerbs and cover ways. cellInput/farInput refuse. */ prepareOnly?: boolean; /** Work between yields while planning way decks and cuts on the page (pacer), ms; default PACE_BUDGET_MS, 0: yield after every step (the exactness pin). */ paceMs?: number } = {}) {}
+  constructor(private readonly fetchBytes: FetchBytes, private readonly options: { parks?: boolean; courtyards?: boolean; openings?: boolean; moorings?: boolean; approaches?: boolean; clipDecks?: boolean; roads?: boolean; reliefTile?: ReliefTileLoader; /** Decks for OSM bridge ways the extract does not carry (wayDecks.ts); default on. */ wayDecks?: boolean; /** Deck ends landed under the survey (footprints over the reach, covered tops sunk past the span); default on, off only for the regression's pin. */ deckEnds?: boolean; /** Way decks run on over a hole in the relief past the water (wayDecks.ts HOLE_M); default on. */ wayDeckHoles?: boolean; /** Bridge ways meeting end to end join before the way decks are drawn (wayDecks.ts joinChains); default on. */ wayDeckChains?: boolean; /** Open the water under OSM bridge ways whose water stops at the bridge (wayDecks.ts WAY_OPENING_REACH_M); default on, off only for the regression's before. */ wayOpenings?: boolean; /** roads-v1: way decks widen to the road surfaces' outer edges (wayDecks.ts roadEdgeSides); default on. */ wayDeckCarriage?: boolean; /** Road surfaces carried across bridges without gaps (lane road-bridge-gaps 2026-11-01, issue #178); default on, off: `?bridgeGaps=0` (the A/B's before). */ bridgeGaps?: boolean; /** Road surfaces carried across bridges (deckCarry.ts, lane R5-C1 issue #262); default on, off: `?bridgeCarry=0`. */ bridgeCarry?: boolean; /** One red owner per junction mouth, red on its own plane (lane R5-C1 issue #262); default on, off: `?redDedupe=0`. */ redDedupe?: boolean; /** bridgeGaps step 3: way decks for bridge ways over land (wayDecks.ts dryWayDeckProfile); default off (integrator 2026-11-02: slivers and hairlines at the bus station, the IJtunnel trench height), `?dryWayDecks=1` turns it on. */ dryWayDecks?: boolean; /** Tunnel cuts: ramps into tunnels and slots through embankments (tunnels.ts); default on. */ tunnels?: boolean; /** Ground triangles clipped at the tunnel walls (tunnels.ts clipMeshAtCuts, R5-C2); default on, off: `?portalClip=0`. */ portalClip?: boolean; /** The portal clip across a mouth's end line and along the walls up to it (tunnels.ts PortalClipOptions.ends, #269); default on, off: `?portalEnds=0`. */ portalEnds?: boolean; /** A long same-side wall gap in a ramp bridged where the bank carries on (tunnels.ts bridgeBankGaps, #270); default on, off: `?rampGaps=0`. */ rampGaps?: boolean; /** roads-v1 version-3 cells (junction slivers merged, roadSlivers.ts) where the manifest publishes them; default on, off: `?roadSlivers=0` reads the version-2 cells. */ roadSlivers?: boolean; /** Railway tracks from rail-v1 (railTracks.ts); default on. */ rails?: boolean; /** Rail cell and manifest fetches retried, a failed cell fetch never cached as "no rails" (groundResidency.ts, #232); default on, off: `?railRetry=0`. */ railRetry?: boolean; /** Rail fetch backoff, ms (groundResidency.ts RAIL_RETRY_MS; tests pass short ones). */ railRetryMs?: readonly number[]; /** The rail manifest's cell keys as the main thread loaded them (the worker is handed them: one source of truth, #232); absent: fetch cells.json. */ railManifest?: readonly string[]; /** Rail corridors in the far ring (farRing.ts); default on, off: `?farRail=0`. */ farRails?: boolean; /** Far rail bands draped on the far land (farRing.ts FAR_RAIL_STEP_M, #232); default on, off: `?farRailDrape=0`. */ farRailDrape?: boolean; /** Rail levels and the never-under-the-ground floor (railProfile.ts); default on, off: the #145 build (for measuring). */ railLevels?: boolean; /** Piers, girders and railings under the rail decks (railBridge.ts); default on, off: the round-2 build (for measuring). */ railBridges?: boolean; /** rail-v1 as shipped in build 04e3c88 (railTracks `legacy`): the rail regressions' pre-fix build only. */ railLegacy?: boolean; /** Rails flat on the street they lie on or cross within the bed's reach (railTracks.ts onStreetTest, lane rails-class); default on, off: the centreline-crossing test only (for measuring). */ railOnStreet?: boolean; /** roads-v1 ground polygons over water at street height count as decks for the water mask (wetGround.ts); default on, off only for the regression's pin. */ wetGround?: boolean; /** The main thread's store: it prepares cells (decks, way decks, tunnel cuts) and answers heights but never builds one (the worker does), so cells keep only what prepareCell reads: OSM ways without the areas, road surfaces without kerbs and cover ways. cellInput/farInput refuse. */ prepareOnly?: boolean; /** Lane R5-A #260 step 4: the water tests use the banded edge index (bandedWaterTest, exact) and the 3×3 planning a cell repeats is shared; default on, off: `?groundPlanShare=0`. */ planShare?: boolean; /** Ground determinism (#260 follow-up): a cell's mesh does not depend on which cells its store prepared before it (way decks planned per bridge component, tunnel cuts per portal cell with the lowest-keyed plan winning an overlap, decks laid on the bare relief, inputs in id order); default on, off: `?groundDeterministic=0` (first plan to reach a way wins). */ deterministic?: boolean; /** Work between yields while planning way decks and cuts on the page (pacer), ms; default PACE_BUDGET_MS, 0: yield after every step (the exactness pin). */ paceMs?: number } = {}) {}
   /** Houseboat footprints (houseboats.json, game frame), by elevation cell of their centroid. */
   private boatsByCell = new Map<string, Boat[]>();
   /** Boats whose berth was opened, per cell (named regressions, the lane report). */
@@ -301,6 +361,8 @@ export class GroundStore {
     this.parkCells = new Set(parks?.version === 1 ? parks.cells : []);
     const roads = this.options.roads === true ? await this.json<RoadsManifest>(`${EXTRACTS.roads}/cells.json`).catch(() => null) : null;
     this.roadCells = new Set(roads?.version === 1 ? roads.cells : []);
+    // Version-3 cells (junction slivers merged, roadSlivers.ts) live beside the version-2 ones until `?roadSlivers=0` is retired.
+    this.roadCellDir = roads?.version === 1 && this.options.roadSlivers !== false ? roadCellDir(roads) : 'cells';
     const marks = this.options.roads === true ? await this.json<RoadMarksManifest>(`${EXTRACTS.marks}/cells.json`).catch(() => null) : null;
     this.markCells = new Set(marks?.version === 1 ? marks.cells : []);
     if (this.options.rails !== false && this.options.railManifest && this.options.railRetry !== false) this.railCells = new Set(this.options.railManifest);
@@ -429,7 +491,7 @@ export class GroundStore {
     const extend = keys.filter(k => !this.hasReliefTile(k) && !this.reliefTiles.has(k) && this.reliefNeighbours(k).length);
     const load = new Set([...keys.filter(k => this.hasReliefTile(k)), ...extend.flatMap(k => this.reliefNeighbours(k))]);
     await this.loadTiles([...load]);
-    for (const k of extend) if (!this.reliefTiles.has(k)) this.synthesiseTile(k);
+    for (const k of extend) if (!this.reliefTiles.has(k)) this.timed('relief:synth', k, () => this.synthesiseTile(k));
   }
 
   private async loadTiles(keys: string[]): Promise<void> {
@@ -440,12 +502,12 @@ export class GroundStore {
         const path = `${EXTRACTS.relief}/tiles/${k}.bin`, entry = this.tileEntry(k)!;
         const load = this.options.reliefTile
           ? this.options.reliefTile(path, this.relief, entry)
-          : this.fetchBytes(path).then(bytes => ({ heights: readGroundTile(this.relief, entry, bytes), bytes: bytes.byteLength }));
+          : this.fetchBytes(path).then(bytes => ({ heights: this.timed('relief:decode', k, () => readGroundTile(this.relief, entry, bytes)), bytes: bytes.byteLength }));
         p = load.then(async ({ heights, bytes }) => {
           await yieldToFrame(); // one relief tile's field insert per task, not every tile of the batch in one
           this.loadedBytes.relief += bytes;
           const [tx, ty] = k.split('_').map(Number);
-          this.field.addTile(tx, ty, heights, entry[3] ?? this.relief.stepM);
+          this.timed('relief:insert', k, () => this.field.addTile(tx, ty, heights, entry[3] ?? this.relief.stepM));
           this.reliefTiles.add(k);
         }).finally(() => this.reliefLoading.delete(k));
         this.reliefLoading.set(k, p);
@@ -491,7 +553,9 @@ export class GroundStore {
     // A bridge belongs to the cell of its first station but may reach into
     // this one: place neighbours' decks too, so streets and the rider here
     // see the hump (their approach ends lie within the relief pad).
-    for (const n of GroundStore.neighbours(key)) if (n !== key) this.placeDecks(n, [x0 - 60, y0 - 60, x1 + 60, y1 + 60]);
+    // Deterministic: as far as cellInput reads them (its `near`, 200 m), so a fresh store holds every deck the cell draws.
+    const m = this.det ? CELL_INPUT_PAD_M : 60;
+    for (const n of GroundStore.neighbours(key)) if (n !== key) this.placeDecks(n, [x0 - m, y0 - m, x1 + m, y1 + m]);
     await yieldToFrame();
     // One width per deck side (bridgeGaps, issue #178): the measured decks around take the survey's deck-level edges
     // before anything here reads them (each deck once, from its owner cell's roads, so every store agrees).
@@ -507,6 +571,10 @@ export class GroundStore {
    * plan runs to its end before the next starts, in the order they asked, as they did when each was a single task.
    */
   private planQueue: Promise<unknown> = Promise.resolve();
+  /** Ground determinism on (the default): see the `deterministic` option. */
+  private get det(): boolean { return this.options.deterministic !== false; }
+  /** What decks stand on: the bare relief when deterministic (no dependence on the cuts planned so far), else the surface's ground. */
+  private get deckGround(): (x: number, y: number) => number { return this.det ? this.surface.relief : this.surface.ground; }
   private planning<T>(plan: () => Promise<T>): Promise<T> {
     const run = this.planQueue.then(plan);
     this.planQueue = run.catch(() => undefined);
@@ -515,7 +583,7 @@ export class GroundStore {
 
   /** Tunnel cuts planned per cell (the cell holding the portals), once each. */
   private readonly cutPlans = new Map<string, Promise<void>>();
-  /** Way ids scanned for cuts (each scanned once, by the first plan that reaches it); negative ids: tunnel runs tried as slots. */
+  /** Way ids scanned for cuts (each scanned once, by the first plan that reaches it; deterministic: by any plan, a record only); negative ids: tunnel runs tried as slots. */
   private readonly cutScanned = new Set<number>();
   /**
    * Plan the tunnel cuts whose portals lie in cell `n` (tunnels.ts planCuts) and place them on the surface: the OSM of
@@ -527,7 +595,7 @@ export class GroundStore {
   private readonly cutWayCells = new Map<string, Promise<CutWay[]>>();
   private cutWaysOf(k: string): Promise<CutWay[]> {
     let p = this.cutWayCells.get(k);
-    if (!p) { p = this.osmCell(k).then(async o => { await yieldToFrame(); return cutWays(o?.ways ?? [], q => toLocal(q[0], q[1])); }); this.cutWayCells.set(k, p); } // a task per cell's conversion (#129)
+    if (!p) { p = this.osmCell(k).then(async o => { await yieldToFrame(); return this.timed('cuts:ways', k, () => cutWays(o?.ways ?? [], q => toLocal(q[0], q[1]))); }); this.cutWayCells.set(k, p); } // a task per cell's conversion (#129)
     return p;
   }
 
@@ -540,21 +608,52 @@ export class GroundStore {
         const [x0, y0, x1, y1] = this.cellRect(n), box: Rect = [x0 - CUT_REACH_M, y0 - CUT_REACH_M, x1 + CUT_REACH_M, y1 + CUT_REACH_M];
         const [around] = await Promise.all([Promise.all(GroundStore.neighbours(n).map(k => this.cutWaysOf(k))), this.ensureRelief(box)]);
         await this.planning(async () => {
+          const t0 = performance.now();
           await yieldToFrame();
           // A way crossing a cell edge is in both cells' extracts: once each.
           const seen = new Set<number>(), ways = around.flat().filter(w => !seen.has(w.id) && !!seen.add(w.id));
           const inCell = (q: Vec2) => q[0] >= x0 && q[0] < x1 && q[1] >= y0 && q[1] < y1;
           // A step per way scanned, a task every PACE_BUDGET_MS (one plan was a 60-120 ms task while riding, #129).
-          const steps = planCutsSteps(ways, this.surface.relief, inCell, this.cutScanned, box), pace = pacer(this.options.paceMs);
+          // Deterministic: each portal cell's plan scans with its own skip set (a pure function of the cell), and placeCuts
+          // settles overlaps between plans by key; otherwise a way is scanned once, by the first plan to reach it.
+          const skip = this.det ? new Set<number>() : this.cutScanned;
+          const steps = planCutsSteps(ways, this.surface.relief, inCell, skip, box, { portalEnds: this.options.portalEnds !== false, rampGaps: this.options.rampGaps !== false }), pace = pacer(this.options.paceMs);
+          const scannedBefore = this.planTrace ? new Set(this.cutScanned) : null;
           for (let r = steps.next(); ; r = steps.next()) {
-            if (r.done) { for (const c of r.value) this.surface.addCut(c); break; }
+            if (r.done) { if (this.det) this.placeCuts(n, r.value); else for (const c of r.value) { this.surface.addCut(c); this.planTrace?.('cut', c.id, n); } break; }
             await pace();
           }
+          // Deterministic: the ways this plan scanned are still recorded (diagnostics, the prepareOnly pin), never skipped.
+          if (this.det) for (const id of skip) this.cutScanned.add(id);
+          if (scannedBefore) for (const id of this.cutScanned) if (!scannedBefore.has(id)) this.planTrace?.('cutScan', String(id), n);
+          this.told('cuts:plan', n, t0);
         });
       })();
       this.cutPlans.set(n, p);
     }
     return p;
+  }
+
+  /** Deterministic cut plans: every plan's cuts by kind and way, with the plan's cell key. */
+  private readonly cutPool = new Map<string, { cut: Cut; plan: string; on: boolean }[]>();
+  /**
+   * Place plan `plan`'s cuts. Where two plans cut the same way (kind and way id) and their boxes overlap, the cut of the
+   * lower-keyed plan stands and the other is off the surface; the outcome is a function of the plans run, not their order.
+   */
+  private placeCuts(plan: string, cuts: readonly Cut[]): void {
+    const touched = new Set<string>();
+    for (const cut of cuts) {
+      const k = `${cut.kind}:${cut.way}`;
+      (this.cutPool.get(k) ?? this.cutPool.set(k, []).get(k)!).push({ cut, plan, on: false });
+      touched.add(k);
+    }
+    const meets = (a: Cut, b: Cut) => a.bbox[0] <= b.bbox[2] && b.bbox[0] <= a.bbox[2] && a.bbox[1] <= b.bbox[3] && b.bbox[1] <= a.bbox[3];
+    for (const k of touched) for (const e of this.cutPool.get(k)!) {
+      const on = !this.cutPool.get(k)!.some(o => o !== e && o.plan < e.plan && meets(o.cut, e.cut));
+      if (on === e.on) continue;
+      e.on = on;
+      if (on) { this.surface.addCut(e.cut); this.planTrace?.('cut', e.cut.id, e.plan); } else this.surface.removeCut(e.cut);
+    }
   }
 
   /**
@@ -587,6 +686,29 @@ export class GroundStore {
    * (wayDecks.ts, user 2026-10-16: the Jan Evertsenstraat over the Erasmusgracht drew no bridge). Each is placed once,
    * owned by the cell of its first point, when its box lies within this cell's relief pad.
    */
+  /** Deterministic way decks: bridge way ids whose component has been planned. */
+  private readonly wayDeckDone = new Set<number>();
+  /**
+   * Deterministic way decks: the bridge ways of this plan's box (`box`) and those owned by its cell (`cell`), widened to everything they may join or group
+   * with (a chain end or a group within WAY_DECK_LINK_M, transitively, over the 3×3's bridge ways), less components an
+   * earlier plan did, in id order. A component's decks then come out the same whichever cell plans it.
+   */
+  private wayDeckComponents(osms: readonly (OsmGroundExtract | null)[], box: Rect, cell: Rect): WayDeckInput[] {
+    const all = bridgeWayInputs(osms, () => false, [-Infinity, -Infinity, Infinity, Infinity]).sort((a, b) => a.id - b.id);
+    const boxes = all.map(w => [Math.min(...w.points.map(q => q[0])), Math.min(...w.points.map(q => q[1])), Math.max(...w.points.map(q => q[0])), Math.max(...w.points.map(q => q[1]))] as Rect);
+    const L = WAY_DECK_LINK_M, linked = (i: number, j: number) => boxes[i][0] - L <= boxes[j][2] && boxes[j][0] - L <= boxes[i][2] && boxes[i][1] - L <= boxes[j][3] && boxes[j][1] - L <= boxes[i][3];
+    const comp = all.map((_, i) => i), root = (i: number): number => comp[i] === i ? i : (comp[i] = root(comp[i]));
+    for (let i = 0; i < all.length; i++) for (let j = i + 1; j < all.length; j++) if (linked(i, j)) { const a = root(i), b = root(j); if (a !== b) comp[Math.max(a, b)] = Math.min(a, b); }
+    // In the box, or owned here (its first point in this cell: the deck is this cell's to draw, wherever the way runs).
+    const inBox = (i: number) => (boxes[i][0] >= box[0] && boxes[i][2] <= box[2] && boxes[i][1] >= box[1] && boxes[i][3] <= box[3])
+      || (all[i].points[0][0] >= cell[0] && all[i].points[0][0] < cell[2] && all[i].points[0][1] >= cell[1] && all[i].points[0][1] < cell[3]);
+    const wanted = new Set<number>();
+    for (let i = 0; i < all.length; i++) if (inBox(i)) wanted.add(root(i));
+    const out = all.filter((w, i) => wanted.has(root(i)) && !all.some((q, j) => root(j) === root(i) && this.wayDeckDone.has(q.id)));
+    for (const w of out) this.wayDeckDone.add(w.id);
+    return out;
+  }
+
   private async placeWayDecks(key: string): Promise<void> {
     const around = GroundStore.neighbours(key);
     const [osms, waters] = await Promise.all([Promise.all(around.map(k => this.osmCell(k))), Promise.all(around.map(k => this.waterCell(k)))]);
@@ -594,17 +716,26 @@ export class GroundStore {
   }
 
   private async planWayDecks(key: string, around: string[], osms: (OsmGroundExtract | null)[], waters: (WaterGeometry | null)[]): Promise<void> {
+    const t0 = performance.now(), wait = { ms: 0 };
+    try { await this.planWayDecksTimed(key, around, osms, waters, wait); } finally { this.told('waydecks', key, t0, wait.ms); }
+  }
+  private async planWayDecksTimed(key: string, around: string[], osms: (OsmGroundExtract | null)[], waters: (WaterGeometry | null)[], wait: { ms: number }): Promise<void> {
     const [x0, y0, x1, y1] = this.cellRect(key), pad = CELL_RELIEF_PAD_M - 50;
     await yieldToFrame(); // the cells' JSON decode above and the deck grouping below are separate tasks
     // Each step below is short; a task ends every PACE_BUDGET_MS (the grouping, the road index and the edge search
     // ran as one 60-120 ms task while riding, #129). Same steps in the same order as one task.
     const pace = pacer(this.options.paceMs);
     // Each polygon with its box: a station tests only the polygons around it.
-    const wet = waterTest(waters.flatMap(w => w?.polygons ?? []));
+    const wet = waterTest(waters.flatMap(w => w?.polygons ?? []), this.options.planShare !== false);
     const claimed = this.claimedBy(around);
-    const ways = bridgeWayInputs(osms, id => this.wayDeckIds.has(id), [x0 - pad, y0 - pad, x1 + pad, y1 + pad]);
+    const ways = this.det ? this.wayDeckComponents(osms, [x0 - pad, y0 - pad, x1 + pad, y1 + pad], [x0, y0, x1, y1]) : bridgeWayInputs(osms, id => this.wayDeckIds.has(id), [x0 - pad, y0 - pad, x1 + pad, y1 + pad]);
+    // A component may reach past this cell's relief pad: its relief too, so the answer does not depend on what else is loaded.
+    if (this.det && ways.length) {
+      const r = WAY_DECK_LINK_M + ROAD_EDGE_REACH_MAX_M + 10;
+      await this.waited(this.ensureRelief([Math.min(...ways.flatMap(w => w.points.map(q => q[0]))) - r, Math.min(...ways.flatMap(w => w.points.map(q => q[1]))) - r, Math.max(...ways.flatMap(w => w.points.map(q => q[0]))) + r, Math.max(...ways.flatMap(w => w.points.map(q => q[1]))) + r]), wait);
+    }
     // Consecutive pieces of one bridge join first (wayDecks.ts joinChains).
-    const joined = this.options.wayDeckChains === false ? { ways, members: new Map(ways.map(w => [w.id, [w.id]])) } : joinChains(ways), chained = joined.ways, ground = this.options.wayDeckHoles === false ? undefined : this.surface.ground;
+    const joined = this.options.wayDeckChains === false ? { ways, members: new Map(ways.map(w => [w.id, [w.id]])) } : joinChains(ways), chained = joined.ways, ground = this.options.wayDeckHoles === false ? undefined : this.deckGround;
     await pace();
     const crossings: ReturnType<typeof wayDeckCrossing>[] = [];
     for (const w of chained) { crossings.push(wayDeckCrossing(w, wet, claimed, ground)); await pace(); }
@@ -617,7 +748,7 @@ export class GroundStore {
       if (rest.length) {
         const pad = Math.max(...rest.map(w => w.halfWidth)) + 12;
         const box: Rect = [Math.min(...rest.flatMap(w => w.points.map(q => q[0]))) - pad, Math.min(...rest.flatMap(w => w.points.map(q => q[1]))) - pad, Math.max(...rest.flatMap(w => w.points.map(q => q[0]))) + pad, Math.max(...rest.flatMap(w => w.points.map(q => q[1]))) + pad];
-        const idx = await RoadIndex.paced([null, ...await Promise.all(around.map(k => this.roadCell(k)))], box, pace);
+        const idx = await RoadIndex.paced([null, ...await this.waited(Promise.all(around.map(k => this.roadCell(k))), wait)], box, pace);
         const roadBelow = (x: number, y: number) => idx.onGround(x, y, DRY_DECK_BLOCKERS);
         const dryAt = (x: number, y: number) => !wet(x, y) && idx.onDeck(x, y) && !roadBelow(x, y);
         // On another deck's carriageway (no clearance: a bus station's platform lanes run side by side on one structure).
@@ -631,15 +762,17 @@ export class GroundStore {
           // A claimed end (the deck of the lane it merges into) trims the run; a claim inside it keeps the way off.
           const taken = (x: number, y: number) => claimed(x, y) || profiles.some(q => near(q, x, y));
           const p = dryWayDeckProfile(w, (x, y) => dryAt(x, y) && !taken(x, y), taken);
-          if (p && dryDeckGrade(p, (x, y) => this.surface.ground(x, y)) <= DRY_DECK_MAX_GRADE) { profiles.push(p); dry.add(p); }
+          if (p && dryDeckGrade(p, this.deckGround) <= DRY_DECK_MAX_GRADE) { profiles.push(p); dry.add(p); }
           await pace();
         }
+        // Only now (the loop above reads the earlier decks' half-widths as their carriageways): the survey sets the width.
+        for (const p of dry) narrowDryDeck(p);
       }
     }
-    for (const w of ways) this.wayDeckIds.add(w.id);
+    for (const w of ways) { this.wayDeckIds.add(w.id); this.planTrace?.('wayDeck', String(w.id), key); }
     // roads-v1: the parapets stand at the road surfaces' outer edges (carriageway, cycle path, footway), not the way's drawn half-width (wayDecks.ts roadEdgeSides).
     if (profiles.length && this.options.roads === true && this.options.wayDeckCarriage !== false) {
-      const cells = await Promise.all(around.map(k => this.roadCell(k)));
+      const cells = await this.waited(Promise.all(around.map(k => this.roadCell(k))), wait);
       await yieldToFrame();
       // Only the road polygons the edge search can reach (the profiles' boxes, padded by the widest reach): the full
       // 3×3 earcut was the largest main-thread task while riding (#129, 50-90 ms). A null first cell, because
@@ -653,6 +786,7 @@ export class GroundStore {
       await yieldToFrame();
       const onRoad = (x: number, y: number) => index.classAt(x, y, true) !== null;
       for (const profile of profiles) {
+        if (dry.has(profile)) continue; // the survey's deck polygon sets a dry deck's width, not the road surfaces beside it
         const sides = roadEdgeSides(profile, onRoad);
         await pace();
         if (!sides) continue;
@@ -680,7 +814,7 @@ export class GroundStore {
       if (!open) continue;
       // The survey's deck-level polygons outline the bridge (wayDecks.ts deckEdgeSides); the opening's water is the cap.
       if (this.options.roads === true) {
-        if (!deckIndex) { deckIndex = await RoadIndex.paced([null, ...await Promise.all(around.map(k => this.roadCell(k)))], deckWithin ?? undefined, pace); await yieldToFrame(); }
+        if (!deckIndex) { deckIndex = await RoadIndex.paced([null, ...await this.waited(Promise.all(around.map(k => this.roadCell(k))), wait)], deckWithin ?? undefined, pace); await yieldToFrame(); }
         const idx = deckIndex, e = deckEdgeSides(profile, (x, y) => idx.onDeck(x, y), Math.max(...profile.halfWidth, ...open) + ROAD_EDGE_REACH_MAX_M);
         if (e[0] !== undefined || e[1] !== undefined) setDeckSides(profile, [e[0] ?? open[0], e[1] ?? open[1]]);
         else capDeckSides(profile, open);
@@ -691,7 +825,7 @@ export class GroundStore {
     if (profiles.length && this.bridgeGapsOn) {
       const reach = Math.max(...profiles.map(p => Math.max(...p.halfWidth, ...(p.sides ?? []), dry.has(p) ? DRY_EDGE_M : 0))) + 4;
       const within: Rect = [Math.min(...profiles.map(p => p.bbox[0])) - reach, Math.min(...profiles.map(p => p.bbox[1])) - reach, Math.max(...profiles.map(p => p.bbox[2])) + reach, Math.max(...profiles.map(p => p.bbox[3])) + reach];
-      const idx = await RoadIndex.paced([null, ...await Promise.all(around.map(k => this.roadCell(k)))], within, pace);
+      const idx = await RoadIndex.paced([null, ...await this.waited(Promise.all(around.map(k => this.roadCell(k))), wait)], within, pace);
       for (const profile of profiles) {
         // A dry way deck's edge also stops halfway to the next dry way deck (the bus station's lanes share one structure:
         // each takes its own half of the survey polygon, so the pieces meet edge to edge instead of overlapping).
@@ -708,7 +842,8 @@ export class GroundStore {
     }
     for (const profile of profiles) {
       const owner = this.cellAt(profile.x[0], profile.y[0]);
-      (this.decksByCell.get(owner) ?? this.decksByCell.set(owner, []).get(owner)!).push(this.surface.addDeck(profile));
+      (this.decksByCell.get(owner) ?? this.decksByCell.set(owner, []).get(owner)!).push(this.surface.addDeck(profile, this.deckGround));
+      this.planTrace?.('deck', profile.id, key);
     }
   }
 
@@ -726,11 +861,13 @@ export class GroundStore {
       plan = (async () => {
         const cells = await Promise.all(GroundStore.neighbours(owner).map(k => this.roadCell(k)));
         if (!cells.some(c => c)) return;
+        const t0 = performance.now();
         const p = deck.profile, reach = Math.max(...p.halfWidth, ...(p.sides ?? [])) + 4, [x0, y0, x1, y1] = p.bbox;
         // A null first cell: SurfaceIndex keeps every polygon of its first cell (only the deck's box is wanted).
         const index = await RoadIndex.paced([null, ...cells], [x0 - reach, y0 - reach, x1 + reach, y1 + reach], pacer(this.options.paceMs));
         const edges = surveyDeckEdges(p, (x, y) => index.onDeck(x, y), (x, y) => index.onGround(x, y) && !index.onDeck(x, y));
         if (edges) this.surface.widenDeck(deck, edges, edgesBox(p, edges));
+        this.told('decks:edges', deck.profile.id, t0);
       })();
       this.edgePlans.set(deck.profile.id, plan);
     }
@@ -739,6 +876,9 @@ export class GroundStore {
 
   /** Measured decks assigned to `key` (optionally only those whose bbox meets `within`), each placed once. */
   private placeDecks(key: string, within?: Rect): void {
+    this.timed('decks:place', key, () => this.placeDecksNow(key, within));
+  }
+  private placeDecksNow(key: string, within?: Rect): void {
     const quant = this.elevation.quantization.xy;
     let placed = this.decksByCell.get(key);
     if (!placed) { placed = []; this.decksByCell.set(key, placed); }
@@ -750,7 +890,7 @@ export class GroundStore {
         const [a0, b0, a1, b1] = profile.bbox;
         if (a1 < within[0] || a0 > within[2] || b1 < within[1] || b0 > within[3]) continue;
       }
-      placed.push(this.surface.addDeck(profile));
+      placed.push(this.surface.addDeck(profile, this.deckGround));
     }
   }
 
@@ -787,11 +927,14 @@ export class GroundStore {
       else p = this.fetchBytes(`${EXTRACTS.water}/cells/${key}.json`).then(async bytes => {
         this.loadedBytes.water += bytes.byteLength;
         await beforeParse();
-        const cell = JSON.parse(new TextDecoder().decode(bytes)) as WaterCell;
-        const quant = this.elevation.quantization.xy, ox = cell.cell[0] * this.elevation.cellSizeM, oy = cell.cell[1] * this.elevation.cellSizeM;
-        const ring = (r: number[]) => { const out: Vec2[] = []; for (let i = 0; i < r.length; i += 2) out.push(this.toScene(ox + r[i] * quant, oy + r[i + 1] * quant)); return out; };
-        const geo: WaterGeometry = { polygons: cell.water.map(poly => poly.map(ring)), shores: cell.shore.map(ring) };
-        this.attachLevels(key, geo);
+        const geo = this.timed('parse:water', key, () => {
+          const cell = JSON.parse(new TextDecoder().decode(bytes)) as WaterCell;
+          const quant = this.elevation.quantization.xy, ox = cell.cell[0] * this.elevation.cellSizeM, oy = cell.cell[1] * this.elevation.cellSizeM;
+          const ring = (r: number[]) => { const out: Vec2[] = []; for (let i = 0; i < r.length; i += 2) out.push(this.toScene(ox + r[i] * quant, oy + r[i + 1] * quant)); return out; };
+          const geo: WaterGeometry = { polygons: cell.water.map(poly => poly.map(ring)), shores: cell.shore.map(ring) };
+          this.attachLevels(key, geo);
+          return geo;
+        });
         return (this.options.openings === false ? Promise.resolve(geo) : this.withOpenings(key, geo)).then(out => { this.waterResident.set(key, out); return out; });
       }).catch(() => null);
       this.water.set(key, p);
@@ -806,6 +949,10 @@ export class GroundStore {
 
   /** Open the water under footbridges whose water polygon stops at the bridge (water.ts openUnderFootbridges). */
   private async withOpenings(key: string, geo: WaterGeometry): Promise<WaterGeometry> {
+    const t0 = performance.now(), wait = { ms: 0 };
+    try { return await this.withOpeningsTimed(key, geo, wait); } finally { this.told('water:openings', key, t0, wait.ms); }
+  }
+  private async withOpeningsTimed(key: string, geo: WaterGeometry, wait: { ms: number }): Promise<WaterGeometry> {
     const rect = this.cellRect(key), quant = this.elevation.quantization.xy, decks: OpeningDeck[] = [];
     for (const k of GroundStore.neighbours(key)) for (const b of this.measuredByCell.get(k) ?? []) {
       let p = this.openingProfiles.get(b.id);
@@ -816,7 +963,7 @@ export class GroundStore {
     let r = openUnderFootbridges(geo, decks, rect, WATER_Z);
     if (this.options.wayOpenings !== false) {
       // OSM bridge ways over water cut at the bridge, no register outline carrying them (wayDecks.ts WAY_OPENING_REACH_M).
-      const around = GroundStore.neighbours(key), osms = await Promise.all(around.map(k => this.osmCell(k)));
+      const around = GroundStore.neighbours(key), osms = await this.waited(Promise.all(around.map(k => this.osmCell(k))), wait);
       // The cell's decode, the bridge ways and the ground crossings are separate tasks (#129: one water cell's decode
       // chain was an 11+ ms task while riding at 1x). Same steps, same order.
       await yieldToFrame();
@@ -875,7 +1022,7 @@ export class GroundStore {
     let p = this.osm.get(key);
     if (!p) {
       p = this.osmCells.has(key)
-        ? this.fetchBytes(`${EXTRACTS.osm}/cells/${key}.json.gz`).then(async bytes => { this.loadedBytes.osm += bytes.byteLength; await beforeParse(); const o = JSON.parse(new TextDecoder().decode(bytes)) as OsmGroundExtract; return this.options.prepareOnly ? { ...o, areas: [] } : o; }).catch(() => null)
+        ? this.fetchBytes(`${EXTRACTS.osm}/cells/${key}.json.gz`).then(async bytes => { this.loadedBytes.osm += bytes.byteLength; await beforeParse(); const o = this.timed('parse:osm', key, () => JSON.parse(new TextDecoder().decode(bytes)) as OsmGroundExtract); return this.options.prepareOnly ? { ...o, areas: [] } : o; }).catch(() => null)
         : Promise.resolve(null);
       this.osm.set(key, p);
     }
@@ -887,19 +1034,22 @@ export class GroundStore {
     let p = this.parks.get(key);
     if (!p) {
       p = this.parkCells.has(key)
-        ? this.fetchBytes(`${EXTRACTS.parks}/cells/${key}.json.gz`).then(async bytes => { this.loadedBytes.parks += bytes.byteLength; await beforeParse(); return JSON.parse(new TextDecoder().decode(bytes)) as ParksCell; }).catch(() => null)
+        ? this.fetchBytes(`${EXTRACTS.parks}/cells/${key}.json.gz`).then(async bytes => { this.loadedBytes.parks += bytes.byteLength; await beforeParse(); return this.timed('parse:parks', key, () => JSON.parse(new TextDecoder().decode(bytes)) as ParksCell); }).catch(() => null)
         : Promise.resolve(null);
       this.parks.set(key, p);
     }
     return p;
   }
 
+  /** The roads-v1 directory the cells are read from (roadCells.ts roadCellDir; `cells` with `?roadSlivers=0`). */
+  roadCellDir = 'cells';
+
   /** A cell's road partition (null: no roads-v1 cell for it, or roads off). */
   roadCell(key: string): Promise<RoadCell | null> {
     let p = this.roads.get(key);
     if (!p) {
       p = this.roadCells.has(key)
-        ? this.fetchBytes(`${EXTRACTS.roads}/cells/${key}.json.gz`).then(async bytes => { this.loadedBytes.roads += bytes.byteLength; await beforeParse(); const c = JSON.parse(new TextDecoder().decode(bytes)) as RoadCell; return ROAD_CELL_VERSIONS.includes(c.version) ? (this.options.prepareOnly ? { ...c, kerbs: [], coverWays: [] } : c) : null; }).catch(() => null)
+        ? this.fetchBytes(`${EXTRACTS.roads}/${this.roadCellDir}/${key}.json.gz`).then(async bytes => { this.loadedBytes.roads += bytes.byteLength; await beforeParse(); const c = this.timed('parse:roads', key, () => JSON.parse(new TextDecoder().decode(bytes)) as RoadCell); return ROAD_CELL_VERSIONS.includes(c.version) ? (this.options.prepareOnly ? { ...c, kerbs: [], coverWays: [] } : c) : null; }).catch(() => null)
         : Promise.resolve(null);
       this.roads.set(key, p);
     }
@@ -911,7 +1061,7 @@ export class GroundStore {
     let p = this.marks.get(key);
     if (!p) {
       p = this.markCells.has(key)
-        ? this.fetchBytes(`${EXTRACTS.marks}/cells/${key}.json.gz`).then(async bytes => { this.loadedBytes.roads += bytes.byteLength; await beforeParse(); const c = JSON.parse(new TextDecoder().decode(bytes)); return isRoadMarksCell(c) ? decodeMarks(c) : []; }).catch(() => [])
+        ? this.fetchBytes(`${EXTRACTS.marks}/cells/${key}.json.gz`).then(async bytes => { this.loadedBytes.roads += bytes.byteLength; await beforeParse(); return this.timed('parse:marks', key, () => { const c = JSON.parse(new TextDecoder().decode(bytes)); return isRoadMarksCell(c) ? decodeMarks(c) : []; }); }).catch(() => [])
         : Promise.resolve([]);
       this.marks.set(key, p);
     }
@@ -936,7 +1086,7 @@ export class GroundStore {
       const path = `${EXTRACTS.rail}/cells/${key}.json.gz`, retry = this.options.railRetry !== false;
       const fetchBytes = () => retry ? retrying(() => this.fetchBytes(path), this.options.railRetryMs) : this.fetchBytes(path);
       const loaded = this.railCells.has(key)
-        ? fetchBytes().then(async bytes => { this.loadedBytes.osm += bytes.byteLength; await beforeParse(); const c = JSON.parse(new TextDecoder().decode(bytes)); if (!isRailCell(c)) { outcome('empty'); if (retry) this.loadErrors.push(`rail ${key}: not a rail-v1 cell`); return none; } const r = { ways: decodeRail(c), platforms: decodePlatforms(c) }; outcome(`ok:${r.ways.length}`); return r; })
+        ? fetchBytes().then(async bytes => { this.loadedBytes.osm += bytes.byteLength; await beforeParse(); const c = this.timed('parse:rail', key, () => JSON.parse(new TextDecoder().decode(bytes))); if (!isRailCell(c)) { outcome('empty'); if (retry) this.loadErrors.push(`rail ${key}: not a rail-v1 cell`); return none; } const r = { ways: decodeRail(c), platforms: decodePlatforms(c) }; outcome(`ok:${r.ways.length}`); return r; })
         : (outcome('absent'), Promise.resolve(none));
       p = loaded.catch(error => {
         const message = String((error as Error)?.message ?? error).slice(0, 120);
@@ -958,7 +1108,7 @@ export class GroundStore {
     let p = this.courtyards.get(key);
     if (!p) {
       p = this.courtyardCells.has(key)
-        ? this.fetchBytes(`${EXTRACTS.courtyards}/cells/${key}.json.gz`).then(async bytes => { this.loadedBytes.courtyards += bytes.byteLength; await beforeParse(); return JSON.parse(new TextDecoder().decode(bytes)) as CourtyardsCell; }).catch(() => null)
+        ? this.fetchBytes(`${EXTRACTS.courtyards}/cells/${key}.json.gz`).then(async bytes => { this.loadedBytes.courtyards += bytes.byteLength; await beforeParse(); return this.timed('parse:courtyards', key, () => JSON.parse(new TextDecoder().decode(bytes)) as CourtyardsCell); }).catch(() => null)
         : Promise.resolve(null);
       this.courtyards.set(key, p);
     }
@@ -974,7 +1124,7 @@ export class GroundStore {
     const geos = waterAround.filter((g): g is WaterGeometry => !!g), polys = geos.flatMap(g => g.polygons);
     let box: [number, number, number, number] | null = null;
     for (const poly of polys) for (const [x, y] of poly[0] ?? []) box = box ? [Math.min(box[0], x), Math.min(box[1], y), Math.max(box[2], x), Math.max(box[3], y)] : [x, y, x, y];
-    const rings = wetGroundRings(cell.surfaces, { wet: waterTest(polys), ground: (x, y) => this.surface.ground(x, y), waterZ: (x, y) => waterZAt(geos, x, y, WATER_Z), waterBox: box });
+    const rings = wetGroundRings(cell.surfaces, { wet: waterTest(polys, this.options.planShare !== false), ground: (x, y) => this.surface.ground(x, y), waterZ: (x, y) => waterZAt(geos, x, y, WATER_Z), waterBox: box });
     this.wetGroundMemo.set(cell, rings);
     return rings;
   }
@@ -1003,6 +1153,7 @@ export class GroundStore {
       Promise.all(around.map(k => this.markCell(k))),
       Promise.all(around.map(k => this.railCell(k))),
     ]);
+    const tAssemble = performance.now();
     const rails = railsAround[around.indexOf(key)] ?? [];
     // Platforms of the 3×3 (a platform crossing a seam is in both cells' lists: once here).
     const platformSeen = new Set<string>(), railPlatforms = rails.length ? (await Promise.all(around.map(k => this.railPlatformCell(k)))).flat().filter(p => { const k = p.ring.map(q => `${q[0]},${q[1]}`).join(';'); return !platformSeen.has(k) && !!platformSeen.add(k); }) : [];
@@ -1011,7 +1162,10 @@ export class GroundStore {
     // Ways the road polygons cover (roads-v1) likewise: a covered way's bands are gone wherever it is drawn.
     const coverWays = [...new Set(roadsAround.flatMap(r => r?.coverWays ?? []))];
     const hasRoads = roadsAround.some(r => !!r);
-    const rect = this.cellRect(key), pad = 200;
+    const rect = this.cellRect(key), pad = CELL_INPUT_PAD_M;
+    // Deterministic: decks and cuts in id order (a store's arrival order is its history).
+    const byId = <T>(id: (t: T) => string) => (a: T, b: T) => id(a) < id(b) ? -1 : id(a) > id(b) ? 1 : 0;
+    const deckOrder = <T extends DeckSurface>(list: readonly T[]): T[] => this.det ? [...list].sort(byId<T>(d => d.profile.id)) : [...list];
     const near = (b: [number, number, number, number]) => !(b[2] < rect[0] - pad || b[0] > rect[2] + pad || b[3] < rect[1] - pad || b[1] > rect[3] + pad);
     // Movable leaves get the fixed spans to the quays their bridge way crosses (decks.ts movableApproaches).
     const bridgeLines = this.options.approaches === false ? [] : [osm, ...osmAround].flatMap(o => o?.ways ?? [])
@@ -1025,10 +1179,11 @@ export class GroundStore {
     // and the kit draw it): the survey's ground polygons (h = 0) that end at the bridge's surveyed start overlie that
     // water, and the street mask cut them there, leaving the grey deck top as a jagged band across the road at both
     // ends (user 2026-10-16, a Prinsengracht bridge). The reach is read off the water polygons (the mask is built from these rings).
-    const wetAround = waterTest(waterAround.flatMap(g => g?.polygons ?? []));
+    const wetAround = waterTest(waterAround.flatMap(g => g?.polygons ?? []), this.options.planShare !== false);
     const wetGround = this.options.wetGround === false ? [] : this.wetGroundOf(roadsAround[around.indexOf(key)] ?? null, waterAround);
     const deckRingsAround: Vec2[][] = [
-      ...this.surface.decks.filter(d => near(d.profile.bbox)).map(d => GroundSurface.footprint(d, this.options.deckEnds === false ? undefined : deckReach(d, wetAround).reach)),
+      // Deterministic: the decks of the 3×3 (a store that prepared the neighbours also holds decks of cells beyond it).
+      ...deckOrder((this.det ? around.flatMap(k => this.decks(k)) : this.surface.decks).filter(d => near(d.profile.bbox))).map(d => GroundSurface.footprint(d, this.options.deckEnds === false ? undefined : deckReach(d, wetAround).reach)),
       ...around.flatMap(k => [...this.flatDecks(k), ...(k === key ? own : approaches(k)).map(a => a.ring)]),
       // Ground polygons standing over mapped water at street height (a plein over a canal: the Muntplein over the Singel,
       // wetGround.ts): decks too, so the water mask never cuts them (user 2026-10-30, water through the Muntplein).
@@ -1036,11 +1191,11 @@ export class GroundStore {
       // roads-v1 deck polygons (h ≥ 1): the water mask never cuts a surveyed bridge surface (or the bands over it).
       ...roadsAround.flatMap(r => (r ? r.surfaces.filter(s => s.h >= 1).map(s => decodeRoadLine(s.r[0])).filter(ring => ring.length >= 3 && near([Math.min(...ring.map(p => p[0])), Math.min(...ring.map(p => p[1])), Math.max(...ring.map(p => p[0])), Math.max(...ring.map(p => p[1]))])) : [])),
     ];
-    return {
+    const input: CellInput = {
       key, lod, detail, rect, surface: this.surface, water,
       waterAround: waterAround.filter((g): g is WaterGeometry => !!g),
-      decks: this.decks(key), deckRingsAround, wetGround,
-      cuts: this.surface.cuts.filter(c => near(c.bbox)),
+      decks: this.det ? deckOrder(this.decks(key)) : this.decks(key), deckRingsAround, wetGround,
+      cuts: this.det ? this.surface.cuts.filter(c => near(c.bbox)).sort((a, b) => a.id < b.id ? -1 : a.id > b.id ? 1 : a.bbox[0] - b.bbox[0] || a.bbox[1] - b.bbox[1]) : this.surface.cuts.filter(c => near(c.bbox)),
       flatDecks: [...this.flatDecks(key), ...own.map(a => a.ring)],
       // bridgeGaps: the survey's deck polygons are drawn on the flat footprints around (a polygon's point may lie in a neighbour's).
       ...(this.bridgeGapsOn ? { flatDecksAround: around.flatMap(k => this.flatDecks(k)) } : {}),
@@ -1048,12 +1203,14 @@ export class GroundStore {
       // Landed platforms near the cell (landedPlatforms.ts): the quay wall leaves them out, their own stone walls meet it.
       landedPlatforms: landedPlatformRings(toLocal).filter(r => near(r.reduce((b, p) => [Math.min(b[0], p[0]), Math.min(b[1], p[1]), Math.max(b[2], p[0]), Math.max(b[3], p[1])], [Infinity, Infinity, -Infinity, -Infinity] as [number, number, number, number]))),
       osm, osmAround: osmAround.filter((o): o is OsmGroundExtract => !!o),
-      parks: parksAround[around.indexOf(key)] ?? null, parksAround, dropWays, ...(this.options.clipDecks === false ? { clipDecks: false } : {}), ...(this.options.deckEnds === false ? { deckEnds: false } : {}), ...(this.options.bridgeGaps === false ? { bridgeGaps: false } : {}),
+      parks: parksAround[around.indexOf(key)] ?? null, parksAround, dropWays, ...(this.options.clipDecks === false ? { clipDecks: false } : {}), ...(this.options.deckEnds === false ? { deckEnds: false } : {}), ...(this.options.bridgeGaps === false ? { bridgeGaps: false } : {}), ...(this.options.bridgeCarry === false ? { bridgeCarry: false } : {}), ...(this.options.redDedupe === false ? { redDedupe: false } : {}), ...(this.options.portalClip === false ? { portalClip: false } : {}), ...(this.options.portalEnds === false ? { portalEnds: false } : {}),
       ...(hasRoads ? { roads: roadsAround[around.indexOf(key)] ?? null, roadsAround, coverWays, marks: marksAround.flat(), evidence: this.evidence } : {}),
       courtyards: courtyardsAround[around.indexOf(key)] ?? null, courtyardsAround,
-      ...(rails.length ? { rails, railsAround: railsAround.flat(), ...(railPlatforms.length ? { railPlatforms } : {}), ...(this.options.railLevels === false ? { railLevels: false } : {}), ...(this.options.railBridges === false ? { railBridges: false } : {}), ...(this.options.railLegacy ? { railLegacy: true } : {}) } : {}),
+      ...(rails.length ? { rails, railsAround: railsAround.flat(), ...(railPlatforms.length ? { railPlatforms } : {}), ...(this.options.railLevels === false ? { railLevels: false } : {}), ...(this.options.railBridges === false ? { railBridges: false } : {}), ...(this.options.railLegacy ? { railLegacy: true } : {}), ...(this.options.railOnStreet === false ? { railOnStreet: false } : {}) } : {}),
       project: p => toLocal(p[0], p[1]),
     };
+    this.told('assemble', key, tAssemble);
+    return input;
   }
 
   /**

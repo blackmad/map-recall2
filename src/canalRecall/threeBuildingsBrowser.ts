@@ -1,9 +1,11 @@
+import { kitFadeFlag } from './engine/popFade';
 import { BuildingContextIndex } from './buildingContextIndex.js';
 import { blendAtZoom, presenceOf, transitionOn } from './overviewTransition/blend.js';
 import { footprintTone } from './overviewTransition/basemapOverview.js';
 import { ChunkBuildQueue } from './engine/worldStreamer.js';
 import { poolWorkerUrl, sharedWorkerPool, type WorkerPool } from './engine/workerPool.js';
 import { FrameBudget } from './engine/worldStreamer.js';
+import { farPartHidden, nearTileCells } from './engine/farHandover.js';
 import { buildSpecialKits, buildSpecialBoats } from './buildingSpecialChunks.js';
 import {buildTransportedEnvelopeChunk,diagnosticEnvelopeTransport,EMPTY_ENVELOPE_TRANSPORT,type EnvelopeTransport} from './surveyedEnvelopeTransport.js';
 // Browser adapter: facade walls for the streamed city as one three.js custom
@@ -25,6 +27,7 @@ import { ROOF_CELL_M, paintRoofLayers } from './roofCells.js';
 import { FACADE_TIER_GLSL, ROOF_LAYERS_OFF, ROOF_TIER_GLSL, cellTapsEnabled, cellTapsOptions, cellTapsUniform, facadeTierAnisoEnabled, facadeTierAnisoUniform, facadeTierUniform, roofTierUniform } from './roofTier.js';
 import { pageCoarsePointer, pageTextureParams, pageTextureTier, texturePolicyFlag, type TextureParams } from './look/texturePolicy.js';
 import { withMonumentGable } from './monumentGables.js';
+import { withRegisterFacts, registerFactsEnabled, registerFactsFromExtract } from './facade/registerRecipe.js';
 import { decorateRoof, exceptLandmarks as exceptLandmarksOf, fitRect, localOuterRing, planRoof, type RoofPlan } from './roofMesh.js';
 import { BAY_ENTRIES, BAY_LAYER_COUNT, FATIH_MASONRY_LAYER, bayLayer, bayLookFor, bayVariant } from './bayLook.js';
 import { paintGlassBlockCell } from './glassBlockTexture.js';
@@ -226,9 +229,11 @@ const tileKeyAt = (polygons: number[][][][], zoom: number): string => {
 
 /** Landmarks keep their own form; kit-modelled parts and bodies pass through, the rest get a period fallback (roofMesh.ts). */
 const exceptLandmarks = <T extends { properties: Record<string, unknown>; type: 'Feature'; geometry: unknown }>(decorate: (f: T) => T, ids: ReadonlySet<string>, listed?: ReadonlySet<string>) => exceptLandmarksOf(decorate, ids, KIT_MODELLED_IDS, listed);
-export { decorateRoof, exceptLandmarks, decorateKitRoof, decorateFront, decorateShopfront, setShopfronts, KIT_HIDE_IDS, withMonumentGable };
+export { decorateRoof, exceptLandmarks, decorateKitRoof, decorateFront, decorateShopfront, setShopfronts, KIT_HIDE_IDS, withMonumentGable, withRegisterFacts, registerFactsEnabled, registerFactsFromExtract };
 
 const KIT_KEY = '__kit';
+/** `?kitFade` under `?popFade` (lanes P2 #325, P3 #328): the kit chunk's rebuilds cross-fade like any other chunk's. Default on. */
+const KIT_FADE = kitFadeFlag();
 /** chunkRank: an uninstalled coarse shell builds before detail up to this much nearer (metres of ahead rank). */
 const COARSE_HOLE_BONUS_M = 400;
 const CHUNK_FADE = (() => {
@@ -291,13 +296,13 @@ function fadeClone(source: any, value: number, under?: { value: number }): any |
   return clone;
 }
 /** What the far tier reads off the facade layer (ThreeBuildings.farShellHost). `cell`: the far cell asking (a drawn baked coarse cell hides it). */
-export type FarShellHostView = { THREE: any; scene: any; material: any; look: string; fadeMaterial(value: number): any | null; coarseDrawn(tile: string, cell?: string): boolean };
+export type FarShellHostView = { THREE: any; scene: any; material: any; look: string; fadeMaterial(value: number): any | null; coarseDrawn(tile: string, cell?: string): boolean; /** A drawn `near:` detail chunk lies in this world cell (lane R4-K: such a cell is not released to the far tier). */ nearInCell(cell: string): boolean };
 /**
  * The baked coarse tier as the facade layer sees it (engine/bakedCoarse.ts, lane R4-A #243): it is told the resident
  * buildings' cells while grouping (`plan`), answers which cells it covers (their buildings build no runtime `coarse:`
  * chunk) and which it draws (the far tier hides those cells).
  */
-export interface BakedCoarseGate { plan(cells: ReadonlySet<string>): void; covers(cell: string): boolean; drawn(cell: string): boolean; /** The GL context was lost: the meshes' CPU arrays are gone, fetch again. */ contextLost?(): void }
+export interface BakedCoarseGate { plan(cells: ReadonlySet<string>): void; covers(cell: string): boolean; drawn(cell: string): boolean; /** Covered, not drawn, release on (BakedCoarse.holdsFar, lane R4-K). */ holdsFar?(cell: string): boolean; /** The GL context was lost: the meshes' CPU arrays are gone, fetch again. */ contextLost?(): void }
 /** What the baked coarse tier reads off the facade layer (ThreeBuildings.bakedCoarseHost). */
 export type BakedCoarseHostView = { THREE: any; scene: any; material: any; look: string; layerHash: string; fadeMaterial(value: number): any | null; swapSlots(): boolean; attach(entry: BakedEntry & { applied?: Map<string, number> }): void; detach(entry: BakedEntry): void; groundBase(id: string): number | null | undefined; regroup(): void; setGate(gate: BakedCoarseGate | null): void; /** Per drawn frame (the dissolves), from the render, not the game's sync. */ setFrame(fn: (() => void) | null): void };
 const BOAT_PREFIX = 'boats:';
@@ -1342,21 +1347,37 @@ export class ThreeBuildings {
       fadeMaterial: (value: number) => fadeClone(material, value),
       // A resident tile draws its buildings as the coarse shell, or as detailed `near:` chunks of its z16 sub-tiles.
       // Baked coarse (lane R4-A #243): a far cell whose baked shell draws here hides every part of it.
-      coarseDrawn: (tile: string, cell?: string) => { if (cell !== undefined && this.bakedGate?.drawn(cell)) return true; const key = `${COARSE_PREFIX}${tile}`; return (!!this.chunks.get(key)?.mesh && !this.fading.has(key)) || this.nearDrawnIn(tile); },
+      // Lane R4-K (#255): where the baked tier covers a cell it does not draw (released from the air, or arriving after a
+      // return), the hand-over is per cell: the tile's coarse chunk holds none of its buildings, and a near chunk only
+      // its own z16 tile's, so only a near chunk inside this cell keeps the part hidden (farPartHidden).
+      coarseDrawn: (tile: string, cell?: string) => {
+        const gate = this.bakedGate, bakedDrawn = cell !== undefined && !!gate?.drawn(cell);
+        if (bakedDrawn) return true;
+        if (cell !== undefined && gate?.holdsFar?.(cell)) return farPartHidden({ bakedDrawn, bakedHolds: true, coarseTile: false, nearTile: false, nearCell: this.nearDrawnIn(tile, cell) });
+        const key = `${COARSE_PREFIX}${tile}`; return (!!this.chunks.get(key)?.mesh && !this.fading.has(key)) || this.nearDrawnIn(tile);
+      },
+      nearInCell: (cell: string) => { this.nearDrawnIn(''); return this.nearCells.has(cell); },
     };
   }
   private farHost: FarShellHostView | null = null;
   /** z14 tiles with an installed `near:` chunk, re-read at most every 200 ms (the far tier asks per part per frame). */
   private nearTilesAt = -Infinity;
-  private readonly nearTiles = new Set<string>();
-  private nearDrawnIn(tile: string): boolean {
+  private nearTiles = new Map<string, Set<string>>();
+  /** The world cells the drawn near chunks touch (lane R4-K). */
+  private readonly nearCells = new Set<string>();
+  /** A drawn near chunk in z14 tile `tile` (and, given `cell`, inside that world cell: farShells.ts nearTileCells). */
+  private nearDrawnIn(tile: string, cell?: string): boolean {
     const now = performance.now();
     if (now - this.nearTilesAt > 200) {
-      this.nearTilesAt = now; this.nearTiles.clear();
-      const shift = 2 ** (this.detailZoom - TILE_ZOOM);
-      for (const [k, c] of this.chunks) if (k.startsWith('near:') && c?.mesh) { const [x, y] = k.slice(5).split('/').map(Number); this.nearTiles.add(`${Math.floor(x / shift)}/${Math.floor(y / shift)}`); }
+      this.nearTilesAt = now;
+      const keys: string[] = [];
+      for (const [k, c] of this.chunks) if (k.startsWith('near:') && c?.mesh) keys.push(k.slice(5));
+      this.nearTiles = nearTileCells(keys, this.detailZoom, TILE_ZOOM);
+      this.nearCells.clear();
+      for (const cells of this.nearTiles.values()) for (const c of cells) this.nearCells.add(c);
     }
-    return this.nearTiles.has(tile);
+    const cells = this.nearTiles.get(tile);
+    return !!cells && (cell === undefined || cells.has(cell));
   }
 
   /** performance.now() of the first coarse shell installed with geometry, or null. */
@@ -2064,8 +2085,12 @@ export class ThreeBuildings {
     }
   }
 
-  /** Whether chunks of `key` dissolve in and out now. */
-  private fades(key: string): boolean { return CHUNK_FADE && key !== KIT_KEY && !this.basemapHeld; }
+  /**
+   * Whether chunks of `key` dissolve in and out now. The street-kit chunk (one mesh of every installed kit, rebuilt
+   * whole as kits come and go) cross-fades too with `?kitFade` (default on since P3 #328) (engine/popFade.ts, lane P2 #325): its rebuilds were the
+   * aerial pan's largest unfaded swap, 29 a minute beyond 1.2 km.
+   */
+  private fades(key: string): boolean { return CHUNK_FADE && (key !== KIT_KEY || KIT_FADE) && !this.basemapHeld; }
 
   /** SWAP_FADE: dissolve a leaving chunk's mesh out (removed when it has gone); false when its material cannot. */
   private fadeOut(mesh: any, ids?: ReadonlySet<string>): boolean {
@@ -2462,6 +2487,19 @@ export class ThreeBuildings {
     let n = !this.ready && this.textureSets.size ? 1 : 0;
     for (const key of new Set(keys)) if (chunkKeyDistanceM(key, this.rider, TILE_ZOOM) <= ringM) n++;
     return n;
+  }
+
+  /**
+   * Which of this layer's tiers owns the ground at lng/lat (lane S1 #313, engine/startHold.ts census): `facade` when
+   * the detail tile's `near:` chunk is installed, `coarse` when only the z14 runtime shell is, else `none`. `wanted`:
+   * the detail tile is in the current detail block, so a coarse shell there will still be replaced.
+   */
+  tierAt(lng: number, lat: number): { owner: 'facade' | 'coarse' | 'none'; wanted: boolean } {
+    const one = [[[[lng, lat]]]] as number[][][][];
+    const near = tileKeyAt(one, this.detailZoom);
+    if (this.chunks.get(`near:${near}`)?.mesh) return { owner: 'facade', wanted: true };
+    const wanted = this.detailTiles.has(near);
+    return { owner: this.chunks.get(COARSE_PREFIX + tileKeyAt(one, TILE_ZOOM))?.mesh ? 'coarse' : 'none', wanted };
   }
 
   /** Whether this layer draws through the shared frame. */

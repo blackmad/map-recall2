@@ -20,7 +20,10 @@ import { cityLookEnabled } from '../../../src/canalRecall/look/cityLook.ts';
 import { INFERRED_SLOT_SOURCE } from '../../../src/canalRecall/look/materialSlotInference.ts';
 import { landmarkHighlightStates } from '../../../src/canalRecall/look/highlightLandmarks.ts';
 import { buildPickBvhs, nearestVisibleHit } from '../../../src/canalRecall/landmarks/pickBvh.ts';
-import { anchorDistanceM, landmarkReachM, landmarkResidencyBudget, pickEvictions, withinReach } from '../../../src/canalRecall/landmarks/landmarkResidency.ts';
+import { anchorDistanceM, keepReachM, landmarkReachM, landmarkResidencyBudget, pastMinDwell, pickEvictions, withinReach } from '../../../src/canalRecall/landmarks/landmarkResidency.ts';
+import { popFadeFlag } from '../../../src/canalRecall/engine/popFade.ts';
+// Lane P3 (#328, `?landmarkDissolve`): a level swap dissolves (screen-door, complementary) instead of switching in one frame.
+import { DissolveWarmth, LevelDissolves, NO_LEVEL, landmarkArriveFlag, landmarkDissolveFlag, landmarkHoldFlag } from '../../../src/canalRecall/engine/levelDissolve.ts';
 import { freezeStaticMatrices } from '../../../src/canalRecall/landmarks/staticMatrices.ts';
 import { hasReleasedVertexData, releaseGeometryOnUpload, releaseVertexDataOnUpload } from '../../../src/canalRecall/landmarks/releaseVertexData.ts';
 import { SHADOW_STAND_IN_PENDING, disposeShadowStandIn, shadowStandInFor } from '../../../src/canalRecall/rendererShared/shadowStandIns.ts';
@@ -35,7 +38,7 @@ import { CHUNK_LOD2_DOWNGRADE_PX, chooseLandmarkLevel, initialLandmarkLevel, lod
 import { LandmarkBatch, batchingMaterial, mergeLevelByLook, mergeLevelByMaterial, mergeSiblingsByMaterial } from '../../../src/canalRecall/landmarks/landmarkBatch.ts';
 import { isAerialView } from '../../../src/canalRecall/rendererShared/aerialView.ts';
 import { lowestPandBase } from '../../../src/canalRecall/streetChunks/mergeRanges.ts';
-import { DEPTH_FADE_OPT_OUT } from '../../../src/canalRecall/look/depthFade.ts';
+import { isDepthFadeOptOut, optOutFog } from '../../../src/canalRecall/look/depthFade.ts';
 // Lane R4-G (#250): a textured model's images resident at a capped size while they stay finer than the screen.
 import { cappedSize, landmarkTexCapFlag, nearestPixelsPerMetre, texelDensity, wantsCap } from '../../../src/canalRecall/landmarks/landmarkTexCap.ts';
 const { THREE, GLTFLoader, MeshoptDecoder } = window.CanalRecallThree;
@@ -270,7 +273,7 @@ export class SignatureLandmarks {
     const dropped = (this._entries || []).filter(entry => ids.has(entry.spec.id));
     if (!dropped.length) return;
     this._entries = this._entries.filter(entry => !ids.has(entry.spec.id));
-    for (const entry of dropped) { this.shown.delete(entry.spec.id); this._unbatch(entry); entry.holder?.parent?.remove(entry.holder); this._disposeModel(entry.group, entry.spec, entry.url); this._disposeSpare(entry); }
+    for (const entry of dropped) { this._levelFades?.finish(entry); this.shown.delete(entry.spec.id); this._unbatch(entry); entry.holder?.parent?.remove(entry.holder); this._disposeModel(entry.group, entry.spec, entry.url); this._disposeSpare(entry); }
     this._applySuppression();
     this.map.triggerRepaint();
   }
@@ -306,6 +309,8 @@ export class SignatureLandmarks {
         }
         // The camera as last drawn: the street chunks' lod2 choice measures their size on screen through it.
         this._clipFromWorld = ctx.clipFromWorld;
+        // Level dissolves (lane P3): advance; keep frames coming while one runs.
+        if (this._levelFades?.size && this._levelFades.step()) this.map.triggerRepaint();
         if (this._texCapSide()) this._updateTexCaps(ctx.clipFromWorld);
         // The frame's world is already east/north/up metres.
         if (any && this._recipeLook) this._recipeLook.enuFromWorld.value.identity();
@@ -324,6 +329,7 @@ export class SignatureLandmarks {
     this.onHostWallOpeningsChanged();
     this._offView?.(); this._offView = null;
     this._pending.clear();
+    this._levelFades?.flush();
     for (const entry of this._entries) { entry.holder?.parent?.remove(entry.holder); this._disposeModel(entry.group, entry.spec, entry.url); this._disposeSpare(entry); }
     this._batch?.dispose(); this._batch = null;
     this._entries = [];
@@ -358,7 +364,27 @@ export class SignatureLandmarks {
   setSuspended(suspended) {
     if (this._suspended === !!suspended) return;
     this._suspended = !!suspended;
+    if (!this._suspended && this._reveal) { this._reveal = null; this._requestIdle = null; }
     if (!this._suspended) this._requestModels();
+  }
+
+  /**
+   * Reveal hand-over (engine/revealLandmarks.ts, #268): while loading is suspended under the loading screen, the models
+   * nearest the first racing frame load at that frame's pose (`camera`, a read-only pose camera) and pick their level
+   * there, at most `budget` of them. Resuming drops it; null clears it. Never called with `?revealSwap=0`.
+   */
+  setRevealPose(camera, budget = 0) {
+    this._reveal = camera && budget > 0 ? { camera, left: budget } : null;
+    this._requestIdle = null;
+    if (this._reveal && this._suspended) this._requestModels();
+  }
+
+  /** Runs `fn` with the reveal pose as the camera (the walk, the level choice and the view bounds read it). */
+  _atRevealPose(fn) {
+    const camera = this.camera;
+    this.camera = this._reveal.camera;
+    this._viewBoundsCache = null;
+    try { return fn(); } finally { this.camera = camera; this._viewBoundsCache = null; }
   }
 
   setEnabled(enabled) {
@@ -604,21 +630,26 @@ export class SignatureLandmarks {
   /** OSM ids of every footprint a currently drawn model replaces. */
   shownSuppressOsmIds() {
     if (!this.enabled || !this.suppressing) return [];
-    return (this._entries || []).flatMap(entry => [...entry.spec.suppressOsmIds]);
+    return this._suppressingEntries().flatMap(entry => [...entry.spec.suppressOsmIds]);
+  }
+
+  /** Entries whose replaced buildings are hidden: all but those still dissolving in under `?landmarkHold` (lane P5). */
+  _suppressingEntries() {
+    return (this._entries || []).filter(entry => !entry.arriving);
   }
 
   /** The same models as shownSuppressOsmIds, with their ids: `?bagTiles=1` swaps each
    *  model's suppress list for the pands covers.json says it stands on. */
   shownSuppressModels() {
     if (!this.enabled || !this.suppressing) return [];
-    return (this._entries || []).map(entry => ({ id: entry.spec.id, suppressOsmIds: [...entry.spec.suppressOsmIds] }));
+    return this._suppressingEntries().map(entry => ({ id: entry.spec.id, suppressOsmIds: [...entry.spec.suppressOsmIds] }));
   }
 
   /** Footprints of every currently drawn model, for spatial suppression of the
    *  coloured extract (which names buildings the landmark id does not). */
   shownFootprints() {
     if (!this.enabled || !this.suppressing) return [];
-    return (this._entries || [])
+    return this._suppressingEntries()
       .filter(entry => entry.spec.spatialSuppression !== false)
       .map(entry => entry.spec.footprint)
       .filter(Boolean);
@@ -641,7 +672,7 @@ export class SignatureLandmarks {
       base = this._baseBuildingFilter;
     }
     const osmIds = active
-      ? (this._entries || []).flatMap(entry => [...entry.spec.suppressOsmIds])
+      ? this._suppressingEntries().flatMap(entry => [...entry.spec.suppressOsmIds])
       : [];
     this.map.setFilter('building-3d', basemapBuildingFilter(osmIds, base));
   }
@@ -694,15 +725,17 @@ export class SignatureLandmarks {
     this._lastEvictCheck = now;
     const center = this.camera.center(), cos = Math.cos(center.lat * Math.PI / 180);
     const view = this._viewBounds();
+    // Lane P2 (#325, `?popFade`): kept while within 1.25 x the reach, and never given back in its first 10 s.
+    const hysteresis = this._popFade ??= popFadeFlag(), keepReach = keepReachM(this.reachM, hysteresis);
     const models = this._entries.map(entry => {
       const anchor = entry.placement?.anchor || entry.spec.surveyed?.anchor || entry.spec.footprint?.centre;
       const highlighted = entry.highlighted || (this.activeLandmarkId && entry.spec.landmarkId === this.activeLandmarkId);
       return {
         id: entry.spec.id,
         distanceSq: anchor ? ((anchor[0] - center.lng) * cos) ** 2 + (anchor[1] - center.lat) ** 2 : 0,
-        inView: !anchor || (this._nearby(entry.spec, anchor, view) && withinReach(anchor, center, this.reachM, this._radiusM(entry.spec))),
+        inView: !anchor || (this._nearby(entry.spec, anchor, view) && withinReach(anchor, center, keepReach, this._radiusM(entry.spec))),
         // Procedural building types rebuild a whole instanced scene; a level swap in flight owns its entry.
-        evictable: !!anchor && !entry.spec.sceneFactory && !entry.levelLoading && !highlighted,
+        evictable: !!anchor && !entry.spec.sceneFactory && !entry.levelLoading && !highlighted && pastMinDwell(this._arrivedAt?.get(entry.spec.id), now, hysteresis),
       };
     });
     const ids = new Set(pickEvictions(models, { budget: this.residencyBudget }));
@@ -755,7 +788,14 @@ export class SignatureLandmarks {
   }
 
   _requestModels() {
-    if (this._removed || !this.enabled || this._suspended || !this._loader || this._pending.size >= 2) return;
+    if (this._suspended && this._reveal) { this._atRevealPose(() => this._requestModelsPass(this._reveal)); return; }
+    this._requestModelsPass(null);
+  }
+
+  /** One request walk; `reveal` (the reveal hand-over) lets it run while suspended, for its remaining budget. */
+  _requestModelsPass(reveal) {
+    if (this._removed || !this.enabled || (this._suspended && !reveal) || !this._loader || this._pending.size >= 2) return;
+    if (reveal && reveal.left <= 0) return;
     if (this.loadVisibleOnly && this.camera.zoom() < this.minLoadZoom) return;
     // One view for the whole list (the camera cannot move inside this loop).
     const view = this.loadVisibleOnly ? this._viewBounds() : null;
@@ -763,7 +803,7 @@ export class SignatureLandmarks {
     // edges have moved less than half the margin of the nearest loadable model outside it, so this walk would find
     // nothing too. A walk ran on every frame that moved the view, ~0.8 s a minute at 4x. `?landmarkGate=0` walks always.
     const idle = this._requestIdle;
-    if (view && idle && this._gateOn() && idle.rev === this._requestRev && idle.models === this.models && idle.generation === this._generation && canSkipWalk(idle.view, view, idle.slack)) {
+    if (view && idle && !reveal && this._gateOn() && idle.rev === this._requestRev && idle.models === this.models && idle.generation === this._generation && canSkipWalk(idle.view, view, idle.slack)) {
       this._gateCheck(view);
       return;
     }
@@ -771,17 +811,18 @@ export class SignatureLandmarks {
     const candidates = this.models.filter(spec => !this.shown.has(spec.id) && !this._pending.has(spec.id) &&
       !this._failed.has(spec.id) && (!this.loadVisibleOnly || (this._nearby(spec, undefined, view)
         && (!reachFrom || withinReach(spec.surveyed?.anchor || spec.footprint?.centre, reachFrom, this.reachM, this._radiusM(spec))))));
-    this._requestIdle = view && !candidates.length ? { rev: this._requestRev, models: this.models, generation: this._generation, view: { ...view }, slack: this._loadableSlack(view) } : null;
+    this._requestIdle = view && !reveal && !candidates.length ? { rev: this._requestRev, models: this.models, generation: this._generation, view: { ...view }, slack: this._loadableSlack(view) } : null;
     const center = this.camera.center();
     const distance = spec => {
       const anchor = spec.surveyed?.anchor || spec.footprint?.centre;
       return anchor ? ((anchor[0] - center.lng) * Math.cos(center.lat * Math.PI / 180)) ** 2 + (anchor[1] - center.lat) ** 2 : Infinity;
     };
     if (this.loadVisibleOnly) candidates.sort((a, b) => distance(a) - distance(b));
-    while (this._pending.size < 2 && candidates.length) {
+    while (this._pending.size < 2 && candidates.length && (!reveal || reveal.left > 0)) {
       const spec = candidates.shift(), generation = this._generation;
       if (this._pending.has(spec.id) || this.shown.has(spec.id)) continue;
       this._pending.set(spec.id, generation);
+      if (reveal) reveal.left--;
       this._logRequest(spec);
       const finish = () => {
         if (this._removed || generation !== this._generation) return;
@@ -1209,6 +1250,7 @@ export class SignatureLandmarks {
    *  Buildings do not move, so the matrix is computed once here rather than
    *  every frame. */
   _add(spec, imported, map, url, level = 'full') {
+    (this._arrivedAt ??= new Map()).set(spec.id, performance.now());
     const bounds = new THREE.Box3().setFromObject(imported);
     const min = bounds.min;
     const max = bounds.max;
@@ -1282,6 +1324,8 @@ export class SignatureLandmarks {
       radiusMetres: Math.hypot(size.x, size.z) / 2 * placement.scale };
     this._entries.push(entry);
     this._releaseVertexData(spec, imported);
+    // Lane P4 (#330): the first appearance dissolves in (out of the batch until it ends, as a level dissolve).
+    this._startArrivalDissolve(entry);
     this._syncBatch(entry);
     this._attachShadowStandIn(entry);
     if (this._groundBase) this._applyGroundBase(entry);
@@ -1450,7 +1494,8 @@ export class SignatureLandmarks {
     if (this._removed || !this.enabled || !this._loader || this._updatingLevels) return;
     // A swap re-applies the highlight, which asks for levels again: one pass at a time.
     this._updatingLevels = true;
-    try { this._updateLevelsPass(); } finally { this._updatingLevels = false; }
+    // Under the reveal hand-over the levels are judged at the first racing frame's pose, not the hold's (#268).
+    try { if (this._suspended && this._reveal) this._atRevealPose(() => this._updateLevelsPass()); else this._updateLevelsPass(); } finally { this._updatingLevels = false; }
   }
 
   _updateLevelsPass() {
@@ -1547,7 +1592,7 @@ export class SignatureLandmarks {
       return key;
     }
     if (!material.vertexColors || material.type !== 'MeshLambertMaterial' || material.map) return null;
-    return material.fog === false ? 'noFade' : 'fade';
+    return isDepthFadeOptOut(material) ? 'noFade' : 'fade';
   }
 
   _landmarkBatch(entry) {
@@ -1567,7 +1612,7 @@ export class SignatureLandmarks {
         // The per-model path's material after _shade, _fadeOptOut and the merge: Lambert, double-sided GLB faces, colour per vertex.
         const material = new THREE.MeshLambertMaterial({ vertexColors: true, side: THREE.DoubleSide });
         material.name = `landmark-batch ${key}`;
-        if (key === 'noFade') { material.fog = false; material.userData[DEPTH_FADE_OPT_OUT] = true; }
+        if (key === 'noFade') optOutFog(material);
         return material;
       },
       configure: mesh => {
@@ -1584,6 +1629,8 @@ export class SignatureLandmarks {
    * picks them all the same), or takes it out: another level, a lit landmark, a mirrored placement, or `?landmarkBatch=0`.
    */
   _syncBatch(entry) {
+    // Mid-dissolve both levels draw their own meshes (the batch has no dissolve); the batch takes it at the end.
+    if (this._levelFades?.has(entry)) { this._unbatch(entry); return; }
     const meshes = this._lod2Meshes(entry);
     // A dimmed neighbour (`?highlight=c`) keeps its level but draws its own dimmed meshes.
     const want = meshes.length > 0 && this._batchOn() && !this._isLit(entry) && (!entry.highlightState || entry.highlightState === 'plain') && !entry.placement.mirror;
@@ -1641,6 +1688,8 @@ export class SignatureLandmarks {
 
   /** Puts `incoming` (already loaded) in place of the drawn level in one step, aligned with it. */
   _swapLevel(entry, incoming, level) {
+    // A dissolve still running on this model ends first (its outgoing level leaves now).
+    this._levelFades?.finish(entry);
     const outgoing = entry.imported;
     // Same normalisation as the first level, so the two overlay exactly.
     incoming.position.copy(outgoing.position);
@@ -1648,7 +1697,9 @@ export class SignatureLandmarks {
     incoming.updateMatrix();
     freezeStaticMatrices(incoming);
     entry.group.add(incoming);
-    entry.group.remove(outgoing);
+    // Lane P3 (#328): on screen, the two levels dissolve into each other (the outgoing leaves at the end).
+    const dissolving = this._startLevelDissolve(entry, incoming, outgoing);
+    if (!dissolving) entry.group.remove(outgoing);
     this._releaseVertexData(entry.spec, incoming);
     entry.imported = incoming;
     entry.pickBox = null;
@@ -1667,6 +1718,60 @@ export class SignatureLandmarks {
     this._syncBatch(entry);
     this._attachShadowStandIn(entry);
     this.map.triggerRepaint();
+  }
+
+  /**
+   * Whether the dissolve programs of `roots` are compiled (the fade state is created on the way). Cold variants are
+   * compiled off the frame and the caller goes in one step this time (no program links inside a frame).
+   */
+  _dissolveWarm(roots) {
+    this._levelFades ||= new LevelDissolves();
+    this._dissolveWarmth ||= new DissolveWarmth();
+    const cold = this._dissolveWarmth.cold(roots);
+    if (!cold.size) return true;
+    const frame = this.sharedFrame;
+    this._dissolveWarmth.warmUp(cold, items => {
+      const group = new THREE.Group();
+      for (const item of items) { const mesh = new THREE.Mesh(item.geometry, item.material); mesh.receiveShadow = item.receiveShadow; group.add(mesh); }
+      return group;
+    }, group => frame.compileAsync ? frame.compileAsync(group) : Promise.resolve());
+    return false;
+  }
+
+  /**
+   * Lane P4 (#330, `?landmarkArrive=0` restores the one-frame arrival): a model's first appearance dissolves in over
+   * LEVEL_DISSOLVE_MS, a level dissolve with no outgoing level; it joins the batch at the end. False: drawn at once.
+   */
+  _startArrivalDissolve(entry) {
+    if (!this.sharedFrame || !entry.holder?.visible) return false;
+    if (this._arriveOn === undefined) this._arriveOn = landmarkArriveFlag();
+    if (!this._arriveOn || !this._dissolveWarm([entry.imported])) return false;
+    // Lane P5 (#332): the building it replaces stays until the dissolve ends (`?landmarkHold=0`: it leaves at once).
+    if (this._holdOn === undefined) this._holdOn = landmarkHoldFlag();
+    entry.arriving = this._holdOn;
+    this._levelFades.start(entry, entry.imported, NO_LEVEL, () => {
+      const held = entry.arriving; entry.arriving = false;
+      if (this._entries?.includes(entry)) { this._syncBatch(entry); if (held) this._applySuppression(); this.map.triggerRepaint(); }
+    });
+    return true;
+  }
+
+  /**
+   * Lane P3 (#328, `?landmarkDissolve=0` restores the one-step swap): a swap of a model on screen dissolves, the
+   * incoming level drawing where the screen-door hash < t and the outgoing where it is >= t (engine/levelDissolve.ts),
+   * over LEVEL_DISSOLVE_MS. A swap whose dissolve programs are not compiled yet goes in one step and has them compiled
+   * off the frame, so no swap links a program inside a frame. False: the caller removes the outgoing level now.
+   */
+  _startLevelDissolve(entry, incoming, outgoing) {
+    if (!this.sharedFrame || !outgoing || !entry.holder?.visible) return false;
+    if (this._dissolveOn === undefined) this._dissolveOn = landmarkDissolveFlag();
+    if (!this._dissolveOn) return false;
+    if (!this._dissolveWarm([incoming, outgoing])) return false;
+    this._levelFades.start(entry, incoming, outgoing, () => {
+      entry.group.remove(outgoing);
+      if (this._entries?.includes(entry)) { this._syncBatch(entry); this.map.triggerRepaint(); }
+    });
+    return true;
   }
 
   /**

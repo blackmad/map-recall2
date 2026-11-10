@@ -1,0 +1,169 @@
+{
+ "street": "Zesde Vogelstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched n/a (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012146114",
+   "addresses": [
+    "Zesde Vogelstraat 21"
+   ],
+   "groundUnits": [
+    {
+     "address": "Zesde Vogelstraat 21",
+     "use": "industriefunctie",
+     "areaM2": 1,
+     "bagId": "0363010000556857"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012068684",
+   "addresses": [
+    "Zesde Vogelstraat 23"
+   ],
+   "groundUnits": [
+    {
+     "address": "Zesde Vogelstraat 23",
+     "use": "industriefunctie",
+     "areaM2": 6,
+     "bagId": "0363010000556858"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012110498",
+   "addresses": [
+    "Zesde Vogelstraat 25"
+   ],
+   "groundUnits": [
+    {
+     "address": "Zesde Vogelstraat 25",
+     "use": "industriefunctie",
+     "areaM2": 6,
+     "bagId": "0363010000556859"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012085239",
+   "addresses": [
+    "Zesde Vogelstraat 27"
+   ],
+   "groundUnits": [
+    {
+     "address": "Zesde Vogelstraat 27",
+     "use": "industriefunctie",
+     "areaM2": 44,
+     "bagId": "0363010000556860"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012108395",
+   "addresses": [
+    "Zesde Vogelstraat 29"
+   ],
+   "groundUnits": [
+    {
+     "address": "Zesde Vogelstraat 29",
+     "use": "industriefunctie",
+     "areaM2": 6,
+     "bagId": "0363010000556861"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012121571",
+   "addresses": [
+    "Zesde Vogelstraat 31"
+   ],
+   "groundUnits": [
+    {
+     "address": "Zesde Vogelstraat 31",
+     "use": "industriefunctie",
+     "areaM2": 6,
+     "bagId": "0363010000556862"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012076424",
+   "addresses": [
+    "Zesde Vogelstraat 33"
+   ],
+   "groundUnits": [
+    {
+     "address": "Zesde Vogelstraat 33",
+     "use": "industriefunctie",
+     "areaM2": 6,
+     "bagId": "0363010000556863"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012086230",
+   "addresses": [
+    "Zesde Vogelstraat 35"
+   ],
+   "groundUnits": [
+    {
+     "address": "Zesde Vogelstraat 35",
+     "use": "industriefunctie",
+     "areaM2": 6,
+     "bagId": "0363010000556864"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012100260",
+   "addresses": [
+    "Zesde Vogelstraat 37"
+   ],
+   "groundUnits": [
+    {
+     "address": "Zesde Vogelstraat 37",
+     "use": "industriefunctie",
+     "areaM2": 7,
+     "bagId": "0363010000556865"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012098785",
+   "addresses": [
+    "Zesde Vogelstraat 39"
+   ],
+   "groundUnits": [
+    {
+     "address": "Zesde Vogelstraat 39",
+     "use": "industriefunctie",
+     "areaM2": 14,
+     "bagId": "0363010000556866"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  }
+ ]
+}

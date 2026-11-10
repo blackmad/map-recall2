@@ -1,0 +1,95 @@
+[
+ {
+  "slug": "user-narva-houthaven",
+  "name": "Narva-eiland (feedback 1c694c0d)",
+  "lng": 4.881412,
+  "lat": 52.39353,
+  "bearing": 50,
+  "distM": 60,
+  "eyeM": 14
+ },
+ {
+  "slug": "user-westpoort-slab",
+  "name": "Danzigerkade Ydek canopy (feedback 2c486751)",
+  "lng": 4.87207,
+  "lat": 52.39879,
+  "bearing": 60,
+  "distM": 70,
+  "eyeM": 14
+ },
+ {
+  "slug": "user-houthavenkade-26",
+  "name": "Houthavenkade 26 / 4e Gymnasium (feedback 75242f30)",
+  "lng": 4.876389,
+  "lat": 52.394353,
+  "bearing": 200,
+  "distM": 110,
+  "eyeM": 18
+ },
+ {
+  "slug": "houthaven-2021-orange",
+  "name": "houthaven-2021-orange (pand 0363100012252867, 2021)",
+  "pand": "0363100012252867",
+  "lng": 4.877739,
+  "lat": 52.393352,
+  "bearing": 232,
+  "distM": 29.1,
+  "eyeM": 9,
+  "targetM": 7.78
+ },
+ {
+  "slug": "houthaven-2018-dark",
+  "name": "houthaven-2018-dark (pand 0363100012247676, 2018)",
+  "pand": "0363100012247676",
+  "lng": 4.879455,
+  "lat": 52.394753,
+  "bearing": 130,
+  "distM": 13.7,
+  "eyeM": 9,
+  "targetM": 8.815
+ },
+ {
+  "slug": "ijburg-2021",
+  "name": "ijburg-2021 (pand 0363100012253701, 2021)",
+  "pand": "0363100012253701",
+  "lng": 5.01181,
+  "lat": 52.351982,
+  "bearing": 62,
+  "distM": 19.4,
+  "eyeM": 9,
+  "targetM": 9.985
+ },
+ {
+  "slug": "ijburg-2009",
+  "name": "ijburg-2009 (pand 0363100012154305, 2009)",
+  "pand": "0363100012154305",
+  "lng": 4.981609,
+  "lat": 52.360085,
+  "bearing": 155,
+  "distM": 23.3,
+  "eyeM": 9,
+  "targetM": 6.715
+ },
+ {
+  "slug": "sluisbuurt-2025",
+  "name": "sluisbuurt-2025 (pand 0363100012570345, 2025)",
+  "pand": "0363100012570345",
+  "lng": 4.961063,
+  "lat": 52.37601,
+  "bearing": 344,
+  "distM": 19.7,
+  "eyeM": 9,
+  "targetM": 12
+ },
+ {
+  "slug": "zeeburgereiland-2016",
+  "name": "zeeburgereiland-2016 (pand 0363100012244416, 2016)",
+  "pand": "0363100012244416",
+  "lng": 4.96555,
+  "lat": 52.375139,
+  "bearing": 217,
+  "distM": 16.4,
+  "eyeM": 9,
+  "targetM": 9.735
+ }
+]

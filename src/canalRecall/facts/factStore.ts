@@ -204,6 +204,16 @@ export function factCardText(
   };
 }
 
+/**
+ * The Dutch game keeps a card's own Dutch lede rather than overwrite it with
+ * an English fact (R2-4, #307): Dutch and English never mix across cards of
+ * one ride when the place has Dutch text to tell. A fact with `textNl` still
+ * wins; in English nothing changes.
+ */
+export function keepDutchLede(fact: Pick<Fact, 'textNl'>, ledeLang: string | undefined): boolean {
+  return language() === 'nl' && ledeLang === 'nl' && !fact.textNl;
+}
+
 /** Commit a shown fact and persist the result in one step. */
 export function commitShownFact(
   storage: FactStorage | null | undefined,

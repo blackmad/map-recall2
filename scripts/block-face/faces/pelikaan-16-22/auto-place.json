@@ -1,0 +1,369 @@
+{
+ "face": "pelikaan-16-22",
+ "street": "Pelikaanstraat",
+ "library": "vogelbuurt",
+ "stripDate": "2021-02-17",
+ "seconds": 6.07,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [
+  {
+   "face": "pelikaan-16-22-r1",
+   "pands": [
+    "0363100012097975",
+    "0363100012111816",
+    "0363100012128530"
+   ],
+   "passed": true,
+   "triangles": 2012
+  }
+ ],
+ "pands": [
+  {
+   "pandId": "0363100012097975",
+   "address": "Pelikaanstraat 22",
+   "builtYear": 1924,
+   "widthM": 6.47,
+   "eavesM": 7.01,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#58565e",
+    "wallRaw": "#625f66",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 555,
+     "confidence": 0,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0.42,
+     "bayCentre": 0.18,
+     "balconies": true,
+     "why": "dark open axis 0.85 m at 0.16 (light 0.39): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.85,
+       "centre": 0.16,
+       "light": 0.39
+      },
+      {
+       "widthM": 2.7,
+       "centre": 0.68,
+       "light": 0.35
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "placed",
+   "type": "vogel-1921-two-storey-dormer-row",
+   "score": 1,
+   "placement": {
+    "type": "vogel-1921-two-storey-dormer-row",
+    "measuredPalette": {
+     "brick": "#58565e",
+     "evidence": "strip 2024-10-22 span 0-259: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#5f4f4a"
+    }
+   },
+   "notes": [
+    "door unread: as drawn, the opposite of 111816",
+    "crown flat-dormer (type default)",
+    "palette pinned: Pelikaanstraat 22 (2021-02-17): measured #5e5a61 is purple; its neighbours 20 and 18 read #5f4f4a and #64554e on the same strip"
+   ],
+   "likeness": {
+    "pandId": "0363100012097975",
+    "ncc": 0.32,
+    "nccRaw": 0.32,
+    "shiftM": [
+     -0.15,
+     -0.4
+    ],
+    "usable": 0.97,
+    "abstain": null,
+    "verdict": "WARN",
+    "reasons": [
+     "mask IoU 0.416 < 0.45"
+    ],
+    "wall": {
+     "photo": "#56525a",
+     "model": "#78645d",
+     "dL": 0.08
+    },
+    "glazing": {
+     "photo": 0.39,
+     "model": 0.34
+    },
+    "columns": {
+     "photo": null,
+     "model": null
+    },
+    "iou": 0.416
+   },
+   "challengers": {
+    "vogel-1921-two-storey-dormer-row": 0.32,
+    "vogel-1921-two-storey-dormer-row~m": 0.063
+   }
+  },
+  {
+   "pandId": "0363100012111816",
+   "address": "Pelikaanstraat 20",
+   "builtYear": 1924,
+   "widthM": 6.39,
+   "eavesM": 7.03,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#4e413c",
+    "wallRaw": "#5a4f4e",
+    "skyline": {
+     "eavesM": 6.7,
+     "eavesRow": 287,
+     "confidence": 0.68,
+     "crown": {
+      "widthM": 1.75,
+      "riseM": 7.17,
+      "topWidthM": 0.05,
+      "centre": 0.4
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": "right",
+    "accentShare": 0.156,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 2.7 m at 0.33 (light 0.15): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 2.7,
+       "centre": 0.33,
+       "light": 0.15
+      },
+      {
+       "widthM": 0.93,
+       "centre": 0.87,
+       "light": 0.52
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 5.88,
+       "widthM": 0.82,
+       "centre": 0.11
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "placed",
+   "type": "vogel-1921-two-storey-dormer-row",
+   "score": 1,
+   "placement": {
+    "type": "vogel-1921-two-storey-dormer-row",
+    "mirror": true,
+    "measuredPalette": {
+     "brick": "#4e413c",
+     "evidence": "strip 2020-06-02 span 259-515: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "door right: mirrored",
+    "crown flat-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012111816",
+    "ncc": 0.523,
+    "nccRaw": 0.523,
+    "shiftM": [
+     0.25,
+     -0.15
+    ],
+    "usable": 0.99,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.16 mean 0.34 vs photo 0.47"
+    ],
+    "wall": {
+     "photo": "#4d3d38",
+     "model": "#695751",
+     "dL": 0.104
+    },
+    "glazing": {
+     "photo": 0.47,
+     "model": 0.34
+    },
+    "columns": {
+     "photo": null,
+     "model": null
+    },
+    "iou": 0.6
+   },
+   "challengers": {
+    "vogel-1921-two-storey-dormer-row~m": 0.523,
+    "vogel-1921-two-storey-dormer-row": 0.278
+   }
+  },
+  {
+   "pandId": "0363100012128530",
+   "address": "Pelikaanstraat 18",
+   "builtYear": 1924,
+   "widthM": 6.47,
+   "eavesM": 7.03,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#524844",
+    "wallRaw": "#706a6a",
+    "skyline": {
+     "eavesM": 6.97,
+     "eavesRow": 276,
+     "confidence": 1,
+     "crown": {
+      "widthM": 0.93,
+      "riseM": 0.9,
+      "topWidthM": 0.8,
+      "centre": 0.43
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.057,
+    "structure": {
+     "bayWidthM": 0.8,
+     "bayCentre": 0.17,
+     "balconies": true,
+     "why": "bay-less open axis 0.93 m at 0.17 (light 0.63): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.93,
+       "centre": 0.17,
+       "light": 0.63
+      },
+      {
+       "widthM": 2.33,
+       "centre": 0.81,
+       "light": 0.14
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "placed",
+   "type": "vogel-1921-two-storey-dormer-row",
+   "score": 1,
+   "placement": {
+    "type": "vogel-1921-two-storey-dormer-row",
+    "measuredPalette": {
+     "brick": "#524844",
+     "evidence": "strip 2020-06-02 span 514-773: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "door unread: as drawn, the opposite of 111816",
+    "crown flat-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012128530",
+    "ncc": 0.563,
+    "nccRaw": 0.563,
+    "shiftM": [
+     0,
+     -0.1
+    ],
+    "usable": 0.99,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.23 mean 0.33 vs photo 0.51",
+     "window shape none vs photo tall",
+     "columns none vs photo 6"
+    ],
+    "wall": {
+     "photo": "#4d4340",
+     "model": "#6b5e59",
+     "dL": 0.108
+    },
+    "glazing": {
+     "photo": 0.51,
+     "model": 0.33
+    },
+    "columns": {
+     "photo": 3,
+     "model": null
+    },
+    "iou": 0.43
+   },
+   "challengers": {
+    "vogel-1921-two-storey-dormer-row": 0.563,
+    "vogel-1921-two-storey-dormer-row~m": 0.342
+   }
+  },
+  {
+   "pandId": "0363100012115096",
+   "address": "Pelikaanstraat 16",
+   "builtYear": 1924,
+   "widthM": 6.53,
+   "eavesM": 7.46,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#827f7f",
+    "wallRaw": null,
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 555,
+     "confidence": 0,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "blank",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": null,
+    "voidShare": 1,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "strip 100 % without panorama data",
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

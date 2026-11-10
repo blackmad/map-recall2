@@ -1,0 +1,63 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "haen-6-62-r1",
+ "street": "Jan den Haenstraat",
+ "sources": [
+  {
+   "id": "strip-2024-11-21",
+   "kind": "street-panorama",
+   "capturedAt": "2024-11-21",
+   "image": "staging/block-face/haen-6-62-r1/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "auto-place (blockFace/autoPlace.ts)",
+  "passes": 1,
+  "note": "auto-placed from the landlust library (buurt Landlust-Zuid); scores and holds in scripts/block-face/faces/haen-6-62/auto-place.json"
+ },
+ "types": [
+  "landlust-1935-slot-block-four"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012107347",
+   "slug": "haen-107347",
+   "address": "Jan den Haenstraat 28",
+   "type": {
+    "type": "landlust-1935-slot-block-four",
+    "measuredPalette": {
+     "brick": "#846043",
+     "evidence": "strip 2024-11-21 span 512-1024: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2024-11-21",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: landlust-1935-slot-block-four scored 1 on eaves -, storeys 1, stucco 1, columns 1; strip 2024-11-21 span 512-1024"
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "auto-place: low attic behind the cornice; the strips show sky over the cornices of the type rows"
+  },
+  "lonePand": {
+   "evidence": "a stair block on its own: landlust-1935-slot-block-four opts in to one-house faces from 5 m (frontage 12.79 m)"
+  }
+ }
+}

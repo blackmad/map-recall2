@@ -1,0 +1,107 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "zamenhof-6-12-r1",
+ "street": "Zamenhofstraat",
+ "sources": [
+  {
+   "id": "strip-2025-09-22",
+   "kind": "street-panorama",
+   "capturedAt": "2025-09-22",
+   "image": "staging/block-face/zamenhof-6-12-r1/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "auto-place (blockFace/autoPlace.ts)",
+  "passes": 1,
+  "note": "auto-placed from the vogelbuurt library (buurt Vogelbuurt-Noord); scores and holds in scripts/block-face/faces/zamenhof-6-12/auto-place.json"
+ },
+ "types": [
+  "vogel-1918-timber-band-cottage"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012122427",
+   "slug": "zamenhof-122427",
+   "address": "Zamenhofstraat 10",
+   "type": {
+    "type": "vogel-1918-timber-band-cottage",
+    "paletteOverrides": {
+     "brick": "#614a3e"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2025-09-22",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "bays": "wide window, door",
+    "identicalBays": "no",
+    "windowsPerStorey": "1 storey",
+    "symmetry": "mirror pairs about the party wall; dormers and doors pair across it",
+    "groundFloor": "door at the party wall",
+    "signage": "none",
+    "roofline": "bracketed gutter, long tiled roof, box dormer per pair",
+    "photoRows": [
+     2,
+     1
+    ],
+    "photoGroundRows": 1,
+    "citation": "auto-place: vogel-1918-timber-band-cottage scored 1 on eaves 1, storeys 1, stucco 1; strip 2025-09-22 span 200-400"
+   }
+  },
+  {
+   "pandId": "0363100012085003",
+   "slug": "zamenhof-085003",
+   "address": "Zamenhofstraat 8",
+   "type": {
+    "type": "vogel-1918-timber-band-cottage",
+    "mirror": true,
+    "paletteOverrides": {
+     "brick": "#4e3b32"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2025-09-22",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "bays": "wide window, door",
+    "identicalBays": "no",
+    "windowsPerStorey": "1 storey",
+    "symmetry": "mirror pairs about the party wall; dormers and doors pair across it",
+    "groundFloor": "door at the party wall",
+    "signage": "none",
+    "roofline": "bracketed gutter, long tiled roof, box dormer per pair",
+    "photoRows": [
+     2,
+     1
+    ],
+    "photoGroundRows": 1,
+    "citation": "auto-place: vogel-1918-timber-band-cottage scored 0.77 on eaves 1, storeys 1, stucco 1, columns 0; strip 2025-09-22 span 400-600"
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "auto-place: low attic behind the cornice; the strips show sky over the cornices of the type rows"
+  }
+ }
+}

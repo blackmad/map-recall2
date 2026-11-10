@@ -3674,7 +3674,7 @@
   },
   "bloemgracht-138-300-r1": {
    "174748": {
-    "hash": "373f66fd3ef57286",
+    "hash": "89b188f160ef38db",
     "class": "front"
    },
    "174831": {
@@ -4078,11 +4078,11 @@
   },
   "bloem-128-206-r1": {
    "167881": {
-    "hash": "82324973aed32479",
+    "hash": "dd6ac1308642d473",
     "class": "front"
    },
    "174650": {
-    "hash": "466234b9dc5d6057",
+    "hash": "3e4ca460276fa5b1",
     "class": "front"
    },
    "174735": {
@@ -4146,7 +4146,7 @@
     "class": "recipe"
    },
    "170212": {
-    "hash": "8a3e21252fca34b0",
+    "hash": "8b03187ec8dd7951",
     "class": "front"
    }
   },
@@ -4444,7 +4444,7 @@
   },
   "lelie-150-194-r1": {
    "169842": {
-    "hash": "7f00cb33a89ea510",
+    "hash": "71228e4bb4f67257",
     "class": "front"
    },
    "169843": {
@@ -4454,7 +4454,7 @@
   },
   "lelie-83-141-r1": {
    "168148": {
-    "hash": "91dec1e4fb19464e",
+    "hash": "073eab9818d5b64b",
     "class": "front"
    },
    "168161": {
@@ -4472,7 +4472,7 @@
     "class": "recipe"
    },
    "174428": {
-    "hash": "40789bd04d823760",
+    "hash": "78f5d74e7afcd6ac",
     "class": "front"
    }
   },
@@ -4520,11 +4520,11 @@
   },
   "prinsengracht-130-150-r1": {
    "174415": {
-    "hash": "54ba2f31de3208bf",
+    "hash": "13259ddcd815c886",
     "class": "front"
    },
    "174416": {
-    "hash": "495f774f12f52cdb",
+    "hash": "f7fb1f65f7a06b49",
     "class": "front"
    }
   },
@@ -4578,11 +4578,11 @@
   },
   "rozengracht-30-82-r1": {
    "168603": {
-    "hash": "6439cd0f32703331",
+    "hash": "45f25216f94de887",
     "class": "front"
    },
    "168605": {
-    "hash": "f276d3ea51a66df4",
+    "hash": "e30c71c752714048",
     "class": "front"
    }
   },
@@ -5013,6 +5013,274 @@
     "hash": "c5003eeb837a2f50",
     "class": "front"
    }
+  },
+  "djambi-1-29-r1": {
+   "100535": {
+    "hash": "e3e67f34ed6eeba2",
+    "class": "recipe"
+   },
+   "110582": {
+    "hash": "6749138169b8cf22",
+    "class": "recipe"
+   },
+   "129720": {
+    "hash": "d948b3fc3d0e3edf",
+    "class": "recipe"
+   },
+   "131961": {
+    "hash": "70a823d125973ddc",
+    "class": "recipe"
+   },
+   "099261": {
+    "hash": "53a5dbf6ef3af9a3",
+    "class": "recipe"
+   },
+   "077761": {
+    "hash": "d71bbfe54b1bcae9",
+    "class": "recipe"
+   },
+   "072833": {
+    "hash": "19efecfcf3682dc5",
+    "class": "recipe"
+   }
+  },
+  "java-93-149-r1": {
+   "120527": {
+    "hash": "fc13743e26c051ae",
+    "class": "front+row"
+   },
+   "126147": {
+    "hash": "399ab4e572c2da5d",
+    "class": "front+row"
+   },
+   "132949": {
+    "hash": "464124dfa0106f24",
+    "class": "front+row"
+   },
+   "133860": {
+    "hash": "264a31790acd0f0e",
+    "class": "front"
+   },
+   "138717": {
+    "hash": "abb08defc0a1704c",
+    "class": "front+row"
+   },
+   "081977": {
+    "hash": "20b65b6af8099d01",
+    "class": "front"
+   },
+   "098497": {
+    "hash": "2564f2e178a3fcaa",
+    "class": "front"
+   }
+  },
+  "java-93-149-r2": {
+   "103232": {
+    "hash": "465d6998ddc3e093",
+    "class": "front"
+   },
+   "141749": {
+    "hash": "3c53dd44a965707d",
+    "class": "front"
+   },
+   "150083": {
+    "hash": "2b3bae6dfcd97c82",
+    "class": "front"
+   }
+  },
+  "lampong-2-20-r1": {
+   "112381": {
+    "hash": "249514693bf0ebc9",
+    "class": "recipe"
+   },
+   "140561": {
+    "hash": "787adaf9e8cd85f8",
+    "class": "recipe"
+   },
+   "150248": {
+    "hash": "047effc8573fe28b",
+    "class": "recipe"
+   },
+   "085260": {
+    "hash": "3d9a3c100d5ded99",
+    "class": "recipe"
+   },
+   "064007": {
+    "hash": "7b9aaa9f807b1b58",
+    "class": "recipe"
+   }
+  },
+  "soenda-2-36-r1": {
+   "107809": {
+    "hash": "3a67d828f04280c1",
+    "class": "recipe"
+   },
+   "111204": {
+    "hash": "d9523ecaf2476f42",
+    "class": "recipe"
+   },
+   "150368": {
+    "hash": "82cfda0d1cd70670",
+    "class": "recipe"
+   },
+   "069113": {
+    "hash": "8a5ea3d6d1f82e29",
+    "class": "recipe"
+   },
+   "062527": {
+    "hash": "b08e94fb5b54b9cd",
+    "class": "recipe"
+   },
+   "081321": {
+    "hash": "dfdddcb275ddaf61",
+    "class": "recipe"
+   }
+  },
+  "soenda-2-36-r2": {
+   "136122": {
+    "hash": "ee3adc12fab6abb5",
+    "class": "recipe"
+   },
+   "068591": {
+    "hash": "e11f4ac30029760c",
+    "class": "recipe"
+   },
+   "092864": {
+    "hash": "bc019be4abf4863a",
+    "class": "recipe"
+   }
+  },
+  "vogel-3-15-r1": {
+   "101772": {
+    "hash": "789261d673203a76",
+    "class": "recipe"
+   },
+   "132959": {
+    "hash": "14cad9f32032b4d6",
+    "class": "recipe"
+   }
+  },
+  "kalkoen-8-16-r1": {
+   "125954": {
+    "hash": "b86dfab305fd1c85",
+    "class": "front"
+   },
+   "099283": {
+    "hash": "e007fd314eb4b4ee",
+    "class": "front"
+   }
+  },
+  "kalkoen-8-16-r2": {
+   "105550": {
+    "hash": "93f1f7ca37eac1a5",
+    "class": "front"
+   },
+   "109590": {
+    "hash": "308bb6e029a518b0",
+    "class": "front"
+   }
+  },
+  "kalkoen-18-26-r1": {
+   "123527": {
+    "hash": "0742a843c5b09dd3",
+    "class": "front"
+   },
+   "086436": {
+    "hash": "22b0fc4610075a35",
+    "class": "recipe"
+   }
+  },
+  "kalkoen-28-34-r1": {
+   "111141": {
+    "hash": "9cf7c5b606e9a834",
+    "class": "front"
+   },
+   "123147": {
+    "hash": "0250add7145ff674",
+    "class": "front"
+   },
+   "133141": {
+    "hash": "a4c1dd5dc0bbc615",
+    "class": "front"
+   }
+  },
+  "vogel-2-16-122155-r1": {
+   "138008": {
+    "hash": "9541eaf6575bd68c",
+    "class": "recipe"
+   },
+   "065836": {
+    "hash": "2702ae4f56f8f711",
+    "class": "recipe"
+   },
+   "091400": {
+    "hash": "4846c6c951c0fad7",
+    "class": "recipe"
+   }
+  },
+  "pelikaan-16-22-r1": {
+   "111816": {
+    "hash": "486dc9bfa4e171ce",
+    "class": "recipe"
+   },
+   "128530": {
+    "hash": "02d25f7ebebede03",
+    "class": "recipe"
+   },
+   "097975": {
+    "hash": "73f6775f31c22fbd",
+    "class": "front"
+   }
+  },
+  "pelikaan-3-9-r1": {
+   "119758": {
+    "hash": "e272fee9188efb2d",
+    "class": "front"
+   },
+   "124605": {
+    "hash": "3a61c8cc56b07fd9",
+    "class": "recipe"
+   }
+  },
+  "vogel-3-11-r1": {
+   "137379": {
+    "hash": "1cb2df4c799ba526",
+    "class": "recipe"
+   },
+   "071224": {
+    "hash": "2a5c589787d24265",
+    "class": "recipe"
+   }
+  },
+  "vogelplantsoen-8-12-r1": {
+   "079772": {
+    "hash": "d9b68f7f7b1b8f45",
+    "class": "recipe"
+   },
+   "087797": {
+    "hash": "6e08dd7ba5ef5898",
+    "class": "recipe"
+   }
+  },
+  "zamenhof-6-12-r1": {
+   "122427": {
+    "hash": "2ec4dcb9c4360ed2",
+    "class": "recipe"
+   },
+   "085003": {
+    "hash": "6b889505a2b0d766",
+    "class": "recipe"
+   }
+  },
+  "zamenhof-54-60-r1": {
+   "151653": {
+    "hash": "fe23808a5871c749",
+    "class": "recipe"
+   },
+   "064187": {
+    "hash": "16b9241dd1007a3e",
+    "class": "recipe"
+   }
   }
  },
  "intents": {
@@ -5150,7 +5418,7 @@
   "helst-56-62-r1": "ff3a2357bb2f593b",
   "helst-39-49-r1": "b26e6d26fdfd0dc6",
   "helst-51-67-r1": "76ae710e0d783a48",
-  "bloemgracht-138-300-r1": "93515b8e8f387545",
+  "bloemgracht-138-300-r1": "236c3ab726bbadfe",
   "retief-45-75-r1": "b2b5351212f46ccd",
   "pretorius-72-120-r1": "6197f41118405a42",
   "pretorius-71-95-r1": "dc6acb502546aac5",
@@ -5180,13 +5448,13 @@
   "bree-107-149-r1": "714ae403abbc5817",
   "afrikanerplein-14-168-r1": "fa126891c9b5c469",
   "akoleien-2-10-r1": "4fc0e15a567b0345",
-  "bloem-128-206-r1": "85bbacb8b0b54106",
+  "bloem-128-206-r1": "216cded01eaa3109",
   "bloem-128-206-r2": "9e6b69178a24425f",
   "bloem-3-25-r1": "ec0ad383985bfd43",
   "bloemgracht-121-197-r1": "eaaaa59a436040c2",
   "bloemgracht-121-197-r2": "111e9006c3d08295",
   "bloemgracht-16-32-r1": "8a2a5e4c7022085b",
-  "bloemgracht-53-95-r1": "16fcf5f62aa481fb",
+  "bloemgracht-53-95-r1": "7704118cb4975f08",
   "bloemgracht-80-128-r1": "840e708c4766bcc1",
   "burger-2-140-r1": "327859aac01448e0",
   "campen-2-34-r1": "3a44490374cb21ea",
@@ -5209,20 +5477,20 @@
   "kraaipan-2-38-r2": "7fdf877776893225",
   "kraaipan-31-33": "2ab7579a19c3105e",
   "kruger-32-40": "762dc6cbefb29097",
-  "lelie-150-194-r1": "6688ef9639040428",
-  "lelie-83-141-r1": "110a9bbf47d2a0c8",
-  "lelie-83-141-r2": "a26cf5ca8a52574e",
+  "lelie-150-194-r1": "90e29d641d99b0fc",
+  "lelie-83-141-r1": "d47cc3537468b7c2",
+  "lelie-83-141-r2": "87dbc81d2aa8802c",
   "lennepkade-19-43-r1": "65306bc9d31466ee",
   "linnaeus-92-102-r1": "cc092b1aaffb3acf",
   "luthuli-21-41-r1": "a821752906213576",
-  "prinsengracht-130-150-r1": "e45625b3dc4ceb2d",
+  "prinsengracht-130-150-r1": "57858929218dfa6a",
   "quellijn-1-27-r1": "b2d207516415e80f",
   "quellijn-1-27-r2": "2572ef67add8d2dd",
   "reij-28-42-r1": "fd831a1cdb782a4e",
   "retief-2-28-r1": "bf23796d7583852b",
   "retief-3-41-r1": "53f1dc8332d8db78",
   "retief-3-41-r2": "410dd4c75d4ba975",
-  "rozengracht-30-82-r1": "5b6db64534dfe565",
+  "rozengracht-30-82-r1": "1625ca5c4aeefcb2",
   "ruysdaelkade-89-105-r1": "b51211e7a80f9f50",
   "saenredam-1-37-r1": "b0e11e91a54813ec",
   "saenredam-1-37-r2": "b4ebf45b6915972e",
@@ -5244,6 +5512,24 @@
   "florisz-2-10-r1": "04d4cfeb41289508",
   "florisz-12-38-r1": "26ec75e00ce8675f",
   "wouwerman-2-44-r1": "1b119d1a763e6659",
-  "maes-31-71-r1": "09a6b1241a6593f7"
+  "maes-31-71-r1": "09a6b1241a6593f7",
+  "djambi-1-29-r1": "45dbf8cfca7ae83a",
+  "java-93-149-r1": "07a07a058f9cec20",
+  "java-93-149-r2": "5704908fbcefd2fa",
+  "lampong-2-20-r1": "6d8c7d7d451ecd4d",
+  "soenda-2-36-r1": "c3353dc56ae6c24b",
+  "soenda-2-36-r2": "01e457db56dd9f6b",
+  "vogel-3-15-r1": "76e33ff1285a2da6",
+  "kalkoen-8-16-r1": "7ba7e45060fb1969",
+  "kalkoen-8-16-r2": "84b16a21bd6a05fd",
+  "kalkoen-18-26-r1": "3de3ea47019a1f51",
+  "kalkoen-28-34-r1": "a8272e6dc26ef9b5",
+  "vogel-2-16-122155-r1": "b289230e3207c083",
+  "pelikaan-16-22-r1": "1a5b55df8fb76ad8",
+  "pelikaan-3-9-r1": "ba2330589f2ff00f",
+  "vogel-3-11-r1": "18ff5ced1f418c65",
+  "vogelplantsoen-8-12-r1": "fa18c325e8c29bcb",
+  "zamenhof-6-12-r1": "44d5d188fd3e3cec",
+  "zamenhof-54-60-r1": "7f6f752b8faa4e4c"
  }
 }

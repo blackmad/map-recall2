@@ -16,13 +16,44 @@
   {
     "name": "Rijnbuurt",
     "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/25/Amsterdam_-_Borssenburgstraat_5.JPG/500px-Amsterdam_-_Borssenburgstraat_5.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "imageAttribution": "Wikimedia Commons: Amsterdam - Borssenburgstraat 5.JPG (A. Bakker, CC BY 3.0)"
+    "imageAttribution": "Wikimedia Commons: Amsterdam - Borssenburgstraat 5.JPG (A. Bakker, CC BY 3.0)",
+    "wikipediaExtract": "The Rijnbuurt takes its name from the Rijnstraat, one of the rivers-named streets of the Rivierenbuurt in Amsterdam-Zuid. The street was named after the river Rhine by a council decision of 22 March 1922, on land that Nieuwer Amstel had annexed in 1896. It is about a kilometre long and lined with mid-rise pre-war housing.",
+    "sources": [
+      "https://nl.wikipedia.org/wiki/Rijnstraat_(Amsterdam)",
+      "https://nl.wikipedia.org/wiki/Rivierenbuurt_(Amsterdam)"
+    ],
+    "original": [
+      "bij een raadsbesluit van 22 maart 1922 vernoemd naar de rivier de Rijn",
+      "het vooroorlogse Amsterdam",
+      "De overige straatnamen in de buurt werden vernoemd naar Nederlandse rivieren."
+    ]
   },
   {
-    "name": "Scheldebuurt"
+    "name": "Scheldebuurt",
+    "wikipediaExtract": "The Scheldebuurt is named after the Scheldestraat in the Rivierenbuurt of Amsterdam-Zuid, which received its name from the river Scheldt in 1922. The street continues across the Amstelkanaal and runs to the Europaplein. Its first trams ran in 1929, and the North-South metro line has run in twin tunnels beneath it since 2011 and 2012.",
+    "sources": [
+      "https://nl.wikipedia.org/wiki/Scheldestraat_(Amsterdam)",
+      "https://nl.wikipedia.org/wiki/Rivierenbuurt_(Amsterdam)"
+    ],
+    "original": [
+      "Deze straat kreeg zijn naam in 1922",
+      "In 1929 verschenen de eerste trams in de Scheldestraat",
+      "De overige straatnamen in de buurt werden vernoemd naar Nederlandse rivieren."
+    ]
   },
   {
-    "name": "Westindische Buurt"
+    "name": "Westindische Buurt",
+    "wikipediaExtract": "The Westindische Buurt, today better known as the Postjesbuurt, got its first name because the municipality gave its streets and square the names of places in Suriname and the former Netherlands Antilles. The Surinameplein was named in 1922 on land of the former municipality of Sloten, annexed in 1921, and most of the neighbourhood was built in the 1920s and 1930s. The alternative name Postjesbuurt comes from the Postjeswetering and Postjeskade.",
+    "sources": [
+      "https://nl.wikipedia.org/wiki/Surinameplein",
+      "https://nl.wikipedia.org/wiki/Postjesbuurt"
+    ],
+    "original": [
+      "De buurt werd daarom door de gemeente de Westindische buurt genoemd",
+      "Het plein is in 1922 vernoemd naar de sinds 1975 onafhankelijke Nederlandse kolonie Suriname",
+      "Het grootste deel van de buurt werd gebouwd in de jaren twintig en dertig.",
+      "De benaming Postjesbuurt is ontleend aan de Postjeswetering en de Postjeskade."
+    ]
   },
   {
     "name": "Betondorp",
@@ -77,7 +108,20 @@
     "imageAttribution": "Wikimedia Commons: Magalhaensplein (Asd-W).jpg (Paul Be., CC BY-SA 3.0)"
   },
   {
-    "name": "IJselbuurt"
+    "name": "IJselbuurt",
+    "wikipediaExtract": "The IJselbuurt is the north-western corner of the Rivierenbuurt in Amsterdam-Zuid, laid out under H.P. Berlage's Plan Zuid and built in the 1920s and 1930s as a mainly middle-class district, much of it in the Amsterdam School style. Like its neighbours it takes its name from a street named after a Dutch river: the IJssel, a branch of the Rhine that runs from Westervoort to the IJsselmeer.",
+    "sources": [
+      "https://api.data.amsterdam.nl/v1/bag/openbareruimtes/?naam=IJselstraat",
+      "https://nl.wikipedia.org/wiki/Rivierenbuurt_(Amsterdam)",
+      "https://en.wikipedia.org/wiki/Rivierenbuurt"
+    ],
+    "original": [
+      "De rivier de IJssel, tak van de Rijn, loopt van Westervoort naar het IJsselmeer.",
+      "De Rivierenbuurt in Amsterdam-Zuid maakt deel uit van Plan Zuid van H.P. Berlage.",
+      "De Rivierenbuurt is gebouwd in de jaren twintig en dertig van de 20e eeuw.",
+      "In de Rivierenbuurt is veel bebouwing te vinden in de stijl van de Amsterdamse School.",
+      "De overige straatnamen in de buurt werden vernoemd naar Nederlandse rivieren."
+    ]
   },
   {
     "name": "Rivierenbuurt",
@@ -117,7 +161,16 @@
   {
     "name": "Van Galenbuurt",
     "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2f/Van_Galenbuurt%2C_1056_Amsterdam%2C_Netherlands_-_panoramio.jpg/500px-Van_Galenbuurt%2C_1056_Amsterdam%2C_Netherlands_-_panoramio.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "imageAttribution": "Wikimedia Commons: Van Galenbuurt, 1056 Amsterdam, Netherlands - panoramio.jpg (Han Jongeneel, CC BY 3.0)"
+    "imageAttribution": "Wikimedia Commons: Van Galenbuurt, 1056 Amsterdam, Netherlands - panoramio.jpg (Han Jongeneel, CC BY 3.0)",
+    "wikipediaExtract": "The Van Galenbuurt in Amsterdam-West is named after the Jan van Galenstraat, which in 1925 was named after the Dutch fleet commander Jan van Galen (1604-1653), who died in the battle near Livorno against the English. The street was extended past the Vierwindstrekenbrug (1932) to the Hoofdweg in 1935, and tram line 13 has run on it since 1989.",
+    "sources": [
+      "https://nl.wikipedia.org/wiki/Jan_van_Galenstraat_(Amsterdam)",
+      "https://nl.wikipedia.org/wiki/Houtvaartkwartier"
+    ],
+    "original": [
+      "Het is een vernoeming naar de Nederlandse vlootvoogd Jan van Galen (1604-1653).",
+      "In 1935 werd de straat voorbij de Vierwindstrekenbrug (uit 1932) doorgetrokken tot de Hoofdweg."
+    ]
   },
   {
     "name": "Apollobuurt",
@@ -155,7 +208,16 @@
   {
     "name": "Molenwijkpark",
     "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0d/Amsterdam_-_Molenwijk.JPG/500px-Amsterdam_-_Molenwijk.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "imageAttribution": "Wikimedia Commons: Amsterdam - Molenwijk.JPG (A. Bakker, CC BY 3.0)"
+    "imageAttribution": "Wikimedia Commons: Amsterdam - Molenwijk.JPG (A. Bakker, CC BY 3.0)",
+    "wikipediaExtract": "Molenwijk is a residential area in Amsterdam-Noord, built on a polder that was once used to deposit silt from the Noordzeekanaal. Its plan by Klaas Geerts is entirely high-rise, built from prefabricated Indeco-Coignet elements, and the first homes were delivered on 1 April 1968. From above the blocks look like windmill sails around central parking garages, which gave the area its name, and the ground level between them is a car-free, park-like domain.",
+    "sources": [
+      "https://nl.wikipedia.org/wiki/Molenwijk_(Amsterdam)"
+    ],
+    "original": [
+      "bestaat voor 100% uit hoogbouw",
+      "Zo is de naam Molenwijk ontstaan.",
+      "De rest van het maaiveld is ingericht als autovrij en parkachtig domein."
+    ]
   },
   {
     "name": "Stettineiland"
@@ -183,7 +245,11 @@
   {
     "name": "IJburg",
     "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b6/Amsterdam_IJburg_20041105.jpg/500px-Amsterdam_IJburg_20041105.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "imageAttribution": "Wikimedia Commons: Amsterdam IJburg 20041105.jpg (Debot, CC BY-SA 3.0)"
+    "imageAttribution": "Wikimedia Commons: Amsterdam IJburg 20041105.jpg (Debot, CC BY-SA 3.0)",
+    "wikipediaExtract": "IJburg is a residential neighbourhood in Amsterdam's Oost borough, built on artificial islands in the IJmeer. The municipality approved it in 1996, a 1997 referendum fell short of the vote threshold so construction could proceed, and the first residents moved into Rieteiland in spring 2008. The first phase consists of Steigereiland, Haveneiland and the Rieteilanden. Tram line 26 (the IJtram) runs along the IJburglaan to Central Station, and the Nescio Bridge for pedestrians and cyclists ends in a spiral cycle ramp.",
+    "sources": [
+      "https://en.wikipedia.org/wiki/IJburg"
+    ]
   },
   {
     "name": "Slotervaart",
@@ -200,7 +266,18 @@
   {
     "name": "Nieuwmarktbuurt",
     "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/19/Bewoners_ontruimen_pand_in_de_Sint_Antoniesbreestraat_in_Amsterdam%2C_Nieuwmarktbuurt_%2C_Bestanddeelnr_927-7864.jpg/500px-Bewoners_ontruimen_pand_in_de_Sint_Antoniesbreestraat_in_Amsterdam%2C_Nieuwmarktbuurt_%2C_Bestanddeelnr_927-7864.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "imageAttribution": "Wikimedia Commons: Bewoners ontruimen pand in de Sint Antoniesbreestraat in Amsterdam, Nieuwmarktbuurt , Bestanddeelnr 927-7864.jpg (Bert Verhoeff / Anefo, CC0)"
+    "imageAttribution": "Wikimedia Commons: Bewoners ontruimen pand in de Sint Antoniesbreestraat in Amsterdam, Nieuwmarktbuurt , Bestanddeelnr 927-7864.jpg (Bert Verhoeff / Anefo, CC0)",
+    "wikipediaExtract": "Nieuwmarkt is a square in the centre of Amsterdam, created in 1614 when the water around the Sint Anthoniespoort was covered over; the gate, built in 1481-1494 as part of the medieval wall, later became the Waag, or weigh house. East of it the Lastage, between the Geldersekade and the Oudeschans, began in the 15th century as a ballast-loading site and by the 16th century was an industrial harbour zone with rope-walks, mast-makers and shipyards. Its building moved the city boundary out to the Montelbaanstoren and the Oudeschans, which was dug to protect it. In 1975 houses in the Lastage were demolished for the metro tunnel, sparking the Nieuwmarkt riots under the motto \"Geen buizen maar huizen\".",
+    "sources": [
+      "https://nl.wikipedia.org/wiki/Lastage",
+      "https://nl.wikipedia.org/wiki/Nieuwmarkt_(Amsterdam)"
+    ],
+    "original": [
+      "Halverwege de 16e eeuw waren op de Lastage vijf lijnbanen gevestigd",
+      "hiertoe werd de Oudeschans gegraven",
+      "werd gebouwd als onderdeel van de middeleeuwse stadsommuring in de jaren 1481-1494",
+      "Geen buizen maar huizen"
+    ]
   },
   {
     "name": "Marineterrein",
@@ -245,7 +322,16 @@
     "wikipediaExtract": "Funenpark is een straat op de Oostelijke Eilanden in Amsterdam-Centrum. De straat ligt in de wijk Het Funen, dat in de volksmond eveneens Funenpark wordt genoemd.  De enigszins driehoekige wijk ligt tussen het Lozingskanaal (zuiden), het voetpad dat het park van noord naar zuid doorsnijdt (westen) en Keerwal (oosten). \nDe straat en het park vormen het grootste…"
   },
   {
-    "name": "Valkenburg"
+    "name": "Valkenburg",
+    "wikipediaExtract": "Valkenburg, also known as Marken, is a former island in Amsterdam bounded by the Rapenburgwal, the Uilenburgergracht, the Markenplein and the Rapenburgerstraat. It was built up in the sixteenth century, one of three islands (Uilenburg, Valkenburg and Rapenburg) made by digging out land outside the dike, and before and during the Second World War it was part of the Jewish quarter. It stopped being an island after the redesign for the IJ-tunnel; today it holds a parking garage, the Markenhoven apartments and the Nederlandse Filmacademie.",
+    "sources": [
+      "https://nl.wikipedia.org/wiki/Valkenburg_(Amsterdam)"
+    ],
+    "original": [
+      "Het eiland wordt begrensd door de Rapenburgwal, de Uilenburgergracht, het Markenplein en de Rapenburgerstraat.",
+      "De drie eilanden Uilenburg, Valkenburg en Rapenburg zijn ontstaan door vergravingen van buitendijks land.",
+      "Sinds de herinrichting in verband met de aanleg van de IJ-tunnel is het geen eiland meer."
+    ]
   },
   {
     "name": "Kadijken",
@@ -290,12 +376,32 @@
   {
     "name": "Nieuwmarkt/Lastage",
     "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b3/Amsterdam_-_Oude_Schans.jpg/500px-Amsterdam_-_Oude_Schans.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "imageAttribution": "Wikimedia Commons: Amsterdam - Oude Schans.jpg (Unknown authorUnknown author, Public domain)"
+    "imageAttribution": "Wikimedia Commons: Amsterdam - Oude Schans.jpg (Unknown authorUnknown author, Public domain)",
+    "wikipediaExtract": "Nieuwmarkt is a square in the centre of Amsterdam, created in 1614 when the water around the Sint Anthoniespoort was covered over; the gate, built in 1481-1494 as part of the medieval wall, later became the Waag, or weigh house. East of it the Lastage, between the Geldersekade and the Oudeschans, began in the 15th century as a ballast-loading site and by the 16th century was an industrial harbour zone with rope-walks, mast-makers and shipyards. Its building moved the city boundary out to the Montelbaanstoren and the Oudeschans, which was dug to protect it. In 1975 houses in the Lastage were demolished for the metro tunnel, sparking the Nieuwmarkt riots under the motto \"Geen buizen maar huizen\".",
+    "sources": [
+      "https://nl.wikipedia.org/wiki/Lastage",
+      "https://nl.wikipedia.org/wiki/Nieuwmarkt_(Amsterdam)"
+    ],
+    "original": [
+      "Halverwege de 16e eeuw waren op de Lastage vijf lijnbanen gevestigd",
+      "hiertoe werd de Oudeschans gegraven",
+      "werd gebouwd als onderdeel van de middeleeuwse stadsommuring in de jaren 1481-1494",
+      "Geen buizen maar huizen"
+    ]
   },
   {
     "name": "Borneo-eiland",
     "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bf/NIMH_-_2011_-_5050_-_Aerial_photograph_of_Amsterdam%2C_The_Netherlands.jpg/500px-NIMH_-_2011_-_5050_-_Aerial_photograph_of_Amsterdam%2C_The_Netherlands.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "imageAttribution": "Wikimedia Commons: NIMH - 2011 - 5050 - Aerial photograph of Amsterdam, The Netherlands.jpg (Unknown, CC BY-SA 4.0)"
+    "imageAttribution": "Wikimedia Commons: NIMH - 2011 - 5050 - Aerial photograph of Amsterdam, The Netherlands.jpg (Unknown, CC BY-SA 4.0)",
+    "wikipediaExtract": "Borneo-eiland is a peninsula in Amsterdam-Oost between the Spoorwegbassin and the Entrepothaven, in the former eastern docklands. It takes its name from the Borneokade, which was named in 1917 after the East Indian island of Borneo. It was a port and industrial area until the 1980s and was then redeveloped for housing. A rider will notice the Scheepstimmermanstraat, where 60 houses were designed by different architects, and two red bridges that link the island to Sporenburg.",
+    "sources": [
+      "https://nl.wikipedia.org/wiki/Borneo-eiland"
+    ],
+    "original": [
+      "is een schiereiland tussen het Spoorwegbassin en de Entrepothaven",
+      "Deze kade werd in 1917 vernoemd naar het Oost-Indische eiland Borneo",
+      "60 woonhuizen van verschillende architecten"
+    ]
   },
   {
     "name": "Sporenburg",
@@ -363,15 +469,40 @@
   {
     "name": "Prinses Irenebuurt e.o.",
     "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a0/Beatrixpark1.JPG/500px-Beatrixpark1.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "imageAttribution": "Wikimedia Commons: Beatrixpark1.JPG (Arthena, CC BY-SA 3.0)"
+    "imageAttribution": "Wikimedia Commons: Beatrixpark1.JPG (Arthena, CC BY-SA 3.0)",
+    "wikipediaExtract": "The Prinses Irenebuurt is a neighbourhood in Amsterdam-Zuid, bounded on the north by the Zuider Amstelkanaal. It was built between 1954 and 1958 and is named after the Prinses Irenestraat, itself named in 1953 after Princess Irene, daughter of Queen Juliana; many streets are named after Dutch composers and Juliana's daughters. A rider will notice the Warnersblokken, four residential blocks of 1957 by Allert Warners with colourful facade panels, a rijksmonument since 2010.",
+    "sources": [
+      "https://nl.wikipedia.org/wiki/Prinses_Irenebuurt"
+    ],
+    "original": [
+      "Prinses Irenebuurt is een buurt in het stadsdeel Zuid van de gemeente Amsterdam.",
+      "De buurt werd gebouwd tussen 1954 en 1958.",
+      "vier woonblokken uit 1957 van architect Allert Warners"
+    ]
   },
   {
     "name": "VU-kwartier",
     "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/19/VUMC_-_panoramio.jpg/500px-VUMC_-_panoramio.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "imageAttribution": "Wikimedia Commons: VUMC - panoramio.jpg (Rokus C, CC BY 3.0)"
+    "imageAttribution": "Wikimedia Commons: VUMC - panoramio.jpg (Rokus C, CC BY 3.0)",
+    "wikipediaExtract": "The VU-kwartier is the campus area of the Vrije Universiteit Amsterdam, one of five buurten of the statistical district Zuidas. The university moved there from the city centre from 1968 onwards, into the Buitenveldert neighbourhood, and its main campus along De Boelelaan now sits next to the Zuidas business district. The Main Building, established in 1973, stands at the corner of the Boelelaan and the Buitenveldertselaan.",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Vrije_Universiteit_Amsterdam",
+      "https://nl.wikipedia.org/wiki/Zuidas"
+    ],
+    "original": [
+      "De statistische wijk is onderverdeeld in de buurten Zuidas-Noord, RAI, VU-kwartier, Zuidas-Zuid en Vivaldi."
+    ]
   },
   {
-    "name": "Gelderlandpleinbuurt"
+    "name": "Gelderlandpleinbuurt",
+    "wikipediaExtract": "The Gelderlandpleinbuurt is named after the Gelderlandplein, which the council named on 30 November 1966 after the province of Gelderland. The square's shopping centre opened in 1968 as a neighbourhood facility for the new garden suburb of Buitenveldert, and the plan concentrated shops and local services at a few central places. It was covered and extended in 1997 and rebuilt by Rijnboutt between 2013 and 2016.",
+    "sources": [
+      "https://nl.wikipedia.org/wiki/Gelderlandplein"
+    ],
+    "original": [
+      "Het plein kreeg bij gemeenteraadsbesluit van 30 november 1966 de naam Gelderlandplein, naar de provincie Gelderland.",
+      "winkels en andere wijkvoorzieningen op een aantal centrale plaatsen"
+    ]
   },
   {
     "name": "Schinkelbuurt",
@@ -397,7 +528,11 @@
   {
     "name": "Buitenveldert",
     "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/88/Buitenveldert_-_panoramio.jpg/500px-Buitenveldert_-_panoramio.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "imageAttribution": "Wikimedia Commons: Buitenveldert - panoramio.jpg (Rokus C, CC BY 3.0)"
+    "imageAttribution": "Wikimedia Commons: Buitenveldert - panoramio.jpg (Rokus C, CC BY 3.0)",
+    "wikipediaExtract": "Buitenveldert is a neighbourhood in the south of Amsterdam, on the former Binnendijksche Buitenveldertse polder, which the city annexed in 1921. The 1935 General Expansion Plan made the polder the site of a new suburb, planned on garden-city principles; the first stone was laid in 1958 and the first residents moved in in 1959. The Kalfjeslaan on its south side has been the city limit since then, and the Gelderlandplein shopping centre is the highlight of the residential area. It is also considered the modern Jewish quarter of Amsterdam.",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Buitenveldert"
+    ]
   },
   {
     "name": "Zuidas",
@@ -407,7 +542,16 @@
     "wikipediaExtract": "The Zuidas (literally South Axis in Dutch) is a business district and residential neighbourhood in Amsterdam, Netherlands, in the borough of Amsterdam-Zuid. Also known as the \"Financial Mile,\" it lies along the southern sector of the A10 ring road, between Oud-Zuid and the Rivierenbuurt to the north and the garden suburb of Buitenveldert to the south.\nThe name..."
   },
   {
-    "name": "Buitenveldert-West"
+    "name": "Buitenveldert-West",
+    "wikipediaExtract": "Buitenveldert-West is the western part of Buitenveldert, the garden city laid out south of Amsterdam on the polder of the former hamlet of Buitenveldert. It follows the General Extension Plan of 1934, led by Cornelis van Eesteren with an important role for the planner Jakoba Mulder. The polder was made ready for building from 1955, the first stone was laid on 2 June 1958, and the first residents arrived less than a year later. The Amsterdamse Bos neighbourhood lies within Buitenveldert-West, and the area was largely finished by the mid-1970s.",
+    "sources": [
+      "https://nl.wikipedia.org/wiki/Buitenveldert_(tuinstad)"
+    ],
+    "original": [
+      "Het Algemeen Uitbreidingsplan (AUP) van 1934",
+      "De eerste steen werd gelegd op 2 juni 1958",
+      "was halverwege de jaren zeventig grotendeels voltooid"
+    ]
   },
   {
     "name": "Van Lennepbuurt",
@@ -424,7 +568,17 @@
   {
     "name": "Overtoomse Sluis",
     "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2f/Achter_de_Dubbele_Buurt.jpg/500px-Achter_de_Dubbele_Buurt.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "imageAttribution": "Wikimedia Commons: Achter de Dubbele Buurt.jpg (Unknown authorUnknown author, Public domain)"
+    "imageAttribution": "Wikimedia Commons: Achter de Dubbele Buurt.jpg (Unknown authorUnknown author, Public domain)",
+    "wikipediaExtract": "The Overtoomse Sluis (bridge no. 199) crosses the Kostverlorenvaart in Amsterdam-West. The lock beneath it was 144 metres long with a 127-metre chamber and was 7.75 metres wide. On 1 July 1942 it was replaced by the Schinkelsluis near the Nieuwe Meer. The old Overtoomse Buurt largely disappeared in the 1920s for the construction of the Surinameplein.",
+    "sources": [
+      "https://nl.wikipedia.org/wiki/Overtoomse_Sluis"
+    ],
+    "original": [
+      "De Overtoomse Sluis (brug nr. 199) is een brug over de Kostverlorenvaart in Amsterdam-West.",
+      "De sluis had een totale lengte van 144 meter, de schutlengte was 127 meter en de breedte 7,75 meter.",
+      "De Overtoomse Sluis werd op 1 juli 1942 vervangen door de Schinkelsluis bij de Nieuwe Meer",
+      "De Overtoomse Buurt verdween grotendeels voor de aanleg van het Surinameplein in de jaren twintig."
+    ]
   },
   {
     "name": "Houthaven",
@@ -471,10 +625,31 @@
   {
     "name": "KNSM-eiland",
     "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/07/2013AmsterdamKNSMisland07.jpg/500px-2013AmsterdamKNSMisland07.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "imageAttribution": "Wikimedia Commons: 2013AmsterdamKNSMisland07.jpg (Kleon3, CC BY-SA 3.0)"
+    "imageAttribution": "Wikimedia Commons: 2013AmsterdamKNSMisland07.jpg (Kleon3, CC BY-SA 3.0)",
+    "wikipediaExtract": "KNSM-eiland is a peninsula in the IJ in Amsterdam, one of the neighbourhoods of the Oostelijk Havengebied. The island was extended eastward just before 1900 and is named after the Koninklijke Nederlandse Stoomboot-Maatschappij, the shipping company that operated there from 1903 to 1979. Its large brick block Piraeus (1994, Hans Kollhoff) and the residential tower Skydome (1996, Wiel Arets) are the standout buildings, and a warehouse, a harbour crane and a canteen building survive as municipal monuments.",
+    "sources": [
+      "https://nl.wikipedia.org/wiki/KNSM-eiland"
+    ],
+    "original": [
+      "Het KNSM-eiland is een schiereiland in het IJ in Amsterdam.",
+      "Kort voor 1900 werd het eiland naar het oosten verlengd, waardoor het later zo genoemde KNSM-eiland ontstond.",
+      "Het 'eiland' is genoemd naar de Koninklijke Nederlandse Stoomboot-Maatschappij.",
+      "Loods 6, de havenkraan en het kantinegebouw zijn gemeentelijke monumenten."
+    ]
   },
   {
-    "name": "Oostelijk Havengebied"
+    "name": "Oostelijk Havengebied",
+    "wikipediaExtract": "The Oostelijk Havengebied is the north-western neighbourhood of Amsterdam-Oost, facing the IJ. The municipality began creating its land in 1890 with a dam in the IJ, and from the mid-1980s the former port land was given a residential purpose and developed into a modern housing area in the 1990s. The Java and KNSM islands are largely built up with high-rise, while Borneo and Sporenburg have low and mid-rise housing, so the area has been called a who's who of recent architecture. Tram line 26, the IJtram, opened to IJburg in 2005.",
+    "sources": [
+      "https://nl.wikipedia.org/wiki/Oostelijk_Havengebied"
+    ],
+    "original": [
+      "Het Oostelijk Havengebied is de meest noordwestelijk gelegen wijk binnen het stadsdeel Oost.",
+      "In 1890 besloot de gemeente Amsterdam om een dam in het IJ aan te leggen.",
+      "Vanaf het midden van de jaren 1980 kreeg het gebied een woonbestemming.",
+      "Java- en KNSM-eiland zijn grotendeels met hoogbouw bebouwd.",
+      "Het Oostelijk Havengebied is daardoor op te vatten als een who is who van de recente architectuur."
+    ]
   },
   {
     "name": "West",
@@ -507,11 +682,43 @@
   {
     "name": "Sportheldenbuurt",
     "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b7/Zeeburgereiland-20180510-0024.jpg/500px-Zeeburgereiland-20180510-0024.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "imageAttribution": "Wikimedia Commons: Zeeburgereiland-20180510-0024.jpg (florian.vanhunnik, CC BY-SA 2.0)"
+    "imageAttribution": "Wikimedia Commons: Zeeburgereiland-20180510-0024.jpg (florian.vanhunnik, CC BY-SA 2.0)",
+    "wikipediaExtract": "The Sportheldenbuurt is a residential neighbourhood on Zeeburgereiland on the east side of Amsterdam. Pile driving began in July 2012 and the first self-built homes were finished in 2013 and 2014. In 2011 the city announced that the streets would be named after figures from Dutch sports history, and the bridges on the outer edge were named likewise in 2016. Three large silos of the former sewage treatment plant were kept, and there is a marina.",
+    "sources": [
+      "https://nl.wikipedia.org/wiki/Sportheldenbuurt_(Amsterdam)"
+    ],
+    "original": [
+      "een woonbuurt op het Zeeburgereiland aan de oostkant van Amsterdam",
+      "In juli 2012 zijn de eerste heipalen voor de woningbouw geslagen in de Sportheldenbuurt.",
+      "Drie grote silo's van de rioolzuivering zijn gehandhaafd."
+    ]
   },
   {
     "name": "Sluisbuurt",
     "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d7/2024_Sluisbuurt%2C_Pina_Bauschplein%2C_Asd.jpg/500px-2024_Sluisbuurt%2C_Pina_Bauschplein%2C_Asd.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "imageAttribution": "Wikimedia Commons: 2024 Sluisbuurt, Pina Bauschplein, Asd.jpg (Ceescamel, CC0)"
+    "imageAttribution": "Wikimedia Commons: 2024 Sluisbuurt, Pina Bauschplein, Asd.jpg (Ceescamel, CC0)",
+    "wikipediaExtract": "Sluisbuurt is a new neighbourhood on Zeeburgereiland in Amsterdam-Oost, next to the Oranjesluizen it is named after. The municipality decided in November 2018 to build it, with about 5,500 homes and 32 residential towers averaging about 60 metres and reaching 125 metres at most. A central water basin is planned for water recreation.",
+    "sources": [
+      "https://nl.wikipedia.org/wiki/Sluisbuurt"
+    ],
+    "original": [
+      "De wijk ligt aan de Oranjesluizen, waarnaar de wijk vernoemd is, en het binnen-IJ",
+      "In november 2018 besloot de gemeente Amsterdam tot bouw van de buurt.",
+      "met een gemiddelde bouwhoogte van ca. 60 m, en een maximale hoogte van 125 m",
+      "Het waterbassin is bedoeld voor waterrecreatie"
+    ]
+  },
+  {
+    "name": "Gouden Bocht",
+    "wikipediaExtract": "The Gouden Bocht is the most prestigious stretch of the grandest canal of the ring, between the Leidsestraat and the Vijzelstraat, part of the Vierde Uitleg, the last extension of the canal belt. At the Nieuwe Spiegelstraat the canal takes a bend and the canals lie further apart, making the plots deeper; the mayors encouraged the purchase of double plots, where the city's richest residents built grand houses. Huis de Neufville (1731, at number 475) is often called the finest house on the bend, and today the offices of banks and insurers share it with the Goethe-Institut and the Kattenkabinet.",
+    "sources": [
+      "https://nl.wikipedia.org/wiki/Gouden_Bocht"
+    ],
+    "original": [
+      "het meest prestigieuze deel van de Herengracht in Amsterdam, tussen de Leidsestraat en de Vijzelstraat",
+      "Ter hoogte van de Nieuwe Spiegelstraat kreeg de Herengracht een knik.",
+      "De burgemeesters bevorderden de aankoop van dubbele kavels."
+    ],
+    "notes": "The canal's own name is left out on purpose: a daily ride may finish here and the arrival card must not print the finish way (#279 ruling, dailyRidePool.test)."
   }
 ]

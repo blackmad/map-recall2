@@ -24,6 +24,8 @@ import { frameMatrices, mercatorOfLngLat, mercatorUnitsPerMetre, worldOfMercator
 import { createLightRig, type LightRig, type LightRigOptions } from './lightRig.js';
 import { mapLibreSky, SKY } from '../look/sunny.js';
 import { DEPTH_FADE_OFF_RANGE, depthFadeFlag, depthFadeMultiples, depthFadeRange, distanceHazeOn, installDepthFade } from '../look/depthFade.js';
+import { drawLimitFlag, drawLimitFogRange, drawLimitM, publishDrawLimit } from '../engine/drawLimit.js';
+import { isAerialView } from './aerialView.js';
 import { markingFadeFlag, markingFadeRange, markingFadeUniforms, type MarkingFadeUniforms } from '../look/markingFade.js';
 import { LayerRegistry, type FramePass } from './layerRegistry.js';
 import { plainBounds, type LngLatBounds } from '../engine/worldStreamer.js';
@@ -181,6 +183,16 @@ export class SharedFrame {
   private shadowAge = 0;
   /** Frames whose main pass redrew the shadow map (diagnostics / perf). */
   shadowRedraws = 0;
+  /**
+   * Redraw the shadow map at most every n-th main pass (engine/aerialPower.ts `?aerialShadows=0`: 4 while the camera
+   * flies from the air; 1 = whenever the box, the casters or the age say so). Between redraws the box stays where the
+   * map was drawn (the focus and zoom of that redraw), so the map and its matrix always agree.
+   */
+  shadowEvery = 1;
+  private shadowHeld: { focus: Vec3; zoom: number } | null = null;
+  private shadowSince = 0;
+  /** The tier's shadow-map size (the rig's at attach), restored by `setShadowMapSize(null)`. */
+  private baseShadowMapSize: number | null = null;
   /** The depth programs were linked in a shadow redraw (shadowPrimer.ts); `?shadowPrimer=0` skips it. */
   private shadowPrimed = shadowPrimerOff();
   /** MapLibre's depth range when the shadow map was last drawn (diagnostics; the map itself is drawn at [0, 1]). */
@@ -380,6 +392,8 @@ export class SharedFrame {
   }
 
   private fadeMultiples: [number, number] | null = null;
+  /** `?drawLimit` (engine/drawLimit.ts): read once, with the fog chunks. */
+  private readonly drawLimitOn = depthFadeFlag() && drawLimitFlag();
   /** `?markingFade=1` (look/markingFade.ts): the ground's marking-fade range, set per frame like the fog's. */
   private readonly markingFade: MarkingFadeUniforms | null = markingFadeFlag() ? markingFadeUniforms() : null;
   /** The last frame's eye-to-centre distance, metres, while the depth or marking fade is on (diagnostics). */
@@ -391,7 +405,17 @@ export class SharedFrame {
     this.fadeEyeToCentreM = d;
     if (this.scene.fog) {
       // The player's "Distance haze" switch off: the range out of reach, the same programs (no recompile).
-      const r = distanceHazeOn() ? depthFadeRange(d, multiples) : DEPTH_FADE_OFF_RANGE;
+      let r = distanceHazeOn() ? depthFadeRange(d, multiples) : DEPTH_FADE_OFF_RANGE;
+      // `?drawLimit` (engine/drawLimit.ts, lane P2 #325): opaque haze at the draw limit, packed into fogFar. The limit
+      // stays when the player's "Distance haze" is off (the gentle fade goes, the horizon stays: nothing past it draws).
+      if (this.drawLimitOn) {
+        let pitch = 0;
+        try { pitch = (this.worldCamera as { pitch?: () => number }).pitch?.() ?? 0; } catch { /* a camera without pitch (tests): flat */ }
+        const aerial = isAerialView(view.zoom, pitch, view.center().lat);
+        const limit = drawLimitM(aerial, d);
+        r = drawLimitFogRange(distanceHazeOn() ? r : { near: limit * 0.44, far: limit * 0.44 * 1.01 }, limit, aerial);
+        publishDrawLimit({ from: Math.round(limit * 0.45), to: limit, aerial, eyeToCentreM: Math.round(d) });
+      }
       this.scene.fog.near = r.near;
       this.scene.fog.far = r.far;
     }
@@ -557,6 +581,12 @@ export class SharedFrame {
   /** Force the shadow map to be redrawn next frame. */
   invalidateShadows(): void { this.shadowKey = ''; this.map.triggerRepaint?.(); }
 
+  /** The sun's shadow-map size, or null for the tier's own (engine/aerialPower.ts `?aerialShadowMap=0`). */
+  setShadowMapSize(size: number | null): void {
+    this.baseShadowMapSize ??= this.rig.options.shadowMapSize;
+    if (this.rig.setShadowMapSize(size ?? this.baseShadowMapSize)) { this.shadowHeld = null; this.invalidateShadows(); }
+  }
+
   /** Absolute ENU metres (fixed anchor) of a Mercator point; the shadow snap frame. */
   private absOf(p: Vec3): Vec3 {
     if (!this.anchor) { this.anchor = [p[0], p[1], 0]; this.anchorUnits = mercatorUnitsPerMetre(p[1]); }
@@ -695,15 +725,19 @@ export class SharedFrame {
       let redraw = false;
       if (shadows) {
         const c = view.center();
-        const focus = this.absOf(mercatorOfLngLat(c.lng, c.lat, 0));
-        const fit = this.rig.follow(focus, ctx.zoom, abs => worldOfMercator(fm, this.mercatorOfAbs(abs)), this.options.shadowSnapM ?? 16);
+        let focus = this.absOf(mercatorOfLngLat(c.lng, c.lat, 0)), zoom = ctx.zoom;
+        // Held (shadowEvery > 1): the box of the last redraw, until the n-th pass since it.
+        const held = this.shadowEvery > 1 && this.shadowHeld && this.shadowSince + 1 < this.shadowEvery ? this.shadowHeld : null;
+        if (held) { focus = held.focus; zoom = held.zoom; }
+        const fit = this.rig.follow(focus, zoom, abs => worldOfMercator(fm, this.mercatorOfAbs(abs)), this.options.shadowSnapM ?? 16);
         // The scene is static and the box moves in coarse steps, so the map is
         // redrawn only when the box, the casters or the age say so. Between
         // redraws only the shadow matrix follows the moving (eye-relative) world.
         const key = `${fit.targetAbs.map(v => v.toFixed(3)).join(',')}|${fit.right}|${this.casterSignature(drawn)}`;
-        redraw = key !== this.shadowKey || ++this.shadowAge >= (this.options.shadowRefreshFrames ?? 120);
-        if (redraw) { this.shadowKey = key; this.shadowAge = 0; this.shadowRedraws++; }
+        redraw = !held && (key !== this.shadowKey || ++this.shadowAge >= (this.options.shadowRefreshFrames ?? 120));
+        if (redraw) { this.shadowKey = key; this.shadowAge = 0; this.shadowRedraws++; this.shadowHeld = { focus, zoom }; this.shadowSince = 0; }
         else {
+          this.shadowSince++;
           this.rig.sun.updateMatrixWorld();
           this.rig.sun.shadow.updateMatrices(this.rig.sun);
         }

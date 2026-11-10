@@ -2,7 +2,7 @@
 // it, by class (motor-only / rideable / other), and whether its approach is sunken at all (the road 15 m outside the
 // portal lies at least SUNK_M under the relief 15 m to either side). A sunken motor approach without a cut is a miss.
 //
-//   npx tsx scripts/own-ground/check-tunnels-coverage.ts [--list] [--json out.json]
+//   npx tsx scripts/own-ground/check-tunnels-coverage.ts [--list] [--json out.json] [--rampGaps=0]
 import { readFileSync, readdirSync, writeFileSync } from 'node:fs';
 import { gunzipSync } from 'node:zlib';
 import { join } from 'node:path';
@@ -13,7 +13,7 @@ import { toLocal } from '../../src/canalRecall/ownGround/groundStore.ts';
 const ROOT = 'public/data/extracts/amsterdam';
 const SUNK_M = 1.5;
 const args = process.argv.slice(2), list = args.includes('--list'), jsonOut = args.includes('--json') ? args[args.indexOf('--json') + 1] : null;
-const store = new GroundStore(async p => { const b = readFileSync(join(ROOT, p)); return new Uint8Array(b[0] === 0x1f && b[1] === 0x8b ? gunzipSync(b) : b); });
+const store = new GroundStore(async p => { const b = readFileSync(join(ROOT, p)); return new Uint8Array(b[0] === 0x1f && b[1] === 0x8b ? gunzipSync(b) : b); }, args.includes('--rampGaps=0') ? { rampGaps: false } : {});
 await store.init();
 const keys = readdirSync(join(ROOT, 'own-ground-osm-v1/cells')).map(f => f.replace('.json.gz', ''));
 const withTunnels: string[] = [];

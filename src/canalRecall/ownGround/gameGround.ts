@@ -34,6 +34,7 @@
 // supplies the camera; `GroundHost` is the thin adapter the page implements
 // (repaint, hiding the basemap's own ground). THREE is injected.
 
+import { clampToDrawLimit, currentDrawLimit } from '../engine/drawLimit';
 import { HIGH_ANISOTROPY, pageTextureParams } from '../look/texturePolicy.js';
 import { farRailDrapeFlag, farRailFlag, installRailStripes, railMinPxFlag, railStripesFlag } from './railStripes.js';
 import { GroundStore, httpFetchBytes, toLocal, WATER_Z, type ReliefTileLoader, type Rect } from './groundStore.js';
@@ -52,7 +53,7 @@ import { footprintBase } from './placement.js';
 import { cutMesh, disposeTiles, setTileReach } from '../rendererShared/tiledGeometry.js';
 import { cellTileGrid, type CellTile } from './cellTiles.js';
 import { inTouchRing, residentRadius, touchAheadMarginM, touchResidentRadius, viewCornerReachM, viewReachM } from '../engine/worldStreamer.js';
-import { farBlockCells, farBlocksWithin, farHorizonEnabled, farRadiusM, horizonReachM, FAR_KEEP_M, type BuiltFar } from './farRing.js';
+import { farBlockCells, farBlocksWithin, farHorizonEnabled, farRadiusM, horizonReachM, FAR_KEEP_M, FAR_STEP_M, type BuiltFar } from './farRing.js';
 import { routeRibbon } from './streets.js';
 import { disc, emptyMesh, merge, type MeshArrays } from './drape.js';
 import { riderPose as surfaceRiderPose, type Vec2 } from './surface.js';
@@ -62,6 +63,9 @@ import { paintNoise } from './groundNoise.js';
 import { FLAT_GROUND_GAIN } from './groundLight.js';
 import { RAIL_STRIPE, RAIL_TONES, railStripes, SLEEPER_TILE_M } from './railTracks.js';
 import { OverviewBlend, presenceOf, transitionOn } from '../overviewTransition/blend.js';
+import { groundPrefetchFlag, prefetchStep, PREFETCH_MAX_MS, PREFETCH_POLL_MS, type StartView } from './groundPrefetch.js';
+import { groundShareFlag, groundShareMB } from './groundShare.js';
+import { defaultGroundWorkers, FOCUS_RANK_BASE, AFFINITY_WINDOW, groundAffinityFlag, groundAffinityLodFlag, groundBlockFirstFlag, dispatchTier, groundFocusFlag, groundPullFlag, groundQuickFlag, groundWorkersFlag, inFocusBlock, nextDispatch, pickWorker, PULL_DEPTH, sharedNeighbours } from './groundWorkers.js';
 import { cutClone, fadeClone, groundProgram, type GroundMarking } from './groundMaterial.js';
 import { MARKING_FADE_STRENGTH } from '../look/markingFade.js';
 import { flatLayerTones } from '../overviewTiles/layerColours.js';
@@ -72,10 +76,14 @@ export interface GroundHost {
   repaint(): void;
   /** Hide (true) or restore (false) the basemap's own ground fills and lines. */
   setBasemapGroundHidden(hidden: boolean): void;
+  /** The camera's pose now (groundPrefetch.ts): followed until the game's first `update`, so the start builds during the hold. */
+  startView?(): StartView | null;
 }
 
 export interface OwnGroundOptions {
   workerUrl: string;
+  /** Ground workers building cells side by side (groundWorkers.ts; `?groundWorkers=` else 3 on desktop, 1 on touch; 0 = that default). */
+  workers?: number;
   /** Resident radius from the rider to a cell's nearest edge, metres. */
   radiusM?: number;
   /** Largest resident radius from the air (zoomed out), metres: the radius grows from `radiusM` as the view reaches further (residency.ts viewReachM). */
@@ -210,6 +218,54 @@ function dryWayDecksFlag(): boolean {
   if (typeof g.__canalRecallDryWayDecks === 'boolean') return g.__canalRecallDryWayDecks;
   return /[?&]dryWayDecks=(1|true|on)\b/.test(g.location?.search ?? '');
 }
+/** Road surfaces carried across bridges (deckCarry.ts, lane R5-C1 issue #262): on by default; `?bridgeCarry=0` or `window.__canalRecallBridgeCarry = false` builds as before. */
+function bridgeCarryFlag(): boolean {
+  const g = globalThis as { __canalRecallBridgeCarry?: boolean; location?: { search?: string } };
+  if (typeof g.__canalRecallBridgeCarry === 'boolean') return g.__canalRecallBridgeCarry;
+  return !/[?&]bridgeCarry=(0|false|off)\b/.test(g.location?.search ?? '');
+}
+/** One red owner per junction mouth and the red on its own plane (lane R5-C1 issue #262): on by default; `?redDedupe=0` or `window.__canalRecallRedDedupe = false` restores. */
+export function redDedupeFlag(): boolean {
+  const g = globalThis as { __canalRecallRedDedupe?: boolean; location?: { search?: string } };
+  if (typeof g.__canalRecallRedDedupe === 'boolean') return g.__canalRecallRedDedupe;
+  return !/[?&]redDedupe=(0|false|off)\b/.test(g.location?.search ?? '');
+}
+/** Ground triangles clipped at the tunnel walls (tunnels.ts clipMeshAtCuts, R5-C2 #263): on by default; `?portalClip=0` or `window.__canalRecallPortalClip = false` restores the drape across the wall line. */
+function portalClipFlag(): boolean {
+  const g = globalThis as { __canalRecallPortalClip?: boolean; location?: { search?: string } };
+  if (typeof g.__canalRecallPortalClip === 'boolean') return g.__canalRecallPortalClip;
+  return !/[?&]portalClip=(0|false|off)\b/.test(g.location?.search ?? '');
+}
+/** The portal clip across a tunnel mouth's end line and along the walls up to it (tunnels.ts PortalClipOptions.ends, #269): on by default; `?portalEnds=0` or `window.__canalRecallPortalEnds = false` restores R5-C2's clip. */
+function portalEndsFlag(): boolean {
+  const g = globalThis as { __canalRecallPortalEnds?: boolean; location?: { search?: string } };
+  if (typeof g.__canalRecallPortalEnds === 'boolean') return g.__canalRecallPortalEnds;
+  return !/[?&]portalEnds=(0|false|off)\b/.test(g.location?.search ?? '');
+}
+/** The water tests on the banded edge index (groundStore.ts bandedWaterTest, exact; lane R5-A #260 step 4): on by default; `?groundPlanShare=0` or `window.__canalRecallGroundPlanShare = false` restores the plain test. */
+export function groundPlanShareFlag(): boolean {
+  const g = globalThis as { __canalRecallGroundPlanShare?: boolean; location?: { search?: string } };
+  if (typeof g.__canalRecallGroundPlanShare === 'boolean') return g.__canalRecallGroundPlanShare;
+  return !/[?&]groundPlanShare=(0|false|off)\b/.test(g.location?.search ?? '');
+}
+/** Ground determinism (groundStore.ts `deterministic`, #260 follow-up): a cell's mesh does not depend on which cells its store prepared first; on by default; `?groundDeterministic=0` or `window.__canalRecallGroundDeterministic = false` restores first-arrival planning. */
+export function groundDeterministicFlag(): boolean {
+  const g = globalThis as { __canalRecallGroundDeterministic?: boolean; location?: { search?: string } };
+  if (typeof g.__canalRecallGroundDeterministic === 'boolean') return g.__canalRecallGroundDeterministic;
+  return !/[?&]groundDeterministic=(0|false|off)\b/.test(g.location?.search ?? '');
+}
+/** A long same-side wall gap in a tunnel ramp bridged where the bank carries on (tunnels.ts bridgeBankGaps, #270): on by default; `?rampGaps=0` or `window.__canalRecallRampGaps = false` restores the split ramp. */
+function rampGapsFlag(): boolean {
+  const g = globalThis as { __canalRecallRampGaps?: boolean; location?: { search?: string } };
+  if (typeof g.__canalRecallRampGaps === 'boolean') return g.__canalRecallRampGaps;
+  return !/[?&]rampGaps=(0|false|off)\b/.test(g.location?.search ?? '');
+}
+/** roads-v1 cells with the junction slivers merged (roadSlivers.ts, cell version 3, R5-C2 #263): on by default where the manifest publishes them; `?roadSlivers=0` or `window.__canalRecallRoadSlivers = false` reads the version-2 cells. */
+function roadSliversFlag(): boolean {
+  const g = globalThis as { __canalRecallRoadSlivers?: boolean; location?: { search?: string } };
+  if (typeof g.__canalRecallRoadSlivers === 'boolean') return g.__canalRecallRoadSlivers;
+  return !/[?&]roadSlivers=(0|false|off)\b/.test(g.location?.search ?? '');
+}
 /** Road surfaces across bridges without gaps (issue #178): on by default; `?bridgeGaps=0` or `window.__canalRecallBridgeGaps = false` builds the decks as before (the A/B). */
 function bridgeGapsFlag(): boolean {
   const g = globalThis as { __canalRecallBridgeGaps?: boolean; location?: { search?: string } };
@@ -319,6 +375,8 @@ const CUT: Partial<Record<GroundLayer, 'r' | 'g'>> = {
 /** Materials that are objects on the ground, not the ground: lit by the rig as is (no FLAT_GROUND_GAIN). */
 const UNGAINED = new Set(['hedge', 'furniture', 'bollard', 'tram', 'track']);
 const OFFSET: Partial<Record<GroundLayer, number>> = { deckTop: 1, park: 1, wood: 1, square: 1, parking: 1, ...PARK_RANK, klinker: 2, brick: 2, asphalt: 2, gravel: 3, cycle: 3, paving: 3, paint: 4, tram: 5 };
+/** redDedupe (lane R5-C1, issue #262): the red on its own plane, two offset steps over the asphalt (paint and rails above it); `?redDedupe=0` keeps OFFSET. */
+export const RED_OFFSET: Partial<Record<GroundLayer, number>> = { ...OFFSET, cycle: 4, paint: 5, tram: 6 };
 
 /** three's `onUpload` callback (`this` is the attribute): drop the CPU copy. */
 function releaseArray(this: { array: unknown }): void { this.array = null; }
@@ -338,6 +396,25 @@ export class OwnGround {
   private readonly host: GroundHost;
   private readonly opts: Required<OwnGroundOptions>;
   private worker: Worker | null = null;
+  /** Every ground worker (`worker` is the first; far blocks go there). Lane R5-A #260. */
+  private workers: Worker[] = [];
+  /** Lane R5-A #260 step 3: the share host (groundShare.ts), with more than one worker and `?groundShare` on. */
+  private shareHost: Worker | null = null;
+  private readonly lodAffinityOn = groundAffinityLodFlag();
+  private readonly blockFirstOn = groundBlockFirstFlag();
+  /** The worker each requested cell was sent to (groundWorkers.ts pickWorker). */
+  private readonly workerOf = new Map<string, number>();
+  /** Pull dispatch (groundWorkers.ts nextDispatch, `?groundPull=0` off): the cells each worker holds, the best-first order, what to ask per cell. */
+  private readonly pullOn = groundPullFlag();
+  private held: Set<string>[] = [];
+  private readonly sentTo = new Map<string, number>();
+  private wantedOrder: string[] = [];
+  private readonly asks = new Map<string, { lod: 0 | 1; detail: CellDetail }>();
+  /** `?groundQueuedInstall=0` off: a built cell waiting to install counts as asked (gameGround updateResidency). */
+  private readonly queuedInstallOn = (() => { try { return new URLSearchParams((globalThis as { location?: { search?: string } }).location?.search ?? '').get('groundQueuedInstall') !== '0'; } catch { return true; } })();
+  /** Affinity (groundWorkers.ts sharedNeighbours, `?groundAffinity=0` off): the cells whose data each worker has loaded. */
+  private readonly affinityOn = groundAffinityFlag();
+  private loadedBy: Set<string>[] = [];
   private workerReady = false;
   private readonly base: Record<string, any> = {};
   private readonly resident = new Map<string, Resident>();
@@ -352,6 +429,18 @@ export class OwnGround {
   private readonly preparing = new Set<string>();
   private gen = 0;
   private centre: Vec2 | null = null;
+  /** The view's look-at (local metres) and its cell: that cell and its neighbours build first (groundWorkers.ts). */
+  private focus: Vec2 | null = null;
+  private focusCell: string | null = null;
+  private readonly focusOn = groundFocusFlag();
+  /** Follow the camera's pose until the game's first update, asking this many cells (groundPrefetch.ts, `?groundPrefetch=0` off). */
+  private readonly prefetchCells = groundPrefetchFlag();
+  private gameUpdated = false;
+  private prefetchTimer: ReturnType<typeof setInterval> | null = null;
+  private prefetchKey: string | null = null;
+  /** Quick first paint (opt-in `?groundQuick=1`) and the LOD the ring wants per cell (a quick install re-plans). */
+  private readonly quickOn = groundQuickFlag();
+  private wantedLod: ReadonlyMap<string, 0 | 1> = new Map();
   /** Meshes under the rider's distance limit (REACH_LAYERS of LOD 0 full-detail cells), by cell key. */
   private readonly reachMeshes = new Map<string, any[]>();
   private readonly reachM = groundReachFlag();
@@ -398,13 +487,19 @@ export class OwnGround {
   readonly blend = new OverviewBlend();
   private readonly blendUniform = { value: 1 };
   private readonly presenceUniform = { value: 1 };
+  /**
+   * The ground's start, page-clock ms (lane R5-A #260): `load` called, the main-thread store's indexes in, the worker's
+   * init posted, the worker ready (and its own init ms), the first cell installed. `cells`: each install's split
+   * (worker queue wait / data in / build / tiles, the main thread's request → install latency and install ms), last 200.
+   */
+  readonly startup: { /** Ground workers created; each one's ready time (page ms). */ workers?: number; workerReady?: number[]; /** The hold's first camera-pose residency (groundPrefetch.ts) and its cell. */ prefetchAt?: number; prefetchKey?: string; loadAt?: number; storeReadyAt?: number; workerPostedAt?: number; workerReadyAt?: number; workerInitMs?: number; firstInstallAt?: number; cells: Record<string, unknown>[] } = { cells: [] };
   readonly stats = { cellsBuilt: 0, buildMs: [] as number[], installMs: [] as number[], latencyMs: [] as number[], errors: [] as string[], lastBuild: null as null | Record<string, unknown> };
 
   constructor(THREE: any, frame: any, host: GroundHost, options: OwnGroundOptions) {
     this.THREE = THREE;
     this.frame = frame;
     this.host = host;
-    this.opts = { radiusM: RADIUS_M, aerialRadiusM: AERIAL_RADIUS_M, fadeMs: FADE_MS, nearM: NEAR_M, minZoom: 15, parks: parksFlag(), rails: railsFlag(), roads: roadsFlag(), groundLook: GROUND_LOOK_DEFAULT, transition: transitionOn(), far: true, releaseArrays: false, detail: detailFlag(), groundNear: groundNearFlag(), ring: groundRingFlag(), tiles: groundTilesFlag(), nearTiles: groundNearTilesFlag(), precompilePerFrame: precompileBudget(), ...options, tilesOnly: options.tilesOnly ?? !!options.releaseArrays };
+    this.opts = { radiusM: RADIUS_M, aerialRadiusM: AERIAL_RADIUS_M, fadeMs: FADE_MS, nearM: NEAR_M, minZoom: 15, parks: parksFlag(), rails: railsFlag(), roads: roadsFlag(), groundLook: GROUND_LOOK_DEFAULT, transition: transitionOn(), far: true, releaseArrays: false, detail: detailFlag(), groundNear: groundNearFlag(), ring: groundRingFlag(), tiles: groundTilesFlag(), nearTiles: groundNearTilesFlag(), precompilePerFrame: precompileBudget(), workers: 0, ...options, tilesOnly: options.tilesOnly ?? !!options.releaseArrays };
     this.radiusM = this.opts.radiusM;
     this.root = new THREE.Group();
     this.root.name = 'own-ground';
@@ -417,16 +512,39 @@ export class OwnGround {
   /** Load the extract indexes (absolute extract root URL) and start the worker. */
   async load(root: string): Promise<void> {
     this.dispose(false);
-    this.store = new GroundStore(httpFetchBytes(root), { parks: this.opts.parks, rails: this.opts.rails, roads: this.opts.roads, reliefTile: this.reliefLoader(root), prepareOnly: true, ...(this.railRetryOn ? {} : { railRetry: false }), ...(bridgeGapsFlag() ? {} : { bridgeGaps: false }), ...(dryWayDecksFlag() ? { dryWayDecks: true } : {}) });
+    this.startup.loadAt ??= performance.now();
+    this.store = new GroundStore(httpFetchBytes(root), { parks: this.opts.parks, rails: this.opts.rails, roads: this.opts.roads, reliefTile: this.reliefLoader(root), prepareOnly: true, ...(groundPlanShareFlag() ? {} : { planShare: false }), ...(groundDeterministicFlag() ? {} : { deterministic: false }), ...(this.railRetryOn ? {} : { railRetry: false }), ...(bridgeGapsFlag() ? {} : { bridgeGaps: false }), ...(dryWayDecksFlag() ? { dryWayDecks: true } : {}), ...(roadSliversFlag() ? {} : { roadSlivers: false }), ...(portalEndsFlag() ? {} : { portalEnds: false }), ...(rampGapsFlag() ? {} : { rampGaps: false }) });
     this.ready = false;
     if (!/\/amsterdam\/?$/.test(root)) return;
     await this.store.init();
+    this.startup.storeReadyAt ??= performance.now();
     try {
-      this.worker = new Worker(this.opts.workerUrl);
-      this.worker.onmessage = event => this.onWorker(event.data);
-      this.worker.onerror = event => { this.stats.errors.push(`worker: ${event.message}`); };
-      // Compact meshes: the same geometry in ~half the bytes (compactMesh.ts).
-      this.worker.postMessage({ type: 'init', root, parks: this.opts.parks, rails: this.opts.rails, railRetry: this.railRetryOn, ...(this.railRetryOn && this.opts.rails ? { railManifest: [...this.store.railCells] } : {}), farRails: farRailFlag(), farRailDrape: farRailDrapeFlag(), roads: this.opts.roads, bridgeGaps: bridgeGapsFlag(), dryWayDecks: dryWayDecksFlag(), groundLook: this.opts.groundLook, compact: compactFlag(), detail: this.opts.detail, roadLook: roadLookFlag(), tiles: this.opts.tiles, nearTiles: this.opts.nearTiles, tileMin: TILE_MIN_TRIANGLES });
+      const count = groundWorkersFlag(this.opts.workers || defaultGroundWorkers(this.opts.detail));
+      const init = { type: 'init', root, planShare: groundPlanShareFlag(), deterministic: groundDeterministicFlag(), parks: this.opts.parks, rails: this.opts.rails, railRetry: this.railRetryOn, ...(this.railRetryOn && this.opts.rails ? { railManifest: [...this.store.railCells] } : {}), farRails: farRailFlag(), farRailDrape: farRailDrapeFlag(), roads: this.opts.roads, bridgeGaps: bridgeGapsFlag(), dryWayDecks: dryWayDecksFlag(), bridgeCarry: bridgeCarryFlag(), redDedupe: redDedupeFlag(), portalClip: portalClipFlag(), portalEnds: portalEndsFlag(), rampGaps: rampGapsFlag(), roadSlivers: roadSliversFlag(), groundLook: this.opts.groundLook, compact: compactFlag(), detail: this.opts.detail, roadLook: roadLookFlag(), tiles: this.opts.tiles, nearTiles: this.opts.nearTiles, tileMin: TILE_MIN_TRIANGLES };
+      // One fetch + gunzip per file for every worker (groundShare.ts): a channel per worker to one more instance of the bundle.
+      const channels = count > 1 && groundShareFlag() ? Array.from({ length: count }, () => new MessageChannel()) : [];
+      if (channels.length) {
+        this.shareHost = new Worker(this.opts.workerUrl);
+        this.shareHost.onerror = event => { this.stats.errors.push(`share host: ${event.message}`); };
+        const ports = channels.map(c => c.port2);
+        this.shareHost.postMessage({ type: 'share-host', root, ports, capMB: groundShareMB() }, ports);
+      }
+      for (let i = 0; i < count; i++) {
+        const worker = new Worker(this.opts.workerUrl);
+        const wi = i;
+        worker.onmessage = event => this.onWorker(event.data, wi);
+        worker.onerror = event => { this.stats.errors.push(`worker: ${event.message}`); };
+        // Compact meshes: the same geometry in ~half the bytes (compactMesh.ts).
+        const sharePort = channels[i]?.port1;
+        if (sharePort) worker.postMessage({ ...init, index: i, pageOrigin: performance.timeOrigin, sharePort }, [sharePort]);
+        else worker.postMessage({ ...init, index: i, pageOrigin: performance.timeOrigin });
+        this.workers.push(worker);
+        this.held.push(new Set());
+        this.loadedBy.push(new Set());
+      }
+      this.worker = this.workers[0] ?? null;
+      this.startup.workerPostedAt ??= performance.now();
+      this.startup.workers ??= count;
     } catch (error) {
       this.stats.errors.push(`worker unavailable: ${String(error)}`);
     }
@@ -467,11 +585,21 @@ export class OwnGround {
     this.pending.clear();
     this.installQueue.length = 0;
     this.prepared.clear();
-    this.worker?.terminate();
+    for (const worker of this.workers) worker.terminate();
+    this.workers = [];
+    this.shareHost?.terminate();
+    this.shareHost = null;
+    this.workerOf.clear();
+    this.held = [];
+    this.loadedBy = [];
+    this.sentTo.clear();
+    this.asks.clear();
+    this.wantedOrder = [];
     this.worker = null;
     this.relief?.dispose();
     this.relief = null;
     this.workerReady = false;
+    this.stopPrefetch();
     this.gen++;
     if (full) { this.unregister?.(); this.unregister = null; this.setBasemapHidden(false); this.precompiled = false; this.precompileQueue = null; }
   }
@@ -498,9 +626,48 @@ export class OwnGround {
   }
 
   /** The rider's position (lng/lat) and the map zoom; call once per camera sync. */
-  update(lngLat: LngLat, zoom: number, pitchDeg = 60): void {
+  update(lngLat: LngLat, zoom: number, pitchDeg = 60, focus?: LngLat | null): void {
+    // The first game update plans the whole ring (the hold asked only the first few, groundPrefetch.ts).
+    if (!this.gameUpdated) { this.gameUpdated = true; this.stopPrefetch(); this.residencyAt = null; }
+    this.place(lngLat, zoom, pitchDeg, focus);
+  }
+
+  /**
+   * Until the game's first update, follow the camera's pose (groundPrefetch.ts): the workers are ready ~2 s before the
+   * ride is revealed and the camera already sits at the start pose, so the start neighbourhood builds during the hold.
+   */
+  private startPrefetch(): void {
+    if (!this.prefetchCells || this.gameUpdated || this.prefetchTimer || typeof this.host.startView !== 'function') return;
+    const until = performance.now() + PREFETCH_MAX_MS;
+    this.prefetchTimer = setInterval(() => {
+      if (this.gameUpdated || performance.now() > until) { this.stopPrefetch(); return; }
+      if (!this.ready) return;
+      let view: StartView | null = null;
+      try { view = this.host.startView?.() ?? null; } catch { view = null; }
+      const local = view ? toLocal(view.lngLat[0], view.lngLat[1]) : null;
+      const key = local && Number.isFinite(local[0]) && Number.isFinite(local[1]) ? this.store.cellAt(local[0], local[1]) : null;
+      const step = prefetchStep(view, key, this.prefetchKey, this.opts.minZoom);
+      this.prefetchKey = step.nextKey;
+      if (!step.use || !view) return;
+      this.startup.prefetchAt ??= performance.now();
+      this.startup.prefetchKey ??= key ?? undefined;
+      this.place(view.lngLat, view.zoom, view.pitch, view.lngLat);
+    }, PREFETCH_POLL_MS);
+  }
+
+  private stopPrefetch(): void {
+    if (this.prefetchTimer) clearInterval(this.prefetchTimer);
+    this.prefetchTimer = null;
+  }
+
+  private place(lngLat: LngLat, zoom: number, pitchDeg = 60, focus?: LngLat | null): void {
     this.zoom = zoom;
     this.centre = toLocal(lngLat[0], lngLat[1]);
+    if (this.focusOn && focus && this.ready) {
+      this.focus = toLocal(focus[0], focus[1]);
+      const cell = this.store.cellAt(this.focus[0], this.focus[1]);
+      if (cell !== this.focusCell) { this.focusCell = cell; this.residencyAt = null; }
+    }
     if (this.lookAheadOn ??= lookAheadEnabled()) this.motion.update(lngLat[0], lngLat[1], performance.now());
     let reach: number, radius: number;
     if (this.opts.ring === 'view') {
@@ -516,7 +683,10 @@ export class OwnGround {
     }
     if (radius !== this.radiusM) { this.radiusM = radius; this.residencyAt = null; }
     // The far ring follows the horizon (farRing.ts farReachM, lane R2-B #229): a pitched view that shows it asks for the ring.
-    const far = this.opts.far ? farRadiusM((this.farHorizon ??= farHorizonEnabled()) ? horizonReachM(reach, zoom, pitchDeg, lngLat[1]) : reach, radius) : 0;
+    let far = this.opts.far ? farRadiusM((this.farHorizon ??= farHorizonEnabled()) ? horizonReachM(reach, zoom, pitchDeg, lngLat[1]) : reach, radius) : 0;
+    // `?drawLimit` (engine/drawLimit.ts, lane P2 #325): nothing past the opaque haze is built (the far shells follow).
+    const limit = currentDrawLimit();
+    if (far && limit) far = Math.max(radius, clampToDrawLimit(far, limit, limit.eyeToCentreM, FAR_STEP_M));
     if (far !== this.farRadius) { this.farRadius = far; this.residencyAt = null; }
     if (!this.ready) return;
     if (this.requeueOn && this.retries.size && this.retries.due(performance.now())) this.residencyAt = null;
@@ -566,7 +736,13 @@ export class OwnGround {
    * while the ground is hidden at this zoom or a cell has no data.
    */
   /** Cells asked for and not yet installed; 0 when the ground has caught up with the view or is not drawn at this zoom. */
-  get loadingCells(): number { return this.visibleAtZoom(this.zoom) ? this.pending.size + this.installQueue.length : 0; }
+  get loadingCells(): number {
+    // The hold's prefetch (groundPrefetch.ts) is not loading the game waits on: before the game's first update nothing
+    // was asked, and settle.ts's ownGround check then held the loading screen for the prefetched cells (the reveal came
+    // 1.7 s later, 3 of 3 runs, 2026-11-08).
+    if (!this.gameUpdated && this.prefetchCells) return 0;
+    return this.visibleAtZoom(this.zoom) ? this.pending.size + this.installQueue.length : 0;
+  }
 
   coversRect(x0: number, y0: number, x1: number, y1: number): boolean {
     if (!this.ready || !this.visibleAtZoom(this.zoom) || !this.resident.size) return false;
@@ -634,7 +810,7 @@ export class OwnGround {
       if (view ? !inTouchRing(d, d > 1e-6 && direction ? ((near[0] - x) * direction[0] + (near[1] - y) * direction[1]) / d : 0, R, ahead) : d > R) continue;
       const own = dx === 0 && dy === 0, beside = Math.abs(dx) <= 1 && Math.abs(dy) <= 1;
       const fine = this.opts.groundNear === 'all' ? false : own || (this.opts.groundNear === 'block' && beside);
-      out.push({ key, lod: d <= this.opts.nearM ? 0 : 1, detail: this.opts.detail === 'touch' && !fine ? 'touch' : 'full', d, rank: direction ? aheadRankXY(this.centre, near, direction) : d });
+      out.push({ key, lod: d <= this.opts.nearM ? 0 : 1, detail: this.opts.detail === 'touch' && !fine ? 'touch' : 'full', d, rank: this.focus && inFocusBlock(key, this.focusCell) ? FOCUS_RANK_BASE + this.rectDistance(rect, this.focus) : direction ? aheadRankXY(this.centre, near, direction) : d });
     }
     return out.sort((a, b) => a.rank - b.rank || a.d - b.d);
   }
@@ -642,33 +818,79 @@ export class OwnGround {
   private updateResidency(): void {
     if (!this.centre) return;
     this.residencyAt = [this.centre[0], this.centre[1]];
-    const wanted = this.wantedCells();
+    let wanted = this.wantedCells();
+    // During the hold (groundPrefetch.ts) only the best-ranked few: the hold's own tiers load meanwhile.
+    if (!this.gameUpdated && this.prefetchCells && wanted.length > this.prefetchCells) wanted = wanted.slice(0, this.prefetchCells);
     const keep = new Set(wanted.map(w => w.key));
+    if (this.quickOn) this.wantedLod = new Map(wanted.map(w => [w.key, w.lod]));
     this.wantedKeys = keep;
     for (const key of [...this.resident.keys()]) if (!keep.has(key)) this.drop(key);
-    for (const key of [...this.pending.keys()]) if (!keep.has(key)) { this.pending.delete(key); this.discards.unwanted++; this.retries.forget(key); }
+    for (const key of [...this.pending.keys()]) if (!keep.has(key)) { this.pending.delete(key); this.asks.delete(key); this.discards.unwanted++; this.retries.forget(key); }
     for (let i = this.installQueue.length - 1; i >= 0; i--) if (!keep.has(this.installQueue[i].key)) this.installQueue.splice(i, 1);
     for (const w of wanted) {
-      // Main-thread surface for poses, bases and overlays: relief + decks of every wanted cell.
-      this.prepareMain(w.key);
-      const want = levelOf(w.lod, w.detail), have = this.resident.get(w.key);
+      // Main-thread surface for poses, bases and overlays: relief + decks of every wanted cell. Not during the hold
+      // (groundPrefetch.ts): the page is still loading on this thread; the game's first update prepares them.
+      if (this.gameUpdated || !this.prefetchCells) this.prepareMain(w.key);
+      const have = this.resident.get(w.key);
+      // Quick first paint (groundWorkers.ts groundQuickFlag): a near cell with nothing drawn yet is asked at LOD 1
+      // first (~0.8 s against ~2–3 s for LOD 0); its install re-plans and the LOD 0 build follows.
+      const lod = this.quickOn && w.lod === 0 && !have ? 1 : w.lod;
+      const want = levelOf(lod, w.detail);
       if ((have && levelOf(have.lod, have.detail) === want) || this.pending.get(w.key) === want) continue;
+      // Built and waiting its frame to install (no longer pending, not yet resident): not asked again (R5-A #260: the
+      // hold's camera cell, arrived just as the game's first update re-planned, was built twice, 1.5 s of a worker).
+      if (this.queuedInstallOn && this.installQueue.some(c => c.key === w.key && levelOf(c.lod, c.detail) === want)) continue;
       // A cell that becomes near again (or that the ring wants at another LOD) rebuilds through this same path: one
       // request, then the install swaps the whole cell, so two levels are never on screen together.
+      // The worker already holding this cell's earlier request keeps it (its queue replaces the level); a new request
+      // goes to the least busy worker (groundWorkers.ts).
+      if (!this.pending.has(w.key)) this.workerOf.delete(w.key);
       this.pending.set(w.key, want);
       this.requestedAt.set(`${w.key}:${want}`, performance.now());
-      this.worker?.postMessage({ type: 'build', key: w.key, lod: w.lod, detail: w.detail, gen: this.gen });
+      // Pull: the cell waits here until a worker has room (dispatch below).
+      if (this.pullOn) { this.asks.set(w.key, { lod, detail: w.detail }); continue; }
+      const wi = pickWorker(w.key, this.workers.length, this.workerOf, this.pending.keys());
+      this.workerOf.set(w.key, wi);
+      this.workers[wi]?.postMessage({ type: 'build', key: w.key, lod, detail: w.detail, gen: this.gen });
     }
-    // The worker builds its queue in this order and drops cells the rider has left (buildQueue.ts).
-    if (this.lookAheadOn) this.worker?.postMessage({ type: 'order', keys: wanted.map(w => w.key) });
+    if (this.pullOn) { this.wantedOrder = wanted.map(w => w.key); this.dispatch(); }
+    // The worker builds its queue in this order and drops cells the rider has left (buildQueue.ts). Not with pull: a
+    // worker holds at most PULL_DEPTH cells, and each one it holds must answer (a dropped job would hold its slot).
+    else if (this.lookAheadOn) for (const worker of this.workers) worker.postMessage({ type: 'order', keys: wanted.map(w => w.key) });
     // Relief far behind is dropped on both sides (decks keep their placed heights).
     const keepM = this.radiusM + 2200;
-    this.worker?.postMessage({ type: 'evict', x: this.centre[0], y: this.centre[1], keepM, keep: [...keep].flatMap(k => GroundStore.neighbours(k)) });
+    const evict = { type: 'evict', x: this.centre[0], y: this.centre[1], keepM, keep: [...keep].flatMap(k => GroundStore.neighbours(k)) };
+    for (const worker of this.workers) worker.postMessage(evict);
     if (this.store.evictRelief(this.centre[0], this.centre[1], keepM)) {
       for (const key of [...this.prepared]) if (!keep.has(key)) this.prepared.delete(key);
     }
-    this.store.forgetCells(new Set([...keep].flatMap(k => GroundStore.neighbours(k))));
+    const around = new Set([...keep].flatMap(k => GroundStore.neighbours(k)));
+    this.store.forgetCells(around);
+    // The workers forget the same cells (the evict message above).
+    for (const loaded of this.loadedBy) for (const k of [...loaded]) if (!around.has(k)) loaded.delete(k);
     this.updateFar(keep);
+  }
+
+  /** Pull (groundWorkers.ts): hand the best-ranked waiting cells to the workers with room. */
+  private dispatch(): void {
+    if (!this.pullOn || !this.workers.length) return;
+    const affinity = this.affinityOn ? (key: string, wi: number) => sharedNeighbours(key, this.loadedBy[wi]) : undefined;
+    for (const [key, wi] of nextDispatch(this.wantedOrder, this.pending, this.sentTo, this.held.map(h => h.size), PULL_DEPTH, affinity ? AFFINITY_WINDOW : 1, affinity, this.lodAffinityOn ? key => dispatchTier(key, this.asks.get(key)?.lod, this.blockFirstOn ? this.focusCell : undefined) : undefined)) {
+      const ask = this.asks.get(key);
+      if (!ask) continue;
+      this.asks.delete(key);
+      for (const n of GroundStore.neighbours(key)) this.loadedBy[wi].add(n);
+      this.held[wi].add(key);
+      this.sentTo.set(key, wi);
+      this.workerOf.set(key, wi);
+      this.workers[wi].postMessage({ type: 'build', key, lod: ask.lod, detail: ask.detail, gen: this.gen });
+    }
+  }
+
+  /** A worker answered for `key` (built, or failed): its slot is free. */
+  private release(key: string | undefined, wi: number | undefined): void {
+    if (!this.pullOn || key == null || wi == null) return;
+    if (this.held[wi]?.delete(key) && this.sentTo.get(key) === wi) this.sentTo.delete(key);
   }
 
   /** Far blocks: ask for the ones the far radius reaches that the resident ring does not wholly draw; drop distant ones. */
@@ -747,8 +969,13 @@ export class OwnGround {
     }).catch(error => this.stats.errors.push(`prepare ${key}: ${String(error)}`)).finally(() => this.preparing.delete(key));
   }
 
-  private onWorker(msg: any): void {
-    if (msg.type === 'ready') { this.workerReady = true; this.workerRailCells = typeof msg.railCells === 'number' ? msg.railCells : null; return; }
+  private onWorker(msg: any, wi?: number): void {
+    if (this.pullOn && (msg.type === 'cell' || (msg.type === 'error' && msg.key))) {
+      this.release(msg.type === 'cell' ? msg.cell?.key : msg.key, wi);
+      // After this reply is handled (installed, failed or stale): the freed slot takes the next cell.
+      queueMicrotask(() => this.dispatch());
+    }
+    if (msg.type === 'ready') { this.startup.workerReadyAt ??= performance.now(); (this.startup.workerReady ??= [])[msg.index ?? 0] = Math.round(performance.now()); this.startPrefetch(); if (typeof msg.initMs === 'number') this.startup.workerInitMs ??= msg.initMs; this.workerReady = true; this.workerRailCells = typeof msg.railCells === 'number' ? msg.railCells : null; return; }
     if (msg.type === 'error' && msg.far) { this.stats.errors.push(`far ${msg.far}: ${msg.message}`.slice(0, 400)); this.farPending.delete(msg.far); return; }
     if (msg.type === 'far') {
       if (msg.gen !== this.gen || !this.farPending.delete(msg.key)) return;
@@ -765,6 +992,7 @@ export class OwnGround {
     this.stats.buildMs.push(cell.stats.buildMs);
     this.stats.lastBuild = { key: cell.key, lod: cell.lod, detail: cell.detail, ...cell.stats };
     this.cellBuilds.set(cell.key, { ...cell.stats, lod: cell.lod, detail: cell.detail, ...(typeof msg.railFetch === 'string' ? { railFetch: msg.railFetch } : {}) });
+    (cell as BuiltCell & { arrival?: unknown }).arrival = { at: performance.now(), ...(msg.timing && typeof msg.timing === 'object' ? msg.timing as object : {}) };
     this.installQueue.push(cell);
     this.host.repaint();
   }
@@ -908,7 +1136,7 @@ export class OwnGround {
       hedge: std({ vertexColors: true, roughness: 1, side: THREE.DoubleSide }),
       furniture: std({ vertexColors: true, roughness: 0.8, side: THREE.DoubleSide }),
     };
-    for (const [layer, k] of Object.entries(OFFSET)) Object.assign(M[layer], { polygonOffset: true, polygonOffsetFactor: -k!, polygonOffsetUnits: -2 * k! });
+    for (const [layer, k] of Object.entries(redDedupeFlag() ? RED_OFFSET : OFFSET)) Object.assign(M[layer], { polygonOffset: true, polygonOffsetFactor: -k!, polygonOffsetUnits: -2 * k! });
     // Level sunlit ground draws its palette luminance (groundLight.ts); objects standing on it keep the rig's light as the buildings do.
     for (const [layer, m] of Object.entries(M)) if (!UNGAINED.has(layer)) m.color.multiplyScalar(FLAT_GROUND_GAIN);
     // The overview → city blend: every ground material (not the draped overlays below) is present early and takes its
@@ -1110,7 +1338,8 @@ export class OwnGround {
   }
 
   private install(cell: BuiltCell): void {
-    if (!this.wantedCells().some(w => w.key === cell.key && w.lod === cell.lod && w.detail === cell.detail)) {
+    const quick = this.quickOn && cell.lod === 1 && !this.resident.has(cell.key);
+    if (!this.wantedCells().some(w => w.key === cell.key && (w.lod === cell.lod || (quick && w.lod === 0)) && w.detail === cell.detail)) {
       this.discards.install++;
       // The ring changed between request and install (a cell crossed NEAR_M, the radius stepped): ask for what it wants
       // now on the next frame, not after the next 60 m move (a stationary rider kept the old LOD or no cell, #232).
@@ -1163,6 +1392,13 @@ export class OwnGround {
     this.stats.installMs.push(performance.now() - t0);
     const asked = this.requestedAt.get(`${cell.key}:${levelOf(cell.lod, cell.detail)}`);
     if (asked !== undefined) { this.stats.latencyMs.push(performance.now() - asked); this.requestedAt.delete(`${cell.key}:${levelOf(cell.lod, cell.detail)}`); }
+    const now = performance.now(), arrival = (cell as BuiltCell & { arrival?: { at: number } }).arrival;
+    this.startup.firstInstallAt ??= now;
+    // A quick LOD 1 stand-in for a near cell: plan again, so its LOD 0 build is asked for on the next update.
+    if (this.quickOn && cell.lod === 1 && this.wantedLod.get(cell.key) === 0) this.residencyAt = null;
+    const { at: arrivedAt, ...timing } = arrival ?? { at: undefined };
+    this.startup.cells.push({ key: cell.key, lod: cell.lod, detail: cell.detail, installedAt: Math.round(now), latencyMs: asked === undefined ? null : Math.round(now - asked), ...timing, queuedMs: arrivedAt == null ? null : Math.round(t0 - arrivedAt), installMs: Math.round(now - t0) });
+    if (this.startup.cells.length > 200) this.startup.cells.shift();
     this.frame.invalidateShadows?.();
     this.host.repaint();
   }
@@ -1410,7 +1646,9 @@ export class OwnGround {
     const median = (a: number[]) => { const s = [...a].sort((x, y) => x - y); return s.length ? +s[s.length >> 1].toFixed(1) : null; };
     return {
       enabled: this.enabled, ready: this.ready, workerReady: this.workerReady, visible: this.visibleAtZoom(this.zoom), transition: this.opts.transition, blend: this.blend.value, basemapHidden: this.basemapHidden, radiusM: this.radiusM, zoom: this.zoom, roads: this.opts.roads ? this.store.roadCells.size : false, detail: this.opts.detail, groundNear: this.opts.groundNear, ring: this.opts.ring, aheadM: this.aheadM,
-      cells, details, pending: Object.fromEntries(this.pending), queued: this.installQueue.length, triangles, geometryMB: +(bytes / 1048576).toFixed(1),
+      cells, details, pending: Object.fromEntries(this.pending), queued: this.installQueue.length,
+      // Lane R5-A #260 step 1: the ground workers and the cells pending on each (far blocks all go to worker 0).
+      workers: this.workers.length, focusCell: this.focusCell, workerPending: this.pullOn ? this.held.map(h => [...h]) : this.workers.map((_, i) => [...this.pending.keys()].filter(k => this.workerOf.get(k) === i)), pull: this.pullOn, triangles, geometryMB: +(bytes / 1048576).toFixed(1),
       reliefTiles: this.store.reliefTileCount, decks: this.ready ? this.store.surface.decks.length : 0, surfaceRevision: this.surfaceRevision,
       built: this.stats.cellsBuilt, buildMsMedian: median(this.stats.buildMs), installMsMedian: median(this.stats.installMs),
       latencyMsMedian: median(this.stats.latencyMs), latencyMsMax: this.stats.latencyMs.length ? Math.round(Math.max(...this.stats.latencyMs)) : null, lastBuild: this.stats.lastBuild,

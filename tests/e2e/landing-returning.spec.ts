@@ -1,0 +1,239 @@
+import { expect, test, type Page, type Request } from '@playwright/test';
+import { CANAL_CITIES } from '../../src/canalRecall/game/cities';
+import { dailyPoolPair, dailyRideDateKey, dailyRideRouteId } from '../../src/canalRecall/game/dailyRide';
+import { landingFixtureEntries, type LandingScenario } from '../../src/canalRecall/landing/landingFixtures';
+import { DAILY_RIDE_ON_LANDING } from '../../src/canalRecall/featureFlags';
+
+// G2 (#272): the landing page for a returning player — Continue (names due)
+// and Free Ride — drawn from localStorage alone; Continue starts a review ride.
+// Today's ride is off on the landing since 2026-11-09 (user: "no daily ride";
+// DAILY_RIDE_ON_LANDING, F1 #311): its landing cases skip while the flag is
+// off and come back with it; `?ride=daily` still starts the ride (below).
+// Needs js/landing.bundle.js and the rebuilt route-selection bundle.
+const DAILY_OFF = 'Today’s ride is off on the landing (DAILY_RIDE_ON_LANDING, F1 #311)';
+
+const LANDING = '/canal-drive/landing.html';
+const shots = process.env.G2_SHOTS || 'artifacts/g2-landing';
+const pois = CANAL_CITIES.amsterdam.curatedPois.map(poi => ({ ...poi }));
+/** Hosts the static page itself loads (fonts, video loops); anything else is a network read. */
+const STATIC_HOSTS = new Set(['fonts.googleapis.com', 'fonts.gstatic.com', 'media.rideamsterdam.nl']);
+
+async function seed(page: Page, scenario: LandingScenario, now = Date.now()) {
+  const entries = landingFixtureEntries(scenario, now);
+  await page.addInitScript((data: Record<string, string>) => {
+    if (sessionStorage.getItem('g2-seeded')) return;
+    sessionStorage.setItem('g2-seeded', '1');
+    for (const [key, value] of Object.entries(data)) localStorage.setItem(key, value);
+  }, entries);
+}
+
+function networkReads(page: Page): Request[] {
+  const reads: Request[] = [];
+  page.on('request', request => {
+    const url = new URL(request.url());
+    const type = request.resourceType();
+    if (type === 'fetch' || type === 'xhr' || type === 'websocket' || type === 'eventsource') reads.push(request);
+    else if (url.hostname !== '127.0.0.1' && url.hostname !== 'localhost' && !STATIC_HOSTS.has(url.hostname)) reads.push(request);
+  });
+  return reads;
+}
+
+test('a first-time visitor keeps the static landing', async ({ page }) => {
+  await page.goto(LANDING);
+  await expect(page.getByRole('heading', { level: 1 })).toContainText('Learn Amsterdam');
+  await expect(page.locator('#landing-returning-slot')).toBeHidden();
+  await expect(page.locator('[data-landing-card]')).toHaveCount(0);
+});
+
+test('a returning player gets Continue and Free Ride from localStorage alone, no network', async ({ page }, info) => {
+  const now = Date.now();
+  await seed(page, 'returning', now);
+  const reads = networkReads(page);
+  await page.goto(LANDING);
+  const slot = page.locator('#landing-returning-slot');
+  await expect(slot).toBeVisible();
+  await expect(page.locator('[data-landing-card]')).toHaveCount(DAILY_RIDE_ON_LANDING ? 3 : 2);
+  await expect(page.locator('[data-landing-card="review"] .landing-card-title')).toHaveText('7 names due · 12 min');
+  await expect(page.locator('[data-landing-card="free"]')).toBeVisible();
+  await expect(page.locator('[data-landing-stats]')).toContainText('Streak · 3 days');
+  await expect(page.locator('[data-landing-stats]')).toContainText('Passport · 4 stamps');
+  if (DAILY_RIDE_ON_LANDING) {
+    await expect(page.locator('.landing-board li')).toHaveCount(3);
+    const route = await page.locator('.landing-returning').getAttribute('data-daily-route');
+    expect(route).toBe(dailyRideRouteId(dailyRideDateKey(now), pois));
+  } else {
+    await expect(page.locator('[data-landing-card="daily"], [data-landing-go="daily"], .landing-board')).toHaveCount(0);
+    expect(await page.locator('.landing-returning').getAttribute('data-daily-route')).toBeNull();
+    // The two cards share the row: neither is wider than half of it, both on one line on desktop and phone.
+    const boxes = await page.locator('[data-landing-card]').evaluateAll(els => els.map(e => { const r = e.getBoundingClientRect(); return { y: Math.round(r.y), w: Math.round(r.width) }; }));
+    expect(boxes[0].y).toBe(boxes[1].y);
+    expect(Math.abs(boxes[0].w - boxes[1].w)).toBeLessThanOrEqual(2);
+  }
+  // The static hero still follows.
+  await expect(page.getByRole('heading', { level: 1 })).toContainText('Learn Amsterdam');
+  await page.waitForLoadState('networkidle');
+  // The What's New toast (G7, whats-new-toast.bundle.js) reads the notes and the deployment stamp on
+  // every landing load; the returning player's cards themselves come from localStorage alone.
+  const toastReads = /\/(whats-new-notes|deployment)\.json(\?|$)/;
+  expect(reads.filter(r => !toastReads.test(r.url())).map(r => `${r.resourceType()} ${r.url()}`)).toEqual([]);
+  await page.screenshot({ path: `${shots}/landing-returning-${info.project.name}.png` });
+  await page.locator('#landing-returning-slot').screenshot({ path: `${shots}/landing-cards-${info.project.name}.png` });
+});
+
+test('?landing=0 keeps the static landing for a returning player', async ({ page }) => {
+  await seed(page, 'returning');
+  await page.goto(`${LANDING}?landing=0`);
+  await expect(page.getByRole('heading', { level: 1 })).toContainText('Learn Amsterdam');
+  await expect(page.locator('[data-landing-card]')).toHaveCount(0);
+});
+
+test('today’s route is identical in two browsers on the same date', async ({ browser }) => {
+  test.skip(!DAILY_RIDE_ON_LANDING, DAILY_OFF);
+  // 23:30 UTC on 11 Nov is 12 Nov in Amsterdam: the ride follows Amsterdam's date, not the browser's.
+  // (A buurt-pool day, after DAILY_POOL_CUTOVER.)
+  const at = Date.UTC(2026, 10, 11, 23, 30);
+  const ids: Array<string | null> = [];
+  for (const timezoneId of ['Europe/Amsterdam', 'America/Los_Angeles']) {
+    const context = await browser.newContext({ timezoneId });
+    const page = await context.newPage();
+    await page.clock.setFixedTime(at);
+    await seed(page, 'returning', at);
+    await page.goto(LANDING);
+    await expect(page.locator('.landing-returning')).toBeVisible();
+    ids.push(await page.locator('.landing-returning').getAttribute('data-daily-route'));
+    await context.close();
+  }
+  expect(ids[0]).toBeTruthy();
+  expect(ids[1]).toBe(ids[0]);
+  expect(ids[0]).toBe(dailyRideRouteId('2026-11-12', pois));
+  expect(ids[0]).toMatch(/^2026-11-12:(buurt|tour)-/);
+});
+
+type RideGame = {
+  state: number;
+  routePattern: string;
+  routeFrom: { id: string } | null;
+  routeTo: { id: string } | null;
+  _reviewRoute: { dueNear: string[] } | null;
+};
+
+const rideState = (page: Page) => page.evaluate(() => {
+  const w = window as unknown as {
+    canalRecallGame?: RideGame;
+    __canalRecallSession?: { landingCardChosen?: string };
+    CanalRecallRoute?: { dailyRidePair?: unknown };
+  };
+  const g = w.canalRecallGame;
+  return g ? {
+    state: g.state,
+    pattern: g.routePattern,
+    from: g.routeFrom?.id ?? null,
+    to: g.routeTo?.id ?? null,
+    review: g._reviewRoute ? g._reviewRoute.dueNear : null,
+    chosen: w.__canalRecallSession?.landingCardChosen ?? null,
+    hasDaily: typeof w.CanalRecallRoute?.dailyRidePair === 'function',
+  } : null;
+});
+
+test('Continue starts a review ride past the names due', async ({ page }) => {
+  test.setTimeout(150_000);
+  await page.route(/3dbag|cesium3dtiles/i, route => route.abort());
+  await seed(page, 'returning');
+  await page.goto(LANDING);
+  await page.locator('[data-landing-go="review"]').click();
+  await expect(page).toHaveURL(/\?ride=review/);
+  await expect.poll(async () => (await rideState(page))?.chosen, { timeout: 60_000 }).toBe('review');
+  await expect.poll(async () => (await rideState(page))?.review?.length ?? 0, { timeout: 90_000 }).toBeGreaterThan(0);
+  const ride = await rideState(page);
+  expect(ride?.pattern).toBe('surprise');
+});
+
+test('Today’s ride launches the pair the landing named', async ({ page }) => {
+  test.skip(!DAILY_RIDE_ON_LANDING, DAILY_OFF);
+  test.setTimeout(150_000);
+  await page.route(/3dbag|cesium3dtiles/i, route => route.abort());
+  const now = Date.now();
+  await seed(page, 'returning', now);
+  await page.goto(LANDING);
+  const id = await page.locator('.landing-returning').getAttribute('data-daily-route');
+  await page.locator('[data-landing-go="daily"]').click();
+  await expect(page).toHaveURL(/\?ride=daily/);
+  await expect.poll(async () => (await rideState(page))?.chosen, { timeout: 60_000 }).toBe('daily');
+  const ride = await rideState(page);
+  expect(ride?.hasDaily).toBe(true);
+  expect(`${dailyRideDateKey(now)}:${ride?.from}>${ride?.to}`).toBe(id);
+});
+
+// The buurt pool (#279): a real ride for three dates starts on the pair the
+// date names, plans a route, and arrives. `?dailyDate=` is the test-only
+// override of "today" in dailyRideDateKey(). 2026-11-12 (KNSM-eiland) and 2026-12-24 (Westindische Buurt) end at finish-only places on named ways.
+for (const date of ['2026-11-10', '2026-11-12', '2026-12-24', '2027-03-01']) {
+  test(`?ride=daily on ${date} starts the buurt pair and arrives`, async ({ page }, info) => {
+    test.skip(info.project.name !== 'desktop', 'one ride per date is enough; the iphone project runs the landing tests');
+    test.setTimeout(180_000);
+    await page.route(/3dbag|cesium3dtiles/i, route => route.abort());
+    await seed(page, 'returning');
+    // The pool's ends sit on streets: ride in street mode (bike). The default travel mode is boat, and
+    // `?ride=daily` does not set street mode yet (integrator: game-route.js _checkShareLink, #279 hand-back).
+    await page.addInitScript(() => {
+      if (!localStorage.getItem('canalRecall.preferences.v1')) localStorage.setItem('canalRecall.preferences.v1', JSON.stringify({ travelMode: 'car' }));
+    });
+    const pair = dailyPoolPair(date)!;
+    await page.goto(`/canal-drive/index.html?ride=daily&dailyDate=${date}`);
+    await expect.poll(async () => (await rideState(page))?.chosen, { timeout: 60_000 }).toBe('daily');
+    const ride = await rideState(page);
+    expect(`${date}:${ride?.from}>${ride?.to}`).toBe(pair.id);
+    // A route was planned between the ends, and the ride is under way.
+    await expect.poll(() => page.evaluate(() => {
+      const g = (window as unknown as { canalRecallGame?: { state: number; travelMode?: string; routePath?: unknown[]; _plannedRouteLengthPx?: number } }).canalRecallGame;
+      return g && g.state === 4 && g.travelMode === 'car' && (g.routePath?.length ?? 0) > 1 && (g._plannedRouteLengthPx ?? 0) > 0;
+    }), { timeout: 90_000 }).toBe(true);
+    const planned = await page.evaluate(() => {
+      const g = (window as unknown as { canalRecallGame: { _plannedRouteLengthPx: number; track: { startPoint: { x: number; y: number }; finishPoint: { x: number; y: number } } } }).canalRecallGame;
+      return { px: g._plannedRouteLengthPx, crow: Math.hypot(g.track.finishPoint.x - g.track.startPoint.x, g.track.finishPoint.y - g.track.startPoint.y) };
+    });
+    // 3 px = 1 m. The card's km is the route's real length (#279): the planned route must be within 5 % of it.
+    expect(planned.px).toBeGreaterThanOrEqual(planned.crow * 0.99);
+    const plannedKm = planned.px / 3000;
+    expect(Math.abs(plannedKm - pair.km) / pair.km, `planned ${plannedKm.toFixed(2)} km vs card ${pair.km} km`).toBeLessThanOrEqual(0.05);
+    // Arrive: put the rider on the finish.
+    await page.evaluate(() => {
+      const g = (window as unknown as { canalRecallGame: { player: { x: number; y: number; speed: number }; track: { finishPoint: { x: number; y: number } } } }).canalRecallGame;
+      g.player.x = g.track.finishPoint.x; g.player.y = g.track.finishPoint.y; g.player.speed = 0;
+    });
+    await expect.poll(async () => (await rideState(page))?.state, { timeout: 30_000 }).toBe(5);
+    console.log(`${date}: ${pair.from.name} → ${pair.to.name}, card ${pair.km} km, planned ${(planned.px / 3000).toFixed(2)} km`);
+    await page.screenshot({ path: `${shots}/daily-${date}-arrived-${info.project.name}.png` });
+  });
+}
+
+// R2-11 (#304): the What's New toast on a phone wraps instead of truncating, its link is a 44 px target,
+// and it covers neither the landing heading nor the returning cards.
+test('the What’s New toast fits a 390x664 phone: wrapped text, 44 px link, covers nothing', async ({ page }, info) => {
+  test.skip(info.project.name !== 'iphone', 'the phone layout');
+  await page.setViewportSize({ width: 390, height: 664 });
+  await seed(page, 'returning');
+  await page.addInitScript(() => { try { localStorage.setItem('canalRecall.returningPlayer.v1', '1'); localStorage.removeItem('canalRecall.whatsNewSeen.v1'); } catch { /* */ } });
+  await page.goto(LANDING);
+  const toast = page.locator('#whats-new-toast');
+  await expect(toast).toBeVisible();
+  await page.waitForTimeout(400);
+  const m = await page.evaluate(() => {
+    const r = (el: Element | null) => { const b = el?.getBoundingClientRect(); return b ? { x: b.x, y: b.y, w: b.width, h: b.height, bottom: b.bottom, right: b.right } : null; };
+    const text = document.querySelector('.whats-new-toast-text') as HTMLElement;
+    const hits = (sel: string) => { const a = r(document.querySelector('#whats-new-toast')); const b = r(document.querySelector(sel)); return !!a && !!b && a.y < b.bottom && a.bottom > b.y && a.x < b.right && a.right > b.x; };
+    return {
+      toast: r(document.querySelector('#whats-new-toast')), link: r(document.querySelector('.whats-new-toast a')), close: r(document.querySelector('.whats-new-toast button')),
+      textClipped: text.scrollWidth > text.clientWidth + 1 || text.scrollHeight > text.clientHeight + 1,
+      overH1: hits('h1'), overCards: hits('#landing-returning-slot'), vw: innerWidth, vh: innerHeight, scrollX: document.documentElement.scrollWidth,
+    };
+  });
+  console.log('R2-11 toast', JSON.stringify(m));
+  if (process.env.R2C_SHOTS) await page.screenshot({ path: `${process.env.R2C_SHOTS}/toast-phone.png` });
+  expect(m.link!.h, 'link height').toBeGreaterThanOrEqual(44);
+  expect(m.close!.h, 'close height').toBeGreaterThanOrEqual(44);
+  expect(m.textClipped, 'title not clipped').toBe(false);
+  expect(m.overH1, 'covers the heading').toBe(false);
+  expect(m.overCards, 'covers the returning cards').toBe(false);
+  expect(m.scrollX).toBeLessThanOrEqual(m.vw);
+});

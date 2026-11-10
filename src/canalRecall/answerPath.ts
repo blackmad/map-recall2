@@ -1,5 +1,11 @@
 import type { ReviewState } from '../spacedRepetition';
 import type { RecallFeature } from './recallStore';
+import { translate, type MessageKey, type MessageParams } from '../i18n/index.ts';
+
+/** Looks up a feedback string. The ride's runtimes pass their own `t` so the
+ *  answer speaks the ride's language (R2-2, #303); English when omitted. */
+export type FeedbackSay = (key: MessageKey, params?: MessageParams) => string;
+const ENGLISH: FeedbackSay = (key, params) => translate('en', key, params);
 
 export interface AnswerScore {
   attempts: number;
@@ -52,6 +58,8 @@ export interface SubmitAnswerInput {
   revealName(name: string): void;
   markLearned?(name: string): void;
   rememberKnownPlace?(name: string, center: RecallFeature['center']): void;
+  /** The feedback strings' language; the caller's `t`. English when omitted. */
+  say?: FeedbackSay;
 }
 
 export interface AnswerResult extends AnswerScore {
@@ -74,12 +82,13 @@ export function normaliseAnswer(value: string): string {
  */
 export function submitAnswer(input: SubmitAnswerInput): AnswerResult {
   const shown = input.displayName || input.correctName;
+  const say = input.say ?? ENGLISH;
   if (input.passed) {
     input.revealName(input.correctName);
     if (input.recallStore && input.recallFeature) input.recallStore.expose?.(input.recallFeature);
     return {
       ...input.score, wasCorrect: false, passed: true,
-      feedback: `Passed — that was ${shown}`,
+      feedback: say('answer.passed', { name: shown }),
       feedbackColor: '#3a5a86',
     };
   }
@@ -93,7 +102,7 @@ export function submitAnswer(input: SubmitAnswerInput): AnswerResult {
   if (!noIdea) attempts++;
   if (noIdea) {
     streak = 0;
-    feedback = `This is ${shown}`;
+    feedback = say('answer.reveal', { name: shown });
     input.revealName(input.correctName);
   } else if (wasCorrect) {
     correct++;
@@ -110,21 +119,21 @@ export function submitAnswer(input: SubmitAnswerInput): AnswerResult {
     input.markLearned?.(input.correctName);
     input.revealName(input.correctName);
     if (!input.gameyFeatures) {
-      feedback = `Correct — ${shown}`;
+      feedback = say('answer.correct', { name: shown });
     } else if (noveltyMultiplier > 1 && cycleTrackMultiplier > 1) {
-      feedback = `Correct — ${shown}  (+${earned} pts · new name + cycle track bonus)`;
+      feedback = say('answer.correctNewCycle', { name: shown, points: earned });
     } else if (noveltyMultiplier > 1) {
-      feedback = `Correct — ${shown}  (+${earned} pts · new name bonus)`;
+      feedback = say('answer.correctNew', { name: shown, points: earned });
     } else if (cycleTrackMultiplier > 1) {
-      feedback = `Correct — ${shown}  (+${earned} pts · cycle track bonus)`;
+      feedback = say('answer.correctCycle', { name: shown, points: earned });
     } else if (streak >= 2) {
-      feedback = `Correct — ${shown}  (+${earned} pts · ${streak} in a row)`;
+      feedback = say('answer.correctStreak', { name: shown, points: earned, streak });
     } else {
-      feedback = `Correct — ${shown}  (+${earned} pts)`;
+      feedback = say('answer.correctPoints', { name: shown, points: earned });
     }
   } else {
     streak = 0;
-    feedback = `Not quite — this is ${shown}`;
+    feedback = say('answer.wrong', { name: shown });
     input.revealName(input.correctName);
   }
 

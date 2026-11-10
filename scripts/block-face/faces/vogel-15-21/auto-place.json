@@ -1,0 +1,323 @@
+{
+ "face": "vogel-15-21",
+ "street": "Vijfde Vogelstraat",
+ "library": "vogelbuurt",
+ "stripDate": "2025-09-22",
+ "seconds": 1.55,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012086556",
+   "address": "Vijfde Vogelstraat 15",
+   "builtYear": 1918,
+   "widthM": 4.09,
+   "eavesM": 3.52,
+   "storeys3dbag": 2,
+   "bagBay": null,
+   "strip": {
+    "wall": "#2b2c25",
+    "wallRaw": "#47443f",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 304,
+     "confidence": 0.04,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 4,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0.38,
+     "bayCentre": 0.85,
+     "balconies": false,
+     "why": "one-storey front (eaves <= 6 m): no balcony",
+     "openAxes": [
+      {
+       "widthM": 1,
+       "centre": 0.87,
+       "light": 0.6
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.02,
+    "foliageShare": 0.17
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "no front on the strip: sky over the roof in 32 % of columns (< 75 %): the strip shows a nearer wall, fence or tree, not the front",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012140588",
+   "address": "Vijfde Vogelstraat 17",
+   "builtYear": 1919,
+   "widthM": 5.91,
+   "eavesM": 3.49,
+   "storeys3dbag": 2,
+   "bagBay": null,
+   "strip": {
+    "wall": "#433f3a",
+    "wallRaw": "#6b735a",
+    "skyline": {
+     "eavesM": 4.2,
+     "eavesRow": 136,
+     "confidence": 0.79,
+     "crown": {
+      "widthM": 2.3,
+      "riseM": 3.33,
+      "topWidthM": 0.35,
+      "centre": 0.79
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 1.9,
+     "bayCentre": 0.83,
+     "balconies": false,
+     "why": "one-storey front (eaves <= 6 m): no balcony",
+     "openAxes": [
+      {
+       "widthM": 1.7,
+       "centre": 0.16,
+       "light": 0.47
+      },
+      {
+       "widthM": 3.27,
+       "centre": 0.7,
+       "light": 0.26
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.02,
+    "foliageShare": 0.5
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "no photo evidence (usable photo 33 % < 50 %) and no passing same-type neighbour",
+   "likeness": {
+    "pandId": "0363100012140588",
+    "ncc": null,
+    "nccRaw": 0.36,
+    "shiftM": [
+     0.25,
+     0.2
+    ],
+    "usable": 0.33,
+    "abstain": "usable photo 33 % < 50 %",
+    "verdict": "NO EVIDENCE",
+    "reasons": [
+     "foliage 33 % > 25 %"
+    ],
+    "wall": {
+     "photo": "#e9c3ad",
+     "model": "#8e6c5a",
+     "dL": -0.341
+    },
+    "glazing": {
+     "photo": 0.36,
+     "model": 0.36
+    },
+    "columns": {
+     "photo": null,
+     "model": 2
+    },
+    "iou": 0.503
+   },
+   "challengers": {
+    "vogel-1918-cottage-3axis": null
+   }
+  },
+  {
+   "pandId": "0363100012100504",
+   "address": "Vijfde Vogelstraat 19",
+   "builtYear": 1919,
+   "widthM": 4.25,
+   "eavesM": 3.45,
+   "storeys3dbag": 2,
+   "bagBay": null,
+   "strip": {
+    "wall": "#3d3f39",
+    "wallRaw": "#4a5d41",
+    "skyline": {
+     "eavesM": 4.95,
+     "eavesRow": 106,
+     "confidence": 0.56,
+     "crown": {
+      "widthM": 1.4,
+      "riseM": 2.27,
+      "topWidthM": 0.35,
+      "centre": 0.82
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 5,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "one-storey front (eaves <= 6 m): no balcony",
+     "openAxes": [
+      {
+       "widthM": 0.95,
+       "centre": 0.12,
+       "light": 0.32
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.02,
+    "foliageShare": 0.73
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "no photo evidence (usable photo 4 % < 50 %) and no passing same-type neighbour",
+   "likeness": {
+    "pandId": "0363100012100504",
+    "ncc": null,
+    "nccRaw": 0.308,
+    "shiftM": [
+     0.1,
+     0.15
+    ],
+    "usable": 0.04,
+    "abstain": "usable photo 4 % < 50 %",
+    "verdict": "NO EVIDENCE",
+    "reasons": [
+     "usable upper cells 16 % < 40 %",
+     "foliage 59 % > 25 %"
+    ],
+    "wall": {
+     "photo": "#d2a68f",
+     "model": "#8e6c5a",
+     "dL": -0.237
+    },
+    "glazing": {
+     "photo": 1,
+     "model": 0.3
+    },
+    "columns": {
+     "photo": null,
+     "model": null
+    },
+    "iou": 0.339
+   },
+   "challengers": {
+    "vogel-1918-cottage-2axis": null
+   }
+  },
+  {
+   "pandId": "0363100012129706",
+   "address": "Vijfde Vogelstraat 21",
+   "builtYear": 1919,
+   "widthM": 5.76,
+   "eavesM": 3.41,
+   "storeys3dbag": 2,
+   "bagBay": null,
+   "strip": {
+    "wall": "#4a4841",
+    "wallRaw": "#e1c8b7",
+    "skyline": {
+     "eavesM": 5.78,
+     "eavesRow": 73,
+     "confidence": 0.58,
+     "crown": {
+      "widthM": 1.35,
+      "riseM": 1.57,
+      "topWidthM": 0.57,
+      "centre": 0.82
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "ribbon",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "one-storey front (eaves <= 6 m): no balcony",
+     "openAxes": [
+      {
+       "widthM": 0.93,
+       "centre": 0.11,
+       "light": 0.11
+      },
+      {
+       "widthM": 1.93,
+       "centre": 0.57,
+       "light": 0.22
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.05,
+    "foliageShare": 0.04
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": {
+    "pandId": "0363100012129706",
+    "ncc": 0.198,
+    "nccRaw": 0.198,
+    "shiftM": [
+     0.15,
+     0.3
+    ],
+    "usable": 0.78,
+    "abstain": null,
+    "verdict": "NO EVIDENCE",
+    "reasons": [
+     "washed out 40 % > 30 %"
+    ],
+    "wall": {
+     "photo": "#54504b",
+     "model": "#8e6c5a",
+     "dL": 0.143
+    },
+    "glazing": {
+     "photo": 0.12,
+     "model": 0.29
+    },
+    "columns": {
+     "photo": 3,
+     "model": null
+    },
+    "iou": 0.378
+   },
+   "challengers": {
+    "vogel-1918-cottage-3axis": 0.198
+   }
+  }
+ ]
+}

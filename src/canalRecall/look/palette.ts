@@ -1,3 +1,5 @@
+import { roofFamilyFlag, snapRoofFamily } from './calmTones';
+import { toonFrontsActive, TOON_ACCENTS, TOON_GROUND_PAINTS, TOON_PERIOD_WALLS, TOON_WALLS } from './toonFronts';
 /**
  * The one palette for Canal Recall's buildings (docs/LOOK.md).
  *
@@ -245,6 +247,16 @@ export const ROOF_SLOT_TONES: Readonly<Record<RoofSlot, { hex: string; luma: rea
  */
 export const FLAT_ROOF_TONES = { gravel: ROOF_SLOT_TONES.gravel.hex, membrane: ROOF_SLOT_TONES['white-membrane'].hex, bitumen: ROOF_SLOT_TONES['bitumen-dark'].hex, pebble: ROOF_SLOT_TONES['bitumen-light'].hex } as const;
 export const FLAT_ROOF_GREYS: readonly string[] = [FLAT_ROOF_TONES.gravel, FLAT_ROOF_TONES.membrane, FLAT_ROOF_TONES.bitumen, FLAT_ROOF_TONES.pebble];
+/**
+ * Unmeasured flat roofs by build-year band (lane R5-E #265, `?flatRoofTone`, roofs/flatRoofTone.ts): the median
+ * colour (cast removed) of the measured flat roofs of that band, PDOK orthophoto via roof-facts
+ * (`scripts/roofs/flat-roof-priors.mts`, 108,536 flat readings, 2026-11-08). Every band is a mid grey, luma 107-130:
+ * the city's flat roofs are dark bitumen and grey gravel (bitumen 43-67 %, gravel 17-43 %, white membrane 2-9 %),
+ * not the light membrane half of `FLAT_ROOF_GREYS` drew. Display tints (sRGB), before the lid's shade.
+ */
+export const FLAT_ROOF_PERIOD_PRIORS: Readonly<Record<'pre-1900' | '1900-1944' | '1945-1969' | '1970-1989' | '1990-2009' | '2010+' | 'unknown', string>> = {
+  'pre-1900': '#737373', '1900-1944': '#6b6b6b', '1945-1969': '#737373', '1970-1989': '#737373', '1990-2009': '#7b8282', '2010+': '#7b7b7b', 'unknown': '#6b6b65',
+};
 export const CITY_ROOF = { tile: ROOF_TONES.photo.tile, slate: ROOF_TONES.photo.slate, flat: FLAT_ROOF_GREYS } as const;
 /** sRGB Rec.709 luma, 0..255. */
 export const lumaOf = ([r, g, b]: RGB): number => 0.2126 * r + 0.7152 * g + 0.0722 * b;
@@ -338,6 +350,16 @@ export const GROUND_PAINTS: Record<TexturedLook, readonly string[]> = {
   storybook: ['#f6f1e4', '#f6f1e4', '#f6f1e4', '#efe2c2', '#efe2c2', '#3a3d3c', '#3f6a52', '#8a3b33', '#3a527a', '#a3a8a4'],
   cartoon: ['#fffaf0', '#fffaf0', '#fffaf0', '#ffe9b8', '#ffe9b8', '#3b3b4a', '#2a9d8f', '#d9453d', '#4672b0', '#f2b92e'],
 };
+
+// Toon look (#161): the candy fronts give way to Amsterdam's own colours (look/toonFronts.ts); nothing changes without it.
+// PALETTES.cartoon shares its object with storybook, so it is replaced, not edited.
+if (toonFrontsActive()) {
+  for (const period of ['canal', 'c19', 'school'] as const) PERIOD_WALLS.cartoon[period] = TOON_PERIOD_WALLS[period];
+  const toonSet = { walls: [...TOON_WALLS], accents: [...TOON_ACCENTS] };
+  PALETTES.cartoon = { canal: toonSet, c19: toonSet, school: toonSet, modern: PALETTES.cartoon.modern };
+  CARTOON_WALLS.splice(0, CARTOON_WALLS.length, ...TOON_WALLS);
+  GROUND_PAINTS.cartoon = TOON_GROUND_PAINTS;
+}
 
 // ---------------------------------------------------------------------------
 // Walls: contextual display priors for the streamed city (unmeasured)
@@ -700,8 +722,9 @@ export function cityTint(slot: MaterialSlot, hex: string, source?: TintSource | 
   if (source === MEASURED_TINT_SOURCE && (slot === 'brick' || slot === 'accent')) return cityMeasuredWallTint(hex);
   if (source === MEASURED_TINT_SOURCE && slot === 'glass') return cityMeasuredGlassTint(hex);
   if (source === MEASURED_TINT_SOURCE && slot === 'stone') return cityMeasuredStoneTint(hex);
-  if (source === MEASURED_TINT_SOURCE && slot === 'bitumen') return cityMeasuredFlatRoofTint(hex);
-  if (source === MEASURED_TINT_SOURCE && (slot === 'slate' || slot === 'roofTile')) return cityMeasuredPitchedRoofTint(hex);
+  // Roof families (#161 lever 5, `?roofFamily=1`): measured roof tints are pulled toward a few recurring tones.
+  if (source === MEASURED_TINT_SOURCE && slot === 'bitumen') return roofFamilyFlag() ? snapRoofFamily(cityMeasuredFlatRoofTint(hex)) : cityMeasuredFlatRoofTint(hex);
+  if (source === MEASURED_TINT_SOURCE && (slot === 'slate' || slot === 'roofTile')) return roofFamilyFlag() ? snapRoofFamily(cityMeasuredPitchedRoofTint(hex)) : cityMeasuredPitchedRoofTint(hex);
   switch (slot) {
     case 'brick': case 'accent': return cityWallTint(hex);
     case 'stucco': return cityStuccoTint(hex);

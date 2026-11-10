@@ -200,12 +200,17 @@
     "setup.route.hereHint": "Start from where you are now",
     "setup.route.free": "Free ride",
     "setup.route.freeHint": "No route, no questions: ride anywhere and tap what you pass",
+    "setup.freeRideLandmarkQuiz": "Quiz me on landmarks",
+    "setup.freeRideLandmarkQuizHint": "A modelled building in view, four names, one right",
     "freeRide.badge": "Free ride",
     "freeRide.exit": "Exit",
     "freeRide.exitLabel": "Leave free ride and go back to setup",
     "freeRide.tallyNone": "Tap a marker or a building",
     "freeRide.tallyOne": "1 place opened",
     "freeRide.tallyMany": "{count} places opened",
+    "freeRide.checklist": "{opened} of {total} places",
+    "freeRide.checklistDone": "all {total} places",
+    "freeRide.stamped": "Stamped in your passport",
     "setup.difficulty": "Difficulty",
     "setup.difficulty.easy": "Easy",
     "setup.difficulty.medium": "Medium",
@@ -229,6 +234,7 @@
     "setup.tours": "Tours",
     "setup.tours.none": "No tour",
     "setup.tours.stops": "{count} stops by bike, one leg at a time",
+    "setup.tours.cardStops": "{count} stops by bike",
     "setup.tours.checked": " \xB7 {checked}, shops change",
     "setup.tours.brief": "Ride the {tour} tour stop by stop. Each arrival tells you why it is on the list.",
     "setup.homeAddress": "Home address",
@@ -296,7 +302,7 @@
     "knowledge.plan": "Plan review \xB7 {count} due",
     "knowledge.nothingDue": "Nothing due now",
     "knowledge.emptyTitle": "Your map starts with one answer",
-    "knowledge.emptyBody": "Complete a route and recall a street, canal, bridge, stop, or line. It will appear here with its next review time.",
+    "knowledge.emptyBody": "Complete a route and recall a canal, street, bridge, stop, or line. It will appear here with its next review time.",
     "knowledge.firstRoute": "Choose a first route",
     "knowledge.summary": "Knowledge summary",
     "knowledge.dueNow": "due now",
@@ -307,6 +313,33 @@
     "knowledge.recallRate": "Recall rate",
     "knowledge.reviewsLogged": "Reviews logged",
     "knowledge.mapKey": "Map key",
+    // --- Knowledge map and passport stamps (G5) ---
+    "kmap.title": "Knowledge map",
+    "kmap.tapHint": "Tap a buurt to filter",
+    "kmap.loading": "Map loading",
+    "kmap.legendUnit": "Buurts",
+    "kmap.mastered": "Mastered",
+    "kmap.known": "Known",
+    "kmap.learning": "Learning",
+    "kmap.fog": "Not yet ridden",
+    "kmap.due": "Names due",
+    "kmap.aria": "Map of Amsterdam by buurt: {mastered} mastered, {known} known, {learning} learning",
+    "kmap.filter.one": "{name} \xB7 {count} name",
+    "kmap.filter.other": "{name} \xB7 {count} names",
+    "kmap.wholeCity": "Whole city",
+    "stamps.title": "Passport",
+    "stamps.bodyEarned": "One stamp per buurt, earned on a quiz ride by naming it. Stamps from Free Ride stay",
+    "stamps.bodyEmpty": "Know eight names, then ride into a buurt on a quiz ride to earn its stamp",
+    "stamps.countAria": "{earned} of {total} stamps",
+    "stamps.all": "All {total} buurts",
+    "stamps.new": "New stamp",
+    "stamps.stamped": "Stamped",
+    "stamps.notYet": "Not yet",
+    "stamps.cardLabel": "NEW PASSPORT STAMP",
+    "stamps.cardLabelAgain": "PASSPORT STAMP",
+    "stamps.more": "+{count} more",
+    "stamps.held.one": "{count} stamp in the passport",
+    "stamps.held.other": "{count} stamps in the passport",
     "knowledge.status.due": "Due for review",
     "knowledge.status.learning": "Learning",
     "knowledge.status.known": "Known",
@@ -403,6 +436,7 @@
     "ride.load.renderingTrams": "Rendering tram lines\u2026",
     "ride.load.renderingWaterways": "Rendering waterways\u2026",
     "ride.load.settling": "Settling the map\u2026",
+    "ride.load.buildingCity": "Building the city\u2026",
     "ride.load.ready": "Ready!",
     "ride.load.findingWay": "Finding your way\u2026",
     "ride.error.noStartPoint": "No reachable starting point is available for this destination.",
@@ -472,6 +506,8 @@
     "prompt.placeholder.bridge": "Bridge name",
     "prompt.placeholder.line": "Line name",
     "prompt.placeholder.stop": "Stop name",
+    "prompt.label.landmark": "Landmark",
+    "prompt.placeholder.landmark": "Building name",
     "prompt.waterway": "Waterway",
     "prompt.turn": "You made a turn",
     "prompt.submit": "Submit answer",
@@ -514,6 +550,17 @@
     "mission.warmUp": "Warm up with one overdue name",
     "mission.arrive": "Arrive knowing more of {city}",
     // --- Map Quest quiz ------------------------------------------------------
+    // Answer feedback (R2-2, #303): answerPath.ts composes these.
+    "answer.passed": "Passed \u2014 that was {name}",
+    "answer.silentPass": "That was {name}",
+    "answer.reveal": "This is {name}",
+    "answer.wrong": "Not quite \u2014 this is {name}",
+    "answer.correct": "Correct \u2014 {name}",
+    "answer.correctPoints": "Correct \u2014 {name}  (+{points} pts)",
+    "answer.correctNewCycle": "Correct \u2014 {name}  (+{points} pts \xB7 new name + cycle track bonus)",
+    "answer.correctNew": "Correct \u2014 {name}  (+{points} pts \xB7 new name bonus)",
+    "answer.correctCycle": "Correct \u2014 {name}  (+{points} pts \xB7 cycle track bonus)",
+    "answer.correctStreak": "Correct \u2014 {name}  (+{points} pts \xB7 {streak} in a row)",
     "quiz.pinpoint": "Pinpoint",
     "quiz.pinpointHint": "Place the named feature on the map",
     "quiz.guessName": "Guess Name",
@@ -741,11 +788,85 @@
     "ride.nextStop": "Next stop",
     "ride.routeSetup": "Route setup",
     "ride.shareRoute": "Share this route",
+    "ride.distance.about": "about",
+    "ride.shareRun": "Share run",
     "ride.linkCopied": "Link copied",
+    // --- Arrival and run cards (#283) ---
+    "stamps.heldOf": "{count} of {total} buurt stamps",
+    "ride.arrival.placeNew": "FIRST VISIT",
+    "ride.arrival.placeAgain": "VISITED AGAIN",
+    "ride.arrival.placeTally": "{earned} of {total} places",
+    "ride.arrival.tourDone": "TOUR COMPLETE",
+    "ride.arrival.tourAgain": "TOUR AGAIN",
+    "ride.arrival.tourStop": "{title}  \xB7  STOP {stop} OF {count}",
+    "ride.arrival.run": "RUN",
+    "ride.arrival.cityKnowledge": "CITY KNOWLEDGE",
+    "ride.arrival.firstTime": "+{bits} first-time",
+    "ride.endRun": "End run",
+    "ride.endRunShort": "End run",
+    "ride.newRun": "New run",
+    "ride.stat.time": "Time",
+    "ride.stat.distance": "Distance",
+    "ride.stat.points": "Points",
+    "ride.stat.stops": "Stops",
+    "ride.stat.names": "Names",
+    "ride.stat.bestStreak": "Best streak",
+    "ride.bestStreak": "Best streak {count}",
+    "count.names.one": "{count} name",
+    "count.names.other": "{count} names",
+    "count.neighborhoods.one": "{count} neighbourhood",
+    "count.neighborhoods.other": "{count} neighbourhoods",
+    "count.landmarks.one": "{count} landmark",
+    "count.landmarks.other": "{count} landmarks",
+    "count.stops.one": "{count} stop",
+    "count.stops.other": "{count} stops",
+    "count.points": "{points} points",
+    "run.chain": "chain +{percent} %",
+    "run.complete": "RUN COMPLETE",
+    "run.stops": "STOPS",
+    "run.stopsLast": "STOPS  \xB7  LAST {shown} OF {count}",
+    "run.story": "{count} {stops}{from}{to}{names}.",
+    "run.storyFrom": " from {name}",
+    "run.storyTo": " to {name}",
+    "run.storyNames": ", {names} on the map",
+    "run.storyStop.one": "stop",
+    "run.storyStop.other": "stops",
+    "run.numberWords": "No,One,Two,Three,Four,Five,Six,Seven,Eight,Nine,Ten,Eleven,Twelve",
+    "shareCard.destination": "DESTINATION",
+    "shareCard.ride": "RIDE",
+    "shareCard.distance": "DISTANCE",
+    "shareCard.time": "TIME",
+    "shareCard.byBike": "By bike",
+    "shareCard.byBoat": "By boat",
+    "shareCard.byTransit": "By tram and metro",
+    "shareCard.saved": "Picture saved",
+    "shareCard.savedAndCopied": "Picture saved \xB7 link copied",
+    "shareCard.runStop": "Stop {n}",
+    "shareCard.runEarlier": "+{count} earlier",
     "ride.startExploring": "Start exploring",
     "ride.noCycling": "No cycling in real life",
     "ride.wikipediaLink": "Wikipedia \u2197",
+    "ride.landmarkQuestion.heading": "Which building is this?",
+    "ride.landmarkQuestion.ahead": "Ahead",
+    "ride.landmarkQuestion.left": "On the left",
+    "ride.landmarkQuestion.right": "On the right",
+    "ride.landmarkNoticed.action": "Noticed",
+    "ride.landmarkNoticed.done": "Noted",
     "ride.researchSource": "Research source \u2197",
+    "poi.chip.art": "Artwork",
+    "poi.chip.food": "Food and drink",
+    "poi.chip.shop": "Shop",
+    "poi.chip.lodging": "Lodging",
+    "poi.chip.culture": "Culture",
+    "poi.chip.education": "Education",
+    "poi.chip.civic": "Public service",
+    "poi.chip.bike": "Cycling",
+    "poi.chip.worship": "Place of worship",
+    "poi.chip.leisure": "Leisure",
+    "poi.chip.health": "Health",
+    "poi.chip.market": "Market",
+    "poi.chip.place": "Place",
+    "poi.seriesPart": "Part {n} of {m} of {series}.",
     "ride.rules.title": "HOW TO PLAY",
     "ride.rules.bike1": "1. Use WASD or the arrow keys to steer the bike",
     "ride.rules.bike2": "2. Stay on mapped streets; the road guard keeps you on the network",
@@ -773,7 +894,41 @@
     "finish.passport": "Passport: {stamps}",
     "finish.youKnow": "You know {name}",
     "finish.streakFirst": "First new place today",
-    "finish.streakDays": "{count}-day place streak"
+    "finish.streakDays": "{count}-day place streak",
+    // --- Arrival ribbon, pause card, pins and cards (#290) ---------------------
+    "ribbon.gold": "GOLD RIBBON",
+    "ribbon.silver": "SILVER RIBBON",
+    "ribbon.bronze": "BRONZE RIBBON",
+    "ribbon.none": "ROUTE COMPLETE",
+    "ribbon.axis.recall": "Recall",
+    "ribbon.axis.aids": "Unaided",
+    "ribbon.axis.efficiency": "Efficiency",
+    "ride.arrival.header": "ARRIVED",
+    "ride.personalBest.new": "\u2605  New personal best",
+    "ride.personalBest.old": "Personal best  {time}",
+    "ride.arrival.neighborhoodWiki": "NEIGHBOURHOOD  \xB7  W  WIKIPEDIA",
+    "ride.paused": "PAUSED",
+    "ride.resume": "Resume",
+    "ride.pauseSummary": "{time}  \xB7  {km} km  \xB7  {correct} of {attempts} named",
+    "ride.pauseStats": "{time}  \xB7  {km} km",
+    "ride.controlsHint": "?  help   \xB7   G  settings   \xB7   M  map   \xB7   O  north   \xB7   T  labels   \xB7   B  buildings   \xB7   P  pause",
+    "hud.destination": "DESTINATION",
+    "card.wikipedia": "W  WIKIPEDIA",
+    "card.source": "W  SOURCE",
+    "card.more": "MORE \u203A",
+    "postcard.stamp": "PASSPORT STAMP",
+    "postcard.enteringNeighborhood": "ENTERING NEIGHBORHOOD",
+    "postcard.entering": "ENTERING {kind}",
+    "postcard.photo": "Photo: {area} \xB7 {city}",
+    "kind.landmark": "LANDMARK",
+    "kind.museum": "MUSEUM",
+    "kind.library": "LIBRARY",
+    "kind.university": "UNIVERSITY",
+    "kind.cinema": "CINEMA",
+    "kind.musicVenue": "MUSIC VENUE",
+    "kind.bridge": "BRIDGE",
+    "kind.church": "CHURCH",
+    "kind.neighborhood": "NEIGHBORHOOD"
   };
 
   // src/i18n/messages/nl.ts
@@ -825,12 +980,17 @@
     "setup.route.hereHint": "Start waar je nu bent",
     "setup.route.free": "Vrij rijden",
     "setup.route.freeHint": "Geen route, geen vragen: rijd waar je wilt en tik op wat je ziet",
+    "setup.freeRideLandmarkQuiz": "Overhoor me op gebouwen",
+    "setup.freeRideLandmarkQuizHint": "Een gemodelleerd gebouw in zicht, vier namen, \xE9\xE9n goed",
     "freeRide.badge": "Vrij rijden",
     "freeRide.exit": "Stoppen",
     "freeRide.exitLabel": "Stop met vrij rijden en ga terug naar het startscherm",
     "freeRide.tallyNone": "Tik op een markering of een gebouw",
     "freeRide.tallyOne": "1 plek geopend",
     "freeRide.tallyMany": "{count} plekken geopend",
+    "freeRide.checklist": "{opened} van {total} plekken",
+    "freeRide.checklistDone": "alle {total} plekken",
+    "freeRide.stamped": "Gestempeld in je paspoort",
     "setup.difficulty": "Moeilijkheid",
     "setup.difficulty.easy": "Makkelijk",
     "setup.difficulty.medium": "Gemiddeld",
@@ -854,6 +1014,7 @@
     "setup.tours": "Tours",
     "setup.tours.none": "Geen tour",
     "setup.tours.stops": "{count} stops per fiets, etappe voor etappe",
+    "setup.tours.cardStops": "{count} stops per fiets",
     "setup.tours.checked": " \xB7 {checked}, winkels wisselen",
     "setup.tours.brief": "Rijd de tour {tour} stop voor stop. Bij elke stop zie je waarom die op de lijst staat.",
     "setup.homeAddress": "Thuisadres",
@@ -921,7 +1082,7 @@
     "knowledge.plan": "Herhaling plannen \xB7 {count} te doen",
     "knowledge.nothingDue": "Nu niets te doen",
     "knowledge.emptyTitle": "Je kaart begint met \xE9\xE9n antwoord",
-    "knowledge.emptyBody": "Rijd een route en noem een straat, gracht, brug, halte of lijn. Die verschijnt hier met het volgende herhaalmoment.",
+    "knowledge.emptyBody": "Rijd een route en noem een gracht, straat, brug, halte of lijn. Die verschijnt hier met het volgende herhaalmoment.",
     "knowledge.firstRoute": "Kies een eerste route",
     "knowledge.summary": "Kennisoverzicht",
     "knowledge.dueNow": "nu te doen",
@@ -932,6 +1093,33 @@
     "knowledge.recallRate": "Trefferquote",
     "knowledge.reviewsLogged": "Herhalingen gedaan",
     "knowledge.mapKey": "Legenda",
+    // --- Knowledge map and passport stamps (G5) ---
+    "kmap.title": "Kenniskaart",
+    "kmap.tapHint": "Tik op een buurt om te filteren",
+    "kmap.loading": "Kaart laden",
+    "kmap.legendUnit": "Buurten",
+    "kmap.mastered": "Beheerst",
+    "kmap.known": "Bekend",
+    "kmap.learning": "Aan het leren",
+    "kmap.fog": "Nog niet bereden",
+    "kmap.due": "Namen te herhalen",
+    "kmap.aria": "Kaart van Amsterdam per buurt: {mastered} beheerst, {known} bekend, {learning} aan het leren",
+    "kmap.filter.one": "{name} \xB7 {count} naam",
+    "kmap.filter.other": "{name} \xB7 {count} namen",
+    "kmap.wholeCity": "Hele stad",
+    "stamps.title": "Paspoort",
+    "stamps.bodyEarned": "E\xE9n stempel per buurt, verdiend in een quizrit door de namen te kennen. Stempels uit Vrij rijden blijven",
+    "stamps.bodyEmpty": "Ken acht namen en fiets dan in een quizrit een buurt in om de stempel te verdienen",
+    "stamps.countAria": "{earned} van {total} stempels",
+    "stamps.all": "Alle {total} buurten",
+    "stamps.new": "Nieuwe stempel",
+    "stamps.stamped": "Gestempeld",
+    "stamps.notYet": "Nog niet",
+    "stamps.cardLabel": "NIEUWE PASPOORTSTEMPEL",
+    "stamps.cardLabelAgain": "PASPOORTSTEMPEL",
+    "stamps.more": "+{count} meer",
+    "stamps.held.one": "{count} stempel in het paspoort",
+    "stamps.held.other": "{count} stempels in het paspoort",
     "knowledge.status.due": "Toe aan herhaling",
     "knowledge.status.learning": "Lerend",
     "knowledge.status.known": "Bekend",
@@ -1028,6 +1216,7 @@
     "ride.load.renderingTrams": "Tramlijnen tekenen\u2026",
     "ride.load.renderingWaterways": "Waterwegen tekenen\u2026",
     "ride.load.settling": "De kaart wordt bijgewerkt\u2026",
+    "ride.load.buildingCity": "De stad wordt opgebouwd\u2026",
     "ride.load.ready": "Klaar!",
     "ride.load.findingWay": "Je route wordt gezocht\u2026",
     "ride.error.noStartPoint": "Er is geen bereikbaar startpunt voor deze bestemming.",
@@ -1097,6 +1286,8 @@
     "prompt.placeholder.bridge": "Naam van de brug",
     "prompt.placeholder.line": "Naam van de lijn",
     "prompt.placeholder.stop": "Naam van de halte",
+    "prompt.label.landmark": "Bezienswaardigheid",
+    "prompt.placeholder.landmark": "Naam van het gebouw",
     "prompt.waterway": "Waterweg",
     "prompt.turn": "Je sloeg af",
     "prompt.submit": "Antwoord insturen",
@@ -1139,6 +1330,17 @@
     "mission.warmUp": "Warm op met \xE9\xE9n naam die te laat is",
     "mission.arrive": "Kom aan met meer kennis van {city}",
     // --- Map Quest-quiz ------------------------------------------------------
+    // Antwoordfeedback (R2-2, #303).
+    "answer.passed": "Voorbij \u2014 dat was {name}",
+    "answer.silentPass": "Dat was {name}",
+    "answer.reveal": "Dit is {name}",
+    "answer.wrong": "Niet helemaal \u2014 dit is {name}",
+    "answer.correct": "Goed \u2014 {name}",
+    "answer.correctPoints": "Goed \u2014 {name}  (+{points} pnt)",
+    "answer.correctNewCycle": "Goed \u2014 {name}  (+{points} pnt \xB7 bonus nieuwe naam + fietspad)",
+    "answer.correctNew": "Goed \u2014 {name}  (+{points} pnt \xB7 bonus nieuwe naam)",
+    "answer.correctCycle": "Goed \u2014 {name}  (+{points} pnt \xB7 fietspadbonus)",
+    "answer.correctStreak": "Goed \u2014 {name}  (+{points} pnt \xB7 {streak} op rij)",
     "quiz.pinpoint": "Aanwijzen",
     "quiz.pinpointHint": "Zet de genoemde plek op de kaart",
     "quiz.guessName": "Naam raden",
@@ -1366,11 +1568,85 @@
     "ride.nextStop": "Volgende stop",
     "ride.routeSetup": "Route instellen",
     "ride.shareRoute": "Deel deze route",
+    "ride.distance.about": "ongeveer",
+    "ride.shareRun": "Deel reeks",
     "ride.linkCopied": "Link gekopieerd",
+    // --- Arrival and run cards (#283) ---
+    "stamps.heldOf": "{count} van {total} buurtstempels",
+    "ride.arrival.placeNew": "EERSTE BEZOEK",
+    "ride.arrival.placeAgain": "WEER BEZOCHT",
+    "ride.arrival.placeTally": "{earned} van {total} plekken",
+    "ride.arrival.tourDone": "TOCHT VOLTOOID",
+    "ride.arrival.tourAgain": "TOCHT OPNIEUW",
+    "ride.arrival.tourStop": "{title}  \xB7  STOP {stop} VAN {count}",
+    "ride.arrival.run": "REEKS",
+    "ride.arrival.cityKnowledge": "KENNIS VAN DE STAD",
+    "ride.arrival.firstTime": "+{bits} voor het eerst",
+    "ride.endRun": "Reeks be\xEBindigen",
+    "ride.endRunShort": "Stop reeks",
+    "ride.newRun": "Nieuwe reeks",
+    "ride.stat.time": "Tijd",
+    "ride.stat.distance": "Afstand",
+    "ride.stat.points": "Punten",
+    "ride.stat.stops": "Stops",
+    "ride.stat.names": "Namen",
+    "ride.stat.bestStreak": "Beste reeks",
+    "ride.bestStreak": "Beste reeks {count}",
+    "count.names.one": "{count} naam",
+    "count.names.other": "{count} namen",
+    "count.neighborhoods.one": "{count} buurt",
+    "count.neighborhoods.other": "{count} buurten",
+    "count.landmarks.one": "{count} bezienswaardigheid",
+    "count.landmarks.other": "{count} bezienswaardigheden",
+    "count.stops.one": "{count} stop",
+    "count.stops.other": "{count} stops",
+    "count.points": "{points} punten",
+    "run.chain": "keten +{percent} %",
+    "run.complete": "REEKS VOLTOOID",
+    "run.stops": "STOPS",
+    "run.stopsLast": "STOPS  \xB7  LAATSTE {shown} VAN {count}",
+    "run.story": "{count} {stops}{from}{to}{names}.",
+    "run.storyFrom": " van {name}",
+    "run.storyTo": " naar {name}",
+    "run.storyNames": ", {names} op de kaart",
+    "run.storyStop.one": "stop",
+    "run.storyStop.other": "stops",
+    "run.numberWords": "Geen,E\xE9n,Twee,Drie,Vier,Vijf,Zes,Zeven,Acht,Negen,Tien,Elf,Twaalf",
+    "shareCard.destination": "BESTEMMING",
+    "shareCard.ride": "RIT",
+    "shareCard.distance": "AFSTAND",
+    "shareCard.time": "TIJD",
+    "shareCard.byBike": "Per fiets",
+    "shareCard.byBoat": "Per boot",
+    "shareCard.byTransit": "Per tram en metro",
+    "shareCard.saved": "Afbeelding opgeslagen",
+    "shareCard.savedAndCopied": "Afbeelding opgeslagen \xB7 link gekopieerd",
+    "shareCard.runStop": "Stop {n}",
+    "shareCard.runEarlier": "+{count} eerder",
     "ride.startExploring": "Begin met verkennen",
     "ride.noCycling": "Geen fietsen in het echt",
     "ride.wikipediaLink": "Wikipedia \u2197",
+    "ride.landmarkQuestion.heading": "Welk gebouw is dit?",
+    "ride.landmarkQuestion.ahead": "Recht vooruit",
+    "ride.landmarkQuestion.left": "Links",
+    "ride.landmarkQuestion.right": "Rechts",
+    "ride.landmarkNoticed.action": "Gezien",
+    "ride.landmarkNoticed.done": "Genoteerd",
     "ride.researchSource": "Bron \u2197",
+    "poi.chip.art": "Kunstwerk",
+    "poi.chip.food": "Eten en drinken",
+    "poi.chip.shop": "Winkel",
+    "poi.chip.lodging": "Overnachting",
+    "poi.chip.culture": "Cultuur",
+    "poi.chip.education": "Onderwijs",
+    "poi.chip.civic": "Publieke dienst",
+    "poi.chip.bike": "Fietsen",
+    "poi.chip.worship": "Gebedshuis",
+    "poi.chip.leisure": "Vrije tijd",
+    "poi.chip.health": "Gezondheid",
+    "poi.chip.market": "Markt",
+    "poi.chip.place": "Plek",
+    "poi.seriesPart": "Deel {n} van {m} van {series}.",
     "ride.rules.title": "HOE SPEEL JE",
     "ride.rules.bike1": "1. Stuur de fiets met WASD of de pijltjestoetsen",
     "ride.rules.bike2": "2. Blijf op gemapte straten; de wegbeveiliging houdt je op het netwerk",
@@ -1389,8 +1665,8 @@
     "finish.newNames.other": "{count} nieuwe namen",
     "finish.newNeighborhoods.one": "{count} nieuwe buurt",
     "finish.newNeighborhoods.other": "{count} nieuwe buurten",
-    "finish.newLandmarks.one": "{count} landmark",
-    "finish.newLandmarks.other": "{count} landmarks",
+    "finish.newLandmarks.one": "{count} bezienswaardigheid",
+    "finish.newLandmarks.other": "{count} bezienswaardigheden",
     "finish.arrivedWith": "Je bent bij {destination} \xB7 {bits}",
     "finish.arrived": "Aangekomen bij {destination}",
     "finish.sticks": "Die kennis blijft hangen op je kaart van {city}.",
@@ -1398,7 +1674,41 @@
     "finish.passport": "Paspoort: {stamps}",
     "finish.youKnow": "Je kent {name}",
     "finish.streakFirst": "Eerste nieuwe plek vandaag",
-    "finish.streakDays": "{count} dagen op rij nieuwe plekken"
+    "finish.streakDays": "{count} dagen op rij nieuwe plekken",
+    // --- Arrival ribbon, pause card, pins and cards (#290) ---------------------
+    "ribbon.gold": "GOUDEN LINT",
+    "ribbon.silver": "ZILVEREN LINT",
+    "ribbon.bronze": "BRONZEN LINT",
+    "ribbon.none": "ROUTE VOLTOOID",
+    "ribbon.axis.recall": "Herinnering",
+    "ribbon.axis.aids": "Zonder hulp",
+    "ribbon.axis.efficiency": "Effici\xEBntie",
+    "ride.arrival.header": "AANGEKOMEN",
+    "ride.personalBest.new": "\u2605  Nieuw persoonlijk record",
+    "ride.personalBest.old": "Persoonlijk record  {time}",
+    "ride.arrival.neighborhoodWiki": "BUURT  \xB7  W  WIKIPEDIA",
+    "ride.paused": "PAUZE",
+    "ride.resume": "Hervatten",
+    "ride.pauseSummary": "{time}  \xB7  {km} km  \xB7  {correct} van {attempts} benoemd",
+    "ride.pauseStats": "{time}  \xB7  {km} km",
+    "ride.controlsHint": "?  help   \xB7   G  instellingen   \xB7   M  kaart   \xB7   O  noord   \xB7   T  labels   \xB7   B  gebouwen   \xB7   P  pauze",
+    "hud.destination": "BESTEMMING",
+    "card.wikipedia": "W  WIKIPEDIA",
+    "card.source": "W  BRON",
+    "card.more": "MEER \u203A",
+    "postcard.stamp": "PASPOORTSTEMPEL",
+    "postcard.enteringNeighborhood": "JE BETREEDT DE BUURT",
+    "postcard.entering": "JE BETREEDT: {kind}",
+    "postcard.photo": "Foto: {area} \xB7 {city}",
+    "kind.landmark": "BEZIENSWAARDIGHEID",
+    "kind.museum": "MUSEUM",
+    "kind.library": "BIBLIOTHEEK",
+    "kind.university": "UNIVERSITEIT",
+    "kind.cinema": "BIOSCOOP",
+    "kind.musicVenue": "MUZIEKPODIUM",
+    "kind.bridge": "BRUG",
+    "kind.church": "KERK",
+    "kind.neighborhood": "BUURT"
   };
 
   // src/i18n/language.ts
@@ -1478,10 +1788,10 @@
     date.setUTCDate(date.getUTCDate() + delta);
     return date.toISOString().slice(0, 10);
   }
-  function recompute(days) {
+  function recompute(days, now = Date.now()) {
     const unique = [...new Set(days)].sort();
     if (unique.length === 0) return emptyPlaceStreak();
-    const today = utcDayKey();
+    const today = utcDayKey(now);
     const yesterday = dayOffset(today, -1);
     let current2 = 0;
     let cursor = unique.includes(today) ? today : unique.includes(yesterday) ? yesterday : "";
@@ -1498,21 +1808,21 @@
     }
     return { days: unique.slice(-90), current: current2, best: Math.max(best, current2) };
   }
-  function readPlaceStreak(store) {
+  function readPlaceStreak(store, now = Date.now()) {
     try {
       const raw = store.getItem(PLACE_STREAK_STORAGE_KEY);
       if (!raw) return emptyPlaceStreak();
       const parsed = JSON.parse(raw);
-      return recompute(Array.isArray(parsed.days) ? parsed.days.map(String) : []);
+      return recompute(Array.isArray(parsed.days) ? parsed.days.map(String) : [], now);
     } catch {
       return emptyPlaceStreak();
     }
   }
   function notePlaceDay(store, now = Date.now()) {
     const day = utcDayKey(now);
-    const prior = readPlaceStreak(store);
+    const prior = readPlaceStreak(store, now);
     if (prior.days.includes(day)) return prior;
-    const next = recompute([...prior.days, day]);
+    const next = recompute([...prior.days, day], now);
     try {
       store.setItem(PLACE_STREAK_STORAGE_KEY, JSON.stringify(next));
     } catch {
@@ -1528,6 +1838,10 @@
   // src/canalRecall/game/neighborhoodPassport.ts
   var PASSPORT_STORAGE_KEY = "canalRecall.neighborhoodPassport.v1";
   var PASSPORT_MIN_NAMES = 8;
+  function localDay(time = Date.now()) {
+    const date = new Date(time);
+    return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}-${String(date.getDate()).padStart(2, "0")}`;
+  }
   function emptyPassport() {
     return { stamped: [] };
   }
@@ -1536,7 +1850,14 @@
       const raw = store.getItem(PASSPORT_STORAGE_KEY);
       if (!raw) return emptyPassport();
       const parsed = JSON.parse(raw);
-      return { stamped: Array.isArray(parsed.stamped) ? parsed.stamped.map(String) : [] };
+      const dates = {};
+      if (parsed.dates && typeof parsed.dates === "object") {
+        for (const [hood, at] of Object.entries(parsed.dates)) if (typeof at === "string") dates[hood] = at;
+      }
+      return {
+        stamped: Array.isArray(parsed.stamped) ? parsed.stamped.map(String) : [],
+        ...Object.keys(dates).length ? { dates } : {}
+      };
     } catch {
       return emptyPassport();
     }
@@ -1547,8 +1868,8 @@
     } catch {
     }
   }
-  function stampNewNeighborhoods(exploration, visitedThisRoute, prior, minNames = PASSPORT_MIN_NAMES) {
-    const known = exploration.learnedWaterways.length + exploration.learnedStreets.length + exploration.learnedTransitLines.length + exploration.learnedTransitStops.length;
+  function stampNewNeighborhoods(exploration, visitedThisRoute, prior, minNames = PASSPORT_MIN_NAMES, landmarkCredit = 0, today = localDay()) {
+    const known = exploration.learnedWaterways.length + exploration.learnedStreets.length + exploration.learnedTransitLines.length + exploration.learnedTransitStops.length + Math.max(0, landmarkCredit);
     if (known < minNames) return { passport: prior, fresh: [] };
     const stamped = new Set(prior.stamped);
     const fresh = [];
@@ -1558,7 +1879,305 @@
       stamped.add(hood);
       fresh.push(hood);
     }
-    return { passport: { stamped: [...stamped].sort() }, fresh };
+    if (!fresh.length) return { passport: prior, fresh };
+    const dates = { ...prior.dates || {} };
+    for (const hood of fresh) dates[hood] = today;
+    return { passport: { stamped: [...stamped].sort(), dates }, fresh };
+  }
+
+  // src/canalRecall/stampAlbumPlain.ts
+  var STAMP_PAPER = "#fbf6ea";
+  var STAMP_INK = "#1f1c17";
+  var STAMP_ACCENT = "#b4682c";
+  function punchPerforations(ctx, size) {
+    const radius = Math.max(1.5, size * 0.022);
+    const count = Math.max(6, Math.round(size / (radius * 2.8)));
+    const step = size / count;
+    ctx.save();
+    ctx.globalCompositeOperation = "destination-out";
+    ctx.beginPath();
+    for (let i = 0; i <= count; i += 1) {
+      const at = i * step;
+      for (const [x, y] of [[at, 0], [at, size], [0, at], [size, at]]) {
+        ctx.moveTo(x + radius, y);
+        ctx.arc(x, y, radius, 0, Math.PI * 2);
+      }
+    }
+    ctx.fill();
+    ctx.restore();
+  }
+  function drawPlainStamp(ctx, name, size) {
+    const margin = Math.round(size * 0.075);
+    ctx.save();
+    ctx.fillStyle = STAMP_PAPER;
+    ctx.fillRect(0, 0, size, size);
+    ctx.strokeStyle = STAMP_ACCENT;
+    ctx.lineWidth = Math.max(1, size * 0.012);
+    ctx.strokeRect(margin, margin, size - margin * 2, size - margin * 2);
+    ctx.fillStyle = STAMP_INK;
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+    const words2 = name.toUpperCase().split(/\s+/);
+    const lines = words2.length > 1 && name.length > 10 ? [words2.slice(0, Math.ceil(words2.length / 2)).join(" "), words2.slice(Math.ceil(words2.length / 2)).join(" ")] : [name.toUpperCase()];
+    const maxW = size - margin * 3;
+    let px = size * 0.2;
+    ctx.font = `700 ${px}px "Barlow Condensed", system-ui, sans-serif`;
+    while (px > 6 && Math.max(...lines.map((line) => ctx.measureText(line).width)) > maxW) {
+      px -= 1;
+      ctx.font = `700 ${px}px "Barlow Condensed", system-ui, sans-serif`;
+    }
+    lines.forEach((line, index) => ctx.fillText(line, size / 2, size / 2 + (index - (lines.length - 1) / 2) * px * 1.05));
+    ctx.restore();
+    punchPerforations(ctx, size);
+  }
+
+  // src/canalRecall/stampArtLoader.ts
+  var STAMP_ART_BUNDLE = "/canal-drive/js/stamp-art.bundle.js";
+  var pending = null;
+  function stampArtNow() {
+    return typeof window !== "undefined" && window.CanalRecallStampArt || null;
+  }
+  function loadStampArt(src = STAMP_ART_BUNDLE) {
+    const ready = stampArtNow();
+    if (ready) return Promise.resolve(ready);
+    if (pending) return pending;
+    if (typeof document === "undefined") return Promise.resolve(null);
+    pending = new Promise((resolve) => {
+      const script = document.createElement("script");
+      script.src = src;
+      script.async = true;
+      script.onload = () => {
+        const art = stampArtNow();
+        if (!art) {
+          resolve(null);
+          return;
+        }
+        art.loadStampFont().then(() => resolve(art), () => resolve(art));
+      };
+      script.onerror = () => {
+        pending = null;
+        resolve(null);
+      };
+      document.head.appendChild(script);
+    });
+    return pending;
+  }
+
+  // src/canalRecall/stampArrival.ts
+  var ARRIVAL_STAMP_HEIGHT = 64;
+  function stampCardEnabled(search) {
+    if (!search) return true;
+    try {
+      return new URLSearchParams(search).get("stampCard") !== "0";
+    } catch {
+      return true;
+    }
+  }
+  var plainCache = /* @__PURE__ */ new Map();
+  function plainStamp(name, size) {
+    if (typeof document === "undefined") return null;
+    const key = `${size}|${name}`;
+    let canvas = plainCache.get(key);
+    if (!canvas) {
+      canvas = document.createElement("canvas");
+      canvas.width = size;
+      canvas.height = size;
+      const ctx = canvas.getContext("2d");
+      if (ctx) drawPlainStamp(ctx, name, size);
+      plainCache.set(key, canvas);
+    }
+    return canvas;
+  }
+  function drawArrivalStamp(ctx, input) {
+    const size = ARRIVAL_STAMP_HEIGHT;
+    const { x, y } = input;
+    const art = stampArtNow();
+    const image = art ? art.buurtStampCanvas(input.name) : plainStamp(input.name, size * 3);
+    ctx.save();
+    ctx.translate(x + size / 2, y + size / 2);
+    ctx.rotate(-0.05);
+    ctx.shadowColor = "rgba(31,28,23,0.28)";
+    ctx.shadowBlur = 3;
+    ctx.shadowOffsetY = 1;
+    if (image) ctx.drawImage(image, -size / 2, -size / 2, size, size);
+    ctx.restore();
+    const textX = x + size + 14;
+    const room = Math.max(40, input.x + input.width - textX);
+    ctx.save();
+    ctx.textAlign = "left";
+    ctx.textBaseline = "alphabetic";
+    ctx.fillStyle = "#b4682c";
+    ctx.font = `700 11px ${input.fontMono}`;
+    ctx.fillText(t(input.isNew ? "stamps.cardLabel" : "stamps.cardLabelAgain"), textX, y + 18, room);
+    ctx.fillStyle = "#1f1c17";
+    ctx.font = '700 19px "Barlow Condensed", system-ui, sans-serif';
+    ctx.fillText(input.name, textX, y + 40, room);
+    const held = !input.held ? "" : input.total ? t("stamps.heldOf", { count: input.held, total: input.total }) : t(input.held === 1 ? "stamps.held.one" : "stamps.held.other", { count: input.held });
+    const foot = [held, input.more ? t("stamps.more", { count: input.more }) : ""].filter(Boolean).join("  \xB7  ");
+    if (foot) {
+      ctx.fillStyle = "#6d655a";
+      ctx.font = "600 12px system-ui, sans-serif";
+      ctx.fillText(foot, textX, y + 58, room);
+    }
+    ctx.restore();
+    return size;
+  }
+
+  // src/canalRecall/stampCatalogue.ts
+  var AMSTERDAM_STAMP_BUURTS = Object.freeze([
+    "Apollobuurt",
+    "Betondorp",
+    "Borneo-eiland",
+    "Buitenveldert",
+    "Buitenveldert-West",
+    "Centrum",
+    "Chass\xE9buurt",
+    "Czaar Peterbuurt",
+    "Da Costabuurt",
+    "De Baarsjes",
+    "De Pijp",
+    "Diamantbuurt",
+    "Duivelseiland",
+    "Floradorp",
+    "Frederik Hendrikbuurt",
+    "Funenpark",
+    "Gelderlandpleinbuurt",
+    "Gouden Bocht",
+    "Grachtengordel",
+    "Helmersbuurt",
+    "Hoofddorppleinbuurt",
+    "Hoofdweg e.o.",
+    "Houthaven",
+    "IJburg",
+    "IJselbuurt",
+    "Java-eiland",
+    "Jordaan",
+    "Kadijken",
+    "Karlskrona-eiland",
+    "Kattenburg",
+    "Kinkerbuurt",
+    "KNSM-eiland",
+    "Landlust",
+    "Libau-eiland",
+    "Marineterrein",
+    "Memeleiland",
+    "Molenwijkpark",
+    "Museumkwartier",
+    "Narva-eiland",
+    "Nieuw-West",
+    "Nieuwe Pijp",
+    "Nieuwmarkt/Lastage",
+    "Nieuwmarktbuurt",
+    "Noord",
+    "Oost",
+    "Oostelijk Havengebied",
+    "Oostelijke Eilanden",
+    "Oostenburg",
+    "Oosterdokseiland",
+    "Oud-Zuid",
+    "Oude Pijp",
+    "Overhoeks",
+    "Overtoomse Sluis",
+    "Plantage",
+    "Polder Meerzicht",
+    "Prinses Irenebuurt e.o.",
+    "Rapenburg",
+    "Revaleiland",
+    "Rijnbuurt",
+    "Rivierenbuurt",
+    "Scheldebuurt",
+    "Schinkelbuurt",
+    "Slotervaart",
+    "Sluisbuurt",
+    "Spaarndammerbuurt",
+    "Sporenburg",
+    "Sportheldenbuurt",
+    "Staatsliedenbuurt",
+    "Stadionbuurt",
+    "Stettineiland",
+    "Tuindorp Nieuwendam",
+    "Uilenburg",
+    "Valkenburg",
+    "Van Galenbuurt",
+    "Van Lennepbuurt",
+    "Vivaldi",
+    "Vondelparkbuurt",
+    "VU-kwartier",
+    "Weesp",
+    "Weesperbuurt",
+    "West",
+    "Westindische Buurt",
+    "Westpoort",
+    "Wiborgeiland",
+    "Willemspark",
+    "Wittenburg",
+    "Zuid",
+    "Zuidas",
+    "Zuidoost"
+  ]);
+
+  // src/canalRecall/stampAlbum.ts
+  var FREE_RIDE_COLLECTION_KEY = "canalRecall.freeRideCollection.v1";
+  var DAY = /^\d{4}-\d{2}-\d{2}/;
+  function earlier(a, b) {
+    return !a || b < a ? b : a;
+  }
+  function readStampSources(store) {
+    const stamped = /* @__PURE__ */ new Set();
+    const dates = {};
+    const parse = (key) => {
+      try {
+        const raw = store?.getItem(key);
+        return raw ? JSON.parse(raw) : null;
+      } catch {
+        return null;
+      }
+    };
+    const passport = parse(PASSPORT_STORAGE_KEY);
+    if (passport && Array.isArray(passport.stamped)) {
+      for (const name of passport.stamped) if (typeof name === "string" && name) stamped.add(name);
+    }
+    if (passport && passport.dates && typeof passport.dates === "object") {
+      for (const [name, at] of Object.entries(passport.dates)) {
+        if (typeof at === "string" && DAY.test(at)) dates[name] = earlier(dates[name], at.slice(0, 10));
+      }
+    }
+    const collection = parse(FREE_RIDE_COLLECTION_KEY);
+    if (collection && Array.isArray(collection.stamps)) {
+      for (const stamp of collection.stamps) {
+        if (!stamp || typeof stamp.hood !== "string" || !stamp.hood) continue;
+        stamped.add(stamp.hood);
+        if (typeof stamp.at === "string" && DAY.test(stamp.at)) dates[stamp.hood] = earlier(dates[stamp.hood], stamp.at.slice(0, 10));
+      }
+    }
+    return { stamped: [...stamped].sort(), dates };
+  }
+  function buildStampAlbum(buurtNames, sources) {
+    const names = new Set(buurtNames);
+    const earnedSet = new Set(sources.stamped.filter((name) => names.has(name)));
+    const stamps = [...names].map((name) => ({
+      name,
+      earned: earnedSet.has(name),
+      date: earnedSet.has(name) ? sources.dates[name] || null : null
+    }));
+    stamps.sort((a, b) => {
+      if (a.earned !== b.earned) return a.earned ? -1 : 1;
+      if (a.earned && a.date !== b.date) {
+        if (!a.date) return 1;
+        if (!b.date) return -1;
+        return a.date < b.date ? 1 : -1;
+      }
+      return a.name.localeCompare(b.name);
+    });
+    const earned = stamps.filter((stamp) => stamp.earned).length;
+    return { stamps, earned, total: stamps.length };
+  }
+  function stampList(store, catalogue = AMSTERDAM_STAMP_BUURTS) {
+    return buildStampAlbum(catalogue, readStampSources(store));
+  }
+  function stampCount(store, catalogue = AMSTERDAM_STAMP_BUURTS) {
+    const { earned, total } = stampList(store, catalogue);
+    return { earned, total };
   }
 
   // src/canalRecall/game/finishStory.ts
@@ -1673,6 +2292,38 @@
     return flight && Number.isFinite(flight.playZoom) && flight.playZoom > 0 ? flight.playZoom : cameraZoom;
   }
 
+  // src/canalRecall/engine/startHold.ts
+  var START_HOLD_CAP_MS = 1e4;
+  var START_HOLD_INTRO_MIN_MS = 1800;
+  var START_HOLD_MESSAGE_AFTER_MS = 1500;
+  var REVEAL_DISSOLVE_MS = 600;
+  var START_HOLD_TICK_MS_DESKTOP = 100;
+  var START_HOLD_TICK_MS_TOUCH = 250;
+  function startHoldTicks(touch) {
+    return !touch;
+  }
+  function startHoldTickDue(now, last, touch) {
+    return last == null || !Number.isFinite(last) || now - last >= (touch ? START_HOLD_TICK_MS_TOUCH : START_HOLD_TICK_MS_DESKTOP) || now < last;
+  }
+  function startHoldEnabled(asked) {
+    return !(asked === false || asked === 0 || asked === "0" || asked === "false" || asked === "off");
+  }
+  function startHoldCapMs(asked) {
+    const n = Number(asked);
+    return asked != null && asked !== "" && Number.isFinite(n) && n >= 2e3 && n <= 2e4 ? Math.round(n) : START_HOLD_CAP_MS;
+  }
+  function introHoldCapMs(spentMs, capMs = START_HOLD_CAP_MS) {
+    return Math.max(START_HOLD_INTRO_MIN_MS, Math.round(capMs - Math.max(0, spentMs)));
+  }
+  function startHoldMessageKey(elapsedMs, base = "ride.load.settling") {
+    return elapsedMs >= START_HOLD_MESSAGE_AFTER_MS ? "ride.load.buildingCity" : base;
+  }
+  function revealDissolveAlpha(sinceRevealMs, capped, durationMs = REVEAL_DISSOLVE_MS) {
+    if (!capped || !(durationMs > 0) || sinceRevealMs >= durationMs) return 0;
+    const t2 = Math.max(0, sinceRevealMs) / durationMs;
+    return (1 - t2) * (1 - t2);
+  }
+
   // src/canalRecall/game/vehicleZoomScale.ts
   var VEHICLE_ZOOM_EXPONENT = 0.65;
   var VEHICLE_ZOOM_MIN_SCALE = 0.5;
@@ -1719,6 +2370,29 @@
   }
   function isBoat(mode) {
     return mode === "boat";
+  }
+
+  // src/canalRecall/labels/pillText.ts
+  var PILL_MAX_CHARS = 36;
+  var PILL_MAX_PX = 420;
+  var ELLIPSIS = "\u2026";
+  function fitPillText(name, opts = {}) {
+    const maxChars = opts.maxChars ?? PILL_MAX_CHARS;
+    const maxPx = opts.maxPx ?? PILL_MAX_PX;
+    const fits = (s) => s.length <= maxChars && (!opts.measure || opts.measure(s) <= maxPx);
+    const text = name.trim().replace(/\s+/g, " ");
+    if (fits(text)) return text;
+    const words2 = text.split(" ");
+    let best = "";
+    for (let i = 1; i <= words2.length; i++) {
+      const head = words2.slice(0, i).join(" ").replace(/[\s,;:–—-]+$/, "");
+      if (!fits(head + ELLIPSIS)) break;
+      best = head;
+    }
+    if (best) return best + ELLIPSIS;
+    let cut = text.slice(0, Math.max(1, maxChars - 1));
+    while (cut.length > 1 && !fits(cut + ELLIPSIS)) cut = cut.slice(0, -1);
+    return cut + ELLIPSIS;
   }
 
   // src/canalRecall/labels/labelDedupe.ts
@@ -1992,7 +2666,7 @@
   var FREE_RIDE_MAX_BRIDGE_MARKERS = 2;
   var FREE_RIDE_REFRESH_SECONDS = 0.4;
   var FREE_RIDE_LABEL_REACH_M = 450;
-  var FREE_RIDE_LABEL_MAX_CHARS = 26;
+  var FREE_RIDE_LABEL_MAX_CHARS = PILL_MAX_CHARS;
   function nearbyPlaces(rider, places, {
     radiusPx,
     bridgeRadiusPx = radiusPx,
@@ -2045,21 +2719,18 @@
     }
     return placed;
   }
-  function markerAt(placed, x, y, slop = 6) {
+  var MARKER_STEM_HALF_WIDTH = 8;
+  function markerAt(placed, x, y, slop = 6, stem = true) {
     for (let i = placed.length - 1; i >= 0; i--) {
-      const { box, anchorY } = placed[i];
-      if (x >= box.x - slop && x <= box.x + box.w + slop && y >= box.y - slop && y <= Math.max(box.y + box.h, anchorY) + slop) {
-        return placed[i];
-      }
+      const { box, anchorX, anchorY } = placed[i];
+      const onPlate = x >= box.x - slop && x <= box.x + box.w + slop && y >= box.y - slop && y <= box.y + box.h + slop;
+      const onStem = stem && Math.abs(x - anchorX) <= MARKER_STEM_HALF_WIDTH && y >= box.y + box.h && y <= anchorY + slop;
+      if (onPlate || onStem) return placed[i];
     }
     return null;
   }
-  function markerLabel(name, maxChars = FREE_RIDE_LABEL_MAX_CHARS) {
-    const text = name.trim().replace(/\s+/g, " ");
-    if (text.length <= maxChars) return text;
-    const cut = text.slice(0, maxChars - 1);
-    const space = cut.lastIndexOf(" ");
-    return `${(space > maxChars * 0.6 ? cut.slice(0, space) : cut).replace(/[\s,;:–-]+$/, "")}\u2026`;
+  function markerLabel(name, maxChars = FREE_RIDE_LABEL_MAX_CHARS, measure) {
+    return fitPillText(name, { maxChars, measure });
   }
   function freeRideTallyKey(opened) {
     if (opened <= 0) return { key: "freeRide.tallyNone", count: 0 };
@@ -2091,8 +2762,101 @@
   }
 
   // src/canalRecall/game/landmarkData.ts
+  function pointInPolygon(x, y, ring) {
+    let inside = false;
+    for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) {
+      const a = ring[i], b = ring[j];
+      if (a.y > y !== b.y > y && x < (b.x - a.x) * (y - a.y) / (b.y - a.y) + a.x) inside = !inside;
+    }
+    return inside;
+  }
+  function neighborhoodAt(neighborhoods, x, y) {
+    return neighborhoods.find((hood) => hood.rings.some((ring) => pointInPolygon(x, y, ring))) || null;
+  }
   function isWorthACard(landmark) {
     return !!(landmark.detail || landmark.longDetail || landmark.imageUrl || landmark.wikipediaUrl);
+  }
+
+  // src/canalRecall/game/freeRideWater.ts
+  var DECK_VERTEX_REACH_PX = 60 * 3;
+  var DECK_LAND_SEARCH_PX = 12 * 3;
+  var DECK_LAND_STEP_PX = 2 * 3;
+  function deckPoints(lines, crossing, isWater = () => false, reachPx = DECK_VERTEX_REACH_PX) {
+    const out = [];
+    const near = (p) => Math.hypot(p.x - crossing.x, p.y - crossing.y) <= reachPx;
+    for (const line of lines) {
+      if (!line || line.length < 2 || !line.some(near)) continue;
+      for (const p of line) if (near(p)) out.push({ x: p.x, y: p.y });
+      for (const [end, prev] of [[line[0], line[1]], [line[line.length - 1], line[line.length - 2]]]) {
+        const dx = end.x - prev.x, dy = end.y - prev.y, len = Math.hypot(dx, dy);
+        if (!len || !near(end) || !isWater(end.x, end.y)) continue;
+        for (let d = DECK_LAND_STEP_PX; d <= DECK_LAND_SEARCH_PX; d += DECK_LAND_STEP_PX) {
+          const p = { x: end.x + dx / len * d, y: end.y + dy / len * d };
+          if (!isWater(p.x, p.y)) {
+            out.push(p);
+            break;
+          }
+        }
+      }
+    }
+    return out;
+  }
+  var LAND_MARGIN_PX = 3 * 3;
+  function withLandMargin(isWater, marginPx = LAND_MARGIN_PX) {
+    return (x, y) => {
+      if (isWater(x, y)) return true;
+      for (let i = 0; i < 8; i++) {
+        const a = i / 8 * Math.PI * 2;
+        if (isWater(x + Math.cos(a) * marginPx, y + Math.sin(a) * marginPx)) return true;
+      }
+      return false;
+    };
+  }
+  var DECK_SETTLE_PX = 12 * 3;
+  function bridgeMarkerAnchor(lines, crossing, rider, isWater) {
+    if (!isWater) return { x: crossing.x, y: crossing.y };
+    const solid = withLandMargin(isWater);
+    if (!solid(crossing.x, crossing.y)) return { x: crossing.x, y: crossing.y };
+    const deck = deckPoints(lines, crossing, isWater).filter((p) => !isWater(p.x, p.y)).sort((a, b) => Math.hypot(a.x - rider.x, a.y - rider.y) - Math.hypot(b.x - rider.x, b.y - rider.y));
+    for (const p of deck) {
+      const at = landAnchor(p, isWater, DECK_SETTLE_PX);
+      if (at) return at;
+    }
+    return null;
+  }
+  var LAND_SEARCH_PX = 40 * 3;
+  var LAND_RING_STEP_PX = 3 * 3;
+  function landAnchor(point, isWater, maxPx = LAND_SEARCH_PX) {
+    if (!isWater) return { x: point.x, y: point.y };
+    const solid = withLandMargin(isWater);
+    if (!solid(point.x, point.y)) return { x: point.x, y: point.y };
+    for (let r = LAND_RING_STEP_PX; r <= maxPx; r += LAND_RING_STEP_PX) {
+      for (let i = 0; i < 16; i++) {
+        const a = i / 16 * Math.PI * 2;
+        const p = { x: point.x + Math.cos(a) * r, y: point.y + Math.sin(a) * r };
+        if (!solid(p.x, p.y)) return p;
+      }
+    }
+    return null;
+  }
+  function tapOnOpenWater(surfaceHit, groundWater) {
+    return !surfaceHit && groundWater;
+  }
+  function freeRideWayTapAllowed(onWater, boat) {
+    return boat ? onWater : !onWater;
+  }
+  var FACADE_NUDGE_PX = 15 * 3;
+  function facadeNudge(point, isWater, inBuilding, maxPx = FACADE_NUDGE_PX) {
+    if (!inBuilding || !inBuilding(point.x, point.y)) return { point, inside: false, moved: false };
+    const solid = isWater ? withLandMargin(isWater) : () => false;
+    for (let r = LAND_RING_STEP_PX; r <= maxPx; r += LAND_RING_STEP_PX) {
+      for (let i = 0; i < 16; i++) {
+        const a = i / 16 * Math.PI * 2;
+        const p = { x: point.x + Math.cos(a) * r, y: point.y + Math.sin(a) * r };
+        if (!inBuilding(p.x, p.y) && !solid(p.x, p.y)) return { point: p, inside: true, moved: true };
+      }
+    }
+    return { point, inside: true, moved: false };
   }
 
   // src/canalRecall/game/landmarkNotice.ts
@@ -2306,996 +3070,203 @@
     }
   };
 
-  // src/canalRecall/game/freeRideRuntime.ts
-  var WAY_TAP_SLOP_PX = 15;
-  var BRIDGE_COLOUR = "#2f6f9f";
-  var GameFreeRideRuntime = class {
-    /** Start or end Free Ride to match the ride just set up. `_setupRace`
-     *  calls this last, after the route, labels and spoilers are in place. */
-    _syncFreeRide() {
-      if (isFreeRidePattern(this.routePattern)) this._beginFreeRide();
-      else this._endFreeRide();
+  // src/canalRecall/featureFlags.ts
+  var FREE_RIDE_COLLECTION_DEFAULT = false;
+  function queryFlag(search, name, fallback) {
+    const match = new RegExp(`[?&]${name}=([^&#]*)`).exec(search || "");
+    if (!match) return fallback;
+    const value = match[1].toLowerCase();
+    if (value === "1" || value === "true" || value === "on") return true;
+    if (value === "0" || value === "false" || value === "off") return false;
+    return fallback;
+  }
+  function freeRideCollectionEnabled(search) {
+    return queryFlag(search, "collection", FREE_RIDE_COLLECTION_DEFAULT);
+  }
+
+  // src/canalRecall/game/freeRideCollection.ts
+  var COLLECTION_STORAGE_KEY = "canalRecall.freeRideCollection.v1";
+  var CHECKLIST_MAX_PLACES = 9;
+  var CHECKLIST_MIN_PLACES = 2;
+  var TOKEN_RADIUS_M = 320;
+  var TOKEN_RIDE_THROUGH_M = 22;
+  var TOKEN_NEAR_PX = 22;
+  var TOKEN_FAR_PX = 12;
+  var TOKEN_MAX_PX = 24;
+  var FADE_NEAR_M = 110;
+  var FADE_FAR_M = 320;
+  var FADE_FLOOR = 0.35;
+  var CORRIDOR_AHEAD_M = 70;
+  var CORRIDOR_HALF_WIDTH_PX = 30;
+  function buildChecklists(places, hoodOf, { max = CHECKLIST_MAX_PLACES, min = CHECKLIST_MIN_PLACES } = {}) {
+    const byHood = /* @__PURE__ */ new Map();
+    const seen = /* @__PURE__ */ new Set();
+    for (const place of places) {
+      if (!place.key || seen.has(place.key)) continue;
+      const hood = hoodOf(place);
+      if (!hood) continue;
+      seen.add(place.key);
+      const list = byHood.get(hood);
+      if (list) list.push(place);
+      else byHood.set(hood, [place]);
     }
-    _beginFreeRide() {
-      this.freeRide = true;
-      this.routePath = [];
-      this._liveRoutePath = null;
-      this.quizCurrentName = "";
-      this.quizFeedback = "";
-      const map = this.vectorMap;
-      map.setSpoilersSuspended?.(true);
-      if (!this._freeRideRestore) this._freeRideRestore = { labels: !!map._labelsVisible };
-      map.setLabelsVisible?.(true);
-      map.setRoute(null, this.osmLoader, false);
-      map.setStreetHighlights(this.track, this.osmLoader, /* @__PURE__ */ new Set(), "", -1, null);
-      this.track.hideStartTag = true;
-      this._freeRidePlaces = null;
-      this._freeRidePlacesFrom = null;
-      this._freeRideNearby = [];
-      this._freeRideMarkers = [];
-      this._freeRideRefresh = 0;
-      this._freeRideOpened = /* @__PURE__ */ new Set();
-      this._showFreeRideBar(true);
+    const out = /* @__PURE__ */ new Map();
+    for (const [hood, list] of byHood) {
+      if (list.length < min) continue;
+      list.sort((a, b) => (b.prominence ?? 0) - (a.prominence ?? 0) || a.key.localeCompare(b.key));
+      out.set(hood, { hood, places: list.slice(0, max) });
     }
-    /** Back to the quiz rules: spoiler screening and the player's own label
-     *  setting return. Safe to call when no free ride is running. */
-    _endFreeRide() {
-      const restore = this._freeRideRestore;
-      if (!this.freeRide && !restore) return;
-      this.freeRide = false;
-      this._freeRideMarkers = [];
-      this._freeRideNearby = [];
-      const map = this.vectorMap;
-      map?.setSpoilersSuspended?.(false);
-      if (restore && !restore.labels) map?.setLabelsVisible?.(false);
-      this._freeRideRestore = null;
-      if (this.track) this.track.hideStartTag = false;
-      this._showFreeRideBar(false);
-    }
-    /** Every street and canal name is labelled in Free Ride. The anchors are
-     *  indexed once per network and only those near the camera are tested. */
-    _freeRideLabelCandidates() {
-      const labels = this.track?.labels;
-      let cache = this._freeRideLabels;
-      if (!cache || cache.labels !== labels) {
-        cache = this._freeRideLabels = {
-          labels,
-          names: new Set((labels || []).map((label) => label.text)),
-          index: new StreetLabelCandidates()
-        };
-      }
-      const knowledge = { mapLabelNames: cache.names, knownPlaces: /* @__PURE__ */ new Map() };
-      const index = cache.index;
-      const maxReach = FREE_RIDE_LABEL_REACH_M * PIXELS_PER_METER;
-      return (anchors, cx, cy, reach) => index.candidates(anchors, knowledge, cx, cy, Math.min(reach, maxReach));
-    }
-    /** Landmarks with something to say, and every named bridge crossing. */
-    _freeRideCatalog() {
-      const from = this._freeRidePlacesFrom;
-      if (this._freeRidePlaces && from && from.landmarks === this.landmarks && from.bridges === this.bridges) {
-        return this._freeRidePlaces;
-      }
-      const places = [];
-      const worth = (this.landmarks || []).filter((landmark) => isWorthACard(landmark));
-      const second = secondMarkerIds(worth);
-      for (const landmark of worth) {
-        if (second.has(String(landmark.id))) continue;
-        places.push({ key: landmark.id, kind: "landmark", name: landmark.name, x: landmark.x, y: landmark.y });
-      }
-      for (const bridge of this.bridges || []) {
-        const name = bridge.displayName || bridge.name;
-        for (const crossing of bridge.crossings || []) {
-          places.push({ key: `bridge:${bridge.id}`, kind: "bridge", name, x: crossing.x, y: crossing.y });
-        }
-      }
-      this._freeRidePlaces = places;
-      this._freeRidePlacesFrom = { landmarks: this.landmarks, bridges: this.bridges };
-      return places;
-    }
-    _updateFreeRide(dt) {
-      if (!this.freeRide || !this.player) return;
-      this._freeRideRefresh = (this._freeRideRefresh ?? 0) - dt;
-      if (this._freeRideRefresh > 0) return;
-      this._freeRideRefresh = FREE_RIDE_REFRESH_SECONDS;
-      this._freeRideNearby = nearbyPlaces(this.player, this._freeRideCatalog(), {
-        radiusPx: FREE_RIDE_MARKER_RADIUS_M * PIXELS_PER_METER,
-        bridgeRadiusPx: FREE_RIDE_BRIDGE_RADIUS_M * PIXELS_PER_METER
-      });
-      for (const place of this._freeRideNearby) {
-        if (place.kind !== "landmark") continue;
-        this._ensureLandmarkImage(this.landmarks.find((landmark) => landmark.id === place.key) ?? null);
-      }
-    }
-    /** The plaque's line in place of the score. */
-    _freeRideTally() {
-      const { key, count } = freeRideTallyKey(this._freeRideOpened?.size ?? 0);
-      return t(key, { count });
-    }
-    /** Draw the markers, nearest first, keeping off the HUD, the open card and
-     *  the vehicle. Their boxes are the tap targets until the next frame. */
-    _renderFreeRideMarkers() {
-      this._freeRideMarkers = [];
-      const fade = this._freeRideMarkerFade ||= new LabelFade();
-      const last = this._freeRideMarkerLast ||= /* @__PURE__ */ new Map();
-      fade.begin(performance.now());
-      const nearby = this._freeRideNearby;
-      if (!this.freeRide || !this.player) {
-        for (const key of fade.leftovers()) fade.drop(key);
-        return;
-      }
-      const ctx = this.ctx;
-      const surface = window.CanalRecallUi.hudSurface;
-      const compact = this.viewport?.mode === "compact";
-      const fontSize = compact ? 13 : 12;
-      const height = compact ? 26 : 22;
-      const font = `700 ${fontSize}px ${surface.fontUi}`;
-      ctx.save();
-      ctx.font = font;
-      const requests = [];
-      for (const place of nearby || []) {
-        const at = this.camera.worldToScreen(place.x, place.y);
-        const label = markerLabel(place.name);
-        const width = Math.ceil(ctx.measureText(label).width) + height + 8;
-        requests.push({ key: place.key, kind: place.kind, label, anchorX: at.x, anchorY: at.y, width, height });
-        last.set(place.key, { x: place.x, y: place.y, label, kind: place.kind, width, height });
-      }
-      requests.sort((a, b) => Number(fade.alpha(b.key) > 0) - Number(fade.alpha(a.key) > 0));
-      const layout = this._hudRects();
-      const rect = (r) => r && r.width > 0 && r.height > 0 ? { x: r.x, y: r.y, w: r.width, h: r.height } : null;
-      const vehicle = this.camera.worldToScreen(this.player.x, this.player.y);
-      const blocked = [
-        rect(layout.recall),
-        rect(layout.compass),
-        this.showMiniMap ? rect(layout.minimap) : null,
-        layout.dpad ? rect(layout.dpad.bounds) : null,
-        this._landmarkCardBounds,
-        { x: vehicle.x - 28, y: vehicle.y - 40, w: 56, h: 60 },
-        this._freeRideBarRect()
-      ].filter((r) => !!r);
-      const placed = layoutMarkers(requests, { width: CANVAS_W, height: CANVAS_H }, blocked);
-      const activeId = this._landmarkNotice?.id || "";
-      const draw = (key, kind, label, anchorX, anchorY, box, alpha) => {
-        const active = activeId === key || kind === "bridge" && this._landmarkNotice?.name === nearby?.find((p) => p.key === key)?.name;
-        const dot = kind === "bridge" ? BRIDGE_COLOUR : surface.arrow;
-        ctx.strokeStyle = surface.ink;
-        ctx.globalAlpha = 0.55 * alpha;
-        ctx.lineWidth = 1.5;
-        ctx.beginPath();
-        ctx.moveTo(anchorX, box.y + box.h);
-        ctx.lineTo(anchorX, anchorY);
-        ctx.stroke();
-        ctx.globalAlpha = alpha;
-        ctx.fillStyle = dot;
-        ctx.beginPath();
-        ctx.arc(anchorX, anchorY, 3.5, 0, Math.PI * 2);
-        ctx.fill();
-        ctx.shadowColor = surface.shadow;
-        ctx.shadowBlur = 6;
-        ctx.shadowOffsetY = 1;
-        ctx.fillStyle = active ? surface.ink : surface.cardSolid;
-        roundRect(ctx, box.x, box.y, box.w, box.h, box.h / 2);
-        ctx.fill();
-        ctx.shadowColor = "transparent";
-        ctx.strokeStyle = active ? surface.ink : surface.border;
-        ctx.lineWidth = 1;
-        ctx.stroke();
-        ctx.fillStyle = dot;
-        ctx.beginPath();
-        ctx.arc(box.x + box.h / 2, box.y + box.h / 2, box.h * 0.2, 0, Math.PI * 2);
-        ctx.fill();
-        ctx.fillStyle = active ? surface.cardSolid : surface.ink;
-        ctx.font = font;
-        ctx.textAlign = "left";
-        ctx.textBaseline = "middle";
-        ctx.fillText(label, box.x + box.h - 2, box.y + box.h / 2 + 0.5);
-        ctx.globalAlpha = 1;
-      };
-      const shown = /* @__PURE__ */ new Set();
-      for (const marker of placed) {
-        shown.add(marker.key);
-        const request = requests.find((r) => r.key === marker.key);
-        draw(marker.key, request.kind, request.label, marker.anchorX, marker.anchorY, marker.box, fade.want(marker.key, true));
-      }
-      const fading = (key, anchorX, anchorY, item, noHold) => {
-        const alpha = fade.want(key, false, { noHold });
-        if (alpha <= 0) return;
-        const box = { x: anchorX - item.width / 2, y: anchorY - MARKER_STEM - item.height, w: item.width, h: item.height };
-        draw(key, item.kind, item.label, anchorX, anchorY, box, alpha);
-      };
-      for (const request of requests) if (!shown.has(request.key)) fading(request.key, request.anchorX, request.anchorY, request, false);
-      for (const key of fade.leftovers()) {
-        const item = last.get(key);
-        if (!item) {
-          fade.drop(key);
-          continue;
-        }
-        const at = this.camera.worldToScreen(item.x, item.y);
-        fading(key, at.x, at.y, item, true);
-      }
-      ctx.restore();
-      this._freeRideMarkers = placed;
-    }
-    /** The Free ride · Exit bar in canvas units, so markers keep off it. */
-    _freeRideBarRect() {
-      const bar = this._freeRideBar;
-      if (!bar || bar.hidden) return null;
-      const box = bar.getBoundingClientRect();
-      const canvas = this.canvas.getBoundingClientRect();
-      if (!box.width || !canvas.width) return null;
-      const sx = CANVAS_W / canvas.width, sy = CANVAS_H / canvas.height;
-      return { x: (box.left - canvas.left) * sx, y: (box.top - canvas.top) * sy, w: box.width * sx, h: box.height * sy };
-    }
-    /** The marker under a canvas point, for the hover cursor. */
-    _freeRideMarkerAt(x, y) {
-      return this.freeRide ? markerAt(this._freeRideMarkers || [], x, y) : null;
-    }
-    /**
-     * A tap in Free Ride: a marker opens its place; otherwise the building
-     * under the tap answers as it does in every mode; failing that, the street
-     * or canal under the tap is named, with its origin card where there is one.
-     * Returns true when something opened.
-     */
-    _freeRideClick(x, y, clientX, clientY) {
-      const marker = this._freeRideMarkerAt(x, y);
-      if (marker) return this._openFreeRidePlace(marker.key);
-      const before = this._landmarkNotice;
-      this._inspectBuildingAt(clientX, clientY);
-      if (this._landmarkNotice && this._landmarkNotice !== before) {
-        this._noteFreeRideOpened(this._landmarkNotice.id);
-        return true;
-      }
-      return this._openFreeRideWayAt(clientX, clientY);
-    }
-    _openFreeRidePlace(key) {
-      const place = this._freeRideNearby?.find((p) => p.key === key);
-      if (!place) return false;
-      this.quizFeedback = "";
-      if (place.kind === "landmark") {
-        const landmark = this.landmarks.find((l) => l.id === key);
-        if (!landmark) return false;
-        this._showLandmarkNotice(landmark, { kind: "sticky" }, "click");
-        this.vectorMap.setActiveLandmark(landmark);
-        this._noteFreeRideOpened(key);
-        return true;
-      }
-      const bridge = this.bridges.find((b) => `bridge:${b.id}` === key);
-      if (!bridge) return false;
-      if (this._openKnowledgeCard(bridge.name, "bridge")) {
-        this._noteFreeRideOpened(key);
-        return true;
-      }
-      this._showLandmarkNotice({
-        id: key,
-        name: place.name,
-        type: "bridge",
-        detail: bridge.detail || "",
-        wikipediaUrl: bridge.wikipediaUrl || ""
-      }, { kind: "sticky" }, "click");
-      this._noteFreeRideOpened(key);
-      return true;
-    }
-    /** The street or canal under a tap, named; its origin card when the
-     *  extract has one. False when the tap is not on a way. */
-    _openFreeRideWayAt(clientX, clientY) {
-      const rect = this.canvas.getBoundingClientRect();
-      const world = this.vectorMap.screenToWorld?.(clientX - rect.left, clientY - rect.top, rect, this.osmLoader);
-      if (!world || !this.track) return false;
-      const contact = this.track.getNearestRoad(world.x, world.y);
-      if (!contact || !tapNamesWay(contact, WAY_TAP_SLOP_PX)) return false;
-      const name = this.track.segments[contact.segIdx]?.name || "";
-      if (!name) return false;
-      const type = isBoat(this.travelMode) ? "water" : "street";
-      if (!this._openKnowledgeCard(name, type)) {
-        this._showLandmarkNotice({ id: `free-way:${name}`, name, type: type === "water" ? "waterway" : "street" }, { kind: "sticky" }, "click");
-      }
-      this._noteFreeRideOpened(this._landmarkNotice?.id || name);
-      return true;
-    }
-    /** Open the shipped origin/register card for a name, even if it was shown
-     *  earlier this ride (a tap is a request, not a drive-by). */
-    _openKnowledgeCard(name, type) {
-      const before = this._landmarkNotice;
-      this._seenStreetKnowledge = /* @__PURE__ */ new Set();
-      this._showStreetKnowledge(name, type, true);
-      const opened = !!this._landmarkNotice && this._landmarkNotice !== before;
-      if (opened) {
-        this._landmarkNoticeSource = "click";
-        this._landmarkNoticeState.elapsed = DEFAULT_NOTICE_CONFIG.fadeSeconds;
-        this._landmarkNoticeAlpha = 1;
-      }
-      return opened;
-    }
-    _noteFreeRideOpened(id) {
-      (this._freeRideOpened ||= /* @__PURE__ */ new Set()).add(id);
-    }
-    /** The "Free ride · Exit" bar: where the destination card sits on a wide
-     *  screen, under the plaque on a phone. */
-    _showFreeRideBar(visible) {
-      let bar = this._freeRideBar ?? document.getElementById("free-ride-bar");
-      if (!bar && visible) {
-        bar = document.createElement("div");
-        bar.id = "free-ride-bar";
-        bar.setAttribute("role", "group");
-        bar.innerHTML = '<span class="free-ride-badge enamel-plaque"></span><button id="free-ride-exit" type="button"></button>';
-        bar.querySelector("button").addEventListener("click", () => {
-          this._openRouteSetup?.();
-        });
-        document.body.appendChild(bar);
-      }
-      this._freeRideBar = bar;
-      if (!bar) return;
-      bar.hidden = !visible;
-      this._freeRideBarKey = "";
-      if (!visible) return;
-      bar.setAttribute("aria-label", t("freeRide.badge"));
-      bar.querySelector(".free-ride-badge").textContent = t("freeRide.badge");
-      const exit = bar.querySelector("button");
-      exit.textContent = t("freeRide.exit");
-      exit.setAttribute("aria-label", t("freeRide.exitLabel"));
-    }
-    /** Called each frame while riding free; moves the bar only when the layout
-     *  moved. Hidden while a card or panel owns the screen. */
-    _placeFreeRideBar() {
-      const bar = this._freeRideBar;
-      if (!bar || !this.freeRide) return;
-      const layout = this._hudRects();
-      const rect = this.canvas.getBoundingClientRect();
-      const sx = rect.width / CANVAS_W;
-      const sy = rect.height / CANVAS_H;
-      const hidden = !!this._utilityOpen || this.state !== GameState.RACING;
-      let key;
-      let style;
-      if (layout.destinationInRecall) {
-        const top = (layout.recall.y + layout.recall.height + 10) * sy + rect.top;
-        key = `c|${top.toFixed(1)}|${hidden}`;
-        style = { top: `${top}px`, left: "50%", right: "", transform: "translateX(-50%)" };
-      } else {
-        const d = layout.destination;
-        const top = d.y * sy + rect.top;
-        const right = window.innerWidth - ((d.x + d.width) * sx + rect.left);
-        key = `w|${top.toFixed(1)}|${right.toFixed(1)}|${hidden}`;
-        style = { top: `${top}px`, right: `${right}px`, left: "", transform: "" };
-      }
-      if (key === this._freeRideBarKey) return;
-      this._freeRideBarKey = key;
-      Object.assign(bar.style, style);
-      bar.hidden = hidden;
-    }
+    return out;
+  }
+  function checklistProgress(list, opened) {
+    if (!list || !list.places.length) return null;
+    const remaining = list.places.filter((place) => !opened.has(place.key)).map((place) => place.key);
+    const total = list.places.length;
+    return { opened: total - remaining.length, total, done: remaining.length === 0, remaining };
+  }
+  var norm = (text) => text.normalize("NFD").replace(/[̀-ͯ]/g, "").trim().toLowerCase();
+  var ENGLISH = {
+    count: (opened, total) => `${opened} of ${total} places`,
+    done: (total) => `all ${total} places`
   };
-  function installFreeRide(target) {
-    for (const name of Object.getOwnPropertyNames(GameFreeRideRuntime.prototype)) {
-      if (name === "constructor") continue;
-      Object.defineProperty(target.prototype, name, Object.getOwnPropertyDescriptor(GameFreeRideRuntime.prototype, name));
-    }
+  function checklistLine(hood, progress, { underQuestion = "", copy = ENGLISH } = {}) {
+    const hidden = !!underQuestion && norm(underQuestion) === norm(hood);
+    const name = hidden ? "" : hood;
+    const count = progress.done ? copy.done(progress.total) : copy.count(progress.opened, progress.total);
+    return { hood: name, count, text: name ? `${name} \xB7 ${count}` : count };
   }
-
-  // src/canalRecall/hudCopy.ts
-  function zoomBadgeText(zoom) {
-    return t("hud.zoom", { percent: Math.round(zoom * 100) });
+  function emptyCollection() {
+    return { opened: [], stamps: [] };
   }
-  function zoomBadgeShouldFlash(lastShown, zoom, playerZoomed) {
-    return playerZoomed && lastShown !== null && lastShown !== zoom;
-  }
-
-  // src/canalRecall/game/travelProfile.ts
-  var PROFILES = {
-    boat: {
-      id: "boat",
-      labelKey: "setup.travel.boat",
-      extractFile: "water",
-      quizRouteSubject: "waterway",
-      quizRouteQuestionKey: "ride.question.waterway",
-      learnedKind: "water",
-      motion: "water",
-      vehicle: "boat",
-      networkNoun: "waterways",
-      networkNounSingular: "waterway",
-      recallNounKey: "ride.noun.canals",
-      exploreNounKey: "ride.noun.canals",
-      usesRoadConstraint: false,
-      usesWaterTest: true
-    },
-    car: {
-      id: "car",
-      labelKey: "setup.travel.bike",
-      extractFile: "streets-routing",
-      quizRouteSubject: "street",
-      quizRouteQuestionKey: "ride.question.street",
-      learnedKind: "street",
-      motion: "road",
-      vehicle: "bike",
-      networkNoun: "streets",
-      networkNounSingular: "street",
-      recallNounKey: "ride.noun.streets",
-      exploreNounKey: "ride.noun.streets",
-      usesRoadConstraint: true,
-      usesWaterTest: false
-    },
-    transit: {
-      id: "transit",
-      labelKey: "setup.travel.transit",
-      extractFile: "transit-network",
-      quizRouteSubject: "line",
-      quizRouteQuestionKey: "ride.question.line",
-      learnedKind: "transit",
-      motion: "corridor",
-      vehicle: "transit",
-      networkNoun: "tram lines",
-      networkNounSingular: "line",
-      recallNounKey: "ride.noun.lines",
-      exploreNounKey: "ride.noun.linesAndStops",
-      usesRoadConstraint: true,
-      usesWaterTest: false
-    }
-  };
-  function travelProfile(mode) {
-    const template = PROFILES[mode] ?? PROFILES.boat;
-    return {
-      ...template,
-      label: t(template.labelKey),
-      quizRouteQuestion: t(template.quizRouteQuestionKey),
-      recallNoun: t(template.recallNounKey),
-      exploreNoun: t(template.exploreNounKey)
-    };
-  }
-
-  // src/canalRecall/game/recallRules.ts
-  var MAX_HEADING_OFF_ROAD = Math.PI / 4;
-  var ROUTE_QUIZ_TURN_RADIANS = Math.PI / 6;
-  function hudWithholdsRouteName(input) {
-    if (input.promptName) return true;
-    if (input.candidateName && input.candidateName !== input.currentName) return true;
-    if (!input.roadName || input.roadName === input.currentName) return false;
-    return !input.revealed && !input.learned;
-  }
-  function routePlaqueName(input) {
-    const answerHidden = hudWithholdsRouteName(input);
-    return { routeName: answerHidden ? "" : input.shownName || input.roadName, answerHidden };
-  }
-
-  // src/canalRecall/bridgeDisplayNames.ts
-  function bridgeLetterKey(name) {
-    return name.trim().replace(/^(de|het|'t)\s+/i, "").replace(/ł/g, "l").replace(/Ł/g, "L").toLocaleLowerCase().normalize("NFD").replace(/[^\p{L}]/gu, "").replace(/(\p{L})\1+/gu, "$1");
-  }
-  function isBridgeSpelling(osmName, displayName) {
-    return !!displayName && displayName !== osmName && bridgeLetterKey(displayName) === bridgeLetterKey(osmName);
-  }
-  function buildBridgeDisplayNames(bridges) {
-    const names = /* @__PURE__ */ new Map();
-    for (const bridge of bridges) {
-      const name = bridge.name?.trim();
-      const shown = bridge.displayName?.trim();
-      if (name && shown && isBridgeSpelling(name, shown)) names.set(name, shown);
-    }
-    return names;
-  }
-  var indexes = /* @__PURE__ */ new WeakMap();
-  function bridgeDisplayNamesOf(bridges) {
-    if (!bridges) return /* @__PURE__ */ new Map();
-    let index = indexes.get(bridges);
-    if (!index) indexes.set(bridges, index = buildBridgeDisplayNames(bridges));
-    return index;
-  }
-  function displayBridgeName(names, name) {
-    return names && names.get(name) || name;
-  }
-
-  // src/canalRecall/facts/factRotation.ts
-  var RECENT_KIND_MEMORY = 3;
-  function factKey(featureId, fact) {
-    const normalised = fact.text.toLowerCase().replace(/[^\p{L}\p{N}]+/gu, "");
-    let hash = 2166136261;
-    for (let index = 0; index < normalised.length; index++) {
-      hash ^= normalised.charCodeAt(index);
-      hash = Math.imul(hash, 16777619);
-    }
-    return `${featureId}:${(hash >>> 0).toString(36)}`;
-  }
-  var KIND_APPEAL = {
-    surprise: 5,
-    naming: 4,
-    culture: 3,
-    people: 3,
-    history: 2,
-    design: 1
-  };
-  function chooseFact(featureId, facts, state) {
-    if (!facts.length) return null;
-    const scored = facts.map((fact) => {
-      const key = factKey(featureId, fact);
-      const lastShown = state.history[key];
-      const seen = lastShown !== void 0;
-      const recency = state.recentKinds.indexOf(fact.kind);
-      const kindPenalty = recency < 0 ? 0 : (RECENT_KIND_MEMORY - recency) * 2;
-      return {
-        fact,
-        key,
-        seen,
-        lastShown: lastShown ?? -1,
-        score: (seen ? 0 : 100) + KIND_APPEAL[fact.kind] - kindPenalty
-      };
-    });
-    scored.sort((a, b) => (
-      // Unseen first; then among seen, the one shown longest ago; then appeal.
-      Number(b.score > 0 && !b.seen) - Number(a.score > 0 && !a.seen) || (a.seen && b.seen ? a.lastShown - b.lastShown : 0) || b.score - a.score
-    ));
-    const best = scored[0];
-    return { fact: best.fact, key: best.key, repeat: best.seen };
-  }
-  function recordShown(state, choice) {
-    const shown = state.shown + 1;
-    return {
-      history: { ...state.history, [choice.key]: shown },
-      shown,
-      recentKinds: [choice.fact.kind, ...state.recentKinds].slice(0, RECENT_KIND_MEMORY)
-    };
-  }
-  function expandedFacts(facts, shownText, limit = 3) {
-    return facts.filter((fact) => fact.text !== shownText).slice().sort((a, b) => KIND_APPEAL[b.kind] - KIND_APPEAL[a.kind]).slice(0, limit);
-  }
-  function pruneHistory(state, maxEntries = 4e3) {
-    const entries = Object.entries(state.history);
-    if (entries.length <= maxEntries) return state;
-    const kept = entries.sort((a, b) => b[1] - a[1]).slice(0, maxEntries);
-    return { ...state, history: Object.fromEntries(kept) };
-  }
-
-  // src/canalRecall/facts/factQuality.ts
-  var CATEGORY_WORDS = "bridge|street|canal|park|square|church|museum|building|monument|neighbourhood|neighborhood|district|area|tower|gate|house|hotel|theatre|theater|station|market|island|quay|harbour|harbor|cemetery|garden|school|university|synagogue|mosque|windmill|lock|sluice|library|hall|palace|mill|club|stadium|arena|prison|hospital|brewery|factory|chapel|gallery|zoo|dock|street|lane|road|avenue|tunnel|fountain|statue";
-  var LEDE_RESTATEMENT = new RegExp(
-    `^\\s*(the\\s+)?[^.]{2,60}?\\s+(is|was)\\s+(a|an|the)\\s+(\\w+[- ]){0,3}(${CATEGORY_WORDS})\\b[^.]{0,40}\\b(in|of|on|near|at|situated at|located at)\\s+(the\\s+)?[A-Z0-9][^.]{0,40}\\.?\\s*$`,
-    "i"
-  );
-  var FILLER_CLAUSE = new RegExp(
-    "\\s*,\\s+(?:(?:marking|showcasing|highlighting|demonstrating|reflecting|contributing|offering|underscoring|emphasi[sz]ing|solidifying|cementing|symboli[sz]ing|illustrating|making it|cementing its)\\b[^,]*|(?:a|an|the)\\s+(?:\\w+\\s+){0,2}(?:striking|significant|notable|remarkable|hidden|unique|key|major|important|impressive|beloved|popular)\\s+(?:\\w+\\s+){0,2}(?:feature|milestone|achievement|aspect|element|landmark|detail|addition|space|example|part|symbol|sight)[^,]*)\\s*\\.?\\s*$",
-    "i"
-  );
-  function words(text) {
-    return text.toLowerCase().match(/[\p{L}\p{N}]+/gu) || [];
-  }
-  function similarity(a, b) {
-    const left = new Set(words(a));
-    const right = new Set(words(b));
-    if (!left.size || !right.size) return 0;
-    let shared2 = 0;
-    for (const word of left) if (right.has(word)) shared2++;
-    return shared2 / Math.min(left.size, right.size);
-  }
-
-  // src/canalRecall/facts/factTypes.ts
-  var FACT_KIND_LABELS = {
-    naming: "Name",
-    history: "History",
-    people: "People",
-    design: "Design",
-    culture: "Culture",
-    surprise: "Curiosity"
-  };
-  var FACT_KIND_LABELS_NL = {
-    naming: "Naam",
-    history: "Geschiedenis",
-    people: "Mensen",
-    design: "Ontwerp",
-    culture: "Cultuur",
-    surprise: "Weetje"
-  };
-  function factKindLabel(kind) {
-    return language() === "nl" ? FACT_KIND_LABELS_NL[kind] : FACT_KIND_LABELS[kind];
-  }
-  function factText(fact) {
-    return language() === "nl" && fact.textNl ? fact.textNl : fact.text;
-  }
-
-  // src/canalRecall/facts/factStore.ts
-  function openingSentence(text, maxChars = 160) {
-    const trimmed = (text || "").replace(/\s+/g, " ").trim();
-    if (!trimmed) return "";
-    const abbreviations = /* @__PURE__ */ new Set([
-      "st",
-      "sint",
-      "ste",
-      "mr",
-      "mrs",
-      "ms",
-      "dr",
-      "prof",
-      "ir",
-      "ing",
-      "drs",
-      "jr",
-      "sr",
-      "nr",
-      "no",
-      "vs",
-      "ca",
-      "ong",
-      "bijv",
-      "nl",
-      "oa",
-      "dwz",
-      "zgn",
-      "etc",
-      "incl",
-      "excl",
-      "eeuw",
-      "eeuwse"
-    ]);
-    const isSentenceEnd = (index) => {
-      if (trimmed[index] !== ".") return true;
-      const before = /([\p{L}]+)$/u.exec(trimmed.slice(0, index));
-      if (!before) return true;
-      const word = before[1];
-      if (word.length === 1) return false;
-      if (/^\p{Lu}\p{L}*sz$/u.test(word)) return false;
-      return !abbreviations.has(word.toLocaleLowerCase());
-    };
-    let end = -1;
-    for (const match of trimmed.matchAll(/[.!?](?=\s|$)/g)) {
-      if (isSentenceEnd(match.index)) {
-        end = match.index + 1;
-        break;
-      }
-    }
-    const sentence = (end > 0 ? trimmed.slice(0, end) : trimmed).trim();
-    if (sentence.length <= maxChars) return sentence;
-    const window2 = sentence.slice(0, maxChars);
-    let boundary = -1;
-    for (const match of window2.matchAll(/[.!?](?=\s|$)/g)) {
-      if (isSentenceEnd(match.index)) boundary = match.index + 1;
-    }
-    if (boundary > maxChars * 0.5) return window2.slice(0, boundary).trim();
-    const cut = Math.max(window2.lastIndexOf(", "), window2.lastIndexOf(" "));
-    return `${(cut > maxChars * 0.5 ? window2.slice(0, cut) : window2).trim()}\u2026`;
-  }
-  function composeFactWithOpening(factText2, opening) {
-    const lead = openingSentence(opening);
-    if (!lead) return { detail: factText2 };
-    if (similarity(lead, factText2) >= 0.55) return { detail: factText2 };
-    const leadStem = lead.replace(/[.!?…]+$/, "").toLowerCase();
-    if (leadStem.length >= 24 && factText2.toLowerCase().includes(leadStem.slice(0, Math.min(48, leadStem.length)))) {
-      return { detail: factText2 };
-    }
-    return { detail: `${lead} ${factText2}`, opening: lead };
-  }
-  var ROTATION_STORAGE_KEY = "canalRecall.factRotation.v1";
-  function saveRotationState(storage2, state) {
+  function readCollection(store) {
     try {
-      storage2?.setItem(ROTATION_STORAGE_KEY, JSON.stringify(pruneHistory(state)));
+      const raw = store?.getItem(COLLECTION_STORAGE_KEY);
+      if (!raw) return emptyCollection();
+      const parsed = JSON.parse(raw);
+      return {
+        opened: Array.isArray(parsed.opened) ? parsed.opened.map(String) : [],
+        stamps: Array.isArray(parsed.stamps) ? parsed.stamps.filter((s) => s && typeof s.hood === "string").map((s) => ({ hood: s.hood, at: String(s.at || "") })) : []
+      };
+    } catch {
+      return emptyCollection();
+    }
+  }
+  function saveCollection(store, state) {
+    try {
+      store?.setItem(COLLECTION_STORAGE_KEY, JSON.stringify(state));
     } catch {
     }
   }
-  function factCardText(featureId, index, state, fallbackOpening) {
-    const entry = index.get(featureId);
-    if (!entry?.facts?.length) return null;
-    const choice = chooseFact(featureId, entry.facts, state);
-    if (!choice) return null;
-    const dutch = language() === "nl";
-    const dutchFact = dutch && !!choice.fact.textNl;
-    const factBody = dutchFact ? choice.fact.textNl : choice.fact.text;
-    const composed = composeFactWithOpening(
-      factBody,
-      dutchFact ? entry.openingNl : entry.opening || fallbackOpening
-    );
-    const others = expandedFacts(entry.facts, choice.fact.text);
-    const all = composed.opening ? [composed.opening, factBody, ...others.map((fact) => factText(fact))] : [factBody, ...others.map((fact) => factText(fact))];
+  function noteOpened(state, key) {
+    if (!key || state.opened.includes(key)) return state;
+    return { ...state, opened: [...state.opened, key] };
+  }
+  function stampIfComplete(state, passport, hood, progress, today) {
+    if (!hood || !progress?.done || state.stamps.some((s) => s.hood === hood)) {
+      return { state, passport, fresh: false };
+    }
+    const stamped = passport.stamped.includes(hood) ? passport.stamped : [...passport.stamped, hood].sort();
     return {
-      choice,
-      text: {
-        detail: composed.detail,
-        longDetail: all.join(" "),
-        factTexts: all,
-        factKind: factKindLabel(choice.fact.kind)
-      }
+      state: { ...state, stamps: [...state.stamps, { hood, at: today }] },
+      passport: { ...passport, stamped },
+      fresh: true
     };
   }
-  function commitShownFact(storage2, state, choice) {
-    const next = recordShown(state, choice);
-    saveRotationState(storage2, next);
-    return next;
-  }
-
-  // src/canalRecall/game/finishBlurb.ts
-  function finishBlurb(landmark, facts, rotation, fallback) {
-    const lede = landmark.longDetail || landmark.detail || "";
-    const chosen = facts && facts.size ? factCardText(landmark.id, facts, rotation, landmark.detail || landmark.longDetail) : null;
-    if (chosen?.text.detail) return { text: chosen.text.detail, choice: chosen.choice };
-    return { text: lede || fallback, choice: null };
-  }
-
-  // src/canalRecall/labels/sightlineOcclusion.ts
-  var SIGHTLINE_CELL_M = 40;
-  var SIGHTLINE_CLEARANCE_M = 0.75;
-  var ANCHOR_SLACK_M = 2;
-  var M_PER_DEG_LAT = 111320;
-  var ORIGIN_LNG = 4.8936;
-  var ORIGIN_LAT = 52.3731;
-  var M_PER_DEG_LNG = M_PER_DEG_LAT * Math.cos(ORIGIN_LAT * Math.PI / 180);
-  function toLocal(lng, lat) {
-    return [(lng - ORIGIN_LNG) * M_PER_DEG_LNG, (lat - ORIGIN_LAT) * M_PER_DEG_LAT];
-  }
-  function occluderTopM(properties) {
-    const p = properties || {};
-    const height = Number(p.height), eaves = Number(p.roofEavesHeightM);
-    const pitched = typeof p.roofShape === "string" && p.roofShape !== "flat";
-    if (Number.isFinite(height) && Number.isFinite(eaves) && pitched && eaves < height) return (height + eaves) / 2;
-    if (Number.isFinite(height)) return height;
-    if (Number.isFinite(eaves)) return eaves;
-    return 0;
-  }
-  function prepare(feature) {
-    const g = feature.geometry;
-    const polygons = g?.type === "Polygon" ? [g.coordinates] : g?.type === "MultiPolygon" ? g.coordinates : [];
-    const topM = occluderTopM(feature.properties);
-    if (!(topM > 1)) return null;
-    const rings = [];
-    let minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
-    for (const polygon of polygons) {
-      const outer = Array.isArray(polygon) ? polygon[0] : null;
-      if (!Array.isArray(outer) || outer.length < 3) continue;
-      const flat = new Float64Array(outer.length * 2);
-      for (let i = 0; i < outer.length; i++) {
-        const [x, y] = toLocal(outer[i][0], outer[i][1]);
-        flat[i * 2] = x;
-        flat[i * 2 + 1] = y;
-        if (x < minX) minX = x;
-        if (x > maxX) maxX = x;
-        if (y < minY) minY = y;
-        if (y > maxY) maxY = y;
+  function pickTokenPlace(rider, candidates, opened, { radius, prefer }) {
+    let best = null;
+    let bestScore = Infinity;
+    for (const place of candidates) {
+      if (opened.has(place.key) || !Number.isFinite(place.x) || !Number.isFinite(place.y)) continue;
+      const distance = Math.hypot(place.x - rider.x, place.y - rider.y);
+      if (distance > radius) continue;
+      const score = prefer?.has(place.key) ? distance / 2 : distance;
+      if (score < bestScore || score === bestScore && best && place.key < best.key) {
+        best = { ...place, distance };
+        bestScore = score;
       }
-      rings.push(flat);
     }
-    return rings.length ? { rings, minX, minY, maxX, maxY, topM, stamp: 0 } : null;
+    return best;
   }
-  var cellKey = (ix, iy) => (ix + 32768) * 65536 + (iy + 32768);
-  function pointInRing(x, y, ring) {
-    let inside = false;
-    const n = ring.length / 2;
-    for (let i = 0, j = n - 1; i < n; j = i++) {
-      const xi = ring[i * 2], yi = ring[i * 2 + 1], xj = ring[j * 2], yj = ring[j * 2 + 1];
-      if (yi > y !== yj > y && x < (xj - xi) * (y - yi) / (yj - yi) + xi) inside = !inside;
-    }
-    return inside;
+  function ridesThrough(rider, place, throughPx) {
+    return !!place && Math.hypot(place.x - rider.x, place.y - rider.y) <= throughPx;
   }
-  var SightlineIndex = class {
-    constructor(cellM = SIGHTLINE_CELL_M) {
-      this.cellM = cellM;
-    }
-    prepared = /* @__PURE__ */ new WeakMap();
-    grid = /* @__PURE__ */ new Map();
-    source = null;
-    pending = null;
-    stamp = 1;
-    stats = { features: 0, cells: 0, buildMs: 0, tests: 0, blocked: 0, testMs: 0 };
-    /** Whether any footprints are indexed. */
-    get ready() {
-      return this.grid.size > 0;
-    }
-    /** Adopt `features` (by identity). Spends at most `budgetMs` per call; returns true when the grid is current. */
-    refresh(features, budgetMs = 2) {
-      if (!features) return this.source === null;
-      if (features === this.source && !this.pending) return true;
-      if (!this.pending || this.pending.list !== features) this.pending = { list: features, next: 0, grid: /* @__PURE__ */ new Map(), ms: 0 };
-      const job = this.pending, start = performance.now(), deadline = start + budgetMs, cell = this.cellM;
-      while (job.next < job.list.length) {
-        const feature = job.list[job.next++];
-        let p = this.prepared.get(feature);
-        if (p === void 0) {
-          p = prepare(feature);
-          this.prepared.set(feature, p);
-        }
-        if (p) {
-          const x0 = Math.floor(p.minX / cell), x1 = Math.floor(p.maxX / cell);
-          const y0 = Math.floor(p.minY / cell), y1 = Math.floor(p.maxY / cell);
-          for (let ix = x0; ix <= x1; ix++) for (let iy = y0; iy <= y1; iy++) {
-            const key = cellKey(ix, iy);
-            const bucket = job.grid.get(key);
-            if (bucket) bucket.push(p);
-            else job.grid.set(key, [p]);
-          }
-        }
-        if ((job.next & 255) === 0 && performance.now() > deadline) break;
-      }
-      job.ms += performance.now() - start;
-      if (job.next < job.list.length) return false;
-      this.grid = job.grid;
-      this.source = features;
-      this.pending = null;
-      this.stats.features = features.length;
-      this.stats.cells = job.grid.size;
-      this.stats.buildMs = Math.round(job.ms * 10) / 10;
-      return true;
-    }
-    /**
-     * True when a building's walls stand above the straight line from the
-     * camera to the anchor. Buildings whose footprint holds the camera (its
-     * back-face-culled walls are invisible) or the anchor are skipped.
-     */
-    blocked(camera, anchor) {
-      const t0 = performance.now();
-      const result = this.test(camera, anchor);
-      this.stats.tests++;
-      if (result) this.stats.blocked++;
-      this.stats.testMs += performance.now() - t0;
-      return result;
-    }
-    /** Zero the per-frame counters. */
-    resetCounters() {
-      this.stats.tests = 0;
-      this.stats.blocked = 0;
-      this.stats.testMs = 0;
-    }
-    test(camera, anchor) {
-      if (!this.grid.size) return false;
-      const [ax, ay] = toLocal(camera.lng, camera.lat), [bx, by] = toLocal(anchor.lng, anchor.lat);
-      const dx = bx - ax, dy = by - ay, len = Math.hypot(dx, dy);
-      if (len < ANCHOR_SLACK_M * 2) return false;
-      const tMax = 1 - ANCHOR_SLACK_M / len;
-      const stamp = ++this.stamp, cell = this.cellM;
-      let ix = Math.floor(ax / cell), iy = Math.floor(ay / cell);
-      const ex = Math.floor(bx / cell), ey = Math.floor(by / cell);
-      const sx = Math.sign(dx), sy = Math.sign(dy);
-      const tdx = sx ? cell / Math.abs(dx) : Infinity, tdy = sy ? cell / Math.abs(dy) : Infinity;
-      let tx = sx ? ((sx > 0 ? (ix + 1) * cell : ix * cell) - ax) / dx : Infinity;
-      let ty = sy ? ((sy > 0 ? (iy + 1) * cell : iy * cell) - ay) / dy : Infinity;
-      const visit = (cx, cy) => {
-        const bucket = this.grid.get(cellKey(cx, cy));
-        if (bucket) for (const p of bucket) {
-          if (p.stamp === stamp) continue;
-          p.stamp = stamp;
-          if (this.wallAbove(p, ax, ay, dx, dy, bx, by, tMax, camera.altM, anchor.altM)) return true;
-        }
-        return false;
-      };
-      for (let guard = 0; guard < 4096; guard++) {
-        if (visit(ix, iy)) return true;
-        if (ix === ex && iy === ey) break;
-        if (Math.min(tx, ty) > 1) return visit(ex, ey);
-        if (tx < ty) {
-          ix += sx;
-          tx += tdx;
-        } else {
-          iy += sy;
-          ty += tdy;
-        }
-      }
-      return false;
-    }
-    wallAbove(p, ax, ay, dx, dy, bx, by, tMax, camAlt, anchorAlt) {
-      if (p.maxX < Math.min(ax, bx) || p.minX > Math.max(ax, bx) || p.maxY < Math.min(ay, by) || p.minY > Math.max(ay, by)) return false;
-      if (p.topM < Math.min(camAlt, anchorAlt) + SIGHTLINE_CLEARANCE_M) return false;
-      let above = false;
-      outer: for (const ring of p.rings) {
-        const n = ring.length / 2;
-        for (let i = 0, j = n - 1; i < n; j = i++) {
-          const cx = ring[j * 2], cy = ring[j * 2 + 1];
-          const ex = ring[i * 2] - cx, ey = ring[i * 2 + 1] - cy;
-          const den = dx * ey - dy * ex;
-          if (Math.abs(den) < 1e-12) continue;
-          const t2 = ((cx - ax) * ey - (cy - ay) * ex) / den;
-          if (t2 <= 0 || t2 > tMax) continue;
-          const u = ((cx - ax) * dy - (cy - ay) * dx) / den;
-          if (u < 0 || u > 1) continue;
-          const rayAlt = camAlt + (anchorAlt - camAlt) * t2;
-          if (p.topM > rayAlt + SIGHTLINE_CLEARANCE_M) {
-            above = true;
-            break outer;
-          }
-        }
-      }
-      if (!above) return false;
-      for (const ring of p.rings) {
-        if (pointInRing(ax, ay, ring) || pointInRing(bx, by, ring)) return false;
-      }
-      return true;
-    }
+  var smooth = (t2) => {
+    const c = Math.max(0, Math.min(1, t2));
+    return c * c * (3 - 2 * c);
   };
-
-  // src/canalRecall/labels/streetLabelOcclusion.ts
-  var STREET_LABEL_ALT_M = 1;
-  var HOLD_FRAMES = 2;
-  var RETEST_FRAMES = 8;
-  var BUILD_BUDGET_MS = 2;
-  var OCCLUSION_MIN_PITCH_DEG = 5;
-  function occlusionWanted(pitchedView, mapPitchDeg) {
-    return pitchedView || Number.isFinite(mapPitchDeg) && mapPitchDeg >= OCCLUSION_MIN_PITCH_DEG;
+  function farness(distanceM2) {
+    if (!Number.isFinite(distanceM2)) return 1;
+    return smooth((distanceM2 - FADE_NEAR_M) / (FADE_FAR_M - FADE_NEAR_M));
   }
-  var StreetLabelOcclusion = class {
-    index = new SightlineIndex();
-    verdicts = /* @__PURE__ */ new WeakMap();
-    slots = 0;
-    frameNo = 0;
-    /** Last frame's counts, for the e2e and profiling. */
-    stats = { tested: 0, hidden: 0, ms: 0, features: 0, buildMs: 0 };
-    /** Labels drawn / hidden by occlusion last frame (text only), for the e2e. */
-    lastHidden = [];
-    /**
-     * The per-label test for this frame, or null when there is nothing to test
-     * against (top-down view, no resident buildings yet, no camera).
-     */
-    frame(host, loader, pitched) {
-      this.frameNo++;
-      this.stats.tested = 0;
-      this.stats.hidden = 0;
-      this.stats.ms = 0;
-      this.lastHidden = [];
-      const vm = host;
-      if (!pitched || !(vm?.map || vm?.cameraEye) || !vm.worldToLngLat || !loader) return null;
-      const toLngLat = vm.worldToLngLat.bind(vm);
-      const features = !vm.map && vm._completeCity?.residentFeatures ? vm._completeCity.residentFeatures() : vm._completeCity?.sampleFeatures?.(1e6);
-      this.index.refresh(features, BUILD_BUDGET_MS);
-      this.stats.features = this.index.stats.features;
-      this.stats.buildMs = this.index.stats.buildMs;
-      if (!this.index.ready) return null;
-      let camera;
-      if (vm.map) {
-        const t2 = vm.map.transform;
-        const at = t2?.getCameraLngLat?.(), altM = t2?.getCameraAltitude?.();
-        if (!at || !Number.isFinite(altM)) return null;
-        camera = { lng: at.lng, lat: at.lat, altM };
-      } else {
-        const eye = vm.cameraEye();
-        if (!eye || !Number.isFinite(eye.altitudeM)) return null;
-        camera = { lng: eye.lng, lat: eye.lat, altM: eye.altitudeM };
-      }
-      const blockedAt = (p) => {
-        const ll = toLngLat(p.x, p.y, loader);
-        const [lng, lat] = Array.isArray(ll) ? ll : [ll.lng, ll.lat];
-        return this.index.blocked(camera, { lng, lat, altM: STREET_LABEL_ALT_M });
-      };
-      return (label, ends) => {
-        const t0 = performance.now();
-        let v = this.verdicts.get(label);
-        const fresh = !v || v.frame !== this.frameNo - 1;
-        if (v && !fresh && (this.frameNo + v.slot) % RETEST_FRAMES !== 0) {
-          v.frame = this.frameNo;
-          if (v.hidden) {
-            this.stats.hidden++;
-            if (label.text) this.lastHidden.push(label.text);
-          }
-          this.stats.ms += performance.now() - t0;
-          return v.hidden;
-        }
-        const now = blockedAt(label) || !!ends && ends.some(blockedAt);
-        if (!v || fresh) {
-          v = { hidden: now, votes: HOLD_FRAMES, frame: 0, slot: v?.slot ?? this.slots++ };
-          this.verdicts.set(label, v);
-        }
-        v.frame = this.frameNo;
-        if (now === v.hidden) v.votes = HOLD_FRAMES;
-        else if (--v.votes <= 0) {
-          v.hidden = now;
-          v.votes = HOLD_FRAMES;
-        }
-        this.stats.tested++;
-        if (v.hidden) {
-          this.stats.hidden++;
-          if (label.text) this.lastHidden.push(label.text);
-        }
-        this.stats.ms += performance.now() - t0;
-        return v.hidden;
-      };
+  function distanceAlpha(distanceM2) {
+    return 1 - (1 - FADE_FLOOR) * farness(distanceM2);
+  }
+  function tokenSizePx(distanceM2) {
+    const size = TOKEN_NEAR_PX + (TOKEN_FAR_PX - TOKEN_NEAR_PX) * farness(distanceM2);
+    return Math.min(TOKEN_MAX_PX, Math.max(TOKEN_FAR_PX, size));
+  }
+  function segmentDistance(p, a, b) {
+    const dx = b.x - a.x, dy = b.y - a.y;
+    const len2 = dx * dx + dy * dy;
+    const t2 = len2 > 0 ? Math.max(0, Math.min(1, ((p.x - a.x) * dx + (p.y - a.y) * dy) / len2)) : 0;
+    return Math.hypot(p.x - (a.x + dx * t2), p.y - (a.y + dy * t2));
+  }
+  function overCorridor(at, radius, corridor) {
+    if (!corridor || !corridor.path.length) return false;
+    const reach = corridor.halfWidth + radius;
+    if (corridor.path.length === 1) return Math.hypot(at.x - corridor.path[0].x, at.y - corridor.path[0].y) <= reach;
+    for (let i = 1; i < corridor.path.length; i++) {
+      if (segmentDistance(at, corridor.path[i - 1], corridor.path[i]) <= reach) return true;
     }
+    return false;
+  }
+  function corridorAhead(rider, aheadPx, steps = 4) {
+    const out = [];
+    for (let i = 0; i <= steps; i++) {
+      const d = aheadPx * i / steps;
+      out.push({ x: rider.x + Math.cos(rider.angle) * d, y: rider.y + Math.sin(rider.angle) * d });
+    }
+    return out;
+  }
+  function collectionEnabled(search) {
+    return freeRideCollectionEnabled(search);
+  }
+
+  // src/canalRecall/engine/toonLook.ts
+  function toonLookFlag() {
+    const g = globalThis;
+    const asked = g.__canalRecallLook ?? (typeof URLSearchParams === "function" ? new URLSearchParams(g.location?.search ?? "").get("look") : null);
+    return asked === "toon";
+  }
+
+  // src/canalRecall/look/toonFronts.ts
+  var TOON_FRONT_BRICK = ["#a8503a", "#9a4a38", "#8c4632", "#b05a40", "#7a3b2c"];
+  var TOON_FRONT_DARK = ["#2b2d2c", "#2f4a3a", "#5a2a26", "#25344a"];
+  var TOON_FRONT_LIGHT = ["#e8dfc9", "#f1eee6", "#d3b184", "#e2d5ba"];
+  var TOON_WALLS = [
+    TOON_FRONT_BRICK[0],
+    TOON_FRONT_BRICK[0],
+    TOON_FRONT_BRICK[1],
+    TOON_FRONT_BRICK[2],
+    TOON_FRONT_BRICK[3],
+    TOON_FRONT_BRICK[4],
+    TOON_FRONT_DARK[0],
+    TOON_FRONT_DARK[1],
+    TOON_FRONT_DARK[2],
+    TOON_FRONT_LIGHT[0],
+    TOON_FRONT_LIGHT[2]
+  ];
+  var TOON_ACCENTS = ["#2f4a3a", "#25344a", "#5a2a26", "#2b2d2c", "#e0a526"];
+  var TOON_PERIOD_WALLS = {
+    canal: [TOON_FRONT_BRICK[4], TOON_FRONT_BRICK[4], TOON_FRONT_BRICK[1], TOON_FRONT_BRICK[2], TOON_FRONT_DARK[0], TOON_FRONT_DARK[1], TOON_FRONT_LIGHT[0]],
+    c19: [TOON_FRONT_BRICK[0], TOON_FRONT_BRICK[3], TOON_FRONT_BRICK[1], TOON_FRONT_LIGHT[3], TOON_FRONT_LIGHT[2], TOON_FRONT_LIGHT[0]],
+    school: [TOON_FRONT_BRICK[2], TOON_FRONT_BRICK[4], TOON_FRONT_BRICK[1], TOON_FRONT_BRICK[3]]
   };
-
-  // src/canalRecall/game/teachingSurface.ts
-  function canShowMiniMap(enabled, input) {
-    return enabled && !input.utilityOpen;
-  }
-  function canShowPoiLabels(labelsWanted, input) {
-    return labelsWanted && !input.quizOpen && !input.promptVisible;
-  }
-
-  // src/canalRecall/routing/bikeAccess.ts
-  var BICYCLE_DENIED = /* @__PURE__ */ new Set(["no", "dismount", "private", "customers"]);
-  function isBicycleRestricted(tags) {
-    return BICYCLE_DENIED.has(tags.bicycle || "") || tags.bicycleRestricted === "yes";
-  }
-  function bicycleRestrictionNotice(tags) {
-    if (!isBicycleRestricted(tags)) return null;
-    const bicycle = tags.bicycle || "";
-    if (bicycle === "dismount") return "Walk bikes in real life";
-    if (bicycle === "private" || bicycle === "customers") return "Private \u2014 no public cycling";
-    return "No cycling in real life";
+  var TOON_GROUND_PAINTS = ["#f1eee6", "#f1eee6", "#f1eee6", "#e8dfc9", "#e8dfc9", "#2b2d2c", "#2f4a3a", "#5a2a26", "#25344a", "#8b8f8c"];
+  function toonFrontsActive() {
+    if (!toonLookFlag()) return false;
+    const g = globalThis;
+    return (g.__canalRecallToonFronts ?? (typeof URLSearchParams === "function" ? new URLSearchParams(g.location?.search ?? "").get("toonFronts") : null)) !== "candy";
   }
 
   // src/canalRecall/look/palette.ts
@@ -3354,6 +3325,27 @@
   var FLAT_ROOF_TONES = { gravel: ROOF_SLOT_TONES.gravel.hex, membrane: ROOF_SLOT_TONES["white-membrane"].hex, bitumen: ROOF_SLOT_TONES["bitumen-dark"].hex, pebble: ROOF_SLOT_TONES["bitumen-light"].hex };
   var FLAT_ROOF_GREYS = [FLAT_ROOF_TONES.gravel, FLAT_ROOF_TONES.membrane, FLAT_ROOF_TONES.bitumen, FLAT_ROOF_TONES.pebble];
   var CITY_ROOF = { tile: ROOF_TONES.photo.tile, slate: ROOF_TONES.photo.slate, flat: FLAT_ROOF_GREYS };
+  var ILLUSTRATED_WALLS = ["#d9674a", "#e58a5c", "#eab85f", "#f0dfb8", "#e5a396", "#9dbb9b", "#7ea3c2", "#c9714a", "#f2c14e", "#b9a1c9"];
+  var ILLUSTRATED_ACCENTS = ["#2a8c8c", "#e0a526", "#d9453d", "#2c4a7c", "#7a3b6e", "#2f6b45", "#4aa3d9"];
+  var ILLUSTRATED = {
+    canal: { walls: ILLUSTRATED_WALLS, accents: ILLUSTRATED_ACCENTS },
+    c19: { walls: ILLUSTRATED_WALLS, accents: ILLUSTRATED_ACCENTS },
+    school: { walls: ["#9c5a42", "#8a4b3a", "#a8664c", "#7a4a40"], accents: ["#2c4a7c", "#2a8c8c", "#e0a526"] },
+    modern: { walls: ["#f4efe6", "#dcdcd6", "#e9d9c0", "#b9c4cc", "#f0c9a9"], accents: ["#2a8c8c", "#d9453d", "#2c4a7c", "#e0a526"] }
+  };
+  var PHOTO_PASTEL = ["#ffffff", "#f2d9c8", "#d9b9a4", "#e6c9b0", "#c9a38c", "#f0e4d2", "#ffd9b0", "#e8c0b0", "#d0c8c0"];
+  var PHOTO_DARK_ACCENTS = ["#243a2f", "#1f2a3a", "#3a1f1c", "#222222", "#2f4a3c", "#6b2b2b", "#2c3e50"];
+  var PALETTES = {
+    cartoon: ILLUSTRATED,
+    storybook: ILLUSTRATED,
+    photo: {
+      canal: { walls: PHOTO_PASTEL, accents: PHOTO_DARK_ACCENTS },
+      c19: { walls: PHOTO_PASTEL, accents: PHOTO_DARK_ACCENTS },
+      school: { walls: ["#b89080", "#a88070", "#9c7868"], accents: ["#1f2a3a", "#243a2f", "#3a1f1c"] },
+      modern: { walls: ["#f2f2ee", "#d8d8d2", "#e8dcc8", "#c8d0d4"], accents: ["#2c3e50", "#6b2b2b", "#243a2f"] }
+    }
+  };
+  var CARTOON_WALLS = ["#e8573d", "#e8573d", "#ee7f2c", "#f2b92e", "#f2b92e", "#2a9d8f", "#4672b0", "#f3e6c8", "#d96a4d"];
   var PERIOD_WALLS = {
     photo: {
       canal: ["#7a3b2c", "#7a3b2c", "#6b3428", "#8c4632", "#9a5846", "#b05a40", "#4a2e26", "#2e2a27", "#3e4a40", "#5d605a", "#e4ddcd"],
@@ -3374,6 +3366,18 @@
       modern: null
     }
   };
+  var GROUND_PAINTS = {
+    photo: ["#f1eee6", "#f1eee6", "#f1eee6", "#e8dfc9", "#e8dfc9", "#2b2d2c", "#2f4a3a", "#5a2a26", "#25344a", "#8b8f8c"],
+    storybook: ["#f6f1e4", "#f6f1e4", "#f6f1e4", "#efe2c2", "#efe2c2", "#3a3d3c", "#3f6a52", "#8a3b33", "#3a527a", "#a3a8a4"],
+    cartoon: ["#fffaf0", "#fffaf0", "#fffaf0", "#ffe9b8", "#ffe9b8", "#3b3b4a", "#2a9d8f", "#d9453d", "#4672b0", "#f2b92e"]
+  };
+  if (toonFrontsActive()) {
+    for (const period of ["canal", "c19", "school"]) PERIOD_WALLS.cartoon[period] = TOON_PERIOD_WALLS[period];
+    const toonSet = { walls: [...TOON_WALLS], accents: [...TOON_ACCENTS] };
+    PALETTES.cartoon = { canal: toonSet, c19: toonSet, school: toonSet, modern: PALETTES.cartoon.modern };
+    CARTOON_WALLS.splice(0, CARTOON_WALLS.length, ...TOON_WALLS);
+    GROUND_PAINTS.cartoon = TOON_GROUND_PAINTS;
+  }
   var PERIOD_PRIORS = {
     canal: { label: "canal-house centre (before 1860)", wall: PERIOD_WALLS.photo.canal[0], roof: ROOF_TONES.photo.tile[0] },
     c19: { label: "19th-century ring (1860-1914)", wall: PERIOD_WALLS.photo.c19[0], roof: ROOF_TONES.photo.tile[1] },
@@ -3523,132 +3527,728 @@
     fontUi: 'system-ui, -apple-system, "Segoe UI", sans-serif'
   };
 
-  // src/canalRecall/labels/labelStyle.ts
-  var PILL_FONT = `700 12px ${hudSurface.fontUi}`;
+  // src/canalRecall/game/freeRideCollectionDraw.ts
+  function drawDiscoveryToken(ctx, x, y, size, alpha) {
+    if (!(size > 0) || !(alpha > 0)) return;
+    const r = size / 2;
+    ctx.save();
+    ctx.globalAlpha = Math.min(1, alpha);
+    ctx.shadowColor = "rgba(31,28,23,0.3)";
+    ctx.shadowBlur = 4;
+    ctx.shadowOffsetY = 1;
+    ctx.fillStyle = enamelTheme.copper;
+    ctx.beginPath();
+    ctx.arc(x, y, r, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.shadowColor = "transparent";
+    const face = ctx.createRadialGradient(x - r * 0.3, y - r * 0.35, r * 0.1, x, y, r * 0.8);
+    face.addColorStop(0, enamelTheme.enamelBright);
+    face.addColorStop(1, enamelTheme.enamelDeep);
+    ctx.fillStyle = face;
+    ctx.beginPath();
+    ctx.arc(x, y, r * 0.78, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.fillStyle = "#fbf8f2";
+    const s = r * 0.42;
+    ctx.beginPath();
+    for (let i = 0; i < 8; i++) {
+      const a = i * Math.PI / 4 - Math.PI / 2;
+      const len = i % 2 === 0 ? s : s * 0.38;
+      const px = x + Math.cos(a) * len, py = y + Math.sin(a) * len;
+      if (i === 0) ctx.moveTo(px, py);
+      else ctx.lineTo(px, py);
+    }
+    ctx.closePath();
+    ctx.fill();
+    ctx.strokeStyle = "rgba(255,255,255,0.45)";
+    ctx.lineWidth = Math.max(0.75, r * 0.12);
+    ctx.beginPath();
+    ctx.arc(x, y, r * 0.78, Math.PI * 1.1, Math.PI * 1.55);
+    ctx.stroke();
+    ctx.restore();
+  }
+  function drawCollectedToken(ctx, x, y, size, t2) {
+    if (!(t2 >= 0 && t2 < 1)) return;
+    const flip = Math.cos(t2 * Math.PI * 2);
+    ctx.save();
+    ctx.translate(x, y - t2 * 10);
+    ctx.scale(Math.max(0.08, Math.abs(flip)), 1);
+    if (flip >= 0) drawDiscoveryToken(ctx, 0, 0, size, 1 - t2);
+    else {
+      ctx.globalAlpha = 1 - t2;
+      ctx.fillStyle = enamelTheme.copperHi;
+      ctx.beginPath();
+      ctx.arc(0, 0, size / 2, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.strokeStyle = enamelTheme.copperDeep;
+      ctx.lineWidth = 1.5;
+      ctx.stroke();
+    }
+    ctx.restore();
+  }
 
-  // src/canalRecall/orientationPois.ts
-  var SPOILER_MIN_LENGTH = 5;
-  var SPOILER_MAX_WORDS = 5;
-  var DUTCH_NAME_SUFFIXES = [
-    "dwarsstraat",
-    "burgwal",
-    "gracht",
-    "straat",
-    "kanaal",
-    "sloot",
-    "steeg",
-    "plein",
-    "kade",
-    "brug",
-    "laan",
-    "dijk",
-    "weg",
-    "pad",
-    "hof"
-  ];
-  function normaliseSpoilerName(name) {
-    return name.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
+  // src/canalRecall/game/placeBuurt.ts
+  var PLACE_AT_SLACK_M = 30;
+  var PLACE_AT_MAX_M = 120;
+  function buurtAt(hoods, x, y) {
+    return neighborhoodAt(hoods, x, y)?.name ?? null;
   }
-  function buildSpoilerIndex(names) {
-    const index = /* @__PURE__ */ new Set();
-    const lowerRaw = /* @__PURE__ */ new Set();
-    const full = /* @__PURE__ */ new Set();
-    for (const raw of names) {
-      if (!raw) continue;
-      const name = normaliseSpoilerName(raw);
-      if (name.length >= SPOILER_MIN_LENGTH) lowerRaw.add(raw.trim().toLowerCase());
-      if (name.length < SPOILER_MIN_LENGTH) continue;
-      index.add(name);
-      full.add(name);
-      for (const suffix of DUTCH_NAME_SUFFIXES) {
-        if (!name.endsWith(suffix)) continue;
-        const stem = name.slice(0, -suffix.length).trim();
-        if (stem.length >= SPOILER_MIN_LENGTH) index.add(stem);
-        break;
+  function placeReach(roadDistance, pxPerMeter) {
+    const max = PLACE_AT_MAX_M * pxPerMeter;
+    if (roadDistance == null || !Number.isFinite(roadDistance)) return max;
+    return Math.min(max, roadDistance + PLACE_AT_SLACK_M * pxPerMeter);
+  }
+
+  // src/canalRecall/game/sessionCounters.ts
+  function holder() {
+    return typeof globalThis === "undefined" ? null : globalThis;
+  }
+  function sessionCounters() {
+    const h = holder();
+    if (!h) return {};
+    return h.__canalRecallSession ||= {};
+  }
+  function bumpSessionCounter(name, by = 1) {
+    const counters = sessionCounters();
+    counters[name] = (counters[name] || 0) + by;
+    return counters[name];
+  }
+
+  // src/canalRecall/game/freeRideRuntime.ts
+  var WAY_TAP_SLOP_PX = 15;
+  var BRIDGE_COLOUR = "#2f6f9f";
+  var COLLECT_FLIP_MS = 600;
+  var CHECKLIST_COPY = {
+    count: (opened, total) => t("freeRide.checklist", { opened, total }),
+    done: (total) => t("freeRide.checklistDone", { total })
+  };
+  var STAMP_MOMENT_SECONDS = 6;
+  var GameFreeRideRuntime = class {
+    /** Start or end Free Ride to match the ride just set up. `_setupRace`
+     *  calls this last, after the route, labels and spoilers are in place. */
+    _syncFreeRide() {
+      if (isFreeRidePattern(this.routePattern)) this._beginFreeRide();
+      else this._endFreeRide();
+    }
+    _beginFreeRide() {
+      this.freeRide = true;
+      this.routePath = [];
+      this._liveRoutePath = null;
+      this.quizCurrentName = "";
+      this.quizFeedback = "";
+      const map = this.vectorMap;
+      map.setSpoilersSuspended?.(true);
+      if (!this._freeRideRestore) this._freeRideRestore = { labels: !!map._labelsVisible };
+      map.setLabelsVisible?.(true);
+      map.setRoute(null, this.osmLoader, false);
+      map.setStreetHighlights(this.track, this.osmLoader, /* @__PURE__ */ new Set(), "", -1, null);
+      this.track.hideStartTag = true;
+      this._freeRidePlaces = null;
+      this._freeRidePlacesFrom = null;
+      this._freeRideNearby = [];
+      this._freeRideMarkers = [];
+      this._freeRideRefresh = 0;
+      this._freeRideOpened = /* @__PURE__ */ new Set();
+      this._freeRideCollection = null;
+      if (this._freeRideLists) this._freeRideLists.reach = void 0;
+      if (collectionEnabled(typeof location === "undefined" ? "" : location.search)) {
+        const state = readCollection(typeof localStorage === "undefined" ? null : localStorage);
+        this._freeRideCollection = {
+          state,
+          opened: new Set(state.opened),
+          token: null,
+          tokenScreen: null,
+          tokenHidden: null,
+          corridor: null,
+          stampMoment: null,
+          stampPostcard: null,
+          collected: null
+        };
       }
+      this._showFreeRideBar(true);
     }
-    return { names: index, lowerRaw, full };
-  }
-  var spoilsMemo = /* @__PURE__ */ new WeakMap();
-  function poiNameSpoils(label, index) {
-    if (!label || !index || index.names.size === 0) return false;
-    let memo = spoilsMemo.get(index);
-    if (!memo) spoilsMemo.set(index, memo = /* @__PURE__ */ new Map());
-    let spoils = memo.get(label);
-    if (spoils === void 0) memo.set(label, spoils = labelSpoils(label, index));
-    return spoils;
-  }
-  var labelGrams = /* @__PURE__ */ new Map();
-  var fullLengths = /* @__PURE__ */ new WeakMap();
-  function labelSpoils(label, index) {
-    let held = labelGrams.get(label);
-    if (!held) {
-      const words2 = normaliseSpoilerName(label).split(" ").filter(Boolean), grams = [];
-      for (let size = 1; size <= Math.min(SPOILER_MAX_WORDS, words2.length); size++)
-        for (let start = 0; start + size <= words2.length; start++) grams.push(words2.slice(start, start + size).join(" "));
-      labelGrams.set(label, held = { words: words2, grams });
+    /** Back to the quiz rules: spoiler screening and the player's own label
+     *  setting return. Safe to call when no free ride is running. */
+    _endFreeRide() {
+      const restore = this._freeRideRestore;
+      if (!this.freeRide && !restore) return;
+      this.freeRide = false;
+      this._freeRideMarkers = [];
+      this._freeRideNearby = [];
+      this._freeRideCollection = null;
+      const map = this.vectorMap;
+      map?.setSpoilersSuspended?.(false);
+      if (restore && !restore.labels) map?.setLabelsVisible?.(false);
+      this._freeRideRestore = null;
+      if (this.track) this.track.hideStartTag = false;
+      this._showFreeRideBar(false);
     }
-    for (const gram of held.grams) if (index.names.has(gram)) return true;
-    if (index.full && index.full.size) {
-      let lengths = fullLengths.get(index.full);
-      if (!lengths) fullLengths.set(index.full, lengths = [...new Set([...index.full].map((n) => n.length))].filter((n) => n >= SPOILER_MIN_LENGTH).sort((a, b) => a - b));
-      for (const word of held.words) {
-        for (const n of lengths) {
-          if (n >= word.length) break;
-          if (index.full.has(word.slice(0, n))) return true;
+    /** Every street and canal name is labelled in Free Ride. The anchors are
+     *  indexed once per network and only those near the camera are tested. */
+    _freeRideLabelCandidates() {
+      const labels = this.track?.labels;
+      let cache = this._freeRideLabels;
+      if (!cache || cache.labels !== labels) {
+        cache = this._freeRideLabels = {
+          labels,
+          names: new Set((labels || []).map((label) => label.text)),
+          index: new StreetLabelCandidates()
+        };
+      }
+      const knowledge = { mapLabelNames: cache.names, knownPlaces: /* @__PURE__ */ new Map() };
+      const index = cache.index;
+      const maxReach = FREE_RIDE_LABEL_REACH_M * PIXELS_PER_METER;
+      return (anchors, cx, cy, reach) => index.candidates(anchors, knowledge, cx, cy, Math.min(reach, maxReach));
+    }
+    /** Landmarks with something to say, and every named bridge crossing. */
+    _freeRideCatalog() {
+      const from = this._freeRidePlacesFrom;
+      if (this._freeRidePlaces && from && from.landmarks === this.landmarks && from.bridges === this.bridges) {
+        return this._freeRidePlaces;
+      }
+      const places = [];
+      const worth = (this.landmarks || []).filter((landmark) => isWorthACard(landmark));
+      const second = secondMarkerIds(worth);
+      for (const landmark of worth) {
+        if (second.has(String(landmark.id))) continue;
+        places.push({ key: landmark.id, kind: "landmark", name: landmark.name, x: landmark.x, y: landmark.y, prominence: landmark.prominenceScore });
+      }
+      for (const bridge of this.bridges || []) {
+        const name = bridge.displayName || bridge.name;
+        for (const crossing of bridge.crossings || []) {
+          places.push({ key: `bridge:${bridge.id}`, kind: "bridge", name, x: crossing.x, y: crossing.y });
         }
       }
+      this._freeRidePlaces = places;
+      this._freeRidePlacesFrom = { landmarks: this.landmarks, bridges: this.bridges };
+      return places;
     }
-    return false;
-  }
-  function maskSpoiledName(label, names, fallback = "your destination") {
-    if (!label) return label;
-    const chars = [];
-    const origin = [];
-    for (let i = 0; i < label.length; i++) {
-      const base = normaliseSpoilerName(label[i]);
-      if (base) {
-        chars.push(base);
-        origin.push(i);
-      } else if (chars.length && chars[chars.length - 1] !== " ") {
-        chars.push(" ");
-        origin.push(i);
+    _updateFreeRide(dt) {
+      if (!this.freeRide || !this.player) return;
+      const collection = this._freeRideCollection;
+      if (collection?.token && this.state === GameState.RACING && !collection.opened.has(collection.token.key) && ridesThrough(this.player, collection.token, TOKEN_RIDE_THROUGH_M * PIXELS_PER_METER) && this._landmarkNotice?.id !== collection.token.key) {
+        if (this.viewport?.mode === "compact") {
+          const token = collection.token;
+          collection.collected = { x: token.x, y: token.y, at: performance.now() };
+          this._noteFreeRideOpened(token.key);
+          collection.token = null;
+        } else {
+          this._openFreeRideLandmark(collection.token.key);
+          collection.token = null;
+        }
+      }
+      this._freeRideRefresh = (this._freeRideRefresh ?? 0) - dt;
+      if (this._freeRideRefresh > 0) return;
+      this._freeRideRefresh = FREE_RIDE_REFRESH_SECONDS;
+      const catalog = this._freeRideCatalog();
+      this._freeRideNearby = this._freeRideOnLand(nearbyPlaces(this.player, catalog, {
+        radiusPx: FREE_RIDE_MARKER_RADIUS_M * PIXELS_PER_METER,
+        bridgeRadiusPx: FREE_RIDE_BRIDGE_RADIUS_M * PIXELS_PER_METER
+      }));
+      if (collection) {
+        const list = this._freeRideChecklist(this.currentNeighborhood);
+        const progress = checklistProgress(list, collection.opened);
+        collection.token = pickTokenPlace(this.player, catalog.filter((place) => place.kind === "landmark"), collection.opened, {
+          radius: TOKEN_RADIUS_M * PIXELS_PER_METER,
+          prefer: new Set(progress?.remaining ?? [])
+        });
+        if (collection.token) this._ensureLandmarkImage(this.landmarks.find((l) => l.id === collection.token.key) ?? null);
+      }
+      for (const place of this._freeRideNearby) {
+        if (place.kind !== "landmark") continue;
+        this._ensureLandmarkImage(this.landmarks.find((landmark) => landmark.id === place.key) ?? null);
       }
     }
-    const text = chars.join("");
-    const spans = [];
-    for (const raw of new Set(names)) {
-      const name = raw ? normaliseSpoilerName(raw) : "";
-      if (name.length < SPOILER_MIN_LENGTH) continue;
-      for (let at = text.indexOf(name); at !== -1; at = text.indexOf(name, at + 1)) {
-        if (at > 0 && text[at - 1] !== " ") continue;
-        spans.push([origin[at], origin[at + name.length - 1] + 1]);
+    /** The plaque's line in place of the score: the current neighbourhood's
+     *  checklist when it has one ("3 of 9 places"; the plaque names the
+     *  neighbourhood on the line above), else the places opened this ride. */
+    _freeRideTally() {
+      const collection = this._freeRideCollection;
+      if (collection) {
+        const moment = collection.stampMoment;
+        if (moment && moment.until > performance.now()) return t("freeRide.stamped");
+        const progress = this._freeRideChecklistProgress(this.currentNeighborhood);
+        if (progress) return checklistLine(this.currentNeighborhood, progress, { underQuestion: this.quizCurrentName, copy: CHECKLIST_COPY }).count;
       }
+      const { key, count } = freeRideTallyKey(this._freeRideOpened?.size ?? 0);
+      return t(key, { count });
     }
-    if (!spans.length) return label;
-    spans.sort((a, b) => a[0] - b[0] || b[1] - a[1]);
-    let out = "";
-    let cursor = 0;
-    for (const [start, end] of spans) {
-      if (end <= cursor) continue;
-      out += label.slice(cursor, Math.max(cursor, start)) + "\u2026";
-      cursor = end;
+    /** Every neighbourhood's checklist, built once per catalogue and boundary set
+     *  (with the collection off too: the plaque's place anchors read it). */
+    _freeRideChecklists() {
+      const collection = this._freeRideLists ||= { lists: null, listsFrom: null, hoodOfKey: /* @__PURE__ */ new Map() };
+      const places = this._freeRideCatalog();
+      const from = collection.listsFrom;
+      if (collection.lists && from && from.places === places && from.neighborhoods === this.neighborhoods) return collection.lists;
+      const landmarks = places.filter((place) => place.kind === "landmark");
+      const byId = new Map((this.landmarks || []).map((landmark) => [String(landmark.id), landmark]));
+      const lists = buildChecklists(landmarks, (place) => {
+        const lngLat = byId.get(String(place.key))?.lngLat;
+        const centre = lngLat ? this._toWorld?.(lngLat[1], lngLat[0]) : null;
+        return buurtAt(this.neighborhoods || [], centre?.x ?? place.x, centre?.y ?? place.y);
+      });
+      collection.lists = lists;
+      collection.listsFrom = { places, neighborhoods: this.neighborhoods };
+      collection.hoodOfKey = /* @__PURE__ */ new Map();
+      for (const list of lists.values()) for (const place of list.places) collection.hoodOfKey.set(place.key, list.hood);
+      return lists;
     }
-    out += label.slice(cursor);
-    return /[\p{L}\p{N}]/u.test(out) ? out : fallback;
-  }
-  function mapLabelSpoils(raw, printed, asked) {
-    if (!asked || !raw) return false;
-    const index = buildSpoilerIndex([asked]);
-    if (!index.names.size) return normaliseSpoilerName(raw) === normaliseSpoilerName(asked);
-    for (const text of printed && printed !== raw ? [raw, printed] : [raw]) {
-      if (poiNameSpoils(text, index)) return true;
-      if (maskSpoiledName(text, [asked], "") !== text) return true;
+    /** The checklist places near a point, as anchors for the plaque's buurt
+     *  (placeBuurt.ts): while the rider stands at a place, the plaque names the
+     *  buurt whose checklist holds it. Empty outside Free Ride; kept with the
+     *  collection off (F1, #311: the placeBuurt rule stays). */
+    _freeRidePlaceAnchors(x, y) {
+      if (!this.freeRide) return [];
+      const lists = this._freeRideChecklists();
+      const collection = this._freeRideLists;
+      if (!lists || !collection) return [];
+      const max = PLACE_AT_MAX_M * PIXELS_PER_METER;
+      const reaches = collection.reach ||= /* @__PURE__ */ new Map();
+      const anchors = [];
+      for (const list of lists.values()) {
+        for (const place of list.places) {
+          if (Math.abs(place.x - x) > max || Math.abs(place.y - y) > max) continue;
+          let reach = reaches.get(place.key);
+          if (reach === void 0) {
+            const road = this.track?.getNearestRoad?.(place.x, place.y);
+            reach = placeReach(road?.dist ?? null, PIXELS_PER_METER);
+            if (road) reaches.set(place.key, reach);
+          }
+          anchors.push({ x: place.x, y: place.y, hood: list.hood, reach });
+        }
+      }
+      return anchors;
     }
-    return false;
+    _freeRideChecklist(hood) {
+      if (!hood) return null;
+      return this._freeRideChecklists()?.get(hood) ?? null;
+    }
+    _freeRideChecklistProgress(hood) {
+      const collection = this._freeRideCollection;
+      if (!collection) return null;
+      return checklistProgress(this._freeRideChecklist(hood), collection.opened);
+    }
+    _freeRideCollectionOn() {
+      return !!this.freeRide && !!this._freeRideCollection;
+    }
+    _freeRideTakeStampPostcard(hood) {
+      const collection = this._freeRideCollection;
+      if (!this.freeRide || !collection || collection.stampPostcard !== hood) return false;
+      collection.stampPostcard = null;
+      return true;
+    }
+    _freeRideStampWaiting(hood) {
+      return !!hood && !!this.freeRide && this._freeRideCollection?.stampPostcard === hood;
+    }
+    /** The postcard's checklist caption for a neighbourhood, or '' (no list, or the collection is off). */
+    _freeRideChecklistCaption(hood) {
+      if (!this.freeRide) return "";
+      const progress = this._freeRideChecklistProgress(hood);
+      return progress ? checklistLine(hood, progress, { underQuestion: this.quizCurrentName, copy: CHECKLIST_COPY }).count : "";
+    }
+    /** The current neighbourhood's unopened places, for the radar, and the
+     *  coin's place whenever the coin is not drawn in frame: off screen, over
+     *  the corridor or under the HUD, the radar carries its bearing (#286; on a
+     *  phone the coin was off screen at 6 of 7 stops, ride review #280). */
+    _freeRideRadarPlaces() {
+      const collection = this._freeRideCollection;
+      if (!this.freeRide || !collection) return [];
+      const list = this._freeRideChecklist(this.currentNeighborhood);
+      const places = list ? list.places.filter((place) => !collection.opened.has(place.key)) : [];
+      const token = collection.token;
+      if (token && !collection.tokenScreen && !collection.opened.has(token.key) && !places.some((place) => Math.hypot(place.x - token.x, place.y - token.y) < 1)) places.push({ x: token.x, y: token.y });
+      return places;
+    }
+    /** Draw the markers, nearest first, keeping off the HUD, the open card and
+     *  the vehicle. Their boxes are the tap targets until the next frame. */
+    _renderFreeRideMarkers() {
+      this._freeRideMarkers = [];
+      const fade = this._freeRideMarkerFade ||= new LabelFade();
+      const last = this._freeRideMarkerLast ||= /* @__PURE__ */ new Map();
+      fade.begin(performance.now());
+      const nearby = this._freeRideNearby;
+      if (!this.freeRide || !this.player) {
+        for (const key of fade.leftovers()) fade.drop(key);
+        return;
+      }
+      const ctx = this.ctx;
+      const surface = window.CanalRecallUi.hudSurface;
+      const compact = this.viewport?.mode === "compact";
+      const fontSize = compact ? 13 : 12;
+      const height = compact ? 26 : 22;
+      const font = `700 ${fontSize}px ${surface.fontUi}`;
+      ctx.save();
+      ctx.font = font;
+      const requests = [];
+      for (const place of nearby || []) {
+        if (this.quizPromptName && (place.name === this.quizPromptName || this.quizWithheldNames?.includes(place.name))) continue;
+        if (this.landmarkApproachWithheld?.includes(place.name)) continue;
+        const at = this.camera.worldToScreen(place.x, place.y);
+        const label = markerLabel(place.name, void 0, (text) => ctx.measureText(text).width);
+        const width = Math.ceil(ctx.measureText(label).width) + height + 8;
+        requests.push({ key: place.key, kind: place.kind, label, anchorX: at.x, anchorY: at.y, width, height });
+        last.set(place.key, { x: place.x, y: place.y, label, kind: place.kind, width, height });
+      }
+      requests.sort((a, b) => Number(fade.alpha(b.key) > 0) - Number(fade.alpha(a.key) > 0));
+      const layout = this._hudRects();
+      const rect = (r) => r && r.width > 0 && r.height > 0 ? { x: r.x, y: r.y, w: r.width, h: r.height } : null;
+      const vehicle = this.camera.worldToScreen(this.player.x, this.player.y);
+      const blocked = [
+        rect(layout.recall),
+        rect(layout.compass),
+        this.showMiniMap ? rect(layout.minimap) : null,
+        layout.dpad ? rect(layout.dpad.bounds) : null,
+        this._landmarkCardBounds,
+        { x: vehicle.x - 28, y: vehicle.y - 40, w: 56, h: 60 },
+        this._freeRideBarRect()
+      ].filter((r) => !!r);
+      const placed = layoutMarkers(requests, { width: CANVAS_W, height: CANVAS_H }, blocked);
+      const activeId = this._landmarkNotice?.id || "";
+      const collection = this._freeRideCollection;
+      const distanceOf = new Map((nearby || []).map((place) => [place.key, place.distance / PIXELS_PER_METER]));
+      const far = (key) => distanceAlpha(distanceOf.get(key) ?? Infinity);
+      const draw = (key, kind, label, anchorX, anchorY, box, rawAlpha) => {
+        const alpha = rawAlpha * (activeId === key ? 1 : far(key));
+        const active = activeId === key || kind === "bridge" && this._landmarkNotice?.name === nearby?.find((p) => p.key === key)?.name;
+        const dot = kind === "bridge" ? BRIDGE_COLOUR : surface.arrow;
+        ctx.strokeStyle = surface.ink;
+        ctx.globalAlpha = 0.55 * alpha;
+        ctx.lineWidth = 1.5;
+        ctx.beginPath();
+        ctx.moveTo(anchorX, box.y + box.h);
+        ctx.lineTo(anchorX, anchorY);
+        ctx.stroke();
+        ctx.globalAlpha = alpha;
+        ctx.fillStyle = dot;
+        ctx.beginPath();
+        ctx.arc(anchorX, anchorY, 3.5, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.shadowColor = surface.shadow;
+        ctx.shadowBlur = 6;
+        ctx.shadowOffsetY = 1;
+        ctx.fillStyle = active ? surface.ink : surface.cardSolid;
+        roundRect(ctx, box.x, box.y, box.w, box.h, box.h / 2);
+        ctx.fill();
+        ctx.shadowColor = "transparent";
+        ctx.strokeStyle = active ? surface.ink : surface.border;
+        ctx.lineWidth = 1;
+        ctx.stroke();
+        ctx.fillStyle = dot;
+        ctx.beginPath();
+        ctx.arc(box.x + box.h / 2, box.y + box.h / 2, box.h * 0.2, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.fillStyle = active ? surface.cardSolid : surface.ink;
+        ctx.font = font;
+        ctx.textAlign = "left";
+        ctx.textBaseline = "middle";
+        ctx.fillText(label, box.x + box.h - 2, box.y + box.h / 2 + 0.5);
+        ctx.globalAlpha = 1;
+      };
+      const shown = /* @__PURE__ */ new Set();
+      for (const marker of placed) {
+        shown.add(marker.key);
+        const request = requests.find((r) => r.key === marker.key);
+        draw(marker.key, request.kind, request.label, marker.anchorX, marker.anchorY, marker.box, fade.want(marker.key, true));
+      }
+      const fading = (key, anchorX, anchorY, item, noHold) => {
+        const alpha = fade.want(key, false, { noHold });
+        if (alpha <= 0) return;
+        const box = { x: anchorX - item.width / 2, y: anchorY - MARKER_STEM - item.height, w: item.width, h: item.height };
+        draw(key, item.kind, item.label, anchorX, anchorY, box, alpha);
+      };
+      for (const request of requests) if (!shown.has(request.key)) fading(request.key, request.anchorX, request.anchorY, request, false);
+      for (const key of fade.leftovers()) {
+        const item = last.get(key);
+        if (!item) {
+          fade.drop(key);
+          continue;
+        }
+        const at = this.camera.worldToScreen(item.x, item.y);
+        fading(key, at.x, at.y, item, true);
+      }
+      ctx.restore();
+      this._freeRideMarkers = placed;
+      if (collection) this._renderFreeRideToken(blocked);
+    }
+    /** The discovery token on the landmark that carries it: smaller and
+     *  fainter with distance, never over the corridor ahead or a HUD card. */
+    _renderFreeRideToken(blocked) {
+      const collection = this._freeRideCollection;
+      if (!collection || !this.player) return;
+      collection.tokenScreen = null;
+      collection.tokenHidden = null;
+      const collected = collection.collected;
+      if (collected) {
+        const t2 = (performance.now() - collected.at) / COLLECT_FLIP_MS;
+        if (t2 >= 1) collection.collected = null;
+        else {
+          const at2 = this.camera.worldToScreen(collected.x, collected.y);
+          const size2 = TOKEN_NEAR_PX / Math.max(0.01, this.canvas.getBoundingClientRect().width / CANVAS_W);
+          drawCollectedToken(this.ctx, at2.x, at2.y, size2, t2);
+        }
+      }
+      const vehicle = this.camera.worldToScreen(this.player.x, this.player.y);
+      collection.corridor = {
+        path: [vehicle, ...corridorAhead(this.player, CORRIDOR_AHEAD_M * PIXELS_PER_METER).slice(1).map((point) => this.camera.worldToScreen(point.x, point.y))],
+        halfWidth: CORRIDOR_HALF_WIDTH_PX
+      };
+      const token = collection.token;
+      if (!token || collection.opened.has(token.key)) return;
+      const live = Math.hypot(token.x - this.player.x, token.y - this.player.y) / PIXELS_PER_METER;
+      const shown = this.canvas.getBoundingClientRect().width;
+      const cssPerCanvas = shown > 0 ? shown / CANVAS_W : 1;
+      const size = tokenSizePx(live) / cssPerCanvas;
+      const alpha = distanceAlpha(live);
+      const at = this.camera.worldToScreen(token.x, token.y);
+      const r = size / 2;
+      if (!Number.isFinite(at.x) || at.x < r || at.y < r || at.x > CANVAS_W - r || at.y > CANVAS_H - r) {
+        collection.tokenHidden = "offscreen";
+        return;
+      }
+      if (overCorridor(at, r, collection.corridor)) {
+        collection.tokenHidden = "corridor";
+        return;
+      }
+      if (blocked.some((b) => at.x + r > b.x && at.x - r < b.x + b.w && at.y + r > b.y && at.y - r < b.y + b.h)) {
+        collection.tokenHidden = "hud";
+        return;
+      }
+      collection.tokenHidden = null;
+      drawDiscoveryToken(this.ctx, at.x, at.y, size, alpha);
+      collection.tokenScreen = { key: token.key, x: at.x, y: at.y, size, alpha };
+    }
+    /** The Free ride · Exit bar in canvas units, so markers keep off it. */
+    _freeRideBarRect() {
+      const bar = this._freeRideBar;
+      if (!bar || bar.hidden) return null;
+      const box = bar.getBoundingClientRect();
+      const canvas = this.canvas.getBoundingClientRect();
+      if (!box.width || !canvas.width) return null;
+      const sx = CANVAS_W / canvas.width, sy = CANVAS_H / canvas.height;
+      return { x: (box.left - canvas.left) * sx, y: (box.top - canvas.top) * sy, w: box.width * sx, h: box.height * sy };
+    }
+    /** The engine's water test (water.json), or null before the water index is up. */
+    _freeRideIsWater() {
+      const map = this.vectorMap;
+      if (!map?.isWater || !this.osmLoader) return null;
+      return (x, y) => map.isWater(x, y, this.osmLoader);
+    }
+    /** Marker anchors off open water (lane S2, #314): a bridge on its deck where it reaches land at the end nearer the
+     *  rider, a landmark whose point lies in a canal on the nearest quay; a place with no land in reach gets no marker. */
+    _freeRideOnLand(nearby) {
+      const isWater = this._freeRideIsWater();
+      if (!this.player) return nearby;
+      const out = [];
+      const own = /* @__PURE__ */ new Map();
+      for (const landmark of this.landmarks || []) {
+        if (Number.isFinite(landmark.ownX) && Number.isFinite(landmark.ownY)) own.set(String(landmark.id), { x: landmark.ownX, y: landmark.ownY });
+      }
+      const map = this.vectorMap;
+      const inFootprint = map?.isFootprint && this.osmLoader ? (x, y) => map.isFootprint(x, y, this.osmLoader) : null;
+      for (const placed of nearby) {
+        const ownPoint = placed.kind === "landmark" ? own.get(String(placed.key)) : void 0;
+        const place = ownPoint ? { ...placed, x: ownPoint.x, y: ownPoint.y } : placed;
+        const bridge = place.kind === "bridge" ? this.bridges?.find((b) => `bridge:${b.id}` === place.key) : null;
+        const at = bridge ? bridgeMarkerAnchor(bridge.lines, place, this.player, isWater) : landAnchor(place, isWater);
+        if (!at) continue;
+        const final = ownPoint && inFootprint ? facadeNudge(at, isWater, inFootprint).point : at;
+        out.push(final.x === placed.x && final.y === placed.y ? placed : { ...place, x: final.x, y: final.y });
+      }
+      return out;
+    }
+    /** The marker under a canvas point, for the hover cursor. */
+    _freeRideMarkerAt(x, y) {
+      return this.freeRide ? markerAt(this._freeRideMarkers || [], x, y) : null;
+    }
+    /**
+     * A tap in Free Ride: a marker opens its place; otherwise the building
+     * under the tap answers as it does in every mode; failing that, the street
+     * or canal under the tap is named, with its origin card where there is one.
+     * Returns true when something opened.
+     */
+    _freeRideClick(x, y, clientX, clientY) {
+      const onWater = this._freeRideTapOnWater(clientX, clientY);
+      const token = this._freeRideCollection?.tokenScreen;
+      if (token && Math.hypot(x - token.x, y - token.y) <= token.size / 2 + (onWater ? 0 : 10)) return this._openFreeRideLandmark(token.key);
+      const marker = this.freeRide ? markerAt(this._freeRideMarkers || [], x, y, onWater ? 0 : 6, !onWater) : null;
+      if (marker) return this._openFreeRidePlace(marker.key);
+      const before = this._landmarkNotice;
+      if (!onWater) this._inspectBuildingAt(clientX, clientY);
+      if (this._landmarkNotice && this._landmarkNotice !== before) {
+        this._noteFreeRideOpened(this._landmarkNotice.id);
+        return true;
+      }
+      if (!freeRideWayTapAllowed(onWater, isBoat(this.travelMode))) return false;
+      return this._openFreeRideWayAt(clientX, clientY);
+    }
+    /** True when the tap lands on open water: nothing drawn (building, model, label) over a ground point that is water. */
+    _freeRideTapOnWater(clientX, clientY) {
+      const isWater = this._freeRideIsWater();
+      const rect = this.canvas.getBoundingClientRect();
+      const world = isWater ? this.vectorMap.screenToWorld?.(clientX - rect.left, clientY - rect.top, rect, this.osmLoader) : null;
+      if (!isWater || !world || !isWater(world.x, world.y)) return false;
+      return tapOnOpenWater(this.vectorMap.inspectBuilding(clientX - rect.left, clientY - rect.top, rect), true);
+    }
+    /** Open a landmark's card by id (the token's place need not have a marker). */
+    _openFreeRideLandmark(key) {
+      const landmark = this.landmarks.find((l) => l.id === key);
+      if (!landmark) return false;
+      this.quizFeedback = "";
+      this._showLandmarkNotice(landmark, { kind: "sticky" }, "click");
+      this.vectorMap.setActiveLandmark(landmark);
+      this._noteFreeRideOpened(key);
+      return true;
+    }
+    _openFreeRidePlace(key) {
+      const place = this._freeRideNearby?.find((p) => p.key === key);
+      if (!place) return false;
+      this.quizFeedback = "";
+      if (place.kind === "landmark") {
+        const landmark = this.landmarks.find((l) => l.id === key);
+        if (!landmark) return false;
+        this._showLandmarkNotice(landmark, { kind: "sticky" }, "click");
+        this.vectorMap.setActiveLandmark(landmark);
+        this._noteFreeRideOpened(key);
+        return true;
+      }
+      const bridge = this.bridges.find((b) => `bridge:${b.id}` === key);
+      if (!bridge) return false;
+      if (this._openKnowledgeCard(bridge.name, "bridge")) {
+        this._noteFreeRideOpened(key);
+        return true;
+      }
+      this._showLandmarkNotice({
+        id: key,
+        name: place.name,
+        type: "bridge",
+        detail: bridge.detail || "",
+        wikipediaUrl: bridge.wikipediaUrl || ""
+      }, { kind: "sticky" }, "click");
+      this._noteFreeRideOpened(key);
+      return true;
+    }
+    /** The street or canal under a tap, named; its origin card when the
+     *  extract has one. False when the tap is not on a way. */
+    _openFreeRideWayAt(clientX, clientY) {
+      const rect = this.canvas.getBoundingClientRect();
+      const world = this.vectorMap.screenToWorld?.(clientX - rect.left, clientY - rect.top, rect, this.osmLoader);
+      if (!world || !this.track) return false;
+      const contact = this.track.getNearestRoad(world.x, world.y);
+      if (!contact || !tapNamesWay(contact, WAY_TAP_SLOP_PX)) return false;
+      const name = this.track.segments[contact.segIdx]?.name || "";
+      if (!name) return false;
+      const type = isBoat(this.travelMode) ? "water" : "street";
+      if (!this._openKnowledgeCard(name, type)) {
+        this._showLandmarkNotice({ id: `free-way:${name}`, name, type: type === "water" ? "waterway" : "street" }, { kind: "sticky" }, "click");
+      }
+      this._noteFreeRideOpened(this._landmarkNotice?.id || name);
+      return true;
+    }
+    /** Open the shipped origin/register card for a name, even if it was shown
+     *  earlier this ride (a tap is a request, not a drive-by). */
+    _openKnowledgeCard(name, type) {
+      const before = this._landmarkNotice;
+      this._seenStreetKnowledge = /* @__PURE__ */ new Set();
+      this._showStreetKnowledge(name, type, true);
+      const opened = !!this._landmarkNotice && this._landmarkNotice !== before;
+      if (opened) {
+        this._landmarkNoticeSource = "click";
+        this._landmarkNoticeState.elapsed = DEFAULT_NOTICE_CONFIG.fadeSeconds;
+        this._landmarkNoticeAlpha = 1;
+      }
+      return opened;
+    }
+    _noteFreeRideOpened(id) {
+      const ride = this._freeRideOpened ||= /* @__PURE__ */ new Set();
+      if (!id || ride.has(id)) return;
+      ride.add(id);
+      bumpSessionCounter("placesOpened");
+      const collection = this._freeRideCollection;
+      if (!collection || collection.opened.has(id)) return;
+      collection.opened.add(id);
+      collection.state = noteOpened(collection.state, id);
+      const store = typeof localStorage === "undefined" ? null : localStorage;
+      this._freeRideChecklists();
+      const hood = this._freeRideLists?.hoodOfKey.get(id);
+      if (hood) {
+        const progress = this._freeRideChecklistProgress(hood);
+        const today = (/* @__PURE__ */ new Date()).toISOString().slice(0, 10);
+        const stamped = stampIfComplete(collection.state, store ? readPassport(store) : { stamped: [] }, hood, progress, today);
+        if (stamped.fresh) {
+          collection.state = stamped.state;
+          if (store) savePassport(store, stamped.passport);
+          bumpSessionCounter("stampsEarned");
+          collection.stampMoment = { hood, until: performance.now() + STAMP_MOMENT_SECONDS * 1e3 };
+          collection.stampPostcard = hood;
+          this._postcardPending = hood;
+        }
+      }
+      saveCollection(store, collection.state);
+    }
+    /** The "Free ride · Exit" bar: where the destination card sits on a wide
+     *  screen, under the plaque on a phone. */
+    _showFreeRideBar(visible) {
+      let bar = this._freeRideBar ?? document.getElementById("free-ride-bar");
+      if (!bar && visible) {
+        bar = document.createElement("div");
+        bar.id = "free-ride-bar";
+        bar.setAttribute("role", "group");
+        bar.innerHTML = '<span class="free-ride-badge enamel-plaque"></span><button id="free-ride-exit" type="button"></button>';
+        bar.querySelector("button").addEventListener("click", () => {
+          this._openRouteSetup?.();
+        });
+        document.body.appendChild(bar);
+      }
+      this._freeRideBar = bar;
+      if (!bar) return;
+      bar.hidden = !visible;
+      this._freeRideBarKey = "";
+      if (!visible) return;
+      bar.setAttribute("aria-label", t("freeRide.badge"));
+      bar.querySelector(".free-ride-badge").textContent = t("freeRide.badge");
+      const exit = bar.querySelector("button");
+      exit.textContent = t("freeRide.exit");
+      exit.setAttribute("aria-label", t("freeRide.exitLabel"));
+    }
+    /** Called each frame while riding free; moves the bar only when the layout
+     *  moved. Hidden while a card or panel owns the screen. */
+    _placeFreeRideBar() {
+      const bar = this._freeRideBar;
+      if (!bar || !this.freeRide) return;
+      const layout = this._hudRects();
+      const rect = this.canvas.getBoundingClientRect();
+      const sx = rect.width / CANVAS_W;
+      const sy = rect.height / CANVAS_H;
+      const hidden = !!this._utilityOpen || this.state !== GameState.RACING;
+      let key;
+      let style;
+      if (layout.destinationInRecall) {
+        const top = (layout.recall.y + layout.recall.height + 10) * sy + rect.top;
+        key = `c|${top.toFixed(1)}|${hidden}`;
+        style = { top: `${top}px`, left: "50%", right: "", transform: "translateX(-50%)" };
+      } else {
+        const d = layout.destination;
+        const top = d.y * sy + rect.top;
+        const right = window.innerWidth - ((d.x + d.width) * sx + rect.left);
+        key = `w|${top.toFixed(1)}|${right.toFixed(1)}|${hidden}`;
+        style = { top: `${top}px`, right: `${right}px`, left: "", transform: "" };
+      }
+      if (key === this._freeRideBarKey) return;
+      this._freeRideBarKey = key;
+      Object.assign(bar.style, style);
+      bar.hidden = hidden;
+    }
+  };
+  function installFreeRide(target) {
+    for (const name of Object.getOwnPropertyNames(GameFreeRideRuntime.prototype)) {
+      if (name === "constructor") continue;
+      Object.defineProperty(target.prototype, name, Object.getOwnPropertyDescriptor(GameFreeRideRuntime.prototype, name));
+    }
   }
 
   // src/canalRecall/game/poiNotability.ts
+  var HERITAGE_RIJKSMONUMENT = "Q916333";
+  var HERITAGE_UNESCO = "Q9259";
   var A_LIST = [
     { name: "Rijksmuseum", wikidata: ["Q190804"] },
     { name: "Van Gogh Museum", wikidata: ["Q224124"] },
@@ -3715,6 +4315,109 @@
       A_LIST_BY_NAME.set(normaliseAnswer(name), entry);
     }
     for (const qid of entry.wikidata ?? []) A_LIST_BY_WIKIDATA.set(qid, entry);
+  }
+  function isAList(poi) {
+    if (poi.wikidata && A_LIST_BY_WIKIDATA.has(poi.wikidata)) return true;
+    return A_LIST_BY_NAME.has(normaliseAnswer(poi.name || ""));
+  }
+  var A_LIST_BOOST = 8;
+  var MANUAL_TIEBREAK = 0.05;
+  var HERITAGE_RIJKSMONUMENT_BONUS = 2;
+  var HERITAGE_UNESCO_BONUS = 3;
+  var MUSEUM_QIDS = /* @__PURE__ */ new Set(["Q33506", "Q207694", "Q17431399"]);
+  var ZOO_QIDS = /* @__PURE__ */ new Set(["Q43501"]);
+  var PLACE_OF_WORSHIP_QIDS = /* @__PURE__ */ new Set(["Q16970", "Q1370598", "Q32815", "Q34627"]);
+  var ARTWORK_QIDS = /* @__PURE__ */ new Set(["Q838948", "Q179700", "Q860861"]);
+  var MEMORIAL_QIDS = /* @__PURE__ */ new Set(["Q5003624", "Q4989906"]);
+  var ATTRACTION_QIDS = /* @__PURE__ */ new Set(["Q570116"]);
+  function tagKind(poi) {
+    const tourism = poi.tourism ?? (poi.type === "museum" ? "museum" : void 0);
+    if (tourism) {
+      if (tourism === "museum") return "museum";
+      if (tourism === "attraction") return "attraction";
+      if (tourism === "viewpoint") return "viewpoint";
+      if (tourism === "zoo") return "zoo";
+      if (tourism === "artwork") return "artwork";
+    }
+    if (poi.amenity === "place_of_worship") return "place_of_worship";
+    if (poi.historic === "memorial") return "memorial";
+    const inst = poi.wikidataInstanceOf ?? [];
+    if (inst.some((qid) => MUSEUM_QIDS.has(qid))) return "museum";
+    if (inst.some((qid) => ZOO_QIDS.has(qid))) return "zoo";
+    if (inst.some((qid) => PLACE_OF_WORSHIP_QIDS.has(qid))) return "place_of_worship";
+    if (inst.some((qid) => ARTWORK_QIDS.has(qid))) return "artwork";
+    if (inst.some((qid) => MEMORIAL_QIDS.has(qid))) return "memorial";
+    if (inst.some((qid) => ATTRACTION_QIDS.has(qid))) return "attraction";
+    return null;
+  }
+  function tagWeight(poi) {
+    switch (tagKind(poi)) {
+      case "museum":
+      case "attraction":
+      case "viewpoint":
+      case "zoo":
+        return 1.5;
+      case "artwork":
+      case "memorial":
+        return 0.8;
+      case "place_of_worship": {
+        const notable = isAList(poi) || (poi.heritage?.includes(HERITAGE_RIJKSMONUMENT) ?? false);
+        return notable ? 0 : -1.5;
+      }
+      default:
+        return 0;
+    }
+  }
+  function heritageBonus(heritage) {
+    if (!heritage?.length) return 0;
+    if (heritage.includes(HERITAGE_UNESCO)) return HERITAGE_UNESCO_BONUS;
+    if (heritage.includes(HERITAGE_RIJKSMONUMENT)) return HERITAGE_RIJKSMONUMENT_BONUS;
+    return 0;
+  }
+  function notabilityScore(poi) {
+    const sitelinks = Math.log2((poi.sitelinks ?? 0) + 1);
+    const pageviews = poi.pageviews60d == null ? 0 : Math.log10(poi.pageviews60d + 1);
+    return sitelinks + pageviews + heritageBonus(poi.heritage) + tagWeight(poi) + (isAList(poi) ? A_LIST_BOOST : 0) + (poi.manualPoi ? MANUAL_TIEBREAK : 0);
+  }
+  var NOTABILITY_TEMPERATURE = 3;
+  function notabilityWeight(score, temperature = NOTABILITY_TEMPERATURE) {
+    return Math.exp(score / temperature);
+  }
+
+  // src/canalRecall/game/surprisePick.ts
+  var ROUTE_POI_MAX_PAIR_KM = 6;
+  var HOME_MIN_TRIP_KM = 0.2;
+  var SURPRISE_MIN_PAIR_KM = HOME_MIN_TRIP_KM;
+  function kmBetween(a, b) {
+    const latKm = (a.lat - b.lat) * 111.32;
+    const lngKm = (a.lng - b.lng) * 111.32 * Math.cos(a.lat * Math.PI / 180);
+    return Math.hypot(latKm, lngKm);
+  }
+  var randomUnit = () => Math.random();
+  function pickWeighted(entries, chooseUnit) {
+    const positive = entries.filter((entry) => entry.weight > 0);
+    if (positive.length === 0) return null;
+    const total = positive.reduce((sum, entry) => sum + entry.weight, 0);
+    let tick = chooseUnit() * total;
+    for (const entry of positive) {
+      tick -= entry.weight;
+      if (tick <= 0) return entry.item;
+    }
+    return positive[positive.length - 1]?.item ?? null;
+  }
+  function pickDestinationNear(pois, from, chooseUnit = randomUnit, alsoExcludeId = null) {
+    const candidates = pois.filter((poi) => poi.id !== from.id && poi.id !== alsoExcludeId);
+    if (candidates.length === 0) return null;
+    const inRange = candidates.filter((poi) => kmBetween(poi, from) <= ROUTE_POI_MAX_PAIR_KM);
+    const pool = inRange.length > 0 ? inRange : candidates;
+    const scored = pool.map((poi) => ({
+      item: poi,
+      weight: notabilityWeight(notabilityScore(poi))
+    }));
+    const pick2 = pickWeighted(scored, chooseUnit);
+    if (!pick2 || kmBetween(pick2, from) >= SURPRISE_MIN_PAIR_KM) return pick2;
+    const apart = scored.filter((entry) => kmBetween(entry.item, from) >= SURPRISE_MIN_PAIR_KM);
+    return apart.length ? pickWeighted(apart, chooseUnit) ?? pick2 : pick2;
   }
 
   // src/canalRecall/landmarks/surveyedLandmarks.json
@@ -6960,12 +7663,1823 @@
     }
   }
 
+  // src/canalRecall/game/rideDistance.ts
+  function formatRideDistance(km, options = {}) {
+    const safe = Number.isFinite(km) && km > 0 ? km : 0;
+    const tenths = Math.round(safe * 10) / 10;
+    const text = tenths >= 10 ? String(Math.round(safe)) : tenths.toFixed(1);
+    const prefix = options.routed ? "" : `${options.aboutWord ?? "about"} `;
+    return `${prefix}${text} km`;
+  }
+
   // src/canalRecall/game/routeSelection.ts
+  function localFamiliarity(point, samples, bandKm = 0.6) {
+    const near = samples.filter((sample) => kmBetween(sample, point) <= bandKm);
+    if (near.length === 0) return 0;
+    return near.reduce((sum, sample) => sum + sample.mastery, 0) / near.length;
+  }
   var REVIEW_STOP_LABEL = "the mystery street";
   function isReviewStop(poi) {
     return !!poi && typeof poi.reviewStop === "string";
   }
   var START_HEADING_SNAP_RAD = Math.PI / 6;
+
+  // src/canalRecall/game/placeNames.ts
+  var BY_NAME = {
+    "The National Maritime Museum": "National Maritime Museum",
+    Nemo: "NEMO Science Museum",
+    "H'ART Museum": "H\u2019ART Museum"
+  };
+
+  // src/canalRecall/game/landmarkNamesNl.ts
+  var LANDMARK_NAMES_NL = Object.freeze({
+    "Anne Frank House": "Anne Frank Huis",
+    "Auschwitz Memorial": "Auschwitzmonument",
+    "Berlage's Stock Market": "Beurs van Berlage",
+    "Buchenwald Memorial": "Buchenwaldmonument",
+    "Dutch Resistance Museum": "Verzetsmuseum",
+    "English Reformed Church": "Engelse Hervormde Kerk",
+    "Equestrian statue of Queen Wilhelmina": "Ruiterstandbeeld koningin Wilhelmina",
+    "Gerard Dou Synagogue": "Synagoge Gerard Doustraat",
+    "International Institute of Social History": "Internationaal Instituut voor Sociale Geschiedenis",
+    "Jewish Museum": "Joods Museum",
+    "Marseille House": "Huis Marseille",
+    "Mint Tower": "Munttoren",
+    "Museum of the Canals": "Grachtenmuseum",
+    "National Holocaust Museum": "Nationaal Holocaustmuseum",
+    "New Church": "Nieuwe Kerk",
+    "NIOD Institute for War, Holocaust, and Genocide Studies": "NIOD Instituut voor Oorlogs-, Holocaust- en Genocidestudies",
+    "Old Church": "Oude Kerk",
+    "Our Lord in the Attic": "Ons' Lieve Heer op Solder",
+    "Red Light District": "De Wallen",
+    "Rembrandt House": "Rembrandthuis",
+    "Royal Palace": "Paleis op de Dam",
+    "The National Maritime Museum": "Het Scheepvaartmuseum",
+    "The Shipping House": "Scheepvaarthuis",
+    "University of Amsterdam": "Universiteit van Amsterdam",
+    "Vondelpark Open Air Theater": "Vondelpark Openluchttheater",
+    "Walloon Church": "Waalse Kerk",
+    "Weepers' Tower": "Schreierstoren",
+    "West India House": "West-Indisch Huis",
+    "West Indian Warehouse": "West-Indisch Pakhuis",
+    "Zuiderkerk Tower": "Zuiderkerkstoren",
+    // R2-3 (#303): the landmarks' own nl Wikipedia titles (landmarks.json
+    // `wikipedia`), disambiguators dropped; where Wikidata's nl label is the
+    // shorter usual form it is used instead (cited per row).
+    "Central Station": "Amsterdam Centraal",
+    // nl:Station Amsterdam Centraal; Wikidata Q50719 nl label
+    "Canal Ring Area of Amsterdam": "Grachtengordel",
+    // nl:Grachtengordel (Amsterdam)
+    "Path\xE9 Tuschinski Cinema": "Koninklijk Theater Tuschinski",
+    // nl:Koninklijk Theater Tuschinski
+    "Royal Theater Carr\xE9": "Koninklijk Theater Carr\xE9",
+    // nl:Koninklijk Theater Carré
+    "Dutch National Opera & Ballet": "Nationale Opera & Ballet",
+    // nl:Nationale Opera en Ballet; Wikidata Q1325514 nl label
+    "National Monument": "Nationaal Monument op de Dam",
+    // nl:Nationaal Monument op de Dam
+    "Cat Cabinet": "KattenKabinet",
+    // nl:KattenKabinet
+    "Dutch East Indian Company": "Oost-Indisch Huis",
+    // nl:Oost-Indisch Huis (Amsterdam)
+    "Wine buyers' guildhall": "Wijnkopersgildehuis",
+    // nl:Wijnkopersgildehuis
+    "Funerary museum": "Museum Tot Zover",
+    // nl:Museum Tot Zover (sitelink of Q2383603)
+    "Ravensbr\xFCck memorial": "Vrouwen van Ravensbr\xFCck",
+    // nl:Vrouwen van Ravensbrück 1940-1945; Wikidata Q42171765 nl label
+    "Amsterdam Memorial to the Canadian Liberators": "Amsterdam dankt zijn Canadezen",
+    // nl:Amsterdam dankt zijn Canadezen
+    "Shadow quay": "De Schaduwkade",
+    // nl:De Schaduwkade
+    "Jewish WW2 resistance memorial": "Joods Verzetsmonument",
+    // nl:Joods Verzetsmonument
+    "Royal Tropical Institute": "KIT-gebouw"
+    // nl:KIT-gebouw
+  });
+  var LANDMARK_NAMES_NL_WIKIDATA = Object.freeze({
+    "Houseboat Museum": { nl: "Woonbootmuseum", wikidata: "Q14544962" },
+    "Museum of Bags and Purses": { nl: "Tassenmuseum Hendrikje", wikidata: "Q2077489" },
+    "Diamond Museum Amsterdam": { nl: "Diamantmuseum", wikidata: "Q1208561" },
+    "Olympic Stadium": { nl: "Olympisch Stadion", wikidata: "Q503319" },
+    "Walen Gate": { nl: "Walenpoortje", wikidata: "Q17288856" },
+    "Spinhuis Gate": { nl: "Spinhuispoort", wikidata: "Q17306709" }
+  });
+  var EXTRACT_NAME_OF = new Map(
+    Object.entries(BY_NAME).map(([extract, shown]) => [shown, extract])
+  );
+  function dutchName(name) {
+    return LANDMARK_NAMES_NL[name] ?? LANDMARK_NAMES_NL_WIKIDATA[name]?.nl;
+  }
+  function landmarkDisplayName(name, language2) {
+    if (language2 !== "nl" || !name) return name;
+    const extract = EXTRACT_NAME_OF.get(name);
+    return dutchName(name) ?? (extract ? dutchName(extract) : void 0) ?? name;
+  }
+  function placeName(name) {
+    return landmarkDisplayName(name, language());
+  }
+
+  // src/canalRecall/game/chainedRun.ts
+  var RUN_STORAGE_KEY = "canalRecall.openRun.v1";
+  var LAST_RUN_STORAGE_KEY = "canalRecall.lastRun.v1";
+  var RUN_IDLE_MS = 10 * 60 * 1e3;
+  var CHAIN_STEP = 0.05;
+  var CHAIN_CAP = 0.25;
+  var NEXT_STOP_MIN_KM = 1;
+  var NEXT_STOP_MAX_KM = 3;
+  var RUN_LIST_LIMIT = 12;
+  var RUN_PATH_POINTS = 48;
+  function thinLegPath(path, max = RUN_PATH_POINTS) {
+    const round = (v) => Math.round(v * 1e5) / 1e5;
+    const clean = [];
+    for (const p of path ?? []) {
+      if (!p || !Number.isFinite(p[0]) || !Number.isFinite(p[1])) continue;
+      const q = [round(p[0]), round(p[1])];
+      const last = clean[clean.length - 1];
+      if (!last || last[0] !== q[0] || last[1] !== q[1]) clean.push(q);
+    }
+    if (clean.length <= max) return clean;
+    const step = (clean.length - 1) / (max - 1);
+    return Array.from({ length: max }, (_, i) => clean[Math.round(i * step)]);
+  }
+  function chainBonus(stopNumber) {
+    if (!Number.isFinite(stopNumber) || stopNumber <= 1) return 0;
+    return Math.min(CHAIN_CAP, Math.round((stopNumber - 1) * CHAIN_STEP * 100) / 100);
+  }
+  function scoreStop(stopNumber, basePoints, previousTotal, options = {}) {
+    const base = Math.max(0, Math.round(Number.isFinite(basePoints) ? basePoints : 0));
+    const bonus = options.calm ? 0 : chainBonus(stopNumber);
+    const points = Math.round(base * (1 + bonus));
+    return { basePoints: base, bonus, points, total: Math.max(0, previousTotal || 0) + points };
+  }
+  function newRun(now, startName) {
+    return {
+      version: 1,
+      startedAt: now,
+      lastActiveAt: now,
+      startName,
+      stopCount: 0,
+      totalPoints: 0,
+      bestStreak: 0,
+      names: [],
+      stops: []
+    };
+  }
+  function addStop(run, input, now) {
+    const base = run && !isIdle(run, now) ? run : newRun(now, input.fromName);
+    const stopNumber = base.stopCount + 1;
+    const { basePoints, bonus, points, total } = scoreStop(stopNumber, input.points, base.totalPoints, { calm: input.calm });
+    const names = [...new Set(input.names.filter(Boolean))];
+    const stop = {
+      id: input.id,
+      name: input.name,
+      basePoints,
+      points,
+      bonus,
+      bestStreak: Math.max(0, input.bestStreak || 0),
+      names,
+      at: now
+    };
+    if (Number.isFinite(input.lat) && Number.isFinite(input.lng)) {
+      stop.lat = input.lat;
+      stop.lng = input.lng;
+    }
+    if (input.area) stop.area = input.area;
+    const path = thinLegPath(input.path);
+    if (path.length >= 2) stop.path = path;
+    const known = new Set(base.names);
+    for (const name of names) known.add(name);
+    const stops = [...base.stops, stop].slice(-RUN_LIST_LIMIT);
+    return {
+      stop,
+      run: {
+        ...base,
+        lastActiveAt: now,
+        stopCount: stopNumber,
+        pausedAt: null,
+        nextLeg: null,
+        totalPoints: total,
+        bestStreak: Math.max(base.bestStreak, stop.bestStreak),
+        names: [...known],
+        stops
+      }
+    };
+  }
+  function touchRun(run, now) {
+    return { ...run, lastActiveAt: Math.max(run.lastActiveAt, now) };
+  }
+  function isIdle(run, now) {
+    const until = run.pausedAt != null ? Math.min(now, run.pausedAt) : now;
+    return until - run.lastActiveAt >= RUN_IDLE_MS;
+  }
+  function pauseRun(run, now) {
+    return run.pausedAt != null ? run : { ...run, pausedAt: now };
+  }
+  function resumeRun(run, now) {
+    if (run.pausedAt == null) return run;
+    const paused = Math.max(0, now - run.pausedAt);
+    return { ...run, pausedAt: null, lastActiveAt: run.lastActiveAt + paused };
+  }
+  function withNextLeg(run, leg) {
+    return { ...run, nextLeg: leg };
+  }
+  function rideLeg(from, to) {
+    const end = (p) => p && p.id && !p.sharedEndpoint && Number.isFinite(p.lat) && Number.isFinite(p.lng) ? { id: p.id, name: p.name, lat: p.lat, lng: p.lng } : null;
+    const a = end(from), b = end(to);
+    return a && b && a.id !== b.id ? { from: a, to: b } : null;
+  }
+  function sameLeg(a, b) {
+    return !!a && !!b && a.from.id === b.from.id && a.to.id === b.to.id;
+  }
+  function runTransition(from, to) {
+    if (from === to) return null;
+    if (from === "finished" && to === "menu") return "close";
+    if (to === "paused") return "pause";
+    if (from === "paused") return "resume";
+    return null;
+  }
+  function lastStopBonus(run) {
+    return run.stops[run.stops.length - 1]?.bonus ?? 0;
+  }
+  function formatPoints(points) {
+    return Math.round(points).toLocaleString("en-US");
+  }
+  function runLine(run, options) {
+    const bits = [countText("count.stops", run.stopCount), countText("count.names", run.names.length)];
+    if (!options.calm) {
+      bits.push(t("count.points", { points: formatPoints(run.totalPoints) }));
+      const earned = options.chain === false ? 0 : lastStopBonus(run);
+      if (earned > 0) bits.push(t("run.chain", { percent: Math.round(earned * 100) }));
+    }
+    return bits.join("  \xB7  ");
+  }
+  function countText(key, count) {
+    return t(`${key}.${count === 1 ? "one" : "other"}`, { count });
+  }
+  function runStory(run) {
+    const words2 = t("run.numberWords").split(",");
+    const count = run.stopCount < words2.length ? words2[run.stopCount] : String(run.stopCount);
+    const last = run.stops[run.stops.length - 1];
+    const from = run.startName && run.startName !== last?.name ? t("run.storyFrom", { name: placeName(run.startName) }) : "";
+    const to = last ? t("run.storyTo", { name: placeName(last.name) }) : "";
+    const names = run.names.length > 0 ? t("run.storyNames", { names: countText("count.names", run.names.length) }) : "";
+    return t("run.story", { count, stops: t(run.stopCount === 1 ? "run.storyStop.one" : "run.storyStop.other"), from, to, names });
+  }
+  function parseRun(raw) {
+    if (!raw) return null;
+    try {
+      const run = JSON.parse(raw);
+      if (!run || run.version !== 1 || !Array.isArray(run.stops) || !Array.isArray(run.names)) return null;
+      if (!Number.isFinite(run.lastActiveAt) || !Number.isFinite(run.stopCount)) return null;
+      return run;
+    } catch {
+      return null;
+    }
+  }
+  function loadRun(storage3, now) {
+    if (!storage3) return { run: null, ended: null };
+    let raw = null;
+    try {
+      raw = storage3.getItem(RUN_STORAGE_KEY);
+    } catch {
+      return { run: null, ended: null };
+    }
+    const run = parseRun(raw);
+    if (!run || run.stopCount <= 0) return { run: null, ended: null };
+    const live = resumeRun(run, now);
+    if (!isIdle(live, now)) return { run: live, ended: null };
+    endRun(storage3, live);
+    return { run: null, ended: live };
+  }
+  function saveRun(storage3, run) {
+    try {
+      storage3?.setItem(RUN_STORAGE_KEY, JSON.stringify(run));
+    } catch {
+    }
+  }
+  function endRun(storage3, run) {
+    try {
+      storage3?.removeItem(RUN_STORAGE_KEY);
+      storage3?.setItem(LAST_RUN_STORAGE_KEY, JSON.stringify(run));
+    } catch {
+    }
+  }
+  function runsEnabled(search) {
+    try {
+      return new URLSearchParams(search).get("run") !== "0";
+    } catch {
+      return true;
+    }
+  }
+  function pickNextStop(pois, from, options = {}) {
+    const {
+      samples = [],
+      excludeIds = [],
+      chooseUnit = randomUnit,
+      minKm = NEXT_STOP_MIN_KM,
+      maxKm = NEXT_STOP_MAX_KM
+    } = options;
+    const skip = /* @__PURE__ */ new Set([from.id, ...excludeIds]);
+    const band = pois.filter((poi) => {
+      if (skip.has(poi.id)) return false;
+      const km = kmBetween(poi, from);
+      return km >= minKm && km <= maxKm;
+    });
+    if (band.length === 0) return pickDestinationNear(pois, from, chooseUnit, excludeIds[excludeIds.length - 1] ?? null);
+    const weighted = band.map((poi) => ({
+      poi,
+      weight: notabilityWeight(notabilityScore(poi)) * (0.35 + 0.65 * (1 - localFamiliarity(poi, samples)))
+    })).filter((entry) => entry.weight > 0);
+    const total = weighted.reduce((sum, entry) => sum + entry.weight, 0);
+    if (total <= 0) return band[0] ?? null;
+    let tick = chooseUnit() * total;
+    for (const entry of weighted) {
+      tick -= entry.weight;
+      if (tick <= 0) return entry.poi;
+    }
+    return weighted[weighted.length - 1]?.poi ?? null;
+  }
+
+  // src/canalRecall/game/cities.ts
+  var CANAL_CITY_IDS = ["amsterdam", "utrecht", "rotterdam", "den-haag"];
+  var AMSTERDAM_POIS = [
+    { id: "central", name: "Central Station", lat: 52.3784943, lng: 4.899843 },
+    { id: "anne-frank", name: "Anne Frank House", lat: 52.3753446, lng: 4.8840669 },
+    { id: "rijksmuseum", name: "Rijksmuseum", lat: 52.3598672, lng: 4.8864162 },
+    { id: "maritime", name: "National Maritime Museum", lat: 52.371493, lng: 4.9151332 },
+    { id: "nemo", name: "NEMO Science Museum", lat: 52.3738532, lng: 4.9121113 },
+    { id: "palace", name: "Royal Palace", lat: 52.373258, lng: 4.8918222 },
+    { id: "red-light", name: "Red Light District", lat: 52.3719371, lng: 4.8956406 },
+    { id: "rembrandt", name: "Rembrandt House", lat: 52.3693692, lng: 4.9012497 },
+    { id: "hart", name: "H\u2019ART Museum", lat: 52.3656522, lng: 4.9022137 },
+    { id: "westerkerk", name: "Westerkerk", lat: 52.3743736, lng: 4.8837289 },
+    { id: "mint", name: "Mint Tower", lat: 52.3670418, lng: 4.8932804 }
+  ];
+  function viewboxAround(center, pad = 0.18) {
+    return [
+      center.lng - pad,
+      center.lat + pad,
+      center.lng + pad,
+      center.lat - pad
+    ];
+  }
+  var CANAL_CITIES = {
+    amsterdam: {
+      id: "amsterdam",
+      name: "Amsterdam",
+      productName: "Ride Amsterdam",
+      center: { lat: 52.372851, lng: 4.8936 },
+      extractPath: "../data/extracts/amsterdam",
+      geocodeSuffix: ", Amsterdam",
+      // Includes Weesp, whose installed administrative outline reaches 5.1077°E.
+      // The same window bounds live GPS origins and home-address searches.
+      geocodeViewbox: [4.72, 52.43, 5.12, 52.27],
+      provinceCaption: "Noord-Holland",
+      playable: true,
+      curatedPois: AMSTERDAM_POIS
+    },
+    utrecht: {
+      id: "utrecht",
+      name: "Utrecht",
+      productName: "Ride Utrecht",
+      center: { lat: 52.0907374, lng: 5.1214201 },
+      extractPath: "../data/extracts/utrecht",
+      geocodeSuffix: ", Utrecht",
+      geocodeViewbox: viewboxAround({ lat: 52.0907374, lng: 5.1214201 }),
+      provinceCaption: "Utrecht",
+      playable: true,
+      // Historic-core anchors — prominence ranking alone prefers universities
+      // and Science Park over Dom / Oudegracht destinations.
+      curatedPois: [
+        { id: "dom-tower", name: "Dom tower", lat: 52.090764, lng: 5.121398 },
+        { id: "centraal-museum", name: "Centraal Museum", lat: 52.083445, lng: 5.126395 },
+        { id: "museum-speelklok", name: "Museum Speelklok", lat: 52.0907282, lng: 5.1194134 },
+        { id: "buurkerk", name: "Buurkerk", lat: 52.090738, lng: 5.119781 },
+        { id: "jacobikerk", name: "Jacobikerk", lat: 52.094895, lng: 5.115757 },
+        { id: "catharijneconvent", name: "Museum Catharijneconvent", lat: 52.087646, lng: 5.124579 },
+        { id: "academiegebouw", name: "Academiegebouw", lat: 52.0902439, lng: 5.1223339 },
+        { id: "inktpot", name: "De Inktpot", lat: 52.087099, lng: 5.115846 },
+        { id: "pieterskerk", name: "Pieterskerk", lat: 52.091397, lng: 5.124743 },
+        { id: "rietveld", name: "Rietveld-Schr\xF6derhuis", lat: 52.085297, lng: 5.147607 }
+      ]
+    },
+    rotterdam: {
+      id: "rotterdam",
+      name: "Rotterdam",
+      productName: "Ride Rotterdam",
+      center: { lat: 51.9225, lng: 4.47917 },
+      extractPath: "../data/extracts/rotterdam",
+      geocodeSuffix: ", Rotterdam",
+      geocodeViewbox: viewboxAround({ lat: 51.9225, lng: 4.47917 }, 0.22),
+      provinceCaption: "Zuid-Holland",
+      playable: true,
+      curatedPois: [
+        { id: "euromast", name: "Euromast", lat: 51.905356, lng: 4.466785 },
+        { id: "laurenskerk", name: "Grote of Sint-Laurenskerk", lat: 51.921706, lng: 4.486122 },
+        { id: "doelen", name: "de Doelen", lat: 51.9220495, lng: 4.4726898 },
+        { id: "bibliotheek", name: "Centrale Bibliotheek", lat: 51.9223535, lng: 4.4871283 },
+        { id: "depot-boijmans", name: "Depot Boijmans Van Beuningen", lat: 51.9139529, lng: 4.471132 },
+        { id: "zoo", name: "Rotterdam Zoo", lat: 51.924954, lng: 4.450176 }
+      ]
+    },
+    "den-haag": {
+      id: "den-haag",
+      name: "Den Haag",
+      productName: "Ride Den Haag",
+      center: { lat: 52.0705, lng: 4.3007 },
+      extractPath: "../data/extracts/den-haag",
+      geocodeSuffix: ", Den Haag",
+      geocodeViewbox: viewboxAround({ lat: 52.0705, lng: 4.3007 }),
+      provinceCaption: "Zuid-Holland",
+      playable: true,
+      curatedPois: [
+        { id: "binnenhof", name: "Binnenhof", lat: 52.079334, lng: 4.312407 },
+        { id: "huis-ten-bosch", name: "Huis ten Bosch", lat: 52.093169, lng: 4.343465 },
+        { id: "amare", name: "Amare", lat: 52.078015, lng: 4.318695 },
+        { id: "catshuis", name: "Catshuis", lat: 52.090293, lng: 4.284739 },
+        { id: "kb", name: "KB, nationale bibliotheek", lat: 52.0815311, lng: 4.3275274 }
+      ]
+    }
+  };
+  var DEFAULT_CITY_ID = "amsterdam";
+  function parseCityId(raw, fallback = DEFAULT_CITY_ID) {
+    if (typeof raw !== "string") return fallback;
+    return CANAL_CITY_IDS.includes(raw) ? raw : fallback;
+  }
+  function cityById(id) {
+    return CANAL_CITIES[parseCityId(id)];
+  }
+
+  // src/canalRecall/shareCard.ts
+  var SHARE_CARD_SITE = "rideamsterdam.nl";
+  var SHARE_CARD_LABELS_EN = {
+    arrived: "DESTINATION",
+    ride: "RIDE",
+    distance: "DISTANCE",
+    time: "TIME",
+    fallbackPlace: "Amsterdam",
+    site: SHARE_CARD_SITE
+  };
+  var SHARE_TRAIL_STEP_PX = 45;
+  var SHARE_TRAIL_MAX_POINTS = 4e3;
+  function extendShareTrail(trail, owner, point, distancePx) {
+    if (!Number.isFinite(point.x) || !Number.isFinite(point.y)) return trail ?? { owner, lastDistancePx: distancePx, points: [] };
+    if (!trail || trail.owner !== owner || distancePx < trail.lastDistancePx - 1) {
+      return { owner, lastDistancePx: distancePx, points: [{ x: point.x, y: point.y }] };
+    }
+    const last = trail.points[trail.points.length - 1];
+    if (!last || Math.hypot(point.x - last.x, point.y - last.y) >= SHARE_TRAIL_STEP_PX) {
+      trail.points.push({ x: point.x, y: point.y });
+      if (trail.points.length > SHARE_TRAIL_MAX_POINTS) trail.points = trail.points.filter((_, i) => i % 2 === 0);
+    }
+    trail.lastDistancePx = distancePx;
+    return trail;
+  }
+
+  // src/canalRecall/routing/bikeAccess.ts
+  var BICYCLE_DENIED = /* @__PURE__ */ new Set(["no", "dismount", "private", "customers"]);
+  function isBicycleRestricted(tags) {
+    return BICYCLE_DENIED.has(tags.bicycle || "") || tags.bicycleRestricted === "yes";
+  }
+  function bicycleRestrictionNotice(tags) {
+    if (!isBicycleRestricted(tags)) return null;
+    const bicycle = tags.bicycle || "";
+    if (bicycle === "dismount") return "Walk bikes in real life";
+    if (bicycle === "private" || bicycle === "customers") return "Private \u2014 no public cycling";
+    return "No cycling in real life";
+  }
+
+  // src/canalRecall/osm/roadProjection.ts
+  var PIXELS_PER_METER2 = 3;
+  var METRES_PER_DEGREE_LAT = 111320;
+  function metresPerDegreeLng(latitude) {
+    return METRES_PER_DEGREE_LAT * Math.cos(latitude * Math.PI / 180);
+  }
+
+  // src/canalRecall/runShareCard.ts
+  var RUN_SHARE_LABELS_EN = {
+    run: "RUN",
+    stop: "Stop {n}",
+    earlier: "+{count} earlier",
+    fallbackPlace: SHARE_CARD_LABELS_EN.fallbackPlace,
+    site: SHARE_CARD_LABELS_EN.site
+  };
+  function worldToLatLng(point, projection) {
+    const { centerLat, centerLng } = projection;
+    if (![point.x, point.y, centerLat, centerLng].every(Number.isFinite)) return null;
+    const x = point.x - (projection.offsetX ?? 0);
+    const y = point.y - (projection.offsetY ?? 0);
+    return [
+      centerLat - y / (METRES_PER_DEGREE_LAT * PIXELS_PER_METER2),
+      centerLng + x / (metresPerDegreeLng(centerLat) * PIXELS_PER_METER2)
+    ];
+  }
+
+  // src/canalRecall/game/keycapAction.ts
+  var KEYCAP_ROW_H = 28;
+  var GAP = 8;
+  function keycapHover(mouse, box) {
+    return !!mouse && mouse.x >= box.x && mouse.x <= box.x + box.w && mouse.y >= box.y && mouse.y <= box.y + box.h;
+  }
+  function drawKeycapAction(ctx, roundRect2, at, action, style, mouse) {
+    ctx.font = "12px system-ui, sans-serif";
+    const captionW = ctx.measureText(action.caption).width;
+    ctx.font = `700 11px ${style.fontMono}`;
+    const keyW = ctx.measureText(action.key).width + 14;
+    const bounds = { x: at.x, y: at.top, w: keyW + GAP + captionW, h: KEYCAP_ROW_H };
+    const hover = keycapHover(mouse, bounds);
+    ctx.fillStyle = hover ? "rgba(31,28,23,.18)" : "rgba(31,28,23,.08)";
+    roundRect2(ctx, at.x, at.top + 4, keyW, 20, 5);
+    ctx.fill();
+    ctx.fillStyle = style.ink;
+    ctx.fillText(action.key, at.x + 7, at.top + 18);
+    const captionX = at.x + keyW + GAP;
+    ctx.fillStyle = style.captionColour ?? (hover ? style.ink : style.muted);
+    ctx.font = "12px system-ui, sans-serif";
+    ctx.fillText(action.caption, captionX, at.top + 18);
+    if (hover) ctx.fillRect(captionX, at.top + 21, captionW, 1);
+    return { bounds, endX: captionX + captionW };
+  }
+  var KEYCAP_CAPTION_FONT = "12px system-ui, sans-serif";
+  var keycapKeyFont = (fontMono) => `700 11px ${fontMono}`;
+  function keycapActionWidth(measure, action, fontMono) {
+    return measure(action.key, keycapKeyFont(fontMono)) + 14 + GAP + measure(action.caption, KEYCAP_CAPTION_FONT);
+  }
+  function wrapKeycapRows(widths, maxW, gap) {
+    const rows = [];
+    let used = 0;
+    widths.forEach((width, index) => {
+      const row = rows[rows.length - 1];
+      if (row && used + gap + width <= maxW) {
+        row.push(index);
+        used += gap + width;
+      } else {
+        rows.push([index]);
+        used = width;
+      }
+    });
+    return rows;
+  }
+
+  // src/canalRecall/game/chainedRunRuntime.ts
+  var RUN_TOUCH_MS = 15e3;
+  var INK = "#1f1c17";
+  var MUTED = "#5f584d";
+  var BODY = "#2e2a23";
+  var ACCENT = "#8a4a18";
+  var COPPER = "#c9844a";
+  var RULE = "rgba(31,28,23,0.16)";
+  function sessionCounters2() {
+    const win = window;
+    win.__canalRecallSession ||= {};
+    const session = win.__canalRecallSession;
+    session.ridesThisSession ??= 0;
+    session.stopsThisRun ??= 0;
+    session.runsEnded ??= 0;
+    session.stopsPerRun ??= [];
+    return session;
+  }
+  function storage2() {
+    try {
+      return typeof localStorage === "undefined" ? null : localStorage;
+    } catch {
+      return null;
+    }
+  }
+  var GameChainedRunRuntime = class {
+    /** Whether this ride takes part in a run: not `?run=0`, not a tour, not Free Ride. */
+    _runEnabled() {
+      return runsEnabled(window.location.search) && !this._runsOff && !this._tour && !this.freeRide;
+    }
+    /** The open run, read from localStorage once per page (a reload continues it). */
+    _openRun() {
+      if (!this._runLoaded) {
+        this._runLoaded = true;
+        const loaded = loadRun(storage2(), Date.now());
+        this._run = loaded.run;
+        sessionCounters2().stopsThisRun = loaded.run?.stopCount ?? 0;
+      }
+      return this._run ?? null;
+    }
+    /**
+     * Once per arrival: the stop joins the open run. Called from the arrival
+     * card's first frame, after game.js has saved the ride's exploration.
+     */
+    _recordRunStop() {
+      const to = this.routeTo;
+      if (!to) return;
+      if (this._runRecordedKey) return;
+      this._runRecordedKey = `${this.routeFrom?.id ?? ""}>${to.id}`;
+      this._runCard = null;
+      const session = sessionCounters2();
+      session.ridesThisSession = (session.ridesThisSession ?? 0) + 1;
+      if (!this._runEnabled()) return;
+      const { run } = addStop(this._openRun(), {
+        id: to.id,
+        name: to.name,
+        fromName: this.routeFrom?.name ?? "",
+        points: this.quizPoints || 0,
+        bestStreak: this.quizBestStreak || 0,
+        names: this._rideNamedNames || [],
+        calm: !this.gameyFeatures,
+        lat: to.lat,
+        lng: to.lng,
+        area: this.currentNeighborhood || null,
+        path: this._runLegPath()
+      }, Date.now());
+      this._run = run;
+      this._runTouchedAt = Date.now();
+      saveRun(storage2(), run);
+      session.stopsThisRun = run.stopCount;
+    }
+    /**
+     * The leg just ridden as [lat, lng] for the run's share picture (#295): the
+     * share trail (shareCard.ts, sampled while riding), else the planned path,
+     * unprojected with this ride's road build (osm-loader.js `latLngToWorld`).
+     */
+    _runLegPath() {
+      const loader = this.osmLoader;
+      if (!loader || !Number.isFinite(loader._lastCenterLat) || !Number.isFinite(loader._lastCenterLng)) return [];
+      const projection = { centerLat: loader._lastCenterLat, centerLng: loader._lastCenterLng, offsetX: loader._lastOffsetX ?? 0, offsetY: loader._lastOffsetY ?? 0 };
+      const trail = this._shareTrail && this._shareTrail.owner === this.player ? this._shareTrail.points : [];
+      const world = trail.length >= 2 ? [...trail] : [...this.routePath ?? []];
+      if (world.length >= 2 && this.player && Number.isFinite(this.player.x)) world.push({ x: this.player.x, y: this.player.y });
+      return world.map((p) => worldToLatLng(p, projection)).filter((p) => !!p);
+    }
+    /** Per frame: keeps a riding run alive, ends one left idle on the arrival card, and takes E there. */
+    _runTick() {
+      if (this.state !== GameState.FINISHED) this._runRecordedKey = "";
+      if (!runsEnabled(window.location.search)) return;
+      const now = Date.now();
+      const previous = this._runLastState ?? this.state;
+      this._runLastState = this.state;
+      if (previous !== this.state) this._runStateChanged(previous, now);
+      const run = this._openRun();
+      if (run && this._runEnabled() && (this.state === GameState.LOADING || this.state === GameState.RACING || this.state === GameState.PAUSED)) {
+        this._runNoteLeg(run);
+      }
+      if (this.state === GameState.RACING) {
+        if (this._runCard) this._runCard = null;
+        if (run && this._runEnabled() && now - (this._runTouchedAt ?? 0) >= RUN_TOUCH_MS) {
+          this._runTouchedAt = now;
+          this._run = touchRun(run, now);
+          saveRun(storage2(), this._run);
+        }
+        return;
+      }
+      if (this.state !== GameState.FINISHED) {
+        if (this._runCard) this._runCard = null;
+        return;
+      }
+      if (run && isIdle(run, now)) {
+        this._endRunFromCard();
+        return;
+      }
+      if (run && !this._runCard && this.input.wasPressed("KeyE")) this._endRunFromCard();
+    }
+    /**
+     * The leg being ridden inside a run is the one a reload resumes (R2-1, #302). Next stop stores it when
+     * the run deals the stop (_pickRunNextStop), but a review ride (Plan review with names due, which the
+     * returning player usually has) or the surprise fallback took the leg without it, so the run kept
+     * `nextLeg: null` and a reload fell through to route setup with a new destination. Whatever launched the
+     * leg, it is written here once, while it loads or rides.
+     */
+    _runNoteLeg(run) {
+      const leg = rideLeg(this.routeFrom, this.routeTo);
+      if (!leg || sameLeg(run.nextLeg ?? null, leg)) return;
+      this._run = withNextLeg(run, leg);
+      saveRun(storage2(), this._run);
+    }
+    /** Route setup from the arrival card closes the run quietly; pause stops its idle clock. */
+    _runStateChanged(previous, now) {
+      const name = (state) => state === GameState.MENU ? "menu" : state === GameState.RACING ? "racing" : state === GameState.FINISHED ? "finished" : state === GameState.PAUSED ? "paused" : "other";
+      const run = this._openRun();
+      if (!run) return;
+      const step = runTransition(name(previous), name(this.state));
+      if (step === "close") {
+        this._closeRun(false);
+        return;
+      }
+      if (step === "pause") this._run = pauseRun(run, now);
+      else if (step === "resume") this._run = resumeRun(run, now);
+      else return;
+      saveRun(storage2(), this._run);
+    }
+    /** Ends the open run into lastRun and the counters; with `card`, the run card shows it. */
+    _closeRun(card) {
+      const run = this._openRun();
+      if (!run) return;
+      endRun(storage2(), run);
+      this._run = null;
+      this._runCard = card ? run : null;
+      if (card) {
+        const history = window.CanalRouteHistory;
+        setTimeout(() => {
+          try {
+            history?.prepareShareCard?.(this);
+          } catch (reason) {
+            console.warn("Run share card:", reason);
+          }
+        }, 0);
+      }
+      const session = sessionCounters2();
+      session.runsEnded = (session.runsEnded ?? 0) + 1;
+      session.stopsPerRun = [...session.stopsPerRun ?? [], run.stopCount];
+      session.stopsThisRun = 0;
+    }
+    /**
+     * The dealt leg to ride again after a reload, or null. For the startup hook
+     * in game-route.js `_checkShareLink` (integrator applies it at merge).
+     */
+    _runResumeLeg() {
+      if (!this._runEnabled()) return null;
+      return this._openRun()?.nextLeg ?? null;
+    }
+    /** End run: the run card replaces the arrival card. */
+    _endRunFromCard() {
+      this._closeRun(true);
+    }
+    /** Arrival-card tap targets beyond game.js's three. */
+    _runFinishTap(id) {
+      if (id === "end") this._endRunFromCard();
+      else this._runFinishAction(id);
+    }
+    /**
+     * The next stop for Next stop (game-route.js `_startNextRouteFromArrival`,
+     * after a due review ride): 1–3 km from the arrival, favouring streets the
+     * rider does not know yet, never a stop this run has reached. Null outside
+     * a run (`?run=0`, tours, Free Ride), which keeps the surprise pick.
+     */
+    _pickRunNextStop(from) {
+      this._runCard = null;
+      if (!this._runEnabled()) return null;
+      const run = this._openRun();
+      const samples = this.recall?.homeMasterySamples?.(this.cityId || "amsterdam") ?? [];
+      const excludeIds = [...run?.stops.map((stop) => stop.id) ?? [], this.routeFrom?.id ?? ""].filter(Boolean);
+      const to = pickNextStop(this.routePois, from, { samples, excludeIds });
+      if (this._run) {
+        const point = (p) => ({ id: p.id, name: p.name, lat: p.lat, lng: p.lng });
+        this._run = withNextLeg(touchRun(this._run, Date.now()), to ? { from: point(from), to: point(to) } : null);
+        saveRun(storage2(), this._run);
+      }
+      return to;
+    }
+    /** The arrival card's one run line, or null outside a run. */
+    _runArrivalLine() {
+      if (!this._runEnabled()) return null;
+      const run = this._openRun();
+      return run ? runLine(run, { calm: !this.gameyFeatures }) : null;
+    }
+    /**
+     * The arrival card's Points inside a run: this stop's points with the bonus
+     * it earned (chainedRun.ts scoreStop), so they add up to the run line's
+     * total. Null outside a run, where the ride's own score stands.
+     */
+    _runArrivalPoints() {
+      if (!this._runEnabled() || !this._runRecordedKey) return null;
+      const stops = this._openRun()?.stops ?? [];
+      const stop = stops[stops.length - 1];
+      return stop && stop.id === this.routeTo?.id ? stop.points : null;
+    }
+    /**
+     * What the run's share picture shows (#295, runShareCard.ts): the shown
+     * run's stops with their legs, the run line without the last stop's chain
+     * bonus, and the names the map is withholding (labelOverlay's sources).
+     */
+    _runShareInput() {
+      const run = this._runCard;
+      if (!run) return null;
+      const first = run.stopCount - run.stops.length + 1;
+      return {
+        stops: run.stops.map((stop, index) => ({
+          number: first + index,
+          name: stop.name,
+          lat: stop.lat,
+          lng: stop.lng,
+          area: stop.area ?? null,
+          path: stop.path ?? null
+        })),
+        summary: runLine(run, { calm: !this.gameyFeatures, chain: false }),
+        city: cityById(this.cityId).name,
+        hiddenNames: [this.quizPromptName, this.quizCandidateName, this._silentPass?.name],
+        labels: {
+          run: t("ride.arrival.run"),
+          stop: t("shareCard.runStop", { n: "{n}" }),
+          earlier: t("shareCard.runEarlier", { count: "{count}" }),
+          fallbackPlace: cityById(this.cityId).name
+        }
+      };
+    }
+    /** The run card: stamped stops, total, best streak, names, one line of story. */
+    _renderRunCard(run) {
+      const ctx = this.ctx;
+      const W = this.viewport.width, H = this.viewport.height;
+      ctx.fillStyle = "rgba(28,24,18,.34)";
+      ctx.fillRect(0, 0, W, H);
+      const compact = this.viewport.mode === "compact";
+      const calm = !this.gameyFeatures;
+      const cardW = Math.min(520, W - 24);
+      const padX = compact ? 18 : 30;
+      const cx = W / 2;
+      const cardX = cx - cardW / 2;
+      const innerW = cardW - padX * 2;
+      const font = window.CanalRecallUi.hudSurface.fontMono;
+      ctx.font = "13px system-ui, sans-serif";
+      const story = wrapText(ctx, runStory(run), innerW, 2);
+      const ROW = 30;
+      const MARGIN = 16;
+      const bottomReserve = compact ? 76 : MARGIN;
+      const BUTTON_H = 44;
+      const canShare = !!this._shareUrl;
+      const actionsH = compact ? BUTTON_H * (canShare ? 3 : 2) + 8 * (canShare ? 2 : 1) : 34;
+      const fixedH = 30 + 74 + story.length * 18 + 16 + 24 + 64 + 24 + actionsH + 26;
+      const room = H - MARGIN - bottomReserve;
+      const listRows = Math.max(1, Math.min(run.stops.length, Math.floor((room - fixedH) / ROW)));
+      const hidden = run.stopCount - listRows;
+      const shown = run.stops.slice(-listRows);
+      const cardH = fixedH + listRows * ROW;
+      const scale = Math.min(1, room / cardH);
+      const cardY = scale < 1 ? MARGIN : Math.max(MARGIN, Math.min(Math.round((H - cardH) / 2), H - cardH - bottomReserve));
+      ctx.save();
+      if (scale < 1) {
+        ctx.translate(cx, cardY);
+        ctx.scale(scale, scale);
+        ctx.translate(-cx, -cardY);
+      }
+      this.hud.paperCard(ctx, { x: cardX, y: cardY, width: cardW, height: cardH }, { solid: true, radius: 16 });
+      const rule = (y2) => {
+        ctx.strokeStyle = RULE;
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        ctx.moveTo(cardX + padX, y2 + 0.5);
+        ctx.lineTo(cardX + cardW - padX, y2 + 0.5);
+        ctx.stroke();
+      };
+      let y = cardY + 30;
+      ctx.textAlign = "left";
+      ctx.textBaseline = "alphabetic";
+      ctx.fillStyle = ACCENT;
+      ctx.font = `700 11px ${font}`;
+      ctx.fillText(t("run.complete"), cardX + padX, y + 11);
+      ctx.fillStyle = INK;
+      ctx.font = "800 26px system-ui, sans-serif";
+      ctx.fillText(t(run.stopCount === 1 ? "count.stops.one" : "count.stops.other", { count: run.stopCount }), cardX + padX, y + 42);
+      y += 74;
+      ctx.fillStyle = BODY;
+      ctx.font = "13px system-ui, sans-serif";
+      story.forEach((line, index) => ctx.fillText(line, cardX + padX, y - 8 + index * 18));
+      y += story.length * 18;
+      rule(y);
+      y += 16;
+      ctx.fillStyle = MUTED;
+      ctx.font = `700 11px ${font}`;
+      ctx.fillText(hidden > 0 ? t("run.stopsLast", { shown: listRows, count: run.stopCount }) : t("run.stops"), cardX + padX, y + 4);
+      y += 24;
+      shown.forEach((stop, index) => {
+        const number = run.stopCount - shown.length + index + 1;
+        const sy = y + index * ROW;
+        ctx.strokeStyle = ACCENT;
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.arc(cardX + padX + 11, sy + 4, 11, 0, Math.PI * 2);
+        ctx.stroke();
+        ctx.fillStyle = ACCENT;
+        ctx.font = `700 11px ${font}`;
+        ctx.textAlign = "center";
+        ctx.fillText(String(number), cardX + padX + 11, sy + 8);
+        ctx.textAlign = "left";
+        const pointsText = calm ? "" : `${formatPoints(stop.points)}${stop.bonus > 0 ? `  +${Math.round(stop.bonus * 100)} %` : ""}`;
+        ctx.font = `12px ${font}`;
+        const pointsW = pointsText ? ctx.measureText(pointsText).width + 12 : 0;
+        ctx.fillStyle = INK;
+        ctx.font = "600 14px system-ui, sans-serif";
+        ctx.fillText(wrapText(ctx, placeName(stop.name), innerW - 32 - pointsW, 1)[0] ?? "", cardX + padX + 32, sy + 9);
+        if (pointsText) {
+          ctx.textAlign = "right";
+          ctx.fillStyle = MUTED;
+          ctx.font = `12px ${font}`;
+          ctx.fillText(pointsText, cardX + cardW - padX, sy + 9);
+          ctx.textAlign = "left";
+        }
+      });
+      y += listRows * ROW;
+      rule(y);
+      y += 16;
+      const stats = calm ? [{ label: t("ride.stat.stops"), value: String(run.stopCount) }, { label: t("ride.stat.names"), value: String(run.names.length) }] : [
+        { label: t("ride.stat.points"), value: formatPoints(run.totalPoints) },
+        { label: t("ride.stat.bestStreak"), value: String(run.bestStreak) },
+        { label: t("ride.stat.names"), value: String(run.names.length) }
+      ];
+      ctx.textAlign = "center";
+      stats.forEach((stat, index) => {
+        const sx = cardX + padX + innerW / stats.length * (index + 0.5);
+        ctx.fillStyle = INK;
+        ctx.font = `700 ${compact ? 19 : 21}px ${font}`;
+        ctx.fillText(stat.value, sx, y + 24);
+        ctx.fillStyle = MUTED;
+        ctx.font = "11px system-ui, sans-serif";
+        ctx.fillText(stat.label, sx, y + 42);
+      });
+      y += 64;
+      rule(y);
+      y += 24;
+      const actions = [
+        { id: "again", key: "ENTER", caption: t("ride.newRun") },
+        { id: "route", key: compact ? "" : "M", caption: t("ride.routeSetup") }
+      ];
+      if (canShare) actions.push({ id: "copy", key: compact ? "" : "C", caption: (this._copiedTimer ?? 0) > 0 ? t("ride.linkCopied") : t("ride.shareRun") });
+      const buttons = [];
+      if (compact) {
+        actions.forEach((action, index) => {
+          const bounds = { x: cardX + padX, y: y + index * (BUTTON_H + 8), w: innerW, h: BUTTON_H };
+          const primary = index === 0;
+          ctx.fillStyle = primary ? COPPER : "rgba(31,28,23,.05)";
+          roundRect(ctx, bounds.x, bounds.y, bounds.w, bounds.h, 12);
+          ctx.fill();
+          if (!primary) {
+            ctx.strokeStyle = RULE;
+            ctx.lineWidth = 1;
+            ctx.stroke();
+          }
+          ctx.fillStyle = INK;
+          ctx.font = "700 14px system-ui, sans-serif";
+          ctx.textAlign = "center";
+          ctx.fillText(action.caption, bounds.x + bounds.w / 2, bounds.y + 28);
+          buttons.push({ ...bounds, id: action.id });
+        });
+      } else {
+        ctx.textAlign = "left";
+        let ax = cardX + padX;
+        for (const action of actions) {
+          const drawn = drawKeycapAction(ctx, roundRect, { x: ax, top: y }, action, {
+            ink: INK,
+            muted: MUTED,
+            fontMono: font
+          }, scale === 1 ? this.hud.hoverPoint : null);
+          buttons.push({ ...drawn.bounds, id: action.id });
+          ax = drawn.endX + 22;
+        }
+      }
+      ctx.restore();
+      ctx.textAlign = "center";
+      for (const bounds of buttons) {
+        bounds.x = cx + (bounds.x - cx) * scale;
+        bounds.y = cardY + (bounds.y - cardY) * scale;
+        bounds.w *= scale;
+        bounds.h *= scale;
+      }
+      this._finishButtonBounds = buttons;
+      this._finishCardBounds = { x: cx - cardW / 2 * scale, y: cardY, w: cardW * scale, h: cardH * scale };
+    }
+  };
+  function installChainedRun(target) {
+    for (const name of Object.getOwnPropertyNames(GameChainedRunRuntime.prototype)) {
+      if (name === "constructor") continue;
+      Object.defineProperty(target.prototype, name, Object.getOwnPropertyDescriptor(GameChainedRunRuntime.prototype, name));
+    }
+  }
+
+  // src/canalRecall/game/landmarkQuestion.ts
+  var LANDMARK_QUESTION_HALF_CONE = 55 * Math.PI / 180;
+  var LANDMARK_SIGHTINGS_KEY = "canalRecall.landmarkSightings.v1";
+  function readSightings(store) {
+    try {
+      const raw = store?.getItem(LANDMARK_SIGHTINGS_KEY);
+      if (!raw) return {};
+      const parsed = JSON.parse(raw);
+      const out = {};
+      for (const [id, value] of Object.entries(parsed || {})) {
+        if (!value || value.how !== "noticed" && value.how !== "named") continue;
+        out[id] = { hood: String(value.hood || ""), how: value.how, at: Number(value.at) || 0 };
+      }
+      return out;
+    } catch {
+      return {};
+    }
+  }
+  function sightingCredit(sightings, hood) {
+    return Object.values(sightings).filter((s) => !hood || s.hood === hood).length;
+  }
+
+  // src/canalRecall/labels/labelStyle.ts
+  var PILL_FONT = `700 12px ${hudSurface.fontUi}`;
+
+  // src/canalRecall/game/labelDrawLedger.ts
+  var APPROACH_KEEP_EXTRA_CONE = 20 * Math.PI / 180;
+
+  // src/canalRecall/orientationPois.ts
+  var SPOILER_MIN_LENGTH = 5;
+  var SPOILER_MAX_WORDS = 5;
+  var DUTCH_NAME_SUFFIXES = [
+    "dwarsstraat",
+    "burgwal",
+    "gracht",
+    "straat",
+    "kanaal",
+    "sloot",
+    "steeg",
+    "plein",
+    "kade",
+    "brug",
+    "laan",
+    "dijk",
+    "weg",
+    "pad",
+    "hof"
+  ];
+  function normaliseSpoilerName(name) {
+    return name.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
+  }
+  function buildSpoilerIndex(names) {
+    const index = /* @__PURE__ */ new Set();
+    const lowerRaw = /* @__PURE__ */ new Set();
+    const full = /* @__PURE__ */ new Set();
+    for (const raw of names) {
+      if (!raw) continue;
+      const name = normaliseSpoilerName(raw);
+      if (name.length >= SPOILER_MIN_LENGTH) lowerRaw.add(raw.trim().toLowerCase());
+      if (name.length < SPOILER_MIN_LENGTH) continue;
+      index.add(name);
+      full.add(name);
+      for (const suffix of DUTCH_NAME_SUFFIXES) {
+        if (!name.endsWith(suffix)) continue;
+        const stem = name.slice(0, -suffix.length).trim();
+        if (stem.length >= SPOILER_MIN_LENGTH) index.add(stem);
+        break;
+      }
+    }
+    return { names: index, lowerRaw, full };
+  }
+  var spoilsMemo = /* @__PURE__ */ new WeakMap();
+  function poiNameSpoils(label, index) {
+    if (!label || !index || index.names.size === 0) return false;
+    let memo = spoilsMemo.get(index);
+    if (!memo) spoilsMemo.set(index, memo = /* @__PURE__ */ new Map());
+    let spoils = memo.get(label);
+    if (spoils === void 0) memo.set(label, spoils = labelSpoils(label, index));
+    return spoils;
+  }
+  var labelGrams = /* @__PURE__ */ new Map();
+  var fullLengths = /* @__PURE__ */ new WeakMap();
+  function labelSpoils(label, index) {
+    let held = labelGrams.get(label);
+    if (!held) {
+      const words2 = normaliseSpoilerName(label).split(" ").filter(Boolean), grams = [];
+      for (let size = 1; size <= Math.min(SPOILER_MAX_WORDS, words2.length); size++)
+        for (let start = 0; start + size <= words2.length; start++) grams.push(words2.slice(start, start + size).join(" "));
+      labelGrams.set(label, held = { words: words2, grams });
+    }
+    for (const gram of held.grams) if (index.names.has(gram)) return true;
+    if (index.full && index.full.size) {
+      let lengths = fullLengths.get(index.full);
+      if (!lengths) fullLengths.set(index.full, lengths = [...new Set([...index.full].map((n) => n.length))].filter((n) => n >= SPOILER_MIN_LENGTH).sort((a, b) => a - b));
+      for (const word of held.words) {
+        for (const n of lengths) {
+          if (n >= word.length) break;
+          if (index.full.has(word.slice(0, n))) return true;
+        }
+      }
+    }
+    return false;
+  }
+  function maskSpoiledName(label, names, fallback = "your destination") {
+    if (!label) return label;
+    const chars = [];
+    const origin = [];
+    for (let i = 0; i < label.length; i++) {
+      const base = normaliseSpoilerName(label[i]);
+      if (base) {
+        chars.push(base);
+        origin.push(i);
+      } else if (chars.length && chars[chars.length - 1] !== " ") {
+        chars.push(" ");
+        origin.push(i);
+      }
+    }
+    const text = chars.join("");
+    const spans = [];
+    for (const raw of new Set(names)) {
+      const name = raw ? normaliseSpoilerName(raw) : "";
+      if (name.length < SPOILER_MIN_LENGTH) continue;
+      for (let at = text.indexOf(name); at !== -1; at = text.indexOf(name, at + 1)) {
+        if (at > 0 && text[at - 1] !== " ") continue;
+        spans.push([origin[at], origin[at + name.length - 1] + 1]);
+      }
+    }
+    if (!spans.length) return label;
+    spans.sort((a, b) => a[0] - b[0] || b[1] - a[1]);
+    let out = "";
+    let cursor = 0;
+    for (const [start, end] of spans) {
+      if (end <= cursor) continue;
+      out += label.slice(cursor, Math.max(cursor, start)) + "\u2026";
+      cursor = end;
+    }
+    out += label.slice(cursor);
+    return /[\p{L}\p{N}]/u.test(out) ? out : fallback;
+  }
+  function mapLabelSpoils(raw, printed, asked) {
+    if (!asked || !raw) return false;
+    const index = buildSpoilerIndex([asked]);
+    if (!index.names.size) return normaliseSpoilerName(raw) === normaliseSpoilerName(asked);
+    for (const text of printed && printed !== raw ? [raw, printed] : [raw]) {
+      if (poiNameSpoils(text, index)) return true;
+      if (maskSpoiledName(text, [asked], "") !== text) return true;
+    }
+    return false;
+  }
+
+  // src/canalRecall/game/recallRules.ts
+  var MAX_HEADING_OFF_ROAD = Math.PI / 4;
+  var ROUTE_QUIZ_TURN_RADIANS = Math.PI / 6;
+  function hudWithholdsRouteName(input) {
+    if (input.promptName) return true;
+    if (input.candidateName && input.candidateName !== input.currentName) return true;
+    if (!input.roadName || input.roadName === input.currentName) return false;
+    return !input.revealed && !input.learned;
+  }
+  function routePlaqueName(input) {
+    const answerHidden = hudWithholdsRouteName(input);
+    return { routeName: answerHidden ? "" : input.shownName || input.roadName, answerHidden };
+  }
+
+  // src/canalRecall/ownMap/labelPolicy.ts
+  function withheldNames(game) {
+    const asked = game.quizPromptName && game.quizWithheldNames?.length ? game.quizWithheldNames : NO_NAMES;
+    const approach = game.landmarkApproachWithheld?.length ? game.landmarkApproachWithheld : NO_NAMES;
+    const last = lastWithheld;
+    if (last && last.asked === asked && last.approach === approach && sameNames(last.askedCopy, asked) && sameNames(last.approachCopy, approach)) return last.out;
+    const out = Object.freeze(approach.length ? [.../* @__PURE__ */ new Set([...asked, ...approach])] : [...asked]);
+    lastWithheld = { asked, approach, askedCopy: [...asked], approachCopy: [...approach], out };
+    return out;
+  }
+  var NO_NAMES = Object.freeze([]);
+  var lastWithheld = null;
+  function sameNames(a, b) {
+    if (a.length !== b.length) return false;
+    for (let i = 0; i < a.length; i++) if (a[i] !== b[i]) return false;
+    return true;
+  }
+
+  // src/canalRecall/hudCopy.ts
+  function zoomBadgeText(zoom) {
+    return t("hud.zoom", { percent: Math.round(zoom * 100) });
+  }
+  function zoomBadgeShouldFlash(lastShown, zoom, playerZoomed) {
+    return playerZoomed && lastShown !== null && lastShown !== zoom;
+  }
+
+  // src/canalRecall/game/travelProfile.ts
+  var PROFILES = {
+    boat: {
+      id: "boat",
+      labelKey: "setup.travel.boat",
+      extractFile: "water",
+      quizRouteSubject: "waterway",
+      quizRouteQuestionKey: "ride.question.waterway",
+      learnedKind: "water",
+      motion: "water",
+      vehicle: "boat",
+      networkNoun: "waterways",
+      networkNounSingular: "waterway",
+      recallNounKey: "ride.noun.canals",
+      exploreNounKey: "ride.noun.canals",
+      usesRoadConstraint: false,
+      usesWaterTest: true
+    },
+    car: {
+      id: "car",
+      labelKey: "setup.travel.bike",
+      extractFile: "streets-routing",
+      quizRouteSubject: "street",
+      quizRouteQuestionKey: "ride.question.street",
+      learnedKind: "street",
+      motion: "road",
+      vehicle: "bike",
+      networkNoun: "streets",
+      networkNounSingular: "street",
+      recallNounKey: "ride.noun.streets",
+      exploreNounKey: "ride.noun.streets",
+      usesRoadConstraint: true,
+      usesWaterTest: false
+    },
+    transit: {
+      id: "transit",
+      labelKey: "setup.travel.transit",
+      extractFile: "transit-network",
+      quizRouteSubject: "line",
+      quizRouteQuestionKey: "ride.question.line",
+      learnedKind: "transit",
+      motion: "corridor",
+      vehicle: "transit",
+      networkNoun: "tram lines",
+      networkNounSingular: "line",
+      recallNounKey: "ride.noun.lines",
+      exploreNounKey: "ride.noun.linesAndStops",
+      usesRoadConstraint: true,
+      usesWaterTest: false
+    }
+  };
+  function travelProfile(mode) {
+    const template = PROFILES[mode] ?? PROFILES.boat;
+    return {
+      ...template,
+      label: t(template.labelKey),
+      quizRouteQuestion: t(template.quizRouteQuestionKey),
+      recallNoun: t(template.recallNounKey),
+      exploreNoun: t(template.exploreNounKey)
+    };
+  }
+
+  // src/canalRecall/bridgeDisplayNames.ts
+  function bridgeLetterKey(name) {
+    return name.trim().replace(/^(de|het|'t)\s+/i, "").replace(/ł/g, "l").replace(/Ł/g, "L").toLocaleLowerCase().normalize("NFD").replace(/[^\p{L}]/gu, "").replace(/(\p{L})\1+/gu, "$1");
+  }
+  function isBridgeSpelling(osmName, displayName) {
+    return !!displayName && displayName !== osmName && bridgeLetterKey(displayName) === bridgeLetterKey(osmName);
+  }
+  function buildBridgeDisplayNames(bridges) {
+    const names = /* @__PURE__ */ new Map();
+    for (const bridge of bridges) {
+      const name = bridge.name?.trim();
+      const shown = bridge.displayName?.trim();
+      if (name && shown && isBridgeSpelling(name, shown)) names.set(name, shown);
+    }
+    return names;
+  }
+  var indexes = /* @__PURE__ */ new WeakMap();
+  function bridgeDisplayNamesOf(bridges) {
+    if (!bridges) return /* @__PURE__ */ new Map();
+    let index = indexes.get(bridges);
+    if (!index) indexes.set(bridges, index = buildBridgeDisplayNames(bridges));
+    return index;
+  }
+  function displayBridgeName(names, name) {
+    return names && names.get(name) || name;
+  }
+
+  // src/canalRecall/facts/factRotation.ts
+  var RECENT_KIND_MEMORY = 3;
+  function factKey(featureId, fact) {
+    const normalised = fact.text.toLowerCase().replace(/[^\p{L}\p{N}]+/gu, "");
+    let hash = 2166136261;
+    for (let index = 0; index < normalised.length; index++) {
+      hash ^= normalised.charCodeAt(index);
+      hash = Math.imul(hash, 16777619);
+    }
+    return `${featureId}:${(hash >>> 0).toString(36)}`;
+  }
+  var KIND_APPEAL = {
+    surprise: 5,
+    naming: 4,
+    culture: 3,
+    people: 3,
+    history: 2,
+    design: 1
+  };
+  function chooseFact(featureId, facts, state) {
+    if (!facts.length) return null;
+    const scored = facts.map((fact) => {
+      const key = factKey(featureId, fact);
+      const lastShown = state.history[key];
+      const seen = lastShown !== void 0;
+      const recency = state.recentKinds.indexOf(fact.kind);
+      const kindPenalty = recency < 0 ? 0 : (RECENT_KIND_MEMORY - recency) * 2;
+      return {
+        fact,
+        key,
+        seen,
+        lastShown: lastShown ?? -1,
+        score: (seen ? 0 : 100) + KIND_APPEAL[fact.kind] - kindPenalty
+      };
+    });
+    scored.sort((a, b) => (
+      // Unseen first; then among seen, the one shown longest ago; then appeal.
+      Number(b.score > 0 && !b.seen) - Number(a.score > 0 && !a.seen) || (a.seen && b.seen ? a.lastShown - b.lastShown : 0) || b.score - a.score
+    ));
+    const best = scored[0];
+    return { fact: best.fact, key: best.key, repeat: best.seen };
+  }
+  function recordShown(state, choice) {
+    const shown = state.shown + 1;
+    return {
+      history: { ...state.history, [choice.key]: shown },
+      shown,
+      recentKinds: [choice.fact.kind, ...state.recentKinds].slice(0, RECENT_KIND_MEMORY)
+    };
+  }
+  function expandedFacts(facts, shownText, limit = 3) {
+    return facts.filter((fact) => fact.text !== shownText).slice().sort((a, b) => KIND_APPEAL[b.kind] - KIND_APPEAL[a.kind]).slice(0, limit);
+  }
+  function pruneHistory(state, maxEntries = 4e3) {
+    const entries = Object.entries(state.history);
+    if (entries.length <= maxEntries) return state;
+    const kept = entries.sort((a, b) => b[1] - a[1]).slice(0, maxEntries);
+    return { ...state, history: Object.fromEntries(kept) };
+  }
+
+  // src/canalRecall/facts/factQuality.ts
+  var CATEGORY_WORDS = "bridge|street|canal|park|square|church|museum|building|monument|neighbourhood|neighborhood|district|area|tower|gate|house|hotel|theatre|theater|station|market|island|quay|harbour|harbor|cemetery|garden|school|university|synagogue|mosque|windmill|lock|sluice|library|hall|palace|mill|club|stadium|arena|prison|hospital|brewery|factory|chapel|gallery|zoo|dock|street|lane|road|avenue|tunnel|fountain|statue";
+  var LEDE_RESTATEMENT = new RegExp(
+    `^\\s*(the\\s+)?[^.]{2,60}?\\s+(is|was)\\s+(a|an|the)\\s+(\\w+[- ]){0,3}(${CATEGORY_WORDS})\\b[^.]{0,40}\\b(in|of|on|near|at|situated at|located at)\\s+(the\\s+)?[A-Z0-9][^.]{0,40}\\.?\\s*$`,
+    "i"
+  );
+  var FILLER_CLAUSE = new RegExp(
+    "\\s*,\\s+(?:(?:marking|showcasing|highlighting|demonstrating|reflecting|contributing|offering|underscoring|emphasi[sz]ing|solidifying|cementing|symboli[sz]ing|illustrating|making it|cementing its)\\b[^,]*|(?:a|an|the)\\s+(?:\\w+\\s+){0,2}(?:striking|significant|notable|remarkable|hidden|unique|key|major|important|impressive|beloved|popular)\\s+(?:\\w+\\s+){0,2}(?:feature|milestone|achievement|aspect|element|landmark|detail|addition|space|example|part|symbol|sight)[^,]*)\\s*\\.?\\s*$",
+    "i"
+  );
+  function words(text) {
+    return text.toLowerCase().match(/[\p{L}\p{N}]+/gu) || [];
+  }
+  function similarity(a, b) {
+    const left = new Set(words(a));
+    const right = new Set(words(b));
+    if (!left.size || !right.size) return 0;
+    let shared2 = 0;
+    for (const word of left) if (right.has(word)) shared2++;
+    return shared2 / Math.min(left.size, right.size);
+  }
+
+  // src/canalRecall/facts/factTypes.ts
+  var FACT_KIND_LABELS = {
+    naming: "Name",
+    history: "History",
+    people: "People",
+    design: "Design",
+    culture: "Culture",
+    surprise: "Curiosity"
+  };
+  var FACT_KIND_LABELS_NL = {
+    naming: "Naam",
+    history: "Geschiedenis",
+    people: "Mensen",
+    design: "Ontwerp",
+    culture: "Cultuur",
+    surprise: "Weetje"
+  };
+  function factKindLabel(kind) {
+    return language() === "nl" ? FACT_KIND_LABELS_NL[kind] : FACT_KIND_LABELS[kind];
+  }
+  function factText(fact) {
+    return language() === "nl" && fact.textNl ? fact.textNl : fact.text;
+  }
+
+  // src/canalRecall/facts/factStore.ts
+  function openingSentence(text, maxChars = 160) {
+    const trimmed = (text || "").replace(/\s+/g, " ").trim();
+    if (!trimmed) return "";
+    const abbreviations = /* @__PURE__ */ new Set([
+      "st",
+      "sint",
+      "ste",
+      "mr",
+      "mrs",
+      "ms",
+      "dr",
+      "prof",
+      "ir",
+      "ing",
+      "drs",
+      "jr",
+      "sr",
+      "nr",
+      "no",
+      "vs",
+      "ca",
+      "ong",
+      "bijv",
+      "nl",
+      "oa",
+      "dwz",
+      "zgn",
+      "etc",
+      "incl",
+      "excl",
+      "eeuw",
+      "eeuwse"
+    ]);
+    const isSentenceEnd = (index) => {
+      if (trimmed[index] !== ".") return true;
+      const before = /([\p{L}]+)$/u.exec(trimmed.slice(0, index));
+      if (!before) return true;
+      const word = before[1];
+      if (word.length === 1) return false;
+      if (/^\p{Lu}\p{L}*sz$/u.test(word)) return false;
+      return !abbreviations.has(word.toLocaleLowerCase());
+    };
+    let end = -1;
+    for (const match of trimmed.matchAll(/[.!?](?=\s|$)/g)) {
+      if (isSentenceEnd(match.index)) {
+        end = match.index + 1;
+        break;
+      }
+    }
+    const sentence = (end > 0 ? trimmed.slice(0, end) : trimmed).trim();
+    if (sentence.length <= maxChars) return sentence;
+    const window2 = sentence.slice(0, maxChars);
+    let boundary = -1;
+    for (const match of window2.matchAll(/[.!?](?=\s|$)/g)) {
+      if (isSentenceEnd(match.index)) boundary = match.index + 1;
+    }
+    if (boundary > maxChars * 0.5) return window2.slice(0, boundary).trim();
+    const cut = Math.max(window2.lastIndexOf(", "), window2.lastIndexOf(" "));
+    return `${(cut > maxChars * 0.5 ? window2.slice(0, cut) : window2).trim()}\u2026`;
+  }
+  function composeFactWithOpening(factText2, opening) {
+    const lead = openingSentence(opening);
+    if (!lead) return { detail: factText2 };
+    if (similarity(lead, factText2) >= 0.55) return { detail: factText2 };
+    const leadStem = lead.replace(/[.!?…]+$/, "").toLowerCase();
+    if (leadStem.length >= 24 && factText2.toLowerCase().includes(leadStem.slice(0, Math.min(48, leadStem.length)))) {
+      return { detail: factText2 };
+    }
+    return { detail: `${lead} ${factText2}`, opening: lead };
+  }
+  var ROTATION_STORAGE_KEY = "canalRecall.factRotation.v1";
+  function saveRotationState(storage3, state) {
+    try {
+      storage3?.setItem(ROTATION_STORAGE_KEY, JSON.stringify(pruneHistory(state)));
+    } catch {
+    }
+  }
+  function factCardText(featureId, index, state, fallbackOpening) {
+    const entry = index.get(featureId);
+    if (!entry?.facts?.length) return null;
+    const choice = chooseFact(featureId, entry.facts, state);
+    if (!choice) return null;
+    const dutch = language() === "nl";
+    const dutchFact = dutch && !!choice.fact.textNl;
+    const factBody = dutchFact ? choice.fact.textNl : choice.fact.text;
+    const composed = composeFactWithOpening(
+      factBody,
+      dutchFact ? entry.openingNl : entry.opening || fallbackOpening
+    );
+    const others = expandedFacts(entry.facts, choice.fact.text);
+    const all = composed.opening ? [composed.opening, factBody, ...others.map((fact) => factText(fact))] : [factBody, ...others.map((fact) => factText(fact))];
+    return {
+      choice,
+      text: {
+        detail: composed.detail,
+        longDetail: all.join(" "),
+        factTexts: all,
+        factKind: factKindLabel(choice.fact.kind)
+      }
+    };
+  }
+  function keepDutchLede(fact, ledeLang) {
+    return language() === "nl" && ledeLang === "nl" && !fact.textNl;
+  }
+  function commitShownFact(storage3, state, choice) {
+    const next = recordShown(state, choice);
+    saveRotationState(storage3, next);
+    return next;
+  }
+
+  // src/canalRecall/game/finishBlurb.ts
+  function finishBlurb(landmark, facts, rotation, fallback) {
+    const lede = landmark.longDetail || landmark.detail || "";
+    const chosen = facts && facts.size ? factCardText(landmark.id, facts, rotation, landmark.detail || landmark.longDetail) : null;
+    if (chosen && lede && keepDutchLede(chosen.choice.fact, landmark.extractLang)) return { text: lede, choice: null };
+    if (chosen?.text.detail) return { text: chosen.text.detail, choice: chosen.choice };
+    return { text: lede || fallback, choice: null };
+  }
+  function buurtFinishBlurb(routeTo, neighborhoods) {
+    if (!routeTo?.buurtPlace || !routeTo.name || !neighborhoods) return null;
+    const hood = neighborhoods.find((candidate) => candidate.name === routeTo.name);
+    return { name: routeTo.name, text: hood?.wikipediaExtract?.trim() || "" };
+  }
+
+  // src/canalRecall/game/finishTitle.ts
+  var FINISH_TITLE_SIZES = [26, 24, 22, 20];
+  var fontAt = (size) => `800 ${size}px system-ui, sans-serif`;
+  function wrapWords(measure, text, width, maxLines) {
+    const words2 = text.trim().split(/\s+/).filter(Boolean);
+    const lines = [];
+    let line = "";
+    let index = 0;
+    for (; index < words2.length; index++) {
+      const next = line ? `${line} ${words2[index]}` : words2[index];
+      if (!line || measure(next) <= width) {
+        line = next;
+        continue;
+      }
+      lines.push(line);
+      line = words2[index];
+      if (lines.length === maxLines) break;
+    }
+    if (lines.length < maxLines) {
+      lines.push(line);
+      return lines.map((l) => clip(measure, l, width));
+    }
+    const last = lines.length - 1;
+    lines[last] = clip(measure, `${lines[last]}\u2026`, width, true);
+    return lines;
+  }
+  function clip(measure, text, width, forceEllipsis = false) {
+    if (measure(text) <= width && (!forceEllipsis || text.endsWith("\u2026"))) return text;
+    let base = text.replace(/…$/, "");
+    while (base.length > 1 && measure(`${base}\u2026`) > width) base = base.slice(0, -1);
+    return `${base.trimEnd()}\u2026`;
+  }
+  function fitFinishTitle(ctx, name, width) {
+    const saved = ctx.font;
+    const measure = (text) => ctx.measureText(text).width;
+    try {
+      for (const size2 of FINISH_TITLE_SIZES) {
+        ctx.font = fontAt(size2);
+        if (measure(name) <= width) return { size: size2, lineHeight: Math.round(size2 * 1.15), lines: [name] };
+      }
+      const size = FINISH_TITLE_SIZES[FINISH_TITLE_SIZES.length - 1];
+      ctx.font = fontAt(size);
+      return { size, lineHeight: Math.round(size * 1.15), lines: wrapWords(measure, name, width, 2) };
+    } finally {
+      ctx.font = saved;
+    }
+  }
+
+  // src/canalRecall/labels/sightlineOcclusion.ts
+  var SIGHTLINE_CELL_M = 40;
+  var SIGHTLINE_CLEARANCE_M = 0.75;
+  var ANCHOR_SLACK_M = 2;
+  var M_PER_DEG_LAT = 111320;
+  var ORIGIN_LNG = 4.8936;
+  var ORIGIN_LAT = 52.3731;
+  var M_PER_DEG_LNG = M_PER_DEG_LAT * Math.cos(ORIGIN_LAT * Math.PI / 180);
+  function toLocal(lng, lat) {
+    return [(lng - ORIGIN_LNG) * M_PER_DEG_LNG, (lat - ORIGIN_LAT) * M_PER_DEG_LAT];
+  }
+  function occluderTopM(properties) {
+    const p = properties || {};
+    const height = Number(p.height), eaves = Number(p.roofEavesHeightM);
+    const pitched = typeof p.roofShape === "string" && p.roofShape !== "flat";
+    if (Number.isFinite(height) && Number.isFinite(eaves) && pitched && eaves < height) return (height + eaves) / 2;
+    if (Number.isFinite(height)) return height;
+    if (Number.isFinite(eaves)) return eaves;
+    return 0;
+  }
+  function prepare(feature) {
+    const g = feature.geometry;
+    const polygons = g?.type === "Polygon" ? [g.coordinates] : g?.type === "MultiPolygon" ? g.coordinates : [];
+    const topM = occluderTopM(feature.properties);
+    if (!(topM > 1)) return null;
+    const rings = [];
+    let minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
+    for (const polygon of polygons) {
+      const outer = Array.isArray(polygon) ? polygon[0] : null;
+      if (!Array.isArray(outer) || outer.length < 3) continue;
+      const flat = new Float64Array(outer.length * 2);
+      for (let i = 0; i < outer.length; i++) {
+        const [x, y] = toLocal(outer[i][0], outer[i][1]);
+        flat[i * 2] = x;
+        flat[i * 2 + 1] = y;
+        if (x < minX) minX = x;
+        if (x > maxX) maxX = x;
+        if (y < minY) minY = y;
+        if (y > maxY) maxY = y;
+      }
+      rings.push(flat);
+    }
+    return rings.length ? { rings, minX, minY, maxX, maxY, topM, stamp: 0 } : null;
+  }
+  var cellKey = (ix, iy) => (ix + 32768) * 65536 + (iy + 32768);
+  function pointInRing(x, y, ring) {
+    let inside = false;
+    const n = ring.length / 2;
+    for (let i = 0, j = n - 1; i < n; j = i++) {
+      const xi = ring[i * 2], yi = ring[i * 2 + 1], xj = ring[j * 2], yj = ring[j * 2 + 1];
+      if (yi > y !== yj > y && x < (xj - xi) * (y - yi) / (yj - yi) + xi) inside = !inside;
+    }
+    return inside;
+  }
+  var SightlineIndex = class {
+    constructor(cellM = SIGHTLINE_CELL_M) {
+      this.cellM = cellM;
+    }
+    prepared = /* @__PURE__ */ new WeakMap();
+    grid = /* @__PURE__ */ new Map();
+    source = null;
+    pending = null;
+    stamp = 1;
+    stats = { features: 0, cells: 0, buildMs: 0, tests: 0, blocked: 0, testMs: 0 };
+    /** Whether any footprints are indexed. */
+    get ready() {
+      return this.grid.size > 0;
+    }
+    /** Adopt `features` (by identity). Spends at most `budgetMs` per call; returns true when the grid is current. */
+    refresh(features, budgetMs = 2) {
+      if (!features) return this.source === null;
+      if (features === this.source && !this.pending) return true;
+      if (!this.pending || this.pending.list !== features) this.pending = { list: features, next: 0, grid: /* @__PURE__ */ new Map(), ms: 0 };
+      const job = this.pending, start = performance.now(), deadline = start + budgetMs, cell = this.cellM;
+      while (job.next < job.list.length) {
+        const feature = job.list[job.next++];
+        let p = this.prepared.get(feature);
+        if (p === void 0) {
+          p = prepare(feature);
+          this.prepared.set(feature, p);
+        }
+        if (p) {
+          const x0 = Math.floor(p.minX / cell), x1 = Math.floor(p.maxX / cell);
+          const y0 = Math.floor(p.minY / cell), y1 = Math.floor(p.maxY / cell);
+          for (let ix = x0; ix <= x1; ix++) for (let iy = y0; iy <= y1; iy++) {
+            const key = cellKey(ix, iy);
+            const bucket = job.grid.get(key);
+            if (bucket) bucket.push(p);
+            else job.grid.set(key, [p]);
+          }
+        }
+        if ((job.next & 255) === 0 && performance.now() > deadline) break;
+      }
+      job.ms += performance.now() - start;
+      if (job.next < job.list.length) return false;
+      this.grid = job.grid;
+      this.source = features;
+      this.pending = null;
+      this.stats.features = features.length;
+      this.stats.cells = job.grid.size;
+      this.stats.buildMs = Math.round(job.ms * 10) / 10;
+      return true;
+    }
+    /**
+     * True when a building's walls stand above the straight line from the
+     * camera to the anchor. Buildings whose footprint holds the camera (its
+     * back-face-culled walls are invisible) or the anchor are skipped.
+     */
+    blocked(camera, anchor) {
+      const t0 = performance.now();
+      const result = this.test(camera, anchor);
+      this.stats.tests++;
+      if (result) this.stats.blocked++;
+      this.stats.testMs += performance.now() - t0;
+      return result;
+    }
+    /** Zero the per-frame counters. */
+    resetCounters() {
+      this.stats.tests = 0;
+      this.stats.blocked = 0;
+      this.stats.testMs = 0;
+    }
+    test(camera, anchor) {
+      if (!this.grid.size) return false;
+      const [ax, ay] = toLocal(camera.lng, camera.lat), [bx, by] = toLocal(anchor.lng, anchor.lat);
+      const dx = bx - ax, dy = by - ay, len = Math.hypot(dx, dy);
+      if (len < ANCHOR_SLACK_M * 2) return false;
+      const tMax = 1 - ANCHOR_SLACK_M / len;
+      const stamp = ++this.stamp, cell = this.cellM;
+      let ix = Math.floor(ax / cell), iy = Math.floor(ay / cell);
+      const ex = Math.floor(bx / cell), ey = Math.floor(by / cell);
+      const sx = Math.sign(dx), sy = Math.sign(dy);
+      const tdx = sx ? cell / Math.abs(dx) : Infinity, tdy = sy ? cell / Math.abs(dy) : Infinity;
+      let tx = sx ? ((sx > 0 ? (ix + 1) * cell : ix * cell) - ax) / dx : Infinity;
+      let ty = sy ? ((sy > 0 ? (iy + 1) * cell : iy * cell) - ay) / dy : Infinity;
+      const visit = (cx, cy) => {
+        const bucket = this.grid.get(cellKey(cx, cy));
+        if (bucket) for (const p of bucket) {
+          if (p.stamp === stamp) continue;
+          p.stamp = stamp;
+          if (this.wallAbove(p, ax, ay, dx, dy, bx, by, tMax, camera.altM, anchor.altM)) return true;
+        }
+        return false;
+      };
+      for (let guard = 0; guard < 4096; guard++) {
+        if (visit(ix, iy)) return true;
+        if (ix === ex && iy === ey) break;
+        if (Math.min(tx, ty) > 1) return visit(ex, ey);
+        if (tx < ty) {
+          ix += sx;
+          tx += tdx;
+        } else {
+          iy += sy;
+          ty += tdy;
+        }
+      }
+      return false;
+    }
+    wallAbove(p, ax, ay, dx, dy, bx, by, tMax, camAlt, anchorAlt) {
+      if (p.maxX < Math.min(ax, bx) || p.minX > Math.max(ax, bx) || p.maxY < Math.min(ay, by) || p.minY > Math.max(ay, by)) return false;
+      if (p.topM < Math.min(camAlt, anchorAlt) + SIGHTLINE_CLEARANCE_M) return false;
+      let above = false;
+      outer: for (const ring of p.rings) {
+        const n = ring.length / 2;
+        for (let i = 0, j = n - 1; i < n; j = i++) {
+          const cx = ring[j * 2], cy = ring[j * 2 + 1];
+          const ex = ring[i * 2] - cx, ey = ring[i * 2 + 1] - cy;
+          const den = dx * ey - dy * ex;
+          if (Math.abs(den) < 1e-12) continue;
+          const t2 = ((cx - ax) * ey - (cy - ay) * ex) / den;
+          if (t2 <= 0 || t2 > tMax) continue;
+          const u = ((cx - ax) * dy - (cy - ay) * dx) / den;
+          if (u < 0 || u > 1) continue;
+          const rayAlt = camAlt + (anchorAlt - camAlt) * t2;
+          if (p.topM > rayAlt + SIGHTLINE_CLEARANCE_M) {
+            above = true;
+            break outer;
+          }
+        }
+      }
+      if (!above) return false;
+      for (const ring of p.rings) {
+        if (pointInRing(ax, ay, ring) || pointInRing(bx, by, ring)) return false;
+      }
+      return true;
+    }
+  };
+
+  // src/canalRecall/labels/streetLabelOcclusion.ts
+  var STREET_LABEL_ALT_M = 1;
+  var HOLD_FRAMES = 2;
+  var RETEST_FRAMES = 8;
+  var BUILD_BUDGET_MS = 2;
+  var OCCLUSION_MIN_PITCH_DEG = 5;
+  function occlusionWanted(pitchedView, mapPitchDeg) {
+    return pitchedView || Number.isFinite(mapPitchDeg) && mapPitchDeg >= OCCLUSION_MIN_PITCH_DEG;
+  }
+  var StreetLabelOcclusion = class {
+    index = new SightlineIndex();
+    verdicts = /* @__PURE__ */ new WeakMap();
+    slots = 0;
+    frameNo = 0;
+    /** Last frame's counts, for the e2e and profiling. */
+    stats = { tested: 0, hidden: 0, ms: 0, features: 0, buildMs: 0 };
+    /** Labels drawn / hidden by occlusion last frame (text only), for the e2e. */
+    lastHidden = [];
+    /**
+     * The per-label test for this frame, or null when there is nothing to test
+     * against (top-down view, no resident buildings yet, no camera).
+     */
+    frame(host, loader, pitched) {
+      this.frameNo++;
+      this.stats.tested = 0;
+      this.stats.hidden = 0;
+      this.stats.ms = 0;
+      this.lastHidden = [];
+      const vm = host;
+      if (!pitched || !(vm?.map || vm?.cameraEye) || !vm.worldToLngLat || !loader) return null;
+      const toLngLat = vm.worldToLngLat.bind(vm);
+      const features = !vm.map && vm._completeCity?.residentFeatures ? vm._completeCity.residentFeatures() : vm._completeCity?.sampleFeatures?.(1e6);
+      this.index.refresh(features, BUILD_BUDGET_MS);
+      this.stats.features = this.index.stats.features;
+      this.stats.buildMs = this.index.stats.buildMs;
+      if (!this.index.ready) return null;
+      let camera;
+      if (vm.map) {
+        const t2 = vm.map.transform;
+        const at = t2?.getCameraLngLat?.(), altM = t2?.getCameraAltitude?.();
+        if (!at || !Number.isFinite(altM)) return null;
+        camera = { lng: at.lng, lat: at.lat, altM };
+      } else {
+        const eye = vm.cameraEye();
+        if (!eye || !Number.isFinite(eye.altitudeM)) return null;
+        camera = { lng: eye.lng, lat: eye.lat, altM: eye.altitudeM };
+      }
+      const blockedAt = (p) => {
+        const ll = toLngLat(p.x, p.y, loader);
+        const [lng, lat] = Array.isArray(ll) ? ll : [ll.lng, ll.lat];
+        return this.index.blocked(camera, { lng, lat, altM: STREET_LABEL_ALT_M });
+      };
+      return (label, ends) => {
+        const t0 = performance.now();
+        let v = this.verdicts.get(label);
+        const fresh = !v || v.frame !== this.frameNo - 1;
+        if (v && !fresh && (this.frameNo + v.slot) % RETEST_FRAMES !== 0) {
+          v.frame = this.frameNo;
+          if (v.hidden) {
+            this.stats.hidden++;
+            if (label.text) this.lastHidden.push(label.text);
+          }
+          this.stats.ms += performance.now() - t0;
+          return v.hidden;
+        }
+        const now = blockedAt(label) || !!ends && ends.some(blockedAt);
+        if (!v || fresh) {
+          v = { hidden: now, votes: HOLD_FRAMES, frame: 0, slot: v?.slot ?? this.slots++ };
+          this.verdicts.set(label, v);
+        }
+        v.frame = this.frameNo;
+        if (now === v.hidden) v.votes = HOLD_FRAMES;
+        else if (--v.votes <= 0) {
+          v.hidden = now;
+          v.votes = HOLD_FRAMES;
+        }
+        this.stats.tested++;
+        if (v.hidden) {
+          this.stats.hidden++;
+          if (label.text) this.lastHidden.push(label.text);
+        }
+        this.stats.ms += performance.now() - t0;
+        return v.hidden;
+      };
+    }
+  };
+
+  // src/canalRecall/game/teachingSurface.ts
+  function canShowMiniMap(enabled, input) {
+    return enabled && !input.utilityOpen;
+  }
+  function canShowPoiLabels(labelsWanted, input) {
+    return labelsWanted && !input.quizOpen && !input.promptVisible;
+  }
 
   // src/canalRecall/game/trackpadTwist.ts
   var TWIST_DEADZONE_DEG = 6;
@@ -7012,15 +9526,15 @@
     ease: 0.04
   };
   var NO_SIGHTLINE = Object.freeze({ pitchDeg: 0, leadM: 0 });
-  var smooth = (t2) => {
+  var smooth2 = (t2) => {
     const c = Math.min(1, Math.max(0, t2));
     return c * c * (3 - 2 * c);
   };
   function sightlineWeight(distanceM2) {
     const s = SIGHTLINE;
     if (!Number.isFinite(distanceM2) || distanceM2 >= s.reachM || distanceM2 <= s.nearZeroM) return 0;
-    if (distanceM2 > s.fullM) return smooth((s.reachM - distanceM2) / (s.reachM - s.fullM));
-    if (distanceM2 < s.nearFullM) return smooth((distanceM2 - s.nearZeroM) / (s.nearFullM - s.nearZeroM));
+    if (distanceM2 > s.fullM) return smooth2((s.reachM - distanceM2) / (s.reachM - s.fullM));
+    if (distanceM2 < s.nearFullM) return smooth2((distanceM2 - s.nearZeroM) / (s.nearFullM - s.nearZeroM));
     return 1;
   }
   function landmarkSightline(target, engaged, enabled = true) {
@@ -7146,7 +9660,9 @@
     routePassed: "rgba(56,189,248,0.38)",
     rim: "rgba(251,248,242,0.97)",
     rimLine: "rgba(31,28,23,0.28)",
-    rider: "#1f1c17"
+    rider: "#1f1c17",
+    /** Free Ride's unopened places: the HUD copper (hudTheme daylight accent). */
+    place: "#b4682c"
   };
   var CLASS_WIDTH = [3.4, 3, 2.5, 1.9, 1.1, 1.1];
   var CLASS_ORDER2 = [5, 4, 3, 2, 1, 0];
@@ -7490,6 +10006,22 @@
         ctx.lineWidth = 4;
         ctx.stroke();
       }
+      if (view.places?.length) {
+        const ringR = diameter < 120 ? 3 : 3.5;
+        for (const place of view.places) {
+          const o = radarOffset([place[0] - view.at[0], place[1] - view.at[1]], view.rotation, scale);
+          const placed = clampToRim(o, inner - ringR - 2);
+          ctx.globalAlpha = placed.clamped ? 0.6 : 1;
+          ctx.beginPath();
+          ctx.arc(cx + placed.at[0], cy + placed.at[1], ringR, 0, Math.PI * 2);
+          ctx.fillStyle = "#fbf8f2";
+          ctx.fill();
+          ctx.strokeStyle = RADAR_COLORS.place;
+          ctx.lineWidth = 2;
+          ctx.stroke();
+        }
+        ctx.globalAlpha = 1;
+      }
       ctx.restore();
       ctx.save();
       const north = radarOffset([0, 1], view.rotation, 1);
@@ -7580,14 +10112,259 @@
     return false;
   }
 
+  // src/canalRecall/cardKindLabel.ts
+  function camel(raw) {
+    return raw.trim().toLowerCase().split(/[^a-z0-9]+/).filter(Boolean).map((part, index) => index === 0 ? part : part[0].toUpperCase() + part.slice(1)).join("");
+  }
+  function kindLabel(raw) {
+    const text = String(raw || "").trim();
+    if (!text) return "";
+    const key = `kind.${camel(text)}`;
+    return key in CATALOGS.en ? t(key) : text.toUpperCase();
+  }
+
+  // src/canalRecall/game/footerFit.ts
+  var FOOTER_SEPARATOR = " \xB7 ";
+  function fitFooterItems(items, maxWidth, measure) {
+    const kept = items.filter((item) => item.text);
+    const join = (list) => list.map((item) => item.text).join(FOOTER_SEPARATOR);
+    while (kept.length > 1 && measure(join(kept)) > maxWidth) {
+      let lowest = 0;
+      kept.forEach((item, index) => {
+        if (item.rank < kept[lowest].rank) lowest = index;
+      });
+      kept.splice(lowest, 1);
+    }
+    return join(kept);
+  }
+
+  // src/canalRecall/game/routeRemaining.ts
+  function routeSuffixLengths(path) {
+    const suffix = new Float64Array(path.length);
+    for (let i = path.length - 2; i >= 0; i--) {
+      suffix[i] = suffix[i + 1] + Math.hypot(path[i + 1].x - path[i].x, path[i + 1].y - path[i].y);
+    }
+    return suffix;
+  }
+  function remainingRouteDistance(path, player, finish, cache) {
+    const straight = Math.hypot(finish.x - player.x, finish.y - player.y);
+    if (!path || path.length < 2 || !Number.isFinite(player.x) || !Number.isFinite(player.y)) return { distance: straight, cache: null };
+    const memo = cache && cache.path === path ? cache : { path, suffix: routeSuffixLengths(path) };
+    let best = Infinity;
+    let bestRemaining = straight;
+    for (let i = 0; i + 1 < path.length; i++) {
+      const a = path[i], b = path[i + 1];
+      const dx = b.x - a.x, dy = b.y - a.y;
+      const len2 = dx * dx + dy * dy;
+      const t2 = len2 > 0 ? Math.max(0, Math.min(1, ((player.x - a.x) * dx + (player.y - a.y) * dy) / len2)) : 0;
+      const px = a.x + dx * t2, py = a.y + dy * t2;
+      const offset = Math.hypot(player.x - px, player.y - py);
+      if (offset < best) {
+        best = offset;
+        bestRemaining = offset + Math.sqrt(len2) * (1 - t2) + memo.suffix[i + 1];
+      }
+    }
+    const last = path[path.length - 1];
+    const distance = bestRemaining + Math.hypot(finish.x - last.x, finish.y - last.y);
+    return { distance: Math.max(straight, distance), cache: memo };
+  }
+
+  // src/canalRecall/game/pauseCard.ts
+  var PAUSE_DESKTOP = {
+    padX: 32,
+    padTop: 22,
+    padBottom: 20,
+    maxCardW: 520,
+    minInnerW: 240,
+    titleSize: 30,
+    subtitleSize: 13,
+    statsSize: 12,
+    keyGap: 22,
+    rowGap: 6
+  };
+  var PAUSE_PHONE = {
+    padX: 18,
+    padTop: 18,
+    padBottom: 16,
+    maxCardW: 360,
+    minInnerW: 260,
+    titleSize: 26,
+    subtitleSize: 13,
+    statsSize: 12,
+    buttonH: 44,
+    rowGap: 8,
+    buttonPadX: 24
+  };
+  var EDGE = 12;
+  var ELLIPSIS2 = "\u2026";
+  function pauseFonts(fonts, compact) {
+    const spec = compact ? PAUSE_PHONE : PAUSE_DESKTOP;
+    return {
+      title: `800 ${spec.titleSize}px ${fonts.plaque}`,
+      subtitle: `500 ${spec.subtitleSize}px ${fonts.ui}`,
+      stats: `500 ${spec.statsSize}px ${fonts.ui}`,
+      button: "700 14px system-ui, sans-serif"
+    };
+  }
+  function fitLine(measure, text, font, maxW) {
+    if (!text || measure(text, font) <= maxW) return text;
+    let cut = text;
+    while (cut.length > 1) {
+      const space = cut.lastIndexOf(" ", cut.length - 2);
+      cut = space > 0 && measure(cut.slice(0, space) + ELLIPSIS2, font) <= maxW ? cut.slice(0, space) : cut.slice(0, -1);
+      if (measure(cut.trimEnd() + ELLIPSIS2, font) <= maxW) return cut.trimEnd() + ELLIPSIS2;
+    }
+    return ELLIPSIS2;
+  }
+  function pauseCardLayout(measure, strings, viewport, fonts) {
+    const compact = viewport.compact;
+    const spec = compact ? PAUSE_PHONE : PAUSE_DESKTOP;
+    const font = pauseFonts(fonts, compact);
+    const maxCardW = Math.max(160, Math.min(spec.maxCardW, viewport.width - EDGE * 2));
+    const maxInner = maxCardW - spec.padX * 2;
+    let actionRows;
+    let rowH;
+    if (compact) {
+      rowH = PAUSE_PHONE.buttonH;
+      actionRows = strings.actions.map((action, index) => ({
+        indices: [index],
+        w: Math.min(maxInner, measure(action.caption, font.button) + PAUSE_PHONE.buttonPadX * 2)
+      }));
+    } else {
+      rowH = KEYCAP_ROW_H;
+      const widths = strings.actions.map((action) => keycapActionWidth(measure, action, fonts.mono));
+      actionRows = wrapKeycapRows(widths, maxInner, PAUSE_DESKTOP.keyGap).map((indices) => ({
+        indices,
+        w: indices.reduce((sum, i) => sum + widths[i], 0) + (indices.length - 1) * PAUSE_DESKTOP.keyGap
+      }));
+    }
+    const titleText = fitLine(measure, strings.title, font.title, maxInner);
+    const statsText = fitLine(measure, strings.stats, font.stats, maxInner);
+    const subtitleText = fitLine(measure, strings.subtitle, font.subtitle, maxInner);
+    const titleW = measure(titleText, font.title);
+    const statsW = statsText ? measure(statsText, font.stats) : 0;
+    const subtitleW = subtitleText ? measure(subtitleText, font.subtitle) : 0;
+    const innerW = Math.min(maxInner, Math.max(spec.minInnerW, titleW, statsW, subtitleW, ...actionRows.map((row) => row.w)));
+    const cardW = Math.ceil(innerW + spec.padX * 2);
+    let y = spec.padTop;
+    const titleBaseline = y + Math.round(spec.titleSize * 0.8);
+    y += spec.titleSize;
+    let subtitleBaseline = 0;
+    if (subtitleText) {
+      y += 6;
+      subtitleBaseline = y + Math.round(spec.subtitleSize * 0.85);
+      y += spec.subtitleSize + 3;
+    }
+    y += compact ? 14 : 16;
+    const actionsTop = y;
+    y += actionRows.length * rowH + Math.max(0, actionRows.length - 1) * spec.rowGap;
+    let statsBaseline = 0;
+    if (statsText) {
+      y += compact ? 12 : 14;
+      statsBaseline = y + Math.round(spec.statsSize * 0.85);
+      y += spec.statsSize + 3;
+    }
+    y += spec.padBottom;
+    const cardH = Math.round(y);
+    const cardX = Math.round((viewport.width - cardW) / 2);
+    const cardY = Math.round((viewport.height - cardH) / 2);
+    const cx = cardX + cardW / 2;
+    const line = (text, f, width, baseline) => ({ text, font: f, x: cx, baseline: cardY + baseline, width });
+    const rows = actionRows.map((row, r) => {
+      const w = compact ? innerW : row.w;
+      const x = cx - w / 2;
+      const top = cardY + actionsTop + r * (rowH + spec.rowGap);
+      let ax = x;
+      const items = row.indices.map((index) => {
+        const iw = compact ? w : keycapActionWidth(measure, strings.actions[index], fonts.mono);
+        const item = { index, x: ax, w: iw };
+        ax += iw + (compact ? 0 : PAUSE_DESKTOP.keyGap);
+        return item;
+      });
+      return { x, top, w, h: rowH, items };
+    });
+    return {
+      compact,
+      card: { x: cardX, y: cardY, w: cardW, h: cardH },
+      inner: { left: cardX + spec.padX, right: cardX + cardW - spec.padX },
+      cx,
+      title: line(titleText, font.title, titleW, titleBaseline),
+      subtitle: subtitleText ? line(subtitleText, font.subtitle, subtitleW, subtitleBaseline) : null,
+      rows,
+      stats: statsText ? line(statsText, font.stats, statsW, statsBaseline) : null
+    };
+  }
+  function formatPauseTime(seconds) {
+    const s = Math.max(0, Math.floor(Number.isFinite(seconds) ? seconds : 0));
+    const h = Math.floor(s / 3600), m = Math.floor(s % 3600 / 60), sec = s % 60;
+    const two = (n) => String(n).padStart(2, "0");
+    return h ? `${h}:${two(m)}:${two(sec)}` : `${two(m)}:${two(sec)}`;
+  }
+  function pauseStatsText(t2, ride) {
+    const vars = { time: formatPauseTime(ride.timeS), km: formatRideDistance(ride.km, { routed: true }).replace(/ km$/, "") };
+    return !ride.freeRide && ride.attempts > 0 ? t2("ride.pauseSummary", { ...vars, correct: ride.correct, attempts: ride.attempts }) : t2("ride.pauseStats", vars);
+  }
+  function drawPauseCard(ctx, layout, actions, paint) {
+    paint.paper(layout.card);
+    ctx.textAlign = "center";
+    ctx.fillStyle = paint.ink;
+    ctx.font = layout.title.font;
+    ctx.fillText(layout.title.text, layout.cx, layout.title.baseline);
+    if (layout.subtitle) {
+      ctx.fillStyle = paint.muted;
+      ctx.font = layout.subtitle.font;
+      ctx.fillText(layout.subtitle.text, layout.cx, layout.subtitle.baseline);
+    }
+    const bounds = [];
+    for (const row of layout.rows) {
+      for (const item of row.items) {
+        const action = actions[item.index];
+        const done = paint.doneId === action.id;
+        if (layout.compact) {
+          const primary = action.id === "resume";
+          const box = { x: item.x, y: row.top, w: item.w, h: row.h };
+          ctx.fillStyle = primary ? paint.copper : "rgba(31,28,23,.05)";
+          paint.roundRect(ctx, box.x, box.y, box.w, box.h, 12);
+          ctx.fill();
+          if (!primary) {
+            ctx.strokeStyle = paint.rule;
+            ctx.lineWidth = 1;
+            ctx.stroke();
+          }
+          ctx.textAlign = "center";
+          ctx.fillStyle = primary ? "#1f1c17" : done ? paint.good : paint.ink;
+          ctx.font = "700 14px system-ui, sans-serif";
+          ctx.fillText(action.caption, box.x + box.w / 2, box.y + 28);
+          bounds.push({ ...box, id: action.id });
+        } else {
+          ctx.textAlign = "left";
+          const drawn = drawKeycapAction(ctx, paint.roundRect, { x: item.x, top: row.top }, action, {
+            ink: paint.ink,
+            muted: paint.muted,
+            fontMono: paint.fontMono,
+            captionColour: done ? paint.good : void 0
+          }, paint.mouse);
+          bounds.push({ ...drawn.bounds, id: action.id });
+        }
+      }
+    }
+    if (layout.stats) {
+      ctx.textAlign = "center";
+      ctx.fillStyle = paint.muted;
+      ctx.font = layout.stats.font;
+      ctx.fillText(layout.stats.text, layout.cx, layout.stats.baseline);
+    }
+    return bounds;
+  }
+
   // src/canalRecall/game/presentationRuntime.ts
-  var INK = "#1f1c17";
-  var MUTED = "#5f584d";
-  var BODY = "#2e2a23";
-  var ACCENT = "#8a4a18";
+  var INK2 = "#1f1c17";
+  var MUTED2 = "#5f584d";
+  var BODY2 = "#2e2a23";
+  var ACCENT2 = "#8a4a18";
   var GOOD = "#8a4a18";
-  var COPPER = "#c9844a";
-  var RULE = "rgba(31,28,23,0.16)";
+  var COPPER2 = "#c9844a";
+  var RULE2 = "rgba(31,28,23,0.16)";
   var UTILITY_REVEAL_MS = 3e3;
   var FERRY_DOCK_HINT_PX = 150 * 3;
   var RADAR_OVERVIEW_URL = "../data/extracts/amsterdam/own-map-v1/overview.json.gz";
@@ -7678,6 +10455,85 @@
       this.vectorMap.sync(this.camera, this.osmLoader, this.canvas);
       this.vectorMap.setFerryTerminals?.(this.track, this.osmLoader);
       return true;
+    }
+    /**
+     * The start's loading holds (lane S1 #313): the ride-pose hold and the intro hold share one cap (10 s,
+     * `?startHoldCap=` for the sweep; the intro keeps at least 1.8 s); after 1.5 s the loading line says the city is
+     * being built; a hold that ends on its cap arms the reveal's dissolve. `?startHold=0` is today's 4 s / 1.8 s.
+     * game-route.js calls it in place of `_waitForMapSettle(4000)` and `_waitForMapSettle(1800)`.
+     */
+    async _startHoldWait(kind) {
+      if (!this._waitForMapSettle) return;
+      const search = new URLSearchParams(window.location.search);
+      const w = window;
+      if (!startHoldEnabled(w.__canalRecallStartHold ?? search.get("startHold"))) {
+        await this._waitForMapSettle(kind === "ride" ? 4e3 : 1800);
+        return;
+      }
+      if (kind === "ride" || !this._startHold) this._startHold = { spentMs: 0, capped: false, holds: [] };
+      const hold = this._startHold;
+      const cap = startHoldCapMs(search.get("startHoldCap"));
+      const capMs = kind === "ride" ? cap : introHoldCapMs(hold.spentMs, cap);
+      const base = kind === "ride" ? "ride.load.settling" : "ride.load.findingWay";
+      const started = performance.now();
+      const timer = setInterval(() => {
+        if (this.state !== GameState.LOADING) return;
+        const key = startHoldMessageKey(performance.now() - started, base);
+        if (key !== base) this.loadingMessage = t(key);
+      }, 250);
+      this._startHoldTicking = true;
+      try {
+        await this._waitForMapSettle(capMs);
+      } finally {
+        clearInterval(timer);
+        this._startHoldTicking = false;
+      }
+      const out = this._lastMapSettle;
+      const ms = out?.ms ?? Math.round(performance.now() - started);
+      hold.spentMs += ms;
+      hold.capped = !!out?.timedOut;
+      hold.holds.push({ kind, ms, capMs, timedOut: !!out?.timedOut, pending: out?.pending ?? [] });
+      this._revealDissolve = hold.capped ? { at: -1, capped: true } : null;
+    }
+    /**
+     * Under the loading screen, while a start hold waits (lane S1 #313): run the world's settle tick (ground, far and
+     * baked tiers at the held camera) at 10 Hz desktop / 4 Hz touch. The game never synced the world while loading, so
+     * the baked cells the aim planned stayed undrawn and far prisms stood in for them until the reveal.
+     */
+    _tickHeldWorld() {
+      if (!this._startHoldTicking) return;
+      const view = this.vectorMap;
+      if (!view?.settleTick) return;
+      const now = performance.now();
+      let touch = false;
+      try {
+        touch = !!window.matchMedia?.("(pointer: coarse)")?.matches;
+      } catch {
+      }
+      if (!startHoldTicks(touch) || !startHoldTickDue(now, this._startHoldTickAt, touch)) return;
+      this._startHoldTickAt = now;
+      try {
+        view.settleTick();
+      } catch (error) {
+        console.warn("start hold tick", error);
+        this._startHoldTicking = false;
+      }
+    }
+    /** Paint the loading screen over the first ~600 ms of the ride after a capped hold (startHold.ts revealDissolveAlpha). */
+    _drawRevealDissolve(ctx) {
+      const d = this._revealDissolve;
+      if (!d || this.state === GameState.LOADING) return;
+      const now = performance.now();
+      if (d.at < 0) d.at = now;
+      const alpha = revealDissolveAlpha(now - d.at, d.capped);
+      if (alpha <= 0) {
+        this._revealDissolve = null;
+        return;
+      }
+      ctx.save();
+      ctx.globalAlpha = alpha;
+      this.loadingScreen.draw(ctx, this.loadingMessage, 1);
+      ctx.restore();
     }
     /** The zoom to save as the player's: the flight's landing zoom while one owns the camera (introFlight.ts playerZoom). */
     _playerZoom() {
@@ -7891,6 +10747,7 @@
         if (Math.hypot(event.clientX - lastMouse.x, event.clientY - lastMouse.y) > 2) revealUtility();
         lastMouse = { x: event.clientX, y: event.clientY };
         this.hud.hoverPoint = this._eventPoint(event);
+        if (event.target === this.canvas && this._overCardAction(this.hud.hoverPoint)) this.canvas.style.cursor = "pointer";
       }, { passive: true });
       window.addEventListener("keydown", (event) => {
         if (!STEERING_KEYS.has(event.key)) revealUtility();
@@ -7922,16 +10779,24 @@
           const hit = (bounds) => x >= bounds.x && x <= bounds.x + bounds.w && y >= bounds.y && y <= bounds.y + bounds.h;
           const finish = this.state === GameState.FINISHED && this._finishButtonBounds?.find(hit);
           const pause = this.state === GameState.PAUSED && this._pauseButtonBounds?.find(hit);
-          if (finish) this._runFinishAction(finish.id);
+          if (finish) this._runFinishTap(finish.id);
           else if (pause && this._runPauseAction) this._runPauseAction(pause.id);
           else if (this._recenterBtnBounds && hit(this._recenterBtnBounds)) this._recenterCamera();
           else if (this._landmarkCloseBounds && hit(this._landmarkCloseBounds)) this._clearLandmarkNotice();
+          else if (this._landmarkActionBounds && hit(this._landmarkActionBounds)) this._noticeLandmark();
           else if (this._landmarkCardBounds && hit(this._landmarkCardBounds)) this._expandLandmarkNotice();
           else if (this.freeRide && this.state === GameState.RACING) this._freeRideClick(x, y, event.clientX, event.clientY);
           else this._inspectBuildingAt(event.clientX, event.clientY);
         }
         dragging = false;
       });
+    }
+    /** The arrival or pause card action under a canvas point (logical units, as `_eventPoint` returns), or null. */
+    _overCardAction(point) {
+      if (!point) return null;
+      const bounds = this.state === GameState.FINISHED ? this._finishButtonBounds : this.state === GameState.PAUSED ? this._pauseButtonBounds : null;
+      const hit = bounds?.find((b) => point.x >= b.x && point.x <= b.x + b.w && point.y >= b.y && point.y <= b.y + b.h);
+      return hit ? hit.id : null;
     }
     /** True while a DOM overlay owns the screen — quiz, utility, or article. */
     _overlayOpen() {
@@ -7980,9 +10845,22 @@
     /** The destination as the ride may show it: with any street or water name
      *  from this track hidden, so "Keizersgrachtkerk" cannot answer the
      *  Keizersgracht question. The arrival card still shows the real name. */
+    /**
+     * What the destination readout says is left (R2-10, #302): the planned route from the rider to the finish
+     * (routeRemaining.ts), so the start says the route's length, as the landing's Today's ride card does, and not
+     * the straight line. With no planned path, the straight line as before.
+     */
+    _hudDistanceToFinishPx() {
+      if (this.hud && !this.hud.formatKm) this.hud.formatKm = (km) => formatRideDistance(km, { routed: true });
+      const player = this.player;
+      if (!player) return 0;
+      const { distance, cache } = remainingRouteDistance(this.routePath, player, this.track.finishPoint, this._routeRemainingCache);
+      this._routeRemainingCache = cache;
+      return distance;
+    }
     _destinationLabel() {
       if (isReviewStop(this.routeTo) && !this.routeTo.name) return REVIEW_STOP_LABEL;
-      const name = this.routeTo?.name || "";
+      const name = placeName(this.routeTo?.name || "");
       const asking = this.quizPromptName || "";
       const key = `${name}|${asking}`;
       if (this._destinationLabelKey !== key) {
@@ -8006,7 +10884,7 @@
      * sits below the plaque and minimap; on desktop between the top cards.
      */
     _renderFerryNotice(player, showMiniMap) {
-      if (!player.ferryOrigin) return;
+      if (!player.ferryOrigin || this.freeRide) return;
       const ctx = this.ctx;
       const layout = this._hudRects();
       const top = layout.mode === "compact" ? Math.max(layout.recall.y + layout.recall.height, showMiniMap ? layout.minimap.y + layout.minimap.height : 0) + 10 : 72;
@@ -8056,10 +10934,15 @@
     _sightlineEngaged;
     // ---- The frame ----
     _render() {
+      this._renderFrame();
+      if (this._revealDissolve) this._drawRevealDissolve(this.ctx);
+    }
+    _renderFrame() {
       this._syncViewportSize();
       const ctx = this.ctx;
       ctx.clearRect(0, 0, CANVAS_W, CANVAS_H);
       this.hud.beginFrame?.();
+      this._runTick();
       const utility = document.getElementById("utility-buttons");
       if (utility) {
         const visibility = utilityVisibility({ state: this.state, utilityOpen: !!this._utilityOpen });
@@ -8079,6 +10962,14 @@
           const buttons = [...utility.children].map((child) => child.getBoundingClientRect());
           if (card && utilityBlockedByCards(buttons, [card.getBoundingClientRect()])) revealed = false;
         }
+        if (revealed && riding && this._landmarkCardBounds) {
+          const b = this._landmarkCardBounds;
+          const canvas = this.canvas.getBoundingClientRect();
+          const kx = canvas.width / CANVAS_W, ky = canvas.height / CANVAS_H;
+          const card = { left: canvas.left + b.x * kx, top: canvas.top + b.y * ky, right: canvas.left + (b.x + b.w) * kx, bottom: canvas.top + (b.y + b.h) * ky };
+          const buttons = [...utility.children].map((child) => child.getBoundingClientRect());
+          if (utilityBlockedByCards(buttons, [card])) revealed = false;
+        }
         utility.classList.toggle("tucked-all", true);
         utility.classList.toggle("tucked", !revealed);
       }
@@ -8093,10 +10984,12 @@
       }
       if (this.state === GameState.LOADING) {
         this.loadingScreen.draw(ctx, this.loadingMessage, this.loadingProgress);
+        this._tickHeldWorld();
         return;
       }
       if (!this.player) return;
       const player = this.player;
+      if (this.state === GameState.RACING) this._shareTrail = extendShareTrail(this._shareTrail, player, player, this._playerDistancePx());
       this.hud.setTime(this.raceTime);
       if (zoomBadgeShouldFlash(this._lastZoomShown, this.camera.zoom, this._playerZoomPending)) this._zoomBadgeTimer = ZOOM_BADGE_DURATION;
       this._lastZoomShown = this.camera.zoom;
@@ -8182,13 +11075,15 @@
       }
       this.track.placeStartTag = (centreX, defaultCentreY, pill) => startTagCentreY(centreX, defaultCentreY, pill, vehicleBox);
       const asked = this.quizPromptName || this.quizCandidateName || "";
+      const withheld = withheldNames(this);
       const shownText = (text) => displayBridgeName(bridgeDisplayNamesOf(this.bridges), text);
-      if (!this._labelSpoilCache || this._labelSpoilCache.asked !== asked) this._labelSpoilCache = { asked, spoils: /* @__PURE__ */ new Map() };
+      const spoilKey = withheld.length ? `${asked}\0${withheld.join("\0")}` : asked;
+      if (!this._labelSpoilCache || this._labelSpoilCache.asked !== spoilKey) this._labelSpoilCache = { asked: spoilKey, spoils: /* @__PURE__ */ new Map() };
       const spoilCache = this._labelSpoilCache.spoils;
       const spoils = (text) => {
         let hit = spoilCache.get(text);
         if (hit === void 0) {
-          hit = mapLabelSpoils(text, shownText(text), asked);
+          hit = !!asked && mapLabelSpoils(text, shownText(text), asked) || withheld.some((name) => mapLabelSpoils(text, shownText(text), name));
           spoilCache.set(text, hit);
         }
         return hit;
@@ -8196,7 +11091,7 @@
       const tilted = occlusionWanted(pitched, this.vectorMap?.map?.getPitch?.());
       const hiddenBy = (this._streetLabelOcclusion ||= new StreetLabelOcclusion()).frame(this.vectorMap, this.osmLoader, tilted);
       const placement = this._streetLabelPlacement ||= new StreetLabelPlacement();
-      if (free) this.track.drawLabels(ctx, this.camera, () => true, "", player, this._freeRideLabelCandidates(), shownText, hiddenBy, placement);
+      if (free) this.track.drawLabels(ctx, this.camera, (text) => !(withheld.length && spoils(text)), "", player, this._freeRideLabelCandidates(), shownText, hiddenBy, placement);
       else this.track.drawLabels(
         ctx,
         this.camera,
@@ -8256,7 +11151,7 @@
         this.camera
       ) : null;
       const destinationLabel = this._destinationLabel();
-      const distanceToFinish = this.track.getDistanceToFinish(player.x, player.y);
+      const distanceToFinish = this._hudDistanceToFinishPx();
       const merged = this._hudRects().destinationInRecall;
       this.hud.drawPlaque(ctx, {
         routeName: visibleRouteName,
@@ -8314,11 +11209,20 @@
         } else {
           this.hud.drawStick(ctx, this.input.stickView);
         }
-        const parked = this.controlMode === "street" && !!this.player?.streetFollowView?.parked;
-        if (this.input.showTouchHint || parked) this.hud.drawTouchHint(ctx, this.controlMode);
+        if (this._touchHintShowing()) this.hud.drawTouchHint(ctx, this.controlMode);
       }
       if (this.state === GameState.PAUSED) this._renderPaused();
       if (this.state === GameState.FINISHED) this._renderFinish();
+    }
+    /** Whether the touch hint strip is drawn over the d-pad. Parked at the
+     *  start of a street-follow ride it stays up: it is the only thing saying a
+     *  press sets off. The phone's bottom cards stack above it (#286). */
+    _touchHintShowing() {
+      if (!this._hudRects().dpad || this.state !== GameState.RACING || this._overlayOpen() || this._intro) return false;
+      const cards = this;
+      if (this.viewport?.mode === "compact" && (cards._landmarkNotice && (cards._landmarkNoticeAlpha ?? 0) > 0 || cards._neighborhoodNotice && (cards._neighborhoodNoticeTimer ?? 0) > 0)) return false;
+      const parked = this.controlMode === "street" && !!this.player?.streetFollowView?.parked;
+      return !!this.input.showTouchHint || parked;
     }
     /** The plaque's optional lines: quiz feedback (or the home-ring note) and a
      *  real-world cycling ban on this corridor — which never names the street,
@@ -8336,7 +11240,7 @@
           }) || t("ride.noCycling");
         }
       }
-      const homeLearningNote = this.routePattern === "home" && this.viewport.mode === "compact" && Number.isFinite(this._homeLearningRadiusKm) && this._homeLearningRadiusKm > 0 ? `Learning near home \xB7 ~${this._homeLearningRadiusKm.toFixed(1)} km` : "";
+      const homeLearningNote = this.routePattern === "home" && this.viewport.mode === "compact" && Number.isFinite(this._homeLearningRadiusKm) && this._homeLearningRadiusKm > 0 ? `Learning near home \xB7 ${formatRideDistance(this._homeLearningRadiusKm, { aboutWord: t("ride.distance.about") })}` : "";
       return { feedback: this.quizFeedback || homeLearningNote, restrictionNote };
     }
     /** Place the whole HUD for this frame. One call, so every card agrees about
@@ -8477,10 +11381,13 @@
         radiusM: this._radarRadiusM,
         destination: finish && !this.freeRide ? local(finish.x, finish.y) : null,
         route,
-        routeIndex: this._radarRouteIndex ?? 0
+        routeIndex: this._radarRouteIndex ?? 0,
+        places: this.freeRide ? this._freeRideRadarPlaces().map((p) => local(p.x, p.y)) : null
       }, range[0]);
     }
     _radarAt;
+    /** The arrival title as last laid out (size and lines), read by tests. */
+    _finishTitleLayout;
     /** Only while the player is settling in. It used to sit permanently on top
      *  of the recall panel. */
     _renderControlsHint() {
@@ -8488,7 +11395,7 @@
       const ctx = this.ctx;
       const rect = this._hudRects().controlsHint;
       const surface = window.CanalRecallUi.hudSurface;
-      const text = "?  help   \xB7   G  settings   \xB7   M  map   \xB7   O  north   \xB7   D  labels   \xB7   B  buildings   \xB7   P  pause";
+      const text = t("ride.controlsHint");
       ctx.save();
       ctx.globalAlpha = Math.min(1, CONTROLS_HINT_DURATION - this.raceTime);
       ctx.font = `600 11px ${surface.fontMono}`;
@@ -8725,93 +11632,45 @@
     // ---- Pause ----
     _renderPaused() {
       const ctx = this.ctx;
-      const cx = CANVAS_W / 2;
       const compact = this.viewport.mode === "compact";
-      const cardW = Math.min(400, CANVAS_W - 24);
-      const padX = compact ? 18 : 28;
-      const cardX = cx - cardW / 2;
       ctx.fillStyle = "rgba(28,24,18,0.34)";
       ctx.fillRect(0, 0, CANVAS_W, CANVAS_H);
       const actions = [
-        { id: "resume", key: "P / ESC", caption: "Resume" },
-        { id: "route", key: "M", caption: "Route setup" }
+        { id: "resume", key: "P / ESC", caption: t("ride.resume") },
+        { id: "route", key: "M", caption: t("ride.routeSetup") }
       ];
-      if (this._shareUrl) {
-        actions.push({
-          id: "copy",
-          key: "C",
-          caption: this._copiedTimer > 0 ? t("ride.linkCopied") : t("ride.shareRoute")
-        });
-      }
-      const BUTTON_H = 44;
-      const BUTTON_GAP = 8;
-      const titleH = compact ? 56 : 64;
-      const statsH = 28;
-      const actionsH = compact ? actions.length * BUTTON_H + (actions.length - 1) * BUTTON_GAP : 28;
-      const cardH = 20 + titleH + actionsH + statsH + 18;
-      const cardY = (CANVAS_H - cardH) / 2;
-      this.hud.paperCard(ctx, { x: cardX, y: cardY, width: cardW, height: cardH }, { solid: true, radius: 12 });
-      ctx.fillStyle = INK;
-      ctx.font = `800 ${compact ? 30 : 36}px ${window.CanalRecallUi.hudSurface.fontPlaque}`;
-      ctx.textAlign = "center";
-      ctx.fillText("PAUSED", cx, cardY + (compact ? 40 : 46));
-      const pauseButtons = [];
-      this._pauseButtonBounds = pauseButtons;
-      let y = cardY + titleH;
-      if (compact) {
-        for (const action of actions) {
-          const primary = action.id === "resume";
-          const bounds = { x: cardX + padX, y, w: cardW - padX * 2, h: BUTTON_H };
-          ctx.fillStyle = primary ? COPPER : "rgba(31,28,23,.05)";
-          roundRect(ctx, bounds.x, bounds.y, bounds.w, bounds.h, 12);
-          ctx.fill();
-          if (!primary) {
-            ctx.strokeStyle = RULE;
-            ctx.lineWidth = 1;
-            ctx.stroke();
-          }
-          ctx.fillStyle = primary ? "#1f1c17" : action.id === "copy" && this._copiedTimer > 0 ? GOOD : INK;
-          ctx.font = "700 14px system-ui, sans-serif";
-          ctx.fillText(action.caption, bounds.x + bounds.w / 2, y + 28);
-          pauseButtons.push({ ...bounds, id: action.id });
-          y += BUTTON_H + BUTTON_GAP;
-        }
-      } else {
-        ctx.textAlign = "left";
-        let ax = cardX + padX;
-        for (const action of actions) {
-          ctx.font = `700 11px ${window.CanalRecallUi.hudSurface.fontMono}`;
-          const keyW = ctx.measureText(action.key).width + 14;
-          ctx.fillStyle = "rgba(31,28,23,.08)";
-          roundRect(ctx, ax, y + 2, keyW, 20, 5);
-          ctx.fill();
-          ctx.fillStyle = INK;
-          ctx.fillText(action.key, ax + 7, y + 16);
-          const captionX = ax + keyW + 8;
-          ctx.font = "12px system-ui, sans-serif";
-          ctx.fillStyle = action.id === "copy" && this._copiedTimer > 0 ? GOOD : MUTED;
-          ctx.fillText(action.caption, captionX, y + 16);
-          const captionW = ctx.measureText(action.caption).width;
-          pauseButtons.push({
-            x: ax,
-            y: y - 4,
-            w: keyW + 8 + captionW + 8,
-            h: 28,
-            id: action.id
-          });
-          ax = captionX + captionW + 22;
-        }
-        y += 28;
-      }
-      ctx.textAlign = "center";
-      ctx.font = `500 12px ${window.CanalRecallUi.hudSurface.fontUi}`;
-      ctx.fillStyle = MUTED;
-      const kilometres = this._playerDistancePx() / PIXELS_PER_METER / 1e3;
-      ctx.fillText(
-        `${this.hud.formatTime(this.raceTime)}  \xB7  ${kilometres.toFixed(2)} km  \xB7  ${this.quizCorrect} of ${this.quizAttempts} named`,
-        cx,
-        y + 18
-      );
+      const copied = this._copiedTimer > 0;
+      if (this._shareUrl) actions.push({ id: "copy", key: "C", caption: copied ? t("ride.linkCopied") : t("ride.shareRoute") });
+      const free = !!this.freeRide;
+      const destination = free ? "" : this._destinationLabel();
+      const subtitle = free ? [t("freeRide.badge"), this.currentNeighborhood].filter(Boolean).join("  \xB7  ") : destination ? t("hud.toDestination", { name: destination }) : "";
+      const stats = pauseStatsText((key, vars) => t(key, vars), {
+        timeS: this.raceTime,
+        km: this._playerDistancePx() / PIXELS_PER_METER / 1e3,
+        correct: this.quizCorrect,
+        attempts: this.quizAttempts,
+        freeRide: free
+      });
+      const surface = window.CanalRecallUi.hudSurface;
+      const fonts = { plaque: surface.fontPlaque, ui: surface.fontUi, mono: surface.fontMono };
+      const measure = (text, font) => {
+        ctx.font = font;
+        return ctx.measureText(text).width;
+      };
+      const layout = pauseCardLayout(measure, { title: t("ride.paused"), subtitle, stats, actions }, { width: CANVAS_W, height: CANVAS_H, compact }, fonts);
+      this._pauseCardLayout = layout;
+      this._pauseButtonBounds = drawPauseCard(ctx, layout, actions, {
+        ink: INK2,
+        muted: MUTED2,
+        copper: COPPER2,
+        rule: RULE2,
+        good: GOOD,
+        fontMono: surface.fontMono,
+        paper: (rect) => this.hud.paperCard(ctx, { x: rect.x, y: rect.y, width: rect.w, height: rect.h }, { solid: true, radius: 12 }),
+        roundRect,
+        doneId: copied ? "copy" : null,
+        mouse: compact ? null : this.hud.hoverPoint
+      });
     }
     // ---- The arrival card ----
     /**
@@ -8823,6 +11682,12 @@
      * a 38 px stopwatch said it did.
      */
     _renderFinish() {
+      this._recordRunStop();
+      if (this._runCard) {
+        this._renderRunCard(this._runCard);
+        return;
+      }
+      const runText = this._runArrivalLine();
       const ctx = this.ctx;
       ctx.fillStyle = "rgba(28,24,18,.34)";
       ctx.fillRect(0, 0, CANVAS_W, CANVAS_H);
@@ -8835,13 +11700,14 @@
       const gamey = this.gameyFeatures;
       const exploration = this._explorationSnapshot && this._explorationSnapshot.totalRoutes > 0 ? this._explorationSnapshot : null;
       const ribbon = gamey ? this._ribbon : null;
-      const landmark = this._finishLandmark();
+      const buurt = buurtFinishBlurb(this.routeTo, this.neighborhoods);
+      const landmark = buurt ? null : this._finishLandmark();
       const tour = this._tourArrival || null;
       const stamp = this._finishStamp || null;
       const image = landmark ? this._landmarkImages?.get(landmark.id) : void 0;
       const hasImage = !!image && image.complete && image.naturalWidth > 0;
       const rule = (y2) => {
-        ctx.strokeStyle = RULE;
+        ctx.strokeStyle = RULE2;
         ctx.lineWidth = 1;
         ctx.beginPath();
         ctx.moveTo(cardX + padX, y2 + 0.5);
@@ -8851,31 +11717,35 @@
       let bestText = "";
       if (this._raceKey) {
         const stored = getBestTime(localStorage, this._raceKey);
-        if (stored && this.raceTime <= stored.time) bestText = "\u2605  New personal best";
-        else if (stored) bestText = `Personal best  ${this.hud.formatTime(stored.time)}`;
+        if (stored && (this._bestJustSet || this.raceTime <= stored.time)) bestText = t("ride.personalBest.new");
+        else if (stored) bestText = t("ride.personalBest.old", { time: this.hud.formatTime(stored.time) });
       }
+      let touchButtonH = 44;
       const buildBlocks = (level2) => {
         const blocks2 = [];
-        blocks2.push({ height: 74, draw: (top) => {
+        const title = fitFinishTitle(ctx, placeName(this.routeTo.name), innerW);
+        this._finishTitleLayout = title;
+        const titleExtra = (title.lines.length - 1) * title.lineHeight;
+        blocks2.push({ height: 74 + titleExtra, draw: (top) => {
           ctx.textAlign = "left";
-          ctx.fillStyle = ACCENT;
+          ctx.fillStyle = ACCENT2;
           ctx.font = `700 11px ${window.CanalRecallUi.hudSurface.fontMono}`;
-          ctx.fillText(tour?.completed ? "TOUR COMPLETE" : "ARRIVED", cardX + padX, top + 11);
-          ctx.fillStyle = INK;
-          ctx.font = "800 26px system-ui, sans-serif";
-          ctx.fillText(wrapText(ctx, this.routeTo.name, innerW, 1)[0], cardX + padX, top + 42);
-          ctx.fillStyle = MUTED;
+          ctx.fillText(tour?.completed ? t("ride.arrival.tourDone") : t("ride.arrival.header"), cardX + padX, top + 11);
+          ctx.fillStyle = INK2;
+          ctx.font = `800 ${title.size}px system-ui, sans-serif`;
+          title.lines.forEach((line, index) => ctx.fillText(line, cardX + padX, top + 42 + index * title.lineHeight));
+          ctx.fillStyle = MUTED2;
           ctx.font = "13px system-ui, sans-serif";
-          ctx.fillText(wrapText(ctx, `${this.routeFrom.name}  \u2192  ${this.routeTo.name}`, innerW, 1)[0], cardX + padX, top + 64);
+          ctx.fillText(wrapText(ctx, `${placeName(this.routeFrom.name)}  \u2192  ${placeName(this.routeTo.name)}`, innerW, 1)[0], cardX + padX, top + 64 + titleExtra);
         } });
-        if (landmark && level2 < 3 || tour) {
+        if ((landmark || buurt?.text) && level2 < 3 || tour) {
           const photo = hasImage ? level2 >= 2 ? 64 : 88 : 0;
           const textX = cardX + padX + (hasImage ? photo + 16 : 0);
           const textW = cardX + cardW - padX - textX;
           ctx.font = "12px system-ui, sans-serif";
           const blurb = wrapText(
             ctx,
-            tour ? tour.why : this._finishBlurbText(landmark),
+            tour ? tour.why : buurt ? buurt.text : this._finishBlurbText(landmark),
             textW,
             tour ? [4, 3, 3, 3][level2] : [hasImage ? 4 : 3, 3, 2, 2][level2]
           );
@@ -8901,17 +11771,19 @@
               ctx.restore();
             }
             ctx.textAlign = "left";
-            ctx.fillStyle = MUTED;
+            ctx.fillStyle = MUTED2;
             ctx.font = `700 11px ${window.CanalRecallUi.hudSurface.fontMono}`;
             if (tour) {
-              const where = `${tour.title.toUpperCase()}  \xB7  STOP ${tour.stopIndex + 1} OF ${tour.stopCount}`;
+              const where = t("ride.arrival.tourStop", { title: tour.title.toUpperCase(), stop: tour.stopIndex + 1, count: tour.stopCount });
               const credit = [tour.sourceHost, tour.checked].filter(Boolean).join("  \xB7  ");
               ctx.fillText(wrapText(ctx, credit ? `${where}  \xB7  ${credit.toUpperCase()}` : where, textW, 1)[0], textX, top + 10);
+            } else if (buurt) {
+              ctx.fillText(t("ride.arrival.neighborhoodWiki"), textX, top + 10);
             } else {
-              const kind = String(landmark.type || "landmark").toUpperCase();
-              ctx.fillText(landmark.wikipediaUrl ? `${kind}  \xB7  W  WIKIPEDIA` : kind, textX, top + 10);
+              const kind = kindLabel(String(landmark.type || "landmark"));
+              ctx.fillText(landmark.wikipediaUrl ? `${kind}  \xB7  ${t("card.wikipedia")}` : kind, textX, top + 10);
             }
-            ctx.fillStyle = BODY;
+            ctx.fillStyle = BODY2;
             ctx.font = "12px system-ui, sans-serif";
             blurb.forEach((line, index) => ctx.fillText(line, textX, top + 30 + index * 17));
           } });
@@ -8922,18 +11794,21 @@
           { label: recallNoun, value: `${this.quizCorrect}/${this.quizAttempts}` }
         ] : [];
         stats.push(
-          { label: "Time", value: this.hud.formatTime(this.raceTime).slice(0, -2) },
-          { label: "Distance", value: `${(this._playerDistancePx() / PIXELS_PER_METER / 1e3).toFixed(2)} km` }
+          { label: t("ride.stat.time"), value: this.hud.formatTime(this.raceTime).slice(0, -2) },
+          { label: t("ride.stat.distance"), value: `${(this._playerDistancePx() / PIXELS_PER_METER / 1e3).toFixed(2)} km` }
         );
-        if (gamey && this.quizAttempts > 0) stats.splice(1, 0, { label: "Points", value: String(this.quizPoints) });
+        if (gamey && this.quizAttempts > 0) stats.splice(1, 0, { label: t("ride.stat.points"), value: String(this._runArrivalPoints() ?? this.quizPoints) });
+        const difficultyKey = `setup.difficulty.${this.routeDifficulty}`;
+        const viewKey = `setup.view.${String(this.viewMode).replace(/-up$/, "")}`;
+        const known = (key) => key in CATALOGS.en;
         const footerBits = [
-          this.routeDifficulty.charAt(0).toUpperCase() + this.routeDifficulty.slice(1),
-          profile.label,
-          this.viewMode.replace("-", " ").replace(/^./, (c) => c.toUpperCase())
+          { text: known(difficultyKey) ? t(difficultyKey) : this.routeDifficulty.charAt(0).toUpperCase() + this.routeDifficulty.slice(1), rank: 1 },
+          { text: profile.label, rank: 3 },
+          { text: known(viewKey) ? t(viewKey) : this.viewMode.replace("-", " ").replace(/^./, (c) => c.toUpperCase()), rank: 0 }
         ];
-        if (gamey && this.quizBestStreak >= 2) footerBits.push(`Best streak ${this.quizBestStreak}`);
+        if (gamey && this.quizBestStreak >= 2) footerBits.push({ text: t("ride.bestStreak", { count: this.quizBestStreak }), rank: 2 });
         const bestInFooter = level2 >= 1 && !!bestText;
-        if (bestInFooter) footerBits.unshift(bestText.replace("\u2605  ", "\u2605 "));
+        if (bestInFooter) footerBits.unshift({ text: bestText.replace(/^★  /, "\u2605 "), rank: 9 });
         const statsPerRow = compact ? Math.ceil(stats.length / Math.ceil(stats.length / 3)) : stats.length;
         const statRows = Math.ceil(stats.length / statsPerRow);
         const ROW_H = level2 >= 2 ? 42 : 48;
@@ -8945,16 +11820,16 @@
             const column = innerW / inRow;
             const sx = cardX + padX + column * (index % statsPerRow + 0.5);
             const sy = top + row * ROW_H;
-            ctx.fillStyle = INK;
+            ctx.fillStyle = INK2;
             ctx.font = `700 ${compact ? 19 : 21}px ${window.CanalRecallUi.hudSurface.fontMono}`;
             ctx.fillText(stat.value, sx, sy + 24);
-            ctx.fillStyle = MUTED;
+            ctx.fillStyle = MUTED2;
             ctx.font = "11px system-ui, sans-serif";
             ctx.fillText(stat.label, sx, sy + 42);
           });
-          ctx.fillStyle = MUTED;
+          ctx.fillStyle = MUTED2;
           ctx.font = "11px system-ui, sans-serif";
-          ctx.fillText(wrapText(ctx, footerBits.join("  \xB7  "), innerW, 1)[0], cx, top + statRows * ROW_H + 18);
+          ctx.fillText(fitFooterItems(footerBits, innerW, (text) => ctx.measureText(text).width), cx, top + statRows * ROW_H + 18);
         } });
         if (ribbon) {
           blocks2.push({ height: 86, rule: true, draw: (top) => {
@@ -8962,15 +11837,16 @@
           } });
         }
         if (exploration) {
-          const known = exploration.learnedWaterways.length + exploration.learnedStreets.length + exploration.learnedTransitLines.length + exploration.learnedTransitStops.length;
+          const known2 = exploration.learnedWaterways.length + exploration.learnedStreets.length + exploration.learnedTransitLines.length + exploration.learnedTransitStops.length;
           const totals = [];
-          if (known > 0) totals.push(`${known} names`);
-          if (exploration.visitedNeighborhoods.length > 0) totals.push(`${exploration.visitedNeighborhoods.length} neighborhoods`);
-          if (exploration.seenLandmarks.length > 0) totals.push(`${exploration.seenLandmarks.length} landmarks`);
+          const count = (key, n) => t(`${key}.${n === 1 ? "one" : "other"}`, { count: n });
+          if (known2 > 0) totals.push(count("count.names", known2));
+          if (exploration.visitedNeighborhoods.length > 0) totals.push(count("count.neighborhoods", exploration.visitedNeighborhoods.length));
+          if (exploration.seenLandmarks.length > 0) totals.push(count("count.landmarks", exploration.seenLandmarks.length));
           const gain = this._explorationRouteGain;
           const story = finishStory({
             gain: gain || { newNames: 0, newNeighborhoods: 0, newLandmarks: 0 },
-            destinationName: this.routeTo?.name || "",
+            destinationName: placeName(this.routeTo?.name || ""),
             cityName: this._cityDisplayName(),
             newPassportStamps: this._finishPassportFresh || [],
             placeStreak: { days: [], current: 0, best: 0 },
@@ -8979,14 +11855,16 @@
           });
           if (this._finishPlaceStreakLabel) story.streak = this._finishPlaceStreakLabel;
           const fresh = [];
-          if (gain && gain.newNames > 0) fresh.push(`${gain.newNames} names`);
-          if (gain && gain.newNeighborhoods > 0) fresh.push(`${gain.newNeighborhoods} neighborhoods`);
-          if (gain && gain.newLandmarks > 0) fresh.push(`${gain.newLandmarks} landmarks`);
+          if (gain && gain.newNames > 0) fresh.push(count("count.names", gain.newNames));
+          if (gain && gain.newNeighborhoods > 0) fresh.push(count("count.neighborhoods", gain.newNeighborhoods));
+          if (gain && gain.newLandmarks > 0) fresh.push(count("count.landmarks", gain.newLandmarks));
           const knowledgeStacked = compact;
           ctx.font = "12px system-ui, sans-serif";
-          const lineBudget = [Infinity, 4, 2, 1][level2];
+          const lineBudget = [Infinity, 4, 2, runText ? 0 : 1][level2];
           const storyLines = [];
-          for (const sentence of [story.headline, story.detail, story.passport, story.streak, story.guestTease]) {
+          const passportFresh = this._finishPassportFresh || [];
+          const stampCard = passportFresh.length > 0 && stampCardEnabled(typeof location === "undefined" ? "" : location.search);
+          for (const sentence of [story.headline, story.detail, stampCard ? null : story.passport, story.streak, story.guestTease]) {
             if (!sentence) continue;
             const room2 = lineBudget - storyLines.length;
             if (!storyLines.length && wrapText(ctx, sentence, innerW, 2).length > room2 && sentence.includes(" \xB7 ")) {
@@ -9001,10 +11879,10 @@
           const knowledgeH = (knowledgeStacked ? 34 : 18) + (fresh.length ? 18 : 0) + storyLines.length * 16 + 10;
           blocks2.push({ height: knowledgeH, rule: true, draw: (top) => {
             ctx.textAlign = "left";
-            ctx.fillStyle = MUTED;
+            ctx.fillStyle = MUTED2;
             ctx.font = `700 11px ${window.CanalRecallUi.hudSurface.fontMono}`;
-            ctx.fillText("CITY KNOWLEDGE", cardX + padX, top + 12);
-            ctx.fillStyle = BODY;
+            ctx.fillText(t("ride.arrival.cityKnowledge"), cardX + padX, top + 12);
+            ctx.fillStyle = BODY2;
             ctx.font = "12px system-ui, sans-serif";
             if (knowledgeStacked) {
               ctx.fillText(totals.join("  \xB7  ") || t("ride.startExploring"), cardX + padX, top + 30);
@@ -9015,56 +11893,102 @@
             let y2 = top + (knowledgeStacked ? 48 : 30);
             if (fresh.length) {
               ctx.textAlign = "left";
-              ctx.fillStyle = ACCENT;
+              ctx.fillStyle = ACCENT2;
               ctx.font = "11px system-ui, sans-serif";
-              ctx.fillText(`+${fresh.join(", +")} first-time`, cardX + padX, y2);
+              ctx.fillText(t("ride.arrival.firstTime", { bits: fresh.join(", +") }), cardX + padX, y2);
               y2 += 16;
             }
             ctx.textAlign = "left";
-            ctx.fillStyle = BODY;
+            ctx.fillStyle = BODY2;
             ctx.font = "12px system-ui, sans-serif";
             for (const line of storyLines) {
               ctx.fillText(line, cardX + padX, y2);
               y2 += 16;
             }
           } });
+          if (stampCard) {
+            let held = { earned: 0, total: 0 };
+            try {
+              held = stampCount(localStorage);
+            } catch {
+            }
+            blocks2.push({ height: ARRIVAL_STAMP_HEIGHT + 12, rule: true, draw: (top) => {
+              drawArrivalStamp(ctx, {
+                name: passportFresh[0],
+                isNew: true,
+                x: cardX + padX,
+                y: top + 4,
+                width: innerW,
+                fontMono: window.CanalRecallUi.hudSurface.fontMono,
+                more: passportFresh.length - 1,
+                held: held.earned,
+                total: held.total
+              });
+            } });
+          }
         }
         if (bestText && !bestInFooter) {
           blocks2.push({ height: 26, draw: (top) => {
             ctx.textAlign = "left";
-            ctx.fillStyle = bestText.startsWith("\u2605") ? GOOD : MUTED;
+            ctx.fillStyle = bestText.startsWith("\u2605") ? GOOD : MUTED2;
             ctx.font = "bold 13px system-ui, sans-serif";
             ctx.fillText(bestText, cardX + padX, top + 14);
           } });
         }
+        const drawRun = (top) => {
+          if (!runText) return;
+          ctx.textAlign = "left";
+          ctx.font = `700 11px ${window.CanalRecallUi.hudSurface.fontMono}`;
+          ctx.fillStyle = ACCENT2;
+          const runLabel = t("ride.arrival.run");
+          ctx.fillText(runLabel, cardX + padX, top + 13);
+          const textX = cardX + padX + ctx.measureText(runLabel).width + 12;
+          const lineW = cardX + cardW - padX - textX;
+          ctx.fillStyle = INK2;
+          ctx.font = "700 13px system-ui, sans-serif";
+          if (ctx.measureText(runText).width > lineW) ctx.font = "600 12px system-ui, sans-serif";
+          ctx.fillText(wrapText(ctx, runText, lineW, 1)[0], textX, top + 13);
+        };
+        const foldRun = !!runText && !!stamp && level2 >= 3;
+        if (runText && !foldRun) blocks2.push({ height: 20, rule: level2 < 3, draw: drawRun });
         if (stamp) {
-          blocks2.push({ height: 20, draw: (top) => {
+          blocks2.push({ height: foldRun ? 34 : 20, draw: (blockTop) => {
+            if (foldRun) drawRun(blockTop - 2);
+            const top = foldRun ? blockTop + 14 : blockTop;
             ctx.textAlign = "left";
-            const label = stamp.kind === "tour" ? stamp.isNew ? "TOUR STAMP" : "TOUR STAMP AGAIN" : stamp.isNew ? "NEW STAMP" : "STAMP AGAIN";
+            const label = stamp.kind === "tour" ? t(stamp.isNew ? "ride.arrival.tourDone" : "ride.arrival.tourAgain") : t(stamp.isNew ? "ride.arrival.placeNew" : "ride.arrival.placeAgain");
             ctx.font = `700 11px ${window.CanalRecallUi.hudSurface.fontMono}`;
             const labelW = ctx.measureText(label).width;
-            ctx.fillStyle = ACCENT;
+            ctx.fillStyle = ACCENT2;
             ctx.beginPath();
             ctx.arc(cardX + padX + 6, top + 9, 6, 0, Math.PI * 2);
             ctx.fill();
             ctx.fillText(label, cardX + padX + 18, top + 13);
-            ctx.fillStyle = INK;
+            ctx.fillStyle = INK2;
             ctx.font = "700 13px system-ui, sans-serif";
-            const tally = stamp.kind === "poi" && stamp.total > 0 ? `  \xB7  ${stamp.earned} of ${stamp.total}` : "";
+            const tally = stamp.kind === "poi" && stamp.total > 0 ? `  \xB7  ${t("ride.arrival.placeTally", { earned: stamp.earned, total: stamp.total })}` : "";
             const textX = cardX + padX + 18 + labelW + 10;
-            ctx.fillText(wrapText(ctx, `${stamp.name}${tally}`, cardX + cardW - padX - textX, 1)[0], textX, top + 13);
+            const lineRoom = cardX + cardW - padX - textX;
+            const stampName = placeName(stamp.name);
+            let lineText = `${stampName}${tally}`;
+            if (ctx.measureText(lineText).width > lineRoom) lineText = stampName;
+            if (ctx.measureText(lineText).width > lineRoom) ctx.font = "700 12px system-ui, sans-serif";
+            ctx.fillText(wrapText(ctx, lineText, lineRoom, 1)[0], textX, top + 13);
           } });
         }
         const actions = [
           // Say what happens: 'again' deals another route with these settings,
           // 'route' goes back to setup. "Continue" / "Finish" said neither.
-          { id: "again", key: "ENTER", caption: tour && !tour.completed ? t("ride.nextStop") : t("ride.nextRoute") }
+          // In a run the next ride is the run's next stop.
+          { id: "again", key: "ENTER", caption: tour && !tour.completed || runText ? t("ride.nextStop") : t("ride.nextRoute") }
         ];
-        actions.push({ id: "route", key: compact ? "" : "M", caption: "Route setup" });
+        const endRun2 = runText ? { id: "end", key: "E", caption: t("ride.endRun") } : null;
+        actions.push({ id: "route", key: compact ? "" : "M", caption: t("ride.routeSetup") });
         if (this._shareUrl) {
           actions.push({ id: "copy", key: "C", caption: this._copiedTimer > 0 ? t("ride.linkCopied") : t("ride.shareRoute") });
         }
-        const BUTTON_H = 44, BUTTON_GAP = 8;
+        if (endRun2 && !compact) actions.push(endRun2);
+        const BUTTON_H = touchButtonH, BUTTON_GAP = 8;
         const pairSecondary = compact && level2 >= 2 && actions.length === 3;
         const buttonRows = pairSecondary ? 2 : actions.length;
         const finishButtons = [];
@@ -9080,19 +12004,35 @@
                 const primary = action.id === "again";
                 const paired = pairSecondary && index > 0;
                 const halfW = (fullW - BUTTON_GAP) / 2;
-                const bounds = paired ? { x: cardX + padX + (index - 1) * (halfW + BUTTON_GAP), y: by, w: halfW, h: BUTTON_H } : { x: cardX + padX, y: by, w: fullW, h: BUTTON_H };
-                ctx.fillStyle = primary ? COPPER : "rgba(31,28,23,.05)";
+                const endW = primary && endRun2 ? Math.round(fullW * 0.36) : 0;
+                const bounds = paired ? { x: cardX + padX + (index - 1) * (halfW + BUTTON_GAP), y: by, w: halfW, h: BUTTON_H } : { x: cardX + padX, y: by, w: endW ? fullW - endW - BUTTON_GAP : fullW, h: BUTTON_H };
+                if (endW && endRun2) {
+                  const endBounds = { x: cardX + padX + fullW - endW, y: by, w: endW, h: BUTTON_H };
+                  ctx.fillStyle = "rgba(31,28,23,.05)";
+                  roundRect(ctx, endBounds.x, endBounds.y, endBounds.w, endBounds.h, 12);
+                  ctx.fill();
+                  ctx.strokeStyle = RULE2;
+                  ctx.lineWidth = 1;
+                  ctx.stroke();
+                  ctx.textAlign = "center";
+                  ctx.fillStyle = INK2;
+                  ctx.font = "700 14px system-ui, sans-serif";
+                  const endCaption = ctx.measureText(endRun2.caption).width + 16 <= endBounds.w ? endRun2.caption : t("ride.endRunShort");
+                  ctx.fillText(endCaption, endBounds.x + endBounds.w / 2, by + BUTTON_H / 2 + 6);
+                  finishButtons.push({ ...endBounds, id: endRun2.id });
+                }
+                ctx.fillStyle = primary ? COPPER2 : "rgba(31,28,23,.05)";
                 roundRect(ctx, bounds.x, bounds.y, bounds.w, bounds.h, 12);
                 ctx.fill();
                 if (!primary) {
-                  ctx.strokeStyle = RULE;
+                  ctx.strokeStyle = RULE2;
                   ctx.lineWidth = 1;
                   ctx.stroke();
                 }
                 ctx.textAlign = "center";
-                ctx.fillStyle = primary ? "#1f1c17" : action.caption === "Link copied" ? GOOD : INK;
+                ctx.fillStyle = primary ? "#1f1c17" : action.caption === "Link copied" ? GOOD : INK2;
                 ctx.font = "700 14px system-ui, sans-serif";
-                ctx.fillText(action.caption, bounds.x + bounds.w / 2, by + 28);
+                ctx.fillText(action.caption, bounds.x + bounds.w / 2, by + BUTTON_H / 2 + 6);
                 finishButtons.push({ ...bounds, id: action.id });
                 if (!paired || index === actions.length - 1) by += BUTTON_H + BUTTON_GAP;
               });
@@ -9101,21 +12041,16 @@
             }
             ctx.textAlign = "left";
             let ax = cardX + padX;
+            const mouse = this.hud.hoverPoint;
             for (const action of actions) {
-              ctx.font = `700 11px ${window.CanalRecallUi.hudSurface.fontMono}`;
-              const keyW = ctx.measureText(action.key).width + 14;
-              ctx.fillStyle = "rgba(31,28,23,.08)";
-              roundRect(ctx, ax, top + 4, keyW, 20, 5);
-              ctx.fill();
-              ctx.fillStyle = INK;
-              ctx.fillText(action.key, ax + 7, top + 18);
-              ax += keyW + 8;
-              ctx.fillStyle = action.caption === "Link copied" ? GOOD : MUTED;
-              ctx.font = "12px system-ui, sans-serif";
-              ctx.fillText(action.caption, ax, top + 18);
-              const captionW = ctx.measureText(action.caption).width;
-              finishButtons.push({ x: ax - keyW - 8, y: top, w: keyW + 8 + captionW, h: 28, id: action.id });
-              ax += captionW + 22;
+              const drawn = drawKeycapAction(ctx, roundRect, { x: ax, top }, action, {
+                ink: INK2,
+                muted: MUTED2,
+                fontMono: window.CanalRecallUi.hudSurface.fontMono,
+                captionColour: action.caption === "Link copied" ? GOOD : void 0
+              }, scale === 1 ? mouse : null);
+              finishButtons.push({ ...drawn.bounds, id: action.id });
+              ax = drawn.endX + 22;
             }
           }
         });
@@ -9132,10 +12067,10 @@
       let level = 0;
       let blocks = buildBlocks(0);
       const measureCard = (lv, list) => {
-        const { GAP: GAP2, PAD_TOP: PAD_TOP2, PAD_BOTTOM } = spacing(lv);
+        const { GAP: GAP3, PAD_TOP: PAD_TOP2, PAD_BOTTOM } = spacing(lv);
         let height = PAD_TOP2 + PAD_BOTTOM;
         list.forEach((block, index) => {
-          height += (index === 0 ? 0 : block.rule ? GAP2 * 2 : GAP2) + block.height;
+          height += (index === 0 ? 0 : block.rule ? GAP3 * 2 : GAP3) + block.height;
         });
         return height;
       };
@@ -9145,9 +12080,15 @@
         blocks = buildBlocks(level);
         cardH = measureCard(level, blocks);
       }
-      const { GAP, PAD_TOP } = spacing(level);
-      const leadFor = (block, index) => index === 0 ? 0 : block.rule ? GAP * 2 : GAP;
-      const scale = Math.min(1, room / cardH);
+      const { GAP: GAP2, PAD_TOP } = spacing(level);
+      const leadFor = (block, index) => index === 0 ? 0 : block.rule ? GAP2 * 2 : GAP2;
+      let scale = Math.min(1, room / cardH);
+      for (let pass = 0; compact && scale < 1 && touchButtonH * scale < 44 && pass < 4; pass++) {
+        touchButtonH = Math.ceil(44 / scale * 4) / 4;
+        blocks = buildBlocks(level);
+        cardH = measureCard(level, blocks);
+        scale = Math.min(1, room / cardH);
+      }
       const cardY = scale < 1 ? MARGIN : Math.max(MARGIN, Math.min(
         Math.round((CANVAS_H - cardH) / 2),
         CANVAS_H - cardH - bottomReserve
@@ -9234,6 +12175,7 @@
       ctx.globalAlpha = 0.45;
       ctx.stroke();
       ctx.globalAlpha = 1;
+      const ribbonLabel = t(`ribbon.${ribbon.id}`);
       const medalX = boxX + 42, medalY = boxY + 32, medalR = 20;
       ctx.fillStyle = ribbon.color;
       ctx.globalAlpha = 0.75;
@@ -9259,14 +12201,14 @@
       ctx.font = `700 18px ${window.CanalRecallUi.hudSurface.fontMono}`;
       ctx.textAlign = "center";
       ctx.textBaseline = "middle";
-      ctx.fillText(ribbon.id === "none" ? "\xB7" : ribbon.label[0], medalX, medalY + 1);
+      ctx.fillText(ribbon.id === "none" ? "\xB7" : ribbonLabel[0], medalX, medalY + 1);
       ctx.textBaseline = "alphabetic";
       const textX = boxX + 76;
       ctx.textAlign = "left";
       ctx.fillStyle = ribbon.color;
       ctx.font = `700 19px ${window.CanalRecallUi.hudSurface.fontMono}`;
-      ctx.fillText(ribbon.label, textX, boxY + 26);
-      const labelWidth = ctx.measureText(ribbon.label).width;
+      ctx.fillText(ribbonLabel, textX, boxY + 26);
+      const labelWidth = ctx.measureText(ribbonLabel).width;
       ctx.fillStyle = "#94A3B8";
       ctx.font = `11px ${window.CanalRecallUi.hudSurface.fontMono}`;
       ctx.fillText(`${Math.round(ribbon.score * 100)}%`, textX + labelWidth + 12, boxY + 26);
@@ -9277,10 +12219,11 @@
         const w = trackW - 14;
         ctx.fillStyle = "#94A3B8";
         ctx.font = `11px ${window.CanalRecallUi.hudSurface.fontMono}`;
-        let axisText = `${axis.label} ${Math.round(axis.score * 100)}%`;
+        const axisLabel = t(`ribbon.axis.${axis.id}`);
+        let axisText = `${axisLabel} ${Math.round(axis.score * 100)}%`;
         if (ctx.measureText(axisText).width > w) {
           ctx.font = `10px ${window.CanalRecallUi.hudSurface.fontMono}`;
-          axisText = axis.label;
+          axisText = axisLabel;
         }
         ctx.fillText(axisText, x, boxY + 45);
         ctx.fillStyle = "rgba(148,163,184,.25)";
@@ -9316,7 +12259,7 @@
     }
     _saveBestTime() {
       try {
-        recordBestTime(localStorage, this._raceKey, {
+        this._bestJustSet = recordBestTime(localStorage, this._raceKey, {
           time: this.raceTime,
           date: (/* @__PURE__ */ new Date()).toISOString(),
           distance: pixelsToMiles(this._playerDistancePx(), PIXELS_PER_METER)
@@ -9373,9 +12316,15 @@
         const stamped = stampNewNeighborhoods(
           after,
           this._visitedNeighborhoods,
-          readPassport(localStorage)
+          readPassport(localStorage),
+          void 0,
+          // Landmarks noticed on a drive-by card or named in a question (G3).
+          sightingCredit(readSightings(localStorage))
         );
-        if (stamped.fresh.length) savePassport(localStorage, stamped.passport);
+        if (stamped.fresh.length) {
+          savePassport(localStorage, stamped.passport);
+          if (stampCardEnabled(typeof location === "undefined" ? "" : location.search)) void loadStampArt();
+        }
         this._finishPassportFresh = stamped.fresh;
         return after;
       } catch (error) {
@@ -9390,6 +12339,7 @@
   };
   window.CanalRecallRadar = { RadarMap, radarLocal, RADAR_RADIUS_M };
   installFreeRide(GamePresentationRuntime);
+  installChainedRun(GamePresentationRuntime);
   window.CanalRecallGameModules = window.CanalRecallGameModules || [];
   window.CanalRecallGameModules.push(GamePresentationRuntime);
 })();

@@ -1,0 +1,132 @@
+{
+ "street": "Tjerk Hiddes de Vriesstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched n/a (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012143887",
+   "addresses": [
+    "Tjerk Hiddes de Vriesstraat 1"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan den Haenstraat 33-H",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000683993"
+    },
+    {
+     "address": "Tjerk Hiddes de Vriesstraat 1-H",
+     "use": "woonfunctie",
+     "areaM2": 78,
+     "bagId": "0363010000828576"
+    },
+    {
+     "address": "Tjerk Hiddes de Vriesstraat 1-H",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010012084940"
+    }
+   ],
+   "units": 10,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012085871",
+   "addresses": [
+    "Tjerk Hiddes de Vriesstraat 3"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tjerk Hiddes de Vriesstraat 3-H",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000828580"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012129691",
+   "addresses": [
+    "Tjerk Hiddes de Vriesstraat 5",
+    "Tjerk Hiddes de Vriesstraat 7"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tjerk Hiddes de Vriesstraat 5-H",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000828584"
+    },
+    {
+     "address": "Tjerk Hiddes de Vriesstraat 7-H",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000828588"
+    },
+    {
+     "address": "Tjerk Hiddes de Vriesstraat 5-H",
+     "use": "woonfunctie",
+     "areaM2": 101,
+     "bagId": "0363010012084941"
+    },
+    {
+     "address": "Tjerk Hiddes de Vriesstraat 7-H",
+     "use": "woonfunctie",
+     "areaM2": 101,
+     "bagId": "0363010012084942"
+    }
+   ],
+   "units": 10,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012073715",
+   "addresses": [
+    "Tjerk Hiddes de Vriesstraat 9"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tjerk Hiddes de Vriesstraat 9-H",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000828592"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012066203",
+   "addresses": [
+    "Tjerk Hiddes de Vriesstraat 11"
+   ],
+   "groundUnits": [
+    {
+     "address": "Joris van Andringastraat 34-H",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000695536"
+    },
+    {
+     "address": "Tjerk Hiddes de Vriesstraat 11-H",
+     "use": "woonfunctie",
+     "areaM2": 78,
+     "bagId": "0363010000828596"
+    },
+    {
+     "address": "Tjerk Hiddes de Vriesstraat 11-H",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010012084943"
+    }
+   ],
+   "units": 10,
+   "osm": []
+  }
+ ]
+}

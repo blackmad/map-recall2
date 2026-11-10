@@ -1,0 +1,73 @@
+{
+ "street": "Brede Vogelstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched n/a (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012123354",
+   "addresses": [
+    "Brede Vogelstraat 13"
+   ],
+   "groundUnits": [
+    {
+     "address": "Brede Vogelstraat 13",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000595443"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012078306",
+   "addresses": [
+    "Brede Vogelstraat 15"
+   ],
+   "groundUnits": [
+    {
+     "address": "Brede Vogelstraat 15",
+     "use": "woonfunctie",
+     "areaM2": 30,
+     "bagId": "0363010000595445"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012091188",
+   "addresses": [
+    "Brede Vogelstraat 19"
+   ],
+   "groundUnits": [
+    {
+     "address": "Brede Vogelstraat 19",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010001012324"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012065314",
+   "addresses": [
+    "Brede Vogelstraat 21"
+   ],
+   "groundUnits": [
+    {
+     "address": "Brede Vogelstraat 21",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010001012326"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  }
+ ]
+}
