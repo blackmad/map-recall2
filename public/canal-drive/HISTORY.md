@@ -1,5 +1,12 @@
 # Canal Recall — what is built
 
+**H1: HouseSpec, one record per house (2026-11-10, #337, lane/house-h1-spec-20261110 at 613667cb4, opus; house line plan `docs/handoffs/house-line-plan-20261110.md`, docs `docs/house-line.md` §1).**
+- **Why it exists:** each house's facts were scattered across recipe intents, block faces, house records, the monument register and photo judges, with no single place to merge them or say which source won. HouseSpec is that place: one record per pand, provenance per field, merged by the evidence trust order. Every later station (preview, crops, judge, stage) reads and writes it instead of keeping a format of its own.
+- **Code:** `src/canalRecall/houseSpec/` (spec, resolve, adapters, toRecipe, decorate, extractStamp). `schemaLimits` uses a1's `{component, what}` shape and still reads the legacy strings.
+- **Extract:** `house-specs` holds 55 z14 tiles, about 300 kB gzipped, covering 7,224 pands (1,296 recipe route, 5,928 generic). Generic houses draw their measured bays: 403 pands change bay count and 29 change gable. Measured wall colours are held (`SPEC_WALLS_HELD`) because they darkened Kinkerstraat, against the brighter-palette priority.
+- **Byte-identity:** with HOUSE_SPECS=0, 0 of 605 world cells differ; with specs on, 85 cells change. The world-v1 `index.json` records `houseSpecs` on/off and the extract hash. On the baked world the rollback is HOUSE_SPECS=0 at compile, or republishing the previous world-v1; `?houseSpecs=0` works only with `?world=live`.
+- **Open:** odd bay counts round on 2-axis texture cells (a 5-bay front draws as 4 or 6). Pand 182858's L-shaped footprint gets no planned roof. 280 block faces have an intent, not 901.
+
 **Q1: test hygiene (2026-11-10, #335, lane/q1-test-hygiene-20261110 at 2f2c70102, sonnet).**
 - **The flaky test:** `test:engine`'s `bakedCoarse` failed 1/20 under load. Both the dissolve start and the lift deadline read the real clock; `BakedCoarse` now takes an optional `now` (default `performance.now`, game unchanged). After the fix it passed 50/50 under 4–6× load.
 - **ownGround touch timing test:** now uses best-of-3 builds with the same 1.5× bound. It failed 0/10 before and 0/20 after, so this one is not a proven fix.

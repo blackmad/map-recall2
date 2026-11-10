@@ -3,6 +3,23 @@
   "notes": [
     {
       "date": "2026-11-10",
+      "title": "Houses keep their measured window bays",
+      "text": "Ordinary houses we have measured from the street, a block face or the monument register now draw their real number of window bays instead of the generic texture's default rhythm. About 400 houses change.",
+      "images": [
+        {
+          "src": "ui/2026-11-10-house-h1-spec/desktop-kinker-244-332-specs-off.jpg",
+          "alt": "Kinkerstraat 244–332 with the generic window rhythm",
+          "caption": "Before: the generic rhythm."
+        },
+        {
+          "src": "ui/2026-11-10-house-h1-spec/desktop-kinker-244-332-specs-on.jpg",
+          "alt": "Kinkerstraat 244–332 with measured window bays",
+          "caption": "After: each house's measured bays."
+        }
+      ]
+    },
+    {
+      "date": "2026-11-10",
       "title": "Stoops, door surrounds and string courses are back",
       "text": "The small details on ordinary houses had been fading out of view for most camera angles: stoops, door surrounds, string courses, pilasters and flower boxes. A focal-length bug in the fade for thin geometry caused it, and it is now fixed, so these details show from street level again. Details the monument register records for a house are now placed before the random ones.",
       "images": [
