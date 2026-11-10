@@ -22,9 +22,11 @@ const ortho = new OrthoTiles();
 for (const spot of OPEN_GROUND_SPOTS) {
   const H = PROJECT === 'iphone' ? 640 : 450, R = 0.2, S = 160;
   const [cx, cy] = toLocal(spot.lng, spot.lat), n = Math.round(S / R);
-  const o = await sharp(Buffer.from(await ortho.crop(cx - S / 2, cy - S / 2, n, n, R)), { raw: { width: n, height: n, channels: 3 } })
+  // sharp resizes before it composites: mark the centre at full size, then scale.
+  const marked = await sharp(Buffer.from(await ortho.crop(cx - S / 2, cy - S / 2, n, n, R)), { raw: { width: n, height: n, channels: 3 } })
     .composite([{ input: Buffer.from(`<svg xmlns="http://www.w3.org/2000/svg" width="${n}" height="${n}"><circle cx="${n / 2}" cy="${n / 2}" r="10" fill="none" stroke="#ff00ff" stroke-width="3"/></svg>`) }])
-    .resize(H, H).png().toBuffer();
+    .png().toBuffer();
+  const o = await sharp(marked).resize(H, H).png().toBuffer();
   for (const view of ['ride', 'air']) {
     const files = [join(BEFORE, `${PROJECT}-${spot.name}-${view}.png`), join(AFTER, `${PROJECT}-${spot.name}-${view}.png`)];
     if (!files.every(existsSync)) { console.warn(`${spot.name} ${view}: frames missing`); continue; }
