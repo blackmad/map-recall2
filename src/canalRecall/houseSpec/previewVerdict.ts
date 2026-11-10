@@ -45,7 +45,9 @@ export const PREVIEW_GLAZING = LIKENESS.storeyGlazing;
 export type PreviewVerdict = {
   verdict: Verdict; reasons: string[]; warns: string[];
   wall: { a: string; b: string; dL: number; dHue: number | null; pass: boolean };
+  /** informational: `pass` says whether it would be within the tolerance, it never enters the verdict */
   glazing: { a: number; b: number; diff: number; pass: boolean };
+  storeys: { a: number; b: number; pass: boolean };
   columns: { a: number | null; b: number | null; pass: boolean | null };
   window: { a: string | null; b: string | null; pass: boolean | null };
   classes: { a: string; b: string };
@@ -73,14 +75,17 @@ export function previewVerdict(a: FacadeMeasurement, b: FacadeMeasurement, refer
   const shapePass = !rhythmic || !b.window ? null : !!a.window && a.window.shape === b.window.shape;
   const fails: string[] = [], warns: string[] = [];
   if (!wallPass) fails.push(Math.abs(dL) > LIKENESS.dL ? `wall dL ${dL > 0 ? '+' : ''}${dL.toFixed(2)}` : `wall hue ${dHue!.toFixed(0)} deg`);
-  if (!glazingPass) fails.push(`glazing ${a.glazing.toFixed(2)} vs ${b.glazing.toFixed(2)}`);
+  // Glazing does not decide a likeness verdict (docs/house-line.md section 2): it is printed (`glazing`), never a PASS or a FAIL.
+  const sa = Math.max(0, (a.storeyGlazing?.length ?? 1) - 1), sb = Math.max(0, (b.storeyGlazing?.length ?? 1) - 1), storeysPass = sa === sb;
+  if (!storeysPass) fails.push(`storeys ${sa} vs ${sb}`);
   if (shapePass === false) fails.push(`window shape ${a.window?.shape ?? 'none'} vs ${b.window!.shape}`);
-  if (colPass === false) warns.push(`columns ${ca ?? 'none'} vs ${cb}`);
+  if (colPass === false) fails.push(`columns ${ca ?? 'none'} vs ${cb}`);
   const verdict = likenessVerdict({ abstain, fails, warns, iou: null });
   return {
     verdict, reasons: abstain.length ? abstain : fails, warns,
     wall: { a: a.wall.hex, b: b.wall.hex, dL: +dL.toFixed(3), dHue: dHue === null ? null : +dHue.toFixed(1), pass: wallPass },
     glazing: { a: a.glazing, b: b.glazing, diff: +gDiff.toFixed(3), pass: glazingPass },
+    storeys: { a: sa, b: sb, pass: storeysPass },
     columns: { a: ca, b: cb, pass: colPass },
     window: { a: a.window?.shape ?? null, b: b.window?.shape ?? null, pass: shapePass },
     classes: { a: a.frontClass, b: b.frontClass },

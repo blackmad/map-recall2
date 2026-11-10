@@ -25,6 +25,8 @@ export const WALL_VS_TRIM = {
   /** the wall candidate holds at least this share of the clustered cells, and at least `areaRatio` x the band's */
   minShare: 0.15,
   areaRatio: 1,
+  /** with rule B on (`solidBody`): the dark body may be 20 % smaller than the band (0.222 against 0.229 split a Nassaukade render on a 10 cm box change) */
+  areaRatioSolid: 0.8,
   /** trim is near-white or neutral: chroma under this (a thin orange or coloured cluster is not painted trim) */
   maxBandChroma: 12,
   /** the wall candidate is warm (brick, painted brown: a + b > 12, b > 4, as `warm` in measureFacade): a dark neutral cluster beside pale panels is glass, not wall (Zuidoost, Schaafstraat 17) */
@@ -36,6 +38,15 @@ export const WALL_VS_TRIM = {
   sameWall: 12,
 } as const;
 
+/**
+ * Rule B (H2d, `solidBody`): the wall is the solid body in the wall set, not a thin cluster that happens to be enriched
+ * in the floor zones. On a dark photo (Nassaukade 164843: slate wall #353240) the cornice, lintel and sill cluster is
+ * enriched 2-3x in the floor zones and "connected" along them, so it outscored the wall body (enrichment 1.1) and the wall
+ * colour moved from #343040 to #88887d and #2f2d28 with a 4 cm change of the box. A thin (< `maxBandSolid`) picked
+ * cluster gives way to a solid (>= `minSolid`), non-glass wall-set cluster of at least `minShare` and 0.8 x its share.
+ */
+export const SOLID_BODY = {minShare: 0.15, shareRatio: 0.8} as const;
+
 export interface ClusterStat {lab: Rgb; share: number; solid: number; glassy: boolean}
 
 /**
@@ -44,15 +55,23 @@ export interface ClusterStat {lab: Rgb; share: number; solid: number; glassy: bo
  * cluster that outweighs them (and the tones within `sameWall` of it) joins it, and `wallC` is that cluster when the
  * band had been picked.
  */
-export function wallVsTrim(clusters: readonly ClusterStat[], wallSet: readonly boolean[], wallC: number): {wallC: number; wallSet: boolean[]} | null {
+export function wallVsTrim(clusters: readonly ClusterStat[], wallSet: readonly boolean[], wallC: number, solidBody = true): {wallC: number; wallSet: boolean[]} | null {
   const K = WALL_VS_TRIM;
   const isBand = (i: number) => wallSet[i] && clusters[i].lab[0] >= K.minBandL && Math.hypot(clusters[i].lab[1], clusters[i].lab[2]) < K.maxBandChroma && clusters[i].solid < K.maxBandSolid;
   const bands = clusters.map((_, i) => i).filter(isBand);
+  if (solidBody && clusters[wallC].solid < K.maxBandSolid) {
+    let body = -1;
+    clusters.forEach((c, i) => {
+      if (i === wallC || !wallSet[i] || c.solid < K.minSolid || c.share < SOLID_BODY.minShare || c.share < clusters[wallC].share * SOLID_BODY.shareRatio) return;
+      if (body < 0 || c.share > clusters[body].share) body = i;
+    });
+    if (body >= 0) return {wallC: body, wallSet: [...wallSet]};
+  }
   if (!bands.length) return null;
   const bandShare = Math.max(...bands.map(i => clusters[i].share)), bandL = Math.min(...bands.map(i => clusters[i].lab[0]));
   let best = -1;
   clusters.forEach((c, i) => {
-    if (wallSet[i] || c.glassy || c.share < K.minShare || c.share < bandShare * K.areaRatio || c.solid < K.minSolid || c.lab[1] + c.lab[2] <= K.minWarm || c.lab[2] <= K.minWarmB || bandL - c.lab[0] < K.minDarker) return;
+    if (wallSet[i] || c.glassy || c.share < K.minShare || c.share < bandShare * (solidBody ? K.areaRatioSolid : K.areaRatio) || c.solid < K.minSolid || c.lab[1] + c.lab[2] <= K.minWarm || c.lab[2] <= K.minWarmB || bandL - c.lab[0] < K.minDarker) return;
     if (best < 0 || c.share > clusters[best].share) best = i;
   });
   if (best < 0) return null;

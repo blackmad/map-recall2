@@ -234,12 +234,87 @@ them a glass front read as dark wall (Zuidoost Gaasperdam walls[0], Schaafstraat
 `wallVsTrim: false` on `MeasureInput` (`--no-wall-vs-trim` on `preview.ts`, `gate.ts` and `likeness-replay.ts --replay`)
 is the pre-H2c reading. Pinned by `wallTrim.test.ts`: eight hand-labelled fronts (`fixtures/wall-trim/cases.json`: the
 Nassaukade render and photo, 161422, the two recipe fronts, the 116526 strip crop, two white-painted slabs) with a wall
-colour radius, trim yes/no and glazing +-0.1, plus the rule on cluster statistics. Known limit, outside the wall pick: on a
-dark front the opening pass still fills every storey into one frame, so glazing reads 0.86 where the eye says 0.25; four
-labelled fronts pin that miss (`knownMiss`) until the opening pass is fixed.
+colour radius, trim yes/no and glazing +-0.1, plus the rule on cluster statistics. Known limit at H2c, worked on in lane H2d below: on a
+dark front the opening pass filled every storey into one frame (glazing 0.86; hand-drawn openings say 0.37, not the 0.25 first
+read by eye).
 
 The replay behind the no-flip claim: `likeness-replay.ts --dump` (needs `MAP_RECALL_SOURCE_DATA`), then `--replay` with and
 without `--no-wall-vs-trim`, then `--diff`: 448 groups of 160 installed large houses, 0 verdicts and 0 reasons moved.
+
+### Openings and a stable wall (lane H2d)
+
+H2c fixed which cluster is the wall. Two gaps were left, and H7 (the timed pilot) is judged on both: glazing on dark fronts,
+and a wall estimate that moves when the box moves. `measureFacade` now takes `openingSplit` (true = all four parts, false = the
+pre-H2d reading, or an object naming parts; `--no-opening-split` / `--opening-split=<parts>` on `preview.ts`, `gate.ts` and
+`likeness-replay.ts --replay`). Parts, each behind its own switch because each was measured on the 448-group replay alone:
+
+| Part | What it does | Replay (448 groups) | Default |
+|---|---|---|---|
+| `groups` | `facadeOpenings.ts` step 1: the frame-like ring test runs per material group (wall clusters within dE 12), not per cluster. A dark front's wall splits into a body cluster and a lighter one dithered with it; the lighter one touched every opening, so it read as a ring and the whole storey filled into one frame (0.86 glazing, eye 0.37). | 0 verdicts moved, 3 reasons | on |
+| `solidBody` | `wallTrim.ts` rule B: a thin picked cluster (< 35 % solid) gives way to a solid wall-set cluster of at least 15 % and 0.8 x its share (slate wall #353240 against the cornice, lintel and sill cluster that is enriched 2-3x in the floor zones); and rule A's area test takes a 20 % smaller dark body (0.222 against 0.229 split a render on a 10 cm box change). | 0 verdicts moved, 4 reasons | on |
+| `core` | step 4a: an opening piece is its dark glass core (dark cells, and pale cells of a solid cluster: a sky-lit pane) plus a one-cell frame; a lintel, sill or surround strip of <= 0.5 m beyond the glass is trim. Pale upper sashes of a muntined window are as wide as the glass and taller than a strip, so they are never cut. | **8 verdicts moved** (7 worse, 1 better), 66 reasons | off |
+| `clusterWall` | the wall colour is the median over the picked wall cluster's own cells (with the wall-set clusters within dE 12 of it), whatever the opening pass made of them, not over the body cluster with the most interior cells: that count moved with a 10 cm box change and swapped a slate wall for its lintels. | **5 verdicts moved**, 88 reasons | off |
+
+`core` and `clusterWall` would flip installed verdicts, so they stay behind the flag (`OPENING_SPLIT_DEFAULT` in
+`measureFacade.ts`); `OPENING_SPLIT_ALL` is what the gate below judges.
+
+**Labels.** `src/canalRecall/buildingRecipe/fixtures/wall-trim/openings-labels.json` holds, per front, the window openings drawn by
+hand on a metric grid over the crop (lattices of equal windows and loose rects in box metres, glass and frame, not the lintel or
+sill) and `handLabels.ts` turns them into a glazing share of the counted band (v >= 2.5 m up to the wall's top). This replaces H2c's
+"about 0.25 by eye": drawn out, the Nassaukade 164843 render is 0.375 (two windows of 1.6 x 2.1 m on a 3.1 x 5.5 m storey), 161422 is
+0.41 and Haarlemmerweg 940 is 0.27, not 0.40. Twelve fronts: H2c's eight plus four H4 Bloemgrachtbuurt (AB07) crops, copied into
+the fixtures (`ab07-*.jpg`, Amsterdam panoramas CC BY 4.0): 0363100012173056 (a white-painted canal house, strip route),
+0363100012168006 (black wall, white frames, the dark case the brief names), 0363100012168698 and 0363100012169846 (dark grey and
+dark brick). Raw wall labels for these are the median of a hand-chosen bare-wall patch (`wallPatch`); the measured raw wall agrees to
+dE < 6 on all four.
+
+**Gate** (`node --import tsx scripts/house-preview/openings-gate.ts`, the 12 fronts; box jittered +-10 cm on u0, u1 and v1, one edge at
+a time and every corner, 15 boxes):
+
+| front | hand | glazing: before | default | all four parts | wall HSL L spread: before | default | all |
+|---|---|---|---|---|---|---|---|
+| nassau-164843-render | 0.375 | 0.864 | 0.592 | **0.473** | 0.437 | 0.002 | 0.004 |
+| nassau-164843-photo | 0.368 | 0.699 | 0.728 | 0.728 miss | 0.341 | 0.304 | **0.014** |
+| nassau-161422-render | 0.408 | 0.797 | 0.546 | **0.404** | 0 | 0 | 0.002 |
+| heren-175702-render | 0.443 | 0.338 | 0.338 | 0.338 (-0.105, miss by 0.005) | 0.002 | 0.002 | 0.002 |
+| keizers-171052-render | 0.52 | 0.479 | 0.479 | 0.401 (-0.12, miss) | 0.01 | 0.01 | 0.01 |
+| nassau-116526-strip | 0.357 | 0.304 | 0.304 | 0.293 | 0.004 | 0.004 | 0.004 |
+| haarlemmerweg-940-white | 0.27 | 0.259 | 0.259 | 0.259 | 0 | 0 | 0.002 |
+| marnixstraat-248-white | 0.45 | 0.42 | 0.42 | 0.42 | 0 | 0 | 0 |
+| ab07-168006-dark | 0.401 | 0.701 | 0.701 | 0.557 miss | 0.006 | 0.006 | 0.004 |
+| ab07-173056-white | 0.441 | 0.38 | 0.38 | 0.38 | 0.002 | 0.002 | 0.002 |
+| ab07-168698-dark | 0.498 | 0.18 | 0.18 | 0.18 miss | 0.002 | 0.002 | 0.002 |
+| ab07-169846-dark | 0.555 | 0.806 | 0.806 | 0.716 miss | 0.02 | 0.02 | 0.02 |
+| within +-0.10 | | 5/12 (1 of 7 dark) | 5/12 | **6/12 (2 of 6 dark)** | max 0.437 | max 0.304 | **max 0.02** |
+
+The wall spread gate (<= 0.02) is met with all four parts on. The glazing gate is **not** met: 6 of 12 fronts are within +-0.10 and
+the dark ones are 2 of 6 (the render and 161422). `handLabels.test.ts` pins the six misses at today's reading (+-0.02) so the test
+fails when one is fixed and the label is promoted. Causes, traced: the photo's panes are lighter than its wall and split between
+clusters (164843 photo, 168006: a light pane block that merges with the cornice and with its neighbour); the windows of 168698 read
+as one wall-coloured cluster (the colours cannot separate a black pane from a black wall; the white frames would, and a frame-ring
+detector was tried on 168006 and found nothing because its panes are light blocks, not rings); muntined windows with pale upper
+sashes lose 0.05-0.10 against the label (heren, keizers). The 0.10-wide gate is tight against hand rectangles that include the frame.
+
+**Replay.** `likeness-replay.ts --dump`, then `--replay` per reading, then `--diff` against the H2c baseline (FAIL 263, NO EVIDENCE
+94, WARN 69, PASS 22): default (`groups` + `solidBody`): **0 verdicts moved**, 7 reasons moved, 441 same (FAIL 263, NO EVIDENCE 94, WARN 69, PASS 22, unchanged);
+all four parts: 13 verdicts moved, 139 reasons moved (FAIL 270, NO EVIDENCE 94, WARN 62, PASS 22): the model side of the comparison is frozen
+in the dump and counts its windows whole, so a photo that now reads fewer, trimmed windows drifts from it. Whether the comparator or the
+reading is right is the integrator's call; nothing is flipped until then. `groups` and `solidBody` alone: 0 moved each.
+
+### Glazing does not decide a likeness verdict (house line)
+
+In every house-line verdict (`previewVerdict`: `house:preview --photo`, its gate, and later `house:describe`, H7 and H9) glazing is
+**informational**: printed (`glazing (info) a vs b` in the sheet title, `verdict.glazing` in `measure.json`), never a PASS or a FAIL.
+The verdict is decided by the **wall colour family** (dL <= 0.12, hue <= 12 degrees), the **window column count** (+-20 %), the
+**storey count** and the window shape class. A column or storey miss is a FAIL (the column miss used to be a WARN). Reason: glazing
+is the least reliable number the measurer produces on a photo (the hand-drawn gate in "Openings and a stable wall" has six pinned
+misses of 0.1-0.36), while the installed-house gate (`likenessGate`, `install-large`) keeps its own glazing tolerance untouched.
+
+**Measure profiles** (`measureFacade.ts` `MEASURE_PROFILES`): `installGate` = groups + solidBody, the 0-flip reading (the 448-group replay
+moves no verdict; it is the `measureFacade` default, so `likenessGate`, `install-large` and every caller that names no profile use it);
+`houseLine` = groups + solidBody + core + clusterWall, used by `house:preview` and its gate. Every sheet header prints
+`measure profile <name>`, and `measure.json` carries `profile`. `--no-opening-split` and `--opening-split=<parts>` override it (the
+header then says `pre-H2d` or `custom`).
 
 ### 3/4 view
 
@@ -354,6 +429,11 @@ Flags
                       sun and sky of the ride's sunny rig, wall gain, sky tint on glazing)
   --no-wall-vs-trim   measure the wall as before lane H2c: a pale thin band may be picked as the wall on a dark front
                       (default: wallTrim.ts, the dark body outweighing the bands is the wall)
+  --opening-split=<p> measure with the named opening-split parts only (groups, core, solidBody, clusterWall; comma-separated)
+                      instead of the house-line profile (all four parts); every sheet header names the profile used
+  --no-opening-split  measure as before lane H2d: every storey of a dark front fills into one frame, the wall colour is the
+                      median of the body cluster with the most interior cells (default: each opening is its glass plus
+                      a one-cell frame, lintels and sills are trim, the wall is the median over the picked wall cluster)
   --glb-lit           draw a GLB route's front through the rig's Lambert too (default: flat game colours,
                       which matched the ride frame; the Lambert drew an installed wall 0.11 L dark)
   --wall <edge|deg>   frame this footprint wall: an edge index of the outer ring (the audit's edge field) or the edge whose outward
@@ -367,6 +447,9 @@ Flags
   --ppm <n>           pixels per metre of the front elevation (default 50, the rectified photos' scale)
   --out <dir>         output directory (default artifacts/house-preview/<pand>)
   --help              this text
+
+Verdict: wall colour family (dL, hue), window column count, storey count and window shape decide; glazing is printed
+(information), never a PASS or a FAIL.
 
 Output: <out>/front.png, threeq.png (--threeq), photo.png + compare.png (--photo), measure.json (route, timings, wall,
 overrides, measurements, verdict). The sheet header names the route and the look. Render and photo are both blurred
