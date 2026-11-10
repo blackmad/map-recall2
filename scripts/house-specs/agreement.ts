@@ -19,7 +19,38 @@ Hand truth: the block-face intents (scripts/block-face/faces/*/intent.json, auth
   hand      pands with a hand value for the field
   written   of those, pands where the writer stated the field
   agree     of those, the same value
-  precision agree / written        recall agree / hand`;
+  precision agree / written        recall agree / hand
+
+The photo-read hand set (data/house-line/hand-set-v1.json, docs/house-line.md §4c) is the gate set since H5h: score the writers
+against it with --hand-set (runs scripts/house-specs/hand-set/score.ts: reader ceiling, per-field gates = blind reader ceiling - 0.1
+(GATE_MARGIN), Wilson 95 % intervals; a writer fails only when the top of its interval is below the gate; gable needs n >= 60, MIN_N).
+
+  node --import tsx scripts/house-specs/agreement.ts --hand-set [--out data/house-line/hand-set-v1.scores.json]`;
+
+/**
+ * Writer gates against the photo-read hand set (judgement rulings on H5h #351, docs/house-line.md §4c): per field, the gate is the
+ * blind reader ceiling minus 0.1, computed from the ceiling each time it is re-measured (round 3: the round-2 floors came from the
+ * first ceiling and are gone). A writer FAILS only when the top of its Wilson 95 % interval is below the gate (a small n cannot
+ * fail a writer that might be good); it PASSES when the bottom is at or above the gate; otherwise the verdict is OPEN. A field
+ * with a MIN_N gives no pass or fail verdict under that n (gable: 60 stated pands).
+ */
+export const GATE_FIELDS = ['bays', 'storeys', 'gable', 'finish', 'pui', 'wallTone', 'wallFamily'] as const;
+export type GateField = (typeof GATE_FIELDS)[number];
+export const GATE_MARGIN = 0.1;
+export const MIN_N: Partial<Record<GateField, number>> = { gable: 60 };
+export const gateFor = (ceiling: number) => +(ceiling - GATE_MARGIN).toFixed(3);
+/** Wilson score interval for k successes of n (z 1.96). */
+export function wilson(k: number, n: number, z = 1.96): [number, number] {
+  if (!n) return [0, 1];
+  const p = k / n, d = 1 + (z * z) / n, c = p + (z * z) / (2 * n), r = z * Math.sqrt((p * (1 - p)) / n + (z * z) / (4 * n * n));
+  return [+Math.max(0, (c - r) / d).toFixed(3), +Math.min(1, (c + r) / d).toFixed(3)];
+}
+export type Verdict = 'pass' | 'open' | 'fail' | 'n/a';
+export function verdict(k: number, n: number, gate: number, minN = 0): { lo: number; hi: number; verdict: Verdict } {
+  if (!n) return { lo: 0, hi: 1, verdict: 'n/a' };
+  const [lo, hi] = wilson(k, n);
+  return { lo, hi, verdict: n < minN ? 'open' : hi < gate ? 'fail' : lo >= gate ? 'pass' : 'open' };
+}
 
 export const WALL_L = 0.12;
 const FIELDS = ['bays', 'gable', 'finish', 'storeys', 'pui', 'wall'] as const;
@@ -121,6 +152,7 @@ async function main() {
   const argv = process.argv.slice(2);
   if (argv.includes('--help')) { console.log(HELP); return; }
   const opt = (n: string) => { const i = argv.indexOf(`--${n}`); return i >= 0 ? argv[i + 1] : undefined; };
+  if (argv.includes('--hand-set')) { const { scoreHandSet } = await import('./hand-set/score.ts'); scoreHandSet({ out: opt('out') }); return; }
   const code = opt('buurt'); if (!code) { console.error('--buurt <code> required'); process.exit(2); }
   const dir = opt('dir') ?? path.resolve('scripts/house-specs/generated', code);
   const envs: Envelope[] = fs.readdirSync(dir).filter(f => f.endsWith('.json')).map(f => JSON.parse(fs.readFileSync(path.join(dir, f), 'utf8')));

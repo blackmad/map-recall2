@@ -168,7 +168,11 @@ export function overridePatch(o: Override): { patch: Record<string, unknown>; ap
   const g = typeof front.gable === 'string' ? GABLE_WORDS[front.gable] ?? front.gable : undefined;
   if (g && (GABLE_SHAPES as readonly string[]).includes(g)) { patch.monumentGable = g; applied.push(`fronts[0].gable -> monumentGable=${g}`); }
   else if (front.gable !== undefined) notApplied.push(`fronts[0].gable (${String(front.gable)}: not a GableShape)`);
-  for (const k of Object.keys(front)) if (k !== 'gable' && k !== 'id') notApplied.push(`fronts[0].${k}`);
+  // The stated bays, as the game's decorator writes them once released (houseSpec/decorate.ts specRecipe.bays): the
+  // mesher fits the street run to them (whole cells, or half-cell axis units for an odd count, H1c #350).
+  const bays = Number.isInteger(front.axisGrid) ? front.axisGrid as number : Number.isInteger(front.bays) ? front.bays as number : undefined;
+  if (bays && bays > 0) { patch.specRecipe = { bays }; applied.push(`fronts[0].${Number.isInteger(front.axisGrid) ? 'axisGrid' : 'bays'} -> specRecipe.bays=${bays}`); }
+  for (const k of Object.keys(front)) if (k !== 'gable' && k !== 'id' && !(bays && (k === 'bays' || k === 'axisGrid'))) notApplied.push(`fronts[0].${k}`);
   // The wall colour: threeBuildingFeatures meshBuildingFor takes `facadeMappedColour` as the sourced wall in the photo look.
   const palette = (o.design.palette ?? {}) as Record<string, unknown>;
   const wallKey = ['wall', 'brick'].find(k => typeof palette[k] === 'string' && /^#[0-9a-f]{6}$/i.test(palette[k] as string));
