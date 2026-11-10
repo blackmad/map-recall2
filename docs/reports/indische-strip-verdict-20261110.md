@@ -201,3 +201,33 @@ Next re-sheet:
 - Javastraat 97, 99 and 115: brick #72604f.
 - Javastraat 119: flip its mirror and give it its own dormer.
 - Javastraat 121: needs a mirror flip and a stepped crown, so it is a separate job.
+
+## Round 5 (lane at 4c5c5f95e, install 4111b2b40; sheets of 2026-11-10 03:15)
+
+### Javastraat 115 (installed in 4111b2b40): **CONFIRMED**
+- There is no install sheet for r2. `sheet-java-93-149-r2.jpg` is still the 03:01 round-4 render.
+- I verified the installed intent instead. At 4111b2b40, house 115 carries `paletteOverrides {brick: "#72604f"}`. In
+  `houseType.ts` the palette resolves as `{...named, ...measured, ...paletteOverrides}`, so the pin beats the
+  trim-normalised `measuredPalette` #846f67.
+- The same pin renders on the r3 sheet (97/99) as **#7e6a57 against photo #695b52 and #635145**. That is about +12,
+  in the same band as Djambi and Lampong, and both pands pass the wall check.
+- So 115 at #72604f is in tone with 101-109 and its photo (#6d5d52). 113 and 117 stay installed.
+- Follow-up: re-sheet r2 from the installed intent, so the archive holds the shipped look.
+
+### Per-pand list
+
+| run | pand | verdict | why |
+|---|---|---|---|
+| java-93-149-r2 | Javastraat 113, 115, 117 | **INSTALL** (already installed, confirmed) | See above |
+| soenda-2-36-r1 | Soendastraat 28, 26, 24, 22, 20, 18 | **INSTALL** | The #6c5647 pin is applied this time. The model wall is **#796150, uniform along the row**, against photo #745e51-#776052, about +4. That is the closest tone in the library and has no two-tone split. Mirrors: 28 right, 26 left, 24 right, 22 left, 20 right, 18 left, matching the photo's arched pairs. The two-dark-openings door is accepted as in round 4 |
+| soenda-2-36-r2 | Soendastraat 14, 12, 10 | **INSTALL** | Model #7a604f / #7a6053 against photo #745f4c. Mirrors are 14 left, 12 right, 10 left, as in the photo |
+| java-93-149-r3 | Javastraat 97 (132949) | **INSTALL** (likeness) | Brick renders #7e6a57 against photo #695b52, within the row. Mirror is [narrow pair][balcony][wide], as in the photo. 7 gates pass |
+| java-93-149-r3 | Javastraat 99 (138717) | **HOLD (gate only)** | Likeness passes: [wide][balcony][pair] as in the photo, brick #7e6a57 against #635145. The sheet shows **GATES: triangle-budget** at 3176 triangles. Install it once it is re-placed with r1 and passes the budget; no likeness re-review is needed unless the re-place changes the front |
+| java-93-149-r2 | Javastraat 119, 121 | HOLD (lane's dormer hold) | Mirrors are pinned from the photo; nothing to review this round |
+
+### Install list (round 5)
+- Installs added this round:
+  - Soendastraat 10, 12, 14, 18, 20, 22, 24, 26, 28 (9 pands).
+  - Javastraat 97 (1 pand).
+- Confirmed already installed: Javastraat 113, 115, 117.
+- Held: Javastraat 99 (triangle gate only), 119 and 121 (dormers), and the earlier holds.
