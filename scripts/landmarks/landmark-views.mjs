@@ -1,11 +1,17 @@
-// Usage: PORT=4445 node scripts/landmarks/landmark-views.mjs <id> <views.json> <outDir>
+// Usage: node scripts/landmarks/landmark-views.mjs <id> <views.json> <outDir> [--browser]
+// Since lane H12 (docs/house-line.md §8) this draws in Node by default (scripts/glb-raster/views.ts: same views, same
+// lights, no dev server, no browser slot). --browser keeps the Chromium path below: PORT=4445 and a dev server.
 // Renders every view in views.json ([{name, light?, kind, ...}], see landmark-views.ts) of the installed GLB into
 // <outDir>/<name>.png through a throwaway page public/canal-drive/_lv.html. Default views when views.json is '-':
 // the gallery card (orbit theta .55, phi 1.02, gallery light), the same in game shading, and four game-shaded 3/4 orbits.
 import {chromium} from '@playwright/test';
 import {execFileSync} from 'node:child_process';
 import fs from 'node:fs';
-const [id, viewsFile, outDir] = process.argv.slice(2);
+const [id, viewsFile, outDir] = process.argv.slice(2).filter(a => !a.startsWith('--'));
+if (!process.argv.includes('--browser')) {
+  execFileSync(process.execPath, ['--import', 'tsx', 'scripts/glb-raster/views.ts', id, viewsFile, outDir], {stdio: 'inherit'});
+  process.exit(0);
+}
 const port = process.env.PORT || 4445;
 execFileSync('npx', ['esbuild', 'scripts/landmarks/landmark-views.ts', '--bundle', '--format=iife', '--log-level=warning', '--outfile=public/canal-drive/_lv.bundle.js'], {stdio: 'inherit'});
 fs.writeFileSync('public/canal-drive/_lv.html', '<!doctype html><meta charset=utf-8><body><script src="_lv.bundle.js"></script>');
