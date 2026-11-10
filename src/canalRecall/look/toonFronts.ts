@@ -30,5 +30,5 @@ export const TOON_GROUND_PAINTS: readonly string[] = ['#f1eee6', '#f1eee6', '#f1
 export function toonFrontsActive(): boolean {
   if (!toonLookFlag()) return false;
   const g = globalThis as { __canalRecallToonFronts?: string; location?: { search?: string } };
-  return (g.__canalRecallToonFronts ?? new URLSearchParams(g.location?.search ?? '').get('toonFronts')) !== 'candy';
+  return (g.__canalRecallToonFronts ?? (typeof URLSearchParams === 'function' ? new URLSearchParams(g.location?.search ?? '').get('toonFronts') : null)) !== 'candy';
 }

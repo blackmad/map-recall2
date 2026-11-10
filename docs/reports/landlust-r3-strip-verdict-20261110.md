@@ -173,3 +173,33 @@ their targets too, all ✓ on the sheets:
 | Coppelstock | #6b5b46 |
 | Haringstraat 26-38 | #6a573d |
 | Leijnsenstraat 2-30 | #6c593e |
+
+## Round 5 (lane at 14c6141cc, sheets `round5-final/`), by eye
+
+All 16 runs: **MERGE.**
+- Slot blocks: andringa-1-31-r1, andringa-4-32-r1, callenburg-2-32-r1/r2, callenburg-3-63, haen-3-31-r1/r2, haen-6-62-r1/r2/r3, zwijgerlaan-225-279-r1/r2.
+- Treslong: treslong-5-19-a/b, treslong-21-35-a/b.
+
+### Slot blocks
+**Slab.** One continuous canopy across about 0.32–0.69 on every run, sitting on the door heads. The round-4 gap and float are gone.
+
+**Doors.** Four single leaves with no fanlight, matching the photo's count and spacing. Callenburgstraat 3-63 is dark green, as in the photo.
+
+**Dormers.** They now read as zinc dormers, not grey cubes:
+- a 3-light glass band across most of the front;
+- smooth grey cheeks with a dark cap;
+- width and height in proportion with the photo (andringa-1-31-r1 checked side by side at 1.5×);
+- placed over the end window pairs on Haen, Zwijgerlaan and Callenburgstraat 2-32, matching the photo.
+- Callenburgstraat 3-63 correctly has none.
+
+Follow-ups, not blocking:
+- The photos of Andringa, Haen and Callenburgstraat 2-32 also show dark green-black doors. The model draws khaki/dark-brown leaves there, so the Callenburgstraat 3-63 door colour could be applied to the whole type.
+- On Andringa the photo's dormers sit further inward, flanking the slot lights.
+
+### Treslong party dormer
+- **Seam: fixed.** At 4× zoom it is one cream frame, about 2.2 × 1.0 m, with two lights and one thicker centre post. It straddles the party wall on the roof foot just above the gutter band, where the photo has it.
+- **Cheeks: pale is right.** The lane worried the cheeks read pale, but they are cream in the photo too.
+
+Follow-up, not blocking:
+- **Cap.** The dark slate cap merges into the slate roof, so no cap shows above the frame in the ortho view. In the photo the cap is a visible overhanging fascia, pale grey-beige with a dark underside, about 0.15–0.2 m deep.
+- **Fix:** colour the cap's fascia edge about #9a988c, keep its top slate, and the dormer will read as a box rather than a window set in the roof.

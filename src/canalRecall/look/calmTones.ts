@@ -24,7 +24,7 @@ export const roofFamilies = (): readonly string[] => (families ??= [
 
 function flagOf(name: string, global: string): boolean {
   const g = globalThis as Record<string, unknown> & { location?: { search?: string } };
-  const asked = g[global] ?? new URLSearchParams(g.location?.search ?? '').get(name);
+  const asked = g[global] ?? (typeof URLSearchParams === 'function' ? new URLSearchParams(g.location?.search ?? '').get(name) : null);
   return asked === true || asked === '1' || asked === 'true' || asked === 'on';
 }
 let treeFlag: boolean | null = null, roofFlag: boolean | null = null;
