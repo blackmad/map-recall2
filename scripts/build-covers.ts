@@ -13,7 +13,7 @@
  * Output is staging: `artifacts/bag-tiles/covers.json`. Publishing it to
  * `public/canal-drive/models/covers.json` is the integrator's step.
  *
- * Usage: tsx scripts/build-covers.ts [--tiles=artifacts/bag-tiles/bag-tiles/14] [--out=artifacts/bag-tiles/covers.json]
+ * Usage: tsx scripts/build-covers.ts [--tiles=public/data/extracts/amsterdam/bag-tiles/14] [--out=artifacts/bag-tiles/covers.json]
  */
 import fs from 'node:fs';
 import path from 'node:path';
@@ -26,7 +26,8 @@ import { COVERS_VERSION, coversPand, shortPandId, type CoversEntry, type CoversF
 import { ringsFootprint, unionFootprint } from '../src/canalRecall/landmarks/osmUnderModels';
 
 const flag = (name: string): string | undefined => process.argv.find(a => a.startsWith(`--${name}=`))?.slice(name.length + 3);
-const tilesDir = flag('tiles') ?? path.join(ROOT, 'artifacts/bag-tiles/bag-tiles/14');
+// The published tiles first (the disk sweep removes artifacts/), as check-covers.ts reads them.
+const tilesDir = flag('tiles') ?? [path.join(ROOT, 'public/data/extracts/amsterdam/bag-tiles/14'), path.join(ROOT, 'artifacts/bag-tiles/bag-tiles/14')].find(fs.existsSync)!;
 const outFile = flag('out') ?? path.join(ROOT, 'artifacts/bag-tiles/covers.json');
 
 const index = loadBagTiles(tilesDir);
