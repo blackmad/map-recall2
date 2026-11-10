@@ -4,8 +4,10 @@
 // Two bounded fixes, both measured in pop-bands' `treeTiles`:
 //  - a keep band: a resident tile stays while it ranks within `budget + keepExtra` of the wanted (in-view) tiles; a
 //    tile not yet resident is only added within `budget`. At most `budget + keepExtra` tiles are drawn.
-//  - a recently-dropped cache: a tile that does leave keeps its parsed records for `cacheMs` (at most `cacheMax`
-//    tiles, oldest evicted first; 8 held only ~11 s of a 42-drop/min flight, 24 holds about the 45 s aerial loop), so coming back within that time restores it without a fetch or parse.
+//  - a recently-dropped cache: a tile that does leave keeps its fetched bytes for `cacheMs` (at most `cacheMax`
+//    tiles, oldest evicted first; 8 held only ~11 s of a 42-drop/min flight, 24 hold about the 45 s aerial loop),
+//    so coming back within that time restores it without a fetch. (Parsed records held this way, with
+//    their compiled instance arrays, cost +6 % heap after GC on desktop; ~170 kB of gzip bytes a tile does not.)
 // `?treeTileKeep=0` (or `window.__canalRecallTreeTileKeep = false`) restores the plain nearest-12 set and no cache.
 
 export const TREE_TILE_KEEP_DEFAULT = true;
@@ -36,7 +38,7 @@ export function keepTiles(ranked: readonly string[], resident: ReadonlySet<strin
   return keys;
 }
 
-/** Parsed tiles that just left, for `cacheMs`, at most `cacheMax` (oldest evicted). */
+/** Tiles that just left (their fetched bytes), for `cacheMs`, at most `cacheMax` (oldest evicted). */
 export class DroppedTileCache<T> {
   private readonly items = new Map<string, { data: T; at: number }>();
   restores = 0;
