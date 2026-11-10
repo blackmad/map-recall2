@@ -18,6 +18,9 @@ export const HELP = `build-house-specs: resolve every pand's HouseSpec from its 
   npx tsx scripts/house-specs/build-house-specs.ts            stage + coverage report (lanes may run this)
   npx tsx scripts/house-specs/build-house-specs.ts --publish  copy the staged tiles to the published extract
                                                               (integrator only, after reviewing the coverage diff)
+  --generated=<buurt,...>                                     include house:describe output for these buurten only (default
+                                                              none: no buurt's generated specs are published until its
+                                                              writers pass agreement against a photo-read hand set, H5h #351)
   --help                                                      this text
 
 Sources, weakest first (facade/evidence.ts SOURCE_STRENGTH, author = reviewed):
@@ -64,7 +67,10 @@ for (const [id, f] of facts) { add(fromRegisterFacts(f, f.nr, id)); counts.regis
 // house:describe output (H5): the merged spec of one pand's writers. The register part is already added above and the merge is
 // idempotent (same source, same confidence, same date: the earlier part is kept), so the generated copy only adds what the register lacks.
 const GENERATED = path.join(ROOT, 'scripts/house-specs/generated');
-if (existsSync(GENERATED)) for (const buurt of readdirSync(GENERATED).sort()) for (const f of readdirSync(path.join(GENERATED, buurt)).filter(f => f.endsWith('.json')).sort()) {
+// Opt-in per buurt (judgement ruling on H5 #346): generated specs stay out of the build until that buurt's writers pass
+// agreement against a photo-read hand set.
+const GENERATED_BUURTEN = new Set((process.argv.slice(2).find(a => a.startsWith('--generated='))?.slice('--generated='.length) ?? '').split(',').filter(Boolean));
+if (existsSync(GENERATED)) for (const buurt of readdirSync(GENERATED).sort().filter(b => GENERATED_BUURTEN.has(b))) for (const f of readdirSync(path.join(GENERATED, buurt)).filter(f => f.endsWith('.json')).sort()) {
   const env = json(path.join(GENERATED, buurt, f));
   if (!env.spec) continue;
   try { add(validateSpec(env.spec)); counts.generated++; } catch (e) { counts.generatedInvalid.push(`${buurt}/${f}: ${(e as Error).message.split('\n')[1] ?? (e as Error).message}`); }

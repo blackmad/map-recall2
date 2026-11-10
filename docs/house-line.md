@@ -672,6 +672,11 @@ Tests: `node --import tsx --test scripts/house-crops/flags.test.ts` (thresholds,
 
 ### §4b Describe: `npm run house:describe`
 
+**Publishing is opt-in per buurt.** `house:specs` reads `scripts/house-specs/generated/<buurt>/` only for buurten named in
+`--generated=<buurt,...>` (default none). AB07 is generated but not published: H5's agreement gate could not be assessed,
+because 33 of its 39 hand pands are type placements rather than photo readings. A buurt is named only after its writers pass
+agreement against the photo-read hand set (H5h #351).
+
 Station "describe at scale", second half (lane H5, #346): fill a spec from the sources in trust order and stop where the evidence
 stops. Four writers, one per source, each returning a partial `HouseSpec` with a receipt per field; `resolveSpecs` merges them
 (strongest source, then confidence, then the newer date), so a writer never overwrites a stronger source and a field nobody states
