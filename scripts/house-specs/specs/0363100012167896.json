@@ -1,0 +1,113 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012167896",
+ "address": "Keizersgracht 610",
+ "design": {
+  "fronts": [
+   {
+    "partyClip": true,
+    "id": "front0",
+    "street": "Keizersgracht",
+    "storeys": 4,
+    "bays": 3,
+    "storeyHeights": [
+     2.8,
+     4.2,
+     3.7,
+     3.35,
+     2.85
+    ],
+    "windows": "cross",
+    "windowSurround": "sill",
+    "windowHeights": [
+     0.75,
+     0.8,
+     0.74,
+     0.6
+    ],
+    "headLines": [
+     0.86,
+     0.95,
+     0.92,
+     0.8
+    ],
+    "windowShare": 0.48,
+    "cornice": "frieze",
+    "entablature": {
+     "rise": 2.4,
+     "cap": 0.5,
+     "frieze": "trim",
+     "architrave": 0.15
+    },
+    "windowFrames": {
+     "frame": 0.12
+    },
+    "gable": "cornice",
+    "doorBay": 2,
+    "basement": "stoop-and-windows",
+    "souterrain": true,
+    "doorSurround": {
+     "pilaster": 0.22,
+     "cap": 0.3
+    },
+    "stoopRails": {
+     "rail": 0.9
+    },
+    "hoist": false,
+    "storeyWindows": {
+     "last": "casement-transom"
+    }
+   }
+  ],
+  "roof": {
+   "material": "red-tile",
+   "squareSaddle": true,
+   "form": "flat"
+  },
+  "palette": {
+   "brick": "#7f6b69",
+   "frame": "white-painted",
+   "door": "#1e2422",
+   "stone": "#999588",
+   "cornice": "#ddd7c6",
+   "stoneMaterial": "painted"
+  },
+  "notes": [
+   "type belt-1700-canal-house: crown cornice, mirrored, palette dark-brick-belt + measured brick #7f6b69",
+   "type deviations: windows \"cross\" (type: \"sash-4-over-4\"); storeyWindows {\"last\":\"casement-transom\"} (type: unset); headLines [0.86,0.95,0.92,0.8] (type: [0.86,0.86,0.8,0.7]); windowHeights [0.75,0.8,0.74,0.6] (type: [0.75,0.72,0.66,0.53]); palette {\"stone\":\"#999588\"} (type palette dark-brick-belt)"
+  ]
+ },
+ "provenance": {
+  "": {
+   "source": "author",
+   "confidence": 0.8,
+   "ref": "strip 2023-03-27 keizersgracht-596-648 (Gemeente Amsterdam panorama, CC BY 4.0); verdict docs/reports/gg-zuid-strip-verdict-20261110.md; rce:2672 (cornice, XIXa over a 1731/33 core)",
+   "at": "2026-11-10"
+  },
+  "fronts/0/storeys": {
+   "source": "author",
+   "confidence": 0.8,
+   "ref": "strip 2023-03-27 keizersgracht-596-648 (Gemeente Amsterdam panorama, CC BY 4.0): 4 full storeys above the souterrain (STOREYS_DEFINITION)",
+   "at": "2026-11-10"
+  },
+  "fronts/0/bays": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "docs/reports/gg-zuid-strip-verdict-20261110.md: window columns per upper storey read off the strip",
+   "at": "2026-11-10"
+  }
+ },
+ "facts": {
+  "facadeYear": 1812
+ },
+ "schemaLimits": [
+  {
+   "component": "entablature",
+   "what": "consoled frieze cornice: console blocks not expressible"
+  },
+  {
+   "component": "door surround",
+   "what": "white pilastered stoop surround is the listed limit"
+  }
+ ]
+}
