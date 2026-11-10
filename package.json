@@ -245,6 +245,7 @@
     "test:steer-model": "node --import tsx --test src/canalRecall/drive/steerModel.test.ts src/canalRecall/drive/cameraFollow.test.ts src/canalRecall/drive/inputBlend.test.ts",
     "check:site-imports": "node scripts/sentry/collect-canal-bundles.mjs --source=public/canal-drive --imports-only",
     "world:compile": "node --max-old-space-size=12000 --import tsx scripts/world/compile.ts",
+    "house:preview": "node --import tsx scripts/house-preview/preview.ts",
     "world:verify": "node --import tsx scripts/world/verify.ts",
     "world:browser-math": "node --import tsx scripts/world/check-browser-math.ts",
     "test:world-format": "node --import tsx --test src/canalRecall/world/cellFormat.test.ts src/canalRecall/world/shellMesh.test.ts src/canalRecall/world/worldV1Enabled.test.ts src/canalRecall/world/worldStreamer.test.ts src/canalRecall/engine/worldStreamer.test.ts src/canalRecall/world/worldRing.test.ts src/canalRecall/engine/workerPool.test.ts",
