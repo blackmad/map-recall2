@@ -2,17 +2,17 @@
  "street": "Zamenhofstraat",
  "seed": "0363100012110286",
  "members": [
-  "0363100012085003",
-  "0363100012110286"
+  "0363100012122427",
+  "0363100012085003"
  ],
  "ends": [
   {
    "side": "left",
-   "reason": "run of zamenhof-6-12: 122427 held (auto-place.json)"
+   "reason": "run of zamenhof-6-12: 064115 held (auto-place.json)"
   },
   {
    "side": "right",
-   "reason": "next fronting pand 0363100012122571 9.5 m on shares no party wall (cross street or gap)"
+   "reason": "run of zamenhof-6-12: 110286 held (auto-place.json)"
   }
  ],
  "rejected": [
@@ -472,6 +472,16 @@
  "areaHalfSizeM": 90,
  "pands": [
   {
+   "pandId": "0363100012122427",
+   "alongM": -10,
+   "widthM": 5,
+   "eavesM": 4.48,
+   "roofMaxM": 7.17,
+   "storeys3dbag": 2,
+   "builtYear": 1918,
+   "uncertainty": []
+  },
+  {
    "pandId": "0363100012085003",
    "alongM": -5,
    "widthM": 5,
@@ -480,18 +490,6 @@
    "storeys3dbag": 2,
    "builtYear": 1918,
    "uncertainty": []
-  },
-  {
-   "pandId": "0363100012110286",
-   "alongM": 0,
-   "widthM": 5.01,
-   "eavesM": 4.13,
-   "roofMaxM": 7.13,
-   "storeys3dbag": 2,
-   "builtYear": 1918,
-   "uncertainty": [
-    "Short native jogs retained; the frontage is not a single planar facade."
-   ]
   }
  ],
  "runOf": "zamenhof-6-12"

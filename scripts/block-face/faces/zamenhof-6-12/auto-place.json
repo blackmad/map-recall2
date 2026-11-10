@@ -2,8 +2,8 @@
  "face": "zamenhof-6-12",
  "street": "Zamenhofstraat",
  "library": "vogelbuurt",
- "stripDate": "2022-05-10",
- "seconds": 3.02,
+ "stripDate": "2025-09-22",
+ "seconds": 4.92,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -17,11 +17,11 @@
   {
    "face": "zamenhof-6-12-r1",
    "pands": [
-    "0363100012085003",
-    "0363100012110286"
+    "0363100012122427",
+    "0363100012085003"
    ],
    "passed": true,
-   "triangles": 1044
+   "triangles": 1016
   }
  ],
  "pands": [
@@ -34,23 +34,23 @@
    "storeys3dbag": 2,
    "bagBay": null,
    "strip": {
-    "wall": "#444448",
-    "wallRaw": "#59473b",
+    "wall": "#3d404b",
+    "wallRaw": "#4d4a44",
     "skyline": {
-     "eavesM": 4.3,
-     "eavesRow": 198,
-     "confidence": 0.35,
+     "eavesM": 6.05,
+     "eavesRow": 128,
+     "confidence": 0.77,
      "crown": {
-      "widthM": 0.72,
-      "riseM": 4.85,
-      "topWidthM": 0.72,
-      "centre": 0.83
+      "widthM": 1.55,
+      "riseM": 3.2,
+      "topWidthM": 0.3,
+      "centre": 0.54
      }
     },
     "stucco": false,
     "bands": 0,
-    "columns": 4,
-    "frontClass": "curtain",
+    "columns": null,
+    "frontClass": "ribbon",
     "doorSide": null,
     "accentSide": null,
     "accentShare": 0,
@@ -59,10 +59,16 @@
      "bayCentre": null,
      "balconies": false,
      "why": "one-storey front (eaves <= 6 m): no balcony",
-     "openAxes": [],
+     "openAxes": [
+      {
+       "widthM": 0.8,
+       "centre": 0.49,
+       "light": 0.17
+      }
+     ],
      "slabs": [
       {
-       "atM": 2.45,
+       "atM": 3.13,
        "widthM": 4.6,
        "centre": 0.5
       }
@@ -86,23 +92,23 @@
    "storeys3dbag": 2,
    "bagBay": null,
    "strip": {
-    "wall": "#47474c",
-    "wallRaw": "#59483c",
+    "wall": "#40434d",
+    "wallRaw": "#504b44",
     "skyline": {
-     "eavesM": 5.35,
-     "eavesRow": 156,
-     "confidence": 0.47,
+     "eavesM": 6.05,
+     "eavesRow": 128,
+     "confidence": 0.72,
      "crown": {
-      "widthM": 0.63,
-      "riseM": 3.8,
-      "topWidthM": 0.53,
-      "centre": 0.85
+      "widthM": 1.32,
+      "riseM": 3.2,
+      "topWidthM": 0.07,
+      "centre": 0.49
      }
     },
     "stucco": false,
     "bands": 0,
-    "columns": 4,
-    "frontClass": "ribbon",
+    "columns": null,
+    "frontClass": "blank",
     "doorSide": null,
     "accentSide": null,
     "accentShare": 0,
@@ -113,58 +119,67 @@
      "why": "one-storey front (eaves <= 6 m): no balcony",
      "openAxes": [
       {
-       "widthM": 0.78,
+       "widthM": 0.75,
        "centre": 0.92,
-       "light": 0.13
+       "light": 0.12
       }
      ],
      "slabs": [
       {
-       "atM": 2.45,
+       "atM": 3.13,
        "widthM": 4.6,
        "centre": 0.5
       }
      ]
     },
     "voidShare": 0,
-    "foliageShare": 0.05
+    "foliageShare": 0.01
    },
-   "status": "held",
-   "stage": "match",
-   "reason": "best vogel-1918-timber-band-cottage scores 0.67 < 0.7 (strip columns 4 vs 2 bays)",
-   "best": {
-    "type": "vogel-1918-timber-band-cottage",
-    "score": 0.67,
-    "veto": [],
-    "criteria": [
-     {
-      "key": "eaves",
-      "weight": 2,
-      "score": null,
-      "note": "strip cornice unread (type line 4.1 m; 3DBAG 4.48 m not compared)"
-     },
-     {
-      "key": "storeys",
-      "weight": 1,
-      "score": 1,
-      "note": "3DBAG bouwlagen 2 vs 0/1/2"
-     },
-     {
-      "key": "stucco",
-      "weight": 2,
-      "score": 1,
-      "note": "strip accent share 0.001 (brick)"
-     },
-     {
-      "key": "columns",
-      "weight": 1.5,
-      "score": 0,
-      "note": "strip columns 4 vs 2 bays"
-     }
-    ]
+   "status": "placed",
+   "type": "vogel-1918-timber-band-cottage",
+   "score": 1,
+   "placement": {
+    "type": "vogel-1918-timber-band-cottage"
    },
-   "likeness": null,
-   "challengers": {}
+   "notes": [
+    "crown half-dormer (type default)",
+    "door reviewer pin: as drawn (Zamenhofstraat 10: window 1.06-3.0 m, door at 4.07-4.8 m (gridded crop): the authored orientation)"
+   ],
+   "likeness": {
+    "pandId": "0363100012122427",
+    "ncc": 0.346,
+    "nccRaw": 0.346,
+    "shiftM": [
+     -0.1,
+     0.05
+    ],
+    "usable": 0.98,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing  mean 0.15 vs photo 0.46",
+     "columns none vs photo 6"
+    ],
+    "wall": {
+     "photo": "#42424e",
+     "model": "#2c2b30",
+     "dL": -0.104
+    },
+    "glazing": {
+     "photo": 0.46,
+     "model": 0.15
+    },
+    "columns": {
+     "photo": 6,
+     "model": null
+    },
+    "iou": 0.231,
+    "footOffsetM": 1
+   },
+   "challengers": {
+    "vogel-1918-timber-band-cottage": 0.605,
+    "vogel-1918-timber-band-cottage~m": 0.372
+   }
   },
   {
    "pandId": "0363100012085003",
@@ -175,23 +190,23 @@
    "storeys3dbag": 2,
    "bagBay": null,
    "strip": {
-    "wall": "#46464c",
-    "wallRaw": "#55493d",
+    "wall": "#404450",
+    "wallRaw": "#534e48",
     "skyline": {
-     "eavesM": 4.92,
-     "eavesRow": 173,
-     "confidence": 0.55,
+     "eavesM": 6.2,
+     "eavesRow": 122,
+     "confidence": 0.83,
      "crown": {
-      "widthM": 1.2,
-      "riseM": 4.3,
-      "topWidthM": 0.55,
-      "centre": 0.87
+      "widthM": 1.4,
+      "riseM": 3.05,
+      "topWidthM": 0.15,
+      "centre": 0.59
      }
     },
     "stucco": false,
     "bands": 0,
-    "columns": null,
-    "frontClass": "ribbon",
+    "columns": 4,
+    "frontClass": "blank",
     "doorSide": "left",
     "accentSide": null,
     "accentShare": 0,
@@ -202,25 +217,25 @@
      "why": "one-storey front (eaves <= 6 m): no balcony",
      "openAxes": [
       {
-       "widthM": 0.75,
-       "centre": 0.08,
-       "light": 0.15
+       "widthM": 0.65,
+       "centre": 0.07,
+       "light": 0.11
       }
      ],
      "slabs": [
       {
-       "atM": 2.38,
+       "atM": 3.05,
        "widthM": 4.6,
        "centre": 0.5
       }
      ]
     },
     "voidShare": 0,
-    "foliageShare": 0.04
+    "foliageShare": 0
    },
    "status": "placed",
    "type": "vogel-1918-timber-band-cottage",
-   "score": 1,
+   "score": 0.77,
    "placement": {
     "type": "vogel-1918-timber-band-cottage",
     "mirror": true
@@ -231,37 +246,38 @@
    ],
    "likeness": {
     "pandId": "0363100012085003",
-    "ncc": 0.439,
-    "nccRaw": 0.439,
+    "ncc": 0.354,
+    "nccRaw": 0.354,
     "shiftM": [
-     -0.1,
-     0.15
+     -0.35,
+     -0.3
     ],
-    "usable": 0.95,
+    "usable": 1,
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "wall dL +0.17",
-     "glazing  mean 0.17 vs photo 0.35"
+     "wall dL +0.26",
+     "glazing  mean 0.17 vs photo 0.39"
     ],
     "wall": {
-     "photo": "#44444b",
+     "photo": "#2b3139",
      "model": "#8e6c5a",
-     "dL": 0.175
+     "dL": 0.259
     },
     "glazing": {
-     "photo": 0.35,
+     "photo": 0.39,
      "model": 0.17
     },
     "columns": {
      "photo": null,
      "model": null
     },
-    "iou": 0.24
+    "iou": 0.208,
+    "footOffsetM": 1
    },
    "challengers": {
-    "vogel-1918-timber-band-cottage~m": 0.439,
-    "vogel-1918-timber-band-cottage": 0.342
+    "vogel-1918-timber-band-cottage~m": 0.44,
+    "vogel-1918-timber-band-cottage": 0.119
    }
   },
   {
@@ -273,23 +289,23 @@
    "storeys3dbag": 2,
    "bagBay": null,
    "strip": {
-    "wall": "#47474b",
-    "wallRaw": "#58463a",
+    "wall": "#9fa099",
+    "wallRaw": "#4c4a45",
     "skyline": {
-     "eavesM": 6.85,
-     "eavesRow": 96,
-     "confidence": 0.63,
+     "eavesM": 5.9,
+     "eavesRow": 134,
+     "confidence": 0.83,
      "crown": {
-      "widthM": 0.72,
-      "riseM": 2.2,
-      "topWidthM": 0.53,
-      "centre": 0.75
+      "widthM": 1,
+      "riseM": 3.35,
+      "topWidthM": 0.2,
+      "centre": 0.89
      }
     },
     "stucco": false,
     "bands": 0,
-    "columns": null,
-    "frontClass": "ribbon",
+    "columns": 4,
+    "frontClass": "curtain",
     "doorSide": "left",
     "accentSide": null,
     "accentShare": 0,
@@ -298,62 +314,59 @@
      "bayCentre": null,
      "balconies": false,
      "why": "one-storey front (eaves <= 6 m): no balcony",
-     "openAxes": [],
+     "openAxes": [
+      {
+       "widthM": 1.4,
+       "centre": 0.32,
+       "light": 0.21
+      }
+     ],
      "slabs": [
       {
-       "atM": 2.4,
+       "atM": 3.08,
        "widthM": 4.6,
        "centre": 0.5
       }
      ]
     },
     "voidShare": 0,
-    "foliageShare": 0.03
+    "foliageShare": 0.01
    },
-   "status": "placed",
-   "type": "vogel-1918-timber-band-cottage",
-   "score": 0.8,
-   "placement": {
-    "type": "vogel-1918-timber-band-cottage"
-   },
-   "notes": [
-    "crown half-dormer (type default)",
-    "door reviewer pin: as drawn (Zamenhofstraat 6: window 1.0-3.0 m, door at the right edge)"
-   ],
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.102 < 0.15 (photo vs model body; likeness.ts FAIL: glazing  mean 0.16 vs photo 0.03)",
    "likeness": {
     "pandId": "0363100012110286",
-    "ncc": 0.354,
-    "nccRaw": 0.354,
+    "ncc": 0.102,
+    "nccRaw": 0.102,
     "shiftM": [
-     -0.25,
-     0.1
+     -0.05,
+     0.35
     ],
-    "usable": 0.94,
+    "usable": 0.95,
     "abstain": null,
-    "verdict": "WARN",
+    "verdict": "FAIL",
     "reasons": [
-     "glazing not judged (frames cannot be told from bands: 13 % of the front is a band run along openings (glazing 0.494..0.627))",
-     "columns none vs photo 2",
-     "mask IoU 0.212 < 0.45"
+     "glazing  mean 0.16 vs photo 0.03"
     ],
     "wall": {
-     "photo": "#434447",
+     "photo": "#2b3139",
      "model": "#2c2b30",
-     "dL": -0.092
+     "dL": -0.018
     },
     "glazing": {
-     "photo": 0.35,
+     "photo": 0.03,
      "model": 0.16
     },
     "columns": {
-     "photo": 2,
+     "photo": null,
      "model": null
     },
     "iou": 0.212
    },
    "challengers": {
-    "vogel-1918-timber-band-cottage": 0.354,
-    "vogel-1918-timber-band-cottage~m": 0.278
+    "vogel-1918-timber-band-cottage": 0.102,
+    "vogel-1918-timber-band-cottage~m": 0.325
    }
   }
  ]

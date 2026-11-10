@@ -30,6 +30,9 @@
     "measuredPalette": {
      "brick": "#534f4b",
      "evidence": "strip 2025-09-22 span 773-1026: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#44413e"
     }
    },
    "groundFloor": {
@@ -42,6 +45,19 @@
     "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
    },
    "rhythm": {
+    "bays": "narrow window over the door, wide window",
+    "identicalBays": "no",
+    "windowsPerStorey": "ground: door + wide window | 1: narrow + wide",
+    "symmetry": "mirror pairs about the party wall",
+    "groundFloor": "double doors paired across the party wall",
+    "signage": "none",
+    "roofline": "grey cornice slab; a flat dormer over the wide window, a crow-stepped gable on block ends",
+    "photoRows": [
+     2,
+     2,
+     1
+    ],
+    "photoGroundRows": 1,
     "citation": "auto-place: vogel-1921-two-storey-dormer-row scored 1 on storeys 1, roof 1, stucco 1; strip 2025-09-22 span 773-1026"
    }
   },
@@ -55,7 +71,10 @@
      "brick": "#78675e",
      "evidence": "strip 2022-05-11 span 1026-1291: trim-normalised wall (buildingRecipe/measureFacade.ts)"
     },
-    "mirror": true
+    "mirror": true,
+    "paletteOverrides": {
+     "brick": "#5b4e46"
+    }
    },
    "groundFloor": {
     "use": "residential",
@@ -67,6 +86,19 @@
     "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
    },
    "rhythm": {
+    "bays": "narrow window over the door, wide window",
+    "identicalBays": "no",
+    "windowsPerStorey": "ground: door + wide window | 1: narrow + wide",
+    "symmetry": "mirror pairs about the party wall",
+    "groundFloor": "double doors paired across the party wall",
+    "signage": "none",
+    "roofline": "grey cornice slab; a flat dormer over the wide window, a crow-stepped gable on block ends",
+    "photoRows": [
+     2,
+     2,
+     1
+    ],
+    "photoGroundRows": 1,
     "citation": "auto-place: vogel-1921-two-storey-dormer-row scored 1 on storeys 1, roof 1, stucco 1; strip 2022-05-11 span 1026-1291"
    }
   }

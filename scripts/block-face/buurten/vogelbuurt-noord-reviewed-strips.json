@@ -1,0 +1,113 @@
+{
+ "note": "Strips a reviewer accepted by eye. Waives blown/cold cast/cyan cast for the exact face+date only (src/canalRecall/blockFace/reviewedStrips.ts). The date is the strip on the Opus sheet header (sheet-<face>.jpg); a face on another date is restriped to it before the gate (batch.ts).",
+ "accepted": [
+  {
+   "face": "vogel-3-15",
+   "date": "2021-06-15",
+   "by": "Opus strip review 2026-11-10 (docs/reports/vogelbuurt-strip-verdict-20261110.md)",
+   "note": "accepted by eye on this exact strip; colour-cast reasons only"
+  },
+  {
+   "face": "kalkoen-8-16",
+   "date": "2018-07-30",
+   "by": "Opus strip review 2026-11-10 (docs/reports/vogelbuurt-strip-verdict-20261110.md)",
+   "note": "accepted by eye on this exact strip; colour-cast reasons only"
+  },
+  {
+   "face": "kalkoen-18-26",
+   "date": "2025-09-22",
+   "by": "Opus strip review 2026-11-10 (docs/reports/vogelbuurt-strip-verdict-20261110.md)",
+   "note": "accepted by eye on this exact strip; colour-cast reasons only"
+  },
+  {
+   "face": "kalkoen-28-34",
+   "date": "2017-12-28",
+   "by": "Opus strip review 2026-11-10 (docs/reports/vogelbuurt-strip-verdict-20261110.md)",
+   "note": "accepted by eye on this exact strip; colour-cast reasons only"
+  },
+  {
+   "face": "vogel-2-16-122155",
+   "date": "2025-09-22",
+   "by": "Opus strip review 2026-11-10 (docs/reports/vogelbuurt-strip-verdict-20261110.md)",
+   "note": "accepted by eye on this exact strip; colour-cast reasons only"
+  },
+  {
+   "face": "vogel-1-15",
+   "date": "2025-09-22",
+   "by": "Opus strip review 2026-11-10 (docs/reports/vogelbuurt-strip-verdict-20261110.md)",
+   "note": "accepted by eye on this exact strip; colour-cast reasons only"
+  },
+  {
+   "face": "pelikaan-16-22",
+   "date": "2021-02-17",
+   "by": "Opus strip review 2026-11-10 (docs/reports/vogelbuurt-strip-verdict-20261110.md)",
+   "note": "accepted by eye on this exact strip; colour-cast reasons only"
+  },
+  {
+   "face": "pelikaan-3-9",
+   "date": "2025-09-22",
+   "by": "Opus strip review 2026-11-10 (docs/reports/vogelbuurt-strip-verdict-20261110.md)",
+   "note": "accepted by eye on this exact strip; colour-cast reasons only"
+  },
+  {
+   "face": "vogel-3-11",
+   "date": "2022-05-10",
+   "by": "Opus strip review 2026-11-10 (docs/reports/vogelbuurt-strip-verdict-20261110.md)",
+   "note": "accepted by eye on this exact strip; colour-cast reasons only"
+  },
+  {
+   "face": "vogelplantsoen-8-12",
+   "date": "2025-09-22",
+   "by": "Opus strip review 2026-11-10 (docs/reports/vogelbuurt-strip-verdict-20261110.md)",
+   "note": "accepted by eye on this exact strip; colour-cast reasons only"
+  },
+  {
+   "face": "zamenhof-6-12",
+   "date": "2025-09-22",
+   "by": "Opus strip review 2026-11-10 (docs/reports/vogelbuurt-strip-verdict-20261110.md)",
+   "note": "accepted by eye on this exact strip; colour-cast reasons only"
+  },
+  {
+   "face": "zamenhof-54-60",
+   "date": "2025-09-22",
+   "by": "Opus strip review 2026-11-10 (docs/reports/vogelbuurt-strip-verdict-20261110.md)",
+   "note": "accepted by eye on this exact strip; colour-cast reasons only"
+  },
+  {
+   "face": "zamenhof-84-90",
+   "date": "2025-09-22",
+   "by": "Opus strip review 2026-11-10 (docs/reports/vogelbuurt-strip-verdict-20261110.md)",
+   "note": "accepted by eye on this exact strip; colour-cast reasons only"
+  },
+  {
+   "face": "vogel-2-6",
+   "date": "2017-05-15",
+   "by": "Opus strip review 2026-11-10 (docs/reports/vogelbuurt-strip-verdict-20261110.md)",
+   "note": "accepted by eye on this exact strip; colour-cast reasons only"
+  },
+  {
+   "face": "vogel-5-15",
+   "date": "2022-12-27",
+   "by": "Opus strip review 2026-11-10 (docs/reports/vogelbuurt-strip-verdict-20261110.md)",
+   "note": "accepted by eye on this exact strip; colour-cast reasons only"
+  },
+  {
+   "face": "zamenhof-46-52",
+   "date": "2025-09-22",
+   "by": "Opus strip review 2026-11-10 (docs/reports/vogelbuurt-strip-verdict-20261110.md)",
+   "note": "accepted by eye on this exact strip; colour-cast reasons only"
+  },
+  {
+   "face": "zamenhof-78-82",
+   "date": "2025-09-22",
+   "by": "Opus strip review 2026-11-10 (docs/reports/vogelbuurt-strip-verdict-20261110.md)",
+   "note": "accepted by eye on this exact strip; colour-cast reasons only"
+  },
+  {
+   "face": "vogel-2-16",
+   "date": "2022-05-10",
+   "by": "Opus strip review 2026-11-10 (docs/reports/vogelbuurt-strip-verdict-20261110.md)",
+   "note": "accepted by eye on this exact strip; colour-cast reasons only"
+  }
+ ]
+}

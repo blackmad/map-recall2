@@ -1,19 +1,19 @@
 {
  "street": "Lange Vogelstraat",
- "seed": "0363100012141706",
+ "seed": "0363100012122155",
  "members": [
-  "0363100012114049",
-  "0363100012117598",
-  "0363100012135488"
+  "0363100012065836",
+  "0363100012091400",
+  "0363100012138008"
  ],
  "ends": [
   {
    "side": "left",
-   "reason": "run of vogel-1-15: 063241 held (auto-place.json)"
+   "reason": "trimmed at 0363100012065836 (face continues: 062882)"
   },
   {
    "side": "right",
-   "reason": "trimmed at 0363100012135488 (face continues: 120731)"
+   "reason": "run of vogel-2-16-122155: 133462 held (auto-place.json)"
   }
  ],
  "rejected": [
@@ -70,6 +70,14 @@
    "reason": "frontage 91.9 m from Lange Vogelstraat"
   },
   {
+   "pandId": "0363100012091925",
+   "reason": "frontage 41.2 m from Lange Vogelstraat"
+  },
+  {
+   "pandId": "0363100012062516",
+   "reason": "sightline to Lange Vogelstraat crosses 0363100012088357"
+  },
+  {
    "pandId": "0363100012062910",
    "reason": "frontage 41.9 m from Lange Vogelstraat"
   },
@@ -78,20 +86,12 @@
    "reason": "frontage 57.0 m from Lange Vogelstraat"
   },
   {
-   "pandId": "0363100012064187",
-   "reason": "frontage 64.3 m from Lange Vogelstraat"
-  },
-  {
    "pandId": "0363100012065299",
    "reason": "sightline to Lange Vogelstraat crosses 0363100012120731"
   },
   {
-   "pandId": "0363100012065314",
-   "reason": "frontage 50.5 m from Lange Vogelstraat"
-  },
-  {
-   "pandId": "0363100012066995",
-   "reason": "sightline to Lange Vogelstraat crosses 0363100012123606"
+   "pandId": "0363100012065937",
+   "reason": "frontage 41.1 m from Lange Vogelstraat"
   },
   {
    "pandId": "0363100012067081",
@@ -138,12 +138,20 @@
    "reason": "sightline to Lange Vogelstraat crosses 0363100012063241"
   },
   {
+   "pandId": "0363100012079731",
+   "reason": "frontage 91.8 m from Lange Vogelstraat"
+  },
+  {
    "pandId": "0363100012079816",
    "reason": "frontage 48.9 m from Lange Vogelstraat"
   },
   {
    "pandId": "0363100012080054",
    "reason": "frontage 42.1 m from Lange Vogelstraat"
+  },
+  {
+   "pandId": "0363100012081976",
+   "reason": "frontage 59.1 m from Lange Vogelstraat"
   },
   {
    "pandId": "0363100012082395",
@@ -166,10 +174,6 @@
    "reason": "frontage 31.9 m from Lange Vogelstraat"
   },
   {
-   "pandId": "0363100012088357",
-   "reason": "sightline to Lange Vogelstraat crosses 0363100012085288"
-  },
-  {
    "pandId": "0363100012090616",
    "reason": "frontage 39.5 m from Lange Vogelstraat"
   },
@@ -178,8 +182,8 @@
    "reason": "frontage 40.8 m from Lange Vogelstraat"
   },
   {
-   "pandId": "0363100012091925",
-   "reason": "frontage 41.2 m from Lange Vogelstraat"
+   "pandId": "0363100012092462",
+   "reason": "frontage 32.0 m from Lange Vogelstraat"
   },
   {
    "pandId": "0363100012100514",
@@ -206,6 +210,10 @@
    "reason": "frontage 58.0 m from Lange Vogelstraat"
   },
   {
+   "pandId": "0363100012118818",
+   "reason": "frontage 91.8 m from Lange Vogelstraat"
+  },
+  {
    "pandId": "0363100012118959",
    "reason": "frontage 92.9 m from Lange Vogelstraat"
   },
@@ -226,10 +234,6 @@
    "reason": "no frontage on Lange Vogelstraat: No footprint edge faces Lange Vogelstraat"
   },
   {
-   "pandId": "0363100012092462",
-   "reason": "frontage 32.0 m from Lange Vogelstraat"
-  },
-  {
    "pandId": "0363100012092948",
    "reason": "frontage 57.0 m from Lange Vogelstraat"
   },
@@ -244,6 +248,10 @@
   {
    "pandId": "0363100012097236",
    "reason": "frontage 61.0 m from Lange Vogelstraat"
+  },
+  {
+   "pandId": "0363100012101482",
+   "reason": "frontage 31.1 m from Lange Vogelstraat"
   },
   {
    "pandId": "0363100012101772",
@@ -280,6 +288,10 @@
   {
    "pandId": "0363100012109169",
    "reason": "frontage 30.9 m from Lange Vogelstraat"
+  },
+  {
+   "pandId": "0363100012109523",
+   "reason": "frontage 41.1 m from Lange Vogelstraat"
   },
   {
    "pandId": "0363100012110100",
@@ -354,8 +366,16 @@
    "reason": "frontage 93.9 m from Lange Vogelstraat"
   },
   {
+   "pandId": "0363100012134122",
+   "reason": "frontage 91.9 m from Lange Vogelstraat"
+  },
+  {
    "pandId": "0363100012135860",
    "reason": "sightline to Lange Vogelstraat crosses 0363100012161061"
+  },
+  {
+   "pandId": "0363100012139180",
+   "reason": "frontage 97.9 m from Lange Vogelstraat"
   },
   {
    "pandId": "0363100012139467",
@@ -388,6 +408,10 @@
   {
    "pandId": "0363100012124242",
    "reason": "frontage 61.2 m from Lange Vogelstraat"
+  },
+  {
+   "pandId": "0363100012124606",
+   "reason": "sightline to Lange Vogelstraat crosses 0363100012088357"
   },
   {
    "pandId": "0363100012127132",
@@ -434,6 +458,10 @@
    "reason": "frontage 42.5 m from Lange Vogelstraat"
   },
   {
+   "pandId": "0363100012139381",
+   "reason": "frontage 58.6 m from Lange Vogelstraat"
+  },
+  {
    "pandId": "0363100012142347",
    "reason": "frontage 48.9 m from Lange Vogelstraat"
   },
@@ -454,6 +482,10 @@
    "reason": "frontage 61.1 m from Lange Vogelstraat"
   },
   {
+   "pandId": "0363100012147250",
+   "reason": "frontage 59.9 m from Lange Vogelstraat"
+  },
+  {
    "pandId": "0363100012147442",
    "reason": "frontage 79.6 m from Lange Vogelstraat"
   },
@@ -462,16 +494,12 @@
    "reason": "sightline to Lange Vogelstraat crosses 0363100012067081"
   },
   {
-   "pandId": "0363100012149443",
-   "reason": "frontage 63.0 m from Lange Vogelstraat"
+   "pandId": "0363100012147550",
+   "reason": "frontage 57.7 m from Lange Vogelstraat"
   },
   {
    "pandId": "0363100012150433",
    "reason": "sightline to Lange Vogelstraat crosses 0363100012062882"
-  },
-  {
-   "pandId": "0363100012151653",
-   "reason": "frontage 64.1 m from Lange Vogelstraat"
   },
   {
    "pandId": "0363100012151858",
@@ -490,67 +518,43 @@
    "reason": "frontage 63.3 m from Lange Vogelstraat"
   },
   {
-   "pandId": "0363100012254402",
-   "reason": "frontage 91.2 m from Lange Vogelstraat"
-  },
-  {
-   "pandId": "0363100012078281",
+   "pandId": "0363100012063241",
    "reason": "fronts the other side / another direction"
   },
   {
-   "pandId": "0363100012062882",
+   "pandId": "0363100012067531",
    "reason": "fronts the other side / another direction"
   },
   {
-   "pandId": "0363100012065836",
+   "pandId": "0363100012114049",
    "reason": "fronts the other side / another direction"
   },
   {
-   "pandId": "0363100012080292",
+   "pandId": "0363100012117598",
    "reason": "fronts the other side / another direction"
   },
   {
-   "pandId": "0363100012084318",
+   "pandId": "0363100012120731",
    "reason": "fronts the other side / another direction"
   },
   {
-   "pandId": "0363100012085288",
+   "pandId": "0363100012128397",
    "reason": "fronts the other side / another direction"
   },
   {
-   "pandId": "0363100012091400",
+   "pandId": "0363100012135488",
    "reason": "fronts the other side / another direction"
   },
   {
-   "pandId": "0363100012097822",
+   "pandId": "0363100012141706",
    "reason": "fronts the other side / another direction"
   },
   {
-   "pandId": "0363100012120169",
+   "pandId": "0363100012144274",
    "reason": "fronts the other side / another direction"
   },
   {
-   "pandId": "0363100012122155",
-   "reason": "fronts the other side / another direction"
-  },
-  {
-   "pandId": "0363100012123001",
-   "reason": "fronts the other side / another direction"
-  },
-  {
-   "pandId": "0363100012133462",
-   "reason": "fronts the other side / another direction"
-  },
-  {
-   "pandId": "0363100012137341",
-   "reason": "fronts the other side / another direction"
-  },
-  {
-   "pandId": "0363100012138008",
-   "reason": "fronts the other side / another direction"
-  },
-  {
-   "pandId": "0363100012145652",
+   "pandId": "0363100012153864",
    "reason": "fronts the other side / another direction"
   },
   {
@@ -561,35 +565,35 @@
  "areaHalfSizeM": 90,
  "pands": [
   {
-   "pandId": "0363100012114049",
-   "alongM": 33.01,
+   "pandId": "0363100012065836",
+   "alongM": -43.05,
    "widthM": 5,
-   "eavesM": 4.16,
-   "roofMaxM": 7.14,
+   "eavesM": 4.24,
+   "roofMaxM": 7.2,
    "storeys3dbag": 2,
    "builtYear": 1918,
    "uncertainty": []
   },
   {
-   "pandId": "0363100012117598",
-   "alongM": 38.01,
+   "pandId": "0363100012091400",
+   "alongM": -38.05,
    "widthM": 5,
-   "eavesM": 4.15,
+   "eavesM": 4.3,
    "roofMaxM": 7.13,
    "storeys3dbag": 2,
    "builtYear": 1918,
    "uncertainty": []
   },
   {
-   "pandId": "0363100012135488",
-   "alongM": 43.01,
+   "pandId": "0363100012138008",
+   "alongM": -33.05,
    "widthM": 5,
-   "eavesM": 4.12,
-   "roofMaxM": 7.14,
+   "eavesM": 4.26,
+   "roofMaxM": 7.12,
    "storeys3dbag": 2,
    "builtYear": 1918,
    "uncertainty": []
   }
  ],
- "runOf": "vogel-1-15"
+ "runOf": "vogel-2-16-122155"
 }
