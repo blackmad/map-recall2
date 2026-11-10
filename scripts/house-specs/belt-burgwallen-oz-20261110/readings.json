@@ -52,6 +52,54 @@
   "k19-23": {
    "ref": "panorama b_20250108_1041_Track23_Sphere_00123 (40 m across, row view of 19-23)",
    "at": "2025-01-08"
+  },
+  "zd87": {
+   "ref": "house:crops crop pand-crops/0363100012182479 (map-recall2-source-data, wall route, captured 2025-01-14)",
+   "at": "2025-01-14"
+  },
+  "zd97": {
+   "ref": "house:crops crop pand-crops/0363100012170935 (map-recall2-source-data, strip route, captured 2017-03-29)",
+   "at": "2017-03-29"
+  },
+  "zd103": {
+   "ref": "house:crops crop pand-crops/0363100012172014 (map-recall2-source-data, wall route, captured 2020-04-21)",
+   "at": "2020-04-21"
+  },
+  "zd105": {
+   "ref": "house:crops crop pand-crops/0363100012172004 (map-recall2-source-data, wall route, captured 2020-04-21)",
+   "at": "2020-04-21"
+  },
+  "zd119": {
+   "ref": "house:crops crop pand-crops/0363100012172000 (map-recall2-source-data, wall route, captured 2016-06-09)",
+   "at": "2016-06-09"
+  },
+  "zd137": {
+   "ref": "house:crops crop pand-crops/0363100012177939 (map-recall2-source-data, wall route, captured 2016-06-09)",
+   "at": "2016-06-09"
+  },
+  "zd104": {
+   "ref": "house:crops crop pand-crops/0363100012172012 (map-recall2-source-data, strip route, captured 2025-01-14)",
+   "at": "2025-01-14"
+  },
+  "zd128": {
+   "ref": "house:crops crop pand-crops/0363100012177935 (map-recall2-source-data, wall route, captured 2020-04-21)",
+   "at": "2020-04-21"
+  },
+  "zd130": {
+   "ref": "house:crops crop pand-crops/0363100012177909 (map-recall2-source-data, wall route, captured 2021-09-15)",
+   "at": "2021-09-15"
+  },
+  "zd132": {
+   "ref": "house:crops crop pand-crops/0363100012177934 (map-recall2-source-data, wall route, captured 2019-05-10)",
+   "at": "2019-05-10"
+  },
+  "zd134": {
+   "ref": "house:crops crop pand-crops/0363100012177933 (map-recall2-source-data, wall route, captured 2020-04-21)",
+   "at": "2020-04-21"
+  },
+  "zd136": {
+   "ref": "house:crops crop pand-crops/0363100012177932 (map-recall2-source-data, wall route, captured 2025-01-08)",
+   "at": "2025-01-08"
   }
  },
  "pands": [
@@ -856,6 +904,320 @@
      "the point gable ends in a small round cap with a finial"
     ]
    ]
+  },
+  {
+   "pandId": "0363100012182479",
+   "label": "87",
+   "street": "Zeedijk",
+   "photo": "zd87",
+   "front": {
+    "gable": "neck",
+    "crownCap": "rounded",
+    "atticWindows": 1,
+    "hoist": true,
+    "storeys": 4,
+    "bays": 3,
+    "windows": "sash",
+    "windowSurround": "none",
+    "shopfront": {
+     "colour": "#ece8de",
+     "fascia": true,
+     "displayWindows": 2,
+     "stallriser": "low"
+    }
+   },
+   "palette": {
+    "brick": "#b89878"
+   },
+   "notes": [
+    "Light buff brick neck gable with white frames; the 2025-01-14 crop is washed out, tone read against the neighbours"
+   ]
+  },
+  {
+   "pandId": "0363100012170935",
+   "label": "97",
+   "street": "Zeedijk",
+   "photo": "zd97",
+   "front": {
+    "gable": "cornice",
+    "cornice": "simple",
+    "storeys": 4,
+    "bays": 3,
+    "windows": "sash",
+    "windowSurround": "keystone",
+    "shopfront": {
+     "colour": "#e9e5dc",
+     "fascia": true,
+     "displayWindows": 2,
+     "stallriser": "low",
+     "fasciaColour": "#8a2e2a"
+    }
+   },
+   "palette": {
+    "brick": "#4a3530"
+   },
+   "notes": [
+    "Plain cornice with a hoist dormer; white keystone blocks over each window"
+   ],
+   "limits": [
+    [
+     "dormer",
+     "a small hoist dormer with its beam stands on the cornice; not drawn"
+    ]
+   ]
+  },
+  {
+   "pandId": "0363100012172000",
+   "label": "119",
+   "street": "Zeedijk",
+   "photo": "zd119",
+   "front": {
+    "gable": "cornice",
+    "cornice": "frieze",
+    "storeys": 3,
+    "bays": 3,
+    "windows": "sash-small-panes",
+    "windowSurround": "full-frame",
+    "shopfront": {
+     "colour": "#e8e3d6",
+     "fascia": false,
+     "displayWindows": 2,
+     "stallriser": "low"
+    }
+   },
+   "palette": {
+    "brick": "#7a3a32"
+   },
+   "notes": [
+    "Red brick with a cream attic frieze; cream ground storey"
+   ]
+  },
+  {
+   "pandId": "0363100012177939",
+   "label": "137",
+   "street": "Zeedijk",
+   "photo": "zd137",
+   "front": {
+    "gable": "cornice",
+    "cornice": "bracketed",
+    "storeys": 4,
+    "bays": 4,
+    "windows": "sash",
+    "windowSurround": "sill",
+    "shopfront": {
+     "colour": "#ddd5c0",
+     "fascia": true,
+     "displayWindows": 2,
+     "stallriser": "low",
+     "entrance": "centre"
+    }
+   },
+   "palette": {
+    "brick": "#5c3e33",
+    "cornice": "#ddd5c0"
+   },
+   "notes": [
+    "Cream bracketed cornice and cream pilastered ground storey under dark brown brick"
+   ]
+  },
+  {
+   "pandId": "0363100012172012",
+   "label": "104",
+   "street": "Zeedijk",
+   "photo": "zd104",
+   "front": {
+    "gable": "neck",
+    "crownCap": "pediment",
+    "atticWindows": 1,
+    "hoist": true,
+    "storeys": 3,
+    "bays": 3,
+    "windows": "sash",
+    "windowSurround": "full-frame",
+    "shopfront": {
+     "colour": "#9a2a22",
+     "fascia": true,
+     "displayWindows": 1,
+     "stallriser": "low",
+     "entrance": "right"
+    }
+   },
+   "palette": {
+    "brick": "#5a4236"
+   },
+   "notes": [
+    "Neck gable with white scroll claws; red doors"
+   ]
+  },
+  {
+   "pandId": "0363100012177935",
+   "label": "128",
+   "street": "Zeedijk",
+   "photo": "zd128",
+   "front": {
+    "gable": "neck",
+    "crownCap": "rounded",
+    "atticWindows": 1,
+    "hoist": true,
+    "storeys": 5,
+    "bays": 3,
+    "windows": "sash-small-panes",
+    "windowSurround": "full-frame",
+    "shopfront": {
+     "colour": "#7a4a2e",
+     "fascia": true,
+     "displayWindows": 1,
+     "stallriser": "low",
+     "entrance": "left"
+    },
+    "storeyHeights": [
+     1.18,
+     1,
+     1,
+     1,
+     1
+    ]
+   },
+   "palette": {
+    "brick": "#4c3b34"
+   },
+   "notes": [
+    "Tall dark neck gable with white claws, 1749"
+   ]
+  },
+  {
+   "pandId": "0363100012177909",
+   "label": "130",
+   "street": "Zeedijk",
+   "photo": "zd130",
+   "front": {
+    "gable": "cornice",
+    "cornice": "simple",
+    "storeys": 4,
+    "bays": 3,
+    "windows": "sash",
+    "windowSurround": "none",
+    "windowHead": {
+     "kind": "segmental",
+     "archRing": {
+      "colour": "band",
+      "style": "solid"
+     }
+    },
+    "bands": "speklagen",
+    "speklagen": {
+     "spacing": 12,
+     "courses": 2
+    },
+    "shopfront": {
+     "colour": "#a8822e",
+     "fascia": true,
+     "displayWindows": 2,
+     "stallriser": "low",
+     "fasciaColour": "#a8822e"
+    }
+   },
+   "palette": {
+    "brick": "#5a3a30",
+    "band": "#e8e4da"
+   },
+   "notes": [
+    "Segmental window heads in alternating white blocks with white band blocks between storeys; ochre timber shopfront"
+   ],
+   "limits": [
+    [
+     "window head",
+     "alternating white and brick voussoirs (block arch); the block ring breaks the triangle budget on this front, drawn as a solid white ring"
+    ]
+   ]
+  },
+  {
+   "pandId": "0363100012177934",
+   "label": "132",
+   "street": "Zeedijk",
+   "photo": "zd132",
+   "front": {
+    "gable": "neck",
+    "crownCap": "pediment",
+    "atticWindows": 1,
+    "hoist": true,
+    "storeys": 4,
+    "bays": 3,
+    "windows": "sash",
+    "windowSurround": "full-frame",
+    "shopfront": {
+     "colour": "#2e2a28",
+     "fascia": true,
+     "displayWindows": 1,
+     "stallriser": "low",
+     "entrance": "left"
+    }
+   },
+   "palette": {
+    "brick": "#4e3a33"
+   },
+   "notes": [
+    "Dark brick neck gable, centre windows wider"
+   ]
+  },
+  {
+   "pandId": "0363100012177933",
+   "label": "134",
+   "street": "Zeedijk",
+   "photo": "zd134",
+   "front": {
+    "gable": "cornice",
+    "cornice": "frieze",
+    "storeys": 5,
+    "bays": 3,
+    "windows": "sash",
+    "windowSurround": "full-frame",
+    "shopfront": {
+     "colour": "#e6e2d8",
+     "fascia": true,
+     "displayWindows": 2,
+     "stallriser": "low"
+    }
+   },
+   "palette": {
+    "brick": "#4a3a36",
+    "cornice": "#ddd8cc"
+   },
+   "notes": [
+    "Dark brick under a cream frieze cornice with dentils"
+   ]
+  },
+  {
+   "pandId": "0363100012177932",
+   "label": "136",
+   "street": "Zeedijk",
+   "photo": "zd136",
+   "front": {
+    "gable": "cornice",
+    "cornice": "frieze",
+    "storeys": 4,
+    "bays": 3,
+    "windows": "sash-small-panes",
+    "windowSurround": "full-frame",
+    "shopfront": {
+     "colour": "#cfc49e",
+     "fascia": true,
+     "displayWindows": 2,
+     "stallriser": "low",
+     "fasciaColour": "#cfc49e",
+     "awning": {
+      "style": "fabric-straight",
+      "colour": "#a3262a"
+     }
+    }
+   },
+   "palette": {
+    "brick": "#6a4434",
+    "cornice": "#cfc49e"
+   },
+   "notes": [
+    "Cream-ochre frieze cornice and pilastered ground storey with a red parasol"
+   ]
   }
  ],
  "held": [
@@ -868,6 +1230,16 @@
    "pandId": "0363100012171173",
    "label": "56",
    "why": "pickWall finds no street wall for the pand (row view and house:preview both fail); the reading (twin of 58) is kept here for a --wall/chord retry"
+  },
+  {
+   "pandId": "0363100012172014",
+   "label": "Zeedijk 103",
+   "why": "3DBAG eaves (7.1-7.2 m) under the photo storey count: the storey-height gate fails (uppers 1.5-2.1 m); a HouseSpec has no eaves field"
+  },
+  {
+   "pandId": "0363100012172004",
+   "label": "Zeedijk 105",
+   "why": "3DBAG eaves (7.1-7.2 m) under the photo storey count: the storey-height gate fails (uppers 1.5-2.1 m); a HouseSpec has no eaves field"
   }
  ],
  "heldReadings": [
@@ -899,6 +1271,76 @@
     [
      "gable ornament",
      "the carved stone cartouche in the neck and the white claw-pieces are not drawn"
+    ]
+   ]
+  },
+  {
+   "pandId": "0363100012172014",
+   "label": "103",
+   "street": "Zeedijk",
+   "photo": "zd103",
+   "front": {
+    "gable": "cornice",
+    "cornice": "simple",
+    "dormers": 1,
+    "dormerStyle": "flat",
+    "dormerBody": "timber",
+    "storeys": 4,
+    "bays": 5,
+    "doorBay": 4,
+    "windows": "sash",
+    "windowSurround": "full-frame",
+    "shopfront": {
+     "colour": "#e6e2d8",
+     "fascia": true,
+     "displayWindows": 3,
+     "stallriser": "low",
+     "fasciaColour": "#9a2a22"
+    }
+   },
+   "palette": {
+    "brick": "#5a4038"
+   },
+   "notes": [
+    "Five-bay restaurant front, white framed windows, a dormer in the white attic band"
+   ],
+   "limits": [
+    [
+     "cornice",
+     "a plain white board over a white attic band with two vents; drawn as a simple cornice"
+    ]
+   ]
+  },
+  {
+   "pandId": "0363100012172004",
+   "label": "105",
+   "street": "Zeedijk",
+   "photo": "zd105",
+   "front": {
+    "gable": "point",
+    "atticWindows": 1,
+    "storeys": 3,
+    "bays": 2,
+    "windows": "sash-small-panes",
+    "windowSurround": "none",
+    "shopfront": {
+     "colour": "#5d7068",
+     "fascia": true,
+     "displayWindows": 1,
+     "stallriser": "low",
+     "entrance": "left"
+    }
+   },
+   "palette": {
+    "brick": "#8a4c3e"
+   },
+   "notes": [
+    "Red brick point gable, 1905 shopfront in grey-green, a glazed timber oriel on the first floor"
+   ],
+   "limits": [
+    [
+     "oriel",
+     "a glazed grey-green timber oriel over the shop at first floor in the right bay; not drawn"
     ]
    ]
   }
