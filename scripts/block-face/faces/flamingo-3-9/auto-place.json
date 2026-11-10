@@ -3,7 +3,7 @@
  "street": "Flamingostraat",
  "library": "vogelbuurt",
  "stripDate": "2025-09-22",
- "seconds": 4.29,
+ "seconds": 4.15,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -66,8 +66,8 @@
    "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
    "likeness": {
     "pandId": "0363100012085241",
-    "ncc": 0.285,
-    "nccRaw": 0.285,
+    "ncc": 0.286,
+    "nccRaw": 0.286,
     "shiftM": [
      0,
      -0.1

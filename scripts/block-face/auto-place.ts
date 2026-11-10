@@ -268,7 +268,9 @@ export async function runLikeness(runId: string): Promise<PandLikeness[]> {
 }
 
 if (process.argv[1]?.endsWith('block-face/auto-place.ts')) {
-  const buurt = arg('buurt') ?? 'bellamybuurt-zuid', district = arg('district') ?? 'bellamy', only = arg('only')?.split(','), skipFaces = new Set((arg('skip') ?? '').split(',').filter(Boolean));
+  // No defaults: an invocation without --buurt (a `--help` probe) used to rewrite the tracked Bellamy placement record with 0 faces.
+  if (!arg('buurt') || !arg('district')) throw Error('auto-place: pass --buurt=<slug> --district=<library> (it rewrites scripts/block-face/buurten/<buurt>-placement.json)');
+  const buurt = arg('buurt')!, district = arg('district')!, only = arg('only')?.split(','), skipFaces = new Set((arg('skip') ?? '').split(',').filter(Boolean));
   // --photo-decides (Rivierenbuurt, 2026-10-16): where facts and strip readings cannot tell two types of one row apart
   // (Boterdiepstraat's flat and erker fronts share year, width, eaves and roof; the sunlit strip reads no door or accent
   // side), the edge NCC of every candidate (type x mirroring) decides instead of holding the pand.

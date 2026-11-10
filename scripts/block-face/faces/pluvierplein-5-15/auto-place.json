@@ -3,7 +3,7 @@
  "street": "Pluvierplein",
  "library": "vogelbuurt",
  "stripDate": "2025-09-22",
- "seconds": 6.97,
+ "seconds": 10.82,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -20,7 +20,7 @@
     "0363100012070701",
     "0363100012151759"
    ],
-   "passed": false,
+   "passed": true,
    "triangles": 1186
   },
   {
@@ -29,7 +29,7 @@
     "0363100012149277",
     "0363100012125723"
    ],
-   "passed": false,
+   "passed": true,
    "triangles": 1194
   }
  ],

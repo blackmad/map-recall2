@@ -3,7 +3,7 @@
  "street": "Flamingostraat",
  "library": "vogelbuurt",
  "stripDate": "2025-09-22",
- "seconds": 8.87,
+ "seconds": 8.88,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -21,7 +21,7 @@
     "0363100012098790",
     "0363100012092344"
    ],
-   "passed": false,
+   "passed": true,
    "triangles": 1901
   },
   {
@@ -30,7 +30,7 @@
     "0363100012141395",
     "0363100012120930"
    ],
-   "passed": false,
+   "passed": true,
    "triangles": 1181
   }
  ],

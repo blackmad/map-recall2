@@ -57,3 +57,9 @@ test('frontEavesUnscored drops the eaves criterion; keepSurveyRoof is a plain fl
   const scored = {...t, match: {...t.match!, frontEavesUnscored: undefined}} as MatchableType;
   assert.ok(scoreType(scored, ev).criteria.some(c => c.key === 'eaves'));
 });
+
+test('a type with a gable crown stays under its rakes: roof.rakeClear (the saddle was coplanar with the gable top, 1.0 m2 per gable at the audit)', () => {
+  const t = defaultTypeLoader('vogel-1921-two-storey-dormer-row') as MatchableType & {roof?: {rakeClear?: boolean}; crowns: Record<string, {gable?: string}>};
+  assert.ok(Object.values(t.crowns).some(c => c.gable === 'point'));
+  assert.equal(t.roof?.rakeClear, true);
+});

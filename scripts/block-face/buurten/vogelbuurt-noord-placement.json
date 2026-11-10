@@ -1,8 +1,8 @@
 {
  "buurt": "vogelbuurt-noord",
  "library": "vogelbuurt",
- "generatedAt": "2026-11-10T02:56:07.386Z",
- "seconds": 139.27,
+ "generatedAt": "2026-11-10T03:03:27.297Z",
+ "seconds": 153.48,
  "totals": {
   "faces": 55,
   "pands": 252,
@@ -23,7 +23,7 @@
       "0363100012098790",
       "0363100012092344"
      ],
-     "passed": false,
+     "passed": true,
      "triangles": 1901
     },
     {
@@ -32,11 +32,11 @@
       "0363100012141395",
       "0363100012120930"
      ],
-     "passed": false,
+     "passed": true,
      "triangles": 1181
     }
    ],
-   "seconds": 8.87,
+   "seconds": 8.88,
    "byType": {
     "vogel-1921-two-storey-dormer-row": 5
    },
@@ -56,7 +56,7 @@
    "placed": 0,
    "held": 4,
    "runs": [],
-   "seconds": 2.43,
+   "seconds": 2.49,
    "byType": {},
    "installed": 0,
    "holds": {
@@ -74,7 +74,7 @@
    "placed": 0,
    "held": 4,
    "runs": [],
-   "seconds": 4.29,
+   "seconds": 4.15,
    "byType": {},
    "installed": 0,
    "holds": {
@@ -100,11 +100,11 @@
       "0363100012066422",
       "0363100012129921"
      ],
-     "passed": false,
-     "triangles": 2442
+     "passed": true,
+     "triangles": 2440
     }
    ],
-   "seconds": 3.37,
+   "seconds": 2.99,
    "byType": {
     "vogel-1921-two-storey-dormer-row": 4
    },
@@ -131,11 +131,11 @@
       "0363100012100538",
       "0363100012139726"
      ],
-     "passed": false,
+     "passed": true,
      "triangles": 1924
     }
    ],
-   "seconds": 3.28,
+   "seconds": 3.21,
    "byType": {
     "vogel-1921-two-storey-dormer-row": 3
    },
@@ -165,7 +165,7 @@
      "triangles": 1269
     }
    ],
-   "seconds": 9.42,
+   "seconds": 6.59,
    "byType": {
     "vogel-1921-two-storey-dormer-row": 2
    },
@@ -185,7 +185,7 @@
    "placed": 0,
    "held": 3,
    "runs": [],
-   "seconds": 0.23,
+   "seconds": 0.21,
    "byType": {},
    "installed": 0,
    "holds": {
@@ -214,7 +214,7 @@
      "triangles": 1866
     }
    ],
-   "seconds": 4.69,
+   "seconds": 3.25,
    "byType": {
     "vogel-1921-two-storey-dormer-row": 3
    },
@@ -234,7 +234,7 @@
    "placed": 0,
    "held": 3,
    "runs": [],
-   "seconds": 3.01,
+   "seconds": 2.92,
    "byType": {},
    "installed": 0,
    "holds": {
@@ -271,7 +271,7 @@
      "triangles": 1225
     }
    ],
-   "seconds": 4.97,
+   "seconds": 4.74,
    "byType": {
     "vogel-1921-two-storey-dormer-row": 4
    },
@@ -302,7 +302,7 @@
      "triangles": 1827
     }
    ],
-   "seconds": 2.47,
+   "seconds": 3.19,
    "byType": {
     "vogel-1921-two-storey-dormer-row": 3
    },
@@ -332,7 +332,7 @@
      "triangles": 1263
     }
    ],
-   "seconds": 6,
+   "seconds": 5.54,
    "byType": {
     "vogel-1921-two-storey-dormer-row": 2
    },
@@ -363,7 +363,7 @@
      "triangles": 1873
     }
    ],
-   "seconds": 3.39,
+   "seconds": 3.23,
    "byType": {
     "vogel-1921-two-storey-dormer-row": 3
    },
@@ -394,7 +394,7 @@
      "triangles": 1967
     }
    ],
-   "seconds": 7.29,
+   "seconds": 7.42,
    "byType": {
     "vogel-1921-two-storey-dormer-row": 3
    },
@@ -420,11 +420,11 @@
       "0363100012087399",
       "0363100012087361"
      ],
-     "passed": false,
+     "passed": true,
      "triangles": 1203
     }
    ],
-   "seconds": 6.58,
+   "seconds": 6.74,
    "byType": {
     "vogel-1921-two-storey-dormer-row": 2
    },
@@ -455,7 +455,7 @@
      "triangles": 1940
     }
    ],
-   "seconds": 3.69,
+   "seconds": 3.49,
    "byType": {
     "vogel-1921-two-storey-dormer-row": 3
    },
@@ -487,7 +487,7 @@
      "triangles": 2501
     }
    ],
-   "seconds": 3.73,
+   "seconds": 3.89,
    "byType": {
     "vogel-1921-two-storey-dormer-row": 4
    },
@@ -507,7 +507,7 @@
    "placed": 0,
    "held": 4,
    "runs": [],
-   "seconds": 0.12,
+   "seconds": 0.13,
    "byType": {},
    "installed": 0,
    "holds": {
@@ -525,7 +525,7 @@
    "placed": 0,
    "held": 4,
    "runs": [],
-   "seconds": 0.28,
+   "seconds": 0.3,
    "byType": {},
    "installed": 0,
    "holds": {
@@ -549,7 +549,7 @@
       "0363100012070701",
       "0363100012151759"
      ],
-     "passed": false,
+     "passed": true,
      "triangles": 1186
     },
     {
@@ -558,11 +558,11 @@
       "0363100012149277",
       "0363100012125723"
      ],
-     "passed": false,
+     "passed": true,
      "triangles": 1194
     }
    ],
-   "seconds": 6.97,
+   "seconds": 10.82,
    "byType": {
     "vogel-1921-two-storey-dormer-row": 4
    },
@@ -593,7 +593,7 @@
      "triangles": 1382
     }
    ],
-   "seconds": 4.9,
+   "seconds": 11.63,
    "byType": {
     "vogel-1918-timber-band-cottage": 3
    },
@@ -613,7 +613,7 @@
    "placed": 0,
    "held": 4,
    "runs": [],
-   "seconds": 0.76,
+   "seconds": 0.8,
    "byType": {},
    "installed": 0,
    "holds": {
@@ -649,7 +649,7 @@
    "placed": 0,
    "held": 4,
    "runs": [],
-   "seconds": 1.65,
+   "seconds": 1.77,
    "byType": {},
    "installed": 0,
    "holds": {
@@ -667,7 +667,7 @@
    "placed": 0,
    "held": 3,
    "runs": [],
-   "seconds": 0.13,
+   "seconds": 0.14,
    "byType": {},
    "installed": 0,
    "holds": {
@@ -685,7 +685,7 @@
    "placed": 0,
    "held": 4,
    "runs": [],
-   "seconds": 2.76,
+   "seconds": 2.36,
    "byType": {},
    "installed": 0,
    "holds": {
@@ -703,7 +703,7 @@
    "placed": 0,
    "held": 8,
    "runs": [],
-   "seconds": 2.9,
+   "seconds": 9.37,
    "byType": {},
    "installed": 0,
    "holds": {
@@ -721,7 +721,7 @@
    "placed": 0,
    "held": 6,
    "runs": [],
-   "seconds": 3.8,
+   "seconds": 2.11,
    "byType": {},
    "installed": 0,
    "holds": {
@@ -739,7 +739,7 @@
    "placed": 0,
    "held": 7,
    "runs": [],
-   "seconds": 0.43,
+   "seconds": 0.46,
    "byType": {},
    "installed": 0,
    "holds": {
@@ -757,7 +757,7 @@
    "placed": 0,
    "held": 5,
    "runs": [],
-   "seconds": 2.14,
+   "seconds": 2.63,
    "byType": {},
    "installed": 0,
    "holds": {
@@ -786,7 +786,7 @@
      "triangles": 962
     }
    ],
-   "seconds": 1.73,
+   "seconds": 2,
    "byType": {
     "vogel-1918-cottage-3axis": 2,
     "vogel-1918-cottage-2axis": 1
@@ -818,7 +818,7 @@
      "triangles": 1369
     }
    ],
-   "seconds": 3.06,
+   "seconds": 3.05,
    "byType": {
     "vogel-1918-timber-band-cottage": 3
    },
@@ -848,7 +848,7 @@
      "triangles": 628
     }
    ],
-   "seconds": 1.92,
+   "seconds": 1.98,
    "byType": {
     "vogel-1918-cottage-3axis": 1,
     "vogel-1918-cottage-2axis": 1
@@ -869,7 +869,7 @@
    "placed": 0,
    "held": 4,
    "runs": [],
-   "seconds": 0.25,
+   "seconds": 0.26,
    "byType": {},
    "installed": 0,
    "holds": {
@@ -887,7 +887,7 @@
    "placed": 0,
    "held": 5,
    "runs": [],
-   "seconds": 0.23,
+   "seconds": 0.26,
    "byType": {},
    "installed": 0,
    "holds": {
@@ -915,7 +915,7 @@
      "triangles": 608
     }
    ],
-   "seconds": 1.78,
+   "seconds": 1.85,
    "byType": {
     "vogel-1918-cottage-3axis": 1,
     "vogel-1918-cottage-2axis": 1
@@ -946,7 +946,7 @@
      "triangles": 629
     }
    ],
-   "seconds": 1.56,
+   "seconds": 1.05,
    "byType": {
     "vogel-1918-cottage-2axis": 1,
     "vogel-1918-cottage-3axis": 1
@@ -967,7 +967,7 @@
    "placed": 0,
    "held": 4,
    "runs": [],
-   "seconds": 0.13,
+   "seconds": 0.14,
    "byType": {},
    "installed": 0,
    "holds": {
@@ -985,7 +985,7 @@
    "placed": 0,
    "held": 4,
    "runs": [],
-   "seconds": 0.2,
+   "seconds": 0.28,
    "byType": {},
    "installed": 0,
    "holds": {
@@ -1003,7 +1003,7 @@
    "placed": 0,
    "held": 4,
    "runs": [],
-   "seconds": 0.28,
+   "seconds": 0.36,
    "byType": {},
    "installed": 0,
    "holds": {
@@ -1021,7 +1021,7 @@
    "placed": 0,
    "held": 3,
    "runs": [],
-   "seconds": 0.13,
+   "seconds": 0.14,
    "byType": {},
    "installed": 0,
    "holds": {
@@ -1039,7 +1039,7 @@
    "placed": 0,
    "held": 4,
    "runs": [],
-   "seconds": 2.34,
+   "seconds": 2.45,
    "byType": {},
    "installed": 0,
    "holds": {
@@ -1067,7 +1067,7 @@
      "triangles": 681
     }
    ],
-   "seconds": 1.57,
+   "seconds": 1.75,
    "byType": {
     "vogel-1918-cottage-3axis": 2
    },
@@ -1087,7 +1087,7 @@
    "placed": 0,
    "held": 4,
    "runs": [],
-   "seconds": 0.25,
+   "seconds": 0.32,
    "byType": {},
    "installed": 0,
    "holds": {
@@ -1123,7 +1123,7 @@
    "placed": 0,
    "held": 5,
    "runs": [],
-   "seconds": 0.25,
+   "seconds": 0.29,
    "byType": {},
    "installed": 0,
    "holds": {
@@ -1141,7 +1141,7 @@
    "placed": 0,
    "held": 3,
    "runs": [],
-   "seconds": 2.26,
+   "seconds": 3.27,
    "byType": {},
    "installed": 0,
    "holds": {
@@ -1169,7 +1169,7 @@
      "triangles": 947
     }
    ],
-   "seconds": 1.45,
+   "seconds": 1.52,
    "byType": {
     "vogel-1918-timber-band-cottage": 2
    },
@@ -1189,7 +1189,7 @@
    "placed": 0,
    "held": 4,
    "runs": [],
-   "seconds": 0.16,
+   "seconds": 0.18,
    "byType": {},
    "installed": 0,
    "holds": {
@@ -1217,7 +1217,7 @@
      "triangles": 934
     }
    ],
-   "seconds": 2.82,
+   "seconds": 2.57,
    "byType": {
     "vogel-1918-timber-band-cottage": 2
    },
@@ -1249,7 +1249,7 @@
      "triangles": 1839
     }
    ],
-   "seconds": 3.33,
+   "seconds": 3.02,
    "byType": {
     "vogel-1918-timber-band-cottage": 4
    },
@@ -1280,7 +1280,7 @@
      "triangles": 1414
     }
    ],
-   "seconds": 2.67,
+   "seconds": 2.88,
    "byType": {
     "vogel-1918-timber-band-cottage": 3
    },
@@ -1300,7 +1300,7 @@
    "placed": 0,
    "held": 7,
    "runs": [],
-   "seconds": 0.44,
+   "seconds": 0.47,
    "byType": {},
    "installed": 0,
    "holds": {
@@ -1329,7 +1329,7 @@
      "triangles": 1396
     }
    ],
-   "seconds": 2.57,
+   "seconds": 2.79,
    "byType": {
     "vogel-1918-timber-band-cottage": 3
    },
@@ -1360,7 +1360,7 @@
      "triangles": 1368
     }
    ],
-   "seconds": 2.66,
+   "seconds": 4.62,
    "byType": {
     "vogel-1918-timber-band-cottage": 3
    },

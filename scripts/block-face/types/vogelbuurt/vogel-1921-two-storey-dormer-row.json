@@ -113,7 +113,8 @@
   }
  },
  "roof": {
-  "material": "red-tile"
+  "material": "red-tile",
+  "rakeClear": true
  },
  "rhythm": {
   "bays": "narrow window over the door, wide window",

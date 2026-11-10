@@ -3,7 +3,7 @@
  "street": "Kalkoenstraat",
  "library": "vogelbuurt",
  "stripDate": "2017-12-28",
- "seconds": 3.28,
+ "seconds": 3.21,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -21,7 +21,7 @@
     "0363100012100538",
     "0363100012139726"
    ],
-   "passed": false,
+   "passed": true,
    "triangles": 1924
   }
  ],
@@ -74,7 +74,7 @@
     "crown": "step-gable"
    },
    "notes": [
-    "photo decides: vogel-1921-two-storey-dormer-row~m edge NCC 0.571 vs vogel-1921-two-storey-dormer-row 0.365",
+    "photo decides: vogel-1921-two-storey-dormer-row~m edge NCC 0.571 vs vogel-1921-two-storey-dormer-row 0.364",
     "crown step-gable: reviewer pin (Kalkoenstraat 13: strip: a pointed brick gable end of the block (apex about 12.6 m, one window in the gable), not a dormer house)"
    ],
    "likeness": {
@@ -105,7 +105,7 @@
     "iou": 0.541
    },
    "challengers": {
-    "vogel-1921-two-storey-dormer-row": 0.365,
+    "vogel-1921-two-storey-dormer-row": 0.364,
     "vogel-1921-two-storey-dormer-row~m": 0.571
    }
   },
