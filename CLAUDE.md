@@ -121,3 +121,4 @@ working behavior, and leave it easier for the next session to continue.
   world recompile are the integrator's.
 - What the kit cannot say goes in `schemaLimits` as `{component, what}`, never
   the nearest option. `?houseSpecs=0` / `HOUSE_SPECS=0` turns the line off.
+- Kit gaps go on the spec's schemaLimits and into the queue (`npm run house:kit-gaps`); a house lane does not extend the kit.
