@@ -547,6 +547,326 @@
    ],
    "units": 4,
    "osm": []
+  },
+  {
+   "pandId": "0363100012237304",
+   "addresses": [
+    "Tilanusstraat 238",
+    "Tilanusstraat 240",
+    "Tilanusstraat 242",
+    "Tilanusstraat 244",
+    "Tilanusstraat 246",
+    "Tilanusstraat 248",
+    "Tilanusstraat 250",
+    "Tilanusstraat 252",
+    "Tilanusstraat 254",
+    "Tilanusstraat 256",
+    "Tilanusstraat 258"
+   ],
+   "groundUnits": [
+    {
+     "address": "Camperstraat 25",
+     "use": "woonfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000601933"
+    },
+    {
+     "address": "Camperstraat 35",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000601941"
+    },
+    {
+     "address": "Camperstraat 49",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000601960"
+    },
+    {
+     "address": "Camperstraat 79",
+     "use": "woonfunctie",
+     "areaM2": 40,
+     "bagId": "0363010000602001"
+    },
+    {
+     "address": "Camperstraat 83",
+     "use": "woonfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000602002"
+    },
+    {
+     "address": "Camperstraat 91",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000602003"
+    },
+    {
+     "address": "Camperstraat 97",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000602004"
+    },
+    {
+     "address": "Camperstraat 101",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000602005"
+    },
+    {
+     "address": "Camperstraat 105",
+     "use": "woonfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000602006"
+    },
+    {
+     "address": "Camperstraat 113",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000602031"
+    },
+    {
+     "address": "Tilanusstraat 238",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000828036"
+    },
+    {
+     "address": "Tilanusstraat 248",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000828039"
+    },
+    {
+     "address": "Tilanusstraat 254",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000828042"
+    },
+    {
+     "address": "Camperstraat 27",
+     "use": "woonfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000983090"
+    },
+    {
+     "address": "Camperstraat 29",
+     "use": "woonfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000983091"
+    },
+    {
+     "address": "Camperstraat 31",
+     "use": "woonfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000983093"
+    },
+    {
+     "address": "Camperstraat 33",
+     "use": "woonfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000983094"
+    },
+    {
+     "address": "Camperstraat 37",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000983096"
+    },
+    {
+     "address": "Camperstraat 39",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000983097"
+    },
+    {
+     "address": "Camperstraat 71",
+     "use": "woonfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000983124"
+    },
+    {
+     "address": "Camperstraat 73",
+     "use": "woonfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000983125"
+    },
+    {
+     "address": "Camperstraat 75",
+     "use": "woonfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000983127"
+    },
+    {
+     "address": "Camperstraat 77",
+     "use": "woonfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000983128"
+    },
+    {
+     "address": "Camperstraat 81",
+     "use": "woonfunctie",
+     "areaM2": 39,
+     "bagId": "0363010000983129"
+    },
+    {
+     "address": "Camperstraat 85",
+     "use": "woonfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000983130"
+    },
+    {
+     "address": "Camperstraat 87",
+     "use": "woonfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000983131"
+    },
+    {
+     "address": "Camperstraat 89",
+     "use": "woonfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000983132"
+    },
+    {
+     "address": "Camperstraat 93",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000983133"
+    },
+    {
+     "address": "Camperstraat 95",
+     "use": "woonfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000983134"
+    },
+    {
+     "address": "Camperstraat 99",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000983135"
+    },
+    {
+     "address": "Camperstraat 103",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000983136"
+    },
+    {
+     "address": "Camperstraat 107",
+     "use": "woonfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000983137"
+    },
+    {
+     "address": "Camperstraat 109",
+     "use": "woonfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000983138"
+    },
+    {
+     "address": "Tilanusstraat 244",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000986650"
+    },
+    {
+     "address": "Camperstraat 115",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000983259"
+    },
+    {
+     "address": "Tilanusstraat 246",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000986651"
+    },
+    {
+     "address": "Camperstraat 117",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000983260"
+    },
+    {
+     "address": "Ruyschstraat 303",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000986448"
+    },
+    {
+     "address": "Ruyschstraat 305",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000986449"
+    },
+    {
+     "address": "Ruyschstraat 295",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 64,
+     "bagId": "0363010000800972"
+    },
+    {
+     "address": "Ruyschstraat 297",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000800973"
+    },
+    {
+     "address": "Camperstraat 111",
+     "use": "woonfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000983139"
+    },
+    {
+     "address": "Camperstraat 51",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000601970"
+    },
+    {
+     "address": "Ruyschstraat 299",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000800974"
+    },
+    {
+     "address": "Tilanusstraat 240",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000828037"
+    },
+    {
+     "address": "Tilanusstraat 250",
+     "use": "woonfunctie",
+     "areaM2": 62,
+     "bagId": "0363010000828040"
+    },
+    {
+     "address": "Tilanusstraat 252",
+     "use": "woonfunctie",
+     "areaM2": 38,
+     "bagId": "0363010000828041"
+    },
+    {
+     "address": "Tilanusstraat 258",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000828044"
+    },
+    {
+     "address": "Camperstraat 47",
+     "use": "woonfunctie",
+     "areaM2": 62,
+     "bagId": "0363010000601958"
+    },
+    {
+     "address": "Tilanusstraat 256",
+     "use": "woonfunctie",
+     "areaM2": 82,
+     "bagId": "0363010000828043"
+    }
+   ],
+   "units": 78,
+   "osm": []
   }
  ]
 }

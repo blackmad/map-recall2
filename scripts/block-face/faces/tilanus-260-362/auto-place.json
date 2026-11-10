@@ -1,0 +1,1390 @@
+{
+ "face": "tilanus-260-362",
+ "street": "Tilanusstraat",
+ "library": "oud-west",
+ "stripDate": "2024-10-02",
+ "seconds": 29.65,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [
+  {
+   "face": "tilanus-260-362-r1",
+   "pands": [
+    "0363100012162070",
+    "0363100012159277"
+   ],
+   "passed": true,
+   "triangles": 3796
+  },
+  {
+   "face": "tilanus-260-362-r2",
+   "pands": [
+    "0363100012157453",
+    "0363100012159395",
+    "0363100012155684"
+   ],
+   "passed": true,
+   "triangles": 5725
+  },
+  {
+   "face": "tilanus-260-362-r3",
+   "pands": [
+    "0363100012155770",
+    "0363100012165810"
+   ],
+   "passed": true,
+   "triangles": 3821
+  }
+ ],
+ "pands": [
+  {
+   "pandId": "0363100012159951",
+   "address": "Tilanusstraat 356",
+   "builtYear": 1900,
+   "widthM": 6.61,
+   "eavesM": 15.62,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#98847e",
+    "wallRaw": "#7c8078",
+    "skyline": {
+     "eavesM": 15.72,
+     "eavesRow": 289,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.42,
+      "riseM": 1.53,
+      "topWidthM": 0.6,
+      "centre": 0.55
+     }
+    },
+    "stucco": false,
+    "bands": 12,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": "left",
+    "accentShare": 0.171,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 1 m at 0.52 (light 0.31): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1,
+       "centre": 0.52,
+       "light": 0.31
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 13.67,
+       "widthM": 1.9,
+       "centre": 0.53
+      },
+      {
+       "atM": 13.22,
+       "widthM": 2.88,
+       "centre": 0.7
+      },
+      {
+       "atM": 12.78,
+       "widthM": 0.9,
+       "centre": 0.52
+      },
+      {
+       "atM": 9.63,
+       "widthM": 0.95,
+       "centre": 0.89
+      },
+      {
+       "atM": 9.32,
+       "widthM": 1.38,
+       "centre": 0.46
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.12
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best oosterpark-1900-balcony-camber-tall-door: frontage 6.61 m, type 5-6.2 m)",
+   "best": {
+    "type": "oosterpark-1900-balcony-camber-tall-door",
+    "score": 0,
+    "veto": [
+     "frontage 6.61 m, type 5-6.2 m"
+    ],
+    "criteria": [
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.165 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012162616",
+   "address": "Tilanusstraat 348",
+   "builtYear": 1900,
+   "widthM": 6,
+   "eavesM": 15.63,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#66645e",
+    "wallRaw": "#4b5f44",
+    "skyline": {
+     "eavesM": 16.07,
+     "eavesRow": 275,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.6,
+      "riseM": 1.7,
+      "topWidthM": 0.72,
+      "centre": 0.57
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": "left",
+    "accentShare": 0.02,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.82
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best oosterpark-1900-balcony-camber-tall-door scores 0 < 0.7 ()",
+   "best": {
+    "type": "oosterpark-1900-balcony-camber-tall-door",
+    "score": 0,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012159569",
+   "address": "Tilanusstraat 340",
+   "builtYear": 1900,
+   "widthM": 5.47,
+   "eavesM": 15.58,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#4a4e4a",
+    "wallRaw": "#696f6a",
+    "skyline": {
+     "eavesM": 15.75,
+     "eavesRow": 288,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.4,
+      "riseM": 2.43,
+      "topWidthM": 0.95,
+      "centre": 0.47
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.027,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 2 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 13.63,
+       "widthM": 2.63,
+       "centre": 0.71
+      },
+      {
+       "atM": 13.17,
+       "widthM": 2,
+       "centre": 0.47
+      },
+      {
+       "atM": 12.57,
+       "widthM": 1.18,
+       "centre": 0.81
+      },
+      {
+       "atM": 9.65,
+       "widthM": 1.15,
+       "centre": 0.14
+      },
+      {
+       "atM": 6.57,
+       "widthM": 1.13,
+       "centre": 0.15
+      },
+      {
+       "atM": 5.82,
+       "widthM": 1.05,
+       "centre": 0.46
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.08
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.121 < 0.15 (photo vs model body; likeness.ts PASS)",
+   "likeness": {
+    "pandId": "0363100012159569",
+    "ncc": 0.121,
+    "nccRaw": 0.121,
+    "shiftM": [
+     -0.1,
+     -0.3
+    ],
+    "usable": 0.87,
+    "abstain": null,
+    "verdict": "PASS",
+    "reasons": [],
+    "wall": {
+     "photo": "#7d8082",
+     "model": "#606660",
+     "dL": -0.112
+    },
+    "glazing": {
+     "photo": 0.34,
+     "model": 0.43
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.653
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012162070",
+   "address": "Tilanusstraat 332",
+   "builtYear": 1900,
+   "widthM": 5.48,
+   "eavesM": 15.7,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#80726e",
+    "wallRaw": "#6b6c6b",
+    "skyline": {
+     "eavesM": 15.72,
+     "eavesRow": 289,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.27,
+      "riseM": 1.25,
+      "topWidthM": 0.75,
+      "centre": 0.49
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "curtain",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.037,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 3 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 13.67,
+       "widthM": 3.5,
+       "centre": 0.65
+      },
+      {
+       "atM": 12.55,
+       "widthM": 1.13,
+       "centre": 0.5
+      },
+      {
+       "atM": 9.85,
+       "widthM": 1.85,
+       "centre": 0.5
+      },
+      {
+       "atM": 6.55,
+       "widthM": 1.38,
+       "centre": 0.19
+      },
+      {
+       "atM": 6.25,
+       "widthM": 0.8,
+       "centre": 0.54
+      }
+     ]
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0.02
+   },
+   "status": "placed",
+   "type": "oosterpark-1900-balcony-camber-tall-door",
+   "score": 1,
+   "placement": {
+    "type": "oosterpark-1900-balcony-camber-tall-door",
+    "mirror": true,
+    "measuredPalette": {
+     "brick": "#80726e",
+     "evidence": "strip 2024-10-02 span 723-942: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "door left: mirrored",
+    "crown box-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012162070",
+    "ncc": 0.183,
+    "nccRaw": 0.183,
+    "shiftM": [
+     0,
+     -0.4
+    ],
+    "usable": 0.95,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "wall dL +0.12",
+     "glazing storey band off by 0.21"
+    ],
+    "wall": {
+     "photo": "#6b6b6a",
+     "model": "#938581",
+     "dL": 0.124
+    },
+    "glazing": {
+     "photo": 0.52,
+     "model": 0.43
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.523
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012159277",
+   "address": "Tilanusstraat 324",
+   "builtYear": 1900,
+   "widthM": 5.5,
+   "eavesM": 15.66,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#7e706b",
+    "wallRaw": "#6f726c",
+    "skyline": {
+     "eavesM": 15.7,
+     "eavesRow": 290,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.93,
+      "riseM": 1.68,
+      "topWidthM": 0.95,
+      "centre": 0.48
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": "left",
+    "accentShare": 0.053,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 13.85,
+       "widthM": 0.85,
+       "centre": 0.08
+      },
+      {
+       "atM": 12.8,
+       "widthM": 0.97,
+       "centre": 0.13
+      },
+      {
+       "atM": 9.65,
+       "widthM": 1.23,
+       "centre": 0.5
+      },
+      {
+       "atM": 7.47,
+       "widthM": 0.97,
+       "centre": 0.83
+      }
+     ]
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0.09
+   },
+   "status": "placed",
+   "type": "oosterpark-1900-balcony-camber-tall-door",
+   "score": 1,
+   "placement": {
+    "type": "oosterpark-1900-balcony-camber-tall-door",
+    "measuredPalette": {
+     "brick": "#7e706b",
+     "evidence": "strip 2024-10-02 span 942-1162: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "door right",
+    "crown box-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012159277",
+    "ncc": 0.238,
+    "nccRaw": 0.238,
+    "shiftM": [
+     -0.15,
+     -0.4
+    ],
+    "usable": 0.84,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.33 mean 0.40 vs photo 0.22"
+    ],
+    "wall": {
+     "photo": "#7b706a",
+     "model": "#91837e",
+     "dL": 0.082
+    },
+    "glazing": {
+     "photo": 0.22,
+     "model": 0.4
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.492
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012162162",
+   "address": "Tilanusstraat 316",
+   "builtYear": 1900,
+   "widthM": 5.48,
+   "eavesM": 15.8,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#7d7370",
+    "wallRaw": "#485944",
+    "skyline": {
+     "eavesM": 16.1,
+     "eavesRow": 274,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.38,
+      "riseM": 2.47,
+      "topWidthM": 0.4,
+      "centre": 0.53
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.017,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 9.8,
+       "widthM": 0.8,
+       "centre": 0.45
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.54
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best oosterpark-1900-balcony-camber-tall-door scores 0 < 0.7 ()",
+   "best": {
+    "type": "oosterpark-1900-balcony-camber-tall-door",
+    "score": 0,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012157453",
+   "address": "Tilanusstraat 308",
+   "builtYear": 1900,
+   "widthM": 5.48,
+   "eavesM": 15.85,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#86756c",
+    "wallRaw": "#686960",
+    "skyline": {
+     "eavesM": 15.9,
+     "eavesRow": 282,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.33,
+      "riseM": 2.65,
+      "topWidthM": 0.6,
+      "centre": 0.48
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.033,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 3 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 13.82,
+       "widthM": 3.17,
+       "centre": 0.32
+      },
+      {
+       "atM": 13.53,
+       "widthM": 1.4,
+       "centre": 0.14
+      },
+      {
+       "atM": 12.7,
+       "widthM": 1.13,
+       "centre": 0.47
+      },
+      {
+       "atM": 9.93,
+       "widthM": 1.88,
+       "centre": 0.48
+      },
+      {
+       "atM": 9.63,
+       "widthM": 1.18,
+       "centre": 0.14
+      },
+      {
+       "atM": 6.63,
+       "widthM": 1.2,
+       "centre": 0.81
+      },
+      {
+       "atM": 5.88,
+       "widthM": 0.95,
+       "centre": 0.47
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.13
+   },
+   "status": "placed",
+   "type": "oosterpark-1900-balcony-camber-tall-door",
+   "score": 1,
+   "placement": {
+    "type": "oosterpark-1900-balcony-camber-tall-door",
+    "measuredPalette": {
+     "brick": "#86756c",
+     "evidence": "strip 2024-10-02 span 1382-1601: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "door unread: as drawn, the opposite of 159395",
+    "crown box-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012157453",
+    "ncc": 0.208,
+    "nccRaw": 0.208,
+    "shiftM": [
+     -0.15,
+     -0.25
+    ],
+    "usable": 0.76,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.52 mean 0.43 vs photo 0.21"
+    ],
+    "wall": {
+     "photo": "#76716b",
+     "model": "#98887f",
+     "dL": 0.106
+    },
+    "glazing": {
+     "photo": 0.21,
+     "model": 0.43
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.363
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012159395",
+   "address": "Tilanusstraat 300",
+   "builtYear": 1900,
+   "widthM": 5.44,
+   "eavesM": 15.88,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#707170",
+    "wallRaw": "#6b6c6a",
+    "skyline": {
+     "eavesM": 16.35,
+     "eavesRow": 264,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.75,
+      "riseM": 1.82,
+      "topWidthM": 1.25,
+      "centre": 0.55
+     }
+    },
+    "stucco": false,
+    "bands": 7,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.089,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 12.88,
+       "widthM": 0.82,
+       "centre": 0.5
+      },
+      {
+       "atM": 10.02,
+       "widthM": 1.85,
+       "centre": 0.51
+      }
+     ]
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0.01
+   },
+   "status": "placed",
+   "type": "oosterpark-1900-balcony-camber-tall-door",
+   "score": 1,
+   "placement": {
+    "type": "oosterpark-1900-balcony-camber-tall-door",
+    "mirror": true,
+    "measuredPalette": {
+     "brick": "#707170",
+     "evidence": "strip 2024-10-02 span 1601-1819: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "door left: mirrored",
+    "crown box-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012159395",
+    "ncc": 0.228,
+    "nccRaw": 0.228,
+    "shiftM": [
+     0,
+     -0.35
+    ],
+    "usable": 0.96,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing  mean 0.42 vs photo 0.52"
+    ],
+    "wall": {
+     "photo": "#767573",
+     "model": "#838483",
+     "dL": 0.059
+    },
+    "glazing": {
+     "photo": 0.52,
+     "model": 0.42
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.515
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012155684",
+   "address": "Tilanusstraat 292",
+   "builtYear": 1900,
+   "widthM": 5.49,
+   "eavesM": 15.85,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#7d726e",
+    "wallRaw": "#5f6160",
+    "skyline": {
+     "eavesM": 16,
+     "eavesRow": 278,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.7,
+      "riseM": 1.38,
+      "topWidthM": 1.1,
+      "centre": 0.5
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "curtain",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.007,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 12.78,
+       "widthM": 0.95,
+       "centre": 0.16
+      },
+      {
+       "atM": 12.47,
+       "widthM": 0.93,
+       "centre": 0.16
+      },
+      {
+       "atM": 10.07,
+       "widthM": 1.63,
+       "centre": 0.45
+      },
+      {
+       "atM": 9.77,
+       "widthM": 0.97,
+       "centre": 0.16
+      },
+      {
+       "atM": 6.63,
+       "widthM": 1.07,
+       "centre": 0.83
+      },
+      {
+       "atM": 6.32,
+       "widthM": 0.8,
+       "centre": 0.39
+      }
+     ]
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0.03
+   },
+   "status": "placed",
+   "type": "oosterpark-1900-balcony-camber-tall-door",
+   "score": 1,
+   "placement": {
+    "type": "oosterpark-1900-balcony-camber-tall-door",
+    "measuredPalette": {
+     "brick": "#7d726e",
+     "evidence": "strip 2024-10-02 span 1818-2038: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "door unread: as drawn, the opposite of 159395",
+    "crown box-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012155684",
+    "ncc": 0.192,
+    "nccRaw": 0.192,
+    "shiftM": [
+     -0.1,
+     -0.4
+    ],
+    "usable": 0.95,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "wall dL +0.13",
+     "glazing storey band off by 0.51 mean 0.41 vs photo 0.21"
+    ],
+    "wall": {
+     "photo": "#686867",
+     "model": "#908581",
+     "dL": 0.129
+    },
+    "glazing": {
+     "photo": 0.21,
+     "model": 0.41
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.356
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012161763",
+   "address": "Tilanusstraat 284",
+   "builtYear": 1900,
+   "widthM": 5.49,
+   "eavesM": 15.8,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6a645f",
+    "wallRaw": "#41553b",
+    "skyline": {
+     "eavesM": 15.75,
+     "eavesRow": 288,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.1,
+      "riseM": 2.43,
+      "topWidthM": 0.9,
+      "centre": 0.45
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 4,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.011,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.75
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best oosterpark-1900-balcony-camber-tall-door scores 0 < 0.7 ()",
+   "best": {
+    "type": "oosterpark-1900-balcony-camber-tall-door",
+    "score": 0,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012155770",
+   "address": "Tilanusstraat 276",
+   "builtYear": 1900,
+   "widthM": 5.51,
+   "eavesM": 15.66,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#887a78",
+    "wallRaw": "#5c625d",
+    "skyline": {
+     "eavesM": 16.15,
+     "eavesRow": 272,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.77,
+      "riseM": 2.4,
+      "topWidthM": 0.33,
+      "centre": 0.46
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.017,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 13.88,
+       "widthM": 0.88,
+       "centre": 0.09
+      },
+      {
+       "atM": 12.75,
+       "widthM": 1.1,
+       "centre": 0.45
+      },
+      {
+       "atM": 9.52,
+       "widthM": 1.18,
+       "centre": 0.46
+      }
+     ]
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0.13
+   },
+   "status": "placed",
+   "type": "oosterpark-1900-balcony-camber-tall-door",
+   "score": 1,
+   "placement": {
+    "type": "oosterpark-1900-balcony-camber-tall-door",
+    "mirror": true,
+    "measuredPalette": {
+     "brick": "#887a78",
+     "evidence": "strip 2024-10-02 span 2257-2477: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "door left: mirrored",
+    "crown box-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012155770",
+    "ncc": 0.19,
+    "nccRaw": 0.19,
+    "shiftM": [
+     -0.1,
+     -0.25
+    ],
+    "usable": 0.76,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.18 mean 0.40 vs photo 0.59"
+    ],
+    "wall": {
+     "photo": "#8b7d77",
+     "model": "#998d8b",
+     "dL": 0.067
+    },
+    "glazing": {
+     "photo": 0.59,
+     "model": 0.4
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.565
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012165810",
+   "address": "Tilanusstraat 268",
+   "builtYear": 1900,
+   "widthM": 5.54,
+   "eavesM": 15.93,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#665b58",
+    "wallRaw": "#737370",
+    "skyline": {
+     "eavesM": 15.9,
+     "eavesRow": 282,
+     "confidence": 1,
+     "crown": {
+      "widthM": 0.8,
+      "riseM": 1.45,
+      "topWidthM": 0.38,
+      "centre": 0.35
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.056,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 2 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 13.95,
+       "widthM": 1.25,
+       "centre": 0.88
+      },
+      {
+       "atM": 9.9,
+       "widthM": 1.02,
+       "centre": 0.15
+      },
+      {
+       "atM": 9.6,
+       "widthM": 0.97,
+       "centre": 0.5
+      },
+      {
+       "atM": 6.6,
+       "widthM": 1.25,
+       "centre": 0.18
+      },
+      {
+       "atM": 5.85,
+       "widthM": 0.93,
+       "centre": 0.16
+      }
+     ]
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0.02
+   },
+   "status": "placed",
+   "type": "oosterpark-1900-balcony-camber-tall-door",
+   "score": 1,
+   "placement": {
+    "type": "oosterpark-1900-balcony-camber-tall-door",
+    "mirror": true,
+    "measuredPalette": {
+     "brick": "#665b58",
+     "evidence": "strip 2024-10-02 span 2478-2700: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "door left: mirrored",
+    "crown box-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012165810",
+    "ncc": 0.218,
+    "nccRaw": 0.218,
+    "shiftM": [
+     -0.05,
+     -0.25
+    ],
+    "usable": 0.95,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.35 mean 0.40 vs photo 0.29"
+    ],
+    "wall": {
+     "photo": "#665c5a",
+     "model": "#7d6f6c",
+     "dL": 0.08
+    },
+    "glazing": {
+     "photo": 0.29,
+     "model": 0.4
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.485
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012155532",
+   "address": "Tilanusstraat 260",
+   "builtYear": 1905,
+   "widthM": 5.54,
+   "eavesM": 16.08,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#796f6c",
+    "wallRaw": "#6d6e6d",
+    "skyline": {
+     "eavesM": 15.3,
+     "eavesRow": 306,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.98,
+      "riseM": 2.07,
+      "topWidthM": 0.9,
+      "centre": 0.54
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.049,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 2 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 14.1,
+       "widthM": 4.6,
+       "centre": 0.53
+      },
+      {
+       "atM": 13.8,
+       "widthM": 1.63,
+       "centre": 0.16
+      },
+      {
+       "atM": 12.75,
+       "widthM": 1,
+       "centre": 0.49
+      },
+      {
+       "atM": 10.05,
+       "widthM": 1.8,
+       "centre": 0.49
+      },
+      {
+       "atM": 9.75,
+       "widthM": 1.1,
+       "centre": 0.15
+      },
+      {
+       "atM": 6.67,
+       "widthM": 1.18,
+       "centre": 0.83
+      },
+      {
+       "atM": 5.55,
+       "widthM": 0.93,
+       "centre": 0.82
+      }
+     ]
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.135 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.16)",
+   "likeness": {
+    "pandId": "0363100012155532",
+    "ncc": 0.135,
+    "nccRaw": 0.135,
+    "shiftM": [
+     -0.05,
+     -0.25
+    ],
+    "usable": 0.98,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.16"
+    ],
+    "wall": {
+     "photo": "#70706e",
+     "model": "#8d827f",
+     "dL": 0.09
+    },
+    "glazing": {
+     "photo": 0.4,
+     "model": 0.41
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.525
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012237304",
+   "address": "Tilanusstraat 238",
+   "builtYear": 1900,
+   "widthM": 36.02,
+   "eavesM": 10.95,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#7c736d",
+    "wallRaw": "#7a726c",
+    "skyline": {
+     "eavesM": 12.97,
+     "eavesRow": 399,
+     "confidence": 0.96,
+     "crown": {
+      "widthM": 6.4,
+      "riseM": 5.2,
+      "topWidthM": 1.15,
+      "centre": 0.31
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 17,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.038,
+    "structure": {
+     "bayWidthM": 1.63,
+     "bayCentre": 0.53,
+     "balconies": true,
+     "why": "dark open axis 0.63 m at 0.54 (light 0.45): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.63,
+       "centre": 0.54,
+       "light": 0.45
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 8.47,
+       "widthM": 1.55,
+       "centre": 0.32
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.02
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best oosterpark-1900-balcony-camber-tall-door: frontage 36.02 m, type 5-6.2 m)",
+   "best": {
+    "type": "oosterpark-1900-balcony-camber-tall-door",
+    "score": 0,
+    "veto": [
+     "frontage 36.02 m, type 5-6.2 m"
+    ],
+    "criteria": [
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.03 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 17 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

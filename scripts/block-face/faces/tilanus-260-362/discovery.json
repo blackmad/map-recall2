@@ -14,7 +14,8 @@
   "0363100012161763",
   "0363100012155770",
   "0363100012165810",
-  "0363100012155532"
+  "0363100012155532",
+  "0363100012237304"
  ],
  "ends": [
   {
@@ -23,7 +24,7 @@
   },
   {
    "side": "right",
-   "reason": "trimmed at 0363100012155532 (face continues: 237304)"
+   "reason": "next fronting pand 0363100012236263 65.9 m on shares no party wall (cross street or gap)"
   }
  ],
  "rejected": [
@@ -519,6 +520,18 @@
    "storeys3dbag": 5,
    "builtYear": 1905,
    "uncertainty": []
+  },
+  {
+   "pandId": "0363100012237304",
+   "alongM": 20.75,
+   "widthM": 36.02,
+   "eavesM": 10.95,
+   "roofMaxM": 20.94,
+   "storeys3dbag": 5,
+   "builtYear": 1900,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
   }
  ]
 }

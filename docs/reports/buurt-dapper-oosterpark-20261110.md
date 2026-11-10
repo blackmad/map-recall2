@@ -89,3 +89,11 @@ Source: `docs/reports/dapper-oosterpark-strip-verdict-20261110.md`. Same 15 pand
   `palette.cornice` repaints a mesh's material, but a chunk takes colours from the surface slot (`trim` = the window frames), so the cornice meshes move to the `stone` slot.
   Cost: the timber dormer's cheeks take the stone colour too (grey, the photo's are white); posts and frame stay white. Needs a separate dormer slot.
 * 90's second door: reviewFronts cannot say it (a shopfront has one residential door and one shop entrance); the left door stays the shop entrance.
+
+## Round 4 (2026-11-10): Tilanusstraat 260-362 held
+
+Step 3 of the final round. The face was re-intaken on the sharper 2024-10-02 strip (the 2023-01-02 strip was ghosted) and run through auto-place with a tall-door variant of the Ruysch type (door ground, mirrorForDoor). It placed 7 of 14 (332, 324, 308, 300, 292, 276, 268) at edge NCC 0.18-0.24, and the sheets were inspected by eye (archived as `sheet-tilanus-260-362-r{1,2,3}-held.png`). None was installed.
+
+Why held: the family resemblance is real (brick, three axes, centre balconettes) but the likeness is not there. Photos show white arched window surrounds and speklagen bands, neck and stepped gables (324, 300, 276), shopfront grounds (324, 276), ornate attic dormers (332, 292) where the type draws a plain box dormer, and 300 renders a green wall. Door sides were unread on 308 and 292. Wall checks warned on 332, 292, 276 and 268. Not placed at all: 356 (frontage 6.61 m), 348, 316, 284, 340, 260, 238.
+
+Kit cannot say: speklagen/arch rings in white on a brick front, neck/stepped gables over a three-axis brick row, per-pand dormer variety. A Tilanus lane needs those components first; the intake data (strip.json, discovery.json) is committed so it can resume. The tilanus pin and the two door-variant types were removed as unused.
