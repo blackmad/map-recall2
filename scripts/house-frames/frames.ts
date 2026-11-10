@@ -38,7 +38,9 @@ Input (one of)
 Flags
   --year <yyyy>          only panoramas of that mission year
   --season winter|any    winter: Nov-Mar captures first (bare trees); default any
-  --query '<q>'          game query, e.g. '?world=live&houseSpecs=0' (before/after); ?cam=fps is added
+  --query '<q>'          game query; ?engine=own&cam=fps is added. Before/after of a spec change: '?world=live&houseSpecs=0'
+                         vs '?world=live' (the baked world-v1 cells carry the specs already, so houseSpecs=0 alone
+                         changes nothing), or a staged world through WORLD_DIR / BUNDLES_DIR (tests/e2e/helpers.ts)
   --label before|after   written on the caption and into pose.json
   --out <dir>            default artifacts/house-frames/<label or 'run'>
   --pano-size small|medium|full   panorama used for the cut (default medium, 4000 px)
@@ -300,7 +302,7 @@ async function pairImage(dir: string, r: any, halfPx: number, fontPx: number): P
 }
 
 async function contactSheets(out: string, results: any[], title: string): Promise<string[]> {
-  const files: string[] = [], per = 6, cols = 2, halfPx = 392, fontPx = 11;
+  const files: string[] = [], per = 6, cols = 2, halfPx = 390, fontPx = 11; // 1596 px wide: the screenshots repo takes <= 1600 px, <= 400 kB
   for (let s = 0; s * per < results.length; s++) {
     const slice = results.slice(s * per, (s + 1) * per);
     const tiles = await Promise.all(slice.map(r => pairImage(path.join(out, r.key), r, halfPx, fontPx)));
@@ -311,7 +313,7 @@ async function contactSheets(out: string, results: any[], title: string): Promis
     const file = path.join(out, `contact-${s + 1}.jpg`);
     await sharp({ create: { width: W, height: H, channels: 3, background: '#222' } })
       .composite([{ input: Buffer.from(t), left: 0, top: 0 }, ...tiles.map((tile, i) => ({ input: tile, left: gap + (i % cols) * (tw + gap), top: head + Math.floor(i / cols) * (th + gap) }))])
-      .jpeg({ quality: 78 }).toFile(file);
+      .jpeg({ quality: 70, mozjpeg: true }).toFile(file);
     files.push(file);
   }
   return files;

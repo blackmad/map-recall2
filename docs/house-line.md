@@ -16,6 +16,7 @@ describe ──► preview ──► compare ──► stage ──► publish
 | §3 Stage and publish | H3 | landed |
 | §4 Describe at scale (crops → facts → spec) | H4 (§4a), H5 (§4b), H5h (§4c hand set) | landed on the AB07 pilot |
 | §5 The kit-gap queue | H6 | stub |
+| §7 Review in the game (`house:frames`) | H10 | landed |
 
 ## §1 The record: HouseSpec
 
@@ -1248,3 +1249,116 @@ Archive: `HOUSE_CROPS_ARCHIVE` (default `~/Code/map-recall2-source-data-h5h`) an
 ## §5 The kit-gap queue
 
 Stub (lane H6): `kit-gaps.ts` aggregates `schemaLimits` by `component`; the horizon rule.
+
+## §7 Review in the game (`house:frames`)
+
+Every earlier check looks at a house outside the game: `house:preview` draws a flat elevation, `install-large` a GLB in
+SwiftShader. The failures the user keeps catching are in-game only (116526 drawn as a blank wall by another model's cover
+while its elevation was fine; roofs off their walls; GLB fronts 0.1 L darker under the lit look; neighbours, trees, the
+camera itself). `npm run house:frames` (lane H10, #358) puts the game's first-person camera where a street panorama was
+taken, looking where the panorama looks, and sets the frame beside the panorama cut to the same pose.
+
+**Builders are accepted on these pairs, read by opus or a human; the elevation verdict (`house:preview`, likeness gates)
+is a pre-filter. Sonnet does not accept its own pairs.** The integrator runs the frames for a batch at publish time
+(before = the published world, or `--query '?world=live&houseSpecs=0'`; after = `?world=live`, or the staged world via
+`WORLD_DIR`/`BUNDLES_DIR`). `?houseSpecs=0` alone changes nothing: the baked world-v1 cells already carry the specs
+(measured: of the 20 house poses run with and without it, 18 drew byte-identical frames and two moved under 1.5 % of
+pixels by more than 20 levels). That also says two runs of one pose agree, so a before/after difference is the change.
+
+```sh
+npm run house:frames -- --pands 0363100012116526 --label before
+npm run house:frames -- --face nassau-145-152 --query '?world=live&houseSpecs=0' --label before   # spec off, live tiles
+npm run house:frames -- --face nassau-145-152 --season winter --label after
+npm run house:frames -- --list scripts/house-frames/validation.json --out artifacts/house-frames/validation
+npm run house:frames -- --buurt AB07 --max 60 --prep-only        # pick, pose and cut only (no browser)
+npm run house:frames -- --list my.json --out <dir> --post-only    # redo checks, pairs and sheets
+```
+
+Output per pand (or per `key` of a `--list` entry): `<out>/<key>/{photo.jpg, game.png, pair.jpg, pose.json}`; per six pairs
+`<out>/contact-N.jpg` (left: the panorama cut, right: the game, cyan: the BAG wall outline, a three-line caption); and
+`<out>/summary.json` (alignment distribution, flags, throughput). `--help` prints the command's `HELP`
+(`scripts/house-frames/frames.ts`).
+
+### How a pair is made
+
+| Step | Where | What |
+|---|---|---|
+| wall | `pand-reference/select.ts pickWall` | the street wall (`--bearing`, or a `--list` entry's `bearing`/`at` for one wall of a large pand) |
+| panorama | `rankPanos` (5-35 m, obliquity <= 55) | `--year` filter; `--season winter` puts Nov-Mar first; the top three then by least foliage on the wall (a 2000 px pre-pass), then rank |
+| pose | `scripts/house-frames/pose.ts aimPose` | at the panorama, eye 2.44 m over the ground (`lensFor`'s datum), heading at the wall centre, 5-30 deg down, the narrowest vertical FOV in 45-120 deg that fits the wall and 1.5 m above it |
+| photo | `photo.ts cutPerspective` | a pinhole cut of the equirectangular panorama (4000 px; `--pano-size`) with the game's camera frame, rays turned onto the RD grid (`gridConvergenceDeg`, about -0.4 deg) |
+| game | `tests/e2e/house-frames.spec.ts` | one page for the list (`?engine=own&cam=fps` + `--query`), re-opened every 40 poses or after a crash; per pose: teleport, the pose handed to the engine, `settleWorld`, HUD hidden, screenshot, `inspectBuilding` picks over the wall |
+
+The game camera cannot look up (`MAX_PITCH_DEG` 85: at least 5 deg below the horizon), so a tall front close to the
+panorama is fitted by widening the lens, not by pitching; a front still too tall at 120 deg says `clipped top` on the
+caption. Both halves share the pose, so the distortion of a wide lens is the same on both. The camera is set from
+outside: the spec replaces the live view's `solveFps` with one that returns the job's pose (the first-person solve's
+clearance and yaw smoothing are skipped); nothing in `src/` changes and the game gains no global. The tool drives the own
+engine (`?engine=own`), the engine the house line builds for; pass `--query '?engine=maplibre'` only to see the legacy view
+(no first-person camera there: the spec stops with a message).
+
+### Alignment check (what makes a pair trustworthy)
+
+The pand's BAG wall (footprint edge x tile height) is projected into both halves with the one pose (`pose.ts frameFor`,
+the engine's own `fpsPose` + `cameraFrame`) and drawn as a thin cyan line. `analyse.ts edgeOffsets` searches +-6 % of the
+width around each projected wall end (from 35 % of the height to the top) and the crown line for the strongest edge whose
+gradient keeps one sign along its length; `found` when it stands 1.8x over the window's median. `pose.json` records the
+offsets in % of the image width for the photo (is the panorama where we think?) and the game (is the camera where we put
+it?). Gate: median photo offset <= 2 % over the validation set, any pose > 3 % investigated.
+
+### Flags (advisory, on the caption)
+
+| Flag | Rule |
+|---|---|
+| blank wall | the game's wall reads <= 1 opening (a bare slab's edge strip reads as one) where the photo reads >= 3 (`measureFacade`, houseLine profile, on the wall rectified out of each half at 25 px/m) |
+| missing | >= 50 % of 35 wall picks hit sky or ground |
+| other building | >= 50 % of the wall picks hit another building or model (a cover that does not draw this wall; a neighbour in front) |
+| roof offset | the game's skyline over the wall (median of 7 columns, read on the wall plane) sits more than 1 m from the projected crown line (tile height) while the photo's sits within 1 m of it; or a model's surface stands >= 1.2 m over the crown line on 2 of 7 columns |
+| wall colour | \|dL\| > 0.12 between the halves' wall colours; advisory until the H2e clusterWall fix and H9 round 3 land |
+
+Generic houses pick as footprint prisms (`threeBuildingsBrowser.ts inspectAtScreen`), so picks say who owns the wall,
+not what its roof looks like; installed models (chunks, ordinary, landmarks) are ray-cast on their meshes.
+
+### Reviewer checklist (each pair)
+
+One line per item; the countable ones carry the H5h blind reader ceiling (§4c), the agreement a careful reader reaches.
+
+1. Crown and gable type: does the game's crown (step, neck, bell, spout, point, cornice, flat) match the photo? (ceiling 0.86)
+2. Storeys: same count above the ground storey? (ceiling 1.00)
+3. Window axes: same number of bays, roughly where the photo has them? (ceiling 1.00)
+4. Colour family and darkness: wall family (ceiling 0.81) and tone (ceiling 0.89), judged against the neighbours in the same frame, not in absolute terms.
+5. Blank or missing wall: is there a front where the photo has one, with openings? (the blank-wall / missing flags)
+6. Roof offset: does the roof sit on the walls, at the photo's height? (the roof flag)
+7. Shopfront (pui): shop vs residential ground storey (ceiling 0.88).
+8. Kit gaps: anything the photo shows that the kit cannot say (oriel, balcony type, ornament, painted bands) goes to the kit-gap queue (§5) as a `schemaLimits` entry, not into the nearest option.
+
+Read the outline first: a pair whose cyan line misses the photo's facade (edge offsets > 3 %) is not evidence; note it and
+re-run with another panorama (`--year`) or `--bearing`.
+
+### Validation (2026-11-10)
+
+Run: `npm run house:frames -- --list scripts/house-frames/validation.json --query '?houseSpecs=0' --label before` (35 walls),
+then the 20 house cases again on the default world (`--label after`). Sheets: `map-recall2-screenshots`
+`ui/2026-11-10-house-frames/`. Main 1fd7e82bd, the user's Mac with other lanes' gates running (load 10-40).
+
+| Case | Expect | Read from the pairs |
+|---|---|---|
+| 116526 Nassaukade corner, `?houseSpecs=0` | blank wall shows, flag fires | shows (chunk-face-clercq-236681 draws a bare brick slab where the photo has 36 openings); `blankWall` fires (game 1 opening, the slab's edge) |
+| Nieuwmarkt 4-22 (182850-182858) | register gables visible, crowns match | gables visible on all nine (step, neck, bell); crowns match on 6 of 9; Nieuwmarkt 20-22 (182857) is a double step-gable front drawn as one step gable (a kit gap: two crowns on one pand) |
+| Nassaukade 145-152 (H7's row) | before frames; after once H7 publishes | before: 7 pairs; `roofOffset` fires on 4 (the game's skyline 2-3 m under the crown line the photo confirms); 160704's wall is the rear (the pick saw only 157610: `otherBuilding`). After: H7 not published at this run |
+| 169916 (H1c, three windows) | 3 columns in game and photo | 3 columns in both (a tree stands in front in the photo) |
+| Houthavenkade 26 (large recipe, 12 of 510 surfaces) | the missing surfaces show | shows: the photo's dark grey front panel is absent in the game; the outline frames the model's brick walls set back behind it and open pavement under them. No flag fires (the picks hit the same model further back): a reader's catch, and a case for a depth check (OPEN) |
+| two roof-offset shots (2026-11-08) | the offset flag fires | does not fire, rightly: #257 was fixed on main (5ce1b11f2, shell roofs trimmed at the walls) and the defect lived in the far/shell tier, which a 12-22 m street pose does not draw. Stadhouderskade 233471 and Prins Hendrikkade 178053 draw on their walls |
+| 15 walls of the #341 blank-wall audit | false-positive rate | 11 readable: 4 real (the four Funenpark 184743 walls: the ordinary model's front floats above the ground, the lower storeys are sky), 7 drawn in the game (186003, 063603, 151240, 088589, 244160-e13, 237838-e8, and 237838-e2 where the Eye's wall is blank in reality too): **false-positive rate 7/11 = 64 %**. Unreadable 4: 129127 (a neighbour in front), 104378 (the panorama, 2018, predates the building), 244160-e0 and 239853 (the wall stands off the frame or behind a plaza) |
+
+Alignment (photo, wall ends found by the edge search): 37 edges, **median 1.18 %**, p90 4.0 %; game half median 1.18 %.
+Six edges over 3 %, read pair by pair: in every Nieuwmarkt and Geldersekade case the outline sits on the facade and the
+search took a stronger nearby edge (a white pilaster, a shopfront edge, the neighbour's quoin), so the offset is the
+detector, not the pose. One over 5 %: 104378 (5.4 %), whose 2018 panorama predates the building; the edge found is the
+neighbour's. Throughput: 35 poses in 165 s in one page (one open), **12.7 pairs/min** including the 11 s open; settle
+median 3.0 s; under a shared slot with a check:canal gate queued.
+
+Flags on the 35 (before): blankWall 1 (116526), missing 2, otherBuilding 3, roofOffset 4, wallColour 24. The wall-colour
+flag fires on most pairs (sunlit or white-balanced photos against the lit look): read it as advisory only, as the brief
+says, until H2e and H9 round 3 land.
+
