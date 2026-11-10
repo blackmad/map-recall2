@@ -1,0 +1,105 @@
+{
+ "street": "Henri Polaklaan",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T07:08:26.417Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012181404",
+   "addresses": [
+    "Henri Polaklaan 26"
+   ],
+   "groundUnits": [
+    {
+     "address": "Henri Polaklaan 26-H",
+     "use": "woonfunctie",
+     "areaM2": 139,
+     "bagId": "0363010000663259"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181327",
+   "addresses": [
+    "Henri Polaklaan 24"
+   ],
+   "groundUnits": [
+    {
+     "address": "Henri Polaklaan 24-H",
+     "use": "woonfunctie",
+     "areaM2": 149,
+     "bagId": "0363010000663247"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181398",
+   "addresses": [
+    "Henri Polaklaan 22"
+   ],
+   "groundUnits": [
+    {
+     "address": "Henri Polaklaan 22-H",
+     "use": "woonfunctie",
+     "areaM2": 92,
+     "bagId": "0363010000663244"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181399",
+   "addresses": [
+    "Henri Polaklaan 20"
+   ],
+   "groundUnits": [
+    {
+     "address": "Henri Polaklaan 20-H",
+     "use": "woonfunctie",
+     "areaM2": 101,
+     "bagId": "0363010000663241"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181400",
+   "addresses": [
+    "Henri Polaklaan 18"
+   ],
+   "groundUnits": [
+    {
+     "address": "Henri Polaklaan 18-H",
+     "use": "woonfunctie",
+     "areaM2": 97,
+     "bagId": "0363010000663235"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181326",
+   "addresses": [
+    "Henri Polaklaan 16"
+   ],
+   "groundUnits": [
+    {
+     "address": "Henri Polaklaan 16-H",
+     "use": "woonfunctie",
+     "areaM2": 99,
+     "bagId": "0363010003714314"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  }
+ ]
+}

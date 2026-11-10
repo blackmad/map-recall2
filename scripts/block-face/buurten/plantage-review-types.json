@@ -23,6 +23,20 @@
     "plantage-1880-stucco-cartouche"
    ],
    "reason": "Doklaan 30-42: one stucco design, BAG dates 1841-1890 do not separate it"
+  },
+  {
+   "face": "polaklaan-2-42",
+   "types": [
+    "plantage-1855-point-gable-row"
+   ],
+   "reason": "Henri Polaklaan 16-28: one row of raised-ground three-storey fronts under pointed gables; 2 and 4-12 and 30-32 are other designs"
+  },
+  {
+   "face": "kerklaan-2-34",
+   "types": [
+    "plantage-1879-neck-arched-shop"
+   ],
+   "reason": "Kerklaan 24-32: two runs (32,30 and 26,24) of one arched-window neck-gable design; 34, 28, 22 and the right half are other designs"
   }
  ],
  "mirrors": [

@@ -1,12 +1,12 @@
 {
  "buurt": "plantage",
  "library": "plantage",
- "generatedAt": "2026-11-10T08:51:09.050Z",
- "seconds": 29.34,
+ "generatedAt": "2026-11-10T09:29:23.855Z",
+ "seconds": 13.62,
  "totals": {
-  "faces": 3,
-  "pands": 29,
-  "placed": 10
+  "faces": 5,
+  "pands": 59,
+  "placed": 18
  },
  "faces": [
   {
@@ -91,6 +91,70 @@
     "likeness": 6,
     "run": 1,
     "review": 1
+   }
+  },
+  {
+   "face": "kerklaan-2-34",
+   "street": "Plantage Kerklaan",
+   "pands": 17,
+   "placed": 2,
+   "held": 15,
+   "runs": [
+    {
+     "face": "kerklaan-2-34-r1",
+     "pands": [
+      "0363100012181240",
+      "0363100012181246"
+     ],
+     "passed": false,
+     "triangles": 4848
+    }
+   ],
+   "seconds": 17.16,
+   "byType": {
+    "plantage-1879-neck-arched-shop": 2
+   },
+   "installed": 0,
+   "holds": {
+    "evidence": 0,
+    "match": 0,
+    "likeness": 2,
+    "run": 0,
+    "review": 13
+   }
+  },
+  {
+   "face": "polaklaan-2-42",
+   "street": "Henri Polaklaan",
+   "pands": 13,
+   "placed": 6,
+   "held": 7,
+   "runs": [
+    {
+     "face": "polaklaan-2-42-r1",
+     "pands": [
+      "0363100012181404",
+      "0363100012181327",
+      "0363100012181398",
+      "0363100012181399",
+      "0363100012181400",
+      "0363100012181326"
+     ],
+     "passed": false,
+     "triangles": 7441
+    }
+   ],
+   "seconds": 13.61,
+   "byType": {
+    "plantage-1855-point-gable-row": 6
+   },
+   "installed": 0,
+   "holds": {
+    "evidence": 0,
+    "match": 0,
+    "likeness": 1,
+    "run": 0,
+    "review": 6
    }
   }
  ]
