@@ -129,6 +129,8 @@ const SPOTS: Spot[] = [
   { name: 'house-preview-nassaukade-164843', centre: [4.873841, 52.3720195], standDeg: 85, standM: 14, view: 'cockpit' },
   { name: 'house-preview-169916', centre: [4.8809335, 52.374876], standDeg: 160, standM: 12, view: 'cockpit' },
   { name: 'house-preview-nassaukade-116526', centre: [4.873862, 52.371936], standDeg: 80, standM: 14, view: 'cockpit' },
+  // House line H7 (#354): the Nassaukade 152-145 row (face nassau-145-152) from across the Singelgracht, the pilot's demo row.
+  { name: 'nassaukade-row', centre: [4.87378, 52.37228], standDeg: 78, standM: 45 },
   { name: 'aerial-westerdok', centre: [4.8860, 52.3840], standDeg: 0, standM: 0, faceDeg: 20, camZoom: 0.16 },
   // House line H1 (#337): the Nieuwmarkt 4-22 row by the Waag at the user's 2026-11-09 photo pose (register gables), and
   // a Kinkerstraat block face whose HouseSpec bays and measured walls reach the generic path (live tiles, before/after).

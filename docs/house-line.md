@@ -443,8 +443,15 @@ Flags
   --intent <path>     apply a CanalHouseIntent (scripts/building-recipes/houses/<id>/intent.json or a block-face
                       house intent) the same way; its pandId names the pand when no pand id is given
   --photo             add the reference photo: staging/pand-reference/<pand>/front.jpg, else the block-face strip
-                      crop of the pand's wall (scripts/block-face/faces/*/strip.json); writes compare.png and prints
-                      the likeness verdict (wall dL/hue, glazing, columns, window shape) of render vs photo
+                      crop of the pand's wall (scripts/block-face/faces/*/strip.json), else the house:crops crop
+                      (--crops); writes compare.png and prints the likeness verdict (wall dL/hue, glazing, columns,
+                      window shape) of render vs photo
+  --crops <dir>       the house:crops archive (a map-recall2-source-data checkout holding pand-crops/<pand>/front.jpg;
+                      default env HOUSE_CROPS_ARCHIVE); the describe envelope's best-of-years pick is used when present
+  --prefer-crop       take the house:crops crop before the block-face strip
+  --chunk <face>      render the block face compiled by scripts/block-face/compile.ts --face=<face> and not installed
+                      (staging/block-face/<face>/chunk.glb, placed by its manifest-entry.json) instead of the route the
+                      game draws today: the after frame of a chunk change before the integrator installs it
   --threeq            add a three-quarter perspective view (threeq.png): 20 degree field of view, flat ground at
                       the median ground height of the drawn buildings
   --recipe [<id>]     the recipe route: compile scripts/building-recipes/houses/<id> (default: the house whose
@@ -711,6 +718,7 @@ npm run house:crops -- --buurt <code> [--pand <id>] [--resume] [--dry-run] [--ra
 | `--archive <dir>` | root of the `map-recall2-source-data` checkout or lane worktree; default env `HOUSE_CROPS_ARCHIVE`. Required unless `--dry-run`. |
 | `--limit <n>` | stop after n pands this session (smoke runs). |
 | `--report` | print the coverage table and write the contact sheet from the manifest, nothing else. |
+| `--prefer-bearing <deg>` | pick the street wall whose outward normal is within 50 degrees of this bearing (`select.ts options.preferBearingDeg`). For a row on a square, where the nearest-road rule picks a side or back wall (Nieuwmarkt 6-22: 293, lane H7). Applies to every pand of the run, so use it with `--pand`. |
 
 Set `PAND_REFERENCE_CACHE=/Users/blackmad/Code/map-recall2/.cache/pand-reference` so every worktree shares one panorama cache
 (a re-run, or a neighbouring buurt, then downloads only what is new).
