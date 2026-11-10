@@ -159,3 +159,45 @@ Before a belt-wide run, it would be worth it to:
 - require a palette delta under a threshold as a gate.
 
 Until then, per-pand authored fronts (like Rapenburg 97/99) remain the route for the one-offs.
+
+### Round 3b: reader iteration (same 54 pands)
+
+Changes:
+
+1. **Ground band first** (`typeDraft.ts` `groundBandTop`): the lowest run of opening rows that starts under 1.6 m. Its head (2.2–5.5 m) sets where the upper window rows are read from (`storeyProfile` `fromM`).
+2. **Crown kind from the register only** (`gableFor`): a skyline crown with no register gable is held.
+3. **Colour gate:** the review's wall-colour check (`wallColour.ts`, model against photo on the same pixels) holds a pand that fails it.
+4. **Stitch doubling** (`typeDraft.ts` `columnAlignment`): the median correlation of window columns across storeys, read on the middle 60 % of each window run, is held under 0.1. The cell mask is noisy: clean Foeliedwarsstraat 62 reads 0.25, while the mosaic pands on rapenburg-21-73 and Rapenburg 33 read −0.2 to −0.37. So the bar catches mosaics, not irregular fronts.
+
+All four only apply when `pand-fit` asks for them (`measureFace` `groundFirst`). The kit is untouched.
+
+| | round 1 | round 2 |
+|---|---|---|
+| passed the gates | 1 (Foeliedwarsstraat 62) | 1 (Rapenburg 34) |
+| looks right on the sheet | 0 | 0 |
+
+- **Foeliedwarsstraat 62** is now held by the colour gate (too grey and too dark), which matches the reviewer's eye.
+- **Rapenburg 34** passes the gates (likeness score 0.156, just over the 0.15 bar) but does not look right. It is an asymmetric 1980s front with one window stack and a framed attic band, and it is drawn as a symmetric two-bay front with a white frieze. Held.
+
+Top remaining hold reasons (round 2):
+
+| hold reason | pands |
+|---|---|
+| storey rows unread (no window contrast or a single window run) | 18 |
+| frontage outside 3–9 m | 14 |
+| crown kind unknown (no register gable) | 5 |
+| window columns do not stack (stitch-doubled) | 5 |
+| storey heights implausible | 4 |
+| blank front over the top window row | 3 |
+| ground storey implausible | 1 |
+| wall colour | 1 |
+| skipped (installed) | 2 |
+
+The ground band is read on only 13 of the 54 pands: trees, bikes and cars in the bottom 3 m leave the mask unusable there.
+
+**Verdict:** still 0 % look right, far under the 15 % bar, so I stopped as briefed. The gates now hold every bad draft, but the strip reader cannot recover enough of a belt front to draft one:
+
+- 18 pands give no usable storey rows at all;
+- 14 are not single-house fronts.
+
+Per-pand fitting at belt scale needs a better facade reader (per-window detection rather than row and column shares on a colour mask), not more drafting rules. Authored fronts stay the route for the canal-belt one-offs.

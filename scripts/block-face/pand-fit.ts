@@ -64,7 +64,7 @@ for (const face of faces) {
   const raw = await stripRaw(path.join(STAGING, face, 'strip.jpg')), ppm = strip.pixelsPerMetre;
   const order: string[] = strip.spans.map((s: any) => s.pandId);
   const tFace = performance.now();
-  const measures = await measureFace(face, new Set(order), record, {brightSky: true});
+  const measures = await measureFace(face, new Set(order), record, {brightSky: true, groundFirst: true});
   const drafts = new Map<string, PandFitResult>();
   for (const s of strip.spans as any[]) {
     const m = measures.find(x => x.pandId === s.pandId), u = uses.pands.find((p: any) => p.pandId === s.pandId);
@@ -76,7 +76,7 @@ for (const face of faces) {
     if (skip.has(s.pandId.slice(-6))) d = {type: null, placement: null, hold: 'skipped (installed or drawn by another tier)', measured: {pand: s.pandId, address}, crownFromPhoto: false};
     else if (!m) d = {type: null, placement: null, hold: 'not measured (no facts or no strip span)', measured: {pand: s.pandId, address}, crownFromPhoto: false};
     else d = draftPandType({pandId: s.pandId, address, face, stripDate: strip.date ?? null, widthM: m.widthM, eavesM: m.eavesM, skylineEavesM: m.skylineEavesM, crown: m.crown, storey: m.storey, windowCols: m.windowCols, windowWidthM: m.windowWidthM,
-      palette: {wall: m.palette.wall, frame: m.palette.frame, stucco: m.palette.stucco}, doorSide: doorSide(raw, px, ppm), groundAccent: groundAccent(raw, px, ppm), trading, registerGable: registerGable(s.pandId)});
+      palette: {wall: m.palette.wall, frame: m.palette.frame, stucco: m.palette.stucco}, doorSide: doorSide(raw, px, ppm), groundAccent: groundAccent(raw, px, ppm), trading, registerGable: registerGable(s.pandId), groundTopM: m.groundTopM, alignment: m.alignment});
     drafts.set(s.pandId, d);
   }
   const perPand = (performance.now() - tFace) / 1000 / Math.max(1, order.length);
@@ -120,7 +120,14 @@ for (const face of faces) {
         if (why) failed.add(l.pandId);
         result.set(l.pandId, {result: why ? `held: ${why}` : 'pass', ncc: l.ncc, run: runId});
       }
-      if (pass === 2 || !failed.size) await reviewFace(runId).catch(e => console.log(`${runId}: sheet failed ${(e as Error).message}`));
+      // Colour gate (round 2): the review's wall-colour check (wallColour.ts: model vs photo on the same pixels).
+      const rev = await reviewFace(runId).catch(e => { console.log(`${runId}: sheet failed ${(e as Error).message}`); return null; });
+      for (const f of rev?.fc ?? []) {
+        const r = result.get(f.pand);
+        if (!r || r.result !== 'pass' || !f.wallColour || f.wallColour.pass) continue;
+        failed.add(f.pand);
+        result.set(f.pand, {...r, result: `held: wall colour ${f.wallColour.note}`});
+      }
       console.log(`${runId}: ${ids.length} pands, ${ids.filter(id => !failed.has(id)).length} pass`);
     }
     if (!failed.size) break;

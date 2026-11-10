@@ -26,6 +26,12 @@ export const PAND_FIT = {
   /** Storey heights the photo rows may give before the reading is distrusted (merged or split window rows). */
   groundM: [2.4, 5.2] as [number, number],
   upperM: [2.3, 4.2] as [number, number],
+  /**
+   * Window-column alignment across storeys under this: a stitch-doubled strip (rapenburg-21-73 181300 −0.22, 181300's
+   * neighbour Rapenburg 25 −0.2, Rapenburg 33 −0.37). The cell mask is noisy (clean Foeliedwarsstraat 62 reads 0.25:
+   * balconies and shade), so the bar is low; it catches mosaics, not irregular fronts.
+   */
+  minAlignment: 0.1,
 } as const;
 
 export type RegisterGable = 'cornice' | 'bell' | 'neck' | 'step' | 'plain' | 'spout' | null;
@@ -55,6 +61,9 @@ export interface PandFitInput {
   trading: boolean;
   /** Register gable (monument-facts.json `gable.key`), null when not a monument or not stated. */
   registerGable: RegisterGable;
+  /** Round 2 readers (optional; absent = not read): the ground band's top read first, the column alignment across storeys. */
+  groundTopM?: number | null;
+  alignment?: number | null;
 }
 
 export interface PandFitResult {
@@ -71,12 +80,16 @@ export interface PandFitResult {
 const r2 = (v: number) => Math.round(v * 100) / 100;
 const clamp = (v: number, lo: number, hi: number) => Math.min(hi, Math.max(lo, v));
 
-/** The gable a pand is drafted with: the register when it states one, else the skyline's crown shape. */
-export function gableFor(register: RegisterGable, crown: PandFitInput['crown'], widthM: number): {gable: 'cornice' | 'bell' | 'neck' | 'step' | 'flat' | 'spout'; source: string} {
+/**
+ * The gable a pand is drafted with: the register's when it states one. Without one, a front with no crown over its
+ * eaves is a cornice front; a crown with no register gable is held (round 2: the skyline alone confused spout, bell and
+ * dormer, Foeliedwarsstraat 40C).
+ */
+export function gableFor(register: RegisterGable, crown: PandFitInput['crown'], widthM: number): {gable: 'cornice' | 'bell' | 'neck' | 'step' | 'flat' | 'spout' | null; source: string} {
   if (register === 'cornice' || register === 'bell' || register === 'neck' || register === 'step' || register === 'spout') return {gable: register, source: 'register'};
   if (register === 'plain') return {gable: 'cornice', source: 'register (plain front: drawn as a cornice line)'};
-  if (crown && crown.riseM >= 1.5 && crown.widthM <= widthM * 0.85) return {gable: 'bell', source: `skyline crown ${r2(crown.riseM)} m over ${r2(crown.widthM)} m (no register gable)`};
-  return {gable: 'cornice', source: crown ? `skyline crown ${r2(crown.riseM)} m read as a cornice` : 'no crown over the eaves'};
+  if (crown) return {gable: null, source: `skyline crown ${r2(crown.riseM)} m over ${r2(crown.widthM)} m of ${r2(widthM)} m and no register gable`};
+  return {gable: 'cornice', source: 'no crown over the eaves'};
 }
 
 /** Bays: the photo's window columns when read and plausible for the width, else by width (2 under 4.6 m, 3 under 7.4 m, else 4). */
@@ -88,12 +101,15 @@ export function baysFor(windowCols: number | null, widthM: number): {bays: numbe
 
 /** Draft one pand's own house type from its strip measures. */
 export function draftPandType(i: PandFitInput, id = `pf-${i.pandId.slice(-6)}`): PandFitResult {
-  const measured: PandFitResult['measured'] = {pand: i.pandId, address: i.address, widthM: r2(i.widthM), bagEavesM: r2(i.eavesM), skylineEavesM: i.skylineEavesM, doorSide: i.doorSide, groundAccent: r2(i.groundAccent), trading: i.trading, registerGable: i.registerGable};
+  const measured: PandFitResult['measured'] = {pand: i.pandId, address: i.address, groundTopM: i.groundTopM ?? null, alignment: i.alignment ?? null, widthM: r2(i.widthM), bagEavesM: r2(i.eavesM), skylineEavesM: i.skylineEavesM, doorSide: i.doorSide, groundAccent: r2(i.groundAccent), trading: i.trading, registerGable: i.registerGable};
   const hold = (why: string): PandFitResult => ({type: null, placement: null, hold: why, measured, crownFromPhoto: false});
   if (i.widthM < PAND_FIT.minWidthM || i.widthM > PAND_FIT.maxWidthM) return hold(`frontage ${r2(i.widthM)} m outside ${PAND_FIT.minWidthM}-${PAND_FIT.maxWidthM} m (one front per pand)`);
   const p = i.storey;
   if (!p) return hold('storey rows unread on the strip (no window contrast, trees or a blank front)');
-  const g = gableFor(i.registerGable, i.crown, i.widthM);
+  const g0 = gableFor(i.registerGable, i.crown, i.widthM);
+  if (!g0.gable) return hold(`crown kind unknown: ${g0.source}`);
+  const g = {gable: g0.gable, source: g0.source};
+  if (i.alignment !== undefined && i.alignment !== null && i.alignment < PAND_FIT.minAlignment) return hold(`window columns do not stack (alignment ${i.alignment} < ${PAND_FIT.minAlignment}): a stitch-doubled strip or an irregular front`);
   // The eaves the front is drawn to: the photo's line (a gable's foot, a cornice's top) when read, else 3DBAG.
   const eaves = i.skylineEavesM ?? i.eavesM;
   const upper = p.sillM.length, top = p.floorM[upper];
