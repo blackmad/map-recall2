@@ -282,6 +282,12 @@ console.log(`\nunsimplified reference: ${unsimplified.groups.length} components`
     // east end is a cul-de-sac at the steps to Insulindeweg, but the promenade
     // itself leads back to the city (the bike turns round: check-canal-car.ts).
     ['Javaplantsoen promenade east end', 52.362966, 4.946304],
+    // User report 2026-11-09 (Houthaven, newer than the first basemap): the Gevlebrug deck and the Karlskrona-eiland
+    // street behind it, and Haparandadam (the dam the 1966 pand stands on), join the city (land-mask lane
+    // 2026-11-09; the land and deck pins are scripts/land-mask/check-land-mask.ts).
+    ['Gevlebrug (Houthaven)', 52.39183, 4.88458],
+    ['Karlskrona-eiland (Houthaven)', 52.39208, 4.88343],
+    ['Haparandadam (Houthaven)', 52.39624, 4.87985],
   ];
   const centre = componentOf.get(nearest(places[0][1], places[0][2]));
   console.log(`\nmotor-only ways dropped for cycling: ${motorOnly}`);

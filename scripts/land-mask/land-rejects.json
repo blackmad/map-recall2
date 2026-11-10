@@ -1,0 +1,8 @@
+{
+  "about": "Eyeballed false positives of find-filled-water.py: AHN's DTM interpolates over open water (ponds, dock edges), so a candidate containing one of these points is dropped. Evidence: PDOK luchtfoto crops in docs/reports/land-mask-gaps-20261109/.",
+  "rejects": [
+    { "lat": 52.306027, "lng": 4.966954, "why": "Zuidoost pond in the park (DTM +5.8 m NAP is interpolated from the banks); BGT calls the pond begroeid terrain" },
+    { "lat": 52.287421, "lng": 4.944858, "why": "drained pond inside the A9/A2 interchange loop, still holds water (cand-montage-other-confirmed.jpg, top right)" },
+    { "lat": 52.427977, "lng": 4.753173, "why": "open water at the Westpoort quay (DTM +1.7 m interpolated beside the bank); BGT agrees it is water (cand-noord-52.428.jpg)" }
+  ]
+}
