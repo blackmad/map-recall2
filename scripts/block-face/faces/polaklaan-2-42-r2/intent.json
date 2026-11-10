@@ -27,10 +27,7 @@
    "address": "Henri Polaklaan 20",
    "type": {
     "type": "plantage-1855-point-gable-row",
-    "measuredPalette": {
-     "brick": "#95765f",
-     "evidence": "strip 2024-12-10 span 1279-1493: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    }
+    "palette": "red-brick"
    },
    "groundFloor": {
     "use": "residential",
@@ -51,10 +48,7 @@
    "address": "Henri Polaklaan 18",
    "type": {
     "type": "plantage-1855-point-gable-row",
-    "measuredPalette": {
-     "brick": "#c9a386",
-     "evidence": "strip 2024-12-10 span 1494-1704: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    }
+    "palette": "red-brick"
    },
    "groundFloor": {
     "use": "residential",
