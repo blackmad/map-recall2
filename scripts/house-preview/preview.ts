@@ -19,37 +19,46 @@ import { BuildingContextIndex } from '../../src/canalRecall/buildingContextIndex
 import { KIT_HIDE_IDS } from '../../src/canalRecall/landmarkKits.ts';
 import { GABLE_SHAPES } from '../../src/canalRecall/roofMesh.ts';
 import { lngLatToRd, rdToLngLat } from '../../src/canalRecall/facade/rdNew.ts';
-import { rasterise, type RasterImage, type RasterMesh, type Vec3 } from '../../src/canalRecall/houseSpec/softRaster.ts';
-import { previewVerdict, storeyLines, type PreviewVerdict } from '../../src/canalRecall/houseSpec/previewVerdict.ts';
+import { rasterise, type RasterAtlas, type RasterImage, type RasterMesh, type LitShading, type Vec3 } from '../../src/canalRecall/houseSpec/softRaster.ts';
+import { previewVerdict, storeyLines, blurRgb, PRE_BLUR_PX, type PreviewVerdict } from '../../src/canalRecall/houseSpec/previewVerdict.ts';
+import { cityLitShading } from '../../src/canalRecall/houseSpec/previewLight.ts';
 import { measureFacade, type FacadeImage, type FacadeMeasurement } from '../../src/canalRecall/buildingRecipe/measureFacade.ts';
 import { gameColour } from '../../src/canalRecall/buildingRecipe/likeness.ts';
 import { renderElevation } from '../../src/canalRecall/landmarks/facadeCompare.ts';
 import { pickWall } from '../pand-reference/select.ts';
 import { loadMaterialSoup } from '../landmarks/material-soup.ts';
+import type { MaterialSoup } from '../../src/canalRecall/landmarks/facadeCompare.ts';
 import { loadAtlas, ATLAS_DIR } from './atlas.ts';
 import { REPO_ROOT } from './nodeDom.ts';
 
 export const HELP = `npm run house:preview -- <pandId | spec.json> [flags]
 
-Renders one house's front elevation in Node through the game's own chunk builder (threeBuildingFeatures
-buildFeatureChunk, the decorator chain of scripts/world/pipeline.ts) and facade atlas painter, with a software
-rasteriser (src/canalRecall/houseSpec/softRaster.ts). No dev server, no browser.
+Renders one house's front elevation in Node through the route the game draws it by: the installed GLB (chunk or
+ordinary model) when models/covers.json covers the pand, else the game's own chunk builder (threeBuildingFeatures
+buildFeatureChunk, the decorator chain of scripts/world/pipeline.ts) and facade atlas painter. A software rasteriser
+(src/canalRecall/houseSpec/softRaster.ts) draws it in the ride's lit city look. No dev server, no browser.
 
   <pandId>            BAG pand id (0363100012164843 or NL.IMBAG.Pand.0363100012164843)
   <spec.json>         a house spec file: { "pandId": "...", "design": { fronts, roof, palette, ... } }
                       (same as --spec <file>)
 
 Flags
+  --route <route>     generic | spec | installed. Default: spec when --spec/--intent is given, else installed when
+                      models/covers.json covers the pand with a chunk-* or ordinary-* model, else generic (what the
+                      game draws). A landmark cover is not rendered (generic, with a note)
   --spec <path>       apply a house spec's design to the pand before the decorators run (see "Overrides")
   --intent <path>     apply a CanalHouseIntent (scripts/building-recipes/houses/<id>/intent.json or a block-face
                       house intent) the same way; its pandId names the pand when no pand id is given
   --photo             add the reference photo: staging/pand-reference/<pand>/front.jpg, else the block-face strip
                       crop of the pand's wall (scripts/block-face/faces/*/strip.json); writes compare.png and prints
                       the likeness verdict (wall dL/hue, glazing, columns, window shape) of render vs photo
-  --threeq            add a three-quarter perspective view (threeq.png)
+  --threeq            add a three-quarter perspective view (threeq.png): 20 degree field of view, flat ground at
+                      the median ground height of the drawn buildings
   --recipe [<id>]     the recipe route: compile scripts/building-recipes/houses/<id> (default: the house whose
-                      intent names this pand) with the recipe compiler and render its GLB (renderElevation,
-                      flat game colours) instead of the streamed generic path
+                      intent names this pand) with the recipe compiler and render its GLB
+  --unlit             the legacy unlit look: the near-tier facade shader with its baked shade for generic chunks,
+                      renderElevation in flat game colours for GLBs (default: the lit city look, sun and sky of the
+                      ride's sunny rig, wall gain, sky tint on glazing)
   --whole-tile        build the chunk from every building of the pand's z14 tile, exactly as the runtime groups
                       it (~4 s a render); by default the chunk holds the tile's buildings within 30 m of the pand,
                       which drew the same pixels as the whole tile at Nassaukade (0363100012164843)
@@ -60,24 +69,27 @@ Flags
   --out <dir>         output directory (default artifacts/house-preview/<pand>)
   --help              this text
 
-Output: <out>/front.png, threeq.png (--threeq), compare.png (--photo), measure.json (timings, wall, overrides,
-measurements, verdict). Atlas cache: artifacts/house-preview/atlas-<look>-<size>-<painter hash>.bin (first run
-paints, later runs load; a painter source change repaints).
+Output: <out>/front.png, threeq.png (--threeq), compare.png (--photo), measure.json (route, timings, wall,
+overrides, measurements, verdict). The sheet header names the route and the look. Render and photo are both blurred
+by PRE_BLUR_PX (1.5 px Gaussian sigma at 50 px/m) before measureFacade. Atlas cache:
+artifacts/house-preview/atlas-<look>-<size>-<painter hash>.bin (first run paints, later runs load).
 
 Overrides (until the HouseSpec resolver of lane H1 lands): fronts[0].gable -> monumentGable, palette.wall (or
 palette.brick) hex -> facadeMappedColour; every other design field is listed under overrides.notApplied in
 measure.json (the generic path has no property for it yet).
 
-Not reproduced: the far and roof distance tiers, mipmaps, the lit/city-look shaders (sun, wall gain, grain),
-analytic window SDF, shadows, the ground lift, post-processing. When those matter (a lighting or tier question), fall back to
-scripts/building-recipes/render.ts (headless Chromium) or a ride frame.`;
+Not reproduced: the far and roof distance tiers, mipmaps, cast shadows (a wall in another building's shadow draws
+sunlit), fog, the analytic window SDF, the ground lift, post-processing, the GLB slot cells (an installed GLB draws
+its game colours flat, lit). When those matter, fall back to scripts/building-recipes/render.ts (headless
+Chromium) or a ride frame.`;
 
 // ---------------------------------------------------------------------------------------------------------------
 // Arguments
 // ---------------------------------------------------------------------------------------------------------------
-type Args = { target?: string; spec?: string; intent?: string; photo: boolean; threeq: boolean; recipe: string | boolean; wholeTile: boolean; watch: boolean; look: string; ppm: number; out?: string; help: boolean };
+export type Route = 'generic' | 'spec' | 'installed' | 'recipe';
+type Args = { target?: string; spec?: string; intent?: string; route?: Exclude<Route, 'recipe'>; unlit: boolean; photo: boolean; threeq: boolean; recipe: string | boolean; wholeTile: boolean; watch: boolean; look: string; ppm: number; out?: string; help: boolean };
 export function parseArgs(argv: string[]): Args {
-  const a: Args = { photo: false, threeq: false, recipe: false, wholeTile: false, watch: false, look: 'photo', ppm: 50, help: false };
+  const a: Args = { unlit: false, photo: false, threeq: false, recipe: false, wholeTile: false, watch: false, look: 'photo', ppm: 50, help: false };
   for (let i = 0; i < argv.length; i++) {
     const [flag, inline] = argv[i].split(/=(.*)/s, 2);
     const value = () => inline ?? argv[++i];
@@ -85,6 +97,12 @@ export function parseArgs(argv: string[]): Args {
       case '--help': case '-h': a.help = true; break;
       case '--photo': a.photo = true; break;
       case '--threeq': a.threeq = true; break;
+      case '--unlit': a.unlit = true; break;
+      case '--route': {
+        const r = value();
+        if (r !== 'generic' && r !== 'spec' && r !== 'installed') throw new Error(`--route ${r}: generic, spec or installed`);
+        a.route = r; break;
+      }
       case '--watch': a.watch = true; break;
       case '--whole-tile': a.wholeTile = true; break;
       case '--recipe': a.recipe = inline ?? (argv[i + 1] && !argv[i + 1].startsWith('--') && !/^(NL\.IMBAG\.Pand\.)?\d{16}$/.test(argv[i + 1]) ? argv[++i] : true); break;
@@ -153,7 +171,9 @@ export class PreviewSession {
   private tiles = new Map<string, Row[]>();
   private index: Record<string, string> | null = null;
   atlas: Awaited<ReturnType<typeof loadAtlas>> | null = null;
-  constructor(readonly look: string) {}
+  /** The ride's lit city look (sunny rig) for this atlas look. */
+  readonly light: LitShading;
+  constructor(readonly look: string) { this.light = cityLitShading('sunny', look as 'photo'); }
 
   /** z14 tile (`x/y`) holding the pand: from artifacts/house-preview/pand-tiles.json, built by one scan of the extract. */
   tileOf(pandId: string): string {
@@ -281,11 +301,156 @@ async function referencePhoto(pandId: string, wall: FrontWall, ppm: number): Pro
 }
 
 export type PreviewResult = { pandId: string; out: string; files: string[]; timings: Record<string, number>; measure: Record<string, unknown> };
+type Timer = { t: Record<string, number>; mark: (k: string) => void };
+const timer = (): Timer => { let t0 = performance.now(); const t: Record<string, number> = {}; return { t, mark: k => { t[k] = Math.round(performance.now() - t0); t0 = performance.now(); } }; };
 
-/** One render of one pand: front.png (+ threeq.png, compare.png) and measure.json in `out`. */
+/** measureFacade after the shared pre-blur (previewVerdict.ts PRE_BLUR_PX), so render and photo measure alike. */
+export function measureBlurred(image: FacadeImage, box: Parameters<typeof measureFacade>[0]['box'], lines: number[]): FacadeMeasurement {
+  return measureFacade({ image: { ...image, rgb: blurRgb(image.rgb, image.width, image.height, PRE_BLUR_PX) }, box, lines });
+}
+
+// ---------------------------------------------------------------------------------------------------------------
+// Routes: what the game draws for a pand (models/covers.json), and the override (spec) route
+// ---------------------------------------------------------------------------------------------------------------
+export type Cover = { key: string; kind: 'chunk' | 'ordinary' | 'landmark' };
+let coversCache: Record<string, { p?: string[] }> | null = null;
+/** The installed model covering the pand in public/canal-drive/models/covers.json (what the runtime suppresses the generic building for). */
+export function coverOf(pandId: string): Cover | null {
+  coversCache ??= readJson(path.join(REPO_ROOT, 'public/canal-drive/models/covers.json')).models as Record<string, { p?: string[] }>;
+  for (const [key, v] of Object.entries(coversCache)) if ((v.p ?? []).includes(bare(pandId))) return { key, kind: key.startsWith('chunk-') ? 'chunk' : key.startsWith('ordinary-') ? 'ordinary' : 'landmark' };
+  return null;
+}
+
+/** The route a render takes, and why. */
+export function resolveRoute(asked: Args['route'], hasOverride: boolean, cover: Cover | null): { route: Exclude<Route, 'recipe'>; why: string } {
+  const drawable = cover && cover.kind !== 'landmark';
+  if (asked === 'installed') {
+    if (!cover) throw new Error('--route installed: models/covers.json covers no model for this pand');
+    if (!drawable) throw new Error(`--route installed: the pand is covered by landmark ${cover.key}; the preview renders chunk-* and ordinary-* models only`);
+    return { route: 'installed', why: `--route installed (${cover.key})` };
+  }
+  if (asked === 'spec') {
+    if (!hasOverride) throw new Error('--route spec needs --spec or --intent');
+    return { route: 'spec', why: '--route spec' };
+  }
+  if (asked === 'generic') return { route: 'generic', why: `--route generic${cover ? ` (the game draws ${cover.key})` : ''}` };
+  if (hasOverride) return { route: 'spec', why: `default: --spec/--intent given${cover ? ` (the game draws ${cover.key} today)` : ''}` };
+  if (drawable) return { route: 'installed', why: `default: models/covers.json ${cover!.key}` };
+  if (cover) return { route: 'generic', why: `default: covered by landmark ${cover.key}, which the preview does not render; showing the generic path` };
+  return { route: 'generic', why: 'default: no installed model covers the pand' };
+}
+
+type Placement = { key: string; glb: string; anchor: LngLat; northOffsetDegrees: number; mirror: boolean; source: string };
+/** Where the runtime puts an installed model: chunks.json for chunk-*, the ordinary catalogue for ordinary-*. */
+export function placementOf(cover: Cover): Placement {
+  const data = path.join(REPO_ROOT, 'public/canal-drive/ordinary-buildings-data');
+  const glbOf = (url: string) => path.join(REPO_ROOT, 'public/canal-drive', url.replace(/^\.\//, '').replace(/\?.*$/, ''));
+  if (cover.kind === 'chunk') {
+    const e = (readJson(path.join(data, 'chunks.json')).chunks as { id: string; modelUrl: string; instance: { anchor: LngLat; northOffsetDegrees?: number; mirror?: boolean } }[]).find(c => c.id === cover.key);
+    if (!e) throw new Error(`${cover.key}: not in ordinary-buildings-data/chunks.json`);
+    return { key: cover.key, glb: glbOf(e.modelUrl), anchor: e.instance.anchor, northOffsetDegrees: e.instance.northOffsetDegrees ?? 0, mirror: !!e.instance.mirror, source: 'ordinary-buildings-data/chunks.json' };
+  }
+  if (cover.kind === 'ordinary') {
+    const models = readJson(path.join(data, 'catalogue.json')).models;
+    const e = (Array.isArray(models) ? models : Object.values(models) as never[]).find((m: { id: string }) => m.id === cover.key) as { modelUrl: string; anchor: LngLat; instance?: { anchor?: LngLat; northOffsetDegrees?: number; mirror?: boolean } } | undefined;
+    if (!e) throw new Error(`${cover.key}: not in ordinary-buildings-data/catalogue.json`);
+    return { key: cover.key, glb: glbOf(e.modelUrl), anchor: e.instance?.anchor ?? e.anchor, northOffsetDegrees: e.instance?.northOffsetDegrees ?? 0, mirror: !!e.instance?.mirror, source: 'ordinary-buildings-data/catalogue.json' };
+  }
+  throw new Error(`${cover.key}: landmarks are not rendered by the preview`);
+}
+
+/**
+ * GLB local (x, y up, z; -z north at offset 0, +x toward bearing 90 + offset, mirror flips x) to chunk metres
+ * (x east, y north, z up), as the runtime instances ordinary models and chunks.
+ */
+function placedToEnu(p: Placement): (x: number, y: number, z: number) => Vec3 {
+  const [ex, ny] = chunkMetres(p.anchor[0], p.anchor[1]), th = p.northOffsetDegrees * Math.PI / 180, c = Math.cos(th), s = Math.sin(th);
+  return (x, y, z) => { const xm = p.mirror ? -x : x; return [ex + xm * c - z * s, ny - xm * s - z * c, y]; };
+}
+/** Recipe GLB (x east, y up, z south, RD metres from anchorRD) to chunk metres, through RD -> WGS84 per vertex. */
+function recipeToEnu(anchorRD: [number, number]): (x: number, y: number, z: number) => Vec3 {
+  return (x, y, z) => { const [lng, lat] = rdToLngLat({ x: anchorRD[0] + x, y: anchorRD[1] - z }); const [e, n] = chunkMetres(lng, lat); return [e, n, y]; };
+}
+function soupToEnu(soup: MaterialSoup, f: (x: number, y: number, z: number) => Vec3): MaterialSoup {
+  const P = soup.positions, out: number[] = new Array(P.length);
+  for (let v = 0; v * 3 < P.length; v++) { const q = f(P[v * 3], P[v * 3 + 1], P[v * 3 + 2]); out[v * 3] = q[0]; out[v * 3 + 1] = q[1]; out[v * 3 + 2] = q[2]; }
+  const { normals: _n, ...rest } = soup;
+  return { ...rest, positions: out };
+}
+/** One texel, mask (0, 1): the colour is the vertex accent, untouched by the wall gain (GLB materials are not chunk walls). */
+const FLAT_ATLAS: RasterAtlas = { colour: Uint8Array.of(255, 255, 255, 255), mask: Uint8Array.of(0, 255), size: 1, total: 1 };
+/** A placed soup as a raster mesh: vertices unshared, each triangle's game colour (likeness.ts gameColour) as accent. */
+function soupMesh(soup: MaterialSoup): RasterMesh {
+  const nt = soup.indices.length / 3, colours = soup.materials.map(m => gameColour(m as never));
+  const m: RasterMesh = { positions: new Float32Array(nt * 9), uvs: new Float32Array(nt * 6), layers: new Uint8Array(nt * 3), tints: new Uint8Array(nt * 12).fill(255), accents: new Uint8Array(nt * 12), indices: new Uint32Array(nt * 3) };
+  for (let t = 0; t < nt; t++) {
+    const c = colours[soup.triMaterial[t]] ?? [128, 128, 128];
+    for (let k = 0; k < 3; k++) {
+      const v = soup.indices[t * 3 + k], o = t * 3 + k;
+      m.positions.set([soup.positions[v * 3], soup.positions[v * 3 + 1], soup.positions[v * 3 + 2]], o * 3);
+      m.accents.set([c[0], c[1], c[2], 255], o * 4);
+      m.indices[o] = o;
+    }
+  }
+  return m;
+}
+
+// ---------------------------------------------------------------------------------------------------------------
+// Shared: the 3/4 view, measurement, photo and sheet
+// ---------------------------------------------------------------------------------------------------------------
+const PAVEMENT: Vec3 = [143, 138, 128];
+/** The ground plane's colour: pavement under the rig's sun and sky (lit), or the albedo (unlit). */
+function groundRgb(light: LitShading | undefined): Vec3 {
+  if (!light) return PAVEMENT;
+  const lin = (b: number) => { const s = b / 255; return s <= 0.04045 ? s / 12.92 : ((s + 0.055) / 1.055) ** 2.4; };
+  const enc = (x: number) => Math.round(255 * Math.min(1, x <= 0.0031308 ? 12.92 * x : 1.055 * x ** (1 / 2.4) - 0.055));
+  return [0, 1, 2].map(k => enc(lin(PAVEMENT[k]) * (light.sun[k] * Math.max(0, light.sunDir[2]) + light.sky[k]) / Math.PI)) as unknown as Vec3;
+}
+const median = (xs: number[]) => { const s = [...xs].sort((a, b) => a - b); return s.length ? s[Math.floor(s.length / 2)] : 0; };
+export const THREEQ_FOV_DEG = 20;
+function threeqView(frame: ReturnType<typeof wallFrame>, top: number, groundZ: number) {
+  const mid: Vec3 = [frame.origin[0] + frame.right[0] * frame.len / 2, frame.origin[1] + frame.right[1] * frame.len / 2, groundZ + top * 0.45];
+  const size = Math.max(frame.len * 1.6, top) * 1.25, dist = size / 2 / Math.tan(THREEQ_FOV_DEG / 2 * Math.PI / 180), yaw = 38 * Math.PI / 180;
+  const [nx, ny] = frame.normal, dx = nx * Math.cos(yaw) - ny * Math.sin(yaw), dy = nx * Math.sin(yaw) + ny * Math.cos(yaw);
+  return { kind: 'perspective' as const, eye: [mid[0] + dx * dist, mid[1] + dy * dist, groundZ + top * 0.9] as Vec3, target: mid, fovDeg: THREEQ_FOV_DEG, width: 640, height: 800 };
+}
+
+type Finish = { pandId: string; route: Route; why: string; args: Args; out: string; files: string[]; front: { width: number; height: number; rgba: Uint8ClampedArray }; top: number; eaves: number; lines: number[]; frameLen: number; wall: FrontWall; label: string; measure: Record<string, unknown>; tm: Timer };
+async function finish(f: Finish): Promise<PreviewResult> {
+  const { args, front, top, eaves, lines, wall, tm } = f;
+  const look = args.unlit ? 'unlit (legacy)' : 'lit city look (sunny rig)';
+  const mbox = { u0: Math.min(0.2, f.frameLen / 4), u1: f.frameLen - Math.min(0.2, f.frameLen / 4), v0: 0, v1: eaves };
+  const renderM = measureBlurred(facadeImage(front, args.ppm, top), mbox, lines);
+  const measure: Record<string, unknown> = { pandId: bare(f.pandId), route: f.route, routeWhy: f.why, shader: args.unlit ? 'unlit' : 'lit', preBlurPx: PRE_BLUR_PX, ...f.measure, heights: { topM: +top.toFixed(2), eavesM: +eaves.toFixed(2), lines }, render: summary(renderM) };
+  if (args.photo) {
+    const photo = await referencePhoto(f.pandId, wall, args.ppm);
+    if (!photo) measure.photo = { missing: `no staging/pand-reference/${bare(f.pandId)}/front.jpg and no block-face strip lists the pand (run scripts/pand-reference/run.ts --ids=${bare(f.pandId)})` };
+    else {
+      const photoM = measureBlurred(photo.image, { ...mbox, v1: Math.min(mbox.v1, photo.image.topM) }, lines.filter(l => l <= photo.image.topM));
+      const verdict = previewVerdict(renderM, photoM);
+      measure.photo = { file: path.relative(REPO_ROOT, photo.file), kind: photo.kind, measure: summary(photoM) };
+      measure.verdict = verdict;
+      f.files.push(path.join(f.out, 'compare.png'));
+      await compareSheet([{ png: await sharp(f.files[0]).png().toBuffer(), label: f.label, topM: top }, { png: photo.png, label: photo.kind, topM: photo.image.topM }], args.ppm, verdict, f.files[f.files.length - 1], `route ${f.route} (${f.why}) · ${look}`);
+      tm.mark('photo');
+    }
+  }
+  measure.timings = tm.t;
+  fs.writeFileSync(path.join(f.out, 'measure.json'), JSON.stringify(measure, null, 1));
+  f.files.push(path.join(f.out, 'measure.json'));
+  return { pandId: bare(f.pandId), out: f.out, files: f.files, timings: tm.t, measure };
+}
+
+/** One render of one pand by the route the game draws it (see resolveRoute): front.png (+ threeq.png, compare.png) and measure.json in `out`. */
 export async function renderPand(session: PreviewSession, pandId: string, args: Args, override?: Override): Promise<PreviewResult> {
-  const t: Record<string, number> = {}, mark = (k: string, t0: number) => { t[k] = Math.round(performance.now() - t0); return performance.now(); };
-  let t0 = performance.now();
+  const cover = coverOf(pandId), { route, why } = resolveRoute(args.route, !!override, cover);
+  if (route === 'installed') return renderInstalled(session, pandId, placementOf(cover!), args, why);
+  return renderGeneric(session, pandId, args, route === 'spec' ? override : undefined, route, why);
+}
+
+/** The generic streamed path (and the spec route: the same path with the override on the source properties). */
+export async function renderGeneric(session: PreviewSession, pandId: string, args: Args, override: Override | undefined, route: Route = 'generic', why = 'generic'): Promise<PreviewResult> {
+  const tm = timer();
   const tile = session.tileOf(pandId);
   const rows = await session.rows(tile);
   const raw = rows.find(r => r.raw.properties.id === full(pandId));
@@ -296,7 +461,7 @@ export async function renderPand(session: PreviewSession, pandId: string, args: 
   for (const [lng, lat] of [[box[0] - padLng, box[1] - padLat], [box[2] + padLng, box[1] - padLat], [box[0] - padLng, box[3] + padLat], [box[2] + padLng, box[3] + padLat]]) tiles.add(tileOfLngLat(lng, lat).join('/'));
   const all: Row[] = [];
   for (const tl of tiles) all.push(...await session.rows(tl));
-  t0 = mark('tiles', t0);
+  tm.mark('tiles');
   // The override goes onto the source properties, then the chain decorates as it does for every building.
   const ov = override ? overridePatch(override) : null;
   const own = ov && Object.keys(ov.patch).length ? session.chain.decorate({ ...raw.raw, properties: { ...raw.raw.properties, ...ov.patch } }) : raw.styled;
@@ -314,7 +479,7 @@ export async function renderPand(session: PreviewSession, pandId: string, args: 
   const inChunk = new Set(features);
   const context = ctx.neighbors(features, f => inChunk.has(f) || kitHide.has(String(f.properties.id)));
   const streets = shellStreets(REPO_ROOT, features as never), profiles = shellProfiles(REPO_ROOT);
-  t0 = mark('context', t0);
+  tm.mark('context');
   const look = session.look as 'photo';
   const walls = buildFeatureChunk(features as never, look, 'walls', streets, profiles, context as never);
   const extras = buildFeatureChunk(features as never, look, 'extras', streets, profiles, context as never);
@@ -322,75 +487,57 @@ export async function renderPand(session: PreviewSession, pandId: string, args: 
   const ownRanges = mesh.ranges.filter(r => r.id === own.properties.id);
   const inOwn = new Uint8Array(mesh.layers.length);
   for (const r of ownRanges) inOwn.fill(1, r.start, r.start + r.count);
-  t0 = mark('chunk', t0);
+  tm.mark('chunk');
   const atlas = (await session.ensureAtlas()).atlas;
-  t0 = mark('atlas', t0);
+  tm.mark('atlas');
 
   const wall = await frontWall(pandId, own, neighbours);
   const frame = wallFrame(wall);
   let zMax = 0;
   for (let v = 0; v < inOwn.length; v++) if (inOwn[v]) zMax = Math.max(zMax, mesh.positions[v * 3 + 2]);
   const top = Math.ceil((zMax + 0.5) * 2) / 2;
-  const front = rasterise(mesh, atlas, { kind: 'ortho', origin: frame.origin, right: frame.right, normal: frame.normal, u0: 0, u1: frame.len, v0: 0, v1: top, pxPerM: args.ppm }, { supersample: 2, background: SKY, keep: v => inOwn[v] === 1 });
-  t0 = mark('raster', t0);
+  const lit = args.unlit ? undefined : session.light;
+  const front = rasterise(mesh, atlas, { kind: 'ortho', origin: frame.origin, right: frame.right, normal: frame.normal, u0: 0, u1: frame.len, v0: 0, v1: top, pxPerM: args.ppm }, { supersample: 2, background: SKY, keep: v => inOwn[v] === 1, lit });
+  tm.mark('raster');
   const out = path.resolve(args.out ?? path.join(ATLAS_DIR, bare(pandId)));
   fs.mkdirSync(out, { recursive: true });
   const files = [path.join(out, 'front.png')];
   await png(front, files[0]);
-  let threeq: RasterImage | null = null;
+  // The shared ground: the median of each drawn building's lowest vertex.
+  const lows = new Map<string, number>();
+  for (const r of mesh.ranges) for (let v = r.start; v < r.start + r.count; v++) lows.set(r.id, Math.min(lows.get(r.id) ?? Infinity, mesh.positions[v * 3 + 2]));
+  const groundZ = median([...lows.values()]);
   if (args.threeq) {
-    const mid: Vec3 = [frame.origin[0] + frame.right[0] * frame.len / 2, frame.origin[1] + frame.right[1] * frame.len / 2, top * 0.45];
-    const size = Math.max(frame.len * 1.6, top) * 1.25, dist = size / 2 / Math.tan(15 * Math.PI / 180), yaw = 38 * Math.PI / 180;
-    const [nx, ny] = frame.normal, dx = nx * Math.cos(yaw) - ny * Math.sin(yaw), dy = nx * Math.sin(yaw) + ny * Math.cos(yaw);
     // The 3/4 view shows the row the chunk holds (every building within ROW_M of the pand).
-    threeq = rasterise(mesh, atlas, { kind: 'perspective', eye: [mid[0] + dx * dist, mid[1] + dy * dist, top * 0.9], target: mid, fovDeg: 30, width: 640, height: 800 }, { supersample: 2, background: SKY });
+    const threeq = rasterise(mesh, atlas, threeqView(frame, top, groundZ), { supersample: 2, background: SKY, lit, ground: { z: groundZ, rgb: groundRgb(lit) } });
     files.push(path.join(out, 'threeq.png'));
     await png(threeq, files[files.length - 1]);
-    t0 = mark('threeq', t0);
+    tm.mark('threeq');
   }
-
   // Measurement on the wall below the eaves, with storey lines from the pand's own heights.
   const p = own.properties, eaves = Math.min(top, wallTopHeightM(p));
-  const lines = storeyLines(eaves, Number(p.groundFloorHeightM) || 3.2);
-  const mbox = { u0: Math.min(0.2, frame.len / 4), u1: frame.len - Math.min(0.2, frame.len / 4), v0: 0, v1: eaves };
-  const renderM = measureFacade({ image: facadeImage(front, args.ppm, top), box: mbox, lines });
-  const measure: Record<string, unknown> = {
-    pandId: bare(pandId), tile, route: 'generic', look: session.look, ppm: args.ppm,
-    wall: { ...wall, lengthM: +frame.len.toFixed(2) }, heights: { topM: top, eavesM: +eaves.toFixed(2), lines },
-    chunk: { buildings: features.length, contextNeighbours: context.length, vertices: mesh.layers.length, ownVertices: ownRanges.reduce((s, r) => s + r.count, 0), triangles: mesh.indices.length / 3, wholeTile: args.wholeTile },
-    atlas: { file: path.relative(REPO_ROOT, session.atlas!.file), painted: session.atlas!.painted },
-    properties: p, overrides: ov ? { source: override!.source, applied: ov.applied, notApplied: ov.notApplied } : null,
-    render: summary(renderM),
-  };
-  if (args.photo) {
-    const photo = await referencePhoto(pandId, wall, args.ppm);
-    if (!photo) measure.photo = { missing: `no staging/pand-reference/${bare(pandId)}/front.jpg and no block-face strip lists the pand (run scripts/pand-reference/run.ts --ids=${bare(pandId)})` };
-    else {
-      const photoM = measureFacade({ image: photo.image, box: { ...mbox, v1: Math.min(mbox.v1, photo.image.topM) }, lines: lines.filter(l => l <= photo.image.topM) });
-      const verdict = previewVerdict(renderM, photoM);
-      measure.photo = { file: path.relative(REPO_ROOT, photo.file), kind: photo.kind, measure: summary(photoM) };
-      measure.verdict = verdict;
-      files.push(path.join(out, 'compare.png'));
-      await compareSheet([{ png: await sharp(files[0]).png().toBuffer(), label: `preview (generic path)`, topM: top }, { png: photo.png, label: photo.kind, topM: photo.image.topM }], args.ppm, verdict, files[files.length - 1]);
-      t0 = mark('photo', t0);
-    }
-  }
-  measure.timings = t;
-  fs.writeFileSync(path.join(out, 'measure.json'), JSON.stringify(measure, null, 1));
-  files.push(path.join(out, 'measure.json'));
-  return { pandId: bare(pandId), out, files, timings: t, measure };
+  return finish({
+    pandId, route, why, args, out, files, front, top, eaves, lines: storeyLines(eaves, Number(p.groundFloorHeightM) || 3.2), frameLen: frame.len, wall, tm,
+    label: route === 'spec' ? 'preview (spec route: generic path + overrides)' : 'preview (generic path)',
+    measure: {
+      tile, look: session.look, ppm: args.ppm, wall: { ...wall, lengthM: +frame.len.toFixed(2) }, groundZ: +groundZ.toFixed(2),
+      chunk: { buildings: features.length, contextNeighbours: context.length, vertices: mesh.layers.length, ownVertices: ownRanges.reduce((s, r) => s + r.count, 0), triangles: mesh.indices.length / 3, wholeTile: args.wholeTile },
+      atlas: { file: path.relative(REPO_ROOT, session.atlas!.file), painted: session.atlas!.painted },
+      properties: p, overrides: ov ? { source: override!.source, applied: ov.applied, notApplied: ov.notApplied } : null,
+    },
+  });
 }
 
-/** The verdict fields a reader compares (the full FacadeMeasurement is large). */
+/** The summary fields a reader compares (the full FacadeMeasurement is large). */
 export function summary(m: FacadeMeasurement) {
   return { wall: m.wall.hex, wallRaw: m.wall.rawHex, material: m.material?.family ?? null, glazing: m.glazing, storeyGlazing: m.storeyGlazing, columns: m.columns, windowColumns: m.windowColumns ?? null, pitchM: m.pitchM, window: m.window, frontClass: m.frontClass, usable: +m.usableFraction.toFixed(3), foliage: +m.foliageFraction.toFixed(3), washedOut: +m.washedOutFraction.toFixed(3) };
 }
 
-/** Side by side at one scale, ground lines aligned, a verdict line on top. */
-export async function compareSheet(panels: { png: Buffer; label: string; topM: number }[], ppm: number, verdict: PreviewVerdict | null, file: string) {
+/** Side by side at one scale, ground lines aligned, a header (route and look) and the verdict on top. */
+export async function compareSheet(panels: { png: Buffer; label: string; topM: number }[], ppm: number, verdict: PreviewVerdict | null, file: string, header = '') {
   const metas = await Promise.all(panels.map(p => sharp(p.png).metadata()));
-  const ground = Math.max(...panels.map(p => p.topM)) * ppm, head = 64, gap = 16;
-  const width = metas.reduce((s, m) => s + m.width!, 0) + gap * (panels.length + 1);
+  const ground = Math.max(...panels.map(p => p.topM)) * ppm, head = 82, gap = 16;
+  const width = Math.max(metas.reduce((s, m) => s + m.width!, 0) + gap * (panels.length + 1), 560);
   const height = Math.round(head + ground + 24);
   const esc = (s: string) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;');
   const title = verdict ? [`${verdict.verdict} · wall ${verdict.wall.a} vs ${verdict.wall.b} · dL ${verdict.wall.dL}${verdict.wall.dHue !== null ? ` · hue ${verdict.wall.dHue}°` : ''}`,
@@ -398,18 +545,89 @@ export async function compareSheet(panels: { png: Buffer; label: string; topM: n
   const comps: { input: Buffer; left: number; top: number }[] = [];
   let x = gap;
   panels.forEach((p, i) => {
-    const w = metas[i].width!, h = metas[i].height!;
+    const w = metas[i].width!;
     comps.push({ input: p.png, left: x, top: Math.round(head + ground - p.topM * ppm) });
     comps.push({ input: Buffer.from(`<svg width="${w}" height="20"><text x="0" y="15" font-family="Helvetica, Arial" font-size="13" fill="#1f2328">${esc(p.label)}</text></svg>`), left: x, top: head - 22 });
-    void h; x += w + gap;
+    x += w + gap;
   });
-  comps.push({ input: Buffer.from(`<svg width="${width}" height="42"><text x="${gap}" y="17" font-family="Helvetica, Arial" font-size="13" font-weight="bold" fill="#1f2328">${esc(title[0])}</text><text x="${gap}" y="35" font-family="Helvetica, Arial" font-size="13" fill="#1f2328">${esc(title[1])}</text></svg>`), left: 0, top: 0 });
+  comps.push({ input: Buffer.from(`<svg width="${width}" height="60"><text x="${gap}" y="15" font-family="Helvetica, Arial" font-size="12" fill="#57606a">${esc(header)}</text><text x="${gap}" y="34" font-family="Helvetica, Arial" font-size="13" font-weight="bold" fill="#1f2328">${esc(title[0])}</text><text x="${gap}" y="52" font-family="Helvetica, Arial" font-size="13" fill="#1f2328">${esc(title[1])}</text></svg>`), left: 0, top: 0 });
   await sharp({ create: { width, height, channels: 3, background: '#f4f4f2' } }).composite(comps).png().toFile(file);
 }
 
 // ---------------------------------------------------------------------------------------------------------------
-// Recipe route: compile the house's recipe, render its GLB with renderElevation (flat game colours)
+// GLB routes: the installed model (covers.json) and the recipe compiler's model
 // ---------------------------------------------------------------------------------------------------------------
+type GlbJob = { soup: MaterialSoup; route: Route; why: string; label: string; measure: Record<string, unknown>; eavesHint?: number };
+async function renderGlb(session: PreviewSession, pandId: string, job: GlbJob, args: Args, tm: Timer): Promise<PreviewResult> {
+  const tile = session.tileOf(pandId), rows = await session.rows(tile);
+  const own = rows.find(r => r.raw.properties.id === full(pandId))?.styled;
+  if (!own) throw new Error(`${pandId} not in tile ${tile}`);
+  const wall = await frontWall(pandId, own, []);
+  const frame = wallFrame(wall), soup = job.soup, P = soup.positions;
+  // The wall's own slab: within the wall's span and no more than 3 m in front of its line (stoops, balconies).
+  const along = (v: number) => (P[v * 3] - frame.origin[0]) * frame.right[0] + (P[v * 3 + 1] - frame.origin[1]) * frame.right[1];
+  const out_ = (v: number) => (P[v * 3] - frame.origin[0]) * frame.normal[0] + (P[v * 3 + 1] - frame.origin[1]) * frame.normal[1];
+  let zMax = 0, zMin = Infinity;
+  for (let v = 0; v * 3 < P.length; v++) { const a = along(v); if (a >= 0 && a <= frame.len && Math.abs(out_(v)) < 30) { zMax = Math.max(zMax, P[v * 3 + 2]); zMin = Math.min(zMin, P[v * 3 + 2]); } }
+  const groundZ = Number.isFinite(zMin) ? zMin : 0;
+  const top = Math.ceil((zMax - groundZ + 0.5) * 2) / 2;
+  const lit = args.unlit ? undefined : session.light;
+  const mesh = soupMesh(soup);
+  // keep() takes the raster mesh's (unshared) vertex index.
+  const MP = mesh.positions, nearFace = (v: number) => (MP[v * 3] - frame.origin[0]) * frame.normal[0] + (MP[v * 3 + 1] - frame.origin[1]) * frame.normal[1] < 3;
+  let front: { width: number; height: number; rgba: Uint8ClampedArray };
+  if (args.unlit) {
+    // renderElevation in its frame (x east, y up, z south): flat game colours x its facing shade, as the recipe route always drew.
+    const el = soupElevation(soup, frame, args.ppm, groundZ, top);
+    front = el;
+  } else {
+    front = rasterise(mesh, FLAT_ATLAS, { kind: 'ortho', origin: [frame.origin[0], frame.origin[1], groundZ], right: frame.right, normal: frame.normal, u0: 0, u1: frame.len, v0: 0, v1: top, pxPerM: args.ppm }, { supersample: 2, background: SKY, lit, twoSided: true, keep: nearFace });
+  }
+  tm.mark('raster');
+  const out = path.resolve(args.out ?? path.join(ATLAS_DIR, bare(pandId)));
+  fs.mkdirSync(out, { recursive: true });
+  const files = [path.join(out, 'front.png')];
+  await png(front, files[0]);
+  if (args.threeq) {
+    const threeq = rasterise(mesh, FLAT_ATLAS, threeqView({ ...frame, origin: [frame.origin[0], frame.origin[1], groundZ] }, top, groundZ), { supersample: 2, background: SKY, lit, twoSided: true, ground: { z: groundZ, rgb: groundRgb(lit) } });
+    files.push(path.join(out, 'threeq.png'));
+    await png(threeq, files[files.length - 1]);
+    tm.mark('threeq');
+  }
+  const eaves = Math.min(top, job.eavesHint || wallTopHeightM(own.properties) || top);
+  return finish({ pandId, route: job.route, why: job.why, args, out, files, front, top, eaves, lines: storeyLines(eaves, Number(own.properties.groundFloorHeightM) || 3.2), frameLen: frame.len, wall, tm, label: job.label, measure: { tile, ppm: args.ppm, wall: { ...wall, lengthM: +frame.len.toFixed(2) }, groundZ: +groundZ.toFixed(2), ...job.measure } });
+}
+
+/** renderElevation of an ENU soup along the wall: [left, right] = the wall's span, rows from groundZ up to top. */
+function soupElevation(soup: MaterialSoup, frame: ReturnType<typeof wallFrame>, ppm: number, groundZ: number, top: number) {
+  // renderElevation's frame: x east, y up, z south.
+  const P = soup.positions, Q: number[] = new Array(P.length);
+  for (let v = 0; v * 3 < P.length; v++) { Q[v * 3] = P[v * 3]; Q[v * 3 + 1] = P[v * 3 + 2] - groundZ; Q[v * 3 + 2] = -P[v * 3 + 1]; }
+  const ax = frame.origin[0], az = -frame.origin[1], nx = frame.normal[0], nz = -frame.normal[1];
+  const bearing = (Math.atan2(nx, -nz) * 180 / Math.PI + 360) % 360;
+  const tA = ax * nz + az * -nx; // facadeCompare: t = x * nz + z * (-nx), the viewer's right
+  const cell = 1 / ppm;
+  const el = renderElevation({ ...soup, positions: Q }, { name: 'front', bearing, span: [tA, tA + frame.len] } as never, cell);
+  const colours = soup.materials.map(m => gameColour(m as never));
+  // Onto the preview's canvas: width = wall length, height = top, ground at the bottom (renderElevation's rows run yMax .. min(0, yMin)).
+  const W = Math.max(1, Math.round(frame.len * ppm)), H = Math.max(1, Math.round(top * ppm)), rgba = new Uint8ClampedArray(W * H * 4);
+  for (let y = 0; y < H; y++) for (let x = 0; x < W; x++) {
+    const o = (y * W + x) * 4, ey = Math.round((el.yMax - (top - (y + 0.5) / ppm)) / cell - 0.5), ex = Math.round((tA + (x + 0.5) / ppm - el.tMin) / cell - 0.5);
+    const i = ey >= 0 && ey < el.H && ex >= 0 && ex < el.W ? ey * el.W + ex : -1, m = i >= 0 ? el.mat[i] : -1;
+    if (m < 0) { rgba.set([...SKY, 0], o); continue; }
+    const c = colours[m], s = el.shade[i];
+    rgba.set([c[0] * s, c[1] * s, c[2] * s, 255], o);
+  }
+  return { width: W, height: H, rgba };
+}
+
+export async function renderInstalled(session: PreviewSession, pandId: string, place: Placement, args: Args, why: string): Promise<PreviewResult> {
+  const tm = timer();
+  const soup = soupToEnu(await loadMaterialSoup(place.glb), placedToEnu(place));
+  tm.mark('glb');
+  return renderGlb(session, pandId, { soup, route: 'installed', why, label: `preview (installed ${place.key})`, measure: { installed: { ...place, glb: path.relative(REPO_ROOT, place.glb), triangles: soup.indices.length / 3 } } }, args, tm);
+}
+
 function recipeHouseFor(pandId: string): string | null {
   const dir = path.join(REPO_ROOT, 'scripts/building-recipes/houses');
   for (const id of fs.readdirSync(dir)) {
@@ -420,59 +638,13 @@ function recipeHouseFor(pandId: string): string | null {
 }
 
 export async function renderRecipe(session: PreviewSession, pandId: string, house: string, args: Args): Promise<PreviewResult> {
-  const t: Record<string, number> = {}, mark = (k: string, t0: number) => { t[k] = Math.round(performance.now() - t0); return performance.now(); };
-  let t0 = performance.now();
+  const tm = timer();
   execFileSync(process.execPath, ['--import', 'tsx', 'scripts/building-recipes/compile.ts', `--house=${house}`], { cwd: REPO_ROOT, stdio: 'pipe' });
-  t0 = mark('compile', t0);
+  tm.mark('compile');
   const dir = path.join(REPO_ROOT, 'artifacts/building-recipes', house), report = readJson(path.join(dir, 'report.json'));
-  const soup = await loadMaterialSoup(path.join(dir, 'model.glb'));
-  const tile = session.tileOf(pandId), rows = await session.rows(tile);
-  const own = rows.find(r => r.raw.properties.id === full(pandId))?.styled;
-  if (!own) throw new Error(`${pandId} not in tile ${tile}`);
-  const wall = await frontWall(pandId, own, []);
-  // GLB frame: x east, y up, z south, RD offsets from report.anchorRD (render.ts rdToRecipeLocal).
-  const A = lngLatToRd(wall.a), B = lngLatToRd(wall.b), anchor = report.anchorRD;
-  const ax = A.x - anchor[0], az = anchor[1] - A.y, bx = B.x - anchor[0], bz = anchor[1] - B.y, len = Math.hypot(bx - ax, bz - az);
-  const rx = (bx - ax) / len, rz = (bz - az) / len, nx = -rz, nz = rx; // outward normal: viewer's right turned 90° (x east, z south)
-  const bearing = (Math.atan2(nx, -nz) * 180 / Math.PI + 360) % 360;
-  const tA = ax * nz + az * -nx; // facadeCompare: t = x * nz + z * (-nx), the viewer's right
-  const cell = 1 / args.ppm;
-  const el = renderElevation(soup, { name: 'front', bearing, span: [tA - 0.01, tA + len + 0.01] } as never, cell);
-  t0 = mark('raster', t0);
-  const colours = soup.materials.map(m => gameColour(m as never));
-  const rgba = new Uint8ClampedArray(el.W * el.H * 4);
-  for (let i = 0; i < el.W * el.H; i++) {
-    const m = el.mat[i];
-    if (m < 0) { rgba.set([...SKY, 0], i * 4); continue; }
-    const c = colours[m], s = el.shade[i];
-    rgba.set([c[0] * s, c[1] * s, c[2] * s, 255], i * 4);
-  }
-  const out = path.resolve(args.out ?? path.join(ATLAS_DIR, bare(pandId)));
-  fs.mkdirSync(out, { recursive: true });
-  const files = [path.join(out, 'front.png')];
-  const front = { width: el.W, height: el.H, rgba };
-  await png(front, files[0]);
-  const top = el.yMax, eaves = Math.min(top, Math.max(...(report.fit?.fronts ?? []).map((f: { eavesM?: number; crownBaseM?: number }) => f.eavesM ?? f.crownBaseM ?? 0), 0) || top);
-  const lines = storeyLines(eaves);
-  const mbox = { u0: 0.2, u1: el.W * cell - 0.2, v0: 0, v1: eaves };
-  const renderM = measureFacade({ image: facadeImage(front, args.ppm, top), box: mbox, lines });
-  const measure: Record<string, unknown> = { pandId: bare(pandId), route: 'recipe', house, glb: path.relative(REPO_ROOT, path.join(dir, 'model.glb')), triangles: report.triangles, wall, heights: { topM: +top.toFixed(2), eavesM: +eaves.toFixed(2), lines }, render: summary(renderM) };
-  if (args.photo) {
-    const photo = await referencePhoto(pandId, wall, args.ppm);
-    if (photo) {
-      const photoM = measureFacade({ image: photo.image, box: { ...mbox, v1: Math.min(mbox.v1, photo.image.topM) }, lines: lines.filter(l => l <= photo.image.topM) });
-      const verdict = previewVerdict(renderM, photoM);
-      measure.photo = { file: path.relative(REPO_ROOT, photo.file), kind: photo.kind, measure: summary(photoM) };
-      measure.verdict = verdict;
-      files.push(path.join(out, 'compare.png'));
-      await compareSheet([{ png: await sharp(files[0]).png().toBuffer(), label: `preview (recipe ${house}, flat game colours)`, topM: top }, { png: photo.png, label: photo.kind, topM: photo.image.topM }], args.ppm, verdict, files[files.length - 1]);
-    } else measure.photo = { missing: `no reference photo for ${bare(pandId)}` };
-    t0 = mark('photo', t0);
-  }
-  measure.timings = t;
-  fs.writeFileSync(path.join(out, 'measure.json'), JSON.stringify(measure, null, 1));
-  files.push(path.join(out, 'measure.json'));
-  return { pandId: bare(pandId), out, files, timings: t, measure };
+  const soup = soupToEnu(await loadMaterialSoup(path.join(dir, 'model.glb')), recipeToEnu(report.anchorRD));
+  const eavesHint = Math.max(...(report.fit?.fronts ?? []).map((f: { eavesM?: number; crownBaseM?: number }) => f.eavesM ?? f.crownBaseM ?? 0), 0);
+  return renderGlb(session, pandId, { soup, route: 'recipe', why: `--recipe ${house}`, label: `preview (recipe ${house})`, eavesHint, measure: { house, glb: path.relative(REPO_ROOT, path.join(dir, 'model.glb')), triangles: report.triangles } }, args, tm);
 }
 
 // ---------------------------------------------------------------------------------------------------------------
@@ -480,7 +652,7 @@ export async function renderRecipe(session: PreviewSession, pandId: string, hous
 // ---------------------------------------------------------------------------------------------------------------
 function report(r: PreviewResult, ms: number) {
   const v = r.measure.verdict as PreviewVerdict | undefined, m = r.measure.render as ReturnType<typeof summary>;
-  console.log(`${r.pandId} (${r.measure.route}) ${Math.round(ms)} ms  [${Object.entries(r.timings).map(([k, x]) => `${k} ${x}`).join(', ')}]`);
+  console.log(`${r.pandId} (route ${r.measure.route}: ${r.measure.routeWhy}; ${r.measure.shader}) ${Math.round(ms)} ms  [${Object.entries(r.timings).map(([k, x]) => `${k} ${x}`).join(', ')}]`);
   console.log(`  render: wall ${m.wall} glazing ${m.glazing} columns ${m.windowColumns ?? m.columns ?? '-'} window ${m.window?.shape ?? '-'} class ${m.frontClass}`);
   const ph = r.measure.photo as { measure?: ReturnType<typeof summary>; missing?: string; kind?: string } | undefined;
   if (ph?.missing) console.log(`  photo: ${ph.missing}`);

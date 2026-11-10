@@ -10,6 +10,35 @@ import { LIKENESS, likenessVerdict, type Verdict } from '../buildingRecipe/liken
 import { rgbToHsl } from '../blockFace/wallColour.ts';
 import type { FacadeMeasurement } from '../buildingRecipe/measureFacade.ts';
 
+/**
+ * Gaussian sigma (px at the measuring scale, 50 px/m) applied to every image, render and photo alike, before
+ * measureFacade (lane H2b, #338). The software raster's hard-edged mullions and the render.ts frame's antialiased ones
+ * fell either side of measureFacade's glazing threshold (Keizersgracht 0363100012171052: preview 0.44 vs render.ts
+ * 0.81); a photo is already soft at the lens. One blur on both sides measures the same thing.
+ */
+export const PRE_BLUR_PX = 1.5;
+
+/** Separable Gaussian blur of packed RGB bytes (edges clamped), sigma in px; sigma <= 0 returns a copy. */
+export function blurRgb(rgb: Uint8Array, width: number, height: number, sigma: number = PRE_BLUR_PX): Uint8Array {
+  if (!(sigma > 0)) return rgb.slice();
+  const r = Math.ceil(sigma * 3), k = new Float64Array(2 * r + 1);
+  let sum = 0;
+  for (let i = -r; i <= r; i++) sum += k[i + r] = Math.exp(-(i * i) / (2 * sigma * sigma));
+  for (let i = 0; i < k.length; i++) k[i] /= sum;
+  const tmp = new Float64Array(width * height * 3), out = new Uint8Array(width * height * 3);
+  for (let y = 0; y < height; y++) for (let x = 0; x < width; x++) for (let c = 0; c < 3; c++) {
+    let v = 0;
+    for (let i = -r; i <= r; i++) v += k[i + r] * rgb[(y * width + Math.min(width - 1, Math.max(0, x + i))) * 3 + c];
+    tmp[(y * width + x) * 3 + c] = v;
+  }
+  for (let y = 0; y < height; y++) for (let x = 0; x < width; x++) for (let c = 0; c < 3; c++) {
+    let v = 0;
+    for (let i = -r; i <= r; i++) v += k[i + r] * tmp[(Math.min(height - 1, Math.max(0, y + i)) * width + x) * 3 + c];
+    out[(y * width + x) * 3 + c] = Math.round(v);
+  }
+  return out;
+}
+
 /** Mean glazing tolerance of the preview gate (likeness.ts storeyGlazing: the brief's ±0.15). */
 export const PREVIEW_GLAZING = LIKENESS.storeyGlazing;
 

@@ -76,3 +76,31 @@ test('storeyLines: ground then equal upper storeys', () => {
   assert.deepEqual(storeyLines(15.2, 3.2, 3), [0, 3.2, 6.2, 9.2, 12.2, 15.2]);
   assert.deepEqual(storeyLines(2, 3.2), [0, 2]);
 });
+
+test('lit: Lambert of the face normal under sun and hemisphere, wall gain on tinted texels, baked shade unused', () => {
+  const enc = (x: number) => Math.round(255 * (x <= 0.0031308 ? 12.92 * x : 1.055 * x ** (1 / 2.4) - 0.055));
+  // The quad faces -y (south). Sun due south at the horizon: n.l = 1; sky and ground equal, so the hemisphere is flat.
+  const lit = { sunDir: [0, -1, 0] as const, sun: [1, 1, 1] as const, sky: [0.5, 0.5, 0.5] as const, ground: [0.5, 0.5, 0.5] as const, wallGain: 1, skyTint: [0, 0, 0] as const };
+  const white = rasterise(quad([255, 255, 255, 0]), atlas(255, 0), front, { lit });
+  const want = enc(Math.min(1, 1.5 / Math.PI));
+  assert.deepEqual(px(white, 6, 1), [want, want, want, 255], 'white texel, irradiance 1.5 / PI; tint alpha 0 ignored');
+  // A sun behind the wall leaves the sky only; the wall gain lifts tinted texels.
+  const back = rasterise(quad(), atlas(255, 0), front, { lit: { ...lit, sunDir: [0, 1, 0] } });
+  assert.equal(px(back, 6, 1)[0], enc(0.5 / Math.PI));
+  const gained = rasterise(quad([128, 128, 128, 255]), atlas(255, 0), front, { lit: { ...lit, sunDir: [0, 1, 0], wallGain: 1.5 } });
+  assert.equal(px(gained, 6, 1)[0], enc(Math.pow((128 / 255) * 1.5, 2.2) * 0.5 / Math.PI));
+  // Dark untinted texels take the sky tint (glazing).
+  const glass = rasterise(quad(undefined, [5, 5, 5, 255]), atlas(0, 255), front, { lit: { ...lit, skyTint: [0.05, 0.05, 0.05] } });
+  assert.ok(px(glass, 6, 1)[0] > enc(Math.pow(5 / 255, 2.2) * 1.5 / Math.PI) + 10);
+});
+
+test('twoSided draws a back face; ground fills below the horizon and hides behind geometry', () => {
+  const behind = { ...front, normal: [0, 1, 0] as const, origin: [2, 0, 0] as const, right: [-1, 0, 0] as const };
+  assert.equal(rasterise(quad(), atlas(), behind).coverage[0], 0);
+  assert.equal(rasterise(quad(), atlas(), behind, { twoSided: true }).coverage[27], 1);
+  const view = { kind: 'perspective' as const, eye: [1, -10, 1] as const, target: [1, 0, 1] as const, fovDeg: 40, width: 40, height: 40 };
+  const img = rasterise(quad(), atlas(), view, { ground: { z: 0, rgb: [10, 200, 10] }, supersample: 1 });
+  assert.deepEqual(px(img, 2, 39), [10, 200, 10, 255], 'bottom-left: ground');
+  assert.equal(px(img, 2, 0)[3], 0, 'top-left: sky');
+  assert.notDeepEqual(px(img, 20, 22), [10, 200, 10, 255], 'the wall hides the ground behind it');
+});

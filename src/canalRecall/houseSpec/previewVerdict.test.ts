@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { previewVerdict } from './previewVerdict.ts';
+import { previewVerdict, blurRgb, PRE_BLUR_PX } from './previewVerdict.ts';
 import type { FacadeMeasurement } from '../buildingRecipe/measureFacade.ts';
 
 const m = (o: Partial<FacadeMeasurement> & { rgb?: [number, number, number] }): FacadeMeasurement => ({
@@ -24,4 +24,17 @@ test('an unusable reference abstains', () => {
   assert.equal(v.verdict, 'NO EVIDENCE');
   assert.match(v.reasons[0], /foliage/);
   assert.equal(previewVerdict(m({}), m({ washedOutFraction: 0.5 }), 'render').verdict, 'PASS');
+});
+
+test('blurRgb keeps a flat field and the mean, softens an edge, and is a copy at sigma 0', () => {
+  const w = 9, h = 3, flat = new Uint8Array(w * h * 3).fill(120);
+  assert.deepEqual([...blurRgb(flat, w, h)], [...flat]);
+  const edge = new Uint8Array(w * h * 3);
+  for (let y = 0; y < h; y++) for (let x = 5; x < w; x++) edge.fill(200, (y * w + x) * 3, (y * w + x) * 3 + 3);
+  const b = blurRgb(edge, w, h, PRE_BLUR_PX);
+  assert.ok(b[(w + 4) * 3] > 0 && b[(w + 4) * 3] < 200, 'the pixel left of the edge picks up light');
+  assert.ok(b[(w + 5) * 3] < 200 && b[(w + 5) * 3] > 0, 'the pixel right of the edge loses some');
+  assert.equal(b[(w + 0) * 3], 0);
+  const copy = blurRgb(edge, w, h, 0);
+  assert.notEqual(copy, edge); assert.deepEqual([...copy], [...edge]);
 });

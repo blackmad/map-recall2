@@ -10,6 +10,9 @@
  * strip frame (x along the strip's u from midRD, y up, z out of the face). `--recipe=<house>,...`: the recipe GLB
  * (artifacts/building-recipes/<house>/model.glb), x east, y up, z south from report.anchorRD. Uses Chromium: run it
  * under /tmp/canal-pw.sh.
+ *
+ * `--unlit`: the preview in the legacy unlit look (default: the lit city look). `--blur=0`: measure without the shared
+ * PRE_BLUR_PX (the before numbers of lane H2b); default every image, preview, render.ts and photo, is blurred by it.
  */
 import fs from 'node:fs';
 import path from 'node:path';
@@ -17,13 +20,16 @@ import sharp from 'sharp';
 import { renderModels, closeRenderer } from '../building-recipes/render.ts';
 import { lngLatToRd } from '../../src/canalRecall/facade/rdNew.ts';
 import { measureFacade, type FacadeImage } from '../../src/canalRecall/buildingRecipe/measureFacade.ts';
-import { previewVerdict, type PreviewVerdict } from '../../src/canalRecall/houseSpec/previewVerdict.ts';
+import { previewVerdict, blurRgb, PRE_BLUR_PX, type PreviewVerdict } from '../../src/canalRecall/houseSpec/previewVerdict.ts';
 import { PreviewSession, parseArgs, renderPand, renderRecipe, compareSheet, type PreviewResult } from './preview.ts';
 import { REPO_ROOT } from './nodeDom.ts';
 
 const arg = (n: string) => process.argv.find(a => a.startsWith(`--${n}=`))?.slice(n.length + 3);
 const out = path.resolve(arg('out') ?? 'artifacts/house-preview/gate');
 const PPM = 50;
+const BLUR = arg('blur') !== undefined ? Number(arg('blur')) : PRE_BLUR_PX;
+const previewFlags = (pand: string) => [pand, '--photo', ...(process.argv.includes('--unlit') ? ['--unlit'] : [])];
+const measure = (input: Parameters<typeof measureFacade>[0]) => measureFacade({ ...input, image: { ...input.image, rgb: blurRgb(input.image.rgb, input.image.width, input.image.height, BLUR) } });
 const readJson = (p: string) => JSON.parse(fs.readFileSync(p, 'utf8'));
 
 async function rgbOf(png: Buffer, topM: number): Promise<FacadeImage> {
@@ -43,8 +49,8 @@ async function one(label: string, pand: string, preview: PreviewResult, glb: str
   const file = path.join(out, `${pand}-render-ts.png`);
   await sharp(png).png().toFile(file);
   const box = { u0: 0.2, u1: frame.lenM - 0.2, v0: 0, v1: eaves };
-  const rts = measureFacade({ image: await rgbOf(png, top), box, lines });
-  const prev = measureFacade({ image: await rgbOf(fs.readFileSync(path.join(preview.out, 'front.png')), top), box, lines });
+  const rts = measure({ image: await rgbOf(png, top), box, lines });
+  const prev = measure({ image: await rgbOf(fs.readFileSync(path.join(preview.out, 'front.png')), top), box, lines });
   const vsRenderTs = previewVerdict(prev, rts, 'render');
   let vsPhoto: PreviewVerdict | null = null, renderTsVsPhoto: PreviewVerdict | null = null, photoPng: Buffer | null = null, photoTop = 0, photoLabel = '';
   if (m.photo?.file) {
@@ -54,13 +60,13 @@ async function one(label: string, pand: string, preview: PreviewResult, glb: str
       photoTop = crop.wallHeightM; photoLabel = m.photo.kind;
       const meta = await sharp(path.join(REPO_ROOT, m.photo.file)).metadata(), k = PPM / crop.pixelsPerMetre;
       photoPng = await sharp(path.join(REPO_ROOT, m.photo.file)).resize(Math.round(meta.width! * k), Math.round(meta.height! * k), { fit: 'fill' }).png().toBuffer();
-      const photo = measureFacade({ image: await rgbOf(photoPng, photoTop), box: { ...box, v1: Math.min(box.v1, photoTop) }, lines: lines.filter(l => l <= photoTop) });
+      const photo = measure({ image: await rgbOf(photoPng, photoTop), box: { ...box, v1: Math.min(box.v1, photoTop) }, lines: lines.filter(l => l <= photoTop) });
       vsPhoto = previewVerdict(prev, photo); renderTsVsPhoto = previewVerdict(rts, photo);
     }
   }
   const panels = [{ png: fs.readFileSync(path.join(preview.out, 'front.png')), label: `Node preview (${m.route})`, topM: top }, { png: await sharp(png).png().toBuffer(), label: `render.ts (Chromium, ${path.basename(glb)})`, topM: top }];
   if (photoPng) panels.push({ png: photoPng, label: photoLabel, topM: photoTop });
-  await compareSheet(panels, PPM, vsRenderTs, path.join(out, `${pand}-sheet.png`));
+  await compareSheet(panels, PPM, vsRenderTs, path.join(out, `${pand}-sheet.png`), `preview route ${m.route} · ${m.shader === 'unlit' ? 'unlit (legacy)' : 'lit city look'} · measured after a ${BLUR} px blur · verdict: preview vs render.ts`);
   return { pand, label, preview, renderTs: { file, ms }, vsRenderTs, vsPhoto, renderTsVsPhoto };
 }
 
@@ -71,7 +77,7 @@ try {
   for (const spec of (arg('face') ?? '').split(',').filter(Boolean)) {
     const [face, pand] = spec.includes(':') ? spec.split(':') : [arg('face-default') ?? '', spec];
     const s = readJson(path.join(REPO_ROOT, 'scripts/block-face/faces', face, 'strip.json'));
-    const preview = await renderPand(session, pand, { ...parseArgs([pand, '--photo']), out: path.join(out, pand) });
+    const preview = await renderPand(session, pand, { ...parseArgs(previewFlags(pand)), out: path.join(out, pand) });
     const w = (preview.measure as any).wall, along = (ll: number[]) => { const p = lngLatToRd(ll as [number, number]); return (p.x - s.frame.midRD[0]) * s.frame.uRD[0] + (p.y - s.frame.midRD[1]) * s.frame.uRD[1]; };
     const xa = along(w.a), xb = along(w.b);
     if (xb < xa) throw new Error(`${pand}: the wall runs against the strip's u axis`);
@@ -79,8 +85,8 @@ try {
   }
   for (const house of (arg('recipe') ?? '').split(',').filter(Boolean)) {
     const intent = readJson(path.join(REPO_ROOT, 'scripts/building-recipes/houses', house, 'intent.json')), pand = String(intent.pandId);
-    const preview = await renderRecipe(session, pand, house, { ...parseArgs([pand, '--photo']), out: path.join(out, pand) });
-    const generic = await renderPand(session, pand, { ...parseArgs([pand, '--photo']), out: path.join(out, `${pand}-generic`) });
+    const preview = await renderRecipe(session, pand, house, { ...parseArgs(previewFlags(pand)), out: path.join(out, pand) });
+    const generic = await renderPand(session, pand, { ...parseArgs(previewFlags(pand)), out: path.join(out, `${pand}-generic`) });
     const report = readJson(path.join(REPO_ROOT, 'artifacts/building-recipes', house, 'report.json')), anchor = report.anchorRD;
     const w = (preview.measure as any).wall, A = lngLatToRd(w.a), B = lngLatToRd(w.b);
     const ax = A.x - anchor[0], az = anchor[1] - A.y, bx = B.x - anchor[0], bz = anchor[1] - B.y, len = Math.hypot(bx - ax, bz - az);
@@ -92,6 +98,6 @@ try {
 
 const brief = (v: PreviewVerdict | null) => v ? { verdict: v.verdict, dL: v.wall.dL, dHue: v.wall.dHue, glazing: [v.glazing.a, v.glazing.b], columns: [v.columns.a, v.columns.b], window: [v.window.a, v.window.b], reasons: v.reasons, warns: v.warns } : null;
 const table = rows.map(r => ({ label: r.label, pand: r.pand, previewMs: r.preview.timings, renderTsMs: Math.round(r.renderTs.ms), sheet: path.relative(REPO_ROOT, path.join(out, `${r.pand}-sheet.png`)), previewVsRenderTs: brief(r.vsRenderTs), previewVsPhoto: brief(r.vsPhoto), renderTsVsPhoto: brief(r.renderTsVsPhoto) }));
-fs.writeFileSync(path.join(out, 'gate.json'), JSON.stringify(table, null, 1));
+fs.writeFileSync(path.join(out, 'gate.json'), JSON.stringify({ blurPx: BLUR, shader: process.argv.includes('--unlit') ? 'unlit' : 'lit', rows: table }, null, 1));
 for (const r of table) console.log(`${r.label}: preview vs render.ts ${r.previewVsRenderTs?.verdict} (dL ${r.previewVsRenderTs?.dL}, hue ${r.previewVsRenderTs?.dHue}, glazing ${r.previewVsRenderTs?.glazing}, cols ${r.previewVsRenderTs?.columns}, window ${r.previewVsRenderTs?.window}) | preview vs photo ${r.previewVsPhoto?.verdict ?? '-'} | render.ts vs photo ${r.renderTsVsPhoto?.verdict ?? '-'}`);
 console.log(path.join(out, 'gate.json'));

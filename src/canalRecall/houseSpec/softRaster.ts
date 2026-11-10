@@ -9,8 +9,15 @@
  *   c = texture(cells, uv, layer); m = texture(masks, uv, layer).rg   (bilinear, repeat-wrapped: fract(uv))
  *   c *= mix(1, tint, m.r) * mix(1, accent, m.g); out = c * shade
  * with perspective-correct barycentric attributes, a z-buffer, back-face culling (the material is FrontSide) and
- * N x N supersampling. Not reproduced: the far/roof tiers, mipmaps, the lit (Lambert) and city-look shaders, shadows,
- * post-processing, the analytic window SDF.
+ * N x N supersampling.
+ *
+ * With `lit` it does what the lit city look does instead (look/cityLook.ts createCityLookMaterial: a flat-shaded
+ * MeshLambertMaterial under the shared rig, rendererShared/lightRig.ts):
+ *   cityC = c * mix(1, tint, m.r) * mix(1, accent, m.g) * mix(1, wallGain, m.r)
+ *   out = pow(cityC, 2.2) / PI * (sun * max(n.l, 0) + mix(ground, sky, 0.5 n.z + 0.5))
+ *       + skyTint * (1 - smoothstep(0.06, 0.2, luma(cityC))) * (1 - m.r)          (linear, then sRGB-encoded)
+ * with n the triangle's face normal (flatShading) and the baked shade (tint alpha) unused, as in the game's lit path.
+ * Not reproduced: the far/roof tiers, mipmaps, cast shadows, fog, post-processing, the analytic window SDF.
  *
  * Extends the triangle loop of landmarks/facadeCompare.ts renderElevation (material ids, ortho only) with texture
  * sampling and a perspective camera.
@@ -41,7 +48,28 @@ export type RasterOptions = {
   background?: Vec3;
   /** Draw only these vertex ranges (a building's range in the chunk); default every triangle. */
   keep?: (vertex: number) => boolean;
+  /** The lit city look (see the header); default the unlit near-tier facade shader. */
+  lit?: LitShading;
+  /** Draw back faces too, lit with the normal turned toward the viewer (double-sided GLB materials). */
+  twoSided?: boolean;
+  /** Perspective views only: an endless flat ground plane at height `z` in sRGB bytes `rgb`, depth-tested. */
+  ground?: { z: number; rgb: Vec3 };
 };
+
+/** The lit city look's rig, every colour linear and already multiplied by its intensity. */
+export type LitShading = {
+  /** Unit vector toward the sun, east/north/up. */
+  sunDir: Vec3;
+  sun: Vec3;
+  sky: Vec3;
+  ground: Vec3;
+  /** Gain on tinted texels (m.r): litFacadeWallGain x CITY_LIT_LEVEL. */
+  wallGain: number;
+  /** Emissive sky tint on dark untinted texels (cityLook.ts SKY_TINT). */
+  skyTint: Vec3;
+};
+
+const srgbEncode = (x: number) => (x <= 0.0031308 ? 12.92 * x : 1.055 * Math.pow(x, 1 / 2.4) - 0.055);
 
 export type RasterImage = {
   width: number; height: number;
@@ -54,6 +82,7 @@ export type RasterImage = {
 const sub = (a: Vec3, b: Vec3): [number, number, number] => [a[0] - b[0], a[1] - b[1], a[2] - b[2]];
 const dot = (a: Vec3, b: Vec3) => a[0] * b[0] + a[1] * b[1] + a[2] * b[2];
 const cross = (a: Vec3, b: Vec3): [number, number, number] => [a[1] * b[2] - a[2] * b[1], a[2] * b[0] - a[0] * b[2], a[0] * b[1] - a[1] * b[0]];
+const smoothstep = (e0: number, e1: number, x: number) => { const t = Math.min(1, Math.max(0, (x - e0) / (e1 - e0))); return t * t * (3 - 2 * t); };
 const norm = (a: Vec3): [number, number, number] => { const l = Math.hypot(a[0], a[1], a[2]) || 1; return [a[0] / l, a[1] / l, a[2] / l]; };
 
 /** Image size of a view at supersample 1. */
@@ -102,8 +131,9 @@ export function rasterise(mesh: RasterMesh, atlas: RasterAtlas, view: RasterView
   const col = new Float32Array(W * H * 3), hit = new Uint8Array(W * H);
   const { colour, mask, size, total } = atlas, px = size * size;
   const I = mesh.indices, U = mesh.uvs, L = mesh.layers, T = mesh.tints, A = mesh.accents;
-  const keep = options.keep;
-  const s = new Float32Array(6);
+  const keep = options.keep, lit = options.lit, twoSided = !!options.twoSided;
+  const s = new Float32Array(6), irr = [0, 0, 0];
+  const P = mesh.positions;
   /** Bilinear, repeat-wrapped sample of colour (rgb 0..1) and mask (rg 0..1) on `layer` at (u, v): into s[0..4]. */
   const sample = (layer: number, u: number, v: number) => {
     const base = layer * px;
@@ -122,7 +152,17 @@ export function rasterise(mesh: RasterMesh, atlas: RasterAtlas, view: RasterView
     const ax = X[a], ay = Y[a], bx = X[b], by = Y[b], cx = X[c], cy = Y[c];
     // Signed area in screen space (y down): a front face (counter-clockwise seen from outside in GL) is negative here.
     const area = (bx - ax) * (cy - ay) - (cx - ax) * (by - ay);
-    if (!(area < -1e-9)) continue;
+    const back = area > 1e-9;
+    if (!(area < -1e-9) && !(twoSided && back)) continue;
+    if (lit) {
+      // Face normal (counter-clockwise front), turned toward the viewer for a drawn back face.
+      const e1: Vec3 = [P[b * 3] - P[a * 3], P[b * 3 + 1] - P[a * 3 + 1], P[b * 3 + 2] - P[a * 3 + 2]];
+      const e2: Vec3 = [P[c * 3] - P[a * 3], P[c * 3 + 1] - P[a * 3 + 1], P[c * 3 + 2] - P[a * 3 + 2]];
+      let nrm = norm(cross(e1, e2));
+      if (back) nrm = [-nrm[0], -nrm[1], -nrm[2]];
+      const ndl = Math.max(0, dot(nrm, lit.sunDir)), h = 0.5 * nrm[2] + 0.5;
+      for (let k = 0; k < 3; k++) irr[k] = (lit.sun[k] * ndl + lit.ground[k] + (lit.sky[k] - lit.ground[k]) * h) / Math.PI;
+    }
     const x0 = Math.max(0, Math.floor(Math.min(ax, bx, cx))), x1 = Math.min(W - 1, Math.ceil(Math.max(ax, bx, cx)));
     const y0 = Math.max(0, Math.floor(Math.min(ay, by, cy))), y1 = Math.min(H - 1, Math.ceil(Math.max(ay, by, cy)));
     if (x0 > x1 || y0 > y1) continue;
@@ -142,13 +182,35 @@ export function rasterise(mesh: RasterMesh, atlas: RasterAtlas, view: RasterView
       const u = q0 * U[a * 2] + q1 * U[b * 2] + q2 * U[c * 2], v = q0 * U[a * 2 + 1] + q1 * U[b * 2 + 1] + q2 * U[c * 2 + 1];
       sample(layer, u, v);
       const mr = s[3], mg = s[4];
-      const shade = (q0 * T[a * 4 + 3] + q1 * T[b * 4 + 3] + q2 * T[c * 4 + 3]) / 255;
+      const shade = lit ? 1 : (q0 * T[a * 4 + 3] + q1 * T[b * 4 + 3] + q2 * T[c * 4 + 3]) / 255;
       for (let k = 0; k < 3; k++) {
         const tint = (q0 * T[a * 4 + k] + q1 * T[b * 4 + k] + q2 * T[c * 4 + k]) / 255;
         const accent = (q0 * A[a * 4 + k] + q1 * A[b * 4 + k] + q2 * A[c * 4 + k]) / 255;
         col[i * 3 + k] = s[k] * (1 + (tint - 1) * mr) * (1 + (accent - 1) * mg) * shade;
       }
+      if (lit) {
+        const g = 1 + (lit.wallGain - 1) * mr;
+        const cr = col[i * 3] * g, cg = col[i * 3 + 1] * g, cb = col[i * 3 + 2] * g;
+        const luma = 0.299 * cr + 0.587 * cg + 0.114 * cb, e = (1 - smoothstep(0.06, 0.2, luma)) * (1 - mr);
+        col[i * 3] = srgbEncode(Math.min(1, Math.pow(Math.max(0, cr), 2.2) * irr[0] + lit.skyTint[0] * e));
+        col[i * 3 + 1] = srgbEncode(Math.min(1, Math.pow(Math.max(0, cg), 2.2) * irr[1] + lit.skyTint[1] * e));
+        col[i * 3 + 2] = srgbEncode(Math.min(1, Math.pow(Math.max(0, cb), 2.2) * irr[2] + lit.skyTint[2] * e));
+      }
       hit[i] = 1;
+    }
+  }
+  // Ground plane: a sample whose ray meets z = ground.z in front of the camera and nearer than the geometry.
+  if (options.ground && view.kind === 'perspective') {
+    const f = norm(sub(view.target, view.eye)), side = norm(cross(f, [0, 0, 1])), up = cross(side, f);
+    const focal = (H / 2) / Math.tan(view.fovDeg * Math.PI / 360), gz = options.ground.z, rgb = options.ground.rgb;
+    for (let py = 0; py < H; py++) for (let qx = 0; qx < W; qx++) {
+      const sx = (qx + 0.5 - W / 2) / focal, sy = (H / 2 - py - 0.5) / focal;
+      const dz = f[2] + side[2] * sx + up[2] * sy; // ray direction's z for camera depth 1
+      if (dz >= -1e-9) continue;
+      const depth = (gz - view.eye[2]) / dz, i = py * W + qx;
+      if (depth <= 0 || depth >= zbuf[i]) continue;
+      zbuf[i] = depth; hit[i] = 1;
+      col[i * 3] = rgb[0] / 255; col[i * 3 + 1] = rgb[1] / 255; col[i * 3 + 2] = rgb[2] / 255;
     }
   }
   // Resolve the supersamples: box filter over each ss x ss block.
