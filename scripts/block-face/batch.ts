@@ -46,7 +46,7 @@ import {houseIntents, validateBlockFace} from '../../src/canalRecall/blockFace/i
 import {fileTypeLoader} from '../../src/canalRecall/blockFace/typeLibrary.ts';
 import {measureWallColour, toHex, type Rgb} from '../../src/canalRecall/blockFace/wallColour.ts';
 import {measureStripPalette} from '../../src/canalRecall/blockFace/stripPalette.ts';
-import {isLeaf} from '../../src/canalRecall/buildingRecipe/measureFacade.ts';
+import {balancedLeaf, stripWhiteBalances} from '../../src/canalRecall/blockFace/stripWhiteBalance.ts';
 import {hexToRgb} from '../../src/canalRecall/look/palette.ts';
 import {spanQuality, stripQuality, type StripQualityVerdict} from '../../src/canalRecall/blockFace/stripQuality.ts';
 import {BATCH_GATES, brickForDrawnLuma, coveredElsewhere, facingsToHousePalette, libraryYearMatches, installVerdict, restripDates, sampleShare, selectBatchFaces, autoPlaceArgs, trimShared, foliageColumns, maskColumns, cleanWallVerdict, rowMedianRgb, type PixelBox} from '../../src/canalRecall/blockFace/batchInstall.ts';
@@ -200,6 +200,8 @@ async function cleanWalls(run: string, fc: any[]): Promise<{walls: CleanWall[]; 
   const modelPng = path.join(STAGING, run, 'review', 'model-ortho.png');
   const model = existsSync(modelPng) ? new Uint8Array(await sharp(modelPng).resize(W, H, {fit: 'fill'}).removeAlpha().raw().toBuffer()) : null;
   const luma = (c: readonly number[]) => 0.2126 * c[0] + 0.7152 * c[1] + 0.0722 * c[2];
+  // A green-cast day's white trim is no foliage (stripWhiteBalance.ts); neutral days keep isLeaf.
+  const balances = stripWhiteBalances(photo, W, H, strip.spans);
   const walls: CleanWall[] = strip.spans.map((s: any, i: number) => {
     const eaves = report.perPand[i].eavesM, box: PixelBox = {x0: Math.round(s.px[0] + 8), x1: Math.round(s.px[1] - 8), y0: Math.max(0, Math.round(H - (eaves - 1) * ppm)), y1: Math.round(H - 3.8 * ppm)};
     const own = fc.find(f => f.pand === s.pandId)?.wallColour ?? null;
@@ -207,7 +209,7 @@ async function cleanWalls(run: string, fc: any[]): Promise<{walls: CleanWall[]; 
     const palette = (rgb: Uint8Array) => measureStripPalette({rgb, width: W, height: H, x0: s.px[0], x1: s.px[1], pixelsPerMetre: ppm, eavesM: h?.eavesM ?? h?.dak70pM ?? 14});
     const lumaOf = (p: ReturnType<typeof palette>) => p.wall && !p.stucco && p.shares.wall >= 0.3 ? luma(hexToRgb(p.wall)) : null;
     if (box.x1 <= box.x0 || box.y1 <= box.y0) return {pandId: s.pandId, mode: 'unmasked', wallColour: own, wallLuma: lumaOf(palette(photo)), cleanShare: 1};
-    const masked = foliageColumns(photo, W, box, isLeaf), v = cleanWallVerdict(masked, ppm);
+    const masked = foliageColumns(photo, W, box, balancedLeaf(balances[i])), v = cleanWallVerdict(masked, ppm);
     if (!masked.some(Boolean)) return {pandId: s.pandId, mode: 'unmasked', wallColour: own, wallLuma: lumaOf(palette(photo)), cleanShare: 1};
     if (!v.own) return {pandId: s.pandId, mode: 'row', wallColour: null, wallLuma: null, cleanShare: v.share};
     const wc = model ? measureWallColour({photo, model: maskColumns(model, W, H, box, masked, [159, 184, 207]), width: W, height: H, box}) : null;

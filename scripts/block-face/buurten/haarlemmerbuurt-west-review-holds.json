@@ -275,17 +275,7 @@
   {
    "pandId": "0363100012173469",
    "address": "Haarlemmerdijk 129",
-   "reason": "Haarlemmerdijk 129: narrow beige cornice house, frontage 3.36 m under the shop types' 3.8 m floor (2022-12-15 strip, compared)"
-  },
-  {
-   "pandId": "0363100012173479",
-   "address": "Haarlemmerdijk 131",
-   "reason": "Haarlemmerdijk 131: wide three-light windows read as 7 strip columns against the type's 3 axes; score 0.55 with the eaves pin at 9.9 m (kit gap: wide multi-light 19th-c. shop-house windows)"
-  },
-  {
-   "pandId": "0363100012173480",
-   "address": "Haarlemmerdijk 133A",
-   "reason": "Haarlemmerdijk 133A: neck gable fits, but its wide three-light windows read as 5 columns against 2 axes; score 0.55 with the eaves pin at 9.2 m (same kit gap)"
+   "reason": "Haarlemmerdijk 129: a beige band front with one ribbon window per storey, the design of 127 beside it rather than a shop house (3.36 m)"
   },
   {
    "pandId": "0363100012173482",
@@ -335,17 +325,17 @@
   {
    "pandId": "0363100012167794",
    "address": "Haarlemmerdijk 31",
-   "reason": "Haarlemmerdijk 31: brick point gable, shoulders 10.0 m, apex 12.6 m, rows 5.1-6.9 and 7.9-9.4 m; compared and held: the run 31-33-35A fails compile (roof-under-crown 0.03 m over the cornice line on 33 and 35A under the front-hipped roof, and 0.9 m2 coplanar brick/roof tile behind the point gable of 31, geometry-regression); kit gap: front-hipped roof over a cornice on this skewed frontage"
+   "reason": "Haarlemmerdijk 31: brick point gable, shoulders 10.0 m, apex 12.6 m, rows 5.1-6.9 and 7.9-9.4 m; compared and held: its point gable compiles with 0.9 m2 of brick gable and roof tile coplanar at the facade (geometry-regression over the 0.5 m2 allowance), with the run or alone"
   },
   {
    "pandId": "0363100012253819",
    "address": "Haarlemmerdijk 33",
-   "reason": "Haarlemmerdijk 33: painted dark brick, three axes, rows 4.6-6.6 / 7.3-8.9 / 9.6-11.0 m, tall white frieze and cornice 11.7-13.1 m; compared and held: the run 31-33-35A fails compile (roof-under-crown 0.03 m over the cornice line on 33 and 35A under the front-hipped roof, and 0.9 m2 coplanar brick/roof tile behind the point gable of 31, geometry-regression); kit gap: front-hipped roof over a cornice on this skewed frontage"
+   "reason": "Haarlemmerdijk 33: painted dark brick, three axes, rows 4.6-6.6 / 7.3-8.9 / 9.6-11.0 m, a tall white frieze and cornice 11.7-13.1 m with sky directly over it; compared and held: with the frieze type and a flat roof the run 33-35A compiles (no roof-under-crown overshoot), but the sheet is not the photo: 33 is drawn with two axes and two upper rows where the strip has three and three (the frieze type has no four-storey body), and 35A at NCC 0.11 with its strip span about 1 m off the BAG split"
   },
   {
    "pandId": "0363100012167805",
    "address": "Haarlemmerdijk 35A",
-   "reason": "Haarlemmerdijk 35A: red brick, two axes, rows 4.5-6.5 and 7.0-9.0 m, white cornice 10.0-11.25 m, a small dormer to 11.8 m; compared and held: the run 31-33-35A fails compile (roof-under-crown 0.03 m over the cornice line on 33 and 35A under the front-hipped roof, and 0.9 m2 coplanar brick/roof tile behind the point gable of 31, geometry-regression); kit gap: front-hipped roof over a cornice on this skewed frontage"
+   "reason": "Haarlemmerdijk 35A: red brick, two axes, rows 4.5-6.5 and 7.0-9.0 m, a deep white cornice 10.0-11.25 m with a small crowned piece to 11.8 m; compared and held: with the frieze type and a flat roof the run 33-35A compiles (no roof-under-crown overshoot), but the sheet is not the photo: 33 is drawn with two axes and two upper rows where the strip has three and three (the frieze type has no four-storey body), and 35A at NCC 0.11 with its strip span about 1 m off the BAG split"
   },
   {
    "pandId": "0363100012253818",

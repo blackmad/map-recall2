@@ -35,3 +35,15 @@ test('problems: pand id, integer 1..6, reason, known type, one pin per pand', ()
   assert.match(baysPinProblems([{...pin('0363100012171148', 2), type: 'x'}], types)[0], /unknown type x/);
   assert.match(baysPinProblems([pin('0363100012171148', 2), pin('0363100012171148', 3)], types)[0], /pinned twice/);
 });
+
+test('per-storey counts and head lines (Haarlemmerdijk 20 and 16): set as overrides, validated', () => {
+  const ds = [placed('0363100012167818'), placed('0363100012167816')];
+  applyBaysPins(ds, [{pandId: '0363100012167818', type: T, bays: [2, 2, 3], reason: 'three under the gable'}, {pandId: '0363100012167816', type: T, bays: 2, headLines: [0.8, 0.76, 0.82], reason: 'first upper row lower'}], () => 2);
+  const [a, b] = ds as Extract<Decision, {kind: 'placed'}>[];
+  assert.deepEqual(a.house.type!.overrides, {bays: [2, 2, 3]});
+  assert.deepEqual(b.house.type!.overrides, {headLines: [0.8, 0.76, 0.82]});
+  const types = [{id: T}];
+  assert.deepEqual(baysPinProblems([{pandId: '0363100012167818', type: T, bays: [2, 2, 3], reason: 'r'}], types), []);
+  assert.match(baysPinProblems([{pandId: '0363100012167818', type: T, bays: [2, 0], reason: 'r'}], types)[0], /integer 1..6/);
+  assert.match(baysPinProblems([{pandId: '0363100012167818', type: T, bays: 2, headLines: [1.2], reason: 'r'}], types)[0], /headLines/);
+});

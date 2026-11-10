@@ -25,6 +25,7 @@ import {measureSkyBound} from '../../src/canalRecall/blockFace/stripSkyBound.ts'
 import {bodyBandM, evidenceVerdict, measureSpanEvidence} from '../../src/canalRecall/blockFace/stripEvidence.ts';
 import {measureStripStructure} from '../../src/canalRecall/blockFace/stripStructure.ts';
 import {isLeaf, measureFacade, type FacadeImage, type FrontClass} from '../../src/canalRecall/buildingRecipe/measureFacade.ts';
+import {balancedLeaf, stripWhiteBalances, type LeafTest} from '../../src/canalRecall/blockFace/stripWhiteBalance.ts';
 import {compareLikeness, modelElevation, PAD_M, type LikenessResult} from '../../src/canalRecall/buildingRecipe/likeness.ts';
 import {chunkFrame} from '../../src/canalRecall/streetChunks/compileChunk.ts';
 import {TYPE_LIBRARY_DIR} from '../../src/canalRecall/blockFace/typeLibrary.ts';
@@ -36,6 +37,7 @@ import {lowFrontFootMaxM, runFootOffset} from '../../src/canalRecall/blockFace/s
 import {applyCrownPins, applyMirrorPins, crownPinProblems, holdBrokenPairs, mirrorPinProblems, typePinProblems, typesForFace, typesForPand, type CrownPin, type MirrorPin, type TypePin} from '../../src/canalRecall/blockFace/reviewCrowns.ts';
 import {applyDoorPins, doorPinProblems, type DoorPin} from '../../src/canalRecall/blockFace/reviewDoors.ts';
 import {applyBaysPins, baysPinProblems, type BaysPin} from '../../src/canalRecall/blockFace/reviewBays.ts';
+import {applyShopfrontPins, shopfrontPinProblems, type ShopfrontPin} from '../../src/canalRecall/blockFace/reviewShopfront.ts';
 import {applyEavesPins, eavesPinProblems, type EavesPin} from '../../src/canalRecall/blockFace/reviewEaves.ts';
 import {acceptFloorFor, acceptPinProblems, applyPalettePins, palettePinProblems, type AcceptPin, type PalettePin} from '../../src/canalRecall/blockFace/reviewPalettes.ts';
 import {frontBump} from '../../src/canalRecall/blockFace/bayOutline.ts';
@@ -52,14 +54,21 @@ async function stripRaw(file: string): Promise<Raw> {
 }
 
 /** Shares of placeholder grey and foliage in the body band (4.4 m .. eaves - 1) of a span. */
-function evidenceShares(raw: Raw, px: [number, number], ppm: number, eavesM: number) {
+function evidenceShares(raw: Raw, px: [number, number], ppm: number, eavesM: number, leaf: LeafTest = isLeaf) {
   const inset = Math.round((px[1] - px[0]) * 0.06), [bandLo, bandHi] = bodyBandM(eavesM), y0 = Math.max(0, Math.round(raw.height - bandHi * ppm)), y1 = Math.round(raw.height - bandLo * ppm);
-  let n = 0, v = 0, leaf = 0;
+  let n = 0, v = 0, leaves = 0;
   for (let y = y0; y < y1; y++) for (let x = px[0] + inset; x < px[1] - inset; x++) {
     const i = (y * raw.width + x) * 3, p: [number, number, number] = [raw.rgb[i], raw.rgb[i + 1], raw.rgb[i + 2]];
-    n++; if (classifyPixel(p) === 'void') v++; else if (isLeaf(p[0], p[1], p[2])) leaf++;
+    n++; if (classifyPixel(p) === 'void') v++; else if (leaf(p[0], p[1], p[2])) leaves++;
   }
-  return {voidShare: n ? r2(v / n) : 1, foliageShare: n ? r2(leaf / n) : 0};
+  return {voidShare: n ? r2(v / n) : 1, foliageShare: n ? r2(leaves / n) : 0};
+}
+
+/** Per span, the white balance of its panorama day (stripWhiteBalance.ts); logged once per strip when a day is balanced. */
+function whiteBalancesFor(raw: Raw, spans: {px: [number, number]; date?: string}[]) {
+  const wbs = stripWhiteBalances(raw.rgb, raw.width, raw.height, spans);
+  if (process.env.AUTO_PLACE_DEBUG) for (const wb of new Set(wbs)) console.log(`  white balance: ${wb.reason}`);
+  return wbs;
 }
 
 /** A metric image of a strip span, padded by `padM` on each side and above the eaves (rows below the ground are invalid). */
@@ -154,6 +163,8 @@ async function faceEvidence(faceId: string) {
   const dir = path.join(FACES, faceId);
   const [discovery, strip, uses] = await Promise.all(['discovery', 'strip', 'uses'].map(n => readJson(path.join(dir, `${n}.json`))));
   const raw = await stripRaw(path.join(STAGING, faceId, 'strip.jpg'));
+  // One white balance per panorama day for the foliage masks (stripWhiteBalance.ts): a green-cast day's white trim is no foliage.
+  const balances = whiteBalancesFor(raw, strip.spans);
   const evs: PandEvidence[] = [];
   for (const id of discovery.members as string[]) {
     const facts: BuildingFacts = await readJson(path.join(dir, 'pands', id, 'facts.json'));
@@ -171,6 +182,7 @@ async function faceEvidence(faceId: string) {
       bagBay: frontBump((existsSync(path.join(dir, 'pands', id, 'facts-bay-outline.json')) ? await readJson(path.join(dir, 'pands', id, 'facts-bay-outline.json')) as BuildingFacts : facts).fronts[0])};
     if (span) {
       const px: [number, number] = [Math.max(0, span.px[0]), Math.min(raw.width, span.px[1])];
+      const leaf = balancedLeaf(balances[strip.spans.indexOf(span)]);
       const palette = measureStripPalette({rgb: raw.rgb, width: raw.width, height: raw.height, x0: px[0], x1: px[1], pixelsPerMetre: strip.pixelsPerMetre, eavesM});
       const storeys = facts.heights.storeys ?? Math.max(2, Math.round(eavesM / 3.1));
       const lines = Array.from({length: storeys + 1}, (_, k) => r2(k * eavesM / storeys));
@@ -189,9 +201,9 @@ async function faceEvidence(faceId: string) {
         photoEaves.set(id, {row: skyline.eavesRow, eavesM: r2(skyline.eavesM), bagM: ev.eavesM, confidence: skyline.confidence});
         ev.eavesM = r2(skyline.eavesM);
       }
-      const front = EVIDENCE_GATE ? measureSpanEvidence({rgb: raw.rgb, width: raw.width, height: raw.height, px, pixelsPerMetre: strip.pixelsPerMetre, eavesM: pinM ?? f0.eavesM, roofM: facts.heights.roofMaxM, panoramas: span.panoramas}) : null;
+      const front = EVIDENCE_GATE ? measureSpanEvidence({rgb: raw.rgb, width: raw.width, height: raw.height, px, pixelsPerMetre: strip.pixelsPerMetre, eavesM: pinM ?? f0.eavesM, roofM: facts.heights.roofMaxM, panoramas: span.panoramas, leaf}) : null;
       const skyBound = measureSkyBound({rgb: raw.rgb, width: raw.width, height: raw.height, x0: px[0], x1: px[1], pixelsPerMetre: strip.pixelsPerMetre});
-      ev.strip = {date: span.date, px, palette, wall, skyline, skyBound, ...evidenceShares(raw, px, strip.pixelsPerMetre, eavesM), ...(front ? {frontEvidence: {...evidenceVerdict(front), skyCols: front.skyCols}} : {}), columns, ...(frontClass ? {frontClass} : {}), doorSide: doorSide(raw, px, strip.pixelsPerMetre, eavesM <= 5), ...(a => ({accentSide: a.side, accentShare: a.share}))(accentSide(raw, px, strip.pixelsPerMetre, eavesM)), structure};
+      ev.strip = {date: span.date, px, palette, wall, skyline, skyBound, ...evidenceShares(raw, px, strip.pixelsPerMetre, eavesM, leaf), ...(front ? {frontEvidence: {...evidenceVerdict(front), skyCols: front.skyCols}} : {}), columns, ...(frontClass ? {frontClass} : {}), doorSide: doorSide(raw, px, strip.pixelsPerMetre, eavesM <= 5), ...(a => ({accentSide: a.side, accentShare: a.share}))(accentSide(raw, px, strip.pixelsPerMetre, eavesM)), structure};
     }
     evs.push(ev);
   }
@@ -256,6 +268,7 @@ export async function runLikeness(runId: string): Promise<PandLikeness[]> {
   const [png] = await renderModels([{file: path.join(STAGING, runId, 'chunk.glb')}], [{eye: [(x0M + x1M) / 2, top / 2, 200], target: [(x0M + x1M) / 2, top / 2, 0], fov: 30, width: W, height: H,
     ortho: [-(x1M - x0M) / 2, (x1M - x0M) / 2, top / 2, -top / 2], background: '#9fb8cf', noGround: true}]);
   const modelRgb = new Uint8Array(await sharp(png).resize(W, H, {fit: 'fill'}).removeAlpha().raw().toBuffer());
+  const balances = whiteBalancesFor(raw, strip.spans);
   const P = soup.positions, foot = runFootOffset(raw, strip, !process.argv.includes('--no-foot'), lowFrontFootMaxM(report.perPand.map((pp: any) => pp.eavesM)));
   if (foot.offsetM) console.log(`${runId}: facade foot ${foot.offsetM} m above the strip's bottom row (${foot.read}/${foot.spans} spans read, spread ${foot.spreadM} m)`);
   return report.perPand.map((pp: any, i: number) => {
@@ -272,7 +285,7 @@ export async function runLikeness(runId: string): Promise<PandLikeness[]> {
     const model = modelElevation(soup, {o: [x0, 0, zFront - 1], r: [1, 0, 0], n: [0, 0, 1], uMin: 0, uMax: w}, box, lines, 0.1);
     const L = compareLikeness({photo, padCells: Math.round(PAD_M / photo.cell), model, lines});
     if (process.env.AUTO_PLACE_DEBUG) debugMasks(runId, pp.pand, photo, model, L);
-    const sl = spanLikeness({photoRgb: raw.rgb, modelRgb, width: W, height: H, px: s.px, eavesM: pp.eavesM, pixelsPerMetre: strip.pixelsPerMetre, ...(foot.offsetM ? {footOffsetM: foot.offsetM} : {})});
+    const sl = spanLikeness({photoRgb: raw.rgb, modelRgb, width: W, height: H, px: s.px, eavesM: pp.eavesM, pixelsPerMetre: strip.pixelsPerMetre, ...(foot.offsetM ? {footOffsetM: foot.offsetM} : {}), leaf: balancedLeaf(balances[i])});
     return {pandId: pp.pand, ncc: sl.ncc, nccRaw: sl.nccRaw ?? 0, shiftM: [sl.dx, sl.dy], usable: sl.usable, abstain: sl.abstain, verdict: L.verdict, reasons: L.reasons, wall: {photo: L.wall.photo, model: L.wall.model, dL: L.wall.dL}, glazing: {photo: r2(L.glazing.photoMean), model: r2(L.glazing.modelMean)}, columns: {photo: L.columns.photo, model: L.columns.model}, iou: L.iou, ...(foot.offsetM ? {footOffsetM: foot.offsetM} : {})};
   });
 }
@@ -316,6 +329,11 @@ if (process.argv[1]?.endsWith('block-face/auto-place.ts')) {
   const doorsFile = path.join('scripts/block-face/buurten', `${buurt}-review-doors.json`);
   const doorPins: DoorPin[] = existsSync(doorsFile) ? (await readJson(doorsFile)).pins : [];
   const doorPinErrors = doorPinProblems(doorPins, types);
+  // Shop paint and door a reviewer read where the strip's fascia is underexposure (blockFace/reviewShopfront.ts).
+  const shopfrontsFile = path.join('scripts/block-face/buurten', `${buurt}-review-shopfronts.json`);
+  const shopfrontPins: ShopfrontPin[] = existsSync(shopfrontsFile) ? (await readJson(shopfrontsFile)).pins : [];
+  const shopfrontPinErrors = shopfrontPinProblems(shopfrontPins);
+  if (shopfrontPinErrors.length) throw Error(`${shopfrontsFile}: ${shopfrontPinErrors.join('; ')}`);
   if (doorPinErrors.length) throw Error(`${doorsFile}: ${doorPinErrors.join('; ')}`);
   // Palettes a reviewer re-measured where the strip misread the wall (blockFace/reviewPalettes.ts).
   const palettesFile = path.join('scripts/block-face/buurten', `${buurt}-review-palettes.json`);
@@ -388,6 +406,7 @@ if (process.argv[1]?.endsWith('block-face/auto-place.ts')) {
     if (palettePins.length) { const pinned = applyPalettePins(decisions, palettePins); if (pinned.length) console.log(`${f.id}: palette pinned on ${pinned.length} pand(s)`); }
     fillPairs(decisions, types);
     if (mirrorPins.length) { const pinned = applyMirrorPins(decisions, mirrorPins); if (pinned.length) console.log(`${f.id}: side pinned on ${pinned.length} pand(s)`); }
+    if (shopfrontPins.length) { const pinned = applyShopfrontPins(decisions, shopfrontPins); if (pinned.length) console.log(`${f.id}: shopfront pinned on ${pinned.length} pand(s)`); }
     if (baysPins.length) { const pinned = applyBaysPins(decisions, baysPins, id => { const b = types.find(t => t.id === id)?.body.bays; return typeof b === 'number' ? b : undefined; }); if (pinned.length) console.log(`${f.id}: axes pinned on ${pinned.length} pand(s)`); }
     const rowSet = rowCoherence(decisions, types, evs, strip.date);
     const ribbonHeld = ribbonRowHolds(decisions, types, evs);

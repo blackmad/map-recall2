@@ -3,7 +3,7 @@
  "street": "Haarlemmerstraat",
  "library": "haarlemmerbuurt",
  "stripDate": "2024-11-21",
- "seconds": 16.14,
+ "seconds": 12.76,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -13,7 +13,17 @@
   "widthSlackM": 0.4,
   "flatRoofRiseM": 1.5
  },
- "runs": [],
+ "runs": [
+  {
+   "face": "haarlemmer-46-96-r1",
+   "pands": [
+    "0363100012171144",
+    "0363100012171145"
+   ],
+   "passed": true,
+   "triangles": 3798
+  }
+ ],
  "pands": [
   {
    "pandId": "0363100012168428",
@@ -80,7 +90,7 @@
      ]
     },
     "voidShare": 0,
-    "foliageShare": 0.27
+    "foliageShare": 0.03
    },
    "status": "held",
    "stage": "review",
@@ -137,7 +147,7 @@
      ]
     },
     "voidShare": 0,
-    "foliageShare": 0.39
+    "foliageShare": 0.04
    },
    "status": "held",
    "stage": "review",
@@ -195,7 +205,7 @@
      ]
     },
     "voidShare": 0.03,
-    "foliageShare": 0.23
+    "foliageShare": 0.01
    },
    "status": "held",
    "stage": "review",
@@ -242,7 +252,7 @@
      ]
     },
     "voidShare": 0,
-    "foliageShare": 0.04
+    "foliageShare": 0
    },
    "status": "held",
    "stage": "review",
@@ -294,7 +304,7 @@
      ]
     },
     "voidShare": 0.01,
-    "foliageShare": 0.71
+    "foliageShare": 0.07
    },
    "status": "held",
    "stage": "review",
@@ -382,7 +392,7 @@
      ]
     },
     "voidShare": 0.04,
-    "foliageShare": 0.38
+    "foliageShare": 0.03
    },
    "status": "held",
    "stage": "review",
@@ -423,7 +433,7 @@
      "slabs": []
     },
     "voidShare": 0.01,
-    "foliageShare": 0.5
+    "foliageShare": 0.03
    },
    "status": "held",
    "stage": "review",
@@ -475,7 +485,7 @@
      ]
     },
     "voidShare": 0.01,
-    "foliageShare": 0.53
+    "foliageShare": 0.03
    },
    "status": "held",
    "stage": "review",
@@ -521,7 +531,7 @@
      "slabs": []
     },
     "voidShare": 0.01,
-    "foliageShare": 0.38
+    "foliageShare": 0.03
    },
    "status": "held",
    "stage": "review",
@@ -568,7 +578,7 @@
      ]
     },
     "voidShare": 0.01,
-    "foliageShare": 0.41
+    "foliageShare": 0.03
    },
    "status": "held",
    "stage": "review",
@@ -635,7 +645,7 @@
      ]
     },
     "voidShare": 0.08,
-    "foliageShare": 0.48
+    "foliageShare": 0.02
    },
    "status": "held",
    "stage": "review",
@@ -697,7 +707,7 @@
      "slabs": []
     },
     "voidShare": 0.02,
-    "foliageShare": 0.2
+    "foliageShare": 0.06
    },
    "status": "held",
    "stage": "review",
@@ -765,7 +775,7 @@
      ]
     },
     "voidShare": 0.02,
-    "foliageShare": 0.39
+    "foliageShare": 0.04
    },
    "status": "held",
    "stage": "review",
@@ -827,7 +837,7 @@
      "slabs": []
     },
     "voidShare": 0,
-    "foliageShare": 0.42
+    "foliageShare": 0.08
    },
    "status": "held",
    "stage": "review",
@@ -879,40 +889,65 @@
      ]
     },
     "voidShare": 0.06,
-    "foliageShare": 0.5
+    "foliageShare": 0.02
    },
-   "status": "held",
-   "stage": "likeness",
-   "reason": "no photo evidence (usable photo 18 % < 50 %) and no passing same-type neighbour",
+   "status": "placed",
+   "type": "haarlemmerstraat-sash-gable-four",
+   "score": 1,
+   "placement": {
+    "type": "haarlemmerstraat-sash-gable-four",
+    "ground": {
+     "shopfront": {
+      "colour": "#585b4d",
+      "fascia": true,
+      "name": "The Lebanese Sajeria",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "evidence": "auto-place: osm-only (bijeenkomstfunctie, amenity=restaurant); fascia colour measured on the strip 2024-11-21 span 3442-3634"
+     }
+    },
+    "mirror": true,
+    "measuredPalette": {
+     "brick": "#675b4a",
+     "evidence": "strip 2024-11-21 span 3442-3634: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "door right: mirrored",
+    "crown neck: reviewer pin (Haarlemmerstraat 54: neck gable from 13.0 m (scrolls 13.0-13.3), top 15.6 m, one attic light; three sash rows 4.6-6.4 / 7.6-9.4 / 10.6-12.2 m over a 4.2 m shop)",
+    "bays 3: reviewer pin (Haarlemmerstraat 54: 3 window axes on the upper storeys)"
+   ],
    "likeness": {
     "pandId": "0363100012171144",
-    "ncc": null,
-    "nccRaw": 0.457,
+    "ncc": 0.24,
+    "nccRaw": 0.24,
     "shiftM": [
-     -0.15,
+     -0.25,
      0.35
     ],
-    "usable": 0.18,
-    "abstain": "usable photo 18 % < 50 %",
+    "usable": 0.81,
+    "abstain": null,
     "verdict": "NO EVIDENCE",
     "reasons": [
-     "usable upper cells 37 % < 40 %",
-     "foliage 51 % > 25 %"
+     "usable upper cells 35 % < 40 %",
+     "foliage 53 % > 25 %"
     ],
     "wall": {
-     "photo": "#6a5e4d",
-     "model": "#8b5d4c",
-     "dL": 0.063
+     "photo": "#685d4d",
+     "model": "#80715c",
+     "dL": 0.076
     },
     "glazing": {
-     "photo": 0.48,
-     "model": 0.41
+     "photo": 0.46,
+     "model": 0.4
     },
     "columns": {
-     "photo": 3,
+     "photo": 6,
      "model": 3
     },
-    "iou": 0.496
+    "iou": 0.428,
+    "footOffsetM": 0.8
    },
    "challengers": {}
   },
@@ -970,39 +1005,52 @@
      ]
     },
     "voidShare": 0.01,
-    "foliageShare": 0.35
+    "foliageShare": 0.03
    },
-   "status": "held",
-   "stage": "likeness",
-   "reason": "no photo evidence (usable photo 39 % < 50 %) and no passing same-type neighbour",
+   "status": "placed",
+   "type": "haarlemmerstraat-sash-gable-four",
+   "score": 1,
+   "placement": {
+    "type": "haarlemmerstraat-sash-gable-four",
+    "measuredPalette": {
+     "brick": "#5e4e3f",
+     "evidence": "strip 2024-11-21 span 3634-3818: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "door unread: as drawn, the opposite of 171144",
+    "crown neck: reviewer pin (Haarlemmerstraat 52: tall neck gable from 14.5 m to 18.8 m with an attic light; three sash rows 5.6-7.6 / 8.5-10.55 / 11.5-13.1 m over a 4.8 m shop portal)",
+    "bays 3: reviewer pin (Haarlemmerstraat 52: 3 window axes on the upper storeys)"
+   ],
    "likeness": {
     "pandId": "0363100012171145",
-    "ncc": null,
-    "nccRaw": 0.398,
+    "ncc": 0.304,
+    "nccRaw": 0.304,
     "shiftM": [
      -0.05,
-     0.3
+     0.4
     ],
-    "usable": 0.39,
-    "abstain": "usable photo 39 % < 50 %",
+    "usable": 0.89,
+    "abstain": null,
     "verdict": "NO EVIDENCE",
     "reasons": [
-     "foliage 47 % > 25 %"
+     "foliage 46 % > 25 %"
     ],
     "wall": {
-     "photo": "#58493a",
-     "model": "#8b5d4c",
-     "dL": 0.135
+     "photo": "#584a3b",
+     "model": "#796551",
+     "dL": 0.108
     },
     "glazing": {
-     "photo": 0.22,
+     "photo": 0.24,
      "model": 0.32
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.466
+    "iou": 0.61,
+    "footOffsetM": 0.8
    },
    "challengers": {}
   },
@@ -1039,21 +1087,21 @@
      "slabs": []
     },
     "voidShare": 0,
-    "foliageShare": 0.29
+    "foliageShare": 0.05
    },
    "status": "held",
    "stage": "likeness",
-   "reason": "no photo evidence (usable photo 43 % < 50 %) and no passing same-type neighbour",
+   "reason": "edge NCC 0.094 < 0.15 (photo vs model body; likeness.ts NO EVIDENCE: foliage 30 % > 25 %)",
    "likeness": {
     "pandId": "0363100012171148",
-    "ncc": null,
-    "nccRaw": 0.273,
+    "ncc": 0.094,
+    "nccRaw": 0.094,
     "shiftM": [
-     -0.1,
-     -0.05
+     -0.05,
+     0.05
     ],
-    "usable": 0.43,
-    "abstain": "usable photo 43 % < 50 %",
+    "usable": 0.89,
+    "abstain": null,
     "verdict": "NO EVIDENCE",
     "reasons": [
      "foliage 30 % > 25 %"
@@ -1119,29 +1167,29 @@
      "slabs": []
     },
     "voidShare": 0,
-    "foliageShare": 0.38
+    "foliageShare": 0.05
    },
    "status": "held",
-   "stage": "likeness",
-   "reason": "no photo evidence (usable photo 38 % < 50 %) and no passing same-type neighbour",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
    "likeness": {
     "pandId": "0363100012171141",
-    "ncc": null,
-    "nccRaw": 0.219,
+    "ncc": 0.152,
+    "nccRaw": 0.152,
     "shiftM": [
-     0.05,
+     0,
      -0.35
     ],
-    "usable": 0.38,
-    "abstain": "usable photo 38 % < 50 %",
+    "usable": 0.92,
+    "abstain": null,
     "verdict": "NO EVIDENCE",
     "reasons": [
      "foliage 32 % > 25 %"
     ],
     "wall": {
      "photo": "#5c4c39",
-     "model": "#8b5d4c",
-     "dL": 0.129
+     "model": "#84694e",
+     "dL": 0.12
     },
     "glazing": {
      "photo": 0.09,
@@ -1199,29 +1247,29 @@
      ]
     },
     "voidShare": 0,
-    "foliageShare": 0.41
+    "foliageShare": 0.06
    },
    "status": "held",
    "stage": "likeness",
-   "reason": "no photo evidence (usable photo 35 % < 50 %) and no passing same-type neighbour",
+   "reason": "edge NCC 0.136 < 0.15 (photo vs model body; likeness.ts NO EVIDENCE: foliage 34 % > 25 %)",
    "likeness": {
     "pandId": "0363100012171140",
-    "ncc": null,
-    "nccRaw": 0.31,
+    "ncc": 0.136,
+    "nccRaw": 0.136,
     "shiftM": [
-     0.15,
+     0.1,
      0.4
     ],
-    "usable": 0.35,
-    "abstain": "usable photo 35 % < 50 %",
+    "usable": 0.85,
+    "abstain": null,
     "verdict": "NO EVIDENCE",
     "reasons": [
      "foliage 34 % > 25 %"
     ],
     "wall": {
      "photo": "#71634d",
-     "model": "#8b5d4c",
-     "dL": 0.049
+     "model": "#8d7f63",
+     "dL": 0.098
     },
     "glazing": {
      "photo": 0.33,

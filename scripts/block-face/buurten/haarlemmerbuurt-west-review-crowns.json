@@ -17,14 +17,14 @@
   {
    "pandId": "0363100012176174",
    "type": "haarlemmer-shop-gable",
-   "crown": "bell",
-   "reason": "Haarlemmerdijk 4: bell/neck top 9.8-12.0 m with scrolls, one attic light"
+   "crown": "bell-low",
+   "reason": "Haarlemmerdijk 4: bell gable, shoulders 10.0 m, cap 12.0 m (strip-sheet review (docs/reports/haarlemmer-strip-verdict-20261110.md) and the 1 m grid at 1.8x brightness)"
   },
   {
    "pandId": "0363100012167817",
-   "type": "haarlemmer-shop-cornice",
-   "crown": "none",
-   "reason": "Haarlemmerdijk 18: cornice 11.6 m, small dormer to 12.7 m; the small dormer is left off: the kit dormer on a front-hipped roof hovers 0.10 m (18) or pokes its frame through the roof plane (35A) on this run, a compile audit failure"
+   "type": "haarlemmer-shop-cornice-frieze",
+   "crown": "frieze-crowned",
+   "reason": "Haarlemmerdijk 18: brick to 10.0 m, a cream attic frieze and cornice 10.0-11.4 m, a small crowned piece over the middle to 12.3 m (strip-sheet review (docs/reports/haarlemmer-strip-verdict-20261110.md) and the 1 m grid at 1.8x brightness)"
   },
   {
    "pandId": "0363100012167816",
@@ -40,9 +40,9 @@
   },
   {
    "pandId": "0363100012176172",
-   "type": "haarlemmer-shop-cornice",
-   "crown": "dormer",
-   "reason": "Haarlemmerdijk 6: cornice 10.1 m, dormer 11.5-12.5 m"
+   "type": "haarlemmer-shop-cornice-frieze",
+   "crown": "frieze-crowned",
+   "reason": "Haarlemmerdijk 6: a deep cream cornice band 10.0-11.0 m with a small crowned piece over the middle to 12.2 m, no roof face over it (strip-sheet review (docs/reports/haarlemmer-strip-verdict-20261110.md) and the 1 m grid at 1.8x brightness)"
   },
   {
    "pandId": "0363100012177675",
@@ -73,6 +73,18 @@
    "type": "haarlemmer-shop-cornice-four",
    "crown": "dormer",
    "reason": "Haarlemmerdijk 142: brick cornice house, three axes, rows 4.1-6.0 / 6.9-8.75 / 9.6-11.5 m over a 4.0 m shop, white cornice to 12.3 m and a tall lantern dormer to 15 m"
+  },
+  {
+   "pandId": "0363100012173479",
+   "type": "haarlemmer-shop-cornice-wide",
+   "crown": "crowned",
+   "reason": "Haarlemmerdijk 131: dark brick, two wide three-light windows under top lights per storey, rows 4.8-6.3 and 6.6-8.4 m over the shop, white cornice 9.3-9.9 m with a pediment dormer to 11.5 m"
+  },
+  {
+   "pandId": "0363100012173480",
+   "type": "haarlemmer-shop-gable-wide",
+   "crown": "neck",
+   "reason": "Haarlemmerdijk 133A: red-brown brick neck gable 9.2-11.6 m with one attic light, two wide three-light windows per storey on rows 5.0-6.6 and 6.9-8.2 m over the shop"
   },
   {
    "pandId": "0363100012177504",

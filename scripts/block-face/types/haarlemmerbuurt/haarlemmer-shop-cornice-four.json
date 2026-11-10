@@ -52,8 +52,12 @@
     ]
    }
   },
-  "note": "Haarlemmerdijk 21 and 33 (2024-12-11 strip, 1 m grid): shop fascia 3.7-4.4 m; rows 4.0-6.0 / 6.75-8.6 / 9.4-10.75 m (21) and 4.6-6.6 / 7.3-8.9 / 9.6-11.0 m (33); cornice tops 12.4 and 13.1 m. A separate type rather than a storey count from the eaves: the tall shop ground makes a three-storey front at 11.6 m and a four-storey one at 12.4 m indistinguishable by pitch; reviewer type pins pick it",
-  "mirrorForDoor": "left"
+  "note": "Haarlemmerdijk 21 and 33 (2024-12-11 strip, 1 m grid): shop fascia 3.7-4.4 m; rows 4.0-6.0 / 6.75-8.6 / 9.4-10.75 m (21) and 4.6-6.6 / 7.3-8.9 / 9.6-11.0 m (33); cornice tops 12.4 and 13.1 m. A separate type rather than a storey count from the eaves: the tall shop ground makes a three-storey front at 11.6 m and a four-storey one at 12.4 m indistinguishable by pitch; reviewer type pins pick it. columnsPerBay [1, 2]: the T-window's mullion under the transom reads as a second column (Haarlemmerdijk 23E: 6 columns over 3 axes)",
+  "mirrorForDoor": "left",
+  "columnsPerBay": [
+   1,
+   2
+  ]
  },
  "body": {
   "storeys": 4,

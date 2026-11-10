@@ -3,7 +3,7 @@
  "street": "Haarlemmerdijk",
  "library": "haarlemmerbuurt",
  "stripDate": "2022-12-15",
- "seconds": 9.57,
+ "seconds": 19.11,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -20,7 +20,9 @@
     "0363100012167818",
     "0363100012167817",
     "0363100012167816"
-   ]
+   ],
+   "passed": true,
+   "triangles": 2736
   },
   {
    "face": "haarlemmerdijk-2-58-r2",
@@ -28,7 +30,8 @@
     "0363100012176172",
     "0363100012176174"
    ],
-   "installed": true
+   "passed": true,
+   "triangles": 1993
   }
  ],
  "pands": [
@@ -952,13 +955,50 @@
     "measuredPalette": {
      "brick": "#342d2c",
      "evidence": "strip 2022-12-15 span 3437-3588: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "overrides": {
+     "bays": [
+      2,
+      2,
+      3
+     ]
     }
    },
    "notes": [
     "door left",
-    "crown neck: reviewer pin (Haarlemmerdijk 20: neck 10.2-12.9 m, 1.55 m wide, scrolls, one attic light)"
+    "crown neck: reviewer pin (Haarlemmerdijk 20: neck 10.2-12.9 m, 1.55 m wide, scrolls, one attic light)",
+    "bays 2/2/3: reviewer pin (Haarlemmerdijk 20: two windows on the first upper row, a group of three under the gable (strip-sheet review (docs/reports/haarlemmer-strip-verdict-20261110.md) and the 1 m grid at 1.8x brightness))"
    ],
-   "likeness": null,
+   "likeness": {
+    "pandId": "0363100012167818",
+    "ncc": 0.273,
+    "nccRaw": 0.273,
+    "shiftM": [
+     0.3,
+     0.05
+    ],
+    "usable": 1,
+    "abstain": null,
+    "verdict": "WARN",
+    "reasons": [
+     "mask IoU 0.364 < 0.45"
+    ],
+    "wall": {
+     "photo": "#4b4344",
+     "model": "#534846",
+     "dL": 0.022
+    },
+    "glazing": {
+     "photo": 0.37,
+     "model": 0.43
+    },
+    "columns": {
+     "photo": null,
+     "model": null
+    },
+    "iou": 0.364,
+    "footOffsetM": 0.8
+   },
    "challengers": {}
   },
   {
@@ -966,12 +1006,12 @@
    "address": "Haarlemmerdijk 18",
    "builtYear": 1905,
    "widthM": 3.88,
-   "eavesM": 11.6,
+   "eavesM": 11.4,
    "storeys3dbag": 3,
    "bagBay": null,
    "strip": {
-    "wall": "#424142",
-    "wallRaw": "#46413f",
+    "wall": "#424243",
+    "wallRaw": "#45403e",
     "skyline": {
      "eavesM": 11.93,
      "eavesRow": 316,
@@ -994,18 +1034,18 @@
      "bayWidthM": 0,
      "bayCentre": null,
      "balconies": false,
-     "why": "no dark open axis, 1 wide slab(s)",
+     "why": "no dark open axis, 0 wide slab(s)",
      "openAxes": [],
      "slabs": [
       {
-       "atM": 7.7,
-       "widthM": 1.73,
-       "centre": 0.45
+       "atM": 7.72,
+       "widthM": 0.95,
+       "centre": 0.87
       },
       {
-       "atM": 4.85,
-       "widthM": 1.13,
-       "centre": 0.16
+       "atM": 4.8,
+       "widthM": 0.93,
+       "centre": 0.14
       }
      ]
     },
@@ -1013,24 +1053,24 @@
     "foliageShare": 0
    },
    "status": "placed",
-   "type": "haarlemmer-shop-cornice",
+   "type": "haarlemmer-shop-cornice-frieze",
    "score": 1,
    "placement": {
-    "type": "haarlemmer-shop-cornice",
+    "type": "haarlemmer-shop-cornice-frieze",
     "ground": {
      "shopfront": {
-      "colour": "#4d4c4a",
+      "colour": "#e3dccb",
       "fascia": true,
       "name": "Hebbes in Speelgoed",
       "entrance": "centre",
       "glazing": "split",
       "stallriser": "low",
-      "evidence": "auto-place: osm-only (winkelfunctie, shop=toys); fascia colour measured on the strip 2022-12-15 span 3588-3743"
+      "evidence": "auto-place: osm-only (winkelfunctie, shop=toys); fascia colour measured on the strip 2022-12-15 span 3588-3743; reviewer pin: Haarlemmerdijk 18 (toy shop): cream and white shop joinery (strip-sheet review (docs/reports/haarlemmer-strip-verdict-20261110.md) and the 1 m grid at 1.8x brightness)"
      }
     },
     "mirror": true,
     "measuredPalette": {
-     "brick": "#424142",
+     "brick": "#424243",
      "evidence": "strip 2022-12-15 span 3588-3743: trim-normalised wall (buildingRecipe/measureFacade.ts)"
     },
     "paletteOverrides": {
@@ -1039,10 +1079,41 @@
    },
    "notes": [
     "door right: mirrored",
-    "crown none: reviewer pin (Haarlemmerdijk 18: cornice 11.6 m, small dormer to 12.7 m; the small dormer is left off: the kit dormer on a front-hipped roof hovers 0.10 m (18) or pokes its frame through the roof plane (35A) on this run, a compile audit failure)",
-    "palette pinned: Haarlemmerdijk 18: dark grey-brown brick, raw strip median #3c3734 (2022-12-15, 5-9.5 m band, mid-luma warm pixels) lifted x1.25; the measured-brick lift turned it plum (#59495a)"
+    "crown frieze-crowned: reviewer pin (Haarlemmerdijk 18: brick to 10.0 m, a cream attic frieze and cornice 10.0-11.4 m, a small crowned piece over the middle to 12.3 m (strip-sheet review (docs/reports/haarlemmer-strip-verdict-20261110.md) and the 1 m grid at 1.8x brightness))",
+    "palette pinned: Haarlemmerdijk 18: dark grey-brown brick, raw strip median #3c3734 (2022-12-15, 5-9.5 m band, mid-luma warm pixels) lifted x1.25; the measured-brick lift turned it plum (#59495a)",
+    "shopfront #e3dccb: reviewer pin"
    ],
-   "likeness": null,
+   "likeness": {
+    "pandId": "0363100012167817",
+    "ncc": 0.366,
+    "nccRaw": 0.366,
+    "shiftM": [
+     0.4,
+     0.15
+    ],
+    "usable": 0.98,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "wall dL +0.19",
+     "glazing storey band off by 0.54 mean 0.54 vs photo 0.70"
+    ],
+    "wall": {
+     "photo": "#2e2a29",
+     "model": "#67574f",
+     "dL": 0.186
+    },
+    "glazing": {
+     "photo": 0.7,
+     "model": 0.54
+    },
+    "columns": {
+     "photo": null,
+     "model": 2
+    },
+    "iou": 0.546,
+    "footOffsetM": 0.8
+   },
    "challengers": {}
   },
   {
@@ -1111,13 +1182,52 @@
     "measuredPalette": {
      "brick": "#302423",
      "evidence": "strip 2022-12-15 span 3743-3899: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "overrides": {
+     "headLines": [
+      0.8,
+      0.76,
+      0.82
+     ]
     }
    },
    "notes": [
     "door unread: as drawn, the opposite of 167817",
-    "crown none: reviewer pin (Haarlemmerdijk 16: flat cornice 11.6 m)"
+    "crown none: reviewer pin (Haarlemmerdijk 16: flat cornice 11.6 m)",
+    "bays 2, heads 0.8/0.76/0.82: reviewer pin (Haarlemmerdijk 16: two axes; the first upper row stands 0.5 m lower than the type's (strip-sheet review (docs/reports/haarlemmer-strip-verdict-20261110.md) and the 1 m grid at 1.8x brightness))"
    ],
-   "likeness": null,
+   "likeness": {
+    "pandId": "0363100012167816",
+    "ncc": 0.534,
+    "nccRaw": 0.534,
+    "shiftM": [
+     0.35,
+     0.15
+    ],
+    "usable": 0.99,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "wall dL +0.30",
+     "glazing storey band off by 0.71 mean 0.45 vs photo 1.00",
+     "wall family unresolved (#000000 is dark and neutral, brick courses not resolved): lightness and hue judged only"
+    ],
+    "wall": {
+     "photo": "#000000",
+     "model": "#584241",
+     "dL": 0.3
+    },
+    "glazing": {
+     "photo": 1,
+     "model": 0.45
+    },
+    "columns": {
+     "photo": null,
+     "model": 2
+    },
+    "iou": 0.472,
+    "footOffsetM": 0.8
+   },
    "challengers": {}
   },
   {
@@ -1332,12 +1442,12 @@
    "address": "Haarlemmerdijk 6",
    "builtYear": 1850,
    "widthM": 4.23,
-   "eavesM": 10.1,
+   "eavesM": 11,
    "storeys3dbag": 4,
    "bagBay": null,
    "strip": {
-    "wall": null,
-    "wallRaw": "#484641",
+    "wall": "#473d38",
+    "wallRaw": "#48453f",
     "skyline": {
      "eavesM": 11.43,
      "eavesRow": 336,
@@ -1351,22 +1461,22 @@
     },
     "stucco": false,
     "bands": 0,
-    "columns": 2,
+    "columns": null,
     "frontClass": "curtain",
     "doorSide": "right",
     "accentSide": "left",
-    "accentShare": 0.002,
+    "accentShare": 0.001,
     "structure": {
-     "bayWidthM": 0,
-     "bayCentre": null,
+     "bayWidthM": 0.55,
+     "bayCentre": 0.15,
      "balconies": false,
      "why": "no dark open axis, 0 wide slab(s)",
      "openAxes": [],
      "slabs": [
       {
-       "atM": 5.82,
-       "widthM": 0.9,
-       "centre": 0.43
+       "atM": 6.72,
+       "widthM": 1.1,
+       "centre": 0.48
       }
      ]
     },
@@ -1374,65 +1484,68 @@
     "foliageShare": 0.02
    },
    "status": "placed",
-   "type": "haarlemmer-shop-cornice",
+   "type": "haarlemmer-shop-cornice-frieze",
    "score": 1,
    "placement": {
-    "type": "haarlemmer-shop-cornice",
+    "type": "haarlemmer-shop-cornice-frieze",
     "ground": {
      "shopfront": {
-      "colour": "#373431",
+      "colour": "#e3dccb",
       "fascia": true,
       "name": "Pho Viet",
-      "entrance": "centre",
+      "entrance": "right",
       "glazing": "split",
       "stallriser": "low",
-      "evidence": "auto-place: osm-only (bijeenkomstfunctie, amenity=restaurant); fascia colour measured on the strip 2022-12-15 span 4574-4743"
+      "evidence": "auto-place: osm-only (bijeenkomstfunctie, amenity=restaurant); fascia colour measured on the strip 2022-12-15 span 4574-4743; reviewer pin: Haarlemmerdijk 6 (restaurant): cream shopfront with white pilasters, the door on the right (strip-sheet review (docs/reports/haarlemmer-strip-verdict-20261110.md) and the 1 m grid at 1.8x brightness)"
      }
     },
     "mirror": true,
-    "crown": "dormer",
+    "measuredPalette": {
+     "brick": "#473d38",
+     "evidence": "strip 2022-12-15 span 4574-4743: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
     "paletteOverrides": {
      "brick": "#4e4a44"
     }
    },
    "notes": [
     "door right: mirrored",
-    "crown dormer: reviewer pin (Haarlemmerdijk 6: cornice 10.1 m, dormer 11.5-12.5 m)",
-    "palette pinned: Haarlemmerdijk 6: dark brick, raw median #413e39 lifted x1.2"
+    "crown frieze-crowned: reviewer pin (Haarlemmerdijk 6: a deep cream cornice band 10.0-11.0 m with a small crowned piece over the middle to 12.2 m, no roof face over it (strip-sheet review (docs/reports/haarlemmer-strip-verdict-20261110.md) and the 1 m grid at 1.8x brightness))",
+    "palette pinned: Haarlemmerdijk 6: dark brick, raw median #413e39 lifted x1.2",
+    "shopfront #e3dccb door right: reviewer pin"
    ],
    "likeness": {
     "pandId": "0363100012176172",
-    "ncc": 0.303,
-    "nccRaw": 0.303,
+    "ncc": 0.21,
+    "nccRaw": 0.21,
     "shiftM": [
      -0.4,
-     0.25
+     0.05
     ],
-    "usable": 0.93,
+    "usable": 0.94,
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "wall dL +0.19",
-     "glazing storey band off by 0.43 mean 0.45 vs photo 0.62",
-     "wall family unresolved (#362f2a is dark and neutral, brick courses not resolved): lightness and hue judged only"
+     "wall dL +0.23",
+     "glazing storey band off by 0.69 mean 0.53 vs photo 1.00",
+     "wall family unresolved (#292226 is dark and neutral, brick courses not resolved): lightness and hue judged only"
     ],
     "wall": {
-     "photo": "#362f2a",
+     "photo": "#292226",
      "model": "#67625a",
-     "dL": 0.19
+     "dL": 0.231
     },
     "glazing": {
-     "photo": 0.62,
-     "model": 0.45
+     "photo": 1,
+     "model": 0.53
     },
     "columns": {
      "photo": null,
      "model": 2
     },
-    "iou": 0.443
+    "iou": 0.556
    },
-   "challengers": {},
-   "installed": "haarlemmerdijk-2-58-r2"
+   "challengers": {}
   },
   {
    "pandId": "0363100012176174",
@@ -1493,33 +1606,34 @@
     "type": "haarlemmer-shop-gable",
     "ground": {
      "shopfront": {
-      "colour": "#3d3a38",
+      "colour": "#e3dccb",
       "fascia": true,
       "name": "Vishandel 't Centrum",
       "entrance": "centre",
       "glazing": "split",
       "stallriser": "low",
-      "evidence": "auto-place: osm-only (winkelfunctie, shop=seafood); fascia colour measured on the strip 2022-12-15 span 4743-4916"
+      "evidence": "auto-place: osm-only (winkelfunctie, shop=seafood); fascia colour measured on the strip 2022-12-15 span 4743-4916; reviewer pin: Haarlemmerdijk 4 (fish shop): cream shopfront with a central door (strip-sheet review (docs/reports/haarlemmer-strip-verdict-20261110.md) and the 1 m grid at 1.8x brightness)"
      }
     },
     "measuredPalette": {
      "brick": "#4a3e34",
      "evidence": "strip 2022-12-15 span 4743-4916: trim-normalised wall (buildingRecipe/measureFacade.ts)"
     },
-    "crown": "bell",
+    "crown": "bell-low",
     "paletteOverrides": {
      "brick": "#5b5550"
     }
    },
    "notes": [
     "door unread: as drawn, the opposite of 176172",
-    "crown bell: reviewer pin (Haarlemmerdijk 4: bell/neck top 9.8-12.0 m with scrolls, one attic light)",
-    "palette pinned: Haarlemmerdijk 4: dark brick, raw median #4c4743 lifted x1.2"
+    "crown bell-low: reviewer pin (Haarlemmerdijk 4: bell gable, shoulders 10.0 m, cap 12.0 m (strip-sheet review (docs/reports/haarlemmer-strip-verdict-20261110.md) and the 1 m grid at 1.8x brightness))",
+    "palette pinned: Haarlemmerdijk 4: dark brick, raw median #4c4743 lifted x1.2",
+    "shopfront #e3dccb door centre: reviewer pin"
    ],
    "likeness": {
     "pandId": "0363100012176174",
-    "ncc": 0.318,
-    "nccRaw": 0.318,
+    "ncc": 0.319,
+    "nccRaw": 0.319,
     "shiftM": [
      0.4,
      0.35
@@ -1529,7 +1643,7 @@
     "verdict": "FAIL",
     "reasons": [
      "wall dL +0.23",
-     "glazing storey band off by 0.47 mean 0.43 vs photo 0.68",
+     "glazing storey band off by 0.47 mean 0.42 vs photo 0.68",
      "wall family unresolved (#35312c is dark and neutral, brick courses not resolved): lightness and hue judged only"
     ],
     "wall": {
@@ -1539,16 +1653,15 @@
     },
     "glazing": {
      "photo": 0.68,
-     "model": 0.43
+     "model": 0.42
     },
     "columns": {
      "photo": null,
      "model": 2
     },
-    "iou": 0.426
+    "iou": 0.412
    },
-   "challengers": {},
-   "installed": "haarlemmerdijk-2-58-r2"
+   "challengers": {}
   },
   {
    "pandId": "0363100012176175",

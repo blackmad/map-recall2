@@ -1,30 +1,43 @@
 {
  "buurt": "haarlemmerbuurt-west",
  "library": "haarlemmerbuurt",
- "generatedAt": "2026-11-10T09:07:24.726Z",
- "seconds": 8.84,
+ "generatedAt": "2026-11-10T09:45:38.336Z",
+ "seconds": 5.32,
  "totals": {
   "faces": 5,
   "pands": 88,
-  "placed": 5
+  "placed": 7
  },
  "faces": [
   {
    "face": "haarlemmerdijk-117-143",
    "street": "Haarlemmerdijk",
    "pands": 14,
-   "placed": 0,
-   "held": 14,
-   "runs": [],
-   "seconds": 7.44,
-   "byType": {},
+   "placed": 2,
+   "held": 12,
+   "runs": [
+    {
+     "face": "haarlemmerdijk-117-143-r1",
+     "pands": [
+      "0363100012173479",
+      "0363100012173480"
+     ],
+     "passed": true,
+     "triangles": 2263
+    }
+   ],
+   "seconds": 11.51,
+   "byType": {
+    "haarlemmer-shop-cornice-wide": 1,
+    "haarlemmer-shop-gable-wide": 1
+   },
    "installed": 0,
    "holds": {
     "evidence": 0,
     "match": 0,
     "likeness": 0,
     "run": 0,
-    "review": 14
+    "review": 12
    }
   },
   {
@@ -52,14 +65,14 @@
    "placed": 0,
    "held": 14,
    "runs": [],
-   "seconds": 8.83,
+   "seconds": 5.31,
    "byType": {},
    "installed": 0,
    "holds": {
     "evidence": 0,
-    "match": 1,
-    "likeness": 0,
-    "run": 1,
+    "match": 0,
+    "likeness": 2,
+    "run": 0,
     "review": 12
    }
   },
@@ -76,7 +89,9 @@
       "0363100012167818",
       "0363100012167817",
       "0363100012167816"
-     ]
+     ],
+     "passed": true,
+     "triangles": 2736
     },
     {
      "face": "haarlemmerdijk-2-58-r2",
@@ -84,15 +99,17 @@
       "0363100012176172",
       "0363100012176174"
      ],
-     "installed": true
+     "passed": true,
+     "triangles": 1993
     }
    ],
-   "seconds": 9.57,
+   "seconds": 19.11,
    "byType": {
     "haarlemmer-shop-gable": 2,
-    "haarlemmer-shop-cornice": 3
+    "haarlemmer-shop-cornice-frieze": 2,
+    "haarlemmer-shop-cornice": 1
    },
-   "installed": 2,
+   "installed": 0,
    "holds": {
     "evidence": 0,
     "match": 3,

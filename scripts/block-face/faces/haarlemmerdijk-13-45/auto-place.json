@@ -3,7 +3,7 @@
  "street": "Haarlemmerdijk",
  "library": "haarlemmerbuurt",
  "stripDate": "2022-12-15",
- "seconds": 8.83,
+ "seconds": 5.31,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -118,9 +118,41 @@
     "foliageShare": 0
    },
    "status": "held",
-   "stage": "run",
-   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
-   "likeness": null,
+   "stage": "likeness",
+   "reason": "edge NCC 0.099 < 0.15 (photo vs model body; likeness.ts FAIL: wall dL +0.15; glazing storey band off by 0.17; window shape tall vs photo square; wall family unresolved (#362f2b is dark and neutral, brick courses not resolved): lightness and hue judged only)",
+   "likeness": {
+    "pandId": "0363100012177504",
+    "ncc": 0.099,
+    "nccRaw": 0.099,
+    "shiftM": [
+     -0.4,
+     -0.4
+    ],
+    "usable": 0.98,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "wall dL +0.15",
+     "glazing storey band off by 0.17",
+     "window shape tall vs photo square",
+     "wall family unresolved (#362f2b is dark and neutral, brick courses not resolved): lightness and hue judged only"
+    ],
+    "wall": {
+     "photo": "#362f2b",
+     "model": "#5f5551",
+     "dL": 0.155
+    },
+    "glazing": {
+     "photo": 0.52,
+     "model": 0.44
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.501,
+    "footOffsetM": 1.88
+   },
    "challengers": {}
   },
   {
@@ -175,34 +207,40 @@
     "foliageShare": 0.01
    },
    "status": "held",
-   "stage": "match",
-   "reason": "best haarlemmer-shop-gable scores 0.55 < 0.7 (3DBAG eaves 9.9 m = 3 storeys of 3.3 m vs the type's 3.6 m; strip columns 6 vs 3 bays)",
-   "best": {
-    "type": "haarlemmer-shop-gable",
-    "score": 0.55,
-    "veto": [],
-    "criteria": [
-     {
-      "key": "eaves",
-      "weight": 2,
-      "score": 0.5,
-      "note": "3DBAG eaves 9.9 m = 3 storeys of 3.3 m vs the type's 3.6 m"
-     },
-     {
-      "key": "stucco",
-      "weight": 2,
-      "score": 1,
-      "note": "strip accent share 0 (brick)"
-     },
-     {
-      "key": "columns",
-      "weight": 1.5,
-      "score": 0,
-      "note": "strip columns 6 vs 3 bays"
-     }
-    ]
+   "stage": "likeness",
+   "reason": "edge NCC 0.116 < 0.15 (photo vs model body; likeness.ts FAIL: wall dL +0.25; glazing storey band off by 0.70 mean 0.30 vs photo 1.00; wall family unresolved (#302728 is dark and neutral, brick courses not resolved): lightness and hue judged only)",
+   "likeness": {
+    "pandId": "0363100012177501",
+    "ncc": 0.116,
+    "nccRaw": 0.116,
+    "shiftM": [
+     0.3,
+     -0.4
+    ],
+    "usable": 0.97,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "wall dL +0.25",
+     "glazing storey band off by 0.70 mean 0.30 vs photo 1.00",
+     "wall family unresolved (#302728 is dark and neutral, brick courses not resolved): lightness and hue judged only"
+    ],
+    "wall": {
+     "photo": "#302728",
+     "model": "#8b5d4c",
+     "dL": 0.251
+    },
+    "glazing": {
+     "photo": 1,
+     "model": 0.3
+    },
+    "columns": {
+     "photo": null,
+     "model": 3
+    },
+    "iou": 0.333,
+    "footOffsetM": 1.88
    },
-   "likeness": null,
    "challengers": {}
   },
   {
@@ -387,7 +425,7 @@
    },
    "status": "held",
    "stage": "review",
-   "reason": "review: Haarlemmerdijk 31: brick point gable, shoulders 10.0 m, apex 12.6 m, rows 5.1-6.9 and 7.9-9.4 m; compared and held: the run 31-33-35A fails compile (roof-under-crown 0.03 m over the cornice line on 33 and 35A under the front-hipped roof, and 0.9 m2 coplanar brick/roof tile behind the point gable of 31, geometry-regression); kit gap: front-hipped roof over a cornice on this skewed frontage",
+   "reason": "review: Haarlemmerdijk 31: brick point gable, shoulders 10.0 m, apex 12.6 m, rows 5.1-6.9 and 7.9-9.4 m; compared and held: its point gable compiles with 0.9 m2 of brick gable and roof tile coplanar at the facade (geometry-regression over the 0.5 m2 allowance), with the run or alone",
    "likeness": null,
    "challengers": {}
   },
@@ -439,7 +477,7 @@
    },
    "status": "held",
    "stage": "review",
-   "reason": "review: Haarlemmerdijk 33: painted dark brick, three axes, rows 4.6-6.6 / 7.3-8.9 / 9.6-11.0 m, tall white frieze and cornice 11.7-13.1 m; compared and held: the run 31-33-35A fails compile (roof-under-crown 0.03 m over the cornice line on 33 and 35A under the front-hipped roof, and 0.9 m2 coplanar brick/roof tile behind the point gable of 31, geometry-regression); kit gap: front-hipped roof over a cornice on this skewed frontage",
+   "reason": "review: Haarlemmerdijk 33: painted dark brick, three axes, rows 4.6-6.6 / 7.3-8.9 / 9.6-11.0 m, a tall white frieze and cornice 11.7-13.1 m with sky directly over it; compared and held: with the frieze type and a flat roof the run 33-35A compiles (no roof-under-crown overshoot), but the sheet is not the photo: 33 is drawn with two axes and two upper rows where the strip has three and three (the frieze type has no four-storey body), and 35A at NCC 0.11 with its strip span about 1 m off the BAG split",
    "likeness": null,
    "challengers": {}
   },
@@ -496,7 +534,7 @@
    },
    "status": "held",
    "stage": "review",
-   "reason": "review: Haarlemmerdijk 35A: red brick, two axes, rows 4.5-6.5 and 7.0-9.0 m, white cornice 10.0-11.25 m, a small dormer to 11.8 m; compared and held: the run 31-33-35A fails compile (roof-under-crown 0.03 m over the cornice line on 33 and 35A under the front-hipped roof, and 0.9 m2 coplanar brick/roof tile behind the point gable of 31, geometry-regression); kit gap: front-hipped roof over a cornice on this skewed frontage",
+   "reason": "review: Haarlemmerdijk 35A: red brick, two axes, rows 4.5-6.5 and 7.0-9.0 m, a deep white cornice 10.0-11.25 m with a small crowned piece to 11.8 m; compared and held: with the frieze type and a flat roof the run 33-35A compiles (no roof-under-crown overshoot), but the sheet is not the photo: 33 is drawn with two axes and two upper rows where the strip has three and three (the frieze type has no four-storey body), and 35A at NCC 0.11 with its strip span about 1 m off the BAG split",
    "likeness": null,
    "challengers": {}
   },

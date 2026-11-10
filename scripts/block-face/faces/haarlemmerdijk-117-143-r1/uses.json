@@ -1,0 +1,95 @@
+{
+ "street": "Haarlemmerdijk",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T08:39:01.023Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012173479",
+   "addresses": [
+    "Haarlemmerdijk 131"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerdijk 131-H",
+     "use": "winkelfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000656160"
+    }
+   ],
+   "units": 2,
+   "osm": [
+    {
+     "type": "node",
+     "id": 1223057274,
+     "lngLat": [
+      4.8855037,
+      52.3835263
+     ],
+     "tags": {
+      "name": "Tutto Bene!",
+      "opening_hours": "Mo-Su 12:00-18:00",
+      "shop": "clothes",
+      "speciality": "Turkey",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-11-10T08:39:01.023Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012173480",
+   "addresses": [
+    "Haarlemmerdijk 133A",
+    "Haarlemmerdijk 133B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerdijk 133A",
+     "use": "winkelfunctie",
+     "areaM2": 98,
+     "bagId": "0363010001013320"
+    },
+    {
+     "address": "Haarlemmerdijk 133B",
+     "use": "woonfunctie",
+     "areaM2": 89,
+     "bagId": "0363010001013321"
+    }
+   ],
+   "units": 2,
+   "osm": [
+    {
+     "type": "node",
+     "id": 1223057271,
+     "lngLat": [
+      4.8854493,
+      52.383553
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "133",
+      "addr:postcode": "1013KG",
+      "addr:street": "Haarlemmerdijk",
+      "books": "cooking",
+      "check_date": "2026-10-06",
+      "check_date:opening_hours": "2026-10-06",
+      "email": "info@kookboekhandel.com",
+      "name": "De Kookboekhandel",
+      "opening_hours": "Tu-Fr 10:00-18:00; Sa 10:00-17:00",
+      "phone": "+31 20 622 4768",
+      "shop": "books",
+      "website": "https://kookboekhandel.com",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-11-10T08:39:01.023Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

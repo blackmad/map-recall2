@@ -3,7 +3,7 @@
  "pins": [
   {
    "pandId": "0363100012167817",
-   "type": "haarlemmer-shop-cornice",
+   "type": "haarlemmer-shop-cornice-frieze",
    "palette": {
     "brick": "#4c403a"
    },
@@ -29,7 +29,7 @@
   },
   {
    "pandId": "0363100012176172",
-   "type": "haarlemmer-shop-cornice",
+   "type": "haarlemmer-shop-cornice-frieze",
    "palette": {
     "brick": "#4e4a44"
    },
@@ -42,6 +42,22 @@
     "brick": "#5b5550"
    },
    "reason": "Haarlemmerdijk 4: dark brick, raw median #4c4743 lifted x1.2"
+  },
+  {
+   "pandId": "0363100012173479",
+   "type": "haarlemmer-shop-cornice-wide",
+   "palette": {
+    "brick": "#4c4743"
+   },
+   "reason": "Haarlemmerdijk 131: strip wall median of mid-luma warm pixels 5-9.5 m, lifted x1.2"
+  },
+  {
+   "pandId": "0363100012173480",
+   "type": "haarlemmer-shop-gable-wide",
+   "palette": {
+    "brick": "#4d3f3b"
+   },
+   "reason": "Haarlemmerdijk 133A: strip wall median of mid-luma warm pixels 5-9.5 m, lifted x1.2"
   }
  ]
 }

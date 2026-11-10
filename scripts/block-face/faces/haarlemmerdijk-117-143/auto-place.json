@@ -3,7 +3,7 @@
  "street": "Haarlemmerdijk",
  "library": "haarlemmerbuurt",
  "stripDate": "2022-12-15",
- "seconds": 7.44,
+ "seconds": 11.51,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -13,7 +13,17 @@
   "widthSlackM": 0.4,
   "flatRoofRiseM": 1.5
  },
- "runs": [],
+ "runs": [
+  {
+   "face": "haarlemmerdijk-117-143-r1",
+   "pands": [
+    "0363100012173479",
+    "0363100012173480"
+   ],
+   "passed": true,
+   "triangles": 2263
+  }
+ ],
  "pands": [
   {
    "pandId": "0363100012176652",
@@ -394,7 +404,7 @@
    },
    "status": "held",
    "stage": "review",
-   "reason": "review: Haarlemmerdijk 129: narrow beige cornice house, frontage 3.36 m under the shop types' 3.8 m floor (2022-12-15 strip, compared)",
+   "reason": "review: Haarlemmerdijk 129: a beige band front with one ribbon window per storey, the design of 127 beside it rather than a shop house (3.36 m)",
    "likeness": null,
    "challengers": {}
   },
@@ -403,12 +413,12 @@
    "address": "Haarlemmerdijk 131",
    "builtYear": 1848,
    "widthM": 5.36,
-   "eavesM": 10.86,
+   "eavesM": 9.9,
    "storeys3dbag": 3,
    "bagBay": null,
    "strip": {
-    "wall": "#58524a",
-    "wallRaw": "#423f3d",
+    "wall": "#635a50",
+    "wallRaw": "#3f3b3a",
     "skyline": {
      "eavesM": 14.95,
      "eavesRow": 210,
@@ -422,26 +432,92 @@
     },
     "stucco": false,
     "bands": 0,
-    "columns": null,
+    "columns": 7,
     "frontClass": "punched",
     "doorSide": null,
-    "accentSide": null,
-    "accentShare": 0.033,
+    "accentSide": "right",
+    "accentShare": 0.004,
     "structure": {
      "bayWidthM": 0,
      "bayCentre": null,
      "balconies": false,
-     "why": "no dark open axis, 0 wide slab(s)",
+     "why": "no dark open axis, 1 wide slab(s)",
      "openAxes": [],
-     "slabs": []
+     "slabs": [
+      {
+       "atM": 6.22,
+       "widthM": 3.2,
+       "centre": 0.37
+      }
+     ]
     },
     "voidShare": 0,
     "foliageShare": 0.01
    },
-   "status": "held",
-   "stage": "review",
-   "reason": "review: Haarlemmerdijk 131: wide three-light windows read as 7 strip columns against the type's 3 axes; score 0.55 with the eaves pin at 9.9 m (kit gap: wide multi-light 19th-c. shop-house windows)",
-   "likeness": null,
+   "status": "placed",
+   "type": "haarlemmer-shop-cornice-wide",
+   "score": 1,
+   "placement": {
+    "type": "haarlemmer-shop-cornice-wide",
+    "ground": {
+     "shopfront": {
+      "colour": "#423d38",
+      "fascia": true,
+      "name": "Tutto Bene!",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: osm-only (winkelfunctie, shop=clothes); fascia colour measured on the strip 2022-12-15 span 1249-1463"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#635a50",
+     "evidence": "strip 2022-12-15 span 1249-1463: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#4c4743"
+    }
+   },
+   "notes": [
+    "door unread",
+    "crown crowned: reviewer pin (Haarlemmerdijk 131: dark brick, two wide three-light windows under top lights per storey, rows 4.8-6.3 and 6.6-8.4 m over the shop, white cornice 9.3-9.9 m with a pediment dormer to 11.5 m)",
+    "palette pinned: Haarlemmerdijk 131: strip wall median of mid-luma warm pixels 5-9.5 m, lifted x1.2",
+    "bays 2: reviewer pin (Haarlemmerdijk 131: 2 window axes on the upper storeys)"
+   ],
+   "likeness": {
+    "pandId": "0363100012173479",
+    "ncc": 0.174,
+    "nccRaw": 0.174,
+    "shiftM": [
+     0,
+     0.25
+    ],
+    "usable": 0.99,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.48 mean 0.54 vs photo 0.29"
+    ],
+    "wall": {
+     "photo": "#564e47",
+     "model": "#655e59",
+     "dL": 0.065
+    },
+    "glazing": {
+     "photo": 0.29,
+     "model": 0.54
+    },
+    "columns": {
+     "photo": null,
+     "model": 2
+    },
+    "iou": 0.289,
+    "footOffsetM": 2.33
+   },
    "challengers": {}
   },
   {
@@ -449,12 +525,12 @@
    "address": "Haarlemmerdijk 133A",
    "builtYear": 1858,
    "widthM": 4.42,
-   "eavesM": 8.76,
+   "eavesM": 9.2,
    "storeys3dbag": 4,
    "bagBay": null,
    "strip": {
-    "wall": "#574a45",
-    "wallRaw": "#3e3633",
+    "wall": "#4f4341",
+    "wallRaw": "#3f3835",
     "skyline": {
      "eavesM": 0,
      "eavesRow": 808,
@@ -463,8 +539,8 @@
     },
     "stucco": false,
     "bands": 0,
-    "columns": null,
-    "frontClass": "punched",
+    "columns": 5,
+    "frontClass": "columns",
     "doorSide": null,
     "accentSide": "left",
     "accentShare": 0,
@@ -479,10 +555,68 @@
     "voidShare": 0,
     "foliageShare": 0
    },
-   "status": "held",
-   "stage": "review",
-   "reason": "review: Haarlemmerdijk 133A: neck gable fits, but its wide three-light windows read as 5 columns against 2 axes; score 0.55 with the eaves pin at 9.2 m (same kit gap)",
-   "likeness": null,
+   "status": "placed",
+   "type": "haarlemmer-shop-gable-wide",
+   "score": 1,
+   "placement": {
+    "type": "haarlemmer-shop-gable-wide",
+    "ground": {
+     "shopfront": {
+      "colour": "#2f2c29",
+      "fascia": true,
+      "name": "De Kookboekhandel",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "evidence": "auto-place: osm-only (winkelfunctie, woonfunctie, shop=books); fascia colour measured on the strip 2022-12-15 span 1463-1640"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#4f4341",
+     "evidence": "strip 2022-12-15 span 1463-1640: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#4d3f3b"
+    }
+   },
+   "notes": [
+    "door unread",
+    "crown neck: reviewer pin (Haarlemmerdijk 133A: red-brown brick neck gable 9.2-11.6 m with one attic light, two wide three-light windows per storey on rows 5.0-6.6 and 6.9-8.2 m over the shop)",
+    "palette pinned: Haarlemmerdijk 133A: strip wall median of mid-luma warm pixels 5-9.5 m, lifted x1.2",
+    "bays 2: reviewer pin (Haarlemmerdijk 133A: 2 window axes on the upper storeys)",
+    "edge NCC 0.14 passed on the reviewer floor 0.12"
+   ],
+   "likeness": {
+    "pandId": "0363100012173480",
+    "ncc": 0.14,
+    "nccRaw": 0.14,
+    "shiftM": [
+     -0.35,
+     -0.4
+    ],
+    "usable": 0.98,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "wall dL +0.16",
+     "glazing storey band off by 0.37 mean 0.54 vs photo 0.32"
+    ],
+    "wall": {
+     "photo": "#38302d",
+     "model": "#685550",
+     "dL": 0.163
+    },
+    "glazing": {
+     "photo": 0.32,
+     "model": 0.54
+    },
+    "columns": {
+     "photo": null,
+     "model": 2
+    },
+    "iou": 0.355,
+    "footOffsetM": 2.33
+   },
    "challengers": {}
   },
   {

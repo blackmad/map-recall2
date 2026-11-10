@@ -1,8 +1,8 @@
 # Haarlemmerbuurt-West (AA05) and -Oost (AA06), 2026-11-10
 
-Lane `lane/belt-haarlemmer-20261110`. **5 pands installed, all in West (Haarlemmerdijk 4, 6, 16, 18, 20); Oost 0.**
+Lane `lane/belt-haarlemmer-20261110`. **9 pands installed: West 7 (Haarlemmerdijk 4, 6, 16, 18, 20, 131, 133A), Oost 2 (Haarlemmerstraat 52, 54).** Round 2 (below) added the white balance for the foliage masks, the wide multi-light types, the frieze type and the strip-sheet review fixes.
 Sheets and strips: `/Users/blackmad/Code/map-recall2-source-data/block-face-strips/haarlemmerbuurt-20261110/`
-(`strips/<face>-strip.jpg` + `-labelled.png` for 19 intaken faces, `sheets/<run>-strip-sheet.png` + `-overlay.png` for the two installed runs).
+(`strips/<face>-strip.jpg` + `-labelled.png` for 19 intaken faces, `sheets/<run>-strip-sheet.png` + `-overlay.png` for the four installed runs).
 
 ## Census
 
@@ -22,10 +22,12 @@ The design families, read off the strips:
 
 | type | body | used |
 |---|---|---|
-| `haarlemmer-shop-gable` | 3 storeys [4.5, 2.9, 2.6], neck / bell / point crowns, square saddle | 20 (neck), 4 (bell) |
-| `haarlemmer-shop-cornice` | same body, white simple cornice, none / pediment-dormer crown, saddle hipped at the front (35°) so no roof face shows over the cornice | 16, 18, 6 (dormer) |
+| `haarlemmer-shop-gable` | 3 storeys [4.5, 2.9, 2.6], neck / bell / bell-low / point crowns, square saddle | 20 (neck), 4 (bell-low) |
+| `haarlemmer-shop-cornice` | same body, white simple cornice, none / pediment-dormer crown, saddle hipped at the front (35°) | 16 |
+| `haarlemmer-shop-cornice-frieze` (round 2) | the brick stops under a deep cream attic frieze (`cornice: frieze`) with a small crowned piece over the middle (`crownCap` pediment, narrow), a flat roof: no roof face over it | 6, 18 |
+| `haarlemmer-shop-cornice-wide`, `haarlemmer-shop-gable-wide` (round 2) | two axes of wide three-light windows under top lights (`casement-sidelights-toplight`, window share 0.74), `match.columnsPerBay` [2, 4]; the cornice one with a crowned piece and a flat roof | 131, 133A |
 | `haarlemmer-shop-cornice-four`, `haarlemmer-shop-gable-four` | 4 storeys [4.0/4.4, 2.8, 2.7, 2.5-2.6] | none placed |
-| `haarlemmerstraat-sash-{gable,gable-four,cornice,cornice-four}` | 6-over-6 sash windows, years to 1995 (Haarlemmerstraat rebuilt fronts) | none placed |
+| `haarlemmerstraat-sash-{gable,gable-four,cornice,cornice-four}` | 6-over-6 sash windows, years to 1995 (Haarlemmerstraat rebuilt fronts) | 52, 54 (sash-gable-four) |
 
 They all use the palette `haarlemmer-red-brown` (brick #6e4a3c, white-painted frames and stone), sill surrounds and window share 0.52. They set `crownMatch`/`crownStrict` to false: the fused dijk strips carry ghost gables of the neighbours, so reviewer crown pins decide the crown. They use `mirrorForDoor` left.
 
@@ -35,23 +37,30 @@ Counts are from `<buurt>-placement.json`. Lane-review holds include reviewer-pin
 
 | outcome | West | Oost |
 |---|---|---|
-| vetoed before comparison: face not intaken, or strip unusable (see "Strips") | 301 | 302 |
+| vetoed before comparison: face not intaken, or strip not reviewed (see "Strips") | 301 | 302 |
 | compared and held: strip evidence gate | 1 | 0 |
-| compared and held: best type under 0.7 / every type vetoed (year, frontage) | 4 | 0 |
-| compared and held: likeness gate abstains (green-cast strip) | 1 | 5 |
-| compared and held: run of one between held neighbours | 5 | 0 |
-| compared and held: lane review, including the score / compile failures named in each reason (wide multi-light windows at 0.55, the 31-33-35A compile failure, one-offs, five storeys, cottages, occluded, infill) | 72 | 21 |
-| **placed and installed** | **5** | **0** |
+| compared and held: best type under 0.7 / every type vetoed (year, frontage) | 3 | 0 |
+| compared and held: likeness gate under 0.15 (Haarlemmerdijk 21 0.10, 23E 0.12, 68; Haarlemmerstraat 50 0.09, 46 0.14) | 3 | 2 |
+| compared and held: run of one between held neighbours | 4 | 1 |
+| compared and held: lane review, including the score / compile / sheet failures named in each reason (31-33-35A, one-offs, five storeys, cottages, occluded, infill) | 70 | 21 |
+| **placed and installed** | **7** | **2** |
 
 Installed runs:
-- `chunk-face-haarlemmerdijk-2-58-r1`: Haarlemmerdijk 20 (neck gable), 18 and 16 (cornice). 2608 tris. Every gate and audit passes.
-- `chunk-face-haarlemmerdijk-2-58-r2`: Haarlemmerdijk 6 (cornice and dormer) and 4 (bell gable). 2100 tris.
+- `chunk-face-haarlemmerdijk-2-58-r1`: Haarlemmerdijk 20 (neck gable, 2/2/3 windows), 18 (cream frieze, crowned piece, cream shop), 16 (cornice, first upper row 0.5 m lower). 2736 tris. NCC 0.27 / 0.37 / 0.53.
+- `chunk-face-haarlemmerdijk-2-58-r2`: Haarlemmerdijk 6 (cream frieze, crowned piece, cream shop, door right) and 4 (lower bell, cream shop). 1993 tris. NCC 6: 0.21.
+- `chunk-face-haarlemmer-46-96-r1` (round 2): Haarlemmerstraat 54 and 52, neck gables over three sash rows. 3798 tris. NCC 0.24 / 0.30. Released by the white balance.
+- `chunk-face-haarlemmerdijk-117-143-r1` (round 2): Haarlemmerdijk 131 (wide windows, crowned cornice) and 133A (neck gable, wide windows). NCC 0.17 / 0.14 (accept pin 0.12: a van covers the shop and the strip span sits about 1.5 m off the BAG split).
 
-The dormer of Haarlemmerdijk 18 is left off. The kit dormer on the front-hipped roof hovered 0.10 m over the roof there, which is an audit `detached` failure.
+## Round 2 (strip-sheet review and coordinator list)
+
+- **White balance for the foliage masks** (`src/canalRecall/blockFace/stripWhiteBalance.ts` + test on three real strip crops in `fixtures/strip-cast/`). Per panorama day, the reference white is the median of the brightest 15 % of the strip's pixels (placeholder grey, clipped and blue sky left out); gains map it to grey. Applied only under a green or yellow-green cast (reference G - R over -4 % of its luma and G over B); a warm day keeps the plain `isLeaf`, byte-identical. Used by the likeness photo mask (`spanLikeness` `leaf`), the body-band foliage share (`evidenceShares`, `bodyShares`) and batch.ts's foliage columns. Haarlemmerstraat 46-96: foliage 31 % -> 3 % of the body band; Brouwersgracht 2-20 (2024-12-03): the cast trim goes, the green bush in front of no. 4 stays foliage (0.64 -> 0.52). **Measured colours stay on the unbalanced strip:** brickForDrawnLuma, the row trim gain and the city look's brick lift are calibrated on unbalanced strips in every installed buurt, and the cast moves the brick median a few per cent (gains 0.95-1.07) while it moves the leaf share by 25 points.
+- **Wide multi-light windows:** `match.columnsPerBay` (autoPlace.ts `columnsCriterion`, tested): the strip's window columns may number `bays` x [min, max]; the wide types take [2, 4], the shop types [1, 2] (a T-window's mullion reads as a second column). Released 131 and 133A; 23E now scores 0.82 but its likeness is 0.12 (held); 129 is a band-window front like 127, not this type.
+- **Haarlemmerdijk 31-33-35A:** the 3 cm overshoot is the front-hipped saddle on a skewed frontage: along the facade line the hip plane climbs 0.75 cm/m because the setback line is square to the front normal, not the facade edge. 33 and 35A carry deep friezes, so the frieze type with a flat roof (the strips show sky directly over the cornice; 3DBAG p95 near the cornice) compiles with every gate. But the sheet does not look like the photo (33 needs three axes and three upper rows; 35A NCC 0.11 with its span 1 m off the split), so both stay held. 31 keeps a 0.9 m2 coplanar brick/roof-tile overlap behind its point gable (geometry regression), held. The hip-front skew itself is not fixed: recipeRoof.ts's square-to-chord retry covers attic bands and `squareSaddle`, not `hip: front` saddles.
+- **Strip-sheet review fixes** (docs/reports/haarlemmer-strip-verdict-20261110.md): `reviewShopfront.ts` (+ test) pins shop paint and door (`<buurt>-review-shopfronts.json`): cream on 4, 6, 18, door right on 6. `reviewBays.ts` now takes per-storey counts and `headLines`: 20 gets two, two, three windows; 16's first upper row 0.5 m lower. 18 and 6 moved to the frieze type with a crowned piece (eaves at the cornice top: 11.4 and 11.0 m); 4 to a lower bell (`bell-low`, crownRise 0.85). **Not done:** the gable positions of 20 and 4 ("0.9-1 m right") are the strip's registration, not the model: every facade on the 2-58 strip sits 0.4-0.9 m right of its BAG split, and the models stand on BAG; the neck window width of 20 (the kit draws one attic light of a fixed share).
 
 ## Strips
 
-- **2024-11-21 and 2024-12-11 carry a yellow-green cast.** On those strips 16-49% of the brick classifies as leaf, so the likeness gate abstains ("usable photo" under 50%). This affected most of Haarlemmerstraat and Haarlemmerdijk 67-113, 126-188 and 149-175. Haarlemmerstraat 46-96 has five reviewer-pinned pands (54, 52, 50, 48B, 46) that are held only for this reason. They are ready to place once the strip mask white-balances.
+- **2024-11-21 and 2024-12-11 carry a yellow-green cast.** On those strips 16-49% of the brick classifies as leaf, so the likeness gate abstains ("usable photo" under 50%). This affected most of Haarlemmerstraat and Haarlemmerdijk 67-113, 126-188 and 149-175. Round 2's white balance released Haarlemmerstraat 54 and 52; 50 (NCC 0.09) and 46 (0.14) are held by likeness, and 48B (a wide three-light window) as a run of one.
 - **2022-12-15 is dark but neutral.** It is the strip used on the dijk. On Haarlemmerdijk 13-45 the facade foot sat 2.2 m up the strip, and `--camera-height=2.4` fixes it. On 117-143 the geometry is right without that flag.
 - **Other days are unusable:**
   - 2025-07-03 is blown out;
@@ -71,10 +80,14 @@ The dormer of Haarlemmerdijk 18 is left off. The kit dormer on the front-hipped 
 
 ## What the kit cannot say yet
 
-- **Wide multi-light (three-light, transomed) 19th-c. shop-house windows.** The strip reads 5-7 columns where the type has 2-3 axes, so the score lands at 0.55. This keeps Haarlemmerdijk 23E, 129, 131 and 133A held.
+- **Band (ribbon) windows of 4-6 lights across a front** (Haarlemmerdijk 127, 129): the wide types draw two windows with side lights.
+- **Strip registration:** on 2-58 and 117-143 the facades sit 0.4-1.5 m right of their BAG split, which lowers the edge NCC and moves gables on the sheets.
+- **The crowned piece is a brick pediment cap,** not the cream moulded dormer front; the attic light of a neck gable has no width setting.
+- **A four-storey frieze body** (Haarlemmerdijk 33).
 - **Two-storey bell-gable cottages,** where the gable carries a storey-high window (Haarlemmerdijk 25, 119A, 121A, 143; Brouwersgracht 20). The shop types start at three storeys.
 - **Five-storey fronts** (Haarlemmerdijk 135A; Brouwersgracht 4, 6, 8).
 - **Warehouse (pakhuis) loading-door axis with shutters and hoist beam.** This is most of Brouwersgracht.
 - **Neck-gable scrolls and claw-piece ornaments, erkers over shops, ornate stucco bands.** These are drawn as plain gables and plain cornices.
-- **A front-hipped roof over a cornice on a skewed frontage.** On Haarlemmerdijk 33 and 35A the roof stands 0.03 m over the crown line (`roof-under-crown`). On 31 the point-gable wall and roof tile overlap coplanar (geometry-regression), so the run 31-33-35A is held.
-- **The pipeline has no white balance before the likeness mask** (see "Strips").
+- **A front-hipped roof over a cornice on a skewed frontage** climbs 3 cm along the facade (see Round 2); the frieze type avoids it with a flat roof. On 31 the point-gable wall and roof tile overlap coplanar (geometry-regression).
+- **measureFacade's own leaf mask** (the secondary likeness.ts reasons: "NO EVIDENCE: foliage 30 %") is not white-balanced; only the gates' masks are.
+- **The other green-cast faces are not yet compared:** Haarlemmerstraat 1-17, 23-47, 34-42, 77-91, 93-139 and Haarlemmerdijk 67-91, 93-113, 126-188, 149-175 need a strip review pass now that the mask works.

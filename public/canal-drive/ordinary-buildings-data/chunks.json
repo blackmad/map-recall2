@@ -1,6 +1,6 @@
 {
  "version": 1,
- "generatedAt": "2026-11-10T09:07:35.338Z",
+ "generatedAt": "2026-11-10T09:41:20.097Z",
  "chunks": [
   {
    "id": "chunk-face-bilder-080336-090492",
@@ -99449,42 +99449,42 @@
    }
   },
   {
-   "id": "chunk-face-haarlemmerdijk-2-58-r2",
+   "id": "chunk-face-haarlemmer-46-96-r1",
    "category": "street-survey",
-   "name": "face-haarlemmerdijk-2-58-r2",
-   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-haarlemmerdijk-2-58-r2.glb?asset=53cd02b0edd20f13",
-   "sha256": "53cd02b0edd20f139f0a72ecb636a3efdc6904b114b008f449ef1aba215db8a9",
-   "bytes": 65100,
-   "triangles": 2120,
-   "primitives": 10,
+   "name": "face-haarlemmer-46-96-r1",
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-haarlemmer-46-96-r1.glb?asset=cca434fd7e0c3fac",
+   "sha256": "cca434fd7e0c3fac763954a79df28b31f1c7e8d7d8797872c82d0b5cfddc1345",
+   "bytes": 99408,
+   "triangles": 3798,
+   "primitives": 9,
    "instance": {
     "anchor": [
-     4.889005147699692,
-     52.38172092791653
+     4.892553574970296,
+     52.38016806579972
     ],
-    "northOffsetDegrees": 43.0871,
+    "northOffsetDegrees": 22.8569,
     "mirror": false
    },
    "bounds": {
     "min": [
-     -4.335,
+     -4.744,
      0,
-     -10.999
+     -14.035
     ],
     "max": [
-     4.309,
-     12.73,
-     0.193
+     4.858,
+     17.899,
+     1.1
     ]
    },
-   "height": 12.73,
+   "height": 17.899,
    "suppress": [
-    "NL.IMBAG.Pand.0363100012176172",
-    "NL.IMBAG.Pand.0363100012176174"
+    "NL.IMBAG.Pand.0363100012171144",
+    "NL.IMBAG.Pand.0363100012171145"
    ],
    "replaces": [
-    "ordinary-0363100012176172",
-    "ordinary-0363100012176174"
+    "ordinary-0363100012171144",
+    "ordinary-0363100012171145"
    ],
    "footprint": {
     "type": "MultiPolygon",
@@ -99492,56 +99492,48 @@
      [
       [
        [
-        4.8891139,
-        52.381794
+        4.8926366,
+        52.3802829
        ],
        [
-        4.8890921,
-        52.3818065
+        4.8925718,
+        52.3802998
        ],
        [
-        4.8890624,
-        52.3817866
+        4.8924894,
+        52.3801847
        ],
        [
-        4.8890387,
-        52.3818001
-       ],
-       [
-        4.8889592,
-        52.3817469
-       ],
-       [
-        4.8890049,
-        52.3817211
+        4.8925542,
+        52.3801678
        ]
       ]
      ],
      [
       [
        [
-        4.8891313,
-        52.381748
+        4.8926988,
+        52.3802667
        ],
        [
-        4.8890848,
-        52.3817745
+        4.8926541,
+        52.3802784
        ],
        [
-        4.8890049,
-        52.3817211
+        4.8926335,
+        52.3802496
        ],
        [
-        4.8890476,
-        52.3816977
+        4.892616,
+        52.3802542
        ],
        [
-        4.8890465,
-        52.3816971
+        4.8925542,
+        52.3801678
        ],
        [
-        4.8890515,
-        52.3816945
+        4.8926166,
+        52.3801519
        ]
       ]
      ]
@@ -99549,43 +99541,43 @@
    },
    "pands": [
     {
-     "recipeId": "haarlemmerdijk-176172",
-     "pandId": "0363100012176172",
-     "buildingId": "NL.IMBAG.Pand.0363100012176172",
-     "address": "Haarlemmerdijk 6",
+     "recipeId": "haarlemmer-171144",
+     "pandId": "0363100012171144",
+     "buildingId": "NL.IMBAG.Pand.0363100012171144",
+     "address": "Haarlemmerstraat 54",
      "frontage": {
-      "x0": -4.258,
-      "x1": -0.025,
-      "widthM": 4.233
+      "x0": -4.744,
+      "x1": 0.046,
+      "widthM": 4.79
      },
      "bounds": {
       "min": [
-       -4.335,
+       -4.744,
        0,
-       -10.999
+       -14.035
       ],
       "max": [
-       -0.025,
-       11.962,
-       0.193
+       0.256,
+       16.049,
+       1.1
       ]
      },
-     "triangles": 855,
+     "triangles": 1893,
      "ranges": [
       {
-       "primitive": 0,
+       "primitive": 1,
        "firstTriangle": 0,
-       "triangleCount": 76
+       "triangleCount": 129
       },
       {
        "primitive": 2,
        "firstTriangle": 0,
-       "triangleCount": 136
+       "triangleCount": 144
       },
       {
        "primitive": 3,
        "firstTriangle": 0,
-       "triangleCount": 296
+       "triangleCount": 1224
       },
       {
        "primitive": 4,
@@ -99598,80 +99590,80 @@
        "triangleCount": 204
       },
       {
+       "primitive": 6,
+       "firstTriangle": 0,
+       "triangleCount": 172
+      },
+      {
        "primitive": 7,
        "firstTriangle": 0,
-       "triangleCount": 96
+       "triangleCount": 1
       },
       {
        "primitive": 8,
        "firstTriangle": 0,
-       "triangleCount": 9
-      },
-      {
-       "primitive": 9,
-       "firstTriangle": 0,
-       "triangleCount": 26
+       "triangleCount": 7
       }
      ]
     },
     {
-     "recipeId": "haarlemmerdijk-176174",
-     "pandId": "0363100012176174",
-     "buildingId": "NL.IMBAG.Pand.0363100012176174",
-     "address": "Haarlemmerdijk 4",
+     "recipeId": "haarlemmer-171145",
+     "pandId": "0363100012171145",
+     "buildingId": "NL.IMBAG.Pand.0363100012171145",
+     "address": "Haarlemmerstraat 52",
      "frontage": {
-      "x0": -0.025,
-      "x1": 4.309,
-      "widthM": 4.335
+      "x0": 0.046,
+      "x1": 4.651,
+      "widthM": 4.604
      },
      "bounds": {
       "min": [
-       -0.105,
+       0.046,
        0,
-       -8.101
+       -13.969
       ],
       "max": [
-       4.309,
-       12.73,
-       0.154
+       4.858,
+       17.899,
+       1.1
       ]
      },
-     "triangles": 1265,
+     "triangles": 1905,
      "ranges": [
       {
-       "primitive": 1,
+       "primitive": 0,
        "firstTriangle": 0,
-       "triangleCount": 202
+       "triangleCount": 139
       },
       {
        "primitive": 2,
-       "firstTriangle": 136,
-       "triangleCount": 84
+       "firstTriangle": 144,
+       "triangleCount": 156
       },
       {
        "primitive": 3,
-       "firstTriangle": 296,
-       "triangleCount": 664
+       "firstTriangle": 1224,
+       "triangleCount": 1420
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 12,
+       "triangleCount": 24
       },
       {
        "primitive": 6,
-       "firstTriangle": 0,
-       "triangleCount": 204
+       "firstTriangle": 172,
+       "triangleCount": 156
       },
       {
        "primitive": 7,
-       "firstTriangle": 96,
-       "triangleCount": 102
-      },
-      {
-       "primitive": 8,
-       "firstTriangle": 9,
+       "firstTriangle": 1,
        "triangleCount": 1
       },
       {
-       "primitive": 9,
-       "firstTriangle": 26,
-       "triangleCount": 8
+       "primitive": 8,
+       "firstTriangle": 7,
+       "triangleCount": 9
       }
      ]
     }
@@ -99681,11 +99673,11 @@
    "id": "chunk-face-haarlemmerdijk-2-58-r1",
    "category": "street-survey",
    "name": "face-haarlemmerdijk-2-58-r1",
-   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-haarlemmerdijk-2-58-r1.glb?asset=128023f868569534",
-   "sha256": "128023f868569534a21f37563c8758630ad27c681f65c0cf641ef390cd8c3304",
-   "bytes": 79988,
-   "triangles": 2599,
-   "primitives": 13,
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-haarlemmerdijk-2-58-r1.glb?asset=d1336c95717bae46",
+   "sha256": "d1336c95717bae469b194495959e2a5a00392ae700ef6968c4dd6019e41adfde",
+   "bytes": 86292,
+   "triangles": 2736,
+   "primitives": 15,
    "instance": {
     "anchor": [
      4.888713722089086,
@@ -99829,22 +99821,22 @@
        1.09
       ]
      },
-     "triangles": 1159,
+     "triangles": 1235,
      "ranges": [
       {
        "primitive": 1,
        "firstTriangle": 0,
-       "triangleCount": 184
+       "triangleCount": 180
       },
       {
        "primitive": 3,
        "firstTriangle": 0,
-       "triangleCount": 84
+       "triangleCount": 96
       },
       {
        "primitive": 4,
        "firstTriangle": 0,
-       "triangleCount": 552
+       "triangleCount": 608
       },
       {
        "primitive": 7,
@@ -99859,7 +99851,7 @@
       {
        "primitive": 10,
        "firstTriangle": 0,
-       "triangleCount": 104
+       "triangleCount": 116
       },
       {
        "primitive": 11,
@@ -99891,26 +99883,26 @@
       ],
       "max": [
        1.917,
-       11.87,
-       0.196
+       12.691,
+       0.271
       ]
      },
-     "triangles": 731,
+     "triangles": 792,
      "ranges": [
       {
        "primitive": 2,
        "firstTriangle": 0,
-       "triangleCount": 66
+       "triangleCount": 85
       },
       {
        "primitive": 3,
-       "firstTriangle": 84,
+       "firstTriangle": 96,
        "triangleCount": 84
       },
       {
        "primitive": 4,
-       "firstTriangle": 552,
-       "triangleCount": 244
+       "firstTriangle": 608,
+       "triangleCount": 304
       },
       {
        "primitive": 5,
@@ -99924,13 +99916,18 @@
       },
       {
        "primitive": 10,
-       "firstTriangle": 104,
+       "firstTriangle": 116,
        "triangleCount": 86
       },
       {
-       "primitive": 11,
-       "firstTriangle": 10,
-       "triangleCount": 35
+       "primitive": 13,
+       "firstTriangle": 0,
+       "triangleCount": 6
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 0,
+       "triangleCount": 11
       }
      ]
     },
@@ -99965,12 +99962,12 @@
       },
       {
        "primitive": 3,
-       "firstTriangle": 168,
+       "firstTriangle": 180,
        "triangleCount": 84
       },
       {
        "primitive": 4,
-       "firstTriangle": 796,
+       "firstTriangle": 912,
        "triangleCount": 236
       },
       {
@@ -99985,18 +99982,483 @@
       },
       {
        "primitive": 10,
-       "firstTriangle": 190,
+       "firstTriangle": 202,
        "triangleCount": 84
       },
       {
        "primitive": 11,
-       "firstTriangle": 45,
+       "firstTriangle": 10,
        "triangleCount": 22
       },
       {
        "primitive": 12,
        "firstTriangle": 9,
        "triangleCount": 3
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "chunk-face-haarlemmerdijk-2-58-r2",
+   "category": "street-survey",
+   "name": "face-haarlemmerdijk-2-58-r2",
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-haarlemmerdijk-2-58-r2.glb?asset=2f90edcb0575414c",
+   "sha256": "2f90edcb0575414c354780f45d9001f238e233cf2555ac48f617d5b9fc063718",
+   "bytes": 64576,
+   "triangles": 1993,
+   "primitives": 11,
+   "instance": {
+    "anchor": [
+     4.889005147699692,
+     52.38172092791653
+    ],
+    "northOffsetDegrees": 43.0871,
+    "mirror": false
+   },
+   "bounds": {
+    "min": [
+     -4.335,
+     0,
+     -10.999
+    ],
+    "max": [
+     4.309,
+     11.908,
+     0.268
+    ]
+   },
+   "height": 11.908,
+   "suppress": [
+    "NL.IMBAG.Pand.0363100012176172",
+    "NL.IMBAG.Pand.0363100012176174"
+   ],
+   "replaces": [
+    "ordinary-0363100012176172",
+    "ordinary-0363100012176174"
+   ],
+   "footprint": {
+    "type": "MultiPolygon",
+    "coordinates": [
+     [
+      [
+       [
+        4.8891139,
+        52.381794
+       ],
+       [
+        4.8890921,
+        52.3818065
+       ],
+       [
+        4.8890624,
+        52.3817866
+       ],
+       [
+        4.8890387,
+        52.3818001
+       ],
+       [
+        4.8889592,
+        52.3817469
+       ],
+       [
+        4.8890049,
+        52.3817211
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8891313,
+        52.381748
+       ],
+       [
+        4.8890848,
+        52.3817745
+       ],
+       [
+        4.8890049,
+        52.3817211
+       ],
+       [
+        4.8890476,
+        52.3816977
+       ],
+       [
+        4.8890465,
+        52.3816971
+       ],
+       [
+        4.8890515,
+        52.3816945
+       ]
+      ]
+     ]
+    ]
+   },
+   "pands": [
+    {
+     "recipeId": "haarlemmerdijk-176172",
+     "pandId": "0363100012176172",
+     "buildingId": "NL.IMBAG.Pand.0363100012176172",
+     "address": "Haarlemmerdijk 6",
+     "frontage": {
+      "x0": -4.258,
+      "x1": -0.025,
+      "widthM": 4.233
+     },
+     "bounds": {
+      "min": [
+       -4.335,
+       0,
+       -10.999
+      ],
+      "max": [
+       -0.025,
+       11.908,
+       0.268
+      ]
+     },
+     "triangles": 728,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 0,
+       "triangleCount": 87
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 0,
+       "triangleCount": 84
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 0,
+       "triangleCount": 296
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 0,
+       "triangleCount": 160
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 0,
+       "triangleCount": 72
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 0,
+       "triangleCount": 4
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 0,
+       "triangleCount": 13
+      }
+     ]
+    },
+    {
+     "recipeId": "haarlemmerdijk-176174",
+     "pandId": "0363100012176174",
+     "buildingId": "NL.IMBAG.Pand.0363100012176174",
+     "address": "Haarlemmerdijk 4",
+     "frontage": {
+      "x0": -0.025,
+      "x1": 4.309,
+      "widthM": 4.335
+     },
+     "bounds": {
+      "min": [
+       -0.105,
+       0,
+       -8.101
+      ],
+      "max": [
+       4.309,
+       11.864,
+       0.154
+      ]
+     },
+     "triangles": 1265,
+     "ranges": [
+      {
+       "primitive": 1,
+       "firstTriangle": 0,
+       "triangleCount": 202
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 84,
+       "triangleCount": 84
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 296,
+       "triangleCount": 664
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 160,
+       "triangleCount": 204
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 72,
+       "triangleCount": 102
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 0,
+       "triangleCount": 1
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 0,
+       "triangleCount": 8
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "chunk-face-haarlemmerdijk-117-143-r1",
+   "category": "street-survey",
+   "name": "face-haarlemmerdijk-117-143-r1",
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-haarlemmerdijk-117-143-r1.glb?asset=0bd4d62f65b758ca",
+   "sha256": "0bd4d62f65b758ca58d91d2a6a9b404a76d4baca742cdf47b9700c7fff758872",
+   "bytes": 74212,
+   "triangles": 2263,
+   "primitives": 15,
+   "instance": {
+    "anchor": [
+     4.885488755725911,
+     52.38355014178818
+    ],
+    "northOffsetDegrees": 223.5067,
+    "mirror": false
+   },
+   "bounds": {
+    "min": [
+     -5.124,
+     0,
+     -15.288
+    ],
+    "max": [
+     4.654,
+     11.806,
+     1.1
+    ]
+   },
+   "height": 11.806,
+   "suppress": [
+    "NL.IMBAG.Pand.0363100012173479",
+    "NL.IMBAG.Pand.0363100012173480"
+   ],
+   "replaces": [
+    "ordinary-0363100012173479",
+    "ordinary-0363100012173480"
+   ],
+   "footprint": {
+    "type": "MultiPolygon",
+    "coordinates": [
+     [
+      [
+       [
+        4.8855435,
+        52.3835185
+       ],
+       [
+        4.8854862,
+        52.3835516
+       ],
+       [
+        4.8853377,
+        52.3834493
+       ],
+       [
+        4.885388,
+        52.3834196
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8854862,
+        52.3835516
+       ],
+       [
+        4.8854392,
+        52.3835789
+       ],
+       [
+        4.8853437,
+        52.3835076
+       ],
+       [
+        4.8853645,
+        52.3834944
+       ],
+       [
+        4.8853156,
+        52.3834623
+       ],
+       [
+        4.8853377,
+        52.3834493
+       ]
+      ]
+     ]
+    ]
+   },
+   "pands": [
+    {
+     "recipeId": "haarlemmerdijk-173479",
+     "pandId": "0363100012173479",
+     "buildingId": "NL.IMBAG.Pand.0363100012173479",
+     "address": "Haarlemmerdijk 131",
+     "frontage": {
+      "x0": -5.124,
+      "x1": 0.235,
+      "widthM": 5.358
+     },
+     "bounds": {
+      "min": [
+       -5.124,
+       0,
+       -15.288
+      ],
+      "max": [
+       0.235,
+       11.02,
+       0.182
+      ]
+     },
+     "triangles": 1117,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 0,
+       "triangleCount": 132
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 0,
+       "triangleCount": 96
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 0,
+       "triangleCount": 436
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 0,
+       "triangleCount": 228
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 0,
+       "triangleCount": 88
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 0,
+       "triangleCount": 3
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 0,
+       "triangleCount": 98
+      }
+     ]
+    },
+    {
+     "recipeId": "haarlemmerdijk-173480",
+     "pandId": "0363100012173480",
+     "buildingId": "NL.IMBAG.Pand.0363100012173480",
+     "address": "Haarlemmerdijk 133A",
+     "frontage": {
+      "x0": 0.235,
+      "x1": 4.654,
+      "widthM": 4.419
+     },
+     "bounds": {
+      "min": [
+       -0.246,
+       0,
+       -15.22
+      ],
+      "max": [
+       4.654,
+       11.806,
+       1.1
+      ]
+     },
+     "triangles": 1146,
+     "ranges": [
+      {
+       "primitive": 1,
+       "firstTriangle": 0,
+       "triangleCount": 154
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 96,
+       "triangleCount": 84
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 436,
+       "triangleCount": 580
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 0,
+       "triangleCount": 204
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 88,
+       "triangleCount": 96
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 0,
+       "triangleCount": 8
+      },
+      {
+       "primitive": 12,
+       "firstTriangle": 0,
+       "triangleCount": 8
       }
      ]
     }

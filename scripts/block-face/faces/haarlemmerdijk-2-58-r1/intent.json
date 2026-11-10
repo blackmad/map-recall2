@@ -18,6 +18,7 @@
   "note": "auto-placed from the haarlemmerbuurt library (buurt Haarlemmerbuurt-West); scores and holds in scripts/block-face/faces/haarlemmerdijk-2-58/auto-place.json"
  },
  "types": [
+  "haarlemmer-shop-cornice-frieze",
   "haarlemmer-shop-cornice",
   "haarlemmer-shop-gable"
  ],
@@ -42,6 +43,13 @@
     "measuredPalette": {
      "brick": "#342d2c",
      "evidence": "strip 2022-12-15 span 3437-3588: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "overrides": {
+     "bays": [
+      2,
+      2,
+      3
+     ]
     }
    },
    "groundFloor": {
@@ -69,21 +77,21 @@
    "slug": "haarlemmerdijk-167817",
    "address": "Haarlemmerdijk 18",
    "type": {
-    "type": "haarlemmer-shop-cornice",
+    "type": "haarlemmer-shop-cornice-frieze",
     "ground": {
      "shopfront": {
-      "colour": "#4d4c4a",
+      "colour": "#e3dccb",
       "fascia": true,
       "name": "Hebbes in Speelgoed",
       "entrance": "centre",
       "glazing": "split",
       "stallriser": "low",
-      "evidence": "auto-place: osm-only (winkelfunctie, shop=toys); fascia colour measured on the strip 2022-12-15 span 3588-3743"
+      "evidence": "auto-place: osm-only (winkelfunctie, shop=toys); fascia colour measured on the strip 2022-12-15 span 3588-3743; reviewer pin: Haarlemmerdijk 18 (toy shop): cream and white shop joinery (strip-sheet review (docs/reports/haarlemmer-strip-verdict-20261110.md) and the 1 m grid at 1.8x brightness)"
      }
     },
     "mirror": true,
     "measuredPalette": {
-     "brick": "#424142",
+     "brick": "#424243",
      "evidence": "strip 2022-12-15 span 3588-3743: trim-normalised wall (buildingRecipe/measureFacade.ts)"
     },
     "paletteOverrides": {
@@ -107,7 +115,7 @@
     "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
    },
    "rhythm": {
-    "citation": "auto-place: haarlemmer-shop-cornice scored 1 on eaves 1, stucco 1; strip 2022-12-15 span 3588-3743"
+    "citation": "auto-place: haarlemmer-shop-cornice-frieze scored 1 on eaves 1, stucco 1; strip 2022-12-15 span 3588-3743"
    }
   },
   {
@@ -130,6 +138,13 @@
     "measuredPalette": {
      "brick": "#302423",
      "evidence": "strip 2022-12-15 span 3743-3899: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "overrides": {
+     "headLines": [
+      0.8,
+      0.76,
+      0.82
+     ]
     }
    },
    "groundFloor": {
@@ -171,8 +186,8 @@
    },
    {
     "pand": "0363100012167817",
-    "stripRow": 329,
-    "evidence": "review pin: Haarlemmerdijk 18: cornice top 11.6 m"
+    "stripRow": 337,
+    "evidence": "review pin: Haarlemmerdijk 18: the cornice top over the cream attic frieze at 11.4 m (strip-sheet review (docs/reports/haarlemmer-strip-verdict-20261110.md) and the 1 m grid at 1.8x brightness)"
    },
    {
     "pand": "0363100012167816",

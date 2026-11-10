@@ -69,8 +69,12 @@
     ]
    }
   },
-  "note": "Haarlemmerdijk 182 (2024-12-11, 1 m grid): rows 4.4-6.4 / 7.3-9.2 / 10.0-11.25 m, neck gable 11.8-14.6 m with scrolls; Haarlemmerdijk 8 (2022-12-15): rows 4.7-6.6 / 7.3-9.2 / 10.1-11.6 m under a point gable from 12.0 m. A separate type picked by reviewer type pins (the storey count is not readable from the eaves over a tall shop ground)",
-  "mirrorForDoor": "left"
+  "note": "Haarlemmerdijk 182 (2024-12-11, 1 m grid): rows 4.4-6.4 / 7.3-9.2 / 10.0-11.25 m, neck gable 11.8-14.6 m with scrolls; Haarlemmerdijk 8 (2022-12-15): rows 4.7-6.6 / 7.3-9.2 / 10.1-11.6 m under a point gable from 12.0 m. A separate type picked by reviewer type pins (the storey count is not readable from the eaves over a tall shop ground). columnsPerBay [1, 2]: the T-window's mullion under the transom reads as a second column (Haarlemmerdijk 23E: 6 columns over 3 axes)",
+  "mirrorForDoor": "left",
+  "columnsPerBay": [
+   1,
+   2
+  ]
  },
  "body": {
   "storeys": 4,

@@ -70,8 +70,12 @@
     ]
    }
   },
-  "note": "Haarlemmerdijk 2-26 (2022-12-15 strip, 1 m grid): shop fascia top 4.6-4.9 m, window rows 5.7-7.6 and 8.2-9.7 m, gable foot 10.0-10.3 m; neck tops 12.9-13.2 m (necks 1.4-1.6 m wide), point gable of 8 to 14.3 m. 3DBAG eaves for the same fronts read 7.1-10.3 m (rear roofs), so the eaves criterion is weak here; the skyline crown decides between this type and the cornice house. crownStrict off: on the narrow dijk the fused strip carries ghost gables of the neighbours (2022-12-15), so the skyline crown is a score, and reviewer crown pins decide. crownMatch off and eavesM [9.6, 12.0] (a 3.6 m pitch: three storeys at 9.8-11.6 m, four at 12.4-14.4 m, the tall shop ground counted in): every placed pand on these faces carries a reviewer type and crown pin, and eaves pins from the 1 m grid",
-  "mirrorForDoor": "left"
+  "note": "Haarlemmerdijk 2-26 (2022-12-15 strip, 1 m grid): shop fascia top 4.6-4.9 m, window rows 5.7-7.6 and 8.2-9.7 m, gable foot 10.0-10.3 m; neck tops 12.9-13.2 m (necks 1.4-1.6 m wide), point gable of 8 to 14.3 m. 3DBAG eaves for the same fronts read 7.1-10.3 m (rear roofs), so the eaves criterion is weak here; the skyline crown decides between this type and the cornice house. crownStrict off: on the narrow dijk the fused strip carries ghost gables of the neighbours (2022-12-15), so the skyline crown is a score, and reviewer crown pins decide. crownMatch off and eavesM [9.6, 12.0] (a 3.6 m pitch: three storeys at 9.8-11.6 m, four at 12.4-14.4 m, the tall shop ground counted in): every placed pand on these faces carries a reviewer type and crown pin, and eaves pins from the 1 m grid. columnsPerBay [1, 2]: the T-window's mullion under the transom reads as a second column (Haarlemmerdijk 23E: 6 columns over 3 axes)",
+  "mirrorForDoor": "left",
+  "columnsPerBay": [
+   1,
+   2
+  ]
  },
  "body": {
   "storeys": 3,
@@ -115,6 +119,12 @@
    "crownRise": 1.6,
    "atticWindows": 2,
    "note": "Haarlemmerdijk 8 (176101): a plain brick point gable 10.4-14.3 m over the full front with two attic lights"
+  },
+  "bell-low": {
+   "gable": "bell",
+   "crownRise": 0.85,
+   "atticWindows": 1,
+   "note": "a lower bell top: Haarlemmerdijk 4 (176174) shoulders 10.0 m, cap 12.0 m (the 1.2 crownRise drew it 0.75 m high; strip-sheet review 2026-11-10)"
   }
  },
  "grounds": {
