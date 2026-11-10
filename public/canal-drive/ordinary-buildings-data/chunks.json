@@ -99732,7 +99732,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "bee29ac68a777a2b",
+    "buildVersion": 4,
+    "bytes": 18420,
+    "triangles": 629
+   }
   },
   {
    "id": "chunk-face-kalkoen-8-16-r1",
@@ -99976,7 +99982,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "0c4877503c3a9255",
+    "buildVersion": 4,
+    "bytes": 28888,
+    "triangles": 1259
+   }
   },
   {
    "id": "chunk-face-kalkoen-8-16-r2",
@@ -100220,7 +100232,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "c901c717ed893893",
+    "buildVersion": 4,
+    "bytes": 29524,
+    "triangles": 1273
+   }
   },
   {
    "id": "chunk-face-kalkoen-18-26-r1",
@@ -100464,7 +100482,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "1db72f02222ac7b0",
+    "buildVersion": 4,
+    "bytes": 29248,
+    "triangles": 1317
+   }
   },
   {
    "id": "chunk-face-vogel-2-16-122155-r1",
@@ -100815,7 +100839,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "5d3d7509dba942bf",
+    "buildVersion": 4,
+    "bytes": 34016,
+    "triangles": 1477
+   }
   },
   {
    "id": "chunk-face-pelikaan-16-22-r1",
@@ -101160,7 +101190,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "874c712b04c176d6",
+    "buildVersion": 4,
+    "bytes": 34492,
+    "triangles": 1462
+   }
   },
   {
    "id": "chunk-face-pelikaan-3-9-r1",
@@ -101399,7 +101435,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "e3c1d4b37eaeef0c",
+    "buildVersion": 4,
+    "bytes": 29772,
+    "triangles": 1321
+   }
   },
   {
    "id": "chunk-face-vogel-3-11-r1",
@@ -101669,7 +101711,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "9e7a1e348786a3af",
+    "buildVersion": 4,
+    "bytes": 17804,
+    "triangles": 608
+   }
   },
   {
    "id": "chunk-face-vogelplantsoen-8-12-r1",
@@ -101917,7 +101965,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "7fe4b56b1e1dcab5",
+    "buildVersion": 4,
+    "bytes": 25496,
+    "triangles": 1019
+   }
   },
   {
    "id": "chunk-face-zamenhof-6-12-r1",
@@ -102165,7 +102219,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "34d7cf82b9019273",
+    "buildVersion": 4,
+    "bytes": 25712,
+    "triangles": 1016
+   }
   },
   {
    "id": "chunk-face-zamenhof-54-60-r1",
@@ -102413,7 +102473,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "7e8fd7357dd6724b",
+    "buildVersion": 4,
+    "bytes": 25864,
+    "triangles": 1006
+   }
   },
   {
    "id": "chunk-face-kalkoen-28-34-r1",
@@ -102758,7 +102824,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "3cdc19b08dc4cd93",
+    "buildVersion": 4,
+    "bytes": 34244,
+    "triangles": 1468
+   }
   }
  ]
 }
