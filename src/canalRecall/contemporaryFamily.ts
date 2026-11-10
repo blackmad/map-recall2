@@ -21,6 +21,7 @@
  */
 import WALLS from './contemporary-walls.json';
 import { unitDraw } from './buurtProfiles/profiles.js';
+import { modernPandWall } from './buurtProfiles/modernPandWalls.js';
 
 export function newbuildFamilyEnabled(): boolean {
   const g = globalThis as { __canalRecallNewbuildFamily?: boolean; location?: { search?: string } };
@@ -31,6 +32,8 @@ export function newbuildFamilyEnabled(): boolean {
 export const CONTEMPORARY_FROM_YEAR = 2005;
 /** Index of the tall French-balcony preset in BAY_STYLES.modern, present only with the flag on. */
 export const TALL_PRESET_INDEX = 9;
+/** Index of the balcony-band preset in BAY_STYLES.modern, present only with the flag on. */
+export const BAND_PRESET_INDEX = 10;
 /** Areas with fewer measured fronts than this borrow the pooled walls of all areas. */
 const MIN_AREA_SAMPLES = 8;
 /** Beyond this distance (km) from every area centre the pooled walls stand. */
@@ -45,7 +48,22 @@ export const AREA_WINDOWS: Readonly<Record<string, { tall: number; paleFrames: n
 const POOLED_WINDOWS = { tall: 0.4, paleFrames: 0.5 };
 
 type AreaWalls = { centre: [number, number]; walls: string[] };
-const AREAS = (WALLS as unknown as { areas: Record<string, AreaWalls> }).areas;
+const SET = WALLS as unknown as { areas: Record<string, AreaWalls>; pands?: Record<string, string>; bands?: string[] };
+const AREAS = SET.areas;
+/** This lane's own panorama samples per pand (`pands`), and the pands whose fronts show balcony bands (`bands`). */
+const SAMPLED: Readonly<Record<string, string>> = SET.pands ?? {};
+const BANDS: ReadonlySet<string> = new Set(SET.bands ?? []);
+const shortId = (id: string) => id.startsWith('NL.IMBAG.Pand.') ? id.slice(14) : id;
+
+/**
+ * A pand's own measured wall, `b|p` + hex, or null: the T0 per-pand modern walls (buurtProfiles/modern-pand-walls.json,
+ * calibrated by derive.ts) first, then this lane's own 2005+ panorama samples.
+ */
+export function ownContemporaryWall(id: string): string | null {
+  const t0 = modernPandWall(id);
+  if (t0) return `${t0.painted ? 'p' : 'b'}${t0.hex.slice(1)}`;
+  return SAMPLED[shortId(id)] ?? null;
+}
 const POOLED = Object.values(AREAS).flatMap(a => a.walls);
 
 /** The nearest measured area of a point, or null beyond AREA_REACH_KM. */
@@ -58,11 +76,12 @@ export function contemporaryAreaAt(lng: number, lat: number): string | null {
   return best;
 }
 
-export type ContemporaryStyle = 'brick' | 'brickDark' | 'smoothDark' | 'tall';
-export type ContemporaryLook = { area: string | null; style: ContemporaryStyle; styleIndex: number; wall: string; painted: boolean; setback: boolean };
+export type ContemporaryStyle = 'brick' | 'brickDark' | 'smoothDark' | 'tall' | 'band';
+/** `wallSource`: 'own' (the pand's own measured front), 'area' (a draw from its area's fronts) or 'pooled'. */
+export type ContemporaryLook = { area: string | null; style: ContemporaryStyle; styleIndex: number; wall: string; painted: boolean; setback: boolean; wallSource: 'own' | 'area' | 'pooled' };
 
 /** Bay style index per contemporary style (BAY_STYLES.modern: 0 brick pale frames, 1 brick dark frames, 3 smooth dark). */
-const STYLE_INDEX: Record<ContemporaryStyle, number> = { brick: 0, brickDark: 1, smoothDark: 3, tall: TALL_PRESET_INDEX };
+const STYLE_INDEX: Record<ContemporaryStyle, number> = { brick: 0, brickDark: 1, smoothDark: 3, tall: TALL_PRESET_INDEX, band: BAND_PRESET_INDEX };
 /** Storeys from which a block may step its top storey back, and the share that does. */
 export const SETBACK_MIN_HEIGHT_M = 14;
 export const SETBACK_SHARE = 0.35;
@@ -74,15 +93,18 @@ export const SETBACK_SHARE = 0.35;
 export function contemporaryLookFor(f: { id: string; year: number | null; heightM: number; use: string; at?: readonly [number, number] }): ContemporaryLook | null {
   if (!newbuildFamilyEnabled() || f.year === null || f.year < CONTEMPORARY_FROM_YEAR || f.use !== 'housing') return null;
   const area = f.at ? contemporaryAreaAt(f.at[0], f.at[1]) : null;
-  const own = area && AREAS[area].walls.length >= MIN_AREA_SAMPLES ? AREAS[area].walls : POOLED;
-  const code = own[Math.floor(unitDraw(f.id, 'contemporary-wall') * own.length)];
+  const areaWalls = area && AREAS[area].walls.length >= MIN_AREA_SAMPLES ? AREAS[area].walls : null;
+  const pool = areaWalls ?? POOLED;
+  // The pand's own measured front outranks every area draw (round 2: the draw put orange brick on a dark front).
+  const own = ownContemporaryWall(f.id);
+  const code = own ?? pool[Math.floor(unitDraw(f.id, 'contemporary-wall') * pool.length)];
   const painted = code[0] === 'p', wall = `#${code.slice(1)}`;
   const windows = (area && AREA_WINDOWS[area]) || POOLED_WINDOWS;
-  const style: ContemporaryStyle = painted ? 'smoothDark'
+  const style: ContemporaryStyle = BANDS.has(shortId(f.id)) ? 'band' : painted ? 'smoothDark'
     : unitDraw(f.id, 'contemporary-tall') < windows.tall ? 'tall'
       : unitDraw(f.id, 'contemporary-frames') < windows.paleFrames ? 'brick' : 'brickDark';
   const setback = f.heightM >= SETBACK_MIN_HEIGHT_M && unitDraw(f.id, 'contemporary-setback') < SETBACK_SHARE;
-  return { area, style, styleIndex: STYLE_INDEX[style], wall, painted, setback };
+  return { area, style, styleIndex: STYLE_INDEX[style], wall, painted, setback, wallSource: own ? 'own' : areaWalls ? 'area' : 'pooled' };
 }
 
 /** Set-back top storey: how far the top storey stands in from the walls, its height and its cladding. */

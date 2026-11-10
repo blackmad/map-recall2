@@ -20,6 +20,12 @@ import { contemporaryLookFor, newbuildFamilyEnabled, type ContemporaryLook } fro
  * table (and the baked shells' layer hash) is byte-identical without it.
  */
 export const TALL_FRENCH_BALCONY = { windows: 2, shape: 'rect', shutters: false, paintedFrames: false, family: 'punched', openingOccupancy: .46, openingHeight: .80, sash: 'plain', trimDensity: 'restrained', lintel: 'none', frameTone: 'dark', wallMaterial: 'brick', facadeAssembly: 'french-balcony' } as const;
+/**
+ * The contemporary family's balcony-band preset (`?newbuildFamily=1`, BAY_STYLES.modern[10]): wide windows in dark
+ * frames behind a pale balustrade band across every upper storey, for the fronts the panorama sheet shows banded
+ * (contemporary-walls.json `bands`).
+ */
+export const BALCONY_BAND = { windows: 2, shape: 'rect', shutters: false, paintedFrames: false, family: 'punched', openingOccupancy: .74, openingHeight: .78, sash: 'plain', trimDensity: 'restrained', lintel: 'none', frameTone: 'dark', wallMaterial: 'brick', facadeAssembly: 'balcony-band' } as const;
 
 export const BAY_KINDS = ['upper', 'ground', 'groundDoor', ...SHOP_KINDS, 'plain'] as const satisfies readonly BayKind[];
 const isShopKind = (kind: string) => (SHOP_KINDS as readonly string[]).includes(kind);
@@ -77,7 +83,7 @@ export const BAY_STYLES: Record<Archetype, readonly BayStyle[]> = {
     { windows: 1, shape: 'rect', shutters: false, paintedFrames: false, family: 'ribbon' },
     { windows: 1, shape: 'rect', shutters: false, paintedFrames: false, family: 'curtain' },
     { windows: 3, shape: 'rect', shutters: false, paintedFrames: false, family: 'punched', openingOccupancy: .57, openingHeight: .70, sash: 'paired-transom', trimDensity: 'restrained', lintel: 'none', wallMaterial: 'smooth', facadeAssembly: 'stacked-open-balcony' },
-    ...(newbuildFamilyEnabled() ? [TALL_FRENCH_BALCONY] : []),
+    ...(newbuildFamilyEnabled() ? [TALL_FRENCH_BALCONY, BALCONY_BAND] : []),
   ],
 };
 const ARCHETYPES = Object.keys(BAY_STYLES) as Archetype[];
