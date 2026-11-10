@@ -1,0 +1,41 @@
+{
+ "note": "Den Texbuurt palette pins, lane buurt-dentex-frederiksplein-20261110",
+ "pins": [
+  {
+   "pandId": "0363100012179378",
+   "type": "tex-1882-hood-bracket-erker",
+   "palette": {
+    "brick": "#43484a",
+    "wallMaterial": "painted-brick",
+    "wallTint": "measured"
+   },
+   "reason": "Den Texstraat 24: painted near-black grey, strip #3c3f3a; Opus #43484a; painted-brick so it is not lifted into the brick range"
+  },
+  {
+   "pandId": "0363100012179377",
+   "type": "tex-1882-hood-bracket-mansard",
+   "palette": {
+    "brick": "#544639"
+   },
+   "reason": "Den Texstraat 22: strip pier median #615447; Opus 60 % rule #655444, drawn as measured (wallTint measured: the city wall tint lifted #645341 to #735f4b on the sheet); palette #544639 fitted by fit-wall-palette.ts so the render lands on #655444"
+  },
+  {
+   "pandId": "0363100012179379",
+   "type": "tex-1882-hood-bracket-mansard",
+   "palette": {
+    "brick": "#424c51",
+    "wallMaterial": "painted-brick",
+    "wallTint": "measured"
+   },
+   "reason": "Den Texstraat 20: painted near-black grey, strip #3f494a/#303b3c; Opus #424c51; painted-brick"
+  },
+  {
+   "pandId": "0363100012179380",
+   "type": "tex-1882-hood-bracket-balcony",
+   "palette": {
+    "brick": "#372e25"
+   },
+   "reason": "Den Texstraat 18: strip median #3c362c; Opus 60 % rule #504436, drawn as measured; palette #372e25 fitted by fit-wall-palette.ts so the render lands on #504436"
+  }
+ ]
+}

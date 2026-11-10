@@ -1,0 +1,1262 @@
+{
+ "street": "Den Texstraat",
+ "seed": "0363100012179441",
+ "members": [
+  "0363100012179378",
+  "0363100012179377",
+  "0363100012179379",
+  "0363100012179380"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "run of tex-8-58: 179507 held (auto-place.json)"
+  },
+  {
+   "side": "right",
+   "reason": "run of tex-8-58: 179514 held (auto-place.json)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012063571",
+   "reason": "frontage 167.6 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012063634",
+   "reason": "frontage 126.0 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012064586",
+   "reason": "frontage 125.9 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012067895",
+   "reason": "frontage 125.9 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012068187",
+   "reason": "frontage 189.7 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012069726",
+   "reason": "frontage 181.7 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012079385",
+   "reason": "frontage 125.9 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012080460",
+   "reason": "frontage 174.6 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012080628",
+   "reason": "frontage 204.4 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012082246",
+   "reason": "frontage 199.9 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012087624",
+   "reason": "no frontage on Den Texstraat: No footprint edge faces Den Texstraat"
+  },
+  {
+   "pandId": "0363100012096414",
+   "reason": "no frontage on Den Texstraat: No footprint edge faces Den Texstraat"
+  },
+  {
+   "pandId": "0363100012102930",
+   "reason": "frontage 196.2 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012119117",
+   "reason": "no frontage on Den Texstraat: No footprint edge faces Den Texstraat"
+  },
+  {
+   "pandId": "0363100012119240",
+   "reason": "frontage 126.2 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012130580",
+   "reason": "frontage 127.1 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012132765",
+   "reason": "frontage 197.4 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012139518",
+   "reason": "frontage 200.0 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012143922",
+   "reason": "frontage 176.6 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012153168",
+   "reason": "frontage 170.3 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012153491",
+   "reason": "frontage 196.1 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012153501",
+   "reason": "frontage 168.6 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012153599",
+   "reason": "frontage 168.7 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012153746",
+   "reason": "frontage 168.6 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012155105",
+   "reason": "frontage 179.0 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012155841",
+   "reason": "frontage 125.9 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012159188",
+   "reason": "frontage 170.4 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012161761",
+   "reason": "frontage 174.9 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012161790",
+   "reason": "frontage 169.2 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012162364",
+   "reason": "frontage 196.2 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012162379",
+   "reason": "frontage 125.9 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012162533",
+   "reason": "frontage 170.4 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012162549",
+   "reason": "frontage 174.9 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012162968",
+   "reason": "frontage 196.2 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012163048",
+   "reason": "frontage 170.4 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012163824",
+   "reason": "frontage 168.1 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012164459",
+   "reason": "frontage 125.9 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012164582",
+   "reason": "frontage 170.4 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012164586",
+   "reason": "frontage 168.6 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012165259",
+   "reason": "frontage 125.8 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012165279",
+   "reason": "frontage 170.3 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012166101",
+   "reason": "frontage 125.9 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012166152",
+   "reason": "frontage 136.1 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012166579",
+   "reason": "frontage 125.9 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012167014",
+   "reason": "frontage 168.0 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012167189",
+   "reason": "frontage 196.2 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012167297",
+   "reason": "frontage 168.7 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012168097",
+   "reason": "frontage 125.2 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012168101",
+   "reason": "frontage 124.9 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012168102",
+   "reason": "frontage 135.3 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012168103",
+   "reason": "frontage 125.1 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012168104",
+   "reason": "frontage 158.7 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012168105",
+   "reason": "frontage 159.6 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012168106",
+   "reason": "frontage 159.9 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012168107",
+   "reason": "frontage 160.0 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012168108",
+   "reason": "frontage 160.2 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012168242",
+   "reason": "frontage 167.4 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012168284",
+   "reason": "frontage 173.4 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012168285",
+   "reason": "no frontage on Den Texstraat: No footprint edge faces Den Texstraat"
+  },
+  {
+   "pandId": "0363100012168315",
+   "reason": "frontage 170.5 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012168316",
+   "reason": "frontage 124.9 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012168386",
+   "reason": "frontage 161.5 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012168487",
+   "reason": "no frontage on Den Texstraat: No footprint edge faces Den Texstraat"
+  },
+  {
+   "pandId": "0363100012168488",
+   "reason": "no frontage on Den Texstraat: No footprint edge faces Den Texstraat"
+  },
+  {
+   "pandId": "0363100012168499",
+   "reason": "frontage 149.3 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012168041",
+   "reason": "frontage 72.9 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012168042",
+   "reason": "frontage 73.0 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012168043",
+   "reason": "frontage 73.0 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012168093",
+   "reason": "frontage 73.0 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012168094",
+   "reason": "frontage 73.0 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012168095",
+   "reason": "frontage 73.0 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012168096",
+   "reason": "frontage 72.9 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012168123",
+   "reason": "frontage 45.6 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012168124",
+   "reason": "frontage 37.8 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012168128",
+   "reason": "frontage 37.6 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012168175",
+   "reason": "frontage 72.9 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012168176",
+   "reason": "frontage 72.8 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012168177",
+   "reason": "frontage 72.9 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012168178",
+   "reason": "frontage 72.5 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012168275",
+   "reason": "no frontage on Den Texstraat: No footprint edge faces Den Texstraat"
+  },
+  {
+   "pandId": "0363100012168277",
+   "reason": "no frontage on Den Texstraat: No footprint edge faces Den Texstraat"
+  },
+  {
+   "pandId": "0363100012169016",
+   "reason": "frontage 73.0 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012171191",
+   "reason": "sightline to Den Texstraat crosses 0363100012171196"
+  },
+  {
+   "pandId": "0363100012171192",
+   "reason": "frontage 72.9 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012171193",
+   "reason": "sightline to Den Texstraat crosses 0363100012171197"
+  },
+  {
+   "pandId": "0363100012171195",
+   "reason": "frontage 72.4 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012171198",
+   "reason": "frontage 71.8 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012171718",
+   "reason": "frontage 178.6 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012175474",
+   "reason": "no frontage on Den Texstraat: No footprint edge faces Den Texstraat"
+  },
+  {
+   "pandId": "0363100012175476",
+   "reason": "no frontage on Den Texstraat: No footprint edge faces Den Texstraat"
+  },
+  {
+   "pandId": "0363100012176742",
+   "reason": "no frontage on Den Texstraat: No footprint edge faces Den Texstraat"
+  },
+  {
+   "pandId": "0363100012176743",
+   "reason": "no frontage on Den Texstraat: No footprint edge faces Den Texstraat"
+  },
+  {
+   "pandId": "0363100012178178",
+   "reason": "frontage 157.6 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012178179",
+   "reason": "frontage 124.9 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012178180",
+   "reason": "frontage 124.9 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012178181",
+   "reason": "frontage 125.0 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012178182",
+   "reason": "frontage 125.0 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012178183",
+   "reason": "frontage 125.1 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012171217",
+   "reason": "frontage 71.7 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012171218",
+   "reason": "frontage 72.9 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012171222",
+   "reason": "frontage 73.0 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012171226",
+   "reason": "frontage 79.7 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012171227",
+   "reason": "frontage 38.8 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012171228",
+   "reason": "sightline to Den Texstraat crosses 0363100012171193"
+  },
+  {
+   "pandId": "0363100012171234",
+   "reason": "frontage 85.5 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012175475",
+   "reason": "no frontage on Den Texstraat: No footprint edge faces Den Texstraat"
+  },
+  {
+   "pandId": "0363100012175477",
+   "reason": "frontage 135.8 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012176741",
+   "reason": "no frontage on Den Texstraat: No footprint edge faces Den Texstraat"
+  },
+  {
+   "pandId": "0363100012176744",
+   "reason": "no frontage on Den Texstraat: No footprint edge faces Den Texstraat"
+  },
+  {
+   "pandId": "0363100012178184",
+   "reason": "frontage 72.5 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012178185",
+   "reason": "frontage 72.5 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012178186",
+   "reason": "frontage 72.5 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012178187",
+   "reason": "frontage 72.7 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012178188",
+   "reason": "frontage 72.7 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012178189",
+   "reason": "frontage 72.7 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012179083",
+   "reason": "frontage 37.8 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012179084",
+   "reason": "frontage 37.7 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012179085",
+   "reason": "frontage 38.0 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012179086",
+   "reason": "frontage 37.4 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012179087",
+   "reason": "frontage 39.5 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012179088",
+   "reason": "frontage 37.8 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012179089",
+   "reason": "sightline to Den Texstraat crosses 0363100012179091"
+  },
+  {
+   "pandId": "0363100012179100",
+   "reason": "frontage 35.9 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012179101",
+   "reason": "sightline to Den Texstraat crosses 0363100012179791"
+  },
+  {
+   "pandId": "0363100012179102",
+   "reason": "frontage 37.9 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012179103",
+   "reason": "sightline to Den Texstraat crosses 0363100012179090"
+  },
+  {
+   "pandId": "0363100012179104",
+   "reason": "frontage 39.8 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012179369",
+   "reason": "frontage 37.8 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012179370",
+   "reason": "frontage 38.0 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012179371",
+   "reason": "frontage 38.0 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012179372",
+   "reason": "frontage 37.3 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012179373",
+   "reason": "frontage 36.4 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012179374",
+   "reason": "frontage 36.4 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012179375",
+   "reason": "frontage 38.0 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012179376",
+   "reason": "frontage 36.4 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012179431",
+   "reason": "sightline to Den Texstraat crosses 0363100012179514"
+  },
+  {
+   "pandId": "0363100012179434",
+   "reason": "sightline to Den Texstraat crosses 0363100012179436"
+  },
+  {
+   "pandId": "0363100012179443",
+   "reason": "frontage 42.3 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012179444",
+   "reason": "frontage 41.2 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012179445",
+   "reason": "frontage 39.3 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012179446",
+   "reason": "sightline to Den Texstraat crosses 0363100012179512"
+  },
+  {
+   "pandId": "0363100012179447",
+   "reason": "sightline to Den Texstraat crosses 0363100012179382"
+  },
+  {
+   "pandId": "0363100012179448",
+   "reason": "frontage 35.0 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012179449",
+   "reason": "frontage 37.6 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012179450",
+   "reason": "frontage 37.0 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012179451",
+   "reason": "sightline to Den Texstraat crosses 0363100012179429"
+  },
+  {
+   "pandId": "0363100012179452",
+   "reason": "frontage 37.4 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012179453",
+   "reason": "frontage 39.1 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012179454",
+   "reason": "frontage 39.1 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012179502",
+   "reason": "frontage 39.1 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012179504",
+   "reason": "frontage 39.1 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012179505",
+   "reason": "sightline to Den Texstraat crosses 0363100012179439"
+  },
+  {
+   "pandId": "0363100012179515",
+   "reason": "frontage 125.3 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012179516",
+   "reason": "frontage 135.4 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012179517",
+   "reason": "frontage 125.3 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012179518",
+   "reason": "frontage 125.4 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012179520",
+   "reason": "frontage 125.2 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012179523",
+   "reason": "frontage 157.4 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012179524",
+   "reason": "frontage 157.2 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012179525",
+   "reason": "frontage 157.9 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012179739",
+   "reason": "frontage 130.4 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012179740",
+   "reason": "frontage 139.9 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012179741",
+   "reason": "frontage 144.9 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012179742",
+   "reason": "frontage 129.3 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012179743",
+   "reason": "frontage 142.2 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012179744",
+   "reason": "frontage 143.1 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012179745",
+   "reason": "frontage 144.0 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012179746",
+   "reason": "frontage 137.8 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012179747",
+   "reason": "frontage 139.9 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012179801",
+   "reason": "frontage 153.4 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012179802",
+   "reason": "frontage 154.7 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012179803",
+   "reason": "frontage 167.1 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012179810",
+   "reason": "frontage 154.5 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012179811",
+   "reason": "frontage 154.0 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012179513",
+   "reason": "frontage 39.1 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012179519",
+   "reason": "frontage 72.7 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012179521",
+   "reason": "frontage 72.8 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012179522",
+   "reason": "frontage 73.0 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012179716",
+   "reason": "frontage 36.8 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012179720",
+   "reason": "frontage 38.3 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012179721",
+   "reason": "frontage 37.9 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012179722",
+   "reason": "sightline to Den Texstraat crosses 0363100012179792"
+  },
+  {
+   "pandId": "0363100012179796",
+   "reason": "frontage 37.9 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012179797",
+   "reason": "frontage 36.5 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012179798",
+   "reason": "frontage 36.8 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012179799",
+   "reason": "frontage 34.6 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012179800",
+   "reason": "frontage 37.1 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012179812",
+   "reason": "frontage 76.3 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012179813",
+   "reason": "frontage 79.0 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012179814",
+   "reason": "frontage 81.8 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012179818",
+   "reason": "frontage 151.0 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012179819",
+   "reason": "frontage 152.9 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012179820",
+   "reason": "frontage 135.2 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012179821",
+   "reason": "frontage 132.4 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012179978",
+   "reason": "frontage 125.1 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012179979",
+   "reason": "frontage 125.0 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012179980",
+   "reason": "frontage 131.5 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012179981",
+   "reason": "frontage 131.5 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012180051",
+   "reason": "frontage 131.4 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012180052",
+   "reason": "frontage 124.9 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012180053",
+   "reason": "frontage 125.1 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012180054",
+   "reason": "frontage 135.8 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012180055",
+   "reason": "frontage 136.0 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012180056",
+   "reason": "frontage 136.3 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012180057",
+   "reason": "frontage 124.7 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012180058",
+   "reason": "frontage 135.5 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012180059",
+   "reason": "frontage 125.0 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012180060",
+   "reason": "frontage 125.0 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012180061",
+   "reason": "frontage 167.7 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012180062",
+   "reason": "frontage 168.0 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012180063",
+   "reason": "frontage 167.5 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012180064",
+   "reason": "frontage 125.0 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012180065",
+   "reason": "frontage 154.0 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012180066",
+   "reason": "frontage 154.3 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012180067",
+   "reason": "frontage 154.4 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012180068",
+   "reason": "frontage 154.9 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012180069",
+   "reason": "frontage 163.2 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012180070",
+   "reason": "frontage 152.7 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012180102",
+   "reason": "frontage 141.9 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012180103",
+   "reason": "frontage 125.7 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012180171",
+   "reason": "frontage 141.3 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012180172",
+   "reason": "frontage 125.2 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012180173",
+   "reason": "frontage 137.9 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012180174",
+   "reason": "frontage 126.3 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012180175",
+   "reason": "frontage 127.0 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012180176",
+   "reason": "frontage 127.9 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012179815",
+   "reason": "frontage 84.5 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012179816",
+   "reason": "frontage 88.3 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012179817",
+   "reason": "frontage 97.4 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012180092",
+   "reason": "frontage 43.3 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012180095",
+   "reason": "sightline to Den Texstraat crosses 0363100012180094"
+  },
+  {
+   "pandId": "0363100012180096",
+   "reason": "sightline to Den Texstraat crosses 0363100012180094"
+  },
+  {
+   "pandId": "0363100012180097",
+   "reason": "frontage 72.5 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012180098",
+   "reason": "frontage 72.5 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012180099",
+   "reason": "frontage 72.7 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012180100",
+   "reason": "frontage 73.4 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012180101",
+   "reason": "frontage 74.3 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012180222",
+   "reason": "sightline to Den Texstraat crosses 0363100012171191"
+  },
+  {
+   "pandId": "0363100012180223",
+   "reason": "frontage 37.8 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012180250",
+   "reason": "frontage 124.7 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012247902",
+   "reason": "frontage 155.9 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012251345",
+   "reason": "frontage 136.5 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012180224",
+   "reason": "frontage 37.8 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012180225",
+   "reason": "sightline to Den Texstraat crosses 0363100012171191"
+  },
+  {
+   "pandId": "0363100012180227",
+   "reason": "frontage 37.7 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012180228",
+   "reason": "frontage 36.3 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012180229",
+   "reason": "sightline to Den Texstraat crosses 0363100012168037"
+  },
+  {
+   "pandId": "0363100012180402",
+   "reason": "frontage 37.4 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012180403",
+   "reason": "frontage 37.7 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012180404",
+   "reason": "frontage 37.3 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012185507",
+   "reason": "frontage 72.9 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012185997",
+   "reason": "frontage 73.0 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012187219",
+   "reason": "no frontage on Den Texstraat: No footprint edge faces Den Texstraat"
+  },
+  {
+   "pandId": "0363100012188543",
+   "reason": "frontage 150.6 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012191582",
+   "reason": "frontage 191.2 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012232488",
+   "reason": "frontage 197.3 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012233621",
+   "reason": "frontage 170.3 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012233685",
+   "reason": "frontage 165.2 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012235946",
+   "reason": "frontage 126.0 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012237001",
+   "reason": "frontage 126.0 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012237078",
+   "reason": "frontage 125.8 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012237180",
+   "reason": "frontage 171.5 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012237263",
+   "reason": "frontage 126.0 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012237337",
+   "reason": "frontage 180.6 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012253929",
+   "reason": "frontage 38.3 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012253946",
+   "reason": "frontage 37.4 m from Den Texstraat"
+  },
+  {
+   "pandId": "0363100012168126",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012168127",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012171197",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012179090",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012179091",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012179092",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012179094",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012179095",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012179381",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012179382",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012179383",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012179429",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012179430",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012179435",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012179436",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012179437",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012179438",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012179439",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012179440",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012179509",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012179510",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012179511",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012179512",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012179717",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012179718",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012179719",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012179789",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012179790",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012179791",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012179792",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012179794",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012179795",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012180094",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 180,
+ "pands": [
+  {
+   "pandId": "0363100012179378",
+   "alongM": -54.92,
+   "widthM": 6.26,
+   "eavesM": 14.45,
+   "roofMaxM": 16.83,
+   "storeys3dbag": 4,
+   "builtYear": 1883,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012179377",
+   "alongM": -48.72,
+   "widthM": 6.14,
+   "eavesM": 14.24,
+   "roofMaxM": 14.27,
+   "storeys3dbag": 4,
+   "builtYear": 1882,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012179379",
+   "alongM": -42.54,
+   "widthM": 6.22,
+   "eavesM": 14.39,
+   "roofMaxM": 14.41,
+   "storeys3dbag": 0,
+   "builtYear": 1884,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012179380",
+   "alongM": -36.32,
+   "widthM": 6.21,
+   "eavesM": 14.42,
+   "roofMaxM": 17.12,
+   "storeys3dbag": 5,
+   "builtYear": 1881,
+   "uncertainty": []
+  }
+ ],
+ "runOf": "tex-8-58"
+}

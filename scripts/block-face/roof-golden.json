@@ -5303,6 +5303,94 @@
     "hash": "8c4b8fc16423846c",
     "class": "front"
    }
+  },
+  "tex-1-59-r1": {
+   "179383": {
+    "hash": "f09f0dc316b6cd79",
+    "class": "front"
+   },
+   "179429": {
+    "hash": "92b4807211a16750",
+    "class": "front"
+   },
+   "179430": {
+    "hash": "43f013acd88e8503",
+    "class": "front"
+   },
+   "179435": {
+    "hash": "7cba2006f044bdcd",
+    "class": "front"
+   },
+   "179436": {
+    "hash": "97598878770474eb",
+    "class": "front"
+   }
+  },
+  "tex-1-59-r2": {
+   "179509": {
+    "hash": "e230308514d4b13a",
+    "class": "front"
+   },
+   "179510": {
+    "hash": "923e47326689ed3e",
+    "class": "front"
+   },
+   "179511": {
+    "hash": "c72165e46fbd98ad",
+    "class": "front"
+   },
+   "179512": {
+    "hash": "f8afc37fc8cc4d7c",
+    "class": "front"
+   }
+  },
+  "tex-8-58-r1": {
+   "179377": {
+    "hash": "e9f5e16a3582382b",
+    "class": "front"
+   },
+   "179378": {
+    "hash": "866bf18c13f1070c",
+    "class": "front"
+   },
+   "179379": {
+    "hash": "f9759f6bdf72b8d1",
+    "class": "front"
+   },
+   "179380": {
+    "hash": "1c9852ebe6728eaf",
+    "class": "front"
+   }
+  },
+  "witsen-1-19-r1": {
+   "171225": {
+    "hash": "0913ead078ef8a05",
+    "class": "front"
+   },
+   "177759": {
+    "hash": "cdb0088b34801a7e",
+    "class": "front"
+   },
+   "177760": {
+    "hash": "b2e712995b290efe",
+    "class": "front"
+   },
+   "177761": {
+    "hash": "3b3467e719e43538",
+    "class": "front"
+   },
+   "177762": {
+    "hash": "2d9664ccc3c151ad",
+    "class": "front"
+   },
+   "178935": {
+    "hash": "f95c9a6dd318460d",
+    "class": "front"
+   },
+   "178936": {
+    "hash": "e8e0596fd15c6d2b",
+    "class": "front"
+   }
   }
  },
  "intents": {
@@ -5553,6 +5641,10 @@
   "vogelplantsoen-8-12-r1": "fa18c325e8c29bcb",
   "zamenhof-6-12-r1": "44d5d188fd3e3cec",
   "zamenhof-54-60-r1": "7f6f752b8faa4e4c",
-  "nieuwendammerdijk-135-163-r1": "ebf9b709afcf27ab"
+  "nieuwendammerdijk-135-163-r1": "ebf9b709afcf27ab",
+  "tex-1-59-r1": "ee1d07de60da690d",
+  "tex-1-59-r2": "c3c27c2405c1e9fc",
+  "tex-8-58-r1": "561c445eb0b7713d",
+  "witsen-1-19-r1": "82a9c57534cfc2ad"
  }
 }

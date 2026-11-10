@@ -35,6 +35,7 @@ import {STRIP_LIKENESS, spanLikeness} from '../../src/canalRecall/blockFace/stri
 import {lowFrontFootMaxM, runFootOffset} from '../../src/canalRecall/blockFace/stripFoot.ts';
 import {applyCrownPins, applyMirrorPins, crownPinProblems, holdBrokenPairs, mirrorPinProblems, typePinProblems, typesForFace, typesForPand, type CrownPin, type MirrorPin, type TypePin} from '../../src/canalRecall/blockFace/reviewCrowns.ts';
 import {eavesPinProblems as faceEavesPinProblems, pinnedEaves, type EavesPin as FaceEavesPin} from '../../src/canalRecall/blockFace/reviewFaceEaves.ts';
+import {applyRoofPins, roofPinProblems, type RoofPin} from '../../src/canalRecall/blockFace/reviewRoofs.ts';
 import {applyDoorPins, doorPinProblems, type DoorPin} from '../../src/canalRecall/blockFace/reviewDoors.ts';
 import {applyEavesPins, eavesPinProblems, type EavesPin} from '../../src/canalRecall/blockFace/reviewEaves.ts';
 import {acceptFloorFor, acceptPinProblems, applyPalettePins, palettePinProblems, type AcceptPin, type PalettePin} from '../../src/canalRecall/blockFace/reviewPalettes.ts';
@@ -124,6 +125,8 @@ async function loadTypes(district: string): Promise<MatchableType[]> {
 const EVIDENCE_GATE = !process.argv.includes('--no-evidence-gate');
 const PHOTO_EAVES = {on: process.argv.includes('--photo-eaves'), minConfidence: 0.6, minM: 6, minDeltaM: 0.4, maxRiseM: 1.5, maxDropM: 4} as const;
 /** Pands whose eaves the strip skyline measured (--photo-eaves), keyed by pand id; read back by `withPhotoEaves`. */
+/** Reviewer roof pins of the buurt (`<buurt>-review-roofs.json`, blockFace/reviewRoofs.ts); empty = byte-identical. */
+let roofPins: RoofPin[] = [];
 const photoEaves = new Map<string, {row: number; eavesM: number; bagM: number; confidence: number}>();
 /** Reviewer eaves pins (`<buurt>-review-eaves.json`), read once in main. */
 let eavesPins: EavesPin[] = [];
@@ -146,8 +149,10 @@ function withPhotoEaves(intent: ReturnType<typeof runIntent>, types: MatchableTy
     return e ? [{pand: h.pandId, stripRow: e.row, ...(e.eavesM < e.bagM ? {frontRoof: {}} : {}),
       evidence: `auto-place --photo-eaves: strip skyline cornice ${e.eavesM} m (confidence ${e.confidence}) vs 3DBAG/PDOK eaves ${e.bagM} m`}] : [];
   });
-  const pinned = applyEavesPins(m.length ? m : undefined, eavesPins, intent.houses.map(h => h.pandId), id => evs.find(e => e.pandId === id)?.eavesM, strip);
-  return pinned?.length ? {...intent, continuity: {...intent.continuity, measuredEaves: pinned}} : intent;
+  // Per-pand eaves pins (reviewEaves.ts), then per-pand roof pins (reviewRoofs.ts); neither present = unchanged.
+  const eaved = applyEavesPins(m.length ? m : undefined, eavesPins, intent.houses.map(h => h.pandId), id => evs.find(e => e.pandId === id)?.eavesM, strip) ?? [];
+  const pinned = applyRoofPins(eaved, roofPins, intent.houses.map(h => h.pandId), strip);
+  return pinned.length ? {...intent, continuity: {...intent.continuity, measuredEaves: pinned}} : intent;
 }
 
 async function faceEvidence(faceId: string, buurt?: string) {
@@ -299,6 +304,10 @@ if (process.argv[1]?.endsWith('block-face/auto-place.ts')) {
   // Pands held after a review of their run's strip sheet (scripts/block-face/buurten/<buurt>-review-holds.json).
   const holdsFile = path.join('scripts/block-face/buurten', `${buurt}-review-holds.json`);
   const reviewHolds = new Map<string, string>(existsSync(holdsFile) ? (await readJson(holdsFile)).holds.map((h: {pandId: string; reason: string}) => [h.pandId, h.reason]) : []);
+  const roofsFile = path.join('scripts/block-face/buurten', `${buurt}-review-roofs.json`);
+  roofPins = existsSync(roofsFile) ? (await readJson(roofsFile)).pins : [];
+  const roofPinErrs = roofPinProblems(roofPins);
+  if (roofPinErrs.length) throw Error(`${roofsFile}: ${roofPinErrs.join('; ')}`);
   // Crowns a reviewer pinned after reading the strip (blockFace/reviewCrowns.ts): flat crowns the skyline cannot tell apart.
   const crownsFile = path.join('scripts/block-face/buurten', `${buurt}-review-crowns.json`);
   const crownPins: CrownPin[] = existsSync(crownsFile) ? (await readJson(crownsFile)).pins : [];

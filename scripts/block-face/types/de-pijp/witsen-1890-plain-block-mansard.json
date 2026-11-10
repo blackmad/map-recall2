@@ -1,0 +1,162 @@
+{
+ "schemaVersion": 1,
+ "kind": "house-type",
+ "id": "witsen-1890-plain-block-mansard",
+ "district": "de-pijp",
+ "description": "Nicolaas Witsenstraat 7-19 (1873-91 by BAG, one facade design): 6.1-6.4 m fronts of a raised ground storey and three tall upper storeys of dark brown brick; three axes of white flat-headed windows with a small white block over each head and white sills; a heavy white cornice at 14.0-15.4 m; a black slate mansard with a white box dormer over the middle axis; stone balustrade balconies on brackets on some middle axes; iron balconies on white consoles (the platform and brackets are painted timber in the kit, stone in the photo)",
+ "fit": {
+  "widthM": [
+   5.8,
+   6.6
+  ],
+  "storeys": [
+   5
+  ]
+ },
+ "match": {
+  "years": [
+   1873,
+   1892
+  ],
+  "yearSlack": 0,
+  "frontEavesM": 15.2,
+  "frontSkylineM": 17.3,
+  "stucco": false,
+  "baysByWidth": [
+   {
+    "maxWidthM": 99,
+    "bays": 3
+   }
+  ],
+  "mirrorForDoor": "left",
+  "note": "Nicolaas Witsenstraat 7-19 on the 2024-12-04 strip: windows 1.0-3.5, 4.5-6.75, 7.9-10.0, 11.1-13.25 m; cornice 14.0-15.4 m; slate to 17.3 m; 3DBAG 5 bouwlagen, eaves 17.6-18.1 m (mansard)"
+ },
+ "body": {
+  "storeys": 4,
+  "bays": 3,
+  "storeyHeights": [
+   4.1,
+   3.55,
+   3.2,
+   3.5
+  ],
+  "windows": "t-window",
+  "windowSurround": "keystone",
+  "windowHead": {
+   "kind": "flat"
+  },
+  "windowHeights": [
+   0.62,
+   0.63,
+   0.66,
+   0.61
+  ],
+  "headLines": [
+   0.85,
+   0.81,
+   0.89,
+   0.83
+  ],
+  "windowShare": 0.55,
+  "cornice": "simple",
+  "entablature": {
+   "rise": 1.4,
+   "cap": 0.4,
+   "frieze": "trim",
+   "architrave": 0.1
+  },
+  "balconies": {
+   "storeys": [
+    1,
+    2
+   ],
+   "bays": [
+    1
+   ],
+   "style": "timber-bracketed",
+   "rail": "iron"
+  }
+ },
+ "crowns": {
+  "mansard-box-dormer": {
+   "gable": "cornice",
+   "cornice": "simple",
+   "dormers": 1,
+   "dormerStyle": "flat",
+   "dormerBody": "stone",
+   "dormerAt": [
+    {
+     "from": 0.36,
+     "to": 0.64
+    }
+   ],
+   "dormerSize": {
+    "sill": 0.25,
+    "rise": 1.7,
+    "setback": 0.4
+   },
+   "note": "a white flat-topped dormer with pilasters about 1.7 m wide over the middle axis, 15.6-17.8 m, on the black slate mansard"
+  }
+ },
+ "grounds": {
+  "door-left": {
+   "doorBay": 0,
+   "basement": "none",
+   "note": "house door on the left axis"
+  },
+  "door-right": {
+   "doorBay": 2,
+   "basement": "none",
+   "note": "mirrored"
+  }
+ },
+ "palettes": {
+  "dark-brown-1890": {
+   "brick": "#4b3f34",
+   "frame": "white-painted",
+   "door": "#2a2a2a",
+   "stone": "#e4e1d6",
+   "cornice": "#e4e1d6",
+   "stoneMaterial": "painted"
+  }
+ },
+ "roof": {
+  "material": "slate",
+  "source": "front",
+  "form": "attic",
+  "pitchDeg": 70,
+  "evidence": "Nicolaas Witsenstraat 7-19: the black slate mansard 15.4-17.3 m behind the white cornice, dormers to 17.8 m"
+ },
+ "rhythm": {
+  "bays": "3 equal axes",
+  "identicalBays": "storeys 1-3 alike",
+  "windowsPerStorey": "ground: door + 2 windows | 1-3: 3",
+  "symmetry": "symmetric above the ground",
+  "groundFloor": "house door and two windows",
+  "signage": "none",
+  "roofline": "heavy white cornice, black slate mansard, one box dormer",
+  "photoRows": [
+   1,
+   3,
+   3,
+   3
+  ],
+  "photoGroundRows": 1,
+  "photoGables": 0
+ },
+ "evidence": [
+  {
+   "face": "witsen-1-19",
+   "pands": [
+    "177761",
+    "177760",
+    "171225",
+    "178936"
+   ],
+   "citation": "strip.jpg 2024-12-04 with a metre grid (grid-crop): window rows 1.0-3.5, 4.5-6.75, 7.9-10.0, 11.1-13.25 m, white cornice 14.0-15.4 m, slate 15.4-17.3 m"
+  }
+ ],
+ "notes": [
+  "brick #5e4f41 is the verdict colour; the palette holds #4b3f34 (scripts/block-face/fit-wall-palette.ts) so the lit sheet render lands on it"
+ ]
+}
