@@ -74,12 +74,12 @@ const excluded = (p: Props) => (p.appearanceStyleSource !== undefined && p.appea
 export const SPEC_WALLS_HELD = true;
 
 /**
- * Held again (2026-11-10, H1c #350) until the odd-axis cells land and the #348 gate passes on them. H1b (#349) fixed the
- * doubling (frontageLayoutScale rounded bays / axesPerCell up: 5 bays -> 3 cells -> 6 columns; it now draws the nearest
- * whole-cell count, ties down, held to MIN_COLUMN_M, streetFacadeRendering.ts specCellCount), but 2-axis cells still
- * draw only even counts and most canal fronts are 3-bay. The integrator keeps it held on main. docs/house-line.md §1.
+ * Released 2026-11-10 (H1c #350): odd stated counts on two-window cells draw as half-cell axis units
+ * (streetFacadeRendering.ts axisUnitPlan), and the #348 gate passes (closer on 12 of 19 scorable pands, further on none).
+ * Auto-placed type bays the strip did not confirm are a 'default' and never written. Roll back by holding it again (a
+ * world-v1 recompile carries it). docs/house-line.md §1 "Odd bays".
  */
-export const SPEC_BAYS_HELD = true;
+export const SPEC_BAYS_HELD = false;
 
 /** The property patch a spec view makes before decorateFacade; empty when nothing changes. */
 export function houseSpecPatch(view: HouseSpecView, p: Props): Props {
