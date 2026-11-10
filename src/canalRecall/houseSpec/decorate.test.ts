@@ -43,7 +43,7 @@ test('facts step: era-only year moves, finish, a spec recipe only when the meshe
   const env = process.env.SPEC_WALLS;
   process.env.SPEC_WALLS = '0'; resetSpecWallsFlag();
   assert.deepEqual(houseSpecPatch(measured, { constructionYear: 1680 }).specRecipe, SPEC_BAYS_HELD ? undefined : { bays: 3, period: 'canal', crownShape: 'neck' });
-  assert.deepEqual(houseSpecPatch({ ...measured, storeys: 4 }, { constructionYear: 1680 }).specRecipe, { ...(SPEC_BAYS_HELD ? {} : { bays: 3 }), storeys: 4, period: 'canal', crownShape: 'neck' }, 'storeys do not depend on bays');
+  assert.deepEqual(houseSpecPatch({ ...measured, storeys: 4 }, { constructionYear: 1680 }).specRecipe, { ...(SPEC_BAYS_HELD ? {} : { bays: 3 }), storeys: 4, storeysFit: true, period: 'canal', crownShape: 'neck' }, 'storeys do not depend on bays');
   assert.equal(houseSpecPatch({ wallHex: '#7a4a3a', src: {} }, {}).specRecipe, undefined);
   assert.deepEqual(houseSpecPatch({ wallMaterial: 'painted-brick', wallHex: '#343235', src: {} }, {}).registerFinish, 'light', 'flag off: painted is a light finish');
   if (env === undefined) delete process.env.SPEC_WALLS; else process.env.SPEC_WALLS = env;
@@ -52,7 +52,7 @@ test('facts step: era-only year moves, finish, a spec recipe only when the meshe
   assert.equal(houseSpecPatch({ wallMaterial: 'painted-brick', wallHex: '#343235', src: {} }, {}).registerFinish, 'brick');
   assert.equal(houseSpecPatch({ wallMaterial: 'painted-brick', src: {} }, {}).registerFinish, 'light');
   // Storeys (lane H9) write a recipe of their own; a one-storey count is ignored.
-  assert.deepEqual(houseSpecPatch({ storeys: 4, src: {} }, {}).specRecipe, { storeys: 4 });
+  assert.deepEqual(houseSpecPatch({ storeys: 4, src: {} }, {}).specRecipe, { storeys: 4, storeysFit: true });
   assert.equal(houseSpecPatch({ storeys: 1, src: {} }, {}).specRecipe, undefined);
   assert.equal(houseSpecPatch({ gable: 'neck', src: {} }, {}).specRecipe, undefined);
 });
@@ -159,6 +159,98 @@ test('register gable gate: drawn only over a 3DBAG crown, else held as historicG
   // a photo front with no planner gable (flat) drops the register's, which is kept as historicGable
   const photoFlat = withHouseSpecCrown(feature({ monumentGable: 'bell', eaves: 9, ridge: 14, houseSpec: { gable: 'flat', src: { gable: 'reviewed' } } })).properties;
   assert.equal(photoFlat.monumentGable, undefined); assert.equal(photoFlat.historicGable, 'bell');
+});
+
+// --- lane H11 (#361): storeys, window look and shopfront on the generic path -----------------------------------------
+import { specView, specLook } from './view.ts';
+import { specDesignOn, SPEC_DESIGN_HELD } from './decorate.ts';
+import { specStoreyFit, SPEC_STOREY_SCALE } from '../streetFacadeRendering.ts';
+import { bayLookFor, BAY_STYLES } from '../bayLook.ts';
+import type { HouseSpec } from './spec.ts';
+
+const authored = (design: HouseSpec['design'], extra: Partial<HouseSpec> = {}): HouseSpec =>
+  ({ schemaVersion: 1, pandId: '0363100012167816', design, provenance: { '': { source: 'author', confidence: 0.9, ref: 'test', at: '2026-11-10' } }, ...extra });
+
+test('H11 specView: storeys, ground height, look and shop from a described front (Haarlemmerdijk 16)', () => {
+  const v = specView(authored({
+    fronts: [{ storeys: 3, bays: 2, storeyHeights: [4.5, 2.9, 2.6], windows: 't-window', windowSurround: 'sill', gable: 'cornice',
+      shopfront: { colour: '#21171a', fascia: true } } as never],
+    palette: { brick: '#473936', frame: 'white' } as never,
+  }));
+  assert.equal(v.storeys, 3); assert.equal(v.groundM, 4.5);
+  assert.deepEqual(v.look, { pale: false, dark: false, arch: false });
+  assert.equal(v.shop, true); assert.equal(v.shopHex, '#21171a');
+  assert.equal(v.src.storeys, 'author'); assert.equal(v.src.look, 'author'); assert.equal(v.src.shop, 'author');
+  // A photo source that describes the front in full and names no shopfront: a quiet ground storey.
+  assert.equal(specView(authored({ fronts: [{ storeys: 4, windows: 'sash' } as never] })).shop, false);
+  // White trim, a dark frame, round heads on most storeys, tall windows.
+  assert.deepEqual(specView(authored({ fronts: [{ storeys: 4, windowSurround: 'eared-keystone', windowHead: { kind: 'round', storeys: [1, 2] }, windowProportion: 'tall' } as never], palette: { frame: '#1d2a22' } as never })).look,
+    { pale: true, dark: true, arch: true, tall: true });
+});
+
+test('H11 specView: a type default or a register-only spec adds no design key (the view before H11)', () => {
+  const prov = { 'fronts/0/storeys': { source: 'default', confidence: 0.3, ref: 'type', at: null }, 'fronts/0/windows': { source: 'default', confidence: 0.3, ref: 'type', at: null }, 'fronts/0/gable': { source: 'monument-text', confidence: 0.8, ref: 'rce:1', at: null } } as HouseSpec['provenance'];
+  const v = specView({ schemaVersion: 1, pandId: '0363100012167816', design: { fronts: [{ storeys: 4, windows: 'sash', gable: 'neck' } as never] }, provenance: prov });
+  // H9 draws a stated storey count whatever its source; the H11 keys (groundM, look, shop) never come from a type default.
+  assert.deepEqual(Object.keys(v).sort(), ['gable', 'src', 'storeys']);
+  assert.equal(specLook(authored({ fronts: [{ gable: 'neck' } as never] }), { 'fronts/0/gable': 'author' }), null);
+});
+
+test('H11 houseSpecPatch: storeys and their fit live, look and shop held by default; released, look and shop reach specRecipe / specShop', () => {
+  const view: HouseSpecView = { storeys: 3, groundM: 4.5, look: { pale: false }, shop: true, shopHex: '#21171a', src: { storeys: 'author', look: 'author', shop: 'author' } };
+  // The integrator's ruling (2026-11-10, corrected): storeys live with H9; look and shop held until the H10 house:frames pairs are read.
+  assert.deepEqual(SPEC_DESIGN_HELD, { storeys: false, look: true, shop: true });
+  const env = process.env.HOUSE_SPEC_DESIGN;
+  try {
+    delete process.env.HOUSE_SPEC_DESIGN;
+    assert.deepEqual(houseSpecPatch(view, { constructionYear: 1700 }), { specRecipe: { storeys: 3, storeysFit: true, groundM: 4.5, period: 'canal' } }, 'default: the unified storey path, no look or shop');
+    process.env.HOUSE_SPEC_DESIGN = '0';
+    assert.deepEqual(houseSpecPatch(view, { constructionYear: 1700 }), { specRecipe: { storeys: 3, period: 'canal' } }, 'all held: exactly H9 (the storey count, exact fit)');
+    process.env.HOUSE_SPEC_DESIGN = '1';
+    const p = houseSpecPatch(view, { constructionYear: 1700 });
+    assert.deepEqual(p.specRecipe, { storeys: 3, storeysFit: true, groundM: 4.5, look: { pale: false }, shopHex: '#21171a', period: 'canal' });
+    assert.equal(p.specShop, true);
+    assert.deepEqual(houseSpecPatch({ shop: false, src: { shop: 'author' } }, {}), { specShop: false }, 'a quiet front: no recipe, the flag only');
+    // No H11 key: the patch is the one before H11.
+    assert.deepEqual(houseSpecPatch({ bays: 3, src: { bays: 'author' } }, { constructionYear: 1700 }), { specRecipe: { bays: 3, period: 'canal' } });
+  } finally { if (env === undefined) delete process.env.HOUSE_SPEC_DESIGN; else process.env.HOUSE_SPEC_DESIGN = env; }
+  assert.equal(specDesignOn('look', '0'), false);
+  assert.equal(specDesignOn('look', '1'), true);
+  assert.equal(specDesignOn('look', 'storeys,look'), true);
+  assert.equal(specDesignOn('shop', 'storeys,look'), false);
+  assert.equal(specDesignOn('shop', undefined), false, 'held by default');
+  assert.equal(specDesignOn('storeys', undefined), true, 'live by default');
+});
+
+test('H11 specStoreyFit nearest: the run draws the stated storeys; the ground yields before the count; clamps hold', () => {
+  const g = 0.95, fitOf = (style: 'canal' | 'c19', wall: number, storeys: number, groundM?: number) => specStoreyFit(style, wall, storeys, g, { fit: 'nearest', groundM })!;
+  for (const [style, wall, storeys] of [['canal', 14.7, 4], ['c19', 14.67, 4], ['canal', 9.6, 3], ['canal', 7.94, 3], ['c19', 20, 6]] as const) {
+    const fit = fitOf(style, wall, storeys);
+    assert.equal(layoutWall(style, 6, wall, 0.3, true, { bay: 1, ...fit })!.storeys + 1, storeys, `${style} ${wall} m, ${storeys} storeys`);
+  }
+  // Haarlemmerdijk 18: a 4.5 m ground storey and 3 storeys on 3DBAG's 7.94 m wall: the ground gives way, the count holds.
+  const short = fitOf('canal', 7.94, 3, 4.5);
+  assert.equal(layoutWall('canal', 6, 7.94, 0.3, true, { bay: 1, ...short })!.storeys, 2);
+  assert.ok(short.ground < 4.5 / STYLE_DIMS.canal.ground);
+  // H9's exact fit gives up there (null), and on 8 storeys over 12 m; nearest clamps the pitch instead.
+  assert.equal(specStoreyFit('canal', 7.94, 3, 4.5 / STYLE_DIMS.canal.ground), null);
+  assert.equal(fitOf('canal', 12, 8).storey, SPEC_STOREY_SCALE.min);
+  // Exact (H9) keeps the run's ground; one storey has no fit in either mode.
+  assert.equal(specStoreyFit('canal', 13.9, 4, g)!.ground, g);
+  assert.equal(specStoreyFit('canal', 12, 1, g, { fit: 'nearest' }), null);
+});
+
+test('H11 bayLookFor: no spec look = the pick before; a stated look picks a preset with those traits and a fitting window count', () => {
+  const ids = Array.from({ length: 40 }, (_, i) => `NL.IMBAG.Pand.03631000121${String(70000 + i).padStart(5, '0')}`);
+  for (const id of ids) {
+    assert.deepEqual(bayLookFor(id, 1700, 12, 'photo', 'quiet', undefined, undefined, null, undefined, undefined), bayLookFor(id, 1700, 12, 'photo', 'quiet'));
+    const plain = bayLookFor(id, 1700, 12, 'photo', 'quiet', undefined, undefined, null, undefined, { pale: false, dark: false, bays: 2 });
+    const v = BAY_STYLES.canal[plain.style];
+    assert.ok(!v.paleAccents && v.frameTone !== 'dark', `${id}: no white trim, no dark frame`);
+    assert.equal(2 % v.windows, 0, `${id}: a 2-bay front never gets a 3-window cell`);
+    const pale = bayLookFor(id, 1880, 12, 'photo', 'quiet', undefined, undefined, null, undefined, { pale: true });
+    assert.ok(BAY_STYLES.c19[pale.style].paleAccents, `${id}: white trim`);
+  }
 });
 
 test('specStoreyScale: a stated storey count sets the pitch layoutWall draws; out of range keeps the style', () => {

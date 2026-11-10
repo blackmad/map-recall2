@@ -10,6 +10,7 @@ import { fromBlockFace, fromRecipeIntent, fromRegisterFacts } from '../../src/ca
 import { fieldSources, resolveSpecs, strongestSource } from '../../src/canalRecall/houseSpec/resolve.ts';
 import { frontBays, specFields, validateSpec, type HouseSpec } from '../../src/canalRecall/houseSpec/spec.ts';
 import { toRecipe, withRoute } from '../../src/canalRecall/houseSpec/toRecipe.ts';
+import { specView } from '../../src/canalRecall/houseSpec/view.ts';
 import type { HouseSpecTile, HouseSpecTileRecord, HouseSpecView } from '../../src/canalRecall/houseSpec/decorate.ts';
 import { isRidePriority } from '../../src/canalRecall/ridePriority.ts';
 import { decodeDescriptor } from '../../src/canalRecall/bagTiles.ts';
@@ -108,40 +109,9 @@ for (const f of [...handFiles.keys()].sort()) { add(validateSpec(json(handFiles.
 
 // --- 2. resolve, route, runtime view -----------------------------------------------------------------------------
 const hex = (v: unknown) => (typeof v === 'string' ? (/^#[0-9a-f]{6}$/i.test(v) ? v.toLowerCase() : SWATCHES[v]?.toLowerCase()) : undefined);
-function viewOf(spec: HouseSpec): HouseSpecView {
-  const src = fieldSources(spec), front = spec.design.fronts?.[0];
-  const v: HouseSpecView = { src: {} };
-  // The roof planner (roofMesh planRoof) draws a monument gable as the whole roof's crown: a canal house's gabled or
-  // cornice-fronted pitched roof. A street-measured cornice/flat front (a flat-roofed 1890s block), a partial crown
-  // (crownAt/crownBays over some bays) or a flat roof form is not that, so only full-width gabled crowns reach it; the
-  // register's own gable words (monument-text) pass as before. The full front stays in the record's design (`d`).
-  if (front?.gable && (src['fronts/0/gable'] === 'monument-text' || plannerCrown(spec))) { v.gable = front.gable; v.src.gable = src['fronts/0/gable']; }
-  // A flat crown stated by a street source or an author (lane H9) clears a register gable (decorate.ts withHouseSpecCrown).
-  else if (front?.gable === 'flat' && ['streetlevel-measured', 'reviewed', 'author'].includes(src['fronts/0/gable'] ?? '')) { v.gable = 'flat'; v.src.gable = src['fronts/0/gable']; }
-  if (spec.facts?.facadeYear) { v.year = spec.facts.facadeYear; v.src.year = src['facts/facadeYear']; }
-  if (spec.design.palette?.wallMaterial) { v.wallMaterial = spec.design.palette.wallMaterial; v.src.wallMaterial = src['palette/wallMaterial']; }
-  const wall = hex(spec.design.palette?.brick);
-  if (wall) { v.wallHex = wall; v.src.wallHex = src['palette/brick']; }
-  if (spec.facts?.wallFamily) { v.wallFamily = spec.facts.wallFamily; v.src.wallFamily = src['facts/wallFamily']; }
-  // A bay count no source measured (an auto-placed type's default, adapters.ts fromBlockFace) stays in the record but
-  // does not reach the generic path: its own cell count is as good a guess, and a measured source can outrank it.
-  const bays = frontBays(front), baysSrc = src[front?.axisGrid ? 'fronts/0/axisGrid' : 'fronts/0/bays'];
-  if (bays && baysSrc !== 'default') { v.bays = bays; v.src.bays = baysSrc; }
-  // Storeys (lane H9): the drawn storey count follows the photo when a street source states it (not the register).
-  if (Number.isInteger(front?.storeys) && front!.storeys! >= 2) { v.storeys = front!.storeys; v.src.storeys = src['fronts/0/storeys']; }
-  // A stoop (K-stoep #360): presence from the basement (register `stoep`, Jev, a hand read), the measured fields when stated.
-  if (front?.basement === 'stoop' || front?.basement === 'stoop-and-windows') {
-    v.stoop = (front.stoop ?? {}) as HouseSpecView['stoop']; v.src.stoop = src['fronts/0/stoop'] ?? src['fronts/0/basement'];
-  }
-  return v;
-}
-const PLANNER_GABLES = new Set(['step', 'neck', 'raised-neck', 'bell', 'spout', 'point']);
-function plannerCrown(spec: HouseSpec): boolean {
-  const f = spec.design.fronts?.[0];
-  const at = f?.crownAt as { from?: number; to?: number } | undefined;
-  const full = !f?.crownBays && (!at || ((at.from ?? 0) <= 0.05 && (at.to ?? 1) >= 0.95));
-  return !!f?.gable && PLANNER_GABLES.has(f.gable) && full && spec.design.roof?.form !== 'flat';
-}
+// The runtime view (the extract's `v`): houseSpec/view.ts specView (H9 storeys/wallFamily/flat gable, K-stoep stoop,
+// H11 design fields), shared with house:preview --spec.
+const viewOf = (spec: HouseSpec): HouseSpecView => specView(spec);
 const resolved = new Map<string, HouseSpec>();
 for (const [pand, list] of [...parts].sort(([a], [b]) => (a < b ? -1 : 1))) resolved.set(pand, withRoute(resolveSpecs(list)));
 
@@ -222,7 +192,9 @@ const report = {
   bySource: Object.fromEntries(SOURCES_SEEN.map(s => [s, 0])) as Record<string, number>,
   strongest: {} as Record<string, number>,
   multiSource: 0,
-  runtime: { gable: 0, year: 0, wallMaterial: 0, wallHex: 0, bays: 0, storeys: 0, stoop: 0 } as Record<string, number>,
+  runtime: { gable: 0, year: 0, wallMaterial: 0, wallHex: 0, bays: 0, storeys: 0, stoop: 0, groundM: 0, look: 0, shop: 0 } as Record<string, number>,
+  // H11: generic-path pands (no installed model) that carry each design field (drawn once SPEC_DESIGN_HELD releases it).
+  genericDesign: { groundM: 0, look: 0, shop: 0 } as Record<string, number>,
   /** Pands the generic path draws (no installed GLB/chunk hides them) whose spec carries bays or a wall colour: the
    *  houses whose look changes when the spec extract is published. */
   genericVisibleWithMesherReads: 0,
@@ -251,6 +223,7 @@ for (const [pand, spec] of resolved) {
     for (const k of ['wallHex', 'bays', 'storeys'] as const) if (v[k] !== undefined) report.genericVisibleBy[k]++;
     if (v.wallHex) report.genericVisibleWallPands.push(pand);
   }
+  if (!installed && at) for (const k of Object.keys(report.genericDesign)) if ((v as any)[k] !== undefined) report.genericDesign[k]++;
   const b = at?.buurt;
   if (b) {
     const row = report.byBuurt[b.code] ??= { pands: 0, gebied: b.gebied, ride: isRidePriority(b), bays: 0, gable: 0 };
@@ -269,6 +242,7 @@ console.log(`  pands with a field from: ${Object.entries(report.bySource).map(([
 console.log(`  route: recipe ${report.route.recipe}, generic ${report.route.generic}`);
 console.log(`  runtime view: ${Object.entries(report.runtime).map(([k, n]) => `${k} ${n}`).join(', ')}`);
 console.log(`  installed model hides ${report.modelledByInstall}; generic-path pands whose look the spec changes (bays/wall/storeys): ${report.genericVisibleWithMesherReads} (wall ${report.genericVisibleBy.wallHex}, bays ${report.genericVisibleBy.bays}, storeys ${report.genericVisibleBy.storeys})`);
+console.log(`  generic-path pands carrying an H11 design field (held until released): ${Object.entries(report.genericDesign).map(([k, n]) => `${k} ${n}`).join(', ')}`);
 console.log(`  ride priority: ${report.ridePriority.pands} pands (${report.ridePriority.withGable} with a gable, ${report.ridePriority.withBays} with bays)`);
 console.log(`  top buurten: ${Object.entries(report.byBuurt).slice(0, 8).map(([k, r]) => `${k} ${r.pands}`).join(', ')}`);
 if (counts.facesInvalid.length) console.log(`  invalid faces (skipped): ${counts.facesInvalid.slice(0, 5).join(' | ')}${counts.facesInvalid.length > 5 ? ' …' : ''}`);

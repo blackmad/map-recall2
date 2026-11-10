@@ -21,7 +21,10 @@ if (args[0] === '--diff') {
   const a = JSON.parse(fs.readFileSync(args[1], 'utf8')), b = JSON.parse(fs.readFileSync(args[2], 'utf8'));
   const ids = new Set([...Object.keys(a.hashes), ...Object.keys(b.hashes)]);
   const diff = [...ids].filter(id => a.hashes[id] !== b.hashes[id]).sort();
-  console.log(JSON.stringify({ buildings: ids.size, differ: diff.length, ids: diff.slice(0, 200), a: a.meta, b: b.meta }, null, 1));
+  // Vertex cost of the differing buildings (H11): b minus a over the entries that differ, per mode.
+  const cost: Record<string, number> = {};
+  if (a.vertices && b.vertices) for (const id of diff) { const mode = id.split(':')[0]; cost[mode] = (cost[mode] ?? 0) + (b.vertices[id] ?? 0) - (a.vertices[id] ?? 0); }
+  console.log(JSON.stringify({ buildings: ids.size, differ: diff.length, vertexDelta: cost, ids: diff.slice(0, 200), a: a.meta, b: b.meta }, null, 1));
   process.exit(0);
 }
 const dir = args.find(a => a.startsWith('--dir='))?.slice(6) ?? 'house-specs';
@@ -37,6 +40,8 @@ const boxOf = (f: Feature): [number, number, number, number] => {
   return [Math.min(...ring.map(p => p[0])), Math.min(...ring.map(p => p[1])), Math.max(...ring.map(p => p[0])), Math.max(...ring.map(p => p[1]))];
 };
 const hashes: Record<string, string> = {};
+const vertices: Record<string, number> = {};
+const totals = { walls: 0, extras: 0, shell: 0 };
 let forced = 0;
 for (const tile of tiles.sort()) {
   const rows = await loadTile(tile, chain);
@@ -59,11 +64,12 @@ for (const tile of tiles.sort()) {
         h.update(Buffer.from(view.buffer, view.byteOffset, view.byteLength));
       }
       const key = `${mode}:${r.id}`;
+      vertices[key] = (vertices[key] ?? 0) + r.count; totals[mode] += r.count;
       hashes[key] = createHash('sha256').update((hashes[key] ?? '') + h.digest('hex')).digest('hex').slice(0, 16);
     }
   }
 }
 const all = createHash('sha256').update(Object.keys(hashes).sort().map(k => `${k}=${hashes[k]}`).join('\n')).digest('hex').slice(0, 16);
-const meta = { dir, force, forced, tiles: tiles.length, entries: Object.keys(hashes).length, all, oddAxisCells: process.env.ODD_AXIS_CELLS ?? 'default' };
+const meta = { dir, force, forced, tiles: tiles.length, entries: Object.keys(hashes).length, all, oddAxisCells: process.env.ODD_AXIS_CELLS ?? 'default', specDesign: process.env.HOUSE_SPEC_DESIGN ?? 'default', vertices: totals };
 console.log(JSON.stringify(meta));
-if (outAt >= 0) fs.writeFileSync(args[outAt + 1], JSON.stringify({ meta, hashes }));
+if (outAt >= 0) fs.writeFileSync(args[outAt + 1], JSON.stringify({ meta, hashes, vertices }));

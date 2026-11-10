@@ -38,17 +38,43 @@ export interface HouseSpecView {
   crownRiseM?: number;
   /** Full storeys below the crown, ground included (FrontIntent.storeys; lane H9). */
   storeys?: number;
+  /** H11: the ground storey's height (m, storeyHeights[0]); only with `storeys`. */
+  groundM?: number;
   /** facts.wallFamily: a reader's colour family for the wall (H5h hand set), the truth a pixel reading is checked against. */
   wallFamily?: WallFamily;
   /** The street front has a stoop (basement `stoop*`): its measured fields (buildingRecipe/stoop.ts), `{}` when only
    *  its presence is known (register `stoep`, Jev). K-stoep #360. */
   stoop?: StoopIntent;
+  /** H11: the window look the front states (view.ts specLook). */
+  look?: SpecLook;
+  /** H11: a shop ground storey (true) or a quiet one (false). */
+  shop?: boolean;
+  /** H11: the shopfront's paint (#rrggbb), with `shop`. */
+  shopHex?: string;
   /** Winning source per key above. */
-  src: Partial<Record<'gable' | 'year' | 'wallMaterial' | 'wallHex' | 'bays' | 'storeys' | 'wallFamily' | 'stoop', string>>;
+  src: Partial<Record<'gable' | 'year' | 'wallMaterial' | 'wallHex' | 'bays' | 'storeys' | 'wallFamily' | 'stoop' | 'look' | 'shop', string>>;
 }
 
-/** What the spec adds to the generic mesher: an ArchitecturalRecipe subset plus the bay count. */
-export type SpecRecipe = Partial<Pick<ArchitecturalRecipe, 'crownShape' | 'period' | 'wallHex' | 'bays'>> & { storeys?: number };
+/**
+ * The bay-look traits a front states (bayLook.ts bayStyleForTraits, the same four a buurt profile draws): white trim
+ * around the openings, dark frames, arched heads, tall windows. An absent trait leaves the buurt profile's (or the hash's) pick.
+ */
+export interface SpecLook { pale?: boolean; dark?: boolean; arch?: boolean; tall?: boolean }
+
+/** What the spec adds to the generic mesher: an ArchitecturalRecipe subset plus the bay count, the storey count (H9), and
+ *  (H11) the storey fit, the window look and the shop paint. */
+export type SpecRecipe = Partial<Pick<ArchitecturalRecipe, 'crownShape' | 'period' | 'wallHex' | 'bays'>> & {
+  /** Full storeys, ground included: street runs draw that many (streetFacadeRendering.ts specStoreyFit, H9 exact fit). */
+  storeys?: number;
+  /** H11: fit every ground-level run, to the nearest count the clamp allows, the ground yielding first (specStoreyFit `nearest`). */
+  storeysFit?: true;
+  /** H11: the stated ground storey's height (m), with `storeysFit`. */
+  groundM?: number;
+  /** H11: the window look (bayLook.ts bayLookFor `spec`). */
+  look?: SpecLook;
+  /** H11: the shop's ground-storey paint. */
+  shopHex?: string;
+};
 
 /** Default on; `?houseSpecs=0` in the page or HOUSE_SPECS=0 in Node turns the enricher (and so every step) off. */
 export const HOUSE_SPECS_DEFAULT = true;
@@ -106,6 +132,26 @@ export const SPEC_BAYS_HELD = false;
  */
 export const SPEC_STOOPS_HELD = false;
 
+/**
+ * Lane H11 (#361): the design fields the generic path draws from a spec beyond H9's storey count. **Held** on the
+ * integrator's ruling (2026-11-10): released after the H10 house:frames pairs are read. Each releases on its own (a
+ * world-v1 recompile carries it); in Node HOUSE_SPEC_DESIGN=1 releases all three, HOUSE_SPEC_DESIGN=storeys,look only
+ * those, HOUSE_SPEC_DESIGN=0 holds all (the world compile, house:preview and scripts/house-specs/design-gate.ts).
+ *   storeys  storeyHeights[0] and the nearest-count fit on every ground-level run (H9's exact street-run fit stays live)
+ *   look     windowSurround, speklagen, palette.frame, windowHead, windows, windowProportion -> the bay-look preset
+ *   shop     fronts/0/shopfront (or facts.pui) -> specShop and the shop paint
+ * docs/house-line.md §1 "Design fields on the generic path (H11)".
+ */
+export const SPEC_DESIGN_HELD = { storeys: false, look: true, shop: true };
+/** Whether one H11 field reaches the mesher: its hold, or in Node HOUSE_SPEC_DESIGN=1 (all) / =0 (none) / =storeys,look (those). */
+export function specDesignOn(field: keyof typeof SPEC_DESIGN_HELD, env: string | undefined = (globalThis as { process?: { env?: Record<string, string | undefined> } }).process?.env?.HOUSE_SPEC_DESIGN): boolean {
+  if (env === undefined || env === '') return !SPEC_DESIGN_HELD[field];
+  if (env === '1') return true;
+  return env.split(',').map(v => v.trim()).includes(field);
+}
+/** The shop cell a spec'd shop draws: the plain shop window (the recipe route's dark display glazing), not a themed café or florist. */
+export const SPEC_SHOP_KIND = 'shopWindow' as const;
+
 /** The property patch a spec view makes before decorateFacade; empty when nothing changes. */
 export function houseSpecPatch(view: HouseSpecView, p: Props): Props {
   const patch: Props = {};
@@ -136,9 +182,23 @@ export function houseSpecPatch(view: HouseSpecView, p: Props): Props {
     const src = specWallSource(view.wallHex.toLowerCase(), { family: view.wallFamily ?? null, brick });
     recipe.wallHex = specWallDisplay(src.hex, { fromPixel: src.fromPixel });
   }
-  // A spec recipe only when it carries something the mesher reads (bays, storeys, a wall colour); crown and period ride along.
-  if (view.storeys && view.storeys >= 2) recipe.storeys = view.storeys;
-  if (recipe.bays || recipe.wallHex || recipe.storeys) {
+  // The storey count (H9) on street runs; H11 (held) adds the nearest-count fit on every ground-level run and the ground height.
+  if (view.storeys && view.storeys >= 2) {
+    recipe.storeys = view.storeys;
+    if (specDesignOn('storeys')) {
+      recipe.storeysFit = true;
+      if (typeof view.groundM === 'number' && Number.isFinite(view.groundM)) recipe.groundM = view.groundM;
+    }
+  }
+  if (specDesignOn('look') && view.look && Object.keys(view.look).length) recipe.look = view.look;
+  if (specDesignOn('shop') && typeof view.shop === 'boolean') {
+    // `specShop` beside the shopfront extract's stamp (threeBuildingFeatures shopfrontOf): a stated shop keeps the extract's
+    // kind (a named café stays a café) or draws the plain shop window; a stated quiet front drops the extract's (OSM) shop.
+    if (p.specShop !== view.shop) patch.specShop = view.shop;
+    if (view.shop && view.shopHex && /^#[0-9a-f]{6}$/i.test(view.shopHex)) recipe.shopHex = view.shopHex.toLowerCase();
+  }
+  // A spec recipe only when it carries something the mesher reads; crown and period ride along.
+  if (recipe.bays || recipe.wallHex || recipe.storeys || recipe.look || recipe.shopHex) {
     const year = Number.isInteger(view.year) ? view.year! : Number(patch.constructionYear ?? p.constructionYear);
     if (Number.isFinite(year)) recipe.period = ERA_PERIOD[eraOfYear(year)];
     if (view.gable && GABLE_TO_CROWN[view.gable]) recipe.crownShape = GABLE_TO_CROWN[view.gable];

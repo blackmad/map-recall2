@@ -121,7 +121,7 @@ First run (2026-11-10): 7,224 pands (register 5,958; 280 block faces = 1,314 hou
 ### The generic path reads it (flag `?houseSpecs=0`, `HOUSE_SPECS=0`)
 
 - `houseSpec/decorate.ts houseSpecEnricher`, composed last in `gameTileEnricher.ts`, stamps the runtime view on each
-  raw feature as `p.houseSpec` = `{gable, year, wallMaterial, wallHex, bays, storeys, crownRiseM, src}` (`crownRiseM`: 3DBAG ridge - eaves, for pands with a gable or a historic gable).
+  raw feature as `p.houseSpec` = `{gable, year, wallMaterial, wallHex, wallFamily, bays, storeys, crownRiseM, stoop, groundM, look, shop, shopHex, src}` (`crownRiseM`: 3DBAG ridge - eaves, for pands with a gable or a historic gable; `groundM`, `look`, `shop`, `shopHex` are H11's, held, see "Design fields on the generic path").
 - `withHouseSpec` runs right after the register step (before `decorateFacade`): it moves `constructionYear` only on an
   era change (the register's rule), sets `registerFinish` from `wallMaterial`, and writes `specRecipe`
   `{bays, storeys, wallHex, period, crownShape}` when the spec has bays, storeys or a wall colour.
@@ -154,8 +154,9 @@ First run (2026-11-10): 7,224 pands (register 5,958; 280 block faces = 1,314 hou
   counts doubled on canal houses near the Dam, photo 3 drawn 6; lane H1b owns the cause): no spec bay count reaches
   the mesher. Storeys, wall, gable, year and finish are unaffected.
 - **Storeys** (lane H9): `fronts/0/storeys` (storeys below the crown, ground included) reaches the view as `storeys`
-  and `specRecipe.storeys`; `specStoreyScale` sets the storey pitch so `layoutWall` draws that count on the run's wall
-  (pitch 0.75–1.45 of the style's storey; outside it the style's own count stands). The register never states
+  and `specRecipe.storeys`; `specStoreyFit` (exact mode; `specStoreyScale` is its storey) sets the storey pitch so
+  `layoutWall` draws that count on the street run's wall (pitch 0.75–1.45 of the style's storey; outside it the style's
+  own count stands). H11's nearest mode extends the same fit (held; "Design fields on the generic path"). The register never states
   storeys; block faces and authored specs do (1,342 views).
 - **Flat crowns** (lane H9): a `flat` front from a source stronger than `monument-text` turns a register gable into
   the cornice crown (a straight top over the roof behind); without a register gable nothing changes, so a flat front
@@ -314,6 +315,70 @@ pands (63 %), further on none.
 What the kit still cannot say: a 3-axis front on a cell whose windows sit off the quarter axes (the three-window canal
 styles keep their own cells), an asymmetric front (door axis plus two windows unevenly spaced), and a front whose storeys
 differ in axis count (170031: 4 on storey 2, 2 above) - a front draws one axis count for every storey.
+
+### Design fields on the generic path (H11, #361)
+
+Haarlemmer #356 found the spec route drew only `gable` and `palette.brick` (and, since H1c, the bays) of a HouseSpec; the
+other design fields reached a render only through the recipe route (a per-house GLB). H11 widens the generic consumer
+with the fields the bay-look kit can already express. `houseSpec/view.ts specView` builds the runtime view (shared by
+`build-house-specs.ts` and `house:preview --spec`), `decorate.ts houseSpecPatch` turns it into properties, and the mesher
+reads them. A key no source stated, or only a type default (`default`) stated, stays out of the view: a pand without them
+draws as before (`decorate.test.ts` "H11", `bayLookFor` with no spec look = the pick before).
+
+| View key | From (field paths) | Reaches | Kit part |
+|---|---|---|---|
+| `storeys` (H9), `groundM` | `fronts/0/storeys`, `storeyHeights[0]` | H9: `specRecipe.storeys` -> `streetFacadeRendering.ts specStoreyFit` exact mode on street runs (live). H11: `specRecipe.storeysFit` + `groundM` -> the same function's `nearest` mode on every ground-level run | `storeys - 1` upper storeys over the ground: exact gives up outside `SPEC_STOREY_SCALE` 0.75-1.45; nearest takes the stated ground height (`SPEC_GROUND_SCALE`), shrinks the ground to `SPEC_GROUND_SCALE.min` before the count gives way, then clamps the pitch |
+| `look` `{pale, dark, arch, tall}` | `windowSurround` (stone-lintel, full-frame, keystone, eared-keystone = white trim; sill, none = none), `speklagen`, `palette.frame` (luma < 0.35 = dark), `windowHead` (most upper storeys; a stated window kind with no head = flat), `windows: arched`, `windowProportion: tall` | `specRecipe.look` -> `bayLook.ts bayLookFor(..., spec)` -> `bayStyleForTraits` | the bay preset among the plain presets, as a buurt profile's traits pick it; with stated bays only presets whose window count divides them |
+| `shop`, `shopHex` | `fronts/0/shopfront` (its `colour`), else `facts.pui`; a photo source's full front with no shopfront = quiet | `specShop` -> `threeBuildingFeatures.ts shopfrontOf`; `specRecipe.shopHex` -> the shop's `groundHex` | a stated shop keeps the shopfront extract's kind (a named café stays a café) or draws `shopWindow`; a stated quiet front drops the extract's OSM shop |
+
+**Held** (integrator ruling, 2026-11-10, corrected the same day): `decorate.ts SPEC_DESIGN_HELD = { storeys: false,
+look: true, shop: true }`. Storeys are live: H9 r3 already draws the stated count, so the one storey path ships with
+H11's nearest fit and `groundM` released. Look and shop stay held until the integrator reads the H10 `house:frames`
+pairs; each releases on its own (a world-v1 recompile carries it). In Node `HOUSE_SPEC_DESIGN=1` releases all three,
+`HOUSE_SPEC_DESIGN=look` only that field (storeys then held, the exact H9 fit), `HOUSE_SPEC_DESIGN=0` holds all, which
+is exactly H9's and K-stoep's `specRecipe` (world compile, `house:preview`, the gates). The view keys (`groundM`,
+`look`, `shop`, `shopHex`) are in the staged extract either way.
+`house:preview` writes the pand's drawn grid as `measure.json layout` (`threeBuildingMesh.ts layoutProbe`).
+
+Coverage (`npm run house:specs`, 2026-11-10): 1,354 pands carry storeys, look and shop (the block-face houses); 410 of
+them are on the generic path (no installed model). The register gives none of the three.
+
+**Gate** (`scripts/house-specs/design-gate.ts`, 19 belt pairs: Haarlemmer 9 + GG-Zuid 4 staged specs and H7's Nassaukade
+row 6; generic route held vs on, against the spec, the recipe route and the photo; measured before the H9 merge, so
+"before" there had no storey count):
+
+| Field | Before -> after | Cost (own vertices, 19 pands) |
+|---|---|---|
+| storeys | drawn storeys = spec 6/19 -> 19/19; preview PASS 5 -> 6 | +180 (+1.1 %) |
+| look | window shape = recipe 5/19 -> 5/19 alone, 7/19 with storeys; pale surrounds -> plain white frames where the spec says `sill` (visible on all 9 Haarlemmer fronts) | -36 |
+| shop | shop paint on 8 of 8 shop fronts (the extract already had them as shops); 11 quiet fronts unchanged | 0 |
+| all three | storeys 19/19, columns 17/19 (unchanged), window shape 7/19, PASS 6 (5), wall dL vs recipe 0.127 (0.125) | +162 (+0.95 %) |
+
+After the H9 merge (`HOUSE_SPEC_DESIGN=0`, H9's exact fit, against the shipped default, storeys released): drawn
+storeys = spec 15/19 -> 19/19, columns 17/19 (unchanged), window shape = recipe 6/19 -> 8/19, PASS 6 -> 8, FAIL 9 -> 7,
+wall dL vs recipe 0.111 -> 0.107, +210 own vertices (+1.2 %). With look and shop released too (`HOUSE_SPEC_DESIGN=1`):
+storeys 19/19, window shape 7/19, PASS 6, +198. City-wide, `HOUSE_SPEC_DESIGN=0` is byte-identical to the pre-merge
+base (505a72837, all-hash `5c9c67420c530297`); the shipped default changes 1,335 buildings (the spec'd block-face houses
+with a stated storey count) at +4 wall and -2,898 extra vertices (0.0 % and -0.5 % of those buildings), shell vertex
+count unchanged; `HOUSE_SPEC_DESIGN=1` at -296 wall and -5,394 extra vertices.
+
+Wall-colour verdicts dominate the preview's FAIL (12 of the 19 reasons are `wall dL`) and are advisory until H2e and H9.
+City-wide (`odd-cells-hash.ts` over the 55 house-spec tiles, staged extract, 411,708 entries): held
+(`HOUSE_SPEC_DESIGN=0`) is byte-identical to the published extract (0 differ); on, 1,325 buildings differ (the spec'd
+block-face houses, installed ones included), at -296 wall and -5,586 extra vertices (-0.1 % and -0.8 % of those
+buildings; fewer pale-trim extras), shell unchanged. No per-cell triangle budget grows.
+
+**Not wired** (still recipe-route only), ranked by how visible in a ride frame:
+1. `eavesHeight`: the wall top is 3DBAG's (Haarlemmerdijk 18: 7.94 m against an 11.0 m measured cornice). The generic mass
+   would have to rise above 3DBAG's height; the storey fit draws the stated count on the shorter wall instead.
+2. Crown shape detail (`crownCap`, `crownCapSpan`, `crownShoulder`, neck width): the roof planner draws `monumentGable`
+   from its own outline; a neck or bell reads as a square neck box (176066, 171144).
+3. `roof.form`/`hip`/`pitchDeg`/`material`: the roof planner's plan is 3DBAG's.
+4. `cornice` depth and `crownCap` pieces: no cornice-depth or cap component in the generic cells.
+5. `doorBay`, `basement`/`souterrain`, `hoist`, `palette.door`, `windowHeights`, `headLines`, `windowShare`: no per-pand
+   control in the bay cells (one door position rule, one opening box per preset).
+6. `palette.stone`, `palette.cornice`, `palette.frame` as a colour (only its tone picks the preset), `palette.brick` (held,
+   `SPEC_WALLS_HELD`).
 
 ### Which specs a world carries
 
@@ -653,9 +718,15 @@ overrides, measurements, verdict). The sheet header names the route and the look
 by PRE_BLUR_PX (1.5 px Gaussian sigma at 50 px/m) before measureFacade. Atlas cache:
 artifacts/house-preview/atlas-<look>-<size>-<painter hash>.bin (first run paints, later runs load).
 
-Overrides (until the HouseSpec resolver of lane H1 lands): fronts[0].gable -> monumentGable, palette.wall (or
-palette.brick) hex -> facadeMappedColour, fronts[0].basement stoop (with its stoop fields) -> specStoop; every other
+Overrides: fronts[0].gable -> monumentGable, palette.wall (or palette.brick) hex -> facadeMappedColour, the bays,
+fronts[0].basement stoop (with its stoop fields) -> specStoop, and through the game's own decorator (houseSpec/view.ts
+specView -> withHouseSpec) the storeys (lane H9, with lane H11's storeyHeights[0] and nearest-count storey fit) and,
+held until released (decorate.ts SPEC_DESIGN_HELD; in Node HOUSE_SPEC_DESIGN=1 releases all, =look only that, =0 holds
+storeys too), lane H11's window look (windowSurround, speklagen, windowHead, windows, windowProportion, palette.frame)
+and shopfront. Every other
 design field is listed under overrides.notApplied in measure.json (the generic path has no property for it yet).
+measure.json `layout` is the pand's street-run grid as the mesher laid it: drawn storeys (ground included), upper
+storey pitch, window columns.
 
 Not reproduced: the far and roof distance tiers, mipmaps, cast shadows (a wall in another building's shadow draws
 sunlit), fog, the analytic window SDF, the ground lift, post-processing, the GLB slot cells (an installed GLB draws
