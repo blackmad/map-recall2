@@ -27,13 +27,13 @@ export function corridorWeight(u: number, v: number): number {
 }
 
 const f = (x: number) => x.toFixed(6);
-const FRAGMENT = /* glsl */ `
+export const CORRIDOR_FRAGMENT = /* glsl */ `
 uniform sampler2D frame;
 varying vec2 vUv;
 void main() {
   vec3 c = texture2D(frame, vUv).rgb;
-  float half = ${f(CORRIDOR_HALF_BOTTOM)} + (${f(CORRIDOR_HALF_TOP - CORRIDOR_HALF_BOTTOM)}) * vUv.y;
-  float w = smoothstep(1.0, ${f(CORRIDOR_RAMP)}, abs(vUv.x - 0.5) / half);
+  float halfW = ${f(CORRIDOR_HALF_BOTTOM)} + (${f(CORRIDOR_HALF_TOP - CORRIDOR_HALF_BOTTOM)}) * vUv.y;
+  float w = smoothstep(1.0, ${f(CORRIDOR_RAMP)}, abs(vUv.x - 0.5) / halfW);
   float luma = dot(c, vec3(0.2126, 0.7152, 0.0722));
   c = mix(c, vec3(luma), ${f(CORRIDOR_DESAT)} * w);
   gl_FragColor = vec4(c * (1.0 - ${f(CORRIDOR_DIM)} * w), 1.0);
@@ -52,7 +52,7 @@ export class CorridorPost {
   private height = 0;
 
   constructor(private readonly THREE: any) {
-    this.material = new THREE.ShaderMaterial({ uniforms: { frame: { value: null } }, vertexShader: VERTEX, fragmentShader: FRAGMENT, depthTest: false, depthWrite: false });
+    this.material = new THREE.ShaderMaterial({ uniforms: { frame: { value: null } }, vertexShader: VERTEX, fragmentShader: CORRIDOR_FRAGMENT, depthTest: false, depthWrite: false });
     const quad = new THREE.Mesh(new THREE.PlaneGeometry(2, 2), this.material);
     quad.frustumCulled = false;
     this.scene = new THREE.Scene();
