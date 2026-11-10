@@ -241,3 +241,32 @@ function shortBakedFrontReturn(building:MeshBuilding, wall:{x0:number;y0:number;
     return {...building,style:'canal',wallHex:context.mappedWallHex??levelGenericWall(bay.wallHex,recipe),accentHex:bay.accentHex,plainLayer:bay.plain+offset,layers:{upper,ground,door:ground},groundHex:undefined,shop:false,shopfront:false,plainWalls:false,recipe:undefined};
   }
 }
+
+/** A stated storey pitch stays within these multiples of the style's nominal storey (H11): a spec never draws a 2 m or a 5 m storey. */
+export const SPEC_STOREY_SCALE = { min: 0.75, max: 1.45 } as const;
+/** A stated ground-storey height stays within these multiples of the style's nominal ground storey. */
+export const SPEC_GROUND_SCALE = { min: 0.7, max: 1.7 } as const;
+const clampTo = (v: number, r: { min: number; max: number }) => Math.min(r.max, Math.max(r.min, v));
+
+/**
+ * The layout scale that draws a HouseSpec's storey count on a wall `exposedM` tall (lane H11, #361; docs/house-line.md §1
+ * "Design fields on the generic path"). `storeys` counts full street storeys with the ground once (spec.ts STOREYS_DEFINITION),
+ * so the wall carries `storeys - 1` upper storeys over the ground storey (`groundM`, else the run's own ground). layoutWall
+ * rounds `upper / storey` to the storey count, so the fitted pitch draws exactly `storeys - 1` unless the clamp
+ * (SPEC_STOREY_SCALE) holds it, when it draws the nearest count the clamp allows; the ground storey shrinks (to
+ * SPEC_GROUND_SCALE.min) before the count does. One storey, or no room above the ground:
+ * the scale unchanged.
+ */
+export function specStoreyScale<S extends { storey: number; ground: number }>(spec: { storeys?: number; groundM?: number }, style: MeshBuilding['style'], exposedM: number, scale: S): S {
+  const upperN = Math.floor(spec.storeys ?? 0) - 1;
+  if (!(upperN >= 1) || !(exposedM > 0)) return scale;
+  const dims = STYLE_DIMS[style];
+  let ground = spec.groundM && spec.groundM > 0 ? clampTo(spec.groundM / dims.ground, SPEC_GROUND_SCALE) : scale.ground;
+  // The count outranks the ground's height: on a wall too short for both (3DBAG's eaves under a measured cornice), the
+  // ground storey gives way first, down to SPEC_GROUND_SCALE.min.
+  const room = exposedM - upperN * dims.storey * SPEC_STOREY_SCALE.min;
+  if (dims.ground * ground > room) ground = Math.max(SPEC_GROUND_SCALE.min, Math.min(ground, room / dims.ground));
+  const upper = exposedM - Math.min(dims.ground * ground, exposedM);
+  if (upper < dims.storey * SPEC_STOREY_SCALE.min) return scale;
+  return { ...scale, ground, storey: clampTo(upper / (upperN * dims.storey), SPEC_STOREY_SCALE) };
+}

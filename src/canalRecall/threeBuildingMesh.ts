@@ -20,7 +20,7 @@ import { planRepeatedTerraceFrontage, type RepeatedTerraceFrontagePlan } from '.
 import { applyHostWallOpenings, type ChunkHostOpeningConfig } from './hostWallOpenings.js';
 import { sharedWallCuts, subtractWallCuts, subtractConvex, polygonArea, type Point2, NEAR_COPLANAR_M } from './coplanarSurfaces.js';
 import { recipeBayOpenings, type Openings } from './facadeOpenings.js';
-import { streetWallBuilding, frontageLayoutScale, axisUnitPlan, AXIS_UNIT_U, PROCEDURAL_RECIPE_LAYER_OFFSET, type StreetFacadeContext } from './streetFacadeRendering.js';
+import { streetWallBuilding, frontageLayoutScale, specStoreyScale, axisUnitPlan, AXIS_UNIT_U, PROCEDURAL_RECIPE_LAYER_OFFSET, type StreetFacadeContext } from './streetFacadeRendering.js';
 import { BAY_LAYER_COUNT, bayLookFor } from './bayLook.js';
 import type { ArchitecturalRecipe } from './streetAppearance.js';
 import { streetCrown, type StreetCrownFront, type StreetCrownTri } from './streetCrown.js';
@@ -47,8 +47,9 @@ export type MeshBuilding = {
   surveyedEnvelope?: SurveyedMeshBinding;
   streetAppearance?: StreetFacadeContext;
   recipe?: ArchitecturalRecipe;
-  /** A HouseSpec's reads for the generic mesher (houseSpec/decorate.ts `specRecipe`): street-run bay count, crown, period, wall. */
-  specRecipe?: Partial<Pick<ArchitecturalRecipe, 'crownShape' | 'period' | 'wallHex' | 'bays'>>;
+  /** A HouseSpec's reads for the generic mesher (houseSpec/decorate.ts `specRecipe`): street-run bay count, crown, period,
+   *  wall, and (H11) storeys, window look and shop paint. */
+  specRecipe?: import('./houseSpec/decorate.js').SpecRecipe;
   /** Exact opening positions of the active texture, shared with 3D entrance details. */
   openings?: Openings;
   id: string;
@@ -183,6 +184,11 @@ export function wallTopHeightM(p: Record<string, unknown>): number {
 }
 
 /** Which of a style's looks a building wears (shared with the roof plan so gable faces match the walls). */
+/**
+ * A measuring hook (house:preview's measure.json `layout`, lane H11): when set, each laid-out wall run reports its
+ * storey grid (upper storeys over the ground storey) and drawn window columns. Unset in the game: no cost.
+ */
+export const layoutProbe: { sink?: (id: string, run: { storeys: number; groundM: number; storeyM: number; bays: number; street: boolean; lengthM: number; base: number }) => void } = {};
 export const lookVariant = (id: string) => Math.floor(hash01(`${id}:look`) * CELL_VARIANTS);
 
 function hash01(text: string): number {
@@ -546,7 +552,7 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
       const specBays = !b.recipe && b.specRecipe?.bays && run.some(({ e }) => doorAllowed.has(e)) ? { bays: b.specRecipe.bays, axesPerCell: b.openings?.upper?.axes.length ?? 1 } : undefined;
       // An odd stated count on a two-window cell: half-cell axis units (streetFacadeRendering.ts axisUnitPlan, H1c #350).
       const units = specBays ? axisUnitPlan(specBays, b.openings, b.style, run.reduce((sum,r)=>sum+r.e.len,0), scale) : null;
-      const runScale = units ? units.scale : frontageLayoutScale(b.recipe, scale, b.style, run.reduce((sum,r)=>sum+r.e.len,0), specBays);
+      let runScale = units ? units.scale : frontageLayoutScale(b.recipe, scale, b.style, run.reduce((sum,r)=>sum+r.e.len,0), specBays);
       const cellU = units ? AXIS_UNIT_U : 1;
       const [r, g, bl] = b === fallbackBuilding ? wallRGB : parseHex(b.wallHex);
       const accent = b === fallbackBuilding ? wallAccent : parseHex(b.accentHex ?? '#ffffff');
@@ -560,6 +566,8 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
       const paintTint = b === fallbackBuilding ? groundPaint : b.groundHex && b.layers ? parseHex(b.groundHex) : null;
       // A parapet band (large tier) only where the wall is tall enough to keep a storey under it.
       const parapet = b.parapetM && !b.bare && top - b.parapetM - base >= 5 ? b.parapetM : 0, facadeTop = top - parapet;
+      // A HouseSpec's storey count (and ground height) fits every ground-level run's storey grid (H11, #361); a recipe keeps its own.
+      if (!b.recipe && b.specRecipe?.storeys && base < 0.5) runScale = specStoreyScale(b.specRecipe, b.style, facadeTop - base, runScale);
       if (shell) {
         // Touch devices, away from the rider (CANAL-RECALL-7): one quad per wall from the base to the top, in
         // the wall's own window cell, plus the flat lid below. Same mass, height, tint and skyline as the
@@ -574,6 +582,7 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
         continue;
       }
       const layout = b.bare ? null : layoutRun(b.style, run.map(r => r.e.len), facadeTop - base, hash01(`${b.id}:${edgeKey(first.x0, first.y0)}`), base < 0.5, runScale, run.map(r => doorAllowed.has(r.e)));
+      if (layoutProbe.sink && layout) layoutProbe.sink(b.id, { storeys: layout.storeys, groundM: layout.groundM, storeyM: layout.storeyM, bays: units ? layout.bays : layout.bays * (b.openings?.upper?.axes.length ?? 1), street: run.some(({ e }) => doorAllowed.has(e)), lengthM: layout.lengthM, base });
       if(layout&&b.recipe?.facadeAssembly==='stacked-open-balcony'&&base<.5){
         const center=(layout.bays-1)/2;
         const eligible=Array.from({length:layout.bays},(_,i)=>i).filter(i=>{

@@ -13,11 +13,14 @@ import sharp from 'sharp';
 import { gameChain, loadTile, EXTRACT, type Chain, type Feature, type Row } from '../world/pipeline.ts';
 import { shellProfiles, shellStreets } from '../world/shellBake.ts';
 import { buildFeatureChunk, asPolygons } from '../../src/canalRecall/threeBuildingFeatures.ts';
-import { wallTopHeightM, type Chunk } from '../../src/canalRecall/threeBuildingMesh.ts';
+import { wallTopHeightM, layoutProbe, type Chunk } from '../../src/canalRecall/threeBuildingMesh.ts';
 import { chunkMetres } from '../../src/canalRecall/world/shellMesh.ts';
 import { BuildingContextIndex } from '../../src/canalRecall/buildingContextIndex.ts';
 import { KIT_HIDE_IDS } from '../../src/canalRecall/landmarkKits.ts';
 import { GABLE_SHAPES } from '../../src/canalRecall/roofMesh.ts';
+import { specView } from '../../src/canalRecall/houseSpec/view.ts';
+import type { HouseSpecView } from '../../src/canalRecall/houseSpec/decorate.ts';
+import type { HouseSpec } from '../../src/canalRecall/houseSpec/spec.ts';
 import { lngLatToRd, rdToLngLat } from '../../src/canalRecall/facade/rdNew.ts';
 import { rasterise, type RasterAtlas, type RasterImage, type RasterMesh, type LitShading, type Vec3 } from '../../src/canalRecall/houseSpec/softRaster.ts';
 import { previewVerdict, storeyLines, blurRgb, PRE_BLUR_PX, type PreviewVerdict } from '../../src/canalRecall/houseSpec/previewVerdict.ts';
@@ -186,12 +189,32 @@ export function overridePatch(o: Override): { patch: Record<string, unknown>; ap
   // mesher fits the street run to them (whole cells, or half-cell axis units for an odd count, H1c #350).
   const bays = Number.isInteger(front.axisGrid) ? front.axisGrid as number : Number.isInteger(front.bays) ? front.bays as number : undefined;
   if (bays && bays > 0) { patch.specRecipe = { bays }; applied.push(`fronts[0].${Number.isInteger(front.axisGrid) ? 'axisGrid' : 'bays'} -> specRecipe.bays=${bays}`); }
-  for (const k of Object.keys(front)) if (k !== 'gable' && k !== 'id' && !(bays && (k === 'bays' || k === 'axisGrid'))) notApplied.push(`fronts[0].${k}`);
+  // Lane H11 (#361): storeys, window look and shopfront reach the generic path as the game's decorator reads them: the
+  // runtime view (houseSpec/view.ts specView, as build-house-specs writes it, source `author`) goes on as `p.houseSpec`
+  // and the chain's withHouseSpec writes specRecipe / specShop. Gable and wall keep the direct writes above and below.
+  const view = specView({ schemaVersion: 1, pandId: o.pandId ?? '0000000000000000', design: o.design as HouseSpec['design'], provenance: { '': { source: 'author', confidence: 1, ref: o.source, at: null } } });
+  const designView: HouseSpecView = { src: {} };
+  const used = new Set<string>(['gable', 'id']);
+  if (bays) { designView.bays = bays; designView.src.bays = 'author'; used.add('bays').add('axisGrid'); }
+  if (view.storeys) { designView.storeys = view.storeys; designView.src.storeys = 'author'; used.add('storeys'); applied.push(`fronts[0].storeys -> specRecipe.storeys=${view.storeys}`); }
+  if (view.groundM) { designView.groundM = view.groundM; used.add('storeyHeights'); applied.push(`fronts[0].storeyHeights[0] -> specRecipe.groundM=${view.groundM}`); }
+  if (view.look) {
+    designView.look = view.look; designView.src.look = 'author';
+    for (const k of ['windowSurround', 'speklagen', 'windowHead', 'windows', 'windowProportion']) if (front[k] !== undefined) used.add(k);
+    applied.push(`window look -> specRecipe.look=${JSON.stringify(view.look)}`);
+  }
+  if (view.shop !== undefined) {
+    designView.shop = view.shop; designView.src.shop = 'author'; if (view.shopHex) designView.shopHex = view.shopHex;
+    if (front.shopfront !== undefined) used.add('shopfront');
+    applied.push(`ground storey -> specShop=${view.shop}${view.shopHex ? ` shopHex=${view.shopHex}` : ''}`);
+  }
+  if (Object.keys(designView.src).length) patch.houseSpec = designView;
+  for (const k of Object.keys(front)) if (!used.has(k)) notApplied.push(`fronts[0].${k}`);
   // The wall colour: threeBuildingFeatures meshBuildingFor takes `facadeMappedColour` as the sourced wall in the photo look.
   const palette = (o.design.palette ?? {}) as Record<string, unknown>;
   const wallKey = ['wall', 'brick'].find(k => typeof palette[k] === 'string' && /^#[0-9a-f]{6}$/i.test(palette[k] as string));
   if (wallKey) { patch.facadeMappedColour = palette[wallKey]; applied.push(`palette.${wallKey} -> facadeMappedColour=${palette[wallKey]}`); }
-  for (const k of Object.keys(palette)) if (k !== wallKey) notApplied.push(`palette.${k}`);
+  for (const k of Object.keys(palette)) if (k !== wallKey && !(k === 'frame' && view.look?.dark !== undefined)) notApplied.push(`palette.${k}`);
   for (const k of Object.keys(o.design)) if (k !== 'fronts' && k !== 'palette') notApplied.push(k);
   if ((o.design.fronts?.length ?? 0) > 1) notApplied.push(`fronts[1..${o.design.fronts!.length - 1}]`);
   return { patch, applied, notApplied };
@@ -571,7 +594,10 @@ export async function renderGeneric(session: PreviewSession, pandId: string, arg
   tm.mark('tiles');
   // The override goes onto the source properties, then the chain decorates as it does for every building.
   const ov = override ? overridePatch(override) : null;
-  const own = ov && Object.keys(ov.patch).length ? session.chain.decorate({ ...raw.raw, properties: { ...raw.raw.properties, ...ov.patch } }) : raw.styled;
+  // The override's view keys go over the pand's own extract view (its crownRiseM still gates a register gable).
+  const base = raw.raw.properties.houseSpec as HouseSpecView | undefined, mine = ov?.patch.houseSpec as HouseSpecView | undefined;
+  const merged = mine ? { houseSpec: { ...(base ?? {}), ...mine, src: { ...(base?.src ?? {}), ...mine.src } } } : {};
+  const own = ov && Object.keys(ov.patch).length ? session.chain.decorate({ ...raw.raw, properties: { ...raw.raw.properties, ...ov.patch, ...merged } }) : raw.styled;
   const styled = all.map(r => r === raw ? own : r.styled);
   const kitHide = new Set(KIT_HIDE_IDS);
   const ctx = new BuildingContextIndex(styled, boxOf);
@@ -588,7 +614,13 @@ export async function renderGeneric(session: PreviewSession, pandId: string, arg
   const streets = shellStreets(REPO_ROOT, features as never), profiles = shellProfiles(REPO_ROOT);
   tm.mark('context');
   const look = session.look as 'photo';
-  const walls = buildFeatureChunk(features as never, look, 'walls', streets, profiles, context as never);
+  // The own pand's street-run grid as the mesher laid it (threeBuildingMesh layoutProbe): drawn storeys and window columns.
+  const runs: { storeys: number; groundM: number; storeyM: number; bays: number; street: boolean; lengthM: number; base: number }[] = [];
+  layoutProbe.sink = (id, r) => { if (id === own.properties.id) runs.push(r); };
+  let walls: ReturnType<typeof buildFeatureChunk>;
+  try { walls = buildFeatureChunk(features as never, look, 'walls', streets, profiles, context as never); } finally { layoutProbe.sink = undefined; }
+  const streetRun = runs.filter(r => r.street && r.base < 0.5).sort((a, b) => b.lengthM - a.lengthM)[0];
+  const drawn = streetRun ? { storeys: streetRun.storeys + 1, upperStoreys: streetRun.storeys, groundM: +streetRun.groundM.toFixed(2), storeyM: +streetRun.storeyM.toFixed(2), columns: streetRun.bays, runM: +streetRun.lengthM.toFixed(2) } : null;
   const extras = buildFeatureChunk(features as never, look, 'extras', streets, profiles, context as never);
   const mesh = concatChunks([walls, extras]);
   const ownRanges = mesh.ranges.filter(r => r.id === own.properties.id);
@@ -628,6 +660,7 @@ export async function renderGeneric(session: PreviewSession, pandId: string, arg
     label: route === 'spec' ? 'preview (spec route: generic path + overrides)' : 'preview (generic path)',
     measure: {
       tile, look: session.look, ppm: args.ppm, wall: { ...wall, lengthM: +frame.len.toFixed(2) }, groundZ: +groundZ.toFixed(2),
+      layout: drawn,
       chunk: { buildings: features.length, contextNeighbours: context.length, vertices: mesh.layers.length, ownVertices: ownRanges.reduce((s, r) => s + r.count, 0), triangles: mesh.indices.length / 3, wholeTile: args.wholeTile },
       atlas: { file: path.relative(REPO_ROOT, session.atlas!.file), painted: session.atlas!.painted },
       properties: p, overrides: ov ? { source: override!.source, applied: ov.applied, notApplied: ov.notApplied } : null,

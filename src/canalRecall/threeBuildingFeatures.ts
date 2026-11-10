@@ -10,6 +10,7 @@ import { roofPlanForFeature, roofTrianglesForOutline, roofTrianglesForOutlineUnc
 import { sourceVisualRoof } from './sourceVisualRoof.js';
 import { BAY_LAYER_COUNT, BAY_STYLES, FATIH_MASONRY_LAYER, bayLayer, bayLookFor } from './bayLook.js';
 import { paletteFor } from './bayTextures.js';
+import { SPEC_SHOP_KIND } from './houseSpec/decorate.js';
 import { BARE_WALL_HEX, DEFAULT_FACADE_WALL_HEX, DEFAULT_SHOP_SIGN_HEX, FLAT_ROOF_GREYS, LOOK_VARIANTS, ROOF_SLOT_TONES, cellSetOf, hexToRgb, lookHex, roofTone, type BuildingLook } from './look/palette.js';
 import { decodeFurniture, MIN_CONFIDENCE, roofSlotHex } from './roofs/roofSlots.js';
 import { FLAT_LID_EXPOSURE, flatRoofPriorHex, flatRoofToneEnabled, lowConfidenceReading, mappedTowardPrior, roofStampConfident, scaleHex } from './roofs/flatRoofTone.js';
@@ -41,7 +42,9 @@ export type { BuildingLook };
  * draws NO shop: the old random third (hashShop, bayLook's hash draw) put shops on warehouses (shopGate.ts, 2026-11-10).
  */
 const shopfrontOf = (p: Record<string, unknown>): ShopKind | 'quiet' | undefined =>
-  typeof p.shopKind === 'string' ? p.shopKind as ShopKind : p.shopQuiet ? 'quiet' : undefined;
+  // A HouseSpec's stated ground storey (houseSpec/decorate.ts `specShop`, lane H11) outranks the OSM-based extract: a quiet
+  // front drops the extract's shop, a shop keeps the extract's kind or draws the plain shop window. Absent = as before.
+  p.specShop === false ? 'quiet' : typeof p.shopKind === 'string' ? p.shopKind as ShopKind : p.specShop === true ? SPEC_SHOP_KIND : p.shopQuiet ? 'quiet' : undefined;
 /** The texture set a look draws from (look/palette.ts `LOOK_VARIANTS`). */
 export { cellSetOf };
 export type Feature = { type: 'Feature'; properties: Record<string, unknown>; geometry: unknown };
@@ -121,6 +124,10 @@ function applyLargeTier(building: MeshBuilding, p: Record<string, unknown>, look
   building.parapetM = system.parapetM;
 }
 
+/** A HouseSpec's reads (houseSpec/decorate.ts `specRecipe`), when the decorator wrote one. */
+const specRecipeOf = (p: Record<string, unknown>): NonNullable<MeshBuilding['specRecipe']> | undefined =>
+  p.specRecipe && typeof p.specRecipe === 'object' && !Array.isArray(p.specRecipe) ? p.specRecipe as NonNullable<MeshBuilding['specRecipe']> : undefined;
+
 /** The `?walls=measured` stamp (genericFacades.ts constructionYearEnricher), when present and well formed. */
 const periodWallOf = (p: Record<string, unknown>): string | undefined => typeof p.periodWallHex === 'string' && /^#[0-9a-f]{6}$/i.test(p.periodWallHex) ? p.periodWallHex : undefined;
 
@@ -138,7 +145,8 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook, coarse = f
     const at = polygons[0]?.[0]?.[0];
     const profile = at ? buurtProfileAt(at[0], at[1]) : null;
     const bay = bayLookFor(id, year, Number(p.height) || heightM, look as Look, shopfrontOf(p) ?? 'quiet', undefined, periodWallOf(p), profile,
-      year !== null && year >= 1945 ? { footprintM2: footprintAreaM2(feature.geometry), buildingType: typeof p.buildingType === 'string' ? p.buildingType : null, at: at ? [at[0], at[1]] as const : undefined } : undefined);
+      year !== null && year >= 1945 ? { footprintM2: footprintAreaM2(feature.geometry), buildingType: typeof p.buildingType === 'string' ? p.buildingType : null, at: at ? [at[0], at[1]] as const : undefined } : undefined,
+      specRecipeOf(p)?.look ? { ...specRecipeOf(p)!.look, bays: specRecipeOf(p)!.bays } : undefined);
     profileWall = bay.profileWall; spandrelAccent = bay.modern?.accent;
     building = { id, polygons, heightM, minHeightM, style: bay.layout, wallHex: bay.wallHex, accentHex: bay.accentHex, layers: bay.layers, groundHex: bay.groundHex };
     const storeyScale = storeyScaleOf(profile?.eras[bay.archetype], STYLE_DIMS[bay.layout].storey);
@@ -156,8 +164,10 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook, coarse = f
   }
   // A HouseSpec's reads (houseSpec/decorate.ts): the street run's bay count, crown and period, and a wall colour
   // measured on a street photo. Absent unless the spec extract stamped the pand (`?houseSpecs=0` = absent).
-  const specRecipe = p.specRecipe && typeof p.specRecipe === 'object' && !Array.isArray(p.specRecipe) ? p.specRecipe as NonNullable<MeshBuilding['specRecipe']> : undefined;
+  const specRecipe = specRecipeOf(p);
   if (specRecipe) building.specRecipe = specRecipe;
+  // A spec'd shopfront's measured paint (H11) on the shop's ground storey, in the look's palette.
+  if (specRecipe?.shopHex && building.groundHex && shopfrontOf(p) !== 'quiet' && cellSetOf(look) !== 'procedural') building.groundHex = lookHex(specRecipe.shopHex, look as Look);
   // A sourced hex color survives PHOTO decoration; material-only hues remain explicitly display priors.
   let sourcedWall: string | undefined;
   if (look === 'photo') {

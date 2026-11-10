@@ -181,11 +181,15 @@ const PROFILE_STYLE_INDICES = Object.fromEntries(ARCHETYPES.map(archetype => [ar
   !v.openingGroup && !v.groundAssembly && !v.entranceAssembly && !v.facadeAssembly && (archetype === 'modern' ? v.family === 'punched' : !v.family || v.family === 'masonry') ? [i] : [])])) as Record<Archetype, number[]>;
 const traitStyles = new Map<string, number[]>();
 /** The presets that best match a profiled building's drawn traits (white accents, dark frames, arched heads, tall sashes). */
-export function bayStyleForTraits(id: string, archetype: Archetype, traits: ProfileTraits): number {
-  const key = `${archetype}|${traits.pale}|${traits.dark}|${traits.arch}|${traits.tall}`;
+/** `bays` (a HouseSpec's stated window columns, lane H11): only presets whose window count divides it, when any does, so the
+ *  look never forces a 3-window cell on a 2-bay front (or 2-window cells on 3 bays). Absent = every plain preset, as before. */
+export function bayStyleForTraits(id: string, archetype: Archetype, traits: ProfileTraits, bays?: number): number {
+  const fitting = bays ? PROFILE_STYLE_INDICES[archetype].filter(i => bays % (BAY_STYLES[archetype][i].windows || 1) === 0) : [];
+  const pool = fitting.length ? fitting : PROFILE_STYLE_INDICES[archetype];
+  const key = `${archetype}|${traits.pale}|${traits.dark}|${traits.arch}|${traits.tall}${fitting.length ? `|w${bays}` : ''}`;
   let indices = traitStyles.get(key);
   if (!indices) {
-    const scored = PROFILE_STYLE_INDICES[archetype].map(i => {
+    const scored = pool.map(i => {
       const v = BAY_STYLES[archetype][i];
       const arch = v.shape === 'segmental' || v.lintel === 'arch', tall = (v.proportions ?? 'tall') === 'tall';
       return { i, score: (traits.pale === null ? 0 : (!!v.paleAccents === traits.pale ? 12 : 0)) + (traits.dark === null ? 0 : ((v.frameTone === 'dark') === traits.dark ? 10 : 0))
@@ -211,15 +215,22 @@ export function bayStyleForTraits(id: string, archetype: Archetype, traits: Prof
  * dated post-1945 building: the era x use rule picks the preset and the wall instead of the hash and the buurt
  * profile (whose eras were measured on pre-1945 fronts). Absent, or `?modernFacades=0`: every pick is as before.
  */
-export function bayLookFor(id: string, year: number | null, heightM: number, look: Look, shopfront?: ShopKind | 'quiet', recipe?: ArchitecturalRecipe, periodWall?: string, profile?: BuurtProfile | null, modern?: Pick<ModernFacts, 'footprintM2' | 'buildingType'> & { at?: readonly [number, number] }) {
+/**
+ * `spec`: a HouseSpec's stated window look (houseSpec/decorate.ts SpecLook, lane H11): each stated trait replaces the buurt
+ * profile's draw for it and the preset is picked by bayStyleForTraits among the plain presets, as a profile's would be. Never
+ * over a recipe or the modern vocabularies; absent (or no trait stated) = every pick as before.
+ */
+export function bayLookFor(id: string, year: number | null, heightM: number, look: Look, shopfront?: ShopKind | 'quiet', recipe?: ArchitecturalRecipe, periodWall?: string, profile?: BuurtProfile | null, modern?: Pick<ModernFacts, 'footprintM2' | 'buildingType'> & { at?: readonly [number, number] }, spec?: { pale?: boolean; dark?: boolean; arch?: boolean; tall?: boolean; bays?: number }) {
   const buurt = !recipe && look === 'photo' && profile ? profile : null;
   const archetype: Archetype = recipe?.facadeAssembly === 'stacked-iron-balcony' ? 'c19' : recipe ? (recipe.family === 'masonry' ? (recipe.period === 'c19' || recipe.period === 'school' ? recipe.period : 'canal') : 'modern')
     : year === null && buurt?.dominantEra && heightM < 28 ? buurt.dominantEra : archetypeFor(id, year, heightM);
   // The contemporary family (`?newbuildFamily=1`): measured new-build walls and window shapes, every textured look.
   const contemporary: ContemporaryLook | null = modern && !recipe && archetype === 'modern' ? contemporaryLookFor({ id, year, heightM, use: modernUseFor({ id, year, heightM, ...modern }), at: modern.at }) : null;
   const vocab: ModernVocabulary | null = !contemporary && modern && !recipe && look === 'photo' && archetype === 'modern' && modernFacadesEnabled() ? modernVocabulary({ id, year, heightM, ...modern }, buurt?.eras.modern, modernPandWall(id)) : null;
-  const era = vocab || contemporary ? undefined : buurt?.eras[archetype], traits = era ? profileTraits(id, era) : null;
-  const h = hashSeed(id), style = contemporary ? contemporary.styleIndex : vocab ? vocab.styleIndex : traits && (traits.pale !== null || traits.dark !== null || traits.arch !== null || traits.tall !== null) ? bayStyleForTraits(id, archetype, traits) : bayStyleForRecipe(id, archetype, recipe);
+  const era = vocab || contemporary ? undefined : buurt?.eras[archetype], drawn = era ? profileTraits(id, era) : null;
+  const stated = !recipe && !vocab && !contemporary && spec && (spec.pale !== undefined || spec.dark !== undefined || spec.arch !== undefined || spec.tall !== undefined);
+  const traits = stated ? { wall: drawn?.wall ?? null, pale: spec!.pale ?? drawn?.pale ?? null, dark: spec!.dark ?? drawn?.dark ?? null, arch: spec!.arch ?? drawn?.arch ?? null, tall: spec!.tall ?? drawn?.tall ?? null } : drawn;
+  const h = hashSeed(id), style = contemporary ? contemporary.styleIndex : vocab ? vocab.styleIndex : traits && (traits.pale !== null || traits.dark !== null || traits.arch !== null || traits.tall !== null) ? bayStyleForTraits(id, archetype, traits, stated ? spec!.bays : undefined) : bayStyleForRecipe(id, archetype, recipe);
   // Without the extract: a third of buildings (or the buurt's measured share), picking among the original four shopfronts.
   const shop = (recipe?.facadeAssembly || recipe?.entranceAssembly || recipe?.openingGroup) && !shopfront ? false : shopfront ? shopfront !== 'quiet'
     : (buurt?.shopfrontShare ?? buurt?.shopShare) !== undefined ? unitDraw(id, 'shop') < (buurt!.shopfrontShare ?? buurt!.shopShare!) : (h >>> 13) % 3 === 0;
