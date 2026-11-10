@@ -125,8 +125,9 @@ Output: <out>/front.png, threeq.png (--threeq), compare.png (--photo), measure.j
 measurements, verdict). Atlas cache: artifacts/house-preview/atlas-<look>-<size>-<painter hash>.bin (first run
 paints, later runs load; a painter source change repaints).
 
-Overrides (until the HouseSpec resolver of lane H1 lands): front gable -> monumentGable; every other design field is
-listed under overrides.notApplied in measure.json (the generic path has no property for it yet).
+Overrides (until the HouseSpec resolver of lane H1 lands): fronts[0].gable -> monumentGable, palette.wall (or
+palette.brick) hex -> facadeMappedColour; every other design field is listed under overrides.notApplied in
+measure.json (the generic path has no property for it yet).
 
 Not reproduced: the far and roof distance tiers, mipmaps, the lit/city-look shaders (sun, wall gain, grain),
 analytic window SDF, shadows, the ground lift, post-processing. When those matter (a lighting or tier question), fall back to
