@@ -13,6 +13,21 @@ export function popFadeFlag(): boolean {
   return POP_FADE_DEFAULT;
 }
 
+/**
+ * `?kitFade=1`: the street-kit chunk cross-fades its rebuilds too (only under popFade). Default off: the lane's two
+ * aerial runs with it ended at 763 and 1,189 MB of JS heap against 613 MB before, unexplained (integrator 2026-11-10).
+ */
+export const KIT_FADE_DEFAULT = false;
+export function kitFadeFlag(): boolean {
+  if (!popFadeFlag()) return false;
+  const g = globalThis as { __canalRecallKitFade?: boolean | string; location?: { search?: string } };
+  const m = /[?&]kitFade=([^&]*)/.exec(g.location?.search ?? '');
+  const asked = g.__canalRecallKitFade ?? (m ? m[1] : null);
+  if (asked === true || asked === '1' || asked === 'true' || asked === 'on') return true;
+  if (asked === false || asked === '0' || asked === 'false' || asked === 'off') return false;
+  return KIT_FADE_DEFAULT;
+}
+
 type FadeClone = { uniforms: { cityFade: { value: number } }; dispose?(): void };
 type LeavingMesh = { material: unknown; parent?: { remove(o: unknown): void } | null; visible?: boolean };
 
