@@ -3,7 +3,7 @@
  "street": "Soendastraat",
  "library": "indische-buurt",
  "stripDate": "2019-12-18",
- "seconds": 29.97,
+ "seconds": 18.05,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -17,7 +17,6 @@
   {
    "face": "soenda-2-36-r1",
    "pands": [
-    "0363100012113301",
     "0363100012150368",
     "0363100012069113",
     "0363100012062527",
@@ -26,18 +25,17 @@
     "0363100012111204"
    ],
    "passed": true,
-   "triangles": 10499
+   "triangles": 9655
   },
   {
    "face": "soenda-2-36-r2",
    "pands": [
     "0363100012136122",
     "0363100012068591",
-    "0363100012092864",
-    "0363100012092089"
+    "0363100012092864"
    ],
    "passed": true,
-   "triangles": 6076
+   "triangles": 4880
   }
  ],
  "pands": [
@@ -82,41 +80,10 @@
     "foliageShare": 0.03
    },
    "status": "held",
-   "stage": "likeness",
-   "reason": "edge NCC 0.114 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.30 mean 0.33 vs photo 0.57)",
-   "likeness": {
-    "pandId": "0363100012084401",
-    "ncc": 0.114,
-    "nccRaw": 0.114,
-    "shiftM": [
-     -0.15,
-     -0.4
-    ],
-    "usable": 0.91,
-    "abstain": null,
-    "verdict": "FAIL",
-    "reasons": [
-     "glazing storey band off by 0.30 mean 0.33 vs photo 0.57"
-    ],
-    "wall": {
-     "photo": "#786051",
-     "model": "#917462",
-     "dL": 0.082
-    },
-    "glazing": {
-     "photo": 0.57,
-     "model": 0.33
-    },
-    "columns": {
-     "photo": null,
-     "model": 3
-    },
-    "iou": 0.379
-   },
-   "challengers": {
-    "indisch-1913-arched-pair-dormer": 0.114,
-    "indisch-1913-arched-pair-dormer~m": 0.106
-   }
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": null,
+   "challengers": {}
   },
   {
    "pandId": "0363100012113301",
@@ -158,54 +125,11 @@
     "voidShare": 0,
     "foliageShare": 0.03
    },
-   "status": "placed",
-   "type": "indisch-1913-arched-pair-dormer",
-   "score": 1,
-   "placement": {
-    "type": "indisch-1913-arched-pair-dormer",
-    "measuredPalette": {
-     "brick": "#725b4f",
-     "evidence": "strip 2019-12-18 span 240-480: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    }
-   },
-   "notes": [
-    "door unread",
-    "crown brick-dormer (type default)"
-   ],
-   "likeness": {
-    "pandId": "0363100012113301",
-    "ncc": 0.171,
-    "nccRaw": 0.171,
-    "shiftM": [
-     0.4,
-     0.4
-    ],
-    "usable": 0.9,
-    "abstain": null,
-    "verdict": "FAIL",
-    "reasons": [
-     "glazing storey band off by 0.41 mean 0.33 vs photo 0.61",
-     "columns 3 vs photo 8"
-    ],
-    "wall": {
-     "photo": "#7c6154",
-     "model": "#8b6f60",
-     "dL": 0.053
-    },
-    "glazing": {
-     "photo": 0.61,
-     "model": 0.33
-    },
-    "columns": {
-     "photo": 8,
-     "model": 3
-    },
-    "iou": 0.36
-   },
-   "challengers": {
-    "indisch-1913-arched-pair-dormer": 0.171,
-    "indisch-1913-arched-pair-dormer~m": 0.081
-   }
+   "status": "held",
+   "stage": "review",
+   "reason": "review: a different front (narrow paired windows, white timber dormer, the gabled corner beside it)",
+   "likeness": null,
+   "challengers": {}
   },
   {
    "pandId": "0363100012150368",
@@ -263,36 +187,36 @@
    ],
    "likeness": {
     "pandId": "0363100012150368",
-    "ncc": 0.282,
-    "nccRaw": 0.282,
+    "ncc": 0.284,
+    "nccRaw": 0.284,
     "shiftM": [
      0.4,
-     -0.3
+     -0.1
     ],
     "usable": 0.91,
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.31 mean 0.33 vs photo 0.54"
+     "glazing storey band off by 0.20 mean 0.32 vs photo 0.48"
     ],
     "wall": {
-     "photo": "#816657",
+     "photo": "#816658",
      "model": "#8e7262",
-     "dL": 0.047
+     "dL": 0.045
     },
     "glazing": {
-     "photo": 0.54,
-     "model": 0.33
+     "photo": 0.48,
+     "model": 0.32
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.388
+    "iou": 0.384
    },
    "challengers": {
-    "indisch-1913-arched-pair-dormer": 0.273,
-    "indisch-1913-arched-pair-dormer~m": 0.042
+    "indisch-1913-arched-pair-dormer": 0.285,
+    "indisch-1913-arched-pair-dormer~m": 0.06
    }
   },
   {
@@ -349,25 +273,26 @@
     "measuredPalette": {
      "brick": "#8b6e60",
      "evidence": "strip 2019-12-18 span 720-940: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    }
+    },
+    "mirror": true
    },
    "notes": [
-    "door unread",
-    "crown brick-dormer (type default)"
+    "crown brick-dormer (type default)",
+    "door reviewer pin: mirrored (Soendastraat 26: arched window and door on the left, pairing with 28 across the wall)"
    ],
    "likeness": {
     "pandId": "0363100012069113",
-    "ncc": 0.211,
-    "nccRaw": 0.211,
+    "ncc": 0.31,
+    "nccRaw": 0.31,
     "shiftM": [
-     -0.4,
-     -0.2
+     0,
+     0
     ],
-    "usable": 0.91,
+    "usable": 0.92,
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.25 mean 0.34 vs photo 0.49"
+     "glazing storey band off by 0.21 mean 0.32 vs photo 0.46"
     ],
     "wall": {
      "photo": "#896c5c",
@@ -375,17 +300,18 @@
      "dL": 0.086
     },
     "glazing": {
-     "photo": 0.49,
-     "model": 0.34
+     "photo": 0.46,
+     "model": 0.32
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.36
+    "iou": 0.409
    },
    "challengers": {
-    "indisch-1913-arched-pair-dormer": 0.22
+    "indisch-1913-arched-pair-dormer~m": 0.31,
+    "indisch-1913-arched-pair-dormer": 0.204
    }
   },
   {
@@ -450,36 +376,36 @@
    ],
    "likeness": {
     "pandId": "0363100012062527",
-    "ncc": 0.238,
-    "nccRaw": 0.238,
+    "ncc": 0.271,
+    "nccRaw": 0.271,
     "shiftM": [
      0.3,
-     -0.2
+     -0.05
     ],
     "usable": 0.92,
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.19 mean 0.34 vs photo 0.47"
+     "glazing storey band off by 0.34 mean 0.32 vs photo 0.11"
     ],
     "wall": {
-     "photo": "#8c6e5d",
+     "photo": "#7e6759",
      "model": "#9d7f6b",
-     "dL": 0.061
+     "dL": 0.096
     },
     "glazing": {
-     "photo": 0.47,
-     "model": 0.34
+     "photo": 0.11,
+     "model": 0.32
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.477
+    "iou": 0.197
    },
    "challengers": {
-    "indisch-1913-arched-pair-dormer": 0.25,
-    "indisch-1913-arched-pair-dormer~m": -0.003
+    "indisch-1913-arched-pair-dormer": 0.267,
+    "indisch-1913-arched-pair-dormer~m": 0.004
    }
   },
   {
@@ -545,36 +471,36 @@
    ],
    "likeness": {
     "pandId": "0363100012081321",
-    "ncc": 0.283,
-    "nccRaw": 0.283,
+    "ncc": 0.284,
+    "nccRaw": 0.284,
     "shiftM": [
      0.2,
-     -0.25
+     -0.1
     ],
-    "usable": 0.86,
+    "usable": 0.87,
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.33 mean 0.34 vs photo 0.10"
+     "glazing storey band off by 0.34 mean 0.32 vs photo 0.10"
     ],
     "wall": {
-     "photo": "#786152",
+     "photo": "#7a6354",
      "model": "#9b7a66",
-     "dL": 0.108
+     "dL": 0.1
     },
     "glazing": {
      "photo": 0.1,
-     "model": 0.34
+     "model": 0.32
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.252
+    "iou": 0.175
    },
    "challengers": {
-    "indisch-1913-arched-pair-dormer~m": 0.276,
-    "indisch-1913-arched-pair-dormer": 0.293
+    "indisch-1913-arched-pair-dormer~m": 0.294,
+    "indisch-1913-arched-pair-dormer": 0.287
    }
   },
   {
@@ -639,17 +565,17 @@
    ],
    "likeness": {
     "pandId": "0363100012107809",
-    "ncc": 0.295,
-    "nccRaw": 0.295,
+    "ncc": 0.316,
+    "nccRaw": 0.316,
     "shiftM": [
      0.4,
-     -0.2
+     -0.05
     ],
     "usable": 0.87,
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.32 mean 0.34 vs photo 0.14"
+     "glazing storey band off by 0.32 mean 0.32 vs photo 0.14"
     ],
     "wall": {
      "photo": "#7b6455",
@@ -658,17 +584,17 @@
     },
     "glazing": {
      "photo": 0.14,
-     "model": 0.34
+     "model": 0.32
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.296
+    "iou": 0.217
    },
    "challengers": {
-    "indisch-1913-arched-pair-dormer": 0.304,
-    "indisch-1913-arched-pair-dormer~m": 0.032
+    "indisch-1913-arched-pair-dormer": 0.315,
+    "indisch-1913-arched-pair-dormer~m": 0.035
    }
   },
   {
@@ -734,17 +660,17 @@
    ],
    "likeness": {
     "pandId": "0363100012111204",
-    "ncc": 0.276,
-    "nccRaw": 0.276,
+    "ncc": 0.301,
+    "nccRaw": 0.301,
     "shiftM": [
      0.3,
-     -0.25
+     -0.05
     ],
     "usable": 0.93,
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.26 mean 0.32 vs photo 0.48"
+     "glazing storey band off by 0.32 mean 0.31 vs photo 0.50"
     ],
     "wall": {
      "photo": "#8a6c5a",
@@ -752,18 +678,18 @@
      "dL": 0.065
     },
     "glazing": {
-     "photo": 0.48,
-     "model": 0.32
+     "photo": 0.5,
+     "model": 0.31
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.451
+    "iou": 0.424
    },
    "challengers": {
-    "indisch-1913-arched-pair-dormer~m": 0.285,
-    "indisch-1913-arched-pair-dormer": 0.293
+    "indisch-1913-arched-pair-dormer~m": 0.303,
+    "indisch-1913-arched-pair-dormer": 0.299
    }
   },
   {
@@ -814,39 +740,39 @@
    },
    "status": "held",
    "stage": "likeness",
-   "reason": "edge NCC 0.081 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.28 mean 0.33 vs photo 0.15)",
+   "reason": "edge NCC 0.107 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.29 mean 0.31 vs photo 0.13)",
    "likeness": {
     "pandId": "0363100012063047",
-    "ncc": 0.081,
-    "nccRaw": 0.081,
+    "ncc": 0.107,
+    "nccRaw": 0.107,
     "shiftM": [
      -0.4,
-     -0.4
+     -0.2
     ],
-    "usable": 0.9,
+    "usable": 0.91,
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.28 mean 0.33 vs photo 0.15"
+     "glazing storey band off by 0.29 mean 0.31 vs photo 0.13"
     ],
     "wall": {
-     "photo": "#866b5a",
+     "photo": "#866b5b",
      "model": "#9e806e",
-     "dL": 0.086
+     "dL": 0.084
     },
     "glazing": {
-     "photo": 0.15,
-     "model": 0.33
+     "photo": 0.13,
+     "model": 0.31
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.216
+    "iou": 0.148
    },
    "challengers": {
-    "indisch-1913-arched-pair-dormer~m": 0.081,
-    "indisch-1913-arched-pair-dormer": 0.246
+    "indisch-1913-arched-pair-dormer~m": 0.107,
+    "indisch-1913-arched-pair-dormer": 0.263
    }
   },
   {
@@ -915,14 +841,14 @@
     "ncc": 0.282,
     "nccRaw": 0.282,
     "shiftM": [
-     0.3,
+     0.35,
      -0.1
     ],
     "usable": 0.93,
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.23 mean 0.33 vs photo 0.21"
+     "glazing storey band off by 0.23 mean 0.31 vs photo 0.21"
     ],
     "wall": {
      "photo": "#886d5c",
@@ -931,17 +857,17 @@
     },
     "glazing": {
      "photo": 0.21,
-     "model": 0.33
+     "model": 0.31
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.382
+    "iou": 0.292
    },
    "challengers": {
-    "indisch-1913-arched-pair-dormer~m": 0.288,
-    "indisch-1913-arched-pair-dormer": 0.296
+    "indisch-1913-arched-pair-dormer~m": 0.287,
+    "indisch-1913-arched-pair-dormer": 0.292
    }
   },
   {
@@ -1006,36 +932,36 @@
    ],
    "likeness": {
     "pandId": "0363100012068591",
-    "ncc": 0.211,
-    "nccRaw": 0.211,
+    "ncc": 0.234,
+    "nccRaw": 0.234,
     "shiftM": [
      0.4,
-     -0.35
+     -0.1
     ],
     "usable": 0.94,
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.32 mean 0.34 vs photo 0.09"
+     "glazing storey band off by 0.32 mean 0.32 vs photo 0.12"
     ],
     "wall": {
-     "photo": "#886c5b",
+     "photo": "#876c5c",
      "model": "#a08271",
      "dL": 0.09
     },
     "glazing": {
-     "photo": 0.09,
-     "model": 0.34
+     "photo": 0.12,
+     "model": 0.32
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.168
+    "iou": 0.16
    },
    "challengers": {
-    "indisch-1913-arched-pair-dormer": 0.22,
-    "indisch-1913-arched-pair-dormer~m": 0.156
+    "indisch-1913-arched-pair-dormer": 0.231,
+    "indisch-1913-arched-pair-dormer~m": 0.16
    }
   },
   {
@@ -1095,36 +1021,36 @@
    ],
    "likeness": {
     "pandId": "0363100012092864",
-    "ncc": 0.271,
-    "nccRaw": 0.271,
+    "ncc": 0.282,
+    "nccRaw": 0.282,
     "shiftM": [
-     0.1,
-     -0.4
+     0.05,
+     -0.1
     ],
-    "usable": 0.9,
+    "usable": 0.91,
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.32 mean 0.33 vs photo 0.52"
+     "glazing storey band off by 0.20"
     ],
     "wall": {
-     "photo": "#846a59",
+     "photo": "#7a6354",
      "model": "#9b7e6f",
-     "dL": 0.088
+     "dL": 0.118
     },
     "glazing": {
-     "photo": 0.52,
-     "model": 0.33
+     "photo": 0.29,
+     "model": 0.32
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.396
+    "iou": 0.304
    },
    "challengers": {
-    "indisch-1913-arched-pair-dormer~m": 0.275,
-    "indisch-1913-arched-pair-dormer": 0.25
+    "indisch-1913-arched-pair-dormer~m": 0.281,
+    "indisch-1913-arched-pair-dormer": 0.281
    }
   },
   {
@@ -1173,55 +1099,11 @@
     "voidShare": 0,
     "foliageShare": 0.04
    },
-   "status": "placed",
-   "type": "indisch-1913-arched-pair-dormer",
-   "score": 1,
-   "placement": {
-    "type": "indisch-1913-arched-pair-dormer",
-    "measuredPalette": {
-     "brick": "#7a6153",
-     "evidence": "strip 2019-12-18 span 2728-2968: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    }
-   },
-   "notes": [
-    "door right",
-    "crown brick-dormer (type default)"
-   ],
-   "likeness": {
-    "pandId": "0363100012092089",
-    "ncc": 0.259,
-    "nccRaw": 0.259,
-    "shiftM": [
-     -0.4,
-     0.4
-    ],
-    "usable": 0.89,
-    "abstain": null,
-    "verdict": "FAIL",
-    "reasons": [
-     "wall dL +0.13",
-     "glazing storey band off by 0.23",
-     "columns 3 vs photo 4"
-    ],
-    "wall": {
-     "photo": "#6b5448",
-     "model": "#927463",
-     "dL": 0.129
-    },
-    "glazing": {
-     "photo": 0.43,
-     "model": 0.33
-    },
-    "columns": {
-     "photo": 4,
-     "model": 3
-    },
-    "iou": 0.391
-   },
-   "challengers": {
-    "indisch-1913-arched-pair-dormer": 0.26,
-    "indisch-1913-arched-pair-dormer~m": 0.332
-   }
+   "status": "held",
+   "stage": "review",
+   "reason": "review: a different design (paired narrow windows, timber dormer with hoist, gable, eaves 13.39 m)",
+   "likeness": null,
+   "challengers": {}
   },
   {
    "pandId": "0363100012066054",
@@ -1276,39 +1158,41 @@
    },
    "status": "held",
    "stage": "likeness",
-   "reason": "edge NCC 0.109 < 0.15 (photo vs model body; likeness.ts WARN: mask IoU 0.378 < 0.45)",
+   "reason": "edge NCC 0.13 < 0.15 (photo vs model body; likeness.ts WARN: columns 3 vs photo 4; mask IoU 0.426 < 0.45)",
    "likeness": {
     "pandId": "0363100012066054",
-    "ncc": 0.109,
-    "nccRaw": 0.109,
+    "ncc": 0.13,
+    "nccRaw": 0.13,
     "shiftM": [
-     -0.1,
+     -0.05,
      0.4
     ],
-    "usable": 0.95,
+    "usable": 0.96,
     "abstain": null,
     "verdict": "WARN",
     "reasons": [
-     "mask IoU 0.378 < 0.45"
+     "columns 3 vs photo 4",
+     "mask IoU 0.426 < 0.45"
     ],
     "wall": {
-     "photo": "#664b3e",
+     "photo": "#664c3e",
      "model": "#856251",
      "dL": 0.098
     },
     "glazing": {
-     "photo": 0.27,
-     "model": 0.33
+     "photo": 0.3,
+     "model": 0.31
     },
     "columns": {
-     "photo": null,
+     "photo": 4,
      "model": 3
     },
-    "iou": 0.378
+    "iou": 0.426,
+    "footOffsetM": 2.4
    },
    "challengers": {
-    "indisch-1913-arched-pair-dormer~m": 0.109,
-    "indisch-1913-arched-pair-dormer": 0.233
+    "indisch-1913-arched-pair-dormer": 0.13,
+    "indisch-1913-arched-pair-dormer~m": 0.023
    }
   },
   {
@@ -1356,36 +1240,38 @@
    "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
    "likeness": {
     "pandId": "0363100012069682",
-    "ncc": 0.199,
-    "nccRaw": 0.199,
+    "ncc": 0.043,
+    "nccRaw": 0.043,
     "shiftM": [
      -0.4,
-     -0.15
+     0.3
     ],
     "usable": 0.94,
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.24 mean 0.33 vs photo 0.51"
+     "wall dL +0.13",
+     "glazing storey band off by 0.22 mean 0.32 vs photo 0.49"
     ],
     "wall": {
-     "photo": "#83624e",
+     "photo": "#775a49",
      "model": "#a17863",
-     "dL": 0.1
+     "dL": 0.133
     },
     "glazing": {
-     "photo": 0.51,
-     "model": 0.33
+     "photo": 0.49,
+     "model": 0.32
     },
     "columns": {
      "photo": null,
      "model": 3
     },
-    "iou": 0.401
+    "iou": 0.384,
+    "footOffsetM": 2.4
    },
    "challengers": {
-    "indisch-1913-arched-pair-dormer": 0.199,
-    "indisch-1913-arched-pair-dormer~m": 0.345
+    "indisch-1913-arched-pair-dormer": 0.043,
+    "indisch-1913-arched-pair-dormer~m": 0.145
    }
   },
   {

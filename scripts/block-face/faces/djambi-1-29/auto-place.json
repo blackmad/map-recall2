@@ -3,7 +3,7 @@
  "street": "Djambistraat",
  "library": "indische-buurt",
  "stripDate": "2019-12-18",
- "seconds": 29.1,
+ "seconds": 11.61,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -17,21 +17,16 @@
   {
    "face": "djambi-1-29-r1",
    "pands": [
-    "0363100012149516",
-    "0363100012104592",
     "0363100012131961",
     "0363100012100535",
     "0363100012110582",
     "0363100012099261",
     "0363100012129720",
     "0363100012077761",
-    "0363100012072833",
-    "0363100012108617",
-    "0363100012117530",
-    "0363100012095414"
+    "0363100012072833"
    ],
-   "passed": false,
-   "triangles": 18279
+   "passed": true,
+   "triangles": 11539
   }
  ],
  "pands": [
@@ -178,41 +173,10 @@
     "foliageShare": 0
    },
    "status": "held",
-   "stage": "likeness",
-   "reason": "edge NCC 0.053 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.24 mean 0.32 vs photo 0.52)",
-   "likeness": {
-    "pandId": "0363100012113498",
-    "ncc": 0.053,
-    "nccRaw": 0.053,
-    "shiftM": [
-     0.4,
-     0.4
-    ],
-    "usable": 0.97,
-    "abstain": null,
-    "verdict": "FAIL",
-    "reasons": [
-     "glazing storey band off by 0.24 mean 0.32 vs photo 0.52"
-    ],
-    "wall": {
-     "photo": "#5e4b44",
-     "model": "#765f56",
-     "dL": 0.082
-    },
-    "glazing": {
-     "photo": 0.52,
-     "model": 0.32
-    },
-    "columns": {
-     "photo": null,
-     "model": 3
-    },
-    "iou": 0.243
-   },
-   "challengers": {
-    "indisch-1913-arched-pair-dormer~m": 0.053,
-    "indisch-1913-arched-pair-dormer": 0.227
-   }
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": null,
+   "challengers": {}
   },
   {
    "pandId": "0363100012149516",
@@ -269,53 +233,11 @@
     "voidShare": 0,
     "foliageShare": 0
    },
-   "status": "placed",
-   "type": "indisch-1913-arched-pair-dormer",
-   "score": 1,
-   "placement": {
-    "type": "indisch-1913-arched-pair-dormer",
-    "measuredPalette": {
-     "brick": "#614d46",
-     "evidence": "strip 2019-12-18 span 618-833: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    }
-   },
-   "notes": [
-    "door right",
-    "crown brick-dormer (type default)"
-   ],
-   "likeness": {
-    "pandId": "0363100012149516",
-    "ncc": 0.281,
-    "nccRaw": 0.281,
-    "shiftM": [
-     0.2,
-     -0.4
-    ],
-    "usable": 0.98,
-    "abstain": null,
-    "verdict": "FAIL",
-    "reasons": [
-     "glazing storey band off by 0.32 mean 0.33 vs photo 0.56"
-    ],
-    "wall": {
-     "photo": "#79635b",
-     "model": "#7b6259",
-     "dL": 0
-    },
-    "glazing": {
-     "photo": 0.56,
-     "model": 0.33
-    },
-    "columns": {
-     "photo": null,
-     "model": 3
-    },
-    "iou": 0.523
-   },
-   "challengers": {
-    "indisch-1913-arched-pair-dormer": 0.285,
-    "indisch-1913-arched-pair-dormer~m": 0.344
-   }
+   "status": "held",
+   "stage": "review",
+   "reason": "review: a different design (pointed brick gable over the pair, narrow paired windows, no arched pair, white timber dormers, double door); strip-verdict 2026-11-10",
+   "likeness": null,
+   "challengers": {}
   },
   {
    "pandId": "0363100012104592",
@@ -357,54 +279,11 @@
     "voidShare": 0,
     "foliageShare": 0.01
    },
-   "status": "placed",
-   "type": "indisch-1913-arched-pair-dormer",
-   "score": 1,
-   "placement": {
-    "type": "indisch-1913-arched-pair-dormer",
-    "mirror": true,
-    "measuredPalette": {
-     "brick": "#55433c",
-     "evidence": "strip 2019-12-18 span 833-1073: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    }
-   },
-   "notes": [
-    "door left: mirrored",
-    "crown brick-dormer (type default)"
-   ],
-   "likeness": {
-    "pandId": "0363100012104592",
-    "ncc": 0.221,
-    "nccRaw": 0.221,
-    "shiftM": [
-     0.4,
-     -0.3
-    ],
-    "usable": 0.97,
-    "abstain": null,
-    "verdict": "FAIL",
-    "reasons": [
-     "glazing storey band off by 0.17"
-    ],
-    "wall": {
-     "photo": "#58463e",
-     "model": "#70594f",
-     "dL": 0.08
-    },
-    "glazing": {
-     "photo": 0.4,
-     "model": 0.32
-    },
-    "columns": {
-     "photo": null,
-     "model": 3
-    },
-    "iou": 0.418
-   },
-   "challengers": {
-    "indisch-1913-arched-pair-dormer~m": 0.223,
-    "indisch-1913-arched-pair-dormer": 0.346
-   }
+   "status": "held",
+   "stage": "review",
+   "reason": "review: a different design, as 5 (pointed brick gable, narrow paired windows, white timber dormers, double door)",
+   "likeness": null,
+   "challengers": {}
   },
   {
    "pandId": "0363100012131961",
@@ -462,34 +341,34 @@
    ],
    "likeness": {
     "pandId": "0363100012131961",
-    "ncc": 0.515,
-    "nccRaw": 0.515,
+    "ncc": 0.558,
+    "nccRaw": 0.558,
     "shiftM": [
      -0.05,
-     -0.2
+     0
     ],
     "usable": 0.99,
     "abstain": null,
     "verdict": "PASS",
     "reasons": [],
     "wall": {
-     "photo": "#5c4942",
+     "photo": "#5c4a43",
      "model": "#755e55",
-     "dL": 0.086
+     "dL": 0.084
     },
     "glazing": {
-     "photo": 0.32,
-     "model": 0.33
+     "photo": 0.33,
+     "model": 0.32
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.574
+    "iou": 0.633
    },
    "challengers": {
-    "indisch-1913-arched-pair-dormer": 0.513,
-    "indisch-1913-arched-pair-dormer~m": 0.277
+    "indisch-1913-arched-pair-dormer": 0.558,
+    "indisch-1913-arched-pair-dormer~m": 0.284
    }
   },
   {
@@ -549,34 +428,34 @@
    ],
    "likeness": {
     "pandId": "0363100012100535",
-    "ncc": 0.55,
-    "nccRaw": 0.55,
+    "ncc": 0.576,
+    "nccRaw": 0.576,
     "shiftM": [
      -0.4,
-     -0.2
+     0
     ],
     "usable": 0.98,
     "abstain": null,
     "verdict": "PASS",
     "reasons": [],
     "wall": {
-     "photo": "#5c4a43",
+     "photo": "#5c4a44",
      "model": "#755e56",
-     "dL": 0.086
+     "dL": 0.084
     },
     "glazing": {
-     "photo": 0.31,
-     "model": 0.32
+     "photo": 0.3,
+     "model": 0.31
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.635
+    "iou": 0.707
    },
    "challengers": {
-    "indisch-1913-arched-pair-dormer~m": 0.552,
-    "indisch-1913-arched-pair-dormer": 0.088
+    "indisch-1913-arched-pair-dormer~m": 0.576,
+    "indisch-1913-arched-pair-dormer": 0.087
    }
   },
   {
@@ -635,11 +514,11 @@
    ],
    "likeness": {
     "pandId": "0363100012110582",
-    "ncc": 0.526,
-    "nccRaw": 0.526,
+    "ncc": 0.557,
+    "nccRaw": 0.557,
     "shiftM": [
      -0.15,
-     -0.2
+     0
     ],
     "usable": 0.99,
     "abstain": null,
@@ -651,18 +530,18 @@
      "dL": 0.084
     },
     "glazing": {
-     "photo": 0.33,
-     "model": 0.32
+     "photo": 0.32,
+     "model": 0.3
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.665
+    "iou": 0.705
    },
    "challengers": {
-    "indisch-1913-arched-pair-dormer": 0.528,
-    "indisch-1913-arched-pair-dormer~m": 0.455
+    "indisch-1913-arched-pair-dormer": 0.557,
+    "indisch-1913-arched-pair-dormer~m": 0.463
    }
   },
   {
@@ -722,11 +601,11 @@
    ],
    "likeness": {
     "pandId": "0363100012099261",
-    "ncc": 0.535,
-    "nccRaw": 0.535,
+    "ncc": 0.557,
+    "nccRaw": 0.557,
     "shiftM": [
      -0.2,
-     -0.2
+     0.05
     ],
     "usable": 1,
     "abstain": null,
@@ -739,17 +618,17 @@
     },
     "glazing": {
      "photo": 0.32,
-     "model": 0.32
+     "model": 0.31
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.628
+    "iou": 0.692
    },
    "challengers": {
-    "indisch-1913-arched-pair-dormer~m": 0.536,
-    "indisch-1913-arched-pair-dormer": 0.094
+    "indisch-1913-arched-pair-dormer~m": 0.557,
+    "indisch-1913-arched-pair-dormer": 0.097
    }
   },
   {
@@ -808,13 +687,13 @@
    ],
    "likeness": {
     "pandId": "0363100012129720",
-    "ncc": 0.502,
-    "nccRaw": 0.502,
+    "ncc": 0.529,
+    "nccRaw": 0.529,
     "shiftM": [
-     0.1,
-     -0.15
+     0.05,
+     0.05
     ],
-    "usable": 0.99,
+    "usable": 0.98,
     "abstain": null,
     "verdict": "PASS",
     "reasons": [],
@@ -824,18 +703,18 @@
      "dL": 0.084
     },
     "glazing": {
-     "photo": 0.32,
-     "model": 0.33
+     "photo": 0.3,
+     "model": 0.31
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.677
+    "iou": 0.687
    },
    "challengers": {
-    "indisch-1913-arched-pair-dormer": 0.507,
-    "indisch-1913-arched-pair-dormer~m": 0.242
+    "indisch-1913-arched-pair-dormer": 0.529,
+    "indisch-1913-arched-pair-dormer~m": 0.226
    }
   },
   {
@@ -895,34 +774,34 @@
    ],
    "likeness": {
     "pandId": "0363100012077761",
-    "ncc": 0.534,
-    "nccRaw": 0.534,
+    "ncc": 0.565,
+    "nccRaw": 0.565,
     "shiftM": [
      0,
-     -0.2
+     0
     ],
-    "usable": 0.99,
+    "usable": 1,
     "abstain": null,
     "verdict": "PASS",
     "reasons": [],
     "wall": {
-     "photo": "#5c4b45",
+     "photo": "#5d4b45",
      "model": "#766058",
-     "dL": 0.088
+     "dL": 0.086
     },
     "glazing": {
-     "photo": 0.33,
-     "model": 0.32
+     "photo": 0.31,
+     "model": 0.31
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.589
+    "iou": 0.619
    },
    "challengers": {
-    "indisch-1913-arched-pair-dormer~m": 0.531,
-    "indisch-1913-arched-pair-dormer": 0.271
+    "indisch-1913-arched-pair-dormer~m": 0.565,
+    "indisch-1913-arched-pair-dormer": 0.272
    }
   },
   {
@@ -981,34 +860,34 @@
    ],
    "likeness": {
     "pandId": "0363100012072833",
-    "ncc": 0.447,
-    "nccRaw": 0.447,
+    "ncc": 0.498,
+    "nccRaw": 0.498,
     "shiftM": [
      0.2,
-     -0.4
+     -0.15
     ],
-    "usable": 0.98,
+    "usable": 0.99,
     "abstain": null,
     "verdict": "PASS",
     "reasons": [],
     "wall": {
-     "photo": "#58473f",
+     "photo": "#58463f",
      "model": "#715b50",
      "dL": 0.082
     },
     "glazing": {
-     "photo": 0.4,
-     "model": 0.32
+     "photo": 0.38,
+     "model": 0.31
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.635
+    "iou": 0.667
    },
    "challengers": {
-    "indisch-1913-arched-pair-dormer": 0.448,
-    "indisch-1913-arched-pair-dormer~m": 0.087
+    "indisch-1913-arched-pair-dormer": 0.498,
+    "indisch-1913-arched-pair-dormer~m": 0.09
    }
   },
   {
@@ -1051,52 +930,11 @@
     "voidShare": 0,
     "foliageShare": 0
    },
-   "status": "placed",
-   "type": "indisch-1913-arched-pair-dormer",
-   "score": 1,
-   "placement": {
-    "type": "indisch-1913-arched-pair-dormer",
-    "mirror": true,
-    "measuredPalette": {
-     "brick": "#65524b",
-     "evidence": "strip 2019-12-18 span 2633-2853: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    }
-   },
-   "notes": [
-    "door left: mirrored",
-    "crown brick-dormer (type default)"
-   ],
-   "likeness": {
-    "pandId": "0363100012108617",
-    "ncc": 0.52,
-    "nccRaw": 0.52,
-    "shiftM": [
-     0.15,
-     -0.25
-    ],
-    "usable": 0.99,
-    "abstain": null,
-    "verdict": "PASS",
-    "reasons": [],
-    "wall": {
-     "photo": "#5d4b44",
-     "model": "#7e665e",
-     "dL": 0.116
-    },
-    "glazing": {
-     "photo": 0.35,
-     "model": 0.32
-    },
-    "columns": {
-     "photo": 3,
-     "model": 3
-    },
-    "iou": 0.631
-   },
-   "challengers": {
-    "indisch-1913-arched-pair-dormer~m": 0.525,
-    "indisch-1913-arched-pair-dormer": 0.429
-   }
+   "status": "held",
+   "stage": "review",
+   "reason": "review: its half-width door reveal at the party wall trips the GLB audit opening-outside rule (3 parts, 0.47-0.95 m2, door leaf at depth 0.3 m) on either side and at insets 0.05-0.3 m, where the same reveal passes on Djambistraat 9-21 and on Soendastraat; the cause is not found (last pand of the run, frontage 16.53-22.03 in the chunk frame); not loosened, held for the integrator",
+   "likeness": null,
+   "challengers": {}
   },
   {
    "pandId": "0363100012117530",
@@ -1138,53 +976,11 @@
     "voidShare": 0,
     "foliageShare": 0
    },
-   "status": "placed",
-   "type": "indisch-1913-arched-pair-dormer",
-   "score": 0.88,
-   "placement": {
-    "type": "indisch-1913-arched-pair-dormer",
-    "measuredPalette": {
-     "brick": "#614e47",
-     "evidence": "strip 2019-12-18 span 2869-3073: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    }
-   },
-   "notes": [
-    "door unread: as drawn, the opposite of 108617",
-    "crown brick-dormer (type default)"
-   ],
-   "likeness": {
-    "pandId": "0363100012117530",
-    "ncc": 0.299,
-    "nccRaw": 0.299,
-    "shiftM": [
-     0.4,
-     -0.2
-    ],
-    "usable": 0.98,
-    "abstain": null,
-    "verdict": "FAIL",
-    "reasons": [
-     "glazing storey band off by 0.31 mean 0.32 vs photo 0.46"
-    ],
-    "wall": {
-     "photo": "#5a4943",
-     "model": "#7b635a",
-     "dL": 0.11
-    },
-    "glazing": {
-     "photo": 0.46,
-     "model": 0.32
-    },
-    "columns": {
-     "photo": 3,
-     "model": 3
-    },
-    "iou": 0.458
-   },
-   "challengers": {
-    "indisch-1913-arched-pair-dormer": 0.302,
-    "indisch-1913-arched-pair-dormer~m": 0.044
-   }
+   "status": "held",
+   "stage": "review",
+   "reason": "review: ghosted double-exposure photo and the run's one gate FAIL (gap 0.4 m); resolve the boundary first",
+   "likeness": null,
+   "challengers": {}
   },
   {
    "pandId": "0363100012095414",
@@ -1226,54 +1022,11 @@
     "voidShare": 0,
     "foliageShare": 0
    },
-   "status": "placed",
-   "type": "indisch-1913-arched-pair-dormer",
-   "score": 1,
-   "placement": {
-    "type": "indisch-1913-arched-pair-dormer",
-    "mirror": true,
-    "measuredPalette": {
-     "brick": "#65514b",
-     "evidence": "strip 2019-12-18 span 3073-3313: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    }
-   },
-   "notes": [
-    "door left: mirrored",
-    "crown brick-dormer (type default)"
-   ],
-   "likeness": {
-    "pandId": "0363100012095414",
-    "ncc": 0.239,
-    "nccRaw": 0.239,
-    "shiftM": [
-     0.4,
-     -0.3
-    ],
-    "usable": 0.98,
-    "abstain": null,
-    "verdict": "WARN",
-    "reasons": [
-     "mask IoU 0.441 < 0.45"
-    ],
-    "wall": {
-     "photo": "#5d4b45",
-     "model": "#7e655e",
-     "dL": 0.114
-    },
-    "glazing": {
-     "photo": 0.41,
-     "model": 0.32
-    },
-    "columns": {
-     "photo": 3,
-     "model": 3
-    },
-    "iou": 0.441
-   },
-   "challengers": {
-    "indisch-1913-arched-pair-dormer~m": 0.244,
-    "indisch-1913-arched-pair-dormer": 0.326
-   }
+   "status": "held",
+   "stage": "review",
+   "reason": "review: the photo puts the whole arched pair inside this pand while the strip gutter sits about 0.7 m above its neighbours against 3DBAG 12.70 m; resolve boundary/registration first",
+   "likeness": null,
+   "challengers": {}
   },
   {
    "pandId": "0363100012145454",
@@ -1337,42 +1090,10 @@
     "foliageShare": 0
    },
    "status": "held",
-   "stage": "likeness",
-   "reason": "edge NCC 0.029 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.25 mean 0.33 vs photo 0.52; columns 3 vs photo 7)",
-   "likeness": {
-    "pandId": "0363100012145454",
-    "ncc": 0.029,
-    "nccRaw": 0.029,
-    "shiftM": [
-     -0.35,
-     -0.4
-    ],
-    "usable": 0.98,
-    "abstain": null,
-    "verdict": "FAIL",
-    "reasons": [
-     "glazing storey band off by 0.25 mean 0.33 vs photo 0.52",
-     "columns 3 vs photo 7"
-    ],
-    "wall": {
-     "photo": "#7a635e",
-     "model": "#91766e",
-     "dL": 0.076
-    },
-    "glazing": {
-     "photo": 0.52,
-     "model": 0.33
-    },
-    "columns": {
-     "photo": 7,
-     "model": 3
-    },
-    "iou": 0.3
-   },
-   "challengers": {
-    "indisch-1913-arched-pair-dormer": 0.029,
-    "indisch-1913-arched-pair-dormer~m": 0.048
-   }
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": null,
+   "challengers": {}
   }
  ]
 }

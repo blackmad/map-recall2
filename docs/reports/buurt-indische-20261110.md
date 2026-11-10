@@ -243,3 +243,51 @@ dormer holding a 0.85 m window on a 0.15 m apron instead of a full-width glass f
 Survey + intake (done): `node --import tsx scripts/block-face/buurt-survey.ts --buurt=Timorpleinbuurt-Noord --slug=timorpleinbuurt-noord --intake --only=<faces>`.
 Families: `node --import tsx scripts/block-face/buurt-families.ts --buurt=<slug> --district=indische-buurt`.
 Crops: `node --import tsx scripts/block-face/grid-crop.ts <face> <x0px> <x1px> <out.png> 2`.
+
+## Round 3 (2026-11-10): the Opus strip verdict applied
+
+Source: `docs/reports/indische-strip-verdict-20261110.md`. Nothing installed. Sheets re-made and archived in
+`map-recall2-source-data/block-face-strips/indische-20261110/sheet-<run>.jpg`.
+
+### Type fixes applied
+- 1913 arched pair: `eavesOverhang` on its crowns, stone `#4a4a45`, Soendastraat brick `#836856`, `dormerSize.rise 1.1`,
+  `dormerWindow {light .85, apron .15, tall .85}`.
+- 1912 Java: relieving `windowHead` with a dark tympanum, `balconies.storeys [1,2,3]`, a 70 degree attic roof (below).
+- 1914: warm grey brick `#807c6d` (pipe-corrected: the 2025 strip has a blue cast, the downpipe reads `#d1e6fb`; Lampong
+  fronts carry a palette pin per pand), red sash `#8a2a33` in cream frames, `shared-gable` crown for Borneostraat 15|17.
+- Mirror pins (`timorpleinbuurt-noord-review-types.json`): Javastraat 97/101/105/109 true, 99/103 false; Soendastraat 26 true;
+  Lampongstraat 6 true, 4 false; Borneostraat 15 false, 17 true (pair module).
+- Holds from the verdict (`-review-holds.json`): Djambistraat 5, 7, 25, 27, 38, 40; Soendastraat 30, 8; Borneostraat 13, 19, 21, 23, 25;
+  plus Djambistraat 23 (see below).
+
+### Cause of the java-93-149-r1 GATES FAIL
+Two layers. (1) The first sheet header failed because `roofFront: mansard` on the crown met the face-wide 30 degree recipe roof
+(dormer through the roof, coplanar slate); the type now carries a front attic roof at 70 degrees and a plain dormer crown.
+(2) The brickStripes at the measured pitch 0.46 m cost about 800 triangles a house (2670 without, 3470 with; the budget is
+3000), which is the `triangle-budget` gate on all eight pands. The stripes are NOT in the type now: the measured pitch cannot
+be drawn as geometry inside the budget (a pitch of about 1.1 m would fit, but is not what the photo shows).
+
+### Kit components (typed, tested in `indischeBuurt.test.ts`, byte-identical when absent: `test:building-recipes` 492/492)
+- (a) `dormerWindow.tall` plus `dormerSize.rise`: a head wall over the light (`frontWall.headM`). The key is `tall`, because the intent
+  validator refuses names like `height`.
+- (b) `palette.sash`: the sash bars of window openings take their own colour (joinery slot) apart from the frame.
+- (c) `doorReveal.edge` (span 0.4..2.6 m with it): a reveal hugging the party wall at 0.3 m inset. A single shared leaf is drawn as
+  two half-width reveals, one on each side of the wall, which is an approximation. Depth evidence: the plane-sweep tool did
+  not converge for the Djambi door; the 0.25 m reveal comes from the shadow line on the 2019-12-18 strip (see the type note).
+- (d) The timber dormer body already existed (`dormerBody: timber`); used for the 1914 flat dormer.
+
+### Numbers
+- djambi-1-29 7/15, soenda-2-36 9/16 (r1 6, r2 3), java-93-149 11/15 (r1 8, r2 3), lampong-2-20 5/8, borneo-7-27 2/9,
+  djambi-38-46 0/4. All runs `passed` (gates + audit). `test:block-face` 298/298, tsc and lint clean.
+
+### Held / open
+- Djambistraat 23: its half-width door reveal trips the audit `opening-outside` rule (3 parts, 0.5-0.95 m2) at any inset 0.05-0.3
+  and on either side, while Djambistraat 9-21 and Soendastraat pass. Cause not found; held, not loosened.
+- Djambistraat 40 (three-light door-side group) needs its own type (`indisch-1914-red-sash-trio`, bays 3,5,5,5, `lonePand`).
+- Borneostraat 19 is held because its shared gable's other half (21) is a different design; a half gable cannot stand alone.
+- Lampong sheets still report ground bays 4 vs 3 and "rows above ground" likeness lines (not gates).
+
+### Kit cannot yet express
+- Brick speklagen stripes at 0.46 m pitch within the 3000-triangle budget (needs a texture or normal-map stripe, not geometry).
+- A single shared recessed portiek leaf with its mailbox panels (drawn as two half reveals).
+- A half-gable pair crown beside a held neighbour.

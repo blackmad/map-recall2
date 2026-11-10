@@ -58,5 +58,73 @@
    ],
    "reason": "Djambistraat 1-35 / Soendastraat 2-36 (2019-12-18 and 2020 strips, gridded): the arched pair over the paired doors and one brick dormer per front; the Javastraat mansard and the Lampong red-sash types match them on year, storeys and eaves alone"
   }
+ ],
+ "mirrors": [
+  {
+   "pandId": "0363100012069113",
+   "type": "indisch-1913-arched-pair-dormer",
+   "mirror": true,
+   "reason": "Soendastraat 26: arched window and door on the left, pairing with 28 across the wall"
+  },
+  {
+   "pandId": "0363100012132949",
+   "type": "indisch-1912-java-mansard-arches",
+   "mirror": true,
+   "reason": "Javastraat 93-149 strip 2023-01-02 (verdict 2026-11-10): the narrow arched pair sits LEFT of the balcony axis"
+  },
+  {
+   "pandId": "0363100012120527",
+   "type": "indisch-1912-java-mansard-arches",
+   "mirror": true,
+   "reason": "Javastraat 93-149 strip 2023-01-02 (verdict 2026-11-10): the narrow arched pair sits LEFT of the balcony axis"
+  },
+  {
+   "pandId": "0363100012133860",
+   "type": "indisch-1912-java-mansard-arches",
+   "mirror": true,
+   "reason": "Javastraat 93-149 strip 2023-01-02 (verdict 2026-11-10): the narrow arched pair sits LEFT of the balcony axis"
+  },
+  {
+   "pandId": "0363100012126147",
+   "type": "indisch-1912-java-mansard-arches",
+   "mirror": true,
+   "reason": "Javastraat 93-149 strip 2023-01-02 (verdict 2026-11-10): the narrow arched pair sits LEFT of the balcony axis"
+  },
+  {
+   "pandId": "0363100012138717",
+   "type": "indisch-1912-java-mansard-arches",
+   "mirror": false,
+   "reason": "Javastraat 93-149 strip 2023-01-02 (verdict 2026-11-10): the narrow arched pair sits RIGHT of the balcony axis"
+  },
+  {
+   "pandId": "0363100012081977",
+   "type": "indisch-1912-java-mansard-arches",
+   "mirror": false,
+   "reason": "Javastraat 93-149 strip 2023-01-02 (verdict 2026-11-10): the narrow arched pair sits RIGHT of the balcony axis"
+  },
+  {
+   "pandId": "0363100012085260",
+   "type": "indisch-1914-red-sash-pairs",
+   "mirror": true,
+   "reason": "Lampongstraat 6: narrow pair and door on the left"
+  },
+  {
+   "pandId": "0363100012064007",
+   "type": "indisch-1914-red-sash-pairs",
+   "mirror": false,
+   "reason": "Lampongstraat 4: wide pair on the left, door on the right"
+  },
+  {
+   "pandId": "0363100012090483",
+   "type": "indisch-1914-red-sash-pairs",
+   "mirror": false,
+   "reason": "Borneostraat 15: left half of the shared gable pair (pair module draws the left half unmirrored)"
+  },
+  {
+   "pandId": "0363100012108761",
+   "type": "indisch-1914-red-sash-pairs",
+   "mirror": true,
+   "reason": "Borneostraat 17: right half of the shared gable pair (mirror of the left half)"
+  }
  ]
 }

@@ -1,0 +1,20 @@
+{
+ "note": "Crown pins for the Timorpleinbuurt-noord faces (blockFace/reviewCrowns.ts).",
+ "reviewed": "2026-11-10",
+ "pins": [
+  {
+   "pandId": "0363100012090483",
+   "type": "indisch-1914-red-sash-pairs",
+   "crown": "shared-gable",
+   "pair": "left",
+   "reason": "Borneostraat 7-27 strip 2023-01-02 (verdict 2026-11-10): one pointed brick gable centred on the 15|17 party wall, Borneostraat 15 is its left half"
+  },
+  {
+   "pandId": "0363100012108761",
+   "type": "indisch-1914-red-sash-pairs",
+   "crown": "shared-gable",
+   "pair": "right",
+   "reason": "Borneostraat 7-27 strip 2023-01-02 (verdict 2026-11-10): one pointed brick gable centred on the 15|17 party wall, Borneostraat 17 is its right half"
+  }
+ ]
+}

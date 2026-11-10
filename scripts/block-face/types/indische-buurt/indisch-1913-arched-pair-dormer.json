@@ -3,7 +3,7 @@
  "kind": "house-type",
  "id": "indisch-1913-arched-pair-dormer",
  "district": "indische-buurt",
- "description": "Djambistraat 1-35 (BAG 1913): 5.5-6.0 m dark brick fronts of a 3.3 m ground storey and three 3.0 m upper storeys under a light gutter at 12.7 m; three axes per front, two tall white-framed windows with a top light and, on the door side against the party wall, one round-arched window that pairs with the neighbour's across the wall; the paired house doors stand under the arched pair; one pointed brick dormer with a small light per front on the steep tiled roof",
+ "description": "Djambistraat 1-35 (BAG 1913): 5.5-6.0 m dark brick fronts of a 3.3 m ground storey and three 3.0 m upper storeys under a bracketed timber eaves overhang (dark soffit) at 12.7 m; three axes per front, two tall white-framed windows with a top light and, on the door side against the party wall, one round-arched window that pairs with the neighbour's across the wall; the paired house doors stand under the arched pair; one pointed brick dormer with a small light per front on the steep tiled roof",
  "fit": {
   "widthM": [
    5.0,
@@ -90,33 +90,62 @@
    "dormerBody": "brick",
    "dormerSize": {
     "sill": 0.25,
-    "rise": 2.2,
+    "rise": 1.1,
     "setback": 0.3
    },
-   "note": "Djambistraat 11-13: a pointed brick dormer 2.0 m wide over the tall pair, small light, apex 15.1 m over the 12.9 m gutter; the 0.85 m two-light window sits in the brick front on a 0.15 m apron (dormerWindow)",
+   "note": "Djambistraat 11-13, Soendastraat 24: a pointed brick dormer 2.1 m wide, shoulders at 1.7 m and apex 2.5-2.6 m over the gutter, holding an 0.83 m wide x 0.85-0.88 m tall window on a white sill at its foot with solid brick above (opus strip review 2026-11-10; dormerWindow light/apron/tall)",
    "dormerWindow": {
     "light": 0.85,
-    "apron": 0.15
+    "apron": 0.15,
+    "tall": 0.85
+   },
+   "cornice": "none",
+   "eavesOverhang": {
+    "projection": 0.45,
+    "fascia": 0.15,
+    "colour": "#7d7570",
+    "soffit": "#443937"
    }
   },
   "none": {
    "gable": "cornice",
-   "note": "gutter only"
+   "note": "gutter only",
+   "cornice": "none",
+   "eavesOverhang": {
+    "projection": 0.45,
+    "fascia": 0.15,
+    "colour": "#7d7570",
+    "soffit": "#443937"
+   }
   }
  },
  "grounds": {
   "door-right": {
    "doorBay": 2,
-   "note": "the house door under the arched window, at the party wall; paired with the neighbour's door"
+   "doorReveal": {
+    "form": "reveal",
+    "deep": 0.25,
+    "jamb": "brick",
+    "span": 0.55,
+    "edge": true
+   },
+   "note": "one recessed opening 1.06 m wide straddling the party wall of the pair (strip 2019-12-18, door-depth.ts views at -49/-24/16/45 degrees at 7 m, 100 px/m): a single dark leaf under a white transom with a mailbox panel on each brick jamb; the white frame's jamb return reads 0.11 m, so deep = 0.11 + 0.135 = 0.25 m (door-depth's plane sweep did not converge, the wall control peaked at 1.8 m). Each front draws its half (0.55 m, hugging the party wall: doorReveal.edge), the pair together the 1.1 m opening"
   }
  },
  "palettes": {
-  "dark-brown": {
-   "brick": "#5f4e48",
+  "djambi-brown": {
+   "brick": "#5b4942",
    "frame": "#dfdad0",
    "door": "#2a2622",
-   "stone": "#dfdad0",
-   "cornice": "#dfdad0"
+   "stone": "#4a4a45",
+   "cornice": "#7d7570"
+  },
+  "soenda-brown": {
+   "brick": "#836856",
+   "frame": "#dfdad0",
+   "door": "#2a2622",
+   "stone": "#4a4a45",
+   "cornice": "#7d7570"
   }
  },
  "roof": {
@@ -152,8 +181,9 @@
  ],
  "schemaLimits": [
   "the iron sill rails (low juliet balcony) under every upper window",
-  "the bracket row under the gutter",
-  "a pointed brick GABLE over two or three fronts (Djambistraat 1-5, 9-13) is drawn as the dormer"
+  "a pointed brick GABLE over two or three fronts (Djambistraat 1-5, 9-13) is drawn as the dormer",
+  "the mailbox panel on each jamb of the shared door, and the shared single leaf (drawn as a half-width leaf per front)",
+  "the lower single light under a top light at 0.68 of the window height (dark-green sashes)"
  ],
  "notes": []
 }

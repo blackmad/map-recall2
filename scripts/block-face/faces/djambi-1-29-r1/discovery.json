@@ -2,27 +2,22 @@
  "street": "Djambistraat",
  "seed": "0363100012065784",
  "members": [
-  "0363100012149516",
-  "0363100012104592",
   "0363100012131961",
   "0363100012100535",
   "0363100012110582",
   "0363100012099261",
   "0363100012129720",
   "0363100012077761",
-  "0363100012072833",
-  "0363100012108617",
-  "0363100012117530",
-  "0363100012095414"
+  "0363100012072833"
  ],
  "ends": [
   {
    "side": "left",
-   "reason": "run of djambi-1-29: 113498 held (auto-place.json)"
+   "reason": "run of djambi-1-29: 104592 held (auto-place.json)"
   },
   {
    "side": "right",
-   "reason": "run of djambi-1-29: 145454 held (auto-place.json)"
+   "reason": "run of djambi-1-29: 108617 held (auto-place.json)"
   }
  ],
  "rejected": [
@@ -1382,28 +1377,6 @@
  "areaHalfSizeM": 180,
  "pands": [
   {
-   "pandId": "0363100012149516",
-   "alongM": 13.73,
-   "widthM": 5.37,
-   "eavesM": 12.91,
-   "roofMaxM": 15.71,
-   "storeys3dbag": 5,
-   "builtYear": 1913,
-   "uncertainty": [
-    "Short native jogs retained; the frontage is not a single planar facade."
-   ]
-  },
-  {
-   "pandId": "0363100012104592",
-   "alongM": 19.41,
-   "widthM": 6,
-   "eavesM": 13.13,
-   "roofMaxM": 15.9,
-   "storeys3dbag": 5,
-   "builtYear": 1913,
-   "uncertainty": []
-  },
-  {
    "pandId": "0363100012131961",
    "alongM": 25.41,
    "widthM": 6,
@@ -1480,36 +1453,6 @@
    "uncertainty": [
     "Short native jogs retained; the frontage is not a single planar facade."
    ]
-  },
-  {
-   "pandId": "0363100012108617",
-   "alongM": 64.16,
-   "widthM": 5.5,
-   "eavesM": 12.66,
-   "roofMaxM": 15.51,
-   "storeys3dbag": 5,
-   "builtYear": 1913,
-   "uncertainty": []
-  },
-  {
-   "pandId": "0363100012117530",
-   "alongM": 69.86,
-   "widthM": 5.1,
-   "eavesM": 12.72,
-   "roofMaxM": 15.49,
-   "storeys3dbag": 5,
-   "builtYear": 1913,
-   "uncertainty": []
-  },
-  {
-   "pandId": "0363100012095414",
-   "alongM": 75.41,
-   "widthM": 6,
-   "eavesM": 12.75,
-   "roofMaxM": 15.51,
-   "storeys3dbag": 5,
-   "builtYear": 1913,
-   "uncertainty": []
   }
  ],
  "runOf": "djambi-1-29"

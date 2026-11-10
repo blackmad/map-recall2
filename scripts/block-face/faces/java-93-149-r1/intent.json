@@ -22,6 +22,53 @@
  ],
  "houses": [
   {
+   "pandId": "0363100012067472",
+   "slug": "java-067472",
+   "address": "Javastraat 95",
+   "type": {
+    "type": "indisch-1912-java-mansard-arches",
+    "ground": {
+     "shopfront": {
+      "colour": "#524741",
+      "fascia": true,
+      "name": "PC Professional",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: osm-only (winkelfunctie, shop=computer); fascia colour measured on the strip 2023-01-02 span 518-765"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#715f59",
+     "evidence": "strip 2023-01-02 span 518-765: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "mirror": true
+   },
+   "groundFloor": {
+    "use": "shop",
+    "name": "PC Professional",
+    "category": "shop=computer",
+    "osm": {
+     "type": "node",
+     "id": 2348134398,
+     "name": "PC Professional"
+    },
+    "bag": [
+     "winkelfunctie"
+    ],
+    "photoDate": "2023-01-02",
+    "agreement": "osm-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: indisch-1912-java-mansard-arches scored 0.86 on eaves 1, storeys 1, stucco 1, columns 0.4; strip 2023-01-02 span 518-765"
+   }
+  },
+  {
    "pandId": "0363100012132949",
    "slug": "java-132949",
    "address": "Javastraat 97",
@@ -45,7 +92,8 @@
     "measuredPalette": {
      "brick": "#806c62",
      "evidence": "strip 2023-01-02 span 764-1004: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    }
+    },
+    "mirror": true
    },
    "groundFloor": {
     "use": "shop",
@@ -88,7 +136,6 @@
       "evidence": "auto-place: osm-only (bijeenkomstfunctie, woonfunctie, amenity=restaurant); fascia colour measured on the strip 2023-01-02 span 1005-1245"
      }
     },
-    "mirror": true,
     "measuredPalette": {
      "brick": "#7e695e",
      "evidence": "strip 2023-01-02 span 1005-1245: trim-normalised wall (buildingRecipe/measureFacade.ts)"
@@ -138,7 +185,8 @@
     "measuredPalette": {
      "brick": "#725b51",
      "evidence": "strip 2023-01-02 span 1245-1485: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    }
+    },
+    "mirror": true
    },
    "groundFloor": {
     "use": "shop",
@@ -176,8 +224,7 @@
     "measuredPalette": {
      "brick": "#7a6458",
      "evidence": "strip 2023-01-02 span 1486-1726: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    },
-    "mirror": true
+    }
    },
    "groundFloor": {
     "use": "shop",
@@ -215,7 +262,8 @@
     "measuredPalette": {
      "brick": "#6f5d50",
      "evidence": "strip 2023-01-02 span 1726-1966: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    }
+    },
+    "mirror": true
    },
    "groundFloor": {
     "use": "shop",
@@ -292,7 +340,8 @@
     "measuredPalette": {
      "brick": "#715e52",
      "evidence": "strip 2023-01-02 span 2207-2447: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    }
+    },
+    "mirror": true
    },
    "groundFloor": {
     "use": "restaurant",

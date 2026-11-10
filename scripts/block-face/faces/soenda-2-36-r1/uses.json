@@ -6,22 +6,6 @@
  },
  "pands": [
   {
-   "pandId": "0363100012113301",
-   "addresses": [
-    "Soendastraat 30"
-   ],
-   "groundUnits": [
-    {
-     "address": "Soendastraat 30-H",
-     "use": "woonfunctie",
-     "areaM2": 58,
-     "bagId": "0363010000813438"
-    }
-   ],
-   "units": 4,
-   "osm": []
-  },
-  {
    "pandId": "0363100012150368",
    "addresses": [
     "Soendastraat 28"

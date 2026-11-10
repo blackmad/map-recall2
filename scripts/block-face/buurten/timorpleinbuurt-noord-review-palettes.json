@@ -1,0 +1,45 @@
+{
+ "note": "Reviewer palette pins for the Timorpleinbuurt-noord faces (blockFace/reviewPalettes.ts).",
+ "pins": [
+  {
+   "pandId": "0363100012140561",
+   "type": "indisch-1914-red-sash-pairs",
+   "palette": {
+    "brick": "#807c6d"
+   },
+   "reason": "Lampongstraat 10 (strip 2025-09-26, span 1300-1540): the panorama has a blue white-balance cast (downpipe reads #d1e6fb, a white pipe); correcting the pipe to neutral moves the brick from the raw #7c8183 to about #807c6d, a warm grey brick (strip verdict 2026-11-10)"
+  },
+  {
+   "pandId": "0363100012150248",
+   "type": "indisch-1914-red-sash-pairs",
+   "palette": {
+    "brick": "#807c6d"
+   },
+   "reason": "Lampongstraat 8 (strip 2025-09-26, span 1300-1540): the panorama has a blue white-balance cast (downpipe reads #d1e6fb, a white pipe); correcting the pipe to neutral moves the brick from the raw #7c8183 to about #807c6d, a warm grey brick (strip verdict 2026-11-10)"
+  },
+  {
+   "pandId": "0363100012085260",
+   "type": "indisch-1914-red-sash-pairs",
+   "palette": {
+    "brick": "#807c6d"
+   },
+   "reason": "Lampongstraat 6 (strip 2025-09-26, span 1300-1540): the panorama has a blue white-balance cast (downpipe reads #d1e6fb, a white pipe); correcting the pipe to neutral moves the brick from the raw #7c8183 to about #807c6d, a warm grey brick (strip verdict 2026-11-10)"
+  },
+  {
+   "pandId": "0363100012064007",
+   "type": "indisch-1914-red-sash-pairs",
+   "palette": {
+    "brick": "#807c6d"
+   },
+   "reason": "Lampongstraat 4 (strip 2025-09-26, span 1300-1540): the panorama has a blue white-balance cast (downpipe reads #d1e6fb, a white pipe); correcting the pipe to neutral moves the brick from the raw #7c8183 to about #807c6d, a warm grey brick (strip verdict 2026-11-10)"
+  },
+  {
+   "pandId": "0363100012112381",
+   "type": "indisch-1914-red-sash-pairs",
+   "palette": {
+    "brick": "#807c6d"
+   },
+   "reason": "Lampongstraat 2 (strip 2025-09-26, span 1300-1540): the panorama has a blue white-balance cast (downpipe reads #d1e6fb, a white pipe); correcting the pipe to neutral moves the brick from the raw #7c8183 to about #807c6d, a warm grey brick (strip verdict 2026-11-10)"
+  }
+ ]
+}

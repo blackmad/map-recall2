@@ -2,22 +2,17 @@
  "street": "Borneostraat",
  "seed": "0363100012068360",
  "members": [
-  "0363100012074710",
   "0363100012090483",
-  "0363100012108761",
-  "0363100012145601",
-  "0363100012084255",
-  "0363100012133599",
-  "0363100012102480"
+  "0363100012108761"
  ],
  "ends": [
   {
    "side": "left",
-   "reason": "run of borneo-7-27: 068360 held (auto-place.json)"
+   "reason": "run of borneo-7-27: 074710 held (auto-place.json)"
   },
   {
    "side": "right",
-   "reason": "run of borneo-7-27: 063476 held (auto-place.json)"
+   "reason": "run of borneo-7-27: 145601 held (auto-place.json)"
   }
  ],
  "rejected": [
@@ -365,16 +360,6 @@
  "areaHalfSizeM": 90,
  "pands": [
   {
-   "pandId": "0363100012074710",
-   "alongM": 8.85,
-   "widthM": 6.3,
-   "eavesM": 12.87,
-   "roofMaxM": 15.58,
-   "storeys3dbag": 5,
-   "builtYear": 1914,
-   "uncertainty": []
-  },
-  {
    "pandId": "0363100012090483",
    "alongM": 15.15,
    "widthM": 6.3,
@@ -390,46 +375,6 @@
    "widthM": 6.3,
    "eavesM": 12.83,
    "roofMaxM": 15.54,
-   "storeys3dbag": 5,
-   "builtYear": 1914,
-   "uncertainty": []
-  },
-  {
-   "pandId": "0363100012145601",
-   "alongM": 27.75,
-   "widthM": 6.3,
-   "eavesM": 12.8,
-   "roofMaxM": 16.27,
-   "storeys3dbag": 5,
-   "builtYear": 1914,
-   "uncertainty": []
-  },
-  {
-   "pandId": "0363100012084255",
-   "alongM": 34.35,
-   "widthM": 6.9,
-   "eavesM": 12.8,
-   "roofMaxM": 15.84,
-   "storeys3dbag": 5,
-   "builtYear": 1914,
-   "uncertainty": []
-  },
-  {
-   "pandId": "0363100012133599",
-   "alongM": 41.25,
-   "widthM": 6.9,
-   "eavesM": 12.82,
-   "roofMaxM": 15.54,
-   "storeys3dbag": 5,
-   "builtYear": 1914,
-   "uncertainty": []
-  },
-  {
-   "pandId": "0363100012102480",
-   "alongM": 48.15,
-   "widthM": 6.9,
-   "eavesM": 12.84,
-   "roofMaxM": 15.55,
    "storeys3dbag": 5,
    "builtYear": 1914,
    "uncertainty": []

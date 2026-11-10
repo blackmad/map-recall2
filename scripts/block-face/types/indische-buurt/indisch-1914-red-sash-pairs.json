@@ -3,7 +3,7 @@
  "kind": "house-type",
  "id": "indisch-1914-red-sash-pairs",
  "district": "indische-buurt",
- "description": "Lampongstraat 2-20 and Borneostraat 7-27 (BAG 1914): 6-7 m grey-brown brick fronts of a 3.6 m ground storey and three 3.0 m upper storeys under a white bracketed gutter at 13.0 m; four axes per front, a pair of wide cream-framed windows and a pair of narrow ones, the narrow pair on the door side so fronts mirror about the party wall; a white double door and two ground windows; one flat-roofed white dormer on a tiled roof",
+ "description": "Lampongstraat 2-20 and Borneostraat 7-27 (BAG 1914): 6-7 m grey-brown brick fronts of a 3.6 m ground storey and three 3.0 m upper storeys under a white bracketed gutter at 13.0 m; four axes per front, a pair of wide cream-framed windows (red sashes) and a pair of narrow ones, the narrow pair on the door side so fronts mirror about the party wall; a white double door and two ground windows; one white timber flat dormer or a shared pointed brick gable on a tiled roof",
  "fit": {
   "widthM": [
    5.6,
@@ -35,7 +35,7 @@
   "stucco": false,
   "balconies": false,
   "mirrorForDoor": "right",
-  "note": "BAG 1914, 3DBAG eaves 12.8 m, ridge 15.6-15.8 m on 16 of 17 Lampongstraat 2-20 and Borneostraat 7-27 pands; the 11-12 m double pands (Lampongstraat 12-18, Borneostraat 7-11) hold two fronts and are placed by their module count, not drawn here as one front"
+  "note": "BAG 1914, 3DBAG eaves 12.8 m, ridge 15.6-15.8 m on 16 of 17 Lampongstraat 2-20 and Borneostraat 7-27 pands; the 11-12 m double pands (Lampongstraat 12-18, Borneostraat 7-11) hold two fronts and are placed by their module count, not drawn here as one front; Lampong's 2025 panorama has a blue white-balance error (the white downpipe reads #d1e6fb): corrected against it the brick is a warm grey of about #807c6d (palette warm-grey; the 2023 Borneostraat strip reads #6d5d53, grey-brown)"
  },
  "body": {
   "storeys": 4,
@@ -89,11 +89,19 @@
  "crowns": {
   "flat-dormer": {
    "gable": "cornice",
+   "cornice": "none",
    "dormers": 1,
    "dormerStyle": "flat",
+   "dormerBody": "timber",
+   "dormerAt": [
+    {
+     "from": 0.28,
+     "to": 0.49
+    }
+   ],
    "dormerSize": {
     "sill": 0.3,
-    "rise": 1.8,
+    "rise": 1.6,
     "setback": 0.5
    },
    "eavesOverhang": {
@@ -102,19 +110,31 @@
     "colour": "#e6e4dc",
     "soffit": "#c9c7bf"
    },
-   "note": "Lampongstraat 10 and 8: a white flat-roofed dormer 1.9 m wide, 13.3-15.1 m, on the red tile roof behind a white bracketed gutter at 13.0 m",
-   "cornice": "none"
+   "note": "Lampongstraat 10 and 8: a white timber box dormer about 1.25 m wide and 1.6 m tall (white cheeks, a hoist beam), 13.3-15.1 m, on the red tile roof behind a white bracketed gutter at 13.0 m"
+  },
+  "shared-gable": {
+   "gable": "point",
+   "cornice": "none",
+   "crownAt": {
+    "from": 0.627,
+    "to": 1
+   },
+   "crownHalf": "left",
+   "crownRise": 2.85,
+   "atticWindows": 2,
+   "pair": true,
+   "note": "Borneostraat 15|17 and 19|21 (strip 2023-01-02, gridded on 17|19): ONE pointed brick gable about 4.7 m wide centred on the party wall of the pair, apex about 2.85 m over the gutter (15.7 m), a pair of attic windows in each half (pair module: this variant is the left half, the right half is its mirror)"
   },
   "none": {
    "gable": "cornice",
+   "cornice": "none",
    "eavesOverhang": {
     "projection": 0.4,
     "fascia": 0.2,
     "colour": "#e6e4dc",
     "soffit": "#c9c7bf"
    },
-   "note": "gutter only",
-   "cornice": "none"
+   "note": "gutter only"
   }
  },
  "grounds": {
@@ -124,16 +144,18 @@
   }
  },
  "palettes": {
-  "grey-brown": {
-   "brick": "#6d5d53",
+  "warm-grey": {
+   "brick": "#807c6d",
    "frame": "#dedbd3",
+   "sash": "#8a2a33",
    "door": "#7a2328",
    "stone": "#dedbd3",
    "cornice": "#e6e4dc"
   },
-  "grey": {
-   "brick": "#7b7c7d",
+  "grey-brown": {
+   "brick": "#6d5d53",
    "frame": "#dedbd3",
+   "sash": "#8a2a33",
    "door": "#7a2328",
    "stone": "#dedbd3",
    "cornice": "#e6e4dc"
@@ -170,10 +192,10 @@
   }
  ],
  "schemaLimits": [
-  "the red-painted sashes inside the cream frames (one frame colour)",
+  "the paired double-leaf door with one shared white frame (drawn as a single leaf)",
   "the low iron rail under the wide windows",
   "the bracket row under the gutter",
-  "the pointed brick gable over some pands (Borneostraat 9, 15, 21), drawn as the dormer"
+  "Djambistraat 40's group of three narrow lights on the door side (the type draws two)"
  ],
  "notes": []
 }

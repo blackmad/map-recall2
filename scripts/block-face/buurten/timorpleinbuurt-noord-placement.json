@@ -1,12 +1,12 @@
 {
  "buurt": "timorpleinbuurt-noord",
  "library": "indische-buurt",
- "generatedAt": "2026-11-10T01:10:52.461Z",
- "seconds": 29.11,
+ "generatedAt": "2026-11-10T01:42:10.651Z",
+ "seconds": 71.64,
  "totals": {
   "faces": 26,
   "pands": 266,
-  "placed": 46
+  "placed": 34
  },
  "faces": [
   {
@@ -127,27 +127,22 @@
    "face": "borneo-7-27",
    "street": "Borneostraat",
    "pands": 9,
-   "placed": 7,
-   "held": 2,
+   "placed": 2,
+   "held": 7,
    "runs": [
     {
      "face": "borneo-7-27-r1",
      "pands": [
-      "0363100012074710",
       "0363100012090483",
-      "0363100012108761",
-      "0363100012145601",
-      "0363100012084255",
-      "0363100012133599",
-      "0363100012102480"
+      "0363100012108761"
      ],
      "passed": true,
-     "triangles": 9810
+     "triangles": 2872
     }
    ],
-   "seconds": 20.88,
+   "seconds": 6.5,
    "byType": {
-    "indisch-1914-red-sash-pairs": 7
+    "indisch-1914-red-sash-pairs": 2
    },
    "installed": 0,
    "holds": {
@@ -155,7 +150,7 @@
     "match": 2,
     "likeness": 0,
     "run": 0,
-    "review": 0
+    "review": 5
    }
   },
   {
@@ -280,40 +275,35 @@
    "face": "djambi-1-29",
    "street": "Djambistraat",
    "pands": 15,
-   "placed": 12,
-   "held": 3,
+   "placed": 7,
+   "held": 8,
    "runs": [
     {
      "face": "djambi-1-29-r1",
      "pands": [
-      "0363100012149516",
-      "0363100012104592",
       "0363100012131961",
       "0363100012100535",
       "0363100012110582",
       "0363100012099261",
       "0363100012129720",
       "0363100012077761",
-      "0363100012072833",
-      "0363100012108617",
-      "0363100012117530",
-      "0363100012095414"
+      "0363100012072833"
      ],
-     "passed": false,
-     "triangles": 18279
+     "passed": true,
+     "triangles": 11539
     }
    ],
-   "seconds": 29.1,
+   "seconds": 11.61,
    "byType": {
-    "indisch-1913-arched-pair-dormer": 12
+    "indisch-1913-arched-pair-dormer": 7
    },
    "installed": 0,
    "holds": {
     "evidence": 0,
     "match": 1,
-    "likeness": 2,
-    "run": 0,
-    "review": 0
+    "likeness": 0,
+    "run": 2,
+    "review": 5
    }
   },
   {
@@ -338,30 +328,18 @@
    "face": "djambi-38-46",
    "street": "Djambistraat",
    "pands": 4,
-   "placed": 2,
-   "held": 2,
-   "runs": [
-    {
-     "face": "djambi-38-46-r1",
-     "pands": [
-      "0363100012125682",
-      "0363100012113540"
-     ],
-     "passed": true,
-     "triangles": 2790
-    }
-   ],
-   "seconds": 6.48,
-   "byType": {
-    "indisch-1914-red-sash-pairs": 2
-   },
+   "placed": 0,
+   "held": 4,
+   "runs": [],
+   "seconds": 0.88,
+   "byType": {},
    "installed": 0,
    "holds": {
     "evidence": 0,
     "match": 1,
     "likeness": 0,
     "run": 1,
-    "review": 0
+    "review": 2
    }
   },
   {
@@ -386,12 +364,13 @@
    "face": "java-93-149",
    "street": "Javastraat",
    "pands": 15,
-   "placed": 9,
-   "held": 6,
+   "placed": 11,
+   "held": 4,
    "runs": [
     {
      "face": "java-93-149-r1",
      "pands": [
+      "0363100012067472",
       "0363100012132949",
       "0363100012138717",
       "0363100012120527",
@@ -400,29 +379,30 @@
       "0363100012098497",
       "0363100012126147"
      ],
-     "passed": false,
-     "triangles": 20443
+     "passed": true,
+     "triangles": 21335
     },
     {
      "face": "java-93-149-r2",
      "pands": [
       "0363100012150083",
-      "0363100012103232"
+      "0363100012103232",
+      "0363100012141749"
      ],
-     "passed": false,
-     "triangles": 5861
+     "passed": true,
+     "triangles": 7993
     }
    ],
-   "seconds": 34.76,
+   "seconds": 39.4,
    "byType": {
-    "indisch-1912-java-mansard-arches": 9
+    "indisch-1912-java-mansard-arches": 11
    },
    "installed": 0,
    "holds": {
     "evidence": 0,
     "match": 2,
-    "likeness": 3,
-    "run": 1,
+    "likeness": 2,
+    "run": 0,
     "review": 0
    }
   },
@@ -455,10 +435,10 @@
       "0363100012112381"
      ],
      "passed": true,
-     "triangles": 6947
+     "triangles": 7127
     }
    ],
-   "seconds": 10.51,
+   "seconds": 6.8,
    "byType": {
     "indisch-1914-red-sash-pairs": 5
    },
@@ -611,13 +591,12 @@
    "face": "soenda-2-36",
    "street": "Soendastraat",
    "pands": 16,
-   "placed": 11,
-   "held": 5,
+   "placed": 9,
+   "held": 7,
    "runs": [
     {
      "face": "soenda-2-36-r1",
      "pands": [
-      "0363100012113301",
       "0363100012150368",
       "0363100012069113",
       "0363100012062527",
@@ -626,31 +605,30 @@
       "0363100012111204"
      ],
      "passed": true,
-     "triangles": 10499
+     "triangles": 9655
     },
     {
      "face": "soenda-2-36-r2",
      "pands": [
       "0363100012136122",
       "0363100012068591",
-      "0363100012092864",
-      "0363100012092089"
+      "0363100012092864"
      ],
      "passed": true,
-     "triangles": 6076
+     "triangles": 4880
     }
    ],
-   "seconds": 29.97,
+   "seconds": 18.05,
    "byType": {
-    "indisch-1913-arched-pair-dormer": 11
+    "indisch-1913-arched-pair-dormer": 9
    },
    "installed": 0,
    "holds": {
     "evidence": 0,
     "match": 1,
-    "likeness": 3,
-    "run": 1,
-    "review": 0
+    "likeness": 2,
+    "run": 2,
+    "review": 2
    }
   },
   {

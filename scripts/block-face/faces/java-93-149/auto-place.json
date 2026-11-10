@@ -3,7 +3,7 @@
  "street": "Javastraat",
  "library": "indische-buurt",
  "stripDate": "2023-01-02",
- "seconds": 34.76,
+ "seconds": 39.4,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -17,6 +17,7 @@
   {
    "face": "java-93-149-r1",
    "pands": [
+    "0363100012067472",
     "0363100012132949",
     "0363100012138717",
     "0363100012120527",
@@ -25,17 +26,18 @@
     "0363100012098497",
     "0363100012126147"
    ],
-   "passed": false,
-   "triangles": 20443
+   "passed": true,
+   "triangles": 21335
   },
   {
    "face": "java-93-149-r2",
    "pands": [
     "0363100012150083",
-    "0363100012103232"
+    "0363100012103232",
+    "0363100012141749"
    ],
-   "passed": false,
-   "triangles": 5861
+   "passed": true,
+   "triangles": 7993
   }
  ],
  "pands": [
@@ -186,22 +188,49 @@
     "voidShare": 0,
     "foliageShare": 0.02
    },
-   "status": "held",
-   "stage": "likeness",
-   "reason": "edge NCC 0.117 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.32 mean 0.42 vs photo 0.21)",
+   "status": "placed",
+   "type": "indisch-1912-java-mansard-arches",
+   "score": 0.86,
+   "placement": {
+    "type": "indisch-1912-java-mansard-arches",
+    "ground": {
+     "shopfront": {
+      "colour": "#524741",
+      "fascia": true,
+      "name": "PC Professional",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: osm-only (winkelfunctie, shop=computer); fascia colour measured on the strip 2023-01-02 span 518-765"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#715f59",
+     "evidence": "strip 2023-01-02 span 518-765: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "mirror": true
+   },
+   "notes": [
+    "crown mansard-dormer (type default)",
+    "photo decides: indisch-1912-java-mansard-arches~m edge NCC 0.184 vs indisch-1912-java-mansard-arches 0.133"
+   ],
    "likeness": {
     "pandId": "0363100012067472",
-    "ncc": 0.117,
-    "nccRaw": 0.117,
+    "ncc": 0.184,
+    "nccRaw": 0.184,
     "shiftM": [
-     0.1,
-     0
+     0.25,
+     0.05
     ],
     "usable": 0.93,
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.32 mean 0.42 vs photo 0.21"
+     "glazing storey band off by 0.40 mean 0.46 vs photo 0.21"
     ],
     "wall": {
      "photo": "#75635d",
@@ -210,16 +239,17 @@
     },
     "glazing": {
      "photo": 0.21,
-     "model": 0.42
+     "model": 0.46
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.297
+    "iou": 0.267
    },
    "challengers": {
-    "indisch-1912-java-mansard-arches": 0.117
+    "indisch-1912-java-mansard-arches": 0.133,
+    "indisch-1912-java-mansard-arches~m": 0.184
    }
   },
   {
@@ -302,44 +332,45 @@
     "measuredPalette": {
      "brick": "#806c62",
      "evidence": "strip 2023-01-02 span 764-1004: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    }
+    },
+    "mirror": true
    },
    "notes": [
-    "door unread: as drawn, the opposite of 138717",
-    "crown mansard-dormer (type default)"
+    "crown mansard-dormer (type default)",
+    "door reviewer pin: mirrored (Javastraat 93-149 strip 2023-01-02 (verdict 2026-11-10): the narrow arched pair sits LEFT of the balcony axis)"
    ],
    "likeness": {
     "pandId": "0363100012132949",
-    "ncc": 0.291,
-    "nccRaw": 0.291,
+    "ncc": 0.337,
+    "nccRaw": 0.337,
     "shiftM": [
      0.4,
-     -0.4
+     -0.35
     ],
-    "usable": 0.96,
+    "usable": 0.97,
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.33 mean 0.42 vs photo 0.23"
+     "glazing storey band off by 0.39 mean 0.46 vs photo 0.23"
     ],
     "wall": {
-     "photo": "#7a675d",
+     "photo": "#826e63",
      "model": "#957f74",
-     "dL": 0.098
+     "dL": 0.071
     },
     "glazing": {
      "photo": 0.23,
-     "model": 0.42
+     "model": 0.46
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.384
+    "iou": 0.405
    },
    "challengers": {
-    "indisch-1912-java-mansard-arches": 0.295,
-    "indisch-1912-java-mansard-arches~m": 0.34
+    "indisch-1912-java-mansard-arches~m": 0.337,
+    "indisch-1912-java-mansard-arches": 0.298
    }
   },
   {
@@ -408,48 +439,47 @@
       "evidence": "auto-place: osm-only (bijeenkomstfunctie, woonfunctie, amenity=restaurant); fascia colour measured on the strip 2023-01-02 span 1005-1245"
      }
     },
-    "mirror": true,
     "measuredPalette": {
      "brick": "#7e695e",
      "evidence": "strip 2023-01-02 span 1005-1245: trim-normalised wall (buildingRecipe/measureFacade.ts)"
     }
    },
    "notes": [
-    "door right: mirrored",
-    "crown mansard-dormer (type default)"
+    "crown mansard-dormer (type default)",
+    "door reviewer pin: as drawn (Javastraat 93-149 strip 2023-01-02 (verdict 2026-11-10): the narrow arched pair sits RIGHT of the balcony axis)"
    ],
    "likeness": {
     "pandId": "0363100012138717",
-    "ncc": 0.308,
-    "nccRaw": 0.308,
+    "ncc": 0.349,
+    "nccRaw": 0.349,
     "shiftM": [
-     0.1,
+     0.05,
      -0.4
     ],
     "usable": 0.92,
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.23 mean 0.42 vs photo 0.27"
+     "glazing storey band off by 0.31 mean 0.45 vs photo 0.26"
     ],
     "wall": {
-     "photo": "#866c5e",
+     "photo": "#866d5e",
      "model": "#947c6f",
      "dL": 0.061
     },
     "glazing": {
-     "photo": 0.27,
-     "model": 0.42
+     "photo": 0.26,
+     "model": 0.45
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.39
+    "iou": 0.449
    },
    "challengers": {
-    "indisch-1912-java-mansard-arches~m": 0.289,
-    "indisch-1912-java-mansard-arches": 0.332
+    "indisch-1912-java-mansard-arches": 0.349,
+    "indisch-1912-java-mansard-arches~m": 0.306
    }
   },
   {
@@ -536,44 +566,45 @@
     "measuredPalette": {
      "brick": "#725b51",
      "evidence": "strip 2023-01-02 span 1245-1485: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    }
+    },
+    "mirror": true
    },
    "notes": [
-    "door left",
-    "crown mansard-dormer (type default)"
+    "crown mansard-dormer (type default)",
+    "door reviewer pin: mirrored (Javastraat 93-149 strip 2023-01-02 (verdict 2026-11-10): the narrow arched pair sits LEFT of the balcony axis)"
    ],
    "likeness": {
     "pandId": "0363100012120527",
-    "ncc": 0.203,
-    "nccRaw": 0.203,
+    "ncc": 0.213,
+    "nccRaw": 0.213,
     "shiftM": [
-     0.3,
-     0.15
+     0.35,
+     -0.4
     ],
     "usable": 0.92,
     "abstain": null,
-    "verdict": "WARN",
+    "verdict": "FAIL",
     "reasons": [
-     "mask IoU 0.303 < 0.45"
+     "glazing storey band off by 0.31 mean 0.43 vs photo 0.59"
     ],
     "wall": {
-     "photo": "#7c645c",
+     "photo": "#7b645c",
      "model": "#8a6e62",
-     "dL": 0.039
+     "dL": 0.041
     },
     "glazing": {
-     "photo": 0.44,
-     "model": 0.42
+     "photo": 0.59,
+     "model": 0.43
     },
     "columns": {
-     "photo": 3,
+     "photo": null,
      "model": 3
     },
-    "iou": 0.303
+    "iou": 0.39
    },
    "challengers": {
-    "indisch-1912-java-mansard-arches": 0.199,
-    "indisch-1912-java-mansard-arches~m": 0.2
+    "indisch-1912-java-mansard-arches~m": 0.213,
+    "indisch-1912-java-mansard-arches": 0.189
    }
   },
   {
@@ -645,17 +676,16 @@
     "measuredPalette": {
      "brick": "#7a6458",
      "evidence": "strip 2023-01-02 span 1486-1726: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    },
-    "mirror": true
+    }
    },
    "notes": [
-    "door unread: mirrored, the opposite of 120527",
-    "crown mansard-dormer (type default)"
+    "crown mansard-dormer (type default)",
+    "door reviewer pin: as drawn (Javastraat 93-149 strip 2023-01-02 (verdict 2026-11-10): the narrow arched pair sits RIGHT of the balcony axis)"
    ],
    "likeness": {
     "pandId": "0363100012081977",
-    "ncc": 0.278,
-    "nccRaw": 0.278,
+    "ncc": 0.324,
+    "nccRaw": 0.324,
     "shiftM": [
      0.1,
      -0.4
@@ -664,7 +694,7 @@
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.29 mean 0.41 vs photo 0.23"
+     "glazing storey band off by 0.34 mean 0.43 vs photo 0.22"
     ],
     "wall": {
      "photo": "#6f5b4f",
@@ -672,18 +702,18 @@
      "dL": 0.118
     },
     "glazing": {
-     "photo": 0.23,
-     "model": 0.41
+     "photo": 0.22,
+     "model": 0.43
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.368
+    "iou": 0.354
    },
    "challengers": {
-    "indisch-1912-java-mansard-arches~m": 0.303,
-    "indisch-1912-java-mansard-arches": 0.332
+    "indisch-1912-java-mansard-arches": 0.324,
+    "indisch-1912-java-mansard-arches~m": 0.303
    }
   },
   {
@@ -760,44 +790,43 @@
     "measuredPalette": {
      "brick": "#6f5d50",
      "evidence": "strip 2023-01-02 span 1726-1966: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    }
+    },
+    "mirror": true
    },
    "notes": [
-    "door unread: as drawn, the opposite of 081977",
-    "crown mansard-dormer (type default)"
+    "crown mansard-dormer (type default)",
+    "door reviewer pin: mirrored (Javastraat 93-149 strip 2023-01-02 (verdict 2026-11-10): the narrow arched pair sits LEFT of the balcony axis)"
    ],
    "likeness": {
     "pandId": "0363100012133860",
-    "ncc": 0.303,
-    "nccRaw": 0.303,
+    "ncc": 0.331,
+    "nccRaw": 0.331,
     "shiftM": [
      0.4,
-     -0.4
+     -0.35
     ],
     "usable": 0.93,
     "abstain": null,
-    "verdict": "FAIL",
-    "reasons": [
-     "glazing storey band off by 0.18"
-    ],
+    "verdict": "PASS",
+    "reasons": [],
     "wall": {
-     "photo": "#715e51",
+     "photo": "#715d51",
      "model": "#877162",
      "dL": 0.076
     },
     "glazing": {
-     "photo": 0.47,
+     "photo": 0.42,
      "model": 0.42
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.529
+    "iou": 0.561
    },
    "challengers": {
-    "indisch-1912-java-mansard-arches": 0.304,
-    "indisch-1912-java-mansard-arches~m": 0.326
+    "indisch-1912-java-mansard-arches~m": 0.331,
+    "indisch-1912-java-mansard-arches": 0.312
    }
   },
   {
@@ -877,34 +906,34 @@
    ],
    "likeness": {
     "pandId": "0363100012098497",
-    "ncc": 0.312,
-    "nccRaw": 0.312,
+    "ncc": 0.316,
+    "nccRaw": 0.316,
     "shiftM": [
-     0.1,
-     -0.4
+     0.05,
+     -0.35
     ],
-    "usable": 0.9,
+    "usable": 0.92,
     "abstain": null,
     "verdict": "PASS",
     "reasons": [],
     "wall": {
-     "photo": "#725f52",
+     "photo": "#725e51",
      "model": "#887a6f",
-     "dL": 0.1
+     "dL": 0.102
     },
     "glazing": {
      "photo": 0.41,
-     "model": 0.41
+     "model": 0.44
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.58
+    "iou": 0.577
    },
    "challengers": {
-    "indisch-1912-java-mansard-arches": 0.319,
-    "indisch-1912-java-mansard-arches~m": 0.307
+    "indisch-1912-java-mansard-arches": 0.316,
+    "indisch-1912-java-mansard-arches~m": 0.313
    }
   },
   {
@@ -982,45 +1011,47 @@
     "measuredPalette": {
      "brick": "#715e52",
      "evidence": "strip 2023-01-02 span 2207-2447: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    }
+    },
+    "mirror": true
    },
    "notes": [
-    "door left",
-    "crown mansard-dormer (type default)"
+    "crown mansard-dormer (type default)",
+    "door reviewer pin: mirrored (Javastraat 93-149 strip 2023-01-02 (verdict 2026-11-10): the narrow arched pair sits LEFT of the balcony axis)"
    ],
    "likeness": {
     "pandId": "0363100012126147",
-    "ncc": 0.218,
-    "nccRaw": 0.218,
+    "ncc": 0.217,
+    "nccRaw": 0.217,
     "shiftM": [
-     0.2,
+     0.35,
      0.25
     ],
-    "usable": 0.9,
+    "usable": 0.91,
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.45 mean 0.41 vs photo 0.58",
-     "columns 3 vs photo 8"
+     "wall dL +0.21",
+     "glazing storey band off by 0.53 mean 0.42 vs photo 0.61",
+     "columns 3 vs photo 5"
     ],
     "wall": {
-     "photo": "#67564e",
+     "photo": "#45403c",
      "model": "#897264",
-     "dL": 0.11
+     "dL": 0.212
     },
     "glazing": {
-     "photo": 0.58,
-     "model": 0.41
+     "photo": 0.61,
+     "model": 0.42
     },
     "columns": {
-     "photo": 8,
+     "photo": 5,
      "model": 3
     },
-    "iou": 0.365
+    "iou": 0.369
    },
    "challengers": {
-    "indisch-1912-java-mansard-arches": 0.199,
-    "indisch-1912-java-mansard-arches~m": 0.189
+    "indisch-1912-java-mansard-arches~m": 0.217,
+    "indisch-1912-java-mansard-arches": 0.177
    }
   },
   {
@@ -1189,12 +1220,12 @@
    },
    "notes": [
     "crown mansard-dormer (type default)",
-    "photo decides: indisch-1912-java-mansard-arches~m edge NCC 0.364 vs indisch-1912-java-mansard-arches 0.282"
+    "photo decides: indisch-1912-java-mansard-arches~m edge NCC 0.33 vs indisch-1912-java-mansard-arches 0.263"
    ],
    "likeness": {
     "pandId": "0363100012150083",
-    "ncc": 0.367,
-    "nccRaw": 0.367,
+    "ncc": 0.336,
+    "nccRaw": 0.336,
     "shiftM": [
      0.4,
      -0.4
@@ -1210,17 +1241,17 @@
     },
     "glazing": {
      "photo": 0.42,
-     "model": 0.4
+     "model": 0.44
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.528
+    "iou": 0.545
    },
    "challengers": {
-    "indisch-1912-java-mansard-arches": 0.282,
-    "indisch-1912-java-mansard-arches~m": 0.364
+    "indisch-1912-java-mansard-arches": 0.263,
+    "indisch-1912-java-mansard-arches~m": 0.33
    }
   },
   {
@@ -1304,8 +1335,8 @@
    ],
    "likeness": {
     "pandId": "0363100012103232",
-    "ncc": 0.232,
-    "nccRaw": 0.232,
+    "ncc": 0.231,
+    "nccRaw": 0.231,
     "shiftM": [
      0,
      -0.4
@@ -1314,26 +1345,26 @@
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.35 mean 0.41 vs photo 0.23"
+     "glazing storey band off by 0.41 mean 0.44 vs photo 0.24"
     ],
     "wall": {
-     "photo": "#846f63",
+     "photo": "#857164",
      "model": "#97827a",
-     "dL": 0.082
+     "dL": 0.078
     },
     "glazing": {
-     "photo": 0.23,
-     "model": 0.41
+     "photo": 0.24,
+     "model": 0.44
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.409
+    "iou": 0.402
    },
    "challengers": {
-    "indisch-1912-java-mansard-arches": 0.228,
-    "indisch-1912-java-mansard-arches~m": 0.217
+    "indisch-1912-java-mansard-arches": 0.234,
+    "indisch-1912-java-mansard-arches~m": 0.228
    }
   },
   {
@@ -1388,41 +1419,67 @@
     "voidShare": 0,
     "foliageShare": 0.03
    },
-   "status": "held",
-   "stage": "likeness",
-   "reason": "edge NCC 0.128 < 0.15 (photo vs model body; likeness.ts WARN: mask IoU 0.4 < 0.45)",
+   "status": "placed",
+   "type": "indisch-1912-java-mansard-arches",
+   "score": 0.86,
+   "placement": {
+    "type": "indisch-1912-java-mansard-arches",
+    "ground": {
+     "shopfront": {
+      "colour": "#756b61",
+      "fascia": true,
+      "name": "Little Coconuts",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: osm-only (winkelfunctie, shop=toys); fascia colour measured on the strip 2023-01-02 span 3168-3411"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#826e64",
+     "evidence": "strip 2023-01-02 span 3168-3411: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "door unread",
+    "crown mansard-dormer (type default)"
+   ],
    "likeness": {
     "pandId": "0363100012141749",
-    "ncc": 0.128,
-    "nccRaw": 0.128,
+    "ncc": 0.153,
+    "nccRaw": 0.153,
     "shiftM": [
      0.35,
-     0.4
+     -0.4
     ],
     "usable": 0.92,
     "abstain": null,
-    "verdict": "WARN",
+    "verdict": "FAIL",
     "reasons": [
-     "mask IoU 0.4 < 0.45"
+     "glazing storey band off by 0.22 mean 0.44 vs photo 0.32"
     ],
     "wall": {
-     "photo": "#89746b",
+     "photo": "#8a766c",
      "model": "#968176",
-     "dL": 0.047
+     "dL": 0.043
     },
     "glazing": {
-     "photo": 0.34,
-     "model": 0.4
+     "photo": 0.32,
+     "model": 0.44
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.4
+    "iou": 0.403
    },
    "challengers": {
-    "indisch-1912-java-mansard-arches": 0.128,
-    "indisch-1912-java-mansard-arches~m": 0.148
+    "indisch-1912-java-mansard-arches": 0.155,
+    "indisch-1912-java-mansard-arches~m": 0.182
    }
   },
   {
@@ -1488,21 +1545,21 @@
     "foliageShare": 0.06
    },
    "status": "held",
-   "stage": "run",
-   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "stage": "likeness",
+   "reason": "edge NCC 0.142 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.32 mean 0.47 vs photo 0.24)",
    "likeness": {
     "pandId": "0363100012085970",
-    "ncc": 0.11,
-    "nccRaw": 0.11,
+    "ncc": 0.142,
+    "nccRaw": 0.142,
     "shiftM": [
      0.05,
-     -0.05
+     0
     ],
     "usable": 0.84,
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.24 mean 0.43 vs photo 0.24"
+     "glazing storey band off by 0.32 mean 0.47 vs photo 0.24"
     ],
     "wall": {
      "photo": "#7b695e",
@@ -1511,17 +1568,17 @@
     },
     "glazing": {
      "photo": 0.24,
-     "model": 0.43
+     "model": 0.47
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.43
+    "iou": 0.459
    },
    "challengers": {
-    "indisch-1912-java-mansard-arches": 0.11,
-    "indisch-1912-java-mansard-arches~m": 0.174
+    "indisch-1912-java-mansard-arches": 0.142,
+    "indisch-1912-java-mansard-arches~m": 0.18
    }
   },
   {
@@ -1572,20 +1629,20 @@
    },
    "status": "held",
    "stage": "likeness",
-   "reason": "edge NCC 0.135 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.25 mean 0.43 vs photo 0.58)",
+   "reason": "edge NCC 0.14 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.24 mean 0.45 vs photo 0.58)",
    "likeness": {
     "pandId": "0363100012110585",
-    "ncc": 0.135,
-    "nccRaw": 0.135,
+    "ncc": 0.14,
+    "nccRaw": 0.14,
     "shiftM": [
-     0.3,
+     0.35,
      0.25
     ],
     "usable": 0.88,
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.25 mean 0.43 vs photo 0.58"
+     "glazing storey band off by 0.24 mean 0.45 vs photo 0.58"
     ],
     "wall": {
      "photo": "#7a6861",
@@ -1594,17 +1651,17 @@
     },
     "glazing": {
      "photo": 0.58,
-     "model": 0.43
+     "model": 0.45
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.494
+    "iou": 0.498
    },
    "challengers": {
-    "indisch-1912-java-mansard-arches": 0.135,
-    "indisch-1912-java-mansard-arches~m": 0.08
+    "indisch-1912-java-mansard-arches": 0.14,
+    "indisch-1912-java-mansard-arches~m": 0.124
    }
   }
  ]

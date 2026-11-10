@@ -85,7 +85,7 @@ export interface CanalhouseDormer {
    * behind, so the glass never passes the roof plane) and `sideM` wide each side of it; the frame, pane and bars fill the
    * rest. Absent = the whole front glazed, byte-identical.
    */
-  frontWall?:{apronM:number;sideM:number}; id: string; leftM: number; widthM: number; bottomM: number; heightM: number; depthM: number; roofRiseM: number; frontOverhangM?: number; trimWidthM?: number; verticalBars?: number[]; horizontalBars?: number[] }
+  frontWall?:{apronM:number;sideM:number;headM?:number}; id: string; leftM: number; widthM: number; bottomM: number; heightM: number; depthM: number; roofRiseM: number; frontOverhangM?: number; trimWidthM?: number; verticalBars?: number[]; horizontalBars?: number[] }
 /** `accent` is a second masonry colour (banding, relieving arches); `shop` is the shopfront joinery/fascia paint. */
 export interface CanalhouseFacadeBlock { id: string; leftM: number; bottomM: number; widthM: number; heightM: number; depthM: number; surface?: 'wall' | 'trim' | 'stone' | 'accent' | 'shop' }
 export interface CanalhouseBalcony {
@@ -869,20 +869,21 @@ export function compileCanalHouseRecipe(recipe: CanalHouseRecipe): CompiledCanal
         box(x1-wall,d.bottomM,wall,d.heightM,d.depthM,-d.depthM/2,wallSurface,`${label}/right-wall`);
         box(x0,d.bottomM,d.widthM,d.heightM,wall,-d.depthM+wall/2,wallSurface,`${label}/back-wall`);
         // `frontWall`: the window sits in a solid front (apron under it, posts beside it); absent, the opening is the whole front.
-        let wx0=x0,wx1=x1,wy0=d.bottomM;
+        let wx0=x0,wx1=x1,wy0=d.bottomM,wTop=top;
         if(d.frontWall){
-          const {apronM,sideM}=d.frontWall;finite(apronM,sideM);
-          if(apronM<0||sideM<0||apronM+t*2+.3>d.heightM||sideM*2+t*2+.3>d.widthM)throw Error('Dormer front wall leaves no window');
-          wx0=x0+sideM;wx1=x1-sideM;wy0=d.bottomM+apronM;
+          const {apronM,sideM}=d.frontWall,headM=d.frontWall.headM??0;finite(apronM,sideM,headM);
+          if(apronM<0||sideM<0||headM<0||apronM+headM+t*2+.3>d.heightM||sideM*2+t*2+.3>d.widthM)throw Error('Dormer front wall leaves no window');
+          wx0=x0+sideM;wx1=x1-sideM;wy0=d.bottomM+apronM;wTop=top-headM;
           // Between the side walls (their front ends stay the only faces at the corners: no coplanar overlap).
           if(apronM>EPS)box(x0+wall,d.bottomM,d.widthM-2*wall,apronM,wall,-wall/2,wallSurface,`${label}/front-apron`);
-          if(sideM>wall+EPS)for(const [x,side] of [[x0+wall,'left'],[x1-sideM,'right']] as const)box(x,wy0,sideM-wall,top-wy0,wall,-wall/2,wallSurface,`${label}/front-${side}`);
+          if(sideM>wall+EPS)for(const [x,side] of [[x0+wall,'left'],[x1-sideM,'right']] as const)box(x,wy0,sideM-wall,wTop-wy0,wall,-wall/2,wallSurface,`${label}/front-${side}`);
+          if(headM>EPS)box(x0+wall,wTop,d.widthM-2*wall,headM,wall,-wall/2,wallSurface,`${label}/front-head`);
         }
-        const ww=wx1-wx0,wh=top-wy0;
+        const ww=wx1-wx0,wh=wTop-wy0;
         box(wx0,wy0,t,wh,.04,.03,'trim',`${label}/frame-left`);
         box(wx1-t,wy0,t,wh,.04,.03,'trim',`${label}/frame-right`);
         box(wx0,wy0,ww,t,.04,.03,'trim',`${label}/frame-bottom`);
-        box(wx0,top-t,ww,t,.04,.03,'trim',`${label}/frame-top`);
+        box(wx0,wTop-t,ww,t,.04,.03,'trim',`${label}/frame-top`);
         box(wx0+t,wy0+t,ww-2*t,wh-2*t,.03,.065,'glass',`${label}/pane`);
         // Bars 4.2 cm over the pane, not 3 cm: 3 cm is the audit's band that bleeds through at distance (geometryAudit
         // zTightTol); a tall two-light dormer's bar was 0.1 m2 of it (Gorontalostraat 25-45, 2026-10-17).

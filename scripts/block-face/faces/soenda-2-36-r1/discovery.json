@@ -2,7 +2,6 @@
  "street": "Soendastraat",
  "seed": "0363100012093268",
  "members": [
-  "0363100012113301",
   "0363100012150368",
   "0363100012069113",
   "0363100012062527",
@@ -13,7 +12,7 @@
  "ends": [
   {
    "side": "left",
-   "reason": "run of soenda-2-36: 084401 held (auto-place.json)"
+   "reason": "run of soenda-2-36: 113301 held (auto-place.json)"
   },
   {
    "side": "right",
@@ -1364,16 +1363,6 @@
  ],
  "areaHalfSizeM": 180,
  "pands": [
-  {
-   "pandId": "0363100012113301",
-   "alongM": -81.52,
-   "widthM": 6,
-   "eavesM": 13.11,
-   "roofMaxM": 15.52,
-   "storeys3dbag": 5,
-   "builtYear": 1913,
-   "uncertainty": []
-  },
   {
    "pandId": "0363100012150368",
    "alongM": -75.52,

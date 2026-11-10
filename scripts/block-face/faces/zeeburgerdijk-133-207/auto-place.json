@@ -1,0 +1,705 @@
+{
+ "face": "zeeburgerdijk-133-207",
+ "street": "Zeeburgerdijk",
+ "library": "indische-buurt",
+ "stripDate": "2022-04-21",
+ "seconds": 1.2,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012096397",
+   "address": "Zeeburgerdijk 133",
+   "builtYear": 1972,
+   "widthM": 20,
+   "eavesM": 8.1,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#efc9a0",
+    "wallRaw": "#daba90",
+    "skyline": {
+     "eavesM": 11.63,
+     "eavesRow": 280,
+     "confidence": 0.93,
+     "crown": {
+      "widthM": 5.33,
+      "riseM": 7,
+      "topWidthM": 0.57,
+      "centre": 0.37
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": "right",
+    "accentShare": 0.349,
+    "structure": {
+     "bayWidthM": 4.05,
+     "bayCentre": 0.71,
+     "balconies": true,
+     "why": "dark open axis 0.93 m at 0.03 (light 0.07): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.93,
+       "centre": 0.03,
+       "light": 0.07
+      },
+      {
+       "widthM": 2.02,
+       "centre": 0.18,
+       "light": 0.31
+      },
+      {
+       "widthM": 0.75,
+       "centre": 0.26,
+       "light": 0.12
+      },
+      {
+       "widthM": 1.38,
+       "centre": 0.51,
+       "light": 0.27
+      },
+      {
+       "widthM": 4,
+       "centre": 0.71,
+       "light": 0.4
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 5.47,
+       "widthM": 0.95,
+       "centre": 0.03
+      },
+      {
+       "atM": 4.88,
+       "widthM": 1.5,
+       "centre": 0.11
+      }
+     ]
+    },
+    "voidShare": 0.12,
+    "foliageShare": 0.26
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best indisch-1912-java-mansard-arches: built 1972, type 1910-1914; frontage 20 m, type 5.6-6.4 m)",
+   "best": {
+    "type": "indisch-1912-java-mansard-arches",
+    "score": 0,
+    "veto": [
+     "built 1972, type 1910-1914",
+     "frontage 20 m, type 5.6-6.4 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 8.1 m = 4 storeys of 2.02 m vs the type's 3.08 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 0,
+      "note": "3DBAG bouwlagen 4 vs 5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.077 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012100806",
+   "address": "Zeeburgerdijk 141",
+   "builtYear": 1927,
+   "widthM": 14.89,
+   "eavesM": 7.18,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#9a8f73",
+    "wallRaw": "#948a6c",
+    "skyline": {
+     "eavesM": 9.53,
+     "eavesRow": 364,
+     "confidence": 0.97,
+     "crown": {
+      "widthM": 4.17,
+      "riseM": 9.05,
+      "topWidthM": 0.13,
+      "centre": 0.32
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.181,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 13.68 m at 0.5 (light 0.33): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 13.68,
+       "centre": 0.5,
+       "light": 0.33
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 5.3,
+       "widthM": 0.85,
+       "centre": 0.75
+      },
+      {
+       "atM": 4.85,
+       "widthM": 1.05,
+       "centre": 0.74
+      }
+     ]
+    },
+    "voidShare": 0.07,
+    "foliageShare": 0.2
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best indisch-1912-java-mansard-arches: built 1927, type 1910-1914; frontage 14.89 m, type 5.6-6.4 m)",
+   "best": {
+    "type": "indisch-1912-java-mansard-arches",
+    "score": 0,
+    "veto": [
+     "built 1927, type 1910-1914",
+     "frontage 14.89 m, type 5.6-6.4 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 7.18 m = 4 storeys of 1.79 m vs the type's 3.08 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 0,
+      "note": "3DBAG bouwlagen 4 vs 5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.121 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 3 vs 4 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012090264",
+   "address": "Zeeburgerdijk 147",
+   "builtYear": 1927,
+   "widthM": 15,
+   "eavesM": 7.2,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#ddbb9c",
+    "wallRaw": "#a19776",
+    "skyline": {
+     "eavesM": 9.5,
+     "eavesRow": 365,
+     "confidence": 1,
+     "crown": {
+      "widthM": 3.15,
+      "riseM": 2.97,
+      "topWidthM": 1.85,
+      "centre": 0.89
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 19,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.308,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 9.82 m at 0.36 (light 0.32): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 9.82,
+       "centre": 0.36,
+       "light": 0.32
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 5.92,
+       "widthM": 1.32,
+       "centre": 0.95
+      },
+      {
+       "atM": 5.25,
+       "widthM": 0.9,
+       "centre": 0.63
+      },
+      {
+       "atM": 4.8,
+       "widthM": 1.57,
+       "centre": 0.17
+      }
+     ]
+    },
+    "voidShare": 0.07,
+    "foliageShare": 0.17
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best indisch-1912-java-mansard-arches: built 1927, type 1910-1914; frontage 15 m, type 5.6-6.4 m)",
+   "best": {
+    "type": "indisch-1912-java-mansard-arches",
+    "score": 0,
+    "veto": [
+     "built 1927, type 1910-1914",
+     "frontage 15 m, type 5.6-6.4 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 7.2 m = 4 storeys of 1.8 m vs the type's 3.08 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 0,
+      "note": "3DBAG bouwlagen 4 vs 5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.159 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 19 vs 4 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012103933",
+   "address": "Zeeburgerdijk 153",
+   "builtYear": 1927,
+   "widthM": 15,
+   "eavesM": 7.49,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#d1b194",
+    "wallRaw": "#b1a27b",
+    "skyline": {
+     "eavesM": 9.6,
+     "eavesRow": 361,
+     "confidence": 1,
+     "crown": {
+      "widthM": 3.7,
+      "riseM": 3.13,
+      "topWidthM": 0.72,
+      "centre": 0.13
+     }
+    },
+    "stucco": false,
+    "bands": 2,
+    "columns": 16,
+    "frontClass": "blank",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.62,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 5.9,
+       "widthM": 4.3,
+       "centre": 0.84
+      }
+     ]
+    },
+    "voidShare": 0.06,
+    "foliageShare": 0.21
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best indisch-1912-java-mansard-arches: built 1927, type 1910-1914; frontage 15 m, type 5.6-6.4 m)",
+   "best": {
+    "type": "indisch-1912-java-mansard-arches",
+    "score": 0,
+    "veto": [
+     "built 1927, type 1910-1914",
+     "frontage 15 m, type 5.6-6.4 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 7.49 m = 4 storeys of 1.87 m vs the type's 3.08 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 0,
+      "note": "3DBAG bouwlagen 4 vs 5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.17 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 16 vs 4 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012107029",
+   "address": "Zeeburgerdijk 159",
+   "builtYear": 1927,
+   "widthM": 15,
+   "eavesM": 7.63,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#594a40",
+    "wallRaw": "#a09979",
+    "skyline": {
+     "eavesM": 9.55,
+     "eavesRow": 363,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.07,
+      "riseM": 5.47,
+      "topWidthM": 0.1,
+      "centre": 0.85
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 12,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.651,
+    "structure": {
+     "bayWidthM": 0.63,
+     "bayCentre": 0.32,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 5.9,
+       "widthM": 9.25,
+       "centre": 0.66
+      }
+     ]
+    },
+    "voidShare": 0.12,
+    "foliageShare": 0.19
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best indisch-1912-java-mansard-arches: built 1927, type 1910-1914; frontage 15 m, type 5.6-6.4 m)",
+   "best": {
+    "type": "indisch-1912-java-mansard-arches",
+    "score": 0,
+    "veto": [
+     "built 1927, type 1910-1914",
+     "frontage 15 m, type 5.6-6.4 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 7.63 m = 4 storeys of 1.91 m vs the type's 3.08 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 0,
+      "note": "3DBAG bouwlagen 4 vs 5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.209 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 12 vs 4 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012125663",
+   "address": "Zeeburgerdijk 165",
+   "builtYear": 1927,
+   "widthM": 15,
+   "eavesM": 7.59,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#75654e",
+    "wallRaw": "#9e9676",
+    "skyline": {
+     "eavesM": 9.53,
+     "eavesRow": 364,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.58,
+      "riseM": 8.78,
+      "topWidthM": 0.2,
+      "centre": 0.91
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 13,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.605,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.88 m at 0.46 (light 0.39): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.88,
+       "centre": 0.46,
+       "light": 0.39
+      },
+      {
+       "widthM": 0.85,
+       "centre": 0.93,
+       "light": 0.29
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 5.85,
+       "widthM": 5.6,
+       "centre": 0.48
+      }
+     ]
+    },
+    "voidShare": 0.09,
+    "foliageShare": 0.21
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best indisch-1912-java-mansard-arches: built 1927, type 1910-1914; frontage 15 m, type 5.6-6.4 m)",
+   "best": {
+    "type": "indisch-1912-java-mansard-arches",
+    "score": 0,
+    "veto": [
+     "built 1927, type 1910-1914",
+     "frontage 15 m, type 5.6-6.4 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 7.59 m = 4 storeys of 1.9 m vs the type's 3.08 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 0,
+      "note": "3DBAG bouwlagen 4 vs 5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.171 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 13 vs 4 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012136055",
+   "address": "Zeeburgerdijk 171",
+   "builtYear": 1927,
+   "widthM": 15,
+   "eavesM": 7.55,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#584838",
+    "wallRaw": "#8f8266",
+    "skyline": {
+     "eavesM": 9.55,
+     "eavesRow": 363,
+     "confidence": 0.91,
+     "crown": {
+      "widthM": 3.5,
+      "riseM": 9.07,
+      "topWidthM": 0.13,
+      "centre": 0.75
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.48,
+    "structure": {
+     "bayWidthM": 3.3,
+     "bayCentre": 0.47,
+     "balconies": true,
+     "why": "dark open axis 1.65 m at 0.56 (light 0.35): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.93,
+       "centre": 0.26,
+       "light": 0.56
+      },
+      {
+       "widthM": 1.65,
+       "centre": 0.56,
+       "light": 0.35
+      },
+      {
+       "widthM": 0.63,
+       "centre": 0.87,
+       "light": 0.14
+      },
+      {
+       "widthM": 0.6,
+       "centre": 0.98,
+       "light": 0.02
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 5.82,
+       "widthM": 3.3,
+       "centre": 0.47
+      }
+     ]
+    },
+    "voidShare": 0.07,
+    "foliageShare": 0.18
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best indisch-1912-java-mansard-arches: built 1927, type 1910-1914; frontage 15 m, type 5.6-6.4 m)",
+   "best": {
+    "type": "indisch-1912-java-mansard-arches",
+    "score": 0,
+    "veto": [
+     "built 1927, type 1910-1914",
+     "frontage 15 m, type 5.6-6.4 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 7.55 m = 4 storeys of 1.89 m vs the type's 3.08 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 0,
+      "note": "3DBAG bouwlagen 3 vs 5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.114 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 3 vs 4 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

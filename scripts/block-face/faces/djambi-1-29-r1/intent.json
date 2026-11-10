@@ -22,55 +22,6 @@
  ],
  "houses": [
   {
-   "pandId": "0363100012149516",
-   "slug": "djambi-149516",
-   "address": "Djambistraat 5",
-   "type": {
-    "type": "indisch-1913-arched-pair-dormer",
-    "measuredPalette": {
-     "brick": "#614d46",
-     "evidence": "strip 2019-12-18 span 618-833: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    }
-   },
-   "groundFloor": {
-    "use": "residential",
-    "bag": [
-     "woonfunctie"
-    ],
-    "photoDate": "2019-12-18",
-    "agreement": "bag-only",
-    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
-   },
-   "rhythm": {
-    "citation": "auto-place: indisch-1913-arched-pair-dormer scored 1 on eaves 1, storeys 1, roof 1, stucco 1; strip 2019-12-18 span 618-833"
-   }
-  },
-  {
-   "pandId": "0363100012104592",
-   "slug": "djambi-104592",
-   "address": "Djambistraat 7",
-   "type": {
-    "type": "indisch-1913-arched-pair-dormer",
-    "mirror": true,
-    "measuredPalette": {
-     "brick": "#55433c",
-     "evidence": "strip 2019-12-18 span 833-1073: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    }
-   },
-   "groundFloor": {
-    "use": "residential",
-    "bag": [
-     "woonfunctie"
-    ],
-    "photoDate": "2019-12-18",
-    "agreement": "bag-only",
-    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
-   },
-   "rhythm": {
-    "citation": "auto-place: indisch-1913-arched-pair-dormer scored 1 on eaves 1, storeys 1, roof 1, stucco 1; strip 2019-12-18 span 833-1073"
-   }
-  },
-  {
    "pandId": "0363100012131961",
    "slug": "djambi-131961",
    "address": "Djambistraat 9",
@@ -239,80 +190,6 @@
    },
    "rhythm": {
     "citation": "auto-place: indisch-1913-arched-pair-dormer scored 1 on eaves 1, storeys 1, roof 1, stucco 1, columns 1; strip 2019-12-18 span 2413-2633"
-   }
-  },
-  {
-   "pandId": "0363100012108617",
-   "slug": "djambi-108617",
-   "address": "Djambistraat 23",
-   "type": {
-    "type": "indisch-1913-arched-pair-dormer",
-    "mirror": true,
-    "measuredPalette": {
-     "brick": "#65524b",
-     "evidence": "strip 2019-12-18 span 2633-2853: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    }
-   },
-   "groundFloor": {
-    "use": "residential",
-    "bag": [
-     "woonfunctie"
-    ],
-    "photoDate": "2019-12-18",
-    "agreement": "bag-only",
-    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
-   },
-   "rhythm": {
-    "citation": "auto-place: indisch-1913-arched-pair-dormer scored 1 on eaves 1, storeys 1, roof 1, stucco 1, columns 1; strip 2019-12-18 span 2633-2853"
-   }
-  },
-  {
-   "pandId": "0363100012117530",
-   "slug": "djambi-117530",
-   "address": "Djambistraat 25",
-   "type": {
-    "type": "indisch-1913-arched-pair-dormer",
-    "measuredPalette": {
-     "brick": "#614e47",
-     "evidence": "strip 2019-12-18 span 2869-3073: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    }
-   },
-   "groundFloor": {
-    "use": "residential",
-    "bag": [
-     "woonfunctie"
-    ],
-    "photoDate": "2019-12-18",
-    "agreement": "bag-only",
-    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
-   },
-   "rhythm": {
-    "citation": "auto-place: indisch-1913-arched-pair-dormer scored 0.88 on eaves 1, storeys 1, roof 1, stucco 1, columns 0.4; strip 2019-12-18 span 2869-3073"
-   }
-  },
-  {
-   "pandId": "0363100012095414",
-   "slug": "djambi-095414",
-   "address": "Djambistraat 27",
-   "type": {
-    "type": "indisch-1913-arched-pair-dormer",
-    "mirror": true,
-    "measuredPalette": {
-     "brick": "#65514b",
-     "evidence": "strip 2019-12-18 span 3073-3313: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    }
-   },
-   "groundFloor": {
-    "use": "residential",
-    "bag": [
-     "woonfunctie"
-    ],
-    "photoDate": "2019-12-18",
-    "agreement": "bag-only",
-    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
-   },
-   "rhythm": {
-    "citation": "auto-place: indisch-1913-arched-pair-dormer scored 1 on eaves 1, storeys 1, roof 1, stucco 1, columns 1; strip 2019-12-18 span 3073-3313"
    }
   }
  ],

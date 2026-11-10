@@ -56,7 +56,7 @@
    "1": "casement-toplight-double"
   },
   "windowHead": {
-   "kind": "round",
+   "kind": "relieving",
    "storeys": [
     1,
     2,
@@ -64,8 +64,10 @@
    ],
    "archRing": {
     "colour": "band",
-    "widthCourses": 2
-   }
+    "widthCourses": 2,
+    "shape": "segmental"
+   },
+   "tympanum": "dark"
   },
   "cornice": "simple",
   "storeyHeights": [
@@ -88,6 +90,7 @@
   ],
   "balconies": {
    "storeys": [
+    1,
     2,
     3
    ],
@@ -101,11 +104,20 @@
   "mansard-dormer": {
    "gable": "cornice",
    "cornice": "simple",
-   "roofFront": "mansard",
    "dormers": 1,
    "dormerStyle": "pediment",
-   "dormerAt": [{"from": 0.4, "to": 0.65}],
-   "note": "Javastraat 97, 99: a black slate mansard 12.2-14.0 m behind a white gutter; one white pediment dormer 1.6 m wide, 12.5-14.3 m, over the balcony axis"
+   "dormerAt": [
+    {
+     "from": 0.4,
+     "to": 0.65
+    }
+   ],
+   "note": "Javastraat 97, 99: a white pediment dormer 1.6 m wide, 13.2-14.3 m, over the balcony axis on the black slate roof (a 70 degree front slope from the 12.2 m gutter to about 14.4 m); drawn as a dormer on the type's attic roof (roofFront mansard put the dormer through a roof plane the recipe roof does not have: audit opening-outside 10.3 m2 and 1.9 m2 of coplanar slate)",
+   "dormerSize": {
+    "sill": 0.3,
+    "rise": 1.7,
+    "setback": 0.5
+   }
   }
  },
  "grounds": {},
@@ -120,7 +132,11 @@
   }
  },
  "roof": {
-  "material": "slate"
+  "material": "slate",
+  "source": "front",
+  "form": "attic",
+  "pitchDeg": 70,
+  "evidence": "Javastraat 95-121: the black slate mansard 12.2-14.0 m behind the gutter, a steep (about 70 degree) front slope under 3DBAG ridges of 14.3-14.9 m over eaves of 12.0-12.5 m; the face-wide 30 degree recipe attic put the pediment dormer through a roof plane that does not exist"
  },
  "rhythm": {
   "bays": "4 axes: wide arched window, balcony door, two narrow arched windows",
@@ -150,9 +166,10 @@
   }
  ],
  "schemaLimits": [
-  "the lighter brick bands (speklagen) between the window rows",
   "the stepped brick corbel under the storey-2 sill",
-  "the stair of dormer variants (some fronts have the dormer off the balcony axis)"
+  "the stair of dormer variants (some fronts have the dormer off the balcony axis)",
+  "the stepped brick corbel under the storey-2 sill",
+  "the cream voussoirs alternating with brick in the arch rings (one band colour)"
  ],
  "notes": []
 }

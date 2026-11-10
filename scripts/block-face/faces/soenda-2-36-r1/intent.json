@@ -22,30 +22,6 @@
  ],
  "houses": [
   {
-   "pandId": "0363100012113301",
-   "slug": "soenda-113301",
-   "address": "Soendastraat 30",
-   "type": {
-    "type": "indisch-1913-arched-pair-dormer",
-    "measuredPalette": {
-     "brick": "#725b4f",
-     "evidence": "strip 2019-12-18 span 240-480: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    }
-   },
-   "groundFloor": {
-    "use": "residential",
-    "bag": [
-     "woonfunctie"
-    ],
-    "photoDate": "2019-12-18",
-    "agreement": "bag-only",
-    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
-   },
-   "rhythm": {
-    "citation": "auto-place: indisch-1913-arched-pair-dormer scored 1 on eaves 1, storeys 1, roof 1, stucco 1, columns 1; strip 2019-12-18 span 240-480"
-   }
-  },
-  {
    "pandId": "0363100012150368",
    "slug": "soenda-150368",
    "address": "Soendastraat 28",
@@ -78,7 +54,8 @@
     "measuredPalette": {
      "brick": "#8b6e60",
      "evidence": "strip 2019-12-18 span 720-940: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    }
+    },
+    "mirror": true
    },
    "groundFloor": {
     "use": "residential",

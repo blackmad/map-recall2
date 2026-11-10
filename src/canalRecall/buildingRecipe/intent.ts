@@ -722,10 +722,10 @@ export interface FrontIntent {
   /**
    * A measured window in a solid dormer front (Djambistraat 1-35, Soendastraat 2-36, 1913: a 2.0 m pointed brick dormer holding
    * a 0.85 m two-light window over an apron): the window is `light` wide (0.4..2, clamped to leave 0.1 m posts) and sits on an
-   * apron of `apron` (0..1.2) in the dormer front, whatever the body material. Absent = the body's own front (timber: the
+   * apron of `apron` (0..1.2) in the dormer front, whatever the body material; `tall` (0.3..2, optional) is the window's own height, a brick head wall closing the rest of the dormer body above it (Djambistraat: a 0.85 m window under 1.1 m cheeks); absent, the window runs to the top of the body. Absent = the body's own front (timber: the
    * TIMBER_DORMER apron and posts; brick/stone/trim: the opening is the whole front), byte-identical.
    */
-  dormerWindow?: {light: number; apron: number};
+  dormerWindow?: {light: number; apron: number; tall?: number};
   /** Several gables on one front: each `{from, to}` (inclusive bay axes) carries one crown of the front's gable type; eaves line between them. Not together with `crownAt`/`crownBays`. */
   crownGroups?: {from: number; to: number}[];
   /**
@@ -916,6 +916,12 @@ export interface PaletteIntent {
    * of drawing the overcast reading. Exported with the tint as `tintWhitePoint`. House palette only.
    */
   whitePoint?: string;
+  /**
+   * Sash colour (Lampongstraat, Borneostraat 1914: red casements and glazing bars inside cream outer frames): the glazing
+   * bars of the upper-storey windows (ids `s<n>-b<k>`) are drawn in this colour (the `joinery` material) while the outer
+   * frame keeps `frame`. Absent = the bars take the frame colour, byte-identical.
+   */
+  sash?: string;
   /** Large tier only: the glazing colour (default the kit's dark glass `#2a3a42`); measured from the photo by `measure.ts`. */
   glass?: string;
   /** Glass-block band colour measured on the strip (`awning.glassBlocks`): the band is exported as its own measured glass material. */
@@ -1799,7 +1805,7 @@ export function validateIntent(input: unknown): CanalHouseIntent {
   if (intent?.roof?.evidence !== undefined && typeof intent.roof.evidence !== 'string') problems.push('roof.evidence: a string (what on the photo shows the roof form)');
   if (intent?.roof && Object.keys(intent.roof).some(k => !['material', 'source', 'form', 'pitchDeg', 'rise', 'rearPitchDeg', 'crossGables', 'hip', 'rakeClear', 'evidence'].includes(k))) problems.push(`roof: unknown field ${Object.keys(intent.roof).filter(k => !['material', 'source', 'form', 'pitchDeg', 'rise', 'rearPitchDeg', 'crossGables', 'hip', 'rakeClear', 'evidence'].includes(k)).join(', ')}`);
   for (const k of ['brick', 'frame', 'door'] as const) colour(intent?.palette?.[k], `palette.${k}`);
-  for (const k of ['shutters', 'stone', 'band', 'cornice', 'glassBlock'] as const) if (intent?.palette?.[k] !== undefined) colour(intent.palette[k], `palette.${k}`);
+  for (const k of ['shutters', 'stone', 'band', 'cornice', 'glassBlock', 'sash'] as const) if (intent?.palette?.[k] !== undefined) colour(intent.palette[k], `palette.${k}`);
   if (intent?.palette?.wallMaterial !== undefined) oneOf(intent.palette.wallMaterial, WALL_MATERIALS, 'palette.wallMaterial');
   if (intent?.palette?.stoneMaterial !== undefined) oneOf(intent.palette.stoneMaterial, ['painted'], 'palette.stoneMaterial');
   if (intent?.palette?.wallTint !== undefined) {
@@ -2107,10 +2113,10 @@ function historicProblems(f: FrontIntent, at: string, colour: (v: unknown, where
     if (f.hoist) problems.push(`${at}.dormerHoist: not with hoist (one beam per dormer replaces the facade beam)`);
   }
   if (f.dormerWindow !== undefined) {
-    const z = f.dormerWindow as {light?: unknown; apron?: unknown};
+    const z = f.dormerWindow as {light?: unknown; apron?: unknown; tall?: unknown};
     if (!f.dormers) problems.push(`${at}.dormerWindow: only with dormers`);
     else if (f.roofFront === 'mansard') problems.push(`${at}.dormerWindow: not on a mansard`);
-    else if (!z || typeof z !== 'object' || Object.keys(z).some(k => !['light', 'apron'].includes(k)) || !(typeof z.light === 'number' && z.light >= 0.4 && z.light <= 2) || !(typeof z.apron === 'number' && z.apron >= 0 && z.apron <= 1.2)) problems.push(`${at}.dormerWindow: {light 0.4..2, apron 0..1.2}`);
+    else if (!z || typeof z !== 'object' || Object.keys(z).some(k => !['light', 'apron', 'tall'].includes(k)) || !(typeof z.light === 'number' && z.light >= 0.4 && z.light <= 2) || !(typeof z.apron === 'number' && z.apron >= 0 && z.apron <= 1.2) || (z.tall !== undefined && !(typeof z.tall === 'number' && z.tall >= 0.3 && z.tall <= 2))) problems.push(`${at}.dormerWindow: {light 0.4..2, apron 0..1.2, tall? 0.3..2}`);
   }
   if (f.dormerSize !== undefined) {
     const z = f.dormerSize as {sill?: unknown; rise?: unknown; setback?: unknown};

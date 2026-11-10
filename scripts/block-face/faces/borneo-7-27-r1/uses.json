@@ -6,22 +6,6 @@
  },
  "pands": [
   {
-   "pandId": "0363100012074710",
-   "addresses": [
-    "Borneostraat 13"
-   ],
-   "groundUnits": [
-    {
-     "address": "Borneostraat 13-H",
-     "use": "woonfunctie",
-     "areaM2": 39,
-     "bagId": "0363010000592240"
-    }
-   ],
-   "units": 4,
-   "osm": []
-  },
-  {
    "pandId": "0363100012090483",
    "addresses": [
     "Borneostraat 15"
@@ -48,70 +32,6 @@
      "use": "woonfunctie",
      "areaM2": 45,
      "bagId": "0363010000592255"
-    }
-   ],
-   "units": 4,
-   "osm": []
-  },
-  {
-   "pandId": "0363100012145601",
-   "addresses": [
-    "Borneostraat 19"
-   ],
-   "groundUnits": [
-    {
-     "address": "Borneostraat 19-H",
-     "use": "woonfunctie",
-     "areaM2": 55,
-     "bagId": "0363010000592263"
-    }
-   ],
-   "units": 4,
-   "osm": []
-  },
-  {
-   "pandId": "0363100012084255",
-   "addresses": [
-    "Borneostraat 21"
-   ],
-   "groundUnits": [
-    {
-     "address": "Borneostraat 21-H",
-     "use": "woonfunctie",
-     "areaM2": 56,
-     "bagId": "0363010000592271"
-    }
-   ],
-   "units": 4,
-   "osm": []
-  },
-  {
-   "pandId": "0363100012133599",
-   "addresses": [
-    "Borneostraat 23"
-   ],
-   "groundUnits": [
-    {
-     "address": "Borneostraat 23-H",
-     "use": "woonfunctie",
-     "areaM2": 64,
-     "bagId": "0363010000592279"
-    }
-   ],
-   "units": 4,
-   "osm": []
-  },
-  {
-   "pandId": "0363100012102480",
-   "addresses": [
-    "Borneostraat 25"
-   ],
-   "groundUnits": [
-    {
-     "address": "Borneostraat 25-H",
-     "use": "woonfunctie",
-     "areaM2": 97,
-     "bagId": "0363010000592287"
     }
    ],
    "units": 4,

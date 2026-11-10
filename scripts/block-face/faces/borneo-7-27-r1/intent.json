@@ -22,30 +22,6 @@
  ],
  "houses": [
   {
-   "pandId": "0363100012074710",
-   "slug": "borneo-074710",
-   "address": "Borneostraat 13",
-   "type": {
-    "type": "indisch-1914-red-sash-pairs",
-    "measuredPalette": {
-     "brick": "#837169",
-     "evidence": "strip 2023-01-02 span 456-708: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    }
-   },
-   "groundFloor": {
-    "use": "residential",
-    "bag": [
-     "woonfunctie"
-    ],
-    "photoDate": "2023-01-02",
-    "agreement": "bag-only",
-    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
-   },
-   "rhythm": {
-    "citation": "auto-place: indisch-1914-red-sash-pairs scored 1 on eaves 1, storeys 1, roof 1, stucco 1; strip 2023-01-02 span 456-708"
-   }
-  },
-  {
    "pandId": "0363100012090483",
    "slug": "borneo-090483",
    "address": "Borneostraat 15",
@@ -55,7 +31,8 @@
      "brick": "#816b63",
      "evidence": "strip 2023-01-02 span 708-960: trim-normalised wall (buildingRecipe/measureFacade.ts)"
     },
-    "mirror": true
+    "crown": "shared-gable",
+    "pair": "left"
    },
    "groundFloor": {
     "use": "residential",
@@ -79,7 +56,10 @@
     "measuredPalette": {
      "brick": "#877164",
      "evidence": "strip 2023-01-02 span 960-1212: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    }
+    },
+    "crown": "shared-gable",
+    "pair": "right",
+    "mirror": true
    },
    "groundFloor": {
     "use": "residential",
@@ -92,104 +72,6 @@
    },
    "rhythm": {
     "citation": "auto-place: indisch-1914-red-sash-pairs scored 1 on eaves 1, storeys 1, roof 1, stucco 1; strip 2023-01-02 span 960-1212"
-   }
-  },
-  {
-   "pandId": "0363100012145601",
-   "slug": "borneo-145601",
-   "address": "Borneostraat 19",
-   "type": {
-    "type": "indisch-1914-red-sash-pairs",
-    "measuredPalette": {
-     "brick": "#6a5a50",
-     "evidence": "strip 2023-01-02 span 1212-1464: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    },
-    "mirror": true
-   },
-   "groundFloor": {
-    "use": "residential",
-    "bag": [
-     "woonfunctie"
-    ],
-    "photoDate": "2023-01-02",
-    "agreement": "bag-only",
-    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
-   },
-   "rhythm": {
-    "citation": "auto-place: indisch-1914-red-sash-pairs scored 1 on eaves 1, storeys 1, roof 1, stucco 1; strip 2023-01-02 span 1212-1464"
-   }
-  },
-  {
-   "pandId": "0363100012084255",
-   "slug": "borneo-084255",
-   "address": "Borneostraat 21",
-   "type": {
-    "type": "indisch-1914-red-sash-pairs",
-    "measuredPalette": {
-     "brick": "#695b4f",
-     "evidence": "strip 2023-01-02 span 1464-1740: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    }
-   },
-   "groundFloor": {
-    "use": "residential",
-    "bag": [
-     "woonfunctie"
-    ],
-    "photoDate": "2023-01-02",
-    "agreement": "bag-only",
-    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
-   },
-   "rhythm": {
-    "citation": "auto-place: indisch-1914-red-sash-pairs scored 1 on eaves 1, storeys 1, roof 1, stucco 1, columns 1; strip 2023-01-02 span 1464-1740"
-   }
-  },
-  {
-   "pandId": "0363100012133599",
-   "slug": "borneo-133599",
-   "address": "Borneostraat 23",
-   "type": {
-    "type": "indisch-1914-red-sash-pairs",
-    "measuredPalette": {
-     "brick": "#756658",
-     "evidence": "strip 2023-01-02 span 1740-2016: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    },
-    "mirror": true
-   },
-   "groundFloor": {
-    "use": "residential",
-    "bag": [
-     "woonfunctie"
-    ],
-    "photoDate": "2023-01-02",
-    "agreement": "bag-only",
-    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
-   },
-   "rhythm": {
-    "citation": "auto-place: indisch-1914-red-sash-pairs scored 1 on eaves 1, storeys 1, roof 1, stucco 1, columns 1; strip 2023-01-02 span 1740-2016"
-   }
-  },
-  {
-   "pandId": "0363100012102480",
-   "slug": "borneo-102480",
-   "address": "Borneostraat 25",
-   "type": {
-    "type": "indisch-1914-red-sash-pairs",
-    "measuredPalette": {
-     "brick": "#66584c",
-     "evidence": "strip 2023-01-02 span 2016-2292: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    }
-   },
-   "groundFloor": {
-    "use": "residential",
-    "bag": [
-     "woonfunctie"
-    ],
-    "photoDate": "2023-01-02",
-    "agreement": "bag-only",
-    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
-   },
-   "rhythm": {
-    "citation": "auto-place: indisch-1914-red-sash-pairs scored 1 on eaves 1, storeys 1, roof 1, stucco 1, columns 1; strip 2023-01-02 span 2016-2292"
    }
   }
  ],

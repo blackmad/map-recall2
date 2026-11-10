@@ -4,8 +4,7 @@
  "members": [
   "0363100012136122",
   "0363100012068591",
-  "0363100012092864",
-  "0363100012092089"
+  "0363100012092864"
  ],
  "ends": [
   {
@@ -14,7 +13,7 @@
   },
   {
    "side": "right",
-   "reason": "run of soenda-2-36: 066054 held (auto-place.json)"
+   "reason": "run of soenda-2-36: 092089 held (auto-place.json)"
   }
  ],
  "rejected": [
@@ -1387,16 +1386,6 @@
    "widthM": 6,
    "eavesM": 12.99,
    "roofMaxM": 15.44,
-   "storeys3dbag": 5,
-   "builtYear": 1913,
-   "uncertainty": []
-  },
-  {
-   "pandId": "0363100012092089",
-   "alongM": -19.32,
-   "widthM": 6,
-   "eavesM": 13.35,
-   "roofMaxM": 15.89,
    "storeys3dbag": 5,
    "builtYear": 1913,
    "uncertainty": []

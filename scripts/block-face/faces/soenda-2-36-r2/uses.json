@@ -52,22 +52,6 @@
    ],
    "units": 4,
    "osm": []
-  },
-  {
-   "pandId": "0363100012092089",
-   "addresses": [
-    "Soendastraat 8"
-   ],
-   "groundUnits": [
-    {
-     "address": "Soendastraat 8-H",
-     "use": "woonfunctie",
-     "areaM2": 45,
-     "bagId": "0363010000813350"
-    }
-   ],
-   "units": 4,
-   "osm": []
   }
  ]
 }

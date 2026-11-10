@@ -97,6 +97,52 @@
    "rhythm": {
     "citation": "auto-place: indisch-1912-java-mansard-arches scored 0.77 on eaves 1, storeys 1, stucco 1, columns 0; strip 2023-01-02 span 2928-3168"
    }
+  },
+  {
+   "pandId": "0363100012141749",
+   "slug": "java-141749",
+   "address": "Javastraat 117",
+   "type": {
+    "type": "indisch-1912-java-mansard-arches",
+    "ground": {
+     "shopfront": {
+      "colour": "#756b61",
+      "fascia": true,
+      "name": "Little Coconuts",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: osm-only (winkelfunctie, shop=toys); fascia colour measured on the strip 2023-01-02 span 3168-3411"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#826e64",
+     "evidence": "strip 2023-01-02 span 3168-3411: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "name": "Little Coconuts",
+    "category": "shop=toys",
+    "osm": {
+     "type": "node",
+     "id": 2827515004,
+     "name": "Little Coconuts"
+    },
+    "bag": [
+     "winkelfunctie"
+    ],
+    "photoDate": "2023-01-02",
+    "agreement": "osm-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: indisch-1912-java-mansard-arches scored 0.86 on eaves 1, storeys 1, stucco 1, columns 0.4; strip 2023-01-02 span 3168-3411"
+   }
   }
  ],
  "continuity": {

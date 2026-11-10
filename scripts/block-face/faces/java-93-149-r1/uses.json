@@ -6,6 +6,44 @@
  },
  "pands": [
   {
+   "pandId": "0363100012067472",
+   "addresses": [
+    "Javastraat 95"
+   ],
+   "groundUnits": [
+    {
+     "address": "Javastraat 95-H",
+     "use": "winkelfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000689477"
+    }
+   ],
+   "units": 6,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2348134398,
+     "lngLat": [
+      4.9358995,
+      52.3638839
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "95",
+      "addr:postcode": "1094HC",
+      "addr:street": "Javastraat",
+      "name": "PC Professional",
+      "phone": "+31 20 753 0326",
+      "shop": "computer",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-11-09T23:27:15.455Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
    "pandId": "0363100012132949",
    "addresses": [
     "Javastraat 97"
