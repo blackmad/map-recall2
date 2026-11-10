@@ -2,7 +2,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { FAMILY_TONE, hexToOklab, nearestWallFamily, oklabToHex, specWallDisplay, specWallSource, specWallsEnabled, wallColourFamily, SPEC_WALL_LIFT, paleWarmHeld, paleWarmReading } from './wallColour.ts';
-import { houseSpecPatch, specWallGuarded } from './decorate.ts';
+import { houseSpecPatch, specWallGuarded, type HouseSpecView } from './decorate.ts';
 
 const L = (h: string) => hexToOklab(h)[0];
 const hue = (h: string) => { const [, a, b] = hexToOklab(h); return Math.atan2(b, a) * 180 / Math.PI; };
@@ -87,41 +87,48 @@ test('trim misread: a reading lighter than its family tone draws the family tone
   assert.equal(nearestWallFamily('#2b2b2e'), 'dark');
 });
 
-test('pale-warm guard (H9f): a pale peach/salmon/orange reading keeps the period colour (Kinkerstraat 154359 row)', () => {
-  // The released build drew this row peach where the photo is dark brown brick; every reading here is pale (L > 0.6) and warm (hue 35-70).
-  for (const hex of ['#c9a080' /* 0363100012154359 */, '#c9a080' /* 0363100012161457 */, '#d0ab8d' /* 0363100012157926 */, '#ebc79f' /* 0363100012174415 */]) {
-    assert.ok(paleWarmReading(hex), hex);
-    assert.equal(paleWarmHeld(hex, {}), true, `${hex} is held`);
-    assert.equal(paleWarmHeld(hex, { family: 'brown' }), true, `${hex} stays held against a brick family`);
-    // Through the decorator: a held reading writes no wall colour, so the house keeps its period colour.
-    assert.equal(houseSpecPatch({ wallHex: hex, wallMaterial: 'brick', src: {} }, {}).specRecipe, undefined);
+const drawnOf = (view: HouseSpecView, p = {}) => (houseSpecPatch(view, p).specRecipe as { wallHex?: string } | undefined)?.wallHex;
+
+test('pale-warm guard (H9f r2): a drawn peach/salmon/orange keeps the period colour (Kinkerstraat 154359 row)', () => {
+  // The row's strip readings are pale and warm; drawn (lifted) they were peach where the photo is dark brown brick.
+  for (const hex of ['#c9a080' /* 0363100012154359 */, '#c9a080' /* 0363100012161457 */, '#d0ab8d' /* 0363100012157926 */, '#a08265' /* 0363100012172620 */]) {
+    const drawn = specWallDisplay(hex);
+    assert.ok(paleWarmReading(drawn), `${hex} draws ${drawn}`);
+    assert.equal(paleWarmHeld(drawn, { readingL: L(hex) }), true, hex);
+    assert.equal(paleWarmHeld(drawn, { family: 'brown', readingL: L(hex) }), true, `${hex} stays held against a brick family`);
+    assert.equal(drawnOf({ wallHex: hex, wallMaterial: 'brick', src: {} }), undefined, `${hex} writes no wall colour`);
     assert.equal(specWallGuarded({ wallHex: hex, src: {} }, {}), true);
   }
-  // The rest of the Kinkerstraat face and the other frames stay live: dark brown (#5b4532), Singel 175320 (#6a5f5a), Bloemgracht.
-  for (const hex of ['#5b4532', '#6a5f5a', '#584332', '#7a4a3a']) {
-    assert.equal(paleWarmHeld(hex, {}), false, hex);
-    assert.ok(((houseSpecPatch({ wallHex: hex, wallMaterial: 'brick', src: {} }, {}).specRecipe as { wallHex?: string } | undefined)?.wallHex), `${hex} draws`);
-  }
-  // Boundaries: not warm (grey, cool) and not pale pass.
-  assert.equal(paleWarmHeld('#717877', {}), false);
-  assert.equal(paleWarmHeld('#d8e0e4', {}), false);
+  // The rest stays live: dark brown (#5b4532), Singel 175320 (#6a5f5a), Kinkerstraat greys and browns, red brick.
+  for (const hex of ['#5b4532', '#6a5f5a', '#584332', '#7a4a3a', '#6e4b44']) assert.ok(drawnOf({ wallHex: hex, wallMaterial: 'brick', src: {} }), `${hex} draws`);
+  // A pale trim misread a reader's red family replaced with its tone draws that tone (Nieuwmarkt 182857).
+  assert.ok(drawnOf({ wallHex: '#ceb8ae', wallMaterial: 'brick', wallFamily: 'red', src: {} }));
+  // Not warm, not pale: no hold.
+  assert.equal(paleWarmHeld(specWallDisplay('#717877'), {}), false);
   assert.equal(paleWarmReading('#8a5a44'), false);
 });
 
-test('pale-warm guard (H9f): render and light families release the reading', () => {
-  // Release 1: a reader names the wall white (pale warm plaster is right: Nieuwmarkt-style cream render).
-  assert.equal(paleWarmHeld('#e2c2af', { family: 'white' }), false);
-  assert.equal(paleWarmHeld('#d4b6a8', { family: 'grey' }), false);
-  assert.equal(paleWarmHeld('#ebc79f', { family: 'buff' }), false);
-  assert.ok(((houseSpecPatch({ wallHex: '#e2c2af', wallFamily: 'white', wallMaterial: 'stucco', src: {} }, {}).specRecipe as { wallHex?: string } | undefined)?.wallHex));
-  // Release 2: the register's light finish (registerFinish 'light') or a stucco wall material, no reader needed.
+test('pale-warm guard (H9f r2): the darkness inversion holds orange for dark brown outside the hue band', () => {
+  // Drawn 0.15 lighter than the reading, hue below 35 (red-orange): rule 2 alone.
+  const drawn = oklabToHex([0.62 - 0.0, 0.1, 0.03]);
+  assert.equal(paleWarmReading(drawn), false);
+  assert.equal(paleWarmHeld(drawn, { readingL: 0.45 }), true);
+  assert.equal(paleWarmHeld(drawn, { readingL: 0.55 }), false);
+  // The black floor is design, not an inversion: a near-black reading drawn at minL is not held.
+  assert.equal(paleWarmHeld(specWallDisplay('#030403'), { readingL: L('#030403') }), false);
+});
+
+test('pale-warm guard (H9f r2): render and light families release the reading', () => {
+  const drawn = specWallDisplay('#c9a080');
+  // Release 1: a reader names the wall white, grey or buff (pale warm plaster is right).
+  for (const family of ['white', 'grey', 'buff'] as const) assert.equal(paleWarmHeld(drawn, { family, readingL: L('#c9a080') }), false, family);
+  assert.ok(drawnOf({ wallHex: '#e2c2af', wallFamily: 'white', wallMaterial: 'stucco', src: {} }));
+  // Release 2: the register's light finish or a stucco wall material, no reader needed.
   assert.equal(specWallGuarded({ wallHex: '#d4b6a8', src: {} }, { registerFinish: 'light' }), false);
   assert.equal(specWallGuarded({ wallHex: '#d4b6a8', wallMaterial: 'stucco', src: {} }, {}), false);
-  assert.ok(((houseSpecPatch({ wallHex: '#d4b6a8', wallMaterial: 'stucco', src: {} }, {}).specRecipe as { wallHex?: string } | undefined)?.wallHex));
+  assert.ok(drawnOf({ wallHex: '#d4b6a8', wallMaterial: 'stucco', src: {} }));
   // Two agreeing capture dates would release it too; the spec view carries one date per pand, so none reaches here yet.
-  assert.equal(paleWarmHeld('#c9a080', { agreeingDates: 2 }), false);
-  // A red or orange reader family does not release a pale warm pixel.
-  assert.equal(paleWarmHeld('#f1c18d', { family: 'orange' }), true);
+  assert.equal(paleWarmHeld(drawn, { agreeingDates: 2 }), false);
 });
 
 // H9 follow-up (reading miss, not fixed here): Brouwersgracht 0363100012168136 is black-painted brick with white frames in

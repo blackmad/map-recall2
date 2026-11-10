@@ -179,27 +179,30 @@ export function wallColourFamily(hex: string): WallColourFamily {
 }
 
 /**
- * The pale-warm guard (lane H9f, the judgement session's ruling on the house:frames wall read, 2026-11-10). Kinkerstraat
- * 154359 and its row drew peach, orange and salmon in the released build where the photo is dark brown brick: the strip
- * reading came out pale and warm (here #c9a080, OKLab L 0.72, hue 55), and the relative flag cannot see it because the
- * whole row shifted together. A spec reading with OKLab L over `PALE_WARM.minL` and hue inside `PALE_WARM.hue` (peach,
- * salmon, orange) is held: the house keeps its period colour, as SPEC_WALL_HOLD does per pand (decorate.ts
- * specWallColour). A reading a reader's family has already replaced with its own tone is not drawn, so it is not held. The reading passes
- * when the wall is a render or light finish (the register's stucco / light finish, or a reader's white, grey or buff
- * family: pale warm is then right), or when two capture dates agree. The spec view carries one date per pand (provenance
- * `at` is the latest of the sources), not one per reading, so the two-dates exception is not available yet and the
- * exception rests on the family alone.
+ * The pale-warm guard (lane H9f, the judgement session's rulings on the house:frames wall read, 2026-11-10, round 2).
+ * Kinkerstraat 154359 and its row drew peach, orange and salmon where the photo is one uniform dark-brown brick row; the
+ * relative flag cannot see it because the whole row shifted together. It judges the DRAWN colour (the reading after the
+ * trim-misread rule and the lift, decorate.ts specWallColour), because a pale or a lifted reading is what draws peach:
+ *  1. hold when the drawn colour has OKLab L over `PALE_WARM.minL` and hue inside `PALE_WARM.hue` (peach, salmon, orange);
+ *  2. hold when the drawn L is more than `PALE_WARM.inversion` above the measured reading's L (a darkness inversion:
+ *     orange for dark brown outside the hue band). The black floor (`SPEC_WALL_LIFT.minL`) is the design, not an inversion,
+ *     so the reading is compared at no less than that floor.
+ * A held pand keeps its period colour, as SPEC_WALL_HOLD does per pand. Both apply to brick or unknown walls only: a
+ * stucco or light finish (register) or a reader's white, grey or buff family passes. Two agreeing capture dates would pass
+ * a reading too; the spec view carries one date per pand (provenance `at` is the latest of the sources), so that
+ * exception is not available and the family alone decides (`agreeingDates` is accepted for when the view carries it).
  */
-export const PALE_WARM = { minL: 0.6, hue: [35, 70] } as const;
+export const PALE_WARM = { minL: 0.6, hue: [35, 70], inversion: 0.12 } as const;
 const LIGHT_FAMILIES: readonly WallFamily[] = ['white', 'grey', 'buff'];
+/** Rule 1 alone: a colour that reads peach, salmon or orange (pale and warm). */
 export function paleWarmReading(hex: string): boolean {
   const [L, a, b] = hexToOklab(hex);
   const h = ((Math.atan2(b, a) * 180) / Math.PI + 360) % 360;
   return L > PALE_WARM.minL && h >= PALE_WARM.hue[0] && h <= PALE_WARM.hue[1];
 }
-/** True when the pale-warm guard holds this reading: pale warm, and neither a render/light wall nor two agreeing dates. */
-export function paleWarmHeld(hex: string, ctx: { family?: WallFamily | null; render?: boolean; agreeingDates?: number }): boolean {
-  if (!paleWarmReading(hex)) return false;
-  if (ctx.render || (ctx.family && LIGHT_FAMILIES.includes(ctx.family))) return false;
-  return (ctx.agreeingDates ?? 1) < 2;
+/** True when the guard holds this drawn colour (`readingL`: the measured reading's OKLab L, for the inversion rule). */
+export function paleWarmHeld(drawnHex: string, ctx: { family?: WallFamily | null; render?: boolean; agreeingDates?: number; readingL?: number }): boolean {
+  if (ctx.render || (ctx.family && LIGHT_FAMILIES.includes(ctx.family)) || (ctx.agreeingDates ?? 1) >= 2) return false;
+  if (paleWarmReading(drawnHex)) return true;
+  return ctx.readingL !== undefined && hexToOklab(drawnHex)[0] - Math.max(ctx.readingL, SPEC_WALL_LIFT.minL) > PALE_WARM.inversion;
 }

@@ -17,7 +17,7 @@ import type { ArchitecturalRecipe } from '../streetAppearance.js';
 import type { StoopIntent } from '../buildingRecipe/stoop.ts';
 import { eraOfYear } from '../facade/registerRecipe.js';
 import { SOURCE_STRENGTH } from '../facade/evidence.js';
-import { paleWarmHeld, specWallDisplay, specWallSource, specWallsOn, type WallFamily, specWallsForcedOn } from './wallColour.js';
+import { hexToOklab, paleWarmHeld, specWallDisplay, specWallSource, specWallsOn, type WallFamily, specWallsForcedOn } from './wallColour.js';
 
 /** Rank on the evidence ladder (spec.ts specStrength without the intent schema import): `author` = `reviewed`. */
 const rank = (s: string | undefined) => (SOURCE_STRENGTH as readonly string[]).indexOf(s === 'author' ? 'reviewed' : s ?? '');
@@ -155,18 +155,16 @@ export function specDesignOn(field: keyof typeof SPEC_DESIGN_HELD, env: string |
 export const SPEC_SHOP_KIND = 'shopWindow' as const;
 
 /**
- * The wall colour a spec view draws, or null when it keeps the period colour: the trim-misread rule and the lift, behind the
- * pale-warm guard on the *reading* (wallColour.ts paleWarmHeld; render/light finishes and light reader families pass). A
- * reading a reader's family has already replaced with its tone (Nieuwmarkt 182857, a pale reading on a red front) is not
- * drawn, so the guard has nothing to hold.
+ * The wall colour a spec view draws, or null when it keeps the period colour: the trim-misread rule and the lift, then the
+ * pale-warm guard on the drawn colour (wallColour.ts paleWarmHeld; render/light finishes and light reader families pass).
  */
 export function specWallColour(view: HouseSpecView, p: Props): string | null {
   if (!view.wallHex || !/^#[0-9a-f]{6}$/i.test(view.wallHex)) return null;
   const reading = view.wallHex.toLowerCase(), brick = view.wallMaterial ? view.wallMaterial === 'brick' : p.registerFinish === 'brick';
   const src = specWallSource(reading, { family: view.wallFamily ?? null, brick });
-  const readerTone = !!view.wallFamily && !src.fromPixel;
-  if (!readerTone && paleWarmHeld(reading, { family: view.wallFamily ?? null, render: view.wallMaterial === 'stucco' || p.registerFinish === 'light' })) return null;
-  return specWallDisplay(src.hex, { fromPixel: src.fromPixel });
+  const drawn = specWallDisplay(src.hex, { fromPixel: src.fromPixel });
+  const held = paleWarmHeld(drawn, { family: view.wallFamily ?? null, render: view.wallMaterial === 'stucco' || p.registerFinish === 'light', readingL: hexToOklab(reading)[0] });
+  return held ? null : drawn;
 }
 /** True when the pale-warm guard holds this view's wall at the period colour. */
 export const specWallGuarded = (view: HouseSpecView, p: Props): boolean =>
