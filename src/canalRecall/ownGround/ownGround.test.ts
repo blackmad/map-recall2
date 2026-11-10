@@ -1241,6 +1241,12 @@ test('detail level: a touch cell keeps every layer, with no bollards or furnitur
   await store.init();
   const [x, y] = storeToLocal(4.87445, 52.37286), key = store.cellAt(x, y);
   const full = buildCell(await store.cellInput(key, 0)), touch = buildCell(await store.cellInput(key, 0, 'touch'));
+  // Wall-clock build time is noisy under load (other test runs, other lanes): take the best of three interleaved builds of each.
+  let fullMs = full.stats.buildMs, touchMs = touch.stats.buildMs;
+  for (let i = 0; i < 2; i++) {
+    fullMs = Math.min(fullMs, buildCell(await store.cellInput(key, 0)).stats.buildMs);
+    touchMs = Math.min(touchMs, buildCell(await store.cellInput(key, 0, 'touch')).stats.buildMs);
+  }
   assert.equal(full.detail, 'full'); assert.equal(touch.detail, 'touch');
   const optional = new Set(['bollard', 'furniture']);
   for (const layer of new Set([...Object.keys(full.layers), ...Object.keys(touch.layers)])) {
@@ -1250,7 +1256,7 @@ test('detail level: a touch cell keeps every layer, with no bollards or furnitur
   for (const layer of ['bollard', 'furniture'] as const) assert.equal(touch.layers[layer], undefined, `${layer} left out`);
   assert.ok(touch.mask && touch.mask.res === 2 && full.mask && full.mask.res === 1, 'water mask at 2 m');
   assert.ok(touch.stats.triangles < full.stats.triangles * 0.8, `${touch.stats.triangles} triangles against ${full.stats.triangles}`);
-  assert.ok(touch.stats.buildMs <= full.stats.buildMs * 1.5, `touch build ${touch.stats.buildMs} ms against ${full.stats.buildMs}`);
+  assert.ok(touchMs <= fullMs * 1.5, `touch build ${touchMs} ms against ${fullMs} (best of three)`);
 });
 
 test('regression (streamed cells): De Clercqstraat Bilderdijkstraat → Kostverlorenvaart reads as street at both LODs', { skip: !haveCells }, async () => {  const store = fsStore();

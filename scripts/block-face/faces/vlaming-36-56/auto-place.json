@@ -1,0 +1,873 @@
+{
+ "face": "vlaming-36-56",
+ "street": "Pieter Vlamingstraat",
+ "library": "oud-west",
+ "stripDate": "2020-04-29",
+ "seconds": 50.92,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [
+  {
+   "face": "vlaming-36-56-r1",
+   "pands": [
+    "0363100012150078",
+    "0363100012122070",
+    "0363100012125671"
+   ],
+   "passed": true,
+   "triangles": 5081
+  }
+ ],
+ "pands": [
+  {
+   "pandId": "0363100012162085",
+   "address": "Pieter Vlamingstraat 56",
+   "builtYear": 1880,
+   "widthM": 5,
+   "eavesM": 11.93,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#59493f",
+    "wallRaw": "#5a4a41",
+    "skyline": {
+     "eavesM": 15.97,
+     "eavesRow": 104,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.18,
+      "riseM": 1.2,
+      "topWidthM": 1.18,
+      "centre": 0.52
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "curtain",
+    "doorSide": "right",
+    "accentSide": "left",
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0.72,
+     "bayCentre": 0.38,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012166230",
+   "address": "Pieter Vlamingstraat 54",
+   "builtYear": 1990,
+   "widthM": 5.03,
+   "eavesM": 12.46,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#433931",
+    "wallRaw": "#55473e",
+    "skyline": {
+     "eavesM": 15.97,
+     "eavesRow": 104,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.18,
+      "riseM": 1,
+      "topWidthM": 0.97,
+      "centre": 0.56
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best kinker-1985-infill scores 0.55 < 0.7 (3DBAG eaves 12.46 m = 5 storeys of 2.49 m vs the type's 2.83 m; roof rise 2.97 m (pitched) vs flat; strip columns 3 vs 2 bays)",
+   "best": {
+    "type": "kinker-1985-infill",
+    "score": 0.55,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 12.46 m = 5 storeys of 2.49 m vs the type's 2.83 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 0,
+      "note": "roof rise 2.97 m (pitched) vs flat"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 3 vs 2 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012163414",
+   "address": "Pieter Vlamingstraat 52C",
+   "builtYear": 1990,
+   "widthM": 5.51,
+   "eavesM": 12.54,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#594940",
+    "wallRaw": "#57493f",
+    "skyline": {
+     "eavesM": 16.35,
+     "eavesRow": 89,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.3,
+      "riseM": 1.02,
+      "topWidthM": 0.9,
+      "centre": 0.4
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "curtain",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0.75,
+     "bayCentre": 0.37,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best kinker-1985-infill scores 0.55 < 0.7 (3DBAG eaves 12.54 m = 5 storeys of 2.51 m vs the type's 2.83 m; roof rise 4.04 m (pitched) vs flat; strip columns 3 vs 2 bays)",
+   "best": {
+    "type": "kinker-1985-infill",
+    "score": 0.55,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 12.54 m = 5 storeys of 2.51 m vs the type's 2.83 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 0,
+      "note": "roof rise 4.04 m (pitched) vs flat"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 3 vs 2 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012157029",
+   "address": "Pieter Vlamingstraat 50",
+   "builtYear": 1883,
+   "widthM": 5.06,
+   "eavesM": 12.31,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#53443b",
+    "wallRaw": "#53463d",
+    "skyline": {
+     "eavesM": 16.18,
+     "eavesRow": 96,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.18,
+      "riseM": 1.2,
+      "topWidthM": 0.57,
+      "centre": 0.44
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "curtain",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6.92,
+       "widthM": 0.93,
+       "centre": 0.38
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.058 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.54 mean 0.44 vs photo 0.80)",
+   "likeness": {
+    "pandId": "0363100012157029",
+    "ncc": 0.058,
+    "nccRaw": 0.058,
+    "shiftM": [
+     -0.4,
+     0.1
+    ],
+    "usable": 0.98,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.54 mean 0.44 vs photo 0.80"
+    ],
+    "wall": {
+     "photo": "#54443c",
+     "model": "#6e5b4f",
+     "dL": 0.088
+    },
+    "glazing": {
+     "photo": 0.8,
+     "model": 0.44
+    },
+    "columns": {
+     "photo": null,
+     "model": 3
+    },
+    "iou": 0.488
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012160757",
+   "address": "Pieter Vlamingstraat 48",
+   "builtYear": 1883,
+   "widthM": 5.78,
+   "eavesM": 12.55,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#4f3e35",
+    "wallRaw": "#51433a",
+    "skyline": {
+     "eavesM": 16.18,
+     "eavesRow": 96,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.68,
+      "riseM": 1.2,
+      "topWidthM": 1.18,
+      "centre": 0.36
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0.95,
+     "bayCentre": 0.4,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 8.95,
+       "widthM": 1.18,
+       "centre": 0.41
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.03
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "the photo prefers kinker-1890-plain-brick (edge NCC 0.253 vs 0.155 for dapper-1882-plain-dormer)",
+   "likeness": {
+    "pandId": "0363100012160757",
+    "ncc": 0.155,
+    "nccRaw": 0.155,
+    "shiftM": [
+     -0.4,
+     0.25
+    ],
+    "usable": 0.91,
+    "abstain": null,
+    "verdict": "PASS",
+    "reasons": [],
+    "wall": {
+     "photo": "#4c3d35",
+     "model": "#6c5548",
+     "dL": 0.1
+    },
+    "glazing": {
+     "photo": 0.39,
+     "model": 0.43
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.553
+   },
+   "challengers": {
+    "clercq-e-corbel-brick": 0.162,
+    "kinker-1886-neo-renaissance": 0.104,
+    "kinker-1890-plain-brick": 0.253,
+    "kinker-1900-stucco-front": 0.218
+   }
+  },
+  {
+   "pandId": "0363100012121661",
+   "address": "Pieter Vlamingstraat 46",
+   "builtYear": 1883,
+   "widthM": 5.7,
+   "eavesM": 13.16,
+   "storeys3dbag": 0,
+   "bagBay": null,
+   "strip": {
+    "wall": "#55453c",
+    "wallRaw": "#53453d",
+    "skyline": {
+     "eavesM": 16.18,
+     "eavesRow": 96,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.6,
+      "riseM": 1,
+      "topWidthM": 1.6,
+      "centre": 0.26
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "curtain",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0.82,
+     "bayCentre": 0.73,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.02
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "the photo prefers kinker-1885-wall-dormer (edge NCC 0.262 vs 0.205 for dapper-1882-plain-dormer)",
+   "likeness": {
+    "pandId": "0363100012121661",
+    "ncc": 0.205,
+    "nccRaw": 0.205,
+    "shiftM": [
+     -0.4,
+     -0.15
+    ],
+    "usable": 0.94,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.18"
+    ],
+    "wall": {
+     "photo": "#53433a",
+     "model": "#705b4f",
+     "dL": 0.098
+    },
+    "glazing": {
+     "photo": 0.45,
+     "model": 0.43
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.659,
+    "footOffsetM": 1.13
+   },
+   "challengers": {
+    "clercq-e-corbel-brick": 0.286,
+    "kinker-1885-wall-dormer": 0.262,
+    "kinker-1886-neo-renaissance": 0.192,
+    "kinker-1890-plain-brick": 0.201,
+    "kinker-1893-plain-step-gable": 0.261,
+    "kinker-1900-stucco-front": 0.272,
+    "kinker-1902-balcony-axis": 0.184,
+    "kinker-1985-infill": 0.168
+   }
+  },
+  {
+   "pandId": "0363100012150078",
+   "address": "Pieter Vlamingstraat 44",
+   "builtYear": 1883,
+   "widthM": 5.69,
+   "eavesM": 13.08,
+   "storeys3dbag": 0,
+   "bagBay": null,
+   "strip": {
+    "wall": "#56453b",
+    "wallRaw": "#54443b",
+    "skyline": {
+     "eavesM": 15.97,
+     "eavesRow": 104,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.45,
+      "riseM": 1.8,
+      "topWidthM": 0.4,
+      "centre": 0.23
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0.9,
+     "bayCentre": 0.74,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "placed",
+   "type": "dapper-1882-plain-dormer",
+   "score": 1,
+   "runnerUp": {
+    "typeId": "kinker-1885-wall-dormer",
+    "score": 0.85
+   },
+   "placement": {
+    "type": "dapper-1882-plain-dormer",
+    "measuredPalette": {
+     "brick": "#56453b",
+     "evidence": "strip 2020-04-29 span 1284-1512: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown pediment-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012150078",
+    "ncc": 0.308,
+    "nccRaw": 0.308,
+    "shiftM": [
+     -0.4,
+     -0.4
+    ],
+    "usable": 0.93,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.23"
+    ],
+    "wall": {
+     "photo": "#55463c",
+     "model": "#725b4e",
+     "dL": 0.092
+    },
+    "glazing": {
+     "photo": 0.49,
+     "model": 0.43
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.632
+   },
+   "challengers": {
+    "clercq-e-corbel-brick": 0.268,
+    "kinker-1885-wall-dormer": 0.266,
+    "kinker-1886-neo-renaissance": 0.174,
+    "kinker-1890-plain-brick": 0.256,
+    "kinker-1893-plain-step-gable": 0.279,
+    "kinker-1900-stucco-front": 0.243,
+    "kinker-1902-balcony-axis": 0.219,
+    "kinker-1985-infill": 0.136
+   }
+  },
+  {
+   "pandId": "0363100012122070",
+   "address": "Pieter Vlamingstraat 42H",
+   "builtYear": 1883,
+   "widthM": 5.69,
+   "eavesM": 12.89,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#4d4037",
+    "wallRaw": "#51443b",
+    "skyline": {
+     "eavesM": 16.38,
+     "eavesRow": 88,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.65,
+      "riseM": 1.8,
+      "topWidthM": 0.2,
+      "centre": 0.16
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": "left",
+    "accentSide": "left",
+    "accentShare": 0.001,
+    "structure": {
+     "bayWidthM": 0.68,
+     "bayCentre": 0.06,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "placed",
+   "type": "dapper-1882-plain-dormer",
+   "score": 1,
+   "runnerUp": {
+    "typeId": "kinker-1890-plain-brick",
+    "score": 0.82
+   },
+   "placement": {
+    "type": "dapper-1882-plain-dormer",
+    "measuredPalette": {
+     "brick": "#4d4037",
+     "evidence": "strip 2020-04-29 span 1511-1739: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown pediment-dormer (type default)",
+    "the edges read closer to kinker-1893-plain-step-gable (0.281 vs 0.211), vetoed by its facts",
+    "the edges read closer to clercq-e-corbel-brick (0.273 vs 0.211), vetoed by its facts",
+    "the edges read closer to kinker-1900-stucco-front (0.271 vs 0.211), vetoed by its facts",
+    "the edges read closer to kinker-1893-plain-step-gable (0.281 vs 0.222), vetoed by its facts",
+    "the edges read closer to clercq-e-corbel-brick (0.273 vs 0.222), vetoed by its facts"
+   ],
+   "likeness": {
+    "pandId": "0363100012122070",
+    "ncc": 0.235,
+    "nccRaw": 0.235,
+    "shiftM": [
+     -0.4,
+     -0.4
+    ],
+    "usable": 0.94,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.16"
+    ],
+    "wall": {
+     "photo": "#52433a",
+     "model": "#69574b",
+     "dL": 0.078
+    },
+    "glazing": {
+     "photo": 0.35,
+     "model": 0.43
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.49
+   },
+   "challengers": {
+    "clercq-e-corbel-brick": 0.273,
+    "kinker-1886-neo-renaissance": 0.133,
+    "kinker-1890-plain-brick": 0.243,
+    "kinker-1893-plain-step-gable": 0.281,
+    "kinker-1900-stucco-front": 0.271,
+    "kinker-1902-balcony-axis": 0.239
+   }
+  },
+  {
+   "pandId": "0363100012125671",
+   "address": "Pieter Vlamingstraat 40",
+   "builtYear": 1883,
+   "widthM": 5.71,
+   "eavesM": 12.91,
+   "storeys3dbag": 0,
+   "bagBay": null,
+   "strip": {
+    "wall": null,
+    "wallRaw": "#504740",
+    "skyline": {
+     "eavesM": 16.38,
+     "eavesRow": 88,
+     "confidence": 0.9,
+     "crown": {
+      "widthM": 2.77,
+      "riseM": 1.8,
+      "topWidthM": 1.18,
+      "centre": 0.63
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "frontClass": "curtain",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0.3,
+     "bayCentre": 0.06,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.03
+   },
+   "status": "placed",
+   "type": "dapper-1882-plain-dormer",
+   "score": 0.84,
+   "runnerUp": {
+    "typeId": "kinker-1890-plain-brick",
+    "score": 0.65
+   },
+   "placement": {
+    "type": "dapper-1882-plain-dormer"
+   },
+   "notes": [
+    "crown pediment-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012125671",
+    "ncc": 0.295,
+    "nccRaw": 0.295,
+    "shiftM": [
+     -0.4,
+     -0.4
+    ],
+    "usable": 0.87,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "wall dL +0.18",
+     "glazing storey band off by 0.25"
+    ],
+    "wall": {
+     "photo": "#493b33",
+     "model": "#8a5e4d",
+     "dL": 0.178
+    },
+    "glazing": {
+     "photo": 0.52,
+     "model": 0.43
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.549
+   },
+   "challengers": {
+    "clercq-e-corbel-brick": 0.22
+   }
+  },
+  {
+   "pandId": "0363100012094055",
+   "address": "Pieter Vlamingstraat 38",
+   "builtYear": 1883,
+   "widthM": 5.71,
+   "eavesM": 12.87,
+   "storeys3dbag": 0,
+   "bagBay": null,
+   "strip": {
+    "wall": "#45382e",
+    "wallRaw": "#40382e",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 743,
+     "confidence": 0.16,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.1
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.107 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.16)",
+   "likeness": {
+    "pandId": "0363100012094055",
+    "ncc": 0.107,
+    "nccRaw": 0.107,
+    "shiftM": [
+     -0.4,
+     -0.15
+    ],
+    "usable": 0.82,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.16"
+    ],
+    "wall": {
+     "photo": "#45382f",
+     "model": "#635042",
+     "dL": 0.096
+    },
+    "glazing": {
+     "photo": 0.41,
+     "model": 0.43
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.497
+   },
+   "challengers": {
+    "clercq-e-corbel-brick": 0.279
+   }
+  },
+  {
+   "pandId": "0363100012125776",
+   "address": "Pieter Vlamingstraat 36",
+   "builtYear": 1883,
+   "widthM": 4.97,
+   "eavesM": 12.85,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#545048",
+    "wallRaw": "#474c3e",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 743,
+     "confidence": 0.01,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.003,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.53
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "no front on the strip: sky over the roof in 0 % of columns (< 75 %): the strip shows a nearer wall, fence or tree, not the front",
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

@@ -95,3 +95,52 @@ Kalkoenstraat 12 stays held, as the lane already pinned it.
 - **INSTALL-WITH-FIX, cottages (brick #74584a, 6 pands):** 137379, 071224, 101772, 132959, 120334, 062516
 - **INSTALL-WITH-FIX, timber-band (stone #d6d9cc, dormerAt {0.10, 0.72}, brick #74584a, 17 pands):** 114049, 117598, 135488, 065836, 091400, 138008, 079772, 087797, 130936, 118660, 141264, 122427, 085003, 076655, 064187, 151653, 097992
 - **HOLD:** all 7 step-gable runs; Pelikaanstraat 3 and 9; Kalkoenstraat 12; cottages 093588, 122579, 109169, 083966, 124606; timber-band 131492, 064115, 149443, 146996, 112593, 062919.
+
+## Holds install (lane at 7ed86a42a, sheets `holds/`), by eye
+
+I checked 12 runs and 27 pands for door side, window order, wall tone and the new dormers.
+- Every mirror matches the photo.
+- The timber-band dormers are now the cream multi-light boxes the photos show, which closes the type's #1 gap from the first review.
+
+| Run | Verdict |
+|---|---|
+| kalkoen-8-16-r1 (16, 14) | **MERGE** |
+| kalkoen-8-16-r2 (10, 8) | **MERGE** |
+| kalkoen-18-26-r1 (20, 18) | **MERGE** |
+| kalkoen-28-34-r1 (32, 30, 28) | **FIX: Kalkoenstraat 30 (0363100012111141) brick → #6e625e**, see below. 32 and 28 are fine. |
+| pelikaan-3-9-r1 (5, 7) | **MERGE**. The pale wall matches what the photo actually measures (below). Optional warm-up to #9a8679. |
+| pelikaan-16-22-r1 (22, 20, 18) | **MERGE** |
+| vogel-2-16-122155-r1 (065836, 091400, 138008) | **MERGE** |
+| vogel-3-11-r1 (137379, 071224) | **MERGE** |
+| vogel-3-15-r1 (101772, 132959) | **MERGE**. The pale salmon brick matches the 2021 photo. |
+| vogelplantsoen-8-12-r1 (079772, 087797) | **MERGE** |
+| zamenhof-6-12-r1 (122427, 085003) | **MERGE** |
+| zamenhof-54-60-r1 (064187, 151653) | **MERGE** |
+
+### Kalkoenstraat 30: green wall
+
+**Model.** The wall renders #53695c, a clear green that no pand on the street has.
+
+**Photo (2017-12-28)**, pixel medians on the original sheet:
+
+| Wall | Photo | Model |
+|---|---|---|
+| Kalkoenstraat 30 | #5d5b5c to #696a6c, a neutral purple-grey brick lighter than its neighbours | #53695c |
+| Kalkoenstraat 32 | #463f3d | #544643 |
+| Kalkoenstraat 28 | #4c4847 | #6a5950 |
+
+**Fix.** Pin 30 to **#6e625e**. That is the neighbours' photo-to-model lift (about ×1.2–1.35) applied to its grey photo value, with the row's slight warmth (r−b of about 0x10). The result reads as the lighter grey-brown front between two darker ones, as in the photo.
+
+### Pelikaanstraat 3-9: the pale wall is right
+
+I sampled brick-only patches between the windows on the original sheet (2025-09-22, full sun):
+
+| Source | Brick |
+|---|---|
+| Photo, raw | #ada298 to #b5aaa0 |
+| Photo, white-balanced against the door frames (#d1dada, r×1.04) | about #b4a298 |
+| Model | #958b82 |
+
+The model has the same hue as the photo and is darker; it is not greyer than the photo. The reddish-brown impression comes from red and purple bricks in pale mortar under direct sun, and the model's brick texture carries the same mortar.
+
+Merge as is. If a warmer read is wanted, pin **#9a8679**, which raises r−b from 0x13 to 0x21 at the same luminance. Do not pull it down to the 1921 default #7d5446: that would contradict the photo.

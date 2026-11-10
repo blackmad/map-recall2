@@ -1,13 +1,15 @@
 /**
  * Regression check: every block-kit spec rebuilds to the byte-identical installed GLB, so kit changes must be opt-in.
  *
- *   node --import tsx scripts/haparandaweg/check-installed.ts [--update=<id,id>]   (ids listed in --update may differ)
+ *   node --import tsx scripts/haparandaweg/check-installed.ts [--update=<id,id>] [--allow=<id,id>]
+ *   (ids listed in --update or --allow may differ; --allow is house:publish's spelling, docs/house-line.md section 3)
  */
 import fs from 'node:fs';
 import { compose } from '../../src/canalRecall/blockBuilding/compose.ts';
 import { loadSpec, shaper, writeGlb } from './build.ts';
+import { parseAllow } from '../../src/canalRecall/houseSpec/allow.ts';
 
-const allowed = new Set((process.argv.find(a => a.startsWith('--update='))?.slice(9) ?? '').split(',').filter(Boolean));
+const allowed = new Set([...(process.argv.find(a => a.startsWith('--update='))?.slice(9) ?? '').split(',').filter(Boolean), ...(parseAllow(process.argv) ?? [])]);
 let bad = 0;
 for (const f of fs.readdirSync('scripts/haparandaweg/specs').filter(n => n.endsWith('.json')).sort()) {
   const id = f.replace(/\.json$/, ''), { spec, set } = loadSpec(id);

@@ -1,0 +1,57 @@
+{
+ "street": "Jan Haringstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched n/a (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012068528",
+   "addresses": [
+    "Jan Haringstraat 34"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Haringstraat 34-H",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000685169"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012072687",
+   "addresses": [
+    "Jan Haringstraat 32"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Haringstraat 32-H",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000685165"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012071938",
+   "addresses": [
+    "Jan Haringstraat 30"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Haringstraat 30-H",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000685161"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

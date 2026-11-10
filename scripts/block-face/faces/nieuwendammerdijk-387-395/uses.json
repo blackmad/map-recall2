@@ -1,0 +1,74 @@
+{
+ "street": "Nieuwendammerdijk",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched n/a (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012161604",
+   "addresses": [
+    "Nieuwendammerdijk 387",
+    "Nieuwendammerdijk 389"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwendammerdijk 389",
+     "use": "woonfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000751886"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012087457",
+   "addresses": [
+    "Nieuwendammerdijk 391"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwendammerdijk 391",
+     "use": "woonfunctie",
+     "areaM2": 155,
+     "bagId": "0363010000751887"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012114278",
+   "addresses": [
+    "Nieuwendammerdijk 393"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwendammerdijk 393",
+     "use": "woonfunctie",
+     "areaM2": 181,
+     "bagId": "0363010000751888"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012084727",
+   "addresses": [
+    "Nieuwendammerdijk 395"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwendammerdijk 395",
+     "use": "woonfunctie",
+     "areaM2": 85,
+     "bagId": "0363010000751889"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  }
+ ]
+}

@@ -21,11 +21,11 @@ import type {HouseDesign, RhythmSpec} from './intent.ts';
 
 /** Everything above the cornice line: a crown variant sets exactly these (and nothing else). */
 export const CROWN_KEYS = ['gable', 'crownCap', 'crownCapSpan', 'crownCapRise', 'crownShoulder', 'crownNeckWidth', 'crownShoulderRise', 'crownCapCornice', 'crownCapRatio', 'crownAt', 'crownBays', 'crownRise', 'crownSteps', 'crownFinial',
-  'atticWindows', 'atticShape', 'dormers', 'dormerStyle', 'dormerAt', 'dormerCap', 'gableOrnament', 'roofFront', 'crownGroups', 'tower', 'hoist', 'parapet', 'eavesOverhang', 'dormerSize', 'dormerWindow', 'dormerLights', 'renderedGable', 'dormerBody', 'dormerHoist', 'shouldered', 'crownHalf'] as const;
+  'atticWindows', 'atticShape', 'atticLight', 'dormers', 'dormerStyle', 'dormerAt', 'dormerParty', 'dormerCap', 'gableOrnament', 'roofFront', 'crownGroups', 'tower', 'towers', 'hoist', 'parapet', 'eavesOverhang', 'dormerSize', 'dormerWindow', 'dormerLights', 'renderedGable', 'dormerBody', 'dormerHoist', 'shouldered', 'crownHalf'] as const;
 /** Body fields a crown variant may also set (a gabled variant drops the cornice its cornice variant has). */
 export const CROWN_BODY_KEYS = ['cornice'] as const;
 /** The ground storey (with souterrain/stoop): a ground variant or a per-house shop sets these. */
-export const GROUND_KEYS = ['doorBay', 'doorArch', 'basement', 'souterrain', 'tallGround', 'shopfront', 'groundFront', 'shutters', 'groundCanopy', 'doorReveal'] as const;
+export const GROUND_KEYS = ['doorBay', 'doorArch', 'basement', 'souterrain', 'tallGround', 'shopfront', 'groundFront', 'shutters', 'groundCanopy', 'doorReveal', 'extraDoorBays', 'doorPairs', 'doorRow'] as const;
 /** Keys a type never sets: identity and frontage split come from the face/placement. */
 const PLACEMENT_KEYS = ['id', 'street', 'share'] as const;
 type CrownKey = typeof CROWN_KEYS[number];
@@ -185,6 +185,8 @@ export function mirrorFront(f: FrontIntent): FrontIntent {
     return n;
   };
   if (f.doorBay !== null && f.doorBay !== undefined) out.doorBay = bays[0] - 1 - f.doorBay;
+  if (f.doorRow) out.doorRow = {...f.doorRow, from: 1 - f.doorRow.to, to: 1 - f.doorRow.from};
+  if (f.extraDoorBays) out.extraDoorBays = f.extraDoorBays.map(b => bays[0] - 1 - b).sort((p, q) => p - q);
   if (f.bayWidths) out.bayWidths = [...f.bayWidths].reverse();
   if (f.bayFill) out.bayFill = [...f.bayFill].reverse();
   if (f.axisHeads) out.axisHeads = Object.fromEntries(Object.entries(f.axisHeads).map(([k, v]) => [String(flipAxis(Number(k))), v]));
@@ -204,6 +206,8 @@ export function mirrorFront(f: FrontIntent): FrontIntent {
   }
   if (f.brickStripes) out.brickStripes = f.brickStripes.map(mirrorStripeZone);
   if (f.stairLight) out.stairLight = {...f.stairLight, axis: flipAxis(f.stairLight.axis)};
+  if (f.towers) out.towers = f.towers.map(t => ({...t, bays: {from: flipAxis(t.bays.to), to: flipAxis(t.bays.from)}}));
+  if (f.rosettes) out.rosettes = f.rosettes.map(r => ({...r, bays: r.bays.map(flipAxis).sort((p, q) => p - q)}));
   if (f.loggia) out.loggia = {...f.loggia, axes: f.loggia.axes.map(flipAxis).sort((p, q) => p - q)};
   if (f.paintedStoreys?.panels) out.paintedStoreys = {...f.paintedStoreys, panels: f.paintedStoreys.panels.map(q => ({...q, axis: flipAxis(q.axis)}))};
   if (f.friezeVents?.axes) out.friezeVents = {...f.friezeVents, axes: f.friezeVents.axes.map(flipAxis).sort((p, q) => p - q)};
@@ -216,7 +220,7 @@ export function mirrorFront(f: FrontIntent): FrontIntent {
     out.balconies = {...f.balconies, bays: flip(f.balconies.bays), ...(f.balconies.storeyBays ? {storeyBays: Object.fromEntries(Object.entries(f.balconies.storeyBays).map(([k, v]) => [k, flip(v)]))} : {})};
   }
   if (f.bayWindows?.bays) out.bayWindows = {...f.bayWindows, bays: flipAxes(f.bayWindows.bays), ...(f.bayWindows.oriel?.twin ? {oriel: {...f.bayWindows.oriel, twin: flipAxes(f.bayWindows.oriel.twin)}} : {})};
-  else if (f.bayWindows) { const n = sameCount(f.bayWindows.storeys, 'bay windows'); out.bayWindows = {...f.bayWindows, bay: n - 1 - f.bayWindows.bay!}; }  if (f.groundFront) out.groundFront = {...f.groundFront, bays: [...f.groundFront.bays].reverse()};
+  else if (f.bayWindows) { const n = sameCount(f.bayWindows.storeys, 'bay windows'); out.bayWindows = {...f.bayWindows, bay: n - 1 - f.bayWindows.bay!}; }  if (f.groundFront) out.groundFront = {...f.groundFront, bays: [...f.groundFront.bays].reverse(), ...(f.groundFront.bayWeights ? {bayWeights: [...f.groundFront.bayWeights].reverse()} : {})};
   if (f.shopfront) {
     const sf = f.shopfront;
     if (sf.sign || sf.residentialDoor || sf.bays || sf.awning?.extent || (sf.entrance && /left|right/.test(sf.entrance))) throw Error(`${f.id}: a type ground with lettering or a side-specific shop cannot be mirrored; give the shop per house`);

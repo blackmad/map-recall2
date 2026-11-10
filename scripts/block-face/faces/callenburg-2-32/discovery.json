@@ -1,0 +1,2123 @@
+{
+ "street": "Gerard Callenburgstraat",
+ "seed": "0363100012108855",
+ "members": [
+  "0363100012063379",
+  "0363100012107097",
+  "0363100012141048",
+  "0363100012095699",
+  "0363100012125512",
+  "0363100012105359",
+  "0363100012110487",
+  "0363100012108855"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "trimmed at 0363100012063379 (face continues: 152138 137912)"
+  },
+  {
+   "side": "right",
+   "reason": "no further pand fronts the street in the fetched area"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012061651",
+   "reason": "frontage 61.5 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012062141",
+   "reason": "frontage 66.0 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012062712",
+   "reason": "frontage 219.1 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012062858",
+   "reason": "frontage 176.6 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012063203",
+   "reason": "frontage 58.1 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012063321",
+   "reason": "frontage 170.9 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012063549",
+   "reason": "frontage 193.6 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012064826",
+   "reason": "no frontage on Gerard Callenburgstraat: No footprint edge faces Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012064868",
+   "reason": "no frontage on Gerard Callenburgstraat: No footprint edge faces Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012065098",
+   "reason": "frontage 165.0 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012065393",
+   "reason": "frontage 168.6 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012065696",
+   "reason": "frontage 159.5 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012065855",
+   "reason": "frontage 140.2 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012066007",
+   "reason": "no frontage on Gerard Callenburgstraat: No footprint edge faces Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012066272",
+   "reason": "frontage 147.2 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012066487",
+   "reason": "frontage 217.8 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012066992",
+   "reason": "frontage 120.2 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012067375",
+   "reason": "frontage 60.2 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012068152",
+   "reason": "frontage 212.4 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012068528",
+   "reason": "no frontage on Gerard Callenburgstraat: No footprint edge faces Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012070395",
+   "reason": "no frontage on Gerard Callenburgstraat: No footprint edge faces Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012070415",
+   "reason": "frontage 157.9 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012070549",
+   "reason": "frontage 151.9 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012071588",
+   "reason": "frontage 192.3 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012071754",
+   "reason": "frontage 56.0 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012071938",
+   "reason": "no frontage on Gerard Callenburgstraat: No footprint edge faces Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012072687",
+   "reason": "no frontage on Gerard Callenburgstraat: No footprint edge faces Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012072724",
+   "reason": "sightline to Gerard Callenburgstraat crosses 0363100012108855"
+  },
+  {
+   "pandId": "0363100012061629",
+   "reason": "frontage 41.8 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012061720",
+   "reason": "frontage 69.2 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012061771",
+   "reason": "frontage 140.2 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012063083",
+   "reason": "frontage 42.6 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012063511",
+   "reason": "frontage 140.7 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012064224",
+   "reason": "frontage 116.1 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012066203",
+   "reason": "frontage 73.4 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012067932",
+   "reason": "frontage 103.7 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012069813",
+   "reason": "frontage 43.6 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012069920",
+   "reason": "frontage 43.6 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012070361",
+   "reason": "sightline to Gerard Callenburgstraat crosses 0363100012152138"
+  },
+  {
+   "pandId": "0363100012070497",
+   "reason": "frontage 43.6 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012071142",
+   "reason": "frontage 43.6 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012071966",
+   "reason": "frontage 174.5 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012072332",
+   "reason": "frontage 110.1 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012072970",
+   "reason": "frontage 174.5 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012073086",
+   "reason": "no frontage on Gerard Callenburgstraat: No footprint edge faces Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012073116",
+   "reason": "frontage 145.3 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012073127",
+   "reason": "frontage 69.5 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012073277",
+   "reason": "frontage 113.1 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012073793",
+   "reason": "frontage 157.1 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012074072",
+   "reason": "no frontage on Gerard Callenburgstraat: No footprint edge faces Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012074955",
+   "reason": "no frontage on Gerard Callenburgstraat: No footprint edge faces Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012074974",
+   "reason": "frontage 101.0 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012074999",
+   "reason": "no frontage on Gerard Callenburgstraat: No footprint edge faces Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012075310",
+   "reason": "frontage 196.7 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012075319",
+   "reason": "no frontage on Gerard Callenburgstraat: No footprint edge faces Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012077147",
+   "reason": "frontage 48.3 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012077211",
+   "reason": "frontage 199.1 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012077897",
+   "reason": "frontage 179.4 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012078570",
+   "reason": "no frontage on Gerard Callenburgstraat: No footprint edge faces Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012078751",
+   "reason": "frontage 148.2 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012079479",
+   "reason": "frontage 73.5 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012080535",
+   "reason": "frontage 144.0 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012081763",
+   "reason": "no frontage on Gerard Callenburgstraat: No footprint edge faces Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012083007",
+   "reason": "no frontage on Gerard Callenburgstraat: No footprint edge faces Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012084116",
+   "reason": "frontage 141.6 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012085566",
+   "reason": "no frontage on Gerard Callenburgstraat: No footprint edge faces Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012086484",
+   "reason": "frontage 146.4 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012087026",
+   "reason": "frontage 193.8 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012087761",
+   "reason": "frontage 117.8 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012087773",
+   "reason": "frontage 82.9 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012087932",
+   "reason": "frontage 208.5 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012087956",
+   "reason": "sightline to Gerard Callenburgstraat crosses 0363100012113082"
+  },
+  {
+   "pandId": "0363100012088204",
+   "reason": "frontage 151.6 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012089155",
+   "reason": "no frontage on Gerard Callenburgstraat: No footprint edge faces Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012073715",
+   "reason": "frontage 80.0 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012074071",
+   "reason": "frontage 68.4 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012074374",
+   "reason": "frontage 51.7 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012074709",
+   "reason": "frontage 174.2 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012074943",
+   "reason": "frontage 83.7 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012076341",
+   "reason": "frontage 40.7 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012076342",
+   "reason": "frontage 105.6 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012076413",
+   "reason": "frontage 70.9 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012077824",
+   "reason": "frontage 173.8 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012079424",
+   "reason": "frontage 114.6 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012080374",
+   "reason": "frontage 73.2 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012080635",
+   "reason": "frontage 43.6 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012081346",
+   "reason": "frontage 57.3 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012083022",
+   "reason": "frontage 73.4 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012083790",
+   "reason": "frontage 43.6 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012084532",
+   "reason": "frontage 140.6 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012085871",
+   "reason": "frontage 100.8 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012088035",
+   "reason": "frontage 174.5 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012088781",
+   "reason": "frontage 78.5 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012089525",
+   "reason": "frontage 108.9 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012089590",
+   "reason": "frontage 159.4 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012089597",
+   "reason": "frontage 55.5 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012089839",
+   "reason": "frontage 142.9 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012090379",
+   "reason": "frontage 44.1 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012090526",
+   "reason": "no frontage on Gerard Callenburgstraat: No footprint edge faces Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012090556",
+   "reason": "frontage 127.6 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012090746",
+   "reason": "no frontage on Gerard Callenburgstraat: No footprint edge faces Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012090839",
+   "reason": "frontage 38.7 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012091666",
+   "reason": "frontage 69.3 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012091714",
+   "reason": "frontage 145.6 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012091743",
+   "reason": "frontage 109.2 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012092326",
+   "reason": "no frontage on Gerard Callenburgstraat: No footprint edge faces Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012092821",
+   "reason": "frontage 112.4 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012093157",
+   "reason": "frontage 172.1 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012093179",
+   "reason": "no frontage on Gerard Callenburgstraat: No footprint edge faces Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012093475",
+   "reason": "frontage 142.9 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012093972",
+   "reason": "frontage 83.1 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012094763",
+   "reason": "frontage 184.7 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012094828",
+   "reason": "frontage 197.0 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012095737",
+   "reason": "frontage 41.7 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012096558",
+   "reason": "frontage 228.0 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012096616",
+   "reason": "no frontage on Gerard Callenburgstraat: No footprint edge faces Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012096832",
+   "reason": "frontage 129.1 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012098196",
+   "reason": "frontage 143.4 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012098396",
+   "reason": "no frontage on Gerard Callenburgstraat: No footprint edge faces Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012098683",
+   "reason": "frontage 114.7 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012099817",
+   "reason": "no frontage on Gerard Callenburgstraat: No footprint edge faces Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012100119",
+   "reason": "frontage 143.2 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012100357",
+   "reason": "frontage 106.3 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012100401",
+   "reason": "frontage 188.3 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012100954",
+   "reason": "frontage 104.0 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012102270",
+   "reason": "frontage 214.7 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012089744",
+   "reason": "frontage 65.5 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012093008",
+   "reason": "frontage 68.6 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012094201",
+   "reason": "frontage 42.2 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012094709",
+   "reason": "frontage 140.4 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012095246",
+   "reason": "frontage 69.5 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012095658",
+   "reason": "frontage 43.5 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012096454",
+   "reason": "frontage 42.1 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012098932",
+   "reason": "frontage 105.6 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012099589",
+   "reason": "frontage 38.7 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012100100",
+   "reason": "frontage 71.8 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012100977",
+   "reason": "frontage 42.2 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012100981",
+   "reason": "frontage 73.5 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012101492",
+   "reason": "frontage 43.6 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012102574",
+   "reason": "frontage 140.5 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012103157",
+   "reason": "frontage 125.7 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012103630",
+   "reason": "frontage 221.2 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012103635",
+   "reason": "frontage 214.5 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012104220",
+   "reason": "no frontage on Gerard Callenburgstraat: No footprint edge faces Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012104360",
+   "reason": "frontage 109.7 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012104480",
+   "reason": "frontage 144.7 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012104481",
+   "reason": "frontage 145.8 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012104577",
+   "reason": "frontage 130.0 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012105791",
+   "reason": "frontage 68.9 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012105956",
+   "reason": "frontage 78.8 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012106765",
+   "reason": "frontage 215.8 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012107813",
+   "reason": "no frontage on Gerard Callenburgstraat: No footprint edge faces Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012108028",
+   "reason": "frontage 119.0 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012108701",
+   "reason": "frontage 35.4 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012108809",
+   "reason": "no frontage on Gerard Callenburgstraat: No footprint edge faces Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012109667",
+   "reason": "frontage 55.7 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012110215",
+   "reason": "no frontage on Gerard Callenburgstraat: No footprint edge faces Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012110829",
+   "reason": "frontage 221.6 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012110942",
+   "reason": "frontage 165.1 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012111325",
+   "reason": "frontage 165.5 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012111417",
+   "reason": "frontage 203.3 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012111802",
+   "reason": "frontage 177.4 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012112322",
+   "reason": "frontage 172.7 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012112405",
+   "reason": "frontage 161.7 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012113440",
+   "reason": "frontage 193.7 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012113583",
+   "reason": "frontage 125.2 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012114256",
+   "reason": "frontage 152.5 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012103286",
+   "reason": "frontage 58.6 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012103314",
+   "reason": "frontage 94.3 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012103458",
+   "reason": "frontage 73.5 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012103593",
+   "reason": "frontage 89.7 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012104319",
+   "reason": "frontage 68.3 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012104827",
+   "reason": "frontage 112.0 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012105020",
+   "reason": "frontage 119.9 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012105865",
+   "reason": "frontage 75.0 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012106602",
+   "reason": "frontage 140.7 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012106979",
+   "reason": "frontage 118.1 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012107103",
+   "reason": "frontage 56.2 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012107347",
+   "reason": "frontage 140.6 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012109779",
+   "reason": "frontage 174.5 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012110979",
+   "reason": "frontage 53.4 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012111169",
+   "reason": "frontage 140.0 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012111926",
+   "reason": "frontage 55.9 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012112059",
+   "reason": "frontage 88.0 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012114797",
+   "reason": "frontage 150.9 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012115201",
+   "reason": "no frontage on Gerard Callenburgstraat: No footprint edge faces Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012115256",
+   "reason": "frontage 157.3 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012115570",
+   "reason": "no frontage on Gerard Callenburgstraat: No footprint edge faces Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012116325",
+   "reason": "frontage 123.8 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012117681",
+   "reason": "frontage 98.7 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012117865",
+   "reason": "frontage 174.0 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012117945",
+   "reason": "frontage 170.0 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012118131",
+   "reason": "frontage 189.8 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012118809",
+   "reason": "frontage 82.5 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012119334",
+   "reason": "frontage 214.5 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012119859",
+   "reason": "frontage 218.9 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012121115",
+   "reason": "frontage 142.8 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012121647",
+   "reason": "no frontage on Gerard Callenburgstraat: No footprint edge faces Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012121980",
+   "reason": "frontage 78.1 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012122114",
+   "reason": "no frontage on Gerard Callenburgstraat: No footprint edge faces Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012122456",
+   "reason": "frontage 143.8 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012122498",
+   "reason": "frontage 43.7 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012122849",
+   "reason": "frontage 197.8 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012123427",
+   "reason": "no frontage on Gerard Callenburgstraat: No footprint edge faces Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012124235",
+   "reason": "no frontage on Gerard Callenburgstraat: No footprint edge faces Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012124337",
+   "reason": "frontage 62.9 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012124502",
+   "reason": "no frontage on Gerard Callenburgstraat: No footprint edge faces Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012124515",
+   "reason": "frontage 53.7 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012124987",
+   "reason": "no frontage on Gerard Callenburgstraat: No footprint edge faces Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012125415",
+   "reason": "frontage 101.2 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012125953",
+   "reason": "no frontage on Gerard Callenburgstraat: No footprint edge faces Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012126004",
+   "reason": "frontage 180.0 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012127077",
+   "reason": "frontage 161.1 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012127749",
+   "reason": "frontage 188.2 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012128075",
+   "reason": "frontage 79.8 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012128123",
+   "reason": "frontage 135.4 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012114345",
+   "reason": "frontage 103.4 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012114763",
+   "reason": "frontage 105.6 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012115653",
+   "reason": "frontage 40.6 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012116397",
+   "reason": "frontage 125.3 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012117468",
+   "reason": "frontage 68.5 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012117545",
+   "reason": "frontage 140.6 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012118854",
+   "reason": "frontage 110.5 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012119132",
+   "reason": "frontage 70.1 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012119748",
+   "reason": "frontage 100.7 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012122387",
+   "reason": "frontage 111.2 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012124138",
+   "reason": "frontage 109.7 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012124713",
+   "reason": "frontage 73.5 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012125261",
+   "reason": "frontage 73.4 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012126078",
+   "reason": "frontage 174.4 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012127952",
+   "reason": "frontage 105.6 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012128652",
+   "reason": "frontage 59.0 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012129007",
+   "reason": "no frontage on Gerard Callenburgstraat: No footprint edge faces Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012129595",
+   "reason": "frontage 69.1 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012129908",
+   "reason": "frontage 195.5 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012131151",
+   "reason": "frontage 134.6 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012131416",
+   "reason": "frontage 107.6 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012131455",
+   "reason": "frontage 175.6 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012131648",
+   "reason": "frontage 181.6 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012132169",
+   "reason": "frontage 88.3 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012132371",
+   "reason": "frontage 163.8 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012132905",
+   "reason": "frontage 87.4 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012133359",
+   "reason": "frontage 193.6 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012133707",
+   "reason": "frontage 107.3 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012133746",
+   "reason": "frontage 56.6 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012134150",
+   "reason": "no frontage on Gerard Callenburgstraat: No footprint edge faces Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012135052",
+   "reason": "frontage 174.4 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012136762",
+   "reason": "frontage 162.8 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012137482",
+   "reason": "frontage 168.9 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012137538",
+   "reason": "frontage 123.7 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012138498",
+   "reason": "frontage 90.5 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012138672",
+   "reason": "frontage 57.2 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012138866",
+   "reason": "frontage 76.5 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012139329",
+   "reason": "no frontage on Gerard Callenburgstraat: No footprint edge faces Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012139647",
+   "reason": "frontage 190.1 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012140401",
+   "reason": "no frontage on Gerard Callenburgstraat: No footprint edge faces Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012140619",
+   "reason": "no frontage on Gerard Callenburgstraat: No footprint edge faces Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012129691",
+   "reason": "frontage 88.0 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012130051",
+   "reason": "frontage 76.7 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012130394",
+   "reason": "frontage 45.9 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012130626",
+   "reason": "frontage 136.0 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012131228",
+   "reason": "frontage 73.5 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012131573",
+   "reason": "frontage 73.6 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012133151",
+   "reason": "frontage 87.4 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012133739",
+   "reason": "frontage 171.5 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012134001",
+   "reason": "frontage 140.5 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012135780",
+   "reason": "frontage 121.7 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012136106",
+   "reason": "frontage 174.5 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012136297",
+   "reason": "frontage 81.0 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012136562",
+   "reason": "frontage 109.9 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012136590",
+   "reason": "frontage 109.8 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012138101",
+   "reason": "frontage 41.0 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012140027",
+   "reason": "frontage 140.4 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012140098",
+   "reason": "frontage 105.6 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012140644",
+   "reason": "frontage 105.6 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012140656",
+   "reason": "frontage 170.3 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012141413",
+   "reason": "frontage 145.0 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012141674",
+   "reason": "frontage 123.8 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012141931",
+   "reason": "frontage 199.9 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012142006",
+   "reason": "frontage 211.3 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012142100",
+   "reason": "frontage 210.7 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012142317",
+   "reason": "frontage 206.9 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012142777",
+   "reason": "no frontage on Gerard Callenburgstraat: No footprint edge faces Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012142838",
+   "reason": "no frontage on Gerard Callenburgstraat: No footprint edge faces Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012143956",
+   "reason": "frontage 135.8 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012144234",
+   "reason": "frontage 144.9 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012144291",
+   "reason": "frontage 109.3 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012144890",
+   "reason": "no frontage on Gerard Callenburgstraat: No footprint edge faces Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012145032",
+   "reason": "no frontage on Gerard Callenburgstraat: No footprint edge faces Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012145269",
+   "reason": "no frontage on Gerard Callenburgstraat: No footprint edge faces Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012145712",
+   "reason": "frontage 166.9 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012145738",
+   "reason": "frontage 127.0 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012145986",
+   "reason": "no frontage on Gerard Callenburgstraat: No footprint edge faces Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012146058",
+   "reason": "sightline to Gerard Callenburgstraat crosses 0363100012108855"
+  },
+  {
+   "pandId": "0363100012146228",
+   "reason": "no frontage on Gerard Callenburgstraat: No footprint edge faces Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012147833",
+   "reason": "frontage 145.8 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012148081",
+   "reason": "frontage 182.5 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012148568",
+   "reason": "frontage 182.8 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012149193",
+   "reason": "frontage 148.8 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012149837",
+   "reason": "frontage 186.2 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012149997",
+   "reason": "frontage 121.0 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012151258",
+   "reason": "frontage 107.8 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012151749",
+   "reason": "frontage 43.6 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012140983",
+   "reason": "frontage 112.3 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012141001",
+   "reason": "frontage 140.5 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012141696",
+   "reason": "frontage 140.6 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012141830",
+   "reason": "frontage 105.6 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012142154",
+   "reason": "frontage 68.3 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012143073",
+   "reason": "frontage 68.9 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012143225",
+   "reason": "frontage 86.3 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012143360",
+   "reason": "frontage 174.5 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012143887",
+   "reason": "frontage 103.8 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012146137",
+   "reason": "frontage 105.6 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012146143",
+   "reason": "frontage 140.5 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012146167",
+   "reason": "frontage 112.9 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012147479",
+   "reason": "frontage 41.7 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012147879",
+   "reason": "frontage 43.6 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012148995",
+   "reason": "frontage 73.5 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012149596",
+   "reason": "frontage 123.5 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012151012",
+   "reason": "frontage 44.9 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012151107",
+   "reason": "frontage 174.5 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012151482",
+   "reason": "frontage 174.5 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012152159",
+   "reason": "frontage 93.5 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012153317",
+   "reason": "frontage 101.9 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012153518",
+   "reason": "frontage 102.9 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012153896",
+   "reason": "frontage 221.2 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012153966",
+   "reason": "no frontage on Gerard Callenburgstraat: No footprint edge faces Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012154479",
+   "reason": "frontage 151.4 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012154577",
+   "reason": "sightline to Gerard Callenburgstraat crosses 0363100012113082"
+  },
+  {
+   "pandId": "0363100012155330",
+   "reason": "frontage 145.8 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012155604",
+   "reason": "frontage 162.8 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012156090",
+   "reason": "frontage 157.7 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012156543",
+   "reason": "frontage 166.5 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012157301",
+   "reason": "frontage 94.6 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012157411",
+   "reason": "frontage 145.6 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012158432",
+   "reason": "frontage 154.6 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012159429",
+   "reason": "frontage 154.2 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012161571",
+   "reason": "frontage 146.1 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012163283",
+   "reason": "frontage 146.3 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012183198",
+   "reason": "no frontage on Gerard Callenburgstraat: No footprint edge faces Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012183569",
+   "reason": "frontage 176.9 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012183701",
+   "reason": "frontage 80.0 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012184990",
+   "reason": "frontage 182.6 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012186303",
+   "reason": "frontage 161.3 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012187380",
+   "reason": "frontage 189.7 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012188265",
+   "reason": "frontage 182.9 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012188581",
+   "reason": "frontage 74.8 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012188883",
+   "reason": "frontage 174.6 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012189695",
+   "reason": "no frontage on Gerard Callenburgstraat: No footprint edge faces Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012189979",
+   "reason": "frontage 200.4 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012189980",
+   "reason": "frontage 200.1 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012189994",
+   "reason": "frontage 75.4 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012190441",
+   "reason": "frontage 176.0 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012190705",
+   "reason": "no frontage on Gerard Callenburgstraat: No footprint edge faces Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012191473",
+   "reason": "frontage 208.3 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012192720",
+   "reason": "frontage 166.0 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012192801",
+   "reason": "no frontage on Gerard Callenburgstraat: No footprint edge faces Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012192817",
+   "reason": "frontage 142.1 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012192884",
+   "reason": "no frontage on Gerard Callenburgstraat: No footprint edge faces Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012193333",
+   "reason": "frontage 208.2 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012194101",
+   "reason": "frontage 153.9 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012195050",
+   "reason": "frontage 130.3 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012195399",
+   "reason": "no frontage on Gerard Callenburgstraat: No footprint edge faces Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012195964",
+   "reason": "no frontage on Gerard Callenburgstraat: No footprint edge faces Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012196103",
+   "reason": "no frontage on Gerard Callenburgstraat: No footprint edge faces Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012152219",
+   "reason": "sightline to Gerard Callenburgstraat crosses 0363100012152138"
+  },
+  {
+   "pandId": "0363100012157577",
+   "reason": "frontage 115.9 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012160325",
+   "reason": "frontage 124.9 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012162411",
+   "reason": "frontage 125.6 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012165745",
+   "reason": "frontage 121.5 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012186563",
+   "reason": "frontage 53.7 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012196139",
+   "reason": "frontage 123.6 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012196363",
+   "reason": "frontage 175.2 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012196393",
+   "reason": "no frontage on Gerard Callenburgstraat: No footprint edge faces Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012197357",
+   "reason": "no frontage on Gerard Callenburgstraat: No footprint edge faces Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012198215",
+   "reason": "frontage 114.1 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012198537",
+   "reason": "frontage 176.2 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012199178",
+   "reason": "frontage 166.2 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012200538",
+   "reason": "no frontage on Gerard Callenburgstraat: No footprint edge faces Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012200689",
+   "reason": "frontage 207.1 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012201356",
+   "reason": "frontage 100.3 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012203165",
+   "reason": "frontage 207.2 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012203238",
+   "reason": "frontage 164.9 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012203673",
+   "reason": "frontage 77.0 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012203716",
+   "reason": "frontage 205.3 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012203892",
+   "reason": "frontage 74.4 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012204308",
+   "reason": "frontage 114.8 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012204836",
+   "reason": "no frontage on Gerard Callenburgstraat: No footprint edge faces Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012205041",
+   "reason": "no frontage on Gerard Callenburgstraat: No footprint edge faces Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012205166",
+   "reason": "frontage 162.4 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012205648",
+   "reason": "frontage 174.4 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012205708",
+   "reason": "frontage 163.5 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012205735",
+   "reason": "no frontage on Gerard Callenburgstraat: No footprint edge faces Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012205763",
+   "reason": "frontage 92.2 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012206147",
+   "reason": "frontage 151.5 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012206546",
+   "reason": "frontage 78.9 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012207755",
+   "reason": "no frontage on Gerard Callenburgstraat: No footprint edge faces Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012207906",
+   "reason": "frontage 163.0 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012208490",
+   "reason": "frontage 189.8 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012208491",
+   "reason": "frontage 191.1 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012208492",
+   "reason": "frontage 206.2 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012208493",
+   "reason": "no frontage on Gerard Callenburgstraat: No footprint edge faces Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012208500",
+   "reason": "no frontage on Gerard Callenburgstraat: No footprint edge faces Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012208501",
+   "reason": "frontage 204.5 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012208502",
+   "reason": "frontage 198.3 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012208503",
+   "reason": "frontage 196.8 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012208504",
+   "reason": "frontage 184.7 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012208505",
+   "reason": "frontage 185.5 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012208506",
+   "reason": "frontage 186.5 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012208561",
+   "reason": "frontage 73.8 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012209025",
+   "reason": "no frontage on Gerard Callenburgstraat: No footprint edge faces Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012209115",
+   "reason": "frontage 166.1 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012209165",
+   "reason": "frontage 214.5 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012209202",
+   "reason": "frontage 143.3 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012210080",
+   "reason": "frontage 114.6 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012210395",
+   "reason": "frontage 74.9 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012210521",
+   "reason": "frontage 96.3 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012211769",
+   "reason": "frontage 173.1 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012211823",
+   "reason": "frontage 103.3 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012211915",
+   "reason": "no frontage on Gerard Callenburgstraat: No footprint edge faces Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012201901",
+   "reason": "frontage 34.6 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012212037",
+   "reason": "no frontage on Gerard Callenburgstraat: No footprint edge faces Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012212042",
+   "reason": "frontage 172.4 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012213665",
+   "reason": "frontage 198.3 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012214006",
+   "reason": "no frontage on Gerard Callenburgstraat: No footprint edge faces Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012214007",
+   "reason": "frontage 203.4 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012214129",
+   "reason": "frontage 94.6 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012214707",
+   "reason": "frontage 87.1 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012214708",
+   "reason": "frontage 81.5 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012215690",
+   "reason": "frontage 167.4 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012215944",
+   "reason": "no frontage on Gerard Callenburgstraat: No footprint edge faces Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012216387",
+   "reason": "frontage 144.5 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012217251",
+   "reason": "frontage 73.9 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012218144",
+   "reason": "no frontage on Gerard Callenburgstraat: No footprint edge faces Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012218181",
+   "reason": "no frontage on Gerard Callenburgstraat: No footprint edge faces Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012218771",
+   "reason": "frontage 173.4 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012218990",
+   "reason": "frontage 196.6 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012219084",
+   "reason": "frontage 155.1 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012219112",
+   "reason": "frontage 152.6 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012219258",
+   "reason": "frontage 169.3 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012221494",
+   "reason": "no frontage on Gerard Callenburgstraat: No footprint edge faces Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012221793",
+   "reason": "no frontage on Gerard Callenburgstraat: No footprint edge faces Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012223196",
+   "reason": "frontage 181.7 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012223759",
+   "reason": "no frontage on Gerard Callenburgstraat: No footprint edge faces Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012225568",
+   "reason": "frontage 60.9 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012226035",
+   "reason": "no frontage on Gerard Callenburgstraat: No footprint edge faces Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012226036",
+   "reason": "no frontage on Gerard Callenburgstraat: No footprint edge faces Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012226688",
+   "reason": "frontage 188.0 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012228802",
+   "reason": "frontage 209.4 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012229058",
+   "reason": "frontage 79.5 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012229262",
+   "reason": "frontage 170.6 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012229823",
+   "reason": "frontage 111.5 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012230265",
+   "reason": "no frontage on Gerard Callenburgstraat: No footprint edge faces Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012232028",
+   "reason": "frontage 169.8 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012232625",
+   "reason": "frontage 201.4 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012232829",
+   "reason": "no frontage on Gerard Callenburgstraat: No footprint edge faces Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012233990",
+   "reason": "frontage 213.3 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012234108",
+   "reason": "no frontage on Gerard Callenburgstraat: No footprint edge faces Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012234355",
+   "reason": "no frontage on Gerard Callenburgstraat: No footprint edge faces Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012234815",
+   "reason": "frontage 172.0 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012234955",
+   "reason": "frontage 171.4 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012235159",
+   "reason": "frontage 140.9 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012236147",
+   "reason": "frontage 108.8 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012218606",
+   "reason": "frontage 32.6 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012222102",
+   "reason": "frontage 109.1 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012233061",
+   "reason": "frontage 102.2 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012233062",
+   "reason": "frontage 101.4 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012236535",
+   "reason": "frontage 145.0 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012236618",
+   "reason": "frontage 146.5 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012236623",
+   "reason": "frontage 145.5 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012236782",
+   "reason": "frontage 145.2 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012237016",
+   "reason": "frontage 97.7 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012237034",
+   "reason": "frontage 150.0 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012237105",
+   "reason": "frontage 110.9 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012237134",
+   "reason": "frontage 118.0 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012237361",
+   "reason": "frontage 145.9 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012249253",
+   "reason": "frontage 156.1 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012253767",
+   "reason": "frontage 161.2 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012253768",
+   "reason": "frontage 161.4 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012253769",
+   "reason": "frontage 161.3 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012253770",
+   "reason": "frontage 161.3 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012253771",
+   "reason": "frontage 161.2 m from Gerard Callenburgstraat"
+  },
+  {
+   "pandId": "0363100012063069",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012063567",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012065649",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012066626",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012073024",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012082410",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012091165",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012098318",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012113082",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012107155",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012119108",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012130983",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012132798",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012133454",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012137010",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012139881",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012151397",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012154726",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 180,
+ "pands": [
+  {
+   "pandId": "0363100012063379",
+   "alongM": -91.83,
+   "widthM": 12.8,
+   "eavesM": 9.99,
+   "roofMaxM": 12.81,
+   "storeys3dbag": 4,
+   "builtYear": 1934,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012107097",
+   "alongM": -79.02,
+   "widthM": 12.81,
+   "eavesM": 10.01,
+   "roofMaxM": 12.77,
+   "storeys3dbag": 4,
+   "builtYear": 1934,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012141048",
+   "alongM": -66.22,
+   "widthM": 12.8,
+   "eavesM": 10.02,
+   "roofMaxM": 12.8,
+   "storeys3dbag": 4,
+   "builtYear": 1934,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012095699",
+   "alongM": -53.41,
+   "widthM": 12.82,
+   "eavesM": 10.01,
+   "roofMaxM": 12.81,
+   "storeys3dbag": 4,
+   "builtYear": 1934,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012125512",
+   "alongM": -40.6,
+   "widthM": 12.8,
+   "eavesM": 10.01,
+   "roofMaxM": 12.82,
+   "storeys3dbag": 4,
+   "builtYear": 1934,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012105359",
+   "alongM": -27.8,
+   "widthM": 12.8,
+   "eavesM": 10.03,
+   "roofMaxM": 12.85,
+   "storeys3dbag": 4,
+   "builtYear": 1934,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012110487",
+   "alongM": -15,
+   "widthM": 12.8,
+   "eavesM": 10.02,
+   "roofMaxM": 12.87,
+   "storeys3dbag": 4,
+   "builtYear": 1934,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012108855",
+   "alongM": 0,
+   "widthM": 17.18,
+   "eavesM": 10.25,
+   "roofMaxM": 13.48,
+   "storeys3dbag": 4,
+   "builtYear": 1934,
+   "uncertainty": []
+  }
+ ]
+}

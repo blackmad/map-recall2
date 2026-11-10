@@ -1,0 +1,274 @@
+{
+  "schemaVersion": 1,
+  "kind": "large",
+  "id": "pand-070306",
+  "pandId": "0363100012070306",
+  "address": "BAG pand 0363100012070306",
+  "sources": [
+    {
+      "id": "pano-2022-03-24-w01-357L",
+      "kind": "street-panorama",
+      "capturedAt": "2022-03-24",
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002476_pano_0001_001264/",
+      "image": "source-data://pand-reference-walls/0363100012070306/w01-357L.jpg",
+      "sha256": "8633deb4d5e2665a993d95dc60a957227dfea3f0adbc8f5071a24d29bedbdaef",
+      "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+    },
+    {
+      "id": "pano-2024-09-05-w02-177",
+      "kind": "street-panorama",
+      "capturedAt": "2024-09-05",
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2024-09-05_05-15-58_00642/",
+      "image": "source-data://pand-reference-walls/0363100012070306/w02-177.jpg",
+      "sha256": "f56ceb847c2f94bf2a3c77cd152ff070a43e29296229b9b7d755aa1bbf42afde",
+      "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+    },
+    {
+      "id": "pano-2023-01-05-w04-87L",
+      "kind": "street-panorama",
+      "capturedAt": "2023-01-05",
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002918_pano_0013_000225/",
+      "image": "source-data://pand-reference-walls/0363100012070306/w04-87L.jpg",
+      "sha256": "5bc6fa346b6f9711778e2023632c7b12bd2c560aba35c46ac928cb8d053af5df",
+      "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+    },
+    {
+      "id": "pano-2022-01-10-w06-87L",
+      "kind": "street-panorama",
+      "capturedAt": "2022-01-10",
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002406_pano_0007_000006/",
+      "image": "source-data://pand-reference-walls/0363100012070306/w06-87L.jpg",
+      "sha256": "85a6e1bcaf963f6bfb696500ee13ef6119108724b419fb2cc1140038e6c2e6df",
+      "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+    },
+    {
+      "id": "pano-2025-07-29-w01-357",
+      "kind": "street-panorama",
+      "capturedAt": "2025-07-29",
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-07-29_10-56-07_01442/",
+      "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+    },
+    {
+      "id": "pano-2022-03-24-w02-177L",
+      "kind": "street-panorama",
+      "capturedAt": "2022-03-24",
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002476_pano_0001_001317/",
+      "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+    },
+    {
+      "id": "pano-2016-08-04-w03-267",
+      "kind": "street-panorama",
+      "capturedAt": "2016-08-04",
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316060226-000013_pano_0001_001258/",
+      "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+    },
+    {
+      "id": "pano-2016-08-04-w04-87",
+      "kind": "street-panorama",
+      "capturedAt": "2016-08-04",
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316060226-000013_pano_0001_001004/",
+      "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+    },
+    {
+      "id": "pano-2016-08-04-w05-267",
+      "kind": "street-panorama",
+      "capturedAt": "2016-08-04",
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316060226-000013_pano_0001_001254/",
+      "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+    },
+    {
+      "id": "pano-2016-08-04-w06-87",
+      "kind": "street-panorama",
+      "capturedAt": "2016-08-04",
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316060226-000013_pano_0001_000999/",
+      "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+    }
+  ],
+  "walls": [
+    {
+      "wallSurfaces": [
+        4,
+        72,
+        73,
+        76,
+        131
+      ],
+      "street": "Prinses Irenestraat",
+      "system": "brick-bay-grid",
+      "entrance": true,
+      "palette": {
+        "brick": "#767a7a"
+      },
+      "houses": [
+        {
+          "w": 0.314,
+          "bays": 3,
+          "brick": "#414041"
+        },
+        {
+          "w": 0.41,
+          "bays": 4,
+          "brick": "#787c7d"
+        },
+        {
+          "w": 0.276,
+          "bays": 3,
+          "brick": "#1a1915"
+        }
+      ],
+      "windowShape": {
+        "w": 0.55,
+        "h": 0.5,
+        "sill": 0.2
+      },
+      "baysPerStorey": 10
+    },
+    {
+      "wallSurfaces": [
+        27,
+        39,
+        40,
+        151
+      ],
+      "street": "Strawinskypad",
+      "system": "brick-bay-grid",
+      "palette": {
+        "brick": "#6dacda",
+        "glass": "#324d5e"
+      },
+      "houses": [
+        {
+          "w": 0.198,
+          "bays": 4,
+          "brick": "#a3e3f5",
+          "windowShape": {
+            "w": 0.78,
+            "h": 0.53,
+            "sill": 0.05
+          }
+        },
+        {
+          "w": 0.6,
+          "bays": 11,
+          "brick": "#7abaea",
+          "windowShape": {
+            "w": 0.78,
+            "h": 0.53,
+            "sill": 0.05
+          }
+        },
+        {
+          "w": 0.202,
+          "bays": 8,
+          "brick": "#517297"
+        }
+      ],
+      "baysPerStorey": 19,
+      "storeys": 3,
+      "groundFactor": 2.0,
+      "ribbonStoreys": [
+        {
+          "storeys": [
+            0
+          ],
+          "sill": 0.265,
+          "h": 0.49,
+          "lights": 1,
+          "frame": "#dfe9f0"
+        }
+      ],
+      "hand": [
+        "storeys",
+        "groundFactor",
+        "ribbonStoreys",
+        "windows",
+        "houses"
+      ],
+      "windows": "three-light"
+    },
+    {
+      "wallSurfaces": [
+        108,
+        150
+      ],
+      "street": "Strawinskypad",
+      "system": "brick-bay-grid"
+    },
+    {
+      "wallSurfaces": [
+        29
+      ],
+      "street": "Strawinskypad",
+      "system": "brick-bay-grid"
+    },
+    {
+      "wallSurfaces": [
+        6,
+        37,
+        184
+      ],
+      "system": "brick-bay-grid"
+    },
+    {
+      "wallSurfaces": [
+        44,
+        96
+      ],
+      "system": "brick-bay-grid",
+      "palette": {
+        "brick": "#413a35"
+      },
+      "windowShape": {
+        "w": 0.4,
+        "h": 0.55,
+        "sill": 0.2
+      },
+      "baysPerStorey": 2
+    },
+    {
+      "wallSurfaces": [
+        32
+      ],
+      "system": "brick-bay-grid",
+      "palette": {
+        "brick": "#695b5f",
+        "glass": "#403d3f"
+      },
+      "windowShape": {
+        "w": 0.622,
+        "h": 0.75,
+        "sill": 0.15
+      },
+      "baysPerStorey": 2
+    },
+    {
+      "wallSurfaces": [
+        110
+      ],
+      "system": "brick-bay-grid"
+    }
+  ],
+  "otherWalls": "blank",
+  "palette": {
+    "brick": "#767a7a",
+    "frame": "#efece4",
+    "door": "#2a2a2a"
+  },
+  "draftedBy": "factory",
+  "notes": [
+    "Drafted by draftLarge.ts from the 3DBAG panels: systems, colours, window shapes and bays are placeholders until measure.ts --write.",
+    "Panels left blank by the draft: 147 (2 m, under 3 m tall); 130 (6.7 m, unnamed panel under 8 m); 34 (14.1 m, over 8 groups); 114 (11.7 m, over 8 groups); 72 (11.7 m, over 8 groups); 68 (11.4 m, over 8 groups); 21 (11.3 m, over 8 groups); 23 (11 m, over 8 groups); 29 (10.5 m, over 8 groups); 49 (8 m, unnamed panel under 8 m); 62 (7.4 m, unnamed panel under 8 m); 54 (6.4 m, unnamed panel under 8 m); 50 (5.9 m, unnamed panel under 8 m); 36 (5.7 m, unnamed panel under 8 m); 141 (5.4 m, unnamed panel under 8 m); 40 (5.1 m, unnamed panel under 8 m); 70 (5.1 m, unnamed panel under 8 m); 6 (5 m, unnamed panel under 8 m); 56 (4.9 m, unnamed panel under 8 m); 53 (4.8 m, unnamed panel under 8 m); 112 (4.5 m, unnamed panel under 8 m); 66 (4.1 m, unnamed panel under 8 m); 131 (4.5 m, unnamed panel under 8 m); 97 (3.7 m, unnamed panel under 8 m); 30 (4.2 m, unnamed panel under 8 m); 2 (3.2 m, unnamed panel under 8 m); 52 (3.3 m, unnamed panel under 8 m); 105 (3.6 m, unnamed panel under 8 m); 41 (3 m, unnamed panel under 8 m); 116 (4 m, under 3 m tall); 118 (3.3 m, unnamed panel under 8 m); 43 (3 m, unnamed panel under 8 m); 27 (2.7 m, unnamed panel under 8 m); 25 (2.7 m, unnamed panel under 8 m); 64 (2.4 m, unnamed panel under 8 m); 126 (2.4 m, unnamed panel under 8 m); 149 (2.2 m, unnamed panel under 8 m); 57 (2.3 m, under 3 m tall); 75 (2.2 m, under 3 m tall); 59 (2.3 m, under 3 m tall); 119 (2 m, unnamed panel under 8 m); 98 (2 m, unnamed panel under 8 m); 67 (3.7 m, under 3 m tall); 142 (3.2 m, under 3 m tall); 145 (3.2 m, under 3 m tall); 20 (3.2 m, under 3 m tall); 134 (2.6 m, under 3 m tall); 143 (3.4 m, under 3 m tall); 136 (3.3 m, under 3 m tall); 120 (2.9 m, under 3 m tall); 79 (2.1 m, under 3 m tall).",
+    "Measured 2026-11-10 (measure.ts, evidence in measured.json): groups 0, 1, 5, 6 take the photo's wall and glass colour, window shape, bay count and front class; walls[0] glass #546774 not used (not darker than the wall #767a7a by 10 L*, or tinted): kit glass kept; walls[0] row of 3 houses: joints 31 % (colour dE 25), 72 % (colour dE 43); walls[0] wall family: paint proposed but houses kept; walls[1] row of 3 houses: joints 20 % (colour dE 22), 80 % (colour dE 28); walls[1] bays 19 from the likeness grid (padded measurement 39); walls[5] glass #404742 not used (not darker than the wall #413a35 by 10 L*, or tinted): kit glass kept; unphotographed walls take #767a7a (brick), the area-weighted median of groups 0, 1, 5, 6.",
+    "2026-11-10 kitgap-ribbon: walls[1] (Strawinskypad, w02-177 at 39.3 px/m) measured: the ground storey is one continuous ribbon of glazing, white frames at 1.8 m pitch (one light per 1.78 m bay), glass 1.92-5.48 m under the 7.4 m ground storey (sill 0.265, h 0.49), under two storeys of punched windows (3.7 m storeys, windows 2 m tall from just above the floor line, a 3.6 m bay of a wide triple light or a pair of narrow lights; drawn as one three-light window w 0.78 per 3.7 m bay). The judge reads the sunlit white panels as glass (photo upper glazing 59-64 % vs measured ~40 %)."
+  ],
+  "measured": {
+    "date": "2026-11-10",
+    "groups": [
+      0,
+      1,
+      5,
+      6
+    ],
+    "otherWalls": true
+  }
+}

@@ -70,6 +70,20 @@ working behavior, and leave it easier for the next session to continue.
   default guest route is not done; exercise signed-in, home-route, expanded
   advanced settings, long names, missing images, and stacked notices.
 
+## Disk hygiene
+
+The disk is shared by every lane and has hit 99 % full. Rules:
+
+- Create lane worktrees with `scripts/worktrees/new.sh`; it links `node_modules` and `.cache`.
+- Archive sources through a sparse source-data worktree,
+  `scripts/worktrees/new-source-data.sh <branch> <dir-in-repo>`, never a full checkout (20 GB each).
+- Screenshot copies are worktrees of `~/Code/map-recall2-screenshots`, not new clones.
+- Stop your dev server by its port's PID when the lane ends; an orphaned server keeps its worktree alive.
+- Cleanup is automatic: user-level hooks in `~/.claude/hooks/map-recall2/` run `sweep.sh` after every push to
+  `main` and at session start (at most every 6 h). It removes only clean, pushed, idle copies and merged
+  worktrees (via `triage.sh`), plus cached panoramas older than 3 days. `sweep.sh --dry-run` shows what would
+  go; the log is `sweep.log` beside it. Under 15 GB free, start no fetches or builds and tell the integrator.
+
 ## Canal Recall product principles
 
 - Geographic learning outranks arcade spectacle. The street/canal under
@@ -109,3 +123,18 @@ working behavior, and leave it easier for the next session to continue.
 - `TODO.md` contains the unfinished work, prioritized, plus design notes for
   parked bets in `HISTORY.md`. Read `TODO.md` before choosing the next task, and
   update it — and `HISTORY.md` — before committing status changes.
+
+### House line
+
+- One record per house: `HouseSpec` (`src/canalRecall/houseSpec/`), the intent
+  vocabulary plus a receipt per field; sources merge by evidence strength.
+  Read `docs/house-line.md` before any house, block-face or buurt lane.
+- House lanes write specs and stage them (`npm run house:specs` stages the
+  extract and prints coverage); they never install, publish or recompile the
+  world. Publishing (`house:specs -- --publish`, later `house:publish`) and the
+  world recompile are the integrator's.
+- `house:publish` is the integrator's; lanes stop at `npm run house:stage -- <spec|pandId>`
+  (validates, attaches the preview receipt, writes `artifacts/house-specs/staging/`).
+  The integrator publishes the whole staged batch once (`docs/house-line.md` section 3).
+- What the kit cannot say goes in `schemaLimits` as `{component, what}`, never
+  the nearest option. `?houseSpecs=0` / `HOUSE_SPECS=0` turns the line off.

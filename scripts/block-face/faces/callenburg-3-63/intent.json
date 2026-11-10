@@ -1,0 +1,293 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "callenburg-3-63",
+ "street": "Gerard Callenburgstraat",
+ "sources": [
+  {
+   "id": "strip-2024-11-21",
+   "kind": "street-panorama",
+   "capturedAt": "2024-11-21",
+   "image": "staging/block-face/callenburg-3-63/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "auto-place (blockFace/autoPlace.ts)",
+  "passes": 1,
+  "note": "auto-placed from the landlust library (buurt Landlust-Zuid); scores and holds in scripts/block-face/faces/callenburg-3-63/auto-place.json"
+ },
+ "types": [
+  "landlust-1934-slot-block"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012119108",
+   "slug": "callenburg-119108",
+   "address": "Gerard Callenburgstraat 3",
+   "type": {
+    "type": "landlust-1934-slot-block",
+    "measuredPalette": {
+     "brick": "#865435",
+     "evidence": "strip 2024-11-21 span 0-514: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "crown": "parapet"
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2024-11-21",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: landlust-1934-slot-block scored 0.85 on eaves 0.5, storeys 1, stucco 1, columns 1; strip 2024-11-21 span 0-514"
+   }
+  },
+  {
+   "pandId": "0363100012073024",
+   "slug": "callenburg-073024",
+   "address": "Gerard Callenburgstraat 7",
+   "type": {
+    "type": "landlust-1934-slot-block",
+    "measuredPalette": {
+     "brick": "#8b5a3d",
+     "evidence": "strip 2024-11-21 span 514-1028: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "crown": "parapet",
+    "paletteOverrides": {
+     "brick": "#7a4c2f"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2024-11-21",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: landlust-1934-slot-block scored 0.85 on eaves 0.5, storeys 1, stucco 1, columns 1; strip 2024-11-21 span 514-1028"
+   }
+  },
+  {
+   "pandId": "0363100012132798",
+   "slug": "callenburg-132798",
+   "address": "Gerard Callenburgstraat 11",
+   "type": {
+    "type": "landlust-1934-slot-block",
+    "measuredPalette": {
+     "brick": "#7f4f34",
+     "evidence": "strip 2024-11-21 span 1028-1542: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "crown": "parapet"
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2024-11-21",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: landlust-1934-slot-block scored 0.85 on eaves 0.5, storeys 1, stucco 1, columns 1; strip 2024-11-21 span 1028-1542"
+   }
+  },
+  {
+   "pandId": "0363100012098318",
+   "slug": "callenburg-098318",
+   "address": "Gerard Callenburgstraat 15",
+   "type": {
+    "type": "landlust-1934-slot-block",
+    "measuredPalette": {
+     "brick": "#845333",
+     "evidence": "strip 2024-11-21 span 1542-2056: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "crown": "parapet"
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2024-11-21",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: landlust-1934-slot-block scored 0.85 on eaves 0.5, storeys 1, stucco 1, columns 1; strip 2024-11-21 span 1542-2056"
+   }
+  },
+  {
+   "pandId": "0363100012137010",
+   "slug": "callenburg-137010",
+   "address": "Gerard Callenburgstraat 19",
+   "type": {
+    "type": "landlust-1934-slot-block",
+    "measuredPalette": {
+     "brick": "#865439",
+     "evidence": "strip 2024-11-21 span 2056-2570: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "crown": "parapet",
+    "paletteOverrides": {
+     "brick": "#7a4c2f"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2024-11-21",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: landlust-1934-slot-block scored 0.85 on eaves 0.5, storeys 1, stucco 1, columns 1; strip 2024-11-21 span 2056-2570"
+   }
+  },
+  {
+   "pandId": "0363100012082410",
+   "slug": "callenburg-082410",
+   "address": "Gerard Callenburgstraat 23",
+   "type": {
+    "type": "landlust-1934-slot-block",
+    "measuredPalette": {
+     "brick": "#98613f",
+     "evidence": "strip 2024-11-21 span 2570-3084: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "crown": "parapet",
+    "paletteOverrides": {
+     "brick": "#7a4c2f"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2024-11-21",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: landlust-1934-slot-block scored 0.85 on eaves 0.5, storeys 1, stucco 1, columns 1; strip 2024-11-21 span 2570-3084"
+   }
+  },
+  {
+   "pandId": "0363100012066626",
+   "slug": "callenburg-066626",
+   "address": "Gerard Callenburgstraat 27",
+   "type": {
+    "type": "landlust-1934-slot-block",
+    "measuredPalette": {
+     "brick": "#935f3e",
+     "evidence": "strip 2024-11-21 span 3084-3598: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "crown": "parapet",
+    "paletteOverrides": {
+     "brick": "#7a4c2f"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2024-11-21",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: landlust-1934-slot-block scored 1 on eaves 1, storeys 1, stucco 1, columns 1; strip 2024-11-21 span 3084-3598"
+   }
+  },
+  {
+   "pandId": "0363100012063567",
+   "slug": "callenburg-063567",
+   "address": "Gerard Callenburgstraat 31",
+   "type": {
+    "type": "landlust-1934-slot-block",
+    "measuredPalette": {
+     "brick": "#9f6946",
+     "evidence": "strip 2024-11-21 span 3598-4112: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "crown": "parapet",
+    "paletteOverrides": {
+     "brick": "#7a4c2f"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2024-11-21",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: landlust-1934-slot-block scored 1 on eaves 1, storeys 1, stucco 1, columns 1; strip 2024-11-21 span 3598-4112"
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "auto-place: low attic behind the cornice; the strips show sky over the cornices of the type rows"
+  },
+  "measuredEaves": [
+   {
+    "pand": "0363100012119108",
+    "stripRow": 173,
+    "evidence": "auto-place: strip skyline cornice 10.68 m within 1 m of the landlust-1934-slot-block line 10.1 m; 3DBAG/PDOK eaves 10.19 m"
+   },
+   {
+    "pand": "0363100012073024",
+    "stripRow": 175,
+    "evidence": "auto-place: strip skyline cornice 10.63 m within 1 m of the landlust-1934-slot-block line 10.1 m; 3DBAG/PDOK eaves 10.2 m"
+   },
+   {
+    "pand": "0363100012132798",
+    "stripRow": 175,
+    "evidence": "auto-place: strip skyline cornice 10.63 m within 1 m of the landlust-1934-slot-block line 10.1 m; 3DBAG/PDOK eaves 10.2 m"
+   },
+   {
+    "pand": "0363100012098318",
+    "stripRow": 170,
+    "evidence": "auto-place: strip skyline cornice 10.75 m within 1 m of the landlust-1934-slot-block line 10.1 m; 3DBAG/PDOK eaves 10.21 m"
+   },
+   {
+    "pand": "0363100012137010",
+    "stripRow": 175,
+    "evidence": "auto-place: strip skyline cornice 10.63 m within 1 m of the landlust-1934-slot-block line 10.1 m; 3DBAG/PDOK eaves 10.19 m"
+   },
+   {
+    "pand": "0363100012082410",
+    "stripRow": 174,
+    "evidence": "auto-place: strip skyline cornice 10.65 m within 1 m of the landlust-1934-slot-block line 10.1 m; 3DBAG/PDOK eaves 10.19 m"
+   },
+   {
+    "pand": "0363100012066626",
+    "stripRow": 174,
+    "evidence": "review pin: Callenburgstraat 27: the photo eaves run continuous across the 8 pands of the run at 10.65 m; the model stepped down 0.5 m"
+   },
+   {
+    "pand": "0363100012063567",
+    "stripRow": 174,
+    "evidence": "review pin: Callenburgstraat 31: as 27, the row line 10.65 m"
+   }
+  ]
+ }
+}

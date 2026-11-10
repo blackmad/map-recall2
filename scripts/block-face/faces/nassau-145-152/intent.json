@@ -10,12 +10,20 @@
    "capturedAt": "2024-11-21",
    "image": "staging/block-face/nassau-145-152/strip.jpg",
    "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "wall-fit-2019-2022",
+   "kind": "street-panorama",
+   "capturedAt": "2022-04-26",
+   "image": "staging/block-face/nassau-145-152-w2019/strip.jpg + source-data pand-crops <pand>/years/{2018,2021,2022}.jpg (house:crops --all-years)",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
   }
  ],
  "authoring": {
   "author": "claude (nassaukade-506 kit lane)",
   "passes": 2,
-  "note": "Nassaukade 152-145, west side, the row opposite houseboat berth Nassaukade 506 (De Clercqstraat corner to the bend at 145), 1898-1900. Measured on 80 px/m rectified crops of the 2024-11-21 panoramas with a metre ruler; wall colours are medians white-balanced (to a warm white #ebe5d5; the cast is golden-hour sun) against each front's own white dressings. Two oud-west library types (three-axis 148/147/146, two-axis balcony stack 149/145); 150 (stepped gable) and the corner 151-152 have their own designs."
+  "note": "Nassaukade 152-145, west side, the row opposite houseboat berth Nassaukade 506 (De Clercqstraat corner to the bend at 145), 1898-1900. Measured on 80 px/m rectified crops of the 2024-11-21 panoramas with a metre ruler; wall colours are medians white-balanced (to a warm white #ebe5d5; the cast is golden-hour sun) against each front's own white dressings. Two oud-west library types (three-axis 148/147/146, two-axis balcony stack 149/145); 150 (stepped gable) and the corner 151-152 have their own designs.",
+  "wallColours": "H7 round 2 (#354, 2026-11-10): every house's wall colour (paletteOverrides.brick, design palette.brick) is blockFace/wallFit.ts combineWallFits over four leaf-off captures, one vote each: the 2019-01-09 winter strip and the house:crops crops of 2019-01-09, 2021-03-24 and 2022-04-26 (foliage dropped, light trim masked, dominant cluster, brick/joint split; a dark painted wall neutral). The golden-hour 2024-11-21 medians drew 149/147 olive, 148 mauve and 145 peach. 146 has strip votes only (no crop shows its front: the rear wall, or blocked with --prefer-bearing 96): 2019-01-09 #957d73, and the 2021-03-24 and 2022-04-26 strips (scripts/block-face/intake.ts --date) combine to #947d74, a paler, lower-chroma brick than 145; kept #957d73. With those two strips added every other house moves by at most 5 units (6 votes). Fits: artifacts/house-line/wallfit-combined.jsonl."
  },
  "types": [
   "nassau-1900-three-axis",
@@ -70,7 +78,7 @@
      "material": "slate"
     },
     "palette": {
-     "brick": "#6b5947",
+     "brick": "#564543",
      "frame": "white-painted",
      "door": "#1f2324",
      "stone": "#eeeae0",
@@ -194,7 +202,7 @@
      "material": "slate"
     },
     "palette": {
-     "brick": "#524b3d",
+     "brick": "#404040",
      "frame": "white-painted",
      "door": "#1f2324",
      "stone": "white-painted",
@@ -248,7 +256,10 @@
     "type": "nassau-1900-two-axis-balcony",
     "crown": "pointed-dormer",
     "ground": "door-left",
-    "palette": "grey-paint"
+    "palette": "grey-paint",
+    "paletteOverrides": {
+     "brick": "#4d4d4d"
+    }
    },
    "groundFloor": {
     "use": "residential",
@@ -287,6 +298,9 @@
        1
       ]
      }
+    },
+    "paletteOverrides": {
+     "brick": "#665648"
     }
    },
    "groundFloor": {
@@ -383,6 +397,9 @@
       3.3,
       3.4
      ]
+    },
+    "paletteOverrides": {
+     "brick": "#535353"
     }
    },
    "groundFloor": {
@@ -424,6 +441,9 @@
       "cap": "flat",
       "finish": "painted"
      }
+    },
+    "paletteOverrides": {
+     "brick": "#957d73"
     }
    },
    "groundFloor": {
@@ -459,7 +479,10 @@
     "type": "nassau-1900-two-axis-balcony",
     "crown": "pointed-dormer",
     "ground": "door-left",
-    "palette": "red-brick"
+    "palette": "red-brick",
+    "paletteOverrides": {
+     "brick": "#886957"
+    }
    },
    "groundFloor": {
     "use": "residential",

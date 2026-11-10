@@ -1,0 +1,1138 @@
+{
+ "street": "Mary Zeldenruststraat",
+ "seed": "0363100012149299",
+ "members": [
+  "0363100012083880",
+  "0363100012086877",
+  "0363100012073029",
+  "0363100012135894",
+  "0363100012149299"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "next fronting pand 0363100012153984 17.5 m on shares no party wall (cross street or gap)"
+  },
+  {
+   "side": "right",
+   "reason": "no further pand fronts the street in the fetched area"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012061848",
+   "reason": "frontage 154.0 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012064037",
+   "reason": "no frontage on Mary Zeldenruststraat: No footprint edge faces Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012068295",
+   "reason": "no frontage on Mary Zeldenruststraat: No footprint edge faces Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012081882",
+   "reason": "frontage 148.1 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012083563",
+   "reason": "no frontage on Mary Zeldenruststraat: No footprint edge faces Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012085377",
+   "reason": "no frontage on Mary Zeldenruststraat: No footprint edge faces Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012090486",
+   "reason": "no frontage on Mary Zeldenruststraat: No footprint edge faces Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012091868",
+   "reason": "frontage 151.0 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012092786",
+   "reason": "no frontage on Mary Zeldenruststraat: No footprint edge faces Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012063468",
+   "reason": "frontage 88.1 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012063505",
+   "reason": "no frontage on Mary Zeldenruststraat: No footprint edge faces Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012064799",
+   "reason": "no frontage on Mary Zeldenruststraat: No footprint edge faces Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012066166",
+   "reason": "frontage 74.3 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012067569",
+   "reason": "frontage 74.0 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012070638",
+   "reason": "frontage 74.4 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012074769",
+   "reason": "frontage 47.2 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012075482",
+   "reason": "frontage 74.2 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012076685",
+   "reason": "frontage 74.4 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012076908",
+   "reason": "no frontage on Mary Zeldenruststraat: No footprint edge faces Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012078068",
+   "reason": "frontage 74.1 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012079614",
+   "reason": "frontage 132.3 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012083528",
+   "reason": "frontage 112.3 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012084114",
+   "reason": "no frontage on Mary Zeldenruststraat: No footprint edge faces Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012084752",
+   "reason": "frontage 74.4 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012085060",
+   "reason": "frontage 105.6 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012086336",
+   "reason": "no frontage on Mary Zeldenruststraat: No footprint edge faces Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012088363",
+   "reason": "no frontage on Mary Zeldenruststraat: No footprint edge faces Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012090461",
+   "reason": "frontage 107.5 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012090902",
+   "reason": "frontage 172.9 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012092490",
+   "reason": "no frontage on Mary Zeldenruststraat: No footprint edge faces Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012092532",
+   "reason": "frontage 140.2 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012073733",
+   "reason": "frontage 46.2 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012076340",
+   "reason": "frontage 83.1 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012077446",
+   "reason": "no frontage on Mary Zeldenruststraat: No footprint edge faces Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012081013",
+   "reason": "frontage 47.3 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012081247",
+   "reason": "frontage 71.9 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012086519",
+   "reason": "no frontage on Mary Zeldenruststraat: No footprint edge faces Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012086773",
+   "reason": "frontage 30.3 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012086984",
+   "reason": "frontage 53.8 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012093334",
+   "reason": "sightline to Mary Zeldenruststraat crosses 0363100012101376"
+  },
+  {
+   "pandId": "0363100012093442",
+   "reason": "frontage 76.6 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012097902",
+   "reason": "frontage 132.9 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012105777",
+   "reason": "no frontage on Mary Zeldenruststraat: No footprint edge faces Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012124335",
+   "reason": "frontage 155.9 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012125644",
+   "reason": "no frontage on Mary Zeldenruststraat: No footprint edge faces Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012125707",
+   "reason": "frontage 157.5 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012128359",
+   "reason": "no frontage on Mary Zeldenruststraat: No footprint edge faces Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012131987",
+   "reason": "frontage 149.7 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012094518",
+   "reason": "frontage 102.3 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012099249",
+   "reason": "frontage 32.3 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012100364",
+   "reason": "frontage 111.4 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012106328",
+   "reason": "no frontage on Mary Zeldenruststraat: No footprint edge faces Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012106618",
+   "reason": "frontage 98.5 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012112263",
+   "reason": "frontage 74.2 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012112665",
+   "reason": "no frontage on Mary Zeldenruststraat: No footprint edge faces Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012114055",
+   "reason": "no frontage on Mary Zeldenruststraat: No footprint edge faces Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012115258",
+   "reason": "frontage 74.4 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012115312",
+   "reason": "frontage 84.2 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012118119",
+   "reason": "frontage 77.7 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012119052",
+   "reason": "no frontage on Mary Zeldenruststraat: No footprint edge faces Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012120946",
+   "reason": "no frontage on Mary Zeldenruststraat: No footprint edge faces Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012121398",
+   "reason": "frontage 75.0 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012122461",
+   "reason": "frontage 98.5 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012124921",
+   "reason": "frontage 204.6 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012130219",
+   "reason": "frontage 73.9 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012130223",
+   "reason": "no frontage on Mary Zeldenruststraat: No footprint edge faces Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012130246",
+   "reason": "frontage 75.5 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012093772",
+   "reason": "sightline to Mary Zeldenruststraat crosses 0363100012092001"
+  },
+  {
+   "pandId": "0363100012097151",
+   "reason": "frontage 60.6 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012097882",
+   "reason": "frontage 53.1 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012099964",
+   "reason": "frontage 46.5 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012101996",
+   "reason": "frontage 39.6 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012106148",
+   "reason": "no frontage on Mary Zeldenruststraat: No footprint edge faces Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012110029",
+   "reason": "frontage 48.2 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012112529",
+   "reason": "sightline to Mary Zeldenruststraat crosses 0363100012093449"
+  },
+  {
+   "pandId": "0363100012113688",
+   "reason": "frontage 62.0 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012117471",
+   "reason": "sightline to Mary Zeldenruststraat crosses 0363100012130609"
+  },
+  {
+   "pandId": "0363100012117748",
+   "reason": "frontage 39.3 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012121324",
+   "reason": "frontage 46.5 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012123498",
+   "reason": "frontage 46.4 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012124352",
+   "reason": "frontage 44.6 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012126772",
+   "reason": "frontage 46.5 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012126912",
+   "reason": "frontage 48.2 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012130452",
+   "reason": "frontage 61.2 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012112869",
+   "reason": "frontage 157.8 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012145144",
+   "reason": "no frontage on Mary Zeldenruststraat: No footprint edge faces Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012152781",
+   "reason": "no frontage on Mary Zeldenruststraat: No footprint edge faces Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012132067",
+   "reason": "frontage 106.8 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012134486",
+   "reason": "frontage 74.0 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012135498",
+   "reason": "frontage 152.9 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012135740",
+   "reason": "frontage 73.4 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012137198",
+   "reason": "frontage 84.4 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012137641",
+   "reason": "no frontage on Mary Zeldenruststraat: No footprint edge faces Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012138929",
+   "reason": "frontage 99.1 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012144373",
+   "reason": "frontage 80.7 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012145159",
+   "reason": "frontage 118.3 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012145863",
+   "reason": "frontage 100.4 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012146383",
+   "reason": "frontage 114.9 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012150546",
+   "reason": "frontage 132.1 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012152496",
+   "reason": "frontage 93.1 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012152682",
+   "reason": "frontage 131.2 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012152778",
+   "reason": "no frontage on Mary Zeldenruststraat: No footprint edge faces Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012153263",
+   "reason": "frontage 126.5 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012153789",
+   "reason": "no frontage on Mary Zeldenruststraat: No footprint edge faces Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012153841",
+   "reason": "frontage 108.1 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012154172",
+   "reason": "frontage 116.7 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012154179",
+   "reason": "frontage 111.9 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012154202",
+   "reason": "frontage 103.7 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012154617",
+   "reason": "no frontage on Mary Zeldenruststraat: No footprint edge faces Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012155532",
+   "reason": "frontage 156.4 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012155605",
+   "reason": "frontage 186.1 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012155674",
+   "reason": "frontage 185.4 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012155684",
+   "reason": "frontage 156.6 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012155770",
+   "reason": "frontage 156.5 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012156111",
+   "reason": "no frontage on Mary Zeldenruststraat: No footprint edge faces Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012156355",
+   "reason": "frontage 130.5 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012156748",
+   "reason": "frontage 184.8 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012156889",
+   "reason": "frontage 90.5 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012157243",
+   "reason": "frontage 128.3 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012157453",
+   "reason": "frontage 155.6 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012157939",
+   "reason": "frontage 182.8 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012158038",
+   "reason": "frontage 131.0 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012133358",
+   "reason": "no frontage on Mary Zeldenruststraat: No footprint edge faces Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012143244",
+   "reason": "sightline to Mary Zeldenruststraat crosses 0363100012149299"
+  },
+  {
+   "pandId": "0363100012145875",
+   "reason": "frontage 46.3 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012147310",
+   "reason": "frontage 73.8 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012147496",
+   "reason": "frontage 58.2 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012150944",
+   "reason": "frontage 63.1 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012151587",
+   "reason": "frontage 43.4 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012153583",
+   "reason": "frontage 47.4 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012158228",
+   "reason": "frontage 119.4 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012158236",
+   "reason": "no frontage on Mary Zeldenruststraat: No footprint edge faces Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012158886",
+   "reason": "no frontage on Mary Zeldenruststraat: No footprint edge faces Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012159006",
+   "reason": "frontage 127.6 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012159139",
+   "reason": "no frontage on Mary Zeldenruststraat: No footprint edge faces Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012159277",
+   "reason": "frontage 154.9 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012159395",
+   "reason": "frontage 156.0 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012159414",
+   "reason": "frontage 154.5 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012159496",
+   "reason": "frontage 189.3 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012159569",
+   "reason": "frontage 154.0 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012159599",
+   "reason": "frontage 137.0 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012159606",
+   "reason": "frontage 185.8 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012159618",
+   "reason": "frontage 122.7 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012159831",
+   "reason": "frontage 182.5 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012159951",
+   "reason": "frontage 153.1 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012160451",
+   "reason": "frontage 128.8 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012160479",
+   "reason": "frontage 157.8 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012160601",
+   "reason": "frontage 95.9 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012160888",
+   "reason": "frontage 117.9 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012161624",
+   "reason": "frontage 113.6 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012161684",
+   "reason": "frontage 186.0 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012161704",
+   "reason": "no frontage on Mary Zeldenruststraat: No footprint edge faces Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012161763",
+   "reason": "frontage 156.7 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012162070",
+   "reason": "frontage 154.4 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012162162",
+   "reason": "frontage 155.2 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012162497",
+   "reason": "frontage 133.4 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012162616",
+   "reason": "frontage 153.6 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012162696",
+   "reason": "frontage 185.9 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012162898",
+   "reason": "frontage 184.3 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012163336",
+   "reason": "frontage 129.2 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012163492",
+   "reason": "frontage 151.3 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012163586",
+   "reason": "frontage 91.8 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012163707",
+   "reason": "frontage 123.2 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012163888",
+   "reason": "frontage 183.1 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012163948",
+   "reason": "frontage 125.1 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012164033",
+   "reason": "frontage 131.9 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012164874",
+   "reason": "frontage 126.4 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012165810",
+   "reason": "frontage 156.3 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012166008",
+   "reason": "frontage 126.6 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012166277",
+   "reason": "frontage 117.1 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012166422",
+   "reason": "frontage 126.3 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012166557",
+   "reason": "no frontage on Mary Zeldenruststraat: No footprint edge faces Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012163285",
+   "reason": "frontage 49.4 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012164446",
+   "reason": "frontage 35.0 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012165992",
+   "reason": "frontage 40.8 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012167263",
+   "reason": "frontage 32.0 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012170411",
+   "reason": "frontage 170.5 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012170412",
+   "reason": "frontage 168.6 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012170413",
+   "reason": "frontage 168.3 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012170414",
+   "reason": "frontage 196.1 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012186480",
+   "reason": "no frontage on Mary Zeldenruststraat: No footprint edge faces Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012195527",
+   "reason": "no frontage on Mary Zeldenruststraat: No footprint edge faces Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012205751",
+   "reason": "frontage 139.3 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012222392",
+   "reason": "no frontage on Mary Zeldenruststraat: No footprint edge faces Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012188665",
+   "reason": "frontage 96.0 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012191464",
+   "reason": "frontage 102.2 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012193025",
+   "reason": "no frontage on Mary Zeldenruststraat: No footprint edge faces Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012195376",
+   "reason": "frontage 95.5 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012198655",
+   "reason": "frontage 119.9 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012199836",
+   "reason": "frontage 96.9 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012204354",
+   "reason": "no frontage on Mary Zeldenruststraat: No footprint edge faces Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012205088",
+   "reason": "frontage 102.8 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012205655",
+   "reason": "frontage 101.7 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012206321",
+   "reason": "frontage 96.2 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012208334",
+   "reason": "no frontage on Mary Zeldenruststraat: No footprint edge faces Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012211645",
+   "reason": "frontage 102.3 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012215085",
+   "reason": "no frontage on Mary Zeldenruststraat: No footprint edge faces Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012215832",
+   "reason": "no frontage on Mary Zeldenruststraat: No footprint edge faces Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012218713",
+   "reason": "frontage 97.7 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012221456",
+   "reason": "frontage 108.9 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012222469",
+   "reason": "frontage 102.4 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012223055",
+   "reason": "frontage 102.1 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012229509",
+   "reason": "frontage 102.1 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012230558",
+   "reason": "frontage 102.4 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012170608",
+   "reason": "frontage 131.5 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012180953",
+   "reason": "frontage 161.0 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012180957",
+   "reason": "frontage 134.0 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012180958",
+   "reason": "frontage 136.3 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012181381",
+   "reason": "frontage 130.4 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012193063",
+   "reason": "sightline to Mary Zeldenruststraat crosses 0363100012073029"
+  },
+  {
+   "pandId": "0363100012193064",
+   "reason": "sightline to Mary Zeldenruststraat crosses 0363100012064922"
+  },
+  {
+   "pandId": "0363100012193065",
+   "reason": "sightline to Mary Zeldenruststraat crosses 0363100012133373"
+  },
+  {
+   "pandId": "0363100012193066",
+   "reason": "sightline to Mary Zeldenruststraat crosses 0363100012133373"
+  },
+  {
+   "pandId": "0363100012193067",
+   "reason": "sightline to Mary Zeldenruststraat crosses 0363100012073029"
+  },
+  {
+   "pandId": "0363100012193068",
+   "reason": "sightline to Mary Zeldenruststraat crosses 0363100012135894"
+  },
+  {
+   "pandId": "0363100012193069",
+   "reason": "sightline to Mary Zeldenruststraat crosses 0363100012135894"
+  },
+  {
+   "pandId": "0363100012193070",
+   "reason": "sightline to Mary Zeldenruststraat crosses 0363100012064922"
+  },
+  {
+   "pandId": "0363100012196830",
+   "reason": "frontage 40.7 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012207824",
+   "reason": "frontage 35.1 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012170699",
+   "reason": "no frontage on Mary Zeldenruststraat: No footprint edge faces Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012170751",
+   "reason": "frontage 198.8 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012170752",
+   "reason": "frontage 169.4 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012180997",
+   "reason": "no frontage on Mary Zeldenruststraat: No footprint edge faces Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012181000",
+   "reason": "no frontage on Mary Zeldenruststraat: No footprint edge faces Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012181001",
+   "reason": "no frontage on Mary Zeldenruststraat: No footprint edge faces Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012181002",
+   "reason": "no frontage on Mary Zeldenruststraat: No footprint edge faces Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012181009",
+   "reason": "frontage 203.7 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012181010",
+   "reason": "frontage 201.6 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012181012",
+   "reason": "frontage 208.6 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012181648",
+   "reason": "frontage 193.5 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012240319",
+   "reason": "frontage 207.8 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012241375",
+   "reason": "frontage 185.6 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012241376",
+   "reason": "frontage 176.5 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100100092329",
+   "reason": "no frontage on Mary Zeldenruststraat: No footprint edge faces Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012232505",
+   "reason": "no frontage on Mary Zeldenruststraat: No footprint edge faces Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012233055",
+   "reason": "frontage 98.4 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012233570",
+   "reason": "frontage 74.4 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012234263",
+   "reason": "no frontage on Mary Zeldenruststraat: No footprint edge faces Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012235974",
+   "reason": "frontage 112.2 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012236020",
+   "reason": "frontage 178.6 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012236263",
+   "reason": "frontage 181.4 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012236586",
+   "reason": "frontage 39.2 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012236722",
+   "reason": "frontage 133.7 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012236768",
+   "reason": "frontage 144.9 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012236956",
+   "reason": "frontage 74.4 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012237010",
+   "reason": "frontage 122.4 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012237252",
+   "reason": "frontage 118.0 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012237304",
+   "reason": "frontage 158.7 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012253764",
+   "reason": "no frontage on Mary Zeldenruststraat: No footprint edge faces Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012253852",
+   "reason": "frontage 173.4 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012236231",
+   "reason": "frontage 34.2 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012236498",
+   "reason": "frontage 76.0 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012243487",
+   "reason": "frontage 164.9 m from Mary Zeldenruststraat"
+  },
+  {
+   "pandId": "0363100012069114",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012071120",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012087566",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012092001",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012101066",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012101376",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012120940",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012122406",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012130609",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012142563",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012230617",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012236788",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 180,
+ "pands": [
+  {
+   "pandId": "0363100012083880",
+   "alongM": -74.49,
+   "widthM": 16.11,
+   "eavesM": 11.12,
+   "roofMaxM": 11.15,
+   "storeys3dbag": 4,
+   "builtYear": 1988,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012086877",
+   "alongM": -58.38,
+   "widthM": 16.11,
+   "eavesM": 11.13,
+   "roofMaxM": 11.15,
+   "storeys3dbag": 4,
+   "builtYear": 1988,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012073029",
+   "alongM": -39.86,
+   "widthM": 20.92,
+   "eavesM": 8.51,
+   "roofMaxM": 8.52,
+   "storeys3dbag": 3,
+   "builtYear": 1988,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012135894",
+   "alongM": -18.94,
+   "widthM": 20.92,
+   "eavesM": 8.48,
+   "roofMaxM": 8.51,
+   "storeys3dbag": 3,
+   "builtYear": 1988,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012149299",
+   "alongM": 0,
+   "widthM": 16.96,
+   "eavesM": 11.15,
+   "roofMaxM": 13.89,
+   "storeys3dbag": 5,
+   "builtYear": 1988,
+   "uncertainty": []
+  }
+ ]
+}

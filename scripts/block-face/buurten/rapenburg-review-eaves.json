@@ -1,0 +1,15 @@
+{
+ "note": "Lane eaves pins read off the gridded strip crops (40 px/m).",
+ "pins": [
+  {
+   "pandId": "0363100012181605",
+   "eavesM": 14.7,
+   "reason": "Rapenburg 97: cornice top 14.7 m over the frieze (brick top 12.5 m); 3DBAG eaves 11.6 m reads the roof behind"
+  },
+  {
+   "pandId": "0363100012170674",
+   "eavesM": 12.4,
+   "reason": "Rapenburg 99: bell gable foot 12.4 m (3DBAG 11.3 m)"
+  }
+ ]
+}

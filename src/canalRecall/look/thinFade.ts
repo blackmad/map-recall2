@@ -66,6 +66,19 @@ export function thinFadeCoverage(px: number): number {
 /** `thinFocalPx`: framebuffer pixels per metre at 1 m from the eye (projectionMatrix[1][1] · height / 2). */
 export const thinFocalPx = (projection11: number, drawingBufferHeight: number): number => projection11 * drawingBufferHeight / 2;
 
+/**
+ * The projection's vertical focal term from a camera's `projectionMatrix` (three.js column-major `elements`), for a
+ * pure projection and for one that carries the view rotation too. The shared frame's camera keeps identity matrices
+ * and draws with clipFromWorld = P · V (rendererShared/sharedFrame.ts: "the view lives in its projection"), so
+ * elements[5] there is P11 times the north component of the camera's up vector: ~0 for a ride camera facing east or
+ * west, and every thin element (all facade extras: stoops, door surrounds, hoist beams, cornices) faded out at any
+ * distance (lane register-extras 2026-11-10). The y row's length is P11 for both (V is a rotation; with an off-centre
+ * principal point the P12 term adds in quadrature and is small).
+ */
+export function projectionFocal11(elements: ArrayLike<number>): number {
+  return Math.hypot(elements[1], elements[5], elements[9]);
+}
+
 function pageParam(param: string): string | null {
   try {
     return typeof URLSearchParams === 'function' ? new URLSearchParams((globalThis as { location?: { search?: string } }).location?.search ?? '').get(param) : null;
@@ -177,8 +190,8 @@ export function installThinFade(material: any, lit: boolean, options: { fade?: b
   material.onBeforeRender = function (this: any, renderer: any, scene: any, camera: any, ...rest: any[]) {
     render?.call(this, renderer, scene, camera, ...rest);
     const h = renderer?.getDrawingBufferSize ? renderer.getDrawingBufferSize(size).y : 0;
-    const p11 = camera?.projectionMatrix?.elements?.[5];
-    if (h > 0 && Number.isFinite(p11)) FOCAL.value = thinFocalPx(p11, h);
+    const e = camera?.projectionMatrix?.elements, p11 = e ? projectionFocal11(e) : NaN;
+    if (h > 0 && Number.isFinite(p11) && p11 > 0) FOCAL.value = thinFocalPx(p11, h);
   };
   material.userData = { ...(material.userData ?? {}), thinFade: fade, thinDebug: debug };
   return material;

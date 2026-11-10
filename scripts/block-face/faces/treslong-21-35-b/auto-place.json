@@ -1,0 +1,462 @@
+{
+ "face": "treslong-21-35-b",
+ "street": "Bloys van Treslongstraat",
+ "library": "landlust",
+ "stripDate": "2024-11-21",
+ "seconds": 7.14,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [
+  {
+   "face": "treslong-21-35-b",
+   "pands": [
+    "0363100012068576",
+    "0363100012111921",
+    "0363100012105923",
+    "0363100012145888"
+   ],
+   "passed": true,
+   "triangles": 5629
+  }
+ ],
+ "pands": [
+  {
+   "pandId": "0363100012068576",
+   "address": "Bloys van Treslongstraat 29",
+   "builtYear": 1933,
+   "widthM": 6.2,
+   "eavesM": 11.23,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#48311c",
+    "wallRaw": "#4c4739",
+    "skyline": {
+     "eavesM": 10.9,
+     "eavesRow": 183,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.55,
+      "riseM": 1.4,
+      "topWidthM": 1.48,
+      "centre": 0.86
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.139,
+    "structure": {
+     "bayWidthM": 1.25,
+     "bayCentre": 0.25,
+     "balconies": true,
+     "why": "dark open axis 1 m at 0.23 (light 0.47): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1,
+       "centre": 0.23,
+       "light": 0.47
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 9.25,
+       "widthM": 1.38,
+       "centre": 0.84
+      },
+      {
+       "atM": 6.1,
+       "widthM": 0.93,
+       "centre": 0.25
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.2
+   },
+   "status": "placed",
+   "type": "landlust-1933-erker-window",
+   "score": 0.89,
+   "placement": {
+    "type": "landlust-1933-erker-window",
+    "measuredPalette": {
+     "brick": "#48311c",
+     "evidence": "strip 2024-11-21 span 0-248: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "crown": "party-dormer",
+    "pair": "left",
+    "paletteOverrides": {
+     "brick": "#2b1f16"
+    }
+   },
+   "notes": [
+    "crown party-dormer: reviewer pin (Treslongstraat 5-35 (round-3 strip verdict 2026-11-10): one cream box dormer for the pair 068576|111921, centred on their party wall, on the gutter line)",
+    "palette pinned: Treslongstraat 5-59 (Opus verdict): the run is dark purple-brown, photo about #4a3626, model about #6a4c33; one brick for the run (151495 had read blue-grey #808d96 off the scaffolding)",
+    "door reviewer pin: as drawn (Treslongstraat 5-59 (Opus verdict 2026-11-10): the erker alternates every pand; pand 13: the photo has the erker on the left and the door on the right)"
+   ],
+   "likeness": {
+    "pandId": "0363100012068576",
+    "ncc": 0.631,
+    "nccRaw": 0.631,
+    "shiftM": [
+     -0.1,
+     -0.1
+    ],
+    "usable": 0.57,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.29 mean 0.39 vs photo 0.14"
+    ],
+    "wall": {
+     "photo": "#49301f",
+     "model": "#654934",
+     "dL": 0.096
+    },
+    "glazing": {
+     "photo": 0.14,
+     "model": 0.39
+    },
+    "columns": {
+     "photo": null,
+     "model": null
+    },
+    "iou": 0.469
+   },
+   "challengers": {
+    "landlust-1933-erker-window": 0.631
+   }
+  },
+  {
+   "pandId": "0363100012111921",
+   "address": "Bloys van Treslongstraat 31",
+   "builtYear": 1933,
+   "widthM": 6.1,
+   "eavesM": 11.24,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#3c2919",
+    "wallRaw": "#4c4336",
+    "skyline": {
+     "eavesM": 10.93,
+     "eavesRow": 182,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.274,
+    "structure": {
+     "bayWidthM": 1.52,
+     "bayCentre": 0.65,
+     "balconies": true,
+     "why": "dark open axis 1.02 m at 0.09 (light 0.3): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.02,
+       "centre": 0.09,
+       "light": 0.3
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 9.2,
+       "widthM": 1.1,
+       "centre": 0.1
+      },
+      {
+       "atM": 8.9,
+       "widthM": 1.1,
+       "centre": 0.1
+      },
+      {
+       "atM": 6.13,
+       "widthM": 1.23,
+       "centre": 0.69
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.17
+   },
+   "status": "placed",
+   "type": "landlust-1933-erker-window",
+   "score": 0.78,
+   "placement": {
+    "type": "landlust-1933-erker-window",
+    "measuredPalette": {
+     "brick": "#3c2919",
+     "evidence": "strip 2024-11-21 span 248-492: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "crown": "party-dormer",
+    "pair": "right",
+    "mirror": true,
+    "paletteOverrides": {
+     "brick": "#2b1f16"
+    }
+   },
+   "notes": [
+    "crown party-dormer: reviewer pin (Treslongstraat 5-35 (round-3 strip verdict 2026-11-10): one cream box dormer for the pair 068576|111921, centred on their party wall, on the gutter line)",
+    "palette pinned: Treslongstraat 5-59 (Opus verdict): the run is dark purple-brown, photo about #4a3626, model about #6a4c33; one brick for the run (151495 had read blue-grey #808d96 off the scaffolding)",
+    "door reviewer pin: mirrored (Treslongstraat 21-35 (round-3 strip verdict): the photo has the narrow window and door on the left and the erker on the right; the mirror flag was lost when 5-59 was split)"
+   ],
+   "likeness": {
+    "pandId": "0363100012111921",
+    "ncc": 0.59,
+    "nccRaw": 0.59,
+    "shiftM": [
+     -0.4,
+     -0.1
+    ],
+    "usable": 0.55,
+    "abstain": null,
+    "verdict": "NO EVIDENCE",
+    "reasons": [
+     "foliage 26 % > 25 %"
+    ],
+    "wall": {
+     "photo": "#392615",
+     "model": "#654934",
+     "dL": 0.147
+    },
+    "glazing": {
+     "photo": 0.27,
+     "model": 0.38
+    },
+    "columns": {
+     "photo": null,
+     "model": null
+    },
+    "iou": 0.592
+   },
+   "challengers": {
+    "landlust-1933-erker-window~m": 0.59
+   }
+  },
+  {
+   "pandId": "0363100012105923",
+   "address": "Bloys van Treslongstraat 33",
+   "builtYear": 1933,
+   "widthM": 6.1,
+   "eavesM": 11.22,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#402b19",
+    "wallRaw": "#494637",
+    "skyline": {
+     "eavesM": 10.95,
+     "eavesRow": 181,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.38,
+      "riseM": 1.33,
+      "topWidthM": 1.25,
+      "centre": 0.88
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.177,
+    "structure": {
+     "bayWidthM": 1.2,
+     "bayCentre": 0.45,
+     "balconies": true,
+     "why": "dark open axis 1.6 m at 0.82 (light 0.34): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.6,
+       "centre": 0.82,
+       "light": 0.34
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 9.38,
+       "widthM": 0.93,
+       "centre": 0.11
+      },
+      {
+       "atM": 9.07,
+       "widthM": 1.48,
+       "centre": 0.85
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.23
+   },
+   "status": "placed",
+   "type": "landlust-1933-erker-window",
+   "score": 0.78,
+   "placement": {
+    "type": "landlust-1933-erker-window",
+    "measuredPalette": {
+     "brick": "#402b19",
+     "evidence": "strip 2024-11-21 span 492-736: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "crown": "party-dormer",
+    "pair": "left",
+    "paletteOverrides": {
+     "brick": "#2b1f16"
+    }
+   },
+   "notes": [
+    "crown party-dormer: reviewer pin (Treslongstraat 5-35 (round-3 strip verdict 2026-11-10): one cream box dormer for the pair 105923|145888, centred on their party wall, on the gutter line)",
+    "door reviewer pin: left half of a pair crown, as drawn",
+    "palette pinned: Treslongstraat 5-59 (Opus verdict): the run is dark purple-brown, photo about #4a3626, model about #6a4c33; one brick for the run (151495 had read blue-grey #808d96 off the scaffolding)"
+   ],
+   "likeness": {
+    "pandId": "0363100012105923",
+    "ncc": 0.611,
+    "nccRaw": 0.611,
+    "shiftM": [
+     -0.15,
+     -0.05
+    ],
+    "usable": 0.55,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.26 mean 0.39 vs photo 0.16"
+    ],
+    "wall": {
+     "photo": "#472f1c",
+     "model": "#654934",
+     "dL": 0.106
+    },
+    "glazing": {
+     "photo": 0.16,
+     "model": 0.39
+    },
+    "columns": {
+     "photo": null,
+     "model": null
+    },
+    "iou": 0.521
+   },
+   "challengers": {
+    "landlust-1933-erker-window": 0.611
+   }
+  },
+  {
+   "pandId": "0363100012145888",
+   "address": "Bloys van Treslongstraat 35",
+   "builtYear": 1933,
+   "widthM": 6.1,
+   "eavesM": 11.18,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#412f1e",
+    "wallRaw": "#45392a",
+    "skyline": {
+     "eavesM": 10.95,
+     "eavesRow": 181,
+     "confidence": 1,
+     "crown": {
+      "widthM": 0.93,
+      "riseM": 1.33,
+      "topWidthM": 0.8,
+      "centre": 0.08
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": "right",
+    "accentShare": 0.167,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 9.07,
+       "widthM": 1.18,
+       "centre": 0.89
+      }
+     ]
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0.14
+   },
+   "status": "placed",
+   "type": "landlust-1933-erker-window",
+   "score": 0.78,
+   "placement": {
+    "type": "landlust-1933-erker-window",
+    "measuredPalette": {
+     "brick": "#412f1e",
+     "evidence": "strip 2024-11-21 span 736-980: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "crown": "party-dormer",
+    "pair": "right",
+    "mirror": true,
+    "paletteOverrides": {
+     "brick": "#2b1f16"
+    }
+   },
+   "notes": [
+    "crown party-dormer: reviewer pin (Treslongstraat 5-35 (round-3 strip verdict 2026-11-10): one cream box dormer for the pair 105923|145888, centred on their party wall, on the gutter line)",
+    "palette pinned: Treslongstraat 5-59 (Opus verdict): the run is dark purple-brown, photo about #4a3626, model about #6a4c33; one brick for the run (151495 had read blue-grey #808d96 off the scaffolding)",
+    "door reviewer pin: mirrored (Treslongstraat 5-59 (Opus verdict 2026-11-10): the erker alternates every pand; pand 16: the photo has the narrow window on the left and the erker on the right)"
+   ],
+   "likeness": {
+    "pandId": "0363100012145888",
+    "ncc": 0.593,
+    "nccRaw": 0.593,
+    "shiftM": [
+     -0.4,
+     -0.05
+    ],
+    "usable": 0.6,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.28 mean 0.39 vs photo 0.22"
+    ],
+    "wall": {
+     "photo": "#422e1c",
+     "model": "#654934",
+     "dL": 0.116
+    },
+    "glazing": {
+     "photo": 0.22,
+     "model": 0.39
+    },
+    "columns": {
+     "photo": null,
+     "model": null
+    },
+    "iou": 0.639
+   },
+   "challengers": {
+    "landlust-1933-erker-window~m": 0.593
+   }
+  }
+ ]
+}

@@ -1,0 +1,48 @@
+{
+ "note": "Faces a reviewer restricted to some house types after reading the strip at full size (scripts/block-face/auto-place.ts, blockFace/reviewCrowns.ts typesForFace).",
+ "reviewed": "2026-11-10",
+ "pins": [
+  {
+   "face": "badlaan-1-21",
+   "types": [
+    "plantage-1881-segmental-anchors",
+    "plantage-1881-polychrome-two-axis"
+   ],
+   "reason": "Badlaan 1-11 is the orange-brick segmental front with wall anchors (4 storeys), 13-21 the dark polychrome two-axis fronts (ground + 2); BAG dates 1807-1881 do not separate them, eaves 14-15 vs 12 do"
+  },
+  {
+   "face": "badlaan-4-24",
+   "types": [
+    "plantage-1855-brick-hood"
+   ],
+   "reason": "Badlaan 6-14: 5.6 m brown brick with corbelled hoods; 16-22 and 24 are different designs and are held"
+  },
+  {
+   "face": "doklaan-28-42",
+   "types": [
+    "plantage-1880-stucco-cartouche"
+   ],
+   "reason": "Doklaan 30-42: one stucco design, BAG dates 1841-1890 do not separate it"
+  }
+ ],
+ "mirrors": [
+  {
+   "pandId": "0363100012181073",
+   "type": "plantage-1881-polychrome-two-axis",
+   "mirror": true,
+   "reason": "photo: door left, window right (row alternates R L R L R; opus verdict 2026-11-10)"
+  },
+  {
+   "pandId": "0363100012171261",
+   "type": "plantage-1881-polychrome-two-axis",
+   "mirror": true,
+   "reason": "photo: door left, window right"
+  },
+  {
+   "pandId": "0363100012170230",
+   "type": "plantage-1881-polychrome-two-axis",
+   "mirror": true,
+   "reason": "photo: window left, door right (the model default is door left)"
+  }
+ ]
+}

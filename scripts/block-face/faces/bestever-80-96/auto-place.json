@@ -1,0 +1,663 @@
+{
+ "face": "bestever-80-96",
+ "street": "Bestevâerstraat",
+ "library": "landlust",
+ "stripDate": "2024-11-21",
+ "seconds": 6.33,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012114797",
+   "address": "Bestevâerstraat 96",
+   "builtYear": 1924,
+   "widthM": 7.79,
+   "eavesM": 12.72,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#644b0d",
+    "wallRaw": "#685739",
+    "skyline": {
+     "eavesM": 14,
+     "eavesRow": 162,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.98,
+      "riseM": 0.88,
+      "topWidthM": 1.98,
+      "centre": 0.71
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.062,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 1.95 m at 0.14 (light 0.06): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.95,
+       "centre": 0.14,
+       "light": 0.06
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.1
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best landlust-1924-bestevaer-half-block: stair block 7.79 m, type 5.7-7.6 m; strip shows balconies (dark open axis 1.95 m at 0.14 (light 0.06): no brick spandrel between the storeys))",
+   "best": {
+    "type": "landlust-1924-bestevaer-half-block",
+    "score": 0,
+    "veto": [
+     "stair block 7.79 m, type 5.7-7.6 m",
+     "strip shows balconies (dark open axis 1.95 m at 0.14 (light 0.06): no brick spandrel between the storeys)"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "strip cornice 14 m vs the type's 13.2 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.048 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012065696",
+   "address": "Bestevâerstraat 94",
+   "builtYear": 1924,
+   "widthM": 5.3,
+   "eavesM": 12.69,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#897854",
+    "wallRaw": "#675328",
+    "skyline": {
+     "eavesM": 13.6,
+     "eavesRow": 178,
+     "confidence": 1,
+     "crown": {
+      "widthM": 0.72,
+      "riseM": 1.25,
+      "topWidthM": 0.2,
+      "centre": 0.65
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 4,
+    "frontClass": "blank",
+    "doorSide": "right",
+    "accentSide": "left",
+    "accentShare": 0.035,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 1.18 m at 0.14 (light 0.25): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.18,
+       "centre": 0.14,
+       "light": 0.25
+      },
+      {
+       "widthM": 1.2,
+       "centre": 0.56,
+       "light": 0.05
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.09
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best landlust-1924-bestevaer-half-block: stair block 5.3 m, type 5.7-7.6 m; strip shows balconies (dark open axis 1.18 m at 0.14 (light 0.25): no brick spandrel between the storeys))",
+   "best": {
+    "type": "landlust-1924-bestevaer-half-block",
+    "score": 0,
+    "veto": [
+     "stair block 5.3 m, type 5.7-7.6 m",
+     "strip shows balconies (dark open axis 1.18 m at 0.14 (light 0.25): no brick spandrel between the storeys)"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "strip cornice 13.6 m vs the type's 13.2 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 4 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.027 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 4 vs 2 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012150285",
+   "address": "Bestevâerstraat 92",
+   "builtYear": 1924,
+   "widthM": 6.16,
+   "eavesM": 12.65,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6a5437",
+    "wallRaw": "#695639",
+    "skyline": {
+     "eavesM": 13.6,
+     "eavesRow": 178,
+     "confidence": 1,
+     "crown": {
+      "widthM": 0.97,
+      "riseM": 0.85,
+      "topWidthM": 0.97,
+      "centre": 0.34
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": "right",
+    "accentShare": 0.162,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.1
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Opus verdict 2026-11-10: HOLD the Bestevaer stair/half blocks (no plinth with an arched stair door at the pilaster, no glass-brick pilaster, patchwork per-pand tone); re-place only with a kit piece placed by architectural block, see docs/reports/landlust-plinth-block-kit-note-20261110.md",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012084867",
+   "address": "Bestevâerstraat 90",
+   "builtYear": 1924,
+   "widthM": 6.2,
+   "eavesM": 12.85,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#88704f",
+    "wallRaw": "#796241",
+    "skyline": {
+     "eavesM": 13.65,
+     "eavesRow": 176,
+     "confidence": 1,
+     "crown": {
+      "widthM": 0.85,
+      "riseM": 1.22,
+      "topWidthM": 0.47,
+      "centre": 0.93
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 7,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.073,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.06
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best landlust-1924-bestevaer-half-block: axis pitch 0.89 m (7 strip columns over 6.2 m), type 0.9-6.5 m)",
+   "best": {
+    "type": "landlust-1924-bestevaer-half-block",
+    "score": 0,
+    "veto": [
+     "axis pitch 0.89 m (7 strip columns over 6.2 m), type 0.9-6.5 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "strip cornice 13.65 m vs the type's 13.2 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 4 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.058 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 7 vs 2 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012126627",
+   "address": "Bestevâerstraat 88",
+   "builtYear": 1924,
+   "widthM": 6.2,
+   "eavesM": 12.93,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#796143",
+    "wallRaw": "#735b35",
+    "skyline": {
+     "eavesM": 13.6,
+     "eavesRow": 178,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.35,
+      "riseM": 1.5,
+      "topWidthM": 0.63,
+      "centre": 0.88
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": "left",
+    "accentShare": 0.061,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 1.73 m at 0.85 (light 0.01): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.73,
+       "centre": 0.85,
+       "light": 0.01
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.05
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best landlust-1924-bestevaer-half-block: strip shows balconies (dark open axis 1.73 m at 0.85 (light 0.01): no brick spandrel between the storeys))",
+   "best": {
+    "type": "landlust-1924-bestevaer-half-block",
+    "score": 0,
+    "veto": [
+     "strip shows balconies (dark open axis 1.73 m at 0.85 (light 0.01): no brick spandrel between the storeys)"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "strip cornice 13.6 m vs the type's 13.2 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 4 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.049 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012099598",
+   "address": "Bestevâerstraat 86",
+   "builtYear": 1924,
+   "widthM": 6.2,
+   "eavesM": 12.92,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#8a6f4e",
+    "wallRaw": "#7a6344",
+    "skyline": {
+     "eavesM": 13.6,
+     "eavesRow": 178,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.98,
+      "riseM": 1.45,
+      "topWidthM": 1.05,
+      "centre": 0.67
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.091,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6.7,
+       "widthM": 1.75,
+       "centre": 0.85
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.08
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.135 < 0.15 (photo vs model body; likeness.ts FAIL: wall dL +0.17; glazing storey band off by 0.65 mean 0.25 vs photo 0.68)",
+   "likeness": {
+    "pandId": "0363100012099598",
+    "ncc": 0.135,
+    "nccRaw": 0.135,
+    "shiftM": [
+     0.4,
+     0.4
+    ],
+    "usable": 0.83,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "wall dL +0.17",
+     "glazing storey band off by 0.65 mean 0.25 vs photo 0.68"
+    ],
+    "wall": {
+     "photo": "#705539",
+     "model": "#a3835c",
+     "dL": 0.169
+    },
+    "glazing": {
+     "photo": 0.68,
+     "model": 0.25
+    },
+    "columns": {
+     "photo": null,
+     "model": 2
+    },
+    "iou": 0.33,
+    "footOffsetM": 1.13
+   },
+   "challengers": {
+    "landlust-1924-bestevaer-half-block~m": 0.135,
+    "landlust-1924-bestevaer-half-block": 0.303,
+    "landlust-1924-bestevaer-stair-block~m": 0.237,
+    "landlust-1924-bestevaer-stair-block": 0.231
+   }
+  },
+  {
+   "pandId": "0363100012072237",
+   "address": "Bestevâerstraat 82",
+   "builtYear": 1924,
+   "widthM": 11.5,
+   "eavesM": 12.54,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#826745",
+    "wallRaw": "#765e38",
+    "skyline": {
+     "eavesM": 13.65,
+     "eavesRow": 176,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.23,
+      "riseM": 4,
+      "topWidthM": 0.2,
+      "centre": 0.8
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 8,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.065,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 1.75 m at 0.13 (light 0.16): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.75,
+       "centre": 0.13,
+       "light": 0.16
+      },
+      {
+       "widthM": 0.78,
+       "centre": 0.3,
+       "light": 0.01
+      },
+      {
+       "widthM": 0.63,
+       "centre": 0.97,
+       "light": 0.12
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.05
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best landlust-1924-bestevaer-half-block: stair block 11.5 m, type 5.7-7.6 m; strip shows balconies (dark open axis 1.75 m at 0.13 (light 0.16): no brick spandrel between the storeys))",
+   "best": {
+    "type": "landlust-1924-bestevaer-half-block",
+    "score": 0,
+    "veto": [
+     "stair block 11.5 m, type 5.7-7.6 m",
+     "strip shows balconies (dark open axis 1.75 m at 0.13 (light 0.16): no brick spandrel between the storeys)"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "strip cornice 13.65 m vs the type's 13.2 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 4 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.051 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 8 vs 2 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012131030",
+   "address": "Bestevâerstraat 80",
+   "builtYear": 1924,
+   "widthM": 7.8,
+   "eavesM": 12.53,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#876e47",
+    "wallRaw": "#755f41",
+    "skyline": {
+     "eavesM": 13.63,
+     "eavesRow": 177,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.45,
+      "riseM": 1.63,
+      "topWidthM": 0.63,
+      "centre": 0.36
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 9,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": "right",
+    "accentShare": 0.041,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6.52,
+       "widthM": 1.1,
+       "centre": 0.38
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.03
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best landlust-1924-bestevaer-half-block: stair block 7.8 m, type 5.7-7.6 m; axis pitch 0.87 m (9 strip columns over 7.8 m), type 0.9-6.5 m)",
+   "best": {
+    "type": "landlust-1924-bestevaer-half-block",
+    "score": 0,
+    "veto": [
+     "stair block 7.8 m, type 5.7-7.6 m",
+     "axis pitch 0.87 m (9 strip columns over 7.8 m), type 0.9-6.5 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "strip cornice 13.63 m vs the type's 13.2 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 4 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.033 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 9 vs 2 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

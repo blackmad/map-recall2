@@ -1,0 +1,41 @@
+{
+ "street": "Krom Boomssloot",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T08:17:45.139Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012182967",
+   "addresses": [
+    "Krom Boomssloot 12"
+   ],
+   "groundUnits": [
+    {
+     "address": "Krom Boomssloot 12",
+     "use": "woonfunctie",
+     "areaM2": 75,
+     "bagId": "0363010000953119"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012182969",
+   "addresses": [
+    "Krom Boomssloot 10"
+   ],
+   "groundUnits": [
+    {
+     "address": "Krom Boomssloot 10",
+     "use": "woonfunctie",
+     "areaM2": 83,
+     "bagId": "0363010000949281"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  }
+ ]
+}

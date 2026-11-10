@@ -1,0 +1,138 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "haring-26-38-r1",
+ "street": "Jan Haringstraat",
+ "sources": [
+  {
+   "id": "strip-2024-11-21",
+   "kind": "street-panorama",
+   "capturedAt": "2024-11-21",
+   "image": "staging/block-face/haring-26-38-r1/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "auto-place (blockFace/autoPlace.ts)",
+  "passes": 1,
+  "note": "auto-placed from the landlust library (buurt Landlust-Zuid); scores and holds in scripts/block-face/faces/haring-26-38/auto-place.json"
+ },
+ "types": [
+  "landlust-1934-tile-pair"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012068528",
+   "slug": "haring-068528",
+   "address": "Jan Haringstraat 34",
+   "type": {
+    "type": "landlust-1934-tile-pair",
+    "mirror": true,
+    "measuredPalette": {
+     "brick": "#745f41",
+     "evidence": "strip 2024-11-21 span 547-802: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#564632"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2024-11-21",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: landlust-1934-tile-pair scored 0.84 on eaves -, storeys 1, roof 1, stucco 1, columns 0.4; strip 2024-11-21 span 547-802"
+   }
+  },
+  {
+   "pandId": "0363100012072687",
+   "slug": "haring-072687",
+   "address": "Jan Haringstraat 32",
+   "type": {
+    "type": "landlust-1934-tile-pair",
+    "measuredPalette": {
+     "brick": "#806a4a",
+     "evidence": "strip 2024-11-21 span 803-1042: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#564632"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2024-11-21",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: landlust-1934-tile-pair scored 1 on eaves -, storeys 1, roof 1, stucco 1, columns 1; strip 2024-11-21 span 803-1042"
+   }
+  },
+  {
+   "pandId": "0363100012071938",
+   "slug": "haring-071938",
+   "address": "Jan Haringstraat 30",
+   "type": {
+    "type": "landlust-1934-tile-pair",
+    "measuredPalette": {
+     "brick": "#756245",
+     "evidence": "strip 2024-11-21 span 1042-1289: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#564632"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2024-11-21",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: landlust-1934-tile-pair scored 1 on eaves -, storeys 1, roof 1, stucco 1, columns 1; strip 2024-11-21 span 1042-1289"
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "auto-place: low attic behind the cornice; the strips show sky over the cornices of the type rows"
+  },
+  "measuredEaves": [
+   {
+    "pand": "0363100012068528",
+    "stripRow": 274,
+    "frontRoof": {},
+    "evidence": "auto-place: the landlust-1934-tile-pair cornice line 12 m (measured on its exemplar strips; this pand's skyline unread); 3DBAG/PDOK eaves 13.03 m"
+   },
+   {
+    "pand": "0363100012072687",
+    "stripRow": 274,
+    "frontRoof": {},
+    "evidence": "auto-place: the landlust-1934-tile-pair cornice line 12 m (measured on its exemplar strips; this pand's skyline unread); 3DBAG/PDOK eaves 13.06 m"
+   },
+   {
+    "pand": "0363100012071938",
+    "stripRow": 274,
+    "frontRoof": {},
+    "evidence": "auto-place: the landlust-1934-tile-pair cornice line 12 m (measured on its exemplar strips; this pand's skyline unread); 3DBAG/PDOK eaves 13.02 m"
+   }
+  ]
+ }
+}

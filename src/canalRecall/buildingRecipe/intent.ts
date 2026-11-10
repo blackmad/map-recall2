@@ -8,6 +8,7 @@
  * terra/facade-component-contract: the model selects and classifies, a
  * compiler builds geometry.
  */
+import type {RosetteIntent} from './rosettes.ts';
 import type {BoxBalconyIntent} from '../blockBuilding/boxBalcony.ts';
 import type {BalconyBandsIntent} from '../blockBuilding/balconyBands.ts';
 import type {StackedBlocksIntent} from '../blockBuilding/stackedBlocks.ts';
@@ -22,6 +23,7 @@ import type {ParapetBandIntent} from './parapetBand.ts';
 import {friezeVentProblems} from './friezeVents.ts';
 import {corbelTableProblems, type CorbelTableIntent} from './corbelTable.ts';
 import {wallAnchorProblems} from './wallAnchors.ts';
+import {pierBlockProblems} from './pierBlocks.ts';
 import {entablatureProblems} from './entablature.ts';
 import {jambBlockProblems} from './jambBlocks.ts';
 import type {ArchKind} from '../blockBuilding/arch.ts';
@@ -215,7 +217,20 @@ export const DORMER_STYLES = ['plain', 'pediment', 'pointed', 'box', 'flat', 'ar
  * and the facade top behind which the dormer stands (round 3: the fully glazed front reached 6 cm over the eaves and
  * failed the GLB audit, opening-outside 2.5 m2).
  */
-export const DORMER_BODIES = ['stone', 'brick', 'timber'] as const;
+export const DORMER_BODIES = ['stone', 'brick', 'timber', 'zinc', 'zinc-band'] as const;
+/**
+ * `dormerBody: "zinc-band"` (Landlust slot blocks, Haenstraat, Zwijgerlaan, Callenburgstraat 2-32, Andringastraat; round-4
+ * review): a painted-zinc box dormer: smooth mid-grey cheeks, a mostly glazed front of three lights and a dark flat cap
+ * overhanging the front. Pair with `dormerWindow` (the glass band's width, apron and height). Absent = byte-identical.
+ */
+/** Party-wall dormer fascia (Treslong 5-35, round-5 review): a pale grey-beige board on the cap's front edge, 17 cm deep, so the dark cap does not merge into the roof. */
+export const PARTY_DORMER_FASCIA = {colour: '#9a988c', heightM: 0.17} as const;
+export const ZINC_BAND = {cheek: '#6f7275', cap: '#3e4144', capOverhangM: 0.15} as const;
+/**
+ * `dormerBody: "zinc"` (Landlust 1932-1940 tiled-roof fronts, Leijnsenstraat 2-30, Coppelstockstraat 29-49): a box dormer
+ * clad in the roof's own covering (the grey zinc cheeks and flat top read as a continuation of the slope). Its cheeks and back
+ * take the roof surface; with `dormerStyle: "box"` the front is the plain flat-topped box. Absent = byte-identical.
+ */
 /** `dormerBody: "timber"`: the apron under the window (m) and the post share of the dormer width each side (clamped). */
 export const TIMBER_DORMER = {apronM: 0.35, sideShare: 0.16, sideMinM: 0.12, sideMaxM: 0.35} as const;
 /**
@@ -394,10 +409,34 @@ export interface FrontIntent {
   bays: number | number[];
   /** Windows inside the gable/crown above the top full storey. */
   atticWindows?: number;
+  /**
+   * The gable light measured on the photo (Rapenburg 99, Nieuwmarkt/Lastage 2026-11-10: a 1.0 m light whose sill sits at the
+   * gable foot; the stock light is 0.5-0.9 m wide, 0.25 m over the foot): `light` its width (0.4..1.6 m) and `sill` its sill
+   * over the crown foot (-0.5..2 m). Single-crown side-by-side lights only (not round, stacked or grouped). Absent = byte-identical.
+   */
+  atticLight?: {light: number; sill: number};
   /** Roof dormers standing on the eaves line behind a cornice/flat front. */
   dormers?: number;
   /** 0-based bay (left-to-right, as seen from the street) holding the main door; null = no door. */
   doorBay: number | null;
+  /**
+   * Further ground bays that hold a door like `doorBay` (Landlust slot blocks 1934-1937: two door pairs per block, each pair
+   * under one flat `groundCanopy` slab). 0-based, other than `doorBay`; needs a `doorBay`. Absent = byte-identical.
+   */
+  extraDoorBays?: number[];
+  /**
+   * Every door bay (`doorBay` and `extraDoorBays`) holds two doors side by side, each half the bay wide, instead of one door
+   * centred in it. Absent = one door.
+   */
+  doorPairs?: boolean;
+  /**
+   * A row of identical house doors side by side across a span of the front (Landlust slot blocks 1933-1937: four doors of
+   * 0.75 m in a run about 4.7 m wide under one continuous `groundCanopy` slab). `from`..`to` are fractions of the front's
+   * width, `count` doors of `leaf` metres each, evenly spread over the span. Replaces the `doorBay` door (which stays as the
+   * anchor for the portiek reveal and the mirror); the row is symmetric about its own centre and a mirrored front reverses
+   * its fractions. The doors are single leaves without a fanlight (the canopy slab rests on their heads). Absent = byte-identical.
+   */
+  doorRow?: {from: number; to: number; count: number; leaf: number};
   /**
    * The house door is a round-arched portiek opening (Amsterdam School, Polanenstraat 229-311, Spaarndammerdijk 247-299):
    * `span` m wide (0.8..2.6), its semicircular head's crown `apex` m over the ground storey floor (1.8..4, at least
@@ -423,7 +462,9 @@ export interface FrontIntent {
    * plain brick. `relieving` = a square-headed window under a segmental relieving arch (rise 0.25 x its span) springing
    * just above the head over a brick tympanum: it needs an archRing. Not together with `archedStoreys`.
    */
-  windowHead?: {kind: typeof WINDOW_HEADS[number]; storeys?: number[]; archRing?: {colour: typeof ARCH_RING_COLOURS[number]; style?: typeof ARCH_RING_STYLES[number]; keystone?: boolean; widthCourses?: number;
+  windowHead?: {kind: typeof WINDOW_HEADS[number]; storeys?: number[];
+      /** Segmental heads: the arch rise in metres (0.04..0.4) instead of 0.08 x the window width (Plantage Badlaan 13-21: a flattened basket arch, 0.15). Absent = byte-identical. */
+      rise?: number; archRing?: {colour: typeof ARCH_RING_COLOURS[number]; style?: typeof ARCH_RING_STYLES[number]; keystone?: boolean; widthCourses?: number;
       /** `style: springers`: [length outward from the arch foot, height] in metres (default [0.14, 0.18]). */
       springerSize?: [number, number];
       /** Relieving arches only: `round` = a semicircle over the span (rise = half the span) instead of the segmental 0.25. */
@@ -609,6 +650,13 @@ export interface FrontIntent {
    */
   wallAnchors?: {storeys?: number[]; size?: number; over?: number};
   /**
+   * White head-line pier blocks (Den Texstraat 7-27; buildingRecipe/pierBlocks.ts): at the window-head line of each listed
+   * storey (0 = ground; default every storey with windows) one white block on every pier, alternating `long` (default 0.55 m)
+   * and `short` (0.28 m), `rise` high (0.3 m), `over` m over the heads (0.05 m), kept inside the reveals; `dentils` adds a
+   * continuous row of small blocks (`pitch`, `block`, `rise` in metres) just under the cornice over the highest head line. Absent = byte-identical.
+   */
+  pierBlocks?: {storeys?: number[]; long?: number; short?: number; rise?: number; over?: number; dentils?: {pitch: number; block: number; rise: number}};
+  /**
    * One balcony along the whole front at the floor of `storey` (Jan Evertsenstraat 139-160, over the ground storey): a
    * slab `slab` m thick (default 0.25) and `projection` m deep, its top on the storey floor, in `slabColour` (default the stone
    * colour), under a guard `guardRise` m high (default 1.0) on its nose and both returns: `iron` bars (the door colour) or a
@@ -729,7 +777,7 @@ export interface FrontIntent {
    */
   dormerWindow?: {light: number; apron: number; tall?: number};
   /**
-   * Lights in every dormer window (2..8; Vogelbuurt-Noord 1918 box dormers 5-6 narrow lights, the 1921 rows 4): the window's
+   * Lights in every dormer window (1..8, 1 = a single undivided light: Den Texstraat; Vogelbuurt-Noord 1918 box dormers 5-6 narrow lights, the 1921 rows 4): the window's
    * vertical bars are spaced evenly. Absent = one bar at the middle (two lights), byte-identical.
    */
   dormerLights?: number;
@@ -752,6 +800,21 @@ export interface FrontIntent {
      */
     lights?: 'per-axis'; lightRise?: number; lightSill?: number};
   /**
+   * Wall rosettes (roundels) on blind axes (rosettes.ts, lane H7 round 2): on each entry's `storeys` (1 = first floor) the
+   * windows of the listed `bays` (axes from the viewer's left) are taken out and a round medallion (stone ring, wall-colour
+   * field, stone boss) stands at each window's centre, `diameter` m across (0.4..1.6, default 0.9). Nassaukade 151-152,
+   * the corner's Nassaukade face: three roundels up its second axis. Absent = byte-identical.
+   */
+  rosettes?: RosetteIntent[];
+  /**
+   * More towers over bays (lane H7 round 2): each entry is a `tower` over `bays` (rise, cap, and `lightRise`/`lightSill`
+   * for its one centred light per storey of rise), and `finish: "stone"` faces its front in the stone colour (a stucco
+   * aedicule) where `tower` rises in the wall brick. Towers may not overlap each other, `tower` or a crown. Nassaukade
+   * 151-152, the corner's Nassaukade face: two stone towers with flat caps on the cornice over axes 2 and 5. Absent =
+   * byte-identical.
+   */
+  towers?: {bays: {from: number; to: number}; rise: number; cap: typeof TOWER_CAPS[number]; finish?: 'stone'; lightRise?: number; lightSill?: number}[];
+  /**
    * Clip street-side details (cornice, bands, sills, gable ornament) at oblique party walls so nothing crosses the party
    * plane (trapezoidal plots meet the front up to ~20 degrees off square). Block faces set it for every house with
    * `continuity.partyClip`.
@@ -766,6 +829,13 @@ export interface FrontIntent {
   gridAt?: {from: number; to: number};
   /** Dormers at these spans (fractions of the front from the viewer's left; one entry per dormer) instead of evenly spaced: a dormer against a party wall is one half of a dormer shared with the neighbour. */
   dormerAt?: {from: number; to: number}[];
+  /**
+   * The (single) dormer is one half of a dormer that straddles this front's party wall (Treslong 5-35: one cream box per pair
+   * of pands, the right half of the left pand and the left half of its mirrored neighbour): no cheek on the wall side, the
+   * frame there runs to the wall so the halves read as one frame with one centre mullion, the cap runs to the wall and
+   * overhangs the front. Needs one dormer with a `dormerAt` span near the party wall and a box style. Absent = byte-identical.
+   */
+  dormerParty?: boolean;
   /**
    * Measured dormer size and place on the slope: the sill `sill` (m, 0.05..2) over the eaves line, the dormer's height `rise`
    * (0.6..2.5) and its front's `setback` (0.05..2) behind the facade, instead of the style default (sill 0.05 m, setback
@@ -804,6 +874,19 @@ export interface GableOrnamentIntent {
 export interface GroundFrontIntent {
   kind: typeof GROUND_FRONT_KINDS[number];
   bays: GroundBay[];
+  /**
+   * Relative bay widths, one per bay left to right (Rapenburg 99: two 0.75-0.8 m doors beside a 2.5 m shop window). Absent =
+   * equal bays, byte-identical.
+   */
+  bayWeights?: number[];
+  /**
+   * One transom line in metres over the ground (0.8..4, under the beam): the door heads stop under it and the window bays
+   * take their transom bar on it, so the transom lights run as one row across the front (Rapenburg 99). Absent = the
+   * stock door height and the 0.74 bar, byte-identical.
+   */
+  transom?: number;
+  /** Vertical lights in each window bay (2..6; Rapenburg 99's shop window: four mullioned lights). Absent = the stock bar. */
+  lights?: number;
   colour?: string;
   shutterColour?: string;
   evidence?: string;
@@ -909,6 +992,13 @@ export interface PaletteIntent {
    * paint to ~#a5a395 on the sheet). House palette only.
    */
   stoneMaterial?: 'painted';
+  /**
+   * `stone` (Ruyschstraat 331/339, Opus verdict 2026-11-10): the cornice meshes take the `stone` surface slot, so the
+   * exported chunk draws the cornice in `palette.stone` (the cornice paint `palette.cornice` repaints a mesh's material, but a
+   * chunk's colours come from the surface slot, which stays `trim` = the window frame colour). Set `stone` to the cornice
+   * colour. House palette only. Absent = the cornice stays on the trim slot, byte-identical.
+   */
+  corniceAs?: 'stone';
   /**
    * `measured` (Kinkerstraat 47, 63, 87): the wall colour `brick` is a measured strip colour and is drawn as measured
    * (the wall materials export `tintSource: measured`), instead of being lifted and saturated into the city brick range
@@ -1041,6 +1131,17 @@ export interface LargeHouseIntent {
   windowShape?: LargeWindowShape;
   /** the photo skyline confirms this house's 3DBAG eaves off the row line: no row-coherence clamp */
   ownEaves?: boolean;
+}
+/** One ribbon-storey entry (`LargeWallIntent.ribbonStoreys`); proportions of the storey and the bay only, never metres. */
+export interface RibbonStoreyIntent {
+  storeys: number[];
+  bays?: number[];
+  sill: number; h: number;
+  lights: number;
+  rows?: number[];
+  spandrel?: {h: number; colour: string};
+  head?: {h: number; colour: string};
+  frame?: string;
 }
 export interface LargeWallIntent {
   /** 3DBAG LoD2.2 WallSurface indices (shell boundary index) of this wall group. */
@@ -1318,6 +1419,17 @@ export interface LargeWallIntent {
    */
   plinth?: {storeys?: number[]; bays?: number[]; lights: number; sill?: number; h?: number; pier?: number; transom?: number; factor?: number};
   /**
+   * Ribbon storeys (kit gap "ribbon under punched", 2026-11-10): on each entry's `storeys` (0 = ground) one continuous band
+   * of glazing across the bays (or the listed `bays`) in place of the storey's windows, the frames of neighbouring bays
+   * touching as one post. Measured per storey from the photo: from `sill` to `sill + h` of the storey, `lights` lights per
+   * bay (its own mullion pitch, independent of the punched rows), horizontal glazing bars at `rows` fractions of the band
+   * height (transoms, ascending), an opaque `spandrel` panel (borstwering) filling the band's lowest `spandrel.h` in its own
+   * colour, an opaque `head` panel filling its top `head.h` (a shopfront strip's coloured fascia lights), and the band's
+   * own `frame` colour. A clerestory over a punched brick ground (Vliegtuigstraat 1952), a glazed
+   * first floor under punched office storeys, an office ribbon in a blank panel front. Absent: byte-identical.
+   */
+  ribbonStoreys?: RibbonStoreyIntent[];
+  /**
    * A layered screen of pale panels over the wall on the listed `storeys` (expanded-metal mesh, perforated sheet): one panel
    * per bay, `joint` m apart (default 0.06), from `from` to `to` of the storey's height (defaults 0.15 and 0.92, leaving
    * the slab edges in the wall colour), in `colour`; bays with an opening are left open (the window shows). The 2006
@@ -1575,6 +1687,17 @@ export function validateIntent(input: unknown): CanalHouseIntent {
     if (f.atticWindows !== undefined) count(f.atticWindows, `${at}.atticWindows`, 0, 6);
     if (f.dormers !== undefined) count(f.dormers, `${at}.dormers`, 0, 8);
     if (f.doorBay !== null) count(f.doorBay, `${at}.doorBay`, 0, Math.max(0, bays[0] - 1));
+    if (f.extraDoorBays !== undefined) {
+      if (f.doorBay === null) problems.push(`${at}.extraDoorBays: needs a doorBay`);
+      else if (!Array.isArray(f.extraDoorBays) || !f.extraDoorBays.length || f.extraDoorBays.some((b, i) => !Number.isInteger(b) || b < 0 || b > bays[0] - 1 || b === f.doorBay || f.extraDoorBays!.indexOf(b) !== i)) problems.push(`${at}.extraDoorBays: distinct ground bays 0..${bays[0] - 1}, not the doorBay`);
+      if (f.shopfront || f.groundFront || f.doorArch) problems.push(`${at}.extraDoorBays: not with a shopfront, ground front or doorArch`);
+    }
+    if (f.doorRow !== undefined) {
+      const r = f.doorRow as unknown as Record<string, unknown>, n = (v: unknown, a: number, b: number) => typeof v === 'number' && v >= a && v <= b;
+      if (!r || typeof r !== 'object' || Object.keys(r).some(k => !['from', 'to', 'count', 'leaf'].includes(k)) || !n(r.from, 0, 1) || !n(r.to, 0, 1) || (r.to as number) - (r.from as number) < 0.1 || !Number.isInteger(r.count) || !n(r.count, 2, 6) || !n(r.leaf, 0.6, 1.6)) problems.push(`${at}.doorRow: {from, to (fractions of the front, span >= 0.1), count 2..6, leaf 0.6..1.6 m}`);
+      if (f.doorBay === null || f.doorArch || f.shopfront || f.groundFront || f.extraDoorBays || f.doorPairs) problems.push(`${at}.doorRow: needs a doorBay and no doorArch, shopfront, groundFront, extraDoorBays or doorPairs`);
+    }
+    if (f.doorPairs !== undefined && (typeof f.doorPairs !== 'boolean' || f.doorBay === null || f.doorArch)) problems.push(`${at}.doorPairs: true, with a doorBay and no doorArch`);
     if (f.doorArch !== undefined) {
       const d = f.doorArch as unknown as Record<string, unknown>, n = (v: unknown, a: number, b: number) => typeof v === 'number' && v >= a && v <= b;
       if (!d || typeof d !== 'object' || Object.keys(d).some(k => k !== 'span' && k !== 'apex') || !n(d.span, 0.8, 2.6) || !n(d.apex, 1.8, 4) || (d.apex as number) < (d.span as number) / 2 + 1.2) problems.push(`${at}.doorArch: {span 0.8..2.6 m, apex 1.8..4 m and at least span / 2 + 1.2}`);
@@ -1617,6 +1740,7 @@ export function validateIntent(input: unknown): CanalHouseIntent {
       else if (h.colour === 'band' && !(f.palette?.band ?? intent.palette.band)) problems.push(`${at}.windowHoods: colour band needs palette.band`);
     }
     if (f.wallAnchors !== undefined) problems.push(...wallAnchorProblems(f, at));
+    if (f.pierBlocks !== undefined) problems.push(...pierBlockProblems(f, at));
     if (f.tilePanels !== undefined) problems.push(...tilePanelProblems(f, at));
     if (f.friezeVents !== undefined) problems.push(...friezeVentProblems(f, at));
     if (f.corbelTable !== undefined) problems.push(...corbelTableProblems(f, at, f.palette?.band ?? intent.palette.band));
@@ -1703,6 +1827,11 @@ export function validateIntent(input: unknown): CanalHouseIntent {
     if (f.crownFinial && !['step', 'neck', 'raised-neck', 'bell'].includes(f.gable)) problems.push(`${at}.crownFinial: needs a step, neck or bell gable (a flat top to stand on)`);
     if (f.atticShape !== undefined) oneOf(f.atticShape, ATTIC_SHAPES, `${at}.atticShape`);
     if (f.atticShape === 'round' && !f.atticWindows) problems.push(`${at}.atticShape: round needs atticWindows >= 1`);
+    if (f.atticLight !== undefined) {
+      const l = f.atticLight as {light?: unknown; sill?: unknown};
+      if (!l || typeof l !== 'object' || Object.keys(l).some(k => k !== 'light' && k !== 'sill') || !(typeof l.light === 'number' && l.light >= 0.4 && l.light <= 1.6) || !(typeof l.sill === 'number' && l.sill >= -0.5 && l.sill <= 2)) problems.push(`${at}.atticLight: {light 0.4..1.6 m, sill -0.5..2 m over the crown foot}`);
+      if (!f.atticWindows || f.atticShape === 'round') problems.push(`${at}.atticLight: needs rectangular atticWindows >= 1`);
+    }
     if (f.windowProportion !== undefined) oneOf(f.windowProportion, WINDOW_PROPORTIONS, `${at}.windowProportion`);
     if (f.crownAt !== undefined && f.crownBays !== undefined) problems.push(`${at}: crownAt and crownBays are alternatives`);
     if (f.crownAt !== undefined || f.crownBays !== undefined) {
@@ -1801,6 +1930,7 @@ export function validateIntent(input: unknown): CanalHouseIntent {
       else if (k === 'stoneMaterial') problems.push(`${at}.palette.stoneMaterial: set the stone material on the house palette (one material per house)`);
       else if (k === 'whitePoint') problems.push(`${at}.palette.whitePoint: the exposure of the house wall's measurement belongs on the house palette`);
       else if (k === 'wallTint') problems.push(`${at}.palette.wallTint: set the wall tint on the house palette (one wall per house)`);
+      else if (k === 'corniceAs') problems.push(`${at}.palette.corniceAs: set it on the house palette`);
       else colour(v, `${at}.palette.${k}`);
     }
     problems.push(...historicProblems(f, at, colour, oneOf));
@@ -1826,6 +1956,7 @@ export function validateIntent(input: unknown): CanalHouseIntent {
   for (const k of ['brick', 'frame', 'door'] as const) colour(intent?.palette?.[k], `palette.${k}`);
   for (const k of ['shutters', 'stone', 'band', 'cornice', 'glassBlock', 'sash'] as const) if (intent?.palette?.[k] !== undefined) colour(intent.palette[k], `palette.${k}`);
   if (intent?.palette?.wallMaterial !== undefined) oneOf(intent.palette.wallMaterial, WALL_MATERIALS, 'palette.wallMaterial');
+  if (intent?.palette?.corniceAs !== undefined) oneOf(intent.palette.corniceAs, ['stone'], 'palette.corniceAs');
   if (intent?.palette?.stoneMaterial !== undefined) oneOf(intent.palette.stoneMaterial, ['painted'], 'palette.stoneMaterial');
   if (intent?.palette?.wallTint !== undefined) {
     oneOf(intent.palette.wallTint, ['measured'], 'palette.wallTint');
@@ -2011,7 +2142,7 @@ function windowProblems(f: FrontIntent, at: string, oneOf: (v: unknown, allowed:
   }
   const h = f.windowHead;
   if (h !== undefined) {
-    for (const k of Object.keys(h ?? {})) if (!['kind', 'storeys', 'archRing', 'tympanum'].includes(k)) p.push(`${at}.windowHead.${k}: unknown field (kind, storeys, archRing, tympanum)`);
+    for (const k of Object.keys(h ?? {})) if (!['kind', 'storeys', 'rise', 'archRing', 'tympanum'].includes(k)) p.push(`${at}.windowHead.${k}: unknown field (kind, storeys, rise, archRing, tympanum)`);
     if (h?.tympanum !== undefined) {
       oneOf(h.tympanum, TYMPANUM_FILLS, `${at}.windowHead.tympanum`);
       if (h.kind === 'relieving' ? h.tympanum === 'stone' : h.kind !== 'segmental' && h.kind !== 'round') p.push(`${at}.windowHead.tympanum: only under a segmental or round head, or "dark" or "band" under a relieving arch`);
@@ -2020,6 +2151,7 @@ function windowProblems(f: FrontIntent, at: string, oneOf: (v: unknown, allowed:
     if (h?.storeys !== undefined && (!Array.isArray(h.storeys) || h.storeys.some(s => !Number.isInteger(s) || s < 0 || s >= f.storeys))) p.push(`${at}.windowHead.storeys: storey indices 0..${f.storeys - 1}`);
     if (f.archedStoreys !== undefined) p.push(`${at}.windowHead: not together with archedStoreys`);
     if (f.windows === 'arched') p.push(`${at}.windowHead: windows "arched" already sets a head; pick a pane layout`);
+    if (h?.rise !== undefined && (h.kind !== 'segmental' || !(typeof h.rise === 'number' && h.rise >= 0.04 && h.rise <= 0.4))) p.push(`${at}.windowHead.rise: metres 0.04..0.4, only on a segmental head`);
     const r = h?.archRing;
     if (r !== undefined) {
       for (const k of Object.keys(r ?? {})) if (!['colour', 'style', 'keystone', 'widthCourses', 'springerSize', 'shape', 'springGap'].includes(k)) p.push(`${at}.windowHead.archRing.${k}: unknown field (colour, style, keystone, widthCourses, springerSize, shape, springGap)`);
@@ -2058,7 +2190,7 @@ function windowProblems(f: FrontIntent, at: string, oneOf: (v: unknown, allowed:
 }
 
 const GABLE_ORNAMENT_KEYS = ['wings', 'finial', 'cartouche', 'ears', 'gablet'];
-const GROUND_FRONT_KEYS = ['kind', 'bays', 'colour', 'shutterColour', 'evidence'];
+const GROUND_FRONT_KEYS = ['kind', 'bays', 'bayWeights', 'transom', 'lights', 'colour', 'shutterColour', 'evidence'];
 /** Problems with the historic-front fields of one front (all optional; absent fields are never checked). */
 function historicProblems(f: FrontIntent, at: string, colour: (v: unknown, where: string) => void, oneOf: (v: unknown, allowed: readonly string[], where: string) => void): string[] {
   const problems: string[] = [];
@@ -2086,6 +2218,9 @@ function historicProblems(f: FrontIntent, at: string, colour: (v: unknown, where
     else g.bays.forEach((b, i) => oneOf(b, GROUND_BAYS, `${at}.groundFront.bays[${i}]`));
     if (g?.colour !== undefined) colour(g.colour, `${at}.groundFront.colour`);
     if (g?.shutterColour !== undefined) colour(g.shutterColour, `${at}.groundFront.shutterColour`);
+    if (g?.bayWeights !== undefined && !(Array.isArray(g.bayWeights) && Array.isArray(g.bays) && g.bayWeights.length === g.bays.length && g.bayWeights.every(w => typeof w === 'number' && w > 0 && w <= 20))) problems.push(`${at}.groundFront.bayWeights: one weight (0..20] per bay`);
+    if (g?.transom !== undefined && !(typeof g.transom === 'number' && g.transom >= 0.8 && g.transom <= 4)) problems.push(`${at}.groundFront.transom: 0.8..4 m over the ground`);
+    if (g?.lights !== undefined && !(Number.isInteger(g.lights) && g.lights >= 2 && g.lights <= 6)) problems.push(`${at}.groundFront.lights: 2..6 lights per window bay`);
     if (f.shopfront) problems.push(`${at}.groundFront: not together with shopfront (one ground storey)`);
     if (f.basement !== 'none') problems.push(`${at}.groundFront: a ground front stands on the street; use basement "none"`);
   }
@@ -2096,8 +2231,9 @@ function historicProblems(f: FrontIntent, at: string, colour: (v: unknown, where
   if (f.dormerBody !== undefined) {
     if (!(DORMER_BODIES as readonly unknown[]).includes(f.dormerBody)) problems.push(`${at}.dormerBody: one of ${DORMER_BODIES.join(', ')} (or leave it out)`);
     if (!f.dormers) problems.push(`${at}.dormerBody: needs dormers >= 1`);
-    if (f.dormerStyle === 'box') problems.push(`${at}.dormerBody: a box dormer is brick`);
+    if (f.dormerStyle === 'box' && f.dormerBody !== 'zinc' && f.dormerBody !== 'zinc-band' && f.dormerBody !== 'stone') problems.push(`${at}.dormerBody: a box dormer is brick (or zinc, or stone)`);
   }
+  if (f.dormerParty !== undefined && (f.dormerParty !== true || f.dormers !== 1 || !f.dormerAt || f.dormerStyle !== 'box')) problems.push(`${at}.dormerParty: true, with dormers 1, a dormerAt span and dormerStyle "box"`);
   if (f.crownGroups !== undefined) {
     if (f.crownAt !== undefined || f.crownBays !== undefined) problems.push(`${at}.crownGroups: not together with crownAt/crownBays`);
     if (f.gable === 'flat' || (f.gable === 'cornice' && (!f.crownCap || f.crownCap === 'flat'))) problems.push(`${at}.crownGroups: the front has no crown to repeat (gable ${f.gable})`);
@@ -2116,6 +2252,27 @@ function historicProblems(f: FrontIntent, at: string, colour: (v: unknown, where
     if (t?.lights !== undefined && (t.lights !== 'per-axis' || !t.bays)) problems.push(`${at}.tower.lights: "per-axis", on a tower over bays`);
     if (t?.lightRise !== undefined && !(t.lights && t.lightRise >= 0.2 && t.lightRise <= 0.9)) problems.push(`${at}.tower.lightRise: 0.2..0.9 upper-storey heights, with lights: per-axis`);
     if (t?.lightSill !== undefined && !(t.lights && t.lightSill >= 0 && t.lightSill <= 0.6)) problems.push(`${at}.tower.lightSill: 0..0.6 upper-storey heights over the eaves, with lights: per-axis`);
+  }
+  if (f.rosettes !== undefined) {
+    if (!Array.isArray(f.rosettes) || !f.rosettes.length) problems.push(`${at}.rosettes: a non-empty list of {bays, storeys, diameter?}`);
+    else f.rosettes.forEach((r, i) => {
+      if (!r || typeof r !== 'object' || Object.keys(r).some(k => !['bays', 'storeys', 'diameter'].includes(k))) problems.push(`${at}.rosettes[${i}]: unknown field (bays, storeys, diameter)`);
+      if (!Array.isArray(r?.bays) || !r.bays.length || r.bays.some(b => !Number.isInteger(b) || b < 0 || b >= grid)) problems.push(`${at}.rosettes[${i}].bays: axes within 0..${grid - 1}`);
+      if (!Array.isArray(r?.storeys) || !r.storeys.length || r.storeys.some(s => !Number.isInteger(s) || s < 1 || s >= f.storeys)) problems.push(`${at}.rosettes[${i}].storeys: upper storeys 1..${f.storeys - 1}`);
+      if (r?.diameter !== undefined && !(typeof r.diameter === 'number' && r.diameter >= 0.4 && r.diameter <= 1.6)) problems.push(`${at}.rosettes[${i}].diameter: 0.4..1.6 m`);
+    });
+  }
+  if (f.towers !== undefined) {
+    if (!Array.isArray(f.towers) || !f.towers.length) problems.push(`${at}.towers: a non-empty list of {bays, rise, cap, finish?, lightRise?, lightSill?}`);
+    else f.towers.forEach((t, i) => {
+      if (!t || typeof t !== 'object' || Object.keys(t).some(k => !['bays', 'rise', 'cap', 'finish', 'lightRise', 'lightSill'].includes(k))) problems.push(`${at}.towers[${i}]: unknown field (bays, rise, cap, finish, lightRise, lightSill)`);
+      if (!t?.bays || !Number.isInteger(t.bays.from) || !Number.isInteger(t.bays.to) || t.bays.from < 0 || t.bays.to >= grid || t.bays.from > t.bays.to) problems.push(`${at}.towers[${i}].bays: {from, to} bay axes within 0..${grid - 1}`);
+      if (!(t?.rise >= 0.5 && t.rise <= 3)) problems.push(`${at}.towers[${i}].rise: 0.5..3 upper-storey heights above the eaves`);
+      if (!['pyramid', 'flat'].includes(t?.cap)) problems.push(`${at}.towers[${i}].cap: pyramid or flat`);
+      if (t?.finish !== undefined && t.finish !== 'stone') problems.push(`${at}.towers[${i}].finish: "stone" (or leave it out: wall brick)`);
+      if (t?.lightRise !== undefined && !(t.lightRise >= 0.2 && t.lightRise <= 0.9)) problems.push(`${at}.towers[${i}].lightRise: 0.2..0.9 upper-storey heights`);
+      if (t?.lightSill !== undefined && !(t.lightSill >= 0 && t.lightSill <= 0.6)) problems.push(`${at}.towers[${i}].lightSill: 0..0.6 upper-storey heights over the eaves`);
+    });
   }
   if (f.partyClip !== undefined && typeof f.partyClip !== 'boolean') problems.push(`${at}.partyClip must be boolean`);
   if (f.souterrain !== undefined && (typeof f.souterrain !== 'boolean' || (f.souterrain && f.basement === 'none'))) problems.push(`${at}.souterrain: boolean, and needs a basement`);
@@ -2139,7 +2296,7 @@ function historicProblems(f: FrontIntent, at: string, colour: (v: unknown, where
   }
   if (f.dormerLights !== undefined) {
     if (!f.dormers) problems.push(`${at}.dormerLights: only with dormers`);
-    else if (!Number.isInteger(f.dormerLights) || f.dormerLights < 2 || f.dormerLights > 8) problems.push(`${at}.dormerLights: integer 2..8`);
+    else if (!Number.isInteger(f.dormerLights) || f.dormerLights < 1 || f.dormerLights > 8) problems.push(`${at}.dormerLights: integer 1..8`);
   }
   if (f.dormerSize !== undefined) {
     const z = f.dormerSize as {sill?: unknown; rise?: unknown; setback?: unknown};

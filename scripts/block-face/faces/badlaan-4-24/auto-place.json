@@ -1,0 +1,908 @@
+{
+ "face": "badlaan-4-24",
+ "street": "Plantage Badlaan",
+ "library": "plantage",
+ "stripDate": "2023-01-02",
+ "seconds": 10.71,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [
+  {
+   "face": "badlaan-4-24-r1",
+   "pands": [
+    "0363100012181658",
+    "0363100012181657",
+    "0363100012171265",
+    "0363100012171264",
+    "0363100012171258"
+   ],
+   "passed": false,
+   "triangles": 12134
+  }
+ ],
+ "pands": [
+  {
+   "pandId": "0363100012181740",
+   "address": "Plantage Badlaan 24",
+   "builtYear": 1856,
+   "widthM": 6.32,
+   "eavesM": 18.21,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#89857d",
+    "wallRaw": "#655b56",
+    "skyline": {
+     "eavesM": 17.8,
+     "eavesRow": 130,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.27,
+      "riseM": 1.85,
+      "topWidthM": 0.55,
+      "centre": 0.36
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 6,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.149,
+    "structure": {
+     "bayWidthM": 0.72,
+     "bayCentre": 0.94,
+     "balconies": true,
+     "why": "balcony slabs stacked at 15.47 m (1.68 m wide), 14.2 m (1.3 m wide), 11.05 m (1.27 m wide)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 16.52,
+       "widthM": 1.68,
+       "centre": 0.67
+      },
+      {
+       "atM": 15.47,
+       "widthM": 1.68,
+       "centre": 0.69
+      },
+      {
+       "atM": 14.2,
+       "widthM": 1.3,
+       "centre": 0.38
+      },
+      {
+       "atM": 11.05,
+       "widthM": 1.27,
+       "centre": 0.38
+      },
+      {
+       "atM": 7.75,
+       "widthM": 1.13,
+       "centre": 0.66
+      }
+     ]
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: a different, taller corner front (eaves 18.2 m)",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012181743",
+   "address": "Plantage Badlaan 22",
+   "builtYear": 1804,
+   "widthM": 7.02,
+   "eavesM": 14.81,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#5a4640",
+    "wallRaw": "#625956",
+    "skyline": {
+     "eavesM": 17.05,
+     "eavesRow": 160,
+     "confidence": 1,
+     "crown": {
+      "widthM": 0.6,
+      "riseM": 1.2,
+      "topWidthM": 0.2,
+      "centre": 0.42
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 4,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.08,
+    "structure": {
+     "bayWidthM": 0.7,
+     "bayCentre": 0.95,
+     "balconies": true,
+     "why": "bay-less open axis 0.65 m at 0.95 (light 0.99): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.65,
+       "centre": 0.95,
+       "light": 0.99
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 13.3,
+       "widthM": 1.3,
+       "centre": 0.14
+      },
+      {
+       "atM": 10.3,
+       "widthM": 1.45,
+       "centre": 0.13
+      },
+      {
+       "atM": 7.22,
+       "widthM": 1.45,
+       "centre": 0.13
+      },
+      {
+       "atM": 6.47,
+       "widthM": 0.97,
+       "centre": 0.74
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: white pilaster front, a different design (7 m)",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012170227",
+   "address": "Plantage Badlaan 20",
+   "builtYear": 1806,
+   "widthM": 7.01,
+   "eavesM": 14.47,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#908c84",
+    "wallRaw": "#605e5b",
+    "skyline": {
+     "eavesM": 16.15,
+     "eavesRow": 196,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.77,
+      "riseM": 3.3,
+      "topWidthM": 0.38,
+      "centre": 0.4
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 4,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.054,
+    "structure": {
+     "bayWidthM": 1.13,
+     "bayCentre": 0.91,
+     "balconies": false,
+     "why": "no dark open axis, 2 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 13.28,
+       "widthM": 1.43,
+       "centre": 0.72
+      },
+      {
+       "atM": 10.27,
+       "widthM": 1.38,
+       "centre": 0.42
+      },
+      {
+       "atM": 7.2,
+       "widthM": 1.43,
+       "centre": 0.72
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: white pilaster front, a different design (7 m)",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012171267",
+   "address": "Plantage Badlaan 18",
+   "builtYear": 1808,
+   "widthM": 7.01,
+   "eavesM": 14.94,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#5b4740",
+    "wallRaw": "#63544f",
+    "skyline": {
+     "eavesM": 17.35,
+     "eavesRow": 148,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.77,
+      "riseM": 0.9,
+      "topWidthM": 1.77,
+      "centre": 0.75
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 4,
+    "frontClass": "columns",
+    "doorSide": "right",
+    "accentSide": "right",
+    "accentShare": 0.058,
+    "structure": {
+     "bayWidthM": 1.18,
+     "bayCentre": 0.91,
+     "balconies": true,
+     "why": "bay-less open axis 0.63 m at 0.95 (light 0.92): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.63,
+       "centre": 0.95,
+       "light": 0.92
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 13.22,
+       "widthM": 1.3,
+       "centre": 0.42
+      },
+      {
+       "atM": 10.22,
+       "widthM": 1.38,
+       "centre": 0.72
+      },
+      {
+       "atM": 7.15,
+       "widthM": 1.38,
+       "centre": 0.42
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: white pilaster front, a different design (7 m)",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012181659",
+   "address": "Plantage Badlaan 16A",
+   "builtYear": 1798,
+   "widthM": 7.01,
+   "eavesM": 14.45,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#7a605b",
+    "wallRaw": "#645450",
+    "skyline": {
+     "eavesM": 16.85,
+     "eavesRow": 168,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.4,
+      "riseM": 2.2,
+      "topWidthM": 0.33,
+      "centre": 0.43
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 4,
+    "frontClass": "columns",
+    "doorSide": "left",
+    "accentSide": "right",
+    "accentShare": 0.096,
+    "structure": {
+     "bayWidthM": 0.78,
+     "bayCentre": 0.94,
+     "balconies": false,
+     "why": "no dark open axis, 2 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 10.25,
+       "widthM": 1.43,
+       "centre": 0.12
+      },
+      {
+       "atM": 7.1,
+       "widthM": 1.35,
+       "centre": 0.42
+      },
+      {
+       "atM": 6.5,
+       "widthM": 1.02,
+       "centre": 0.11
+      },
+      {
+       "atM": 5.07,
+       "widthM": 0.8,
+       "centre": 0.73
+      }
+     ]
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: white pilaster front, a different design (7 m)",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012181658",
+   "address": "Plantage Badlaan 14",
+   "builtYear": 1858,
+   "widthM": 5.6,
+   "eavesM": 14.91,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#574942",
+    "wallRaw": "#594f49",
+    "skyline": {
+     "eavesM": 17.35,
+     "eavesRow": 148,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1,
+      "riseM": 1.3,
+      "topWidthM": 0.97,
+      "centre": 0.1
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": "right",
+    "accentSide": "right",
+    "accentShare": 0.027,
+    "structure": {
+     "bayWidthM": 0.85,
+     "bayCentre": 0.77,
+     "balconies": true,
+     "why": "balcony slabs stacked at 12.57 m (1.27 m wide), 9.57 m (1.35 m wide)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 12.57,
+       "widthM": 1.27,
+       "centre": 0.42
+      },
+      {
+       "atM": 12.27,
+       "widthM": 0.9,
+       "centre": 0.78
+      },
+      {
+       "atM": 9.57,
+       "widthM": 1.35,
+       "centre": 0.43
+      },
+      {
+       "atM": 6.27,
+       "widthM": 0.97,
+       "centre": 0.77
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "placed",
+   "type": "plantage-1855-brick-hood",
+   "score": 1,
+   "placement": {
+    "type": "plantage-1855-brick-hood",
+    "ground": "door-right",
+    "measuredPalette": {
+     "brick": "#574942",
+     "evidence": "strip 2023-01-02 span 1374-1598: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown pediment-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012181658",
+    "ncc": 0.378,
+    "nccRaw": 0.378,
+    "shiftM": [
+     -0.4,
+     0.4
+    ],
+    "usable": 0.96,
+    "abstain": null,
+    "verdict": "PASS",
+    "reasons": [],
+    "wall": {
+     "photo": "#5f4f48",
+     "model": "#715f56",
+     "dL": 0.063
+    },
+    "glazing": {
+     "photo": 0.36,
+     "model": 0.43
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.56
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012181657",
+   "address": "Plantage Badlaan 12",
+   "builtYear": 1854,
+   "widthM": 5.58,
+   "eavesM": 14.95,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#4c433d",
+    "wallRaw": "#5d5551",
+    "skyline": {
+     "eavesM": 17.45,
+     "eavesRow": 144,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.6,
+      "riseM": 1.3,
+      "topWidthM": 1.6,
+      "centre": 0.82
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.005,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 12.47,
+       "widthM": 0.9,
+       "centre": 0.09
+      },
+      {
+       "atM": 9.55,
+       "widthM": 1.23,
+       "centre": 0.38
+      },
+      {
+       "atM": 6.1,
+       "widthM": 0.9,
+       "centre": 0.38
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "placed",
+   "type": "plantage-1855-brick-hood",
+   "score": 1,
+   "placement": {
+    "type": "plantage-1855-brick-hood",
+    "ground": "door-left",
+    "measuredPalette": {
+     "brick": "#4c433d",
+     "evidence": "strip 2023-01-02 span 1599-1822: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown pediment-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012181657",
+    "ncc": 0.28,
+    "nccRaw": 0.28,
+    "shiftM": [
+     -0.05,
+     0.2
+    ],
+    "usable": 0.98,
+    "abstain": null,
+    "verdict": "PASS",
+    "reasons": [],
+    "wall": {
+     "photo": "#4e453f",
+     "model": "#665a52",
+     "dL": 0.084
+    },
+    "glazing": {
+     "photo": 0.42,
+     "model": 0.46
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.521
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012171265",
+   "address": "Plantage Badlaan 10",
+   "builtYear": 1853,
+   "widthM": 5.61,
+   "eavesM": 14.91,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#4a423d",
+    "wallRaw": "#5c5450",
+    "skyline": {
+     "eavesM": 17.65,
+     "eavesRow": 136,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.15,
+      "riseM": 1.8,
+      "topWidthM": 0.8,
+      "centre": 0.6
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.002,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6.22,
+       "widthM": 1,
+       "centre": 0.72
+      },
+      {
+       "atM": 5.92,
+       "widthM": 0.95,
+       "centre": 0.39
+      }
+     ]
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0
+   },
+   "status": "placed",
+   "type": "plantage-1855-brick-hood",
+   "score": 1,
+   "placement": {
+    "type": "plantage-1855-brick-hood",
+    "ground": "door-left",
+    "measuredPalette": {
+     "brick": "#4a423d",
+     "evidence": "strip 2023-01-02 span 1823-2047: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown pediment-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012171265",
+    "ncc": 0.194,
+    "nccRaw": 0.194,
+    "shiftM": [
+     0,
+     0.15
+    ],
+    "usable": 0.98,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.17 mean 0.46 vs photo 0.30"
+    ],
+    "wall": {
+     "photo": "#534944",
+     "model": "#645953",
+     "dL": 0.063
+    },
+    "glazing": {
+     "photo": 0.3,
+     "model": 0.46
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.589
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012171264",
+   "address": "Plantage Badlaan 8A",
+   "builtYear": 1843,
+   "widthM": 5.6,
+   "eavesM": 14.76,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#5c4a43",
+    "wallRaw": "#62534d",
+    "skyline": {
+     "eavesM": 17.45,
+     "eavesRow": 144,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.38,
+      "riseM": 1.1,
+      "topWidthM": 2.38,
+      "centre": 0.46
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.002,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 5.85,
+       "widthM": 0.95,
+       "centre": 0.41
+      }
+     ]
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0
+   },
+   "status": "placed",
+   "type": "plantage-1855-brick-hood",
+   "score": 1,
+   "placement": {
+    "type": "plantage-1855-brick-hood",
+    "measuredPalette": {
+     "brick": "#5c4a43",
+     "evidence": "strip 2023-01-02 span 2047-2271: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown pediment-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012171264",
+    "ncc": 0.259,
+    "nccRaw": 0.259,
+    "shiftM": [
+     -0.4,
+     0.25
+    ],
+    "usable": 0.96,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.24 mean 0.43 vs photo 0.55"
+    ],
+    "wall": {
+     "photo": "#5e4c45",
+     "model": "#765f56",
+     "dL": 0.08
+    },
+    "glazing": {
+     "photo": 0.55,
+     "model": 0.43
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.581
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012171258",
+   "address": "Plantage Badlaan 6",
+   "builtYear": 1850,
+   "widthM": 5.61,
+   "eavesM": 14.87,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#5b4a42",
+    "wallRaw": "#60524b",
+    "skyline": {
+     "eavesM": 17.45,
+     "eavesRow": 144,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.57,
+      "riseM": 1.4,
+      "topWidthM": 1.4,
+      "centre": 0.35
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "curtain",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.003,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6.63,
+       "widthM": 1.07,
+       "centre": 0.72
+      },
+      {
+       "atM": 6.1,
+       "widthM": 1,
+       "centre": 0.38
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "placed",
+   "type": "plantage-1855-brick-hood",
+   "score": 1,
+   "placement": {
+    "type": "plantage-1855-brick-hood",
+    "measuredPalette": {
+     "brick": "#5b4a42",
+     "evidence": "strip 2023-01-02 span 2271-2495: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown pediment-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012171258",
+    "ncc": 0.178,
+    "nccRaw": 0.178,
+    "shiftM": [
+     -0.05,
+     0.2
+    ],
+    "usable": 0.97,
+    "abstain": null,
+    "verdict": "PASS",
+    "reasons": [],
+    "wall": {
+     "photo": "#5e4e47",
+     "model": "#755f55",
+     "dL": 0.073
+    },
+    "glazing": {
+     "photo": 0.43,
+     "model": 0.43
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.501
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012171257",
+   "address": "Plantage Badlaan 4",
+   "builtYear": 1869,
+   "widthM": 7.05,
+   "eavesM": 15.27,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6a554f",
+    "wallRaw": "#524540",
+    "skyline": {
+     "eavesM": 18.05,
+     "eavesRow": 120,
+     "confidence": 0.58,
+     "crown": {
+      "widthM": 4.42,
+      "riseM": 3,
+      "topWidthM": 1.88,
+      "centre": 0.65
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.015,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 8.82,
+       "widthM": 1.25,
+       "centre": 0.46
+      }
+     ]
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: a different front (7 m, eaves 15.3, ridge 19)",
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

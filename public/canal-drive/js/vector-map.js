@@ -1288,7 +1288,10 @@ class VectorBasemap {
     // The register's facade facts (monument-facts.json: era, wall finish, stated extras) read before the facade; `?registerFacts=0` skips them.
     const facts = this._registerFacts;
     const registered = facts && facts.size && api && api.withRegisterFacts ? (feature) => api.withRegisterFacts(feature, facts) : (feature) => feature;
-    const decorate = withRoofs ? (feature) => api.decorateRoof(named(Facades.decorateFacade(registered(feature)))) : (feature) => Facades.decorateFacade(registered(feature));
+    // HouseSpecs (houseSpec/decorate.ts): facts after the register, crown after the monument gable; no-ops without `p.houseSpec`.
+    const spec = api && api.withHouseSpec ? api.withHouseSpec : (feature) => feature;
+    const crown = api && api.withHouseSpecCrown ? api.withHouseSpecCrown : (feature) => feature;
+    const decorate = withRoofs ? (feature) => api.decorateRoof(crown(named(Facades.decorateFacade(spec(registered(feature)))))) : (feature) => Facades.decorateFacade(spec(registered(feature)));
     // Landmark buildings (churches, museums, Centraal…) keep their own form: no generic facade or roof.
     if (!this._landmarkBuildingIds) this._landmarkBuildingIds = new Set();
     const base = api && api.exceptLandmarks ? api.exceptLandmarks(decorate, this._landmarkBuildingIds, this._listedLandmarks) : decorate;
@@ -1560,8 +1563,14 @@ class VectorBasemap {
       // Measured roofs (roof-facts, PDOK orthophoto) ride in on the same grid; `?roofFacts=0` turns them off.
       const extract = this._extractPath || '../data/extracts/amsterdam';
       const years = Facades.constructionYearEnricher(extract);
-      this._completeCity.setTileEnricher(Facades.composeEnrichers && Facades.roofFactsEnabled()
-        ? Facades.composeEnrichers(years, Facades.roofFactsEnricher(extract)) : years);
+      let enricher = Facades.composeEnrichers && Facades.roofFactsEnabled()
+        ? Facades.composeEnrichers(years, Facades.roofFactsEnricher(extract)) : years;
+      // HouseSpecs (house line, docs/house-line.md): stamp each pand's spec view; `?houseSpecs=0` turns them off.
+      const specApi = window.CanalRecallThreeBuildings;
+      if (Facades.composeEnrichers && specApi && specApi.houseSpecEnricher && specApi.houseSpecsEnabled(window.location.search)) {
+        enricher = Facades.composeEnrichers(enricher, specApi.houseSpecEnricher(extract));
+      }
+      this._completeCity.setTileEnricher(enricher);
       this._applyFeatureDecorator();
       this._loadLandmarkBuildingIds();
       this._loadMonumentGables();

@@ -139,5 +139,5 @@ test('dormer body: white timber dormers in the stone slot (not frame-class); val
   assert.ok(trim.every(x => x.wallSurface === 'trim'));
   assert.throws(bad(h, {dormerBody: 'plastic' as never}), /dormerBody/);
   assert.throws(bad(h, {dormers: 0}), /dormerBody: needs dormers/);
-  assert.throws(bad(h, {dormerStyle: 'box'}), /dormerBody: a box dormer/);
+  assert.throws(bad(h, {dormerStyle: 'box', dormerBody: 'timber'}), /dormerBody: a box dormer/);
 });

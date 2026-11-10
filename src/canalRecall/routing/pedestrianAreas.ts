@@ -20,6 +20,7 @@
  */
 
 import { PAVED_LINKS } from './pavedLinks.ts';
+import { BGT_PLAZA_MIN_AREA_M2 } from './bgtPlazas.ts';
 
 export interface PlazaPoint { x: number; y: number }
 
@@ -27,11 +28,20 @@ export interface PlazaFeature {
   name?: string;
   path?: Array<[number, number]>;
   paths?: Array<Array<[number, number]>>;
+  /**
+   * Polygons with holes, outer ring first (BGT plazas, bgtPlazas.ts). A hole (a pand, a planter, a tree pit inside
+   * the paving) is not plaza and keeps the same edge inset as the outline.
+   */
+  polygons?: Array<Array<Array<[number, number]>>>;
+  /** `bgt`: from the BGT plaza extract, already filtered by its rule; the name checks below do not apply. */
+  source?: string;
 }
 
 export interface Plaza {
   name: string;
   ring: PlazaPoint[];
+  /** Rings inside `ring` that are not plaza. */
+  holes: PlazaPoint[][];
   minX: number; minY: number; maxX: number; maxY: number;
 }
 
@@ -39,7 +49,13 @@ export interface PlazaIndex {
   plazas: Plaza[];
   /** Edge inset in world units. */
   inset: number;
+  /** Plazas by grid cell (`cellSize` world units), so a city of BGT plazas costs a few box tests per query. */
+  grid?: Map<string, Plaza[]>;
+  cellSize?: number;
 }
+
+/** Grid cell for the plaza lookup, metres. */
+export const PLAZA_GRID_METRES = 100;
 
 /** Half a bike length: the rider's centre stays this far off the outline. */
 export const PLAZA_EDGE_INSET_METRES = 1.5;
@@ -77,6 +93,7 @@ export function ringAreaSquareMetres(path: ReadonlyArray<[number, number]>): num
 }
 
 export function isRideablePlaza(feature: PlazaFeature, path: ReadonlyArray<[number, number]>): boolean {
+  if (feature.source === 'bgt') return isClosedRing(path) && ringAreaSquareMetres(path) >= BGT_PLAZA_MIN_AREA_M2;
   const name = (feature.name || '').trim();
   if (GREEN_SQUARES.has(name) || GREEN_SQUARE_NAME.test(name)) return false;
   return isClosedRing(path) && ringAreaSquareMetres(path) >= PLAZA_MIN_AREA_M2;
@@ -95,10 +112,11 @@ export function buildPlazaIndex(
 ): PlazaIndex {
   const plazas: Plaza[] = [];
   for (const feature of [...(features || []), ...links]) {
-    const paths = feature.paths || (feature.path ? [feature.path] : []);
-    for (const path of paths) {
+    const polygons = feature.polygons || (feature.paths || (feature.path ? [feature.path] : [])).map(path => [path]);
+    for (const [path, ...holePaths] of polygons) {
       if (!path || !isRideablePlaza(feature, path)) continue;
       const ring = path.map(([lat, lon]) => project(lat, lon));
+      const holes = holePaths.map(hole => hole.map(([lat, lon]) => project(lat, lon)));
       let minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
       for (const p of ring) {
         if (p.x < minX) minX = p.x;
@@ -106,10 +124,21 @@ export function buildPlazaIndex(
         if (p.x > maxX) maxX = p.x;
         if (p.y > maxY) maxY = p.y;
       }
-      plazas.push({ name: feature.name || '', ring, minX, minY, maxX, maxY });
+      plazas.push({ name: feature.name || '', ring, holes, minX, minY, maxX, maxY });
     }
   }
-  return { plazas, inset: PLAZA_EDGE_INSET_METRES * worldUnitsPerMetre };
+  const cellSize = PLAZA_GRID_METRES * worldUnitsPerMetre;
+  const grid = new Map<string, Plaza[]>();
+  for (const plaza of plazas) {
+    for (let gx = Math.floor(plaza.minX / cellSize); gx <= Math.floor(plaza.maxX / cellSize); gx++) {
+      for (let gy = Math.floor(plaza.minY / cellSize); gy <= Math.floor(plaza.maxY / cellSize); gy++) {
+        const key = `${gx},${gy}`;
+        const list = grid.get(key);
+        if (list) list.push(plaza); else grid.set(key, [plaza]);
+      }
+    }
+  }
+  return { plazas, inset: PLAZA_EDGE_INSET_METRES * worldUnitsPerMetre, grid, cellSize };
 }
 
 function insideRing(ring: readonly PlazaPoint[], x: number, y: number): boolean {
@@ -137,9 +166,14 @@ function edgeDistance(ring: readonly PlazaPoint[], x: number, y: number): number
 /** The rideable square under (x, y), or null. */
 export function plazaAt(index: PlazaIndex | null | undefined, x: number, y: number): Plaza | null {
   if (!index) return null;
-  for (const plaza of index.plazas) {
+  const candidates = index.grid && index.cellSize
+    ? index.grid.get(`${Math.floor(x / index.cellSize)},${Math.floor(y / index.cellSize)}`) ?? []
+    : index.plazas;
+  for (const plaza of candidates) {
     if (x < plaza.minX || x > plaza.maxX || y < plaza.minY || y > plaza.maxY) continue;
-    if (insideRing(plaza.ring, x, y) && edgeDistance(plaza.ring, x, y) >= index.inset) return plaza;
+    if (!insideRing(plaza.ring, x, y) || edgeDistance(plaza.ring, x, y) < index.inset) continue;
+    if (plaza.holes.some(hole => insideRing(hole, x, y) || edgeDistance(hole, x, y) < index.inset)) continue;
+    return plaza;
   }
   return null;
 }

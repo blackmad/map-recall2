@@ -1,0 +1,26 @@
+{
+ "note": "Den Texbuurt review holds (lane buurt-dentex-frederiksplein-20261110), from the strip sheets.",
+ "reviewed": "2026-11-10",
+ "holds": [
+  {
+   "pandId": "0363100012179440",
+   "reason": "Den Texstraat 3: a taller five-row 1885 design (four window rows above the ground, red-brown brick, iron balconies); no type in the library has it"
+  },
+  {
+   "pandId": "0363100012179439",
+   "reason": "Den Texstraat 5: same taller design as 3 (four rows above the ground); the pijp types draw the wrong storey count"
+  },
+  {
+   "pandId": "0363100012179438",
+   "reason": "Den Texstraat 5A: same taller design as 3 and 5"
+  },
+  {
+   "pandId": "0363100012179437",
+   "reason": "Den Texstraat 5B: black-painted tall front with a green awning; not the 3-storey mansard design"
+  },
+  {
+   "pandId": "0363100012179381",
+   "reason": "Den Texstraat 19: larger flanking dormers, grey mansard, a different 1876 design; its frontRoof does not compile either"
+  }
+ ]
+}

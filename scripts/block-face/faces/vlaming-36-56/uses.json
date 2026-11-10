@@ -1,0 +1,355 @@
+{
+ "street": "Pieter Vlamingstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T07:36:36.722Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012162085",
+   "addresses": [
+    "Pieter Vlamingstraat 56"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter Vlamingstraat 56-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 42,
+     "bagId": "0363010000776569"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 9790023957,
+     "lngLat": [
+      4.92588,
+      52.364685
+     ],
+     "tags": {
+      "amenity": "restaurant",
+      "name": "Boiboi"
+     },
+     "fetchedAt": "2026-11-10T07:36:36.722Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012166230",
+   "addresses": [
+    "Pieter Vlamingstraat 54"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter Vlamingstraat 54",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010001993823"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012163414",
+   "addresses": [
+    "Pieter Vlamingstraat 52C",
+    "Pieter Vlamingstraat 52D",
+    "Pieter Vlamingstraat 52G",
+    "Pieter Vlamingstraat 52H",
+    "Pieter Vlamingstraat 52A",
+    "Pieter Vlamingstraat 52B",
+    "Pieter Vlamingstraat 52E",
+    "Pieter Vlamingstraat 52F"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter Vlamingstraat 52C",
+     "use": "woonfunctie",
+     "areaM2": 64,
+     "bagId": "0363010001993815"
+    },
+    {
+     "address": "Pieter Vlamingstraat 52D",
+     "use": "woonfunctie",
+     "areaM2": 64,
+     "bagId": "0363010001993816"
+    },
+    {
+     "address": "Pieter Vlamingstraat 52G",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010001993817"
+    },
+    {
+     "address": "Pieter Vlamingstraat 52H",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010001993818"
+    },
+    {
+     "address": "Pieter Vlamingstraat 52A",
+     "use": "woonfunctie",
+     "areaM2": 64,
+     "bagId": "0363010001993819"
+    },
+    {
+     "address": "Pieter Vlamingstraat 52B",
+     "use": "woonfunctie",
+     "areaM2": 64,
+     "bagId": "0363010001993820"
+    },
+    {
+     "address": "Pieter Vlamingstraat 52E",
+     "use": "woonfunctie",
+     "areaM2": 64,
+     "bagId": "0363010001993821"
+    },
+    {
+     "address": "Pieter Vlamingstraat 52F",
+     "use": "woonfunctie",
+     "areaM2": 64,
+     "bagId": "0363010001993822"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012157029",
+   "addresses": [
+    "Pieter Vlamingstraat 50"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter Vlamingstraat 50",
+     "use": "woonfunctie",
+     "areaM2": 74,
+     "bagId": "0363010001993814"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012160757",
+   "addresses": [
+    "Pieter Vlamingstraat 48"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter Vlamingstraat 48-H",
+     "use": "industriefunctie",
+     "areaM2": 95,
+     "bagId": "0363010000776548"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012121661",
+   "addresses": [
+    "Pieter Vlamingstraat 46"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter Vlamingstraat 46",
+     "use": "kantoorfunctie",
+     "areaM2": 71,
+     "bagId": "0363010002001813"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012150078",
+   "addresses": [
+    "Pieter Vlamingstraat 44"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter Vlamingstraat 44",
+     "use": "kantoorfunctie",
+     "areaM2": 77,
+     "bagId": "0363010002001812"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012122070",
+   "addresses": [
+    "Pieter Vlamingstraat 42H",
+    "Pieter Vlamingstraat 42L",
+    "Pieter Vlamingstraat 42R",
+    "Pieter Vlamingstraat 42S",
+    "Pieter Vlamingstraat 42T",
+    "Pieter Vlamingstraat 42P",
+    "Pieter Vlamingstraat 42N",
+    "Pieter Vlamingstraat 42M",
+    "Pieter Vlamingstraat 42K",
+    "Pieter Vlamingstraat 42G",
+    "Pieter Vlamingstraat 42F",
+    "Pieter Vlamingstraat 42E",
+    "Pieter Vlamingstraat 42D",
+    "Pieter Vlamingstraat 42C",
+    "Pieter Vlamingstraat 42B",
+    "Pieter Vlamingstraat 42A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter Vlamingstraat 42H",
+     "use": "woonfunctie",
+     "areaM2": 77,
+     "bagId": "0363010002001803"
+    },
+    {
+     "address": "Pieter Vlamingstraat 42L",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010002001805"
+    },
+    {
+     "address": "Pieter Vlamingstraat 42R",
+     "use": "woonfunctie",
+     "areaM2": 78,
+     "bagId": "0363010002001809"
+    },
+    {
+     "address": "Pieter Vlamingstraat 42S",
+     "use": "woonfunctie",
+     "areaM2": 81,
+     "bagId": "0363010002001810"
+    },
+    {
+     "address": "Pieter Vlamingstraat 42T",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010002001811"
+    },
+    {
+     "address": "Pieter Vlamingstraat 42P",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010002001808"
+    },
+    {
+     "address": "Pieter Vlamingstraat 42N",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010002001807"
+    },
+    {
+     "address": "Pieter Vlamingstraat 42M",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010002001806"
+    },
+    {
+     "address": "Pieter Vlamingstraat 42K",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010002001804"
+    },
+    {
+     "address": "Pieter Vlamingstraat 42G",
+     "use": "woonfunctie",
+     "areaM2": 74,
+     "bagId": "0363010002001802"
+    },
+    {
+     "address": "Pieter Vlamingstraat 42F",
+     "use": "woonfunctie",
+     "areaM2": 73,
+     "bagId": "0363010002001801"
+    },
+    {
+     "address": "Pieter Vlamingstraat 42E",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010002001800"
+    },
+    {
+     "address": "Pieter Vlamingstraat 42D",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010002001799"
+    },
+    {
+     "address": "Pieter Vlamingstraat 42C",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010002001798"
+    },
+    {
+     "address": "Pieter Vlamingstraat 42B",
+     "use": "woonfunctie",
+     "areaM2": 73,
+     "bagId": "0363010002001797"
+    },
+    {
+     "address": "Pieter Vlamingstraat 42A",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010002001796"
+    }
+   ],
+   "units": 16,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012125671",
+   "addresses": [
+    "Pieter Vlamingstraat 40"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter Vlamingstraat 40",
+     "use": "kantoorfunctie",
+     "areaM2": 77,
+     "bagId": "0363010002001795"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012094055",
+   "addresses": [
+    "Pieter Vlamingstraat 38"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter Vlamingstraat 38",
+     "use": "kantoorfunctie",
+     "areaM2": 77,
+     "bagId": "0363010002001794"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012125776",
+   "addresses": [
+    "Pieter Vlamingstraat 36"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter Vlamingstraat 36-H",
+     "use": "woonfunctie",
+     "areaM2": 41,
+     "bagId": "0363010000776436"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

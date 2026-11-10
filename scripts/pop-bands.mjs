@@ -157,7 +157,7 @@ const setup = await page.evaluate(workerSrc => {
     landmarkAdd: wrap(sl, '_add', function (base, a) { const r = base.apply(this, a); const en = (this._entries || []).find(e => e.spec.id === a[0]?.id); log('landmark', 'arrive', !!(en && this._levelFades?.has?.(en)), null, a[0]?.id, anchorOf(a[0])); return r; }),
     landmarkDrop: wrap(sl, '_dropEntries', function (base, a) { const objs = (this._entries || []).filter(e => a[0]?.has?.(e.spec.id)).map(e => [e.spec.id, anchorOf(e.spec, e)]); const r = base.apply(this, a); for (const [id, an] of objs) log('landmark', 'leave', false, null, id, an); return r; }),
     landmarkLevel: wrap(sl, '_swapLevel', function (base, a) { const r = base.apply(this, a); log('landmark', 'swap', !!this._levelFades?.has?.(a[0]), null, `${a[0]?.spec?.id}:${a[2]}`, anchorOf(a[0]?.spec, a[0])); return r; }),
-    trees: wrap(tr, 'rebuild', function (base, a) { const r = base.apply(this, a); log('trees', 'rebuild', false, null, ''); return r; }),
+    trees: wrap(tr, 'rebuild', function (base, a) { this.lastFade = null; const r = base.apply(this, a); const lf = this.lastFade; log('trees', 'rebuild', !!lf?.dissolved, null, lf ? `+${lf.entered}/-${lf.left}/=${lf.kept}` : ''); return r; }),
     ground: wrap(og, 'install', function (base, a) { const before = this.resident?.get?.(a[0]?.key)?.group; const r = base.apply(this, a); const now = this.resident?.get?.(a[0]?.key)?.group; if (now && now !== before) log('ground', before ? 'swap' : 'arrive', false, now, a[0]?.key); return r; }),
   };
   const worker = new Worker(URL.createObjectURL(new Blob([workerSrc], { type: 'text/javascript' })));
@@ -247,7 +247,7 @@ const hidden = e => Math.max(e.fogW ?? 0, e.limitW ?? 0) >= 0.98;
 for (const e of raw.events) {
   const c = cell(e.tier, bandOf(e.d));
   c.events++; if (e.onScreen) c.onScreen++; if (e.faded) c.faded++;
-  if (e.tier === 'trees') { c.pops++; continue; } // a rebuild of every tree: placed nowhere, counted as one pop
+  if (e.tier === 'trees') { if (!e.faded) c.pops++; continue; } // a rebuild of every tree: placed nowhere, one pop unless it dissolved (lane P5)
   if (isPop(e)) { c.pops++; if (!hidden(e)) c.popsVisible++; }
 }
 const byFrame = new Map(); for (const e of raw.events) { if (!(e.onScreen || e.tier === 'trees')) continue; (byFrame.get(e.f) ?? byFrame.set(e.f, []).get(e.f)).push(e); }

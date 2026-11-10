@@ -1,0 +1,136 @@
+{
+ "schemaVersion": 1,
+ "kind": "house-type",
+ "id": "plantage-1880-stucco-cartouche",
+ "district": "plantage",
+ "description": "Plantage Doklaan 30-42 (BAG dates 1841-1890, one design): 5.0-5.4 m stuccoed fronts of a ground storey and three upper storeys; three axes of tall casements in moulded surrounds with a small cartouche over each head and a sill slab, ground door as a double black door under a plain lintel, a bracketed cornice with a frieze at 11.5-12.7 m and one pentagonal (pointed) timber dormer",
+ "fit": {
+  "widthM": [
+   4.6,
+   5.8
+  ],
+  "storeys": [
+   4
+  ]
+ },
+ "match": {
+  "years": [
+   1800,
+   1895
+  ],
+  "yearSlack": 0,
+  "eavesM": [
+   11.6,
+   12.8
+  ],
+  "stucco": true,
+  "baysByWidth": [
+   {
+    "maxWidthM": 99,
+    "bays": 3
+   }
+  ],
+  "note": "Doklaan 30-42: BAG dates scatter 1841-1890 on one stucco design; keyed by eaves 12.1-12.3 and the face pin"
+ },
+ "body": {
+  "storeys": 4,
+  "bays": 3,
+  "storeyHeights": [
+   2.8,
+   3.0,
+   3.0,
+   3.0
+  ],
+  "windows": "casement-toplight",
+  "windowSurround": "keystone",
+  "windowHeights": [
+   0.75,
+   0.7,
+   0.7,
+   0.7
+  ],
+  "headLines": [
+   0.93,
+   0.77,
+   0.77,
+   0.77
+  ],
+  "windowShare": 0.6,
+  "cornice": "heavy"
+ },
+ "crowns": {
+  "pointed-dormer": {
+   "gable": "cornice",
+   "dormers": 1,
+   "dormerStyle": "pointed",
+   "dormerAt": [
+    {
+     "from": 0.34,
+     "to": 0.66
+    }
+   ],
+   "dormerSize": {
+    "sill": 0.1,
+    "rise": 1.2,
+    "setback": 0.3
+   },
+   "note": "one pentagonal dormer 1.9 m wide, 12.7-14.3 m, with a two-light window"
+  }
+ },
+ "palettes": {
+  "cream-stucco": {
+   "brick": "#d9d5c6",
+   "frame": "#e8e4d8",
+   "door": "#1f2324",
+   "stone": "#dcd8cb",
+   "cornice": "#d4d0c1",
+   "wallMaterial": "stucco"
+  }
+ },
+ "roof": {
+  "material": "slate"
+ },
+ "rhythm": {
+  "bays": "3 window axes",
+  "windowsPerStorey": "ground: door + 2 | 1: 3 | 2: 3 | 3: 3",
+  "symmetry": "symmetric above the ground",
+  "groundFloor": "residential: double door and two windows",
+  "signage": "none",
+  "roofline": "bracketed cornice, one pentagonal dormer",
+  "photoRows": [
+   1,
+   3,
+   3,
+   3
+  ],
+  "photoGroundRows": 1,
+  "photoGables": 0
+ },
+ "evidence": [
+  {
+   "face": "doklaan-28-42",
+   "pands": [
+    "181141",
+    "181142",
+    "181143",
+    "181138"
+   ],
+   "citation": "strip.jpg 40 px/m gridded: ground sills 0.5 m heads 2.6 m, door 2.6 m; storey-1 windows 3.0-5.1, storey-2 6.0-8.1, storey-3 9.0-11.1 m; string at 5.8 m, frieze 11.4-12.7 m; dormer apex 14.4 m, 1.9 m wide; windows 1.0 m wide on 5.0 m"
+  }
+ ],
+ "schemaLimits": [
+  "the cartouche over each head is a plain keystone block"
+ ],
+ "grounds": {
+  "door-left": {
+   "doorBay": 0,
+   "basement": "none",
+   "note": "double door with a transom at the left axis"
+  },
+  "door-right": {
+   "doorBay": 2,
+   "basement": "none",
+   "note": "double door at the right axis"
+  }
+ }
+}

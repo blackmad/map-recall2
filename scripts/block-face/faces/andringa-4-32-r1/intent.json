@@ -1,0 +1,93 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "andringa-4-32-r1",
+ "street": "Joris van Andringastraat",
+ "sources": [
+  {
+   "id": "strip-2024-11-21",
+   "kind": "street-panorama",
+   "capturedAt": "2024-11-21",
+   "image": "staging/block-face/andringa-4-32-r1/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "auto-place (blockFace/autoPlace.ts)",
+  "passes": 1,
+  "note": "auto-placed from the landlust library (buurt Landlust-Zuid); scores and holds in scripts/block-face/faces/andringa-4-32/auto-place.json"
+ },
+ "types": [
+  "landlust-1934-slot-block"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012124713",
+   "slug": "andringa-124713",
+   "address": "Joris van Andringastraat 10",
+   "type": {
+    "type": "landlust-1934-slot-block",
+    "measuredPalette": {
+     "brick": "#66432b",
+     "evidence": "strip 2024-11-21 span 2560-3073: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "crown": "zinc-dormers-inward"
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2024-11-21",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: landlust-1934-slot-block scored 1 on eaves 1, storeys 1, stucco 1, columns 1; strip 2024-11-21 span 2560-3073"
+   }
+  },
+  {
+   "pandId": "0363100012103458",
+   "slug": "andringa-103458",
+   "address": "Joris van Andringastraat 6",
+   "type": {
+    "type": "landlust-1934-slot-block",
+    "measuredPalette": {
+     "brick": "#67432a",
+     "evidence": "strip 2024-11-21 span 3073-3585: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "crown": "zinc-dormers-inward"
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2024-11-21",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: landlust-1934-slot-block scored 1 on eaves 1, storeys 1, stucco 1, columns 1; strip 2024-11-21 span 3073-3585"
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "auto-place: low attic behind the cornice; the strips show sky over the cornices of the type rows"
+  },
+  "measuredEaves": [
+   {
+    "pand": "0363100012103458",
+    "stripRow": 176,
+    "evidence": "auto-place: strip skyline cornice 10.6 m within 1 m of the landlust-1934-slot-block line 10.1 m; 3DBAG/PDOK eaves 10.05 m"
+   }
+  ]
+ }
+}

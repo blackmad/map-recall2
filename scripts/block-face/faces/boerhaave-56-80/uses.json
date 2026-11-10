@@ -1,0 +1,246 @@
+{
+ "street": "Tweede Boerhaavestraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T08:47:48.527Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012236956",
+   "addresses": [
+    "Tweede Boerhaavestraat 80"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Boerhaavestraat 80",
+     "use": "gezondheidszorgfunctie",
+     "areaM2": 1972,
+     "bagId": "0363010001018554"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2825261809,
+     "lngLat": [
+      4.9154893,
+      52.3599986
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "80",
+      "addr:postcode": "1091AR",
+      "addr:street": "Tweede Boerhaavestraat",
+      "amenity": "social_facility",
+      "name": "Passantenhotel",
+      "social_facility": "shelter",
+      "source": "BAG",
+      "source:date": "2014-03-24"
+     },
+     "fetchedAt": "2026-11-10T08:47:48.527Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012233570",
+   "addresses": [
+    "Tweede Boerhaavestraat 78"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Boerhaavestraat 78-H",
+     "use": "woonfunctie",
+     "areaM2": 124,
+     "bagId": "0363010001009794"
+    },
+    {
+     "address": "Tweede Boerhaavestraat 78-H",
+     "use": "woonfunctie",
+     "areaM2": 113,
+     "bagId": "0363010012068600"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012084752",
+   "addresses": [
+    "Tweede Boerhaavestraat 76"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Boerhaavestraat 76-H",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000550047"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012070638",
+   "addresses": [
+    "Tweede Boerhaavestraat 74"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Boerhaavestraat 74-H",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000550039"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012076685",
+   "addresses": [
+    "Tweede Boerhaavestraat 72"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Boerhaavestraat 72-H",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000550031"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012066166",
+   "addresses": [
+    "Tweede Boerhaavestraat 70"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Boerhaavestraat 70-H",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000550023"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012112263",
+   "addresses": [
+    "Tweede Boerhaavestraat 68"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Boerhaavestraat 68-H",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000550015"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012078068",
+   "addresses": [
+    "Tweede Boerhaavestraat 66"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Boerhaavestraat 66-H",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000550007"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012067569",
+   "addresses": [
+    "Tweede Boerhaavestraat 64"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Boerhaavestraat 64-H",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000549999"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012134486",
+   "addresses": [
+    "Tweede Boerhaavestraat 62"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Boerhaavestraat 62-H",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000549991"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012075482",
+   "addresses": [
+    "Tweede Boerhaavestraat 60"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Boerhaavestraat 60-H",
+     "use": "woonfunctie",
+     "areaM2": 59,
+     "bagId": "0363010000549983"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012115258",
+   "addresses": [
+    "Tweede Boerhaavestraat 58"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Boerhaavestraat 58-H",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000549971"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012130219",
+   "addresses": [
+    "Tweede Boerhaavestraat 56"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Boerhaavestraat 56-H",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010000549966"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

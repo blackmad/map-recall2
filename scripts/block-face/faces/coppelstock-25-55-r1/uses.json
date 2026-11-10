@@ -1,0 +1,121 @@
+{
+ "street": "Coppelstockstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched n/a (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012149193",
+   "addresses": [
+    "Coppelstockstraat 29"
+   ],
+   "groundUnits": [
+    {
+     "address": "Coppelstockstraat 29-H",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000608684"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012066272",
+   "addresses": [
+    "Coppelstockstraat 31"
+   ],
+   "groundUnits": [
+    {
+     "address": "Coppelstockstraat 31-H",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000608688"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012104481",
+   "addresses": [
+    "Coppelstockstraat 33"
+   ],
+   "groundUnits": [
+    {
+     "address": "Coppelstockstraat 33-H",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010000608695"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012104480",
+   "addresses": [
+    "Coppelstockstraat 35"
+   ],
+   "groundUnits": [
+    {
+     "address": "Coppelstockstraat 35-H",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000608699"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012122456",
+   "addresses": [
+    "Coppelstockstraat 37"
+   ],
+   "groundUnits": [
+    {
+     "address": "Coppelstockstraat 37-H",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000608703"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012100119",
+   "addresses": [
+    "Coppelstockstraat 39"
+   ],
+   "groundUnits": [
+    {
+     "address": "Coppelstockstraat 39-H",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000608707"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012089839",
+   "addresses": [
+    "Coppelstockstraat 41"
+   ],
+   "groundUnits": [
+    {
+     "address": "Coppelstockstraat 41-H",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000608711"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

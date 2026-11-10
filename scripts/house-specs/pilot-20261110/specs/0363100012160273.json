@@ -1,0 +1,35 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012160273",
+ "address": "Nassaukade 147",
+ "design": {
+  "fronts": [
+   {
+    "bays": 3
+   }
+  ],
+  "palette": {
+   "wallMaterial": "painted-brick"
+  }
+ },
+ "provenance": {
+  "fronts/0/bays": {
+   "source": "author",
+   "confidence": 0.9,
+   "ref": "h7 hand read of block-face strip nassau-145-152 2024-11-21: three axes, agrees with Jev 3",
+   "at": "2026-11-10"
+  },
+  "palette/wallMaterial": {
+   "source": "author",
+   "confidence": 0.9,
+   "ref": "h7 hand read of block-face strip nassau-145-152 2024-11-21: dark painted brick: confirms the face and the H5h hand set",
+   "at": "2026-11-10"
+  }
+ },
+ "schemaLimits": [
+  {
+   "component": "roof",
+   "what": "bell-shaped mansard drawn straight"
+  }
+ ]
+}

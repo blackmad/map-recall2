@@ -1,0 +1,51 @@
+{
+ "note": "Pands held after reviewing the strip sheets (auto-place.ts reads this file).",
+ "reviewed": "2026-11-10",
+ "holds": [
+  {
+   "pandId": "0363100012181740",
+   "address": "Plantage Badlaan 24",
+   "reason": "a different, taller corner front (eaves 18.2 m)"
+  },
+  {
+   "pandId": "0363100012171257",
+   "address": "Plantage Badlaan 4",
+   "reason": "a different front (7 m, eaves 15.3, ridge 19)"
+  },
+  {
+   "pandId": "0363100012181743",
+   "address": "Plantage Badlaan 22",
+   "reason": "white pilaster front, a different design (7 m)"
+  },
+  {
+   "pandId": "0363100012170227",
+   "address": "Plantage Badlaan 20",
+   "reason": "white pilaster front, a different design (7 m)"
+  },
+  {
+   "pandId": "0363100012171267",
+   "address": "Plantage Badlaan 18",
+   "reason": "white pilaster front, a different design (7 m)"
+  },
+  {
+   "pandId": "0363100012181659",
+   "address": "Plantage Badlaan 16",
+   "reason": "white pilaster front, a different design (7 m)"
+  },
+  {
+   "pandId": "0363100012171256",
+   "address": "Plantage Badlaan 7",
+   "reason": "12 m BAG pand holding two fronts; needs modules"
+  },
+  {
+   "pandId": "0363100012181140",
+   "address": "Plantage Doklaan 40",
+   "reason": "a different (white, balconied) front"
+  },
+  {
+   "pandId": "0363100012181430",
+   "address": "Plantage Badlaan 1C",
+   "reason": "balcony stack on the middle axis and a front stoop the type cannot say; a run of 3 and 5 stays"
+  }
+ ]
+}

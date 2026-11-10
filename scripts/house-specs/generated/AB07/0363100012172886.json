@@ -1,0 +1,119 @@
+{
+ "version": 1,
+ "pandId": "0363100012172886",
+ "buurt": "AB07",
+ "crop": {
+  "tier": "good",
+  "file": "years/2018.jpg",
+  "year": 2018,
+  "quality": 0.676,
+  "panoIds": [
+   "TMX7316010203-001054_pano_0000_004166",
+   "TMX7316010203-001054_pano_0000_004167",
+   "TMX7316010203-001054_pano_0000_004165"
+  ],
+  "date": null,
+  "reasons": [
+   "occluder"
+  ],
+  "ppm": 40
+ },
+ "writers": {
+  "register": null,
+  "bag": {
+   "schemaVersion": 1,
+   "pandId": "0363100012172886",
+   "design": {},
+   "provenance": {
+    "facts/facadeYear": {
+     "source": "bag",
+     "confidence": 0.5,
+     "ref": "bag-facts:0363100012172886",
+     "at": null
+    }
+   },
+   "facts": {
+    "facadeYear": 1894
+   }
+  },
+  "pixel": {
+   "schemaVersion": 1,
+   "pandId": "0363100012172886",
+   "design": {
+    "palette": {
+     "brick": "#393531"
+    }
+   },
+   "provenance": {
+    "palette/brick": {
+     "source": "streetlevel-measured",
+     "confidence": 0.55,
+     "ref": "source-data://pand-crops/0363100012172886/years/2018.jpg#good",
+     "at": null
+    }
+   }
+  },
+  "jev": {
+   "schemaVersion": 1,
+   "pandId": "0363100012172886",
+   "design": {
+    "fronts": [
+     {
+      "bays": 2
+     }
+    ]
+   },
+   "provenance": {
+    "fronts/0/bays": {
+     "source": "vision-judge",
+     "confidence": 0.97,
+     "ref": "source-data://pand-crops/0363100012172886/years/2018.jpg",
+     "at": null
+    }
+   }
+  }
+ },
+ "spec": {
+  "schemaVersion": 1,
+  "pandId": "0363100012172886",
+  "design": {
+   "fronts": [
+    {
+     "bays": 2
+    }
+   ],
+   "palette": {
+    "brick": "#393531"
+   }
+  },
+  "provenance": {
+   "fronts/0/bays": {
+    "source": "vision-judge",
+    "confidence": 0.97,
+    "ref": "source-data://pand-crops/0363100012172886/years/2018.jpg",
+    "at": null
+   },
+   "palette/brick": {
+    "source": "streetlevel-measured",
+    "confidence": 0.55,
+    "ref": "source-data://pand-crops/0363100012172886/years/2018.jpg#good",
+    "at": null
+   },
+   "facts/facadeYear": {
+    "source": "bag",
+    "confidence": 0.5,
+    "ref": "bag-facts:0363100012172886",
+    "at": null
+   }
+  },
+  "facts": {
+   "facadeYear": 1894
+  }
+ },
+ "disagreements": [],
+ "jev": {
+  "cached": true,
+  "hash": "be627a8aff1b7b5ae5acc2398b56b571",
+  "usd": 0
+ }
+}

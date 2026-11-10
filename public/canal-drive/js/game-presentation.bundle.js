@@ -2845,6 +2845,19 @@
   function freeRideWayTapAllowed(onWater, boat) {
     return boat ? onWater : !onWater;
   }
+  var FACADE_NUDGE_PX = 15 * 3;
+  function facadeNudge(point, isWater, inBuilding, maxPx = FACADE_NUDGE_PX) {
+    if (!inBuilding || !inBuilding(point.x, point.y)) return { point, inside: false, moved: false };
+    const solid = isWater ? withLandMargin(isWater) : () => false;
+    for (let r = LAND_RING_STEP_PX; r <= maxPx; r += LAND_RING_STEP_PX) {
+      for (let i = 0; i < 16; i++) {
+        const a = i / 16 * Math.PI * 2;
+        const p = { x: point.x + Math.cos(a) * r, y: point.y + Math.sin(a) * r };
+        if (!inBuilding(p.x, p.y) && !solid(p.x, p.y)) return { point: p, inside: true, moved: true };
+      }
+    }
+    return { point, inside: true, moved: false };
+  }
 
   // src/canalRecall/game/landmarkNotice.ts
   var DEFAULT_NOTICE_CONFIG = {
@@ -3430,7 +3443,13 @@
     sand: [212, 194, 150],
     parkGravel: [198, 184, 152],
     parkPath: [110, 110, 112],
-    pond: "#46707c"
+    pond: "#46707c",
+    // Bare unpaved ground (open-ground-v1, lane open-ground-look 2026-11-10): BGT onverhard / half verhard earth. The PDOK
+    // 8 cm orthophoto's dehazed sunlit medians (scripts/own-ground/measure-open-ground-tones.ts) are 136,124,115 (luma 126)
+    // at the lane's spots and 192,185,170 (luma 185, the early-spring flight's dry raised lots in -11_5 / 10_-6) where most
+    // of it lies: as light as the paving-grey land. Drawn at the warm hue between them and luma ~147, with grit dabs at the
+    // land's tone, so it reads as earth, not as rideable paving, beside the courtyard-green meadow (luma 124).
+    bare: { base: [160, 144, 122], grit: [186, 174, 156] }
   };
 
   // src/canalRecall/hudTheme.ts
@@ -4024,12 +4043,22 @@
      *  rider, a landmark whose point lies in a canal on the nearest quay; a place with no land in reach gets no marker. */
     _freeRideOnLand(nearby) {
       const isWater = this._freeRideIsWater();
-      if (!isWater || !this.player) return nearby;
+      if (!this.player) return nearby;
       const out = [];
-      for (const place of nearby) {
+      const own = /* @__PURE__ */ new Map();
+      for (const landmark of this.landmarks || []) {
+        if (Number.isFinite(landmark.ownX) && Number.isFinite(landmark.ownY)) own.set(String(landmark.id), { x: landmark.ownX, y: landmark.ownY });
+      }
+      const map = this.vectorMap;
+      const inFootprint = map?.isFootprint && this.osmLoader ? (x, y) => map.isFootprint(x, y, this.osmLoader) : null;
+      for (const placed of nearby) {
+        const ownPoint = placed.kind === "landmark" ? own.get(String(placed.key)) : void 0;
+        const place = ownPoint ? { ...placed, x: ownPoint.x, y: ownPoint.y } : placed;
         const bridge = place.kind === "bridge" ? this.bridges?.find((b) => `bridge:${b.id}` === place.key) : null;
         const at = bridge ? bridgeMarkerAnchor(bridge.lines, place, this.player, isWater) : landAnchor(place, isWater);
-        if (at) out.push(at.x === place.x && at.y === place.y ? place : { ...place, x: at.x, y: at.y });
+        if (!at) continue;
+        const final = ownPoint && inFootprint ? facadeNudge(at, isWater, inFootprint).point : at;
+        out.push(final.x === placed.x && final.y === placed.y ? placed : { ...place, x: final.x, y: final.y });
       }
       return out;
     }

@@ -1,0 +1,636 @@
+{
+ "street": "Blasiusstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T07:38:10.063Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012159767",
+   "addresses": [
+    "Blasiusstraat 110"
+   ],
+   "groundUnits": [
+    {
+     "address": "Blasiusstraat 110-H",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010012061514"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012155712",
+   "addresses": [
+    "Blasiusstraat 108"
+   ],
+   "groundUnits": [
+    {
+     "address": "Blasiusstraat 108-H",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010001170397"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012165397",
+   "addresses": [
+    "Blasiusstraat 106E",
+    "Blasiusstraat 106A",
+    "Blasiusstraat 106B",
+    "Blasiusstraat 106C",
+    "Blasiusstraat 106D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Blasiusstraat 106E",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010012069985"
+    },
+    {
+     "address": "Blasiusstraat 106A",
+     "use": "woonfunctie",
+     "areaM2": 41,
+     "bagId": "0363010000588022"
+    },
+    {
+     "address": "Blasiusstraat 106B",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000588023"
+    },
+    {
+     "address": "Blasiusstraat 106C",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000588024"
+    },
+    {
+     "address": "Blasiusstraat 106D",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000588025"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012155620",
+   "addresses": [
+    "Blasiusstraat 104E",
+    "Blasiusstraat 104B",
+    "Blasiusstraat 104C",
+    "Blasiusstraat 104D",
+    "Blasiusstraat 104A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Blasiusstraat 104E",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010012069984"
+    },
+    {
+     "address": "Blasiusstraat 104B",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000588015"
+    },
+    {
+     "address": "Blasiusstraat 104C",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000588016"
+    },
+    {
+     "address": "Blasiusstraat 104D",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000588017"
+    },
+    {
+     "address": "Blasiusstraat 104A",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010000588014"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012163439",
+   "addresses": [
+    "Blasiusstraat 102E",
+    "Blasiusstraat 102A",
+    "Blasiusstraat 102B",
+    "Blasiusstraat 102C",
+    "Blasiusstraat 102D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Blasiusstraat 102E",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010012069983"
+    },
+    {
+     "address": "Blasiusstraat 102A",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010000588010"
+    },
+    {
+     "address": "Blasiusstraat 102B",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000588011"
+    },
+    {
+     "address": "Blasiusstraat 102C",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000588012"
+    },
+    {
+     "address": "Blasiusstraat 102D",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000588013"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012158619",
+   "addresses": [
+    "Blasiusstraat 100E",
+    "Blasiusstraat 100A",
+    "Blasiusstraat 100B",
+    "Blasiusstraat 100C",
+    "Blasiusstraat 100D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Blasiusstraat 100E",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010012069982"
+    },
+    {
+     "address": "Blasiusstraat 100A",
+     "use": "woonfunctie",
+     "areaM2": 41,
+     "bagId": "0363010000588006"
+    },
+    {
+     "address": "Blasiusstraat 100B",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010000588007"
+    },
+    {
+     "address": "Blasiusstraat 100C",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010000588008"
+    },
+    {
+     "address": "Blasiusstraat 100D",
+     "use": "woonfunctie",
+     "areaM2": 41,
+     "bagId": "0363010000588009"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012159877",
+   "addresses": [
+    "Blasiusstraat 98A",
+    "Blasiusstraat 98B",
+    "Blasiusstraat 98C",
+    "Blasiusstraat 98D",
+    "Blasiusstraat 98E"
+   ],
+   "groundUnits": [
+    {
+     "address": "Blasiusstraat 98A",
+     "use": "kantoorfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000588002"
+    },
+    {
+     "address": "Blasiusstraat 98B",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000588003"
+    },
+    {
+     "address": "Blasiusstraat 98C",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000588004"
+    },
+    {
+     "address": "Blasiusstraat 98D",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000588005"
+    },
+    {
+     "address": "Blasiusstraat 98E",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010012069988"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012251301",
+   "addresses": [
+    "Blasiusstraat 96",
+    "Blasiusstraat 96A",
+    "Blasiusstraat 96B",
+    "Blasiusstraat 96C",
+    "Blasiusstraat 96D",
+    "Blasiusstraat 96E"
+   ],
+   "groundUnits": [
+    {
+     "address": "Blasiusstraat 96-H",
+     "use": "industriefunctie",
+     "areaM2": 139,
+     "bagId": "0363010001014039"
+    },
+    {
+     "address": "Blasiusstraat 96A",
+     "use": "kantoorfunctie",
+     "areaM2": 41,
+     "bagId": "0363010012131440"
+    },
+    {
+     "address": "Blasiusstraat 96B",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000587999"
+    },
+    {
+     "address": "Blasiusstraat 96C",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000588000"
+    },
+    {
+     "address": "Blasiusstraat 96D",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000588001"
+    },
+    {
+     "address": "Blasiusstraat 96E",
+     "use": "woonfunctie",
+     "areaM2": 78,
+     "bagId": "0363010012069987"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012166289",
+   "addresses": [
+    "Blasiusstraat 94A",
+    "Blasiusstraat 94E",
+    "Blasiusstraat 94",
+    "Blasiusstraat 94B",
+    "Blasiusstraat 94C",
+    "Blasiusstraat 94D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Blasiusstraat 94A",
+     "use": "kantoorfunctie",
+     "areaM2": 91,
+     "bagId": "0363010012069961"
+    },
+    {
+     "address": "Blasiusstraat 94E",
+     "use": "woonfunctie",
+     "areaM2": 78,
+     "bagId": "0363010012069986"
+    },
+    {
+     "address": "Blasiusstraat 94A",
+     "use": "kantoorfunctie",
+     "areaM2": 45,
+     "bagId": "0363010012131439"
+    },
+    {
+     "address": "Blasiusstraat 94-H",
+     "use": "kantoorfunctie",
+     "areaM2": 109,
+     "bagId": "0363010000587992"
+    },
+    {
+     "address": "Blasiusstraat 94B",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000587996"
+    },
+    {
+     "address": "Blasiusstraat 94C",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000587997"
+    },
+    {
+     "address": "Blasiusstraat 94D",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000587998"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012101460",
+   "addresses": [
+    "Blasiusstraat 92A",
+    "Blasiusstraat 92B",
+    "Blasiusstraat 92C",
+    "Blasiusstraat 92D",
+    "Blasiusstraat 92E"
+   ],
+   "groundUnits": [
+    {
+     "address": "Blasiusstraat 92A",
+     "use": "kantoorfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000587987"
+    },
+    {
+     "address": "Blasiusstraat 92B",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010000587988"
+    },
+    {
+     "address": "Blasiusstraat 92C",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010000587989"
+    },
+    {
+     "address": "Blasiusstraat 92D",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010000587990"
+    },
+    {
+     "address": "Blasiusstraat 92E",
+     "use": "woonfunctie",
+     "areaM2": 103,
+     "bagId": "0363010000587991"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012235931",
+   "addresses": [
+    "Blasiusstraat 88",
+    "Blasiusstraat 90"
+   ],
+   "groundUnits": [
+    {
+     "address": "Blasiusstraat 88-H",
+     "use": "woonfunctie",
+     "areaM2": 153,
+     "bagId": "0363010001970905"
+    }
+   ],
+   "units": 11,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012165732",
+   "addresses": [
+    "Blasiusstraat 86"
+   ],
+   "groundUnits": [
+    {
+     "address": "Blasiusstraat 86-H",
+     "use": "woonfunctie",
+     "areaM2": 81,
+     "bagId": "0363010000587969"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012106512",
+   "addresses": [
+    "Blasiusstraat 82",
+    "Blasiusstraat 84"
+   ],
+   "groundUnits": [
+    {
+     "address": "Blasiusstraat 84-H",
+     "use": "industriefunctie",
+     "areaM2": 201,
+     "bagId": "0363010001011970"
+    },
+    {
+     "address": "Blasiusstraat 82-H",
+     "use": "industriefunctie",
+     "areaM2": 189,
+     "bagId": "0363010000587955"
+    }
+   ],
+   "units": 10,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012113169",
+   "addresses": [
+    "Blasiusstraat 80"
+   ],
+   "groundUnits": [
+    {
+     "address": "Blasiusstraat 80-H",
+     "use": "industriefunctie",
+     "areaM2": 54,
+     "bagId": "0363010000587943"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012065804",
+   "addresses": [
+    "Blasiusstraat 78"
+   ],
+   "groundUnits": [
+    {
+     "address": "Blasiusstraat 78-H",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000587932"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012095110",
+   "addresses": [
+    "Blasiusstraat 76"
+   ],
+   "groundUnits": [
+    {
+     "address": "Blasiusstraat 76-H",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000587922"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012143521",
+   "addresses": [
+    "Blasiusstraat 74A",
+    "Blasiusstraat 74D",
+    "Blasiusstraat 74C",
+    "Blasiusstraat 74B",
+    "Blasiusstraat 74G",
+    "Blasiusstraat 74L",
+    "Blasiusstraat 74K",
+    "Blasiusstraat 74H",
+    "Blasiusstraat 74R",
+    "Blasiusstraat 74N",
+    "Blasiusstraat 74P",
+    "Blasiusstraat 74F",
+    "Blasiusstraat 74M",
+    "Blasiusstraat 74E"
+   ],
+   "groundUnits": [
+    {
+     "address": "Blasiusstraat 74A",
+     "use": "woonfunctie",
+     "areaM2": 74,
+     "bagId": "0363010000937230"
+    },
+    {
+     "address": "Blasiusstraat 74D",
+     "use": "woonfunctie",
+     "areaM2": 92,
+     "bagId": "0363010000937231"
+    },
+    {
+     "address": "Blasiusstraat 74C",
+     "use": "woonfunctie",
+     "areaM2": 85,
+     "bagId": "0363010000937232"
+    },
+    {
+     "address": "Blasiusstraat 74B",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000937233"
+    },
+    {
+     "address": "Blasiusstraat 74G",
+     "use": "woonfunctie",
+     "areaM2": 92,
+     "bagId": "0363010000937234"
+    },
+    {
+     "address": "Blasiusstraat 74L",
+     "use": "woonfunctie",
+     "areaM2": 92,
+     "bagId": "0363010000937237"
+    },
+    {
+     "address": "Blasiusstraat 74K",
+     "use": "woonfunctie",
+     "areaM2": 85,
+     "bagId": "0363010000937238"
+    },
+    {
+     "address": "Blasiusstraat 74H",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000937239"
+    },
+    {
+     "address": "Blasiusstraat 74R",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010000937240"
+    },
+    {
+     "address": "Blasiusstraat 74N",
+     "use": "woonfunctie",
+     "areaM2": 35,
+     "bagId": "0363010000937241"
+    },
+    {
+     "address": "Blasiusstraat 74P",
+     "use": "woonfunctie",
+     "areaM2": 85,
+     "bagId": "0363010000987236"
+    },
+    {
+     "address": "Wibautstraat 71",
+     "use": "winkelfunctie",
+     "areaM2": 70,
+     "bagId": "0363010001015226"
+    },
+    {
+     "address": "Wibautstraat 73",
+     "use": "winkelfunctie",
+     "areaM2": 67,
+     "bagId": "0363010001015227"
+    },
+    {
+     "address": "Blasiusstraat 74F",
+     "use": "woonfunctie",
+     "areaM2": 74,
+     "bagId": "0363010000937235"
+    },
+    {
+     "address": "Blasiusstraat 74M",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000937242"
+    },
+    {
+     "address": "Blasiusstraat 74E",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000937236"
+    }
+   ],
+   "units": 16,
+   "osm": []
+  }
+ ]
+}

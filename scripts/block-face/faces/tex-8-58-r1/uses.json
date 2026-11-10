@@ -1,0 +1,91 @@
+{
+ "street": "Den Texstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T07:11:15.118Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012179378",
+   "addresses": [
+    "Den Texstraat 24"
+   ],
+   "groundUnits": [
+    {
+     "address": "Den Texstraat 24-H",
+     "use": "woonfunctie",
+     "areaM2": 163,
+     "bagId": "0363010000620917"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012179377",
+   "addresses": [
+    "Den Texstraat 22"
+   ],
+   "groundUnits": [
+    {
+     "address": "Den Texstraat 22-H",
+     "use": "woonfunctie",
+     "areaM2": 128,
+     "bagId": "0363010000620913"
+    }
+   ],
+   "units": 2,
+   "osm": [
+    {
+     "type": "node",
+     "id": 441909914,
+     "lngLat": [
+      4.8941504,
+      52.3586963
+     ],
+     "tags": {
+      "name": "Asterisk",
+      "stars": "2",
+      "tourism": "hotel"
+     },
+     "fetchedAt": "2026-11-10T07:11:15.118Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012179379",
+   "addresses": [
+    "Den Texstraat 20"
+   ],
+   "groundUnits": [
+    {
+     "address": "Den Texstraat 20",
+     "use": "woonfunctie",
+     "areaM2": 267,
+     "bagId": "0363010000620910"
+    }
+   ],
+   "units": 1,
+   "osm": [],
+   "groundUnitsNote": "lane 2026-11-10: BAG bijeenkomstfunctie (267 m2) overridden; the 2024-12-04 strip shows a house door and two windows, no shopfront"
+  },
+  {
+   "pandId": "0363100012179380",
+   "addresses": [
+    "Den Texstraat 18"
+   ],
+   "groundUnits": [
+    {
+     "address": "Den Texstraat 18-H",
+     "use": "woonfunctie",
+     "areaM2": 130,
+     "bagId": "0363010000620901"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  }
+ ]
+}

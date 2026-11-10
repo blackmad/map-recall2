@@ -1,0 +1,359 @@
+{
+ "street": "Rapenburg",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T08:17:17.624Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012164961",
+   "addresses": [
+    "Rapenburg 68A",
+    "Rapenburg 68B",
+    "Rapenburg 70",
+    "Rapenburg 72",
+    "Rapenburg 74",
+    "Rapenburg 76",
+    "Rapenburg 78",
+    "Rapenburg 80"
+   ],
+   "groundUnits": [
+    {
+     "address": "Rapenburg 70",
+     "use": "woonfunctie",
+     "areaM2": 78,
+     "bagId": "0363010001017945"
+    },
+    {
+     "address": "Rapenburg 72",
+     "use": "woonfunctie",
+     "areaM2": 92,
+     "bagId": "0363010001017946"
+    },
+    {
+     "address": "Rapenburg 74",
+     "use": "woonfunctie",
+     "areaM2": 92,
+     "bagId": "0363010001017948"
+    },
+    {
+     "address": "Rapenburg 76",
+     "use": "woonfunctie",
+     "areaM2": 92,
+     "bagId": "0363010001017949"
+    },
+    {
+     "address": "Rapenburg 78",
+     "use": "woonfunctie",
+     "areaM2": 78,
+     "bagId": "0363010001017950"
+    },
+    {
+     "address": "Rapenburg 80",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010001017951"
+    },
+    {
+     "address": "Rapenburg 68A",
+     "use": "woonfunctie",
+     "areaM2": 78,
+     "bagId": "0363010001018439"
+    },
+    {
+     "address": "Rapenburg 68B",
+     "use": "woonfunctie",
+     "areaM2": 93,
+     "bagId": "0363010001018440"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181201",
+   "addresses": [
+    "Rapenburg 66"
+   ],
+   "groundUnits": [
+    {
+     "address": "Rapenburg 66-H",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 124,
+     "bagId": "0363010000788129"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 7906233360,
+     "lngLat": [
+      4.9091705,
+      52.3709542
+     ],
+     "tags": {
+      "access": "yes",
+      "amenity": "bicycle_parking",
+      "bicycle_parking": "safe_gutter",
+      "capacity": "6",
+      "covered": "no"
+     },
+     "fetchedAt": "2026-11-10T08:17:17.624Z",
+     "match": "frontage",
+     "distanceM": 1.9
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012181127",
+   "addresses": [
+    "Rapenburg 60",
+    "Rapenburg 62",
+    "Rapenburg 64A",
+    "Rapenburg 64C",
+    "Rapenburg 64D",
+    "Rapenburg 64F",
+    "Rapenburg 64B",
+    "Rapenburg 64E"
+   ],
+   "groundUnits": [
+    {
+     "address": "Rapenburg 60",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000788112"
+    },
+    {
+     "address": "Rapenburg 62",
+     "use": "woonfunctie",
+     "areaM2": 37,
+     "bagId": "0363010000788114"
+    },
+    {
+     "address": "Rapenburg 64A",
+     "use": "woonfunctie",
+     "areaM2": 75,
+     "bagId": "0363010000788116"
+    },
+    {
+     "address": "Rapenburg 64C",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000788118"
+    },
+    {
+     "address": "Rapenburg 64D",
+     "use": "woonfunctie",
+     "areaM2": 117,
+     "bagId": "0363010000788119"
+    },
+    {
+     "address": "Rapenburg 64F",
+     "use": "woonfunctie",
+     "areaM2": 74,
+     "bagId": "0363010000788121"
+    },
+    {
+     "address": "Rapenburg 64B",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000788117"
+    },
+    {
+     "address": "Rapenburg 64E",
+     "use": "woonfunctie",
+     "areaM2": 105,
+     "bagId": "0363010000788120"
+    }
+   ],
+   "units": 8,
+   "osm": [
+    {
+     "type": "node",
+     "id": 7911865797,
+     "lngLat": [
+      4.9090439,
+      52.3710242
+     ],
+     "tags": {
+      "access": "yes",
+      "amenity": "bicycle_parking",
+      "bicycle_parking": "safe_gutter",
+      "capacity": "10",
+      "covered": "no"
+     },
+     "fetchedAt": "2026-11-10T08:17:17.624Z",
+     "match": "frontage",
+     "distanceM": 2.2
+    },
+    {
+     "type": "way",
+     "id": 847276646,
+     "lngLat": [
+      4.9090399,
+      52.3710793
+     ],
+     "tags": {
+      "access": "yes",
+      "amenity": "bicycle_parking",
+      "bicycle_parking": "stands",
+      "capacity": "16",
+      "covered": "no"
+     },
+     "fetchedAt": "2026-11-10T08:17:17.624Z",
+     "match": "frontage",
+     "distanceM": 6.7
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012181213",
+   "addresses": [
+    "Rapenburg 56",
+    "Rapenburg 58"
+   ],
+   "groundUnits": [
+    {
+     "address": "Rapenburg 56-H",
+     "use": "industriefunctie,kantoorfunctie",
+     "areaM2": 64,
+     "bagId": "0363010000788093"
+    },
+    {
+     "address": "Rapenburg 58-H",
+     "use": "woonfunctie",
+     "areaM2": 121,
+     "bagId": "0363010012169618"
+    },
+    {
+     "address": "Rapenburg 58-H",
+     "use": "woonfunctie",
+     "areaM2": 118,
+     "bagId": "0363010000975969"
+    }
+   ],
+   "units": 10,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012170623",
+   "addresses": [
+    "Rapenburg 46A",
+    "Rapenburg 46B",
+    "Rapenburg 48C",
+    "Rapenburg 48B",
+    "Rapenburg 48A",
+    "Rapenburg 50A",
+    "Rapenburg 50C",
+    "Rapenburg 50B",
+    "Rapenburg 52A",
+    "Rapenburg 52C",
+    "Rapenburg 52B",
+    "Rapenburg 54A",
+    "Rapenburg 54B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Rapenburg 46A",
+     "use": "woonfunctie",
+     "areaM2": 130,
+     "bagId": "0363010001039162"
+    },
+    {
+     "address": "Rapenburg 46B",
+     "use": "woonfunctie",
+     "areaM2": 143,
+     "bagId": "0363010001039163"
+    },
+    {
+     "address": "Rapenburg 48C",
+     "use": "woonfunctie",
+     "areaM2": 85,
+     "bagId": "0363010001039167"
+    },
+    {
+     "address": "Rapenburg 50A",
+     "use": "woonfunctie",
+     "areaM2": 77,
+     "bagId": "0363010001039168"
+    },
+    {
+     "address": "Rapenburg 50C",
+     "use": "woonfunctie",
+     "areaM2": 88,
+     "bagId": "0363010001039170"
+    },
+    {
+     "address": "Rapenburg 52A",
+     "use": "woonfunctie",
+     "areaM2": 84,
+     "bagId": "0363010001039171"
+    },
+    {
+     "address": "Rapenburg 52C",
+     "use": "woonfunctie",
+     "areaM2": 84,
+     "bagId": "0363010001039173"
+    },
+    {
+     "address": "Rapenburg 54A",
+     "use": "woonfunctie",
+     "areaM2": 163,
+     "bagId": "0363010001039174"
+    },
+    {
+     "address": "Rapenburg 54B",
+     "use": "woonfunctie",
+     "areaM2": 172,
+     "bagId": "0363010001039175"
+    },
+    {
+     "address": "Rapenburg 52B",
+     "use": "woonfunctie",
+     "areaM2": 83,
+     "bagId": "0363010001039172"
+    },
+    {
+     "address": "Rapenburg 50B",
+     "use": "woonfunctie",
+     "areaM2": 83,
+     "bagId": "0363010001039169"
+    },
+    {
+     "address": "Rapenburg 48B",
+     "use": "woonfunctie",
+     "areaM2": 77,
+     "bagId": "0363010001039166"
+    },
+    {
+     "address": "Rapenburg 48A",
+     "use": "woonfunctie",
+     "areaM2": 83,
+     "bagId": "0363010001039165"
+    }
+   ],
+   "units": 13,
+   "osm": [
+    {
+     "type": "node",
+     "id": 7906233355,
+     "lngLat": [
+      4.9086984,
+      52.3711963
+     ],
+     "tags": {
+      "access": "yes",
+      "amenity": "bicycle_parking",
+      "bicycle_parking": "safe_gutter",
+      "capacity": "10",
+      "covered": "no"
+     },
+     "fetchedAt": "2026-11-10T08:17:17.624Z",
+     "match": "frontage",
+     "distanceM": 1.5
+    }
+   ]
+  }
+ ]
+}

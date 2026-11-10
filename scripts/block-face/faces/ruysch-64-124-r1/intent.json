@@ -1,0 +1,176 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "ruysch-64-124-r1",
+ "street": "Ruyschstraat",
+ "sources": [
+  {
+   "id": "strip-2023-01-02",
+   "kind": "street-panorama",
+   "capturedAt": "2023-01-02",
+   "image": "staging/block-face/ruysch-64-124-r1/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "auto-place (blockFace/autoPlace.ts)",
+  "passes": 1,
+  "note": "auto-placed from the oud-west library (buurt Oosterparkbuurt-Noordwest); scores and holds in scripts/block-face/faces/ruysch-64-124/auto-place.json"
+ },
+ "types": [
+  "oosterpark-1900-balcony-camber"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012159820",
+   "slug": "ruysch-159820",
+   "address": "Ruyschstraat 90",
+   "type": {
+    "type": "oosterpark-1900-balcony-camber",
+    "measuredPalette": {
+     "brick": "#615855",
+     "evidence": "strip 2023-01-02 span 880-1103: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#3b3836"
+    },
+    "ground": {
+     "shopfront": {
+      "colour": "#e6e1d2",
+      "fascia": true,
+      "entrance": "left",
+      "glazing": "transom",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "right",
+       "colour": "#e6e1d2"
+      },
+      "evidence": "Ruyschstraat 90, strip 2023-01-02: white timber shopfront across the full width, a door at each side, wide glazing with a transom row, white fascia"
+     }
+    },
+    "overrides": {
+     "balconies": {
+      "storeys": [
+       2,
+       3
+      ],
+      "bays": [
+       1
+      ]
+     },
+     "windowHead": {
+      "kind": "segmental",
+      "archRing": {
+       "colour": "stone",
+       "style": "solid",
+       "keystone": true
+      }
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "office",
+    "bag": [
+     "kantoorfunctie,woonfunctie"
+    ],
+    "photoDate": "2023-01-02",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: oosterpark-1900-balcony-camber scored 1 on stucco 1, columns 1; strip 2023-01-02 span 880-1103"
+   }
+  },
+  {
+   "pandId": "0363100012150384",
+   "slug": "ruysch-150384",
+   "address": "Ruyschstraat 88",
+   "type": {
+    "type": "oosterpark-1900-balcony-camber",
+    "measuredPalette": {
+     "brick": "#6e5a56",
+     "evidence": "strip 2023-01-02 span 1102-1326: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#373230"
+    },
+    "ground": {
+     "doorBay": 2
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2023-01-02",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: oosterpark-1900-balcony-camber scored 1 on stucco 1, columns 1; strip 2023-01-02 span 1102-1326"
+   }
+  },
+  {
+   "pandId": "0363100012165864",
+   "slug": "ruysch-165864",
+   "address": "Ruyschstraat 86",
+   "type": {
+    "type": "oosterpark-1900-balcony-camber",
+    "measuredPalette": {
+     "brick": "#6a5d59",
+     "evidence": "strip 2023-01-02 span 1326-1550: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#423c39"
+    },
+    "ground": {
+     "doorBay": 0
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2023-01-02",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: oosterpark-1900-balcony-camber scored 1 on stucco 1, columns 1; strip 2023-01-02 span 1326-1550"
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "auto-place: low attic behind the cornice; the strips show sky over the cornices of the type rows"
+  },
+  "measuredEaves": [
+   {
+    "pand": "0363100012159820",
+    "stripRow": 282,
+    "frontRoof": {},
+    "evidence": "auto-place: the oosterpark-1900-balcony-camber cornice line 13.5 m (measured on its exemplar strips; this pand's skyline unread); 3DBAG/PDOK eaves 16.15 m"
+   },
+   {
+    "pand": "0363100012150384",
+    "stripRow": 282,
+    "frontRoof": {},
+    "evidence": "auto-place: the oosterpark-1900-balcony-camber cornice line 13.5 m (measured on its exemplar strips; this pand's skyline unread); 3DBAG/PDOK eaves 16.28 m"
+   },
+   {
+    "pand": "0363100012165864",
+    "stripRow": 282,
+    "frontRoof": {},
+    "evidence": "auto-place: the oosterpark-1900-balcony-camber cornice line 13.5 m (measured on its exemplar strips; this pand's skyline unread); 3DBAG/PDOK eaves 16.28 m"
+   }
+  ]
+ }
+}

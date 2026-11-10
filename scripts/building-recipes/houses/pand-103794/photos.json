@@ -1,0 +1,50 @@
+[
+ {
+  "front": "wall-vliegtuigstraat",
+  "panoId": "TMX7316010203-001143_pano_0000_000135",
+  "timestamp": "2019-04-26T09:20:32.508770Z",
+  "url": "https://t1.data.amsterdam.nl/panorama/2019/04/26/TMX7316010203-001143/pano_0000_000135/equirectangular/panorama_4000.jpg",
+  "cameraRD": [
+   117964.67059201996,
+   483717.8060009543
+  ],
+  "headingDeg": 182.02615277907975,
+  "fovDeg": 92.08671221904373,
+  "pitchDeg": 21.92106025199783,
+  "distanceM": 9.682804711970002,
+  "image": "artifacts/building-recipes/pand-103794/photo-wall-vliegtuigstraat.jpg",
+  "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+ },
+ {
+  "front": "wall-pilotenstraat",
+  "panoId": "TMX7316010203-001143_pano_0000_000124",
+  "timestamp": "2019-04-26T09:20:24.333760Z",
+  "url": "https://t1.data.amsterdam.nl/panorama/2019/04/26/TMX7316010203-001143/pano_0000_000124/equirectangular/panorama_4000.jpg",
+  "cameraRD": [
+   117944.51579962927,
+   483675.3589418625
+  ],
+  "headingDeg": 91.10742305092316,
+  "fovDeg": 110,
+  "pitchDeg": 28.277693111443117,
+  "distanceM": 11.470592887378972,
+  "image": "artifacts/building-recipes/pand-103794/photo-wall-pilotenstraat.jpg",
+  "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+ },
+ {
+  "front": "wall-jaagpad",
+  "panoId": "b_20241128_0827_Track11_Sphere_00009",
+  "timestamp": "2024-11-28T08:28:36Z",
+  "url": "https://t1.data.amsterdam.nl/panorama/2024/kempkes/Job_20241128_0827_Track11_Sphere_00009/equirectangular/panorama_4000.jpg",
+  "cameraRD": [
+   118129.97293763637,
+   483655.7282783055
+  ],
+  "headingDeg": 268.0882921537313,
+  "fovDeg": 58.26203062187463,
+  "pitchDeg": 8.307726097414449,
+  "distanceM": 41.20362074219756,
+  "image": "artifacts/building-recipes/pand-103794/photo-wall-jaagpad.jpg",
+  "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+ }
+]

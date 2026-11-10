@@ -1,0 +1,47 @@
+{
+ "family": "white",
+ "set": "A",
+ "note": "A rectified street-panorama crop of one Amsterdam house front; the house in question fills the image.",
+ "questions": {
+  "bands": {
+   "type": "noul",
+   "instructions": "Do horizontal light-coloured (white, cream or pale stone) bands run across the brick or painted wall of the house front in `facade`, as continuous courses at floor or window level (speklagen, string courses or continuous lintel bands)? A white cornice at the very top is not a band.",
+   "criteria": {
+    "true": "One or more continuous horizontal light bands cross the wall.",
+    "false": "The wall has no continuous horizontal light band; only separate lintels or sills, or nothing."
+   }
+  },
+  "surrounds": {
+   "type": "noul",
+   "instructions": "Are the upper-storey windows of the house front in `facade` framed by a white or cream painted surround or stone frame on the wall, wider than the window frame itself (jambs and lintel in a light colour contrasting with the wall)?",
+   "criteria": {
+    "true": "A light surround or architrave frames the windows against a darker wall.",
+    "false": "The windows sit directly in the wall; only the glazing bars may be white, or the frames are dark."
+   }
+  },
+  "keystones": {
+   "type": "noul",
+   "instructions": "Do the upper-storey windows of the house front in `facade` have keystones or decorative stones at the centre of the lintel or arch above each window?",
+   "criteria": {
+    "true": "Keystones or ornaments sit above the windows.",
+    "false": "No keystones above the windows."
+   }
+  },
+  "quoins": {
+   "type": "noul",
+   "instructions": "Does the house front in `facade` have light quoins (corner stones: alternating light stone blocks running up the sides of the front)?",
+   "criteria": {
+    "true": "Light quoin blocks run up the corners.",
+    "false": "No quoins at the corners."
+   }
+  },
+  "cornice": {
+   "type": "noul",
+   "instructions": "Is the cornice or parapet at the top of the house front in `facade` painted white or cream (a wide, light horizontal moulding under the roof)?",
+   "criteria": {
+    "true": "A white or cream cornice or parapet band tops the front.",
+    "false": "The top of the front is brick, dark, or has no light cornice, or the top is not visible."
+   }
+  }
+ }
+}
