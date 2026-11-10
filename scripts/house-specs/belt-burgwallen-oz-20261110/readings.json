@@ -100,6 +100,18 @@
   "zd136": {
    "ref": "house:crops crop pand-crops/0363100012177932 (map-recall2-source-data, wall route, captured 2025-01-08)",
    "at": "2025-01-08"
+  },
+  "ke23-37": {
+   "ref": "panorama b_20250108_1041_Track23_Sphere_00130 (40 m across the Kloveniersburgwal, row view of 23-37)",
+   "at": "2025-01-08"
+  },
+  "ke49-61": {
+   "ref": "panorama TMX7316010203-002987_pano_0001_000109 (38 m across the Kloveniersburgwal, row view of 49-61)",
+   "at": "2023-03-06"
+  },
+  "ke61-75": {
+   "ref": "panorama TMX7316010203-002987_pano_0001_000121 (40 m across the Kloveniersburgwal, row view of 61-75)",
+   "at": "2023-03-06"
   }
  },
  "pands": [
@@ -1217,6 +1229,185 @@
    },
    "notes": [
     "Cream-ochre frieze cornice and pilastered ground storey with a red parasol"
+   ]
+  },
+  {
+   "pandId": "0363100012571675",
+   "label": "33",
+   "street": "Kloveniersburgwal",
+   "photo": "ke23-37",
+   "front": {
+    "gable": "cornice",
+    "cornice": "simple",
+    "dormers": 1,
+    "dormerStyle": "flat",
+    "dormerBody": "timber",
+    "storeys": 4,
+    "bays": 3,
+    "windows": "sash",
+    "windowSurround": "none"
+   },
+   "palette": {
+    "brick": "#4a3a35"
+   },
+   "notes": [
+    "Plain cornice with a centre dormer; 2025-01-08 backlit"
+   ],
+   "limits": [
+    [
+     "dormer",
+     "the centre dormer is a brick attic with a pediment; drawn flat timber"
+    ]
+   ]
+  },
+  {
+   "pandId": "0363100012178304",
+   "label": "49",
+   "street": "Kloveniersburgwal",
+   "photo": "ke49-61",
+   "front": {
+    "gable": "neck",
+    "crownCap": "pediment",
+    "atticWindows": 1,
+    "hoist": true,
+    "storeys": 5,
+    "bays": 3,
+    "windows": "sash",
+    "windowSurround": "none"
+   },
+   "palette": {
+    "brick": "#4a3a33"
+   },
+   "notes": [
+    "Tall dark neck gable with a round-headed attic window under a pediment cap"
+   ],
+   "limits": [
+    [
+     "attic window",
+     "the attic window is round-headed; drawn square"
+    ]
+   ]
+  },
+  {
+   "pandId": "0363100012171452",
+   "label": "51",
+   "street": "Kloveniersburgwal",
+   "photo": "ke49-61",
+   "front": {
+    "gable": "neck",
+    "crownCap": "pediment",
+    "atticWindows": 1,
+    "hoist": true,
+    "storeys": 4,
+    "bays": 3,
+    "windows": "sash",
+    "windowSurround": "none",
+    "tallGround": true
+   },
+   "palette": {
+    "brick": "#6e4436"
+   },
+   "notes": [
+    "Red-brown neck gable; white-framed ground windows (1951 rebuild per BAG)"
+   ],
+   "limits": [
+    [
+     "neck",
+     "the neck holds two stacked attic windows; drawn with one"
+    ]
+   ]
+  },
+  {
+   "pandId": "0363100012171451",
+   "label": "53",
+   "street": "Kloveniersburgwal",
+   "photo": "ke49-61",
+   "front": {
+    "gable": "flat",
+    "cornice": "heavy",
+    "storeys": 4,
+    "bays": 4,
+    "windows": "sash",
+    "windowSurround": "full-frame",
+    "windowHead": {
+     "kind": "round",
+     "storeys": [
+      2
+     ]
+    },
+    "basement": "none"
+   },
+   "palette": {
+    "brick": "#e6e4dd",
+    "wallMaterial": "painted-brick"
+   },
+   "notes": [
+    "White stuccoed front, round-headed windows on the second floor and at the ground storey, a crowning pediment with an oculus"
+   ],
+   "limits": [
+    [
+     "cornice",
+     "the cornice carries a full-width pediment with an oculus and relief; drawn as a heavy cornice"
+    ],
+    [
+     "ground storey",
+     "the ground storey windows and door are round-headed; drawn square"
+    ],
+    [
+     "roof",
+     "3DBAG roof planes over this cornice front read as a jagged hip; drawn flat behind the cornice, as the photo shows from across the canal"
+    ]
+   ]
+  },
+  {
+   "pandId": "0363100012177718",
+   "label": "67",
+   "street": "Kloveniersburgwal",
+   "photo": "ke61-75",
+   "front": {
+    "gable": "bell",
+    "crownCap": "rounded",
+    "atticWindows": 1,
+    "hoist": true,
+    "storeys": 5,
+    "bays": 3,
+    "windows": "sash",
+    "windowSurround": "none"
+   },
+   "palette": {
+    "brick": "#3a302c"
+   },
+   "notes": [
+    "Dark bell gable with a white sandstone crown ornament (register: bell)"
+   ],
+   "limits": [
+    [
+     "crown",
+     "the bell crown carries a carved vase and scrolls; drawn as a rounded cap"
+    ]
+   ]
+  },
+  {
+   "pandId": "0363100012178218",
+   "label": "75",
+   "street": "Kloveniersburgwal",
+   "photo": "ke61-75",
+   "front": {
+    "gable": "cornice",
+    "cornice": "simple",
+    "dormers": 2,
+    "dormerStyle": "flat",
+    "dormerBody": "timber",
+    "storeys": 4,
+    "bays": 3,
+    "windows": "sash",
+    "windowSurround": "sill"
+   },
+   "palette": {
+    "brick": "#7a4536"
+   },
+   "notes": [
+    "Red brick, white cornice, two roof dormers (1895)"
    ]
   }
  ],

@@ -1,0 +1,69 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012571675",
+ "address": "Kloveniersburgwal 33",
+ "design": {
+  "fronts": [
+   {
+    "id": "front0",
+    "street": "Kloveniersburgwal",
+    "basement": "none",
+    "cornice": "simple",
+    "doorBay": 0,
+    "windows": "sash",
+    "hoist": false,
+    "gable": "cornice",
+    "dormers": 1,
+    "dormerStyle": "flat",
+    "dormerBody": "timber",
+    "storeys": 4,
+    "bays": 3,
+    "windowSurround": "none"
+   }
+  ],
+  "roof": {
+   "material": "black-tile"
+  },
+  "palette": {
+   "frame": "white",
+   "door": "#2a2624",
+   "stone": "#e9e6dd",
+   "brick": "#4a3a35"
+  },
+  "notes": [
+   "Plain cornice with a centre dormer; 2025-01-08 backlit"
+  ]
+ },
+ "provenance": {
+  "fronts/0": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "lane belt-burgwallen-oz-build-20261110 hand read (front: crown, storeys, axes, windows, ground storey) of panorama b_20250108_1041_Track23_Sphere_00130 (40 m across the Kloveniersburgwal, row view of 23-37)",
+   "at": "2025-01-08"
+  },
+  "roof": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "lane belt-burgwallen-oz-build-20261110 hand read (roof from the front) of panorama b_20250108_1041_Track23_Sphere_00130 (40 m across the Kloveniersburgwal, row view of 23-37)",
+   "at": "2025-01-08"
+  },
+  "palette": {
+   "source": "author",
+   "confidence": 0.7,
+   "ref": "lane belt-burgwallen-oz-build-20261110 hand read (wall and trim colours) of panorama b_20250108_1041_Track23_Sphere_00130 (40 m across the Kloveniersburgwal, row view of 23-37)",
+   "at": "2025-01-08"
+  },
+  "notes": {
+   "source": "author",
+   "confidence": 0.9,
+   "ref": "lane belt-burgwallen-oz-build-20261110 hand read (notes) of panorama b_20250108_1041_Track23_Sphere_00130 (40 m across the Kloveniersburgwal, row view of 23-37)",
+   "at": "2025-01-08"
+  }
+ },
+ "schemaLimits": [
+  {
+   "component": "dormer",
+   "what": "the centre dormer is a brick attic with a pediment; drawn flat timber"
+  }
+ ]
+}

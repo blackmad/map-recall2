@@ -1,0 +1,63 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012178218",
+ "address": "Kloveniersburgwal 75",
+ "design": {
+  "fronts": [
+   {
+    "id": "front0",
+    "street": "Kloveniersburgwal",
+    "basement": "none",
+    "cornice": "simple",
+    "doorBay": 0,
+    "windows": "sash",
+    "hoist": false,
+    "gable": "cornice",
+    "dormers": 2,
+    "dormerStyle": "flat",
+    "dormerBody": "timber",
+    "storeys": 4,
+    "bays": 3,
+    "windowSurround": "sill"
+   }
+  ],
+  "roof": {
+   "material": "black-tile"
+  },
+  "palette": {
+   "frame": "white",
+   "door": "#2a2624",
+   "stone": "#e9e6dd",
+   "brick": "#7a4536"
+  },
+  "notes": [
+   "Red brick, white cornice, two roof dormers (1895)"
+  ]
+ },
+ "provenance": {
+  "fronts/0": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "lane belt-burgwallen-oz-build-20261110 hand read (front: crown, storeys, axes, windows, ground storey) of panorama TMX7316010203-002987_pano_0001_000121 (40 m across the Kloveniersburgwal, row view of 61-75)",
+   "at": "2023-03-06"
+  },
+  "roof": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "lane belt-burgwallen-oz-build-20261110 hand read (roof from the front) of panorama TMX7316010203-002987_pano_0001_000121 (40 m across the Kloveniersburgwal, row view of 61-75)",
+   "at": "2023-03-06"
+  },
+  "palette": {
+   "source": "author",
+   "confidence": 0.7,
+   "ref": "lane belt-burgwallen-oz-build-20261110 hand read (wall and trim colours) of panorama TMX7316010203-002987_pano_0001_000121 (40 m across the Kloveniersburgwal, row view of 61-75)",
+   "at": "2023-03-06"
+  },
+  "notes": {
+   "source": "author",
+   "confidence": 0.9,
+   "ref": "lane belt-burgwallen-oz-build-20261110 hand read (notes) of panorama TMX7316010203-002987_pano_0001_000121 (40 m across the Kloveniersburgwal, row view of 61-75)",
+   "at": "2023-03-06"
+  }
+ }
+}
