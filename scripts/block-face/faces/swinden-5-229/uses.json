@@ -1,0 +1,1374 @@
+{
+ "street": "Eerste Van Swindenstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T07:19:24.267Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012154498",
+   "addresses": [
+    "Eerste Van Swindenstraat 5",
+    "Eerste Van Swindenstraat 7",
+    "Eerste Van Swindenstraat 9",
+    "Eerste Van Swindenstraat 11",
+    "Eerste Van Swindenstraat 13",
+    "Eerste Van Swindenstraat 15",
+    "Eerste Van Swindenstraat 17",
+    "Eerste Van Swindenstraat 19",
+    "Eerste Van Swindenstraat 21",
+    "Eerste Van Swindenstraat 23",
+    "Eerste Van Swindenstraat 25",
+    "Eerste Van Swindenstraat 27",
+    "Eerste Van Swindenstraat 29",
+    "Eerste Van Swindenstraat 31",
+    "Eerste Van Swindenstraat 33",
+    "Eerste Van Swindenstraat 35",
+    "Eerste Van Swindenstraat 37",
+    "Eerste Van Swindenstraat 41",
+    "Eerste Van Swindenstraat 43",
+    "Eerste Van Swindenstraat 45",
+    "Eerste Van Swindenstraat 47",
+    "Eerste Van Swindenstraat 49",
+    "Eerste Van Swindenstraat 51",
+    "Eerste Van Swindenstraat 53",
+    "Eerste Van Swindenstraat 55",
+    "Eerste Van Swindenstraat 57",
+    "Eerste Van Swindenstraat 59",
+    "Eerste Van Swindenstraat 61",
+    "Eerste Van Swindenstraat 63",
+    "Eerste Van Swindenstraat 65",
+    "Eerste Van Swindenstraat 67",
+    "Eerste Van Swindenstraat 69",
+    "Eerste Van Swindenstraat 71",
+    "Eerste Van Swindenstraat 73",
+    "Eerste Van Swindenstraat 75",
+    "Eerste Van Swindenstraat 77",
+    "Eerste Van Swindenstraat 79",
+    "Eerste Van Swindenstraat 81",
+    "Eerste Van Swindenstraat 83",
+    "Eerste Van Swindenstraat 91",
+    "Eerste Van Swindenstraat 95",
+    "Eerste Van Swindenstraat 97",
+    "Eerste Van Swindenstraat 99",
+    "Eerste Van Swindenstraat 101",
+    "Eerste Van Swindenstraat 103",
+    "Eerste Van Swindenstraat 105",
+    "Eerste Van Swindenstraat 107",
+    "Eerste Van Swindenstraat 109",
+    "Eerste Van Swindenstraat 111",
+    "Eerste Van Swindenstraat 113",
+    "Eerste Van Swindenstraat 115",
+    "Eerste Van Swindenstraat 117",
+    "Eerste Van Swindenstraat 119",
+    "Eerste Van Swindenstraat 121",
+    "Eerste Van Swindenstraat 123",
+    "Eerste Van Swindenstraat 125"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Van Swindenstraat 95",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000689856"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 97",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000689857"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 99",
+     "use": "woonfunctie",
+     "areaM2": 64,
+     "bagId": "0363010000689858"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 101",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000689886"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 103",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000689887"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 105",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000689888"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 107",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000689889"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 109",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000696888"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 111",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000696889"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 9",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010000955344"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 11",
+     "use": "woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010000955345"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 13",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000955346"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 15",
+     "use": "woonfunctie",
+     "areaM2": 101,
+     "bagId": "0363010000955347"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 17",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010000955348"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 19",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000955349"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 21",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000955350"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 23",
+     "use": "woonfunctie",
+     "areaM2": 109,
+     "bagId": "0363010000955351"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 25",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010000955352"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 27",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000955353"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 29",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010000955354"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 31",
+     "use": "woonfunctie",
+     "areaM2": 109,
+     "bagId": "0363010000955355"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 33",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000955356"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 35",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000955357"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 37",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000955358"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 51",
+     "use": "woonfunctie",
+     "areaM2": 101,
+     "bagId": "0363010000955360"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 53",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000955361"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 55",
+     "use": "woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010000955362"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 57",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010000955363"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 59",
+     "use": "woonfunctie",
+     "areaM2": 109,
+     "bagId": "0363010000955364"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 61",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000955365"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 63",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000955366"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 65",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010000955367"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 67",
+     "use": "woonfunctie",
+     "areaM2": 109,
+     "bagId": "0363010000955368"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 69",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010000955369"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 71",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000955370"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 73",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010000955371"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 75",
+     "use": "woonfunctie",
+     "areaM2": 86,
+     "bagId": "0363010000955372"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 77",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000955373"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 79",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000955374"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 81",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000955375"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 5",
+     "use": "winkelfunctie",
+     "areaM2": 130,
+     "bagId": "0363010000955388"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 7",
+     "use": "winkelfunctie",
+     "areaM2": 117,
+     "bagId": "0363010000955389"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 41",
+     "use": "winkelfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000955390"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 43",
+     "use": "winkelfunctie",
+     "areaM2": 121,
+     "bagId": "0363010000955391"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 45",
+     "use": "winkelfunctie",
+     "areaM2": 200,
+     "bagId": "0363010000955392"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 47",
+     "use": "winkelfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000955393"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 49",
+     "use": "winkelfunctie",
+     "areaM2": 77,
+     "bagId": "0363010000955394"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 83",
+     "use": "winkelfunctie",
+     "areaM2": 38,
+     "bagId": "0363010000955395"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 91",
+     "use": "winkelfunctie",
+     "areaM2": 770,
+     "bagId": "0363010000955396"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 91",
+     "use": "winkelfunctie",
+     "areaM2": 938,
+     "bagId": "0363010012118893"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 113",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000697695"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 115",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000700257"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 117",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000700258"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 119",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000700259"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 121",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000700260"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 123",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000700261"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 125",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000700262"
+    }
+   ],
+   "units": 57,
+   "osm": [
+    {
+     "type": "node",
+     "id": 34044762,
+     "lngLat": [
+      4.9255528,
+      52.362449
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "91",
+      "addr:postcode": "1093EZ",
+      "addr:street": "Eerste Van Swindenstraat",
+      "brand": "Albert Heijn",
+      "brand:wikidata": "Q1653985",
+      "brand:wikipedia": "nl:Albert Heijn (supermarkt)",
+      "check_date": "2025-04-07",
+      "name": "Albert Heijn",
+      "opening_hours": "08:00-22:00",
+      "phone": "+31 20 694 2277",
+      "ref": "8614",
+      "shop": "supermarket",
+      "website": "https://www.ah.nl/winkel/8614",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-11-10T07:19:24.267Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 2357174271,
+     "lngLat": [
+      4.9246694,
+      52.3622598
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "7",
+      "addr:postcode": "1093ES",
+      "addr:street": "Eerste Van Swindenstraat",
+      "name": "La Dushi",
+      "shop": "clothes",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "http://ladushimode.nl",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-11-10T07:19:24.267Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 2826851972,
+     "lngLat": [
+      4.9249791,
+      52.3623272
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "45",
+      "addr:postcode": "1093EV",
+      "addr:street": "Eerste Van Swindenstraat",
+      "name": "Versmarkt van Swinden",
+      "shop": "supermarket",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.versmarktvanswinden.nl",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-11-10T07:19:24.267Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 2826852441,
+     "lngLat": [
+      4.9251776,
+      52.3623698
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "49",
+      "addr:postcode": "1093EV",
+      "addr:street": "Eerste Van Swindenstraat",
+      "alt_name": "Stork juweliers & horloge reparatie",
+      "check_date:opening_hours": "2026-10-15",
+      "email": "stork@storkjuweliers.nl",
+      "name": "Stork",
+      "opening_hours": "Tu-Fr 10:00-18:00; Sa 10:00-17:00",
+      "phone": "+31 20 665 0300",
+      "shop": "jewelry",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.storkjuweliers.nl/",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-11-10T07:19:24.267Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 2826853425,
+     "lngLat": [
+      4.9245678,
+      52.3622394
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "5",
+      "addr:postcode": "1093ES",
+      "addr:street": "Eerste Van Swindenstraat",
+      "name": "Level",
+      "opening_hours": "Mo 13:00-18:00; Tu-Fr 10:00-18:00; Sa 10:00-17:00",
+      "shop": "electronics",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.levelelectronica.nl/"
+     },
+     "fetchedAt": "2026-11-10T07:19:24.267Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 8043245693,
+     "lngLat": [
+      4.924867,
+      52.3623025
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "43",
+      "addr:postcode": "1093EV",
+      "addr:street": "Eerste Van Swindenstraat",
+      "check_date:opening_hours": "2026-10-15",
+      "name": "We Are Vintage",
+      "not:brand:wikidata": "Q1987861",
+      "opening_hours": "Mo-Su 11:00-19:00",
+      "phone": "+31 20 786 1169",
+      "second_hand": "only",
+      "shop": "clothes",
+      "website": "https://www.wearevintage.nl"
+     },
+     "fetchedAt": "2026-11-10T07:19:24.267Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 10689167327,
+     "lngLat": [
+      4.925158,
+      52.3622979
+     ],
+     "tags": {
+      "amenity": "clock",
+      "barometer": "no",
+      "date": "no",
+      "display": "analog",
+      "faces": "2",
+      "hygrometer": "no",
+      "panoramax": "14430773-09c3-4c09-b14d-dcf6e5f215ed",
+      "support": "wall_mounted",
+      "thermometer": "no",
+      "visibility": "street"
+     },
+     "fetchedAt": "2026-11-10T07:19:24.267Z",
+     "match": "frontage",
+     "distanceM": 1.4
+    },
+    {
+     "type": "node",
+     "id": 12703066012,
+     "lngLat": [
+      4.9250751,
+      52.3623481
+     ],
+     "tags": {
+      "check_date": "2026-10-15",
+      "shop": "vacant"
+     },
+     "fetchedAt": "2026-11-10T07:19:24.267Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 12703086101,
+     "lngLat": [
+      4.9247679,
+      52.3622817
+     ],
+     "tags": {
+      "brand": "Optie1",
+      "brand:website": "https://www.optie1.nl",
+      "brand:wikidata": "Q62393564",
+      "check_date:opening_hours": "2026-10-15",
+      "fixme": "Filiaal wordt niet vermeld op website Optie1. Bestaat deze nog?",
+      "name": "Optie1",
+      "opening_hours": "Mo 12:00-18:00; Tu-Fr 10:00-18:00; Sa 10:00-17:00",
+      "shop": "mobile_phone",
+      "website": "https://www.optie1.nl"
+     },
+     "fetchedAt": "2026-11-10T07:19:24.267Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 13002725884,
+     "lngLat": [
+      4.9255657,
+      52.362451
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "91",
+      "addr:postcode": "1093EZ",
+      "addr:street": "Eerste Van Swindenstraat",
+      "amenity": "atm",
+      "brand": "Geldmaat",
+      "brand:wikidata": "Q74051230",
+      "brand:wikipedia": "nl:Geldmaat",
+      "cash_in": "no",
+      "cash_out": "yes",
+      "cash_out:notes": "yes",
+      "description": "In Albert Heijn",
+      "indoor": "yes",
+      "name": "Geldmaat",
+      "opening_hours": "Mo-Su 08:00-22:00",
+      "ref": "1093001",
+      "speech_output": "yes",
+      "website": "https://locatiewijzer.geldmaat.nl/nl/location/1093001"
+     },
+     "fetchedAt": "2026-11-10T07:19:24.267Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012121854",
+   "addresses": [
+    "Eerste Van Swindenstraat 127",
+    "Eerste Van Swindenstraat 131",
+    "Eerste Van Swindenstraat 133",
+    "Eerste Van Swindenstraat 135",
+    "Eerste Van Swindenstraat 137",
+    "Eerste Van Swindenstraat 139",
+    "Eerste Van Swindenstraat 141",
+    "Eerste Van Swindenstraat 141A",
+    "Eerste Van Swindenstraat 141B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Van Swindenstraat 127",
+     "use": "winkelfunctie",
+     "areaM2": 121,
+     "bagId": "0363010000952002"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 131",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000952003"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 133",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000952004"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 135",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000952005"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 137",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000952006"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 139",
+     "use": "woonfunctie",
+     "areaM2": 102,
+     "bagId": "0363010000952007"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 141",
+     "use": "woonfunctie",
+     "areaM2": 102,
+     "bagId": "0363010000952008"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 141A",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010012119088"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 141B",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010012119089"
+    }
+   ],
+   "units": 9,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2826837496,
+     "lngLat": [
+      4.9259376,
+      52.362529
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "127",
+      "addr:postcode": "1093GB",
+      "addr:street": "Eerste Van Swindenstraat",
+      "check_date:opening_hours": "2026-10-15",
+      "name": "Gunay Lunchroom",
+      "opening_hours": "Mo-Su 08:00-21:00",
+      "shop": "bakery",
+      "source": "BAG",
+      "source:date": "2014-03-24"
+     },
+     "fetchedAt": "2026-11-10T07:19:24.267Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012114922",
+   "addresses": [
+    "Eerste Van Swindenstraat 39",
+    "Eerste Van Swindenstraat 143",
+    "Eerste Van Swindenstraat 145",
+    "Eerste Van Swindenstraat 147",
+    "Eerste Van Swindenstraat 149",
+    "Eerste Van Swindenstraat 151",
+    "Eerste Van Swindenstraat 153",
+    "Eerste Van Swindenstraat 155",
+    "Eerste Van Swindenstraat 157",
+    "Eerste Van Swindenstraat 159",
+    "Eerste Van Swindenstraat 161",
+    "Eerste Van Swindenstraat 163",
+    "Eerste Van Swindenstraat 165",
+    "Eerste Van Swindenstraat 167",
+    "Eerste Van Swindenstraat 169",
+    "Eerste Van Swindenstraat 171",
+    "Eerste Van Swindenstraat 173",
+    "Eerste Van Swindenstraat 175",
+    "Eerste Van Swindenstraat 177",
+    "Eerste Van Swindenstraat 179",
+    "Eerste Van Swindenstraat 181",
+    "Eerste Van Swindenstraat 183",
+    "Eerste Van Swindenstraat 185",
+    "Eerste Van Swindenstraat 187",
+    "Eerste Van Swindenstraat 189",
+    "Eerste Van Swindenstraat 191",
+    "Eerste Van Swindenstraat 195"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Van Swindenstraat 147",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010000567322"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 149",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000567323"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 153",
+     "use": "woonfunctie",
+     "areaM2": 73,
+     "bagId": "0363010000567324"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 155",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010000570546"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 157",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010000570547"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 159",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000579411"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 161",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000579504"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 163",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000579563"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 165",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000579564"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 167",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010000579565"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 169",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010000579566"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 175",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000583068"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 177",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000583069"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 181",
+     "use": "woonfunctie",
+     "areaM2": 112,
+     "bagId": "0363010000586415"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 179",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010000585298"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 151",
+     "use": "woonfunctie",
+     "areaM2": 120,
+     "bagId": "0363010000585299"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 39",
+     "use": "woonfunctie",
+     "areaM2": 86,
+     "bagId": "0363010000955359"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 143",
+     "use": "winkelfunctie",
+     "areaM2": 185,
+     "bagId": "0363010000955397"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 145",
+     "use": "winkelfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000955398"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 189",
+     "use": "winkelfunctie",
+     "areaM2": 167,
+     "bagId": "0363010000955399"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 191",
+     "use": "winkelfunctie",
+     "areaM2": 92,
+     "bagId": "0363010000955400"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 195",
+     "use": "winkelfunctie",
+     "areaM2": 194,
+     "bagId": "0363010000955401"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 171",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000580991"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 173",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000580992"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 183",
+     "use": "woonfunctie",
+     "areaM2": 83,
+     "bagId": "0363010000588985"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 185",
+     "use": "woonfunctie",
+     "areaM2": 87,
+     "bagId": "0363010000588986"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 187",
+     "use": "woonfunctie",
+     "areaM2": 112,
+     "bagId": "0363010000589017"
+    }
+   ],
+   "units": 27,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2357181596,
+     "lngLat": [
+      4.9261577,
+      52.3625688
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "145",
+      "addr:postcode": "1093GB",
+      "addr:street": "Eerste Van Swindenstraat",
+      "check_date:opening_hours": "2026-10-15",
+      "name": "Basnoe Travel",
+      "opening_hours": "Mo-Fr 09:30-17:30; Sa 09:30-16:00",
+      "shop": "travel_agency",
+      "source": "BAG",
+      "source:date": "2014-03-24"
+     },
+     "fetchedAt": "2026-11-10T07:19:24.267Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 2826843361,
+     "lngLat": [
+      4.9265456,
+      52.3626511
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "195",
+      "addr:postcode": "1093GB",
+      "addr:street": "Eerste Van Swindenstraat",
+      "brand": "Praxis City",
+      "brand:wikidata": "Q124871026",
+      "check_date": "2026-10-15",
+      "check_date:opening_hours": "2026-10-15",
+      "name": "Praxis City",
+      "opening_hours": "Mo-Sa 09:00-18:00; Su 12:00-17:00",
+      "operator": "Praxis",
+      "operator:wikidata": "Q2741995",
+      "phone": "+31 20 8015300",
+      "shop": "doityourself",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.praxis.nl/storedetail/2361/amsterdam-city-van-swindenstraat"
+     },
+     "fetchedAt": "2026-11-10T07:19:24.267Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 12702995694,
+     "lngLat": [
+      4.9263883,
+      52.3626183
+     ],
+     "tags": {
+      "amenity": "restaurant",
+      "name": "Toko Jai Mata",
+      "opening_hours": "Mo-Th 11:00-21:00; Fr-Su 11:00-22:00"
+     },
+     "fetchedAt": "2026-11-10T07:19:24.267Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 12703053509,
+     "lngLat": [
+      4.9262725,
+      52.3625949
+     ],
+     "tags": {
+      "clothes": "men",
+      "name": "Frederick Matthew",
+      "shop": "clothes"
+     },
+     "fetchedAt": "2026-11-10T07:19:24.267Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 12703076307,
+     "lngLat": [
+      4.9260553,
+      52.3625488
+     ],
+     "tags": {
+      "name": "Geldmaat",
+      "opening_hours": "Mo-Su 09:00-21:00",
+      "shop": "money"
+     },
+     "fetchedAt": "2026-11-10T07:19:24.267Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 13002734126,
+     "lngLat": [
+      4.9260452,
+      52.3626107
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "143",
+      "addr:postcode": "1093GB",
+      "addr:street": "Eerste Van Swindenstraat",
+      "amenity": "atm",
+      "brand": "Geldmaat",
+      "brand:wikidata": "Q74051230",
+      "brand:wikipedia": "nl:Geldmaat",
+      "cash_in": "yes",
+      "cash_in:notes": "yes",
+      "cash_out": "yes",
+      "cash_out:notes": "yes",
+      "description": "Geld opnemen en storten; In Geldmaat-winkel",
+      "indoor": "yes",
+      "name": "Geldmaat",
+      "opening_hours": "Mo-Su 09:00-21:00",
+      "ref": "1093012",
+      "speech_output": "yes",
+      "website": "https://locatiewijzer.geldmaat.nl/nl/location/1093012"
+     },
+     "fetchedAt": "2026-11-10T07:19:24.267Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 13002734127,
+     "lngLat": [
+      4.9260505,
+      52.3626024
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "143",
+      "addr:postcode": "1093GB",
+      "addr:street": "Eerste Van Swindenstraat",
+      "amenity": "atm",
+      "brand": "Geldmaat",
+      "brand:wikidata": "Q74051230",
+      "brand:wikipedia": "nl:Geldmaat",
+      "cash_in": "yes",
+      "cash_in:notes": "yes",
+      "cash_out": "yes",
+      "cash_out:notes": "yes",
+      "description": "Geld opnemen en storten; In Geldmaat-winkel",
+      "indoor": "yes",
+      "name": "Geldmaat",
+      "opening_hours": "Mo-Su 09:00-21:00",
+      "ref": "1093012",
+      "speech_output": "yes",
+      "website": "https://locatiewijzer.geldmaat.nl/nl/location/1093012"
+     },
+     "fetchedAt": "2026-11-10T07:19:24.267Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 13002734128,
+     "lngLat": [
+      4.9260559,
+      52.362594
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "143",
+      "addr:postcode": "1093GB",
+      "addr:street": "Eerste Van Swindenstraat",
+      "amenity": "atm",
+      "brand": "Geldmaat",
+      "brand:wikidata": "Q74051230",
+      "brand:wikipedia": "nl:Geldmaat",
+      "cash_in": "yes",
+      "cash_in:notes": "yes",
+      "cash_out": "yes",
+      "cash_out:notes": "yes",
+      "description": "Geld opnemen en storten; In Geldmaat-winkel",
+      "indoor": "yes",
+      "name": "Geldmaat",
+      "opening_hours": "Mo-Su 09:00-21:00",
+      "ref": "1093012",
+      "speech_output": "yes",
+      "website": "https://locatiewijzer.geldmaat.nl/nl/location/1093012"
+     },
+     "fetchedAt": "2026-11-10T07:19:24.267Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 13002734129,
+     "lngLat": [
+      4.9260613,
+      52.3625857
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "143",
+      "addr:postcode": "1093GB",
+      "addr:street": "Eerste Van Swindenstraat",
+      "amenity": "atm",
+      "brand": "Geldmaat",
+      "brand:wikidata": "Q74051230",
+      "brand:wikipedia": "nl:Geldmaat",
+      "cash_in": "yes",
+      "cash_in:notes": "yes",
+      "cash_out": "yes",
+      "cash_out:notes": "yes",
+      "description": "Geld opnemen en storten; In Geldmaat-winkel",
+      "indoor": "yes",
+      "name": "Geldmaat",
+      "opening_hours": "Mo-Su 09:00-21:00",
+      "ref": "1093012",
+      "speech_output": "yes",
+      "website": "https://locatiewijzer.geldmaat.nl/nl/location/1093012"
+     },
+     "fetchedAt": "2026-11-10T07:19:24.267Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 13002734130,
+     "lngLat": [
+      4.9260666,
+      52.3625773
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "143",
+      "addr:postcode": "1093GB",
+      "addr:street": "Eerste Van Swindenstraat",
+      "amenity": "atm",
+      "brand": "Geldmaat",
+      "brand:wikidata": "Q74051230",
+      "brand:wikipedia": "nl:Geldmaat",
+      "cash_in": "yes",
+      "cash_in:notes": "yes",
+      "cash_out": "yes",
+      "cash_out:notes": "yes",
+      "description": "Geld opnemen en storten; In Geldmaat-winkel",
+      "indoor": "yes",
+      "name": "Geldmaat",
+      "opening_hours": "Mo-Su 09:00-21:00",
+      "ref": "1093012",
+      "speech_output": "yes",
+      "website": "https://locatiewijzer.geldmaat.nl/nl/location/1093012"
+     },
+     "fetchedAt": "2026-11-10T07:19:24.267Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 13002734131,
+     "lngLat": [
+      4.926072,
+      52.362569
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "143",
+      "addr:postcode": "1093GB",
+      "addr:street": "Eerste Van Swindenstraat",
+      "amenity": "atm",
+      "brand": "Geldmaat",
+      "brand:wikidata": "Q74051230",
+      "brand:wikipedia": "nl:Geldmaat",
+      "cash_in": "yes",
+      "cash_in:notes": "yes",
+      "cash_out": "yes",
+      "cash_out:notes": "yes",
+      "description": "Geld opnemen en storten; In Geldmaat-winkel",
+      "indoor": "yes",
+      "name": "Geldmaat",
+      "opening_hours": "Mo-Su 09:00-21:00",
+      "ref": "1093012",
+      "speech_output": "yes",
+      "website": "https://locatiewijzer.geldmaat.nl/nl/location/1093012"
+     },
+     "fetchedAt": "2026-11-10T07:19:24.267Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 13002734132,
+     "lngLat": [
+      4.9260022,
+      52.3625976
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "143",
+      "addr:postcode": "1093GB",
+      "addr:street": "Eerste Van Swindenstraat",
+      "amenity": "atm",
+      "brand": "Geldmaat",
+      "brand:wikidata": "Q74051230",
+      "brand:wikipedia": "nl:Geldmaat",
+      "cash_in": "yes",
+      "cash_in:coins": "yes",
+      "cash_in:notes": "no",
+      "cash_out": "no",
+      "description": "Alleen munten storten",
+      "indoor": "yes",
+      "name": "Geldmaat",
+      "opening_hours": "Mo-Su 09:00-21:00",
+      "ref": "1093143",
+      "speech_output": "no",
+      "website": "https://locatiewijzer.geldmaat.nl/nl/location/1093143"
+     },
+     "fetchedAt": "2026-11-10T07:19:24.267Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 13002734133,
+     "lngLat": [
+      4.9260076,
+      52.362589
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "143",
+      "addr:postcode": "1093GB",
+      "addr:street": "Eerste Van Swindenstraat",
+      "amenity": "atm",
+      "brand": "Geldmaat",
+      "brand:wikidata": "Q74051230",
+      "brand:wikipedia": "nl:Geldmaat",
+      "cash_in": "yes",
+      "cash_in:coins": "yes",
+      "cash_in:notes": "no",
+      "cash_out": "no",
+      "description": "Alleen munten storten",
+      "indoor": "yes",
+      "name": "Geldmaat",
+      "opening_hours": "Mo-Su 09:00-21:00",
+      "ref": "1093143",
+      "speech_output": "no",
+      "website": "https://locatiewijzer.geldmaat.nl/nl/location/1093143"
+     },
+     "fetchedAt": "2026-11-10T07:19:24.267Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 13002734134,
+     "lngLat": [
+      4.926021,
+      52.3625673
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "143",
+      "addr:postcode": "1093GB",
+      "addr:street": "Eerste Van Swindenstraat",
+      "amenity": "atm",
+      "brand": "Geldmaat",
+      "brand:wikidata": "Q74051230",
+      "brand:wikipedia": "nl:Geldmaat",
+      "cash_in": "yes",
+      "cash_in:notes": "no",
+      "cash_in:sealbags": "yes",
+      "cash_out": "no",
+      "cash_out:notes": "yes",
+      "description": "Alleen sealbag storten; In Geldmaat-winkel",
+      "indoor": "yes",
+      "name": "Geldmaat",
+      "opening_hours": "Mo-Su 09:00-21:00",
+      "ref": "1093011",
+      "speech_output": "no",
+      "website": "https://locatiewijzer.geldmaat.nl/nl/location/1093011"
+     },
+     "fetchedAt": "2026-11-10T07:19:24.267Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 13002734135,
+     "lngLat": [
+      4.9260271,
+      52.3625571
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "143",
+      "addr:postcode": "1093GB",
+      "addr:street": "Eerste Van Swindenstraat",
+      "amenity": "atm",
+      "brand": "Geldmaat",
+      "brand:wikidata": "Q74051230",
+      "brand:wikipedia": "nl:Geldmaat",
+      "cash_in": "no",
+      "cash_out": "yes",
+      "cash_out:notes": "yes",
+      "description": "In Geldmaat-winkel",
+      "indoor": "yes",
+      "name": "Geldmaat",
+      "opening_hours": "Mo-Su 09:00-21:00",
+      "ref": "1093011",
+      "speech_output": "yes",
+      "website": "https://locatiewijzer.geldmaat.nl/nl/location/1093011"
+     },
+     "fetchedAt": "2026-11-10T07:19:24.267Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

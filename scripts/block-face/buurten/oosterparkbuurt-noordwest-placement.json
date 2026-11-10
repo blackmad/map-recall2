@@ -1,0 +1,521 @@
+{
+ "buurt": "oosterparkbuurt-noordwest",
+ "library": "oud-west",
+ "generatedAt": "2026-11-10T09:27:08.118Z",
+ "seconds": 228.01,
+ "totals": {
+  "faces": 10,
+  "pands": 102,
+  "placed": 23
+ },
+ "faces": [
+  {
+   "face": "blasius-112-112",
+   "status": "no intake"
+  },
+  {
+   "face": "blasius-114-114",
+   "status": "no intake"
+  },
+  {
+   "face": "blasius-124-174",
+   "street": "Blasiusstraat",
+   "pands": 4,
+   "placed": 0,
+   "held": 4,
+   "runs": [],
+   "seconds": 2.65,
+   "byType": {},
+   "installed": 0,
+   "holds": {
+    "evidence": 0,
+    "match": 4,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "blasius-74-110",
+   "street": "Blasiusstraat",
+   "pands": 17,
+   "placed": 3,
+   "held": 14,
+   "runs": [
+    {
+     "face": "blasius-74-110-r1",
+     "pands": [
+      "0363100012159877",
+      "0363100012251301",
+      "0363100012166289"
+     ]
+    }
+   ],
+   "seconds": 7.2,
+   "byType": {
+    "kinker-1890-plain-brick": 1,
+    "clercq-nassaukade-corner": 1,
+    "kinker-1902-balcony-axis": 1
+   },
+   "installed": 0,
+   "holds": {
+    "evidence": 0,
+    "match": 12,
+    "likeness": 0,
+    "run": 2,
+    "review": 0
+   }
+  },
+  {
+   "face": "blasius-83-91",
+   "status": "no intake"
+  },
+  {
+   "face": "blasius-93-175",
+   "street": "Blasiusstraat",
+   "pands": 9,
+   "placed": 0,
+   "held": 9,
+   "runs": [],
+   "seconds": 4.42,
+   "byType": {},
+   "installed": 0,
+   "holds": {
+    "evidence": 5,
+    "match": 4,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "boerhaave-22-42",
+   "status": "no intake"
+  },
+  {
+   "face": "boerhaave-29-77",
+   "status": "no intake"
+  },
+  {
+   "face": "boerhaave-56-80",
+   "status": "no intake"
+  },
+  {
+   "face": "boerhaave-7-19",
+   "status": "no intake"
+  },
+  {
+   "face": "boerhaaveplein-10-22",
+   "status": "no intake"
+  },
+  {
+   "face": "boerhaaveplein-2-2",
+   "status": "no intake"
+  },
+  {
+   "face": "boerhaaveplein-3-59",
+   "status": "no intake"
+  },
+  {
+   "face": "boerhaaveplein-4-6",
+   "status": "no intake"
+  },
+  {
+   "face": "boerhaaveplein-69-103",
+   "status": "no intake"
+  },
+  {
+   "face": "bonn-1-25",
+   "street": "Andreas Bonnstraat",
+   "pands": 13,
+   "placed": 9,
+   "held": 4,
+   "runs": [
+    {
+     "face": "bonn-1-25-r1",
+     "pands": [
+      "0363100012156889",
+      "0363100012152496",
+      "0363100012160601",
+      "0363100012154202",
+      "0363100012158236",
+      "0363100012158886",
+      "0363100012166557",
+      "0363100012152778",
+      "0363100012161704"
+     ]
+    }
+   ],
+   "seconds": 6.57,
+   "byType": {
+    "kinker-1902-balcony-axis": 9
+   },
+   "installed": 0,
+   "holds": {
+    "evidence": 0,
+    "match": 4,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "bonn-2-24",
+   "street": "Andreas Bonnstraat",
+   "pands": 10,
+   "placed": 0,
+   "held": 10,
+   "runs": [],
+   "seconds": 2.96,
+   "byType": {},
+   "installed": 0,
+   "holds": {
+    "evidence": 0,
+    "match": 10,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "bonn-26-26",
+   "status": "no intake"
+  },
+  {
+   "face": "bonn-30-46",
+   "street": "Andreas Bonnstraat",
+   "pands": 8,
+   "placed": 0,
+   "held": 8,
+   "runs": [],
+   "seconds": 2.32,
+   "byType": {},
+   "installed": 0,
+   "holds": {
+    "evidence": 0,
+    "match": 5,
+    "likeness": 0,
+    "run": 3,
+    "review": 0
+   }
+  },
+  {
+   "face": "camper-1-5",
+   "status": "no intake"
+  },
+  {
+   "face": "camper-10-16",
+   "status": "no intake"
+  },
+  {
+   "face": "camper-18-26",
+   "status": "no intake"
+  },
+  {
+   "face": "camper-40-46",
+   "status": "no intake"
+  },
+  {
+   "face": "camper-41-69",
+   "status": "no intake"
+  },
+  {
+   "face": "camper-58-78",
+   "status": "no intake"
+  },
+  {
+   "face": "mauritskade-10-10",
+   "status": "no intake"
+  },
+  {
+   "face": "mauritskade-11-11",
+   "status": "no intake"
+  },
+  {
+   "face": "mauritskade-14-14",
+   "status": "no intake"
+  },
+  {
+   "face": "mauritskade-15-15",
+   "status": "no intake"
+  },
+  {
+   "face": "mauritskade-16-16",
+   "status": "no intake"
+  },
+  {
+   "face": "mauritskade-17-17",
+   "status": "no intake"
+  },
+  {
+   "face": "mauritskade-18-18",
+   "status": "no intake"
+  },
+  {
+   "face": "mauritskade-19-19",
+   "status": "no intake"
+  },
+  {
+   "face": "mauritskade-20-20",
+   "status": "no intake"
+  },
+  {
+   "face": "mauritskade-21-21",
+   "status": "no intake"
+  },
+  {
+   "face": "mauritskade-24-24",
+   "status": "no intake"
+  },
+  {
+   "face": "muntendam-2-86",
+   "status": "no intake"
+  },
+  {
+   "face": "muntendam-3-63",
+   "status": "no intake"
+  },
+  {
+   "face": "musschenbroek-1-67",
+   "status": "no intake"
+  },
+  {
+   "face": "musschenbroek-2-32",
+   "status": "no intake"
+  },
+  {
+   "face": "musschenbroek-34-152",
+   "status": "no intake"
+  },
+  {
+   "face": "musschenbroek-48-144",
+   "status": "no intake"
+  },
+  {
+   "face": "musschenbroek-5-5",
+   "status": "no intake"
+  },
+  {
+   "face": "musschenbroek-69-159",
+   "status": "no intake"
+  },
+  {
+   "face": "oosterpark-1-1",
+   "status": "no intake"
+  },
+  {
+   "face": "oosterpark-107-251",
+   "status": "no intake"
+  },
+  {
+   "face": "oosterpark-2-2",
+   "status": "no intake"
+  },
+  {
+   "face": "oosterpark-3-3",
+   "status": "no intake"
+  },
+  {
+   "face": "oosterpark-4-6",
+   "status": "no intake"
+  },
+  {
+   "face": "oosterpark-7-7",
+   "status": "no intake"
+  },
+  {
+   "face": "oosterpark-8-8",
+   "status": "no intake"
+  },
+  {
+   "face": "rhijnspoorplein-1-1",
+   "status": "no intake"
+  },
+  {
+   "face": "ruysch-126-126",
+   "status": "no intake"
+  },
+  {
+   "face": "ruysch-307-393",
+   "street": "Ruyschstraat",
+   "pands": 11,
+   "placed": 2,
+   "held": 9,
+   "runs": [
+    {
+     "face": "ruysch-307-393-r1",
+     "pands": [
+      "0363100012161684",
+      "0363100012155674"
+     ],
+     "passed": true,
+     "triangles": 3809
+    }
+   ],
+   "seconds": 182.69,
+   "byType": {
+    "oosterpark-1900-balcony-camber-tall": 2
+   },
+   "installed": 0,
+   "holds": {
+    "evidence": 0,
+    "match": 0,
+    "likeness": 3,
+    "run": 2,
+    "review": 4
+   }
+  },
+  {
+   "face": "ruysch-49-105",
+   "status": "no intake"
+  },
+  {
+   "face": "ruysch-64-124",
+   "street": "Ruyschstraat",
+   "pands": 17,
+   "placed": 7,
+   "held": 10,
+   "runs": [
+    {
+     "face": "ruysch-64-124-r1",
+     "pands": [
+      "0363100012159820",
+      "0363100012150384",
+      "0363100012165864"
+     ],
+     "passed": true,
+     "triangles": 6017
+    },
+    {
+     "face": "ruysch-64-124-r2",
+     "pands": [
+      "0363100012158466",
+      "0363100012160930",
+      "0363100012163039",
+      "0363100012154180"
+     ],
+     "passed": true,
+     "triangles": 8381
+    }
+   ],
+   "seconds": 45.3,
+   "byType": {
+    "oosterpark-1900-balcony-camber": 7
+   },
+   "installed": 0,
+   "holds": {
+    "evidence": 0,
+    "match": 2,
+    "likeness": 2,
+    "run": 3,
+    "review": 3
+   }
+  },
+  {
+   "face": "sgravesande-2-92",
+   "street": "'s-Gravesandestraat",
+   "pands": 4,
+   "placed": 0,
+   "held": 4,
+   "runs": [],
+   "seconds": 2.73,
+   "byType": {},
+   "installed": 0,
+   "holds": {
+    "evidence": 0,
+    "match": 4,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "sgravesande-94-110",
+   "status": "no intake"
+  },
+  {
+   "face": "sgravesandeplein-1-25",
+   "street": "'s-Gravesandeplein",
+   "pands": 9,
+   "placed": 2,
+   "held": 7,
+   "runs": [
+    {
+     "face": "sgravesandeplein-1-25-r1",
+     "pands": [
+      "0363100012166277",
+      "0363100012154172"
+     ]
+    }
+   ],
+   "seconds": 4.26,
+   "byType": {
+    "kinker-1902-balcony-axis": 2
+   },
+   "installed": 0,
+   "holds": {
+    "evidence": 0,
+    "match": 6,
+    "likeness": 0,
+    "run": 1,
+    "review": 0
+   }
+  },
+  {
+   "face": "sgravesandeplein-116-120",
+   "status": "no intake"
+  },
+  {
+   "face": "sgravesandeplein-4-86",
+   "status": "no intake"
+  },
+  {
+   "face": "sgravesandeplein-90-90",
+   "status": "no intake"
+  },
+  {
+   "face": "tilanus-2-36",
+   "status": "no intake"
+  },
+  {
+   "face": "tilanus-260-362",
+   "status": "no intake"
+  },
+  {
+   "face": "tilanus-5-59",
+   "status": "no intake"
+  },
+  {
+   "face": "tilanus-61-81",
+   "status": "no intake"
+  },
+  {
+   "face": "wibaut-3-3",
+   "status": "no intake"
+  },
+  {
+   "face": "wibaut-31-55",
+   "status": "no intake"
+  },
+  {
+   "face": "wibaut-9-27",
+   "status": "no intake"
+  },
+  {
+   "face": "zeldenrust-1-39",
+   "status": "no intake"
+  },
+  {
+   "face": "zeldenrust-2-72",
+   "status": "no intake"
+  },
+  {
+   "face": "zeldenrust-41-79",
+   "status": "no intake"
+  },
+  {
+   "face": "zeldenrust-74-144",
+   "status": "no intake"
+  }
+ ]
+}

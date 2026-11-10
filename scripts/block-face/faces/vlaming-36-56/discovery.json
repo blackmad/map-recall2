@@ -1,0 +1,462 @@
+{
+ "street": "Pieter Vlamingstraat",
+ "seed": "0363100012125776",
+ "members": [
+  "0363100012162085",
+  "0363100012166230",
+  "0363100012163414",
+  "0363100012157029",
+  "0363100012160757",
+  "0363100012121661",
+  "0363100012150078",
+  "0363100012122070",
+  "0363100012125671",
+  "0363100012094055",
+  "0363100012125776"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "trimmed at 0363100012162085 (face continues: 163489)"
+  },
+  {
+   "side": "right",
+   "reason": "no further pand fronts the street in the fetched area"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012063961",
+   "reason": "frontage 32.7 m from Pieter Vlamingstraat"
+  },
+  {
+   "pandId": "0363100012064747",
+   "reason": "frontage 43.7 m from Pieter Vlamingstraat"
+  },
+  {
+   "pandId": "0363100012065278",
+   "reason": "no frontage on Pieter Vlamingstraat: No footprint edge faces Pieter Vlamingstraat"
+  },
+  {
+   "pandId": "0363100012065823",
+   "reason": "frontage 91.6 m from Pieter Vlamingstraat"
+  },
+  {
+   "pandId": "0363100012074401",
+   "reason": "frontage 53.1 m from Pieter Vlamingstraat"
+  },
+  {
+   "pandId": "0363100012075601",
+   "reason": "sightline to Pieter Vlamingstraat crosses 0363100012094063"
+  },
+  {
+   "pandId": "0363100012089362",
+   "reason": "frontage 47.7 m from Pieter Vlamingstraat"
+  },
+  {
+   "pandId": "0363100012094063",
+   "reason": "no frontage on Pieter Vlamingstraat: No footprint edge faces Pieter Vlamingstraat"
+  },
+  {
+   "pandId": "0363100012094813",
+   "reason": "frontage 113.6 m from Pieter Vlamingstraat"
+  },
+  {
+   "pandId": "0363100012098167",
+   "reason": "frontage 108.5 m from Pieter Vlamingstraat"
+  },
+  {
+   "pandId": "0363100012098648",
+   "reason": "sightline to Pieter Vlamingstraat crosses 0363100012075601"
+  },
+  {
+   "pandId": "0363100012098734",
+   "reason": "frontage 74.3 m from Pieter Vlamingstraat"
+  },
+  {
+   "pandId": "0363100012102646",
+   "reason": "frontage 74.4 m from Pieter Vlamingstraat"
+  },
+  {
+   "pandId": "0363100012106887",
+   "reason": "frontage 78.7 m from Pieter Vlamingstraat"
+  },
+  {
+   "pandId": "0363100012109920",
+   "reason": "no frontage on Pieter Vlamingstraat: No footprint edge faces Pieter Vlamingstraat"
+  },
+  {
+   "pandId": "0363100012115247",
+   "reason": "frontage 35.9 m from Pieter Vlamingstraat"
+  },
+  {
+   "pandId": "0363100012117450",
+   "reason": "no frontage on Pieter Vlamingstraat: No footprint edge faces Pieter Vlamingstraat"
+  },
+  {
+   "pandId": "0363100012119432",
+   "reason": "frontage 101.8 m from Pieter Vlamingstraat"
+  },
+  {
+   "pandId": "0363100012126532",
+   "reason": "no frontage on Pieter Vlamingstraat: No footprint edge faces Pieter Vlamingstraat"
+  },
+  {
+   "pandId": "0363100012132768",
+   "reason": "no frontage on Pieter Vlamingstraat: No footprint edge faces Pieter Vlamingstraat"
+  },
+  {
+   "pandId": "0363100012134469",
+   "reason": "no frontage on Pieter Vlamingstraat: No footprint edge faces Pieter Vlamingstraat"
+  },
+  {
+   "pandId": "0363100012136510",
+   "reason": "frontage 57.9 m from Pieter Vlamingstraat"
+  },
+  {
+   "pandId": "0363100012136808",
+   "reason": "frontage 82.8 m from Pieter Vlamingstraat"
+  },
+  {
+   "pandId": "0363100012137243",
+   "reason": "sightline to Pieter Vlamingstraat crosses 0363100012163489"
+  },
+  {
+   "pandId": "0363100012138979",
+   "reason": "frontage 74.3 m from Pieter Vlamingstraat"
+  },
+  {
+   "pandId": "0363100012139064",
+   "reason": "frontage 74.5 m from Pieter Vlamingstraat"
+  },
+  {
+   "pandId": "0363100012144130",
+   "reason": "frontage 76.9 m from Pieter Vlamingstraat"
+  },
+  {
+   "pandId": "0363100012144406",
+   "reason": "frontage 94.4 m from Pieter Vlamingstraat"
+  },
+  {
+   "pandId": "0363100012146257",
+   "reason": "frontage 33.5 m from Pieter Vlamingstraat"
+  },
+  {
+   "pandId": "0363100012152395",
+   "reason": "frontage 74.2 m from Pieter Vlamingstraat"
+  },
+  {
+   "pandId": "0363100012152891",
+   "reason": "frontage 95.1 m from Pieter Vlamingstraat"
+  },
+  {
+   "pandId": "0363100012153383",
+   "reason": "frontage 116.4 m from Pieter Vlamingstraat"
+  },
+  {
+   "pandId": "0363100012153465",
+   "reason": "sightline to Pieter Vlamingstraat crosses 0363100012155386"
+  },
+  {
+   "pandId": "0363100012153466",
+   "reason": "frontage 34.4 m from Pieter Vlamingstraat"
+  },
+  {
+   "pandId": "0363100012153573",
+   "reason": "frontage 96.2 m from Pieter Vlamingstraat"
+  },
+  {
+   "pandId": "0363100012154850",
+   "reason": "frontage 37.3 m from Pieter Vlamingstraat"
+  },
+  {
+   "pandId": "0363100012072638",
+   "reason": "frontage 92.9 m from Pieter Vlamingstraat"
+  },
+  {
+   "pandId": "0363100012083647",
+   "reason": "frontage 30.7 m from Pieter Vlamingstraat"
+  },
+  {
+   "pandId": "0363100012089961",
+   "reason": "frontage 103.3 m from Pieter Vlamingstraat"
+  },
+  {
+   "pandId": "0363100012116676",
+   "reason": "frontage 83.0 m from Pieter Vlamingstraat"
+  },
+  {
+   "pandId": "0363100012137435",
+   "reason": "frontage 74.5 m from Pieter Vlamingstraat"
+  },
+  {
+   "pandId": "0363100012155457",
+   "reason": "frontage 103.6 m from Pieter Vlamingstraat"
+  },
+  {
+   "pandId": "0363100012158515",
+   "reason": "frontage 89.7 m from Pieter Vlamingstraat"
+  },
+  {
+   "pandId": "0363100012158819",
+   "reason": "frontage 99.6 m from Pieter Vlamingstraat"
+  },
+  {
+   "pandId": "0363100012159120",
+   "reason": "frontage 99.6 m from Pieter Vlamingstraat"
+  },
+  {
+   "pandId": "0363100012159281",
+   "reason": "frontage 99.7 m from Pieter Vlamingstraat"
+  },
+  {
+   "pandId": "0363100012160990",
+   "reason": "frontage 68.6 m from Pieter Vlamingstraat"
+  },
+  {
+   "pandId": "0363100012161399",
+   "reason": "frontage 100.9 m from Pieter Vlamingstraat"
+  },
+  {
+   "pandId": "0363100012161741",
+   "reason": "frontage 102.0 m from Pieter Vlamingstraat"
+  },
+  {
+   "pandId": "0363100012161952",
+   "reason": "sightline to Pieter Vlamingstraat crosses 0363100012153459"
+  },
+  {
+   "pandId": "0363100012161996",
+   "reason": "no frontage on Pieter Vlamingstraat: No footprint edge faces Pieter Vlamingstraat"
+  },
+  {
+   "pandId": "0363100012162301",
+   "reason": "sightline to Pieter Vlamingstraat crosses 0363100012155386"
+  },
+  {
+   "pandId": "0363100012163697",
+   "reason": "sightline to Pieter Vlamingstraat crosses 0363100012160168"
+  },
+  {
+   "pandId": "0363100012164381",
+   "reason": "frontage 140.5 m from Pieter Vlamingstraat"
+  },
+  {
+   "pandId": "0363100012165385",
+   "reason": "frontage 63.1 m from Pieter Vlamingstraat"
+  },
+  {
+   "pandId": "0363100012165821",
+   "reason": "frontage 90.1 m from Pieter Vlamingstraat"
+  },
+  {
+   "pandId": "0363100012165939",
+   "reason": "frontage 99.7 m from Pieter Vlamingstraat"
+  },
+  {
+   "pandId": "0363100012166369",
+   "reason": "frontage 100.1 m from Pieter Vlamingstraat"
+  },
+  {
+   "pandId": "0363100012166530",
+   "reason": "frontage 84.0 m from Pieter Vlamingstraat"
+  },
+  {
+   "pandId": "0363100012166835",
+   "reason": "sightline to Pieter Vlamingstraat crosses 0363100012155386"
+  },
+  {
+   "pandId": "0363100012167033",
+   "reason": "frontage 97.3 m from Pieter Vlamingstraat"
+  },
+  {
+   "pandId": "0363100012235954",
+   "reason": "sightline to Pieter Vlamingstraat crosses 0363100012155803"
+  },
+  {
+   "pandId": "0363100012236435",
+   "reason": "frontage 91.0 m from Pieter Vlamingstraat"
+  },
+  {
+   "pandId": "0363100012156106",
+   "reason": "sightline to Pieter Vlamingstraat crosses 0363100012163286"
+  },
+  {
+   "pandId": "0363100012159494",
+   "reason": "frontage 95.5 m from Pieter Vlamingstraat"
+  },
+  {
+   "pandId": "0363100012161754",
+   "reason": "frontage 98.8 m from Pieter Vlamingstraat"
+  },
+  {
+   "pandId": "0363100012163286",
+   "reason": "sightline to Pieter Vlamingstraat crosses 0363100012163521"
+  },
+  {
+   "pandId": "0363100012163689",
+   "reason": "frontage 36.6 m from Pieter Vlamingstraat"
+  },
+  {
+   "pandId": "0363100012164775",
+   "reason": "frontage 93.0 m from Pieter Vlamingstraat"
+  },
+  {
+   "pandId": "0363100012153459",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012155386",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012095985",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012155654",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012155803",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012156143",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012158685",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012159594",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012160168",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012161692",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012163521",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012162085",
+   "alongM": -54.88,
+   "widthM": 5,
+   "eavesM": 11.93,
+   "roofMaxM": 14.87,
+   "storeys3dbag": 5,
+   "builtYear": 1880,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012166230",
+   "alongM": -49.86,
+   "widthM": 5.03,
+   "eavesM": 12.46,
+   "roofMaxM": 15.43,
+   "storeys3dbag": 3,
+   "builtYear": 1990,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012163414",
+   "alongM": -44.59,
+   "widthM": 5.51,
+   "eavesM": 12.54,
+   "roofMaxM": 16.58,
+   "storeys3dbag": 5,
+   "builtYear": 1990,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012157029",
+   "alongM": -39.3,
+   "widthM": 5.06,
+   "eavesM": 12.31,
+   "roofMaxM": 15.38,
+   "storeys3dbag": 3,
+   "builtYear": 1883,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012160757",
+   "alongM": -33.88,
+   "widthM": 5.78,
+   "eavesM": 12.55,
+   "roofMaxM": 15.51,
+   "storeys3dbag": 4,
+   "builtYear": 1883,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012121661",
+   "alongM": -28.14,
+   "widthM": 5.7,
+   "eavesM": 13.16,
+   "roofMaxM": 15.65,
+   "storeys3dbag": 0,
+   "builtYear": 1883,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012150078",
+   "alongM": -22.45,
+   "widthM": 5.69,
+   "eavesM": 13.08,
+   "roofMaxM": 15.01,
+   "storeys3dbag": 0,
+   "builtYear": 1883,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012122070",
+   "alongM": -16.76,
+   "widthM": 5.69,
+   "eavesM": 12.89,
+   "roofMaxM": 16.12,
+   "storeys3dbag": 5,
+   "builtYear": 1883,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012125671",
+   "alongM": -11.05,
+   "widthM": 5.71,
+   "eavesM": 12.91,
+   "roofMaxM": 14.99,
+   "storeys3dbag": 0,
+   "builtYear": 1883,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012094055",
+   "alongM": -5.34,
+   "widthM": 5.71,
+   "eavesM": 12.87,
+   "roofMaxM": 15.57,
+   "storeys3dbag": 0,
+   "builtYear": 1883,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012125776",
+   "alongM": 0,
+   "widthM": 4.97,
+   "eavesM": 12.85,
+   "roofMaxM": 15.17,
+   "storeys3dbag": 5,
+   "builtYear": 1883,
+   "uncertainty": []
+  }
+ ]
+}

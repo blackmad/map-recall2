@@ -1,0 +1,954 @@
+{
+ "street": "Eerste Van Swindenstraat",
+ "seed": "0363100012154498",
+ "members": [
+  "0363100012154498",
+  "0363100012121854",
+  "0363100012114922"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "trimmed at 0363100012154498 (face continues: 109340)"
+  },
+  {
+   "side": "right",
+   "reason": "trimmed at 0363100012114922 (face continues: 155092 120520 145175)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012064691",
+   "reason": "frontage 149.2 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012065278",
+   "reason": "frontage 177.9 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012065823",
+   "reason": "frontage 174.6 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012068865",
+   "reason": "frontage 82.8 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012072369",
+   "reason": "frontage 155.5 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012074254",
+   "reason": "frontage 108.4 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012077478",
+   "reason": "frontage 47.0 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012078517",
+   "reason": "frontage 111.7 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012080864",
+   "reason": "frontage 176.0 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012081261",
+   "reason": "frontage 36.4 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012082861",
+   "reason": "frontage 64.4 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012083554",
+   "reason": "frontage 155.5 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012088409",
+   "reason": "frontage 101.0 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012088692",
+   "reason": "frontage 34.1 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012089347",
+   "reason": "frontage 149.9 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012090552",
+   "reason": "frontage 175.3 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012090879",
+   "reason": "frontage 112.9 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012091544",
+   "reason": "frontage 47.9 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012094602",
+   "reason": "frontage 110.0 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012094813",
+   "reason": "frontage 213.4 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012095429",
+   "reason": "frontage 112.0 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012097001",
+   "reason": "frontage 82.0 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012097187",
+   "reason": "frontage 111.0 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012097700",
+   "reason": "frontage 170.1 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012098167",
+   "reason": "frontage 150.0 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012098734",
+   "reason": "frontage 176.7 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012100061",
+   "reason": "frontage 36.5 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012101318",
+   "reason": "frontage 36.8 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012102646",
+   "reason": "frontage 176.7 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012064453",
+   "reason": "frontage 147.3 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012068771",
+   "reason": "frontage 121.6 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012072638",
+   "reason": "frontage 159.3 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012076290",
+   "reason": "frontage 120.0 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012079299",
+   "reason": "frontage 121.1 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012080578",
+   "reason": "frontage 94.6 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012084765",
+   "reason": "frontage 30.6 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012089681",
+   "reason": "frontage 144.6 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012089961",
+   "reason": "frontage 149.8 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012091504",
+   "reason": "frontage 150.0 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012091933",
+   "reason": "frontage 177.7 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012100034",
+   "reason": "frontage 147.0 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012103872",
+   "reason": "frontage 66.1 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012104677",
+   "reason": "frontage 146.7 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012105883",
+   "reason": "frontage 197.6 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012107930",
+   "reason": "frontage 175.1 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012108076",
+   "reason": "frontage 36.1 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012109802",
+   "reason": "frontage 93.6 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012112407",
+   "reason": "frontage 110.0 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012112463",
+   "reason": "frontage 30.8 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012114824",
+   "reason": "frontage 146.1 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012117450",
+   "reason": "frontage 174.7 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012119238",
+   "reason": "frontage 68.2 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012119432",
+   "reason": "frontage 213.4 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012120616",
+   "reason": "frontage 213.3 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012126532",
+   "reason": "frontage 174.7 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012127889",
+   "reason": "frontage 67.7 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012132768",
+   "reason": "frontage 170.9 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012134148",
+   "reason": "frontage 129.4 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012134469",
+   "reason": "frontage 174.8 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012135213",
+   "reason": "frontage 45.7 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012136808",
+   "reason": "frontage 170.8 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012138979",
+   "reason": "frontage 176.7 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012140949",
+   "reason": "frontage 41.9 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012141437",
+   "reason": "frontage 111.8 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012143470",
+   "reason": "frontage 113.0 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012144130",
+   "reason": "frontage 176.7 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012144406",
+   "reason": "frontage 213.3 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012148725",
+   "reason": "frontage 110.9 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012151073",
+   "reason": "frontage 113.8 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012152400",
+   "reason": "frontage 44.5 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012152482",
+   "reason": "frontage 44.6 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012152605",
+   "reason": "frontage 37.0 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012112062",
+   "reason": "frontage 67.8 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012112452",
+   "reason": "frontage 45.9 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012113477",
+   "reason": "frontage 197.0 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012117197",
+   "reason": "frontage 65.2 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012117993",
+   "reason": "frontage 178.5 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012122004",
+   "reason": "frontage 71.9 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012122650",
+   "reason": "frontage 37.5 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012126736",
+   "reason": "frontage 65.7 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012133643",
+   "reason": "frontage 46.0 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012134757",
+   "reason": "frontage 145.5 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012136088",
+   "reason": "frontage 177.0 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012137078",
+   "reason": "frontage 112.1 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012139414",
+   "reason": "frontage 86.2 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012144878",
+   "reason": "frontage 176.0 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012144909",
+   "reason": "frontage 42.2 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012146393",
+   "reason": "frontage 174.3 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012151267",
+   "reason": "frontage 120.5 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012152426",
+   "reason": "frontage 82.8 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012152732",
+   "reason": "frontage 44.5 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012152754",
+   "reason": "frontage 124.3 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012152885",
+   "reason": "frontage 83.0 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012153380",
+   "reason": "frontage 112.7 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012153383",
+   "reason": "frontage 149.9 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012153389",
+   "reason": "frontage 103.9 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012153561",
+   "reason": "frontage 68.5 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012153573",
+   "reason": "frontage 149.7 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012153680",
+   "reason": "frontage 68.5 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012153696",
+   "reason": "frontage 44.9 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012153708",
+   "reason": "frontage 41.7 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012153815",
+   "reason": "frontage 86.7 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012154124",
+   "reason": "frontage 50.5 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012155457",
+   "reason": "frontage 149.9 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012155577",
+   "reason": "frontage 44.7 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012156075",
+   "reason": "frontage 111.7 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012156485",
+   "reason": "frontage 116.7 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012156514",
+   "reason": "frontage 80.7 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012156871",
+   "reason": "frontage 68.5 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012157163",
+   "reason": "frontage 100.8 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012157418",
+   "reason": "frontage 150.0 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012158153",
+   "reason": "frontage 145.5 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012158275",
+   "reason": "frontage 44.6 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012158364",
+   "reason": "frontage 106.9 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012158379",
+   "reason": "frontage 112.6 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012158748",
+   "reason": "frontage 89.0 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012158819",
+   "reason": "frontage 149.9 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012159015",
+   "reason": "frontage 149.8 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012159120",
+   "reason": "frontage 149.9 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012159201",
+   "reason": "frontage 43.6 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012152829",
+   "reason": "frontage 109.4 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012153138",
+   "reason": "frontage 105.8 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012154273",
+   "reason": "frontage 82.8 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012155065",
+   "reason": "frontage 45.6 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012155113",
+   "reason": "frontage 94.2 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012155494",
+   "reason": "frontage 47.2 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012156017",
+   "reason": "frontage 44.2 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012156441",
+   "reason": "frontage 82.8 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012157458",
+   "reason": "frontage 82.7 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012158317",
+   "reason": "frontage 44.3 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012158693",
+   "reason": "frontage 32.3 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012158763",
+   "reason": "frontage 44.3 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012159281",
+   "reason": "frontage 149.9 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012160317",
+   "reason": "frontage 88.5 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012160327",
+   "reason": "frontage 98.6 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012160508",
+   "reason": "frontage 44.9 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012160692",
+   "reason": "frontage 131.8 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012160991",
+   "reason": "frontage 149.9 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012161399",
+   "reason": "frontage 149.8 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012161741",
+   "reason": "frontage 149.8 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012161996",
+   "reason": "frontage 174.9 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012162668",
+   "reason": "frontage 111.4 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012163169",
+   "reason": "frontage 68.5 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012163265",
+   "reason": "frontage 44.8 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012163419",
+   "reason": "frontage 108.6 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012163446",
+   "reason": "frontage 150.0 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012163524",
+   "reason": "frontage 138.7 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012163547",
+   "reason": "frontage 94.9 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012163837",
+   "reason": "frontage 44.9 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012164331",
+   "reason": "frontage 150.0 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012164381",
+   "reason": "frontage 174.9 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012164877",
+   "reason": "frontage 151.1 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012165939",
+   "reason": "frontage 149.9 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012166134",
+   "reason": "frontage 82.8 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012166369",
+   "reason": "frontage 149.8 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012159436",
+   "reason": "frontage 197.3 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012159494",
+   "reason": "frontage 149.7 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012159616",
+   "reason": "frontage 82.9 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012159624",
+   "reason": "frontage 144.6 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012160124",
+   "reason": "frontage 82.7 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012161088",
+   "reason": "frontage 111.5 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012161245",
+   "reason": "frontage 139.1 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012161396",
+   "reason": "frontage 110.8 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012161514",
+   "reason": "frontage 44.6 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012161754",
+   "reason": "frontage 149.8 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012162270",
+   "reason": "frontage 39.7 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012164040",
+   "reason": "frontage 197.7 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012164562",
+   "reason": "frontage 34.6 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012164775",
+   "reason": "frontage 149.7 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012165193",
+   "reason": "frontage 82.8 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012165730",
+   "reason": "frontage 82.6 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012166399",
+   "reason": "frontage 44.9 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012167033",
+   "reason": "frontage 149.8 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012187268",
+   "reason": "frontage 30.2 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012193844",
+   "reason": "sightline to Eerste Van Swindenstraat crosses 0363100012161273"
+  },
+  {
+   "pandId": "0363100012194063",
+   "reason": "frontage 189.1 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012213726",
+   "reason": "frontage 30.2 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012215058",
+   "reason": "frontage 102.8 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012218755",
+   "reason": "frontage 140.9 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012219995",
+   "reason": "frontage 102.9 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012221551",
+   "reason": "frontage 41.5 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012226361",
+   "reason": "frontage 36.7 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012230390",
+   "reason": "frontage 31.4 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012233668",
+   "reason": "frontage 111.9 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012236370",
+   "reason": "frontage 149.9 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012236435",
+   "reason": "frontage 149.7 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012236918",
+   "reason": "frontage 112.7 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012237251",
+   "reason": "frontage 68.4 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012166798",
+   "reason": "frontage 103.5 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012167343",
+   "reason": "frontage 82.7 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012191321",
+   "reason": "frontage 102.9 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012195468",
+   "reason": "frontage 100.7 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012198020",
+   "reason": "frontage 34.7 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012209348",
+   "reason": "frontage 103.9 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012232837",
+   "reason": "frontage 42.2 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012233258",
+   "reason": "frontage 136.6 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012236764",
+   "reason": "frontage 92.5 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012236979",
+   "reason": "frontage 31.6 m from Eerste Van Swindenstraat"
+  },
+  {
+   "pandId": "0363100012096868",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012069825",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012118480",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012153339",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012155550",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012156704",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012153706",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012153794",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012157454",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012159551",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012161046",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012161077",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012161273",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012163786",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012164468",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012165837",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012159658",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012161299",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012161497",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012166028",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012235898",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012236163",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012236675",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012236713",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012570789",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012237037",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012237163",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 180,
+ "pands": [
+  {
+   "pandId": "0363100012154498",
+   "alongM": 0,
+   "widthM": 97.05,
+   "eavesM": 15.75,
+   "roofMaxM": 17.28,
+   "storeys3dbag": 5,
+   "builtYear": 1996,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012121854",
+   "alongM": 53.53,
+   "widthM": 10,
+   "eavesM": 14.66,
+   "roofMaxM": 17.05,
+   "storeys3dbag": 5,
+   "builtYear": 1995,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012114922",
+   "alongM": 81.11,
+   "widthM": 45.16,
+   "eavesM": 15.51,
+   "roofMaxM": 16.6,
+   "storeys3dbag": 5,
+   "builtYear": 1997,
+   "uncertainty": []
+  }
+ ]
+}

@@ -1,0 +1,221 @@
+{
+ "street": "Zeeburgerdijk",
+ "seed": "0363100012159385",
+ "members": [
+  "0363100012159385",
+  "0363100012102204",
+  "0363100012162254",
+  "0363100012157471",
+  "0363100012138574",
+  "0363100012166344",
+  "0363100012157030",
+  "0363100012151981"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "no further pand fronts the street in the fetched area"
+  },
+  {
+   "side": "right",
+   "reason": "next fronting pand 0363100012160956 23.5 m on shares no party wall (cross street or gap)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012169759",
+   "reason": "no frontage on Zeeburgerdijk: No footprint edge faces Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012186293",
+   "reason": "frontage 68.0 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012068704",
+   "reason": "sightline to Zeeburgerdijk crosses 0363100012147606"
+  },
+  {
+   "pandId": "0363100012071271",
+   "reason": "frontage 32.2 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012083647",
+   "reason": "frontage 61.3 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012108639",
+   "reason": "frontage 30.5 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012114561",
+   "reason": "sightline to Zeeburgerdijk crosses 0363100012117479"
+  },
+  {
+   "pandId": "0363100012125230",
+   "reason": "frontage 52.7 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012126084",
+   "reason": "frontage 60.4 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012143635",
+   "reason": "no frontage on Zeeburgerdijk: No footprint edge faces Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012146206",
+   "reason": "frontage 55.4 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012149057",
+   "reason": "frontage 45.7 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012153077",
+   "reason": "frontage 46.2 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012159450",
+   "reason": "frontage 40.8 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012161858",
+   "reason": "frontage 36.3 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012163689",
+   "reason": "frontage 51.9 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012169757",
+   "reason": "frontage 87.9 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012169758",
+   "reason": "frontage 102.6 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012170523",
+   "reason": "frontage 94.9 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012170567",
+   "reason": "frontage 96.1 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012180704",
+   "reason": "frontage 97.6 m from Zeeburgerdijk"
+  },
+  {
+   "pandId": "0363100012075294",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012091953",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012098140",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012117479",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012118584",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012135758",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012147606",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012159385",
+   "alongM": 0,
+   "widthM": 6.58,
+   "eavesM": 14.59,
+   "roofMaxM": 16.76,
+   "storeys3dbag": 5,
+   "builtYear": 1889,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012102204",
+   "alongM": 6.31,
+   "widthM": 6.04,
+   "eavesM": 15.53,
+   "roofMaxM": 18.08,
+   "storeys3dbag": 5,
+   "builtYear": 1889,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012162254",
+   "alongM": 12.34,
+   "widthM": 6.03,
+   "eavesM": 15.5,
+   "roofMaxM": 18.02,
+   "storeys3dbag": 5,
+   "builtYear": 1889,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012157471",
+   "alongM": 18.36,
+   "widthM": 6.01,
+   "eavesM": 15.32,
+   "roofMaxM": 17.86,
+   "storeys3dbag": 5,
+   "builtYear": 1891,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012138574",
+   "alongM": 24.37,
+   "widthM": 6,
+   "eavesM": 15.27,
+   "roofMaxM": 17.89,
+   "storeys3dbag": 5,
+   "builtYear": 1891,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012166344",
+   "alongM": 30.39,
+   "widthM": 6.04,
+   "eavesM": 15.51,
+   "roofMaxM": 17.99,
+   "storeys3dbag": 5,
+   "builtYear": 1891,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012157030",
+   "alongM": 36.43,
+   "widthM": 6.03,
+   "eavesM": 15.1,
+   "roofMaxM": 17.6,
+   "storeys3dbag": 5,
+   "builtYear": 1891,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012151981",
+   "alongM": 42.45,
+   "widthM": 6.02,
+   "eavesM": 15.09,
+   "roofMaxM": 17.56,
+   "storeys3dbag": 5,
+   "builtYear": 1891,
+   "uncertainty": []
+  }
+ ]
+}

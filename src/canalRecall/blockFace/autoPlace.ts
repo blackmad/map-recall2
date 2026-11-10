@@ -154,6 +154,12 @@ export interface TypeMatchRule {
    */
   frontEavesUnscored?: boolean;
   /**
+   * With `frontEavesM`: draw every placed pand at the line, never at its own skyline reading. Where the skyline within
+   * FRONT_EAVES.tolM of the line is a dormer or mansard top (Ruyschstraat 72-98: cornice 13.5 m on every front, skylines
+   * 13.5-14.5 m), reading it lifts houses of one row up to a metre over their neighbours. Absent = byte-identical.
+   */
+  frontEavesAtLine?: boolean;
+  /**
    * With `frontEavesM`: the top of a wall dormer that spans most of the front, where the strip skyline reads it instead
    * of the cornice (Derde Helmersstraat 54-64: crenellated wall dormers over two of three axes, skyline 17.4-18.2 m
    * over a 14.3 m cornice). A skyline near it scores like one near the cornice line; the house is drawn at the line.
@@ -216,6 +222,7 @@ export const FRONT_EAVES = {tolM: 1.0} as const;
 export function frontEavesFor(t: MatchableType, ev: PandEvidence): {eavesM: number; source: 'skyline' | 'type'} | null {
   const line = t.match?.frontEavesM;
   if (line === undefined) return null;
+  if (t.match?.frontEavesAtLine) return {eavesM: line, source: 'type'};
   const sky = ev.strip?.skyline;
   if (sky && sky.confidence >= SKYLINE_MIN_CONFIDENCE && Math.abs(sky.eavesM - line) <= FRONT_EAVES.tolM) return {eavesM: r2(sky.eavesM), source: 'skyline'};
   return {eavesM: line, source: 'type'};

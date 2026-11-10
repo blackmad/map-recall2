@@ -1,0 +1,514 @@
+{
+ "street": "Wagenaarstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T07:53:24.136Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012118756",
+   "addresses": [
+    "Wagenaarstraat 396",
+    "Wagenaarstraat 398",
+    "Wagenaarstraat 400",
+    "Wagenaarstraat 402",
+    "Wagenaarstraat 404",
+    "Wagenaarstraat 406",
+    "Wagenaarstraat 408",
+    "Wagenaarstraat 410",
+    "Wagenaarstraat 412",
+    "Wagenaarstraat 416",
+    "Wagenaarstraat 418",
+    "Wagenaarstraat 420",
+    "Wagenaarstraat 422",
+    "Wagenaarstraat 424",
+    "Wagenaarstraat 426",
+    "Wagenaarstraat 428",
+    "Wagenaarstraat 430"
+   ],
+   "groundUnits": [
+    {
+     "address": "Wagenaarstraat 398",
+     "use": "woonfunctie",
+     "areaM2": 81,
+     "bagId": "0363010000861141"
+    },
+    {
+     "address": "Wagenaarstraat 402",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000861145"
+    },
+    {
+     "address": "Wagenaarstraat 404",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000861147"
+    },
+    {
+     "address": "Wagenaarstraat 406",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000861149"
+    },
+    {
+     "address": "Wagenaarstraat 408",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000861151"
+    },
+    {
+     "address": "Wagenaarstraat 410",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000861153"
+    },
+    {
+     "address": "Wagenaarstraat 412",
+     "use": "woonfunctie",
+     "areaM2": 92,
+     "bagId": "0363010000861155"
+    },
+    {
+     "address": "Wagenaarstraat 416",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000861158"
+    },
+    {
+     "address": "Wagenaarstraat 418",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000861160"
+    },
+    {
+     "address": "Wagenaarstraat 420",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000861162"
+    },
+    {
+     "address": "Wagenaarstraat 424",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000861166"
+    },
+    {
+     "address": "Wagenaarstraat 426",
+     "use": "woonfunctie",
+     "areaM2": 90,
+     "bagId": "0363010000861168"
+    },
+    {
+     "address": "Wagenaarstraat 428",
+     "use": "woonfunctie",
+     "areaM2": 90,
+     "bagId": "0363010000861170"
+    },
+    {
+     "address": "Wagenaarstraat 430",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000861172"
+    },
+    {
+     "address": "Wagenaarstraat 422",
+     "use": "woonfunctie",
+     "areaM2": 82,
+     "bagId": "0363010000861164"
+    },
+    {
+     "address": "Wagenaarstraat 400",
+     "use": "woonfunctie",
+     "areaM2": 82,
+     "bagId": "0363010000861143"
+    },
+    {
+     "address": "Wagenaarstraat 396",
+     "use": "woonfunctie",
+     "areaM2": 82,
+     "bagId": "0363010000861139"
+    }
+   ],
+   "units": 17,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012075801",
+   "addresses": [
+    "Wagenaarstraat 380",
+    "Wagenaarstraat 382",
+    "Wagenaarstraat 384",
+    "Wagenaarstraat 386",
+    "Wagenaarstraat 388",
+    "Wagenaarstraat 390",
+    "Wagenaarstraat 392",
+    "Wagenaarstraat 394"
+   ],
+   "groundUnits": [
+    {
+     "address": "Wagenaarstraat 382",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000861125"
+    },
+    {
+     "address": "Wagenaarstraat 384",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000861127"
+    },
+    {
+     "address": "Wagenaarstraat 386",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000861129"
+    },
+    {
+     "address": "Wagenaarstraat 390",
+     "use": "woonfunctie",
+     "areaM2": 81,
+     "bagId": "0363010000861133"
+    },
+    {
+     "address": "Wagenaarstraat 392",
+     "use": "woonfunctie",
+     "areaM2": 81,
+     "bagId": "0363010000861135"
+    },
+    {
+     "address": "Wagenaarstraat 394",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000861137"
+    },
+    {
+     "address": "Wagenaarstraat 388",
+     "use": "woonfunctie",
+     "areaM2": 59,
+     "bagId": "0363010000861131"
+    },
+    {
+     "address": "Wagenaarstraat 380",
+     "use": "woonfunctie",
+     "areaM2": 75,
+     "bagId": "0363010000861123"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012089178",
+   "addresses": [
+    "Wagenaarstraat 364",
+    "Wagenaarstraat 366",
+    "Wagenaarstraat 368",
+    "Wagenaarstraat 370",
+    "Wagenaarstraat 372",
+    "Wagenaarstraat 374",
+    "Wagenaarstraat 376",
+    "Wagenaarstraat 378"
+   ],
+   "groundUnits": [
+    {
+     "address": "Wagenaarstraat 364",
+     "use": "woonfunctie",
+     "areaM2": 81,
+     "bagId": "0363010000861107"
+    },
+    {
+     "address": "Wagenaarstraat 366",
+     "use": "woonfunctie",
+     "areaM2": 81,
+     "bagId": "0363010000861109"
+    },
+    {
+     "address": "Wagenaarstraat 368",
+     "use": "woonfunctie",
+     "areaM2": 81,
+     "bagId": "0363010000861111"
+    },
+    {
+     "address": "Wagenaarstraat 370",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000861113"
+    },
+    {
+     "address": "Wagenaarstraat 372",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000861115"
+    },
+    {
+     "address": "Wagenaarstraat 374",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000861117"
+    },
+    {
+     "address": "Wagenaarstraat 376",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000861119"
+    },
+    {
+     "address": "Wagenaarstraat 378",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000861121"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012151123",
+   "addresses": [
+    "Wagenaarstraat 350",
+    "Wagenaarstraat 352",
+    "Wagenaarstraat 354",
+    "Wagenaarstraat 356",
+    "Wagenaarstraat 358",
+    "Wagenaarstraat 360",
+    "Wagenaarstraat 362"
+   ],
+   "groundUnits": [
+    {
+     "address": "Wagenaarstraat 350",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010000861093"
+    },
+    {
+     "address": "Wagenaarstraat 352",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010000861095"
+    },
+    {
+     "address": "Wagenaarstraat 354",
+     "use": "woonfunctie",
+     "areaM2": 40,
+     "bagId": "0363010000861097"
+    },
+    {
+     "address": "Wagenaarstraat 356",
+     "use": "woonfunctie",
+     "areaM2": 81,
+     "bagId": "0363010000861099"
+    },
+    {
+     "address": "Wagenaarstraat 358",
+     "use": "woonfunctie",
+     "areaM2": 81,
+     "bagId": "0363010000861101"
+    },
+    {
+     "address": "Wagenaarstraat 360",
+     "use": "woonfunctie",
+     "areaM2": 63,
+     "bagId": "0363010000861103"
+    },
+    {
+     "address": "Wagenaarstraat 362",
+     "use": "industriefunctie",
+     "areaM2": 307,
+     "bagId": "0363010000861105"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012144909",
+   "addresses": [
+    "Wagenaarstraat 314",
+    "Wagenaarstraat 316",
+    "Wagenaarstraat 318",
+    "Wagenaarstraat 320",
+    "Wagenaarstraat 322",
+    "Wagenaarstraat 324",
+    "Wagenaarstraat 326",
+    "Wagenaarstraat 328",
+    "Wagenaarstraat 330",
+    "Wagenaarstraat 332",
+    "Wagenaarstraat 334",
+    "Wagenaarstraat 336",
+    "Wagenaarstraat 338",
+    "Wagenaarstraat 340",
+    "Wagenaarstraat 342",
+    "Wagenaarstraat 344",
+    "Wagenaarstraat 346",
+    "Wagenaarstraat 348"
+   ],
+   "groundUnits": [
+    {
+     "address": "Wagenaarstraat 316",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000861059"
+    },
+    {
+     "address": "Wagenaarstraat 318",
+     "use": "woonfunctie",
+     "areaM2": 109,
+     "bagId": "0363010000861061"
+    },
+    {
+     "address": "Wagenaarstraat 322",
+     "use": "woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010000861065"
+    },
+    {
+     "address": "Wagenaarstraat 324",
+     "use": "woonfunctie",
+     "areaM2": 107,
+     "bagId": "0363010000861067"
+    },
+    {
+     "address": "Wagenaarstraat 326",
+     "use": "winkelfunctie",
+     "areaM2": 184,
+     "bagId": "0363010000861069"
+    },
+    {
+     "address": "Wagenaarstraat 328",
+     "use": "woonfunctie",
+     "areaM2": 84,
+     "bagId": "0363010000861071"
+    },
+    {
+     "address": "Wagenaarstraat 330",
+     "use": "woonfunctie",
+     "areaM2": 84,
+     "bagId": "0363010000861073"
+    },
+    {
+     "address": "Wagenaarstraat 332",
+     "use": "woonfunctie",
+     "areaM2": 83,
+     "bagId": "0363010000861075"
+    },
+    {
+     "address": "Wagenaarstraat 334",
+     "use": "woonfunctie",
+     "areaM2": 83,
+     "bagId": "0363010000861077"
+    },
+    {
+     "address": "Wagenaarstraat 336",
+     "use": "industriefunctie",
+     "areaM2": 78,
+     "bagId": "0363010000861079"
+    },
+    {
+     "address": "Wagenaarstraat 338",
+     "use": "industriefunctie",
+     "areaM2": 77,
+     "bagId": "0363010000861081"
+    },
+    {
+     "address": "Wagenaarstraat 340",
+     "use": "woonfunctie",
+     "areaM2": 84,
+     "bagId": "0363010000861083"
+    },
+    {
+     "address": "Wagenaarstraat 342",
+     "use": "woonfunctie",
+     "areaM2": 84,
+     "bagId": "0363010000861085"
+    },
+    {
+     "address": "Wagenaarstraat 344",
+     "use": "woonfunctie",
+     "areaM2": 83,
+     "bagId": "0363010000861087"
+    },
+    {
+     "address": "Wagenaarstraat 346",
+     "use": "woonfunctie",
+     "areaM2": 83,
+     "bagId": "0363010000861089"
+    },
+    {
+     "address": "Wagenaarstraat 348",
+     "use": "industriefunctie",
+     "areaM2": 103,
+     "bagId": "0363010000861091"
+    },
+    {
+     "address": "Dapperstraat 189",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000615787"
+    },
+    {
+     "address": "Dapperstraat 191",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000615788"
+    },
+    {
+     "address": "Dapperstraat 195",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000615790"
+    },
+    {
+     "address": "Dapperstraat 197",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000615792"
+    },
+    {
+     "address": "Dapperstraat 199",
+     "use": "woonfunctie",
+     "areaM2": 86,
+     "bagId": "0363010000615793"
+    },
+    {
+     "address": "Wagenaarstraat 320",
+     "use": "woonfunctie",
+     "areaM2": 82,
+     "bagId": "0363010000861063"
+    },
+    {
+     "address": "Wagenaarstraat 314",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010000861057"
+    },
+    {
+     "address": "Dapperstraat 193",
+     "use": "woonfunctie",
+     "areaM2": 87,
+     "bagId": "0363010000615789"
+    }
+   ],
+   "units": 24,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2364927920,
+     "lngLat": [
+      4.9274816,
+      52.3631401
+     ],
+     "tags": {
+      "name": "Malhi Afro-Tropics",
+      "opening_hours": "Mo-Sa 09:00-17:00",
+      "shop": "supermarket",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-11-10T07:53:24.136Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

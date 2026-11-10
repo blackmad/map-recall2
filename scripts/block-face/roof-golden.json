@@ -5423,6 +5423,74 @@
     "hash": "50ac07c77899634c",
     "class": "front"
    }
+  },
+  "ruysch-307-393-r1": {
+   "155674": {
+    "hash": "5308c3cbf4f9ae2c",
+    "class": "front"
+   },
+   "161684": {
+    "hash": "bada2225bcf2cf32",
+    "class": "front"
+   }
+  },
+  "ruysch-64-124-r1": {
+   "150384": {
+    "hash": "523ff3fe59e7964d",
+    "class": "front"
+   },
+   "159820": {
+    "hash": "4e08cbe7f9da43f1",
+    "class": "front"
+   },
+   "165864": {
+    "hash": "cd01eb48f7fae950",
+    "class": "front"
+   }
+  },
+  "ruysch-64-124-r2": {
+   "154180": {
+    "hash": "6e0769417ef6515d",
+    "class": "front"
+   },
+   "158466": {
+    "hash": "36cd42e7208b09b5",
+    "class": "front"
+   },
+   "160930": {
+    "hash": "3b82aaebd617fd42",
+    "class": "front"
+   },
+   "163039": {
+    "hash": "baa795b23ae81168",
+    "class": "front"
+   }
+  },
+  "swinden-383-581-r1": {
+   "158925": {
+    "hash": "3be4e2e250765a98",
+    "class": "front+row"
+   },
+   "159406": {
+    "hash": "c43152ef277842ab",
+    "class": "front"
+   },
+   "161671": {
+    "hash": "0ba9885167651fda",
+    "class": "front"
+   },
+   "163378": {
+    "hash": "854e99083a75b7bf",
+    "class": "front"
+   },
+   "165201": {
+    "hash": "fdd23bfcaa198e42",
+    "class": "front"
+   },
+   "236602": {
+    "hash": "af7c812f6b16fa07",
+    "class": "front"
+   }
   }
  },
  "intents": {
@@ -5679,6 +5747,10 @@
   "tex-8-58-r1": "561c445eb0b7713d",
   "witsen-1-19-r1": "82a9c57534cfc2ad",
   "badlaan-1-21-r1": "31b77762e5fe6c96",
-  "rapenburg-89-103-r1": "ee2d13b6b8171515"
+  "rapenburg-89-103-r1": "ee2d13b6b8171515",
+  "ruysch-307-393-r1": "3be23e6d96eeea09",
+  "ruysch-64-124-r1": "fe743650b729605c",
+  "ruysch-64-124-r2": "b3c660e11514bf02",
+  "swinden-383-581-r1": "ead22e45bd11323e"
  }
 }

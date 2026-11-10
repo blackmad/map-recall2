@@ -1,0 +1,364 @@
+{
+ "street": "Tweede Boerhaavestraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T09:03:05.127Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012074769",
+   "addresses": [
+    "Tweede Boerhaavestraat 29",
+    "Tweede Boerhaavestraat 31",
+    "Tweede Boerhaavestraat 33",
+    "Tweede Boerhaavestraat 35",
+    "Tweede Boerhaavestraat 37",
+    "Tweede Boerhaavestraat 39",
+    "Tweede Boerhaavestraat 41",
+    "Tweede Boerhaavestraat 43",
+    "Tweede Boerhaavestraat 45"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Boerhaavestraat 29",
+     "use": "woonfunctie",
+     "areaM2": 100,
+     "bagId": "0363010000549923"
+    },
+    {
+     "address": "Tweede Boerhaavestraat 35",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000549926"
+    },
+    {
+     "address": "Tweede Boerhaavestraat 39",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000549931"
+    },
+    {
+     "address": "Tweede Boerhaavestraat 41",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000549940"
+    },
+    {
+     "address": "Tweede Boerhaavestraat 45",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000549953"
+    },
+    {
+     "address": "Tweede Boerhaavestraat 31",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000549924"
+    },
+    {
+     "address": "Tweede Boerhaavestraat 37",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000549929"
+    },
+    {
+     "address": "Tweede Boerhaavestraat 33",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000549925"
+    },
+    {
+     "address": "Tweede Boerhaavestraat 43",
+     "use": "woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010000549949"
+    }
+   ],
+   "units": 9,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012236586",
+   "addresses": [
+    "Tweede Boerhaavestraat 47",
+    "Tweede Boerhaavestraat 49A",
+    "Tweede Boerhaavestraat 49B",
+    "Tweede Boerhaavestraat 49D",
+    "Tweede Boerhaavestraat 49C",
+    "Tweede Boerhaavestraat 51"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Boerhaavestraat 47",
+     "use": "kantoorfunctie",
+     "areaM2": 263,
+     "bagId": "0363010001036681"
+    },
+    {
+     "address": "Tweede Boerhaavestraat 49A",
+     "use": "kantoorfunctie",
+     "areaM2": 381,
+     "bagId": "0363010001036682"
+    },
+    {
+     "address": "Tweede Boerhaavestraat 49B",
+     "use": "kantoorfunctie",
+     "areaM2": 418,
+     "bagId": "0363010001036683"
+    },
+    {
+     "address": "Tweede Boerhaavestraat 49D",
+     "use": "kantoorfunctie",
+     "areaM2": 196,
+     "bagId": "0363010001036685"
+    },
+    {
+     "address": "Tweede Boerhaavestraat 51",
+     "use": "onderwijsfunctie",
+     "areaM2": 1536,
+     "bagId": "0363010001036686"
+    },
+    {
+     "address": "Tweede Boerhaavestraat 49C-1",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 58,
+     "bagId": "0363010001982027"
+    },
+    {
+     "address": "Tweede Boerhaavestraat 49C-2",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 30,
+     "bagId": "0363010001982028"
+    },
+    {
+     "address": "Tweede Boerhaavestraat 49C-3",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 72,
+     "bagId": "0363010001982030"
+    },
+    {
+     "address": "Tweede Boerhaavestraat 49C",
+     "use": "kantoorfunctie",
+     "areaM2": 295,
+     "bagId": "0363010012098796"
+    },
+    {
+     "address": "Tweede Boerhaavestraat 49C-2",
+     "use": "kantoorfunctie",
+     "areaM2": 11,
+     "bagId": "0363010012098797"
+    },
+    {
+     "address": "Tweede Boerhaavestraat 49C-3",
+     "use": "kantoorfunctie",
+     "areaM2": 22,
+     "bagId": "0363010012098798"
+    },
+    {
+     "address": "Tweede Boerhaavestraat 49C-4",
+     "use": "kantoorfunctie",
+     "areaM2": 11,
+     "bagId": "0363010012098799"
+    },
+    {
+     "address": "Tweede Boerhaavestraat 49C-5",
+     "use": "kantoorfunctie",
+     "areaM2": 11,
+     "bagId": "0363010012098800"
+    },
+    {
+     "address": "Tweede Boerhaavestraat 49C-6",
+     "use": "kantoorfunctie",
+     "areaM2": 67,
+     "bagId": "0363010012098801"
+    },
+    {
+     "address": "Tweede Boerhaavestraat 49C-7",
+     "use": "kantoorfunctie",
+     "areaM2": 11,
+     "bagId": "0363010012098802"
+    },
+    {
+     "address": "Tweede Boerhaavestraat 49C-8",
+     "use": "kantoorfunctie",
+     "areaM2": 11,
+     "bagId": "0363010012098803"
+    },
+    {
+     "address": "Tweede Boerhaavestraat 49C-9",
+     "use": "kantoorfunctie",
+     "areaM2": 11,
+     "bagId": "0363010012098804"
+    },
+    {
+     "address": "Tweede Boerhaavestraat 49C-10",
+     "use": "kantoorfunctie",
+     "areaM2": 22,
+     "bagId": "0363010012098805"
+    }
+   ],
+   "units": 18,
+   "osm": [
+    {
+     "type": "way",
+     "id": 1452338125,
+     "lngLat": [
+      4.9137411,
+      52.3599462
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "47",
+      "addr:postcode": "1091AL",
+      "addr:street": "Tweede Boerhaavestraat",
+      "amenity": "school",
+      "branch": "Aldoende 2",
+      "education": "school",
+      "isced:level": "0;1",
+      "landuse": "education",
+      "name": "Aldoende",
+      "official_name": "Openbare Daltonschool Afdoende",
+      "operator": "Staij",
+      "operator:website": "https://www.staij.nl",
+      "operator:wikidata": "Q138758033",
+      "pedagogy": "dalton",
+      "phone": "+31 20 468 5909",
+      "school": "primary",
+      "website": "https://www.obsaldoende.nl"
+     },
+     "fetchedAt": "2026-11-10T09:03:05.127Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012081013",
+   "addresses": [
+    "Tweede Boerhaavestraat 55A",
+    "Tweede Boerhaavestraat 55C",
+    "Tweede Boerhaavestraat 55E",
+    "Tweede Boerhaavestraat 55F",
+    "Tweede Boerhaavestraat 55H",
+    "Tweede Boerhaavestraat 55B",
+    "Tweede Boerhaavestraat 55D",
+    "Tweede Boerhaavestraat 55G",
+    "Tweede Boerhaavestraat 57",
+    "Tweede Boerhaavestraat 59A",
+    "Tweede Boerhaavestraat 59B",
+    "Tweede Boerhaavestraat 59D",
+    "Tweede Boerhaavestraat 59F",
+    "Tweede Boerhaavestraat 59G",
+    "Tweede Boerhaavestraat 59E",
+    "Tweede Boerhaavestraat 59H",
+    "Tweede Boerhaavestraat 59C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Boerhaavestraat 55A",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000549958"
+    },
+    {
+     "address": "Tweede Boerhaavestraat 55C",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000549960"
+    },
+    {
+     "address": "Tweede Boerhaavestraat 55E",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000549962"
+    },
+    {
+     "address": "Tweede Boerhaavestraat 55F",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000549963"
+    },
+    {
+     "address": "Tweede Boerhaavestraat 55H",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000549965"
+    },
+    {
+     "address": "Tweede Boerhaavestraat 59A",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000549975"
+    },
+    {
+     "address": "Tweede Boerhaavestraat 59B",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000549976"
+    },
+    {
+     "address": "Tweede Boerhaavestraat 59D",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000549978"
+    },
+    {
+     "address": "Tweede Boerhaavestraat 59F",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000549980"
+    },
+    {
+     "address": "Tweede Boerhaavestraat 59G",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000549981"
+    },
+    {
+     "address": "Tweede Boerhaavestraat 59E",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000549979"
+    },
+    {
+     "address": "Tweede Boerhaavestraat 59H",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000549982"
+    },
+    {
+     "address": "Tweede Boerhaavestraat 55B",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000549959"
+    },
+    {
+     "address": "Tweede Boerhaavestraat 55D",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000549961"
+    },
+    {
+     "address": "Tweede Boerhaavestraat 59C",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010000549977"
+    },
+    {
+     "address": "Tweede Boerhaavestraat 57",
+     "use": "woonfunctie",
+     "areaM2": 126,
+     "bagId": "0363010000549970"
+    },
+    {
+     "address": "Tweede Boerhaavestraat 55G",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010000549964"
+    }
+   ],
+   "units": 17,
+   "osm": []
+  }
+ ]
+}

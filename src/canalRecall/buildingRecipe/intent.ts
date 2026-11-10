@@ -977,6 +977,13 @@ export interface PaletteIntent {
    */
   stoneMaterial?: 'painted';
   /**
+   * `stone` (Ruyschstraat 331/339, Opus verdict 2026-11-10): the cornice meshes take the `stone` surface slot, so the
+   * exported chunk draws the cornice in `palette.stone` (the cornice paint `palette.cornice` repaints a mesh's material, but a
+   * chunk's colours come from the surface slot, which stays `trim` = the window frame colour). Set `stone` to the cornice
+   * colour. House palette only. Absent = the cornice stays on the trim slot, byte-identical.
+   */
+  corniceAs?: 'stone';
+  /**
    * `measured` (Kinkerstraat 47, 63, 87): the wall colour `brick` is a measured strip colour and is drawn as measured
    * (the wall materials export `tintSource: measured`), instead of being lifted and saturated into the city brick range
    * (`cityWallTint` clamps L to 0.3-0.6 and floors S at 0.12: a sunlit light brick darkened, a grey-brown one saturated).
@@ -1907,6 +1914,7 @@ export function validateIntent(input: unknown): CanalHouseIntent {
       else if (k === 'stoneMaterial') problems.push(`${at}.palette.stoneMaterial: set the stone material on the house palette (one material per house)`);
       else if (k === 'whitePoint') problems.push(`${at}.palette.whitePoint: the exposure of the house wall's measurement belongs on the house palette`);
       else if (k === 'wallTint') problems.push(`${at}.palette.wallTint: set the wall tint on the house palette (one wall per house)`);
+      else if (k === 'corniceAs') problems.push(`${at}.palette.corniceAs: set it on the house palette`);
       else colour(v, `${at}.palette.${k}`);
     }
     problems.push(...historicProblems(f, at, colour, oneOf));
@@ -1932,6 +1940,7 @@ export function validateIntent(input: unknown): CanalHouseIntent {
   for (const k of ['brick', 'frame', 'door'] as const) colour(intent?.palette?.[k], `palette.${k}`);
   for (const k of ['shutters', 'stone', 'band', 'cornice', 'glassBlock', 'sash'] as const) if (intent?.palette?.[k] !== undefined) colour(intent.palette[k], `palette.${k}`);
   if (intent?.palette?.wallMaterial !== undefined) oneOf(intent.palette.wallMaterial, WALL_MATERIALS, 'palette.wallMaterial');
+  if (intent?.palette?.corniceAs !== undefined) oneOf(intent.palette.corniceAs, ['stone'], 'palette.corniceAs');
   if (intent?.palette?.stoneMaterial !== undefined) oneOf(intent.palette.stoneMaterial, ['painted'], 'palette.stoneMaterial');
   if (intent?.palette?.wallTint !== undefined) {
     oneOf(intent.palette.wallTint, ['measured'], 'palette.wallTint');

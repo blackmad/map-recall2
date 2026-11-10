@@ -38,6 +38,7 @@ import {eavesPinProblems as faceEavesPinProblems, pinnedEaves, type EavesPin as 
 import {applyRoofPins, roofPinProblems, type RoofPin} from '../../src/canalRecall/blockFace/reviewRoofs.ts';
 import {applyDoorPins, doorPinProblems, type DoorPin} from '../../src/canalRecall/blockFace/reviewDoors.ts';
 import {applyEavesPins, eavesPinProblems, type EavesPin} from '../../src/canalRecall/blockFace/reviewEaves.ts';
+import {applyFrontPins, frontPinProblems, type FrontPin} from '../../src/canalRecall/blockFace/reviewFronts.ts';
 import {acceptFloorFor, acceptPinProblems, applyPalettePins, palettePinProblems, type AcceptPin, type PalettePin} from '../../src/canalRecall/blockFace/reviewPalettes.ts';
 import {frontBump} from '../../src/canalRecall/blockFace/bayOutline.ts';
 import {FACES, STAGING} from './intake.ts';
@@ -330,6 +331,11 @@ if (process.argv[1]?.endsWith('block-face/auto-place.ts')) {
   const palettePins: PalettePin[] = existsSync(palettesFile) ? (await readJson(palettesFile)).pins : [];
   const palettePinErrors = palettePinProblems(palettePins, types);
   if (palettePinErrors.length) throw Error(`${palettesFile}: ${palettePinErrors.join('; ')}`);
+  // Per-pand ground and body fields a reviewer pinned after the strip sheet (blockFace/reviewFronts.ts): door sides and arches, shopfront colours, head kinds.
+  const frontsFile = path.join('scripts/block-face/buurten', `${buurt}-review-fronts.json`);
+  const frontPins: FrontPin[] = existsSync(frontsFile) ? (await readJson(frontsFile)).pins : [];
+  const frontPinErrors = frontPinProblems(frontPins, types);
+  if (frontPinErrors.length) throw Error(`${frontsFile}: ${frontPinErrors.join('; ')}`);
   // Gate floors a reviewer set after judging a sheet on a hazy strip (blockFace/reviewPalettes.ts).
   const eavesFile = path.join('scripts/block-face/buurten', `${buurt}-review-eaves.json`);
   eavesPins = existsSync(eavesFile) ? (await readJson(eavesFile)).pins : [];
@@ -394,6 +400,7 @@ if (process.argv[1]?.endsWith('block-face/auto-place.ts')) {
     if (crownPins.length) { const pinned = applyCrownPins(f.id, decisions, crownPins, types); if (pinned.length) console.log(`${f.id}: crown pinned on ${pinned.length} pand(s)`); }
     if (doorPins.length) { const pinned = applyDoorPins(decisions, doorPins, types); if (pinned.length) console.log(`${f.id}: door pinned on ${pinned.length} pand(s)`); }
     if (palettePins.length) { const pinned = applyPalettePins(decisions, palettePins); if (pinned.length) console.log(`${f.id}: palette pinned on ${pinned.length} pand(s)`); }
+    if (frontPins.length) { const pinned = applyFrontPins(decisions, frontPins); if (pinned.length) console.log(`${f.id}: front pinned on ${pinned.length} pand(s)`); }
     fillPairs(decisions, types);
     if (mirrorPins.length) { const pinned = applyMirrorPins(decisions, mirrorPins); if (pinned.length) console.log(`${f.id}: side pinned on ${pinned.length} pand(s)`); }
     const rowSet = rowCoherence(decisions, types, evs, strip.date);
