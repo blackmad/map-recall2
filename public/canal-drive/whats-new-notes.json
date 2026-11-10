@@ -3,42 +3,35 @@
   "notes": [
     {
       "date": "2026-11-10",
-      "title": "Ride across squares",
-      "text": "On desktop you can now ride across paved squares, forecourts and wide quays, not just along the streets beside them: Waterlooplein market square, the IJ quays, office forecourts in the Zuidas, about 4,900 places and 1 km² of new ground. Lawns, private courtyards and car parks stay off limits.",
-      "where": [
-        4.900812,
-        52.36869
-      ]
-    },
-    {
-      "date": "2026-11-10",
-      "title": "Grass where there is grass",
-      "text": "Open ground that used to draw as grey paving now follows the city's own surface map and the 2025 aerial photo: lawns, verges and empty lots are meadow, shrubs and sand where they really are, and bare earth on building sites. About 4,000 hectares changed, mostly outside the centre; squares and forecourts stay paved.",
-      "where": [
-        4.8721,
-        52.3976
-      ],
+      "title": "Stoops on the canal houses",
+      "text": "332 canal-belt houses now have their front steps drawn the way they are built: the flight turns the right way (straight out, to one side, or a double stair), has about the right number of steps, and gets black iron railings. Checked against panoramas on five Herengracht and Keizersgracht houses: right direction and the right railing on all five, steps within one.",
       "images": [
         {
-          "src": "whats-new/2026-11-10-open-ground.jpg",
-          "alt": "Moermanskkade lot: aerial photo, before as grey paving, after as meadow",
-          "caption": "Moermanskkade: aerial photo, before, after"
+          "src": "ui/2026-11-10-stoops/before-zoom-167492.jpg",
+          "alt": "A Herengracht house before: a plain slab at the door",
+          "caption": "Before."
+        },
+        {
+          "src": "ui/2026-11-10-stoops/after-zoom-167492.jpg",
+          "alt": "The same house after: a stoop with iron railings",
+          "caption": "After."
         }
       ]
     },
     {
       "date": "2026-11-10",
-      "title": "Trains cross paths on a deck",
-      "text": "Where a railway passes over a path without a bridge in the map data, the track used to dip down into the path. It now crosses on a deck with piers and railings, at the Piet Kranenbergpad under the Schiphol line and at the Arlandabrug tram approaches.",
-      "where": [
-        4.85323,
-        52.33879
-      ],
+      "title": "The Nassaukade corner at De Clercqstraat",
+      "text": "Nassaukade 145–152 get their real colours: the black-painted houses are black again and the brick is red-brown. The corner house at De Clercqstraat has its two stone dormer towers and wall rosettes, carved out from the wall, and its roof now slopes down to both streets without brick wedges beside the towers.",
       "images": [
         {
-          "src": "whats-new/2026-11-10-rail-spans.jpg",
-          "alt": "Piet Kranenbergpad: before the track dips into the path, after it crosses on a railed deck",
-          "caption": "Before and after"
+          "src": "ui/2026-11-10-house-line-nassaukade-r3/116526-clercq-threeq-main.jpg",
+          "alt": "The corner house before",
+          "caption": "Before."
+        },
+        {
+          "src": "ui/2026-11-10-house-line-nassaukade-r3/116526-clercq-threeq-after.jpg",
+          "alt": "The corner house after, with stone towers and rosettes",
+          "caption": "After."
         }
       ]
     },
@@ -62,7 +55,7 @@
     {
       "date": "2026-11-10",
       "title": "Fewer made-up gables",
-      "text": "Listed houses used to get the gable named in the monuments register even where today's front is flat. Now a register gable is drawn only where the 3D roof data shows a crown above the eaves, and a gable read from a street photo always wins. About 125 houses change, mostly bell and neck gables that become the flat fronts they really have. The old gable is kept as a fact for the house's card.",
+      "text": "Listed houses used to get the gable named in the monuments register even where today's front has none. Now a register gable is drawn only where the 3D roof data shows a crown above the eaves, and a gable read from a street photo always wins. Of the roughly 2,500 register gables the game draws itself, about 125 change: about half become the flat fronts they really have, the rest take the mansard, pitched or hipped roof the data shows. The other 2,350 keep their gable, and the 90 on individually modelled buildings are untouched. The old gable is kept as a fact for the house's card.",
       "images": [
         {
           "src": "ui/2026-11-10-register-gable-gate/before-after-1.jpg",
@@ -265,6 +258,69 @@
           "src": "ui/2026-11-10-note-shots-3/dutch-card-expanded-desktop.jpg",
           "alt": "The expanded Westerkerk card in the Dutch game, two facts in Dutch",
           "caption": "The Westerkerk card in the Dutch game: the first two facts are sentences from the Dutch Wikipedia article."
+        }
+      ]
+    },
+    {
+      "date": "2026-11-10",
+      "title": "Today's ride runs buurt to buurt",
+      "text": "Today's ride now runs buurt to buurt: Overhoeks to the Helmersbuurt, Sportheldenbuurt to KNSM-eiland, between one and a half and five kilometres by the real route, and the card shows that distance exactly. No neighbourhood turns up twice in a week; the ride starts on a quiet unnamed street that gives no answer away, and may end on any street, since nothing is asked after arrival and the card names the buurt. Arriving in a buurt, the card describes the neighbourhood itself. From 10 November; earlier days keep the ride they had.",
+      "images": [
+        {
+          "src": "ui/2026-11-09-daily-pool/story-returning.jpg",
+          "alt": "The returning player's landing with Today's ride named by its two buurten",
+          "caption": "Today's ride, buurt to buurt."
+        },
+        {
+          "src": "ui/2026-11-09-daily-pool/daily-2026-11-10-arrived-desktop.jpg",
+          "alt": "The arrival card at the Jordaan after the 10 November daily ride from Overhoeks",
+          "caption": "Arrived in the Jordaan."
+        },
+        {
+          "src": "ui/2026-11-09-daily-pool/jordaan-arrival-neighbourhood-blurb-desktop.jpg",
+          "alt": "The arrival card at the Jordaan describing the neighbourhood itself instead of the nearest landmark",
+          "caption": "A buurt arrival describes the neighbourhood."
+        }
+      ]
+    },
+    {
+      "date": "2026-11-10",
+      "title": "Ride across squares",
+      "text": "On desktop you can now ride across paved squares, forecourts and wide quays, not just along the streets beside them: Waterlooplein market square, the IJ quays, office forecourts in the Zuidas, about 4,900 places and 1 km² of new ground. Lawns, private courtyards and car parks stay off limits.",
+      "where": [
+        4.900812,
+        52.36869
+      ]
+    },
+    {
+      "date": "2026-11-10",
+      "title": "Grass where there is grass",
+      "text": "Open ground that used to draw as grey paving now follows the city's own surface map and the 2025 aerial photo: lawns, verges and empty lots are meadow, shrubs and sand where they really are, and bare earth on building sites. About 4,000 hectares changed, mostly outside the centre; squares and forecourts stay paved.",
+      "where": [
+        4.8721,
+        52.3976
+      ],
+      "images": [
+        {
+          "src": "whats-new/2026-11-10-open-ground.jpg",
+          "alt": "Moermanskkade lot: aerial photo, before as grey paving, after as meadow",
+          "caption": "Moermanskkade: aerial photo, before, after"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-10",
+      "title": "Trains cross paths on a deck",
+      "text": "Where a railway passes over a path without a bridge in the map data, the track used to dip down into the path. It now crosses on a deck with piers and railings, at the Piet Kranenbergpad under the Schiphol line and at the Arlandabrug tram approaches.",
+      "where": [
+        4.85323,
+        52.33879
+      ],
+      "images": [
+        {
+          "src": "whats-new/2026-11-10-rail-spans.jpg",
+          "alt": "Piet Kranenbergpad: before the track dips into the path, after it crosses on a railed deck",
+          "caption": "Before and after"
         }
       ]
     },
@@ -489,23 +545,6 @@
     },
     {
       "date": "2026-11-09",
-      "title": "Short phones keep the bike in view",
-      "text": "On a short phone the drive-by card is now a single row with the Noticed button, so it no longer covers your bike. The results footer drops its optional items instead of cutting the Dutch line mid-list, and the STAMPED seal sits clear of long neighbourhood names on the postcard.",
-      "images": [
-        {
-          "src": "ui/2026-11-09-phone-polish/driveby-390x664-after.jpg",
-          "alt": "A 390×664 phone: the one-row drive-by card with its Noticed button sits below the bike",
-          "caption": "The one-row card on a short phone."
-        },
-        {
-          "src": "ui/2026-11-09-phone-polish/arrival-nl-390x664-after.jpg",
-          "alt": "The Dutch arrival card on a 390×664 phone with its footer line complete",
-          "caption": "The Dutch footer fits."
-        }
-      ]
-    },
-    {
-      "date": "2026-11-09",
       "title": "Share a whole run",
       "text": "After a run, the run card has Share run: one picture of the whole run, every leg as one line, each stop a numbered dot, with the buurt, your stops, points and names. A stop you did not name stays a number.",
       "images": [
@@ -692,28 +731,6 @@
           "src": "ui/2026-11-09-ride-review-gameplay/r1-02c-label-crop-desktop.jpg",
           "alt": "The map at the start of Today's ride with the Vlaams Cultuurhuis De Brakke Grond label on screen, five seconds before the question about it",
           "caption": "The label that gave the answer away."
-        }
-      ]
-    },
-    {
-      "date": "2026-11-10",
-      "title": "Today's ride runs buurt to buurt",
-      "text": "Today's ride now runs buurt to buurt: Overhoeks to the Helmersbuurt, Sportheldenbuurt to KNSM-eiland, between one and a half and five kilometres by the real route, and the card shows that distance exactly. No neighbourhood turns up twice in a week; the ride starts on a quiet unnamed street that gives no answer away, and may end on any street, since nothing is asked after arrival and the card names the buurt. Arriving in a buurt, the card describes the neighbourhood itself. From 10 November; earlier days keep the ride they had.",
-      "images": [
-        {
-          "src": "ui/2026-11-09-daily-pool/story-returning.jpg",
-          "alt": "The returning player's landing with Today's ride named by its two buurten",
-          "caption": "Today's ride, buurt to buurt."
-        },
-        {
-          "src": "ui/2026-11-09-daily-pool/daily-2026-11-10-arrived-desktop.jpg",
-          "alt": "The arrival card at the Jordaan after the 10 November daily ride from Overhoeks",
-          "caption": "Arrived in the Jordaan."
-        },
-        {
-          "src": "ui/2026-11-09-daily-pool/jordaan-arrival-neighbourhood-blurb-desktop.jpg",
-          "alt": "The arrival card at the Jordaan describing the neighbourhood itself instead of the nearest landmark",
-          "caption": "A buurt arrival describes the neighbourhood."
         }
       ]
     },

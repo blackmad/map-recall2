@@ -51,6 +51,9 @@ export interface SpecFacts {
    *  had a bell gable"); provenance `rce:<register number>`. It is not the drawn crown: that is `fronts/0/gable`, where a photo
    *  reading outranks the register and the register type is drawn only over a 3DBAG crown (houseSpec/decorate.ts, H5h round 4). */
   historicGable?: GableIntent;
+  /** The wall's colour family as a reader names it (H5h hand set, docs/house-line.md §4c): the truth the wall-colour rule
+   *  checks a pixel reading against (houseSpec/wallColour.ts specWallSource; lane H9). */
+  wallFamily?: 'white' | 'grey' | 'buff' | 'orange' | 'red' | 'red-brown' | 'brown' | 'dark';
 }
 
 export interface HouseSpec {
@@ -188,6 +191,7 @@ export function specProblems(input: unknown): string[] {
     } else if (path === 'roof/material' && !ROOF_MATERIALS.includes(value as typeof ROOF_MATERIALS[number])) p.push(`${path}: ${JSON.stringify(value)} not in ${ROOF_MATERIALS.join('|')}`);
     else if (path === 'facts/facadeYear' && !countOk(value, 1200, 2100)) p.push(`${path}: a year 1200..2100`);
     else if (path === 'facts/elements' && !(Array.isArray(value) && value.every(v => typeof v === 'string'))) p.push(`${path}: a list of component ids`);
+    else if (path === 'facts/wallFamily' && !['white', 'grey', 'buff', 'orange', 'red', 'red-brown', 'brown', 'dark'].includes(value as string)) p.push(`${path}: white|grey|buff|orange|red|red-brown|brown|dark`);
     else if (path === 'facts/pui' && !['shop', 'residential', 'warehouse'].includes(value as string)) p.push(`${path}: shop|residential|warehouse`);
     else if (path === 'facts/historicGable' && !GABLES.includes(value as GableIntent)) p.push(`${path}: ${JSON.stringify(value)} not in ${GABLES.join('|')}`);
   }

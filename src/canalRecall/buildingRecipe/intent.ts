@@ -19,6 +19,7 @@ import {brickStripeProblems, type BrickStripeZone} from './brickStripes.ts';
 import {stairLightProblems, type StairLightIntent} from './stairLight.ts';
 import {frontLoggiaProblems, type FrontLoggiaIntent} from './frontLoggia.ts';
 import {doorRevealProblems, type DoorRevealIntent} from './doorReveal.ts';
+import {stoopProblems, type StoopIntent} from './stoop.ts';
 import type {ParapetBandIntent} from './parapetBand.ts';
 import {friezeVentProblems} from './friezeVents.ts';
 import {corbelTableProblems, type CorbelTableIntent} from './corbelTable.ts';
@@ -450,6 +451,15 @@ export interface FrontIntent {
   basement: typeof BASEMENTS[number];
   /** The basement is a souterrain: a full storey (half below the street) under a bel-etage reached by the stoop, with storey-sized windows, instead of a 0.7-1.2 m plinth. Needs a basement. */
   souterrain?: boolean;
+  /**
+   * The stoop as measured (stoop.ts, K-stoep #360): flight `front | side-left | side-right | double`, `steps`, `riseM`,
+   * `treadM`, `widthM`, `landing {depth, width}`, `material stone | brick | painted`, `rail iron | stone | none`,
+   * `railStyle plain | bars | ornate`, `under door | window | closed`, `zone` (the measured stoep zone, m from the wall),
+   * every field optional. The landing meets the door sill (steps x rise), the flight stays on the front and inside the
+   * zone, or the fit throws. Needs `basement: stoop | stoop-and-windows`. Absent = the library's straight front flight,
+   * byte-identical. Flight direction and step count come from the photo or a hand read (docs/house-line.md "Stoops").
+   */
+  stoop?: StoopIntent;
   cornice: typeof CORNICES[number];
   windows: typeof WINDOWS[number];
   /** Window kind per storey where it differs from `windows` (key = storey index from the ground, or "last"): a cross-transom ground storey under sashes, 6-over-6 sashes under 8-over-8 bel-etage ones. */
@@ -1704,6 +1714,7 @@ export function validateIntent(input: unknown): CanalHouseIntent {
       if (f.doorBay === null || f.shopfront?.residentialDoor || f.groundFront) problems.push(`${at}.doorArch: needs a doorBay (not a shop's residential door or a ground front)`);
     }
     if (f.doorReveal !== undefined) problems.push(...doorRevealProblems(f.doorReveal, f, at));
+    if (f.stoop !== undefined) problems.push(...stoopProblems(f.stoop, f, at));
     oneOf(f.basement, BASEMENTS, `${at}.basement`);
     oneOf(f.cornice, CORNICES, `${at}.cornice`);
     oneOf(f.windows, WINDOWS, `${at}.windows`);

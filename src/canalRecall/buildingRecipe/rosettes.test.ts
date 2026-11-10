@@ -17,9 +17,13 @@ test('rosettes take their windows out and stand at the window centres', () => {
   assert.equal(cut.discs[0].d, ROSETTE.defaultDiameterM);
   assert.deepEqual(cut.missing, ['storey 3 axis 1: no window there']);
   const parts = rosetteOrnaments(cut.discs[0], 'nassaukade-');
-  assert.deepEqual(parts.map(p => [p.id, p.fill]), [['nassaukade-rosette-s1-b1-ring', 'stone'], ['nassaukade-rosette-s1-b1-field', 'wall'], ['nassaukade-rosette-s1-b1-boss', 'stone']]);
-  assert.ok(parts[0].depthM < parts[1].depthM && parts[1].depthM < parts[2].depthM, 'ring, field, boss stand out in that order');
-  assert.equal(parts[0].profile.length, ROSETTE.segments);
+  assert.deepEqual(parts.map(p => [p.id, p.fill]), [['nassaukade-rosette-s1-b1-ring-a', 'stone'], ['nassaukade-rosette-s1-b1-ring-b', 'stone'], ['nassaukade-rosette-s1-b1-boss', 'stone']]);
+  assert.ok(parts.every(p => p.depthM >= 0.085), 'every part stands past the audit\'s 2-8 cm near-z-fight band');
+  // No overlap: the ring's points lie between the field and outer radii, the boss inside the field (the wall shows between).
+  const r = cut.discs[0].d / 2, dist = (q: readonly number[]) => Math.hypot(q[0] - cut.discs[0].cx, q[1] - cut.discs[0].cy);
+  for (const p of parts.slice(0, 2)) assert.ok(p.profile.every(q => dist(q) >= r * ROSETTE.fieldShare - 1e-3 && dist(q) <= r + 1e-3));
+  assert.ok(parts[2].profile.every(q => dist(q) <= r * ROSETTE.bossShare + 1e-3) && ROSETTE.bossShare < ROSETTE.fieldShare);
+  assert.equal(parts[2].profile.length, ROSETTE.segments);
 });
 
 test('no rosettes: openings untouched (byte-identical)', () => {
@@ -40,8 +44,14 @@ test('Nassaukade 151-152: three rosettes up axis 1 and two stone towers on the c
   const towers = fit.report.fronts.find(f => f.id === 'nassaukade')!.towers!;
   assert.equal(towers.length, 2);
   assert.ok(towers.every(t => t.finish === 'stone' && t.cap === 'flat'));
-  assert.equal(el.bands!.value.filter(b => /towers\d-facing/.test(b.id) && b.surface === 'stone').length, 2);
+  const facings = el.bands!.value.filter(b => /towers\d-facing/.test(b.id) && b.surface === 'stone');
   assert.equal(ids.filter(i => /towers\d-/.test(i)).length, 2, 'one light per tower');
+  assert.equal(facings.length, 8, 'per tower: two piers, a panel below and a panel above its light');
+  assert.ok(facings.every(b => b.depthM >= 0.085), 'past the audit\'s 2-8 cm near-z-fight band');
+  const lights = el.openings.value.filter(o => /towers\d-/.test(o.id)), overlap = (a: {leftM: number; widthM: number; bottomM: number; heightM: number}, b: typeof a) =>
+    Math.min(a.leftM + a.widthM, b.leftM + b.widthM) - Math.max(a.leftM, b.leftM) > 1e-3 && Math.min(a.bottomM + a.heightM, b.bottomM + b.heightM) - Math.max(a.bottomM, b.bottomM) > 1e-3;
+  const withTrim = lights.map(l => ({leftM: l.leftM - l.trimWidthM, widthM: l.widthM + 2 * l.trimWidthM, bottomM: l.bottomM - l.trimWidthM, heightM: l.heightM + 2 * l.trimWidthM}));
+  assert.ok(facings.every(f => withTrim.every(l => !overlap(f, l))), 'no facing covers a tower light or its frame trim');
   const crown = el.crown!.value.profile, top = Math.max(...crown.map(p => p[1]));
   assert.equal(crown.filter(p => p[1] === top).length, 4, 'the wall rises over both towers');
 });
