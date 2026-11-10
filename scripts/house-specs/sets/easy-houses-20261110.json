@@ -1,0 +1,287 @@
+{
+ "name": "easy-houses-20261110",
+ "why": "User 2026-11-10 on map-recall2-screenshots/whats-new/2026-11-10-facade-extras.jpg: 'these are good examples of houses that I think should be easy to model but are currently wrong shape and color'. The house line's standing acceptance set: re-run on every look or spec change (docs/house-line.md \u00a76).",
+ "cams": "scripts/house-specs/sets/easy-houses-20261110.cams.json",
+ "camsFrom": "map-recall2-screenshots buildings/2026-11-10-register-extras/cams.json (copied 2026-11-10)",
+ "pands": [
+  {
+   "pandId": "0363100012175320",
+   "label": "Herengracht (langestraat-175320)",
+   "cams": [
+    "langestraat-175320"
+   ],
+   "photo": {
+    "crop": "front",
+    "why": "2020-01-08, leaf-off, straight on"
+   },
+   "review": {
+    "bays": 2,
+    "gable": "cornice",
+    "wall": "near-black painted brick, white ground storey",
+    "notes": "crop and photo cut the top: storeys not read (drawn 5)"
+   }
+  },
+  {
+   "pandId": "0363100012175318",
+   "label": "Herengracht (langestraat-175318)",
+   "cams": [
+    "langestraat-175318"
+   ],
+   "photo": {
+    "crop": "front",
+    "why": "2021-01-22"
+   },
+   "review": {
+    "storeys": 4,
+    "bays": 3,
+    "gable": "cornice",
+    "wall": "dark brown brick"
+   }
+  },
+  {
+   "pandId": "0363100012168136",
+   "label": "canal row (langestraat-168136)",
+   "cams": [
+    "langestraat-168136"
+   ],
+   "photo": {
+    "crop": "front",
+    "why": "2021-01-25, overcast"
+   },
+   "review": {
+    "storeys": 4,
+    "bays": 3,
+    "gable": "neck",
+    "wall": "pale grey plaster",
+    "notes": "crop shows a neck top above the cornice line"
+   }
+  },
+  {
+   "pandId": "0363100012182857",
+   "label": "Nieuwmarkt double step gable",
+   "cams": [
+    "nieuwmarkt-182857",
+    "nieuwmarkt-182857-b",
+    "nieuwmarkt-row",
+    "nieuwmarkt-row-b"
+   ],
+   "photo": {
+    "crop": "front",
+    "why": "2025-07-03, sunny, straight on"
+   },
+   "review": {
+    "storeys": 3,
+    "bays": 8,
+    "gable": "step",
+    "wall": "pale salmon brick with white bands",
+    "notes": "two step gables over one wide front"
+   }
+  },
+  {
+   "pandId": "0363100012182849",
+   "label": "Nieuwmarkt row",
+   "cams": [
+    "nieuwmarkt-row",
+    "nieuwmarkt-row-b"
+   ],
+   "photo": {
+    "crop": "front-alt",
+    "box": [
+     0.2,
+     4.06,
+     3.5,
+     12
+    ],
+    "why": "front 2025 is a red umbrella; alt 2022 upper storeys"
+   },
+   "review": {
+    "storeys": 4,
+    "bays": 2,
+    "gable": "cornice",
+    "wall": "orange-brown brick, white frames"
+   }
+  },
+  {
+   "pandId": "0363100012171851",
+   "label": "Nieuwmarkt row",
+   "cams": [
+    "nieuwmarkt-row",
+    "nieuwmarkt-row-b"
+   ],
+   "photo": null,
+   "review": {
+    "notes": "both crops show the ground-floor shopfront only (KROEG); no reading"
+   }
+  },
+  {
+   "pandId": "0363100012171854",
+   "label": "Nieuwmarkt row",
+   "cams": [
+    "nieuwmarkt-row",
+    "nieuwmarkt-row-b"
+   ],
+   "photo": null,
+   "review": {
+    "notes": "both crops show the yellow shopfront only; no reading"
+   }
+  },
+  {
+   "pandId": "0363100012182848",
+   "label": "Nieuwmarkt row",
+   "cams": [
+    "nieuwmarkt-row",
+    "nieuwmarkt-row-b"
+   ],
+   "photo": {
+    "crop": "front",
+    "box": [
+     0.2,
+     3.0,
+     4,
+     11
+    ],
+    "why": "2023, left of the lamp posts, upper storeys"
+   },
+   "review": {
+    "storeys": 4,
+    "gable": "bell",
+    "wall": "dark brown brick"
+   }
+  },
+  {
+   "pandId": "0363100012176312",
+   "label": "Herengracht/Raadhuisstraat corner, gables and bay",
+   "cams": [
+    "felix-176312",
+    "felix-176312-b"
+   ],
+   "photo": {
+    "crop": "front",
+    "why": "2021-01-22, sunny"
+   },
+   "review": {
+    "storeys": 5,
+    "bays": 4,
+    "wall": "red-brown brick, white trim",
+    "notes": "cross gables, dormers and a corner bay/turret"
+   }
+  },
+  {
+   "pandId": "0363100012176346",
+   "label": "Raadhuisstraat arcade",
+   "cams": [
+    "felix-176346",
+    "felix-176346-b"
+   ],
+   "photo": {
+    "crop": "front",
+    "why": "2019-05-13; brick storeys between the canopy and the parapet",
+    "box": [
+     0.3,
+     5.4,
+     9,
+     16
+    ]
+   },
+   "review": {
+    "storeys": 4,
+    "bays": 3,
+    "wall": "red-brown brick, stone bands",
+    "notes": "double-height shop storey under a continuous glazed canopy, two window storeys, an arcaded parapet"
+   }
+  },
+  {
+   "pandId": "0363100012169116",
+   "label": "Herengracht corner",
+   "cams": [
+    "felix-169116",
+    "felix-169116-b"
+   ],
+   "photo": {
+    "crop": "front",
+    "why": "2016-08-16"
+   },
+   "review": {
+    "storeys": 5,
+    "bays": 3,
+    "gable": "cornice",
+    "wall": "brown brick"
+   }
+  },
+  {
+   "pandId": "0363100012168578",
+   "label": "Herengracht wide front",
+   "cams": [
+    "felix-168578"
+   ],
+   "photo": {
+    "crop": "front",
+    "why": "2024-11-21 (lens flare at left)",
+    "box": [
+     3,
+     12,
+     3.5,
+     12
+    ]
+   },
+   "review": {
+    "storeys": 4,
+    "wall": "brown brick"
+   }
+  },
+  {
+   "pandId": "0363100012180181",
+   "label": "Vijzelstraat side",
+   "cams": [
+    "vijzelstraat-180181",
+    "vijzelstraat-180181-b"
+   ],
+   "photo": {
+    "crop": "front-alt",
+    "why": "front 2023 is sky-washed; alt 2021"
+   },
+   "review": {
+    "storeys": 5,
+    "bays": 3,
+    "gable": "cornice",
+    "wall": "buff/salmon brick, white cornice and attic"
+   }
+  },
+  {
+   "pandId": "0363100012167483",
+   "label": "Vijzelstraat side, painted black",
+   "cams": [
+    "vijzelstraat-167483"
+   ],
+   "photo": {
+    "crop": "front",
+    "why": "2021-01-22"
+   },
+   "review": {
+    "storeys": 5,
+    "bays": 3,
+    "gable": "cornice",
+    "wall": "near-black painted brick"
+   }
+  },
+  {
+   "pandId": "0363100012171023",
+   "label": "Vijzelstraat side, point gable",
+   "cams": [
+    "vijzelstraat-171023",
+    "vijzelstraat-171023-b"
+   ],
+   "photo": {
+    "crop": "front",
+    "why": "2021-01-22 (flare streak at 1/3 height)"
+   },
+   "review": {
+    "storeys": 4,
+    "bays": 3,
+    "gable": "point",
+    "wall": "dark brown-grey brick",
+    "notes": "register says cornice; both crops show a pointed (point) gable with an oculus"
+   }
+  }
+ ]
+}

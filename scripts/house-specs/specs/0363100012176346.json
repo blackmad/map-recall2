@@ -1,0 +1,64 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012176346",
+ "address": "Raadhuisstraat arcade",
+ "design": {
+  "fronts": [
+   {
+    "storeys": 4,
+    "axisGrid": 3,
+    "gable": "flat"
+   }
+  ],
+  "palette": {
+   "brick": "#9d7d6c",
+   "wallMaterial": "brick"
+  }
+ },
+ "provenance": {
+  "fronts/0/storeys": {
+   "source": "author",
+   "confidence": 0.9,
+   "ref": "scripts/house-specs/sets/easy-houses-20261110.json (review of the pand-reference crop and the cams photo)",
+   "at": "2026-11-10"
+  },
+  "fronts/0/axisGrid": {
+   "source": "author",
+   "confidence": 0.9,
+   "ref": "scripts/house-specs/sets/easy-houses-20261110.json (review of the pand-reference crop and the cams photo)",
+   "at": "2026-11-10"
+  },
+  "palette/brick": {
+   "source": "streetlevel-measured",
+   "confidence": 0.8,
+   "ref": "panorama TMX7316010203-001178_pano_0001_000679 front crop (scripts/pand-reference/run.ts), measureFacade H2c wall-vs-trim, box [0.3, 5.4, 9, 16]",
+   "at": "2019-05-13"
+  },
+  "palette/wallMaterial": {
+   "source": "author",
+   "confidence": 0.9,
+   "ref": "scripts/house-specs/sets/easy-houses-20261110.json (review of the pand-reference crop and the cams photo)",
+   "at": "2026-11-10"
+  },
+  "fronts/0/gable": {
+   "source": "author",
+   "confidence": 0.9,
+   "ref": "scripts/house-specs/sets/easy-houses-20261110.json (pand-reference crop 2019-05-13: arcaded parapet, no gable on the Raadhuisstraat front; the register names a point gable)",
+   "at": "2026-11-10"
+  }
+ },
+ "schemaLimits": [
+  {
+   "component": "pui",
+   "what": "continuous glazed canopy across one wide front"
+  },
+  {
+   "component": "parapet",
+   "what": "arcaded brick parapet with stone bands"
+  },
+  {
+   "component": "window head",
+   "what": "round-arched windows with alternating stone voussoirs"
+  }
+ ]
+}

@@ -1,0 +1,43 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012175318",
+ "address": "Herengracht (langestraat-175318)",
+ "design": {
+  "fronts": [
+   {
+    "storeys": 4,
+    "axisGrid": 3
+   }
+  ],
+  "palette": {
+   "brick": "#6c594b",
+   "wallMaterial": "brick"
+  }
+ },
+ "provenance": {
+  "fronts/0/storeys": {
+   "source": "author",
+   "confidence": 0.9,
+   "ref": "scripts/house-specs/sets/easy-houses-20261110.json (review of the pand-reference crop and the cams photo)",
+   "at": "2026-11-10"
+  },
+  "fronts/0/axisGrid": {
+   "source": "author",
+   "confidence": 0.9,
+   "ref": "scripts/house-specs/sets/easy-houses-20261110.json (review of the pand-reference crop and the cams photo)",
+   "at": "2026-11-10"
+  },
+  "palette/brick": {
+   "source": "streetlevel-measured",
+   "confidence": 0.8,
+   "ref": "panorama TMX7316010203-001975_pano_0000_001496 front crop (scripts/pand-reference/run.ts), measureFacade H2c wall-vs-trim, box [0.2, 5.6, 0, 14.1]",
+   "at": "2021-01-22"
+  },
+  "palette/wallMaterial": {
+   "source": "author",
+   "confidence": 0.9,
+   "ref": "scripts/house-specs/sets/easy-houses-20261110.json (review of the pand-reference crop and the cams photo)",
+   "at": "2026-11-10"
+  }
+ }
+}

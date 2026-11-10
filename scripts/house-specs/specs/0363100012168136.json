@@ -1,0 +1,50 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012168136",
+ "address": "canal row (langestraat-168136)",
+ "design": {
+  "fronts": [
+   {
+    "gable": "neck",
+    "storeys": 4,
+    "axisGrid": 3
+   }
+  ],
+  "palette": {
+   "brick": "#717877",
+   "wallMaterial": "stucco"
+  }
+ },
+ "provenance": {
+  "fronts/0/gable": {
+   "source": "author",
+   "confidence": 0.9,
+   "ref": "scripts/house-specs/sets/easy-houses-20261110.json (review of the pand-reference crop and the cams photo)",
+   "at": "2026-11-10"
+  },
+  "fronts/0/storeys": {
+   "source": "author",
+   "confidence": 0.9,
+   "ref": "scripts/house-specs/sets/easy-houses-20261110.json (review of the pand-reference crop and the cams photo)",
+   "at": "2026-11-10"
+  },
+  "fronts/0/axisGrid": {
+   "source": "author",
+   "confidence": 0.9,
+   "ref": "scripts/house-specs/sets/easy-houses-20261110.json (review of the pand-reference crop and the cams photo)",
+   "at": "2026-11-10"
+  },
+  "palette/brick": {
+   "source": "streetlevel-measured",
+   "confidence": 0.8,
+   "ref": "panorama TMX7316010203-001979_pano_0001_000382 front crop (scripts/pand-reference/run.ts), measureFacade H2c wall-vs-trim, box [0.2, 5.819999999999999, 0, 15.18]",
+   "at": "2021-01-25"
+  },
+  "palette/wallMaterial": {
+   "source": "author",
+   "confidence": 0.9,
+   "ref": "scripts/house-specs/sets/easy-houses-20261110.json (review of the pand-reference crop and the cams photo)",
+   "at": "2026-11-10"
+  }
+ }
+}

@@ -92,25 +92,45 @@ export function recipeLayoutScale(recipe: ArchitecturalRecipe | undefined, fallb
 }
 
 /** The fitted cell width for a stated bay count stays within these multiples of the style's nominal bay. */
-export const SPEC_BAY_SCALE = { min: 0.7, max: 1.5 } as const;
+// min 0.6 (lane H9): the Nieuwmarkt double house 0363100012182857, 8 bays on 12 m, drew 6 at 0.7 (3 m cells hold two
+// sashes on a canal front).
+export const SPEC_BAY_SCALE = { min: 0.6, max: 1.5 } as const;
 /** A street front's stated window bays (HouseSpec, houseSpec/decorate.ts), and how many window axes one texture cell
  *  of this building carries (bay-look cells hold 2 or 3; `MeshBuilding.openings.upper.axes`). */
-export type FrontageBays = { bays: number; axesPerCell: number };
+export type FrontageBays = { bays?: number; axesPerCell: number; storeys?: number; exposedM?: number };
+/** Storey pitch scale a stated storey count may set (lane H9): 0.75..1.45 of the style's storey (2.2..4.5 m). */
+export const SPEC_STOREY_SCALE = { min: 0.75, max: 1.45 } as const;
+/**
+ * The storey scale that makes layoutWall (facadeLayout.ts) draw `storeys` storeys (ground included) on `exposedM` of
+ * wall: the upper storeys share what the ground storey leaves. Null when the count does not fit within
+ * SPEC_STOREY_SCALE (the drawn count then stays the style's own) or there is no upper storey.
+ */
+export function specStoreyScale(style: MeshBuilding['style'], exposedM: number, storeys: number, groundScale: number): number | null {
+  const dims = STYLE_DIMS[style], upper = storeys - 1;
+  if (!(upper >= 1) || !(exposedM > 0)) return null;
+  const groundM = Math.min(dims.ground * groundScale, exposedM), upperM = exposedM - groundM;
+  const scale = upperM / upper / dims.storey;
+  return scale >= SPEC_STOREY_SCALE.min && scale <= SPEC_STOREY_SCALE.max ? scale : null;
+}
 
 /**
  * A scoped canal cell represents the complete native frontage, including polygon kinks.
  * With a bay count (`recipe.bays`, else `spec` for a street run of a building without a street-appearance recipe), the
  * run gets round(bays / axesPerCell) cells: bay scale = run length / cells / the style's bay, clamped to
  * SPEC_BAY_SCALE. An odd bay count on a two-axis cell rounds to the nearest whole cell (a limit of the generic cells).
+ * A spec storey count (`spec.storeys` over `spec.exposedM` of wall) sets the storey pitch (specStoreyScale).
  */
 export function frontageLayoutScale(recipe: ArchitecturalRecipe | undefined, fallback: {bay:number;storey:number;ground:number}, style: MeshBuilding['style'], lengthM:number, spec?: FrontageBays) {
   const scale=recipeLayoutScale(recipe,fallback);
   if (recipe?.openingGroup) return {...scale,bay:lengthM/STYLE_DIMS[style].bay};
+  // A HouseSpec's storey count (no street-appearance recipe): the storey pitch that draws that many storeys.
+  const storey = !recipe && spec?.storeys && spec.exposedM ? specStoreyScale(style, spec.exposedM, spec.storeys, scale.ground) : null;
+  const scaled = storey ? {...scale, storey} : scale;
   const bays = recipe?.bays ?? spec?.bays;
-  if (!(bays && bays > 0 && lengthM > 0)) return scale;
+  if (!(bays && bays > 0 && lengthM > 0)) return scaled;
   const cells = Math.max(1, Math.round(bays / Math.max(1, spec?.axesPerCell ?? 1)));
   const bay = Math.min(SPEC_BAY_SCALE.max, Math.max(SPEC_BAY_SCALE.min, lengthM / cells / STYLE_DIMS[style].bay));
-  return {...scale,bay};
+  return {...scaled,bay};
 }
 
 /** Carry admitted color onto a shallow exposed return, never a new opening/source class. */

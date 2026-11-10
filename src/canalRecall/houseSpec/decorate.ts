@@ -15,6 +15,7 @@ import type { GableShape } from '../roofMesh.js';
 import type { ArchitecturalRecipe } from '../streetAppearance.js';
 import { eraOfYear } from '../facade/registerRecipe.js';
 import { SOURCE_STRENGTH } from '../facade/evidence.js';
+import { specWallDisplay, specWallsOn } from './wallColour.js';
 
 /** Rank on the evidence ladder (spec.ts specStrength without the intent schema import): `author` = `reviewed`. */
 const rank = (s: string | undefined) => (SOURCE_STRENGTH as readonly string[]).indexOf(s === 'author' ? 'reviewed' : s ?? '');
@@ -31,12 +32,14 @@ export interface HouseSpecView {
   wallHex?: string;
   /** Window bays across the street front above the ground storey. */
   bays?: number;
+  /** Full storeys below the crown, ground included (FrontIntent.storeys; lane H9). */
+  storeys?: number;
   /** Winning source per key above. */
-  src: Partial<Record<'gable' | 'year' | 'wallMaterial' | 'wallHex' | 'bays', string>>;
+  src: Partial<Record<'gable' | 'year' | 'wallMaterial' | 'wallHex' | 'bays' | 'storeys', string>>;
 }
 
 /** What the spec adds to the generic mesher: an ArchitecturalRecipe subset plus the bay count. */
-export type SpecRecipe = Partial<Pick<ArchitecturalRecipe, 'crownShape' | 'period' | 'wallHex' | 'bays'>>;
+export type SpecRecipe = Partial<Pick<ArchitecturalRecipe, 'crownShape' | 'period' | 'wallHex' | 'bays'>> & { storeys?: number };
 
 /** Default on; `?houseSpecs=0` in the page or HOUSE_SPECS=0 in Node turns the enricher (and so every step) off. */
 export const HOUSE_SPECS_DEFAULT = true;
@@ -66,12 +69,12 @@ const viewOf = (p: Props): HouseSpecView | null => {
 const excluded = (p: Props) => (p.appearanceStyleSource !== undefined && p.appearanceStyleSource !== PRIOR_SOURCE) || !!p.kitWall || !!p.largeTier;
 
 /**
- * Held (2026-11-10, H1 frames): a strip-measured wall colour is the overcast panorama reading (block-face palettes
- * carry a `whitePoint` for that reason) and drew Kinkerstraat 244-332 visibly darker than the generic palette, against
- * the user's brighter-palette priority (2026-10-16). The view keeps `wallHex`; the mesher's sourced-wall slot
- * (meshBuildingFor) is wired. Release after a white-point pass and a side-by-side with the panorama.
+ * Was held (2026-11-10, H1 frames): a strip-measured wall colour is the overcast panorama reading and drew Kinkerstraat
+ * 244-332 darker than the generic palette, against the user's brighter-palette priority (2026-10-16). Released by lane
+ * H9 (2026-11-10) through the wall-colour rule (wallColour.ts specWallDisplay: measured hue and chroma, one lightness
+ * lift), behind `?specWalls=0` / SPEC_WALLS=0. `false` = the rule is live.
  */
-export const SPEC_WALLS_HELD = true;
+export const SPEC_WALLS_HELD = false;
 
 /** The property patch a spec view makes before decorateFacade; empty when nothing changes. */
 export function houseSpecPatch(view: HouseSpecView, p: Props): Props {
@@ -85,14 +88,20 @@ export function houseSpecPatch(view: HouseSpecView, p: Props): Props {
     }
   }
   if (view.wallMaterial) {
-    const finish = view.wallMaterial === 'brick' ? 'brick' : 'light';
+    // Painted brick with a measured wall colour keeps the brick cells (its courses show; the colour is the measured
+    // paint, lane H9): a near-black painted front drawn in plaster cells read as render. Without a measured colour the
+    // register's rule stands (painted = a light finish).
+    const measuredPaint = view.wallMaterial === 'painted-brick' && !!view.wallHex && specWallsOn();
+    const finish = view.wallMaterial === 'brick' || measuredPaint ? 'brick' : 'light';
     if (p.registerFinish !== finish) patch.registerFinish = finish;
   }
   const recipe: SpecRecipe = {};
   if (view.bays && view.bays > 0) recipe.bays = view.bays;
-  if (!SPEC_WALLS_HELD && view.wallHex && /^#[0-9a-f]{6}$/i.test(view.wallHex)) recipe.wallHex = view.wallHex.toLowerCase();
-  // A spec recipe only when it carries something the mesher reads (bays, a wall colour); crown and period ride along.
-  if (recipe.bays || recipe.wallHex) {
+  // The measured wall, through the wall-colour rule (lifted lightness, measured hue); `?specWalls=0` keeps the period colour.
+  if (!SPEC_WALLS_HELD && specWallsOn() && view.wallHex && /^#[0-9a-f]{6}$/i.test(view.wallHex)) recipe.wallHex = specWallDisplay(view.wallHex.toLowerCase());
+  // A spec recipe only when it carries something the mesher reads (bays, storeys, a wall colour); crown and period ride along.
+  if (view.storeys && view.storeys >= 2) recipe.storeys = view.storeys;
+  if (recipe.bays || recipe.wallHex || recipe.storeys) {
     const year = Number.isInteger(view.year) ? view.year! : Number(patch.constructionYear ?? p.constructionYear);
     if (Number.isFinite(year)) recipe.period = ERA_PERIOD[eraOfYear(year)];
     if (view.gable && GABLE_TO_CROWN[view.gable]) recipe.crownShape = GABLE_TO_CROWN[view.gable];
@@ -114,6 +123,14 @@ export function withHouseSpec<T extends { properties: Props }>(feature: T): T {
 export function withHouseSpecCrown<T extends { properties: Props }>(feature: T): T {
   const p = feature.properties, view = viewOf(p);
   if (!view?.gable || excluded(p)) return feature;
+  if (view.gable === 'flat') {
+    // A street source or an author saw a flat-topped front (a parapet or a straight cornice line; lane H9, the
+    // Raadhuisstraat arcade, whose register names a point gable on another front). Over a register gable the front
+    // takes the cornice crown (the generic path's straight top over the roof behind it); without one nothing changes,
+    // so a flat front never gains a pitched roof here (H1: cornice words gave 681 flat 1890s pands a canal roof).
+    if (rank(view.src.gable) <= rank('monument-text') || p.monumentGable === undefined || p.monumentGable === 'cornice') return feature;
+    return { ...feature, properties: { ...p, monumentGable: 'cornice' } };
+  }
   const shape = GABLE_TO_ROOF[view.gable];
   if (!shape || p.monumentGable === shape) return feature;
   const stronger = rank(view.src.gable) > rank('monument-text');
