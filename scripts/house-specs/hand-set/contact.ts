@@ -18,9 +18,9 @@ async function tile(id: string, A: HandSet, B: HandSet, W = 520, H = 640) {
   const src = setPands().find(x => x.pandId === id)!.images.find(i => i.ref === p.fields.axes.ref)!;
   let img = sharp(src.file); if (src.px) { const m = await sharp(src.file).metadata(); img = sharp(await img.extract({ left: src.px[0], top: 0, width: src.px[1] - src.px[0], height: m.height! }).toBuffer()); }
   const buf = await img.resize({ width: W, height: H - 150, fit: 'contain', background: '#111' }).toBuffer();
-  const f = p.fields, v = (r: any) => (r ? `${r.value ?? '?'}${r.value === null ? '' : ` (${r.confidence})`}` : '-');
+  const f = p.fields, v = (r: any) => (r ? `${r.value ?? '?'}${r.value === null || r.value === 'unknown' ? '' : ` (${r.confidence})`}` : '-');
   const flags = [f.souterrain && 'souterrain', f.entresol && 'entresol', f.atticInCrown && 'attic in crown'].filter(Boolean).join(', ');
-  const lines = [`${id}  ${p.group}  panel ${src.label}`, `axes ${v(f.axes)}${f.axesPerStorey ? ` per storey ${f.axesPerStorey.join('/')}` : ''}   storeys ${v(f.storeys)}`, `gable ${v(f.gable)}   finish ${v(f.finish)}`, `wall ${v(f.wall)}   pui ${v(f.pui)}`, flags || ' '];
+  const lines = [`${id}  ${p.group}  panel ${src.label}${p.extent === 'multi' ? '  MULTI-FRONT: not scored' : ''}`, `axes ${v(f.axes)}${f.axesPerStorey ? ` per storey ${f.axesPerStorey.join('/')}` : ''}   storeys ${v(f.storeys)}`, `gable ${v(f.gable)}   finish ${v(f.finish)}`, `wall ${v(f.wall)}   pui ${v(f.pui)}`, flags || ' '];
   if (b) { const d = (['axes', 'storeys', 'gable', 'finish', 'wall', 'pui'] as const).filter(k => (b.fields as any)[k]?.value !== (f as any)[k]?.value).map(k => `${k} ${(b.fields as any)[k]?.value}`); lines.push(d.length ? `reader B differs: ${d.join(', ')}` : 'reader B agrees on every field'); }
   const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="150"><rect width="${W}" height="150" fill="#1d1d1d"/>${lines.map((l, i) => `<text x="8" y="${20 + i * 22}" font-size="${i ? 16 : 14}" font-family="Helvetica" fill="${i === 5 ? '#ffd27a' : '#fff'}">${esc(l)}</text>`).join('')}</svg>`;
   return sharp({ create: { width: W, height: H, channels: 3, background: '#111' } }).composite([{ input: buf, left: 0, top: 0 }, { input: Buffer.from(svg), left: 0, top: H - 150 }]).jpeg().toBuffer();

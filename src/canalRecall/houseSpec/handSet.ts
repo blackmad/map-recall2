@@ -25,7 +25,9 @@ export type Confidence = (typeof CONFIDENCES)[number];
 /** A dark front: the families that read dark on the street (brown and near-black); red-brown brick counts as light. */
 export const DARK_FAMILIES: readonly WallFamily[] = ['brown', 'dark'];
 
-export type Reading<T> = { value: T | null; confidence: Confidence; /** the panel ref the field was read from */ ref: string; note?: string };
+/** A field the crop cannot show (crown out of view, top cut, hidden) is `'unknown'`: stated as not visible, never scored. */
+export const UNKNOWN = 'unknown' as const;
+export type Reading<T> = { value: T | typeof UNKNOWN; confidence: Confidence; /** the panel ref the field was read from */ ref: string; note?: string };
 export type HandFields = {
   axes: Reading<number>;
   /** per-storey window columns from storey 2 (index 1) up, only when they differ */
@@ -43,10 +45,16 @@ export type HandPand = {
   /** every image the reader had, panel order; sha256 of the file (a strip ref carries its pixel span) */
   images: { ref: string; sha256: string }[];
   readable: boolean;
+  /** `multi` when the pand's own street wall (the BAG wall the crop is rectified on) carries more than one house front: the pand is
+   *  kept with its readings but left out of every score (a writer reading one front cannot match, and nor can a reader's count). */
+  extent: 'single' | 'multi';
   fields: HandFields;
   notes?: string;
 };
 export type HandSet = { version: typeof HAND_SET_VERSION; reader: string; date: string; convention: string; pands: HandPand[] };
+
+/** The one storey definition of the house line (docs/house-line.md §1 and §4c; H5's writers, H9 and H1c use it). */
+export const STOREYS_DEFINITION = 'Full street-facing storeys, counting neither a souterrain nor an attic in the crown.';
 
 export const READING_CONVENTION = `Reading convention, hand set v1 (docs/house-line.md §4c). Read the pand's street front from the sheet: each panel is an archived
 rectified crop (x along the wall, y up from the ground) under a metre grid (thin line every metre, heavy every 3 m). Several panels are
@@ -58,24 +66,29 @@ axes    Window columns of the upper storeys: vertical lines of openings above th
         counts. A projecting bay window (erker) is one axis, however many lights it has. The ground storey (shopfront, doors) is not
         counted.
         A pand whose wall carries two house fronts counts both (all columns of the pand's street wall).
-storeys Full storeys from the street-level storey up to the cornice line, or to the gable foot (where a gable's outline leaves the
-        party walls). The ground storey counts once however tall (shop or bel-etage). NOT counted: a souterrain (a storey half below the
-        pavement, windows at knee height, usually under a stoop) -> souterrain: true; an entresol/mezzanine inside a tall ground storey ->
-        entresol: true; windows inside the gable, crown or roof (dormers, a gable's attic storey) -> atticInCrown: true. A bel-etage over
-        a souterrain is storey 1. A full top storey in the front plane under a cornice counts.
+storeys ${STOREYS_DEFINITION}
+        How to apply it: count from the street-level storey up to the cornice line or the gable foot (where a gable's outline leaves
+        the party walls). The ground storey counts once however tall (shop or bel-etage); an entresol/mezzanine inside it is part of
+        it -> entresol: true. A souterrain (half below the pavement, windows at knee height, usually under a stoop) -> souterrain: true.
+        Windows inside the gable, crown or roof (dormers, a gable's attic storey, a set-back roof storey) -> atticInCrown: true. A
+        bel-etage over a souterrain is storey 1. A full top storey in the front plane under a cornice counts.
 gable   The crown: spout (tuit), neck (hals), raised-neck (verhoogde hals), bell (klok), step (trap), point (a triangular or pointed
         gable, punt), cornice (a horizontal moulded cornice/lijst, roof behind, flat or pitched), flat (a plain parapet, no moulding),
-        shouldered. null when the top is cut off or hidden.
+        shouldered. unknown when the crown is not in view (top cut off or hidden).
 finish  The upper wall: brick (bare brick, any colour), painted-brick (painted, brick coursing still visible), stucco (smooth render,
         plaster, often with incised joints), stone (stone-faced). Ignore the ground storey.
 wall    Colour family of the main upper wall (not trim, not shopfront): white (white, cream, very pale), grey, buff (yellow, sand,
         beige), orange (orange, salmon), red, red-brown, brown, dark (near-black, very dark brown or grey).
 pui     Ground storey use: shop (shop window, cafe, office glazing), residential (house door and house windows), warehouse (loading doors).
 confidence per field: high = clearly visible, one reading; med = partly hidden or one close alternative; low = mostly guessed.
-        value null (confidence low) when the field cannot be read. ref = the panel (A, B, C) you read it from.
-readable false when no panel shows the pand's front (wrong wall, close-up, all hidden); then every value is null.`;
+        ref = the panel (A, B, C) you read it from.
+unknown A field the crop cannot show is "unknown" (the crown not in view, the top cut off so storeys cannot be counted, the ground
+        storey hidden for pui): never guess it at low confidence. unknown is never scored.
+extent  multi when the pand's wall carries more than one house front (two or three gables, a row of fronts in one crop); the
+        readings are still made but the pand is not scored. single otherwise.
+readable false when no panel shows the pand's front (wrong wall, close-up, all hidden); then every value is unknown.`;
 
-const isReading = (r: any, ok: (v: unknown) => boolean) => r && typeof r === 'object' && (r.value === null || ok(r.value)) && (CONFIDENCES as readonly string[]).includes(r.confidence) && typeof r.ref === 'string' && r.ref.length > 0;
+const isReading = (r: any, ok: (v: unknown) => boolean) => r && typeof r === 'object' && (r.value === UNKNOWN || ok(r.value)) && (CONFIDENCES as readonly string[]).includes(r.confidence) && typeof r.ref === 'string' && r.ref.length > 0;
 const posInt = (max: number) => (v: unknown) => Number.isInteger(v) && (v as number) >= 1 && (v as number) <= max;
 const inList = (l: readonly string[]) => (v: unknown) => typeof v === 'string' && l.includes(v);
 
@@ -94,12 +107,13 @@ export function validateHandSet(set: any): string[] {
     if (!['ab07', 'easy', 'nassau'].includes(h.group)) p.push(`${at}: group`);
     if (!Array.isArray(h.images) || !h.images.length || h.images.some((i: any) => !/^source-data:\/\//.test(i.ref) || !/^[0-9a-f]{64}$/.test(i.sha256))) p.push(`${at}: images need source-data refs and sha256`);
     if (typeof h.readable !== 'boolean') p.push(`${at}: readable boolean`);
+    if (h.extent !== 'single' && h.extent !== 'multi') p.push(`${at}: extent single | multi`);
     const f = h.fields ?? {};
     const checks: [string, (v: unknown) => boolean][] = [['axes', posInt(30)], ['storeys', posInt(12)], ['gable', inList(GABLES)], ['finish', inList(FINISHES)], ['wall', inList(WALL_FAMILIES)]];
-    for (const [k, ok] of checks) if (!isReading(f[k], ok)) p.push(`${at}: fields.${k} must be {value, confidence high|med|low, ref}`);
+    for (const [k, ok] of checks) if (f[k]?.value === null) p.push(`${at}: fields.${k} is null: a field the crop cannot show is "unknown"`); else if (!isReading(f[k], ok)) p.push(`${at}: fields.${k} must be {value, confidence high|med|low, ref}`);
     if (f.pui !== undefined && !isReading(f.pui, inList(PUIS))) p.push(`${at}: fields.pui`);
     if (f.axesPerStorey !== undefined && (!Array.isArray(f.axesPerStorey) || !f.axesPerStorey.every(posInt(30)))) p.push(`${at}: axesPerStorey`);
-    if (!h.readable) for (const [k] of checks) if (f[k] && f[k].value !== null) p.push(`${at}: unreadable pand states ${k}`);
+    if (!h.readable) for (const [k] of checks) if (f[k] && f[k].value !== UNKNOWN) p.push(`${at}: unreadable pand states ${k}`);
     for (const [k] of checks) if (f[k]?.ref && Array.isArray(h.images) && !h.images.some((i: any) => i.ref === f[k].ref)) p.push(`${at}: fields.${k}.ref is not one of the pand's images`);
   }
   return p;

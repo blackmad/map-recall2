@@ -55,6 +55,11 @@ type Prov = { source: SpecSource; confidence: number /* 0..1 */; ref: string; at
   `BlockFaceIntent.schemaLimits` on a1's belt lanes). `component` is the kit part (`gable ornament`, `ground storey`,
   `palette`); the kit-gap queue (§5) keys on it. Legacy `"component: what"` strings are read by `toSpecLimit`; a line with
   no component is filed under `facade`. Never fit the nearest option instead of recording the limit.
+- **`storeys`** (`fronts/N/storeys`) has one definition, used by every writer, reader and checker (H5, H9, H1c):
+  **full street-facing storeys, counting neither a souterrain nor an attic in the crown**
+  (`STOREYS_DEFINITION`, `handSet.ts`). The ground storey counts once however tall; an entresol inside it, gable, crown and
+  roof windows, dormers and a set-back roof storey do not count; a bel-etage over a souterrain is storey 1. Heights stay BAG's
+  (eaves, ridge); the storey count of the front is not derived from them (§4c).
 - **`route`**: `recipe` when `toRecipe(spec)` returns a `CanalHouseIntent` that `validateIntent` accepts (complete
   fronts, roof and palette, and at least one dated receipt that maps to an intent source kind), else `generic`.
 
@@ -673,7 +678,7 @@ house:describe: fill a HouseSpec from the sources in trust order, and stop where
 
 Writers (src/canalRecall/houseSpec/writers/), what each may write, source and rank:
   register  monument-text   gable, facade year, finish, hoist beam, stoop, elements (no crop needed)
-  bag       bag / 3dbag     facts/facadeYear (0.5), fronts/0/storeys (0.4, eaves at 3 m a storey)
+  bag       bag             facts/facadeYear (0.5); storeys off (H5h: eaves / 3 m agreed 0.43 with the hand set, 0.55 with offsets)
   pixel     streetlevel-measured   wall colour + brick material + rhythmic window columns (bays) + measured storeys; measureFacade
                                    'houseLine' profile; fallback-tier crops write only colour and storeys, at lower confidence
   jev       vision-judge    bays (p>=0.55), a confident gable (p>=0.75), finish (p>=0.9), shop/residential (p>=0.875); good-tier crops only
@@ -688,7 +693,7 @@ build-house-specs.ts reads the merged specs; scripts/house-specs/agreement.ts co
 | Writer | Needs a crop | Source | May write |
 |---|---|---|---|
 | `register.ts` | no | `monument-text` | gable 0.8, facade year 0.7 (a period 0.5), finish 0.7, hoist beam, stoop, elements 0.6 (`fromRegisterFacts`) |
-| `bag.ts` | no | `bag` / `3dbag` | `facts/facadeYear` 0.5 (the building's year, not the front's), `fronts/0/storeys` 0.4 (eaves at 3 m a storey, `bag-facts` descriptor) |
+| `bag.ts` | no | `bag` / `3dbag` | `facts/facadeYear` 0.5 (the building's year, not the front's), `fronts/0/storeys` **off** (`BAG_WRITES_STOREYS`; eaves / 3 m agreed 0.43 with the §4c hand set, 0.55 with -1 for a pitched crown, below the 0.80 fallback bar; `bagStoreys` keeps the arithmetic). BAG stays the source for heights |
 | `pixel.ts` | good or fallback | `streetlevel-measured` | `palette/brick` (wall colour, 0.55 good / 0.45 fallback, `houseLine` profile, not when L > 0.95), `palette/wallMaterial` brick when course lines resolve, `fronts/0/bays` only on a good crop with a resolved column pitch (`pitchScore >= 0.6`, `columns == windowColumns`), `fronts/0/storeys` **off** (`PIXEL_WRITES_STOREYS`) |
 | `jev.ts` | good only | `vision-judge` | bays (word form, p >= 0.55), gable (p >= 0.75 and only `step`/`plain`), finish brick / painted-brick / stucco (p >= 0.9), shop / residential (answer p >= 0.875) |
 
@@ -756,7 +761,7 @@ library's gable, bays and colour), 6 are authored recipes, none states a finish.
 
 Crops: good 120, fallback 433, hard-flag fail 99, no crop 10. Coverage, pands with the field per writer: gable register 174, Jev 6;
 bays Jev 112, pixel 31; wall colour pixel 495; wall material Jev 72, register 3; pui Jev 42; facade year bag 637, register 183;
-storeys bag 657. Disagreements between writers: facade year 171 (BAG's building year against the register's front year, expected),
+storeys bag 657 (before H5h; BAG storeys are now off, so no writer states facade storeys). Disagreements between writers: facade year 171 (BAG's building year against the register's front year, expected),
 bays 2. Jev: 120 calls, $0.0104 (cap $2 per run, $3 per buurt); this lane's total with the judge passes $0.07 of $3.
 
 Against the 39 hand pands (all-pands table; the authored subset is 6 pands, the good-tier subset 5):
@@ -820,64 +825,100 @@ was read from (`ref`, a `source-data://` path, plus the file's sha256 in `images
 `pand-crops/` (H4), `pand-reference-easy-houses/` (archived by this lane from H9's `staging/pand-reference`),
 `block-face-strips/nassau-145-152/strip.jpg#px=a-b`. No panorama was fetched.
 
-**The convention** (`READING_CONVENTION`, verbatim what both readers were given):
+**The convention** (`READING_CONVENTION`, verbatim what the readers were given; round 2 of 2026-11-10 is the current text):
 
-- **axes** (= HouseSpec `bays`, `frontBays`): window columns of the upper storeys, the storey with the most columns
-  (`axesPerStorey` from storey 2 up when storeys differ). One axis per separate masonry opening: a mullioned pair of lights is one,
-  two openings with a brick pier between are two; a balcony door counts; an erker is one axis; the ground storey is not counted; a
-  pand whose wall carries two house fronts counts both. A front with no upper storey has axes null.
-- **storeys** (= FrontIntent `storeys`): full storeys from the street-level storey to the cornice line or the gable foot (where the
-  outline leaves the party walls). The ground storey counts once however tall. Not counted: a **souterrain** (half below the
-  pavement, windows at knee height, usually under a stoop; `souterrain: true`), an **entresol** inside a tall ground storey
-  (`entresol: true`), windows in the gable, crown or roof, dormers, a set-back roof storey (`atticInCrown: true`). A **bel-etage**
-  over a souterrain is storey 1. A full top storey in the front plane under a cornice counts.
-- **gable**: GABLES (spout, neck, raised-neck, bell, step, point, cornice, flat, shouldered); null when the top is cut off.
+- **axes** (= HouseSpec `bays`, `frontBays`): window columns of the upper storeys, **the storey with the most columns** (the
+  maximum, not the typical storey; `axesPerStorey` from storey 2 up when storeys differ). One axis per separate masonry opening: a
+  mullioned pair of lights is one, two openings with a brick pier between are two; a balcony door counts; an erker is one axis; the
+  ground storey is not counted. A front with no upper storey has axes unknown.
+- **storeys** (= FrontIntent `storeys`): the one definition of §1, **full street-facing storeys, counting neither a souterrain nor
+  an attic in the crown**. The ground storey counts once however tall. Not counted: a **souterrain** (half below the pavement,
+  windows at knee height, usually under a stoop; `souterrain: true`), an **entresol** inside a tall ground storey (`entresol: true`),
+  windows in the gable, crown or roof, dormers, a set-back roof storey (`atticInCrown: true`). A **bel-etage** over a souterrain is
+  storey 1. A full top storey in the front plane under a cornice counts.
+- **gable**: GABLES (spout, neck, raised-neck, bell, step, point, cornice, flat, shouldered); unknown when the crown is not in view.
 - **finish**: brick, painted-brick (coursing still visible), stucco, stone; the upper wall, not the ground storey.
 - **wall**: white, grey, buff, orange, red, red-brown, brown, dark (the main upper wall). Tone: brown and dark read dark.
 - **pui**: shop, residential, warehouse. **confidence** per field: high, med, low.
+- **unknown**: a field the crop cannot show (crown out of view, top cut so storeys cannot be counted, ground storey hidden) is
+  `"unknown"`, never a low-confidence guess. **unknown is never scored**, for readers or writers; the validator rejects `null`.
+- **extent**: `multi` when the pand's wall carries more than one house front (two or three gables, a row of fronts). A multi pand's
+  fields are recorded but **left out of every score** (the scorer uses reader A's extent for every reader). The tell: more than 5 axes
+  on a canal house. The crop is the pand's own BAG wall (`front.json wallWidthM` = the crop width, 168085 14.1 m), so a single-front
+  re-crop does not exist; no panorama was fetched. Multi in v1: 168085, 174923, 174696, 169899, 174173, 174080 (AB07) and 116526
+  (Nassaukade). 182857 is single with 5 axes (ruling).
+- **readable** false when no panel shows the front; every value is then unknown.
 
-**Reader agreement (the ceiling).** A second Opus reader (`hand-set-v1.reader-b.json`) saw only the convention and 30 of the sheets
-(20 AB07, 5 easy, 5 Nassaukade; `hand-set-v1.reader-b-pands.json`), never reader A's values. Over the pands both readers stated:
+Round 2 (judgement ruling, 2026-11-10) also re-read the 7 Nassaukade rows (the user's benchmark) at 2x against the blind reader:
+164843, 161422 and 160273 are painted-brick / dark (reader B; the authored face intent agrees), 157426 stays brick / brown; 170031's
+gable is unknown (crown cut). Realised strata now (reader A, 76 of 80 readable, 7 multi): gable cornice 34, neck 8, point 8, bell 7,
+flat 7, step 4, unknown 8; finish brick 59, painted-brick 15, stucco 2; wall red-brown 26, brown 18, dark 18, red 6, grey 4, orange 2,
+white 1, buff 1; unknown axes 5, storeys 7, pui 4.
 
-| field | both stated | agree | | field | both stated | agree |
-|---|---|---|---|---|---|---|
-| readable | 30 | 29 (0.97) | | finish | 28 | 26 (0.93) |
-| axes | 27 | 27 (1.00) | | pui | 27 | 24 (0.89) |
-| storeys | 28 | 28 (1.00) | | wall family | 28 | 23 (0.82) |
-| gable | 28 | 27 (0.96) | | wall tone | 28 | 25 (0.89) |
+**Reader ceiling.** Reader A built the set and saw the register's gable group in the draw, so the ceiling is the **blind pair**:
+reader B (round 1, `hand-set-v1.reader-b.json`) and a fresh reader C (round 2, `hand-set-v1.reader-c.json`, given only the round-2
+convention and the same 30 sheets: 20 AB07, 5 easy, 5 Nassaukade, `hand-set-v1.reader-b-pands.json`). Neither saw another reader's
+values. Over pands both stated (not unknown, single-front by reader A; 2 multi left out); Wilson 95 % intervals:
 
-Where both readers said `high` every field agreed (axes 21/21, storeys 15/15, gable 11/11, finish 21/21). The disagreements are a
-step vs shouldered crown on a backlit Nassaukade front, painted vs bare dark brick (2), shop vs residential on large ground-storey
-glazing (3) and neighbouring colour words (brown / red-brown / dark, 5). **No writer gate should exceed these rates**; the 0.85
-gate H5 named is above the ceiling for pui and wall colour.
+| field | B vs C (the ceiling) | A vs B | A vs C |
+|---|---|---|---|
+| axes | 25/25 = 1.00 [0.87, 1.00] | 24/24 = 1.00 | 24/24 = 1.00 |
+| storeys | 25/25 = 1.00 [0.87, 1.00] | 25/25 = 1.00 | 24/24 = 1.00 |
+| gable | 21/25 = 0.84 [0.65, 0.94] | 24/25 = 0.96 | 19/24 = 0.79 |
+| finish | 24/26 = 0.92 [0.76, 0.98] | 23/26 = 0.89 | 24/25 = 0.96 |
+| pui | 22/25 = 0.88 [0.70, 0.96] | 21/24 = 0.88 | 24/24 = 1.00 |
+| wall family | 21/26 = 0.81 [0.62, 0.92] | 21/26 = 0.81 | 23/25 = 0.92 |
+| wall tone | 23/26 = 0.89 [0.71, 0.96] | 24/26 = 0.92 | 24/25 = 0.96 |
 
-**Writers against the hand set** (`score.ts`; AB07, 60 pands, 57 readable; agree / stated = precision):
+B-C disagreements: gable cornice / flat (2), bell / neck, bell / point; pui shop / residential on big ground-storey glazing (3);
+painted vs bare brick (2); neighbouring colour words (red-brown / brown 3, brown / dark 2). Gable is the one field whose blind
+ceiling (0.84) is under its floor: cornice vs flat and the neck / bell / point family are where readers part.
 
-| field | hand n | register | BAG | pixel | Jev | merged | reader ceiling |
-|---|---|---|---|---|---|---|---|
-| bays | 55 | | | 5/5 | 25/31 = 0.81 (+-1: 0.94) | 25/31 = 0.81 | 1.00 |
-| storeys | 56 | | 21/55 = 0.38 (+-1: 0.96) | | | 0.38 | 1.00 |
-| gable | 57 | 21/35 = 0.60 | | | 1/1 | 21/35 = 0.60 | 0.96 |
-| finish | 57 | 1/2 | | | 23/23 = 1.00 | 23/24 = 0.96 | 0.93 |
-| pui | 55 | | | | 11/12 = 0.92 | 0.92 | 0.89 |
-| wall tone | 57 | | | 31/41 = 0.76 | | 0.76 | 0.89 |
+**Gates** (`scripts/house-specs/agreement.ts` `GATE_FLOORS`, `gateFor`, `wilson`, `verdict`): per field, gate = max(floor, reader
+ceiling - 0.1). A writer's precision gets a Wilson 95 % interval; it **fails only when the top of the interval is under the gate**,
+passes when the bottom is at or over it, and is **open** in between (n too small to say).
 
-- BAG storeys (eaves / 3 m) are one too many on 30 of 55, mostly fronts with no souterrain or entresol flag (27): a tall ground
-  storey or a cornice attic, not a convention mismatch.
-- Jev's six bay misses: three narrow fronts whose top storey is one three-light window (it says 3, the front has 2), two pands
-  carrying more than one front or a corner (168085 9 axes, 172891), and 170031, whose glazed storey 2 has 4 lights against 2 above
-  (Jev gave the typical storey). H1c should note that `bays` is the maximum storey, not the typical one.
-- The register's gable agrees on 21 of 35. The 14 misses: neck or bell where the photo shows a cornice or flat front (7, e.g.
-  174187, a cornice front with erkers), neck against bell (4), cornice where the photo shows a point gable (2), and a step gable that
-  is no longer on the front (174168). The register describes the monument, not always today's street front.
-- Wall colour: a writer hex is compared as a tone only (dark under HSL L 0.38, the split fixed before reading). A hex is **not**
-  mapped to a family word: a mapping fitted on this set would be scored on it. Median pixel colour per read family: brown h32 s0.17
-  l0.32 (n9), red-brown h28 s0.17 l0.44 (16), red h27 s0.26 l0.55 (5), dark l0.32 (8). The overcast crops pull hue to 27-32 for
-  every brick, so pixel colour separates lightness, not red from brown.
+| field | floor | ceiling (B vs C) | gate |
+|---|---|---|---|
+| axes (bays) | 0.90 | 1.00 | 0.90 |
+| storeys | 0.90 | 1.00 | 0.90 |
+| gable | 0.86 | 0.84 | 0.86 |
+| finish | 0.83 | 0.92 | 0.83 |
+| pui | 0.79 | 0.88 | 0.79 |
+| wall tone | 0.79 | 0.89 | 0.79 |
+| wall family | 0.72 | 0.81 | 0.72 |
 
-**Old hand truth against the hand set** (11 of the 80 have an intent): authored block faces (the Nassaukade row) bays 7/7, storeys
-6/7, gable 6/7, wall tone 4/7; auto-placed faces bays 4/4, gable 1/4, pui 2/4. **H9's review values**: bays 9/11 (182857: H9 8, both
-readers 5), storeys 3/10 exact and 10/10 within one (H9 counted the souterrain or the attic band), gable 7/7.
+**Writers against the hand set** (`score.ts`; AB07, 60 pands, 51 readable single-front; agree / stated, Wilson 95 %, verdict):
+
+| field | gate | register | pixel | Jev | merged |
+|---|---|---|---|---|---|
+| bays | 0.90 | | 5/5 [0.57, 1.00] open | 25/30 = 0.83 [0.66, 0.93] open (+-1: 29/30) | 25/30 open |
+| storeys | 0.90 | | (off) | | none: BAG off |
+| gable | 0.86 | 17/28 = 0.61 [0.42, 0.76] **fail** | | 1/1 open | 17/28 **fail** |
+| finish | 0.83 | 1/2 open | | 23/23 = 1.00 [0.86, 1.00] **pass** | 23/24 open |
+| pui | 0.79 | | | 10/11 = 0.91 [0.62, 0.98] open | 10/11 open |
+| wall tone | 0.79 | | 28/37 = 0.76 [0.60, 0.87] open | | 28/37 open |
+| wall family | 0.72 | | (hex not mapped to a word) | | |
+
+- **BAG storeys** (eaves / 3 m, reader A, 47 pands): raw 20/47 = 0.43 [0.29, 0.57]; -1 for a pitched crown (BAG roof code 3)
+  26/47 = 0.55 [0.41, 0.69]; -1 for the register's stoop (souterrain) never fires on AB07; with the hand souterrain flag (an oracle,
+  not deployable) 25/47 = 0.53. All under the 0.80 fallback bar, so **BAG no longer writes `fronts/0/storeys`**
+  (`BAG_WRITES_STOREYS = false`, `bagStoreys` keeps the offsets for a later writer); it stays the source for heights. Within one
+  storey it is 0.98-1.00: BAG's eaves overcount a tall ground storey or a cornice attic by one. Facade storeys now come from no
+  writer; Jev and the register are ranked above BAG for the field, and neither asks it yet.
+- Jev's five bay misses: narrow fronts whose top storey is one three-light window (it says 3, the front has 2) and 170031, whose
+  glazed storey 2 has 4 lights against 2 above (Jev gave the typical storey; `bays` is the maximum).
+- The register's gable agrees on 17 of 28: neck or bell where the photo shows a cornice or flat front, neck against bell, cornice
+  against point, and a step gable no longer on the front (174168). The register describes the monument, not always today's front.
+- Wall colour: a writer hex is compared as a tone only (dark under HSL L 0.38, fixed before reading); a hex is **not** mapped to a
+  family word (a mapping fitted on this set would be scored on it). Median pixel colour per read family: brown h32 s0.17 l0.32 (n8),
+  red-brown h28 s0.17 l0.44 (15), red h27 s0.26 l0.55 (5), dark l0.31 (7): overcast crops pull every brick to hue 27-32, so pixel
+  colour separates lightness, not red from brown.
+
+**Old hand truth against the hand set** (11 of the 80 have an intent): authored block faces (the Nassaukade row) bays 6/6, storeys
+6/6, gable 5/6, wall tone 4/6; auto-placed faces bays 4/4, storeys 3/4, gable 1/4, pui 2/4. **H9's review values**: bays 9/11
+(182857: H9 8, the readers 5), storeys 2/8 exact and 8/8 within one (H9 counted the souterrain or the attic band; the §1 definition
+counts neither), gable 6/6.
 
 **Judge recall (step 0b on this set).** A describe crop is *good* when reader A read axes, storeys and gable from it at med/high (41 of
 60). Jev v1 quality: AUC 0.776; at `JUDGE_GOOD` 0.5 36 picks, precision 0.83, recall 0.73; at 0.4 precision 0.84, recall 0.76; the
@@ -887,15 +928,16 @@ v1 stays the default (judgement ruling); these are numbers only.
 ```
 node --import tsx scripts/house-specs/hand-set/select.ts     # the AB07 draw (hand-set-v1.selection.json)
 node --import tsx scripts/house-specs/hand-set/sheets.ts     # reading sheets -> artifacts/hand-set/sheets/<id>.jpg
-node --import tsx scripts/house-specs/hand-set/build.ts      # reader-a.tsv + reader-b.raw.json -> hand-set-v1.json, reader-b.json (validated)
-node --import tsx scripts/house-specs/hand-set/score.ts      # ceiling, writers, old truth, H9, judge recall -> hand-set-v1.scores.json
+node --import tsx scripts/house-specs/hand-set/build.ts      # reader-a.tsv + reader-{b,c}.raw.json -> hand-set-v1.json, reader-b.json, reader-c.json (validated)
+node --import tsx scripts/house-specs/hand-set/score.ts      # ceiling, gates, writers, BAG variants, old truth, H9, judge recall -> hand-set-v1.scores.json
+node --import tsx scripts/house-specs/agreement.ts --hand-set  # the same report from the agreement entry point
 node --import tsx scripts/house-specs/hand-set/contact.ts --pands <12 ids> --out <dir>   # the spot-check sheets
 ```
 
 Archive: `HOUSE_CROPS_ARCHIVE` (default `~/Code/map-recall2-source-data-h5h`) and `SOURCE_DATA_MAIN` (default
 `~/Code/map-recall2-source-data`, for the block-face strip). Spot-check sheets for the user:
-`map-recall2-screenshots/ui/2026-11-10-house-h5h/contact-1.jpg`, `contact-2.jpg`. To extend the set, add rows to
-`hand-set-v1.reader-a.tsv` (columns in build.ts), rebuild, and have a second reader read a third of the new pands blind.
+`map-recall2-screenshots/ui/2026-11-10-house-h5h/contact-1.jpg`, `contact-2.jpg` (round 1), `contact-r2-1.jpg`, `contact-r2-2.jpg` (round 2, multi-front and unknown marked). To extend the set, add rows to
+`hand-set-v1.reader-a.tsv` (columns in build.ts), rebuild, and have two blind readers read a third of the new pands (the ceiling is the blind pair).
 
 ## §5 The kit-gap queue
 

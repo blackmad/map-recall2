@@ -3,12 +3,12 @@
 // its raw records; both validated by validateHandSet. Image refs and sha256 come from sources.ts (what the sheets showed).
 //
 // TSV columns: pandId, panel (A|B|C: the panel most fields were read from), axes:conf, storeys:conf, flags (comma list:
-// souterrain, entresol, atticInCrown, aps=a-b-c for axesPerStorey from storey 2 up; - for none), gable:conf, finish:conf,
-// wall:conf, pui:conf, note. A value "-" is null. axes "UNREADABLE" marks readable false.
+// souterrain, entresol, atticInCrown, multi (extent multi), aps=a-b-c for axesPerStorey from storey 2 up; - for none), gable:conf,
+// finish:conf, wall:conf, pui:conf, note. A value "-" is "unknown" (the crop cannot show it). axes "UNREADABLE" marks readable false.
 import fs from 'node:fs';
 import path from 'node:path';
 import { setPands } from './sources.ts';
-import { HAND_SET_VERSION, READING_CONVENTION, validateHandSet, type HandPand, type HandSet, type Reading } from '../../../src/canalRecall/houseSpec/handSet.ts';
+import { HAND_SET_VERSION, READING_CONVENTION, UNKNOWN, validateHandSet, type HandPand, type HandSet, type Reading } from '../../../src/canalRecall/houseSpec/handSet.ts';
 
 export const HELP = `hand-set build: reading logs -> data/house-line/hand-set-v1.json and hand-set-v1.reader-b.json (validated).
 
@@ -21,14 +21,14 @@ export function parseRow(line: string, images: { ref: string; sha256: string }[]
   const [pandId, panel, axes, storeys, flags, gable, finish, wall, pui, note] = line.split('\t');
   const ref = images['ABC'.indexOf(panel)]?.ref; if (!ref) throw new Error(`${pandId}: no panel ${panel}`);
   if (axes === 'UNREADABLE') {
-    const nul = <T,>(): Reading<T> => ({ value: null, confidence: 'low', ref });
-    return { pandId, images, readable: false, fields: { axes: nul(), storeys: nul(), gable: nul(), finish: nul(), wall: nul(), pui: nul() }, notes: note };
+    const nul = <T,>(): Reading<T> => ({ value: UNKNOWN, confidence: 'low', ref });
+    return { pandId, images, readable: false, extent: 'single', fields: { axes: nul(), storeys: nul(), gable: nul(), finish: nul(), wall: nul(), pui: nul() }, notes: note };
   }
-  const r = <T,>(cell: string, num = false): Reading<T> => { const [v, c] = cell.split(':'); return { value: v === '-' ? null : (num ? Number(v) : v) as T, confidence: c as Reading<T>['confidence'], ref }; };
+  const r = <T,>(cell: string, num = false): Reading<T> => { const [v, c] = cell.split(':'); return { value: v === '-' ? UNKNOWN : (num ? Number(v) : v) as T, confidence: c as Reading<T>['confidence'], ref }; };
   const fl = flags === '-' ? [] : flags.split(',');
   const aps = fl.find(f => f.startsWith('aps='));
   return {
-    pandId, images, readable: true,
+    pandId, images, readable: true, extent: fl.includes('multi') ? 'multi' : 'single',
     fields: {
       axes: r<number>(axes, true), ...(aps ? { axesPerStorey: aps.slice(4).split('-').map(Number) } : {}), storeys: r<number>(storeys, true),
       ...(fl.includes('souterrain') ? { souterrain: true } : {}), ...(fl.includes('entresol') ? { entresol: true } : {}), ...(fl.includes('atticInCrown') ? { atticInCrown: true } : {}),
@@ -49,15 +49,20 @@ function main() {
   a.pands.sort((x, y) => pands.findIndex(p => p.pandId === x.pandId) - pands.findIndex(p => p.pandId === y.pandId));
   const missing = pands.filter(p => !a.pands.some(h => h.pandId === p.pandId)).map(p => p.pandId);
   if (missing.length) throw new Error(`reader A misses ${missing.join(', ')}`);
-  const raw = JSON.parse(fs.readFileSync(path.join(D, 'hand-set-v1.reader-b.raw.json'), 'utf8'));
-  const b: HandSet = { version: HAND_SET_VERSION, reader: 'B: blind second reader (Claude Opus subagent; saw only CONVENTION and the 30 sheets)', date, convention: READING_CONVENTION, pands: raw.map((r: any) => {
+  const extentA = new Map(a.pands.map(p => [p.pandId, p.extent]));
+  /** A blind reader's raw records -> HandPands: null and missing fields become "unknown" (the v1 convention said null), axes 0 (a
+   *  one-storey front) becomes unknown, and a reader that did not state extent (B read the v1 convention) takes reader A's. */
+  const blind = (file: string, reader: string): HandSet => ({ version: HAND_SET_VERSION, reader, date, convention: READING_CONVENTION, pands: JSON.parse(fs.readFileSync(path.join(D, file), 'utf8')).map((r: any) => {
     const f = { ...r.fields };
-    for (const k of ['axes', 'storeys', 'gable', 'finish', 'wall', 'pui']) if (!f[k]) f[k] = { value: null, confidence: 'low', ref: imgs(r.pandId)[0].ref };
-    // reader B wrote axes 0 for a one-storey front (093912); the schema says null when there is no upper storey
-    if (f.axes.value === 0) f.axes = { ...f.axes, value: null, note: 'reader wrote 0 (no upper storey); normalised to null' };
-    return { pandId: r.pandId, group: byId.get(r.pandId)!.group, images: imgs(r.pandId), readable: r.readable, fields: f, ...(r.notes ? { notes: r.notes } : {}) };
-  }) };
-  for (const [name, set] of [['hand-set-v1.json', a], ['hand-set-v1.reader-b.json', b]] as const) {
+    for (const k of ['axes', 'storeys', 'gable', 'finish', 'wall', 'pui']) { if (!f[k]) f[k] = { value: UNKNOWN, confidence: 'low', ref: imgs(r.pandId)[0].ref }; else if (f[k].value === null || f[k].value === undefined) f[k] = { ...f[k], value: UNKNOWN }; }
+    if (f.axes.value === 0) f.axes = { ...f.axes, value: UNKNOWN, note: 'reader wrote 0 (no upper storey); normalised to unknown' };
+    if (!r.readable) for (const k of ['axes', 'storeys', 'gable', 'finish', 'wall', 'pui']) f[k] = { ...f[k], value: UNKNOWN };
+    return { pandId: r.pandId, group: byId.get(r.pandId)!.group, images: imgs(r.pandId), readable: r.readable, extent: r.extent === 'multi' || r.extent === 'single' ? r.extent : extentA.get(r.pandId)!, fields: f, ...(r.notes ? { notes: r.notes } : {}) };
+  }) });
+  const b = blind('hand-set-v1.reader-b.raw.json', 'B: blind second reader (Claude Opus subagent; saw only the v1 CONVENTION and the 30 sheets)');
+  const sets: [string, HandSet][] = [['hand-set-v1.json', a], ['hand-set-v1.reader-b.json', b]];
+  if (fs.existsSync(path.join(D, 'hand-set-v1.reader-c.raw.json'))) sets.push(['hand-set-v1.reader-c.json', blind('hand-set-v1.reader-c.raw.json', 'C: fresh blind reader after the rev-2 fixes (Claude Opus subagent; saw only the rev-2 CONVENTION and the same 30 sheets)')]);
+  for (const [name, set] of sets) {
     const problems = validateHandSet(set); if (problems.length) { console.error(name, problems); process.exit(1); }
     fs.writeFileSync(path.join(D, name), JSON.stringify(set, null, 1) + '\n'); console.log(`${name}: ${set.pands.length} pands, ${set.pands.filter(p => p.readable).length} readable`);
   }

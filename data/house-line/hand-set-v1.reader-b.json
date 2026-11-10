@@ -1,8 +1,8 @@
 {
  "version": 1,
- "reader": "B: blind second reader (Claude Opus subagent; saw only CONVENTION and the 30 sheets)",
+ "reader": "B: blind second reader (Claude Opus subagent; saw only the v1 CONVENTION and the 30 sheets)",
  "date": "2026-11-10",
- "convention": "Reading convention, hand set v1 (docs/house-line.md §4c). Read the pand's street front from the sheet: each panel is an archived\nrectified crop (x along the wall, y up from the ground) under a metre grid (thin line every metre, heavy every 3 m). Several panels are\nother capture years of the same wall: use them to see past trees and vans. Count on the grid, never on a small thumbnail.\n\naxes    Window columns of the upper storeys: vertical lines of openings above the ground storey. Take the storey with the most columns\n        (record axesPerStorey from storey 2 up only when storeys differ). One axis per separate opening in the masonry: two lights in\n        one opening split by a timber or stone mullion are one axis; two openings with a brick pier between are two. A balcony door\n        counts. A projecting bay window (erker) is one axis, however many lights it has. The ground storey (shopfront, doors) is not\n        counted.\n        A pand whose wall carries two house fronts counts both (all columns of the pand's street wall).\nstoreys Full storeys from the street-level storey up to the cornice line, or to the gable foot (where a gable's outline leaves the\n        party walls). The ground storey counts once however tall (shop or bel-etage). NOT counted: a souterrain (a storey half below the\n        pavement, windows at knee height, usually under a stoop) -> souterrain: true; an entresol/mezzanine inside a tall ground storey ->\n        entresol: true; windows inside the gable, crown or roof (dormers, a gable's attic storey) -> atticInCrown: true. A bel-etage over\n        a souterrain is storey 1. A full top storey in the front plane under a cornice counts.\ngable   The crown: spout (tuit), neck (hals), raised-neck (verhoogde hals), bell (klok), step (trap), point (a triangular or pointed\n        gable, punt), cornice (a horizontal moulded cornice/lijst, roof behind, flat or pitched), flat (a plain parapet, no moulding),\n        shouldered. null when the top is cut off or hidden.\nfinish  The upper wall: brick (bare brick, any colour), painted-brick (painted, brick coursing still visible), stucco (smooth render,\n        plaster, often with incised joints), stone (stone-faced). Ignore the ground storey.\nwall    Colour family of the main upper wall (not trim, not shopfront): white (white, cream, very pale), grey, buff (yellow, sand,\n        beige), orange (orange, salmon), red, red-brown, brown, dark (near-black, very dark brown or grey).\npui     Ground storey use: shop (shop window, cafe, office glazing), residential (house door and house windows), warehouse (loading doors).\nconfidence per field: high = clearly visible, one reading; med = partly hidden or one close alternative; low = mostly guessed.\n        value null (confidence low) when the field cannot be read. ref = the panel (A, B, C) you read it from.\nreadable false when no panel shows the pand's front (wrong wall, close-up, all hidden); then every value is null.",
+ "convention": "Reading convention, hand set v1 (docs/house-line.md §4c). Read the pand's street front from the sheet: each panel is an archived\nrectified crop (x along the wall, y up from the ground) under a metre grid (thin line every metre, heavy every 3 m). Several panels are\nother capture years of the same wall: use them to see past trees and vans. Count on the grid, never on a small thumbnail.\n\naxes    Window columns of the upper storeys: vertical lines of openings above the ground storey. Take the storey with the most columns\n        (record axesPerStorey from storey 2 up only when storeys differ). One axis per separate opening in the masonry: two lights in\n        one opening split by a timber or stone mullion are one axis; two openings with a brick pier between are two. A balcony door\n        counts. A projecting bay window (erker) is one axis, however many lights it has. The ground storey (shopfront, doors) is not\n        counted.\n        A pand whose wall carries two house fronts counts both (all columns of the pand's street wall).\nstoreys Full street-facing storeys, counting neither a souterrain nor an attic in the crown.\n        How to apply it: count from the street-level storey up to the cornice line or the gable foot (where a gable's outline leaves\n        the party walls). The ground storey counts once however tall (shop or bel-etage); an entresol/mezzanine inside it is part of\n        it -> entresol: true. A souterrain (half below the pavement, windows at knee height, usually under a stoop) -> souterrain: true.\n        Windows inside the gable, crown or roof (dormers, a gable's attic storey, a set-back roof storey) -> atticInCrown: true. A\n        bel-etage over a souterrain is storey 1. A full top storey in the front plane under a cornice counts.\ngable   The crown: spout (tuit), neck (hals), raised-neck (verhoogde hals), bell (klok), step (trap), point (a triangular or pointed\n        gable, punt), cornice (a horizontal moulded cornice/lijst, roof behind, flat or pitched), flat (a plain parapet, no moulding),\n        shouldered. unknown when the crown is not in view (top cut off or hidden).\nfinish  The upper wall: brick (bare brick, any colour), painted-brick (painted, brick coursing still visible), stucco (smooth render,\n        plaster, often with incised joints), stone (stone-faced). Ignore the ground storey.\nwall    Colour family of the main upper wall (not trim, not shopfront): white (white, cream, very pale), grey, buff (yellow, sand,\n        beige), orange (orange, salmon), red, red-brown, brown, dark (near-black, very dark brown or grey).\npui     Ground storey use: shop (shop window, cafe, office glazing), residential (house door and house windows), warehouse (loading doors).\nconfidence per field: high = clearly visible, one reading; med = partly hidden or one close alternative; low = mostly guessed.\n        ref = the panel (A, B, C) you read it from.\nunknown A field the crop cannot show is \"unknown\" (the crown not in view, the top cut off so storeys cannot be counted, the ground\n        storey hidden for pui): never guess it at low confidence. unknown is never scored.\nextent  multi when the pand's wall carries more than one house front (two or three gables, a row of fronts in one crop); the\n        readings are still made but the pand is not scored. single otherwise.\nreadable false when no panel shows the pand's front (wrong wall, close-up, all hidden); then every value is unknown.",
  "pands": [
   {
    "pandId": "0363100012175320",
@@ -18,6 +18,7 @@
     }
    ],
    "readable": true,
+   "extent": "single",
    "fields": {
     "axes": {
      "value": 3,
@@ -63,6 +64,7 @@
     }
    ],
    "readable": true,
+   "extent": "single",
    "fields": {
     "axes": {
      "value": 2,
@@ -108,6 +110,7 @@
     }
    ],
    "readable": true,
+   "extent": "single",
    "fields": {
     "axes": {
      "value": 3,
@@ -153,12 +156,13 @@
     }
    ],
    "readable": true,
+   "extent": "single",
    "fields": {
     "axes": {
-     "value": null,
+     "value": "unknown",
      "confidence": "low",
      "ref": "source-data://pand-crops/0363100100093912/front.jpg",
-     "note": "reader wrote 0 (no upper storey); normalised to null"
+     "note": "reader wrote 0 (no upper storey); normalised to unknown"
     },
     "storeys": {
      "value": 1,
@@ -202,6 +206,7 @@
     }
    ],
    "readable": true,
+   "extent": "single",
    "fields": {
     "axes": {
      "value": 3,
@@ -251,6 +256,7 @@
     }
    ],
    "readable": true,
+   "extent": "single",
    "fields": {
     "axes": {
      "value": 2,
@@ -300,34 +306,35 @@
     }
    ],
    "readable": false,
+   "extent": "single",
    "fields": {
     "axes": {
-     "value": null,
+     "value": "unknown",
      "confidence": "low",
      "ref": "source-data://pand-reference-easy-houses/0363100012168578/front.jpg"
     },
     "storeys": {
-     "value": null,
+     "value": "unknown",
      "confidence": "low",
      "ref": "source-data://pand-reference-easy-houses/0363100012168578/front.jpg"
     },
     "gable": {
-     "value": null,
+     "value": "unknown",
      "confidence": "low",
      "ref": "source-data://pand-reference-easy-houses/0363100012168578/front.jpg"
     },
     "finish": {
-     "value": null,
+     "value": "unknown",
      "confidence": "low",
      "ref": "source-data://pand-reference-easy-houses/0363100012168578/front.jpg"
     },
     "wall": {
-     "value": null,
+     "value": "unknown",
      "confidence": "low",
      "ref": "source-data://pand-reference-easy-houses/0363100012168578/front.jpg"
     },
     "pui": {
-     "value": null,
+     "value": "unknown",
      "confidence": "low",
      "ref": "source-data://pand-reference-easy-houses/0363100012168578/front.jpg"
     }
@@ -344,6 +351,7 @@
     }
    ],
    "readable": true,
+   "extent": "multi",
    "fields": {
     "axes": {
      "value": 6,
@@ -389,6 +397,7 @@
     }
    ],
    "readable": true,
+   "extent": "single",
    "fields": {
     "axes": {
      "value": 3,
@@ -434,6 +443,7 @@
     }
    ],
    "readable": true,
+   "extent": "single",
    "fields": {
     "axes": {
      "value": 3,
@@ -478,6 +488,7 @@
     }
    ],
    "readable": true,
+   "extent": "multi",
    "fields": {
     "axes": {
      "value": 6,
@@ -531,6 +542,7 @@
     }
    ],
    "readable": true,
+   "extent": "single",
    "fields": {
     "axes": {
      "value": 3,
@@ -584,6 +596,7 @@
     }
    ],
    "readable": true,
+   "extent": "single",
    "fields": {
     "axes": {
      "value": 2,
@@ -629,6 +642,7 @@
     }
    ],
    "readable": true,
+   "extent": "single",
    "fields": {
     "axes": {
      "value": 3,
@@ -674,6 +688,7 @@
     }
    ],
    "readable": true,
+   "extent": "single",
    "fields": {
     "axes": {
      "value": 3,
@@ -719,6 +734,7 @@
     }
    ],
    "readable": true,
+   "extent": "single",
    "fields": {
     "axes": {
      "value": 5,
@@ -766,19 +782,20 @@
     }
    ],
    "readable": true,
+   "extent": "single",
    "fields": {
     "axes": {
-     "value": null,
+     "value": "unknown",
      "confidence": "low",
      "ref": "source-data://pand-crops/0363100012169091/front.jpg"
     },
     "storeys": {
-     "value": null,
+     "value": "unknown",
      "confidence": "low",
      "ref": "source-data://pand-crops/0363100012169091/front.jpg"
     },
     "gable": {
-     "value": null,
+     "value": "unknown",
      "confidence": "low",
      "ref": "source-data://pand-crops/0363100012169091/front.jpg"
     },
@@ -814,6 +831,7 @@
     }
    ],
    "readable": true,
+   "extent": "single",
    "fields": {
     "axes": {
      "value": 3,
@@ -859,6 +877,7 @@
     }
    ],
    "readable": true,
+   "extent": "single",
    "fields": {
     "axes": {
      "value": 3,
@@ -905,6 +924,7 @@
     }
    ],
    "readable": true,
+   "extent": "single",
    "fields": {
     "axes": {
      "value": 3,
@@ -955,6 +975,7 @@
     }
    ],
    "readable": true,
+   "extent": "single",
    "fields": {
     "axes": {
      "value": 4,
@@ -1005,6 +1026,7 @@
     }
    ],
    "readable": true,
+   "extent": "single",
    "fields": {
     "axes": {
      "value": 3,
@@ -1050,6 +1072,7 @@
     }
    ],
    "readable": true,
+   "extent": "single",
    "fields": {
     "axes": {
      "value": 2,
@@ -1095,6 +1118,7 @@
     }
    ],
    "readable": true,
+   "extent": "single",
    "fields": {
     "axes": {
      "value": 3,
@@ -1145,6 +1169,7 @@
     }
    ],
    "readable": true,
+   "extent": "single",
    "fields": {
     "axes": {
      "value": 3,
@@ -1190,6 +1215,7 @@
     }
    ],
    "readable": true,
+   "extent": "single",
    "fields": {
     "axes": {
      "value": 2,
@@ -1235,6 +1261,7 @@
     }
    ],
    "readable": true,
+   "extent": "single",
    "fields": {
     "axes": {
      "value": 3,
@@ -1280,6 +1307,7 @@
     }
    ],
    "readable": true,
+   "extent": "single",
    "fields": {
     "axes": {
      "value": 2,
@@ -1324,6 +1352,7 @@
     }
    ],
    "readable": true,
+   "extent": "single",
    "fields": {
     "axes": {
      "value": 3,
@@ -1372,6 +1401,7 @@
     }
    ],
    "readable": true,
+   "extent": "single",
    "fields": {
     "axes": {
      "value": 3,

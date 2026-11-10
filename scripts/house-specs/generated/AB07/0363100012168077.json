@@ -34,23 +34,11 @@
   "bag": {
    "schemaVersion": 1,
    "pandId": "0363100012168077",
-   "design": {
-    "fronts": [
-     {
-      "storeys": 4
-     }
-    ]
-   },
+   "design": {},
    "provenance": {
     "facts/facadeYear": {
      "source": "bag",
      "confidence": 0.5,
-     "ref": "bag-facts:0363100012168077",
-     "at": null
-    },
-    "fronts/0/storeys": {
-     "source": "3dbag",
-     "confidence": 0.4,
      "ref": "bag-facts:0363100012168077",
      "at": null
     }
@@ -86,8 +74,7 @@
   "design": {
    "fronts": [
     {
-     "bays": 3,
-     "storeys": 4
+     "bays": 3
     }
    ],
    "notes": [
@@ -100,12 +87,6 @@
     "confidence": 0.99,
     "ref": "source-data://pand-crops/0363100012168077/front.jpg",
     "at": "2024-12-16"
-   },
-   "fronts/0/storeys": {
-    "source": "3dbag",
-    "confidence": 0.4,
-    "ref": "bag-facts:0363100012168077",
-    "at": null
    },
    "facts/facadeYear": {
     "source": "monument-text",

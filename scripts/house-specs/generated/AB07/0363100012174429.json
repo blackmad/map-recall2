@@ -43,25 +43,7 @@
     "facadeYear": 1725
    }
   },
-  "bag": {
-   "schemaVersion": 1,
-   "pandId": "0363100012174429",
-   "design": {
-    "fronts": [
-     {
-      "storeys": 3
-     }
-    ]
-   },
-   "provenance": {
-    "fronts/0/storeys": {
-     "source": "3dbag",
-     "confidence": 0.4,
-     "ref": "bag-facts:0363100012174429",
-     "at": null
-    }
-   }
-  },
+  "bag": null,
   "pixel": {
    "schemaVersion": 1,
    "pandId": "0363100012174429",
@@ -115,8 +97,7 @@
    "fronts": [
     {
      "bays": 2,
-     "gable": "neck",
-     "storeys": 3
+     "gable": "neck"
     }
    ],
    "palette": {
@@ -135,12 +116,6 @@
     "source": "monument-text",
     "confidence": 0.8,
     "ref": "rce:3501",
-    "at": null
-   },
-   "fronts/0/storeys": {
-    "source": "3dbag",
-    "confidence": 0.4,
-    "ref": "bag-facts:0363100012174429",
     "at": null
    },
    "palette/brick": {
