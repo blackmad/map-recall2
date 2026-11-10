@@ -30,12 +30,12 @@
   {
    "face": "keizersgracht-240-312",
    "types": [
-    "ggw-1700-neck-bell-gable"
+    "ggw-1740-crest-cornice"
    ],
    "pands": [
     "0363100012169444"
    ],
-   "reason": "Keizersgracht 254: a raised neck gable with a round cap, cream paint (2021-01-22 strip); ground and three upper rows",
+   "reason": "Keizersgracht 254: a smooth cream-rendered front under a straight cornice with a raised semicircular crest about 3.5 x 1.3 m, small-paned windows three lights across (2021-01-22 strip; Opus verdict 2026-11-10); ground and three upper rows",
    "accept": true,
    "storeys": 4
   },
@@ -47,9 +47,26 @@
    "pands": [
     "0363100012169114"
    ],
-   "reason": "Keizersgracht 250: a neck gable over three upper rows (2021-01-22 strip); ground and three upper rows",
+   "reason": "Keizersgracht 250: a neck gable with claw pieces over a ground and two upper rows (2021-01-22 strip gridded at 2x): ground windows 1.75-4.6 m, rows 5.4-7.8 and 8.35-10.06 m, the gable foot at 10.7 m",
    "accept": true,
-   "storeys": 4
+   "storeys": 3,
+   "overrides": {
+    "storeyHeights": [
+     5.0,
+     3.1,
+     2.6
+    ],
+    "windowHeights": [
+     0.57,
+     0.77,
+     0.66
+    ],
+    "headLines": [
+     0.92,
+     0.9,
+     0.75
+    ]
+   }
   },
   {
    "face": "keizersgracht-240-312",
@@ -95,9 +112,29 @@
    "pands": [
     "0363100012169118"
    ],
-   "reason": "Keizersgracht 242: a neck gable over three upper rows (2021-01-22 strip); ground and three upper rows",
+   "reason": "Keizersgracht 242: a neck gable with claw pieces over a ground and three upper rows (2021-01-22 strip gridded at 2x): ground windows 2.1-4.9 m, rows 5.85-8.0, 8.75-10.4, 11.1-12.75 m, the gable foot at 13.1 m",
    "accept": true,
-   "storeys": 4
+   "storeys": 4,
+   "overrides": {
+    "storeyHeights": [
+     5.4,
+     3.0,
+     2.4,
+     2.3
+    ],
+    "windowHeights": [
+     0.52,
+     0.72,
+     0.69,
+     0.72
+    ],
+    "headLines": [
+     0.91,
+     0.87,
+     0.83,
+     0.85
+    ]
+   }
   }
  ],
  "mirrors": [
@@ -112,6 +149,18 @@
    "type": "ggw-1740-crest-attic",
    "mirror": true,
    "reason": "Keizersgracht 244: the door in its white pilaster surround on the right axis, mirroring 246"
+  },
+  {
+   "pandId": "0363100012169114",
+   "type": "ggw-1700-neck-bell-gable",
+   "mirror": false,
+   "reason": "Keizersgracht 250: 2021-01-22 strip, the house door on the left axis"
+  },
+  {
+   "pandId": "0363100012169118",
+   "type": "ggw-1700-neck-bell-gable",
+   "mirror": false,
+   "reason": "Keizersgracht 242: 2021-01-22 strip, the house door on the left axis"
   }
  ]
 }

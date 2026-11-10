@@ -1,0 +1,25 @@
+{
+ "note": "Reviewer eaves pins (src/canalRecall/blockFace/reviewEaves.ts) from the 2021-01-22 strip gridded at 2x, lane belt-gg-west round 2 with the Opus verdict of 2026-11-10.",
+ "pins": [
+  {
+   "pandId": "0363100012169390",
+   "eavesM": 14.1,
+   "reason": "Keizersgracht 256: the shoulders and the side cornices of the neck gable at 14.1 m; 3DBAG's 15.9 m is inside the gable, so the model's gable and upper storeys stood 1.6 m high (Opus verdict)"
+  },
+  {
+   "pandId": "0363100012169444",
+   "eavesM": 13.6,
+   "reason": "Keizersgracht 254: the straight white cornice 13.4-14.0 m with the crest standing on it; the pin is the wall top under the 0.35 m cornice (13.6 m: the first sheet at 14.0 drew the cornice top 0.4 m high); 3DBAG reads 13.38 m"
+  },
+  {
+   "pandId": "0363100012169108",
+   "eavesM": 17.0,
+   "reason": "Keizersgracht 244: the attic top of the twin Louis XIV fronts at 17.0 m (246 beside it reads 17.06 m in 3DBAG); 3DBAG's 16.17 m is a roof edge behind the attic"
+  },
+  {
+   "pandId": "0363100012169114",
+   "eavesM": 10.7,
+   "reason": "Keizersgracht 250: the gable foot under the claw pieces at 10.7 m (grid-crop 2495-2735); 3DBAG's 11.46 m reads inside the gable"
+  }
+ ]
+}

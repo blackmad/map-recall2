@@ -3,7 +3,7 @@
  "street": "Herengracht",
  "library": "grachtengordel-west",
  "stripDate": "2021-01-25",
- "seconds": 31.78,
+ "seconds": 25.46,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -22,7 +22,7 @@
     "0363100012175700"
    ],
    "passed": false,
-   "triangles": 6289
+   "triangles": 6504
   }
  ],
  "pands": [
@@ -126,7 +126,7 @@
       "key": "eaves",
       "weight": 2,
       "score": 1,
-      "note": "3DBAG eaves 14.55 m = 5 storeys of 2.91 m vs the type's 2.75 m"
+      "note": "3DBAG eaves 14.55 m = 4 storeys of 3.64 m vs the type's 3.44 m"
      },
      {
       "key": "roof",
@@ -207,8 +207,39 @@
     "foliageShare": 0.3
    },
    "status": "held",
-   "stage": "run",
-   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "stage": "match",
+   "reason": "best ggw-1700-neck-bell-gable scores 0.55 < 0.7 (3DBAG eaves 10.81 m = 4 storeys of 2.7 m vs the type's 3.44 m; strip columns 2 vs 3 bays)",
+   "best": {
+    "type": "ggw-1700-neck-bell-gable",
+    "score": 0.55,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 10.81 m = 4 storeys of 2.7 m vs the type's 3.44 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 4.02 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.141 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 2 vs 3 bays"
+     }
+    ]
+   },
    "likeness": null,
    "challengers": {}
   },
@@ -291,8 +322,8 @@
      {
       "key": "eaves",
       "weight": 2,
-      "score": 0,
-      "note": "3DBAG eaves 15.89 m = 5 storeys of 3.18 m vs the type's 2.75 m"
+      "score": 1,
+      "note": "3DBAG eaves 15.89 m = 5 storeys of 3.18 m vs the type's 3.44 m"
      },
      {
       "key": "roof",
@@ -358,33 +389,8 @@
     "foliageShare": 0.12
    },
    "status": "held",
-   "stage": "match",
-   "reason": "best ggw-1700-neck-bell-gable scores 0.6 < 0.7 (3DBAG eaves 17.81 m = 5 storeys of 3.56 m vs the type's 2.75 m)",
-   "best": {
-    "type": "ggw-1700-neck-bell-gable",
-    "score": 0.6,
-    "veto": [],
-    "criteria": [
-     {
-      "key": "eaves",
-      "weight": 2,
-      "score": 0,
-      "note": "3DBAG eaves 17.81 m = 5 storeys of 3.56 m vs the type's 2.75 m"
-     },
-     {
-      "key": "roof",
-      "weight": 1,
-      "score": 1,
-      "note": "roof rise 3.97 m (pitched) vs pitched"
-     },
-     {
-      "key": "stucco",
-      "weight": 2,
-      "score": 1,
-      "note": "strip accent share 0.122 (brick)"
-     }
-    ]
-   },
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
    "likeness": null,
    "challengers": {}
   },
@@ -437,8 +443,8 @@
      {
       "key": "eaves",
       "weight": 2,
-      "score": 0,
-      "note": "3DBAG eaves 17.71 m = 5 storeys of 3.54 m vs the type's 2.75 m"
+      "score": 1,
+      "note": "3DBAG eaves 17.71 m = 5 storeys of 3.54 m vs the type's 3.44 m"
      },
      {
       "key": "roof",
@@ -515,36 +521,37 @@
    },
    "status": "held",
    "stage": "likeness",
-   "reason": "edge NCC 0.073 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.43 mean 0.40 vs photo 0.18; columns 3 vs photo 2)",
+   "reason": "edge NCC 0.112 < 0.15 (photo vs model body; likeness.ts FAIL: wall dL +0.14; glazing storey band off by 0.23; window shape tall vs photo square)",
    "likeness": {
     "pandId": "0363100012167712",
-    "ncc": 0.073,
-    "nccRaw": 0.073,
+    "ncc": 0.112,
+    "nccRaw": 0.112,
     "shiftM": [
-     -0.35,
-     0.2
+     -0.15,
+     -0.35
     ],
-    "usable": 0.65,
+    "usable": 0.62,
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.43 mean 0.40 vs photo 0.18",
-     "columns 3 vs photo 2"
+     "wall dL +0.14",
+     "glazing storey band off by 0.23",
+     "window shape tall vs photo square"
     ],
     "wall": {
-     "photo": "#7f7463",
+     "photo": "#696559",
      "model": "#948775",
-     "dL": 0.076
+     "dL": 0.139
     },
     "glazing": {
-     "photo": 0.18,
-     "model": 0.4
+     "photo": 0.37,
+     "model": 0.42
     },
     "columns": {
-     "photo": 2,
+     "photo": 3,
      "model": 3
     },
-    "iou": 0.162
+    "iou": 0.343
    },
    "challengers": {}
   },
@@ -644,13 +651,13 @@
     },
     "glazing": {
      "photo": 0.22,
-     "model": 0.58
+     "model": 0.57
     },
     "columns": {
      "photo": 4,
      "model": 4
     },
-    "iou": 0.218
+    "iou": 0.225
    },
    "challengers": {}
   },
@@ -702,8 +709,8 @@
      {
       "key": "eaves",
       "weight": 2,
-      "score": 0,
-      "note": "3DBAG eaves 17.89 m = 5 storeys of 3.58 m vs the type's 2.75 m"
+      "score": 1,
+      "note": "3DBAG eaves 17.89 m = 5 storeys of 3.58 m vs the type's 3.44 m"
      },
      {
       "key": "roof",
@@ -768,50 +775,66 @@
    "placement": {
     "type": "ggw-1740-frieze-cornice",
     "overrides": {
-     "bays": 4
+     "bays": 4,
+     "entablature": {
+      "rise": 1.4,
+      "cap": 0.5,
+      "frieze": "trim",
+      "capDepth": 0.45,
+      "architrave": 0.12
+     },
+     "friezeVents": {
+      "span": 1,
+      "rise": 0.4,
+      "sill": 0.35,
+      "light": true
+     }
     },
+    "ground": "door-street",
+    "doorBay": 2,
     "measuredPalette": {
      "brick": "#b5a785",
      "evidence": "strip 2021-01-25 span 3079-3423: trim-normalised wall (buildingRecipe/measureFacade.ts)"
     },
-    "crown": "pediment",
-    "mirror": true
+    "crown": "pediment-dormers"
    },
    "notes": [
     "storeys 4: reviewer pin",
-    "crown pediment: reviewer pin (Herengracht 96: 2021-01-25 strip, a pointed pediment over the middle three axes of the entablature, 16.4 to about 17.6 m)",
-    "door reviewer pin: mirrored (Herengracht 96: 2021-01-25 strip, the door in its white surround on the right-hand axis)",
-    "no photo evidence of its own (usable photo 39 % < 50 %); placed on row evidence from 175699",
-    "no photo evidence of its own (usable photo 39 % < 50 %); placed on row evidence from 175699"
+    "ground door-street: reviewer pin",
+    "body entablature, friezeVents: reviewer pin",
+    "crown pediment-dormers: reviewer pin (Herengracht 96: 2021-01-25 strip, a triangular pediment about 4.2 m wide over the centre two bays, 1.1 m over the cornice, and a flat-topped dormer each side)",
+    "door reviewer pin: as drawn (Herengracht 96: drawn as seen; the door is pinned to the third bay of four (doorBay 2), not mirrored to the outer axis (Opus verdict 2026-11-10))",
+    "no photo evidence of its own (usable photo 38 % < 50 %); placed on row evidence from 175699",
+    "no photo evidence of its own (usable photo 38 % < 50 %); placed on row evidence from 175699"
    ],
    "likeness": {
     "pandId": "0363100012167714",
     "ncc": null,
-    "nccRaw": 0.202,
+    "nccRaw": 0.219,
     "shiftM": [
      0.2,
-     0.35
+     0.4
     ],
-    "usable": 0.39,
-    "abstain": "usable photo 39 % < 50 %",
+    "usable": 0.38,
+    "abstain": "usable photo 38 % < 50 %",
     "verdict": "NO EVIDENCE",
     "reasons": [
      "foliage 31 % > 25 %"
     ],
     "wall": {
-     "photo": "#b6a887",
+     "photo": "#8f8978",
      "model": "#b2a380",
-     "dL": -0.022
+     "dL": 0.084
     },
     "glazing": {
-     "photo": 0.31,
-     "model": 0.54
+     "photo": 0.32,
+     "model": 0.47
     },
     "columns": {
      "photo": 2,
      "model": 4
     },
-    "iou": 0.314
+    "iou": 0.352
    },
    "challengers": {}
   },
@@ -987,8 +1010,8 @@
    ],
    "likeness": {
     "pandId": "0363100012175700",
-    "ncc": 0.43,
-    "nccRaw": 0.43,
+    "ncc": 0.428,
+    "nccRaw": 0.428,
     "shiftM": [
      0.2,
      -0.05
@@ -1194,8 +1217,8 @@
      {
       "key": "eaves",
       "weight": 2,
-      "score": 1,
-      "note": "3DBAG eaves 10.74 m = 4 storeys of 2.69 m vs the type's 2.75 m"
+      "score": 0,
+      "note": "3DBAG eaves 10.74 m = 4 storeys of 2.69 m vs the type's 3.44 m"
      },
      {
       "key": "roof",

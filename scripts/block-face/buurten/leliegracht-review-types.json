@@ -36,7 +36,24 @@
    ],
    "accept": true,
    "storeys": 4,
-   "reason": "Herengracht 96: entablature with four attic lights under a pediment, four axes, bel-etage and three upper rows"
+   "reason": "Herengracht 96: entablature with four attic lights, a triangular pediment over the centre two bays with a dormer each side, four axes; the house door at street level in the third bay of four (2021-01-25 strip gridded at 2x; Opus verdict 2026-11-10); its entablature is 1.4 m (the sheet: photo 395-450 px against the type's 2.3 m, which pushed every row 1.1 m low)",
+   "ground": "door-street",
+   "doorBay": 2,
+   "overrides": {
+    "entablature": {
+     "rise": 1.4,
+     "cap": 0.5,
+     "frieze": "trim",
+     "capDepth": 0.45,
+     "architrave": 0.12
+    },
+    "friezeVents": {
+     "span": 1.0,
+     "rise": 0.4,
+     "sill": 0.35,
+     "light": true
+    }
+   }
   }
  ],
  "mirrors": [
@@ -49,8 +66,8 @@
   {
    "pandId": "0363100012167714",
    "type": "ggw-1740-frieze-cornice",
-   "mirror": true,
-   "reason": "Herengracht 96: 2021-01-25 strip, the door in its white surround on the right-hand axis"
+   "mirror": false,
+   "reason": "Herengracht 96: drawn as seen; the door is pinned to the third bay of four (doorBay 2), not mirrored to the outer axis (Opus verdict 2026-11-10)"
   },
   {
    "pandId": "0363100012175700",

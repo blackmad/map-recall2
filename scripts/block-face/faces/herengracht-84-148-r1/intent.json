@@ -28,14 +28,28 @@
    "type": {
     "type": "ggw-1740-frieze-cornice",
     "overrides": {
-     "bays": 4
+     "bays": 4,
+     "entablature": {
+      "rise": 1.4,
+      "cap": 0.5,
+      "frieze": "trim",
+      "capDepth": 0.45,
+      "architrave": 0.12
+     },
+     "friezeVents": {
+      "span": 1,
+      "rise": 0.4,
+      "sill": 0.35,
+      "light": true
+     }
     },
+    "ground": "door-street",
+    "doorBay": 2,
     "measuredPalette": {
      "brick": "#b5a785",
      "evidence": "strip 2021-01-25 span 3079-3423: trim-normalised wall (buildingRecipe/measureFacade.ts)"
     },
-    "crown": "pediment",
-    "mirror": true
+    "crown": "pediment-dormers"
    },
    "groundFloor": {
     "use": "residential",
@@ -111,6 +125,14 @@
    "source": "recipe",
    "pitchDeg": 30,
    "evidence": "auto-place: low attic behind the cornice; the strips show sky over the cornices of the type rows"
-  }
+  },
+  "measuredEaves": [
+   {
+    "pand": "0363100012167714",
+    "stripRow": 419,
+    "frontRoof": {},
+    "evidence": "review pin: Herengracht 96: the top of the white entablature 14.9 m over the strip foot (grid-crop 3070-3430), the pediment and dormers standing over it; 3DBAG's 16.39 m reads the dormers"
+   }
+  ]
  }
 }

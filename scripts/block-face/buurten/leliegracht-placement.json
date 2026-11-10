@@ -1,8 +1,8 @@
 {
  "buurt": "leliegracht",
  "library": "grachtengordel-west",
- "generatedAt": "2026-11-10T08:56:33.535Z",
- "seconds": 31.79,
+ "generatedAt": "2026-11-10T09:49:30.797Z",
+ "seconds": 25.46,
  "totals": {
   "faces": 4,
   "pands": 47,
@@ -60,10 +60,10 @@
       "0363100012175700"
      ],
      "passed": false,
-     "triangles": 6289
+     "triangles": 6504
     }
    ],
-   "seconds": 31.78,
+   "seconds": 25.46,
    "byType": {
     "ggw-1740-frieze-cornice": 3
    },

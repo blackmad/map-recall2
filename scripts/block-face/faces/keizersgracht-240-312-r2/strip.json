@@ -1,0 +1,174 @@
+{
+ "face": "keizersgracht-240-312-r2",
+ "image": "staging/block-face/keizersgracht-240-312-r2/strip.jpg",
+ "pixelsPerMetre": 40,
+ "width": 674,
+ "height": 1053,
+ "groundNAP": 0.38,
+ "heightM": 26.32,
+ "frame": {
+  "midRD": [
+   120764.68981250002,
+   487254.13033333333
+  ],
+  "uRD": [
+   0.07060736988057147,
+   0.9975041851132999
+  ],
+  "nRD": [
+   0.9975041851132999,
+   -0.07060736988057147
+  ]
+ },
+ "x0M": -8.42,
+ "x1M": 8.43,
+ "date": "2021-01-22",
+ "coverage": 1,
+ "spans": [
+  {
+   "pandId": "0363100012169380",
+   "x0M": -8.42,
+   "x1M": -2.82,
+   "px": [
+    0,
+    224
+   ],
+   "date": "2021-01-22",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "TMX7316010203-001975_pano_0000_000200",
+     "timestamp": "2021-01-22T11:12:03.533170Z",
+     "distanceM": 23.7,
+     "obliquityDeg": 5.4,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-001975_pano_0000_000199",
+     "timestamp": "2021-01-22T11:11:58.663200Z",
+     "distanceM": 24.6,
+     "obliquityDeg": 18.2,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-001975_pano_0000_000201",
+     "timestamp": "2021-01-22T11:12:08.418160Z",
+     "distanceM": 26.6,
+     "obliquityDeg": 27.2,
+     "missingFraction": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012169108",
+   "x0M": -2.79,
+   "x1M": 2.83,
+   "px": [
+    225,
+    450
+   ],
+   "date": "2021-01-22",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "TMX7316010203-001975_pano_0000_000200",
+     "timestamp": "2021-01-22T11:12:03.533170Z",
+     "distanceM": 23.8,
+     "obliquityDeg": 8.7,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-001975_pano_0000_000201",
+     "timestamp": "2021-01-22T11:12:08.418160Z",
+     "distanceM": 24.6,
+     "obliquityDeg": 15,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-001975_pano_0000_000199",
+     "timestamp": "2021-01-22T11:11:58.663200Z",
+     "distanceM": 26.9,
+     "obliquityDeg": 30.1,
+     "missingFraction": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012169118",
+   "x0M": 2.8,
+   "x1M": 8.43,
+   "px": [
+    449,
+    674
+   ],
+   "date": "2021-01-22",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "TMX7316010203-001975_pano_0000_000201",
+     "timestamp": "2021-01-22T11:12:08.418160Z",
+     "distanceM": 23.8,
+     "obliquityDeg": 1.9,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-001975_pano_0000_000200",
+     "timestamp": "2021-01-22T11:12:03.533170Z",
+     "distanceM": 25.3,
+     "obliquityDeg": 21.3,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-001975_pano_0000_000202",
+     "timestamp": "2021-01-22T11:12:13.333120Z",
+     "distanceM": 26.1,
+     "obliquityDeg": 24.5,
+     "missingFraction": 0
+    }
+   ]
+  }
+ ],
+ "candidatesByDate": {
+  "2019-05-13": 0,
+  "2023-01-30": 1,
+  "2023-02-27": 1,
+  "2017-03-29": 7,
+  "2024-11-21": 3,
+  "2023-02-06": 0,
+  "2020-01-08": 2,
+  "2020-04-22": 3,
+  "2018-05-14": 3,
+  "2022-12-15": 0,
+  "2018-05-04": 3,
+  "2025-06-16": 3,
+  "2023-03-20": 5,
+  "2022-04-22": 4,
+  "2023-03-13": 3,
+  "2023-03-27": 3,
+  "2021-03-17": 4,
+  "2019-01-10": 11,
+  "2023-02-13": 13,
+  "2021-12-29": 10,
+  "2023-03-06": 12,
+  "2016-08-16": 13,
+  "2023-02-20": 13,
+  "2017-07-07": 15,
+  "2021-01-22": 15,
+  "2019-01-15": 0,
+  "2019-05-14": 0,
+  "2024-12-16": 0,
+  "2016-08-17": 1,
+  "2021-09-09": 0,
+  "2020-04-24": 0,
+  "2022-09-05": 1
+ },
+ "description": "Rectified orthographic elevation of the whole face on the frontage planes: x = chunk-frame metres along the face (left→right seen from the street) from x0M, y = metres above the shared ground (groundNAP) from the bottom; grey = no panorama data. Per-pand spans list the panoramas median-fused for that frontage.",
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (CC BY 4.0; faces and number plates blurred by the publisher)",
+ "croppedFrom": {
+  "face": "keizersgracht-240-312",
+  "px": [
+   2958,
+   3632
+  ]
+ }
+}

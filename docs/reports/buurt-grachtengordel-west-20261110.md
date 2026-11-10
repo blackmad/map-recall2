@@ -131,3 +131,35 @@ Installed:
 - Use an area Overpass file (`BLOCK_FACE_OVERPASS_AREA`) to cut the 2.5 h intake.
 - Pin types per pand from the strips. On these canals, auto-place without pand pins places nearly nothing correctly.
 - Restripe the ghosted faces with `--date=<a 2021-01 day>` (`--span-date` per pand), and look at those strips before using them.
+
+## Round 2 (2026-11-10, stopped at records by the user's assembly-line decision)
+
+No installs this round. The installed GLBs are still round 1's (Herengracht 92/94/96, Keizersgracht 254/256/258); the intents
+below are staged, gates pass, and `roof-golden.json` was re-recorded for `herengracht-84-148-r1` and `keizersgracht-240-312-r1`
+only (CHANGED named only those two faces), so the golden now describes the staged intents, not the installed GLBs.
+
+**Intake speed (frozen, not extended).** Intake cuts each face's OSM businesses from a city extract
+(`scripts/block-face/osm-pois.ts --build`, osmium over `.cache/osm-source/Amsterdam.osm.pbf`, OSM 2026-08-28, 165,395
+elements in 25.7 s) instead of one Overpass query per face; live Overpass stays the fallback. The cut matched the live
+answer on 162/165 elements over 6 faces. OSM step live -> local: 18.4 -> 0.2 s, 336.9 -> 0.2 s, 613.1 -> 0.3 s; whole
+`--no-strip` intake 62.2 -> 20.6 s, 368.7 -> 17.8 s, 617.5 -> 4.3 s. The extract lives at
+`map-recall2-source-data/datasets/osm-pois/amsterdam-pois-20260828.json.gz` (not yet committed there).
+
+**Kit parts (typed, tested, byte-identical when absent).** `gableOrnament.gabletSize {span, rise}`; gablet `louis`
+(Louis XIV crest with volutes and a crab finial); `gabletLight` oculus/arched; `front.atticSize {span, rise, sill}`
+(neck light sized from the photo; not with `atticWindowWidth`); entablature rise cap 3.0 m; type pins
+`ground`, `doorBay`, `overrides` per pand. Round 1 wrongly listed banding (`bands: 'speklagen'`), jamb blocks, gable
+wings, cornice consoles and iron balconettes as gaps: they already exist.
+
+**Verdict fixes (staged).** 256: shoulders at 14.1 m (eaves pin), storey heads, 1.3 x 1.6 m neck light. 254: new type
+`ggw-1740-crest-cornice`, smooth cream render #e5d8b3, 9-over-9 sashes, crest 3.5 x 1.3 m. 96: door in bay 3 of 4, no
+souterrain, 1.4 m entablature, 4.2 x 1.1 m pediment over the centre bays with two dormers. 92/94A and 258A wait for
+GG-Zuid's `flatBehindCornice` roof pins and `windowFrames`, now merged on this branch but not applied.
+
+**Released to staging (not installed).** Keizersgracht 246/244 (Louis crest) and 242 (claw neck, small light) as
+`keizersgracht-240-312-r2`; gates pass, NCC 0.237/0.199/0.309. Sheets: `block-face-strips/felix-meritisbuurt-20261110/
+sheet-keizersgracht-240-312-r{1,2}-round2.png`, `leliegracht-20261110/sheet-herengracht-84-148-r1-round2.png`.
+
+**Still held.** Keizersgracht 250 (measured, crown pinned, but a run of one between held 248 and 252), 252, 248, 260 and
+the slivers 268/262/240; Herengracht 116, 102, 100, 90, 88 (black-and-white banding with a raised central top the kit
+cannot frame), 84 (bespoke `cw-heren-175702` exists).
