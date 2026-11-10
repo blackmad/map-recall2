@@ -4,9 +4,9 @@
  * Why: the Nassaukade face of the corner pand 0363100012116526 (Nassaukade 151-152 / De Clercqstraat) has a blind second
  * axis carrying a cream wreath roundel on each of its three upper storeys (2019-01-09 and 2021-03-24 panoramas); the kit
  * drew windows there. `front.rosettes` names the axes and storeys: their windows are taken out and each becomes a
- * medallion centred where the window's centre was: an outer disc in the stone colour, a recessed field in the wall colour
- * and a stone boss, three extruded ornaments 0.05 / 0.07 / 0.10 m proud (the facade ornament component). Absent = no
- * change, byte-identical.
+ * medallion centred where the window's centre was: a stone ring (two half annuli) with the wall showing through its field,
+ * and a stone boss, extruded ornaments 0.09 m proud that overlap nothing (round 3: stacked discs 2 cm apart failed the glb
+ * audit's zfight-tight). Absent = no change, byte-identical.
  */
 import type {CanalhouseOpening, CanalhouseOrnament, CanalhousePoint} from '../canalhouseRecipes.ts';
 
@@ -20,7 +20,9 @@ export interface RosetteIntent {
 }
 
 export const ROSETTE = {defaultDiameterM: 0.9, diameter: [0.4, 1.6] as const, fieldShare: 0.68, bossShare: 0.28, segments: 24,
-  depthM: {ring: 0.05, field: 0.07, boss: 0.1}} as const;
+  /** Ring and boss stand this far off the wall and overlap nothing (a disc a few cm in front of another z-fights at distance:
+   *  glb audit zfight-tight), so the wall shows through the ring between them. */
+  depthM: {ring: 0.09, boss: 0.09}} as const;
 
 export interface RosetteDisc { id: string; cx: number; cy: number; d: number }
 
@@ -46,17 +48,20 @@ export function rosettesInPlaceOfWindows(openings: readonly CanalhouseOpening[],
   return {openings: keep, discs, missing};
 }
 
-const circle = (cx: number, cy: number, r: number): CanalhousePoint[] => Array.from({length: ROSETTE.segments}, (_, k) => {
-  const a = 2 * Math.PI * k / ROSETTE.segments;
-  return [+(cx + r * Math.cos(a)).toFixed(4), +(cy + r * Math.sin(a)).toFixed(4)] as CanalhousePoint;
-});
+const point = (cx: number, cy: number, r: number, a: number): CanalhousePoint => [+(cx + r * Math.cos(a)).toFixed(4), +(cy + r * Math.sin(a)).toFixed(4)];
+const circle = (cx: number, cy: number, r: number): CanalhousePoint[] => Array.from({length: ROSETTE.segments}, (_, k) => point(cx, cy, r, 2 * Math.PI * k / ROSETTE.segments));
+/** Half an annulus from angle a0 to a0 + pi: the outer arc out, the inner arc back (a simple polygon, so it extrudes as one). */
+const halfRing = (cx: number, cy: number, r: number, ri: number, a0: number): CanalhousePoint[] => {
+  const n = ROSETTE.segments / 2, at = (k: number) => a0 + Math.PI * k / n;
+  return [...Array.from({length: n + 1}, (_, k) => point(cx, cy, r, at(k))), ...Array.from({length: n + 1}, (_, k) => point(cx, cy, ri, at(n - k)))];
+};
 
-/** The three ornaments of one rosette (ring, field, boss), in the same frame as the disc. */
+/** One rosette: a stone ring (two half annuli, the wall showing through the field) and a stone boss, in module metres. */
 export function rosetteOrnaments(disc: RosetteDisc, idPrefix = ''): CanalhouseOrnament[] {
-  const r = disc.d / 2;
+  const r = disc.d / 2, ri = r * ROSETTE.fieldShare;
   return [
-    {id: `${idPrefix}${disc.id}-ring`, profile: circle(disc.cx, disc.cy, r), depthM: ROSETTE.depthM.ring, fill: 'stone'},
-    {id: `${idPrefix}${disc.id}-field`, profile: circle(disc.cx, disc.cy, r * ROSETTE.fieldShare), depthM: ROSETTE.depthM.field, fill: 'wall'},
+    {id: `${idPrefix}${disc.id}-ring-a`, profile: halfRing(disc.cx, disc.cy, r, ri, 0), depthM: ROSETTE.depthM.ring, fill: 'stone'},
+    {id: `${idPrefix}${disc.id}-ring-b`, profile: halfRing(disc.cx, disc.cy, r, ri, Math.PI), depthM: ROSETTE.depthM.ring, fill: 'stone'},
     {id: `${idPrefix}${disc.id}-boss`, profile: circle(disc.cx, disc.cy, r * ROSETTE.bossShare), depthM: ROSETTE.depthM.boss, fill: 'stone'},
   ];
 }
