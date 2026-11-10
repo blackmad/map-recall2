@@ -191,7 +191,8 @@ export function axisUnitOpenings(o: Openings | undefined): (Openings & { doorU: 
   return { upper, ground, doorWindow: null, door: { ...d, axis: (d.axis - doorU) * 2, width: d.width * 2 }, doorU };
 }
 
-/** `?oddAxisCells=0` (browser) or ODD_AXIS_CELLS=0 (Node) keeps every stated odd count on whole cells (the H1b fit). */
+/** ODD_AXIS_CELLS=0 (Node) or `?oddAxisCells=0` keeps every stated odd count on whole cells (the H1b fit). The page flag
+ *  reaches only a main-thread build: in the building worker `location` is the worker script's URL. */
 export function oddAxisCellsEnabled(search?: string): boolean {
   try {
     if (search === undefined && typeof process !== 'undefined' && process.env?.ODD_AXIS_CELLS === '0') return false;

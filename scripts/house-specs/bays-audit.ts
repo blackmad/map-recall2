@@ -22,7 +22,8 @@ agreement is printed. Sources: block-face intents, recipe intents (canal-house),
 staging only), the register text (RCE descriptions, "drie vensterassen"/"vier traveeën", registerBays) and Jev
 (the H5 cache, jevBays). Per source: n, exact, over, under, mean signed error (stated - photo).
 --old-adapters reports the sources as they were before H1c's adapter fixes (bays as stated, no width check).
---rows prints one line per pand and source.`;
+--rows prints one line per pand and source.
+--hand-set <file> scores against H5h's hand set (data/house-line/hand-set-v1.json) instead of the H1c grid.`;
 if (process.argv.includes('--help')) { console.log(HELP); process.exit(0); }
 const arg = (n: string, d?: string) => { const i = process.argv.indexOf(`--${n}`); return i >= 0 ? process.argv[i + 1] : d; };
 const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '../..');
@@ -32,10 +33,20 @@ const old = process.argv.includes('--old-adapters');
 const json = (p: string) => JSON.parse(fs.readFileSync(p, 'utf8'));
 
 // --- photo truth ---------------------------------------------------------------------------------------------------
-const hand: Record<string, number | null> = {
+const grid: Record<string, number | null> = {
   ...json(path.join(ROOT, 'scripts/house-specs/bays-gate-photo.json')).photo,
   ...(fs.existsSync(path.join(ROOT, 'scripts/house-specs/bays-audit-photo.json')) ? json(path.join(ROOT, 'scripts/house-specs/bays-audit-photo.json')).photo : {}),
 };
+// --hand-set <file>: H5h's photo-read hand set (data/house-line/hand-set-v1.json, docs/house-line.md §4c) as the truth
+// instead: its readable pands' `axes`. Prints the two hand grids' agreement where they overlap.
+const handSetAt = arg('hand-set');
+type HandSetPand = { pandId: string; readable: boolean; fields?: { axes?: { value: number | null } } };
+const hand: Record<string, number | null> = handSetAt ? Object.fromEntries((json(handSetAt).pands as HandSetPand[])
+  .filter(p => p.readable && typeof p.fields?.axes?.value === 'number').map(p => [p.pandId, p.fields!.axes!.value])) : grid;
+if (handSetAt) {
+  const both = Object.keys(hand).filter(id => typeof grid[id] === 'number');
+  console.log(`hand set: ${Object.keys(hand).length} pands with axes; overlap with the H1c grid ${both.length}, equal ${both.filter(id => grid[id] === hand[id]).length}${both.filter(id => grid[id] !== hand[id]).map(id => ` ${id}:${grid[id]}/${hand[id]}`).join('')}`);
+}
 const crops = new Map<string, { file: string; w: number; h: number; ppm: number }>();
 const cropDir = path.join(ARCHIVE, 'pand-crops');
 for (const id of fs.existsSync(cropDir) ? fs.readdirSync(cropDir) : []) {
