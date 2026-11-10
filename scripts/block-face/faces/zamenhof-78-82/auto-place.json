@@ -3,7 +3,7 @@
  "street": "Zamenhofstraat",
  "library": "vogelbuurt",
  "stripDate": "2025-09-22",
- "seconds": 2.79,
+ "seconds": 0.13,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -13,18 +13,7 @@
   "widthSlackM": 0.4,
   "flatRoofRiseM": 1.5
  },
- "runs": [
-  {
-   "face": "zamenhof-78-82",
-   "pands": [
-    "0363100012097992",
-    "0363100012112593",
-    "0363100012062919"
-   ],
-   "passed": true,
-   "triangles": 1396
-  }
- ],
+ "runs": [],
  "pands": [
   {
    "pandId": "0363100012097992",
@@ -72,49 +61,11 @@
     "voidShare": 0,
     "foliageShare": 0.05
    },
-   "status": "placed",
-   "type": "vogel-1918-timber-band-cottage",
-   "score": 0.77,
-   "placement": {
-    "type": "vogel-1918-timber-band-cottage"
-   },
-   "notes": [
-    "door unread: as drawn, the opposite of 112593",
-    "crown half-dormer (type default)"
-   ],
-   "likeness": {
-    "pandId": "0363100012097992",
-    "ncc": 0.409,
-    "nccRaw": 0.409,
-    "shiftM": [
-     0.15,
-     0.35
-    ],
-    "usable": 0.86,
-    "abstain": null,
-    "verdict": "FAIL",
-    "reasons": [
-     "glazing  mean 0.15 vs photo 0.67"
-    ],
-    "wall": {
-     "photo": "#3f3f40",
-     "model": "#2c2b30",
-     "dL": -0.071
-    },
-    "glazing": {
-     "photo": 0.67,
-     "model": 0.15
-    },
-    "columns": {
-     "photo": null,
-     "model": null
-    },
-    "iou": 0.228
-   },
-   "challengers": {
-    "vogel-1918-timber-band-cottage": 0.409,
-    "vogel-1918-timber-band-cottage~m": 0.171
-   }
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": null,
+   "challengers": {}
   },
   {
    "pandId": "0363100012112593",
@@ -156,51 +107,11 @@
     "voidShare": 0,
     "foliageShare": 0.08
    },
-   "status": "placed",
-   "type": "vogel-1918-timber-band-cottage",
-   "score": 0.86,
-   "placement": {
-    "type": "vogel-1918-timber-band-cottage",
-    "mirror": true
-   },
-   "notes": [
-    "door left: mirrored",
-    "crown half-dormer (type default)"
-   ],
-   "likeness": {
-    "pandId": "0363100012112593",
-    "ncc": 0.238,
-    "nccRaw": 0.238,
-    "shiftM": [
-     0.1,
-     0.1
-    ],
-    "usable": 0.79,
-    "abstain": null,
-    "verdict": "FAIL",
-    "reasons": [
-     "glazing  mean 0.15 vs photo 1.00",
-     "wall family unresolved (#4b494c is dark and neutral, brick courses not resolved): lightness and hue judged only"
-    ],
-    "wall": {
-     "photo": "#4b494c",
-     "model": "#2c2b30",
-     "dL": -0.114
-    },
-    "glazing": {
-     "photo": 1,
-     "model": 0.15
-    },
-    "columns": {
-     "photo": null,
-     "model": null
-    },
-    "iou": 0.165
-   },
-   "challengers": {
-    "vogel-1918-timber-band-cottage~m": 0.238,
-    "vogel-1918-timber-band-cottage": 0.05
-   }
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Opus strip verdict 2026-11-10: a hedge hides the door (verdict)",
+   "likeness": null,
+   "challengers": {}
   },
   {
    "pandId": "0363100012062919",
@@ -254,49 +165,11 @@
     "voidShare": 0,
     "foliageShare": 0.01
    },
-   "status": "placed",
-   "type": "vogel-1918-timber-band-cottage",
-   "score": 0.77,
-   "placement": {
-    "type": "vogel-1918-timber-band-cottage"
-   },
-   "notes": [
-    "door unread: as drawn, the opposite of 112593",
-    "crown half-dormer (type default)"
-   ],
-   "likeness": {
-    "pandId": "0363100012062919",
-    "ncc": 0.266,
-    "nccRaw": 0.266,
-    "shiftM": [
-     -0.4,
-     0.4
-    ],
-    "usable": 0.93,
-    "abstain": null,
-    "verdict": "WARN",
-    "reasons": [
-     "mask IoU 0.313 < 0.45"
-    ],
-    "wall": {
-     "photo": "#232932",
-     "model": "#2c2b30",
-     "dL": 0.012
-    },
-    "glazing": {
-     "photo": 0.16,
-     "model": 0.16
-    },
-    "columns": {
-     "photo": null,
-     "model": null
-    },
-    "iou": 0.313
-   },
-   "challengers": {
-    "vogel-1918-timber-band-cottage": 0.266,
-    "vogel-1918-timber-band-cottage~m": 0.203
-   }
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Opus strip verdict 2026-11-10: window about 1 m off the photo (verdict)",
+   "likeness": null,
+   "challengers": {}
   }
  ]
 }

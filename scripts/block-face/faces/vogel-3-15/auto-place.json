@@ -3,7 +3,7 @@
  "street": "Eerste Vogelstraat",
  "library": "vogelbuurt",
  "stripDate": "2021-06-15",
- "seconds": 1.05,
+ "seconds": 2.29,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -291,8 +291,8 @@
    ],
    "likeness": {
     "pandId": "0363100012101772",
-    "ncc": 0.224,
-    "nccRaw": 0.224,
+    "ncc": 0.26,
+    "nccRaw": 0.26,
     "shiftM": [
      0.4,
      -0.3
@@ -301,13 +301,12 @@
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "wall dL +0.17",
      "glazing  mean 0.31 vs photo 1.00"
     ],
     "wall": {
      "photo": "#675a50",
-     "model": "#a37d6a",
-     "dL": 0.169
+     "model": "#8e6c5a",
+     "dL": 0.096
     },
     "glazing": {
      "photo": 1,
@@ -320,7 +319,7 @@
     "iou": 0.306
    },
    "challengers": {
-    "vogel-1918-cottage-2axis~m": 0.224
+    "vogel-1918-cottage-2axis~m": 0.26
    }
   },
   {
@@ -395,23 +394,23 @@
    ],
    "likeness": {
     "pandId": "0363100012132959",
-    "ncc": 0.339,
-    "nccRaw": 0.339,
+    "ncc": 0.361,
+    "nccRaw": 0.361,
     "shiftM": [
-     0.2,
-     0.2
+     -0.3,
+     -0.3
     ],
-    "usable": 0.57,
+    "usable": 0.79,
     "abstain": null,
-    "verdict": "FAIL",
+    "verdict": "WARN",
     "reasons": [
-     "wall dL +0.17",
-     "glazing not judged (frames cannot be told from bands: 11 % of the front is a band run along openings (glazing 0.272..0.385))"
+     "glazing not judged (frames cannot be told from bands: 11 % of the front is a band run along openings (glazing 0.272..0.385))",
+     "mask IoU 0.384 < 0.45"
     ],
     "wall": {
      "photo": "#665850",
-     "model": "#a37d6a",
-     "dL": 0.171
+     "model": "#8e6c5a",
+     "dL": 0.098
     },
     "glazing": {
      "photo": 0.71,
@@ -424,7 +423,7 @@
     "iou": 0.384
    },
    "challengers": {
-    "vogel-1918-cottage-3axis": 0.339
+    "vogel-1918-cottage-3axis": 0.361
    }
   },
   {

@@ -3,7 +3,7 @@
  "street": "Pelikaanstraat",
  "library": "vogelbuurt",
  "stripDate": "2025-09-22",
- "seconds": 6.74,
+ "seconds": 4.91,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -13,17 +13,7 @@
   "widthSlackM": 0.4,
   "flatRoofRiseM": 1.5
  },
- "runs": [
-  {
-   "face": "pelikaan-13-27-r1",
-   "pands": [
-    "0363100012087399",
-    "0363100012087361"
-   ],
-   "passed": true,
-   "triangles": 1203
-  }
- ],
+ "runs": [],
  "pands": [
   {
    "pandId": "0363100012131012",
@@ -76,8 +66,8 @@
    "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
    "likeness": {
     "pandId": "0363100012131012",
-    "ncc": 0.287,
-    "nccRaw": 0.287,
+    "ncc": 0.29,
+    "nccRaw": 0.29,
     "shiftM": [
      -0.2,
      -0.4
@@ -104,7 +94,8 @@
     "iou": 0.352
    },
    "challengers": {
-    "vogel-1921-two-storey-dormer-row": 0.262
+    "vogel-1921-two-storey-dormer-row": 0.29,
+    "vogel-1921-two-storey-dormer-row~m": 0.085
    }
   },
   {
@@ -155,39 +146,39 @@
    },
    "status": "held",
    "stage": "likeness",
-   "reason": "edge NCC -0.069 < 0.15 (photo vs model body; likeness.ts NO EVIDENCE: foliage 31 % > 25 %)",
+   "reason": "edge NCC 0.051 < 0.15 (photo vs model body; likeness.ts NO EVIDENCE: foliage 28 % > 25 %)",
    "likeness": {
     "pandId": "0363100012131893",
-    "ncc": -0.069,
-    "nccRaw": -0.069,
+    "ncc": 0.051,
+    "nccRaw": 0.051,
     "shiftM": [
-     0.4,
+     0.35,
      -0.4
     ],
-    "usable": 0.64,
+    "usable": 0.65,
     "abstain": null,
     "verdict": "NO EVIDENCE",
     "reasons": [
-     "foliage 31 % > 25 %"
+     "foliage 28 % > 25 %"
     ],
     "wall": {
-     "photo": "#a59b92",
+     "photo": "#a49a92",
      "model": "#a29890",
-     "dL": -0.01
+     "dL": -0.008
     },
     "glazing": {
-     "photo": 0.26,
+     "photo": 0.28,
      "model": 0.36
     },
     "columns": {
      "photo": null,
      "model": null
     },
-    "iou": 0.182
+    "iou": 0.319
    },
    "challengers": {
-    "vogel-1921-two-storey-dormer-row": -0.069,
-    "vogel-1921-two-storey-dormer-row~m": 0.224
+    "vogel-1921-two-storey-dormer-row": -0.068,
+    "vogel-1921-two-storey-dormer-row~m": 0.218
    }
   },
   {
@@ -225,55 +216,11 @@
     "voidShare": 0.04,
     "foliageShare": 0.01
    },
-   "status": "placed",
-   "type": "vogel-1921-two-storey-dormer-row",
-   "score": 1,
-   "placement": {
-    "type": "vogel-1921-two-storey-dormer-row",
-    "mirror": true,
-    "measuredPalette": {
-     "brick": "#aca098",
-     "evidence": "strip 2025-09-22 span 508-764: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    },
-    "crown": "step-gable"
-   },
-   "notes": [
-    "door right: mirrored",
-    "crown step-gable: reviewer pin (Pelikaanstraat 17: strip: a pointed brick gable end of the block (apex about 12.6 m, one window in the gable), not a dormer house)"
-   ],
-   "likeness": {
-    "pandId": "0363100012087399",
-    "ncc": 0.291,
-    "nccRaw": 0.291,
-    "shiftM": [
-     0.25,
-     -0.15
-    ],
-    "usable": 0.8,
-    "abstain": null,
-    "verdict": "NO EVIDENCE",
-    "reasons": [
-     "washed out 34 % > 30 %"
-    ],
-    "wall": {
-     "photo": "#aa9e95",
-     "model": "#a4978e",
-     "dL": -0.025
-    },
-    "glazing": {
-     "photo": 0.76,
-     "model": 0.38
-    },
-    "columns": {
-     "photo": 3,
-     "model": null
-    },
-    "iou": 0.428
-   },
-   "challengers": {
-    "vogel-1921-two-storey-dormer-row~m": 0.242,
-    "vogel-1921-two-storey-dormer-row": 0.279
-   }
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Opus strip verdict 2026-11-10: step-gable run pelikaan-13-27-r1; held until the coordinator sends the correctly mirrored non-gable pands back for another Opus look",
+   "likeness": null,
+   "challengers": {}
   },
   {
    "pandId": "0363100012087361",
@@ -321,54 +268,11 @@
     "voidShare": 0.07,
     "foliageShare": 0.01
    },
-   "status": "placed",
-   "type": "vogel-1921-two-storey-dormer-row",
-   "score": 1,
-   "placement": {
-    "type": "vogel-1921-two-storey-dormer-row",
-    "mirror": true,
-    "measuredPalette": {
-     "brick": "#aca299",
-     "evidence": "strip 2025-09-22 span 763-1020: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    }
-   },
-   "notes": [
-    "door right: mirrored",
-    "crown flat-dormer (type default)"
-   ],
-   "likeness": {
-    "pandId": "0363100012087361",
-    "ncc": 0.28,
-    "nccRaw": 0.28,
-    "shiftM": [
-     0.2,
-     0.4
-    ],
-    "usable": 0.79,
-    "abstain": null,
-    "verdict": "NO EVIDENCE",
-    "reasons": [
-     "washed out 31 % > 30 %"
-    ],
-    "wall": {
-     "photo": "#a89e95",
-     "model": "#a3988f",
-     "dL": -0.022
-    },
-    "glazing": {
-     "photo": 0.26,
-     "model": 0.36
-    },
-    "columns": {
-     "photo": null,
-     "model": null
-    },
-    "iou": 0.287
-   },
-   "challengers": {
-    "vogel-1921-two-storey-dormer-row~m": 0.311,
-    "vogel-1921-two-storey-dormer-row": 0.128
-   }
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Opus strip verdict 2026-11-10: step-gable run pelikaan-13-27-r1; held until the coordinator sends the correctly mirrored non-gable pands back for another Opus look",
+   "likeness": null,
+   "challengers": {}
   },
   {
    "pandId": "0363100012108368",
@@ -417,41 +321,10 @@
     "foliageShare": 0.03
    },
    "status": "held",
-   "stage": "likeness",
-   "reason": "edge NCC 0.023 < 0.15 (photo vs model body; likeness.ts NO EVIDENCE: washed out 37 % > 30 %)",
-   "likeness": {
-    "pandId": "0363100012108368",
-    "ncc": 0.023,
-    "nccRaw": 0.023,
-    "shiftM": [
-     -0.4,
-     0.2
-    ],
-    "usable": 0.78,
-    "abstain": null,
-    "verdict": "NO EVIDENCE",
-    "reasons": [
-     "washed out 37 % > 30 %"
-    ],
-    "wall": {
-     "photo": "#aca29b",
-     "model": "#a3988f",
-     "dL": -0.041
-    },
-    "glazing": {
-     "photo": 0.4,
-     "model": 0.36
-    },
-    "columns": {
-     "photo": null,
-     "model": null
-    },
-    "iou": 0.238
-   },
-   "challengers": {
-    "vogel-1921-two-storey-dormer-row": 0.023,
-    "vogel-1921-two-storey-dormer-row~m": 0.186
-   }
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": null,
+   "challengers": {}
   },
   {
    "pandId": "0363100012120713",

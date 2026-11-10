@@ -3,7 +3,7 @@
  "street": "Zamenhofstraat",
  "library": "vogelbuurt",
  "stripDate": "2025-09-22",
- "seconds": 2.57,
+ "seconds": 0.16,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -13,17 +13,7 @@
   "widthSlackM": 0.4,
   "flatRoofRiseM": 1.5
  },
- "runs": [
-  {
-   "face": "zamenhof-46-52-r1",
-   "pands": [
-    "0363100012131492",
-    "0363100012076655"
-   ],
-   "passed": true,
-   "triangles": 934
-  }
- ],
+ "runs": [],
  "pands": [
   {
    "pandId": "0363100012131492",
@@ -66,50 +56,11 @@
     "voidShare": 0,
     "foliageShare": 0.24
    },
-   "status": "placed",
-   "type": "vogel-1918-timber-band-cottage",
-   "score": 1,
-   "placement": {
-    "type": "vogel-1918-timber-band-cottage",
-    "mirror": true
-   },
-   "notes": [
-    "door unread: mirrored, the opposite of 076655",
-    "crown half-dormer (type default)"
-   ],
-   "likeness": {
-    "pandId": "0363100012131492",
-    "ncc": 0.433,
-    "nccRaw": 0.433,
-    "shiftM": [
-     0.15,
-     -0.4
-    ],
-    "usable": 0.78,
-    "abstain": null,
-    "verdict": "NO EVIDENCE",
-    "reasons": [
-     "foliage 27 % > 25 %"
-    ],
-    "wall": {
-     "photo": "#424541",
-     "model": "#2c2b30",
-     "dL": -0.084
-    },
-    "glazing": {
-     "photo": 0.63,
-     "model": 0.14
-    },
-    "columns": {
-     "photo": 2,
-     "model": null
-    },
-    "iou": 0.191
-   },
-   "challengers": {
-    "vogel-1918-timber-band-cottage~m": 0.433,
-    "vogel-1918-timber-band-cottage": 0.492
-   }
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Opus strip verdict 2026-11-10: wrong mirror; the photo door is on the right (verdict)",
+   "likeness": null,
+   "challengers": {}
   },
   {
    "pandId": "0363100012076655",
@@ -151,51 +102,11 @@
     "voidShare": 0,
     "foliageShare": 0.51
    },
-   "status": "placed",
-   "type": "vogel-1918-timber-band-cottage",
-   "score": 1,
-   "placement": {
-    "type": "vogel-1918-timber-band-cottage"
-   },
-   "notes": [
-    "door right",
-    "crown half-dormer (type default)",
-    "no photo evidence of its own (usable photo 28 % < 50 %); placed on row evidence from 131492"
-   ],
-   "likeness": {
-    "pandId": "0363100012076655",
-    "ncc": null,
-    "nccRaw": 0.652,
-    "shiftM": [
-     0.1,
-     0.4
-    ],
-    "usable": 0.28,
-    "abstain": "usable photo 28 % < 50 %",
-    "verdict": "NO EVIDENCE",
-    "reasons": [
-     "usable upper cells 32 % < 40 %",
-     "foliage 36 % > 25 %"
-    ],
-    "wall": {
-     "photo": "#272e30",
-     "model": "#2c2b30",
-     "dL": 0.008
-    },
-    "glazing": {
-     "photo": 0.1,
-     "model": 0.15
-    },
-    "columns": {
-     "photo": null,
-     "model": null
-    },
-    "iou": 0.286
-   },
-   "challengers": {
-    "vogel-1918-timber-band-cottage": null,
-    "vogel-1918-timber-band-cottage~m": null
-   }
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": null,
+   "challengers": {}
   },
   {
    "pandId": "0363100012104456",

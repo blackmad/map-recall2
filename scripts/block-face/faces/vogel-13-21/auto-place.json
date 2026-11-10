@@ -3,7 +3,7 @@
  "street": "Brede Vogelstraat",
  "library": "vogelbuurt",
  "stripDate": "2025-09-22",
- "seconds": 0.8,
+ "seconds": 1.25,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -72,7 +72,7 @@
    "likeness": {
     "pandId": "0363100012123354",
     "ncc": null,
-    "nccRaw": 0.305,
+    "nccRaw": 0.281,
     "shiftM": [
      0.15,
      0.15
@@ -85,8 +85,8 @@
     ],
     "wall": {
      "photo": "#ceb79e",
-     "model": "#a37d6a",
-     "dL": -0.186
+     "model": "#8e6c5a",
+     "dL": -0.259
     },
     "glazing": {
      "photo": 0.35,
@@ -158,8 +158,8 @@
    "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
    "likeness": {
     "pandId": "0363100012078306",
-    "ncc": 0.346,
-    "nccRaw": 0.346,
+    "ncc": 0.418,
+    "nccRaw": 0.418,
     "shiftM": [
      0.25,
      -0.4
@@ -172,8 +172,8 @@
     ],
     "wall": {
      "photo": "#49463c",
-     "model": "#a37d6a",
-     "dL": 0.267
+     "model": "#8e6c5a",
+     "dL": 0.194
     },
     "glazing": {
      "photo": 0.27,
@@ -186,7 +186,7 @@
     "iou": 0.352
    },
    "challengers": {
-    "vogel-1918-cottage-2axis": 0.346
+    "vogel-1918-cottage-2axis": 0.418
    }
   },
   {

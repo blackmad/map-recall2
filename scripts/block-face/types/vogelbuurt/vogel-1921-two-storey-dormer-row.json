@@ -73,6 +73,7 @@
    "dormers": 1,
    "dormerStyle": "flat",
    "dormerBody": "timber",
+   "dormerLights": 4,
    "dormerAt": [
     {
      "from": 0.52,

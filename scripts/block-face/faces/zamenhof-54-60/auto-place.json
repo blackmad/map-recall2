@@ -3,7 +3,7 @@
  "street": "Zamenhofstraat",
  "library": "vogelbuurt",
  "stripDate": "2025-09-22",
- "seconds": 3.02,
+ "seconds": 2.95,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -15,15 +15,13 @@
  },
  "runs": [
   {
-   "face": "zamenhof-54-60",
+   "face": "zamenhof-54-60-r1",
    "pands": [
     "0363100012064187",
-    "0363100012151653",
-    "0363100012149443",
-    "0363100012146996"
+    "0363100012151653"
    ],
    "passed": true,
-   "triangles": 1839
+   "triangles": 1006
   }
  ],
  "pands": [
@@ -91,8 +89,8 @@
    ],
    "likeness": {
     "pandId": "0363100012064187",
-    "ncc": 0.438,
-    "nccRaw": 0.438,
+    "ncc": 0.432,
+    "nccRaw": 0.432,
     "shiftM": [
      0.15,
      -0.4
@@ -101,13 +99,13 @@
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "wall dL +0.24",
+     "wall dL +0.17",
      "glazing  mean 0.17 vs photo 0.54"
     ],
     "wall": {
      "photo": "#48474a",
-     "model": "#a37d6a",
-     "dL": 0.243
+     "model": "#8e6c5a",
+     "dL": 0.171
     },
     "glazing": {
      "photo": 0.54,
@@ -120,8 +118,8 @@
     "iou": 0.201
    },
    "challengers": {
-    "vogel-1918-timber-band-cottage": 0.438,
-    "vogel-1918-timber-band-cottage~m": 0.226
+    "vogel-1918-timber-band-cottage": 0.432,
+    "vogel-1918-timber-band-cottage~m": 0.233
    }
   },
   {
@@ -174,28 +172,27 @@
    },
    "notes": [
     "door unread: mirrored, the opposite of 064187",
-    "crown half-dormer (type default)",
-    "no photo evidence of its own (usable photo 42 % < 50 %); placed on row evidence from 064187, 149443"
+    "crown half-dormer (type default)"
    ],
    "likeness": {
     "pandId": "0363100012151653",
-    "ncc": null,
-    "nccRaw": 0.268,
+    "ncc": 0.293,
+    "nccRaw": 0.293,
     "shiftM": [
-     -0.2,
-     0.4
+     0,
+     -0.4
     ],
-    "usable": 0.42,
-    "abstain": "usable photo 42 % < 50 %",
+    "usable": 0.78,
+    "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "wall dL -0.15",
+     "wall dL -0.14",
      "glazing  mean 0.15 vs photo 0.54"
     ],
     "wall": {
-     "photo": "#505055",
+     "photo": "#4e4f54",
      "model": "#2c2b30",
-     "dL": -0.145
+     "dL": -0.139
     },
     "glazing": {
      "photo": 0.54,
@@ -205,11 +202,11 @@
      "photo": null,
      "model": null
     },
-    "iou": 0.161
+    "iou": 0.179
    },
    "challengers": {
-    "vogel-1918-timber-band-cottage~m": null,
-    "vogel-1918-timber-band-cottage": 0.152
+    "vogel-1918-timber-band-cottage~m": 0.293,
+    "vogel-1918-timber-band-cottage": 0.199
    }
   },
   {
@@ -258,50 +255,11 @@
     "voidShare": 0,
     "foliageShare": 0.15
    },
-   "status": "placed",
-   "type": "vogel-1918-timber-band-cottage",
-   "score": 0.86,
-   "placement": {
-    "type": "vogel-1918-timber-band-cottage"
-   },
-   "notes": [
-    "door unread: as drawn, the opposite of 151653",
-    "crown half-dormer (type default)"
-   ],
-   "likeness": {
-    "pandId": "0363100012149443",
-    "ncc": 0.191,
-    "nccRaw": 0.191,
-    "shiftM": [
-     -0.4,
-     -0.4
-    ],
-    "usable": 0.93,
-    "abstain": null,
-    "verdict": "FAIL",
-    "reasons": [
-     "wall dL -0.15",
-     "glazing  mean 0.15 vs photo 0.54"
-    ],
-    "wall": {
-     "photo": "#545357",
-     "model": "#2c2b30",
-     "dL": -0.155
-    },
-    "glazing": {
-     "photo": 0.54,
-     "model": 0.15
-    },
-    "columns": {
-     "photo": null,
-     "model": null
-    },
-    "iou": 0.161
-   },
-   "challengers": {
-    "vogel-1918-timber-band-cottage": 0.191,
-    "vogel-1918-timber-band-cottage~m": 0.331
-   }
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Opus strip verdict 2026-11-10: model window sits about 1 m off the photo and no doors are visible (verdict)",
+   "likeness": null,
+   "challengers": {}
   },
   {
    "pandId": "0363100012146996",
@@ -350,51 +308,11 @@
     "voidShare": 0,
     "foliageShare": 0.01
    },
-   "status": "placed",
-   "type": "vogel-1918-timber-band-cottage",
-   "score": 1,
-   "placement": {
-    "type": "vogel-1918-timber-band-cottage",
-    "mirror": true
-   },
-   "notes": [
-    "door left: mirrored",
-    "crown half-dormer (type default)"
-   ],
-   "likeness": {
-    "pandId": "0363100012146996",
-    "ncc": 0.366,
-    "nccRaw": 0.366,
-    "shiftM": [
-     -0.4,
-     -0.4
-    ],
-    "usable": 0.95,
-    "abstain": null,
-    "verdict": "FAIL",
-    "reasons": [
-     "wall dL +0.23",
-     "glazing  mean 0.16 vs photo 0.53"
-    ],
-    "wall": {
-     "photo": "#4a494e",
-     "model": "#a37d6a",
-     "dL": 0.231
-    },
-    "glazing": {
-     "photo": 0.53,
-     "model": 0.16
-    },
-    "columns": {
-     "photo": null,
-     "model": null
-    },
-    "iou": 0.201
-   },
-   "challengers": {
-    "vogel-1918-timber-band-cottage~m": 0.366,
-    "vogel-1918-timber-band-cottage": 0.442
-   }
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Opus strip verdict 2026-11-10: model window sits about 1 m off the photo and no doors are visible (verdict)",
+   "likeness": null,
+   "challengers": {}
   }
  ]
 }

@@ -3,7 +3,7 @@
  "street": "Pelikaanstraat",
  "library": "vogelbuurt",
  "stripDate": "2021-02-17",
- "seconds": 3.49,
+ "seconds": 3.74,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -22,7 +22,7 @@
     "0363100012128530"
    ],
    "passed": true,
-   "triangles": 1940
+   "triangles": 2012
   }
  ],
  "pands": [

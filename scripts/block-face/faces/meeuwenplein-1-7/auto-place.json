@@ -3,7 +3,7 @@
  "street": "Meeuwenplein",
  "library": "vogelbuurt",
  "stripDate": "2019-11-15",
- "seconds": 3.19,
+ "seconds": 4.09,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -22,7 +22,7 @@
     "0363100012065418"
    ],
    "passed": true,
-   "triangles": 1827
+   "triangles": 1899
   }
  ],
  "pands": [

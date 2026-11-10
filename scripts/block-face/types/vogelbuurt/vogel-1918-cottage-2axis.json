@@ -82,7 +82,7 @@
  },
  "palettes": {
   "red-brick": {
-   "brick": "#8f6a58",
+   "brick": "#74584a",
    "frame": "#e4e0d2",
    "door": "#1f3a2f",
    "stone": "#a2634c",
@@ -122,6 +122,6 @@
   "hedges and front gardens"
  ],
  "notes": [
-  "Palette: brick #8f6a58 is one tone for the buurt, not per pand: strips of one date differ by 2x in exposure (raw brick medians 77-221 on 2025-09-22) and the trim normalisation locks onto hedges and the dark timber band, so measuredWall is off. The tone is the median of the 8 darker-exposed strips (raw 86-105,66-85,58-74) lifted x1.5; a reviewer should pin the row if a photo disagrees."
+  "Palette: brick #8f6a58 is one tone for the buurt, not per pand: strips of one date differ by 2x in exposure (raw brick medians 77-221 on 2025-09-22) and the trim normalisation locks onto hedges and the dark timber band, so measuredWall is off. The tone is the median of the 8 darker-exposed strips (raw 86-105,66-85,58-74) lifted x1.5; a reviewer should pin the row if a photo disagrees. Opus verdict 2026-11-10: photo wall median #554339 (vogel-3-11-r1), so brick moved to #74584a, about 60 % of the way from the lifted figure to the photo."
  ]
 }

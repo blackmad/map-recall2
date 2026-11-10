@@ -3,7 +3,7 @@
  "street": "Flamingostraat",
  "library": "vogelbuurt",
  "stripDate": "2025-09-22",
- "seconds": 8.88,
+ "seconds": 1.89,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -13,27 +13,7 @@
   "widthSlackM": 0.4,
   "flatRoofRiseM": 1.5
  },
- "runs": [
-  {
-   "face": "flamingo-14-28-r1",
-   "pands": [
-    "0363100012070462",
-    "0363100012098790",
-    "0363100012092344"
-   ],
-   "passed": true,
-   "triangles": 1901
-  },
-  {
-   "face": "flamingo-14-28-r2",
-   "pands": [
-    "0363100012141395",
-    "0363100012120930"
-   ],
-   "passed": true,
-   "triangles": 1181
-  }
- ],
+ "runs": [],
  "pands": [
   {
    "pandId": "0363100012070462",
@@ -86,53 +66,11 @@
     "voidShare": 0,
     "foliageShare": 0.01
    },
-   "status": "placed",
-   "type": "vogel-1921-two-storey-dormer-row",
-   "score": 0.84,
-   "placement": {
-    "type": "vogel-1921-two-storey-dormer-row",
-    "measuredPalette": {
-     "brick": "#433b35",
-     "evidence": "strip 2025-09-22 span 0-255: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    }
-   },
-   "notes": [
-    "door left",
-    "crown flat-dormer (type default)"
-   ],
-   "likeness": {
-    "pandId": "0363100012070462",
-    "ncc": 0.288,
-    "nccRaw": 0.288,
-    "shiftM": [
-     -0.15,
-     -0.2
-    ],
-    "usable": 0.99,
-    "abstain": null,
-    "verdict": "FAIL",
-    "reasons": [
-     "glazing storey band off by 0.18 mean 0.33 vs photo 0.51"
-    ],
-    "wall": {
-     "photo": "#3e3934",
-     "model": "#5e534b",
-     "dL": 0.108
-    },
-    "glazing": {
-     "photo": 0.51,
-     "model": 0.33
-    },
-    "columns": {
-     "photo": null,
-     "model": 3
-    },
-    "iou": 0.531
-   },
-   "challengers": {
-    "vogel-1921-two-storey-dormer-row": 0.281,
-    "vogel-1921-two-storey-dormer-row~m": -0.014
-   }
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Opus strip verdict 2026-11-10: step-gable run flamingo-14-28-r1; held until the coordinator sends the correctly mirrored non-gable pands back for another Opus look",
+   "likeness": null,
+   "challengers": {}
   },
   {
    "pandId": "0363100012098790",
@@ -185,53 +123,11 @@
     "voidShare": 0,
     "foliageShare": 0
    },
-   "status": "placed",
-   "type": "vogel-1921-two-storey-dormer-row",
-   "score": 0.84,
-   "placement": {
-    "type": "vogel-1921-two-storey-dormer-row",
-    "measuredPalette": {
-     "brick": "#423b36",
-     "evidence": "strip 2025-09-22 span 255-510: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    }
-   },
-   "notes": [
-    "door left",
-    "crown flat-dormer (type default)"
-   ],
-   "likeness": {
-    "pandId": "0363100012098790",
-    "ncc": 0.221,
-    "nccRaw": 0.221,
-    "shiftM": [
-     -0.2,
-     -0.4
-    ],
-    "usable": 0.97,
-    "abstain": null,
-    "verdict": "WARN",
-    "reasons": [
-     "mask IoU 0.388 < 0.45"
-    ],
-    "wall": {
-     "photo": "#3e3935",
-     "model": "#5d534c",
-     "dL": 0.106
-    },
-    "glazing": {
-     "photo": 0.36,
-     "model": 0.36
-    },
-    "columns": {
-     "photo": null,
-     "model": null
-    },
-    "iou": 0.388
-   },
-   "challengers": {
-    "vogel-1921-two-storey-dormer-row": 0.232,
-    "vogel-1921-two-storey-dormer-row~m": 0.07
-   }
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Opus strip verdict 2026-11-10: step-gable run flamingo-14-28-r1; held until the coordinator sends the correctly mirrored non-gable pands back for another Opus look",
+   "likeness": null,
+   "challengers": {}
   },
   {
    "pandId": "0363100012092344",
@@ -299,54 +195,11 @@
     "voidShare": 0,
     "foliageShare": 0
    },
-   "status": "placed",
-   "type": "vogel-1921-two-storey-dormer-row",
-   "score": 1,
-   "placement": {
-    "type": "vogel-1921-two-storey-dormer-row",
-    "measuredPalette": {
-     "brick": "#3e3b39",
-     "evidence": "strip 2025-09-22 span 510-762: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    },
-    "crown": "step-gable"
-   },
-   "notes": [
-    "door left",
-    "crown step-gable: reviewer pin (Flamingostraat 24: strip: a pointed brick gable end of the block (apex about 12.6 m, one window in the gable), not a dormer house)"
-   ],
-   "likeness": {
-    "pandId": "0363100012092344",
-    "ncc": 0.35,
-    "nccRaw": 0.35,
-    "shiftM": [
-     -0.1,
-     -0.15
-    ],
-    "usable": 1,
-    "abstain": null,
-    "verdict": "FAIL",
-    "reasons": [
-     "glazing storey band off by 0.21 mean 0.38 vs photo 0.55"
-    ],
-    "wall": {
-     "photo": "#3e3c3a",
-     "model": "#585351",
-     "dL": 0.096
-    },
-    "glazing": {
-     "photo": 0.55,
-     "model": 0.38
-    },
-    "columns": {
-     "photo": null,
-     "model": 3
-    },
-    "iou": 0.391
-   },
-   "challengers": {
-    "vogel-1921-two-storey-dormer-row": 0.353,
-    "vogel-1921-two-storey-dormer-row~m": 0.258
-   }
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Opus strip verdict 2026-11-10: step-gable run flamingo-14-28-r1; held until the coordinator sends the correctly mirrored non-gable pands back for another Opus look",
+   "likeness": null,
+   "challengers": {}
   },
   {
    "pandId": "0363100012137809",
@@ -401,39 +254,37 @@
    },
    "status": "held",
    "stage": "likeness",
-   "reason": "edge NCC 0.14 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.27 mean 0.34 vs photo 0.57)",
+   "reason": "edge NCC 0.127 < 0.15 (photo vs model body; likeness.ts PASS)",
    "likeness": {
     "pandId": "0363100012137809",
-    "ncc": 0.14,
-    "nccRaw": 0.14,
+    "ncc": 0.127,
+    "nccRaw": 0.127,
     "shiftM": [
      -0.15,
      -0.05
     ],
     "usable": 0.99,
     "abstain": null,
-    "verdict": "FAIL",
-    "reasons": [
-     "glazing storey band off by 0.27 mean 0.34 vs photo 0.57"
-    ],
+    "verdict": "PASS",
+    "reasons": [],
     "wall": {
      "photo": "#4a4541",
      "model": "#5d5851",
      "dL": 0.069
     },
     "glazing": {
-     "photo": 0.57,
+     "photo": 0.42,
      "model": 0.34
     },
     "columns": {
      "photo": null,
      "model": null
     },
-    "iou": 0.396
+    "iou": 0.475
    },
    "challengers": {
-    "vogel-1921-two-storey-dormer-row": 0.14,
-    "vogel-1921-two-storey-dormer-row~m": 0.115
+    "vogel-1921-two-storey-dormer-row": 0.127,
+    "vogel-1921-two-storey-dormer-row~m": 0.131
    }
   },
   {
@@ -494,39 +345,41 @@
    },
    "status": "held",
    "stage": "likeness",
-   "reason": "edge NCC -0.048 < 0.15 (photo vs model body; likeness.ts WARN: mask IoU 0.223 < 0.45)",
+   "reason": "edge NCC -0.042 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.38 mean 0.34 vs photo 0.62; window shape none vs photo square; columns none vs photo 2)",
    "likeness": {
     "pandId": "0363100012069013",
-    "ncc": -0.048,
-    "nccRaw": -0.048,
+    "ncc": -0.042,
+    "nccRaw": -0.042,
     "shiftM": [
      -0.4,
      0.4
     ],
     "usable": 0.95,
     "abstain": null,
-    "verdict": "WARN",
+    "verdict": "FAIL",
     "reasons": [
-     "mask IoU 0.223 < 0.45"
+     "glazing storey band off by 0.38 mean 0.34 vs photo 0.62",
+     "window shape none vs photo square",
+     "columns none vs photo 2"
     ],
     "wall": {
-     "photo": "#3c3b38",
+     "photo": "#3d3a38",
      "model": "#575450",
-     "dL": 0.1
+     "dL": 0.098
     },
     "glazing": {
-     "photo": 0.31,
+     "photo": 0.62,
      "model": 0.34
     },
     "columns": {
-     "photo": null,
+     "photo": 2,
      "model": null
     },
-    "iou": 0.223
+    "iou": 0.343
    },
    "challengers": {
-    "vogel-1921-two-storey-dormer-row~m": -0.048,
-    "vogel-1921-two-storey-dormer-row": 0.292
+    "vogel-1921-two-storey-dormer-row~m": -0.042,
+    "vogel-1921-two-storey-dormer-row": 0.314
    }
   },
   {
@@ -570,54 +423,11 @@
     "voidShare": 0,
     "foliageShare": 0
    },
-   "status": "placed",
-   "type": "vogel-1921-two-storey-dormer-row",
-   "score": 1,
-   "placement": {
-    "type": "vogel-1921-two-storey-dormer-row",
-    "measuredPalette": {
-     "brick": "#3a3a3a",
-     "evidence": "strip 2025-09-22 span 1283-1539: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    },
-    "crown": "step-gable"
-   },
-   "notes": [
-    "door unread: as drawn, the opposite of 069013",
-    "crown step-gable: reviewer pin (Flamingostraat 18: strip: a pointed brick gable end of the block (apex about 12.6 m, one window in the gable), not a dormer house)"
-   ],
-   "likeness": {
-    "pandId": "0363100012141395",
-    "ncc": 0.39,
-    "nccRaw": 0.39,
-    "shiftM": [
-     -0.25,
-     -0.2
-    ],
-    "usable": 1,
-    "abstain": null,
-    "verdict": "FAIL",
-    "reasons": [
-     "glazing storey band off by 0.46 mean 0.38 vs photo 0.79"
-    ],
-    "wall": {
-     "photo": "#373839",
-     "model": "#535353",
-     "dL": 0.106
-    },
-    "glazing": {
-     "photo": 0.79,
-     "model": 0.38
-    },
-    "columns": {
-     "photo": null,
-     "model": null
-    },
-    "iou": 0.45
-   },
-   "challengers": {
-    "vogel-1921-two-storey-dormer-row": 0.379,
-    "vogel-1921-two-storey-dormer-row~m": 0.269
-   }
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Opus strip verdict 2026-11-10: step-gable run flamingo-14-28-r2; held until the coordinator sends the correctly mirrored non-gable pands back for another Opus look",
+   "likeness": null,
+   "challengers": {}
   },
   {
    "pandId": "0363100012120930",
@@ -665,55 +475,11 @@
     "voidShare": 0,
     "foliageShare": 0.01
    },
-   "status": "placed",
-   "type": "vogel-1921-two-storey-dormer-row",
-   "score": 0.73,
-   "placement": {
-    "type": "vogel-1921-two-storey-dormer-row",
-    "measuredPalette": {
-     "brick": "#433f3c",
-     "evidence": "strip 2025-09-22 span 1539-1795: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    }
-   },
-   "notes": [
-    "door left",
-    "crown flat-dormer (type default)"
-   ],
-   "likeness": {
-    "pandId": "0363100012120930",
-    "ncc": 0.317,
-    "nccRaw": 0.317,
-    "shiftM": [
-     -0.25,
-     -0.4
-    ],
-    "usable": 0.95,
-    "abstain": null,
-    "verdict": "FAIL",
-    "reasons": [
-     "glazing storey band off by 0.15",
-     "window shape none vs photo square",
-     "columns none vs photo 2"
-    ],
-    "wall": {
-     "photo": "#44413e",
-     "model": "#5d5753",
-     "dL": 0.09
-    },
-    "glazing": {
-     "photo": 0.41,
-     "model": 0.34
-    },
-    "columns": {
-     "photo": 2,
-     "model": null
-    },
-    "iou": 0.33
-   },
-   "challengers": {
-    "vogel-1921-two-storey-dormer-row": 0.309,
-    "vogel-1921-two-storey-dormer-row~m": 0.148
-   }
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Opus strip verdict 2026-11-10: step-gable run flamingo-14-28-r2; held until the coordinator sends the correctly mirrored non-gable pands back for another Opus look",
+   "likeness": null,
+   "challengers": {}
   },
   {
    "pandId": "0363100012148040",
@@ -767,41 +533,10 @@
     "foliageShare": 0
    },
    "status": "held",
-   "stage": "likeness",
-   "reason": "edge NCC 0.072 < 0.15 (photo vs model body; likeness.ts WARN: mask IoU 0.2 < 0.45)",
-   "likeness": {
-    "pandId": "0363100012148040",
-    "ncc": 0.072,
-    "nccRaw": 0.072,
-    "shiftM": [
-     -0.2,
-     -0.4
-    ],
-    "usable": 0.95,
-    "abstain": null,
-    "verdict": "WARN",
-    "reasons": [
-     "mask IoU 0.2 < 0.45"
-    ],
-    "wall": {
-     "photo": "#45413e",
-     "model": "#5e5955",
-     "dL": 0.094
-    },
-    "glazing": {
-     "photo": 0.29,
-     "model": 0.34
-    },
-    "columns": {
-     "photo": null,
-     "model": null
-    },
-    "iou": 0.2
-   },
-   "challengers": {
-    "vogel-1921-two-storey-dormer-row": 0.072,
-    "vogel-1921-two-storey-dormer-row~m": 0.295
-   }
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": null,
+   "challengers": {}
   }
  ]
 }

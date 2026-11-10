@@ -3,7 +3,7 @@
  "street": "Pelikaanstraat",
  "library": "vogelbuurt",
  "stripDate": "2025-09-22",
- "seconds": 3.89,
+ "seconds": 4.09,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -15,15 +15,13 @@
  },
  "runs": [
   {
-   "face": "pelikaan-3-9",
+   "face": "pelikaan-3-9-r1",
    "pands": [
-    "0363100012104432",
     "0363100012119758",
-    "0363100012124605",
-    "0363100012153865"
+    "0363100012124605"
    ],
    "passed": true,
-   "triangles": 2501
+   "triangles": 1321
   }
  ],
  "pands": [
@@ -36,95 +34,42 @@
    "storeys3dbag": 3,
    "bagBay": null,
    "strip": {
-    "wall": "#aba299",
-    "wallRaw": "#8b877f",
+    "wall": "#6f5950",
+    "wallRaw": "#836b60",
     "skyline": {
-     "eavesM": 10.78,
-     "eavesRow": 122,
-     "confidence": 0.83,
+     "eavesM": 12.38,
+     "eavesRow": 58,
+     "confidence": 0.86,
      "crown": {
-      "widthM": 1.68,
-      "riseM": 3.05,
-      "topWidthM": 0.15,
-      "centre": 0.53
+      "widthM": 0.63,
+      "riseM": 0.9,
+      "topWidthM": 0.55,
+      "centre": 0.05
      }
     },
     "stucco": false,
-    "bands": 0,
-    "columns": null,
+    "bands": 1,
+    "columns": 3,
     "frontClass": "punched",
-    "doorSide": "left",
+    "doorSide": null,
     "accentSide": null,
-    "accentShare": 0.828,
+    "accentShare": 0.253,
     "structure": {
      "bayWidthM": 0,
      "bayCentre": null,
-     "balconies": true,
-     "why": "dark open axis 0.75 m at 0.17 (light 0.08): no brick spandrel between the storeys",
-     "openAxes": [
-      {
-       "widthM": 0.75,
-       "centre": 0.17,
-       "light": 0.08
-      },
-      {
-       "widthM": 2.58,
-       "centre": 0.71,
-       "light": 0.3
-      }
-     ],
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
      "slabs": []
     },
-    "voidShare": 0.06,
-    "foliageShare": 0.05
+    "voidShare": 0.08,
+    "foliageShare": 0.04
    },
-   "status": "placed",
-   "type": "vogel-1921-two-storey-dormer-row",
-   "score": 1,
-   "placement": {
-    "type": "vogel-1921-two-storey-dormer-row",
-    "measuredPalette": {
-     "brick": "#aba299",
-     "evidence": "strip 2025-09-22 span 0-255: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    }
-   },
-   "notes": [
-    "door left",
-    "crown flat-dormer (type default)"
-   ],
-   "likeness": {
-    "pandId": "0363100012104432",
-    "ncc": 0.266,
-    "nccRaw": 0.266,
-    "shiftM": [
-     0,
-     0.15
-    ],
-    "usable": 0.64,
-    "abstain": null,
-    "verdict": "NO EVIDENCE",
-    "reasons": [
-     "washed out 30 % > 30 %"
-    ],
-    "wall": {
-     "photo": "#a69d94",
-     "model": "#a3998f",
-     "dL": -0.016
-    },
-    "glazing": {
-     "photo": 0.71,
-     "model": 0.36
-    },
-    "columns": {
-     "photo": null,
-     "model": null
-    },
-    "iou": 0.343
-   },
-   "challengers": {
-    "vogel-1921-two-storey-dormer-row": 0.266,
-    "vogel-1921-two-storey-dormer-row~m": 0.107
-   }
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Opus strip verdict 2026-11-10: gable crown pin added (verdict): held with the gable runs",
+   "likeness": null,
+   "challengers": {}
   },
   {
    "pandId": "0363100012119758",
@@ -135,16 +80,16 @@
    "storeys3dbag": 3,
    "bagBay": null,
    "strip": {
-    "wall": "#aba095",
-    "wallRaw": "#696b67",
+    "wall": "#7e675d",
+    "wallRaw": "#866e62",
     "skyline": {
-     "eavesM": 9,
-     "eavesRow": 193,
+     "eavesM": 11.82,
+     "eavesRow": 80,
      "confidence": 1,
      "crown": {
-      "widthM": 1.85,
-      "riseM": 3.95,
-      "topWidthM": 0.28,
+      "widthM": 3.48,
+      "riseM": 1.6,
+      "topWidthM": 1.2,
       "centre": 0.46
      }
     },
@@ -152,78 +97,77 @@
     "bands": 0,
     "columns": null,
     "frontClass": "punched",
-    "doorSide": "right",
-    "accentSide": null,
-    "accentShare": 0.711,
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.455,
     "structure": {
      "bayWidthM": 0,
      "bayCentre": null,
      "balconies": true,
-     "why": "dark open axis 2.52 m at 0.34 (light 0.18): no brick spandrel between the storeys",
+     "why": "dark open axis 0.85 m at 0.82 (light 0.29): no brick spandrel between the storeys",
      "openAxes": [
       {
-       "widthM": 2.52,
-       "centre": 0.34,
-       "light": 0.18
-      },
-      {
-       "widthM": 0.8,
-       "centre": 0.85,
-       "light": 0.12
+       "widthM": 0.85,
+       "centre": 0.82,
+       "light": 0.29
       }
      ],
-     "slabs": []
+     "slabs": [
+      {
+       "atM": 5.67,
+       "widthM": 1.55,
+       "centre": 0.76
+      }
+     ]
     },
-    "voidShare": 0.03,
-    "foliageShare": 0.01
+    "voidShare": 0.08,
+    "foliageShare": 0.03
    },
    "status": "placed",
    "type": "vogel-1921-two-storey-dormer-row",
    "score": 1,
    "placement": {
     "type": "vogel-1921-two-storey-dormer-row",
-    "mirror": true,
     "measuredPalette": {
-     "brick": "#aba095",
+     "brick": "#7e675d",
      "evidence": "strip 2025-09-22 span 255-522: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    }
+    },
+    "mirror": true
    },
    "notes": [
-    "door right: mirrored",
-    "crown flat-dormer (type default)"
+    "crown flat-dormer (type default)",
+    "photo decides: vogel-1921-two-storey-dormer-row~m edge NCC 0.381 vs vogel-1921-two-storey-dormer-row 0.192"
    ],
    "likeness": {
     "pandId": "0363100012119758",
-    "ncc": 0.22,
-    "nccRaw": 0.22,
+    "ncc": 0.485,
+    "nccRaw": 0.485,
     "shiftM": [
-     0.2,
-     0.4
+     0.1,
+     -0.35
     ],
-    "usable": 0.81,
+    "usable": 0.67,
     "abstain": null,
-    "verdict": "NO EVIDENCE",
-    "reasons": [
-     "washed out 36 % > 30 %"
-    ],
+    "verdict": "PASS",
+    "reasons": [],
     "wall": {
-     "photo": "#aca095",
-     "model": "#a5998d",
-     "dL": -0.029
+     "photo": "#7a625a",
+     "model": "#947a6e",
+     "dL": 0.09
     },
     "glazing": {
-     "photo": 0.28,
+     "photo": 0.29,
      "model": 0.36
     },
     "columns": {
      "photo": null,
      "model": null
     },
-    "iou": 0.371
+    "iou": 0.534
    },
    "challengers": {
-    "vogel-1921-two-storey-dormer-row~m": 0.22,
-    "vogel-1921-two-storey-dormer-row": 0.066
+    "vogel-1921-two-storey-dormer-row": 0.192,
+    "vogel-1921-two-storey-dormer-row~m": 0.381
    }
   },
   {
@@ -235,47 +179,48 @@
    "storeys3dbag": 3,
    "bagBay": null,
    "strip": {
-    "wall": "#a99c90",
-    "wallRaw": "#4c5050",
+    "wall": "#786056",
+    "wallRaw": "#836c60",
     "skyline": {
-     "eavesM": 8.7,
-     "eavesRow": 205,
-     "confidence": 1,
-     "crown": {
-      "widthM": 2.15,
-      "riseM": 3.9,
-      "topWidthM": 0.42,
-      "centre": 0.18
-     }
+     "eavesM": 13.22,
+     "eavesRow": 24,
+     "confidence": 0.61,
+     "crown": null
     },
     "stucco": false,
     "bands": 0,
     "columns": null,
     "frontClass": "punched",
-    "doorSide": "left",
+    "doorSide": null,
     "accentSide": null,
     "accentShare": 0,
     "structure": {
      "bayWidthM": 0,
      "bayCentre": null,
      "balconies": true,
-     "why": "dark open axis 0.8 m at 0.14 (light 0.18): no brick spandrel between the storeys",
+     "why": "dark open axis 0.82 m at 0.13 (light 0.34): no brick spandrel between the storeys",
      "openAxes": [
       {
-       "widthM": 0.8,
-       "centre": 0.14,
-       "light": 0.18
+       "widthM": 0.82,
+       "centre": 0.13,
+       "light": 0.34
       },
       {
-       "widthM": 2.67,
+       "widthM": 2.55,
        "centre": 0.65,
-       "light": 0.13
+       "light": 0.33
       }
      ],
-     "slabs": []
+     "slabs": [
+      {
+       "atM": 5.67,
+       "widthM": 5.9,
+       "centre": 0.5
+      }
+     ]
     },
-    "voidShare": 0.04,
-    "foliageShare": 0.02
+    "voidShare": 0,
+    "foliageShare": 0.05
    },
    "status": "placed",
    "type": "vogel-1921-two-storey-dormer-row",
@@ -283,44 +228,44 @@
    "placement": {
     "type": "vogel-1921-two-storey-dormer-row",
     "measuredPalette": {
-     "brick": "#a99c90",
+     "brick": "#786056",
      "evidence": "strip 2025-09-22 span 522-778: trim-normalised wall (buildingRecipe/measureFacade.ts)"
     }
    },
    "notes": [
-    "door left",
+    "door unread",
     "crown flat-dormer (type default)"
    ],
    "likeness": {
     "pandId": "0363100012124605",
-    "ncc": 0.183,
-    "nccRaw": 0.183,
+    "ncc": 0.436,
+    "nccRaw": 0.436,
     "shiftM": [
-     -0.3,
-     0.25
+     -0.25,
+     -0.1
     ],
-    "usable": 0.79,
+    "usable": 0.74,
     "abstain": null,
     "verdict": "PASS",
     "reasons": [],
     "wall": {
-     "photo": "#a99c90",
-     "model": "#a6988c",
-     "dL": -0.014
+     "photo": "#81675d",
+     "model": "#907367",
+     "dL": 0.049
     },
     "glazing": {
-     "photo": 0.42,
+     "photo": 0.43,
      "model": 0.35
     },
     "columns": {
      "photo": null,
      "model": null
     },
-    "iou": 0.655
+    "iou": 0.647
    },
    "challengers": {
-    "vogel-1921-two-storey-dormer-row": 0.183,
-    "vogel-1921-two-storey-dormer-row~m": 0.16
+    "vogel-1921-two-storey-dormer-row": 0.436,
+    "vogel-1921-two-storey-dormer-row~m": 0.206
    }
   },
   {
@@ -332,17 +277,17 @@
    "storeys3dbag": 3,
    "bagBay": null,
    "strip": {
-    "wall": "#a2968a",
-    "wallRaw": "#968c80",
+    "wall": "#70584d",
+    "wallRaw": "#816b5f",
     "skyline": {
-     "eavesM": 10.72,
-     "eavesRow": 124,
-     "confidence": 1,
+     "eavesM": 12.22,
+     "eavesRow": 64,
+     "confidence": 0.82,
      "crown": {
-      "widthM": 1.07,
-      "riseM": 1.9,
-      "topWidthM": 0.17,
-      "centre": 0.48
+      "widthM": 1.98,
+      "riseM": 1.5,
+      "topWidthM": 1.38,
+      "centre": 0.49
      }
     },
     "stucco": false,
@@ -351,77 +296,23 @@
     "frontClass": "punched",
     "doorSide": null,
     "accentSide": null,
-    "accentShare": 0.556,
+    "accentShare": 0.243,
     "structure": {
      "bayWidthM": 0,
      "bayCentre": null,
-     "balconies": true,
-     "why": "dark open axis 2.58 m at 0.3 (light 0.15): no brick spandrel between the storeys",
-     "openAxes": [
-      {
-       "widthM": 2.58,
-       "centre": 0.3,
-       "light": 0.15
-      },
-      {
-       "widthM": 0.8,
-       "centre": 0.83,
-       "light": 0.15
-      }
-     ],
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
      "slabs": []
     },
-    "voidShare": 0.05,
-    "foliageShare": 0.02
+    "voidShare": 0.02,
+    "foliageShare": 0.04
    },
-   "status": "placed",
-   "type": "vogel-1921-two-storey-dormer-row",
-   "score": 1,
-   "placement": {
-    "type": "vogel-1921-two-storey-dormer-row",
-    "measuredPalette": {
-     "brick": "#a2968a",
-     "evidence": "strip 2025-09-22 span 778-1034: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    },
-    "mirror": true
-   },
-   "notes": [
-    "door unread: mirrored, the opposite of 124605",
-    "crown flat-dormer (type default)"
-   ],
-   "likeness": {
-    "pandId": "0363100012153865",
-    "ncc": 0.374,
-    "nccRaw": 0.374,
-    "shiftM": [
-     0.05,
-     -0.4
-    ],
-    "usable": 0.74,
-    "abstain": null,
-    "verdict": "WARN",
-    "reasons": [
-     "mask IoU 0.408 < 0.45"
-    ],
-    "wall": {
-     "photo": "#a4978b",
-     "model": "#a5998d",
-     "dL": 0.006
-    },
-    "glazing": {
-     "photo": 0.3,
-     "model": 0.36
-    },
-    "columns": {
-     "photo": null,
-     "model": null
-    },
-    "iou": 0.408
-   },
-   "challengers": {
-    "vogel-1921-two-storey-dormer-row~m": 0.374,
-    "vogel-1921-two-storey-dormer-row": 0.128
-   }
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Opus strip verdict 2026-11-10: gable crown pin added (verdict): held with the gable runs",
+   "likeness": null,
+   "challengers": {}
   }
  ]
 }

@@ -2,18 +2,17 @@
  "street": "Lange Vogelstraat",
  "seed": "0363100012141706",
  "members": [
-  "0363100012114049",
-  "0363100012117598",
-  "0363100012135488"
+  "0363100012141706",
+  "0363100012144274"
  ],
  "ends": [
   {
    "side": "left",
-   "reason": "run of vogel-1-15: 063241 held (auto-place.json)"
+   "reason": "trimmed at 0363100012141706 (face continues: 067531)"
   },
   {
    "side": "right",
-   "reason": "trimmed at 0363100012135488 (face continues: 120731)"
+   "reason": "run of vogel-1-15: 128397 held (auto-place.json)"
   }
  ],
  "rejected": [
@@ -561,31 +560,21 @@
  "areaHalfSizeM": 90,
  "pands": [
   {
-   "pandId": "0363100012114049",
-   "alongM": 33.01,
+   "pandId": "0363100012141706",
+   "alongM": 0,
    "widthM": 5,
-   "eavesM": 4.16,
-   "roofMaxM": 7.14,
+   "eavesM": 4.36,
+   "roofMaxM": 7.21,
    "storeys3dbag": 2,
    "builtYear": 1918,
    "uncertainty": []
   },
   {
-   "pandId": "0363100012117598",
-   "alongM": 38.01,
+   "pandId": "0363100012144274",
+   "alongM": 5,
    "widthM": 5,
-   "eavesM": 4.15,
-   "roofMaxM": 7.13,
-   "storeys3dbag": 2,
-   "builtYear": 1918,
-   "uncertainty": []
-  },
-  {
-   "pandId": "0363100012135488",
-   "alongM": 43.01,
-   "widthM": 5,
-   "eavesM": 4.12,
-   "roofMaxM": 7.14,
+   "eavesM": 4.19,
+   "roofMaxM": 7.19,
    "storeys3dbag": 2,
    "builtYear": 1918,
    "uncertainty": []

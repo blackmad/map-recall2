@@ -3,7 +3,7 @@
  "street": "Eerste Vogelstraat",
  "library": "vogelbuurt",
  "stripDate": "2025-09-22",
- "seconds": 2.36,
+ "seconds": 2.24,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -61,10 +61,10 @@
    "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
    "likeness": {
     "pandId": "0363100012121416",
-    "ncc": 0.305,
-    "nccRaw": 0.305,
+    "ncc": 0.365,
+    "nccRaw": 0.365,
     "shiftM": [
-     0.05,
+     0,
      -0.3
     ],
     "usable": 0.79,
@@ -75,8 +75,8 @@
     ],
     "wall": {
      "photo": "#62544e",
-     "model": "#a37d6a",
-     "dL": 0.182
+     "model": "#8e6c5a",
+     "dL": 0.11
     },
     "glazing": {
      "photo": 0.32,
@@ -89,7 +89,7 @@
     "iou": 0.266
    },
    "challengers": {
-    "vogel-1918-cottage-2axis": 0.305
+    "vogel-1918-cottage-2axis": 0.365
    }
   },
   {
@@ -149,7 +149,7 @@
    "likeness": {
     "pandId": "0363100012116965",
     "ncc": null,
-    "nccRaw": 0.524,
+    "nccRaw": 0.527,
     "shiftM": [
      0.25,
      0.2
@@ -162,8 +162,8 @@
     ],
     "wall": {
      "photo": "#685a52",
-     "model": "#a37d6a",
-     "dL": 0.163
+     "model": "#8e6c5a",
+     "dL": 0.09
     },
     "glazing": {
      "photo": 0.75,
@@ -177,7 +177,7 @@
    },
    "challengers": {
     "vogel-1918-cottage-3axis": null,
-    "vogel-1918-cottage-3axis~m": null
+    "vogel-1918-cottage-3axis~m": 0.258
    }
   },
   {
@@ -237,7 +237,7 @@
    "likeness": {
     "pandId": "0363100012094056",
     "ncc": null,
-    "nccRaw": 0.472,
+    "nccRaw": 0.431,
     "shiftM": [
      -0.3,
      0.05
@@ -251,8 +251,8 @@
     ],
     "wall": {
      "photo": "#e1bda9",
-     "model": "#a37d6a",
-     "dL": -0.245
+     "model": "#8e6c5a",
+     "dL": -0.318
     },
     "glazing": {
      "photo": 0.98,

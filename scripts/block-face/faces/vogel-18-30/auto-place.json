@@ -3,7 +3,7 @@
  "street": "Eerste Vogelstraat",
  "library": "vogelbuurt",
  "stripDate": "2016-08-16",
- "seconds": 2.11,
+ "seconds": 0.99,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -154,8 +154,8 @@
    "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
    "likeness": {
     "pandId": "0363100012127241",
-    "ncc": 0.297,
-    "nccRaw": 0.297,
+    "ncc": 0.327,
+    "nccRaw": 0.327,
     "shiftM": [
      0.2,
      0.05
@@ -164,13 +164,13 @@
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "wall dL -0.16",
+     "wall dL -0.24",
      "glazing  mean 0.29 vs photo 0.15"
     ],
     "wall": {
      "photo": "#cead93",
-     "model": "#a37d6a",
-     "dL": -0.165
+     "model": "#8e6c5a",
+     "dL": -0.237
     },
     "glazing": {
      "photo": 0.15,
@@ -183,7 +183,7 @@
     "iou": 0.308
    },
    "challengers": {
-    "vogel-1918-cottage-3axis": 0.297
+    "vogel-1918-cottage-3axis": 0.327
    }
   },
   {
@@ -238,7 +238,7 @@
    "likeness": {
     "pandId": "0363100012084233",
     "ncc": null,
-    "nccRaw": 0.809,
+    "nccRaw": 0.866,
     "shiftM": [
      0.25,
      -0.35
@@ -251,8 +251,8 @@
     ],
     "wall": {
      "photo": "#bd9881",
-     "model": "#a37d6a",
-     "dL": -0.096
+     "model": "#8e6c5a",
+     "dL": -0.169
     },
     "glazing": {
      "photo": 0.36,
@@ -315,12 +315,12 @@
     "foliageShare": 0.12
    },
    "status": "held",
-   "stage": "likeness",
-   "reason": "edge NCC 0.127 < 0.15 (photo vs model body; likeness.ts WARN: columns none vs photo 5; mask IoU 0.281 < 0.45)",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
    "likeness": {
     "pandId": "0363100012118497",
-    "ncc": 0.127,
-    "nccRaw": 0.127,
+    "ncc": 0.213,
+    "nccRaw": 0.213,
     "shiftM": [
      0.4,
      -0.05
@@ -334,8 +334,8 @@
     ],
     "wall": {
      "photo": "#a58369",
-     "model": "#a37d6a",
-     "dL": -0.002
+     "model": "#8e6c5a",
+     "dL": -0.075
     },
     "glazing": {
      "photo": 0.27,
@@ -348,7 +348,7 @@
     "iou": 0.281
    },
    "challengers": {
-    "vogel-1918-cottage-3axis~m": 0.127
+    "vogel-1918-cottage-3axis~m": 0.213
    }
   },
   {

@@ -3,7 +3,7 @@
  "street": "Derde Vogelstraat",
  "library": "vogelbuurt",
  "stripDate": "2025-09-22",
- "seconds": 2.63,
+ "seconds": 1.14,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -257,8 +257,8 @@
    "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
    "likeness": {
     "pandId": "0363100012076566",
-    "ncc": 0.288,
-    "nccRaw": 0.288,
+    "ncc": 0.337,
+    "nccRaw": 0.337,
     "shiftM": [
      -0.4,
      0.1
@@ -267,13 +267,12 @@
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "wall dL +0.14",
      "glazing  mean 0.34 vs photo 0.90"
     ],
     "wall": {
      "photo": "#7f5446",
-     "model": "#a37d6a",
-     "dL": 0.141
+     "model": "#8e6c5a",
+     "dL": 0.069
     },
     "glazing": {
      "photo": 0.9,
@@ -286,7 +285,7 @@
     "iou": 0.393
    },
    "challengers": {
-    "vogel-1918-cottage-2axis~m": 0.288
+    "vogel-1918-cottage-2axis~m": 0.337
    }
   },
   {
@@ -332,16 +331,16 @@
    },
    "status": "held",
    "stage": "likeness",
-   "reason": "edge NCC 0.082 < 0.15 (photo vs model body; likeness.ts FAIL: glazing  mean 0.35 vs photo 0.08)",
+   "reason": "edge NCC 0.139 < 0.15 (photo vs model body; likeness.ts FAIL: glazing  mean 0.35 vs photo 0.08)",
    "likeness": {
     "pandId": "0363100012099269",
-    "ncc": 0.082,
-    "nccRaw": 0.082,
+    "ncc": 0.139,
+    "nccRaw": 0.139,
     "shiftM": [
-     -0.4,
+     0.05,
      0.1
     ],
-    "usable": 0.98,
+    "usable": 0.97,
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
@@ -349,8 +348,8 @@
     ],
     "wall": {
      "photo": "#895e4f",
-     "model": "#a37d6a",
-     "dL": 0.104
+     "model": "#8e6c5a",
+     "dL": 0.031
     },
     "glazing": {
      "photo": 0.08,
@@ -363,7 +362,7 @@
     "iou": 0.259
    },
    "challengers": {
-    "vogel-1918-cottage-3axis": 0.082
+    "vogel-1918-cottage-3axis": 0.139
    }
   },
   {

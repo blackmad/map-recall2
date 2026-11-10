@@ -3,7 +3,7 @@
  "street": "Brede Vogelstraat",
  "library": "vogelbuurt",
  "stripDate": "2025-09-22",
- "seconds": 2.45,
+ "seconds": 2.95,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -171,8 +171,8 @@
    "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
    "likeness": {
     "pandId": "0363100012123207",
-    "ncc": 0.39,
-    "nccRaw": 0.39,
+    "ncc": 0.396,
+    "nccRaw": 0.396,
     "shiftM": [
      0.15,
      0.4
@@ -186,8 +186,8 @@
     ],
     "wall": {
      "photo": "#353330",
-     "model": "#a37d6a",
-     "dL": 0.329
+     "model": "#8e6c5a",
+     "dL": 0.257
     },
     "glazing": {
      "photo": 0.12,
@@ -200,7 +200,7 @@
     "iou": 0.342
    },
    "challengers": {
-    "vogel-1918-cottage-2axis": 0.39
+    "vogel-1918-cottage-2axis": 0.396
    }
   },
   {
@@ -256,17 +256,17 @@
    },
    "status": "held",
    "stage": "likeness",
-   "reason": "no photo evidence (usable photo 34 % < 50 %) and no passing same-type neighbour",
+   "reason": "no photo evidence (usable photo 35 % < 50 %) and no passing same-type neighbour",
    "likeness": {
     "pandId": "0363100012087612",
     "ncc": null,
-    "nccRaw": 0.161,
+    "nccRaw": 0.234,
     "shiftM": [
-     0.2,
+     0.25,
      0.05
     ],
-    "usable": 0.34,
-    "abstain": "usable photo 34 % < 50 %",
+    "usable": 0.35,
+    "abstain": "usable photo 35 % < 50 %",
     "verdict": "NO EVIDENCE",
     "reasons": [
      "foliage 34 % > 25 %",
@@ -274,8 +274,8 @@
     ],
     "wall": {
      "photo": "#737974",
-     "model": "#a37d6a",
-     "dL": 0.065
+     "model": "#8e6c5a",
+     "dL": -0.008
     },
     "glazing": {
      "photo": 0.73,
@@ -337,13 +337,13 @@
    "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
    "likeness": {
     "pandId": "0363100012133910",
-    "ncc": 0.288,
-    "nccRaw": 0.288,
+    "ncc": 0.294,
+    "nccRaw": 0.294,
     "shiftM": [
-     0.4,
+     0.35,
      0.4
     ],
-    "usable": 0.52,
+    "usable": 0.53,
     "abstain": null,
     "verdict": "NO EVIDENCE",
     "reasons": [
@@ -351,8 +351,8 @@
     ],
     "wall": {
      "photo": "#413d3b",
-     "model": "#a37d6a",
-     "dL": 0.284
+     "model": "#8e6c5a",
+     "dL": 0.212
     },
     "glazing": {
      "photo": 0.38,
@@ -365,7 +365,7 @@
     "iou": 0.402
    },
    "challengers": {
-    "vogel-1918-cottage-2axis": 0.288
+    "vogel-1918-cottage-2axis": 0.294
    }
   }
  ]

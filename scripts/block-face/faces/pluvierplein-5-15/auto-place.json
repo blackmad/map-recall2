@@ -3,7 +3,7 @@
  "street": "Pluvierplein",
  "library": "vogelbuurt",
  "stripDate": "2025-09-22",
- "seconds": 10.82,
+ "seconds": 1.76,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -13,26 +13,7 @@
   "widthSlackM": 0.4,
   "flatRoofRiseM": 1.5
  },
- "runs": [
-  {
-   "face": "pluvierplein-5-15-r1",
-   "pands": [
-    "0363100012070701",
-    "0363100012151759"
-   ],
-   "passed": true,
-   "triangles": 1186
-  },
-  {
-   "face": "pluvierplein-5-15-r2",
-   "pands": [
-    "0363100012149277",
-    "0363100012125723"
-   ],
-   "passed": true,
-   "triangles": 1194
-  }
- ],
+ "runs": [],
  "pands": [
   {
    "pandId": "0363100012070701",
@@ -80,58 +61,11 @@
     "voidShare": 0.02,
     "foliageShare": 0.06
    },
-   "status": "placed",
-   "type": "vogel-1921-two-storey-dormer-row",
-   "score": 1,
-   "placement": {
-    "type": "vogel-1921-two-storey-dormer-row",
-    "measuredPalette": {
-     "brick": "#8c8f8a",
-     "evidence": "strip 2025-09-22 span 0-268: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    },
-    "crown": "step-gable",
-    "paletteOverrides": {
-     "brick": "#968a80"
-    }
-   },
-   "notes": [
-    "door left",
-    "crown step-gable: reviewer pin (Pluvierplein 5: strip: a pointed brick gable end of the block (apex about 12.6 m, one window in the gable), not a dormer house)",
-    "palette pinned: Pluvierplein (2025-09-22, cyan cast: sky #7fd3e0 at the top of the strip): measured wall #929690 / #868e82 is the cast, the neighbouring Pelikaanstraat brick reads #a9a097 on the same strip; one warm grey for the plein"
-   ],
-   "likeness": {
-    "pandId": "0363100012070701",
-    "ncc": 0.344,
-    "nccRaw": 0.344,
-    "shiftM": [
-     -0.2,
-     -0.1
-    ],
-    "usable": 0.74,
-    "abstain": null,
-    "verdict": "NO EVIDENCE",
-    "reasons": [
-     "foliage 26 % > 25 %"
-    ],
-    "wall": {
-     "photo": "#8c8f8a",
-     "model": "#a3988f",
-     "dL": 0.049
-    },
-    "glazing": {
-     "photo": 0.25,
-     "model": 0.38
-    },
-    "columns": {
-     "photo": null,
-     "model": null
-    },
-    "iou": 0.46
-   },
-   "challengers": {
-    "vogel-1921-two-storey-dormer-row": 0.391,
-    "vogel-1921-two-storey-dormer-row~m": 0.17
-   }
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Opus strip verdict 2026-11-10: step-gable run pluvierplein-5-15-r1; held until the coordinator sends the correctly mirrored non-gable pands back for another Opus look",
+   "likeness": null,
+   "challengers": {}
   },
   {
    "pandId": "0363100012151759",
@@ -179,56 +113,11 @@
     "voidShare": 0,
     "foliageShare": 0.48
    },
-   "status": "placed",
-   "type": "vogel-1921-two-storey-dormer-row",
-   "score": 1,
-   "placement": {
-    "type": "vogel-1921-two-storey-dormer-row",
-    "mirror": true,
-    "paletteOverrides": {
-     "brick": "#968a80"
-    }
-   },
-   "notes": [
-    "door right: mirrored",
-    "crown flat-dormer (type default)",
-    "palette pinned: Pluvierplein (2025-09-22, cyan cast: sky #7fd3e0 at the top of the strip): measured wall #929690 / #868e82 is the cast, the neighbouring Pelikaanstraat brick reads #a9a097 on the same strip; one warm grey for the plein",
-    "no photo evidence of its own (usable photo 27 % < 50 %); placed on row evidence from 070701",
-    "no photo evidence of its own (usable photo 29 % < 50 %); placed on row evidence from 070701"
-   ],
-   "likeness": {
-    "pandId": "0363100012151759",
-    "ncc": null,
-    "nccRaw": 0.278,
-    "shiftM": [
-     0,
-     -0.05
-    ],
-    "usable": 0.29,
-    "abstain": "usable photo 29 % < 50 %",
-    "verdict": "NO EVIDENCE",
-    "reasons": [
-     "foliage 46 % > 25 %"
-    ],
-    "wall": {
-     "photo": "#888c85",
-     "model": "#a3988f",
-     "dL": 0.065
-    },
-    "glazing": {
-     "photo": 0.33,
-     "model": 0.33
-    },
-    "columns": {
-     "photo": 2,
-     "model": null
-    },
-    "iou": 0.641
-   },
-   "challengers": {
-    "vogel-1921-two-storey-dormer-row~m": null,
-    "vogel-1921-two-storey-dormer-row": null
-   }
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Opus strip verdict 2026-11-10: step-gable run pluvierplein-5-15-r1; held until the coordinator sends the correctly mirrored non-gable pands back for another Opus look",
+   "likeness": null,
+   "challengers": {}
   },
   {
    "pandId": "0363100012061542",
@@ -278,35 +167,35 @@
    },
    "status": "held",
    "stage": "likeness",
-   "reason": "no photo evidence (usable photo 26 % < 50 %) and no passing same-type neighbour",
+   "reason": "no photo evidence (usable photo 27 % < 50 %) and no passing same-type neighbour",
    "likeness": {
     "pandId": "0363100012061542",
     "ncc": null,
-    "nccRaw": 0.191,
+    "nccRaw": 0.181,
     "shiftM": [
      -0.4,
      -0.4
     ],
-    "usable": 0.26,
-    "abstain": "usable photo 26 % < 50 %",
+    "usable": 0.27,
+    "abstain": "usable photo 27 % < 50 %",
     "verdict": "NO EVIDENCE",
     "reasons": [
-     "foliage 36 % > 25 %"
+     "foliage 34 % > 25 %"
     ],
     "wall": {
-     "photo": "#8c928b",
+     "photo": "#8e938d",
      "model": "#986655",
-     "dL": -0.094
+     "dL": -0.1
     },
     "glazing": {
-     "photo": 0.25,
+     "photo": 0.28,
      "model": 0.33
     },
     "columns": {
-     "photo": 2,
+     "photo": null,
      "model": null
     },
-    "iou": 0.232
+    "iou": 0.258
    },
    "challengers": {
     "vogel-1921-two-storey-dormer-row~m": null,
@@ -366,35 +255,35 @@
    },
    "status": "held",
    "stage": "likeness",
-   "reason": "no photo evidence (usable photo 28 % < 50 %) and no passing same-type neighbour",
+   "reason": "no photo evidence (usable photo 22 % < 50 %) and no passing same-type neighbour",
    "likeness": {
     "pandId": "0363100012141895",
     "ncc": null,
-    "nccRaw": -0.004,
+    "nccRaw": -0.002,
     "shiftM": [
-     0,
-     0.35
+     -0.15,
+     0.1
     ],
-    "usable": 0.28,
-    "abstain": "usable photo 28 % < 50 %",
+    "usable": 0.22,
+    "abstain": "usable photo 22 % < 50 %",
     "verdict": "NO EVIDENCE",
     "reasons": [
-     "foliage 44 % > 25 %"
+     "foliage 40 % > 25 %"
     ],
     "wall": {
-     "photo": "#949992",
+     "photo": "#949891",
      "model": "#986655",
-     "dL": -0.122
+     "dL": -0.118
     },
     "glazing": {
-     "photo": 0.2,
-     "model": 0.33
+     "photo": 0.19,
+     "model": 0.34
     },
     "columns": {
-     "photo": null,
-     "model": null
+     "photo": 3,
+     "model": 3
     },
-    "iou": 0.287
+    "iou": 0.283
    },
    "challengers": {
     "vogel-1921-two-storey-dormer-row": null,
@@ -442,56 +331,11 @@
     "voidShare": 0.01,
     "foliageShare": 0.83
    },
-   "status": "placed",
-   "type": "vogel-1921-two-storey-dormer-row",
-   "score": 1,
-   "placement": {
-    "type": "vogel-1921-two-storey-dormer-row",
-    "paletteOverrides": {
-     "brick": "#968a80"
-    }
-   },
-   "notes": [
-    "door left",
-    "crown flat-dormer (type default)",
-    "palette pinned: Pluvierplein (2025-09-22, cyan cast: sky #7fd3e0 at the top of the strip): measured wall #929690 / #868e82 is the cast, the neighbouring Pelikaanstraat brick reads #a9a097 on the same strip; one warm grey for the plein",
-    "no photo evidence of its own (usable photo 3 % < 50 %); placed on row evidence from 125723",
-    "no photo evidence of its own (usable photo 3 % < 50 %); placed on row evidence from 125723"
-   ],
-   "likeness": {
-    "pandId": "0363100012149277",
-    "ncc": null,
-    "nccRaw": 0.2,
-    "shiftM": [
-     -0.4,
-     -0.35
-    ],
-    "usable": 0.03,
-    "abstain": "usable photo 3 % < 50 %",
-    "verdict": "NO EVIDENCE",
-    "reasons": [
-     "usable upper cells 19 % < 40 %",
-     "foliage 48 % > 25 %"
-    ],
-    "wall": {
-     "photo": "#b4b9b2",
-     "model": "#a3988f",
-     "dL": -0.112
-    },
-    "glazing": {
-     "photo": 0.16,
-     "model": 0.34
-    },
-    "columns": {
-     "photo": 3,
-     "model": null
-    },
-    "iou": 0.373
-   },
-   "challengers": {
-    "vogel-1921-two-storey-dormer-row": null,
-    "vogel-1921-two-storey-dormer-row~m": null
-   }
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Opus strip verdict 2026-11-10: step-gable run pluvierplein-5-15-r2; held until the coordinator sends the correctly mirrored non-gable pands back for another Opus look",
+   "likeness": null,
+   "challengers": {}
   },
   {
    "pandId": "0363100012125723",
@@ -539,59 +383,11 @@
     "voidShare": 0.01,
     "foliageShare": 0.09
    },
-   "status": "placed",
-   "type": "vogel-1921-two-storey-dormer-row",
-   "score": 1,
-   "placement": {
-    "type": "vogel-1921-two-storey-dormer-row",
-    "mirror": true,
-    "measuredPalette": {
-     "brick": "#a7aca6",
-     "evidence": "strip 2025-09-22 span 1288-1547: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    },
-    "crown": "step-gable",
-    "paletteOverrides": {
-     "brick": "#968a80"
-    }
-   },
-   "notes": [
-    "door right: mirrored",
-    "crown step-gable: reviewer pin (Pluvierplein 15: strip: a pointed brick gable end of the block (apex about 12.6 m, one window in the gable), not a dormer house)",
-    "palette pinned: Pluvierplein (2025-09-22, cyan cast: sky #7fd3e0 at the top of the strip): measured wall #929690 / #868e82 is the cast, the neighbouring Pelikaanstraat brick reads #a9a097 on the same strip; one warm grey for the plein"
-   ],
-   "likeness": {
-    "pandId": "0363100012125723",
-    "ncc": 0.318,
-    "nccRaw": 0.318,
-    "shiftM": [
-     0.1,
-     0
-    ],
-    "usable": 0.71,
-    "abstain": null,
-    "verdict": "NO EVIDENCE",
-    "reasons": [
-     "washed out 40 % > 30 %"
-    ],
-    "wall": {
-     "photo": "#a4a9a3",
-     "model": "#a3988f",
-     "dL": -0.051
-    },
-    "glazing": {
-     "photo": 0.39,
-     "model": 0.36
-    },
-    "columns": {
-     "photo": null,
-     "model": null
-    },
-    "iou": 0.516
-   },
-   "challengers": {
-    "vogel-1921-two-storey-dormer-row~m": 0.303,
-    "vogel-1921-two-storey-dormer-row": 0.239
-   }
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Opus strip verdict 2026-11-10: step-gable run pluvierplein-5-15-r2; held until the coordinator sends the correctly mirrored non-gable pands back for another Opus look",
+   "likeness": null,
+   "challengers": {}
   }
  ]
 }

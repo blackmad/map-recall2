@@ -3,7 +3,7 @@
  "street": "Vijfde Vogelstraat",
  "library": "vogelbuurt",
  "stripDate": "2025-09-22",
- "seconds": 1.77,
+ "seconds": 1.55,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -119,10 +119,10 @@
    "likeness": {
     "pandId": "0363100012140588",
     "ncc": null,
-    "nccRaw": 0.352,
+    "nccRaw": 0.36,
     "shiftM": [
      0.25,
-     0.15
+     0.2
     ],
     "usable": 0.33,
     "abstain": "usable photo 33 % < 50 %",
@@ -132,8 +132,8 @@
     ],
     "wall": {
      "photo": "#e9c3ad",
-     "model": "#a37d6a",
-     "dL": -0.269
+     "model": "#8e6c5a",
+     "dL": -0.341
     },
     "glazing": {
      "photo": 0.36,
@@ -201,7 +201,7 @@
    "likeness": {
     "pandId": "0363100012100504",
     "ncc": null,
-    "nccRaw": 0.291,
+    "nccRaw": 0.308,
     "shiftM": [
      0.1,
      0.15
@@ -215,8 +215,8 @@
     ],
     "wall": {
      "photo": "#d2a68f",
-     "model": "#a37d6a",
-     "dL": -0.165
+     "model": "#8e6c5a",
+     "dL": -0.237
     },
     "glazing": {
      "photo": 1,
@@ -284,12 +284,12 @@
     "foliageShare": 0.04
    },
    "status": "held",
-   "stage": "likeness",
-   "reason": "edge NCC 0.149 < 0.15 (photo vs model body; likeness.ts NO EVIDENCE: washed out 40 % > 30 %)",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
    "likeness": {
     "pandId": "0363100012129706",
-    "ncc": 0.149,
-    "nccRaw": 0.149,
+    "ncc": 0.198,
+    "nccRaw": 0.198,
     "shiftM": [
      0.15,
      0.3
@@ -302,8 +302,8 @@
     ],
     "wall": {
      "photo": "#54504b",
-     "model": "#a37d6a",
-     "dL": 0.216
+     "model": "#8e6c5a",
+     "dL": 0.143
     },
     "glazing": {
      "photo": 0.12,
@@ -316,7 +316,7 @@
     "iou": 0.378
    },
    "challengers": {
-    "vogel-1918-cottage-3axis": 0.149
+    "vogel-1918-cottage-3axis": 0.198
    }
   }
  ]

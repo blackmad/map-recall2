@@ -30,6 +30,9 @@
     "measuredPalette": {
      "brick": "#3a2e2a",
      "evidence": "strip 2019-11-15 span 0-263: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#030202"
     }
    },
    "groundFloor": {
@@ -42,6 +45,19 @@
     "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
    },
    "rhythm": {
+    "bays": "narrow window over the door, wide window",
+    "identicalBays": "no",
+    "windowsPerStorey": "ground: door + wide window | 1: narrow + wide",
+    "symmetry": "mirror pairs about the party wall",
+    "groundFloor": "double doors paired across the party wall",
+    "signage": "none",
+    "roofline": "grey cornice slab; a flat dormer over the wide window, a crow-stepped gable on block ends",
+    "photoRows": [
+     2,
+     2,
+     1
+    ],
+    "photoGroundRows": 1,
     "citation": "auto-place: vogel-1921-two-storey-dormer-row scored 1 on storeys 1, roof 1, stucco 1; strip 2019-11-15 span 0-263"
    }
   },
@@ -55,30 +71,9 @@
      "brick": "#403430",
      "evidence": "strip 2019-11-15 span 263-519: trim-normalised wall (buildingRecipe/measureFacade.ts)"
     },
-    "mirror": true
-   },
-   "groundFloor": {
-    "use": "residential",
-    "bag": [
-     "woonfunctie"
-    ],
-    "photoDate": "2019-11-15",
-    "agreement": "bag-only",
-    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
-   },
-   "rhythm": {
-    "citation": "auto-place: vogel-1921-two-storey-dormer-row scored 0.84 on storeys 1, roof 1, stucco 1, columns 0.4; strip 2019-11-15 span 263-519"
-   }
-  },
-  {
-   "pandId": "0363100012116850",
-   "slug": "meeuwenplein-116850",
-   "address": "Meeuwenplein 13",
-   "type": {
-    "type": "vogel-1921-two-storey-dormer-row",
-    "measuredPalette": {
-     "brick": "#392e2a",
-     "evidence": "strip 2019-11-15 span 519-768: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    "mirror": true,
+    "paletteOverrides": {
+     "brick": "#030202"
     }
    },
    "groundFloor": {
@@ -91,6 +86,59 @@
     "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
    },
    "rhythm": {
+    "bays": "narrow window over the door, wide window",
+    "identicalBays": "no",
+    "windowsPerStorey": "ground: door + wide window | 1: narrow + wide",
+    "symmetry": "mirror pairs about the party wall",
+    "groundFloor": "double doors paired across the party wall",
+    "signage": "none",
+    "roofline": "grey cornice slab; a flat dormer over the wide window, a crow-stepped gable on block ends",
+    "photoRows": [
+     2,
+     2,
+     1
+    ],
+    "photoGroundRows": 1,
+    "citation": "auto-place: vogel-1921-two-storey-dormer-row scored 0.84 on storeys 1, roof 1, stucco 1, columns 0.4; strip 2019-11-15 span 263-519"
+   }
+  },
+  {
+   "pandId": "0363100012116850",
+   "slug": "meeuwenplein-116850",
+   "address": "Meeuwenplein 13",
+   "type": {
+    "type": "vogel-1921-two-storey-dormer-row",
+    "measuredPalette": {
+     "brick": "#392e2a",
+     "evidence": "strip 2019-11-15 span 519-768: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#030202"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2019-11-15",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "bays": "narrow window over the door, wide window",
+    "identicalBays": "no",
+    "windowsPerStorey": "ground: door + wide window | 1: narrow + wide",
+    "symmetry": "mirror pairs about the party wall",
+    "groundFloor": "double doors paired across the party wall",
+    "signage": "none",
+    "roofline": "grey cornice slab; a flat dormer over the wide window, a crow-stepped gable on block ends",
+    "photoRows": [
+     2,
+     2,
+     1
+    ],
+    "photoGroundRows": 1,
     "citation": "auto-place: vogel-1921-two-storey-dormer-row scored 1 on storeys 1, roof 1, stucco 1; strip 2019-11-15 span 519-768"
    }
   }

@@ -3,7 +3,7 @@
  "street": "Vierde Vogelstraat",
  "library": "vogelbuurt",
  "stripDate": "2017-05-15",
- "seconds": 1.98,
+ "seconds": 0.15,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -13,17 +13,7 @@
   "widthSlackM": 0.4,
   "flatRoofRiseM": 1.5
  },
- "runs": [
-  {
-   "face": "vogel-2-6-r1",
-   "pands": [
-    "0363100012120334",
-    "0363100012083966"
-   ],
-   "passed": true,
-   "triangles": 628
-  }
- ],
+ "runs": [],
  "pands": [
   {
    "pandId": "0363100012129359",
@@ -166,53 +156,11 @@
     "voidShare": 0,
     "foliageShare": 0.12
    },
-   "status": "placed",
-   "type": "vogel-1918-cottage-3axis",
-   "score": 1,
-   "runnerUp": {
-    "typeId": "vogel-1918-cottage-2axis",
-    "score": 0
-   },
-   "placement": {
-    "type": "vogel-1918-cottage-3axis",
-    "mirror": true
-   },
-   "notes": [
-    "door left: mirrored",
-    "crown gutter (type default)"
-   ],
-   "likeness": {
-    "pandId": "0363100012120334",
-    "ncc": 0.235,
-    "nccRaw": 0.235,
-    "shiftM": [
-     -0.4,
-     0.1
-    ],
-    "usable": 0.73,
-    "abstain": null,
-    "verdict": "FAIL",
-    "reasons": [
-     "glazing  mean 0.38 vs photo 0.64"
-    ],
-    "wall": {
-     "photo": "#7b706b",
-     "model": "#a37d6a",
-     "dL": 0.076
-    },
-    "glazing": {
-     "photo": 0.64,
-     "model": 0.38
-    },
-    "columns": {
-     "photo": null,
-     "model": 2
-    },
-    "iou": 0.553
-   },
-   "challengers": {
-    "vogel-1918-cottage-3axis~m": 0.235
-   }
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": null,
+   "challengers": {}
   },
   {
    "pandId": "0363100012083966",
@@ -255,55 +203,11 @@
     "voidShare": 0,
     "foliageShare": 0.02
    },
-   "status": "placed",
-   "type": "vogel-1918-cottage-2axis",
-   "score": 1,
-   "runnerUp": {
-    "typeId": "vogel-1918-cottage-3axis",
-    "score": 0
-   },
-   "placement": {
-    "type": "vogel-1918-cottage-2axis",
-    "mirror": true
-   },
-   "notes": [
-    "door left: mirrored",
-    "crown gutter (type default)"
-   ],
-   "likeness": {
-    "pandId": "0363100012083966",
-    "ncc": 0.228,
-    "nccRaw": 0.228,
-    "shiftM": [
-     0.4,
-     -0.05
-    ],
-    "usable": 0.98,
-    "abstain": null,
-    "verdict": "FAIL",
-    "reasons": [
-     "wall dL +0.53",
-     "glazing  mean 0.36 vs photo 1.00",
-     "wall family unresolved (#000000 is dark and neutral, brick courses not resolved): lightness and hue judged only"
-    ],
-    "wall": {
-     "photo": "#000000",
-     "model": "#a37d6a",
-     "dL": 0.527
-    },
-    "glazing": {
-     "photo": 1,
-     "model": 0.36
-    },
-    "columns": {
-     "photo": null,
-     "model": null
-    },
-    "iou": 0.379
-   },
-   "challengers": {
-    "vogel-1918-cottage-2axis~m": 0.228
-   }
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Opus strip verdict 2026-11-10: photo reads window then door, model draws door then window; flip the mirror (verdict)",
+   "likeness": null,
+   "challengers": {}
   }
  ]
 }

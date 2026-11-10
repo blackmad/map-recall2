@@ -5,9 +5,9 @@
  "street": "Zamenhofstraat",
  "sources": [
   {
-   "id": "strip-2025-09-22",
+   "id": "strip-2022-05-10",
    "kind": "street-panorama",
-   "capturedAt": "2025-09-22",
+   "capturedAt": "2022-05-10",
    "image": "staging/block-face/zamenhof-6-12-r1/strip.jpg",
    "license": "Gemeente Amsterdam panorama, CC BY 4.0"
   }
@@ -22,65 +22,74 @@
  ],
  "houses": [
   {
-   "pandId": "0363100012064115",
-   "slug": "zamenhof-064115",
-   "address": "Zamenhofstraat 12",
-   "type": {
-    "type": "vogel-1918-timber-band-cottage",
-    "mirror": true
-   },
-   "groundFloor": {
-    "use": "residential",
-    "bag": [
-     "woonfunctie"
-    ],
-    "photoDate": "2025-09-22",
-    "agreement": "bag-only",
-    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
-   },
-   "rhythm": {
-    "citation": "auto-place: vogel-1918-timber-band-cottage scored 1 on eaves 1, storeys 1, stucco 1; strip 2025-09-22 span 0-200"
-   }
-  },
-  {
-   "pandId": "0363100012122427",
-   "slug": "zamenhof-122427",
-   "address": "Zamenhofstraat 10",
-   "type": {
-    "type": "vogel-1918-timber-band-cottage"
-   },
-   "groundFloor": {
-    "use": "residential",
-    "bag": [
-     "woonfunctie"
-    ],
-    "photoDate": "2025-09-22",
-    "agreement": "bag-only",
-    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
-   },
-   "rhythm": {
-    "citation": "auto-place: vogel-1918-timber-band-cottage scored 1 on eaves 1, storeys 1, stucco 1; strip 2025-09-22 span 200-400"
-   }
-  },
-  {
    "pandId": "0363100012085003",
    "slug": "zamenhof-085003",
    "address": "Zamenhofstraat 8",
    "type": {
     "type": "vogel-1918-timber-band-cottage",
-    "mirror": true
+    "mirror": true,
+    "paletteOverrides": {
+     "brick": "#997461"
+    }
    },
    "groundFloor": {
     "use": "residential",
     "bag": [
      "woonfunctie"
     ],
-    "photoDate": "2025-09-22",
+    "photoDate": "2022-05-10",
     "agreement": "bag-only",
     "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
    },
    "rhythm": {
-    "citation": "auto-place: vogel-1918-timber-band-cottage scored 0.77 on eaves 1, storeys 1, stucco 1, columns 0; strip 2025-09-22 span 400-600"
+    "bays": "wide window, door",
+    "identicalBays": "no",
+    "windowsPerStorey": "1 storey",
+    "symmetry": "mirror pairs about the party wall; dormers and doors pair across it",
+    "groundFloor": "door at the party wall",
+    "signage": "none",
+    "roofline": "bracketed gutter, long tiled roof, box dormer per pair",
+    "photoRows": [
+     2,
+     1
+    ],
+    "photoGroundRows": 1,
+    "citation": "auto-place: vogel-1918-timber-band-cottage scored 1 on eaves -, storeys 1, stucco 1; strip 2022-05-10 span 400-600"
+   }
+  },
+  {
+   "pandId": "0363100012110286",
+   "slug": "zamenhof-110286",
+   "address": "Zamenhofstraat 6",
+   "type": {
+    "type": "vogel-1918-timber-band-cottage",
+    "paletteOverrides": {
+     "brick": "#8b6a59"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2022-05-10",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "bays": "wide window, door",
+    "identicalBays": "no",
+    "windowsPerStorey": "1 storey",
+    "symmetry": "mirror pairs about the party wall; dormers and doors pair across it",
+    "groundFloor": "door at the party wall",
+    "signage": "none",
+    "roofline": "bracketed gutter, long tiled roof, box dormer per pair",
+    "photoRows": [
+     2,
+     1
+    ],
+    "photoGroundRows": 1,
+    "citation": "auto-place: vogel-1918-timber-band-cottage scored 0.8 on eaves 0.5, storeys 1, stucco 1; strip 2022-05-10 span 600-800"
    }
   }
  ],

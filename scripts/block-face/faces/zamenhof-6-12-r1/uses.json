@@ -6,38 +6,6 @@
  },
  "pands": [
   {
-   "pandId": "0363100012064115",
-   "addresses": [
-    "Zamenhofstraat 12"
-   ],
-   "groundUnits": [
-    {
-     "address": "Zamenhofstraat 12",
-     "use": "woonfunctie",
-     "areaM2": 48,
-     "bagId": "0363010000877866"
-    }
-   ],
-   "units": 1,
-   "osm": []
-  },
-  {
-   "pandId": "0363100012122427",
-   "addresses": [
-    "Zamenhofstraat 10"
-   ],
-   "groundUnits": [
-    {
-     "address": "Zamenhofstraat 10",
-     "use": "woonfunctie",
-     "areaM2": 48,
-     "bagId": "0363010000877865"
-    }
-   ],
-   "units": 1,
-   "osm": []
-  },
-  {
    "pandId": "0363100012085003",
    "addresses": [
     "Zamenhofstraat 8"
@@ -48,6 +16,22 @@
      "use": "woonfunctie",
      "areaM2": 48,
      "bagId": "0363010000877863"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012110286",
+   "addresses": [
+    "Zamenhofstraat 6"
+   ],
+   "groundUnits": [
+    {
+     "address": "Zamenhofstraat 6",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000877862"
     }
    ],
    "units": 1,

@@ -3,7 +3,7 @@
  "street": "Vierde Vogelstraat",
  "library": "vogelbuurt",
  "stripDate": "2022-05-10",
- "seconds": 1.85,
+ "seconds": 2.3,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -174,23 +174,23 @@
    ],
    "likeness": {
     "pandId": "0363100012137379",
-    "ncc": 0.279,
-    "nccRaw": 0.279,
+    "ncc": 0.313,
+    "nccRaw": 0.313,
     "shiftM": [
-     -0.4,
-     0.25
+     0.3,
+     0.05
     ],
-    "usable": 0.78,
+    "usable": 0.7,
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "wall dL +0.22",
+     "wall dL +0.15",
      "glazing  mean 0.30 vs photo 0.05"
     ],
     "wall": {
      "photo": "#5a4a42",
-     "model": "#a37d6a",
-     "dL": 0.222
+     "model": "#8e6c5a",
+     "dL": 0.149
     },
     "glazing": {
      "photo": 0.05,
@@ -203,7 +203,7 @@
     "iou": 0.173
    },
    "challengers": {
-    "vogel-1918-cottage-3axis~m": 0.279
+    "vogel-1918-cottage-3axis~m": 0.313
    }
   },
   {
@@ -263,8 +263,8 @@
    ],
    "likeness": {
     "pandId": "0363100012071224",
-    "ncc": 0.284,
-    "nccRaw": 0.284,
+    "ncc": 0.316,
+    "nccRaw": 0.316,
     "shiftM": [
      -0.05,
      0.15
@@ -273,13 +273,13 @@
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "wall dL +0.22",
+     "wall dL +0.15",
      "glazing  mean 0.33 vs photo 0.08"
     ],
     "wall": {
      "photo": "#5c4b41",
-     "model": "#a37d6a",
-     "dL": 0.22
+     "model": "#8e6c5a",
+     "dL": 0.147
     },
     "glazing": {
      "photo": 0.08,
@@ -292,7 +292,7 @@
     "iou": 0.25
    },
    "challengers": {
-    "vogel-1918-cottage-2axis": 0.284
+    "vogel-1918-cottage-2axis": 0.316
    }
   },
   {

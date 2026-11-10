@@ -21,12 +21,6 @@
    "reason": "Flamingostraat 10: strip: a pointed brick gable end of the block (apex about 12.6 m, one window in the gable), not a dormer house"
   },
   {
-   "pandId": "0363100012066422",
-   "type": "vogel-1921-two-storey-dormer-row",
-   "crown": "step-gable",
-   "reason": "Flamingostraat 6: strip: a pointed brick gable end of the block (apex about 12.6 m, one window in the gable), not a dormer house"
-  },
-  {
    "pandId": "0363100012129921",
    "type": "vogel-1921-two-storey-dormer-row",
    "crown": "step-gable",
@@ -67,6 +61,18 @@
    "type": "vogel-1921-two-storey-dormer-row",
    "crown": "step-gable",
    "reason": "Pluvierplein 15: strip: a pointed brick gable end of the block (apex about 12.6 m, one window in the gable), not a dormer house"
+  },
+  {
+   "pandId": "0363100012104432",
+   "type": "vogel-1921-two-storey-dormer-row",
+   "crown": "step-gable",
+   "reason": "Pelikaanstraat 3: Opus strip verdict 2026-11-10: the photo shows the gable end of the pelikaan-3-9 run"
+  },
+  {
+   "pandId": "0363100012153865",
+   "type": "vogel-1921-two-storey-dormer-row",
+   "crown": "step-gable",
+   "reason": "Pelikaanstraat 9: Opus strip verdict 2026-11-10: the photo shows the gable end of the pelikaan-3-9 run"
   }
  ]
 }

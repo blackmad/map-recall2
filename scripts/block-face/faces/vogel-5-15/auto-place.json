@@ -3,7 +3,7 @@
  "street": "Derde Vogelstraat",
  "library": "vogelbuurt",
  "stripDate": "2022-12-27",
- "seconds": 1.75,
+ "seconds": 0.33,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -13,17 +13,7 @@
   "widthSlackM": 0.4,
   "flatRoofRiseM": 1.5
  },
- "runs": [
-  {
-   "face": "vogel-5-15-r1",
-   "pands": [
-    "0363100012062516",
-    "0363100012124606"
-   ],
-   "passed": true,
-   "triangles": 681
-  }
- ],
+ "runs": [],
  "pands": [
   {
    "pandId": "0363100012065937",
@@ -245,53 +235,11 @@
     "voidShare": 0.04,
     "foliageShare": 0.26
    },
-   "status": "placed",
-   "type": "vogel-1918-cottage-3axis",
-   "score": 1,
-   "runnerUp": {
-    "typeId": "vogel-1918-cottage-2axis",
-    "score": 0
-   },
-   "placement": {
-    "type": "vogel-1918-cottage-3axis"
-   },
-   "notes": [
-    "door unread",
-    "crown gutter (type default)"
-   ],
-   "likeness": {
-    "pandId": "0363100012062516",
-    "ncc": 0.549,
-    "nccRaw": 0.549,
-    "shiftM": [
-     0.3,
-     0.05
-    ],
-    "usable": 0.52,
-    "abstain": null,
-    "verdict": "NO EVIDENCE",
-    "reasons": [
-     "foliage 28 % > 25 %"
-    ],
-    "wall": {
-     "photo": "#f3d8ba",
-     "model": "#a37d6a",
-     "dL": -0.314
-    },
-    "glazing": {
-     "photo": 0.68,
-     "model": 0.26
-    },
-    "columns": {
-     "photo": 2,
-     "model": null
-    },
-    "iou": 0.279
-   },
-   "challengers": {
-    "vogel-1918-cottage-3axis": 0.549,
-    "vogel-1918-cottage-3axis~m": 0.251
-   }
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": null,
+   "challengers": {}
   },
   {
    "pandId": "0363100012124606",
@@ -344,55 +292,11 @@
     "voidShare": 0.03,
     "foliageShare": 0.81
    },
-   "status": "placed",
-   "type": "vogel-1918-cottage-3axis",
-   "score": 1,
-   "runnerUp": {
-    "typeId": "vogel-1918-cottage-2axis",
-    "score": 0
-   },
-   "placement": {
-    "type": "vogel-1918-cottage-3axis"
-   },
-   "notes": [
-    "door unread",
-    "crown gutter (type default)",
-    "no photo evidence of its own (usable photo 3 % < 50 %); placed on row evidence from 062516"
-   ],
-   "likeness": {
-    "pandId": "0363100012124606",
-    "ncc": null,
-    "nccRaw": 0.315,
-    "shiftM": [
-     -0.4,
-     0.4
-    ],
-    "usable": 0.03,
-    "abstain": "usable photo 3 % < 50 %",
-    "verdict": "NO EVIDENCE",
-    "reasons": [
-     "usable upper cells 24 % < 40 %",
-     "foliage 66 % > 25 %"
-    ],
-    "wall": {
-     "photo": "#ddc7af",
-     "model": "#a37d6a",
-     "dL": -0.249
-    },
-    "glazing": {
-     "photo": 0.33,
-     "model": 0.37
-    },
-    "columns": {
-     "photo": 8,
-     "model": null
-    },
-    "iou": 0.434
-   },
-   "challengers": {
-    "vogel-1918-cottage-3axis": null,
-    "vogel-1918-cottage-3axis~m": null
-   }
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Opus strip verdict 2026-11-10: a hedge hides the door and the photo door looks to be on the left (verdict)",
+   "likeness": null,
+   "challengers": {}
   },
   {
    "pandId": "0363100012088357",

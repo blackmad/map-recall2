@@ -3,7 +3,7 @@
  "street": "Zamenhofstraat",
  "library": "vogelbuurt",
  "stripDate": "2025-09-22",
- "seconds": 4.62,
+ "seconds": 3.18,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -22,7 +22,7 @@
     "0363100012141264"
    ],
    "passed": true,
-   "triangles": 1368
+   "triangles": 1476
   }
  ],
  "pands": [
@@ -117,7 +117,7 @@
    },
    "challengers": {
     "vogel-1918-timber-band-cottage": 0.414,
-    "vogel-1918-timber-band-cottage~m": 0.144
+    "vogel-1918-timber-band-cottage~m": 0.168
    }
   },
   {
@@ -179,13 +179,13 @@
    ],
    "likeness": {
     "pandId": "0363100012118660",
-    "ncc": 0.367,
-    "nccRaw": 0.367,
+    "ncc": 0.357,
+    "nccRaw": 0.357,
     "shiftM": [
      -0.15,
-     0.35
+     0.4
     ],
-    "usable": 1,
+    "usable": 0.97,
     "abstain": null,
     "verdict": "WARN",
     "reasons": [
@@ -207,8 +207,8 @@
     "iou": 0.491
    },
    "challengers": {
-    "vogel-1918-timber-band-cottage~m": 0.367,
-    "vogel-1918-timber-band-cottage": 0.238
+    "vogel-1918-timber-band-cottage~m": 0.357,
+    "vogel-1918-timber-band-cottage": 0.22
    }
   },
   {
@@ -269,8 +269,8 @@
    ],
    "likeness": {
     "pandId": "0363100012141264",
-    "ncc": 0.402,
-    "nccRaw": 0.402,
+    "ncc": 0.384,
+    "nccRaw": 0.384,
     "shiftM": [
      0.15,
      0.35
@@ -298,8 +298,8 @@
     "iou": 0.15
    },
    "challengers": {
-    "vogel-1918-timber-band-cottage": 0.402,
-    "vogel-1918-timber-band-cottage~m": 0.185
+    "vogel-1918-timber-band-cottage": 0.384,
+    "vogel-1918-timber-band-cottage~m": 0.179
    }
   },
   {

@@ -3,7 +3,7 @@
  "street": "Eerste Vogelstraat",
  "library": "vogelbuurt",
  "stripDate": "2022-05-10",
- "seconds": 2,
+ "seconds": 0.34,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -13,18 +13,7 @@
   "widthSlackM": 0.4,
   "flatRoofRiseM": 1.5
  },
- "runs": [
-  {
-   "face": "vogel-2-16-r1",
-   "pands": [
-    "0363100012093588",
-    "0363100012122579",
-    "0363100012109169"
-   ],
-   "passed": true,
-   "triangles": 962
-  }
- ],
+ "runs": [],
  "pands": [
   {
    "pandId": "0363100012075795",
@@ -114,55 +103,11 @@
     "voidShare": 0.02,
     "foliageShare": 0.02
    },
-   "status": "placed",
-   "type": "vogel-1918-cottage-3axis",
-   "score": 1,
-   "runnerUp": {
-    "typeId": "vogel-1918-cottage-2axis",
-    "score": 0
-   },
-   "placement": {
-    "type": "vogel-1918-cottage-3axis",
-    "mirror": true
-   },
-   "notes": [
-    "door left: mirrored",
-    "crown gutter (type default)"
-   ],
-   "likeness": {
-    "pandId": "0363100012093588",
-    "ncc": 0.199,
-    "nccRaw": 0.199,
-    "shiftM": [
-     -0.15,
-     -0.05
-    ],
-    "usable": 1,
-    "abstain": null,
-    "verdict": "FAIL",
-    "reasons": [
-     "wall family brick vs photo paint",
-     "glazing  mean 0.26 vs photo 0.06"
-    ],
-    "wall": {
-     "photo": "#c5b8ba",
-     "model": "#a37d6a",
-     "dL": -0.22
-    },
-    "glazing": {
-     "photo": 0.06,
-     "model": 0.26
-    },
-    "columns": {
-     "photo": null,
-     "model": null
-    },
-    "iou": 0.135
-   },
-   "challengers": {
-    "vogel-1918-cottage-3axis~m": 0.199,
-    "vogel-1918-cottage-3axis": 0.277
-   }
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Opus strip verdict 2026-11-10: vogel-2-16-r1: mis-mirrored (pins to be corrected, verdict)",
+   "likeness": null,
+   "challengers": {}
   },
   {
    "pandId": "0363100012122579",
@@ -199,54 +144,11 @@
     "voidShare": 0,
     "foliageShare": 0.01
    },
-   "status": "placed",
-   "type": "vogel-1918-cottage-3axis",
-   "score": 0.8,
-   "runnerUp": {
-    "typeId": "vogel-1918-cottage-2axis",
-    "score": 0
-   },
-   "placement": {
-    "type": "vogel-1918-cottage-3axis"
-   },
-   "notes": [
-    "door unread: as drawn, the opposite of 093588",
-    "crown gutter (type default)"
-   ],
-   "likeness": {
-    "pandId": "0363100012122579",
-    "ncc": 0.182,
-    "nccRaw": 0.182,
-    "shiftM": [
-     0.2,
-     -0.05
-    ],
-    "usable": 0.96,
-    "abstain": null,
-    "verdict": "FAIL",
-    "reasons": [
-     "wall dL +0.16",
-     "glazing  mean 0.25 vs photo 0.10"
-    ],
-    "wall": {
-     "photo": "#765345",
-     "model": "#a37d6a",
-     "dL": 0.161
-    },
-    "glazing": {
-     "photo": 0.1,
-     "model": 0.25
-    },
-    "columns": {
-     "photo": null,
-     "model": null
-    },
-    "iou": 0.412
-   },
-   "challengers": {
-    "vogel-1918-cottage-3axis": 0.182,
-    "vogel-1918-cottage-3axis~m": 0.289
-   }
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Opus strip verdict 2026-11-10: vogel-2-16-r1: mis-mirrored (photo puts pand 2 doors on the left, verdict)",
+   "likeness": null,
+   "challengers": {}
   },
   {
    "pandId": "0363100012109169",
@@ -289,53 +191,11 @@
     "voidShare": 0,
     "foliageShare": 0.01
    },
-   "status": "placed",
-   "type": "vogel-1918-cottage-2axis",
-   "score": 0.8,
-   "runnerUp": {
-    "typeId": "vogel-1918-cottage-3axis",
-    "score": 0
-   },
-   "placement": {
-    "type": "vogel-1918-cottage-2axis"
-   },
-   "notes": [
-    "door right",
-    "crown gutter (type default)"
-   ],
-   "likeness": {
-    "pandId": "0363100012109169",
-    "ncc": 0.216,
-    "nccRaw": 0.216,
-    "shiftM": [
-     0.4,
-     -0.05
-    ],
-    "usable": 0.98,
-    "abstain": null,
-    "verdict": "FAIL",
-    "reasons": [
-     "wall dL +0.15",
-     "glazing  mean 0.26 vs photo 0.50"
-    ],
-    "wall": {
-     "photo": "#7d5446",
-     "model": "#a37d6a",
-     "dL": 0.145
-    },
-    "glazing": {
-     "photo": 0.5,
-     "model": 0.26
-    },
-    "columns": {
-     "photo": null,
-     "model": null
-    },
-    "iou": 0.374
-   },
-   "challengers": {
-    "vogel-1918-cottage-2axis": 0.216
-   }
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Opus strip verdict 2026-11-10: vogel-2-16-r1: held with the run (verdict)",
+   "likeness": null,
+   "challengers": {}
   },
   {
    "pandId": "0363100012106420",

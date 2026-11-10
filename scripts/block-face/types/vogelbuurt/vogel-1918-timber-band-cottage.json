@@ -69,6 +69,7 @@
    "dormers": 1,
    "dormerStyle": "flat",
    "dormerBody": "timber",
+   "dormerLights": 5,
    "dormerSize": {
     "sill": 0.5,
     "rise": 1.4,
@@ -83,8 +84,8 @@
    "note": "Zamenhofstraat 6-12 (2025-09-22): a cream timber box dormer 3.1 m wide, 4.6-6.0 m, against the party wall on the window side; neighbours' halves join (6.2 m wide over 1.9-8.1 m)",
    "dormerAt": [
     {
-     "from": 0.12,
-     "to": 0.62
+     "from": 0.1,
+     "to": 0.72
     }
    ]
   },
@@ -107,10 +108,10 @@
  },
  "palettes": {
   "red-brick": {
-   "brick": "#8f6a58",
+   "brick": "#74584a",
    "frame": "#d6d9cc",
    "door": "#232323",
-   "stone": "#a2634c",
+   "stone": "#d6d9cc",
    "cornice": "#c4c2b6"
   }
  },
@@ -150,7 +151,7 @@
   "the front garden hedge"
  ],
  "notes": [
-  "Palette: brick #8f6a58 is one tone for the buurt, not per pand: strips of one date differ by 2x in exposure (raw brick medians 77-221 on 2025-09-22) and the trim normalisation locks onto hedges and the dark timber band, so measuredWall is off. The tone is the median of the 8 darker-exposed strips (raw 86-105,66-85,58-74) lifted x1.5; a reviewer should pin the row if a photo disagrees.",
+  "Palette: brick #8f6a58 is one tone for the buurt, not per pand: strips of one date differ by 2x in exposure (raw brick medians 77-221 on 2025-09-22) and the trim normalisation locks onto hedges and the dark timber band, so measuredWall is off. The tone is the median of the 8 darker-exposed strips (raw 86-105,66-85,58-74) lifted x1.5; a reviewer should pin the row if a photo disagrees. Opus verdict 2026-11-10: photo wall median #554339 (vogel-3-11-r1), so brick moved to #74584a, about 60 % of the way from the lifted figure to the photo.",
   "The timber band colour #2c2b30 is read from Zamenhofstraat 6-12 (the strip's dark boarding), not a type default for other streets."
  ]
 }

@@ -63,3 +63,20 @@ test('a type with a gable crown stays under its rakes: roof.rakeClear (the saddl
   assert.ok(Object.values(t.crowns).some(c => c.gable === 'point'));
   assert.equal(t.roof?.rakeClear, true);
 });
+
+test('dormerLights: n lights = n-1 evenly spaced bars; absent keeps the single middle bar; validated 2..8', async () => {
+  const {fitIntent} = await import('../buildingRecipe/fit.ts');
+  const {validateIntent} = await import('../buildingRecipe/intent.ts');
+  const {resolvePlacement} = await import('./houseType.ts');
+  const t = defaultTypeLoader('vogel-1918-timber-band-cottage')!;
+  const base = resolvePlacement(t, {type: t.id}, 'Lange Vogelstraat').design;
+  const pand = ['vogel-1-15', '0363100012063241'];
+  const facts = JSON.parse(readFileSync(`scripts/block-face/faces/${pand[0]}/pands/${pand[1]}/facts.json`, 'utf8'));
+  const mk = (lights?: number) => validateIntent({schemaVersion: 1, kind: 'canal-house', id: 'test-dl', pandId: pand[1], address: 'Lange Vogelstraat', sources: [{id: 'strip', kind: 'street-panorama', capturedAt: '2023-01-02'}], ...base, fronts: base.fronts.map(f => ({...f, dormers: 1, dormerLights: lights}))} as never);
+  const bars = (lights?: number) => (fitIntent(mk(lights), facts).recipe.elevations[0] as {dormers?: {value: {verticalBars: number[]}[]}}).dormers?.value.map(d => d.verticalBars);
+  const none = bars(), five = bars(5);
+  assert.ok(none && none.length > 0, 'dormers built');
+  { assert.ok(none.every(b => b.length === 1 && b[0] === 0.5)); assert.ok(five!.every(b => b.length === 4 && Math.abs(b[0] - 0.2) < 1e-9)); }
+  assert.throws(() => mk(1), /dormerLights/);
+  assert.throws(() => mk(9), /dormerLights/);
+});

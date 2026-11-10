@@ -3,7 +3,7 @@
  "street": "Lange Vogelstraat",
  "library": "vogelbuurt",
  "stripDate": "2025-09-22",
- "seconds": 9.37,
+ "seconds": 2.44,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -298,7 +298,7 @@
    "likeness": {
     "pandId": "0363100012100692",
     "ncc": null,
-    "nccRaw": 0.748,
+    "nccRaw": 0.732,
     "shiftM": [
      0.1,
      -0.25
