@@ -1,0 +1,55 @@
+{
+ "street": "Oudezijds Achterburgwal",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T09:24:50.605Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012178645",
+   "addresses": [
+    "Oudezijds Achterburgwal 167"
+   ],
+   "groundUnits": [
+    {
+     "address": "Oudezijds Achterburgwal 167",
+     "use": "woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010000759217"
+    },
+    {
+     "address": "Walenpleintje 167",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010000903386"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012178644",
+   "addresses": [
+    "Oudezijds Achterburgwal 169A",
+    "Oudezijds Achterburgwal 169C",
+    "Oudezijds Achterburgwal 169B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Oudezijds Achterburgwal 169C",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000689849"
+    },
+    {
+     "address": "Oudezijds Achterburgwal 169B",
+     "use": "woonfunctie",
+     "areaM2": 33,
+     "bagId": "0363010012172478"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

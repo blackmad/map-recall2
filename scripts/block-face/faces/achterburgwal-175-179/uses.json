@@ -1,0 +1,99 @@
+{
+ "street": "Oudezijds Achterburgwal",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T09:24:50.605Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012178647",
+   "addresses": [
+    "Oudezijds Achterburgwal 175",
+    "Oudezijds Achterburgwal 175A",
+    "Oudezijds Achterburgwal 175B",
+    "Oudezijds Achterburgwal 175E",
+    "Oudezijds Achterburgwal 175C",
+    "Oudezijds Achterburgwal 175D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Oudezijds Achterburgwal 175-H",
+     "use": "woonfunctie",
+     "areaM2": 180,
+     "bagId": "0363010000677718"
+    },
+    {
+     "address": "Oudezijds Achterburgwal 175A",
+     "use": "woonfunctie",
+     "areaM2": 294,
+     "bagId": "0363010012143058"
+    },
+    {
+     "address": "Oudezijds Achterburgwal 175B",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010012143059"
+    },
+    {
+     "address": "Oudezijds Achterburgwal 175E",
+     "use": "woonfunctie",
+     "areaM2": 81,
+     "bagId": "0363010012143062"
+    },
+    {
+     "address": "Oudezijds Achterburgwal 175C",
+     "use": "woonfunctie",
+     "areaM2": 75,
+     "bagId": "0363010012143060"
+    },
+    {
+     "address": "Oudezijds Achterburgwal 175D",
+     "use": "woonfunctie",
+     "areaM2": 81,
+     "bagId": "0363010012143061"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012178646",
+   "addresses": [
+    "Oudezijds Achterburgwal 177A",
+    "Oudezijds Achterburgwal 177B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Oudezijds Achterburgwal 177A",
+     "use": "woonfunctie",
+     "areaM2": 140,
+     "bagId": "0363010000980861"
+    },
+    {
+     "address": "Oudezijds Achterburgwal 177B",
+     "use": "woonfunctie",
+     "areaM2": 200,
+     "bagId": "0363010000980862"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012178649",
+   "addresses": [
+    "Oudezijds Achterburgwal 179"
+   ],
+   "groundUnits": [
+    {
+     "address": "Oudezijds Achterburgwal 179",
+     "use": "woonfunctie",
+     "areaM2": 412,
+     "bagId": "0363010000759221"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  }
+ ]
+}

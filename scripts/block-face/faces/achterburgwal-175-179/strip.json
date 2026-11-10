@@ -1,0 +1,166 @@
+{
+ "face": "achterburgwal-175-179",
+ "image": "staging/block-face/achterburgwal-175-179/strip.jpg",
+ "pixelsPerMetre": 40,
+ "width": 803,
+ "height": 882,
+ "groundNAP": 0.621,
+ "heightM": 22.05,
+ "frame": {
+  "midRD": [
+   121581.90208333333,
+   487113.54825
+  ],
+  "uRD": [
+   -0.4627445885038784,
+   -0.8864916501639348
+  ],
+  "nRD": [
+   -0.8864916501639348,
+   0.4627445885038784
+  ]
+ },
+ "x0M": -10.02,
+ "x1M": 10.05,
+ "date": "2025-01-08",
+ "coverage": 1,
+ "spans": [
+  {
+   "pandId": "0363100012178647",
+   "x0M": -10.02,
+   "x1M": -3.32,
+   "px": [
+    0,
+    268
+   ],
+   "date": "2025-01-08",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "b_20250108_1349_Track16_Sphere_00049",
+     "timestamp": "2025-01-08T13:57:46Z",
+     "distanceM": 21.1,
+     "obliquityDeg": 2.1,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "b_20250108_1349_Track16_Sphere_00048",
+     "timestamp": "2025-01-08T13:57:45Z",
+     "distanceM": 21.8,
+     "obliquityDeg": 11.3,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "b_20250108_1349_Track16_Sphere_00050",
+     "timestamp": "2025-01-08T13:57:47Z",
+     "distanceM": 21.6,
+     "obliquityDeg": 14.4,
+     "missingFraction": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012178646",
+   "x0M": -3.29,
+   "x1M": 3.3,
+   "px": [
+    269,
+    533
+   ],
+   "date": "2025-01-08",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "b_20250108_1349_Track16_Sphere_00050",
+     "timestamp": "2025-01-08T13:57:47Z",
+     "distanceM": 21.3,
+     "obliquityDeg": 3.3,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "b_20250108_1349_Track16_Sphere_00051",
+     "timestamp": "2025-01-08T13:57:48Z",
+     "distanceM": 21.4,
+     "obliquityDeg": 9.3,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "b_20250108_1349_Track16_Sphere_00049",
+     "timestamp": "2025-01-08T13:57:46Z",
+     "distanceM": 22.3,
+     "obliquityDeg": 15.3,
+     "missingFraction": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012178649",
+   "x0M": 3.3,
+   "x1M": 10.05,
+   "px": [
+    533,
+    803
+   ],
+   "date": "2025-01-08",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "b_20250108_1349_Track16_Sphere_00052",
+     "timestamp": "2025-01-08T13:57:49Z",
+     "distanceM": 21.2,
+     "obliquityDeg": 2.9,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "b_20250108_1349_Track16_Sphere_00051",
+     "timestamp": "2025-01-08T13:57:48Z",
+     "distanceM": 21.5,
+     "obliquityDeg": 10.2,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "b_20250108_1349_Track16_Sphere_00053",
+     "timestamp": "2025-01-08T13:57:50Z",
+     "distanceM": 22,
+     "obliquityDeg": 15.8,
+     "missingFraction": 0
+    }
+   ]
+  }
+ ],
+ "candidatesByDate": {
+  "2023-02-20": 7,
+  "2025-01-08": 7,
+  "2023-02-27": 7,
+  "2023-03-27": 7,
+  "2020-04-21": 7,
+  "2023-02-13": 7,
+  "2023-01-11": 7,
+  "2025-06-30": 7,
+  "2022-06-27": 7,
+  "2023-03-20": 7,
+  "2019-05-10": 7,
+  "2021-12-27": 7,
+  "2023-03-13": 0,
+  "2023-03-06": 7,
+  "2016-06-09": 7,
+  "2022-12-15": 0,
+  "2017-03-29": 0,
+  "2018-05-07": 7,
+  "2017-03-27": 7,
+  "2021-03-08": 7,
+  "2021-09-15": 7,
+  "2019-01-14": 7,
+  "2023-02-06": 7,
+  "2023-01-13": 5
+ },
+ "description": "Rectified orthographic elevation of the whole face on the frontage planes: x = chunk-frame metres along the face (left→right seen from the street) from x0M, y = metres above the shared ground (groundNAP) from the bottom; grey = no panorama data. Per-pand spans list the panoramas median-fused for that frontage.",
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (CC BY 4.0; faces and number plates blurred by the publisher)",
+ "croppedFrom": {
+  "face": "achterburgwal-167-179",
+  "px": [
+   836,
+   1639
+  ]
+ }
+}

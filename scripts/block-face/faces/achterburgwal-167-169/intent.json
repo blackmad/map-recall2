@@ -1,0 +1,241 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "achterburgwal-167-169",
+ "street": "Oudezijds Achterburgwal",
+ "sources": [
+  {
+   "id": "strip-2025-01-08",
+   "kind": "street-panorama",
+   "capturedAt": "2025-01-08",
+   "image": "staging/block-face/achterburgwal-167-169/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "claude-opus-5.5 (belt-burgwallen lane), per-house historic designs read off the strip with a metre grid",
+  "passes": 1,
+  "note": "Oudezijds Achterburgwal 167 and 169 (odd side): two narrow brick neck gables over tall white timber puien, each with three lights in the top storey, a light in the neck, a ledge and a pediment cap, and white claw pieces at the foot; 167 (1641) carries cream stone bands at every storey. Run cut out of achterburgwal-167-179."
+ },
+ "houses": [
+  {
+   "pandId": "0363100012178645",
+   "slug": "achterburgwal-178645",
+   "address": "Oudezijds Achterburgwal 167",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Oudezijds Achterburgwal",
+      "gable": "neck",
+      "crownCap": "pediment",
+      "crownRise": 0.95,
+      "atticWindows": 1,
+      "gableOrnament": {
+       "wings": "scrolls"
+      },
+      "cornice": "none",
+      "storeys": 4,
+      "bays": [
+       2,
+       2,
+       2,
+       3
+      ],
+      "doorBay": null,
+      "basement": "none",
+      "hoist": false,
+      "windows": "casement-toplight",
+      "crownNeckWidth": 0.48,
+      "windowShare": 0.7,
+      "bands": "storey",
+      "storeyHeights": [
+       5.4,
+       2.75,
+       2.85,
+       2.3
+      ],
+      "windowHeights": [
+       0.6,
+       0.62,
+       0.53,
+       0.68
+      ],
+      "headLines": [
+       0.8,
+       0.86,
+       0.73,
+       0.89
+      ],
+      "groundFront": {
+       "kind": "pui",
+       "bays": [
+        "door",
+        "window"
+       ],
+       "colour": "#ecebe4",
+       "evidence": "strip 2025-01-08 pand 1: white timber pui to 6.0 m, a door with a light over it on the left and a tall window"
+      }
+     }
+    ],
+    "roof": {
+     "material": "black-tile",
+     "squareSaddle": true
+    },
+    "palette": {
+     "brick": "#54403a",
+     "frame": "white-painted",
+     "door": "#2a2522",
+     "stone": "#e2d6b4",
+     "band": "#e2d6b4"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2025-01-08",
+    "agreement": "bag-only"
+   },
+   "rhythm": {
+    "bays": "2 axes, 3 lights in the top storey",
+    "windowsPerStorey": "ground: pui | 1: 2 | 2: 2 | 3: 3 | neck: 1",
+    "symmetry": "symmetric",
+    "groundFloor": "white timber pui",
+    "signage": "none",
+    "roofline": "neck gable from 13.8 m, white claw pieces, ledge 15.6 m, pediment cap 16.5 m",
+    "citation": "strip.jpg pand 1 (2025-01-08)",
+    "photoRows": [
+     2,
+     2,
+     2,
+     3,
+     1
+    ],
+    "photoGables": 1,
+    "schemaLimits": [
+     "the cream bands are stone sill and lintel courses in the photo; drawn as storey bands"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012178644",
+   "slug": "achterburgwal-178644",
+   "address": "Oudezijds Achterburgwal 169A",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Oudezijds Achterburgwal",
+      "gable": "neck",
+      "crownCap": "pediment",
+      "crownRise": 0.95,
+      "atticWindows": 1,
+      "gableOrnament": {
+       "wings": "scrolls"
+      },
+      "cornice": "none",
+      "storeys": 4,
+      "bays": [
+       2,
+       2,
+       2,
+       3
+      ],
+      "doorBay": null,
+      "basement": "none",
+      "hoist": false,
+      "windows": "casement-toplight",
+      "crownNeckWidth": 0.58,
+      "windowShare": 0.75,
+      "storeyHeights": [
+       5.4,
+       2.75,
+       2.85,
+       2.3
+      ],
+      "windowHeights": [
+       0.6,
+       0.72,
+       0.5,
+       0.75
+      ],
+      "headLines": [
+       0.8,
+       0.83,
+       0.73,
+       0.9
+      ],
+      "groundFront": {
+       "kind": "pui",
+       "bays": [
+        "door",
+        "window",
+        "window"
+       ],
+       "colour": "#ecebe4",
+       "evidence": "strip 2025-01-08 pand 2: white timber pui of two tiers, a door and two windows under three top lights"
+      }
+     }
+    ],
+    "roof": {
+     "material": "black-tile",
+     "squareSaddle": true
+    },
+    "palette": {
+     "brick": "#523f37",
+     "frame": "white-painted",
+     "door": "#2a2522",
+     "stone": "#e6e2d6"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2025-01-08",
+    "agreement": "bag-only"
+   },
+   "rhythm": {
+    "bays": "2 axes, 3 lights in the top storey",
+    "windowsPerStorey": "ground: pui | 1: 2 | 2: 2 | 3: 3 | neck: 1",
+    "symmetry": "symmetric",
+    "groundFloor": "white timber pui of two tiers",
+    "signage": "none",
+    "roofline": "neck gable from 13.8 m, white claw pieces, ledge 15.6 m, pediment cap 16.7 m",
+    "citation": "strip.jpg pand 2 (2025-01-08)",
+    "photoRows": [
+     2,
+     2,
+     2,
+     3,
+     1
+    ],
+    "photoGables": 1,
+    "schemaLimits": [
+     "the pui has an upper tier of three lights over the door and windows; drawn as one tier"
+    ]
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "measuredEaves": [
+   {
+    "pand": "0363100012178645",
+    "stripRow": 330,
+    "evidence": "gable foot over the top storey (grid crop a167, 13.8 m)"
+   },
+   {
+    "pand": "0363100012178644",
+    "stripRow": 330,
+    "evidence": "gable foot (13.8 m)"
+   }
+  ]
+ }
+}

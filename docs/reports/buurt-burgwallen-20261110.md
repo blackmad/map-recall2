@@ -1,6 +1,6 @@
 # Kalverdriehoek (AD08) and BG-terrein e.o. (AE05), 2026-11-10
 
-Lane `lane/belt-burgwallen-20261110`, MODEL: opus. Census, per-house hand-authored historic designs, sheets, and 7 installed faces (18 pands).
+Lane `lane/belt-burgwallen-20261110`, MODEL: opus. Census, per-house hand-authored historic designs, sheets, and 9 installed faces (23 pands).
 Kop Zeedijk (AE01) and Burgwallen-Oost (AE03) were surveyed only (`scripts/block-face/buurten/{kop-zeedijk,burgwallen-oost}.json`); no faces were authored there.
 Sheets and strips:
 `/Users/blackmad/Code/map-recall2-source-data/block-face-strips/kalverdriehoek-20261110/` and `.../bg-terrein-20261110/` (`sheet-<face>.jpg`, `strip-<face>.jpg`).
@@ -25,6 +25,8 @@ historic `design` (the precedent of `wallen-oza-41-57` and `nassau-145-152`) fro
 | `spui-11-13` | 175740, 175739 | Spui 11 black-painted step gable over a white pui; Spui 13 black front with white block voussoirs, storey bands, pedimented dormer |
 | `kloveniersburgwal-90-102` | 171156, 171162 | neo-Renaissance red brick with speklagen and relieving block arches; a stepped wall gable over 100-102, two dormers on 90-92 |
 | `achterburgwal-156-160` | 178662, 178663 | brown-brick cornice front with a slate mansard and two dormers over a red-fascia restaurant; a 1700s neck gable over a timber pui |
+| `achterburgwal-175-179` | 178647, 178646, 178649 | 175 (1626) over a white pilastered ground storey with a raised centre; 177 (1905) red brick, console entablature, pedimented dormer; 179 plastered, red-tiled roof |
+| `achterburgwal-167-169` | 178645, 178644 | two narrow neck gables with pediment caps over white timber puien, cream stone bands on 167 |
 | `achterburgwal-202-206` | 179784, 179785 | the 1726 entablature house under a red pantile roof; the low 1758 dark-brick house with two dormers |
 
 ## Yield (pands whose strip was looked at)
@@ -45,18 +47,19 @@ historic `design` (the precedent of `wallen-oza-41-57` and `nassau-145-152`) fro
   * Rokin 130 (175227): the alley between 134 and 130 leaves a 4.15 m gap, and the house cannot stand alone. Its design is ready (bell gable, 4 storeys, bays `[3,3,3,1]`) for a re-intake with Rokin 114-128.
 * placed: **12**.
 
-**BG-terrein** (32 of 189 looked at):
+**BG-terrein** (39 of 189 looked at):
 * vetoed before comparison: **20**.
   * Kloveniersburgwal 80-158 (4): 171136, 169332 and 177830 are large-tier wide buildings; 177827 is scaffolded.
   * Doelenstraat 2-24 (6): hotels, overexposed.
   * Oude Hoogstraat 2-22 (9): ghosting. No. 14 is an Amsterdam School block of large tier.
   * Oude Turfmarkt 127-149 (1): a large building.
 * compared and held: **2**. Oude Turfmarkt 151-153 (179473, 168174): 153's turret needs a pyramid cap, which fails `height-vs-3dbag` (the pyramid stands above the crown line + 0.3 m). `roof.source: 3dbag` fails with "Shell top exceeds observed frontage body". 151 cannot stand alone. Not weakened.
-* placed: **6**.
+* vetoed before comparison also: Oudezijds Achterburgwal 171 and 173 (178658, 178657): grey gaps in the strip.
+* placed: **11**.
 * still pending:
   * Kloveniersburgwal 48-50 (2): its old strip used the unpublished day 2023-04-17. The re-intake under the fix below is running.
   * Intakes that failed with "Overpass unavailable": Doelenstraat 2-20 and Oudezijds Achterburgwal 188-196.
-  * Faces still in the BG intake queue: Achterburgwal 151-153, 167-179, 189-197 and 203-205; Voorburgwal 181-193 and 217-249; Kloveniersburgwal 52-62; Rusland 3-29 and 10-26.
+  * Faces still in the BG intake queue: Achterburgwal 151-153, 189-197 and 203-205; Voorburgwal 181-193 and 217-249; Kloveniersburgwal 52-62; Rusland 3-29 and 10-26.
 
 ## Pipeline fixes (typed, tested)
 * **Intake skips unpublished panorama days** (`scripts/block-face/intake.ts`, `blockFace/strip.ts` `withoutDays`). The panorama API lists 2023-04-03, 2023-04-11 and 2023-04-17 in the centre, but their images answer 404. The planner picked them as the newest full-coverage day and wrote grey strips that still claimed coverage 1. Intake now sends one HEAD per capture day and drops days that answer 404.
@@ -77,6 +80,8 @@ historic `design` (the precedent of `wallen-oza-41-57` and `nassau-145-152`) fro
 * Round-headed ground openings and black-and-white striped basement-door voussoirs (Spui 13, Achterburgwal 206).
 * Cornice caps on dormers; dormers with a segmental head over paired casements (Achterburgwal 158).
 * Oval oeil-de-boeuf lights (Rokin 130).
+* Raised cornice centres (a stone attic over the middle axis, Achterburgwal 175), drawn as a brick neck gable over that axis.
+* Two-tier puien (Achterburgwal 169).
 * Turret spires: a pyramid cap over a corner turret fails the height gate (Turfmarkt 153).
 * Sunburst voussoirs (Rokin 132).
 * White timber erkers with glazing bars: the kit's bay window is brick (Rokin 132).
@@ -94,5 +99,5 @@ historic `design` (the precedent of `wallen-oza-41-57` and `nassau-145-152`) fro
 
 ## Integrator rebuild list
 * Chunks are installed in this branch (`chunks.json`, the GLBs, `chunkWallExposureData.ts`). Rebuild covers (`check:covers`), explorer-looks.json, bundles and coverage-v1.
-* Roof golden: recorded for the 7 installed faces only. A whole-table `--write` would also add about 45 faces from other lanes that are on main without golden entries; the lane did not record those.
+* Roof golden: recorded for the 9 installed faces only. A whole-table `--write` would also add about 45 faces from other lanes that are on main without golden entries; the lane did not record those.
 * Source-data: commit `block-face-strips/kalverdriehoek-20261110/` and `bg-terrein-20261110/`.

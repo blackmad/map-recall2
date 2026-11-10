@@ -1,0 +1,352 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "achterburgwal-175-179",
+ "street": "Oudezijds Achterburgwal",
+ "sources": [
+  {
+   "id": "strip-2025-01-08",
+   "kind": "street-panorama",
+   "capturedAt": "2025-01-08",
+   "image": "staging/block-face/achterburgwal-175-179/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "claude-opus-5.5 (belt-burgwallen lane), per-house historic designs read off the strip with a metre grid",
+  "passes": 1,
+  "note": "Oudezijds Achterburgwal 175, 177 and 179 (odd side): a 17th-c. brick front (1626) over a tall white pilastered ground storey, its cornice broken by a raised centre with an arched light and a carved crest; a 1905 red-brick front with segmental windows, a white console entablature, a pedimented dormer and a striped basement of three round arches; and a plastered 1697 front with a white cornice and a red-tiled roof with one dormer. Run cut out of achterburgwal-167-179."
+ },
+ "houses": [
+  {
+   "pandId": "0363100012178647",
+   "slug": "achterburgwal-178647",
+   "address": "Oudezijds Achterburgwal 175",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Oudezijds Achterburgwal",
+      "gable": "neck",
+      "crownAt": {
+       "from": 0.28,
+       "to": 0.72
+      },
+      "crownCap": "rounded",
+      "crownRise": 0.95,
+      "crownNeckWidth": 0.7,
+      "atticWindows": 1,
+      "gableOrnament": {
+       "wings": "scrolls"
+      },
+      "cornice": "heavy",
+      "storeys": 3,
+      "bays": 3,
+      "doorBay": null,
+      "basement": "none",
+      "hoist": false,
+      "windows": "sash",
+      "windowShare": 0.6,
+      "storeyHeights": [
+       5.9,
+       2.65,
+       2.9
+      ],
+      "windowHeights": [
+       0.7,
+       0.8,
+       0.62
+      ],
+      "headLines": [
+       0.9,
+       0.9,
+       0.68
+      ],
+      "groundFront": {
+       "kind": "arcade",
+       "bays": [
+        "door",
+        "window",
+        "window"
+       ],
+       "colour": "#ecebe4",
+       "evidence": "strip 2025-01-08 pand 1: white stone pilasters and beam over three tall openings, the door on the left up a stoop"
+      }
+     }
+    ],
+    "roof": {
+     "material": "slate"
+    },
+    "palette": {
+     "brick": "#5a3e32",
+     "frame": "white-painted",
+     "door": "#2a2420",
+     "stone": "#ecebe4",
+     "cornice": "#e8e6de"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2025-01-08",
+    "agreement": "bag-only"
+   },
+   "rhythm": {
+    "bays": "3 axes",
+    "windowsPerStorey": "ground: 3 tall openings between pilasters | 1: 3 | 2: 3 | raised centre: 1 arched light",
+    "symmetry": "symmetric",
+    "groundFloor": "white pilastered ground storey 6.9 m tall",
+    "signage": "none",
+    "roofline": "white cornice at 14.0 m broken by a raised centre over the middle axis, carved crest at 17.4 m, slate either side",
+    "citation": "strip.jpg pand 1 (2025-01-08)",
+    "photoRows": [
+     3,
+     3,
+     3,
+     1
+    ],
+    "photoGables": 1,
+    "schemaLimits": [
+     "the raised centre is white stone in the photo; drawn as a brick neck gable over the middle axis, its arched light square",
+     "the carved crest is not drawn"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012178646",
+   "slug": "achterburgwal-178646",
+   "address": "Oudezijds Achterburgwal 177A",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Oudezijds Achterburgwal",
+      "gable": "cornice",
+      "cornice": "bracketed",
+      "entablature": {
+       "rise": 1.4,
+       "cap": 0.3,
+       "frieze": "trim",
+       "consoles": 6,
+       "architrave": 0.1
+      },
+      "storeys": 4,
+      "bays": 3,
+      "doorBay": null,
+      "basement": "none",
+      "hoist": false,
+      "windows": "casement-toplight",
+      "windowShare": 0.62,
+      "windowHead": {
+       "kind": "segmental",
+       "storeys": [
+        1,
+        2,
+        3
+       ]
+      },
+      "dormers": 1,
+      "dormerStyle": "pediment",
+      "dormerBody": "timber",
+      "storeyHeights": [
+       4.0,
+       3.4,
+       3.3,
+       2.9
+      ],
+      "windowHeights": [
+       0.6,
+       0.65,
+       0.6,
+       0.62
+      ],
+      "headLines": [
+       0.8,
+       0.85,
+       0.79,
+       0.86
+      ],
+      "groundFront": {
+       "kind": "wall",
+       "bays": [
+        "door",
+        "glazed-door",
+        "door"
+       ],
+       "colour": "#2a2622",
+       "evidence": "strip 2025-01-08 pand 2: three round-arched openings in a red and white striped basement, double door in the middle"
+      }
+     }
+    ],
+    "roof": {
+     "material": "black-tile"
+    },
+    "palette": {
+     "brick": "#663f33",
+     "frame": "white-painted",
+     "door": "#2a2622",
+     "stone": "#ecebe4",
+     "cornice": "#ecebe4"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2025-01-08",
+    "agreement": "bag-only"
+   },
+   "rhythm": {
+    "bays": "3 equal axes",
+    "windowsPerStorey": "ground: 3 arches | 1: 3 | 2: 3 | 3: 3 | roof: 1 pedimented dormer",
+    "symmetry": "symmetric",
+    "groundFloor": "striped basement with three round arches",
+    "signage": "none",
+    "roofline": "white console entablature 13.6-15.0 m, pedimented dormer to 17.8 m",
+    "citation": "strip.jpg pand 2 (2025-01-08)",
+    "photoRows": [
+     3,
+     3,
+     3,
+     3,
+     1
+    ],
+    "schemaLimits": [
+     "the basement is red brick with white stone stripes and round arches; drawn as a plain wall with square openings",
+     "small white masks over the first- and second-storey windows are not drawn"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012178649",
+   "slug": "achterburgwal-178649",
+   "address": "Oudezijds Achterburgwal 179",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Oudezijds Achterburgwal",
+      "gable": "cornice",
+      "cornice": "simple",
+      "entablature": {
+       "rise": 1.0,
+       "cap": 0.25,
+       "frieze": "trim",
+       "architrave": 0.08
+      },
+      "storeys": 4,
+      "bays": 3,
+      "doorBay": null,
+      "basement": "none",
+      "hoist": false,
+      "windows": "sash",
+      "windowShare": 0.55,
+      "windowHead": {
+       "kind": "segmental",
+       "storeys": [
+        1,
+        2,
+        3
+       ]
+      },
+      "dormers": 1,
+      "dormerStyle": "pediment",
+      "dormerBody": "timber",
+      "storeyHeights": [
+       3.6,
+       3.0,
+       3.0,
+       3.6
+      ],
+      "windowHeights": [
+       0.6,
+       0.6,
+       0.6,
+       0.5
+      ],
+      "headLines": [
+       0.8,
+       0.8,
+       0.8,
+       0.67
+      ],
+      "groundFront": {
+       "kind": "wall",
+       "bays": [
+        "door",
+        "glazed-door",
+        "door"
+       ],
+       "colour": "#3a3632",
+       "evidence": "strip 2025-01-08 pand 3: grey stone basement storey with a door each side and a double door in the middle"
+      }
+     }
+    ],
+    "roof": {
+     "material": "red-tile"
+    },
+    "palette": {
+     "brick": "#76705f",
+     "wallMaterial": "stucco",
+     "frame": "white-painted",
+     "door": "#2a2826",
+     "stone": "#d8d6cc",
+     "cornice": "#e8e6de"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2025-01-08",
+    "agreement": "bag-only"
+   },
+   "rhythm": {
+    "bays": "3 equal axes",
+    "windowsPerStorey": "ground: door, double door, door | 1: 3 | 2: 3 | 3: 3 | roof: 1 dormer",
+    "symmetry": "symmetric",
+    "groundFloor": "grey stone basement storey",
+    "signage": "none",
+    "roofline": "white frieze and cornice to 14.3 m, red-tiled roof with one dormer",
+    "citation": "strip.jpg pand 3 (2025-01-08)",
+    "photoRows": [
+     3,
+     3,
+     3,
+     3,
+     1
+    ],
+    "schemaLimits": [
+     "the dormer is an ornamented red-brick dormer; drawn as a timber pediment dormer"
+    ]
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "measuredEaves": [
+   {
+    "pand": "0363100012178647",
+    "stripRow": 322,
+    "evidence": "top of the white cornice either side of the raised centre (grid crop a175, 14.0 m)"
+   },
+   {
+    "pand": "0363100012178646",
+    "stripRow": 282,
+    "evidence": "top of the console entablature (15.0 m)"
+   },
+   {
+    "pand": "0363100012178649",
+    "stripRow": 310,
+    "evidence": "top of the white cornice (14.3 m)"
+   }
+  ]
+ }
+}
