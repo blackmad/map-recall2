@@ -1,0 +1,363 @@
+{
+ "face": "vogel-17-23",
+ "street": "Eerste Vogelstraat",
+ "library": "vogelbuurt",
+ "stripDate": "2025-09-22",
+ "seconds": 2.76,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012121416",
+   "address": "Eerste Vogelstraat 17",
+   "builtYear": 1918,
+   "widthM": 4.11,
+   "eavesM": 3.44,
+   "storeys3dbag": 2,
+   "bagBay": null,
+   "strip": {
+    "wall": "#403e3d",
+    "wallRaw": "#ead5bf",
+    "skyline": {
+     "eavesM": 4.47,
+     "eavesRow": 136,
+     "confidence": 0.76,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "ribbon",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "one-storey front (eaves <= 6 m): no balcony",
+     "openAxes": [
+      {
+       "widthM": 2.02,
+       "centre": 0.62,
+       "light": 0.21
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.09,
+    "foliageShare": 0.06
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": {
+    "pandId": "0363100012121416",
+    "ncc": 0.305,
+    "nccRaw": 0.305,
+    "shiftM": [
+     0.05,
+     -0.3
+    ],
+    "usable": 0.79,
+    "abstain": null,
+    "verdict": "NO EVIDENCE",
+    "reasons": [
+     "washed out 44 % > 30 %"
+    ],
+    "wall": {
+     "photo": "#62544e",
+     "model": "#a37d6a",
+     "dL": 0.182
+    },
+    "glazing": {
+     "photo": 0.32,
+     "model": 0.26
+    },
+    "columns": {
+     "photo": null,
+     "model": null
+    },
+    "iou": 0.266
+   },
+   "challengers": {
+    "vogel-1918-cottage-2axis": 0.305
+   }
+  },
+  {
+   "pandId": "0363100012116965",
+   "address": "Eerste Vogelstraat 19",
+   "builtYear": 1918,
+   "widthM": 5.9,
+   "eavesM": 3.46,
+   "storeys3dbag": 2,
+   "bagBay": null,
+   "strip": {
+    "wall": "#514e4a",
+    "wallRaw": "#deccb8",
+    "skyline": {
+     "eavesM": 4.3,
+     "eavesRow": 143,
+     "confidence": 0.71,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "one-storey front (eaves <= 6 m): no balcony",
+     "openAxes": [
+      {
+       "widthM": 0.8,
+       "centre": 0.13,
+       "light": 0.13
+      },
+      {
+       "widthM": 1.98,
+       "centre": 0.58,
+       "light": 0.06
+      },
+      {
+       "widthM": 0.72,
+       "centre": 0.93,
+       "light": 0.01
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.05,
+    "foliageShare": 0.22
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "no photo evidence (usable photo 43 % < 50 %) and no passing same-type neighbour",
+   "likeness": {
+    "pandId": "0363100012116965",
+    "ncc": null,
+    "nccRaw": 0.524,
+    "shiftM": [
+     0.25,
+     0.2
+    ],
+    "usable": 0.43,
+    "abstain": "usable photo 43 % < 50 %",
+    "verdict": "NO EVIDENCE",
+    "reasons": [
+     "washed out 39 % > 30 %"
+    ],
+    "wall": {
+     "photo": "#685a52",
+     "model": "#a37d6a",
+     "dL": 0.163
+    },
+    "glazing": {
+     "photo": 0.75,
+     "model": 0.32
+    },
+    "columns": {
+     "photo": null,
+     "model": null
+    },
+    "iou": 0.377
+   },
+   "challengers": {
+    "vogel-1918-cottage-3axis": null,
+    "vogel-1918-cottage-3axis~m": null
+   }
+  },
+  {
+   "pandId": "0363100012094056",
+   "address": "Eerste Vogelstraat 21",
+   "builtYear": 1918,
+   "widthM": 6.08,
+   "eavesM": 3.46,
+   "storeys3dbag": 2,
+   "bagBay": null,
+   "strip": {
+    "wall": "#b8b7ae",
+    "wallRaw": "#798e5b",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 315,
+     "confidence": 0.06,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 4,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 1.6,
+     "bayCentre": 0.14,
+     "balconies": false,
+     "why": "one-storey front (eaves <= 6 m): no balcony",
+     "openAxes": [
+      {
+       "widthM": 1.65,
+       "centre": 0.15,
+       "light": 0.46
+      },
+      {
+       "widthM": 1.45,
+       "centre": 0.45,
+       "light": 0.33
+      },
+      {
+       "widthM": 2.17,
+       "centre": 0.8,
+       "light": 0.09
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.03,
+    "foliageShare": 0.67
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "no photo evidence (usable photo 10 % < 50 %) and no passing same-type neighbour",
+   "likeness": {
+    "pandId": "0363100012094056",
+    "ncc": null,
+    "nccRaw": 0.472,
+    "shiftM": [
+     -0.3,
+     0.05
+    ],
+    "usable": 0.1,
+    "abstain": "usable photo 10 % < 50 %",
+    "verdict": "NO EVIDENCE",
+    "reasons": [
+     "usable upper cells 26 % < 40 %",
+     "foliage 46 % > 25 %"
+    ],
+    "wall": {
+     "photo": "#e1bda9",
+     "model": "#a37d6a",
+     "dL": -0.245
+    },
+    "glazing": {
+     "photo": 0.98,
+     "model": 0.37
+    },
+    "columns": {
+     "photo": 5,
+     "model": null
+    },
+    "iou": 0.72
+   },
+   "challengers": {
+    "vogel-1918-cottage-3axis~m": null,
+    "vogel-1918-cottage-3axis": null
+   }
+  },
+  {
+   "pandId": "0363100012078199",
+   "address": "Eerste Vogelstraat 23",
+   "builtYear": 1918,
+   "widthM": 8.91,
+   "eavesM": 3.4,
+   "storeys3dbag": 2,
+   "bagBay": null,
+   "strip": {
+    "wall": "#4e4f4c",
+    "wallRaw": "#f2e2c6",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 315,
+     "confidence": 0.25,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "one-storey front (eaves <= 6 m): no balcony",
+     "openAxes": [
+      {
+       "widthM": 1.8,
+       "centre": 0.16,
+       "light": 0.1
+      },
+      {
+       "widthM": 1.07,
+       "centre": 0.4,
+       "light": 0.14
+      },
+      {
+       "widthM": 1.9,
+       "centre": 0.68,
+       "light": 0.13
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.07,
+    "foliageShare": 0.19
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best vogel-1918-cottage-2axis: frontage 8.91 m, type 3.8-4.95 m)",
+   "best": {
+    "type": "vogel-1918-cottage-2axis",
+    "score": 0,
+    "veto": [
+     "frontage 8.91 m, type 3.8-4.95 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": null,
+      "note": "strip cornice unread (type line 3.2 m; 3DBAG 3.4 m not compared)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 2 vs 0/1/2"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.144 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 3 vs 2 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

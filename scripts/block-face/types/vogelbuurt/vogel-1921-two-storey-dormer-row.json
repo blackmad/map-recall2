@@ -37,24 +37,8 @@
   "frontEavesM": 6.45,
   "frontEavesUnscored": true,
   "keepSurveyRoof": true,
-  "crowns": {
-   "step-gable": {
-    "riseM": [
-     2.8,
-     8
-    ]
-   },
-   "flat-dormer": {
-    "riseM": [
-     0.4,
-     2.4
-    ]
-   },
-   "none": {
-    "none": true
-   }
-  },
-  "note": "BAG 1921-28, 3DBAG eaves 6.8-7.8 m (the roof's own height; the strip cornice is at 6.4 m), bouwlagen 3; widths 6.3-6.6 m"
+  "note": "BAG 1921-28, 3DBAG eaves 6.8-7.8 m (the roof's own height; the strip cornice is at 6.4 m), bouwlagen 3; widths 6.3-6.6 m; no skyline crown rules: on the 2018-2025 strips the sky band reads cloud edges and neighbouring roofs as gables (Kalkoenstraat 14, 16), so the type draws its first crown (flat-dormer) and the block-end gables are pinned from the sheets (review-crowns)",
+  "crownFromType": "flat-dormer"
  },
  "body": {
   "storeys": 2,

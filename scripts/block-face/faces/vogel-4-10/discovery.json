@@ -1,0 +1,833 @@
+{
+ "street": "Tweede Vogelstraat",
+ "seed": "0363100012122702",
+ "members": [
+  "0363100012073659",
+  "0363100012090616",
+  "0363100012127132",
+  "0363100012122702"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "next fronting pand 0363100012107391 15.5 m on shares no party wall (cross street or gap)"
+  },
+  {
+   "side": "right",
+   "reason": "next fronting pand 0363100012123947 10.4 m on shares no party wall (cross street or gap)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012064115",
+   "reason": "frontage 88.9 m from Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012068107",
+   "reason": "frontage 53.1 m from Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012069366",
+   "reason": "frontage 75.4 m from Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012071869",
+   "reason": "frontage 69.9 m from Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012072702",
+   "reason": "frontage 46.9 m from Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012076219",
+   "reason": "frontage 70.0 m from Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012078281",
+   "reason": "frontage 69.9 m from Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012080002",
+   "reason": "frontage 52.5 m from Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012062516",
+   "reason": "frontage 56.6 m from Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012063241",
+   "reason": "no frontage on Tweede Vogelstraat: No footprint edge faces Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012063850",
+   "reason": "frontage 74.1 m from Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012064187",
+   "reason": "frontage 76.7 m from Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012065299",
+   "reason": "frontage 37.1 m from Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012065314",
+   "reason": "frontage 64.8 m from Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012065836",
+   "reason": "sightline to Tweede Vogelstraat crosses 0363100012062882"
+  },
+  {
+   "pandId": "0363100012065937",
+   "reason": "frontage 56.6 m from Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012066995",
+   "reason": "no frontage on Tweede Vogelstraat: No footprint edge faces Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012067081",
+   "reason": "frontage 52.5 m from Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012067236",
+   "reason": "sightline to Tweede Vogelstraat crosses 0363100012111139"
+  },
+  {
+   "pandId": "0363100012067531",
+   "reason": "frontage 61.3 m from Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012067750",
+   "reason": "frontage 50.8 m from Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012069851",
+   "reason": "no frontage on Tweede Vogelstraat: No footprint edge faces Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012075795",
+   "reason": "sightline to Tweede Vogelstraat crosses 0363100012078328"
+  },
+  {
+   "pandId": "0363100012076566",
+   "reason": "no frontage on Tweede Vogelstraat: No footprint edge faces Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012076808",
+   "reason": "frontage 55.9 m from Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012078306",
+   "reason": "frontage 52.0 m from Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012079661",
+   "reason": "frontage 36.8 m from Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012079731",
+   "reason": "no frontage on Tweede Vogelstraat: No footprint edge faces Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012080054",
+   "reason": "frontage 54.4 m from Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012080292",
+   "reason": "frontage 56.2 m from Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012081710",
+   "reason": "frontage 78.2 m from Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012081976",
+   "reason": "sightline to Tweede Vogelstraat crosses 0363100012123947"
+  },
+  {
+   "pandId": "0363100012082395",
+   "reason": "sightline to Tweede Vogelstraat crosses 0363100012122702"
+  },
+  {
+   "pandId": "0363100012083374",
+   "reason": "frontage 36.9 m from Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012062617",
+   "reason": "frontage 122.2 m from Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012064086",
+   "reason": "frontage 83.4 m from Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012065540",
+   "reason": "frontage 88.5 m from Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012066394",
+   "reason": "frontage 112.8 m from Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012071224",
+   "reason": "frontage 89.6 m from Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012071462",
+   "reason": "frontage 48.1 m from Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012071643",
+   "reason": "no frontage on Tweede Vogelstraat: No footprint edge faces Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012076432",
+   "reason": "frontage 74.1 m from Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012077309",
+   "reason": "frontage 51.2 m from Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012083876",
+   "reason": "frontage 54.3 m from Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012083966",
+   "reason": "frontage 107.1 m from Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012083177",
+   "reason": "frontage 63.2 m from Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012085003",
+   "reason": "frontage 88.9 m from Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012086570",
+   "reason": "frontage 52.4 m from Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012090581",
+   "reason": "frontage 70.0 m from Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012090940",
+   "reason": "frontage 58.5 m from Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012091651",
+   "reason": "frontage 69.6 m from Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012091925",
+   "reason": "frontage 70.0 m from Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012100514",
+   "reason": "frontage 56.9 m from Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012101216",
+   "reason": "frontage 79.9 m from Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012102252",
+   "reason": "frontage 84.9 m from Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012108165",
+   "reason": "frontage 84.9 m from Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012084233",
+   "reason": "frontage 49.6 m from Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012084318",
+   "reason": "frontage 51.2 m from Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012085288",
+   "reason": "frontage 61.2 m from Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012086231",
+   "reason": "frontage 89.6 m from Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012087612",
+   "reason": "sightline to Tweede Vogelstraat crosses 0363100012073659"
+  },
+  {
+   "pandId": "0363100012088357",
+   "reason": "frontage 56.6 m from Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012088645",
+   "reason": "no frontage on Tweede Vogelstraat: No footprint edge faces Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012088825",
+   "reason": "frontage 74.1 m from Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012091188",
+   "reason": "frontage 55.7 m from Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012091400",
+   "reason": "sightline to Tweede Vogelstraat crosses 0363100012062882"
+  },
+  {
+   "pandId": "0363100012091593",
+   "reason": "frontage 46.2 m from Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012092462",
+   "reason": "frontage 44.5 m from Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012093588",
+   "reason": "sightline to Tweede Vogelstraat crosses 0363100012078328"
+  },
+  {
+   "pandId": "0363100012094588",
+   "reason": "frontage 89.2 m from Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012097236",
+   "reason": "sightline to Tweede Vogelstraat crosses 0363100012067236"
+  },
+  {
+   "pandId": "0363100012097822",
+   "reason": "frontage 41.2 m from Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012099577",
+   "reason": "frontage 60.5 m from Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012100692",
+   "reason": "frontage 65.2 m from Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012101482",
+   "reason": "frontage 56.6 m from Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012101772",
+   "reason": "frontage 37.0 m from Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012104208",
+   "reason": "frontage 79.2 m from Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012105876",
+   "reason": "frontage 74.1 m from Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012106420",
+   "reason": "sightline to Tweede Vogelstraat crosses 0363100012103994"
+  },
+  {
+   "pandId": "0363100012106658",
+   "reason": "frontage 69.9 m from Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012107760",
+   "reason": "frontage 41.1 m from Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012085777",
+   "reason": "frontage 84.1 m from Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012087451",
+   "reason": "frontage 59.0 m from Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012087707",
+   "reason": "frontage 68.7 m from Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012097154",
+   "reason": "frontage 79.1 m from Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012098040",
+   "reason": "frontage 94.4 m from Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012100095",
+   "reason": "frontage 63.8 m from Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012100314",
+   "reason": "frontage 92.7 m from Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012101207",
+   "reason": "frontage 94.2 m from Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012104339",
+   "reason": "frontage 74.1 m from Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012106782",
+   "reason": "frontage 61.2 m from Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012110286",
+   "reason": "frontage 88.8 m from Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012118818",
+   "reason": "no frontage on Tweede Vogelstraat: No footprint edge faces Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012122427",
+   "reason": "frontage 88.9 m from Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012122571",
+   "reason": "frontage 89.9 m from Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012123838",
+   "reason": "frontage 52.5 m from Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012124024",
+   "reason": "frontage 89.9 m from Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012124451",
+   "reason": "frontage 41.9 m from Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012108351",
+   "reason": "frontage 41.3 m from Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012108489",
+   "reason": "frontage 36.9 m from Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012108562",
+   "reason": "frontage 60.1 m from Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012109169",
+   "reason": "sightline to Tweede Vogelstraat crosses 0363100012150433"
+  },
+  {
+   "pandId": "0363100012109523",
+   "reason": "frontage 41.1 m from Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012110100",
+   "reason": "sightline to Tweede Vogelstraat crosses 0363100012144429"
+  },
+  {
+   "pandId": "0363100012111139",
+   "reason": "sightline to Tweede Vogelstraat crosses 0363100012124242"
+  },
+  {
+   "pandId": "0363100012111907",
+   "reason": "frontage 36.9 m from Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012114049",
+   "reason": "no frontage on Tweede Vogelstraat: No footprint edge faces Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012116509",
+   "reason": "frontage 74.1 m from Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012116965",
+   "reason": "no frontage on Tweede Vogelstraat: No footprint edge faces Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012117598",
+   "reason": "no frontage on Tweede Vogelstraat: No footprint edge faces Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012118497",
+   "reason": "frontage 46.9 m from Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012118636",
+   "reason": "frontage 36.9 m from Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012120077",
+   "reason": "frontage 89.6 m from Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012120169",
+   "reason": "frontage 57.0 m from Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012120569",
+   "reason": "no frontage on Tweede Vogelstraat: No footprint edge faces Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012120708",
+   "reason": "frontage 51.2 m from Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012121063",
+   "reason": "frontage 37.0 m from Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012121416",
+   "reason": "no frontage on Tweede Vogelstraat: No footprint edge faces Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012121730",
+   "reason": "frontage 60.7 m from Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012122155",
+   "reason": "frontage 52.0 m from Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012122579",
+   "reason": "sightline to Tweede Vogelstraat crosses 0363100012150433"
+  },
+  {
+   "pandId": "0363100012123001",
+   "reason": "frontage 47.0 m from Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012123207",
+   "reason": "sightline to Tweede Vogelstraat crosses 0363100012090616"
+  },
+  {
+   "pandId": "0363100012123354",
+   "reason": "frontage 46.9 m from Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012123606",
+   "reason": "frontage 47.0 m from Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012124606",
+   "reason": "frontage 56.6 m from Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012128397",
+   "reason": "frontage 47.6 m from Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012111634",
+   "reason": "frontage 73.5 m from Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012113565",
+   "reason": "frontage 77.7 m from Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012120334",
+   "reason": "frontage 107.1 m from Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012122354",
+   "reason": "frontage 89.1 m from Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012124421",
+   "reason": "no frontage on Tweede Vogelstraat: No footprint edge faces Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012129284",
+   "reason": "frontage 78.5 m from Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012129359",
+   "reason": "frontage 107.1 m from Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012117629",
+   "reason": "frontage 70.7 m from Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012134122",
+   "reason": "frontage 47.9 m from Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012135860",
+   "reason": "frontage 74.9 m from Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012139180",
+   "reason": "no frontage on Tweede Vogelstraat: No footprint edge faces Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012139467",
+   "reason": "frontage 79.9 m from Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012141291",
+   "reason": "frontage 69.9 m from Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012147843",
+   "reason": "frontage 64.0 m from Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012151554",
+   "reason": "frontage 74.9 m from Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012154722",
+   "reason": "frontage 51.9 m from Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012161061",
+   "reason": "frontage 72.3 m from Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012131550",
+   "reason": "frontage 52.5 m from Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012132631",
+   "reason": "frontage 41.1 m from Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012132959",
+   "reason": "frontage 37.0 m from Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012133462",
+   "reason": "sightline to Tweede Vogelstraat crosses 0363100012062882"
+  },
+  {
+   "pandId": "0363100012133910",
+   "reason": "sightline to Tweede Vogelstraat crosses 0363100012073659"
+  },
+  {
+   "pandId": "0363100012135700",
+   "reason": "frontage 51.4 m from Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012136571",
+   "reason": "frontage 85.5 m from Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012137341",
+   "reason": "frontage 46.2 m from Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012137372",
+   "reason": "frontage 64.9 m from Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012137810",
+   "reason": "sightline to Tweede Vogelstraat crosses 0363100012144429"
+  },
+  {
+   "pandId": "0363100012138008",
+   "reason": "sightline to Tweede Vogelstraat crosses 0363100012062882"
+  },
+  {
+   "pandId": "0363100012138634",
+   "reason": "frontage 54.0 m from Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012139381",
+   "reason": "sightline to Tweede Vogelstraat crosses 0363100012081976"
+  },
+  {
+   "pandId": "0363100012141706",
+   "reason": "frontage 56.6 m from Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012142488",
+   "reason": "frontage 41.1 m from Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012144274",
+   "reason": "frontage 52.1 m from Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012145652",
+   "reason": "frontage 42.0 m from Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012147035",
+   "reason": "sightline to Tweede Vogelstraat crosses 0363100012111139"
+  },
+  {
+   "pandId": "0363100012147250",
+   "reason": "sightline to Tweede Vogelstraat crosses 0363100012081976"
+  },
+  {
+   "pandId": "0363100012147525",
+   "reason": "frontage 52.5 m from Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012147550",
+   "reason": "sightline to Tweede Vogelstraat crosses 0363100012081976"
+  },
+  {
+   "pandId": "0363100012150171",
+   "reason": "no frontage on Tweede Vogelstraat: No footprint edge faces Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012150842",
+   "reason": "frontage 84.2 m from Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012151653",
+   "reason": "frontage 75.4 m from Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012151858",
+   "reason": "frontage 30.5 m from Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012153864",
+   "reason": "frontage 41.0 m from Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012185782",
+   "reason": "sightline to Tweede Vogelstraat crosses 0363100012067236"
+  },
+  {
+   "pandId": "0363100012130615",
+   "reason": "frontage 117.2 m from Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012133044",
+   "reason": "frontage 112.2 m from Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012137379",
+   "reason": "frontage 89.6 m from Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012142150",
+   "reason": "no frontage on Tweede Vogelstraat: No footprint edge faces Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012143803",
+   "reason": "frontage 56.2 m from Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012147662",
+   "reason": "frontage 89.6 m from Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012147742",
+   "reason": "no frontage on Tweede Vogelstraat: No footprint edge faces Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012215542",
+   "reason": "frontage 73.0 m from Tweede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012062882",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012078328",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012070792",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012103994",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012095622",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012100380",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012120731",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012124242",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012114907",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012135488",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012144429",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012150433",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012129699",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012073659",
+   "alongM": -17.58,
+   "widthM": 9.99,
+   "eavesM": 3.42,
+   "roofMaxM": 5.58,
+   "storeys3dbag": 2,
+   "builtYear": 1919,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012090616",
+   "alongM": -9.57,
+   "widthM": 6.04,
+   "eavesM": 3.41,
+   "roofMaxM": 5.61,
+   "storeys3dbag": 2,
+   "builtYear": 1919,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012127132",
+   "alongM": -4.49,
+   "widthM": 4.12,
+   "eavesM": 3.41,
+   "roofMaxM": 5.58,
+   "storeys3dbag": 2,
+   "builtYear": 1919,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012122702",
+   "alongM": 0,
+   "widthM": 4.86,
+   "eavesM": 3.39,
+   "roofMaxM": 5.56,
+   "storeys3dbag": 2,
+   "builtYear": 1919,
+   "uncertainty": []
+  }
+ ]
+}

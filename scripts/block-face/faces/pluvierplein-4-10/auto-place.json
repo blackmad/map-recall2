@@ -1,0 +1,221 @@
+{
+ "face": "pluvierplein-4-10",
+ "street": "Pluvierplein",
+ "library": "vogelbuurt",
+ "stripDate": "2025-09-22",
+ "seconds": 0.28,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012122496",
+   "address": "Pluvierplein 10",
+   "builtYear": 1924,
+   "widthM": 6.59,
+   "eavesM": 7.48,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#676d75",
+    "wallRaw": "#696b6f",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 578,
+     "confidence": 0.17,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 4,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.65 m at 0.53 (light 0.06): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.65,
+       "centre": 0.53,
+       "light": 0.06
+      },
+      {
+       "widthM": 0.6,
+       "centre": 0.64,
+       "light": 0.15
+      },
+      {
+       "widthM": 1.05,
+       "centre": 0.79,
+       "light": 0.1
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.02
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "no front on the strip: sky over the roof in 44 % of columns (< 75 %): the strip shows a nearer wall, fence or tree, not the front",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012113533",
+   "address": "Pluvierplein 8",
+   "builtYear": 1924,
+   "widthM": 6.48,
+   "eavesM": 7.11,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#5d666e",
+    "wallRaw": "#516449",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 578,
+     "confidence": 0.04,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 3.25 m at 0.27 (light 0.16): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 3.25,
+       "centre": 0.27,
+       "light": 0.16
+      },
+      {
+       "widthM": 0.8,
+       "centre": 0.83,
+       "light": 0.23
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.33
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "no front on the strip: sky over the roof in 28 % of columns (< 75 %): the strip shows a nearer wall, fence or tree, not the front",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012090671",
+   "address": "Pluvierplein 6",
+   "builtYear": 1924,
+   "widthM": 6.42,
+   "eavesM": 7.14,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#5d6369",
+    "wallRaw": "#3f4e38",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 578,
+     "confidence": 0.18,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 2.8 m at 0.24 (light 0.06): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 2.8,
+       "centre": 0.24,
+       "light": 0.06
+      },
+      {
+       "widthM": 3.02,
+       "centre": 0.74,
+       "light": 0.31
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.46
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "no front on the strip: sky over the roof in 62 % of columns (< 75 %): the strip shows a nearer wall, fence or tree, not the front",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012099505",
+   "address": "Pluvierplein 4",
+   "builtYear": 1924,
+   "widthM": 6.36,
+   "eavesM": 7.59,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#646a70",
+    "wallRaw": "#536148",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 578,
+     "confidence": 0,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "frontClass": "columns",
+    "doorSide": "right",
+    "accentSide": "right",
+    "accentShare": 0.002,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.38
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "no front on the strip: sky over the roof in 0 % of columns (< 75 %): the strip shows a nearer wall, fence or tree, not the front",
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

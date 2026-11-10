@@ -1,0 +1,319 @@
+{
+ "face": "flamingo-15-21",
+ "street": "Flamingostraat",
+ "library": "vogelbuurt",
+ "stripDate": "2017-05-15",
+ "seconds": 2.43,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012150102",
+   "address": "Flamingostraat 15",
+   "builtYear": 1924,
+   "widthM": 6.74,
+   "eavesM": 7.47,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#7b6858",
+    "wallRaw": "#98816f",
+    "skyline": {
+     "eavesM": 8.43,
+     "eavesRow": 228,
+     "confidence": 1,
+     "crown": {
+      "widthM": 3.48,
+      "riseM": 3.17,
+      "topWidthM": 0.53,
+      "centre": 0.46
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.059,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.03,
+    "foliageShare": 0.05
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": {
+    "pandId": "0363100012150102",
+    "ncc": 0.448,
+    "nccRaw": 0.448,
+    "shiftM": [
+     -0.35,
+     -0.4
+    ],
+    "usable": 0.74,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing  mean 0.36 vs photo 0.21"
+    ],
+    "wall": {
+     "photo": "#827061",
+     "model": "#927c69",
+     "dL": 0.047
+    },
+    "glazing": {
+     "photo": 0.21,
+     "model": 0.36
+    },
+    "columns": {
+     "photo": null,
+     "model": null
+    },
+    "iou": 0.481
+   },
+   "challengers": {
+    "vogel-1921-two-storey-dormer-row": 0.448,
+    "vogel-1921-two-storey-dormer-row~m": 0.264
+   }
+  },
+  {
+   "pandId": "0363100012108326",
+   "address": "Flamingostraat 17",
+   "builtYear": 1924,
+   "widthM": 6.12,
+   "eavesM": 7.07,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#453329",
+    "wallRaw": "#685e51",
+    "skyline": {
+     "eavesM": 6.17,
+     "eavesRow": 318,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.58,
+      "riseM": 1.1,
+      "topWidthM": 2.25,
+      "centre": 0.41
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.327,
+    "structure": null,
+    "voidShare": 0.05,
+    "foliageShare": 0.07
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.137 < 0.15 (photo vs model body; likeness.ts PASS)",
+   "likeness": {
+    "pandId": "0363100012108326",
+    "ncc": 0.137,
+    "nccRaw": 0.137,
+    "shiftM": [
+     0,
+     -0.4
+    ],
+    "usable": 0.78,
+    "abstain": null,
+    "verdict": "PASS",
+    "reasons": [],
+    "wall": {
+     "photo": "#463327",
+     "model": "#644a3c",
+     "dL": 0.1
+    },
+    "glazing": {
+     "photo": 0.3,
+     "model": 0.37
+    },
+    "columns": {
+     "photo": null,
+     "model": null
+    },
+    "iou": 0.71
+   },
+   "challengers": {
+    "vogel-1921-two-storey-dormer-row~m": 0.137,
+    "vogel-1921-two-storey-dormer-row": 0.398
+   }
+  },
+  {
+   "pandId": "0363100012116656",
+   "address": "Flamingostraat 19",
+   "builtYear": 1924,
+   "widthM": 6.43,
+   "eavesM": 7.09,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#504030",
+    "wallRaw": "#786d5e",
+    "skyline": {
+     "eavesM": 6.03,
+     "eavesRow": 324,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.48,
+      "riseM": 1.2,
+      "topWidthM": 2.2,
+      "centre": 0.58
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.343,
+    "structure": null,
+    "voidShare": 0.06,
+    "foliageShare": 0.06
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.087 < 0.15 (photo vs model body; likeness.ts NO EVIDENCE: washed out 36 % > 30 %)",
+   "likeness": {
+    "pandId": "0363100012116656",
+    "ncc": 0.087,
+    "nccRaw": 0.087,
+    "shiftM": [
+     0.3,
+     -0.4
+    ],
+    "usable": 0.74,
+    "abstain": null,
+    "verdict": "NO EVIDENCE",
+    "reasons": [
+     "washed out 36 % > 30 %"
+    ],
+    "wall": {
+     "photo": "#4f3e2f",
+     "model": "#6e5842",
+     "dL": 0.098
+    },
+    "glazing": {
+     "photo": 0.19,
+     "model": 0.35
+    },
+    "columns": {
+     "photo": null,
+     "model": null
+    },
+    "iou": 0.499
+   },
+   "challengers": {
+    "vogel-1921-two-storey-dormer-row": 0.087,
+    "vogel-1921-two-storey-dormer-row~m": 0.378
+   }
+  },
+  {
+   "pandId": "0363100012097125",
+   "address": "Flamingostraat 21",
+   "builtYear": 1924,
+   "widthM": 6.28,
+   "eavesM": 6.98,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#575954",
+    "wallRaw": "#5b5751",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 565,
+     "confidence": 0,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 2.52 m at 0.48 (light 0.26): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 2.52,
+       "centre": 0.48,
+       "light": 0.26
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 6,
+       "widthM": 0.95,
+       "centre": 0.18
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.02
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.114 < 0.15 (photo vs model body; likeness.ts FAIL: wall dL +0.13; glazing storey band off by 0.24 mean 0.36 vs photo 0.52)",
+   "likeness": {
+    "pandId": "0363100012097125",
+    "ncc": 0.114,
+    "nccRaw": 0.114,
+    "shiftM": [
+     0,
+     -0.4
+    ],
+    "usable": 0.92,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "wall dL +0.13",
+     "glazing storey band off by 0.24 mean 0.36 vs photo 0.52"
+    ],
+    "wall": {
+     "photo": "#544841",
+     "model": "#6d7069",
+     "dL": 0.133
+    },
+    "glazing": {
+     "photo": 0.52,
+     "model": 0.36
+    },
+    "columns": {
+     "photo": null,
+     "model": null
+    },
+    "iou": 0.389
+   },
+   "challengers": {
+    "vogel-1921-two-storey-dormer-row~m": 0.114,
+    "vogel-1921-two-storey-dormer-row": 0.185
+   }
+  }
+ ]
+}

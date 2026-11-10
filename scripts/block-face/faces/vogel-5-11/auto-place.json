@@ -1,0 +1,372 @@
+{
+ "face": "vogel-5-11",
+ "street": "Brede Vogelstraat",
+ "library": "vogelbuurt",
+ "stripDate": "2025-09-22",
+ "seconds": 2.34,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012082395",
+   "address": "Brede Vogelstraat 5",
+   "builtYear": 1919,
+   "widthM": 10.59,
+   "eavesM": 3.48,
+   "storeys3dbag": 2,
+   "bagBay": {
+    "fromM": 0.24,
+    "toM": 0.24,
+    "depthM": 0.27,
+    "centre": 0.022
+   },
+   "strip": {
+    "wall": "#544d47",
+    "wallRaw": "#ebd5bf",
+    "skyline": {
+     "eavesM": 4.83,
+     "eavesRow": 109,
+     "confidence": 0.9,
+     "crown": {
+      "widthM": 3.08,
+      "riseM": 2.65,
+      "topWidthM": 0.15,
+      "centre": 0.79
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 4,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "one-storey front (eaves <= 6 m): no balcony",
+     "openAxes": [
+      {
+       "widthM": 2,
+       "centre": 0.27,
+       "light": 0.07
+      },
+      {
+       "widthM": 0.82,
+       "centre": 0.54,
+       "light": 0.17
+      },
+      {
+       "widthM": 1.88,
+       "centre": 0.74,
+       "light": 0.2
+      },
+      {
+       "widthM": 0.63,
+       "centre": 0.97,
+       "light": 0.2
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.07,
+    "foliageShare": 0.05
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best vogel-1918-cottage-2axis: frontage 10.59 m, type 3.8-4.95 m)",
+   "best": {
+    "type": "vogel-1918-cottage-2axis",
+    "score": 0,
+    "veto": [
+     "frontage 10.59 m, type 3.8-4.95 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "strip cornice 4.83 m vs the type's 3.2 m (wall-dormer skyline 4.55 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 2 vs 0/1/2"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.105 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 4 vs 2 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012123207",
+   "address": "Brede Vogelstraat 7",
+   "builtYear": 1919,
+   "widthM": 4.43,
+   "eavesM": 3.41,
+   "storeys3dbag": 2,
+   "bagBay": null,
+   "strip": {
+    "wall": "#352e2c",
+    "wallRaw": "#e0ceb2",
+    "skyline": {
+     "eavesM": 4.53,
+     "eavesRow": 121,
+     "confidence": 0.91,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 2,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "one-storey front (eaves <= 6 m): no balcony",
+     "openAxes": [
+      {
+       "widthM": 1.93,
+       "centre": 0.44,
+       "light": 0.26
+      },
+      {
+       "widthM": 0.72,
+       "centre": 0.91,
+       "light": 0.11
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.06,
+    "foliageShare": 0.19
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": {
+    "pandId": "0363100012123207",
+    "ncc": 0.39,
+    "nccRaw": 0.39,
+    "shiftM": [
+     0.15,
+     0.4
+    ],
+    "usable": 0.55,
+    "abstain": null,
+    "verdict": "NO EVIDENCE",
+    "reasons": [
+     "foliage 27 % > 25 %",
+     "washed out 41 % > 30 %"
+    ],
+    "wall": {
+     "photo": "#353330",
+     "model": "#a37d6a",
+     "dL": 0.329
+    },
+    "glazing": {
+     "photo": 0.12,
+     "model": 0.36
+    },
+    "columns": {
+     "photo": null,
+     "model": null
+    },
+    "iou": 0.342
+   },
+   "challengers": {
+    "vogel-1918-cottage-2axis": 0.39
+   }
+  },
+  {
+   "pandId": "0363100012087612",
+   "address": "Brede Vogelstraat 9",
+   "builtYear": 1918,
+   "widthM": 6.03,
+   "eavesM": 3.41,
+   "storeys3dbag": 2,
+   "bagBay": null,
+   "strip": {
+    "wall": "#333230",
+    "wallRaw": "#8a967d",
+    "skyline": {
+     "eavesM": 4.53,
+     "eavesRow": 121,
+     "confidence": 0.89,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 5,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0.5,
+     "bayCentre": 0.93,
+     "balconies": false,
+     "why": "one-storey front (eaves <= 6 m): no balcony",
+     "openAxes": [
+      {
+       "widthM": 1.15,
+       "centre": 0.1,
+       "light": 0.1
+      },
+      {
+       "widthM": 2.88,
+       "centre": 0.5,
+       "light": 0.2
+      },
+      {
+       "widthM": 1.13,
+       "centre": 0.89,
+       "light": 0.47
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.06,
+    "foliageShare": 0.31
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "no photo evidence (usable photo 34 % < 50 %) and no passing same-type neighbour",
+   "likeness": {
+    "pandId": "0363100012087612",
+    "ncc": null,
+    "nccRaw": 0.161,
+    "shiftM": [
+     0.2,
+     0.05
+    ],
+    "usable": 0.34,
+    "abstain": "usable photo 34 % < 50 %",
+    "verdict": "NO EVIDENCE",
+    "reasons": [
+     "foliage 34 % > 25 %",
+     "washed out 36 % > 30 %"
+    ],
+    "wall": {
+     "photo": "#737974",
+     "model": "#a37d6a",
+     "dL": 0.065
+    },
+    "glazing": {
+     "photo": 0.73,
+     "model": 0.39
+    },
+    "columns": {
+     "photo": 2,
+     "model": null
+    },
+    "iou": 0.514
+   },
+   "challengers": {
+    "vogel-1918-cottage-3axis": null
+   }
+  },
+  {
+   "pandId": "0363100012133910",
+   "address": "Brede Vogelstraat 11",
+   "builtYear": 1919,
+   "widthM": 3.98,
+   "eavesM": 3.4,
+   "storeys3dbag": 2,
+   "bagBay": null,
+   "strip": {
+    "wall": "#e4cfb7",
+    "wallRaw": "#d7c2a8",
+    "skyline": {
+     "eavesM": 4.5,
+     "eavesRow": 122,
+     "confidence": 0.87,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": null,
+    "frontClass": "curtain",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "one-storey front (eaves <= 6 m): no balcony",
+     "openAxes": [
+      {
+       "widthM": 1.93,
+       "centre": 0.38,
+       "light": 0.19
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.05,
+    "foliageShare": 0.18
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": {
+    "pandId": "0363100012133910",
+    "ncc": 0.288,
+    "nccRaw": 0.288,
+    "shiftM": [
+     0.4,
+     0.4
+    ],
+    "usable": 0.52,
+    "abstain": null,
+    "verdict": "NO EVIDENCE",
+    "reasons": [
+     "washed out 44 % > 30 %"
+    ],
+    "wall": {
+     "photo": "#413d3b",
+     "model": "#a37d6a",
+     "dL": 0.284
+    },
+    "glazing": {
+     "photo": 0.38,
+     "model": 0.4
+    },
+    "columns": {
+     "photo": null,
+     "model": null
+    },
+    "iou": 0.402
+   },
+   "challengers": {
+    "vogel-1918-cottage-2axis": 0.288
+   }
+  }
+ ]
+}

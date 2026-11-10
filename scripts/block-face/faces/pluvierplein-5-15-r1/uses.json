@@ -1,0 +1,41 @@
+{
+ "street": "Pluvierplein",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched n/a (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012070701",
+   "addresses": [
+    "Pluvierplein 5"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pluvierplein 5-H",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000778623"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012151759",
+   "addresses": [
+    "Pluvierplein 7"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pluvierplein 7-H",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000778627"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  }
+ ]
+}

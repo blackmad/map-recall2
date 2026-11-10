@@ -1,0 +1,57 @@
+{
+ "street": "Vogelplantsoen",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T01:57:54.646Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012079772",
+   "addresses": [
+    "Vogelplantsoen 12"
+   ],
+   "groundUnits": [
+    {
+     "address": "Vogelplantsoen 12",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000855936"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012087797",
+   "addresses": [
+    "Vogelplantsoen 10"
+   ],
+   "groundUnits": [
+    {
+     "address": "Vogelplantsoen 10",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010000855934"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012106957",
+   "addresses": [
+    "Vogelplantsoen 8"
+   ],
+   "groundUnits": [
+    {
+     "address": "Vogelplantsoen 8",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000855932"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  }
+ ]
+}

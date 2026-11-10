@@ -1,0 +1,302 @@
+{
+ "face": "zamenhof-78-82",
+ "street": "Zamenhofstraat",
+ "library": "vogelbuurt",
+ "stripDate": "2025-09-22",
+ "seconds": 2.57,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [
+  {
+   "face": "zamenhof-78-82",
+   "pands": [
+    "0363100012097992",
+    "0363100012112593",
+    "0363100012062919"
+   ],
+   "passed": true,
+   "triangles": 1396
+  }
+ ],
+ "pands": [
+  {
+   "pandId": "0363100012097992",
+   "address": "Zamenhofstraat 82",
+   "builtYear": 1919,
+   "widthM": 5,
+   "eavesM": 4.24,
+   "storeys3dbag": 2,
+   "bagBay": null,
+   "strip": {
+    "wall": "#434544",
+    "wallRaw": "#3d3f3e",
+    "skyline": {
+     "eavesM": 6,
+     "eavesRow": 124,
+     "confidence": 0.92,
+     "crown": {
+      "widthM": 1.02,
+      "riseM": 2.32,
+      "topWidthM": 0.35,
+      "centre": 0.89
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 4,
+    "frontClass": "ribbon",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "one-storey front (eaves <= 6 m): no balcony",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 3.1,
+       "widthM": 4.6,
+       "centre": 0.5
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.05
+   },
+   "status": "placed",
+   "type": "vogel-1918-timber-band-cottage",
+   "score": 0.77,
+   "placement": {
+    "type": "vogel-1918-timber-band-cottage"
+   },
+   "notes": [
+    "door unread: as drawn, the opposite of 112593",
+    "crown half-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012097992",
+    "ncc": 0.409,
+    "nccRaw": 0.409,
+    "shiftM": [
+     0.15,
+     0.35
+    ],
+    "usable": 0.86,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing  mean 0.15 vs photo 0.67"
+    ],
+    "wall": {
+     "photo": "#3f3f40",
+     "model": "#2c2b30",
+     "dL": -0.071
+    },
+    "glazing": {
+     "photo": 0.67,
+     "model": 0.15
+    },
+    "columns": {
+     "photo": null,
+     "model": null
+    },
+    "iou": 0.228
+   },
+   "challengers": {
+    "vogel-1918-timber-band-cottage": 0.409,
+    "vogel-1918-timber-band-cottage~m": 0.171
+   }
+  },
+  {
+   "pandId": "0363100012112593",
+   "address": "Zamenhofstraat 80",
+   "builtYear": 1918,
+   "widthM": 5,
+   "eavesM": 4.22,
+   "storeys3dbag": 2,
+   "bagBay": null,
+   "strip": {
+    "wall": "#2b3134",
+    "wallRaw": "#333a35",
+    "skyline": {
+     "eavesM": 5.88,
+     "eavesRow": 129,
+     "confidence": 0.94,
+     "crown": {
+      "widthM": 1.15,
+      "riseM": 3.22,
+      "topWidthM": 0.35,
+      "centre": 0.38
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "curtain",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0.38,
+     "bayCentre": 0.12,
+     "balconies": false,
+     "why": "one-storey front (eaves <= 6 m): no balcony",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.08
+   },
+   "status": "placed",
+   "type": "vogel-1918-timber-band-cottage",
+   "score": 0.86,
+   "placement": {
+    "type": "vogel-1918-timber-band-cottage",
+    "mirror": true
+   },
+   "notes": [
+    "door left: mirrored",
+    "crown half-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012112593",
+    "ncc": 0.238,
+    "nccRaw": 0.238,
+    "shiftM": [
+     0.1,
+     0.1
+    ],
+    "usable": 0.79,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing  mean 0.15 vs photo 1.00",
+     "wall family unresolved (#4b494c is dark and neutral, brick courses not resolved): lightness and hue judged only"
+    ],
+    "wall": {
+     "photo": "#4b494c",
+     "model": "#2c2b30",
+     "dL": -0.114
+    },
+    "glazing": {
+     "photo": 1,
+     "model": 0.15
+    },
+    "columns": {
+     "photo": null,
+     "model": null
+    },
+    "iou": 0.165
+   },
+   "challengers": {
+    "vogel-1918-timber-band-cottage~m": 0.238,
+    "vogel-1918-timber-band-cottage": 0.05
+   }
+  },
+  {
+   "pandId": "0363100012062919",
+   "address": "Zamenhofstraat 78",
+   "builtYear": 1919,
+   "widthM": 5,
+   "eavesM": 4.41,
+   "storeys3dbag": 2,
+   "bagBay": null,
+   "strip": {
+    "wall": "#242a33",
+    "wallRaw": "#393b3b",
+    "skyline": {
+     "eavesM": 6.03,
+     "eavesRow": 123,
+     "confidence": 0.92,
+     "crown": {
+      "widthM": 1.05,
+      "riseM": 2.25,
+      "topWidthM": 0.53,
+      "centre": 0.89
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 5,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "one-storey front (eaves <= 6 m): no balcony",
+     "openAxes": [
+      {
+       "widthM": 1.73,
+       "centre": 0.61,
+       "light": 0.15
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 3.08,
+       "widthM": 4.6,
+       "centre": 0.5
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "placed",
+   "type": "vogel-1918-timber-band-cottage",
+   "score": 0.77,
+   "placement": {
+    "type": "vogel-1918-timber-band-cottage"
+   },
+   "notes": [
+    "door unread: as drawn, the opposite of 112593",
+    "crown half-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012062919",
+    "ncc": 0.266,
+    "nccRaw": 0.266,
+    "shiftM": [
+     -0.4,
+     0.4
+    ],
+    "usable": 0.93,
+    "abstain": null,
+    "verdict": "WARN",
+    "reasons": [
+     "mask IoU 0.313 < 0.45"
+    ],
+    "wall": {
+     "photo": "#232932",
+     "model": "#2c2b30",
+     "dL": 0.012
+    },
+    "glazing": {
+     "photo": 0.16,
+     "model": 0.16
+    },
+    "columns": {
+     "photo": null,
+     "model": null
+    },
+    "iou": 0.313
+   },
+   "challengers": {
+    "vogel-1918-timber-band-cottage": 0.266,
+    "vogel-1918-timber-band-cottage~m": 0.203
+   }
+  }
+ ]
+}

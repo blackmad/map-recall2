@@ -1,0 +1,412 @@
+{
+ "face": "vogel-20-30",
+ "street": "Brede Vogelstraat",
+ "library": "vogelbuurt",
+ "stripDate": "2025-09-22",
+ "seconds": 0.25,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012120569",
+   "address": "Brede Vogelstraat 30",
+   "builtYear": 1919,
+   "widthM": 10.01,
+   "eavesM": 3.32,
+   "storeys3dbag": 2,
+   "bagBay": null,
+   "strip": {
+    "wall": "#42433d",
+    "wallRaw": "#4b4d47",
+    "skyline": {
+     "eavesM": 4.72,
+     "eavesRow": 112,
+     "confidence": 0.78,
+     "crown": {
+      "widthM": 2.5,
+      "riseM": 2.8,
+      "topWidthM": 0.53,
+      "centre": 0.14
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 7,
+    "frontClass": "curtain",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 1.05,
+     "bayCentre": 0.26,
+     "balconies": false,
+     "why": "one-storey front (eaves <= 6 m): no balcony",
+     "openAxes": [
+      {
+       "widthM": 1.05,
+       "centre": 0.06,
+       "light": 0.01
+      },
+      {
+       "widthM": 1.38,
+       "centre": 0.26,
+       "light": 0.45
+      },
+      {
+       "widthM": 0.78,
+       "centre": 0.39,
+       "light": 0
+      },
+      {
+       "widthM": 0.63,
+       "centre": 0.48,
+       "light": 0.32
+      },
+      {
+       "widthM": 1.18,
+       "centre": 0.59,
+       "light": 0
+      },
+      {
+       "widthM": 1.35,
+       "centre": 0.74,
+       "light": 0.4
+      },
+      {
+       "widthM": 1.6,
+       "centre": 0.91,
+       "light": 0.26
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.17
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best vogel-1918-cottage-2axis: frontage 10.01 m, type 3.8-4.95 m)",
+   "best": {
+    "type": "vogel-1918-cottage-2axis",
+    "score": 0,
+    "veto": [
+     "frontage 10.01 m, type 3.8-4.95 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "strip cornice 4.72 m vs the type's 3.2 m (wall-dormer skyline 4.55 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 2 vs 0/1/2"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.007 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 7 vs 2 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012088645",
+   "address": "Brede Vogelstraat 28",
+   "builtYear": 1919,
+   "widthM": 10.01,
+   "eavesM": 3.34,
+   "storeys3dbag": 2,
+   "bagBay": null,
+   "strip": {
+    "wall": "#37312d",
+    "wallRaw": "#444a3e",
+    "skyline": {
+     "eavesM": 4.67,
+     "eavesRow": 114,
+     "confidence": 0.81,
+     "crown": {
+      "widthM": 1.07,
+      "riseM": 2.85,
+      "topWidthM": 0.1,
+      "centre": 0.06
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 8,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "one-storey front (eaves <= 6 m): no balcony",
+     "openAxes": [
+      {
+       "widthM": 1.93,
+       "centre": 0.23,
+       "light": 0.21
+      },
+      {
+       "widthM": 2.83,
+       "centre": 0.77,
+       "light": 0.12
+      },
+      {
+       "widthM": 0.65,
+       "centre": 0.96,
+       "light": 0.31
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 1.4,
+       "widthM": 1.02,
+       "centre": 0.72
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.41
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best vogel-1918-cottage-2axis: frontage 10.01 m, type 3.8-4.95 m)",
+   "best": {
+    "type": "vogel-1918-cottage-2axis",
+    "score": 0,
+    "veto": [
+     "frontage 10.01 m, type 3.8-4.95 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "strip cornice 4.67 m vs the type's 3.2 m (wall-dormer skyline 4.55 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 2 vs 0/1/2"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012069851",
+   "address": "Brede Vogelstraat 22",
+   "builtYear": 1919,
+   "widthM": 10.01,
+   "eavesM": 3.34,
+   "storeys3dbag": 2,
+   "bagBay": null,
+   "strip": {
+    "wall": "#59554f",
+    "wallRaw": "#595e4f",
+    "skyline": {
+     "eavesM": 4.72,
+     "eavesRow": 112,
+     "confidence": 0.83,
+     "crown": {
+      "widthM": 2.35,
+      "riseM": 2.53,
+      "topWidthM": 0.13,
+      "centre": 0.13
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "one-storey front (eaves <= 6 m): no balcony",
+     "openAxes": [
+      {
+       "widthM": 4.1,
+       "centre": 0.22,
+       "light": 0.25
+      },
+      {
+       "widthM": 0.82,
+       "centre": 0.5,
+       "light": 0.15
+      },
+      {
+       "widthM": 0.95,
+       "centre": 0.61,
+       "light": 0.03
+      },
+      {
+       "widthM": 1.2,
+       "centre": 0.74,
+       "light": 0.19
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.43
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best vogel-1918-cottage-2axis: frontage 10.01 m, type 3.8-4.95 m)",
+   "best": {
+    "type": "vogel-1918-cottage-2axis",
+    "score": 0,
+    "veto": [
+     "frontage 10.01 m, type 3.8-4.95 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "strip cornice 4.72 m vs the type's 3.2 m (wall-dormer skyline 4.55 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 2 vs 0/1/2"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012066995",
+   "address": "Brede Vogelstraat 20",
+   "builtYear": 1919,
+   "widthM": 10.04,
+   "eavesM": 3.35,
+   "storeys3dbag": 2,
+   "bagBay": null,
+   "strip": {
+    "wall": "#4e4d48",
+    "wallRaw": "#495644",
+    "skyline": {
+     "eavesM": 4.75,
+     "eavesRow": 111,
+     "confidence": 0.84,
+     "crown": {
+      "widthM": 2.33,
+      "riseM": 2.6,
+      "topWidthM": 0.13,
+      "centre": 0.13
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "one-storey front (eaves <= 6 m): no balcony",
+     "openAxes": [
+      {
+       "widthM": 3.77,
+       "centre": 0.2,
+       "light": 0.09
+      },
+      {
+       "widthM": 1.4,
+       "centre": 0.51,
+       "light": 0.03
+      },
+      {
+       "widthM": 1.98,
+       "centre": 0.78,
+       "light": 0.33
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.66
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best vogel-1918-cottage-2axis: frontage 10.04 m, type 3.8-4.95 m)",
+   "best": {
+    "type": "vogel-1918-cottage-2axis",
+    "score": 0,
+    "veto": [
+     "frontage 10.04 m, type 3.8-4.95 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "strip cornice 4.75 m vs the type's 3.2 m (wall-dormer skyline 4.55 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 2 vs 0/1/2"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

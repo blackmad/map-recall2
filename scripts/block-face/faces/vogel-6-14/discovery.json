@@ -1,0 +1,605 @@
+{
+ "street": "Korte Vogelstraat",
+ "seed": "0363100012086570",
+ "members": [
+  "0363100012131550",
+  "0363100012123838",
+  "0363100012080002",
+  "0363100012086570"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "trimmed at 0363100012131550 (face continues: 067081 147525)"
+  },
+  {
+   "side": "right",
+   "reason": "next fronting pand 0363100012100514 11.9 m on shares no party wall (cross street or gap)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012064115",
+   "reason": "sightline to Korte Vogelstraat crosses 0363100012076219"
+  },
+  {
+   "pandId": "0363100012068107",
+   "reason": "no frontage on Korte Vogelstraat: No footprint edge faces Korte Vogelstraat"
+  },
+  {
+   "pandId": "0363100012072702",
+   "reason": "sightline to Korte Vogelstraat crosses 0363100012100514"
+  },
+  {
+   "pandId": "0363100012080989",
+   "reason": "no frontage on Korte Vogelstraat: No footprint edge faces Korte Vogelstraat"
+  },
+  {
+   "pandId": "0363100012085003",
+   "reason": "sightline to Korte Vogelstraat crosses 0363100012090581"
+  },
+  {
+   "pandId": "0363100012062882",
+   "reason": "frontage 57.1 m from Korte Vogelstraat"
+  },
+  {
+   "pandId": "0363100012062910",
+   "reason": "frontage 42.4 m from Korte Vogelstraat"
+  },
+  {
+   "pandId": "0363100012063241",
+   "reason": "sightline to Korte Vogelstraat crosses 0363100012128397"
+  },
+  {
+   "pandId": "0363100012065299",
+   "reason": "frontage 59.1 m from Korte Vogelstraat"
+  },
+  {
+   "pandId": "0363100012065836",
+   "reason": "frontage 52.1 m from Korte Vogelstraat"
+  },
+  {
+   "pandId": "0363100012067236",
+   "reason": "frontage 42.0 m from Korte Vogelstraat"
+  },
+  {
+   "pandId": "0363100012067531",
+   "reason": "no frontage on Korte Vogelstraat: No footprint edge faces Korte Vogelstraat"
+  },
+  {
+   "pandId": "0363100012073659",
+   "reason": "frontage 70.1 m from Korte Vogelstraat"
+  },
+  {
+   "pandId": "0363100012075795",
+   "reason": "frontage 37.0 m from Korte Vogelstraat"
+  },
+  {
+   "pandId": "0363100012076655",
+   "reason": "no frontage on Korte Vogelstraat: No footprint edge faces Korte Vogelstraat"
+  },
+  {
+   "pandId": "0363100012076999",
+   "reason": "no frontage on Korte Vogelstraat: No footprint edge faces Korte Vogelstraat"
+  },
+  {
+   "pandId": "0363100012078199",
+   "reason": "frontage 42.4 m from Korte Vogelstraat"
+  },
+  {
+   "pandId": "0363100012078328",
+   "reason": "frontage 52.5 m from Korte Vogelstraat"
+  },
+  {
+   "pandId": "0363100012079661",
+   "reason": "frontage 44.0 m from Korte Vogelstraat"
+  },
+  {
+   "pandId": "0363100012079731",
+   "reason": "frontage 52.2 m from Korte Vogelstraat"
+  },
+  {
+   "pandId": "0363100012079816",
+   "reason": "frontage 55.8 m from Korte Vogelstraat"
+  },
+  {
+   "pandId": "0363100012080054",
+   "reason": "no frontage on Korte Vogelstraat: No footprint edge faces Korte Vogelstraat"
+  },
+  {
+   "pandId": "0363100012081976",
+   "reason": "frontage 75.0 m from Korte Vogelstraat"
+  },
+  {
+   "pandId": "0363100012082395",
+   "reason": "frontage 85.7 m from Korte Vogelstraat"
+  },
+  {
+   "pandId": "0363100012082673",
+   "reason": "no frontage on Korte Vogelstraat: No footprint edge faces Korte Vogelstraat"
+  },
+  {
+   "pandId": "0363100012083374",
+   "reason": "sightline to Korte Vogelstraat crosses 0363100012086570"
+  },
+  {
+   "pandId": "0363100012084233",
+   "reason": "no frontage on Korte Vogelstraat: No footprint edge faces Korte Vogelstraat"
+  },
+  {
+   "pandId": "0363100012087612",
+   "reason": "frontage 85.6 m from Korte Vogelstraat"
+  },
+  {
+   "pandId": "0363100012090616",
+   "reason": "frontage 70.1 m from Korte Vogelstraat"
+  },
+  {
+   "pandId": "0363100012091400",
+   "reason": "frontage 47.1 m from Korte Vogelstraat"
+  },
+  {
+   "pandId": "0363100012091593",
+   "reason": "frontage 112.0 m from Korte Vogelstraat"
+  },
+  {
+   "pandId": "0363100012092462",
+   "reason": "frontage 64.4 m from Korte Vogelstraat"
+  },
+  {
+   "pandId": "0363100012092948",
+   "reason": "no frontage on Korte Vogelstraat: No footprint edge faces Korte Vogelstraat"
+  },
+  {
+   "pandId": "0363100012093588",
+   "reason": "frontage 37.2 m from Korte Vogelstraat"
+  },
+  {
+   "pandId": "0363100012070792",
+   "reason": "frontage 66.5 m from Korte Vogelstraat"
+  },
+  {
+   "pandId": "0363100012071462",
+   "reason": "frontage 110.3 m from Korte Vogelstraat"
+  },
+  {
+   "pandId": "0363100012071643",
+   "reason": "frontage 86.3 m from Korte Vogelstraat"
+  },
+  {
+   "pandId": "0363100012083876",
+   "reason": "frontage 116.3 m from Korte Vogelstraat"
+  },
+  {
+   "pandId": "0363100012083177",
+   "reason": "frontage 115.1 m from Korte Vogelstraat"
+  },
+  {
+   "pandId": "0363100012101216",
+   "reason": "sightline to Korte Vogelstraat crosses 0363100012078281"
+  },
+  {
+   "pandId": "0363100012102252",
+   "reason": "sightline to Korte Vogelstraat crosses 0363100012139467"
+  },
+  {
+   "pandId": "0363100012108165",
+   "reason": "sightline to Korte Vogelstraat crosses 0363100012078281"
+  },
+  {
+   "pandId": "0363100012110286",
+   "reason": "sightline to Korte Vogelstraat crosses 0363100012071869"
+  },
+  {
+   "pandId": "0363100012118818",
+   "reason": "frontage 46.0 m from Korte Vogelstraat"
+  },
+  {
+   "pandId": "0363100012118959",
+   "reason": "no frontage on Korte Vogelstraat: No footprint edge faces Korte Vogelstraat"
+  },
+  {
+   "pandId": "0363100012122427",
+   "reason": "sightline to Korte Vogelstraat crosses 0363100012091925"
+  },
+  {
+   "pandId": "0363100012122571",
+   "reason": "sightline to Korte Vogelstraat crosses 0363100012102252"
+  },
+  {
+   "pandId": "0363100012124024",
+   "reason": "sightline to Korte Vogelstraat crosses 0363100012078281"
+  },
+  {
+   "pandId": "0363100012094056",
+   "reason": "no frontage on Korte Vogelstraat: No footprint edge faces Korte Vogelstraat"
+  },
+  {
+   "pandId": "0363100012097236",
+   "reason": "frontage 36.9 m from Korte Vogelstraat"
+  },
+  {
+   "pandId": "0363100012101772",
+   "reason": "sightline to Korte Vogelstraat crosses 0363100012131550"
+  },
+  {
+   "pandId": "0363100012103994",
+   "reason": "frontage 52.6 m from Korte Vogelstraat"
+  },
+  {
+   "pandId": "0363100012104456",
+   "reason": "no frontage on Korte Vogelstraat: No footprint edge faces Korte Vogelstraat"
+  },
+  {
+   "pandId": "0363100012106420",
+   "reason": "frontage 37.1 m from Korte Vogelstraat"
+  },
+  {
+   "pandId": "0363100012107391",
+   "reason": "frontage 69.8 m from Korte Vogelstraat"
+  },
+  {
+   "pandId": "0363100012108351",
+   "reason": "frontage 107.1 m from Korte Vogelstraat"
+  },
+  {
+   "pandId": "0363100012108489",
+   "reason": "sightline to Korte Vogelstraat crosses 0363100012123838"
+  },
+  {
+   "pandId": "0363100012109169",
+   "reason": "frontage 37.1 m from Korte Vogelstraat"
+  },
+  {
+   "pandId": "0363100012109523",
+   "reason": "frontage 107.2 m from Korte Vogelstraat"
+  },
+  {
+   "pandId": "0363100012110100",
+   "reason": "frontage 37.1 m from Korte Vogelstraat"
+  },
+  {
+   "pandId": "0363100012111139",
+   "reason": "frontage 51.9 m from Korte Vogelstraat"
+  },
+  {
+   "pandId": "0363100012111314",
+   "reason": "sightline to Korte Vogelstraat crosses 0363100012067531"
+  },
+  {
+   "pandId": "0363100012111907",
+   "reason": "sightline to Korte Vogelstraat crosses 0363100012080002"
+  },
+  {
+   "pandId": "0363100012114049",
+   "reason": "frontage 44.0 m from Korte Vogelstraat"
+  },
+  {
+   "pandId": "0363100012116965",
+   "reason": "no frontage on Korte Vogelstraat: No footprint edge faces Korte Vogelstraat"
+  },
+  {
+   "pandId": "0363100012117598",
+   "reason": "frontage 48.8 m from Korte Vogelstraat"
+  },
+  {
+   "pandId": "0363100012118497",
+   "reason": "no frontage on Korte Vogelstraat: No footprint edge faces Korte Vogelstraat"
+  },
+  {
+   "pandId": "0363100012118636",
+   "reason": "sightline to Korte Vogelstraat crosses 0363100012072702"
+  },
+  {
+   "pandId": "0363100012120708",
+   "reason": "frontage 117.0 m from Korte Vogelstraat"
+  },
+  {
+   "pandId": "0363100012120731",
+   "reason": "frontage 58.6 m from Korte Vogelstraat"
+  },
+  {
+   "pandId": "0363100012121047",
+   "reason": "frontage 43.4 m from Korte Vogelstraat"
+  },
+  {
+   "pandId": "0363100012121063",
+   "reason": "sightline to Korte Vogelstraat crosses 0363100012067081"
+  },
+  {
+   "pandId": "0363100012121416",
+   "reason": "no frontage on Korte Vogelstraat: No footprint edge faces Korte Vogelstraat"
+  },
+  {
+   "pandId": "0363100012122155",
+   "reason": "sightline to Korte Vogelstraat crosses 0363100012120169"
+  },
+  {
+   "pandId": "0363100012122579",
+   "reason": "frontage 37.1 m from Korte Vogelstraat"
+  },
+  {
+   "pandId": "0363100012122702",
+   "reason": "frontage 70.2 m from Korte Vogelstraat"
+  },
+  {
+   "pandId": "0363100012123001",
+   "reason": "sightline to Korte Vogelstraat crosses 0363100012120169"
+  },
+  {
+   "pandId": "0363100012123207",
+   "reason": "frontage 85.6 m from Korte Vogelstraat"
+  },
+  {
+   "pandId": "0363100012123947",
+   "reason": "frontage 70.0 m from Korte Vogelstraat"
+  },
+  {
+   "pandId": "0363100012124242",
+   "reason": "frontage 56.9 m from Korte Vogelstraat"
+  },
+  {
+   "pandId": "0363100012095622",
+   "reason": "frontage 61.7 m from Korte Vogelstraat"
+  },
+  {
+   "pandId": "0363100012100380",
+   "reason": "frontage 76.3 m from Korte Vogelstraat"
+  },
+  {
+   "pandId": "0363100012114907",
+   "reason": "frontage 71.4 m from Korte Vogelstraat"
+  },
+  {
+   "pandId": "0363100012124421",
+   "reason": "frontage 92.2 m from Korte Vogelstraat"
+  },
+  {
+   "pandId": "0363100012110901",
+   "reason": "frontage 84.7 m from Korte Vogelstraat"
+  },
+  {
+   "pandId": "0363100012117629",
+   "reason": "frontage 66.5 m from Korte Vogelstraat"
+  },
+  {
+   "pandId": "0363100012124451",
+   "reason": "sightline to Korte Vogelstraat crosses 0363100012072702"
+  },
+  {
+   "pandId": "0363100012126991",
+   "reason": "no frontage on Korte Vogelstraat: No footprint edge faces Korte Vogelstraat"
+  },
+  {
+   "pandId": "0363100012134122",
+   "reason": "no frontage on Korte Vogelstraat: No footprint edge faces Korte Vogelstraat"
+  },
+  {
+   "pandId": "0363100012135860",
+   "reason": "sightline to Korte Vogelstraat crosses 0363100012078281"
+  },
+  {
+   "pandId": "0363100012139180",
+   "reason": "no frontage on Korte Vogelstraat: No footprint edge faces Korte Vogelstraat"
+  },
+  {
+   "pandId": "0363100012139467",
+   "reason": "sightline to Korte Vogelstraat crosses 0363100012141291"
+  },
+  {
+   "pandId": "0363100012151554",
+   "reason": "sightline to Korte Vogelstraat crosses 0363100012141291"
+  },
+  {
+   "pandId": "0363100012154722",
+   "reason": "sightline to Korte Vogelstraat crosses 0363100012100514"
+  },
+  {
+   "pandId": "0363100012217425",
+   "reason": "frontage 33.6 m from Korte Vogelstraat"
+  },
+  {
+   "pandId": "0363100012127132",
+   "reason": "frontage 70.1 m from Korte Vogelstraat"
+  },
+  {
+   "pandId": "0363100012127241",
+   "reason": "no frontage on Korte Vogelstraat: No footprint edge faces Korte Vogelstraat"
+  },
+  {
+   "pandId": "0363100012128397",
+   "reason": "sightline to Korte Vogelstraat crosses 0363100012141706"
+  },
+  {
+   "pandId": "0363100012129583",
+   "reason": "sightline to Korte Vogelstraat crosses 0363100012067531"
+  },
+  {
+   "pandId": "0363100012132631",
+   "reason": "frontage 107.2 m from Korte Vogelstraat"
+  },
+  {
+   "pandId": "0363100012132959",
+   "reason": "sightline to Korte Vogelstraat crosses 0363100012131550"
+  },
+  {
+   "pandId": "0363100012133462",
+   "reason": "sightline to Korte Vogelstraat crosses 0363100012120169"
+  },
+  {
+   "pandId": "0363100012133910",
+   "reason": "frontage 85.7 m from Korte Vogelstraat"
+  },
+  {
+   "pandId": "0363100012135488",
+   "reason": "frontage 53.7 m from Korte Vogelstraat"
+  },
+  {
+   "pandId": "0363100012137810",
+   "reason": "frontage 37.1 m from Korte Vogelstraat"
+  },
+  {
+   "pandId": "0363100012138008",
+   "reason": "frontage 42.1 m from Korte Vogelstraat"
+  },
+  {
+   "pandId": "0363100012138583",
+   "reason": "frontage 51.8 m from Korte Vogelstraat"
+  },
+  {
+   "pandId": "0363100012139381",
+   "reason": "frontage 85.0 m from Korte Vogelstraat"
+  },
+  {
+   "pandId": "0363100012141706",
+   "reason": "no frontage on Korte Vogelstraat: No footprint edge faces Korte Vogelstraat"
+  },
+  {
+   "pandId": "0363100012142347",
+   "reason": "frontage 53.6 m from Korte Vogelstraat"
+  },
+  {
+   "pandId": "0363100012144274",
+   "reason": "sightline to Korte Vogelstraat crosses 0363100012141706"
+  },
+  {
+   "pandId": "0363100012144429",
+   "reason": "frontage 52.7 m from Korte Vogelstraat"
+  },
+  {
+   "pandId": "0363100012145652",
+   "reason": "sightline to Korte Vogelstraat crosses 0363100012120169"
+  },
+  {
+   "pandId": "0363100012147035",
+   "reason": "frontage 47.0 m from Korte Vogelstraat"
+  },
+  {
+   "pandId": "0363100012147250",
+   "reason": "frontage 80.0 m from Korte Vogelstraat"
+  },
+  {
+   "pandId": "0363100012147550",
+   "reason": "frontage 90.0 m from Korte Vogelstraat"
+  },
+  {
+   "pandId": "0363100012150433",
+   "reason": "frontage 52.6 m from Korte Vogelstraat"
+  },
+  {
+   "pandId": "0363100012151858",
+   "reason": "frontage 56.8 m from Korte Vogelstraat"
+  },
+  {
+   "pandId": "0363100012185782",
+   "reason": "sightline to Korte Vogelstraat crosses 0363100012072702"
+  },
+  {
+   "pandId": "0363100012129699",
+   "reason": "frontage 56.9 m from Korte Vogelstraat"
+  },
+  {
+   "pandId": "0363100012142150",
+   "reason": "frontage 90.5 m from Korte Vogelstraat"
+  },
+  {
+   "pandId": "0363100012143803",
+   "reason": "frontage 122.0 m from Korte Vogelstraat"
+  },
+  {
+   "pandId": "0363100012147742",
+   "reason": "frontage 81.3 m from Korte Vogelstraat"
+  },
+  {
+   "pandId": "0363100012069366",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012071869",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012076219",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012078281",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012090581",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012090940",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012091651",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012091925",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012141291",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012147843",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012161061",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012158267",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012131550",
+   "alongM": -20.02,
+   "widthM": 10.01,
+   "eavesM": 3.31,
+   "roofMaxM": 5.46,
+   "storeys3dbag": 2,
+   "builtYear": 1918,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012123838",
+   "alongM": -12.97,
+   "widthM": 4.1,
+   "eavesM": 3.33,
+   "roofMaxM": 5.48,
+   "storeys3dbag": 2,
+   "builtYear": 1918,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012080002",
+   "alongM": -7.96,
+   "widthM": 5.91,
+   "eavesM": 3.34,
+   "roofMaxM": 5.51,
+   "storeys3dbag": 2,
+   "builtYear": 1918,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012086570",
+   "alongM": 0,
+   "widthM": 10.02,
+   "eavesM": 3.36,
+   "roofMaxM": 5.53,
+   "storeys3dbag": 2,
+   "builtYear": 1918,
+   "uncertainty": []
+  }
+ ]
+}

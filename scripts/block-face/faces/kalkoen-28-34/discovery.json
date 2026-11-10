@@ -1,0 +1,653 @@
+{
+ "street": "Kalkoenstraat",
+ "seed": "0363100012123147",
+ "members": [
+  "0363100012147533",
+  "0363100012133141",
+  "0363100012111141",
+  "0363100012123147"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "trimmed at 0363100012147533 (face continues: 114430)"
+  },
+  {
+   "side": "right",
+   "reason": "trimmed at 0363100012123147 (face continues: 097690)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012063000",
+   "reason": "sightline to Kalkoenstraat crosses 0363100012097690"
+  },
+  {
+   "pandId": "0363100012064115",
+   "reason": "frontage 101.0 m from Kalkoenstraat"
+  },
+  {
+   "pandId": "0363100012065687",
+   "reason": "frontage 34.7 m from Kalkoenstraat"
+  },
+  {
+   "pandId": "0363100012066422",
+   "reason": "frontage 33.2 m from Kalkoenstraat"
+  },
+  {
+   "pandId": "0363100012069013",
+   "reason": "frontage 33.0 m from Kalkoenstraat"
+  },
+  {
+   "pandId": "0363100012070462",
+   "reason": "frontage 57.4 m from Kalkoenstraat"
+  },
+  {
+   "pandId": "0363100012071384",
+   "reason": "sightline to Kalkoenstraat crosses 0363100012101319"
+  },
+  {
+   "pandId": "0363100012076719",
+   "reason": "frontage 47.5 m from Kalkoenstraat"
+  },
+  {
+   "pandId": "0363100012077955",
+   "reason": "frontage 54.8 m from Kalkoenstraat"
+  },
+  {
+   "pandId": "0363100012078630",
+   "reason": "frontage 57.9 m from Kalkoenstraat"
+  },
+  {
+   "pandId": "0363100012080475",
+   "reason": "sightline to Kalkoenstraat crosses 0363100012147533"
+  },
+  {
+   "pandId": "0363100012085241",
+   "reason": "frontage 38.3 m from Kalkoenstraat"
+  },
+  {
+   "pandId": "0363100012085446",
+   "reason": "sightline to Kalkoenstraat crosses 0363100012096845"
+  },
+  {
+   "pandId": "0363100012086978",
+   "reason": "frontage 62.8 m from Kalkoenstraat"
+  },
+  {
+   "pandId": "0363100012087661",
+   "reason": "sightline to Kalkoenstraat crosses 0363100012063000"
+  },
+  {
+   "pandId": "0363100012090671",
+   "reason": "frontage 51.6 m from Kalkoenstraat"
+  },
+  {
+   "pandId": "0363100012091234",
+   "reason": "sightline to Kalkoenstraat crosses 0363100012121759"
+  },
+  {
+   "pandId": "0363100012092344",
+   "reason": "frontage 45.3 m from Kalkoenstraat"
+  },
+  {
+   "pandId": "0363100012097125",
+   "reason": "frontage 45.5 m from Kalkoenstraat"
+  },
+  {
+   "pandId": "0363100012098271",
+   "reason": "frontage 36.3 m from Kalkoenstraat"
+  },
+  {
+   "pandId": "0363100012098790",
+   "reason": "frontage 51.4 m from Kalkoenstraat"
+  },
+  {
+   "pandId": "0363100012100345",
+   "reason": "sightline to Kalkoenstraat crosses 0363100012085446"
+  },
+  {
+   "pandId": "0363100012101771",
+   "reason": "frontage 44.4 m from Kalkoenstraat"
+  },
+  {
+   "pandId": "0363100012102078",
+   "reason": "frontage 57.6 m from Kalkoenstraat"
+  },
+  {
+   "pandId": "0363100012107162",
+   "reason": "frontage 55.2 m from Kalkoenstraat"
+  },
+  {
+   "pandId": "0363100012108326",
+   "reason": "frontage 33.7 m from Kalkoenstraat"
+  },
+  {
+   "pandId": "0363100012111326",
+   "reason": "frontage 51.0 m from Kalkoenstraat"
+  },
+  {
+   "pandId": "0363100012113533",
+   "reason": "frontage 51.5 m from Kalkoenstraat"
+  },
+  {
+   "pandId": "0363100012115096",
+   "reason": "sightline to Kalkoenstraat crosses 0363100012063621"
+  },
+  {
+   "pandId": "0363100012116125",
+   "reason": "frontage 55.1 m from Kalkoenstraat"
+  },
+  {
+   "pandId": "0363100012116656",
+   "reason": "frontage 39.2 m from Kalkoenstraat"
+  },
+  {
+   "pandId": "0363100012117253",
+   "reason": "sightline to Kalkoenstraat crosses 0363100012097235"
+  },
+  {
+   "pandId": "0363100012118945",
+   "reason": "frontage 40.6 m from Kalkoenstraat"
+  },
+  {
+   "pandId": "0363100012120930",
+   "reason": "sightline to Kalkoenstraat crosses 0363100012117268"
+  },
+  {
+   "pandId": "0363100012121759",
+   "reason": "sightline to Kalkoenstraat crosses 0363100012130426"
+  },
+  {
+   "pandId": "0363100012122196",
+   "reason": "frontage 68.9 m from Kalkoenstraat"
+  },
+  {
+   "pandId": "0363100012122496",
+   "reason": "frontage 51.8 m from Kalkoenstraat"
+  },
+  {
+   "pandId": "0363100012124114",
+   "reason": "frontage 52.2 m from Kalkoenstraat"
+  },
+  {
+   "pandId": "0363100012124330",
+   "reason": "frontage 68.4 m from Kalkoenstraat"
+  },
+  {
+   "pandId": "0363100012128530",
+   "reason": "frontage 33.5 m from Kalkoenstraat"
+  },
+  {
+   "pandId": "0363100012129900",
+   "reason": "frontage 48.7 m from Kalkoenstraat"
+  },
+  {
+   "pandId": "0363100012129921",
+   "reason": "frontage 39.5 m from Kalkoenstraat"
+  },
+  {
+   "pandId": "0363100012131662",
+   "reason": "frontage 34.7 m from Kalkoenstraat"
+  },
+  {
+   "pandId": "0363100012131749",
+   "reason": "frontage 48.4 m from Kalkoenstraat"
+  },
+  {
+   "pandId": "0363100012136105",
+   "reason": "frontage 48.9 m from Kalkoenstraat"
+  },
+  {
+   "pandId": "0363100012137809",
+   "reason": "frontage 39.0 m from Kalkoenstraat"
+  },
+  {
+   "pandId": "0363100012138874",
+   "reason": "frontage 49.3 m from Kalkoenstraat"
+  },
+  {
+   "pandId": "0363100012141395",
+   "reason": "sightline to Kalkoenstraat crosses 0363100012117268"
+  },
+  {
+   "pandId": "0363100012142951",
+   "reason": "frontage 48.4 m from Kalkoenstraat"
+  },
+  {
+   "pandId": "0363100012144600",
+   "reason": "frontage 31.9 m from Kalkoenstraat"
+  },
+  {
+   "pandId": "0363100012145013",
+   "reason": "frontage 87.9 m from Kalkoenstraat"
+  },
+  {
+   "pandId": "0363100012148040",
+   "reason": "sightline to Kalkoenstraat crosses 0363100012117268"
+  },
+  {
+   "pandId": "0363100012150102",
+   "reason": "sightline to Kalkoenstraat crosses 0363100012139726"
+  },
+  {
+   "pandId": "0363100012150906",
+   "reason": "frontage 128.8 m from Kalkoenstraat"
+  },
+  {
+   "pandId": "0363100012151060",
+   "reason": "frontage 48.8 m from Kalkoenstraat"
+  },
+  {
+   "pandId": "0363100012188201",
+   "reason": "frontage 34.1 m from Kalkoenstraat"
+  },
+  {
+   "pandId": "0363100012188202",
+   "reason": "frontage 34.1 m from Kalkoenstraat"
+  },
+  {
+   "pandId": "0363100012188203",
+   "reason": "frontage 50.3 m from Kalkoenstraat"
+  },
+  {
+   "pandId": "0363100012188204",
+   "reason": "frontage 48.0 m from Kalkoenstraat"
+  },
+  {
+   "pandId": "0363100012188205",
+   "reason": "frontage 47.5 m from Kalkoenstraat"
+  },
+  {
+   "pandId": "0363100012188206",
+   "reason": "frontage 46.2 m from Kalkoenstraat"
+  },
+  {
+   "pandId": "0363100012188207",
+   "reason": "frontage 50.6 m from Kalkoenstraat"
+  },
+  {
+   "pandId": "0363100012188208",
+   "reason": "frontage 46.2 m from Kalkoenstraat"
+  },
+  {
+   "pandId": "0363100012188209",
+   "reason": "frontage 45.7 m from Kalkoenstraat"
+  },
+  {
+   "pandId": "0363100012188210",
+   "reason": "sightline to Kalkoenstraat crosses 0363100012114430"
+  },
+  {
+   "pandId": "0363100012188211",
+   "reason": "sightline to Kalkoenstraat crosses 0363100012147533"
+  },
+  {
+   "pandId": "0363100012188212",
+   "reason": "sightline to Kalkoenstraat crosses 0363100012097690"
+  },
+  {
+   "pandId": "0363100012188213",
+   "reason": "sightline to Kalkoenstraat crosses 0363100012123147"
+  },
+  {
+   "pandId": "0363100012188214",
+   "reason": "sightline to Kalkoenstraat crosses 0363100012111141"
+  },
+  {
+   "pandId": "0363100012188215",
+   "reason": "sightline to Kalkoenstraat crosses 0363100012111141"
+  },
+  {
+   "pandId": "0363100012188216",
+   "reason": "sightline to Kalkoenstraat crosses 0363100012133141"
+  },
+  {
+   "pandId": "0363100012188217",
+   "reason": "sightline to Kalkoenstraat crosses 0363100012133141"
+  },
+  {
+   "pandId": "0363100012188218",
+   "reason": "frontage 31.8 m from Kalkoenstraat"
+  },
+  {
+   "pandId": "0363100012188219",
+   "reason": "frontage 31.7 m from Kalkoenstraat"
+  },
+  {
+   "pandId": "0363100012194481",
+   "reason": "sightline to Kalkoenstraat crosses 0363100012137382"
+  },
+  {
+   "pandId": "0363100012194482",
+   "reason": "sightline to Kalkoenstraat crosses 0363100012100538"
+  },
+  {
+   "pandId": "0363100012194483",
+   "reason": "sightline to Kalkoenstraat crosses 0363100012137382"
+  },
+  {
+   "pandId": "0363100012194484",
+   "reason": "frontage 44.0 m from Kalkoenstraat"
+  },
+  {
+   "pandId": "0363100012194485",
+   "reason": "frontage 44.1 m from Kalkoenstraat"
+  },
+  {
+   "pandId": "0363100012194486",
+   "reason": "frontage 44.0 m from Kalkoenstraat"
+  },
+  {
+   "pandId": "0363100012194487",
+   "reason": "frontage 44.0 m from Kalkoenstraat"
+  },
+  {
+   "pandId": "0363100012194488",
+   "reason": "frontage 47.3 m from Kalkoenstraat"
+  },
+  {
+   "pandId": "0363100012194489",
+   "reason": "frontage 49.2 m from Kalkoenstraat"
+  },
+  {
+   "pandId": "0363100012194490",
+   "reason": "sightline to Kalkoenstraat crosses 0363100012110748"
+  },
+  {
+   "pandId": "0363100012194491",
+   "reason": "sightline to Kalkoenstraat crosses 0363100012063621"
+  },
+  {
+   "pandId": "0363100012194492",
+   "reason": "sightline to Kalkoenstraat crosses 0363100012099649"
+  },
+  {
+   "pandId": "0363100012194493",
+   "reason": "sightline to Kalkoenstraat crosses 0363100012098633"
+  },
+  {
+   "pandId": "0363100012194494",
+   "reason": "sightline to Kalkoenstraat crosses 0363100012098633"
+  },
+  {
+   "pandId": "0363100012194590",
+   "reason": "frontage 35.3 m from Kalkoenstraat"
+  },
+  {
+   "pandId": "0363100012194591",
+   "reason": "frontage 37.3 m from Kalkoenstraat"
+  },
+  {
+   "pandId": "0363100012194594",
+   "reason": "sightline to Kalkoenstraat crosses 0363100012139726"
+  },
+  {
+   "pandId": "0363100012194595",
+   "reason": "sightline to Kalkoenstraat crosses 0363100012131876"
+  },
+  {
+   "pandId": "0363100012215954",
+   "reason": "sightline to Kalkoenstraat crosses 0363100012125954"
+  },
+  {
+   "pandId": "0363100012215955",
+   "reason": "sightline to Kalkoenstraat crosses 0363100012097235"
+  },
+  {
+   "pandId": "0363100012227067",
+   "reason": "frontage 44.4 m from Kalkoenstraat"
+  },
+  {
+   "pandId": "0363100012227068",
+   "reason": "frontage 44.8 m from Kalkoenstraat"
+  },
+  {
+   "pandId": "0363100012227069",
+   "reason": "sightline to Kalkoenstraat crosses 0363100012123718"
+  },
+  {
+   "pandId": "0363100012227070",
+   "reason": "sightline to Kalkoenstraat crosses 0363100012123718"
+  },
+  {
+   "pandId": "0363100012227071",
+   "reason": "sightline to Kalkoenstraat crosses 0363100012100888"
+  },
+  {
+   "pandId": "0363100012227073",
+   "reason": "sightline to Kalkoenstraat crosses 0363100012086071"
+  },
+  {
+   "pandId": "0363100012227074",
+   "reason": "sightline to Kalkoenstraat crosses 0363100012123527"
+  },
+  {
+   "pandId": "0363100012227075",
+   "reason": "sightline to Kalkoenstraat crosses 0363100012101319"
+  },
+  {
+   "pandId": "0363100012227076",
+   "reason": "frontage 41.6 m from Kalkoenstraat"
+  },
+  {
+   "pandId": "0363100012227077",
+   "reason": "frontage 41.6 m from Kalkoenstraat"
+  },
+  {
+   "pandId": "0363100012227078",
+   "reason": "frontage 35.2 m from Kalkoenstraat"
+  },
+  {
+   "pandId": "0363100012227079",
+   "reason": "frontage 32.9 m from Kalkoenstraat"
+  },
+  {
+   "pandId": "0363100012227080",
+   "reason": "frontage 35.3 m from Kalkoenstraat"
+  },
+  {
+   "pandId": "0363100012227081",
+   "reason": "frontage 32.9 m from Kalkoenstraat"
+  },
+  {
+   "pandId": "0363100012227082",
+   "reason": "frontage 43.8 m from Kalkoenstraat"
+  },
+  {
+   "pandId": "0363100012227083",
+   "reason": "frontage 41.9 m from Kalkoenstraat"
+  },
+  {
+   "pandId": "0363100012227084",
+   "reason": "sightline to Kalkoenstraat crosses 0363100012100888"
+  },
+  {
+   "pandId": "0363100012227085",
+   "reason": "frontage 40.1 m from Kalkoenstraat"
+  },
+  {
+   "pandId": "0363100012227086",
+   "reason": "sightline to Kalkoenstraat crosses 0363100012100888"
+  },
+  {
+   "pandId": "0363100012227087",
+   "reason": "sightline to Kalkoenstraat crosses 0363100012086436"
+  },
+  {
+   "pandId": "0363100012233392",
+   "reason": "frontage 46.6 m from Kalkoenstraat"
+  },
+  {
+   "pandId": "0363100012233393",
+   "reason": "frontage 45.3 m from Kalkoenstraat"
+  },
+  {
+   "pandId": "0363100012233394",
+   "reason": "frontage 46.9 m from Kalkoenstraat"
+  },
+  {
+   "pandId": "0363100012233395",
+   "reason": "sightline to Kalkoenstraat crosses 0363100012106346"
+  },
+  {
+   "pandId": "0363100012233396",
+   "reason": "sightline to Kalkoenstraat crosses 0363100012106346"
+  },
+  {
+   "pandId": "0363100012233397",
+   "reason": "sightline to Kalkoenstraat crosses 0363100012106346"
+  },
+  {
+   "pandId": "0363100012233398",
+   "reason": "sightline to Kalkoenstraat crosses 0363100012106346"
+  },
+  {
+   "pandId": "0363100012233399",
+   "reason": "sightline to Kalkoenstraat crosses 0363100012106346"
+  },
+  {
+   "pandId": "0363100012233400",
+   "reason": "sightline to Kalkoenstraat crosses 0363100012106346"
+  },
+  {
+   "pandId": "0363100012233401",
+   "reason": "sightline to Kalkoenstraat crosses 0363100012106346"
+  },
+  {
+   "pandId": "0363100012233402",
+   "reason": "frontage 69.3 m from Kalkoenstraat"
+  },
+  {
+   "pandId": "0363100012234557",
+   "reason": "frontage 65.1 m from Kalkoenstraat"
+  },
+  {
+   "pandId": "0363100012234558",
+   "reason": "frontage 59.3 m from Kalkoenstraat"
+  },
+  {
+   "pandId": "0363100012234559",
+   "reason": "frontage 58.9 m from Kalkoenstraat"
+  },
+  {
+   "pandId": "0363100012234560",
+   "reason": "frontage 61.0 m from Kalkoenstraat"
+  },
+  {
+   "pandId": "0363100012234561",
+   "reason": "frontage 60.7 m from Kalkoenstraat"
+  },
+  {
+   "pandId": "0363100012234562",
+   "reason": "frontage 33.1 m from Kalkoenstraat"
+  },
+  {
+   "pandId": "0363100012234563",
+   "reason": "frontage 35.4 m from Kalkoenstraat"
+  },
+  {
+   "pandId": "0363100012234564",
+   "reason": "frontage 44.9 m from Kalkoenstraat"
+  },
+  {
+   "pandId": "0363100012247993",
+   "reason": "frontage 37.6 m from Kalkoenstraat"
+  },
+  {
+   "pandId": "0363100012247994",
+   "reason": "frontage 36.0 m from Kalkoenstraat"
+  },
+  {
+   "pandId": "0363100012063621",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012065881",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012096845",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012098633",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012099649",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012100538",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012106346",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012110748",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012117268",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012131876",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012137382",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012139726",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012147533",
+   "alongM": -19.12,
+   "widthM": 6.7,
+   "eavesM": 6.95,
+   "roofMaxM": 11.84,
+   "storeys3dbag": 3,
+   "builtYear": 1921,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012133141",
+   "alongM": -12.67,
+   "widthM": 6.2,
+   "eavesM": 6.94,
+   "roofMaxM": 11.85,
+   "storeys3dbag": 3,
+   "builtYear": 1921,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012111141",
+   "alongM": -6.36,
+   "widthM": 6.42,
+   "eavesM": 6.96,
+   "roofMaxM": 11.87,
+   "storeys3dbag": 3,
+   "builtYear": 1921,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012123147",
+   "alongM": 0,
+   "widthM": 6.31,
+   "eavesM": 7.02,
+   "roofMaxM": 11.95,
+   "storeys3dbag": 3,
+   "builtYear": 1921,
+   "uncertainty": []
+  }
+ ]
+}

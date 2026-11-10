@@ -1,0 +1,304 @@
+{
+ "face": "vogel-4-10",
+ "street": "Tweede Vogelstraat",
+ "library": "vogelbuurt",
+ "stripDate": "2021-09-20",
+ "seconds": 0.2,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012073659",
+   "address": "Tweede Vogelstraat 10",
+   "builtYear": 1919,
+   "widthM": 9.99,
+   "eavesM": 3.42,
+   "storeys3dbag": 2,
+   "bagBay": null,
+   "strip": {
+    "wall": "#64594f",
+    "wallRaw": "#525148",
+    "skyline": {
+     "eavesM": 4.28,
+     "eavesRow": 133,
+     "confidence": 0.99,
+     "crown": {
+      "widthM": 1.43,
+      "riseM": 2.1,
+      "topWidthM": 0.75,
+      "centre": 0.83
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 9,
+    "frontClass": "blank",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "one-storey front (eaves <= 6 m): no balcony",
+     "openAxes": [
+      {
+       "widthM": 1.77,
+       "centre": 0.22,
+       "light": 0.31
+      },
+      {
+       "widthM": 0.93,
+       "centre": 0.49,
+       "light": 0.3
+      },
+      {
+       "widthM": 3.1,
+       "centre": 0.83,
+       "light": 0.12
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.36
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best vogel-1918-cottage-2axis: frontage 9.99 m, type 3.8-4.95 m)",
+   "best": {
+    "type": "vogel-1918-cottage-2axis",
+    "score": 0,
+    "veto": [
+     "frontage 9.99 m, type 3.8-4.95 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "strip cornice 4.28 m vs the type's 3.2 m (wall-dormer skyline 4.55 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 2 vs 0/1/2"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012090616",
+   "address": "Tweede Vogelstraat 8",
+   "builtYear": 1919,
+   "widthM": 6.04,
+   "eavesM": 3.41,
+   "storeys3dbag": 2,
+   "bagBay": null,
+   "strip": {
+    "wall": null,
+    "wallRaw": "#574945",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 304,
+     "confidence": 0.22,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 6,
+    "frontClass": "curtain",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "one-storey front (eaves <= 6 m): no balcony",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 2.35,
+       "widthM": 0.93,
+       "centre": 0.08
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best vogel-1918-cottage-3axis scores 0.67 < 0.7 (strip columns 6 vs 3 bays)",
+   "best": {
+    "type": "vogel-1918-cottage-3axis",
+    "score": 0.67,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": null,
+      "note": "strip cornice unread (type line 3.2 m; 3DBAG 3.41 m not compared)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 2 vs 0/1/2"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.001 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 6 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012127132",
+   "address": "Tweede Vogelstraat 6",
+   "builtYear": 1919,
+   "widthM": 4.12,
+   "eavesM": 3.41,
+   "storeys3dbag": 2,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6f676a",
+    "wallRaw": "#594e4c",
+    "skyline": {
+     "eavesM": 4,
+     "eavesRow": 144,
+     "confidence": 0.36,
+     "crown": {
+      "widthM": 0.78,
+      "riseM": 2.8,
+      "topWidthM": 0.57,
+      "centre": 0.1
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 4,
+    "frontClass": "blank",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "one-storey front (eaves <= 6 m): no balcony",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best vogel-1918-cottage-2axis scores 0.67 < 0.7 (strip columns 4 vs 2 bays)",
+   "best": {
+    "type": "vogel-1918-cottage-2axis",
+    "score": 0.67,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": null,
+      "note": "strip cornice unread (type line 3.2 m; 3DBAG 3.41 m not compared)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 2 vs 0/1/2"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 4 vs 2 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012122702",
+   "address": "Tweede Vogelstraat 4",
+   "builtYear": 1919,
+   "widthM": 4.86,
+   "eavesM": 3.39,
+   "storeys3dbag": 2,
+   "bagBay": null,
+   "strip": {
+    "wall": null,
+    "wallRaw": "#4d3d3b",
+    "skyline": {
+     "eavesM": 4.2,
+     "eavesRow": 136,
+     "confidence": 0.51,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "frontClass": "curtain",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "one-storey front (eaves <= 6 m): no balcony",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

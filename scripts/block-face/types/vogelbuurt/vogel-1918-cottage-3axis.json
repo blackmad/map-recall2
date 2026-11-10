@@ -3,7 +3,7 @@
  "kind": "house-type",
  "id": "vogel-1918-cottage-3axis",
  "district": "vogelbuurt",
- "description": "Vogelbuurt-Noord 1918-19 single-storey cottages (Brede, Derde, Eerste, Korte, Lange, Tweede, Vierde, Vijfde Vogelstraat, Vogelplantsoen, Zamenhofstraat): 5.0-6.8 m red brick fronts of one 3.3 m storey (door foot on a 0.65 m plinth) under a low tiled roof behind a grey gutter; a wide two-light window, a small window and a green door in a cream frame",
+ "description": "Vogelbuurt-Noord 1918-19 single-storey cottages (Brede, Derde, Eerste, Korte, Lange, Tweede, Vierde, Vijfde Vogelstraat, Vogelplantsoen, Zamenhofstraat): 5.0-6.8 m red brick fronts of one 3.3 m storey (door foot on a 0.65 m plinth) under a low tiled roof behind a grey gutter; a small window, a wide two-light window and a green door in a cream frame, door first on the mirrored fronts",
  "fit": {
   "widthM": [
    5.0,
@@ -43,13 +43,13 @@
   "bays": 3,
   "axisGrid": 3,
   "bayWidths": [
-   2.7,
    1.8,
+   2.7,
    1.4
   ],
   "bayFill": [
-   0.74,
    0.55,
+   0.74,
    0.6
   ],
   "cornice": "none",
@@ -64,7 +64,7 @@
    0.8
   ],
   "axisWindows": {
-   "1": "plain"
+   "0": "plain"
   }
  },
  "crowns": {
@@ -98,7 +98,7 @@
   "material": "red-tile"
  },
  "rhythm": {
-  "bays": "wide window, small window, door",
+  "bays": "small window, wide window, door (mirrored: door, wide window, small window)",
   "identicalBays": "no",
   "windowsPerStorey": "1 storey",
   "symmetry": "mirror pairs about the party wall",
@@ -118,6 +118,13 @@
     "087612"
    ],
    "citation": "strip.jpg 2025-09-22, 40 px/m, gridded: eaves gutter 3.4 m over image foot (the facade foot is 0.65 m up, a plinth: door 0.65-2.5 m); window heads 2.55 m, sills 1.15 m, wide window 2.0 m, small window 1.0 m at sill 1.6 m, door 0.9 m in a cream frame with transom; Tweede/Brede Vogelstraat share the design"
+  },
+  {
+   "face": "vogel-3-15",
+   "pands": [
+    "132959"
+   ],
+   "citation": "strip.jpg 2021-06-15: Eerste Vogelstraat 19: small window, wide window, door at the right edge; Vierde Vogelstraat 2-6 and 3-11 (2017-05-15, 2022-05-10): door, wide window, small window (the mirror)"
   }
  ],
  "schemaLimits": [

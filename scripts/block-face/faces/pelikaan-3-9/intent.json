@@ -1,0 +1,151 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "pelikaan-3-9",
+ "street": "Pelikaanstraat",
+ "sources": [
+  {
+   "id": "strip-2025-09-22",
+   "kind": "street-panorama",
+   "capturedAt": "2025-09-22",
+   "image": "staging/block-face/pelikaan-3-9/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "auto-place (blockFace/autoPlace.ts)",
+  "passes": 1,
+  "note": "auto-placed from the vogelbuurt library (buurt Vogelbuurt-Noord); scores and holds in scripts/block-face/faces/pelikaan-3-9/auto-place.json"
+ },
+ "types": [
+  "vogel-1921-two-storey-dormer-row"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012104432",
+   "slug": "pelikaan-104432",
+   "address": "Pelikaanstraat 3",
+   "type": {
+    "type": "vogel-1921-two-storey-dormer-row",
+    "measuredPalette": {
+     "brick": "#aba299",
+     "evidence": "strip 2025-09-22 span 0-255: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2025-09-22",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: vogel-1921-two-storey-dormer-row scored 1 on storeys 1, roof 1, stucco 1; strip 2025-09-22 span 0-255"
+   }
+  },
+  {
+   "pandId": "0363100012119758",
+   "slug": "pelikaan-119758",
+   "address": "Pelikaanstraat 5",
+   "type": {
+    "type": "vogel-1921-two-storey-dormer-row",
+    "mirror": true,
+    "measuredPalette": {
+     "brick": "#aba095",
+     "evidence": "strip 2025-09-22 span 255-522: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2025-09-22",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: vogel-1921-two-storey-dormer-row scored 1 on storeys 1, roof 1, stucco 1; strip 2025-09-22 span 255-522"
+   }
+  },
+  {
+   "pandId": "0363100012124605",
+   "slug": "pelikaan-124605",
+   "address": "Pelikaanstraat 7",
+   "type": {
+    "type": "vogel-1921-two-storey-dormer-row",
+    "measuredPalette": {
+     "brick": "#a99c90",
+     "evidence": "strip 2025-09-22 span 522-778: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2025-09-22",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: vogel-1921-two-storey-dormer-row scored 1 on storeys 1, roof 1, stucco 1; strip 2025-09-22 span 522-778"
+   }
+  },
+  {
+   "pandId": "0363100012153865",
+   "slug": "pelikaan-153865",
+   "address": "Pelikaanstraat 9",
+   "type": {
+    "type": "vogel-1921-two-storey-dormer-row",
+    "measuredPalette": {
+     "brick": "#a2968a",
+     "evidence": "strip 2025-09-22 span 778-1034: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "mirror": true
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2025-09-22",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: vogel-1921-two-storey-dormer-row scored 1 on storeys 1, roof 1, stucco 1; strip 2025-09-22 span 778-1034"
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "auto-place: low attic behind the cornice; the strips show sky over the cornices of the type rows"
+  },
+  "measuredEaves": [
+   {
+    "pand": "0363100012104432",
+    "stripRow": 295,
+    "evidence": "auto-place: the vogel-1921-two-storey-dormer-row cornice line 6.45 m (measured on its exemplar strips; this pand's skyline unread); 3DBAG/PDOK eaves 7.57 m"
+   },
+   {
+    "pand": "0363100012119758",
+    "stripRow": 295,
+    "evidence": "auto-place: the vogel-1921-two-storey-dormer-row cornice line 6.45 m (measured on its exemplar strips; this pand's skyline unread); 3DBAG/PDOK eaves 7.02 m"
+   },
+   {
+    "pand": "0363100012153865",
+    "stripRow": 295,
+    "evidence": "auto-place: the vogel-1921-two-storey-dormer-row cornice line 6.45 m (measured on its exemplar strips; this pand's skyline unread); 3DBAG/PDOK eaves 7.31 m"
+   }
+  ]
+ }
+}

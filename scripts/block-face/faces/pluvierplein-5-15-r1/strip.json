@@ -1,0 +1,120 @@
+{
+ "face": "pluvierplein-5-15-r1",
+ "image": "staging/block-face/pluvierplein-5-15-r1/strip.jpg",
+ "pixelsPerMetre": 40,
+ "width": 522,
+ "height": 559,
+ "groundNAP": 0.929,
+ "heightM": 13.97,
+ "frame": {
+  "midRD": [
+   123448.9775,
+   489208.22175
+  ],
+  "uRD": [
+   0.8429595050946516,
+   -0.5379770188126815
+  ],
+  "nRD": [
+   -0.5379770188126815,
+   -0.8429595050946516
+  ]
+ },
+ "x0M": -6.62,
+ "x1M": 6.43,
+ "date": "2025-09-22",
+ "coverage": 1,
+ "spans": [
+  {
+   "pandId": "0363100012070701",
+   "x0M": -6.62,
+   "x1M": 0.08,
+   "px": [
+    0,
+    268
+   ],
+   "date": "2025-09-22",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "recording_2025-09-22_10-53-43_00314",
+     "timestamp": "2025-09-22T11:01:59Z",
+     "distanceM": 23.3,
+     "obliquityDeg": 1.2,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "recording_2025-09-22_10-53-43_00330",
+     "timestamp": "2025-09-22T11:02:25Z",
+     "distanceM": 12.6,
+     "obliquityDeg": 1.9,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "recording_2025-09-22_10-53-43_00331",
+     "timestamp": "2025-09-22T11:02:27Z",
+     "distanceM": 17.2,
+     "obliquityDeg": 8.7,
+     "missingFraction": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012151759",
+   "x0M": 0.08,
+   "x1M": 6.43,
+   "px": [
+    268,
+    522
+   ],
+   "date": "2025-09-22",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "recording_2025-09-22_10-53-43_00315",
+     "timestamp": "2025-09-22T11:02:00Z",
+     "distanceM": 23.8,
+     "obliquityDeg": 4.9,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "recording_2025-09-22_10-53-43_00316",
+     "timestamp": "2025-09-22T11:02:01Z",
+     "distanceM": 23.9,
+     "obliquityDeg": 7.1,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "recording_2025-09-22_10-53-43_00328",
+     "timestamp": "2025-09-22T11:02:18Z",
+     "distanceM": 9.4,
+     "obliquityDeg": 11.4,
+     "missingFraction": 0
+    }
+   ]
+  }
+ ],
+ "candidatesByDate": {
+  "2018-07-30": 6,
+  "2017-05-15": 6,
+  "2022-05-11": 6,
+  "2021-06-17": 6,
+  "2025-09-22": 6,
+  "2024-09-10": 6,
+  "2019-06-28": 6,
+  "2020-06-02": 6,
+  "2016-08-05": 6,
+  "2021-02-17": 1,
+  "2024-10-22": 1,
+  "2018-12-18": 1
+ },
+ "description": "Rectified orthographic elevation of the whole face on the frontage planes: x = chunk-frame metres along the face (left→right seen from the street) from x0M, y = metres above the shared ground (groundNAP) from the bottom; grey = no panorama data. Per-pand spans list the panoramas median-fused for that frontage.",
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (CC BY 4.0; faces and number plates blurred by the publisher)",
+ "croppedFrom": {
+  "face": "pluvierplein-5-15",
+  "px": [
+   0,
+   522
+  ]
+ }
+}

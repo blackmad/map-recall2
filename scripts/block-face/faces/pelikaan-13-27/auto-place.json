@@ -1,0 +1,689 @@
+{
+ "face": "pelikaan-13-27",
+ "street": "Pelikaanstraat",
+ "library": "vogelbuurt",
+ "stripDate": "2025-09-22",
+ "seconds": 6.58,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [
+  {
+   "face": "pelikaan-13-27-r1",
+   "pands": [
+    "0363100012087399",
+    "0363100012087361"
+   ],
+   "passed": false,
+   "triangles": 1203
+  }
+ ],
+ "pands": [
+  {
+   "pandId": "0363100012131012",
+   "address": "Pelikaanstraat 13",
+   "builtYear": 1924,
+   "widthM": 6.2,
+   "eavesM": 7.25,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#9a9088",
+    "wallRaw": "#908780",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 572,
+     "confidence": 0.27,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 2,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.569,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.75 m at 0.14 (light 0.03): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.75,
+       "centre": 0.14,
+       "light": 0.03
+      },
+      {
+       "widthM": 2.6,
+       "centre": 0.69,
+       "light": 0.29
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.05,
+    "foliageShare": 0.02
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": {
+    "pandId": "0363100012131012",
+    "ncc": 0.287,
+    "nccRaw": 0.287,
+    "shiftM": [
+     -0.2,
+     -0.4
+    ],
+    "usable": 0.81,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.33 mean 0.36 vs photo 0.59"
+    ],
+    "wall": {
+     "photo": "#9d938b",
+     "model": "#a19891",
+     "dL": 0.02
+    },
+    "glazing": {
+     "photo": 0.59,
+     "model": 0.36
+    },
+    "columns": {
+     "photo": null,
+     "model": null
+    },
+    "iou": 0.352
+   },
+   "challengers": {
+    "vogel-1921-two-storey-dormer-row": 0.262
+   }
+  },
+  {
+   "pandId": "0363100012131893",
+   "address": "Pelikaanstraat 15",
+   "builtYear": 1924,
+   "widthM": 6.49,
+   "eavesM": 7.25,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#a69c94",
+    "wallRaw": "#948e7d",
+    "skyline": {
+     "eavesM": 13.5,
+     "eavesRow": 32,
+     "confidence": 0.55,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.844,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 2.52 m at 0.34 (light 0.29): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 2.52,
+       "centre": 0.34,
+       "light": 0.29
+      },
+      {
+       "widthM": 0.82,
+       "centre": 0.86,
+       "light": 0.19
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.06,
+    "foliageShare": 0.1
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC -0.069 < 0.15 (photo vs model body; likeness.ts NO EVIDENCE: foliage 31 % > 25 %)",
+   "likeness": {
+    "pandId": "0363100012131893",
+    "ncc": -0.069,
+    "nccRaw": -0.069,
+    "shiftM": [
+     0.4,
+     -0.4
+    ],
+    "usable": 0.64,
+    "abstain": null,
+    "verdict": "NO EVIDENCE",
+    "reasons": [
+     "foliage 31 % > 25 %"
+    ],
+    "wall": {
+     "photo": "#a59b92",
+     "model": "#a29890",
+     "dL": -0.01
+    },
+    "glazing": {
+     "photo": 0.26,
+     "model": 0.36
+    },
+    "columns": {
+     "photo": null,
+     "model": null
+    },
+    "iou": 0.182
+   },
+   "challengers": {
+    "vogel-1921-two-storey-dormer-row": -0.069,
+    "vogel-1921-two-storey-dormer-row~m": 0.224
+   }
+  },
+  {
+   "pandId": "0363100012087399",
+   "address": "Pelikaanstraat 17",
+   "builtYear": 1924,
+   "widthM": 6.4,
+   "eavesM": 7.87,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#aca098",
+    "wallRaw": "#998f87",
+    "skyline": {
+     "eavesM": 13.5,
+     "eavesRow": 32,
+     "confidence": 0.54,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.811,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.04,
+    "foliageShare": 0.01
+   },
+   "status": "placed",
+   "type": "vogel-1921-two-storey-dormer-row",
+   "score": 1,
+   "placement": {
+    "type": "vogel-1921-two-storey-dormer-row",
+    "mirror": true,
+    "measuredPalette": {
+     "brick": "#aca098",
+     "evidence": "strip 2025-09-22 span 508-764: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "crown": "step-gable"
+   },
+   "notes": [
+    "door right: mirrored",
+    "crown step-gable: reviewer pin (Pelikaanstraat 17: strip: a pointed brick gable end of the block (apex about 12.6 m, one window in the gable), not a dormer house)"
+   ],
+   "likeness": {
+    "pandId": "0363100012087399",
+    "ncc": 0.291,
+    "nccRaw": 0.291,
+    "shiftM": [
+     0.25,
+     -0.15
+    ],
+    "usable": 0.8,
+    "abstain": null,
+    "verdict": "NO EVIDENCE",
+    "reasons": [
+     "washed out 34 % > 30 %"
+    ],
+    "wall": {
+     "photo": "#aa9e95",
+     "model": "#a4978e",
+     "dL": -0.025
+    },
+    "glazing": {
+     "photo": 0.76,
+     "model": 0.38
+    },
+    "columns": {
+     "photo": 3,
+     "model": null
+    },
+    "iou": 0.428
+   },
+   "challengers": {
+    "vogel-1921-two-storey-dormer-row~m": 0.242,
+    "vogel-1921-two-storey-dormer-row": 0.279
+   }
+  },
+  {
+   "pandId": "0363100012087361",
+   "address": "Pelikaanstraat 19",
+   "builtYear": 1924,
+   "widthM": 6.43,
+   "eavesM": 7.33,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#aca299",
+    "wallRaw": "#978e87",
+    "skyline": {
+     "eavesM": 13.53,
+     "eavesRow": 31,
+     "confidence": 0.67,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.873,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 2.58 m at 0.32 (light 0.21): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 2.58,
+       "centre": 0.32,
+       "light": 0.21
+      },
+      {
+       "widthM": 0.82,
+       "centre": 0.85,
+       "light": 0.16
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.07,
+    "foliageShare": 0.01
+   },
+   "status": "placed",
+   "type": "vogel-1921-two-storey-dormer-row",
+   "score": 1,
+   "placement": {
+    "type": "vogel-1921-two-storey-dormer-row",
+    "mirror": true,
+    "measuredPalette": {
+     "brick": "#aca299",
+     "evidence": "strip 2025-09-22 span 763-1020: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "door right: mirrored",
+    "crown flat-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012087361",
+    "ncc": 0.28,
+    "nccRaw": 0.28,
+    "shiftM": [
+     0.2,
+     0.4
+    ],
+    "usable": 0.79,
+    "abstain": null,
+    "verdict": "NO EVIDENCE",
+    "reasons": [
+     "washed out 31 % > 30 %"
+    ],
+    "wall": {
+     "photo": "#a89e95",
+     "model": "#a3988f",
+     "dL": -0.022
+    },
+    "glazing": {
+     "photo": 0.26,
+     "model": 0.36
+    },
+    "columns": {
+     "photo": null,
+     "model": null
+    },
+    "iou": 0.287
+   },
+   "challengers": {
+    "vogel-1921-two-storey-dormer-row~m": 0.311,
+    "vogel-1921-two-storey-dormer-row": 0.128
+   }
+  },
+  {
+   "pandId": "0363100012108368",
+   "address": "Pelikaanstraat 21",
+   "builtYear": 1924,
+   "widthM": 6.5,
+   "eavesM": 7.28,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#ada49c",
+    "wallRaw": "#7e7f77",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 572,
+     "confidence": 0.03,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.909,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 2.52 m at 0.32 (light 0.22): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 2.52,
+       "centre": 0.32,
+       "light": 0.22
+      },
+      {
+       "widthM": 0.8,
+       "centre": 0.84,
+       "light": 0.08
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.06,
+    "foliageShare": 0.03
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.023 < 0.15 (photo vs model body; likeness.ts NO EVIDENCE: washed out 37 % > 30 %)",
+   "likeness": {
+    "pandId": "0363100012108368",
+    "ncc": 0.023,
+    "nccRaw": 0.023,
+    "shiftM": [
+     -0.4,
+     0.2
+    ],
+    "usable": 0.78,
+    "abstain": null,
+    "verdict": "NO EVIDENCE",
+    "reasons": [
+     "washed out 37 % > 30 %"
+    ],
+    "wall": {
+     "photo": "#aca29b",
+     "model": "#a3988f",
+     "dL": -0.041
+    },
+    "glazing": {
+     "photo": 0.4,
+     "model": 0.36
+    },
+    "columns": {
+     "photo": null,
+     "model": null
+    },
+    "iou": 0.238
+   },
+   "challengers": {
+    "vogel-1921-two-storey-dormer-row": 0.023,
+    "vogel-1921-two-storey-dormer-row~m": 0.186
+   }
+  },
+  {
+   "pandId": "0363100012120713",
+   "address": "Pelikaanstraat 23",
+   "builtYear": 1924,
+   "widthM": 6.37,
+   "eavesM": 7.99,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#aca19a",
+    "wallRaw": "#b4aaa3",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 572,
+     "confidence": 0.04,
+     "crown": null
+    },
+    "stucco": true,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.759,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.05,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best vogel-1921-two-storey-dormer-row scores 0.5 < 0.7 (strip accent share 0.505 (stucco))",
+   "best": {
+    "type": "vogel-1921-two-storey-dormer-row",
+    "score": 0.5,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 3 vs 3"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 4.27 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 0,
+      "note": "strip accent share 0.505 (stucco)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012065905",
+   "address": "Pelikaanstraat 25",
+   "builtYear": 1924,
+   "widthM": 6.17,
+   "eavesM": 7.37,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#a99e96",
+    "wallRaw": "#6f7370",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 572,
+     "confidence": 0.1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.731,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 2.55 m at 0.31 (light 0.12): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 2.55,
+       "centre": 0.31,
+       "light": 0.12
+      },
+      {
+       "widthM": 0.78,
+       "centre": 0.87,
+       "light": 0.13
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.06,
+    "foliageShare": 0.03
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": {
+    "pandId": "0363100012065905",
+    "ncc": 0.328,
+    "nccRaw": 0.328,
+    "shiftM": [
+     0.05,
+     -0.05
+    ],
+    "usable": 0.75,
+    "abstain": null,
+    "verdict": "NO EVIDENCE",
+    "reasons": [
+     "washed out 32 % > 30 %"
+    ],
+    "wall": {
+     "photo": "#aa9f97",
+     "model": "#a3978f",
+     "dL": -0.029
+    },
+    "glazing": {
+     "photo": 0.3,
+     "model": 0.35
+    },
+    "columns": {
+     "photo": null,
+     "model": null
+    },
+    "iou": 0.378
+   },
+   "challengers": {
+    "vogel-1921-two-storey-dormer-row~m": 0.328,
+    "vogel-1921-two-storey-dormer-row": 0.176
+   }
+  },
+  {
+   "pandId": "0363100012121384",
+   "address": "Pelikaanstraat 27",
+   "builtYear": 1924,
+   "widthM": 6.42,
+   "eavesM": 7.41,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#a49b93",
+    "wallRaw": "#848179",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 572,
+     "confidence": 0.1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.703,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 2.5 m at 0.34 (light 0.13): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 2.5,
+       "centre": 0.34,
+       "light": 0.13
+      },
+      {
+       "widthM": 0.78,
+       "centre": 0.87,
+       "light": 0.12
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.03,
+    "foliageShare": 0.02
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.145 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.16 mean 0.36 vs photo 0.52)",
+   "likeness": {
+    "pandId": "0363100012121384",
+    "ncc": 0.145,
+    "nccRaw": 0.145,
+    "shiftM": [
+     0.2,
+     -0.4
+    ],
+    "usable": 0.8,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.16 mean 0.36 vs photo 0.52"
+    ],
+    "wall": {
+     "photo": "#a79d95",
+     "model": "#a29890",
+     "dL": -0.02
+    },
+    "glazing": {
+     "photo": 0.52,
+     "model": 0.36
+    },
+    "columns": {
+     "photo": null,
+     "model": null
+    },
+    "iou": 0.221
+   },
+   "challengers": {
+    "vogel-1921-two-storey-dormer-row": 0.145,
+    "vogel-1921-two-storey-dormer-row~m": 0.388
+   }
+  }
+ ]
+}

@@ -1,0 +1,317 @@
+{
+ "face": "vogelplantsoen-8-12",
+ "street": "Vogelplantsoen",
+ "library": "vogelbuurt",
+ "stripDate": "2025-09-22",
+ "seconds": 1.45,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [
+  {
+   "face": "vogelplantsoen-8-12-r1",
+   "pands": [
+    "0363100012079772",
+    "0363100012087797"
+   ],
+   "passed": true,
+   "triangles": 947
+  }
+ ],
+ "pands": [
+  {
+   "pandId": "0363100012079772",
+   "address": "Vogelplantsoen 12",
+   "builtYear": 1919,
+   "widthM": 5,
+   "eavesM": 4.28,
+   "storeys3dbag": 2,
+   "bagBay": null,
+   "strip": {
+    "wall": "#2f3740",
+    "wallRaw": "#434940",
+    "skyline": {
+     "eavesM": 6.08,
+     "eavesRow": 124,
+     "confidence": 0.5,
+     "crown": {
+      "widthM": 0.68,
+      "riseM": 3.1,
+      "topWidthM": 0.28,
+      "centre": 0.64
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "one-storey front (eaves <= 6 m): no balcony",
+     "openAxes": [
+      {
+       "widthM": 1.38,
+       "centre": 0.18,
+       "light": 0.24
+      },
+      {
+       "widthM": 0.63,
+       "centre": 0.42,
+       "light": 0.16
+      },
+      {
+       "widthM": 1.02,
+       "centre": 0.89,
+       "light": 0.18
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 3,
+       "widthM": 1.6,
+       "centre": 0.83
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.19
+   },
+   "status": "placed",
+   "type": "vogel-1918-timber-band-cottage",
+   "score": 1,
+   "placement": {
+    "type": "vogel-1918-timber-band-cottage"
+   },
+   "notes": [
+    "door right",
+    "crown half-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012079772",
+    "ncc": 0.28,
+    "nccRaw": 0.28,
+    "shiftM": [
+     0.15,
+     0.4
+    ],
+    "usable": 0.68,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "wall dL -0.16",
+     "glazing  mean 0.16 vs photo 0.77"
+    ],
+    "wall": {
+     "photo": "#585854",
+     "model": "#2c2b30",
+     "dL": -0.159
+    },
+    "glazing": {
+     "photo": 0.77,
+     "model": 0.16
+    },
+    "columns": {
+     "photo": 3,
+     "model": null
+    },
+    "iou": 0.179
+   },
+   "challengers": {
+    "vogel-1918-timber-band-cottage": 0.28,
+    "vogel-1918-timber-band-cottage~m": 0.156
+   }
+  },
+  {
+   "pandId": "0363100012087797",
+   "address": "Vogelplantsoen 10",
+   "builtYear": 1919,
+   "widthM": 5,
+   "eavesM": 4.25,
+   "storeys3dbag": 2,
+   "bagBay": null,
+   "strip": {
+    "wall": "#343a47",
+    "wallRaw": "#4b514b",
+    "skyline": {
+     "eavesM": 6.38,
+     "eavesRow": 112,
+     "confidence": 0.7,
+     "crown": {
+      "widthM": 0.97,
+      "riseM": 1.22,
+      "topWidthM": 0.38,
+      "centre": 0.58
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 7,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "one-storey front (eaves <= 6 m): no balcony",
+     "openAxes": [
+      {
+       "widthM": 0.72,
+       "centre": 0.08,
+       "light": 0.17
+      },
+      {
+       "widthM": 0.72,
+       "centre": 0.46,
+       "light": 0.14
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 2.98,
+       "widthM": 0.9,
+       "centre": 0.9
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.14
+   },
+   "status": "placed",
+   "type": "vogel-1918-timber-band-cottage",
+   "score": 0.77,
+   "placement": {
+    "type": "vogel-1918-timber-band-cottage"
+   },
+   "notes": [
+    "door right",
+    "crown half-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012087797",
+    "ncc": 0.313,
+    "nccRaw": 0.313,
+    "shiftM": [
+     -0.2,
+     0.35
+    ],
+    "usable": 0.78,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "wall dL +0.18",
+     "glazing  mean 0.16 vs photo 1.00",
+     "wall family unresolved (#000000 is dark and neutral, brick courses not resolved): lightness and hue judged only"
+    ],
+    "wall": {
+     "photo": "#000000",
+     "model": "#2c2b30",
+     "dL": 0.178
+    },
+    "glazing": {
+     "photo": 1,
+     "model": 0.16
+    },
+    "columns": {
+     "photo": null,
+     "model": null
+    },
+    "iou": 0.17
+   },
+   "challengers": {
+    "vogel-1918-timber-band-cottage": 0.313,
+    "vogel-1918-timber-band-cottage~m": 0.533
+   }
+  },
+  {
+   "pandId": "0363100012106957",
+   "address": "Vogelplantsoen 8",
+   "builtYear": 1919,
+   "widthM": 5,
+   "eavesM": 4.29,
+   "storeys3dbag": 2,
+   "bagBay": null,
+   "strip": {
+    "wall": "#505263",
+    "wallRaw": "#585857",
+    "skyline": {
+     "eavesM": 7.1,
+     "eavesRow": 83,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "ribbon",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "one-storey front (eaves <= 6 m): no balcony",
+     "openAxes": [
+      {
+       "widthM": 0.75,
+       "centre": 0.08,
+       "light": 0.18
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 3.1,
+       "widthM": 4.13,
+       "centre": 0.55
+      }
+     ]
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0.02
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best vogel-1918-timber-band-cottage scores 0.6 < 0.7 (strip cornice 7.1 m vs the type's 4.1 m (wall-dormer skyline 6 m))",
+   "best": {
+    "type": "vogel-1918-timber-band-cottage",
+    "score": 0.6,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 7.1 m vs the type's 4.1 m (wall-dormer skyline 6 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 2 vs 0/1/2"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.003 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

@@ -1,0 +1,712 @@
+{
+ "street": "Vogelplantsoen",
+ "seed": "0363100012097156",
+ "members": [
+  "0363100012097156",
+  "0363100012079324",
+  "0363100012110238"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "trimmed at 0363100012097156 (face continues: 117406)"
+  },
+  {
+   "side": "right",
+   "reason": "trimmed at 0363100012110238 (face continues: 104899)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012062060",
+   "reason": "frontage 42.7 m from Vogelplantsoen"
+  },
+  {
+   "pandId": "0363100012062516",
+   "reason": "frontage 38.6 m from Vogelplantsoen"
+  },
+  {
+   "pandId": "0363100012062919",
+   "reason": "frontage 41.0 m from Vogelplantsoen"
+  },
+  {
+   "pandId": "0363100012063850",
+   "reason": "sightline to Vogelplantsoen crosses 0363100012086231"
+  },
+  {
+   "pandId": "0363100012063945",
+   "reason": "frontage 113.8 m from Vogelplantsoen"
+  },
+  {
+   "pandId": "0363100012064187",
+   "reason": "frontage 90.4 m from Vogelplantsoen"
+  },
+  {
+   "pandId": "0363100012065099",
+   "reason": "sightline to Vogelplantsoen crosses 0363100012086814"
+  },
+  {
+   "pandId": "0363100012065314",
+   "reason": "frontage 80.6 m from Vogelplantsoen"
+  },
+  {
+   "pandId": "0363100012065937",
+   "reason": "frontage 46.2 m from Vogelplantsoen"
+  },
+  {
+   "pandId": "0363100012066995",
+   "reason": "frontage 52.4 m from Vogelplantsoen"
+  },
+  {
+   "pandId": "0363100012067750",
+   "reason": "frontage 91.5 m from Vogelplantsoen"
+  },
+  {
+   "pandId": "0363100012068684",
+   "reason": "sightline to Vogelplantsoen crosses 0363100012087867"
+  },
+  {
+   "pandId": "0363100012069851",
+   "reason": "frontage 53.2 m from Vogelplantsoen"
+  },
+  {
+   "pandId": "0363100012071049",
+   "reason": "sightline to Vogelplantsoen crosses 0363100012065957"
+  },
+  {
+   "pandId": "0363100012076424",
+   "reason": "no frontage on Vogelplantsoen: No footprint edge faces Vogelplantsoen"
+  },
+  {
+   "pandId": "0363100012076566",
+   "reason": "frontage 41.6 m from Vogelplantsoen"
+  },
+  {
+   "pandId": "0363100012076808",
+   "reason": "frontage 46.9 m from Vogelplantsoen"
+  },
+  {
+   "pandId": "0363100012078259",
+   "reason": "frontage 41.6 m from Vogelplantsoen"
+  },
+  {
+   "pandId": "0363100012078306",
+   "reason": "frontage 75.4 m from Vogelplantsoen"
+  },
+  {
+   "pandId": "0363100012079189",
+   "reason": "no frontage on Vogelplantsoen: No footprint edge faces Vogelplantsoen"
+  },
+  {
+   "pandId": "0363100012079781",
+   "reason": "no frontage on Vogelplantsoen: No footprint edge faces Vogelplantsoen"
+  },
+  {
+   "pandId": "0363100012080292",
+   "reason": "frontage 42.0 m from Vogelplantsoen"
+  },
+  {
+   "pandId": "0363100012081710",
+   "reason": "frontage 86.1 m from Vogelplantsoen"
+  },
+  {
+   "pandId": "0363100012083019",
+   "reason": "no frontage on Vogelplantsoen: No footprint edge faces Vogelplantsoen"
+  },
+  {
+   "pandId": "0363100012083174",
+   "reason": "frontage 30.1 m from Vogelplantsoen"
+  },
+  {
+   "pandId": "0363100012084318",
+   "reason": "frontage 47.0 m from Vogelplantsoen"
+  },
+  {
+   "pandId": "0363100012084589",
+   "reason": "sightline to Vogelplantsoen crosses 0363100012072678"
+  },
+  {
+   "pandId": "0363100012085239",
+   "reason": "frontage 31.8 m from Vogelplantsoen"
+  },
+  {
+   "pandId": "0363100012085288",
+   "reason": "sightline to Vogelplantsoen crosses 0363100012094588"
+  },
+  {
+   "pandId": "0363100012086118",
+   "reason": "frontage 42.3 m from Vogelplantsoen"
+  },
+  {
+   "pandId": "0363100012086230",
+   "reason": "no frontage on Vogelplantsoen: No footprint edge faces Vogelplantsoen"
+  },
+  {
+   "pandId": "0363100012086556",
+   "reason": "sightline to Vogelplantsoen crosses 0363100012104899"
+  },
+  {
+   "pandId": "0363100012086814",
+   "reason": "no frontage on Vogelplantsoen: No footprint edge faces Vogelplantsoen"
+  },
+  {
+   "pandId": "0363100012062617",
+   "reason": "frontage 40.9 m from Vogelplantsoen"
+  },
+  {
+   "pandId": "0363100012065540",
+   "reason": "frontage 73.6 m from Vogelplantsoen"
+  },
+  {
+   "pandId": "0363100012066125",
+   "reason": "frontage 33.4 m from Vogelplantsoen"
+  },
+  {
+   "pandId": "0363100012071224",
+   "reason": "sightline to Vogelplantsoen crosses 0363100012120077"
+  },
+  {
+   "pandId": "0363100012076432",
+   "reason": "frontage 49.0 m from Vogelplantsoen"
+  },
+  {
+   "pandId": "0363100012077328",
+   "reason": "frontage 98.3 m from Vogelplantsoen"
+  },
+  {
+   "pandId": "0363100012083966",
+   "reason": "frontage 31.2 m from Vogelplantsoen"
+  },
+  {
+   "pandId": "0363100012085295",
+   "reason": "frontage 51.4 m from Vogelplantsoen"
+  },
+  {
+   "pandId": "0363100012085777",
+   "reason": "frontage 44.4 m from Vogelplantsoen"
+  },
+  {
+   "pandId": "0363100012088357",
+   "reason": "frontage 37.0 m from Vogelplantsoen"
+  },
+  {
+   "pandId": "0363100012088645",
+   "reason": "frontage 55.8 m from Vogelplantsoen"
+  },
+  {
+   "pandId": "0363100012088825",
+   "reason": "sightline to Vogelplantsoen crosses 0363100012086231"
+  },
+  {
+   "pandId": "0363100012091188",
+   "reason": "frontage 77.1 m from Vogelplantsoen"
+  },
+  {
+   "pandId": "0363100012092401",
+   "reason": "no frontage on Vogelplantsoen: No footprint edge faces Vogelplantsoen"
+  },
+  {
+   "pandId": "0363100012094588",
+   "reason": "sightline to Vogelplantsoen crosses 0363100012096215"
+  },
+  {
+   "pandId": "0363100012096696",
+   "reason": "frontage 41.3 m from Vogelplantsoen"
+  },
+  {
+   "pandId": "0363100012097822",
+   "reason": "frontage 57.0 m from Vogelplantsoen"
+  },
+  {
+   "pandId": "0363100012097992",
+   "reason": "frontage 40.9 m from Vogelplantsoen"
+  },
+  {
+   "pandId": "0363100012098785",
+   "reason": "no frontage on Vogelplantsoen: No footprint edge faces Vogelplantsoen"
+  },
+  {
+   "pandId": "0363100012099269",
+   "reason": "frontage 44.1 m from Vogelplantsoen"
+  },
+  {
+   "pandId": "0363100012099577",
+   "reason": "frontage 41.9 m from Vogelplantsoen"
+  },
+  {
+   "pandId": "0363100012100260",
+   "reason": "no frontage on Vogelplantsoen: No footprint edge faces Vogelplantsoen"
+  },
+  {
+   "pandId": "0363100012100504",
+   "reason": "sightline to Vogelplantsoen crosses 0363100012086556"
+  },
+  {
+   "pandId": "0363100012100692",
+   "reason": "frontage 36.9 m from Vogelplantsoen"
+  },
+  {
+   "pandId": "0363100012101482",
+   "reason": "frontage 41.7 m from Vogelplantsoen"
+  },
+  {
+   "pandId": "0363100012104208",
+   "reason": "sightline to Vogelplantsoen crosses 0363100012094588"
+  },
+  {
+   "pandId": "0363100012105093",
+   "reason": "no frontage on Vogelplantsoen: No footprint edge faces Vogelplantsoen"
+  },
+  {
+   "pandId": "0363100012105876",
+   "reason": "no frontage on Vogelplantsoen: No footprint edge faces Vogelplantsoen"
+  },
+  {
+   "pandId": "0363100012106658",
+   "reason": "sightline to Vogelplantsoen crosses 0363100012072678"
+  },
+  {
+   "pandId": "0363100012107760",
+   "reason": "frontage 52.5 m from Vogelplantsoen"
+  },
+  {
+   "pandId": "0363100012108395",
+   "reason": "frontage 34.9 m from Vogelplantsoen"
+  },
+  {
+   "pandId": "0363100012108562",
+   "reason": "frontage 110.9 m from Vogelplantsoen"
+  },
+  {
+   "pandId": "0363100012109073",
+   "reason": "frontage 75.2 m from Vogelplantsoen"
+  },
+  {
+   "pandId": "0363100012110498",
+   "reason": "frontage 30.0 m from Vogelplantsoen"
+  },
+  {
+   "pandId": "0363100012112593",
+   "reason": "frontage 41.0 m from Vogelplantsoen"
+  },
+  {
+   "pandId": "0363100012115379",
+   "reason": "sightline to Vogelplantsoen crosses 0363100012097544"
+  },
+  {
+   "pandId": "0363100012116446",
+   "reason": "frontage 39.7 m from Vogelplantsoen"
+  },
+  {
+   "pandId": "0363100012116509",
+   "reason": "sightline to Vogelplantsoen crosses 0363100012086231"
+  },
+  {
+   "pandId": "0363100012118660",
+   "reason": "frontage 46.0 m from Vogelplantsoen"
+  },
+  {
+   "pandId": "0363100012090564",
+   "reason": "sightline to Vogelplantsoen crosses 0363100012137414"
+  },
+  {
+   "pandId": "0363100012092832",
+   "reason": "frontage 52.3 m from Vogelplantsoen"
+  },
+  {
+   "pandId": "0363100012097154",
+   "reason": "frontage 46.5 m from Vogelplantsoen"
+  },
+  {
+   "pandId": "0363100012101207",
+   "reason": "frontage 41.2 m from Vogelplantsoen"
+  },
+  {
+   "pandId": "0363100012103178",
+   "reason": "no frontage on Vogelplantsoen: No footprint edge faces Vogelplantsoen"
+  },
+  {
+   "pandId": "0363100012103853",
+   "reason": "frontage 32.2 m from Vogelplantsoen"
+  },
+  {
+   "pandId": "0363100012104069",
+   "reason": "sightline to Vogelplantsoen crosses 0363100012128498"
+  },
+  {
+   "pandId": "0363100012104339",
+   "reason": "frontage 39.9 m from Vogelplantsoen"
+  },
+  {
+   "pandId": "0363100012106317",
+   "reason": "frontage 40.8 m from Vogelplantsoen"
+  },
+  {
+   "pandId": "0363100012106782",
+   "reason": "no frontage on Vogelplantsoen: No footprint edge faces Vogelplantsoen"
+  },
+  {
+   "pandId": "0363100012109124",
+   "reason": "frontage 48.9 m from Vogelplantsoen"
+  },
+  {
+   "pandId": "0363100012116764",
+   "reason": "sightline to Vogelplantsoen crosses 0363100012073375"
+  },
+  {
+   "pandId": "0363100012119786",
+   "reason": "frontage 44.3 m from Vogelplantsoen"
+  },
+  {
+   "pandId": "0363100012120077",
+   "reason": "no frontage on Vogelplantsoen: No footprint edge faces Vogelplantsoen"
+  },
+  {
+   "pandId": "0363100012120569",
+   "reason": "frontage 60.0 m from Vogelplantsoen"
+  },
+  {
+   "pandId": "0363100012121571",
+   "reason": "frontage 35.8 m from Vogelplantsoen"
+  },
+  {
+   "pandId": "0363100012121730",
+   "reason": "frontage 94.1 m from Vogelplantsoen"
+  },
+  {
+   "pandId": "0363100012121905",
+   "reason": "sightline to Vogelplantsoen crosses 0363100012065099"
+  },
+  {
+   "pandId": "0363100012123312",
+   "reason": "no frontage on Vogelplantsoen: No footprint edge faces Vogelplantsoen"
+  },
+  {
+   "pandId": "0363100012123354",
+   "reason": "frontage 74.6 m from Vogelplantsoen"
+  },
+  {
+   "pandId": "0363100012123606",
+   "reason": "frontage 56.9 m from Vogelplantsoen"
+  },
+  {
+   "pandId": "0363100012124606",
+   "reason": "frontage 37.3 m from Vogelplantsoen"
+  },
+  {
+   "pandId": "0363100012129706",
+   "reason": "frontage 31.1 m from Vogelplantsoen"
+  },
+  {
+   "pandId": "0363100012130136",
+   "reason": "frontage 40.9 m from Vogelplantsoen"
+  },
+  {
+   "pandId": "0363100012130216",
+   "reason": "no frontage on Vogelplantsoen: No footprint edge faces Vogelplantsoen"
+  },
+  {
+   "pandId": "0363100012130936",
+   "reason": "frontage 48.5 m from Vogelplantsoen"
+  },
+  {
+   "pandId": "0363100012131492",
+   "reason": "frontage 118.5 m from Vogelplantsoen"
+  },
+  {
+   "pandId": "0363100012132631",
+   "reason": "frontage 54.9 m from Vogelplantsoen"
+  },
+  {
+   "pandId": "0363100012133967",
+   "reason": "sightline to Vogelplantsoen crosses 0363100012140660"
+  },
+  {
+   "pandId": "0363100012134762",
+   "reason": "sightline to Vogelplantsoen crosses 0363100012097156"
+  },
+  {
+   "pandId": "0363100012134789",
+   "reason": "sightline to Vogelplantsoen crosses 0363100012140660"
+  },
+  {
+   "pandId": "0363100012135700",
+   "reason": "frontage 51.9 m from Vogelplantsoen"
+  },
+  {
+   "pandId": "0363100012135886",
+   "reason": "sightline to Vogelplantsoen crosses 0363100012072678"
+  },
+  {
+   "pandId": "0363100012136147",
+   "reason": "no frontage on Vogelplantsoen: No footprint edge faces Vogelplantsoen"
+  },
+  {
+   "pandId": "0363100012136571",
+   "reason": "no frontage on Vogelplantsoen: No footprint edge faces Vogelplantsoen"
+  },
+  {
+   "pandId": "0363100012137341",
+   "reason": "frontage 52.0 m from Vogelplantsoen"
+  },
+  {
+   "pandId": "0363100012137372",
+   "reason": "frontage 36.9 m from Vogelplantsoen"
+  },
+  {
+   "pandId": "0363100012138634",
+   "reason": "frontage 92.9 m from Vogelplantsoen"
+  },
+  {
+   "pandId": "0363100012138972",
+   "reason": "frontage 31.2 m from Vogelplantsoen"
+  },
+  {
+   "pandId": "0363100012140588",
+   "reason": "sightline to Vogelplantsoen crosses 0363100012086556"
+  },
+  {
+   "pandId": "0363100012141264",
+   "reason": "frontage 43.9 m from Vogelplantsoen"
+  },
+  {
+   "pandId": "0363100012141389",
+   "reason": "sightline to Vogelplantsoen crosses 0363100012117406"
+  },
+  {
+   "pandId": "0363100012142488",
+   "reason": "frontage 53.5 m from Vogelplantsoen"
+  },
+  {
+   "pandId": "0363100012142979",
+   "reason": "no frontage on Vogelplantsoen: No footprint edge faces Vogelplantsoen"
+  },
+  {
+   "pandId": "0363100012144561",
+   "reason": "sightline to Vogelplantsoen crosses 0363100012072678"
+  },
+  {
+   "pandId": "0363100012120334",
+   "reason": "sightline to Vogelplantsoen crosses 0363100012129359"
+  },
+  {
+   "pandId": "0363100012122354",
+   "reason": "frontage 42.8 m from Vogelplantsoen"
+  },
+  {
+   "pandId": "0363100012122850",
+   "reason": "frontage 51.8 m from Vogelplantsoen"
+  },
+  {
+   "pandId": "0363100012124737",
+   "reason": "frontage 99.1 m from Vogelplantsoen"
+  },
+  {
+   "pandId": "0363100012128498",
+   "reason": "sightline to Vogelplantsoen crosses 0363100012137760"
+  },
+  {
+   "pandId": "0363100012128642",
+   "reason": "no frontage on Vogelplantsoen: No footprint edge faces Vogelplantsoen"
+  },
+  {
+   "pandId": "0363100012129359",
+   "reason": "sightline to Vogelplantsoen crosses 0363100012136383"
+  },
+  {
+   "pandId": "0363100012130615",
+   "reason": "frontage 40.9 m from Vogelplantsoen"
+  },
+  {
+   "pandId": "0363100012133044",
+   "reason": "frontage 41.0 m from Vogelplantsoen"
+  },
+  {
+   "pandId": "0363100012137379",
+   "reason": "sightline to Vogelplantsoen crosses 0363100012071224"
+  },
+  {
+   "pandId": "0363100012141926",
+   "reason": "no frontage on Vogelplantsoen: No footprint edge faces Vogelplantsoen"
+  },
+  {
+   "pandId": "0363100012143096",
+   "reason": "frontage 71.0 m from Vogelplantsoen"
+  },
+  {
+   "pandId": "0363100012144578",
+   "reason": "sightline to Vogelplantsoen crosses 0363100012090748"
+  },
+  {
+   "pandId": "0363100012146114",
+   "reason": "sightline to Vogelplantsoen crosses 0363100012087867"
+  },
+  {
+   "pandId": "0363100012146996",
+   "reason": "frontage 103.8 m from Vogelplantsoen"
+  },
+  {
+   "pandId": "0363100012147609",
+   "reason": "no frontage on Vogelplantsoen: No footprint edge faces Vogelplantsoen"
+  },
+  {
+   "pandId": "0363100012148706",
+   "reason": "frontage 46.4 m from Vogelplantsoen"
+  },
+  {
+   "pandId": "0363100012149443",
+   "reason": "frontage 99.3 m from Vogelplantsoen"
+  },
+  {
+   "pandId": "0363100012150171",
+   "reason": "frontage 38.8 m from Vogelplantsoen"
+  },
+  {
+   "pandId": "0363100012150842",
+   "reason": "sightline to Vogelplantsoen crosses 0363100012094588"
+  },
+  {
+   "pandId": "0363100012151653",
+   "reason": "frontage 94.8 m from Vogelplantsoen"
+  },
+  {
+   "pandId": "0363100012151805",
+   "reason": "frontage 41.1 m from Vogelplantsoen"
+  },
+  {
+   "pandId": "0363100012153864",
+   "reason": "frontage 89.9 m from Vogelplantsoen"
+  },
+  {
+   "pandId": "0363100012219881",
+   "reason": "sightline to Vogelplantsoen crosses 0363100012087867"
+  },
+  {
+   "pandId": "0363100012219882",
+   "reason": "sightline to Vogelplantsoen crosses 0363100012087867"
+  },
+  {
+   "pandId": "0363100012219883",
+   "reason": "sightline to Vogelplantsoen crosses 0363100012087867"
+  },
+  {
+   "pandId": "0363100012219884",
+   "reason": "sightline to Vogelplantsoen crosses 0363100012136147"
+  },
+  {
+   "pandId": "0363100012219980",
+   "reason": "sightline to Vogelplantsoen crosses 0363100012136147"
+  },
+  {
+   "pandId": "0363100012219981",
+   "reason": "sightline to Vogelplantsoen crosses 0363100012130216"
+  },
+  {
+   "pandId": "0363100012147662",
+   "reason": "sightline to Vogelplantsoen crosses 0363100012071224"
+  },
+  {
+   "pandId": "0363100012148859",
+   "reason": "frontage 51.5 m from Vogelplantsoen"
+  },
+  {
+   "pandId": "0363100012149024",
+   "reason": "frontage 100.3 m from Vogelplantsoen"
+  },
+  {
+   "pandId": "0363100012191596",
+   "reason": "sightline to Vogelplantsoen crosses 0363100012137414"
+  },
+  {
+   "pandId": "0363100012072678",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012086231",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012087867",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012073375",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012079772",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012087797",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012096215",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012097544",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012090748",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012106957",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012140660",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012136383",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012137414",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012137760",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012097156",
+   "alongM": 0,
+   "widthM": 5,
+   "eavesM": 4.1,
+   "roofMaxM": 7.05,
+   "storeys3dbag": 2,
+   "builtYear": 1919,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012079324",
+   "alongM": 5,
+   "widthM": 5,
+   "eavesM": 4.12,
+   "roofMaxM": 7.05,
+   "storeys3dbag": 2,
+   "builtYear": 1919,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012110238",
+   "alongM": 10,
+   "widthM": 5.01,
+   "eavesM": 4.14,
+   "roofMaxM": 7.15,
+   "storeys3dbag": 2,
+   "builtYear": 1919,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  }
+ ]
+}

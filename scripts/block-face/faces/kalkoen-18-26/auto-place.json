@@ -1,0 +1,436 @@
+{
+ "face": "kalkoen-18-26",
+ "street": "Kalkoenstraat",
+ "library": "vogelbuurt",
+ "stripDate": "2025-09-22",
+ "seconds": 9.42,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [
+  {
+   "face": "kalkoen-18-26-r1",
+   "pands": [
+    "0363100012123527",
+    "0363100012086436"
+   ],
+   "passed": true,
+   "triangles": 1269
+  }
+ ],
+ "pands": [
+  {
+   "pandId": "0363100012123718",
+   "address": "Kalkoenstraat 26",
+   "builtYear": 1923,
+   "widthM": 6.47,
+   "eavesM": 7.03,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#474445",
+    "wallRaw": "#494646",
+    "skyline": {
+     "eavesM": 11.35,
+     "eavesRow": 102,
+     "confidence": 0.4,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 1.55,
+     "bayCentre": 0.24,
+     "balconies": true,
+     "why": "dark open axis 2.4 m at 0.29 (light 0.41): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 2.4,
+       "centre": 0.29,
+       "light": 0.41
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.028 < 0.15 (photo vs model body; likeness.ts FAIL: window shape none vs photo square; columns none vs photo 2)",
+   "likeness": {
+    "pandId": "0363100012123718",
+    "ncc": 0.028,
+    "nccRaw": 0.028,
+    "shiftM": [
+     0.25,
+     0.4
+    ],
+    "usable": 0.97,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "window shape none vs photo square",
+     "columns none vs photo 2"
+    ],
+    "wall": {
+     "photo": "#474444",
+     "model": "#5f5b5c",
+     "dL": 0.092
+    },
+    "glazing": {
+     "photo": 0.42,
+     "model": 0.37
+    },
+    "columns": {
+     "photo": 2,
+     "model": null
+    },
+    "iou": 0.246
+   },
+   "challengers": {
+    "vogel-1921-two-storey-dormer-row": 0.028,
+    "vogel-1921-two-storey-dormer-row~m": 0.329
+   }
+  },
+  {
+   "pandId": "0363100012100888",
+   "address": "Kalkoenstraat 24",
+   "builtYear": 1923,
+   "widthM": 6.57,
+   "eavesM": 7.02,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#4d4945",
+    "wallRaw": "#514d4a",
+    "skyline": {
+     "eavesM": 10.22,
+     "eavesRow": 147,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 4,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0.82,
+     "bayCentre": 0.61,
+     "balconies": true,
+     "why": "dark open axis 1.13 m at 0.6 (light 0.45): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.13,
+       "centre": 0.6,
+       "light": 0.45
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.034 < 0.15 (photo vs model body; likeness.ts FAIL: window shape none vs photo tall; columns none vs photo 3)",
+   "likeness": {
+    "pandId": "0363100012100888",
+    "ncc": 0.034,
+    "nccRaw": 0.034,
+    "shiftM": [
+     -0.4,
+     -0.4
+    ],
+    "usable": 0.94,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "window shape none vs photo tall",
+     "columns none vs photo 3"
+    ],
+    "wall": {
+     "photo": "#4c4845",
+     "model": "#66605b",
+     "dL": 0.094
+    },
+    "glazing": {
+     "photo": 0.46,
+     "model": 0.37
+    },
+    "columns": {
+     "photo": 3,
+     "model": null
+    },
+    "iou": 0.27
+   },
+   "challengers": {
+    "vogel-1921-two-storey-dormer-row~m": 0.034,
+    "vogel-1921-two-storey-dormer-row": 0.279
+   }
+  },
+  {
+   "pandId": "0363100012086071",
+   "address": "Kalkoenstraat 22",
+   "builtYear": 1923,
+   "widthM": 6.29,
+   "eavesM": 7.01,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#b4ad9d",
+    "wallRaw": "#b8b2a2",
+    "skyline": {
+     "eavesM": 12,
+     "eavesRow": 76,
+     "confidence": 0.48,
+     "crown": {
+      "widthM": 1.32,
+      "riseM": 1.9,
+      "topWidthM": 0.3,
+      "centre": 0.67
+     }
+    },
+    "stucco": true,
+    "bands": 3,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.07,
+    "foliageShare": 0.14
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "no front on the strip: sky over the roof in 66 % of columns (< 75 %): the strip shows a nearer wall, fence or tree, not the front",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012123527",
+   "address": "Kalkoenstraat 20",
+   "builtYear": 1923,
+   "widthM": 6.32,
+   "eavesM": 7.01,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#534f4b",
+    "wallRaw": "#54504c",
+    "skyline": {
+     "eavesM": 11.1,
+     "eavesRow": 112,
+     "confidence": 0.7,
+     "crown": {
+      "widthM": 1.23,
+      "riseM": 2.8,
+      "topWidthM": 0.07,
+      "centre": 0.66
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.8 m at 0.12 (light 0.16): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.8,
+       "centre": 0.12,
+       "light": 0.16
+      },
+      {
+       "widthM": 2.73,
+       "centre": 0.67,
+       "light": 0.25
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "placed",
+   "type": "vogel-1921-two-storey-dormer-row",
+   "score": 1,
+   "placement": {
+    "type": "vogel-1921-two-storey-dormer-row",
+    "measuredPalette": {
+     "brick": "#534f4b",
+     "evidence": "strip 2025-09-22 span 773-1026: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "door unread",
+    "crown flat-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012123527",
+    "ncc": 0.157,
+    "nccRaw": 0.157,
+    "shiftM": [
+     -0.25,
+     -0.4
+    ],
+    "usable": 0.93,
+    "abstain": null,
+    "verdict": "WARN",
+    "reasons": [
+     "mask IoU 0.353 < 0.45"
+    ],
+    "wall": {
+     "photo": "#534f4b",
+     "model": "#6b6661",
+     "dL": 0.09
+    },
+    "glazing": {
+     "photo": 0.31,
+     "model": 0.34
+    },
+    "columns": {
+     "photo": null,
+     "model": null
+    },
+    "iou": 0.353
+   },
+   "challengers": {
+    "vogel-1921-two-storey-dormer-row": 0.157,
+    "vogel-1921-two-storey-dormer-row~m": -0.021
+   }
+  },
+  {
+   "pandId": "0363100012086436",
+   "address": "Kalkoenstraat 18",
+   "builtYear": 1923,
+   "widthM": 6.63,
+   "eavesM": 6.99,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#78675e",
+    "wallRaw": "#6b5d53",
+    "skyline": {
+     "eavesM": 6.78,
+     "eavesRow": 285,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.35,
+      "riseM": 0.8,
+      "topWidthM": 2.35,
+      "centre": 0.25
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 2.4 m at 0.29 (light 0.17): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 2.4,
+       "centre": 0.29,
+       "light": 0.17
+      },
+      {
+       "widthM": 0.78,
+       "centre": 0.82,
+       "light": 0.42
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 5.95,
+       "widthM": 2.55,
+       "centre": 0.39
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.04
+   },
+   "status": "placed",
+   "type": "vogel-1921-two-storey-dormer-row",
+   "score": 1,
+   "placement": {
+    "type": "vogel-1921-two-storey-dormer-row",
+    "measuredPalette": {
+     "brick": "#78675e",
+     "evidence": "strip 2022-05-11 span 1026-1291: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "mirror": true
+   },
+   "notes": [
+    "crown flat-dormer (type default)",
+    "photo decides: vogel-1921-two-storey-dormer-row~m edge NCC 0.332 vs vogel-1921-two-storey-dormer-row 0.208"
+   ],
+   "likeness": {
+    "pandId": "0363100012086436",
+    "ncc": 0.332,
+    "nccRaw": 0.332,
+    "shiftM": [
+     -0.05,
+     -0.05
+    ],
+    "usable": 0.92,
+    "abstain": null,
+    "verdict": "PASS",
+    "reasons": [],
+    "wall": {
+     "photo": "#726159",
+     "model": "#8e7a6f",
+     "dL": 0.098
+    },
+    "glazing": {
+     "photo": 0.31,
+     "model": 0.34
+    },
+    "columns": {
+     "photo": null,
+     "model": null
+    },
+    "iou": 0.626
+   },
+   "challengers": {
+    "vogel-1921-two-storey-dormer-row": 0.208,
+    "vogel-1921-two-storey-dormer-row~m": 0.332
+   }
+  }
+ ]
+}

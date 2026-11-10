@@ -1,0 +1,427 @@
+{
+ "face": "pelikaan-3-9",
+ "street": "Pelikaanstraat",
+ "library": "vogelbuurt",
+ "stripDate": "2025-09-22",
+ "seconds": 3.73,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [
+  {
+   "face": "pelikaan-3-9",
+   "pands": [
+    "0363100012104432",
+    "0363100012119758",
+    "0363100012124605",
+    "0363100012153865"
+   ],
+   "passed": true,
+   "triangles": 2501
+  }
+ ],
+ "pands": [
+  {
+   "pandId": "0363100012104432",
+   "address": "Pelikaanstraat 3",
+   "builtYear": 1924,
+   "widthM": 6.38,
+   "eavesM": 7.57,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#aba299",
+    "wallRaw": "#8b877f",
+    "skyline": {
+     "eavesM": 10.78,
+     "eavesRow": 122,
+     "confidence": 0.83,
+     "crown": {
+      "widthM": 1.68,
+      "riseM": 3.05,
+      "topWidthM": 0.15,
+      "centre": 0.53
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.828,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.75 m at 0.17 (light 0.08): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.75,
+       "centre": 0.17,
+       "light": 0.08
+      },
+      {
+       "widthM": 2.58,
+       "centre": 0.71,
+       "light": 0.3
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.06,
+    "foliageShare": 0.05
+   },
+   "status": "placed",
+   "type": "vogel-1921-two-storey-dormer-row",
+   "score": 1,
+   "placement": {
+    "type": "vogel-1921-two-storey-dormer-row",
+    "measuredPalette": {
+     "brick": "#aba299",
+     "evidence": "strip 2025-09-22 span 0-255: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "door left",
+    "crown flat-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012104432",
+    "ncc": 0.266,
+    "nccRaw": 0.266,
+    "shiftM": [
+     0,
+     0.15
+    ],
+    "usable": 0.64,
+    "abstain": null,
+    "verdict": "NO EVIDENCE",
+    "reasons": [
+     "washed out 30 % > 30 %"
+    ],
+    "wall": {
+     "photo": "#a69d94",
+     "model": "#a3998f",
+     "dL": -0.016
+    },
+    "glazing": {
+     "photo": 0.71,
+     "model": 0.36
+    },
+    "columns": {
+     "photo": null,
+     "model": null
+    },
+    "iou": 0.343
+   },
+   "challengers": {
+    "vogel-1921-two-storey-dormer-row": 0.266,
+    "vogel-1921-two-storey-dormer-row~m": 0.107
+   }
+  },
+  {
+   "pandId": "0363100012119758",
+   "address": "Pelikaanstraat 5",
+   "builtYear": 1924,
+   "widthM": 6.67,
+   "eavesM": 7.02,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#aba095",
+    "wallRaw": "#696b67",
+    "skyline": {
+     "eavesM": 9,
+     "eavesRow": 193,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.85,
+      "riseM": 3.95,
+      "topWidthM": 0.28,
+      "centre": 0.46
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.711,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 2.52 m at 0.34 (light 0.18): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 2.52,
+       "centre": 0.34,
+       "light": 0.18
+      },
+      {
+       "widthM": 0.8,
+       "centre": 0.85,
+       "light": 0.12
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.03,
+    "foliageShare": 0.01
+   },
+   "status": "placed",
+   "type": "vogel-1921-two-storey-dormer-row",
+   "score": 1,
+   "placement": {
+    "type": "vogel-1921-two-storey-dormer-row",
+    "mirror": true,
+    "measuredPalette": {
+     "brick": "#aba095",
+     "evidence": "strip 2025-09-22 span 255-522: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "door right: mirrored",
+    "crown flat-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012119758",
+    "ncc": 0.22,
+    "nccRaw": 0.22,
+    "shiftM": [
+     0.2,
+     0.4
+    ],
+    "usable": 0.81,
+    "abstain": null,
+    "verdict": "NO EVIDENCE",
+    "reasons": [
+     "washed out 36 % > 30 %"
+    ],
+    "wall": {
+     "photo": "#aca095",
+     "model": "#a5998d",
+     "dL": -0.029
+    },
+    "glazing": {
+     "photo": 0.28,
+     "model": 0.36
+    },
+    "columns": {
+     "photo": null,
+     "model": null
+    },
+    "iou": 0.371
+   },
+   "challengers": {
+    "vogel-1921-two-storey-dormer-row~m": 0.22,
+    "vogel-1921-two-storey-dormer-row": 0.066
+   }
+  },
+  {
+   "pandId": "0363100012124605",
+   "address": "Pelikaanstraat 7",
+   "builtYear": 1924,
+   "widthM": 6.4,
+   "eavesM": 6.72,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#a99c90",
+    "wallRaw": "#4c5050",
+    "skyline": {
+     "eavesM": 8.7,
+     "eavesRow": 205,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.15,
+      "riseM": 3.9,
+      "topWidthM": 0.42,
+      "centre": 0.18
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.8 m at 0.14 (light 0.18): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.8,
+       "centre": 0.14,
+       "light": 0.18
+      },
+      {
+       "widthM": 2.67,
+       "centre": 0.65,
+       "light": 0.13
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.04,
+    "foliageShare": 0.02
+   },
+   "status": "placed",
+   "type": "vogel-1921-two-storey-dormer-row",
+   "score": 1,
+   "placement": {
+    "type": "vogel-1921-two-storey-dormer-row",
+    "measuredPalette": {
+     "brick": "#a99c90",
+     "evidence": "strip 2025-09-22 span 522-778: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "door left",
+    "crown flat-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012124605",
+    "ncc": 0.183,
+    "nccRaw": 0.183,
+    "shiftM": [
+     -0.3,
+     0.25
+    ],
+    "usable": 0.79,
+    "abstain": null,
+    "verdict": "PASS",
+    "reasons": [],
+    "wall": {
+     "photo": "#a99c90",
+     "model": "#a6988c",
+     "dL": -0.014
+    },
+    "glazing": {
+     "photo": 0.42,
+     "model": 0.35
+    },
+    "columns": {
+     "photo": null,
+     "model": null
+    },
+    "iou": 0.655
+   },
+   "challengers": {
+    "vogel-1921-two-storey-dormer-row": 0.183,
+    "vogel-1921-two-storey-dormer-row~m": 0.16
+   }
+  },
+  {
+   "pandId": "0363100012153865",
+   "address": "Pelikaanstraat 9",
+   "builtYear": 1924,
+   "widthM": 6.39,
+   "eavesM": 7.31,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#a2968a",
+    "wallRaw": "#968c80",
+    "skyline": {
+     "eavesM": 10.72,
+     "eavesRow": 124,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.07,
+      "riseM": 1.9,
+      "topWidthM": 0.17,
+      "centre": 0.48
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.556,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 2.58 m at 0.3 (light 0.15): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 2.58,
+       "centre": 0.3,
+       "light": 0.15
+      },
+      {
+       "widthM": 0.8,
+       "centre": 0.83,
+       "light": 0.15
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.05,
+    "foliageShare": 0.02
+   },
+   "status": "placed",
+   "type": "vogel-1921-two-storey-dormer-row",
+   "score": 1,
+   "placement": {
+    "type": "vogel-1921-two-storey-dormer-row",
+    "measuredPalette": {
+     "brick": "#a2968a",
+     "evidence": "strip 2025-09-22 span 778-1034: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "mirror": true
+   },
+   "notes": [
+    "door unread: mirrored, the opposite of 124605",
+    "crown flat-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012153865",
+    "ncc": 0.374,
+    "nccRaw": 0.374,
+    "shiftM": [
+     0.05,
+     -0.4
+    ],
+    "usable": 0.74,
+    "abstain": null,
+    "verdict": "WARN",
+    "reasons": [
+     "mask IoU 0.408 < 0.45"
+    ],
+    "wall": {
+     "photo": "#a4978b",
+     "model": "#a5998d",
+     "dL": 0.006
+    },
+    "glazing": {
+     "photo": 0.3,
+     "model": 0.36
+    },
+    "columns": {
+     "photo": null,
+     "model": null
+    },
+    "iou": 0.408
+   },
+   "challengers": {
+    "vogel-1921-two-storey-dormer-row~m": 0.374,
+    "vogel-1921-two-storey-dormer-row": 0.128
+   }
+  }
+ ]
+}

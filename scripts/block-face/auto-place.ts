@@ -32,7 +32,7 @@ import type {BuildingFacts} from '../../src/canalRecall/buildingRecipe/facts.ts'
 import {loadMaterialSoup} from '../landmarks/material-soup.ts';
 import {renderModels, closeRenderer} from '../building-recipes/render.ts';
 import {STRIP_LIKENESS, spanLikeness} from '../../src/canalRecall/blockFace/stripLikeness.ts';
-import {runFootOffset} from '../../src/canalRecall/blockFace/stripFoot.ts';
+import {lowFrontFootMaxM, runFootOffset} from '../../src/canalRecall/blockFace/stripFoot.ts';
 import {applyCrownPins, applyMirrorPins, crownPinProblems, holdBrokenPairs, mirrorPinProblems, typePinProblems, typesForFace, typesForPand, type CrownPin, type MirrorPin, type TypePin} from '../../src/canalRecall/blockFace/reviewCrowns.ts';
 import {applyDoorPins, doorPinProblems, type DoorPin} from '../../src/canalRecall/blockFace/reviewDoors.ts';
 import {acceptFloorFor, acceptPinProblems, applyPalettePins, palettePinProblems, type AcceptPin, type PalettePin} from '../../src/canalRecall/blockFace/reviewPalettes.ts';
@@ -246,7 +246,7 @@ export async function runLikeness(runId: string): Promise<PandLikeness[]> {
   const [png] = await renderModels([{file: path.join(STAGING, runId, 'chunk.glb')}], [{eye: [(x0M + x1M) / 2, top / 2, 200], target: [(x0M + x1M) / 2, top / 2, 0], fov: 30, width: W, height: H,
     ortho: [-(x1M - x0M) / 2, (x1M - x0M) / 2, top / 2, -top / 2], background: '#9fb8cf', noGround: true}]);
   const modelRgb = new Uint8Array(await sharp(png).resize(W, H, {fit: 'fill'}).removeAlpha().raw().toBuffer());
-  const P = soup.positions, foot = runFootOffset(raw, strip, !process.argv.includes('--no-foot'));
+  const P = soup.positions, foot = runFootOffset(raw, strip, !process.argv.includes('--no-foot'), lowFrontFootMaxM(report.perPand.map((pp: any) => pp.eavesM)));
   if (foot.offsetM) console.log(`${runId}: facade foot ${foot.offsetM} m above the strip's bottom row (${foot.read}/${foot.spans} spans read, spread ${foot.spreadM} m)`);
   return report.perPand.map((pp: any, i: number) => {
     const s = strip.spans[i], w = (s.px[1] - s.px[0]) / strip.pixelsPerMetre, x0 = s.x0M;

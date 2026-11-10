@@ -1,0 +1,154 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "flamingo-4-10",
+ "street": "Flamingostraat",
+ "sources": [
+  {
+   "id": "strip-2020-06-02",
+   "kind": "street-panorama",
+   "capturedAt": "2020-06-02",
+   "image": "staging/block-face/flamingo-4-10/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "auto-place (blockFace/autoPlace.ts)",
+  "passes": 1,
+  "note": "auto-placed from the vogelbuurt library (buurt Vogelbuurt-Noord); scores and holds in scripts/block-face/faces/flamingo-4-10/auto-place.json"
+ },
+ "types": [
+  "vogel-1921-two-storey-dormer-row"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012063000",
+   "slug": "flamingo-063000",
+   "address": "Flamingostraat 10",
+   "type": {
+    "type": "vogel-1921-two-storey-dormer-row",
+    "measuredPalette": {
+     "brick": "#433937",
+     "evidence": "strip 2020-06-02 span 0-263: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "crown": "step-gable"
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2020-06-02",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: vogel-1921-two-storey-dormer-row scored 1 on storeys 1, roof 1, stucco 1; strip 2020-06-02 span 0-263"
+   }
+  },
+  {
+   "pandId": "0363100012087661",
+   "slug": "flamingo-087661",
+   "address": "Flamingostraat 8",
+   "type": {
+    "type": "vogel-1921-two-storey-dormer-row",
+    "mirror": true,
+    "measuredPalette": {
+     "brick": "#594740",
+     "evidence": "strip 2019-06-28 span 263-516: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2020-06-02",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: vogel-1921-two-storey-dormer-row scored 1 on storeys 1, roof 1, stucco 1; strip 2019-06-28 span 263-516"
+   }
+  },
+  {
+   "pandId": "0363100012066422",
+   "slug": "flamingo-066422",
+   "address": "Flamingostraat 6",
+   "type": {
+    "type": "vogel-1921-two-storey-dormer-row",
+    "measuredPalette": {
+     "brick": "#57494a",
+     "evidence": "strip 2022-05-11 span 516-768: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "crown": "step-gable"
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2020-06-02",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: vogel-1921-two-storey-dormer-row scored 1 on storeys 1, roof 1, stucco 1; strip 2022-05-11 span 516-768"
+   }
+  },
+  {
+   "pandId": "0363100012129921",
+   "slug": "flamingo-129921",
+   "address": "Flamingostraat 4",
+   "type": {
+    "type": "vogel-1921-two-storey-dormer-row",
+    "mirror": true,
+    "measuredPalette": {
+     "brick": "#5b4848",
+     "evidence": "strip 2020-06-02 span 768-1035: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "crown": "step-gable"
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2020-06-02",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: vogel-1921-two-storey-dormer-row scored 1 on storeys 1, roof 1, stucco 1; strip 2020-06-02 span 768-1035"
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "auto-place: low attic behind the cornice; the strips show sky over the cornices of the type rows"
+  },
+  "measuredEaves": [
+   {
+    "pand": "0363100012063000",
+    "stripRow": 297,
+    "evidence": "auto-place: the vogel-1921-two-storey-dormer-row cornice line 6.45 m (measured on its exemplar strips; this pand's skyline unread); 3DBAG/PDOK eaves 7.34 m"
+   },
+   {
+    "pand": "0363100012066422",
+    "stripRow": 297,
+    "evidence": "auto-place: the vogel-1921-two-storey-dormer-row cornice line 6.45 m (measured on its exemplar strips; this pand's skyline unread); 3DBAG/PDOK eaves 6.9 m"
+   },
+   {
+    "pand": "0363100012129921",
+    "stripRow": 297,
+    "evidence": "auto-place: the vogel-1921-two-storey-dormer-row cornice line 6.45 m (measured on its exemplar strips; this pand's skyline unread); 3DBAG/PDOK eaves 7.18 m"
+   }
+  ]
+ }
+}

@@ -23,7 +23,7 @@ import {houseIntents, validateBlockFace, type BlockFaceIntent} from '../../src/c
 import {measureWallColour, toHex} from '../../src/canalRecall/blockFace/wallColour.ts';
 import {compareBands, countBands, groundStoreysOf, type FrontBands} from '../../src/canalRecall/blockFace/openingCount.ts';
 import {FACES, STAGING} from './intake.ts';
-import {runFootOffset} from '../../src/canalRecall/blockFace/stripFoot.ts';
+import {lowFrontFootMaxM, runFootOffset} from '../../src/canalRecall/blockFace/stripFoot.ts';
 
 const arg = (n: string) => process.argv.find(a => a.startsWith(`--${n}=`))?.slice(n.length + 3);
 const esc = (s: string) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
@@ -72,7 +72,7 @@ export async function reviewFace(faceId: string, glbOverride?: string, label?: s
   // The strip's facade foot (blockFace/stripFoot.ts, #157): the model stands on it instead of the strip's bottom row.
   // Drawn between the photo's foot and the eaves line, as the edge NCC reads it (stripLikeness.ts footOffsetM).
   const stripRaw = await sharp(strip.image).removeAlpha().raw().toBuffer({resolveWithObject: true});
-  const foot = runFootOffset({rgb: new Uint8Array(stripRaw.data), width: stripRaw.info.width, height: stripRaw.info.height}, strip, !process.argv.includes('--no-foot'));
+  const foot = runFootOffset({rgb: new Uint8Array(stripRaw.data), width: stripRaw.info.width, height: stripRaw.info.height}, strip, !process.argv.includes('--no-foot'), lowFrontFootMaxM(report.perPand.map((pp: any) => pp.eavesM)));
   // Model: chunk frame (x along the face, y up, z outward); camera on +z looking back, same metres as the strip.
   const [model0] = await renderModels([{file: glb}], [{eye: [(x0 + x1) / 2, top / 2, 200], target: [(x0 + x1) / 2, top / 2, 0], fov: 30, width: W, height: H,
     ortho: [-(x1 - x0) / 2, (x1 - x0) / 2, top / 2, -top / 2], background: '#9fb8cf', noGround: true}]);

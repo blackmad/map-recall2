@@ -1,0 +1,507 @@
+{
+ "street": "Zamenhofstraat",
+ "seed": "0363100012110286",
+ "members": [
+  "0363100012064115",
+  "0363100012122427",
+  "0363100012085003"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "next fronting pand 0363100012147525 15.4 m on shares no party wall (cross street or gap)"
+  },
+  {
+   "side": "right",
+   "reason": "run of zamenhof-6-12: 110286 held (auto-place.json)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012063000",
+   "reason": "frontage 50.3 m from Zamenhofstraat"
+  },
+  {
+   "pandId": "0363100012068107",
+   "reason": "frontage 53.8 m from Zamenhofstraat"
+  },
+  {
+   "pandId": "0363100012069366",
+   "reason": "no frontage on Zamenhofstraat: No footprint edge faces Zamenhofstraat"
+  },
+  {
+   "pandId": "0363100012071869",
+   "reason": "sightline to Zamenhofstraat crosses 0363100012110286"
+  },
+  {
+   "pandId": "0363100012072702",
+   "reason": "frontage 43.0 m from Zamenhofstraat"
+  },
+  {
+   "pandId": "0363100012076219",
+   "reason": "sightline to Zamenhofstraat crosses 0363100012078281"
+  },
+  {
+   "pandId": "0363100012078630",
+   "reason": "frontage 50.9 m from Zamenhofstraat"
+  },
+  {
+   "pandId": "0363100012080002",
+   "reason": "sightline to Zamenhofstraat crosses 0363100012123838"
+  },
+  {
+   "pandId": "0363100012086570",
+   "reason": "sightline to Zamenhofstraat crosses 0363100012080002"
+  },
+  {
+   "pandId": "0363100012090581",
+   "reason": "sightline to Zamenhofstraat crosses 0363100012085003"
+  },
+  {
+   "pandId": "0363100012090940",
+   "reason": "frontage 48.6 m from Zamenhofstraat"
+  },
+  {
+   "pandId": "0363100012091651",
+   "reason": "no frontage on Zamenhofstraat: No footprint edge faces Zamenhofstraat"
+  },
+  {
+   "pandId": "0363100012091925",
+   "reason": "sightline to Zamenhofstraat crosses 0363100012076219"
+  },
+  {
+   "pandId": "0363100012098271",
+   "reason": "no frontage on Zamenhofstraat: No footprint edge faces Zamenhofstraat"
+  },
+  {
+   "pandId": "0363100012100514",
+   "reason": "frontage 37.9 m from Zamenhofstraat"
+  },
+  {
+   "pandId": "0363100012102078",
+   "reason": "frontage 48.2 m from Zamenhofstraat"
+  },
+  {
+   "pandId": "0363100012102252",
+   "reason": "sightline to Zamenhofstraat crosses 0363100012122571"
+  },
+  {
+   "pandId": "0363100012063241",
+   "reason": "sightline to Zamenhofstraat crosses 0363100012067531"
+  },
+  {
+   "pandId": "0363100012065836",
+   "reason": "frontage 53.5 m from Zamenhofstraat"
+  },
+  {
+   "pandId": "0363100012067236",
+   "reason": "no frontage on Zamenhofstraat: No footprint edge faces Zamenhofstraat"
+  },
+  {
+   "pandId": "0363100012073659",
+   "reason": "frontage 71.2 m from Zamenhofstraat"
+  },
+  {
+   "pandId": "0363100012075795",
+   "reason": "frontage 37.3 m from Zamenhofstraat"
+  },
+  {
+   "pandId": "0363100012078328",
+   "reason": "frontage 52.8 m from Zamenhofstraat"
+  },
+  {
+   "pandId": "0363100012079731",
+   "reason": "frontage 84.1 m from Zamenhofstraat"
+  },
+  {
+   "pandId": "0363100012081976",
+   "reason": "frontage 85.0 m from Zamenhofstraat"
+  },
+  {
+   "pandId": "0363100012083374",
+   "reason": "frontage 38.6 m from Zamenhofstraat"
+  },
+  {
+   "pandId": "0363100012090616",
+   "reason": "frontage 72.9 m from Zamenhofstraat"
+  },
+  {
+   "pandId": "0363100012091400",
+   "reason": "frontage 48.6 m from Zamenhofstraat"
+  },
+  {
+   "pandId": "0363100012093588",
+   "reason": "frontage 37.3 m from Zamenhofstraat"
+  },
+  {
+   "pandId": "0363100012094056",
+   "reason": "sightline to Zamenhofstraat crosses 0363100012129583"
+  },
+  {
+   "pandId": "0363100012097236",
+   "reason": "no frontage on Zamenhofstraat: No footprint edge faces Zamenhofstraat"
+  },
+  {
+   "pandId": "0363100012101772",
+   "reason": "sightline to Zamenhofstraat crosses 0363100012131550"
+  },
+  {
+   "pandId": "0363100012103994",
+   "reason": "frontage 55.6 m from Zamenhofstraat"
+  },
+  {
+   "pandId": "0363100012106420",
+   "reason": "frontage 42.5 m from Zamenhofstraat"
+  },
+  {
+   "pandId": "0363100012070792",
+   "reason": "no frontage on Zamenhofstraat: No footprint edge faces Zamenhofstraat"
+  },
+  {
+   "pandId": "0363100012095622",
+   "reason": "frontage 94.2 m from Zamenhofstraat"
+  },
+  {
+   "pandId": "0363100012100380",
+   "reason": "no frontage on Zamenhofstraat: No footprint edge faces Zamenhofstraat"
+  },
+  {
+   "pandId": "0363100012095789",
+   "reason": "frontage 85.7 m from Zamenhofstraat"
+  },
+  {
+   "pandId": "0363100012118818",
+   "reason": "frontage 78.0 m from Zamenhofstraat"
+  },
+  {
+   "pandId": "0363100012118959",
+   "reason": "no frontage on Zamenhofstraat: No footprint edge faces Zamenhofstraat"
+  },
+  {
+   "pandId": "0363100012123838",
+   "reason": "sightline to Zamenhofstraat crosses 0363100012131550"
+  },
+  {
+   "pandId": "0363100012124451",
+   "reason": "frontage 45.1 m from Zamenhofstraat"
+  },
+  {
+   "pandId": "0363100012134122",
+   "reason": "frontage 59.3 m from Zamenhofstraat"
+  },
+  {
+   "pandId": "0363100012139180",
+   "reason": "frontage 80.1 m from Zamenhofstraat"
+  },
+  {
+   "pandId": "0363100012139467",
+   "reason": "sightline to Zamenhofstraat crosses 0363100012102252"
+  },
+  {
+   "pandId": "0363100012141291",
+   "reason": "sightline to Zamenhofstraat crosses 0363100012102252"
+  },
+  {
+   "pandId": "0363100012108489",
+   "reason": "no frontage on Zamenhofstraat: No footprint edge faces Zamenhofstraat"
+  },
+  {
+   "pandId": "0363100012109169",
+   "reason": "frontage 39.6 m from Zamenhofstraat"
+  },
+  {
+   "pandId": "0363100012110100",
+   "reason": "no frontage on Zamenhofstraat: No footprint edge faces Zamenhofstraat"
+  },
+  {
+   "pandId": "0363100012111139",
+   "reason": "no frontage on Zamenhofstraat: No footprint edge faces Zamenhofstraat"
+  },
+  {
+   "pandId": "0363100012111907",
+   "reason": "no frontage on Zamenhofstraat: No footprint edge faces Zamenhofstraat"
+  },
+  {
+   "pandId": "0363100012116965",
+   "reason": "sightline to Zamenhofstraat crosses 0363100012111314"
+  },
+  {
+   "pandId": "0363100012118636",
+   "reason": "frontage 47.8 m from Zamenhofstraat"
+  },
+  {
+   "pandId": "0363100012120169",
+   "reason": "no frontage on Zamenhofstraat: No footprint edge faces Zamenhofstraat"
+  },
+  {
+   "pandId": "0363100012121047",
+   "reason": "sightline to Zamenhofstraat crosses 0363100012062910"
+  },
+  {
+   "pandId": "0363100012121063",
+   "reason": "sightline to Zamenhofstraat crosses 0363100012067081"
+  },
+  {
+   "pandId": "0363100012121416",
+   "reason": "sightline to Zamenhofstraat crosses 0363100012111314"
+  },
+  {
+   "pandId": "0363100012122155",
+   "reason": "no frontage on Zamenhofstraat: No footprint edge faces Zamenhofstraat"
+  },
+  {
+   "pandId": "0363100012122579",
+   "reason": "frontage 38.2 m from Zamenhofstraat"
+  },
+  {
+   "pandId": "0363100012122702",
+   "reason": "frontage 76.1 m from Zamenhofstraat"
+  },
+  {
+   "pandId": "0363100012123001",
+   "reason": "sightline to Zamenhofstraat crosses 0363100012122155"
+  },
+  {
+   "pandId": "0363100012123947",
+   "reason": "frontage 80.6 m from Zamenhofstraat"
+  },
+  {
+   "pandId": "0363100012124242",
+   "reason": "frontage 71.6 m from Zamenhofstraat"
+  },
+  {
+   "pandId": "0363100012127132",
+   "reason": "frontage 74.5 m from Zamenhofstraat"
+  },
+  {
+   "pandId": "0363100012128397",
+   "reason": "sightline to Zamenhofstraat crosses 0363100012067531"
+  },
+  {
+   "pandId": "0363100012131550",
+   "reason": "no frontage on Zamenhofstraat: No footprint edge faces Zamenhofstraat"
+  },
+  {
+   "pandId": "0363100012132959",
+   "reason": "sightline to Zamenhofstraat crosses 0363100012147525"
+  },
+  {
+   "pandId": "0363100012133462",
+   "reason": "sightline to Zamenhofstraat crosses 0363100012123001"
+  },
+  {
+   "pandId": "0363100012137810",
+   "reason": "no frontage on Zamenhofstraat: No footprint edge faces Zamenhofstraat"
+  },
+  {
+   "pandId": "0363100012138008",
+   "reason": "frontage 43.7 m from Zamenhofstraat"
+  },
+  {
+   "pandId": "0363100012139381",
+   "reason": "frontage 94.1 m from Zamenhofstraat"
+  },
+  {
+   "pandId": "0363100012141706",
+   "reason": "sightline to Zamenhofstraat crosses 0363100012067531"
+  },
+  {
+   "pandId": "0363100012144274",
+   "reason": "sightline to Zamenhofstraat crosses 0363100012067531"
+  },
+  {
+   "pandId": "0363100012144429",
+   "reason": "frontage 59.6 m from Zamenhofstraat"
+  },
+  {
+   "pandId": "0363100012145652",
+   "reason": "sightline to Zamenhofstraat crosses 0363100012122155"
+  },
+  {
+   "pandId": "0363100012114907",
+   "reason": "no frontage on Zamenhofstraat: No footprint edge faces Zamenhofstraat"
+  },
+  {
+   "pandId": "0363100012129699",
+   "reason": "frontage 89.2 m from Zamenhofstraat"
+  },
+  {
+   "pandId": "0363100012110901",
+   "reason": "frontage 86.2 m from Zamenhofstraat"
+  },
+  {
+   "pandId": "0363100012147843",
+   "reason": "no frontage on Zamenhofstraat: No footprint edge faces Zamenhofstraat"
+  },
+  {
+   "pandId": "0363100012151554",
+   "reason": "sightline to Zamenhofstraat crosses 0363100012102252"
+  },
+  {
+   "pandId": "0363100012154722",
+   "reason": "frontage 41.2 m from Zamenhofstraat"
+  },
+  {
+   "pandId": "0363100012188201",
+   "reason": "frontage 44.2 m from Zamenhofstraat"
+  },
+  {
+   "pandId": "0363100012188202",
+   "reason": "frontage 45.9 m from Zamenhofstraat"
+  },
+  {
+   "pandId": "0363100012188203",
+   "reason": "no frontage on Zamenhofstraat: No footprint edge faces Zamenhofstraat"
+  },
+  {
+   "pandId": "0363100012188204",
+   "reason": "no frontage on Zamenhofstraat: No footprint edge faces Zamenhofstraat"
+  },
+  {
+   "pandId": "0363100012188207",
+   "reason": "no frontage on Zamenhofstraat: No footprint edge faces Zamenhofstraat"
+  },
+  {
+   "pandId": "0363100012188208",
+   "reason": "no frontage on Zamenhofstraat: No footprint edge faces Zamenhofstraat"
+  },
+  {
+   "pandId": "0363100012188211",
+   "reason": "sightline to Zamenhofstraat crosses 0363100012188210"
+  },
+  {
+   "pandId": "0363100012188214",
+   "reason": "frontage 42.1 m from Zamenhofstraat"
+  },
+  {
+   "pandId": "0363100012188216",
+   "reason": "frontage 39.7 m from Zamenhofstraat"
+  },
+  {
+   "pandId": "0363100012188217",
+   "reason": "frontage 39.8 m from Zamenhofstraat"
+  },
+  {
+   "pandId": "0363100012188218",
+   "reason": "frontage 43.4 m from Zamenhofstraat"
+  },
+  {
+   "pandId": "0363100012188219",
+   "reason": "frontage 45.0 m from Zamenhofstraat"
+  },
+  {
+   "pandId": "0363100012147035",
+   "reason": "no frontage on Zamenhofstraat: No footprint edge faces Zamenhofstraat"
+  },
+  {
+   "pandId": "0363100012147250",
+   "reason": "frontage 89.5 m from Zamenhofstraat"
+  },
+  {
+   "pandId": "0363100012150433",
+   "reason": "frontage 53.3 m from Zamenhofstraat"
+  },
+  {
+   "pandId": "0363100012185782",
+   "reason": "no frontage on Zamenhofstraat: No footprint edge faces Zamenhofstraat"
+  },
+  {
+   "pandId": "0363100012147742",
+   "reason": "no frontage on Zamenhofstraat: No footprint edge faces Zamenhofstraat"
+  },
+  {
+   "pandId": "0363100012078281",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012080475",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012080989",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012101216",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012101771",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012108165",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012114430",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012124024",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012126991",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012135860",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012138583",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012161061",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012188210",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012217425",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012158267",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012064115",
+   "alongM": -15,
+   "widthM": 5,
+   "eavesM": 4.1,
+   "roofMaxM": 7.18,
+   "storeys3dbag": 2,
+   "builtYear": 1918,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012122427",
+   "alongM": -10,
+   "widthM": 5,
+   "eavesM": 4.48,
+   "roofMaxM": 7.17,
+   "storeys3dbag": 2,
+   "builtYear": 1918,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012085003",
+   "alongM": -5,
+   "widthM": 5,
+   "eavesM": 4.09,
+   "roofMaxM": 7.24,
+   "storeys3dbag": 2,
+   "builtYear": 1918,
+   "uncertainty": []
+  }
+ ],
+ "runOf": "zamenhof-6-12"
+}

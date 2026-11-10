@@ -1,0 +1,807 @@
+{
+ "face": "flamingo-14-28",
+ "street": "Flamingostraat",
+ "library": "vogelbuurt",
+ "stripDate": "2025-09-22",
+ "seconds": 8.87,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [
+  {
+   "face": "flamingo-14-28-r1",
+   "pands": [
+    "0363100012070462",
+    "0363100012098790",
+    "0363100012092344"
+   ],
+   "passed": false,
+   "triangles": 1901
+  },
+  {
+   "face": "flamingo-14-28-r2",
+   "pands": [
+    "0363100012141395",
+    "0363100012120930"
+   ],
+   "passed": false,
+   "triangles": 1181
+  }
+ ],
+ "pands": [
+  {
+   "pandId": "0363100012070462",
+   "address": "Flamingostraat 28",
+   "builtYear": 1921,
+   "widthM": 6.37,
+   "eavesM": 6.84,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#433b35",
+    "wallRaw": "#403d3a",
+    "skyline": {
+     "eavesM": 12.9,
+     "eavesRow": 40,
+     "confidence": 0.57,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "curtain",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.88 m at 0.14 (light 0.17): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.88,
+       "centre": 0.14,
+       "light": 0.17
+      },
+      {
+       "widthM": 1.07,
+       "centre": 0.54,
+       "light": 0.19
+      },
+      {
+       "widthM": 0.9,
+       "centre": 0.72,
+       "light": 0.18
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "placed",
+   "type": "vogel-1921-two-storey-dormer-row",
+   "score": 0.84,
+   "placement": {
+    "type": "vogel-1921-two-storey-dormer-row",
+    "measuredPalette": {
+     "brick": "#433b35",
+     "evidence": "strip 2025-09-22 span 0-255: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "door left",
+    "crown flat-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012070462",
+    "ncc": 0.288,
+    "nccRaw": 0.288,
+    "shiftM": [
+     -0.15,
+     -0.2
+    ],
+    "usable": 0.99,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.18 mean 0.33 vs photo 0.51"
+    ],
+    "wall": {
+     "photo": "#3e3934",
+     "model": "#5e534b",
+     "dL": 0.108
+    },
+    "glazing": {
+     "photo": 0.51,
+     "model": 0.33
+    },
+    "columns": {
+     "photo": null,
+     "model": 3
+    },
+    "iou": 0.531
+   },
+   "challengers": {
+    "vogel-1921-two-storey-dormer-row": 0.281,
+    "vogel-1921-two-storey-dormer-row~m": -0.014
+   }
+  },
+  {
+   "pandId": "0363100012098790",
+   "address": "Flamingostraat 26",
+   "builtYear": 1921,
+   "widthM": 6.39,
+   "eavesM": 7.03,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#423b36",
+    "wallRaw": "#45413d",
+    "skyline": {
+     "eavesM": 12.88,
+     "eavesRow": 41,
+     "confidence": 0.69,
+     "crown": {
+      "widthM": 1.13,
+      "riseM": 1.03,
+      "topWidthM": 0.65,
+      "centre": 0.56
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "curtain",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.85 m at 0.14 (light 0.12): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.85,
+       "centre": 0.14,
+       "light": 0.12
+      },
+      {
+       "widthM": 2.67,
+       "centre": 0.67,
+       "light": 0.16
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "placed",
+   "type": "vogel-1921-two-storey-dormer-row",
+   "score": 0.84,
+   "placement": {
+    "type": "vogel-1921-two-storey-dormer-row",
+    "measuredPalette": {
+     "brick": "#423b36",
+     "evidence": "strip 2025-09-22 span 255-510: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "door left",
+    "crown flat-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012098790",
+    "ncc": 0.221,
+    "nccRaw": 0.221,
+    "shiftM": [
+     -0.2,
+     -0.4
+    ],
+    "usable": 0.97,
+    "abstain": null,
+    "verdict": "WARN",
+    "reasons": [
+     "mask IoU 0.388 < 0.45"
+    ],
+    "wall": {
+     "photo": "#3e3935",
+     "model": "#5d534c",
+     "dL": 0.106
+    },
+    "glazing": {
+     "photo": 0.36,
+     "model": 0.36
+    },
+    "columns": {
+     "photo": null,
+     "model": null
+    },
+    "iou": 0.388
+   },
+   "challengers": {
+    "vogel-1921-two-storey-dormer-row": 0.232,
+    "vogel-1921-two-storey-dormer-row~m": 0.07
+   }
+  },
+  {
+   "pandId": "0363100012092344",
+   "address": "Flamingostraat 24",
+   "builtYear": 1921,
+   "widthM": 6.31,
+   "eavesM": 7.2,
+   "storeys3dbag": 3,
+   "bagBay": {
+    "fromM": 0,
+    "toM": 3.13,
+    "depthM": 0.53,
+    "centre": 0.248,
+    "lineRD": [
+     [
+      123474.34875,
+      489140.7275
+     ],
+     [
+      123472.75375,
+      489135.0565
+     ]
+    ]
+   },
+   "strip": {
+    "wall": "#3e3b39",
+    "wallRaw": "#464443",
+    "skyline": {
+     "eavesM": 12.15,
+     "eavesRow": 70,
+     "confidence": 0.66,
+     "crown": {
+      "widthM": 0.68,
+      "riseM": 1.42,
+      "topWidthM": 0.57,
+      "centre": 0.06
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.7 m at 0.14 (light 0.1): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.7,
+       "centre": 0.14,
+       "light": 0.1
+      },
+      {
+       "widthM": 2.17,
+       "centre": 0.65,
+       "light": 0.2
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "placed",
+   "type": "vogel-1921-two-storey-dormer-row",
+   "score": 1,
+   "placement": {
+    "type": "vogel-1921-two-storey-dormer-row",
+    "measuredPalette": {
+     "brick": "#3e3b39",
+     "evidence": "strip 2025-09-22 span 510-762: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "crown": "step-gable"
+   },
+   "notes": [
+    "door left",
+    "crown step-gable: reviewer pin (Flamingostraat 24: strip: a pointed brick gable end of the block (apex about 12.6 m, one window in the gable), not a dormer house)"
+   ],
+   "likeness": {
+    "pandId": "0363100012092344",
+    "ncc": 0.35,
+    "nccRaw": 0.35,
+    "shiftM": [
+     -0.1,
+     -0.15
+    ],
+    "usable": 1,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.21 mean 0.38 vs photo 0.55"
+    ],
+    "wall": {
+     "photo": "#3e3c3a",
+     "model": "#585351",
+     "dL": 0.096
+    },
+    "glazing": {
+     "photo": 0.55,
+     "model": 0.38
+    },
+    "columns": {
+     "photo": null,
+     "model": 3
+    },
+    "iou": 0.391
+   },
+   "challengers": {
+    "vogel-1921-two-storey-dormer-row": 0.353,
+    "vogel-1921-two-storey-dormer-row~m": 0.258
+   }
+  },
+  {
+   "pandId": "0363100012137809",
+   "address": "Flamingostraat 22",
+   "builtYear": 1921,
+   "widthM": 6.66,
+   "eavesM": 6.92,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#433f3a",
+    "wallRaw": "#44413e",
+    "skyline": {
+     "eavesM": 12.88,
+     "eavesRow": 41,
+     "confidence": 0.48,
+     "crown": {
+      "widthM": 0.93,
+      "riseM": 1.03,
+      "topWidthM": 0.15,
+      "centre": 0.7
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.88 m at 0.16 (light 0.11): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.88,
+       "centre": 0.16,
+       "light": 0.11
+      },
+      {
+       "widthM": 2.52,
+       "centre": 0.66,
+       "light": 0.19
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.14 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.27 mean 0.34 vs photo 0.57)",
+   "likeness": {
+    "pandId": "0363100012137809",
+    "ncc": 0.14,
+    "nccRaw": 0.14,
+    "shiftM": [
+     -0.15,
+     -0.05
+    ],
+    "usable": 0.99,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.27 mean 0.34 vs photo 0.57"
+    ],
+    "wall": {
+     "photo": "#4a4541",
+     "model": "#5d5851",
+     "dL": 0.069
+    },
+    "glazing": {
+     "photo": 0.57,
+     "model": 0.34
+    },
+    "columns": {
+     "photo": null,
+     "model": null
+    },
+    "iou": 0.396
+   },
+   "challengers": {
+    "vogel-1921-two-storey-dormer-row": 0.14,
+    "vogel-1921-two-storey-dormer-row~m": 0.115
+   }
+  },
+  {
+   "pandId": "0363100012069013",
+   "address": "Flamingostraat 20",
+   "builtYear": 1921,
+   "widthM": 6.36,
+   "eavesM": 6.92,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#3d3b38",
+    "wallRaw": "#474644",
+    "skyline": {
+     "eavesM": 12.6,
+     "eavesRow": 52,
+     "confidence": 0.71,
+     "crown": {
+      "widthM": 0.5,
+      "riseM": 1.3,
+      "topWidthM": 0.4,
+      "centre": 0.85
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.88 m at 0.12 (light 0.17): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.88,
+       "centre": 0.12,
+       "light": 0.17
+      },
+      {
+       "widthM": 1.27,
+       "centre": 0.54,
+       "light": 0.24
+      },
+      {
+       "widthM": 1.32,
+       "centre": 0.77,
+       "light": 0.18
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC -0.048 < 0.15 (photo vs model body; likeness.ts WARN: mask IoU 0.223 < 0.45)",
+   "likeness": {
+    "pandId": "0363100012069013",
+    "ncc": -0.048,
+    "nccRaw": -0.048,
+    "shiftM": [
+     -0.4,
+     0.4
+    ],
+    "usable": 0.95,
+    "abstain": null,
+    "verdict": "WARN",
+    "reasons": [
+     "mask IoU 0.223 < 0.45"
+    ],
+    "wall": {
+     "photo": "#3c3b38",
+     "model": "#575450",
+     "dL": 0.1
+    },
+    "glazing": {
+     "photo": 0.31,
+     "model": 0.34
+    },
+    "columns": {
+     "photo": null,
+     "model": null
+    },
+    "iou": 0.223
+   },
+   "challengers": {
+    "vogel-1921-two-storey-dormer-row~m": -0.048,
+    "vogel-1921-two-storey-dormer-row": 0.292
+   }
+  },
+  {
+   "pandId": "0363100012141395",
+   "address": "Flamingostraat 18",
+   "builtYear": 1921,
+   "widthM": 6.41,
+   "eavesM": 7.55,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#3a3a3a",
+    "wallRaw": "#454544",
+    "skyline": {
+     "eavesM": 12.6,
+     "eavesRow": 52,
+     "confidence": 0.68,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.88 m at 0.63 (light 0.29): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.88,
+       "centre": 0.63,
+       "light": 0.29
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "placed",
+   "type": "vogel-1921-two-storey-dormer-row",
+   "score": 1,
+   "placement": {
+    "type": "vogel-1921-two-storey-dormer-row",
+    "measuredPalette": {
+     "brick": "#3a3a3a",
+     "evidence": "strip 2025-09-22 span 1283-1539: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "crown": "step-gable"
+   },
+   "notes": [
+    "door unread: as drawn, the opposite of 069013",
+    "crown step-gable: reviewer pin (Flamingostraat 18: strip: a pointed brick gable end of the block (apex about 12.6 m, one window in the gable), not a dormer house)"
+   ],
+   "likeness": {
+    "pandId": "0363100012141395",
+    "ncc": 0.39,
+    "nccRaw": 0.39,
+    "shiftM": [
+     -0.25,
+     -0.2
+    ],
+    "usable": 1,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.46 mean 0.38 vs photo 0.79"
+    ],
+    "wall": {
+     "photo": "#373839",
+     "model": "#535353",
+     "dL": 0.106
+    },
+    "glazing": {
+     "photo": 0.79,
+     "model": 0.38
+    },
+    "columns": {
+     "photo": null,
+     "model": null
+    },
+    "iou": 0.45
+   },
+   "challengers": {
+    "vogel-1921-two-storey-dormer-row": 0.379,
+    "vogel-1921-two-storey-dormer-row~m": 0.269
+   }
+  },
+  {
+   "pandId": "0363100012120930",
+   "address": "Flamingostraat 16",
+   "builtYear": 1921,
+   "widthM": 6.41,
+   "eavesM": 6.88,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#433f3c",
+    "wallRaw": "#4f4d4a",
+    "skyline": {
+     "eavesM": 8.65,
+     "eavesRow": 210,
+     "confidence": 0.92,
+     "crown": {
+      "widthM": 1.1,
+      "riseM": 3.7,
+      "topWidthM": 0.63,
+      "centre": 0.39
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 6,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 1.55 m at 0.57 (light 0.19): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.55,
+       "centre": 0.57,
+       "light": 0.19
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "placed",
+   "type": "vogel-1921-two-storey-dormer-row",
+   "score": 0.73,
+   "placement": {
+    "type": "vogel-1921-two-storey-dormer-row",
+    "measuredPalette": {
+     "brick": "#433f3c",
+     "evidence": "strip 2025-09-22 span 1539-1795: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "door left",
+    "crown flat-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012120930",
+    "ncc": 0.317,
+    "nccRaw": 0.317,
+    "shiftM": [
+     -0.25,
+     -0.4
+    ],
+    "usable": 0.95,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.15",
+     "window shape none vs photo square",
+     "columns none vs photo 2"
+    ],
+    "wall": {
+     "photo": "#44413e",
+     "model": "#5d5753",
+     "dL": 0.09
+    },
+    "glazing": {
+     "photo": 0.41,
+     "model": 0.34
+    },
+    "columns": {
+     "photo": 2,
+     "model": null
+    },
+    "iou": 0.33
+   },
+   "challengers": {
+    "vogel-1921-two-storey-dormer-row": 0.309,
+    "vogel-1921-two-storey-dormer-row~m": 0.148
+   }
+  },
+  {
+   "pandId": "0363100012148040",
+   "address": "Flamingostraat 14",
+   "builtYear": 1921,
+   "widthM": 6.17,
+   "eavesM": 6.88,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#45413e",
+    "wallRaw": "#4c4a47",
+    "skyline": {
+     "eavesM": 8.78,
+     "eavesRow": 205,
+     "confidence": 0.95,
+     "crown": {
+      "widthM": 0.78,
+      "riseM": 4.9,
+      "topWidthM": 0.05,
+      "centre": 0.16
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 2.1 m at 0.26 (light 0.25): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 2.1,
+       "centre": 0.26,
+       "light": 0.25
+      },
+      {
+       "widthM": 0.8,
+       "centre": 0.85,
+       "light": 0.08
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.072 < 0.15 (photo vs model body; likeness.ts WARN: mask IoU 0.2 < 0.45)",
+   "likeness": {
+    "pandId": "0363100012148040",
+    "ncc": 0.072,
+    "nccRaw": 0.072,
+    "shiftM": [
+     -0.2,
+     -0.4
+    ],
+    "usable": 0.95,
+    "abstain": null,
+    "verdict": "WARN",
+    "reasons": [
+     "mask IoU 0.2 < 0.45"
+    ],
+    "wall": {
+     "photo": "#45413e",
+     "model": "#5e5955",
+     "dL": 0.094
+    },
+    "glazing": {
+     "photo": 0.29,
+     "model": 0.34
+    },
+    "columns": {
+     "photo": null,
+     "model": null
+    },
+    "iou": 0.2
+   },
+   "challengers": {
+    "vogel-1921-two-storey-dormer-row": 0.072,
+    "vogel-1921-two-storey-dormer-row~m": 0.295
+   }
+  }
+ ]
+}

@@ -1,0 +1,156 @@
+{
+ "face": "zamenhof-84-90-r1",
+ "image": "staging/block-face/zamenhof-84-90-r1/strip.jpg",
+ "pixelsPerMetre": 40,
+ "width": 600,
+ "height": 366,
+ "groundNAP": 0.931,
+ "heightM": 9.16,
+ "frame": {
+  "midRD": [
+   123831.78795833334,
+   488942.8216666667
+  ],
+  "uRD": [
+   -0.8436367854487846,
+   0.5369143080954739
+  ],
+  "nRD": [
+   0.5369143080954739,
+   0.8436367854487846
+  ]
+ },
+ "x0M": -7.5,
+ "x1M": 7.5,
+ "date": "2025-09-22",
+ "coverage": 1,
+ "spans": [
+  {
+   "pandId": "0363100012130936",
+   "x0M": -7.5,
+   "x1M": -2.5,
+   "px": [
+    0,
+    200
+   ],
+   "date": "2025-09-22",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "recording_2025-09-22_10-53-43_00706",
+     "timestamp": "2025-09-22T11:11:44Z",
+     "distanceM": 5.8,
+     "obliquityDeg": 2.1,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "recording_2025-09-22_10-53-43_00707",
+     "timestamp": "2025-09-22T11:11:44Z",
+     "distanceM": 7.4,
+     "obliquityDeg": 40,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "recording_2025-09-22_10-53-43_00699",
+     "timestamp": "2025-09-22T11:11:23Z",
+     "distanceM": 7.7,
+     "obliquityDeg": 42.4,
+     "missingFraction": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012118660",
+   "x0M": -2.5,
+   "x1M": 2.5,
+   "px": [
+    200,
+    400
+   ],
+   "date": "2025-09-22",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "recording_2025-09-22_10-53-43_00707",
+     "timestamp": "2025-09-22T11:11:44Z",
+     "distanceM": 5.7,
+     "obliquityDeg": 2.1,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "recording_2025-09-22_10-53-43_00708",
+     "timestamp": "2025-09-22T11:11:45Z",
+     "distanceM": 7.4,
+     "obliquityDeg": 40.2,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "recording_2025-09-22_10-53-43_00706",
+     "timestamp": "2025-09-22T11:11:44Z",
+     "distanceM": 7.8,
+     "obliquityDeg": 42.1,
+     "missingFraction": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012141264",
+   "x0M": 2.5,
+   "x1M": 7.5,
+   "px": [
+    400,
+    600
+   ],
+   "date": "2025-09-22",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "recording_2025-09-22_10-53-43_00708",
+     "timestamp": "2025-09-22T11:11:45Z",
+     "distanceM": 5.7,
+     "obliquityDeg": 2.1,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "recording_2025-09-22_10-53-43_00709",
+     "timestamp": "2025-09-22T11:11:46Z",
+     "distanceM": 7.4,
+     "obliquityDeg": 40.3,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "recording_2025-09-22_10-53-43_00707",
+     "timestamp": "2025-09-22T11:11:44Z",
+     "distanceM": 7.7,
+     "obliquityDeg": 42.4,
+     "missingFraction": 0
+    }
+   ]
+  }
+ ],
+ "candidatesByDate": {
+  "2020-05-29": 4,
+  "2016-05-24": 4,
+  "2018-07-30": 4,
+  "2021-09-20": 4,
+  "2024-09-10": 4,
+  "2021-06-15": 4,
+  "2017-05-15": 2,
+  "2022-05-10": 4,
+  "2025-09-22": 4,
+  "2016-08-16": 4,
+  "2019-06-28": 4,
+  "2018-07-24": 0,
+  "2024-10-22": 0,
+  "2019-11-15": 0
+ },
+ "description": "Rectified orthographic elevation of the whole face on the frontage planes: x = chunk-frame metres along the face (left→right seen from the street) from x0M, y = metres above the shared ground (groundNAP) from the bottom; grey = no panorama data. Per-pand spans list the panoramas median-fused for that frontage.",
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (CC BY 4.0; faces and number plates blurred by the publisher)",
+ "croppedFrom": {
+  "face": "zamenhof-84-90",
+  "px": [
+   0,
+   600
+  ]
+ }
+}

@@ -1,0 +1,508 @@
+{
+ "face": "vogel-18-32",
+ "street": "Lange Vogelstraat",
+ "library": "vogelbuurt",
+ "stripDate": "2025-09-22",
+ "seconds": 0.43,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012094588",
+   "address": "Lange Vogelstraat 32",
+   "builtYear": 1919,
+   "widthM": 5,
+   "eavesM": 4.25,
+   "storeys3dbag": 2,
+   "bagBay": null,
+   "strip": {
+    "wall": "#8f7e7c",
+    "wallRaw": "#555550",
+    "skyline": {
+     "eavesM": 6.3,
+     "eavesRow": 116,
+     "confidence": 0.37,
+     "crown": {
+      "widthM": 0.88,
+      "riseM": 2.35,
+      "topWidthM": 0.28,
+      "centre": 0.75
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 4,
+    "frontClass": "ribbon",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "one-storey front (eaves <= 6 m): no balcony",
+     "openAxes": [
+      {
+       "widthM": 0.75,
+       "centre": 0.5,
+       "light": 0.11
+      },
+      {
+       "widthM": 0.75,
+       "centre": 0.92,
+       "light": 0.19
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 3.13,
+       "widthM": 1.25,
+       "centre": 0.86
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.1
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best vogel-1918-timber-band-cottage scores 0.67 < 0.7 (strip columns 4 vs 2 bays)",
+   "best": {
+    "type": "vogel-1918-timber-band-cottage",
+    "score": 0.67,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": null,
+      "note": "strip cornice unread (type line 4.1 m; 3DBAG 4.25 m not compared)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 2 vs 0/1/2"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.007 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 4 vs 2 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012150842",
+   "address": "Lange Vogelstraat 30",
+   "builtYear": 1919,
+   "widthM": 5,
+   "eavesM": 4.72,
+   "storeys3dbag": 2,
+   "bagBay": null,
+   "strip": {
+    "wall": "#2b2e26",
+    "wallRaw": "#31382d",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 368,
+     "confidence": 0.04,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "curtain",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "one-storey front (eaves <= 6 m): no balcony",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.45
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "no front on the strip: sky over the roof in 7 % of columns (< 75 %): the strip shows a nearer wall, fence or tree, not the front",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012104208",
+   "address": "Lange Vogelstraat 28",
+   "builtYear": 1918,
+   "widthM": 5,
+   "eavesM": 4.27,
+   "storeys3dbag": 2,
+   "bagBay": null,
+   "strip": {
+    "wall": "#31332c",
+    "wallRaw": "#3a3e34",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 368,
+     "confidence": 0.07,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0.5,
+     "bayCentre": 0.78,
+     "balconies": false,
+     "why": "one-storey front (eaves <= 6 m): no balcony",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.33
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "no front on the strip: sky over the roof in 37 % of columns (< 75 %): the strip shows a nearer wall, fence or tree, not the front",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012085288",
+   "address": "Lange Vogelstraat 24",
+   "builtYear": 1919,
+   "widthM": 17.98,
+   "eavesM": 4.28,
+   "storeys3dbag": 2,
+   "bagBay": null,
+   "strip": {
+    "wall": "#454755",
+    "wallRaw": "#3e433a",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 368,
+     "confidence": 0,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0.55,
+     "bayCentre": 0.56,
+     "balconies": false,
+     "why": "one-storey front (eaves <= 6 m): no balcony",
+     "openAxes": [
+      {
+       "widthM": 0.72,
+       "centre": 0.11,
+       "light": 0.34
+      },
+      {
+       "widthM": 1.65,
+       "centre": 0.46,
+       "light": 0.3
+      },
+      {
+       "widthM": 0.72,
+       "centre": 0.57,
+       "light": 0.5
+      },
+      {
+       "widthM": 1.02,
+       "centre": 0.67,
+       "light": 0.31
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 3.23,
+       "widthM": 0.8,
+       "centre": 0.19
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.25
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "no front on the strip: sky over the roof in 0 % of columns (< 75 %): the strip shows a nearer wall, fence or tree, not the front",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012080292",
+   "address": "Lange Vogelstraat 22",
+   "builtYear": 1919,
+   "widthM": 5,
+   "eavesM": 4.31,
+   "storeys3dbag": 2,
+   "bagBay": null,
+   "strip": {
+    "wall": "#343a42",
+    "wallRaw": "#464d45",
+    "skyline": {
+     "eavesM": 7.13,
+     "eavesRow": 83,
+     "confidence": 0.59,
+     "crown": {
+      "widthM": 0.85,
+      "riseM": 2.03,
+      "topWidthM": 0.03,
+      "centre": 0.35
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 4,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 2.25,
+     "bayCentre": 0.24,
+     "balconies": false,
+     "why": "one-storey front (eaves <= 6 m): no balcony",
+     "openAxes": [
+      {
+       "widthM": 1.88,
+       "centre": 0.2,
+       "light": 0.48
+      },
+      {
+       "widthM": 0.88,
+       "centre": 0.67,
+       "light": 0.16
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 3.1,
+       "widthM": 0.82,
+       "centre": 0.63
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.09
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best vogel-1918-timber-band-cottage scores 0.67 < 0.7 (strip columns 4 vs 2 bays)",
+   "best": {
+    "type": "vogel-1918-timber-band-cottage",
+    "score": 0.67,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": null,
+      "note": "strip cornice unread (type line 4.1 m; 3DBAG 4.31 m not compared)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 2 vs 0/1/2"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.001 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 4 vs 2 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012084318",
+   "address": "Lange Vogelstraat 20",
+   "builtYear": 1919,
+   "widthM": 5,
+   "eavesM": 4.27,
+   "storeys3dbag": 2,
+   "bagBay": null,
+   "strip": {
+    "wall": "#50535a",
+    "wallRaw": "#484f45",
+    "skyline": {
+     "eavesM": 7.13,
+     "eavesRow": 83,
+     "confidence": 0.65,
+     "crown": {
+      "widthM": 0.72,
+      "riseM": 1.3,
+      "topWidthM": 0.33,
+      "centre": 0.31
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 6,
+    "frontClass": "blank",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "one-storey front (eaves <= 6 m): no balcony",
+     "openAxes": [
+      {
+       "widthM": 1.57,
+       "centre": 0.35,
+       "light": 0.21
+      },
+      {
+       "widthM": 0.95,
+       "centre": 0.74,
+       "light": 0.45
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 3.15,
+       "widthM": 1.6,
+       "centre": 0.73
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.18
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best vogel-1918-timber-band-cottage scores 0.46 < 0.7 (strip cornice 7.13 m vs the type's 4.1 m (wall-dormer skyline 6 m); strip columns 6 vs 2 bays)",
+   "best": {
+    "type": "vogel-1918-timber-band-cottage",
+    "score": 0.46,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 7.13 m vs the type's 4.1 m (wall-dormer skyline 6 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 2 vs 0/1/2"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.001 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 6 vs 2 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012137341",
+   "address": "Lange Vogelstraat 18",
+   "builtYear": 1919,
+   "widthM": 5,
+   "eavesM": 4.3,
+   "storeys3dbag": 2,
+   "bagBay": null,
+   "strip": {
+    "wall": "#5c596a",
+    "wallRaw": "#535d4f",
+    "skyline": {
+     "eavesM": 6.2,
+     "eavesRow": 120,
+     "confidence": 1,
+     "crown": {
+      "widthM": 0.5,
+      "riseM": 0.63,
+      "topWidthM": 0.5,
+      "centre": 0.58
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "one-storey front (eaves <= 6 m): no balcony",
+     "openAxes": [
+      {
+       "widthM": 0.75,
+       "centre": 0.08,
+       "light": 0.18
+      },
+      {
+       "widthM": 1.1,
+       "centre": 0.3,
+       "light": 0.22
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.5
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

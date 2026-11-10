@@ -1,0 +1,90 @@
+{
+ "face": "vogel-3-15-r1",
+ "image": "staging/block-face/vogel-3-15-r1/strip.jpg",
+ "pixelsPerMetre": 40,
+ "width": 400,
+ "height": 302,
+ "groundNAP": 0.512,
+ "heightM": 7.54,
+ "frame": {
+  "midRD": [
+   123613.73800000001,
+   488962.719625
+  ],
+  "uRD": [
+   0.5370890272744805,
+   0.8435255637983665
+  ],
+  "nRD": [
+   0.8435255637983665,
+   -0.5370890272744805
+  ]
+ },
+ "x0M": -4.57,
+ "x1M": 5.43,
+ "date": "2021-06-15",
+ "coverage": 0.5,
+ "spans": [
+  {
+   "pandId": "0363100012101772",
+   "x0M": -4.57,
+   "x1M": -0.45,
+   "px": [
+    0,
+    165
+   ],
+   "date": "2025-09-22",
+   "fallbackDate": true,
+   "panoramas": [
+    {
+     "panoId": "recording_2025-09-22_10-53-43_00873",
+     "timestamp": "2025-09-22T11:16:17Z",
+     "distanceM": 5.3,
+     "obliquityDeg": 42.2,
+     "missingFraction": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012132959",
+   "x0M": -0.45,
+   "x1M": 5.43,
+   "px": [
+    165,
+    400
+   ],
+   "date": "2025-09-22",
+   "fallbackDate": true,
+   "panoramas": [
+    {
+     "panoId": "recording_2025-09-22_10-53-43_00872",
+     "timestamp": "2025-09-22T11:16:16Z",
+     "distanceM": 5.3,
+     "obliquityDeg": 42.2,
+     "missingFraction": 0
+    }
+   ]
+  }
+ ],
+ "candidatesByDate": {
+  "2016-08-16": 0,
+  "2024-09-10": 0,
+  "2025-09-22": 0,
+  "2022-05-10": 0,
+  "2019-06-28": 0,
+  "2020-05-29": 0,
+  "2021-06-15": 1,
+  "2018-07-30": 0,
+  "2017-05-15": 0,
+  "2021-09-20": 0
+ },
+ "description": "Rectified orthographic elevation of the whole face on the frontage planes: x = chunk-frame metres along the face (left→right seen from the street) from x0M, y = metres above the shared ground (groundNAP) from the bottom; grey = no panorama data. Per-pand spans list the panoramas median-fused for that frontage.",
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (CC BY 4.0; faces and number plates blurred by the publisher)",
+ "croppedFrom": {
+  "face": "vogel-3-15",
+  "px": [
+   800,
+   1200
+  ]
+ }
+}

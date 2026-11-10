@@ -1,0 +1,156 @@
+{
+ "face": "meeuwenplein-9-19-r1",
+ "image": "staging/block-face/meeuwenplein-9-19-r1/strip.jpg",
+ "pixelsPerMetre": 40,
+ "width": 768,
+ "height": 568,
+ "groundNAP": 0.917,
+ "heightM": 14.21,
+ "frame": {
+  "midRD": [
+   123336.44925,
+   489099.7525
+  ],
+  "uRD": [
+   0.8423895373701304,
+   -0.5388690632513037
+  ],
+  "nRD": [
+   -0.5388690632513037,
+   -0.8423895373701304
+  ]
+ },
+ "x0M": -9.72,
+ "x1M": 9.48,
+ "date": "2019-11-15",
+ "coverage": 1,
+ "spans": [
+  {
+   "pandId": "0363100012074442",
+   "x0M": -9.72,
+   "x1M": -3.15,
+   "px": [
+    0,
+    263
+   ],
+   "date": "2019-11-15",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "TMX7316060226-000495_pano_0000_003889",
+     "timestamp": "2019-11-15T12:58:42.086230Z",
+     "distanceM": 8.3,
+     "obliquityDeg": 7.3,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316060226-000495_pano_0000_003888",
+     "timestamp": "2019-11-15T12:58:41.421260Z",
+     "distanceM": 9.2,
+     "obliquityDeg": 25.2,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316060226-000495_pano_0000_003890",
+     "timestamp": "2019-11-15T12:58:42.726200Z",
+     "distanceM": 10.2,
+     "obliquityDeg": 36.1,
+     "missingFraction": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012140709",
+   "x0M": -3.15,
+   "x1M": 3.25,
+   "px": [
+    263,
+    519
+   ],
+   "date": "2019-11-15",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "TMX7316060226-000495_pano_0000_003890",
+     "timestamp": "2019-11-15T12:58:42.726200Z",
+     "distanceM": 8.3,
+     "obliquityDeg": 3.1,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316060226-000495_pano_0000_003891",
+     "timestamp": "2019-11-15T12:58:43.356210Z",
+     "distanceM": 9.5,
+     "obliquityDeg": 28.5,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316060226-000495_pano_0000_003889",
+     "timestamp": "2019-11-15T12:58:42.086230Z",
+     "distanceM": 9.9,
+     "obliquityDeg": 33.3,
+     "missingFraction": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012116850",
+   "x0M": 3.25,
+   "x1M": 9.48,
+   "px": [
+    519,
+    768
+   ],
+   "date": "2019-11-15",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "TMX7316060226-000495_pano_0000_003891",
+     "timestamp": "2019-11-15T12:58:43.356210Z",
+     "distanceM": 8.6,
+     "obliquityDeg": 12,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316060226-000495_pano_0000_003892",
+     "timestamp": "2019-11-15T12:58:43.996280Z",
+     "distanceM": 9.1,
+     "obliquityDeg": 20.8,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316060226-000495_pano_0000_003890",
+     "timestamp": "2019-11-15T12:58:42.726200Z",
+     "distanceM": 10.7,
+     "obliquityDeg": 39.2,
+     "missingFraction": 0
+    }
+   ]
+  }
+ ],
+ "candidatesByDate": {
+  "2019-11-15": 6,
+  "2016-08-05": 6,
+  "2018-07-30": 6,
+  "2025-09-22": 6,
+  "2019-06-28": 6,
+  "2024-09-10": 6,
+  "2020-06-02": 6,
+  "2017-05-15": 6,
+  "2021-06-17": 6,
+  "2022-05-11": 0,
+  "2022-10-03": 0,
+  "2017-12-28": 0,
+  "2025-06-30": 0,
+  "2017-05-18": 0
+ },
+ "description": "Rectified orthographic elevation of the whole face on the frontage planes: x = chunk-frame metres along the face (left→right seen from the street) from x0M, y = metres above the shared ground (groundNAP) from the bottom; grey = no panorama data. Per-pand spans list the panoramas median-fused for that frontage.",
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (CC BY 4.0; faces and number plates blurred by the publisher)",
+ "croppedFrom": {
+  "face": "meeuwenplein-9-19",
+  "px": [
+   0,
+   768
+  ]
+ }
+}
