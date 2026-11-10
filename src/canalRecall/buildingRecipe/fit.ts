@@ -28,6 +28,7 @@ import {gableOrnaments} from './gableOrnament.ts';
 import {entablatureCornice} from './entablature.ts';
 import type {CanalhouseOrnament} from '../canalhouseRecipes.ts';
 import {rosetteOrnaments, rosettesInPlaceOfWindows} from './rosettes.ts';
+import {planStoop, stoopBlocks, type StoopPlan} from './stoop.ts';
 
 export const ROOF_COLOURS: Record<CanalHouseIntent['roof']['material'], {steep: string; low: string; flat: string}> = {
   slate: {steep: '#3b4047', low: '#4b5056', flat: '#6a6c6c'},
@@ -149,6 +150,8 @@ export interface FitReport {
     balconyRun?: {widthM: number; floorM: number; projectM: number; slabM: number; guard: 'iron' | 'brick'; guardM: number; slabColour?: string};
     /** Timber balconies on brackets (facade x): one per storey run of neighbouring balcony bays; `floorM` = platform top. */
     timberBalconies?: {id: string; leftM: number; widthM: number; floorM: number; projectM: number; slabM: number; guardM: number; rail: 'turned' | 'iron'}[];
+    /** `stoop` (stoop.ts): one plan per module in its viewer frame, placed on the facade at x -> scale * x + offset. */
+    stoops?: {plan: StoopPlan; scale: 1 | -1; offset: number}[];
     /** Eaves from a photo measurement (block-face strip) instead of the 3DBAG profile. */ measuredEaves?: boolean}[];
   warnings: string[];
   /** Height the model may exceed the LoD2.2 roof max by: 3DBAG LoD2.2 has no dormers, so declared dormers stand above it. */
@@ -1168,7 +1171,24 @@ export function fitIntent(intent: CanalHouseIntent, surveyFacts: BuildingFacts):
       elevation.hoists = seen(elevation.dormers.value.map(d => ({id: `hoist-${d.id}`, centerM: round(d.leftM + d.widthM / 2), heightM: round(d.bottomM + d.heightM + 0.08), widthM: 0.14, beamHeightM: 0.16, projectionM: round(Math.max(0.05, reach - (d.setbackM ?? 0))), setbackM: round((d.setbackM ?? 0) + 0.3), endRiseM: 0.1, surface: front.dormerBody === 'stone' || front.dormerBody === 'timber' ? 'stone' as const : 'trim' as const})));
     }
     if (front.hoist) elevation.hoists = seen(Array.from({length: count}, (_, m) => ({id: count > 1 ? `hoist-m${m}` : 'hoist', centerM: flipX(place(m, crownSpan ? (crownSpan[0] + crownSpan[1]) / 2 : mw / 2), 0), heightM: round(gabled ? crownTop - 0.9 : eaves + 0.1), widthM: 0.14, beamHeightM: 0.18, projectionM: 1.1, setbackM: 0.1, surface: 'door' as const})));
-    if ((front.basement === 'stoop' || front.basement === 'stoop-and-windows') && layout.doorLeft !== null && layout.groundBase > 0) {
+    let stoops: NonNullable<FitReport['fronts'][number]['stoops']> | undefined;
+    if (front.stoop && (front.basement === 'stoop' || front.basement === 'stoop-and-windows') && layout.doorLeft !== null && layout.groundBase > 0) {
+      // `stoop` (stoop.ts, K-stoep #360): a measured stoop per module, drawn by the post-library pass (stoopMesh.ts)
+      // instead of the library's straight front flight; basement lights under its masonry leave the front.
+      const sp = planStoop(front.stoop, {doorLeftM: layout.doorLeft, doorWidthM: layout.doorWidth, sillM: layout.groundBase, frontWidthM: mw});
+      if (!sp.plan) throw Error(`${front.id}: ${sp.problems.join('; ')}`);
+      const blocked = stoopBlocks(sp.plan, layout.openings);
+      const fatal = blocked.filter(id => !id.startsWith('basement-'));
+      if (fatal.length) throw Error(`${front.id}: stoop covers ${fatal.join(', ')} below the landing`);
+      if (blocked.length) {
+        const ids = new Set(Array.from({length: count}, (_, k) => blocked.map(id => `${pieces.length > 1 ? front.id + '-' : ''}${id}${count > 1 ? `-m${k}` : ''}`)).flat());
+        elevation.openings.value = elevation.openings.value.filter(o => !ids.has(o.id));
+      }
+      stoops = Array.from({length: count}, (_, m) => {
+        const t0 = flipX(place(m, 0), 0), t1 = flipX(place(m, 1), 0);
+        return {plan: sp.plan!, scale: (t1 > t0 ? 1 : -1) as 1 | -1, offset: round(t0, 6)};
+      });
+    } else if ((front.basement === 'stoop' || front.basement === 'stoop-and-windows') && layout.doorLeft !== null && layout.groundBase > 0) {
       // The library admits one entrance per elevation: the first module's stoop.
       const dl = flipX(place(0, layout.doorLeft, layout.doorWidth), layout.doorWidth);
       elevation.entrance = seen({leftM: round(dl - 0.15), widthM: round(layout.doorWidth + 0.3), riseM: round(layout.groundBase), runM: round(Math.min(1.4, layout.groundBase * 1.4)), approximateRiserM: 0.18, surface: 'stone'});
@@ -1336,7 +1356,7 @@ export function fitIntent(intent: CanalHouseIntent, surveyFacts: BuildingFacts):
         oriel: {paintedStoreys: erker.oriel.paintedStoreys, ...(erker.oriel.paintFrom !== undefined ? {paintFrom: erker.oriel.paintFrom} : {}), console: erker.oriel.console, footM: erker.oriel.footM, storeys: erker.storeys, ...(erker.oriel.consoleCorbel ? {consoleCorbel: erker.oriel.consoleCorbel} : {}), ...(erker.oriel.twinLeftM !== undefined ? {twinLeftM: round(flipX(erker.oriel.twinLeftM, erker.widthM))} : {})}}}
       : erker ? {erker: erker.hoods ? {leftM: round(flipX(erker.leftM, erker.widthM)), widthM: erker.widthM, frontWidthM: erker.widthM, depthM: DE_BAARSJES.boxDepthM, topM: erker.topM, cap: 'none' as const, finish: 'painted' as const, hoods: erker.hoods}
         : {leftM: round(flipX(erker.leftM, erker.widthM)), widthM: erker.widthM, frontWidthM: round(erker.widthM - 2 * ERKER.returnM), depthM: ERKER.depthM, topM: erker.topM, cap: front.bayWindows!.cap ?? 'none', ...(front.bayWindows!.finish ? {finish: front.bayWindows!.finish} : {})}} : {}),
-      ...(timberBalconies ? {timberBalconies} : {}), ...(balconyHoods.length ? {balconyHoods} : {}), ...(front.balconyRun ? {balconyRun: balconyRunFor(front.balconyRun, layout, width)} : {})});
+      ...(timberBalconies ? {timberBalconies} : {}), ...(stoops ? {stoops} : {}), ...(balconyHoods.length ? {balconyHoods} : {}), ...(front.balconyRun ? {balconyRun: balconyRunFor(front.balconyRun, layout, width)} : {})});
   }
   // The corner tower's body stands on the lower of the two fronts' eaves, to the shared top.
   if (corner) for (const r of reports) for (const t of r.towers ?? []) if (t.corner) { t.bottomM = corner.bottomM; t.topM = corner.topM!; }

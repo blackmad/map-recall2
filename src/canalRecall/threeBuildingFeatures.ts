@@ -1,4 +1,5 @@
 import {envelopeFootprintFingerprint} from './surveyedBuildingEnvelope.js';
+import type { StoopIntent } from './buildingRecipe/stoop.ts';
 import type {SurveyedMeshBinding} from './surveyedEnvelopeMeshBinding.js';
 // Streamed building features -> mesh buildings -> a chunk, for the three.js building layer.
 // CPU only (no DOM), so it runs in the chunk worker as well as on the main thread.
@@ -252,6 +253,11 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook, coarse = f
   // Never on a landmark kit's walls: church hosts drew hoist beams and stray strips (user 2026-10-03).
   building.extras = !building.bare && !p.kitWall && !p.largeTier && look !== 'untextured';
   if (Array.isArray(p.registerForce) && p.registerForce.length && building.extras) building.registerForce = p.registerForce as string[];
+  // A spec-stated stoop (houseSpec/decorate.ts specStoop, K-stoep #360): the extras draw it typed, and first.
+  if (p.specStoop && typeof p.specStoop === 'object' && building.extras) {
+    building.stoop = p.specStoop as StoopIntent;
+    if (!building.registerForce?.includes('stoop')) building.registerForce = [...(building.registerForce ?? []), 'stoop'];
+  }
   if (look === 'untextured') {
     // Untextured: one flat layer for every wall and roof face, so only colour and shape remain.
     const flat = roofBase + 3;

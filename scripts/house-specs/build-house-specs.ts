@@ -123,6 +123,10 @@ function viewOf(spec: HouseSpec): HouseSpecView {
   // does not reach the generic path: its own cell count is as good a guess, and a measured source can outrank it.
   const bays = frontBays(front), baysSrc = src[front?.axisGrid ? 'fronts/0/axisGrid' : 'fronts/0/bays'];
   if (bays && baysSrc !== 'default') { v.bays = bays; v.src.bays = baysSrc; }
+  // A stoop (K-stoep #360): presence from the basement (register `stoep`, Jev, a hand read), the measured fields when stated.
+  if (front?.basement === 'stoop' || front?.basement === 'stoop-and-windows') {
+    v.stoop = (front.stoop ?? {}) as HouseSpecView['stoop']; v.src.stoop = src['fronts/0/stoop'] ?? src['fronts/0/basement'];
+  }
   return v;
 }
 const PLANNER_GABLES = new Set(['step', 'neck', 'raised-neck', 'bell', 'spout', 'point']);
@@ -200,7 +204,7 @@ const report = {
   bySource: Object.fromEntries(SOURCES_SEEN.map(s => [s, 0])) as Record<string, number>,
   strongest: {} as Record<string, number>,
   multiSource: 0,
-  runtime: { gable: 0, year: 0, wallMaterial: 0, wallHex: 0, bays: 0 } as Record<string, number>,
+  runtime: { gable: 0, year: 0, wallMaterial: 0, wallHex: 0, bays: 0, stoop: 0 } as Record<string, number>,
   /** Pands the generic path draws (no installed GLB/chunk hides them) whose spec carries bays or a wall colour: the
    *  houses whose look changes when the spec extract is published. */
   genericVisibleWithMesherReads: 0,

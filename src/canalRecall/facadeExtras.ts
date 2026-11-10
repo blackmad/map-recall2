@@ -13,6 +13,7 @@ import type { FacadeStyle } from './genericFacades.js';
 import type { WallLayout } from './facadeLayout.js';
 import { ExtraSink, chanceFor, hash01, type ExtraContext, type RoofComponent, type RoofContext, type WallComponent } from './facadeExtraCore.js';
 import { continuousShopCanopy } from './shopCanopies.js';
+import { specStoopExtra } from './stoopExtra.js';
 import { ORNAMENT_COMPONENTS, paleMasonryAccents, raisedPilasterEntrance, raisedPlainEntrance, canalSideEntrance, isStreetWall, openingsOf, windowSpans } from './facadeOrnaments.js';
 
 export { ExtraSink, hash01, chanceFor } from './facadeExtraCore.js';
@@ -126,6 +127,8 @@ const STREET_FURNITURE: readonly WallComponent[] = [
     const x = c.f.len / 2; s.box(c.f, x - 0.1, x + 0.1, 0, 1.0, c.top - 0.6, c.top - 0.42, WOOD, true);
     s.slope(c.f, x - 0.35, x + 0.35, 0, 1.1, c.top - 0.05, c.top - 0.4, WOOD); } },
   { id: 'stoop', group: 'stoop', styles: ['canal'], p: 0.5, build: (c, s) => {
+    // A spec-stated stoop (K-stoep #360) draws typed: flight, landing, iron balustrades (stoopExtra.ts).
+    if (c.stoop) { specStoopExtra(c, s); return; }
     const x = doorX(c); if (x == null || !c.groundLevel) return;
     for (let k = 0; k < 3; k++) s.box(c.f, x - 0.75, x + 0.75, 0, 1.2 - k * 0.35, c.base + k * 0.18, c.base + (k + 1) * 0.18, STONE);
     // Railings belong to the stoop: as their own component they stood on the pavement with no steps
