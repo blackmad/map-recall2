@@ -33,7 +33,9 @@ Input (one of)
   --buurt <code>         every pand of a CBS buurt (AB07, BU0363AB07 or the name; house-crops/buurt.ts); use --max
   --list <file.json>     ["id", ...] or [{"pandId": "id", "bearing": 90, "at": [lng, lat], "key": "name"}, ...]
                          (bearing: prefer the wall facing it; at: the wall nearest this point, facing within 40 deg
-                         of bearing; key: the output folder, for several walls of one pand)
+                         of bearing; key: the output folder, for several walls of one pand;
+                         chord: [[lng, lat], [lng, lat]], the wall's two end points, for a front stepped in edges under 3 m
+                         that the exposed-wall rule drops: Nassaukade 146, 0363100012160704)
 
 Flags
   --year <yyyy>          only panoramas of that mission year
@@ -76,7 +78,7 @@ Checks (pose.json)
 Review: docs/house-line.md §7. Builders are accepted on these pairs, read by opus or a human.
 `;
 
-type Entry = { id: string; key?: string; bearing?: number; at?: [number, number] };
+type Entry = { id: string; key?: string; bearing?: number; at?: [number, number]; chord?: [[number, number], [number, number]] };
 type Args = { pands: Entry[]; year?: number; season: 'winter' | 'any'; query: string; label: string; out: string; panoSize: PanoSize; bearing?: number; max: number; reopenEvery: number; prepOnly: boolean; postOnly: boolean; inputName: string };
 
 function arg(argv: string[], name: string): string | undefined {
@@ -101,7 +103,7 @@ async function parseArgs(argv: string[]): Promise<Args> {
     pands = (await pandsInBuurt(b)).map(f => ({ id: bare(f.id) })); inputName = `buurt ${b.code} ${b.name}`;
   } else if (arg(argv, 'list')) {
     const list = JSON.parse(fs.readFileSync(arg(argv, 'list')!, 'utf8'));
-    pands = list.map((e: any) => typeof e === 'string' ? { id: bare(e) } : { id: bare(String(e.pandId ?? e.id)), key: e.key, bearing: e.bearing, at: e.at }); inputName = `list ${path.basename(arg(argv, 'list')!)}`;
+    pands = list.map((e: any) => typeof e === 'string' ? { id: bare(e) } : { id: bare(String(e.pandId ?? e.id)), key: e.key, bearing: e.bearing, at: e.at, chord: e.chord }); inputName = `list ${path.basename(arg(argv, 'list')!)}`;
   }
   const season = arg(argv, 'season') === 'winter' ? 'winter' : 'any';
   const max = Number(arg(argv, 'max') ?? Infinity);
@@ -155,6 +157,23 @@ function wallAt(fp: Footprint, others: Footprint[], at: [number, number], bearin
   return { wall: null, note: `no wall within 3 m of ${at.join(',')} facing ${bearing}` };
 }
 
+/**
+ * A wall given as its two end points (a `--list` entry's `chord`, lng/lat, viewer's left first is not required): for a front
+ * whose ring is stepped in edges under 3 m (a stoop or bay line: Nassaukade 146, 0363100012160704), which `exposedWalls`
+ * drops. The outward normal is the chord's perpendicular nearer `bearing` (else the one pointing away from the pand's centre).
+ */
+function wallChord(fp: Footprint, chord: [[number, number], [number, number]], bearing?: number): { wall: Wall; note: string } {
+  const a = lngLatToRd(chord[0]), b = lngLatToRd(chord[1]), dx = b.x - a.x, dy = b.y - a.y, len = Math.hypot(dx, dy);
+  let nx = dy / len, ny = -dx / len;
+  const centre = { x: fp.ring.reduce((s, p) => s + p.x, 0) / fp.ring.length, y: fp.ring.reduce((s, p) => s + p.y, 0) / fp.ring.length };
+  const mid = { x: (a.x + b.x) / 2, y: (a.y + b.y) / 2 };
+  const away = bearing === undefined ? (mid.x - centre.x) * nx + (mid.y - centre.y) * ny > 0 : Math.cos((Math.atan2(nx, ny) * 180 / Math.PI - bearing) * Math.PI / 180) > 0;
+  if (!away) { nx = -nx; ny = -ny; }
+  // Keep ccw order (a to b with the outside on the right), as exposedWalls hands them out.
+  const wall: Wall = Math.abs(nx * dy - ny * dx - len) < 1e-6 ? { a, b, len, nx, ny, mid, roadDistM: 0, facing: 1 } : { a: b, b: a, len, nx, ny, mid, roadDistM: 0, facing: 1 };
+  return { wall, note: `the chord ${chord.map(c => c.join(',')).join(' - ')} (${len.toFixed(1)} m, outward ${((Math.atan2(nx, ny) * 180 / Math.PI + 360) % 360).toFixed(0)} deg)` };
+}
+
 const WINTER = new Set([11, 12, 1, 2, 3]);
 const monthOf = (ts: string) => Number(String(ts).slice(5, 7));
 
@@ -202,7 +221,7 @@ async function prepare(entry: Entry, fp: Footprint | undefined, args: Args): Pro
   options.preferBearingDeg = entry.bearing ?? args.bearing;
   const centre = { x: fp.ring.reduce((s, p) => s + p.x, 0) / fp.ring.length, y: fp.ring.reduce((s, p) => s + p.y, 0) / fp.ring.length };
   const near = await neighbourhood(centre);
-  const { wall, note } = entry.at ? wallAt(fp, near, entry.at, entry.bearing) : await pickWall(fp, near);
+  const { wall, note } = entry.chord ? wallChord(fp, entry.chord, entry.bearing) : entry.at ? wallAt(fp, near, entry.at, entry.bearing) : await pickWall(fp, near);
   if (!wall) return { pandId, key, skip: note };
   const quad: WallQuad = { a: wall.a, b: wall.b, heightM: fp.height || 10 };
   let ranked = rankPanos(wall, await listPanos(wall.mid)).filter(c => c.surface !== 'W');

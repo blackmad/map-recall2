@@ -1718,6 +1718,25 @@ The lod2 has no material names, and the material-blind tight area on the corner'
 Still unsaid: the corner's 2.3 m chamfer is a blank brick face with no cornice. The photo shows a narrow bevel with windows,
 and no front covers a chamfer.
 
+### Round 4 (in-game follow-ups, #354, 2026-11-10)
+
+The judgement session read the round-3 frame pairs. Three follow-ups, all on the Nassaukade corner row:
+
+- **116526's Nassaukade ground floor** drew one dark glass box (`shopfront.bays [0,2]`, `glazing transom`, nothing else). The photo
+  (pano 2021-03-24 8.2 m, "The Kiwi") shows a café front: a dark awning over the corner glazing, a pale painted fascia band over the
+  glass, three tall glazed bays and the glazed door at the right end of the span. `clercq-236681/intent.json` now sets
+  `fascia: true` + `fasciaColour #d9d1c5`, `displayWindows: 3`, `entrance: right`, `stallriser low` and a `fabric-dutch` awning
+  (`#1f1f22`, extent 0-0.3). Nothing in the kit was missing for this; what it still cannot say is the round "THE KIWI" board
+  hanging on the corner pier, the beer sign, and the multi-light transom row (white-framed small panes over the black-framed glass).
+  Compile: `passWithPartyExemption` stays true; roof golden changes on clercq-236681 alone. After frame (not installed):
+  `npm run house:preview -- 0363100012116526 --wall 75deg --chunk clercq-236681` beside the same call without `--chunk`.
+- **The chamfered corner** (the photo's left edge: a canted corner with balconies on every storey) is a kit gap, not drawn:
+  `docs/handoffs/kit-gaps.md` "Corner chamfer", with a count of the corner pands it affects.
+- **`house:frames` `chord`**: 160704's Nassaukade front is stepped in edges under 3 m (stoop and bay line), so `exposedWalls`
+  drops it and the pose took the rear (a 2023 Da Costakade close-up at 34.9 m). A `--list` entry may now give the wall's two end
+  points, `"chord": [[lng, lat], [lng, lat]]` with a `bearing` for the outward side; 160704 then poses from the 2021-03-24 Nassaukade
+  panorama at 8.2 m.
+
 ## §6b The standing acceptance set: the user's easy houses (lane H9)
 
 The user, 2026-11-10, on `map-recall2-screenshots/whats-new/2026-11-10-facade-extras.jpg` (photo | before | after, 10
