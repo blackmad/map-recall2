@@ -1,0 +1,312 @@
+{
+ "street": "Herengracht",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T08:28:27.200Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012180299",
+   "addresses": [
+    "Herengracht 532"
+   ],
+   "groundUnits": [
+    {
+     "address": "Herengracht 532",
+     "use": "woonfunctie",
+     "areaM2": 197,
+     "bagId": "0363010000665141"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 9825881369,
+     "lngLat": [
+      4.8954874,
+      52.3645844
+     ],
+     "tags": {
+      "addr:housenumber": "532",
+      "addr:street": "Herengracht",
+      "name": "Mokumsuites",
+      "phone": "+31 6 18254098",
+      "tourism": "hostel",
+      "website": "https://www.mokumsuites.com/"
+     },
+     "fetchedAt": "2026-11-10T08:28:27.200Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012180308",
+   "addresses": [
+    "Herengracht 530A",
+    "Herengracht 530B",
+    "Herengracht 530C",
+    "Herengracht 530D",
+    "Herengracht 530E"
+   ],
+   "groundUnits": [
+    {
+     "address": "Herengracht 530A",
+     "use": "woonfunctie",
+     "areaM2": 180,
+     "bagId": "0363010000604737"
+    },
+    {
+     "address": "Herengracht 530B",
+     "use": "woonfunctie",
+     "areaM2": 112,
+     "bagId": "0363010000604738"
+    },
+    {
+     "address": "Herengracht 530C",
+     "use": "woonfunctie",
+     "areaM2": 112,
+     "bagId": "0363010000604739"
+    },
+    {
+     "address": "Herengracht 530D",
+     "use": "woonfunctie",
+     "areaM2": 112,
+     "bagId": "0363010000604740"
+    },
+    {
+     "address": "Herengracht 530E",
+     "use": "woonfunctie",
+     "areaM2": 161,
+     "bagId": "0363010000664981"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012180307",
+   "addresses": [
+    "Herengracht 528K",
+    "Herengracht 528A",
+    "Herengracht 528B",
+    "Herengracht 528C",
+    "Herengracht 528D",
+    "Herengracht 528E",
+    "Herengracht 528F",
+    "Herengracht 528G",
+    "Herengracht 528H"
+   ],
+   "groundUnits": [
+    {
+     "address": "Herengracht 528K",
+     "use": "woonfunctie",
+     "areaM2": 166,
+     "bagId": "0363010000604736"
+    },
+    {
+     "address": "Herengracht 528A",
+     "use": "woonfunctie",
+     "areaM2": 255,
+     "bagId": "0363010000604703"
+    },
+    {
+     "address": "Herengracht 528B",
+     "use": "woonfunctie",
+     "areaM2": 235,
+     "bagId": "0363010000604706"
+    },
+    {
+     "address": "Herengracht 528C",
+     "use": "woonfunctie",
+     "areaM2": 135,
+     "bagId": "0363010000604708"
+    },
+    {
+     "address": "Herengracht 528D",
+     "use": "woonfunctie",
+     "areaM2": 123,
+     "bagId": "0363010000604710"
+    },
+    {
+     "address": "Herengracht 528E",
+     "use": "woonfunctie",
+     "areaM2": 125,
+     "bagId": "0363010000604712"
+    },
+    {
+     "address": "Herengracht 528F",
+     "use": "woonfunctie",
+     "areaM2": 122,
+     "bagId": "0363010000604730"
+    },
+    {
+     "address": "Herengracht 528G",
+     "use": "woonfunctie",
+     "areaM2": 119,
+     "bagId": "0363010000604732"
+    },
+    {
+     "address": "Herengracht 528H",
+     "use": "woonfunctie",
+     "areaM2": 157,
+     "bagId": "0363010000604734"
+    }
+   ],
+   "units": 9,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012180311",
+   "addresses": [
+    "Herengracht 524A",
+    "Herengracht 524B",
+    "Herengracht 524C",
+    "Herengracht 524D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Herengracht 524A",
+     "use": "kantoorfunctie",
+     "areaM2": 117,
+     "bagId": "0363010000989568"
+    },
+    {
+     "address": "Herengracht 524B",
+     "use": "woonfunctie",
+     "areaM2": 157,
+     "bagId": "0363010000992122"
+    },
+    {
+     "address": "Herengracht 524C",
+     "use": "woonfunctie",
+     "areaM2": 142,
+     "bagId": "0363010000992123"
+    },
+    {
+     "address": "Herengracht 524D",
+     "use": "woonfunctie",
+     "areaM2": 149,
+     "bagId": "0363010000992124"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012180310",
+   "addresses": [
+    "Herengracht 522A",
+    "Herengracht 522B",
+    "Herengracht 522C",
+    "Herengracht 522E",
+    "Herengracht 522F",
+    "Herengracht 522D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Herengracht 522A",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000994520"
+    },
+    {
+     "address": "Herengracht 522B",
+     "use": "woonfunctie",
+     "areaM2": 162,
+     "bagId": "0363010000994521"
+    },
+    {
+     "address": "Herengracht 522C",
+     "use": "woonfunctie",
+     "areaM2": 172,
+     "bagId": "0363010000994522"
+    },
+    {
+     "address": "Herengracht 522E",
+     "use": "woonfunctie",
+     "areaM2": 105,
+     "bagId": "0363010000994524"
+    },
+    {
+     "address": "Herengracht 522F",
+     "use": "woonfunctie",
+     "areaM2": 130,
+     "bagId": "0363010000994525"
+    },
+    {
+     "address": "Herengracht 522D",
+     "use": "woonfunctie",
+     "areaM2": 82,
+     "bagId": "0363010000994523"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012168044",
+   "addresses": [
+    "Herengracht 520"
+   ],
+   "groundUnits": [
+    {
+     "address": "Herengracht 520",
+     "use": "bijeenkomstfunctie,kantoorfunctie",
+     "areaM2": 1248,
+     "bagId": "0363010000665129"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012167981",
+   "addresses": [
+    "Herengracht 518"
+   ],
+   "groundUnits": [
+    {
+     "address": "Herengracht 518-H",
+     "use": "kantoorfunctie",
+     "areaM2": 952,
+     "bagId": "0363010001006829"
+    }
+   ],
+   "units": 2,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2736376870,
+     "lngLat": [
+      4.8946058,
+      52.3647038
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "518-H",
+      "addr:postcode": "1017CC",
+      "addr:street": "Herengracht",
+      "consulate": "honorary_consul",
+      "country": "SC",
+      "diplomatic": "consulate",
+      "name": "Honorair Consulaat van de Seychellen",
+      "name:en": "Honorary Consulate of Seychelles",
+      "name:nl": "Honorair Consulaat van de Seychellen",
+      "office": "diplomatic",
+      "official_name": "Honorair Consulaat van de Republiek der Seychellen",
+      "official_name:en": "Honorary Consulate of The Republic of Seychelles",
+      "phone": "+31 20 320 9792",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "target": "NL"
+     },
+     "fetchedAt": "2026-11-10T08:28:27.200Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

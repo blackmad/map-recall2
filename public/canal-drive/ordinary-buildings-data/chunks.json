@@ -102277,6 +102277,513 @@
      ]
     }
    ]
+  },
+  {
+   "id": "chunk-face-keizersgracht-596-648-r1",
+   "category": "street-survey",
+   "name": "face-keizersgracht-596-648-r1",
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-keizersgracht-596-648-r1.glb?asset=3636d754cd986612",
+   "sha256": "3636d754cd9866124f8126ae9e9af29061caedaa01222fb022e151b54f8d872f",
+   "bytes": 85772,
+   "triangles": 3322,
+   "primitives": 9,
+   "instance": {
+    "anchor": [
+     4.890496836223297,
+     52.36387819026867
+    ],
+    "northOffsetDegrees": 192.5213,
+    "mirror": false
+   },
+   "bounds": {
+    "min": [
+     -7.03,
+     0,
+     -29.974
+    ],
+    "max": [
+     5.945,
+     20.617,
+     1.401
+    ]
+   },
+   "height": 20.617,
+   "suppress": [
+    "NL.IMBAG.Pand.0363100012175655",
+    "NL.IMBAG.Pand.0363100012175654"
+   ],
+   "replaces": [
+    "ordinary-0363100012175655",
+    "ordinary-0363100012175654"
+   ],
+   "footprint": {
+    "type": "MultiPolygon",
+    "coordinates": [
+     [
+      [
+       [
+        4.8905976,
+        52.3638645
+       ],
+       [
+        4.8904889,
+        52.3638793
+       ],
+       [
+        4.8904238,
+        52.3636891
+       ],
+       [
+        4.8904142,
+        52.3636628
+       ],
+       [
+        4.8904665,
+        52.3636556
+       ],
+       [
+        4.8904496,
+        52.3636091
+       ],
+       [
+        4.8905019,
+        52.363602
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8904889,
+        52.3638793
+       ],
+       [
+        4.890412,
+        52.3638897
+       ],
+       [
+        4.8903638,
+        52.3637576
+       ],
+       [
+        4.8903925,
+        52.3637537
+       ],
+       [
+        4.8903747,
+        52.363705
+       ],
+       [
+        4.8904091,
+        52.3637003
+       ],
+       [
+        4.8904059,
+        52.3636916
+       ],
+       [
+        4.8904238,
+        52.3636891
+       ]
+      ]
+     ]
+    ]
+   },
+   "pands": [
+    {
+     "recipeId": "keizersgracht-175655",
+     "pandId": "0363100012175655",
+     "buildingId": "NL.IMBAG.Pand.0363100012175655",
+     "address": "Keizersgracht 616A",
+     "frontage": {
+      "x0": -7.03,
+      "x1": 0.555,
+      "widthM": 7.585
+     },
+     "bounds": {
+      "min": [
+       -7.03,
+       0,
+       -29.974
+      ],
+      "max": [
+       0.555,
+       20.617,
+       1.4
+      ]
+     },
+     "triangles": 1920,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 0,
+       "triangleCount": 125
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 0,
+       "triangleCount": 432
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 0,
+       "triangleCount": 40
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 0,
+       "triangleCount": 1088
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 0,
+       "triangleCount": 176
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 0,
+       "triangleCount": 40
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 0,
+       "triangleCount": 7
+      }
+     ]
+    },
+    {
+     "recipeId": "keizersgracht-175654",
+     "pandId": "0363100012175654",
+     "buildingId": "NL.IMBAG.Pand.0363100012175654",
+     "address": "Keizersgracht 614",
+     "frontage": {
+      "x0": 0.555,
+      "x1": 5.92,
+      "widthM": 5.365
+     },
+     "bounds": {
+      "min": [
+       0.355,
+       0,
+       -17.272
+      ],
+      "max": [
+       5.945,
+       19.25,
+       1.401
+      ]
+     },
+     "triangles": 1402,
+     "ranges": [
+      {
+       "primitive": 1,
+       "firstTriangle": 0,
+       "triangleCount": 107
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 432,
+       "triangleCount": 324
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 40,
+       "triangleCount": 40
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 1088,
+       "triangleCount": 724
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 12,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 176,
+       "triangleCount": 116
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 40,
+       "triangleCount": 79
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "chunk-face-keizersgracht-596-648-r2",
+   "category": "street-survey",
+   "name": "face-keizersgracht-596-648-r2",
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-keizersgracht-596-648-r2.glb?asset=a47cf93670ac162f",
+   "sha256": "a47cf93670ac162f220b049eb46d5b9fcf3247c24d3c3feea164f7d47d829fa4",
+   "bytes": 117904,
+   "triangles": 4721,
+   "primitives": 10,
+   "instance": {
+    "anchor": [
+     4.890169751137856,
+     52.36392265267727
+    ],
+    "northOffsetDegrees": 192.5834,
+    "mirror": false
+   },
+   "bounds": {
+    "min": [
+     -7.533,
+     0,
+     -31.137
+    ],
+    "max": [
+     7.486,
+     21.558,
+     1.401
+    ]
+   },
+   "height": 21.558,
+   "suppress": [
+    "NL.IMBAG.Pand.0363100012167896",
+    "NL.IMBAG.Pand.0363100012176066"
+   ],
+   "replaces": [
+    "ordinary-0363100012167896",
+    "ordinary-0363100012176066"
+   ],
+   "footprint": {
+    "type": "MultiPolygon",
+    "coordinates": [
+     [
+      [
+       [
+        4.8902207,
+        52.3637517
+       ],
+       [
+        4.8901635,
+        52.3637598
+       ],
+       [
+        4.8901755,
+        52.3637927
+       ],
+       [
+        4.8902327,
+        52.3637846
+       ],
+       [
+        4.8902777,
+        52.3639079
+       ],
+       [
+        4.8901693,
+        52.3639227
+       ],
+       [
+        4.8900769,
+        52.3636694
+       ],
+       [
+        4.890161,
+        52.3636579
+       ],
+       [
+        4.8901538,
+        52.3636382
+       ],
+       [
+        4.8901781,
+        52.3636348
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8901693,
+        52.3639227
+       ],
+       [
+        4.8900627,
+        52.3639372
+       ],
+       [
+        4.8900189,
+        52.3638173
+       ],
+       [
+        4.890069,
+        52.3638102
+       ],
+       [
+        4.8900562,
+        52.363775
+       ],
+       [
+        4.8900062,
+        52.3637822
+       ],
+       [
+        4.8899632,
+        52.3636643
+       ],
+       [
+        4.8899875,
+        52.3636609
+       ],
+       [
+        4.8899947,
+        52.3636807
+       ],
+       [
+        4.8900769,
+        52.3636694
+       ]
+      ]
+     ]
+    ]
+   },
+   "pands": [
+    {
+     "recipeId": "keizersgracht-167896",
+     "pandId": "0363100012167896",
+     "buildingId": "NL.IMBAG.Pand.0363100012167896",
+     "address": "Keizersgracht 610",
+     "frontage": {
+      "x0": -7.533,
+      "x1": 0.032,
+      "widthM": 7.566
+     },
+     "bounds": {
+      "min": [
+       -7.533,
+       0,
+       -31.137
+      ],
+      "max": [
+       0.047,
+       20.601,
+       1.401
+      ]
+     },
+     "triangles": 2136,
+     "ranges": [
+      {
+       "primitive": 1,
+       "firstTriangle": 0,
+       "triangleCount": 186
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 0,
+       "triangleCount": 432
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 0,
+       "triangleCount": 40
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 0,
+       "triangleCount": 1168
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 0,
+       "triangleCount": 196
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 0,
+       "triangleCount": 86
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 0,
+       "triangleCount": 5
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 0,
+       "triangleCount": 11
+      }
+     ]
+    },
+    {
+     "recipeId": "keizersgracht-176066",
+     "pandId": "0363100012176066",
+     "buildingId": "NL.IMBAG.Pand.0363100012176066",
+     "address": "Keizersgracht 608",
+     "frontage": {
+      "x0": 0.032,
+      "x1": 7.469,
+      "widthM": 7.437
+     },
+     "bounds": {
+      "min": [
+       0.032,
+       0,
+       -28.64
+      ],
+      "max": [
+       7.486,
+       21.558,
+       1.401
+      ]
+     },
+     "triangles": 2585,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 0,
+       "triangleCount": 184
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 432,
+       "triangleCount": 652
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 1168,
+       "triangleCount": 1492
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 12,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 196,
+       "triangleCount": 212
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 86,
+       "triangleCount": 8
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 11,
+       "triangleCount": 13
+      }
+     ]
+    }
+   ]
   }
  ]
 }

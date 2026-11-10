@@ -46,7 +46,12 @@ export function resizePerStorey<F extends {storeyHeights?: number[]; windowHeigh
     return [a[0], ...mid.slice(0, to - 2), top];
   };
   const out = {...f};
-  if (Array.isArray(f.storeyHeights)) out.storeyHeights = fit(f.storeyHeights);
+  // A souterrain front may weight its souterrain first (one entry more than `storeys`, buildingRecipe/fit.ts): that entry
+  // stays and the storeys after it resize as usual (Keizersgracht 596-620, 2026-11-10: three- and five-storey canal houses
+  // of a four-storey souterrain type failed validation). Every other list is resized exactly as before.
+  const souterrainFirst = (f as {souterrain?: unknown}).souterrain === true && Array.isArray(f.storeyHeights) && f.storeyHeights.length === from + 1;
+  if (souterrainFirst) out.storeyHeights = [f.storeyHeights![0], ...fit(f.storeyHeights!.slice(1))];
+  else if (Array.isArray(f.storeyHeights)) out.storeyHeights = fit(f.storeyHeights);
   if (Array.isArray(f.windowHeights)) out.windowHeights = fit(f.windowHeights);
   if (Array.isArray(f.headLines)) out.headLines = fit(f.headLines);
   if (Array.isArray(f.bays)) out.bays = fit(f.bays);
@@ -291,6 +296,14 @@ export function resolvePlacement(t: HouseTypeIntent, place: HousePlacement, stre
     if (!has(f, 'doorBay')) f.doorBay = null;
     if (!has(f, 'basement')) f.basement = 'none';
     if (!has(f, 'hoist')) f.hoist = false;
+    // A gable crown that drops the body's cornice (`cornice: "none"`) drops its measured entablature with it: the band is
+    // the cornice's (Keizersgracht 608, a neck gable of the frieze-cornice canal type). Such a front failed validation
+    // before ("entablature needs a cornice"), so no installed face changes.
+    if (f.cornice === 'none' && f.entablature && crown.cornice === 'none') delete f.entablature;
+    // A souterrain-first storey list (one entry more than the storeys) on a front whose ground has no souterrain (a
+    // house's own shop over the type's stoop ground, Keizersgracht 600) drops the souterrain weight; such a front failed
+    // validation before, so no installed face changes.
+    if (Array.isArray(f.storeyHeights) && f.storeyHeights.length === t.body.storeys + 1 && !(f.souterrain === true && f.basement !== 'none')) f.storeyHeights = f.storeyHeights.slice(1);
     if (place.storeys !== undefined) { f.storeys = place.storeys; if (place.storeys !== t.body.storeys) { deviations.push(`storeys ${place.storeys} (type: ${t.body.storeys})`); f = resizePerStorey(f, t.body.storeys, place.storeys); } }
     f = {...f, ...overrides} as FrontIntent;
     // A `null` override removes the type's body field (a row house without the type's box frames or lisenes).

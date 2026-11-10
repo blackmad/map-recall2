@@ -1,0 +1,669 @@
+{
+ "face": "herengracht-468-480",
+ "street": "Herengracht",
+ "library": "grachtengordel-zuid",
+ "stripDate": "2023-02-27",
+ "seconds": 9.61,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012167958",
+   "address": "Herengracht 480",
+   "builtYear": 1670,
+   "widthM": 14.93,
+   "eavesM": 14.48,
+   "storeys3dbag": 0,
+   "bagBay": null,
+   "strip": {
+    "wall": "#605a5a",
+    "wallRaw": "#484543",
+    "skyline": {
+     "eavesM": 16.68,
+     "eavesRow": 302,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.32,
+      "riseM": 7.47,
+      "topWidthM": 0.05,
+      "centre": 0.05
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 6,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.068,
+    "structure": {
+     "bayWidthM": 0.72,
+     "bayCentre": 0.11,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 9.75,
+       "widthM": 0.82,
+       "centre": 0.74
+      },
+      {
+       "atM": 6.07,
+       "widthM": 0.93,
+       "centre": 0.51
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.03
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best belt-1700-double-house scores 0.42 < 0.7 (3DBAG eaves 14.48 m = 3 storeys of 4.83 m vs the type's 4.38 m; skyline crown rise 7.47 m, top 0.05 m fits no crown of the type; strip columns 6 vs 5 bays)",
+   "best": {
+    "type": "belt-1700-double-house",
+    "score": 0.42,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 14.48 m = 3 storeys of 4.83 m vs the type's 4.38 m"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.02 (brick)"
+     },
+     {
+      "key": "crown",
+      "weight": 3,
+      "score": 0,
+      "note": "skyline crown rise 7.47 m, top 0.05 m fits no crown of the type"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 6 vs 5 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012167959",
+   "address": "Herengracht 478",
+   "builtYear": 1666,
+   "widthM": 14.91,
+   "eavesM": 15.67,
+   "storeys3dbag": 0,
+   "bagBay": null,
+   "strip": {
+    "wall": "#675c4f",
+    "wallRaw": "#6c5a4d",
+    "skyline": {
+     "eavesM": 15.72,
+     "eavesRow": 340,
+     "confidence": 0.99,
+     "crown": {
+      "widthM": 6.15,
+      "riseM": 8.5,
+      "topWidthM": 0.1,
+      "centre": 0.22
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": null,
+    "frontClass": "blank",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.043,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 12.22,
+       "widthM": 1.27,
+       "centre": 0.3
+      },
+      {
+       "atM": 11.93,
+       "widthM": 1.18,
+       "centre": 0.92
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best belt-1700-double-house scores 0.43 < 0.7 (3DBAG eaves 15.67 m = 4 storeys of 3.92 m vs the type's 4.38 m; skyline crown rise 8.5 m, top 0.1 m fits no crown of the type)",
+   "best": {
+    "type": "belt-1700-double-house",
+    "score": 0.43,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 15.67 m = 4 storeys of 3.92 m vs the type's 4.38 m"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.031 (brick)"
+     },
+     {
+      "key": "crown",
+      "weight": 3,
+      "score": 0,
+      "note": "skyline crown rise 8.5 m, top 0.1 m fits no crown of the type"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012167903",
+   "address": "Herengracht 476",
+   "builtYear": 1670,
+   "widthM": 14.98,
+   "eavesM": 15.68,
+   "storeys3dbag": 0,
+   "bagBay": null,
+   "strip": {
+    "wall": "#948671",
+    "wallRaw": "#7e7360",
+    "skyline": {
+     "eavesM": 16.02,
+     "eavesRow": 328,
+     "confidence": 0.99,
+     "crown": {
+      "widthM": 7.4,
+      "riseM": 8.05,
+      "topWidthM": 0.28,
+      "centre": 0.27
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 6,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.066,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 1.27 m at 0.1 (light 0.01): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.27,
+       "centre": 0.1,
+       "light": 0.01
+      },
+      {
+       "widthM": 0.93,
+       "centre": 0.32,
+       "light": 0.18
+      },
+      {
+       "widthM": 0.75,
+       "centre": 0.51,
+       "light": 0.21
+      },
+      {
+       "widthM": 0.95,
+       "centre": 0.7,
+       "light": 0.18
+      },
+      {
+       "widthM": 0.63,
+       "centre": 0.91,
+       "light": 0.15
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 11.4,
+       "widthM": 1.95,
+       "centre": 0.71
+      },
+      {
+       "atM": 7.35,
+       "widthM": 0.88,
+       "centre": 0.68
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.02
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best belt-1700-double-house scores 0.42 < 0.7 (3DBAG eaves 15.68 m = 4 storeys of 3.92 m vs the type's 4.38 m; skyline crown rise 8.05 m, top 0.28 m fits no crown of the type; strip columns 6 vs 5 bays)",
+   "best": {
+    "type": "belt-1700-double-house",
+    "score": 0.42,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 15.68 m = 4 storeys of 3.92 m vs the type's 4.38 m"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.083 (brick)"
+     },
+     {
+      "key": "crown",
+      "weight": 3,
+      "score": 0,
+      "note": "skyline crown rise 8.05 m, top 0.28 m fits no crown of the type"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 6 vs 5 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012167902",
+   "address": "Herengracht 474",
+   "builtYear": 1669,
+   "widthM": 7.45,
+   "eavesM": 18.56,
+   "storeys3dbag": 0,
+   "bagBay": null,
+   "strip": {
+    "wall": "#99907f",
+    "wallRaw": "#827a6d",
+    "skyline": {
+     "eavesM": 20.5,
+     "eavesRow": 149,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.65,
+      "riseM": 1.18,
+      "topWidthM": 1.48,
+      "centre": 0.52
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.119,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "balcony slabs stacked at 14.5 m (1.3 m wide), 10.9 m (1.5 m wide), 7 m (1.35 m wide)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 14.5,
+       "widthM": 1.3,
+       "centre": 0.17
+      },
+      {
+       "atM": 10.9,
+       "widthM": 1.5,
+       "centre": 0.19
+      },
+      {
+       "atM": 7,
+       "widthM": 1.35,
+       "centre": 0.85
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012176762",
+   "address": "Herengracht 472",
+   "builtYear": 1905,
+   "widthM": 14.86,
+   "eavesM": 15.3,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6a5953",
+    "wallRaw": "#6b5d54",
+    "skyline": {
+     "eavesM": 15.9,
+     "eavesRow": 333,
+     "confidence": 1,
+     "crown": {
+      "widthM": 5.35,
+      "riseM": 7.37,
+      "topWidthM": 0.17,
+      "centre": 0.2
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 5,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.315,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.9 m at 0.12 (light 0.46): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.9,
+       "centre": 0.12,
+       "light": 0.46
+      },
+      {
+       "widthM": 1.32,
+       "centre": 0.29,
+       "light": 0.39
+      },
+      {
+       "widthM": 1.48,
+       "centre": 0.68,
+       "light": 0.29
+      },
+      {
+       "widthM": 0.9,
+       "centre": 0.87,
+       "light": 0.43
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 10.8,
+       "widthM": 0.8,
+       "centre": 0.29
+      },
+      {
+       "atM": 8.1,
+       "widthM": 1.02,
+       "centre": 0.51
+      },
+      {
+       "atM": 7.8,
+       "widthM": 1.1,
+       "centre": 0.51
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.05
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best belt-1700-canal-house: built 1905, type 1600-1900; frontage 14.86 m, type 3.8-10.6 m)",
+   "best": {
+    "type": "belt-1700-canal-house",
+    "score": 0,
+    "veto": [
+     "built 1905, type 1600-1900",
+     "frontage 14.86 m, type 3.8-10.6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 15.3 m = 4 storeys of 3.83 m vs the type's 4.38 m"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.303 (brick)"
+     },
+     {
+      "key": "crown",
+      "weight": 3,
+      "score": 0,
+      "note": "skyline crown rise 7.37 m, top 0.17 m fits no crown of the type"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 5 vs 4 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012176761",
+   "address": "Herengracht 470",
+   "builtYear": 1905,
+   "widthM": 15.02,
+   "eavesM": 15.9,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#706259",
+    "wallRaw": "#6f6259",
+    "skyline": {
+     "eavesM": 20.77,
+     "eavesRow": 138,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.82,
+      "riseM": 3.25,
+      "topWidthM": 0.03,
+      "centre": 0.07
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 5,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.03,
+    "structure": {
+     "bayWidthM": 0.38,
+     "bayCentre": 0.14,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best belt-1700-canal-house: built 1905, type 1600-1900; frontage 15.02 m, type 3.8-10.6 m)",
+   "best": {
+    "type": "belt-1700-canal-house",
+    "score": 0,
+    "veto": [
+     "built 1905, type 1600-1900",
+     "frontage 15.02 m, type 3.8-10.6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 15.9 m = 4 storeys of 3.98 m vs the type's 4.38 m"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.036 (brick)"
+     },
+     {
+      "key": "crown",
+      "weight": 3,
+      "score": 0,
+      "note": "skyline crown rise 3.25 m, top 0.03 m fits no crown of the type"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 5 vs 4 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012176760",
+   "address": "Herengracht 468",
+   "builtYear": 1905,
+   "widthM": 14.63,
+   "eavesM": 15.63,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#e4e8e3",
+    "wallRaw": "#dfe0d8",
+    "skyline": {
+     "eavesM": 20.02,
+     "eavesRow": 168,
+     "confidence": 0.99,
+     "crown": {
+      "widthM": 2.85,
+      "riseM": 4.2,
+      "topWidthM": 0.03,
+      "centre": 0.12
+     }
+    },
+    "stucco": true,
+    "bands": 0,
+    "columns": 5,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.689,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 13.67,
+       "widthM": 1,
+       "centre": 0.07
+      },
+      {
+       "atM": 13.38,
+       "widthM": 1.15,
+       "centre": 0.72
+      },
+      {
+       "atM": 9.47,
+       "widthM": 1.27,
+       "centre": 0.3
+      },
+      {
+       "atM": 9.18,
+       "widthM": 1.15,
+       "centre": 0.72
+      },
+      {
+       "atM": 7.82,
+       "widthM": 0.95,
+       "centre": 0.26
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.08
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best belt-1700-canal-house: built 1905, type 1600-1900; frontage 14.63 m, type 3.8-10.6 m; strip reads painted/render wall (accent share over the stucco threshold), a brick type)",
+   "best": {
+    "type": "belt-1700-canal-house",
+    "score": 0,
+    "veto": [
+     "built 1905, type 1600-1900",
+     "frontage 14.63 m, type 3.8-10.6 m",
+     "strip reads painted/render wall (accent share over the stucco threshold), a brick type"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 15.63 m = 4 storeys of 3.91 m vs the type's 4.38 m"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 0,
+      "note": "strip accent share 0.665 (stucco)"
+     },
+     {
+      "key": "crown",
+      "weight": 3,
+      "score": 0,
+      "note": "skyline crown rise 4.2 m, top 0.03 m fits no crown of the type"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 5 vs 4 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

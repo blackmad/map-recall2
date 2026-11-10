@@ -1,0 +1,244 @@
+{
+ "street": "Amstel",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T08:20:24.124Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012180165",
+   "addresses": [
+    "Amstel 36"
+   ],
+   "groundUnits": [
+    {
+     "address": "Amstel 36-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 36,
+     "bagId": "0363010000566550"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 9082002107,
+     "lngLat": [
+      4.8953903,
+      52.3669021
+     ],
+     "tags": {
+      "cannabis:recreational": "yes",
+      "name": "Coffeeshop Family First",
+      "opening_hours": "Mo-Fr 09:00-00:45",
+      "shop": "cannabis",
+      "website": "https://www.familyfirstamsterdam.com/"
+     },
+     "fetchedAt": "2026-11-10T08:20:24.124Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012169281",
+   "addresses": [
+    "Amstel 34A",
+    "Amstel 34B",
+    "Amstel 34C",
+    "Amstel 34E",
+    "Amstel 34D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Amstel 34A",
+     "use": "woonfunctie",
+     "areaM2": 100,
+     "bagId": "0363010001014241"
+    },
+    {
+     "address": "Amstel 34B",
+     "use": "woonfunctie",
+     "areaM2": 100,
+     "bagId": "0363010001014242"
+    },
+    {
+     "address": "Amstel 34C",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010001014244"
+    },
+    {
+     "address": "Amstel 34E",
+     "use": "woonfunctie",
+     "areaM2": 104,
+     "bagId": "0363010012576677"
+    },
+    {
+     "address": "Amstel 34D",
+     "use": "winkelfunctie",
+     "areaM2": 112,
+     "bagId": "0363010012576676"
+    },
+    {
+     "address": "Amstel 34D",
+     "use": "winkelfunctie",
+     "areaM2": 233,
+     "bagId": "0363010001014245"
+    }
+   ],
+   "units": 6,
+   "osm": [
+    {
+     "type": "node",
+     "id": 10312146230,
+     "lngLat": [
+      4.8953104,
+      52.366904
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "34",
+      "addr:postcode": "1017AB",
+      "addr:street": "Amstel",
+      "check_date": "2025-06-12",
+      "name": "Vlieger",
+      "opening_hours": "Mo 12:00-18:00; Tu-Fr 09:00-18:00; Sa 11:00-17:00",
+      "phone": "+31 20 623 5834",
+      "shop": "stationery",
+      "website": "https://www.vliegerpapier.nl"
+     },
+     "fetchedAt": "2026-11-10T08:20:24.124Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012180335",
+   "addresses": [
+    "Amstel 32"
+   ],
+   "groundUnits": [
+    {
+     "address": "Amstel 32-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 139,
+     "bagId": "0363010000566528"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 9077856383,
+     "lngLat": [
+      4.8952277,
+      52.3668621
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:country": "NL",
+      "addr:housenumber": "32",
+      "addr:postcode": "1017AB",
+      "addr:street": "Amstel",
+      "amenity": "restaurant",
+      "check_date": "2025-06-12",
+      "contact:facebook": "https://www.facebook.com/profile.php?id=100054549380462",
+      "cuisine": "indian;nepalese",
+      "level": "0",
+      "name": "Lumbini",
+      "phone": "+31 20 341 9040",
+      "website": "https://lumbinirestaurant.nl/"
+     },
+     "fetchedAt": "2026-11-10T08:20:24.124Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012180334",
+   "addresses": [
+    "Amstel 30"
+   ],
+   "groundUnits": [
+    {
+     "address": "Amstel 30-H",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010000809731"
+    },
+    {
+     "address": "Amstel 30",
+     "use": "logiesfunctie",
+     "areaM2": 415,
+     "bagId": "0363010012080264"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 12966972861,
+     "lngLat": [
+      4.8951533,
+      52.3668767
+     ],
+     "tags": {
+      "check_date": "2025-06-12",
+      "name": "The Bird Hotel",
+      "tourism": "hotel"
+     },
+     "fetchedAt": "2026-11-10T08:20:24.124Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012168257",
+   "addresses": [
+    "Amstel 28"
+   ],
+   "groundUnits": [
+    {
+     "address": "Reguliersbreestraat 31",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 810,
+     "bagId": "0363010000789049"
+    },
+    {
+     "address": "Amstel 28",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 115,
+     "bagId": "0363010012064197"
+    },
+    {
+     "address": "Reguliersbreestraat 31",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 854,
+     "bagId": "0363010012064198"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 12667724423,
+     "lngLat": [
+      4.8950029,
+      52.3666284
+     ],
+     "tags": {
+      "amenity": "casino",
+      "name": "Merkur Casino"
+     },
+     "fetchedAt": "2026-11-10T08:20:24.124Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

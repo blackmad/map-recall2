@@ -10,7 +10,7 @@ import type {FrontIntent, PaletteIntent, ShopAwningIntent, WindowKind} from './i
 import {parapetBandProblems} from './parapetBand.ts';
 
 /** Window kinds an `axisWindows` entry may name (kept in step with intent.ts WINDOWS; a type-only import keeps the cycle out). */
-export const WINDOW_KINDS: readonly WindowKind[] = ['sash', 'sash-small-panes', 'cross', 'plain', 'arched', 'shop', 'two-light', 'ladder', 'sash-6-over-6', 'sash-8-over-8', 'sash-9-over-9', 'six-pane', 't-window', 'small-over-one', 'cross-transom', 'casement-toplight', 'casement-transom', 'casement-gridded-toplight', 'casement-triple', 'casement-toplight-double', 'casement-gridded-toplight-double', 'casement-pair', 'casement-small-panes', 'casement-sidelights-toplight'];
+export const WINDOW_KINDS: readonly WindowKind[] = ['sash', 'sash-small-panes', 'cross', 'plain', 'arched', 'shop', 'two-light', 'ladder', 'sash-6-over-6', 'sash-8-over-8', 'sash-9-over-9', 'six-pane', 't-window', 'small-over-one', 'cross-transom', 'casement-toplight', 'casement-transom', 'casement-gridded-toplight', 'casement-triple', 'casement-toplight-double', 'casement-gridded-toplight-double', 'casement-pair', 'casement-small-panes', 'casement-sidelights-toplight', 'sash-4-over-4'];
 
 /** Problems with a shop awning's rigid-canopy fields (`glassBlocks`, `wallCourses`). */
 export function awningProblems(aw: ShopAwningIntent, at: string): string[] {

@@ -1,0 +1,6 @@
+{
+ "note": "Reviewer gate floors (src/canalRecall/blockFace/reviewPalettes.ts AcceptPin). Each pand was judged against the photo on its run's strip sheet (lane belt-gg-zuid, 2026-11-10); the floor never goes under 0.08.",
+ "pins": [
+  {"pandId": "0363100012175654", "type": "belt-1700-canal-house", "minNcc": 0.12, "reason": "Keizersgracht 614, sheet keizersgracht-596-648-r1 (2023-03-27): two axes, a stone souterrain, bel-etage and three window rows under a frieze cornice line up with the photo; the white curtains in most of its windows read as wall (photo glazing 0.17), which holds the edge NCC at 0.13"}
+ ]
+}

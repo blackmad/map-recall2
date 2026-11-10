@@ -1,0 +1,249 @@
+{
+ "street": "Amstel",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T08:31:26.231Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012178955",
+   "addresses": [
+    "Amstel 110"
+   ],
+   "groundUnits": [
+    {
+     "address": "Amstel 110-O",
+     "use": "winkelfunctie",
+     "areaM2": 75,
+     "bagId": "0363010001007339"
+    },
+    {
+     "address": "Amstel 110-H",
+     "use": "woonfunctie",
+     "areaM2": 147,
+     "bagId": "0363010001007340"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 12085946416,
+     "lngLat": [
+      4.8971568,
+      52.3669707
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "110",
+      "addr:postcode": "1017AD",
+      "addr:street": "Amstel",
+      "check_date:opening_hours": "2025-08-15",
+      "name": "Amstel Antiques RECORDS",
+      "opening_hours": "Th-Tu 12:00-17:30",
+      "phone": "+31 6 2246 8685",
+      "shop": "music",
+      "website": "http://amstelantiquerecords.com"
+     },
+     "fetchedAt": "2026-11-10T08:31:26.231Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012178951",
+   "addresses": [
+    "Amstel 108",
+    "Amstel 108A",
+    "Amstel 108B"
+   ],
+   "groundUnits": [],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012178950",
+   "addresses": [
+    "Amstel 106A",
+    "Amstel 106B",
+    "Amstel 106C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Amstel 106A",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 25,
+     "bagId": "0363010001007088"
+    },
+    {
+     "address": "Amstel 106B",
+     "use": "kantoorfunctie",
+     "areaM2": 322,
+     "bagId": "0363010001007089"
+    },
+    {
+     "address": "Amstel 106C",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010012061193"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012178954",
+   "addresses": [
+    "Amstel 104"
+   ],
+   "groundUnits": [
+    {
+     "address": "Amstel 104",
+     "use": "logiesfunctie",
+     "areaM2": 566,
+     "bagId": "0363010000566685"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 1310911745,
+     "lngLat": [
+      4.8969299,
+      52.3669696
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "104",
+      "addr:postcode": "1017AD",
+      "addr:street": "Amstel",
+      "email": "info@hotelamstelzicht.com",
+      "name": "Hotel Amstelzicht",
+      "phone": "+31 20 623 6693",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "tourism": "hotel",
+      "website": "https://www.hotelamstelzicht.com/nl/",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-11-10T08:31:26.231Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012178949",
+   "addresses": [
+    "Amstel 102",
+    "Amstel 102A",
+    "Amstel 102B",
+    "Amstel 102C",
+    "Amstel 102D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Amstel 102-H",
+     "use": "bijeenkomstfunctie,woonfunctie",
+     "areaM2": 64,
+     "bagId": "0363010000566683"
+    },
+    {
+     "address": "Amstel 102A",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 115,
+     "bagId": "0363010012098956"
+    },
+    {
+     "address": "Amstel 102B",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010012098957"
+    },
+    {
+     "address": "Amstel 102C",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010012098958"
+    },
+    {
+     "address": "Amstel 102D",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010012098959"
+    }
+   ],
+   "units": 6,
+   "osm": [
+    {
+     "type": "node",
+     "id": 1724319376,
+     "lngLat": [
+      4.8968557,
+      52.366956
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "102",
+      "addr:postcode": "1017AD",
+      "addr:street": "Amstel",
+      "amenity": "restaurant",
+      "contact:instagram": "blinqueen.amsterdam",
+      "cuisine": "breakfast;cake;coffee_shop;crepe;diner;pancake",
+      "diet:gluten_free": "yes",
+      "diet:vegetarian": "yes",
+      "internet_access": "wlan",
+      "lgbtq": "welcome",
+      "name": "Blin Queen",
+      "opening_hours": "Mo-Th 09:00-21:00; Fr 09:00-22:00; Sa-Su 09:00-18:00",
+      "website": "https://www.blinqueen.com",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-11-10T08:31:26.231Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 2725877904,
+     "lngLat": [
+      4.8967645,
+      52.366965
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "100-H",
+      "addr:postcode": "1017AC",
+      "addr:street": "Amstel",
+      "amenity": "pub",
+      "brewery": "Guinness;Kilkenny;Leffe",
+      "check_date": "2025-01-28",
+      "cuisine": "irish",
+      "live_music": "folk",
+      "microbrewery": "no",
+      "name": "Mulligans",
+      "note": "Tuned instruments for musicians on the wall",
+      "opening_hours": "Mo-Th 14:00-25:00; Fr,Sa 12:00-26:00; Su 12:00-25:00",
+      "outdoor_seating": "no",
+      "phone": "+31 20 233 5543",
+      "real_fire": "no",
+      "smoking": "isolated",
+      "source": "BAG;survey",
+      "source:date": "2014-02-11",
+      "theme": "irish",
+      "toilets": "yes",
+      "toilets:menstrual_products": "yes",
+      "toilets:wheelchair": "no",
+      "website": "https://www.mulligans.nl",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-11-10T08:31:26.231Z",
+     "match": "frontage",
+     "distanceM": 4
+    }
+   ]
+  }
+ ]
+}

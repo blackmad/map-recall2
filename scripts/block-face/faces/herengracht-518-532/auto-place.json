@@ -1,0 +1,633 @@
+{
+ "face": "herengracht-518-532",
+ "street": "Herengracht",
+ "library": "grachtengordel-zuid",
+ "stripDate": "2023-03-27",
+ "seconds": 19.79,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012180299",
+   "address": "Herengracht 532",
+   "builtYear": 1688,
+   "widthM": 6.39,
+   "eavesM": 14.2,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#504849",
+    "wallRaw": "#514f50",
+    "skyline": {
+     "eavesM": 14.93,
+     "eavesRow": 346,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.17,
+      "riseM": 3.45,
+      "topWidthM": 0.2,
+      "centre": 0.38
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.108,
+    "structure": {
+     "bayWidthM": 0.6,
+     "bayCentre": 0.18,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.05
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012180308",
+   "address": "Herengracht 530A",
+   "builtYear": 1989,
+   "widthM": 7.43,
+   "eavesM": 19.1,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6d5a4f",
+    "wallRaw": "#736156",
+    "skyline": {
+     "eavesM": 19.18,
+     "eavesRow": 176,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.17,
+      "riseM": 1.47,
+      "topWidthM": 0.85,
+      "centre": 0.49
+     }
+    },
+    "stucco": false,
+    "bands": 3,
+    "columns": 3,
+    "frontClass": "ribbon",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.287,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "balcony slabs stacked at 15.35 m (1.95 m wide), 12.43 m (2 m wide), 12.13 m (1.5 m wide), 9.2 m (2.02 m wide), 5.6 m (1.9 m wide)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 15.65,
+       "widthM": 1.95,
+       "centre": 0.14
+      },
+      {
+       "atM": 15.35,
+       "widthM": 1.95,
+       "centre": 0.86
+      },
+      {
+       "atM": 12.43,
+       "widthM": 2,
+       "centre": 0.5
+      },
+      {
+       "atM": 12.13,
+       "widthM": 1.5,
+       "centre": 0.89
+      },
+      {
+       "atM": 11.68,
+       "widthM": 0.9,
+       "centre": 0.89
+      },
+      {
+       "atM": 9.2,
+       "widthM": 2.02,
+       "centre": 0.15
+      },
+      {
+       "atM": 5.6,
+       "widthM": 1.9,
+       "centre": 0.52
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.05
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best belt-1700-canal-house: built 1989, type 1600-1900)",
+   "best": {
+    "type": "belt-1700-canal-house",
+    "score": 0,
+    "veto": [
+     "built 1989, type 1600-1900"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 19.1 m = 4 storeys of 4.78 m vs the type's 4.38 m"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.278 (brick)"
+     },
+     {
+      "key": "crown",
+      "weight": 3,
+      "score": 1,
+      "note": "skyline crown rise 1.47 m, top 0.85 m fits cornice-dormer"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012180307",
+   "address": "Herengracht 528K",
+   "builtYear": 1690,
+   "widthM": 14.89,
+   "eavesM": 16.18,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#5d524f",
+    "wallRaw": "#645853",
+    "skyline": {
+     "eavesM": 19.57,
+     "eavesRow": 160,
+     "confidence": 0.65,
+     "crown": {
+      "widthM": 2.33,
+      "riseM": 1.6,
+      "topWidthM": 0.6,
+      "centre": 0.17
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 6,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.27,
+    "structure": {
+     "bayWidthM": 0.82,
+     "bayCentre": 0.03,
+     "balconies": true,
+     "why": "balcony slabs stacked at 11.82 m (2 m wide), 11.3 m (1.43 m wide), 9.5 m (2.4 m wide), 5.82 m (2.3 m wide)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 14.82,
+       "widthM": 1.98,
+       "centre": 0.6
+      },
+      {
+       "atM": 13.47,
+       "widthM": 1,
+       "centre": 0.58
+      },
+      {
+       "atM": 11.82,
+       "widthM": 2,
+       "centre": 0.78
+      },
+      {
+       "atM": 11.3,
+       "widthM": 1.43,
+       "centre": 0.6
+      },
+      {
+       "atM": 9.5,
+       "widthM": 2.4,
+       "centre": 0.19
+      },
+      {
+       "atM": 6.57,
+       "widthM": 0.95,
+       "centre": 0.39
+      },
+      {
+       "atM": 5.82,
+       "widthM": 2.3,
+       "centre": 0.2
+      },
+      {
+       "atM": 5.38,
+       "widthM": 1.02,
+       "centre": 0.2
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.04
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Herengracht 518-532 strip 2023-03-27: one BAG pand holding two fronts, a three-axis frieze-cornice house (528) and a three-axis neck gable (526) with wing pieces and a ring ornament; needs two modules with their own crowns",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012180311",
+   "address": "Herengracht 524A",
+   "builtYear": 1700,
+   "widthM": 7.41,
+   "eavesM": 18.4,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#79685f",
+    "wallRaw": "#695c53",
+    "skyline": {
+     "eavesM": 18.77,
+     "eavesRow": 192,
+     "confidence": 0.37,
+     "crown": {
+      "widthM": 0.9,
+      "riseM": 1.45,
+      "topWidthM": 0.33,
+      "centre": 0.13
+     }
+    },
+    "stucco": false,
+    "bands": 2,
+    "columns": 3,
+    "frontClass": "curtain",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.181,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "balcony slabs stacked at 13.95 m (1.48 m wide), 10.88 m (1.5 m wide), 6.9 m (1.88 m wide)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 14.32,
+       "widthM": 1.43,
+       "centre": 0.13
+      },
+      {
+       "atM": 13.95,
+       "widthM": 1.48,
+       "centre": 0.86
+      },
+      {
+       "atM": 10.88,
+       "widthM": 1.5,
+       "centre": 0.5
+      },
+      {
+       "atM": 6.9,
+       "widthM": 1.88,
+       "centre": 0.5
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.03
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": {
+    "pandId": "0363100012180311",
+    "ncc": 0.289,
+    "nccRaw": 0.289,
+    "shiftM": [
+     0,
+     0
+    ],
+    "usable": 0.94,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.24 mean 0.32 vs photo 0.51",
+     "window shape tall vs photo square"
+    ],
+    "wall": {
+     "photo": "#74645b",
+     "model": "#8f7b70",
+     "dL": 0.094
+    },
+    "glazing": {
+     "photo": 0.51,
+     "model": 0.32
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.512
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012180310",
+   "address": "Herengracht 522A",
+   "builtYear": 1690,
+   "widthM": 7.4,
+   "eavesM": 19.3,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#60534b",
+    "wallRaw": "#6c5e56",
+    "skyline": {
+     "eavesM": 22.6,
+     "eavesRow": 39,
+     "confidence": 0.88,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 3,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.126,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "balcony slabs stacked at 14.07 m (1.38 m wide), 10.85 m (1.5 m wide), 6.88 m (1.5 m wide)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 14.07,
+       "widthM": 1.38,
+       "centre": 0.11
+      },
+      {
+       "atM": 10.85,
+       "widthM": 1.5,
+       "centre": 0.12
+      },
+      {
+       "atM": 10.18,
+       "widthM": 0.85,
+       "centre": 0.49
+      },
+      {
+       "atM": 6.88,
+       "widthM": 1.5,
+       "centre": 0.13
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.13 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.19 mean 0.41 vs photo 0.26)",
+   "likeness": {
+    "pandId": "0363100012180310",
+    "ncc": 0.13,
+    "nccRaw": 0.13,
+    "shiftM": [
+     -0.1,
+     -0.4
+    ],
+    "usable": 0.96,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.19 mean 0.41 vs photo 0.26"
+    ],
+    "wall": {
+     "photo": "#75635a",
+     "model": "#79685e",
+     "dL": 0.016
+    },
+    "glazing": {
+     "photo": 0.26,
+     "model": 0.41
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.316
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012168044",
+   "address": "Herengracht 520",
+   "builtYear": 1725,
+   "widthM": 14.89,
+   "eavesM": 19,
+   "storeys3dbag": 0,
+   "bagBay": null,
+   "strip": {
+    "wall": "#907a69",
+    "wallRaw": "#7b6b5e",
+    "skyline": {
+     "eavesM": 19.57,
+     "eavesRow": 160,
+     "confidence": 0.94,
+     "crown": {
+      "widthM": 3.77,
+      "riseM": 2.8,
+      "topWidthM": 0.8,
+      "centre": 0.51
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 5,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.115,
+    "structure": {
+     "bayWidthM": 0.97,
+     "bayCentre": 0.28,
+     "balconies": true,
+     "why": "balcony slabs stacked at 11.55 m (1.6 m wide), 6.97 m (1.8 m wide)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 15.22,
+       "widthM": 1.5,
+       "centre": 0.26
+      },
+      {
+       "atM": 14.92,
+       "widthM": 1.6,
+       "centre": 0.73
+      },
+      {
+       "atM": 11.55,
+       "widthM": 1.6,
+       "centre": 0.73
+      },
+      {
+       "atM": 7.65,
+       "widthM": 0.82,
+       "centre": 0.53
+      },
+      {
+       "atM": 6.97,
+       "widthM": 1.8,
+       "centre": 0.72
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.05
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.078 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.39)",
+   "likeness": {
+    "pandId": "0363100012168044",
+    "ncc": 0.078,
+    "nccRaw": 0.078,
+    "shiftM": [
+     -0.35,
+     0.4
+    ],
+    "usable": 0.9,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.39"
+    ],
+    "wall": {
+     "photo": "#8b7566",
+     "model": "#a08c7d",
+     "dL": 0.086
+    },
+    "glazing": {
+     "photo": 0.45,
+     "model": 0.41
+    },
+    "columns": {
+     "photo": 5,
+     "model": 5
+    },
+    "iou": 0.292
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012167981",
+   "address": "Herengracht 518",
+   "builtYear": 1687,
+   "widthM": 14.8,
+   "eavesM": 18.8,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#756157",
+    "wallRaw": "#6a5a50",
+    "skyline": {
+     "eavesM": 19.95,
+     "eavesRow": 145,
+     "confidence": 0.92,
+     "crown": {
+      "widthM": 0.53,
+      "riseM": 3.63,
+      "topWidthM": 0.2,
+      "centre": 0.97
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 5,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.153,
+    "structure": {
+     "bayWidthM": 0.47,
+     "bayCentre": 0.05,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 8.2,
+       "widthM": 1.32,
+       "centre": 0.26
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.04
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.108 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.29)",
+   "likeness": {
+    "pandId": "0363100012167981",
+    "ncc": 0.108,
+    "nccRaw": 0.108,
+    "shiftM": [
+     -0.35,
+     0.2
+    ],
+    "usable": 0.92,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.29"
+    ],
+    "wall": {
+     "photo": "#766256",
+     "model": "#8c7468",
+     "dL": 0.078
+    },
+    "glazing": {
+     "photo": 0.41,
+     "model": 0.42
+    },
+    "columns": {
+     "photo": 5,
+     "model": 5
+    },
+    "iou": 0.266
+   },
+   "challengers": {}
+  }
+ ]
+}

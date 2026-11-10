@@ -1,0 +1,320 @@
+{
+ "street": "Keizersgracht",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T08:43:35.806Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012167982",
+   "addresses": [
+    "Keizersgracht 615"
+   ],
+   "groundUnits": [
+    {
+     "address": "Keizersgracht 615-H",
+     "use": "woonfunctie",
+     "areaM2": 137,
+     "bagId": "0363010000701366"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012167979",
+   "addresses": [
+    "Keizersgracht 617"
+   ],
+   "groundUnits": [
+    {
+     "address": "Keizersgracht 617",
+     "use": "kantoorfunctie",
+     "areaM2": 4458,
+     "bagId": "0363010000701378"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012179303",
+   "addresses": [
+    "Keizersgracht 631"
+   ],
+   "groundUnits": [
+    {
+     "address": "Keizersgracht 631",
+     "use": "woonfunctie",
+     "areaM2": 276,
+     "bagId": "0363010000756573"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012167976",
+   "addresses": [
+    "Keizersgracht 633",
+    "Keizersgracht 633A",
+    "Keizersgracht 633G",
+    "Keizersgracht 633E",
+    "Keizersgracht 633B",
+    "Keizersgracht 633D",
+    "Keizersgracht 633C",
+    "Keizersgracht 633F"
+   ],
+   "groundUnits": [
+    {
+     "address": "Keizersgracht 633",
+     "use": "kantoorfunctie,woonfunctie",
+     "areaM2": 82,
+     "bagId": "0363010000776456"
+    },
+    {
+     "address": "Keizersgracht 633A",
+     "use": "kantoorfunctie",
+     "areaM2": 56,
+     "bagId": "0363010012146854"
+    },
+    {
+     "address": "Keizersgracht 633G",
+     "use": "kantoorfunctie",
+     "areaM2": 97,
+     "bagId": "0363010012571876"
+    },
+    {
+     "address": "Keizersgracht 633E",
+     "use": "kantoorfunctie",
+     "areaM2": 53,
+     "bagId": "0363010012571879"
+    },
+    {
+     "address": "Keizersgracht 633B",
+     "use": "kantoorfunctie",
+     "areaM2": 62,
+     "bagId": "0363010012146855"
+    },
+    {
+     "address": "Keizersgracht 633D",
+     "use": "kantoorfunctie",
+     "areaM2": 66,
+     "bagId": "0363010012571877"
+    },
+    {
+     "address": "Keizersgracht 633C",
+     "use": "kantoorfunctie",
+     "areaM2": 57,
+     "bagId": "0363010012146856"
+    },
+    {
+     "address": "Keizersgracht 633F",
+     "use": "kantoorfunctie",
+     "areaM2": 72,
+     "bagId": "0363010012571878"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012167980",
+   "addresses": [
+    "Keizersgracht 635"
+   ],
+   "groundUnits": [
+    {
+     "address": "Keizersgracht 635",
+     "use": "bijeenkomstfunctie,kantoorfunctie,overige gebruiksfunctie",
+     "areaM2": 1215,
+     "bagId": "0363010000701389"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012167984",
+   "addresses": [
+    "Keizersgracht 637B",
+    "Keizersgracht 637A",
+    "Keizersgracht 637C",
+    "Keizersgracht 637D",
+    "Keizersgracht 637E",
+    "Keizersgracht 637F",
+    "Keizersgracht 637G"
+   ],
+   "groundUnits": [
+    {
+     "address": "Keizersgracht 637B",
+     "use": "woonfunctie",
+     "areaM2": 98,
+     "bagId": "0363010000644210"
+    },
+    {
+     "address": "Keizersgracht 637A",
+     "use": "woonfunctie",
+     "areaM2": 148,
+     "bagId": "0363010000644087"
+    },
+    {
+     "address": "Keizersgracht 637C",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000648269"
+    },
+    {
+     "address": "Keizersgracht 637D",
+     "use": "woonfunctie",
+     "areaM2": 92,
+     "bagId": "0363010000649262"
+    },
+    {
+     "address": "Keizersgracht 637E",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000656748"
+    },
+    {
+     "address": "Keizersgracht 637F",
+     "use": "woonfunctie",
+     "areaM2": 130,
+     "bagId": "0363010000662142"
+    },
+    {
+     "address": "Keizersgracht 637G",
+     "use": "woonfunctie",
+     "areaM2": 86,
+     "bagId": "0363010000665063"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012167985",
+   "addresses": [
+    "Keizersgracht 639"
+   ],
+   "groundUnits": [
+    {
+     "address": "Keizersgracht 639-H",
+     "use": "kantoorfunctie",
+     "areaM2": 245,
+     "bagId": "0363010000701394"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012180136",
+   "addresses": [
+    "Keizersgracht 641B",
+    "Keizersgracht 641C",
+    "Keizersgracht 641D",
+    "Keizersgracht 641A",
+    "Keizersgracht 643A",
+    "Keizersgracht 643B",
+    "Keizersgracht 643C",
+    "Keizersgracht 643D",
+    "Keizersgracht 643E",
+    "Keizersgracht 643F",
+    "Keizersgracht 643G",
+    "Keizersgracht 645D",
+    "Keizersgracht 645A",
+    "Keizersgracht 645B",
+    "Keizersgracht 645C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Keizersgracht 641C",
+     "use": "woonfunctie",
+     "areaM2": 82,
+     "bagId": "0363010000949189"
+    },
+    {
+     "address": "Keizersgracht 641D",
+     "use": "woonfunctie",
+     "areaM2": 92,
+     "bagId": "0363010000949190"
+    },
+    {
+     "address": "Keizersgracht 645D",
+     "use": "woonfunctie",
+     "areaM2": 109,
+     "bagId": "0363010000949191"
+    },
+    {
+     "address": "Keizersgracht 643A",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000949192"
+    },
+    {
+     "address": "Keizersgracht 643B",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000949193"
+    },
+    {
+     "address": "Keizersgracht 643C",
+     "use": "woonfunctie",
+     "areaM2": 119,
+     "bagId": "0363010000949194"
+    },
+    {
+     "address": "Keizersgracht 643D",
+     "use": "woonfunctie",
+     "areaM2": 116,
+     "bagId": "0363010000949195"
+    },
+    {
+     "address": "Keizersgracht 643E",
+     "use": "woonfunctie",
+     "areaM2": 104,
+     "bagId": "0363010000949196"
+    },
+    {
+     "address": "Keizersgracht 643F",
+     "use": "woonfunctie",
+     "areaM2": 116,
+     "bagId": "0363010000949197"
+    },
+    {
+     "address": "Keizersgracht 645A",
+     "use": "woonfunctie",
+     "areaM2": 90,
+     "bagId": "0363010000949198"
+    },
+    {
+     "address": "Keizersgracht 645B",
+     "use": "woonfunctie",
+     "areaM2": 74,
+     "bagId": "0363010000949199"
+    },
+    {
+     "address": "Keizersgracht 645C",
+     "use": "woonfunctie",
+     "areaM2": 100,
+     "bagId": "0363010000949200"
+    },
+    {
+     "address": "Keizersgracht 643G",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000985035"
+    },
+    {
+     "address": "Keizersgracht 641A",
+     "use": "woonfunctie",
+     "areaM2": 192,
+     "bagId": "0363010000949185"
+    }
+   ],
+   "units": 16,
+   "osm": []
+  }
+ ]
+}

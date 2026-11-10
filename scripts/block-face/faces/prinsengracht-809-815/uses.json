@@ -1,0 +1,73 @@
+{
+ "street": "Prinsengracht",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T08:51:12.144Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012177625",
+   "addresses": [
+    "Prinsengracht 809"
+   ],
+   "groundUnits": [
+    {
+     "address": "Prinsengracht 809",
+     "use": "woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010001025278"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012177628",
+   "addresses": [
+    "Prinsengracht 811"
+   ],
+   "groundUnits": [
+    {
+     "address": "Prinsengracht 811-H",
+     "use": "winkelfunctie",
+     "areaM2": 76,
+     "bagId": "0363010000785464"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012177075",
+   "addresses": [
+    "Prinsengracht 813"
+   ],
+   "groundUnits": [
+    {
+     "address": "Prinsengracht 813",
+     "use": "woonfunctie",
+     "areaM2": 161,
+     "bagId": "0363010000785466"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012177155",
+   "addresses": [
+    "Prinsengracht 815"
+   ],
+   "groundUnits": [
+    {
+     "address": "Prinsengracht 815",
+     "use": "woonfunctie",
+     "areaM2": 195,
+     "bagId": "0363010000785481"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  }
+ ]
+}
