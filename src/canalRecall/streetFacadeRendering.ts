@@ -97,20 +97,43 @@ export const SPEC_BAY_SCALE = { min: 0.7, max: 1.5 } as const;
  *  of this building carries (bay-look cells hold 2 or 3; `MeshBuilding.openings.upper.axes`). */
 export type FrontageBays = { bays: number; axesPerCell: number };
 
+/** No drawn window column is narrower than this: a stated bay count never packs columns tighter (H1b, #349). */
+export const MIN_COLUMN_M = 1.8;
+
+/**
+ * How many whole texture cells draw a stated bay count (`bays` = columns of window openings per facade, see
+ * docs/house-line.md §1). A cell holds `axesPerCell` columns, so the drawn count is cells x axes: the cell count is
+ * the one whose drawn count is nearest `bays`, a tie going to the fewer (an odd count on 2-axis cells lands on the
+ * even number below, never above: 5 bays draw 4 columns, not 6; the 2026-11-10 doubling was round(5 / 2) = 3 cells).
+ * Then it is held to what the run can carry: cells no narrower than `axesPerCell` columns of MIN_COLUMN_M, and a
+ * count the bay-scale clamp (SPEC_BAY_SCALE) lets `layoutWall` reproduce.
+ */
+export function specCellCount(bays: number, axesPerCell: number, lengthM: number, nominalBayM: number): number {
+  const axes = Math.max(1, Math.floor(axesPerCell || 1));
+  const lo = Math.max(1, Math.floor(bays / axes)), hi = Math.max(1, Math.ceil(bays / axes));
+  let cells = Math.abs(lo * axes - bays) <= Math.abs(hi * axes - bays) ? lo : hi;
+  const widest = Math.max(1, Math.floor(lengthM / (axes * MIN_COLUMN_M)));
+  const reach = (scale: number) => Math.max(1, Math.round(lengthM / (nominalBayM * scale)));
+  cells = Math.min(cells, widest, reach(SPEC_BAY_SCALE.min));
+  return Math.max(cells, reach(SPEC_BAY_SCALE.max));
+}
+
 /**
  * A scoped canal cell represents the complete native frontage, including polygon kinks.
  * With a bay count (`recipe.bays`, else `spec` for a street run of a building without a street-appearance recipe), the
- * run gets round(bays / axesPerCell) cells: bay scale = run length / cells / the style's bay, clamped to
- * SPEC_BAY_SCALE. An odd bay count on a two-axis cell rounds to the nearest whole cell (a limit of the generic cells).
+ * run gets `specCellCount` cells and the bay scale that makes `layoutWall` round to exactly that many.
  */
 export function frontageLayoutScale(recipe: ArchitecturalRecipe | undefined, fallback: {bay:number;storey:number;ground:number}, style: MeshBuilding['style'], lengthM:number, spec?: FrontageBays) {
   const scale=recipeLayoutScale(recipe,fallback);
   if (recipe?.openingGroup) return {...scale,bay:lengthM/STYLE_DIMS[style].bay};
   const bays = recipe?.bays ?? spec?.bays;
   if (!(bays && bays > 0 && lengthM > 0)) return scale;
-  const cells = Math.max(1, Math.round(bays / Math.max(1, spec?.axesPerCell ?? 1)));
-  const bay = Math.min(SPEC_BAY_SCALE.max, Math.max(SPEC_BAY_SCALE.min, lengthM / cells / STYLE_DIMS[style].bay));
-  return {...scale,bay};
+  const nominal = STYLE_DIMS[style].bay;
+  // A street-appearance recipe's own bays keep their original fit (whole cells, scale clamped); only a spec's bays,
+  // counted in window columns, go through specCellCount.
+  if (recipe?.bays) return {...scale,bay:Math.min(SPEC_BAY_SCALE.max,Math.max(SPEC_BAY_SCALE.min,lengthM / Math.max(1,Math.round(recipe.bays)) / nominal))};
+  const cells = specCellCount(bays, spec?.axesPerCell ?? 1, lengthM, nominal);
+  return {...scale,bay:lengthM / cells / nominal};
 }
 
 /** Carry admitted color onto a shallow exposed return, never a new opening/source class. */

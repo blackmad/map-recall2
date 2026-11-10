@@ -131,6 +131,27 @@ First run (2026-11-10): 7,224 pands (register 5,958; 280 block faces = 1,314 hou
   `engine/ownWorldView.ts`, through the `CanalRecallThreeBuildings` globals (`houseSpecEnricher`, `withHouseSpec`,
   `withHouseSpecCrown`, `houseSpecsEnabled`). World-v1 cells carry the bake; `?houseSpecs=0` only affects `?world=live`.
 
+### What `bays` means (H1b, #349)
+
+`bays` is the number of **columns of window openings per facade** on the storeys above the ground floor (`frontBays`:
+the axis grid when stated, else the per-storey maximum above the ground). It is not a count of windows (a 2-window
+texture cell is 2 bays, not 1) and not a count of grid cells. The generic path draws a front as whole texture cells, each
+carrying `openings.upper.axes.length` columns (2 for almost every canal/c19 style, 3 for a few canal ones), so the drawn
+count is cells x axes. `streetFacadeRendering.ts` `specCellCount` picks the cell count whose drawn count is nearest
+`bays`, a tie going to the fewer, held to `MIN_COLUMN_M` (1.8 m) per column and to what the bay-scale clamp lets
+`layoutWall` reproduce. An odd count on 2-axis cells therefore draws the even number below it (3 -> 2, 5 -> 4);
+the generic cells have no plain 3-window c19 style and no 1-window canal/c19 style, which is the kit limit behind that.
+A street-appearance recipe's own `bays` keep the old cell fit.
+
+The 2026-11-10 doubling (photo 3 drawn 6, photo 2 drawn 4, photo 3 drawn 4 on the #348 sample) was `Math.round(bays /
+axes)`: 5/2 = 2.5 rounded up to 3 cells = 6 columns, 3/2 = 1.5 up to 2 cells = 4. Trace of 0363100012169901
+(Bloemgracht, front 8.87 m): block-face intent `fronts/0/bays: 5` -> house-specs view `bays: 5` -> `specRecipe.bays: 5`
+(decorate) -> `specBays {bays 5, axesPerCell 2}` (mesher) -> `frontageLayoutScale` cells 3 (old) / 2 (now) -> `layoutWall`
+cells -> drawn columns 6 (old) / 4 (now); the preview's `measureFacade` read 6 and 4, the photo is 3.
+`scripts/house-specs/trace-bays.ts <pand>` prints this chain; `scripts/house-specs/bays-gate.ts` is the #348 sample gate
+(hand-grid photo counts in `bays-gate-photo.json`). The source `bays` is itself sometimes high (5 for a 4-column
+front; doorBay included), so a nearer count is not always the photo's.
+
 ### Which specs a world carries
 
 `world:compile` writes the stamp into world-v1 `index.json` (`houseSpec/extractStamp.ts`, via
