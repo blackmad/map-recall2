@@ -45,13 +45,15 @@ for (const an of ANCHORS) {
   sidingsOut.push({ anchor: an.id, lines: feats.filter(f => f.properties.railway === 'rail' && (f.properties.service === 'yard' || f.properties.service === 'spur')).flatMap(f => lines(f.geometry)).filter(l => l.some(near)) });
   if (!an.stacks) continue;
   const aisles = feats.filter(f => f.properties.highway === 'service' && f.properties.access === 'private').flatMap(f => lines(f.geometry)).filter(l => l.some(near));
+  // Public roads, cycle paths and rail lines inside the hull are not terminal ground (first frame put stacks on a cycleway and the Zaanlijn).
+  const corridors = feats.filter(f => (f.properties.highway && !(f.properties.highway === 'service' && f.properties.access === 'private')) || f.properties.railway === 'rail').flatMap(f => lines(f.geometry));
   const pts: [number, number][] = [];
   for (const l of aisles) for (const p of l) { const [x, y] = project(p, an.at); for (let k = 0; k < 8; k++) pts.push([x + HULL_BUFFER_M * Math.cos(k * Math.PI / 4), y + HULL_BUFFER_M * Math.sin(k * Math.PI / 4)]); }
   if (pts.length < 3) continue;
   const h = hull(pts), ring: Ring = [...h, h[0]].map(([x, y]) => unproject(x, y, an.at));
   const bl = feats.filter(f => f.properties.building && f.geometry.type !== 'Point' && f.geometry.type !== 'LineString').flatMap(f => outerRings(f.geometry as never)).filter(r => pointInRing(r[0], ring));
   const area = ringArea([...h, h[0]]);
-  stacks.push({ id: an.id, name: an.name, areaM2: Math.round(area), aisles: aisles.length, boxes: containerStacks(an.id, ring, aisles, bl) });
+  stacks.push({ id: an.id, name: an.name, areaM2: Math.round(area), aisles: aisles.length, boxes: containerStacks(an.id, ring, [...aisles, ...corridors], bl) });
 }
 fs.mkdirSync(OUT, { recursive: true });
 const r5 = (v: number) => Math.round(v * 1e5) / 1e5;
