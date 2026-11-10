@@ -1812,6 +1812,16 @@ npm run house:frames -- --buurt AB07 --max 60 --prep-only        # pick, pose an
 npm run house:frames -- --list my.json --out <dir> --post-only    # redo checks, pairs and sheets
 ```
 
+**Belt pose rule (2026-11-10).** Take winter captures first, then the squarest view under 30°. Use 45° or more only as a
+second view. Two options support this, and neither changes the default pick:
+
+- `--prefer-obliquity 30`: within a season, captures that see the wall within that many degrees of square come first,
+  squarest first. This happens before the foliage order.
+- `notPanos`: a `--list` entry can carry `"notPanos": ["<panoId>"]`, which skips those captures. Use it to re-pick a
+  pose flagged `otherBuilding`.
+
+Example: `--season winter --prefer-obliquity 30`.
+
 Output per pand (or per `key` of a `--list` entry): `<out>/<key>/{photo.jpg, game.png, pair.jpg, pose.json}`; per six pairs
 `<out>/contact-N.jpg` (left: the panorama cut, right: the game, cyan: the BAG wall outline, a three-line caption); and
 `<out>/summary.json` (alignment distribution, flags, throughput). `--help` prints the command's `HELP`
