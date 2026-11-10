@@ -2,6 +2,13 @@ import { bayLookFor, bayLayer, BAY_STYLES } from './bayLook.js';
 import { STYLE_DIMS, CELL_LAYER_COUNT } from './facadeCells.js';
 import { recipeForWall, type ArchitecturalRecipe, type StreetAppearanceProfile } from './streetAppearance.js';
 import type { MeshBuilding, Origin } from './threeBuildingMesh.js';
+import { levelWallHex } from './look/paletteLevel.js';
+
+/**
+ * A recipe's own measured wall stays as measured; a wall the bay look picked from the buurt profile or the period (no
+ * `recipe.wallHex`) takes the palette level like every other generic wall (look/paletteLevel.ts, `?paletteLevel=0`).
+ */
+const levelGenericWall = (hex: string, recipe: { wallHex?: string }): string => recipe.wallHex ? hex : levelWallHex(hex);
 
 export const PROCEDURAL_RECIPE_LAYER_OFFSET = CELL_LAYER_COUNT + 4;
 export type StreetFacadeContext = {
@@ -66,7 +73,7 @@ export function streetWallBuilding(building: MeshBuilding, wall: {
   const offset = context.look === 'procedural' ? PROCEDURAL_RECIPE_LAYER_OFFSET : 0;
   return {
     ...building, style: bay.layout, period: recipe.period,
-    wallHex: context.mappedWallHex ?? bay.wallHex,
+    wallHex: context.mappedWallHex ?? levelGenericWall(bay.wallHex, recipe),
     accentHex: recipe.openingGroup ? bay.accentHex : building.shopfront ? building.accentHex : bay.accentHex,
     layers: { upper: bay.layers.upper + offset, ground: bay.layers.ground + offset, door: bay.layers.door + offset },
     plainLayer: bay.plain + offset, groundHex: recipe.groundWallHex && !context.mappedWallHex ? bay.groundHex : building.groundHex ?? bay.groundHex,
@@ -110,6 +117,6 @@ function shortBakedFrontReturn(building:MeshBuilding, wall:{x0:number;y0:number;
     const offset=context.look==='procedural'?PROCEDURAL_RECIPE_LAYER_OFFSET:0;
     const style=BAY_STYLES.canal.findIndex(v=>v.openingGroup==='canal-return');
     const upper=bayLayer('canal',style,'upper')+offset,ground=bayLayer('canal',style,'ground')+offset;
-    return {...building,style:'canal',wallHex:context.mappedWallHex??bay.wallHex,accentHex:bay.accentHex,plainLayer:bay.plain+offset,layers:{upper,ground,door:ground},groundHex:undefined,shop:false,shopfront:false,plainWalls:false,recipe:undefined};
+    return {...building,style:'canal',wallHex:context.mappedWallHex??levelGenericWall(bay.wallHex,recipe),accentHex:bay.accentHex,plainLayer:bay.plain+offset,layers:{upper,ground,door:ground},groundHex:undefined,shop:false,shopfront:false,plainWalls:false,recipe:undefined};
   }
 }

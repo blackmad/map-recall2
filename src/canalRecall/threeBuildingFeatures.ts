@@ -31,6 +31,7 @@ import { GARDEN_ROOM_TONES } from './look/palette.js';
 import { buurtProfileAt } from './buurtProfiles/data.js';
 import { profileWallBeatsMaterial, storeyScaleOf } from './buurtProfiles/profiles.js';
 import { SETBACK_CLADDING_HEX, SETBACK_INSET_M, SETBACK_STOREY_M, insetRing } from './contemporaryFamily.js';
+import { levelWallHex } from './look/paletteLevel.js';
 
 /** 'untextured' draws with the procedural cells' flat layer only: plain colours, real shapes (look/palette.ts). */
 export type { BuildingLook };
@@ -231,6 +232,9 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook, coarse = f
     building.bare = true; building.plainLayer = flat;
     if (building.roof) building.roof = { ...building.roof, layers: { slope: flat, plain: flat, dormer: flat } };
   }
+  // The city-wide palette level (look/paletteLevel.ts, `?paletteLevel=0` for the before): generic photo-look walls only; a
+  // landmark kit, a large recipe and a bare shed keep their authored colour.
+  if (look === 'photo' && !p.kitWall && !p.kitWallHex && !p.largeTier && !building.bare) building.wallHex = levelWallHex(building.wallHex);
   return building;
 }
 
