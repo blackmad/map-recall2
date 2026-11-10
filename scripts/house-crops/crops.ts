@@ -6,7 +6,7 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import jpeg from 'jpeg-js';
 import sharp from 'sharp';
-import { http, neighbourhood, type Footprint } from '../pand-reference/core.ts';
+import { http, neighbourhood, CACHE_DIR, panoTracker, purgeFiles, type Footprint } from '../pand-reference/core.ts';
 import { listPanos, pickWall, rankPanos, type PanoPick, type Wall } from '../pand-reference/select.ts';
 import { loadPano, rectifyWall, wallHeight } from '../pand-reference/rectify.ts';
 import { lensFor } from '../da-costa-block/neighbourhood-core.ts';
@@ -16,12 +16,12 @@ import { lngLatToRd } from '../../src/canalRecall/facade/rdNew.ts';
 import { loadBuurt, pandsInBuurt, centroid, type Buurt } from './buurt.ts';
 import { RULES_VERSION, manifestPath, type Entry, type Manifest, type Session } from './manifest.ts';
 import { measureCrop } from './measure.ts';
-import { THRESHOLDS, usability, penalty, rayBlocked, spanPixels, cutSpan, groupFaces, type CropFlags, type WallRef } from './flags.ts';
+import { DISK_FLOOR_BYTES, diskGate, THRESHOLDS, usability, penalty, rayBlocked, spanPixels, cutSpan, groupFaces, type CropFlags, type WallRef } from './flags.ts';
 
 export const HELP = `house:crops - rectified, quality-flagged facade crops for one buurt (house line station 4a)
 
   npm run house:crops -- --buurt <code|cbs|name> [--pand <id>] [--resume] [--dry-run] [--rate-ms 500]
-                         [--archive <dir>] [--limit <n>] [--years <n>] [--restart] [--report] [--help]
+                         [--archive <dir>] [--limit <n>] [--years <n>] [--all-years] [--offline] [--keep-panoramas] [--restart] [--report] [--help]
 
   --buurt <key>     CBS buurt: 4-letter code (AB07), CBS code (BU0363AB07) or name (Bloemgrachtbuurt). Required.
   --pand <id,id>   process only these pands (16-digit BAG ids, with or without NL.IMBAG.Pand.); they must lie in the buurt.
@@ -35,6 +35,9 @@ export const HELP = `house:crops - rectified, quality-flagged facade crops for o
                     Default: env HOUSE_CROPS_ARCHIVE. Required unless --dry-run.
   --years <n>       best of up to n mission years per pand (default 6): the years are tried in order (clear straight view, leaf-off, newer) and
                     the first crop that passes every check wins; otherwise the best-scoring one is kept. --years 1 is the single-year baseline.
+  --all-years       judge-picker mode: try every year, archive each crop as <pand>/years/<year>.jpg (pick.ts then judges and chooses).
+  --keep-panoramas  keep the source panoramas in the cache; by default a finished run purges the panoramas it touched (the crops and their panorama ids are archived).
+  --offline         a panorama or list that is not in the cache is skipped, never downloaded (re-rectification costs no requests).
   --limit <n>       stop after n pands (smoke runs); the manifest stays resumable.
   --report          print the coverage table and write the contact sheet (artifacts/house-crops/<code>-sheet.png), no crops.
 
@@ -50,6 +53,7 @@ ray to the wall not through another footprint, wall >= ${THRESHOLDS.minWallM} m,
 (scripts/house-crops/flags.ts THRESHOLDS; seamStep is recorded, not gated). Foliage is measured after a1's white balance (stripWhiteBalance.ts).
 A manifest of an older rules version cannot be --resumed: use --restart (cached responses, no repeated requests).
 Panorama API: one request start per --rate-ms, exponential backoff on 429/5xx (Retry-After honoured), identifying User-Agent.
+Disk rule: a run first checks free space and refuses to start if it would leave under 15 GB (exit 4); a finished run purges its source panoramas.
 Panorama bytes are cached in PAND_REFERENCE_CACHE (default .cache/pand-reference; point it at the shared cache).`;
 
 const arg = (n: string) => { const i = process.argv.indexOf(`--${n}`); return i >= 0 ? process.argv[i + 1] : undefined; };
@@ -132,7 +136,7 @@ async function stripCrop(fp: Footprint, wall: Wall, face: WallRef[], panos: any[
 }
 
 // ---- one pand --------------------------------------------------------------------------------------------
-export const needsStrip = (wall: Wall, pick: PanoPick) => wall.len < THRESHOLDS.narrowWallM || pick.obliquityDeg > THRESHOLDS.obliquityDeg;
+export const needsStrip = (wall: Wall, pick: PanoPick) => wall.len < THRESHOLDS.narrowWallM || pick.obliquityDeg > THRESHOLDS.straightDeg;
 
 /**
  * One representative panorama per mission year, in the order they are tried: clear straight views first, then leaf-off
@@ -146,8 +150,9 @@ export function yearCandidates(ranked: PanoPick[], tier: (c: PanoPick) => number
   return [...byYear.values()].sort((a, b) => tier(a) - tier(b) || Number(leafOff(b.timestamp)) - Number(leafOff(a.timestamp)) || b.missionYear - a.missionYear).slice(0, maxYears);
 }
 
-export const options = { maxYears: 6 };
-type Tried = { year: number; panoId: string; date: string; usable: boolean; reasons: string[]; method: 'wall' | 'strip'; obliquity: number; foliage: number };
+/** allYears (H4c --all-years): keep going after a usable crop and archive every year's crop as years/<year>.jpg for the judge picker; offline: a year whose panorama is not in the cache is skipped, not fetched. */
+export const options = { maxYears: 6, allYears: false, offline: false };
+type Tried = { year: number; panoId: string; date: string; usable: boolean; reasons: string[]; method: 'wall' | 'strip'; obliquity: number; foliage: number; flags?: CropFlags; file?: string };
 
 async function processPand(fp: Footprint, wall: Wall, face: WallRef[], archiveRoot: string): Promise<Entry> {
   const panos = await panosNear(wall.mid);
@@ -155,7 +160,7 @@ async function processPand(fp: Footprint, wall: Wall, face: WallRef[], archiveRo
   const camRd = (rec: any) => lngLatToRd([rec.geometry.coordinates[0], rec.geometry.coordinates[1]]);
   const isBlocked = (rec: any) => rayBlocked(camRd(rec), wall.mid, [wall.nx, wall.ny], others);
   // Tiers: clear ray and <= 35 deg, clear and 35-55 (fallback), then blocked rays.
-  const tier = (c: PanoPick) => (isBlocked(c.record) ? 2 : 0) + (c.obliquityDeg > THRESHOLDS.obliquityDeg ? 1 : 0);
+  const tier = (c: PanoPick) => (isBlocked(c.record) ? 2 : 0) + (c.obliquityDeg > THRESHOLDS.straightDeg ? 1 : 0);
   const ranked = rankPanos(wall, panos);
   if (!ranked.length) return { status: 'no-pano', note: `no panorama 5-35 m from the wall within ${THRESHOLDS.fallbackObliquityDeg} deg (${panos.length} listed)` };
   const years = yearCandidates(ranked, tier, options.maxYears);
@@ -166,14 +171,23 @@ async function processPand(fp: Footprint, wall: Wall, face: WallRef[], archiveRo
   for (const pick of years) {
     const strip = needsStrip(wall, pick);
     const yearPanos = panos.filter(p => Number(p.mission_year ?? String(p.timestamp).slice(0, 4)) === pick.missionYear);
-    let made: Made | 'no-pano' | null = strip ? await stripCrop(fp, wall, face, yearPanos, isBlocked) : await wallCrop(fp, wall, pick, isBlocked(pick.record));
-    if (made === 'no-pano') made = await wallCrop(fp, wall, pick, isBlocked(pick.record));
+    let made: Made | 'no-pano' | null;
+    try {
+      made = strip ? await stripCrop(fp, wall, face, yearPanos, isBlocked) : await wallCrop(fp, wall, pick, isBlocked(pick.record));
+      if (made === 'no-pano') made = await wallCrop(fp, wall, pick, isBlocked(pick.record));
+    } catch (e) { if (options.offline) { attempts++; continue; } throw e; }
     attempts++;
     if (!made) continue;
     const u = usability(made.flags);
-    tried.push({ year: pick.missionYear, panoId: made.picks[0].panoId, date: made.picks[0].timestamp.slice(0, 10), usable: u.usable, reasons: u.reasons, method: made.method, obliquity: made.flags.obliquity, foliage: made.flags.foliage });
+    const t: Tried = { year: pick.missionYear, panoId: made.picks[0].panoId, date: made.picks[0].timestamp.slice(0, 10), usable: u.usable, reasons: u.reasons, method: made.method, obliquity: made.flags.obliquity, foliage: made.flags.foliage };
+    if (options.allYears) {
+      const yd = path.join(archiveRoot, 'pand-crops', idOf(fp.id), 'years'); await fs.mkdir(yd, { recursive: true });
+      t.file = `years/${pick.missionYear}.jpg`; t.flags = made.flags; await fs.writeFile(path.join(yd, `${pick.missionYear}.jpg`), made.jpeg);
+      (t as any).panoIds = made.picks.map(p => p.panoId);
+    }
+    tried.push(t);
     if (!best || better(made, best)) { best = made; bestYear = pick.missionYear; }
-    if (u.usable) break;
+    if (u.usable && !options.allYears) break;
   }
   if (!best) return { status: 'error', note: 'no panorama could be decoded or rectified', attempts, yearsTried: attempts };
   const u = usability(best.flags), id = idOf(fp.id), rel = `pand-crops/${id}`, dir = path.join(archiveRoot, rel);
@@ -203,6 +217,7 @@ async function main() {
   const buurt: Buurt = await loadBuurt(key);
   if (has('report')) { const { report } = await import('./report.ts'); await report(buurt.code, arg('archive') ?? process.env.HOUSE_CROPS_ARCHIVE); return; }
   options.maxYears = Number(arg('years') ?? options.maxYears);
+  options.allYears = has('all-years'); options.offline = has('offline'); http.offline = options.offline;
   const archiveRoot = arg('archive') ?? process.env.HOUSE_CROPS_ARCHIVE;
   if (has('rejudge')) {
     const m = await readManifest(buurt.code); if (!m) throw new Error('no manifest');
@@ -238,6 +253,15 @@ async function main() {
   const est = estimate(walls.size, cells, rateMs);
   console.log(`estimate: ~${est.requests} requests, ~${est.networkMinutes} min of paced network at ${rateMs} ms (plus ~1-2 s decode/rectify per pand)`);
   if (dry) return;
+  // Disk rule: run df first and refuse to start a run that would leave less than 15 GB free.
+  if (!options.offline) {
+    await fs.mkdir(CACHE_DIR, { recursive: true });
+    const st = await fs.statfs(CACHE_DIR);
+    const gate = diskGate(st.bavail * st.bsize, est.requests), GB = (b: number) => (b / 1024 ** 3).toFixed(1);
+    console.log(`disk: ${GB(st.bavail * st.bsize)} GB free, run adds ~${GB(gate.estimatedBytes)} GB of panoramas, ${GB(gate.afterBytes)} GB would remain (floor ${GB(DISK_FLOOR_BYTES)} GB)`);
+    if (!gate.ok) { console.error('refusing to start: this run would leave less than 15 GB free. Free space (purge old panoramas, prune worktrees) and re-run.'); process.exit(4); }
+    if (!has('keep-panoramas')) panoTracker.touched = new Set();
+  }
 
   const root = path.resolve(archiveRoot!);
   const prior = await readManifest(buurt.code);
@@ -275,6 +299,8 @@ async function main() {
     console.log(`${String(session.pands).padStart(4)} ${id.slice(-8)} ${e.status}${e.status === 'ok' ? ` ${e.method} ${e.usable ? 'usable' : 'rejected:' + e.reasons!.join('+')} ${e.flags!.foliage}f ${e.flags!.voidShare}v` : e.note ? ' ' + e.note : ''} [${http.requests} req, ${http.status429} x429]`);
   }
   snap(); await writeManifest(manifest);
+  // Disk rule: the crops and their panorama ids are the keepers; this run's source panoramas are purged once the buurt is rectified (not when stopped early: they are still needed to resume).
+  if (panoTracker.touched && !stop && order.every(fp => manifest.pands[idOf(fp.id)])) { const r = await purgeFiles(panoTracker.touched); console.log(`purged ${r.files} source panoramas (${(r.bytes / 1024 ** 3).toFixed(2)} GB) from ${CACHE_DIR}; --keep-panoramas keeps them`); }
   const { report } = await import('./report.ts');
   await report(buurt.code, root);
 }

@@ -10,13 +10,15 @@ export const THRESHOLDS = {
   voidShare: 0.35,
   /** share of leaf-coloured pixels (isLeaf); auto-place.ts caps foliage at 0.3 */
   foliage: 0.3,
-  /** bright, nearly colourless mid-wall share (scaffold sheeting, overexposure, fog). White-painted fronts can reach 0.3, so the cap is looser than the 0.1 brick/plaster norm */
-  washedOut: 0.5,
+  /** H4c: HIGHLIGHT CLIPPING, the share of mid-wall pixels with a channel at 255 (CLIP_LEVEL in measure.ts); a blown-out sky, sheet or overexposed wall clips, a white-painted wall that is exposed correctly does not. Calibrated on the labels, see evaluate.ts --sweep */
+  washedOut: 0.25,
   /** largest connected dark blob in the lower third (a PROXY for a parked van or scaffold; dark shopfront glass can also trip it) */
   occluderShare: 0.35,
-  /** a crop is usable only from a straight view; 35-55 degrees (select.ts FACADE_WINDOW) is a fallback that is made and archived but not usable */
-  obliquityDeg: 35,
+  /** H4c: a crop is usable up to 55 degrees (select.ts FACADE_WINDOW); narrow Jordaan streets only have oblique views, and on the AB07 labels 35 -> 55 raised recall for good from 0.84 to 0.97 at the same precision */
+  obliquityDeg: 55,
   fallbackObliquityDeg: 55,
+  /** a view up to this angle is a straight one: the year picker ranks it first and wider angles take the planStrip route (a wall crop is stretched at a steep angle) */
+  straightDeg: 35,
   cameraDistanceM: [5, 35] as const,
   /** H4b: the wall is at least this wide (slivers and single-window close-ups) */
   minWallM: 3.5,
@@ -31,7 +33,7 @@ export const THRESHOLDS = {
 export type CropFlags = {
   /** foliage share on the white-balanced leaf test (a1's stripWhiteBalance.ts); foliagePlain is the unbalanced isLeaf share */
   foliage: number; foliagePlain: number; wbApplied: boolean;
-  washedOut: number; missing: number; voidShare: number; occluderShare: number;
+  washedOut: number; /** H4c remeasure: the pre-H4c brightness measure, kept for the sweep */ washedBrightness?: number; missing: number; voidShare: number; occluderShare: number;
   obliquity: number; cameraDistance: number;
   /** the camera ray to the wall centre crosses another BAG footprint (alley / neighbour case) */
   rayBlocked: boolean;
@@ -57,6 +59,18 @@ export function usability(f: CropFlags, t: typeof THRESHOLDS = THRESHOLDS): Usab
   // seamStep is recorded but not a gate: on the AB07 labels a luma step does not separate good from bad strip crops (evaluate.ts)
   return { usable: reasons.length === 0, reasons };
 }
+
+/**
+ * H4c: the reasons that are geometry and content facts about the crop (wrong wall, sliver, blank, off-panorama, too oblique or
+ * too far): they stay hard gates. foliage, washed-out and occluder are pixel PROXIES for "something hides the front"; the Jev
+ * judge (judge.ts) replaces them as the picker, and they remain as `usable` for crops that were never judged.
+ */
+export const HARD_REASONS = ['void', 'oblique', 'distance', 'blocked', 'narrow', 'short', 'blank'] as const;
+export const hardPass = (reasons: string[]): boolean => !reasons.some(r => (HARD_REASONS as readonly string[]).includes(r));
+/** The deployed judge threshold on `quality`. In-sample on the 150 labels: 0.3 gives precision 0.907, 0.35 gives 0.889, 0.4 gives 0.941 (recall 0.50); 0.4 is the lowest round value with a margin over the 0.9 gate (split-half thresholds ranged 0.285-0.367, so the held-out precision is lower: docs section 4a). */
+export const JUDGE_GOOD = 0.4;
+/** H4c decision: passes the hard flags and the judge score reaches `threshold`. */
+export const judgedGood = (reasons: string[], score: number | undefined, threshold: number): boolean => hardPass(reasons) && score !== undefined && score >= threshold;
 
 /** Sum of how far each flag exceeds its cap (0 = within all caps): picks the better of two attempts when neither is usable. */
 export function penalty(f: CropFlags, t: typeof THRESHOLDS = THRESHOLDS): number {
@@ -177,4 +191,16 @@ export function segmentHitsRings(p: Rd, q: Rd, rings: Rd[][]): boolean {
 /** Is the view from `camera` to the wall centre (stepped 0.5 m outward so the wall itself is not hit) blocked by one of `others`? */
 export function rayBlocked(camera: Rd, wallMid: Rd, normal: [number, number], others: Rd[][]): boolean {
   return segmentHitsRings(camera, { x: wallMid.x + normal[0] * 0.5, y: wallMid.y + normal[1] * 0.5 }, others);
+}
+
+// ---- disk rule (H4c) -------------------------------------------------------------------------------
+
+/** A crops run must leave at least this much free (docs/house-line.md section 4a). */
+export const DISK_FLOOR_BYTES = 15 * 1024 ** 3;
+/** Bytes one request of the panorama API adds to the cache on average (AB07: 3.8 GB over 1,719 requests, mostly 8k equirectangular JPEGs). */
+export const BYTES_PER_REQUEST = 2.3e6;
+/** Refuse to start when the free space minus the run's estimated downloads is under the floor. */
+export function diskGate(freeBytes: number, estimatedRequests: number, floor = DISK_FLOOR_BYTES): { ok: boolean; afterBytes: number; estimatedBytes: number } {
+  const estimatedBytes = Math.round(estimatedRequests * BYTES_PER_REQUEST);
+  return { ok: freeBytes - estimatedBytes >= floor, afterBytes: freeBytes - estimatedBytes, estimatedBytes };
 }

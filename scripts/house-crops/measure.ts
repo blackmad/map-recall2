@@ -4,6 +4,18 @@ import { isLeaf } from '../../src/canalRecall/buildingRecipe/measureFacade.ts';
 import { voidShare, occluderShare } from './flags.ts';
 
 export const EDGE_GRADIENT = 20;
+/** A channel at or above this counts as clipped. 255 exactly, minus one level for the JPEG round trip (the archived crops are q80 JPEGs, the live measurement reads the raw pixels; both use 254 so they agree). */
+export const CLIP_LEVEL = 254;
+
+/** H4c washed-out: share of valid mid-wall pixels (rows 20-90 %) with any channel clipped. Brightness alone flagged white-painted canal fronts; clipping does not, because a correctly exposed white wall sits at 200-245. `alpha` may be omitted for an archived JPEG (void pixels are mid-grey there and never clip). */
+export function clippedShare(rgba: Uint8ClampedArray | Uint8Array, alpha: Uint8Array | null, width: number, height: number): number {
+  let bad = 0, n = 0;
+  for (let y = Math.floor(height * 0.2); y < Math.floor(height * 0.9); y += 2) for (let x = 0; x < width; x += 2) {
+    const p = y * width + x; if (alpha && alpha[p] !== 255) continue; n++;
+    if (Math.max(rgba[p * 4], rgba[p * 4 + 1], rgba[p * 4 + 2]) >= CLIP_LEVEL) bad++;
+  }
+  return n ? bad / n : 0;
+}
 const luma = (d: Uint8ClampedArray | Uint8Array, i: number) => 0.299 * d[i] + 0.587 * d[i + 1] + 0.114 * d[i + 2];
 
 /** Valid rows counted up from the bottom (the ground) while at least half their pixels are valid, as a share of the crop height. */
@@ -60,17 +72,11 @@ export function measureCrop(rgba: Uint8ClampedArray | Uint8Array, alpha: Uint8Ar
   const sw = Math.floor(width / 3), sh = Math.floor(height / 3), rgb = new Uint8Array(sw * sh * 3);
   for (let y = 0; y < sh; y++) for (let x = 0; x < sw; x++) { const p = (y * 3) * width + x * 3, o = (y * sw + x) * 3, v = alpha[p] === 255; rgb[o] = v ? rgba[p * 4] : 128; rgb[o + 1] = v ? rgba[p * 4 + 1] : 128; rgb[o + 2] = v ? rgba[p * 4 + 2] : 128; }
   const wb = measureWhiteBalance(rgb, sw, sh, [[0, sw]]);
-  // washed-out as pand-reference's washedOutFraction (mid-wall rows 20-90 %, bright and nearly colourless)
-  let bad = 0, nw = 0;
-  for (let y = Math.floor(height * 0.2); y < Math.floor(height * 0.9); y += 2) for (let x = 0; x < width; x += 2) {
-    const p = y * width + x; if (alpha[p] !== 255) continue; nw++;
-    const r = rgba[p * 4], g = rgba[p * 4 + 1], b = rgba[p * 4 + 2], hi = Math.max(r, g, b), lo = Math.min(r, g, b);
-    if (lo > 150 && hi - lo < 55) bad++;
-  }
+  const washedOut = clippedShare(rgba, alpha, width, height);
   let miss = 0; for (let p = 0; p < alpha.length; p++) if (alpha[p] !== 255) miss++;
   return {
     foliage: foliageShare(rgba, alpha, width, height, balancedLeaf(wb)), foliagePlain: foliageShare(rgba, alpha, width, height, isLeaf), wbApplied: wb.applied,
-    washedOut: nw ? bad / nw : 0, missing: alpha.length ? miss / alpha.length : 1, voidShare: voidShare(alpha, width, height), occluderShare: occluderShare(rgba, alpha, width, height),
+    washedOut, missing: alpha.length ? miss / alpha.length : 1, voidShare: voidShare(alpha, width, height), occluderShare: occluderShare(rgba, alpha, width, height),
     heightCover: heightCover(alpha, width, height), edgeDensity: edgeDensity(rgba, alpha, width, height), seamStep: seamStep(rgba, alpha, width, height),
   };
 }
