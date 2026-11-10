@@ -340,10 +340,10 @@ const PLAZA_ROAD_WIDTHS: Record<string, number> = {
   service: 13, busway: 18, cycleway: 9, pedestrian: 14, footway: 7, path: 8,
 };
 const squares = JSON.parse(await readFile('public/data/extracts/amsterdam/squares.json', 'utf8')) as PlazaFeature[];
-const plazaWorld = (centre: [number, number], radiusMetres = 700) => {
+const plazaWorld = (centre: [number, number], radiusMetres = 700, skipStreet?: (streetIndex: number) => boolean) => {
   const ways: OsmWay[] = [];
   routing.forEach((street, streetIndex) => (street.paths ?? (street.path ? [street.path] : [])).forEach((p, pathIndex) => {
-    if (p.length < 2) return;
+    if (p.length < 2 || skipStreet?.(streetIndex)) return;
     if (p.length > 3 && p[0][0] === p.at(-1)![0] && p[0][1] === p.at(-1)![1]) return;
     if (!p.some(q => metersBetween(q, centre) < radiusMetres)) return;
     const highway = street.highway || 'residential';
@@ -487,6 +487,39 @@ let plazaSummary = '';
   for (const [label, at] of [['the Oosterdok inlet east of the quay', [52.3772494, 4.9037387]], ['below the wall, west of the steps', [52.3771200, 4.9030300]]] as const) {
     const w = ode.toWorld(at[0], at[1]);
     assert.equal(plazaAt(ode.plazas, w.x, w.y), null, `${label} is not paved link`);
+  }
+  // Feedback triage 2026-11-10 (build 6a901ba, desktop Free Ride; scripts/feedback/*, docs/reports/feedback-triage-20261110.md).
+  // The report positions are the notes' context.player minus the camera offset applied to mapCenter.
+  // 6d9d7ddd "I should probably be able to bike through here": the Oosterpark path east of the Tropenmuseum
+  // (bicycle=yes footways w376383016 and neighbours). The extract dropped it until D2 (graphRevision 2, #322) appended
+  // 273 features (index >= 47259 in streets-routing); without them the whole path is off every corridor.
+  const D2_FIRST_FEATURE = 47_259;
+  const tropenReport: [number, number] = [52.362209, 4.922503];
+  const tropenPath: Array<[number, number]> = [[52.362326, 4.922363], [52.362275, 4.922058], [52.362201, 4.921765], [52.361954, 4.921029]];
+  const rideAlong = (world: ReturnType<typeof plazaWorld>, from: [number, number], via: Array<[number, number]>) => {
+    let steps = 0, stops = 0, at = from;
+    for (const next of via) { const leg = world.ride(at, next, world.plazas); steps += leg.steps; stops += leg.stops; at = next; }
+    return { steps, stops };
+  };
+  const tropenBefore = rideAlong(plazaWorld(tropenReport, 700, index => index >= D2_FIRST_FEATURE), tropenReport, tropenPath);
+  const tropenAfter = rideAlong(plazaWorld(tropenReport), tropenReport, tropenPath);
+  assert.ok(tropenBefore.stops > 20, `Oosterpark path: without the D2 footways the path is off every corridor (${tropenBefore.stops}/${tropenBefore.steps} m blocked)`);
+  assert.equal(tropenAfter.stops, 0, `Oosterpark path by the Tropenmuseum (6d9d7ddd): rideable from the report position west along the path (${tropenAfter.stops}/${tropenAfter.steps} m blocked)`);
+  // 637f346b "should be able to ride here" (ASC SDW forecourt, Heathrowstraat) and 4f47f105 (the Radarweg office
+  // courtyard off Barajasweg): the bike stands on the corridor edge and open paving lies beside it. OSM has no rideable way
+  // there (only unmarked paving_stones footways w1444682609, w1425820505-7: foot access, not bicycle=yes) and no pedestrian
+  // area, so this stays off-road BY DESIGN until a paved link or a look that tells rideable paving from walking space
+  // lands. The pin keeps the gap measured: flip these to rideable when it does.
+  for (const [label, at] of [['ASC SDW forecourt (637f346b)', [52.385970, 4.832498]], ['Radarweg office courtyard (4f47f105)', [52.387448, 4.833459]]] as const) {
+    const world = plazaWorld(at);
+    const w = world.toWorld(at[0], at[1]);
+    assert.equal(world.blocked(w.x, w.y, world.plazas), false, `${label}: the reported bike position is on a corridor`);
+    let beyond = 0;
+    for (let angle = 0; angle < 360; angle += 15) {
+      const probe = world.toWorld(at[0] + Math.sin(angle * Math.PI / 180) * 12 / 111_320, at[1] + Math.cos(angle * Math.PI / 180) * 12 / (111_320 * Math.cos(at[0] * Math.PI / 180)));
+      if (world.blocked(probe.x, probe.y, world.plazas)) beyond++;
+    }
+    assert.ok(beyond >= 8, `${label}: open paving within 12 m is off every corridor (${beyond}/24 directions blocked)`);
   }
   // Negatives: closed rings that stay blocked. Frederiksplein is a park
   // (lawn around the fountain); the Piet Heinkade ring (routing_4258 path 6,
