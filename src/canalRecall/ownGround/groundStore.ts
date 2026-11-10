@@ -82,7 +82,7 @@ export const pacer = (budgetMs = PACE_BUDGET_MS): (() => Promise<void>) => {
 export const CUT_REACH_M = 600;
 import { deckReach, movableApproaches, pointInRing } from './decks.js';
 import { prepareWays, isBridgeWay } from './streets.js';
-import { WAY_DECK_CLEAR_M, WAY_OPENING_REACH_M, bridgeWayBundles, capDeckSides, deckEdgeSides, setDeckSides, ROAD_EDGE_REACH_MAX_M, roadEdgeSides, joinChains, groupWayDecks, wayDeckCrossing, WAY_DECK_GROUP_M, dryWayDeckProfile, isWayDeckFamily, wayDeckHighway, wayOpeningDeck, type WayDeckInput } from './wayDecks.js';
+import { WAY_DECK_CLEAR_M, WAY_OPENING_REACH_M, bridgeWayBundles, capDeckSides, deckEdgeSides, setDeckSides, ROAD_EDGE_REACH_MAX_M, roadEdgeSides, joinChains, groupWayDecks, wayDeckCrossing, WAY_DECK_GROUP_M, dryWayDeckProfile, narrowDryDeck, isWayDeckFamily, wayDeckHighway, wayOpeningDeck, type WayDeckInput } from './wayDecks.js';
 import { RoadIndex } from './roadSurfaces.js';
 import { DRY_EDGE_M, edgesBox, surveyDeckEdges } from './bridgeGaps.js';
 import { landedPlatformRings } from './landedPlatforms.js';
@@ -765,6 +765,8 @@ export class GroundStore {
           if (p && dryDeckGrade(p, this.deckGround) <= DRY_DECK_MAX_GRADE) { profiles.push(p); dry.add(p); }
           await pace();
         }
+        // Only now (the loop above reads the earlier decks' half-widths as their carriageways): the survey sets the width.
+        for (const p of dry) narrowDryDeck(p);
       }
     }
     for (const w of ways) { this.wayDeckIds.add(w.id); this.planTrace?.('wayDeck', String(w.id), key); }
@@ -784,6 +786,7 @@ export class GroundStore {
       await yieldToFrame();
       const onRoad = (x: number, y: number) => index.classAt(x, y, true) !== null;
       for (const profile of profiles) {
+        if (dry.has(profile)) continue; // the survey's deck polygon sets a dry deck's width, not the road surfaces beside it
         const sides = roadEdgeSides(profile, onRoad);
         await pace();
         if (!sides) continue;

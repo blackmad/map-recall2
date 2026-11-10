@@ -406,6 +406,24 @@ export function dryWayDeckProfile(w: WayDeckInput, dry: (x: number, y: number) =
   p.family = DRY_WAY_DECK;
   return p;
 }
+/**
+ * A dry way deck's core half-width (lane bridge-gaps-2, 2026-11-09, issue #178): the OSM way's drawn half-width can
+ * reach past the survey's deck polygon (Ringweg-Zuid 7381715: 10.1 m, the deck polygon ends near 5 m, a ground-level
+ * road beyond it), and a deck never draws narrower than its half-width, so it covered ground-level road with bare deck
+ * (step 3 made Ringweg-Zuid 150 -> 328 m2). A dry deck keeps only this core; the survey's deck polygon (surveyDeckEdges,
+ * which stops at ground-level road) sets each side's width.
+ */
+export const DRY_CORE_HALF_M = 1.5;
+/** Narrow a dry way deck's half-width to DRY_CORE_HALF_M (no-op when already narrower); the bbox shrinks with it. */
+export function narrowDryDeck(p: DeckProfile, core = DRY_CORE_HALF_M): void {
+  let bx0 = Infinity, by0 = Infinity, bx1 = -Infinity, by1 = -Infinity;
+  for (let i = 0; i < p.x.length; i++) {
+    p.halfWidth[i] = Math.min(p.halfWidth[i], core);
+    bx0 = Math.min(bx0, p.x[i] - p.halfWidth[i]); by0 = Math.min(by0, p.y[i] - p.halfWidth[i]); bx1 = Math.max(bx1, p.x[i] + p.halfWidth[i]); by1 = Math.max(by1, p.y[i] + p.halfWidth[i]);
+  }
+  p.bbox = [bx0, by0, bx1, by1];
+  delete p.sides;
+}
 /** A dry way deck's family: no kit body or parapets (the survey draws its surface; the structure under it is not modelled, polish 2026-11-02: the pieces' parapets read as hairlines at the bus station). */
 export const DRY_WAY_DECK = 'dry-way-deck';
 /** A way deck of either kind (over water, or dry). */
