@@ -123,3 +123,16 @@ export function pandRide(centroid: [number, number], ring: readonly [number, num
 
 /** index.html link for a ride (relative to public/canal-drive/). */
 export const rideHref = (r: Ride): string => `./index.html?travel=car#race=${r.map(v => v.toFixed(6)).join(',')}`;
+
+/**
+ * Guard for `build-coverage --publish` (issue #359): the published look/ folder is replaced only by a complete set.
+ * A missing manifest (no artifacts/coverage/out/look.json in this checkout) or fewer thumbnails than are published
+ * keeps the folder as it is and says why; `allowShrink` is the deliberate-prune override.
+ */
+export function lookPublishPlan(o: { manifestPresent: boolean; published: readonly string[]; next: readonly string[]; allowShrink?: boolean }): { replace: boolean; reason?: string } {
+  const next = new Set(o.next), published = new Set(o.published);
+  if (!o.manifestPresent) return { replace: false, reason: 'look.json manifest is missing (run scripts/coverage/build-look-thumbs.ts); kept the published look/ folder' };
+  if (!next.size && published.size) return { replace: false, reason: `manifest lists no thumbnails but ${published.size} are published; kept the published look/ folder` };
+  if (next.size < published.size && !o.allowShrink) return { replace: false, reason: `manifest has ${next.size} thumbnails, fewer than the ${published.size} published; kept the published look/ folder (pass --allow-shrink to prune)` };
+  return { replace: true };
+}

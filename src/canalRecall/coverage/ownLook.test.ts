@@ -3,7 +3,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { test } from 'node:test';
 import type { ContentItems } from './contents.js';
-import { LOOK_LEGEND, chunkRide, lookBin, noLook, ownLookOf, pandRide, rideHref, type OwnLook } from './ownLook.js';
+import { LOOK_LEGEND, chunkRide, lookBin, lookPublishPlan, noLook, ownLookOf, pandRide, rideHref, type OwnLook } from './ownLook.js';
 
 const ROOT = path.resolve(import.meta.dirname, '../../..');
 const PAGE = path.join(ROOT, 'public/canal-drive');
@@ -100,4 +100,15 @@ test('extract own look regressions: Nieuw-West and Bellamy buurten have their ow
   const kd02 = by('KD02');
   assert.equal(kd02.name, 'Cornelis Schuytbuurt');
   assert.equal(kd02.look!.status, 'none');
+});
+
+test('lookPublishPlan (#359): a missing manifest or a smaller set keeps the published thumbnails', () => {
+  const published = ['a.jpg', 'b.jpg', 'c.jpg'];
+  assert.equal(lookPublishPlan({ manifestPresent: false, published, next: [] }).replace, false);
+  assert.match(lookPublishPlan({ manifestPresent: false, published, next: [] }).reason!, /manifest is missing/);
+  assert.equal(lookPublishPlan({ manifestPresent: true, published, next: [] }).replace, false, 'empty manifest');
+  assert.equal(lookPublishPlan({ manifestPresent: true, published, next: ['a.jpg', 'b.jpg'] }).replace, false, 'fewer than published');
+  assert.equal(lookPublishPlan({ manifestPresent: true, published, next: ['a.jpg', 'b.jpg'], allowShrink: true }).replace, true);
+  assert.equal(lookPublishPlan({ manifestPresent: true, published, next: [...published, 'd.jpg'] }).replace, true);
+  assert.equal(lookPublishPlan({ manifestPresent: true, published: [], next: [] }).replace, true, 'first publish');
 });
