@@ -37,6 +37,9 @@ import { OPEN_GROUND_COVERS, OPEN_GROUND_DRAPE, OPEN_GROUND_LAYER, OPEN_GROUND_L
 import { cycleThrough, meshCover, type ThroughStats } from './cycleThrough.js';
 import { fillPockets, POCKET_LIFT, type PocketCover, type PocketStats, type SurveyGap, SURVEY_GAP_MIN_R } from './pockets.js';
 import { buildRoadSurfaces, deckLevelHeight, RoadIndex, type RoadBuildStats } from './roadSurfaces.js';
+import { DRY_WAY_DECK } from './wayDecks.js';
+/** A road deck over land this far over the ground (metres) is one a track off the bridges passes under (groundCell railLand). */
+export const RAIL_UNDER_DECK_M = 2.5;
 import { ANCILLARY_CLASSES, type RoadCell } from './roadCells.js';
 import type { RoadMark } from './roadMarks.js';
 import { AT_GRADE_HIGHWAYS, crossingTest, onStreetTest, platformMeshes, railMeshes, type RailBuildStats, type RailPlatform, type RailWay, type StreetStrip } from './railTracks.js';
@@ -167,6 +170,8 @@ export interface CellInput {
   /** Rails flat on the street they lie on or cross within the bed's reach (railTracks.ts onStreetTest; default on, false: the centreline-crossing test only, for measuring). */
   railOnStreet?: boolean;
   /** Deck spans where a street passes under a track off the bridges (railSpans.ts; default on, false: the build before lane rails-classb, for measuring). */
+  /** Level crossings ramp the bed at the track's grade (railTracks.ts `ramps`, lane rails-uncover); default on, false: the before. */
+  railRamps?: boolean;
   railSpans?: boolean;
   /** OSM way ids the neighbourhood's road polygons cover (roadCells coverWays): no bands for them. */
   coverWays?: readonly number[];
@@ -579,7 +584,19 @@ export function buildCell(input: CellInput): BuiltCell {
     // Levels (railProfile.ts): the relief's envelope at the track's grade, bridge decks between their approaches.
     // A tunnel cut's box keeps its measured floor (tunnels.ts): no envelope lift, no floor raise from the trench's sides.
     const allCuts = input.cuts ?? [], measured = allCuts.length ? (x: number, y: number) => allCuts.some(c => x >= c.bbox[0] && x <= c.bbox[2] && y >= c.bbox[1] && y <= c.bbox[3]) : undefined;
-    const profile = input.railLevels === false || input.railLegacy ? null : railLevels(input.rails, input.railsAround ?? [], onLand, [x0 - PROFILE_PAD_M, y0 - PROFILE_PAD_M, x1 + PROFILE_PAD_M, y1 + PROFILE_PAD_M], measured, (x, y) => surface.deckWeight(x, y) > 0.5, input.railPlatforms);
+    // A track off the bridges runs on the ground beneath a road deck over land, not on it (lane rails-uncover): under a
+    // dry way deck (wayDecks.ts: the Radarweg over the Sloterdijk rail trench), and under any deck standing more than
+    // RAIL_UNDER_DECK_M over the ground off the water (the A10 Ringweg-Zuid over the Piet Kranenbergpad track: the profile
+    // climbed onto the motorway deck at +5.5 and sloped back down for 60 m, 1-2 m over the path beside it, and railSpans
+    // then decked that false clearance over the path). Over water a deck carries the tram (the canal bridges).
+    const railLand = (x: number, y: number) => {
+      const w = surface.deckWeight(x, y);
+      if (!(w > 0)) return onLand(x, y);
+      if (!(surface.deckWeight(x, y, DRY_WAY_DECK) > 0) && (overWater(x, y) || !(surface.height(x, y) - surface.ground(x, y) > RAIL_UNDER_DECK_M))) return onLand(x, y);
+      if (cuts.length) { const f = surface.cutFloor(x, y); if (f === f) return f; }
+      return landZ(x, y);
+    };
+    const profile = input.railLevels === false || input.railLegacy ? null : railLevels(input.rails, input.railsAround ?? [], railLand, [x0 - PROFILE_PAD_M, y0 - PROFILE_PAD_M, x1 + PROFILE_PAD_M, y1 + PROFILE_PAD_M], measured, (x, y) => surface.deckWeight(x, y) > 0.5 && railLand(x, y) === onLand(x, y), input.railPlatforms);
     // Under the bridge decks (railBridge.ts): water, the streets and the tracks at grade, where no pier may stand.
     const streetsUnder = ways.filter(w => w.tags.highway && !isBridgeWay(w) && !(w.tags.tunnel && w.tags.tunnel !== 'no')).map(w => ({ points: w.points, half: streetHalfWidth(w.section.bands) }));
     const under = input.railBridges === false ? undefined : underTest(overWater, streetsUnder, (input.railsAround ?? input.rails).filter(w => !w.bridge).map(w => w.points));
@@ -594,10 +611,10 @@ export function buildCell(input: CellInput): BuiltCell {
     }
     const promoted = new Set([...spans.keys()].map(railWayKey));
     const spanUnder = spans.size && under ? underTest(overWater, streetsUnder, (input.railsAround ?? input.rails).filter(w => !w.bridge && !promoted.has(railWayKey(w))).map(w => w.points)) : undefined;
-    const r = railMeshes({ ways: input.rails, inCell, height: onLand, ...(spans.size ? { spans, ...(spanUnder ? { spanUnder } : {}) } : {}), atGrade: onStreet ? (a: Vec2, b: Vec2) => crossing(a, b) || onStreet(a, b) : crossing, far: lod === 1, ...(under && profile ? { under } : {}), ...(profile ? { levels: profile.levels, ...(measured ? { measured } : {}), ...(input.railPlatforms?.length ? { onPlatform: platformTest(input.railPlatforms, PLATFORM_EDGE_M) } : {}) } : { floor: false }), ...(input.railLegacy ? { legacy: true } : {}) });
+    const r = railMeshes({ ways: input.rails, inCell, height: railLand, ...(spans.size ? { spans, ...(spanUnder ? { spanUnder } : {}) } : {}), atGrade: onStreet ? (a: Vec2, b: Vec2) => crossing(a, b) || onStreet(a, b) : crossing, far: lod === 1, ...(under && profile ? { under } : {}), ...(profile ? { levels: profile.levels, ...(measured ? { measured } : {}), ...(input.railPlatforms?.length ? { onPlatform: platformTest(input.railPlatforms, PLATFORM_EDGE_M) } : {}) } : { floor: false }), ...(input.railLegacy ? { legacy: true } : {}), ...(input.railRamps === false ? { ramps: false } : {}) });
     add('ballast', r.ballast); add('track', r.track); add('deckBody', r.slab); add('deckBody', r.structure);
     // Platforms beside heavy-rail track, at the rails' level (railTracks.ts platformMeshes).
-    if (profile && input.railPlatforms?.length) { const pm = platformMeshes(input.railPlatforms, input.rails, profile.levels, onLand, inCell); add('deckBody', pm.mesh); r.stats.platforms = pm.stats; }
+    if (profile && input.railPlatforms?.length) { const pm = platformMeshes(input.railPlatforms, input.rails, profile.levels, railLand, inCell); add('deckBody', pm.mesh); r.stats.platforms = pm.stats; }
     railStats = profile ? { ...r.stats, profile: profile.stats } : r.stats;
     // The deck spans' triggers, the cell's own (diagnostics: probe-rails-class.ts, check-rail-street.ts).
     const spanList = [...spans.values()].flat().filter(sp => inCell(sp.at[0], sp.at[1])).map(sp => ({ at: sp.at, clear: sp.clear, length: +(sp.s1 - sp.s0).toFixed(1) }));
@@ -799,7 +816,7 @@ export const PARK_RANK: Partial<Record<GroundLayer, number>> = { lawn: 1.2, gard
 /** Polygon-offset rank of coplanar layers (gameGround.ts OFFSET): later wins a tie. */
 /** An OSM green fill with no road polygon within this of its outline is a courtyard (drawn as `garden`). */
 export const COURTYARD_ROAD_M = 3;
-export const DRAW_RANK: Partial<Record<GroundLayer, number>> = { deckTop: 1, park: 1, wood: 1, square: 1, parking: 1, ...PARK_RANK, klinker: 2, brick: 2, asphalt: 2, gravel: 3, cycle: 3, paving: 3, paint: 4, tram: 5 };
+export const DRAW_RANK: Partial<Record<GroundLayer, number>> = { deckTop: 1, park: 1, wood: 1, square: 1, parking: 1, ...PARK_RANK, klinker: 2, brick: 2, asphalt: 2, gravel: 3, cycle: 3, paving: 3, paint: 4, tram: 5, ballast: 3, track: 3 };
 /** Mask channel that cuts a layer (gameGround.ts CUT): 0 = R (water), 1 = G (water minus decks). */
 export const CUT_CHANNEL: Partial<Record<GroundLayer, 0 | 1>> = { land: 0, park: 0, garden: 0, wood: 0, square: 0, parking: 0, lawn: 0, bed: 0, shrub: 0, bark: 0, sand: 0, parkGravel: 0, parkPath: 0, pond: 0, bare: 0, asphalt: 1, klinker: 1, brick: 1, cycle: 1, paving: 1, gravel: 1, kerb: 1, paint: 1, tram: 1, bollard: 1 };
 
