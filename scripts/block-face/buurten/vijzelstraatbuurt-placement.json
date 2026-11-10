@@ -1,11 +1,11 @@
 {
  "buurt": "vijzelstraatbuurt",
  "library": "grachtengordel-zuid",
- "generatedAt": "2026-11-10T09:31:23.538Z",
- "seconds": 24.42,
+ "generatedAt": "2026-11-10T22:06:20.691Z",
+ "seconds": 16.49,
  "totals": {
-  "faces": 4,
-  "pands": 33,
+  "faces": 6,
+  "pands": 47,
   "placed": 4
  },
  "faces": [
@@ -100,6 +100,42 @@
     "likeness": 4,
     "run": 1,
     "review": 2
+   }
+  },
+  {
+   "face": "keizersgracht-615-661",
+   "street": "Keizersgracht",
+   "pands": 8,
+   "placed": 0,
+   "held": 8,
+   "runs": [],
+   "seconds": 5.48,
+   "byType": {},
+   "installed": 0,
+   "holds": {
+    "evidence": 0,
+    "match": 7,
+    "likeness": 0,
+    "run": 1,
+    "review": 0
+   }
+  },
+  {
+   "face": "keizersgracht-660-710",
+   "street": "Keizersgracht",
+   "pands": 6,
+   "placed": 0,
+   "held": 6,
+   "runs": [],
+   "seconds": 10.97,
+   "byType": {},
+   "installed": 0,
+   "holds": {
+    "evidence": 0,
+    "match": 4,
+    "likeness": 0,
+    "run": 2,
+    "review": 0
    }
   }
  ]

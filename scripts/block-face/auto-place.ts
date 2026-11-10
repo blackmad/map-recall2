@@ -129,8 +129,6 @@ const PHOTO_EAVES = {on: process.argv.includes('--photo-eaves'), minConfidence: 
 /** Reviewer roof pins of the buurt (`<buurt>-review-roofs.json`, blockFace/reviewRoofs.ts); empty = byte-identical. */
 let roofPins: RoofPin[] = [];
 /** Pands whose eaves the strip skyline measured (--photo-eaves), keyed by pand id; read back by `withPhotoEaves`. */
-/** Reviewer roof pins of the buurt (`<buurt>-review-roofs.json`, blockFace/reviewRoofs.ts); empty = byte-identical. */
-let roofPins: RoofPin[] = [];
 const photoEaves = new Map<string, {row: number; eavesM: number; bagM: number; confidence: number}>();
 /** Reviewer eaves pins (`<buurt>-review-eaves.json`), read once in main. */
 let eavesPins: EavesPin[] = [];

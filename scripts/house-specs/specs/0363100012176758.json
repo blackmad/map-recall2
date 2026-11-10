@@ -1,0 +1,29 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012176758",
+ "address": "Keizersgracht 579C",
+ "design": {
+  "fronts": [
+   {
+    "bays": 5
+   }
+  ],
+  "palette": {
+   "brick": "#a18771"
+  }
+ },
+ "provenance": {
+  "fronts/0/bays": {
+   "source": "streetlevel-measured",
+   "confidence": 0.5,
+   "ref": "strip keizersgracht-557-585 2023-03-27 columns",
+   "at": "2023-03-27"
+  },
+  "palette/brick": {
+   "source": "streetlevel-measured",
+   "confidence": 0.5,
+   "ref": "strip keizersgracht-557-585 2023-03-27 wall",
+   "at": "2023-03-27"
+  }
+ }
+}

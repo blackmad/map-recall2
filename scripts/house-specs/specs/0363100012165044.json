@@ -1,0 +1,20 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012165044",
+ "address": "Keizersgracht 598",
+ "design": {
+  "fronts": [
+   {
+    "bays": 2
+   }
+  ]
+ },
+ "provenance": {
+  "fronts/0/bays": {
+   "source": "streetlevel-measured",
+   "confidence": 0.5,
+   "ref": "strip keizersgracht-596-648 2023-03-27 columns",
+   "at": "2023-03-27"
+  }
+ }
+}

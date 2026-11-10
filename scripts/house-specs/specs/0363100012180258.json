@@ -1,0 +1,29 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012180258",
+ "address": "Keizersgracht 660A",
+ "design": {
+  "fronts": [
+   {
+    "bays": 6
+   }
+  ],
+  "palette": {
+   "brick": "#6b5856"
+  }
+ },
+ "provenance": {
+  "fronts/0/bays": {
+   "source": "streetlevel-measured",
+   "confidence": 0.5,
+   "ref": "strip keizersgracht-660-710 2021-01-22 columns",
+   "at": "2021-01-22"
+  },
+  "palette/brick": {
+   "source": "streetlevel-measured",
+   "confidence": 0.5,
+   "ref": "strip keizersgracht-660-710 2021-01-22 wall",
+   "at": "2021-01-22"
+  }
+ }
+}

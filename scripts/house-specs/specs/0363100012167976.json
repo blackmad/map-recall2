@@ -1,0 +1,29 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012167976",
+ "address": "Keizersgracht 633",
+ "design": {
+  "fronts": [
+   {
+    "bays": 3
+   }
+  ],
+  "palette": {
+   "brick": "#b89275"
+  }
+ },
+ "provenance": {
+  "fronts/0/bays": {
+   "source": "streetlevel-measured",
+   "confidence": 0.5,
+   "ref": "strip keizersgracht-615-661 2023-03-27 columns",
+   "at": "2023-03-27"
+  },
+  "palette/brick": {
+   "source": "streetlevel-measured",
+   "confidence": 0.5,
+   "ref": "strip keizersgracht-615-661 2023-03-27 wall",
+   "at": "2023-03-27"
+  }
+ }
+}

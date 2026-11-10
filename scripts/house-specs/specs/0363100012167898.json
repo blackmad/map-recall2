@@ -1,0 +1,18 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012167898",
+ "address": "Keizersgracht 557",
+ "design": {
+  "palette": {
+   "brick": "#7a7060"
+  }
+ },
+ "provenance": {
+  "palette/brick": {
+   "source": "streetlevel-measured",
+   "confidence": 0.5,
+   "ref": "strip keizersgracht-557-585 2023-03-27 wall",
+   "at": "2023-03-27"
+  }
+ }
+}

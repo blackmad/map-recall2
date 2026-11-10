@@ -1,0 +1,18 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012168451",
+ "address": "Keizersgracht 670",
+ "design": {
+  "palette": {
+   "brick": "#817966"
+  }
+ },
+ "provenance": {
+  "palette/brick": {
+   "source": "streetlevel-measured",
+   "confidence": 0.5,
+   "ref": "strip keizersgracht-660-710 2021-01-22 wall",
+   "at": "2021-01-22"
+  }
+ }
+}

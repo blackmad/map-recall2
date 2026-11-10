@@ -1,0 +1,20 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012179302",
+ "address": "Keizersgracht 672",
+ "design": {
+  "fronts": [
+   {
+    "bays": 5
+   }
+  ]
+ },
+ "provenance": {
+  "fronts/0/bays": {
+   "source": "streetlevel-measured",
+   "confidence": 0.55,
+   "ref": "strip keizersgracht-660-710 2021-01-22 columns (corrected 5->5 to the preview photo columns)",
+   "at": "2021-01-22"
+  }
+ }
+}

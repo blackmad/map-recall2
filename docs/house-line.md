@@ -97,6 +97,8 @@ Nothing is invented: a field no part states stays absent.
 
 Hand-written specs live in `scripts/house-specs/specs/<pandId>.json` (validated by `validateSpec`; use source `author`).
 
+**Strip-evidence specs for a belt face** (`scripts/house-specs/strip-evidence-specs.ts <face,...> [--dry]`, belt lane GG-Zuid, 2026-11-10): writes a small spec per pand that has none yet from `auto-place.json`'s measured strip (`fronts/0/bays` from the strip's window columns, 1..8, not a curtain front; `palette/brick` from the trim-normalised wall, brick family only), source `streetlevel-measured` at 0.5. Register facts join at publish, so none are copied. The lane then previews each (`house:preview --photo`), corrects bays to the preview photo's column count where the two disagree, stages PASS, NO EVIDENCE and wall-colour-only FAIL (colour is advisory until H2e/H9), and holds a FAIL on columns or window shape with the reason. These specs carry no `design` beyond bays and brick, so they stay on the generic route; only a complete spec (the four Keizersgracht 608-616A hand specs) routes to a recipe GLB. A recipe install whose footprint-vs-bag gate fails (614: 0.869) is held by `held-installs.json`.
+
 ### How to add a source
 
 1. Write a pure adapter in `adapters.ts` that returns a partial `HouseSpec`: set only the fields the source states,

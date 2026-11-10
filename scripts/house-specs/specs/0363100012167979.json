@@ -1,0 +1,18 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012167979",
+ "address": "Keizersgracht 617",
+ "design": {
+  "palette": {
+   "brick": "#6b6259"
+  }
+ },
+ "provenance": {
+  "palette/brick": {
+   "source": "streetlevel-measured",
+   "confidence": 0.5,
+   "ref": "strip keizersgracht-615-661 2023-03-27 wall",
+   "at": "2023-03-27"
+  }
+ }
+}
