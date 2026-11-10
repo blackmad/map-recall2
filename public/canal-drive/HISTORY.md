@@ -1,5 +1,12 @@
 # Canal Recall — what is built
 
+**Q1: test hygiene (2026-11-10, #335, lane/q1-test-hygiene-20261110 at 2f2c70102, sonnet).**
+- **The flaky test:** `test:engine`'s `bakedCoarse` failed 1/20 under load. Both the dissolve start and the lift deadline read the real clock; `BakedCoarse` now takes an optional `now` (default `performance.now`, game unchanged). After the fix it passed 50/50 under 4–6× load.
+- **ownGround touch timing test:** now uses best-of-3 builds with the same 1.5× bound. It failed 0/10 before and 0/20 after, so this one is not a proven fix.
+- **Tree checks:** `check-palm-tree-allocation` and `check-tree-crown-orientation` had been red since 8cfc3ceb4, because `InventoryTrees` reads `location.search` and the checks stubbed only `window`. Both now stub `location`. They join `check:canal` as `test:trees`.
+- **`check:free-ride`:** the S2/S5 water-tap and pin-snap specs, about 4 min each, run under the lock after any change to landmark placement, `freeRide*.ts` or water masks.
+- **What's New:** the "Free Ride pins stand at their landmark" note gets the Westermarkt desktop boat pair; the bike and phone pairs were unusable. The "More Dutch on Dutch cards" note claimed each Dutch sentence links to the Dutch article. The card's only link goes to en.wikipedia, two of the four Westerkerk facts are still English, and nothing reads `textNlSourceUrl`, so the note was reworded and a TODO item added.
+
 **Batch a1 round 5 (2026-11-10): first belt and inner-ring buurt installs.** Each lane's sheets were judged by Opus before merge, and the fixes were applied in the lane.
 - **Den Texbuurt 13 and Frederikspleinbuurt 7:**
   - per-pand roof pins (`reviewRoofs.ts`), now combined with the per-pand eaves pins;
