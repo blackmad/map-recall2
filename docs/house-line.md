@@ -164,9 +164,14 @@ Gate, both ways (2026-11-10, `house:preview` lit look, wall = `measureFacade` H2
 
 | Set | Before (held) | After (rule) | Mean ΔL |
 |---|---|---|---|
-| Kinkerstraat 244-332, 26 generic pands | L 0.395 | L 0.446 | **+0.051** (gate: not below −0.03) |
+| Kinkerstraat 244-332, 26 generic pands | L 0.395 | L 0.436 | **+0.041** (gate: not below −0.03) |
 | same, `SPEC_WALLS=0` | L 0.395 | L 0.395 | 0.000 |
-| 24 random pands of the 425 the rule reaches (seed 345) | L 0.389 | L 0.492 | +0.103 |
+| 24 random pands of the 425 the rule reaches (seed 345) | L 0.389 | L 0.486 | +0.097 |
+
+Measured with spec bays held. Nine single Kinkerstraat pands read darker by more than 0.03. Each was drawn red or
+grey before, and the strip measures dark brown brick (#4e4032 to #584332). Chroma falls with the rule (OKLab C,
+Kinkerstraat 0.065 -> 0.032, random 0.059 -> 0.033): the overcast readings are duller than the period palette.
+`SPEC_WALL_LIFT.chroma` is the knob if the user rules the brown too dour.
 
 City-wide reach: the rule changes the wall of **425 generic-path pands** (the coverage report's
 `genericVisibleBy.wallHex`; 1,367 views carry a wall colour, 1,183 pands are hidden by installed models). The
