@@ -1,0 +1,149 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "elandsgracht-51-89-h2",
+ "street": "Elandsgracht",
+ "sources": [
+  {
+   "id": "strip-2023-01-16",
+   "kind": "street-panorama",
+   "capturedAt": "2023-01-16",
+   "image": "staging/block-face/elandsgracht-51-89-h2/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "lane hand placement (scripts/block-face/hand-place.ts)",
+  "passes": 1,
+  "note": "Elandsgracht 87-89 (strip 2023-01-16): two cornice houses with segmental heads over shop grounds; spec scripts/block-face/buurten/elandsgrachtbuurt-hand-runs.json"
+ },
+ "types": [
+  "jordaan-1850-cornice-house"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012174559",
+   "slug": "elandsgracht-174559",
+   "address": "Elandsgracht 87",
+   "type": {
+    "type": "jordaan-1850-cornice-house",
+    "crown": "dormer-low",
+    "overrides": {
+     "windowHead": {
+      "kind": "segmental"
+     },
+     "storeyHeights": [
+      5.6,
+      3.1,
+      3,
+      3.1
+     ]
+    },
+    "roof": {
+     "material": "slate",
+     "evidence": "strip 2023-01-16: a slate mansard with a white dormer over the cornice at ~15 m"
+    },
+    "measuredPalette": {
+     "brick": "#373331",
+     "evidence": "strip 2023-01-16 span 2879-3054: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2023-01-16",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "hand placement (elandsgrachtbuurt-hand-runs.json): Elandsgracht 87: three axes of segmental-headed windows over a shop ground, three storeys, a white cornice at ~15-15.5 m and a slate mansard with a white dormer; grid read on the strip; strip 2023-01-16"
+   }
+  },
+  {
+   "pandId": "0363100012174161",
+   "slug": "elandsgracht-174161",
+   "address": "Elandsgracht 89",
+   "type": {
+    "type": "jordaan-1850-cornice-house",
+    "crown": "dormer-low",
+    "ground": {
+     "shopfront": {
+      "colour": "#2f2d35",
+      "fascia": true,
+      "name": "Waldo",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: osm-only (winkelfunctie,woonfunctie, shop=pastry); fascia colour measured on the strip 2023-01-16 span 3054-3263"
+     }
+    },
+    "overrides": {
+     "windowHead": {
+      "kind": "segmental"
+     },
+     "storeyHeights": [
+      5.6,
+      3.1,
+      3,
+      3.1
+     ]
+    },
+    "paletteOverrides": {
+     "brick": "#2c2a28"
+    },
+    "roof": {
+     "material": "slate",
+     "evidence": "strip 2023-01-16: a slate mansard with a white dormer over the cornice at ~15 m"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "name": "Waldo",
+    "category": "shop=pastry",
+    "osm": {
+     "type": "node",
+     "id": 11989702360,
+     "name": "Waldo"
+    },
+    "bag": [
+     "winkelfunctie,woonfunctie"
+    ],
+    "photoDate": "2023-01-16",
+    "agreement": "osm-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "hand placement (elandsgrachtbuurt-hand-runs.json): Elandsgracht 89: three axes of segmental-headed windows over a shop ground, three storeys, a white cornice at ~15-15.5 m and a slate mansard with a white dormer; grid read on the strip; strip 2023-01-16"
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "auto-place: low attic behind the cornice; the strips show sky over the cornices of the type rows"
+  },
+  "measuredEaves": [
+   {
+    "pand": "0363100012174559",
+    "stripRow": 189,
+    "evidence": "hand placement: cornice top read at 15.5 m on the strip 2023-01-16"
+   },
+   {
+    "pand": "0363100012174161",
+    "stripRow": 189,
+    "evidence": "hand placement: cornice top read at 15.5 m on the strip 2023-01-16"
+   }
+  ]
+ }
+}

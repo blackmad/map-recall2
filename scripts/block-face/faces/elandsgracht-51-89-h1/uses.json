@@ -1,0 +1,121 @@
+{
+ "street": "Elandsgracht",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-30T00:19:08.677Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012170054",
+   "addresses": [
+    "Elandsgracht 73"
+   ],
+   "groundUnits": [
+    {
+     "address": "Elandsgracht 73-H",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000630880"
+    }
+   ],
+   "units": 9,
+   "osm": [
+    {
+     "type": "node",
+     "id": 8891270385,
+     "lngLat": [
+      4.879983,
+      52.3692425
+     ],
+     "tags": {
+      "name": "Jacob Frederik Muller",
+      "tourism": "artwork"
+     },
+     "fetchedAt": "2026-10-30T00:19:08.677Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012168952",
+   "addresses": [
+    "Elandsgracht 75"
+   ],
+   "groundUnits": [
+    {
+     "address": "Elandsgracht 75-H",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000630888"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012168953",
+   "addresses": [
+    "Elandsgracht 77"
+   ],
+   "groundUnits": [
+    {
+     "address": "Elandsgracht 77-H",
+     "use": "woonfunctie",
+     "areaM2": 35,
+     "bagId": "0363010000630897"
+    }
+   ],
+   "units": 10,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012168927",
+   "addresses": [
+    "Elandsgracht 83"
+   ],
+   "groundUnits": [
+    {
+     "address": "Elandsgracht 83-H",
+     "use": "winkelfunctie,woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000630912"
+    }
+   ],
+   "units": 9,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012174561",
+   "addresses": [
+    "Elandsgracht 85"
+   ],
+   "groundUnits": [
+    {
+     "address": "Elandsgracht 85-H",
+     "use": "kantoorfunctie",
+     "areaM2": 42,
+     "bagId": "0363010000630927"
+    }
+   ],
+   "units": 6,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11989734361,
+     "lngLat": [
+      4.8797768,
+      52.3691592
+     ],
+     "tags": {
+      "name": "Studio Stroop",
+      "shop": "beauty"
+     },
+     "fetchedAt": "2026-10-30T00:19:08.677Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

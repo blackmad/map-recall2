@@ -1,6 +1,6 @@
 {
  "version": 1,
- "generatedAt": "2026-11-10T09:53:45.999Z",
+ "generatedAt": "2026-11-10T09:56:56.446Z",
  "chunks": [
   {
    "id": "chunk-face-bilder-080336-090492",
@@ -103932,6 +103932,775 @@
        "primitive": 7,
        "firstTriangle": 6,
        "triangleCount": 5
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "chunk-face-elandsgracht-51-89-h1",
+   "category": "street-survey",
+   "name": "face-elandsgracht-51-89-h1",
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-elandsgracht-51-89-h1.glb?asset=abf1d246b7497867",
+   "sha256": "abf1d246b749786725d0f1d2fd647c5e322a4d8b861574dad904f0d518744cd1",
+   "bytes": 179492,
+   "triangles": 7278,
+   "primitives": 15,
+   "instance": {
+    "anchor": [
+     4.8798718268171015,
+     52.36920915325005
+    ],
+    "northOffsetDegrees": 151.9205,
+    "mirror": false
+   },
+   "bounds": {
+    "min": [
+     -11.191,
+     0,
+     -15.423
+    ],
+    "max": [
+     11.309,
+     17.98,
+     0.417
+    ]
+   },
+   "height": 17.98,
+   "suppress": [
+    "NL.IMBAG.Pand.0363100012170054",
+    "NL.IMBAG.Pand.0363100012168952",
+    "NL.IMBAG.Pand.0363100012168953",
+    "NL.IMBAG.Pand.0363100012168927",
+    "NL.IMBAG.Pand.0363100012174561"
+   ],
+   "replaces": [
+    "ordinary-0363100012170054",
+    "ordinary-0363100012168952",
+    "ordinary-0363100012168953",
+    "ordinary-0363100012168927",
+    "ordinary-0363100012174561"
+   ],
+   "footprint": {
+    "type": "MultiPolygon",
+    "coordinates": [
+     [
+      [
+       [
+        4.8800167,
+        52.3692565
+       ],
+       [
+        4.8799586,
+        52.3692377
+       ],
+       [
+        4.8800548,
+        52.369127
+       ],
+       [
+        4.8801129,
+        52.3691459
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8799591,
+        52.369237
+       ],
+       [
+        4.8799014,
+        52.3692179
+       ],
+       [
+        4.8799968,
+        52.3691081
+       ],
+       [
+        4.8800548,
+        52.369127
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8799007,
+        52.3692187
+       ],
+       [
+        4.8798434,
+        52.3692
+       ],
+       [
+        4.8799395,
+        52.3690895
+       ],
+       [
+        4.8799968,
+        52.3691081
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8798434,
+        52.3692
+       ],
+       [
+        4.8797843,
+        52.3691808
+       ],
+       [
+        4.8798804,
+        52.3690702
+       ],
+       [
+        4.8799136,
+        52.369081
+       ],
+       [
+        4.879924,
+        52.3690691
+       ],
+       [
+        4.8799499,
+        52.3690776
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8797843,
+        52.3691808
+       ],
+       [
+        4.8797265,
+        52.369162
+       ],
+       [
+        4.8798213,
+        52.3690509
+       ],
+       [
+        4.8798509,
+        52.3690606
+       ],
+       [
+        4.8798371,
+        52.3690765
+       ],
+       [
+        4.8798666,
+        52.3690861
+       ]
+      ]
+     ]
+    ]
+   },
+   "pands": [
+    {
+     "recipeId": "elandsgracht-170054",
+     "pandId": "0363100012170054",
+     "buildingId": "NL.IMBAG.Pand.0363100012170054",
+     "address": "Elandsgracht 73",
+     "frontage": {
+      "x0": -11.187,
+      "x1": -6.706,
+      "widthM": 4.481
+     },
+     "bounds": {
+      "min": [
+       -11.191,
+       0,
+       -13.963
+      ],
+      "max": [
+       -6.706,
+       17.98,
+       0.417
+      ]
+     },
+     "triangles": 1537,
+     "ranges": [
+      {
+       "primitive": 2,
+       "firstTriangle": 0,
+       "triangleCount": 31
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 0,
+       "triangleCount": 244
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 0,
+       "triangleCount": 1012
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 0,
+       "triangleCount": 212
+      },
+      {
+       "primitive": 12,
+       "firstTriangle": 0,
+       "triangleCount": 6
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 0,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 0,
+       "triangleCount": 6
+      }
+     ]
+    },
+    {
+     "recipeId": "elandsgracht-168952",
+     "pandId": "0363100012168952",
+     "buildingId": "NL.IMBAG.Pand.0363100012168952",
+     "address": "Elandsgracht 75",
+     "frontage": {
+      "x0": -6.706,
+      "x1": -2.233,
+      "widthM": 4.473
+     },
+     "bounds": {
+      "min": [
+       -6.709,
+       0,
+       -13.963
+      ],
+      "max": [
+       -2.233,
+       17.98,
+       0.383
+      ]
+     },
+     "triangles": 1552,
+     "ranges": [
+      {
+       "primitive": 4,
+       "firstTriangle": 0,
+       "triangleCount": 44
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 244,
+       "triangleCount": 244
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 1012,
+       "triangleCount": 1012
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 12,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 12,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 212,
+       "triangleCount": 212
+      },
+      {
+       "primitive": 12,
+       "firstTriangle": 6,
+       "triangleCount": 6
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 2,
+       "triangleCount": 3
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 6,
+       "triangleCount": 7
+      }
+     ]
+    },
+    {
+     "recipeId": "elandsgracht-168953",
+     "pandId": "0363100012168953",
+     "buildingId": "NL.IMBAG.Pand.0363100012168953",
+     "address": "Elandsgracht 77",
+     "frontage": {
+      "x0": -2.233,
+      "x1": 2.186,
+      "widthM": 4.419
+     },
+     "bounds": {
+      "min": [
+       -2.234,
+       0,
+       -13.961
+      ],
+      "max": [
+       2.186,
+       17.98,
+       0.416
+      ]
+     },
+     "triangles": 1492,
+     "ranges": [
+      {
+       "primitive": 3,
+       "firstTriangle": 0,
+       "triangleCount": 33
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 488,
+       "triangleCount": 244
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 2024,
+       "triangleCount": 972
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 24,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 24,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 424,
+       "triangleCount": 202
+      },
+      {
+       "primitive": 12,
+       "firstTriangle": 12,
+       "triangleCount": 7
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 5,
+       "triangleCount": 3
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 13,
+       "triangleCount": 7
+      }
+     ]
+    },
+    {
+     "recipeId": "elandsgracht-168927",
+     "pandId": "0363100012168927",
+     "buildingId": "NL.IMBAG.Pand.0363100012168927",
+     "address": "Elandsgracht 83",
+     "frontage": {
+      "x0": 2.186,
+      "x1": 6.745,
+      "widthM": 4.559
+     },
+     "bounds": {
+      "min": [
+       2.185,
+       0,
+       -15.423
+      ],
+      "max": [
+       6.746,
+       17.909,
+       0.417
+      ]
+     },
+     "triangles": 1463,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 0,
+       "triangleCount": 60
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 732,
+       "triangleCount": 232
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 2996,
+       "triangleCount": 744
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 36,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 0,
+       "triangleCount": 204
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 626,
+       "triangleCount": 192
+      },
+      {
+       "primitive": 12,
+       "firstTriangle": 19,
+       "triangleCount": 11
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 8,
+       "triangleCount": 3
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 20,
+       "triangleCount": 5
+      }
+     ]
+    },
+    {
+     "recipeId": "elandsgracht-174561",
+     "pandId": "0363100012174561",
+     "buildingId": "NL.IMBAG.Pand.0363100012174561",
+     "address": "Elandsgracht 85",
+     "frontage": {
+      "x0": 6.745,
+      "x1": 11.202,
+      "widthM": 4.457
+     },
+     "bounds": {
+      "min": [
+       6.745,
+       0,
+       -13.964
+      ],
+      "max": [
+       11.309,
+       17.89,
+       0.417
+      ]
+     },
+     "triangles": 1234,
+     "ranges": [
+      {
+       "primitive": 1,
+       "firstTriangle": 0,
+       "triangleCount": 52
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 964,
+       "triangleCount": 184
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 3740,
+       "triangleCount": 600
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 48,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 0,
+       "triangleCount": 204
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 818,
+       "triangleCount": 164
+      },
+      {
+       "primitive": 12,
+       "firstTriangle": 30,
+       "triangleCount": 6
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 11,
+       "triangleCount": 5
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 25,
+       "triangleCount": 7
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "chunk-face-elandsgracht-51-89-h2",
+   "category": "street-survey",
+   "name": "face-elandsgracht-51-89-h2",
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-elandsgracht-51-89-h2.glb?asset=ec3122df2d657127",
+   "sha256": "ec3122df2d6571271190d8af2c8c184f0897d793e0af22fc355094870d4c10c5",
+   "bytes": 96612,
+   "triangles": 3762,
+   "primitives": 13,
+   "instance": {
+    "anchor": [
+     4.8796668491075454,
+     52.36914295063186
+    ],
+    "northOffsetDegrees": 152.4084,
+    "mirror": false
+   },
+   "bounds": {
+    "min": [
+     -4.588,
+     0,
+     -11.381
+    ],
+    "max": [
+     5.016,
+     17.069,
+     0.176
+    ]
+   },
+   "height": 17.069,
+   "suppress": [
+    "NL.IMBAG.Pand.0363100012174559",
+    "NL.IMBAG.Pand.0363100012174161"
+   ],
+   "replaces": [
+    "ordinary-0363100012174559",
+    "ordinary-0363100012174161"
+   ],
+   "footprint": {
+    "type": "MultiPolygon",
+    "coordinates": [
+     [
+      [
+       [
+        4.8797265,
+        52.369162
+       ],
+       [
+        4.8796697,
+        52.3691439
+       ],
+       [
+        4.8797322,
+        52.3690738
+       ],
+       [
+        4.8797706,
+        52.3690861
+       ],
+       [
+        4.8797876,
+        52.3690661
+       ],
+       [
+        4.8798038,
+        52.3690713
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8796015,
+        52.3691221
+       ],
+       [
+        4.8796641,
+        52.3690521
+       ],
+       [
+        4.8797322,
+        52.3690738
+       ],
+       [
+        4.8796697,
+        52.3691439
+       ]
+      ]
+     ]
+    ]
+   },
+   "pands": [
+    {
+     "recipeId": "elandsgracht-174559",
+     "pandId": "0363100012174559",
+     "buildingId": "NL.IMBAG.Pand.0363100012174559",
+     "address": "Elandsgracht 87",
+     "frontage": {
+      "x0": -4.582,
+      "x1": -0.217,
+      "widthM": 4.365
+     },
+     "bounds": {
+      "min": [
+       -4.588,
+       0,
+       -11.381
+      ],
+      "max": [
+       -0.217,
+       17,
+       0.175
+      ]
+     },
+     "triangles": 1802,
+     "ranges": [
+      {
+       "primitive": 1,
+       "firstTriangle": 0,
+       "triangleCount": 51
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 0,
+       "triangleCount": 208
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 0,
+       "triangleCount": 1156
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 0,
+       "triangleCount": 344
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 0,
+       "triangleCount": 11
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 0,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 12,
+       "firstTriangle": 0,
+       "triangleCount": 6
+      }
+     ]
+    },
+    {
+     "recipeId": "elandsgracht-174161",
+     "pandId": "0363100012174161",
+     "buildingId": "NL.IMBAG.Pand.0363100012174161",
+     "address": "Elandsgracht 89",
+     "frontage": {
+      "x0": -0.217,
+      "x1": 5.016,
+      "widthM": 5.233
+     },
+     "bounds": {
+      "min": [
+       -0.393,
+       0,
+       -8.921
+      ],
+      "max": [
+       5.016,
+       17.069,
+       0.176
+      ]
+     },
+     "triangles": 1960,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 0,
+       "triangleCount": 37
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 208,
+       "triangleCount": 208
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 1156,
+       "triangleCount": 1076
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 12,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 0,
+       "triangleCount": 228
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 344,
+       "triangleCount": 352
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 11,
+       "triangleCount": 14
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 2,
+       "triangleCount": 3
+      },
+      {
+       "primitive": 12,
+       "firstTriangle": 6,
+       "triangleCount": 6
       }
      ]
     }

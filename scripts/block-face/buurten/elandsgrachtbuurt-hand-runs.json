@@ -331,6 +331,209 @@
      "why": "Lauriergracht 91: two wide axes, a ground and two low storeys, a bell gable from ~9.6 m with one attic light to ~12.2 m; behind a tree; grid read on the strip"
     }
    ]
+  },
+  {
+   "id": "elandsgracht-51-89-h1",
+   "face": "elandsgracht-51-89",
+   "reason": "Elandsgracht 73-85 (strip 2023-01-16): a row of five-storey cornice houses under one pierced balustrade and a slate mansard with dormers",
+   "houses": [
+    {
+     "pand": "170054",
+     "type": "jordaan-1850-cornice-house",
+     "crown": "dormer-low",
+     "storeys": 5,
+     "eavesM": 16.4,
+     "grid": {
+      "storeysM": [
+       4.2,
+       2.9,
+       2.8,
+       2.8,
+       2.6
+      ]
+     },
+     "overrides": {
+      "bays": 3,
+      "cornice": "heavy"
+     },
+     "roof": {
+      "material": "slate",
+      "evidence": "strip 2023-01-16: a slate mansard with one white dormer per house over the balustraded cornice",
+      "form": "attic",
+      "rise": 0.6
+     },
+     "why": "Elandsgracht 73: 3 axes, a low ground with arched lights, four storeys (round-headed bel-etage windows drawn square), a cornice under a pierced balustrade at ~15-16.4 m (the balustrade is not drawn) and a slate mansard with a white dormer; grid read on the strip"
+    },
+    {
+     "pand": "168952",
+     "type": "jordaan-1850-cornice-house",
+     "crown": "dormer-low",
+     "storeys": 5,
+     "eavesM": 16.4,
+     "grid": {
+      "storeysM": [
+       4.2,
+       2.9,
+       2.8,
+       2.8,
+       2.6
+      ]
+     },
+     "overrides": {
+      "bays": 3,
+      "cornice": "heavy"
+     },
+     "roof": {
+      "material": "slate",
+      "evidence": "strip 2023-01-16: a slate mansard with one white dormer per house over the balustraded cornice",
+      "form": "attic",
+      "rise": 0.6
+     },
+     "why": "Elandsgracht 75: 3 axes, a low ground with arched lights, four storeys (round-headed bel-etage windows drawn square), a cornice under a pierced balustrade at ~15-16.4 m (the balustrade is not drawn) and a slate mansard with a white dormer; grid read on the strip"
+    },
+    {
+     "pand": "168953",
+     "type": "jordaan-1850-cornice-house",
+     "crown": "dormer-low",
+     "storeys": 5,
+     "eavesM": 16.4,
+     "grid": {
+      "storeysM": [
+       4.2,
+       2.9,
+       2.8,
+       2.8,
+       2.6
+      ]
+     },
+     "overrides": {
+      "bays": 3,
+      "cornice": "heavy"
+     },
+     "roof": {
+      "material": "slate",
+      "evidence": "strip 2023-01-16: a slate mansard with one white dormer per house over the balustraded cornice",
+      "form": "attic",
+      "rise": 0.6
+     },
+     "why": "Elandsgracht 77: 3 axes, a low ground with arched lights, four storeys (round-headed bel-etage windows drawn square), a cornice under a pierced balustrade at ~15-16.4 m (the balustrade is not drawn) and a slate mansard with a white dormer; grid read on the strip"
+    },
+    {
+     "pand": "168927",
+     "type": "jordaan-1850-cornice-house",
+     "crown": "dormer-low",
+     "storeys": 5,
+     "eavesM": 16.4,
+     "grid": {
+      "storeysM": [
+       4.2,
+       2.9,
+       2.8,
+       2.8,
+       2.6
+      ]
+     },
+     "overrides": {
+      "bays": 3,
+      "cornice": "heavy"
+     },
+     "roof": {
+      "material": "slate",
+      "evidence": "strip 2023-01-16: a slate mansard with one white dormer per house over the balustraded cornice",
+      "form": "attic",
+      "rise": 0.6
+     },
+     "why": "Elandsgracht 83: 3 axes, a low ground with arched lights, four storeys (round-headed bel-etage windows drawn square), a cornice under a pierced balustrade at ~15-16.4 m (the balustrade is not drawn) and a slate mansard with a white dormer; grid read on the strip"
+    },
+    {
+     "pand": "174561",
+     "type": "jordaan-1850-cornice-house",
+     "crown": "dormer-low",
+     "storeys": 5,
+     "eavesM": 16.4,
+     "grid": {
+      "storeysM": [
+       4.2,
+       2.9,
+       2.8,
+       2.8,
+       2.6
+      ]
+     },
+     "overrides": {
+      "bays": 2,
+      "cornice": "heavy"
+     },
+     "roof": {
+      "material": "slate",
+      "evidence": "strip 2023-01-16: a slate mansard with one white dormer per house over the balustraded cornice",
+      "form": "attic",
+      "rise": 0.6
+     },
+     "why": "Elandsgracht 85: 2 axes, a low ground with arched lights, four storeys (round-headed bel-etage windows drawn square), a cornice under a pierced balustrade at ~15-16.4 m (the balustrade is not drawn) and a slate mansard with a white dormer; grid read on the strip"
+    }
+   ]
+  },
+  {
+   "id": "elandsgracht-51-89-h2",
+   "face": "elandsgracht-51-89",
+   "reason": "Elandsgracht 87-89 (strip 2023-01-16): two cornice houses with segmental heads over shop grounds",
+   "houses": [
+    {
+     "pand": "174559",
+     "type": "jordaan-1850-cornice-house",
+     "crown": "dormer-low",
+     "storeys": 4,
+     "eavesM": 15.5,
+     "grid": {
+      "storeysM": [
+       5.6,
+       3.1,
+       3.0,
+       3.1
+      ]
+     },
+     "overrides": {
+      "windowHead": {
+       "kind": "segmental"
+      }
+     },
+     "roof": {
+      "material": "slate",
+      "evidence": "strip 2023-01-16: a slate mansard with a white dormer over the cornice at ~15 m"
+     },
+     "why": "Elandsgracht 87: three axes of segmental-headed windows over a shop ground, three storeys, a white cornice at ~15-15.5 m and a slate mansard with a white dormer; grid read on the strip"
+    },
+    {
+     "pand": "174161",
+     "type": "jordaan-1850-cornice-house",
+     "crown": "dormer-low",
+     "storeys": 4,
+     "eavesM": 15.5,
+     "grid": {
+      "storeysM": [
+       5.6,
+       3.1,
+       3.0,
+       3.1
+      ]
+     },
+     "overrides": {
+      "windowHead": {
+       "kind": "segmental"
+      }
+     },
+     "roof": {
+      "material": "slate",
+      "evidence": "strip 2023-01-16: a slate mansard with a white dormer over the cornice at ~15 m"
+     },
+     "why": "Elandsgracht 89: three axes of segmental-headed windows over a shop ground, three storeys, a white cornice at ~15-15.5 m and a slate mansard with a white dormer; grid read on the strip",
+     "wall": false,
+     "paletteOverrides": {
+      "brick": "#2c2a28"
+     }
+    }
+   ]
   }
  ]
 }
