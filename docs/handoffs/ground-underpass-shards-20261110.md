@@ -1,3 +1,5 @@
+> **Superseded 2026-11-10** by `ground-v2-plan-20261110.md` (G0–G4). Do not spawn this brief.
+
 # Lane G-shards: torn ground at rail and road embankments, city-wide (opus, 2026-11-10)
 
 **User, 2026-11-10** (build 93440cb), Piet Kranenbergpad under the ring railway (Stadionbuurt/Schinkelbuurt, about
