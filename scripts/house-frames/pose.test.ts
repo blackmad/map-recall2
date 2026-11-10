@@ -64,3 +64,23 @@ test('--help text names every input and the review section', () => {
   for (const flag of ['--pands', '--face', '--buurt', '--list', '--year', '--season', '--query', '--label', '--out']) assert.match(HELP, new RegExp(flag));
   assert.match(HELP, /§7/);
 });
+
+test('relative wall colour cancels exposure and catches a pand painted unlike its neighbours', async () => {
+  const { relativeColour, flagsFor } = await import('./analyse.ts');
+  const pose = aimPose({ lngLat: NASSAU.ll }, NASSAU.wall), f = frameFor(pose);
+  const paint = (wallGrey: number, neighbourGrey: number) => {
+    const img = { width: pose.width, height: pose.height, data: new Uint8Array(pose.width * pose.height * 3).fill(neighbourGrey) };
+    const o = wallOutline(f, pose, NASSAU.wall).map(p => p!), x0 = Math.min(...o.map(p => p.x)), x1 = Math.max(...o.map(p => p.x)), y0 = Math.min(...o.map(p => p.y)), y1 = Math.max(...o.map(p => p.y));
+    for (let y = Math.floor(y0); y < y1; y++) for (let x = Math.floor(x0); x < x1; x++) img.data.fill(wallGrey, (y * pose.width + x) * 3, (y * pose.width + x) * 3 + 3);
+    return img;
+  };
+  const same = relativeColour(paint(60, 120), paint(36, 72), f, pose, NASSAU.wall); // the game half 40 % darker overall
+  assert.equal(same.used, 2);
+  close(same.score!, 0, 0.05, 'exposure cancels');
+  const lighter = relativeColour(paint(60, 120), paint(200, 120), f, pose, NASSAU.wall); // dark in the photo, pale in the game
+  assert.ok(lighter.score! > 0.35, `score ${lighter.score}`);
+  const picks = { wall: { n: 35, target: 35, other: 0, none: 0, others: {} }, above: { n: 14, target: 0, other: 0, none: 14, others: {} }, drawnBy: '' } as any;
+  const m = { openings: 10, wallHex: null, wallL: null, usable: 1, columns: 3 };
+  assert.match(flagsFor(picks, m, m, { crownM: 17, game: null, photo: null, above: 0 }, lighter).wallColour!, /lighter than its neighbours/);
+  assert.equal(flagsFor(picks, m, m, { crownM: 17, game: null, photo: null, above: 0 }, same).wallColour, null);
+});
