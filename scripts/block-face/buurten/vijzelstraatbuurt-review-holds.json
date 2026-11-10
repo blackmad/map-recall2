@@ -1,0 +1,21 @@
+{
+ "note": "Pands held after reading the auto-place strip sheets at full size against the photo (lane belt-gg-zuid, 2026-11-10).",
+ "reviewed": "2026-11-10",
+ "holds": [
+  {
+   "pandId": "0363100012167899",
+   "address": "Keizersgracht 612",
+   "reason": "Keizersgracht 596-648 strip 2023-03-27: a painted-black four-axis front of three even storeys (2.3 m souterrain, then 3.7, 3.4, 3.2 m) under a 1.3 m cornice; the type's diminishing storey grid draws a 2.1 m top storey (storey-height gate) and the type's 2.4 m frieze"
+  },
+  {
+   "pandId": "0363100012175645",
+   "address": "Keizersgracht 618",
+   "reason": "Sheet keizersgracht-596-648-r1 (2023-03-27): the front reads right (door left, three axes, four rows, frieze cornice), but as the run end next to the held double-neck Keizersgracht 620 its full-height 28.9 m party wall fails the GLB audit (blank wall 707 m2 > 600 m2); install once 620 has a type"
+  },
+  {
+   "pandId": "0363100012180307",
+   "address": "Herengracht 526-528",
+   "reason": "Herengracht 518-532 strip 2023-03-27: one BAG pand holding two fronts, a three-axis frieze-cornice house (528) and a three-axis neck gable (526) with wing pieces and a ring ornament; needs two modules with their own crowns"
+  }
+ ]
+}

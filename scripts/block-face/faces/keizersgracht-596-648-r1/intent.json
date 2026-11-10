@@ -1,0 +1,101 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "keizersgracht-596-648-r1",
+ "street": "Keizersgracht",
+ "sources": [
+  {
+   "id": "strip-2023-03-27",
+   "kind": "street-panorama",
+   "capturedAt": "2023-03-27",
+   "image": "staging/block-face/keizersgracht-596-648-r1/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "auto-place (blockFace/autoPlace.ts)",
+  "passes": 1,
+  "note": "auto-placed from the grachtengordel-zuid library (buurt Vijzelstraatbuurt); scores and holds in scripts/block-face/faces/keizersgracht-596-648/auto-place.json"
+ },
+ "types": [
+  "belt-1700-canal-house"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012175655",
+   "slug": "keizersgracht-175655",
+   "address": "Keizersgracht 616A",
+   "type": {
+    "type": "belt-1700-canal-house",
+    "measuredPalette": {
+     "brick": "#665852",
+     "evidence": "strip 2023-03-27 span 740-1043: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "office",
+    "bag": [
+     "kantoorfunctie",
+     "woonfunctie"
+    ],
+    "photoDate": "2023-03-27",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: belt-1700-canal-house scored 0.88 on eaves 0.5, stucco 1, crown 1, columns 1; strip 2023-03-27 span 740-1043"
+   }
+  },
+  {
+   "pandId": "0363100012175654",
+   "slug": "keizersgracht-175654",
+   "address": "Keizersgracht 614",
+   "type": {
+    "type": "belt-1700-canal-house",
+    "overrides": {
+     "bays": 2
+    },
+    "mirror": true,
+    "measuredPalette": {
+     "brick": "#80726a",
+     "evidence": "strip 2023-03-27 span 1043-1258: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2023-03-27",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: belt-1700-canal-house scored 0.88 on eaves 0.5, stucco 1, crown 1, columns 1; strip 2023-03-27 span 1043-1258"
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "auto-place: low attic behind the cornice; the strips show sky over the cornices of the type rows"
+  },
+  "measuredEaves": [
+   {
+    "pand": "0363100012175655",
+    "stripRow": 159,
+    "evidence": "review pin: Keizersgracht 616A, 2023-03-27 strip, 1 m grid: the dentilled frieze cornice starts at 16.9 m over the top row (14.9-16.2 m); top at 19.3 m (strip 20.2 m with the cap projection)"
+   },
+   {
+    "pand": "0363100012175654",
+    "stripRow": 163,
+    "evidence": "review pin: Keizersgracht 614, 2023-03-27 strip, 1 m grid: frieze cornice from 16.8 m over the top row (15.2-16.3 m); top at 19.2 m"
+   }
+  ]
+ }
+}

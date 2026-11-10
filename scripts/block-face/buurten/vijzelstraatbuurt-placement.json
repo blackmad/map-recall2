@@ -1,0 +1,106 @@
+{
+ "buurt": "vijzelstraatbuurt",
+ "library": "grachtengordel-zuid",
+ "generatedAt": "2026-11-10T08:56:15.300Z",
+ "seconds": 13.7,
+ "totals": {
+  "faces": 4,
+  "pands": 33,
+  "placed": 4
+ },
+ "faces": [
+  {
+   "face": "herengracht-468-480",
+   "street": "Herengracht",
+   "pands": 7,
+   "placed": 0,
+   "held": 7,
+   "runs": [],
+   "seconds": 9.61,
+   "byType": {},
+   "installed": 0,
+   "holds": {
+    "evidence": 0,
+    "match": 6,
+    "likeness": 0,
+    "run": 1,
+    "review": 0
+   }
+  },
+  {
+   "face": "herengracht-518-532",
+   "street": "Herengracht",
+   "pands": 7,
+   "placed": 0,
+   "held": 7,
+   "runs": [],
+   "seconds": 19.79,
+   "byType": {},
+   "installed": 0,
+   "holds": {
+    "evidence": 0,
+    "match": 1,
+    "likeness": 3,
+    "run": 2,
+    "review": 1
+   }
+  },
+  {
+   "face": "keizersgracht-557-585",
+   "street": "Keizersgracht",
+   "pands": 6,
+   "placed": 0,
+   "held": 6,
+   "runs": [],
+   "seconds": 4.08,
+   "byType": {},
+   "installed": 0,
+   "holds": {
+    "evidence": 0,
+    "match": 6,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "keizersgracht-596-648",
+   "street": "Keizersgracht",
+   "pands": 13,
+   "placed": 4,
+   "held": 9,
+   "runs": [
+    {
+     "face": "keizersgracht-596-648-r1",
+     "pands": [
+      "0363100012175655",
+      "0363100012175654"
+     ],
+     "passed": true,
+     "triangles": 3322
+    },
+    {
+     "face": "keizersgracht-596-648-r2",
+     "pands": [
+      "0363100012167896",
+      "0363100012176066"
+     ],
+     "passed": true,
+     "triangles": 4721
+    }
+   ],
+   "seconds": 42.34,
+   "byType": {
+    "belt-1700-canal-house": 4
+   },
+   "installed": 0,
+   "holds": {
+    "evidence": 1,
+    "match": 1,
+    "likeness": 4,
+    "run": 1,
+    "review": 2
+   }
+  }
+ ]
+}

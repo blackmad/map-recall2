@@ -1,0 +1,10 @@
+{
+ "note": "Door sides read off the strips where the door reader abstained (lane belt-gg-zuid, 2026-11-10).",
+ "reviewed": "2026-11-10",
+ "pins": [
+  {"pandId": "0363100012167896", "type": "belt-1700-canal-house", "side": "right", "reason": "Keizersgracht 610 (2023-03-27 strip): the stoop door with its white surround and fanlight stands on the right axis"},
+  {"pandId": "0363100012176066", "type": "belt-1700-canal-house", "side": "left", "reason": "Keizersgracht 608 (2023-03-27 strip): the stoop door with a white pilaster surround stands on the left axis"},
+  {"pandId": "0363100012175645", "type": "belt-1700-canal-house", "side": "left", "reason": "Keizersgracht 618 (2023-03-27 strip): the door with a white pilaster surround stands on the left axis over the stoop"},
+  {"pandId": "0363100012175655", "type": "belt-1700-canal-house", "side": "left", "reason": "Keizersgracht 616A (2023-03-27 strip): the souterrain door and the bel-etage axis above it are on the left"}
+ ]
+}

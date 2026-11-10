@@ -1,0 +1,147 @@
+{
+ "street": "Herengracht",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T08:13:22.466Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012167958",
+   "addresses": [
+    "Herengracht 480"
+   ],
+   "groundUnits": [
+    {
+     "address": "Herengracht 480",
+     "use": "kantoorfunctie",
+     "areaM2": 998,
+     "bagId": "0363010001044653"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012167959",
+   "addresses": [
+    "Herengracht 478"
+   ],
+   "groundUnits": [
+    {
+     "address": "Herengracht 478",
+     "use": "kantoorfunctie",
+     "areaM2": 1232,
+     "bagId": "0363010000665077"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012167903",
+   "addresses": [
+    "Herengracht 476"
+   ],
+   "groundUnits": [
+    {
+     "address": "Herengracht 476",
+     "use": "kantoorfunctie",
+     "areaM2": 880,
+     "bagId": "0363010000597833"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012167902",
+   "addresses": [
+    "Herengracht 474"
+   ],
+   "groundUnits": [
+    {
+     "address": "Herengracht 474",
+     "use": "kantoorfunctie",
+     "areaM2": 813,
+     "bagId": "0363010000665075"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012176762",
+   "addresses": [
+    "Herengracht 472"
+   ],
+   "groundUnits": [
+    {
+     "address": "Herengracht 472",
+     "use": "kantoorfunctie,woonfunctie",
+     "areaM2": 1071,
+     "bagId": "0363010000946046"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012176761",
+   "addresses": [
+    "Herengracht 470"
+   ],
+   "groundUnits": [
+    {
+     "address": "Herengracht 470",
+     "use": "bijeenkomstfunctie,woonfunctie",
+     "areaM2": 64,
+     "bagId": "0363010000946045"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2736376845,
+     "lngLat": [
+      4.8910622,
+      52.3651836
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "470",
+      "addr:postcode": "1017CA",
+      "addr:street": "Herengracht",
+      "amenity": "language_school",
+      "check_date": "2025-08-22",
+      "check_date:opening_hours": "2025-08-22",
+      "name": "Goethe Institut",
+      "opening_hours:signed": "no",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "website": "https://www.goethe.de/ins/nl/de/ams.html"
+     },
+     "fetchedAt": "2026-11-10T08:13:22.466Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012176760",
+   "addresses": [
+    "Herengracht 468"
+   ],
+   "groundUnits": [
+    {
+     "address": "Herengracht 468",
+     "use": "kantoorfunctie,woonfunctie",
+     "areaM2": 1075,
+     "bagId": "0363010000946044"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  }
+ ]
+}

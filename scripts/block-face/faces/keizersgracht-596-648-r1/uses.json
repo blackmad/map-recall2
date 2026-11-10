@@ -1,0 +1,71 @@
+{
+ "street": "Keizersgracht",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T08:29:57.061Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012175655",
+   "addresses": [
+    "Keizersgracht 616A",
+    "Keizersgracht 616B",
+    "Keizersgracht 616C",
+    "Keizersgracht 616F",
+    "Keizersgracht 616D",
+    "Keizersgracht 616E",
+    "Keizersgracht 616"
+   ],
+   "groundUnits": [
+    {
+     "address": "Keizersgracht 616A",
+     "use": "kantoorfunctie",
+     "areaM2": 1,
+     "bagId": "0363010001166522"
+    },
+    {
+     "address": "Keizersgracht 616F",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010012604897"
+    },
+    {
+     "address": "Keizersgracht 616D",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010012604895"
+    },
+    {
+     "address": "Keizersgracht 616E",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010012604896"
+    },
+    {
+     "address": "Keizersgracht 616",
+     "use": "kantoorfunctie",
+     "areaM2": 235,
+     "bagId": "0363010001981882"
+    }
+   ],
+   "units": 10,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012175654",
+   "addresses": [
+    "Keizersgracht 614"
+   ],
+   "groundUnits": [
+    {
+     "address": "Keizersgracht 614",
+     "use": "woonfunctie",
+     "areaM2": 266,
+     "bagId": "0363010000701365"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  }
+ ]
+}

@@ -13,6 +13,18 @@ export interface EavesPin {
   eavesM: number;
   /** What on the strip shows the line. */
   reason: string;
+  /**
+   * The pinned line also counts the pand's storeys (auto-place evidence eaves), not only the compiled cornice: a canal
+   * house whose tall frieze cornice hides the roof reads 1.5-2.5 m low in 3DBAG, so the type drew one storey too few
+   * (Keizersgracht 610-618, 2026-11-10). Absent = the pin moves the cornice only, byte-identical.
+   */
+  countStoreys?: true;
+}
+
+/** The eaves auto-place counts storeys from: a `countStoreys` pin's line, else the evidence's own. Pure. */
+export function storeyEaves(pins: EavesPin[], pandId: string, eavesM: number): number {
+  const pin = pins.find(x => x.pandId === pandId && x.countStoreys);
+  return pin ? pin.eavesM : eavesM;
 }
 
 export function eavesPinProblems(pins: EavesPin[]): string[] {
@@ -22,6 +34,7 @@ export function eavesPinProblems(pins: EavesPin[]): string[] {
     if (!/^\d{16}$/.test(pin.pandId ?? '')) p.push(`${at}: pandId must be a 16-digit BAG pand id`);
     if (!(typeof pin.eavesM === 'number' && pin.eavesM >= 3 && pin.eavesM <= 30)) p.push(`${at}: eavesM 3..30`);
     if (!pin.reason) p.push(`${at}: reason required (what on the strip shows the line)`);
+    if (pin.countStoreys !== undefined && pin.countStoreys !== true) p.push(`${at}: countStoreys is true or absent`);
     if (pins.findIndex(x => x.pandId === pin.pandId) !== k) p.push(`${at}: pand ${pin.pandId} pinned twice`);
   });
   return p;

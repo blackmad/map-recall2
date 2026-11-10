@@ -1,0 +1,54 @@
+{
+ "note": "Crown pins after reading the auto-place strip sheets at full size (lane belt-gg-zuid, 2026-11-10): canal fronts whose skyline the strip misreads (a neighbour's gable beside a cornice, a neck gable whose sky share trips the reader).",
+ "reviewed": "2026-11-10",
+ "pins": [
+  {
+   "pandId": "0363100012167899",
+   "type": "belt-1700-canal-house",
+   "crown": "cornice",
+   "reason": "Keizersgracht 612 (2023-03-27 strip): a painted-black cornice front with a white cornice at about 13.5 m and sky over it; the skyline read the neighbours' gables beside it as a bell"
+  },
+  {
+   "pandId": "0363100012176066",
+   "type": "belt-1700-canal-house",
+   "crown": "neck",
+   "reason": "Keizersgracht 608 (2023-03-27 strip): a neck gable with sandstone wing pieces and a cartouche over the 17.8 m gable foot"
+  },
+  {
+   "pandId": "0363100012167896",
+   "type": "belt-1700-canal-house",
+   "crown": "cornice",
+   "reason": "Keizersgracht 610 (2023-03-27 strip): a frieze cornice with consoles and sky over it, no dormer; the skyline read the cornice cap as a dormer"
+  },
+  {
+   "pandId": "0363100012180311",
+   "type": "belt-1700-canal-house",
+   "crown": "neck",
+   "reason": "Herengracht 524 (2023-03-27 strip): a neck gable with wing pieces and a ring ornament over the 18.4 m foot"
+  },
+  {
+   "pandId": "0363100012180310",
+   "type": "belt-1700-canal-house",
+   "crown": "cornice",
+   "reason": "Herengracht 522 (2023-03-27 strip): a deep frieze cornice, sky over it"
+  },
+  {
+   "pandId": "0363100012180308",
+   "type": "belt-1700-canal-house",
+   "crown": "cornice",
+   "reason": "Herengracht 530 (2023-03-27 strip): a dentilled frieze cornice with only a low crest (0.6 m) over it, no dormer"
+  },
+  {
+   "pandId": "0363100012168044",
+   "type": "belt-1700-double-house",
+   "crown": "cornice-crest",
+   "reason": "Herengracht 520 (2023-03-27 strip): a carved crest over the centre axis of the frieze cornice"
+  },
+  {
+   "pandId": "0363100012167981",
+   "type": "belt-1700-double-house",
+   "crown": "cornice",
+   "reason": "Herengracht 518 (2023-03-27 strip): a plain frieze cornice with sky over it; the flagpole reads as a 3.6 m crown on the skyline"
+  }
+ ]
+}

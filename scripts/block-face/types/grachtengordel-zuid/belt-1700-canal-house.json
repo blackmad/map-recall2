@@ -1,0 +1,244 @@
+{
+ "schemaVersion": 1,
+ "kind": "house-type",
+ "id": "belt-1700-canal-house",
+ "district": "grachtengordel-zuid",
+ "description": "Grachtengordel-Zuid 17th-18th c. canal houses (Keizersgracht 596-620, Herengracht, Reguliersgracht): 5-8 m fronts of dark brown brick (often painted black), a stone souterrain with barred lights under a bel-etage reached by a stoop, three axes (two up to 5.6 m, four over 7.9 m) of white-framed sash windows diminishing up the front (3.1-4.0 m on the bel-etage to 1.3-1.6 m under the eaves) on white sills; crowned by a sandstone cornice (a tall frieze, sometimes one pediment dormer) or a neck or bell gable with carved wing pieces, a cartouche and one attic light",
+ "fit": {
+  "widthM": [
+   3.8,
+   10.6
+  ],
+  "storeys": [
+   3,
+   4,
+   5
+  ]
+ },
+ "match": {
+  "years": [
+   1600,
+   1900
+  ],
+  "yearSlack": 0,
+  "eavesM": [
+   14,
+   21
+  ],
+  "stucco": false,
+  "blackPaint": true,
+  "crownMatch": true,
+  "crownStrict": true,
+  "materialVeto": true,
+  "baysByWidth": [
+   {
+    "maxWidthM": 5.6,
+    "bays": 2
+   },
+   {
+    "maxWidthM": 7.9,
+    "bays": 3
+   },
+   {
+    "maxWidthM": 99,
+    "bays": 4
+   }
+  ],
+  "crowns": {
+   "cornice": {
+    "none": true
+   },
+   "cornice-dormer": {
+    "riseM": [
+     0.6,
+     2.5
+    ],
+    "topWidthM": [
+     0.4,
+     3.0
+    ]
+   },
+   "neck": {
+    "riseM": [
+     2.5,
+     7.5
+    ],
+    "topWidthM": [
+     1.0,
+     4.0
+    ]
+   },
+   "bell": {
+    "riseM": [
+     2.5,
+     7.0
+    ],
+    "topWidthM": [
+     0.2,
+     1.0
+    ]
+   }
+  },
+  "note": "Keizersgracht 596-620 (2023-03-27 strip): cornice fronts and neck gables share the storey grid (souterrain 2.7-3.3 m, bel-etage 4.4-4.9 m, then 3.5-3.9, 3.2-3.5, 2.6-2.8 m), so only the skyline tells them apart (crownMatch); BAG dates many of them to 1650-1720 with 18th-19th c. refronting, hence the wide years. The eaves range is set so that its mean over the four counted storeys (4.4 m) is the measured pitch including the souterrain.",
+  "mirrorForDoor": "left",
+  "typeGround": true
+ },
+ "body": {
+  "storeys": 4,
+  "bays": 3,
+  "storeyHeights": [
+   2.8,
+   4.2,
+   3.7,
+   3.35,
+   2.85
+  ],
+  "windows": "sash-4-over-4",
+  "windowSurround": "sill",
+  "windowHeights": [
+   0.75,
+   0.72,
+   0.66,
+   0.53
+  ],
+  "headLines": [
+   0.86,
+   0.86,
+   0.8,
+   0.7
+  ],
+  "windowShare": 0.48,
+  "cornice": "frieze",
+  "entablature": {
+   "rise": 2.4,
+   "cap": 0.5,
+   "frieze": "trim",
+   "architrave": 0.15
+  }
+ },
+ "crowns": {
+  "cornice": {
+   "gable": "cornice",
+   "note": "Keizersgracht 616 (175655), 610 (167896): a tall sandstone frieze cornice at 17.0-20.2 m, no dormer in view"
+  },
+  "cornice-dormer": {
+   "gable": "cornice",
+   "dormers": 1,
+   "dormerStyle": "pediment",
+   "dormerBody": "stone",
+   "dormerAt": [
+    {
+     "from": 0.36,
+     "to": 0.64
+    }
+   ],
+   "dormerSize": {
+    "sill": 0.1,
+    "rise": 1.6,
+    "setback": 0.35
+   },
+   "note": "Keizersgracht 600 (165043): one white pediment dormer over the middle axis"
+  },
+  "neck": {
+   "gable": "neck",
+   "cornice": "none",
+   "crownRise": 1.6,
+   "crownNeckWidth": 0.42,
+   "atticWindows": 1,
+   "hoist": true,
+   "gableOrnament": {
+    "wings": "scrolls",
+    "cartouche": true
+   },
+   "note": "Keizersgracht 606 (176067), 608 (176066): gable foot 17.8 m, neck about 3.0 m wide rising to about 23.5 m, sandstone wing pieces and a cartouche, one attic light at 18.5-19.6 m"
+  },
+  "bell": {
+   "gable": "bell",
+   "cornice": "none",
+   "crownRise": 1.4,
+   "atticWindows": 1,
+   "hoist": true,
+   "gableOrnament": {
+    "wings": "scrolls"
+   },
+   "note": "Amstel 34 (169281): a bell gable with sandstone wing pieces over a painted-black front, one attic light"
+  }
+ },
+ "grounds": {
+  "stoop-door-left": {
+   "doorBay": 0,
+   "basement": "stoop-and-windows",
+   "souterrain": true,
+   "note": "a stone souterrain with barred lights; the stoop climbs to the bel-etage door on the left axis (Keizersgracht 606 and 612 doors on the right are mirrored by mirrorForDoor)"
+  }
+ },
+ "palettes": {
+  "dark-brick-belt": {
+   "brick": "#5c463d",
+   "frame": "white-painted",
+   "door": "#1e2422",
+   "stone": "#d9d3c2",
+   "cornice": "#ddd7c6",
+   "stoneMaterial": "painted"
+  }
+ },
+ "roof": {
+  "material": "red-tile",
+  "squareSaddle": true
+ },
+ "rhythm": {
+  "bays": "3 axes (2 up to 5.6 m, 4 over 7.9 m)",
+  "identicalBays": "every upper storey alike",
+  "windowsPerStorey": "souterrain: 2-3 barred lights | bel-etage: door + 2 windows | upper: 3",
+  "symmetry": "symmetric above the bel-etage",
+  "groundFloor": "stoop to the bel-etage door over a stone souterrain",
+  "signage": "none",
+  "roofline": "sandstone frieze cornice, or a neck or bell gable with wing pieces",
+  "photoRows": [
+   1,
+   3,
+   3,
+   3,
+   3
+  ],
+  "photoGroundRows": 1,
+  "photoGables": 1,
+  "schemaLimits": [
+   "the door surround (white pilasters and a fanlight) is drawn as a plain door",
+   "the stoop's iron railing is not drawn",
+   "the frieze cornice is drawn as a 2.4 m entablature (kit maximum); on the strips the frieze with its cap reads 3.0-3.8 m, part of it the cap's projection stretched by the rectification; consoles, dentils and lettering are not drawn",
+   "one pane layout (two across, two up per sash) for every storey; Keizersgracht 616's bel-etage has three rows in the lower sash"
+  ]
+ },
+ "evidence": [
+  {
+   "face": "keizersgracht-596-648",
+   "pands": [
+    "175655",
+    "167896"
+   ],
+   "citation": "strip.jpg 2023-03-27, 2x gridded crop: souterrain 0-3.3 m with lights 0.6-2.6 m; window rows 3.9-7.0, 8.3-10.6, 11.7-13.6, 14.9-16.2 m on 616; frieze cornice 17.0-20.2 m"
+  },
+  {
+   "face": "keizersgracht-596-648",
+   "pands": [
+    "176067",
+    "176066"
+   ],
+   "citation": "strip.jpg 2023-03-27, 2x gridded crop: souterrain 0-2.7 m; door with fanlight 3.0-7.2 m on the right axis; window rows 3.0-7.0, 8.0-11.1, 11.9-14.4, 15.4-17.0 m; gable foot 17.8 m, neck about 3 m wide with wing pieces"
+  },
+  {
+   "face": "keizersgracht-596-648",
+   "pands": [
+    "175654",
+    "167895",
+    "165044"
+   ],
+   "citation": "strip.jpg 2023-03-27: Keizersgracht 614 (5.4 m), 602 (5.2 m) and 598 (5.2 m) carry two window axes"
+  }
+ ],
+ "notes": [
+  "Eaves of the cornice fronts are the TOP of the frieze cornice (the entablature hangs under the eaves); reviewer eaves pins with countStoreys give that line where 3DBAG reads the roof behind lower",
+  "The bel-etage weight is 4.2 (measured 4.4-4.9 m on Keizersgracht 606-616): the compile gate holds every storey over the souterrain to 2.3-4.6 m, and at 18-19 m eaves a heavier weight crosses 4.6 m"
+ ]
+}
