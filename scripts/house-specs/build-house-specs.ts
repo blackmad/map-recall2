@@ -85,7 +85,11 @@ const hex = (v: unknown) => (typeof v === 'string' ? (/^#[0-9a-f]{6}$/i.test(v) 
 function viewOf(spec: HouseSpec): HouseSpecView {
   const src = fieldSources(spec), front = spec.design.fronts?.[0];
   const v: HouseSpecView = { src: {} };
-  if (front?.gable) { v.gable = front.gable; v.src.gable = src['fronts/0/gable']; }
+  // The roof planner (roofMesh planRoof) draws a monument gable as the whole roof's crown: a canal house's gabled or
+  // cornice-fronted pitched roof. A street-measured cornice/flat front (a flat-roofed 1890s block), a partial crown
+  // (crownAt/crownBays over some bays) or a flat roof form is not that, so only full-width gabled crowns reach it; the
+  // register's own gable words (monument-text) pass as before. The full front stays in the record's design (`d`).
+  if (front?.gable && (src['fronts/0/gable'] === 'monument-text' || plannerCrown(spec))) { v.gable = front.gable; v.src.gable = src['fronts/0/gable']; }
   if (spec.facts?.facadeYear) { v.year = spec.facts.facadeYear; v.src.year = src['facts/facadeYear']; }
   if (spec.design.palette?.wallMaterial) { v.wallMaterial = spec.design.palette.wallMaterial; v.src.wallMaterial = src['palette/wallMaterial']; }
   const wall = hex(spec.design.palette?.brick);
@@ -93,6 +97,13 @@ function viewOf(spec: HouseSpec): HouseSpecView {
   const bays = frontBays(front);
   if (bays) { v.bays = bays; v.src.bays = src[front?.axisGrid ? 'fronts/0/axisGrid' : 'fronts/0/bays']; }
   return v;
+}
+const PLANNER_GABLES = new Set(['step', 'neck', 'raised-neck', 'bell', 'spout', 'point']);
+function plannerCrown(spec: HouseSpec): boolean {
+  const f = spec.design.fronts?.[0];
+  const at = f?.crownAt as { from?: number; to?: number } | undefined;
+  const full = !f?.crownBays && (!at || ((at.from ?? 0) <= 0.05 && (at.to ?? 1) >= 0.95));
+  return !!f?.gable && PLANNER_GABLES.has(f.gable) && full && spec.design.roof?.form !== 'flat';
 }
 const resolved = new Map<string, HouseSpec>();
 for (const [pand, list] of [...parts].sort(([a], [b]) => (a < b ? -1 : 1))) resolved.set(pand, withRoute(resolveSpecs(list)));
