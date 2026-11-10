@@ -1,0 +1,374 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "rokin-130-136",
+ "street": "Rokin",
+ "sources": [
+  {
+   "id": "strip-2025-01-08",
+   "kind": "street-panorama",
+   "capturedAt": "2025-01-08",
+   "image": "staging/block-face/rokin-130-136/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "claude-opus-5.5 (belt-burgwallen lane), per-house historic designs read off the strip with a metre grid",
+  "passes": 1,
+  "note": "Rokin 132-136, 134 and 130 (even side, on the water): a tall late-19th-c. red-brick front with cream speklagen and a two-storey white timber bay window, a dark brick 18th-c. cornice house over a shop (Rijksmonument: lijstgevel), and a black-painted bell gable over a white timber pui (bell gable in the register). The pand between 134 and 130 lies outside the buurt and has no strip."
+ },
+ "houses": [
+  {
+   "pandId": "0363100012168053",
+   "slug": "rokin-168053",
+   "address": "Rokin 132",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Rokin",
+      "gable": "cornice",
+      "cornice": "simple",
+      "storeys": 5,
+      "bays": 2,
+      "doorBay": null,
+      "basement": "none",
+      "hoist": false,
+      "windows": "casement-toplight",
+      "windowShare": 0.55,
+      "bands": "speklagen",
+      "speklagen": {
+       "spacing": 14,
+       "courses": 2
+      },
+      "bayWindows": {
+       "bay": 0,
+       "storeys": [
+        1,
+        2
+       ]
+      },
+      "windowHead": {
+       "kind": "relieving",
+       "storeys": [
+        1,
+        2,
+        3
+       ],
+       "archRing": {
+        "colour": "band",
+        "style": "blocks",
+        "keystone": false,
+        "springGap": 0.15
+       }
+      },
+      "storeyHeights": [
+       4.6,
+       3.6,
+       3.1,
+       3.7,
+       3.8
+      ],
+      "windowHeights": [
+       0.7,
+       0.56,
+       0.68,
+       0.6,
+       0.4
+      ],
+      "headLines": [
+       0.8,
+       0.7,
+       0.8,
+       0.78,
+       0.6
+      ],
+      "groundFront": {
+       "kind": "pui",
+       "bays": [
+        "window",
+        "window",
+        "door",
+        "glazed-door"
+       ],
+       "colour": "cream-painted",
+       "evidence": "strip 2025-01-08 pand 1: cream timber pui, a wide shop window and two doors on the right"
+      }
+     }
+    ],
+    "roof": {
+     "material": "slate"
+    },
+    "palette": {
+     "brick": "#9a5b3e",
+     "frame": "white-painted",
+     "door": "#26302a",
+     "stone": "#e6dcb8",
+     "band": "#e1d3a4",
+     "cornice": "#d9d4c4"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "name": "Parmigiano",
+    "category": "amenity=restaurant",
+    "osm": {
+     "type": "node",
+     "id": 2724038574,
+     "name": "Parmigiano",
+     "tags": "amenity=restaurant"
+    },
+    "bag": [
+     "bijeenkomstfunctie",
+     "winkelfunctie",
+     "woonfunctie"
+    ],
+    "photoDate": "2025-01-08",
+    "agreement": "osm-and-photo"
+   },
+   "rhythm": {
+    "bays": "2 axes, the left one wider",
+    "windowsPerStorey": "ground: pui | 1-2: bay window + 1 | 3: 2 | 4: 2",
+    "symmetry": "none",
+    "groundFloor": "cream timber pui with shop window and doors",
+    "signage": "none",
+    "roofline": "flat cornice at 18.8 m",
+    "citation": "strip.jpg pand 1 (2025-01-08)",
+    "photoRows": [
+     2,
+     1,
+     1,
+     2,
+     2
+    ],
+    "schemaLimits": [
+     "the white timber bay window is a three-sided timber erker with glazing bars; drawn as the brick bay of the kit",
+     "sunburst voussoirs over the right-hand windows are drawn as block rings"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012175226",
+   "slug": "rokin-175226",
+   "address": "Rokin 134",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Rokin",
+      "gable": "cornice",
+      "cornice": "heavy",
+      "storeys": 5,
+      "bays": 3,
+      "doorBay": null,
+      "basement": "none",
+      "hoist": false,
+      "windows": "six-pane",
+      "windowShare": 0.55,
+      "storeyHeights": [
+       3.2,
+       3.1,
+       2.7,
+       2.6,
+       2.8
+      ],
+      "windowHeights": [
+       0.6,
+       0.85,
+       0.78,
+       0.77,
+       0.54
+      ],
+      "headLines": [
+       0.8,
+       0.9,
+       0.85,
+       0.85,
+       0.64
+      ],
+      "shopfront": {
+       "colour": "#2b2a2a",
+       "fascia": true,
+       "stallriser": "low",
+       "displayWindows": 2,
+       "entrance": "centre",
+       "evidence": "strip 2025-01-08 pand 2: dark donut shop front with round window stickers"
+      }
+     }
+    ],
+    "roof": {
+     "material": "black-tile"
+    },
+    "palette": {
+     "brick": "#3d342f",
+     "frame": "#ddd8cc",
+     "door": "black",
+     "stone": "#d8d4c8",
+     "cornice": "#cfcabc"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "name": "Donuts",
+    "bag": [
+     "winkelfunctie",
+     "woonfunctie"
+    ],
+    "photoDate": "2025-01-08",
+    "agreement": "photo-only"
+   },
+   "rhythm": {
+    "bays": "3 equal axes",
+    "windowsPerStorey": "ground: shop | 1: 3 tall | 2: 3 | 3: 3 | 4: 3",
+    "symmetry": "symmetric",
+    "groundFloor": "shop",
+    "signage": "Donuts (window stickers)",
+    "roofline": "heavy cornice with dentils, top 15.3 m",
+    "citation": "strip.jpg pand 2 (2025-01-08)",
+    "photoRows": [
+     1,
+     3,
+     3,
+     3,
+     3
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012175227",
+   "slug": "rokin-175227",
+   "address": "Rokin 130",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Rokin",
+      "gable": "bell",
+      "crownRise": 1.27,
+      "atticWindows": 1,
+      "gableOrnament": {
+       "wings": "scrolls"
+      },
+      "cornice": "none",
+      "storeys": 4,
+      "bays": [
+       3,
+       3,
+       3,
+       1
+      ],
+      "doorBay": null,
+      "basement": "none",
+      "hoist": false,
+      "windows": "sash",
+      "windowSurround": "full-frame",
+      "windowShare": 0.48,
+      "storeyAxes": {
+       "3": [
+        1
+       ]
+      },
+      "storeyHeights": [
+       4.9,
+       2.7,
+       2.5,
+       3.6
+      ],
+      "windowHeights": [
+       0.75,
+       0.7,
+       0.56,
+       0.33
+      ],
+      "headLines": [
+       0.8,
+       0.92,
+       0.92,
+       0.6
+      ],
+      "groundFront": {
+       "kind": "pui",
+       "bays": [
+        "window",
+        "door",
+        "window"
+       ],
+       "colour": "#ece9e0",
+       "evidence": "strip 2025-01-08 pand 3: white timber pui with tall top lights, a door in the middle"
+      }
+     }
+    ],
+    "roof": {
+     "material": "black-tile"
+    },
+    "palette": {
+     "brick": "#2c2d2f",
+     "wallMaterial": "painted-brick",
+     "frame": "white-painted",
+     "door": "#1f2522",
+     "stone": "#ece9e0"
+    }
+   },
+   "groundFloor": {
+    "use": "cafe",
+    "name": "De Drie Graefjes",
+    "category": "amenity=cafe",
+    "osm": {
+     "type": "node",
+     "id": 2724038569,
+     "name": "De Drie Graefjes",
+     "tags": "amenity=cafe"
+    },
+    "bag": [
+     "winkelfunctie"
+    ],
+    "photoDate": "2025-01-08",
+    "agreement": "osm-and-photo"
+   },
+   "rhythm": {
+    "bays": "3 axes, the middle one wider",
+    "windowsPerStorey": "ground: pui | 1: 3 | 2: 3 | 3: 1 between two oval lights | gable: 1",
+    "symmetry": "symmetric",
+    "groundFloor": "white timber pui (cafe)",
+    "signage": "none",
+    "roofline": "black bell gable from 13.7 m, white claw pieces at its foot, rounded top 17.0 m",
+    "citation": "strip.jpg pand 3 (2025-01-08)",
+    "photoRows": [
+     3,
+     3,
+     3,
+     1,
+     1
+    ],
+    "photoGables": 1,
+    "schemaLimits": [
+     "two oval oeil-de-boeuf lights flank the third-storey window: the kit has no oval window",
+     "the bell top carries a carved white crown piece"
+    ]
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "measuredEaves": [
+   {
+    "pand": "0363100012168053",
+    "stripRow": 161,
+    "evidence": "top of the flat cornice (grid crop r130, 18.8 m)"
+   },
+   {
+    "pand": "0363100012175226",
+    "stripRow": 301,
+    "evidence": "top of the dentilled cornice (15.3 m)"
+   },
+   {
+    "pand": "0363100012175227",
+    "stripRow": 365,
+    "evidence": "bell gable foot at the claw pieces (13.7 m)"
+   }
+  ]
+ }
+}

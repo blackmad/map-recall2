@@ -1,0 +1,201 @@
+{
+ "street": "Kalverstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T08:27:19.177Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012175025",
+   "addresses": [
+    "Kalverstraat 170"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kalverstraat 170",
+     "use": "winkelfunctie",
+     "areaM2": 663,
+     "bagId": "0363010000696853"
+    },
+    {
+     "address": "Voetboogstraat 11",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 305,
+     "bagId": "0363010000855693"
+    },
+    {
+     "address": "Kalverstraat 170",
+     "use": "winkelfunctie",
+     "areaM2": 949,
+     "bagId": "0363010012132839"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2724038635,
+     "lngLat": [
+      4.8912316,
+      52.3684109
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "170",
+      "addr:postcode": "1012XE",
+      "addr:street": "Kalverstraat",
+      "check_date": "2025-07-28",
+      "name": "Costes",
+      "shop": "clothes",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-11-10T08:27:19.177Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012167508",
+   "addresses": [
+    "Kalverstraat 166"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kalverstraat 166",
+     "use": "winkelfunctie",
+     "areaM2": 371,
+     "bagId": "0363010000696851"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2724038626,
+     "lngLat": [
+      4.8911869,
+      52.3684736
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "166",
+      "addr:postcode": "1012XE",
+      "addr:street": "Kalverstraat",
+      "check_date": "2025-07-28",
+      "disused:shop": "shoes",
+      "name": "Vans",
+      "shop": "vacant",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-11-10T08:27:19.177Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012167927",
+   "addresses": [
+    "Kalverstraat 162",
+    "Kalverstraat 164A",
+    "Kalverstraat 164B",
+    "Kalverstraat 164C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kalverstraat 162",
+     "use": "winkelfunctie",
+     "areaM2": 702,
+     "bagId": "0363010000696848"
+    },
+    {
+     "address": "Kalverstraat 162",
+     "use": "winkelfunctie",
+     "areaM2": 346,
+     "bagId": "0363010012109406"
+    },
+    {
+     "address": "Kalverstraat 164A",
+     "use": "woonfunctie",
+     "areaM2": 77,
+     "bagId": "0363010012109407"
+    },
+    {
+     "address": "Kalverstraat 164B",
+     "use": "woonfunctie",
+     "areaM2": 75,
+     "bagId": "0363010012109408"
+    },
+    {
+     "address": "Kalverstraat 164C",
+     "use": "woonfunctie",
+     "areaM2": 95,
+     "bagId": "0363010012109409"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2724038614,
+     "lngLat": [
+      4.8911441,
+      52.3685536
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "162",
+      "addr:postcode": "1012XE",
+      "addr:street": "Kalverstraat",
+      "check_date": "2025-07-28",
+      "name": "Msch Copenhagen",
+      "shop": "clothes",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-11-10T08:27:19.177Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012175736",
+   "addresses": [
+    "Kalverstraat 160"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kalverstraat 160",
+     "use": "winkelfunctie",
+     "areaM2": 142,
+     "bagId": "0363010000696846"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012175737",
+   "addresses": [
+    "Kalverstraat 158"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kalverstraat 158",
+     "use": "winkelfunctie",
+     "areaM2": 148,
+     "bagId": "0363010000696845"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  }
+ ]
+}

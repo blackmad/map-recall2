@@ -1,0 +1,259 @@
+{
+ "street": "Kalverstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T08:48:05.339Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012175735",
+   "addresses": [
+    "Kalverstraat 157",
+    "Kalverstraat 159A",
+    "Kalverstraat 159B",
+    "Kalverstraat 159C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kalverstraat 157",
+     "use": "winkelfunctie",
+     "areaM2": 120,
+     "bagId": "0363010012565013"
+    },
+    {
+     "address": "Kalverstraat 159A",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010012565014"
+    },
+    {
+     "address": "Kalverstraat 159B",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010012565015"
+    },
+    {
+     "address": "Kalverstraat 159C",
+     "use": "woonfunctie",
+     "areaM2": 117,
+     "bagId": "0363010012565016"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012167994",
+   "addresses": [
+    "Kalverstraat 159",
+    "Kalverstraat 161"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kalverstraat 159",
+     "use": "kantoorfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000696843"
+    },
+    {
+     "address": "Kalverstraat 161",
+     "use": "winkelfunctie",
+     "areaM2": 331,
+     "bagId": "0363010000696847"
+    }
+   ],
+   "units": 2,
+   "osm": [
+    {
+     "type": "node",
+     "id": 9929425418,
+     "lngLat": [
+      4.8913423,
+      52.3685378
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:street": "Kalverstraat",
+      "brand": "Manfield",
+      "brand:wikidata": "Q58328872",
+      "brand:wikipedia": "nl:Manfield schoenen",
+      "name": "Manfield",
+      "shop": "shoes",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-11-10T08:48:05.339Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012253551",
+   "addresses": [
+    "Kalverstraat 163"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kalverstraat 163",
+     "use": "winkelfunctie",
+     "areaM2": 257,
+     "bagId": "0363010000696849"
+    },
+    {
+     "address": "Kalverstraat 163",
+     "use": "winkelfunctie",
+     "areaM2": 257,
+     "bagId": "0363010012151531"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012167509",
+   "addresses": [
+    "Kalverstraat 165"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kalverstraat 165",
+     "use": "winkelfunctie",
+     "areaM2": 362,
+     "bagId": "0363010000696850"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2724038622,
+     "lngLat": [
+      4.8914223,
+      52.3684296
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "165",
+      "addr:postcode": "1012XB",
+      "addr:street": "Kalverstraat",
+      "branch": "Amsterdam Kalverstraat",
+      "brand": "Sissy-Boy",
+      "brand:website": "https://www.sissy-boy.com",
+      "brand:wikidata": "Q17125357",
+      "clothes": "unisex",
+      "name": "Sissy-Boy",
+      "phone": "+31 20 2156996",
+      "shop": "clothes",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "website": "https://www.sissy-boy.com/winkels/sissy-boy-amsterdam-kalverstraat-165/",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-11-10T08:48:05.339Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012167505",
+   "addresses": [
+    "Kalverstraat 167"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kalverstraat 167",
+     "use": "winkelfunctie",
+     "areaM2": 625,
+     "bagId": "0363010000696852"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2724038631,
+     "lngLat": [
+      4.891467,
+      52.3683759
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "167",
+      "addr:postcode": "1012XB",
+      "addr:street": "Kalverstraat",
+      "brand": "Levi's",
+      "brand:wikidata": "Q127962",
+      "brand:wikipedia": "en:Levi Strauss & Co.",
+      "check_date": "2025-11-13",
+      "clothes": "denim;men;women",
+      "name": "Levi's",
+      "shop": "clothes",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-11-10T08:48:05.339Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012167998",
+   "addresses": [
+    "Kalverstraat 171"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kalverstraat 171",
+     "use": "winkelfunctie",
+     "areaM2": 474,
+     "bagId": "0363010000696854"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012167999",
+   "addresses": [
+    "Kalverstraat 173"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kalverstraat 173",
+     "use": "woonfunctie",
+     "areaM2": 362,
+     "bagId": "0363010000696859"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2724038648,
+     "lngLat": [
+      4.8915564,
+      52.3682594
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "173",
+      "addr:postcode": "1012XB",
+      "addr:street": "Kalverstraat",
+      "check_date": "2025-07-28",
+      "disused:shop": "confectionery",
+      "name": "Captain Candy",
+      "shop": "vacant",
+      "source": "BAG",
+      "source:date": "2014-02-11"
+     },
+     "fetchedAt": "2026-11-10T08:48:05.339Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

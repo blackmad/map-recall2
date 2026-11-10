@@ -1,0 +1,336 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "kalver-195-199",
+ "street": "Kalverstraat",
+ "sources": [
+  {
+   "id": "strip-2025-01-20",
+   "kind": "street-panorama",
+   "capturedAt": "2025-01-20",
+   "image": "staging/block-face/kalver-195-199/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "claude-opus-5.5 (belt-burgwallen lane), per-house historic designs read off the strip with a metre grid",
+  "passes": 1,
+  "note": "Kalverstraat 195, 197 and 199 (odd side, south of the Spui): a broad six-axis cornice front of brown brick, a narrow front with white block voussoirs over every window and a bracketed cornice, and an 18th-c. neck-gable house (Rijksmonument 2137: XVIIIb, claw pieces, glazing bars). Sky and crowns are washed out on the 2025-01-20 strip."
+ },
+ "houses": [
+  {
+   "pandId": "0363100012175256",
+   "slug": "kalver-175256",
+   "address": "Kalverstraat 195",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Kalverstraat",
+      "gable": "cornice",
+      "cornice": "simple",
+      "storeys": 4,
+      "bays": 6,
+      "doorBay": null,
+      "basement": "none",
+      "hoist": false,
+      "windows": "sash",
+      "windowSurround": "sill",
+      "windowShare": 0.66,
+      "storeyHeights": [
+       4.1,
+       2.7,
+       3.0,
+       2.5
+      ],
+      "windowHeights": [
+       0.6,
+       0.6,
+       0.53,
+       0.6
+      ],
+      "headLines": [
+       0.8,
+       0.7,
+       0.67,
+       0.8
+      ],
+      "shopfront": {
+       "colour": "#ece9e0",
+       "fascia": true,
+       "stallriser": "low",
+       "displayWindows": 3,
+       "entrance": "centre-recessed",
+       "evidence": "strip 2025-01-20 pand 3: white fascia 3.3-4.1 m with dark letters, glazed front"
+      }
+     }
+    ],
+    "roof": {
+     "material": "black-tile"
+    },
+    "palette": {
+     "brick": "#957260",
+     "frame": "white-painted",
+     "door": "black",
+     "stone": "#ece9e0",
+     "cornice": "#ece9e0"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "name": "Blue Tomato",
+    "category": "shop=shoes",
+    "osm": {
+     "type": "node",
+     "id": 10068336400,
+     "name": "Blue Tomato",
+     "tags": "shop=shoes"
+    },
+    "bag": [
+     "winkelfunctie"
+    ],
+    "photoDate": "2025-01-20",
+    "agreement": "osm-and-photo"
+   },
+   "rhythm": {
+    "bays": "6 equal axes",
+    "windowsPerStorey": "ground: shop | 1: 6 | 2: 6 | 3: 6",
+    "symmetry": "symmetric",
+    "groundFloor": "shop under a white fascia",
+    "signage": "dark letters, not legible",
+    "roofline": "white cornice at 13.0 m (washed out)",
+    "citation": "strip.jpg pand 1 (2025-01-20)",
+    "photoRows": [
+     1,
+     6,
+     6,
+     6
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012175255",
+   "slug": "kalver-175255",
+   "address": "Kalverstraat 197",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Kalverstraat",
+      "gable": "cornice",
+      "cornice": "bracketed",
+      "storeys": 4,
+      "bays": 3,
+      "doorBay": null,
+      "basement": "none",
+      "hoist": false,
+      "windows": "sash",
+      "windowShare": 0.6,
+      "windowHead": {
+       "kind": "relieving",
+       "storeys": [
+        1,
+        2,
+        3
+       ],
+       "archRing": {
+        "colour": "stone",
+        "style": "blocks",
+        "keystone": true,
+        "springGap": 0.1
+       }
+      },
+      "jambBlocks": {
+       "count": 2,
+       "rise": 0.18,
+       "reach": 0.12,
+       "storeys": [
+        1,
+        2,
+        3
+       ]
+      },
+      "storeyHeights": [
+       4.3,
+       2.6,
+       2.7,
+       3.0
+      ],
+      "windowHeights": [
+       0.6,
+       0.69,
+       0.63,
+       0.57
+      ],
+      "headLines": [
+       0.8,
+       0.77,
+       0.74,
+       0.7
+      ],
+      "shopfront": {
+       "colour": "#2a2b2c",
+       "fascia": true,
+       "stallriser": "low",
+       "displayWindows": 1,
+       "entrance": "none",
+       "evidence": "strip 2025-01-20 pand 4: dark shop front behind a roller shutter"
+      }
+     }
+    ],
+    "roof": {
+     "material": "black-tile"
+    },
+    "palette": {
+     "brick": "#7c5a4c",
+     "frame": "white-painted",
+     "door": "black",
+     "stone": "#ecebe4",
+     "cornice": "#ecebe4"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "bag": [
+     "winkelfunctie",
+     "winkelfunctie,woonfunctie",
+     "woonfunctie"
+    ],
+    "photoDate": "2025-01-20",
+    "agreement": "bag-only"
+   },
+   "rhythm": {
+    "bays": "3 equal axes",
+    "windowsPerStorey": "ground: shop | 1: 3 | 2: 3 | 3: 3",
+    "symmetry": "symmetric",
+    "groundFloor": "shop behind a roller shutter",
+    "signage": "none",
+    "roofline": "bracketed white cornice with consoles, top 13.6 m",
+    "citation": "strip.jpg pand 2 (2025-01-20)",
+    "photoRows": [
+     1,
+     3,
+     3,
+     3
+    ],
+    "schemaLimits": [
+     "the white voussoir blocks stand proud as a flat segmental band over each window"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012175232",
+   "slug": "kalver-175232",
+   "address": "Kalverstraat 199",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Kalverstraat",
+      "gable": "neck",
+      "crownCap": "flat",
+      "crownRise": 0.85,
+      "crownNeckWidth": 0.38,
+      "atticWindows": 1,
+      "cornice": "none",
+      "storeys": 4,
+      "bays": 3,
+      "doorBay": null,
+      "basement": "none",
+      "hoist": false,
+      "windows": "sash-small-panes",
+      "windowShare": 0.62,
+      "storeyHeights": [
+       4.4,
+       2.9,
+       2.7,
+       2.6
+      ],
+      "windowHeights": [
+       0.6,
+       0.66,
+       0.59,
+       0.65
+      ],
+      "headLines": [
+       0.8,
+       0.76,
+       0.78,
+       0.85
+      ],
+      "shopfront": {
+       "colour": "#3b6ea8",
+       "fascia": true,
+       "stallriser": "low",
+       "displayWindows": 2,
+       "entrance": "centre",
+       "evidence": "strip 2025-01-20 pand 5: blue-framed shop front with a glazed double door"
+      }
+     }
+    ],
+    "roof": {
+     "material": "black-tile"
+    },
+    "palette": {
+     "brick": "#8d6b57",
+     "frame": "white-painted",
+     "door": "black",
+     "stone": "#ecebe4",
+     "cornice": "#ecebe4"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "bag": [
+     "winkelfunctie",
+     "woonfunctie"
+    ],
+    "photoDate": "2025-01-20",
+    "agreement": "bag-only"
+   },
+   "rhythm": {
+    "bays": "3 equal axes",
+    "windowsPerStorey": "ground: shop | 1: 3 | 2: 3 | 3: 3 | neck: 1",
+    "symmetry": "symmetric",
+    "groundFloor": "blue-framed shop",
+    "signage": "none",
+    "roofline": "brick neck gable from 12.7 m to about 15 m with a light in the neck; ornament washed out",
+    "citation": "strip.jpg pand 3 (2025-01-20)",
+    "photoRows": [
+     1,
+     3,
+     3,
+     3,
+     1
+    ],
+    "photoGables": 1,
+    "schemaLimits": [
+     "claw pieces and the crowning ornament are washed out in the strip and not drawn"
+    ]
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "measuredEaves": [
+   {
+    "pand": "0363100012175256",
+    "stripRow": 589,
+    "evidence": "top of the white cornice (grid crop k195, 13.0 m)"
+   },
+   {
+    "pand": "0363100012175255",
+    "stripRow": 565,
+    "evidence": "top of the bracketed cornice (13.6 m)"
+   },
+   {
+    "pand": "0363100012175232",
+    "stripRow": 601,
+    "evidence": "gable foot (12.7 m)"
+   }
+  ]
+ }
+}

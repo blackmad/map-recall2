@@ -1,0 +1,106 @@
+{
+ "street": "Kalverstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T08:49:03.715Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012175256",
+   "addresses": [
+    "Kalverstraat 195"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kalverstraat 195",
+     "use": "winkelfunctie",
+     "areaM2": 606,
+     "bagId": "0363010000696875"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 10068336400,
+     "lngLat": [
+      4.8921562,
+      52.3677702
+     ],
+     "tags": {
+      "addr:housenumber": "193-195",
+      "addr:postcode": "1012XC",
+      "addr:street": "Kalverstraat",
+      "check_date": "2026-07-13",
+      "contact:instagram": "bluetomato",
+      "email": "amsterdam@blue-tomato.com",
+      "name": "Blue Tomato",
+      "opening_hours": "Su-Mo 12:00-18:00; Tu-We, Fr 11:00-18:00; Th, Sa 11:00-19:00",
+      "phone": "+31 20 2105053",
+      "shop": "shoes",
+      "website": "https://blue-tomato.com/"
+     },
+     "fetchedAt": "2026-11-10T08:49:03.715Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012175255",
+   "addresses": [
+    "Kalverstraat 197"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kalverstraat 197",
+     "use": "winkelfunctie,woonfunctie",
+     "areaM2": 458,
+     "bagId": "0363010000696877"
+    },
+    {
+     "address": "Kalverstraat 197",
+     "use": "winkelfunctie",
+     "areaM2": 322,
+     "bagId": "0363010012147934"
+    },
+    {
+     "address": "Rokin 144",
+     "use": "woonfunctie",
+     "areaM2": 136,
+     "bagId": "0363010012147935"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012175232",
+   "addresses": [
+    "Kalverstraat 199"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kalverstraat 199",
+     "use": "winkelfunctie",
+     "areaM2": 430,
+     "bagId": "0363010000696879"
+    },
+    {
+     "address": "Kalverstraat 199",
+     "use": "winkelfunctie",
+     "areaM2": 307,
+     "bagId": "0363010012154824"
+    },
+    {
+     "address": "Rokin 142",
+     "use": "woonfunctie",
+     "areaM2": 128,
+     "bagId": "0363010012154825"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  }
+ ]
+}

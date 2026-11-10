@@ -1,0 +1,412 @@
+{
+ "street": "Kalverstraat",
+ "seed": "0363100012167506",
+ "members": [
+  "0363100012168001",
+  "0363100012168002",
+  "0363100012168003",
+  "0363100012167507",
+  "0363100012167506"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "trimmed at 0363100012168001 (face continues: 175218 175221 175220 165086 167996 168000 175223 175224)"
+  },
+  {
+   "side": "right",
+   "reason": "next fronting pand 0363100012176134 13.7 m on shares no party wall (cross street or gap)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012167500",
+   "reason": "frontage 113.0 m from Kalverstraat"
+  },
+  {
+   "pandId": "0363100012167501",
+   "reason": "frontage 74.3 m from Kalverstraat"
+  },
+  {
+   "pandId": "0363100012167502",
+   "reason": "frontage 68.8 m from Kalverstraat"
+  },
+  {
+   "pandId": "0363100012167503",
+   "reason": "frontage 91.2 m from Kalverstraat"
+  },
+  {
+   "pandId": "0363100012167504",
+   "reason": "frontage 102.0 m from Kalverstraat"
+  },
+  {
+   "pandId": "0363100012167510",
+   "reason": "frontage 51.8 m from Kalverstraat"
+  },
+  {
+   "pandId": "0363100012167923",
+   "reason": "frontage 68.1 m from Kalverstraat"
+  },
+  {
+   "pandId": "0363100012167924",
+   "reason": "frontage 67.7 m from Kalverstraat"
+  },
+  {
+   "pandId": "0363100012167925",
+   "reason": "frontage 46.2 m from Kalverstraat"
+  },
+  {
+   "pandId": "0363100012167997",
+   "reason": "frontage 34.5 m from Kalverstraat"
+  },
+  {
+   "pandId": "0363100012168054",
+   "reason": "sightline to Kalverstraat crosses 0363100012167505"
+  },
+  {
+   "pandId": "0363100012168055",
+   "reason": "sightline to Kalverstraat crosses 0363100012175735"
+  },
+  {
+   "pandId": "0363100012168056",
+   "reason": "frontage 30.3 m from Kalverstraat"
+  },
+  {
+   "pandId": "0363100012168057",
+   "reason": "sightline to Kalverstraat crosses 0363100012167509"
+  },
+  {
+   "pandId": "0363100012168058",
+   "reason": "sightline to Kalverstraat crosses 0363100012253551"
+  },
+  {
+   "pandId": "0363100012168059",
+   "reason": "sightline to Kalverstraat crosses 0363100012167994"
+  },
+  {
+   "pandId": "0363100012168534",
+   "reason": "frontage 89.9 m from Kalverstraat"
+  },
+  {
+   "pandId": "0363100012175019",
+   "reason": "sightline to Kalverstraat crosses 0363100012175020"
+  },
+  {
+   "pandId": "0363100012175020",
+   "reason": "sightline to Kalverstraat crosses 0363100012175021"
+  },
+  {
+   "pandId": "0363100012175021",
+   "reason": "sightline to Kalverstraat crosses 0363100012176133"
+  },
+  {
+   "pandId": "0363100012175024",
+   "reason": "sightline to Kalverstraat crosses 0363100012167508"
+  },
+  {
+   "pandId": "0363100012175219",
+   "reason": "sightline to Kalverstraat crosses 0363100012175218"
+  },
+  {
+   "pandId": "0363100012175226",
+   "reason": "sightline to Kalverstraat crosses 0363100012168053"
+  },
+  {
+   "pandId": "0363100012175227",
+   "reason": "frontage 33.2 m from Kalverstraat"
+  },
+  {
+   "pandId": "0363100012175228",
+   "reason": "frontage 30.6 m from Kalverstraat"
+  },
+  {
+   "pandId": "0363100012175229",
+   "reason": "sightline to Kalverstraat crosses 0363100012175225"
+  },
+  {
+   "pandId": "0363100012175230",
+   "reason": "sightline to Kalverstraat crosses 0363100012175255"
+  },
+  {
+   "pandId": "0363100012175231",
+   "reason": "frontage 31.1 m from Kalverstraat"
+  },
+  {
+   "pandId": "0363100012175257",
+   "reason": "sightline to Kalverstraat crosses 0363100012175225"
+  },
+  {
+   "pandId": "0363100012175739",
+   "reason": "sightline to Kalverstraat crosses 0363100012175740"
+  },
+  {
+   "pandId": "0363100012175740",
+   "reason": "sightline to Kalverstraat crosses 0363100012176764"
+  },
+  {
+   "pandId": "0363100012175807",
+   "reason": "frontage 95.1 m from Kalverstraat"
+  },
+  {
+   "pandId": "0363100012175808",
+   "reason": "frontage 102.5 m from Kalverstraat"
+  },
+  {
+   "pandId": "0363100012175810",
+   "reason": "frontage 84.2 m from Kalverstraat"
+  },
+  {
+   "pandId": "0363100012175813",
+   "reason": "frontage 112.3 m from Kalverstraat"
+  },
+  {
+   "pandId": "0363100012175814",
+   "reason": "frontage 100.3 m from Kalverstraat"
+  },
+  {
+   "pandId": "0363100012175875",
+   "reason": "frontage 97.0 m from Kalverstraat"
+  },
+  {
+   "pandId": "0363100012175876",
+   "reason": "frontage 32.0 m from Kalverstraat"
+  },
+  {
+   "pandId": "0363100012175877",
+   "reason": "frontage 68.0 m from Kalverstraat"
+  },
+  {
+   "pandId": "0363100012175878",
+   "reason": "frontage 67.6 m from Kalverstraat"
+  },
+  {
+   "pandId": "0363100012175879",
+   "reason": "frontage 73.6 m from Kalverstraat"
+  },
+  {
+   "pandId": "0363100012175880",
+   "reason": "frontage 80.0 m from Kalverstraat"
+  },
+  {
+   "pandId": "0363100012175881",
+   "reason": "frontage 50.8 m from Kalverstraat"
+  },
+  {
+   "pandId": "0363100012175882",
+   "reason": "frontage 74.0 m from Kalverstraat"
+  },
+  {
+   "pandId": "0363100012175883",
+   "reason": "frontage 49.4 m from Kalverstraat"
+  },
+  {
+   "pandId": "0363100012175884",
+   "reason": "frontage 50.2 m from Kalverstraat"
+  },
+  {
+   "pandId": "0363100012176052",
+   "reason": "frontage 50.4 m from Kalverstraat"
+  },
+  {
+   "pandId": "0363100012176053",
+   "reason": "frontage 50.4 m from Kalverstraat"
+  },
+  {
+   "pandId": "0363100012176054",
+   "reason": "frontage 36.5 m from Kalverstraat"
+  },
+  {
+   "pandId": "0363100012176055",
+   "reason": "frontage 36.1 m from Kalverstraat"
+  },
+  {
+   "pandId": "0363100012176056",
+   "reason": "frontage 48.7 m from Kalverstraat"
+  },
+  {
+   "pandId": "0363100012176057",
+   "reason": "frontage 39.1 m from Kalverstraat"
+  },
+  {
+   "pandId": "0363100012176058",
+   "reason": "frontage 51.4 m from Kalverstraat"
+  },
+  {
+   "pandId": "0363100012176059",
+   "reason": "frontage 57.6 m from Kalverstraat"
+  },
+  {
+   "pandId": "0363100012176060",
+   "reason": "frontage 51.9 m from Kalverstraat"
+  },
+  {
+   "pandId": "0363100012176126",
+   "reason": "frontage 39.3 m from Kalverstraat"
+  },
+  {
+   "pandId": "0363100012176127",
+   "reason": "frontage 43.1 m from Kalverstraat"
+  },
+  {
+   "pandId": "0363100012176128",
+   "reason": "frontage 39.4 m from Kalverstraat"
+  },
+  {
+   "pandId": "0363100012176129",
+   "reason": "frontage 48.2 m from Kalverstraat"
+  },
+  {
+   "pandId": "0363100012176130",
+   "reason": "frontage 47.8 m from Kalverstraat"
+  },
+  {
+   "pandId": "0363100012176131",
+   "reason": "sightline to Kalverstraat crosses 0363100012167506"
+  },
+  {
+   "pandId": "0363100012176132",
+   "reason": "sightline to Kalverstraat crosses 0363100012167506"
+  },
+  {
+   "pandId": "0363100012176133",
+   "reason": "sightline to Kalverstraat crosses 0363100012176134"
+  },
+  {
+   "pandId": "0363100012176137",
+   "reason": "sightline to Kalverstraat crosses 0363100012167506"
+  },
+  {
+   "pandId": "0363100012176138",
+   "reason": "frontage 32.8 m from Kalverstraat"
+  },
+  {
+   "pandId": "0363100012185839",
+   "reason": "frontage 83.3 m from Kalverstraat"
+  },
+  {
+   "pandId": "0363100012185925",
+   "reason": "frontage 79.3 m from Kalverstraat"
+  },
+  {
+   "pandId": "0363100012165110",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012167505",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012167509",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012167994",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012167998",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012167999",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012168053",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012175222",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012175225",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012175232",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012175255",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012175256",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012175735",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012175738",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012175742",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012253551",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100100092603",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012168001",
+   "alongM": -17.43,
+   "widthM": 5.38,
+   "eavesM": 12.05,
+   "roofMaxM": 12.16,
+   "storeys3dbag": 0,
+   "builtYear": 1986,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012168002",
+   "alongM": -12.4,
+   "widthM": 4.75,
+   "eavesM": 11.87,
+   "roofMaxM": 12.12,
+   "storeys3dbag": 0,
+   "builtYear": 1739,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012168003",
+   "alongM": -7.97,
+   "widthM": 4.15,
+   "eavesM": 11.16,
+   "roofMaxM": 11.19,
+   "storeys3dbag": 0,
+   "builtYear": 1768,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012167507",
+   "alongM": -3.82,
+   "widthM": 4.19,
+   "eavesM": 14.27,
+   "roofMaxM": 15.17,
+   "storeys3dbag": 0,
+   "builtYear": 1755,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012167506",
+   "alongM": 0,
+   "widthM": 3.45,
+   "eavesM": 13.81,
+   "roofMaxM": 15.69,
+   "storeys3dbag": 3,
+   "builtYear": 1891,
+   "uncertainty": []
+  }
+ ]
+}

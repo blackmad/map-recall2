@@ -1,0 +1,257 @@
+{
+ "street": "Oude Turfmarkt",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T08:39:13.409Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012168172",
+   "addresses": [
+    "Oude Turfmarkt 127",
+    "Oude Turfmarkt 129",
+    "Oude Turfmarkt 139",
+    "Oude Turfmarkt 141",
+    "Oude Turfmarkt 143",
+    "Oude Turfmarkt 145",
+    "Oude Turfmarkt 147",
+    "Oude Turfmarkt 149"
+   ],
+   "groundUnits": [
+    {
+     "address": "Binnengasthuisstraat 46",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 546,
+     "bagId": "0363010000608166"
+    },
+    {
+     "address": "Oude Turfmarkt 127",
+     "use": "bijeenkomstfunctie,kantoorfunctie,overige gebruiksfunctie",
+     "areaM2": 4372,
+     "bagId": "0363010000767126"
+    },
+    {
+     "address": "Oude Turfmarkt 129",
+     "use": "bijeenkomstfunctie,onderwijsfunctie",
+     "areaM2": 2593,
+     "bagId": "0363010000767127"
+    },
+    {
+     "address": "Oude Turfmarkt 139",
+     "use": "onderwijsfunctie",
+     "areaM2": 1595,
+     "bagId": "0363010000767128"
+    },
+    {
+     "address": "Oude Turfmarkt 143-H",
+     "use": "woonfunctie",
+     "areaM2": 122,
+     "bagId": "0363010000767129"
+    },
+    {
+     "address": "Oude Turfmarkt 143-1",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000767130"
+    },
+    {
+     "address": "Oude Turfmarkt 145",
+     "use": "onderwijsfunctie",
+     "areaM2": 547,
+     "bagId": "0363010000767131"
+    },
+    {
+     "address": "Oude Turfmarkt 141",
+     "use": "onderwijsfunctie",
+     "areaM2": 1433,
+     "bagId": "0363010000945012"
+    },
+    {
+     "address": "Oude Turfmarkt 147",
+     "use": "onderwijsfunctie",
+     "areaM2": 558,
+     "bagId": "0363010000961653"
+    },
+    {
+     "address": "Oude Turfmarkt 149",
+     "use": "onderwijsfunctie",
+     "areaM2": 452,
+     "bagId": "0363010000976433"
+    }
+   ],
+   "units": 10,
+   "osm": [
+    {
+     "type": "node",
+     "id": 34050791,
+     "lngLat": [
+      4.8930549,
+      52.3688053
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:country": "NL",
+      "addr:housenumber": "127",
+      "addr:postcode": "1012GC",
+      "addr:street": "Oude Turfmarkt",
+      "description": "Archeological museum",
+      "fee": "yes",
+      "internet_access": "wlan",
+      "name": "Allard Pierson Museum",
+      "name:en": "Allard Pierson Museum",
+      "name:es": "Museo Allard Pierson",
+      "name:nl": "Allard Pierson Museum",
+      "name:ru": "Музей Алларда Пирсона",
+      "operator": "Universiteit van Amsterdam",
+      "payment:museumkaart": "yes",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "tourism": "museum",
+      "website": "https://allardpierson.nl/",
+      "wheelchair": "yes",
+      "wikidata": "Q1244372",
+      "wikimedia_commons": "Category:Allard Pierson Museum",
+      "wikipedia": "nl:Allard Pierson Museum"
+     },
+     "fetchedAt": "2026-11-10T08:39:13.409Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 2724102309,
+     "lngLat": [
+      4.8932426,
+      52.3684642
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "129",
+      "addr:postcode": "1012GC",
+      "addr:street": "Oude Turfmarkt",
+      "fee": "yes",
+      "name": "UvA Bijzondere Collecties",
+      "name:en": "Bijzondere Collecties",
+      "name:nl": "UvA Bijzondere Collecties",
+      "opening_hours": "Tu-Su 10:00-17:00",
+      "operator": "Universiteit van Amsterdam",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "tourism": "museum",
+      "website": "https://bijzonderecollecties.uva.nl",
+      "wheelchair": "yes",
+      "wikidata": "Q2100495",
+      "wikimedia_commons": "Category:University of Amsterdam Special Collections",
+      "wikipedia": "nl:Bijzondere Collecties van de Universiteit van Amsterdam"
+     },
+     "fetchedAt": "2026-11-10T08:39:13.409Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 2724102746,
+     "lngLat": [
+      4.894049,
+      52.3685754
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "46",
+      "addr:postcode": "1012ZD",
+      "addr:street": "Binnengasthuisstraat",
+      "amenity": "library",
+      "internet_access": "yes",
+      "name": "CEDLA Library",
+      "official_name": "Centre for Latin American Research and Documentation Library",
+      "opening_hours": "Mo 11:00-17:00; Tu-Fr 10:00-17:00",
+      "operator": "CEDLA",
+      "operator:website": "https://www.cedla.nl",
+      "operator:wikidata": "Q122675146",
+      "phone": "+31 20 525 3498",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "website": "https://www.cedla.nl/library",
+      "wikidata": "Q122675082"
+     },
+     "fetchedAt": "2026-11-10T08:39:13.409Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 13105647903,
+     "lngLat": [
+      4.8929326,
+      52.3686033
+     ],
+     "tags": {
+      "amenity": "waste_basket"
+     },
+     "fetchedAt": "2026-11-10T08:39:13.409Z",
+     "match": "frontage",
+     "distanceM": 6.8
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012179473",
+   "addresses": [
+    "Oude Turfmarkt 151"
+   ],
+   "groundUnits": [
+    {
+     "address": "Oude Turfmarkt 151",
+     "use": "kantoorfunctie",
+     "areaM2": 227,
+     "bagId": "0363010000767132"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012168174",
+   "addresses": [
+    "Oude Turfmarkt 153"
+   ],
+   "groundUnits": [
+    {
+     "address": "Oude Turfmarkt 153",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 78,
+     "bagId": "0363010000767133"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 1221258124,
+     "lngLat": [
+      4.8941167,
+      52.3677668
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "153",
+      "addr:postcode": "1012GC",
+      "addr:street": "Oude Turfmarkt",
+      "amenity": "pub",
+      "check_date": "2025-09-05",
+      "check_date:opening_hours": "2025-09-05",
+      "name": "Café Katoen",
+      "opening_hours": "Mo-Th 09:00-01:00, Fr 09:00-03:00, Sa 10:00-03:00, Su 10:00-01:00",
+      "phone": "+31 20 626 2635",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-11-10T08:39:13.409Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

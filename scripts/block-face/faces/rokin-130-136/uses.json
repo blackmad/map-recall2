@@ -1,0 +1,334 @@
+{
+ "street": "Rokin",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T08:49:55.138Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012168053",
+   "addresses": [
+    "Rokin 132",
+    "Rokin 136",
+    "Rokin 136B",
+    "Rokin 136A",
+    "Rokin 136D",
+    "Rokin 136E",
+    "Rokin 136C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Rokin 136",
+     "use": "woonfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000795865"
+    },
+    {
+     "address": "Kalverstraat 175",
+     "use": "winkelfunctie",
+     "areaM2": 263,
+     "bagId": "0363010001982014"
+    },
+    {
+     "address": "Rokin 132-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 105,
+     "bagId": "0363010003696755"
+    },
+    {
+     "address": "Kalverstraat 179",
+     "use": "winkelfunctie",
+     "areaM2": 1249,
+     "bagId": "0363010003714138"
+    },
+    {
+     "address": "Kalverstraat 179",
+     "use": "winkelfunctie",
+     "areaM2": 1336,
+     "bagId": "0363010012105873"
+    },
+    {
+     "address": "Rokin 136A",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010012134198"
+    },
+    {
+     "address": "Rokin 136D",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010012134200"
+    },
+    {
+     "address": "Rokin 136E",
+     "use": "woonfunctie",
+     "areaM2": 98,
+     "bagId": "0363010012134201"
+    },
+    {
+     "address": "Kalverstraat 177",
+     "use": "winkelfunctie",
+     "areaM2": 606,
+     "bagId": "0363010001020939"
+    },
+    {
+     "address": "Rokin 136C",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010012105875"
+    }
+   ],
+   "units": 16,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2724038574,
+     "lngLat": [
+      4.89216,
+      52.3683459
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "132-H",
+      "addr:postcode": "1012LD",
+      "addr:street": "Rokin",
+      "amenity": "restaurant",
+      "cuisine": "italian",
+      "name": "Parmigiano",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-11-10T08:49:55.138Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 2724038661,
+     "lngLat": [
+      4.8915715,
+      52.3682146
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "175",
+      "addr:postcode": "1012XB",
+      "addr:street": "Kalverstraat",
+      "brand": "G-Star Raw",
+      "brand:wikidata": "Q1484081",
+      "name": "G-Star Raw",
+      "shop": "clothes",
+      "source": "BAG",
+      "source:date": "2014-02-11"
+     },
+     "fetchedAt": "2026-11-10T08:49:55.138Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 2724038666,
+     "lngLat": [
+      4.8916014,
+      52.3681697
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "177",
+      "addr:postcode": "1012XB",
+      "addr:street": "Kalverstraat",
+      "brand": "Esprit",
+      "brand:wikidata": "Q532746",
+      "name": "Esprit",
+      "shop": "clothes",
+      "source": "BAG",
+      "source:date": "2014-02-11"
+     },
+     "fetchedAt": "2026-11-10T08:49:55.138Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 2724038678,
+     "lngLat": [
+      4.8916459,
+      52.368134
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "179",
+      "addr:postcode": "1012XB",
+      "addr:street": "Kalverstraat",
+      "brand": "Hollister",
+      "brand:wikidata": "Q1257477",
+      "name": "Hollister",
+      "official_name": "Hollister Co.",
+      "shop": "clothes",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-11-10T08:49:55.138Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012175226",
+   "addresses": [
+    "Rokin 134",
+    "Rokin 134A",
+    "Rokin 134B",
+    "Rokin 134C",
+    "Rokin 134D",
+    "Rokin 134E",
+    "Rokin 134F",
+    "Rokin 134G",
+    "Rokin 134H",
+    "Rokin 134K",
+    "Rokin 134L",
+    "Rokin 134M"
+   ],
+   "groundUnits": [
+    {
+     "address": "Rokin 134",
+     "use": "winkelfunctie",
+     "areaM2": 472,
+     "bagId": "0363010001020938"
+    },
+    {
+     "address": "Rokin 134A",
+     "use": "winkelfunctie",
+     "areaM2": 119,
+     "bagId": "0363010012609336"
+    },
+    {
+     "address": "Rokin 134B",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010012609337"
+    },
+    {
+     "address": "Rokin 134C",
+     "use": "woonfunctie",
+     "areaM2": 21,
+     "bagId": "0363010012609338"
+    },
+    {
+     "address": "Rokin 134D",
+     "use": "woonfunctie",
+     "areaM2": 28,
+     "bagId": "0363010012609339"
+    },
+    {
+     "address": "Rokin 134E",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010012609340"
+    },
+    {
+     "address": "Rokin 134F",
+     "use": "woonfunctie",
+     "areaM2": 21,
+     "bagId": "0363010012609341"
+    },
+    {
+     "address": "Rokin 134G",
+     "use": "woonfunctie",
+     "areaM2": 25,
+     "bagId": "0363010012609342"
+    },
+    {
+     "address": "Rokin 134H",
+     "use": "woonfunctie",
+     "areaM2": 27,
+     "bagId": "0363010012609343"
+    },
+    {
+     "address": "Rokin 134K",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010012609344"
+    },
+    {
+     "address": "Rokin 134L",
+     "use": "woonfunctie",
+     "areaM2": 27,
+     "bagId": "0363010012609345"
+    },
+    {
+     "address": "Rokin 134M",
+     "use": "woonfunctie",
+     "areaM2": 31,
+     "bagId": "0363010012609346"
+    }
+   ],
+   "units": 12,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2724038575,
+     "lngLat": [
+      4.8921883,
+      52.3683057
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "134",
+      "addr:postcode": "1012LD",
+      "addr:street": "Rokin",
+      "name": "POP18",
+      "shop": "clothes",
+      "source": "BAG",
+      "source:date": "2014-02-11"
+     },
+     "fetchedAt": "2026-11-10T08:49:55.138Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012175227",
+   "addresses": [
+    "Rokin 130"
+   ],
+   "groundUnits": [
+    {
+     "address": "Rokin 130",
+     "use": "winkelfunctie",
+     "areaM2": 433,
+     "bagId": "0363010000795852"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2724038569,
+     "lngLat": [
+      4.8921288,
+      52.3683755
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "130",
+      "addr:postcode": "1012LD",
+      "addr:street": "Rokin",
+      "amenity": "cafe",
+      "name": "De Drie Graefjes",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-11-10T08:49:55.138Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

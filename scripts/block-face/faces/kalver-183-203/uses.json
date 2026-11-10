@@ -1,0 +1,300 @@
+{
+ "street": "Kalverstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T08:49:03.715Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012175222",
+   "addresses": [
+    "Kalverstraat 183"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kalverstraat 183",
+     "use": "winkelfunctie",
+     "areaM2": 4744,
+     "bagId": "0363010002005697"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2724038728,
+     "lngLat": [
+      4.891808,
+      52.3680055
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:country": "NL",
+      "addr:housenumber": "183",
+      "addr:postcode": "1012XC",
+      "addr:street": "Kalverstraat",
+      "branch": "Amsterdam Flagship store",
+      "brand": "H&M",
+      "brand:wikidata": "Q188326",
+      "brand:wikipedia": "nl:H&M",
+      "check_date": "2025-02-19",
+      "name": "H&M",
+      "opening_hours": "Mo 11:00-18:30; Tu-We 10:00-18:30; Th 10:00-21:00; Fr-Sa 10:00-18:30; Su 12:00-18:30",
+      "ref": "NL0145",
+      "shop": "clothes",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "stroller": "yes",
+      "website": "https://www2.hm.com/nl_nl/customer-service/shopping-at-hm/local-store.NL0145.html",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-11-10T08:49:03.715Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 11894888180,
+     "lngLat": [
+      4.8923345,
+      52.3681542
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "140-142",
+      "addr:postcode": "1012LE",
+      "addr:street": "Rokin",
+      "branch": "Amsterdam Flagship store",
+      "brand": "H&M",
+      "brand:wikidata": "Q188326",
+      "brand:wikipedia": "nl:H&M",
+      "name": "H&M",
+      "ref": "NL0145",
+      "shop": "clothes",
+      "website": "https://www2.hm.com/nl_nl/customer-service/shopping-at-hm/local-store.NL0145.html"
+     },
+     "fetchedAt": "2026-11-10T08:49:03.715Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012175225",
+   "addresses": [
+    "Kalverstraat 185A",
+    "Kalverstraat 185B",
+    "Kalverstraat 185"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kalverstraat 185A",
+     "use": "winkelfunctie",
+     "areaM2": 1509,
+     "bagId": "0363010000939863"
+    },
+    {
+     "address": "Kalverstraat 185B",
+     "use": "winkelfunctie",
+     "areaM2": 300,
+     "bagId": "0363010000939864"
+    },
+    {
+     "address": "Kalverstraat 185",
+     "use": "winkelfunctie",
+     "areaM2": 1663,
+     "bagId": "0363010012094378"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 4807198168,
+     "lngLat": [
+      4.8920006,
+      52.3678575
+     ],
+     "tags": {
+      "brand": "Nike",
+      "brand:wikidata": "Q483915",
+      "brand:wikipedia": "en:Nike, Inc.",
+      "check_date": "2025-11-13",
+      "name": "Nike",
+      "shop": "clothes",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-11-10T08:49:03.715Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012175256",
+   "addresses": [
+    "Kalverstraat 195"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kalverstraat 195",
+     "use": "winkelfunctie",
+     "areaM2": 606,
+     "bagId": "0363010000696875"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 10068336400,
+     "lngLat": [
+      4.8921562,
+      52.3677702
+     ],
+     "tags": {
+      "addr:housenumber": "193-195",
+      "addr:postcode": "1012XC",
+      "addr:street": "Kalverstraat",
+      "check_date": "2026-07-13",
+      "contact:instagram": "bluetomato",
+      "email": "amsterdam@blue-tomato.com",
+      "name": "Blue Tomato",
+      "opening_hours": "Su-Mo 12:00-18:00; Tu-We, Fr 11:00-18:00; Th, Sa 11:00-19:00",
+      "phone": "+31 20 2105053",
+      "shop": "shoes",
+      "website": "https://blue-tomato.com/"
+     },
+     "fetchedAt": "2026-11-10T08:49:03.715Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012175255",
+   "addresses": [
+    "Kalverstraat 197"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kalverstraat 197",
+     "use": "winkelfunctie,woonfunctie",
+     "areaM2": 458,
+     "bagId": "0363010000696877"
+    },
+    {
+     "address": "Kalverstraat 197",
+     "use": "winkelfunctie",
+     "areaM2": 322,
+     "bagId": "0363010012147934"
+    },
+    {
+     "address": "Rokin 144",
+     "use": "woonfunctie",
+     "areaM2": 136,
+     "bagId": "0363010012147935"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012175232",
+   "addresses": [
+    "Kalverstraat 199"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kalverstraat 199",
+     "use": "winkelfunctie",
+     "areaM2": 430,
+     "bagId": "0363010000696879"
+    },
+    {
+     "address": "Kalverstraat 199",
+     "use": "winkelfunctie",
+     "areaM2": 307,
+     "bagId": "0363010012154824"
+    },
+    {
+     "address": "Rokin 142",
+     "use": "woonfunctie",
+     "areaM2": 128,
+     "bagId": "0363010012154825"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100100092603",
+   "addresses": [
+    "Kalverstraat 203"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kalverstraat 203",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 2133,
+     "bagId": "0363010012111235"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 251528271,
+     "lngLat": [
+      4.8926389,
+      52.3678828
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "156",
+      "addr:postcode": "1012LE",
+      "addr:street": "Rokin",
+      "check_date": "2025-03-16",
+      "name": "Hotel des Arts",
+      "source": "BAG",
+      "source:date": "2021-08-08",
+      "tourism": "hotel",
+      "website": "https://www.hoteldesarts.nl/",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-11-10T08:49:03.715Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 432862171,
+     "lngLat": [
+      4.8924135,
+      52.3676426
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "203",
+      "addr:postcode": "1012XC",
+      "addr:street": "Kalverstraat",
+      "amenity": "restaurant",
+      "brand": "La Place",
+      "brand:wikidata": "Q2041183",
+      "check_date": "2026-07-13",
+      "contact:website": "https://www.laplace.com/nl/locations/detail/la-place-amsterdam-kalverstraat-vd/",
+      "name": "La Place",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "toilets:wheelchair": "no",
+      "website": "https://www.laplace.com/",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-11-10T08:49:03.715Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

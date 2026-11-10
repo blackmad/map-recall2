@@ -1,0 +1,1178 @@
+{
+ "street": "Oude Turfmarkt",
+ "seed": "0363100012168172",
+ "members": [
+  "0363100012168172",
+  "0363100012179473",
+  "0363100012168174"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "next fronting pand 0363100012165686 40.9 m on shares no party wall (cross street or gap)"
+  },
+  {
+   "side": "right",
+   "reason": "no further pand fronts the street in the fetched area"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012165109",
+   "reason": "frontage 61.9 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012168145",
+   "reason": "frontage 119.0 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012168195",
+   "reason": "frontage 84.9 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012168196",
+   "reason": "frontage 68.8 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012168198",
+   "reason": "frontage 155.6 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012168199",
+   "reason": "frontage 119.2 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012168200",
+   "reason": "frontage 82.7 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012168201",
+   "reason": "no frontage on Oude Turfmarkt: No footprint edge faces Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012168288",
+   "reason": "frontage 61.1 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012168289",
+   "reason": "frontage 66.3 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012168320",
+   "reason": "no frontage on Oude Turfmarkt: No footprint edge faces Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012168321",
+   "reason": "no frontage on Oude Turfmarkt: No footprint edge faces Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012165086",
+   "reason": "frontage 102.5 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012165110",
+   "reason": "frontage 57.7 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012167502",
+   "reason": "frontage 179.8 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012167505",
+   "reason": "frontage 81.7 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012167506",
+   "reason": "frontage 114.4 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012167507",
+   "reason": "frontage 114.1 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012167508",
+   "reason": "frontage 114.3 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012167509",
+   "reason": "frontage 87.3 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012167510",
+   "reason": "frontage 162.8 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012167926",
+   "reason": "frontage 115.0 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012167927",
+   "reason": "frontage 114.3 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012167994",
+   "reason": "frontage 90.8 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012167996",
+   "reason": "frontage 107.7 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012167997",
+   "reason": "frontage 59.7 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012167998",
+   "reason": "frontage 74.2 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012167999",
+   "reason": "frontage 80.4 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012168000",
+   "reason": "frontage 108.6 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012168001",
+   "reason": "frontage 112.4 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012168002",
+   "reason": "frontage 113.0 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012168003",
+   "reason": "frontage 113.6 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012168045",
+   "reason": "frontage 85.4 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012168053",
+   "reason": "frontage 60.9 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012168054",
+   "reason": "frontage 60.0 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012168055",
+   "reason": "frontage 60.3 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012168056",
+   "reason": "frontage 60.7 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012168057",
+   "reason": "frontage 59.8 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012168058",
+   "reason": "frontage 60.1 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012168059",
+   "reason": "frontage 60.1 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012168171",
+   "reason": "frontage 48.8 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012168173",
+   "reason": "frontage 68.6 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012168192",
+   "reason": "frontage 88.3 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012168238",
+   "reason": "frontage 72.3 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012168239",
+   "reason": "frontage 44.6 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012168322",
+   "reason": "frontage 41.0 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012168323",
+   "reason": "frontage 118.6 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012168324",
+   "reason": "frontage 53.5 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012168325",
+   "reason": "frontage 38.2 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012168326",
+   "reason": "frontage 97.3 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012168327",
+   "reason": "frontage 87.6 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012168346",
+   "reason": "frontage 125.8 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012168347",
+   "reason": "frontage 91.1 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012168348",
+   "reason": "no frontage on Oude Turfmarkt: No footprint edge faces Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012168349",
+   "reason": "frontage 64.1 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012168350",
+   "reason": "frontage 75.9 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012168375",
+   "reason": "frontage 67.4 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012168376",
+   "reason": "frontage 80.9 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012168377",
+   "reason": "frontage 83.9 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012168378",
+   "reason": "no frontage on Oude Turfmarkt: No footprint edge faces Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012168380",
+   "reason": "frontage 77.7 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012168381",
+   "reason": "frontage 86.5 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012168382",
+   "reason": "frontage 53.2 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012168383",
+   "reason": "frontage 98.3 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012168384",
+   "reason": "frontage 77.3 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012168462",
+   "reason": "frontage 51.0 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012168463",
+   "reason": "frontage 124.5 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012168466",
+   "reason": "frontage 134.7 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012169332",
+   "reason": "frontage 189.1 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012171166",
+   "reason": "no frontage on Oude Turfmarkt: No footprint edge faces Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012171167",
+   "reason": "no frontage on Oude Turfmarkt: No footprint edge faces Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012171168",
+   "reason": "frontage 188.8 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012171169",
+   "reason": "no frontage on Oude Turfmarkt: No footprint edge faces Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012171179",
+   "reason": "frontage 195.5 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012169331",
+   "reason": "frontage 85.3 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012171099",
+   "reason": "frontage 150.8 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012171136",
+   "reason": "frontage 150.3 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012171156",
+   "reason": "frontage 173.1 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012171162",
+   "reason": "frontage 181.4 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012175019",
+   "reason": "frontage 140.0 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012175020",
+   "reason": "frontage 136.3 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012175021",
+   "reason": "frontage 132.8 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012175022",
+   "reason": "frontage 113.6 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012175023",
+   "reason": "frontage 113.3 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012175025",
+   "reason": "frontage 114.0 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012175218",
+   "reason": "frontage 93.4 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012175219",
+   "reason": "frontage 100.6 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012175220",
+   "reason": "frontage 100.7 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012175221",
+   "reason": "frontage 97.1 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012175222",
+   "reason": "frontage 59.4 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012175223",
+   "reason": "frontage 109.4 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012175224",
+   "reason": "frontage 110.0 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012175225",
+   "reason": "frontage 83.5 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012175226",
+   "reason": "frontage 60.8 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012175227",
+   "reason": "frontage 60.3 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012175228",
+   "reason": "frontage 59.9 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012175258",
+   "reason": "sightline to Oude Turfmarkt crosses 0363100012175261"
+  },
+  {
+   "pandId": "0363100012175259",
+   "reason": "no frontage on Oude Turfmarkt: No footprint edge faces Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012175260",
+   "reason": "no frontage on Oude Turfmarkt: No footprint edge faces Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012175265",
+   "reason": "sightline to Oude Turfmarkt crosses 0363100012175262"
+  },
+  {
+   "pandId": "0363100012175266",
+   "reason": "frontage 59.9 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012175267",
+   "reason": "frontage 59.7 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012175268",
+   "reason": "frontage 112.0 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012175269",
+   "reason": "frontage 129.5 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012175270",
+   "reason": "frontage 48.1 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012175271",
+   "reason": "frontage 64.9 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012175272",
+   "reason": "frontage 76.1 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012175463",
+   "reason": "frontage 97.9 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012175464",
+   "reason": "frontage 98.7 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012175465",
+   "reason": "frontage 124.0 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012175466",
+   "reason": "frontage 122.0 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012175469",
+   "reason": "frontage 127.7 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012175470",
+   "reason": "no frontage on Oude Turfmarkt: No footprint edge faces Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012175472",
+   "reason": "frontage 119.4 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012175487",
+   "reason": "frontage 92.0 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012175488",
+   "reason": "frontage 118.1 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012175489",
+   "reason": "frontage 118.3 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012175490",
+   "reason": "frontage 73.3 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012175494",
+   "reason": "frontage 119.4 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012175632",
+   "reason": "frontage 97.1 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012175633",
+   "reason": "frontage 157.3 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012175634",
+   "reason": "frontage 160.0 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012175669",
+   "reason": "frontage 92.9 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012175670",
+   "reason": "frontage 79.2 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012175726",
+   "reason": "frontage 74.7 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012175727",
+   "reason": "frontage 86.8 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012175728",
+   "reason": "frontage 78.4 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012175730",
+   "reason": "frontage 117.9 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012175732",
+   "reason": "frontage 121.6 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012175733",
+   "reason": "frontage 100.4 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012175229",
+   "reason": "frontage 58.8 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012175230",
+   "reason": "frontage 58.5 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012175231",
+   "reason": "frontage 58.7 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012175232",
+   "reason": "frontage 79.7 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012175255",
+   "reason": "frontage 79.7 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012175256",
+   "reason": "frontage 82.5 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012175257",
+   "reason": "frontage 74.5 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012175484",
+   "reason": "frontage 113.5 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012175485",
+   "reason": "frontage 113.5 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012175486",
+   "reason": "frontage 113.3 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012175735",
+   "reason": "frontage 88.9 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012175736",
+   "reason": "frontage 114.3 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012176765",
+   "reason": "no frontage on Oude Turfmarkt: No footprint edge faces Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012176766",
+   "reason": "no frontage on Oude Turfmarkt: No footprint edge faces Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012176767",
+   "reason": "frontage 134.9 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012176768",
+   "reason": "frontage 129.9 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012176769",
+   "reason": "frontage 125.6 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012176770",
+   "reason": "frontage 92.7 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012176771",
+   "reason": "frontage 96.1 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012177830",
+   "reason": "frontage 212.1 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012177831",
+   "reason": "no frontage on Oude Turfmarkt: No footprint edge faces Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012177855",
+   "reason": "no frontage on Oude Turfmarkt: No footprint edge faces Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012177867",
+   "reason": "no frontage on Oude Turfmarkt: No footprint edge faces Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012177868",
+   "reason": "no frontage on Oude Turfmarkt: No footprint edge faces Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012177869",
+   "reason": "no frontage on Oude Turfmarkt: No footprint edge faces Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012179474",
+   "reason": "frontage 40.0 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012179475",
+   "reason": "frontage 88.9 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012175737",
+   "reason": "frontage 114.5 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012175738",
+   "reason": "frontage 90.0 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012175741",
+   "reason": "frontage 115.5 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012175742",
+   "reason": "frontage 91.6 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012175743",
+   "reason": "frontage 90.5 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012175744",
+   "reason": "frontage 89.8 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012175876",
+   "reason": "frontage 142.4 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012176054",
+   "reason": "frontage 147.3 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012176055",
+   "reason": "frontage 147.2 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012176057",
+   "reason": "frontage 149.6 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012176060",
+   "reason": "frontage 162.5 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012176126",
+   "reason": "frontage 149.7 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012176127",
+   "reason": "frontage 153.7 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012176128",
+   "reason": "frontage 150.0 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012176131",
+   "reason": "frontage 126.3 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012176132",
+   "reason": "frontage 136.1 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012176133",
+   "reason": "frontage 123.1 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012176134",
+   "reason": "frontage 114.0 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012176135",
+   "reason": "frontage 113.7 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012176136",
+   "reason": "frontage 113.8 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012176137",
+   "reason": "frontage 140.3 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012176138",
+   "reason": "frontage 143.3 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012176764",
+   "reason": "frontage 116.6 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012177787",
+   "reason": "frontage 143.9 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012179457",
+   "reason": "frontage 74.5 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012179459",
+   "reason": "frontage 78.5 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012179460",
+   "reason": "frontage 77.1 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012179461",
+   "reason": "frontage 71.9 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012179462",
+   "reason": "frontage 73.1 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012179464",
+   "reason": "frontage 76.3 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012179465",
+   "reason": "frontage 78.1 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012179466",
+   "reason": "frontage 80.4 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012179467",
+   "reason": "frontage 82.9 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012179468",
+   "reason": "frontage 85.7 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012179476",
+   "reason": "frontage 49.8 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012179477",
+   "reason": "frontage 53.2 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012179478",
+   "reason": "frontage 57.0 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012179526",
+   "reason": "frontage 57.4 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012179527",
+   "reason": "no frontage on Oude Turfmarkt: No footprint edge faces Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012179528",
+   "reason": "no frontage on Oude Turfmarkt: No footprint edge faces Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012179529",
+   "reason": "frontage 114.6 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012179530",
+   "reason": "no frontage on Oude Turfmarkt: No footprint edge faces Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012179531",
+   "reason": "no frontage on Oude Turfmarkt: No footprint edge faces Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012179532",
+   "reason": "no frontage on Oude Turfmarkt: No footprint edge faces Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012179533",
+   "reason": "no frontage on Oude Turfmarkt: No footprint edge faces Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012179534",
+   "reason": "frontage 96.2 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012179535",
+   "reason": "frontage 69.9 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012179536",
+   "reason": "frontage 91.3 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012179540",
+   "reason": "frontage 113.9 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012179542",
+   "reason": "frontage 122.2 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012179543",
+   "reason": "frontage 119.7 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012179544",
+   "reason": "frontage 124.5 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012179545",
+   "reason": "frontage 132.0 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012179546",
+   "reason": "no frontage on Oude Turfmarkt: No footprint edge faces Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012179779",
+   "reason": "frontage 204.4 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012179780",
+   "reason": "frontage 211.5 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012179781",
+   "reason": "frontage 217.2 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012179782",
+   "reason": "frontage 222.0 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012179783",
+   "reason": "no frontage on Oude Turfmarkt: No footprint edge faces Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012179784",
+   "reason": "no frontage on Oude Turfmarkt: No footprint edge faces Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012179785",
+   "reason": "no frontage on Oude Turfmarkt: No footprint edge faces Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012179786",
+   "reason": "no frontage on Oude Turfmarkt: No footprint edge faces Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012179787",
+   "reason": "no frontage on Oude Turfmarkt: No footprint edge faces Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012179788",
+   "reason": "no frontage on Oude Turfmarkt: No footprint edge faces Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012179852",
+   "reason": "no frontage on Oude Turfmarkt: No footprint edge faces Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012179853",
+   "reason": "no frontage on Oude Turfmarkt: No footprint edge faces Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012179854",
+   "reason": "no frontage on Oude Turfmarkt: No footprint edge faces Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012179855",
+   "reason": "no frontage on Oude Turfmarkt: No footprint edge faces Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012179856",
+   "reason": "no frontage on Oude Turfmarkt: No footprint edge faces Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012179857",
+   "reason": "no frontage on Oude Turfmarkt: No footprint edge faces Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012179858",
+   "reason": "no frontage on Oude Turfmarkt: No footprint edge faces Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012179859",
+   "reason": "frontage 141.3 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012179860",
+   "reason": "frontage 146.3 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012179861",
+   "reason": "frontage 149.3 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012179862",
+   "reason": "no frontage on Oude Turfmarkt: No footprint edge faces Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012179863",
+   "reason": "no frontage on Oude Turfmarkt: No footprint edge faces Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012179951",
+   "reason": "no frontage on Oude Turfmarkt: No footprint edge faces Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012179952",
+   "reason": "no frontage on Oude Turfmarkt: No footprint edge faces Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012179953",
+   "reason": "no frontage on Oude Turfmarkt: No footprint edge faces Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012179954",
+   "reason": "no frontage on Oude Turfmarkt: No footprint edge faces Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012179955",
+   "reason": "no frontage on Oude Turfmarkt: No footprint edge faces Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012180195",
+   "reason": "frontage 124.8 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012180196",
+   "reason": "frontage 149.5 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012180197",
+   "reason": "frontage 150.5 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012180198",
+   "reason": "no frontage on Oude Turfmarkt: No footprint edge faces Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012180199",
+   "reason": "no frontage on Oude Turfmarkt: No footprint edge faces Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012180200",
+   "reason": "no frontage on Oude Turfmarkt: No footprint edge faces Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012180201",
+   "reason": "no frontage on Oude Turfmarkt: No footprint edge faces Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012180202",
+   "reason": "no frontage on Oude Turfmarkt: No footprint edge faces Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012180203",
+   "reason": "no frontage on Oude Turfmarkt: No footprint edge faces Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012180204",
+   "reason": "no frontage on Oude Turfmarkt: No footprint edge faces Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012180205",
+   "reason": "no frontage on Oude Turfmarkt: No footprint edge faces Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012180206",
+   "reason": "no frontage on Oude Turfmarkt: No footprint edge faces Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012180207",
+   "reason": "no frontage on Oude Turfmarkt: No footprint edge faces Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012180208",
+   "reason": "no frontage on Oude Turfmarkt: No footprint edge faces Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012180209",
+   "reason": "no frontage on Oude Turfmarkt: No footprint edge faces Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012180210",
+   "reason": "no frontage on Oude Turfmarkt: No footprint edge faces Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012180211",
+   "reason": "no frontage on Oude Turfmarkt: No footprint edge faces Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012180278",
+   "reason": "no frontage on Oude Turfmarkt: No footprint edge faces Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012185506",
+   "reason": "frontage 72.1 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012253950",
+   "reason": "frontage 34.8 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012253951",
+   "reason": "frontage 92.3 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012253961",
+   "reason": "frontage 82.0 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012253962",
+   "reason": "frontage 85.8 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012180406",
+   "reason": "frontage 88.6 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012180410",
+   "reason": "frontage 110.7 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012180411",
+   "reason": "frontage 140.4 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012180412",
+   "reason": "frontage 70.4 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012180413",
+   "reason": "frontage 94.9 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012180414",
+   "reason": "frontage 53.7 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012253551",
+   "reason": "frontage 87.5 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012253808",
+   "reason": "frontage 31.3 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012253809",
+   "reason": "frontage 37.2 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012253810",
+   "reason": "frontage 43.2 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012253928",
+   "reason": "no frontage on Oude Turfmarkt: No footprint edge faces Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012571527",
+   "reason": "sightline to Oude Turfmarkt crosses 0363100012168174"
+  },
+  {
+   "pandId": "0363100012571528",
+   "reason": "sightline to Oude Turfmarkt crosses 0363100012168174"
+  },
+  {
+   "pandId": "0363100100092603",
+   "reason": "frontage 58.2 m from Oude Turfmarkt"
+  },
+  {
+   "pandId": "0363100012168319",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012168170",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012175261",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012175262",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012175263",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012175264",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 180,
+ "pands": [
+  {
+   "pandId": "0363100012168172",
+   "alongM": 0,
+   "widthM": 12.26,
+   "eavesM": 19.49,
+   "roofMaxM": 22.19,
+   "storeys3dbag": 5,
+   "builtYear": 1643,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012179473",
+   "alongM": 112.08,
+   "widthM": 10.05,
+   "eavesM": 15.46,
+   "roofMaxM": 18.71,
+   "storeys3dbag": 0,
+   "builtYear": 1635,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012168174",
+   "alongM": 119.03,
+   "widthM": 4.11,
+   "eavesM": 16.31,
+   "roofMaxM": 19.09,
+   "storeys3dbag": 0,
+   "builtYear": 1735,
+   "uncertainty": []
+  }
+ ]
+}

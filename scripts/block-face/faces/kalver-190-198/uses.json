@@ -1,0 +1,203 @@
+{
+ "street": "Kalverstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T08:30:33.765Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012168001",
+   "addresses": [
+    "Kalverstraat 198"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kalverstraat 198",
+     "use": "winkelfunctie",
+     "areaM2": 215,
+     "bagId": "0363010000696878"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 12875636050,
+     "lngLat": [
+      4.8917963,
+      52.3677788
+     ],
+     "tags": {
+      "indoor_seating": "no",
+      "name": "Van Holland Stroopwafels",
+      "outdoor_seating": "no",
+      "shop": "bakery",
+      "takeaway": "only"
+     },
+     "fetchedAt": "2026-11-10T08:30:33.765Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012168002",
+   "addresses": [
+    "Kalverstraat 196"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kalverstraat 196",
+     "use": "kantoorfunctie",
+     "areaM2": 165,
+     "bagId": "0363010000696876"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 12875624730,
+     "lngLat": [
+      4.8917382,
+      52.3678214
+     ],
+     "tags": {
+      "name": "Pardole Parfum",
+      "shop": "perfumery"
+     },
+     "fetchedAt": "2026-11-10T08:30:33.765Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012168003",
+   "addresses": [
+    "Kalverstraat 194"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kalverstraat 194",
+     "use": "winkelfunctie",
+     "areaM2": 124,
+     "bagId": "0363010000696874"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2724038747,
+     "lngLat": [
+      4.891693,
+      52.3678556
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "194",
+      "addr:postcode": "1012XH",
+      "addr:street": "Kalverstraat",
+      "contact:instagram": "collectableworld.nl",
+      "name": "Collectable World",
+      "shop": "games",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-11-10T08:30:33.765Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012167507",
+   "addresses": [
+    "Kalverstraat 192"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kalverstraat 192",
+     "use": "winkelfunctie",
+     "areaM2": 128,
+     "bagId": "0363010000696873"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 12875629970,
+     "lngLat": [
+      4.8916741,
+      52.3678848
+     ],
+     "tags": {
+      "craft": "electronics_repair",
+      "name": "King Mobile"
+     },
+     "fetchedAt": "2026-11-10T08:30:33.765Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012167506",
+   "addresses": [
+    "Kalverstraat 190"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kalverstraat 190",
+     "use": "winkelfunctie,woonfunctie",
+     "areaM2": 20,
+     "bagId": "0363010000661117"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 5927361702,
+     "lngLat": [
+      4.8916341,
+      52.3679176
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "190",
+      "addr:postcode": "1012XH",
+      "addr:street": "Kalverstraat",
+      "check_date": "2025-05-30",
+      "name": "Van Wonderen Stroopwafels",
+      "name:nl": "Van Wonderen Stroopwafels",
+      "shop": "confectionery",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-11-10T08:30:33.765Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 10068316373,
+     "lngLat": [
+      4.8915295,
+      52.3678891
+     ],
+     "tags": {
+      "check_date": "2025-02-19",
+      "name": "Jott",
+      "shop": "clothes"
+     },
+     "fetchedAt": "2026-11-10T08:30:33.765Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}
