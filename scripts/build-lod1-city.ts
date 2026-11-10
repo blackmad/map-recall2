@@ -131,7 +131,11 @@ for (const feature of osm.features) {
   const osmId = String(feature.properties.osmId ?? '');
   const direct = colourById.get(osmId);
   const paint = resolvePaintProps(direct, rings, paintDonors);
-  const properties = { ...feature.properties, ...paint, osmId };
+  const properties: Record<string, unknown> = { ...feature.properties, ...paint, osmId };
+  // A material is the feature's own statement (glassParts.ts draws glass/mirror as a curtain wall): never inherited
+  // from a containing coloured outline the way paint is.
+  const ownMaterial = direct?.material || feature.properties.material;
+  if (ownMaterial) properties.material = ownMaterial; else delete properties.material;
   const building: OsmBuilding = {
     osmId,
     rings,
