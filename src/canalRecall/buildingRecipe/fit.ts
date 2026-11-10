@@ -22,7 +22,7 @@ import {unobservedHouse, type GableType} from '../facade/houseRecord.ts';
 import {measured, type Observation} from '../facade/evidence.ts';
 import type {BuildingFacts, FrontFacts} from './facts.ts';
 import {pointInRing, roofHeightAt} from './facts.ts';
-import {swatch, DIMINISHING_WINDOW_HEIGHTS, DARK_TYMPANUM_K, ORIEL, TIMBER_DORMER, type CanalHouseIntent, type OrielConsoleCorbel, type FrontIntent, type GableIntent, type ShopSign} from './intent.ts';
+import {PARTY_DORMER_FASCIA, ZINC_BAND, swatch, DIMINISHING_WINDOW_HEIGHTS, DARK_TYMPANUM_K, ORIEL, TIMBER_DORMER, type CanalHouseIntent, type OrielConsoleCorbel, type FrontIntent, type GableIntent, type ShopSign} from './intent.ts';
 import {cleanRoof, type RoofCleanupReport} from './roofCleanup.ts';
 import {gableOrnaments} from './gableOrnament.ts';
 import {entablatureCornice} from './entablature.ts';
@@ -346,8 +346,36 @@ function layoutFront(f: FrontIntent, width: number, heightTop: number): Layout {
     for (let b = 0; b < count; b++) {
       const centre = plan.centre(b), winW = plan.w(b), pitch = plan.pitch(b);
       if (s === 0 && f.groundFront) continue; // groundFrontLayout builds the ground storey
+      // `extraDoorBays` / `doorPairs`: the further door bays, and the door pair of every door bay (Landlust slot blocks).
+      const pairedDoors = (name: string) => {
+        const doorH = Math.min(h * 0.78, 2.7), transomH = Math.min(0.6, h - doorH - 0.25), gap = 0.24;
+        const slots: [string, number, number][] = f.doorPairs
+          ? (() => { const dw = round(clamp((winW - gap) / 2, 0.7, 1.4)); return [[name, centre - gap / 2 - dw, dw], [`${name}-2`, centre + gap / 2, dw]] as [string, number, number][]; })()
+          : [[name, clamp(centre - doorWidth / 2, 0.05, width - doorWidth - 0.05), doorWidth]];
+        return slots.flatMap(([id, left, dw]) => {
+          const made = f.doorReveal ? doorRevealOpenings(f.doorReveal, round(left), y, dw, doorH, transomH)
+            : [{id: 'door', kind: 'door' as const, leftM: round(left), bottomM: y, widthM: dw, heightM: doorH, trimWidthM: 0.08, verticalBars: [.5], paneSurface: 'door' as const, frameSurface: 'trim' as const, barSurface: 'trim' as const},
+              ...(transomH > 0.2 ? [{id: 'door-transom', kind: 'window' as const, leftM: round(left), bottomM: y + doorH + 0.06, widthM: dw, heightM: transomH, trimWidthM: 0.06, frameSurface: 'trim' as const, barSurface: 'trim' as const}] : [])];
+          return made.map(o => ({...o, id: o.id.replace(/^door/, id)}));
+        });
+      };
+      if (s === 0 && !rd && !f.groundFront && f.extraDoorBays?.includes(b)) { openings.push(...pairedDoors(`door-b${b}`)); continue; }
       if (s === 0 && f.doorBay === b && !rd) {
         doorLeft = clamp(centre - doorWidth / 2, 0.05, width - doorWidth - 0.05);
+        if (f.doorPairs && !f.doorArch) { openings.push(...pairedDoors('door')); continue; }
+        if (f.doorRow) {
+          // A row of `count` single-leaf doors of `leaf` spread evenly over the span, each at the back of its own reveal; no fanlights, so the one canopy slab sits on the door heads.
+          const {from, to, count, leaf: doorW} = f.doorRow, doorH = Math.min(h * 0.78, 2.7), transomH = 0, span = (to - from) * width, pitch = span / count;
+          const dw = round(Math.min(doorW, Math.max(0.5, pitch - 0.1)));
+          for (let k = 0; k < count; k++) {
+            const left = round(from * width + pitch * (k + 0.5) - dw / 2), id = k === 0 ? 'door' : `door-${k + 1}`;
+            const made = f.doorReveal ? doorRevealOpenings(f.doorReveal, left, y, dw, doorH, transomH)
+              : [{id: 'door', kind: 'door' as const, leftM: left, bottomM: y, widthM: dw, heightM: doorH, trimWidthM: 0.08, verticalBars: [], paneSurface: 'door' as const, frameSurface: 'trim' as const, barSurface: 'trim' as const}];
+            if (k === 0) doorLeft = left;
+            openings.push(...made.map(o => ({...o, id: o.id.replace(/^door/, id)})));
+          }
+          continue;
+        }
         if (f.doorReveal?.edge) doorLeft = centre > width / 2 ? round(width - doorWidth - 0.15) : 0.15;
         if (f.doorArch) {
           // Round-arched portiek: a semicircular head (rise = half the span) whose crown stands at `apex`, no transom.
@@ -1092,7 +1120,7 @@ export function fitIntent(intent: CanalHouseIntent, surveyFacts: BuildingFacts):
       const shape = (w: number) => style === 'pediment' ? {roofRiseM: round(clamp(w * 0.32, 0.4, 0.6)), frontOverhangM: 0.12} : style === 'pointed' ? {roofRiseM: round(clamp(w * 0.85, 0.8, 1.4))} : style === 'arched' ? {roofRiseM: round(clamp(w * 0.5, 0.45, 1)), frontOverhangM: 0.12, roofProfile: 'arch' as const} : style === 'box' || style === 'flat' ? {roofRiseM: 0} : {roofRiseM: 0.45};
       // A brick roof box (`box`) is low: 0.75 m over the wall top, its front 5 cm behind the facade (Kinkerstraat 109-161 strip: 0.6-0.8 m).
       const placeOnMansard = mansard ? {setbackM: round(Math.max(0.05, maxOut + 0.03)), heightM: round(clamp(mansard.heightM - 0.25, 1.1, 1.6))} : style === 'box' ? {setbackM: 0.05, heightM: 0.75} : style === 'flat' ? {setbackM: 0.35, heightM: 1.8} : {setbackM: 0.35, heightM: 1.45};
-      elevation.dormers = seen(Array.from({length: k * count}, (_, j) => { const {left, w} = span(j % k), sh = shape(w); return {id: `dormer-${j}`, leftM: round(flipX(place(Math.floor(j / k), left, w), w)), widthM: round(w), bottomM: round(Math.max(eaves, survey.shellTopM) + (front.dormerSize?.sill ?? 0.05)), heightM: front.dormerSize?.rise ?? placeOnMansard.heightM, depthM: 1.3, roofRiseM: sh.roofRiseM, ...('frontOverhangM' in sh ? {frontOverhangM: sh.frontOverhangM} : {}), ...('roofProfile' in sh ? {roofProfile: sh.roofProfile} : {}), setbackM: front.dormerSize?.setback ?? placeOnMansard.setbackM, trimWidthM: 0.07, verticalBars: front.dormerLights ? Array.from({length: front.dormerLights - 1}, (_, i) => round((i + 1) / front.dormerLights!)) : [.5], ...(front.dormerWindow ? {frontWall: {apronM: front.dormerWindow.apron, sideM: round(Math.max(0.1, (w - front.dormerWindow.light) / 2)), ...(front.dormerWindow.tall !== undefined ? {headM: round(Math.max(0, (front.dormerSize?.rise ?? placeOnMansard.heightM) - front.dormerWindow.apron - front.dormerWindow.tall))} : {})}} : front.dormerBody === 'timber' ? {frontWall: {apronM: TIMBER_DORMER.apronM, sideM: round(clamp(w * TIMBER_DORMER.sideShare, TIMBER_DORMER.sideMinM, TIMBER_DORMER.sideMaxM))}} : {}), wallSurface: style === 'box' || front.dormerBody === 'brick' ? 'wall' as const : front.dormerBody === 'stone' || front.dormerBody === 'timber' ? 'stone' as const : 'trim' as const, roofSurface: 'roof' as const}; }));
+      elevation.dormers = seen(Array.from({length: k * count}, (_, j) => { const {left, w} = span(j % k), sh = shape(w), lm = round(flipX(place(Math.floor(j / k), left, w), w)); return {id: `dormer-${j}`, leftM: lm, widthM: round(w), bottomM: round(Math.max(eaves, survey.shellTopM) + (front.dormerSize?.sill ?? 0.05)), heightM: front.dormerSize?.rise ?? placeOnMansard.heightM, depthM: 1.3, roofRiseM: sh.roofRiseM, ...('frontOverhangM' in sh ? {frontOverhangM: sh.frontOverhangM} : {}), ...('roofProfile' in sh ? {roofProfile: sh.roofProfile} : {}), setbackM: front.dormerSize?.setback ?? placeOnMansard.setbackM, trimWidthM: 0.07, verticalBars: front.dormerBody === 'zinc-band' ? [1 / 3, 2 / 3] : front.dormerParty ? [] : front.dormerLights ? Array.from({length: front.dormerLights - 1}, (_, i) => round((i + 1) / front.dormerLights!)) : [.5], ...(front.dormerBody === 'zinc-band' ? {bodyColour: ZINC_BAND.cheek, capColour: ZINC_BAND.cap, frontOverhangM: ZINC_BAND.capOverhangM} : {}), ...(front.dormerParty ? {partyEdge: lm + w / 2 > mw / 2 ? 'right' as const : 'left' as const, frontOverhangM: 0.12, fasciaColour: PARTY_DORMER_FASCIA.colour, fasciaHeightM: PARTY_DORMER_FASCIA.heightM} : {}), ...(front.dormerWindow ? {frontWall: {apronM: front.dormerWindow.apron, sideM: round(Math.max(0.1, (w - front.dormerWindow.light) / 2)), ...(front.dormerWindow.tall !== undefined ? {headM: round(Math.max(0, (front.dormerSize?.rise ?? placeOnMansard.heightM) - front.dormerWindow.apron - front.dormerWindow.tall))} : {})}} : front.dormerBody === 'timber' ? {frontWall: {apronM: TIMBER_DORMER.apronM, sideM: round(clamp(w * TIMBER_DORMER.sideShare, TIMBER_DORMER.sideMinM, TIMBER_DORMER.sideMaxM))}} : {}), wallSurface: front.dormerBody === 'zinc-band' ? 'stone' as const : front.dormerBody === 'zinc' ? 'roof' as const : style === 'box' && front.dormerBody !== 'stone' || front.dormerBody === 'brick' ? 'wall' as const : front.dormerBody === 'stone' || front.dormerBody === 'timber' ? 'stone' as const : 'trim' as const, roofSurface: 'roof' as const}; }));
     }
     // `dormerHoist`: one beam per dormer, over its frame in the pediment, from inside the dormer to `reach` in front of it.
     if (front.dormerHoist && elevation.dormers) {

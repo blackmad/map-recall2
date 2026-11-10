@@ -1,0 +1,1347 @@
+{
+ "face": "coppelstock-25-55",
+ "street": "Coppelstockstraat",
+ "library": "landlust",
+ "stripDate": "2024-11-21",
+ "seconds": 14.44,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [
+  {
+   "face": "coppelstock-25-55-r1",
+   "pands": [
+    "0363100012149193",
+    "0363100012066272",
+    "0363100012104481",
+    "0363100012104480",
+    "0363100012122456",
+    "0363100012100119",
+    "0363100012089839"
+   ],
+   "passed": true,
+   "triangles": 7415
+  }
+ ],
+ "pands": [
+  {
+   "pandId": "0363100012070549",
+   "address": "Coppelstockstraat 25",
+   "builtYear": 1933,
+   "widthM": 13.18,
+   "eavesM": 10.06,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#503b29",
+    "wallRaw": "#574634",
+    "skyline": {
+     "eavesM": 11.5,
+     "eavesRow": 173,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.4,
+      "riseM": 1.13,
+      "topWidthM": 1.4,
+      "centre": 0.45
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "frontClass": "columns",
+    "doorSide": "right",
+    "accentSide": "right",
+    "accentShare": 0.005,
+    "structure": {
+     "bayWidthM": 0.5,
+     "bayCentre": 0.53,
+     "balconies": true,
+     "why": "dark open axis 0.85 m at 0.54 (light 0.42): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.85,
+       "centre": 0.54,
+       "light": 0.42
+      },
+      {
+       "widthM": 0.6,
+       "centre": 0.74,
+       "light": 0.34
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.12
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best landlust-1933-three-axis-tile: frontage 13.18 m, type 5.8-6.6 m)",
+   "best": {
+    "type": "landlust-1933-three-axis-tile",
+    "score": 0,
+    "veto": [
+     "frontage 13.18 m, type 5.8-6.6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 11.5 m vs the type's 9.9 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 4 vs 3/4"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 3.77 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.003 (brick)"
+     },
+     {
+      "key": "bag-bay",
+      "weight": 3,
+      "score": 1,
+      "note": "BAG outline straight"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 2 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012149193",
+   "address": "Coppelstockstraat 29",
+   "builtYear": 1933,
+   "widthM": 6.37,
+   "eavesM": 9.98,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#7b5a44",
+    "wallRaw": "#5d5443",
+    "skyline": {
+     "eavesM": 10.88,
+     "eavesRow": 198,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.18,
+      "riseM": 1.35,
+      "topWidthM": 0.85,
+      "centre": 0.33
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": "left",
+    "accentSide": "right",
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.63 m at 0.21 (light 0.3): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.63,
+       "centre": 0.21,
+       "light": 0.3
+      },
+      {
+       "widthM": 0.88,
+       "centre": 0.84,
+       "light": 0.37
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 9.07,
+       "widthM": 1.82,
+       "centre": 0.69
+      },
+      {
+       "atM": 5.85,
+       "widthM": 0.8,
+       "centre": 0.27
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.19
+   },
+   "status": "placed",
+   "type": "landlust-1933-three-axis-tile",
+   "score": 0.9,
+   "placement": {
+    "type": "landlust-1933-three-axis-tile",
+    "measuredPalette": {
+     "brick": "#7b5a44",
+     "evidence": "strip 2024-11-21 span 527-782: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#5a4c3b"
+    }
+   },
+   "notes": [
+    "crown gutter (type default)",
+    "palette pinned: Coppelstockstraat 29-41 (Opus verdict): the model was a patchwork from #88644b to #7e7662, the photo a uniform #564c3c-#5f5442; one brick for the run",
+    "door reviewer pin: as drawn (Coppelstockstraat 29-41 (strip sheet, Opus verdict 2026-11-10): the photo's door and wide ground window are swapped against the model on every pand; flipped)"
+   ],
+   "likeness": {
+    "pandId": "0363100012149193",
+    "ncc": 0.302,
+    "nccRaw": 0.302,
+    "shiftM": [
+     0.35,
+     0.4
+    ],
+    "usable": 0.64,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.32 mean 0.35 vs photo 0.52"
+    ],
+    "wall": {
+     "photo": "#5b4230",
+     "model": "#76644d",
+     "dL": 0.11
+    },
+    "glazing": {
+     "photo": 0.52,
+     "model": 0.35
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.409
+   },
+   "challengers": {
+    "landlust-1933-three-axis-tile": 0.302,
+    "landlust-1933-three-axis-tile~m": 0.529
+   }
+  },
+  {
+   "pandId": "0363100012066272",
+   "address": "Coppelstockstraat 31",
+   "builtYear": 1933,
+   "widthM": 6.1,
+   "eavesM": 9.95,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#745a41",
+    "wallRaw": "#5f5645",
+    "skyline": {
+     "eavesM": 10.82,
+     "eavesRow": 200,
+     "confidence": 1,
+     "crown": {
+      "widthM": 0.72,
+      "riseM": 1,
+      "topWidthM": 0.33,
+      "centre": 0.53
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.046,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.7 m at 0.74 (light 0.35): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.7,
+       "centre": 0.74,
+       "light": 0.35
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 5.82,
+       "widthM": 1.3,
+       "centre": 0.13
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.19
+   },
+   "status": "placed",
+   "type": "landlust-1933-three-axis-tile",
+   "score": 0.9,
+   "placement": {
+    "type": "landlust-1933-three-axis-tile",
+    "measuredPalette": {
+     "brick": "#745a41",
+     "evidence": "strip 2024-11-21 span 782-1026: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#5a4c3b"
+    },
+    "mirror": true
+   },
+   "notes": [
+    "crown gutter (type default)",
+    "palette pinned: Coppelstockstraat 29-41 (Opus verdict): the model was a patchwork from #88644b to #7e7662, the photo a uniform #564c3c-#5f5442; one brick for the run",
+    "door reviewer pin: mirrored (Coppelstockstraat 29-41 (strip sheet, Opus verdict 2026-11-10): the photo's door and wide ground window are swapped against the model on every pand; flipped)"
+   ],
+   "likeness": {
+    "pandId": "0363100012066272",
+    "ncc": 0.213,
+    "nccRaw": 0.213,
+    "shiftM": [
+     -0.3,
+     0.25
+    ],
+    "usable": 0.65,
+    "abstain": null,
+    "verdict": "PASS",
+    "reasons": [],
+    "wall": {
+     "photo": "#664e38",
+     "model": "#76644d",
+     "dL": 0.073
+    },
+    "glazing": {
+     "photo": 0.37,
+     "model": 0.35
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.465
+   },
+   "challengers": {
+    "landlust-1933-three-axis-tile~m": 0.213,
+    "landlust-1933-three-axis-tile": 0.475
+   }
+  },
+  {
+   "pandId": "0363100012104481",
+   "address": "Coppelstockstraat 33",
+   "builtYear": 1933,
+   "widthM": 6.1,
+   "eavesM": 9.8,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#746d5a",
+    "wallRaw": "#5f5443",
+    "skyline": {
+     "eavesM": 10.82,
+     "eavesRow": 200,
+     "confidence": 1,
+     "crown": {
+      "widthM": 0.78,
+      "riseM": 1.03,
+      "topWidthM": 0.2,
+      "centre": 0.44
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": "right",
+    "accentShare": 0.002,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 1.68 m at 0.19 (light 0.27): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.68,
+       "centre": 0.19,
+       "light": 0.27
+      },
+      {
+       "widthM": 1.02,
+       "centre": 0.53,
+       "light": 0.28
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 9.05,
+       "widthM": 1.13,
+       "centre": 0.2
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.16
+   },
+   "status": "placed",
+   "type": "landlust-1933-three-axis-tile",
+   "score": 0.9,
+   "placement": {
+    "type": "landlust-1933-three-axis-tile",
+    "measuredPalette": {
+     "brick": "#746d5a",
+     "evidence": "strip 2024-11-21 span 1026-1270: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#5a4c3b"
+    }
+   },
+   "notes": [
+    "crown gutter (type default)",
+    "palette pinned: Coppelstockstraat 29-41 (Opus verdict): the model was a patchwork from #88644b to #7e7662, the photo a uniform #564c3c-#5f5442; one brick for the run",
+    "door reviewer pin: as drawn (Coppelstockstraat 29-41 (strip sheet, Opus verdict 2026-11-10): the photo's door and wide ground window are swapped against the model on every pand; flipped)"
+   ],
+   "likeness": {
+    "pandId": "0363100012104481",
+    "ncc": 0.255,
+    "nccRaw": 0.255,
+    "shiftM": [
+     0.3,
+     0.25
+    ],
+    "usable": 0.68,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.29 mean 0.35 vs photo 0.22"
+    ],
+    "wall": {
+     "photo": "#6b523b",
+     "model": "#76644d",
+     "dL": 0.057
+    },
+    "glazing": {
+     "photo": 0.22,
+     "model": 0.35
+    },
+    "columns": {
+     "photo": null,
+     "model": 3
+    },
+    "iou": 0.36
+   },
+   "challengers": {
+    "landlust-1933-three-axis-tile": 0.255,
+    "landlust-1933-three-axis-tile~m": 0.523
+   }
+  },
+  {
+   "pandId": "0363100012104480",
+   "address": "Coppelstockstraat 35",
+   "builtYear": 1933,
+   "widthM": 6.1,
+   "eavesM": 9.84,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#746046",
+    "wallRaw": "#554d3e",
+    "skyline": {
+     "eavesM": 10.93,
+     "eavesRow": 196,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.18,
+      "riseM": 1.5,
+      "topWidthM": 0.57,
+      "centre": 0.53
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.019,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.23
+   },
+   "status": "placed",
+   "type": "landlust-1933-three-axis-tile",
+   "score": 0.81,
+   "placement": {
+    "type": "landlust-1933-three-axis-tile",
+    "measuredPalette": {
+     "brick": "#746046",
+     "evidence": "strip 2024-11-21 span 1270-1514: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#5a4c3b"
+    },
+    "mirror": true
+   },
+   "notes": [
+    "crown gutter (type default)",
+    "palette pinned: Coppelstockstraat 29-41 (Opus verdict): the model was a patchwork from #88644b to #7e7662, the photo a uniform #564c3c-#5f5442; one brick for the run",
+    "door reviewer pin: mirrored (Coppelstockstraat 29-41 (strip sheet, Opus verdict 2026-11-10): the photo's door and wide ground window are swapped against the model on every pand; flipped)"
+   ],
+   "likeness": {
+    "pandId": "0363100012104480",
+    "ncc": 0.254,
+    "nccRaw": 0.254,
+    "shiftM": [
+     -0.3,
+     0.35
+    ],
+    "usable": 0.54,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing  mean 0.35 vs photo 0.23"
+    ],
+    "wall": {
+     "photo": "#695640",
+     "model": "#76644d",
+     "dL": 0.051
+    },
+    "glazing": {
+     "photo": 0.23,
+     "model": 0.35
+    },
+    "columns": {
+     "photo": null,
+     "model": 3
+    },
+    "iou": 0.432
+   },
+   "challengers": {
+    "landlust-1933-three-axis-tile~m": 0.254,
+    "landlust-1933-three-axis-tile": 0.466
+   }
+  },
+  {
+   "pandId": "0363100012122456",
+   "address": "Coppelstockstraat 37",
+   "builtYear": 1933,
+   "widthM": 6.1,
+   "eavesM": 9.85,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#736046",
+    "wallRaw": "#585041",
+    "skyline": {
+     "eavesM": 10.9,
+     "eavesRow": 197,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.23,
+      "riseM": 1.63,
+      "topWidthM": 1.02,
+      "centre": 0.44
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.01,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 1.23 m at 0.23 (light 0.28): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.23,
+       "centre": 0.23,
+       "light": 0.28
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.13
+   },
+   "status": "placed",
+   "type": "landlust-1933-three-axis-tile",
+   "score": 0.9,
+   "placement": {
+    "type": "landlust-1933-three-axis-tile",
+    "measuredPalette": {
+     "brick": "#736046",
+     "evidence": "strip 2024-11-21 span 1514-1758: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#5a4c3b"
+    }
+   },
+   "notes": [
+    "crown gutter (type default)",
+    "palette pinned: Coppelstockstraat 29-41 (Opus verdict): the model was a patchwork from #88644b to #7e7662, the photo a uniform #564c3c-#5f5442; one brick for the run",
+    "door reviewer pin: as drawn (Coppelstockstraat 29-41 (strip sheet, Opus verdict 2026-11-10): the photo's door and wide ground window are swapped against the model on every pand; flipped)"
+   ],
+   "likeness": {
+    "pandId": "0363100012122456",
+    "ncc": 0.234,
+    "nccRaw": 0.234,
+    "shiftM": [
+     0.3,
+     0.35
+    ],
+    "usable": 0.65,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.32 mean 0.36 vs photo 0.21"
+    ],
+    "wall": {
+     "photo": "#6d5c45",
+     "model": "#76644d",
+     "dL": 0.033
+    },
+    "glazing": {
+     "photo": 0.21,
+     "model": 0.36
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.308
+   },
+   "challengers": {
+    "landlust-1933-three-axis-tile": 0.234,
+    "landlust-1933-three-axis-tile~m": 0.427
+   }
+  },
+  {
+   "pandId": "0363100012100119",
+   "address": "Coppelstockstraat 39",
+   "builtYear": 1933,
+   "widthM": 6.1,
+   "eavesM": 9.87,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#7a674e",
+    "wallRaw": "#5f5a49",
+    "skyline": {
+     "eavesM": 10.88,
+     "eavesRow": 198,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.18,
+      "riseM": 1.55,
+      "topWidthM": 0.57,
+      "centre": 0.57
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 6,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.006,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 1.05 m at 0.09 (light 0.31): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.05,
+       "centre": 0.09,
+       "light": 0.31
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.21
+   },
+   "status": "placed",
+   "type": "landlust-1933-three-axis-tile",
+   "score": 0.76,
+   "placement": {
+    "type": "landlust-1933-three-axis-tile",
+    "measuredPalette": {
+     "brick": "#7a674e",
+     "evidence": "strip 2024-11-21 span 1758-2002: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#5a4c3b"
+    },
+    "mirror": true
+   },
+   "notes": [
+    "crown gutter (type default)",
+    "palette pinned: Coppelstockstraat 29-41 (Opus verdict): the model was a patchwork from #88644b to #7e7662, the photo a uniform #564c3c-#5f5442; one brick for the run",
+    "door reviewer pin: mirrored (Coppelstockstraat 29-41 (strip sheet, Opus verdict 2026-11-10): the photo's door and wide ground window are swapped against the model on every pand; flipped)"
+   ],
+   "likeness": {
+    "pandId": "0363100012100119",
+    "ncc": 0.153,
+    "nccRaw": 0.153,
+    "shiftM": [
+     -0.4,
+     0.25
+    ],
+    "usable": 0.57,
+    "abstain": null,
+    "verdict": "NO EVIDENCE",
+    "reasons": [
+     "foliage 28 % > 25 %"
+    ],
+    "wall": {
+     "photo": "#725e4a",
+     "model": "#76644d",
+     "dL": 0.014
+    },
+    "glazing": {
+     "photo": 0.48,
+     "model": 0.35
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.412
+   },
+   "challengers": {
+    "landlust-1933-three-axis-tile~m": 0.153,
+    "landlust-1933-three-axis-tile": 0.458
+   }
+  },
+  {
+   "pandId": "0363100012089839",
+   "address": "Coppelstockstraat 41",
+   "builtYear": 1933,
+   "widthM": 6.1,
+   "eavesM": 9.86,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#504130",
+    "wallRaw": "#594f3f",
+    "skyline": {
+     "eavesM": 10.93,
+     "eavesRow": 196,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": "left",
+    "accentSide": "right",
+    "accentShare": 0.004,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.6 m at 0.83 (light 0.34): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.6,
+       "centre": 0.83,
+       "light": 0.34
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.15
+   },
+   "status": "placed",
+   "type": "landlust-1933-three-axis-tile",
+   "score": 0.81,
+   "placement": {
+    "type": "landlust-1933-three-axis-tile",
+    "measuredPalette": {
+     "brick": "#504130",
+     "evidence": "strip 2024-11-21 span 2002-2246: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#5a4c3b"
+    }
+   },
+   "notes": [
+    "crown gutter (type default)",
+    "palette pinned: Coppelstockstraat 29-41 (Opus verdict): the model was a patchwork from #88644b to #7e7662, the photo a uniform #564c3c-#5f5442; one brick for the run",
+    "door reviewer pin: as drawn (Coppelstockstraat 29-41 (strip sheet, Opus verdict 2026-11-10): the photo's door and wide ground window are swapped against the model on every pand; flipped)"
+   ],
+   "likeness": {
+    "pandId": "0363100012089839",
+    "ncc": 0.204,
+    "nccRaw": 0.204,
+    "shiftM": [
+     0.3,
+     0.3
+    ],
+    "usable": 0.63,
+    "abstain": null,
+    "verdict": "WARN",
+    "reasons": [
+     "mask IoU 0.374 < 0.45"
+    ],
+    "wall": {
+     "photo": "#705d44",
+     "model": "#76644d",
+     "dL": 0.029
+    },
+    "glazing": {
+     "photo": 0.26,
+     "model": 0.35
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.374
+   },
+   "challengers": {
+    "landlust-1933-three-axis-tile": 0.204,
+    "landlust-1933-three-axis-tile~m": 0.477
+   }
+  },
+  {
+   "pandId": "0363100012121115",
+   "address": "Coppelstockstraat 43",
+   "builtYear": 1933,
+   "widthM": 6.1,
+   "eavesM": 9.88,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#524431",
+    "wallRaw": "#594f3f",
+    "skyline": {
+     "eavesM": 10.93,
+     "eavesRow": 196,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 5,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": "left",
+    "accentShare": 0.002,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 5.82,
+       "widthM": 0.97,
+       "centre": 0.76
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.13
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best landlust-1933-three-axis-tile scores 0.67 < 0.7 (strip cornice 10.93 m vs the type's 9.9 m; strip columns 5 vs 3 bays)",
+   "best": {
+    "type": "landlust-1933-three-axis-tile",
+    "score": 0.67,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 10.93 m vs the type's 9.9 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 4 vs 3/4"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 2.87 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.003 (brick)"
+     },
+     {
+      "key": "bag-bay",
+      "weight": 3,
+      "score": 1,
+      "note": "BAG outline straight"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 5 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012093475",
+   "address": "Coppelstockstraat 45",
+   "builtYear": 1933,
+   "widthM": 6.1,
+   "eavesM": 9.84,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#534634",
+    "wallRaw": "#5c5141",
+    "skyline": {
+     "eavesM": 10.85,
+     "eavesRow": 199,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": "right",
+    "accentShare": 0.003,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 5.13,
+       "widthM": 0.8,
+       "centre": 0.56
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.11
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": {
+    "pandId": "0363100012093475",
+    "ncc": 0.203,
+    "nccRaw": 0.203,
+    "shiftM": [
+     0.3,
+     -0.2
+    ],
+    "usable": 0.67,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.36 mean 0.35 vs photo 0.51"
+    ],
+    "wall": {
+     "photo": "#756047",
+     "model": "#705f46",
+     "dL": -0.012
+    },
+    "glazing": {
+     "photo": 0.51,
+     "model": 0.35
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.486,
+    "footOffsetM": 0.82
+   },
+   "challengers": {
+    "landlust-1933-three-axis-tile~m": 0.203,
+    "landlust-1933-three-axis-tile": 0.392
+   }
+  },
+  {
+   "pandId": "0363100012098196",
+   "address": "Coppelstockstraat 47",
+   "builtYear": 1933,
+   "widthM": 6.1,
+   "eavesM": 9.86,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#776249",
+    "wallRaw": "#5a5040",
+    "skyline": {
+     "eavesM": 10.95,
+     "eavesRow": 195,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.022,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.23
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.129 < 0.15 (photo vs model body; likeness.ts FAIL: wall dL +0.15; glazing storey band off by 0.19 mean 0.36 vs photo 0.25)",
+   "likeness": {
+    "pandId": "0363100012098196",
+    "ncc": 0.129,
+    "nccRaw": 0.129,
+    "shiftM": [
+     -0.4,
+     -0.15
+    ],
+    "usable": 0.57,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "wall dL +0.15",
+     "glazing storey band off by 0.19 mean 0.36 vs photo 0.25"
+    ],
+    "wall": {
+     "photo": "#604d3b",
+     "model": "#917759",
+     "dL": 0.155
+    },
+    "glazing": {
+     "photo": 0.25,
+     "model": 0.36
+    },
+    "columns": {
+     "photo": null,
+     "model": 3
+    },
+    "iou": 0.313,
+    "footOffsetM": 0.82
+   },
+   "challengers": {
+    "landlust-1933-three-axis-tile": 0.129,
+    "landlust-1933-three-axis-tile~m": 0.516
+   }
+  },
+  {
+   "pandId": "0363100012080535",
+   "address": "Coppelstockstraat 49",
+   "builtYear": 1933,
+   "widthM": 6.1,
+   "eavesM": 9.81,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6f5d45",
+    "wallRaw": "#5d5140",
+    "skyline": {
+     "eavesM": 10.9,
+     "eavesRow": 197,
+     "confidence": 1,
+     "crown": {
+      "widthM": 0.78,
+      "riseM": 0.95,
+      "topWidthM": 0.68,
+      "centre": 0.44
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 6,
+    "frontClass": "curtain",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.034,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.11
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": {
+    "pandId": "0363100012080535",
+    "ncc": 0.247,
+    "nccRaw": 0.247,
+    "shiftM": [
+     0.25,
+     -0.2
+    ],
+    "usable": 0.69,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "wall dL +0.12",
+     "glazing storey band off by 0.63 mean 0.35 vs photo 0.74"
+    ],
+    "wall": {
+     "photo": "#65543c",
+     "model": "#8a7356",
+     "dL": 0.124
+    },
+    "glazing": {
+     "photo": 0.74,
+     "model": 0.35
+    },
+    "columns": {
+     "photo": 4,
+     "model": 3
+    },
+    "iou": 0.43,
+    "footOffsetM": 0.82
+   },
+   "challengers": {
+    "landlust-1933-three-axis-tile~m": 0.247,
+    "landlust-1933-three-axis-tile": 0.475
+   }
+  },
+  {
+   "pandId": "0363100012091714",
+   "address": "Coppelstockstraat 51",
+   "builtYear": 1924,
+   "widthM": 12.99,
+   "eavesM": 12.73,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#715b45",
+    "wallRaw": "#675942",
+    "skyline": {
+     "eavesM": 13.4,
+     "eavesRow": 97,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 5,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.13,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.15
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best landlust-1933-three-axis-tile: built 1924, type 1932-1940; frontage 12.99 m, type 5.8-6.6 m)",
+   "best": {
+    "type": "landlust-1933-three-axis-tile",
+    "score": 0,
+    "veto": [
+     "built 1924, type 1932-1940",
+     "frontage 12.99 m, type 5.8-6.6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 13.4 m vs the type's 9.9 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 0,
+      "note": "3DBAG bouwlagen 5 vs 3/4"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 0,
+      "note": "roof rise 0.01 m (flat) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.1 (brick)"
+     },
+     {
+      "key": "bag-bay",
+      "weight": 3,
+      "score": 1,
+      "note": "BAG outline straight"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 5 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012078751",
+   "address": "Coppelstockstraat 55",
+   "builtYear": 1924,
+   "widthM": 9.2,
+   "eavesM": 12.79,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#736145",
+    "wallRaw": "#685a43",
+    "skyline": {
+     "eavesM": 13.43,
+     "eavesRow": 96,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 3,
+    "columns": 6,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.157,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 11.82,
+       "widthM": 0.97,
+       "centre": 0.73
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.16
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best landlust-1933-three-axis-tile: built 1924, type 1932-1940; frontage 9.2 m, type 5.8-6.6 m)",
+   "best": {
+    "type": "landlust-1933-three-axis-tile",
+    "score": 0,
+    "veto": [
+     "built 1924, type 1932-1940",
+     "frontage 9.2 m, type 5.8-6.6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 13.43 m vs the type's 9.9 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 0,
+      "note": "3DBAG bouwlagen 5 vs 3/4"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 0,
+      "note": "roof rise 0.04 m (flat) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.122 (brick)"
+     },
+     {
+      "key": "bag-bay",
+      "weight": 3,
+      "score": 1,
+      "note": "BAG outline straight"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 6 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

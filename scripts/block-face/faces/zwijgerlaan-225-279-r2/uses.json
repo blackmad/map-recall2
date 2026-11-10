@@ -1,0 +1,74 @@
+{
+ "street": "Willem de Zwijgerlaan",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched n/a (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012151482",
+   "addresses": [
+    "Willem de Zwijgerlaan 247",
+    "Willem de Zwijgerlaan 247A",
+    "Willem de Zwijgerlaan 247C",
+    "Willem de Zwijgerlaan 247D",
+    "Willem de Zwijgerlaan 249",
+    "Willem de Zwijgerlaan 249B",
+    "Willem de Zwijgerlaan 249C",
+    "Willem de Zwijgerlaan 249E"
+   ],
+   "groundUnits": [
+    {
+     "address": "Willem de Zwijgerlaan 247-H",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000871582"
+    },
+    {
+     "address": "Willem de Zwijgerlaan 249-H",
+     "use": "woonfunctie",
+     "areaM2": 42,
+     "bagId": "0363010000871586"
+    },
+    {
+     "address": "Willem de Zwijgerlaan 247A",
+     "use": "woonfunctie",
+     "areaM2": 118,
+     "bagId": "0363010012117818"
+    },
+    {
+     "address": "Willem de Zwijgerlaan 247C",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010012117819"
+    },
+    {
+     "address": "Willem de Zwijgerlaan 247D",
+     "use": "woonfunctie",
+     "areaM2": 110,
+     "bagId": "0363010012117820"
+    },
+    {
+     "address": "Willem de Zwijgerlaan 249B",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010012117821"
+    },
+    {
+     "address": "Willem de Zwijgerlaan 249C",
+     "use": "woonfunctie",
+     "areaM2": 110,
+     "bagId": "0363010012117822"
+    },
+    {
+     "address": "Willem de Zwijgerlaan 249E",
+     "use": "woonfunctie",
+     "areaM2": 118,
+     "bagId": "0363010012117823"
+    }
+   ],
+   "units": 14,
+   "osm": []
+  }
+ ]
+}

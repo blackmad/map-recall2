@@ -1,0 +1,542 @@
+{
+ "street": "Willem de Zwijgerlaan",
+ "seed": "0363100012142535",
+ "members": [
+  "0363100012142535",
+  "0363100012099392",
+  "0363100012119704",
+  "0363100012067779",
+  "0363100012093651",
+  "0363100012084818",
+  "0363100012124181"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "next fronting pand 0363100012116545 53.3 m on shares no party wall (cross street or gap)"
+  },
+  {
+   "side": "right",
+   "reason": "next fronting pand 0363100012096558 38.5 m on shares no party wall (cross street or gap)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012062858",
+   "reason": "frontage 100.7 m from Willem de Zwijgerlaan"
+  },
+  {
+   "pandId": "0363100012063321",
+   "reason": "frontage 102.9 m from Willem de Zwijgerlaan"
+  },
+  {
+   "pandId": "0363100012064565",
+   "reason": "sightline to Willem de Zwijgerlaan crosses 0363100012099109"
+  },
+  {
+   "pandId": "0363100012065427",
+   "reason": "frontage 65.8 m from Willem de Zwijgerlaan"
+  },
+  {
+   "pandId": "0363100012066487",
+   "reason": "frontage 35.7 m from Willem de Zwijgerlaan"
+  },
+  {
+   "pandId": "0363100012068576",
+   "reason": "frontage 97.0 m from Willem de Zwijgerlaan"
+  },
+  {
+   "pandId": "0363100012077081",
+   "reason": "frontage 102.5 m from Willem de Zwijgerlaan"
+  },
+  {
+   "pandId": "0363100012077211",
+   "reason": "frontage 58.2 m from Willem de Zwijgerlaan"
+  },
+  {
+   "pandId": "0363100012079241",
+   "reason": "frontage 83.7 m from Willem de Zwijgerlaan"
+  },
+  {
+   "pandId": "0363100012081944",
+   "reason": "frontage 49.6 m from Willem de Zwijgerlaan"
+  },
+  {
+   "pandId": "0363100012084175",
+   "reason": "frontage 78.1 m from Willem de Zwijgerlaan"
+  },
+  {
+   "pandId": "0363100012087932",
+   "reason": "frontage 52.6 m from Willem de Zwijgerlaan"
+  },
+  {
+   "pandId": "0363100012089477",
+   "reason": "frontage 48.2 m from Willem de Zwijgerlaan"
+  },
+  {
+   "pandId": "0363100012091986",
+   "reason": "frontage 45.2 m from Willem de Zwijgerlaan"
+  },
+  {
+   "pandId": "0363100012099109",
+   "reason": "sightline to Willem de Zwijgerlaan crosses 0363100012142535"
+  },
+  {
+   "pandId": "0363100012099110",
+   "reason": "frontage 101.0 m from Willem de Zwijgerlaan"
+  },
+  {
+   "pandId": "0363100012099817",
+   "reason": "sightline to Willem de Zwijgerlaan crosses 0363100012096558"
+  },
+  {
+   "pandId": "0363100012102783",
+   "reason": "sightline to Willem de Zwijgerlaan crosses 0363100012100885"
+  },
+  {
+   "pandId": "0363100012103630",
+   "reason": "frontage 30.1 m from Willem de Zwijgerlaan"
+  },
+  {
+   "pandId": "0363100012105138",
+   "reason": "frontage 106.1 m from Willem de Zwijgerlaan"
+  },
+  {
+   "pandId": "0363100012108844",
+   "reason": "frontage 83.6 m from Willem de Zwijgerlaan"
+  },
+  {
+   "pandId": "0363100012109065",
+   "reason": "frontage 47.0 m from Willem de Zwijgerlaan"
+  },
+  {
+   "pandId": "0363100012110462",
+   "reason": "frontage 65.9 m from Willem de Zwijgerlaan"
+  },
+  {
+   "pandId": "0363100012110942",
+   "reason": "frontage 105.4 m from Willem de Zwijgerlaan"
+  },
+  {
+   "pandId": "0363100012111921",
+   "reason": "frontage 103.2 m from Willem de Zwijgerlaan"
+  },
+  {
+   "pandId": "0363100012113093",
+   "reason": "frontage 53.2 m from Willem de Zwijgerlaan"
+  },
+  {
+   "pandId": "0363100012113418",
+   "reason": "frontage 106.0 m from Willem de Zwijgerlaan"
+  },
+  {
+   "pandId": "0363100012114449",
+   "reason": "frontage 40.8 m from Willem de Zwijgerlaan"
+  },
+  {
+   "pandId": "0363100012114752",
+   "reason": "frontage 84.6 m from Willem de Zwijgerlaan"
+  },
+  {
+   "pandId": "0363100012118984",
+   "reason": "frontage 90.5 m from Willem de Zwijgerlaan"
+  },
+  {
+   "pandId": "0363100012119334",
+   "reason": "frontage 41.2 m from Willem de Zwijgerlaan"
+  },
+  {
+   "pandId": "0363100012119917",
+   "reason": "sightline to Willem de Zwijgerlaan crosses 0363100012100885"
+  },
+  {
+   "pandId": "0363100012120072",
+   "reason": "frontage 48.5 m from Willem de Zwijgerlaan"
+  },
+  {
+   "pandId": "0363100012120596",
+   "reason": "frontage 31.2 m from Willem de Zwijgerlaan"
+  },
+  {
+   "pandId": "0363100012121206",
+   "reason": "frontage 96.6 m from Willem de Zwijgerlaan"
+  },
+  {
+   "pandId": "0363100012121629",
+   "reason": "frontage 90.8 m from Willem de Zwijgerlaan"
+  },
+  {
+   "pandId": "0363100012123697",
+   "reason": "frontage 53.7 m from Willem de Zwijgerlaan"
+  },
+  {
+   "pandId": "0363100012124476",
+   "reason": "sightline to Willem de Zwijgerlaan crosses 0363100012100885"
+  },
+  {
+   "pandId": "0363100012124502",
+   "reason": "sightline to Willem de Zwijgerlaan crosses 0363100012099817"
+  },
+  {
+   "pandId": "0363100012124663",
+   "reason": "frontage 83.9 m from Willem de Zwijgerlaan"
+  },
+  {
+   "pandId": "0363100012124911",
+   "reason": "frontage 84.2 m from Willem de Zwijgerlaan"
+  },
+  {
+   "pandId": "0363100012126346",
+   "reason": "frontage 34.6 m from Willem de Zwijgerlaan"
+  },
+  {
+   "pandId": "0363100012126499",
+   "reason": "frontage 108.8 m from Willem de Zwijgerlaan"
+  },
+  {
+   "pandId": "0363100012126595",
+   "reason": "frontage 83.5 m from Willem de Zwijgerlaan"
+  },
+  {
+   "pandId": "0363100012126811",
+   "reason": "frontage 39.2 m from Willem de Zwijgerlaan"
+  },
+  {
+   "pandId": "0363100012127749",
+   "reason": "frontage 70.7 m from Willem de Zwijgerlaan"
+  },
+  {
+   "pandId": "0363100012132461",
+   "reason": "frontage 59.5 m from Willem de Zwijgerlaan"
+  },
+  {
+   "pandId": "0363100012133359",
+   "reason": "frontage 68.3 m from Willem de Zwijgerlaan"
+  },
+  {
+   "pandId": "0363100012135602",
+   "reason": "frontage 98.2 m from Willem de Zwijgerlaan"
+  },
+  {
+   "pandId": "0363100012142006",
+   "reason": "frontage 46.9 m from Willem de Zwijgerlaan"
+  },
+  {
+   "pandId": "0363100012142659",
+   "reason": "frontage 59.8 m from Willem de Zwijgerlaan"
+  },
+  {
+   "pandId": "0363100012143344",
+   "reason": "frontage 72.0 m from Willem de Zwijgerlaan"
+  },
+  {
+   "pandId": "0363100012143406",
+   "reason": "frontage 95.7 m from Willem de Zwijgerlaan"
+  },
+  {
+   "pandId": "0363100012144404",
+   "reason": "frontage 78.4 m from Willem de Zwijgerlaan"
+  },
+  {
+   "pandId": "0363100012146039",
+   "reason": "frontage 72.1 m from Willem de Zwijgerlaan"
+  },
+  {
+   "pandId": "0363100012148081",
+   "reason": "frontage 98.6 m from Willem de Zwijgerlaan"
+  },
+  {
+   "pandId": "0363100012148568",
+   "reason": "frontage 73.2 m from Willem de Zwijgerlaan"
+  },
+  {
+   "pandId": "0363100012148775",
+   "reason": "frontage 35.5 m from Willem de Zwijgerlaan"
+  },
+  {
+   "pandId": "0363100012151165",
+   "reason": "sightline to Willem de Zwijgerlaan crosses 0363100012124181"
+  },
+  {
+   "pandId": "0363100012151495",
+   "reason": "sightline to Willem de Zwijgerlaan crosses 0363100012124181"
+  },
+  {
+   "pandId": "0363100012183702",
+   "reason": "sightline to Willem de Zwijgerlaan crosses 0363100012067779"
+  },
+  {
+   "pandId": "0363100012183939",
+   "reason": "frontage 66.2 m from Willem de Zwijgerlaan"
+  },
+  {
+   "pandId": "0363100012185080",
+   "reason": "frontage 53.9 m from Willem de Zwijgerlaan"
+  },
+  {
+   "pandId": "0363100012185321",
+   "reason": "frontage 105.9 m from Willem de Zwijgerlaan"
+  },
+  {
+   "pandId": "0363100012189979",
+   "reason": "frontage 58.3 m from Willem de Zwijgerlaan"
+  },
+  {
+   "pandId": "0363100012189980",
+   "reason": "frontage 60.0 m from Willem de Zwijgerlaan"
+  },
+  {
+   "pandId": "0363100012190176",
+   "reason": "frontage 63.2 m from Willem de Zwijgerlaan"
+  },
+  {
+   "pandId": "0363100012191446",
+   "reason": "frontage 36.4 m from Willem de Zwijgerlaan"
+  },
+  {
+   "pandId": "0363100012191473",
+   "reason": "frontage 44.9 m from Willem de Zwijgerlaan"
+  },
+  {
+   "pandId": "0363100012192588",
+   "reason": "frontage 33.5 m from Willem de Zwijgerlaan"
+  },
+  {
+   "pandId": "0363100012196103",
+   "reason": "frontage 33.4 m from Willem de Zwijgerlaan"
+  },
+  {
+   "pandId": "0363100012196488",
+   "reason": "frontage 75.4 m from Willem de Zwijgerlaan"
+  },
+  {
+   "pandId": "0363100012196540",
+   "reason": "frontage 34.7 m from Willem de Zwijgerlaan"
+  },
+  {
+   "pandId": "0363100012200465",
+   "reason": "frontage 99.6 m from Willem de Zwijgerlaan"
+  },
+  {
+   "pandId": "0363100012201179",
+   "reason": "sightline to Willem de Zwijgerlaan crosses 0363100012067779"
+  },
+  {
+   "pandId": "0363100012203156",
+   "reason": "frontage 66.2 m from Willem de Zwijgerlaan"
+  },
+  {
+   "pandId": "0363100012203165",
+   "reason": "frontage 46.7 m from Willem de Zwijgerlaan"
+  },
+  {
+   "pandId": "0363100012203414",
+   "reason": "frontage 87.7 m from Willem de Zwijgerlaan"
+  },
+  {
+   "pandId": "0363100012203488",
+   "reason": "sightline to Willem de Zwijgerlaan crosses 0363100012093651"
+  },
+  {
+   "pandId": "0363100012203502",
+   "reason": "no frontage on Willem de Zwijgerlaan: No footprint edge faces Willem de Zwijgerlaan"
+  },
+  {
+   "pandId": "0363100012204309",
+   "reason": "sightline to Willem de Zwijgerlaan crosses 0363100012093651"
+  },
+  {
+   "pandId": "0363100012207350",
+   "reason": "sightline to Willem de Zwijgerlaan crosses 0363100012067779"
+  },
+  {
+   "pandId": "0363100012209356",
+   "reason": "frontage 35.0 m from Willem de Zwijgerlaan"
+  },
+  {
+   "pandId": "0363100012210599",
+   "reason": "sightline to Willem de Zwijgerlaan crosses 0363100012093651"
+  },
+  {
+   "pandId": "0363100012211915",
+   "reason": "frontage 31.6 m from Willem de Zwijgerlaan"
+  },
+  {
+   "pandId": "0363100012212722",
+   "reason": "frontage 78.4 m from Willem de Zwijgerlaan"
+  },
+  {
+   "pandId": "0363100012213665",
+   "reason": "frontage 60.8 m from Willem de Zwijgerlaan"
+  },
+  {
+   "pandId": "0363100012213896",
+   "reason": "sightline to Willem de Zwijgerlaan crosses 0363100012119704"
+  },
+  {
+   "pandId": "0363100012217881",
+   "reason": "frontage 36.4 m from Willem de Zwijgerlaan"
+  },
+  {
+   "pandId": "0363100012218990",
+   "reason": "frontage 61.6 m from Willem de Zwijgerlaan"
+  },
+  {
+   "pandId": "0363100012220076",
+   "reason": "frontage 31.7 m from Willem de Zwijgerlaan"
+  },
+  {
+   "pandId": "0363100012220077",
+   "reason": "frontage 32.1 m from Willem de Zwijgerlaan"
+  },
+  {
+   "pandId": "0363100012221100",
+   "reason": "frontage 51.3 m from Willem de Zwijgerlaan"
+  },
+  {
+   "pandId": "0363100012222329",
+   "reason": "frontage 102.5 m from Willem de Zwijgerlaan"
+  },
+  {
+   "pandId": "0363100012224694",
+   "reason": "frontage 112.7 m from Willem de Zwijgerlaan"
+  },
+  {
+   "pandId": "0363100012227871",
+   "reason": "frontage 100.0 m from Willem de Zwijgerlaan"
+  },
+  {
+   "pandId": "0363100012227939",
+   "reason": "frontage 103.0 m from Willem de Zwijgerlaan"
+  },
+  {
+   "pandId": "0363100012227942",
+   "reason": "frontage 87.7 m from Willem de Zwijgerlaan"
+  },
+  {
+   "pandId": "0363100012227943",
+   "reason": "frontage 90.7 m from Willem de Zwijgerlaan"
+  },
+  {
+   "pandId": "0363100012229159",
+   "reason": "frontage 75.4 m from Willem de Zwijgerlaan"
+  },
+  {
+   "pandId": "0363100012229274",
+   "reason": "sightline to Willem de Zwijgerlaan crosses 0363100012119704"
+  },
+  {
+   "pandId": "0363100012229560",
+   "reason": "frontage 33.4 m from Willem de Zwijgerlaan"
+  },
+  {
+   "pandId": "0363100012232544",
+   "reason": "frontage 54.3 m from Willem de Zwijgerlaan"
+  },
+  {
+   "pandId": "0363100012232625",
+   "reason": "frontage 56.5 m from Willem de Zwijgerlaan"
+  },
+  {
+   "pandId": "0363100012232829",
+   "reason": "frontage 35.2 m from Willem de Zwijgerlaan"
+  },
+  {
+   "pandId": "0363100012234669",
+   "reason": "frontage 109.3 m from Willem de Zwijgerlaan"
+  },
+  {
+   "pandId": "0363100012235654",
+   "reason": "sightline to Willem de Zwijgerlaan crosses 0363100012093651"
+  },
+  {
+   "pandId": "0363100012088049",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012100885",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012110893",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012149656",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012142535",
+   "alongM": 0,
+   "widthM": 8.02,
+   "eavesM": 14.48,
+   "roofMaxM": 17.19,
+   "storeys3dbag": 5,
+   "builtYear": 1933,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012099392",
+   "alongM": 7.41,
+   "widthM": 6.8,
+   "eavesM": 14.94,
+   "roofMaxM": 17.61,
+   "storeys3dbag": 5,
+   "builtYear": 1933,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012119704",
+   "alongM": 14.21,
+   "widthM": 6.8,
+   "eavesM": 15.01,
+   "roofMaxM": 17.7,
+   "storeys3dbag": 5,
+   "builtYear": 1933,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012067779",
+   "alongM": 21.01,
+   "widthM": 6.8,
+   "eavesM": 14.96,
+   "roofMaxM": 17.63,
+   "storeys3dbag": 5,
+   "builtYear": 1933,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012093651",
+   "alongM": 27.8,
+   "widthM": 6.77,
+   "eavesM": 14.93,
+   "roofMaxM": 17.64,
+   "storeys3dbag": 5,
+   "builtYear": 1933,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012084818",
+   "alongM": 34.61,
+   "widthM": 6.8,
+   "eavesM": 14.94,
+   "roofMaxM": 17.63,
+   "storeys3dbag": 5,
+   "builtYear": 1933,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012124181",
+   "alongM": 42.02,
+   "widthM": 8.02,
+   "eavesM": 14.48,
+   "roofMaxM": 17.18,
+   "storeys3dbag": 5,
+   "builtYear": 1933,
+   "uncertainty": []
+  }
+ ]
+}

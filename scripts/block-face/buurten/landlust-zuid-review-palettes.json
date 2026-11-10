@@ -1,0 +1,389 @@
+{
+ "note": "Reviewer palette pins (src/canalRecall/blockFace/reviewPalettes.ts) from the Opus strip verdict docs/reports/landlust-strip-verdict-20261110.md: one brick per run, 60 % of the way from the model wall to the photo median.",
+ "pins": [
+  {
+   "pandId": "0363100012105359",
+   "type": "landlust-1934-slot-block",
+   "palette": {
+    "brick": "#7a4c2f"
+   },
+   "reason": "Callenburgstraat 3-63 / Haenstraat 3-31 (Opus verdict 2026-11-10): the model read #986344-#a3704e against photo #6e4a32-#714c34 (#8f5534 against #5d412d on Haen 19); one brick for the run, 60 % of the way from the model wall to the photo median"
+  },
+  {
+   "pandId": "0363100012073024",
+   "type": "landlust-1934-slot-block",
+   "palette": {
+    "brick": "#7a4c2f"
+   },
+   "reason": "Callenburgstraat 3-63 / Haenstraat 3-31 (Opus verdict 2026-11-10): the model read #986344-#a3704e against photo #6e4a32-#714c34 (#8f5534 against #5d412d on Haen 19); one brick for the run, 60 % of the way from the model wall to the photo median"
+  },
+  {
+   "pandId": "0363100012137010",
+   "type": "landlust-1934-slot-block",
+   "palette": {
+    "brick": "#7a4c2f"
+   },
+   "reason": "Callenburgstraat 3-63 / Haenstraat 3-31 (Opus verdict 2026-11-10): the model read #986344-#a3704e against photo #6e4a32-#714c34 (#8f5534 against #5d412d on Haen 19); one brick for the run, 60 % of the way from the model wall to the photo median"
+  },
+  {
+   "pandId": "0363100012082410",
+   "type": "landlust-1934-slot-block",
+   "palette": {
+    "brick": "#7a4c2f"
+   },
+   "reason": "Callenburgstraat 3-63 / Haenstraat 3-31 (Opus verdict 2026-11-10): the model read #986344-#a3704e against photo #6e4a32-#714c34 (#8f5534 against #5d412d on Haen 19); one brick for the run, 60 % of the way from the model wall to the photo median"
+  },
+  {
+   "pandId": "0363100012066626",
+   "type": "landlust-1934-slot-block",
+   "palette": {
+    "brick": "#7a4c2f"
+   },
+   "reason": "Callenburgstraat 3-63 / Haenstraat 3-31 (Opus verdict 2026-11-10): the model read #986344-#a3704e against photo #6e4a32-#714c34 (#8f5534 against #5d412d on Haen 19); one brick for the run, 60 % of the way from the model wall to the photo median"
+  },
+  {
+   "pandId": "0363100012063567",
+   "type": "landlust-1934-slot-block",
+   "palette": {
+    "brick": "#7a4c2f"
+   },
+   "reason": "Callenburgstraat 3-63 / Haenstraat 3-31 (Opus verdict 2026-11-10): the model read #986344-#a3704e against photo #6e4a32-#714c34 (#8f5534 against #5d412d on Haen 19); one brick for the run, 60 % of the way from the model wall to the photo median"
+  },
+  {
+   "pandId": "0363100012114763",
+   "type": "landlust-1934-slot-block",
+   "palette": {
+    "brick": "#7a4c2f"
+   },
+   "reason": "Callenburgstraat 3-63 / Haenstraat 3-31 (Opus verdict 2026-11-10): the model read #986344-#a3704e against photo #6e4a32-#714c34 (#8f5534 against #5d412d on Haen 19); one brick for the run, 60 % of the way from the model wall to the photo median"
+  },
+  {
+   "pandId": "0363100012084532",
+   "type": "landlust-1935-slot-block-four",
+   "palette": {
+    "brick": "#815f45"
+   },
+   "reason": "Haenstraat 20: model #9b7255 against photo #70533a; 60 % of the way (Opus verdict)"
+  },
+  {
+   "pandId": "0363100012102574",
+   "type": "landlust-1935-slot-block-four",
+   "palette": {
+    "brick": "#88654b"
+   },
+   "reason": "Haenstraat 12: model #a1785e against photo #77583f; 60 % of the way (Opus verdict)"
+  },
+  {
+   "pandId": "0363100012151165",
+   "type": "landlust-1933-erker-window",
+   "palette": {
+    "brick": "#2b1f16"
+   },
+   "reason": "Treslongstraat 5-59 (Opus verdict): the run is dark purple-brown, photo about #4a3626, model about #6a4c33; one brick for the run (151495 had read blue-grey #808d96 off the scaffolding)"
+  },
+  {
+   "pandId": "0363100012151495",
+   "type": "landlust-1933-erker-window",
+   "palette": {
+    "brick": "#2b1f16"
+   },
+   "reason": "Treslongstraat 5-59 (Opus verdict): the run is dark purple-brown, photo about #4a3626, model about #6a4c33; one brick for the run (151495 had read blue-grey #808d96 off the scaffolding)"
+  },
+  {
+   "pandId": "0363100012126346",
+   "type": "landlust-1933-erker-window",
+   "palette": {
+    "brick": "#2b1f16"
+   },
+   "reason": "Treslongstraat 5-59 (Opus verdict): the run is dark purple-brown, photo about #4a3626, model about #6a4c33; one brick for the run (151495 had read blue-grey #808d96 off the scaffolding)"
+  },
+  {
+   "pandId": "0363100012114449",
+   "type": "landlust-1933-erker-window",
+   "palette": {
+    "brick": "#2b1f16"
+   },
+   "reason": "Treslongstraat 5-59 (Opus verdict): the run is dark purple-brown, photo about #4a3626, model about #6a4c33; one brick for the run (151495 had read blue-grey #808d96 off the scaffolding)"
+  },
+  {
+   "pandId": "0363100012109065",
+   "type": "landlust-1933-erker-window",
+   "palette": {
+    "brick": "#2b1f16"
+   },
+   "reason": "Treslongstraat 5-59 (Opus verdict): the run is dark purple-brown, photo about #4a3626, model about #6a4c33; one brick for the run (151495 had read blue-grey #808d96 off the scaffolding)"
+  },
+  {
+   "pandId": "0363100012113093",
+   "type": "landlust-1933-erker-window",
+   "palette": {
+    "brick": "#2b1f16"
+   },
+   "reason": "Treslongstraat 5-59 (Opus verdict): the run is dark purple-brown, photo about #4a3626, model about #6a4c33; one brick for the run (151495 had read blue-grey #808d96 off the scaffolding)"
+  },
+  {
+   "pandId": "0363100012132461",
+   "type": "landlust-1933-erker-window",
+   "palette": {
+    "brick": "#2b1f16"
+   },
+   "reason": "Treslongstraat 5-59 (Opus verdict): the run is dark purple-brown, photo about #4a3626, model about #6a4c33; one brick for the run (151495 had read blue-grey #808d96 off the scaffolding)"
+  },
+  {
+   "pandId": "0363100012065427",
+   "type": "landlust-1933-erker-window",
+   "palette": {
+    "brick": "#2b1f16"
+   },
+   "reason": "Treslongstraat 5-59 (Opus verdict): the run is dark purple-brown, photo about #4a3626, model about #6a4c33; one brick for the run (151495 had read blue-grey #808d96 off the scaffolding)"
+  },
+  {
+   "pandId": "0363100012146039",
+   "type": "landlust-1933-erker-window",
+   "palette": {
+    "brick": "#2b1f16"
+   },
+   "reason": "Treslongstraat 5-59 (Opus verdict): the run is dark purple-brown, photo about #4a3626, model about #6a4c33; one brick for the run (151495 had read blue-grey #808d96 off the scaffolding)"
+  },
+  {
+   "pandId": "0363100012144404",
+   "type": "landlust-1933-erker-window",
+   "palette": {
+    "brick": "#2b1f16"
+   },
+   "reason": "Treslongstraat 5-59 (Opus verdict): the run is dark purple-brown, photo about #4a3626, model about #6a4c33; one brick for the run (151495 had read blue-grey #808d96 off the scaffolding)"
+  },
+  {
+   "pandId": "0363100012114752",
+   "type": "landlust-1933-erker-window",
+   "palette": {
+    "brick": "#2b1f16"
+   },
+   "reason": "Treslongstraat 5-59 (Opus verdict): the run is dark purple-brown, photo about #4a3626, model about #6a4c33; one brick for the run (151495 had read blue-grey #808d96 off the scaffolding)"
+  },
+  {
+   "pandId": "0363100012121629",
+   "type": "landlust-1933-erker-window",
+   "palette": {
+    "brick": "#2b1f16"
+   },
+   "reason": "Treslongstraat 5-59 (Opus verdict): the run is dark purple-brown, photo about #4a3626, model about #6a4c33; one brick for the run (151495 had read blue-grey #808d96 off the scaffolding)"
+  },
+  {
+   "pandId": "0363100012068576",
+   "type": "landlust-1933-erker-window",
+   "palette": {
+    "brick": "#2b1f16"
+   },
+   "reason": "Treslongstraat 5-59 (Opus verdict): the run is dark purple-brown, photo about #4a3626, model about #6a4c33; one brick for the run (151495 had read blue-grey #808d96 off the scaffolding)"
+  },
+  {
+   "pandId": "0363100012111921",
+   "type": "landlust-1933-erker-window",
+   "palette": {
+    "brick": "#2b1f16"
+   },
+   "reason": "Treslongstraat 5-59 (Opus verdict): the run is dark purple-brown, photo about #4a3626, model about #6a4c33; one brick for the run (151495 had read blue-grey #808d96 off the scaffolding)"
+  },
+  {
+   "pandId": "0363100012105923",
+   "type": "landlust-1933-erker-window",
+   "palette": {
+    "brick": "#2b1f16"
+   },
+   "reason": "Treslongstraat 5-59 (Opus verdict): the run is dark purple-brown, photo about #4a3626, model about #6a4c33; one brick for the run (151495 had read blue-grey #808d96 off the scaffolding)"
+  },
+  {
+   "pandId": "0363100012145888",
+   "type": "landlust-1933-erker-window",
+   "palette": {
+    "brick": "#2b1f16"
+   },
+   "reason": "Treslongstraat 5-59 (Opus verdict): the run is dark purple-brown, photo about #4a3626, model about #6a4c33; one brick for the run (151495 had read blue-grey #808d96 off the scaffolding)"
+  },
+  {
+   "pandId": "0363100012064868",
+   "type": "landlust-1934-tile-pair",
+   "palette": {
+    "brick": "#594933"
+   },
+   "reason": "Leijnsenstraat 2-30 (Opus verdict): model olive-tan about #8a6f4e against photo red-brown about #584834; one brick for the run"
+  },
+  {
+   "pandId": "0363100012074955",
+   "type": "landlust-1934-tile-pair",
+   "palette": {
+    "brick": "#594933"
+   },
+   "reason": "Leijnsenstraat 2-30 (Opus verdict): model olive-tan about #8a6f4e against photo red-brown about #584834; one brick for the run"
+  },
+  {
+   "pandId": "0363100012107813",
+   "type": "landlust-1934-tile-pair",
+   "palette": {
+    "brick": "#594933"
+   },
+   "reason": "Leijnsenstraat 2-30 (Opus verdict): model olive-tan about #8a6f4e against photo red-brown about #584834; one brick for the run"
+  },
+  {
+   "pandId": "0363100012123427",
+   "type": "landlust-1934-tile-pair",
+   "palette": {
+    "brick": "#594933"
+   },
+   "reason": "Leijnsenstraat 2-30 (Opus verdict): model olive-tan about #8a6f4e against photo red-brown about #584834; one brick for the run"
+  },
+  {
+   "pandId": "0363100012140619",
+   "type": "landlust-1934-tile-pair",
+   "palette": {
+    "brick": "#594933"
+   },
+   "reason": "Leijnsenstraat 2-30 (Opus verdict): model olive-tan about #8a6f4e against photo red-brown about #584834; one brick for the run"
+  },
+  {
+   "pandId": "0363100012081763",
+   "type": "landlust-1934-tile-pair",
+   "palette": {
+    "brick": "#594933"
+   },
+   "reason": "Leijnsenstraat 2-30 (Opus verdict): model olive-tan about #8a6f4e against photo red-brown about #584834; one brick for the run"
+  },
+  {
+   "pandId": "0363100012137482",
+   "type": "landlust-1934-tile-pair",
+   "palette": {
+    "brick": "#594933"
+   },
+   "reason": "Leijnsenstraat 2-30 (Opus verdict): model olive-tan about #8a6f4e against photo red-brown about #584834; one brick for the run"
+  },
+  {
+   "pandId": "0363100012117865",
+   "type": "landlust-1934-tile-pair",
+   "palette": {
+    "brick": "#594933"
+   },
+   "reason": "Leijnsenstraat 2-30 (Opus verdict): model olive-tan about #8a6f4e against photo red-brown about #584834; one brick for the run"
+  },
+  {
+   "pandId": "0363100012068528",
+   "type": "landlust-1934-tile-pair",
+   "palette": {
+    "brick": "#564632"
+   },
+   "reason": "Haringstraat 26-38 (Opus verdict): model about #836b49 against photo about #52432e"
+  },
+  {
+   "pandId": "0363100012072687",
+   "type": "landlust-1934-tile-pair",
+   "palette": {
+    "brick": "#564632"
+   },
+   "reason": "Haringstraat 26-38 (Opus verdict): model about #836b49 against photo about #52432e"
+  },
+  {
+   "pandId": "0363100012071938",
+   "type": "landlust-1934-tile-pair",
+   "palette": {
+    "brick": "#564632"
+   },
+   "reason": "Haringstraat 26-38 (Opus verdict): model about #836b49 against photo about #52432e"
+  },
+  {
+   "pandId": "0363100012149193",
+   "type": "landlust-1933-three-axis-tile",
+   "palette": {
+    "brick": "#5a4c3b"
+   },
+   "reason": "Coppelstockstraat 29-41 (Opus verdict): the model was a patchwork from #88644b to #7e7662, the photo a uniform #564c3c-#5f5442; one brick for the run"
+  },
+  {
+   "pandId": "0363100012066272",
+   "type": "landlust-1933-three-axis-tile",
+   "palette": {
+    "brick": "#5a4c3b"
+   },
+   "reason": "Coppelstockstraat 29-41 (Opus verdict): the model was a patchwork from #88644b to #7e7662, the photo a uniform #564c3c-#5f5442; one brick for the run"
+  },
+  {
+   "pandId": "0363100012104481",
+   "type": "landlust-1933-three-axis-tile",
+   "palette": {
+    "brick": "#5a4c3b"
+   },
+   "reason": "Coppelstockstraat 29-41 (Opus verdict): the model was a patchwork from #88644b to #7e7662, the photo a uniform #564c3c-#5f5442; one brick for the run"
+  },
+  {
+   "pandId": "0363100012104480",
+   "type": "landlust-1933-three-axis-tile",
+   "palette": {
+    "brick": "#5a4c3b"
+   },
+   "reason": "Coppelstockstraat 29-41 (Opus verdict): the model was a patchwork from #88644b to #7e7662, the photo a uniform #564c3c-#5f5442; one brick for the run"
+  },
+  {
+   "pandId": "0363100012122456",
+   "type": "landlust-1933-three-axis-tile",
+   "palette": {
+    "brick": "#5a4c3b"
+   },
+   "reason": "Coppelstockstraat 29-41 (Opus verdict): the model was a patchwork from #88644b to #7e7662, the photo a uniform #564c3c-#5f5442; one brick for the run"
+  },
+  {
+   "pandId": "0363100012100119",
+   "type": "landlust-1933-three-axis-tile",
+   "palette": {
+    "brick": "#5a4c3b"
+   },
+   "reason": "Coppelstockstraat 29-41 (Opus verdict): the model was a patchwork from #88644b to #7e7662, the photo a uniform #564c3c-#5f5442; one brick for the run"
+  },
+  {
+   "pandId": "0363100012089839",
+   "type": "landlust-1933-three-axis-tile",
+   "palette": {
+    "brick": "#5a4c3b"
+   },
+   "reason": "Coppelstockstraat 29-41 (Opus verdict): the model was a patchwork from #88644b to #7e7662, the photo a uniform #564c3c-#5f5442; one brick for the run"
+  },
+  {
+   "pandId": "0363100012078570",
+   "type": "landlust-1938-pair-attic",
+   "palette": {
+    "brick": "#745b41"
+   },
+   "reason": "Leijnsenstraat 11-19 (Opus verdict): model red/olive patchwork about #8a6a4c against photo about #655039; one brick for the run"
+  },
+  {
+   "pandId": "0363100012121647",
+   "type": "landlust-1938-pair-attic",
+   "palette": {
+    "brick": "#745b41"
+   },
+   "reason": "Leijnsenstraat 11-19 (Opus verdict): model red/olive patchwork about #8a6a4c against photo about #655039; one brick for the run"
+  },
+  {
+   "pandId": "0363100012066007",
+   "type": "landlust-1938-pair-attic",
+   "palette": {
+    "brick": "#745b41"
+   },
+   "reason": "Leijnsenstraat 11-19 (Opus verdict): model red/olive patchwork about #8a6a4c against photo about #655039; one brick for the run"
+  },
+  {
+   "pandId": "0363100012104220",
+   "type": "landlust-1938-pair-attic",
+   "palette": {
+    "brick": "#745b41"
+   },
+   "reason": "Leijnsenstraat 11-19 (Opus verdict): model red/olive patchwork about #8a6a4c against photo about #655039; one brick for the run"
+  },
+  {
+   "pandId": "0363100012073086",
+   "type": "landlust-1938-pair-attic",
+   "palette": {
+    "brick": "#745b41"
+   },
+   "reason": "Leijnsenstraat 11-19 (Opus verdict): model red/olive patchwork about #8a6a4c against photo about #655039; one brick for the run"
+  }
+ ]
+}

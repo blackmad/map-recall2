@@ -1,0 +1,639 @@
+{
+ "face": "treslong-6-26",
+ "street": "Bloys van Treslongstraat",
+ "library": "landlust",
+ "stripDate": "2024-11-21",
+ "seconds": 9.32,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [
+  {
+   "face": "treslong-6-26-r1",
+   "pands": [
+    "0363100012066487",
+    "0363100012103630",
+    "0363100012124502"
+   ],
+   "passed": true,
+   "triangles": 3349
+  }
+ ],
+ "pands": [
+  {
+   "pandId": "0363100012077211",
+   "address": "Bloys van Treslongstraat 22",
+   "builtYear": 1939,
+   "widthM": 16.87,
+   "eavesM": 14.8,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#735946",
+    "wallRaw": "#735f49",
+    "skyline": {
+     "eavesM": 14.7,
+     "eavesRow": 189,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2,
+      "riseM": 2.03,
+      "topWidthM": 0.42,
+      "centre": 0.94
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.102,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 4.8,
+       "widthM": 0.88,
+       "centre": 0.88
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.08
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best landlust-1938-pair-attic: frontage 16.87 m, type 5.8-6.6 m)",
+   "best": {
+    "type": "landlust-1938-pair-attic",
+    "score": 0,
+    "veto": [
+     "frontage 16.87 m, type 5.8-6.6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "strip cornice 14.7 m vs the type's 14.95 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 0,
+      "note": "roof rise 2.49 m (pitched) vs flat"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.086 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 3 vs 2 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012087932",
+   "address": "Bloys van Treslongstraat 20",
+   "builtYear": 1938,
+   "widthM": 6.1,
+   "eavesM": 15.08,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#81644a",
+    "wallRaw": "#705b42",
+    "skyline": {
+     "eavesM": 16.23,
+     "eavesRow": 128,
+     "confidence": 0.73,
+     "crown": {
+      "widthM": 2.33,
+      "riseM": 3.2,
+      "topWidthM": 0.1,
+      "centre": 0.49
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": "left",
+    "accentShare": 0.034,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.04
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best landlust-1938-pair-attic scores 0.67 < 0.7 (strip cornice 16.23 m vs the type's 14.95 m)",
+   "best": {
+    "type": "landlust-1938-pair-attic",
+    "score": 0.67,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 16.23 m vs the type's 14.95 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 0.05 m (flat) vs flat"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.03 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012142006",
+   "address": "Bloys van Treslongstraat 18",
+   "builtYear": 1938,
+   "widthM": 6.1,
+   "eavesM": 15.03,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#65452b",
+    "wallRaw": "#644c30",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 777,
+     "confidence": 0.08,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": "right",
+    "accentShare": 0.055,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.07
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "no front on the strip: sky over the roof in 46 % of columns (< 75 %): the strip shows a nearer wall, fence or tree, not the front",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012119334",
+   "address": "Bloys van Treslongstraat 16",
+   "builtYear": 1939,
+   "widthM": 6.1,
+   "eavesM": 15.14,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#8b694b",
+    "wallRaw": "#6a5233",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 777,
+     "confidence": 0.17,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.032,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.05
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "no front on the strip: sky over the roof in 68 % of columns (< 75 %): the strip shows a nearer wall, fence or tree, not the front",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012066487",
+   "address": "Bloys van Treslongstraat 14",
+   "builtYear": 1938,
+   "widthM": 6.1,
+   "eavesM": 15.23,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#755b42",
+    "wallRaw": "#7c644b",
+    "skyline": {
+     "eavesM": 15.28,
+     "eavesRow": 166,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": "right",
+    "accentShare": 0.154,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 14.25,
+       "widthM": 1,
+       "centre": 0.42
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.11
+   },
+   "status": "placed",
+   "type": "landlust-1938-pair-attic",
+   "score": 1,
+   "placement": {
+    "type": "landlust-1938-pair-attic",
+    "mirror": true,
+    "measuredPalette": {
+     "brick": "#755b42",
+     "evidence": "strip 2024-11-21 span 1407-1651: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "door left: mirrored",
+    "crown flat-slab (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012066487",
+    "ncc": 0.401,
+    "nccRaw": 0.401,
+    "shiftM": [
+     -0.05,
+     0.35
+    ],
+    "usable": 0.79,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.21 mean 0.38 vs photo 0.51"
+    ],
+    "wall": {
+     "photo": "#73583f",
+     "model": "#907051",
+     "dL": 0.092
+    },
+    "glazing": {
+     "photo": 0.51,
+     "model": 0.38
+    },
+    "columns": {
+     "photo": null,
+     "model": 2
+    },
+    "iou": 0.491
+   },
+   "challengers": {
+    "landlust-1938-pair-attic~m": 0.401,
+    "landlust-1938-pair-attic": 0.167
+   }
+  },
+  {
+   "pandId": "0363100012103630",
+   "address": "Bloys van Treslongstraat 12",
+   "builtYear": 1938,
+   "widthM": 6.1,
+   "eavesM": 15.55,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#785942",
+    "wallRaw": "#8f745c",
+    "skyline": {
+     "eavesM": 15.32,
+     "eavesRow": 164,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 6,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": "left",
+    "accentShare": 0.228,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 5.88,
+       "widthM": 0.88,
+       "centre": 0.34
+      }
+     ]
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0.17
+   },
+   "status": "placed",
+   "type": "landlust-1938-pair-attic",
+   "score": 1,
+   "placement": {
+    "type": "landlust-1938-pair-attic",
+    "measuredPalette": {
+     "brick": "#785942",
+     "evidence": "strip 2024-11-21 span 1651-1895: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "door right",
+    "crown flat-slab (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012103630",
+    "ncc": 0.336,
+    "nccRaw": 0.336,
+    "shiftM": [
+     0,
+     0.3
+    ],
+    "usable": 0.71,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.28"
+    ],
+    "wall": {
+     "photo": "#745740",
+     "model": "#936d51",
+     "dL": 0.094
+    },
+    "glazing": {
+     "photo": 0.42,
+     "model": 0.38
+    },
+    "columns": {
+     "photo": null,
+     "model": null
+    },
+    "iou": 0.41
+   },
+   "challengers": {
+    "landlust-1938-pair-attic": 0.336,
+    "landlust-1938-pair-attic~m": 0.202
+   }
+  },
+  {
+   "pandId": "0363100012124502",
+   "address": "Bloys van Treslongstraat 10",
+   "builtYear": 1938,
+   "widthM": 6.11,
+   "eavesM": 15.52,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#7e5a44",
+    "wallRaw": "#836850",
+    "skyline": {
+     "eavesM": 15.32,
+     "eavesRow": 164,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 6,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": "right",
+    "accentShare": 0.215,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 14.35,
+       "widthM": 1.85,
+       "centre": 0.34
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.12
+   },
+   "status": "placed",
+   "type": "landlust-1938-pair-attic",
+   "score": 1,
+   "placement": {
+    "type": "landlust-1938-pair-attic",
+    "mirror": true,
+    "measuredPalette": {
+     "brick": "#7e5a44",
+     "evidence": "strip 2024-11-21 span 1895-2139: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "door left: mirrored",
+    "crown flat-slab (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012124502",
+    "ncc": 0.315,
+    "nccRaw": 0.315,
+    "shiftM": [
+     -0.05,
+     0.35
+    ],
+    "usable": 0.78,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.33 mean 0.38 vs photo 0.14"
+    ],
+    "wall": {
+     "photo": "#7a5842",
+     "model": "#996d53",
+     "dL": 0.094
+    },
+    "glazing": {
+     "photo": 0.14,
+     "model": 0.38
+    },
+    "columns": {
+     "photo": null,
+     "model": 2
+    },
+    "iou": 0.327
+   },
+   "challengers": {
+    "landlust-1938-pair-attic~m": 0.315,
+    "landlust-1938-pair-attic": 0.169
+   }
+  },
+  {
+   "pandId": "0363100012099817",
+   "address": "Bloys van Treslongstraat 6",
+   "builtYear": 1938,
+   "widthM": 3.93,
+   "eavesM": 14.87,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 3.16,
+    "toM": 3.16,
+    "depthM": 0.3,
+    "centre": 0.804
+   },
+   "strip": {
+    "wall": "#7a5d44",
+    "wallRaw": "#7b6049",
+    "skyline": {
+     "eavesM": 15.72,
+     "eavesRow": 148,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 9,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.276,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 9.32,
+       "widthM": 0.9,
+       "centre": 0.68
+      },
+      {
+       "atM": 5.35,
+       "widthM": 0.82,
+       "centre": 0.79
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.2
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best landlust-1938-pair-attic: frontage 3.93 m, type 5.8-6.6 m)",
+   "best": {
+    "type": "landlust-1938-pair-attic",
+    "score": 0,
+    "veto": [
+     "frontage 3.93 m, type 5.8-6.6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "strip cornice 15.72 m vs the type's 14.95 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 0,
+      "note": "roof rise 2.55 m (pitched) vs flat"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.204 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

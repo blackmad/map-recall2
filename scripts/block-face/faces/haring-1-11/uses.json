@@ -1,0 +1,106 @@
+{
+ "street": "Jan Haringstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched n/a (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012143406",
+   "addresses": [
+    "Jan Haringstraat 1",
+    "Jan Haringstraat 1A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Haringstraat 1",
+     "use": "industriefunctie",
+     "areaM2": 75,
+     "bagId": "0363010000685072"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012148081",
+   "addresses": [
+    "Jan Haringstraat 3"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Haringstraat 3-H",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000685077"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012062858",
+   "addresses": [
+    "Jan Haringstraat 5"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Haringstraat 5-H",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000685083"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012063321",
+   "addresses": [
+    "Jan Haringstraat 7"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Haringstraat 7-H",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000685090"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012110942",
+   "addresses": [
+    "Jan Haringstraat 9"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Haringstraat 9-H",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000685097"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012089590",
+   "addresses": [
+    "Jan Haringstraat 11"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Haringstraat 11-H",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000685104"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  }
+ ]
+}

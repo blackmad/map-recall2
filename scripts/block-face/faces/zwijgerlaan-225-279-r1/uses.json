@@ -1,0 +1,167 @@
+{
+ "street": "Willem de Zwijgerlaan",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched n/a (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012109779",
+   "addresses": [
+    "Willem de Zwijgerlaan 231",
+    "Willem de Zwijgerlaan 231A",
+    "Willem de Zwijgerlaan 231C",
+    "Willem de Zwijgerlaan 231D",
+    "Willem de Zwijgerlaan 231E",
+    "Willem de Zwijgerlaan 233",
+    "Willem de Zwijgerlaan 233B",
+    "Willem de Zwijgerlaan 233C",
+    "Willem de Zwijgerlaan 233D",
+    "Willem de Zwijgerlaan 233E"
+   ],
+   "groundUnits": [
+    {
+     "address": "Willem de Zwijgerlaan 231-H",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000871549"
+    },
+    {
+     "address": "Willem de Zwijgerlaan 233-H",
+     "use": "woonfunctie",
+     "areaM2": 42,
+     "bagId": "0363010000871554"
+    },
+    {
+     "address": "Willem de Zwijgerlaan 231A",
+     "use": "woonfunctie",
+     "areaM2": 118,
+     "bagId": "0363010012117787"
+    },
+    {
+     "address": "Willem de Zwijgerlaan 231C",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010012117788"
+    },
+    {
+     "address": "Willem de Zwijgerlaan 231D",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010012117789"
+    },
+    {
+     "address": "Willem de Zwijgerlaan 231E",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010012117790"
+    },
+    {
+     "address": "Willem de Zwijgerlaan 233B",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010012117791"
+    },
+    {
+     "address": "Willem de Zwijgerlaan 233C",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010012117792"
+    },
+    {
+     "address": "Willem de Zwijgerlaan 233D",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010012117793"
+    },
+    {
+     "address": "Willem de Zwijgerlaan 233E",
+     "use": "woonfunctie",
+     "areaM2": 118,
+     "bagId": "0363010012117794"
+    }
+   ],
+   "units": 16,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012133739",
+   "addresses": [
+    "Willem de Zwijgerlaan 235",
+    "Willem de Zwijgerlaan 235C",
+    "Willem de Zwijgerlaan 235D",
+    "Willem de Zwijgerlaan 235E",
+    "Willem de Zwijgerlaan 235A",
+    "Willem de Zwijgerlaan 237",
+    "Willem de Zwijgerlaan 237B",
+    "Willem de Zwijgerlaan 237C",
+    "Willem de Zwijgerlaan 237D",
+    "Willem de Zwijgerlaan 237E"
+   ],
+   "groundUnits": [
+    {
+     "address": "Willem de Zwijgerlaan 235-H",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000871558"
+    },
+    {
+     "address": "Willem de Zwijgerlaan 237-H",
+     "use": "woonfunctie",
+     "areaM2": 42,
+     "bagId": "0363010000871562"
+    },
+    {
+     "address": "Willem de Zwijgerlaan 235C",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010012117796"
+    },
+    {
+     "address": "Willem de Zwijgerlaan 235D",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010012117797"
+    },
+    {
+     "address": "Willem de Zwijgerlaan 235E",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010012117798"
+    },
+    {
+     "address": "Willem de Zwijgerlaan 237B",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010012117799"
+    },
+    {
+     "address": "Willem de Zwijgerlaan 237C",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010012117800"
+    },
+    {
+     "address": "Willem de Zwijgerlaan 237D",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010012117801"
+    },
+    {
+     "address": "Willem de Zwijgerlaan 237E",
+     "use": "woonfunctie",
+     "areaM2": 118,
+     "bagId": "0363010012117802"
+    },
+    {
+     "address": "Willem de Zwijgerlaan 235A",
+     "use": "woonfunctie",
+     "areaM2": 136,
+     "bagId": "0363010012117795"
+    }
+   ],
+   "units": 16,
+   "osm": []
+  }
+ ]
+}

@@ -1,0 +1,1254 @@
+{
+ "face": "leijnsen-2-30",
+ "street": "Jasper Leijnsenstraat",
+ "library": "landlust",
+ "stripDate": "2024-11-21",
+ "seconds": 12.55,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [
+  {
+   "face": "leijnsen-2-30-r1",
+   "pands": [
+    "0363100012064868",
+    "0363100012074955",
+    "0363100012107813",
+    "0363100012123427",
+    "0363100012140619",
+    "0363100012081763"
+   ],
+   "passed": true,
+   "triangles": 8412
+  },
+  {
+   "face": "leijnsen-2-30-r2",
+   "pands": [
+    "0363100012137482",
+    "0363100012117865"
+   ],
+   "passed": true,
+   "triangles": 2818
+  }
+ ],
+ "pands": [
+  {
+   "pandId": "0363100012145738",
+   "address": "Jasper Leijnsenstraat 30",
+   "builtYear": 1934,
+   "widthM": 7.01,
+   "eavesM": 12.81,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6d583d",
+    "wallRaw": "#564834",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 831,
+     "confidence": 0.17,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.067,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.2
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012115570",
+   "address": "Jasper Leijnsenstraat 28",
+   "builtYear": 1934,
+   "widthM": 6.15,
+   "eavesM": 12.82,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#766348",
+    "wallRaw": "#65553e",
+    "skyline": {
+     "eavesM": 14.78,
+     "eavesRow": 240,
+     "confidence": 0.99,
+     "crown": {
+      "widthM": 1.32,
+      "riseM": 6,
+      "topWidthM": 0.05,
+      "centre": 0.88
+     }
+    },
+    "stucco": false,
+    "bands": 4,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.246,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.26
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best landlust-1934-tile-pair scores 0.67 < 0.7 (strip cornice 14.78 m vs the type's 12 m)",
+   "best": {
+    "type": "landlust-1934-tile-pair",
+    "score": 0.67,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 14.78 m vs the type's 12 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 3.93 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.194 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012064868",
+   "address": "Jasper Leijnsenstraat 26",
+   "builtYear": 1934,
+   "widthM": 6.22,
+   "eavesM": 12.82,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#7c6546",
+    "wallRaw": "#584934",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 831,
+     "confidence": 0.17,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.059,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 7.05,
+       "widthM": 0.95,
+       "centre": 0.89
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.15
+   },
+   "status": "placed",
+   "type": "landlust-1934-tile-pair",
+   "score": 0.84,
+   "placement": {
+    "type": "landlust-1934-tile-pair",
+    "measuredPalette": {
+     "brick": "#7c6546",
+     "evidence": "strip 2024-11-21 span 527-776: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#594933"
+    }
+   },
+   "notes": [
+    "door unread: as drawn, the opposite of 074955",
+    "crown gutter (type default)",
+    "palette pinned: Leijnsenstraat 2-30 (Opus verdict): model olive-tan about #8a6f4e against photo red-brown about #584834; one brick for the run"
+   ],
+   "likeness": {
+    "pandId": "0363100012064868",
+    "ncc": 0.569,
+    "nccRaw": 0.569,
+    "shiftM": [
+     -0.1,
+     0.3
+    ],
+    "usable": 0.77,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "window shape none vs photo tall",
+     "columns none vs photo 2"
+    ],
+    "wall": {
+     "photo": "#796345",
+     "model": "#776244",
+     "dL": -0.006
+    },
+    "glazing": {
+     "photo": 0.33,
+     "model": 0.37
+    },
+    "columns": {
+     "photo": 2,
+     "model": null
+    },
+    "iou": 0.585,
+    "footOffsetM": 1.02
+   },
+   "challengers": {
+    "landlust-1934-tile-pair": 0.569,
+    "landlust-1934-tile-pair~m": -0.019
+   }
+  },
+  {
+   "pandId": "0363100012074955",
+   "address": "Jasper Leijnsenstraat 24",
+   "builtYear": 1934,
+   "widthM": 6.17,
+   "eavesM": 12.8,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#796548",
+    "wallRaw": "#584a35",
+    "skyline": {
+     "eavesM": 19.77,
+     "eavesRow": 40,
+     "confidence": 0.48,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 2,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.067,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 11.97,
+       "widthM": 0.9,
+       "centre": 0.32
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.17
+   },
+   "status": "placed",
+   "type": "landlust-1934-tile-pair",
+   "score": 1,
+   "placement": {
+    "type": "landlust-1934-tile-pair",
+    "mirror": true,
+    "measuredPalette": {
+     "brick": "#796548",
+     "evidence": "strip 2024-11-21 span 775-1022: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#594933"
+    }
+   },
+   "notes": [
+    "door right: mirrored",
+    "crown gutter (type default)",
+    "palette pinned: Leijnsenstraat 2-30 (Opus verdict): model olive-tan about #8a6f4e against photo red-brown about #584834; one brick for the run"
+   ],
+   "likeness": {
+    "pandId": "0363100012074955",
+    "ncc": 0.588,
+    "nccRaw": 0.588,
+    "shiftM": [
+     -0.1,
+     0.3
+    ],
+    "usable": 0.72,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.18 mean 0.37 vs photo 0.27",
+     "window shape none vs photo tall",
+     "columns none vs photo 2"
+    ],
+    "wall": {
+     "photo": "#766246",
+     "model": "#776244",
+     "dL": -0.002
+    },
+    "glazing": {
+     "photo": 0.27,
+     "model": 0.37
+    },
+    "columns": {
+     "photo": 2,
+     "model": null
+    },
+    "iou": 0.64,
+    "footOffsetM": 1.02
+   },
+   "challengers": {
+    "landlust-1934-tile-pair~m": 0.588,
+    "landlust-1934-tile-pair": -0.005
+   }
+  },
+  {
+   "pandId": "0363100012107813",
+   "address": "Jasper Leijnsenstraat 22",
+   "builtYear": 1934,
+   "widthM": 6.18,
+   "eavesM": 12.93,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#766246",
+    "wallRaw": "#62523b",
+    "skyline": {
+     "eavesM": 19.18,
+     "eavesRow": 64,
+     "confidence": 0.49,
+     "crown": {
+      "widthM": 1.35,
+      "riseM": 1.6,
+      "topWidthM": 0.57,
+      "centre": 0.65
+     }
+    },
+    "stucco": false,
+    "bands": 3,
+    "columns": 2,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.142,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 12.1,
+       "widthM": 3.8,
+       "centre": 0.52
+      },
+      {
+       "atM": 11.35,
+       "widthM": 0.85,
+       "centre": 0.37
+      },
+      {
+       "atM": 7,
+       "widthM": 0.82,
+       "centre": 0.56
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.21
+   },
+   "status": "placed",
+   "type": "landlust-1934-tile-pair",
+   "score": 0.84,
+   "placement": {
+    "type": "landlust-1934-tile-pair",
+    "measuredPalette": {
+     "brick": "#766246",
+     "evidence": "strip 2024-11-21 span 1022-1269: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#594933"
+    }
+   },
+   "notes": [
+    "door unread: as drawn, the opposite of 074955",
+    "crown gutter (type default)",
+    "palette pinned: Leijnsenstraat 2-30 (Opus verdict): model olive-tan about #8a6f4e against photo red-brown about #584834; one brick for the run"
+   ],
+   "likeness": {
+    "pandId": "0363100012107813",
+    "ncc": 0.596,
+    "nccRaw": 0.596,
+    "shiftM": [
+     -0.15,
+     0.3
+    ],
+    "usable": 0.67,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.24 mean 0.37 vs photo 0.17",
+     "window shape none vs photo tall",
+     "columns none vs photo 2"
+    ],
+    "wall": {
+     "photo": "#746045",
+     "model": "#776244",
+     "dL": 0.004
+    },
+    "glazing": {
+     "photo": 0.17,
+     "model": 0.37
+    },
+    "columns": {
+     "photo": 2,
+     "model": null
+    },
+    "iou": 0.534,
+    "footOffsetM": 1.02
+   },
+   "challengers": {
+    "landlust-1934-tile-pair": 0.596,
+    "landlust-1934-tile-pair~m": 0.067
+   }
+  },
+  {
+   "pandId": "0363100012123427",
+   "address": "Jasper Leijnsenstraat 20",
+   "builtYear": 1934,
+   "widthM": 6.18,
+   "eavesM": 12.79,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#806748",
+    "wallRaw": "#5f5038",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 831,
+     "confidence": 0.18,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "frontClass": "columns",
+    "doorSide": "right",
+    "accentSide": "left",
+    "accentShare": 0.057,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.16
+   },
+   "status": "placed",
+   "type": "landlust-1934-tile-pair",
+   "score": 0.84,
+   "placement": {
+    "type": "landlust-1934-tile-pair",
+    "mirror": true,
+    "measuredPalette": {
+     "brick": "#806748",
+     "evidence": "strip 2024-11-21 span 1270-1517: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#594933"
+    }
+   },
+   "notes": [
+    "door right: mirrored",
+    "crown gutter (type default)",
+    "palette pinned: Leijnsenstraat 2-30 (Opus verdict): model olive-tan about #8a6f4e against photo red-brown about #584834; one brick for the run"
+   ],
+   "likeness": {
+    "pandId": "0363100012123427",
+    "ncc": 0.541,
+    "nccRaw": 0.541,
+    "shiftM": [
+     -0.05,
+     0.3
+    ],
+    "usable": 0.72,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.19 mean 0.37 vs photo 0.20",
+     "window shape none vs photo tall",
+     "columns none vs photo 2"
+    ],
+    "wall": {
+     "photo": "#7a6546",
+     "model": "#776244",
+     "dL": -0.01
+    },
+    "glazing": {
+     "photo": 0.2,
+     "model": 0.37
+    },
+    "columns": {
+     "photo": 2,
+     "model": null
+    },
+    "iou": 0.509,
+    "footOffsetM": 1.02
+   },
+   "challengers": {
+    "landlust-1934-tile-pair~m": 0.541,
+    "landlust-1934-tile-pair": 0.004
+   }
+  },
+  {
+   "pandId": "0363100012140619",
+   "address": "Jasper Leijnsenstraat 18",
+   "builtYear": 1934,
+   "widthM": 5.67,
+   "eavesM": 12.86,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#796447",
+    "wallRaw": "#5f4f38",
+    "skyline": {
+     "eavesM": 19.6,
+     "eavesRow": 47,
+     "confidence": 0.37,
+     "crown": {
+      "widthM": 0.65,
+      "riseM": 1.17,
+      "topWidthM": 0.65,
+      "centre": 0.19
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 2,
+    "frontClass": "columns",
+    "doorSide": "left",
+    "accentSide": "right",
+    "accentShare": 0.091,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 12.1,
+       "widthM": 1.05,
+       "centre": 0.1
+      },
+      {
+       "atM": 4.97,
+       "widthM": 0.97,
+       "centre": 0.62
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.14
+   },
+   "status": "placed",
+   "type": "landlust-1934-tile-pair",
+   "score": 0.84,
+   "placement": {
+    "type": "landlust-1934-tile-pair",
+    "measuredPalette": {
+     "brick": "#796447",
+     "evidence": "strip 2024-11-21 span 1517-1744: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#594933"
+    }
+   },
+   "notes": [
+    "door left",
+    "crown gutter (type default)",
+    "palette pinned: Leijnsenstraat 2-30 (Opus verdict): model olive-tan about #8a6f4e against photo red-brown about #584834; one brick for the run"
+   ],
+   "likeness": {
+    "pandId": "0363100012140619",
+    "ncc": 0.501,
+    "nccRaw": 0.501,
+    "shiftM": [
+     0.15,
+     0.3
+    ],
+    "usable": 0.73,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "window shape none vs photo square",
+     "columns none vs photo 2"
+    ],
+    "wall": {
+     "photo": "#766043",
+     "model": "#776244",
+     "dL": 0.004
+    },
+    "glazing": {
+     "photo": 0.38,
+     "model": 0.39
+    },
+    "columns": {
+     "photo": 2,
+     "model": null
+    },
+    "iou": 0.581,
+    "footOffsetM": 1.02
+   },
+   "challengers": {
+    "landlust-1934-tile-pair": 0.501,
+    "landlust-1934-tile-pair~m": -0.022
+   }
+  },
+  {
+   "pandId": "0363100012081763",
+   "address": "Jasper Leijnsenstraat 16",
+   "builtYear": 1934,
+   "widthM": 6.69,
+   "eavesM": 12.85,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#796547",
+    "wallRaw": "#564935",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 831,
+     "confidence": 0.11,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 4,
+    "frontClass": "columns",
+    "doorSide": "right",
+    "accentSide": "left",
+    "accentShare": 0.034,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 11.88,
+       "widthM": 1,
+       "centre": 0.85
+      },
+      {
+       "atM": 11.2,
+       "widthM": 0.88,
+       "centre": 0.69
+      },
+      {
+       "atM": 6.85,
+       "widthM": 0.85,
+       "centre": 0.48
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.24
+   },
+   "status": "placed",
+   "type": "landlust-1934-tile-pair",
+   "score": 0.84,
+   "placement": {
+    "type": "landlust-1934-tile-pair",
+    "mirror": true,
+    "measuredPalette": {
+     "brick": "#796547",
+     "evidence": "strip 2024-11-21 span 1744-2012: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#594933"
+    }
+   },
+   "notes": [
+    "door right: mirrored",
+    "crown gutter (type default)",
+    "palette pinned: Leijnsenstraat 2-30 (Opus verdict): model olive-tan about #8a6f4e against photo red-brown about #584834; one brick for the run"
+   ],
+   "likeness": {
+    "pandId": "0363100012081763",
+    "ncc": 0.441,
+    "nccRaw": 0.441,
+    "shiftM": [
+     0.25,
+     0.4
+    ],
+    "usable": 0.61,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.31 mean 0.37 vs photo 0.59"
+    ],
+    "wall": {
+     "photo": "#7a6344",
+     "model": "#776244",
+     "dL": -0.006
+    },
+    "glazing": {
+     "photo": 0.59,
+     "model": 0.37
+    },
+    "columns": {
+     "photo": null,
+     "model": null
+    },
+    "iou": 0.447,
+    "footOffsetM": 1.02
+   },
+   "challengers": {
+    "landlust-1934-tile-pair~m": 0.441,
+    "landlust-1934-tile-pair": 0.002
+   }
+  },
+  {
+   "pandId": "0363100012132371",
+   "address": "Jasper Leijnsenstraat 14",
+   "builtYear": 1934,
+   "widthM": 6.18,
+   "eavesM": 13.68,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6f5d42",
+    "wallRaw": "#544733",
+    "skyline": {
+     "eavesM": 19.9,
+     "eavesRow": 35,
+     "confidence": 0.32,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.079,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 12.63,
+       "widthM": 1.7,
+       "centre": 0.31
+      },
+      {
+       "atM": 11.95,
+       "widthM": 1.07,
+       "centre": 0.72
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.2
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Opus verdict: the photo has a canted erker over storeys 1-2 and wide ground windows, a front the tile-pair type does not draw",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012137482",
+   "address": "Jasper Leijnsenstraat 12",
+   "builtYear": 1934,
+   "widthM": 6.16,
+   "eavesM": 13.7,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6e5c41",
+    "wallRaw": "#544632",
+    "skyline": {
+     "eavesM": 18.75,
+     "eavesRow": 81,
+     "confidence": 0.39,
+     "crown": {
+      "widthM": 0.72,
+      "riseM": 2.02,
+      "topWidthM": 0.28,
+      "centre": 0.73
+     }
+    },
+    "stucco": false,
+    "bands": 2,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": "right",
+    "accentShare": 0.064,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 12.57,
+       "widthM": 0.85,
+       "centre": 0.33
+      },
+      {
+       "atM": 5.6,
+       "widthM": 0.8,
+       "centre": 0.57
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.18
+   },
+   "status": "placed",
+   "type": "landlust-1934-tile-pair",
+   "score": 1,
+   "placement": {
+    "type": "landlust-1934-tile-pair",
+    "measuredPalette": {
+     "brick": "#6e5c41",
+     "evidence": "strip 2024-11-21 span 2259-2506: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#594933"
+    }
+   },
+   "notes": [
+    "door left",
+    "crown gutter (type default)",
+    "palette pinned: Leijnsenstraat 2-30 (Opus verdict): model olive-tan about #8a6f4e against photo red-brown about #584834; one brick for the run"
+   ],
+   "likeness": {
+    "pandId": "0363100012137482",
+    "ncc": 0.523,
+    "nccRaw": 0.523,
+    "shiftM": [
+     -0.05,
+     -0.1
+    ],
+    "usable": 0.7,
+    "abstain": null,
+    "verdict": "PASS",
+    "reasons": [],
+    "wall": {
+     "photo": "#735e43",
+     "model": "#776244",
+     "dL": 0.01
+    },
+    "glazing": {
+     "photo": 0.44,
+     "model": 0.39
+    },
+    "columns": {
+     "photo": null,
+     "model": 2
+    },
+    "iou": 0.545,
+    "footOffsetM": 1.35
+   },
+   "challengers": {
+    "landlust-1934-tile-pair": 0.523,
+    "landlust-1934-tile-pair~m": 0.053
+   }
+  },
+  {
+   "pandId": "0363100012117865",
+   "address": "Jasper Leijnsenstraat 10",
+   "builtYear": 1934,
+   "widthM": 6.2,
+   "eavesM": 13.8,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#816341",
+    "wallRaw": "#564530",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 831,
+     "confidence": 0.12,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "frontClass": "columns",
+    "doorSide": "right",
+    "accentSide": "left",
+    "accentShare": 0.019,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 12.52,
+       "widthM": 2.48,
+       "centre": 0.22
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.19
+   },
+   "status": "placed",
+   "type": "landlust-1934-tile-pair",
+   "score": 0.84,
+   "placement": {
+    "type": "landlust-1934-tile-pair",
+    "mirror": true,
+    "measuredPalette": {
+     "brick": "#816341",
+     "evidence": "strip 2024-11-21 span 2505-2753: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#594933"
+    }
+   },
+   "notes": [
+    "door right: mirrored",
+    "crown gutter (type default)",
+    "palette pinned: Leijnsenstraat 2-30 (Opus verdict): model olive-tan about #8a6f4e against photo red-brown about #584834; one brick for the run"
+   ],
+   "likeness": {
+    "pandId": "0363100012117865",
+    "ncc": 0.472,
+    "nccRaw": 0.472,
+    "shiftM": [
+     0,
+     -0.05
+    ],
+    "usable": 0.7,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.40 mean 0.37 vs photo 0.60",
+     "window shape none vs photo square",
+     "columns none vs photo 2"
+    ],
+    "wall": {
+     "photo": "#816141",
+     "model": "#776244",
+     "dL": -0.014
+    },
+    "glazing": {
+     "photo": 0.6,
+     "model": 0.37
+    },
+    "columns": {
+     "photo": 2,
+     "model": null
+    },
+    "iou": 0.478,
+    "footOffsetM": 1.35
+   },
+   "challengers": {
+    "landlust-1934-tile-pair~m": 0.472,
+    "landlust-1934-tile-pair": -0.01
+   }
+  },
+  {
+   "pandId": "0363100012077897",
+   "address": "Jasper Leijnsenstraat 8",
+   "builtYear": 1934,
+   "widthM": 6.18,
+   "eavesM": 13.63,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#7b6143",
+    "wallRaw": "#594834",
+    "skyline": {
+     "eavesM": 15.13,
+     "eavesRow": 226,
+     "confidence": 0.98,
+     "crown": {
+      "widthM": 0.55,
+      "riseM": 1.27,
+      "topWidthM": 0.55,
+      "centre": 0.95
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 2,
+    "frontClass": "columns",
+    "doorSide": "left",
+    "accentSide": "right",
+    "accentShare": 0.032,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 11.97,
+       "widthM": 1.02,
+       "centre": 0.09
+      },
+      {
+       "atM": 11.38,
+       "widthM": 1.07,
+       "centre": 0.3
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.1
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best landlust-1934-tile-pair scores 0.61 < 0.7 (strip cornice 15.13 m vs the type's 12 m; strip columns 2 vs 3 bays)",
+   "best": {
+    "type": "landlust-1934-tile-pair",
+    "score": 0.61,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 15.13 m vs the type's 12 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 3.9 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.025 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 2 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012094763",
+   "address": "Jasper Leijnsenstraat 6",
+   "builtYear": 1934,
+   "widthM": 6.19,
+   "eavesM": 13.6,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#765c3e",
+    "wallRaw": "#5b4933",
+    "skyline": {
+     "eavesM": 16.18,
+     "eavesRow": 184,
+     "confidence": 0.87,
+     "crown": {
+      "widthM": 2.02,
+      "riseM": 4.6,
+      "topWidthM": 0.75,
+      "centre": 0.73
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": "left",
+    "accentShare": 0.055,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 12.32,
+       "widthM": 0.88,
+       "centre": 0.23
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.11
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012139647",
+   "address": "Jasper Leijnsenstraat 4",
+   "builtYear": 1934,
+   "widthM": 6.18,
+   "eavesM": 13.61,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#493823",
+    "wallRaw": "#4c3e29",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 831,
+     "confidence": 0.11,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": "right",
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.11
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "no front on the strip: sky over the roof in 43 % of columns (< 75 %): the strip shows a nearer wall, fence or tree, not the front",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012129908",
+   "address": "Jasper Leijnsenstraat 2",
+   "builtYear": 1934,
+   "widthM": 6.31,
+   "eavesM": 14.87,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#72593e",
+    "wallRaw": "#544531",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 831,
+     "confidence": 0.15,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.015,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 10.3,
+       "widthM": 1.1,
+       "centre": 0.7
+      },
+      {
+       "atM": 8.27,
+       "widthM": 0.9,
+       "centre": 0.09
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.12
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "no front on the strip: sky over the roof in 60 % of columns (< 75 %): the strip shows a nearer wall, fence or tree, not the front",
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

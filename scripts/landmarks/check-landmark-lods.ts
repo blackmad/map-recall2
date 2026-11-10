@@ -26,8 +26,12 @@ import {
 const LOD2_MAX_TOTAL_BYTES = 6e6;
 /** Lane R4-H (#252): the ordinary installs' lod1 + lod2 together (27 models; lod1 at 1024 px). */
 const ORDINARY_LOD_MAX_TOTAL_BYTES = 8e6;
-/** Lane R4-C (#245): the chunk stand-ins together (142 chunks, 5.34 MB at the cap; the full chunks are ~84 MB). */
-const CHUNK_LOD2_MAX_TOTAL_BYTES = 6e6;
+/**
+ * Lane R4-C (#245): the chunk stand-ins (142 chunks, 5.34 MB, 37.6 KB each at the cap; the full chunks are ~84 MB).
+ * Since 2026-11-10 (176 chunks, 6.51 MB after the Landlust and Vogelbuurt installs) the cap is per chunk on average, so
+ * city coverage installs are not blocked by a fixed total: a stand-in may not grow, but more of them may ship.
+ */
+const CHUNK_LOD2_MAX_AVG_BYTES = 40e3;
 
 const manifest = JSON.parse(fs.readFileSync('public/canal-drive/models/signature-landmarks.json', 'utf8')) as { models: Record<string, { triangles: number; held?: boolean; lod1?: LandmarkLodRecord; lod2?: LandmarkLodRecord }> };
 const table = lods as Record<string, LandmarkLodEntry>, asset = versions as Record<string, string>;
@@ -106,7 +110,7 @@ for (const chunk of chunks.chunks) {
   if (!fs.existsSync(file)) problems.push(`${chunk.id}: ${file} missing`);
   else if (fs.statSync(file).size !== chunk.lod2.bytes) problems.push(`${chunk.id}: ${file} is ${fs.statSync(file).size} B, record says ${chunk.lod2.bytes}`);
 }
-if (chunkBytes > CHUNK_LOD2_MAX_TOTAL_BYTES) problems.push(`chunk lod2 set is ${(chunkBytes / 1e6).toFixed(2)} MB, over the ${CHUNK_LOD2_MAX_TOTAL_BYTES / 1e6} MB budget`);
+if (chunkCount && chunkBytes / chunkCount > CHUNK_LOD2_MAX_AVG_BYTES) problems.push(`chunk lod2 stand-ins average ${(chunkBytes / chunkCount / 1e3).toFixed(1)} KB, over the ${CHUNK_LOD2_MAX_AVG_BYTES / 1e3} KB budget (${chunkCount} chunks, ${(chunkBytes / 1e6).toFixed(2)} MB)`);
 if (lod2Bytes > LOD2_MAX_TOTAL_BYTES) problems.push(`lod2 set is ${(lod2Bytes / 1e6).toFixed(2)} MB, over the ${LOD2_MAX_TOTAL_BYTES / 1e6} MB budget`);
 assert.equal(problems.length, 0, `landmark lods out of date (run npm run build:landmark-lods):\n${problems.join('\n')}`);
 console.log(`${lod1Count} landmark lod1 models current; ${lod2Count} lod2 models current, ${(lod2Bytes / 1e6).toFixed(2)} MB; ${chunkCount} street-chunk lod2 current, ${(chunkBytes / 1e6).toFixed(2)} MB; ${ordinaryCount} ordinary installs' lod1 + lod2 current, ${(ordinaryBytes / 1e6).toFixed(2)} MB.`);

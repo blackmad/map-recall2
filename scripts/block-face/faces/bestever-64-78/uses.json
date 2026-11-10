@@ -1,0 +1,150 @@
+{
+ "street": "Bestevâerstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T01:26:53.502Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012064428",
+   "addresses": [
+    "Bestevâerstraat 78"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bloys van Treslongstraat 61",
+     "use": "winkelfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000589578"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012080563",
+   "addresses": [
+    "Bestevâerstraat 76"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bestevâerstraat 76-H",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010000582565"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012144446",
+   "addresses": [
+    "Bestevâerstraat 74"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bestevâerstraat 74-H",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000582557"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012145241",
+   "addresses": [
+    "Bestevâerstraat 72"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bestevâerstraat 72-H",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000582549"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012119151",
+   "addresses": [
+    "Bestevâerstraat 70"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bestevâerstraat 70-H",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000582540"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012075147",
+   "addresses": [
+    "Bestevâerstraat 68"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bestevâerstraat 68-H",
+     "use": "woonfunctie",
+     "areaM2": 106,
+     "bagId": "0363010000582532"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012080759",
+   "addresses": [
+    "Bestevâerstraat 64",
+    "Bestevâerstraat 66"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bestevâerstraat 64",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 96,
+     "bagId": "0363010000582520"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2808859804,
+     "lngLat": [
+      4.8596877,
+      52.3749884
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "64",
+      "addr:postcode": "1056HR",
+      "addr:street": "Bestevâerstraat",
+      "amenity": "fast_food",
+      "cuisine": "kebab",
+      "description": "Snackbar",
+      "name": "Fantastica",
+      "phone": "+31 20 7868813",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "takeaway": "yes",
+      "website": "https://snackbarfantastica.nl",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-11-10T01:26:53.502Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

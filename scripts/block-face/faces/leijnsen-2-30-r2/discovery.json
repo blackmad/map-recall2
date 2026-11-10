@@ -1,0 +1,1508 @@
+{
+ "street": "Jasper Leijnsenstraat",
+ "seed": "0363100012129908",
+ "members": [
+  "0363100012137482",
+  "0363100012117865"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "run of leijnsen-2-30: 132371 held (auto-place.json)"
+  },
+  {
+   "side": "right",
+   "reason": "run of leijnsen-2-30: 077897 held (auto-place.json)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012062141",
+   "reason": "frontage 58.4 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012062712",
+   "reason": "frontage 42.9 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012062858",
+   "reason": "frontage 54.0 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012063203",
+   "reason": "no frontage on Jasper Leijnsenstraat: No footprint edge faces Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012063321",
+   "reason": "frontage 48.0 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012064565",
+   "reason": "frontage 140.8 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012065393",
+   "reason": "frontage 56.7 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012065427",
+   "reason": "frontage 101.5 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012065855",
+   "reason": "frontage 55.3 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012066272",
+   "reason": "no frontage on Jasper Leijnsenstraat: No footprint edge faces Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012066487",
+   "reason": "frontage 65.7 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012067375",
+   "reason": "no frontage on Jasper Leijnsenstraat: No footprint edge faces Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012067779",
+   "reason": "frontage 122.7 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012068152",
+   "reason": "sightline to Jasper Leijnsenstraat crosses 0363100012142777"
+  },
+  {
+   "pandId": "0363100012068528",
+   "reason": "frontage 43.6 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012068576",
+   "reason": "frontage 103.0 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012070549",
+   "reason": "frontage 30.1 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012071058",
+   "reason": "no frontage on Jasper Leijnsenstraat: No footprint edge faces Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012071588",
+   "reason": "frontage 43.4 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012071754",
+   "reason": "no frontage on Jasper Leijnsenstraat: No footprint edge faces Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012071938",
+   "reason": "frontage 31.4 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012072687",
+   "reason": "frontage 37.6 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012072724",
+   "reason": "frontage 129.4 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012072845",
+   "reason": "no frontage on Jasper Leijnsenstraat: No footprint edge faces Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012073277",
+   "reason": "frontage 53.9 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012073793",
+   "reason": "frontage 56.1 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012074974",
+   "reason": "frontage 54.5 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012077211",
+   "reason": "frontage 63.2 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012079479",
+   "reason": "frontage 126.5 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012080535",
+   "reason": "frontage 87.8 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012083007",
+   "reason": "frontage 56.3 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012084608",
+   "reason": "no frontage on Jasper Leijnsenstraat: No footprint edge faces Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012061771",
+   "reason": "frontage 130.2 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012067932",
+   "reason": "frontage 128.1 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012069920",
+   "reason": "frontage 207.7 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012070497",
+   "reason": "frontage 163.0 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012071142",
+   "reason": "frontage 175.8 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012071966",
+   "reason": "frontage 155.1 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012076342",
+   "reason": "frontage 209.3 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012080635",
+   "reason": "frontage 194.9 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012083022",
+   "reason": "frontage 143.9 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012084532",
+   "reason": "frontage 191.5 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012084818",
+   "reason": "frontage 109.1 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012086172",
+   "reason": "no frontage on Jasper Leijnsenstraat: No footprint edge faces Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012087231",
+   "reason": "frontage 76.9 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012087932",
+   "reason": "frontage 65.9 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012089234",
+   "reason": "frontage 117.8 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012089525",
+   "reason": "frontage 35.1 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012089590",
+   "reason": "frontage 36.3 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012089597",
+   "reason": "no frontage on Jasper Leijnsenstraat: No footprint edge faces Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012089839",
+   "reason": "frontage 65.7 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012090526",
+   "reason": "sightline to Jasper Leijnsenstraat crosses 0363100012141674"
+  },
+  {
+   "pandId": "0363100012090839",
+   "reason": "frontage 127.4 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012092326",
+   "reason": "frontage 49.9 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012092940",
+   "reason": "frontage 112.1 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012093140",
+   "reason": "frontage 121.0 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012093157",
+   "reason": "frontage 32.7 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012093475",
+   "reason": "frontage 76.6 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012093651",
+   "reason": "frontage 115.9 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012093972",
+   "reason": "frontage 46.4 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012094828",
+   "reason": "frontage 31.4 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012095737",
+   "reason": "frontage 126.5 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012096543",
+   "reason": "no frontage on Jasper Leijnsenstraat: No footprint edge faces Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012096558",
+   "reason": "frontage 59.8 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012096832",
+   "reason": "frontage 54.8 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012098196",
+   "reason": "frontage 82.1 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012098683",
+   "reason": "no frontage on Jasper Leijnsenstraat: No footprint edge faces Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012099109",
+   "reason": "frontage 140.8 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012099110",
+   "reason": "frontage 69.0 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012099392",
+   "reason": "frontage 136.3 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012099817",
+   "reason": "frontage 66.0 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012100119",
+   "reason": "frontage 60.6 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012100357",
+   "reason": "frontage 49.6 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012100401",
+   "reason": "frontage 54.8 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012100523",
+   "reason": "no frontage on Jasper Leijnsenstraat: No footprint edge faces Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012100954",
+   "reason": "sightline to Jasper Leijnsenstraat crosses 0363100012098683"
+  },
+  {
+   "pandId": "0363100012103132",
+   "reason": "frontage 73.8 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012103630",
+   "reason": "frontage 65.7 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012103635",
+   "reason": "frontage 31.5 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012104480",
+   "reason": "no frontage on Jasper Leijnsenstraat: No footprint edge faces Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012104481",
+   "reason": "no frontage on Jasper Leijnsenstraat: No footprint edge faces Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012105923",
+   "reason": "frontage 105.7 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012088035",
+   "reason": "frontage 193.2 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012095658",
+   "reason": "frontage 143.9 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012101492",
+   "reason": "frontage 150.2 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012102574",
+   "reason": "frontage 165.9 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012103314",
+   "reason": "frontage 127.4 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012103458",
+   "reason": "frontage 150.2 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012105359",
+   "reason": "frontage 162.5 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012105956",
+   "reason": "frontage 52.3 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012106765",
+   "reason": "frontage 37.1 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012107114",
+   "reason": "no frontage on Jasper Leijnsenstraat: No footprint edge faces Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012108028",
+   "reason": "frontage 51.7 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012108855",
+   "reason": "frontage 134.4 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012109065",
+   "reason": "frontage 101.4 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012109667",
+   "reason": "no frontage on Jasper Leijnsenstraat: No footprint edge faces Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012109847",
+   "reason": "no frontage on Jasper Leijnsenstraat: No footprint edge faces Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012110115",
+   "reason": "frontage 106.4 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012110462",
+   "reason": "frontage 141.1 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012110829",
+   "reason": "frontage 48.5 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012110942",
+   "reason": "frontage 42.1 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012111802",
+   "reason": "frontage 38.8 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012111921",
+   "reason": "frontage 104.2 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012111954",
+   "reason": "frontage 157.8 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012112343",
+   "reason": "no frontage on Jasper Leijnsenstraat: No footprint edge faces Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012112405",
+   "reason": "sightline to Jasper Leijnsenstraat crosses 0363100012114256"
+  },
+  {
+   "pandId": "0363100012113093",
+   "reason": "frontage 101.4 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012113440",
+   "reason": "frontage 36.9 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012114190",
+   "reason": "frontage 109.7 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012114449",
+   "reason": "frontage 101.3 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012114752",
+   "reason": "frontage 101.8 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012115512",
+   "reason": "no frontage on Jasper Leijnsenstraat: No footprint edge faces Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012116463",
+   "reason": "frontage 114.8 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012117681",
+   "reason": "sightline to Jasper Leijnsenstraat crosses 0363100012100954"
+  },
+  {
+   "pandId": "0363100012118131",
+   "reason": "frontage 49.0 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012119334",
+   "reason": "frontage 65.8 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012119704",
+   "reason": "frontage 129.5 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012121115",
+   "reason": "frontage 71.1 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012121206",
+   "reason": "frontage 128.4 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012121629",
+   "reason": "frontage 102.2 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012122456",
+   "reason": "frontage 55.3 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012123697",
+   "reason": "frontage 141.0 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012124181",
+   "reason": "frontage 101.1 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012124235",
+   "reason": "frontage 54.4 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012124337",
+   "reason": "frontage 61.4 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012124495",
+   "reason": "no frontage on Jasper Leijnsenstraat: No footprint edge faces Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012124502",
+   "reason": "frontage 65.7 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012109779",
+   "reason": "frontage 167.8 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012110487",
+   "reason": "frontage 150.3 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012112059",
+   "reason": "frontage 127.3 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012114763",
+   "reason": "frontage 196.5 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012119748",
+   "reason": "frontage 127.7 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012126004",
+   "reason": "frontage 58.3 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012126346",
+   "reason": "frontage 101.3 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012126499",
+   "reason": "frontage 127.1 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012126811",
+   "reason": "frontage 119.2 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012127749",
+   "reason": "frontage 51.0 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012128075",
+   "reason": "frontage 126.8 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012131151",
+   "reason": "frontage 55.0 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012131416",
+   "reason": "frontage 70.5 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012132169",
+   "reason": "frontage 40.6 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012132461",
+   "reason": "frontage 101.5 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012132905",
+   "reason": "frontage 76.6 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012133359",
+   "reason": "frontage 57.1 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012133707",
+   "reason": "frontage 64.0 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012133746",
+   "reason": "no frontage on Jasper Leijnsenstraat: No footprint edge faces Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012135052",
+   "reason": "frontage 57.0 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012136762",
+   "reason": "frontage 56.4 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012137538",
+   "reason": "frontage 54.5 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012142006",
+   "reason": "frontage 65.8 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012142349",
+   "reason": "frontage 69.4 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012142535",
+   "reason": "frontage 142.0 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012142659",
+   "reason": "frontage 141.0 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012143344",
+   "reason": "frontage 135.1 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012143406",
+   "reason": "frontage 65.7 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012144291",
+   "reason": "no frontage on Jasper Leijnsenstraat: No footprint edge faces Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012144404",
+   "reason": "frontage 101.6 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012145712",
+   "reason": "sightline to Jasper Leijnsenstraat crosses 0363100012112405"
+  },
+  {
+   "pandId": "0363100012124713",
+   "reason": "frontage 163.0 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012125261",
+   "reason": "frontage 175.8 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012125512",
+   "reason": "frontage 174.9 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012126078",
+   "reason": "frontage 148.7 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012127952",
+   "reason": "frontage 170.9 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012131228",
+   "reason": "frontage 195.0 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012131573",
+   "reason": "frontage 220.6 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012133739",
+   "reason": "frontage 180.4 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012134001",
+   "reason": "frontage 153.2 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012140027",
+   "reason": "frontage 146.6 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012140098",
+   "reason": "frontage 145.3 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012140644",
+   "reason": "frontage 183.7 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012141001",
+   "reason": "frontage 204.3 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012141696",
+   "reason": "frontage 178.8 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012143360",
+   "reason": "frontage 206.0 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012145888",
+   "reason": "frontage 107.6 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012146039",
+   "reason": "frontage 101.6 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012146057",
+   "reason": "frontage 71.2 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012146058",
+   "reason": "frontage 132.1 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012147833",
+   "reason": "frontage 55.6 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012148081",
+   "reason": "frontage 60.0 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012148568",
+   "reason": "frontage 44.9 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012148775",
+   "reason": "frontage 123.3 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012149193",
+   "reason": "no frontage on Jasper Leijnsenstraat: No footprint edge faces Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012149837",
+   "reason": "frontage 61.4 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012151165",
+   "reason": "frontage 101.2 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012151258",
+   "reason": "frontage 53.7 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012151495",
+   "reason": "frontage 101.2 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012152159",
+   "reason": "frontage 34.9 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012153896",
+   "reason": "frontage 53.5 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012154479",
+   "reason": "frontage 55.8 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012154644",
+   "reason": "no frontage on Jasper Leijnsenstraat: No footprint edge faces Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012183198",
+   "reason": "frontage 33.2 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012183569",
+   "reason": "frontage 40.5 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012183701",
+   "reason": "frontage 50.8 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012183702",
+   "reason": "frontage 125.0 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012183939",
+   "reason": "frontage 127.1 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012184990",
+   "reason": "frontage 40.7 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012185080",
+   "reason": "frontage 129.5 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012186303",
+   "reason": "frontage 47.4 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012186467",
+   "reason": "no frontage on Jasper Leijnsenstraat: No footprint edge faces Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012186651",
+   "reason": "frontage 146.7 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012187380",
+   "reason": "frontage 44.9 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012188265",
+   "reason": "frontage 36.8 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012188883",
+   "reason": "sightline to Jasper Leijnsenstraat crosses 0363100012140401"
+  },
+  {
+   "pandId": "0363100012189695",
+   "reason": "frontage 46.1 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012189979",
+   "reason": "frontage 55.8 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012189980",
+   "reason": "frontage 56.9 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012189994",
+   "reason": "no frontage on Jasper Leijnsenstraat: No footprint edge faces Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012190176",
+   "reason": "frontage 127.1 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012190441",
+   "reason": "frontage 42.8 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012191473",
+   "reason": "frontage 55.7 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012192720",
+   "reason": "frontage 40.2 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012192724",
+   "reason": "frontage 101.1 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012192801",
+   "reason": "frontage 41.9 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012192817",
+   "reason": "frontage 39.4 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012192884",
+   "reason": "frontage 39.9 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012193333",
+   "reason": "sightline to Jasper Leijnsenstraat crosses 0363100012142777"
+  },
+  {
+   "pandId": "0363100012194101",
+   "reason": "frontage 42.1 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012195050",
+   "reason": "sightline to Jasper Leijnsenstraat crosses 0363100012103157"
+  },
+  {
+   "pandId": "0363100012146137",
+   "reason": "frontage 158.1 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012146143",
+   "reason": "frontage 210.7 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012147879",
+   "reason": "frontage 220.5 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012148995",
+   "reason": "frontage 207.8 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012195399",
+   "reason": "sightline to Jasper Leijnsenstraat crosses 0363100012121647"
+  },
+  {
+   "pandId": "0363100012195483",
+   "reason": "no frontage on Jasper Leijnsenstraat: No footprint edge faces Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012195964",
+   "reason": "sightline to Jasper Leijnsenstraat crosses 0363100012078570"
+  },
+  {
+   "pandId": "0363100012196103",
+   "reason": "frontage 55.6 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012196139",
+   "reason": "sightline to Jasper Leijnsenstraat crosses 0363100012103157"
+  },
+  {
+   "pandId": "0363100012196363",
+   "reason": "frontage 61.1 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012196393",
+   "reason": "frontage 39.1 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012196488",
+   "reason": "frontage 129.7 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012196677",
+   "reason": "no frontage on Jasper Leijnsenstraat: No footprint edge faces Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012197357",
+   "reason": "sightline to Jasper Leijnsenstraat crosses 0363100012066007"
+  },
+  {
+   "pandId": "0363100012198215",
+   "reason": "frontage 46.0 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012198537",
+   "reason": "sightline to Jasper Leijnsenstraat crosses 0363100012140401"
+  },
+  {
+   "pandId": "0363100012199178",
+   "reason": "no frontage on Jasper Leijnsenstraat: No footprint edge faces Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012200538",
+   "reason": "frontage 35.8 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012200689",
+   "reason": "sightline to Jasper Leijnsenstraat crosses 0363100012142777"
+  },
+  {
+   "pandId": "0363100012201179",
+   "reason": "frontage 122.5 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012201356",
+   "reason": "no frontage on Jasper Leijnsenstraat: No footprint edge faces Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012201628",
+   "reason": "no frontage on Jasper Leijnsenstraat: No footprint edge faces Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012203156",
+   "reason": "frontage 129.6 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012203165",
+   "reason": "frontage 55.7 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012203238",
+   "reason": "frontage 42.4 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012203414",
+   "reason": "frontage 123.9 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012203488",
+   "reason": "frontage 116.5 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012203716",
+   "reason": "sightline to Jasper Leijnsenstraat crosses 0363100012142777"
+  },
+  {
+   "pandId": "0363100012203892",
+   "reason": "frontage 81.6 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012204308",
+   "reason": "frontage 33.5 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012204309",
+   "reason": "frontage 119.5 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012204341",
+   "reason": "frontage 91.3 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012204836",
+   "reason": "sightline to Jasper Leijnsenstraat crosses 0363100012125953"
+  },
+  {
+   "pandId": "0363100012204952",
+   "reason": "frontage 145.0 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012204953",
+   "reason": "frontage 133.2 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012204954",
+   "reason": "frontage 134.5 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012204955",
+   "reason": "frontage 138.7 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012204956",
+   "reason": "frontage 140.2 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012204957",
+   "reason": "frontage 129.7 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012205041",
+   "reason": "frontage 41.1 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012205166",
+   "reason": "frontage 42.4 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012205648",
+   "reason": "frontage 40.4 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012205708",
+   "reason": "frontage 40.1 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012205735",
+   "reason": "sightline to Jasper Leijnsenstraat crosses 0363100012073086"
+  },
+  {
+   "pandId": "0363100012205763",
+   "reason": "no frontage on Jasper Leijnsenstraat: No footprint edge faces Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012206147",
+   "reason": "frontage 42.0 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012206546",
+   "reason": "no frontage on Jasper Leijnsenstraat: No footprint edge faces Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012207350",
+   "reason": "frontage 127.4 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012207755",
+   "reason": "sightline to Jasper Leijnsenstraat crosses 0363100012104220"
+  },
+  {
+   "pandId": "0363100012207906",
+   "reason": "frontage 48.9 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012208541",
+   "reason": "no frontage on Jasper Leijnsenstraat: No footprint edge faces Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012208561",
+   "reason": "no frontage on Jasper Leijnsenstraat: No footprint edge faces Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012202378",
+   "reason": "frontage 163.9 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012203142",
+   "reason": "frontage 197.7 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012209025",
+   "reason": "sightline to Jasper Leijnsenstraat crosses 0363100012125953"
+  },
+  {
+   "pandId": "0363100012209082",
+   "reason": "no frontage on Jasper Leijnsenstraat: No footprint edge faces Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012209115",
+   "reason": "no frontage on Jasper Leijnsenstraat: No footprint edge faces Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012209165",
+   "reason": "frontage 44.1 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012209202",
+   "reason": "frontage 41.8 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012210080",
+   "reason": "sightline to Jasper Leijnsenstraat crosses 0363100012066992"
+  },
+  {
+   "pandId": "0363100012210395",
+   "reason": "no frontage on Jasper Leijnsenstraat: No footprint edge faces Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012210506",
+   "reason": "no frontage on Jasper Leijnsenstraat: No footprint edge faces Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012210507",
+   "reason": "frontage 163.4 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012210521",
+   "reason": "frontage 69.7 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012210599",
+   "reason": "frontage 116.5 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012211769",
+   "reason": "frontage 59.1 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012211823",
+   "reason": "frontage 33.3 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012211915",
+   "reason": "frontage 55.6 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012212037",
+   "reason": "frontage 38.8 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012212042",
+   "reason": "frontage 60.6 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012212722",
+   "reason": "frontage 129.7 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012213665",
+   "reason": "frontage 54.9 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012213896",
+   "reason": "frontage 129.9 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012214006",
+   "reason": "sightline to Jasper Leijnsenstraat crosses 0363100012078570"
+  },
+  {
+   "pandId": "0363100012214007",
+   "reason": "sightline to Jasper Leijnsenstraat crosses 0363100012078570"
+  },
+  {
+   "pandId": "0363100012214707",
+   "reason": "no frontage on Jasper Leijnsenstraat: No footprint edge faces Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012214708",
+   "reason": "no frontage on Jasper Leijnsenstraat: No footprint edge faces Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012214804",
+   "reason": "no frontage on Jasper Leijnsenstraat: No footprint edge faces Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012215690",
+   "reason": "frontage 52.8 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012215944",
+   "reason": "sightline to Jasper Leijnsenstraat crosses 0363100012125953"
+  },
+  {
+   "pandId": "0363100012216387",
+   "reason": "frontage 39.5 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012217251",
+   "reason": "no frontage on Jasper Leijnsenstraat: No footprint edge faces Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012217586",
+   "reason": "frontage 131.0 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012218144",
+   "reason": "sightline to Jasper Leijnsenstraat crosses 0363100012125953"
+  },
+  {
+   "pandId": "0363100012218181",
+   "reason": "frontage 37.8 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012218771",
+   "reason": "frontage 42.7 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012218990",
+   "reason": "frontage 52.9 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012219084",
+   "reason": "frontage 39.8 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012219112",
+   "reason": "frontage 39.8 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012219258",
+   "reason": "frontage 59.3 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012220429",
+   "reason": "frontage 96.5 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012221100",
+   "reason": "frontage 127.0 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012221209",
+   "reason": "no frontage on Jasper Leijnsenstraat: No footprint edge faces Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012221494",
+   "reason": "frontage 33.2 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012221793",
+   "reason": "frontage 41.0 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012222566",
+   "reason": "frontage 147.1 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012222568",
+   "reason": "frontage 135.5 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012222569",
+   "reason": "frontage 136.7 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012222570",
+   "reason": "frontage 140.9 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012222571",
+   "reason": "frontage 142.3 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012210511",
+   "reason": "no frontage on Jasper Leijnsenstraat: No footprint edge faces Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012214198",
+   "reason": "frontage 167.9 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012214201",
+   "reason": "frontage 205.9 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012214202",
+   "reason": "frontage 203.0 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012222572",
+   "reason": "frontage 132.0 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012223196",
+   "reason": "frontage 43.0 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012226035",
+   "reason": "sightline to Jasper Leijnsenstraat crosses 0363100012140401"
+  },
+  {
+   "pandId": "0363100012226036",
+   "reason": "sightline to Jasper Leijnsenstraat crosses 0363100012140401"
+  },
+  {
+   "pandId": "0363100012226688",
+   "reason": "frontage 42.9 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012227870",
+   "reason": "frontage 128.6 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012227871",
+   "reason": "frontage 122.7 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012227939",
+   "reason": "frontage 123.2 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012227940",
+   "reason": "frontage 125.1 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012227941",
+   "reason": "frontage 125.9 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012227942",
+   "reason": "frontage 121.4 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012227943",
+   "reason": "frontage 121.6 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012228802",
+   "reason": "frontage 32.4 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012229058",
+   "reason": "frontage 52.1 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012229159",
+   "reason": "frontage 127.2 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012229262",
+   "reason": "no frontage on Jasper Leijnsenstraat: No footprint edge faces Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012229274",
+   "reason": "frontage 132.9 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012229823",
+   "reason": "sightline to Jasper Leijnsenstraat crosses 0363100012066992"
+  },
+  {
+   "pandId": "0363100012230265",
+   "reason": "frontage 41.4 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012230460",
+   "reason": "frontage 121.0 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012231254",
+   "reason": "frontage 128.3 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012232028",
+   "reason": "no frontage on Jasper Leijnsenstraat: No footprint edge faces Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012232544",
+   "reason": "frontage 127.0 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012232625",
+   "reason": "frontage 55.8 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012232829",
+   "reason": "frontage 55.6 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012233990",
+   "reason": "frontage 41.3 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012234108",
+   "reason": "frontage 38.8 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012234355",
+   "reason": "frontage 44.1 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012234815",
+   "reason": "frontage 61.7 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012234955",
+   "reason": "frontage 63.4 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012235049",
+   "reason": "no frontage on Jasper Leijnsenstraat: No footprint edge faces Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012235159",
+   "reason": "frontage 41.7 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012235654",
+   "reason": "frontage 119.5 m from Jasper Leijnsenstraat"
+  },
+  {
+   "pandId": "0363100012066007",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012066992",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012073086",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012078570",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012103157",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012104220",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012114256",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012121647",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012125953",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012140401",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012142777",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 180,
+ "pands": [
+  {
+   "pandId": "0363100012137482",
+   "alongM": -30.99,
+   "widthM": 6.16,
+   "eavesM": 13.7,
+   "roofMaxM": 17.6,
+   "storeys3dbag": 5,
+   "builtYear": 1934,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012117865",
+   "alongM": -24.81,
+   "widthM": 6.2,
+   "eavesM": 13.8,
+   "roofMaxM": 17.71,
+   "storeys3dbag": 5,
+   "builtYear": 1934,
+   "uncertainty": []
+  }
+ ],
+ "runOf": "leijnsen-2-30"
+}

@@ -8,7 +8,7 @@
   "bag": "PDOK BAG OGC API v2 verblijfsobject (CC0)",
   "threeDBag": "3DBAG api.3dbag.nl (CC BY 4.0)"
  },
- "surveyedAt": "2026-11-09",
+ "surveyedAt": "2026-11-10",
  "outlineRD": [
   [
    119401.51,
@@ -203,7 +203,7 @@
   },
   {
    "id": "bestever-64-78",
-   "street": "Bestevâerstraat",
+   "street": "Bestev\u00e2erstraat",
    "side": "even",
    "seed": "0363100012080759",
    "members": [
@@ -223,7 +223,7 @@
   },
   {
    "id": "bestever-80-96",
-   "street": "Bestevâerstraat",
+   "street": "Bestev\u00e2erstraat",
    "side": "even",
    "seed": "0363100012131030",
    "members": [
@@ -244,7 +244,7 @@
   },
   {
    "id": "bestever-98-128",
-   "street": "Bestevâerstraat",
+   "street": "Bestev\u00e2erstraat",
    "side": "even",
    "seed": "0363100012116325",
    "members": [
@@ -269,7 +269,7 @@
   },
   {
    "id": "bestever-134-202",
-   "street": "Bestevâerstraat",
+   "street": "Bestev\u00e2erstraat",
    "side": "even",
    "seed": "0363100012151749",
    "members": [
@@ -301,7 +301,7 @@
   },
   {
    "id": "bestever-63-139",
-   "street": "Bestevâerstraat",
+   "street": "Bestev\u00e2erstraat",
    "side": "odd",
    "seed": "0363100012064126",
    "members": [
@@ -340,7 +340,7 @@
   },
   {
    "id": "bestever-141-213",
-   "street": "Bestevâerstraat",
+   "street": "Bestev\u00e2erstraat",
    "side": "odd",
    "seed": "0363100012073127",
    "members": [
@@ -424,47 +424,6 @@
     62
    ],
    "lengthM": 96.6
-  },
-  {
-   "id": "treslong-5-59",
-   "street": "Bloys van Treslongstraat",
-   "side": "odd",
-   "seed": "0363100012151165",
-   "members": [
-    "0363100012151165",
-    "0363100012151495",
-    "0363100012126346",
-    "0363100012114449",
-    "0363100012109065",
-    "0363100012113093",
-    "0363100012132461",
-    "0363100012065427",
-    "0363100012146039",
-    "0363100012144404",
-    "0363100012114752",
-    "0363100012121629",
-    "0363100012068576",
-    "0363100012111921",
-    "0363100012105923",
-    "0363100012145888",
-    "0363100012114190",
-    "0363100012092940",
-    "0363100012116463",
-    "0363100012089234",
-    "0363100012093140",
-    "0363100012072845",
-    "0363100012100523",
-    "0363100012086172",
-    "0363100012115512",
-    "0363100012112343",
-    "0363100012141390",
-    "0363100012095569"
-   ],
-   "numbers": [
-    5,
-    59
-   ],
-   "lengthM": 173.8
   },
   {
    "id": "coppelstock-2-6",
@@ -1277,6 +1236,74 @@
     283
    ],
    "lengthM": 5
+  },
+  {
+   "id": "treslong-5-19-a",
+   "street": "Bloys van Treslongstraat",
+   "side": "odd",
+   "seed": "0363100012151165",
+   "members": [
+    "0363100012151165",
+    "0363100012151495",
+    "0363100012126346",
+    "0363100012114449"
+   ],
+   "numbers": [
+    5,
+    19
+   ],
+   "lengthM": 173.8
+  },
+  {
+   "id": "treslong-5-19-b",
+   "street": "Bloys van Treslongstraat",
+   "side": "odd",
+   "seed": "0363100012109065",
+   "members": [
+    "0363100012109065",
+    "0363100012113093",
+    "0363100012132461",
+    "0363100012065427"
+   ],
+   "numbers": [
+    5,
+    19
+   ],
+   "lengthM": 173.8
+  },
+  {
+   "id": "treslong-21-35-a",
+   "street": "Bloys van Treslongstraat",
+   "side": "odd",
+   "seed": "0363100012146039",
+   "members": [
+    "0363100012146039",
+    "0363100012144404",
+    "0363100012114752",
+    "0363100012121629"
+   ],
+   "numbers": [
+    21,
+    35
+   ],
+   "lengthM": 173.8
+  },
+  {
+   "id": "treslong-21-35-b",
+   "street": "Bloys van Treslongstraat",
+   "side": "odd",
+   "seed": "0363100012068576",
+   "members": [
+    "0363100012068576",
+    "0363100012111921",
+    "0363100012105923",
+    "0363100012145888"
+   ],
+   "numbers": [
+    21,
+    35
+   ],
+   "lengthM": 173.8
   }
  ],
  "pands": [
@@ -1314,7 +1341,8 @@
    "frontMidRD": [
     119010.62,
     487571.67
-   ]
+   ],
+   "face": "ruijterweg-164-216"
   },
   {
    "pandId": "0363100012158609",
@@ -1341,7 +1369,8 @@
    "frontMidRD": [
     119008.35,
     487583.9
-   ]
+   ],
+   "face": "ruijterweg-164-216"
   },
   {
    "pandId": "0363100012159086",
@@ -1368,7 +1397,8 @@
    "frontMidRD": [
     119006.82,
     487592.11
-   ]
+   ],
+   "face": "ruijterweg-164-216"
   },
   {
    "pandId": "0363100012155447",
@@ -1395,7 +1425,8 @@
    "frontMidRD": [
     119005.32,
     487600.35
-   ]
+   ],
+   "face": "ruijterweg-164-216"
   },
   {
    "pandId": "0363100012164393",
@@ -1422,7 +1453,8 @@
    "frontMidRD": [
     119003.81,
     487608.58
-   ]
+   ],
+   "face": "ruijterweg-164-216"
   },
   {
    "pandId": "0363100012156192",
@@ -1449,7 +1481,8 @@
    "frontMidRD": [
     119002.31,
     487616.81
-   ]
+   ],
+   "face": "ruijterweg-164-216"
   },
   {
    "pandId": "0363100012160506",
@@ -1476,7 +1509,8 @@
    "frontMidRD": [
     119000.88,
     487625.06
-   ]
+   ],
+   "face": "ruijterweg-164-216"
   },
   {
    "pandId": "0363100012139316",
@@ -1503,7 +1537,8 @@
    "frontMidRD": [
     118999.15,
     487634.08
-   ]
+   ],
+   "face": "ruijterweg-164-216"
   },
   {
    "pandId": "0363100012107278",
@@ -1530,7 +1565,8 @@
    "frontMidRD": [
     118997.35,
     487643.89
-   ]
+   ],
+   "face": "ruijterweg-164-216"
   },
   {
    "pandId": "0363100012095308",
@@ -1557,7 +1593,8 @@
    "frontMidRD": [
     118995.58,
     487653.71
-   ]
+   ],
+   "face": "ruijterweg-164-216"
   },
   {
    "pandId": "0363100012118806",
@@ -1584,7 +1621,8 @@
    "frontMidRD": [
     118993.82,
     487663.52
-   ]
+   ],
+   "face": "ruijterweg-164-216"
   },
   {
    "pandId": "0363100012148864",
@@ -2073,7 +2111,8 @@
    "frontMidRD": [
     118952.96,
     487886.14
-   ]
+   ],
+   "face": "ruijterweg-230-268"
   },
   {
    "pandId": "0363100012124138",
@@ -2100,7 +2139,8 @@
    "frontMidRD": [
     118950.89,
     487895.78
-   ]
+   ],
+   "face": "ruijterweg-230-268"
   },
   {
    "pandId": "0363100012136590",
@@ -2127,7 +2167,8 @@
    "frontMidRD": [
     118948.65,
     487905.4
-   ]
+   ],
+   "face": "ruijterweg-230-268"
   },
   {
    "pandId": "0363100012072332",
@@ -2154,7 +2195,8 @@
    "frontMidRD": [
     118946.27,
     487914.97
-   ]
+   ],
+   "face": "ruijterweg-230-268"
   },
   {
    "pandId": "0363100012118854",
@@ -2181,7 +2223,8 @@
    "frontMidRD": [
     118943.73,
     487924.5
-   ]
+   ],
+   "face": "ruijterweg-230-268"
   },
   {
    "pandId": "0363100012122387",
@@ -2208,7 +2251,8 @@
    "frontMidRD": [
     118941.1,
     487933.77
-   ]
+   ],
+   "face": "ruijterweg-230-268"
   },
   {
    "pandId": "0363100012104827",
@@ -2235,7 +2279,8 @@
    "frontMidRD": [
     118938.46,
     487942.79
-   ]
+   ],
+   "face": "ruijterweg-230-268"
   },
   {
    "pandId": "0363100012146167",
@@ -2262,7 +2307,8 @@
    "frontMidRD": [
     118935.55,
     487951.73
-   ]
+   ],
+   "face": "ruijterweg-230-268"
   },
   {
    "pandId": "0363100012140983",
@@ -2290,7 +2336,8 @@
    "frontMidRD": [
     118932.64,
     487960.65
-   ]
+   ],
+   "face": "ruijterweg-230-268"
   },
   {
    "pandId": "0363100012079424",
@@ -2318,7 +2365,8 @@
    "frontMidRD": [
     118929.15,
     487971.02
-   ]
+   ],
+   "face": "ruijterweg-230-268"
   },
   {
    "pandId": "0363100012064224",
@@ -2346,7 +2394,8 @@
    "frontMidRD": [
     118925.62,
     487979.72
-   ]
+   ],
+   "face": "ruijterweg-230-268"
   },
   {
    "pandId": "0363100012106979",
@@ -2598,7 +2647,7 @@
   },
   {
    "pandId": "0363100012064126",
-   "street": "Bestevâerstraat",
+   "street": "Bestev\u00e2erstraat",
    "numbers": [
     63,
     65
@@ -2622,11 +2671,12 @@
    "frontMidRD": [
     119060.93,
     487588.67
-   ]
+   ],
+   "face": "bestever-63-139"
   },
   {
    "pandId": "0363100012080759",
-   "street": "Bestevâerstraat",
+   "street": "Bestev\u00e2erstraat",
    "numbers": [
     64,
     66
@@ -2651,11 +2701,12 @@
    "frontMidRD": [
     119075.73,
     487590.69
-   ]
+   ],
+   "face": "bestever-64-78"
   },
   {
    "pandId": "0363100012109120",
-   "street": "Bestevâerstraat",
+   "street": "Bestev\u00e2erstraat",
    "numbers": [
     67
    ],
@@ -2678,11 +2729,12 @@
    "frontMidRD": [
     119059.57,
     487596.05
-   ]
+   ],
+   "face": "bestever-63-139"
   },
   {
    "pandId": "0363100012075147",
-   "street": "Bestevâerstraat",
+   "street": "Bestev\u00e2erstraat",
    "numbers": [
     68
    ],
@@ -2705,11 +2757,12 @@
    "frontMidRD": [
     119074.2,
     487599.04
-   ]
+   ],
+   "face": "bestever-64-78"
   },
   {
    "pandId": "0363100012097447",
-   "street": "Bestevâerstraat",
+   "street": "Bestev\u00e2erstraat",
    "numbers": [
     69
    ],
@@ -2732,11 +2785,12 @@
    "frontMidRD": [
     119058.4,
     487602.32
-   ]
+   ],
+   "face": "bestever-63-139"
   },
   {
    "pandId": "0363100012119151",
-   "street": "Bestevâerstraat",
+   "street": "Bestev\u00e2erstraat",
    "numbers": [
     70
    ],
@@ -2759,11 +2813,12 @@
    "frontMidRD": [
     119073.1,
     487605.09
-   ]
+   ],
+   "face": "bestever-64-78"
   },
   {
    "pandId": "0363100012109160",
-   "street": "Bestevâerstraat",
+   "street": "Bestev\u00e2erstraat",
    "numbers": [
     71,
     73
@@ -2787,11 +2842,12 @@
    "frontMidRD": [
     119056.73,
     487611.42
-   ]
+   ],
+   "face": "bestever-63-139"
   },
   {
    "pandId": "0363100012145241",
-   "street": "Bestevâerstraat",
+   "street": "Bestev\u00e2erstraat",
    "numbers": [
     72
    ],
@@ -2814,11 +2870,12 @@
    "frontMidRD": [
     119072.05,
     487611.15
-   ]
+   ],
+   "face": "bestever-64-78"
   },
   {
    "pandId": "0363100012144446",
-   "street": "Bestevâerstraat",
+   "street": "Bestev\u00e2erstraat",
    "numbers": [
     74
    ],
@@ -2841,11 +2898,12 @@
    "frontMidRD": [
     119070.88,
     487617.19
-   ]
+   ],
+   "face": "bestever-64-78"
   },
   {
    "pandId": "0363100012122641",
-   "street": "Bestevâerstraat",
+   "street": "Bestev\u00e2erstraat",
    "numbers": [
     75,
     77
@@ -2869,11 +2927,12 @@
    "frontMidRD": [
     119054.49,
     487623.65
-   ]
+   ],
+   "face": "bestever-63-139"
   },
   {
    "pandId": "0363100012080563",
-   "street": "Bestevâerstraat",
+   "street": "Bestev\u00e2erstraat",
    "numbers": [
     76
    ],
@@ -2896,11 +2955,12 @@
    "frontMidRD": [
     119069.77,
     487623.24
-   ]
+   ],
+   "face": "bestever-64-78"
   },
   {
    "pandId": "0363100012064428",
-   "street": "Bestevâerstraat",
+   "street": "Bestev\u00e2erstraat",
    "numbers": [
     78
    ],
@@ -2928,11 +2988,12 @@
    "frontMidRD": [
     119068.58,
     487629.71
-   ]
+   ],
+   "face": "bestever-64-78"
   },
   {
    "pandId": "0363100012126999",
-   "street": "Bestevâerstraat",
+   "street": "Bestev\u00e2erstraat",
    "numbers": [
     79
    ],
@@ -2955,11 +3016,12 @@
    "frontMidRD": [
     119052.7,
     487633.4
-   ]
+   ],
+   "face": "bestever-63-139"
   },
   {
    "pandId": "0363100012131030",
-   "street": "Bestevâerstraat",
+   "street": "Bestev\u00e2erstraat",
    "numbers": [
     80
    ],
@@ -2986,11 +3048,12 @@
    "frontMidRD": [
     119064.1,
     487654.52
-   ]
+   ],
+   "face": "bestever-80-96"
   },
   {
    "pandId": "0363100012099825",
-   "street": "Bestevâerstraat",
+   "street": "Bestev\u00e2erstraat",
    "numbers": [
     81,
     83
@@ -3014,11 +3077,12 @@
    "frontMidRD": [
     119051.14,
     487641.54
-   ]
+   ],
+   "face": "bestever-63-139"
   },
   {
    "pandId": "0363100012072237",
-   "street": "Bestevâerstraat",
+   "street": "Bestev\u00e2erstraat",
    "numbers": [
     82,
     84
@@ -3042,11 +3106,12 @@
    "frontMidRD": [
     119062.35,
     487664.01
-   ]
+   ],
+   "face": "bestever-80-96"
   },
   {
    "pandId": "0363100012112971",
-   "street": "Bestevâerstraat",
+   "street": "Bestev\u00e2erstraat",
    "numbers": [
     85
    ],
@@ -3069,11 +3134,12 @@
    "frontMidRD": [
     119045.46,
     487650.88
-   ]
+   ],
+   "face": "bestever-63-139"
   },
   {
    "pandId": "0363100012099598",
-   "street": "Bestevâerstraat",
+   "street": "Bestev\u00e2erstraat",
    "numbers": [
     86
    ],
@@ -3096,11 +3162,12 @@
    "frontMidRD": [
     119060.75,
     487672.71
-   ]
+   ],
+   "face": "bestever-80-96"
   },
   {
    "pandId": "0363100012097070",
-   "street": "Bestevâerstraat",
+   "street": "Bestev\u00e2erstraat",
    "numbers": [
     87,
     89
@@ -3124,11 +3191,12 @@
    "frontMidRD": [
     119043.65,
     487660.2
-   ]
+   ],
+   "face": "bestever-63-139"
   },
   {
    "pandId": "0363100012126627",
-   "street": "Bestevâerstraat",
+   "street": "Bestev\u00e2erstraat",
    "numbers": [
     88
    ],
@@ -3151,11 +3219,12 @@
    "frontMidRD": [
     119059.63,
     487678.81
-   ]
+   ],
+   "face": "bestever-80-96"
   },
   {
    "pandId": "0363100012084867",
-   "street": "Bestevâerstraat",
+   "street": "Bestev\u00e2erstraat",
    "numbers": [
     90
    ],
@@ -3178,11 +3247,12 @@
    "frontMidRD": [
     119058.51,
     487684.91
-   ]
+   ],
+   "face": "bestever-80-96"
   },
   {
    "pandId": "0363100012074159",
-   "street": "Bestevâerstraat",
+   "street": "Bestev\u00e2erstraat",
    "numbers": [
     91,
     93
@@ -3206,11 +3276,12 @@
    "frontMidRD": [
     119041.49,
     487672.54
-   ]
+   ],
+   "face": "bestever-63-139"
   },
   {
    "pandId": "0363100012150285",
-   "street": "Bestevâerstraat",
+   "street": "Bestev\u00e2erstraat",
    "numbers": [
     92
    ],
@@ -3233,11 +3304,12 @@
    "frontMidRD": [
     119057.39,
     487690.98
-   ]
+   ],
+   "face": "bestever-80-96"
   },
   {
    "pandId": "0363100012065696",
-   "street": "Bestevâerstraat",
+   "street": "Bestev\u00e2erstraat",
    "numbers": [
     94
    ],
@@ -3260,11 +3332,12 @@
    "frontMidRD": [
     119056.35,
     487696.66
-   ]
+   ],
+   "face": "bestever-80-96"
   },
   {
    "pandId": "0363100012133883",
-   "street": "Bestevâerstraat",
+   "street": "Bestev\u00e2erstraat",
    "numbers": [
     95
    ],
@@ -3287,11 +3360,12 @@
    "frontMidRD": [
     119039.81,
     487681.73
-   ]
+   ],
+   "face": "bestever-63-139"
   },
   {
    "pandId": "0363100012114797",
-   "street": "Bestevâerstraat",
+   "street": "Bestev\u00e2erstraat",
    "numbers": [
     96
    ],
@@ -3314,11 +3388,12 @@
    "frontMidRD": [
     119055.17,
     487703.1
-   ]
+   ],
+   "face": "bestever-80-96"
   },
   {
    "pandId": "0363100012117945",
-   "street": "Bestevâerstraat",
+   "street": "Bestev\u00e2erstraat",
    "numbers": [
     97,
     99
@@ -3346,7 +3421,7 @@
   },
   {
    "pandId": "0363100012116325",
-   "street": "Bestevâerstraat",
+   "street": "Bestev\u00e2erstraat",
    "numbers": [
     98,
     100
@@ -3370,11 +3445,12 @@
    "frontMidRD": [
     119050.05,
     487730.92
-   ]
+   ],
+   "face": "bestever-98-128"
   },
   {
    "pandId": "0363100012065098",
-   "street": "Bestevâerstraat",
+   "street": "Bestev\u00e2erstraat",
    "numbers": [
     101
    ],
@@ -3401,7 +3477,7 @@
   },
   {
    "pandId": "0363100012087761",
-   "street": "Bestevâerstraat",
+   "street": "Bestev\u00e2erstraat",
    "numbers": [
     102
    ],
@@ -3424,11 +3500,12 @@
    "frontMidRD": [
     119048.29,
     487740.58
-   ]
+   ],
+   "face": "bestever-98-128"
   },
   {
    "pandId": "0363100012070415",
-   "street": "Bestevâerstraat",
+   "street": "Bestev\u00e2erstraat",
    "numbers": [
     103
    ],
@@ -3455,7 +3532,7 @@
   },
   {
    "pandId": "0363100012092821",
-   "street": "Bestevâerstraat",
+   "street": "Bestev\u00e2erstraat",
    "numbers": [
     104
    ],
@@ -3478,11 +3555,12 @@
    "frontMidRD": [
     119047.29,
     487746.8
-   ]
+   ],
+   "face": "bestever-98-128"
   },
   {
    "pandId": "0363100012088204",
-   "street": "Bestevâerstraat",
+   "street": "Bestev\u00e2erstraat",
    "numbers": [
     105
    ],
@@ -3509,7 +3587,7 @@
   },
   {
    "pandId": "0363100012125415",
-   "street": "Bestevâerstraat",
+   "street": "Bestev\u00e2erstraat",
    "numbers": [
     106,
     108
@@ -3533,11 +3611,12 @@
    "frontMidRD": [
     119045.47,
     487756.08
-   ]
+   ],
+   "face": "bestever-98-128"
   },
   {
    "pandId": "0363100012086484",
-   "street": "Bestevâerstraat",
+   "street": "Bestev\u00e2erstraat",
    "numbers": [
     107
    ],
@@ -3564,7 +3643,7 @@
   },
   {
    "pandId": "0363100012084116",
-   "street": "Bestevâerstraat",
+   "street": "Bestev\u00e2erstraat",
    "numbers": [
     109
    ],
@@ -3591,7 +3670,7 @@
   },
   {
    "pandId": "0363100012138498",
-   "street": "Bestevâerstraat",
+   "street": "Bestev\u00e2erstraat",
    "numbers": [
     110,
     112
@@ -3615,11 +3694,12 @@
    "frontMidRD": [
     119043.22,
     487768.47
-   ]
+   ],
+   "face": "bestever-98-128"
   },
   {
    "pandId": "0363100012143956",
-   "street": "Bestevâerstraat",
+   "street": "Bestev\u00e2erstraat",
    "numbers": [
     111
    ],
@@ -3646,7 +3726,7 @@
   },
   {
    "pandId": "0363100012074072",
-   "street": "Bestevâerstraat",
+   "street": "Bestev\u00e2erstraat",
    "numbers": [
     113
    ],
@@ -3673,7 +3753,7 @@
   },
   {
    "pandId": "0363100012115201",
-   "street": "Bestevâerstraat",
+   "street": "Bestev\u00e2erstraat",
    "numbers": [
     114,
     116
@@ -3697,11 +3777,12 @@
    "frontMidRD": [
     119040.97,
     487780.83
-   ]
+   ],
+   "face": "bestever-98-128"
   },
   {
    "pandId": "0363100012064826",
-   "street": "Bestevâerstraat",
+   "street": "Bestev\u00e2erstraat",
    "numbers": [
     115
    ],
@@ -3728,7 +3809,7 @@
   },
   {
    "pandId": "0363100012074999",
-   "street": "Bestevâerstraat",
+   "street": "Bestev\u00e2erstraat",
    "numbers": [
     117,
     119
@@ -3756,7 +3837,7 @@
   },
   {
    "pandId": "0363100012098396",
-   "street": "Bestevâerstraat",
+   "street": "Bestev\u00e2erstraat",
    "numbers": [
     118
    ],
@@ -3779,11 +3860,12 @@
    "frontMidRD": [
     119039.28,
     487790.13
-   ]
+   ],
+   "face": "bestever-98-128"
   },
   {
    "pandId": "0363100012096616",
-   "street": "Bestevâerstraat",
+   "street": "Bestev\u00e2erstraat",
    "numbers": [
     120
    ],
@@ -3806,11 +3888,12 @@
    "frontMidRD": [
     119038.59,
     487796.31
-   ]
+   ],
+   "face": "bestever-98-128"
   },
   {
    "pandId": "0363100012075319",
-   "street": "Bestevâerstraat",
+   "street": "Bestev\u00e2erstraat",
    "numbers": [
     121,
     123
@@ -3838,7 +3921,7 @@
   },
   {
    "pandId": "0363100012146228",
-   "street": "Bestevâerstraat",
+   "street": "Bestev\u00e2erstraat",
    "numbers": [
     122
    ],
@@ -3861,11 +3944,12 @@
    "frontMidRD": [
     119037.09,
     487802.19
-   ]
+   ],
+   "face": "bestever-98-128"
   },
   {
    "pandId": "0363100012145269",
-   "street": "Bestevâerstraat",
+   "street": "Bestev\u00e2erstraat",
    "numbers": [
     124
    ],
@@ -3888,11 +3972,12 @@
    "frontMidRD": [
     119036,
     487808.2
-   ]
+   ],
+   "face": "bestever-98-128"
   },
   {
    "pandId": "0363100012142838",
-   "street": "Bestevâerstraat",
+   "street": "Bestev\u00e2erstraat",
    "numbers": [
     125,
     127
@@ -3920,7 +4005,7 @@
   },
   {
    "pandId": "0363100012134150",
-   "street": "Bestevâerstraat",
+   "street": "Bestev\u00e2erstraat",
    "numbers": [
     126
    ],
@@ -3943,11 +4028,12 @@
    "frontMidRD": [
     119034.91,
     487814.2
-   ]
+   ],
+   "face": "bestever-98-128"
   },
   {
    "pandId": "0363100012124515",
-   "street": "Bestevâerstraat",
+   "street": "Bestev\u00e2erstraat",
    "numbers": [
     128
    ],
@@ -3975,11 +4061,12 @@
    "frontMidRD": [
     119033.52,
     487821.84
-   ]
+   ],
+   "face": "bestever-98-128"
   },
   {
    "pandId": "0363100012129007",
-   "street": "Bestevâerstraat",
+   "street": "Bestev\u00e2erstraat",
    "numbers": [
     129,
     131
@@ -4007,7 +4094,7 @@
   },
   {
    "pandId": "0363100012118809",
-   "street": "Bestevâerstraat",
+   "street": "Bestev\u00e2erstraat",
    "numbers": [
     133,
     135
@@ -4035,7 +4122,7 @@
   },
   {
    "pandId": "0363100012151749",
-   "street": "Bestevâerstraat",
+   "street": "Bestev\u00e2erstraat",
    "numbers": [
     134
    ],
@@ -4063,11 +4150,12 @@
    "frontMidRD": [
     119026.36,
     487860.94
-   ]
+   ],
+   "face": "bestever-134-202"
   },
   {
    "pandId": "0363100012090379",
-   "street": "Bestevâerstraat",
+   "street": "Bestev\u00e2erstraat",
    "numbers": [
     136,
     138
@@ -4091,11 +4179,12 @@
    "frontMidRD": [
     119024.74,
     487870.17
-   ]
+   ],
+   "face": "bestever-134-202"
   },
   {
    "pandId": "0363100012138866",
-   "street": "Bestevâerstraat",
+   "street": "Bestev\u00e2erstraat",
    "numbers": [
     137,
     139
@@ -4128,7 +4217,7 @@
   },
   {
    "pandId": "0363100012122498",
-   "street": "Bestevâerstraat",
+   "street": "Bestev\u00e2erstraat",
    "numbers": [
     140,
     142
@@ -4152,11 +4241,12 @@
    "frontMidRD": [
     119022.82,
     487880.63
-   ]
+   ],
+   "face": "bestever-134-202"
   },
   {
    "pandId": "0363100012073127",
-   "street": "Bestevâerstraat",
+   "street": "Bestev\u00e2erstraat",
    "numbers": [
     141
    ],
@@ -4188,7 +4278,7 @@
   },
   {
    "pandId": "0363100012091666",
-   "street": "Bestevâerstraat",
+   "street": "Bestev\u00e2erstraat",
    "numbers": [
     143
    ],
@@ -4215,7 +4305,7 @@
   },
   {
    "pandId": "0363100012094201",
-   "street": "Bestevâerstraat",
+   "street": "Bestev\u00e2erstraat",
    "numbers": [
     144,
     146
@@ -4239,11 +4329,12 @@
    "frontMidRD": [
     119020.69,
     487891.48
-   ]
+   ],
+   "face": "bestever-134-202"
   },
   {
    "pandId": "0363100012129595",
-   "street": "Bestevâerstraat",
+   "street": "Bestev\u00e2erstraat",
    "numbers": [
     145
    ],
@@ -4270,7 +4361,7 @@
   },
   {
    "pandId": "0363100012105791",
-   "street": "Bestevâerstraat",
+   "street": "Bestev\u00e2erstraat",
    "numbers": [
     147,
     149
@@ -4298,7 +4389,7 @@
   },
   {
    "pandId": "0363100012100977",
-   "street": "Bestevâerstraat",
+   "street": "Bestev\u00e2erstraat",
    "numbers": [
     148,
     150
@@ -4322,11 +4413,12 @@
    "frontMidRD": [
     119018.22,
     487903.3
-   ]
+   ],
+   "face": "bestever-134-202"
   },
   {
    "pandId": "0363100012117468",
-   "street": "Bestevâerstraat",
+   "street": "Bestev\u00e2erstraat",
    "numbers": [
     151,
     153
@@ -4354,7 +4446,7 @@
   },
   {
    "pandId": "0363100012096454",
-   "street": "Bestevâerstraat",
+   "street": "Bestev\u00e2erstraat",
    "numbers": [
     152
    ],
@@ -4377,11 +4469,12 @@
    "frontMidRD": [
     119016.37,
     487911.8
-   ]
+   ],
+   "face": "bestever-134-202"
   },
   {
    "pandId": "0363100012115653",
-   "street": "Bestevâerstraat",
+   "street": "Bestev\u00e2erstraat",
    "numbers": [
     154,
     156
@@ -4406,11 +4499,12 @@
    "frontMidRD": [
     119014.97,
     487918.35
-   ]
+   ],
+   "face": "bestever-134-202"
   },
   {
    "pandId": "0363100012104319",
-   "street": "Bestevâerstraat",
+   "street": "Bestev\u00e2erstraat",
    "numbers": [
     155,
     157
@@ -4438,7 +4532,7 @@
   },
   {
    "pandId": "0363100012076341",
-   "street": "Bestevâerstraat",
+   "street": "Bestev\u00e2erstraat",
    "numbers": [
     158
    ],
@@ -4461,11 +4555,12 @@
    "frontMidRD": [
     119015.01,
     487930.47
-   ]
+   ],
+   "face": "bestever-134-202"
   },
   {
    "pandId": "0363100012142154",
-   "street": "Bestevâerstraat",
+   "street": "Bestev\u00e2erstraat",
    "numbers": [
     159,
     161
@@ -4493,7 +4588,7 @@
   },
   {
    "pandId": "0363100012138101",
-   "street": "Bestevâerstraat",
+   "street": "Bestev\u00e2erstraat",
    "numbers": [
     160,
     162
@@ -4517,11 +4612,12 @@
    "frontMidRD": [
     119012.83,
     487939
-   ]
+   ],
+   "face": "bestever-134-202"
   },
   {
    "pandId": "0363100012074071",
-   "street": "Bestevâerstraat",
+   "street": "Bestev\u00e2erstraat",
    "numbers": [
     163
    ],
@@ -4548,7 +4644,7 @@
   },
   {
    "pandId": "0363100012147479",
-   "street": "Bestevâerstraat",
+   "street": "Bestev\u00e2erstraat",
    "numbers": [
     164,
     166
@@ -4572,11 +4668,12 @@
    "frontMidRD": [
     119009.53,
     487951.41
-   ]
+   ],
+   "face": "bestever-134-202"
   },
   {
    "pandId": "0363100012093008",
-   "street": "Bestevâerstraat",
+   "street": "Bestev\u00e2erstraat",
    "numbers": [
     165
    ],
@@ -4603,7 +4700,7 @@
   },
   {
    "pandId": "0363100012143073",
-   "street": "Bestevâerstraat",
+   "street": "Bestev\u00e2erstraat",
    "numbers": [
     167
    ],
@@ -4630,7 +4727,7 @@
   },
   {
    "pandId": "0363100012063083",
-   "street": "Bestevâerstraat",
+   "street": "Bestev\u00e2erstraat",
    "numbers": [
     168,
     170
@@ -4658,7 +4755,7 @@
   },
   {
    "pandId": "0363100012061720",
-   "street": "Bestevâerstraat",
+   "street": "Bestev\u00e2erstraat",
    "numbers": [
     169
    ],
@@ -4685,7 +4782,7 @@
   },
   {
    "pandId": "0363100012095246",
-   "street": "Bestevâerstraat",
+   "street": "Bestev\u00e2erstraat",
    "numbers": [
     171
    ],
@@ -4712,7 +4809,7 @@
   },
   {
    "pandId": "0363100012083790",
-   "street": "Bestevâerstraat",
+   "street": "Bestev\u00e2erstraat",
    "numbers": [
     172,
     174
@@ -4740,7 +4837,7 @@
   },
   {
    "pandId": "0363100012119132",
-   "street": "Bestevâerstraat",
+   "street": "Bestev\u00e2erstraat",
    "numbers": [
     173,
     175
@@ -4768,7 +4865,7 @@
   },
   {
    "pandId": "0363100012151012",
-   "street": "Bestevâerstraat",
+   "street": "Bestev\u00e2erstraat",
    "numbers": [
     176,
     178
@@ -4796,7 +4893,7 @@
   },
   {
    "pandId": "0363100012076413",
-   "street": "Bestevâerstraat",
+   "street": "Bestev\u00e2erstraat",
    "numbers": [
     177
    ],
@@ -4823,7 +4920,7 @@
   },
   {
    "pandId": "0363100012100100",
-   "street": "Bestevâerstraat",
+   "street": "Bestev\u00e2erstraat",
    "numbers": [
     179,
     181
@@ -4851,7 +4948,7 @@
   },
   {
    "pandId": "0363100012130394",
-   "street": "Bestevâerstraat",
+   "street": "Bestev\u00e2erstraat",
    "numbers": [
     180,
     182
@@ -4880,7 +4977,7 @@
   },
   {
    "pandId": "0363100012080374",
-   "street": "Bestevâerstraat",
+   "street": "Bestev\u00e2erstraat",
    "numbers": [
     183,
     185
@@ -4908,7 +5005,7 @@
   },
   {
    "pandId": "0363100012074374",
-   "street": "Bestevâerstraat",
+   "street": "Bestev\u00e2erstraat",
    "numbers": [
     184
    ],
@@ -4935,7 +5032,7 @@
   },
   {
    "pandId": "0363100012110979",
-   "street": "Bestevâerstraat",
+   "street": "Bestev\u00e2erstraat",
    "numbers": [
     186,
     188
@@ -4963,7 +5060,7 @@
   },
   {
    "pandId": "0363100012105865",
-   "street": "Bestevâerstraat",
+   "street": "Bestev\u00e2erstraat",
    "numbers": [
     187,
     189
@@ -4991,7 +5088,7 @@
   },
   {
    "pandId": "0363100012111926",
-   "street": "Bestevâerstraat",
+   "street": "Bestev\u00e2erstraat",
    "numbers": [
     190,
     192
@@ -5019,7 +5116,7 @@
   },
   {
    "pandId": "0363100012130051",
-   "street": "Bestevâerstraat",
+   "street": "Bestev\u00e2erstraat",
    "numbers": [
     191
    ],
@@ -5046,7 +5143,7 @@
   },
   {
    "pandId": "0363100012088781",
-   "street": "Bestevâerstraat",
+   "street": "Bestev\u00e2erstraat",
    "numbers": [
     193,
     195
@@ -5074,7 +5171,7 @@
   },
   {
    "pandId": "0363100012103286",
-   "street": "Bestevâerstraat",
+   "street": "Bestev\u00e2erstraat",
    "numbers": [
     194,
     196
@@ -5102,7 +5199,7 @@
   },
   {
    "pandId": "0363100012136297",
-   "street": "Bestevâerstraat",
+   "street": "Bestev\u00e2erstraat",
    "numbers": [
     197,
     199
@@ -5130,7 +5227,7 @@
   },
   {
    "pandId": "0363100012107103",
-   "street": "Bestevâerstraat",
+   "street": "Bestev\u00e2erstraat",
    "numbers": [
     198,
     200,
@@ -5159,7 +5256,7 @@
   },
   {
    "pandId": "0363100012074943",
-   "street": "Bestevâerstraat",
+   "street": "Bestev\u00e2erstraat",
    "numbers": [
     201,
     203
@@ -5187,7 +5284,7 @@
   },
   {
    "pandId": "0363100012143225",
-   "street": "Bestevâerstraat",
+   "street": "Bestev\u00e2erstraat",
    "numbers": [
     205
    ],
@@ -5214,7 +5311,7 @@
   },
   {
    "pandId": "0363100012133151",
-   "street": "Bestevâerstraat",
+   "street": "Bestev\u00e2erstraat",
    "numbers": [
     207
    ],
@@ -5241,7 +5338,7 @@
   },
   {
    "pandId": "0363100012103593",
-   "street": "Bestevâerstraat",
+   "street": "Bestev\u00e2erstraat",
    "numbers": [
     209,
     211
@@ -5269,7 +5366,7 @@
   },
   {
    "pandId": "0363100012098338",
-   "street": "Bestevâerstraat",
+   "street": "Bestev\u00e2erstraat",
    "numbers": [
     213
    ],
@@ -6776,7 +6873,8 @@
    "frontMidRD": [
     119125.28,
     487746.65
-   ]
+   ],
+   "face": "coppelstock-8-56"
   },
   {
    "pandId": "0363100012100357",
@@ -6811,7 +6909,8 @@
    "frontMidRD": [
     119112.71,
     487744.35
-   ]
+   ],
+   "face": "coppelstock-8-56"
   },
   {
    "pandId": "0363100012070549",
@@ -6840,7 +6939,8 @@
    "frontMidRD": [
     119159.22,
     487727.45
-   ]
+   ],
+   "face": "coppelstock-25-55"
   },
   {
    "pandId": "0363100012149193",
@@ -6867,7 +6967,8 @@
    "frontMidRD": [
     119149.61,
     487725.71
-   ]
+   ],
+   "face": "coppelstock-25-55"
   },
   {
    "pandId": "0363100012066272",
@@ -6894,7 +6995,8 @@
    "frontMidRD": [
     119143.48,
     487724.59
-   ]
+   ],
+   "face": "coppelstock-25-55"
   },
   {
    "pandId": "0363100012104481",
@@ -6921,7 +7023,8 @@
    "frontMidRD": [
     119137.47,
     487723.5
-   ]
+   ],
+   "face": "coppelstock-25-55"
   },
   {
    "pandId": "0363100012104480",
@@ -6948,7 +7051,8 @@
    "frontMidRD": [
     119131.47,
     487722.41
-   ]
+   ],
+   "face": "coppelstock-25-55"
   },
   {
    "pandId": "0363100012122456",
@@ -6975,7 +7079,8 @@
    "frontMidRD": [
     119125.47,
     487721.32
-   ]
+   ],
+   "face": "coppelstock-25-55"
   },
   {
    "pandId": "0363100012100119",
@@ -7002,7 +7107,8 @@
    "frontMidRD": [
     119119.47,
     487720.22
-   ]
+   ],
+   "face": "coppelstock-25-55"
   },
   {
    "pandId": "0363100012089839",
@@ -7029,7 +7135,8 @@
    "frontMidRD": [
     119113.47,
     487719.13
-   ]
+   ],
+   "face": "coppelstock-25-55"
   },
   {
    "pandId": "0363100012133707",
@@ -7056,7 +7163,8 @@
    "frontMidRD": [
     119102.45,
     487742.55
-   ]
+   ],
+   "face": "coppelstock-8-56"
   },
   {
    "pandId": "0363100012121115",
@@ -7083,7 +7191,8 @@
    "frontMidRD": [
     119107.47,
     487718.04
-   ]
+   ],
+   "face": "coppelstock-25-55"
   },
   {
    "pandId": "0363100012131416",
@@ -7110,7 +7219,8 @@
    "frontMidRD": [
     119096.22,
     487741.32
-   ]
+   ],
+   "face": "coppelstock-8-56"
   },
   {
    "pandId": "0363100012093475",
@@ -7137,7 +7247,8 @@
    "frontMidRD": [
     119101.47,
     487716.95
-   ]
+   ],
+   "face": "coppelstock-25-55"
   },
   {
    "pandId": "0363100012132905",
@@ -7167,7 +7278,8 @@
    "frontMidRD": [
     119085.94,
     487729.24
-   ]
+   ],
+   "face": "coppelstock-8-56"
   },
   {
    "pandId": "0363100012098196",
@@ -7194,7 +7306,8 @@
    "frontMidRD": [
     119095.46,
     487715.86
-   ]
+   ],
+   "face": "coppelstock-25-55"
   },
   {
    "pandId": "0363100012080535",
@@ -7221,7 +7334,8 @@
    "frontMidRD": [
     119089.46,
     487714.77
-   ]
+   ],
+   "face": "coppelstock-25-55"
   },
   {
    "pandId": "0363100012091714",
@@ -7249,7 +7363,8 @@
    "frontMidRD": [
     119080.07,
     487713.06
-   ]
+   ],
+   "face": "coppelstock-25-55"
   },
   {
    "pandId": "0363100012149997",
@@ -7277,7 +7392,8 @@
    "frontMidRD": [
     119076.68,
     487727.55
-   ]
+   ],
+   "face": "coppelstock-8-56"
   },
   {
    "pandId": "0363100012078751",
@@ -7304,7 +7420,8 @@
    "frontMidRD": [
     119069.16,
     487711.07
-   ]
+   ],
+   "face": "coppelstock-25-55"
   },
   {
    "pandId": "0363100012090556",
@@ -7331,7 +7448,8 @@
    "frontMidRD": [
     119065.73,
     487725.56
-   ]
+   ],
+   "face": "coppelstock-8-56"
   },
   {
    "pandId": "0363100012061771",
@@ -7394,7 +7512,8 @@
    "frontMidRD": [
     119263.66,
     487841.61
-   ]
+   ],
+   "face": "rijpgracht-5-33"
   },
   {
    "pandId": "0363100012135052",
@@ -7421,7 +7540,8 @@
    "frontMidRD": [
     119257.19,
     487840.19
-   ]
+   ],
+   "face": "rijpgracht-5-33"
   },
   {
    "pandId": "0363100012065393",
@@ -7448,7 +7568,8 @@
    "frontMidRD": [
     119251.17,
     487838.87
-   ]
+   ],
+   "face": "rijpgracht-5-33"
   },
   {
    "pandId": "0363100012136762",
@@ -7475,7 +7596,8 @@
    "frontMidRD": [
     119245.11,
     487837.54
-   ]
+   ],
+   "face": "rijpgracht-5-33"
   },
   {
    "pandId": "0363100012073793",
@@ -7502,7 +7624,8 @@
    "frontMidRD": [
     119239.07,
     487836.21
-   ]
+   ],
+   "face": "rijpgracht-5-33"
   },
   {
    "pandId": "0363100012067932",
@@ -7533,7 +7656,8 @@
    "frontMidRD": [
     119190.32,
     487890.02
-   ]
+   ],
+   "face": "rijpgracht-14-24"
   },
   {
    "pandId": "0363100012154479",
@@ -7560,7 +7684,8 @@
    "frontMidRD": [
     119233.03,
     487834.88
-   ]
+   ],
+   "face": "rijpgracht-5-33"
   },
   {
    "pandId": "0363100012119748",
@@ -7587,7 +7712,8 @@
    "frontMidRD": [
     119183.29,
     487888.48
-   ]
+   ],
+   "face": "rijpgracht-14-24"
   },
   {
    "pandId": "0363100012147833",
@@ -7614,7 +7740,8 @@
    "frontMidRD": [
     119226.99,
     487833.55
-   ]
+   ],
+   "face": "rijpgracht-5-33"
   },
   {
    "pandId": "0363100012103314",
@@ -7641,7 +7768,8 @@
    "frontMidRD": [
     119176.26,
     487886.94
-   ]
+   ],
+   "face": "rijpgracht-14-24"
   },
   {
    "pandId": "0363100012065855",
@@ -7668,7 +7796,8 @@
    "frontMidRD": [
     119220.95,
     487832.22
-   ]
+   ],
+   "face": "rijpgracht-5-33"
   },
   {
    "pandId": "0363100012112059",
@@ -7695,7 +7824,8 @@
    "frontMidRD": [
     119169.97,
     487885.68
-   ]
+   ],
+   "face": "rijpgracht-14-24"
   },
   {
    "pandId": "0363100012131151",
@@ -7722,7 +7852,8 @@
    "frontMidRD": [
     119214.91,
     487830.89
-   ]
+   ],
+   "face": "rijpgracht-5-33"
   },
   {
    "pandId": "0363100012128075",
@@ -7749,7 +7880,8 @@
    "frontMidRD": [
     119162.92,
     487884.01
-   ]
+   ],
+   "face": "rijpgracht-14-24"
   },
   {
    "pandId": "0363100012096832",
@@ -7776,7 +7908,8 @@
    "frontMidRD": [
     119208.86,
     487829.56
-   ]
+   ],
+   "face": "rijpgracht-5-33"
   },
   {
    "pandId": "0363100012079479",
@@ -7807,7 +7940,8 @@
    "frontMidRD": [
     119155.89,
     487882.47
-   ]
+   ],
+   "face": "rijpgracht-14-24"
   },
   {
    "pandId": "0363100012137538",
@@ -7834,7 +7968,8 @@
    "frontMidRD": [
     119202.82,
     487828.23
-   ]
+   ],
+   "face": "rijpgracht-5-33"
   },
   {
    "pandId": "0363100012108028",
@@ -7861,7 +7996,8 @@
    "frontMidRD": [
     119196.78,
     487826.91
-   ]
+   ],
+   "face": "rijpgracht-5-33"
   },
   {
    "pandId": "0363100012090839",
@@ -7915,7 +8051,8 @@
    "frontMidRD": [
     119190.74,
     487825.58
-   ]
+   ],
+   "face": "rijpgracht-5-33"
   },
   {
    "pandId": "0363100012072724",
@@ -7970,7 +8107,8 @@
    "frontMidRD": [
     119184.7,
     487824.25
-   ]
+   ],
+   "face": "rijpgracht-5-33"
   },
   {
    "pandId": "0363100012074974",
@@ -7997,7 +8135,8 @@
    "frontMidRD": [
     119178.26,
     487822.83
-   ]
+   ],
+   "face": "rijpgracht-5-33"
   },
   {
    "pandId": "0363100012146058",
@@ -8073,7 +8212,8 @@
    "frontMidRD": [
     119136.49,
     487813.64
-   ]
+   ],
+   "face": "rijpgracht-39-53"
   },
   {
    "pandId": "0363100012062141",
@@ -8100,7 +8240,8 @@
    "frontMidRD": [
     119129.45,
     487812.1
-   ]
+   ],
+   "face": "rijpgracht-39-53"
   },
   {
    "pandId": "0363100012154577",
@@ -8154,7 +8295,8 @@
    "frontMidRD": [
     119123.4,
     487810.7
-   ]
+   ],
+   "face": "rijpgracht-39-53"
   },
   {
    "pandId": "0363100012067375",
@@ -8181,7 +8323,8 @@
    "frontMidRD": [
     119117.32,
     487809.43
-   ]
+   ],
+   "face": "rijpgracht-39-53"
   },
   {
    "pandId": "0363100012063203",
@@ -8208,7 +8351,8 @@
    "frontMidRD": [
     119111.27,
     487808.1
-   ]
+   ],
+   "face": "rijpgracht-39-53"
   },
   {
    "pandId": "0363100012133746",
@@ -8235,7 +8379,8 @@
    "frontMidRD": [
     119105.22,
     487806.77
-   ]
+   ],
+   "face": "rijpgracht-39-53"
   },
   {
    "pandId": "0363100012109667",
@@ -8262,7 +8407,8 @@
    "frontMidRD": [
     119099.16,
     487805.44
-   ]
+   ],
+   "face": "rijpgracht-39-53"
   },
   {
    "pandId": "0363100012089597",
@@ -8289,7 +8435,8 @@
    "frontMidRD": [
     119093.1,
     487804.1
-   ]
+   ],
+   "face": "rijpgracht-39-53"
   },
   {
    "pandId": "0363100012071754",
@@ -8727,7 +8874,8 @@
    "frontMidRD": [
     119070.09,
     487881.06
-   ]
+   ],
+   "face": "callenburg-3-63"
   },
   {
    "pandId": "0363100012110487",
@@ -8783,7 +8931,8 @@
    "frontMidRD": [
     119067.32,
     487893.61
-   ]
+   ],
+   "face": "callenburg-3-63"
   },
   {
    "pandId": "0363100012105359",
@@ -8839,7 +8988,8 @@
    "frontMidRD": [
     119064.55,
     487906.16
-   ]
+   ],
+   "face": "callenburg-3-63"
   },
   {
    "pandId": "0363100012125512",
@@ -8895,7 +9045,8 @@
    "frontMidRD": [
     119061.8,
     487918.71
-   ]
+   ],
+   "face": "callenburg-3-63"
   },
   {
    "pandId": "0363100012095699",
@@ -8951,7 +9102,8 @@
    "frontMidRD": [
     119059.03,
     487931.26
-   ]
+   ],
+   "face": "callenburg-3-63"
   },
   {
    "pandId": "0363100012141048",
@@ -9007,7 +9159,8 @@
    "frontMidRD": [
     119056.27,
     487943.81
-   ]
+   ],
+   "face": "callenburg-3-63"
   },
   {
    "pandId": "0363100012107097",
@@ -9063,7 +9216,8 @@
    "frontMidRD": [
     119053.54,
     487956.37
-   ]
+   ],
+   "face": "callenburg-3-63"
   },
   {
    "pandId": "0363100012063379",
@@ -9119,7 +9273,8 @@
    "frontMidRD": [
     119050.81,
     487968.92
-   ]
+   ],
+   "face": "callenburg-3-63"
   },
   {
    "pandId": "0363100012137912",
@@ -9476,7 +9631,8 @@
    "frontMidRD": [
     119188.32,
     487913.88
-   ]
+   ],
+   "face": "haen-3-31"
   },
   {
    "pandId": "0363100012140027",
@@ -9531,7 +9687,8 @@
    "frontMidRD": [
     119185.58,
     487926.39
-   ]
+   ],
+   "face": "haen-3-31"
   },
   {
    "pandId": "0363100012134001",
@@ -9588,7 +9745,8 @@
    "frontMidRD": [
     119182.83,
     487938.89
-   ]
+   ],
+   "face": "haen-3-31"
   },
   {
    "pandId": "0363100012102574",
@@ -9644,7 +9802,8 @@
    "frontMidRD": [
     119180.08,
     487951.4
-   ]
+   ],
+   "face": "haen-3-31"
   },
   {
    "pandId": "0363100012141696",
@@ -9700,7 +9859,8 @@
    "frontMidRD": [
     119177.33,
     487963.91
-   ]
+   ],
+   "face": "haen-3-31"
   },
   {
    "pandId": "0363100012084532",
@@ -9756,7 +9916,8 @@
    "frontMidRD": [
     119174.58,
     487976.41
-   ]
+   ],
+   "face": "haen-3-31"
   },
   {
    "pandId": "0363100012141001",
@@ -9838,7 +9999,8 @@
    "frontMidRD": [
     119171.83,
     487988.93
-   ]
+   ],
+   "face": "haen-3-31"
   },
   {
    "pandId": "0363100012107347",
@@ -9893,7 +10055,8 @@
    "frontMidRD": [
     119169.88,
     487998.33
-   ]
+   ],
+   "face": "haen-3-31"
   },
   {
    "pandId": "0363100012117545",
@@ -10230,7 +10393,8 @@
    "frontMidRD": [
     119173.7,
     487684.59
-   ]
+   ],
+   "face": "haring-1-11"
   },
   {
    "pandId": "0363100012148081",
@@ -10257,7 +10421,8 @@
    "frontMidRD": [
     119171.97,
     487694.3
-   ]
+   ],
+   "face": "haring-1-11"
   },
   {
    "pandId": "0363100012062858",
@@ -10284,7 +10449,8 @@
    "frontMidRD": [
     119170.88,
     487700.26
-   ]
+   ],
+   "face": "haring-1-11"
   },
   {
    "pandId": "0363100012133359",
@@ -10338,7 +10504,8 @@
    "frontMidRD": [
     119169.79,
     487706.28
-   ]
+   ],
+   "face": "haring-1-11"
   },
   {
    "pandId": "0363100012127749",
@@ -10392,7 +10559,8 @@
    "frontMidRD": [
     119168.66,
     487712.43
-   ]
+   ],
+   "face": "haring-1-11"
   },
   {
    "pandId": "0363100012148568",
@@ -10446,7 +10614,8 @@
    "frontMidRD": [
     119167.59,
     487718.33
-   ]
+   ],
+   "face": "haring-1-11"
   },
   {
    "pandId": "0363100012111802",
@@ -10500,7 +10669,8 @@
    "frontMidRD": [
     119159.08,
     487759.2
-   ]
+   ],
+   "face": "haring-13-27"
   },
   {
    "pandId": "0363100012093157",
@@ -10554,7 +10724,8 @@
    "frontMidRD": [
     119157.75,
     487765.08
-   ]
+   ],
+   "face": "haring-13-27"
   },
   {
    "pandId": "0363100012144291",
@@ -10581,7 +10752,8 @@
    "frontMidRD": [
     119156.5,
     487770.97
-   ]
+   ],
+   "face": "haring-13-27"
   },
   {
    "pandId": "0363100012145712",
@@ -10635,7 +10807,8 @@
    "frontMidRD": [
     119155.21,
     487776.85
-   ]
+   ],
+   "face": "haring-13-27"
   },
   {
    "pandId": "0363100012117681",
@@ -10662,7 +10835,8 @@
    "frontMidRD": [
     119153.91,
     487782.72
-   ]
+   ],
+   "face": "haring-13-27"
   },
   {
    "pandId": "0363100012112405",
@@ -10716,7 +10890,8 @@
    "frontMidRD": [
     119152.59,
     487788.72
-   ]
+   ],
+   "face": "haring-13-27"
   },
   {
    "pandId": "0363100012132169",
@@ -10743,7 +10918,8 @@
    "frontMidRD": [
     119151.26,
     487794.79
-   ]
+   ],
+   "face": "haring-13-27"
   },
   {
    "pandId": "0363100012093972",
@@ -10770,7 +10946,8 @@
    "frontMidRD": [
     119149.94,
     487800.82
-   ]
+   ],
+   "face": "haring-13-27"
   },
   {
    "pandId": "0363100012105956",
@@ -10798,7 +10975,8 @@
    "frontMidRD": [
     119147.95,
     487809.86
-   ]
+   ],
+   "face": "haring-13-27"
   },
   {
    "pandId": "0363100012141674",
@@ -11023,7 +11201,8 @@
    "frontMidRD": [
     119250.93,
     487617.17
-   ]
+   ],
+   "face": "galen-56-110"
   },
   {
    "pandId": "0363100012064565",
@@ -11050,7 +11229,8 @@
    "frontMidRD": [
     119244.93,
     487615.99
-   ]
+   ],
+   "face": "galen-56-110"
   },
   {
    "pandId": "0363100012148775",
@@ -11078,7 +11258,8 @@
    "frontMidRD": [
     119238.92,
     487614.9
-   ]
+   ],
+   "face": "galen-56-110"
   },
   {
    "pandId": "0363100012126811",
@@ -11107,7 +11288,8 @@
    "frontMidRD": [
     119229.88,
     487613.37
-   ]
+   ],
+   "face": "galen-56-110"
   },
   {
    "pandId": "0363100012123697",
@@ -11135,7 +11317,8 @@
    "frontMidRD": [
     119220.87,
     487611.61
-   ]
+   ],
+   "face": "galen-56-110"
   },
   {
    "pandId": "0363100012142659",
@@ -11163,7 +11346,8 @@
    "frontMidRD": [
     119214.87,
     487610.53
-   ]
+   ],
+   "face": "galen-56-110"
   },
   {
    "pandId": "0363100012110462",
@@ -11191,7 +11375,8 @@
    "frontMidRD": [
     119208.86,
     487609.45
-   ]
+   ],
+   "face": "galen-56-110"
   },
   {
    "pandId": "0363100012143344",
@@ -11219,7 +11404,8 @@
    "frontMidRD": [
     119202.85,
     487608.33
-   ]
+   ],
+   "face": "galen-56-110"
   },
   {
    "pandId": "0363100012084175",
@@ -11246,7 +11432,8 @@
    "frontMidRD": [
     119196.84,
     487607.24
-   ]
+   ],
+   "face": "galen-56-110"
   },
   {
    "pandId": "0363100012124911",
@@ -11274,7 +11461,8 @@
    "frontMidRD": [
     119190.88,
     487606.15
-   ]
+   ],
+   "face": "galen-56-110"
   },
   {
    "pandId": "0363100012118984",
@@ -11302,7 +11490,8 @@
    "frontMidRD": [
     119184.81,
     487605.11
-   ]
+   ],
+   "face": "galen-56-110"
   },
   {
    "pandId": "0363100012121206",
@@ -11330,7 +11519,8 @@
    "frontMidRD": [
     119178.79,
     487604.04
-   ]
+   ],
+   "face": "galen-56-110"
   },
   {
    "pandId": "0363100012077081",
@@ -11358,7 +11548,8 @@
    "frontMidRD": [
     119172.8,
     487602.86
-   ]
+   ],
+   "face": "galen-56-110"
   },
   {
    "pandId": "0363100012126499",
@@ -11386,7 +11577,8 @@
    "frontMidRD": [
     119166.78,
     487601.82
-   ]
+   ],
+   "face": "galen-56-110"
   },
   {
    "pandId": "0363100012100410",
@@ -11414,7 +11606,8 @@
    "frontMidRD": [
     119160.75,
     487600.83
-   ]
+   ],
+   "face": "galen-56-110"
   },
   {
    "pandId": "0363100012122649",
@@ -11811,7 +12004,8 @@
    "frontMidRD": [
     119250.06,
     487763.52
-   ]
+   ],
+   "face": "leijnsen-3-31"
   },
   {
    "pandId": "0363100012139647",
@@ -11946,7 +12140,8 @@
    "frontMidRD": [
     119245.95,
     487762.77
-   ]
+   ],
+   "face": "leijnsen-3-31"
   },
   {
    "pandId": "0363100012137482",
@@ -12000,7 +12195,8 @@
    "frontMidRD": [
     119239.95,
     487761.68
-   ]
+   ],
+   "face": "leijnsen-3-31"
   },
   {
    "pandId": "0363100012132371",
@@ -12054,7 +12250,8 @@
    "frontMidRD": [
     119233.95,
     487760.58
-   ]
+   ],
+   "face": "leijnsen-3-31"
   },
   {
    "pandId": "0363100012081763",
@@ -12108,7 +12305,8 @@
    "frontMidRD": [
     119227.95,
     487759.49
-   ]
+   ],
+   "face": "leijnsen-3-31"
   },
   {
    "pandId": "0363100012140619",
@@ -12162,7 +12360,8 @@
    "frontMidRD": [
     119221.94,
     487758.39
-   ]
+   ],
+   "face": "leijnsen-3-31"
   },
   {
    "pandId": "0363100012123427",
@@ -12218,7 +12417,8 @@
    "frontMidRD": [
     119212.94,
     487756.75
-   ]
+   ],
+   "face": "leijnsen-3-31"
   },
   {
    "pandId": "0363100012107813",
@@ -12299,7 +12499,8 @@
    "frontMidRD": [
     119203.94,
     487755.11
-   ]
+   ],
+   "face": "leijnsen-3-31"
   },
   {
    "pandId": "0363100012064868",
@@ -12360,7 +12561,8 @@
    "frontMidRD": [
     119192.64,
     487753.05
-   ]
+   ],
+   "face": "leijnsen-3-31"
   },
   {
    "pandId": "0363100012115570",
@@ -12446,7 +12648,8 @@
    "frontMidRD": [
     119131.09,
     487885.93
-   ]
+   ],
+   "face": "andringa-1-31"
   },
   {
    "pandId": "0363100012095658",
@@ -12473,7 +12676,8 @@
    "frontMidRD": [
     119128.56,
     487897.44
-   ]
+   ],
+   "face": "andringa-1-31"
   },
   {
    "pandId": "0363100012083022",
@@ -12501,7 +12705,8 @@
    "frontMidRD": [
     119148.28,
     487901.77
-   ]
+   ],
+   "face": "andringa-4-32"
   },
   {
    "pandId": "0363100012101492",
@@ -12529,7 +12734,8 @@
    "frontMidRD": [
     119126.4,
     487906.79
-   ]
+   ],
+   "face": "andringa-1-31"
   },
   {
    "pandId": "0363100012103458",
@@ -12557,7 +12763,8 @@
    "frontMidRD": [
     119146.33,
     487911.17
-   ]
+   ],
+   "face": "andringa-4-32"
   },
   {
    "pandId": "0363100012070497",
@@ -12585,7 +12792,8 @@
    "frontMidRD": [
     119123.3,
     487921.38
-   ]
+   ],
+   "face": "andringa-1-31"
   },
   {
    "pandId": "0363100012124713",
@@ -12613,7 +12821,8 @@
    "frontMidRD": [
     119143.58,
     487923.68
-   ]
+   ],
+   "face": "andringa-4-32"
   },
   {
    "pandId": "0363100012071142",
@@ -12643,7 +12852,8 @@
    "frontMidRD": [
     119120.32,
     487934.94
-   ]
+   ],
+   "face": "andringa-1-31"
   },
   {
    "pandId": "0363100012125261",
@@ -12673,7 +12883,8 @@
    "frontMidRD": [
     119140.05,
     487939.28
-   ]
+   ],
+   "face": "andringa-4-32"
   },
   {
    "pandId": "0363100012080635",
@@ -12701,7 +12912,8 @@
    "frontMidRD": [
     119116.78,
     487950.55
-   ]
+   ],
+   "face": "andringa-1-31"
   },
   {
    "pandId": "0363100012131228",
@@ -12729,7 +12941,8 @@
    "frontMidRD": [
     119136.72,
     487954.93
-   ]
+   ],
+   "face": "andringa-4-32"
   },
   {
    "pandId": "0363100012069920",
@@ -12757,7 +12970,8 @@
    "frontMidRD": [
     119114.03,
     487963.07
-   ]
+   ],
+   "face": "andringa-1-31"
   },
   {
    "pandId": "0363100012148995",
@@ -12785,7 +12999,8 @@
    "frontMidRD": [
     119133.97,
     487967.45
-   ]
+   ],
+   "face": "andringa-4-32"
   },
   {
    "pandId": "0363100012147879",
@@ -12813,7 +13028,8 @@
    "frontMidRD": [
     119111.28,
     487975.57
-   ]
+   ],
+   "face": "andringa-1-31"
   },
   {
    "pandId": "0363100012131573",
@@ -12841,7 +13057,8 @@
    "frontMidRD": [
     119131.23,
     487979.96
-   ]
+   ],
+   "face": "andringa-4-32"
   },
   {
    "pandId": "0363100012069813",
@@ -12895,7 +13112,8 @@
    "frontMidRD": [
     119129.06,
     487989.31
-   ]
+   ],
+   "face": "andringa-4-32"
   },
   {
    "pandId": "0363100012128873",
@@ -13040,7 +13258,8 @@
    "frontMidRD": [
     118929.59,
     488061.1
-   ]
+   ],
+   "face": "doorman-143-149"
   },
   {
    "pandId": "0363100012136562",
@@ -13067,7 +13286,8 @@
    "frontMidRD": [
     118924,
     488058.17
-   ]
+   ],
+   "face": "doorman-143-149"
   },
   {
    "pandId": "0363100012157577",
@@ -13094,7 +13314,8 @@
    "frontMidRD": [
     118918.42,
     488055.24
-   ]
+   ],
+   "face": "doorman-143-149"
   },
   {
    "pandId": "0363100012165745",
@@ -13121,7 +13342,8 @@
    "frontMidRD": [
     118913,
     488052.33
-   ]
+   ],
+   "face": "doorman-143-149"
   },
   {
    "pandId": "0363100012143887",
@@ -13152,7 +13374,8 @@
    "frontMidRD": [
     119162.39,
     488017.62
-   ]
+   ],
+   "face": "vries-1-11"
   },
   {
    "pandId": "0363100012222102",
@@ -13206,7 +13429,8 @@
    "frontMidRD": [
     119155.25,
     488016.06
-   ]
+   ],
+   "face": "vries-1-11"
   },
   {
    "pandId": "0363100012129691",
@@ -13234,7 +13458,8 @@
    "frontMidRD": [
     119145.09,
     488013.72
-   ]
+   ],
+   "face": "vries-1-11"
   },
   {
    "pandId": "0363100012073715",
@@ -13261,7 +13486,8 @@
    "frontMidRD": [
     119134.91,
     488011.56
-   ]
+   ],
+   "face": "vries-1-11"
   },
   {
    "pandId": "0363100012066203",
@@ -13292,7 +13518,8 @@
    "frontMidRD": [
     119127.77,
     488010.03
-   ]
+   ],
+   "face": "vries-1-11"
   },
   {
    "pandId": "0363100012061629",
@@ -13325,7 +13552,8 @@
    "frontMidRD": [
     119101.82,
     488004.33
-   ]
+   ],
+   "face": "vries-13-23"
   },
   {
    "pandId": "0363100012099589",
@@ -13352,7 +13580,8 @@
    "frontMidRD": [
     119094.68,
     488002.77
-   ]
+   ],
+   "face": "vries-13-23"
   },
   {
    "pandId": "0363100012070361",
@@ -13380,7 +13609,8 @@
    "frontMidRD": [
     119084.52,
     488000.43
-   ]
+   ],
+   "face": "vries-13-23"
   },
   {
    "pandId": "0363100012152219",
@@ -13408,7 +13638,8 @@
    "frontMidRD": [
     119074.33,
     487998.31
-   ]
+   ],
+   "face": "vries-13-23"
   },
   {
    "pandId": "0363100012152138",
@@ -13441,7 +13672,8 @@
    "frontMidRD": [
     119067.24,
     487996.57
-   ]
+   ],
+   "face": "vries-13-23"
   },
   {
    "pandId": "0363100012142535",
@@ -13470,7 +13702,8 @@
    "frontMidRD": [
     119266.02,
     487623.91
-   ]
+   ],
+   "face": "zwijgerlaan-161-179"
   },
   {
    "pandId": "0363100012099392",
@@ -13497,7 +13730,8 @@
    "frontMidRD": [
     119264.69,
     487631.2
-   ]
+   ],
+   "face": "zwijgerlaan-161-179"
   },
   {
    "pandId": "0363100012119704",
@@ -13524,7 +13758,8 @@
    "frontMidRD": [
     119263.47,
     487637.89
-   ]
+   ],
+   "face": "zwijgerlaan-161-179"
   },
   {
    "pandId": "0363100012067779",
@@ -13552,7 +13787,8 @@
    "frontMidRD": [
     119262.25,
     487644.58
-   ]
+   ],
+   "face": "zwijgerlaan-161-179"
   },
   {
    "pandId": "0363100012093651",
@@ -13579,7 +13815,8 @@
    "frontMidRD": [
     119261.03,
     487651.25
-   ]
+   ],
+   "face": "zwijgerlaan-161-179"
   },
   {
    "pandId": "0363100012084818",
@@ -13606,7 +13843,8 @@
    "frontMidRD": [
     119259.8,
     487657.96
-   ]
+   ],
+   "face": "zwijgerlaan-161-179"
   },
   {
    "pandId": "0363100012124181",
@@ -13635,7 +13873,8 @@
    "frontMidRD": [
     119258.47,
     487665.25
-   ]
+   ],
+   "face": "zwijgerlaan-161-179"
   },
   {
    "pandId": "0363100012096558",
@@ -13666,7 +13905,8 @@
    "frontMidRD": [
     119263.84,
     487705.4
-   ]
+   ],
+   "face": "zwijgerlaan-183-195"
   },
   {
    "pandId": "0363100012153896",
@@ -13693,7 +13933,8 @@
    "frontMidRD": [
     119265.67,
     487713.26
-   ]
+   ],
+   "face": "zwijgerlaan-183-195"
   },
   {
    "pandId": "0363100012110829",
@@ -13720,7 +13961,8 @@
    "frontMidRD": [
     119267.05,
     487719.2
-   ]
+   ],
+   "face": "zwijgerlaan-183-195"
   },
   {
    "pandId": "0363100012062712",
@@ -13747,7 +13989,8 @@
    "frontMidRD": [
     119268.37,
     487725.16
-   ]
+   ],
+   "face": "zwijgerlaan-183-195"
   },
   {
    "pandId": "0363100012106765",
@@ -13774,7 +14017,8 @@
    "frontMidRD": [
     119269.8,
     487731.09
-   ]
+   ],
+   "face": "zwijgerlaan-183-195"
   },
   {
    "pandId": "0363100012103635",
@@ -13801,7 +14045,8 @@
    "frontMidRD": [
     119271.18,
     487737.04
-   ]
+   ],
+   "face": "zwijgerlaan-183-195"
   },
   {
    "pandId": "0363100012068152",
@@ -13828,7 +14073,8 @@
    "frontMidRD": [
     119272.54,
     487742.99
-   ]
+   ],
+   "face": "zwijgerlaan-183-195"
   },
   {
    "pandId": "0363100012122849",
@@ -13856,7 +14102,8 @@
    "frontMidRD": [
     119283.11,
     487799.56
-   ]
+   ],
+   "face": "zwijgerlaan-205-219"
   },
   {
    "pandId": "0363100012094828",
@@ -13883,7 +14130,8 @@
    "frontMidRD": [
     119281.61,
     487807.19
-   ]
+   ],
+   "face": "zwijgerlaan-205-219"
   },
   {
    "pandId": "0363100012113440",
@@ -13910,7 +14158,8 @@
    "frontMidRD": [
     119281.94,
     487814.96
-   ]
+   ],
+   "face": "zwijgerlaan-205-219"
   },
   {
    "pandId": "0363100012071588",
@@ -13937,7 +14186,8 @@
    "frontMidRD": [
     119280.85,
     487819.92
-   ]
+   ],
+   "face": "zwijgerlaan-205-219"
   },
   {
    "pandId": "0363100012118131",
@@ -13964,7 +14214,8 @@
    "frontMidRD": [
     119279.53,
     487825.96
-   ]
+   ],
+   "face": "zwijgerlaan-205-219"
   },
   {
    "pandId": "0363100012100401",
@@ -13991,7 +14242,8 @@
    "frontMidRD": [
     119278.16,
     487832.2
-   ]
+   ],
+   "face": "zwijgerlaan-205-219"
   },
   {
    "pandId": "0363100012149837",
@@ -14022,7 +14274,8 @@
    "frontMidRD": [
     119276.48,
     487839.82
-   ]
+   ],
+   "face": "zwijgerlaan-205-219"
   },
   {
    "pandId": "0363100012126078",
@@ -14049,7 +14302,8 @@
    "frontMidRD": [
     119257.33,
     487925.71
-   ]
+   ],
+   "face": "zwijgerlaan-225-279"
   },
   {
    "pandId": "0363100012071966",
@@ -14077,7 +14331,8 @@
    "frontMidRD": [
     119255.3,
     487935.1
-   ]
+   ],
+   "face": "zwijgerlaan-225-279"
   },
   {
    "pandId": "0363100012109779",
@@ -14105,7 +14360,8 @@
    "frontMidRD": [
     119252.55,
     487947.59
-   ]
+   ],
+   "face": "zwijgerlaan-225-279"
   },
   {
    "pandId": "0363100012133739",
@@ -14133,7 +14389,8 @@
    "frontMidRD": [
     119249.81,
     487960.08
-   ]
+   ],
+   "face": "zwijgerlaan-225-279"
   },
   {
    "pandId": "0363100012088035",
@@ -14161,7 +14418,8 @@
    "frontMidRD": [
     119247.06,
     487972.57
-   ]
+   ],
+   "face": "zwijgerlaan-225-279"
   },
   {
    "pandId": "0363100012143360",
@@ -14189,7 +14447,8 @@
    "frontMidRD": [
     119244.31,
     487985.09
-   ]
+   ],
+   "face": "zwijgerlaan-225-279"
   },
   {
    "pandId": "0363100012151482",
@@ -14217,7 +14476,8 @@
    "frontMidRD": [
     119241.56,
     487997.61
-   ]
+   ],
+   "face": "zwijgerlaan-225-279"
   },
   {
    "pandId": "0363100012072970",
@@ -14245,7 +14505,8 @@
    "frontMidRD": [
     119238.82,
     488010.11
-   ]
+   ],
+   "face": "zwijgerlaan-225-279"
   },
   {
    "pandId": "0363100012151107",

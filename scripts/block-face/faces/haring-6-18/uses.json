@@ -1,0 +1,121 @@
+{
+ "street": "Jan Haringstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched n/a (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012112405",
+   "addresses": [
+    "Jan Haringstraat 18"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Haringstraat 18-H",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000685134"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012145712",
+   "addresses": [
+    "Jan Haringstraat 16"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Haringstraat 16-H",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000685124"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012093157",
+   "addresses": [
+    "Jan Haringstraat 14"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Haringstraat 14-H",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000685114"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012111802",
+   "addresses": [
+    "Jan Haringstraat 12"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Haringstraat 12-H",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000685107"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012148568",
+   "addresses": [
+    "Jan Haringstraat 10"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Haringstraat 10-H",
+     "use": "woonfunctie",
+     "areaM2": 75,
+     "bagId": "0363010000685100"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012127749",
+   "addresses": [
+    "Jan Haringstraat 8"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Haringstraat 8-H",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000685093"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012133359",
+   "addresses": [
+    "Jan Haringstraat 6"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Haringstraat 6-H",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000685086"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

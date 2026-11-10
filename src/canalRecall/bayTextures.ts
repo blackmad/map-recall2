@@ -446,13 +446,15 @@ function layoutWindows(p: Painter, v: BayVariant, w: number, y: number, h: numbe
   if (v.facadeAssembly === 'balcony-band' && (v.kind === 'upper' || v.kind === 'upperTall')) balconyBand(p, w);
 }
 
+/** The balcony band's top edge in an upper cell (canvas px, y down): the glass behind it ends here (look/windowTable.ts). */
+export const BALCONY_BAND_TOP_PX = STOREY_PX - 112;
 /**
  * A balcony band (contemporaryFamily.ts): a pale balustrade slab across the whole bay from the floor up about 1.1 m,
  * with a dark shadow line at its top edge, drawn as ink so it stays pale on a dark brick wall (Zeeburgereiland 2016,
  * Overhoeks, Sluisbuurt fronts on the panorama sheet).
  */
 function balconyBand(p: Painter, w: number): void {
-  const { ctx } = p, top = STOREY_PX - 112;
+  const { ctx } = p, top = BALCONY_BAND_TOP_PX;
   p.fill('ink', p.cartoon ? '#f2efe6' : '#c9c8c2'); ctx.fillRect(0, top, w, STOREY_PX - top);
   p.fill('ink', p.cartoon ? '#2a2d2e' : '#6d6e6b'); ctx.fillRect(0, top, w, 5);
   p.fill('ink', p.cartoon ? '#2a2d2e' : '#9c9b96'); ctx.fillRect(0, STOREY_PX - 8, w, 8);
@@ -460,10 +462,12 @@ function balconyBand(p: Painter, w: number): void {
 
 /**
  * A French balcony (contemporaryFamily.ts): a dark steel rail across the lower third of each tall window, a top bar and
- * thin balusters, drawn as ink (untinted) so it stays dark on any wall.
+ * thin balusters, drawn as ink (untinted) so it stays dark on any wall. The bottom bar sits on the window's bottom frame
+ * (the restrained 5 px inset), not over the glass, so the painted pane ends where the window table's does
+ * (look/windowTable.test.ts).
  */
 function frenchBalconyRails(p: Painter, v: BayVariant, w: number, ww: number, y: number, h: number): void {
-  const { ctx } = p, top = y + h * 0.64, bottom = y + h - 4, ink = p.cartoon ? '#1f2224' : '#2a2d2e';
+  const { ctx } = p, top = y + h * 0.64, bottom = y + h - 2, ink = p.cartoon ? '#1f2224' : '#2a2d2e';
   p.fill('ink', ink);
   for (let i = 0; i < v.windows; i++) {
     const x0 = ((i + 0.5) / v.windows) * w - ww / 2 - 4, width = ww + 8;
