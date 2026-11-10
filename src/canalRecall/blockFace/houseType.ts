@@ -21,11 +21,11 @@ import type {HouseDesign, RhythmSpec} from './intent.ts';
 
 /** Everything above the cornice line: a crown variant sets exactly these (and nothing else). */
 export const CROWN_KEYS = ['gable', 'crownCap', 'crownCapSpan', 'crownCapRise', 'crownShoulder', 'crownNeckWidth', 'crownShoulderRise', 'crownCapCornice', 'crownCapRatio', 'crownAt', 'crownBays', 'crownRise', 'crownSteps', 'crownFinial',
-  'atticWindows', 'atticShape', 'atticSize', 'dormers', 'dormerStyle', 'dormerAt', 'dormerParty', 'dormerCap', 'gableOrnament', 'roofFront', 'crownGroups', 'tower', 'hoist', 'parapet', 'eavesOverhang', 'dormerSize', 'dormerWindow', 'dormerLights', 'renderedGable', 'dormerBody', 'dormerHoist', 'shouldered', 'crownHalf'] as const;
+  'atticWindows', 'atticShape', 'atticSize', 'dormers', 'dormerStyle', 'dormerAt', 'dormerParty', 'dormerCap', 'gableOrnament', 'roofFront', 'crownGroups', 'tower', 'hoist', 'parapet', 'eavesOverhang', 'dormerSize', 'dormerWindow', 'dormerLights', 'renderedGable', 'dormerBody', 'dormerHoist', 'shouldered', 'crownHalf', 'atticWindowWidth'] as const;
 /** Body fields a crown variant may also set (a gabled variant drops the cornice its cornice variant has). */
 export const CROWN_BODY_KEYS = ['cornice'] as const;
 /** The ground storey (with souterrain/stoop): a ground variant or a per-house shop sets these. */
-export const GROUND_KEYS = ['doorBay', 'doorArch', 'basement', 'souterrain', 'tallGround', 'shopfront', 'groundFront', 'shutters', 'groundCanopy', 'doorReveal', 'extraDoorBays', 'doorPairs', 'doorRow'] as const;
+export const GROUND_KEYS = ['doorBay', 'doorArch', 'basement', 'souterrain', 'tallGround', 'shopfront', 'groundFront', 'shutters', 'groundCanopy', 'doorReveal', 'extraDoorBays', 'doorPairs', 'doorRow', 'basementDoor', 'doorSurround', 'stoopRails'] as const;
 /** Keys a type never sets: identity and frontage split come from the face/placement. */
 const PLACEMENT_KEYS = ['id', 'street', 'share'] as const;
 type CrownKey = typeof CROWN_KEYS[number];
@@ -46,9 +46,12 @@ export function resizePerStorey<F extends {storeyHeights?: number[]; windowHeigh
     return [a[0], ...mid.slice(0, to - 2), top];
   };
   const out = {...f};
-  // A souterrain front may weight its souterrain first (one entry more than `storeys`, fit.ts `ownSouterrain`): keep that
-  // entry and resize the storeys over it (canal-belt cornice houses drawn with three or four storeys over the stoop).
-  if (Array.isArray(f.storeyHeights)) out.storeyHeights = f.storeyHeights.length === from + 1 ? [f.storeyHeights[0], ...fit(f.storeyHeights.slice(1))] : fit(f.storeyHeights);
+  // A souterrain front may weight its souterrain first (one entry more than `storeys`, buildingRecipe/fit.ts): that entry
+  // stays and the storeys after it resize as usual (Keizersgracht 596-620, 2026-11-10: three- and five-storey canal houses
+  // of a four-storey souterrain type failed validation). Every other list is resized exactly as before.
+  const souterrainFirst = (f as {souterrain?: unknown}).souterrain === true && Array.isArray(f.storeyHeights) && f.storeyHeights.length === from + 1;
+  if (souterrainFirst) out.storeyHeights = [f.storeyHeights![0], ...fit(f.storeyHeights!.slice(1))];
+  else if (Array.isArray(f.storeyHeights)) out.storeyHeights = fit(f.storeyHeights);
   if (Array.isArray(f.windowHeights)) out.windowHeights = fit(f.windowHeights);
   if (Array.isArray(f.headLines)) out.headLines = fit(f.headLines);
   if (Array.isArray(f.bays)) out.bays = fit(f.bays);
@@ -187,6 +190,7 @@ export function mirrorFront(f: FrontIntent): FrontIntent {
     return n;
   };
   if (f.doorBay !== null && f.doorBay !== undefined) out.doorBay = bays[0] - 1 - f.doorBay;
+  if (f.basementDoor !== undefined) out.basementDoor = bays[0] - 1 - f.basementDoor;
   if (f.doorRow) out.doorRow = {...f.doorRow, from: 1 - f.doorRow.to, to: 1 - f.doorRow.from};
   if (f.extraDoorBays) out.extraDoorBays = f.extraDoorBays.map(b => bays[0] - 1 - b).sort((p, q) => p - q);
   if (f.bayWidths) out.bayWidths = [...f.bayWidths].reverse();
@@ -286,6 +290,14 @@ export function resolvePlacement(t: HouseTypeIntent, place: HousePlacement, stre
     if (!has(f, 'doorBay')) f.doorBay = null;
     if (!has(f, 'basement')) f.basement = 'none';
     if (!has(f, 'hoist')) f.hoist = false;
+    // A gable crown that drops the body's cornice (`cornice: "none"`) drops its measured entablature with it: the band is
+    // the cornice's (Keizersgracht 608, a neck gable of the frieze-cornice canal type). Such a front failed validation
+    // before ("entablature needs a cornice"), so no installed face changes.
+    if (f.cornice === 'none' && f.entablature && crown.cornice === 'none') delete f.entablature;
+    // A souterrain-first storey list (one entry more than the storeys) on a front whose ground has no souterrain (a
+    // house's own shop over the type's stoop ground, Keizersgracht 600) drops the souterrain weight; such a front failed
+    // validation before, so no installed face changes.
+    if (Array.isArray(f.storeyHeights) && f.storeyHeights.length === t.body.storeys + 1 && !(f.souterrain === true && f.basement !== 'none')) f.storeyHeights = f.storeyHeights.slice(1);
     if (place.storeys !== undefined) { f.storeys = place.storeys; if (place.storeys !== t.body.storeys) { deviations.push(`storeys ${place.storeys} (type: ${t.body.storeys})`); f = resizePerStorey(f, t.body.storeys, place.storeys); } }
     f = {...f, ...overrides} as FrontIntent;
     // A `null` override removes the type's body field (a row house without the type's box frames or lisenes).

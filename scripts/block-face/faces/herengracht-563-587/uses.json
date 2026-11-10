@@ -1,0 +1,336 @@
+{
+ "street": "Herengracht",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T08:48:18.688Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012178859",
+   "addresses": [
+    "Herengracht 563"
+   ],
+   "groundUnits": [
+    {
+     "address": "Herengracht 563",
+     "use": "logiesfunctie",
+     "areaM2": 395,
+     "bagId": "0363010000665169"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 10784802085,
+     "lngLat": [
+      4.8962363,
+      52.3650638
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "563",
+      "addr:postcode": "1017CD",
+      "addr:street": "Herengracht",
+      "name": "Hotel Frank",
+      "phone": "+31 20 280 0500",
+      "tourism": "hotel",
+      "website": "https://www.hotelfrank.nl"
+     },
+     "fetchedAt": "2026-11-10T08:48:18.688Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012178857",
+   "addresses": [
+    "Herengracht 565A",
+    "Herengracht 565B",
+    "Herengracht 565C",
+    "Herengracht 565D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Herengracht 565A",
+     "use": "woonfunctie",
+     "areaM2": 104,
+     "bagId": "0363010000995206"
+    },
+    {
+     "address": "Herengracht 565B",
+     "use": "woonfunctie",
+     "areaM2": 140,
+     "bagId": "0363010000995207"
+    },
+    {
+     "address": "Herengracht 565C",
+     "use": "woonfunctie",
+     "areaM2": 90,
+     "bagId": "0363010000995208"
+    },
+    {
+     "address": "Herengracht 565D",
+     "use": "woonfunctie",
+     "areaM2": 167,
+     "bagId": "0363010000995209"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012178860",
+   "addresses": [
+    "Herengracht 567"
+   ],
+   "groundUnits": [
+    {
+     "address": "Herengracht 567",
+     "use": "kantoorfunctie",
+     "areaM2": 720,
+     "bagId": "0363010000665172"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012178861",
+   "addresses": [
+    "Herengracht 569C",
+    "Herengracht 569A",
+    "Herengracht 569B",
+    "Herengracht 569D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Herengracht 569C",
+     "use": "woonfunctie",
+     "areaM2": 100,
+     "bagId": "0363010000643126"
+    },
+    {
+     "address": "Herengracht 569A",
+     "use": "woonfunctie",
+     "areaM2": 160,
+     "bagId": "0363010000642658"
+    },
+    {
+     "address": "Herengracht 569B",
+     "use": "woonfunctie",
+     "areaM2": 134,
+     "bagId": "0363010000642721"
+    },
+    {
+     "address": "Herengracht 569D",
+     "use": "woonfunctie",
+     "areaM2": 224,
+     "bagId": "0363010000650373"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012178853",
+   "addresses": [
+    "Herengracht 571",
+    "Herengracht 573"
+   ],
+   "groundUnits": [
+    {
+     "address": "Herengracht 571",
+     "use": "woonfunctie",
+     "areaM2": 770,
+     "bagId": "0363010011117141"
+    },
+    {
+     "address": "Herengracht 573",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 1119,
+     "bagId": "0363010001166031"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012178847",
+   "addresses": [
+    "Herengracht 575"
+   ],
+   "groundUnits": [
+    {
+     "address": "Herengracht 575",
+     "use": "kantoorfunctie",
+     "areaM2": 986,
+     "bagId": "0363010002005741"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012178848",
+   "addresses": [
+    "Herengracht 579A",
+    "Herengracht 579B",
+    "Herengracht 579C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Herengracht 579A",
+     "use": "woonfunctie",
+     "areaM2": 717,
+     "bagId": "0363010001171262"
+    },
+    {
+     "address": "Herengracht 579B",
+     "use": "woonfunctie",
+     "areaM2": 186,
+     "bagId": "0363010001171263"
+    },
+    {
+     "address": "Herengracht 579C",
+     "use": "woonfunctie",
+     "areaM2": 216,
+     "bagId": "0363010001171264"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 4842374130,
+     "lngLat": [
+      4.897203,
+      52.3651637
+     ],
+     "tags": {
+      "amenity": "charging_station",
+      "bicycle": "no",
+      "capacity": "2",
+      "operator": "NUON",
+      "operator:wikidata": "Q513830",
+      "operator:wikipedia": "nl:Vattenfall Nederland",
+      "socket:type2": "2"
+     },
+     "fetchedAt": "2026-11-10T08:48:18.688Z",
+     "match": "frontage",
+     "distanceM": 7.2
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012178941",
+   "addresses": [
+    "Herengracht 581"
+   ],
+   "groundUnits": [
+    {
+     "address": "Herengracht 581",
+     "use": "woonfunctie",
+     "areaM2": 820,
+     "bagId": "0363010000665180"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012178775",
+   "addresses": [
+    "Herengracht 583"
+   ],
+   "groundUnits": [
+    {
+     "address": "Herengracht 583",
+     "use": "woonfunctie",
+     "areaM2": 191,
+     "bagId": "0363010000665181"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012178776",
+   "addresses": [
+    "Herengracht 585"
+   ],
+   "groundUnits": [
+    {
+     "address": "Herengracht 585-H",
+     "use": "industriefunctie",
+     "areaM2": 19,
+     "bagId": "0363010000990960"
+    }
+   ],
+   "units": 2,
+   "osm": [
+    {
+     "type": "node",
+     "id": 9740263070,
+     "lngLat": [
+      4.8975554,
+      52.3652244
+     ],
+     "tags": {
+      "amenity": "vending_machine",
+      "check_date": "2025-03-15",
+      "ref": "10121",
+      "vending": "parking_tickets"
+     },
+     "fetchedAt": "2026-11-10T08:48:18.688Z",
+     "match": "frontage",
+     "distanceM": 7.9
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012169212",
+   "addresses": [
+    "Herengracht 587"
+   ],
+   "groundUnits": [
+    {
+     "address": "Utrechtsestraat 18A",
+     "use": "winkelfunctie",
+     "areaM2": 59,
+     "bagId": "0363010000834454"
+    },
+    {
+     "address": "Herengracht 587-2",
+     "use": "kantoorfunctie",
+     "areaM2": 31,
+     "bagId": "0363010012075209"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2725878508,
+     "lngLat": [
+      4.8975792,
+      52.3653455
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "18A",
+      "addr:postcode": "1017VN",
+      "addr:street": "Utrechtsestraat",
+      "name": "Property Of...",
+      "shop": "bag",
+      "website": "https://thepropertyof.com/"
+     },
+     "fetchedAt": "2026-11-10T08:48:18.688Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

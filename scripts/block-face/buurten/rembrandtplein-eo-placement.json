@@ -1,0 +1,49 @@
+{
+ "buurt": "rembrandtplein-eo",
+ "library": "grachtengordel-zuid",
+ "generatedAt": "2026-11-10T08:56:33.543Z",
+ "seconds": 17.41,
+ "totals": {
+  "faces": 2,
+  "pands": 16,
+  "placed": 0
+ },
+ "faces": [
+  {
+   "face": "herengracht-519-561",
+   "street": "Herengracht",
+   "pands": 5,
+   "placed": 0,
+   "held": 5,
+   "runs": [],
+   "seconds": 10.4,
+   "byType": {},
+   "installed": 0,
+   "holds": {
+    "evidence": 1,
+    "match": 3,
+    "likeness": 0,
+    "run": 1,
+    "review": 0
+   }
+  },
+  {
+   "face": "herengracht-563-587",
+   "street": "Herengracht",
+   "pands": 11,
+   "placed": 0,
+   "held": 11,
+   "runs": [],
+   "seconds": 6.95,
+   "byType": {},
+   "installed": 0,
+   "holds": {
+    "evidence": 1,
+    "match": 9,
+    "likeness": 0,
+    "run": 1,
+    "review": 0
+   }
+  }
+ ]
+}

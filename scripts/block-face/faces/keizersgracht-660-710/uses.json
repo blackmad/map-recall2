@@ -1,0 +1,317 @@
+{
+ "street": "Keizersgracht",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T08:32:31.032Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012179330",
+   "addresses": [
+    "Keizersgracht 676"
+   ],
+   "groundUnits": [
+    {
+     "address": "Keizersgracht 676",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 972,
+     "bagId": "0363010000701447"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2736378567,
+     "lngLat": [
+      4.8938128,
+      52.3634065
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "676",
+      "addr:postcode": "1017ET",
+      "addr:street": "Keizersgracht",
+      "name": "Museum of Illusions",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "tourism": "museum"
+     },
+     "fetchedAt": "2026-11-10T08:32:31.032Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012179308",
+   "addresses": [
+    "Keizersgracht 674A",
+    "Keizersgracht 674B",
+    "Keizersgracht 674C",
+    "Keizersgracht 674D",
+    "Keizersgracht 674E",
+    "Keizersgracht 674F",
+    "Keizersgracht 674G"
+   ],
+   "groundUnits": [
+    {
+     "address": "Keizersgracht 674A",
+     "use": "woonfunctie",
+     "areaM2": 192,
+     "bagId": "0363010000952865"
+    },
+    {
+     "address": "Keizersgracht 674C",
+     "use": "woonfunctie",
+     "areaM2": 160,
+     "bagId": "0363010000952867"
+    },
+    {
+     "address": "Keizersgracht 674D",
+     "use": "woonfunctie",
+     "areaM2": 325,
+     "bagId": "0363010000952868"
+    },
+    {
+     "address": "Keizersgracht 674E",
+     "use": "woonfunctie",
+     "areaM2": 270,
+     "bagId": "0363010000952869"
+    },
+    {
+     "address": "Keizersgracht 674F",
+     "use": "woonfunctie",
+     "areaM2": 280,
+     "bagId": "0363010000952870"
+    },
+    {
+     "address": "Keizersgracht 674G",
+     "use": "woonfunctie",
+     "areaM2": 150,
+     "bagId": "0363010000952871"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012179302",
+   "addresses": [
+    "Keizersgracht 672"
+   ],
+   "groundUnits": [
+    {
+     "address": "Keizersgracht 672",
+     "use": "bijeenkomstfunctie,woonfunctie",
+     "areaM2": 1283,
+     "bagId": "0363010000701127"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 34050759,
+     "lngLat": [
+      4.8933781,
+      52.363464
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "672",
+      "addr:postcode": "1017ET",
+      "addr:street": "Keizersgracht",
+      "check_date": "2026-07-09",
+      "fee": "yes",
+      "name": "Museum Van Loon",
+      "name:en": "Museum Van Loon",
+      "name:nl": "Museum Van Loon",
+      "name:zh": "范隆博物館",
+      "opening_hours": "Mo-Su 10:00-17:00; Dec 24,31 10:00-15:00; Apr 27,Dec 25,Jan 1 off",
+      "payment:apple_pay": "yes",
+      "payment:cash": "no",
+      "payment:girocard": "yes",
+      "payment:google_pay": "yes",
+      "payment:maestro": "yes",
+      "payment:mastercard": "yes",
+      "payment:museumkaart": "yes",
+      "payment:visa": "yes",
+      "phone": "+31 20 624 5255",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "tourism": "museum",
+      "website": "https://www.museumvanloon.nl/",
+      "wheelchair": "no",
+      "wikidata": "Q2191110",
+      "wikimedia_commons": "Category:Museum Van Loon",
+      "wikipedia": "nl:Museum Van Loon"
+     },
+     "fetchedAt": "2026-11-10T08:32:31.032Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012168451",
+   "addresses": [
+    "Keizersgracht 670"
+   ],
+   "groundUnits": [
+    {
+     "address": "Keizersgracht 670",
+     "use": "woonfunctie",
+     "areaM2": 1181,
+     "bagId": "0363010000701442"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012175159",
+   "addresses": [
+    "Keizersgracht 662",
+    "Keizersgracht 664A",
+    "Keizersgracht 664B",
+    "Keizersgracht 664C",
+    "Keizersgracht 664D",
+    "Keizersgracht 664E",
+    "Keizersgracht 664F",
+    "Keizersgracht 664G",
+    "Keizersgracht 664H",
+    "Keizersgracht 666A",
+    "Keizersgracht 666B",
+    "Keizersgracht 666C",
+    "Keizersgracht 668A",
+    "Keizersgracht 668B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Keizersgracht 662",
+     "use": "woonfunctie",
+     "areaM2": 150,
+     "bagId": "0363010000953152"
+    },
+    {
+     "address": "Keizersgracht 664A",
+     "use": "woonfunctie",
+     "areaM2": 161,
+     "bagId": "0363010000953153"
+    },
+    {
+     "address": "Keizersgracht 664B",
+     "use": "woonfunctie",
+     "areaM2": 120,
+     "bagId": "0363010000953154"
+    },
+    {
+     "address": "Keizersgracht 664C",
+     "use": "woonfunctie",
+     "areaM2": 109,
+     "bagId": "0363010000953155"
+    },
+    {
+     "address": "Keizersgracht 664D",
+     "use": "woonfunctie",
+     "areaM2": 126,
+     "bagId": "0363010000953156"
+    },
+    {
+     "address": "Keizersgracht 664E",
+     "use": "woonfunctie",
+     "areaM2": 141,
+     "bagId": "0363010000953157"
+    },
+    {
+     "address": "Keizersgracht 664F",
+     "use": "woonfunctie",
+     "areaM2": 140,
+     "bagId": "0363010000953158"
+    },
+    {
+     "address": "Keizersgracht 664G",
+     "use": "woonfunctie",
+     "areaM2": 190,
+     "bagId": "0363010000953159"
+    },
+    {
+     "address": "Keizersgracht 664H",
+     "use": "woonfunctie",
+     "areaM2": 90,
+     "bagId": "0363010000953160"
+    },
+    {
+     "address": "Keizersgracht 666A",
+     "use": "kantoorfunctie",
+     "areaM2": 356,
+     "bagId": "0363010000953161"
+    },
+    {
+     "address": "Keizersgracht 666B",
+     "use": "kantoorfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000953162"
+    },
+    {
+     "address": "Keizersgracht 666C",
+     "use": "woonfunctie",
+     "areaM2": 461,
+     "bagId": "0363010000953163"
+    },
+    {
+     "address": "Keizersgracht 668A",
+     "use": "kantoorfunctie",
+     "areaM2": 525,
+     "bagId": "0363010000953164"
+    },
+    {
+     "address": "Keizersgracht 668B",
+     "use": "kantoorfunctie",
+     "areaM2": 1014,
+     "bagId": "0363010000953165"
+    }
+   ],
+   "units": 14,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012180258",
+   "addresses": [
+    "Keizersgracht 660A",
+    "Keizersgracht 660B",
+    "Keizersgracht 660C",
+    "Keizersgracht 660D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Vijzelstraat 81",
+     "use": "winkelfunctie",
+     "areaM2": 125,
+     "bagId": "0363010001994364"
+    },
+    {
+     "address": "Keizersgracht 660A",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010001994365"
+    },
+    {
+     "address": "Keizersgracht 660B",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010001994366"
+    },
+    {
+     "address": "Keizersgracht 660D",
+     "use": "woonfunctie",
+     "areaM2": 1,
+     "bagId": "0363010001994368"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  }
+ ]
+}

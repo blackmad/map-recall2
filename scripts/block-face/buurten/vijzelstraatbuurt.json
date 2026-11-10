@@ -1,0 +1,11337 @@
+{
+ "buurt": "Vijzelstraatbuurt",
+ "code": "AG05",
+ "identificatie": "03630980000066",
+ "slug": "vijzelstraatbuurt",
+ "sources": {
+  "outline": "api.data.amsterdam.nl gebieden/buurten (CC0)",
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (CC0)",
+  "threeDBag": "3DBAG api.3dbag.nl (CC BY 4.0)"
+ },
+ "surveyedAt": "2026-11-10",
+ "outlineRD": [
+  [
+   121546.267,
+   486082.954
+  ],
+  [
+   121533.975,
+   486081.395
+  ],
+  [
+   121002.868,
+   486203.839
+  ],
+  [
+   120998.55,
+   486206.112
+  ],
+  [
+   121095.626,
+   486380.619
+  ],
+  [
+   121138.044,
+   486456.576
+  ],
+  [
+   121170.641,
+   486517.198
+  ],
+  [
+   121326.219,
+   486480.664
+  ],
+  [
+   121534.048,
+   486431.859
+  ],
+  [
+   121546.267,
+   486082.954
+  ]
+ ],
+ "facesRule": "blockFace/buurtFaces.ts proposeFaces: per street and side, pands with a frontage on their address street joined by shared BAG party walls (>= 1 m, front normals within 0.8 dot); faces already authored are kept, not proposed",
+ "faces": [
+  {
+   "id": "herengracht-468-480",
+   "street": "Herengracht",
+   "side": "even",
+   "seed": "0363100012176760",
+   "members": [
+    "0363100012167958",
+    "0363100012167959",
+    "0363100012167903",
+    "0363100012167902",
+    "0363100012176762",
+    "0363100012176761",
+    "0363100012176760"
+   ],
+   "numbers": [
+    468,
+    480
+   ],
+   "lengthM": 96.8,
+   "covered": "herengracht-468-480"
+  },
+  {
+   "id": "herengracht-498-514",
+   "street": "Herengracht",
+   "side": "even",
+   "seed": "0363100012167974",
+   "members": [
+    "0363100012179332",
+    "0363100012179333",
+    "0363100012179337",
+    "0363100012179336",
+    "0363100012179335",
+    "0363100012179334",
+    "0363100012179338",
+    "0363100012167974"
+   ],
+   "numbers": [
+    498,
+    514
+   ],
+   "lengthM": 104.2,
+   "covered": "herengracht-498-514"
+  },
+  {
+   "id": "herengracht-518-532",
+   "street": "Herengracht",
+   "side": "even",
+   "seed": "0363100012167981",
+   "members": [
+    "0363100012180299",
+    "0363100012180308",
+    "0363100012180307",
+    "0363100012180311",
+    "0363100012180310",
+    "0363100012168044",
+    "0363100012167981"
+   ],
+   "numbers": [
+    518,
+    532
+   ],
+   "lengthM": 73.2
+  },
+  {
+   "id": "keizersgracht-596-648",
+   "street": "Keizersgracht",
+   "side": "even",
+   "seed": "0363100012165045",
+   "members": [
+    "0363100012165076",
+    "0363100012165075",
+    "0363100012165049",
+    "0363100012175658",
+    "0363100012175659",
+    "0363100012571490",
+    "0363100012176750",
+    "0363100012176751",
+    "0363100012176749",
+    "0363100012176748",
+    "0363100012176747",
+    "0363100012176746",
+    "0363100012176745",
+    "0363100012175645",
+    "0363100012175655",
+    "0363100012175654",
+    "0363100012167899",
+    "0363100012167896",
+    "0363100012176066",
+    "0363100012176067",
+    "0363100012176068",
+    "0363100012167895",
+    "0363100012165043",
+    "0363100012165044",
+    "0363100012165045"
+   ],
+   "numbers": [
+    596,
+    648
+   ],
+   "lengthM": 179.2
+  },
+  {
+   "id": "keizersgracht-660-710",
+   "street": "Keizersgracht",
+   "side": "even",
+   "seed": "0363100012180258",
+   "members": [
+    "0363100012171023",
+    "0363100012169155",
+    "0363100012169157",
+    "0363100012167488",
+    "0363100012167491",
+    "0363100012167490",
+    "0363100012167489",
+    "0363100012167486",
+    "0363100012167484",
+    "0363100012167482",
+    "0363100012167483",
+    "0363100012167485",
+    "0363100012179306",
+    "0363100012179305",
+    "0363100012179304",
+    "0363100012179307",
+    "0363100012179330",
+    "0363100012179308",
+    "0363100012179302",
+    "0363100012168451",
+    "0363100012175159",
+    "0363100012180258"
+   ],
+   "numbers": [
+    660,
+    710
+   ],
+   "lengthM": 220.6
+  },
+  {
+   "id": "keizersgracht-712-714",
+   "street": "Keizersgracht",
+   "side": "even",
+   "seed": "0363100012171042",
+   "members": [
+    "0363100012171024",
+    "0363100012171042"
+   ],
+   "numbers": [
+    712,
+    714
+   ],
+   "lengthM": 7.8
+  },
+  {
+   "id": "keizersgracht-557-585",
+   "street": "Keizersgracht",
+   "side": "odd",
+   "seed": "0363100012167898",
+   "members": [
+    "0363100012167898",
+    "0363100012167900",
+    "0363100012176756",
+    "0363100012176757",
+    "0363100012176752",
+    "0363100012176758",
+    "0363100012167901"
+   ],
+   "numbers": [
+    557,
+    585
+   ],
+   "lengthM": 100.6
+  },
+  {
+   "id": "keizersgracht-607-609",
+   "street": "Keizersgracht",
+   "side": "odd",
+   "seed": "0363100012167905",
+   "members": [
+    "0363100012167905",
+    "0363100012167983"
+   ],
+   "numbers": [
+    607,
+    609
+   ],
+   "lengthM": 22.4
+  },
+  {
+   "id": "keizersgracht-615-661",
+   "street": "Keizersgracht",
+   "side": "odd",
+   "seed": "0363100012167982",
+   "members": [
+    "0363100012167982",
+    "0363100012167979",
+    "0363100012179303",
+    "0363100012167976",
+    "0363100012167980",
+    "0363100012167984",
+    "0363100012167985",
+    "0363100012180136",
+    "0363100012180137",
+    "0363100012180135",
+    "0363100012180047",
+    "0363100012180046",
+    "0363100012180132",
+    "0363100012180133",
+    "0363100012180049",
+    "0363100012180128"
+   ],
+   "numbers": [
+    615,
+    661
+   ],
+   "lengthM": 130.2
+  },
+  {
+   "id": "kerk-146-198",
+   "street": "Kerkstraat",
+   "side": "even",
+   "seed": "0363100012177263",
+   "members": [
+    "0363100012167565",
+    "0363100012167564",
+    "0363100012167566",
+    "0363100012167891",
+    "0363100012167892",
+    "0363100012167551",
+    "0363100012167552",
+    "0363100012167560",
+    "0363100012167555",
+    "0363100012167556",
+    "0363100012167557",
+    "0363100012167553",
+    "0363100012167554",
+    "0363100012167558",
+    "0363100012165042",
+    "0363100012176085",
+    "0363100012176147",
+    "0363100012176084",
+    "0363100012176159",
+    "0363100012176160",
+    "0363100012167615",
+    "0363100012167617",
+    "0363100012176077",
+    "0363100012167618",
+    "0363100012177263"
+   ],
+   "numbers": [
+    146,
+    198
+   ],
+   "lengthM": 134.5
+  },
+  {
+   "id": "kerk-202-235",
+   "street": "Kerkstraat",
+   "side": "even",
+   "seed": "0363100012176231",
+   "members": [
+    "0363100012165685",
+    "0363100012175018",
+    "0363100012176231"
+   ],
+   "numbers": [
+    202,
+    235
+   ],
+   "lengthM": 60.2
+  },
+  {
+   "id": "kerk-240-240",
+   "street": "Kerkstraat",
+   "side": "even",
+   "seed": "0363100012180191",
+   "members": [
+    "0363100012180191"
+   ],
+   "numbers": [
+    240,
+    240
+   ],
+   "lengthM": 20
+  },
+  {
+   "id": "kerk-246-328",
+   "street": "Kerkstraat",
+   "side": "even",
+   "seed": "0363100012180090",
+   "members": [
+    "0363100012179945",
+    "0363100012179946",
+    "0363100012179949",
+    "0363100012179950",
+    "0363100012180041",
+    "0363100012167474",
+    "0363100012179215",
+    "0363100012179214",
+    "0363100012179255",
+    "0363100012179254",
+    "0363100012179253",
+    "0363100012179252",
+    "0363100012179251",
+    "0363100012179250",
+    "0363100012179249",
+    "0363100012179245",
+    "0363100012179213",
+    "0363100012179244",
+    "0363100012179241",
+    "0363100012179240",
+    "0363100012179218",
+    "0363100012179298",
+    "0363100012179299",
+    "0363100012179288",
+    "0363100012179211",
+    "0363100012167476",
+    "0363100012168388",
+    "0363100012180256",
+    "0363100012180087",
+    "0363100012180088",
+    "0363100012180089",
+    "0363100012180090"
+   ],
+   "numbers": [
+    246,
+    328
+   ],
+   "lengthM": 218.1
+  },
+  {
+   "id": "kerk-155-155",
+   "street": "Kerkstraat",
+   "side": "odd",
+   "seed": "0363100012176076",
+   "members": [
+    "0363100012176076"
+   ],
+   "numbers": [
+    155,
+    155
+   ],
+   "lengthM": 3.3
+  },
+  {
+   "id": "kerk-161-227",
+   "street": "Kerkstraat",
+   "side": "odd",
+   "seed": "0363100012176074",
+   "members": [
+    "0363100012176074",
+    "0363100012241058",
+    "0363100012176148",
+    "0363100012176083",
+    "0363100012176082",
+    "0363100012176081",
+    "0363100012176080",
+    "0363100012176079",
+    "0363100012176078",
+    "0363100012176153",
+    "0363100012176154",
+    "0363100012167559",
+    "0363100012175657",
+    "0363100012175656",
+    "0363100012175648",
+    "0363100012175649",
+    "0363100012175651",
+    "0363100012175663",
+    "0363100012175664",
+    "0363100012175665",
+    "0363100012185838",
+    "0363100012175660",
+    "0363100012175661",
+    "0363100012167893",
+    "0363100012167894"
+   ],
+   "numbers": [
+    161,
+    227
+   ],
+   "lengthM": 160.9
+  },
+  {
+   "id": "kerk-245-317",
+   "street": "Kerkstraat",
+   "side": "odd",
+   "seed": "0363100012165079",
+   "members": [
+    "0363100012165079",
+    "0363100012168390",
+    "0363100012168391",
+    "0363100012180187",
+    "0363100012180086",
+    "0363100012168389",
+    "0363100012179212",
+    "0363100012179210",
+    "0363100012179300",
+    "0363100012179301",
+    "0363100012179291",
+    "0363100012179292",
+    "0363100012179259",
+    "0363100012179260",
+    "0363100012179261",
+    "0363100012179262",
+    "0363100012179287",
+    "0363100012179248",
+    "0363100012179247",
+    "0363100012179246",
+    "0363100012179243",
+    "0363100012167475",
+    "0363100012179938",
+    "0363100012179939",
+    "0363100012179940",
+    "0363100012179941",
+    "0363100012179942",
+    "0363100012179866",
+    "0363100012179867",
+    "0363100012179871",
+    "0363100012179872"
+   ],
+   "numbers": [
+    245,
+    317
+   ],
+   "lengthM": 232.7
+  },
+  {
+   "id": "spiegel-1-17",
+   "street": "Nieuwe Spiegelstraat",
+   "side": "odd",
+   "seed": "0363100012176763",
+   "members": [
+    "0363100012176763",
+    "0363100012167897"
+   ],
+   "numbers": [
+    1,
+    17
+   ],
+   "lengthM": 78.3
+  },
+  {
+   "id": "spiegel-23-45",
+   "street": "Nieuwe Spiegelstraat",
+   "side": "odd",
+   "seed": "0363100012176069",
+   "members": [
+    "0363100012176069",
+    "0363100012176152",
+    "0363100012176151",
+    "0363100012176150",
+    "0363100012176158",
+    "0363100012176072",
+    "0363100012176071",
+    "0363100012176075",
+    "0363100012167616"
+   ],
+   "numbers": [
+    23,
+    45
+   ],
+   "lengthM": 68.4
+  },
+  {
+   "id": "spiegel-47-67",
+   "street": "Nieuwe Spiegelstraat",
+   "side": "odd",
+   "seed": "0363100012177260",
+   "members": [
+    "0363100012177260",
+    "0363100012177259",
+    "0363100012177258",
+    "0363100012167604",
+    "0363100012167599",
+    "0363100012177074",
+    "0363100012177627",
+    "0363100012177153",
+    "0363100012177152",
+    "0363100012177624",
+    "0363100012177620"
+   ],
+   "numbers": [
+    47,
+    67
+   ],
+   "lengthM": 51.7
+  },
+  {
+   "id": "prinsengracht-809-815",
+   "street": "Prinsengracht",
+   "side": "odd",
+   "seed": "0363100012177625",
+   "members": [
+    "0363100012177625",
+    "0363100012177628",
+    "0363100012177075",
+    "0363100012177155"
+   ],
+   "numbers": [
+    809,
+    815
+   ],
+   "lengthM": 19.8
+  },
+  {
+   "id": "prinsengracht-817-817",
+   "street": "Prinsengracht",
+   "side": "odd",
+   "seed": "0363100012247679",
+   "members": [
+    "0363100012247679"
+   ],
+   "numbers": [
+    817,
+    817
+   ],
+   "lengthM": 5.7
+  },
+  {
+   "id": "prinsengracht-819-927",
+   "street": "Prinsengracht",
+   "side": "odd",
+   "seed": "0363100012249791",
+   "members": [
+    "0363100012171286",
+    "0363100012167610",
+    "0363100012249791",
+    "0363100012175985",
+    "0363100012175980",
+    "0363100012175981",
+    "0363100012175988",
+    "0363100012175983",
+    "0363100012185778",
+    "0363100012175999",
+    "0363100012175984",
+    "0363100012176061",
+    "0363100012175996",
+    "0363100012175997",
+    "0363100012175979",
+    "0363100012175978",
+    "0363100012175982",
+    "0363100012176065",
+    "0363100012175993",
+    "0363100012175987",
+    "0363100012167550",
+    "0363100012167563",
+    "0363100012175017",
+    "0363100012185781",
+    "0363100012185780",
+    "0363100012176233",
+    "0363100012175586",
+    "0363100012175012",
+    "0363100012175014",
+    "0363100012175008",
+    "0363100012253749",
+    "0363100012175009",
+    "0363100012175016",
+    "0363100012175007"
+   ],
+   "numbers": [
+    819,
+    927
+   ],
+   "lengthM": 165.7
+  },
+  {
+   "id": "prinsengracht-955-1047",
+   "street": "Prinsengracht",
+   "side": "odd",
+   "seed": "0363100012180190",
+   "members": [
+    "0363100012180190",
+    "0363100012180186",
+    "0363100012180181",
+    "0363100012180188",
+    "0363100012180180",
+    "0363100012180189",
+    "0363100012180182",
+    "0363100012180184",
+    "0363100012180183",
+    "0363100012168392",
+    "0363100012167904",
+    "0363100012168387",
+    "0363100012167481",
+    "0363100012167479",
+    "0363100012167478",
+    "0363100012168461",
+    "0363100012168460",
+    "0363100012168452",
+    "0363100012168457",
+    "0363100012168459",
+    "0363100012168453",
+    "0363100012168454",
+    "0363100012168455",
+    "0363100012168456",
+    "0363100012168458",
+    "0363100012179161",
+    "0363100012179154",
+    "0363100012179155",
+    "0363100012179153",
+    "0363100012167487",
+    "0363100012179698",
+    "0363100012179697",
+    "0363100012179696",
+    "0363100012180194",
+    "0363100012180193",
+    "0363100012180126",
+    "0363100012180125",
+    "0363100012180122",
+    "0363100012180123",
+    "0363100012180116",
+    "0363100012180115"
+   ],
+   "numbers": [
+    955,
+    1047
+   ],
+   "lengthM": 219.8
+  },
+  {
+   "id": "reguliersgracht-2-36",
+   "street": "Reguliersgracht",
+   "side": "even",
+   "seed": "0363100012180300",
+   "members": [
+    "0363100012180129",
+    "0363100012180127",
+    "0363100012180048",
+    "0363100012180130",
+    "0363100012180131",
+    "0363100012169156",
+    "0363100012180234",
+    "0363100012180233",
+    "0363100012180232",
+    "0363100012180304",
+    "0363100012180305",
+    "0363100012180306",
+    "0363100012180301",
+    "0363100012180302",
+    "0363100012180303",
+    "0363100012180312",
+    "0363100012180300"
+   ],
+   "numbers": [
+    2,
+    36
+   ],
+   "lengthM": 100.3
+  },
+  {
+   "id": "reguliersgracht-40-68",
+   "street": "Reguliersgracht",
+   "side": "even",
+   "seed": "0363100012180045",
+   "members": [
+    "0363100012179771",
+    "0363100012179873",
+    "0363100012179868",
+    "0363100012179869",
+    "0363100012179870",
+    "0363100012179773",
+    "0363100012179774",
+    "0363100012179775",
+    "0363100012179865",
+    "0363100012179778",
+    "0363100012179777",
+    "0363100012179864",
+    "0363100012180044",
+    "0363100012180045"
+   ],
+   "numbers": [
+    40,
+    68
+   ],
+   "lengthM": 69.6
+  },
+  {
+   "id": "reguliersgracht-72-84",
+   "street": "Reguliersgracht",
+   "side": "even",
+   "seed": "0363100012179944",
+   "members": [
+    "0363100012179769",
+    "0363100012179700",
+    "0363100012179766",
+    "0363100012180120",
+    "0363100012171022",
+    "0363100012179943",
+    "0363100012179944"
+   ],
+   "numbers": [
+    72,
+    84
+   ],
+   "lengthM": 39.6
+  },
+  {
+   "id": "reguliersgracht-88-92",
+   "street": "Reguliersgracht",
+   "side": "even",
+   "seed": "0363100012179767",
+   "members": [
+    "0363100012179770",
+    "0363100012180117",
+    "0363100012179767"
+   ],
+   "numbers": [
+    88,
+    92
+   ],
+   "lengthM": 13.6
+  },
+  {
+   "id": "vijzel-30-32",
+   "street": "Vijzelstraat",
+   "side": "even",
+   "seed": "0363100012165077",
+   "members": [
+    "0363100012165077"
+   ],
+   "numbers": [
+    30,
+    32
+   ],
+   "lengthM": 8.7
+  },
+  {
+   "id": "vijzel-67-79",
+   "street": "Vijzelstraat",
+   "side": "odd",
+   "seed": "0363100012175160",
+   "members": [
+    "0363100012175160",
+    "0363100012175164",
+    "0363100012175163",
+    "0363100012253952",
+    "0363100012175161",
+    "0363100012175165",
+    "0363100012167975"
+   ],
+   "numbers": [
+    67,
+    79
+   ],
+   "lengthM": 84.5
+  },
+  {
+   "id": "vijzel-83-103",
+   "street": "Vijzelstraat",
+   "side": "odd",
+   "seed": "0363100012175151",
+   "members": [
+    "0363100012175151",
+    "0363100012180260",
+    "0363100012180259",
+    "0363100012175158",
+    "0363100012175157",
+    "0363100012175156",
+    "0363100012175155",
+    "0363100012175154",
+    "0363100012175153",
+    "0363100012175152",
+    "0363100012165050"
+   ],
+   "numbers": [
+    83,
+    103
+   ],
+   "lengthM": 49.5
+  },
+  {
+   "id": "vijzel-115-135",
+   "street": "Vijzelstraat",
+   "side": "odd",
+   "seed": "0363100012180192",
+   "members": [
+    "0363100012180192",
+    "0363100012180257",
+    "0363100012180185"
+   ],
+   "numbers": [
+    115,
+    135
+   ],
+   "lengthM": 48.4
+  }
+ ],
+ "pands": [
+  {
+   "pandId": "0363100012176760",
+   "street": "Herengracht",
+   "numbers": [
+    468
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1905,
+   "storeys3dbag": 5,
+   "units": 1,
+   "groundUses": [
+    "kantoorfunctie,woonfunctie"
+   ],
+   "frontWidthM": 14.6,
+   "eavesM": 15.6,
+   "ridgeM": 19,
+   "roofMaxM": 19.9,
+   "normal": [
+    0.222,
+    0.975
+   ],
+   "frontMidRD": [
+    121192.43,
+    486487.55
+   ],
+   "face": "herengracht-468-480"
+  },
+  {
+   "pandId": "0363100012176761",
+   "street": "Herengracht",
+   "numbers": [
+    470
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1905,
+   "storeys3dbag": 3,
+   "units": 1,
+   "groundUses": [
+    "bijeenkomstfunctie,woonfunctie"
+   ],
+   "frontWidthM": 15,
+   "eavesM": 15.9,
+   "ridgeM": 18.4,
+   "roofMaxM": 21.8,
+   "normal": [
+    0.222,
+    0.975
+   ],
+   "frontMidRD": [
+    121206.88,
+    486484.25
+   ],
+   "face": "herengracht-468-480"
+  },
+  {
+   "pandId": "0363100012176762",
+   "street": "Herengracht",
+   "numbers": [
+    472
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1905,
+   "storeys3dbag": 5,
+   "units": 1,
+   "groundUses": [
+    "kantoorfunctie,woonfunctie"
+   ],
+   "frontWidthM": 14.9,
+   "eavesM": 15.3,
+   "ridgeM": 20.1,
+   "roofMaxM": 22.2,
+   "normal": [
+    0.222,
+    0.975
+   ],
+   "frontMidRD": [
+    121221.45,
+    486480.94
+   ],
+   "face": "herengracht-468-480"
+  },
+  {
+   "pandId": "0363100012167902",
+   "street": "Herengracht",
+   "numbers": [
+    474
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1669,
+   "storeys3dbag": 0,
+   "units": 1,
+   "groundUses": [
+    "kantoorfunctie"
+   ],
+   "frontWidthM": 7.5,
+   "eavesM": 18.6,
+   "ridgeM": 21.7,
+   "roofMaxM": 21.7,
+   "normal": [
+    0.219,
+    0.976
+   ],
+   "frontMidRD": [
+    121232.34,
+    486478.47
+   ],
+   "face": "herengracht-468-480"
+  },
+  {
+   "pandId": "0363100012167903",
+   "street": "Herengracht",
+   "numbers": [
+    476
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1670,
+   "storeys3dbag": 0,
+   "units": 1,
+   "groundUses": [
+    "kantoorfunctie"
+   ],
+   "frontWidthM": 15,
+   "eavesM": 15.7,
+   "ridgeM": 18,
+   "roofMaxM": 19.7,
+   "normal": [
+    0.219,
+    0.976
+   ],
+   "frontMidRD": [
+    121243.28,
+    486476.02
+   ],
+   "face": "herengracht-468-480"
+  },
+  {
+   "pandId": "0363100012167959",
+   "street": "Herengracht",
+   "numbers": [
+    478
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1666,
+   "storeys3dbag": 0,
+   "units": 1,
+   "groundUses": [
+    "kantoorfunctie"
+   ],
+   "frontWidthM": 14.9,
+   "eavesM": 15.7,
+   "ridgeM": 19.4,
+   "roofMaxM": 19.4,
+   "normal": [
+    0.219,
+    0.976
+   ],
+   "frontMidRD": [
+    121257.87,
+    486472.74
+   ],
+   "face": "herengracht-468-480"
+  },
+  {
+   "pandId": "0363100012167958",
+   "street": "Herengracht",
+   "numbers": [
+    480
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1670,
+   "storeys3dbag": 0,
+   "units": 1,
+   "groundUses": [
+    "kantoorfunctie"
+   ],
+   "frontWidthM": 14.9,
+   "eavesM": 14.5,
+   "ridgeM": 18.2,
+   "roofMaxM": 18.9,
+   "normal": [
+    0.219,
+    0.976
+   ],
+   "frontMidRD": [
+    121272.43,
+    486469.48
+   ],
+   "face": "herengracht-468-480"
+  },
+  {
+   "pandId": "0363100012167974",
+   "street": "Herengracht",
+   "numbers": [
+    498,
+    500
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1770,
+   "storeys3dbag": 4,
+   "units": 2,
+   "groundUses": [
+    "kantoorfunctie,woonfunctie",
+    "kantoorfunctie"
+   ],
+   "frontWidthM": 29.5,
+   "eavesM": 15.1,
+   "ridgeM": 21.6,
+   "roofMaxM": 21.6,
+   "normal": [
+    0.225,
+    0.974
+   ],
+   "frontMidRD": [
+    121346.3,
+    486452.7
+   ],
+   "face": "herengracht-498-514"
+  },
+  {
+   "pandId": "0363100012179338",
+   "street": "Herengracht",
+   "numbers": [
+    502
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1672,
+   "storeys3dbag": 0,
+   "units": 1,
+   "groundUses": [
+    "kantoorfunctie,woonfunctie"
+   ],
+   "frontWidthM": 14.9,
+   "eavesM": 19.4,
+   "ridgeM": 21.6,
+   "roofMaxM": 22.1,
+   "normal": [
+    0.215,
+    0.977
+   ],
+   "frontMidRD": [
+    121367.94,
+    486447.78
+   ],
+   "face": "herengracht-498-514"
+  },
+  {
+   "pandId": "0363100012179334",
+   "street": "Herengracht",
+   "numbers": [
+    504
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1685,
+   "storeys3dbag": 0,
+   "units": 1,
+   "groundUses": [
+    "kantoorfunctie"
+   ],
+   "frontWidthM": 7.5,
+   "eavesM": 16,
+   "ridgeM": 19.9,
+   "roofMaxM": 20,
+   "normal": [
+    0.223,
+    0.975
+   ],
+   "frontMidRD": [
+    121378.86,
+    486445.34
+   ],
+   "face": "herengracht-498-514"
+  },
+  {
+   "pandId": "0363100012179335",
+   "street": "Herengracht",
+   "numbers": [
+    506
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1685,
+   "storeys3dbag": 0,
+   "units": 1,
+   "groundUses": [
+    "kantoorfunctie"
+   ],
+   "frontWidthM": 7.5,
+   "eavesM": 15.2,
+   "ridgeM": 20.5,
+   "roofMaxM": 20.6,
+   "normal": [
+    0.223,
+    0.975
+   ],
+   "frontMidRD": [
+    121386.15,
+    486443.68
+   ],
+   "face": "herengracht-498-514"
+  },
+  {
+   "pandId": "0363100012179336",
+   "street": "Herengracht",
+   "numbers": [
+    508
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1688,
+   "storeys3dbag": 0,
+   "units": 1,
+   "groundUses": [
+    "overige gebruiksfunctie"
+   ],
+   "frontWidthM": 7.5,
+   "eavesM": 15.2,
+   "ridgeM": 20.5,
+   "roofMaxM": 20.5,
+   "normal": [
+    0.223,
+    0.975
+   ],
+   "frontMidRD": [
+    121393.43,
+    486442.01
+   ],
+   "face": "herengracht-498-514"
+  },
+  {
+   "pandId": "0363100012179337",
+   "street": "Herengracht",
+   "numbers": [
+    510
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1688,
+   "storeys3dbag": 5,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 7.5,
+   "eavesM": 15.2,
+   "ridgeM": 20.6,
+   "roofMaxM": 20.7,
+   "normal": [
+    0.223,
+    0.975
+   ],
+   "frontMidRD": [
+    121400.72,
+    486440.34
+   ],
+   "face": "herengracht-498-514"
+  },
+  {
+   "pandId": "0363100012179333",
+   "street": "Herengracht",
+   "numbers": [
+    512
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1687,
+   "storeys3dbag": 5,
+   "units": 1,
+   "groundUses": [
+    "winkelfunctie,woonfunctie"
+   ],
+   "frontWidthM": 11.2,
+   "eavesM": 16,
+   "ridgeM": 19.3,
+   "roofMaxM": 19.3,
+   "normal": [
+    0.225,
+    0.974
+   ],
+   "frontMidRD": [
+    121409.84,
+    486438.25
+   ],
+   "face": "herengracht-498-514"
+  },
+  {
+   "pandId": "0363100012179332",
+   "street": "Herengracht",
+   "numbers": [
+    514
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1785,
+   "storeys3dbag": 0,
+   "units": 1,
+   "groundUses": [
+    "kantoorfunctie"
+   ],
+   "frontWidthM": 18.6,
+   "eavesM": 14.9,
+   "ridgeM": 19.3,
+   "roofMaxM": 19.8,
+   "normal": [
+    0.225,
+    0.974
+   ],
+   "frontMidRD": [
+    121424.37,
+    486434.89
+   ],
+   "face": "herengracht-498-514"
+  },
+  {
+   "pandId": "0363100012167981",
+   "street": "Herengracht",
+   "numbers": [
+    518
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1687,
+   "storeys3dbag": 4,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie",
+    "kantoorfunctie"
+   ],
+   "frontWidthM": 14.8,
+   "eavesM": 14.8,
+   "ridgeM": 18.5,
+   "roofMaxM": 20,
+   "normal": [
+    0.225,
+    0.974
+   ],
+   "frontMidRD": [
+    121447.94,
+    486429.48
+   ]
+  },
+  {
+   "pandId": "0363100012168044",
+   "street": "Herengracht",
+   "numbers": [
+    520
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1725,
+   "storeys3dbag": 0,
+   "units": 1,
+   "groundUses": [
+    "bijeenkomstfunctie,kantoorfunctie"
+   ],
+   "frontWidthM": 14.9,
+   "eavesM": 16,
+   "ridgeM": 19.9,
+   "roofMaxM": 20.2,
+   "normal": [
+    0.219,
+    0.976
+   ],
+   "frontMidRD": [
+    121462.43,
+    486426.27
+   ]
+  },
+  {
+   "pandId": "0363100012180310",
+   "street": "Herengracht",
+   "numbers": [
+    522
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1690,
+   "storeys3dbag": 5,
+   "units": 6,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 7.4,
+   "eavesM": 15.9,
+   "ridgeM": 20.8,
+   "roofMaxM": 20.8,
+   "normal": [
+    0.207,
+    0.978
+   ],
+   "frontMidRD": [
+    121473.29,
+    486423.78
+   ]
+  },
+  {
+   "pandId": "0363100012180311",
+   "street": "Herengracht",
+   "numbers": [
+    524
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1700,
+   "storeys3dbag": 5,
+   "units": 4,
+   "groundUses": [
+    "kantoorfunctie",
+    "woonfunctie"
+   ],
+   "frontWidthM": 7.4,
+   "eavesM": 15.7,
+   "ridgeM": 20.4,
+   "roofMaxM": 20.4,
+   "normal": [
+    0.21,
+    0.978
+   ],
+   "frontMidRD": [
+    121480.53,
+    486422.23
+   ]
+  },
+  {
+   "pandId": "0363100012180307",
+   "street": "Herengracht",
+   "numbers": [
+    528
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1690,
+   "storeys3dbag": 5,
+   "units": 9,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 14.9,
+   "eavesM": 16.2,
+   "ridgeM": 21.2,
+   "roofMaxM": 21.2,
+   "normal": [
+    0.219,
+    0.976
+   ],
+   "frontMidRD": [
+    121491.42,
+    486419.78
+   ]
+  },
+  {
+   "pandId": "0363100012180308",
+   "street": "Herengracht",
+   "numbers": [
+    530
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1989,
+   "storeys3dbag": 5,
+   "units": 5,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 7.4,
+   "eavesM": 16.9,
+   "ridgeM": 21.2,
+   "roofMaxM": 21.6,
+   "normal": [
+    0.219,
+    0.976
+   ],
+   "frontMidRD": [
+    121502.31,
+    486417.34
+   ]
+  },
+  {
+   "pandId": "0363100012180299",
+   "street": "Herengracht",
+   "numbers": [
+    532
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1688,
+   "storeys3dbag": 4,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.4,
+   "eavesM": 12.4,
+   "ridgeM": 16.2,
+   "roofMaxM": 16.2,
+   "normal": [
+    0.213,
+    0.977
+   ],
+   "frontMidRD": [
+    121509.06,
+    486415.85
+   ]
+  },
+  {
+   "pandId": "0363100012167898",
+   "street": "Keizersgracht",
+   "numbers": [
+    557
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1688,
+   "storeys3dbag": 5,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 3.8,
+   "eavesM": 14.4,
+   "ridgeM": 16.3,
+   "roofMaxM": 16.3,
+   "normal": [
+    -0.214,
+    -0.977
+   ],
+   "frontMidRD": [
+    121145.93,
+    486392.77
+   ]
+  },
+  {
+   "pandId": "0363100012167900",
+   "street": "Keizersgracht",
+   "numbers": [
+    559
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1680,
+   "storeys3dbag": 0,
+   "units": 1,
+   "groundUses": [
+    "kantoorfunctie"
+   ],
+   "frontWidthM": 4.7,
+   "eavesM": 13,
+   "ridgeM": 14.7,
+   "roofMaxM": 14.8,
+   "normal": [
+    -0.207,
+    -0.978
+   ],
+   "frontMidRD": [
+    121150.04,
+    486391.89
+   ]
+  },
+  {
+   "pandId": "0363100012176756",
+   "street": "Keizersgracht",
+   "numbers": [
+    561,
+    563
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1770,
+   "storeys3dbag": 4,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 7.6,
+   "eavesM": 2.5,
+   "ridgeM": 18.6,
+   "roofMaxM": 18.8,
+   "normal": [
+    -0.221,
+    -0.975
+   ],
+   "frontMidRD": [
+    121158.62,
+    486389.98
+   ]
+  },
+  {
+   "pandId": "0363100012176757",
+   "street": "Keizersgracht",
+   "numbers": [
+    565
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1670,
+   "storeys3dbag": 5,
+   "units": 1,
+   "groundUses": [
+    "kantoorfunctie,woonfunctie"
+   ],
+   "frontWidthM": 14.6,
+   "eavesM": 13.8,
+   "ridgeM": 17.3,
+   "roofMaxM": 18.3,
+   "normal": [
+    -0.229,
+    -0.974
+   ],
+   "frontMidRD": [
+    121169.67,
+    486387.37
+   ]
+  },
+  {
+   "pandId": "0363100012176752",
+   "street": "Keizersgracht",
+   "numbers": [
+    575
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1894,
+   "storeys3dbag": 0,
+   "units": 1,
+   "groundUses": [
+    "kantoorfunctie"
+   ],
+   "frontWidthM": 37.2,
+   "eavesM": 16.5,
+   "ridgeM": 23.3,
+   "roofMaxM": 25.7,
+   "normal": [
+    -0.212,
+    -0.977
+   ],
+   "frontMidRD": [
+    121194.95,
+    486381.63
+   ]
+  },
+  {
+   "pandId": "0363100012176758",
+   "street": "Keizersgracht",
+   "numbers": [
+    579,
+    581
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1919,
+   "storeys3dbag": 5,
+   "units": 18,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 15,
+   "eavesM": 13.1,
+   "ridgeM": 19.2,
+   "roofMaxM": 20.1,
+   "normal": [
+    -0.228,
+    -0.974
+   ],
+   "frontMidRD": [
+    121220.45,
+    486375.88
+   ]
+  },
+  {
+   "pandId": "0363100012167901",
+   "street": "Keizersgracht",
+   "numbers": [
+    583,
+    585
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1700,
+   "storeys3dbag": 0,
+   "units": 2,
+   "groundUses": [
+    "kantoorfunctie"
+   ],
+   "frontWidthM": 17.7,
+   "eavesM": 16.2,
+   "ridgeM": 19.6,
+   "roofMaxM": 19.6,
+   "normal": [
+    -0.221,
+    -0.975
+   ],
+   "frontMidRD": [
+    121250.91,
+    486369.07
+   ]
+  },
+  {
+   "pandId": "0363100012165045",
+   "street": "Keizersgracht",
+   "numbers": [
+    596
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1740,
+   "storeys3dbag": 4,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 14.3,
+   "eavesM": 12.3,
+   "ridgeM": 15,
+   "roofMaxM": 15.7,
+   "normal": [
+    0.237,
+    0.971
+   ],
+   "frontMidRD": [
+    121094.15,
+    486354.29
+   ]
+  },
+  {
+   "pandId": "0363100012165044",
+   "street": "Keizersgracht",
+   "numbers": [
+    598
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1670,
+   "storeys3dbag": 4,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 5.2,
+   "eavesM": 12.6,
+   "ridgeM": 17.4,
+   "roofMaxM": 17.4,
+   "normal": [
+    0.237,
+    0.971
+   ],
+   "frontMidRD": [
+    121103.64,
+    486352.08
+   ]
+  },
+  {
+   "pandId": "0363100012165043",
+   "street": "Keizersgracht",
+   "numbers": [
+    600
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1670,
+   "storeys3dbag": 4,
+   "units": 1,
+   "groundUses": [
+    "winkelfunctie,woonfunctie"
+   ],
+   "frontWidthM": 5.2,
+   "eavesM": 12.9,
+   "ridgeM": 17.3,
+   "roofMaxM": 17.3,
+   "normal": [
+    0.243,
+    0.97
+   ],
+   "frontMidRD": [
+    121108.68,
+    486350.83
+   ]
+  },
+  {
+   "pandId": "0363100012167895",
+   "street": "Keizersgracht",
+   "numbers": [
+    602
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1669,
+   "storeys3dbag": 4,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 5.2,
+   "eavesM": 16.4,
+   "ridgeM": 17.9,
+   "roofMaxM": 17.9,
+   "normal": [
+    0.243,
+    0.97
+   ],
+   "frontMidRD": [
+    121113.71,
+    486349.58
+   ]
+  },
+  {
+   "pandId": "0363100012176068",
+   "street": "Keizersgracht",
+   "numbers": [
+    604
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1670,
+   "storeys3dbag": 4,
+   "units": 3,
+   "groundUses": [
+    "woonfunctie",
+    "kantoorfunctie,woonfunctie",
+    "kantoorfunctie"
+   ],
+   "frontWidthM": 14.9,
+   "eavesM": 16.1,
+   "ridgeM": 19.1,
+   "roofMaxM": 19.1,
+   "normal": [
+    0.233,
+    0.972
+   ],
+   "frontMidRD": [
+    121123.48,
+    486347.21
+   ]
+  },
+  {
+   "pandId": "0363100012176067",
+   "street": "Keizersgracht",
+   "numbers": [
+    606
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1730,
+   "storeys3dbag": 5,
+   "units": 5,
+   "groundUses": [
+    "woonfunctie",
+    "kantoorfunctie"
+   ],
+   "frontWidthM": 7.4,
+   "eavesM": 15.7,
+   "ridgeM": 20.9,
+   "roofMaxM": 20.9,
+   "normal": [
+    0.225,
+    0.974
+   ],
+   "frontMidRD": [
+    121134.36,
+    486344.63
+   ]
+  },
+  {
+   "pandId": "0363100012167905",
+   "street": "Keizersgracht",
+   "numbers": [
+    607
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1672,
+   "storeys3dbag": 5,
+   "units": 10,
+   "groundUses": [
+    "woonfunctie",
+    "industriefunctie"
+   ],
+   "frontWidthM": 15,
+   "eavesM": 10.5,
+   "ridgeM": 13.6,
+   "roofMaxM": 13.5,
+   "normal": [
+    -0.222,
+    -0.975
+   ],
+   "frontMidRD": [
+    121345.21,
+    486347.6
+   ]
+  },
+  {
+   "pandId": "0363100012176066",
+   "street": "Keizersgracht",
+   "numbers": [
+    608
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1730,
+   "storeys3dbag": 5,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 7.4,
+   "eavesM": 15.6,
+   "ridgeM": 20.9,
+   "roofMaxM": 20.9,
+   "normal": [
+    0.224,
+    0.975
+   ],
+   "frontMidRD": [
+    121141.6,
+    486342.96
+   ]
+  },
+  {
+   "pandId": "0363100012167983",
+   "street": "Keizersgracht",
+   "numbers": [
+    609
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1861,
+   "storeys3dbag": 0,
+   "units": 1,
+   "groundUses": [
+    "bijeenkomstfunctie"
+   ],
+   "frontWidthM": 7.4,
+   "eavesM": 17.3,
+   "ridgeM": 21.4,
+   "roofMaxM": 21.6,
+   "normal": [
+    -0.223,
+    -0.975
+   ],
+   "frontMidRD": [
+    121356.09,
+    486344.93
+   ]
+  },
+  {
+   "pandId": "0363100012167896",
+   "street": "Keizersgracht",
+   "numbers": [
+    610
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1730,
+   "storeys3dbag": 4,
+   "units": 1,
+   "groundUses": [
+    "kantoorfunctie,woonfunctie"
+   ],
+   "frontWidthM": 7.6,
+   "eavesM": 18,
+   "ridgeM": 21.1,
+   "roofMaxM": 21.3,
+   "normal": [
+    0.224,
+    0.975
+   ],
+   "frontMidRD": [
+    121148.91,
+    486341.28
+   ]
+  },
+  {
+   "pandId": "0363100012167899",
+   "street": "Keizersgracht",
+   "numbers": [
+    612
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1675,
+   "storeys3dbag": 5,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 9.4,
+   "eavesM": 12.5,
+   "ridgeM": 16.9,
+   "roofMaxM": 17,
+   "normal": [
+    0.223,
+    0.975
+   ],
+   "frontMidRD": [
+    121157.16,
+    486339.39
+   ]
+  },
+  {
+   "pandId": "0363100012175654",
+   "street": "Keizersgracht",
+   "numbers": [
+    614
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1680,
+   "storeys3dbag": 5,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 5.4,
+   "eavesM": 17.5,
+   "ridgeM": 19,
+   "roofMaxM": 19,
+   "normal": [
+    0.223,
+    0.975
+   ],
+   "frontMidRD": [
+    121164.34,
+    486337.75
+   ]
+  },
+  {
+   "pandId": "0363100012167982",
+   "street": "Keizersgracht",
+   "numbers": [
+    615
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1720,
+   "storeys3dbag": 5,
+   "units": 4,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 7.4,
+   "eavesM": 15.6,
+   "ridgeM": 20.6,
+   "roofMaxM": 20.6,
+   "normal": [
+    -0.208,
+    -0.978
+   ],
+   "frontMidRD": [
+    121377.85,
+    486340.02
+   ]
+  },
+  {
+   "pandId": "0363100012175655",
+   "street": "Keizersgracht",
+   "numbers": [
+    616
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1800,
+   "storeys3dbag": 5,
+   "units": 9,
+   "groundUses": [
+    "woonfunctie",
+    "kantoorfunctie"
+   ],
+   "frontWidthM": 7.6,
+   "eavesM": 18.1,
+   "ridgeM": 21.1,
+   "roofMaxM": 21.2,
+   "normal": [
+    0.223,
+    0.975
+   ],
+   "frontMidRD": [
+    121170.66,
+    486336.3
+   ]
+  },
+  {
+   "pandId": "0363100012167979",
+   "street": "Keizersgracht",
+   "numbers": [
+    617
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1912,
+   "storeys3dbag": 0,
+   "units": 1,
+   "groundUses": [
+    "kantoorfunctie"
+   ],
+   "frontWidthM": 18,
+   "eavesM": 16.5,
+   "ridgeM": 22.9,
+   "roofMaxM": 22.9,
+   "normal": [
+    -0.225,
+    -0.974
+   ],
+   "frontMidRD": [
+    121390.25,
+    486337.24
+   ]
+  },
+  {
+   "pandId": "0363100012175645",
+   "street": "Keizersgracht",
+   "numbers": [
+    618
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1672,
+   "storeys3dbag": 4,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 7.5,
+   "eavesM": 15.2,
+   "ridgeM": 18.5,
+   "roofMaxM": 18.5,
+   "normal": [
+    0.223,
+    0.975
+   ],
+   "frontMidRD": [
+    121178.01,
+    486334.62
+   ]
+  },
+  {
+   "pandId": "0363100012176745",
+   "street": "Keizersgracht",
+   "numbers": [
+    620
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1680,
+   "storeys3dbag": 0,
+   "units": 1,
+   "groundUses": [
+    "kantoorfunctie"
+   ],
+   "frontWidthM": 11,
+   "eavesM": 15.7,
+   "ridgeM": 18.8,
+   "roofMaxM": 18.8,
+   "normal": [
+    0.207,
+    0.978
+   ],
+   "frontMidRD": [
+    121187.05,
+    486332.65
+   ]
+  },
+  {
+   "pandId": "0363100012176746",
+   "street": "Keizersgracht",
+   "numbers": [
+    624
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1680,
+   "storeys3dbag": 5,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 5.1,
+   "eavesM": 17,
+   "ridgeM": 18.5,
+   "roofMaxM": 18.5,
+   "normal": [
+    0.235,
+    0.972
+   ],
+   "frontMidRD": [
+    121194.91,
+    486330.91
+   ]
+  },
+  {
+   "pandId": "0363100012176747",
+   "street": "Keizersgracht",
+   "numbers": [
+    626
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1680,
+   "storeys3dbag": 4,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 4.9,
+   "eavesM": 14.4,
+   "ridgeM": 17.6,
+   "roofMaxM": 18.2,
+   "normal": [
+    0.235,
+    0.972
+   ],
+   "frontMidRD": [
+    121199.75,
+    486329.74
+   ]
+  },
+  {
+   "pandId": "0363100012176748",
+   "street": "Keizersgracht",
+   "numbers": [
+    628
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1680,
+   "storeys3dbag": 5,
+   "units": 4,
+   "groundUses": [
+    "kantoorfunctie",
+    "woonfunctie"
+   ],
+   "frontWidthM": 5,
+   "eavesM": 13.7,
+   "ridgeM": 17.7,
+   "roofMaxM": 17.7,
+   "normal": [
+    0.222,
+    0.975
+   ],
+   "frontMidRD": [
+    121204.53,
+    486328.62
+   ]
+  },
+  {
+   "pandId": "0363100012176749",
+   "street": "Keizersgracht",
+   "numbers": [
+    630
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1680,
+   "storeys3dbag": 0,
+   "units": 1,
+   "groundUses": [
+    "kantoorfunctie"
+   ],
+   "frontWidthM": 4.9,
+   "eavesM": 14.4,
+   "ridgeM": 17.9,
+   "roofMaxM": 17.9,
+   "normal": [
+    0.223,
+    0.975
+   ],
+   "frontMidRD": [
+    121209.36,
+    486327.52
+   ]
+  },
+  {
+   "pandId": "0363100012179303",
+   "street": "Keizersgracht",
+   "numbers": [
+    631
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1905,
+   "storeys3dbag": 4,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 4.9,
+   "eavesM": 15.6,
+   "ridgeM": 18.4,
+   "roofMaxM": 18.4,
+   "normal": [
+    -0.207,
+    -0.978
+   ],
+   "frontMidRD": [
+    121422.46,
+    486329.85
+   ]
+  },
+  {
+   "pandId": "0363100012176751",
+   "street": "Keizersgracht",
+   "numbers": [
+    632
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1905,
+   "storeys3dbag": 3,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.3,
+   "eavesM": 16.1,
+   "ridgeM": 20.9,
+   "roofMaxM": 20.9,
+   "normal": [
+    0.222,
+    0.975
+   ],
+   "frontMidRD": [
+    121214.84,
+    486326.27
+   ]
+  },
+  {
+   "pandId": "0363100012167976",
+   "street": "Keizersgracht",
+   "numbers": [
+    633
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1905,
+   "storeys3dbag": 5,
+   "units": 7,
+   "groundUses": [
+    "kantoorfunctie"
+   ],
+   "frontWidthM": 7.5,
+   "eavesM": 11.8,
+   "ridgeM": 17,
+   "roofMaxM": 17,
+   "normal": [
+    -0.221,
+    -0.975
+   ],
+   "frontMidRD": [
+    121428.51,
+    486328.52
+   ]
+  },
+  {
+   "pandId": "0363100012176750",
+   "street": "Keizersgracht",
+   "numbers": [
+    634
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1700,
+   "storeys3dbag": 5,
+   "units": 8,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 5.6,
+   "eavesM": 14.2,
+   "ridgeM": 19,
+   "roofMaxM": 18.3,
+   "normal": [
+    0.216,
+    0.976
+   ],
+   "frontMidRD": [
+    121220.65,
+    486324.97
+   ]
+  },
+  {
+   "pandId": "0363100012571490",
+   "street": "Keizersgracht",
+   "numbers": [
+    634,
+    636
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1700,
+   "storeys3dbag": 5,
+   "units": 3,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 5.6,
+   "eavesM": 14.4,
+   "ridgeM": 18.4,
+   "roofMaxM": 18.4,
+   "normal": [
+    0.216,
+    0.976
+   ],
+   "frontMidRD": [
+    121226.11,
+    486323.76
+   ]
+  },
+  {
+   "pandId": "0363100012167980",
+   "street": "Keizersgracht",
+   "numbers": [
+    635
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1684,
+   "storeys3dbag": 0,
+   "units": 1,
+   "groundUses": [
+    "bijeenkomstfunctie,kantoorfunctie,overige gebruiksfunctie"
+   ],
+   "frontWidthM": 14.9,
+   "eavesM": 10.9,
+   "ridgeM": 14.7,
+   "roofMaxM": 15.2,
+   "normal": [
+    -0.224,
+    -0.975
+   ],
+   "frontMidRD": [
+    121439.4,
+    486326.02
+   ]
+  },
+  {
+   "pandId": "0363100012167984",
+   "street": "Keizersgracht",
+   "numbers": [
+    637
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1700,
+   "storeys3dbag": 5,
+   "units": 7,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 7.4,
+   "eavesM": 12.3,
+   "ridgeM": 17.7,
+   "roofMaxM": 17.6,
+   "normal": [
+    -0.221,
+    -0.975
+   ],
+   "frontMidRD": [
+    121450.25,
+    486323.54
+   ]
+  },
+  {
+   "pandId": "0363100012175659",
+   "street": "Keizersgracht",
+   "numbers": [
+    638
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1700,
+   "storeys3dbag": 5,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 5.6,
+   "eavesM": 14.4,
+   "ridgeM": 18.5,
+   "roofMaxM": 18.5,
+   "normal": [
+    0.216,
+    0.976
+   ],
+   "frontMidRD": [
+    121231.58,
+    486322.55
+   ]
+  },
+  {
+   "pandId": "0363100012167985",
+   "street": "Keizersgracht",
+   "numbers": [
+    639
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1698,
+   "storeys3dbag": 5,
+   "units": 3,
+   "groundUses": [
+    "kantoorfunctie",
+    "woonfunctie"
+   ],
+   "frontWidthM": 7.4,
+   "eavesM": 13,
+   "ridgeM": 19.4,
+   "roofMaxM": 19.4,
+   "normal": [
+    -0.21,
+    -0.978
+   ],
+   "frontMidRD": [
+    121457.41,
+    486321.85
+   ]
+  },
+  {
+   "pandId": "0363100012175658",
+   "street": "Keizersgracht",
+   "numbers": [
+    640
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1700,
+   "storeys3dbag": 5,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 5.6,
+   "eavesM": 14.3,
+   "ridgeM": 18.4,
+   "roofMaxM": 18.4,
+   "normal": [
+    0.221,
+    0.975
+   ],
+   "frontMidRD": [
+    121237.03,
+    486321.33
+   ]
+  },
+  {
+   "pandId": "0363100012180136",
+   "street": "Keizersgracht",
+   "numbers": [
+    641,
+    643,
+    645
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1860,
+   "storeys3dbag": 5,
+   "units": 14,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 14.9,
+   "eavesM": 3.1,
+   "ridgeM": 18.1,
+   "roofMaxM": 18.3,
+   "normal": [
+    -0.239,
+    -0.971
+   ],
+   "frontMidRD": [
+    121468.25,
+    486319.36
+   ]
+  },
+  {
+   "pandId": "0363100012165049",
+   "street": "Keizersgracht",
+   "numbers": [
+    642,
+    644
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1700,
+   "storeys3dbag": 5,
+   "units": 11,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 11.3,
+   "eavesM": 14.8,
+   "ridgeM": 19,
+   "roofMaxM": 19.7,
+   "normal": [
+    0.22,
+    0.975
+   ],
+   "frontMidRD": [
+    121245.24,
+    486319.47
+   ]
+  },
+  {
+   "pandId": "0363100012165075",
+   "street": "Keizersgracht",
+   "numbers": [
+    646
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1700,
+   "storeys3dbag": 5,
+   "units": 7,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 5.5,
+   "eavesM": 14.8,
+   "ridgeM": 19.1,
+   "roofMaxM": 19.1,
+   "normal": [
+    0.219,
+    0.976
+   ],
+   "frontMidRD": [
+    121253.41,
+    486317.63
+   ]
+  },
+  {
+   "pandId": "0363100012180137",
+   "street": "Keizersgracht",
+   "numbers": [
+    647
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1685,
+   "storeys3dbag": 5,
+   "units": 8,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 7.5,
+   "eavesM": 13.7,
+   "ridgeM": 19.6,
+   "roofMaxM": 19.6,
+   "normal": [
+    -0.216,
+    -0.976
+   ],
+   "frontMidRD": [
+    121479.17,
+    486316.85
+   ]
+  },
+  {
+   "pandId": "0363100012165076",
+   "street": "Keizersgracht",
+   "numbers": [
+    648
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1700,
+   "storeys3dbag": 5,
+   "units": 3,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 5.7,
+   "eavesM": 14.7,
+   "ridgeM": 19.1,
+   "roofMaxM": 19.1,
+   "normal": [
+    0.234,
+    0.972
+   ],
+   "frontMidRD": [
+    121258.85,
+    486316.37
+   ]
+  },
+  {
+   "pandId": "0363100012180135",
+   "street": "Keizersgracht",
+   "numbers": [
+    649
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1690,
+   "storeys3dbag": 5,
+   "units": 6,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 7.3,
+   "eavesM": 13.7,
+   "ridgeM": 18.6,
+   "roofMaxM": 18.6,
+   "normal": [
+    -0.22,
+    -0.975
+   ],
+   "frontMidRD": [
+    121486.42,
+    486315.24
+   ]
+  },
+  {
+   "pandId": "0363100012180047",
+   "street": "Keizersgracht",
+   "numbers": [
+    651
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1690,
+   "storeys3dbag": 0,
+   "units": 3,
+   "groundUses": [
+    "kantoorfunctie"
+   ],
+   "frontWidthM": 3.4,
+   "eavesM": 10.5,
+   "ridgeM": 13.9,
+   "roofMaxM": 15,
+   "normal": [
+    -0.22,
+    -0.976
+   ],
+   "frontMidRD": [
+    121491.66,
+    486314.07
+   ]
+  },
+  {
+   "pandId": "0363100012180046",
+   "street": "Keizersgracht",
+   "numbers": [
+    653
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1686,
+   "storeys3dbag": 4,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 4.3,
+   "eavesM": 10.7,
+   "ridgeM": 13.6,
+   "roofMaxM": 13.6,
+   "normal": [
+    -0.224,
+    -0.974
+   ],
+   "frontMidRD": [
+    121495.38,
+    486313.17
+   ]
+  },
+  {
+   "pandId": "0363100012180132",
+   "street": "Keizersgracht",
+   "numbers": [
+    655
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1687,
+   "storeys3dbag": 5,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 3.8,
+   "eavesM": 12.6,
+   "ridgeM": 13.4,
+   "roofMaxM": 13.4,
+   "normal": [
+    -0.239,
+    -0.971
+   ],
+   "frontMidRD": [
+    121499.28,
+    486312.26
+   ]
+  },
+  {
+   "pandId": "0363100012180133",
+   "street": "Keizersgracht",
+   "numbers": [
+    657
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1903,
+   "storeys3dbag": 5,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 3.8,
+   "eavesM": 10.7,
+   "ridgeM": 13.3,
+   "roofMaxM": 13.3,
+   "normal": [
+    -0.253,
+    -0.967
+   ],
+   "frontMidRD": [
+    121502.95,
+    486311.38
+   ]
+  },
+  {
+   "pandId": "0363100012180049",
+   "street": "Keizersgracht",
+   "numbers": [
+    659
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1686,
+   "storeys3dbag": 5,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.1,
+   "eavesM": 12.6,
+   "ridgeM": 15,
+   "roofMaxM": 15,
+   "normal": [
+    -0.225,
+    -0.974
+   ],
+   "frontMidRD": [
+    121507.76,
+    486310.21
+   ]
+  },
+  {
+   "pandId": "0363100012180258",
+   "street": "Keizersgracht",
+   "numbers": [
+    660
+   ],
+   "otherStreets": {
+    "Vijzelstraat": [
+     81
+    ]
+   },
+   "side": "even",
+   "builtYear": 1927,
+   "storeys3dbag": 0,
+   "units": 4,
+   "groundUses": [
+    "winkelfunctie",
+    "woonfunctie"
+   ],
+   "frontWidthM": 10.9,
+   "eavesM": 15.9,
+   "ridgeM": 21.4,
+   "roofMaxM": 21.3,
+   "normal": [
+    0.228,
+    0.974
+   ],
+   "frontMidRD": [
+    121304.56,
+    486306.05
+   ]
+  },
+  {
+   "pandId": "0363100012180128",
+   "street": "Keizersgracht",
+   "numbers": [
+    661
+   ],
+   "otherStreets": {
+    "Reguliersgracht": [
+     38
+    ]
+   },
+   "side": "odd",
+   "builtYear": 1686,
+   "storeys3dbag": 4,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 11.6,
+   "eavesM": 10.4,
+   "ridgeM": 14.5,
+   "roofMaxM": 14.9,
+   "normal": [
+    -0.219,
+    -0.976
+   ],
+   "frontMidRD": [
+    121516.42,
+    486308.28
+   ]
+  },
+  {
+   "pandId": "0363100012175159",
+   "street": "Keizersgracht",
+   "numbers": [
+    662,
+    664,
+    666,
+    668
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1755,
+   "storeys3dbag": 5,
+   "units": 14,
+   "groundUses": [
+    "woonfunctie",
+    "kantoorfunctie"
+   ],
+   "frontWidthM": 33,
+   "eavesM": 14.6,
+   "ridgeM": 20.8,
+   "roofMaxM": 22,
+   "normal": [
+    0.227,
+    0.974
+   ],
+   "frontMidRD": [
+    121325.94,
+    486301.05
+   ]
+  },
+  {
+   "pandId": "0363100012168451",
+   "street": "Keizersgracht",
+   "numbers": [
+    670
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1675,
+   "storeys3dbag": 5,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 15,
+   "eavesM": 15.6,
+   "ridgeM": 20,
+   "roofMaxM": 20.5,
+   "normal": [
+    0.219,
+    0.976
+   ],
+   "frontMidRD": [
+    121349.35,
+    486295.72
+   ]
+  },
+  {
+   "pandId": "0363100012179302",
+   "street": "Keizersgracht",
+   "numbers": [
+    672
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1671,
+   "storeys3dbag": 5,
+   "units": 1,
+   "groundUses": [
+    "bijeenkomstfunctie,woonfunctie"
+   ],
+   "frontWidthM": 14.9,
+   "eavesM": 16.3,
+   "ridgeM": 18.7,
+   "roofMaxM": 19.2,
+   "normal": [
+    0.226,
+    0.974
+   ],
+   "frontMidRD": [
+    121363.89,
+    486292.2
+   ]
+  },
+  {
+   "pandId": "0363100012179308",
+   "street": "Keizersgracht",
+   "numbers": [
+    674
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1671,
+   "storeys3dbag": 5,
+   "units": 8,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 14.9,
+   "eavesM": 16.4,
+   "ridgeM": 21.5,
+   "roofMaxM": 21.6,
+   "normal": [
+    0.227,
+    0.974
+   ],
+   "frontMidRD": [
+    121378.42,
+    486288.82
+   ]
+  },
+  {
+   "pandId": "0363100012179330",
+   "street": "Keizersgracht",
+   "numbers": [
+    676
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1856,
+   "storeys3dbag": 0,
+   "units": 1,
+   "groundUses": [
+    "bijeenkomstfunctie"
+   ],
+   "frontWidthM": 15,
+   "eavesM": 15.9,
+   "ridgeM": 21.5,
+   "roofMaxM": 21.5,
+   "normal": [
+    0.224,
+    0.975
+   ],
+   "frontMidRD": [
+    121393.05,
+    486285.72
+   ]
+  },
+  {
+   "pandId": "0363100012179307",
+   "street": "Keizersgracht",
+   "numbers": [
+    678
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1905,
+   "storeys3dbag": 4,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 5.9,
+   "eavesM": 13.5,
+   "ridgeM": 17.7,
+   "roofMaxM": 17.8,
+   "normal": [
+    0.206,
+    0.978
+   ],
+   "frontMidRD": [
+    121403.25,
+    486283.44
+   ]
+  },
+  {
+   "pandId": "0363100012179304",
+   "street": "Keizersgracht",
+   "numbers": [
+    680
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1690,
+   "storeys3dbag": 5,
+   "units": 1,
+   "groundUses": [
+    "kantoorfunctie,woonfunctie"
+   ],
+   "frontWidthM": 5.9,
+   "eavesM": 13.3,
+   "ridgeM": 17.7,
+   "roofMaxM": 17.6,
+   "normal": [
+    0.219,
+    0.976
+   ],
+   "frontMidRD": [
+    121409.05,
+    486282.18
+   ]
+  },
+  {
+   "pandId": "0363100012179305",
+   "street": "Keizersgracht",
+   "numbers": [
+    682
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1690,
+   "storeys3dbag": 5,
+   "units": 6,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 5.9,
+   "eavesM": 13.3,
+   "ridgeM": 17.6,
+   "roofMaxM": 17.6,
+   "normal": [
+    0.211,
+    0.977
+   ],
+   "frontMidRD": [
+    121414.83,
+    486280.9
+   ]
+  },
+  {
+   "pandId": "0363100012179306",
+   "street": "Keizersgracht",
+   "numbers": [
+    684
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1690,
+   "storeys3dbag": 5,
+   "units": 4,
+   "groundUses": [
+    "kantoorfunctie",
+    "woonfunctie"
+   ],
+   "frontWidthM": 6,
+   "eavesM": 18.1,
+   "ridgeM": 18.3,
+   "roofMaxM": 18.1,
+   "normal": [
+    0.229,
+    0.973
+   ],
+   "frontMidRD": [
+    121420.62,
+    486279.59
+   ]
+  },
+  {
+   "pandId": "0363100012167485",
+   "street": "Keizersgracht",
+   "numbers": [
+    686
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1690,
+   "storeys3dbag": 5,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 5.9,
+   "eavesM": 14.4,
+   "ridgeM": 18.2,
+   "roofMaxM": 18.5,
+   "normal": [
+    0.223,
+    0.975
+   ],
+   "frontMidRD": [
+    121426.41,
+    486278.25
+   ]
+  },
+  {
+   "pandId": "0363100012167483",
+   "street": "Keizersgracht",
+   "numbers": [
+    688
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1695,
+   "storeys3dbag": 5,
+   "units": 4,
+   "groundUses": [
+    "overige gebruiksfunctie,woonfunctie",
+    "woonfunctie"
+   ],
+   "frontWidthM": 7.4,
+   "eavesM": 16.9,
+   "ridgeM": 18.9,
+   "roofMaxM": 19.6,
+   "normal": [
+    0.225,
+    0.974
+   ],
+   "frontMidRD": [
+    121432.93,
+    486276.75
+   ]
+  },
+  {
+   "pandId": "0363100012167482",
+   "street": "Keizersgracht",
+   "numbers": [
+    690
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1695,
+   "storeys3dbag": 5,
+   "units": 7,
+   "groundUses": [
+    "kantoorfunctie",
+    "woonfunctie"
+   ],
+   "frontWidthM": 7.4,
+   "eavesM": 17.1,
+   "ridgeM": 18.7,
+   "roofMaxM": 19.2,
+   "normal": [
+    0.223,
+    0.975
+   ],
+   "frontMidRD": [
+    121440.15,
+    486275.09
+   ]
+  },
+  {
+   "pandId": "0363100012167484",
+   "street": "Keizersgracht",
+   "numbers": [
+    692
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1685,
+   "storeys3dbag": 5,
+   "units": 4,
+   "groundUses": [
+    "gezondheidszorgfunctie",
+    "woonfunctie"
+   ],
+   "frontWidthM": 5.7,
+   "eavesM": 11.9,
+   "ridgeM": 16.3,
+   "roofMaxM": 16.3,
+   "normal": [
+    0.222,
+    0.975
+   ],
+   "frontMidRD": [
+    121446.55,
+    486273.64
+   ]
+  },
+  {
+   "pandId": "0363100012167486",
+   "street": "Keizersgracht",
+   "numbers": [
+    694
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1685,
+   "storeys3dbag": 4,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 3.5,
+   "eavesM": 11.6,
+   "ridgeM": 14.4,
+   "roofMaxM": 14.4,
+   "normal": [
+    0.223,
+    0.975
+   ],
+   "frontMidRD": [
+    121451.08,
+    486272.6
+   ]
+  },
+  {
+   "pandId": "0363100012167489",
+   "street": "Keizersgracht",
+   "numbers": [
+    696
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1685,
+   "storeys3dbag": 4,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 5.7,
+   "eavesM": 12.2,
+   "ridgeM": 16.4,
+   "roofMaxM": 16.5,
+   "normal": [
+    0.223,
+    0.975
+   ],
+   "frontMidRD": [
+    121455.59,
+    486271.57
+   ]
+  },
+  {
+   "pandId": "0363100012167490",
+   "street": "Keizersgracht",
+   "numbers": [
+    698,
+    700
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1690,
+   "storeys3dbag": 5,
+   "units": 10,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 14.8,
+   "eavesM": 14.3,
+   "ridgeM": 19.4,
+   "roofMaxM": 19.6,
+   "normal": [
+    0.224,
+    0.975
+   ],
+   "frontMidRD": [
+    121465.6,
+    486269.28
+   ]
+  },
+  {
+   "pandId": "0363100012167491",
+   "street": "Keizersgracht",
+   "numbers": [
+    702
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1700,
+   "storeys3dbag": 5,
+   "units": 5,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 7.4,
+   "eavesM": 14.3,
+   "ridgeM": 19.5,
+   "roofMaxM": 19.6,
+   "normal": [
+    0.221,
+    0.975
+   ],
+   "frontMidRD": [
+    121476.47,
+    486266.81
+   ]
+  },
+  {
+   "pandId": "0363100012167488",
+   "street": "Keizersgracht",
+   "numbers": [
+    704
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1700,
+   "storeys3dbag": 5,
+   "units": 7,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 7.4,
+   "eavesM": 14.6,
+   "ridgeM": 19.8,
+   "roofMaxM": 19.8,
+   "normal": [
+    0.225,
+    0.974
+   ],
+   "frontMidRD": [
+    121483.7,
+    486265.16
+   ]
+  },
+  {
+   "pandId": "0363100012169157",
+   "street": "Keizersgracht",
+   "numbers": [
+    706
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1795,
+   "storeys3dbag": 5,
+   "units": 4,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 14.9,
+   "eavesM": 13.7,
+   "ridgeM": 18.3,
+   "roofMaxM": 18.7,
+   "normal": [
+    0.225,
+    0.974
+   ],
+   "frontMidRD": [
+    121494.56,
+    486262.65
+   ]
+  },
+  {
+   "pandId": "0363100012169155",
+   "street": "Keizersgracht",
+   "numbers": [
+    708
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1670,
+   "storeys3dbag": 5,
+   "units": 2,
+   "groundUses": [
+    "overige gebruiksfunctie",
+    "kantoorfunctie,woonfunctie"
+   ],
+   "frontWidthM": 7.3,
+   "eavesM": 13.8,
+   "ridgeM": 19,
+   "roofMaxM": 19,
+   "normal": [
+    0.219,
+    0.976
+   ],
+   "frontMidRD": [
+    121505.36,
+    486260.18
+   ]
+  },
+  {
+   "pandId": "0363100012171023",
+   "street": "Keizersgracht",
+   "numbers": [
+    710
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1670,
+   "storeys3dbag": 5,
+   "units": 10,
+   "groundUses": [
+    "woonfunctie",
+    "kantoorfunctie"
+   ],
+   "frontWidthM": 5.8,
+   "eavesM": 13.4,
+   "ridgeM": 17.2,
+   "roofMaxM": 17.5,
+   "normal": [
+    0.214,
+    0.977
+   ],
+   "frontMidRD": [
+    121511.76,
+    486258.76
+   ]
+  },
+  {
+   "pandId": "0363100012171042",
+   "street": "Keizersgracht",
+   "numbers": [
+    712
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1670,
+   "storeys3dbag": 4,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 3.9,
+   "eavesM": 9.9,
+   "ridgeM": 13.1,
+   "roofMaxM": 13.1,
+   "normal": [
+    0.225,
+    0.974
+   ],
+   "frontMidRD": [
+    121518.29,
+    486257.3
+   ]
+  },
+  {
+   "pandId": "0363100012171024",
+   "street": "Keizersgracht",
+   "numbers": [
+    714
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1670,
+   "storeys3dbag": 4,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 3.9,
+   "eavesM": 10.2,
+   "ridgeM": 13,
+   "roofMaxM": 15.4,
+   "normal": [
+    0.185,
+    0.983
+   ],
+   "frontMidRD": [
+    121522.11,
+    486256.5
+   ]
+  },
+  {
+   "pandId": "0363100012177263",
+   "street": "Kerkstraat",
+   "numbers": [
+    146
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1706,
+   "storeys3dbag": 4,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie",
+    "winkelfunctie"
+   ],
+   "frontWidthM": 5.8,
+   "eavesM": 10,
+   "ridgeM": 13.8,
+   "roofMaxM": 13.8,
+   "normal": [
+    0.24,
+    0.971
+   ],
+   "frontMidRD": [
+    121046.63,
+    486278.11
+   ]
+  },
+  {
+   "pandId": "0363100012167618",
+   "street": "Kerkstraat",
+   "numbers": [
+    148
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 2003,
+   "storeys3dbag": 5,
+   "units": 5,
+   "groundUses": [
+    "winkelfunctie",
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.5,
+   "eavesM": 12.1,
+   "ridgeM": 14.8,
+   "roofMaxM": 14.6,
+   "normal": [
+    0.228,
+    0.974
+   ],
+   "frontMidRD": [
+    121052.62,
+    486276.62
+   ]
+  },
+  {
+   "pandId": "0363100012176077",
+   "street": "Kerkstraat",
+   "numbers": [
+    150
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1738,
+   "storeys3dbag": 4,
+   "units": 3,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.4,
+   "eavesM": 12.2,
+   "ridgeM": 13.3,
+   "roofMaxM": 13.3,
+   "normal": [
+    0.225,
+    0.974
+   ],
+   "frontMidRD": [
+    121058.89,
+    486275.11
+   ]
+  },
+  {
+   "pandId": "0363100012167617",
+   "street": "Kerkstraat",
+   "numbers": [
+    152,
+    154,
+    156
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1709,
+   "storeys3dbag": 4,
+   "units": 3,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 12.5,
+   "eavesM": 13.1,
+   "ridgeM": 16.8,
+   "roofMaxM": 16.8,
+   "normal": [
+    0.231,
+    0.973
+   ],
+   "frontMidRD": [
+    121068.12,
+    486273.05
+   ]
+  },
+  {
+   "pandId": "0363100012176076",
+   "street": "Kerkstraat",
+   "numbers": [
+    155
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1809,
+   "storeys3dbag": 4,
+   "units": 2,
+   "groundUses": [
+    "winkelfunctie",
+    "woonfunctie"
+   ],
+   "frontWidthM": 3.3,
+   "eavesM": 10.6,
+   "ridgeM": 13.4,
+   "roofMaxM": 13.4,
+   "normal": [
+    -0.212,
+    -0.977
+   ],
+   "frontMidRD": [
+    121057.13,
+    486286.08
+   ]
+  },
+  {
+   "pandId": "0363100012167615",
+   "street": "Kerkstraat",
+   "numbers": [
+    158
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1671,
+   "storeys3dbag": 5,
+   "units": 3,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.4,
+   "eavesM": 12.7,
+   "ridgeM": 15.6,
+   "roofMaxM": 15.6,
+   "normal": [
+    0.213,
+    0.977
+   ],
+   "frontMidRD": [
+    121077.32,
+    486270.92
+   ]
+  },
+  {
+   "pandId": "0363100012176160",
+   "street": "Kerkstraat",
+   "numbers": [
+    160
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1798,
+   "storeys3dbag": 5,
+   "units": 3,
+   "groundUses": [
+    "winkelfunctie",
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.4,
+   "eavesM": 13.3,
+   "ridgeM": 15.8,
+   "roofMaxM": 15.9,
+   "normal": [
+    0.238,
+    0.971
+   ],
+   "frontMidRD": [
+    121083.53,
+    486269.48
+   ]
+  },
+  {
+   "pandId": "0363100012176074",
+   "street": "Kerkstraat",
+   "numbers": [
+    161
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1988,
+   "storeys3dbag": 4,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie",
+    "winkelfunctie"
+   ],
+   "frontWidthM": 3.9,
+   "eavesM": 9.4,
+   "ridgeM": 12.1,
+   "roofMaxM": 12.4,
+   "normal": [
+    -0.213,
+    -0.977
+   ],
+   "frontMidRD": [
+    121068.43,
+    486283.61
+   ]
+  },
+  {
+   "pandId": "0363100012176159",
+   "street": "Kerkstraat",
+   "numbers": [
+    162
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1803,
+   "storeys3dbag": 4,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 4.2,
+   "eavesM": 8.6,
+   "ridgeM": 11.4,
+   "roofMaxM": 11.4,
+   "normal": [
+    0.221,
+    0.975
+   ],
+   "frontMidRD": [
+    121088.69,
+    486268.26
+   ]
+  },
+  {
+   "pandId": "0363100012241058",
+   "street": "Kerkstraat",
+   "numbers": [
+    163,
+    165
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 2009,
+   "storeys3dbag": 4,
+   "units": 4,
+   "groundUses": [
+    "winkelfunctie",
+    "woonfunctie"
+   ],
+   "frontWidthM": 7.8,
+   "eavesM": 11.8,
+   "ridgeM": 14.7,
+   "roofMaxM": 14.5,
+   "normal": [
+    -0.213,
+    -0.977
+   ],
+   "frontMidRD": [
+    121074.13,
+    486282.37
+   ]
+  },
+  {
+   "pandId": "0363100012176084",
+   "street": "Kerkstraat",
+   "numbers": [
+    164
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1910,
+   "storeys3dbag": 4,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 4.2,
+   "eavesM": 11.1,
+   "ridgeM": 11.3,
+   "roofMaxM": 11.2,
+   "normal": [
+    0.235,
+    0.972
+   ],
+   "frontMidRD": [
+    121092.78,
+    486267.3
+   ]
+  },
+  {
+   "pandId": "0363100012176147",
+   "street": "Kerkstraat",
+   "numbers": [
+    166
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1735,
+   "storeys3dbag": 4,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 4.3,
+   "eavesM": 13.3,
+   "ridgeM": 14.3,
+   "roofMaxM": 14.3,
+   "normal": [
+    0.235,
+    0.972
+   ],
+   "frontMidRD": [
+    121096.87,
+    486266.33
+   ]
+  },
+  {
+   "pandId": "0363100012176148",
+   "street": "Kerkstraat",
+   "numbers": [
+    167,
+    169,
+    171,
+    173,
+    175
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1959,
+   "storeys3dbag": 4,
+   "units": 11,
+   "groundUses": [
+    "woonfunctie",
+    "winkelfunctie"
+   ],
+   "frontWidthM": 22.2,
+   "eavesM": 10.2,
+   "ridgeM": 14.3,
+   "roofMaxM": 14.3,
+   "normal": [
+    -0.222,
+    -0.975
+   ],
+   "frontMidRD": [
+    121088.75,
+    486279.08
+   ]
+  },
+  {
+   "pandId": "0363100012176085",
+   "street": "Kerkstraat",
+   "numbers": [
+    168
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1754,
+   "storeys3dbag": 3,
+   "units": 4,
+   "groundUses": [
+    "woonfunctie",
+    "winkelfunctie"
+   ],
+   "frontWidthM": 6.3,
+   "eavesM": 8.1,
+   "ridgeM": 8.2,
+   "roofMaxM": 8.1,
+   "normal": [
+    0.208,
+    0.978
+   ],
+   "frontMidRD": [
+    121102.01,
+    486265.17
+   ]
+  },
+  {
+   "pandId": "0363100012165042",
+   "street": "Kerkstraat",
+   "numbers": [
+    170
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1743,
+   "storeys3dbag": 2,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.2,
+   "eavesM": 3.5,
+   "ridgeM": 8,
+   "roofMaxM": 7.9,
+   "normal": [
+    0.216,
+    0.976
+   ],
+   "frontMidRD": [
+    121099.42,
+    486253.61
+   ]
+  },
+  {
+   "pandId": "0363100012167558",
+   "street": "Kerkstraat",
+   "numbers": [
+    172
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1689,
+   "storeys3dbag": 5,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 4.2,
+   "eavesM": 10.6,
+   "ridgeM": 14.3,
+   "roofMaxM": 14.3,
+   "normal": [
+    0.222,
+    0.975
+   ],
+   "frontMidRD": [
+    121109.11,
+    486263.61
+   ]
+  },
+  {
+   "pandId": "0363100012167554",
+   "street": "Kerkstraat",
+   "numbers": [
+    174
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1741,
+   "storeys3dbag": 4,
+   "units": 3,
+   "groundUses": [
+    "woonfunctie",
+    "bijeenkomstfunctie"
+   ],
+   "frontWidthM": 6.4,
+   "eavesM": 13,
+   "ridgeM": 13.4,
+   "roofMaxM": 13.3,
+   "normal": [
+    0.223,
+    0.975
+   ],
+   "frontMidRD": [
+    121114.23,
+    486262.44
+   ]
+  },
+  {
+   "pandId": "0363100012167553",
+   "street": "Kerkstraat",
+   "numbers": [
+    176
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1735,
+   "storeys3dbag": 4,
+   "units": 4,
+   "groundUses": [
+    "bijeenkomstfunctie",
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.3,
+   "eavesM": 10.6,
+   "ridgeM": 14.4,
+   "roofMaxM": 14.4,
+   "normal": [
+    0.233,
+    0.972
+   ],
+   "frontMidRD": [
+    121120.41,
+    486261
+   ]
+  },
+  {
+   "pandId": "0363100012176083",
+   "street": "Kerkstraat",
+   "numbers": [
+    177
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1935,
+   "storeys3dbag": 5,
+   "units": 3,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 5,
+   "eavesM": 15.5,
+   "ridgeM": 20,
+   "roofMaxM": 19.9,
+   "normal": [
+    -0.222,
+    -0.975
+   ],
+   "frontMidRD": [
+    121101.99,
+    486276.09
+   ]
+  },
+  {
+   "pandId": "0363100012167557",
+   "street": "Kerkstraat",
+   "numbers": [
+    178
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1940,
+   "storeys3dbag": 5,
+   "units": 4,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 4.2,
+   "eavesM": 13.4,
+   "ridgeM": 16.2,
+   "roofMaxM": 16.1,
+   "normal": [
+    0.227,
+    0.974
+   ],
+   "frontMidRD": [
+    121125.53,
+    486259.79
+   ]
+  },
+  {
+   "pandId": "0363100012176082",
+   "street": "Kerkstraat",
+   "numbers": [
+    179
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1935,
+   "storeys3dbag": 0,
+   "units": 4,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 5,
+   "eavesM": 15.5,
+   "ridgeM": 20,
+   "roofMaxM": 20.4,
+   "normal": [
+    -0.222,
+    -0.975
+   ],
+   "frontMidRD": [
+    121106.83,
+    486274.99
+   ]
+  },
+  {
+   "pandId": "0363100012167556",
+   "street": "Kerkstraat",
+   "numbers": [
+    180
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1706,
+   "storeys3dbag": 4,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 4.2,
+   "eavesM": 11.8,
+   "ridgeM": 12.5,
+   "roofMaxM": 15.3,
+   "normal": [
+    0.217,
+    0.976
+   ],
+   "frontMidRD": [
+    121129.61,
+    486258.86
+   ]
+  },
+  {
+   "pandId": "0363100012176081",
+   "street": "Kerkstraat",
+   "numbers": [
+    181
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1935,
+   "storeys3dbag": 5,
+   "units": 4,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 5,
+   "eavesM": 15.5,
+   "ridgeM": 20,
+   "roofMaxM": 19.9,
+   "normal": [
+    -0.223,
+    -0.975
+   ],
+   "frontMidRD": [
+    121111.67,
+    486273.89
+   ]
+  },
+  {
+   "pandId": "0363100012167555",
+   "street": "Kerkstraat",
+   "numbers": [
+    182
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1699,
+   "storeys3dbag": 3,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 4.2,
+   "eavesM": 8.7,
+   "ridgeM": 11.9,
+   "roofMaxM": 11.9,
+   "normal": [
+    0.226,
+    0.974
+   ],
+   "frontMidRD": [
+    121133.7,
+    486257.93
+   ]
+  },
+  {
+   "pandId": "0363100012176080",
+   "street": "Kerkstraat",
+   "numbers": [
+    183
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1905,
+   "storeys3dbag": 4,
+   "units": 1,
+   "groundUses": [
+    "industriefunctie,woonfunctie"
+   ],
+   "frontWidthM": 7.5,
+   "eavesM": 9.1,
+   "ridgeM": 13.8,
+   "roofMaxM": 13.9,
+   "normal": [
+    -0.217,
+    -0.976
+   ],
+   "frontMidRD": [
+    121117.73,
+    486272.52
+   ]
+  },
+  {
+   "pandId": "0363100012167560",
+   "street": "Kerkstraat",
+   "numbers": [
+    184
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1650,
+   "storeys3dbag": 3,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 4.2,
+   "eavesM": 8.7,
+   "ridgeM": 12,
+   "roofMaxM": 12,
+   "normal": [
+    0.221,
+    0.975
+   ],
+   "frontMidRD": [
+    121137.79,
+    486256.99
+   ]
+  },
+  {
+   "pandId": "0363100012176079",
+   "street": "Kerkstraat",
+   "numbers": [
+    185
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1905,
+   "storeys3dbag": 4,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie",
+    "overige gebruiksfunctie"
+   ],
+   "frontWidthM": 7.4,
+   "eavesM": 8.6,
+   "ridgeM": 13.5,
+   "roofMaxM": 13.5,
+   "normal": [
+    -0.217,
+    -0.976
+   ],
+   "frontMidRD": [
+    121124.99,
+    486270.91
+   ]
+  },
+  {
+   "pandId": "0363100012167552",
+   "street": "Kerkstraat",
+   "numbers": [
+    186
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1650,
+   "storeys3dbag": 4,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 4.2,
+   "eavesM": 8.9,
+   "ridgeM": 12.2,
+   "roofMaxM": 12.2,
+   "normal": [
+    0.219,
+    0.976
+   ],
+   "frontMidRD": [
+    121141.89,
+    486256.07
+   ]
+  },
+  {
+   "pandId": "0363100012176078",
+   "street": "Kerkstraat",
+   "numbers": [
+    187
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1670,
+   "storeys3dbag": 4,
+   "units": 2,
+   "groundUses": [
+    "industriefunctie",
+    "woonfunctie"
+   ],
+   "frontWidthM": 7.6,
+   "eavesM": 9.2,
+   "ridgeM": 14.2,
+   "roofMaxM": 14.1,
+   "normal": [
+    -0.217,
+    -0.976
+   ],
+   "frontMidRD": [
+    121132.32,
+    486269.28
+   ]
+  },
+  {
+   "pandId": "0363100012167551",
+   "street": "Kerkstraat",
+   "numbers": [
+    188
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1650,
+   "storeys3dbag": 3,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 4.2,
+   "eavesM": 9,
+   "ridgeM": 12.1,
+   "roofMaxM": 12.1,
+   "normal": [
+    0.233,
+    0.972
+   ],
+   "frontMidRD": [
+    121145.97,
+    486255.12
+   ]
+  },
+  {
+   "pandId": "0363100012176153",
+   "street": "Kerkstraat",
+   "numbers": [
+    189
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1996,
+   "storeys3dbag": 4,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 4.7,
+   "eavesM": 9.4,
+   "ridgeM": 12.3,
+   "roofMaxM": 12.3,
+   "normal": [
+    -0.228,
+    -0.974
+   ],
+   "frontMidRD": [
+    121138.27,
+    486267.93
+   ]
+  },
+  {
+   "pandId": "0363100012167892",
+   "street": "Kerkstraat",
+   "numbers": [
+    190
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1788,
+   "storeys3dbag": 4,
+   "units": 3,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.3,
+   "eavesM": 10.5,
+   "ridgeM": 13.5,
+   "roofMaxM": 13.5,
+   "normal": [
+    0.222,
+    0.975
+   ],
+   "frontMidRD": [
+    121151.1,
+    486253.92
+   ]
+  },
+  {
+   "pandId": "0363100012176154",
+   "street": "Kerkstraat",
+   "numbers": [
+    191
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1700,
+   "storeys3dbag": 3,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 5.4,
+   "eavesM": 9.2,
+   "ridgeM": 12.5,
+   "roofMaxM": 12.6,
+   "normal": [
+    -0.228,
+    -0.974
+   ],
+   "frontMidRD": [
+    121143.17,
+    486266.79
+   ]
+  },
+  {
+   "pandId": "0363100012167891",
+   "street": "Kerkstraat",
+   "numbers": [
+    192
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1964,
+   "storeys3dbag": 4,
+   "units": 3,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 4.2,
+   "eavesM": 10.2,
+   "ridgeM": 12.8,
+   "roofMaxM": 12.8,
+   "normal": [
+    0.233,
+    0.972
+   ],
+   "frontMidRD": [
+    121156.21,
+    486252.74
+   ]
+  },
+  {
+   "pandId": "0363100012167559",
+   "street": "Kerkstraat",
+   "numbers": [
+    193
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1712,
+   "storeys3dbag": 4,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 5,
+   "eavesM": 10,
+   "ridgeM": 12.6,
+   "roofMaxM": 12.6,
+   "normal": [
+    -0.228,
+    -0.974
+   ],
+   "frontMidRD": [
+    121148.21,
+    486265.6
+   ]
+  },
+  {
+   "pandId": "0363100012167566",
+   "street": "Kerkstraat",
+   "numbers": [
+    194
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1964,
+   "storeys3dbag": 4,
+   "units": 3,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 4.2,
+   "eavesM": 10.3,
+   "ridgeM": 13,
+   "roofMaxM": 13,
+   "normal": [
+    0.215,
+    0.977
+   ],
+   "frontMidRD": [
+    121160.28,
+    486251.8
+   ]
+  },
+  {
+   "pandId": "0363100012175657",
+   "street": "Kerkstraat",
+   "numbers": [
+    195
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1707,
+   "storeys3dbag": 4,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 3.7,
+   "eavesM": 8.9,
+   "ridgeM": 13.6,
+   "roofMaxM": 13.6,
+   "normal": [
+    -0.228,
+    -0.974
+   ],
+   "frontMidRD": [
+    121152.41,
+    486264.62
+   ]
+  },
+  {
+   "pandId": "0363100012167564",
+   "street": "Kerkstraat",
+   "numbers": [
+    196
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1964,
+   "storeys3dbag": 4,
+   "units": 3,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 4.2,
+   "eavesM": 10,
+   "ridgeM": 13,
+   "roofMaxM": 13,
+   "normal": [
+    0.226,
+    0.974
+   ],
+   "frontMidRD": [
+    121164.35,
+    486250.88
+   ]
+  },
+  {
+   "pandId": "0363100012175656",
+   "street": "Kerkstraat",
+   "numbers": [
+    197
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1709,
+   "storeys3dbag": 4,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 3.6,
+   "eavesM": 9,
+   "ridgeM": 13.8,
+   "roofMaxM": 13.8,
+   "normal": [
+    -0.228,
+    -0.974
+   ],
+   "frontMidRD": [
+    121155.96,
+    486263.79
+   ]
+  },
+  {
+   "pandId": "0363100012167565",
+   "street": "Kerkstraat",
+   "numbers": [
+    198
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1964,
+   "storeys3dbag": 4,
+   "units": 3,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 4.3,
+   "eavesM": 10,
+   "ridgeM": 13.1,
+   "roofMaxM": 13.1,
+   "normal": [
+    0.226,
+    0.974
+   ],
+   "frontMidRD": [
+    121168.48,
+    486249.93
+   ]
+  },
+  {
+   "pandId": "0363100012175648",
+   "street": "Kerkstraat",
+   "numbers": [
+    199
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1957,
+   "storeys3dbag": 4,
+   "units": 4,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 7.4,
+   "eavesM": 14,
+   "ridgeM": 14.7,
+   "roofMaxM": 14.2,
+   "normal": [
+    -0.228,
+    -0.974
+   ],
+   "frontMidRD": [
+    121161.33,
+    486262.53
+   ]
+  },
+  {
+   "pandId": "0363100012175649",
+   "street": "Kerkstraat",
+   "numbers": [
+    201
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1745,
+   "storeys3dbag": 5,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 5.3,
+   "eavesM": 5,
+   "ridgeM": 15.3,
+   "roofMaxM": 15.3,
+   "normal": [
+    -0.227,
+    -0.974
+   ],
+   "frontMidRD": [
+    121167.52,
+    486261.09
+   ]
+  },
+  {
+   "pandId": "0363100012176231",
+   "street": "Kerkstraat",
+   "numbers": [
+    202
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1736,
+   "storeys3dbag": 3,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 4.2,
+   "eavesM": 8.2,
+   "ridgeM": 11.3,
+   "roofMaxM": 11.4,
+   "normal": [
+    0.212,
+    0.977
+   ],
+   "frontMidRD": [
+    121176.77,
+    486247.98
+   ]
+  },
+  {
+   "pandId": "0363100012175651",
+   "street": "Kerkstraat",
+   "numbers": [
+    203
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1717,
+   "storeys3dbag": 4,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 5.3,
+   "eavesM": 10.9,
+   "ridgeM": 13.6,
+   "roofMaxM": 13.3,
+   "normal": [
+    -0.228,
+    -0.974
+   ],
+   "frontMidRD": [
+    121172.71,
+    486259.88
+   ]
+  },
+  {
+   "pandId": "0363100012175018",
+   "street": "Kerkstraat",
+   "numbers": [
+    204,
+    206,
+    208,
+    210,
+    212,
+    214,
+    216,
+    218,
+    220
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1995,
+   "storeys3dbag": 5,
+   "units": 10,
+   "groundUses": [
+    "woonfunctie",
+    "kantoorfunctie",
+    "overige gebruiksfunctie"
+   ],
+   "frontWidthM": 37.2,
+   "eavesM": 10.3,
+   "ridgeM": 16.4,
+   "roofMaxM": 16.4,
+   "normal": [
+    0.209,
+    0.978
+   ],
+   "frontMidRD": [
+    121196.99,
+    486243.41
+   ]
+  },
+  {
+   "pandId": "0363100012175663",
+   "street": "Kerkstraat",
+   "numbers": [
+    205
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1752,
+   "storeys3dbag": 5,
+   "units": 4,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 5.2,
+   "eavesM": 15.1,
+   "ridgeM": 17,
+   "roofMaxM": 17.1,
+   "normal": [
+    -0.225,
+    -0.974
+   ],
+   "frontMidRD": [
+    121177.84,
+    486258.68
+   ]
+  },
+  {
+   "pandId": "0363100012175664",
+   "street": "Kerkstraat",
+   "numbers": [
+    207,
+    209
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1988,
+   "storeys3dbag": 5,
+   "units": 9,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 10,
+   "eavesM": 11.6,
+   "ridgeM": 14.9,
+   "roofMaxM": 14.3,
+   "normal": [
+    -0.225,
+    -0.974
+   ],
+   "frontMidRD": [
+    121185.24,
+    486256.97
+   ]
+  },
+  {
+   "pandId": "0363100012175665",
+   "street": "Kerkstraat",
+   "numbers": [
+    211
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1905,
+   "storeys3dbag": 5,
+   "units": 4,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 11.4,
+   "eavesM": 14.1,
+   "ridgeM": 19.3,
+   "roofMaxM": 19.5,
+   "normal": [
+    -0.225,
+    -0.974
+   ],
+   "frontMidRD": [
+    121195.68,
+    486254.56
+   ]
+  },
+  {
+   "pandId": "0363100012185838",
+   "street": "Kerkstraat",
+   "numbers": [
+    215
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1703,
+   "storeys3dbag": 4,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 3.7,
+   "eavesM": 11.4,
+   "ridgeM": 11.7,
+   "roofMaxM": 17.5,
+   "normal": [
+    -0.217,
+    -0.976
+   ],
+   "frontMidRD": [
+    121203.06,
+    486252.87
+   ]
+  },
+  {
+   "pandId": "0363100012175660",
+   "street": "Kerkstraat",
+   "numbers": [
+    217
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1710,
+   "storeys3dbag": 3,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 3.7,
+   "eavesM": 9,
+   "ridgeM": 10.4,
+   "roofMaxM": 9.1,
+   "normal": [
+    -0.217,
+    -0.976
+   ],
+   "frontMidRD": [
+    121206.67,
+    486252.07
+   ]
+  },
+  {
+   "pandId": "0363100012175661",
+   "street": "Kerkstraat",
+   "numbers": [
+    219
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1692,
+   "storeys3dbag": 4,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 3.8,
+   "eavesM": 9.2,
+   "ridgeM": 12.3,
+   "roofMaxM": 12.4,
+   "normal": [
+    -0.217,
+    -0.976
+   ],
+   "frontMidRD": [
+    121210.33,
+    486251.25
+   ]
+  },
+  {
+   "pandId": "0363100012167893",
+   "street": "Kerkstraat",
+   "numbers": [
+    221
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1733,
+   "storeys3dbag": 3,
+   "units": 3,
+   "groundUses": [
+    "overige gebruiksfunctie",
+    "woonfunctie"
+   ],
+   "frontWidthM": 5.6,
+   "eavesM": 11.5,
+   "ridgeM": 11.7,
+   "roofMaxM": 11.5,
+   "normal": [
+    -0.217,
+    -0.976
+   ],
+   "frontMidRD": [
+    121214.92,
+    486250.24
+   ]
+  },
+  {
+   "pandId": "0363100012165685",
+   "street": "Kerkstraat",
+   "numbers": [
+    222,
+    224,
+    226,
+    228,
+    230,
+    231,
+    233,
+    235
+   ],
+   "otherStreets": {
+    "Vijzelstraat": [
+     66,
+     68,
+     70,
+     72,
+     78
+    ]
+   },
+   "side": "even",
+   "builtYear": 1973,
+   "storeys3dbag": 0,
+   "units": 14,
+   "groundUses": [
+    "kantoorfunctie",
+    "overige gebruiksfunctie",
+    "kantoorfunctie,overige gebruiksfunctie"
+   ],
+   "frontWidthM": 18.8,
+   "eavesM": 13,
+   "ridgeM": 34.5,
+   "roofMaxM": 35.5,
+   "normal": [
+    0.217,
+    0.976
+   ],
+   "frontMidRD": [
+    121224.3,
+    486237.23
+   ]
+  },
+  {
+   "pandId": "0363100012167894",
+   "street": "Kerkstraat",
+   "numbers": [
+    223,
+    225,
+    227
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1737,
+   "storeys3dbag": 5,
+   "units": 3,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 5.7,
+   "eavesM": 12.2,
+   "ridgeM": 14.8,
+   "roofMaxM": 14.7,
+   "normal": [
+    -0.217,
+    -0.976
+   ],
+   "frontMidRD": [
+    121220.45,
+    486249
+   ]
+  },
+  {
+   "pandId": "0363100012180191",
+   "street": "Kerkstraat",
+   "numbers": [
+    240
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1727,
+   "storeys3dbag": 4,
+   "units": 2,
+   "groundUses": [
+    "overige gebruiksfunctie",
+    "woonfunctie"
+   ],
+   "frontWidthM": 20,
+   "eavesM": 8.9,
+   "ridgeM": 12.6,
+   "roofMaxM": 12.6,
+   "normal": [
+    0.233,
+    0.973
+   ],
+   "frontMidRD": [
+    121290.44,
+    486222.18
+   ]
+  },
+  {
+   "pandId": "0363100012165079",
+   "street": "Kerkstraat",
+   "numbers": [
+    245,
+    247
+   ],
+   "otherStreets": {
+    "Vijzelstraat": [
+     105,
+     107,
+     111
+    ]
+   },
+   "side": "odd",
+   "builtYear": 1748,
+   "storeys3dbag": 5,
+   "units": 15,
+   "groundUses": [
+    "woonfunctie",
+    "winkelfunctie"
+   ],
+   "frontWidthM": 21.7,
+   "eavesM": 10.5,
+   "ridgeM": 17.1,
+   "roofMaxM": 17.1,
+   "normal": [
+    -0.211,
+    -0.978
+   ],
+   "frontMidRD": [
+    121294.91,
+    486232.01
+   ]
+  },
+  {
+   "pandId": "0363100012180090",
+   "street": "Kerkstraat",
+   "numbers": [
+    246
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1727,
+   "storeys3dbag": 5,
+   "units": 3,
+   "groundUses": [
+    "industriefunctie",
+    "woonfunctie"
+   ],
+   "frontWidthM": 5.6,
+   "eavesM": 10.5,
+   "ridgeM": 13.9,
+   "roofMaxM": 13.9,
+   "normal": [
+    0.234,
+    0.972
+   ],
+   "frontMidRD": [
+    121312.98,
+    486216.96
+   ]
+  },
+  {
+   "pandId": "0363100012180089",
+   "street": "Kerkstraat",
+   "numbers": [
+    248,
+    250
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1733,
+   "storeys3dbag": 4,
+   "units": 6,
+   "groundUses": [
+    "industriefunctie",
+    "woonfunctie"
+   ],
+   "frontWidthM": 9.5,
+   "eavesM": 10.5,
+   "ridgeM": 14.7,
+   "roofMaxM": 14.9,
+   "normal": [
+    0.219,
+    0.976
+   ],
+   "frontMidRD": [
+    121320.38,
+    486215.26
+   ]
+  },
+  {
+   "pandId": "0363100012168390",
+   "street": "Kerkstraat",
+   "numbers": [
+    249
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1735,
+   "storeys3dbag": 4,
+   "units": 4,
+   "groundUses": [
+    "woonfunctie",
+    "overige gebruiksfunctie"
+   ],
+   "frontWidthM": 5.8,
+   "eavesM": 12.3,
+   "ridgeM": 14.5,
+   "roofMaxM": 14.4,
+   "normal": [
+    -0.217,
+    -0.976
+   ],
+   "frontMidRD": [
+    121308.39,
+    486229.1
+   ]
+  },
+  {
+   "pandId": "0363100012168391",
+   "street": "Kerkstraat",
+   "numbers": [
+    251,
+    253
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1713,
+   "storeys3dbag": 4,
+   "units": 5,
+   "groundUses": [
+    "industriefunctie",
+    "woonfunctie"
+   ],
+   "frontWidthM": 9.8,
+   "eavesM": 9,
+   "ridgeM": 13.4,
+   "roofMaxM": 13.6,
+   "normal": [
+    -0.216,
+    -0.976
+   ],
+   "frontMidRD": [
+    121315.99,
+    486227.41
+   ]
+  },
+  {
+   "pandId": "0363100012180088",
+   "street": "Kerkstraat",
+   "numbers": [
+    252
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1722,
+   "storeys3dbag": 4,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.2,
+   "eavesM": 10.9,
+   "ridgeM": 14.9,
+   "roofMaxM": 14.9,
+   "normal": [
+    0.223,
+    0.975
+   ],
+   "frontMidRD": [
+    121328.08,
+    486213.52
+   ]
+  },
+  {
+   "pandId": "0363100012180087",
+   "street": "Kerkstraat",
+   "numbers": [
+    254,
+    256
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1737,
+   "storeys3dbag": 5,
+   "units": 8,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 12.8,
+   "eavesM": 14.1,
+   "ridgeM": 17.1,
+   "roofMaxM": 17.6,
+   "normal": [
+    0.221,
+    0.975
+   ],
+   "frontMidRD": [
+    121337.38,
+    486211.41
+   ]
+  },
+  {
+   "pandId": "0363100012180187",
+   "street": "Kerkstraat",
+   "numbers": [
+    255
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1695,
+   "storeys3dbag": 2,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 1.7,
+   "eavesM": 1.4,
+   "ridgeM": 12.7,
+   "roofMaxM": 13.3,
+   "normal": [
+    -0.216,
+    -0.976
+   ],
+   "frontMidRD": [
+    121324.7,
+    486224.26
+   ]
+  },
+  {
+   "pandId": "0363100012180086",
+   "street": "Kerkstraat",
+   "numbers": [
+    257
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1710,
+   "storeys3dbag": 0,
+   "units": 1,
+   "groundUses": [
+    "kantoorfunctie"
+   ],
+   "frontWidthM": 14.9,
+   "eavesM": 9.5,
+   "ridgeM": 14.7,
+   "roofMaxM": 14.7,
+   "normal": [
+    -0.222,
+    -0.975
+   ],
+   "frontMidRD": [
+    121333.06,
+    486223.59
+   ]
+  },
+  {
+   "pandId": "0363100012180256",
+   "street": "Kerkstraat",
+   "numbers": [
+    258
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1773,
+   "storeys3dbag": 5,
+   "units": 4,
+   "groundUses": [
+    "woonfunctie",
+    "overige gebruiksfunctie"
+   ],
+   "frontWidthM": 4.2,
+   "eavesM": 12.1,
+   "ridgeM": 13.9,
+   "roofMaxM": 13.9,
+   "normal": [
+    0.221,
+    0.975
+   ],
+   "frontMidRD": [
+    121345.68,
+    486209.55
+   ]
+  },
+  {
+   "pandId": "0363100012168389",
+   "street": "Kerkstraat",
+   "numbers": [
+    259
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1671,
+   "storeys3dbag": 0,
+   "units": 2,
+   "groundUses": [
+    "bijeenkomstfunctie",
+    "kantoorfunctie"
+   ],
+   "frontWidthM": 14.9,
+   "eavesM": 11,
+   "ridgeM": 14.6,
+   "roofMaxM": 17.6,
+   "normal": [
+    -0.234,
+    -0.972
+   ],
+   "frontMidRD": [
+    121347.58,
+    486220.24
+   ]
+  },
+  {
+   "pandId": "0363100012168388",
+   "street": "Kerkstraat",
+   "numbers": [
+    260
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1712,
+   "storeys3dbag": 4,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 4.1,
+   "eavesM": 11.9,
+   "ridgeM": 14.1,
+   "roofMaxM": 14.1,
+   "normal": [
+    0.23,
+    0.973
+   ],
+   "frontMidRD": [
+    121349.74,
+    486208.63
+   ]
+  },
+  {
+   "pandId": "0363100012179212",
+   "street": "Kerkstraat",
+   "numbers": [
+    261
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1671,
+   "storeys3dbag": 5,
+   "units": 4,
+   "groundUses": [
+    "overige gebruiksfunctie",
+    "woonfunctie"
+   ],
+   "frontWidthM": 14.8,
+   "eavesM": 13.3,
+   "ridgeM": 16.2,
+   "roofMaxM": 16.6,
+   "normal": [
+    -0.221,
+    -0.975
+   ],
+   "frontMidRD": [
+    121362.05,
+    486216.86
+   ]
+  },
+  {
+   "pandId": "0363100012167476",
+   "street": "Kerkstraat",
+   "numbers": [
+    262
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1708,
+   "storeys3dbag": 4,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 4.2,
+   "eavesM": 11.1,
+   "ridgeM": 12.9,
+   "roofMaxM": 12.9,
+   "normal": [
+    0.232,
+    0.973
+   ],
+   "frontMidRD": [
+    121353.81,
+    486207.66
+   ]
+  },
+  {
+   "pandId": "0363100012179210",
+   "street": "Kerkstraat",
+   "numbers": [
+    263
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1837,
+   "storeys3dbag": 4,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 5,
+   "eavesM": 11.1,
+   "ridgeM": 13.1,
+   "roofMaxM": 13.1,
+   "normal": [
+    -0.221,
+    -0.975
+   ],
+   "frontMidRD": [
+    121371.71,
+    486214.67
+   ]
+  },
+  {
+   "pandId": "0363100012179211",
+   "street": "Kerkstraat",
+   "numbers": [
+    264
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1710,
+   "storeys3dbag": 4,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.3,
+   "eavesM": 9.5,
+   "ridgeM": 12.3,
+   "roofMaxM": 12.9,
+   "normal": [
+    0.224,
+    0.974
+   ],
+   "frontMidRD": [
+    121358.92,
+    486206.47
+   ]
+  },
+  {
+   "pandId": "0363100012179300",
+   "street": "Kerkstraat",
+   "numbers": [
+    265
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1837,
+   "storeys3dbag": 4,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 5,
+   "eavesM": 11.1,
+   "ridgeM": 13.7,
+   "roofMaxM": 13.7,
+   "normal": [
+    -0.238,
+    -0.971
+   ],
+   "frontMidRD": [
+    121376.56,
+    486213.55
+   ]
+  },
+  {
+   "pandId": "0363100012179288",
+   "street": "Kerkstraat",
+   "numbers": [
+    266,
+    268
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1933,
+   "storeys3dbag": 4,
+   "units": 7,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 12.6,
+   "eavesM": 14.8,
+   "ridgeM": 19.6,
+   "roofMaxM": 20,
+   "normal": [
+    0.228,
+    0.974
+   ],
+   "frontMidRD": [
+    121368.13,
+    486204.32
+   ]
+  },
+  {
+   "pandId": "0363100012179301",
+   "street": "Kerkstraat",
+   "numbers": [
+    267
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1837,
+   "storeys3dbag": 4,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 5,
+   "eavesM": 11.3,
+   "ridgeM": 13.5,
+   "roofMaxM": 13.5,
+   "normal": [
+    -0.206,
+    -0.979
+   ],
+   "frontMidRD": [
+    121381.41,
+    486212.45
+   ]
+  },
+  {
+   "pandId": "0363100012179291",
+   "street": "Kerkstraat",
+   "numbers": [
+    269
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1705,
+   "storeys3dbag": 4,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 4.2,
+   "eavesM": 9.2,
+   "ridgeM": 13.3,
+   "roofMaxM": 13.4,
+   "normal": [
+    -0.211,
+    -0.977
+   ],
+   "frontMidRD": [
+    121385.91,
+    486211.47
+   ]
+  },
+  {
+   "pandId": "0363100012179292",
+   "street": "Kerkstraat",
+   "numbers": [
+    271
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1712,
+   "storeys3dbag": 4,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.5,
+   "eavesM": 9.5,
+   "ridgeM": 13.2,
+   "roofMaxM": 13.8,
+   "normal": [
+    -0.216,
+    -0.976
+   ],
+   "frontMidRD": [
+    121391.11,
+    486210.22
+   ]
+  },
+  {
+   "pandId": "0363100012179259",
+   "street": "Kerkstraat",
+   "numbers": [
+    273
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1669,
+   "storeys3dbag": 4,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 4.2,
+   "eavesM": 8.3,
+   "ridgeM": 12.7,
+   "roofMaxM": 12.7,
+   "normal": [
+    -0.246,
+    -0.969
+   ],
+   "frontMidRD": [
+    121396.32,
+    486209.08
+   ]
+  },
+  {
+   "pandId": "0363100012179260",
+   "street": "Kerkstraat",
+   "numbers": [
+    275,
+    277
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1669,
+   "storeys3dbag": 4,
+   "units": 3,
+   "groundUses": [
+    "overige gebruiksfunctie",
+    "woonfunctie"
+   ],
+   "frontWidthM": 8.9,
+   "eavesM": 9.3,
+   "ridgeM": 15.4,
+   "roofMaxM": 15.5,
+   "normal": [
+    -0.224,
+    -0.975
+   ],
+   "frontMidRD": [
+    121402.69,
+    486207.64
+   ]
+  },
+  {
+   "pandId": "0363100012179299",
+   "street": "Kerkstraat",
+   "numbers": [
+    276
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1710,
+   "storeys3dbag": 4,
+   "units": 3,
+   "groundUses": [
+    "industriefunctie",
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.3,
+   "eavesM": 8.1,
+   "ridgeM": 12.6,
+   "roofMaxM": 12.6,
+   "normal": [
+    0.232,
+    0.973
+   ],
+   "frontMidRD": [
+    121377.35,
+    486202.14
+   ]
+  },
+  {
+   "pandId": "0363100012179298",
+   "street": "Kerkstraat",
+   "numbers": [
+    278
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1685,
+   "storeys3dbag": 3,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 3.8,
+   "eavesM": 8.3,
+   "ridgeM": 10.9,
+   "roofMaxM": 10.9,
+   "normal": [
+    0.218,
+    0.976
+   ],
+   "frontMidRD": [
+    121382.27,
+    486201
+   ]
+  },
+  {
+   "pandId": "0363100012179261",
+   "street": "Kerkstraat",
+   "numbers": [
+    279
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1778,
+   "storeys3dbag": 4,
+   "units": 2,
+   "groundUses": [
+    "overige gebruiksfunctie",
+    "woonfunctie"
+   ],
+   "frontWidthM": 6,
+   "eavesM": 12.7,
+   "ridgeM": 15.2,
+   "roofMaxM": 15.2,
+   "normal": [
+    -0.215,
+    -0.977
+   ],
+   "frontMidRD": [
+    121409.95,
+    486206.01
+   ]
+  },
+  {
+   "pandId": "0363100012179218",
+   "street": "Kerkstraat",
+   "numbers": [
+    280
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1685,
+   "storeys3dbag": 4,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 3.7,
+   "eavesM": 8.6,
+   "ridgeM": 11.2,
+   "roofMaxM": 11.2,
+   "normal": [
+    0.233,
+    0.973
+   ],
+   "frontMidRD": [
+    121385.94,
+    486200.15
+   ]
+  },
+  {
+   "pandId": "0363100012179262",
+   "street": "Kerkstraat",
+   "numbers": [
+    281
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1740,
+   "storeys3dbag": 5,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 3.8,
+   "eavesM": 13.5,
+   "ridgeM": 15.8,
+   "roofMaxM": 15.7,
+   "normal": [
+    -0.227,
+    -0.974
+   ],
+   "frontMidRD": [
+    121414.71,
+    486204.94
+   ]
+  },
+  {
+   "pandId": "0363100012179287",
+   "street": "Kerkstraat",
+   "numbers": [
+    281
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1716,
+   "storeys3dbag": 5,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 3.6,
+   "eavesM": 15.4,
+   "ridgeM": 15.8,
+   "roofMaxM": 15.7,
+   "normal": [
+    -0.227,
+    -0.974
+   ],
+   "frontMidRD": [
+    121418.3,
+    486204.1
+   ]
+  },
+  {
+   "pandId": "0363100012179240",
+   "street": "Kerkstraat",
+   "numbers": [
+    282
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1693,
+   "storeys3dbag": 4,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 3.7,
+   "eavesM": 12.2,
+   "ridgeM": 12.4,
+   "roofMaxM": 12.3,
+   "normal": [
+    0.231,
+    0.973
+   ],
+   "frontMidRD": [
+    121389.55,
+    486199.29
+   ]
+  },
+  {
+   "pandId": "0363100012179248",
+   "street": "Kerkstraat",
+   "numbers": [
+    283
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1005,
+   "storeys3dbag": 0,
+   "units": 2,
+   "groundUses": [
+    "industriefunctie",
+    "woonfunctie"
+   ],
+   "frontWidthM": 7.4,
+   "eavesM": 11.4,
+   "ridgeM": 15.3,
+   "roofMaxM": 15.3,
+   "normal": [
+    -0.229,
+    -0.973
+   ],
+   "frontMidRD": [
+    121423.68,
+    486202.84
+   ]
+  },
+  {
+   "pandId": "0363100012179241",
+   "street": "Kerkstraat",
+   "numbers": [
+    284
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1696,
+   "storeys3dbag": 4,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 3.7,
+   "eavesM": 10.8,
+   "ridgeM": 13.7,
+   "roofMaxM": 13.6,
+   "normal": [
+    0.22,
+    0.975
+   ],
+   "frontMidRD": [
+    121393.16,
+    486198.45
+   ]
+  },
+  {
+   "pandId": "0363100012179244",
+   "street": "Kerkstraat",
+   "numbers": [
+    286
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1702,
+   "storeys3dbag": 4,
+   "units": 3,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 3.8,
+   "eavesM": 10.6,
+   "ridgeM": 13.4,
+   "roofMaxM": 13.5,
+   "normal": [
+    0.216,
+    0.976
+   ],
+   "frontMidRD": [
+    121396.84,
+    486197.63
+   ]
+  },
+  {
+   "pandId": "0363100012179247",
+   "street": "Kerkstraat",
+   "numbers": [
+    287,
+    289
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1990,
+   "storeys3dbag": 4,
+   "units": 7,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 11.1,
+   "eavesM": 11.2,
+   "ridgeM": 11.3,
+   "roofMaxM": 11.2,
+   "normal": [
+    -0.227,
+    -0.974
+   ],
+   "frontMidRD": [
+    121432.7,
+    486200.72
+   ]
+  },
+  {
+   "pandId": "0363100012179213",
+   "street": "Kerkstraat",
+   "numbers": [
+    288
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1691,
+   "storeys3dbag": 4,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 4,
+   "eavesM": 9.5,
+   "ridgeM": 12.6,
+   "roofMaxM": 12.6,
+   "normal": [
+    0.222,
+    0.975
+   ],
+   "frontMidRD": [
+    121400.61,
+    486196.79
+   ]
+  },
+  {
+   "pandId": "0363100012179245",
+   "street": "Kerkstraat",
+   "numbers": [
+    290
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1691,
+   "storeys3dbag": 4,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 4.7,
+   "eavesM": 8.9,
+   "ridgeM": 12.4,
+   "roofMaxM": 12.4,
+   "normal": [
+    0.214,
+    0.977
+   ],
+   "frontMidRD": [
+    121404.84,
+    486195.84
+   ]
+  },
+  {
+   "pandId": "0363100012179246",
+   "street": "Kerkstraat",
+   "numbers": [
+    291
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1699,
+   "storeys3dbag": 4,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 3.7,
+   "eavesM": 13.5,
+   "ridgeM": 13.7,
+   "roofMaxM": 13.6,
+   "normal": [
+    -0.222,
+    -0.975
+   ],
+   "frontMidRD": [
+    121439.93,
+    486199.05
+   ]
+  },
+  {
+   "pandId": "0363100012179249",
+   "street": "Kerkstraat",
+   "numbers": [
+    292
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1691,
+   "storeys3dbag": 4,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 3.9,
+   "eavesM": 10,
+   "ridgeM": 13,
+   "roofMaxM": 13,
+   "normal": [
+    0.214,
+    0.977
+   ],
+   "frontMidRD": [
+    121409.04,
+    486194.92
+   ]
+  },
+  {
+   "pandId": "0363100012179243",
+   "street": "Kerkstraat",
+   "numbers": [
+    293
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1678,
+   "storeys3dbag": 3,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 3.8,
+   "eavesM": 8.7,
+   "ridgeM": 11,
+   "roofMaxM": 11.1,
+   "normal": [
+    -0.213,
+    -0.977
+   ],
+   "frontMidRD": [
+    121443.61,
+    486198.23
+   ]
+  },
+  {
+   "pandId": "0363100012179250",
+   "street": "Kerkstraat",
+   "numbers": [
+    294
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1689,
+   "storeys3dbag": 4,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 4.2,
+   "eavesM": 11.5,
+   "ridgeM": 12.7,
+   "roofMaxM": 12.6,
+   "normal": [
+    0.176,
+    0.984
+   ],
+   "frontMidRD": [
+    121412.98,
+    486194.14
+   ]
+  },
+  {
+   "pandId": "0363100012167475",
+   "street": "Kerkstraat",
+   "numbers": [
+    295
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1752,
+   "storeys3dbag": 3,
+   "units": 4,
+   "groundUses": [
+    "industriefunctie",
+    "woonfunctie"
+   ],
+   "frontWidthM": 5.5,
+   "eavesM": 9.3,
+   "ridgeM": 12.7,
+   "roofMaxM": 14.1,
+   "normal": [
+    -0.232,
+    -0.973
+   ],
+   "frontMidRD": [
+    121448.15,
+    486197.18
+   ]
+  },
+  {
+   "pandId": "0363100012179251",
+   "street": "Kerkstraat",
+   "numbers": [
+    296
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1717,
+   "storeys3dbag": 4,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 4.2,
+   "eavesM": 10.6,
+   "ridgeM": 13.9,
+   "roofMaxM": 13.9,
+   "normal": [
+    0.231,
+    0.973
+   ],
+   "frontMidRD": [
+    121417.07,
+    486193.29
+   ]
+  },
+  {
+   "pandId": "0363100012179938",
+   "street": "Kerkstraat",
+   "numbers": [
+    297,
+    299
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1742,
+   "storeys3dbag": 4,
+   "units": 5,
+   "groundUses": [
+    "woonfunctie",
+    "overige gebruiksfunctie",
+    "kantoorfunctie"
+   ],
+   "frontWidthM": 13.1,
+   "eavesM": 10.7,
+   "ridgeM": 15,
+   "roofMaxM": 15.1,
+   "normal": [
+    -0.226,
+    -0.974
+   ],
+   "frontMidRD": [
+    121457.21,
+    486195.08
+   ]
+  },
+  {
+   "pandId": "0363100012179252",
+   "street": "Kerkstraat",
+   "numbers": [
+    298
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1721,
+   "storeys3dbag": 4,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 4.2,
+   "eavesM": 10.7,
+   "ridgeM": 13.8,
+   "roofMaxM": 13.8,
+   "normal": [
+    0.231,
+    0.973
+   ],
+   "frontMidRD": [
+    121421.13,
+    486192.32
+   ]
+  },
+  {
+   "pandId": "0363100012179253",
+   "street": "Kerkstraat",
+   "numbers": [
+    300
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1650,
+   "storeys3dbag": 4,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.1,
+   "eavesM": 9.8,
+   "ridgeM": 13.8,
+   "roofMaxM": 13.8,
+   "normal": [
+    0.223,
+    0.975
+   ],
+   "frontMidRD": [
+    121426.12,
+    486191.17
+   ]
+  },
+  {
+   "pandId": "0363100012179939",
+   "street": "Kerkstraat",
+   "numbers": [
+    301
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1737,
+   "storeys3dbag": 4,
+   "units": 2,
+   "groundUses": [
+    "kantoorfunctie",
+    "woonfunctie"
+   ],
+   "frontWidthM": 7.5,
+   "eavesM": 11.4,
+   "ridgeM": 15.1,
+   "roofMaxM": 15.1,
+   "normal": [
+    -0.217,
+    -0.976
+   ],
+   "frontMidRD": [
+    121467.22,
+    486192.81
+   ]
+  },
+  {
+   "pandId": "0363100012179254",
+   "street": "Kerkstraat",
+   "numbers": [
+    302
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1705,
+   "storeys3dbag": 3,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 3.3,
+   "eavesM": 8.4,
+   "ridgeM": 12.3,
+   "roofMaxM": 12.5,
+   "normal": [
+    0.214,
+    0.977
+   ],
+   "frontMidRD": [
+    121430.69,
+    486190.14
+   ]
+  },
+  {
+   "pandId": "0363100012179940",
+   "street": "Kerkstraat",
+   "numbers": [
+    303,
+    305
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1758,
+   "storeys3dbag": 5,
+   "units": 10,
+   "groundUses": [
+    "industriefunctie",
+    "woonfunctie",
+    "overige gebruiksfunctie"
+   ],
+   "frontWidthM": 15,
+   "eavesM": 13.8,
+   "ridgeM": 16.8,
+   "roofMaxM": 16.7,
+   "normal": [
+    -0.22,
+    -0.975
+   ],
+   "frontMidRD": [
+    121478.16,
+    486190.36
+   ]
+  },
+  {
+   "pandId": "0363100012179255",
+   "street": "Kerkstraat",
+   "numbers": [
+    304
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1705,
+   "storeys3dbag": 3,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 3.3,
+   "eavesM": 8.4,
+   "ridgeM": 12.4,
+   "roofMaxM": 12.4,
+   "normal": [
+    0.214,
+    0.977
+   ],
+   "frontMidRD": [
+    121433.9,
+    486189.43
+   ]
+  },
+  {
+   "pandId": "0363100012179214",
+   "street": "Kerkstraat",
+   "numbers": [
+    306
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1718,
+   "storeys3dbag": 4,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 5.2,
+   "eavesM": 7.8,
+   "ridgeM": 11.8,
+   "roofMaxM": 11.8,
+   "normal": [
+    0.226,
+    0.974
+   ],
+   "frontMidRD": [
+    121438.06,
+    486188.49
+   ]
+  },
+  {
+   "pandId": "0363100012179941",
+   "street": "Kerkstraat",
+   "numbers": [
+    307
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1752,
+   "storeys3dbag": 5,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 5.7,
+   "eavesM": 12.8,
+   "ridgeM": 16.3,
+   "roofMaxM": 16.4,
+   "normal": [
+    -0.224,
+    -0.975
+   ],
+   "frontMidRD": [
+    121488.21,
+    486188.08
+   ]
+  },
+  {
+   "pandId": "0363100012179215",
+   "street": "Kerkstraat",
+   "numbers": [
+    308
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1694,
+   "storeys3dbag": 3,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 5.2,
+   "eavesM": 7.8,
+   "ridgeM": 11.8,
+   "roofMaxM": 11.8,
+   "normal": [
+    0.225,
+    0.974
+   ],
+   "frontMidRD": [
+    121443.13,
+    486187.31
+   ]
+  },
+  {
+   "pandId": "0363100012179942",
+   "street": "Kerkstraat",
+   "numbers": [
+    309
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1734,
+   "storeys3dbag": 5,
+   "units": 3,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 5.7,
+   "eavesM": 14.1,
+   "ridgeM": 14.2,
+   "roofMaxM": 14.2,
+   "normal": [
+    -0.214,
+    -0.977
+   ],
+   "frontMidRD": [
+    121493.74,
+    486186.83
+   ]
+  },
+  {
+   "pandId": "0363100012167474",
+   "street": "Kerkstraat",
+   "numbers": [
+    310
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1904,
+   "storeys3dbag": 0,
+   "units": 1,
+   "groundUses": [
+    "kantoorfunctie"
+   ],
+   "frontWidthM": 14.7,
+   "eavesM": 8.3,
+   "ridgeM": 19,
+   "roofMaxM": 19,
+   "normal": [
+    0.219,
+    0.976
+   ],
+   "frontMidRD": [
+    121452.82,
+    486185.17
+   ]
+  },
+  {
+   "pandId": "0363100012179866",
+   "street": "Kerkstraat",
+   "numbers": [
+    311
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1724,
+   "storeys3dbag": 5,
+   "units": 2,
+   "groundUses": [
+    "industriefunctie",
+    "woonfunctie"
+   ],
+   "frontWidthM": 5.5,
+   "eavesM": 11.3,
+   "ridgeM": 14.2,
+   "roofMaxM": 14.1,
+   "normal": [
+    -0.239,
+    -0.971
+   ],
+   "frontMidRD": [
+    121499.17,
+    486185.57
+   ]
+  },
+  {
+   "pandId": "0363100012179867",
+   "street": "Kerkstraat",
+   "numbers": [
+    313
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1905,
+   "storeys3dbag": 4,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 5.5,
+   "eavesM": 10.8,
+   "ridgeM": 12.8,
+   "roofMaxM": 13.1,
+   "normal": [
+    -0.217,
+    -0.976
+   ],
+   "frontMidRD": [
+    121504.51,
+    486184.32
+   ]
+  },
+  {
+   "pandId": "0363100012179871",
+   "street": "Kerkstraat",
+   "numbers": [
+    315
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1714,
+   "storeys3dbag": 3,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 3.7,
+   "eavesM": 9.1,
+   "ridgeM": 10.3,
+   "roofMaxM": 10.4,
+   "normal": [
+    -0.208,
+    -0.978
+   ],
+   "frontMidRD": [
+    121508.98,
+    486183.34
+   ]
+  },
+  {
+   "pandId": "0363100012180041",
+   "street": "Kerkstraat",
+   "numbers": [
+    316,
+    318,
+    320
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1750,
+   "storeys3dbag": 4,
+   "units": 8,
+   "groundUses": [
+    "industriefunctie",
+    "woonfunctie"
+   ],
+   "frontWidthM": 12.6,
+   "eavesM": 10.1,
+   "ridgeM": 12.9,
+   "roofMaxM": 12.8,
+   "normal": [
+    0.226,
+    0.974
+   ],
+   "frontMidRD": [
+    121466.14,
+    486182.09
+   ]
+  },
+  {
+   "pandId": "0363100012179872",
+   "street": "Kerkstraat",
+   "numbers": [
+    317
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1864,
+   "storeys3dbag": 3,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 3.7,
+   "eavesM": 9.8,
+   "ridgeM": 13.9,
+   "roofMaxM": 13.2,
+   "normal": [
+    -0.233,
+    -0.973
+   ],
+   "frontMidRD": [
+    121512.55,
+    486182.49
+   ]
+  },
+  {
+   "pandId": "0363100012179950",
+   "street": "Kerkstraat",
+   "numbers": [
+    322
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1688,
+   "storeys3dbag": 4,
+   "units": 15,
+   "groundUses": [
+    "woonfunctie",
+    "overige gebruiksfunctie"
+   ],
+   "frontWidthM": 35.4,
+   "eavesM": 9.6,
+   "ridgeM": 14.9,
+   "roofMaxM": 14.9,
+   "normal": [
+    0.235,
+    0.972
+   ],
+   "frontMidRD": [
+    121489.56,
+    486176.69
+   ]
+  },
+  {
+   "pandId": "0363100012179949",
+   "street": "Kerkstraat",
+   "numbers": [
+    324
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1673,
+   "storeys3dbag": 4,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 4.4,
+   "eavesM": 10.5,
+   "ridgeM": 14,
+   "roofMaxM": 14,
+   "normal": [
+    0.262,
+    0.965
+   ],
+   "frontMidRD": [
+    121509.02,
+    486172.18
+   ]
+  },
+  {
+   "pandId": "0363100012179946",
+   "street": "Kerkstraat",
+   "numbers": [
+    326
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1700,
+   "storeys3dbag": 4,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 4.2,
+   "eavesM": 9.7,
+   "ridgeM": 12.8,
+   "roofMaxM": 12.8,
+   "normal": [
+    0.226,
+    0.974
+   ],
+   "frontMidRD": [
+    121513.18,
+    486171.14
+   ]
+  },
+  {
+   "pandId": "0363100012179945",
+   "street": "Kerkstraat",
+   "numbers": [
+    328
+   ],
+   "otherStreets": {
+    "Reguliersgracht": [
+     70
+    ]
+   },
+   "side": "even",
+   "builtYear": 1734,
+   "storeys3dbag": 4,
+   "units": 5,
+   "groundUses": [
+    "industriefunctie",
+    "woonfunctie"
+   ],
+   "frontWidthM": 8,
+   "eavesM": 10.4,
+   "ridgeM": 13.4,
+   "roofMaxM": 14,
+   "normal": [
+    0.213,
+    0.977
+   ],
+   "frontMidRD": [
+    121519.13,
+    486169.81
+   ]
+  },
+  {
+   "pandId": "0363100012176763",
+   "street": "Nieuwe Spiegelstraat",
+   "numbers": [
+    1
+   ],
+   "otherStreets": {
+    "Herengracht": [
+     466
+    ]
+   },
+   "side": "odd",
+   "builtYear": 1669,
+   "storeys3dbag": 0,
+   "units": 2,
+   "groundUses": [
+    "winkelfunctie",
+    "kantoorfunctie"
+   ],
+   "frontWidthM": 17.3,
+   "eavesM": 3.8,
+   "ridgeM": 21.2,
+   "roofMaxM": 22.2,
+   "normal": [
+    -0.878,
+    0.478
+   ],
+   "frontMidRD": [
+    121158.62,
+    486484.85
+   ]
+  },
+  {
+   "pandId": "0363100012167897",
+   "street": "Nieuwe Spiegelstraat",
+   "numbers": [
+    3,
+    5,
+    7,
+    9,
+    11,
+    13,
+    17
+   ],
+   "otherStreets": {
+    "Keizersgracht": [
+     555
+    ]
+   },
+   "side": "odd",
+   "builtYear": 1905,
+   "storeys3dbag": 0,
+   "units": 12,
+   "groundUses": [
+    "winkelfunctie",
+    "overige gebruiksfunctie",
+    "bijeenkomstfunctie",
+    "kantoorfunctie"
+   ],
+   "frontWidthM": 61,
+   "eavesM": 12.2,
+   "ridgeM": 28,
+   "roofMaxM": 28,
+   "normal": [
+    -0.879,
+    0.476
+   ],
+   "frontMidRD": [
+    121139.98,
+    486450.42
+   ]
+  },
+  {
+   "pandId": "0363100012176069",
+   "street": "Nieuwe Spiegelstraat",
+   "numbers": [
+    23
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1716,
+   "storeys3dbag": 5,
+   "units": 4,
+   "groundUses": [
+    "winkelfunctie",
+    "woonfunctie"
+   ],
+   "frontWidthM": 8.5,
+   "eavesM": 13.3,
+   "ridgeM": 15.9,
+   "roofMaxM": 16,
+   "normal": [
+    -0.878,
+    0.478
+   ],
+   "frontMidRD": [
+    121081.17,
+    486344.92
+   ]
+  },
+  {
+   "pandId": "0363100012176152",
+   "street": "Nieuwe Spiegelstraat",
+   "numbers": [
+    25
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1697,
+   "storeys3dbag": 5,
+   "units": 1,
+   "groundUses": [
+    "winkelfunctie,woonfunctie"
+   ],
+   "frontWidthM": 4.6,
+   "eavesM": 11.7,
+   "ridgeM": 14.8,
+   "roofMaxM": 14.8,
+   "normal": [
+    -0.877,
+    0.481
+   ],
+   "frontMidRD": [
+    121078.04,
+    486339.19
+   ]
+  },
+  {
+   "pandId": "0363100012176151",
+   "street": "Nieuwe Spiegelstraat",
+   "numbers": [
+    27,
+    29
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1726,
+   "storeys3dbag": 4,
+   "units": 7,
+   "groundUses": [
+    "winkelfunctie,woonfunctie",
+    "winkelfunctie",
+    "woonfunctie",
+    "kantoorfunctie"
+   ],
+   "frontWidthM": 11.2,
+   "eavesM": 9.8,
+   "ridgeM": 14.7,
+   "roofMaxM": 14.7,
+   "normal": [
+    -0.874,
+    0.486
+   ],
+   "frontMidRD": [
+    121074.21,
+    486332.28
+   ]
+  },
+  {
+   "pandId": "0363100012176150",
+   "street": "Nieuwe Spiegelstraat",
+   "numbers": [
+    31
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1695,
+   "storeys3dbag": 5,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.3,
+   "eavesM": 13.3,
+   "ridgeM": 15.2,
+   "roofMaxM": 15.2,
+   "normal": [
+    -0.873,
+    0.487
+   ],
+   "frontMidRD": [
+    121069.96,
+    486324.65
+   ]
+  },
+  {
+   "pandId": "0363100012176158",
+   "street": "Nieuwe Spiegelstraat",
+   "numbers": [
+    33,
+    35
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1905,
+   "storeys3dbag": 5,
+   "units": 3,
+   "groundUses": [
+    "winkelfunctie",
+    "overige gebruiksfunctie",
+    "woonfunctie"
+   ],
+   "frontWidthM": 9.5,
+   "eavesM": 12.7,
+   "ridgeM": 15.3,
+   "roofMaxM": 15.3,
+   "normal": [
+    -0.881,
+    0.473
+   ],
+   "frontMidRD": [
+    121066.13,
+    486317.74
+   ]
+  },
+  {
+   "pandId": "0363100012176072",
+   "street": "Nieuwe Spiegelstraat",
+   "numbers": [
+    37
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1727,
+   "storeys3dbag": 4,
+   "units": 4,
+   "groundUses": [
+    "woonfunctie",
+    "winkelfunctie"
+   ],
+   "frontWidthM": 7.9,
+   "eavesM": 8.9,
+   "ridgeM": 13.2,
+   "roofMaxM": 13.4,
+   "normal": [
+    -0.864,
+    0.503
+   ],
+   "frontMidRD": [
+    121061.86,
+    486310.17
+   ]
+  },
+  {
+   "pandId": "0363100012176071",
+   "street": "Nieuwe Spiegelstraat",
+   "numbers": [
+    39
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1723,
+   "storeys3dbag": 0,
+   "units": 1,
+   "groundUses": [
+    "winkelfunctie"
+   ],
+   "frontWidthM": 8,
+   "eavesM": 8.2,
+   "ridgeM": 15.3,
+   "roofMaxM": 15,
+   "normal": [
+    -0.868,
+    0.497
+   ],
+   "frontMidRD": [
+    121057.9,
+    486303.32
+   ]
+  },
+  {
+   "pandId": "0363100012167616",
+   "street": "Nieuwe Spiegelstraat",
+   "numbers": [
+    43,
+    45
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1005,
+   "storeys3dbag": 0,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie",
+    "winkelfunctie"
+   ],
+   "frontWidthM": 5.7,
+   "eavesM": 10.4,
+   "ridgeM": 13.7,
+   "roofMaxM": 13.5,
+   "normal": [
+    -0.876,
+    0.483
+   ],
+   "frontMidRD": [
+    121051.36,
+    486291.54
+   ]
+  },
+  {
+   "pandId": "0363100012176075",
+   "street": "Nieuwe Spiegelstraat",
+   "numbers": [
+    43
+   ],
+   "otherStreets": {
+    "Kerkstraat": [
+     159
+    ]
+   },
+   "side": "odd",
+   "builtYear": 1743,
+   "storeys3dbag": 4,
+   "units": 3,
+   "groundUses": [
+    "woonfunctie",
+    "winkelfunctie"
+   ],
+   "frontWidthM": 6.7,
+   "eavesM": 10.8,
+   "ridgeM": 13.2,
+   "roofMaxM": 13,
+   "normal": [
+    -0.881,
+    0.473
+   ],
+   "frontMidRD": [
+    121054.34,
+    486296.94
+   ]
+  },
+  {
+   "pandId": "0363100012177260",
+   "street": "Nieuwe Spiegelstraat",
+   "numbers": [
+    47
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1726,
+   "storeys3dbag": 4,
+   "units": 2,
+   "groundUses": [
+    "winkelfunctie",
+    "woonfunctie"
+   ],
+   "frontWidthM": 4.6,
+   "eavesM": 9.7,
+   "ridgeM": 12.1,
+   "roofMaxM": 12.2,
+   "normal": [
+    -0.887,
+    0.463
+   ],
+   "frontMidRD": [
+    121038.35,
+    486268.67
+   ]
+  },
+  {
+   "pandId": "0363100012177259",
+   "street": "Nieuwe Spiegelstraat",
+   "numbers": [
+    49
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1688,
+   "storeys3dbag": 4,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 4.3,
+   "eavesM": 8.5,
+   "ridgeM": 12.3,
+   "roofMaxM": 13,
+   "normal": [
+    -0.887,
+    0.462
+   ],
+   "frontMidRD": [
+    121036.29,
+    486264.72
+   ]
+  },
+  {
+   "pandId": "0363100012177258",
+   "street": "Nieuwe Spiegelstraat",
+   "numbers": [
+    51
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1689,
+   "storeys3dbag": 4,
+   "units": 1,
+   "groundUses": [
+    "winkelfunctie,woonfunctie"
+   ],
+   "frontWidthM": 4.4,
+   "eavesM": 10.1,
+   "ridgeM": 12.5,
+   "roofMaxM": 12.5,
+   "normal": [
+    -0.876,
+    0.483
+   ],
+   "frontMidRD": [
+    121034.23,
+    486260.89
+   ]
+  },
+  {
+   "pandId": "0363100012167604",
+   "street": "Nieuwe Spiegelstraat",
+   "numbers": [
+    53
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1762,
+   "storeys3dbag": 4,
+   "units": 4,
+   "groundUses": [
+    "winkelfunctie",
+    "woonfunctie"
+   ],
+   "frontWidthM": 5.6,
+   "eavesM": 11.2,
+   "ridgeM": 13.3,
+   "roofMaxM": 13.2,
+   "normal": [
+    -0.879,
+    0.478
+   ],
+   "frontMidRD": [
+    121031.79,
+    486256.55
+   ]
+  },
+  {
+   "pandId": "0363100012167599",
+   "street": "Nieuwe Spiegelstraat",
+   "numbers": [
+    55
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1743,
+   "storeys3dbag": 4,
+   "units": 3,
+   "groundUses": [
+    "winkelfunctie",
+    "kantoorfunctie",
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.3,
+   "eavesM": 10,
+   "ridgeM": 14.7,
+   "roofMaxM": 14.9,
+   "normal": [
+    -0.877,
+    0.48
+   ],
+   "frontMidRD": [
+    121028.95,
+    486251.33
+   ]
+  },
+  {
+   "pandId": "0363100012177074",
+   "street": "Nieuwe Spiegelstraat",
+   "numbers": [
+    57
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1690,
+   "storeys3dbag": 3,
+   "units": 1,
+   "groundUses": [
+    "winkelfunctie,woonfunctie"
+   ],
+   "frontWidthM": 3.4,
+   "eavesM": 8.2,
+   "ridgeM": 12.9,
+   "roofMaxM": 13,
+   "normal": [
+    -0.871,
+    0.491
+   ],
+   "frontMidRD": [
+    121026.51,
+    486247.12
+   ]
+  },
+  {
+   "pandId": "0363100012177627",
+   "street": "Nieuwe Spiegelstraat",
+   "numbers": [
+    59
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1687,
+   "storeys3dbag": 3,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 3.4,
+   "eavesM": 9.1,
+   "ridgeM": 12.3,
+   "roofMaxM": 12.4,
+   "normal": [
+    -0.874,
+    0.485
+   ],
+   "frontMidRD": [
+    121024.93,
+    486244.09
+   ]
+  },
+  {
+   "pandId": "0363100012177153",
+   "street": "Nieuwe Spiegelstraat",
+   "numbers": [
+    61
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1935,
+   "storeys3dbag": 4,
+   "units": 4,
+   "groundUses": [
+    "overige gebruiksfunctie",
+    "woonfunctie"
+   ],
+   "frontWidthM": 5.8,
+   "eavesM": 12.7,
+   "ridgeM": 13,
+   "roofMaxM": 12.9,
+   "normal": [
+    -0.869,
+    0.495
+   ],
+   "frontMidRD": [
+    121022.69,
+    486240.08
+   ]
+  },
+  {
+   "pandId": "0363100012177152",
+   "street": "Nieuwe Spiegelstraat",
+   "numbers": [
+    63
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1707,
+   "storeys3dbag": 4,
+   "units": 1,
+   "groundUses": [
+    "winkelfunctie,woonfunctie"
+   ],
+   "frontWidthM": 3.1,
+   "eavesM": 9.5,
+   "ridgeM": 12,
+   "roofMaxM": 11.8,
+   "normal": [
+    -0.89,
+    0.455
+   ],
+   "frontMidRD": [
+    121020.54,
+    486236.21
+   ]
+  },
+  {
+   "pandId": "0363100012177624",
+   "street": "Nieuwe Spiegelstraat",
+   "numbers": [
+    65
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1709,
+   "storeys3dbag": 4,
+   "units": 1,
+   "groundUses": [
+    "winkelfunctie,woonfunctie"
+   ],
+   "frontWidthM": 2.9,
+   "eavesM": 9.6,
+   "ridgeM": 12,
+   "roofMaxM": 12,
+   "normal": [
+    -0.866,
+    0.5
+   ],
+   "frontMidRD": [
+    121018.94,
+    486233.41
+   ]
+  },
+  {
+   "pandId": "0363100012177620",
+   "street": "Nieuwe Spiegelstraat",
+   "numbers": [
+    67
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1885,
+   "storeys3dbag": 5,
+   "units": 3,
+   "groundUses": [
+    "winkelfunctie",
+    "woonfunctie"
+   ],
+   "frontWidthM": 7.9,
+   "eavesM": 14.7,
+   "ridgeM": 17.2,
+   "roofMaxM": 17.2,
+   "normal": [
+    -0.879,
+    0.477
+   ],
+   "frontMidRD": [
+    121016.32,
+    486228.67
+   ]
+  },
+  {
+   "pandId": "0363100012177625",
+   "street": "Prinsengracht",
+   "numbers": [
+    809
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1660,
+   "storeys3dbag": 4,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 4,
+   "eavesM": 8.7,
+   "ridgeM": 14.8,
+   "roofMaxM": 17.7,
+   "normal": [
+    -0.241,
+    -0.971
+   ],
+   "frontMidRD": [
+    121022.96,
+    486221.89
+   ]
+  },
+  {
+   "pandId": "0363100012177628",
+   "street": "Prinsengracht",
+   "numbers": [
+    811
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1716,
+   "storeys3dbag": 4,
+   "units": 2,
+   "groundUses": [
+    "winkelfunctie",
+    "woonfunctie"
+   ],
+   "frontWidthM": 5.4,
+   "eavesM": 8.7,
+   "ridgeM": 12.4,
+   "roofMaxM": 12.9,
+   "normal": [
+    -0.226,
+    -0.974
+   ],
+   "frontMidRD": [
+    121027.5,
+    486220.81
+   ]
+  },
+  {
+   "pandId": "0363100012177075",
+   "street": "Prinsengracht",
+   "numbers": [
+    813
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1655,
+   "storeys3dbag": 3,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.5,
+   "eavesM": 8.9,
+   "ridgeM": 13.7,
+   "roofMaxM": 13.7,
+   "normal": [
+    -0.212,
+    -0.977
+   ],
+   "frontMidRD": [
+    121033.29,
+    486219.58
+   ]
+  },
+  {
+   "pandId": "0363100012177155",
+   "street": "Prinsengracht",
+   "numbers": [
+    815
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1655,
+   "storeys3dbag": 4,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 3.9,
+   "eavesM": 12.1,
+   "ridgeM": 12.9,
+   "roofMaxM": 13.2,
+   "normal": [
+    -0.233,
+    -0.972
+   ],
+   "frontMidRD": [
+    121040.02,
+    486218.03
+   ]
+  },
+  {
+   "pandId": "0363100012247679",
+   "street": "Prinsengracht",
+   "numbers": [
+    817
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1747,
+   "storeys3dbag": 3,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 5.7,
+   "eavesM": 5.6,
+   "ridgeM": 10.1,
+   "roofMaxM": 10.2,
+   "normal": [
+    -0.217,
+    -0.976
+   ],
+   "frontMidRD": [
+    121043.88,
+    486239.21
+   ]
+  },
+  {
+   "pandId": "0363100012249791",
+   "street": "Prinsengracht",
+   "numbers": [
+    819
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 2019,
+   "storeys3dbag": 2,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 8.4,
+   "eavesM": 4.6,
+   "ridgeM": 4.7,
+   "roofMaxM": 4.6,
+   "normal": [
+    -0.215,
+    -0.977
+   ],
+   "frontMidRD": [
+    121056.91,
+    486233.12
+   ]
+  },
+  {
+   "pandId": "0363100012171286",
+   "street": "Prinsengracht",
+   "numbers": [
+    821
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1905,
+   "storeys3dbag": 5,
+   "units": 3,
+   "groundUses": [
+    "woonfunctie",
+    "winkelfunctie"
+   ],
+   "frontWidthM": 5.6,
+   "eavesM": 12.3,
+   "ridgeM": 16.5,
+   "roofMaxM": 16.4,
+   "normal": [
+    -0.208,
+    -0.978
+   ],
+   "frontMidRD": [
+    121046.03,
+    486216.64
+   ]
+  },
+  {
+   "pandId": "0363100012167610",
+   "street": "Prinsengracht",
+   "numbers": [
+    823
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1683,
+   "storeys3dbag": 3,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 1.7,
+   "eavesM": 3,
+   "ridgeM": 11.9,
+   "roofMaxM": 12,
+   "normal": [
+    -0.206,
+    -0.979
+   ],
+   "frontMidRD": [
+    121049.32,
+    486214.68
+   ]
+  },
+  {
+   "pandId": "0363100012175985",
+   "street": "Prinsengracht",
+   "numbers": [
+    825
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1669,
+   "storeys3dbag": 4,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 4.2,
+   "eavesM": 12.4,
+   "ridgeM": 13.1,
+   "roofMaxM": 12.9,
+   "normal": [
+    -0.237,
+    -0.971
+   ],
+   "frontMidRD": [
+    121055,
+    486214.7
+   ]
+  },
+  {
+   "pandId": "0363100012175980",
+   "street": "Prinsengracht",
+   "numbers": [
+    827
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1660,
+   "storeys3dbag": 3,
+   "units": 2,
+   "groundUses": [
+    "winkelfunctie",
+    "woonfunctie"
+   ],
+   "frontWidthM": 4.2,
+   "eavesM": 11,
+   "ridgeM": 13.5,
+   "roofMaxM": 13.5,
+   "normal": [
+    -0.229,
+    -0.973
+   ],
+   "frontMidRD": [
+    121059.03,
+    486213.69
+   ]
+  },
+  {
+   "pandId": "0363100012175981",
+   "street": "Prinsengracht",
+   "numbers": [
+    829
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1660,
+   "storeys3dbag": 4,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 1.6,
+   "eavesM": 1.3,
+   "ridgeM": 13,
+   "roofMaxM": 13.1,
+   "normal": [
+    -0.23,
+    -0.973
+   ],
+   "frontMidRD": [
+    121061.57,
+    486211.89
+   ]
+  },
+  {
+   "pandId": "0363100012175988",
+   "street": "Prinsengracht",
+   "numbers": [
+    831
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1660,
+   "storeys3dbag": 4,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 4.2,
+   "eavesM": 12.1,
+   "ridgeM": 13.4,
+   "roofMaxM": 13.5,
+   "normal": [
+    -0.231,
+    -0.973
+   ],
+   "frontMidRD": [
+    121067.2,
+    486211.86
+   ]
+  },
+  {
+   "pandId": "0363100012175983",
+   "street": "Prinsengracht",
+   "numbers": [
+    833
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1660,
+   "storeys3dbag": 4,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 1.1,
+   "eavesM": 10.1,
+   "ridgeM": 12.6,
+   "roofMaxM": 12.6,
+   "normal": [
+    -0.209,
+    -0.978
+   ],
+   "frontMidRD": [
+    121069.93,
+    486210.07
+   ]
+  },
+  {
+   "pandId": "0363100012185778",
+   "street": "Prinsengracht",
+   "numbers": [
+    835
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1660,
+   "storeys3dbag": 4,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 1.4,
+   "eavesM": 9.5,
+   "ridgeM": 12.7,
+   "roofMaxM": 12.7,
+   "normal": [
+    -0.224,
+    -0.975
+   ],
+   "frontMidRD": [
+    121076.44,
+    486208.61
+   ]
+  },
+  {
+   "pandId": "0363100012175999",
+   "street": "Prinsengracht",
+   "numbers": [
+    837
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1660,
+   "storeys3dbag": 4,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 4.2,
+   "eavesM": 9.7,
+   "ridgeM": 12.8,
+   "roofMaxM": 12.8,
+   "normal": [
+    -0.232,
+    -0.973
+   ],
+   "frontMidRD": [
+    121079.46,
+    486209.08
+   ]
+  },
+  {
+   "pandId": "0363100012175984",
+   "street": "Prinsengracht",
+   "numbers": [
+    839
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1660,
+   "storeys3dbag": 4,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 1.3,
+   "eavesM": 10,
+   "ridgeM": 12.6,
+   "roofMaxM": 12.6,
+   "normal": [
+    -0.224,
+    -0.975
+   ],
+   "frontMidRD": [
+    121084.39,
+    486206.72
+   ]
+  },
+  {
+   "pandId": "0363100012176061",
+   "street": "Prinsengracht",
+   "numbers": [
+    841
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1710,
+   "storeys3dbag": 4,
+   "units": 3,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 5,
+   "eavesM": 10.2,
+   "ridgeM": 14.2,
+   "roofMaxM": 14.2,
+   "normal": [
+    -0.235,
+    -0.972
+   ],
+   "frontMidRD": [
+    121088.03,
+    486207.06
+   ]
+  },
+  {
+   "pandId": "0363100012175996",
+   "street": "Prinsengracht",
+   "numbers": [
+    843
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1710,
+   "storeys3dbag": 4,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 5,
+   "eavesM": 10,
+   "ridgeM": 14,
+   "roofMaxM": 14.2,
+   "normal": [
+    -0.222,
+    -0.975
+   ],
+   "frontMidRD": [
+    121092.95,
+    486205.99
+   ]
+  },
+  {
+   "pandId": "0363100012175997",
+   "street": "Prinsengracht",
+   "numbers": [
+    845
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1710,
+   "storeys3dbag": 4,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 5,
+   "eavesM": 10.5,
+   "ridgeM": 14.3,
+   "roofMaxM": 14.4,
+   "normal": [
+    -0.226,
+    -0.974
+   ],
+   "frontMidRD": [
+    121097.84,
+    486204.86
+   ]
+  },
+  {
+   "pandId": "0363100012175979",
+   "street": "Prinsengracht",
+   "numbers": [
+    847
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1710,
+   "storeys3dbag": 4,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 5,
+   "eavesM": 10.4,
+   "ridgeM": 14.4,
+   "roofMaxM": 14.5,
+   "normal": [
+    -0.214,
+    -0.977
+   ],
+   "frontMidRD": [
+    121102.71,
+    486203.77
+   ]
+  },
+  {
+   "pandId": "0363100012175978",
+   "street": "Prinsengracht",
+   "numbers": [
+    849
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1710,
+   "storeys3dbag": 4,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 5.1,
+   "eavesM": 10.4,
+   "ridgeM": 14.3,
+   "roofMaxM": 14.4,
+   "normal": [
+    -0.22,
+    -0.976
+   ],
+   "frontMidRD": [
+    121107.61,
+    486202.56
+   ]
+  },
+  {
+   "pandId": "0363100012175982",
+   "street": "Prinsengracht",
+   "numbers": [
+    851
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1730,
+   "storeys3dbag": 5,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.4,
+   "eavesM": 13.5,
+   "ridgeM": 16.9,
+   "roofMaxM": 17,
+   "normal": [
+    -0.319,
+    -0.948
+   ],
+   "frontMidRD": [
+    121113.17,
+    486201.28
+   ]
+  },
+  {
+   "pandId": "0363100012176065",
+   "street": "Prinsengracht",
+   "numbers": [
+    853
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1690,
+   "storeys3dbag": 4,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.3,
+   "eavesM": 9.8,
+   "ridgeM": 12.8,
+   "roofMaxM": 12.9,
+   "normal": [
+    -0.246,
+    -0.969
+   ],
+   "frontMidRD": [
+    121119.36,
+    486199.91
+   ]
+  },
+  {
+   "pandId": "0363100012175993",
+   "street": "Prinsengracht",
+   "numbers": [
+    855
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1648,
+   "storeys3dbag": 4,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 4.4,
+   "eavesM": 9.6,
+   "ridgeM": 13.3,
+   "roofMaxM": 13.3,
+   "normal": [
+    -0.229,
+    -0.973
+   ],
+   "frontMidRD": [
+    121131.1,
+    486197.22
+   ]
+  },
+  {
+   "pandId": "0363100012175987",
+   "street": "Prinsengracht",
+   "numbers": [
+    857
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1648,
+   "storeys3dbag": 0,
+   "units": 1,
+   "groundUses": [
+    "kantoorfunctie"
+   ],
+   "frontWidthM": 9.4,
+   "eavesM": 9.2,
+   "ridgeM": 13.3,
+   "roofMaxM": 13.3,
+   "normal": [
+    -0.226,
+    -0.974
+   ],
+   "frontMidRD": [
+    121137.77,
+    486195.51
+   ]
+  },
+  {
+   "pandId": "0363100012167563",
+   "street": "Prinsengracht",
+   "numbers": [
+    859,
+    861,
+    863,
+    865,
+    867,
+    869,
+    871,
+    873,
+    875,
+    877,
+    879,
+    881,
+    883,
+    885,
+    887,
+    889,
+    891,
+    893,
+    895,
+    897
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1648,
+   "storeys3dbag": 3,
+   "units": 20,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 5,
+   "eavesM": 9.6,
+   "ridgeM": 8.5,
+   "roofMaxM": 9.7,
+   "normal": [
+    -0.229,
+    -0.974
+   ],
+   "frontMidRD": [
+    121151.97,
+    486198.19
+   ]
+  },
+  {
+   "pandId": "0363100012167550",
+   "street": "Prinsengracht",
+   "numbers": [
+    899
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1648,
+   "storeys3dbag": 4,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 4.9,
+   "eavesM": 9.5,
+   "ridgeM": 13.4,
+   "roofMaxM": 13.4,
+   "normal": [
+    -0.227,
+    -0.974
+   ],
+   "frontMidRD": [
+    121150.74,
+    486192.65
+   ]
+  },
+  {
+   "pandId": "0363100012175017",
+   "street": "Prinsengracht",
+   "numbers": [
+    901
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1705,
+   "storeys3dbag": 4,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 1.7,
+   "eavesM": 9.7,
+   "ridgeM": 13.1,
+   "roofMaxM": 13.1,
+   "normal": [
+    -0.194,
+    -0.981
+   ],
+   "frontMidRD": [
+    121153.63,
+    486190.79
+   ]
+  },
+  {
+   "pandId": "0363100012185781",
+   "street": "Prinsengracht",
+   "numbers": [
+    903
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1705,
+   "storeys3dbag": 4,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 4.2,
+   "eavesM": 9.8,
+   "ridgeM": 12.9,
+   "roofMaxM": 12.9,
+   "normal": [
+    -0.211,
+    -0.977
+   ],
+   "frontMidRD": [
+    121159.33,
+    486190.7
+   ]
+  },
+  {
+   "pandId": "0363100012185780",
+   "street": "Prinsengracht",
+   "numbers": [
+    905
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1705,
+   "storeys3dbag": 4,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 1.4,
+   "eavesM": 9.8,
+   "ridgeM": 13,
+   "roofMaxM": 13,
+   "normal": [
+    -0.216,
+    -0.976
+   ],
+   "frontMidRD": [
+    121161.81,
+    486189.01
+   ]
+  },
+  {
+   "pandId": "0363100012176233",
+   "street": "Prinsengracht",
+   "numbers": [
+    907
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1678,
+   "storeys3dbag": 4,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 4.1,
+   "eavesM": 9.7,
+   "ridgeM": 12.6,
+   "roofMaxM": 12.7,
+   "normal": [
+    -0.221,
+    -0.975
+   ],
+   "frontMidRD": [
+    121167.43,
+    486188.95
+   ]
+  },
+  {
+   "pandId": "0363100012175586",
+   "street": "Prinsengracht",
+   "numbers": [
+    909
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1850,
+   "storeys3dbag": 4,
+   "units": 1,
+   "groundUses": [
+    "kantoorfunctie,woonfunctie"
+   ],
+   "frontWidthM": 4.2,
+   "eavesM": 11.6,
+   "ridgeM": 12.6,
+   "roofMaxM": 11.7,
+   "normal": [
+    -0.23,
+    -0.973
+   ],
+   "frontMidRD": [
+    121171.48,
+    486188.02
+   ]
+  },
+  {
+   "pandId": "0363100012175012",
+   "street": "Prinsengracht",
+   "numbers": [
+    911
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1761,
+   "storeys3dbag": 0,
+   "units": 1,
+   "groundUses": [
+    "kantoorfunctie"
+   ],
+   "frontWidthM": 6.2,
+   "eavesM": 12.8,
+   "ridgeM": 15.9,
+   "roofMaxM": 15.9,
+   "normal": [
+    -0.229,
+    -0.974
+   ],
+   "frontMidRD": [
+    121176.51,
+    486186.85
+   ]
+  },
+  {
+   "pandId": "0363100012175014",
+   "street": "Prinsengracht",
+   "numbers": [
+    915
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1763,
+   "storeys3dbag": 0,
+   "units": 1,
+   "groundUses": [
+    "overige gebruiksfunctie"
+   ],
+   "frontWidthM": 6.3,
+   "eavesM": 12.5,
+   "ridgeM": 15.6,
+   "roofMaxM": 15.6,
+   "normal": [
+    -0.23,
+    -0.973
+   ],
+   "frontMidRD": [
+    121182.58,
+    486185.42
+   ]
+  },
+  {
+   "pandId": "0363100012175008",
+   "street": "Prinsengracht",
+   "numbers": [
+    917,
+    919
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1926,
+   "storeys3dbag": 4,
+   "units": 4,
+   "groundUses": [
+    "woonfunctie",
+    "kantoorfunctie"
+   ],
+   "frontWidthM": 10.8,
+   "eavesM": 12.7,
+   "ridgeM": 18,
+   "roofMaxM": 18,
+   "normal": [
+    -0.214,
+    -0.977
+   ],
+   "frontMidRD": [
+    121190.93,
+    486183.54
+   ]
+  },
+  {
+   "pandId": "0363100012253749",
+   "street": "Prinsengracht",
+   "numbers": [
+    921
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1891,
+   "storeys3dbag": 4,
+   "units": 2,
+   "groundUses": [
+    "kantoorfunctie",
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.2,
+   "eavesM": 9.1,
+   "ridgeM": 17,
+   "roofMaxM": 16.8,
+   "normal": [
+    -0.227,
+    -0.974
+   ],
+   "frontMidRD": [
+    121199.2,
+    486181.61
+   ]
+  },
+  {
+   "pandId": "0363100012175009",
+   "street": "Prinsengracht",
+   "numbers": [
+    923
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1690,
+   "storeys3dbag": 4,
+   "units": 4,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.3,
+   "eavesM": 11.5,
+   "ridgeM": 15.8,
+   "roofMaxM": 15.9,
+   "normal": [
+    -0.22,
+    -0.975
+   ],
+   "frontMidRD": [
+    121205.29,
+    486180.31
+   ]
+  },
+  {
+   "pandId": "0363100012175016",
+   "street": "Prinsengracht",
+   "numbers": [
+    925
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1690,
+   "storeys3dbag": 4,
+   "units": 3,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 2.4,
+   "eavesM": 2.3,
+   "ridgeM": 15.4,
+   "roofMaxM": 15.4,
+   "normal": [
+    -0.223,
+    -0.975
+   ],
+   "frontMidRD": [
+    121209.23,
+    486178.04
+   ]
+  },
+  {
+   "pandId": "0363100012175007",
+   "street": "Prinsengracht",
+   "numbers": [
+    927
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1870,
+   "storeys3dbag": 5,
+   "units": 3,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 12.5,
+   "eavesM": 17.7,
+   "ridgeM": 22.8,
+   "roofMaxM": 23.1,
+   "normal": [
+    -0.231,
+    -0.973
+   ],
+   "frontMidRD": [
+    121220.66,
+    486176.73
+   ]
+  },
+  {
+   "pandId": "0363100012180190",
+   "street": "Prinsengracht",
+   "numbers": [
+    955,
+    957
+   ],
+   "otherStreets": {
+    "Vijzelstraat": [
+     137
+    ]
+   },
+   "side": "odd",
+   "builtYear": 1906,
+   "storeys3dbag": 5,
+   "units": 10,
+   "groundUses": [
+    "bijeenkomstfunctie",
+    "woonfunctie"
+   ],
+   "frontWidthM": 17.7,
+   "eavesM": 11.7,
+   "ridgeM": 18.2,
+   "roofMaxM": 18.2,
+   "normal": [
+    -0.217,
+    -0.976
+   ],
+   "frontMidRD": [
+    121277.36,
+    486163.44
+   ]
+  },
+  {
+   "pandId": "0363100012180186",
+   "street": "Prinsengracht",
+   "numbers": [
+    959,
+    961
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1691,
+   "storeys3dbag": 4,
+   "units": 7,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 12.5,
+   "eavesM": 10.5,
+   "ridgeM": 14.5,
+   "roofMaxM": 14.5,
+   "normal": [
+    -0.216,
+    -0.976
+   ],
+   "frontMidRD": [
+    121293.38,
+    486159.91
+   ]
+  },
+  {
+   "pandId": "0363100012180181",
+   "street": "Prinsengracht",
+   "numbers": [
+    963
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1800,
+   "storeys3dbag": 5,
+   "units": 4,
+   "groundUses": [
+    "kantoorfunctie",
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.3,
+   "eavesM": 15.9,
+   "ridgeM": 18.7,
+   "roofMaxM": 18.7,
+   "normal": [
+    -0.229,
+    -0.973
+   ],
+   "frontMidRD": [
+    121302.58,
+    486157.83
+   ]
+  },
+  {
+   "pandId": "0363100012180188",
+   "street": "Prinsengracht",
+   "numbers": [
+    965
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1800,
+   "storeys3dbag": 5,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 2.2,
+   "eavesM": 2.3,
+   "ridgeM": 15.8,
+   "roofMaxM": 17.9,
+   "normal": [
+    -0.231,
+    -0.973
+   ],
+   "frontMidRD": [
+    121310.37,
+    486154.78
+   ]
+  },
+  {
+   "pandId": "0363100012180180",
+   "street": "Prinsengracht",
+   "numbers": [
+    967
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1910,
+   "storeys3dbag": 5,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 5.1,
+   "eavesM": 17.2,
+   "ridgeM": 17.6,
+   "roofMaxM": 17.5,
+   "normal": [
+    -0.234,
+    -0.972
+   ],
+   "frontMidRD": [
+    121314.19,
+    486155.1
+   ]
+  },
+  {
+   "pandId": "0363100012180189",
+   "street": "Prinsengracht",
+   "numbers": [
+    969
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1690,
+   "storeys3dbag": 3,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 1.7,
+   "eavesM": 1.6,
+   "ridgeM": 12.9,
+   "roofMaxM": 13.4,
+   "normal": [
+    -0.237,
+    -0.972
+   ],
+   "frontMidRD": [
+    121320.4,
+    486152.34
+   ]
+  },
+  {
+   "pandId": "0363100012180182",
+   "street": "Prinsengracht",
+   "numbers": [
+    971
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1690,
+   "storeys3dbag": 4,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 5.1,
+   "eavesM": 12.1,
+   "ridgeM": 15.9,
+   "roofMaxM": 15.9,
+   "normal": [
+    -0.218,
+    -0.976
+   ],
+   "frontMidRD": [
+    121323.98,
+    486152.8
+   ]
+  },
+  {
+   "pandId": "0363100012180184",
+   "street": "Prinsengracht",
+   "numbers": [
+    973
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1690,
+   "storeys3dbag": 4,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 5.1,
+   "eavesM": 9.6,
+   "ridgeM": 13.2,
+   "roofMaxM": 13.3,
+   "normal": [
+    -0.215,
+    -0.977
+   ],
+   "frontMidRD": [
+    121328.92,
+    486151.71
+   ]
+  },
+  {
+   "pandId": "0363100012180183",
+   "street": "Prinsengracht",
+   "numbers": [
+    975
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1690,
+   "storeys3dbag": 4,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 5.1,
+   "eavesM": 9.9,
+   "ridgeM": 13.6,
+   "roofMaxM": 13.6,
+   "normal": [
+    -0.223,
+    -0.975
+   ],
+   "frontMidRD": [
+    121333.86,
+    486150.6
+   ]
+  },
+  {
+   "pandId": "0363100012168392",
+   "street": "Prinsengracht",
+   "numbers": [
+    977
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1680,
+   "storeys3dbag": 4,
+   "units": 1,
+   "groundUses": [
+    "kantoorfunctie,woonfunctie"
+   ],
+   "frontWidthM": 4.2,
+   "eavesM": 10.2,
+   "ridgeM": 13.8,
+   "roofMaxM": 13.7,
+   "normal": [
+    -0.226,
+    -0.974
+   ],
+   "frontMidRD": [
+    121338.38,
+    486149.56
+   ]
+  },
+  {
+   "pandId": "0363100012167904",
+   "street": "Prinsengracht",
+   "numbers": [
+    979
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1680,
+   "storeys3dbag": 4,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 4.1,
+   "eavesM": 10.1,
+   "ridgeM": 13.5,
+   "roofMaxM": 13.5,
+   "normal": [
+    -0.226,
+    -0.974
+   ],
+   "frontMidRD": [
+    121342.41,
+    486148.57
+   ]
+  },
+  {
+   "pandId": "0363100012168387",
+   "street": "Prinsengracht",
+   "numbers": [
+    981
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1885,
+   "storeys3dbag": 4,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 4.4,
+   "eavesM": 10.6,
+   "ridgeM": 13.5,
+   "roofMaxM": 14.1,
+   "normal": [
+    -0.229,
+    -0.973
+   ],
+   "frontMidRD": [
+    121346.49,
+    486147.56
+   ]
+  },
+  {
+   "pandId": "0363100012167481",
+   "street": "Prinsengracht",
+   "numbers": [
+    983
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1680,
+   "storeys3dbag": 4,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 7.6,
+   "eavesM": 11.6,
+   "ridgeM": 14.5,
+   "roofMaxM": 14.5,
+   "normal": [
+    -0.211,
+    -0.977
+   ],
+   "frontMidRD": [
+    121352.37,
+    486146.39
+   ]
+  },
+  {
+   "pandId": "0363100012167479",
+   "street": "Prinsengracht",
+   "numbers": [
+    985
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1680,
+   "storeys3dbag": 4,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 4.9,
+   "eavesM": 11.5,
+   "ridgeM": 14.3,
+   "roofMaxM": 14.4,
+   "normal": [
+    -0.209,
+    -0.978
+   ],
+   "frontMidRD": [
+    121358.51,
+    486145.06
+   ]
+  },
+  {
+   "pandId": "0363100012167478",
+   "street": "Prinsengracht",
+   "numbers": [
+    987
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1860,
+   "storeys3dbag": 5,
+   "units": 3,
+   "groundUses": [
+    "woonfunctie",
+    "industriefunctie"
+   ],
+   "frontWidthM": 5.1,
+   "eavesM": 12.4,
+   "ridgeM": 14,
+   "roofMaxM": 13.9,
+   "normal": [
+    -0.226,
+    -0.974
+   ],
+   "frontMidRD": [
+    121363.43,
+    486143.96
+   ]
+  },
+  {
+   "pandId": "0363100012168461",
+   "street": "Prinsengracht",
+   "numbers": [
+    989
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1890,
+   "storeys3dbag": 4,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 5,
+   "eavesM": 14.3,
+   "ridgeM": 15.2,
+   "roofMaxM": 15.2,
+   "normal": [
+    -0.226,
+    -0.974
+   ],
+   "frontMidRD": [
+    121368.34,
+    486142.82
+   ]
+  },
+  {
+   "pandId": "0363100012168460",
+   "street": "Prinsengracht",
+   "numbers": [
+    991
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1680,
+   "storeys3dbag": 4,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 1.5,
+   "eavesM": 8.9,
+   "ridgeM": 13,
+   "roofMaxM": 13,
+   "normal": [
+    -0.219,
+    -0.976
+   ],
+   "frontMidRD": [
+    121371.23,
+    486140.83
+   ]
+  },
+  {
+   "pandId": "0363100012168452",
+   "street": "Prinsengracht",
+   "numbers": [
+    993
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1690,
+   "storeys3dbag": 4,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 1.6,
+   "eavesM": 10.9,
+   "ridgeM": 14.2,
+   "roofMaxM": 14.3,
+   "normal": [
+    -0.237,
+    -0.971
+   ],
+   "frontMidRD": [
+    121379.4,
+    486138.91
+   ]
+  },
+  {
+   "pandId": "0363100012168457",
+   "street": "Prinsengracht",
+   "numbers": [
+    995
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1680,
+   "storeys3dbag": 4,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 5.1,
+   "eavesM": 9.3,
+   "ridgeM": 13.1,
+   "roofMaxM": 13.1,
+   "normal": [
+    -0.211,
+    -0.977
+   ],
+   "frontMidRD": [
+    121382.98,
+    486139.41
+   ]
+  },
+  {
+   "pandId": "0363100012168459",
+   "street": "Prinsengracht",
+   "numbers": [
+    997
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1750,
+   "storeys3dbag": 4,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 2.3,
+   "eavesM": 11.4,
+   "ridgeM": 17.5,
+   "roofMaxM": 17.8,
+   "normal": [
+    -0.215,
+    -0.977
+   ],
+   "frontMidRD": [
+    121390.26,
+    486136.51
+   ]
+  },
+  {
+   "pandId": "0363100012168453",
+   "street": "Prinsengracht",
+   "numbers": [
+    999,
+    1001
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1680,
+   "storeys3dbag": 4,
+   "units": 2,
+   "groundUses": [
+    "bijeenkomstfunctie",
+    "woonfunctie"
+   ],
+   "frontWidthM": 1.5,
+   "eavesM": 2.1,
+   "ridgeM": 16.6,
+   "roofMaxM": 16.6,
+   "normal": [
+    -0.218,
+    -0.976
+   ],
+   "frontMidRD": [
+    121398.25,
+    486134.69
+   ]
+  },
+  {
+   "pandId": "0363100012168454",
+   "street": "Prinsengracht",
+   "numbers": [
+    1003
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1680,
+   "storeys3dbag": 4,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 1.3,
+   "eavesM": 12.8,
+   "ridgeM": 13.6,
+   "roofMaxM": 13.6,
+   "normal": [
+    -0.22,
+    -0.975
+   ],
+   "frontMidRD": [
+    121406.29,
+    486132.88
+   ]
+  },
+  {
+   "pandId": "0363100012168455",
+   "street": "Prinsengracht",
+   "numbers": [
+    1005
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1680,
+   "storeys3dbag": 4,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 1.4,
+   "eavesM": 9.4,
+   "ridgeM": 13.4,
+   "roofMaxM": 13.5,
+   "normal": [
+    -0.244,
+    -0.97
+   ],
+   "frontMidRD": [
+    121407.63,
+    486132.56
+   ]
+  },
+  {
+   "pandId": "0363100012168456",
+   "street": "Prinsengracht",
+   "numbers": [
+    1007
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1680,
+   "storeys3dbag": 4,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 1.4,
+   "eavesM": 2.3,
+   "ridgeM": 13.7,
+   "roofMaxM": 13.7,
+   "normal": [
+    -0.212,
+    -0.977
+   ],
+   "frontMidRD": [
+    121415.68,
+    486130.75
+   ]
+  },
+  {
+   "pandId": "0363100012168458",
+   "street": "Prinsengracht",
+   "numbers": [
+    1009
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1680,
+   "storeys3dbag": 4,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 5.7,
+   "eavesM": 9.7,
+   "ridgeM": 13.8,
+   "roofMaxM": 13.8,
+   "normal": [
+    -0.222,
+    -0.975
+   ],
+   "frontMidRD": [
+    121419.41,
+    486131.13
+   ]
+  },
+  {
+   "pandId": "0363100012179161",
+   "street": "Prinsengracht",
+   "numbers": [
+    1011
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1860,
+   "storeys3dbag": 5,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.4,
+   "eavesM": 16.8,
+   "ridgeM": 20.7,
+   "roofMaxM": 20.6,
+   "normal": [
+    -0.217,
+    -0.976
+   ],
+   "frontMidRD": [
+    121425.33,
+    486129.78
+   ]
+  },
+  {
+   "pandId": "0363100012179154",
+   "street": "Prinsengracht",
+   "numbers": [
+    1013
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1860,
+   "storeys3dbag": 5,
+   "units": 3,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.2,
+   "eavesM": 16.6,
+   "ridgeM": 20.5,
+   "roofMaxM": 20.4,
+   "normal": [
+    -0.221,
+    -0.975
+   ],
+   "frontMidRD": [
+    121431.48,
+    486128.49
+   ]
+  },
+  {
+   "pandId": "0363100012179155",
+   "street": "Prinsengracht",
+   "numbers": [
+    1015
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1860,
+   "storeys3dbag": 0,
+   "units": 1,
+   "groundUses": [
+    "logiesfunctie"
+   ],
+   "frontWidthM": 6.3,
+   "eavesM": 16.5,
+   "ridgeM": 20.3,
+   "roofMaxM": 20.8,
+   "normal": [
+    -0.233,
+    -0.972
+   ],
+   "frontMidRD": [
+    121437.55,
+    486127.07
+   ]
+  },
+  {
+   "pandId": "0363100012179153",
+   "street": "Prinsengracht",
+   "numbers": [
+    1017
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1860,
+   "storeys3dbag": 0,
+   "units": 1,
+   "groundUses": [
+    "logiesfunctie"
+   ],
+   "frontWidthM": 6.2,
+   "eavesM": 15.6,
+   "ridgeM": 20.7,
+   "roofMaxM": 20.6,
+   "normal": [
+    -0.234,
+    -0.972
+   ],
+   "frontMidRD": [
+    121443.62,
+    486125.62
+   ]
+  },
+  {
+   "pandId": "0363100012167487",
+   "street": "Prinsengracht",
+   "numbers": [
+    1019
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1883,
+   "storeys3dbag": 5,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.4,
+   "eavesM": 14.3,
+   "ridgeM": 17.6,
+   "roofMaxM": 17.7,
+   "normal": [
+    -0.226,
+    -0.974
+   ],
+   "frontMidRD": [
+    121449.76,
+    486124.2
+   ]
+  },
+  {
+   "pandId": "0363100012179698",
+   "street": "Prinsengracht",
+   "numbers": [
+    1019
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1883,
+   "storeys3dbag": 5,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.3,
+   "eavesM": 13.9,
+   "ridgeM": 17.4,
+   "roofMaxM": 17.4,
+   "normal": [
+    -0.226,
+    -0.974
+   ],
+   "frontMidRD": [
+    121455.96,
+    486122.76
+   ]
+  },
+  {
+   "pandId": "0363100012179697",
+   "street": "Prinsengracht",
+   "numbers": [
+    1021
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1680,
+   "storeys3dbag": 5,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 4.7,
+   "eavesM": 13.6,
+   "ridgeM": 17,
+   "roofMaxM": 17.1,
+   "normal": [
+    -0.235,
+    -0.972
+   ],
+   "frontMidRD": [
+    121461.36,
+    486121.56
+   ]
+  },
+  {
+   "pandId": "0363100012179696",
+   "street": "Prinsengracht",
+   "numbers": [
+    1023
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1745,
+   "storeys3dbag": 4,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 4.6,
+   "eavesM": 14.8,
+   "ridgeM": 17.2,
+   "roofMaxM": 17.2,
+   "normal": [
+    -0.244,
+    -0.97
+   ],
+   "frontMidRD": [
+    121465.9,
+    486120.44
+   ]
+  },
+  {
+   "pandId": "0363100012180194",
+   "street": "Prinsengracht",
+   "numbers": [
+    1025
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1740,
+   "storeys3dbag": 5,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 4.9,
+   "eavesM": 13.6,
+   "ridgeM": 17.1,
+   "roofMaxM": 17.1,
+   "normal": [
+    -0.231,
+    -0.973
+   ],
+   "frontMidRD": [
+    121470.52,
+    486119.31
+   ]
+  },
+  {
+   "pandId": "0363100012180193",
+   "street": "Prinsengracht",
+   "numbers": [
+    1029,
+    1031,
+    1033,
+    1035
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1680,
+   "storeys3dbag": 4,
+   "units": 23,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 23.3,
+   "eavesM": 14.2,
+   "ridgeM": 19.1,
+   "roofMaxM": 19.1,
+   "normal": [
+    -0.223,
+    -0.975
+   ],
+   "frontMidRD": [
+    121484.23,
+    486116.13
+   ]
+  },
+  {
+   "pandId": "0363100012180126",
+   "street": "Prinsengracht",
+   "numbers": [
+    1037
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1710,
+   "storeys3dbag": 4,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 4.4,
+   "eavesM": 11.2,
+   "ridgeM": 14.8,
+   "roofMaxM": 14.9,
+   "normal": [
+    -0.228,
+    -0.974
+   ],
+   "frontMidRD": [
+    121497.68,
+    486113.01
+   ]
+  },
+  {
+   "pandId": "0363100012180125",
+   "street": "Prinsengracht",
+   "numbers": [
+    1039
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1710,
+   "storeys3dbag": 4,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 4.3,
+   "eavesM": 11.3,
+   "ridgeM": 14.8,
+   "roofMaxM": 14.8,
+   "normal": [
+    -0.221,
+    -0.975
+   ],
+   "frontMidRD": [
+    121501.91,
+    486112.03
+   ]
+  },
+  {
+   "pandId": "0363100012180122",
+   "street": "Prinsengracht",
+   "numbers": [
+    1041
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1710,
+   "storeys3dbag": 4,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 4.3,
+   "eavesM": 11.2,
+   "ridgeM": 14.9,
+   "roofMaxM": 14.9,
+   "normal": [
+    -0.229,
+    -0.973
+   ],
+   "frontMidRD": [
+    121506.13,
+    486111.06
+   ]
+  },
+  {
+   "pandId": "0363100012180123",
+   "street": "Prinsengracht",
+   "numbers": [
+    1043
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1690,
+   "storeys3dbag": 4,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.1,
+   "eavesM": 13,
+   "ridgeM": 15.5,
+   "roofMaxM": 15.5,
+   "normal": [
+    -0.23,
+    -0.973
+   ],
+   "frontMidRD": [
+    121511.19,
+    486109.86
+   ]
+  },
+  {
+   "pandId": "0363100012180116",
+   "street": "Prinsengracht",
+   "numbers": [
+    1045
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1740,
+   "storeys3dbag": 5,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 4.6,
+   "eavesM": 12.4,
+   "ridgeM": 15.6,
+   "roofMaxM": 15.6,
+   "normal": [
+    -0.213,
+    -0.977
+   ],
+   "frontMidRD": [
+    121516.42,
+    486108.67
+   ]
+  },
+  {
+   "pandId": "0363100012180115",
+   "street": "Prinsengracht",
+   "numbers": [
+    1047
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1750,
+   "storeys3dbag": 2,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 2.9,
+   "eavesM": 12.3,
+   "ridgeM": -0.9,
+   "roofMaxM": 14.5,
+   "normal": [
+    -0.212,
+    -0.977
+   ],
+   "frontMidRD": [
+    121520.09,
+    486107.87
+   ]
+  },
+  {
+   "pandId": "0363100012180300",
+   "street": "Reguliersgracht",
+   "numbers": [
+    2
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1670,
+   "storeys3dbag": 4,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.4,
+   "eavesM": 12.2,
+   "ridgeM": 15.8,
+   "roofMaxM": 16.3,
+   "normal": [
+    1,
+    0.031
+   ],
+   "frontMidRD": [
+    121518.3,
+    486410.7
+   ]
+  },
+  {
+   "pandId": "0363100012180312",
+   "street": "Reguliersgracht",
+   "numbers": [
+    4
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1711,
+   "storeys3dbag": 4,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.4,
+   "eavesM": 11.2,
+   "ridgeM": 14.3,
+   "roofMaxM": 14.3,
+   "normal": [
+    1,
+    0.032
+   ],
+   "frontMidRD": [
+    121518.5,
+    486404.3
+   ]
+  },
+  {
+   "pandId": "0363100012180303",
+   "street": "Reguliersgracht",
+   "numbers": [
+    6
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1718,
+   "storeys3dbag": 4,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.4,
+   "eavesM": 11,
+   "ridgeM": 14.6,
+   "roofMaxM": 14.8,
+   "normal": [
+    0.999,
+    0.032
+   ],
+   "frontMidRD": [
+    121518.7,
+    486397.92
+   ]
+  },
+  {
+   "pandId": "0363100012180302",
+   "street": "Reguliersgracht",
+   "numbers": [
+    8
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1720,
+   "storeys3dbag": 4,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.2,
+   "eavesM": 13.7,
+   "ridgeM": 17.4,
+   "roofMaxM": 17.2,
+   "normal": [
+    1,
+    0.03
+   ],
+   "frontMidRD": [
+    121518.9,
+    486391.63
+   ]
+  },
+  {
+   "pandId": "0363100012180301",
+   "street": "Reguliersgracht",
+   "numbers": [
+    10
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1675,
+   "storeys3dbag": 5,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 4.9,
+   "eavesM": 14,
+   "ridgeM": 16.5,
+   "roofMaxM": 16.5,
+   "normal": [
+    1,
+    0.029
+   ],
+   "frontMidRD": [
+    121519.06,
+    486386.07
+   ]
+  },
+  {
+   "pandId": "0363100012180306",
+   "street": "Reguliersgracht",
+   "numbers": [
+    12
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1739,
+   "storeys3dbag": 4,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 4.2,
+   "eavesM": 10.6,
+   "ridgeM": 13.9,
+   "roofMaxM": 13.9,
+   "normal": [
+    0.999,
+    0.035
+   ],
+   "frontMidRD": [
+    121519.21,
+    486381.54
+   ]
+  },
+  {
+   "pandId": "0363100012180305",
+   "street": "Reguliersgracht",
+   "numbers": [
+    14,
+    16
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1675,
+   "storeys3dbag": 4,
+   "units": 5,
+   "groundUses": [
+    "overige gebruiksfunctie",
+    "woonfunctie"
+   ],
+   "frontWidthM": 10,
+   "eavesM": 11.4,
+   "ridgeM": 17.3,
+   "roofMaxM": 17.3,
+   "normal": [
+    0.999,
+    0.045
+   ],
+   "frontMidRD": [
+    121519.46,
+    486374.48
+   ]
+  },
+  {
+   "pandId": "0363100012180304",
+   "street": "Reguliersgracht",
+   "numbers": [
+    18
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1675,
+   "storeys3dbag": 4,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.2,
+   "eavesM": 11.1,
+   "ridgeM": 15.7,
+   "roofMaxM": 15.8,
+   "normal": [
+    1,
+    0.032
+   ],
+   "frontMidRD": [
+    121519.72,
+    486366.39
+   ]
+  },
+  {
+   "pandId": "0363100012180232",
+   "street": "Reguliersgracht",
+   "numbers": [
+    20
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1712,
+   "storeys3dbag": 4,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.1,
+   "eavesM": 12.9,
+   "ridgeM": 15,
+   "roofMaxM": 15.6,
+   "normal": [
+    1,
+    0.029
+   ],
+   "frontMidRD": [
+    121519.97,
+    486360.22
+   ]
+  },
+  {
+   "pandId": "0363100012180233",
+   "street": "Reguliersgracht",
+   "numbers": [
+    22
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1675,
+   "storeys3dbag": 4,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 3.2,
+   "eavesM": 13.3,
+   "ridgeM": 13.5,
+   "roofMaxM": 13.3,
+   "normal": [
+    0.998,
+    0.067
+   ],
+   "frontMidRD": [
+    121520.17,
+    486355.6
+   ]
+  },
+  {
+   "pandId": "0363100012180234",
+   "street": "Reguliersgracht",
+   "numbers": [
+    24
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1675,
+   "storeys3dbag": 0,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 3.4,
+   "eavesM": 13.7,
+   "ridgeM": 13.8,
+   "roofMaxM": 13.7,
+   "normal": [
+    1,
+    0.021
+   ],
+   "frontMidRD": [
+    121520.31,
+    486352.34
+   ]
+  },
+  {
+   "pandId": "0363100012169156",
+   "street": "Reguliersgracht",
+   "numbers": [
+    26
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1727,
+   "storeys3dbag": 4,
+   "units": 3,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.1,
+   "eavesM": 13.1,
+   "ridgeM": 15.7,
+   "roofMaxM": 15.8,
+   "normal": [
+    0.999,
+    0.035
+   ],
+   "frontMidRD": [
+    121520.45,
+    486347.6
+   ]
+  },
+  {
+   "pandId": "0363100012180131",
+   "street": "Reguliersgracht",
+   "numbers": [
+    28
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1723,
+   "storeys3dbag": 3,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.4,
+   "eavesM": 10.9,
+   "ridgeM": 12.5,
+   "roofMaxM": 12.6,
+   "normal": [
+    1,
+    0.032
+   ],
+   "frontMidRD": [
+    121520.66,
+    486341.34
+   ]
+  },
+  {
+   "pandId": "0363100012180130",
+   "street": "Reguliersgracht",
+   "numbers": [
+    30
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1722,
+   "storeys3dbag": 4,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.3,
+   "eavesM": 11.3,
+   "ridgeM": 15.1,
+   "roofMaxM": 15.7,
+   "normal": [
+    0.999,
+    0.038
+   ],
+   "frontMidRD": [
+    121520.87,
+    486334.98
+   ]
+  },
+  {
+   "pandId": "0363100012180048",
+   "street": "Reguliersgracht",
+   "numbers": [
+    32
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1700,
+   "storeys3dbag": 4,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.1,
+   "eavesM": 12,
+   "ridgeM": 16.4,
+   "roofMaxM": 16.4,
+   "normal": [
+    0.999,
+    0.04
+   ],
+   "frontMidRD": [
+    121521.11,
+    486328.75
+   ]
+  },
+  {
+   "pandId": "0363100012180127",
+   "street": "Reguliersgracht",
+   "numbers": [
+    34
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1718,
+   "storeys3dbag": 5,
+   "units": 3,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.3,
+   "eavesM": 13.4,
+   "ridgeM": 17.3,
+   "roofMaxM": 17.4,
+   "normal": [
+    0.999,
+    0.054
+   ],
+   "frontMidRD": [
+    121521.38,
+    486322.53
+   ]
+  },
+  {
+   "pandId": "0363100012180129",
+   "street": "Reguliersgracht",
+   "numbers": [
+    36
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1905,
+   "storeys3dbag": 5,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 5.7,
+   "eavesM": 6.7,
+   "ridgeM": 14.9,
+   "roofMaxM": 14.9,
+   "normal": [
+    0.999,
+    0.036
+   ],
+   "frontMidRD": [
+    121521.67,
+    486316.55
+   ]
+  },
+  {
+   "pandId": "0363100012180045",
+   "street": "Reguliersgracht",
+   "numbers": [
+    40
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1905,
+   "storeys3dbag": 4,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.4,
+   "eavesM": 10,
+   "ridgeM": 14.2,
+   "roofMaxM": 14.2,
+   "normal": [
+    1,
+    0.029
+   ],
+   "frontMidRD": [
+    121524.21,
+    486246.19
+   ]
+  },
+  {
+   "pandId": "0363100012180044",
+   "street": "Reguliersgracht",
+   "numbers": [
+    42
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1706,
+   "storeys3dbag": 4,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.3,
+   "eavesM": 10.2,
+   "ridgeM": 14.4,
+   "roofMaxM": 14.4,
+   "normal": [
+    1,
+    0.03
+   ],
+   "frontMidRD": [
+    121524.38,
+    486239.86
+   ]
+  },
+  {
+   "pandId": "0363100012179864",
+   "street": "Reguliersgracht",
+   "numbers": [
+    46
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1743,
+   "storeys3dbag": 5,
+   "units": 7,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.3,
+   "eavesM": 12.7,
+   "ridgeM": 15.8,
+   "roofMaxM": 15.7,
+   "normal": [
+    0.999,
+    0.032
+   ],
+   "frontMidRD": [
+    121524.58,
+    486233.55
+   ]
+  },
+  {
+   "pandId": "0363100012179777",
+   "street": "Reguliersgracht",
+   "numbers": [
+    48
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1714,
+   "storeys3dbag": 4,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.2,
+   "eavesM": 11.5,
+   "ridgeM": 14.6,
+   "roofMaxM": 15.1,
+   "normal": [
+    1,
+    0.03
+   ],
+   "frontMidRD": [
+    121524.77,
+    486227.28
+   ]
+  },
+  {
+   "pandId": "0363100012179778",
+   "street": "Reguliersgracht",
+   "numbers": [
+    50
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1735,
+   "storeys3dbag": 5,
+   "units": 8,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.5,
+   "eavesM": 14.6,
+   "ridgeM": 19,
+   "roofMaxM": 19.2,
+   "normal": [
+    1,
+    0.025
+   ],
+   "frontMidRD": [
+    121524.94,
+    486220.95
+   ]
+  },
+  {
+   "pandId": "0363100012179865",
+   "street": "Reguliersgracht",
+   "numbers": [
+    52
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1742,
+   "storeys3dbag": 5,
+   "units": 3,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 3.9,
+   "eavesM": 12.2,
+   "ridgeM": 14.6,
+   "roofMaxM": 14.9,
+   "normal": [
+    0.999,
+    0.054
+   ],
+   "frontMidRD": [
+    121525.13,
+    486215.77
+   ]
+  },
+  {
+   "pandId": "0363100012179775",
+   "street": "Reguliersgracht",
+   "numbers": [
+    54
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1724,
+   "storeys3dbag": 4,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 3.7,
+   "eavesM": 14.6,
+   "ridgeM": 14.9,
+   "roofMaxM": 14.6,
+   "normal": [
+    0.999,
+    0.046
+   ],
+   "frontMidRD": [
+    121525.32,
+    486211.97
+   ]
+  },
+  {
+   "pandId": "0363100012179774",
+   "street": "Reguliersgracht",
+   "numbers": [
+    56
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1711,
+   "storeys3dbag": 4,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 3.7,
+   "eavesM": 10.6,
+   "ridgeM": 14.4,
+   "roofMaxM": 14.5,
+   "normal": [
+    0.998,
+    0.068
+   ],
+   "frontMidRD": [
+    121525.53,
+    486208.26
+   ]
+  },
+  {
+   "pandId": "0363100012179773",
+   "street": "Reguliersgracht",
+   "numbers": [
+    58
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1700,
+   "storeys3dbag": 4,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 3.8,
+   "eavesM": 13.3,
+   "ridgeM": 15.4,
+   "roofMaxM": 15.4,
+   "normal": [
+    1,
+    0.01
+   ],
+   "frontMidRD": [
+    121525.67,
+    486204.52
+   ]
+  },
+  {
+   "pandId": "0363100012179870",
+   "street": "Reguliersgracht",
+   "numbers": [
+    60
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1712,
+   "storeys3dbag": 5,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 3.9,
+   "eavesM": 11.3,
+   "ridgeM": 14.6,
+   "roofMaxM": 14.5,
+   "normal": [
+    0.999,
+    0.044
+   ],
+   "frontMidRD": [
+    121525.78,
+    486200.65
+   ]
+  },
+  {
+   "pandId": "0363100012179869",
+   "street": "Reguliersgracht",
+   "numbers": [
+    62
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1725,
+   "storeys3dbag": 5,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 4.7,
+   "eavesM": 14.2,
+   "ridgeM": 16,
+   "roofMaxM": 16.2,
+   "normal": [
+    0.999,
+    0.046
+   ],
+   "frontMidRD": [
+    121525.97,
+    486196.35
+   ]
+  },
+  {
+   "pandId": "0363100012179868",
+   "street": "Reguliersgracht",
+   "numbers": [
+    64
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1696,
+   "storeys3dbag": 5,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 4,
+   "eavesM": 12.8,
+   "ridgeM": 15.5,
+   "roofMaxM": 15.6,
+   "normal": [
+    0.999,
+    0.051
+   ],
+   "frontMidRD": [
+    121526.18,
+    486192.01
+   ]
+  },
+  {
+   "pandId": "0363100012179873",
+   "street": "Reguliersgracht",
+   "numbers": [
+    66
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1881,
+   "storeys3dbag": 4,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 4.1,
+   "eavesM": 14.1,
+   "ridgeM": 14.2,
+   "roofMaxM": 14.1,
+   "normal": [
+    0.999,
+    0.032
+   ],
+   "frontMidRD": [
+    121526.35,
+    486187.99
+   ]
+  },
+  {
+   "pandId": "0363100012179771",
+   "street": "Reguliersgracht",
+   "numbers": [
+    68
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1905,
+   "storeys3dbag": 5,
+   "units": 5,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.1,
+   "eavesM": 11.9,
+   "ridgeM": 13.3,
+   "roofMaxM": 13.3,
+   "normal": [
+    0.999,
+    0.053
+   ],
+   "frontMidRD": [
+    121526.58,
+    486182.92
+   ]
+  },
+  {
+   "pandId": "0363100012179944",
+   "street": "Reguliersgracht",
+   "numbers": [
+    72
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1696,
+   "storeys3dbag": 4,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 4.9,
+   "eavesM": 15,
+   "ridgeM": 15.2,
+   "roofMaxM": 15.1,
+   "normal": [
+    0.999,
+    0.032
+   ],
+   "frontMidRD": [
+    121527.4,
+    486160.29
+   ]
+  },
+  {
+   "pandId": "0363100012179943",
+   "street": "Reguliersgracht",
+   "numbers": [
+    74
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1697,
+   "storeys3dbag": 3,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 4.4,
+   "eavesM": 8.7,
+   "ridgeM": 12.3,
+   "roofMaxM": 12.3,
+   "normal": [
+    0.998,
+    0.061
+   ],
+   "frontMidRD": [
+    121527.61,
+    486155.65
+   ]
+  },
+  {
+   "pandId": "0363100012171022",
+   "street": "Reguliersgracht",
+   "numbers": [
+    76
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1687,
+   "storeys3dbag": 4,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 4.2,
+   "eavesM": 9.5,
+   "ridgeM": 12.5,
+   "roofMaxM": 12.4,
+   "normal": [
+    1,
+    0.018
+   ],
+   "frontMidRD": [
+    121527.78,
+    486151.35
+   ]
+  },
+  {
+   "pandId": "0363100012180120",
+   "street": "Reguliersgracht",
+   "numbers": [
+    78
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1752,
+   "storeys3dbag": 4,
+   "units": 3,
+   "groundUses": [
+    "woonfunctie",
+    "kantoorfunctie"
+   ],
+   "frontWidthM": 9.3,
+   "eavesM": 11,
+   "ridgeM": 13.9,
+   "roofMaxM": 14.1,
+   "normal": [
+    1,
+    0.027
+   ],
+   "frontMidRD": [
+    121527.94,
+    486144.62
+   ]
+  },
+  {
+   "pandId": "0363100012179766",
+   "street": "Reguliersgracht",
+   "numbers": [
+    80
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1721,
+   "storeys3dbag": 3,
+   "units": 1,
+   "groundUses": [
+    "winkelfunctie,woonfunctie"
+   ],
+   "frontWidthM": 6.1,
+   "eavesM": 11.4,
+   "ridgeM": 13.7,
+   "roofMaxM": 13.7,
+   "normal": [
+    0.999,
+    0.052
+   ],
+   "frontMidRD": [
+    121528.22,
+    486136.91
+   ]
+  },
+  {
+   "pandId": "0363100012179700",
+   "street": "Reguliersgracht",
+   "numbers": [
+    82
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1749,
+   "storeys3dbag": 4,
+   "units": 3,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.3,
+   "eavesM": 10.3,
+   "ridgeM": 14.6,
+   "roofMaxM": 14.6,
+   "normal": [
+    0.999,
+    0.039
+   ],
+   "frontMidRD": [
+    121528.51,
+    486130.68
+   ]
+  },
+  {
+   "pandId": "0363100012179769",
+   "street": "Reguliersgracht",
+   "numbers": [
+    84
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1694,
+   "storeys3dbag": 4,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 4.4,
+   "eavesM": 10.6,
+   "ridgeM": 13.2,
+   "roofMaxM": 13.3,
+   "normal": [
+    0.999,
+    0.051
+   ],
+   "frontMidRD": [
+    121528.75,
+    486125.32
+   ]
+  },
+  {
+   "pandId": "0363100012179767",
+   "street": "Reguliersgracht",
+   "numbers": [
+    88
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1708,
+   "storeys3dbag": 4,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 4.2,
+   "eavesM": 9.5,
+   "ridgeM": 12.1,
+   "roofMaxM": 12.6,
+   "normal": [
+    1,
+    0.021
+   ],
+   "frontMidRD": [
+    121529.14,
+    486117.03
+   ]
+  },
+  {
+   "pandId": "0363100012180117",
+   "street": "Reguliersgracht",
+   "numbers": [
+    90
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1683,
+   "storeys3dbag": 4,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 5.1,
+   "eavesM": 13,
+   "ridgeM": 13.5,
+   "roofMaxM": 13.5,
+   "normal": [
+    0.999,
+    0.041
+   ],
+   "frontMidRD": [
+    121529.29,
+    486112.36
+   ]
+  },
+  {
+   "pandId": "0363100012179770",
+   "street": "Reguliersgracht",
+   "numbers": [
+    92
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1675,
+   "storeys3dbag": 3,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 4.3,
+   "eavesM": 7.5,
+   "ridgeM": 10.4,
+   "roofMaxM": 10.5,
+   "normal": [
+    0.999,
+    0.036
+   ],
+   "frontMidRD": [
+    121529.47,
+    486107.66
+   ]
+  },
+  {
+   "pandId": "0363100012165077",
+   "street": "Vijzelstraat",
+   "numbers": [
+    30,
+    32
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1924,
+   "storeys3dbag": 0,
+   "units": 2,
+   "groundUses": [
+    "bijeenkomstfunctie"
+   ],
+   "frontWidthM": 8.7,
+   "eavesM": 26.6,
+   "ridgeM": 37.5,
+   "roofMaxM": 40.5,
+   "normal": [
+    0.977,
+    -0.215
+   ],
+   "frontMidRD": [
+    121309.39,
+    486454.67
+   ]
+  },
+  {
+   "pandId": "0363100012175160",
+   "street": "Vijzelstraat",
+   "numbers": [
+    67
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1683,
+   "storeys3dbag": 0,
+   "units": 1,
+   "groundUses": [
+    "winkelfunctie"
+   ],
+   "frontWidthM": 7.4,
+   "eavesM": 10.6,
+   "ridgeM": 16.1,
+   "roofMaxM": 15.4,
+   "normal": [
+    -0.978,
+    0.209
+   ],
+   "frontMidRD": [
+    121327.63,
+    486435.88
+   ]
+  },
+  {
+   "pandId": "0363100012175164",
+   "street": "Vijzelstraat",
+   "numbers": [
+    69
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1695,
+   "storeys3dbag": 0,
+   "units": 1,
+   "groundUses": [
+    "winkelfunctie"
+   ],
+   "frontWidthM": 7.6,
+   "eavesM": 10.8,
+   "ridgeM": 14,
+   "roofMaxM": 14,
+   "normal": [
+    -0.978,
+    0.209
+   ],
+   "frontMidRD": [
+    121326.07,
+    486428.56
+   ]
+  },
+  {
+   "pandId": "0363100012175163",
+   "street": "Vijzelstraat",
+   "numbers": [
+    71
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1708,
+   "storeys3dbag": 4,
+   "units": 2,
+   "groundUses": [
+    "bijeenkomstfunctie",
+    "woonfunctie"
+   ],
+   "frontWidthM": 7.2,
+   "eavesM": 14.6,
+   "ridgeM": 15.8,
+   "roofMaxM": 15.7,
+   "normal": [
+    -0.978,
+    0.209
+   ],
+   "frontMidRD": [
+    121324.52,
+    486421.34
+   ]
+  },
+  {
+   "pandId": "0363100012253952",
+   "street": "Vijzelstraat",
+   "numbers": [
+    73
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1884,
+   "storeys3dbag": 0,
+   "units": 1,
+   "groundUses": [
+    "bijeenkomstfunctie,logiesfunctie"
+   ],
+   "frontWidthM": 7.4,
+   "eavesM": 14,
+   "ridgeM": 14.8,
+   "roofMaxM": 14.8,
+   "normal": [
+    -0.978,
+    0.209
+   ],
+   "frontMidRD": [
+    121323,
+    486414.2
+   ]
+  },
+  {
+   "pandId": "0363100012175161",
+   "street": "Vijzelstraat",
+   "numbers": [
+    75
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1725,
+   "storeys3dbag": 4,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.2,
+   "eavesM": 10.4,
+   "ridgeM": 14.4,
+   "roofMaxM": 15.1,
+   "normal": [
+    -0.978,
+    0.209
+   ],
+   "frontMidRD": [
+    121321.57,
+    486407.55
+   ]
+  },
+  {
+   "pandId": "0363100012175165",
+   "street": "Vijzelstraat",
+   "numbers": [
+    77
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1951,
+   "storeys3dbag": 0,
+   "units": 3,
+   "groundUses": [
+    "kantoorfunctie",
+    "winkelfunctie"
+   ],
+   "frontWidthM": 11.4,
+   "eavesM": 17.4,
+   "ridgeM": 17.6,
+   "roofMaxM": 17.4,
+   "normal": [
+    -0.975,
+    0.223
+   ],
+   "frontMidRD": [
+    121319.65,
+    486398.96
+   ]
+  },
+  {
+   "pandId": "0363100012167975",
+   "street": "Vijzelstraat",
+   "numbers": [
+    79
+   ],
+   "otherStreets": {
+    "Keizersgracht": [
+     603
+    ]
+   },
+   "side": "odd",
+   "builtYear": 1976,
+   "storeys3dbag": 0,
+   "units": 5,
+   "groundUses": [
+    "kantoorfunctie",
+    "overige gebruiksfunctie"
+   ],
+   "frontWidthM": 37.3,
+   "eavesM": 22.3,
+   "ridgeM": 24.9,
+   "roofMaxM": 25.5,
+   "normal": [
+    -0.976,
+    0.217
+   ],
+   "frontMidRD": [
+    121314.31,
+    486375.21
+   ]
+  },
+  {
+   "pandId": "0363100012175151",
+   "street": "Vijzelstraat",
+   "numbers": [
+    83
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1699,
+   "storeys3dbag": 0,
+   "units": 1,
+   "groundUses": [
+    "winkelfunctie"
+   ],
+   "frontWidthM": 4.6,
+   "eavesM": 10.8,
+   "ridgeM": 13.2,
+   "roofMaxM": 12.9,
+   "normal": [
+    -0.976,
+    0.219
+   ],
+   "frontMidRD": [
+    121297.39,
+    486298.9
+   ]
+  },
+  {
+   "pandId": "0363100012180260",
+   "street": "Vijzelstraat",
+   "numbers": [
+    85
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1762,
+   "storeys3dbag": 4,
+   "units": 5,
+   "groundUses": [
+    "winkelfunctie",
+    "woonfunctie"
+   ],
+   "frontWidthM": 4.7,
+   "eavesM": 13.1,
+   "ridgeM": 13.5,
+   "roofMaxM": 13.2,
+   "normal": [
+    -0.977,
+    0.213
+   ],
+   "frontMidRD": [
+    121296.39,
+    486294.36
+   ]
+  },
+  {
+   "pandId": "0363100012180259",
+   "street": "Vijzelstraat",
+   "numbers": [
+    87
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1719,
+   "storeys3dbag": 4,
+   "units": 3,
+   "groundUses": [
+    "winkelfunctie",
+    "woonfunctie"
+   ],
+   "frontWidthM": 4,
+   "eavesM": 12.4,
+   "ridgeM": 13.1,
+   "roofMaxM": 13,
+   "normal": [
+    -0.973,
+    0.23
+   ],
+   "frontMidRD": [
+    121295.43,
+    486290.13
+   ]
+  },
+  {
+   "pandId": "0363100012175158",
+   "street": "Vijzelstraat",
+   "numbers": [
+    89
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1683,
+   "storeys3dbag": 4,
+   "units": 2,
+   "groundUses": [
+    "winkelfunctie",
+    "woonfunctie"
+   ],
+   "frontWidthM": 5.2,
+   "eavesM": 8.3,
+   "ridgeM": 12,
+   "roofMaxM": 13.6,
+   "normal": [
+    -0.977,
+    0.211
+   ],
+   "frontMidRD": [
+    121294.42,
+    486285.62
+   ]
+  },
+  {
+   "pandId": "0363100012175157",
+   "street": "Vijzelstraat",
+   "numbers": [
+    91
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1905,
+   "storeys3dbag": 3,
+   "units": 2,
+   "groundUses": [
+    "winkelfunctie",
+    "woonfunctie"
+   ],
+   "frontWidthM": 4.3,
+   "eavesM": 8.9,
+   "ridgeM": 12.3,
+   "roofMaxM": 12.7,
+   "normal": [
+    -0.978,
+    0.208
+   ],
+   "frontMidRD": [
+    121293.42,
+    486280.97
+   ]
+  },
+  {
+   "pandId": "0363100012175156",
+   "street": "Vijzelstraat",
+   "numbers": [
+    93
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1905,
+   "storeys3dbag": 4,
+   "units": 4,
+   "groundUses": [
+    "winkelfunctie",
+    "woonfunctie"
+   ],
+   "frontWidthM": 4.1,
+   "eavesM": 13.8,
+   "ridgeM": 14.2,
+   "roofMaxM": 14.6,
+   "normal": [
+    -0.974,
+    0.227
+   ],
+   "frontMidRD": [
+    121292.51,
+    486276.89
+   ]
+  },
+  {
+   "pandId": "0363100012175155",
+   "street": "Vijzelstraat",
+   "numbers": [
+    95
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1779,
+   "storeys3dbag": 4,
+   "units": 4,
+   "groundUses": [
+    "winkelfunctie,woonfunctie",
+    "woonfunctie"
+   ],
+   "frontWidthM": 4.1,
+   "eavesM": 14.7,
+   "ridgeM": 15.5,
+   "roofMaxM": 15.5,
+   "normal": [
+    -0.975,
+    0.223
+   ],
+   "frontMidRD": [
+    121291.59,
+    486272.89
+   ]
+  },
+  {
+   "pandId": "0363100012175154",
+   "street": "Vijzelstraat",
+   "numbers": [
+    97
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1720,
+   "storeys3dbag": 4,
+   "units": 2,
+   "groundUses": [
+    "industriefunctie",
+    "woonfunctie"
+   ],
+   "frontWidthM": 4.1,
+   "eavesM": 12,
+   "ridgeM": 12.1,
+   "roofMaxM": 12.1,
+   "normal": [
+    -0.978,
+    0.211
+   ],
+   "frontMidRD": [
+    121290.62,
+    486268.88
+   ]
+  },
+  {
+   "pandId": "0363100012175153",
+   "street": "Vijzelstraat",
+   "numbers": [
+    99
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1926,
+   "storeys3dbag": 4,
+   "units": 2,
+   "groundUses": [
+    "winkelfunctie",
+    "woonfunctie"
+   ],
+   "frontWidthM": 4.1,
+   "eavesM": 12.8,
+   "ridgeM": 12.9,
+   "roofMaxM": 12.8,
+   "normal": [
+    -0.979,
+    0.206
+   ],
+   "frontMidRD": [
+    121289.77,
+    486264.88
+   ]
+  },
+  {
+   "pandId": "0363100012175152",
+   "street": "Vijzelstraat",
+   "numbers": [
+    101
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1708,
+   "storeys3dbag": 4,
+   "units": 2,
+   "groundUses": [
+    "winkelfunctie",
+    "woonfunctie"
+   ],
+   "frontWidthM": 4.1,
+   "eavesM": 10.3,
+   "ridgeM": 12.4,
+   "roofMaxM": 12.3,
+   "normal": [
+    -0.976,
+    0.218
+   ],
+   "frontMidRD": [
+    121288.96,
+    486260.85
+   ]
+  },
+  {
+   "pandId": "0363100012165050",
+   "street": "Vijzelstraat",
+   "numbers": [
+    103
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1738,
+   "storeys3dbag": 5,
+   "units": 4,
+   "groundUses": [
+    "bijeenkomstfunctie",
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.2,
+   "eavesM": 13,
+   "ridgeM": 15.7,
+   "roofMaxM": 15.8,
+   "normal": [
+    -0.979,
+    0.202
+   ],
+   "frontMidRD": [
+    121287.88,
+    486255.8
+   ]
+  },
+  {
+   "pandId": "0363100012180192",
+   "street": "Vijzelstraat",
+   "numbers": [
+    115,
+    117,
+    119
+   ],
+   "otherStreets": {
+    "Kerkstraat": [
+     242
+    ]
+   },
+   "side": "odd",
+   "builtYear": 1940,
+   "storeys3dbag": 5,
+   "units": 10,
+   "groundUses": [
+    "woonfunctie",
+    "winkelfunctie"
+   ],
+   "frontWidthM": 12.2,
+   "eavesM": 18,
+   "ridgeM": 21,
+   "roofMaxM": 21,
+   "normal": [
+    -0.977,
+    0.214
+   ],
+   "frontMidRD": [
+    121278.12,
+    486212.79
+   ]
+  },
+  {
+   "pandId": "0363100012180257",
+   "street": "Vijzelstraat",
+   "numbers": [
+    121,
+    123,
+    125,
+    129,
+    131
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 2006,
+   "storeys3dbag": 5,
+   "units": 21,
+   "groundUses": [
+    "woonfunctie",
+    "overige gebruiksfunctie"
+   ],
+   "frontWidthM": 28.2,
+   "eavesM": 16.7,
+   "ridgeM": 17.7,
+   "roofMaxM": 17.4,
+   "normal": [
+    -0.975,
+    0.224
+   ],
+   "frontMidRD": [
+    121273.71,
+    486193.1
+   ]
+  },
+  {
+   "pandId": "0363100012180185",
+   "street": "Vijzelstraat",
+   "numbers": [
+    133,
+    135
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1938,
+   "storeys3dbag": 0,
+   "units": 2,
+   "groundUses": [
+    "winkelfunctie",
+    "bijeenkomstfunctie"
+   ],
+   "frontWidthM": 8,
+   "eavesM": 11,
+   "ridgeM": 13,
+   "roofMaxM": 12.9,
+   "normal": [
+    -0.976,
+    0.219
+   ],
+   "frontMidRD": [
+    121269.73,
+    486175.46
+   ]
+  }
+ ]
+}

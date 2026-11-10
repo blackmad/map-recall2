@@ -1,0 +1,271 @@
+{
+ "street": "Amstel",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T08:11:17.859Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012180341",
+   "addresses": [
+    "Amstel 20",
+    "Amstel 22"
+   ],
+   "groundUnits": [
+    {
+     "address": "Amstel 20",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 162,
+     "bagId": "0363010000566516"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012168192",
+   "addresses": [
+    "Amstel 18"
+   ],
+   "groundUnits": [
+    {
+     "address": "Amstel 18-H",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000981471"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012179468",
+   "addresses": [
+    "Amstel 16"
+   ],
+   "groundUnits": [
+    {
+     "address": "Amstel 16-H",
+     "use": "winkelfunctie",
+     "areaM2": 33,
+     "bagId": "0363010000801116"
+    },
+    {
+     "address": "Amstel 16",
+     "use": "logiesfunctie",
+     "areaM2": 146,
+     "bagId": "0363010012067085"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012179467",
+   "addresses": [
+    "Amstel 14"
+   ],
+   "groundUnits": [
+    {
+     "address": "Amstel 14-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 66,
+     "bagId": "0363010001014303"
+    }
+   ],
+   "units": 7,
+   "osm": [
+    {
+     "type": "node",
+     "id": 1724299807,
+     "lngLat": [
+      4.8944287,
+      52.366943
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "14",
+      "addr:street": "Amstel",
+      "amenity": "bar",
+      "name": "Wapen van Londen",
+      "website": "https://www.hetwapenvanlonden.nl/",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-11-10T08:11:17.859Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012179466",
+   "addresses": [
+    "Amstel 12A",
+    "Amstel 12B",
+    "Amstel 12C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Amstel 12A",
+     "use": "kantoorfunctie",
+     "areaM2": 57,
+     "bagId": "0363010000566513"
+    },
+    {
+     "address": "Amstel 12B",
+     "use": "woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010011290339"
+    },
+    {
+     "address": "Amstel 12C",
+     "use": "woonfunctie",
+     "areaM2": 81,
+     "bagId": "0363010012089749"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012179465",
+   "addresses": [
+    "Amstel 10",
+    "Amstel 10A",
+    "Amstel 10B",
+    "Amstel 10C",
+    "Amstel 10D",
+    "Amstel 10E",
+    "Amstel 10F"
+   ],
+   "groundUnits": [
+    {
+     "address": "Amstel 10",
+     "use": "kantoorfunctie",
+     "areaM2": 97,
+     "bagId": "0363010001041939"
+    },
+    {
+     "address": "Reguliersbreestraat 11",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 166,
+     "bagId": "0363010001041940"
+    },
+    {
+     "address": "Amstel 10A",
+     "use": "woonfunctie",
+     "areaM2": 104,
+     "bagId": "0363010012143007"
+    },
+    {
+     "address": "Amstel 10B",
+     "use": "woonfunctie",
+     "areaM2": 106,
+     "bagId": "0363010012143008"
+    },
+    {
+     "address": "Amstel 10C",
+     "use": "woonfunctie",
+     "areaM2": 59,
+     "bagId": "0363010012143009"
+    },
+    {
+     "address": "Amstel 10D",
+     "use": "woonfunctie",
+     "areaM2": 37,
+     "bagId": "0363010012143010"
+    },
+    {
+     "address": "Amstel 10E",
+     "use": "woonfunctie",
+     "areaM2": 42,
+     "bagId": "0363010012143011"
+    },
+    {
+     "address": "Amstel 10F",
+     "use": "woonfunctie",
+     "areaM2": 88,
+     "bagId": "0363010012143012"
+    }
+   ],
+   "units": 8,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2725877993,
+     "lngLat": [
+      4.8941858,
+      52.3668324
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "11",
+      "addr:postcode": "1017CL",
+      "addr:street": "Reguliersbreestraat",
+      "amenity": "casino",
+      "contact:website": "https://flashcasino.nl/casino-s/amsterdam",
+      "name": "Flash Casino",
+      "opening_hours": "Mo-Sa 10:00-24:00; Su 13:00-24:00",
+      "source": "BAG",
+      "source:date": "2014-02-11"
+     },
+     "fetchedAt": "2026-11-10T08:11:17.859Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012179464",
+   "addresses": [
+    "Amstel 8"
+   ],
+   "groundUnits": [
+    {
+     "address": "Amstel 8-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 45,
+     "bagId": "0363010000566508"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 5643369136,
+     "lngLat": [
+      4.8941617,
+      52.3669671
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "8",
+      "addr:postcode": "1017AA",
+      "addr:street": "Amstel",
+      "name": "The Old Church II",
+      "shop": "cannabis",
+      "website": "https://www.theoldchurch.amsterdam"
+     },
+     "fetchedAt": "2026-11-10T08:11:17.859Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 12875395601,
+     "lngLat": [
+      4.8941277,
+      52.3669737
+     ],
+     "tags": {
+      "amenity": "ice_cream",
+      "name": "Dolce & Gelato"
+     },
+     "fetchedAt": "2026-11-10T08:11:17.859Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

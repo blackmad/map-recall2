@@ -186,4 +186,6 @@ export const CHUNK_WALL_EXPOSURE_DATA: Readonly<Record<string, {readonly white: 
   'face-treslong-21-35-b': {white: [176, 177, 161], stripOverDrawn: 1.099},
   'face-keizersgracht-240-312-r1': {white: [187, 184, 160], stripOverDrawn: 0.866},
   'face-herengracht-84-148-r1': {white: [186, 178, 154], stripOverDrawn: 1.167},
+  'face-keizersgracht-596-648-r1': {white: [176, 170, 161], stripOverDrawn: 0.868},
+  'face-keizersgracht-596-648-r2': {white: [185, 183, 168], stripOverDrawn: 0.927},
 };

@@ -1,0 +1,314 @@
+{
+ "street": "Amstel",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched n/a (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012177698",
+   "addresses": [
+    "Amstel 132A",
+    "Amstel 132B",
+    "Amstel 132C",
+    "Amstel 132D",
+    "Amstel 132E"
+   ],
+   "groundUnits": [
+    {
+     "address": "Amstel 132A",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 14,
+     "bagId": "0363010000566746"
+    },
+    {
+     "address": "Amstel 132B",
+     "use": "woonfunctie",
+     "areaM2": 81,
+     "bagId": "0363010000566747"
+    },
+    {
+     "address": "Amstel 132C",
+     "use": "woonfunctie",
+     "areaM2": 62,
+     "bagId": "0363010000566748"
+    },
+    {
+     "address": "Amstel 132D",
+     "use": "woonfunctie",
+     "areaM2": 62,
+     "bagId": "0363010000566749"
+    },
+    {
+     "address": "Amstel 132E",
+     "use": "woonfunctie",
+     "areaM2": 128,
+     "bagId": "0363010000566750"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012171135",
+   "addresses": [
+    "Amstel 116C",
+    "Amstel 116E",
+    "Amstel 116D",
+    "Amstel 116B",
+    "Amstel 116A",
+    "Amstel 118A",
+    "Amstel 118D",
+    "Amstel 118C",
+    "Amstel 118B",
+    "Amstel 120E",
+    "Amstel 120C",
+    "Amstel 120B",
+    "Amstel 120A",
+    "Amstel 120D",
+    "Amstel 122E",
+    "Amstel 122D",
+    "Amstel 122B",
+    "Amstel 122C",
+    "Amstel 122A",
+    "Amstel 124B",
+    "Amstel 124A",
+    "Amstel 124D",
+    "Amstel 124C",
+    "Amstel 124E",
+    "Amstel 126B",
+    "Amstel 126C",
+    "Amstel 126D",
+    "Amstel 126A",
+    "Amstel 128A",
+    "Amstel 128D",
+    "Amstel 128C",
+    "Amstel 128B",
+    "Amstel 130B",
+    "Amstel 130C",
+    "Amstel 130A",
+    "Amstel 130D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Amstel 130B",
+     "use": "woonfunctie",
+     "areaM2": 84,
+     "bagId": "0363010000566741"
+    },
+    {
+     "address": "Amstel 130C",
+     "use": "woonfunctie",
+     "areaM2": 91,
+     "bagId": "0363010000566742"
+    },
+    {
+     "address": "Amstel 130A",
+     "use": "woonfunctie",
+     "areaM2": 84,
+     "bagId": "0363010000566740"
+    },
+    {
+     "address": "Amstel 130D",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010000566743"
+    },
+    {
+     "address": "Amstel 128A",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000566735"
+    },
+    {
+     "address": "Amstel 128D",
+     "use": "woonfunctie",
+     "areaM2": 110,
+     "bagId": "0363010000566738"
+    },
+    {
+     "address": "Amstel 128C",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010000566737"
+    },
+    {
+     "address": "Amstel 128B",
+     "use": "woonfunctie",
+     "areaM2": 78,
+     "bagId": "0363010000566736"
+    },
+    {
+     "address": "Amstel 124B",
+     "use": "woonfunctie",
+     "areaM2": 73,
+     "bagId": "0363010000566727"
+    },
+    {
+     "address": "Amstel 124A",
+     "use": "woonfunctie",
+     "areaM2": 73,
+     "bagId": "0363010000566726"
+    },
+    {
+     "address": "Amstel 124D",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000566729"
+    },
+    {
+     "address": "Amstel 126B",
+     "use": "woonfunctie",
+     "areaM2": 105,
+     "bagId": "0363010000566732"
+    },
+    {
+     "address": "Amstel 124C",
+     "use": "woonfunctie",
+     "areaM2": 73,
+     "bagId": "0363010000566728"
+    },
+    {
+     "address": "Amstel 124E",
+     "use": "woonfunctie",
+     "areaM2": 92,
+     "bagId": "0363010000566730"
+    },
+    {
+     "address": "Amstel 126C",
+     "use": "woonfunctie",
+     "areaM2": 105,
+     "bagId": "0363010000566733"
+    },
+    {
+     "address": "Amstel 126D",
+     "use": "woonfunctie",
+     "areaM2": 109,
+     "bagId": "0363010000566734"
+    },
+    {
+     "address": "Amstel 126A",
+     "use": "woonfunctie",
+     "areaM2": 94,
+     "bagId": "0363010000566731"
+    },
+    {
+     "address": "Amstel 122E",
+     "use": "woonfunctie",
+     "areaM2": 93,
+     "bagId": "0363010000566725"
+    },
+    {
+     "address": "Amstel 120E",
+     "use": "woonfunctie",
+     "areaM2": 93,
+     "bagId": "0363010000566720"
+    },
+    {
+     "address": "Amstel 120C",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000566718"
+    },
+    {
+     "address": "Amstel 122D",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000566724"
+    },
+    {
+     "address": "Amstel 118A",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000566712"
+    },
+    {
+     "address": "Amstel 120B",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000566717"
+    },
+    {
+     "address": "Amstel 120A",
+     "use": "woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010000566716"
+    },
+    {
+     "address": "Amstel 122B",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000566722"
+    },
+    {
+     "address": "Amstel 122C",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000566723"
+    },
+    {
+     "address": "Amstel 118D",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000566715"
+    },
+    {
+     "address": "Amstel 118C",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000566714"
+    },
+    {
+     "address": "Amstel 122A",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000566721"
+    },
+    {
+     "address": "Amstel 118B",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000566713"
+    },
+    {
+     "address": "Amstel 120D",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000566719"
+    },
+    {
+     "address": "Amstel 116C",
+     "use": "woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010000566709"
+    },
+    {
+     "address": "Amstel 116E",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000566711"
+    },
+    {
+     "address": "Amstel 116D",
+     "use": "woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010000566710"
+    },
+    {
+     "address": "Amstel 116B",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000566708"
+    },
+    {
+     "address": "Amstel 116A",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000566707"
+    }
+   ],
+   "units": 36,
+   "osm": []
+  }
+ ]
+}

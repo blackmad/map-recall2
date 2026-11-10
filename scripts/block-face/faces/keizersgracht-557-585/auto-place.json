@@ -1,0 +1,571 @@
+{
+ "face": "keizersgracht-557-585",
+ "street": "Keizersgracht",
+ "library": "grachtengordel-zuid",
+ "stripDate": "2023-03-27",
+ "seconds": 4.08,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012167898",
+   "address": "Keizersgracht 557",
+   "builtYear": 1688,
+   "widthM": 3.75,
+   "eavesM": 14.43,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#7a7060",
+    "wallRaw": "#a5987f",
+    "skyline": {
+     "eavesM": 17.75,
+     "eavesRow": 400,
+     "confidence": 1,
+     "crown": {
+      "widthM": 0.93,
+      "riseM": 2.48,
+      "topWidthM": 0.17,
+      "centre": 0.13
+     }
+    },
+    "stucco": false,
+    "bands": 2,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.279,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "balcony slabs stacked at 12.47 m (1.43 m wide), 7.15 m (1.48 m wide)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 12.47,
+       "widthM": 1.43,
+       "centre": 0.47
+      },
+      {
+       "atM": 9.85,
+       "widthM": 1.13,
+       "centre": 0.45
+      },
+      {
+       "atM": 7.97,
+       "widthM": 1.05,
+       "centre": 0.57
+      },
+      {
+       "atM": 7.67,
+       "widthM": 0.8,
+       "centre": 0.7
+      },
+      {
+       "atM": 7.15,
+       "widthM": 1.48,
+       "centre": 0.41
+      }
+     ]
+    },
+    "voidShare": 0.1,
+    "foliageShare": 0.09
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best belt-1700-canal-house scores 0.43 < 0.7 (3DBAG eaves 14.43 m = 3 storeys of 4.81 m vs the type's 4.38 m; skyline crown rise 2.48 m, top 0.17 m fits no crown of the type)",
+   "best": {
+    "type": "belt-1700-canal-house",
+    "score": 0.43,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 14.43 m = 3 storeys of 4.81 m vs the type's 4.38 m"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.202 (brick)"
+     },
+     {
+      "key": "crown",
+      "weight": 3,
+      "score": 0,
+      "note": "skyline crown rise 2.48 m, top 0.17 m fits no crown of the type"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012167900",
+   "address": "Keizersgracht 559",
+   "builtYear": 1680,
+   "widthM": 4.66,
+   "eavesM": 12.98,
+   "storeys3dbag": 0,
+   "bagBay": null,
+   "strip": {
+    "wall": "#ac927a",
+    "wallRaw": "#a09078",
+    "skyline": {
+     "eavesM": 18.45,
+     "eavesRow": 372,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.27,
+      "riseM": 1.18,
+      "topWidthM": 0.1,
+      "centre": 0.4
+     }
+    },
+    "stucco": false,
+    "bands": 2,
+    "columns": null,
+    "frontClass": "curtain",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.209,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.7 m at 0.38 (light 0.06): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.7,
+       "centre": 0.38,
+       "light": 0.06
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.03,
+    "foliageShare": 0.1
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best belt-1700-canal-house scores 0.57 < 0.7 (skyline crown rise 1.18 m, top 0.1 m fits no crown of the type)",
+   "best": {
+    "type": "belt-1700-canal-house",
+    "score": 0.57,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 12.98 m = 3 storeys of 4.33 m vs the type's 4.38 m"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.203 (brick)"
+     },
+     {
+      "key": "crown",
+      "weight": 3,
+      "score": 0,
+      "note": "skyline crown rise 1.18 m, top 0.1 m fits no crown of the type"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012176756",
+   "address": "Keizersgracht 561",
+   "builtYear": 1770,
+   "widthM": 7.59,
+   "eavesM": 2.45,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": null,
+    "wallRaw": "#8a8272",
+    "skyline": {
+     "eavesM": 19.18,
+     "eavesRow": 343,
+     "confidence": 1,
+     "crown": {
+      "widthM": 3.75,
+      "riseM": 5.9,
+      "topWidthM": 0.13,
+      "centre": 0.54
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": null,
+    "frontClass": "blank",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": null,
+    "voidShare": 0,
+    "foliageShare": 0.05
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best belt-1700-canal-house scores 0.29 < 0.7 (3DBAG eaves 2.45 m = 3 storeys of 0.82 m vs the type's 4.38 m; skyline crown rise 5.9 m, top 0.13 m fits no crown of the type)",
+   "best": {
+    "type": "belt-1700-canal-house",
+    "score": 0.29,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 2.45 m = 3 storeys of 0.82 m vs the type's 4.38 m"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.328 (brick)"
+     },
+     {
+      "key": "crown",
+      "weight": 3,
+      "score": 0,
+      "note": "skyline crown rise 5.9 m, top 0.13 m fits no crown of the type"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012176757",
+   "address": "Keizersgracht 565",
+   "builtYear": 1670,
+   "widthM": 14.61,
+   "eavesM": 13.78,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#c2a88c",
+    "wallRaw": "#b29a82",
+    "skyline": {
+     "eavesM": 17.35,
+     "eavesRow": 416,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.15,
+      "riseM": 5,
+      "topWidthM": 0.13,
+      "centre": 0.11
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 5,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.43,
+    "structure": {
+     "bayWidthM": 1.25,
+     "bayCentre": 0.91,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6.88,
+       "widthM": 0.82,
+       "centre": 0.6
+      }
+     ]
+    },
+    "voidShare": 0.05,
+    "foliageShare": 0.09
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best belt-1700-double-house scores 0.65 < 0.7 (skyline crown rise 5 m, top 0.13 m fits no crown of the type)",
+   "best": {
+    "type": "belt-1700-double-house",
+    "score": 0.65,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 13.78 m = 3 storeys of 4.59 m vs the type's 4.38 m"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.371 (brick)"
+     },
+     {
+      "key": "crown",
+      "weight": 3,
+      "score": 0,
+      "note": "skyline crown rise 5 m, top 0.13 m fits no crown of the type"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 5 vs 5 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012176752",
+   "address": "Keizersgracht 575",
+   "builtYear": 1894,
+   "widthM": 37.24,
+   "eavesM": 16.48,
+   "storeys3dbag": 0,
+   "bagBay": {
+    "fromM": 20.27,
+    "toM": 37.24,
+    "depthM": 0.57,
+    "centre": 0.772,
+    "lineRD": [
+     [
+      121176.7760625,
+      486385.6695
+     ],
+     [
+      121195.35506249999,
+      486381.8025
+     ]
+    ]
+   },
+   "strip": {
+    "wall": "#d3ad92",
+    "wallRaw": "#e0bea1",
+    "skyline": {
+     "eavesM": 20.15,
+     "eavesRow": 304,
+     "confidence": 1,
+     "crown": {
+      "widthM": 21.68,
+      "riseM": 7.6,
+      "topWidthM": 0.28,
+      "centre": 0.68
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 11,
+    "frontClass": "curtain",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.404,
+    "structure": {
+     "bayWidthM": 4.08,
+     "bayCentre": 0.94,
+     "balconies": true,
+     "why": "dark open axis 0.78 m at 0.08 (light 0.4): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.68,
+       "centre": 0.04,
+       "light": 0.7
+      },
+      {
+       "widthM": 0.78,
+       "centre": 0.08,
+       "light": 0.4
+      },
+      {
+       "widthM": 0.7,
+       "centre": 0.12,
+       "light": 0.71
+      },
+      {
+       "widthM": 0.65,
+       "centre": 0.52,
+       "light": 0.02
+      },
+      {
+       "widthM": 0.72,
+       "centre": 0.6,
+       "light": 0.2
+      },
+      {
+       "widthM": 0.72,
+       "centre": 0.63,
+       "light": 0.1
+      },
+      {
+       "widthM": 0.78,
+       "centre": 0.83,
+       "light": 0.42
+      },
+      {
+       "widthM": 2.3,
+       "centre": 0.93,
+       "light": 0.89
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 14.6,
+       "widthM": 1.65,
+       "centre": 0.29
+      },
+      {
+       "atM": 5.45,
+       "widthM": 0.9,
+       "centre": 0.98
+      },
+      {
+       "atM": 4.77,
+       "widthM": 0.85,
+       "centre": 0.11
+      }
+     ]
+    },
+    "voidShare": 0.18,
+    "foliageShare": 0.07
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best belt-1700-canal-house: frontage 37.24 m, type 3.8-10.6 m)",
+   "best": {
+    "type": "belt-1700-canal-house",
+    "score": 0,
+    "veto": [
+     "frontage 37.24 m, type 3.8-10.6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 16.48 m = 4 storeys of 4.12 m vs the type's 4.38 m"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.247 (brick)"
+     },
+     {
+      "key": "crown",
+      "weight": 3,
+      "score": 0,
+      "note": "skyline crown rise 7.6 m, top 0.28 m fits no crown of the type"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 11 vs 4 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012176758",
+   "address": "Keizersgracht 579C",
+   "builtYear": 1919,
+   "widthM": 15.04,
+   "eavesM": 13.13,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#a18771",
+    "wallRaw": "#9d866d",
+    "skyline": {
+     "eavesM": 16.7,
+     "eavesRow": 442,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.48,
+      "riseM": 7.48,
+      "topWidthM": 0.1,
+      "centre": 0.46
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 5,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.147,
+    "structure": {
+     "bayWidthM": 0.38,
+     "bayCentre": 0.21,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.02,
+    "foliageShare": 0.02
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best belt-1700-canal-house: built 1919, type 1600-1900; frontage 15.04 m, type 3.8-10.6 m)",
+   "best": {
+    "type": "belt-1700-canal-house",
+    "score": 0,
+    "veto": [
+     "built 1919, type 1600-1900",
+     "frontage 15.04 m, type 3.8-10.6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 13.13 m = 3 storeys of 4.38 m vs the type's 4.38 m"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.133 (brick)"
+     },
+     {
+      "key": "crown",
+      "weight": 3,
+      "score": 0,
+      "note": "skyline crown rise 7.48 m, top 0.1 m fits no crown of the type"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 5 vs 4 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

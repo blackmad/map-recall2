@@ -1,0 +1,9 @@
+{
+ "note": "Reviewer palette pins (blockFace/reviewPalettes.ts) from the Opus strip review of keizersgracht-596-648 (docs/reports/gg-zuid-strip-verdict-20261110.md): the stone base and the frieze. The values are the reviewer's targets, which allow for the render lightening a literal strip median.",
+ "pins": [
+  {"pandId": "0363100012175655", "type": "belt-1700-canal-house", "palette": {"stone": "#878279", "cornice": "#c7bda6"}, "reason": "Keizersgracht 616A: dark grey stone base (strip median #524e4b) and a sandstone frieze (#b1a384); the model drew both near-white"},
+  {"pandId": "0363100012175654", "type": "belt-1700-canal-house", "palette": {"stone": "#a5a69e"}, "reason": "Keizersgracht 614: a light grey rendered base (strip median #858988)"},
+  {"pandId": "0363100012167896", "type": "belt-1700-canal-house", "palette": {"stone": "#999588"}, "reason": "Keizersgracht 610: a grey stone base (strip median #716d64)"},
+  {"pandId": "0363100012176066", "type": "belt-1700-canal-house", "palette": {"stone": "#999588"}, "reason": "Keizersgracht 608: a grey stone base, as on 610"}
+ ]
+}

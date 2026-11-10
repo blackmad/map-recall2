@@ -1,0 +1,1646 @@
+{
+ "street": "Keizersgracht",
+ "seed": "0363100012165045",
+ "members": [
+  "0363100012176745",
+  "0363100012175645",
+  "0363100012175655",
+  "0363100012175654",
+  "0363100012167899",
+  "0363100012167896",
+  "0363100012176066",
+  "0363100012176067",
+  "0363100012176068",
+  "0363100012167895",
+  "0363100012165043",
+  "0363100012165044",
+  "0363100012165045"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "trimmed at 0363100012176745 (face continues: 165685 165076 165075 165049 175658 175659 571490 176750 176751 176749 176748 176747 176746)"
+  },
+  {
+   "side": "right",
+   "reason": "no further pand fronts the street in the fetched area"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012165042",
+   "reason": "frontage 101.4 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012167550",
+   "reason": "frontage 144.1 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012167551",
+   "reason": "frontage 89.8 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012167552",
+   "reason": "frontage 89.8 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012167553",
+   "reason": "frontage 89.6 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012167554",
+   "reason": "frontage 89.5 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012167555",
+   "reason": "frontage 89.8 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012167556",
+   "reason": "frontage 89.7 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012167557",
+   "reason": "frontage 89.7 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012167558",
+   "reason": "frontage 89.5 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012167559",
+   "reason": "frontage 68.6 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012167560",
+   "reason": "frontage 89.8 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012167563",
+   "reason": "frontage 107.1 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012167564",
+   "reason": "frontage 90.0 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012167565",
+   "reason": "frontage 90.1 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012167566",
+   "reason": "frontage 90.0 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012167891",
+   "reason": "frontage 90.0 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012167892",
+   "reason": "frontage 89.9 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012167893",
+   "reason": "frontage 62.6 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012167894",
+   "reason": "frontage 62.6 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012165046",
+   "reason": "frontage 30.9 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012165048",
+   "reason": "frontage 88.2 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012167598",
+   "reason": "frontage 135.5 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012167599",
+   "reason": "frontage 120.7 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012167600",
+   "reason": "frontage 127.2 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012167601",
+   "reason": "frontage 133.5 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012167602",
+   "reason": "frontage 131.2 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012167603",
+   "reason": "frontage 126.3 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012167604",
+   "reason": "frontage 115.1 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012167609",
+   "reason": "frontage 193.7 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012167610",
+   "reason": "frontage 135.7 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012167615",
+   "reason": "frontage 89.3 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012167616",
+   "reason": "frontage 74.6 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012167617",
+   "reason": "frontage 89.6 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012167618",
+   "reason": "frontage 90.7 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012165047",
+   "reason": "frontage 78.5 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012167902",
+   "reason": "frontage 76.9 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012167903",
+   "reason": "frontage 83.3 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012167958",
+   "reason": "frontage 78.3 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012167959",
+   "reason": "frontage 78.3 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012168340",
+   "reason": "frontage 151.9 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012168481",
+   "reason": "frontage 151.7 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012169546",
+   "reason": "frontage 188.7 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012169547",
+   "reason": "frontage 188.1 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012169627",
+   "reason": "frontage 118.0 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012169699",
+   "reason": "frontage 110.8 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012169700",
+   "reason": "frontage 116.6 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012169701",
+   "reason": "frontage 120.0 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012170877",
+   "reason": "frontage 190.9 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012170878",
+   "reason": "frontage 191.1 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012170879",
+   "reason": "frontage 193.1 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012170880",
+   "reason": "frontage 222.5 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012170881",
+   "reason": "frontage 215.9 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012170882",
+   "reason": "frontage 189.4 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012170886",
+   "reason": "frontage 211.7 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012170890",
+   "reason": "frontage 134.7 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012170891",
+   "reason": "frontage 130.4 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012170892",
+   "reason": "frontage 207.5 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012170893",
+   "reason": "frontage 203.3 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012170894",
+   "reason": "frontage 198.8 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012170896",
+   "reason": "frontage 194.2 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012171284",
+   "reason": "frontage 193.8 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012171286",
+   "reason": "frontage 137.8 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012171428",
+   "reason": "frontage 56.8 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012171429",
+   "reason": "frontage 54.6 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012171430",
+   "reason": "frontage 55.5 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012171431",
+   "reason": "frontage 36.9 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012171432",
+   "reason": "frontage 59.2 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012171433",
+   "reason": "frontage 55.3 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012171434",
+   "reason": "frontage 46.9 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012175007",
+   "reason": "frontage 107.9 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012175008",
+   "reason": "frontage 124.2 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012175009",
+   "reason": "frontage 128.3 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012175010",
+   "reason": "frontage 107.5 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012175011",
+   "reason": "frontage 107.5 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012175012",
+   "reason": "frontage 126.9 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012175013",
+   "reason": "frontage 109.4 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012175014",
+   "reason": "frontage 127.0 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012175015",
+   "reason": "frontage 107.5 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012175016",
+   "reason": "frontage 120.9 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012175017",
+   "reason": "frontage 134.9 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012175018",
+   "reason": "frontage 90.3 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012175586",
+   "reason": "frontage 133.6 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012175646",
+   "reason": "frontage 58.6 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012175647",
+   "reason": "frontage 58.6 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012175648",
+   "reason": "frontage 63.6 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012175649",
+   "reason": "frontage 64.6 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012175650",
+   "reason": "frontage 58.3 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012175651",
+   "reason": "frontage 69.5 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012175652",
+   "reason": "frontage 58.3 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012175653",
+   "reason": "frontage 50.7 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012175656",
+   "reason": "frontage 63.5 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012175657",
+   "reason": "frontage 70.0 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012175169",
+   "reason": "frontage 151.7 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012175170",
+   "reason": "frontage 151.7 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012171582",
+   "reason": "sightline to Keizersgracht crosses 0363100012171584"
+  },
+  {
+   "pandId": "0363100012172815",
+   "reason": "frontage 191.1 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012172816",
+   "reason": "frontage 191.4 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012172817",
+   "reason": "frontage 230.4 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012172818",
+   "reason": "frontage 228.9 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012172819",
+   "reason": "frontage 229.6 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012172820",
+   "reason": "frontage 223.0 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012172822",
+   "reason": "frontage 228.7 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012172823",
+   "reason": "frontage 221.6 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012172824",
+   "reason": "frontage 190.7 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012172825",
+   "reason": "frontage 190.3 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012172826",
+   "reason": "frontage 228.5 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012172909",
+   "reason": "frontage 227.3 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012172910",
+   "reason": "frontage 189.8 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012172916",
+   "reason": "frontage 233.0 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012175660",
+   "reason": "frontage 66.3 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012175661",
+   "reason": "frontage 62.6 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012175662",
+   "reason": "frontage 58.6 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012175663",
+   "reason": "frontage 58.0 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012175664",
+   "reason": "frontage 63.0 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012175665",
+   "reason": "frontage 63.1 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012175666",
+   "reason": "frontage 58.2 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012175978",
+   "reason": "frontage 137.3 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012175979",
+   "reason": "frontage 137.2 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012175982",
+   "reason": "frontage 128.7 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012175986",
+   "reason": "frontage 106.9 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012175987",
+   "reason": "frontage 144.0 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012175992",
+   "reason": "frontage 105.0 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012175993",
+   "reason": "frontage 143.9 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012175994",
+   "reason": "frontage 106.9 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012175996",
+   "reason": "frontage 118.6 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012175997",
+   "reason": "frontage 118.6 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012176065",
+   "reason": "frontage 129.8 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012176078",
+   "reason": "frontage 59.4 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012176079",
+   "reason": "frontage 56.4 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012176080",
+   "reason": "frontage 59.2 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012176081",
+   "reason": "frontage 64.8 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012176082",
+   "reason": "frontage 63.6 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012176083",
+   "reason": "frontage 64.1 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012175980",
+   "reason": "frontage 113.0 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012175981",
+   "reason": "frontage 134.4 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012175983",
+   "reason": "frontage 136.3 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012175984",
+   "reason": "frontage 138.8 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012175985",
+   "reason": "frontage 134.4 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012175988",
+   "reason": "frontage 135.7 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012175989",
+   "reason": "frontage 115.1 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012175999",
+   "reason": "frontage 136.5 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012176061",
+   "reason": "frontage 118.6 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012176062",
+   "reason": "frontage 193.8 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012176064",
+   "reason": "frontage 115.2 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012176069",
+   "reason": "sightline to Keizersgracht crosses 0363100012165045"
+  },
+  {
+   "pandId": "0363100012176070",
+   "reason": "sightline to Keizersgracht crosses 0363100012171582"
+  },
+  {
+   "pandId": "0363100012176071",
+   "reason": "frontage 61.2 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012176072",
+   "reason": "frontage 53.9 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012176073",
+   "reason": "frontage 30.3 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012176074",
+   "reason": "frontage 71.0 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012176075",
+   "reason": "frontage 68.9 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012176076",
+   "reason": "frontage 74.8 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012176077",
+   "reason": "frontage 90.2 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012176084",
+   "reason": "frontage 89.4 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012176085",
+   "reason": "frontage 89.5 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012176147",
+   "reason": "frontage 89.5 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012176153",
+   "reason": "frontage 61.9 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012176154",
+   "reason": "frontage 69.1 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012176230",
+   "reason": "frontage 90.1 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012176231",
+   "reason": "frontage 90.2 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012176232",
+   "reason": "frontage 107.5 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012176233",
+   "reason": "frontage 134.7 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012176234",
+   "reason": "frontage 107.5 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012176161",
+   "reason": "sightline to Keizersgracht crosses 0363100012176163"
+  },
+  {
+   "pandId": "0363100012176165",
+   "reason": "sightline to Keizersgracht crosses 0363100012176162"
+  },
+  {
+   "pandId": "0363100012176169",
+   "reason": "frontage 68.0 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012176170",
+   "reason": "frontage 74.8 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012176171",
+   "reason": "frontage 78.2 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012176236",
+   "reason": "frontage 78.3 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012176237",
+   "reason": "frontage 47.4 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012176238",
+   "reason": "frontage 81.3 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012176754",
+   "reason": "frontage 54.6 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012176755",
+   "reason": "frontage 50.8 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012176148",
+   "reason": "frontage 55.1 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012176150",
+   "reason": "frontage 38.5 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012176151",
+   "reason": "sightline to Keizersgracht crosses 0363100012165045"
+  },
+  {
+   "pandId": "0363100012176152",
+   "reason": "sightline to Keizersgracht crosses 0363100012165045"
+  },
+  {
+   "pandId": "0363100012176158",
+   "reason": "frontage 44.4 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012176159",
+   "reason": "frontage 89.4 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012176160",
+   "reason": "frontage 89.3 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012176239",
+   "reason": "frontage 51.0 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012176240",
+   "reason": "frontage 55.1 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012176241",
+   "reason": "frontage 51.0 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012176242",
+   "reason": "frontage 55.1 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012176243",
+   "reason": "frontage 34.9 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012176760",
+   "reason": "frontage 79.1 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012176761",
+   "reason": "frontage 79.6 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012176762",
+   "reason": "frontage 79.2 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012176763",
+   "reason": "frontage 81.7 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012177004",
+   "reason": "frontage 59.6 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012177005",
+   "reason": "frontage 59.8 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012177053",
+   "reason": "frontage 228.5 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012177074",
+   "reason": "frontage 127.1 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012177075",
+   "reason": "frontage 134.4 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012177076",
+   "reason": "frontage 193.9 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012177077",
+   "reason": "frontage 195.1 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012177078",
+   "reason": "frontage 193.4 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012177081",
+   "reason": "frontage 222.0 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012177082",
+   "reason": "frontage 216.4 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012177083",
+   "reason": "frontage 209.3 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012177085",
+   "reason": "frontage 54.9 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012177086",
+   "reason": "frontage 62.3 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012177087",
+   "reason": "frontage 53.8 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012177088",
+   "reason": "frontage 50.7 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012177089",
+   "reason": "frontage 86.5 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012177090",
+   "reason": "frontage 86.7 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012177091",
+   "reason": "frontage 64.2 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012177092",
+   "reason": "frontage 68.9 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012177093",
+   "reason": "frontage 89.6 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012177094",
+   "reason": "frontage 90.5 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012177095",
+   "reason": "frontage 69.2 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012177096",
+   "reason": "frontage 68.8 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012177097",
+   "reason": "frontage 64.2 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012177098",
+   "reason": "frontage 74.9 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012177099",
+   "reason": "frontage 68.2 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012177100",
+   "reason": "frontage 67.5 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012177101",
+   "reason": "frontage 87.5 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012177102",
+   "reason": "frontage 96.5 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012177103",
+   "reason": "frontage 88.7 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012177104",
+   "reason": "frontage 89.1 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012177105",
+   "reason": "frontage 105.9 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012177131",
+   "reason": "frontage 252.3 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012177132",
+   "reason": "frontage 253.1 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012177133",
+   "reason": "frontage 240.2 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012177134",
+   "reason": "frontage 243.2 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012177135",
+   "reason": "frontage 240.1 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012177152",
+   "reason": "frontage 139.3 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012177153",
+   "reason": "frontage 133.7 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012177154",
+   "reason": "frontage 143.1 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012177155",
+   "reason": "frontage 134.7 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012177143",
+   "reason": "frontage 63.6 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012177144",
+   "reason": "frontage 53.9 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012177145",
+   "reason": "frontage 52.8 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012177149",
+   "reason": "frontage 59.9 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012177156",
+   "reason": "frontage 193.3 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012177157",
+   "reason": "frontage 195.6 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012177158",
+   "reason": "frontage 193.1 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012177159",
+   "reason": "frontage 194.5 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012177160",
+   "reason": "frontage 196.5 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012177161",
+   "reason": "frontage 59.8 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012177162",
+   "reason": "frontage 86.1 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012177163",
+   "reason": "frontage 59.5 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012177256",
+   "reason": "frontage 113.8 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012177257",
+   "reason": "frontage 109.8 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012177258",
+   "reason": "frontage 110.7 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012177259",
+   "reason": "frontage 106.3 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012177260",
+   "reason": "frontage 101.6 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012177261",
+   "reason": "frontage 122.3 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012177262",
+   "reason": "frontage 118.0 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012177263",
+   "reason": "frontage 91.6 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012177264",
+   "reason": "frontage 134.6 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012177265",
+   "reason": "frontage 134.1 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012177266",
+   "reason": "frontage 133.8 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012177267",
+   "reason": "frontage 130.7 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012177268",
+   "reason": "frontage 122.3 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012177275",
+   "reason": "frontage 52.4 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012177276",
+   "reason": "frontage 60.6 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012177343",
+   "reason": "frontage 61.4 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012177344",
+   "reason": "frontage 59.1 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012177395",
+   "reason": "frontage 83.2 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012177396",
+   "reason": "frontage 83.5 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012177397",
+   "reason": "frontage 83.3 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012177398",
+   "reason": "frontage 83.9 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012177399",
+   "reason": "frontage 101.7 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012177401",
+   "reason": "frontage 102.7 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012177431",
+   "reason": "frontage 57.2 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012177432",
+   "reason": "frontage 55.0 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012177433",
+   "reason": "frontage 51.5 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012177274",
+   "reason": "frontage 52.1 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012177388",
+   "reason": "frontage 62.3 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012177393",
+   "reason": "frontage 59.5 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012177394",
+   "reason": "frontage 55.8 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012177400",
+   "reason": "frontage 82.9 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012177404",
+   "reason": "frontage 82.4 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012177408",
+   "reason": "frontage 62.1 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012180185",
+   "reason": "frontage 136.5 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012180190",
+   "reason": "frontage 144.5 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012180257",
+   "reason": "frontage 108.4 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012185780",
+   "reason": "frontage 137.2 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012185781",
+   "reason": "frontage 137.2 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012185838",
+   "reason": "frontage 64.8 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012253749",
+   "reason": "frontage 119.0 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100100092396",
+   "reason": "frontage 58.5 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012177619",
+   "reason": "frontage 138.8 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012177620",
+   "reason": "frontage 145.4 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012177621",
+   "reason": "frontage 193.7 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012177622",
+   "reason": "frontage 197.5 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012177623",
+   "reason": "frontage 200.1 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012177624",
+   "reason": "frontage 142.6 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012177625",
+   "reason": "frontage 145.7 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012177627",
+   "reason": "frontage 130.1 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012177628",
+   "reason": "frontage 139.9 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012185424",
+   "reason": "frontage 85.5 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012185778",
+   "reason": "frontage 136.5 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012239848",
+   "reason": "frontage 251.2 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012241058",
+   "reason": "frontage 65.4 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012244096",
+   "reason": "frontage 251.7 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012244350",
+   "reason": "frontage 230.0 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012247679",
+   "reason": "frontage 113.8 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012248028",
+   "reason": "frontage 84.5 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012249791",
+   "reason": "frontage 125.0 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012250234",
+   "reason": "frontage 83.7 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012250235",
+   "reason": "frontage 104.7 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012571501",
+   "reason": "frontage 86.3 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100100092466",
+   "reason": "frontage 106.7 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100100092472",
+   "reason": "frontage 112.1 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012177471",
+   "reason": "frontage 57.6 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012177640",
+   "reason": "frontage 58.5 m from Keizersgracht"
+  },
+  {
+   "pandId": "0363100012165077",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012167897",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012167898",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012167900",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012167901",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012171435",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012171436",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012171440",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012171365",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012171366",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012171367",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012171437",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012171438",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012171439",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012171441",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012171442",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012171443",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012171444",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012171525",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012171526",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012171583",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012171584",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012171585",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012171586",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012171587",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012171588",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012171589",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012176162",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012176163",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012176164",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012176752",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012176756",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012176757",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012176166",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012176167",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012176168",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012176390",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012176392",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012176393",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012176758",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012177434",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012177435",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012177436",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012177269",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012177270",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012177271",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012177272",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012177273",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012177437",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100100092426",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012177438",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012177439",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012177440",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012177441",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012177442",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012177443",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012177445",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012177641",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012177649",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012177650",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012177651",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 180,
+ "pands": [
+  {
+   "pandId": "0363100012176745",
+   "alongM": -95.38,
+   "widthM": 11.01,
+   "eavesM": 15.71,
+   "roofMaxM": 18.78,
+   "storeys3dbag": 0,
+   "builtYear": 1680,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012175645",
+   "alongM": -86.14,
+   "widthM": 7.5,
+   "eavesM": 15.24,
+   "roofMaxM": 18.51,
+   "storeys3dbag": 4,
+   "builtYear": 1672,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012175655",
+   "alongM": -78.59,
+   "widthM": 7.59,
+   "eavesM": 18.12,
+   "roofMaxM": 21.24,
+   "storeys3dbag": 5,
+   "builtYear": 1800,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012175654",
+   "alongM": -72.12,
+   "widthM": 5.36,
+   "eavesM": 17.52,
+   "roofMaxM": 19.04,
+   "storeys3dbag": 5,
+   "builtYear": 1680,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012167899",
+   "alongM": -64.75,
+   "widthM": 9.37,
+   "eavesM": 12.46,
+   "roofMaxM": 16.96,
+   "storeys3dbag": 5,
+   "builtYear": 1675,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012167896",
+   "alongM": -56.29,
+   "widthM": 7.57,
+   "eavesM": 17.97,
+   "roofMaxM": 21.28,
+   "storeys3dbag": 4,
+   "builtYear": 1730,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012176066",
+   "alongM": -48.79,
+   "widthM": 7.44,
+   "eavesM": 15.64,
+   "roofMaxM": 20.92,
+   "storeys3dbag": 5,
+   "builtYear": 1730,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012176067",
+   "alongM": -41.35,
+   "widthM": 7.43,
+   "eavesM": 15.75,
+   "roofMaxM": 20.88,
+   "storeys3dbag": 5,
+   "builtYear": 1730,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012176068",
+   "alongM": -30.18,
+   "widthM": 14.93,
+   "eavesM": 16.12,
+   "roofMaxM": 19.11,
+   "storeys3dbag": 4,
+   "builtYear": 1670,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012167895",
+   "alongM": -20.12,
+   "widthM": 5.18,
+   "eavesM": 16.37,
+   "roofMaxM": 17.88,
+   "storeys3dbag": 4,
+   "builtYear": 1669,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012165043",
+   "alongM": -14.94,
+   "widthM": 5.19,
+   "eavesM": 12.9,
+   "roofMaxM": 17.35,
+   "storeys3dbag": 4,
+   "builtYear": 1670,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012165044",
+   "alongM": -9.75,
+   "widthM": 5.18,
+   "eavesM": 12.63,
+   "roofMaxM": 17.4,
+   "storeys3dbag": 4,
+   "builtYear": 1670,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012165045",
+   "alongM": 0,
+   "widthM": 14.33,
+   "eavesM": 12.29,
+   "roofMaxM": 15.73,
+   "storeys3dbag": 4,
+   "builtYear": 1740,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  }
+ ]
+}

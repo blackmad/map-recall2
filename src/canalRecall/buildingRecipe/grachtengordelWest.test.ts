@@ -58,7 +58,7 @@ test('frieze attic lights: one dark light per axis inside the entablature frieze
 
 test('resizePerStorey keeps a souterrain weight first (a cornice house of four storeys drawn with three)', async () => {
   const {resizePerStorey} = await import('../blockFace/houseType.ts');
-  const body = {bays: 3, storeyHeights: [1.9, 4.0, 3.05, 2.65, 2.6], windowHeights: [0.82, 0.79, 0.68, 0.65], headLines: [0.875, 0.885, 0.81, 0.81]};
+  const body = {bays: 3, souterrain: true, storeyHeights: [1.9, 4.0, 3.05, 2.65, 2.6], windowHeights: [0.82, 0.79, 0.68, 0.65], headLines: [0.875, 0.885, 0.81, 0.81]};
   const three = resizePerStorey(body, 4, 3);
   assert.deepEqual(three.storeyHeights, [1.9, 4.0, 3.05, 2.6]);
   assert.deepEqual(three.windowHeights, [0.82, 0.79, 0.65]);
