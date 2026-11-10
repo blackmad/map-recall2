@@ -1,7 +1,7 @@
 // The generic path reads HouseSpecs (house line H1 step 5): flag, decorator steps, enricher, bay fitting.
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { houseSpecEnricher, houseSpecPatch, houseSpecsEnabled, withHouseSpec, withHouseSpecCrown, type HouseSpecView } from './decorate.ts';
+import { houseSpecEnricher, houseSpecPatch, houseSpecsEnabled, SPEC_BAYS_HELD, withHouseSpec, withHouseSpecCrown, type HouseSpecView } from './decorate.ts';
 import { gameFeatureDecorator } from '../galleryPipeline.ts';
 import { frontageLayoutScale, SPEC_BAY_SCALE } from '../streetFacadeRendering.ts';
 import { STYLE_DIMS } from '../facadeCells.ts';
@@ -33,7 +33,8 @@ test('facts step: era-only year moves, finish, a spec recipe only when the meshe
   assert.deepEqual(houseSpecPatch(view, { constructionYear: 1880, bagConstructionYear: 1905, registerFinish: 'light' }), { constructionYear: 1605 });
   const measured: HouseSpecView = { gable: 'neck', year: 1680, bays: 3, wallHex: '#7A4A3A', src: { bays: 'streetlevel-measured', wallHex: 'streetlevel-measured' } };
   // The measured wall colour is held (SPEC_WALLS_HELD): the recipe carries the bays, crown and period only.
-  assert.deepEqual(houseSpecPatch(measured, { constructionYear: 1680 }).specRecipe, { bays: 3, period: 'canal', crownShape: 'neck' });
+  // Spec bays are held too (SPEC_BAYS_HELD, #348): while both are held a spec writes no recipe.
+  assert.deepEqual(houseSpecPatch(measured, { constructionYear: 1680 }).specRecipe, SPEC_BAYS_HELD ? undefined : { bays: 3, period: 'canal', crownShape: 'neck' });
   assert.equal(houseSpecPatch({ wallHex: '#7a4a3a', src: {} }, {}).specRecipe, undefined, 'a wall colour alone writes no recipe while held');
   assert.equal(houseSpecPatch({ gable: 'neck', src: {} }, {}).specRecipe, undefined);
 });
@@ -58,7 +59,7 @@ test('the decorator chain: a spec gable survives withMonumentGable, which would 
   const spec = { ...base, properties: { ...base.properties, houseSpec: { gable: 'step', bays: 3, src: { gable: 'streetlevel-measured', bays: 'streetlevel-measured' } } } };
   const out = chain(spec as any).properties;
   assert.equal(out.monumentGable, 'step');
-  assert.deepEqual(out.specRecipe, { bays: 3, period: 'canal', crownShape: 'plain' });
+  assert.deepEqual(out.specRecipe, SPEC_BAYS_HELD ? undefined : { bays: 3, period: 'canal', crownShape: 'plain' });
 });
 
 test('enricher stamps the runtime view by feature id; a missing tile stamps nothing', async () => {

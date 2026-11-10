@@ -73,6 +73,14 @@ const excluded = (p: Props) => (p.appearanceStyleSource !== undefined && p.appea
  */
 export const SPEC_WALLS_HELD = true;
 
+/**
+ * Held (2026-11-10, spot-check #348): on a 24-pand sample of the 410 bay-changed pands the spec bay count was closer
+ * to the photo on only 5 of 23 scored, and group-01 shows doubling (photo 3 -> 6, 2 -> 4). Until H1b finds the cause
+ * (frontageLayoutScale reading bays as window units, 2-axis cell rounding, or per-storey sums), spec bays write no
+ * recipe. Gables (withHouseSpecCrown), year and finish stay on.
+ */
+export const SPEC_BAYS_HELD = true;
+
 /** The property patch a spec view makes before decorateFacade; empty when nothing changes. */
 export function houseSpecPatch(view: HouseSpecView, p: Props): Props {
   const patch: Props = {};
@@ -89,7 +97,7 @@ export function houseSpecPatch(view: HouseSpecView, p: Props): Props {
     if (p.registerFinish !== finish) patch.registerFinish = finish;
   }
   const recipe: SpecRecipe = {};
-  if (view.bays && view.bays > 0) recipe.bays = view.bays;
+  if (!SPEC_BAYS_HELD && view.bays && view.bays > 0) recipe.bays = view.bays;
   if (!SPEC_WALLS_HELD && view.wallHex && /^#[0-9a-f]{6}$/i.test(view.wallHex)) recipe.wallHex = view.wallHex.toLowerCase();
   // A spec recipe only when it carries something the mesher reads (bays, a wall colour); crown and period ride along.
   if (recipe.bays || recipe.wallHex) {
