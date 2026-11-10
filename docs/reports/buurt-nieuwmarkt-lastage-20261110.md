@@ -69,3 +69,29 @@ Totals by `-placement.json`: rapenburg 2/7, zuiderkerkbuurt 2/22 (both held now)
 
 ## Checks
 `npm run test:block-face` 337/337, `npm run lint` clean (before the report commit).
+
+## Round 2 (2026-11-10): the Opus strip verdict applied (`docs/reports/rapenburg-strip-verdict-20261110.md`)
+
+Reinstalled `rapenburg-89-103-r1` (all gates pass, GLB audit clean). The sheet is re-archived in source-data as
+`sheet-rapenburg-89-103-r1.png`. By eye, the overlay now lines up row for row on both pands.
+
+* **97 (type `lastage-cornice-house`):**
+  * window rows at 4.5-6.6, 7.1-9.2 and 10.1-11.6 m;
+  * two-light sashes on storeys 1-2 (`storeyWindows`), the cross window kept on top;
+  * flush `full-frame` surrounds in place of the projecting sills;
+  * a 2.2 m white `entablature` (frieze and cap) in place of the 1.6 m frieze cornice;
+  * brick `#483f32`.
+* **99 (type `lastage-bell-house`, crown pinned `bell` in the run):**
+  * neck `crownNeckWidth` 0.37 (about 2.1 m) under a `rounded` cap, `crownShoulderRise` 0.45, `crownRise` 1.1;
+  * window heads raised (0.93 / 0.94);
+  * the gable light 1.0 m wide and 0.75 m lower, with no hoist;
+  * brick `#45372a`;
+  * a full-width white `pui` ground front: two doors at the left, a 2.5 m four-light shop window, and one transom row.
+* **Kit additions** (typed, validated, tested in `nieuwmarktLastage.test.ts`, byte-identical when absent;
+  `test:building-recipes` 494/494, `test:block-face` 339/339):
+  * `FrontIntent.atticLight {light, sill}`: a measured gable light width and its sill over the crown foot;
+  * `GroundFrontIntent.bayWeights`: measured bay widths, reversed on mirror;
+  * `GroundFrontIntent.transom`: door heads and window transom bars on one line;
+  * `GroundFrontIntent.lights`: mullioned lights per window bay.
+* **Still not drawn:** the round cap is the neck width, not the narrower 1.45 m sandstone cap. The claw scrolls, the frieze vent
+  and the finial are not drawn either.

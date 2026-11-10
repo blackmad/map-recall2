@@ -67,7 +67,7 @@
     "none": true
    }
   },
-  "note": "Rapenburg 97 (181605, strip 2024-12-10, gridded crop): white ground storey 0-4.3 m, windows 4.5-6.6 / 7.4-9.4 / 10.1-11.6 m, brick to 12.5 m, frieze and cornice to 14.7 m; 1905 is the BAG placeholder in the centre (unknownYears), and BAG dates many of these fronts 1810-1925 after rebuilds, so the skyline crown decides against the bell house (crownMatch); the top storey carries the frieze (12.5-14.7 m) so the eaves is the cornice top 14.7 m, not 3DBAG's 11.6",
+  "note": "Rapenburg 97 (181605, strip 2024-12-10, gridded crop): white ground storey 0-4.3 m, windows 4.5-6.6 / 7.4-9.4 / 10.1-11.6 m, brick to 12.5 m, frieze and cornice to 14.7 m; 1905 is the BAG placeholder in the centre (unknownYears), and BAG dates many of these fronts 1810-1925 after rebuilds, so the skyline crown decides against the bell house (crownMatch); the top storey carries the frieze (12.5-14.7 m) so the eaves is the cornice top 14.7 m, not 3DBAG's 11.6; round 2 (Opus verdict): windows 4.5-6.6 / 7.1-9.2 / 10.1-11.6 m, white frieze and cornice 12.5-14.7 m (entablature 2.2 m); two-light sashes on storeys 1-2, cross window on top, flush full-frame surrounds",
   "mirrorForDoor": "left",
   "unknownYears": [
    1905
@@ -80,29 +80,38 @@
    4.3,
    2.7,
    2.8,
-   4.9
+   2.7
   ],
   "windows": "sash",
-  "windowSurround": "sill",
+  "windowSurround": "full-frame",
   "windowHeights": [
    0.5,
    0.78,
-   0.71,
-   0.31
+   0.74,
+   0.56
   ],
   "headLines": [
    0.85,
    0.85,
-   0.86,
-   0.62
+   0.79,
+   0.67
   ],
   "windowShare": 0.68,
-  "cornice": "frieze"
+  "cornice": "simple",
+  "entablature": {
+   "rise": 2.2,
+   "cap": 0.35,
+   "frieze": "trim"
+  },
+  "storeyWindows": {
+   "1": "two-light",
+   "2": "two-light"
+  }
  },
  "crowns": {
   "frieze": {
    "gable": "cornice",
-   "note": "Rapenburg 97 (181605): the white attic frieze 12.5-14.0 m and its cornice to 14.7 m are the top of the front (body cornice frieze, 1.6 m under the eaves), no dormer"
+   "note": "Rapenburg 97 (181605, Opus strip verdict 2026-11-10): a white frieze and cornice 2.2 m deep (entablature, 12.5-14.7 m on the strip) over the brick, no dormer"
   },
   "dormer": {
    "gable": "cornice",

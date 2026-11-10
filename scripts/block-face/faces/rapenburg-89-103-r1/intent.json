@@ -29,8 +29,8 @@
    "type": {
     "type": "lastage-cornice-house",
     "measuredPalette": {
-     "brick": "#3f342b",
-     "evidence": "strip 2024-12-10 span 915-1139: trim-normalised wall (buildingRecipe/measureFacade.ts); lane: lowered so the render meets the photo wall (sheet read +0.11/+0.13 too light at the measured value), hue kept brown rather than the strip olive cast"
+     "brick": "#483f32",
+     "evidence": "Opus strip verdict 2026-11-10: photo #3f392c, 60 % from the model toward it"
     },
     "crown": "none"
    },
@@ -54,23 +54,29 @@
    "type": {
     "type": "lastage-bell-house",
     "ground": {
-     "shopfront": {
-      "colour": "#e8e6dd",
-      "fascia": true,
-      "entrance": "centre",
-      "glazing": "split",
-      "stallriser": "low",
-      "residentialDoor": {
-       "side": "left",
-       "colour": "#2a2a2a"
-      },
-      "evidence": "auto-place: bag-only (winkelfunctie, woonfunctie); fascia colour measured on the strip 2024-12-10 span 1140-1367; lane: the ground storey is white-painted with white shop frames on the strip (the measured #3c3f36 is the dark glass), colour set to the white pui"
+     "groundFront": {
+      "kind": "pui",
+      "bays": [
+       "door",
+       "door",
+       "window"
+      ],
+      "bayWeights": [
+       0.75,
+       0.8,
+       2.5
+      ],
+      "transom": 2.4,
+      "lights": 4,
+      "colour": "#ece9e0",
+      "evidence": "Rapenburg 99 strip 2024-12-10 (Opus strip verdict): white full-width ground storey, a row of transom lights over two black doors (0.75, 0.8 m) at the left and a 2.5 m four-light shop window"
      }
     },
     "measuredPalette": {
-     "brick": "#3b2e25",
-     "evidence": "strip 2024-12-10 span 1140-1367: trim-normalised wall (buildingRecipe/measureFacade.ts); lane: lowered so the render meets the photo wall (sheet read +0.11/+0.13 too light at the measured value), hue kept brown rather than the strip olive cast"
-    }
+     "brick": "#45372a",
+     "evidence": "Opus strip verdict 2026-11-10: photo #3a2f22, 60 % from the model toward it"
+    },
+    "crown": "bell"
    },
    "groundFloor": {
     "use": "shop",

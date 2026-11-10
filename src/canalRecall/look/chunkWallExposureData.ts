@@ -184,5 +184,5 @@ export const CHUNK_WALL_EXPOSURE_DATA: Readonly<Record<string, {readonly white: 
   'face-treslong-5-19-b': {white: [172, 171, 153], stripOverDrawn: 1.099},
   'face-treslong-21-35-a': {white: [173, 168, 147], stripOverDrawn: 0.948},
   'face-treslong-21-35-b': {white: [176, 177, 161], stripOverDrawn: 1.099},
-  'face-rapenburg-89-103-r1': {white: [157, 167, 157], stripOverDrawn: 0.903},
+  'face-rapenburg-89-103-r1': {white: [157, 167, 157], stripOverDrawn: 0.742},
 };
