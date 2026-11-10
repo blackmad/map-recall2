@@ -38,7 +38,7 @@ import { fillPockets, POCKET_LIFT, type PocketCover, type PocketStats, type Surv
 import { buildRoadSurfaces, deckLevelHeight, RoadIndex, type RoadBuildStats } from './roadSurfaces.js';
 import { ANCILLARY_CLASSES, type RoadCell } from './roadCells.js';
 import type { RoadMark } from './roadMarks.js';
-import { AT_GRADE_HIGHWAYS, crossingTest, platformMeshes, railMeshes, type RailBuildStats, type RailPlatform, type RailWay } from './railTracks.js';
+import { AT_GRADE_HIGHWAYS, crossingTest, onStreetTest, platformMeshes, railMeshes, type RailBuildStats, type RailPlatform, type RailWay, type StreetStrip } from './railTracks.js';
 import { PLATFORM_EDGE_M, platformTest, PROFILE_PAD_M, railLevels } from './railProfile.js';
 import { streetHalfWidth, underTest } from './railBridge.js';
 import type { PhotoEvidence } from './photoEvidence.js';
@@ -160,6 +160,8 @@ export interface CellInput {
   railLevels?: boolean;
   /** rail-v1 as it shipped in build 04e3c88 (railTracks `legacy`): the rail regressions' pre-fix build only. */
   railLegacy?: boolean;
+  /** Rails flat on the street they lie on or cross within the bed's reach (railTracks.ts onStreetTest; default on, false: the centreline-crossing test only, for measuring). */
+  railOnStreet?: boolean;
   /** OSM way ids the neighbourhood's road polygons cover (roadCells coverWays): no bands for them. */
   coverWays?: readonly number[];
   /** What the orthophoto backs of the tag-driven paint (photoEvidence.ts): lane ribbons, centre dashes, grey fietsstraat sections. */
@@ -544,8 +546,9 @@ export function buildCell(input: CellInput): BuiltCell {
   // Railway tracks on their own corridor (rail-v1, railTracks.ts; issue #124): flat with a street they cross at grade.
   let railStats: RailBuildStats | undefined;
   if (input.rails?.length) {
-    const atGrade: [Vec2, Vec2][] = [];
-    for (const w of ways) if (AT_GRADE_HIGHWAYS.has(w.tags.highway) && !isBridgeWay(w) && !(w.tags.tunnel && w.tags.tunnel !== 'no')) for (let i = 0; i + 1 < w.points.length; i++) atGrade.push([w.points[i], w.points[i + 1]]);
+    const atGrade: [Vec2, Vec2][] = [], strips: StreetStrip[] = [];
+    for (const w of ways) if (AT_GRADE_HIGHWAYS.has(w.tags.highway) && !isBridgeWay(w) && !(w.tags.tunnel && w.tags.tunnel !== 'no')) { const half = streetHalfWidth(w.section.bands); for (let i = 0; i + 1 < w.points.length; i++) { atGrade.push([w.points[i], w.points[i + 1]]); strips.push([w.points[i], w.points[i + 1], half]); } }
+    const crossing = crossingTest(atGrade), onStreet = input.railOnStreet === false ? null : onStreetTest(strips);
     // Levels (railProfile.ts): the relief's envelope at the track's grade, bridge decks between their approaches.
     // A tunnel cut's box keeps its measured floor (tunnels.ts): no envelope lift, no floor raise from the trench's sides.
     const allCuts = input.cuts ?? [], measured = allCuts.length ? (x: number, y: number) => allCuts.some(c => x >= c.bbox[0] && x <= c.bbox[2] && y >= c.bbox[1] && y <= c.bbox[3]) : undefined;
@@ -553,7 +556,7 @@ export function buildCell(input: CellInput): BuiltCell {
     // Under the bridge decks (railBridge.ts): water, the streets and the tracks at grade, where no pier may stand.
     const streetsUnder = ways.filter(w => w.tags.highway && !isBridgeWay(w) && !(w.tags.tunnel && w.tags.tunnel !== 'no')).map(w => ({ points: w.points, half: streetHalfWidth(w.section.bands) }));
     const under = input.railBridges === false ? undefined : underTest(overWater, streetsUnder, (input.railsAround ?? input.rails).filter(w => !w.bridge).map(w => w.points));
-    const r = railMeshes({ ways: input.rails, inCell, height: onLand, atGrade: crossingTest(atGrade), far: lod === 1, ...(under && profile ? { under } : {}), ...(profile ? { levels: profile.levels, ...(measured ? { measured } : {}), ...(input.railPlatforms?.length ? { onPlatform: platformTest(input.railPlatforms, PLATFORM_EDGE_M) } : {}) } : { floor: false }), ...(input.railLegacy ? { legacy: true } : {}) });
+    const r = railMeshes({ ways: input.rails, inCell, height: onLand, atGrade: onStreet ? (a: Vec2, b: Vec2) => crossing(a, b) || onStreet(a, b) : crossing, far: lod === 1, ...(under && profile ? { under } : {}), ...(profile ? { levels: profile.levels, ...(measured ? { measured } : {}), ...(input.railPlatforms?.length ? { onPlatform: platformTest(input.railPlatforms, PLATFORM_EDGE_M) } : {}) } : { floor: false }), ...(input.railLegacy ? { legacy: true } : {}) });
     add('ballast', r.ballast); add('track', r.track); add('deckBody', r.slab); add('deckBody', r.structure);
     // Platforms beside heavy-rail track, at the rails' level (railTracks.ts platformMeshes).
     if (profile && input.railPlatforms?.length) { const pm = platformMeshes(input.railPlatforms, input.rails, profile.levels, onLand, inCell); add('deckBody', pm.mesh); r.stats.platforms = pm.stats; }
