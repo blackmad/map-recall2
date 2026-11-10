@@ -33,9 +33,10 @@ Method
     ends). stops-short = blank only at 80 %: a setback, gable or mansard may stand above the eaves, reported apart from
     blank. drawn = otherwise. Landmark placement is checked: the model's xy centre against the footprints it covers.
   --wall <edge|deg>  (scripts/house-preview/preview.ts) frames a row on the same edge index.
-  Self-check: pand 0363100012116526 (Nassaukade corner, chunk-face-clercq-236681) must come out with an uncovered
-    Nassaukade wall, and pand 0363100012236681 (De Clercqstraat, the model's own face) must come out covered. Otherwise
-    the script exits 1 and the numbers are not trusted.
+  Self-check: pand 0363100012116526 (Nassaukade corner) must come out with its Nassaukade wall drawn (it was the H2b
+    blank slab under chunk-face-clercq-236681 until H7 r3/r4 drew that face, 2026-11-10; a regression to blank fails), and
+    pand 0363100012236681 (De Clercqstraat, the model's own face) must come out covered. Otherwise the script exits 1 and
+    the numbers are not trusted.
 
 Flags
   --min-len <m>       minimum wall length (default 4)
@@ -463,8 +464,8 @@ async function main() {
     const ok = ws.length > 0 && ws.every(w => w.drawn === expectDrawn);
     return { pand, street: street.source, expectDrawn, walls: ws.map(w => ({ street: w.street, lengthM: w.lengthM, cls: w.cls, heights: w.heights, midLngLat: w.midLngLat, heightM: w.heightM })), ok };
   };
-  // The known positive (H2b): a Nassaukade corner face that is a bare slab, so not drawn. The model's own face: drawn.
-  const selfCheck = [check('0363100012116526', /Nassaukade/, false), check('0363100012236681', /Clercq/, true)];
+  // The H2b positive, fixed by H7 r3/r4 (clercq-236681 now draws the Nassaukade face): it must stay drawn. The model's own face: drawn.
+  const selfCheck = [check('0363100012116526', /Nassaukade/, true), check('0363100012236681', /Clercq/, true)];
   for (const c of selfCheck) console.log(`self-check ${c.pand} ${c.street} expect ${c.expectDrawn ? 'drawn' : 'blank'}: ${c.ok ? 'PASS' : 'FAIL'} ${JSON.stringify(c.walls)}`);
 
   // Per buurt, centre and inner ring first.
