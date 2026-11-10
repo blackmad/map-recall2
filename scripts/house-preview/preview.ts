@@ -23,6 +23,7 @@ import { specDesignOn, type HouseSpecView } from '../../src/canalRecall/houseSpe
 import type { HouseSpec } from '../../src/canalRecall/houseSpec/spec.ts';
 import { lngLatToRd, rdToLngLat } from '../../src/canalRecall/facade/rdNew.ts';
 import { rasterise, type RasterAtlas, type RasterImage, type RasterMesh, type LitShading, type Vec3 } from '../../src/canalRecall/houseSpec/softRaster.ts';
+import { wallRefitOf, withWallRefit } from '../../src/canalRecall/houseSpec/wallRefit.ts';
 import { previewVerdict, storeyLines, blurRgb, PRE_BLUR_PX, type PreviewVerdict } from '../../src/canalRecall/houseSpec/previewVerdict.ts';
 import { cityLitShading } from '../../src/canalRecall/houseSpec/previewLight.ts';
 import { measureFacade, openingSplitFromArgs, MEASURE_PROFILES, profileName, type FacadeImage, type FacadeMeasurement } from '../../src/canalRecall/buildingRecipe/measureFacade.ts';
@@ -557,6 +558,17 @@ function threeqView(frame: ReturnType<typeof wallFrame>, top: number, groundZ: n
   return { kind: 'perspective' as const, eye: [mid[0] + dx * dist, mid[1] + dy * dist, groundZ + top * 0.9] as Vec3, target: mid, fovDeg: THREEQ_FOV_DEG, width: 640, height: 800 };
 }
 
+/** The block-face intent that lists the pand (scripts/block-face/faces/<face>/pands/<pand>/), or null. */
+function faceIntentOf(pandId: string): { wallRefit?: Record<string, { hex: string; source: string; crop?: string }> } | null {
+  const faces = path.join(REPO_ROOT, 'scripts/block-face/faces');
+  for (const face of fs.existsSync(faces) ? fs.readdirSync(faces).sort() : []) {
+    if (!fs.existsSync(path.join(faces, face, 'pands', bare(pandId)))) continue;
+    const f = path.join(faces, face, 'intent.json');
+    if (fs.existsSync(f)) return readJson(f);
+  }
+  return null;
+}
+
 type Finish = { pandId: string; route: Route; why: string; args: Args; out: string; files: string[]; front: { width: number; height: number; rgba: Uint8ClampedArray }; top: number; eaves: number; lines: number[]; frameLen: number; wall: FrontWall; label: string; measure: Record<string, unknown>; tm: Timer; shader?: string };
 async function finish(f: Finish): Promise<PreviewResult> {
   const { args, front, top, eaves, lines, wall, tm } = f;
@@ -568,7 +580,10 @@ async function finish(f: Finish): Promise<PreviewResult> {
     const photo = await referencePhoto(f.pandId, wall, args.ppm, { crops: args.crops ?? process.env.HOUSE_CROPS_ARCHIVE, preferCrop: args.preferCrop, strip: args.strip });
     if (!photo) measure.photo = { missing: `no staging/pand-reference/${bare(f.pandId)}/front.jpg, no block-face strip lists the pand and no house:crops crop (--crops <archive>/pand-crops/${bare(f.pandId)}/front.jpg; run npm run house:crops -- --buurt <code> --pand ${bare(f.pandId)})` };
     else {
-      const photoM = measureBlurred(photo.image, { ...mbox, v1: Math.min(mbox.v1, photo.image.topM) }, lines.filter(l => l <= photo.image.topM));
+      // A face intent's re-fitted wall (wallRefit) replaces the strip's wall reading; a pand-reference crop is never overridden.
+      const refit = /^pand-reference/.test(photo.kind) ? null : wallRefitOf(faceIntentOf(f.pandId), f.pandId);
+      const photoM = withWallRefit(measureBlurred(photo.image, { ...mbox, v1: Math.min(mbox.v1, photo.image.topM) }, lines.filter(l => l <= photo.image.topM)), refit);
+      if (refit) measure.wallRefit = refit;
       const verdict = previewVerdict(renderM, photoM);
       measure.photo = { file: path.relative(REPO_ROOT, photo.file), kind: photo.kind, measure: summary(photoM) };
       measure.verdict = verdict;
