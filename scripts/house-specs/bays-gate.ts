@@ -1,6 +1,8 @@
 // The H1b bay gate (#349): for the #348 sample, drawn upper-storey window columns before (no spec) and after (spec
 // bays through frontageLayoutScale) against the hand-grid photo counts in bays-gate-photo.json.
 //   npx tsx scripts/house-specs/bays-gate.ts [--old-rule]    --old-rule replays the pre-H1b cell rounding (validation)
+//   --dir=staging/house-specs reads the staged extract (default: the published house-specs)
+//   ODD_AXIS_CELLS=0 npx tsx scripts/house-specs/bays-gate.ts   the H1b whole-cell fit (the H1c 'before')
 // Drawn columns = layoutWall's cells x the cell's axes on the pand's street front (reference.json facts.footprint
 // .frontWidthM, the longest wall on the nearest road), with the building's own jittered bay scale, as the mesher does.
 import '../world/useBrowserMath.js';
@@ -8,18 +10,19 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { EXTRACT, gameChain, loadTile, ROOT } from '../world/pipeline.ts';
 import { meshBuildingFor } from '../../src/canalRecall/threeBuildingFeatures.ts';
-import { frontageLayoutScale } from '../../src/canalRecall/streetFacadeRendering.ts';
+import { axisUnitPlan, frontageLayoutScale } from '../../src/canalRecall/streetFacadeRendering.ts';
 import { layoutWall } from '../../src/canalRecall/facadeLayout.ts';
 import { STYLE_DIMS } from '../../src/canalRecall/facadeCells.ts';
 
-export const HELP = 'bays-gate [--old-rule]: before/after drawn window columns vs hand-grid photo counts for the #348 sample';
+export const HELP = 'bays-gate [--old-rule] [--dir=staging/house-specs] (ODD_AXIS_CELLS=0: whole cells): before/after drawn window columns vs hand-grid photo counts for the #348 sample';
 if (process.argv.includes('--help')) { console.log(HELP); process.exit(0); }
 const oldRule = process.argv.includes('--old-rule');
 const hash01 = (s: string) => { let h = 2166136261; for (let i = 0; i < s.length; i++) { h ^= s.charCodeAt(i); h = Math.imul(h, 16777619); } return (h >>> 0) / 4294967296; };
 const photo: Record<string, number | null> = JSON.parse(fs.readFileSync(path.join(ROOT, 'scripts/house-specs/bays-gate-photo.json'), 'utf8')).photo;
-process.env.HOUSE_SPECS = '1'; process.env.HOUSE_SPECS_DIR = 'house-specs';
+const dir = process.argv.find(a => a.startsWith('--dir='))?.slice(6) ?? 'house-specs';
+process.env.HOUSE_SPECS = '1'; process.env.HOUSE_SPECS_DIR = dir;
 const chain = gameChain();
-const base = path.join(EXTRACT, 'house-specs', '14');
+const base = path.join(EXTRACT, dir, '14');
 const rows: any[] = [];
 for (const x of fs.readdirSync(base)) for (const y of fs.readdirSync(path.join(base, x))) for (const r of await loadTile(`${x}/${y.replace('.json.gz', '')}`, chain)) {
   const pand = String(r.raw.properties.id).slice(-16);
@@ -35,7 +38,11 @@ for (const x of fs.readdirSync(base)) for (const y of fs.readdirSync(path.join(b
     if (oldRule) {
       const cells = Math.max(1, Math.round(view.bays / axes));
       after = draw({ ...own, bay: Math.min(1.5, Math.max(0.7, front / cells / nominal)) });
-    } else after = draw(frontageLayoutScale(undefined, own, mb.style, front, { bays: view.bays, axesPerCell: axes }));
+    } else {
+      // H1c: an odd count on a two-window cell draws axis units, one window column each (axisUnitPlan).
+      const units = axisUnitPlan({ bays: view.bays, axesPerCell: axes }, mb.openings, mb.style, front, own);
+      after = units ? layoutWall(mb.style, front, 12, 0.3, true, units.scale)!.bays : draw(frontageLayoutScale(undefined, own, mb.style, front, { bays: view.bays, axesPerCell: axes }));
+    }
   }
   rows.push({ pand, photo: photo[pand], bays: view?.bays ?? null, axes, front, before: draw(own), after });
 }
