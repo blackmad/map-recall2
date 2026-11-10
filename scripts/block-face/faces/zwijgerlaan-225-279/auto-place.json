@@ -1,0 +1,818 @@
+{
+ "face": "zwijgerlaan-225-279",
+ "street": "Willem de Zwijgerlaan",
+ "library": "landlust",
+ "stripDate": "2024-12-17",
+ "seconds": 36.94,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [
+  {
+   "face": "zwijgerlaan-225-279-r1",
+   "pands": [
+    "0363100012109779",
+    "0363100012133739"
+   ],
+   "passed": true,
+   "triangles": 5401
+  },
+  {
+   "face": "zwijgerlaan-225-279-r2",
+   "pands": [
+    "0363100012151482"
+   ],
+   "passed": true,
+   "triangles": 2774
+  }
+ ],
+ "pands": [
+  {
+   "pandId": "0363100012126078",
+   "address": "Willem de Zwijgerlaan 225",
+   "builtYear": 1935,
+   "widthM": 6.4,
+   "eavesM": 13.66,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 0.2,
+    "toM": 2.26,
+    "depthM": 0.27,
+    "centre": 0.192
+   },
+   "strip": {
+    "wall": "#3e2f1d",
+    "wallRaw": "#403222",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 754,
+     "confidence": 0.19,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 4,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": "right",
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 12,
+       "widthM": 1.43,
+       "centre": 0.46
+      },
+      {
+       "atM": 11.7,
+       "widthM": 0.97,
+       "centre": 0.18
+      },
+      {
+       "atM": 6.6,
+       "widthM": 1.07,
+       "centre": 0.58
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.07
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "no front on the strip: sky over the roof in 32 % of columns (< 75 %): the strip shows a nearer wall, fence or tree, not the front",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012071966",
+   "address": "Willem de Zwijgerlaan 227",
+   "builtYear": 1935,
+   "widthM": 12.8,
+   "eavesM": 13.57,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#473321",
+    "wallRaw": "#463524",
+    "skyline": {
+     "eavesM": 15.13,
+     "eavesRow": 149,
+     "confidence": 0.61,
+     "crown": {
+      "widthM": 1.57,
+      "riseM": 3.73,
+      "topWidthM": 0.9,
+      "centre": 0.84
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 12.22,
+       "widthM": 5.13,
+       "centre": 0.43
+      },
+      {
+       "atM": 11.93,
+       "widthM": 1.02,
+       "centre": 0.88
+      },
+      {
+       "atM": 9.68,
+       "widthM": 1.1,
+       "centre": 0.94
+      },
+      {
+       "atM": 6.67,
+       "widthM": 1.07,
+       "centre": 0.19
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.03
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best landlust-1935-slot-block-four scores 0.69 < 0.7 (strip cornice 15.13 m vs the type's 12.9 m)",
+   "best": {
+    "type": "landlust-1935-slot-block-four",
+    "score": 0.69,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 15.13 m vs the type's 12.9 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012109779",
+   "address": "Willem de Zwijgerlaan 231",
+   "builtYear": 1935,
+   "widthM": 12.79,
+   "eavesM": 13.5,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#513b27",
+    "wallRaw": "#4e3d2b",
+    "skyline": {
+     "eavesM": 13.65,
+     "eavesRow": 208,
+     "confidence": 0.89,
+     "crown": {
+      "widthM": 3.88,
+      "riseM": 4.8,
+      "topWidthM": 0.1,
+      "centre": 0.16
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 12.45,
+       "widthM": 5.85,
+       "centre": 0.54
+      },
+      {
+       "atM": 12,
+       "widthM": 1.2,
+       "centre": 0.64
+      },
+      {
+       "atM": 9.9,
+       "widthM": 0.88,
+       "centre": 0.04
+      },
+      {
+       "atM": 6.9,
+       "widthM": 1.2,
+       "centre": 0.18
+      },
+      {
+       "atM": 6.6,
+       "widthM": 1.13,
+       "centre": 0.06
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.03
+   },
+   "status": "placed",
+   "type": "landlust-1935-slot-block-four",
+   "score": 0.85,
+   "runnerUp": {
+    "typeId": "landlust-1924-bestevaer-half-block",
+    "score": 0
+   },
+   "placement": {
+    "type": "landlust-1935-slot-block-four",
+    "measuredPalette": {
+     "brick": "#513b27",
+     "evidence": "strip 2024-12-17 span 768-1280: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "door unread",
+    "crown zinc-dormers (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012109779",
+    "ncc": 0.351,
+    "nccRaw": 0.351,
+    "shiftM": [
+     0.05,
+     0.25
+    ],
+    "usable": 0.92,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.24 mean 0.23 vs photo 0.38",
+     "window shape tall vs photo square",
+     "columns 6 vs photo 3"
+    ],
+    "wall": {
+     "photo": "#513b27",
+     "model": "#725337",
+     "dL": 0.096
+    },
+    "glazing": {
+     "photo": 0.38,
+     "model": 0.23
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.387
+   },
+   "challengers": {
+    "landlust-1935-slot-block-four": 0.351,
+    "landlust-1924-bestevaer-half-block": -0.016,
+    "landlust-1924-bestevaer-half-block~m": -0.015,
+    "landlust-1924-bestevaer-stair-block": 0.041,
+    "landlust-1924-bestevaer-stair-block~m": 0.048,
+    "landlust-1934-tile-pair": 0.168,
+    "landlust-1934-tile-pair~m": 0.169,
+    "landlust-1935-slot-block-four~m": 0.351,
+    "landlust-1937-erker-attic": 0.114,
+    "landlust-1937-erker-attic~m": 0.112
+   }
+  },
+  {
+   "pandId": "0363100012133739",
+   "address": "Willem de Zwijgerlaan 235",
+   "builtYear": 1935,
+   "widthM": 12.77,
+   "eavesM": 12.89,
+   "storeys3dbag": 0,
+   "bagBay": null,
+   "strip": {
+    "wall": "#4e3a27",
+    "wallRaw": "#4f3e2b",
+    "skyline": {
+     "eavesM": 13.8,
+     "eavesRow": 202,
+     "confidence": 0.95,
+     "crown": {
+      "widthM": 5.17,
+      "riseM": 4.65,
+      "topWidthM": 0.3,
+      "centre": 0.22
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 12,
+       "widthM": 3,
+       "centre": 0.67
+      },
+      {
+       "atM": 11.63,
+       "widthM": 1.27,
+       "centre": 0.63
+      },
+      {
+       "atM": 6.45,
+       "widthM": 1.23,
+       "centre": 0.05
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.03
+   },
+   "status": "placed",
+   "type": "landlust-1935-slot-block-four",
+   "score": 0.82,
+   "placement": {
+    "type": "landlust-1935-slot-block-four",
+    "measuredPalette": {
+     "brick": "#4e3a27",
+     "evidence": "strip 2024-12-17 span 1280-1791: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "mirror": true
+   },
+   "notes": [
+    "crown zinc-dormers (type default)",
+    "photo decides: landlust-1935-slot-block-four~m edge NCC 0.402 vs landlust-1935-slot-block-four 0.301"
+   ],
+   "likeness": {
+    "pandId": "0363100012133739",
+    "ncc": 0.294,
+    "nccRaw": 0.294,
+    "shiftM": [
+     -0.05,
+     0.4
+    ],
+    "usable": 0.9,
+    "abstain": null,
+    "verdict": "WARN",
+    "reasons": [
+     "columns 6 vs photo 3",
+     "mask IoU 0.35 < 0.45"
+    ],
+    "wall": {
+     "photo": "#4e3a27",
+     "model": "#6f5338",
+     "dL": 0.098
+    },
+    "glazing": {
+     "photo": 0.17,
+     "model": 0.23
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.35
+   },
+   "challengers": {
+    "landlust-1935-slot-block-four": 0.301,
+    "landlust-1924-bestevaer-half-block": -0.033,
+    "landlust-1924-bestevaer-half-block~m": -0.04,
+    "landlust-1924-bestevaer-stair-block": 0.026,
+    "landlust-1924-bestevaer-stair-block~m": 0.042,
+    "landlust-1934-tile-pair": 0.16,
+    "landlust-1934-tile-pair~m": 0.171,
+    "landlust-1935-slot-block-four~m": 0.402,
+    "landlust-1937-erker-attic": 0.102,
+    "landlust-1937-erker-attic~m": 0.124
+   }
+  },
+  {
+   "pandId": "0363100012088035",
+   "address": "Willem de Zwijgerlaan 239",
+   "builtYear": 1935,
+   "widthM": 12.81,
+   "eavesM": 13.04,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#4e3b28",
+    "wallRaw": "#4b3c2b",
+    "skyline": {
+     "eavesM": 13.85,
+     "eavesRow": 200,
+     "confidence": 0.9,
+     "crown": {
+      "widthM": 3.13,
+      "riseM": 1.43,
+      "topWidthM": 3,
+      "centre": 0.87
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 9,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 1,
+     "bayCentre": 0.94,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 12.15,
+       "widthM": 1.9,
+       "centre": 0.92
+      },
+      {
+       "atM": 11.85,
+       "widthM": 1.27,
+       "centre": 0.95
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.06
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best landlust-1935-slot-block-four scores 0.62 < 0.7 (strip cornice 13.85 m vs the type's 12.9 m; strip columns 9 vs 3 bays)",
+   "best": {
+    "type": "landlust-1935-slot-block-four",
+    "score": 0.62,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "strip cornice 13.85 m vs the type's 12.9 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 9 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012143360",
+   "address": "Willem de Zwijgerlaan 243",
+   "builtYear": 1935,
+   "widthM": 12.82,
+   "eavesM": 13.01,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#4e3a28",
+    "wallRaw": "#483a29",
+    "skyline": {
+     "eavesM": 15.07,
+     "eavesRow": 151,
+     "confidence": 0.73,
+     "crown": {
+      "widthM": 1.98,
+      "riseM": 2.2,
+      "topWidthM": 0.65,
+      "centre": 0.55
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 10,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 1.1,
+     "bayCentre": 0.95,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 12.13,
+       "widthM": 1.98,
+       "centre": 0.92
+      },
+      {
+       "atM": 9.57,
+       "widthM": 1.1,
+       "centre": 0.13
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.06
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best landlust-1935-slot-block-four scores 0.46 < 0.7 (strip cornice 15.07 m vs the type's 12.9 m; strip columns 10 vs 3 bays)",
+   "best": {
+    "type": "landlust-1935-slot-block-four",
+    "score": 0.46,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 15.07 m vs the type's 12.9 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 10 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012151482",
+   "address": "Willem de Zwijgerlaan 247",
+   "builtYear": 1935,
+   "widthM": 12.81,
+   "eavesM": 13,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#4d3926",
+    "wallRaw": "#4b3b29",
+    "skyline": {
+     "eavesM": 15.85,
+     "eavesRow": 120,
+     "confidence": 0.56,
+     "crown": {
+      "widthM": 3.58,
+      "riseM": 3,
+      "topWidthM": 1.93,
+      "centre": 0.84
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 1.05,
+     "bayCentre": 0.06,
+     "balconies": true,
+     "why": "dark open axis 0.65 m at 0.56 (light 0): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.65,
+       "centre": 0.56,
+       "light": 0
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 12.18,
+       "widthM": 1.93,
+       "centre": 0.08
+      },
+      {
+       "atM": 11.72,
+       "widthM": 1.23,
+       "centre": 0.63
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.06
+   },
+   "status": "placed",
+   "type": "landlust-1935-slot-block-four",
+   "score": 1,
+   "runnerUp": {
+    "typeId": "landlust-1924-bestevaer-half-block",
+    "score": 0
+   },
+   "placement": {
+    "type": "landlust-1935-slot-block-four",
+    "measuredPalette": {
+     "brick": "#4d3926",
+     "evidence": "strip 2024-12-17 span 2816-3328: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "door unread",
+    "crown zinc-dormers (type default)",
+    "lone pand: a stair block on its own: landlust-1935-slot-block-four opts in to one-house faces from 5 m (frontage 12.81 m)"
+   ],
+   "likeness": {
+    "pandId": "0363100012151482",
+    "ncc": 0.309,
+    "nccRaw": 0.309,
+    "shiftM": [
+     0.05,
+     0.2
+    ],
+    "usable": 0.85,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.16 mean 0.22 vs photo 0.10",
+     "columns 6 vs photo 8"
+    ],
+    "wall": {
+     "photo": "#4b3825",
+     "model": "#6e5236",
+     "dL": 0.102
+    },
+    "glazing": {
+     "photo": 0.1,
+     "model": 0.22
+    },
+    "columns": {
+     "photo": 8,
+     "model": 3
+    },
+    "iou": 0.47
+   },
+   "challengers": {
+    "landlust-1935-slot-block-four": 0.309,
+    "landlust-1924-bestevaer-half-block": -0.006,
+    "landlust-1924-bestevaer-half-block~m": -0.017,
+    "landlust-1924-bestevaer-stair-block": 0.044,
+    "landlust-1924-bestevaer-stair-block~m": 0.058,
+    "landlust-1935-slot-block-four~m": 0.31
+   }
+  },
+  {
+   "pandId": "0363100012072970",
+   "address": "Willem de Zwijgerlaan 251",
+   "builtYear": 1935,
+   "widthM": 12.8,
+   "eavesM": 13.01,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#4f3b28",
+    "wallRaw": "#4d3d2b",
+    "skyline": {
+     "eavesM": 15.25,
+     "eavesRow": 144,
+     "confidence": 0.72,
+     "crown": {
+      "widthM": 3.58,
+      "riseM": 2.4,
+      "topWidthM": 0.2,
+      "centre": 0.52
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0.95,
+     "bayCentre": 0.19,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 12.2,
+       "widthM": 1.93,
+       "centre": 0.08
+      },
+      {
+       "atM": 11.82,
+       "widthM": 1.25,
+       "centre": 0.36
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.04
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best landlust-1935-slot-block-four scores 0.69 < 0.7 (strip cornice 15.25 m vs the type's 12.9 m)",
+   "best": {
+    "type": "landlust-1935-slot-block-four",
+    "score": 0.69,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 15.25 m vs the type's 12.9 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

@@ -1,0 +1,673 @@
+{
+ "street": "Bloys van Treslongstraat",
+ "seed": "0363100012109065",
+ "members": [
+  "0363100012109065",
+  "0363100012113093",
+  "0363100012132461",
+  "0363100012065427"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "trimmed at 0363100012109065 (face continues: 124181 151165 151495 126346 114449)"
+  },
+  {
+   "side": "right",
+   "reason": "trimmed at 0363100012065427 (face continues: 146039 144404 114752 121629 068576 111921 105923 145888 114190 092940 116463 089234)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012062712",
+   "reason": "frontage 45.7 m from Bloys van Treslongstraat"
+  },
+  {
+   "pandId": "0363100012062858",
+   "reason": "frontage 36.9 m from Bloys van Treslongstraat"
+  },
+  {
+   "pandId": "0363100012062977",
+   "reason": "frontage 42.1 m from Bloys van Treslongstraat"
+  },
+  {
+   "pandId": "0363100012063321",
+   "reason": "frontage 42.9 m from Bloys van Treslongstraat"
+  },
+  {
+   "pandId": "0363100012064565",
+   "reason": "frontage 46.4 m from Bloys van Treslongstraat"
+  },
+  {
+   "pandId": "0363100012066272",
+   "reason": "frontage 58.2 m from Bloys van Treslongstraat"
+  },
+  {
+   "pandId": "0363100012067779",
+   "reason": "sightline to Bloys van Treslongstraat crosses 0363100012084818"
+  },
+  {
+   "pandId": "0363100012068152",
+   "reason": "frontage 62.6 m from Bloys van Treslongstraat"
+  },
+  {
+   "pandId": "0363100012070549",
+   "reason": "frontage 61.3 m from Bloys van Treslongstraat"
+  },
+  {
+   "pandId": "0363100012077081",
+   "reason": "frontage 45.9 m from Bloys van Treslongstraat"
+  },
+  {
+   "pandId": "0363100012084175",
+   "reason": "frontage 45.6 m from Bloys van Treslongstraat"
+  },
+  {
+   "pandId": "0363100012084818",
+   "reason": "sightline to Bloys van Treslongstraat crosses 0363100012124181"
+  },
+  {
+   "pandId": "0363100012089590",
+   "reason": "frontage 55.2 m from Bloys van Treslongstraat"
+  },
+  {
+   "pandId": "0363100012093157",
+   "reason": "frontage 56.2 m from Bloys van Treslongstraat"
+  },
+  {
+   "pandId": "0363100012093651",
+   "reason": "sightline to Bloys van Treslongstraat crosses 0363100012084818"
+  },
+  {
+   "pandId": "0363100012099109",
+   "reason": "frontage 46.5 m from Bloys van Treslongstraat"
+  },
+  {
+   "pandId": "0363100012099392",
+   "reason": "frontage 42.4 m from Bloys van Treslongstraat"
+  },
+  {
+   "pandId": "0363100012100410",
+   "reason": "frontage 46.0 m from Bloys van Treslongstraat"
+  },
+  {
+   "pandId": "0363100012100440",
+   "reason": "frontage 46.4 m from Bloys van Treslongstraat"
+  },
+  {
+   "pandId": "0363100012103635",
+   "reason": "frontage 56.9 m from Bloys van Treslongstraat"
+  },
+  {
+   "pandId": "0363100012104480",
+   "reason": "frontage 58.1 m from Bloys van Treslongstraat"
+  },
+  {
+   "pandId": "0363100012104481",
+   "reason": "frontage 58.2 m from Bloys van Treslongstraat"
+  },
+  {
+   "pandId": "0363100012105138",
+   "reason": "frontage 91.6 m from Bloys van Treslongstraat"
+  },
+  {
+   "pandId": "0363100012106765",
+   "reason": "frontage 51.5 m from Bloys van Treslongstraat"
+  },
+  {
+   "pandId": "0363100012110462",
+   "reason": "frontage 45.8 m from Bloys van Treslongstraat"
+  },
+  {
+   "pandId": "0363100012110829",
+   "reason": "frontage 39.9 m from Bloys van Treslongstraat"
+  },
+  {
+   "pandId": "0363100012110942",
+   "reason": "frontage 49.2 m from Bloys van Treslongstraat"
+  },
+  {
+   "pandId": "0363100012111802",
+   "reason": "frontage 50.1 m from Bloys van Treslongstraat"
+  },
+  {
+   "pandId": "0363100012112405",
+   "reason": "frontage 68.4 m from Bloys van Treslongstraat"
+  },
+  {
+   "pandId": "0363100012113418",
+   "reason": "frontage 91.4 m from Bloys van Treslongstraat"
+  },
+  {
+   "pandId": "0363100012114256",
+   "reason": "frontage 74.5 m from Bloys van Treslongstraat"
+  },
+  {
+   "pandId": "0363100012116545",
+   "reason": "frontage 91.8 m from Bloys van Treslongstraat"
+  },
+  {
+   "pandId": "0363100012118984",
+   "reason": "frontage 45.7 m from Bloys van Treslongstraat"
+  },
+  {
+   "pandId": "0363100012119704",
+   "reason": "frontage 35.6 m from Bloys van Treslongstraat"
+  },
+  {
+   "pandId": "0363100012121206",
+   "reason": "frontage 31.8 m from Bloys van Treslongstraat"
+  },
+  {
+   "pandId": "0363100012122456",
+   "reason": "frontage 58.0 m from Bloys van Treslongstraat"
+  },
+  {
+   "pandId": "0363100012122649",
+   "reason": "frontage 46.1 m from Bloys van Treslongstraat"
+  },
+  {
+   "pandId": "0363100012123145",
+   "reason": "frontage 42.9 m from Bloys van Treslongstraat"
+  },
+  {
+   "pandId": "0363100012123697",
+   "reason": "frontage 46.0 m from Bloys van Treslongstraat"
+  },
+  {
+   "pandId": "0363100012124911",
+   "reason": "frontage 45.6 m from Bloys van Treslongstraat"
+  },
+  {
+   "pandId": "0363100012125242",
+   "reason": "frontage 42.0 m from Bloys van Treslongstraat"
+  },
+  {
+   "pandId": "0363100012126499",
+   "reason": "sightline to Bloys van Treslongstraat crosses 0363100012105923"
+  },
+  {
+   "pandId": "0363100012126595",
+   "reason": "frontage 91.2 m from Bloys van Treslongstraat"
+  },
+  {
+   "pandId": "0363100012126811",
+   "reason": "sightline to Bloys van Treslongstraat crosses 0363100012114449"
+  },
+  {
+   "pandId": "0363100012127749",
+   "reason": "frontage 37.9 m from Bloys van Treslongstraat"
+  },
+  {
+   "pandId": "0363100012133359",
+   "reason": "frontage 31.8 m from Bloys van Treslongstraat"
+  },
+  {
+   "pandId": "0363100012140401",
+   "reason": "frontage 77.0 m from Bloys van Treslongstraat"
+  },
+  {
+   "pandId": "0363100012142535",
+   "reason": "frontage 47.9 m from Bloys van Treslongstraat"
+  },
+  {
+   "pandId": "0363100012142659",
+   "reason": "frontage 45.9 m from Bloys van Treslongstraat"
+  },
+  {
+   "pandId": "0363100012143344",
+   "reason": "frontage 39.7 m from Bloys van Treslongstraat"
+  },
+  {
+   "pandId": "0363100012145712",
+   "reason": "frontage 62.3 m from Bloys van Treslongstraat"
+  },
+  {
+   "pandId": "0363100012148081",
+   "reason": "frontage 30.8 m from Bloys van Treslongstraat"
+  },
+  {
+   "pandId": "0363100012148568",
+   "reason": "frontage 44.0 m from Bloys van Treslongstraat"
+  },
+  {
+   "pandId": "0363100012148775",
+   "reason": "sightline to Bloys van Treslongstraat crosses 0363100012126346"
+  },
+  {
+   "pandId": "0363100012149193",
+   "reason": "frontage 58.3 m from Bloys van Treslongstraat"
+  },
+  {
+   "pandId": "0363100012153896",
+   "reason": "frontage 34.7 m from Bloys van Treslongstraat"
+  },
+  {
+   "pandId": "0363100012183702",
+   "reason": "frontage 30.7 m from Bloys van Treslongstraat"
+  },
+  {
+   "pandId": "0363100012183939",
+   "reason": "frontage 31.9 m from Bloys van Treslongstraat"
+  },
+  {
+   "pandId": "0363100012185080",
+   "reason": "frontage 34.6 m from Bloys van Treslongstraat"
+  },
+  {
+   "pandId": "0363100012186303",
+   "reason": "frontage 53.5 m from Bloys van Treslongstraat"
+  },
+  {
+   "pandId": "0363100012187380",
+   "reason": "frontage 47.8 m from Bloys van Treslongstraat"
+  },
+  {
+   "pandId": "0363100012188265",
+   "reason": "frontage 56.0 m from Bloys van Treslongstraat"
+  },
+  {
+   "pandId": "0363100012188883",
+   "reason": "frontage 66.0 m from Bloys van Treslongstraat"
+  },
+  {
+   "pandId": "0363100012189979",
+   "reason": "frontage 35.8 m from Bloys van Treslongstraat"
+  },
+  {
+   "pandId": "0363100012189980",
+   "reason": "frontage 35.8 m from Bloys van Treslongstraat"
+  },
+  {
+   "pandId": "0363100012190176",
+   "reason": "frontage 31.9 m from Bloys van Treslongstraat"
+  },
+  {
+   "pandId": "0363100012191473",
+   "reason": "frontage 35.6 m from Bloys van Treslongstraat"
+  },
+  {
+   "pandId": "0363100012193333",
+   "reason": "frontage 61.3 m from Bloys van Treslongstraat"
+  },
+  {
+   "pandId": "0363100012195399",
+   "reason": "frontage 66.4 m from Bloys van Treslongstraat"
+  },
+  {
+   "pandId": "0363100012195964",
+   "reason": "frontage 66.4 m from Bloys van Treslongstraat"
+  },
+  {
+   "pandId": "0363100012196103",
+   "reason": "frontage 35.4 m from Bloys van Treslongstraat"
+  },
+  {
+   "pandId": "0363100012196363",
+   "reason": "frontage 38.3 m from Bloys van Treslongstraat"
+  },
+  {
+   "pandId": "0363100012196488",
+   "reason": "frontage 34.2 m from Bloys van Treslongstraat"
+  },
+  {
+   "pandId": "0363100012197357",
+   "reason": "frontage 66.5 m from Bloys van Treslongstraat"
+  },
+  {
+   "pandId": "0363100012198537",
+   "reason": "frontage 64.0 m from Bloys van Treslongstraat"
+  },
+  {
+   "pandId": "0363100012200689",
+   "reason": "frontage 64.3 m from Bloys van Treslongstraat"
+  },
+  {
+   "pandId": "0363100012201179",
+   "reason": "sightline to Bloys van Treslongstraat crosses 0363100012151495"
+  },
+  {
+   "pandId": "0363100012203156",
+   "reason": "frontage 34.4 m from Bloys van Treslongstraat"
+  },
+  {
+   "pandId": "0363100012203165",
+   "reason": "frontage 35.6 m from Bloys van Treslongstraat"
+  },
+  {
+   "pandId": "0363100012203414",
+   "reason": "sightline to Bloys van Treslongstraat crosses 0363100012114752"
+  },
+  {
+   "pandId": "0363100012203488",
+   "reason": "sightline to Bloys van Treslongstraat crosses 0363100012151495"
+  },
+  {
+   "pandId": "0363100012203716",
+   "reason": "frontage 65.0 m from Bloys van Treslongstraat"
+  },
+  {
+   "pandId": "0363100012204309",
+   "reason": "sightline to Bloys van Treslongstraat crosses 0363100012151495"
+  },
+  {
+   "pandId": "0363100012204836",
+   "reason": "frontage 66.9 m from Bloys van Treslongstraat"
+  },
+  {
+   "pandId": "0363100012204953",
+   "reason": "sightline to Bloys van Treslongstraat crosses 0363100012116463"
+  },
+  {
+   "pandId": "0363100012204954",
+   "reason": "sightline to Bloys van Treslongstraat crosses 0363100012089234"
+  },
+  {
+   "pandId": "0363100012204957",
+   "reason": "sightline to Bloys van Treslongstraat crosses 0363100012092940"
+  },
+  {
+   "pandId": "0363100012205735",
+   "reason": "frontage 66.7 m from Bloys van Treslongstraat"
+  },
+  {
+   "pandId": "0363100012207350",
+   "reason": "frontage 33.2 m from Bloys van Treslongstraat"
+  },
+  {
+   "pandId": "0363100012207755",
+   "reason": "frontage 66.6 m from Bloys van Treslongstraat"
+  },
+  {
+   "pandId": "0363100012207906",
+   "reason": "frontage 49.0 m from Bloys van Treslongstraat"
+  },
+  {
+   "pandId": "0363100012209025",
+   "reason": "frontage 66.9 m from Bloys van Treslongstraat"
+  },
+  {
+   "pandId": "0363100012209165",
+   "reason": "frontage 47.0 m from Bloys van Treslongstraat"
+  },
+  {
+   "pandId": "0363100012210599",
+   "reason": "sightline to Bloys van Treslongstraat crosses 0363100012151165"
+  },
+  {
+   "pandId": "0363100012211769",
+   "reason": "frontage 40.5 m from Bloys van Treslongstraat"
+  },
+  {
+   "pandId": "0363100012211915",
+   "reason": "frontage 35.4 m from Bloys van Treslongstraat"
+  },
+  {
+   "pandId": "0363100012212042",
+   "reason": "frontage 38.3 m from Bloys van Treslongstraat"
+  },
+  {
+   "pandId": "0363100012212722",
+   "reason": "frontage 34.2 m from Bloys van Treslongstraat"
+  },
+  {
+   "pandId": "0363100012213665",
+   "reason": "frontage 37.8 m from Bloys van Treslongstraat"
+  },
+  {
+   "pandId": "0363100012213896",
+   "reason": "frontage 35.7 m from Bloys van Treslongstraat"
+  },
+  {
+   "pandId": "0363100012214006",
+   "reason": "no frontage on Bloys van Treslongstraat: No footprint edge faces Bloys van Treslongstraat"
+  },
+  {
+   "pandId": "0363100012214007",
+   "reason": "frontage 65.7 m from Bloys van Treslongstraat"
+  },
+  {
+   "pandId": "0363100012215690",
+   "reason": "frontage 44.4 m from Bloys van Treslongstraat"
+  },
+  {
+   "pandId": "0363100012215944",
+   "reason": "frontage 66.8 m from Bloys van Treslongstraat"
+  },
+  {
+   "pandId": "0363100012217586",
+   "reason": "sightline to Bloys van Treslongstraat crosses 0363100012114190"
+  },
+  {
+   "pandId": "0363100012218144",
+   "reason": "frontage 67.0 m from Bloys van Treslongstraat"
+  },
+  {
+   "pandId": "0363100012218990",
+   "reason": "frontage 39.8 m from Bloys van Treslongstraat"
+  },
+  {
+   "pandId": "0363100012219258",
+   "reason": "frontage 42.6 m from Bloys van Treslongstraat"
+  },
+  {
+   "pandId": "0363100012221100",
+   "reason": "frontage 32.1 m from Bloys van Treslongstraat"
+  },
+  {
+   "pandId": "0363100012222568",
+   "reason": "sightline to Bloys van Treslongstraat crosses 0363100012116463"
+  },
+  {
+   "pandId": "0363100012222569",
+   "reason": "sightline to Bloys van Treslongstraat crosses 0363100012089234"
+  },
+  {
+   "pandId": "0363100012222572",
+   "reason": "sightline to Bloys van Treslongstraat crosses 0363100012092940"
+  },
+  {
+   "pandId": "0363100012226035",
+   "reason": "frontage 66.9 m from Bloys van Treslongstraat"
+  },
+  {
+   "pandId": "0363100012226036",
+   "reason": "frontage 68.0 m from Bloys van Treslongstraat"
+  },
+  {
+   "pandId": "0363100012226688",
+   "reason": "frontage 49.8 m from Bloys van Treslongstraat"
+  },
+  {
+   "pandId": "0363100012227870",
+   "reason": "sightline to Bloys van Treslongstraat crosses 0363100012114190"
+  },
+  {
+   "pandId": "0363100012227871",
+   "reason": "sightline to Bloys van Treslongstraat crosses 0363100012068576"
+  },
+  {
+   "pandId": "0363100012227939",
+   "reason": "sightline to Bloys van Treslongstraat crosses 0363100012111921"
+  },
+  {
+   "pandId": "0363100012227940",
+   "reason": "sightline to Bloys van Treslongstraat crosses 0363100012105923"
+  },
+  {
+   "pandId": "0363100012227941",
+   "reason": "sightline to Bloys van Treslongstraat crosses 0363100012145888"
+  },
+  {
+   "pandId": "0363100012227942",
+   "reason": "sightline to Bloys van Treslongstraat crosses 0363100012114752"
+  },
+  {
+   "pandId": "0363100012227943",
+   "reason": "sightline to Bloys van Treslongstraat crosses 0363100012121629"
+  },
+  {
+   "pandId": "0363100012228802",
+   "reason": "frontage 58.6 m from Bloys van Treslongstraat"
+  },
+  {
+   "pandId": "0363100012229159",
+   "reason": "frontage 31.7 m from Bloys van Treslongstraat"
+  },
+  {
+   "pandId": "0363100012229262",
+   "reason": "frontage 40.3 m from Bloys van Treslongstraat"
+  },
+  {
+   "pandId": "0363100012229274",
+   "reason": "frontage 38.7 m from Bloys van Treslongstraat"
+  },
+  {
+   "pandId": "0363100012231254",
+   "reason": "sightline to Bloys van Treslongstraat crosses 0363100012145888"
+  },
+  {
+   "pandId": "0363100012232028",
+   "reason": "frontage 40.2 m from Bloys van Treslongstraat"
+  },
+  {
+   "pandId": "0363100012232544",
+   "reason": "frontage 32.1 m from Bloys van Treslongstraat"
+  },
+  {
+   "pandId": "0363100012232625",
+   "reason": "frontage 35.8 m from Bloys van Treslongstraat"
+  },
+  {
+   "pandId": "0363100012232829",
+   "reason": "frontage 35.4 m from Bloys van Treslongstraat"
+  },
+  {
+   "pandId": "0363100012233990",
+   "reason": "frontage 49.7 m from Bloys van Treslongstraat"
+  },
+  {
+   "pandId": "0363100012234815",
+   "reason": "frontage 38.3 m from Bloys van Treslongstraat"
+  },
+  {
+   "pandId": "0363100012234955",
+   "reason": "frontage 40.4 m from Bloys van Treslongstraat"
+  },
+  {
+   "pandId": "0363100012235654",
+   "reason": "sightline to Bloys van Treslongstraat crosses 0363100012151495"
+  },
+  {
+   "pandId": "0363100012066487",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012077211",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012087231",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012087932",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012096558",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012099110",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012099817",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012103132",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012103630",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012109847",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012119334",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012124495",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012124502",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012142006",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012142349",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012143406",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012146057",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012109065",
+   "alongM": 0,
+   "widthM": 6.2,
+   "eavesM": 11.85,
+   "roofMaxM": 14.05,
+   "storeys3dbag": 4,
+   "builtYear": 1935,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012113093",
+   "alongM": 6.25,
+   "widthM": 6.3,
+   "eavesM": 11.74,
+   "roofMaxM": 13.92,
+   "storeys3dbag": 4,
+   "builtYear": 1935,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012132461",
+   "alongM": 12.55,
+   "widthM": 6.3,
+   "eavesM": 11.17,
+   "roofMaxM": 13.33,
+   "storeys3dbag": 4,
+   "builtYear": 1935,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012065427",
+   "alongM": 18.85,
+   "widthM": 6.3,
+   "eavesM": 11.18,
+   "roofMaxM": 13.4,
+   "storeys3dbag": 4,
+   "builtYear": 1935,
+   "uncertainty": []
+  }
+ ]
+}

@@ -1,0 +1,121 @@
+{
+ "street": "Jan Haringstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched n/a (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012124235",
+   "addresses": [
+    "Jan Haringstraat 38"
+   ],
+   "groundUnits": [
+    {
+     "address": "De Rijpgracht 35",
+     "use": "woonfunctie",
+     "areaM2": 38,
+     "bagId": "0363010000618614"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012092326",
+   "addresses": [
+    "Jan Haringstraat 36"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Haringstraat 36-H",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010000685173"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012068528",
+   "addresses": [
+    "Jan Haringstraat 34"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Haringstraat 34-H",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000685169"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012072687",
+   "addresses": [
+    "Jan Haringstraat 32"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Haringstraat 32-H",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000685165"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012071938",
+   "addresses": [
+    "Jan Haringstraat 30"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Haringstraat 30-H",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000685161"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012090526",
+   "addresses": [
+    "Jan Haringstraat 28"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Haringstraat 28-H",
+     "use": "woonfunctie",
+     "areaM2": 41,
+     "bagId": "0363010000685157"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012141674",
+   "addresses": [
+    "Jan Haringstraat 26"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jasper Leijnsenstraat 32",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010012078795"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  }
+ ]
+}

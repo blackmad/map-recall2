@@ -1,0 +1,490 @@
+{
+ "street": "Admiraal De Ruijterweg",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T01:23:56.520Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012118806",
+   "addresses": [
+    "Admiraal De Ruijterweg 186"
+   ],
+   "groundUnits": [
+    {
+     "address": "Admiraal De Ruijterweg 186-H",
+     "use": "woonfunctie",
+     "areaM2": 83,
+     "bagId": "0363010000559596"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012095308",
+   "addresses": [
+    "Admiraal De Ruijterweg 184"
+   ],
+   "groundUnits": [
+    {
+     "address": "Admiraal De Ruijterweg 184-H",
+     "use": "woonfunctie",
+     "areaM2": 83,
+     "bagId": "0363010000559588"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012107278",
+   "addresses": [
+    "Admiraal De Ruijterweg 182"
+   ],
+   "groundUnits": [
+    {
+     "address": "Admiraal De Ruijterweg 182-H",
+     "use": "woonfunctie",
+     "areaM2": 83,
+     "bagId": "0363010000559580"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012139316",
+   "addresses": [
+    "Admiraal De Ruijterweg 180"
+   ],
+   "groundUnits": [
+    {
+     "address": "Admiraal De Ruijterweg 180-H",
+     "use": "woonfunctie",
+     "areaM2": 83,
+     "bagId": "0363010000559572"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012160506",
+   "addresses": [
+    "Admiraal De Ruijterweg 178A",
+    "Admiraal De Ruijterweg 178B",
+    "Admiraal De Ruijterweg 178C",
+    "Admiraal De Ruijterweg 178D",
+    "Admiraal De Ruijterweg 178E"
+   ],
+   "groundUnits": [
+    {
+     "address": "Admiraal De Ruijterweg 178A",
+     "use": "woonfunctie",
+     "areaM2": 74,
+     "bagId": "0363010000559564"
+    },
+    {
+     "address": "Admiraal De Ruijterweg 178B",
+     "use": "woonfunctie",
+     "areaM2": 73,
+     "bagId": "0363010000559565"
+    },
+    {
+     "address": "Admiraal De Ruijterweg 178D",
+     "use": "woonfunctie",
+     "areaM2": 73,
+     "bagId": "0363010000559567"
+    },
+    {
+     "address": "Admiraal De Ruijterweg 178E",
+     "use": "woonfunctie",
+     "areaM2": 73,
+     "bagId": "0363010001013578"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012156192",
+   "addresses": [
+    "Admiraal De Ruijterweg 176A",
+    "Admiraal De Ruijterweg 176B",
+    "Admiraal De Ruijterweg 176C",
+    "Admiraal De Ruijterweg 176D",
+    "Admiraal De Ruijterweg 176E"
+   ],
+   "groundUnits": [
+    {
+     "address": "Admiraal De Ruijterweg 176A",
+     "use": "woonfunctie",
+     "areaM2": 74,
+     "bagId": "0363010000559556"
+    },
+    {
+     "address": "Admiraal De Ruijterweg 176B",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000559557"
+    },
+    {
+     "address": "Admiraal De Ruijterweg 176C",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000559558"
+    },
+    {
+     "address": "Admiraal De Ruijterweg 176D",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000559559"
+    },
+    {
+     "address": "Admiraal De Ruijterweg 176E",
+     "use": "woonfunctie",
+     "areaM2": 95,
+     "bagId": "0363010001014855"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012164393",
+   "addresses": [
+    "Admiraal De Ruijterweg 174A",
+    "Admiraal De Ruijterweg 174B",
+    "Admiraal De Ruijterweg 174C",
+    "Admiraal De Ruijterweg 174D",
+    "Admiraal De Ruijterweg 174E"
+   ],
+   "groundUnits": [
+    {
+     "address": "Admiraal De Ruijterweg 174A",
+     "use": "woonfunctie",
+     "areaM2": 73,
+     "bagId": "0363010000559547"
+    },
+    {
+     "address": "Admiraal De Ruijterweg 174B",
+     "use": "woonfunctie",
+     "areaM2": 73,
+     "bagId": "0363010000559548"
+    },
+    {
+     "address": "Admiraal De Ruijterweg 174C",
+     "use": "woonfunctie",
+     "areaM2": 73,
+     "bagId": "0363010000559549"
+    },
+    {
+     "address": "Admiraal De Ruijterweg 174D",
+     "use": "woonfunctie",
+     "areaM2": 73,
+     "bagId": "0363010000559551"
+    },
+    {
+     "address": "Admiraal De Ruijterweg 174E",
+     "use": "woonfunctie",
+     "areaM2": 73,
+     "bagId": "0363010001014828"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012155447",
+   "addresses": [
+    "Admiraal De Ruijterweg 172"
+   ],
+   "groundUnits": [
+    {
+     "address": "Admiraal De Ruijterweg 172-H",
+     "use": "woonfunctie",
+     "areaM2": 73,
+     "bagId": "0363010000559539"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012159086",
+   "addresses": [
+    "Admiraal De Ruijterweg 170"
+   ],
+   "groundUnits": [
+    {
+     "address": "Admiraal De Ruijterweg 170-H",
+     "use": "woonfunctie",
+     "areaM2": 171,
+     "bagId": "0363010000559531"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012158609",
+   "addresses": [
+    "Admiraal De Ruijterweg 168"
+   ],
+   "groundUnits": [
+    {
+     "address": "Admiraal De Ruijterweg 168-H",
+     "use": "woonfunctie",
+     "areaM2": 73,
+     "bagId": "0363010000559523"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012236159",
+   "addresses": [
+    "Admiraal De Ruijterweg 164C",
+    "Admiraal De Ruijterweg 164D",
+    "Admiraal De Ruijterweg 164G",
+    "Admiraal De Ruijterweg 164H",
+    "Admiraal De Ruijterweg 164M",
+    "Admiraal De Ruijterweg 164R",
+    "Admiraal De Ruijterweg 164S",
+    "Admiraal De Ruijterweg 164U",
+    "Admiraal De Ruijterweg 164W",
+    "Admiraal De Ruijterweg 164B",
+    "Admiraal De Ruijterweg 164K",
+    "Admiraal De Ruijterweg 164P",
+    "Admiraal De Ruijterweg 164T",
+    "Admiraal De Ruijterweg 164V",
+    "Admiraal De Ruijterweg 164N",
+    "Admiraal De Ruijterweg 164E",
+    "Admiraal De Ruijterweg 164L",
+    "Admiraal De Ruijterweg 164F",
+    "Admiraal De Ruijterweg 164A",
+    "Admiraal De Ruijterweg 166D",
+    "Admiraal De Ruijterweg 166A",
+    "Admiraal De Ruijterweg 166C",
+    "Admiraal De Ruijterweg 166B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Admiraal De Ruijterweg 164C",
+     "use": "woonfunctie",
+     "areaM2": 88,
+     "bagId": "0363010010953157"
+    },
+    {
+     "address": "Admiraal De Ruijterweg 164D",
+     "use": "woonfunctie",
+     "areaM2": 86,
+     "bagId": "0363010010953158"
+    },
+    {
+     "address": "Admiraal De Ruijterweg 164G",
+     "use": "woonfunctie",
+     "areaM2": 88,
+     "bagId": "0363010010953159"
+    },
+    {
+     "address": "Admiraal De Ruijterweg 164H",
+     "use": "woonfunctie",
+     "areaM2": 88,
+     "bagId": "0363010010953160"
+    },
+    {
+     "address": "Admiraal De Ruijterweg 164M",
+     "use": "woonfunctie",
+     "areaM2": 100,
+     "bagId": "0363010010953161"
+    },
+    {
+     "address": "Admiraal De Ruijterweg 164R",
+     "use": "woonfunctie",
+     "areaM2": 93,
+     "bagId": "0363010010953162"
+    },
+    {
+     "address": "Admiraal De Ruijterweg 164S",
+     "use": "woonfunctie",
+     "areaM2": 85,
+     "bagId": "0363010010953163"
+    },
+    {
+     "address": "Admiraal De Ruijterweg 164U",
+     "use": "woonfunctie",
+     "areaM2": 86,
+     "bagId": "0363010010953164"
+    },
+    {
+     "address": "Admiraal De Ruijterweg 164W",
+     "use": "woonfunctie",
+     "areaM2": 104,
+     "bagId": "0363010010953165"
+    },
+    {
+     "address": "Admiraal De Ruijterweg 164B",
+     "use": "woonfunctie",
+     "areaM2": 88,
+     "bagId": "0363010010953167"
+    },
+    {
+     "address": "Admiraal De Ruijterweg 164K",
+     "use": "woonfunctie",
+     "areaM2": 86,
+     "bagId": "0363010010953170"
+    },
+    {
+     "address": "Admiraal De Ruijterweg 164P",
+     "use": "woonfunctie",
+     "areaM2": 93,
+     "bagId": "0363010010953172"
+    },
+    {
+     "address": "Admiraal De Ruijterweg 164T",
+     "use": "woonfunctie",
+     "areaM2": 86,
+     "bagId": "0363010010953173"
+    },
+    {
+     "address": "Admiraal De Ruijterweg 164V",
+     "use": "woonfunctie",
+     "areaM2": 109,
+     "bagId": "0363010010953174"
+    },
+    {
+     "address": "Admiraal De Ruijterweg 166D",
+     "use": "woonfunctie",
+     "areaM2": 130,
+     "bagId": "0363010010953176"
+    },
+    {
+     "address": "Admiraal De Ruijterweg 164N",
+     "use": "woonfunctie",
+     "areaM2": 93,
+     "bagId": "0363010010953182"
+    },
+    {
+     "address": "Jan van Galenstraat 114-H",
+     "use": "winkelfunctie",
+     "areaM2": 83,
+     "bagId": "0363010010953184"
+    },
+    {
+     "address": "Jan van Galenstraat 116-H",
+     "use": "winkelfunctie",
+     "areaM2": 98,
+     "bagId": "0363010010953185"
+    },
+    {
+     "address": "Jan van Galenstraat 118-H",
+     "use": "winkelfunctie",
+     "areaM2": 103,
+     "bagId": "0363010010953186"
+    },
+    {
+     "address": "Jan van Galenstraat 120-H",
+     "use": "winkelfunctie",
+     "areaM2": 164,
+     "bagId": "0363010010953187"
+    },
+    {
+     "address": "Admiraal De Ruijterweg 166A",
+     "use": "woonfunctie",
+     "areaM2": 41,
+     "bagId": "0363010010953177"
+    },
+    {
+     "address": "Admiraal De Ruijterweg 164E",
+     "use": "woonfunctie",
+     "areaM2": 82,
+     "bagId": "0363010010953168"
+    },
+    {
+     "address": "Admiraal De Ruijterweg 166C",
+     "use": "woonfunctie",
+     "areaM2": 82,
+     "bagId": "0363010010953175"
+    },
+    {
+     "address": "Admiraal De Ruijterweg 164L",
+     "use": "woonfunctie",
+     "areaM2": 82,
+     "bagId": "0363010010953171"
+    },
+    {
+     "address": "Admiraal De Ruijterweg 166B",
+     "use": "woonfunctie",
+     "areaM2": 82,
+     "bagId": "0363010010953178"
+    },
+    {
+     "address": "Admiraal De Ruijterweg 164F",
+     "use": "woonfunctie",
+     "areaM2": 94,
+     "bagId": "0363010010953169"
+    },
+    {
+     "address": "Admiraal De Ruijterweg 164A",
+     "use": "woonfunctie",
+     "areaM2": 94,
+     "bagId": "0363010010953166"
+    }
+   ],
+   "units": 27,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2808849858,
+     "lngLat": [
+      4.8592781,
+      52.3748517
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "114-H",
+      "addr:postcode": "1056CE",
+      "addr:street": "Jan van Galenstraat",
+      "brand": "Kruidvat",
+      "brand:website": "https://www.kruidvat.nl",
+      "brand:wikidata": "Q2226366",
+      "brand:wikipedia": "nl:Kruidvat",
+      "name": "Kruidvat",
+      "opening_hours": "Mo-We,Fr-Sa 08:30-19:00; Th 08:30-20:00; Su 11:00-18:00; PH off",
+      "operator": "AS Watson Health & Beauty Benelux",
+      "panoramax": "daed3f95-2f6f-4cd3-a9b2-0696e9b901ca",
+      "ref": "7694",
+      "shop": "chemist",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.kruidvat.nl/store/drogisterij-kruidvat-7694",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-11-10T01:23:56.520Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 4291287666,
+     "lngLat": [
+      4.8587947,
+      52.3748322
+     ],
+     "tags": {
+      "check_date": "2025-06-19",
+      "name": "Unlimited Bikes",
+      "shop": "bicycle",
+      "website": "https://www.hairmasters.nl/"
+     },
+     "fetchedAt": "2026-11-10T01:23:56.520Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

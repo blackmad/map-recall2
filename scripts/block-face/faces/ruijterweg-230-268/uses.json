@@ -1,0 +1,219 @@
+{
+ "street": "Admiraal De Ruijterweg",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T01:25:25.265Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012064224",
+   "addresses": [
+    "Admiraal De Ruijterweg 250"
+   ],
+   "groundUnits": [
+    {
+     "address": "Admiraal De Ruijterweg 250-H",
+     "use": "kantoorfunctie",
+     "areaM2": 57,
+     "bagId": "0363010000559843"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012079424",
+   "addresses": [
+    "Admiraal De Ruijterweg 248A",
+    "Admiraal De Ruijterweg 248"
+   ],
+   "groundUnits": [
+    {
+     "address": "Admiraal De Ruijterweg 248-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000943579"
+    },
+    {
+     "address": "Admiraal De Ruijterweg 248A-H",
+     "use": "woonfunctie",
+     "areaM2": 75,
+     "bagId": "0363010000943580"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012140983",
+   "addresses": [
+    "Admiraal De Ruijterweg 246A",
+    "Admiraal De Ruijterweg 246"
+   ],
+   "groundUnits": [
+    {
+     "address": "Admiraal De Ruijterweg 246A",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 128,
+     "bagId": "0363010001989322"
+    },
+    {
+     "address": "Admiraal De Ruijterweg 246-H",
+     "use": "winkelfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000559825"
+    }
+   ],
+   "units": 7,
+   "osm": [
+    {
+     "type": "node",
+     "id": 5804924774,
+     "lngLat": [
+      4.8576271,
+      52.3783599
+     ],
+     "tags": {
+      "amenity": "kindergarten",
+      "check_date": "2023-04-10",
+      "max_age": "4",
+      "min_age": "0",
+      "name": "'t Zonnehoekje",
+      "website": "https://www.zonnehoekje.com/"
+     },
+     "fetchedAt": "2026-11-10T01:25:25.265Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012146167",
+   "addresses": [
+    "Admiraal De Ruijterweg 244"
+   ],
+   "groundUnits": [
+    {
+     "address": "Admiraal De Ruijterweg 244-H",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010000559817"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012104827",
+   "addresses": [
+    "Admiraal De Ruijterweg 242"
+   ],
+   "groundUnits": [
+    {
+     "address": "Admiraal De Ruijterweg 242-H",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000559808"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012122387",
+   "addresses": [
+    "Admiraal De Ruijterweg 240"
+   ],
+   "groundUnits": [
+    {
+     "address": "Admiraal De Ruijterweg 240-H",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010000559800"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012118854",
+   "addresses": [
+    "Admiraal De Ruijterweg 238"
+   ],
+   "groundUnits": [
+    {
+     "address": "Admiraal De Ruijterweg 238-H",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000559791"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012072332",
+   "addresses": [
+    "Admiraal De Ruijterweg 236"
+   ],
+   "groundUnits": [
+    {
+     "address": "Admiraal De Ruijterweg 236-H",
+     "use": "woonfunctie",
+     "areaM2": 85,
+     "bagId": "0363010000559783"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012136590",
+   "addresses": [
+    "Admiraal De Ruijterweg 234"
+   ],
+   "groundUnits": [
+    {
+     "address": "Admiraal De Ruijterweg 234-H",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000559775"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012124138",
+   "addresses": [
+    "Admiraal De Ruijterweg 232"
+   ],
+   "groundUnits": [
+    {
+     "address": "Admiraal De Ruijterweg 232-H",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000559766"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012104360",
+   "addresses": [
+    "Admiraal De Ruijterweg 230"
+   ],
+   "groundUnits": [
+    {
+     "address": "Admiraal De Ruijterweg 230-H",
+     "use": "woonfunctie",
+     "areaM2": 83,
+     "bagId": "0363010000559758"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

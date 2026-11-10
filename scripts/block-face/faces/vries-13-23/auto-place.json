@@ -1,0 +1,462 @@
+{
+ "face": "vries-13-23",
+ "street": "Tjerk Hiddes de Vriesstraat",
+ "library": "landlust",
+ "stripDate": "2024-11-21",
+ "seconds": 1.2,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012061629",
+   "address": "Tjerk Hiddes de Vriesstraat 13",
+   "builtYear": 1934,
+   "widthM": 6.56,
+   "eavesM": 13.23,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#84583c",
+    "wallRaw": "#6d503c",
+    "skyline": {
+     "eavesM": 13.8,
+     "eavesRow": 180,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 5,
+    "frontClass": "columns",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.067,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 12.1,
+       "widthM": 0.85,
+       "centre": 0.33
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.09
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best landlust-1933-erker-window scores 0.67 < 0.7 (strip cornice 13.8 m vs the type's 9.9 m; strip columns 5 vs 2 bays)",
+   "best": {
+    "type": "landlust-1933-erker-window",
+    "score": 0.67,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 13.8 m vs the type's 9.9 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 3/4/5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 2.9 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.053 (brick)"
+     },
+     {
+      "key": "bag-bay",
+      "weight": 3,
+      "score": 1,
+      "note": "BAG outline straight"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 5 vs 2 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012099589",
+   "address": "Tjerk Hiddes de Vriesstraat 15",
+   "builtYear": 1934,
+   "widthM": 8.07,
+   "eavesM": 13.25,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#85583c",
+    "wallRaw": "#684c33",
+    "skyline": {
+     "eavesM": 13.82,
+     "eavesRow": 179,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 5,
+    "frontClass": "columns",
+    "doorSide": "left",
+    "accentSide": "right",
+    "accentShare": 0.061,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 12.35,
+       "widthM": 2.1,
+       "centre": 0.85
+      },
+      {
+       "atM": 11.97,
+       "widthM": 0.95,
+       "centre": 0.18
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.31
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best landlust-1924-bestevaer-half-block: built 1934, type 1923-1926; stair block 8.07 m, type 5.7-7.6 m)",
+   "best": {
+    "type": "landlust-1924-bestevaer-half-block",
+    "score": 0,
+    "veto": [
+     "built 1934, type 1923-1926",
+     "stair block 8.07 m, type 5.7-7.6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "strip cornice 13.82 m vs the type's 13.2 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012070361",
+   "address": "Tjerk Hiddes de Vriesstraat 17",
+   "builtYear": 1934,
+   "widthM": 12.79,
+   "eavesM": 13.25,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#8a593a",
+    "wallRaw": "#754e35",
+    "skyline": {
+     "eavesM": 14.1,
+     "eavesRow": 168,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.064,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 12.43,
+       "widthM": 1.9,
+       "centre": 0.92
+      },
+      {
+       "atM": 12.13,
+       "widthM": 1.35,
+       "centre": 0.35
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.05
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best landlust-1935-slot-block-four scores 0.69 < 0.7 (strip cornice 14.1 m vs the type's 12.9 m)",
+   "best": {
+    "type": "landlust-1935-slot-block-four",
+    "score": 0.69,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 14.1 m vs the type's 12.9 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.051 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012152219",
+   "address": "Tjerk Hiddes de Vriesstraat 21",
+   "builtYear": 1934,
+   "widthM": 8.02,
+   "eavesM": 13.28,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#8a5639",
+    "wallRaw": "#765036",
+    "skyline": {
+     "eavesM": 13.85,
+     "eavesRow": 178,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 8,
+    "frontClass": "columns",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.085,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 12.45,
+       "widthM": 1.82,
+       "centre": 0.85
+      },
+      {
+       "atM": 12.15,
+       "widthM": 1.27,
+       "centre": 0.84
+      },
+      {
+       "atM": 11.85,
+       "widthM": 1.27,
+       "centre": 0.84
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.07
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best landlust-1924-bestevaer-half-block: built 1934, type 1923-1926; stair block 8.02 m, type 5.7-7.6 m)",
+   "best": {
+    "type": "landlust-1924-bestevaer-half-block",
+    "score": 0,
+    "veto": [
+     "built 1934, type 1923-1926",
+     "stair block 8.02 m, type 5.7-7.6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "strip cornice 13.85 m vs the type's 13.2 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.068 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 8 vs 2 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012152138",
+   "address": "Tjerk Hiddes de Vriesstraat 23",
+   "builtYear": 1934,
+   "widthM": 6.6,
+   "eavesM": 13.17,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 6.43,
+    "toM": 6.43,
+    "depthM": 0.34,
+    "centre": 0.973
+   },
+   "strip": {
+    "wall": "#83563c",
+    "wallRaw": "#714f37",
+    "skyline": {
+     "eavesM": 13.97,
+     "eavesRow": 173,
+     "confidence": 1,
+     "crown": {
+      "widthM": 0.9,
+      "riseM": 0.75,
+      "topWidthM": 0.8,
+      "centre": 0.92
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 4,
+    "frontClass": "columns",
+    "doorSide": "left",
+    "accentSide": "right",
+    "accentShare": 0.049,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 12.27,
+       "widthM": 1.3,
+       "centre": 0.22
+      },
+      {
+       "atM": 11.97,
+       "widthM": 0.85,
+       "centre": 0.18
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.04
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best landlust-1934-tile-pair scores 0.61 < 0.7 (strip cornice 13.97 m vs the type's 12 m; strip columns 4 vs 3 bays)",
+   "best": {
+    "type": "landlust-1934-tile-pair",
+    "score": 0.61,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 13.97 m vs the type's 12 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 3.14 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.039 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 4 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

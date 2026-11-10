@@ -1,0 +1,73 @@
+{
+ "street": "Karel Doormanstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T02:21:28.560Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012114345",
+   "addresses": [
+    "Karel Doormanstraat 143"
+   ],
+   "groundUnits": [
+    {
+     "address": "Karel Doormanstraat 143-H",
+     "use": "woonfunctie",
+     "areaM2": 86,
+     "bagId": "0363010000698226"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012136562",
+   "addresses": [
+    "Karel Doormanstraat 145"
+   ],
+   "groundUnits": [
+    {
+     "address": "Karel Doormanstraat 145-H",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000698234"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012157577",
+   "addresses": [
+    "Karel Doormanstraat 147"
+   ],
+   "groundUnits": [
+    {
+     "address": "Karel Doormanstraat 147-H",
+     "use": "woonfunctie",
+     "areaM2": 113,
+     "bagId": "0363010000698242"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012165745",
+   "addresses": [
+    "Karel Doormanstraat 149"
+   ],
+   "groundUnits": [
+    {
+     "address": "Karel Doormanstraat 149-H",
+     "use": "woonfunctie",
+     "areaM2": 202,
+     "bagId": "0363010000698247"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  }
+ ]
+}

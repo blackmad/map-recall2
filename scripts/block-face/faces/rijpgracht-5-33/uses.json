@@ -1,0 +1,249 @@
+{
+ "street": "De Rijpgracht",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-09T23:18:30.907Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012126004",
+   "addresses": [
+    "De Rijpgracht 5"
+   ],
+   "groundUnits": [
+    {
+     "address": "De Rijpgracht 5-H",
+     "use": "woonfunctie",
+     "areaM2": 98,
+     "bagId": "0363010000618505"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012135052",
+   "addresses": [
+    "De Rijpgracht 7"
+   ],
+   "groundUnits": [
+    {
+     "address": "De Rijpgracht 7-H",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000618513"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012065393",
+   "addresses": [
+    "De Rijpgracht 9"
+   ],
+   "groundUnits": [
+    {
+     "address": "De Rijpgracht 9-H",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000618524"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012136762",
+   "addresses": [
+    "De Rijpgracht 11"
+   ],
+   "groundUnits": [
+    {
+     "address": "De Rijpgracht 11-H",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000618532"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012073793",
+   "addresses": [
+    "De Rijpgracht 13"
+   ],
+   "groundUnits": [
+    {
+     "address": "De Rijpgracht 13-H",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000618539"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012154479",
+   "addresses": [
+    "De Rijpgracht 15"
+   ],
+   "groundUnits": [
+    {
+     "address": "De Rijpgracht 15-H",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000618546"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012147833",
+   "addresses": [
+    "De Rijpgracht 17"
+   ],
+   "groundUnits": [
+    {
+     "address": "De Rijpgracht 17-H",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000618553"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012065855",
+   "addresses": [
+    "De Rijpgracht 19"
+   ],
+   "groundUnits": [
+    {
+     "address": "De Rijpgracht 19-H",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000618560"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012131151",
+   "addresses": [
+    "De Rijpgracht 21"
+   ],
+   "groundUnits": [
+    {
+     "address": "De Rijpgracht 21-H",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000618565"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012096832",
+   "addresses": [
+    "De Rijpgracht 23"
+   ],
+   "groundUnits": [
+    {
+     "address": "De Rijpgracht 23-H",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000618572"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012137538",
+   "addresses": [
+    "De Rijpgracht 25"
+   ],
+   "groundUnits": [
+    {
+     "address": "De Rijpgracht 25-H",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000618579"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012108028",
+   "addresses": [
+    "De Rijpgracht 27"
+   ],
+   "groundUnits": [
+    {
+     "address": "De Rijpgracht 27-H",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000618586"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012073277",
+   "addresses": [
+    "De Rijpgracht 29"
+   ],
+   "groundUnits": [
+    {
+     "address": "De Rijpgracht 29-H",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000618593"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012151258",
+   "addresses": [
+    "De Rijpgracht 31"
+   ],
+   "groundUnits": [
+    {
+     "address": "De Rijpgracht 31-H",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000618600"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012074974",
+   "addresses": [
+    "De Rijpgracht 33"
+   ],
+   "groundUnits": [
+    {
+     "address": "De Rijpgracht 33-H",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010000618607"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

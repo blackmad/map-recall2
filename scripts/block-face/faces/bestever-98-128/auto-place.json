@@ -1,0 +1,767 @@
+{
+ "face": "bestever-98-128",
+ "street": "Bestevâerstraat",
+ "library": "landlust",
+ "stripDate": "2024-11-21",
+ "seconds": 3.9,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012124515",
+   "address": "Bestevâerstraat 128",
+   "builtYear": 1931,
+   "widthM": 9.45,
+   "eavesM": 12.15,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#81654f",
+    "wallRaw": "#6e5841",
+    "skyline": {
+     "eavesM": 14.38,
+     "eavesRow": 193,
+     "confidence": 1,
+     "crown": {
+      "widthM": 3.17,
+      "riseM": 2.85,
+      "topWidthM": 0.8,
+      "centre": 0.74
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 4,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.113,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.1
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best landlust-1924-bestevaer-half-block: built 1931, type 1923-1926; stair block 9.45 m, type 5.7-7.6 m)",
+   "best": {
+    "type": "landlust-1924-bestevaer-half-block",
+    "score": 0,
+    "veto": [
+     "built 1931, type 1923-1926",
+     "stair block 9.45 m, type 5.7-7.6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 14.38 m vs the type's 13.2 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.072 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 4 vs 2 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012134150",
+   "address": "Bestevâerstraat 126",
+   "builtYear": 1931,
+   "widthM": 6.09,
+   "eavesM": 12.14,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6c5117",
+    "wallRaw": "#685329",
+    "skyline": {
+     "eavesM": 12.95,
+     "eavesRow": 250,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.52,
+      "riseM": 1.05,
+      "topWidthM": 0.8,
+      "centre": 0.69
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": "right",
+    "accentShare": 0.032,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.03
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best landlust-1924-bestevaer-half-block: built 1931, type 1923-1926)",
+   "best": {
+    "type": "landlust-1924-bestevaer-half-block",
+    "score": 0,
+    "veto": [
+     "built 1931, type 1923-1926"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "strip cornice 12.95 m vs the type's 13.2 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 4 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.022 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012145269",
+   "address": "Bestevâerstraat 124",
+   "builtYear": 1931,
+   "widthM": 6.11,
+   "eavesM": 12.58,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#755b41",
+    "wallRaw": "#6b5b4a",
+    "skyline": {
+     "eavesM": 13.07,
+     "eavesRow": 245,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.081,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 5.82,
+       "widthM": 1.38,
+       "centre": 0.57
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.11
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best landlust-1924-bestevaer-half-block: built 1931, type 1923-1926)",
+   "best": {
+    "type": "landlust-1924-bestevaer-half-block",
+    "score": 0,
+    "veto": [
+     "built 1931, type 1923-1926"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "strip cornice 13.07 m vs the type's 13.2 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 4 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.069 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 3 vs 2 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012146228",
+   "address": "Bestevâerstraat 122",
+   "builtYear": 1931,
+   "widthM": 6.1,
+   "eavesM": 12.13,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#836b51",
+    "wallRaw": "#73604a",
+    "skyline": {
+     "eavesM": 13.45,
+     "eavesRow": 230,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.18,
+      "riseM": 0.95,
+      "topWidthM": 1.1,
+      "centre": 0.34
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": "left",
+    "accentSide": "right",
+    "accentShare": 0.111,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.14
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best landlust-1924-bestevaer-half-block: built 1931, type 1923-1926)",
+   "best": {
+    "type": "landlust-1924-bestevaer-half-block",
+    "score": 0,
+    "veto": [
+     "built 1931, type 1923-1926"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "strip cornice 13.45 m vs the type's 13.2 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.082 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 3 vs 2 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012096616",
+   "address": "Bestevâerstraat 120",
+   "builtYear": 1931,
+   "widthM": 6.08,
+   "eavesM": 12.05,
+   "storeys3dbag": 4,
+   "bagBay": {
+    "fromM": 0.59,
+    "toM": 0.59,
+    "depthM": 0.77,
+    "centre": 0.097
+   },
+   "strip": {
+    "wall": "#654b17",
+    "wallRaw": "#6d5734",
+    "skyline": {
+     "eavesM": 13.88,
+     "eavesRow": 213,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.13,
+      "riseM": 1.18,
+      "topWidthM": 0.85,
+      "centre": 0.9
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": "left",
+    "accentShare": 0.04,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.03
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best landlust-1924-bestevaer-half-block: built 1931, type 1923-1926)",
+   "best": {
+    "type": "landlust-1924-bestevaer-half-block",
+    "score": 0,
+    "veto": [
+     "built 1931, type 1923-1926"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "strip cornice 13.88 m vs the type's 13.2 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 4 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.028 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012098396",
+   "address": "Bestevâerstraat 118",
+   "builtYear": 1924,
+   "widthM": 6.38,
+   "eavesM": 12.78,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#7b5f40",
+    "wallRaw": "#736042",
+    "skyline": {
+     "eavesM": 13.4,
+     "eavesRow": 232,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": "right",
+    "accentShare": 0.155,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.12
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Opus verdict 2026-11-10: HOLD the Bestevaer stair/half blocks (no plinth with an arched stair door at the pilaster, no glass-brick pilaster, patchwork per-pand tone); re-place only with a kit piece placed by architectural block, see docs/reports/landlust-plinth-block-kit-note-20261110.md",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012115201",
+   "address": "Bestevâerstraat 114",
+   "builtYear": 1924,
+   "widthM": 12.52,
+   "eavesM": 12.82,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#7b6340",
+    "wallRaw": "#6e5b3b",
+    "skyline": {
+     "eavesM": 13.38,
+     "eavesRow": 233,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.98,
+      "riseM": 1.28,
+      "topWidthM": 0.97,
+      "centre": 0.24
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 13,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.117,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.11
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Opus verdict 2026-11-10: HOLD the Bestevaer stair/half blocks (no plinth with an arched stair door at the pilaster, no glass-brick pilaster, patchwork per-pand tone); re-place only with a kit piece placed by architectural block, see docs/reports/landlust-plinth-block-kit-note-20261110.md",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012138498",
+   "address": "Bestevâerstraat 110",
+   "builtYear": 1924,
+   "widthM": 12.6,
+   "eavesM": 12.61,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#7a6442",
+    "wallRaw": "#6f5b38",
+    "skyline": {
+     "eavesM": 13.6,
+     "eavesRow": 224,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.98,
+      "riseM": 1.6,
+      "topWidthM": 0.28,
+      "centre": 0.74
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 13,
+    "frontClass": "blank",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.106,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.68 m at 0.68 (light 0.05): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.68,
+       "centre": 0.68,
+       "light": 0.05
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.1
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best landlust-1924-bestevaer-half-block: stair block 12.6 m, type 5.7-7.6 m; strip shows balconies (dark open axis 0.68 m at 0.68 (light 0.05): no brick spandrel between the storeys))",
+   "best": {
+    "type": "landlust-1924-bestevaer-half-block",
+    "score": 0,
+    "veto": [
+     "stair block 12.6 m, type 5.7-7.6 m",
+     "strip shows balconies (dark open axis 0.68 m at 0.68 (light 0.05): no brick spandrel between the storeys)"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "strip cornice 13.6 m vs the type's 13.2 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.083 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 13 vs 2 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012125415",
+   "address": "Bestevâerstraat 106",
+   "builtYear": 1924,
+   "widthM": 12.6,
+   "eavesM": 12.3,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6e5419",
+    "wallRaw": "#6a542e",
+    "skyline": {
+     "eavesM": 13.6,
+     "eavesRow": 224,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.98,
+      "riseM": 2,
+      "topWidthM": 0.7,
+      "centre": 0.91
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 5,
+    "frontClass": "columns",
+    "doorSide": "right",
+    "accentSide": "left",
+    "accentShare": 0.064,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 9.75,
+       "widthM": 1.1,
+       "centre": 0.33
+      },
+      {
+       "atM": 6.6,
+       "widthM": 1.55,
+       "centre": 0.31
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.08
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Opus verdict 2026-11-10: HOLD the Bestevaer stair/half blocks (no plinth with an arched stair door at the pilaster, no glass-brick pilaster, patchwork per-pand tone); re-place only with a kit piece placed by architectural block, see docs/reports/landlust-plinth-block-kit-note-20261110.md",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012092821",
+   "address": "Bestevâerstraat 104",
+   "builtYear": 1924,
+   "widthM": 6.31,
+   "eavesM": 12.58,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#785a3f",
+    "wallRaw": "#725e43",
+    "skyline": {
+     "eavesM": 13.47,
+     "eavesRow": 229,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 2,
+    "columns": 2,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": "left",
+    "accentShare": 0.191,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.18
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Opus verdict 2026-11-10: HOLD the Bestevaer stair/half blocks (no plinth with an arched stair door at the pilaster, no glass-brick pilaster, patchwork per-pand tone); re-place only with a kit piece placed by architectural block, see docs/reports/landlust-plinth-block-kit-note-20261110.md",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012087761",
+   "address": "Bestevâerstraat 102",
+   "builtYear": 1924,
+   "widthM": 6.3,
+   "eavesM": 12.57,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#826e51",
+    "wallRaw": "#716245",
+    "skyline": {
+     "eavesM": 13.38,
+     "eavesRow": 233,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 3,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.158,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.14
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Opus verdict 2026-11-10: HOLD the Bestevaer stair/half blocks (no plinth with an arched stair door at the pilaster, no glass-brick pilaster, patchwork per-pand tone); re-place only with a kit piece placed by architectural block, see docs/reports/landlust-plinth-block-kit-note-20261110.md",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012116325",
+   "address": "Bestevâerstraat 98",
+   "builtYear": 1924,
+   "widthM": 13.34,
+   "eavesM": 12.55,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#7e6846",
+    "wallRaw": "#695a3c",
+    "skyline": {
+     "eavesM": 13.55,
+     "eavesRow": 226,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.8,
+      "riseM": 4.05,
+      "topWidthM": 0.17,
+      "centre": 0.61
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 11,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.094,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.13
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Opus verdict 2026-11-10: HOLD the Bestevaer stair/half blocks (no plinth with an arched stair door at the pilaster, no glass-brick pilaster, patchwork per-pand tone); re-place only with a kit piece placed by architectural block, see docs/reports/landlust-plinth-block-kit-note-20261110.md",
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

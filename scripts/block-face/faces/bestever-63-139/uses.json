@@ -1,0 +1,227 @@
+{
+ "street": "Bestevâerstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T01:37:48.049Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012064126",
+   "addresses": [
+    "Bestevâerstraat 63",
+    "Bestevâerstraat 65"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bestevâerstraat 63-H",
+     "use": "woonfunctie",
+     "areaM2": 89,
+     "bagId": "0363010010953188"
+    },
+    {
+     "address": "Bestevâerstraat 65",
+     "use": "woonfunctie",
+     "areaM2": 88,
+     "bagId": "0363010010953189"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012109120",
+   "addresses": [
+    "Bestevâerstraat 67"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bestevâerstraat 67-H",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000582528"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012097447",
+   "addresses": [
+    "Bestevâerstraat 69"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bestevâerstraat 69-H",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000582536"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012109160",
+   "addresses": [
+    "Bestevâerstraat 71",
+    "Bestevâerstraat 73"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bestevâerstraat 73-H",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000582553"
+    },
+    {
+     "address": "Bestevâerstraat 71-H",
+     "use": "woonfunctie",
+     "areaM2": 104,
+     "bagId": "0363010000582545"
+    }
+   ],
+   "units": 10,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012122641",
+   "addresses": [
+    "Bestevâerstraat 75",
+    "Bestevâerstraat 77"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bestevâerstraat 75-H",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000582561"
+    },
+    {
+     "address": "Bestevâerstraat 77-H",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000582569"
+    }
+   ],
+   "units": 10,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012126999",
+   "addresses": [
+    "Bestevâerstraat 79"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bestevâerstraat 79-H",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000582576"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012099825",
+   "addresses": [
+    "Bestevâerstraat 81",
+    "Bestevâerstraat 83"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bestevâerstraat 83-H",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000582591"
+    },
+    {
+     "address": "Bestevâerstraat 81-H",
+     "use": "woonfunctie",
+     "areaM2": 100,
+     "bagId": "0363010000582583"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012112971",
+   "addresses": [
+    "Bestevâerstraat 85"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bestevâerstraat 85-H",
+     "use": "woonfunctie",
+     "areaM2": 97,
+     "bagId": "0363010000582599"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012097070",
+   "addresses": [
+    "Bestevâerstraat 87",
+    "Bestevâerstraat 89"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bestevâerstraat 87-H",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010000582607"
+    },
+    {
+     "address": "Bestevâerstraat 89-H",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000582615"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012074159",
+   "addresses": [
+    "Bestevâerstraat 91",
+    "Bestevâerstraat 93"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bestevâerstraat 91-H",
+     "use": "woonfunctie",
+     "areaM2": 104,
+     "bagId": "0363010000582623"
+    },
+    {
+     "address": "Bestevâerstraat 93-H",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000582631"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012133883",
+   "addresses": [
+    "Bestevâerstraat 95"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bestevâerstraat 95-H",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000582639"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

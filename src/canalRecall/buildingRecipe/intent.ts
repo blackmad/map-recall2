@@ -215,7 +215,20 @@ export const DORMER_STYLES = ['plain', 'pediment', 'pointed', 'box', 'flat', 'ar
  * and the facade top behind which the dormer stands (round 3: the fully glazed front reached 6 cm over the eaves and
  * failed the GLB audit, opening-outside 2.5 m2).
  */
-export const DORMER_BODIES = ['stone', 'brick', 'timber'] as const;
+export const DORMER_BODIES = ['stone', 'brick', 'timber', 'zinc', 'zinc-band'] as const;
+/**
+ * `dormerBody: "zinc-band"` (Landlust slot blocks, Haenstraat, Zwijgerlaan, Callenburgstraat 2-32, Andringastraat; round-4
+ * review): a painted-zinc box dormer: smooth mid-grey cheeks, a mostly glazed front of three lights and a dark flat cap
+ * overhanging the front. Pair with `dormerWindow` (the glass band's width, apron and height). Absent = byte-identical.
+ */
+/** Party-wall dormer fascia (Treslong 5-35, round-5 review): a pale grey-beige board on the cap's front edge, 17 cm deep, so the dark cap does not merge into the roof. */
+export const PARTY_DORMER_FASCIA = {colour: '#9a988c', heightM: 0.17} as const;
+export const ZINC_BAND = {cheek: '#6f7275', cap: '#3e4144', capOverhangM: 0.15} as const;
+/**
+ * `dormerBody: "zinc"` (Landlust 1932-1940 tiled-roof fronts, Leijnsenstraat 2-30, Coppelstockstraat 29-49): a box dormer
+ * clad in the roof's own covering (the grey zinc cheeks and flat top read as a continuation of the slope). Its cheeks and back
+ * take the roof surface; with `dormerStyle: "box"` the front is the plain flat-topped box. Absent = byte-identical.
+ */
 /** `dormerBody: "timber"`: the apron under the window (m) and the post share of the dormer width each side (clamped). */
 export const TIMBER_DORMER = {apronM: 0.35, sideShare: 0.16, sideMinM: 0.12, sideMaxM: 0.35} as const;
 /**
@@ -398,6 +411,24 @@ export interface FrontIntent {
   dormers?: number;
   /** 0-based bay (left-to-right, as seen from the street) holding the main door; null = no door. */
   doorBay: number | null;
+  /**
+   * Further ground bays that hold a door like `doorBay` (Landlust slot blocks 1934-1937: two door pairs per block, each pair
+   * under one flat `groundCanopy` slab). 0-based, other than `doorBay`; needs a `doorBay`. Absent = byte-identical.
+   */
+  extraDoorBays?: number[];
+  /**
+   * Every door bay (`doorBay` and `extraDoorBays`) holds two doors side by side, each half the bay wide, instead of one door
+   * centred in it. Absent = one door.
+   */
+  doorPairs?: boolean;
+  /**
+   * A row of identical house doors side by side across a span of the front (Landlust slot blocks 1933-1937: four doors of
+   * 0.75 m in a run about 4.7 m wide under one continuous `groundCanopy` slab). `from`..`to` are fractions of the front's
+   * width, `count` doors of `leaf` metres each, evenly spread over the span. Replaces the `doorBay` door (which stays as the
+   * anchor for the portiek reveal and the mirror); the row is symmetric about its own centre and a mirrored front reverses
+   * its fractions. The doors are single leaves without a fanlight (the canopy slab rests on their heads). Absent = byte-identical.
+   */
+  doorRow?: {from: number; to: number; count: number; leaf: number};
   /**
    * The house door is a round-arched portiek opening (Amsterdam School, Polanenstraat 229-311, Spaarndammerdijk 247-299):
    * `span` m wide (0.8..2.6), its semicircular head's crown `apex` m over the ground storey floor (1.8..4, at least
@@ -766,6 +797,13 @@ export interface FrontIntent {
   gridAt?: {from: number; to: number};
   /** Dormers at these spans (fractions of the front from the viewer's left; one entry per dormer) instead of evenly spaced: a dormer against a party wall is one half of a dormer shared with the neighbour. */
   dormerAt?: {from: number; to: number}[];
+  /**
+   * The (single) dormer is one half of a dormer that straddles this front's party wall (Treslong 5-35: one cream box per pair
+   * of pands, the right half of the left pand and the left half of its mirrored neighbour): no cheek on the wall side, the
+   * frame there runs to the wall so the halves read as one frame with one centre mullion, the cap runs to the wall and
+   * overhangs the front. Needs one dormer with a `dormerAt` span near the party wall and a box style. Absent = byte-identical.
+   */
+  dormerParty?: boolean;
   /**
    * Measured dormer size and place on the slope: the sill `sill` (m, 0.05..2) over the eaves line, the dormer's height `rise`
    * (0.6..2.5) and its front's `setback` (0.05..2) behind the facade, instead of the style default (sill 0.05 m, setback
@@ -1575,6 +1613,17 @@ export function validateIntent(input: unknown): CanalHouseIntent {
     if (f.atticWindows !== undefined) count(f.atticWindows, `${at}.atticWindows`, 0, 6);
     if (f.dormers !== undefined) count(f.dormers, `${at}.dormers`, 0, 8);
     if (f.doorBay !== null) count(f.doorBay, `${at}.doorBay`, 0, Math.max(0, bays[0] - 1));
+    if (f.extraDoorBays !== undefined) {
+      if (f.doorBay === null) problems.push(`${at}.extraDoorBays: needs a doorBay`);
+      else if (!Array.isArray(f.extraDoorBays) || !f.extraDoorBays.length || f.extraDoorBays.some((b, i) => !Number.isInteger(b) || b < 0 || b > bays[0] - 1 || b === f.doorBay || f.extraDoorBays!.indexOf(b) !== i)) problems.push(`${at}.extraDoorBays: distinct ground bays 0..${bays[0] - 1}, not the doorBay`);
+      if (f.shopfront || f.groundFront || f.doorArch) problems.push(`${at}.extraDoorBays: not with a shopfront, ground front or doorArch`);
+    }
+    if (f.doorRow !== undefined) {
+      const r = f.doorRow as unknown as Record<string, unknown>, n = (v: unknown, a: number, b: number) => typeof v === 'number' && v >= a && v <= b;
+      if (!r || typeof r !== 'object' || Object.keys(r).some(k => !['from', 'to', 'count', 'leaf'].includes(k)) || !n(r.from, 0, 1) || !n(r.to, 0, 1) || (r.to as number) - (r.from as number) < 0.1 || !Number.isInteger(r.count) || !n(r.count, 2, 6) || !n(r.leaf, 0.6, 1.6)) problems.push(`${at}.doorRow: {from, to (fractions of the front, span >= 0.1), count 2..6, leaf 0.6..1.6 m}`);
+      if (f.doorBay === null || f.doorArch || f.shopfront || f.groundFront || f.extraDoorBays || f.doorPairs) problems.push(`${at}.doorRow: needs a doorBay and no doorArch, shopfront, groundFront, extraDoorBays or doorPairs`);
+    }
+    if (f.doorPairs !== undefined && (typeof f.doorPairs !== 'boolean' || f.doorBay === null || f.doorArch)) problems.push(`${at}.doorPairs: true, with a doorBay and no doorArch`);
     if (f.doorArch !== undefined) {
       const d = f.doorArch as unknown as Record<string, unknown>, n = (v: unknown, a: number, b: number) => typeof v === 'number' && v >= a && v <= b;
       if (!d || typeof d !== 'object' || Object.keys(d).some(k => k !== 'span' && k !== 'apex') || !n(d.span, 0.8, 2.6) || !n(d.apex, 1.8, 4) || (d.apex as number) < (d.span as number) / 2 + 1.2) problems.push(`${at}.doorArch: {span 0.8..2.6 m, apex 1.8..4 m and at least span / 2 + 1.2}`);
@@ -2096,8 +2145,9 @@ function historicProblems(f: FrontIntent, at: string, colour: (v: unknown, where
   if (f.dormerBody !== undefined) {
     if (!(DORMER_BODIES as readonly unknown[]).includes(f.dormerBody)) problems.push(`${at}.dormerBody: one of ${DORMER_BODIES.join(', ')} (or leave it out)`);
     if (!f.dormers) problems.push(`${at}.dormerBody: needs dormers >= 1`);
-    if (f.dormerStyle === 'box') problems.push(`${at}.dormerBody: a box dormer is brick`);
+    if (f.dormerStyle === 'box' && f.dormerBody !== 'zinc' && f.dormerBody !== 'zinc-band' && f.dormerBody !== 'stone') problems.push(`${at}.dormerBody: a box dormer is brick (or zinc, or stone)`);
   }
+  if (f.dormerParty !== undefined && (f.dormerParty !== true || f.dormers !== 1 || !f.dormerAt || f.dormerStyle !== 'box')) problems.push(`${at}.dormerParty: true, with dormers 1, a dormerAt span and dormerStyle "box"`);
   if (f.crownGroups !== undefined) {
     if (f.crownAt !== undefined || f.crownBays !== undefined) problems.push(`${at}.crownGroups: not together with crownAt/crownBays`);
     if (f.gable === 'flat' || (f.gable === 'cornice' && (!f.crownCap || f.crownCap === 'flat'))) problems.push(`${at}.crownGroups: the front has no crown to repeat (gable ${f.gable})`);

@@ -1,0 +1,1988 @@
+{
+ "street": "Jan van Galenstraat",
+ "seed": "0363100012099109",
+ "members": [
+  "0363100012100410",
+  "0363100012126499",
+  "0363100012077081",
+  "0363100012121206",
+  "0363100012118984",
+  "0363100012124911",
+  "0363100012084175",
+  "0363100012143344",
+  "0363100012110462",
+  "0363100012142659",
+  "0363100012123697",
+  "0363100012126811",
+  "0363100012148775",
+  "0363100012064565",
+  "0363100012099109"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "trimmed at 0363100012100410 (face continues: 080759 114748 155045 129065 107290 116559 147152 131219 100440 123145 062977 125242 122649)"
+  },
+  {
+   "side": "right",
+   "reason": "trimmed at 0363100012099109 (face continues: 142535)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012061590",
+   "reason": "frontage 111.5 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012061651",
+   "reason": "frontage 207.2 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012062141",
+   "reason": "frontage 208.6 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012062712",
+   "reason": "frontage 107.0 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012062858",
+   "reason": "frontage 99.0 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012063203",
+   "reason": "frontage 208.1 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012063321",
+   "reason": "frontage 105.0 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012063550",
+   "reason": "frontage 134.4 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012063633",
+   "reason": "frontage 132.7 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012064428",
+   "reason": "frontage 50.0 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012064868",
+   "reason": "frontage 173.6 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012065427",
+   "reason": "frontage 45.4 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012065572",
+   "reason": "frontage 103.5 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012065741",
+   "reason": "frontage 59.8 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012065941",
+   "reason": "frontage 157.3 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012066007",
+   "reason": "frontage 137.8 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012066272",
+   "reason": "frontage 120.1 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012066487",
+   "reason": "frontage 79.2 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012066806",
+   "reason": "frontage 89.9 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012066992",
+   "reason": "frontage 159.1 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012067375",
+   "reason": "frontage 205.9 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012067779",
+   "reason": "sightline to Jan van Galenstraat crosses 0363100012099392"
+  },
+  {
+   "pandId": "0363100012068152",
+   "reason": "frontage 124.6 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012068528",
+   "reason": "frontage 200.6 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012068576",
+   "reason": "frontage 45.3 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012068579",
+   "reason": "frontage 102.9 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012068745",
+   "reason": "sightline to Jan van Galenstraat crosses 0363100012064954"
+  },
+  {
+   "pandId": "0363100012069801",
+   "reason": "frontage 52.6 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012070549",
+   "reason": "frontage 123.4 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012070791",
+   "reason": "frontage 168.8 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012071058",
+   "reason": "frontage 80.8 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012071698",
+   "reason": "frontage 122.9 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012071754",
+   "reason": "frontage 207.6 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012071938",
+   "reason": "frontage 188.5 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012072237",
+   "reason": "frontage 81.6 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012072687",
+   "reason": "frontage 194.6 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012072845",
+   "reason": "frontage 45.6 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012073009",
+   "reason": "frontage 105.9 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012073086",
+   "reason": "frontage 137.9 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012074955",
+   "reason": "frontage 173.5 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012075147",
+   "reason": "sightline to Jan van Galenstraat crosses 0363100012080759"
+  },
+  {
+   "pandId": "0363100012076832",
+   "reason": "frontage 120.4 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012076927",
+   "reason": "frontage 106.9 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012077211",
+   "reason": "frontage 80.2 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012077850",
+   "reason": "frontage 49.6 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012077897",
+   "reason": "frontage 173.8 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012078117",
+   "reason": "frontage 54.6 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012078501",
+   "reason": "frontage 122.8 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012078570",
+   "reason": "frontage 137.6 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012078751",
+   "reason": "frontage 124.8 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012079241",
+   "reason": "frontage 34.0 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012080059",
+   "reason": "frontage 35.3 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012080163",
+   "reason": "frontage 55.4 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012080232",
+   "reason": "frontage 109.1 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012080535",
+   "reason": "frontage 121.0 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012080563",
+   "reason": "frontage 43.8 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012081651",
+   "reason": "sightline to Jan van Galenstraat crosses 0363100012064954"
+  },
+  {
+   "pandId": "0363100012081763",
+   "reason": "frontage 173.2 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012081944",
+   "reason": "frontage 46.5 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012082078",
+   "reason": "frontage 40.4 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012082134",
+   "reason": "frontage 52.8 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012082179",
+   "reason": "frontage 131.9 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012082665",
+   "reason": "frontage 92.8 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012082688",
+   "reason": "frontage 89.5 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012083007",
+   "reason": "frontage 209.3 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012084234",
+   "reason": "frontage 107.9 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012084608",
+   "reason": "frontage 79.8 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012084818",
+   "reason": "frontage 39.2 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012085374",
+   "reason": "frontage 126.8 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012085378",
+   "reason": "frontage 84.6 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012086172",
+   "reason": "frontage 45.8 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012086547",
+   "reason": "frontage 78.2 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012086716",
+   "reason": "frontage 96.9 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012087231",
+   "reason": "frontage 80.6 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012087901",
+   "reason": "frontage 48.6 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012087932",
+   "reason": "frontage 79.5 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012088049",
+   "reason": "frontage 65.2 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012088285",
+   "reason": "frontage 109.3 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012089234",
+   "reason": "frontage 45.4 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012089477",
+   "reason": "frontage 34.0 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012089525",
+   "reason": "frontage 155.6 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012089590",
+   "reason": "frontage 117.3 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012089597",
+   "reason": "frontage 207.7 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012089839",
+   "reason": "frontage 120.6 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012089879",
+   "reason": "frontage 65.4 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012089939",
+   "reason": "frontage 104.0 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012090526",
+   "reason": "frontage 181.8 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012090556",
+   "reason": "frontage 146.5 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012091714",
+   "reason": "frontage 121.8 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012091986",
+   "reason": "sightline to Jan van Galenstraat crosses 0363100012116545"
+  },
+  {
+   "pandId": "0363100012092940",
+   "reason": "frontage 45.2 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012093140",
+   "reason": "frontage 45.5 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012093157",
+   "reason": "frontage 118.0 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012093475",
+   "reason": "frontage 120.8 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012093651",
+   "reason": "frontage 32.4 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012093972",
+   "reason": "frontage 201.3 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012094528",
+   "reason": "frontage 78.3 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012094565",
+   "reason": "frontage 77.3 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012094710",
+   "reason": "frontage 59.1 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012094754",
+   "reason": "frontage 114.1 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012094763",
+   "reason": "frontage 174.4 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012094828",
+   "reason": "frontage 186.6 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012095340",
+   "reason": "frontage 120.1 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012095569",
+   "reason": "frontage 48.4 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012096543",
+   "reason": "frontage 71.4 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012096558",
+   "reason": "frontage 83.9 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012097195",
+   "reason": "frontage 98.5 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012097459",
+   "reason": "frontage 138.4 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012097466",
+   "reason": "frontage 42.0 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012097706",
+   "reason": "frontage 128.6 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012098196",
+   "reason": "frontage 120.9 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012098573",
+   "reason": "frontage 134.4 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012098683",
+   "reason": "frontage 165.1 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012099110",
+   "reason": "frontage 80.8 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012099158",
+   "reason": "frontage 42.0 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012099392",
+   "reason": "sightline to Jan van Galenstraat crosses 0363100012142535"
+  },
+  {
+   "pandId": "0363100012099598",
+   "reason": "frontage 93.3 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012099817",
+   "reason": "frontage 79.4 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012100119",
+   "reason": "frontage 119.8 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012100158",
+   "reason": "frontage 95.0 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012100357",
+   "reason": "frontage 155.8 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012100523",
+   "reason": "frontage 45.7 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012100638",
+   "reason": "frontage 145.9 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012100954",
+   "reason": "frontage 177.1 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012101077",
+   "reason": "frontage 88.2 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012102409",
+   "reason": "frontage 71.1 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012102963",
+   "reason": "frontage 68.1 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012103103",
+   "reason": "frontage 114.8 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012103132",
+   "reason": "frontage 80.4 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012103157",
+   "reason": "frontage 153.7 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012103581",
+   "reason": "sightline to Jan van Galenstraat crosses 0363100012099128"
+  },
+  {
+   "pandId": "0363100012103630",
+   "reason": "frontage 79.1 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012103635",
+   "reason": "frontage 118.7 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012104220",
+   "reason": "frontage 137.8 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012104480",
+   "reason": "frontage 120.2 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012104481",
+   "reason": "frontage 120.1 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012104745",
+   "reason": "frontage 51.8 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012104799",
+   "reason": "frontage 126.2 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012105923",
+   "reason": "frontage 45.0 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012105956",
+   "reason": "frontage 207.5 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012106056",
+   "reason": "frontage 35.2 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012106164",
+   "reason": "frontage 111.3 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012106345",
+   "reason": "frontage 64.8 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012106542",
+   "reason": "frontage 65.9 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012106765",
+   "reason": "frontage 113.0 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012107114",
+   "reason": "frontage 80.9 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012107755",
+   "reason": "frontage 101.8 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012107813",
+   "reason": "frontage 173.5 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012108334",
+   "reason": "frontage 77.2 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012108466",
+   "reason": "frontage 111.8 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012108844",
+   "reason": "sightline to Jan van Galenstraat crosses 0363100012126595"
+  },
+  {
+   "pandId": "0363100012108933",
+   "reason": "frontage 88.6 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012109065",
+   "reason": "frontage 40.3 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012109667",
+   "reason": "frontage 207.8 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012109847",
+   "reason": "frontage 80.7 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012110115",
+   "reason": "frontage 71.2 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012110652",
+   "reason": "frontage 100.0 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012110829",
+   "reason": "frontage 101.2 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012110893",
+   "reason": "frontage 49.6 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012110920",
+   "reason": "frontage 83.6 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012110942",
+   "reason": "frontage 111.3 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012111609",
+   "reason": "frontage 34.3 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012111802",
+   "reason": "frontage 111.9 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012111921",
+   "reason": "frontage 45.2 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012112343",
+   "reason": "frontage 42.7 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012112405",
+   "reason": "frontage 130.2 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012112884",
+   "reason": "frontage 78.0 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012113093",
+   "reason": "frontage 44.7 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012114190",
+   "reason": "frontage 45.1 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012114256",
+   "reason": "frontage 136.3 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012114449",
+   "reason": "frontage 44.0 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012114752",
+   "reason": "frontage 45.7 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012115512",
+   "reason": "frontage 45.6 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012115570",
+   "reason": "frontage 173.9 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012116210",
+   "reason": "frontage 43.4 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012116463",
+   "reason": "frontage 45.3 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012117681",
+   "reason": "frontage 183.1 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012117865",
+   "reason": "frontage 173.3 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012118713",
+   "reason": "frontage 138.7 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012119151",
+   "reason": "sightline to Jan van Galenstraat crosses 0363100012075147"
+  },
+  {
+   "pandId": "0363100012119180",
+   "reason": "frontage 58.7 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012119334",
+   "reason": "frontage 79.3 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012119704",
+   "reason": "sightline to Jan van Galenstraat crosses 0363100012099392"
+  },
+  {
+   "pandId": "0363100012120072",
+   "reason": "frontage 40.2 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012121115",
+   "reason": "frontage 120.7 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012121373",
+   "reason": "frontage 145.9 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012121629",
+   "reason": "frontage 45.5 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012121647",
+   "reason": "frontage 137.6 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012122142",
+   "reason": "frontage 77.9 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012122418",
+   "reason": "frontage 113.8 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012122456",
+   "reason": "frontage 120.3 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012122849",
+   "reason": "frontage 178.0 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012123335",
+   "reason": "frontage 112.7 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012123427",
+   "reason": "frontage 173.4 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012123892",
+   "reason": "frontage 123.7 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012124181",
+   "reason": "frontage 45.7 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012124221",
+   "reason": "frontage 99.8 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012124337",
+   "reason": "frontage 208.3 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012124479",
+   "reason": "frontage 115.5 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012124495",
+   "reason": "frontage 80.6 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012124502",
+   "reason": "frontage 79.1 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012124663",
+   "reason": "frontage 40.2 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012124914",
+   "reason": "frontage 46.4 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012125953",
+   "reason": "frontage 138.0 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012126346",
+   "reason": "frontage 43.9 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012126592",
+   "reason": "frontage 41.9 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012126627",
+   "reason": "frontage 99.4 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012127749",
+   "reason": "frontage 99.8 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012128385",
+   "reason": "frontage 46.5 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012128490",
+   "reason": "frontage 71.8 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012128652",
+   "reason": "frontage 207.3 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012129410",
+   "reason": "frontage 42.0 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012129570",
+   "reason": "frontage 78.1 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012129606",
+   "reason": "frontage 71.7 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012129908",
+   "reason": "frontage 176.4 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012131030",
+   "reason": "frontage 73.1 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012131416",
+   "reason": "frontage 156.0 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012132169",
+   "reason": "frontage 195.2 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012132371",
+   "reason": "frontage 173.2 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012132461",
+   "reason": "frontage 45.0 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012132905",
+   "reason": "frontage 146.2 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012133359",
+   "reason": "frontage 93.7 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012133485",
+   "reason": "frontage 76.4 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012133699",
+   "reason": "frontage 97.6 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012133707",
+   "reason": "frontage 156.0 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012133746",
+   "reason": "frontage 207.9 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012135602",
+   "reason": "frontage 42.0 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012137482",
+   "reason": "frontage 173.1 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012138672",
+   "reason": "frontage 205.1 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012138695",
+   "reason": "frontage 157.4 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012139215",
+   "reason": "frontage 120.7 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012139273",
+   "reason": "frontage 95.7 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012139647",
+   "reason": "frontage 175.3 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012140237",
+   "reason": "frontage 95.7 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012140401",
+   "reason": "frontage 138.2 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012140619",
+   "reason": "frontage 173.3 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012141120",
+   "reason": "frontage 90.8 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012141390",
+   "reason": "frontage 46.8 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012141674",
+   "reason": "frontage 174.7 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012142006",
+   "reason": "frontage 79.4 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012142349",
+   "reason": "frontage 80.6 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012142777",
+   "reason": "frontage 130.6 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012143406",
+   "reason": "frontage 78.5 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012144291",
+   "reason": "frontage 171.1 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012144404",
+   "reason": "frontage 45.8 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012144446",
+   "reason": "frontage 37.7 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012145241",
+   "reason": "frontage 31.9 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012145712",
+   "reason": "frontage 124.1 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012145738",
+   "reason": "frontage 174.3 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012145888",
+   "reason": "frontage 45.0 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012146032",
+   "reason": "frontage 101.0 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012146039",
+   "reason": "frontage 45.7 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012146057",
+   "reason": "frontage 80.4 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012147232",
+   "reason": "frontage 76.7 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012148081",
+   "reason": "frontage 93.0 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012148568",
+   "reason": "frontage 105.8 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012149051",
+   "reason": "frontage 84.6 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012149193",
+   "reason": "frontage 120.2 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012149656",
+   "reason": "frontage 53.6 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012149997",
+   "reason": "frontage 146.3 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012151165",
+   "reason": "frontage 43.8 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012151495",
+   "reason": "frontage 43.8 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012152115",
+   "reason": "frontage 71.5 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012152159",
+   "reason": "frontage 189.1 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012153896",
+   "reason": "frontage 96.0 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012154644",
+   "reason": "frontage 81.0 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012183198",
+   "reason": "frontage 189.4 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012183311",
+   "reason": "frontage 118.5 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012183312",
+   "reason": "frontage 112.4 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012183701",
+   "reason": "frontage 200.6 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012183702",
+   "reason": "sightline to Jan van Galenstraat crosses 0363100012099109"
+  },
+  {
+   "pandId": "0363100012183939",
+   "reason": "sightline to Jan van Galenstraat crosses 0363100012110462"
+  },
+  {
+   "pandId": "0363100012184706",
+   "reason": "frontage 88.1 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012185080",
+   "reason": "sightline to Jan van Galenstraat crosses 0363100012123697"
+  },
+  {
+   "pandId": "0363100012185321",
+   "reason": "frontage 34.0 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012186303",
+   "reason": "frontage 115.4 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012186467",
+   "reason": "frontage 102.7 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012186651",
+   "reason": "frontage 34.1 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012187380",
+   "reason": "frontage 109.0 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012188265",
+   "reason": "frontage 117.1 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012188581",
+   "reason": "frontage 195.4 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012188883",
+   "reason": "frontage 127.2 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012189979",
+   "reason": "frontage 96.9 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012189980",
+   "reason": "frontage 97.0 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012189994",
+   "reason": "frontage 196.0 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012190176",
+   "reason": "sightline to Jan van Galenstraat crosses 0363100012142659"
+  },
+  {
+   "pandId": "0363100012190954",
+   "reason": "frontage 65.3 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012191446",
+   "reason": "frontage 52.7 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012191473",
+   "reason": "frontage 96.7 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012192588",
+   "reason": "frontage 46.4 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012192724",
+   "reason": "no frontage on Jan van Galenstraat: No footprint edge faces Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012192801",
+   "reason": "frontage 198.1 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012192884",
+   "reason": "frontage 196.1 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012193333",
+   "reason": "frontage 122.7 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012195050",
+   "reason": "frontage 149.9 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012195399",
+   "reason": "frontage 127.5 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012195483",
+   "reason": "frontage 102.9 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012195964",
+   "reason": "frontage 127.5 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012196103",
+   "reason": "frontage 96.6 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012196139",
+   "reason": "frontage 153.3 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012196363",
+   "reason": "frontage 100.2 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012196393",
+   "reason": "frontage 194.8 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012196488",
+   "reason": "sightline to Jan van Galenstraat crosses 0363100012143344"
+  },
+  {
+   "pandId": "0363100012196540",
+   "reason": "frontage 34.2 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012196677",
+   "reason": "frontage 102.8 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012197149",
+   "reason": "sightline to Jan van Galenstraat crosses 0363100012064954"
+  },
+  {
+   "pandId": "0363100012197357",
+   "reason": "frontage 127.7 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012197784",
+   "reason": "frontage 71.6 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012198537",
+   "reason": "frontage 125.2 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012199178",
+   "reason": "frontage 104.9 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012200465",
+   "reason": "frontage 34.0 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012200538",
+   "reason": "frontage 191.9 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012200689",
+   "reason": "frontage 125.6 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012200859",
+   "reason": "frontage 94.2 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012201179",
+   "reason": "frontage 30.5 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012201356",
+   "reason": "frontage 176.7 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012201490",
+   "reason": "frontage 136.7 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012201497",
+   "reason": "frontage 142.8 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012203156",
+   "reason": "sightline to Jan van Galenstraat crosses 0363100012110462"
+  },
+  {
+   "pandId": "0363100012203165",
+   "reason": "frontage 96.8 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012203414",
+   "reason": "frontage 31.5 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012203488",
+   "reason": "frontage 36.0 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012203502",
+   "reason": "frontage 35.5 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012203673",
+   "reason": "frontage 195.3 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012203716",
+   "reason": "frontage 126.3 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012203892",
+   "reason": "frontage 195.5 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012204308",
+   "reason": "frontage 160.4 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012204309",
+   "reason": "frontage 33.0 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012204341",
+   "reason": "frontage 105.3 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012204836",
+   "reason": "frontage 128.1 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012204952",
+   "reason": "frontage 34.1 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012204953",
+   "reason": "frontage 33.7 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012204954",
+   "reason": "frontage 33.7 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012204955",
+   "reason": "frontage 33.9 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012204956",
+   "reason": "frontage 33.9 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012204957",
+   "reason": "frontage 33.5 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012205041",
+   "reason": "frontage 197.0 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012205735",
+   "reason": "frontage 127.9 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012205763",
+   "reason": "frontage 186.2 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012206546",
+   "reason": "frontage 196.2 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012207350",
+   "reason": "sightline to Jan van Galenstraat crosses 0363100012099109"
+  },
+  {
+   "pandId": "0363100012207755",
+   "reason": "frontage 127.8 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012207906",
+   "reason": "frontage 110.9 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012208541",
+   "reason": "frontage 105.1 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012208561",
+   "reason": "frontage 195.7 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012209025",
+   "reason": "frontage 128.0 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012209082",
+   "reason": "frontage 103.0 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012209115",
+   "reason": "frontage 104.9 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012209165",
+   "reason": "frontage 108.1 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012209356",
+   "reason": "frontage 40.1 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012210080",
+   "reason": "frontage 161.4 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012210395",
+   "reason": "frontage 195.9 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012210521",
+   "reason": "frontage 175.5 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012210599",
+   "reason": "frontage 36.0 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012211078",
+   "reason": "frontage 31.8 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012211769",
+   "reason": "frontage 102.4 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012211823",
+   "reason": "frontage 173.5 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012211915",
+   "reason": "frontage 96.5 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012212037",
+   "reason": "frontage 194.8 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012212042",
+   "reason": "frontage 100.2 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012212102",
+   "reason": "frontage 82.4 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012212103",
+   "reason": "frontage 76.6 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012212722",
+   "reason": "sightline to Jan van Galenstraat crosses 0363100012084175"
+  },
+  {
+   "pandId": "0363100012213665",
+   "reason": "frontage 99.0 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012213896",
+   "reason": "sightline to Jan van Galenstraat crosses 0363100012099109"
+  },
+  {
+   "pandId": "0363100012214006",
+   "reason": "no frontage on Jan van Galenstraat: No footprint edge faces Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012214007",
+   "reason": "frontage 127.0 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012214707",
+   "reason": "frontage 188.7 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012214708",
+   "reason": "frontage 194.4 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012214804",
+   "reason": "frontage 102.6 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012215690",
+   "reason": "frontage 106.3 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012215944",
+   "reason": "frontage 127.9 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012217251",
+   "reason": "frontage 195.7 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012217586",
+   "reason": "frontage 31.0 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012217881",
+   "reason": "frontage 46.4 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012218144",
+   "reason": "frontage 128.1 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012218181",
+   "reason": "frontage 194.0 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012218990",
+   "reason": "frontage 101.0 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012219258",
+   "reason": "frontage 104.5 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012220076",
+   "reason": "frontage 34.2 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012220077",
+   "reason": "frontage 40.2 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012220429",
+   "reason": "frontage 105.3 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012220438",
+   "reason": "frontage 77.9 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012220443",
+   "reason": "frontage 70.8 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012221100",
+   "reason": "sightline to Jan van Galenstraat crosses 0363100012126811"
+  },
+  {
+   "pandId": "0363100012221209",
+   "reason": "no frontage on Jan van Galenstraat: No footprint edge faces Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012221494",
+   "reason": "frontage 189.3 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012221793",
+   "reason": "frontage 197.0 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012222329",
+   "reason": "frontage 34.0 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012222566",
+   "reason": "frontage 31.6 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012222568",
+   "reason": "frontage 31.2 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012222569",
+   "reason": "frontage 31.2 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012222570",
+   "reason": "frontage 31.4 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012222571",
+   "reason": "frontage 31.4 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012222572",
+   "reason": "frontage 31.0 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012224350",
+   "reason": "frontage 100.2 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012224694",
+   "reason": "frontage 34.0 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012225797",
+   "reason": "frontage 106.3 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012226035",
+   "reason": "frontage 128.1 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012226036",
+   "reason": "frontage 129.2 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012226688",
+   "reason": "frontage 111.0 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012227870",
+   "reason": "frontage 33.5 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012227871",
+   "reason": "frontage 33.6 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012227939",
+   "reason": "frontage 33.6 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012227940",
+   "reason": "frontage 33.3 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012227941",
+   "reason": "frontage 33.3 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012227942",
+   "reason": "frontage 34.0 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012227943",
+   "reason": "frontage 33.9 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012228426",
+   "reason": "frontage 130.6 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012228427",
+   "reason": "frontage 128.4 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012228802",
+   "reason": "frontage 120.0 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012229058",
+   "reason": "frontage 200.4 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012229159",
+   "reason": "sightline to Jan van Galenstraat crosses 0363100012143344"
+  },
+  {
+   "pandId": "0363100012229262",
+   "reason": "frontage 102.4 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012229274",
+   "reason": "sightline to Jan van Galenstraat crosses 0363100012099109"
+  },
+  {
+   "pandId": "0363100012229560",
+   "reason": "frontage 52.5 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012229823",
+   "reason": "frontage 164.7 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012230910",
+   "reason": "frontage 59.0 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012231254",
+   "reason": "frontage 30.8 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012231482",
+   "reason": "frontage 64.7 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012232028",
+   "reason": "frontage 102.5 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012232544",
+   "reason": "sightline to Jan van Galenstraat crosses 0363100012123697"
+  },
+  {
+   "pandId": "0363100012232625",
+   "reason": "frontage 96.9 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012232829",
+   "reason": "frontage 96.6 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012233990",
+   "reason": "frontage 110.9 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012234108",
+   "reason": "frontage 194.7 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012234669",
+   "reason": "frontage 34.0 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012234815",
+   "reason": "frontage 100.1 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012234955",
+   "reason": "frontage 102.3 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012235049",
+   "reason": "frontage 105.1 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012235161",
+   "reason": "frontage 58.6 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012235654",
+   "reason": "frontage 33.0 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012570830",
+   "reason": "frontage 36.9 m from Jan van Galenstraat"
+  },
+  {
+   "pandId": "0363100012064954",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012099128",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012099815",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012100885",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012102783",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012105138",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012113418",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012116545",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012119917",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012120596",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012121119",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012124476",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012126595",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012150103",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012150718",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 180,
+ "pands": [
+  {
+   "pandId": "0363100012100410",
+   "alongM": -91.65,
+   "widthM": 6.11,
+   "eavesM": 13.93,
+   "roofMaxM": 16.71,
+   "storeys3dbag": 5,
+   "builtYear": 1933,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012126499",
+   "alongM": -85.54,
+   "widthM": 6.11,
+   "eavesM": 14.04,
+   "roofMaxM": 16.91,
+   "storeys3dbag": 5,
+   "builtYear": 1933,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012077081",
+   "alongM": -79.43,
+   "widthM": 6.11,
+   "eavesM": 13.84,
+   "roofMaxM": 16.68,
+   "storeys3dbag": 5,
+   "builtYear": 1933,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012121206",
+   "alongM": -73.32,
+   "widthM": 6.11,
+   "eavesM": 14.08,
+   "roofMaxM": 16.67,
+   "storeys3dbag": 5,
+   "builtYear": 1933,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012118984",
+   "alongM": -67.21,
+   "widthM": 6.11,
+   "eavesM": 13.86,
+   "roofMaxM": 16.67,
+   "storeys3dbag": 5,
+   "builtYear": 1933,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012124911",
+   "alongM": -61.05,
+   "widthM": 6.02,
+   "eavesM": 13.84,
+   "roofMaxM": 16.67,
+   "storeys3dbag": 5,
+   "builtYear": 1933,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012084175",
+   "alongM": -54.99,
+   "widthM": 6.11,
+   "eavesM": 13.87,
+   "roofMaxM": 16.64,
+   "storeys3dbag": 5,
+   "builtYear": 1933,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012143344",
+   "alongM": -48.88,
+   "widthM": 6.11,
+   "eavesM": 14,
+   "roofMaxM": 16.83,
+   "storeys3dbag": 5,
+   "builtYear": 1933,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012110462",
+   "alongM": -42.77,
+   "widthM": 6.11,
+   "eavesM": 13.88,
+   "roofMaxM": 16.71,
+   "storeys3dbag": 5,
+   "builtYear": 1933,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012142659",
+   "alongM": -36.66,
+   "widthM": 6.11,
+   "eavesM": 13.86,
+   "roofMaxM": 17.88,
+   "storeys3dbag": 5,
+   "builtYear": 1933,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012123697",
+   "alongM": -30.56,
+   "widthM": 6.08,
+   "eavesM": 14.74,
+   "roofMaxM": 17.63,
+   "storeys3dbag": 5,
+   "builtYear": 1933,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012126811",
+   "alongM": -21.38,
+   "widthM": 12.22,
+   "eavesM": 15.02,
+   "roofMaxM": 17.8,
+   "storeys3dbag": 5,
+   "builtYear": 1933,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012148775",
+   "alongM": -12.22,
+   "widthM": 6.11,
+   "eavesM": 15.01,
+   "roofMaxM": 17.87,
+   "storeys3dbag": 5,
+   "builtYear": 1933,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012064565",
+   "alongM": -6.11,
+   "widthM": 6.11,
+   "eavesM": 14.49,
+   "roofMaxM": 17.37,
+   "storeys3dbag": 5,
+   "builtYear": 1933,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012099109",
+   "alongM": 0,
+   "widthM": 6.11,
+   "eavesM": 14.55,
+   "roofMaxM": 17.42,
+   "storeys3dbag": 5,
+   "builtYear": 1933,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  }
+ ]
+}

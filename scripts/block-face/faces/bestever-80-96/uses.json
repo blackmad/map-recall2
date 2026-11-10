@@ -1,0 +1,144 @@
+{
+ "street": "Bestevâerstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched n/a (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012114797",
+   "addresses": [
+    "Bestevâerstraat 96"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bestevâerstraat 96-H",
+     "use": "woonfunctie",
+     "areaM2": 117,
+     "bagId": "0363010000608766"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012065696",
+   "addresses": [
+    "Bestevâerstraat 94"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bestevâerstraat 94-H",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000582635"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012150285",
+   "addresses": [
+    "Bestevâerstraat 92"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bestevâerstraat 92-H",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000582627"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012084867",
+   "addresses": [
+    "Bestevâerstraat 90"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bestevâerstraat 90-H",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000582619"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012126627",
+   "addresses": [
+    "Bestevâerstraat 88"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bestevâerstraat 88-H",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010000582611"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012099598",
+   "addresses": [
+    "Bestevâerstraat 86"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bestevâerstraat 86-H",
+     "use": "woonfunctie",
+     "areaM2": 85,
+     "bagId": "0363010000582603"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012072237",
+   "addresses": [
+    "Bestevâerstraat 82",
+    "Bestevâerstraat 84"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bestevâerstraat 82-H",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010000582587"
+    },
+    {
+     "address": "Bestevâerstraat 84-H",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000582595"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012131030",
+   "addresses": [
+    "Bestevâerstraat 80"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bloys van Treslongstraat 64",
+     "use": "woonfunctie",
+     "areaM2": 39,
+     "bagId": "0363010000589583"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

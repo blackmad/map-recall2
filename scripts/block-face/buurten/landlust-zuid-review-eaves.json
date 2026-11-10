@@ -1,0 +1,20 @@
+{
+ "note": "Reviewer eaves pins (src/canalRecall/blockFace/reviewEaves.ts), Opus strip verdict 2026-11-10.",
+ "pins": [
+  {
+   "pandId": "0363100012066626",
+   "eavesM": 10.65,
+   "reason": "Callenburgstraat 27: the photo eaves run continuous across the 8 pands of the run at 10.65 m; the model stepped down 0.5 m"
+  },
+  {
+   "pandId": "0363100012063567",
+   "eavesM": 10.65,
+   "reason": "Callenburgstraat 31: as 27, the row line 10.65 m"
+  },
+  {
+   "pandId": "0363100012114763",
+   "eavesM": 10.1,
+   "reason": "Haenstraat 19: one eaves line with no. 15 in the photo; the model's +0.94 m step is a lone 3DBAG outlier"
+  }
+ ]
+}

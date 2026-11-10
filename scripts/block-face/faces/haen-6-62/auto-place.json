@@ -1,0 +1,824 @@
+{
+ "face": "haen-6-62",
+ "street": "Jan den Haenstraat",
+ "library": "landlust",
+ "stripDate": "2024-11-21",
+ "seconds": 13.12,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [
+  {
+   "face": "haen-6-62-r1",
+   "pands": [
+    "0363100012107347"
+   ],
+   "passed": true,
+   "triangles": 2566
+  },
+  {
+   "face": "haen-6-62-r2",
+   "pands": [
+    "0363100012084532"
+   ],
+   "passed": true,
+   "triangles": 2731
+  },
+  {
+   "face": "haen-6-62-r3",
+   "pands": [
+    "0363100012102574"
+   ],
+   "passed": true,
+   "triangles": 2695
+  }
+ ],
+ "pands": [
+  {
+   "pandId": "0363100012117545",
+   "address": "Jan den Haenstraat 32",
+   "builtYear": 1935,
+   "widthM": 12.8,
+   "eavesM": 13.03,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#9e6c4c",
+    "wallRaw": "#7e5e43",
+    "skyline": {
+     "eavesM": 16.93,
+     "eavesRow": 78,
+     "confidence": 0.63,
+     "crown": {
+      "widthM": 1.13,
+      "riseM": 1.95,
+      "topWidthM": 0.38,
+      "centre": 0.05
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.037,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 12.2,
+       "widthM": 2.02,
+       "centre": 0.91
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.05
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best landlust-1935-slot-block-four scores 0.69 < 0.7 (strip cornice 16.93 m vs the type's 12.9 m)",
+   "best": {
+    "type": "landlust-1935-slot-block-four",
+    "score": 0.69,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 16.93 m vs the type's 12.9 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.03 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012107347",
+   "address": "Jan den Haenstraat 28",
+   "builtYear": 1935,
+   "widthM": 12.79,
+   "eavesM": 13.03,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#846043",
+    "wallRaw": "#836246",
+    "skyline": {
+     "eavesM": 15.3,
+     "eavesRow": 143,
+     "confidence": 0.57,
+     "crown": {
+      "widthM": 1.57,
+      "riseM": 2.68,
+      "topWidthM": 0.4,
+      "centre": 0.07
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.021,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 12.13,
+       "widthM": 1.9,
+       "centre": 0.2
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.03
+   },
+   "status": "placed",
+   "type": "landlust-1935-slot-block-four",
+   "score": 1,
+   "placement": {
+    "type": "landlust-1935-slot-block-four",
+    "measuredPalette": {
+     "brick": "#846043",
+     "evidence": "strip 2024-11-21 span 512-1024: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "door unread",
+    "crown zinc-dormers (type default)",
+    "lone pand: a stair block on its own: landlust-1935-slot-block-four opts in to one-house faces from 5 m (frontage 12.79 m)"
+   ],
+   "likeness": {
+    "pandId": "0363100012107347",
+    "ncc": 0.436,
+    "nccRaw": 0.436,
+    "shiftM": [
+     0,
+     0.1
+    ],
+    "usable": 0.93,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.17"
+    ],
+    "wall": {
+     "photo": "#846043",
+     "model": "#9f7451",
+     "dL": 0.08
+    },
+    "glazing": {
+     "photo": 0.19,
+     "model": 0.22
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.551
+   },
+   "challengers": {
+    "landlust-1935-slot-block-four": 0.436,
+    "landlust-1935-slot-block-four~m": 0.443
+   }
+  },
+  {
+   "pandId": "0363100012146143",
+   "address": "Jan den Haenstraat 26",
+   "builtYear": 1935,
+   "widthM": 6.4,
+   "eavesM": 13.03,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#825f44",
+    "wallRaw": "#856448",
+    "skyline": {
+     "eavesM": 18.27,
+     "eavesRow": 24,
+     "confidence": 0.42,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": "left",
+    "accentShare": 0.046,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 12.05,
+       "widthM": 2.13,
+       "centre": 0.18
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.03
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best landlust-1935-slot-block-four: stair block 6.4 m, type 11.8-13.6 m)",
+   "best": {
+    "type": "landlust-1935-slot-block-four",
+    "score": 0,
+    "veto": [
+     "stair block 6.4 m, type 11.8-13.6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": null,
+      "note": "strip cornice unread (type line 12.9 m; 3DBAG 13.03 m not compared)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.037 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012141001",
+   "address": "Jan den Haenstraat 24",
+   "builtYear": 1935,
+   "widthM": 6.4,
+   "eavesM": 13,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#7a5b40",
+    "wallRaw": "#785c42",
+    "skyline": {
+     "eavesM": 17.85,
+     "eavesRow": 41,
+     "confidence": 0.4,
+     "crown": {
+      "widthM": 1.02,
+      "riseM": 1.02,
+      "topWidthM": 0.5,
+      "centre": 0.82
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": "right",
+    "accentShare": 0.018,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.04
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best landlust-1935-slot-block-four: stair block 6.4 m, type 11.8-13.6 m)",
+   "best": {
+    "type": "landlust-1935-slot-block-four",
+    "score": 0,
+    "veto": [
+     "stair block 6.4 m, type 11.8-13.6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": null,
+      "note": "strip cornice unread (type line 12.9 m; 3DBAG 13 m not compared)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.015 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012084532",
+   "address": "Jan den Haenstraat 20",
+   "builtYear": 1935,
+   "widthM": 12.82,
+   "eavesM": 13.05,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#956b4d",
+    "wallRaw": "#70553c",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 755,
+     "confidence": 0.16,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.025,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.63 m at 0.53 (light 0.09): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.63,
+       "centre": 0.53,
+       "light": 0.09
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.04
+   },
+   "status": "placed",
+   "type": "landlust-1935-slot-block-four",
+   "score": 1,
+   "placement": {
+    "type": "landlust-1935-slot-block-four",
+    "measuredPalette": {
+     "brick": "#956b4d",
+     "evidence": "strip 2024-11-21 span 1536-2049: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#815f45"
+    }
+   },
+   "notes": [
+    "door unread",
+    "crown zinc-dormers (type default)",
+    "palette pinned: Haenstraat 20: model #9b7255 against photo #70533a; 60 % of the way (Opus verdict)",
+    "lone pand: a stair block on its own: landlust-1935-slot-block-four opts in to one-house faces from 5 m (frontage 12.82 m)"
+   ],
+   "likeness": {
+    "pandId": "0363100012084532",
+    "ncc": 0.421,
+    "nccRaw": 0.421,
+    "shiftM": [
+     0,
+     0.25
+    ],
+    "usable": 0.9,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.21",
+     "columns 6 vs photo 8"
+    ],
+    "wall": {
+     "photo": "#8b6446",
+     "model": "#9c7353",
+     "dL": 0.059
+    },
+    "glazing": {
+     "photo": 0.14,
+     "model": 0.23
+    },
+    "columns": {
+     "photo": 8,
+     "model": 3
+    },
+    "iou": 0.478
+   },
+   "challengers": {
+    "landlust-1935-slot-block-four": 0.421,
+    "landlust-1935-slot-block-four~m": 0.418
+   }
+  },
+  {
+   "pandId": "0363100012141696",
+   "address": "Jan den Haenstraat 16",
+   "builtYear": 1935,
+   "widthM": 12.8,
+   "eavesM": 13.01,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#9f7153",
+    "wallRaw": "#836246",
+    "skyline": {
+     "eavesM": 15.47,
+     "eavesRow": 136,
+     "confidence": 0.92,
+     "crown": {
+      "widthM": 1.5,
+      "riseM": 2,
+      "topWidthM": 0.55,
+      "centre": 0.94
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.039,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 12.2,
+       "widthM": 1.85,
+       "centre": 0.87
+      },
+      {
+       "atM": 11.9,
+       "widthM": 1,
+       "centre": 0.37
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.03
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best landlust-1935-slot-block-four scores 0.69 < 0.7 (strip cornice 15.47 m vs the type's 12.9 m)",
+   "best": {
+    "type": "landlust-1935-slot-block-four",
+    "score": 0.69,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 15.47 m vs the type's 12.9 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.032 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012102574",
+   "address": "Jan den Haenstraat 12",
+   "builtYear": 1935,
+   "widthM": 12.8,
+   "eavesM": 12.99,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#a37253",
+    "wallRaw": "#775a41",
+    "skyline": {
+     "eavesM": 17.2,
+     "eavesRow": 67,
+     "confidence": 0.38,
+     "crown": {
+      "widthM": 1.05,
+      "riseM": 1.68,
+      "topWidthM": 0.9,
+      "centre": 0.55
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.023,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 12.15,
+       "widthM": 2.05,
+       "centre": 0.09
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.04
+   },
+   "status": "placed",
+   "type": "landlust-1935-slot-block-four",
+   "score": 1,
+   "placement": {
+    "type": "landlust-1935-slot-block-four",
+    "measuredPalette": {
+     "brick": "#a37253",
+     "evidence": "strip 2024-11-21 span 2561-3073: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#88654b"
+    }
+   },
+   "notes": [
+    "door unread",
+    "crown zinc-dormers (type default)",
+    "palette pinned: Haenstraat 12: model #a1785e against photo #77583f; 60 % of the way (Opus verdict)",
+    "lone pand: a stair block on its own: landlust-1935-slot-block-four opts in to one-house faces from 5 m (frontage 12.8 m)"
+   ],
+   "likeness": {
+    "pandId": "0363100012102574",
+    "ncc": 0.368,
+    "nccRaw": 0.368,
+    "shiftM": [
+     0,
+     0.3
+    ],
+    "usable": 0.91,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.21",
+     "columns 6 vs photo 3"
+    ],
+    "wall": {
+     "photo": "#9b6e50",
+     "model": "#a27859",
+     "dL": 0.031
+    },
+    "glazing": {
+     "photo": 0.15,
+     "model": 0.22
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.493
+   },
+   "challengers": {
+    "landlust-1935-slot-block-four": 0.368,
+    "landlust-1935-slot-block-four~m": 0.367
+   }
+  },
+  {
+   "pandId": "0363100012134001",
+   "address": "Jan den Haenstraat 8",
+   "builtYear": 1935,
+   "widthM": 12.8,
+   "eavesM": 12.99,
+   "storeys3dbag": 0,
+   "bagBay": null,
+   "strip": {
+    "wall": "#7d5b41",
+    "wallRaw": "#805f44",
+    "skyline": {
+     "eavesM": 14.95,
+     "eavesRow": 157,
+     "confidence": 0.68,
+     "crown": {
+      "widthM": 1.5,
+      "riseM": 3.53,
+      "topWidthM": 0.2,
+      "centre": 0.06
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.019,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 12.07,
+       "widthM": 3.25,
+       "centre": 0.86
+      },
+      {
+       "atM": 6.75,
+       "widthM": 1.15,
+       "centre": 0.05
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.04
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best landlust-1935-slot-block-four scores 0.64 < 0.7 (strip cornice 14.95 m vs the type's 12.9 m)",
+   "best": {
+    "type": "landlust-1935-slot-block-four",
+    "score": 0.64,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 14.95 m vs the type's 12.9 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": null,
+      "note": "3DBAG bouwlagen 0 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.015 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012140027",
+   "address": "Jan den Haenstraat 6",
+   "builtYear": 1935,
+   "widthM": 6.39,
+   "eavesM": 12.96,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#7a583e",
+    "wallRaw": "#7d5c42",
+    "skyline": {
+     "eavesM": 13.47,
+     "eavesRow": 216,
+     "confidence": 1,
+     "crown": {
+      "widthM": 3.3,
+      "riseM": 4.63,
+      "topWidthM": 0.47,
+      "centre": 0.28
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": "left",
+    "accentShare": 0.018,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 11.97,
+       "widthM": 3.38,
+       "centre": 0.35
+      },
+      {
+       "atM": 11.68,
+       "widthM": 1.18,
+       "centre": 0.78
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.02
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best landlust-1935-slot-block-four: stair block 6.39 m, type 11.8-13.6 m)",
+   "best": {
+    "type": "landlust-1935-slot-block-four",
+    "score": 0,
+    "veto": [
+     "stair block 6.39 m, type 11.8-13.6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "strip cornice 13.47 m vs the type's 12.9 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.014 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

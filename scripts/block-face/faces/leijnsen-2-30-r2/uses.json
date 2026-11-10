@@ -1,0 +1,41 @@
+{
+ "street": "Jasper Leijnsenstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-09T23:32:46.723Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012137482",
+   "addresses": [
+    "Jasper Leijnsenstraat 12"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jasper Leijnsenstraat 12-H",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000688743"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012117865",
+   "addresses": [
+    "Jasper Leijnsenstraat 10"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jasper Leijnsenstraat 10-H",
+     "use": "woonfunctie",
+     "areaM2": 75,
+     "bagId": "0363010000688735"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}
