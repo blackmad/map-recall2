@@ -13,7 +13,7 @@ import {RebuildCoalescer,extrasRebuildSync} from '../../../src/canalRecall/rende
 import {treeRebuildGap} from '../../../src/canalRecall/engine/arrivalPace.ts';
 import {isAerialView} from '../../../src/canalRecall/rendererShared/aerialView.ts';
 import {TreeInstanceCache,groupOf,treesIncrementalFlag} from '../../../src/canalRecall/rendererShared/treeInstances.ts';
-import {TREE_TILE_KEEP,treeTileKeepFlag,keepTiles,DroppedTileCache} from '../../../src/canalRecall/rendererShared/treeTileKeep.ts';
+import {TREE_TILE_KEEP,treeTileKeepFlag,treeTileCachePolicy,keepTiles,DroppedTileCache} from '../../../src/canalRecall/rendererShared/treeTileKeep.ts';
 import {TREE_FADE_MS,treeFadeFlag,treeShadowFadeFlag,fadeClock,diffGroup,leavingArrays,patchTreeFadeMaterial,fadeGeometry,releaseFadeGeometry} from '../../../src/canalRecall/rendererShared/treeFade.ts';
 const {THREE} = window.CanalRecallThree;
 const MIN_ZOOM = 15.5;
@@ -76,7 +76,8 @@ export class InventoryTrees {
     // `?treeTileKeep` (lane P6 #334, rendererShared/treeTileKeep.ts): a resident tile stays while it ranks within the
     // budget plus a keep band, and a tile that leaves keeps its fetched (gzip) bytes for a while, so flying back does
     // not refetch it. Bytes, not parsed records: records and their compiled instance arrays held 24 tiles cost +6 % heap.
-    this.tileBytes=new Map();
+    // The cache holds bytes on desktop and parsed records on touch (treeTileCachePolicy, measured trade-offs there).
+    this.tileBytes=new Map();this.tileCache=treeTileCachePolicy();
     this.tileKeep=treeTileKeepFlag()?TREE_TILE_KEEP:{...TREE_TILE_KEEP,keepExtra:0,cacheMax:0};this.dropped=new DroppedTileCache(this.tileKeep);
     this.debugTileCache={restores:0,size:0,fetches:0,drops:0};
     this.origin=maplibregl.MercatorCoordinate.fromLngLat([4.9,52.37],0);
@@ -156,10 +157,10 @@ export class InventoryTrees {
     for(let x=x0;x<=x1;x++)for(let y=y0;y<=y1;y++){const key=`15/${x}/${y}`;if(this.meta.has(key))wanted.push({key,d:(x-cx)**2+(y-cy)**2});}
     wanted.sort((a,b)=>a.d-b.d);const keys=keepTiles(wanted.map(t=>t.key),this.tiles,{budget:BUDGET,keepExtra:this.tileKeep.keepExtra});
     const now=performance.now();
-    for(const key of this.tiles.keys())if(!keys.has(key)){const bytes=this.tileBytes.get(key);if(bytes)this.dropped.put(key,bytes,now);this.tileBytes.delete(key);this.tiles.delete(key);this.debugTileCache.drops++;this.residency.invalidate();}
+    for(const key of this.tiles.keys())if(!keys.has(key)){const kept=this.tileCache==='records'?{records:this.tiles.get(key)}:this.tileBytes.get(key);if(kept)this.dropped.put(key,kept,now);this.tileBytes.delete(key);this.tiles.delete(key);this.debugTileCache.drops++;this.residency.invalidate();}
     for(const [key,c] of this.pending)if(!keys.has(key)){c.abort();this.pending.delete(key);}
-    // A tile that left a moment ago comes back from its kept bytes: no fetch (decoded off the fetch queue).
-    for(const key of keys)if(!this.tiles.has(key)&&!this.pending.has(key)){const bytes=this.dropped.take(key,now);if(bytes)void this.fetchTile(key,bytes);}
+    // A tile that left a moment ago comes back from the cache with no fetch: records at once, bytes decoded first.
+    for(const key of keys)if(!this.tiles.has(key)&&!this.pending.has(key)){const kept=this.dropped.take(key,now);if(kept?.records){this.tiles.set(key,kept.records);this.residency.invalidate();this.rebuilds.request();}else if(kept)void this.fetchTile(key,kept);}
     this.debugTileCache.restores=this.dropped.restores;this.debugTileCache.size=this.dropped.size;
     this.queue=[...keys].filter(k=>!this.tiles.has(k)&&!this.pending.has(k));
     if(this.residency.needsRebuild(b,this.buildKey()))this.rebuilds.request();
@@ -181,7 +182,7 @@ export class InventoryTrees {
       const text=bytes[0]===0x1f&&bytes[1]===0x8b ? await new Response(new Blob([bytes]).stream().pipeThrough(new DecompressionStream('gzip'))).text() : new TextDecoder().decode(bytes);
       const data=JSON.parse(text);
       if(data.version!==1||data.key!==key||!Array.isArray(data.trees))throw Error('Invalid municipal tree tile');
-      if(!controller.signal.aborted&&generation===this.generation){if(!cached)this.debugTileCache.fetches++;this.tileBytes.set(key,bytes);this.tiles.set(key,data.trees);this.residency.invalidate();this.rebuilds.request();}
+      if(!controller.signal.aborted&&generation===this.generation){if(!cached)this.debugTileCache.fetches++;if(this.tileCache==='bytes')this.tileBytes.set(key,bytes);this.tiles.set(key,data.trees);this.residency.invalidate();this.rebuilds.request();}
     } catch(error){if(error.name!=='AbortError')console.warn(`Tree tile ${key} unavailable`,error);}
     finally{if(this.pending.get(key)===controller)this.pending.delete(key);this.pump();}
   }

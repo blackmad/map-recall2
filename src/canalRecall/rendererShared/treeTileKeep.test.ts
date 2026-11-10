@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 import * as THREE from 'three';
 import { InstanceCull } from './instanceCull';
-import { DroppedTileCache, keepTiles, treeTileKeepFlag } from './treeTileKeep';
+import { DroppedTileCache, keepTiles, treeTileCachePolicy, treeTileKeepFlag } from './treeTileKeep';
 import { treeShadowFadeFlag } from './treeFade';
 
 const ranked = (n: number) => Array.from({ length: n }, (_, i) => `t${i}`);
@@ -80,4 +80,14 @@ test('without extras the twin draws the mesh geometry (unchanged path)', () => {
   assert.equal(c.shadow.geometry, mesh.geometry);
   c.disposeShadow();
   assert.ok(mesh.geometry.attributes.position);
+});
+
+test('cache policy: bytes on desktop, records on touch, forced by the global', () => {
+  assert.equal(treeTileCachePolicy(false), 'bytes');
+  assert.equal(treeTileCachePolicy(true), 'records');
+  assert.equal(treeTileCachePolicy(), 'bytes', 'no matchMedia in Node: desktop');
+  (globalThis as any).__canalRecallTreeTileCache = 'records';
+  try { assert.equal(treeTileCachePolicy(false), 'records'); } finally { delete (globalThis as any).__canalRecallTreeTileCache; }
+  (globalThis as any).__canalRecallTreeTileCache = 'bytes';
+  try { assert.equal(treeTileCachePolicy(true), 'bytes'); } finally { delete (globalThis as any).__canalRecallTreeTileCache; }
 });

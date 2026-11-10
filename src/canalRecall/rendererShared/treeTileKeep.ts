@@ -22,6 +22,26 @@ export function treeTileKeepFlag(): boolean {
   return TREE_TILE_KEEP_DEFAULT;
 }
 
+/**
+ * What the dropped-tile cache holds (lane P6 #334, measured n = 3 from the air):
+ *  - 'bytes' (desktop): the fetched gzip, ~170 kB a tile. Parsed records kept their compiled instance arrays
+ *    (desktop builds incrementally) and cost +6 % heap after GC; bytes cost +2.9 %.
+ *  - 'records' (touch, a coarse pointer): the parsed records. Touch walks every tree (no compiled arrays), so they
+ *    cost no heap (-1 %), while re-parsing bytes on restore made a touch rebuild 66 ms p50 against main's 54.
+ * `?treeTileCache=bytes|records` forces one.
+ */
+export type TileCachePolicy = 'bytes' | 'records';
+
+export function treeTileCachePolicy(touch?: boolean): TileCachePolicy {
+  const g = globalThis as { __canalRecallTreeTileCache?: string; location?: { search?: string }; matchMedia?: (q: string) => { matches: boolean } };
+  const m = /[?&]treeTileCache=([^&]*)/.exec(g.location?.search ?? '');
+  const asked = g.__canalRecallTreeTileCache ?? (m ? m[1] : null);
+  if (asked === 'bytes' || asked === 'records') return asked;
+  let coarse = touch;
+  if (coarse === undefined) { try { coarse = !!g.matchMedia?.('(pointer: coarse)')?.matches; } catch { coarse = false; } }
+  return coarse ? 'records' : 'bytes';
+}
+
 export type TileKeepOptions = { budget: number; keepExtra: number; cacheMax: number; cacheMs: number };
 export const TREE_TILE_KEEP: TileKeepOptions = { budget: 12, keepExtra: 4, cacheMax: 24, cacheMs: 60_000 };
 
