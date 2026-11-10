@@ -101,7 +101,7 @@
   },
   {
    "component": "roof behind crown",
-   "what": "Haarlemmerdijk 133A: the recipe route draws the 3DBAG roof (max 11.9 m, ridge 11.7 m) behind the bell crown; the strip shows sky behind it. roof.form 'flat' and roof.source 'front' are read by the block-face compile only, not by the canal-house recipe"
+   "what": "Haarlemmerdijk 133A: the recipe route draws the 3DBAG roof behind the bell crown unless roof.source is 'front' (houseFrontRoof.ts); the strip shows sky behind it"
   }
  ],
  "facts": {

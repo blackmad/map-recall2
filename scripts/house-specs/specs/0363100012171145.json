@@ -93,6 +93,10 @@
   {
    "component": "ground storey",
    "what": "52: tall residential ground storey in stone with arched-head rails and a pilaster order; drawn as a plain tall window ground storey"
+  },
+  {
+   "component": "roof behind crown",
+   "what": "Haarlemmerstraat 52: the recipe route draws the 3DBAG roof behind the neck crown unless roof.source is 'front' (houseFrontRoof.ts); the strip shows sky behind it"
   }
  ],
  "facts": {

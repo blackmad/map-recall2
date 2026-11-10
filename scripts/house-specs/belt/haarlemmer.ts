@@ -2,7 +2,7 @@
 // Base = fromBlockFace of the lane's own r1/r2 face intents (strip-measured, photo-checked in
 // docs/reports/haarlemmer-strip-verdict-20261110.md); AMEND = the author corrections made after house:preview.
 // Writes scripts/house-specs/specs/<pandId>.json. Run: node --import tsx scripts/house-specs/belt/haarlemmer.ts
-import { existsSync, readFileSync, writeFileSync } from 'node:fs';
+import { readFileSync, writeFileSync } from 'node:fs';
 import { fromBlockFace } from '../../../src/canalRecall/houseSpec/adapters.ts';
 import { withRoute } from '../../../src/canalRecall/houseSpec/toRecipe.ts';
 import { setSpecField, specProblems, type HouseSpec, type SpecLimit } from '../../../src/canalRecall/houseSpec/spec.ts';
@@ -70,14 +70,11 @@ export const AMEND: Record<string, Amend> = {
   },
 };
 
-/** The recipe route draws the 3DBAG saddle (or hip) behind a crown; the photos show sky behind the crowns and cornices (roofs from the front). */
+/** A gabled front's 3DBAG saddle stands behind the crown in the recipe route; the strips show sky behind the crowns (roofs from the front). */
 function roofBehindCrown(pandId: string, spec: HouseSpec): SpecLimit | null {
-  const dir = `scripts/building-recipes/houses/spec-${pandId}/facts.json`;
-  if (!existsSync(dir)) return null;
-  const h = JSON.parse(readFileSync(dir, 'utf8')).heights;
   const f = spec.design.fronts?.[0] as {gable?: string} | undefined;
-  if (!h || !f?.gable || (f.gable === 'cornice' && pandId !== '0363100012176172')) return null; // the other cornice fronts draw flat behind the crown
-  return {component: 'roof behind crown', what: `${spec.address}: the recipe route draws the 3DBAG roof (max ${h.roofMaxM.toFixed(1)} m, ridge ${h.ridgeM.toFixed(1)} m) behind the ${f.gable} crown; the strip shows sky behind it. roof.form 'flat' and roof.source 'front' are read by the block-face compile only, not by the canal-house recipe`};
+  if (!f?.gable || (f.gable === 'cornice' && pandId !== '0363100012176172')) return null; // the other cornice fronts draw flat behind the crown
+  return {component: 'roof behind crown', what: `${spec.address}: the recipe route draws the 3DBAG roof behind the ${f.gable} crown unless roof.source is 'front' (houseFrontRoof.ts); the strip shows sky behind it`};
 }
 
 export function build(pandId: string): HouseSpec {
