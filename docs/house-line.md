@@ -164,32 +164,48 @@ The rule (round 2, the judgement session's ruling on #345: "brighter, not dour";
    pixel's, has caught white speklagen, frames or glare. It draws the family tone. Without a reader family, a brick
    finish compares with the nearest brick family. For example, Nieuwmarkt 0363100012182857, red brick with white bands,
    read #ceb8ae and drew pale pink-beige; it now renders #a45b4f.
-2. **`specWallDisplay(hex, {fromPixel})`, the drawn tint.**
-   - Lightness: one monotone lift, `L' = 1 - (1 - L)(1 - k)` with `k = 0.25`, floor 0.34 and ceiling 0.93. Dark
-     neutral paint takes no lift (`liftShare`).
-   - Chroma on a pixel reading: ×2.4 with the same lift share, on warm hues only (20-85 degrees).
-     - Near-neutral readings (C < 0.015 to 0.03) keep theirs.
-     - A cool cast (blue, green) keeps 35 % of its chroma.
-     - Yellow-shifted hues come half way back towards the brown tone (46 degrees): overcast readings sit 15-20 degrees
-       yellower than brick, and J2 found the pixel turns red-brown into dull brown.
-     - A hue-dependent cap (0.12 at red, 0.06 at yellow-brown) stops a lifted brown turning ochre.
-     - Finally the colour is fitted to the gamut at the same lightness and hue.
+2. **`specWallDisplay(hex, {fromPixel})`, the drawn tint** (round 3, the ruling on round 2: "relative darkness is lost and
+   the hue drifts to orange").
+   - Lightness: `L' = 1 - (1 - L)(1 - k)`, with `k = 0.2` ramped in over OKLab L 0.30-0.50 (`darkLift`) and dark neutral
+     paint taking none (`liftShare`). The lift is monotone, `dL'/dL = (1 - k) + (1 - L) k' > 0`, so it never reorders.
+     It widens the gap between a dark brown reading (L 0.41) and a red one (L 0.45), where a uniform lift compressed it.
+   - Chroma on a warm pixel reading: up to ×2.4, scaled by:
+     - the lift share;
+     - near-neutral readings: none;
+     - dark readings (OKLab L 0.38-0.46, about HSL 0.30-0.36): 35 % of the gain, so dark brown is not raised into
+       terracotta;
+     - pale readings (L 0.65-0.72 and up): none, so beige stays beige.
+   - Cool casts keep 35 % of their chroma.
+   - Hue: half of the shift past 40 degrees (the brick edge of the orange band) comes back on mid readings. Dark and pale
+     readings keep their hue.
+   - A hue cap (0.12 red, 0.06 yellow-brown) applies, then the gamut fit.
    - A family tone gets lightness only.
 
-`SPEC_WALL_HOLD` holds a pand's wall by pand number. It is empty: 182857 passes.
+`SPEC_WALL_HOLD` holds a pand's wall by pand number. It is empty: 182857 renders red-brown.
 
-Gate, both ways (2026-11-10, `house:preview` lit look, wall = `measureFacade` H2c reading of the render; spec bays held):
+Gates, round 3 (2026-11-10, `house:preview` lit look, merged main 1fd7e82bd with bays released, measure profile
+houseLine).
+- **Two runs.** The Node render is deterministic: both runs gave identical numbers. The ±0.02 seen in round 2 was code
+  drift between runs, not noise.
+- **Two render readings.**
+  - The preview's render measure (`render.wall`).
+  - The dominant non-glass, non-trim colour of the upper storeys (the wall-mode reading; the render measure still picks
+    the white trim on some fronts, e.g. 182848 drawn L 0.34, measured 0.77).
 
-| Set | Before (period colour) | Round 1 (hue kept, chroma 1) | Round 2 (final) |
-|---|---|---|---|
-| Kinkerstraat 244-332, 26 generic pands: HSL L | 0.395 | 0.436 (+0.041) | 0.413 (**+0.018**, gate ≥ 0) |
-| same: OKLab C | 0.065 | 0.032 | **0.059** (gate ≥ 0.058) |
-| 24 random pands (seed 345): HSL L | 0.389 | 0.486 | 0.464 (+0.075) |
-| same: OKLab C | 0.059 | 0.033 | 0.062 |
+| Gate | Before (period) | Round 3 |
+|---|---|---|
+| Spearman, photo measure vs render measure (n 31) | 0.32 | 0.29 |
+| Spearman, photo measure vs render wall-mode | 0.28 | 0.62 |
+| Spearman, spec photo reading vs render wall-mode (n 29) | 0.43 | **0.885** |
+| Photo-dark third below render median (wall-mode) | 7/10 | **9/10** (236219: photo measure 0.17, spec reading 0.65) |
+| Hue share in 40-60 degrees (wall-mode / render measure) | 0.39 / 0.29 | **0.26** / 0.35 |
+| Kinkerstraat 244-332, HSL L (render measure) | 0.376 | 0.359 (−0.017; the original bar is −0.03) |
+| Kinkerstraat, OKLab L (wall-mode) | 0.416 | 0.437 (+0.021) |
+| Kinkerstraat, OKLab C (render / wall-mode) | 0.065 / 0.074 | 0.045 / 0.048 (round 2's ≥ 0.058 not met) |
 
-The render measure moves by about 0.02 L between near-identical runs. The trim rule fires on 4 pands city-wide (176346,
-180181, 182849, 182857, each with a hand-set family). The register-brick branch fires on none today. Easy-houses
-families against the hand set: 9 of 12 exact, 3 adjacent, 0 wrong.
+The Kinkerstraat pands are the dark browns the ruling names (12158666, 12155496, 12236481 and 12236531 are
+kinker-315-35 and kinker-244-332). Kept dark brown, they cannot reach the period palette's chroma, which belongs to a
+saturated dark red-brown (#572816). That conflict is the user's call: `darkGain` and `darkLift` are the knobs.
 
 City-wide reach: the rule changes the wall of **425 generic-path pands** (the coverage report's
 `genericVisibleBy.wallHex`; 1,367 views carry a wall colour, 1,183 pands are hidden by installed models). The

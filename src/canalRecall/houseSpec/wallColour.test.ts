@@ -40,15 +40,26 @@ test('the easy-houses readings keep their family; order holds; lighter but never
   assert.equal(wallColourFamily(out.buff180181), 'brick-pale');
 });
 
-test('Kinkerstraat 244-332 strip readings come up (the brighter-palette constraint)', () => {
-  // Overcast strip readings of the face (H1 extract): dull brown brick rises by at least 0.08 L; the grey stucco
-  // (a neutral, partly in the dark-paint band) never darkens.
-  for (const h of ['#574434', '#4f463b', '#4c4033']) assert.ok(L(specWallDisplay(h)) - L(h) >= 0.08, h);
+test('Kinkerstraat 244-332 strip readings never darken; dark browns stay darker than red brick (round 3)', () => {
+  // Overcast strip readings of the face (H1 extract) never darken; the grey stucco (a neutral, partly in the dark-paint
+  // band) never darkens.
+  for (const h of ['#574434', '#4f463b', '#4c4033']) assert.ok(L(specWallDisplay(h)) >= L(h) - 1e-6, h);
+  // The ruling on round 2: Kinkerstraat dark brown (#5b4532, 0363100012158666) must draw darker than Evertsenstraat red
+  // brick (#6e4b44, 0363100012132952) by more than the readings differ (the dark lift ramp widens the gap).
+  assert.ok(L(specWallDisplay('#6e4b44')) - L(specWallDisplay('#5b4532')) > L('#6e4b44') - L('#5b4532'));
+  // ...and keeps a brown hue instead of turning terracotta (no pull towards 40 degrees below the dark ramp).
+  assert.ok(hue(specWallDisplay('#504030')) > 60);
+  // Monotone: a fine sweep of one hue never reorders.
+  let prev = -1; for (let v = 0.2; v <= 0.95; v += 0.01) { const c = oklabToHex([v, 0.03, 0.03]); const o = L(specWallDisplay(c)); assert.ok(o >= prev - 0.004, `monotone at ${v.toFixed(2)}`); prev = o; }
+  // Pale fronts keep their own chroma and hue (beige stays beige: 0363100012156921 #cbad90).
+  assert.ok(Math.abs(C(specWallDisplay('#cbad90')) - C('#cbad90')) < 0.004 && Math.abs(hue(specWallDisplay('#cbad90')) - hue('#cbad90')) < 2);
   for (const h of ['#797c75', '#2e302c', '#4f5148']) assert.ok(L(specWallDisplay(h)) >= L(h) - 1e-6, h);
 });
 
 test('chroma comes up with lightness on warm readings; neutrals and cool casts keep theirs; the cap stops ochre', () => {
-  for (const h of ['#574434', '#665249', '#6c594b']) assert.ok(C(specWallDisplay(h)) >= 1.8 * C(h), `${h} chroma lifted`);
+  for (const h of ['#665249', '#6c594b']) assert.ok(C(specWallDisplay(h)) >= 1.8 * C(h), `${h} chroma lifted`);
+  // A dark reading gains only part of it (round 3: dark brown is not raised into terracotta).
+  assert.ok(C(specWallDisplay('#504030')) < 1.8 * C('#504030') && C(specWallDisplay('#504030')) >= C('#504030'));
   for (const h of ['#717877', '#575351', '#343235']) assert.ok(C(specWallDisplay(h)) <= C(h) + 0.004, `${h} stays neutral`);
   // A blue-grey camera cast (Kinkerstraat area 0363100012167431 drew blue) gains no chroma.
   const cool = '#5d6270'; assert.ok(C(specWallDisplay(cool)) <= C(cool) + 0.002);

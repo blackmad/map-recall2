@@ -5,7 +5,7 @@
  "design": {
   "fronts": [
    {
-    "axisGrid": 2,
+    "axisGrid": 3,
     "storeys": 4
    }
   ],
@@ -16,9 +16,9 @@
  },
  "provenance": {
   "fronts/0/axisGrid": {
-   "source": "author",
+   "source": "reviewed",
    "confidence": 0.9,
-   "ref": "scripts/house-specs/sets/easy-houses-20261110.json (review of the pand-reference crop and the cams photo)",
+   "ref": "data/house-line/hand-set-v1.json (H5h reader A, convention docs/house-line.md §4c) axes",
    "at": "2026-11-10"
   },
   "palette/brick": {

@@ -148,3 +148,16 @@ test('trim misread: a reader family and a brick finish turn a pale reading into 
   assert.equal((houseSpecPatch({ wallHex: '#e8dccb', src: {} }, {}).specRecipe as { wallHex?: string } | undefined)?.wallHex, specWallDisplay('#e8dccb'), 'no finish, no family: the pixel');
   assert.equal(SPEC_WALL_HOLD.size, 0, 'no pand wall held (182857 draws red-brown after the rule)');
 });
+
+test('fixture: the register-brick branch of the trim rule (no spec material, no reader family)', () => {
+  // Synthetic: a pand the register calls brick (registerFinish 'brick', the register step), whose strip reading caught its
+  // white trim (#e3d9cc, pale grey-beige) and no reader has named a family. The nearest brick family's tone is drawn.
+  const feature = { type: 'Feature' as const, geometry: null, properties: { id: 'NL.IMBAG.Pand.0363100099999999', registerFinish: 'brick', constructionYear: 1890, houseSpec: { wallHex: '#e3d9cc', src: { wallHex: 'streetlevel-measured' } } } };
+  const out = withHouseSpec(feature as any).properties as any;
+  const src = specWallSource('#e3d9cc', { brick: true });
+  assert.equal(src.fromPixel, false);
+  assert.equal(out.specRecipe.wallHex, specWallDisplay(FAMILY_TONE[src.family!], { fromPixel: false }));
+  // The same reading on a front the register calls light (stucco) keeps its pixel.
+  const light = withHouseSpec({ ...feature, properties: { ...feature.properties, registerFinish: 'light' } } as any).properties as any;
+  assert.equal(light.specRecipe.wallHex, specWallDisplay('#e3d9cc'));
+});

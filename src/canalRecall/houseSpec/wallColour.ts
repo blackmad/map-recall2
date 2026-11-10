@@ -23,7 +23,7 @@
  */
 
 /** The lift constants (OKLab L, 0..1). Measured on the easy-houses set and Kinkerstraat 244-332 (docs/house-line.md §1). */
-export const SPEC_WALL_LIFT = { k: 0.25, minL: 0.34, maxL: 0.93, chroma: 2.4, maxC: 0.12, hue: { pull: 0.5, toward: 46, warm: [20, 85], capAt: [45, 70], capC: [0.12, 0.06] }, neutralC: [0.015, 0.03], coolKeep: 0.35, paint: { c0: 0.01, c1: 0.018, l0: 0.45, l1: 0.6 } } as const;
+export const SPEC_WALL_LIFT = { k: 0.2, minL: 0.34, maxL: 0.93, chroma: 2.4, maxC: 0.12, hue: { pull: 0.5, toward: 40, warm: [20, 85], capAt: [45, 70], capC: [0.12, 0.06] }, neutralC: [0.015, 0.03], coolKeep: 0.35, darkL: [0.38, 0.46], darkGain: 0.35, darkLift: [0.3, 0.5], paleL: [0.65, 0.72], paint: { c0: 0.01, c1: 0.018, l0: 0.45, l1: 0.6 } } as const;
 /**
  * How much of the lift a reading takes: all of it, except a dark neutral (black or charcoal paint), which takes none.
  * The readings are normalised to the crop's white trim (measureFacade's light-trim rule), so a painted black front
@@ -91,22 +91,33 @@ export function oklabToHex(lab: Vec3): string {
  * a yellowish brown reads ochre), then fitted to the sRGB gamut at the same lightness and hue. A family tone (`fromPixel: false`) is already a full-colour daylight tone: lightness only.
  */
 export function specWallDisplay(measuredHex: string, opts: { fromPixel?: boolean } = {}): string {
-  const [L, a, b] = hexToOklab(measuredHex), C = Math.hypot(a, b), share = liftShare(L, C), k = SPEC_WALL_LIFT.k * share;
+  const [L, a, b] = hexToOklab(measuredHex), C = Math.hypot(a, b), share = liftShare(L, C);
+  // Round 3: the lift ramps in over darkLift (none at OKLab L 0.36, all of it from 0.5). Still monotone (dL'/dL =
+  // (1 - k) + (1 - L) k' > 0, never reorders), and it widens the gap between a dark brown reading (L 0.41) and a red one
+  // (L 0.45) instead of compressing it: a dark-brown street stays darker than a red one.
+  const k = SPEC_WALL_LIFT.k * share * Math.max(0, Math.min(1, (L - SPEC_WALL_LIFT.darkLift[0]) / (SPEC_WALL_LIFT.darkLift[1] - SPEC_WALL_LIFT.darkLift[0])));
   const L2 = Math.min(SPEC_WALL_LIFT.maxL, Math.max(SPEC_WALL_LIFT.minL, 1 - (1 - L) * (1 - k)));
   if (opts.fromPixel === false || C < 1e-6) return oklabToHex([L2, a, b]);
   const lift = SPEC_WALL_LIFT, clamp = (v: number) => Math.max(0, Math.min(1, v));
   // A near-neutral reading stays neutral (its faint tint is camera cast: lifted, greys went blue or green).
   const colourful = clamp((C - lift.neutralC[0]) / (lift.neutralC[1] - lift.neutralC[0])) * share;
+  // Round 3 (the ruling on round 2: "relative darkness is lost"): a dark reading (OKLab L under darkL, about HSL 0.30-0.36)
+  // gains little chroma, so a dark brown street stays darker than a red one instead of rising into terracotta; a pale
+  // reading (over paleL) keeps its own chroma and hue, so beige stays beige rather than turning peach.
+  const darkRamp = clamp((L - lift.darkL[0]) / (lift.darkL[1] - lift.darkL[0])), dark = lift.darkGain + (1 - lift.darkGain) * darkRamp, pale = 1 - clamp((L - lift.paleL[0]) / (lift.paleL[1] - lift.paleL[0]));
+  const gain = colourful * dark * pale;
   let h = (Math.atan2(b, a) * 180) / Math.PI;
   // Only warm readings gain chroma. A cool tint (blue, green) on a wall reading is camera cast, not paint, and keeps only
   // `coolKeep` of it (0363100012167431, a grey front read blue-grey, drew lilac).
   if (h < lift.hue.warm[0] || h > lift.hue.warm[1]) return oklabToHex([L2, a * lift.coolKeep, b * lift.coolKeep]);
-  // Overcast readings sit 15-20 degrees yellower than brick (readings hue 52-72 vs the brown tone 46, J2: the pixel turns
-  // red-brown into dull brown); half of that comes back, so a lifted brown stays brown instead of turning ochre.
-  if (h > lift.hue.toward && h < lift.hue.warm[1]) h += (lift.hue.toward - h) * lift.hue.pull * colourful;
+  // Overcast readings sit yellower than brick (readings hue 52-72 vs the brown tone 46 and red-brown 33; J2: the pixel
+  // turns red-brown into dull brown). Half of the shift past `toward` (40, the brick edge of the orange band) comes back,
+  // so a lifted brown stays brown rather than orange-tan; a pale front keeps its hue.
+  // A dark reading keeps its brown hue (pulled towards 40 and given chroma, it turned terracotta).
+  if (h > lift.hue.toward) h += (lift.hue.toward - h) * lift.hue.pull * colourful * pale * darkRamp;
   const t = clamp((h - lift.hue.capAt[0]) / (lift.hue.capAt[1] - lift.hue.capAt[0]));
   const cap = lift.hue.capC[0] + (lift.hue.capC[1] - lift.hue.capC[0]) * t;
-  const C2 = Math.min(C * (1 + (lift.chroma - 1) * colourful), Math.max(C, cap));
+  const C2 = Math.min(C * (1 + (lift.chroma - 1) * gain), Math.max(C, cap));
   return oklabToHex([L2, C2 * Math.cos((h * Math.PI) / 180), C2 * Math.sin((h * Math.PI) / 180)]);
 }
 
