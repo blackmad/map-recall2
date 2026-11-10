@@ -11,6 +11,11 @@ The describe step is the one that scales: thousands of houses need a spec and no
 4. `registerRecipe.ts`/`registerFacts.ts` published fields per pand in `monument-facts.json`; how many of the pilot buurt's pands are listed.
 5. The hand truth set: a1's staged intents in the pilot buurt (count, which fields they fix). This is the agreement gate's reference.
 
+## Step 0b — judge recall pass (added 2026-11-10 after H4c)
+H4c's Jev crop judge is precise (0.92 at JUDGE_GOOD 0.5) but misses good fronts (recall 0.375), mostly dark, narrow canal fronts and fronts with sky glare above the cornice — the houses H9 and the Nassaukade demo need. Apply the label fixes from the Fable verdict on #339 (12168013 → good; 12172859, 12174042, 12170216 → bad; 12169899, 12168440, 12168604, 12173350 → marginal), then tune the judge prompt (dark painted brick and narrow fronts are normal; glare above the cornice is irrelevant; score single-building-ness separately from obstruction). Target recall ≥ 0.6 at precision ≥ 0.9 on the corrected 150 with a held-out split; cents of Jev. Redeploy JUDGE_GOOD and re-pick if met.
+
+**Crop tiers** (record in provenance): judge ≥ JUDGE_GOOD = `good` (all writers); passes the hard flags but below = `fallback` (pixel writer only, colour family and storey count, lower confidence; Jev writer skips it).
+
 ## Deliverable
 - `scripts/house-specs/describe.ts` with one writer module each in `src/canalRecall/houseSpec/writers/`: `register.ts` (uses `fromRegisterFacts`), `pixel.ts` (crop → `measureFacade` → palette/wall hex, glazing, storeys, bays from column count where confidence allows), `jev.ts` (typed judgements for `bays`, `pui`, `gable` only above the confidence the spike measured, `finish`; a hard USD budget per run and per buurt; the prompt/schema in a fixture so it is testable; responses cached by crop hash in the source-data archive), `bag.ts` (heights, year, footprint from `3dbag.json`/`facts.json`). Each writer returns a partial `HouseSpec`; `resolveSpecs` merges them; a writer never overwrites a stronger source and never invents.
 - Disagreement log: when two writers disagree on a field, record both in `provenance` notes and pick by strength; print a per-field disagreement count per buurt.
