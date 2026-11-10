@@ -23,7 +23,7 @@ import { buildPickBvhs, nearestVisibleHit } from '../../../src/canalRecall/landm
 import { anchorDistanceM, keepReachM, landmarkReachM, landmarkResidencyBudget, pastMinDwell, pickEvictions, withinReach } from '../../../src/canalRecall/landmarks/landmarkResidency.ts';
 import { popFadeFlag } from '../../../src/canalRecall/engine/popFade.ts';
 // Lane P3 (#328, `?landmarkDissolve`): a level swap dissolves (screen-door, complementary) instead of switching in one frame.
-import { DissolveWarmth, LevelDissolves, landmarkDissolveFlag } from '../../../src/canalRecall/engine/levelDissolve.ts';
+import { DissolveWarmth, LevelDissolves, NO_LEVEL, landmarkArriveFlag, landmarkDissolveFlag } from '../../../src/canalRecall/engine/levelDissolve.ts';
 import { freezeStaticMatrices } from '../../../src/canalRecall/landmarks/staticMatrices.ts';
 import { hasReleasedVertexData, releaseGeometryOnUpload, releaseVertexDataOnUpload } from '../../../src/canalRecall/landmarks/releaseVertexData.ts';
 import { SHADOW_STAND_IN_PENDING, disposeShadowStandIn, shadowStandInFor } from '../../../src/canalRecall/rendererShared/shadowStandIns.ts';
@@ -1319,6 +1319,8 @@ export class SignatureLandmarks {
       radiusMetres: Math.hypot(size.x, size.z) / 2 * placement.scale };
     this._entries.push(entry);
     this._releaseVertexData(spec, imported);
+    // Lane P4 (#330): the first appearance dissolves in (out of the batch until it ends, as a level dissolve).
+    this._startArrivalDissolve(entry);
     this._syncBatch(entry);
     this._attachShadowStandIn(entry);
     if (this._groundBase) this._applyGroundBase(entry);
@@ -1714,6 +1716,38 @@ export class SignatureLandmarks {
   }
 
   /**
+   * Whether the dissolve programs of `roots` are compiled (the fade state is created on the way). Cold variants are
+   * compiled off the frame and the caller goes in one step this time (no program links inside a frame).
+   */
+  _dissolveWarm(roots) {
+    this._levelFades ||= new LevelDissolves();
+    this._dissolveWarmth ||= new DissolveWarmth();
+    const cold = this._dissolveWarmth.cold(roots);
+    if (!cold.size) return true;
+    const frame = this.sharedFrame;
+    this._dissolveWarmth.warmUp(cold, items => {
+      const group = new THREE.Group();
+      for (const item of items) { const mesh = new THREE.Mesh(item.geometry, item.material); mesh.receiveShadow = item.receiveShadow; group.add(mesh); }
+      return group;
+    }, group => frame.compileAsync ? frame.compileAsync(group) : Promise.resolve());
+    return false;
+  }
+
+  /**
+   * Lane P4 (#330, `?landmarkArrive=0` restores the one-frame arrival): a model's first appearance dissolves in over
+   * LEVEL_DISSOLVE_MS, a level dissolve with no outgoing level; it joins the batch at the end. False: drawn at once.
+   */
+  _startArrivalDissolve(entry) {
+    if (!this.sharedFrame || !entry.holder?.visible) return false;
+    if (this._arriveOn === undefined) this._arriveOn = landmarkArriveFlag();
+    if (!this._arriveOn || !this._dissolveWarm([entry.imported])) return false;
+    this._levelFades.start(entry, entry.imported, NO_LEVEL, () => {
+      if (this._entries?.includes(entry)) { this._syncBatch(entry); this.map.triggerRepaint(); }
+    });
+    return true;
+  }
+
+  /**
    * Lane P3 (#328, `?landmarkDissolve=0` restores the one-step swap): a swap of a model on screen dissolves, the
    * incoming level drawing where the screen-door hash < t and the outgoing where it is >= t (engine/levelDissolve.ts),
    * over LEVEL_DISSOLVE_MS. A swap whose dissolve programs are not compiled yet goes in one step and has them compiled
@@ -1723,18 +1757,7 @@ export class SignatureLandmarks {
     if (!this.sharedFrame || !outgoing || !entry.holder?.visible) return false;
     if (this._dissolveOn === undefined) this._dissolveOn = landmarkDissolveFlag();
     if (!this._dissolveOn) return false;
-    this._levelFades ||= new LevelDissolves();
-    this._dissolveWarmth ||= new DissolveWarmth();
-    const cold = this._dissolveWarmth.cold([incoming, outgoing]);
-    if (cold.size) {
-      const frame = this.sharedFrame;
-      this._dissolveWarmth.warmUp(cold, items => {
-        const group = new THREE.Group();
-        for (const item of items) { const mesh = new THREE.Mesh(item.geometry, item.material); mesh.receiveShadow = item.receiveShadow; group.add(mesh); }
-        return group;
-      }, group => frame.compileAsync ? frame.compileAsync(group) : Promise.resolve());
-      return false;
-    }
+    if (!this._dissolveWarm([incoming, outgoing])) return false;
     this._levelFades.start(entry, incoming, outgoing, () => {
       entry.group.remove(outgoing);
       if (this._entries?.includes(entry)) { this._syncBatch(entry); this.map.triggerRepaint(); }

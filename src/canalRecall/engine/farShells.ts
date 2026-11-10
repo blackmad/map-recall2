@@ -15,7 +15,7 @@
 import { CELL_GRID, cellBounds, parseCellKey } from '../world/cellGrid.js';
 export { farPartHidden, nearTileCells, tileBounds } from './farHandover.js';
 import { shellOrigin } from '../world/shellMesh.js';
-import { LeavingFades, popFadeFlag } from './popFade.js';
+import { LeavingFades, farHandFadeFlag, popFadeFlag } from './popFade.js';
 
 /** A cell's SW corner in chunk metres (the far meshes' position). */
 export function farCellOrigin(key: string): [number, number] { const [i, j] = parseCellKey(key); return shellOrigin(i, j); }
@@ -84,7 +84,10 @@ export function planFarCells(lng: number, lat: number, radiusM: number, availabl
   return { want, keep };
 }
 
-type Resident = { key: string; mesh: any; parts: { tile: string; start: number; count: number; hidden: boolean }[]; triangles: number; bytes: number; gzBytes: number; fade?: { start: number; clone: any; source: any } };
+/** A part handing over (lane P4 #330): a ghost mesh drawing that part alone, fading out ('out') or in ('in'). */
+type HandGhost = { mesh: any; clone: any; start: number; dir: 'in' | 'out' };
+type Part = { tile: string; start: number; count: number; hidden: boolean; ghost?: HandGhost };
+type Resident = { key: string; mesh: any; parts: Part[]; handFade?: number; triangles: number; bytes: number; gzBytes: number; fade?: { start: number; clone: any; source: any } };
 
 export class FarShells {
   private readonly residents = new Map<string, Resident>();
@@ -100,6 +103,8 @@ export class FarShells {
   private readonly budget: { cells: number; triangles: number };
   /** `?popFade` (lane P2 #325): dropped cells dissolve out instead of vanishing. */
   private readonly leaving: LeavingFades | null = popFadeFlag() ? new LeavingFades() : null;
+  /** `?farHandFade` (lane P4 #330): the per-tile hand-over dissolves (HandGhost) instead of toggling in one frame. */
+  private readonly handFade = farHandFadeFlag();
   constructor(private readonly host: FarShellHost, options: { touch?: boolean; budget?: { cells: number; triangles: number } } = {}) {
     this.budget = options.budget ?? farShellBudget(!!options.touch);
   }
@@ -199,11 +204,69 @@ export class FarShells {
       if (!h) shown++;
       if (h === p.hidden && !force) continue;
       p.hidden = h; changed = true;
-      attribute.array.fill(h ? 1 : 0, p.start, p.start + p.count);
+      // A drawn cell (not itself dissolving in) hands the part over through a ghost: the cell's own copy of the part
+      // hides now either way, and an 'in' ghost gives it back when its dissolve ends.
+      const ghost = !force && this.handFade && r.mesh.parent && !r.fade ? this.startGhost(r, p, h ? 'out' : 'in') : false;
+      attribute.array.fill(h || ghost ? 1 : 0, p.start, p.start + p.count);
     }
     r.mesh.visible = shown > 0;
     if (changed) attribute.needsUpdate = true;
+    r.handFade = r.parts.reduce((n, p) => n + (p.ghost ? 1 : 0), 0);
     return changed;
+  }
+
+  /** A ghost of part `p` of `r` (shares every buffer but `hidden`), fading `dir`; false when no fade clone exists. */
+  private startGhost(r: Resident, p: Part, dir: 'in' | 'out', now = performance.now()): boolean {
+    this.endGhost(r, p, false);
+    const clone = this.host.fadeMaterial(dir === 'out' ? 1 : 0);
+    if (!clone) return false;
+    const THREE = this.host.THREE, src = r.mesh.geometry, g = new THREE.BufferGeometry();
+    for (const name of Object.keys(src.attributes)) if (name !== 'hidden') g.setAttribute(name, src.attributes[name]);
+    g.setIndex(src.index);
+    const n = src.getAttribute('position').count, hidden = new Uint8Array(n).fill(1);
+    hidden.fill(0, p.start, p.start + p.count);
+    g.setAttribute('hidden', new THREE.BufferAttribute(hidden, 1, false));
+    g.boundingSphere = src.boundingSphere;
+    const mesh = new THREE.Mesh(g, clone);
+    mesh.name = `${r.mesh.name}/hand`;
+    mesh.position.copy(r.mesh.position); mesh.scale.copy(r.mesh.scale);
+    mesh.castShadow = false; mesh.receiveShadow = false;
+    mesh.userData.farShell = true;
+    r.mesh.parent.add(mesh);
+    p.ghost = { mesh, clone, start: now, dir };
+    return true;
+  }
+
+  /** End part `p`'s ghost: an 'in' ghost that ran its course gives the part back to the cell (`complete`). */
+  private endGhost(r: Resident, p: Part, complete: boolean): void {
+    const gh = p.ghost;
+    if (!gh) return;
+    delete p.ghost;
+    gh.mesh.parent?.remove(gh.mesh);
+    // Only the ghost's own `hidden` buffer is freed: detach the shared attributes and index first.
+    const g = gh.mesh.geometry;
+    for (const name of Object.keys(g.attributes)) if (name !== 'hidden') g.deleteAttribute(name);
+    g.setIndex(null); g.boundingSphere = null;
+    g.dispose(); gh.clone.dispose?.();
+    if (complete && gh.dir === 'in' && !p.hidden) {
+      const attribute = r.mesh.geometry.getAttribute('hidden');
+      attribute.array.fill(0, p.start, p.start + p.count); attribute.needsUpdate = true;
+    }
+  }
+
+  /** Advance the hand-over ghosts of `r`; true while any runs. */
+  private stepGhosts(r: Resident, now: number, global: number): boolean {
+    if (!r.handFade) return false;
+    let running = 0;
+    for (const p of r.parts) {
+      const gh = p.ghost;
+      if (!gh) continue;
+      const t = (now - gh.start) / FAR_SHELL_FADE_MS;
+      if (t < 1) { gh.clone.uniforms.cityFade.value = (gh.dir === 'out' ? 1 - t : t) * global; running++; continue; }
+      this.endGhost(r, p, true);
+    }
+    r.handFade = running;
+    return true;
   }
 
   /** Whether a cell's prisms are installed and done dissolving in (the baked tier may release its mesh there, lane R4-I #253). */
@@ -220,6 +283,7 @@ export class FarShells {
         else { if (material) r.mesh.material = material; r.fade.clone.dispose?.(); delete r.fade; }
       } else if (material && r.mesh.material !== material) r.mesh.material = material; // a new look's material
       if (this.applyHidden(r)) repaint = true;
+      if (this.stepGhosts(r, now, material?.uniforms?.cityFade?.value ?? 1)) repaint = true;
     }
     if (this.leaving?.step(now, material?.uniforms?.cityFade?.value ?? 1)) repaint = true;
     if (repaint) this.host.repaint();
@@ -229,6 +293,7 @@ export class FarShells {
     const r = this.residents.get(key);
     if (!r) return;
     this.residents.delete(key);
+    for (const p of r.parts) this.endGhost(r, p, false);
     const release = () => {
       r.mesh.parent?.remove(r.mesh);
       // Detach the shared pair first: three frees the GL buffers of the attributes a disposed geometry holds.

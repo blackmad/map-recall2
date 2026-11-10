@@ -29,7 +29,8 @@
 	gl_FragColor.rgb = mix( gl_FragColor.rgb, vec3( fadeLuma ), fogFactor * ${Xl(D0*t)} );
 	gl_FragColor.rgb = mix( gl_FragColor.rgb, fogColor, fogFactor * ${Xl(O0*t)} );
 #endif`,Ox=V0(1),Zl=`uniform vec3 fogColor;
-	varying float vFogDepth;
+	varying vec3 vFogEye;
+	#define vFogDepth length( vFogEye )
 	#ifdef FOG_EXP2
 		uniform float fogDensity;
 	#else

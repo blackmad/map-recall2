@@ -133,3 +133,24 @@ test('the limit fog fragment skips the gentle fade under DEPTH_FADE_LIMIT_ONLY a
   const gentle = f.indexOf('fogFactor * '), guard = f.indexOf('#ifndef DEPTH_FADE_LIMIT_ONLY'), end = f.indexOf('#endif'), ramp = f.indexOf('limitFar');
   assert.ok(guard >= 0 && guard < gentle && gentle < end && end < ramp);
 });
+
+test('arrival (lane P4 #330): a dissolve with no outgoing level draws the newcomer on a rising band, then restores it', async () => {
+  const { LevelDissolves, NO_LEVEL, landmarkArriveFlag } = await import('./levelDissolve.js');
+  const material: any = { clone() { return { ...this, clone: this.clone }; }, uniforms: { a: { value: 1 } }, userData: {} };
+  const mesh: any = { isMesh: true, material };
+  const root = { traverse(fn: (o: any) => void) { fn(mesh); } };
+  const fades = new LevelDissolves<string>(600);
+  let done = 0;
+  fades.start('x', root, NO_LEVEL, () => { done++; }, 0);
+  assert.notEqual(mesh.material, material);
+  assert.equal(mesh.material.uniforms.lodDissolveHi.value, 0);
+  fades.step(300);
+  assert.equal(mesh.material.uniforms.lodDissolveHi.value, 0.5);
+  fades.step(600);
+  assert.equal(mesh.material, material);
+  assert.equal(done, 1);
+  const g = globalThis as { __canalRecallLandmarkArrive?: unknown; __canalRecallLandmarkDissolve?: unknown };
+  assert.equal(landmarkArriveFlag(), true);
+  g.__canalRecallLandmarkArrive = 'off'; assert.equal(landmarkArriveFlag(), false); delete g.__canalRecallLandmarkArrive;
+  g.__canalRecallLandmarkDissolve = false; assert.equal(landmarkArriveFlag(), false); delete g.__canalRecallLandmarkDissolve;
+});

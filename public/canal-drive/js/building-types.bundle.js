@@ -126,7 +126,8 @@ gl_FragColor = vec4(thinOwnerColour(vThinClass), 1.0);
 	gl_FragColor.rgb = mix( gl_FragColor.rgb, vec3( fadeLuma ), fogFactor * ${he(ka*e)} );
 	gl_FragColor.rgb = mix( gl_FragColor.rgb, fogColor, fogFactor * ${he(Ta*e)} );
 #endif`,ll=Ca(1),jn=`uniform vec3 fogColor;
-	varying float vFogDepth;
+	varying vec3 vFogEye;
+	#define vFogDepth length( vFogEye )
 	#ifdef FOG_EXP2
 		uniform float fogDensity;
 	#else

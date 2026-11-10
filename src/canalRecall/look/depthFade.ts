@@ -124,9 +124,23 @@ export function depthFadeDetail(dist: number, range: { near: number; far: number
 
 const g = (x: number) => (Number.isInteger(x) ? `${x}.0` : `${x}`);
 
-/** fog_vertex measuring the eye distance of the eye-relative world. */
+/**
+ * fog_vertex measuring the eye distance of the eye-relative world. The eye-relative POSITION is the varying and the
+ * fragment takes its length (`vFogDepth` is a macro there): a per-vertex length interpolated across a big triangle
+ * over-estimates the distance inside it (a ground quad kilometres wide read ~2 km at its near edge, and the draw
+ * limit's opaque ramp painted that ground sky-blue at IJburg; lane P4 #330, regression of P2 3ce65889f).
+ */
+// The per-vertex `vFogDepth` is still written: a fragment compiled from a bundle built before this change declares it
+// (an undeclared vertex output would fail to link and the material would vanish), and such a fragment keeps the old
+// reading until its bundle is rebuilt.
 export const DEPTH_FADE_FOG_VERTEX = /* glsl */`#ifdef USE_FOG
+	vFogEye = mvPosition.xyz;
 	vFogDepth = length( mvPosition.xyz );
+#endif`;
+/** fog_pars_vertex: the eye-relative position varying (see DEPTH_FADE_FOG_VERTEX), and the old per-vertex depth. */
+export const DEPTH_FADE_FOG_PARS_VERTEX = /* glsl */`#ifdef USE_FOG
+	varying vec3 vFogEye;
+	varying float vFogDepth;
 #endif`;
 
 /** fog_fragment: desaturate, then part-way to the haze tone (`fogColor`), between fogNear and fogFar. */
@@ -144,7 +158,8 @@ export const DEPTH_FADE_FOG_FRAGMENT = depthFadeFogFragment(1);
  * fog_pars_fragment, so it declares them itself (DEPTH_FADE_DETAIL_PARS) and the chunk then skips them.
  */
 const FOG_PARS = `uniform vec3 fogColor;
-	varying float vFogDepth;
+	varying vec3 vFogEye;
+	#define vFogDepth length( vFogEye )
 	#ifdef FOG_EXP2
 		uniform float fogDensity;
 	#else
@@ -174,6 +189,7 @@ export function installDepthFade(THREE: { ShaderChunk: Record<string, string> })
   if (installed.has(THREE.ShaderChunk)) return;
   installed.add(THREE.ShaderChunk);
   THREE.ShaderChunk.fog_vertex = DEPTH_FADE_FOG_VERTEX;
+  THREE.ShaderChunk.fog_pars_vertex = DEPTH_FADE_FOG_PARS_VERTEX;
   // `?drawLimit` (engine/drawLimit.ts, lane P2 #325): the same fade, then opaque haze at the draw limit.
   if (drawLimitFlag()) { const strength = depthFadeStrength(); THREE.ShaderChunk.fog_fragment = drawLimitFogFragment(DEPTH_FADE_DESATURATE * strength, DEPTH_FADE_HAZE * strength); }
   else THREE.ShaderChunk.fog_fragment = depthFadeFogFragment();
