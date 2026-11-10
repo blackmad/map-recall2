@@ -1,0 +1,259 @@
+{
+ "street": "Nieuwe Prinsengracht",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T07:20:27.162Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012180943",
+   "addresses": [
+    "Nieuwe Prinsengracht 62"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Prinsengracht 62-H",
+     "use": "woonfunctie",
+     "areaM2": 39,
+     "bagId": "0363010000757674"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012180939",
+   "addresses": [
+    "Nieuwe Prinsengracht 60"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Prinsengracht 60-H",
+     "use": "woonfunctie",
+     "areaM2": 28,
+     "bagId": "0363010000757670"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012180937",
+   "addresses": [
+    "Nieuwe Prinsengracht 58"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Prinsengracht 58-H",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000757666"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012180936",
+   "addresses": [
+    "Nieuwe Prinsengracht 56"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Prinsengracht 56-H",
+     "use": "woonfunctie",
+     "areaM2": 62,
+     "bagId": "0363010000757662"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012170305",
+   "addresses": [
+    "Nieuwe Prinsengracht 54"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Prinsengracht 54-H",
+     "use": "woonfunctie",
+     "areaM2": 86,
+     "bagId": "0363010000757658"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012170298",
+   "addresses": [
+    "Nieuwe Prinsengracht 52"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Prinsengracht 52-H",
+     "use": "woonfunctie",
+     "areaM2": 59,
+     "bagId": "0363010000757652"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012182930",
+   "addresses": [
+    "Nieuwe Prinsengracht 50"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Prinsengracht 50-H",
+     "use": "woonfunctie",
+     "areaM2": 62,
+     "bagId": "0363010000757647"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012182929",
+   "addresses": [
+    "Nieuwe Prinsengracht 48"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Prinsengracht 48-H",
+     "use": "woonfunctie",
+     "areaM2": 62,
+     "bagId": "0363010000757641"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012165490",
+   "addresses": [
+    "Nieuwe Prinsengracht 40",
+    "Nieuwe Prinsengracht 42",
+    "Nieuwe Prinsengracht 44",
+    "Nieuwe Prinsengracht 46"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Prinsengracht 46-H",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000757635"
+    },
+    {
+     "address": "Weesperstraat 107",
+     "use": "winkelfunctie",
+     "areaM2": 360,
+     "bagId": "0363010000864312"
+    },
+    {
+     "address": "Weesperstraat 111",
+     "use": "kantoorfunctie",
+     "areaM2": 1294,
+     "bagId": "0363010000864313"
+    },
+    {
+     "address": "Weesperstraat 113",
+     "use": "kantoorfunctie",
+     "areaM2": 6474,
+     "bagId": "0363010000864314"
+    },
+    {
+     "address": "Weesperstraat 115",
+     "use": "industriefunctie",
+     "areaM2": 421,
+     "bagId": "0363010000864315"
+    },
+    {
+     "address": "Weesperstraat 117",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000864316"
+    },
+    {
+     "address": "Nieuwe Achtergracht 49",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000940050"
+    },
+    {
+     "address": "Weesperstraat 121",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000940051"
+    },
+    {
+     "address": "Nieuwe Prinsengracht 40",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000940054"
+    },
+    {
+     "address": "Nieuwe Prinsengracht 44",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000940055"
+    },
+    {
+     "address": "Nieuwe Prinsengracht 42",
+     "use": "kantoorfunctie",
+     "areaM2": 1001,
+     "bagId": "0363010000940056"
+    }
+   ],
+   "units": 14,
+   "osm": [
+    {
+     "type": "node",
+     "id": 408396551,
+     "lngLat": [
+      4.9072382,
+      52.3630173
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:country": "NL",
+      "addr:housenumber": "113",
+      "addr:postcode": "1018VN",
+      "addr:street": "Weesperstraat",
+      "amenity": "community_centre",
+      "name": "Concern Congres Centrum"
+     },
+     "fetchedAt": "2026-11-10T07:20:27.162Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 2742802914,
+     "lngLat": [
+      4.9072059,
+      52.3630661
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "113",
+      "addr:postcode": "1018VN",
+      "addr:street": "Weesperstraat",
+      "name": "DataLab Amsterdam",
+      "office": "government",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-11-10T07:20:27.162Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

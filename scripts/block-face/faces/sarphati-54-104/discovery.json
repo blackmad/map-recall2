@@ -1,0 +1,832 @@
+{
+ "street": "Sarphatistraat",
+ "seed": "0363100012181698",
+ "members": [
+  "0363100012170296",
+  "0363100012170290",
+  "0363100012170291",
+  "0363100012170292",
+  "0363100012180927",
+  "0363100012180926",
+  "0363100012170294",
+  "0363100012170288",
+  "0363100012181695",
+  "0363100012181694",
+  "0363100012181693",
+  "0363100012181692",
+  "0363100012181698"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "trimmed at 0363100012170296 (face continues: 243487 181648 170414 170751 181010 181009 181012 181011 170700 165759 165757)"
+  },
+  {
+   "side": "right",
+   "reason": "next fronting pand 0363100012181699 10.2 m on shares no party wall (cross street or gap)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012064037",
+   "reason": "frontage 196.9 m from Sarphatistraat"
+  },
+  {
+   "pandId": "0363100012070691",
+   "reason": "frontage 136.4 m from Sarphatistraat"
+  },
+  {
+   "pandId": "0363100012081882",
+   "reason": "no frontage on Sarphatistraat: No footprint edge faces Sarphatistraat"
+  },
+  {
+   "pandId": "0363100012083563",
+   "reason": "no frontage on Sarphatistraat: No footprint edge faces Sarphatistraat"
+  },
+  {
+   "pandId": "0363100012105777",
+   "reason": "no frontage on Sarphatistraat: No footprint edge faces Sarphatistraat"
+  },
+  {
+   "pandId": "0363100012131987",
+   "reason": "no frontage on Sarphatistraat: No footprint edge faces Sarphatistraat"
+  },
+  {
+   "pandId": "0363100012145144",
+   "reason": "no frontage on Sarphatistraat: No footprint edge faces Sarphatistraat"
+  },
+  {
+   "pandId": "0363100012112869",
+   "reason": "no frontage on Sarphatistraat: No footprint edge faces Sarphatistraat"
+  },
+  {
+   "pandId": "0363100012165490",
+   "reason": "frontage 155.3 m from Sarphatistraat"
+  },
+  {
+   "pandId": "0363100012165751",
+   "reason": "frontage 66.2 m from Sarphatistraat"
+  },
+  {
+   "pandId": "0363100012165752",
+   "reason": "frontage 46.3 m from Sarphatistraat"
+  },
+  {
+   "pandId": "0363100012165754",
+   "reason": "frontage 34.1 m from Sarphatistraat"
+  },
+  {
+   "pandId": "0363100012165756",
+   "reason": "frontage 78.2 m from Sarphatistraat"
+  },
+  {
+   "pandId": "0363100012165758",
+   "reason": "frontage 51.8 m from Sarphatistraat"
+  },
+  {
+   "pandId": "0363100012165760",
+   "reason": "frontage 51.7 m from Sarphatistraat"
+  },
+  {
+   "pandId": "0363100012170293",
+   "reason": "frontage 46.3 m from Sarphatistraat"
+  },
+  {
+   "pandId": "0363100012170297",
+   "reason": "frontage 156.5 m from Sarphatistraat"
+  },
+  {
+   "pandId": "0363100012170299",
+   "reason": "frontage 76.4 m from Sarphatistraat"
+  },
+  {
+   "pandId": "0363100012170300",
+   "reason": "frontage 53.0 m from Sarphatistraat"
+  },
+  {
+   "pandId": "0363100012170301",
+   "reason": "frontage 35.1 m from Sarphatistraat"
+  },
+  {
+   "pandId": "0363100012170306",
+   "reason": "frontage 61.9 m from Sarphatistraat"
+  },
+  {
+   "pandId": "0363100012170307",
+   "reason": "frontage 61.9 m from Sarphatistraat"
+  },
+  {
+   "pandId": "0363100012170351",
+   "reason": "frontage 73.5 m from Sarphatistraat"
+  },
+  {
+   "pandId": "0363100012170352",
+   "reason": "frontage 51.8 m from Sarphatistraat"
+  },
+  {
+   "pandId": "0363100012170357",
+   "reason": "frontage 84.4 m from Sarphatistraat"
+  },
+  {
+   "pandId": "0363100012170411",
+   "reason": "no frontage on Sarphatistraat: No footprint edge faces Sarphatistraat"
+  },
+  {
+   "pandId": "0363100012170412",
+   "reason": "no frontage on Sarphatistraat: No footprint edge faces Sarphatistraat"
+  },
+  {
+   "pandId": "0363100012170413",
+   "reason": "no frontage on Sarphatistraat: No footprint edge faces Sarphatistraat"
+  },
+  {
+   "pandId": "0363100012170416",
+   "reason": "frontage 51.3 m from Sarphatistraat"
+  },
+  {
+   "pandId": "0363100012170417",
+   "reason": "frontage 50.9 m from Sarphatistraat"
+  },
+  {
+   "pandId": "0363100012170418",
+   "reason": "frontage 51.1 m from Sarphatistraat"
+  },
+  {
+   "pandId": "0363100012170468",
+   "reason": "frontage 51.0 m from Sarphatistraat"
+  },
+  {
+   "pandId": "0363100012170699",
+   "reason": "frontage 47.9 m from Sarphatistraat"
+  },
+  {
+   "pandId": "0363100012170752",
+   "reason": "frontage 35.2 m from Sarphatistraat"
+  },
+  {
+   "pandId": "0363100012170753",
+   "reason": "frontage 75.7 m from Sarphatistraat"
+  },
+  {
+   "pandId": "0363100012170757",
+   "reason": "frontage 43.6 m from Sarphatistraat"
+  },
+  {
+   "pandId": "0363100012170766",
+   "reason": "frontage 35.5 m from Sarphatistraat"
+  },
+  {
+   "pandId": "0363100012170768",
+   "reason": "frontage 33.3 m from Sarphatistraat"
+  },
+  {
+   "pandId": "0363100012170849",
+   "reason": "frontage 83.5 m from Sarphatistraat"
+  },
+  {
+   "pandId": "0363100012170850",
+   "reason": "frontage 162.5 m from Sarphatistraat"
+  },
+  {
+   "pandId": "0363100012170851",
+   "reason": "frontage 155.6 m from Sarphatistraat"
+  },
+  {
+   "pandId": "0363100012180444",
+   "reason": "frontage 63.0 m from Sarphatistraat"
+  },
+  {
+   "pandId": "0363100012180445",
+   "reason": "frontage 49.4 m from Sarphatistraat"
+  },
+  {
+   "pandId": "0363100012180446",
+   "reason": "frontage 49.3 m from Sarphatistraat"
+  },
+  {
+   "pandId": "0363100012180448",
+   "reason": "frontage 30.6 m from Sarphatistraat"
+  },
+  {
+   "pandId": "0363100012180449",
+   "reason": "frontage 59.0 m from Sarphatistraat"
+  },
+  {
+   "pandId": "0363100012180450",
+   "reason": "frontage 35.4 m from Sarphatistraat"
+  },
+  {
+   "pandId": "0363100012180451",
+   "reason": "frontage 49.3 m from Sarphatistraat"
+  },
+  {
+   "pandId": "0363100012180924",
+   "reason": "frontage 36.7 m from Sarphatistraat"
+  },
+  {
+   "pandId": "0363100012180925",
+   "reason": "frontage 35.0 m from Sarphatistraat"
+  },
+  {
+   "pandId": "0363100012180928",
+   "reason": "frontage 46.4 m from Sarphatistraat"
+  },
+  {
+   "pandId": "0363100012180994",
+   "reason": "frontage 43.0 m from Sarphatistraat"
+  },
+  {
+   "pandId": "0363100012180995",
+   "reason": "frontage 44.8 m from Sarphatistraat"
+  },
+  {
+   "pandId": "0363100012180996",
+   "reason": "frontage 46.6 m from Sarphatistraat"
+  },
+  {
+   "pandId": "0363100012180997",
+   "reason": "frontage 47.8 m from Sarphatistraat"
+  },
+  {
+   "pandId": "0363100012180998",
+   "reason": "frontage 47.7 m from Sarphatistraat"
+  },
+  {
+   "pandId": "0363100012180999",
+   "reason": "frontage 47.8 m from Sarphatistraat"
+  },
+  {
+   "pandId": "0363100012181000",
+   "reason": "frontage 44.8 m from Sarphatistraat"
+  },
+  {
+   "pandId": "0363100012181001",
+   "reason": "frontage 47.8 m from Sarphatistraat"
+  },
+  {
+   "pandId": "0363100012181002",
+   "reason": "frontage 47.8 m from Sarphatistraat"
+  },
+  {
+   "pandId": "0363100012181003",
+   "reason": "frontage 46.1 m from Sarphatistraat"
+  },
+  {
+   "pandId": "0363100012181004",
+   "reason": "frontage 44.5 m from Sarphatistraat"
+  },
+  {
+   "pandId": "0363100012181005",
+   "reason": "frontage 44.8 m from Sarphatistraat"
+  },
+  {
+   "pandId": "0363100012181006",
+   "reason": "frontage 48.3 m from Sarphatistraat"
+  },
+  {
+   "pandId": "0363100012181007",
+   "reason": "frontage 46.1 m from Sarphatistraat"
+  },
+  {
+   "pandId": "0363100012181008",
+   "reason": "frontage 36.7 m from Sarphatistraat"
+  },
+  {
+   "pandId": "0363100012181013",
+   "reason": "frontage 34.7 m from Sarphatistraat"
+  },
+  {
+   "pandId": "0363100012181080",
+   "reason": "frontage 52.2 m from Sarphatistraat"
+  },
+  {
+   "pandId": "0363100012181081",
+   "reason": "frontage 52.0 m from Sarphatistraat"
+  },
+  {
+   "pandId": "0363100012181082",
+   "reason": "frontage 35.1 m from Sarphatistraat"
+  },
+  {
+   "pandId": "0363100012181083",
+   "reason": "frontage 35.1 m from Sarphatistraat"
+  },
+  {
+   "pandId": "0363100012181084",
+   "reason": "frontage 35.1 m from Sarphatistraat"
+  },
+  {
+   "pandId": "0363100012181086",
+   "reason": "frontage 34.6 m from Sarphatistraat"
+  },
+  {
+   "pandId": "0363100012181087",
+   "reason": "frontage 34.9 m from Sarphatistraat"
+  },
+  {
+   "pandId": "0363100012181088",
+   "reason": "frontage 33.9 m from Sarphatistraat"
+  },
+  {
+   "pandId": "0363100012181089",
+   "reason": "frontage 34.6 m from Sarphatistraat"
+  },
+  {
+   "pandId": "0363100012181090",
+   "reason": "frontage 34.0 m from Sarphatistraat"
+  },
+  {
+   "pandId": "0363100012181091",
+   "reason": "frontage 35.1 m from Sarphatistraat"
+  },
+  {
+   "pandId": "0363100012181092",
+   "reason": "frontage 35.0 m from Sarphatistraat"
+  },
+  {
+   "pandId": "0363100012181097",
+   "reason": "frontage 84.0 m from Sarphatistraat"
+  },
+  {
+   "pandId": "0363100012181098",
+   "reason": "frontage 106.1 m from Sarphatistraat"
+  },
+  {
+   "pandId": "0363100012181099",
+   "reason": "frontage 84.0 m from Sarphatistraat"
+  },
+  {
+   "pandId": "0363100012181100",
+   "reason": "frontage 71.4 m from Sarphatistraat"
+  },
+  {
+   "pandId": "0363100012181101",
+   "reason": "frontage 75.8 m from Sarphatistraat"
+  },
+  {
+   "pandId": "0363100012181102",
+   "reason": "frontage 90.4 m from Sarphatistraat"
+  },
+  {
+   "pandId": "0363100012181103",
+   "reason": "frontage 84.1 m from Sarphatistraat"
+  },
+  {
+   "pandId": "0363100012181173",
+   "reason": "frontage 73.4 m from Sarphatistraat"
+  },
+  {
+   "pandId": "0363100012181174",
+   "reason": "frontage 75.5 m from Sarphatistraat"
+  },
+  {
+   "pandId": "0363100012181175",
+   "reason": "frontage 95.0 m from Sarphatistraat"
+  },
+  {
+   "pandId": "0363100012181177",
+   "reason": "frontage 83.8 m from Sarphatistraat"
+  },
+  {
+   "pandId": "0363100012181622",
+   "reason": "no frontage on Sarphatistraat: No footprint edge faces Sarphatistraat"
+  },
+  {
+   "pandId": "0363100012181690",
+   "reason": "sightline to Sarphatistraat crosses 0363100012181698"
+  },
+  {
+   "pandId": "0363100012181691",
+   "reason": "no frontage on Sarphatistraat: No footprint edge faces Sarphatistraat"
+  },
+  {
+   "pandId": "0363100012181700",
+   "reason": "frontage 35.1 m from Sarphatistraat"
+  },
+  {
+   "pandId": "0363100012181701",
+   "reason": "sightline to Sarphatistraat crosses 0363100012181708"
+  },
+  {
+   "pandId": "0363100012181705",
+   "reason": "frontage 36.3 m from Sarphatistraat"
+  },
+  {
+   "pandId": "0363100012181706",
+   "reason": "sightline to Sarphatistraat crosses 0363100012181707"
+  },
+  {
+   "pandId": "0363100012195527",
+   "reason": "no frontage on Sarphatistraat: No footprint edge faces Sarphatistraat"
+  },
+  {
+   "pandId": "0363100012205751",
+   "reason": "no frontage on Sarphatistraat: No footprint edge faces Sarphatistraat"
+  },
+  {
+   "pandId": "0363100012222392",
+   "reason": "no frontage on Sarphatistraat: No footprint edge faces Sarphatistraat"
+  },
+  {
+   "pandId": "0363100012241375",
+   "reason": "frontage 197.6 m from Sarphatistraat"
+  },
+  {
+   "pandId": "0363100012241376",
+   "reason": "frontage 213.0 m from Sarphatistraat"
+  },
+  {
+   "pandId": "0363100012241500",
+   "reason": "frontage 197.4 m from Sarphatistraat"
+  },
+  {
+   "pandId": "0363100012245513",
+   "reason": "frontage 142.0 m from Sarphatistraat"
+  },
+  {
+   "pandId": "0363100012185420",
+   "reason": "frontage 48.7 m from Sarphatistraat"
+  },
+  {
+   "pandId": "0363100012181828",
+   "reason": "frontage 183.6 m from Sarphatistraat"
+  },
+  {
+   "pandId": "0363100012181982",
+   "reason": "frontage 43.9 m from Sarphatistraat"
+  },
+  {
+   "pandId": "0363100012181983",
+   "reason": "frontage 43.7 m from Sarphatistraat"
+  },
+  {
+   "pandId": "0363100012181984",
+   "reason": "frontage 32.0 m from Sarphatistraat"
+  },
+  {
+   "pandId": "0363100012181985",
+   "reason": "frontage 65.8 m from Sarphatistraat"
+  },
+  {
+   "pandId": "0363100012182002",
+   "reason": "frontage 79.8 m from Sarphatistraat"
+  },
+  {
+   "pandId": "0363100012182022",
+   "reason": "frontage 159.8 m from Sarphatistraat"
+  },
+  {
+   "pandId": "0363100012182023",
+   "reason": "frontage 157.1 m from Sarphatistraat"
+  },
+  {
+   "pandId": "0363100012182024",
+   "reason": "frontage 156.1 m from Sarphatistraat"
+  },
+  {
+   "pandId": "0363100012182835",
+   "reason": "frontage 66.4 m from Sarphatistraat"
+  },
+  {
+   "pandId": "0363100012182836",
+   "reason": "frontage 43.7 m from Sarphatistraat"
+  },
+  {
+   "pandId": "0363100012182837",
+   "reason": "frontage 43.4 m from Sarphatistraat"
+  },
+  {
+   "pandId": "0363100012182838",
+   "reason": "frontage 66.5 m from Sarphatistraat"
+  },
+  {
+   "pandId": "0363100012182839",
+   "reason": "frontage 66.6 m from Sarphatistraat"
+  },
+  {
+   "pandId": "0363100012182918",
+   "reason": "sightline to Sarphatistraat crosses 0363100012182842"
+  },
+  {
+   "pandId": "0363100012182920",
+   "reason": "frontage 34.5 m from Sarphatistraat"
+  },
+  {
+   "pandId": "0363100012182921",
+   "reason": "frontage 72.5 m from Sarphatistraat"
+  },
+  {
+   "pandId": "0363100012182922",
+   "reason": "frontage 170.7 m from Sarphatistraat"
+  },
+  {
+   "pandId": "0363100012182923",
+   "reason": "frontage 155.3 m from Sarphatistraat"
+  },
+  {
+   "pandId": "0363100012182924",
+   "reason": "frontage 155.1 m from Sarphatistraat"
+  },
+  {
+   "pandId": "0363100012241284",
+   "reason": "frontage 35.0 m from Sarphatistraat"
+  },
+  {
+   "pandId": "0363100100092329",
+   "reason": "no frontage on Sarphatistraat: No footprint edge faces Sarphatistraat"
+  },
+  {
+   "pandId": "0363100012253824",
+   "reason": "frontage 86.2 m from Sarphatistraat"
+  },
+  {
+   "pandId": "0363100012253901",
+   "reason": "frontage 71.3 m from Sarphatistraat"
+  },
+  {
+   "pandId": "0363100012570489",
+   "reason": "frontage 35.4 m from Sarphatistraat"
+  },
+  {
+   "pandId": "0363100012165753",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012165755",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012170289",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012170415",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012170470",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012170759",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012180443",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012180447",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012181014",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012181015",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012181016",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012181017",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012181018",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012181019",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012181020",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012181021",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012181022",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012181076",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012181077",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012181078",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012181079",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012181085",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012181646",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012181702",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012181703",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012181707",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012181708",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012181709",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012181710",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012181711",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012181986",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012181999",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012182000",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012182843",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012182917",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 180,
+ "pands": [
+  {
+   "pandId": "0363100012170296",
+   "alongM": -97.46,
+   "widthM": 7.05,
+   "eavesM": 16.26,
+   "roofMaxM": 16.35,
+   "storeys3dbag": 5,
+   "builtYear": 1818,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012170290",
+   "alongM": -89.99,
+   "widthM": 7.9,
+   "eavesM": 14.48,
+   "roofMaxM": 15.77,
+   "storeys3dbag": 5,
+   "builtYear": 1873,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012170291",
+   "alongM": -82.72,
+   "widthM": 6.63,
+   "eavesM": 16.92,
+   "roofMaxM": 20.2,
+   "storeys3dbag": 5,
+   "builtYear": 1800,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012170292",
+   "alongM": -76.09,
+   "widthM": 6.64,
+   "eavesM": 16.91,
+   "roofMaxM": 20.41,
+   "storeys3dbag": 5,
+   "builtYear": 1811,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012180927",
+   "alongM": -69.61,
+   "widthM": 6.32,
+   "eavesM": 16.2,
+   "roofMaxM": 19.1,
+   "storeys3dbag": 5,
+   "builtYear": 1813,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012180926",
+   "alongM": -63.22,
+   "widthM": 6.45,
+   "eavesM": 15.6,
+   "roofMaxM": 18.78,
+   "storeys3dbag": 5,
+   "builtYear": 1807,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012170294",
+   "alongM": -55.98,
+   "widthM": 8.05,
+   "eavesM": 14.21,
+   "roofMaxM": 15.29,
+   "storeys3dbag": 4,
+   "builtYear": 1873,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012170288",
+   "alongM": -46.01,
+   "widthM": 11.88,
+   "eavesM": 17.09,
+   "roofMaxM": 19.83,
+   "storeys3dbag": 0,
+   "builtYear": 1873,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012181695",
+   "alongM": -32.57,
+   "widthM": 14.99,
+   "eavesM": 14.18,
+   "roofMaxM": 19.4,
+   "storeys3dbag": 5,
+   "builtYear": 2000,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012181694",
+   "alongM": -21.18,
+   "widthM": 7.8,
+   "eavesM": 16.96,
+   "roofMaxM": 20.52,
+   "storeys3dbag": 5,
+   "builtYear": 2002,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012181693",
+   "alongM": -13.92,
+   "widthM": 6.73,
+   "eavesM": 15.09,
+   "roofMaxM": 17.81,
+   "storeys3dbag": 4,
+   "builtYear": 1880,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012181692",
+   "alongM": -7.08,
+   "widthM": 6.95,
+   "eavesM": 13.62,
+   "roofMaxM": 16.46,
+   "storeys3dbag": 5,
+   "builtYear": 1776,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012181698",
+   "alongM": 0,
+   "widthM": 7.21,
+   "eavesM": 13.88,
+   "roofMaxM": 16.7,
+   "storeys3dbag": 5,
+   "builtYear": 1805,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  }
+ ]
+}

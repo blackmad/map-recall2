@@ -1,0 +1,451 @@
+{
+ "street": "Nieuwe Keizersgracht",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T07:12:56.158Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012181851",
+   "addresses": [
+    "Nieuwe Keizersgracht 15A",
+    "Nieuwe Keizersgracht 15D",
+    "Nieuwe Keizersgracht 15K",
+    "Nieuwe Keizersgracht 15R",
+    "Nieuwe Keizersgracht 15B",
+    "Nieuwe Keizersgracht 15C",
+    "Nieuwe Keizersgracht 15E",
+    "Nieuwe Keizersgracht 15F",
+    "Nieuwe Keizersgracht 15G",
+    "Nieuwe Keizersgracht 15H",
+    "Nieuwe Keizersgracht 15L",
+    "Nieuwe Keizersgracht 15M",
+    "Nieuwe Keizersgracht 15N",
+    "Nieuwe Keizersgracht 15P",
+    "Nieuwe Keizersgracht 15S",
+    "Nieuwe Keizersgracht 15T",
+    "Nieuwe Keizersgracht 15U",
+    "Nieuwe Keizersgracht 15V",
+    "Nieuwe Keizersgracht 15W",
+    "Nieuwe Keizersgracht 17A",
+    "Nieuwe Keizersgracht 17B",
+    "Nieuwe Keizersgracht 17C",
+    "Nieuwe Keizersgracht 17D",
+    "Nieuwe Keizersgracht 17F",
+    "Nieuwe Keizersgracht 17G",
+    "Nieuwe Keizersgracht 17H",
+    "Nieuwe Keizersgracht 17K",
+    "Nieuwe Keizersgracht 17E"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Keizersgracht 15W",
+     "use": "woonfunctie",
+     "areaM2": 20,
+     "bagId": "0363010012167205"
+    },
+    {
+     "address": "Nieuwe Keizersgracht 17F",
+     "use": "woonfunctie",
+     "areaM2": 19,
+     "bagId": "0363010012167211"
+    },
+    {
+     "address": "Nieuwe Keizersgracht 17G",
+     "use": "woonfunctie",
+     "areaM2": 18,
+     "bagId": "0363010012167212"
+    },
+    {
+     "address": "Nieuwe Keizersgracht 17H",
+     "use": "woonfunctie",
+     "areaM2": 19,
+     "bagId": "0363010012167213"
+    },
+    {
+     "address": "Nieuwe Keizersgracht 17K",
+     "use": "woonfunctie",
+     "areaM2": 18,
+     "bagId": "0363010012167214"
+    },
+    {
+     "address": "Nieuwe Keizersgracht 17E",
+     "use": "woonfunctie",
+     "areaM2": 24,
+     "bagId": "0363010012167210"
+    }
+   ],
+   "units": 50,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181852",
+   "addresses": [
+    "Nieuwe Keizersgracht 21"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Keizersgracht 21-H",
+     "use": "woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010001001839"
+    },
+    {
+     "address": "Nieuwe Keizersgracht 21-H",
+     "use": "woonfunctie",
+     "areaM2": 115,
+     "bagId": "0363010012151054"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181853",
+   "addresses": [
+    "Nieuwe Keizersgracht 23"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Keizersgracht 23-H",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 10,
+     "bagId": "0363010000755986"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181855",
+   "addresses": [
+    "Nieuwe Keizersgracht 25",
+    "Nieuwe Keizersgracht 27",
+    "Nieuwe Keizersgracht 29"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Keizersgracht 25",
+     "use": "woonfunctie",
+     "areaM2": 296,
+     "bagId": "0363010000755992"
+    }
+   ],
+   "units": 9,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012169741",
+   "addresses": [
+    "Nieuwe Keizersgracht 31"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Keizersgracht 31-H",
+     "use": "woonfunctie",
+     "areaM2": 191,
+     "bagId": "0363010001988112"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012169748",
+   "addresses": [
+    "Nieuwe Keizersgracht 33"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Keizersgracht 33-H",
+     "use": "woonfunctie",
+     "areaM2": 130,
+     "bagId": "0363010000756011"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012183011",
+   "addresses": [
+    "Nieuwe Keizersgracht 35"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Keizersgracht 35",
+     "use": "woonfunctie",
+     "areaM2": 302,
+     "bagId": "0363010000752822"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012183065",
+   "addresses": [
+    "Nieuwe Keizersgracht 37"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Keizersgracht 37-H",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000756024"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012183066",
+   "addresses": [
+    "Nieuwe Keizersgracht 39"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Keizersgracht 39-H",
+     "use": "woonfunctie",
+     "areaM2": 111,
+     "bagId": "0363010000756032"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012169746",
+   "addresses": [
+    "Nieuwe Keizersgracht 41",
+    "Nieuwe Keizersgracht 43"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Keizersgracht 43-O",
+     "use": "industriefunctie",
+     "areaM2": 128,
+     "bagId": "0363010001005221"
+    },
+    {
+     "address": "Nieuwe Keizersgracht 43-H",
+     "use": "industriefunctie",
+     "areaM2": 128,
+     "bagId": "0363010001005222"
+    },
+    {
+     "address": "Nieuwe Keizersgracht 43-1",
+     "use": "kantoorfunctie",
+     "areaM2": 130,
+     "bagId": "0363010001005223"
+    },
+    {
+     "address": "Nieuwe Keizersgracht 43-2",
+     "use": "overige gebruiksfunctie,woonfunctie",
+     "areaM2": 438,
+     "bagId": "0363010001005224"
+    },
+    {
+     "address": "Nieuwe Keizersgracht 41-H",
+     "use": "industriefunctie,woonfunctie",
+     "areaM2": 120,
+     "bagId": "0363010001037155"
+    },
+    {
+     "address": "Nieuwe Keizersgracht 41-O",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 120,
+     "bagId": "0363010001037154"
+    },
+    {
+     "address": "Nieuwe Keizersgracht 41-H",
+     "use": "woonfunctie",
+     "areaM2": 245,
+     "bagId": "0363010012099192"
+    },
+    {
+     "address": "Nieuwe Keizersgracht 43",
+     "use": "industriefunctie",
+     "areaM2": 424,
+     "bagId": "0363010012101801"
+    }
+   ],
+   "units": 13,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012169747",
+   "addresses": [
+    "Nieuwe Keizersgracht 45",
+    "Nieuwe Keizersgracht 45A",
+    "Nieuwe Keizersgracht 45B",
+    "Nieuwe Keizersgracht 45C",
+    "Nieuwe Keizersgracht 45D",
+    "Nieuwe Keizersgracht 45E"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Keizersgracht 45",
+     "use": "kantoorfunctie",
+     "areaM2": 920,
+     "bagId": "0363010000756051"
+    },
+    {
+     "address": "Nieuwe Keizersgracht 45A",
+     "use": "kantoorfunctie",
+     "areaM2": 304,
+     "bagId": "0363010012576818"
+    },
+    {
+     "address": "Nieuwe Keizersgracht 45B",
+     "use": "kantoorfunctie",
+     "areaM2": 178,
+     "bagId": "0363010012576819"
+    },
+    {
+     "address": "Nieuwe Keizersgracht 45C",
+     "use": "kantoorfunctie",
+     "areaM2": 178,
+     "bagId": "0363010012576820"
+    },
+    {
+     "address": "Nieuwe Keizersgracht 45D",
+     "use": "kantoorfunctie",
+     "areaM2": 178,
+     "bagId": "0363010012576821"
+    },
+    {
+     "address": "Nieuwe Keizersgracht 45E",
+     "use": "kantoorfunctie",
+     "areaM2": 89,
+     "bagId": "0363010012576822"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012169749",
+   "addresses": [
+    "Nieuwe Keizersgracht 51",
+    "Nieuwe Keizersgracht 51C",
+    "Nieuwe Keizersgracht 51D",
+    "Nieuwe Keizersgracht 51B",
+    "Nieuwe Keizersgracht 51A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Keizersgracht 51",
+     "use": "woonfunctie",
+     "areaM2": 263,
+     "bagId": "0363010000756062"
+    },
+    {
+     "address": "Nieuwe Keizersgracht 51C",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010012156284"
+    },
+    {
+     "address": "Nieuwe Keizersgracht 51D",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010012156285"
+    },
+    {
+     "address": "Nieuwe Keizersgracht 51B",
+     "use": "woonfunctie",
+     "areaM2": 62,
+     "bagId": "0363010012156283"
+    },
+    {
+     "address": "Nieuwe Keizersgracht 51A",
+     "use": "woonfunctie",
+     "areaM2": 124,
+     "bagId": "0363010012156282"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012183067",
+   "addresses": [
+    "Nieuwe Keizersgracht 53"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Keizersgracht 53-H",
+     "use": "woonfunctie",
+     "areaM2": 94,
+     "bagId": "0363010001005420"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012183068",
+   "addresses": [
+    "Nieuwe Keizersgracht 55"
+   ],
+   "groundUnits": [],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012183069",
+   "addresses": [
+    "Nieuwe Keizersgracht 57"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Keizersgracht 57-H",
+     "use": "woonfunctie",
+     "areaM2": 147,
+     "bagId": "0363010000756073"
+    }
+   ],
+   "units": 2,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2742811457,
+     "lngLat": [
+      4.9072206,
+      52.3657627
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "57-O",
+      "addr:postcode": "1018VC",
+      "addr:street": "Nieuwe Keizersgracht",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "tourism": "guest_house",
+      "website": "https://eatbu.nl/cozy-private-room-in-the-heart-of-amsterdam-netherlands"
+     },
+     "fetchedAt": "2026-11-10T07:12:56.158Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012170434",
+   "addresses": [
+    "Nieuwe Keizersgracht 59"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Keizersgracht 59-H",
+     "use": "woonfunctie",
+     "areaM2": 303,
+     "bagId": "0363010001001841"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  }
+ ]
+}

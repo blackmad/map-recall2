@@ -1,0 +1,185 @@
+{
+ "street": "Roetersstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T07:24:50.716Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012181190",
+   "addresses": [
+    "Roetersstraat 10"
+   ],
+   "groundUnits": [
+    {
+     "address": "Roetersstraat 10-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 106,
+     "bagId": "0363010000795455"
+    }
+   ],
+   "units": 6,
+   "osm": [
+    {
+     "type": "node",
+     "id": 679749863,
+     "lngLat": [
+      4.9105976,
+      52.3637583
+     ],
+     "tags": {
+      "amenity": "restaurant",
+      "check_date": "2026-03-31",
+      "cuisine": "Diversen",
+      "name": "Aguada"
+     },
+     "fetchedAt": "2026-11-10T07:24:50.716Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012181192",
+   "addresses": [
+    "Roetersstraat 8"
+   ],
+   "groundUnits": [
+    {
+     "address": "Roetersstraat 8-H",
+     "use": "woonfunctie",
+     "areaM2": 90,
+     "bagId": "0363010011122384"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181193",
+   "addresses": [
+    "Roetersstraat 6"
+   ],
+   "groundUnits": [
+    {
+     "address": "Roetersstraat 6-H",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 89,
+     "bagId": "0363010000996006"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181194",
+   "addresses": [
+    "Roetersstraat 4"
+   ],
+   "groundUnits": [
+    {
+     "address": "Roetersstraat 4-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000795444"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 679749862,
+     "lngLat": [
+      4.9106394,
+      52.3639011
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "4-H",
+      "addr:postcode": "1018WC",
+      "addr:street": "Roetersstraat",
+      "amenity": "restaurant",
+      "cuisine": "asian;bubble_tea",
+      "name": "Jen's Bing",
+      "opening_hours": "Mo-Su 11:00-20:00",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.jensbing.nl/"
+     },
+     "fetchedAt": "2026-11-10T07:24:50.716Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012181269",
+   "addresses": [
+    "Roetersstraat 2A",
+    "Roetersstraat 2B",
+    "Roetersstraat 2C",
+    "Roetersstraat 2E",
+    "Roetersstraat 2D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Roetersstraat 2A",
+     "use": "winkelfunctie,woonfunctie",
+     "areaM2": 91,
+     "bagId": "0363010000795441"
+    },
+    {
+     "address": "Roetersstraat 2E",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010012071260"
+    },
+    {
+     "address": "Roetersstraat 2D",
+     "use": "woonfunctie",
+     "areaM2": 59,
+     "bagId": "0363010012071261"
+    }
+   ],
+   "units": 9,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2742807242,
+     "lngLat": [
+      4.9106605,
+      52.3640148
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "2A",
+      "addr:postcode": "1018WC",
+      "addr:street": "Roetersstraat",
+      "amenity": "cafe",
+      "brand": "Bagels & Beans",
+      "brand:wikidata": "Q13433690",
+      "contact:facebook": "https://www.facebook.com/bagelsbeans",
+      "contact:twitter": "https://twitter.com/bagelsbeans",
+      "cuisine": "coffee_shop",
+      "delivery": "yes",
+      "diet:vegan": "yes",
+      "email": "roetersstraat@bagelsbeans.nl",
+      "name": "Bagels & Beans",
+      "not:brand:wikidata": "Q5140923",
+      "opening_hours": "Mo-Fr 08:00-17:00; Sa,Su 09:00-17:00",
+      "outdoor_seating": "yes",
+      "phone": "+31 20 846 4310",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "takeaway": "yes",
+      "website": "https://www.bagelsbeans.nl",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-11-10T07:24:50.716Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

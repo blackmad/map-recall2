@@ -1,0 +1,291 @@
+{
+ "street": "Sarphatistraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T07:19:51.947Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012180965",
+   "addresses": [
+    "Sarphatistraat 163"
+   ],
+   "groundUnits": [
+    {
+     "address": "Sarphatistraat 163-H",
+     "use": "woonfunctie",
+     "areaM2": 136,
+     "bagId": "0363010000804782"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 7160280376,
+     "lngLat": [
+      4.9133282,
+      52.3624877
+     ],
+     "tags": {
+      "amenity": "post_box",
+      "collection_times": "Mo-Fr 09:00",
+      "operator": "PostNL",
+      "operator:wikidata": "Q5921598",
+      "operator:wikipedia": "nl:PostNL"
+     },
+     "fetchedAt": "2026-11-10T07:19:51.947Z",
+     "match": "frontage",
+     "distanceM": 7.8
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012180966",
+   "addresses": [
+    "Sarphatistraat 165A",
+    "Sarphatistraat 165B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Sarphatistraat 165A",
+     "use": "woonfunctie",
+     "areaM2": 123,
+     "bagId": "0363010000804784"
+    },
+    {
+     "address": "Sarphatistraat 165B",
+     "use": "woonfunctie",
+     "areaM2": 126,
+     "bagId": "0363010000804785"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012180964",
+   "addresses": [
+    "Sarphatistraat 167"
+   ],
+   "groundUnits": [
+    {
+     "address": "Sarphatistraat 167-H",
+     "use": "woonfunctie",
+     "areaM2": 120,
+     "bagId": "0363010000804786"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012170677",
+   "addresses": [
+    "Sarphatistraat 169"
+   ],
+   "groundUnits": [
+    {
+     "address": "Sarphatistraat 169-H",
+     "use": "woonfunctie",
+     "areaM2": 108,
+     "bagId": "0363010000804789"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012170681",
+   "addresses": [
+    "Sarphatistraat 171"
+   ],
+   "groundUnits": [
+    {
+     "address": "Sarphatistraat 171-H",
+     "use": "woonfunctie",
+     "areaM2": 63,
+     "bagId": "0363010000804792"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012170733",
+   "addresses": [
+    "Sarphatistraat 173"
+   ],
+   "groundUnits": [
+    {
+     "address": "Sarphatistraat 173-H",
+     "use": "woonfunctie",
+     "areaM2": 154,
+     "bagId": "0363010000804796"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181393",
+   "addresses": [
+    "Sarphatistraat 175"
+   ],
+   "groundUnits": [
+    {
+     "address": "Sarphatistraat 175-H",
+     "use": "woonfunctie",
+     "areaM2": 75,
+     "bagId": "0363010000804799"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181394",
+   "addresses": [
+    "Sarphatistraat 177"
+   ],
+   "groundUnits": [
+    {
+     "address": "Sarphatistraat 177-H",
+     "use": "woonfunctie",
+     "areaM2": 126,
+     "bagId": "0363010000804806"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181458",
+   "addresses": [
+    "Sarphatistraat 179"
+   ],
+   "groundUnits": [
+    {
+     "address": "Sarphatistraat 179-H",
+     "use": "woonfunctie",
+     "areaM2": 147,
+     "bagId": "0363010000804809"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181392",
+   "addresses": [
+    "Sarphatistraat 181"
+   ],
+   "groundUnits": [
+    {
+     "address": "Sarphatistraat 181-H",
+     "use": "woonfunctie",
+     "areaM2": 155,
+     "bagId": "0363010001045107"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181464",
+   "addresses": [
+    "Sarphatistraat 183"
+   ],
+   "groundUnits": [
+    {
+     "address": "Sarphatistraat 183-H",
+     "use": "woonfunctie",
+     "areaM2": 177,
+     "bagId": "0363010000804814"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181465",
+   "addresses": [
+    "Sarphatistraat 185"
+   ],
+   "groundUnits": [
+    {
+     "address": "Sarphatistraat 185-H",
+     "use": "woonfunctie",
+     "areaM2": 126,
+     "bagId": "0363010000804817"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181391",
+   "addresses": [
+    "Sarphatistraat 187"
+   ],
+   "groundUnits": [
+    {
+     "address": "Sarphatistraat 187-H",
+     "use": "winkelfunctie",
+     "areaM2": 115,
+     "bagId": "0363010000996699"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181463",
+   "addresses": [
+    "Sarphatistraat 189"
+   ],
+   "groundUnits": [
+    {
+     "address": "Sarphatistraat 189-H",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000804825"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181466",
+   "addresses": [
+    "Sarphatistraat 191"
+   ],
+   "groundUnits": [
+    {
+     "address": "Sarphatistraat 191-H",
+     "use": "woonfunctie",
+     "areaM2": 148,
+     "bagId": "0363010000804829"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181389",
+   "addresses": [
+    "Sarphatistraat 193"
+   ],
+   "groundUnits": [
+    {
+     "address": "Sarphatistraat 193-H",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010000804832"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

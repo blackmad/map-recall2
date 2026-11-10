@@ -1,0 +1,84 @@
+{
+ "note": "Door sides pinned after reading the strip at full size (blockFace/reviewDoors.ts): the door detector reads the arched doors of Sarphatistraat 163-189 at random.",
+ "reviewed": "2026-11-10",
+ "pins": [
+  {
+   "pandId": "0363100012180965",
+   "type": "sarphati-1910-arched-tower-pair",
+   "side": "right",
+   "reason": "Sarphatistraat 163 (strip 2024-12-11, gridded 1 m): arched house door at the right end, paired with its neighbour across the party wall (pairs 163|165A, 167|169 ... 183|185 read off the strip; the detector read the sides at random)"
+  },
+  {
+   "pandId": "0363100012180966",
+   "type": "sarphati-1910-arched-tower-pair",
+   "side": "left",
+   "reason": "Sarphatistraat 165A (strip 2024-12-11, gridded 1 m): arched house door at the left end, paired with its neighbour across the party wall (pairs 163|165A, 167|169 ... 183|185 read off the strip; the detector read the sides at random)"
+  },
+  {
+   "pandId": "0363100012180964",
+   "type": "sarphati-1910-arched-tower-pair",
+   "side": "right",
+   "reason": "Sarphatistraat 167 (strip 2024-12-11, gridded 1 m): arched house door at the right end, paired with its neighbour across the party wall (pairs 163|165A, 167|169 ... 183|185 read off the strip; the detector read the sides at random)"
+  },
+  {
+   "pandId": "0363100012170677",
+   "type": "sarphati-1910-arched-tower-pair",
+   "side": "left",
+   "reason": "Sarphatistraat 169 (strip 2024-12-11, gridded 1 m): arched house door at the left end, paired with its neighbour across the party wall (pairs 163|165A, 167|169 ... 183|185 read off the strip; the detector read the sides at random)"
+  },
+  {
+   "pandId": "0363100012170681",
+   "type": "sarphati-1910-arched-tower-pair",
+   "side": "right",
+   "reason": "Sarphatistraat 171 (strip 2024-12-11, gridded 1 m): arched house door at the right end, paired with its neighbour across the party wall (pairs 163|165A, 167|169 ... 183|185 read off the strip; the detector read the sides at random)"
+  },
+  {
+   "pandId": "0363100012170733",
+   "type": "sarphati-1910-arched-tower-pair",
+   "side": "left",
+   "reason": "Sarphatistraat 173 (strip 2024-12-11, gridded 1 m): arched house door at the left end, paired with its neighbour across the party wall (pairs 163|165A, 167|169 ... 183|185 read off the strip; the detector read the sides at random)"
+  },
+  {
+   "pandId": "0363100012181393",
+   "type": "sarphati-1910-arched-tower-pair",
+   "side": "right",
+   "reason": "Sarphatistraat 175 (strip 2024-12-11, gridded 1 m): arched house door at the right end, paired with its neighbour across the party wall (pairs 163|165A, 167|169 ... 183|185 read off the strip; the detector read the sides at random)"
+  },
+  {
+   "pandId": "0363100012181394",
+   "type": "sarphati-1910-arched-tower-pair",
+   "side": "left",
+   "reason": "Sarphatistraat 177 (strip 2024-12-11, gridded 1 m): arched house door at the left end, paired with its neighbour across the party wall (pairs 163|165A, 167|169 ... 183|185 read off the strip; the detector read the sides at random)"
+  },
+  {
+   "pandId": "0363100012181458",
+   "type": "sarphati-1910-arched-tower-pair",
+   "side": "right",
+   "reason": "Sarphatistraat 179 (strip 2024-12-11, gridded 1 m): arched house door at the right end, paired with its neighbour across the party wall (pairs 163|165A, 167|169 ... 183|185 read off the strip; the detector read the sides at random)"
+  },
+  {
+   "pandId": "0363100012181392",
+   "type": "sarphati-1910-arched-tower-pair",
+   "side": "left",
+   "reason": "Sarphatistraat 181 (strip 2024-12-11, gridded 1 m): arched house door at the left end, paired with its neighbour across the party wall (pairs 163|165A, 167|169 ... 183|185 read off the strip; the detector read the sides at random)"
+  },
+  {
+   "pandId": "0363100012181464",
+   "type": "sarphati-1910-arched-tower-pair",
+   "side": "right",
+   "reason": "Sarphatistraat 183 (strip 2024-12-11, gridded 1 m): arched house door at the right end, paired with its neighbour across the party wall (pairs 163|165A, 167|169 ... 183|185 read off the strip; the detector read the sides at random)"
+  },
+  {
+   "pandId": "0363100012181465",
+   "type": "sarphati-1910-arched-tower-pair",
+   "side": "left",
+   "reason": "Sarphatistraat 185 (strip 2024-12-11, gridded 1 m): arched house door at the left end, paired with its neighbour across the party wall (pairs 163|165A, 167|169 ... 183|185 read off the strip; the detector read the sides at random)"
+  },
+  {
+   "pandId": "0363100012181463",
+   "type": "sarphati-1910-arched-tower-pair",
+   "side": "right",
+   "reason": "Sarphatistraat 189 (strip 2024-12-11, gridded 1 m): arched house door at the right end, paired with its neighbour across the party wall (pairs 163|165A, 167|169 ... 183|185 read off the strip; the detector read the sides at random)"
+  }
+ ]
+}

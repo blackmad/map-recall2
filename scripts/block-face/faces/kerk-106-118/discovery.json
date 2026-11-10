@@ -1,0 +1,288 @@
+{
+ "street": "Nieuwe Kerkstraat",
+ "seed": "0363100012183002",
+ "members": [
+  "0363100012183008",
+  "0363100012183001",
+  "0363100012183000",
+  "0363100012183003",
+  "0363100012183005",
+  "0363100012183004",
+  "0363100012183002"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "next fronting pand 0363100012170362 16.6 m on shares no party wall (cross street or gap)"
+  },
+  {
+   "side": "right",
+   "reason": "next fronting pand 0363100012169731 83.7 m on shares no party wall (cross street or gap)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012165490",
+   "reason": "frontage 112.7 m from Nieuwe Kerkstraat"
+  },
+  {
+   "pandId": "0363100012165761",
+   "reason": "frontage 41.6 m from Nieuwe Kerkstraat"
+  },
+  {
+   "pandId": "0363100012170298",
+   "reason": "frontage 113.5 m from Nieuwe Kerkstraat"
+  },
+  {
+   "pandId": "0363100012170305",
+   "reason": "frontage 113.4 m from Nieuwe Kerkstraat"
+  },
+  {
+   "pandId": "0363100012170359",
+   "reason": "frontage 51.4 m from Nieuwe Kerkstraat"
+  },
+  {
+   "pandId": "0363100012170360",
+   "reason": "frontage 63.7 m from Nieuwe Kerkstraat"
+  },
+  {
+   "pandId": "0363100012170361",
+   "reason": "frontage 51.4 m from Nieuwe Kerkstraat"
+  },
+  {
+   "pandId": "0363100012170365",
+   "reason": "frontage 47.1 m from Nieuwe Kerkstraat"
+  },
+  {
+   "pandId": "0363100012170431",
+   "reason": "frontage 36.7 m from Nieuwe Kerkstraat"
+  },
+  {
+   "pandId": "0363100012180935",
+   "reason": "frontage 125.5 m from Nieuwe Kerkstraat"
+  },
+  {
+   "pandId": "0363100012180936",
+   "reason": "frontage 113.4 m from Nieuwe Kerkstraat"
+  },
+  {
+   "pandId": "0363100012180937",
+   "reason": "frontage 113.4 m from Nieuwe Kerkstraat"
+  },
+  {
+   "pandId": "0363100012180938",
+   "reason": "frontage 119.8 m from Nieuwe Kerkstraat"
+  },
+  {
+   "pandId": "0363100012180939",
+   "reason": "frontage 113.3 m from Nieuwe Kerkstraat"
+  },
+  {
+   "pandId": "0363100012180943",
+   "reason": "frontage 113.3 m from Nieuwe Kerkstraat"
+  },
+  {
+   "pandId": "0363100012180947",
+   "reason": "frontage 32.2 m from Nieuwe Kerkstraat"
+  },
+  {
+   "pandId": "0363100012180949",
+   "reason": "sightline to Nieuwe Kerkstraat crosses 0363100012180948"
+  },
+  {
+   "pandId": "0363100012181831",
+   "reason": "frontage 34.5 m from Nieuwe Kerkstraat"
+  },
+  {
+   "pandId": "0363100012181833",
+   "reason": "frontage 47.3 m from Nieuwe Kerkstraat"
+  },
+  {
+   "pandId": "0363100012182925",
+   "reason": "frontage 48.8 m from Nieuwe Kerkstraat"
+  },
+  {
+   "pandId": "0363100012182926",
+   "reason": "frontage 48.8 m from Nieuwe Kerkstraat"
+  },
+  {
+   "pandId": "0363100012182927",
+   "reason": "frontage 51.5 m from Nieuwe Kerkstraat"
+  },
+  {
+   "pandId": "0363100012182928",
+   "reason": "frontage 51.5 m from Nieuwe Kerkstraat"
+  },
+  {
+   "pandId": "0363100012182929",
+   "reason": "frontage 113.5 m from Nieuwe Kerkstraat"
+  },
+  {
+   "pandId": "0363100012182930",
+   "reason": "frontage 113.5 m from Nieuwe Kerkstraat"
+  },
+  {
+   "pandId": "0363100012182931",
+   "reason": "frontage 38.8 m from Nieuwe Kerkstraat"
+  },
+  {
+   "pandId": "0363100012182996",
+   "reason": "frontage 42.7 m from Nieuwe Kerkstraat"
+  },
+  {
+   "pandId": "0363100012182997",
+   "reason": "frontage 34.3 m from Nieuwe Kerkstraat"
+  },
+  {
+   "pandId": "0363100012182998",
+   "reason": "sightline to Nieuwe Kerkstraat crosses 0363100012182999"
+  },
+  {
+   "pandId": "0363100012182999",
+   "reason": "sightline to Nieuwe Kerkstraat crosses 0363100012183008"
+  },
+  {
+   "pandId": "0363100012165762",
+   "reason": "frontage 30.1 m from Nieuwe Kerkstraat"
+  },
+  {
+   "pandId": "0363100012169739",
+   "reason": "frontage 62.7 m from Nieuwe Kerkstraat"
+  },
+  {
+   "pandId": "0363100012183009",
+   "reason": "frontage 60.3 m from Nieuwe Kerkstraat"
+  },
+  {
+   "pandId": "0363100012183010",
+   "reason": "frontage 60.5 m from Nieuwe Kerkstraat"
+  },
+  {
+   "pandId": "0363100012185595",
+   "reason": "frontage 62.7 m from Nieuwe Kerkstraat"
+  },
+  {
+   "pandId": "0363100012170364",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012170422",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012170425",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012170426",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012181841",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012182934",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012182935",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012182993",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012182994",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012182995",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012183006",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012183007",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012183008",
+   "alongM": -36.53,
+   "widthM": 10.4,
+   "eavesM": 12.31,
+   "roofMaxM": 12.73,
+   "storeys3dbag": 5,
+   "builtYear": 1965,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012183001",
+   "alongM": -28.55,
+   "widthM": 5.57,
+   "eavesM": 20.54,
+   "roofMaxM": 22.34,
+   "storeys3dbag": 5,
+   "builtYear": 1897,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012183000",
+   "alongM": -23.1,
+   "widthM": 5.35,
+   "eavesM": 20.57,
+   "roofMaxM": 20.66,
+   "storeys3dbag": 5,
+   "builtYear": 1897,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012183003",
+   "alongM": -17.74,
+   "widthM": 5.36,
+   "eavesM": 21.72,
+   "roofMaxM": 21.77,
+   "storeys3dbag": 5,
+   "builtYear": 1897,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012183005",
+   "alongM": -12.04,
+   "widthM": 6.03,
+   "eavesM": 16.63,
+   "roofMaxM": 18.94,
+   "storeys3dbag": 5,
+   "builtYear": 1865,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012183004",
+   "alongM": -6.02,
+   "widthM": 6.02,
+   "eavesM": 15.33,
+   "roofMaxM": 19.01,
+   "storeys3dbag": 5,
+   "builtYear": 1865,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012183002",
+   "alongM": 0,
+   "widthM": 6.02,
+   "eavesM": 15.22,
+   "roofMaxM": 18.42,
+   "storeys3dbag": 5,
+   "builtYear": 1862,
+   "uncertainty": []
+  }
+ ]
+}

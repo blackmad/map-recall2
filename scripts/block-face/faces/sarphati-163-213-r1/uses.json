@@ -1,0 +1,57 @@
+{
+ "street": "Sarphatistraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T07:19:51.947Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012180964",
+   "addresses": [
+    "Sarphatistraat 167"
+   ],
+   "groundUnits": [
+    {
+     "address": "Sarphatistraat 167-H",
+     "use": "woonfunctie",
+     "areaM2": 120,
+     "bagId": "0363010000804786"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012170677",
+   "addresses": [
+    "Sarphatistraat 169"
+   ],
+   "groundUnits": [
+    {
+     "address": "Sarphatistraat 169-H",
+     "use": "woonfunctie",
+     "areaM2": 108,
+     "bagId": "0363010000804789"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012170681",
+   "addresses": [
+    "Sarphatistraat 171"
+   ],
+   "groundUnits": [
+    {
+     "address": "Sarphatistraat 171-H",
+     "use": "woonfunctie",
+     "areaM2": 63,
+     "bagId": "0363010000804792"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  }
+ ]
+}

@@ -1,0 +1,1099 @@
+{
+ "street": "Nieuwe Achtergracht",
+ "seed": "0363100012180455",
+ "members": [
+  "0363100012180462",
+  "0363100012180455",
+  "0363100012180456",
+  "0363100012180457",
+  "0363100012180458",
+  "0363100012180452",
+  "0363100012170303",
+  "0363100012181093",
+  "0363100012181094",
+  "0363100012181095",
+  "0363100012170353",
+  "0363100012170354",
+  "0363100012170355",
+  "0363100012170356",
+  "0363100012170358",
+  "0363100012164936",
+  "0363100012164937",
+  "0363100012170469",
+  "0363100012181178",
+  "0363100012181265"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "next fronting pand 0363100012180463 28.3 m on shares no party wall (cross street or gap)"
+  },
+  {
+   "side": "right",
+   "reason": "no further pand fronts the street in the fetched area"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012165552",
+   "reason": "frontage 56.0 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012164940",
+   "reason": "sightline to Nieuwe Achtergracht crosses 0363100012170353"
+  },
+  {
+   "pandId": "0363100012165753",
+   "reason": "frontage 90.1 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012165755",
+   "reason": "frontage 38.5 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012165756",
+   "reason": "sightline to Nieuwe Achtergracht crosses 0363100012170849"
+  },
+  {
+   "pandId": "0363100012165757",
+   "reason": "frontage 141.9 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012165758",
+   "reason": "frontage 52.3 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012165759",
+   "reason": "frontage 141.7 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012165760",
+   "reason": "frontage 35.6 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012165761",
+   "reason": "frontage 135.2 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012170289",
+   "reason": "frontage 99.5 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012170290",
+   "reason": "frontage 142.2 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012170291",
+   "reason": "frontage 142.3 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012170292",
+   "reason": "frontage 142.5 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012170296",
+   "reason": "frontage 142.0 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012170298",
+   "reason": "frontage 71.4 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012170300",
+   "reason": "frontage 44.5 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012170301",
+   "reason": "frontage 80.3 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012170304",
+   "reason": "sightline to Nieuwe Achtergracht crosses 0363100012180453"
+  },
+  {
+   "pandId": "0363100012170305",
+   "reason": "frontage 71.4 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012170306",
+   "reason": "frontage 47.0 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012170307",
+   "reason": "frontage 47.0 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012170351",
+   "reason": "frontage 36.2 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012170352",
+   "reason": "frontage 35.9 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012170359",
+   "reason": "frontage 134.4 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012170360",
+   "reason": "frontage 137.1 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012170361",
+   "reason": "frontage 134.5 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012170362",
+   "reason": "frontage 146.1 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012170365",
+   "reason": "frontage 152.0 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012170411",
+   "reason": "no frontage on Nieuwe Achtergracht: No footprint edge faces Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012170414",
+   "reason": "frontage 140.6 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012170415",
+   "reason": "frontage 97.3 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012170416",
+   "reason": "frontage 57.0 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012170417",
+   "reason": "frontage 47.5 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012170418",
+   "reason": "frontage 47.9 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012164938",
+   "reason": "frontage 132.2 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012170363",
+   "reason": "frontage 187.6 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012170419",
+   "reason": "frontage 74.5 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012170431",
+   "reason": "frontage 135.6 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012170433",
+   "reason": "frontage 74.5 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012170468",
+   "reason": "frontage 44.4 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012170470",
+   "reason": "frontage 97.2 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012170472",
+   "reason": "frontage 68.8 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012170700",
+   "reason": "frontage 141.5 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012170751",
+   "reason": "frontage 140.7 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012170766",
+   "reason": "frontage 64.0 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012170848",
+   "reason": "frontage 79.8 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012180443",
+   "reason": "frontage 91.1 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012180444",
+   "reason": "frontage 41.6 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012180445",
+   "reason": "frontage 59.1 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012180446",
+   "reason": "frontage 55.0 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012180447",
+   "reason": "frontage 90.3 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012180448",
+   "reason": "frontage 82.8 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012180449",
+   "reason": "frontage 55.0 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012180450",
+   "reason": "frontage 80.6 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012180451",
+   "reason": "frontage 55.0 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012180453",
+   "reason": "sightline to Nieuwe Achtergracht crosses 0363100012180454"
+  },
+  {
+   "pandId": "0363100012180454",
+   "reason": "sightline to Nieuwe Achtergracht crosses 0363100012180462"
+  },
+  {
+   "pandId": "0363100012180459",
+   "reason": "sightline to Nieuwe Achtergracht crosses 0363100012180452"
+  },
+  {
+   "pandId": "0363100012180466",
+   "reason": "frontage 71.5 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012180467",
+   "reason": "frontage 71.4 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012180468",
+   "reason": "frontage 71.4 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012180469",
+   "reason": "frontage 74.7 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012180929",
+   "reason": "frontage 74.7 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012180930",
+   "reason": "frontage 71.7 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012180931",
+   "reason": "frontage 71.6 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012180932",
+   "reason": "frontage 71.6 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012180933",
+   "reason": "frontage 71.5 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012180934",
+   "reason": "frontage 50.8 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012180935",
+   "reason": "frontage 58.9 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012180936",
+   "reason": "frontage 71.2 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012180937",
+   "reason": "frontage 74.9 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012180938",
+   "reason": "frontage 77.3 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012180939",
+   "reason": "frontage 81.6 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012180940",
+   "reason": "frontage 123.5 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012180941",
+   "reason": "frontage 74.6 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012180942",
+   "reason": "frontage 74.6 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012180943",
+   "reason": "frontage 83.0 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012180944",
+   "reason": "frontage 69.9 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012180947",
+   "reason": "frontage 167.6 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012180949",
+   "reason": "frontage 166.6 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012181009",
+   "reason": "frontage 141.0 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012181010",
+   "reason": "frontage 140.9 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012181011",
+   "reason": "frontage 141.3 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012181012",
+   "reason": "frontage 141.2 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012181013",
+   "reason": "frontage 79.0 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012181014",
+   "reason": "frontage 97.6 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012181015",
+   "reason": "frontage 97.9 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012181016",
+   "reason": "frontage 97.8 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012181017",
+   "reason": "frontage 95.2 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012181018",
+   "reason": "frontage 96.7 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012181019",
+   "reason": "frontage 96.4 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012181020",
+   "reason": "frontage 95.6 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012181021",
+   "reason": "frontage 95.6 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012181022",
+   "reason": "frontage 98.5 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012181023",
+   "reason": "frontage 165.6 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012181076",
+   "reason": "frontage 97.0 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012181077",
+   "reason": "frontage 99.3 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012181078",
+   "reason": "frontage 99.1 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012181079",
+   "reason": "frontage 96.6 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012181080",
+   "reason": "frontage 60.6 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012181081",
+   "reason": "frontage 60.6 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012181082",
+   "reason": "frontage 80.0 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012181083",
+   "reason": "frontage 79.9 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012181084",
+   "reason": "frontage 79.8 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012181085",
+   "reason": "frontage 95.0 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012181086",
+   "reason": "frontage 79.7 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012181087",
+   "reason": "frontage 78.5 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012181088",
+   "reason": "frontage 78.2 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012181089",
+   "reason": "frontage 79.5 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012181090",
+   "reason": "frontage 78.7 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012181091",
+   "reason": "frontage 80.1 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012181092",
+   "reason": "frontage 78.6 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012180945",
+   "reason": "frontage 185.7 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012180948",
+   "reason": "frontage 178.0 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012181024",
+   "reason": "frontage 179.4 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012181100",
+   "reason": "no frontage on Nieuwe Achtergracht: No footprint edge faces Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012181101",
+   "reason": "frontage 35.8 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012181173",
+   "reason": "frontage 36.1 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012181174",
+   "reason": "frontage 36.4 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012181175",
+   "reason": "sightline to Nieuwe Achtergracht crosses 0363100012181176"
+  },
+  {
+   "pandId": "0363100012181177",
+   "reason": "sightline to Nieuwe Achtergracht crosses 0363100012181175"
+  },
+  {
+   "pandId": "0363100012181179",
+   "reason": "frontage 74.1 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012181180",
+   "reason": "frontage 74.3 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012181181",
+   "reason": "frontage 75.2 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012181182",
+   "reason": "frontage 75.3 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012181183",
+   "reason": "frontage 75.3 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012181184",
+   "reason": "frontage 77.5 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012181185",
+   "reason": "frontage 73.0 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012181186",
+   "reason": "frontage 74.2 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012181187",
+   "reason": "frontage 74.2 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012181188",
+   "reason": "frontage 74.1 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012181189",
+   "reason": "frontage 74.1 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012181190",
+   "reason": "frontage 58.7 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012181191",
+   "reason": "frontage 50.9 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012181192",
+   "reason": "frontage 63.6 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012181193",
+   "reason": "frontage 68.4 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012181194",
+   "reason": "frontage 73.2 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012181195",
+   "reason": "frontage 82.6 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012181196",
+   "reason": "frontage 74.5 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012181197",
+   "reason": "frontage 74.4 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012181198",
+   "reason": "frontage 74.4 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012181264",
+   "reason": "frontage 50.3 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012181266",
+   "reason": "frontage 74.3 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012181267",
+   "reason": "frontage 74.3 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012181269",
+   "reason": "frontage 77.1 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012181270",
+   "reason": "frontage 50.6 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012181271",
+   "reason": "frontage 50.8 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012181272",
+   "reason": "sightline to Nieuwe Achtergracht crosses 0363100012181265"
+  },
+  {
+   "pandId": "0363100012181273",
+   "reason": "sightline to Nieuwe Achtergracht crosses 0363100012181277"
+  },
+  {
+   "pandId": "0363100012181274",
+   "reason": "sightline to Nieuwe Achtergracht crosses 0363100012181265"
+  },
+  {
+   "pandId": "0363100012181275",
+   "reason": "frontage 31.3 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012181276",
+   "reason": "sightline to Nieuwe Achtergracht crosses 0363100012181265"
+  },
+  {
+   "pandId": "0363100012181277",
+   "reason": "sightline to Nieuwe Achtergracht crosses 0363100012181265"
+  },
+  {
+   "pandId": "0363100012181278",
+   "reason": "sightline to Nieuwe Achtergracht crosses 0363100012181265"
+  },
+  {
+   "pandId": "0363100012181279",
+   "reason": "frontage 123.4 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012181646",
+   "reason": "frontage 77.8 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012181648",
+   "reason": "frontage 140.5 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012181701",
+   "reason": "frontage 81.0 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012181702",
+   "reason": "frontage 99.8 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012243487",
+   "reason": "frontage 139.2 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012181703",
+   "reason": "frontage 99.6 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012181705",
+   "reason": "frontage 80.7 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012181706",
+   "reason": "frontage 92.0 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012181707",
+   "reason": "frontage 101.6 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012181708",
+   "reason": "frontage 99.0 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012181709",
+   "reason": "frontage 101.2 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012181710",
+   "reason": "frontage 101.0 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012181711",
+   "reason": "frontage 100.9 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012181831",
+   "reason": "frontage 136.3 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012182920",
+   "reason": "frontage 78.6 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012182921",
+   "reason": "frontage 35.5 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012182922",
+   "reason": "sightline to Nieuwe Achtergracht crosses 0363100012182923"
+  },
+  {
+   "pandId": "0363100012182925",
+   "reason": "frontage 135.0 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012182926",
+   "reason": "frontage 134.8 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012182927",
+   "reason": "frontage 134.6 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012182928",
+   "reason": "frontage 134.5 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012182929",
+   "reason": "frontage 71.6 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012182930",
+   "reason": "frontage 71.5 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012182931",
+   "reason": "frontage 160.7 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012182996",
+   "reason": "frontage 156.3 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012182997",
+   "reason": "frontage 165.0 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012182998",
+   "reason": "frontage 169.5 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012182999",
+   "reason": "frontage 173.8 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012183000",
+   "reason": "frontage 178.5 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012183001",
+   "reason": "frontage 178.4 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012183002",
+   "reason": "frontage 184.0 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012183003",
+   "reason": "frontage 178.5 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012183004",
+   "reason": "frontage 185.0 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012183005",
+   "reason": "frontage 184.9 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012183008",
+   "reason": "frontage 178.2 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012241284",
+   "reason": "frontage 78.8 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012247432",
+   "reason": "frontage 69.0 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012253901",
+   "reason": "frontage 35.1 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100100091822",
+   "reason": "sightline to Nieuwe Achtergracht crosses 0363100012180462"
+  },
+  {
+   "pandId": "0363100100091823",
+   "reason": "sightline to Nieuwe Achtergracht crosses 0363100012180462"
+  },
+  {
+   "pandId": "0363100012182934",
+   "reason": "frontage 209.1 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012182935",
+   "reason": "frontage 208.9 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012183006",
+   "reason": "frontage 210.1 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012183007",
+   "reason": "frontage 209.3 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012185595",
+   "reason": "frontage 151.5 m from Nieuwe Achtergracht"
+  },
+  {
+   "pandId": "0363100012170299",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012170357",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012170849",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012181096",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012181097",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012181098",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012181099",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012181102",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012181103",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012181176",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012185420",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012182002",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012253824",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 180,
+ "pands": [
+  {
+   "pandId": "0363100012180462",
+   "alongM": -8.39,
+   "widthM": 11.18,
+   "eavesM": 16.27,
+   "roofMaxM": 16.45,
+   "storeys3dbag": 5,
+   "builtYear": 1873,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012180455",
+   "alongM": 0,
+   "widthM": 5.6,
+   "eavesM": 16.65,
+   "roofMaxM": 16.67,
+   "storeys3dbag": 5,
+   "builtYear": 1897,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012180456",
+   "alongM": 5.6,
+   "widthM": 5.6,
+   "eavesM": 16.47,
+   "roofMaxM": 16.48,
+   "storeys3dbag": 5,
+   "builtYear": 1909,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012180457",
+   "alongM": 11.2,
+   "widthM": 5.6,
+   "eavesM": 16.4,
+   "roofMaxM": 16.43,
+   "storeys3dbag": 5,
+   "builtYear": 1923,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012180458",
+   "alongM": 16.76,
+   "widthM": 5.53,
+   "eavesM": 15.86,
+   "roofMaxM": 15.88,
+   "storeys3dbag": 5,
+   "builtYear": 1953,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012180452",
+   "alongM": 22.33,
+   "widthM": 5.61,
+   "eavesM": 15.5,
+   "roofMaxM": 17.72,
+   "storeys3dbag": 5,
+   "builtYear": 1923,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012170303",
+   "alongM": 27.94,
+   "widthM": 5.59,
+   "eavesM": 15.87,
+   "roofMaxM": 18.11,
+   "storeys3dbag": 0,
+   "builtYear": 1923,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012181093",
+   "alongM": 33.53,
+   "widthM": 5.59,
+   "eavesM": 15.29,
+   "roofMaxM": 18.37,
+   "storeys3dbag": 5,
+   "builtYear": 1861,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012181094",
+   "alongM": 39.12,
+   "widthM": 5.59,
+   "eavesM": 15.24,
+   "roofMaxM": 18.27,
+   "storeys3dbag": 5,
+   "builtYear": 1901,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012181095",
+   "alongM": 44.72,
+   "widthM": 5.62,
+   "eavesM": 17.98,
+   "roofMaxM": 18.15,
+   "storeys3dbag": 0,
+   "builtYear": 1902,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012170353",
+   "alongM": 50.34,
+   "widthM": 5.62,
+   "eavesM": 17.86,
+   "roofMaxM": 17.99,
+   "storeys3dbag": 0,
+   "builtYear": 1902,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012170354",
+   "alongM": 55.96,
+   "widthM": 5.62,
+   "eavesM": 15.23,
+   "roofMaxM": 17.46,
+   "storeys3dbag": 0,
+   "builtYear": 1900,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012170355",
+   "alongM": 61.57,
+   "widthM": 5.61,
+   "eavesM": 15.24,
+   "roofMaxM": 18.58,
+   "storeys3dbag": 0,
+   "builtYear": 1924,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012170356",
+   "alongM": 67.17,
+   "widthM": 5.6,
+   "eavesM": 17.49,
+   "roofMaxM": 18,
+   "storeys3dbag": 0,
+   "builtYear": 1924,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012170358",
+   "alongM": 72.8,
+   "widthM": 5.67,
+   "eavesM": 15.29,
+   "roofMaxM": 17.43,
+   "storeys3dbag": 5,
+   "builtYear": 1902,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012164936",
+   "alongM": 78.48,
+   "widthM": 5.67,
+   "eavesM": 12.45,
+   "roofMaxM": 15.43,
+   "storeys3dbag": 5,
+   "builtYear": 1886,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012164937",
+   "alongM": 84.1,
+   "widthM": 5.6,
+   "eavesM": 12.2,
+   "roofMaxM": 15.27,
+   "storeys3dbag": 5,
+   "builtYear": 1886,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012170469",
+   "alongM": 89.7,
+   "widthM": 5.6,
+   "eavesM": 12.27,
+   "roofMaxM": 15.36,
+   "storeys3dbag": 5,
+   "builtYear": 1884,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012181178",
+   "alongM": 95.36,
+   "widthM": 5.72,
+   "eavesM": 12.41,
+   "roofMaxM": 15.82,
+   "storeys3dbag": 5,
+   "builtYear": 1896,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012181265",
+   "alongM": 102.91,
+   "widthM": 9.39,
+   "eavesM": 15.74,
+   "roofMaxM": 17.51,
+   "storeys3dbag": 5,
+   "builtYear": 1890,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  }
+ ]
+}

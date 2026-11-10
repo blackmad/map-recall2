@@ -1,0 +1,36 @@
+{
+ "note": "Pands held after reviewing the strip sheets at full size (auto-place.ts reads this file).",
+ "reviewed": "2026-11-10",
+ "holds": [
+  {
+   "pandId": "0363100012181391",
+   "address": "Sarphatistraat 187",
+   "reason": "a shop front with a wide arched garage entrance and a different ground storey (3DBAG eaves 24 m); the arched door pair type does not describe it"
+  },
+  {
+   "pandId": "0363100012170733",
+   "address": "Sarphatistraat 173",
+   "reason": "its recipe roof z-fights 0.24 m2 with 171 across the party wall (interference gate roofZFight, equal 3DBAG ridges 18.62 m) and fails the GLB geometry audit for the whole run; edge NCC 0.17 is the lowest of the row (3DBAG eaves 8.68 m: a dormer read as the eaves)"
+  },
+  {
+   "pandId": "0363100012180965",
+   "address": "Sarphatistraat 163",
+   "reason": "the face seam: the strip shows the grey no-data band beside it and the front is a corner section with a wider window and a different roofline, not the tower-pair design"
+  },
+  {
+   "pandId": "0363100012180966",
+   "address": "Sarphatistraat 165A",
+   "reason": "a different top (stepped gable end with a pitched roof and a single attic window, no tower) and a different window layout (3-light upper storeys); the tower pair type matches it only on year and eaves"
+  },
+  {
+   "pandId": "0363100012181464",
+   "address": "Sarphatistraat 183",
+   "reason": "a splayed front where the street bends: a curved mansard roof, single windows, no tower, under heavy foliage; not the tower-pair design (sheet sarphati-163-213-r3, 2017-03-31)"
+  },
+  {
+   "pandId": "0363100012181465",
+   "address": "Sarphatistraat 185",
+   "reason": "the other half of the splayed bend with 183: a curved mansard roof and no tower; the model also fails the 1.02 m2 roof z-fight gate against 183"
+  }
+ ]
+}

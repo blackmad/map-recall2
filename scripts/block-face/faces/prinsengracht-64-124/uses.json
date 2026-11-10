@@ -1,0 +1,445 @@
+{
+ "street": "Nieuwe Prinsengracht",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T07:21:55.034Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012181185",
+   "addresses": [
+    "Nieuwe Prinsengracht 102"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Prinsengracht 102-H",
+     "use": "woonfunctie",
+     "areaM2": 117,
+     "bagId": "0363010000953418"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181267",
+   "addresses": [
+    "Nieuwe Prinsengracht 100"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Prinsengracht 100-H",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000757788"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181266",
+   "addresses": [
+    "Nieuwe Prinsengracht 98"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Prinsengracht 98-H",
+     "use": "woonfunctie",
+     "areaM2": 195,
+     "bagId": "0363010001009067"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181198",
+   "addresses": [
+    "Nieuwe Prinsengracht 96"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Prinsengracht 96-H",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000757777"
+    },
+    {
+     "address": "Nieuwe Prinsengracht 96-O",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000757778"
+    },
+    {
+     "address": "Nieuwe Prinsengracht 96-H",
+     "use": "woonfunctie",
+     "areaM2": 110,
+     "bagId": "0363010012107883"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181197",
+   "addresses": [
+    "Nieuwe Prinsengracht 94",
+    "Nieuwe Prinsengracht 94C",
+    "Nieuwe Prinsengracht 94B",
+    "Nieuwe Prinsengracht 94D",
+    "Nieuwe Prinsengracht 94A",
+    "Nieuwe Prinsengracht 94E"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Prinsengracht 94-H",
+     "use": "woonfunctie",
+     "areaM2": 118,
+     "bagId": "0363010000757774"
+    },
+    {
+     "address": "Nieuwe Prinsengracht 94C",
+     "use": "woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010012157268"
+    },
+    {
+     "address": "Nieuwe Prinsengracht 94B",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010012157267"
+    },
+    {
+     "address": "Nieuwe Prinsengracht 94D",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010012157269"
+    },
+    {
+     "address": "Nieuwe Prinsengracht 94A",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010012164495"
+    },
+    {
+     "address": "Nieuwe Prinsengracht 94E",
+     "use": "woonfunctie",
+     "areaM2": 123,
+     "bagId": "0363010012157266"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181196",
+   "addresses": [
+    "Nieuwe Prinsengracht 92"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Prinsengracht 92-H",
+     "use": "woonfunctie",
+     "areaM2": 112,
+     "bagId": "0363010000757770"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012170433",
+   "addresses": [
+    "Nieuwe Prinsengracht 90",
+    "Nieuwe Prinsengracht 90B",
+    "Nieuwe Prinsengracht 90A",
+    "Nieuwe Prinsengracht 90C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Prinsengracht 90-H",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000757765"
+    },
+    {
+     "address": "Nieuwe Prinsengracht 90B",
+     "use": "woonfunctie",
+     "areaM2": 59,
+     "bagId": "0363010011872263"
+    },
+    {
+     "address": "Nieuwe Prinsengracht 90A",
+     "use": "woonfunctie",
+     "areaM2": 172,
+     "bagId": "0363010011872264"
+    },
+    {
+     "address": "Nieuwe Prinsengracht 90C",
+     "use": "woonfunctie",
+     "areaM2": 118,
+     "bagId": "0363010011872265"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012170419",
+   "addresses": [
+    "Nieuwe Prinsengracht 88"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Prinsengracht 88-H",
+     "use": "woonfunctie",
+     "areaM2": 63,
+     "bagId": "0363010000757760"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012180942",
+   "addresses": [
+    "Nieuwe Prinsengracht 86"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Prinsengracht 86-H",
+     "use": "woonfunctie",
+     "areaM2": 114,
+     "bagId": "0363010000757751"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012180941",
+   "addresses": [
+    "Nieuwe Prinsengracht 84"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Prinsengracht 84-H",
+     "use": "woonfunctie",
+     "areaM2": 59,
+     "bagId": "0363010000757743"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012180929",
+   "addresses": [
+    "Nieuwe Prinsengracht 82"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Prinsengracht 82-H",
+     "use": "woonfunctie",
+     "areaM2": 126,
+     "bagId": "0363010000757735"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012180469",
+   "addresses": [
+    "Nieuwe Prinsengracht 80"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Prinsengracht 80-H",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000757727"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012180468",
+   "addresses": [
+    "Nieuwe Prinsengracht 78"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Prinsengracht 78-H",
+     "use": "woonfunctie",
+     "areaM2": 105,
+     "bagId": "0363010000757716"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012180467",
+   "addresses": [
+    "Nieuwe Prinsengracht 76"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Prinsengracht 76-H",
+     "use": "woonfunctie",
+     "areaM2": 63,
+     "bagId": "0363010000757707"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012180466",
+   "addresses": [
+    "Nieuwe Prinsengracht 74"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Prinsengracht 74-H",
+     "use": "woonfunctie",
+     "areaM2": 93,
+     "bagId": "0363010001002015"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012180933",
+   "addresses": [
+    "Nieuwe Prinsengracht 72"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Prinsengracht 72-H",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000868049"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012180932",
+   "addresses": [
+    "Nieuwe Prinsengracht 70"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Prinsengracht 70-H",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010000757693"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012180931",
+   "addresses": [
+    "Nieuwe Prinsengracht 68"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Prinsengracht 68-H",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000757686"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012180930",
+   "addresses": [
+    "Nieuwe Prinsengracht 66",
+    "Nieuwe Prinsengracht 66A",
+    "Nieuwe Prinsengracht 66B",
+    "Nieuwe Prinsengracht 66C",
+    "Nieuwe Prinsengracht 66D",
+    "Nieuwe Prinsengracht 66E",
+    "Nieuwe Prinsengracht 66F"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Prinsengracht 66-H",
+     "use": "woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010000757682"
+    },
+    {
+     "address": "Nieuwe Prinsengracht 66A",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010012106956"
+    },
+    {
+     "address": "Nieuwe Prinsengracht 66B",
+     "use": "woonfunctie",
+     "areaM2": 62,
+     "bagId": "0363010012106957"
+    },
+    {
+     "address": "Nieuwe Prinsengracht 66C",
+     "use": "woonfunctie",
+     "areaM2": 62,
+     "bagId": "0363010012106958"
+    },
+    {
+     "address": "Nieuwe Prinsengracht 66D",
+     "use": "woonfunctie",
+     "areaM2": 62,
+     "bagId": "0363010012106959"
+    },
+    {
+     "address": "Nieuwe Prinsengracht 66E",
+     "use": "woonfunctie",
+     "areaM2": 62,
+     "bagId": "0363010012106960"
+    },
+    {
+     "address": "Nieuwe Prinsengracht 66F",
+     "use": "woonfunctie",
+     "areaM2": 75,
+     "bagId": "0363010012106961"
+    },
+    {
+     "address": "Nieuwe Prinsengracht 66-O",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 63,
+     "bagId": "0363010001172386"
+    }
+   ],
+   "units": 11,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012180944",
+   "addresses": [
+    "Nieuwe Prinsengracht 64"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Prinsengracht 64-H",
+     "use": "woonfunctie",
+     "areaM2": 64,
+     "bagId": "0363010000991102"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  }
+ ]
+}

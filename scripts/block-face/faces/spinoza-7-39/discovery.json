@@ -1,0 +1,916 @@
+{
+ "street": "Spinozastraat",
+ "seed": "0363100012170293",
+ "members": [
+  "0363100012170293",
+  "0363100012180928",
+  "0363100012180994",
+  "0363100012180995",
+  "0363100012180996",
+  "0363100012181004",
+  "0363100012181005",
+  "0363100012181006",
+  "0363100012181007",
+  "0363100012181003",
+  "0363100012180998",
+  "0363100012180999",
+  "0363100012181000",
+  "0363100012181001",
+  "0363100012181002",
+  "0363100012180997",
+  "0363100012170699"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "next fronting pand 0363100012181695 10.2 m on shares no party wall (cross street or gap)"
+  },
+  {
+   "side": "right",
+   "reason": "next fronting pand 0363100012243487 70.1 m on shares no party wall (cross street or gap)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012061848",
+   "reason": "frontage 185.9 m from Spinozastraat"
+  },
+  {
+   "pandId": "0363100012064037",
+   "reason": "frontage 131.9 m from Spinozastraat"
+  },
+  {
+   "pandId": "0363100012068295",
+   "reason": "no frontage on Spinozastraat: No footprint edge faces Spinozastraat"
+  },
+  {
+   "pandId": "0363100012070691",
+   "reason": "frontage 78.1 m from Spinozastraat"
+  },
+  {
+   "pandId": "0363100012081882",
+   "reason": "no frontage on Spinozastraat: No footprint edge faces Spinozastraat"
+  },
+  {
+   "pandId": "0363100012083563",
+   "reason": "no frontage on Spinozastraat: No footprint edge faces Spinozastraat"
+  },
+  {
+   "pandId": "0363100012090486",
+   "reason": "no frontage on Spinozastraat: No footprint edge faces Spinozastraat"
+  },
+  {
+   "pandId": "0363100012091868",
+   "reason": "frontage 175.7 m from Spinozastraat"
+  },
+  {
+   "pandId": "0363100012105777",
+   "reason": "no frontage on Spinozastraat: No footprint edge faces Spinozastraat"
+  },
+  {
+   "pandId": "0363100012125707",
+   "reason": "frontage 195.8 m from Spinozastraat"
+  },
+  {
+   "pandId": "0363100012125963",
+   "reason": "frontage 167.0 m from Spinozastraat"
+  },
+  {
+   "pandId": "0363100012131987",
+   "reason": "no frontage on Spinozastraat: No footprint edge faces Spinozastraat"
+  },
+  {
+   "pandId": "0363100012145144",
+   "reason": "no frontage on Spinozastraat: No footprint edge faces Spinozastraat"
+  },
+  {
+   "pandId": "0363100012063505",
+   "reason": "frontage 204.6 m from Spinozastraat"
+  },
+  {
+   "pandId": "0363100012076908",
+   "reason": "no frontage on Spinozastraat: No footprint edge faces Spinozastraat"
+  },
+  {
+   "pandId": "0363100012086336",
+   "reason": "no frontage on Spinozastraat: No footprint edge faces Spinozastraat"
+  },
+  {
+   "pandId": "0363100012092490",
+   "reason": "no frontage on Spinozastraat: No footprint edge faces Spinozastraat"
+  },
+  {
+   "pandId": "0363100012106328",
+   "reason": "no frontage on Spinozastraat: No footprint edge faces Spinozastraat"
+  },
+  {
+   "pandId": "0363100012115312",
+   "reason": "no frontage on Spinozastraat: No footprint edge faces Spinozastraat"
+  },
+  {
+   "pandId": "0363100012118119",
+   "reason": "no frontage on Spinozastraat: No footprint edge faces Spinozastraat"
+  },
+  {
+   "pandId": "0363100012132067",
+   "reason": "frontage 195.7 m from Spinozastraat"
+  },
+  {
+   "pandId": "0363100012144373",
+   "reason": "no frontage on Spinozastraat: No footprint edge faces Spinozastraat"
+  },
+  {
+   "pandId": "0363100012154617",
+   "reason": "frontage 189.8 m from Spinozastraat"
+  },
+  {
+   "pandId": "0363100012076340",
+   "reason": "no frontage on Spinozastraat: No footprint edge faces Spinozastraat"
+  },
+  {
+   "pandId": "0363100012081247",
+   "reason": "frontage 80.4 m from Spinozastraat"
+  },
+  {
+   "pandId": "0363100012093442",
+   "reason": "frontage 87.6 m from Spinozastraat"
+  },
+  {
+   "pandId": "0363100012130452",
+   "reason": "frontage 72.9 m from Spinozastraat"
+  },
+  {
+   "pandId": "0363100012147310",
+   "reason": "frontage 81.8 m from Spinozastraat"
+  },
+  {
+   "pandId": "0363100012164968",
+   "reason": "sightline to Spinozastraat crosses 0363100012170471"
+  },
+  {
+   "pandId": "0363100012165552",
+   "reason": "frontage 39.7 m from Spinozastraat"
+  },
+  {
+   "pandId": "0363100012112869",
+   "reason": "no frontage on Spinozastraat: No footprint edge faces Spinozastraat"
+  },
+  {
+   "pandId": "0363100012165752",
+   "reason": "frontage 104.9 m from Spinozastraat"
+  },
+  {
+   "pandId": "0363100012165753",
+   "reason": "frontage 81.0 m from Spinozastraat"
+  },
+  {
+   "pandId": "0363100012165754",
+   "reason": "frontage 103.8 m from Spinozastraat"
+  },
+  {
+   "pandId": "0363100012165755",
+   "reason": "frontage 94.5 m from Spinozastraat"
+  },
+  {
+   "pandId": "0363100012165757",
+   "reason": "frontage 41.7 m from Spinozastraat"
+  },
+  {
+   "pandId": "0363100012165758",
+   "reason": "frontage 119.1 m from Spinozastraat"
+  },
+  {
+   "pandId": "0363100012165759",
+   "reason": "frontage 38.8 m from Spinozastraat"
+  },
+  {
+   "pandId": "0363100012165760",
+   "reason": "frontage 115.2 m from Spinozastraat"
+  },
+  {
+   "pandId": "0363100012170288",
+   "reason": "frontage 31.9 m from Spinozastraat"
+  },
+  {
+   "pandId": "0363100012170289",
+   "reason": "frontage 75.9 m from Spinozastraat"
+  },
+  {
+   "pandId": "0363100012170290",
+   "reason": "frontage 38.8 m from Spinozastraat"
+  },
+  {
+   "pandId": "0363100012170291",
+   "reason": "frontage 42.8 m from Spinozastraat"
+  },
+  {
+   "pandId": "0363100012170292",
+   "reason": "frontage 42.8 m from Spinozastraat"
+  },
+  {
+   "pandId": "0363100012170294",
+   "reason": "frontage 40.4 m from Spinozastraat"
+  },
+  {
+   "pandId": "0363100012170296",
+   "reason": "frontage 38.8 m from Spinozastraat"
+  },
+  {
+   "pandId": "0363100012170299",
+   "reason": "frontage 98.0 m from Spinozastraat"
+  },
+  {
+   "pandId": "0363100012170300",
+   "reason": "frontage 96.9 m from Spinozastraat"
+  },
+  {
+   "pandId": "0363100012170301",
+   "reason": "no frontage on Spinozastraat: No footprint edge faces Spinozastraat"
+  },
+  {
+   "pandId": "0363100012170471",
+   "reason": "no frontage on Spinozastraat: No footprint edge faces Spinozastraat"
+  },
+  {
+   "pandId": "0363100012170306",
+   "reason": "frontage 137.9 m from Spinozastraat"
+  },
+  {
+   "pandId": "0363100012170307",
+   "reason": "frontage 135.7 m from Spinozastraat"
+  },
+  {
+   "pandId": "0363100012170351",
+   "reason": "no frontage on Spinozastraat: No footprint edge faces Spinozastraat"
+  },
+  {
+   "pandId": "0363100012170352",
+   "reason": "frontage 121.2 m from Spinozastraat"
+  },
+  {
+   "pandId": "0363100012170357",
+   "reason": "frontage 154.2 m from Spinozastraat"
+  },
+  {
+   "pandId": "0363100012170414",
+   "reason": "sightline to Spinozastraat crosses 0363100012243487"
+  },
+  {
+   "pandId": "0363100012170415",
+   "reason": "frontage 68.2 m from Spinozastraat"
+  },
+  {
+   "pandId": "0363100012170416",
+   "reason": "frontage 112.1 m from Spinozastraat"
+  },
+  {
+   "pandId": "0363100012170417",
+   "reason": "frontage 109.0 m from Spinozastraat"
+  },
+  {
+   "pandId": "0363100012170418",
+   "reason": "frontage 111.0 m from Spinozastraat"
+  },
+  {
+   "pandId": "0363100012170468",
+   "reason": "frontage 110.0 m from Spinozastraat"
+  },
+  {
+   "pandId": "0363100012170470",
+   "reason": "frontage 67.0 m from Spinozastraat"
+  },
+  {
+   "pandId": "0363100012170472",
+   "reason": "frontage 53.9 m from Spinozastraat"
+  },
+  {
+   "pandId": "0363100012170700",
+   "reason": "frontage 38.8 m from Spinozastraat"
+  },
+  {
+   "pandId": "0363100012170751",
+   "reason": "frontage 32.8 m from Spinozastraat"
+  },
+  {
+   "pandId": "0363100012170766",
+   "reason": "no frontage on Spinozastraat: No footprint edge faces Spinozastraat"
+  },
+  {
+   "pandId": "0363100012170849",
+   "reason": "frontage 133.0 m from Spinozastraat"
+  },
+  {
+   "pandId": "0363100012180443",
+   "reason": "no frontage on Spinozastraat: No footprint edge faces Spinozastraat"
+  },
+  {
+   "pandId": "0363100012180444",
+   "reason": "frontage 85.7 m from Spinozastraat"
+  },
+  {
+   "pandId": "0363100012180445",
+   "reason": "frontage 71.6 m from Spinozastraat"
+  },
+  {
+   "pandId": "0363100012180446",
+   "reason": "frontage 73.4 m from Spinozastraat"
+  },
+  {
+   "pandId": "0363100012180447",
+   "reason": "frontage 41.8 m from Spinozastraat"
+  },
+  {
+   "pandId": "0363100012180448",
+   "reason": "frontage 53.7 m from Spinozastraat"
+  },
+  {
+   "pandId": "0363100012180449",
+   "reason": "frontage 81.0 m from Spinozastraat"
+  },
+  {
+   "pandId": "0363100012180450",
+   "reason": "no frontage on Spinozastraat: No footprint edge faces Spinozastraat"
+  },
+  {
+   "pandId": "0363100012180451",
+   "reason": "frontage 75.0 m from Spinozastraat"
+  },
+  {
+   "pandId": "0363100012180924",
+   "reason": "sightline to Spinozastraat crosses 0363100012181003"
+  },
+  {
+   "pandId": "0363100012180925",
+   "reason": "sightline to Spinozastraat crosses 0363100012180924"
+  },
+  {
+   "pandId": "0363100012180926",
+   "reason": "frontage 40.4 m from Spinozastraat"
+  },
+  {
+   "pandId": "0363100012180927",
+   "reason": "frontage 41.3 m from Spinozastraat"
+  },
+  {
+   "pandId": "0363100012181008",
+   "reason": "sightline to Spinozastraat crosses 0363100012181001"
+  },
+  {
+   "pandId": "0363100012181009",
+   "reason": "frontage 39.1 m from Spinozastraat"
+  },
+  {
+   "pandId": "0363100012181010",
+   "reason": "frontage 36.3 m from Spinozastraat"
+  },
+  {
+   "pandId": "0363100012181011",
+   "reason": "frontage 42.8 m from Spinozastraat"
+  },
+  {
+   "pandId": "0363100012181012",
+   "reason": "frontage 42.8 m from Spinozastraat"
+  },
+  {
+   "pandId": "0363100012181013",
+   "reason": "frontage 102.6 m from Spinozastraat"
+  },
+  {
+   "pandId": "0363100012181014",
+   "reason": "frontage 71.2 m from Spinozastraat"
+  },
+  {
+   "pandId": "0363100012181015",
+   "reason": "frontage 76.5 m from Spinozastraat"
+  },
+  {
+   "pandId": "0363100012181016",
+   "reason": "frontage 73.6 m from Spinozastraat"
+  },
+  {
+   "pandId": "0363100012181017",
+   "reason": "frontage 69.4 m from Spinozastraat"
+  },
+  {
+   "pandId": "0363100012181018",
+   "reason": "frontage 79.7 m from Spinozastraat"
+  },
+  {
+   "pandId": "0363100012181019",
+   "reason": "frontage 86.2 m from Spinozastraat"
+  },
+  {
+   "pandId": "0363100012181020",
+   "reason": "frontage 86.3 m from Spinozastraat"
+  },
+  {
+   "pandId": "0363100012181021",
+   "reason": "frontage 86.3 m from Spinozastraat"
+  },
+  {
+   "pandId": "0363100012181022",
+   "reason": "frontage 86.4 m from Spinozastraat"
+  },
+  {
+   "pandId": "0363100012181076",
+   "reason": "frontage 86.4 m from Spinozastraat"
+  },
+  {
+   "pandId": "0363100012181077",
+   "reason": "frontage 82.2 m from Spinozastraat"
+  },
+  {
+   "pandId": "0363100012181078",
+   "reason": "frontage 86.3 m from Spinozastraat"
+  },
+  {
+   "pandId": "0363100012181079",
+   "reason": "frontage 86.2 m from Spinozastraat"
+  },
+  {
+   "pandId": "0363100012181080",
+   "reason": "frontage 129.7 m from Spinozastraat"
+  },
+  {
+   "pandId": "0363100012181081",
+   "reason": "frontage 125.6 m from Spinozastraat"
+  },
+  {
+   "pandId": "0363100012181082",
+   "reason": "frontage 105.0 m from Spinozastraat"
+  },
+  {
+   "pandId": "0363100012181083",
+   "reason": "frontage 107.8 m from Spinozastraat"
+  },
+  {
+   "pandId": "0363100012181084",
+   "reason": "frontage 110.7 m from Spinozastraat"
+  },
+  {
+   "pandId": "0363100012181085",
+   "reason": "frontage 83.4 m from Spinozastraat"
+  },
+  {
+   "pandId": "0363100012181086",
+   "reason": "frontage 112.0 m from Spinozastraat"
+  },
+  {
+   "pandId": "0363100012181087",
+   "reason": "frontage 95.1 m from Spinozastraat"
+  },
+  {
+   "pandId": "0363100012181088",
+   "reason": "frontage 93.0 m from Spinozastraat"
+  },
+  {
+   "pandId": "0363100012181089",
+   "reason": "frontage 112.0 m from Spinozastraat"
+  },
+  {
+   "pandId": "0363100012181090",
+   "reason": "frontage 97.2 m from Spinozastraat"
+  },
+  {
+   "pandId": "0363100012181091",
+   "reason": "frontage 99.1 m from Spinozastraat"
+  },
+  {
+   "pandId": "0363100012181092",
+   "reason": "frontage 96.5 m from Spinozastraat"
+  },
+  {
+   "pandId": "0363100012181097",
+   "reason": "frontage 144.4 m from Spinozastraat"
+  },
+  {
+   "pandId": "0363100012181099",
+   "reason": "no frontage on Spinozastraat: No footprint edge faces Spinozastraat"
+  },
+  {
+   "pandId": "0363100012181100",
+   "reason": "frontage 130.5 m from Spinozastraat"
+  },
+  {
+   "pandId": "0363100012181101",
+   "reason": "frontage 134.4 m from Spinozastraat"
+  },
+  {
+   "pandId": "0363100012181102",
+   "reason": "frontage 160.0 m from Spinozastraat"
+  },
+  {
+   "pandId": "0363100012181103",
+   "reason": "frontage 147.2 m from Spinozastraat"
+  },
+  {
+   "pandId": "0363100012181173",
+   "reason": "frontage 145.8 m from Spinozastraat"
+  },
+  {
+   "pandId": "0363100012181174",
+   "reason": "frontage 144.5 m from Spinozastraat"
+  },
+  {
+   "pandId": "0363100012181622",
+   "reason": "no frontage on Spinozastraat: No footprint edge faces Spinozastraat"
+  },
+  {
+   "pandId": "0363100012181646",
+   "reason": "frontage 66.1 m from Spinozastraat"
+  },
+  {
+   "pandId": "0363100012181648",
+   "reason": "sightline to Spinozastraat crosses 0363100012243487"
+  },
+  {
+   "pandId": "0363100012181692",
+   "reason": "sightline to Spinozastraat crosses 0363100012181698"
+  },
+  {
+   "pandId": "0363100012181693",
+   "reason": "sightline to Spinozastraat crosses 0363100012181692"
+  },
+  {
+   "pandId": "0363100012195527",
+   "reason": "no frontage on Spinozastraat: No footprint edge faces Spinozastraat"
+  },
+  {
+   "pandId": "0363100012205751",
+   "reason": "no frontage on Spinozastraat: No footprint edge faces Spinozastraat"
+  },
+  {
+   "pandId": "0363100012222392",
+   "reason": "no frontage on Spinozastraat: No footprint edge faces Spinozastraat"
+  },
+  {
+   "pandId": "0363100012241375",
+   "reason": "frontage 140.6 m from Spinozastraat"
+  },
+  {
+   "pandId": "0363100012241376",
+   "reason": "frontage 149.3 m from Spinozastraat"
+  },
+  {
+   "pandId": "0363100012241500",
+   "reason": "frontage 140.4 m from Spinozastraat"
+  },
+  {
+   "pandId": "0363100012241772",
+   "reason": "frontage 171.8 m from Spinozastraat"
+  },
+  {
+   "pandId": "0363100012245513",
+   "reason": "frontage 154.8 m from Spinozastraat"
+  },
+  {
+   "pandId": "0363100100092329",
+   "reason": "no frontage on Spinozastraat: No footprint edge faces Spinozastraat"
+  },
+  {
+   "pandId": "0363100012188665",
+   "reason": "no frontage on Spinozastraat: No footprint edge faces Spinozastraat"
+  },
+  {
+   "pandId": "0363100012199836",
+   "reason": "no frontage on Spinozastraat: No footprint edge faces Spinozastraat"
+  },
+  {
+   "pandId": "0363100012205088",
+   "reason": "no frontage on Spinozastraat: No footprint edge faces Spinozastraat"
+  },
+  {
+   "pandId": "0363100012205655",
+   "reason": "no frontage on Spinozastraat: No footprint edge faces Spinozastraat"
+  },
+  {
+   "pandId": "0363100012218713",
+   "reason": "frontage 191.3 m from Spinozastraat"
+  },
+  {
+   "pandId": "0363100012221456",
+   "reason": "no frontage on Spinozastraat: No footprint edge faces Spinozastraat"
+  },
+  {
+   "pandId": "0363100012233055",
+   "reason": "frontage 195.9 m from Spinozastraat"
+  },
+  {
+   "pandId": "0363100012234263",
+   "reason": "no frontage on Spinozastraat: No footprint edge faces Spinozastraat"
+  },
+  {
+   "pandId": "0363100012185420",
+   "reason": "frontage 55.5 m from Spinozastraat"
+  },
+  {
+   "pandId": "0363100012181701",
+   "reason": "frontage 48.8 m from Spinozastraat"
+  },
+  {
+   "pandId": "0363100012181702",
+   "reason": "frontage 63.7 m from Spinozastraat"
+  },
+  {
+   "pandId": "0363100012181703",
+   "reason": "frontage 69.6 m from Spinozastraat"
+  },
+  {
+   "pandId": "0363100012181705",
+   "reason": "no frontage on Spinozastraat: No footprint edge faces Spinozastraat"
+  },
+  {
+   "pandId": "0363100012181706",
+   "reason": "frontage 43.0 m from Spinozastraat"
+  },
+  {
+   "pandId": "0363100012181709",
+   "reason": "no frontage on Spinozastraat: No footprint edge faces Spinozastraat"
+  },
+  {
+   "pandId": "0363100012181710",
+   "reason": "no frontage on Spinozastraat: No footprint edge faces Spinozastraat"
+  },
+  {
+   "pandId": "0363100012181711",
+   "reason": "no frontage on Spinozastraat: No footprint edge faces Spinozastraat"
+  },
+  {
+   "pandId": "0363100012182837",
+   "reason": "frontage 140.9 m from Spinozastraat"
+  },
+  {
+   "pandId": "0363100012182838",
+   "reason": "frontage 151.4 m from Spinozastraat"
+  },
+  {
+   "pandId": "0363100012182839",
+   "reason": "frontage 145.0 m from Spinozastraat"
+  },
+  {
+   "pandId": "0363100012182840",
+   "reason": "frontage 58.2 m from Spinozastraat"
+  },
+  {
+   "pandId": "0363100012182841",
+   "reason": "frontage 97.1 m from Spinozastraat"
+  },
+  {
+   "pandId": "0363100012182843",
+   "reason": "frontage 120.7 m from Spinozastraat"
+  },
+  {
+   "pandId": "0363100012182914",
+   "reason": "frontage 116.0 m from Spinozastraat"
+  },
+  {
+   "pandId": "0363100012182915",
+   "reason": "frontage 109.8 m from Spinozastraat"
+  },
+  {
+   "pandId": "0363100012182916",
+   "reason": "frontage 103.5 m from Spinozastraat"
+  },
+  {
+   "pandId": "0363100012182917",
+   "reason": "frontage 105.2 m from Spinozastraat"
+  },
+  {
+   "pandId": "0363100012182919",
+   "reason": "frontage 122.2 m from Spinozastraat"
+  },
+  {
+   "pandId": "0363100012182920",
+   "reason": "no frontage on Spinozastraat: No footprint edge faces Spinozastraat"
+  },
+  {
+   "pandId": "0363100012182921",
+   "reason": "no frontage on Spinozastraat: No footprint edge faces Spinozastraat"
+  },
+  {
+   "pandId": "0363100012241284",
+   "reason": "frontage 100.3 m from Spinozastraat"
+  },
+  {
+   "pandId": "0363100012253824",
+   "reason": "frontage 132.3 m from Spinozastraat"
+  },
+  {
+   "pandId": "0363100012253901",
+   "reason": "no frontage on Spinozastraat: No footprint edge faces Spinozastraat"
+  },
+  {
+   "pandId": "0363100012570489",
+   "reason": "sightline to Spinozastraat crosses 0363100012180996"
+  },
+  {
+   "pandId": "0363100012170411",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012170412",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012170413",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012170752",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012181690",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012181691",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012181698",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012181699",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012181700",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 180,
+ "pands": [
+  {
+   "pandId": "0363100012170293",
+   "alongM": 0,
+   "widthM": 6.19,
+   "eavesM": 17.45,
+   "roofMaxM": 20.2,
+   "storeys3dbag": 5,
+   "builtYear": 1803,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012180928",
+   "alongM": 6.19,
+   "widthM": 6.19,
+   "eavesM": 17.32,
+   "roofMaxM": 20.2,
+   "storeys3dbag": 5,
+   "builtYear": 1799,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012180994",
+   "alongM": 12.38,
+   "widthM": 6.19,
+   "eavesM": 17.22,
+   "roofMaxM": 20.35,
+   "storeys3dbag": 5,
+   "builtYear": 1779,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012180995",
+   "alongM": 18.57,
+   "widthM": 6.19,
+   "eavesM": 16.64,
+   "roofMaxM": 20.6,
+   "storeys3dbag": 5,
+   "builtYear": 1790,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012180996",
+   "alongM": 24.76,
+   "widthM": 6.19,
+   "eavesM": 16.8,
+   "roofMaxM": 20.11,
+   "storeys3dbag": 5,
+   "builtYear": 1835,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012181004",
+   "alongM": 30.95,
+   "widthM": 6.19,
+   "eavesM": 16.83,
+   "roofMaxM": 20.01,
+   "storeys3dbag": 5,
+   "builtYear": 1809,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012181005",
+   "alongM": 37.14,
+   "widthM": 6.19,
+   "eavesM": 16.12,
+   "roofMaxM": 19.52,
+   "storeys3dbag": 5,
+   "builtYear": 1812,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012181006",
+   "alongM": 43.33,
+   "widthM": 6.19,
+   "eavesM": 16.26,
+   "roofMaxM": 19.4,
+   "storeys3dbag": 0,
+   "builtYear": 1801,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012181007",
+   "alongM": 49.52,
+   "widthM": 6.19,
+   "eavesM": 16.12,
+   "roofMaxM": 19.23,
+   "storeys3dbag": 5,
+   "builtYear": 1874,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012181003",
+   "alongM": 55.68,
+   "widthM": 6.14,
+   "eavesM": 14.34,
+   "roofMaxM": 17.75,
+   "storeys3dbag": 5,
+   "builtYear": 1788,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012180998",
+   "alongM": 61.82,
+   "widthM": 6.15,
+   "eavesM": 14.28,
+   "roofMaxM": 17.91,
+   "storeys3dbag": 5,
+   "builtYear": 1800,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012180999",
+   "alongM": 67.97,
+   "widthM": 6.15,
+   "eavesM": 14.61,
+   "roofMaxM": 16,
+   "storeys3dbag": 5,
+   "builtYear": 1823,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012181000",
+   "alongM": 74.11,
+   "widthM": 6.14,
+   "eavesM": 13.41,
+   "roofMaxM": 16.03,
+   "storeys3dbag": 0,
+   "builtYear": 1798,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012181001",
+   "alongM": 80.23,
+   "widthM": 6.1,
+   "eavesM": 12.83,
+   "roofMaxM": 16,
+   "storeys3dbag": 5,
+   "builtYear": 1832,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012181002",
+   "alongM": 86.33,
+   "widthM": 6.09,
+   "eavesM": 12.49,
+   "roofMaxM": 16.04,
+   "storeys3dbag": 5,
+   "builtYear": 1817,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012180997",
+   "alongM": 92.52,
+   "widthM": 6.28,
+   "eavesM": 13.72,
+   "roofMaxM": 17.41,
+   "storeys3dbag": 5,
+   "builtYear": 1816,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012170699",
+   "alongM": 99.18,
+   "widthM": 7.06,
+   "eavesM": 14.24,
+   "roofMaxM": 16.86,
+   "storeys3dbag": 5,
+   "builtYear": 1996,
+   "uncertainty": []
+  }
+ ]
+}

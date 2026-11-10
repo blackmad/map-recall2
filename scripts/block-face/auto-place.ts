@@ -133,7 +133,7 @@ function withPhotoEaves(intent: ReturnType<typeof runIntent>, types: MatchableTy
     const ev = evs.find(e => e.pandId === h.pandId), t = types.find(x => x.id === h.type?.type);
     const fe = t && ev ? frontEavesFor(t, ev) : null, bagM = photoEaves.get(h.pandId)?.bagM ?? ev?.eavesM;
     if (fe && ev && bagM !== undefined) {
-      if (Math.abs(fe.eavesM - bagM) <= PHOTO_EAVES.minDeltaM && !photoEaves.has(h.pandId)) return [];
+      if (Math.abs(fe.eavesM - bagM) <= PHOTO_EAVES.minDeltaM && !photoEaves.has(h.pandId) && !t!.match?.frontEavesFixed) return [];
       return [{pand: h.pandId, stripRow: Math.round(strip.height - fe.eavesM * strip.pixelsPerMetre), ...(fe.eavesM < bagM && !t!.match?.keepSurveyRoof ? {frontRoof: {}} : {}),
         evidence: fe.source === 'skyline' ? `auto-place: strip skyline cornice ${fe.eavesM} m within ${FRONT_EAVES.tolM} m of the ${t!.id} line ${t!.match!.frontEavesM} m; 3DBAG/PDOK eaves ${bagM} m`
           : `auto-place: the ${t!.id} cornice line ${fe.eavesM} m (measured on its exemplar strips; this pand's skyline unread); 3DBAG/PDOK eaves ${bagM} m`}];

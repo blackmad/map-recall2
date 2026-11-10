@@ -1,0 +1,350 @@
+{
+ "street": "Nieuwe Achtergracht",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T07:10:50.267Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012180462",
+   "addresses": [],
+   "groundUnits": [
+    {
+     "address": "Lepelkruisstraat 15-H",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000722582"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012180455",
+   "addresses": [
+    "Nieuwe Achtergracht 81"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Achtergracht 81-H",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000755161"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012180456",
+   "addresses": [
+    "Nieuwe Achtergracht 83"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Achtergracht 83-H",
+     "use": "woonfunctie",
+     "areaM2": 100,
+     "bagId": "0363010001013380"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012180457",
+   "addresses": [
+    "Nieuwe Achtergracht 85"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Achtergracht 85-H",
+     "use": "woonfunctie",
+     "areaM2": 108,
+     "bagId": "0363010001013381"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012180458",
+   "addresses": [
+    "Nieuwe Achtergracht 87"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Achtergracht 87-H",
+     "use": "woonfunctie",
+     "areaM2": 75,
+     "bagId": "0363010000755179"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012180452",
+   "addresses": [
+    "Nieuwe Achtergracht 89"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Achtergracht 89-H",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000755189"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012170303",
+   "addresses": [
+    "Nieuwe Achtergracht 91"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Achtergracht 91-H",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010012070014"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181093",
+   "addresses": [
+    "Nieuwe Achtergracht 93"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Achtergracht 93-H",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010000755201"
+    },
+    {
+     "address": "Nieuwe Achtergracht 93-O",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000755202"
+    },
+    {
+     "address": "Nieuwe Achtergracht 93-H",
+     "use": "woonfunctie",
+     "areaM2": 107,
+     "bagId": "0363010012080539"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181094",
+   "addresses": [
+    "Nieuwe Achtergracht 95"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Achtergracht 95-H",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010000755207"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181095",
+   "addresses": [
+    "Nieuwe Achtergracht 97"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Achtergracht 97-H",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000755213"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012170353",
+   "addresses": [
+    "Nieuwe Achtergracht 99"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Achtergracht 99-H",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000755218"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012170354",
+   "addresses": [
+    "Nieuwe Achtergracht 101"
+   ],
+   "groundUnits": [],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012170355",
+   "addresses": [
+    "Nieuwe Achtergracht 103"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Achtergracht 103-H",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000755229"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012170356",
+   "addresses": [
+    "Nieuwe Achtergracht 105"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Achtergracht 105-H",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000755234"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012170358",
+   "addresses": [
+    "Nieuwe Achtergracht 107"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Achtergracht 107-H",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000755245"
+    },
+    {
+     "address": "Nieuwe Achtergracht 107-O",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000755246"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012164936",
+   "addresses": [
+    "Nieuwe Achtergracht 109"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Achtergracht 109-H",
+     "use": "woonfunctie",
+     "areaM2": 121,
+     "bagId": "0363010000755254"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012164937",
+   "addresses": [
+    "Nieuwe Achtergracht 111"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Achtergracht 111-H",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000755263"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012170469",
+   "addresses": [
+    "Nieuwe Achtergracht 113"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Achtergracht 113-H",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010000755273"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181178",
+   "addresses": [
+    "Nieuwe Achtergracht 115"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Achtergracht 115-H",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000755279"
+    },
+    {
+     "address": "Nieuwe Achtergracht 115-O",
+     "use": "industriefunctie",
+     "areaM2": 49,
+     "bagId": "0363010000755280"
+    },
+    {
+     "address": "Nieuwe Achtergracht 115-H",
+     "use": "woonfunctie",
+     "areaM2": 122,
+     "bagId": "0363010012582236"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181265",
+   "addresses": [
+    "Nieuwe Achtergracht 117"
+   ],
+   "groundUnits": [
+    {
+     "address": "Roetersstraat 20",
+     "use": "woonfunctie",
+     "areaM2": 137,
+     "bagId": "0363010000795477"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  }
+ ]
+}

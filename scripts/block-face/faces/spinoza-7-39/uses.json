@@ -1,0 +1,476 @@
+{
+ "street": "Spinozastraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T07:27:55.666Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012170293",
+   "addresses": [
+    "Spinozastraat 7"
+   ],
+   "groundUnits": [
+    {
+     "address": "Spinozastraat 7-H",
+     "use": "woonfunctie",
+     "areaM2": 174,
+     "bagId": "0363010000816452"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012180928",
+   "addresses": [
+    "Spinozastraat 9"
+   ],
+   "groundUnits": [
+    {
+     "address": "Spinozastraat 9-H",
+     "use": "woonfunctie",
+     "areaM2": 190,
+     "bagId": "0363010000816454"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012180994",
+   "addresses": [
+    "Spinozastraat 11"
+   ],
+   "groundUnits": [
+    {
+     "address": "Spinozastraat 11-H",
+     "use": "woonfunctie",
+     "areaM2": 82,
+     "bagId": "0363010000996563"
+    },
+    {
+     "address": "Spinozastraat 11-O",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 167,
+     "bagId": "0363010000816457"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012180995",
+   "addresses": [
+    "Spinozastraat 13"
+   ],
+   "groundUnits": [
+    {
+     "address": "Spinozastraat 13-H",
+     "use": "woonfunctie",
+     "areaM2": 159,
+     "bagId": "0363010000816460"
+    },
+    {
+     "address": "Spinozastraat 13-O",
+     "use": "winkelfunctie",
+     "areaM2": 1,
+     "bagId": "0363010001172197"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012180996",
+   "addresses": [
+    "Spinozastraat 15D",
+    "Spinozastraat 15C",
+    "Spinozastraat 15B",
+    "Spinozastraat 15A",
+    "Spinozastraat 15"
+   ],
+   "groundUnits": [
+    {
+     "address": "Spinozastraat 15D",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000952466"
+    },
+    {
+     "address": "Spinozastraat 15B",
+     "use": "woonfunctie",
+     "areaM2": 87,
+     "bagId": "0363010000952468"
+    },
+    {
+     "address": "Spinozastraat 15A",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000952469"
+    },
+    {
+     "address": "Spinozastraat 15",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010012082737"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181004",
+   "addresses": [
+    "Spinozastraat 17",
+    "Spinozastraat 17A",
+    "Spinozastraat 17B",
+    "Spinozastraat 17C",
+    "Spinozastraat 17D",
+    "Spinozastraat 17E"
+   ],
+   "groundUnits": [
+    {
+     "address": "Spinozastraat 17-H",
+     "use": "woonfunctie",
+     "areaM2": 207,
+     "bagId": "0363010000816466"
+    },
+    {
+     "address": "Spinozastraat 17A",
+     "use": "woonfunctie",
+     "areaM2": 136,
+     "bagId": "0363010012143290"
+    },
+    {
+     "address": "Spinozastraat 17B",
+     "use": "woonfunctie",
+     "areaM2": 62,
+     "bagId": "0363010012143291"
+    },
+    {
+     "address": "Spinozastraat 17C",
+     "use": "woonfunctie",
+     "areaM2": 62,
+     "bagId": "0363010012143292"
+    },
+    {
+     "address": "Spinozastraat 17D",
+     "use": "woonfunctie",
+     "areaM2": 62,
+     "bagId": "0363010012143293"
+    },
+    {
+     "address": "Spinozastraat 17E",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010012143294"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181005",
+   "addresses": [
+    "Spinozastraat 19",
+    "Spinozastraat 19A",
+    "Spinozastraat 19B",
+    "Spinozastraat 19D",
+    "Spinozastraat 19C",
+    "Spinozastraat 19E"
+   ],
+   "groundUnits": [
+    {
+     "address": "Spinozastraat 19-H",
+     "use": "woonfunctie",
+     "areaM2": 177,
+     "bagId": "0363010000816468"
+    },
+    {
+     "address": "Spinozastraat 19A",
+     "use": "woonfunctie",
+     "areaM2": 146,
+     "bagId": "0363010012164455"
+    },
+    {
+     "address": "Spinozastraat 19B",
+     "use": "woonfunctie",
+     "areaM2": 62,
+     "bagId": "0363010012164456"
+    },
+    {
+     "address": "Spinozastraat 19D",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010012164458"
+    },
+    {
+     "address": "Spinozastraat 19C",
+     "use": "woonfunctie",
+     "areaM2": 62,
+     "bagId": "0363010012164457"
+    },
+    {
+     "address": "Spinozastraat 19E",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010012164459"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181006",
+   "addresses": [
+    "Spinozastraat 21"
+   ],
+   "groundUnits": [
+    {
+     "address": "Spinozastraat 21-H",
+     "use": "woonfunctie",
+     "areaM2": 141,
+     "bagId": "0363010000816470"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181007",
+   "addresses": [
+    "Spinozastraat 23"
+   ],
+   "groundUnits": [
+    {
+     "address": "Spinozastraat 23-H",
+     "use": "woonfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000816473"
+    },
+    {
+     "address": "Spinozastraat 23-H",
+     "use": "woonfunctie",
+     "areaM2": 128,
+     "bagId": "0363010012098358"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181003",
+   "addresses": [
+    "Spinozastraat 25"
+   ],
+   "groundUnits": [
+    {
+     "address": "Spinozastraat 25-H",
+     "use": "woonfunctie",
+     "areaM2": 144,
+     "bagId": "0363010000816475"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012180998",
+   "addresses": [
+    "Spinozastraat 27"
+   ],
+   "groundUnits": [
+    {
+     "address": "Spinozastraat 27-H",
+     "use": "woonfunctie",
+     "areaM2": 122,
+     "bagId": "0363010000816478"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012180999",
+   "addresses": [
+    "Spinozastraat 29"
+   ],
+   "groundUnits": [
+    {
+     "address": "Spinozastraat 29-H",
+     "use": "woonfunctie",
+     "areaM2": 107,
+     "bagId": "0363010000816481"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181000",
+   "addresses": [
+    "Spinozastraat 31"
+   ],
+   "groundUnits": [
+    {
+     "address": "Spinozastraat 31-H",
+     "use": "woonfunctie",
+     "areaM2": 138,
+     "bagId": "0363010000953092"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181001",
+   "addresses": [
+    "Spinozastraat 33"
+   ],
+   "groundUnits": [
+    {
+     "address": "Spinozastraat 33-H",
+     "use": "woonfunctie",
+     "areaM2": 116,
+     "bagId": "0363010000816487"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181002",
+   "addresses": [
+    "Spinozastraat 35"
+   ],
+   "groundUnits": [
+    {
+     "address": "Spinozastraat 35-H",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000816491"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012180997",
+   "addresses": [
+    "Spinozastraat 37B",
+    "Spinozastraat 37C",
+    "Spinozastraat 37D",
+    "Spinozastraat 37E",
+    "Spinozastraat 37F",
+    "Spinozastraat 37G",
+    "Spinozastraat 37H",
+    "Spinozastraat 37A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Spinozastraat 37B",
+     "use": "woonfunctie",
+     "areaM2": 33,
+     "bagId": "0363010001007269"
+    },
+    {
+     "address": "Spinozastraat 37C",
+     "use": "woonfunctie",
+     "areaM2": 26,
+     "bagId": "0363010001007270"
+    },
+    {
+     "address": "Spinozastraat 37D",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010001007271"
+    },
+    {
+     "address": "Spinozastraat 37E",
+     "use": "woonfunctie",
+     "areaM2": 25,
+     "bagId": "0363010001007274"
+    },
+    {
+     "address": "Spinozastraat 37F",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010001007275"
+    },
+    {
+     "address": "Spinozastraat 37G",
+     "use": "woonfunctie",
+     "areaM2": 25,
+     "bagId": "0363010001007276"
+    },
+    {
+     "address": "Spinozastraat 37H",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010001007277"
+    },
+    {
+     "address": "Spinozastraat 37A",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010001026775"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012170699",
+   "addresses": [
+    "Spinozastraat 39A",
+    "Spinozastraat 39B",
+    "Spinozastraat 39C",
+    "Spinozastraat 39D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Spinozastraat 39A",
+     "use": "woonfunctie",
+     "areaM2": 107,
+     "bagId": "0363010000954347"
+    },
+    {
+     "address": "Spinozastraat 39B",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000954348"
+    },
+    {
+     "address": "Spinozastraat 39D",
+     "use": "woonfunctie",
+     "areaM2": 74,
+     "bagId": "0363010012142251"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 9152791686,
+     "lngLat": [
+      4.9108681,
+      52.3611761
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "41B",
+      "addr:postcode": "1018HH",
+      "addr:street": "Spinozastraat",
+      "source": "BAG",
+      "source:date": "2021-10-03",
+      "tourism": "apartment"
+     },
+     "fetchedAt": "2026-11-10T07:27:55.666Z",
+     "match": "frontage",
+     "distanceM": 5.4
+    }
+   ]
+  }
+ ]
+}

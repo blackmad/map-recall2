@@ -1,0 +1,71 @@
+{
+ "schemaVersion": 1,
+ "kind": "house-type",
+ "id": "sarphati-1910-arched-tower-pair",
+ "district": "weesperbuurt",
+ "description": "Sarphatistraat 163-213 (BAG 1909-10): 6.5 m red-brown brick fronts of four storeys over a 4.1 m ground storey; a wide two-light window (2.75 m) and a narrow one (1.3 m) per storey, the narrow axis on the door side so fronts mirror about the party wall; a round-arched pair of house doors against the party wall, two tall ground windows; cream bands; a cream cornice at 14.4 m and a brick wall dormer (tower) over the narrow axis whose neighbour's tower meets it over the party wall",
+ "fit": {"widthM": [6.0, 7.0], "storeys": [4]},
+ "match": {
+  "years": [1909, 1911],
+  "storeys3dbag": [5],
+  "frontEavesM": 14.4,
+  "frontEavesUnscored": true,
+  "baysByWidth": [{"maxWidthM": 99, "bays": 2}],
+  "columnsUnscored": true,
+  "frontEavesFixed": true,
+  "yearSlack": 0,
+  "mirrorForDoor": "right",
+  "stucco": false,
+  "note": "3DBAG eaves 13.4-15.5 m on most pands but 8.7-9.2 m on 173/189 and 17.1-18.2 m on 163/185 (the tower or a gable read as the eaves): front eaves are the measured 14.4 m cornice"
+ },
+ "body": {
+  "storeys": 4,
+  "bays": 2,
+  "axisGrid": 2,
+  "bayWidths": [3.9, 2.6],
+  "bayFill": [0.7, 0.5],
+  "storeyHeights": [4.1, 3.4, 3.3, 3.6],
+  "windows": "casement-toplight",
+  "axisWindows": {"0": "casement-pair"},
+  "windowSurround": "sill",
+  "windowHeights": [0.585, 0.62, 0.68, 0.58],
+  "headLines": [0.85, 0.735, 0.77, 0.68],
+  "cornice": "simple"
+ },
+ "crowns": {
+  "tower": {
+   "gable": "cornice",
+   "tower": {"bays": {"from": 1, "to": 1}, "rise": 0.8, "cap": "flat", "lights": "per-axis", "lightSill": 0.1, "lightRise": 0.45},
+   "note": "Sarphatistraat 175-181 (2024-12-11 strip, gridded 40 px/m): a brick wall dormer 2.6-3.0 m wide per house over the narrow axis, the two of a door pair meeting over the party wall as one 5.6 m block, 14.5-17.4 m, a flat cream cap, one light 14.7-15.8 m per house"
+  },
+  "none": {"gable": "cornice", "note": "cornice only"}
+ },
+ "grounds": {
+  "door-right": {
+   "doorBay": 1,
+   "doorArch": {"span": 1.8, "apex": 3.75},
+   "basement": "none",
+   "note": "a round-arched pair of brown double doors, 1.8 m each pair half, against the party wall (apex 3.75 m)"
+  }
+ },
+ "palettes": {
+  "red-brown": {"brick": "#7f5c46", "frame": "#e8e2d2", "door": "#6a3420", "stone": "#d9d1bd", "cornice": "#e2dccb"}
+ },
+ "roof": {"material": "black-tile"},
+ "rhythm": {
+  "bays": "a wide two-light window and a narrow window per storey; ground: two tall windows and the arched door",
+  "identicalBays": "no",
+  "windowsPerStorey": "ground: 2 + door | 1-3: 2 (wide pair + narrow)",
+  "symmetry": "mirrored pairs: the doors and narrow windows meet at the party wall",
+  "groundFloor": "residential, arched doors",
+  "signage": "none",
+  "roofline": "cream cornice at 14.4 m, a brick wall dormer over each door pair",
+  "photoRows": [2, 2, 2, 2],
+  "photoGroundRows": 1
+ },
+ "evidence": [
+  {"face": "sarphati-163-213", "pands": ["181393", "181394", "181458", "181392"], "citation": "strip.jpg 2024-12-11 at 40 px/m, gridded: wide window 2.75 m (two 1.4 m lights) 1.2-3.95 m from the left edge, narrow 1.3 m at 4.75-6.05 m; sills 4.5/7.8/11.1 m, heads 6.6/10.05/13.25 m; ground windows 1.1-3.5 m, arch apex 3.75 m, doors 4.35-6.35 m; cornice 14.25-14.75 m; tower 14.5-17.4 m"}
+ ],
+ "schemaLimits": ["iron balconies on storeys 1-2 under the wide window (some houses, left or right light)", "thin cream speklagen bands (triangle budget)"],
+ "notes": ["The strip's exposure falls from bright (left) to dark (right): placed pands take their own measured wall."]
+}

@@ -1,0 +1,507 @@
+{
+ "street": "Sarphatistraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T07:16:49.744Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012181989",
+   "addresses": [
+    "Sarphatistraat 25A",
+    "Sarphatistraat 25B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Sarphatistraat 25A",
+     "use": "woonfunctie",
+     "areaM2": 238,
+     "bagId": "0363010000953001"
+    },
+    {
+     "address": "Sarphatistraat 25B",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000953002"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181990",
+   "addresses": [
+    "Sarphatistraat 27A",
+    "Sarphatistraat 27B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Sarphatistraat 27A",
+     "use": "woonfunctie",
+     "areaM2": 155,
+     "bagId": "0363010001014488"
+    },
+    {
+     "address": "Sarphatistraat 27B",
+     "use": "woonfunctie",
+     "areaM2": 220,
+     "bagId": "0363010001014489"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181991",
+   "addresses": [
+    "Sarphatistraat 29",
+    "Sarphatistraat 29D",
+    "Sarphatistraat 29C",
+    "Sarphatistraat 29B",
+    "Sarphatistraat 29A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Sarphatistraat 29-H",
+     "use": "woonfunctie",
+     "areaM2": 189,
+     "bagId": "0363010000804524"
+    },
+    {
+     "address": "Sarphatistraat 29D",
+     "use": "woonfunctie",
+     "areaM2": 125,
+     "bagId": "0363010012590095"
+    },
+    {
+     "address": "Sarphatistraat 29C",
+     "use": "woonfunctie",
+     "areaM2": 78,
+     "bagId": "0363010012590094"
+    },
+    {
+     "address": "Sarphatistraat 29B",
+     "use": "woonfunctie",
+     "areaM2": 77,
+     "bagId": "0363010012590093"
+    },
+    {
+     "address": "Sarphatistraat 29A",
+     "use": "woonfunctie",
+     "areaM2": 166,
+     "bagId": "0363010012590092"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181992",
+   "addresses": [
+    "Sarphatistraat 31",
+    "Sarphatistraat 31B",
+    "Sarphatistraat 31C",
+    "Sarphatistraat 31A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Sarphatistraat 31-H",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 164,
+     "bagId": "0363010000804529"
+    },
+    {
+     "address": "Sarphatistraat 31B",
+     "use": "woonfunctie",
+     "areaM2": 169,
+     "bagId": "0363010012122941"
+    },
+    {
+     "address": "Sarphatistraat 31C",
+     "use": "woonfunctie",
+     "areaM2": 108,
+     "bagId": "0363010012122942"
+    },
+    {
+     "address": "Sarphatistraat 31A",
+     "use": "woonfunctie",
+     "areaM2": 191,
+     "bagId": "0363010012122940"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181993",
+   "addresses": [
+    "Sarphatistraat 33"
+   ],
+   "groundUnits": [
+    {
+     "address": "Sarphatistraat 33",
+     "use": "kantoorfunctie",
+     "areaM2": 976,
+     "bagId": "0363010000804534"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "way",
+     "id": 269000124,
+     "lngLat": [
+      4.905492,
+      52.3609083
+     ],
+     "tags": {
+      "amenity": "college",
+      "building": "commercial",
+      "height": "23.2",
+      "name": "Fotoacademie",
+      "ref:bag": "0363100012181993",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "source:height": "3DBAG",
+      "source:height:date": "2025-09-03",
+      "start_date": "1005",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-11-10T07:16:49.744Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012181994",
+   "addresses": [
+    "Sarphatistraat 37"
+   ],
+   "groundUnits": [
+    {
+     "address": "Sarphatistraat 37-H",
+     "use": "woonfunctie",
+     "areaM2": 120,
+     "bagId": "0363010000804535"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181998",
+   "addresses": [
+    "Sarphatistraat 39A",
+    "Sarphatistraat 39B",
+    "Sarphatistraat 39C",
+    "Sarphatistraat 39D",
+    "Sarphatistraat 39E",
+    "Sarphatistraat 39F",
+    "Sarphatistraat 39G",
+    "Sarphatistraat 39H"
+   ],
+   "groundUnits": [
+    {
+     "address": "Sarphatistraat 39A",
+     "use": "woonfunctie",
+     "areaM2": 38,
+     "bagId": "0363010000804539"
+    },
+    {
+     "address": "Sarphatistraat 39B",
+     "use": "woonfunctie",
+     "areaM2": 38,
+     "bagId": "0363010000986450"
+    },
+    {
+     "address": "Sarphatistraat 39C",
+     "use": "woonfunctie",
+     "areaM2": 38,
+     "bagId": "0363010000986451"
+    },
+    {
+     "address": "Sarphatistraat 39D",
+     "use": "woonfunctie",
+     "areaM2": 38,
+     "bagId": "0363010000986452"
+    },
+    {
+     "address": "Sarphatistraat 39E",
+     "use": "woonfunctie",
+     "areaM2": 38,
+     "bagId": "0363010000986453"
+    },
+    {
+     "address": "Sarphatistraat 39F",
+     "use": "woonfunctie",
+     "areaM2": 38,
+     "bagId": "0363010000986454"
+    },
+    {
+     "address": "Sarphatistraat 39G",
+     "use": "woonfunctie",
+     "areaM2": 38,
+     "bagId": "0363010000986455"
+    },
+    {
+     "address": "Sarphatistraat 39H",
+     "use": "woonfunctie",
+     "areaM2": 38,
+     "bagId": "0363010000986456"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181986",
+   "addresses": [
+    "Sarphatistraat 41",
+    "Sarphatistraat 41B",
+    "Sarphatistraat 41A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Sarphatistraat 41-H",
+     "use": "woonfunctie",
+     "areaM2": 92,
+     "bagId": "0363010001045165"
+    },
+    {
+     "address": "Sarphatistraat 41B",
+     "use": "kantoorfunctie",
+     "areaM2": 193,
+     "bagId": "0363010001982868"
+    },
+    {
+     "address": "Sarphatistraat 41A",
+     "use": "onderwijsfunctie",
+     "areaM2": 195,
+     "bagId": "0363010001982881"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181999",
+   "addresses": [
+    "Sarphatistraat 43",
+    "Sarphatistraat 43A",
+    "Sarphatistraat 43C",
+    "Sarphatistraat 43D",
+    "Sarphatistraat 43E",
+    "Sarphatistraat 43B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Sarphatistraat 43",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 444,
+     "bagId": "0363010000804558"
+    },
+    {
+     "address": "Sarphatistraat 43A",
+     "use": "woonfunctie",
+     "areaM2": 195,
+     "bagId": "0363010012089805"
+    },
+    {
+     "address": "Sarphatistraat 43C",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010012089807"
+    },
+    {
+     "address": "Sarphatistraat 43D",
+     "use": "woonfunctie",
+     "areaM2": 30,
+     "bagId": "0363010012089808"
+    },
+    {
+     "address": "Sarphatistraat 43E",
+     "use": "woonfunctie",
+     "areaM2": 32,
+     "bagId": "0363010012089809"
+    },
+    {
+     "address": "Sarphatistraat 43B",
+     "use": "woonfunctie",
+     "areaM2": 81,
+     "bagId": "0363010012089806"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012182000",
+   "addresses": [
+    "Sarphatistraat 45A",
+    "Sarphatistraat 45B",
+    "Sarphatistraat 45C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Sarphatistraat 45A",
+     "use": "woonfunctie",
+     "areaM2": 111,
+     "bagId": "0363010001020566"
+    },
+    {
+     "address": "Sarphatistraat 45B",
+     "use": "woonfunctie",
+     "areaM2": 113,
+     "bagId": "0363010001020567"
+    },
+    {
+     "address": "Sarphatistraat 45C",
+     "use": "woonfunctie",
+     "areaM2": 150,
+     "bagId": "0363010001020568"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012170759",
+   "addresses": [
+    "Sarphatistraat 47",
+    "Sarphatistraat 47B",
+    "Sarphatistraat 47C",
+    "Sarphatistraat 47D",
+    "Sarphatistraat 47E",
+    "Sarphatistraat 49",
+    "Sarphatistraat 51",
+    "Sarphatistraat 53",
+    "Sarphatistraat 55"
+   ],
+   "groundUnits": [
+    {
+     "address": "Sarphatistraat 47",
+     "use": "winkelfunctie",
+     "areaM2": 3416,
+     "bagId": "0363010000804562"
+    },
+    {
+     "address": "Sarphatistraat 47B",
+     "use": "kantoorfunctie",
+     "areaM2": 1,
+     "bagId": "0363010002002033"
+    },
+    {
+     "address": "Sarphatistraat 47C",
+     "use": "kantoorfunctie",
+     "areaM2": 1,
+     "bagId": "0363010002002034"
+    },
+    {
+     "address": "Sarphatistraat 47D",
+     "use": "kantoorfunctie",
+     "areaM2": 1,
+     "bagId": "0363010002002035"
+    },
+    {
+     "address": "Sarphatistraat 47E",
+     "use": "kantoorfunctie",
+     "areaM2": 1,
+     "bagId": "0363010002002036"
+    },
+    {
+     "address": "Sarphatistraat 49",
+     "use": "kantoorfunctie",
+     "areaM2": 396,
+     "bagId": "0363010003763954"
+    },
+    {
+     "address": "Sarphatistraat 51",
+     "use": "kantoorfunctie",
+     "areaM2": 420,
+     "bagId": "0363010003763955"
+    },
+    {
+     "address": "Sarphatistraat 53",
+     "use": "kantoorfunctie",
+     "areaM2": 570,
+     "bagId": "0363010003763956"
+    },
+    {
+     "address": "Sarphatistraat 55",
+     "use": "logiesfunctie",
+     "areaM2": 3062,
+     "bagId": "0363010012126268"
+    },
+    {
+     "address": "Sarphatistraat 49",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 9,
+     "bagId": "0363010012131366"
+    }
+   ],
+   "units": 10,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11030071602,
+     "lngLat": [
+      4.9063758,
+      52.3610179
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "47",
+      "addr:postcode": "1018EW",
+      "addr:street": "Sarphatistraat",
+      "brand": "citizenM",
+      "brand:wikidata": "Q5122531",
+      "check_date": "2025-07-27",
+      "name": "CitizenM Amstel Amsterdam",
+      "tourism": "hotel",
+      "website": "https://www.citizenm.com/nl/hotels/europa/amsterdam/amstel-amsterdam-hotel"
+     },
+     "fetchedAt": "2026-11-10T07:16:49.744Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 12871441751,
+     "lngLat": [
+      4.9062421,
+      52.3609494
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "49",
+      "addr:postcode": "1018EW",
+      "addr:street": "Sarphatistraat",
+      "amenity": "atm",
+      "brand": "Geldmaat",
+      "brand:wikidata": "Q74051230",
+      "brand:wikipedia": "nl:Geldmaat",
+      "cash_in": "yes",
+      "cash_in:notes": "yes",
+      "cash_out": "yes",
+      "cash_out:notes": "yes",
+      "description": "Geld opnemen en storten",
+      "indoor": "no",
+      "name": "Geldmaat",
+      "opening_hours": "Mo-Su 07:00-23:00",
+      "operator": "Geldmaat",
+      "operator:wikidata": "Q74051230",
+      "ref": "1018005",
+      "source": "survey",
+      "speech_output": "yes",
+      "website": "https://locatiewijzer.geldmaat.nl/nl/location/1018005",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-11-10T07:16:49.744Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

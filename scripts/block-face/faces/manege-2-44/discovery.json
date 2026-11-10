@@ -1,0 +1,327 @@
+{
+ "street": "Manegestraat",
+ "seed": "0363100012182999",
+ "members": [
+  "0363100012170365",
+  "0363100012182996",
+  "0363100012182931",
+  "0363100012182997",
+  "0363100012182998",
+  "0363100012182999"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "trimmed at 0363100012170365 (face continues: 170359)"
+  },
+  {
+   "side": "right",
+   "reason": "trimmed at 0363100012182999 (face continues: 183008)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012165490",
+   "reason": "frontage 53.3 m from Manegestraat"
+  },
+  {
+   "pandId": "0363100012165761",
+   "reason": "frontage 31.3 m from Manegestraat"
+  },
+  {
+   "pandId": "0363100012170298",
+   "reason": "frontage 41.3 m from Manegestraat"
+  },
+  {
+   "pandId": "0363100012170305",
+   "reason": "frontage 40.3 m from Manegestraat"
+  },
+  {
+   "pandId": "0363100012170361",
+   "reason": "sightline to Manegestraat crosses 0363100012170359"
+  },
+  {
+   "pandId": "0363100012180466",
+   "reason": "no frontage on Manegestraat: No footprint edge faces Manegestraat"
+  },
+  {
+   "pandId": "0363100012180930",
+   "reason": "no frontage on Manegestraat: No footprint edge faces Manegestraat"
+  },
+  {
+   "pandId": "0363100012180931",
+   "reason": "no frontage on Manegestraat: No footprint edge faces Manegestraat"
+  },
+  {
+   "pandId": "0363100012180932",
+   "reason": "no frontage on Manegestraat: No footprint edge faces Manegestraat"
+  },
+  {
+   "pandId": "0363100012180933",
+   "reason": "no frontage on Manegestraat: No footprint edge faces Manegestraat"
+  },
+  {
+   "pandId": "0363100012180935",
+   "reason": "frontage 54.1 m from Manegestraat"
+  },
+  {
+   "pandId": "0363100012180936",
+   "reason": "frontage 40.0 m from Manegestraat"
+  },
+  {
+   "pandId": "0363100012180937",
+   "reason": "frontage 40.3 m from Manegestraat"
+  },
+  {
+   "pandId": "0363100012180938",
+   "reason": "frontage 48.9 m from Manegestraat"
+  },
+  {
+   "pandId": "0363100012180939",
+   "reason": "frontage 41.3 m from Manegestraat"
+  },
+  {
+   "pandId": "0363100012180940",
+   "reason": "frontage 47.0 m from Manegestraat"
+  },
+  {
+   "pandId": "0363100012180943",
+   "reason": "frontage 43.0 m from Manegestraat"
+  },
+  {
+   "pandId": "0363100012180944",
+   "reason": "no frontage on Manegestraat: No footprint edge faces Manegestraat"
+  },
+  {
+   "pandId": "0363100012180947",
+   "reason": "sightline to Manegestraat crosses 0363100012170362"
+  },
+  {
+   "pandId": "0363100012180949",
+   "reason": "sightline to Manegestraat crosses 0363100012170362"
+  },
+  {
+   "pandId": "0363100012181023",
+   "reason": "frontage 57.1 m from Manegestraat"
+  },
+  {
+   "pandId": "0363100012181831",
+   "reason": "frontage 104.3 m from Manegestraat"
+  },
+  {
+   "pandId": "0363100012182925",
+   "reason": "sightline to Manegestraat crosses 0363100012170359"
+  },
+  {
+   "pandId": "0363100012182926",
+   "reason": "sightline to Manegestraat crosses 0363100012170359"
+  },
+  {
+   "pandId": "0363100012182927",
+   "reason": "sightline to Manegestraat crosses 0363100012170359"
+  },
+  {
+   "pandId": "0363100012182928",
+   "reason": "sightline to Manegestraat crosses 0363100012170359"
+  },
+  {
+   "pandId": "0363100012182929",
+   "reason": "frontage 44.8 m from Manegestraat"
+  },
+  {
+   "pandId": "0363100012182930",
+   "reason": "frontage 42.8 m from Manegestraat"
+  },
+  {
+   "pandId": "0363100012165762",
+   "reason": "frontage 32.7 m from Manegestraat"
+  },
+  {
+   "pandId": "0363100012169739",
+   "reason": "no frontage on Manegestraat: No footprint edge faces Manegestraat"
+  },
+  {
+   "pandId": "0363100012170363",
+   "reason": "sightline to Manegestraat crosses 0363100012170362"
+  },
+  {
+   "pandId": "0363100012170364",
+   "reason": "sightline to Manegestraat crosses 0363100012182993"
+  },
+  {
+   "pandId": "0363100012170422",
+   "reason": "frontage 64.7 m from Manegestraat"
+  },
+  {
+   "pandId": "0363100012170423",
+   "reason": "frontage 95.4 m from Manegestraat"
+  },
+  {
+   "pandId": "0363100012170425",
+   "reason": "frontage 39.6 m from Manegestraat"
+  },
+  {
+   "pandId": "0363100012170426",
+   "reason": "frontage 32.2 m from Manegestraat"
+  },
+  {
+   "pandId": "0363100012170427",
+   "reason": "frontage 84.6 m from Manegestraat"
+  },
+  {
+   "pandId": "0363100012170428",
+   "reason": "frontage 90.6 m from Manegestraat"
+  },
+  {
+   "pandId": "0363100012180945",
+   "reason": "frontage 59.2 m from Manegestraat"
+  },
+  {
+   "pandId": "0363100012180948",
+   "reason": "sightline to Manegestraat crosses 0363100012170362"
+  },
+  {
+   "pandId": "0363100012182935",
+   "reason": "no frontage on Manegestraat: No footprint edge faces Manegestraat"
+  },
+  {
+   "pandId": "0363100012182993",
+   "reason": "no frontage on Manegestraat: No footprint edge faces Manegestraat"
+  },
+  {
+   "pandId": "0363100012182994",
+   "reason": "no frontage on Manegestraat: No footprint edge faces Manegestraat"
+  },
+  {
+   "pandId": "0363100012183000",
+   "reason": "sightline to Manegestraat crosses 0363100012183001"
+  },
+  {
+   "pandId": "0363100012183001",
+   "reason": "sightline to Manegestraat crosses 0363100012183008"
+  },
+  {
+   "pandId": "0363100012183002",
+   "reason": "frontage 41.1 m from Manegestraat"
+  },
+  {
+   "pandId": "0363100012183003",
+   "reason": "sightline to Manegestraat crosses 0363100012183000"
+  },
+  {
+   "pandId": "0363100012183004",
+   "reason": "frontage 35.0 m from Manegestraat"
+  },
+  {
+   "pandId": "0363100012183005",
+   "reason": "sightline to Manegestraat crosses 0363100012183000"
+  },
+  {
+   "pandId": "0363100012182995",
+   "reason": "sightline to Manegestraat crosses 0363100012182993"
+  },
+  {
+   "pandId": "0363100012183006",
+   "reason": "frontage 35.8 m from Manegestraat"
+  },
+  {
+   "pandId": "0363100012183007",
+   "reason": "no frontage on Manegestraat: No footprint edge faces Manegestraat"
+  },
+  {
+   "pandId": "0363100012183009",
+   "reason": "frontage 60.3 m from Manegestraat"
+  },
+  {
+   "pandId": "0363100012183010",
+   "reason": "frontage 63.5 m from Manegestraat"
+  },
+  {
+   "pandId": "0363100012185595",
+   "reason": "frontage 57.6 m from Manegestraat"
+  },
+  {
+   "pandId": "0363100012170360",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012170362",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012170431",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012182934",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012170365",
+   "alongM": -21.93,
+   "widthM": 4.37,
+   "eavesM": 15.55,
+   "roofMaxM": 15.59,
+   "storeys3dbag": 5,
+   "builtYear": 1889,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012182996",
+   "alongM": -17.56,
+   "widthM": 4.37,
+   "eavesM": 15,
+   "roofMaxM": 15,
+   "storeys3dbag": 5,
+   "builtYear": 1889,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012182931",
+   "alongM": -13.18,
+   "widthM": 4.38,
+   "eavesM": 14.86,
+   "roofMaxM": 14.87,
+   "storeys3dbag": 3,
+   "builtYear": 1889,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012182997",
+   "alongM": -8.8,
+   "widthM": 4.38,
+   "eavesM": 14.91,
+   "roofMaxM": 14.92,
+   "storeys3dbag": 5,
+   "builtYear": 1889,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012182998",
+   "alongM": -4.41,
+   "widthM": 4.39,
+   "eavesM": 14.94,
+   "roofMaxM": 14.96,
+   "storeys3dbag": 5,
+   "builtYear": 1889,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012182999",
+   "alongM": 0,
+   "widthM": 4.43,
+   "eavesM": 15.04,
+   "roofMaxM": 15.08,
+   "storeys3dbag": 5,
+   "builtYear": 1965,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  }
+ ]
+}

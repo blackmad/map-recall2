@@ -1,0 +1,457 @@
+{
+ "street": "Lepelstraat",
+ "seed": "0363100012182018",
+ "members": [
+  "0363100012182018",
+  "0363100012182030",
+  "0363100012182031",
+  "0363100012182032",
+  "0363100012182033",
+  "0363100012182034",
+  "0363100012182014",
+  "0363100012182015"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "trimmed at 0363100012182018 (face continues: 182010)"
+  },
+  {
+   "side": "right",
+   "reason": "next fronting pand 0363100012183083 11.3 m on shares no party wall (cross street or gap)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012165498",
+   "reason": "frontage 91.6 m from Lepelstraat"
+  },
+  {
+   "pandId": "0363100012165501",
+   "reason": "frontage 91.5 m from Lepelstraat"
+  },
+  {
+   "pandId": "0363100012170769",
+   "reason": "frontage 50.4 m from Lepelstraat"
+  },
+  {
+   "pandId": "0363100012170770",
+   "reason": "frontage 30.9 m from Lepelstraat"
+  },
+  {
+   "pandId": "0363100012170840",
+   "reason": "sightline to Lepelstraat crosses 0363100012182009"
+  },
+  {
+   "pandId": "0363100012170841",
+   "reason": "frontage 38.1 m from Lepelstraat"
+  },
+  {
+   "pandId": "0363100012170842",
+   "reason": "frontage 35.3 m from Lepelstraat"
+  },
+  {
+   "pandId": "0363100012170843",
+   "reason": "frontage 30.7 m from Lepelstraat"
+  },
+  {
+   "pandId": "0363100012170844",
+   "reason": "frontage 34.7 m from Lepelstraat"
+  },
+  {
+   "pandId": "0363100012170845",
+   "reason": "frontage 30.7 m from Lepelstraat"
+  },
+  {
+   "pandId": "0363100012170846",
+   "reason": "sightline to Lepelstraat crosses 0363100012181823"
+  },
+  {
+   "pandId": "0363100012170847",
+   "reason": "frontage 91.7 m from Lepelstraat"
+  },
+  {
+   "pandId": "0363100012170848",
+   "reason": "no frontage on Lepelstraat: No footprint edge faces Lepelstraat"
+  },
+  {
+   "pandId": "0363100012170849",
+   "reason": "frontage 83.2 m from Lepelstraat"
+  },
+  {
+   "pandId": "0363100012170850",
+   "reason": "frontage 41.7 m from Lepelstraat"
+  },
+  {
+   "pandId": "0363100012170851",
+   "reason": "frontage 34.1 m from Lepelstraat"
+  },
+  {
+   "pandId": "0363100012181821",
+   "reason": "frontage 34.9 m from Lepelstraat"
+  },
+  {
+   "pandId": "0363100012181824",
+   "reason": "sightline to Lepelstraat crosses 0363100012181823"
+  },
+  {
+   "pandId": "0363100012181826",
+   "reason": "sightline to Lepelstraat crosses 0363100012181823"
+  },
+  {
+   "pandId": "0363100012181827",
+   "reason": "sightline to Lepelstraat crosses 0363100012181823"
+  },
+  {
+   "pandId": "0363100012181830",
+   "reason": "sightline to Lepelstraat crosses 0363100012181828"
+  },
+  {
+   "pandId": "0363100012181831",
+   "reason": "frontage 94.9 m from Lepelstraat"
+  },
+  {
+   "pandId": "0363100012181832",
+   "reason": "frontage 81.8 m from Lepelstraat"
+  },
+  {
+   "pandId": "0363100012181833",
+   "reason": "frontage 91.1 m from Lepelstraat"
+  },
+  {
+   "pandId": "0363100012181835",
+   "reason": "frontage 91.2 m from Lepelstraat"
+  },
+  {
+   "pandId": "0363100012181836",
+   "reason": "frontage 91.2 m from Lepelstraat"
+  },
+  {
+   "pandId": "0363100012181839",
+   "reason": "frontage 91.4 m from Lepelstraat"
+  },
+  {
+   "pandId": "0363100012181840",
+   "reason": "frontage 91.3 m from Lepelstraat"
+  },
+  {
+   "pandId": "0363100012182002",
+   "reason": "frontage 82.7 m from Lepelstraat"
+  },
+  {
+   "pandId": "0363100012182009",
+   "reason": "sightline to Lepelstraat crosses 0363100012182010"
+  },
+  {
+   "pandId": "0363100012182011",
+   "reason": "no frontage on Lepelstraat: No footprint edge faces Lepelstraat"
+  },
+  {
+   "pandId": "0363100012182013",
+   "reason": "sightline to Lepelstraat crosses 0363100012182015"
+  },
+  {
+   "pandId": "0363100012182016",
+   "reason": "sightline to Lepelstraat crosses 0363100012181822"
+  },
+  {
+   "pandId": "0363100012182017",
+   "reason": "sightline to Lepelstraat crosses 0363100012181822"
+  },
+  {
+   "pandId": "0363100012182020",
+   "reason": "sightline to Lepelstraat crosses 0363100012182030"
+  },
+  {
+   "pandId": "0363100012182021",
+   "reason": "sightline to Lepelstraat crosses 0363100012182018"
+  },
+  {
+   "pandId": "0363100012182022",
+   "reason": "sightline to Lepelstraat crosses 0363100012181828"
+  },
+  {
+   "pandId": "0363100012182023",
+   "reason": "sightline to Lepelstraat crosses 0363100012181828"
+  },
+  {
+   "pandId": "0363100012182024",
+   "reason": "frontage 32.4 m from Lepelstraat"
+  },
+  {
+   "pandId": "0363100012182026",
+   "reason": "sightline to Lepelstraat crosses 0363100012181822"
+  },
+  {
+   "pandId": "0363100012182027",
+   "reason": "sightline to Lepelstraat crosses 0363100012181822"
+  },
+  {
+   "pandId": "0363100012182028",
+   "reason": "sightline to Lepelstraat crosses 0363100012181822"
+  },
+  {
+   "pandId": "0363100012182029",
+   "reason": "sightline to Lepelstraat crosses 0363100012181822"
+  },
+  {
+   "pandId": "0363100012182035",
+   "reason": "sightline to Lepelstraat crosses 0363100012182031"
+  },
+  {
+   "pandId": "0363100012182165",
+   "reason": "frontage 69.2 m from Lepelstraat"
+  },
+  {
+   "pandId": "0363100012182167",
+   "reason": "no frontage on Lepelstraat: No footprint edge faces Lepelstraat"
+  },
+  {
+   "pandId": "0363100012182168",
+   "reason": "frontage 67.2 m from Lepelstraat"
+  },
+  {
+   "pandId": "0363100012182169",
+   "reason": "frontage 68.9 m from Lepelstraat"
+  },
+  {
+   "pandId": "0363100012182170",
+   "reason": "no frontage on Lepelstraat: No footprint edge faces Lepelstraat"
+  },
+  {
+   "pandId": "0363100012182171",
+   "reason": "no frontage on Lepelstraat: No footprint edge faces Lepelstraat"
+  },
+  {
+   "pandId": "0363100012182174",
+   "reason": "no frontage on Lepelstraat: No footprint edge faces Lepelstraat"
+  },
+  {
+   "pandId": "0363100012182175",
+   "reason": "frontage 51.5 m from Lepelstraat"
+  },
+  {
+   "pandId": "0363100012182208",
+   "reason": "frontage 96.9 m from Lepelstraat"
+  },
+  {
+   "pandId": "0363100012182209",
+   "reason": "frontage 95.1 m from Lepelstraat"
+  },
+  {
+   "pandId": "0363100012182210",
+   "reason": "frontage 93.9 m from Lepelstraat"
+  },
+  {
+   "pandId": "0363100012182211",
+   "reason": "frontage 92.7 m from Lepelstraat"
+  },
+  {
+   "pandId": "0363100012182212",
+   "reason": "frontage 92.1 m from Lepelstraat"
+  },
+  {
+   "pandId": "0363100012182213",
+   "reason": "frontage 92.0 m from Lepelstraat"
+  },
+  {
+   "pandId": "0363100012182214",
+   "reason": "frontage 91.9 m from Lepelstraat"
+  },
+  {
+   "pandId": "0363100012182218",
+   "reason": "frontage 91.9 m from Lepelstraat"
+  },
+  {
+   "pandId": "0363100012182219",
+   "reason": "frontage 91.8 m from Lepelstraat"
+  },
+  {
+   "pandId": "0363100012182922",
+   "reason": "no frontage on Lepelstraat: No footprint edge faces Lepelstraat"
+  },
+  {
+   "pandId": "0363100012182923",
+   "reason": "no frontage on Lepelstraat: No footprint edge faces Lepelstraat"
+  },
+  {
+   "pandId": "0363100012182924",
+   "reason": "frontage 41.0 m from Lepelstraat"
+  },
+  {
+   "pandId": "0363100012183081",
+   "reason": "sightline to Lepelstraat crosses 0363100012182032"
+  },
+  {
+   "pandId": "0363100012183082",
+   "reason": "sightline to Lepelstraat crosses 0363100012182034"
+  },
+  {
+   "pandId": "0363100012183084",
+   "reason": "frontage 34.6 m from Lepelstraat"
+  },
+  {
+   "pandId": "0363100012183085",
+   "reason": "frontage 34.5 m from Lepelstraat"
+  },
+  {
+   "pandId": "0363100012183086",
+   "reason": "sightline to Lepelstraat crosses 0363100012182014"
+  },
+  {
+   "pandId": "0363100012183087",
+   "reason": "frontage 34.8 m from Lepelstraat"
+  },
+  {
+   "pandId": "0363100012183088",
+   "reason": "frontage 34.7 m from Lepelstraat"
+  },
+  {
+   "pandId": "0363100012183089",
+   "reason": "frontage 34.9 m from Lepelstraat"
+  },
+  {
+   "pandId": "0363100012183090",
+   "reason": "frontage 35.0 m from Lepelstraat"
+  },
+  {
+   "pandId": "0363100012182166",
+   "reason": "frontage 68.4 m from Lepelstraat"
+  },
+  {
+   "pandId": "0363100012182172",
+   "reason": "frontage 67.1 m from Lepelstraat"
+  },
+  {
+   "pandId": "0363100012182173",
+   "reason": "no frontage on Lepelstraat: No footprint edge faces Lepelstraat"
+  },
+  {
+   "pandId": "0363100012182177",
+   "reason": "frontage 72.2 m from Lepelstraat"
+  },
+  {
+   "pandId": "0363100012182199",
+   "reason": "frontage 120.9 m from Lepelstraat"
+  },
+  {
+   "pandId": "0363100012182205",
+   "reason": "frontage 106.9 m from Lepelstraat"
+  },
+  {
+   "pandId": "0363100012182206",
+   "reason": "frontage 101.5 m from Lepelstraat"
+  },
+  {
+   "pandId": "0363100012182207",
+   "reason": "frontage 99.3 m from Lepelstraat"
+  },
+  {
+   "pandId": "0363100012165489",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012181822",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012181823",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012181825",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012181828",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012181829",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012182018",
+   "alongM": 0,
+   "widthM": 6.18,
+   "eavesM": 12.75,
+   "roofMaxM": 15.49,
+   "storeys3dbag": 5,
+   "builtYear": 1887,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012182030",
+   "alongM": 6.13,
+   "widthM": 6.08,
+   "eavesM": 12.74,
+   "roofMaxM": 15.46,
+   "storeys3dbag": 0,
+   "builtYear": 1876,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012182031",
+   "alongM": 12.52,
+   "widthM": 6.7,
+   "eavesM": 12.81,
+   "roofMaxM": 15.22,
+   "storeys3dbag": 5,
+   "builtYear": 1905,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012182032",
+   "alongM": 19.25,
+   "widthM": 6.76,
+   "eavesM": 12.72,
+   "roofMaxM": 15.16,
+   "storeys3dbag": 5,
+   "builtYear": 1905,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012182033",
+   "alongM": 25.94,
+   "widthM": 6.61,
+   "eavesM": 12.75,
+   "roofMaxM": 15.15,
+   "storeys3dbag": 4,
+   "builtYear": 1905,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012182034",
+   "alongM": 32.57,
+   "widthM": 6.65,
+   "eavesM": 12.68,
+   "roofMaxM": 15.18,
+   "storeys3dbag": 5,
+   "builtYear": 1905,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012182014",
+   "alongM": 39.17,
+   "widthM": 6.55,
+   "eavesM": 12.75,
+   "roofMaxM": 15.23,
+   "storeys3dbag": 5,
+   "builtYear": 1905,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012182015",
+   "alongM": 45.78,
+   "widthM": 6.67,
+   "eavesM": 12.76,
+   "roofMaxM": 15.16,
+   "storeys3dbag": 5,
+   "builtYear": 1905,
+   "uncertainty": []
+  }
+ ]
+}

@@ -5149,6 +5149,34 @@
     "hash": "bc019be4abf4863a",
     "class": "recipe"
    }
+  },
+  "sarphati-163-213-r1": {
+   "170677": {
+    "hash": "3aa87024dfc847ee",
+    "class": "front"
+   },
+   "170681": {
+    "hash": "83e110485c90ff4b",
+    "class": "front"
+   },
+   "180964": {
+    "hash": "bb11e79cc1d649ad",
+    "class": "front"
+   }
+  },
+  "sarphati-163-213-r2": {
+   "181393": {
+    "hash": "9c7b280aee20457a",
+    "class": "front"
+   },
+   "181394": {
+    "hash": "935726c47dab9742",
+    "class": "front"
+   },
+   "181458": {
+    "hash": "5418ca69bce3dee3",
+    "class": "front"
+   }
   }
  },
  "intents": {
@@ -5386,6 +5414,8 @@
   "java-93-149-r2": "5704908fbcefd2fa",
   "lampong-2-20-r1": "6d8c7d7d451ecd4d",
   "soenda-2-36-r1": "c3353dc56ae6c24b",
-  "soenda-2-36-r2": "01e457db56dd9f6b"
+  "soenda-2-36-r2": "01e457db56dd9f6b",
+  "sarphati-163-213-r1": "bd2602050d4692b2",
+  "sarphati-163-213-r2": "564448355987a324"
  }
 }

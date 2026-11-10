@@ -1,0 +1,137 @@
+{
+ "street": "Lepelstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched n/a (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012182018",
+   "addresses": [
+    "Lepelstraat 1"
+   ],
+   "groundUnits": [
+    {
+     "address": "Lepelstraat 1-H",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000722605"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012182030",
+   "addresses": [
+    "Lepelstraat 3"
+   ],
+   "groundUnits": [
+    {
+     "address": "Lepelstraat 3-H",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000722625"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012182031",
+   "addresses": [
+    "Lepelstraat 5"
+   ],
+   "groundUnits": [
+    {
+     "address": "Lepelstraat 5-H",
+     "use": "woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010000722633"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012182032",
+   "addresses": [
+    "Lepelstraat 7"
+   ],
+   "groundUnits": [
+    {
+     "address": "Lepelstraat 7-H",
+     "use": "woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010000722640"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012182033",
+   "addresses": [
+    "Lepelstraat 9"
+   ],
+   "groundUnits": [
+    {
+     "address": "Lepelstraat 9-H",
+     "use": "woonfunctie",
+     "areaM2": 59,
+     "bagId": "0363010000722647"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012182034",
+   "addresses": [
+    "Lepelstraat 11"
+   ],
+   "groundUnits": [
+    {
+     "address": "Lepelstraat 11-H",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000722655"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012182014",
+   "addresses": [
+    "Lepelstraat 13"
+   ],
+   "groundUnits": [
+    {
+     "address": "Lepelstraat 13-H",
+     "use": "woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010000722662"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012182015",
+   "addresses": [
+    "Lepelstraat 15"
+   ],
+   "groundUnits": [
+    {
+     "address": "Lepelstraat 15-H",
+     "use": "industriefunctie",
+     "areaM2": 33,
+     "bagId": "0363010000722670"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

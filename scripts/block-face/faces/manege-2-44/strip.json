@@ -1,0 +1,121 @@
+{
+ "face": "manege-2-44",
+ "image": "staging/block-face/manege-2-44/strip.jpg",
+ "pixelsPerMetre": 40,
+ "width": 1053,
+ "height": 704,
+ "groundNAP": 0.904,
+ "heightM": 17.59,
+ "frame": {
+  "midRD": [
+   122333.09029166664,
+   486364.21483333333
+  ],
+  "uRD": [
+   -0.28607098117342117,
+   0.9582084291689756
+  ],
+  "nRD": [
+   0.9582084291689756,
+   0.28607098117342117
+  ]
+ },
+ "x0M": -13.14,
+ "x1M": 13.19,
+ "date": "2024-12-10",
+ "coverage": 0,
+ "spans": [
+  {
+   "pandId": "0363100012170365",
+   "x0M": -13.14,
+   "x1M": -8.76,
+   "px": [
+    0,
+    175
+   ],
+   "date": "2024-12-10",
+   "fallbackDate": false,
+   "panoramas": []
+  },
+  {
+   "pandId": "0363100012182996",
+   "x0M": -8.76,
+   "x1M": -4.39,
+   "px": [
+    175,
+    350
+   ],
+   "date": "2024-12-10",
+   "fallbackDate": false,
+   "panoramas": []
+  },
+  {
+   "pandId": "0363100012182931",
+   "x0M": -4.39,
+   "x1M": -0.01,
+   "px": [
+    350,
+    525
+   ],
+   "date": "2024-12-10",
+   "fallbackDate": false,
+   "panoramas": []
+  },
+  {
+   "pandId": "0363100012182997",
+   "x0M": -0.01,
+   "x1M": 4.37,
+   "px": [
+    525,
+    700
+   ],
+   "date": "2024-12-10",
+   "fallbackDate": false,
+   "panoramas": []
+  },
+  {
+   "pandId": "0363100012182998",
+   "x0M": 4.37,
+   "x1M": 8.76,
+   "px": [
+    700,
+    876
+   ],
+   "date": "2024-12-10",
+   "fallbackDate": false,
+   "panoramas": []
+  },
+  {
+   "pandId": "0363100012182999",
+   "x0M": 8.76,
+   "x1M": 13.19,
+   "px": [
+    876,
+    1053
+   ],
+   "date": "2024-12-10",
+   "fallbackDate": false,
+   "panoramas": []
+  }
+ ],
+ "candidatesByDate": {
+  "2016-06-07": 0,
+  "2023-01-02": 0,
+  "2023-01-13": 0,
+  "2017-03-23": 0,
+  "2025-06-19": 0,
+  "2024-12-10": 0,
+  "2021-12-31": 0,
+  "2020-04-29": 0,
+  "2022-06-22": 0,
+  "2022-06-24": 0,
+  "2018-05-08": 0,
+  "2021-03-18": 0,
+  "2022-04-25": 0,
+  "2020-04-21": 0,
+  "2019-01-14": 0,
+  "2019-05-14": 0
+ },
+ "description": "Rectified orthographic elevation of the whole face on the frontage planes: x = chunk-frame metres along the face (left→right seen from the street) from x0M, y = metres above the shared ground (groundNAP) from the bottom; grey = no panorama data. Per-pand spans list the panoramas median-fused for that frontage.",
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (CC BY 4.0; faces and number plates blurred by the publisher)"
+}

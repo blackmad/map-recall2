@@ -1,0 +1,324 @@
+{
+ "street": "Korte Amstelstraat",
+ "seed": "0363100012182133",
+ "members": [
+  "0363100012182132",
+  "0363100012182139",
+  "0363100012182137",
+  "0363100012182136",
+  "0363100012182135",
+  "0363100012182134",
+  "0363100012182133"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "no further pand fronts the street in the fetched area"
+  },
+  {
+   "side": "right",
+   "reason": "no further pand fronts the street in the fetched area"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012165489",
+   "reason": "frontage 58.0 m from Korte Amstelstraat"
+  },
+  {
+   "pandId": "0363100012170754",
+   "reason": "frontage 39.4 m from Korte Amstelstraat"
+  },
+  {
+   "pandId": "0363100012170756",
+   "reason": "frontage 33.3 m from Korte Amstelstraat"
+  },
+  {
+   "pandId": "0363100012170764",
+   "reason": "frontage 32.6 m from Korte Amstelstraat"
+  },
+  {
+   "pandId": "0363100012170765",
+   "reason": "no frontage on Korte Amstelstraat: No footprint edge faces Korte Amstelstraat"
+  },
+  {
+   "pandId": "0363100012170766",
+   "reason": "frontage 89.5 m from Korte Amstelstraat"
+  },
+  {
+   "pandId": "0363100012170769",
+   "reason": "frontage 48.8 m from Korte Amstelstraat"
+  },
+  {
+   "pandId": "0363100012170843",
+   "reason": "no frontage on Korte Amstelstraat: No footprint edge faces Korte Amstelstraat"
+  },
+  {
+   "pandId": "0363100012170844",
+   "reason": "no frontage on Korte Amstelstraat: No footprint edge faces Korte Amstelstraat"
+  },
+  {
+   "pandId": "0363100012170845",
+   "reason": "no frontage on Korte Amstelstraat: No footprint edge faces Korte Amstelstraat"
+  },
+  {
+   "pandId": "0363100012170846",
+   "reason": "no frontage on Korte Amstelstraat: No footprint edge faces Korte Amstelstraat"
+  },
+  {
+   "pandId": "0363100012181824",
+   "reason": "no frontage on Korte Amstelstraat: No footprint edge faces Korte Amstelstraat"
+  },
+  {
+   "pandId": "0363100012181826",
+   "reason": "frontage 73.4 m from Korte Amstelstraat"
+  },
+  {
+   "pandId": "0363100012181827",
+   "reason": "no frontage on Korte Amstelstraat: No footprint edge faces Korte Amstelstraat"
+  },
+  {
+   "pandId": "0363100012181829",
+   "reason": "no frontage on Korte Amstelstraat: No footprint edge faces Korte Amstelstraat"
+  },
+  {
+   "pandId": "0363100012181989",
+   "reason": "frontage 107.5 m from Korte Amstelstraat"
+  },
+  {
+   "pandId": "0363100012181990",
+   "reason": "frontage 109.1 m from Korte Amstelstraat"
+  },
+  {
+   "pandId": "0363100012181991",
+   "reason": "frontage 107.0 m from Korte Amstelstraat"
+  },
+  {
+   "pandId": "0363100012181992",
+   "reason": "frontage 102.6 m from Korte Amstelstraat"
+  },
+  {
+   "pandId": "0363100012181993",
+   "reason": "frontage 97.4 m from Korte Amstelstraat"
+  },
+  {
+   "pandId": "0363100012181994",
+   "reason": "frontage 108.6 m from Korte Amstelstraat"
+  },
+  {
+   "pandId": "0363100012182001",
+   "reason": "frontage 68.3 m from Korte Amstelstraat"
+  },
+  {
+   "pandId": "0363100012182002",
+   "reason": "frontage 51.5 m from Korte Amstelstraat"
+  },
+  {
+   "pandId": "0363100012182003",
+   "reason": "no frontage on Korte Amstelstraat: No footprint edge faces Korte Amstelstraat"
+  },
+  {
+   "pandId": "0363100012182004",
+   "reason": "sightline to Korte Amstelstraat crosses 0363100012170765"
+  },
+  {
+   "pandId": "0363100012182005",
+   "reason": "sightline to Korte Amstelstraat crosses 0363100012170765"
+  },
+  {
+   "pandId": "0363100012182006",
+   "reason": "sightline to Korte Amstelstraat crosses 0363100012182003"
+  },
+  {
+   "pandId": "0363100012182007",
+   "reason": "frontage 43.6 m from Korte Amstelstraat"
+  },
+  {
+   "pandId": "0363100012182008",
+   "reason": "frontage 33.6 m from Korte Amstelstraat"
+  },
+  {
+   "pandId": "0363100012182016",
+   "reason": "no frontage on Korte Amstelstraat: No footprint edge faces Korte Amstelstraat"
+  },
+  {
+   "pandId": "0363100012182017",
+   "reason": "no frontage on Korte Amstelstraat: No footprint edge faces Korte Amstelstraat"
+  },
+  {
+   "pandId": "0363100012182026",
+   "reason": "no frontage on Korte Amstelstraat: No footprint edge faces Korte Amstelstraat"
+  },
+  {
+   "pandId": "0363100012182027",
+   "reason": "no frontage on Korte Amstelstraat: No footprint edge faces Korte Amstelstraat"
+  },
+  {
+   "pandId": "0363100012182028",
+   "reason": "no frontage on Korte Amstelstraat: No footprint edge faces Korte Amstelstraat"
+  },
+  {
+   "pandId": "0363100012182029",
+   "reason": "no frontage on Korte Amstelstraat: No footprint edge faces Korte Amstelstraat"
+  },
+  {
+   "pandId": "0363100012182123",
+   "reason": "frontage 57.5 m from Korte Amstelstraat"
+  },
+  {
+   "pandId": "0363100012182124",
+   "reason": "frontage 45.4 m from Korte Amstelstraat"
+  },
+  {
+   "pandId": "0363100012182126",
+   "reason": "frontage 102.4 m from Korte Amstelstraat"
+  },
+  {
+   "pandId": "0363100012182127",
+   "reason": "frontage 96.1 m from Korte Amstelstraat"
+  },
+  {
+   "pandId": "0363100012182128",
+   "reason": "frontage 89.3 m from Korte Amstelstraat"
+  },
+  {
+   "pandId": "0363100012182129",
+   "reason": "frontage 82.6 m from Korte Amstelstraat"
+  },
+  {
+   "pandId": "0363100012182130",
+   "reason": "frontage 75.9 m from Korte Amstelstraat"
+  },
+  {
+   "pandId": "0363100012182131",
+   "reason": "frontage 69.1 m from Korte Amstelstraat"
+  },
+  {
+   "pandId": "0363100012182138",
+   "reason": "sightline to Korte Amstelstraat crosses 0363100012182136"
+  },
+  {
+   "pandId": "0363100012182140",
+   "reason": "sightline to Korte Amstelstraat crosses 0363100012182133"
+  },
+  {
+   "pandId": "0363100012182141",
+   "reason": "sightline to Korte Amstelstraat crosses 0363100012182133"
+  },
+  {
+   "pandId": "0363100012182142",
+   "reason": "sightline to Korte Amstelstraat crosses 0363100012182133"
+  },
+  {
+   "pandId": "0363100012182165",
+   "reason": "frontage 48.8 m from Korte Amstelstraat"
+  },
+  {
+   "pandId": "0363100012182168",
+   "reason": "frontage 37.3 m from Korte Amstelstraat"
+  },
+  {
+   "pandId": "0363100012182169",
+   "reason": "frontage 43.1 m from Korte Amstelstraat"
+  },
+  {
+   "pandId": "0363100012182170",
+   "reason": "frontage 43.1 m from Korte Amstelstraat"
+  },
+  {
+   "pandId": "0363100012182171",
+   "reason": "sightline to Korte Amstelstraat crosses 0363100012182167"
+  },
+  {
+   "pandId": "0363100012250989",
+   "reason": "frontage 51.2 m from Korte Amstelstraat"
+  },
+  {
+   "pandId": "0363100012182166",
+   "reason": "frontage 52.8 m from Korte Amstelstraat"
+  },
+  {
+   "pandId": "0363100012183015",
+   "reason": "no frontage on Korte Amstelstraat: No footprint edge faces Korte Amstelstraat"
+  },
+  {
+   "pandId": "0363100012182167",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012182132",
+   "alongM": -37.17,
+   "widthM": 5.15,
+   "eavesM": 16.55,
+   "roofMaxM": 16.69,
+   "storeys3dbag": 5,
+   "builtYear": 2005,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012182139",
+   "alongM": -32.33,
+   "widthM": 4.53,
+   "eavesM": 12.82,
+   "roofMaxM": 15.87,
+   "storeys3dbag": 5,
+   "builtYear": 1889,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012182137",
+   "alongM": -27.96,
+   "widthM": 4.12,
+   "eavesM": 14.97,
+   "roofMaxM": 16.36,
+   "storeys3dbag": 5,
+   "builtYear": 1883,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012182136",
+   "alongM": -23.79,
+   "widthM": 4.2,
+   "eavesM": 12.96,
+   "roofMaxM": 16.98,
+   "storeys3dbag": 5,
+   "builtYear": 1905,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012182135",
+   "alongM": -18.54,
+   "widthM": 6.31,
+   "eavesM": 9.44,
+   "roofMaxM": 13.03,
+   "storeys3dbag": 4,
+   "builtYear": 1905,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012182134",
+   "alongM": -9.94,
+   "widthM": 10.9,
+   "eavesM": 8.9,
+   "roofMaxM": 12.11,
+   "storeys3dbag": 0,
+   "builtYear": 1911,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012182133",
+   "alongM": 0,
+   "widthM": 8.98,
+   "eavesM": 18.57,
+   "roofMaxM": 19.84,
+   "storeys3dbag": 0,
+   "builtYear": 2003,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  }
+ ]
+}

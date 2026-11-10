@@ -147,6 +147,19 @@ export interface TypeMatchRule {
    */
   frontEavesUnscored?: boolean;
   /**
+   * Do not score the strip's window-column count against the type's bays. A wide two-light window beside a narrow one
+   * (Sarphatistraat 163-213) reads 3-6 columns on the same design depending on balcony rails, mullions and exposure,
+   * so the count is no evidence of the type. Absent = scored, byte-identical.
+   */
+  columnsUnscored?: boolean;
+  /**
+   * With `frontEavesM`: draw every pand at the line, never at its own skyline reading. Where the strip skyline reads the
+   * cornice's crown, a tower cap or the trees over it 0.7-1.0 m above the cornice (Sarphatistraat 163-213: cornice 14.4,
+   * skyline 15.1-15.4), a reading inside `FRONT_EAVES.tolM` would lift single houses of one row. Absent = the skyline
+   * within tolerance wins, byte-identical.
+   */
+  frontEavesFixed?: boolean;
+  /**
    * With `frontEavesM`: the top of a wall dormer that spans most of the front, where the strip skyline reads it instead
    * of the cornice (Derde Helmersstraat 54-64: crenellated wall dormers over two of three axes, skyline 17.4-18.2 m
    * over a 14.3 m cornice). A skyline near it scores like one near the cornice line; the house is drawn at the line.
@@ -210,7 +223,7 @@ export function frontEavesFor(t: MatchableType, ev: PandEvidence): {eavesM: numb
   const line = t.match?.frontEavesM;
   if (line === undefined) return null;
   const sky = ev.strip?.skyline;
-  if (sky && sky.confidence >= SKYLINE_MIN_CONFIDENCE && Math.abs(sky.eavesM - line) <= FRONT_EAVES.tolM) return {eavesM: r2(sky.eavesM), source: 'skyline'};
+  if (!t.match?.frontEavesFixed && sky && sky.confidence >= SKYLINE_MIN_CONFIDENCE && Math.abs(sky.eavesM - line) <= FRONT_EAVES.tolM) return {eavesM: r2(sky.eavesM), source: 'skyline'};
   return {eavesM: line, source: 'type'};
 }
 
@@ -368,7 +381,7 @@ export function scoreType(t: MatchableType, ev: PandEvidence): TypeScore {
   }
   if (m.materialVeto && usable) veto.push(...materialVetoes(m, stripWallMaterial({stucco: s!.palette.stucco, wall: s!.wall})));
   const want = baysFor(t, ev.widthM);
-  if (usable && s!.columns !== null) criteria.push({key: 'columns', weight: W.columns, score: s!.columns === want ? 1 : Math.abs(s!.columns - want) === 1 ? 0.4 : 0, note: `strip columns ${s!.columns} vs ${want} bays`});
+  if (usable && s!.columns !== null && !m.columnsUnscored) criteria.push({key: 'columns', weight: W.columns, score: s!.columns === want ? 1 : Math.abs(s!.columns - want) === 1 ? 0.4 : 0, note: `strip columns ${s!.columns} vs ${want} bays`});
   const scored = criteria.filter(c => c.score !== null), wsum = scored.reduce((a, c) => a + c.weight, 0);
   const score = veto.length ? 0 : wsum ? scored.reduce((a, c) => a + c.weight * c.score!, 0) / wsum : 0;
   return {typeId: t.id, score: r2(score), veto, criteria};

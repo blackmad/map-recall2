@@ -1,0 +1,210 @@
+{
+ "street": "Manegestraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T07:09:28.030Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012170365",
+   "addresses": [
+    "Manegestraat 38",
+    "Manegestraat 40",
+    "Manegestraat 42",
+    "Manegestraat 44"
+   ],
+   "groundUnits": [
+    {
+     "address": "Manegestraat 38",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010003721288"
+    },
+    {
+     "address": "Manegestraat 42",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010003721290"
+    },
+    {
+     "address": "Manegestraat 44",
+     "use": "woonfunctie",
+     "areaM2": 38,
+     "bagId": "0363010003721291"
+    },
+    {
+     "address": "Manegestraat 40",
+     "use": "woonfunctie",
+     "areaM2": 73,
+     "bagId": "0363010003721289"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012182996",
+   "addresses": [
+    "Manegestraat 22",
+    "Manegestraat 26",
+    "Manegestraat 30",
+    "Manegestraat 34",
+    "Manegestraat 36"
+   ],
+   "groundUnits": [
+    {
+     "address": "Manegestraat 26",
+     "use": "woonfunctie",
+     "areaM2": 74,
+     "bagId": "0363010003721282"
+    },
+    {
+     "address": "Manegestraat 34",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010003721286"
+    },
+    {
+     "address": "Manegestraat 36",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010003721287"
+    },
+    {
+     "address": "Manegestraat 22",
+     "use": "woonfunctie",
+     "areaM2": 73,
+     "bagId": "0363010003721280"
+    },
+    {
+     "address": "Manegestraat 30",
+     "use": "woonfunctie",
+     "areaM2": 73,
+     "bagId": "0363010003721284"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012182931",
+   "addresses": [
+    "Manegestraat 32"
+   ],
+   "groundUnits": [
+    {
+     "address": "Manegestraat 32",
+     "use": "woonfunctie",
+     "areaM2": 39,
+     "bagId": "0363010003721285"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012182997",
+   "addresses": [
+    "Manegestraat 16",
+    "Manegestraat 18",
+    "Manegestraat 20",
+    "Manegestraat 24",
+    "Manegestraat 28"
+   ],
+   "groundUnits": [
+    {
+     "address": "Manegestraat 16",
+     "use": "woonfunctie",
+     "areaM2": 39,
+     "bagId": "0363010003721277"
+    },
+    {
+     "address": "Manegestraat 24",
+     "use": "woonfunctie",
+     "areaM2": 78,
+     "bagId": "0363010003721281"
+    },
+    {
+     "address": "Manegestraat 28",
+     "use": "woonfunctie",
+     "areaM2": 77,
+     "bagId": "0363010003721283"
+    },
+    {
+     "address": "Manegestraat 18",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010003721278"
+    },
+    {
+     "address": "Manegestraat 20",
+     "use": "woonfunctie",
+     "areaM2": 75,
+     "bagId": "0363010003721279"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012182998",
+   "addresses": [
+    "Manegestraat 6",
+    "Manegestraat 8",
+    "Manegestraat 10",
+    "Manegestraat 12",
+    "Manegestraat 14"
+   ],
+   "groundUnits": [
+    {
+     "address": "Manegestraat 10",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010003721274"
+    },
+    {
+     "address": "Manegestraat 14",
+     "use": "woonfunctie",
+     "areaM2": 35,
+     "bagId": "0363010003721276"
+    },
+    {
+     "address": "Manegestraat 8",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010003721273"
+    },
+    {
+     "address": "Manegestraat 12",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010003721275"
+    },
+    {
+     "address": "Manegestraat 6",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010003721272"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012182999",
+   "addresses": [
+    "Manegestraat 2"
+   ],
+   "groundUnits": [
+    {
+     "address": "Manegestraat 2-H",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000733727"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

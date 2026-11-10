@@ -1,0 +1,222 @@
+{
+ "street": "Roetersstraat",
+ "seed": "0363100012181269",
+ "members": [
+  "0363100012181190",
+  "0363100012181192",
+  "0363100012181193",
+  "0363100012181194",
+  "0363100012181269"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "trimmed at 0363100012181190 (face continues: 181191)"
+  },
+  {
+   "side": "right",
+   "reason": "no further pand fronts the street in the fetched area"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012253754",
+   "reason": "frontage 71.4 m from Roetersstraat"
+  },
+  {
+   "pandId": "0363100012164936",
+   "reason": "frontage 38.6 m from Roetersstraat"
+  },
+  {
+   "pandId": "0363100012164937",
+   "reason": "frontage 33.9 m from Roetersstraat"
+  },
+  {
+   "pandId": "0363100012164940",
+   "reason": "frontage 38.9 m from Roetersstraat"
+  },
+  {
+   "pandId": "0363100012170356",
+   "reason": "frontage 49.4 m from Roetersstraat"
+  },
+  {
+   "pandId": "0363100012170358",
+   "reason": "frontage 44.0 m from Roetersstraat"
+  },
+  {
+   "pandId": "0363100012170419",
+   "reason": "frontage 99.0 m from Roetersstraat"
+  },
+  {
+   "pandId": "0363100012170433",
+   "reason": "frontage 94.5 m from Roetersstraat"
+  },
+  {
+   "pandId": "0363100012170469",
+   "reason": "sightline to Roetersstraat crosses 0363100012181178"
+  },
+  {
+   "pandId": "0363100012181178",
+   "reason": "sightline to Roetersstraat crosses 0363100012181265"
+  },
+  {
+   "pandId": "0363100012181179",
+   "reason": "frontage 45.9 m from Roetersstraat"
+  },
+  {
+   "pandId": "0363100012181180",
+   "reason": "frontage 41.4 m from Roetersstraat"
+  },
+  {
+   "pandId": "0363100012181181",
+   "reason": "frontage 37.0 m from Roetersstraat"
+  },
+  {
+   "pandId": "0363100012181182",
+   "reason": "frontage 32.6 m from Roetersstraat"
+  },
+  {
+   "pandId": "0363100012181183",
+   "reason": "sightline to Roetersstraat crosses 0363100012181184"
+  },
+  {
+   "pandId": "0363100012181184",
+   "reason": "sightline to Roetersstraat crosses 0363100012181195"
+  },
+  {
+   "pandId": "0363100012181185",
+   "reason": "frontage 67.6 m from Roetersstraat"
+  },
+  {
+   "pandId": "0363100012181186",
+   "reason": "frontage 63.5 m from Roetersstraat"
+  },
+  {
+   "pandId": "0363100012181187",
+   "reason": "frontage 59.1 m from Roetersstraat"
+  },
+  {
+   "pandId": "0363100012181188",
+   "reason": "frontage 54.7 m from Roetersstraat"
+  },
+  {
+   "pandId": "0363100012181189",
+   "reason": "frontage 50.3 m from Roetersstraat"
+  },
+  {
+   "pandId": "0363100012181195",
+   "reason": "sightline to Roetersstraat crosses 0363100012181269"
+  },
+  {
+   "pandId": "0363100012181196",
+   "reason": "frontage 90.1 m from Roetersstraat"
+  },
+  {
+   "pandId": "0363100012181197",
+   "reason": "frontage 85.6 m from Roetersstraat"
+  },
+  {
+   "pandId": "0363100012181198",
+   "reason": "frontage 81.2 m from Roetersstraat"
+  },
+  {
+   "pandId": "0363100012181264",
+   "reason": "frontage 32.7 m from Roetersstraat"
+  },
+  {
+   "pandId": "0363100012181266",
+   "reason": "frontage 76.8 m from Roetersstraat"
+  },
+  {
+   "pandId": "0363100012181267",
+   "reason": "frontage 72.3 m from Roetersstraat"
+  },
+  {
+   "pandId": "0363100012181270",
+   "reason": "sightline to Roetersstraat crosses 0363100012181191"
+  },
+  {
+   "pandId": "0363100012181271",
+   "reason": "sightline to Roetersstraat crosses 0363100012181191"
+  },
+  {
+   "pandId": "0363100012181272",
+   "reason": "sightline to Roetersstraat crosses 0363100012181273"
+  },
+  {
+   "pandId": "0363100012181274",
+   "reason": "sightline to Roetersstraat crosses 0363100012181272"
+  },
+  {
+   "pandId": "0363100012247432",
+   "reason": "frontage 76.0 m from Roetersstraat"
+  },
+  {
+   "pandId": "0363100012185420",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012181279",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012164938",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012181190",
+   "alongM": -25.62,
+   "widthM": 5.41,
+   "eavesM": 15.66,
+   "roofMaxM": 22.01,
+   "storeys3dbag": 5,
+   "builtYear": 1889,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012181192",
+   "alongM": -20.2,
+   "widthM": 5.42,
+   "eavesM": 15.57,
+   "roofMaxM": 21.11,
+   "storeys3dbag": 5,
+   "builtYear": 1885,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012181193",
+   "alongM": -14.79,
+   "widthM": 5.41,
+   "eavesM": 15.66,
+   "roofMaxM": 18.04,
+   "storeys3dbag": 5,
+   "builtYear": 1888,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012181194",
+   "alongM": -9.16,
+   "widthM": 5.83,
+   "eavesM": 15.46,
+   "roofMaxM": 18.1,
+   "storeys3dbag": 5,
+   "builtYear": 1856,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012181269",
+   "alongM": 0,
+   "widthM": 12.49,
+   "eavesM": 14.74,
+   "roofMaxM": 17.77,
+   "storeys3dbag": 5,
+   "builtYear": 1782,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  }
+ ]
+}

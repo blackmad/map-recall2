@@ -1,0 +1,317 @@
+{
+ "street": "Korte Amstelstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T07:11:15.356Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012182132",
+   "addresses": [
+    "Korte Amstelstraat 18",
+    "Korte Amstelstraat 20",
+    "Korte Amstelstraat 22",
+    "Korte Amstelstraat 24",
+    "Korte Amstelstraat 26"
+   ],
+   "groundUnits": [
+    {
+     "address": "Korte Amstelstraat 18",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 90,
+     "bagId": "0363010001021810"
+    },
+    {
+     "address": "Korte Amstelstraat 26",
+     "use": "woonfunctie",
+     "areaM2": 130,
+     "bagId": "0363010001021814"
+    },
+    {
+     "address": "Korte Amstelstraat 22",
+     "use": "woonfunctie",
+     "areaM2": 63,
+     "bagId": "0363010001021812"
+    },
+    {
+     "address": "Korte Amstelstraat 24",
+     "use": "woonfunctie",
+     "areaM2": 63,
+     "bagId": "0363010001021813"
+    },
+    {
+     "address": "Korte Amstelstraat 20",
+     "use": "woonfunctie",
+     "areaM2": 64,
+     "bagId": "0363010001021811"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2742805645,
+     "lngLat": [
+      4.9048274,
+      52.3617263
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "18",
+      "addr:postcode": "1018XS",
+      "addr:street": "Korte Amstelstraat",
+      "amenity": "restaurant",
+      "contact:instagram": "https://www.instagram.com/bistrobaret",
+      "email": "info@bistrobaret.nl",
+      "name": "Baret",
+      "phone": "+31 20 622 5602",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.bistrobaret.nl/",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-11-10T07:11:15.356Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012182139",
+   "addresses": [
+    "Korte Amstelstraat 12B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Korte Amstelstraat 12B-H",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000980372"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012182137",
+   "addresses": [
+    "Korte Amstelstraat 12A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Korte Amstelstraat 12A-H",
+     "use": "woonfunctie",
+     "areaM2": 37,
+     "bagId": "0363010000713679"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012182136",
+   "addresses": [
+    "Korte Amstelstraat 12D",
+    "Korte Amstelstraat 12F",
+    "Korte Amstelstraat 12C",
+    "Korte Amstelstraat 12G",
+    "Korte Amstelstraat 12E"
+   ],
+   "groundUnits": [
+    {
+     "address": "Korte Amstelstraat 12D",
+     "use": "woonfunctie",
+     "areaM2": 75,
+     "bagId": "0363010000713676"
+    },
+    {
+     "address": "Korte Amstelstraat 12F",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000713678"
+    },
+    {
+     "address": "Korte Amstelstraat 12C",
+     "use": "woonfunctie",
+     "areaM2": 106,
+     "bagId": "0363010001009184"
+    },
+    {
+     "address": "Korte Amstelstraat 12G",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010001009185"
+    },
+    {
+     "address": "Korte Amstelstraat 12E",
+     "use": "woonfunctie",
+     "areaM2": 74,
+     "bagId": "0363010000713677"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012182135",
+   "addresses": [
+    "Korte Amstelstraat 8",
+    "Korte Amstelstraat 8F",
+    "Korte Amstelstraat 8D",
+    "Korte Amstelstraat 8C",
+    "Korte Amstelstraat 8B",
+    "Korte Amstelstraat 8E",
+    "Korte Amstelstraat 8A",
+    "Korte Amstelstraat 10"
+   ],
+   "groundUnits": [
+    {
+     "address": "Korte Amstelstraat 8",
+     "use": "kantoorfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000942433"
+    },
+    {
+     "address": "Korte Amstelstraat 8F",
+     "use": "woonfunctie",
+     "areaM2": 38,
+     "bagId": "0363010012610887"
+    },
+    {
+     "address": "Korte Amstelstraat 8D",
+     "use": "woonfunctie",
+     "areaM2": 36,
+     "bagId": "0363010012610885"
+    },
+    {
+     "address": "Korte Amstelstraat 8C",
+     "use": "woonfunctie",
+     "areaM2": 39,
+     "bagId": "0363010012610884"
+    },
+    {
+     "address": "Korte Amstelstraat 8B",
+     "use": "woonfunctie",
+     "areaM2": 36,
+     "bagId": "0363010012610883"
+    },
+    {
+     "address": "Korte Amstelstraat 8E",
+     "use": "woonfunctie",
+     "areaM2": 32,
+     "bagId": "0363010012610886"
+    },
+    {
+     "address": "Korte Amstelstraat 8A",
+     "use": "woonfunctie",
+     "areaM2": 42,
+     "bagId": "0363010012610882"
+    }
+   ],
+   "units": 11,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012182134",
+   "addresses": [
+    "Korte Amstelstraat 2",
+    "Korte Amstelstraat 4D",
+    "Korte Amstelstraat 4C",
+    "Korte Amstelstraat 4B",
+    "Korte Amstelstraat 4A",
+    "Korte Amstelstraat 6"
+   ],
+   "groundUnits": [
+    {
+     "address": "Korte Amstelstraat 2",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000713669"
+    },
+    {
+     "address": "Korte Amstelstraat 6",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 170,
+     "bagId": "0363010001018652"
+    },
+    {
+     "address": "Korte Amstelstraat 4D",
+     "use": "woonfunctie",
+     "areaM2": 42,
+     "bagId": "0363010012610880"
+    },
+    {
+     "address": "Korte Amstelstraat 4C",
+     "use": "woonfunctie",
+     "areaM2": 40,
+     "bagId": "0363010012610879"
+    },
+    {
+     "address": "Korte Amstelstraat 4B",
+     "use": "woonfunctie",
+     "areaM2": 41,
+     "bagId": "0363010012610878"
+    },
+    {
+     "address": "Korte Amstelstraat 4A",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010012610877"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012182133",
+   "addresses": [
+    "Korte Amstelstraat 2F",
+    "Korte Amstelstraat 2A",
+    "Korte Amstelstraat 2B",
+    "Korte Amstelstraat 2C",
+    "Korte Amstelstraat 2D",
+    "Korte Amstelstraat 2E"
+   ],
+   "groundUnits": [
+    {
+     "address": "Korte Amstelstraat 2F",
+     "use": "woonfunctie",
+     "areaM2": 192,
+     "bagId": "0363010001015674"
+    },
+    {
+     "address": "Korte Amstelstraat 2A",
+     "use": "woonfunctie",
+     "areaM2": 86,
+     "bagId": "0363010001015675"
+    },
+    {
+     "address": "Korte Amstelstraat 2B",
+     "use": "woonfunctie",
+     "areaM2": 86,
+     "bagId": "0363010001015676"
+    },
+    {
+     "address": "Korte Amstelstraat 2C",
+     "use": "woonfunctie",
+     "areaM2": 86,
+     "bagId": "0363010001015677"
+    },
+    {
+     "address": "Korte Amstelstraat 2D",
+     "use": "woonfunctie",
+     "areaM2": 86,
+     "bagId": "0363010001019690"
+    },
+    {
+     "address": "Korte Amstelstraat 2E",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010001019691"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  }
+ ]
+}

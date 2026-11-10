@@ -1,0 +1,142 @@
+{
+ "street": "Nieuwe Kerkstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T07:16:38.427Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012183008",
+   "addresses": [
+    "Nieuwe Kerkstraat 118A",
+    "Nieuwe Kerkstraat 118B",
+    "Nieuwe Kerkstraat 118C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Kerkstraat 118A",
+     "use": "woonfunctie",
+     "areaM2": 173,
+     "bagId": "0363010001023408"
+    },
+    {
+     "address": "Nieuwe Kerkstraat 118B",
+     "use": "woonfunctie",
+     "areaM2": 173,
+     "bagId": "0363010001023409"
+    },
+    {
+     "address": "Nieuwe Kerkstraat 118C",
+     "use": "woonfunctie",
+     "areaM2": 173,
+     "bagId": "0363010001023410"
+    },
+    {
+     "address": "Manegestraat 2A",
+     "use": "kantoorfunctie",
+     "areaM2": 135,
+     "bagId": "0363010001023411"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012183001",
+   "addresses": [
+    "Nieuwe Kerkstraat 116"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Kerkstraat 116-H",
+     "use": "woonfunctie",
+     "areaM2": 125,
+     "bagId": "0363010001001765"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012183000",
+   "addresses": [
+    "Nieuwe Kerkstraat 114",
+    "Nieuwe Kerkstraat 114F",
+    "Nieuwe Kerkstraat 114A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Kerkstraat 114F",
+     "use": "woonfunctie",
+     "areaM2": 77,
+     "bagId": "0363010012123888"
+    },
+    {
+     "address": "Nieuwe Kerkstraat 114A",
+     "use": "woonfunctie",
+     "areaM2": 74,
+     "bagId": "0363010012123889"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012183003",
+   "addresses": [
+    "Nieuwe Kerkstraat 112"
+   ],
+   "groundUnits": [],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012183005",
+   "addresses": [
+    "Nieuwe Kerkstraat 110"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Kerkstraat 110-H",
+     "use": "woonfunctie",
+     "areaM2": 131,
+     "bagId": "0363010000756500"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012183004",
+   "addresses": [
+    "Nieuwe Kerkstraat 108"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Kerkstraat 108-H",
+     "use": "woonfunctie",
+     "areaM2": 82,
+     "bagId": "0363010000756492"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012183002",
+   "addresses": [
+    "Nieuwe Kerkstraat 106"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Kerkstraat 106-H",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010000756483"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

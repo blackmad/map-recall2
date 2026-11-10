@@ -1,0 +1,485 @@
+{
+ "street": "Sarphatistraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T07:12:49.089Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012170296",
+   "addresses": [
+    "Sarphatistraat 80"
+   ],
+   "groundUnits": [
+    {
+     "address": "Sarphatistraat 80-H",
+     "use": "woonfunctie",
+     "areaM2": 139,
+     "bagId": "0363010000804600"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11914248405,
+     "lngLat": [
+      4.9099135,
+      52.3614825
+     ],
+     "tags": {
+      "amenity": "charging_station",
+      "bicycle": "no",
+      "capacity": "2",
+      "operator": "Equans",
+      "operator:wikidata": "Q118687687"
+     },
+     "fetchedAt": "2026-11-10T07:12:49.089Z",
+     "match": "frontage",
+     "distanceM": 5.9
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012170290",
+   "addresses": [
+    "Sarphatistraat 78",
+    "Sarphatistraat 78A",
+    "Sarphatistraat 78C",
+    "Sarphatistraat 78B",
+    "Sarphatistraat 78D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Sarphatistraat 78",
+     "use": "woonfunctie",
+     "areaM2": 345,
+     "bagId": "0363010000975810"
+    },
+    {
+     "address": "Sarphatistraat 78A",
+     "use": "woonfunctie",
+     "areaM2": 134,
+     "bagId": "0363010012074683"
+    },
+    {
+     "address": "Sarphatistraat 78B",
+     "use": "woonfunctie",
+     "areaM2": 89,
+     "bagId": "0363010012074685"
+    },
+    {
+     "address": "Sarphatistraat 78D",
+     "use": "woonfunctie",
+     "areaM2": 85,
+     "bagId": "0363010012145633"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012170291",
+   "addresses": [
+    "Sarphatistraat 76"
+   ],
+   "groundUnits": [
+    {
+     "address": "Sarphatistraat 76-O",
+     "use": "industriefunctie",
+     "areaM2": 66,
+     "bagId": "0363010001001803"
+    },
+    {
+     "address": "Sarphatistraat 76-H",
+     "use": "woonfunctie",
+     "areaM2": 159,
+     "bagId": "0363010001001802"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012170292",
+   "addresses": [
+    "Sarphatistraat 74"
+   ],
+   "groundUnits": [
+    {
+     "address": "Sarphatistraat 74-H",
+     "use": "woonfunctie",
+     "areaM2": 140,
+     "bagId": "0363010000804589"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012180927",
+   "addresses": [
+    "Sarphatistraat 72",
+    "Sarphatistraat 72A",
+    "Sarphatistraat 72D",
+    "Sarphatistraat 72E",
+    "Sarphatistraat 72B",
+    "Sarphatistraat 72C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Sarphatistraat 72-H",
+     "use": "woonfunctie",
+     "areaM2": 180,
+     "bagId": "0363010000954496"
+    },
+    {
+     "address": "Sarphatistraat 72A",
+     "use": "woonfunctie",
+     "areaM2": 152,
+     "bagId": "0363010012118939"
+    },
+    {
+     "address": "Sarphatistraat 72E",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010012158310"
+    },
+    {
+     "address": "Sarphatistraat 72B",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010012118940"
+    },
+    {
+     "address": "Sarphatistraat 72C",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010012118941"
+    }
+   ],
+   "units": 9,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012180926",
+   "addresses": [
+    "Sarphatistraat 70B",
+    "Sarphatistraat 70C",
+    "Sarphatistraat 70A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Sarphatistraat 70B",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000804580"
+    },
+    {
+     "address": "Sarphatistraat 70C",
+     "use": "woonfunctie",
+     "areaM2": 94,
+     "bagId": "0363010000804581"
+    },
+    {
+     "address": "Sarphatistraat 70A",
+     "use": "woonfunctie",
+     "areaM2": 220,
+     "bagId": "0363010000996579"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012170294",
+   "addresses": [
+    "Sarphatistraat 68"
+   ],
+   "groundUnits": [
+    {
+     "address": "Sarphatistraat 68",
+     "use": "woonfunctie",
+     "areaM2": 446,
+     "bagId": "0363010000804578"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 10079246798,
+     "lngLat": [
+      4.9092774,
+      52.3613434
+     ],
+     "tags": {
+      "amenity": "bicycle_parking",
+      "bicycle_parking": "stands",
+      "capacity": "18",
+      "covered": "no"
+     },
+     "fetchedAt": "2026-11-10T07:12:49.089Z",
+     "match": "frontage",
+     "distanceM": 5.2
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012170288",
+   "addresses": [
+    "Sarphatistraat 66"
+   ],
+   "groundUnits": [
+    {
+     "address": "Sarphatistraat 66",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 833,
+     "bagId": "0363010000804576"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 10079246798,
+     "lngLat": [
+      4.9092774,
+      52.3613434
+     ],
+     "tags": {
+      "amenity": "bicycle_parking",
+      "bicycle_parking": "stands",
+      "capacity": "18",
+      "covered": "no"
+     },
+     "fetchedAt": "2026-11-10T07:12:49.089Z",
+     "match": "frontage",
+     "distanceM": 5.2
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012181695",
+   "addresses": [
+    "Sarphatistraat 62A",
+    "Sarphatistraat 62B",
+    "Sarphatistraat 62C",
+    "Sarphatistraat 62D",
+    "Sarphatistraat 62E",
+    "Sarphatistraat 62F",
+    "Sarphatistraat 62G",
+    "Sarphatistraat 62H"
+   ],
+   "groundUnits": [
+    {
+     "address": "Sarphatistraat 62A",
+     "use": "woonfunctie",
+     "areaM2": 108,
+     "bagId": "0363010000995623"
+    },
+    {
+     "address": "Sarphatistraat 62B",
+     "use": "woonfunctie",
+     "areaM2": 115,
+     "bagId": "0363010000995624"
+    },
+    {
+     "address": "Sarphatistraat 62C",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000995625"
+    },
+    {
+     "address": "Sarphatistraat 62D",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000995626"
+    },
+    {
+     "address": "Sarphatistraat 62E",
+     "use": "woonfunctie",
+     "areaM2": 85,
+     "bagId": "0363010000995627"
+    },
+    {
+     "address": "Sarphatistraat 62F",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000995628"
+    },
+    {
+     "address": "Sarphatistraat 62G",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000995629"
+    },
+    {
+     "address": "Sarphatistraat 62H",
+     "use": "woonfunctie",
+     "areaM2": 150,
+     "bagId": "0363010000995630"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181694",
+   "addresses": [
+    "Sarphatistraat 60G",
+    "Sarphatistraat 60D",
+    "Sarphatistraat 60F",
+    "Sarphatistraat 60A",
+    "Sarphatistraat 60B",
+    "Sarphatistraat 60C",
+    "Sarphatistraat 60E"
+   ],
+   "groundUnits": [
+    {
+     "address": "Sarphatistraat 60G",
+     "use": "woonfunctie",
+     "areaM2": 77,
+     "bagId": "0363010001007789"
+    },
+    {
+     "address": "Sarphatistraat 60D",
+     "use": "woonfunctie",
+     "areaM2": 85,
+     "bagId": "0363010001007783"
+    },
+    {
+     "address": "Sarphatistraat 60F",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010001007784"
+    },
+    {
+     "address": "Sarphatistraat 60A",
+     "use": "woonfunctie",
+     "areaM2": 94,
+     "bagId": "0363010001007785"
+    },
+    {
+     "address": "Sarphatistraat 60B",
+     "use": "woonfunctie",
+     "areaM2": 85,
+     "bagId": "0363010001007786"
+    },
+    {
+     "address": "Sarphatistraat 60C",
+     "use": "woonfunctie",
+     "areaM2": 84,
+     "bagId": "0363010001007787"
+    },
+    {
+     "address": "Sarphatistraat 60E",
+     "use": "woonfunctie",
+     "areaM2": 84,
+     "bagId": "0363010001007788"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181693",
+   "addresses": [
+    "Sarphatistraat 58"
+   ],
+   "groundUnits": [
+    {
+     "address": "Sarphatistraat 58",
+     "use": "woonfunctie",
+     "areaM2": 261,
+     "bagId": "0363010001007782"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181692",
+   "addresses": [
+    "Sarphatistraat 56D",
+    "Sarphatistraat 56C",
+    "Sarphatistraat 56",
+    "Sarphatistraat 56B",
+    "Sarphatistraat 56A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Sarphatistraat 56D",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010012155271"
+    },
+    {
+     "address": "Sarphatistraat 56C",
+     "use": "woonfunctie",
+     "areaM2": 59,
+     "bagId": "0363010012155270"
+    },
+    {
+     "address": "Sarphatistraat 56",
+     "use": "woonfunctie",
+     "areaM2": 315,
+     "bagId": "0363010000804564"
+    },
+    {
+     "address": "Sarphatistraat 56B",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010012155269"
+    },
+    {
+     "address": "Sarphatistraat 56A",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010012155268"
+    },
+    {
+     "address": "Spinozastraat 1A",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010012155267"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181698",
+   "addresses": [
+    "Sarphatistraat 54"
+   ],
+   "groundUnits": [
+    {
+     "address": "Sarphatistraat 54-H",
+     "use": "kantoorfunctie",
+     "areaM2": 181,
+     "bagId": "0363010000996326"
+    }
+   ],
+   "units": 2,
+   "osm": [
+    {
+     "type": "node",
+     "id": 7084303790,
+     "lngLat": [
+      4.908474,
+      52.3610802
+     ],
+     "tags": {
+      "artist_name": "Hildo Krop",
+      "artwork_type": "sculpture",
+      "tourism": "artwork"
+     },
+     "fetchedAt": "2026-11-10T07:12:49.089Z",
+     "match": "frontage",
+     "distanceM": 7.3
+    }
+   ]
+  }
+ ]
+}
