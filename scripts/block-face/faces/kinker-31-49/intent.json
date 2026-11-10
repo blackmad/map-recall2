@@ -14,8 +14,8 @@
  ],
  "authoring": {
   "author": "claude (kinkerstraat odd-faces lane)",
-  "passes": 1,
-  "note": "Kinkerstraat 31-49 (odd side, Bilderdijkkade to Da Costakade), 1885-1893. Eight plain-brick fronts of one row (33-47: 3 axes, flat heads under white keystones, pediment dormers with zinc finials), 31 black-painted with 2 axes and no dormer, and the 1893 corner 49 with white speklagen and blocked relieving arches (kinker-1886-neo-renaissance). Shops read on zoom crops of the 2024-12-11 strip. #98 pass: Kinkerstraat 47 drew #dcbb9d through its measured tint (photo #bf9d83, too light and saturated); it takes the brick of 45 (#c9a080, the same sunlit red brick on the strip) through the city tint instead. Brick facings (overrides.palette) moved to paletteOverrides: the 3 cm facing lay 1 cm off the shop doors (coplanar)."
+  "passes": 2,
+  "note": "Kinkerstraat 31-49 (odd side, Bilderdijkkade to Da Costakade), 1885-1893. Eight plain-brick fronts of one row (33-47: 3 axes, flat heads under white keystones, pediment dormers with zinc finials), 31 black-painted with 2 axes and no dormer, and the 1893 corner 49 with white speklagen and blocked relieving arches (kinker-1886-neo-renaissance). Shops read on zoom crops of the 2024-12-11 strip. #98 pass: Kinkerstraat 47 drew #dcbb9d through its measured tint (photo #bf9d83, too light and saturated); it takes the brick of 45 (#c9a080, the same sunlit red brick on the strip) through the city tint instead. Brick facings (overrides.palette) moved to paletteOverrides: the 3 cm facing lay 1 cm off the shop doors (coplanar). H9g re-measure (#345): the #98 bricks #c9a080 (45, 47), #91735c (43), #856c57 (41) and #d0ab8d (49) were read on the right half of the 2024-12-11 strip, which is stitched from a brighter exposure (the strip's 41-49 votes #772d1b..#b79175 are that exposure, not the brick). The street-level panorama of the same row (integrator-transvaal-20261031 house-frames walls/random24-after/0363100012154359/photo.jpg, overcast, the row reads one uniform dark brown with white frames) was fitted per pand with blockFace/wallFit.ts fitWallColour on the wall box between cornice and shopfronts: 37 #453b34, 39 #42352f, 41 #443530, 43 #41322b, 45 #42352e, 47 #423934, 49 #47403a (corner, mixed with its speklagen); 33 and 35 keep their strip votes (#413b2d/#453022 agree). 37 and 39 had no override and took the type default (orange-red)."
  },
  "types": [
   "kinker-1890-plain-brick",
@@ -217,6 +217,9 @@
      "pitchDeg": 35,
      "material": "red-tile",
      "evidence": "PDOK orthophoto 2024 (8 cm): a saddle ridged front to back, hipped down behind the cornice under the dormer, red tiles; the strip (2024-12-11) shows only the tile edge over the cornice; pitch from the 3DBAG ridge (~2.1-2.4 m over the eaves on a 5.5-6.2 m front)"
+    },
+    "paletteOverrides": {
+     "brick": "#453b34"
     }
    },
    "groundFloor": {
@@ -286,6 +289,9 @@
      "pitchDeg": 35,
      "material": "red-tile",
      "evidence": "PDOK orthophoto 2024 (8 cm): a saddle ridged front to back, hipped down behind the cornice under the dormer, red tiles; the strip (2024-12-11) shows only the tile edge over the cornice; pitch from the 3DBAG ridge (~2.1-2.4 m over the eaves on a 5.5-6.2 m front)"
+    },
+    "paletteOverrides": {
+     "brick": "#42352f"
     }
    },
    "groundFloor": {
@@ -341,7 +347,7 @@
      "evidence": "PDOK orthophoto 2024 (8 cm): a saddle ridged front to back, hipped down behind the cornice under the dormer, dark tiles; the strip (2024-12-11) shows only the tile edge over the cornice; pitch from the 3DBAG ridge (~2.1-2.4 m over the eaves on a 5.5-6.2 m front)"
     },
     "paletteOverrides": {
-     "brick": "#856c57"
+     "brick": "#443530"
     }
    },
    "groundFloor": {
@@ -406,7 +412,7 @@
      "evidence": "PDOK orthophoto 2024 (8 cm): a saddle ridged front to back, hipped down behind the cornice under the dormer; the strip (2024-12-11) shows only the tile edge over the cornice; pitch from the 3DBAG ridge (~2.1-2.4 m over the eaves on a 5.5-6.2 m front)"
     },
     "paletteOverrides": {
-     "brick": "#91735c"
+     "brick": "#41322b"
     }
    },
    "groundFloor": {
@@ -472,7 +478,7 @@
      "evidence": "PDOK orthophoto 2024 (8 cm): a saddle ridged front to back, hipped down behind the cornice under the dormer, dark tiles; the strip (2024-12-11) shows only the tile edge over the cornice; pitch from the 3DBAG ridge (~2.1-2.4 m over the eaves on a 5.5-6.2 m front)"
     },
     "paletteOverrides": {
-     "brick": "#c9a080"
+     "brick": "#42352e"
     }
    },
    "groundFloor": {
@@ -505,7 +511,7 @@
     "type": "kinker-1890-plain-brick",
     "crown": "pediment-dormer",
     "paletteOverrides": {
-     "brick": "#c9a080"
+     "brick": "#423934"
     },
     "overrides": {
      "windowSurround": "keystone",
@@ -599,7 +605,7 @@
      }
     },
     "paletteOverrides": {
-     "brick": "#d0ab8d"
+     "brick": "#47403a"
     }
    },
    "groundFloor": {
