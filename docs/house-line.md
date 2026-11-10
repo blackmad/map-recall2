@@ -118,12 +118,25 @@ First run (2026-11-10): 7,224 pands (register 5,958; 280 block faces = 1,314 hou
 ### The generic path reads it (flag `?houseSpecs=0`, `HOUSE_SPECS=0`)
 
 - `houseSpec/decorate.ts houseSpecEnricher`, composed last in `gameTileEnricher.ts`, stamps the runtime view on each
-  raw feature as `p.houseSpec` = `{gable, year, wallMaterial, wallHex, bays, src}`.
+  raw feature as `p.houseSpec` = `{gable, year, wallMaterial, wallHex, bays, crownRiseM, src}` (`crownRiseM`: 3DBAG ridge - eaves, for pands with a gable or a historic gable).
 - `withHouseSpec` runs right after the register step (before `decorateFacade`): it moves `constructionYear` only on an
   era change (the register's rule), sets `registerFinish` from `wallMaterial`, and writes `specRecipe`
   `{bays, wallHex, period, crownShape}` when the spec has bays or a wall colour.
-- `withHouseSpecCrown` runs after `withMonumentGable` (which would otherwise restore the register's gable): it sets
-  `monumentGable` when the spec's gable source outranks `monument-text`, or when nothing named a gable.
+- `withHouseSpecCrown` runs after `withMonumentGable` (which would otherwise restore the register's gable). Since H5h
+  round 4 (ruling on #351) it applies the crown in trust order and then the **register gable gate**:
+  - a photo reading (`PHOTO_GABLE_SOURCES`: `vision-judge`, `streetlevel-measured`, `reviewed`, `author`) sets
+    `monumentGable` over the register's; a photo front with no planner gable drops the register's;
+  - otherwise a source above `monument-text` replaces it, a weaker one only fills a gap (as before);
+  - then, mode `gated` (the default, `?registerGable=drawn|gated|hint`, `REGISTER_GABLE` in Node): a raised gable that
+    did not come from a photo is drawn only when 3DBAG shows a crown above the eaves (`crownInGeometry`: ridge - eaves
+    >= 2 m, from `p.eaves`/`p.ridge` or the view's `crownRiseM`, which `build-house-specs.ts` writes from bag-facts
+    because the live building tiles carry neither), or, with no ridge, when the roof planner alone would plan a
+    `gable` or `pitched` roof. A cornice is always drawn. A held gable is removed and kept as `historicGable` on the
+    feature; mode `hint` holds every register gable, `drawn` is the chain before round 4.
+  - The same order holds in the merge: `resolve.ts strongerProv(a, b, path)` ranks a photo source over `monument-text`
+    on `fronts/N/gable` only; every other field keeps the ladder.
+- `facts/historicGable` (spec.ts, validated against GABLES) is the register's gable with its `rce:<nr>` receipt, written
+  by `fromRegisterFacts` beside `fronts/0/gable`, for cards and trivia; it is never the drawn crown.
 - The view carries a street-measured gable to the roof planner only for a full-width step/neck/raised-neck/bell/
   spout/point crown on a roof that is not flat; a cornice or flat front, or a crown over some bays, stays in the record
   (the roof planner draws a monument gable as a canal house's whole roof; measured on the first full compile, cornice
@@ -1161,6 +1174,30 @@ ceiling pools B vs C (21/25) with B2 vs C2 (28/32): 49/57 = 0.86 [0.75, 0.93] (B
   family word (a mapping fitted on this set would be scored on it). Median pixel colour per read family: brown h32 s0.17 l0.32 (n8),
   red-brown h28 s0.17 l0.44 (15), red h27 s0.26 l0.55 (5), dark l0.31 (7): overcast crops pull every brick to hue 27-32, so pixel
   colour separates lightness, not red from brown.
+
+**The register gable gate (round 4, ruling on #351).** The register is ranked below the photo writers for the crown and
+drawn only over a 3DBAG crown (§1 "The generic path reads it"). Scored on the 60 gable rows (the hand set's AB07 rows,
+reader A, and the gable rows, B2): the **gated register gable states 52 of 60 and agrees on 36/52 = 0.69 [0.56, 0.80]**,
+under the 0.76 gate (and n < 60): by the ruling that makes it a hint, not the fallback writer. By register type: cornice
+15/18, neck 7/9, step 3/4, point 4/7, bell 7/14. The gate held 8 rows, every one a register gable the photo contradicts;
+its misses are the cornice fronts under a pitched roof (3DBAG's ridge is the roof behind the front, so the test passes).
+
+But "hint only" means the planner's own odds draw those crowns, and they are worse. The drawn crown through the game's
+chain and roof planner (`scripts/house-audit/register-gable-gate.ts`) against the same 60 readings (a raised reading must
+match exactly; a cornice or flat reading matches any crown that is not a raised gable):
+
+| mode | agrees with the photo reading | raised readings kept | cornice/flat readings | live houses changed (of 4,634 register pands) |
+|---|---|---|---|---|
+| drawn (before) | 38/60 | 22/29 | 16/31 | - |
+| **gated (default)** | **44/60** | 22/29 | 22/31 | 125 |
+| hint (register never drawn) | 28/60 | 1/29 | 27/31 | 4,077 |
+
+So the default is `gated`: it keeps every raised gable the photos confirm and fixes six flat fronts, while `hint` loses 21
+of the 22 correct raised gables. `?registerGable=hint` stays available; whether the ruling's "hint only" should
+apply to the drawn crown is an open question for the judgement session. Gated transitions (live, top): neck -> flat 21,
+bell -> flat 18, neck -> mansard 12, point -> flat 11, bell -> hipped 7. Before/after sheet (photo | drawn | gated):
+`map-recall2-screenshots/ui/2026-11-10-register-gable-gate/before-after-1.jpg`, `-2.jpg` (`scripts/house-audit/
+register-gable-sheet.ts` over `house:preview --route generic` renders with `REGISTER_GABLE=drawn|gated`).
 
 **Old hand truth against the hand set** (11 of the 80 have an intent): authored block faces (the Nassaukade row) bays 6/6, storeys
 6/6, gable 5/6, wall tone 4/6; auto-placed faces bays 4/4, storeys 3/4, gable 1/4, pui 2/4. **H9's review values**: bays 9/11
