@@ -3,7 +3,7 @@
 // shader: no textures, no polygon offsets, no shadows. The ballast gets its sleepers back from the bed's UV (v along
 // the track), so the tracks read as tracks.
 //
-//   npx tsx scripts/own-ground/rail-view.ts <lng> <lat> <bearingDeg> [distM=90] [heightM=40] [out.png] [--w=960] [--h=540] [--lod=1] [--before | --round2 (no rail bridge structure) | --legacy | --onStreet=0 (the centreline-crossing level-crossing test only)] [--buildings [--infra=<rail-infra-buildings.json>]]
+//   npx tsx scripts/own-ground/rail-view.ts <lng> <lat> <bearingDeg> [distM=90] [heightM=40] [out.png] [--w=960] [--h=540] [--lod=1] [--before | --round2 (no rail bridge structure) | --legacy | --onStreet=0 (the centreline-crossing level-crossing test only) | --spans=0 (no deck spans over streets, railSpans.ts)] [--buildings [--infra=<rail-infra-buildings.json>]]
 //
 // The camera stands `distM` behind the spot (against the bearing) and `heightM` up, looking at the spot.
 import sharp from 'sharp';
@@ -93,7 +93,7 @@ async function main(): Promise<void> {
   const out = args[5] ?? `artifacts/rail-look/view-${lng}-${lat}.png`;
   const w = opt('w', 960), h = opt('h', 540), lod = process.argv.includes('--lod=1') ? 1 : 0;
   // --before: main's #145 beds without railProfile.ts (`railLevels: false`); --legacy: rail-v1 of build 04e3c88.
-  const { cells, x, y, store } = await railCells(lng, lat, Math.max(200, dist * 2.5), lod as 0 | 1, process.argv.includes('--legacy') ? { railLegacy: true } : process.argv.includes('--before') ? { railLevels: false } : process.argv.includes('--round2') ? { railBridges: false } : process.argv.includes('--onStreet=0') ? { railOnStreet: false } : {});
+  const { cells, x, y, store } = await railCells(lng, lat, Math.max(200, dist * 2.5), lod as 0 | 1, process.argv.includes('--legacy') ? { railLegacy: true } : process.argv.includes('--before') ? { railLevels: false } : process.argv.includes('--round2') ? { railBridges: false } : process.argv.includes('--onStreet=0') ? { railOnStreet: false } : process.argv.includes('--spans=0') ? { railSpans: false } : {});
   const own = cells.find(c => x >= c.rect[0] && x < c.rect[2] && y >= c.rect[1] && y < c.rect[3]);
   void own;
   // --buildings: the building tiles as plain extrusions (brick walls, pale roofs, as the house generator reads from far);

@@ -39,8 +39,9 @@ import { buildRoadSurfaces, deckLevelHeight, RoadIndex, type RoadBuildStats } fr
 import { ANCILLARY_CLASSES, type RoadCell } from './roadCells.js';
 import type { RoadMark } from './roadMarks.js';
 import { AT_GRADE_HIGHWAYS, crossingTest, onStreetTest, platformMeshes, railMeshes, type RailBuildStats, type RailPlatform, type RailWay, type StreetStrip } from './railTracks.js';
-import { PLATFORM_EDGE_M, platformTest, PROFILE_PAD_M, railLevels } from './railProfile.js';
+import { levelAt as railLevelAt, PLATFORM_EDGE_M, platformTest, PROFILE_PAD_M, railLevels, railWayKey } from './railProfile.js';
 import { streetHalfWidth, underTest } from './railBridge.js';
+import { underpassSpans, type RailSpan } from './railSpans.js';
 import type { PhotoEvidence } from './photoEvidence.js';
 import { buildSurveyMarkings, crossingStripPoints, SURVEY_MARKINGS, type SurveyMarkingStats } from './surveyMarkings.js';
 import type { DeckSurface, GroundSurface, Vec2 } from './surface.js';
@@ -162,6 +163,8 @@ export interface CellInput {
   railLegacy?: boolean;
   /** Rails flat on the street they lie on or cross within the bed's reach (railTracks.ts onStreetTest; default on, false: the centreline-crossing test only, for measuring). */
   railOnStreet?: boolean;
+  /** Deck spans where a street passes under a track off the bridges (railSpans.ts; default on, false: the build before lane rails-classb, for measuring). */
+  railSpans?: boolean;
   /** OSM way ids the neighbourhood's road polygons cover (roadCells coverWays): no bands for them. */
   coverWays?: readonly number[];
   /** What the orthophoto backs of the tag-driven paint (photoEvidence.ts): lane ribbons, centre dashes, grey fietsstraat sections. */
@@ -556,11 +559,25 @@ export function buildCell(input: CellInput): BuiltCell {
     // Under the bridge decks (railBridge.ts): water, the streets and the tracks at grade, where no pier may stand.
     const streetsUnder = ways.filter(w => w.tags.highway && !isBridgeWay(w) && !(w.tags.tunnel && w.tags.tunnel !== 'no')).map(w => ({ points: w.points, half: streetHalfWidth(w.section.bands) }));
     const under = input.railBridges === false ? undefined : underTest(overWater, streetsUnder, (input.railsAround ?? input.rails).filter(w => !w.bridge).map(w => w.points));
-    const r = railMeshes({ ways: input.rails, inCell, height: onLand, atGrade: onStreet ? (a: Vec2, b: Vec2) => crossing(a, b) || onStreet(a, b) : crossing, far: lod === 1, ...(under && profile ? { under } : {}), ...(profile ? { levels: profile.levels, ...(measured ? { measured } : {}), ...(input.railPlatforms?.length ? { onPlatform: platformTest(input.railPlatforms, PLATFORM_EDGE_M) } : {}) } : { floor: false }), ...(input.railLegacy ? { legacy: true } : {}) });
+    // Untagged viaducts (railSpans.ts): a track off the bridges is a deck where a street passes under its bed.
+    const spans = new Map<RailWay, RailSpan[]>();
+    const spanStreets = profile && input.railSpans !== false ? ways.filter(w => w.tags.highway && !isBridgeWay(w) && !(w.tags.tunnel && w.tags.tunnel !== 'no')).map(w => ({ points: w.points, half: streetHalfWidth(w.section.bands), ...(w.tags.embedded_rails ? { embedded: true } : {}) })) : [];
+    if (profile && input.railSpans !== false) for (const w of input.rails) {
+      const level = profile.levels.get(w);
+      if (w.bridge || !level) continue;
+      const found = underpassSpans(w, s => railLevelAt(level, s), spanStreets, onLand, measured);
+      if (found.length) spans.set(w, found);
+    }
+    const promoted = new Set([...spans.keys()].map(railWayKey));
+    const spanUnder = spans.size && under ? underTest(overWater, streetsUnder, (input.railsAround ?? input.rails).filter(w => !w.bridge && !promoted.has(railWayKey(w))).map(w => w.points)) : undefined;
+    const r = railMeshes({ ways: input.rails, inCell, height: onLand, ...(spans.size ? { spans, ...(spanUnder ? { spanUnder } : {}) } : {}), atGrade: onStreet ? (a: Vec2, b: Vec2) => crossing(a, b) || onStreet(a, b) : crossing, far: lod === 1, ...(under && profile ? { under } : {}), ...(profile ? { levels: profile.levels, ...(measured ? { measured } : {}), ...(input.railPlatforms?.length ? { onPlatform: platformTest(input.railPlatforms, PLATFORM_EDGE_M) } : {}) } : { floor: false }), ...(input.railLegacy ? { legacy: true } : {}) });
     add('ballast', r.ballast); add('track', r.track); add('deckBody', r.slab); add('deckBody', r.structure);
     // Platforms beside heavy-rail track, at the rails' level (railTracks.ts platformMeshes).
     if (profile && input.railPlatforms?.length) { const pm = platformMeshes(input.railPlatforms, input.rails, profile.levels, onLand, inCell); add('deckBody', pm.mesh); r.stats.platforms = pm.stats; }
     railStats = profile ? { ...r.stats, profile: profile.stats } : r.stats;
+    // The deck spans' triggers, the cell's own (diagnostics: probe-rails-class.ts, check-rail-street.ts).
+    const spanList = [...spans.values()].flat().filter(sp => inCell(sp.at[0], sp.at[1])).map(sp => ({ at: sp.at, clear: sp.clear, length: +(sp.s1 - sp.s0).toFixed(1) }));
+    if (spanList.length) railStats.spanList = spanList;
   }
   phase('rails');
   // roads-v1: markings placed from the mapped crossings and the junction graph, measured on and clipped to the
