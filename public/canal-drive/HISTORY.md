@@ -1,5 +1,22 @@
 # Canal Recall — what is built
 
+**H10 `house:frames` and H11 design fields on the generic path (2026-11-10, #358, #361).**
+- **H10 (4371ef8a8, opus): `npm run house:frames`.**
+  - It puts the own engine's first-person camera at a street panorama's pose and pairs the game frame with the panorama cut to the same heading, pitch and FOV.
+  - The BAG wall outline is drawn on both halves; flags (blank wall, missing building, roof offset, wall colour) are advisory.
+  - Alignment over 35 walls: median edge offset 1.18 %, p90 4.0 %. The one pose over 5 % is 104378: its 2018 panorama predates the building. Throughput 12.7 pairs/min.
+  - Builders are accepted on these pairs read by opus or a human, never on their own sonnet read (docs/house-line.md §7).
+  - It read the #341 blank-wall audit as 64 % false positives (7 of 11). The 4 real ones are Funenpark 184743, whose front floats above the ground.
+- **H11 (7a8452f2d, opus): spec storeys, window look and shopfront reach the generic path.**
+  - One storey path: `specStoreyFit` with an exact mode (H9) and a nearest mode (ground storey shrinks first).
+  - `SPEC_DESIGN_HELD = { storeys: false, look: true, shop: true }`.
+  - 19-pair design gate, shipped default against all held: storeys 19/19 (from 15), window shape 8/19 (from 6), PASS 8 (from 6).
+  - Releasing look and shop as well makes it slightly worse (shape 7, PASS 6), so they wait for the frame pairs.
+  - `HOUSE_SPEC_DESIGN=0` is byte-identical to H9's path.
+- **The register-gable note now explains "only 125".**
+  - Of 2,587 matched raised register gables, 91 are on installed models. Of the 2,496 on the generic path, 2,343 keep their gable, 7 take a photo gable and 147 are held.
+  - 125 drawn crowns change in all: 54 to flat, the rest to the roof the 3D data shows.
+
 **H9 wall rule, K-stoep stoops, H7 round 3 installed (2026-11-10, #345, #360, #354).**
 - **H9 r3 (ccd9dfad4, opus): the wall-colour rule, merged with `SPEC_WALLS_HELD = true`.**
   - Darks keep below red brick: lift k 0.2 ramped over OKLab L 0.30–0.50, darks get 35 % of the chroma gain, pale readings keep their own chroma, and the hue pull starts at 40°.

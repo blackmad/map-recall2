@@ -70,6 +70,7 @@ test('crown step: a stronger source than the register text replaces its gable; a
   // A flat front over a register gable takes the cornice crown (lane H9, Raadhuisstraat 0363100012176346).
   const arcade = feature({ monumentGable: 'plain', houseSpec: { gable: 'flat', src: { gable: 'author' } } });
   assert.equal(withHouseSpecCrown(arcade).properties.monumentGable, 'cornice');
+  assert.equal(withHouseSpecCrown(arcade).properties.historicGable, 'plain', 'the register gable stays as a historic fact (pinned: judgement ruling 2026-11-10)');
   const weak = feature({ monumentGable: 'plain', houseSpec: { gable: 'flat', src: { gable: 'vision-judge' } } });
   // A photo reading of a flat front drops the register gable to historicGable (H5h round 4 gate, merged over H9).
   assert.equal(withHouseSpecCrown(weak).properties.monumentGable, undefined);
