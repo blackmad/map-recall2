@@ -81,8 +81,8 @@ export async function houseLikeness(built: CompiledLargeBuilding, glbFile: strin
   const out: GroupLikeness[] = [];
   const g0 = built.facts.heights.groundNAP;
   for (const g of built.recipe.groups) {
-    // a blank system under cladding (a metal-clad hall) is a facade the photo judges (GitHub #49)
-    if (g.mainPanel === null || (g.system === 'blank' && !g.cladding)) continue;
+    // a blank system under cladding (a metal-clad hall) or with ribbon storeys (a shop strip under a sign storey) is a facade the photo judges (GitHub #49)
+    if (g.mainPanel === null || (g.system === 'blank' && !g.cladding && !g.ribbonStoreys)) continue;
     const p = built.panels[g.mainPanel];
     // the main panel's crops, else those on the group's merged plane (a curved or stepped front faceted by 3DBAG, GitHub #114)
     const gp = groupPlaneCoverage(crops, p, built.panels.filter(q => built.recipe.panelGroup[q.index] === g.index), built.anchorRD, LIKENESS.maxObliquityDeg);
