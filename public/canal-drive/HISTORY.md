@@ -1,5 +1,13 @@
 # Canal Recall — what is built
 
+**Main's check:canal repaired after the a1 batch (2026-11-10, integrator-a1).** b0d58c5de failed two checks, both caught by the other integrator.
+1. `check:landmark-lods`: the meshopt merge recompressed the 143 street-chunk GLBs, so every chunk's lod2 row named the old sha. Fixed by rebuilding with `npm run build:landmark-lods -- --chunks` (5.34 MB).
+2. `test:coplanar-surfaces` (8415/5383): post-2020 BAG pand 0363100012247366 is the 13,624 m² podium (year 2026, still being finished) of an Overhoeks complex. It was published at a 9 m neighbour-median guess around the 100 m OSM tower w1244980638, which lies wholly inside it, and their walls stripe. The pand was dropped from both tile sets and from `new-pands-supplement.geojson` (1,109 left); its height is unknown and the OSM tower already stands for the building. Seven more supplement pands were underground structures (car parks), so `check:underground-buildings` failed; they were dropped with `drop-underground-buildings.ts --publish` (12 tiles) and from the supplement, which leaves 1,102. `content-stats.json` was also stale and has been regenerated. The world was recompiled.
+
+Lessons:
+- Run `check:canal` (or at least the lods and coplanar checks) after any chunk recompression or tile publish, not only the focused tests.
+- `publish-bag-gaps.ts` should apply the underground rule and a filter for podiums that wholly contain an existing OSM building before it publishes.
+
 **World-v1 republished for the a1 batch (2026-11-10, integrator-a1).** One `world:compile -- --shell --against=none` on origin/main e08d0a1ee plus the a1 round: feedback B land (Houthaven, houseboats kept on water), the 1,110 post-2020 pands, the buurt profiles, the rails (feedback G) and the #171 camera. All 604 cells and their shells were rewritten (1,312 files), and the cells total 9.09 MB against the 10 MB gate. `world:verify` on the published dir: globalFresh, 0 stale, 0 differing. test:world-format 53/53, reachability green including the three Houthaven pins, check:covers ok, explorer-looks rebuilt. Compile 210 s.
 
 **Recipe tiles stay off: the week-2 flip fails acceptance (2026-11-10, lane/recipe-tiles-on-20261110 at c2d1c4304, sonnet).** Snapping widths to 5 cm saves 14 of 4.85 M triangles over the pilot (7 structure groups with 2+ members, 2 within 5 cm), because houses differ in layout, not width; snapping in `fit.ts` broke crowns, so it was reverted. A fresh pilot compile has 13,715 pands, 44.3 MB of mesh against today's 11 MB published tiles, and 930 draws. Pose A/B (desktop 1280×800), draws off → on:
