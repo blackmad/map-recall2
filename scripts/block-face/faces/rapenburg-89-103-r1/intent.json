@@ -1,0 +1,113 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "rapenburg-89-103-r1",
+ "street": "Rapenburg",
+ "sources": [
+  {
+   "id": "strip-2024-12-10",
+   "kind": "street-panorama",
+   "capturedAt": "2024-12-10",
+   "image": "staging/block-face/rapenburg-89-103-r1/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "auto-place (blockFace/autoPlace.ts)",
+  "passes": 1,
+  "note": "auto-placed from the nieuwmarkt library (buurt Rapenburg); scores and holds in scripts/block-face/faces/rapenburg-89-103/auto-place.json"
+ },
+ "types": [
+  "lastage-bell-house",
+  "lastage-cornice-house"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012181605",
+   "slug": "rapenburg-181605",
+   "address": "Rapenburg 97",
+   "type": {
+    "type": "lastage-cornice-house",
+    "measuredPalette": {
+     "brick": "#3f342b",
+     "evidence": "strip 2024-12-10 span 915-1139: trim-normalised wall (buildingRecipe/measureFacade.ts); lane: lowered so the render meets the photo wall (sheet read +0.11/+0.13 too light at the measured value), hue kept brown rather than the strip olive cast"
+    },
+    "crown": "none"
+   },
+   "groundFloor": {
+    "use": "office",
+    "bag": [
+     "kantoorfunctie"
+    ],
+    "photoDate": "2024-12-10",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: lastage-cornice-house scored 0.76 on eaves 0, stucco 1, crown 1, columns 1; strip 2024-12-10 span 915-1139"
+   }
+  },
+  {
+   "pandId": "0363100012170674",
+   "slug": "rapenburg-170674",
+   "address": "Rapenburg 99",
+   "type": {
+    "type": "lastage-bell-house",
+    "ground": {
+     "shopfront": {
+      "colour": "#e8e6dd",
+      "fascia": true,
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: bag-only (winkelfunctie, woonfunctie); fascia colour measured on the strip 2024-12-10 span 1140-1367; lane: the ground storey is white-painted with white shop frames on the strip (the measured #3c3f36 is the dark glass), colour set to the white pui"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#3b2e25",
+     "evidence": "strip 2024-12-10 span 1140-1367: trim-normalised wall (buildingRecipe/measureFacade.ts); lane: lowered so the render meets the photo wall (sheet read +0.11/+0.13 too light at the measured value), hue kept brown rather than the strip olive cast"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "bag": [
+     "winkelfunctie",
+     "woonfunctie"
+    ],
+    "photoDate": "2024-12-10",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: lastage-bell-house scored 1 on eaves 1, roof 1, stucco 1, crown 1, columns 1; strip 2024-12-10 span 1140-1367"
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "auto-place: low attic behind the cornice; the strips show sky over the cornices of the type rows"
+  },
+  "measuredEaves": [
+   {
+    "pand": "0363100012181605",
+    "stripRow": 148,
+    "evidence": "review pin: Rapenburg 97: cornice top 14.7 m over the frieze (brick top 12.5 m); 3DBAG eaves 11.6 m reads the roof behind"
+   },
+   {
+    "pand": "0363100012170674",
+    "stripRow": 240,
+    "evidence": "review pin: Rapenburg 99: bell gable foot 12.4 m (3DBAG 11.3 m)"
+   }
+  ]
+ }
+}

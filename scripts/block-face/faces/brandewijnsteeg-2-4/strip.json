@@ -1,0 +1,100 @@
+{
+ "face": "brandewijnsteeg-2-4",
+ "image": "staging/block-face/brandewijnsteeg-2-4/strip.jpg",
+ "pixelsPerMetre": 40,
+ "width": 624,
+ "height": 740,
+ "groundNAP": 1.569,
+ "heightM": 18.49,
+ "frame": {
+  "midRD": [
+   121931.4431875,
+   487328.4865
+  ],
+  "uRD": [
+   0.6779338871463692,
+   0.7351228772515613
+  ],
+  "nRD": [
+   0.7351228772515613,
+   -0.6779338871463692
+  ]
+ },
+ "x0M": -6.31,
+ "x1M": 9.29,
+ "date": "2025-01-08",
+ "coverage": 0.5,
+ "spans": [
+  {
+   "pandId": "0363100012181816",
+   "x0M": -6.31,
+   "x1M": -1.49,
+   "px": [
+    0,
+    193
+   ],
+   "date": "2025-01-08",
+   "fallbackDate": false,
+   "panoramas": []
+  },
+  {
+   "pandId": "0363100012181810",
+   "x0M": -1.49,
+   "x1M": 9.29,
+   "px": [
+    193,
+    624
+   ],
+   "date": "2025-01-08",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "b_20250108_1041_Track25_Sphere_00027",
+     "timestamp": "2025-01-08T11:35:31Z",
+     "distanceM": 29.6,
+     "obliquityDeg": 41.6,
+     "missingFraction": 0
+    }
+   ]
+  }
+ ],
+ "candidatesByDate": {
+  "2016-08-17": 0,
+  "2023-03-20": 0,
+  "2023-01-11": 0,
+  "2020-04-21": 0,
+  "2019-01-14": 0,
+  "2023-04-11": 0,
+  "2023-03-06": 0,
+  "2023-01-30": 0,
+  "2025-01-08": 0,
+  "2020-01-10": 0,
+  "2022-04-26": 0,
+  "2019-05-16": 0,
+  "2023-03-13": 0,
+  "2023-02-06": 0,
+  "2017-03-27": 0,
+  "2018-05-07": 0,
+  "2019-05-13": 0,
+  "2023-02-27": 0,
+  "2023-02-13": 0,
+  "2023-03-27": 0,
+  "2023-02-20": 0,
+  "2023-04-03": 0,
+  "2023-04-17": 0,
+  "2017-11-17": 0,
+  "2025-07-03": 0,
+  "2021-12-27": 0,
+  "2021-03-08": 0,
+  "2021-01-25": 0,
+  "2017-07-06": 0,
+  "2021-09-15": 0,
+  "2018-05-08": 0,
+  "2022-06-27": 0,
+  "2022-06-23": 0,
+  "2022-12-15": 0,
+  "2019-01-15": 0
+ },
+ "description": "Rectified orthographic elevation of the whole face on the frontage planes: x = chunk-frame metres along the face (left→right seen from the street) from x0M, y = metres above the shared ground (groundNAP) from the bottom; grey = no panorama data. Per-pand spans list the panoramas median-fused for that frontage.",
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (CC BY 4.0; faces and number plates blurred by the publisher)"
+}

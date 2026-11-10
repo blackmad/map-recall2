@@ -1,0 +1,125 @@
+{
+ "street": "A.S. Onderwijzerhof",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T08:11:59.217Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012171840",
+   "addresses": [
+    "A.S. Onderwijzerhof 18",
+    "A.S. Onderwijzerhof 20",
+    "A.S. Onderwijzerhof 22",
+    "A.S. Onderwijzerhof 24",
+    "A.S. Onderwijzerhof 26",
+    "A.S. Onderwijzerhof 28"
+   ],
+   "groundUnits": [
+    {
+     "address": "A.S. Onderwijzerhof 18",
+     "use": "woonfunctie",
+     "areaM2": 95,
+     "bagId": "0363010000923361"
+    },
+    {
+     "address": "A.S. Onderwijzerhof 20",
+     "use": "woonfunctie",
+     "areaM2": 84,
+     "bagId": "0363010000923363"
+    },
+    {
+     "address": "A.S. Onderwijzerhof 22",
+     "use": "woonfunctie",
+     "areaM2": 84,
+     "bagId": "0363010000923364"
+    },
+    {
+     "address": "A.S. Onderwijzerhof 24",
+     "use": "woonfunctie",
+     "areaM2": 96,
+     "bagId": "0363010000923365"
+    },
+    {
+     "address": "A.S. Onderwijzerhof 26",
+     "use": "woonfunctie",
+     "areaM2": 87,
+     "bagId": "0363010000923366"
+    },
+    {
+     "address": "A.S. Onderwijzerhof 28",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010000923367"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012171835",
+   "addresses": [
+    "A.S. Onderwijzerhof 2",
+    "A.S. Onderwijzerhof 4",
+    "A.S. Onderwijzerhof 6",
+    "A.S. Onderwijzerhof 8",
+    "A.S. Onderwijzerhof 10",
+    "A.S. Onderwijzerhof 12",
+    "A.S. Onderwijzerhof 14",
+    "A.S. Onderwijzerhof 16"
+   ],
+   "groundUnits": [
+    {
+     "address": "A.S. Onderwijzerhof 2",
+     "use": "woonfunctie",
+     "areaM2": 85,
+     "bagId": "0363010000923345"
+    },
+    {
+     "address": "A.S. Onderwijzerhof 4",
+     "use": "woonfunctie",
+     "areaM2": 85,
+     "bagId": "0363010000923347"
+    },
+    {
+     "address": "A.S. Onderwijzerhof 6",
+     "use": "woonfunctie",
+     "areaM2": 85,
+     "bagId": "0363010000923349"
+    },
+    {
+     "address": "A.S. Onderwijzerhof 8",
+     "use": "woonfunctie",
+     "areaM2": 85,
+     "bagId": "0363010000923351"
+    },
+    {
+     "address": "A.S. Onderwijzerhof 10",
+     "use": "woonfunctie",
+     "areaM2": 73,
+     "bagId": "0363010000923353"
+    },
+    {
+     "address": "A.S. Onderwijzerhof 12",
+     "use": "woonfunctie",
+     "areaM2": 73,
+     "bagId": "0363010000923355"
+    },
+    {
+     "address": "A.S. Onderwijzerhof 14",
+     "use": "woonfunctie",
+     "areaM2": 73,
+     "bagId": "0363010000923357"
+    },
+    {
+     "address": "A.S. Onderwijzerhof 16",
+     "use": "woonfunctie",
+     "areaM2": 100,
+     "bagId": "0363010000923359"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  }
+ ]
+}
