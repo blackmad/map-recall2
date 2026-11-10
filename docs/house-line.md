@@ -256,6 +256,15 @@ easy-houses set's colour families are in §6.
   step (a `measured-accepted` side colour is left alone). A fallback already brick, a drawn wall and every pand without the flag are
   byte-identical. `npx tsx scripts/house-specs/held-wall-audit.ts` counts it on the game chain: 91 held pands (the published
   extract, installed models and kits excluded), 30 drew a neutral wall (2 with a stated brick finish, 28 with none), 0 after.
+* **Held count, 57 vs 91.** One population, two answers: both count the same 419 generic-path pands that carry a spec wall (1,364 views
+  with a wall hex, 945 hidden by an installed model, none excluded as measured/kit/large). H9f's "57 of 419" ran the rule with
+  `brick: true` for a pand whose material and register finish are both unstated (305 of the 308 held-by-hex pands, 391 of the 419):
+  `specWallSource` then swaps a reading lighter than its family's tone for the family tone, which is darker, so fewer drawn colours are
+  pale-warm. The game does not assume brick there (`decorate.ts specWallColour`: `brick = view.wallMaterial ? ... : registerFinish === 'brick'`,
+  false when unstated), so the pixel reading is lifted as it stands and 91 are held. Re-running the audit with `brick: true` gives exactly 57.
+  **The true number is 91 pands** (pands, not walls: one view per pand, no duplicates; the published extract, not staging). Treat 57 as the count
+  under a "brick unless stated" assumption the game does not make; whether the game should make it is a ruling for the judgement session
+  (it would hold 34 fewer pands and draw their trim-misread family tone instead of the period colour).
 
 ### What `bays` means (H1b, #349)
 

@@ -12,11 +12,6 @@
    "license": "Gemeente Amsterdam panorama, CC BY 4.0"
   }
  ],
- "authoring": {
-  "author": "claude (kinkerstraat odd-faces lane)",
-  "passes": 2,
-  "note": "Kinkerstraat 31-49 (odd side, Bilderdijkkade to Da Costakade), 1885-1893. Eight plain-brick fronts of one row (33-47: 3 axes, flat heads under white keystones, pediment dormers with zinc finials), 31 black-painted with 2 axes and no dormer, and the 1893 corner 49 with white speklagen and blocked relieving arches (kinker-1886-neo-renaissance). Shops read on zoom crops of the 2024-12-11 strip. #98 pass: Kinkerstraat 47 drew #dcbb9d through its measured tint (photo #bf9d83, too light and saturated); it takes the brick of 45 (#c9a080, the same sunlit red brick on the strip) through the city tint instead. Brick facings (overrides.palette) moved to paletteOverrides: the 3 cm facing lay 1 cm off the shop doors (coplanar). H9g re-measure (#345): the #98 bricks #c9a080 (45, 47), #91735c (43), #856c57 (41) and #d0ab8d (49) were read on the right half of the 2024-12-11 strip, which is stitched from a brighter exposure (the strip's 41-49 votes #772d1b..#b79175 are that exposure, not the brick). The street-level panorama of the same row (integrator-transvaal-20261031 house-frames walls/random24-after/0363100012154359/photo.jpg, overcast, the row reads one uniform dark brown with white frames) was fitted per pand with blockFace/wallFit.ts fitWallColour on the wall box between cornice and shopfronts: 37 #453b34, 39 #42352f, 41 #443530, 43 #41322b, 45 #42352e, 47 #423934, 49 #47403a (corner, mixed with its speklagen); 33 and 35 keep their strip votes (#413b2d/#453022 agree). 37 and 39 had no override and took the type default (orange-red)."
- },
  "types": [
   "kinker-1890-plain-brick",
   "kinker-1886-neo-renaissance"
@@ -649,5 +644,47 @@
   "Kinkerstraat 33: plain flat-topped box dormer with a white frame drawn as the type pediment dormer (plain-brick has no plain-dormer crown).",
   "Kinkerstraat 49: centre brick wall dormer with a flat cap between two small dormers; not drawn (neo-renaissance has no wall-dormer crown).",
   "Iron wall anchors; tall carved keystones drawn as plain keystone blocks."
- ]
+ ],
+ "wallRefit": {
+  "0363100012160073": {
+   "hex": "#453b34",
+   "source": "pano-2021-12-30-kinker-154359",
+   "crop": "house-frames walls/random24-after/0363100012154359/photo.jpg (Kinkerstraat pano 2021-12-30, overcast, 11.5 m); wall box between cornice and shopfronts, fitWallColour"
+  },
+  "0363100012160074": {
+   "hex": "#42352f",
+   "source": "pano-2021-12-30-kinker-154359",
+   "crop": "house-frames walls/random24-after/0363100012154359/photo.jpg (Kinkerstraat pano 2021-12-30, overcast, 11.5 m); wall box between cornice and shopfronts, fitWallColour"
+  },
+  "0363100012167106": {
+   "hex": "#443530",
+   "source": "pano-2021-12-30-kinker-154359",
+   "crop": "house-frames walls/random24-after/0363100012154359/photo.jpg (Kinkerstraat pano 2021-12-30, overcast, 11.5 m); wall box between cornice and shopfronts, fitWallColour"
+  },
+  "0363100012159384": {
+   "hex": "#41322b",
+   "source": "pano-2021-12-30-kinker-154359",
+   "crop": "house-frames walls/random24-after/0363100012154359/photo.jpg (Kinkerstraat pano 2021-12-30, overcast, 11.5 m); wall box between cornice and shopfronts, fitWallColour"
+  },
+  "0363100012154359": {
+   "hex": "#42352e",
+   "source": "pano-2021-12-30-kinker-154359",
+   "crop": "house-frames walls/random24-after/0363100012154359/photo.jpg (Kinkerstraat pano 2021-12-30, overcast, 11.5 m); wall box between cornice and shopfronts, fitWallColour"
+  },
+  "0363100012161457": {
+   "hex": "#423934",
+   "source": "pano-2021-12-30-kinker-154359",
+   "crop": "house-frames walls/random24-after/0363100012154359/photo.jpg (Kinkerstraat pano 2021-12-30, overcast, 11.5 m); wall box between cornice and shopfronts, fitWallColour"
+  },
+  "0363100012157926": {
+   "hex": "#47403a",
+   "source": "pano-2021-12-30-kinker-154359",
+   "crop": "house-frames walls/random24-after/0363100012154359/photo.jpg (Kinkerstraat pano 2021-12-30, overcast, 11.5 m); wall box between cornice and shopfronts, fitWallColour"
+  }
+ },
+ "authoring": {
+  "author": "claude (kinkerstraat odd-faces lane)",
+  "passes": 2,
+  "note": "Kinkerstraat 31-49 (odd side, Bilderdijkkade to Da Costakade), 1885-1893. Eight plain-brick fronts of one row (33-47: 3 axes, flat heads under white keystones, pediment dormers with zinc finials), 31 black-painted with 2 axes and no dormer, and the 1893 corner 49 with white speklagen and blocked relieving arches (kinker-1886-neo-renaissance). Shops read on zoom crops of the 2024-12-11 strip. #98 pass: Kinkerstraat 47 drew #dcbb9d through its measured tint (photo #bf9d83, too light and saturated); it takes the brick of 45 (#c9a080, the same sunlit red brick on the strip) through the city tint instead. Brick facings (overrides.palette) moved to paletteOverrides: the 3 cm facing lay 1 cm off the shop doors (coplanar). H9g re-measure (#345): the #98 bricks #c9a080 (45, 47), #91735c (43), #856c57 (41) and #d0ab8d (49) were read on the right half of the 2024-12-11 strip, which is stitched from a brighter exposure (the strip's 41-49 votes #772d1b..#b79175 are that exposure, not the brick). The street-level panorama of the same row (integrator-transvaal-20261031 house-frames walls/random24-after/0363100012154359/photo.jpg, overcast, the row reads one uniform dark brown with white frames) was fitted per pand with blockFace/wallFit.ts fitWallColour on the wall box between cornice and shopfronts: 37 #453b34, 39 #42352f, 41 #443530, 43 #41322b, 45 #42352e, 47 #423934, 49 #47403a (corner, mixed with its speklagen); 33 and 35 keep their strip votes (#413b2d/#453022 agree). 37 and 39 had no override and took the type default (orange-red)."
+ }
 }

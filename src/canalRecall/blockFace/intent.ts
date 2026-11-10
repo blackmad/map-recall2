@@ -159,6 +159,8 @@ export interface BlockFaceIntent {
     lonePand?: {evidence: string};
     notes?: string[];
   };
+  /** Per pand: a wall colour re-fitted on another capture than the strip (house:preview measures the wall against it; houseSpec/wallRefit.ts). Absent = the strip's. */
+  wallRefit?: Record<string, {hex: string; source: string; crop?: string}>;
   authoring?: {author: string; startedAt?: string; finishedAt?: string; passes: number; note?: string};
 }
 
