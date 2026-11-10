@@ -143,6 +143,29 @@ const SPOTS: Spot[] = [
   { name: 'nieuwmarkt-row-live', centre: [4.89976, 52.37282], standDeg: 75, standM: 55, query: '?world=live' },
   { name: 'kinker-244-332-specs-off', centre: [4.86405, 52.36545], standDeg: 335, standM: 22, view: 'cockpit', query: '?world=live&houseSpecs=0' },
   { name: 'kinker-244-332-specs-on', centre: [4.86405, 52.36545], standDeg: 335, standM: 22, view: 'cockpit', query: '?world=live' },
+  { name: 'kinker-244-332-specwalls-off', centre: [4.86405, 52.36545], standDeg: 335, standM: 22, view: 'cockpit', query: '?world=live&specWalls=0' },
+  // House line H9 (#345): the user's easy-houses set (2026-11-10 sheet, whats-new/2026-11-10-facade-extras.jpg), one spot per
+  // camera of scripts/house-specs/sets/easy-houses-20261110.cams.json, standing at the panorama's spot. The standing acceptance
+  // set: re-run on every look or spec change (docs/house-line.md §6): DEMO_SPOTS='easy-houses-*' DEMO_DPR=2 (desktop) and --project=iphone.
+  { name: 'easy-houses-langestraat-175320', centre: [4.8924190, 52.3777460], standDeg: 65, standM: 13, view: 'cockpit' },
+  { name: 'easy-houses-langestraat-175318', centre: [4.8925140, 52.3778325], standDeg: 181, standM: 12, view: 'cockpit' },
+  { name: 'easy-houses-langestraat-168136', centre: [4.8904860, 52.3793335], standDeg: 18, standM: 39, view: 'cockpit' },
+  { name: 'easy-houses-nieuwmarkt-182857', centre: [4.8997155, 52.3726045], standDeg: 113, standM: 26, view: 'cockpit' },
+  { name: 'easy-houses-nieuwmarkt-182857-b', centre: [4.8997155, 52.3726045], standDeg: 135, standM: 26, view: 'cockpit' },
+  { name: 'easy-houses-nieuwmarkt-row', centre: [4.8999020, 52.3728565], standDeg: 79, standM: 12, view: 'cockpit' },
+  { name: 'easy-houses-nieuwmarkt-row-b', centre: [4.8999020, 52.3728565], standDeg: 152, standM: 12, view: 'cockpit' },
+  { name: 'easy-houses-felix-176312', centre: [4.8874995, 52.3732020], standDeg: 274, standM: 38, view: 'cockpit' },
+  { name: 'easy-houses-felix-176312-b', centre: [4.8874995, 52.3732020], standDeg: 305, standM: 28, view: 'cockpit' },
+  { name: 'easy-houses-felix-176346', centre: [4.8859370, 52.3735945], standDeg: 43, standM: 15, view: 'cockpit' },
+  { name: 'easy-houses-felix-176346-b', centre: [4.8859370, 52.3735945], standDeg: 59, standM: 17, view: 'cockpit' },
+  { name: 'easy-houses-felix-169116', centre: [4.8851375, 52.3712010], standDeg: 223, standM: 13, view: 'cockpit' },
+  { name: 'easy-houses-felix-169116-b', centre: [4.8851375, 52.3712010], standDeg: 329, standM: 14, view: 'cockpit' },
+  { name: 'easy-houses-felix-168578', centre: [4.8841840, 52.3703405], standDeg: 34, standM: 27, view: 'cockpit' },
+  { name: 'easy-houses-vijzelstraat-180181', centre: [4.8925005, 52.3622780], standDeg: 198, standM: 17, view: 'cockpit' },
+  { name: 'easy-houses-vijzelstraat-180181-b', centre: [4.8925005, 52.3622780], standDeg: 167, standM: 19, view: 'cockpit' },
+  { name: 'easy-houses-vijzelstraat-167483', centre: [4.8944025, 52.3633550], standDeg: 69, standM: 12, view: 'cockpit' },
+  { name: 'easy-houses-vijzelstraat-171023', centre: [4.8955615, 52.3631980], standDeg: 313, standM: 14, view: 'cockpit' },
+  { name: 'easy-houses-vijzelstraat-171023-b', centre: [4.8955615, 52.3631980], standDeg: 71, standM: 14, view: 'cockpit' },
 ];
 // DEMO_DPR=2: desktop shots at device pixel ratio 2 (house line frames).
 if (process.env.DEMO_DPR) test.use({ deviceScaleFactor: Number(process.env.DEMO_DPR) });
@@ -170,7 +193,8 @@ async function teleport(page: Page, p: { lng: number; lat: number; bearing: numb
 }
 
 for (const spot of SPOTS) {
-  if (only && !only.includes(spot.name)) continue;
+  // A trailing * matches a prefix (DEMO_SPOTS='easy-houses-*').
+  if (only && !only.some(o => o.endsWith('*') ? spot.name.startsWith(o.slice(0, -1)) : o === spot.name)) continue;
   test(`demo shot: ${spot.name}`, async ({ page }) => {
     test.setTimeout(240_000);
     // The iphone project keeps its own viewport (phone frames); every other project shoots 1440 x 900.

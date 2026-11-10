@@ -150,12 +150,20 @@ export function addMansards(group: T.Group, intent: CanalHouseIntent, recipe: Ca
     orientedQuad(values, L(0), R(0), R(1), L(1), new T.Vector3(0, s, h)); // steep face, out and up
     orientedQuad(values, L(1), R(1), R(2), L(2), new T.Vector3(0, 1, 0)); // flat top
     orientedQuad(values, L(2), R(2), R(3), L(3), new T.Vector3(0, 0, -1)); // back
-    orientedQuad(values, L(0), L(1), L(2), L(3), new T.Vector3(-1, 0, 0)); // party ends
-    orientedQuad(values, R(0), R(1), R(2), R(3), new T.Vector3(1, 0, 0));
     const g = new T.BufferGeometry(); g.setAttribute('position', new T.Float32BufferAttribute(values, 3)); g.computeVertexNormals();
     const m = new T.Mesh(g, material(ROOF_COLOURS[intent.roof.material].steep));
     m.name = `mansard/${f.id}`; m.userData = {component: 'mansard', surface: 'roof', pandId: intent.pandId};
     facade.add(m); added++;
+    // Party ends: the firewall, in the shell's wall material (lane H7 r3, #354). In slate they lay on the shell's own party
+    // wall wherever that rises above a lower neighbour (Nassaukade 147: 1.4 m2 of coplanar slate/brick, a glb-audit failure).
+    const ends: number[] = [];
+    orientedQuad(ends, L(0), L(1), L(2), L(3), new T.Vector3(-1, 0, 0));
+    orientedQuad(ends, R(0), R(1), R(2), R(3), new T.Vector3(1, 0, 0));
+    const ge = new T.BufferGeometry(); ge.setAttribute('position', new T.Float32BufferAttribute(ends, 3)); ge.computeVertexNormals();
+    const shell = group.getObjectByName('shell/0') as T.Mesh | undefined;
+    const e = new T.Mesh(ge, (shell?.material as T.Material) ?? material(recipe.palette.value.wall));
+    e.name = `mansard/${f.id}/ends`; e.userData = {component: 'mansard', surface: 'wall', pandId: intent.pandId};
+    facade.add(e);
   }
   return added;
 }

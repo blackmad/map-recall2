@@ -1,0 +1,62 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012182857",
+ "address": "Nieuwmarkt double step gable",
+ "design": {
+  "fronts": [
+   {
+    "storeys": 3,
+    "axisGrid": 5
+   }
+  ],
+  "palette": {
+   "brick": "#ceb8ae",
+   "wallMaterial": "brick"
+  }
+ },
+ "provenance": {
+  "fronts/0/storeys": {
+   "source": "author",
+   "confidence": 0.9,
+   "ref": "scripts/house-specs/sets/easy-houses-20261110.json (review of the pand-reference crop and the cams photo)",
+   "at": "2026-11-10"
+  },
+  "fronts/0/axisGrid": {
+   "source": "reviewed",
+   "confidence": 0.9,
+   "ref": "data/house-line/hand-set-v1.json (H5h reader A, convention docs/house-line.md §4c) axes",
+   "at": "2026-11-10"
+  },
+  "palette/brick": {
+   "source": "streetlevel-measured",
+   "confidence": 0.8,
+   "ref": "panorama recording_2025-07-03_03-29-47_02926 front crop (scripts/pand-reference/run.ts), measureFacade H2c wall-vs-trim, box [0.2, 11.88, 0, 13.6]",
+   "at": "2025-07-03"
+  },
+  "palette/wallMaterial": {
+   "source": "author",
+   "confidence": 0.9,
+   "ref": "scripts/house-specs/sets/easy-houses-20261110.json (review of the pand-reference crop and the cams photo)",
+   "at": "2026-11-10"
+  },
+  "facts/wallFamily": {
+   "source": "reviewed",
+   "confidence": 0.75,
+   "ref": "data/house-line/hand-set-v1.json on lane/house-h5h-handset-20261110 at 1ade25980 (reader A, convention docs/house-line.md §4c) wall",
+   "at": "2026-11-10"
+  }
+ },
+ "schemaLimits": [
+  {
+   "component": "gable",
+   "what": "two step gables side by side over one 12 m front (a double house); the generic roof draws one crown across the whole front"
+  },
+  {
+   "component": "palette",
+   "what": "white speklagen (stone bands) and white voussoirs over every window on pale brick"
+  }
+ ],
+ "facts": {
+  "wallFamily": "red"
+ }
+}
