@@ -1,0 +1,142 @@
+{
+ "face": "kloveniersburgwal-90-102",
+ "image": "staging/block-face/kloveniersburgwal-90-102/strip.jpg",
+ "pixelsPerMetre": 40,
+ "width": 755,
+ "height": 887,
+ "groundNAP": 0.717,
+ "heightM": 22.18,
+ "frame": {
+  "midRD": [
+   121554.89850000001,
+   486872.29000000004
+  ],
+  "uRD": [
+   0.5137271351319209,
+   0.8579536296497318
+  ],
+  "nRD": [
+   0.8579536296497318,
+   -0.5137271351319209
+  ]
+ },
+ "x0M": -9.34,
+ "x1M": 9.54,
+ "date": "2023-03-27",
+ "coverage": 1,
+ "spans": [
+  {
+   "pandId": "0363100012171156",
+   "x0M": -9.34,
+   "x1M": -0.09,
+   "px": [
+    0,
+    370
+   ],
+   "date": "2023-03-27",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "TMX7316010203-003009_pano_0001_000036",
+     "timestamp": "2023-03-27T06:43:32.864280Z",
+     "distanceM": 5.6,
+     "obliquityDeg": 1.3,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-003009_pano_0001_000037",
+     "timestamp": "2023-03-27T06:43:33.659320Z",
+     "distanceM": 7.1,
+     "obliquityDeg": 38,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-003009_pano_0001_000035",
+     "timestamp": "2023-03-27T06:43:32.169320Z",
+     "distanceM": 7.3,
+     "obliquityDeg": 39.6,
+     "missingFraction": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012171162",
+   "x0M": -0.09,
+   "x1M": 9.54,
+   "px": [
+    370,
+    755
+   ],
+   "date": "2023-03-27",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "TMX7316010203-003009_pano_0001_000034",
+     "timestamp": "2023-03-27T06:43:31.544300Z",
+     "distanceM": 5.7,
+     "obliquityDeg": 2,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-003009_pano_0001_000033",
+     "timestamp": "2023-03-27T06:43:30.944310Z",
+     "distanceM": 7.2,
+     "obliquityDeg": 37,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-003009_pano_0001_000035",
+     "timestamp": "2023-03-27T06:43:32.169320Z",
+     "distanceM": 7.4,
+     "obliquityDeg": 39.9,
+     "missingFraction": 0
+    }
+   ]
+  }
+ ],
+ "candidatesByDate": {
+  "2016-06-09": 1,
+  "2019-01-14": 6,
+  "2021-09-15": 4,
+  "2019-05-16": 4,
+  "2018-05-14": 3,
+  "2025-07-03": 4,
+  "2023-02-20": 5,
+  "2023-03-20": 4,
+  "2023-02-13": 4,
+  "2023-01-11": 5,
+  "2023-02-27": 6,
+  "2025-01-08": 5,
+  "2023-03-13": 4,
+  "2021-03-08": 6,
+  "2018-05-07": 4,
+  "2021-12-27": 6,
+  "2017-03-27": 4,
+  "2023-03-27": 6,
+  "2016-08-17": 6,
+  "2019-05-10": 6,
+  "2022-06-27": 6,
+  "2023-03-06": 6,
+  "2020-01-30": 6,
+  "2023-01-13": 6,
+  "2020-04-21": 6,
+  "2020-01-10": 6,
+  "2023-02-06": 6,
+  "2021-01-22": 6,
+  "2017-07-06": 6,
+  "2017-03-23": 1,
+  "2018-05-08": 0,
+  "2017-03-29": 0,
+  "2022-04-26": 1,
+  "2021-12-30": 0
+ },
+ "description": "Rectified orthographic elevation of the whole face on the frontage planes: x = chunk-frame metres along the face (left→right seen from the street) from x0M, y = metres above the shared ground (groundNAP) from the bottom; grey = no panorama data. Per-pand spans list the panoramas median-fused for that frontage.",
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (CC BY 4.0; faces and number plates blurred by the publisher)",
+ "croppedFrom": {
+  "face": "kloveniersburgwal-80-158",
+  "px": [
+   1018,
+   1773
+  ]
+ }
+}

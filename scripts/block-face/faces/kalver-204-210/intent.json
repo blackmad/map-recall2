@@ -1,0 +1,434 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "kalver-204-210",
+ "street": "Kalverstraat",
+ "sources": [
+  {
+   "id": "strip-2021-03-11",
+   "kind": "street-panorama",
+   "capturedAt": "2021-03-11",
+   "image": "staging/block-face/kalver-204-210/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "claude-opus-5.5 (belt-burgwallen lane), per-house historic designs read off the strip with a metre grid",
+  "passes": 1,
+  "note": "Kalverstraat 210-204 (even side, south end): four 18th-c. gable houses over shop storeys (Rijksmonumenten 2183-2186): a white-plastered neck gable (210), two brick neck/bell gables with carved claw pieces (208, 206) and a black-painted neck gable (204). Wide cross windows fill the upper storeys of 208-204."
+ },
+ "houses": [
+  {
+   "pandId": "0363100012167996",
+   "slug": "kalver-167996",
+   "address": "Kalverstraat 210",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Kalverstraat",
+      "basement": "none",
+      "hoist": false,
+      "doorBay": null,
+      "cornice": "none",
+      "storeys": 4,
+      "gable": "neck",
+      "crownCap": "rounded",
+      "crownRise": 1.22,
+      "crownNeckWidth": 0.45,
+      "bays": 3,
+      "windows": "sash",
+      "windowShare": 0.42,
+      "atticWindows": 0,
+      "storeyHeights": [
+       5.2,
+       2.7,
+       2.7,
+       2.8
+      ],
+      "windowHeights": [
+       0.6,
+       0.74,
+       0.67,
+       0.46
+      ],
+      "headLines": [
+       0.8,
+       0.78,
+       0.78,
+       0.82
+      ],
+      "shopfront": {
+       "colour": "#2b2b2d",
+       "fascia": true,
+       "stallriser": "low",
+       "displayWindows": 2,
+       "entrance": "centre",
+       "sign": {
+        "text": "HEMA",
+        "textColour": "#ffffff",
+        "background": "#d2232a",
+        "mount": "fascia",
+        "span": 0.45,
+        "align": "left"
+       },
+       "evidence": "strip 2021-03-11 pand 1: dark shop storey with the red HEMA sign"
+      }
+     }
+    ],
+    "roof": {
+     "material": "black-tile",
+     "squareSaddle": true
+    },
+    "palette": {
+     "brick": "#b3b0a8",
+     "wallMaterial": "stucco",
+     "frame": "white-painted",
+     "door": "black",
+     "stone": "#e8e6e0"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "name": "HEMA",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "photoDate": "2021-03-11",
+    "agreement": "photo-only"
+   },
+   "rhythm": {
+    "bays": "3 axes, narrow windows",
+    "windowsPerStorey": "ground: shop | 1: 3 | 2: 3 | 3: 3",
+    "symmetry": "symmetric",
+    "groundFloor": "HEMA shop front",
+    "signage": "HEMA (white on red)",
+    "roofline": "white plastered neck gable, foot 13.4 m, rounded cap at 16.7 m, small claw pieces",
+    "citation": "strip.jpg pand 1 (2021-03-11)",
+    "photoRows": [
+     1,
+     3,
+     3,
+     3
+    ],
+    "photoGables": 1,
+    "schemaLimits": [
+     "the plaster front is a later remodelling: the neck gable is drawn in the plaster colour without its mouldings"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012168000",
+   "slug": "kalver-168000",
+   "address": "Kalverstraat 208",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Kalverstraat",
+      "basement": "none",
+      "hoist": false,
+      "doorBay": null,
+      "cornice": "none",
+      "storeys": 4,
+      "gable": "neck",
+      "crownCap": "pediment",
+      "crownRise": 1.0,
+      "bays": 3,
+      "windows": "casement-toplight",
+      "windowShare": 0.8,
+      "atticWindows": 1,
+      "gableOrnament": {
+       "wings": "volutes"
+      },
+      "storeyHeights": [
+       5.0,
+       2.8,
+       2.8,
+       2.6
+      ],
+      "windowHeights": [
+       0.6,
+       0.66,
+       0.7,
+       0.6
+      ],
+      "headLines": [
+       0.8,
+       0.72,
+       0.76,
+       0.7
+      ],
+      "shopfront": {
+       "colour": "#3e4044",
+       "fascia": true,
+       "stallriser": "low",
+       "displayWindows": 3,
+       "entrance": "centre",
+       "sign": {
+        "text": "CRUYFF",
+        "textColour": "#9c9ea2",
+        "mount": "fascia",
+        "span": 0.7
+       },
+       "evidence": "strip 2021-03-11 pand 2: grey fascia with CRUYFF letters, white-framed glazed front"
+      }
+     }
+    ],
+    "roof": {
+     "material": "black-tile"
+    },
+    "palette": {
+     "brick": "#7a5e52",
+     "frame": "white-painted",
+     "door": "black",
+     "stone": "#e8e5dc"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "name": "Cruyff",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "photoDate": "2021-03-11",
+    "agreement": "photo-only"
+   },
+   "rhythm": {
+    "bays": "3 wide window axes filling the front",
+    "windowsPerStorey": "ground: shop | 1: 3 | 2: 3 | 3: 3 | gable: 1",
+    "symmetry": "symmetric",
+    "groundFloor": "Cruyff shop",
+    "signage": "CRUYFF (grey on grey)",
+    "roofline": "neck gable with white claw pieces, foot 13.2 m, crest at 15.9 m",
+    "citation": "strip.jpg pand 2 (2021-03-11)",
+    "photoRows": [
+     1,
+     3,
+     3,
+     3,
+     1
+    ],
+    "photoGables": 1
+   }
+  },
+  {
+   "pandId": "0363100012175223",
+   "slug": "kalver-175223",
+   "address": "Kalverstraat 206",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Kalverstraat",
+      "basement": "none",
+      "hoist": false,
+      "doorBay": null,
+      "cornice": "none",
+      "storeys": 4,
+      "gable": "bell",
+      "crownRise": 1.5,
+      "bays": 3,
+      "windows": "casement-toplight",
+      "windowShare": 0.8,
+      "atticWindows": 1,
+      "gableOrnament": {
+       "wings": "volutes"
+      },
+      "storeyHeights": [
+       4.9,
+       2.9,
+       2.8,
+       2.5
+      ],
+      "windowHeights": [
+       0.6,
+       0.6,
+       0.55,
+       0.55
+      ],
+      "headLines": [
+       0.8,
+       0.66,
+       0.6,
+       0.62
+      ],
+      "shopfront": {
+       "colour": "#2a2c2b",
+       "fascia": true,
+       "stallriser": "low",
+       "displayWindows": 1,
+       "entrance": "right",
+       "evidence": "strip 2021-03-11 pand 3: dark shop front, a green illuminated sign"
+      }
+     }
+    ],
+    "roof": {
+     "material": "black-tile"
+    },
+    "palette": {
+     "brick": "#6a5047",
+     "frame": "white-painted",
+     "door": "black",
+     "stone": "#e8e5dc"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "name": "Pearle",
+    "category": "shop=optician",
+    "osm": {
+     "type": "node",
+     "id": 1427121394,
+     "name": "Pearle",
+     "tags": "shop=optician"
+    },
+    "bag": [
+     "winkelfunctie,woonfunctie"
+    ],
+    "photoDate": "2021-03-11",
+    "agreement": "osm-and-photo"
+   },
+   "rhythm": {
+    "bays": "3 window axes filling the front",
+    "windowsPerStorey": "ground: shop | 1: 3 | 2: 3 | 3: 3 | gable: 1 (two lights)",
+    "symmetry": "symmetric",
+    "groundFloor": "shop front",
+    "signage": "green round sign, not legible",
+    "roofline": "bell gable with volute claw pieces, foot 13.3 m, top above the strip (over 17.5 m)",
+    "citation": "strip.jpg pand 3 (2021-03-11)",
+    "photoRows": [
+     1,
+     3,
+     3,
+     3,
+     1
+    ],
+    "photoGables": 1
+   }
+  },
+  {
+   "pandId": "0363100012175224",
+   "slug": "kalver-175224",
+   "address": "Kalverstraat 204",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Kalverstraat",
+      "basement": "none",
+      "hoist": false,
+      "doorBay": null,
+      "cornice": "none",
+      "storeys": 4,
+      "gable": "neck",
+      "crownCap": "rounded",
+      "crownRise": 1.25,
+      "bays": 3,
+      "windows": "casement-toplight",
+      "windowShare": 0.8,
+      "atticWindows": 1,
+      "gableOrnament": {
+       "wings": "volutes"
+      },
+      "storeyHeights": [
+       5.2,
+       2.4,
+       2.9,
+       3.5
+      ],
+      "windowHeights": [
+       0.6,
+       0.8,
+       0.52,
+       0.4
+      ],
+      "headLines": [
+       0.8,
+       0.86,
+       0.86,
+       0.6
+      ],
+      "shopfront": {
+       "colour": "black",
+       "fascia": true,
+       "stallriser": "low",
+       "displayWindows": 1,
+       "entrance": "centre-recessed",
+       "sign": {
+        "text": "DOGO",
+        "textColour": "#f2f2f2",
+        "mount": "fascia",
+        "span": 0.6
+       },
+       "evidence": "strip 2021-03-11 pand 4: black shop front, white DOGO letters"
+      }
+     }
+    ],
+    "roof": {
+     "material": "black-tile"
+    },
+    "palette": {
+     "brick": "#55535a",
+     "wallMaterial": "painted-brick",
+     "frame": "white-painted",
+     "door": "black",
+     "stone": "#e8e5dc"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "name": "Dogo",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "photoDate": "2021-03-11",
+    "agreement": "photo-only"
+   },
+   "rhythm": {
+    "bays": "3 window axes filling the front",
+    "windowsPerStorey": "ground: shop | 1: 3 | 2: 3 | 3: 3",
+    "symmetry": "symmetric",
+    "groundFloor": "Dogo shoe shop",
+    "signage": "DOGO (white on black)",
+    "roofline": "black-painted neck gable over a ledge at 14.0 m with white volute claw pieces (Rijksmonument 2183: vleugelstukken)",
+    "citation": "strip.jpg pand 4 (2021-03-11)",
+    "photoRows": [
+     1,
+     3,
+     3,
+     3
+    ],
+    "photoGables": 1
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "measuredEaves": [
+   {
+    "pand": "0363100012167996",
+    "stripRow": 177,
+    "evidence": "gable foot of the plastered neck gable (grid crop k204, 13.4 m)"
+   },
+   {
+    "pand": "0363100012168000",
+    "stripRow": 185,
+    "evidence": "gable foot under the claw pieces (13.2 m)"
+   },
+   {
+    "pand": "0363100012175223",
+    "stripRow": 181,
+    "evidence": "gable foot under the volutes (13.3 m)"
+   },
+   {
+    "pand": "0363100012175224",
+    "stripRow": 153,
+    "evidence": "top of the ledge under the neck (14.0 m)"
+   }
+  ]
+ }
+}

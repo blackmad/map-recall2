@@ -1,0 +1,169 @@
+{
+ "street": "Kalverstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T08:36:56.706Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012167996",
+   "addresses": [
+    "Kalverstraat 210"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kalverstraat 210",
+     "use": "winkelfunctie",
+     "areaM2": 289,
+     "bagId": "0363010001016347"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 10121263868,
+     "lngLat": [
+      4.8920923,
+      52.3676056
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "210",
+      "addr:postcode": "1012XH",
+      "addr:street": "Kalverstraat",
+      "brand": "De Pindakaaswinkel",
+      "brand:website": "https://depindakaaswinkel.nl/",
+      "brand:wikidata": "Q122975987",
+      "name": "De Pindakaaswinkel",
+      "opening_hours": "Mo-We,Fr-Su 11:00-20:00; Th 11:00-21:00",
+      "shop": "peanut_butter",
+      "source": "BAG",
+      "source:date": "2022-10-22",
+      "website": "https://depindakaaswinkel.nl/verkooplocaties/amsterdam-2/"
+     },
+     "fetchedAt": "2026-11-10T08:36:56.706Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012168000",
+   "addresses": [
+    "Kalverstraat 208"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kalverstraat 208",
+     "use": "winkelfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000696890"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2724038779,
+     "lngLat": [
+      4.8920331,
+      52.3676413
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "208",
+      "addr:postcode": "1012XH",
+      "addr:street": "Kalverstraat",
+      "shop": "video_games"
+     },
+     "fetchedAt": "2026-11-10T08:36:56.706Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012175223",
+   "addresses": [
+    "Kalverstraat 206"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kalverstraat 206",
+     "use": "winkelfunctie,woonfunctie",
+     "areaM2": 170,
+     "bagId": "0363010000696886"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 1427121394,
+     "lngLat": [
+      4.8919888,
+      52.3676681
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "206",
+      "addr:postcode": "1012XH",
+      "addr:street": "Kalverstraat",
+      "brand": "Pearle",
+      "brand:wikidata": "Q2231148",
+      "brand:wikipedia": "nl:Pearle",
+      "name": "Pearle",
+      "opening_hours": "Mo 11:00-18:00; Tu-We 09:30-18:00; Th-Fr 09:30-17:00",
+      "phone": "+31 20 528 5252",
+      "shop": "optician",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "website": "https://www.pearle.nl/opticien/amsterdam/kalverstraat-206"
+     },
+     "fetchedAt": "2026-11-10T08:36:56.706Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012175224",
+   "addresses": [
+    "Kalverstraat 204"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kalverstraat 204",
+     "use": "winkelfunctie",
+     "areaM2": 160,
+     "bagId": "0363010000965590"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2724038778,
+     "lngLat": [
+      4.891959,
+      52.3677039
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "204",
+      "addr:postcode": "1012XH",
+      "addr:street": "Kalverstraat",
+      "check_date": "2025-02-19",
+      "name": "Gusti Leder",
+      "shop": "bag",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-11-10T08:36:56.706Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

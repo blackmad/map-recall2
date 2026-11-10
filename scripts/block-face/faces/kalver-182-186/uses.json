@@ -1,0 +1,143 @@
+{
+ "street": "Kalverstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T08:28:24.984Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012176134",
+   "addresses": [
+    "Kalverstraat 186"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kalverstraat 186",
+     "use": "winkelfunctie",
+     "areaM2": 190,
+     "bagId": "0363010000696872"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2724038744,
+     "lngLat": [
+      4.8915149,
+      52.3680256
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "186",
+      "addr:postcode": "1012XG",
+      "addr:street": "Kalverstraat",
+      "check_date": "2023-04-14",
+      "name": "Sidestep",
+      "shop": "shoes",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-11-10T08:28:24.984Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 14196050601,
+     "lngLat": [
+      4.8915403,
+      52.3680145
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "186-188",
+      "addr:postcode": "1012XG",
+      "addr:street": "Kalverstraat",
+      "contact:facebook": "popmartonlinestores",
+      "contact:instagram": "popmartnl",
+      "email": "eu.support@popmart.com",
+      "name": "Pop Mart",
+      "opening_hours": "Mo-Sa 11:00-20:00; Su 11:00-18:00",
+      "shop": "collector",
+      "website": "https://www.popmart.com"
+     },
+     "fetchedAt": "2026-11-10T08:28:24.984Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012176136",
+   "addresses": [
+    "Kalverstraat 184"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kalverstraat 184",
+     "use": "winkelfunctie",
+     "areaM2": 164,
+     "bagId": "0363010000696871"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 10068327295,
+     "lngLat": [
+      4.8914997,
+      52.3680666
+     ],
+     "tags": {
+      "name": "Pearlzz",
+      "shop": "clothes"
+     },
+     "fetchedAt": "2026-11-10T08:28:24.984Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012176135",
+   "addresses": [
+    "Kalverstraat 182"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kalverstraat 182",
+     "use": "winkelfunctie",
+     "areaM2": 403,
+     "bagId": "0363010000696869"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2724038724,
+     "lngLat": [
+      4.8914554,
+      52.3680972
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "182",
+      "addr:postcode": "1012XG",
+      "addr:street": "Kalverstraat",
+      "name": "The Amazon",
+      "shop": "clothes",
+      "source": "BAG",
+      "source:date": "2014-02-11"
+     },
+     "fetchedAt": "2026-11-10T08:28:24.984Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,254 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "kloveniersburgwal-90-102",
+ "street": "Kloveniersburgwal",
+ "sources": [
+  {
+   "id": "strip-2023-03-27",
+   "kind": "street-panorama",
+   "capturedAt": "2023-03-27",
+   "image": "staging/block-face/kloveniersburgwal-90-102/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "claude-opus-5.5 (belt-burgwallen lane), per-house historic designs read off the strip with a metre grid",
+  "passes": 1,
+  "note": "Kloveniersburgwal 100-102 and 90-92 (even, canal side): two late-19th-c. neo-Renaissance fronts of red brick with white speklagen, segmental relieving arches over every window and a bracketed cornice; a stepped wall gable over the middle of 100-102, two white dormers on 90-92. Run cut out of kloveniersburgwal-80-158 (the wide buildings either side are large-tier)."
+ },
+ "houses": [
+  {
+   "pandId": "0363100012171156",
+   "slug": "kbw-171156",
+   "address": "Kloveniersburgwal 100",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Kloveniersburgwal",
+      "basement": "none",
+      "hoist": false,
+      "windows": "casement-toplight",
+      "bays": 4,
+      "bands": "speklagen",
+      "speklagen": {
+       "spacing": 16,
+       "courses": 2
+      },
+      "windowHead": {
+       "kind": "relieving",
+       "storeys": [
+        0,
+        1,
+        2
+       ],
+       "archRing": {
+        "colour": "stone",
+        "style": "blocks",
+        "keystone": true,
+        "springGap": 0.25
+       }
+      },
+      "windowShare": 0.56,
+      "gable": "step",
+      "crownBays": {
+       "from": 1,
+       "to": 2
+      },
+      "crownRise": 1.15,
+      "crownSteps": 3,
+      "cornice": "bracketed",
+      "entablature": {
+       "rise": 1.6,
+       "cap": 0.35,
+       "frieze": "wall",
+       "consoles": 5,
+       "architrave": 0.12
+      },
+      "storeys": 3,
+      "doorBay": 1,
+      "storeyHeights": [
+       4.0,
+       3.4,
+       4.64
+      ],
+      "windowHeights": [
+       0.75,
+       0.76,
+       0.41
+      ],
+      "headLines": [
+       0.8,
+       0.82,
+       0.52
+      ]
+     }
+    ],
+    "roof": {
+     "material": "slate"
+    },
+    "palette": {
+     "brick": "#9c6a52",
+     "frame": "white-painted",
+     "door": "#26302a",
+     "stone": "#e6dcc6",
+     "cornice": "#e6dcc6"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2023-03-27",
+    "agreement": "bag-only"
+   },
+   "rhythm": {
+    "bays": "4 equal axes",
+    "windowsPerStorey": "ground: door (axis 1) + 3 windows | 1: 4 | 2: 4",
+    "symmetry": "symmetric above the ground",
+    "groundFloor": "house door under a top light, three tall windows",
+    "signage": "none",
+    "roofline": "bracketed white cornice at 12.0 m over a frieze 10.4-11.8 m; a stepped brick wall gable over axes 1-2, apex 15.6 m",
+    "citation": "strip.jpg pand 1 (2023-03-27)",
+    "photoRows": [
+     4,
+     4,
+     4
+    ],
+    "photoGables": 1,
+    "schemaLimits": [
+     "the wall gable stands behind the cornice in the photo, with white stone steps and finials; drawn as a step crown over axes 1-2",
+     "frieze consoles and lion masks over the windows not modelled"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012171162",
+   "slug": "kbw-171162",
+   "address": "Kloveniersburgwal 90",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Kloveniersburgwal",
+      "basement": "none",
+      "hoist": false,
+      "windows": "casement-toplight",
+      "bays": 4,
+      "bands": "speklagen",
+      "speklagen": {
+       "spacing": 16,
+       "courses": 2
+      },
+      "windowShare": 0.56,
+      "gable": "cornice",
+      "cornice": "bracketed",
+      "entablature": {
+       "rise": 1.1,
+       "cap": 0.3,
+       "frieze": "wall",
+       "consoles": 5,
+       "architrave": 0.1
+      },
+      "storeys": 2,
+      "doorBay": 2,
+      "windowHead": {
+       "kind": "relieving",
+       "storeys": [
+        0,
+        1
+       ],
+       "archRing": {
+        "colour": "stone",
+        "style": "blocks",
+        "keystone": true,
+        "springGap": 0.25
+       }
+      },
+      "dormers": 2,
+      "dormerStyle": "plain",
+      "dormerBody": "stone",
+      "dormerAt": [
+       {
+        "from": 0.12,
+        "to": 0.43
+       },
+       {
+        "from": 0.64,
+        "to": 0.85
+       }
+      ],
+      "storeyHeights": [
+       3.9,
+       4.57
+      ],
+      "windowHeights": [
+       0.72,
+       0.48
+      ],
+      "headLines": [
+       0.8,
+       0.55
+      ]
+     }
+    ],
+    "roof": {
+     "material": "slate"
+    },
+    "palette": {
+     "brick": "#9c6a52",
+     "frame": "white-painted",
+     "door": "#26302a",
+     "stone": "#e6dcc6",
+     "cornice": "#e6dcc6"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2023-03-27",
+    "agreement": "bag-only"
+   },
+   "rhythm": {
+    "bays": "4 equal axes",
+    "windowsPerStorey": "ground: 3 windows + arched door (axis 2) | 1: 4 | roof: 2 white dormers",
+    "symmetry": "symmetric above the ground",
+    "groundFloor": "house door with a round top light on axis 2",
+    "signage": "none",
+    "roofline": "bracketed cream cornice at 8.5 m; two white dormers (left wide, right narrow) to 11.4 m",
+    "citation": "strip.jpg pand 2 (2023-03-27)",
+    "photoRows": [
+     4,
+     4,
+     2
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "the left dormer has a cornice cap and two lights; drawn as a plain white dormer"
+    ]
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "measuredEaves": [
+   {
+    "pand": "0363100012171156",
+    "stripRow": 405,
+    "evidence": "top of the bracketed cornice, grid crop k100"
+   },
+   {
+    "pand": "0363100012171162",
+    "stripRow": 548,
+    "evidence": "top of the cream cornice, grid crop k100"
+   }
+  ]
+ }
+}

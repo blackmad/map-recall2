@@ -1,0 +1,364 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "kalver-182-186",
+ "street": "Kalverstraat",
+ "sources": [
+  {
+   "id": "strip-2021-12-29",
+   "kind": "street-panorama",
+   "capturedAt": "2021-12-29",
+   "image": "staging/block-face/kalver-182-186/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "claude-opus-5.5 (belt-burgwallen lane), per-house historic designs read off the strip with a metre grid",
+  "passes": 1,
+  "note": "Kalverstraat 186, 184 and 182 (even side): two early-18th-c. cornice fronts painted black over a shop storey (Rijksmonument 2177-2179, XVIII A, lijstgevel) and a late-19th-c. Dutch-Renaissance revival front with white speklagen and a stepped gable. Kalverstraat 180 and 178 (a stone shop front and a 1920s store) are held: no kit for them yet."
+ },
+ "houses": [
+  {
+   "pandId": "0363100012176134",
+   "slug": "kalver-176134",
+   "address": "Kalverstraat 186",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Kalverstraat",
+      "gable": "cornice",
+      "cornice": "heavy",
+      "storeys": 4,
+      "bays": 3,
+      "doorBay": null,
+      "basement": "none",
+      "hoist": false,
+      "windows": "sash",
+      "windowSurround": "sill",
+      "windowShare": 0.52,
+      "storeyHeights": [
+       5.0,
+       3.0,
+       3.0,
+       2.8
+      ],
+      "windowHeights": [
+       0.6,
+       0.73,
+       0.57,
+       0.57
+      ],
+      "headLines": [
+       0.8,
+       0.8,
+       0.63,
+       0.68
+      ],
+      "shopfront": {
+       "colour": "black",
+       "fascia": true,
+       "stallriser": "low",
+       "displayWindows": 2,
+       "entrance": "centre",
+       "sign": {
+        "text": "SIDESTEP",
+        "textColour": "#f2f2ee",
+        "mount": "fascia",
+        "span": 0.55,
+        "align": "left"
+       },
+       "evidence": "strip 2021-12-29 pand 1: black fascia 3.9-4.6 m with white SIDESTEP letters, three display windows"
+      }
+     }
+    ],
+    "roof": {
+     "material": "black-tile"
+    },
+    "palette": {
+     "brick": "#2f3034",
+     "wallMaterial": "painted-brick",
+     "frame": "white-painted",
+     "door": "black",
+     "stone": "#e9e7df",
+     "cornice": "#cfccc2"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "name": "Sidestep",
+    "category": "shop=shoes",
+    "osm": {
+     "type": "node",
+     "id": 2724038744,
+     "name": "Sidestep",
+     "tags": "shop=shoes"
+    },
+    "bag": [
+     "winkelfunctie"
+    ],
+    "photoDate": "2021-12-29",
+    "agreement": "osm-and-photo"
+   },
+   "rhythm": {
+    "bays": "3 equal axes",
+    "windowsPerStorey": "ground: shop | 1: 3 | 2: 3 | 3: 3",
+    "symmetry": "symmetric above the shop",
+    "groundFloor": "glazed shop front under a black fascia",
+    "signage": "SIDESTEP (white letters)",
+    "roofline": "heavy bracketed cornice at 14.4 m (the strip sees its soffit from below, 14-17 m smeared)",
+    "citation": "strip.jpg pand 1 (2021-12-29)",
+    "photoRows": [
+     3,
+     3,
+     3,
+     3
+    ],
+    "schemaLimits": [
+     "window bars: the photo shows two-pane sashes; the cornice soffit and its brackets are seen from 3 m below and smeared in the strip"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012176136",
+   "slug": "kalver-176136",
+   "address": "Kalverstraat 184",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Kalverstraat",
+      "gable": "cornice",
+      "cornice": "heavy",
+      "storeys": 4,
+      "bays": 2,
+      "doorBay": null,
+      "basement": "none",
+      "hoist": false,
+      "windows": "casement-toplight",
+      "windowSurround": "sill",
+      "windowShare": 0.8,
+      "storeyHeights": [
+       5.0,
+       3.0,
+       3.0,
+       2.8
+      ],
+      "windowHeights": [
+       0.6,
+       0.76,
+       0.53,
+       0.5
+      ],
+      "headLines": [
+       0.8,
+       0.82,
+       0.67,
+       0.64
+      ],
+      "shopfront": {
+       "colour": "black",
+       "fascia": true,
+       "stallriser": "low",
+       "displayWindows": 1,
+       "entrance": "right",
+       "sign": {
+        "text": "MY BRAND",
+        "textColour": "#9a9a96",
+        "mount": "fascia",
+        "span": 0.7
+       },
+       "evidence": "strip 2021-12-29 pand 2: black fascia with grey MYBRAND letters, a dark glazed front"
+      }
+     }
+    ],
+    "roof": {
+     "material": "black-tile"
+    },
+    "palette": {
+     "brick": "#35302d",
+     "wallMaterial": "painted-brick",
+     "frame": "white-painted",
+     "door": "black",
+     "stone": "#e9e7df",
+     "cornice": "#cfccc2"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "name": "My Brand",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "photoDate": "2021-12-29",
+    "agreement": "photo-only"
+   },
+   "rhythm": {
+    "bays": "2 axes, the right one wider",
+    "windowsPerStorey": "ground: shop | 1: 2 tall | 2: 2 | 3: 2",
+    "symmetry": "none",
+    "groundFloor": "dark shop front under a black fascia",
+    "signage": "MY BRAND (grey on black)",
+    "roofline": "white cornice at 14.1 m",
+    "citation": "strip.jpg pand 2 (2021-12-29)",
+    "photoRows": [
+     1,
+     2,
+     2,
+     2
+    ],
+    "schemaLimits": [
+     "the axes are 1.3 and 1.7 m wide; drawn as two equal axes"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012176135",
+   "slug": "kalver-176135",
+   "address": "Kalverstraat 182",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Kalverstraat",
+      "gable": "step",
+      "crownRise": 1.45,
+      "crownSteps": 3,
+      "cornice": "none",
+      "storeys": 4,
+      "bays": 2,
+      "doorBay": null,
+      "basement": "none",
+      "hoist": false,
+      "windows": "casement-toplight",
+      "windowShare": 0.72,
+      "bands": "speklagen",
+      "speklagen": {
+       "spacing": 8,
+       "courses": 2
+      },
+      "windowHead": {
+       "kind": "relieving",
+       "storeys": [
+        1,
+        2,
+        3
+       ],
+       "archRing": {
+        "colour": "stone",
+        "style": "blocks",
+        "keystone": true,
+        "springGap": 0.2
+       }
+      },
+      "balconies": {
+       "storeys": [
+        2
+       ],
+       "bays": [
+        0,
+        1
+       ]
+      },
+      "storeyHeights": [
+       5.0,
+       3.0,
+       3.0,
+       2.8
+      ],
+      "windowHeights": [
+       0.6,
+       0.76,
+       0.63,
+       0.55
+      ],
+      "headLines": [
+       0.8,
+       0.82,
+       0.77,
+       0.82
+      ],
+      "shopfront": {
+       "colour": "#3c4a5a",
+       "fascia": true,
+       "stallriser": "low",
+       "displayWindows": 1,
+       "entrance": "none",
+       "evidence": "strip 2021-12-29 pand 3: blue-grey hoarding fascia (\"coming soon\") over a papered shop front"
+      }
+     }
+    ],
+    "roof": {
+     "material": "black-tile"
+    },
+    "palette": {
+     "brick": "#3a302c",
+     "frame": "white-painted",
+     "door": "black",
+     "stone": "#ebe9e1",
+     "band": "#ebe9e1",
+     "cornice": "#ebe9e1"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "name": "The Amazon",
+    "category": "shop=clothes",
+    "osm": {
+     "type": "node",
+     "id": 2724038724,
+     "name": "The Amazon",
+     "tags": "shop=clothes"
+    },
+    "bag": [
+     "winkelfunctie"
+    ],
+    "photoDate": "2021-12-29",
+    "agreement": "osm-and-photo"
+   },
+   "rhythm": {
+    "bays": "2 axes of paired lights",
+    "windowsPerStorey": "ground: shop | 1: 2 | 2: 2 behind an iron rail | 3: 2",
+    "symmetry": "symmetric",
+    "groundFloor": "shop front behind a hoarding",
+    "signage": "none legible",
+    "roofline": "stepped gable from 13.8 m to 18.2 m with white stone blocks",
+    "citation": "strip.jpg pand 3 (2021-12-29)",
+    "photoRows": [
+     1,
+     2,
+     2,
+     2
+    ],
+    "photoGables": 1,
+    "schemaLimits": [
+     "white blocked relieving arches with diamond keystones and a strapwork top: drawn as block arch rings and plain speklagen",
+     "the gable steps carry white stone volutes and an obelisk finial"
+    ]
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "measuredEaves": [
+   {
+    "pand": "0363100012176134",
+    "stripRow": 166,
+    "evidence": "top of the heavy cornice over the black front (grid crop k186, 14.4 m)"
+   },
+   {
+    "pand": "0363100012176136",
+    "stripRow": 178,
+    "evidence": "top of the white cornice (grid crop k186, 14.1 m)"
+   },
+   {
+    "pand": "0363100012176135",
+    "stripRow": 190,
+    "evidence": "gable foot over the third-storey arches (grid crop k186, 13.8 m)"
+   }
+  ]
+ }
+}

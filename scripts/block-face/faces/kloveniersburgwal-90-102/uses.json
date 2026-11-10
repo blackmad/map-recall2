@@ -1,0 +1,111 @@
+{
+ "street": "Kloveniersburgwal",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T08:14:29.044Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012171156",
+   "addresses": [
+    "Kloveniersburgwal 100",
+    "Kloveniersburgwal 102",
+    "Kloveniersburgwal 104",
+    "Kloveniersburgwal 106",
+    "Kloveniersburgwal 108",
+    "Kloveniersburgwal 110",
+    "Kloveniersburgwal 112"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kloveniersburgwal 112",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000708335"
+    },
+    {
+     "address": "Kloveniersburgwal 100",
+     "use": "woonfunctie",
+     "areaM2": 102,
+     "bagId": "0363010011915013"
+    },
+    {
+     "address": "Kloveniersburgwal 102",
+     "use": "woonfunctie",
+     "areaM2": 103,
+     "bagId": "0363010011915014"
+    },
+    {
+     "address": "Kloveniersburgwal 104",
+     "use": "woonfunctie",
+     "areaM2": 102,
+     "bagId": "0363010011915015"
+    },
+    {
+     "address": "Kloveniersburgwal 106",
+     "use": "woonfunctie",
+     "areaM2": 1,
+     "bagId": "0363010011915016"
+    },
+    {
+     "address": "Kloveniersburgwal 108",
+     "use": "woonfunctie",
+     "areaM2": 102,
+     "bagId": "0363010011915017"
+    },
+    {
+     "address": "Kloveniersburgwal 110",
+     "use": "woonfunctie",
+     "areaM2": 1,
+     "bagId": "0363010011915018"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012171162",
+   "addresses": [
+    "Kloveniersburgwal 90",
+    "Kloveniersburgwal 92",
+    "Kloveniersburgwal 94",
+    "Kloveniersburgwal 96",
+    "Kloveniersburgwal 98"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kloveniersburgwal 92",
+     "use": "woonfunctie",
+     "areaM2": 89,
+     "bagId": "0363010000708301"
+    },
+    {
+     "address": "Kloveniersburgwal 96",
+     "use": "woonfunctie",
+     "areaM2": 84,
+     "bagId": "0363010011915011"
+    },
+    {
+     "address": "Kloveniersburgwal 98",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010011915012"
+    },
+    {
+     "address": "Kloveniersburgwal 94",
+     "use": "woonfunctie",
+     "areaM2": 91,
+     "bagId": "0363010011873168"
+    },
+    {
+     "address": "Kloveniersburgwal 90",
+     "use": "woonfunctie",
+     "areaM2": 100,
+     "bagId": "0363010000708297"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  }
+ ]
+}
