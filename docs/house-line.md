@@ -1258,6 +1258,76 @@ Archive: `HOUSE_CROPS_ARCHIVE` (default `~/Code/map-recall2-source-data-h5h`) an
 `map-recall2-screenshots/ui/2026-11-10-house-h5h/contact-1.jpg`, `contact-2.jpg` (round 1), `contact-r2-1.jpg`, `contact-r2-2.jpg` (round 2, multi-front and unknown marked). To extend the set, add rows to
 `hand-set-v1.reader-a.tsv` (columns in build.ts), rebuild, and have two blind readers read a third of the new pands (the ceiling is the blind pair).
 
+### Stoops (lane K-stoep, #360)
+
+A front stoop (bordes, steps and iron railing) is a typed component, `buildingRecipe/stoop.ts`. A front gets one when
+its basement is `stoop*` and it carries a `stoop` object. Every field is optional, and an absent `stoop` leaves every
+recipe, face chunk and generic wall byte-identical (fit goldens, `world:verify` 0 differing).
+
+| Field | Values (default) | Meaning |
+|---|---|---|
+| `flight` | `front` \| `side-left` \| `side-right` \| `double` (front) | Where the steps run from the landing. Side flights run along the wall to the viewer's left or right; `double` has one each way. |
+| `steps` | 2..16 (sill / 0.18 m) | Risers from the pavement to the door sill. |
+| `riseM`, `treadM` | 0.12..0.25, 0.2..0.4 (0.18, 0.28) | The rise is derived when `steps` is given. Both given must meet the sill within 6 cm. |
+| `widthM` | (door + 0.4 m front, 1 m side) | The flight's width. |
+| `landing` | `{depth, width}` (0.9 x door + 0.6 front, 1.2 x door + 0.4 side) | The bordes in front of the door. |
+| `material` | `stone` \| `brick` \| `painted` (stone) | Treads and landing. |
+| `rail` | `iron` \| `stone` \| `none` (iron) | Guard on the flights and the landing. Iron is `#1d1f22`, its own material. |
+| `railStyle` | `plain` \| `bars` \| `ornate` (bars) | Handrail on posts; bars at 13 cm; or ornate (a second rail, 11 cm bars, heavy newels with finials). Only an iron rail has a style. |
+| `under` | `door` \| `window` \| `closed` (closed) | The souterrain opening under the landing. A door needs a sill of 1.4 m or more, a window 0.8 m or more. |
+| `zone` | metres | The measured stoep zone (BGT or a hand read). The flight's projection must fit it. |
+
+**Validation.** `stoopProblems` in `intent.ts validateIntent` checks shapes, ranges and the basement/door pairing.
+`planStoop` checks geometry against the front. The landing meets the sill as steps x rise. The flights stay on the
+front. The projection fits the zone. A souterrain door or window has headroom. Basement lights under the flight are
+removed: `stoopBlocks` reports them, and a blocked upper opening throws. The railing is shared with oudWest's
+timber-balcony guard (`ironRailing.ts`: `guardRun` is the old loop, byte-identical).
+
+**Recipe and face path.** `fit.ts` plans the stoop in place of the library entrance, per module (mirrored modules
+mirror it). `compile.ts addStoops` builds `stoop[-m<k>]/{body,iron,under}` meshes as component `entrance`.
+`houseType.ts GROUND_KEYS` includes `stoop`.
+
+**Spec and generic path.** These carry the stoop to the streamed world:
+
+- **Sources.** Register `stoep`, a Jev `stoop` yes (p ≥ 0.875), or a hand/measured `fronts[0].stoop`.
+- **Spec build.** `build-house-specs` writes the runtime view `stoop` (`{}` when only the presence is known).
+  `decorate.ts` stamps `specStoop`; `SPEC_STOOPS_HELD` turns that off.
+- **Mesh.** `threeBuildingMesh` gives the stoop to **one** wall: the longest door wall within 4 m of the nearest
+  road's distance (like pickWall). That wall dresses right after the defining walls, with `stoop` forced first, and it
+  may spend `EXTRA_BUDGET.stoopWall` (60) past the 180-triangle street-wall cap, still inside the 230-triangle
+  building budget.
+- **Drawing.** `stoopExtra.ts` draws the plan in stream mode: bars as single quads at a 26 cm pitch at least, and no
+  hidden faces.
+  - The generic sill is `steps x rise`, else 0.9 m, and at most 0.42 x the ground storey.
+  - The reach is the wall-to-centreline distance less 1.5 m (half the BGT residential p10 carriageway).
+  - A stated flight that does not fit falls back without its measured landing and width: the stated flight, then
+    front, then toward the longer free side, then the other side.
+  - A railing over the wall's free triangles steps down ornate -> bars -> plain (an ornate side flight is ~216
+    triangles).
+  - With no room, the old three-slab dice stoop stands in.
+
+`house:preview` maps `fronts[0].basement stoop*` plus its `stoop` fields to `specStoop` (see "Overrides").
+
+**Scripts.**
+- `scripts/kit-stoep/views.ts`: oblique panorama crops from both sides of the street wall, where a flight's direction
+  and steps read (a rectified front cannot show them). `--register-stoops --streets=…` lists candidates.
+- `scripts/kit-stoep/cell-cost.ts`: triangles per z14 tile with `specStoop` stripped vs kept.
+- `scripts/kit-stoep/validation/*.json`: five hand-read Herengracht/Keizersgracht specs (front, side-left,
+  side-right, double).
+
+**Measured (2026-11-10).** 21 belt tiles, 398 stoop pands: 19,246,287 -> 19,246,959 triangles (max +0.02 % per
+tile). 332 typed stoops drawn, 49 with no room. The stoop displaces trim inside the building budget rather than adding
+triangles.
+
+**The kit cannot yet say:**
+- curved or winged flights (Herengracht 0363100012167958 is drawn straight);
+- a stair inside a portal recess (Nassaukade 150, 0363100012164843);
+- cast-iron scroll newels and urns;
+- a real souterrain shopfront under the landing (only a dark door or window panel);
+- per-pand BGT pavement depth (`zone` is hand-read; the generic path uses a street proxy).
+
+On the generic path the painted door is not raised, so the landing covers its lower part.
+
 ## §5 The kit-gap queue
 
 Stub (lane H6): `kit-gaps.ts` aggregates `schemaLimits` by `component`; the horizon rule.
