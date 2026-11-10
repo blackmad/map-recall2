@@ -1,5 +1,25 @@
 # Canal Recall — what is built
 
+**Batch a1 round 3: the new-build family on by default; Landlust-Zuid rounds 3–6 (2026-11-10, session a1).**
+- **New-build family on** (lane/newbuild-kit-20261110 at 64c6fdf62, opus).
+  - The round-2 flip had been reverted before push because the bay cells overflowed the byte layers: on, it was 197 cells, not 193, because every preset adds upper, ground and groundDoor cells. The procedural array is already 256 at 191.
+  - The fix: with the family on, the seven restrained shopfront kinds share three cells per archetype (`RESTRAINED_SHOP_CELL`). `quietShopAt` uses the kind only for the bar fascia and the cafe valance, and a test paints every kind against its shared cell in every look.
+  - On, that is 181 bay cells. Off, it is unchanged at 191, the same table and shell hash `e20ada55`.
+  - The modern/9 balcony bar now sits on the bottom frame, and the band preset's window table ends at the band top (`BALCONY_BAND_TOP_PX`).
+  - `?newbuildFamily=0` turns it off. The world shells were recompiled.
+- **Landlust-Zuid rounds 3–6** (lane/buurt-landlust-20261110 at 5bd5f5c86, sonnet). Kit additions:
+  - `zinc` and `zinc-band` dormer bodies: smooth `bodyColour`/`capColour`, a 3-light glass band and an overhanging dark cap;
+  - `dormerParty`/`partyEdge`: one cream dormer straddling the party wall, drawn as two halves with a pale `fasciaColour` board;
+  - `doorRow`: four single-leaf doors under one canopy slab, with `groundTransomOnly` so stair lights are not read as fanlights;
+  - dark green-black slot doors.
+
+  Opus reviews:
+  - round 4 held 16 of 20 runs: two floating slabs, a brick "lift shaft" dormer, and a party dormer reading as two windows;
+  - round 5 passed all 16;
+  - round 6 took the review's follow-ups: the Treslong fascia, the slot door colour and the Andringa dormers moved inward.
+
+  The four-storey slot type keeps flush doors: recessed doors need 3,109 triangles against the 3,000 budget. Brick is re-fitted so the render hits the round-1 targets; Treslong is pinned #2b1f16 and renders #5c4230, which the reviewer judged right against a dark photo.
+
 **Batch a1 round 2: new-build family on, FPS round 2, calm levers, register recipes, Vogelbuurt-Noord (2026-11-10, session a1).**
 - **New-build family round 2, still opt-in** (lane/newbuild-kit-20261110 round 2 at be3307cf7, opus). Round 2 added:
   - per-pand measured walls (T0 modern-pand-walls first, then panorama samples), outranking the area draw;

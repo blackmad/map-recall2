@@ -17,7 +17,7 @@
 //     t3  head rise (uv y; segmental), glass lift (look's calm), 0, 0
 // All lengths are fractions of the cell (u of BAY_PX, v of the cell's canvas height).
 
-import { BAY_PX, GROUND_PX, STOREY_PX, SHOP_KINDS, bayDoorWindowGeometry, bayWindowGeometry, canalGroundGeometry, type BayVariant, type Look } from '../bayTextures.js';
+import { BALCONY_BAND_TOP_PX, BAY_PX, GROUND_PX, STOREY_PX, SHOP_KINDS, bayDoorWindowGeometry, bayWindowGeometry, canalGroundGeometry, type BayVariant, type Look } from '../bayTextures.js';
 import { BAY_ENTRIES, bayVariant } from '../bayLook.js';
 import { LOOK_VARIANTS } from './palette.js';
 import { PROCEDURAL_RECIPE_LAYER_OFFSET } from '../streetFacadeRendering.js';
@@ -103,7 +103,11 @@ export function canvasWindows(v: BayVariant, look: Look = 'photo'): { cellH: num
   // Upper storeys (BAY_KINDS has no upperTall / attic cells).
   const [y, wh] = v.kind === 'upperTall' ? [26, 250] : v.kind === 'attic' ? [96, 118] : [62, 188];
   if (v.archetype === 'school' && !v.proportions) return { cellH: h, windows: [0.3, 0.7].map(cx => windowOf(w * cx - 38, y + 6, 76, wh - 8, { ...v, shape: 'rect', shutters: false })) };
-  return { cellH: h, windows: layoutRow(v, w, y, wh, look) };
+  const row = layoutRow(v, w, y, wh, look);
+  // The balcony band (bayTextures `balconyBand`) is a solid balustrade in front of the lower glass: the pane ends at its
+  // top edge, and the window's bottom frame lands on the band's shadow line.
+  if (v.facadeAssembly === 'balcony-band') return { cellH: h, windows: row.map(win => { const bottom = Math.min(win.y + win.h, BALCONY_BAND_TOP_PX + win.inset); return { ...win, h: bottom - win.y }; }) };
+  return { cellH: h, windows: row };
 }
 
 /** The windows of every layer of a look's atlas (index = layer); layers with none carry the reason. */
