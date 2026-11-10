@@ -126,7 +126,7 @@ the paving there.
   on corridors. A plaza only lets the bike stand and ride on its paving, exactly as the Dam does today. The HUD name
   on a plaza is the nearest corridor's, as on the existing squares.
 
-**Flag:** `bgtPlazas` (`BGT_PLAZAS_FLAG`), with `BGT_PLAZAS_DEFAULT = false`. The recommendation is in section 6.
+**Flag:** `bgtPlazas` (`BGT_PLAZAS_FLAG`), with `BGT_PLAZAS_DEFAULT = false`. The recommendation is in section 7.
 
 ## 6. Pins (`npm run test:canal-car`, `npx tsx scripts/routing/check-bgt-plazas.ts`)
 
@@ -148,7 +148,33 @@ the paving there.
 
 ## 7. Ride frames
 
-FRAMES_SECTION
+`scripts/routing/bgt-plaza-ride-frames.ts` drives a real ride on port 4437 with the road-surface bundle rebuilt
+locally (the bundle is not committed). Each run puts the bike at a pose, holds forward, and screenshots at the start
+and the end, once with the flag off and once with it on. The frames are in
+`map-recall2-screenshots-a1/roads/2026-11-10-bgt-plazas/frames/`, with `frames.json` and `frames-square.json`. The
+`plazas` count is 118 with the flag off and 5,055 with it on (118 squares plus 4,937 BGT pieces).
+
+| place, pose | off: end, metres | on: end, metres | verdict |
+|---|---|---|---|
+| ASC SDW 637f346b, west, 3 s | 52.385945, 4.832488; 2.9 m | identical; 2.9 m | unchanged: the bike stops at the corridor edge, because the ground is erf |
+| Radarweg 4f47f105, north, 3 s | 52.387448, 4.833257; 13.7 m | identical; 13.7 m | unchanged: the bike follows the service road |
+| Waterlooplein street, south-west, 4 s | 52.369100, 4.900603; 62.1 m | 52.369098, 4.900604; 61.9 m | the heading ease keeps the bike on the passage corridor in both runs, so this pose does not exercise the plaza |
+| **Waterlooplein square, west, 3 s** | 52.369099, 4.900603; 39.7 m | **52.368903, 4.900316; 41.2 m** | **off:** the guard pulls the bike back to the passage corridor and it runs north to the Amstel. **On:** it crosses the market square westward, ending 30 m away |
+
+My verdict: the flag-on frame does what the brief asks at the plein, and nothing changes at the two erf sites. The
+oblique chase camera makes the difference easier to read from the end positions than from the pictures. The ground
+look is identical in both runs, which is the open-ground-look lane's job.
+
+**Recommended default: ON for desktop** once the integrator has rebuilt `road-surface.bundle.js` and split or
+accepted the 1.07 MB gzip fetch. The evidence:
+
+- every existing square pin still passes, and the new lawn and erf negatives hold;
+- 0.96 km² of real public paving becomes rideable, with 10 ortho crops reviewed and 6 random samples all public paving;
+- the routing graph is not touched;
+- runtime cost is one fetch plus a grid lookup per guard query.
+
+Keep it off until the look lane's "looks paved" uses `RIDEABLE_PLAZA_CLASSES` too, so that rideable and
+non-rideable open ground read differently.
 
 ## 8. Open questions for the integrator and user
 
@@ -159,3 +185,16 @@ FRAMES_SECTION
 2. **Extract size.** The extract is 1.07 MB gzip city-wide. If the flag goes on by default, split it per own-ground
    cell, as `courtyards-v1` does.
 3. **Quays.** Some onbegroeid quays are good plazas, but no attribute isolates them. Leave them for now.
+
+## 9. What the integrator rebuilds
+
+- `npm run build:canal-road-surface`, which writes `road-surface.bundle.js`. It carries `bgtPlazasEnabled`,
+  `BGT_PLAZAS_EXTRACT`, polygon holes and the grid index. Bundles that import `roadSurface.ts` (ownGround, the world
+  cache) take a few unused bytes and no behaviour change.
+- `public/data/extracts/amsterdam/bgt-plazas-v1.json` is a new versioned extract committed by this lane. Rebuild it
+  with `NODE_OPTIONS=--max-old-space-size=12000 npx tsx scripts/routing/build-bgt-plazas.ts --publish` (13 min) after
+  a routing extract change, since the "connected" test reads roads-v2.
+- No change is needed to the routing extract, graph revision, world-v1 or covers.
+- npm scripts to add:
+  - `"build:bgt-plazas": "tsx scripts/routing/build-bgt-plazas.ts"`
+  - `"test:bgt-plazas": "tsx scripts/routing/check-bgt-plazas.ts"`, joining `check:canal`.

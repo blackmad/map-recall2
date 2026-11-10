@@ -14,11 +14,13 @@ export const RIDE_FRAME_PLACES: ReadonlyArray<readonly [string, [number, number]
   ['radarweg-4f47f105', [52.387448, 4.833459], 0, 3],
   // Centrum plein: from the Waterlooplein street corridor south-west onto the market square (check-canal-car.ts pin).
   ['waterlooplein', [52.368798, 4.901371], 252, 4],
+  // On the market square itself (the check-canal-car.ts pin point), riding west across the open paving.
+  ['waterlooplein-square', [52.368690, 4.900812], 270, 3],
 ];
 
 const out = process.argv[2] ?? 'artifacts/bgt-plaza-frames';
 const extra = JSON.parse(process.env.EXTRA_PLACES ?? '[]') as Array<[string, [number, number], number, number]>;
-const places = [...RIDE_FRAME_PLACES, ...extra];
+const places = process.env.ONLY_EXTRA ? extra : [...RIDE_FRAME_PLACES, ...extra];
 const port = process.env.PW_PORT ?? '4437';
 mkdirSync(out, { recursive: true });
 const browser = await chromium.launch({ headless: true, executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' });
