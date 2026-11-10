@@ -1,0 +1,988 @@
+{
+ "street": "Haarlemmerdijk",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T08:26:47.838Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012176569",
+   "addresses": [
+    "Haarlemmerdijk 120A",
+    "Haarlemmerdijk 120B",
+    "Haarlemmerdijk 120C",
+    "Haarlemmerdijk 120D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerdijk 120A",
+     "use": "winkelfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000995087"
+    },
+    {
+     "address": "Haarlemmerdijk 120B",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010000995088"
+    },
+    {
+     "address": "Haarlemmerdijk 120C",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010000995089"
+    },
+    {
+     "address": "Haarlemmerdijk 120D",
+     "use": "woonfunctie",
+     "areaM2": 87,
+     "bagId": "0363010000995091"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11873982088,
+     "lngLat": [
+      4.8862257,
+      52.3833125
+     ],
+     "tags": {
+      "healthcare": "alternative",
+      "healthcare:speciality": "acupuncture",
+      "name": "Tianyi Health Center",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-11-10T08:26:47.838Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012176570",
+   "addresses": [
+    "Haarlemmerdijk 118A",
+    "Haarlemmerdijk 118B",
+    "Haarlemmerdijk 118C",
+    "Haarlemmerdijk 118D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerdijk 118A",
+     "use": "winkelfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000995579"
+    },
+    {
+     "address": "Haarlemmerdijk 118B",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000995580"
+    },
+    {
+     "address": "Haarlemmerdijk 118C",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000995581"
+    },
+    {
+     "address": "Haarlemmerdijk 118D",
+     "use": "woonfunctie",
+     "areaM2": 36,
+     "bagId": "0363010000995582"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11873963554,
+     "lngLat": [
+      4.8862642,
+      52.3832875
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "118",
+      "addr:street": "Haarlemmerdijk",
+      "amenity": "restaurant",
+      "cuisine": "lebanese;turkish;arab",
+      "diet:vegetarian": "yes",
+      "name": "Le Sud",
+      "opening_hours": "Mo-Sa 10:00-19:00; Su 11:00-17:00",
+      "takeaway": "only",
+      "website": "https://lesud.nl/",
+      "website:menu": "https://lesud.nl/assortiment/",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-11-10T08:26:47.838Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012176577",
+   "addresses": [
+    "Haarlemmerdijk 116B",
+    "Haarlemmerdijk 116C",
+    "Haarlemmerdijk 116D",
+    "Haarlemmerdijk 116A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerdijk 116B",
+     "use": "woonfunctie",
+     "areaM2": 28,
+     "bagId": "0363010000955799"
+    },
+    {
+     "address": "Haarlemmerdijk 116C",
+     "use": "woonfunctie",
+     "areaM2": 28,
+     "bagId": "0363010000955802"
+    },
+    {
+     "address": "Haarlemmerdijk 116D",
+     "use": "woonfunctie",
+     "areaM2": 28,
+     "bagId": "0363010000955805"
+    },
+    {
+     "address": "Haarlemmerdijk 116A",
+     "use": "winkelfunctie",
+     "areaM2": 33,
+     "bagId": "0363010000955807"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 1223057258,
+     "lngLat": [
+      4.8862906,
+      52.383257
+     ],
+     "tags": {
+      "name": "Schoonheids Salon",
+      "shop": "beauty",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-11-10T08:26:47.838Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012176696",
+   "addresses": [
+    "Haarlemmerdijk 110A",
+    "Haarlemmerdijk 110B",
+    "Haarlemmerdijk 110C",
+    "Haarlemmerdijk 110D",
+    "Haarlemmerdijk 112A",
+    "Haarlemmerdijk 112B",
+    "Haarlemmerdijk 112C",
+    "Haarlemmerdijk 112D",
+    "Haarlemmerdijk 114"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerdijk 110A",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000891526"
+    },
+    {
+     "address": "Haarlemmerdijk 112A",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000891527"
+    },
+    {
+     "address": "Haarlemmerdijk 112B",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000891528"
+    },
+    {
+     "address": "Haarlemmerdijk 110B",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000891529"
+    },
+    {
+     "address": "Haarlemmerdijk 110C",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000891530"
+    },
+    {
+     "address": "Haarlemmerdijk 112C",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000891531"
+    },
+    {
+     "address": "Haarlemmerdijk 112D",
+     "use": "woonfunctie",
+     "areaM2": 59,
+     "bagId": "0363010000891532"
+    },
+    {
+     "address": "Haarlemmerdijk 114",
+     "use": "industriefunctie",
+     "areaM2": 149,
+     "bagId": "0363010000909862"
+    },
+    {
+     "address": "Haarlemmerdijk 110D",
+     "use": "woonfunctie",
+     "areaM2": 59,
+     "bagId": "0363010000909921"
+    }
+   ],
+   "units": 9,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2721294366,
+     "lngLat": [
+      4.8863727,
+      52.3832224
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "114",
+      "addr:postcode": "1013JH",
+      "addr:street": "Haarlemmerdijk",
+      "email": "info@nivo-schweitzer.nl",
+      "internet_access": "wlan",
+      "mobile": "+31 6 57131579",
+      "name": "Nivo Schweitzer pro foto & video",
+      "name:en": "Nivo Schweitzer pro photo & video",
+      "opening_hours": "Mo 12:00-18:00; Tu-Fr 09:30-18:00; Sa 09:30-17:00",
+      "phone": "+31 20 623 3159",
+      "shop": "photo",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "website": "https://www.nivo-schweitzer.nl/",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-11-10T08:26:47.838Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012176698",
+   "addresses": [
+    "Haarlemmerdijk 108A",
+    "Haarlemmerdijk 108B",
+    "Haarlemmerdijk 108C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerdijk 108A",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 98,
+     "bagId": "0363010000801704"
+    },
+    {
+     "address": "Haarlemmerdijk 108B",
+     "use": "woonfunctie",
+     "areaM2": 85,
+     "bagId": "0363010001172373"
+    },
+    {
+     "address": "Haarlemmerdijk 108C",
+     "use": "woonfunctie",
+     "areaM2": 37,
+     "bagId": "0363010001172374"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 1223057226,
+     "lngLat": [
+      4.8864915,
+      52.3831496
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "108A",
+      "addr:postcode": "1013JH",
+      "addr:street": "Haarlemmerdijk",
+      "amenity": "restaurant",
+      "cuisine": "pizza",
+      "indoor_seating": "yes",
+      "name": "la zoccola",
+      "outdoor_seating": "no",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-11-10T08:26:47.838Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012176655",
+   "addresses": [
+    "Haarlemmerdijk 104A",
+    "Haarlemmerdijk 104B",
+    "Haarlemmerdijk 104C",
+    "Haarlemmerdijk 104D",
+    "Haarlemmerdijk 106"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerdijk 106",
+     "use": "winkelfunctie",
+     "areaM2": 101,
+     "bagId": "0363010000891499"
+    },
+    {
+     "address": "Haarlemmerdijk 104A",
+     "use": "woonfunctie",
+     "areaM2": 94,
+     "bagId": "0363010000891501"
+    },
+    {
+     "address": "Haarlemmerdijk 104B",
+     "use": "woonfunctie",
+     "areaM2": 94,
+     "bagId": "0363010000891502"
+    },
+    {
+     "address": "Haarlemmerdijk 104C",
+     "use": "woonfunctie",
+     "areaM2": 87,
+     "bagId": "0363010000891503"
+    },
+    {
+     "address": "Haarlemmerdijk 104D",
+     "use": "woonfunctie",
+     "areaM2": 87,
+     "bagId": "0363010000891504"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 1223057300,
+     "lngLat": [
+      4.8865692,
+      52.3831045
+     ],
+     "tags": {
+      "name": "Klabu",
+      "shop": "sports",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-11-10T08:26:47.838Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012176568",
+   "addresses": [
+    "Haarlemmerdijk 98",
+    "Haarlemmerdijk 100A",
+    "Haarlemmerdijk 100B",
+    "Haarlemmerdijk 100C",
+    "Haarlemmerdijk 100D",
+    "Haarlemmerdijk 100E",
+    "Haarlemmerdijk 102"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerdijk 100A",
+     "use": "woonfunctie",
+     "areaM2": 59,
+     "bagId": "0363010000955551"
+    },
+    {
+     "address": "Haarlemmerdijk 100B",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000955552"
+    },
+    {
+     "address": "Haarlemmerdijk 100C",
+     "use": "woonfunctie",
+     "areaM2": 100,
+     "bagId": "0363010000955553"
+    },
+    {
+     "address": "Haarlemmerdijk 100D",
+     "use": "woonfunctie",
+     "areaM2": 98,
+     "bagId": "0363010000955554"
+    },
+    {
+     "address": "Haarlemmerdijk 100E",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000955555"
+    },
+    {
+     "address": "Haarlemmerdijk 98",
+     "use": "winkelfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000955556"
+    },
+    {
+     "address": "Haarlemmerdijk 102",
+     "use": "winkelfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000955557"
+    }
+   ],
+   "units": 7,
+   "osm": [
+    {
+     "type": "node",
+     "id": 1223057263,
+     "lngLat": [
+      4.8867136,
+      52.3830222
+     ],
+     "tags": {
+      "name": "Cellarrich",
+      "shop": "fashion_accessories",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-11-10T08:26:47.838Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 11873970168,
+     "lngLat": [
+      4.8866646,
+      52.383056
+     ],
+     "tags": {
+      "name": "Vivian Hann",
+      "shop": "interior_decoration",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-11-10T08:26:47.838Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012176580",
+   "addresses": [
+    "Haarlemmerdijk 96"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerdijk 96-H",
+     "use": "winkelfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000953288"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11873988872,
+     "lngLat": [
+      4.8867683,
+      52.3829918
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "96",
+      "addr:street": "Haarlemmerdijk",
+      "amenity": "cafe",
+      "contact:instagram": "https://www.instagram.com/nomu_amsterdam",
+      "cuisine": "bubble_tea;matcha;coffee",
+      "diet:vegan": "yes",
+      "indoor_seating": "yes",
+      "name": "Nomu",
+      "opening_hours": "10:00-18:00",
+      "outdoor_seating": "no",
+      "website": "https://www.nomu-amsterdam.nl/",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-11-10T08:26:47.838Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012176697",
+   "addresses": [
+    "Haarlemmerdijk 94"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerdijk 94-H",
+     "use": "winkelfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000656095"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 1223057290,
+     "lngLat": [
+      4.8868268,
+      52.3829605
+     ],
+     "tags": {
+      "beauty": "nails",
+      "name": "Glow Nails",
+      "shop": "beauty",
+      "speciality": "independent film",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-11-10T08:26:47.838Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012167793",
+   "addresses": [
+    "Haarlemmerdijk 90A",
+    "Haarlemmerdijk 90B",
+    "Haarlemmerdijk 90C",
+    "Haarlemmerdijk 90D",
+    "Haarlemmerdijk 92"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerdijk 92",
+     "use": "winkelfunctie",
+     "areaM2": 94,
+     "bagId": "0363010000864166"
+    },
+    {
+     "address": "Haarlemmerdijk 90A",
+     "use": "woonfunctie",
+     "areaM2": 85,
+     "bagId": "0363010000864167"
+    },
+    {
+     "address": "Haarlemmerdijk 90B",
+     "use": "woonfunctie",
+     "areaM2": 85,
+     "bagId": "0363010000864168"
+    },
+    {
+     "address": "Haarlemmerdijk 90C",
+     "use": "woonfunctie",
+     "areaM2": 85,
+     "bagId": "0363010000864169"
+    },
+    {
+     "address": "Haarlemmerdijk 90D",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000864170"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2721300000,
+     "lngLat": [
+      4.8868913,
+      52.3829283
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "92",
+      "addr:postcode": "1013JG",
+      "addr:street": "Haarlemmerdijk",
+      "brand:website": "https://libris.nl",
+      "check_date": "2024-08-23",
+      "name": "De Dolfijn",
+      "network": "Libris",
+      "opening_hours": "Mo 11:00-18:00; Tu-Fr 09:30-18:00; Sa 09:30-17:30; Su 12:00-17:00",
+      "shop": "books",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "website": "https://libris.nl/boekholtboekhandels",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-11-10T08:26:47.838Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012167812",
+   "addresses": [
+    "Haarlemmerdijk 80",
+    "Haarlemmerdijk 82A",
+    "Haarlemmerdijk 82B",
+    "Haarlemmerdijk 82E",
+    "Haarlemmerdijk 82D",
+    "Haarlemmerdijk 82C",
+    "Haarlemmerdijk 84B",
+    "Haarlemmerdijk 84E",
+    "Haarlemmerdijk 84A",
+    "Haarlemmerdijk 84C",
+    "Haarlemmerdijk 84D",
+    "Haarlemmerdijk 86"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerdijk 80",
+     "use": "winkelfunctie",
+     "areaM2": 116,
+     "bagId": "0363010000656062"
+    },
+    {
+     "address": "Haarlemmerdijk 82A",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000656065"
+    },
+    {
+     "address": "Haarlemmerdijk 82B",
+     "use": "woonfunctie",
+     "areaM2": 34,
+     "bagId": "0363010000656066"
+    },
+    {
+     "address": "Haarlemmerdijk 84B",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000656074"
+    },
+    {
+     "address": "Haarlemmerdijk 84E",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000656077"
+    },
+    {
+     "address": "Haarlemmerdijk 86",
+     "use": "winkelfunctie",
+     "areaM2": 134,
+     "bagId": "0363010000656078"
+    },
+    {
+     "address": "Haarlemmerdijk 84A",
+     "use": "woonfunctie",
+     "areaM2": 36,
+     "bagId": "0363010000656073"
+    },
+    {
+     "address": "Haarlemmerdijk 82E",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000656069"
+    },
+    {
+     "address": "Haarlemmerdijk 82D",
+     "use": "woonfunctie",
+     "areaM2": 88,
+     "bagId": "0363010000656068"
+    },
+    {
+     "address": "Haarlemmerdijk 84C",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000656075"
+    },
+    {
+     "address": "Haarlemmerdijk 84D",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000656076"
+    },
+    {
+     "address": "Haarlemmerdijk 82C",
+     "use": "woonfunctie",
+     "areaM2": 36,
+     "bagId": "0363010000656067"
+    }
+   ],
+   "units": 12,
+   "osm": [
+    {
+     "type": "node",
+     "id": 1223057262,
+     "lngLat": [
+      4.8869978,
+      52.3828607
+     ],
+     "tags": {
+      "name": "Discostars",
+      "shop": "music",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-11-10T08:26:47.838Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 1223057280,
+     "lngLat": [
+      4.8871876,
+      52.3827578
+     ],
+     "tags": {
+      "name": "K.S. Supermarket",
+      "shop": "convenience",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-11-10T08:26:47.838Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012167807",
+   "addresses": [
+    "Haarlemmerdijk 74",
+    "Haarlemmerdijk 76A",
+    "Haarlemmerdijk 76B",
+    "Haarlemmerdijk 76C",
+    "Haarlemmerdijk 76D",
+    "Haarlemmerdijk 78A",
+    "Haarlemmerdijk 78B",
+    "Haarlemmerdijk 78C",
+    "Haarlemmerdijk 78D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerdijk 74",
+     "use": "winkelfunctie",
+     "areaM2": 279,
+     "bagId": "0363010000656046"
+    },
+    {
+     "address": "Haarlemmerdijk 76A",
+     "use": "woonfunctie",
+     "areaM2": 33,
+     "bagId": "0363010000656052"
+    },
+    {
+     "address": "Haarlemmerdijk 76B",
+     "use": "woonfunctie",
+     "areaM2": 35,
+     "bagId": "0363010000656053"
+    },
+    {
+     "address": "Haarlemmerdijk 76C",
+     "use": "woonfunctie",
+     "areaM2": 36,
+     "bagId": "0363010000656054"
+    },
+    {
+     "address": "Haarlemmerdijk 76D",
+     "use": "woonfunctie",
+     "areaM2": 33,
+     "bagId": "0363010000656055"
+    },
+    {
+     "address": "Haarlemmerdijk 78A",
+     "use": "woonfunctie",
+     "areaM2": 40,
+     "bagId": "0363010000656057"
+    },
+    {
+     "address": "Haarlemmerdijk 78B",
+     "use": "woonfunctie",
+     "areaM2": 38,
+     "bagId": "0363010000656058"
+    },
+    {
+     "address": "Haarlemmerdijk 78C",
+     "use": "woonfunctie",
+     "areaM2": 38,
+     "bagId": "0363010000656059"
+    },
+    {
+     "address": "Haarlemmerdijk 78D",
+     "use": "woonfunctie",
+     "areaM2": 37,
+     "bagId": "0363010000656060"
+    }
+   ],
+   "units": 9,
+   "osm": [
+    {
+     "type": "node",
+     "id": 1223057252,
+     "lngLat": [
+      4.8872851,
+      52.3827023
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:country": "NL",
+      "addr:housenumber": "72",
+      "addr:postcode": "1013JE",
+      "addr:street": "Haarlemmerdijk",
+      "branch": "Amsterdam 1",
+      "brand": "Blokker",
+      "brand:website": "https://www.blokker.nl",
+      "brand:wikidata": "Q33903645",
+      "check_date": "2025-11-12",
+      "name": "Blokker",
+      "operator": "Blokker New",
+      "operator:wikidata": "Q134959128",
+      "shop": "houseware",
+      "start_date": "2025-06-18",
+      "website": "https://www.blokker.nl/nl/vind-een-winkel/details/blokker-amsterdam-1/",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-11-10T08:26:47.838Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012177675",
+   "addresses": [
+    "Haarlemmerdijk 70"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerdijk 70-H",
+     "use": "winkelfunctie",
+     "areaM2": 110,
+     "bagId": "0363010000656037"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 1223057260,
+     "lngLat": [
+      4.8873458,
+      52.3826639
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "70",
+      "addr:street": "Haarlemmerdijk",
+      "check_date": "2025-11-12",
+      "name": "Pop18",
+      "note": "'artistieke snoepjes' - misschien shop=art ;)",
+      "shop": "clothes",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-11-10T08:26:47.838Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012177671",
+   "addresses": [
+    "Haarlemmerdijk 68"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerdijk 68-H",
+     "use": "winkelfunctie",
+     "areaM2": 84,
+     "bagId": "0363010000656033"
+    }
+   ],
+   "units": 2,
+   "osm": [
+    {
+     "type": "node",
+     "id": 1223057286,
+     "lngLat": [
+      4.8873984,
+      52.3826364
+     ],
+     "tags": {
+      "check_date": "2025-11-12",
+      "name": "Hemsted",
+      "shop": "clothes",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-11-10T08:26:47.838Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012177670",
+   "addresses": [
+    "Haarlemmerdijk 66"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerdijk 66-H",
+     "use": "winkelfunctie",
+     "areaM2": 73,
+     "bagId": "0363010000656029"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2721299615,
+     "lngLat": [
+      4.8874638,
+      52.3826224
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "66-H",
+      "addr:postcode": "1013JE",
+      "addr:street": "Haarlemmerdijk",
+      "amenity": "restaurant",
+      "check_date": "2025-11-12",
+      "cuisine": "mediterranean",
+      "indoor_seating": "yes",
+      "name": "Rue la Bastille",
+      "opening_hours": "Mo-Su 12:00-20:30",
+      "outdoor_seating": "no",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "takeaway": "yes",
+      "website": "https://www.ruelabastille.nl",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-11-10T08:26:47.838Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

@@ -89,6 +89,12 @@ export interface BlockFaceIntent {
   /** What the photo shows that no type and no kit key can say, per pand (`<pand6>: <what>`); left out of the model rather
    * than approximated with the nearest option. Documentation only (not read by fit/compile). */
   limitations?: string[];
+  /**
+   * Kit limits the strip shows on this face, one per component the kit cannot yet express: `component` names the kit
+   * part (a window kind, a crown ornament, a roof form), `what` says what the photo has and which pands. Documentation
+   * for the kit-gap queue (not read by fit/compile).
+   */
+  schemaLimits?: {component: string; what: string}[];
   continuity: {
     /** `shared`: one street level for the face (median 3DBAG ground). */
     streetLevel: 'shared' | 'stepped';

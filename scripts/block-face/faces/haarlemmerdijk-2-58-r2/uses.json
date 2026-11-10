@@ -1,0 +1,105 @@
+{
+ "street": "Haarlemmerdijk",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T08:24:35.136Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012176172",
+   "addresses": [
+    "Haarlemmerdijk 6"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerdijk 6-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 30,
+     "bagId": "0363010000655899"
+    }
+   ],
+   "units": 2,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2721299532,
+     "lngLat": [
+      4.8889965,
+      52.381739
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "6-H",
+      "addr:postcode": "1013JC",
+      "addr:street": "Haarlemmerdijk",
+      "amenity": "restaurant",
+      "cuisine": "vietnamese",
+      "name": "Pho Viet",
+      "opening_hours": "Mo 12:30-20:30; We-Su 12:30-20:30",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "website": "https://www.pho-viet-amsterdam.nl",
+      "website:menu": "https://www.pho-viet-amsterdam.nl"
+     },
+     "fetchedAt": "2026-11-10T08:24:35.136Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012176174",
+   "addresses": [
+    "Haarlemmerdijk 4"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerdijk 4",
+     "use": "winkelfunctie",
+     "areaM2": 81,
+     "bagId": "0363010000655896"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2628817016,
+     "lngLat": [
+      4.8889877,
+      52.381644
+     ],
+     "tags": {
+      "amenity": "waste_basket",
+      "check_date": "2021-10-19"
+     },
+     "fetchedAt": "2026-11-10T08:24:35.136Z",
+     "match": "frontage",
+     "distanceM": 7.1
+    },
+    {
+     "type": "node",
+     "id": 2721298939,
+     "lngLat": [
+      4.8890378,
+      52.3817152
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "4",
+      "addr:postcode": "1013JC",
+      "addr:street": "Haarlemmerdijk",
+      "name": "Vishandel 't Centrum",
+      "shop": "seafood",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-11-10T08:24:35.136Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,61 @@
+{
+ "buurt": "haarlemmerbuurt-oost",
+ "library": "haarlemmerbuurt",
+ "generatedAt": "2026-11-10T09:29:24.495Z",
+ "seconds": 12.77,
+ "totals": {
+  "faces": 2,
+  "pands": 26,
+  "placed": 2
+ },
+ "faces": [
+  {
+   "face": "brouwersgracht-2-20",
+   "street": "Brouwersgracht",
+   "pands": 7,
+   "placed": 0,
+   "held": 7,
+   "runs": [],
+   "seconds": 6.13,
+   "byType": {},
+   "installed": 0,
+   "holds": {
+    "evidence": 0,
+    "match": 0,
+    "likeness": 0,
+    "run": 0,
+    "review": 7
+   }
+  },
+  {
+   "face": "haarlemmer-46-96",
+   "street": "Haarlemmerstraat",
+   "pands": 19,
+   "placed": 2,
+   "held": 17,
+   "runs": [
+    {
+     "face": "haarlemmer-46-96-r1",
+     "pands": [
+      "0363100012171144",
+      "0363100012171145"
+     ],
+     "passed": true,
+     "triangles": 3798
+    }
+   ],
+   "seconds": 12.76,
+   "byType": {
+    "haarlemmerstraat-sash-gable-four": 2
+   },
+   "installed": 0,
+   "holds": {
+    "evidence": 0,
+    "match": 0,
+    "likeness": 2,
+    "run": 1,
+    "review": 14
+   }
+  }
+ ]
+}

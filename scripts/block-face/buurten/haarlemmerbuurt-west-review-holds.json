@@ -1,0 +1,366 @@
+{
+ "note": "Pands held after the lane's read of the strips at full size.",
+ "reviewed": "2026-11-10",
+ "holds": [
+  {
+   "pandId": "0363100012176104",
+   "address": "Haarlemmerdijk 14",
+   "reason": "two storeys of projecting timber erkers over the shop and a flat top at 14.8 m: no erker in the shop types"
+  },
+  {
+   "pandId": "0363100012176103",
+   "address": "Haarlemmerdijk 12",
+   "reason": "ornate front with an oriel and a raised attic, not the gable/cornice shop house"
+  },
+  {
+   "pandId": "0363100012176175",
+   "address": "Haarlemmerdijk 2",
+   "reason": "corner pand, three axes under an ornate raised gable to 13.4 m"
+  },
+  {
+   "pandId": "0363100012167819",
+   "address": "Haarlemmerdijk 22",
+   "reason": "7.7 m double front with a raised neck gable and ornate top; not checked at full size"
+  },
+  {
+   "pandId": "0363100012167820",
+   "address": "Haarlemmerdijk 26",
+   "reason": "front cut by the strip seam; crown unreadable"
+  },
+  {
+   "pandId": "0363100012167821",
+   "address": "Haarlemmerdijk 28",
+   "reason": "tall 15 m front with a stepped attic; not this type"
+  },
+  {
+   "pandId": "0363100012177590",
+   "address": "Haarlemmerdijk 52",
+   "reason": "flat crenellated parapet over modern ribbon windows; not the cornice shop house"
+  },
+  {
+   "pandId": "0363100012176280",
+   "address": "Haarlemmerdijk 50",
+   "reason": "east-end gable house: shop ground to 5.5 m, rows 6.6-8.6 and 9.6-11.4 m, three axes under a neck gable from 12.4 m: taller than the shop-gable body; needs its own eaves/storey read"
+  },
+  {
+   "pandId": "0363100012176278",
+   "address": "Haarlemmerdijk 48",
+   "reason": "4-storey front with a modern shop and painted bands, not read at full size"
+  },
+  {
+   "pandId": "0363100012177674",
+   "address": "Haarlemmerdijk 44",
+   "reason": "scaffolded and wrapped on the 2022-12-15 strip"
+  },
+  {
+   "pandId": "0363100012176102",
+   "address": "Haarlemmerdijk 10",
+   "reason": "painted plaster front: edge NCC 0.056 even with the accept floor; the model rows sit 0.2 storey off the photo"
+  },
+  {
+   "pandId": "0363100012176101",
+   "address": "Haarlemmerdijk 8",
+   "reason": "four window rows (the top 10.1-11.6 m under the point gable) where the type draws three; edge NCC 0.052"
+  },
+  {
+   "pandId": "0363100012176569",
+   "address": "Haarlemmerdijk 120A",
+   "reason": "post-1990 infill (BAG 2000)"
+  },
+  {
+   "pandId": "0363100012176570",
+   "address": "Haarlemmerdijk 118A",
+   "reason": "Haarlemmerdijk 118: strip seam, not read"
+  },
+  {
+   "pandId": "0363100012176577",
+   "address": "Haarlemmerdijk 116B",
+   "reason": "post-1990 infill"
+  },
+  {
+   "pandId": "0363100012176696",
+   "address": "Haarlemmerdijk 110A",
+   "reason": "post-1990 infill, 13.7 m wide"
+  },
+  {
+   "pandId": "0363100012176698",
+   "address": "Haarlemmerdijk 108A",
+   "reason": "Haarlemmerdijk 108: 2 m sliver beside the strip seam"
+  },
+  {
+   "pandId": "0363100012176655",
+   "address": "Haarlemmerdijk 104A",
+   "reason": "post-1990 infill"
+  },
+  {
+   "pandId": "0363100012176568",
+   "address": "Haarlemmerdijk 98",
+   "reason": "11.4 m wide six-axis front (Haarlemmerdijk 98), wider than the shop types"
+  },
+  {
+   "pandId": "0363100012176580",
+   "address": "Haarlemmerdijk 96",
+   "reason": "Haarlemmerdijk 96: ornate front with iron balconies on every storey"
+  },
+  {
+   "pandId": "0363100012176697",
+   "address": "Haarlemmerdijk 94",
+   "reason": "Haarlemmerdijk 94: ornate balconied front, 16 m"
+  },
+  {
+   "pandId": "0363100012167793",
+   "address": "Haarlemmerdijk 90A",
+   "reason": "post-1990 infill"
+  },
+  {
+   "pandId": "0363100012167812",
+   "address": "Haarlemmerdijk 80",
+   "reason": "Haarlemmerdijk 80: modern flat-roofed front with ribbon glazing"
+  },
+  {
+   "pandId": "0363100012167807",
+   "address": "Haarlemmerdijk 74",
+   "reason": "Haarlemmerdijk 74: wide early-20th-c. front with large windows, not this type"
+  },
+  {
+   "pandId": "0363100012177675",
+   "address": "Haarlemmerdijk 70A",
+   "reason": "front in deep shadow on the 2022-12-15 strip: the wall reads #000000, edge NCC 0.038"
+  },
+  {
+   "pandId": "0363100012177670",
+   "address": "Haarlemmerdijk 66",
+   "reason": "two tall two-light windows per storey (photo 4 columns) under a bracketed cornice at 13.3 m; edge NCC 0.083 on the shadowed strip"
+  },
+  {
+   "pandId": "0363100012177671",
+   "address": "Haarlemmerdijk 68",
+   "reason": "neck gable that fits the type (NCC 0.144) but its neighbours 70 and 66 are held, and a block face needs two houses"
+  },
+  {
+   "pandId": "0363100012172757",
+   "address": "Haarlemmerdijk 186",
+   "reason": "Haarlemmerdijk 186: five storeys under a heavy cornice at 15.2 m, taller than the four-storey type"
+  },
+  {
+   "pandId": "0363100012172756",
+   "address": "Haarlemmerdijk 184",
+   "reason": "Haarlemmerdijk 184: four-storey cornice house that fits, but a run of one beside held 186 and 182"
+  },
+  {
+   "pandId": "0363100012172755",
+   "address": "Haarlemmerdijk 182",
+   "reason": "Haarlemmerdijk 182: neck gable over three upper rows that fits the four-storey gable type, but a run of one beside held 184 and 180"
+  },
+  {
+   "pandId": "0363100012172754",
+   "address": "Haarlemmerdijk 180",
+   "reason": "Haarlemmerdijk 180: tall glazed front with a point gable to 20 m"
+  },
+  {
+   "pandId": "0363100012172847",
+   "address": "Haarlemmerdijk 178A",
+   "reason": "Haarlemmerdijk 178: balconies over a two-storey erker"
+  },
+  {
+   "pandId": "0363100012173014",
+   "address": "Haarlemmerdijk 176",
+   "reason": "Haarlemmerdijk 176: wide five-storey front with round attic lights"
+  },
+  {
+   "pandId": "0363100012172848",
+   "address": "Haarlemmerdijk 174",
+   "reason": "Haarlemmerdijk 174: not read at full size"
+  },
+  {
+   "pandId": "0363100012172845",
+   "address": "Haarlemmerdijk 172",
+   "reason": "Haarlemmerdijk 172: ornate stepped front with white bands"
+  },
+  {
+   "pandId": "0363100012172660",
+   "address": "Haarlemmerdijk 164",
+   "reason": "Haarlemmerdijk 164: post-war wide block"
+  },
+  {
+   "pandId": "0363100012172946",
+   "address": "Haarlemmerdijk 158",
+   "reason": "Haarlemmerdijk 158: cornice house with a dormer that fits, but a run of one between 164 and 156"
+  },
+  {
+   "pandId": "0363100012172945",
+   "address": "Haarlemmerdijk 156",
+   "reason": "Haarlemmerdijk 156: cornice under a tall attic box to 12.4 m"
+  },
+  {
+   "pandId": "0363100012171354",
+   "address": "Haarlemmerdijk 152",
+   "reason": "Haarlemmerdijk 152: 8.1 m pand drawn as two fronts (a cornice house and a Jugendstil gable)"
+  },
+  {
+   "pandId": "0363100012171351",
+   "address": "Haarlemmerdijk 148A",
+   "reason": "Haarlemmerdijk 148: painted front with iron balconies"
+  },
+  {
+   "pandId": "0363100012169538",
+   "address": "Haarlemmerdijk 146",
+   "reason": "Haarlemmerdijk 146: ornate stucco ornament on every storey"
+  },
+  {
+   "pandId": "0363100012176636",
+   "address": "Haarlemmerdijk 140",
+   "reason": "Haarlemmerdijk 140: Jugendstil copper bay windows"
+  },
+  {
+   "pandId": "0363100012171359",
+   "address": "Haarlemmerdijk 138",
+   "reason": "Haarlemmerdijk 138: ornate stucco bands and frieze the kit cannot draw"
+  },
+  {
+   "pandId": "0363100012176637",
+   "address": "Haarlemmerdijk 136",
+   "reason": "Haarlemmerdijk 136: ornate front"
+  },
+  {
+   "pandId": "0363100012176633",
+   "address": "Haarlemmerdijk 132A",
+   "reason": "Haarlemmerdijk 132: 8.7 m pand of two fronts (a modern bay and a cornice house)"
+  },
+  {
+   "pandId": "0363100012176571",
+   "address": "Haarlemmerdijk 130C",
+   "reason": "Haarlemmerdijk 130: dark painted cornice house that fits, but a run of one beside the held Jugendstil 128"
+  },
+  {
+   "pandId": "0363100012176572",
+   "address": "Haarlemmerdijk 128",
+   "reason": "Haarlemmerdijk 128: yellow-brick Jugendstil tower front"
+  },
+  {
+   "pandId": "0363100012176573",
+   "address": "Haarlemmerdijk 126A",
+   "reason": "Haarlemmerdijk 126: cornice house at the face end beside held 128"
+  },
+  {
+   "pandId": "0363100012176652",
+   "address": "Haarlemmerdijk 117",
+   "reason": "Haarlemmerdijk 117: flat-roofed front to 10 m at the face end, beside held 119A"
+  },
+  {
+   "pandId": "0363100012165102",
+   "address": "Haarlemmerdijk 119A",
+   "reason": "Haarlemmerdijk 119A: two-storey house with a bell gable 6.6-9.5 m: the shop types start at three storeys (kit gap: low bell-gable cottages)"
+  },
+  {
+   "pandId": "0363100012165074",
+   "address": "Haarlemmerdijk 121A",
+   "reason": "Haarlemmerdijk 121A: twin of 119A, two storeys under a bell gable: same kit gap"
+  },
+  {
+   "pandId": "0363100012165073",
+   "address": "Haarlemmerdijk 123",
+   "reason": "Haarlemmerdijk 123: cornice house with a chimney dormer that fits the cornice type, but a run of one between held 121A and 125"
+  },
+  {
+   "pandId": "0363100012171347",
+   "address": "Haarlemmerdijk 125",
+   "reason": "Haarlemmerdijk 125: eclectic tower front to 16.5 m with a crenellated cornice and a spire dormer: a one-off"
+  },
+  {
+   "pandId": "0363100012171346",
+   "address": "Haarlemmerdijk 127",
+   "reason": "Haarlemmerdijk 127: wide front with horizontal balcony bands and a flat roof: not a shop-house type"
+  },
+  {
+   "pandId": "0363100012173469",
+   "address": "Haarlemmerdijk 129",
+   "reason": "Haarlemmerdijk 129: a beige band front with one ribbon window per storey, the design of 127 beside it rather than a shop house (3.36 m)"
+  },
+  {
+   "pandId": "0363100012173482",
+   "address": "Haarlemmerdijk 135A",
+   "reason": "Haarlemmerdijk 135A: five-storey dark front (four upper rows) with a cornice at 13.3 m: no five-storey type in the kit"
+  },
+  {
+   "pandId": "0363100012173481",
+   "address": "Haarlemmerdijk 137",
+   "reason": "Haarlemmerdijk 137: tall point gable fits haarlemmer-shop-gable-four, but a run of one between held 135A and 139A"
+  },
+  {
+   "pandId": "0363100012173484",
+   "address": "Haarlemmerdijk 139A",
+   "reason": "Haarlemmerdijk 139A: built 1997"
+  },
+  {
+   "pandId": "0363100012173483",
+   "address": "Haarlemmerdijk 141",
+   "reason": "Haarlemmerdijk 141: cornice house with a lantern dormer that fits, but a run of one between held 139A and 143"
+  },
+  {
+   "pandId": "0363100012169539",
+   "address": "Haarlemmerdijk 143",
+   "reason": "Haarlemmerdijk 143: two storeys under a wide bell gable with a storey-high gable window and white bands: the shop types start at three storeys"
+  },
+  {
+   "pandId": "0363100012167796",
+   "address": "Haarlemmerdijk 13",
+   "reason": "scaffolded and wrapped (2024-12-11)"
+  },
+  {
+   "pandId": "0363100012177502",
+   "address": "Haarlemmerdijk 25B",
+   "reason": "Haarlemmerdijk 25: a small two-storey house with a bell gable at 6.3-8.4 m: not the shop types"
+  },
+  {
+   "pandId": "0363100012177503",
+   "address": "Haarlemmerdijk 27",
+   "reason": "Haarlemmerdijk 27: cornice house with a lantern dormer that fits the cornice type, but a run of one between held 25 and 29"
+  },
+  {
+   "pandId": "0363100012167795",
+   "address": "Haarlemmerdijk 29",
+   "reason": "Haarlemmerdijk 29: low front with a balustrade at 7.3-8.2 m and a set-back dormer"
+  },
+  {
+   "pandId": "0363100012167794",
+   "address": "Haarlemmerdijk 31",
+   "reason": "Haarlemmerdijk 31: brick point gable, shoulders 10.0 m, apex 12.6 m, rows 5.1-6.9 and 7.9-9.4 m; compared and held: its point gable compiles with 0.9 m2 of brick gable and roof tile coplanar at the facade (geometry-regression over the 0.5 m2 allowance), with the run or alone"
+  },
+  {
+   "pandId": "0363100012253819",
+   "address": "Haarlemmerdijk 33",
+   "reason": "Haarlemmerdijk 33: painted dark brick, three axes, rows 4.6-6.6 / 7.3-8.9 / 9.6-11.0 m, a tall white frieze and cornice 11.7-13.1 m with sky directly over it; compared and held: with the frieze type and a flat roof the run 33-35A compiles (no roof-under-crown overshoot), but the sheet is not the photo: 33 is drawn with two axes and two upper rows where the strip has three and three (the frieze type has no four-storey body), and 35A at NCC 0.11 with its strip span about 1 m off the BAG split"
+  },
+  {
+   "pandId": "0363100012167805",
+   "address": "Haarlemmerdijk 35A",
+   "reason": "Haarlemmerdijk 35A: red brick, two axes, rows 4.5-6.5 and 7.0-9.0 m, a deep white cornice 10.0-11.25 m with a small crowned piece to 11.8 m; compared and held: with the frieze type and a flat roof the run 33-35A compiles (no roof-under-crown overshoot), but the sheet is not the photo: 33 is drawn with two axes and two upper rows where the strip has three and three (the frieze type has no four-storey body), and 35A at NCC 0.11 with its strip span about 1 m off the BAG split"
+  },
+  {
+   "pandId": "0363100012253818",
+   "address": "Haarlemmerdijk 37",
+   "reason": "Haarlemmerdijk 37: modern balconied front to 15 m"
+  },
+  {
+   "pandId": "0363100012167804",
+   "address": "Haarlemmerdijk 39",
+   "reason": "Haarlemmerdijk 39: white Jugendstil front with a tower dormer"
+  },
+  {
+   "pandId": "0363100012177663",
+   "address": "Haarlemmerdijk 41",
+   "reason": "Haarlemmerdijk 41: dark cornice house with a pediment dormer that fits the type, but a run of one between held 39 and 43"
+  },
+  {
+   "pandId": "0363100012176277",
+   "address": "Haarlemmerdijk 43",
+   "reason": "Haarlemmerdijk 43: orange-glazed Jugendstil front to 15 m"
+  },
+  {
+   "pandId": "0363100012177659",
+   "address": "Haarlemmerdijk 45",
+   "reason": "Haarlemmerdijk 45: ornate bell gable that fits, but a run of one beside held 43 at the face end"
+  }
+ ]
+}

@@ -765,6 +765,53 @@ its game colours flat). When those matter, use scripts/building-recipes/render.t
 in Node since lane H12, docs/house-line.md §8; --browser for headless Chromium) or a ride frame.
 ```
 
+### Belt specs, the recipe route, and what the spec route ignores (lane belt-haarlemmer, #356)
+
+**Route for belt houses.** Belt builders stage specs for the recipe route: `route: 'recipe'` in the spec (`withRoute`; a spec
+whose design is a complete canal-house intent), preview with `house:preview <pand> --recipe --photo`, stage, and the
+integrator's `house:publish` compiles and installs one GLB per house (batches of about 20 GLBs). The Haarlemmerbuurt lane's nine
+houses (`scripts/house-specs/belt/haarlemmer.ts`; `--help`) are nine recipe GLBs. `belt/recipe-dir.ts` writes the scratch
+`houses/spec-<pand>/` directories the preview needs (publish step 3 makes them for real; `--clean` removes them).
+
+**The spec route is not a likeness check.** `house:preview --spec` applies two fields only (`fronts[0].gable` ->
+`monumentGable`, `palette.brick` -> `facadeMappedColour`); everything else lands in `overrides.notApplied` of `measure.json` and the
+generic path draws its own cream curtain-wall front. Judge a belt house on the recipe route. Fields the spec route ignores, ranked by
+how visible they are in a ride frame (house where it bit; "all 9" = every Haarlemmerbuurt house):
+
+| # | Field path | Bites on | Visible as |
+|---|---|---|---|
+| 1 | `fronts[0].storeys`, `storeyHeights`, `eavesHeight` | all 9 (H4 `eavesHeight` 9.8 m vs 3DBAG rear roof 7-8 m) | facade height, storey count |
+| 2 | `fronts[0].shopfront` (colour, fascia, entrance, glazing, stallriser) | 8 (all but Hstraat 52) | the ground storey: dark/cream shop paint, door side |
+| 3 | `roof.form`, `roof.source`, `roof.hip`, `roof.pitchDeg`, `roof.material` | H6, H16, H18, H131 (form/source/hip) | a hip or saddle over a cornice where the strip shows sky |
+| 4 | `fronts[0].bays` | all 9 (H20 `[2,2,3]`) | window columns |
+| 5 | `fronts[0].windows`, `windowSurround`, `windowHeights`, `headLines`, `windowShare` | all 9 | window kind, white surrounds, head lines |
+| 6 | `palette.frame`, `stone`, `cornice`, `stoneMaterial` | all 9 | white frames, cornice band, painted stone |
+| 7 | `fronts[0].cornice`, `crownCap`, `crownCapSpan`, `crownCapRise`, `crownRise`, `atticWindows` | H6, H18, H131 (cap); H4, H20, H54, H52, H133A (attic light) | cornice depth, crown piece, gable neck light |
+| 8 | `fronts[0].doorBay`, `basement` | H52 (doorBay 1), all 9 | door position, souterrain |
+| 9 | `fronts[0].hoist`, `partyClip`, `street`; `palette.door`; `notes`; `roof.squareSaddle` | all 9 (`squareSaddle` H4, H20, H52, H54, H133A) | hoist beam, party-wall clipping, door colour |
+
+This is the seed of lane H11 (apply the design fields in the spec route, or retire the route for belt work).
+
+**Kit components added (belt-haarlemmer).**
+- `FrontIntent.eavesHeight` (metres above the pand's ground; named without the `M` suffix like `crownRise`, the intent contract scan
+  rejects `*M` keys): a photo-measured eaves line, applied by `blockFace/houseFrontRoof.ts` `withMeasuredEaves` as
+  `facts.measuredEavesM[front.id]` when the facts carry none. Absent = the same facts object. Without it a cornice or gable front
+  reads 3DBAG's 10th-percentile roof edge, the rear roof (Haarlemmerdijk 6: 8.9 m against an 11.0 m cornice). Block faces already
+  carried this as `continuity.measuredEaves`; a lone house had no way to say it.
+- `roof.form` and `roof.source: 'front'` on a canal-house intent compiled alone: `withFrontRoof` runs the block faces' front roof
+  (`frontRoofSpecs` -> `recipeRoofFacts`) for the house, so 3DBAG keeps the footprint and an upper bound only. Typed, tested in
+  `blockFace/houseFrontRoof.test.ts` (Haarlemmerdijk 6 pinned: roof top <= the 11.0 m cornice + 0.3 m where 3DBAG stands 11.8 m), and
+  byte-identical when absent: `test:fit-golden` "all 207 house recipes identical" (no committed house carries either field).
+- `buildingRecipe/gates.ts`: with `facts.measuredEavesM` the `eaves-vs-3dbag` gate compares the model to the measured line, and `ridge-vs-3dbag`
+  lets the roof reach it (a cornice top over a parapet stands above 3DBAG's roof edge: Haarlemmerdijk 16, 11.6 m against a 10.4 m roof max), and a
+  front-derived roof (`roofSource`) may stand under 3DBAG's. Absent = the same gate (`fit-golden` unchanged for all 207 committed houses).
+
+**Frames and the staged world (lane belt-haarlemmer, batch 1, 2026-11-10).** `house:publish` in the lane worktree installed 8 of 9 recipe
+GLBs (131, 0363100012173479, is held: `open-edges` 3 edges / 5.2 m, independent of eaves, roof form, crown cap, windows and door) and a full
+`--shell` bake took 491 s into `artifacts/world/staging`; the "after" frames ran with `WORLD_DIR` on it, then `public/` was reverted so the
+branch carries specs only. The `[suppress]` step failed on its self-check, not on a pand of the batch: it still expects Nassaukade
+0363100012116526 to be blank and main now draws it.
+
 ## §3 Stage and publish
 
 Lanes stage, the integrator publishes once per batch. Nothing a lane does under `house:stage` touches `public/`.

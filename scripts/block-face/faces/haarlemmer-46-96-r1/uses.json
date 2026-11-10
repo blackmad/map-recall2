@@ -1,0 +1,68 @@
+{
+ "street": "Haarlemmerstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T08:38:57.401Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012171144",
+   "addresses": [
+    "Haarlemmerstraat 54"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerstraat 54-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 107,
+     "bagId": "0363010000656953"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11841190625,
+     "lngLat": [
+      4.8925321,
+      52.3801937
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "54",
+      "addr:postcode": "1013ES",
+      "addr:street": "Haarlemmerstraat",
+      "amenity": "restaurant",
+      "cuisine": "lebanese",
+      "indoor_seating": "yes",
+      "name": "The Lebanese Sajeria",
+      "opening_hours": "Mo-Su 11:30-20:00",
+      "outdoor_seating": "no",
+      "phone": "+31 20 612 7324",
+      "website": "https://thesajeria.com/",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-11-10T08:38:57.401Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012171145",
+   "addresses": [
+    "Haarlemmerstraat 52"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerstraat 52",
+     "use": "woonfunctie",
+     "areaM2": 120,
+     "bagId": "0363010001044292"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  }
+ ]
+}

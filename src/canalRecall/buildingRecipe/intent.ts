@@ -831,6 +831,14 @@ export interface FrontIntent {
    */
   partyClip?: boolean;
   /**
+   * The front's eaves (cornice top, or the foot of a gable) in metres above the pand's ground, read off a photo: a
+   * measured eaves line replaces 3DBAG's 10th-percentile roof edge, which on a cornice or gable front reads the rear roof
+   * (Haarlemmerdijk 6: 8.9 m against a 11.0 m cornice; metres, named without the M suffix like `crownRise` so the intent contract scan passes). Applied as `facts.measuredEavesM[front.id]` by
+   * blockFace/houseFrontRoof.ts `withMeasuredEaves` when the facts carry none (block faces carry theirs in
+   * `continuity.measuredEaves`). Absent = byte-identical.
+   */
+  eavesHeight?: number;
+  /**
    * The window grid (axes, piers, balconies, door) spans only `{from, to}` of the front, as fractions from the viewer's
    * left (-0.5..1.5): the visual house module where its party wall (a pilaster, a downpipe) is not where BAG puts it.
    * The rest of the front is plain wall; cornice, bands, crown and dormers still run the whole front. Set by a house-type
@@ -2286,6 +2294,7 @@ function historicProblems(f: FrontIntent, at: string, colour: (v: unknown, where
     });
   }
   if (f.partyClip !== undefined && typeof f.partyClip !== 'boolean') problems.push(`${at}.partyClip must be boolean`);
+  if (f.eavesHeight !== undefined && !(typeof f.eavesHeight === 'number' && f.eavesHeight >= 3 && f.eavesHeight <= 40)) problems.push(`${at}.eavesHeight: 3..40 m above the pand's ground`);
   if (f.souterrain !== undefined && (typeof f.souterrain !== 'boolean' || (f.souterrain && f.basement === 'none'))) problems.push(`${at}.souterrain: boolean, and needs a basement`);
   if (f.gridAt !== undefined && !(f.gridAt && f.gridAt.from >= -0.5 && f.gridAt.to <= 1.5 && f.gridAt.to - f.gridAt.from >= 0.5)) problems.push(`${at}.gridAt: {from, to} fractions of the front, -0.5 <= from, to <= 1.5, at least 0.5 wide`);
   if (f.dormerAt !== undefined) {

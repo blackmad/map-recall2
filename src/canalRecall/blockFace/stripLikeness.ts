@@ -36,14 +36,14 @@ export const STRIP_LIKENESS = {
 export const bodyFromFor = (eavesM: number) => eavesM > 6 ? STRIP_LIKENESS.bodyFromM : 1.3;
 
 /** Luma of an RGB (3-channel) buffer region, resampled (box) to `ppm`; `photo` masks placeholder grey and foliage. */
-export function grayRegion(rgb: Uint8Array, width: number, x0: number, x1: number, y0: number, y1: number, scale: number, photo: boolean): Gray {
+export function grayRegion(rgb: Uint8Array, width: number, x0: number, x1: number, y0: number, y1: number, scale: number, photo: boolean, leaf: (r: number, g: number, b: number) => boolean = isLeaf): Gray {
   const W = Math.max(1, Math.floor((x1 - x0) / scale)), H = Math.max(1, Math.floor((y1 - y0) / scale));
   const data = new Float32Array(W * H), mask = new Uint8Array(W * H);
   for (let j = 0; j < H; j++) for (let i = 0; i < W; i++) {
     let s = 0, n = 0, bad = 0;
     for (let y = Math.floor(y0 + j * scale); y < Math.floor(y0 + (j + 1) * scale); y++) for (let x = Math.floor(x0 + i * scale); x < Math.floor(x0 + (i + 1) * scale); x++) {
       const k = (y * width + x) * 3, r = rgb[k], g = rgb[k + 1], b = rgb[k + 2];
-      if (photo && (classifyPixel([r, g, b]) === 'void' || isLeaf(r, g, b))) { bad++; continue; }
+      if (photo && (classifyPixel([r, g, b]) === 'void' || leaf(r, g, b))) { bad++; continue; }
       s += 0.299 * r + 0.587 * g + 0.114 * b; n++;
     }
     data[j * W + i] = n ? s / n : 0; mask[j * W + i] = n > bad ? 1 : 0;
@@ -112,7 +112,9 @@ export function spanLikeness(a: {photoRgb: Uint8Array; modelRgb: Uint8Array; wid
    * pavement stands 1.9 m above the strip's ground while the cornice sits at the 3DBAG eaves, so a pure shift moved the
    * storeys apart (edge NCC 0.04-0.09) where the foot-to-eaves fit lines them up (0.11-0.25).
    */
-  footOffsetM?: number}) {
+  footOffsetM?: number;
+  /** The photo's foliage test (stripWhiteBalance.ts balancedLeaf: a green-cast day's trim is no foliage); absent = isLeaf. */
+  leaf?: (r: number, g: number, b: number) => boolean}) {
   const scale = a.pixelsPerMetre / STRIP_LIKENESS.ppm, inset = Math.round((a.px[1] - a.px[0]) * 0.04);
   const y0 = Math.max(0, Math.round(a.height - (a.eavesM - STRIP_LIKENESS.topMarginM) * a.pixelsPerMetre)), y1 = Math.round(a.height - bodyFromFor(a.eavesM) * a.pixelsPerMetre);
   const x0 = a.px[0] + inset, x1 = a.px[1] - inset;
@@ -126,8 +128,8 @@ export function spanLikeness(a: {photoRgb: Uint8Array; modelRgb: Uint8Array; wid
       if (py < 0 || py >= a.height) { sub.fill(128, j * w * 3, (j + 1) * w * 3); continue; } // placeholder grey: masked
       sub.set(a.photoRgb.subarray((py * a.width + x0) * 3, (py * a.width + x1) * 3), j * w * 3);
     }
-    return grayRegion(sub, w, 0, w, 0, h, scale, true);
-  })() : grayRegion(a.photoRgb, a.width, x0, x1, y0, y1, scale, true);
+    return grayRegion(sub, w, 0, w, 0, h, scale, true, a.leaf);
+  })() : grayRegion(a.photoRgb, a.width, x0, x1, y0, y1, scale, true, a.leaf);
   const photo = blur(gradient(blur(photoGray, STRIP_LIKENESS.blur)), STRIP_LIKENESS.blur);
   const model = blur(gradient(blur(grayRegion(a.modelRgb, a.width, x0, x1, y0, y1, scale, false), STRIP_LIKENESS.blur)), STRIP_LIKENESS.blur);
   const r = bestNcc(photo, model, Math.round(STRIP_LIKENESS.maxShiftM * STRIP_LIKENESS.ppm));

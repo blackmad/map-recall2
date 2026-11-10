@@ -1,0 +1,217 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "haarlemmerdijk-2-58-r1",
+ "street": "Haarlemmerdijk",
+ "sources": [
+  {
+   "id": "strip-2022-12-15",
+   "kind": "street-panorama",
+   "capturedAt": "2022-12-15",
+   "image": "staging/block-face/haarlemmerdijk-2-58-r1/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "auto-place (blockFace/autoPlace.ts)",
+  "passes": 1,
+  "note": "auto-placed from the haarlemmerbuurt library (buurt Haarlemmerbuurt-West); scores and holds in scripts/block-face/faces/haarlemmerdijk-2-58/auto-place.json"
+ },
+ "types": [
+  "haarlemmer-shop-cornice-frieze",
+  "haarlemmer-shop-cornice",
+  "haarlemmer-shop-gable"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012167818",
+   "slug": "haarlemmerdijk-167818",
+   "address": "Haarlemmerdijk 20",
+   "type": {
+    "type": "haarlemmer-shop-gable",
+    "ground": {
+     "shopfront": {
+      "colour": "#242122",
+      "fascia": true,
+      "name": "Studio Onrust",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "evidence": "auto-place: osm-only (winkelfunctie, shop=clothes); fascia colour measured on the strip 2022-12-15 span 3437-3588"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#342d2c",
+     "evidence": "strip 2022-12-15 span 3437-3588: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "overrides": {
+     "bays": [
+      2,
+      2,
+      3
+     ]
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "name": "Studio Onrust",
+    "category": "shop=clothes",
+    "osm": {
+     "type": "node",
+     "id": 10922165568,
+     "name": "Studio Onrust"
+    },
+    "bag": [
+     "winkelfunctie"
+    ],
+    "photoDate": "2022-12-15",
+    "agreement": "osm-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: haarlemmer-shop-gable scored 1 on eaves 1, stucco 1; strip 2022-12-15 span 3437-3588"
+   }
+  },
+  {
+   "pandId": "0363100012167817",
+   "slug": "haarlemmerdijk-167817",
+   "address": "Haarlemmerdijk 18",
+   "type": {
+    "type": "haarlemmer-shop-cornice-frieze",
+    "ground": {
+     "shopfront": {
+      "colour": "#e3dccb",
+      "fascia": true,
+      "name": "Hebbes in Speelgoed",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "evidence": "auto-place: osm-only (winkelfunctie, shop=toys); fascia colour measured on the strip 2022-12-15 span 3588-3743; reviewer pin: Haarlemmerdijk 18 (toy shop): cream and white shop joinery (strip-sheet review (docs/reports/haarlemmer-strip-verdict-20261110.md) and the 1 m grid at 1.8x brightness)"
+     }
+    },
+    "mirror": true,
+    "measuredPalette": {
+     "brick": "#424243",
+     "evidence": "strip 2022-12-15 span 3588-3743: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#4c403a"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "name": "Hebbes in Speelgoed",
+    "category": "shop=toys",
+    "osm": {
+     "type": "node",
+     "id": 2721295958,
+     "name": "Hebbes in Speelgoed"
+    },
+    "bag": [
+     "winkelfunctie"
+    ],
+    "photoDate": "2022-12-15",
+    "agreement": "osm-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: haarlemmer-shop-cornice-frieze scored 1 on eaves 1, stucco 1; strip 2022-12-15 span 3588-3743"
+   }
+  },
+  {
+   "pandId": "0363100012167816",
+   "slug": "haarlemmerdijk-167816",
+   "address": "Haarlemmerdijk 16",
+   "type": {
+    "type": "haarlemmer-shop-cornice",
+    "ground": {
+     "shopfront": {
+      "colour": "#21171a",
+      "fascia": true,
+      "name": "La Brasa",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "evidence": "auto-place: osm-only (bijeenkomstfunctie,woonfunctie, amenity=restaurant); fascia colour measured on the strip 2022-12-15 span 3743-3899"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#302423",
+     "evidence": "strip 2022-12-15 span 3743-3899: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "overrides": {
+     "headLines": [
+      0.8,
+      0.76,
+      0.82
+     ]
+    }
+   },
+   "groundFloor": {
+    "use": "restaurant",
+    "name": "La Brasa",
+    "category": "amenity=restaurant",
+    "osm": {
+     "type": "node",
+     "id": 2721294910,
+     "name": "La Brasa"
+    },
+    "bag": [
+     "bijeenkomstfunctie,woonfunctie"
+    ],
+    "photoDate": "2022-12-15",
+    "agreement": "osm-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: haarlemmer-shop-cornice scored 1 on eaves 1, stucco 1, columns 1; strip 2022-12-15 span 3743-3899"
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "auto-place: low attic behind the cornice; the strips show sky over the cornices of the type rows"
+  },
+  "measuredEaves": [
+   {
+    "pand": "0363100012167818",
+    "stripRow": 385,
+    "evidence": "review pin: Haarlemmerdijk 20: gable foot (scroll tops) at 10.2 m, 2022-12-15"
+   },
+   {
+    "pand": "0363100012167817",
+    "stripRow": 337,
+    "evidence": "review pin: Haarlemmerdijk 18: the cornice top over the cream attic frieze at 11.4 m (strip-sheet review (docs/reports/haarlemmer-strip-verdict-20261110.md) and the 1 m grid at 1.8x brightness)"
+   },
+   {
+    "pand": "0363100012167816",
+    "stripRow": 329,
+    "evidence": "review pin: Haarlemmerdijk 16: cornice top 11.6 m"
+   }
+  ]
+ },
+ "schemaLimits": [
+  {
+   "component": "gable ornament",
+   "what": "20 (167818): sandstone claw pieces and scrolls beside the neck and a carved cap; drawn as a plain neck"
+  },
+  {
+   "component": "attic window width",
+   "what": "20 (167818): the neck light is about 1.2 m wide and set low; the kit draws one narrow attic light"
+  },
+  {
+   "component": "cornice crown piece",
+   "what": "18 (167817): a cream moulded crowned dormer front over the frieze; drawn as a brick pediment cap"
+  },
+  {
+   "component": "strip registration",
+   "what": "every facade on the 2022-12-15 strip stands 0.4-0.9 m right of its BAG split; the models stand on BAG, so the sheet shows the neck of 20 off-centre"
+  }
+ ]
+}

@@ -1,0 +1,155 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "haarlemmerdijk-2-58-r2",
+ "street": "Haarlemmerdijk",
+ "sources": [
+  {
+   "id": "strip-2022-12-15",
+   "kind": "street-panorama",
+   "capturedAt": "2022-12-15",
+   "image": "staging/block-face/haarlemmerdijk-2-58-r2/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "auto-place (blockFace/autoPlace.ts)",
+  "passes": 1,
+  "note": "auto-placed from the haarlemmerbuurt library (buurt Haarlemmerbuurt-West); scores and holds in scripts/block-face/faces/haarlemmerdijk-2-58/auto-place.json"
+ },
+ "types": [
+  "haarlemmer-shop-cornice-frieze",
+  "haarlemmer-shop-gable"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012176172",
+   "slug": "haarlemmerdijk-176172",
+   "address": "Haarlemmerdijk 6",
+   "type": {
+    "type": "haarlemmer-shop-cornice-frieze",
+    "ground": {
+     "shopfront": {
+      "colour": "#e3dccb",
+      "fascia": true,
+      "name": "Pho Viet",
+      "entrance": "right",
+      "glazing": "split",
+      "stallriser": "low",
+      "evidence": "auto-place: osm-only (bijeenkomstfunctie, amenity=restaurant); fascia colour measured on the strip 2022-12-15 span 4574-4743; reviewer pin: Haarlemmerdijk 6 (restaurant): cream shopfront with white pilasters, the door on the right (strip-sheet review (docs/reports/haarlemmer-strip-verdict-20261110.md) and the 1 m grid at 1.8x brightness)"
+     }
+    },
+    "mirror": true,
+    "measuredPalette": {
+     "brick": "#473d38",
+     "evidence": "strip 2022-12-15 span 4574-4743: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#4e4a44"
+    }
+   },
+   "groundFloor": {
+    "use": "restaurant",
+    "name": "Pho Viet",
+    "category": "amenity=restaurant",
+    "osm": {
+     "type": "node",
+     "id": 2721299532,
+     "name": "Pho Viet"
+    },
+    "bag": [
+     "bijeenkomstfunctie"
+    ],
+    "photoDate": "2022-12-15",
+    "agreement": "osm-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: haarlemmer-shop-cornice-frieze scored 1 on eaves 1, stucco 1; strip 2022-12-15 span 4574-4743"
+   }
+  },
+  {
+   "pandId": "0363100012176174",
+   "slug": "haarlemmerdijk-176174",
+   "address": "Haarlemmerdijk 4",
+   "type": {
+    "type": "haarlemmer-shop-gable",
+    "ground": {
+     "shopfront": {
+      "colour": "#e3dccb",
+      "fascia": true,
+      "name": "Vishandel 't Centrum",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "evidence": "auto-place: osm-only (winkelfunctie, shop=seafood); fascia colour measured on the strip 2022-12-15 span 4743-4916; reviewer pin: Haarlemmerdijk 4 (fish shop): cream shopfront with a central door (strip-sheet review (docs/reports/haarlemmer-strip-verdict-20261110.md) and the 1 m grid at 1.8x brightness)"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#4a3e34",
+     "evidence": "strip 2022-12-15 span 4743-4916: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "crown": "bell-low",
+    "paletteOverrides": {
+     "brick": "#5b5550"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "name": "Vishandel 't Centrum",
+    "category": "shop=seafood",
+    "osm": {
+     "type": "node",
+     "id": 2721298939,
+     "name": "Vishandel 't Centrum"
+    },
+    "bag": [
+     "winkelfunctie"
+    ],
+    "photoDate": "2022-12-15",
+    "agreement": "osm-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: haarlemmer-shop-gable scored 0.75 on eaves 0.5, stucco 1; strip 2022-12-15 span 4743-4916"
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "auto-place: low attic behind the cornice; the strips show sky over the cornices of the type rows"
+  },
+  "measuredEaves": [
+   {
+    "pand": "0363100012176172",
+    "stripRow": 353,
+    "evidence": "review pin: Haarlemmerdijk 6: the cornice top over the cream band at 11.0 m (strip-sheet review (docs/reports/haarlemmer-strip-verdict-20261110.md) and the 1 m grid at 1.8x brightness)"
+   },
+   {
+    "pand": "0363100012176174",
+    "stripRow": 401,
+    "evidence": "review pin: Haarlemmerdijk 4: gable foot 9.8 m"
+   }
+  ]
+ },
+ "schemaLimits": [
+  {
+   "component": "cornice crown piece",
+   "what": "6 (176172): a cream moulded crowned dormer front over a 1 m cream frieze; drawn as a brick pediment cap"
+  },
+  {
+   "component": "gable ornament",
+   "what": "4 (176174): sandstone scrolls beside a 1.9 m neck; drawn as a plain bell"
+  },
+  {
+   "component": "shopfront pilasters",
+   "what": "6 and 4: white pilasters on cream joinery; drawn as cream joinery only"
+  }
+ ]
+}

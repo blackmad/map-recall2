@@ -1,0 +1,791 @@
+{
+ "street": "Haarlemmerstraat",
+ "seed": "0363100012167537",
+ "members": [
+  "0363100012167537",
+  "0363100012168426",
+  "0363100012168425",
+  "0363100012180016",
+  "0363100012180015",
+  "0363100012180014",
+  "0363100012180013",
+  "0363100012180012"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "next fronting pand 0363100012167535 28.9 m on shares no party wall (cross street or gap)"
+  },
+  {
+   "side": "right",
+   "reason": "next fronting pand 0363100012179660 16.3 m on shares no party wall (cross street or gap)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012165210",
+   "reason": "frontage 81.1 m from Haarlemmerstraat"
+  },
+  {
+   "pandId": "0363100012167532",
+   "reason": "frontage 59.7 m from Haarlemmerstraat"
+  },
+  {
+   "pandId": "0363100012167533",
+   "reason": "frontage 36.9 m from Haarlemmerstraat"
+  },
+  {
+   "pandId": "0363100012167534",
+   "reason": "frontage 30.9 m from Haarlemmerstraat"
+  },
+  {
+   "pandId": "0363100012167539",
+   "reason": "frontage 44.1 m from Haarlemmerstraat"
+  },
+  {
+   "pandId": "0363100012168414",
+   "reason": "frontage 76.9 m from Haarlemmerstraat"
+  },
+  {
+   "pandId": "0363100012168416",
+   "reason": "sightline to Haarlemmerstraat crosses 0363100012168420"
+  },
+  {
+   "pandId": "0363100012168417",
+   "reason": "frontage 41.1 m from Haarlemmerstraat"
+  },
+  {
+   "pandId": "0363100012168418",
+   "reason": "frontage 60.1 m from Haarlemmerstraat"
+  },
+  {
+   "pandId": "0363100012168419",
+   "reason": "frontage 53.6 m from Haarlemmerstraat"
+  },
+  {
+   "pandId": "0363100012168420",
+   "reason": "sightline to Haarlemmerstraat crosses 0363100012167537"
+  },
+  {
+   "pandId": "0363100012168421",
+   "reason": "frontage 35.0 m from Haarlemmerstraat"
+  },
+  {
+   "pandId": "0363100012168422",
+   "reason": "sightline to Haarlemmerstraat crosses 0363100012180010"
+  },
+  {
+   "pandId": "0363100012168423",
+   "reason": "frontage 47.2 m from Haarlemmerstraat"
+  },
+  {
+   "pandId": "0363100012168424",
+   "reason": "sightline to Haarlemmerstraat crosses 0363100012167537"
+  },
+  {
+   "pandId": "0363100012168430",
+   "reason": "frontage 55.0 m from Haarlemmerstraat"
+  },
+  {
+   "pandId": "0363100012171146",
+   "reason": "frontage 31.9 m from Haarlemmerstraat"
+  },
+  {
+   "pandId": "0363100012171147",
+   "reason": "sightline to Haarlemmerstraat crosses 0363100012171140"
+  },
+  {
+   "pandId": "0363100012171149",
+   "reason": "sightline to Haarlemmerstraat crosses 0363100012171140"
+  },
+  {
+   "pandId": "0363100012175134",
+   "reason": "frontage 83.3 m from Haarlemmerstraat"
+  },
+  {
+   "pandId": "0363100012175135",
+   "reason": "sightline to Haarlemmerstraat crosses 0363100012175139"
+  },
+  {
+   "pandId": "0363100012175136",
+   "reason": "sightline to Haarlemmerstraat crosses 0363100012175205"
+  },
+  {
+   "pandId": "0363100012175137",
+   "reason": "sightline to Haarlemmerstraat crosses 0363100012175204"
+  },
+  {
+   "pandId": "0363100012175138",
+   "reason": "sightline to Haarlemmerstraat crosses 0363100012175206"
+  },
+  {
+   "pandId": "0363100012175145",
+   "reason": "sightline to Haarlemmerstraat crosses 0363100012175143"
+  },
+  {
+   "pandId": "0363100012175146",
+   "reason": "sightline to Haarlemmerstraat crosses 0363100012175142"
+  },
+  {
+   "pandId": "0363100012175147",
+   "reason": "frontage 80.2 m from Haarlemmerstraat"
+  },
+  {
+   "pandId": "0363100012175148",
+   "reason": "frontage 80.2 m from Haarlemmerstraat"
+  },
+  {
+   "pandId": "0363100012175149",
+   "reason": "frontage 55.3 m from Haarlemmerstraat"
+  },
+  {
+   "pandId": "0363100012175150",
+   "reason": "frontage 71.3 m from Haarlemmerstraat"
+  },
+  {
+   "pandId": "0363100012175197",
+   "reason": "frontage 77.4 m from Haarlemmerstraat"
+  },
+  {
+   "pandId": "0363100012175199",
+   "reason": "sightline to Haarlemmerstraat crosses 0363100012171145"
+  },
+  {
+   "pandId": "0363100012175200",
+   "reason": "sightline to Haarlemmerstraat crosses 0363100012171144"
+  },
+  {
+   "pandId": "0363100012175201",
+   "reason": "sightline to Haarlemmerstraat crosses 0363100012175208"
+  },
+  {
+   "pandId": "0363100012175202",
+   "reason": "sightline to Haarlemmerstraat crosses 0363100012175207"
+  },
+  {
+   "pandId": "0363100012175203",
+   "reason": "sightline to Haarlemmerstraat crosses 0363100012171141"
+  },
+  {
+   "pandId": "0363100012175209",
+   "reason": "sightline to Haarlemmerstraat crosses 0363100012175140"
+  },
+  {
+   "pandId": "0363100012175210",
+   "reason": "frontage 45.0 m from Haarlemmerstraat"
+  },
+  {
+   "pandId": "0363100012175434",
+   "reason": "frontage 43.2 m from Haarlemmerstraat"
+  },
+  {
+   "pandId": "0363100012175435",
+   "reason": "frontage 39.4 m from Haarlemmerstraat"
+  },
+  {
+   "pandId": "0363100012175436",
+   "reason": "frontage 46.8 m from Haarlemmerstraat"
+  },
+  {
+   "pandId": "0363100012175437",
+   "reason": "frontage 35.4 m from Haarlemmerstraat"
+  },
+  {
+   "pandId": "0363100012175439",
+   "reason": "sightline to Haarlemmerstraat crosses 0363100012175412"
+  },
+  {
+   "pandId": "0363100012175440",
+   "reason": "sightline to Haarlemmerstraat crosses 0363100012175412"
+  },
+  {
+   "pandId": "0363100012175441",
+   "reason": "sightline to Haarlemmerstraat crosses 0363100012175412"
+  },
+  {
+   "pandId": "0363100012175444",
+   "reason": "frontage 57.9 m from Haarlemmerstraat"
+  },
+  {
+   "pandId": "0363100012175445",
+   "reason": "frontage 52.6 m from Haarlemmerstraat"
+  },
+  {
+   "pandId": "0363100012175446",
+   "reason": "frontage 35.9 m from Haarlemmerstraat"
+  },
+  {
+   "pandId": "0363100012175447",
+   "reason": "frontage 57.5 m from Haarlemmerstraat"
+  },
+  {
+   "pandId": "0363100012175448",
+   "reason": "frontage 57.1 m from Haarlemmerstraat"
+  },
+  {
+   "pandId": "0363100012175449",
+   "reason": "frontage 30.3 m from Haarlemmerstraat"
+  },
+  {
+   "pandId": "0363100012175450",
+   "reason": "sightline to Haarlemmerstraat crosses 0363100012175442"
+  },
+  {
+   "pandId": "0363100012175451",
+   "reason": "frontage 63.3 m from Haarlemmerstraat"
+  },
+  {
+   "pandId": "0363100012175452",
+   "reason": "frontage 58.8 m from Haarlemmerstraat"
+  },
+  {
+   "pandId": "0363100012175453",
+   "reason": "frontage 53.2 m from Haarlemmerstraat"
+  },
+  {
+   "pandId": "0363100012175454",
+   "reason": "frontage 47.3 m from Haarlemmerstraat"
+  },
+  {
+   "pandId": "0363100012175455",
+   "reason": "frontage 41.7 m from Haarlemmerstraat"
+  },
+  {
+   "pandId": "0363100012179573",
+   "reason": "frontage 74.2 m from Haarlemmerstraat"
+  },
+  {
+   "pandId": "0363100012179575",
+   "reason": "frontage 69.4 m from Haarlemmerstraat"
+  },
+  {
+   "pandId": "0363100012179576",
+   "reason": "sightline to Haarlemmerstraat crosses 0363100012175132"
+  },
+  {
+   "pandId": "0363100012179577",
+   "reason": "frontage 42.2 m from Haarlemmerstraat"
+  },
+  {
+   "pandId": "0363100012179579",
+   "reason": "frontage 74.5 m from Haarlemmerstraat"
+  },
+  {
+   "pandId": "0363100012179642",
+   "reason": "frontage 45.6 m from Haarlemmerstraat"
+  },
+  {
+   "pandId": "0363100012179645",
+   "reason": "frontage 37.7 m from Haarlemmerstraat"
+  },
+  {
+   "pandId": "0363100012179646",
+   "reason": "frontage 32.1 m from Haarlemmerstraat"
+  },
+  {
+   "pandId": "0363100012179647",
+   "reason": "sightline to Haarlemmerstraat crosses 0363100012169275"
+  },
+  {
+   "pandId": "0363100012179648",
+   "reason": "sightline to Haarlemmerstraat crosses 0363100012175413"
+  },
+  {
+   "pandId": "0363100012179649",
+   "reason": "frontage 41.5 m from Haarlemmerstraat"
+  },
+  {
+   "pandId": "0363100012179650",
+   "reason": "frontage 41.1 m from Haarlemmerstraat"
+  },
+  {
+   "pandId": "0363100012179651",
+   "reason": "frontage 36.5 m from Haarlemmerstraat"
+  },
+  {
+   "pandId": "0363100012179652",
+   "reason": "sightline to Haarlemmerstraat crosses 0363100012171103"
+  },
+  {
+   "pandId": "0363100012179653",
+   "reason": "sightline to Haarlemmerstraat crosses 0363100012179578"
+  },
+  {
+   "pandId": "0363100012179654",
+   "reason": "frontage 70.3 m from Haarlemmerstraat"
+  },
+  {
+   "pandId": "0363100012179655",
+   "reason": "frontage 64.6 m from Haarlemmerstraat"
+  },
+  {
+   "pandId": "0363100012179656",
+   "reason": "frontage 54.8 m from Haarlemmerstraat"
+  },
+  {
+   "pandId": "0363100012179657",
+   "reason": "frontage 41.6 m from Haarlemmerstraat"
+  },
+  {
+   "pandId": "0363100012179659",
+   "reason": "frontage 50.4 m from Haarlemmerstraat"
+  },
+  {
+   "pandId": "0363100012179662",
+   "reason": "frontage 44.6 m from Haarlemmerstraat"
+  },
+  {
+   "pandId": "0363100012179663",
+   "reason": "sightline to Haarlemmerstraat crosses 0363100012180006"
+  },
+  {
+   "pandId": "0363100012179723",
+   "reason": "sightline to Haarlemmerstraat crosses 0363100012179658"
+  },
+  {
+   "pandId": "0363100012179727",
+   "reason": "sightline to Haarlemmerstraat crosses 0363100012179725"
+  },
+  {
+   "pandId": "0363100012179728",
+   "reason": "sightline to Haarlemmerstraat crosses 0363100012179733"
+  },
+  {
+   "pandId": "0363100012179729",
+   "reason": "sightline to Haarlemmerstraat crosses 0363100012179725"
+  },
+  {
+   "pandId": "0363100012179730",
+   "reason": "frontage 30.9 m from Haarlemmerstraat"
+  },
+  {
+   "pandId": "0363100012179734",
+   "reason": "sightline to Haarlemmerstraat crosses 0363100012179731"
+  },
+  {
+   "pandId": "0363100012179737",
+   "reason": "frontage 63.3 m from Haarlemmerstraat"
+  },
+  {
+   "pandId": "0363100012179840",
+   "reason": "frontage 81.2 m from Haarlemmerstraat"
+  },
+  {
+   "pandId": "0363100012179841",
+   "reason": "frontage 57.0 m from Haarlemmerstraat"
+  },
+  {
+   "pandId": "0363100012179842",
+   "reason": "frontage 67.7 m from Haarlemmerstraat"
+  },
+  {
+   "pandId": "0363100012179843",
+   "reason": "frontage 77.3 m from Haarlemmerstraat"
+  },
+  {
+   "pandId": "0363100012179844",
+   "reason": "frontage 73.1 m from Haarlemmerstraat"
+  },
+  {
+   "pandId": "0363100012179845",
+   "reason": "frontage 39.2 m from Haarlemmerstraat"
+  },
+  {
+   "pandId": "0363100012179846",
+   "reason": "frontage 33.7 m from Haarlemmerstraat"
+  },
+  {
+   "pandId": "0363100012179847",
+   "reason": "frontage 62.2 m from Haarlemmerstraat"
+  },
+  {
+   "pandId": "0363100012179848",
+   "reason": "frontage 56.5 m from Haarlemmerstraat"
+  },
+  {
+   "pandId": "0363100012179849",
+   "reason": "frontage 50.6 m from Haarlemmerstraat"
+  },
+  {
+   "pandId": "0363100012179850",
+   "reason": "frontage 68.6 m from Haarlemmerstraat"
+  },
+  {
+   "pandId": "0363100012179851",
+   "reason": "frontage 74.0 m from Haarlemmerstraat"
+  },
+  {
+   "pandId": "0363100012179917",
+   "reason": "frontage 47.8 m from Haarlemmerstraat"
+  },
+  {
+   "pandId": "0363100012179918",
+   "reason": "frontage 75.0 m from Haarlemmerstraat"
+  },
+  {
+   "pandId": "0363100012179919",
+   "reason": "frontage 69.7 m from Haarlemmerstraat"
+  },
+  {
+   "pandId": "0363100012179920",
+   "reason": "frontage 66.6 m from Haarlemmerstraat"
+  },
+  {
+   "pandId": "0363100012179921",
+   "reason": "frontage 74.3 m from Haarlemmerstraat"
+  },
+  {
+   "pandId": "0363100012179923",
+   "reason": "frontage 64.1 m from Haarlemmerstraat"
+  },
+  {
+   "pandId": "0363100012179924",
+   "reason": "frontage 79.8 m from Haarlemmerstraat"
+  },
+  {
+   "pandId": "0363100012179925",
+   "reason": "frontage 80.0 m from Haarlemmerstraat"
+  },
+  {
+   "pandId": "0363100012179926",
+   "reason": "frontage 75.2 m from Haarlemmerstraat"
+  },
+  {
+   "pandId": "0363100012179927",
+   "reason": "frontage 73.4 m from Haarlemmerstraat"
+  },
+  {
+   "pandId": "0363100012179928",
+   "reason": "frontage 75.5 m from Haarlemmerstraat"
+  },
+  {
+   "pandId": "0363100012179929",
+   "reason": "frontage 70.4 m from Haarlemmerstraat"
+  },
+  {
+   "pandId": "0363100012179930",
+   "reason": "frontage 84.3 m from Haarlemmerstraat"
+  },
+  {
+   "pandId": "0363100012179931",
+   "reason": "frontage 75.6 m from Haarlemmerstraat"
+  },
+  {
+   "pandId": "0363100012179932",
+   "reason": "frontage 80.5 m from Haarlemmerstraat"
+  },
+  {
+   "pandId": "0363100012179933",
+   "reason": "frontage 58.4 m from Haarlemmerstraat"
+  },
+  {
+   "pandId": "0363100012179934",
+   "reason": "frontage 81.2 m from Haarlemmerstraat"
+  },
+  {
+   "pandId": "0363100012179935",
+   "reason": "frontage 70.6 m from Haarlemmerstraat"
+  },
+  {
+   "pandId": "0363100012179936",
+   "reason": "frontage 65.0 m from Haarlemmerstraat"
+  },
+  {
+   "pandId": "0363100012179937",
+   "reason": "frontage 84.8 m from Haarlemmerstraat"
+  },
+  {
+   "pandId": "0363100012180007",
+   "reason": "frontage 31.4 m from Haarlemmerstraat"
+  },
+  {
+   "pandId": "0363100012180008",
+   "reason": "sightline to Haarlemmerstraat crosses 0363100012179725"
+  },
+  {
+   "pandId": "0363100012180009",
+   "reason": "sightline to Haarlemmerstraat crosses 0363100012180012"
+  },
+  {
+   "pandId": "0363100012180010",
+   "reason": "sightline to Haarlemmerstraat crosses 0363100012180009"
+  },
+  {
+   "pandId": "0363100012180011",
+   "reason": "sightline to Haarlemmerstraat crosses 0363100012180009"
+  },
+  {
+   "pandId": "0363100012180024",
+   "reason": "sightline to Haarlemmerstraat crosses 0363100012179660"
+  },
+  {
+   "pandId": "0363100012180025",
+   "reason": "sightline to Haarlemmerstraat crosses 0363100012179660"
+  },
+  {
+   "pandId": "0363100012180026",
+   "reason": "frontage 31.5 m from Haarlemmerstraat"
+  },
+  {
+   "pandId": "0363100012180105",
+   "reason": "frontage 36.1 m from Haarlemmerstraat"
+  },
+  {
+   "pandId": "0363100012180106",
+   "reason": "frontage 56.5 m from Haarlemmerstraat"
+  },
+  {
+   "pandId": "0363100012185505",
+   "reason": "sightline to Haarlemmerstraat crosses 0363100012179658"
+  },
+  {
+   "pandId": "0363100012186294",
+   "reason": "frontage 40.2 m from Haarlemmerstraat"
+  },
+  {
+   "pandId": "0363100012251306",
+   "reason": "frontage 82.0 m from Haarlemmerstraat"
+  },
+  {
+   "pandId": "0363100012251307",
+   "reason": "frontage 84.2 m from Haarlemmerstraat"
+  },
+  {
+   "pandId": "0363100012251308",
+   "reason": "frontage 76.7 m from Haarlemmerstraat"
+  },
+  {
+   "pandId": "0363100012252743",
+   "reason": "frontage 52.6 m from Haarlemmerstraat"
+  },
+  {
+   "pandId": "0363100012571520",
+   "reason": "sightline to Haarlemmerstraat crosses 0363100012171140"
+  },
+  {
+   "pandId": "0363100012571521",
+   "reason": "sightline to Haarlemmerstraat crosses 0363100012171140"
+  },
+  {
+   "pandId": "0363100012571599",
+   "reason": "sightline to Haarlemmerstraat crosses 0363100012179578"
+  },
+  {
+   "pandId": "0363100012167529",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012167538",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012167540",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012168427",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012168428",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012168486",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012171140",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012171141",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012171142",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012171144",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012171145",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012171148",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012175139",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012175140",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012175141",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012175142",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012175143",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012175144",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012175204",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012175205",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012175206",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012175207",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012175208",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012179658",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012179724",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012179725",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012179726",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012179731",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012179732",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012179733",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012179735",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012180006",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012180017",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012167537",
+   "alongM": 0,
+   "widthM": 4.22,
+   "eavesM": 17.49,
+   "roofMaxM": 18.46,
+   "storeys3dbag": 5,
+   "builtYear": 1817,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012168426",
+   "alongM": 4.93,
+   "widthM": 5.63,
+   "eavesM": 7.65,
+   "roofMaxM": 15.28,
+   "storeys3dbag": 4,
+   "builtYear": 1625,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012168425",
+   "alongM": 10.5,
+   "widthM": 5.52,
+   "eavesM": 10.27,
+   "roofMaxM": 14.21,
+   "storeys3dbag": 5,
+   "builtYear": 1744,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012180016",
+   "alongM": 15.95,
+   "widthM": 5.38,
+   "eavesM": 15.88,
+   "roofMaxM": 18.76,
+   "storeys3dbag": 5,
+   "builtYear": 1779,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012180015",
+   "alongM": 21.27,
+   "widthM": 5.25,
+   "eavesM": 14.95,
+   "roofMaxM": 18.64,
+   "storeys3dbag": 5,
+   "builtYear": 1761,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012180014",
+   "alongM": 26.5,
+   "widthM": 5.23,
+   "eavesM": 14.95,
+   "roofMaxM": 17.5,
+   "storeys3dbag": 5,
+   "builtYear": 1756,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012180013",
+   "alongM": 31.77,
+   "widthM": 5.33,
+   "eavesM": 8.51,
+   "roofMaxM": 12.62,
+   "storeys3dbag": 4,
+   "builtYear": 1794,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012180012",
+   "alongM": 36.62,
+   "widthM": 4.38,
+   "eavesM": 13.77,
+   "roofMaxM": 16.14,
+   "storeys3dbag": 5,
+   "builtYear": 1801,
+   "uncertainty": []
+  }
+ ]
+}

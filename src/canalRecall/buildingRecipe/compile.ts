@@ -7,6 +7,7 @@
  *    below it stays masonry, above it becomes a dark roof verge, so a neck or
  *    bell gable keeps its silhouette in front of a side-sloped roof.
  */
+import {withFrontRoof} from '../blockFace/houseFrontRoof.ts';
 import * as T from 'three';
 import {canalhouseOpeningRecess} from '../canalhouseOpeningRecess.ts';
 import {cutNativeFacadeAperture} from '../canalhouseNativeAperture.ts';
@@ -214,7 +215,7 @@ export function compileBuilding(intent: LargeBuildingIntent, facts: BuildingFact
 export function compileBuilding(intent: CanalHouseIntent, facts: BuildingFacts): CompiledBuilding;
 export function compileBuilding(intent: BuildingIntent, facts: BuildingFacts): CompiledBuilding | CompiledLargeBuilding {
   if (intent.kind === 'large') return compileLargeBuilding(intent, facts);
-  const {recipe, anchorRD, report, facts: fitted} = fitIntent(intent, facts);
+  const {recipe, anchorRD, report, facts: fitted} = fitIntent(intent, withFrontRoof(intent, facts)); // roof.form / roof.source 'front': the roof from the front, not 3DBAG (absent = the same facts)
   const built = compileCanalHouseRecipe(recipe);
   backJogs(built.group, recipe, report);
   const vergeTriangles = crownVerges(built.group, recipe, intent.roof.material);

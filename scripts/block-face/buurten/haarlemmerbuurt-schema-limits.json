@@ -1,0 +1,20 @@
+{
+ "note": "Kit limits read off the Haarlemmerbuurt strips for faces without a placed run (no face intent to carry them); placed runs carry theirs as schemaLimits on faces/<run>/intent.json. {face, component, what}. Lane belt-haarlemmer-20261110, at the house-line hold.",
+ "reviewed": "2026-11-10",
+ "limits": [
+  {"face": "haarlemmerdijk-117-143", "component": "low bell-gable cottage", "what": "119A, 121A, 143: two storeys under a bell gable that holds a storey-high window; the shop types start at three storeys"},
+  {"face": "haarlemmerdijk-117-143", "component": "five-storey body", "what": "135A (173482): four upper rows under a cornice at 13.3 m"},
+  {"face": "haarlemmerdijk-117-143", "component": "band window", "what": "127, 129: beige band fronts with one ribbon window per storey"},
+  {"face": "haarlemmerdijk-13-45", "component": "low bell-gable cottage", "what": "25B (177502): a small two-storey house with a bell gable at 6.3-8.4 m"},
+  {"face": "haarlemmerdijk-13-45", "component": "four-storey frieze body", "what": "33 (253819): three axes and three upper rows under a 1.4 m white frieze; the frieze type has a three-storey body"},
+  {"face": "haarlemmerdijk-13-45", "component": "front-hipped roof on a skewed frontage", "what": "33, 35A: the hip plane rises 0.75 cm/m along the facade (setback square to the front normal, not the facade edge), 3 cm over the cornice line; recipeRoof's square-to-chord retry covers attic bands and squareSaddle only"},
+  {"face": "haarlemmerdijk-13-45", "component": "point gable roof", "what": "31 (167794): 0.9 m2 of brick gable and roof tile coplanar at the facade (geometry regression)"},
+  {"face": "haarlemmerdijk-13-45", "component": "Jugendstil front", "what": "39 (167804) white front with a tower dormer, 43 (176277) orange-glazed front to 15 m"},
+  {"face": "haarlemmer-46-96", "component": "wide multi-light window", "what": "48B (171141): one wide three-light window per storey under a bell gable, between sash-window neighbours"},
+  {"face": "haarlemmer-46-96", "component": "five-storey body", "what": "62, 64: five-storey painted and ornate fronts"},
+  {"face": "brouwersgracht-2-20", "component": "five-storey canal house", "what": "4, 6, 8: five storeys, cornice or stucco top storey, spire dormer"},
+  {"face": "brouwersgracht-2-20", "component": "low bell-gable cottage", "what": "20 (179425): two storeys under a bell gable"},
+  {"face": "brouwersgracht-*", "component": "warehouse loading axis", "what": "pakhuizen with a loading-door axis, shutters and a hoist beam (most of Brouwersgracht 126-280)"},
+  {"face": "*", "component": "foliage mask under a green cast", "what": "measureFacade's own leaf mask (likeness.ts reasons) is not white-balanced; only the gate masks use stripWhiteBalance.ts"}
+ ]
+}
