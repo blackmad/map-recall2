@@ -11,6 +11,7 @@ import type { ArchitecturalRecipe } from './streetAppearance.js';
 import type { FacadeStyle } from './genericFacades.js';
 import { profileTraits, unitDraw, type BuurtProfile, type ProfileTraits } from './buurtProfiles/profiles.js';
 import { modernPandWall } from './buurtProfiles/modernPandWalls.js';
+import { shopGrammarEnabled, shopGroundHex } from './shopGrammar.js';
 import { modernFacadesEnabled, modernUseFor, modernVocabulary, type ModernFacts, type ModernVocabulary } from './modernFacades.js';
 import { contemporaryLookFor, newbuildFamilyEnabled, type ContemporaryLook } from './contemporaryFamily.js';
 
@@ -222,7 +223,7 @@ export function bayLookFor(id: string, year: number | null, heightM: number, loo
   const paints = GROUND_PAINTS[look];
   return {
     archetype, style, ...(vocab ? { modern: vocab } : {}), ...(contemporary ? { contemporary } : {}), variant: { archetype, ...BAY_STYLES[archetype][style] }, ...(traits?.wall && !periodWall && !recipe?.wallHex ? { profileWall: traits.wall } : {}), layout: ARCHETYPE_LAYOUT[archetype], wallHex: palette.wall, accentHex: recipe?.openingGroup ? lookHex(recipe.frameHex ?? '#f1ede2', look) : palette.accent,
-    groundHex: recipe?.groundWallHex ? lookHex(recipe.groundWallHex, look) : shop ? paints[(h >>> 21) % paints.length] : undefined,
+    groundHex: recipe?.groundWallHex ? lookHex(recipe.groundWallHex, look) : shop ? (shopfront && shopfront !== 'quiet' && shopGrammarEnabled() ? shopGroundHex(id, look) : paints[(h >>> 21) % paints.length]) : undefined,
     layers: { upper: bayLayer(archetype, style, 'upper'), ground: bayLayer(archetype, style, shop && !recipe?.openingGroup && !(recipe?.facadeAssembly === 'stacked-open-balcony' && (shopKind === 'shopWindow' || shopKind === 'groundShop')) ? shopKind : 'ground', !!recipe && recipe.trimDensity !== 'ornate'), door: bayLayer(archetype, style, 'groundDoor') },
     plain: bayLayer(archetype, style, 'plain'),
   };
