@@ -41,7 +41,8 @@
      "glazing": "split",
      "stallriser": "low",
      "evidence": "auto-place: osm-only (bijeenkomstfunctie,woonfunctie, amenity=restaurant); fascia colour measured on the strip 2022-12-15 span 3743-3899"
-    }
+    },
+    "eavesHeight": 11.6
    }
   ],
   "roof": {
@@ -70,6 +71,12 @@
    "confidence": 0.6,
    "ref": "scripts/block-face/faces/haarlemmerdijk-2-58-r1/strip.json",
    "at": "2022-12-15"
+  },
+  "fronts/0/eavesHeight": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/buurten/haarlemmerbuurt-*-review-eaves.json: Haarlemmerdijk 16: cornice top 11.6 m",
+   "at": "2022-12-15"
   }
  },
  "schemaLimits": [
@@ -80,5 +87,6 @@
  ],
  "facts": {
   "pui": "shop"
- }
+ },
+ "route": "recipe"
 }

@@ -45,7 +45,8 @@
      "glazing": "split",
      "stallriser": "low",
      "evidence": "auto-place: osm-only (bijeenkomstfunctie, amenity=restaurant); fascia colour measured on the strip 2022-12-15 span 4574-4743; reviewer pin: Haarlemmerdijk 6 (restaurant): cream shopfront with white pilasters, the door on the right (strip-sheet review (docs/reports/haarlemmer-strip-verdict-20261110.md) and the 1 m grid at 1.8x brightness)"
-    }
+    },
+    "eavesHeight": 11
    }
   ],
   "roof": {
@@ -79,6 +80,12 @@
    "confidence": 0.3,
    "ref": "scripts/block-face/faces/haarlemmerdijk-2-58-r2/strip.json#type:haarlemmer-shop-cornice-frieze",
    "at": null
+  },
+  "fronts/0/eavesHeight": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/buurten/haarlemmerbuurt-*-review-eaves.json: Haarlemmerdijk 6: the cornice top over the cream band at 11.0 m (strip-sheet review (docs/reports/haarlemmer-strip-verdict-20261110.md) and the 1 m grid at 1.8x brightness)",
+   "at": "2022-12-15"
   }
  },
  "schemaLimits": [
@@ -89,13 +96,10 @@
   {
    "component": "shopfront pilasters",
    "what": "6 and 4: white pilasters on cream joinery; drawn as cream joinery only"
-  },
-  {
-   "component": "roof behind crown",
-   "what": "Haarlemmerdijk 6: the recipe route draws the 3DBAG roof (max 11.8 m, ridge 11.8 m) behind the cornice crown; the strip shows sky behind it. roof.form 'flat' and roof.source 'front' are read by the block-face compile only, not by the canal-house recipe"
   }
  ],
  "facts": {
   "pui": "shop"
- }
+ },
+ "route": "recipe"
 }

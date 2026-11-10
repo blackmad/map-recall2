@@ -46,7 +46,8 @@
      "glazing": "split",
      "stallriser": "low",
      "evidence": "auto-place: osm-only (bijeenkomstfunctie, amenity=restaurant); fascia colour measured on the strip 2024-11-21 span 3442-3634"
-    }
+    },
+    "eavesHeight": 13
    }
   ],
   "roof": {
@@ -77,19 +78,22 @@
    "confidence": 0.3,
    "ref": "scripts/block-face/faces/haarlemmer-46-96-r1/strip.json#type:haarlemmerstraat-sash-gable-four",
    "at": null
+  },
+  "fronts/0/eavesHeight": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/buurten/haarlemmerbuurt-*-review-eaves.json: Haarlemmerstraat 54: front eaves/gable foot on the 1 m grid",
+   "at": "2024-11-21"
   }
  },
  "schemaLimits": [
   {
    "component": "gable ornament",
    "what": "54 (171144) and 52 (171145): sandstone scrolls on the neck gables and a three-light attic group on 54; drawn as plain necks with one attic light"
-  },
-  {
-   "component": "roof behind crown",
-   "what": "Haarlemmerstraat 54: the recipe route draws the 3DBAG roof (max 14.6 m, ridge 14.6 m) behind the neck crown; the strip shows sky behind it. roof.form 'flat' and roof.source 'front' are read by the block-face compile only, not by the canal-house recipe"
   }
  ],
  "facts": {
   "pui": "shop"
- }
+ },
+ "route": "recipe"
 }

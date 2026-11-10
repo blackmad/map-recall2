@@ -45,7 +45,8 @@
      "glazing": "split",
      "stallriser": "low",
      "evidence": "auto-place: osm-only (winkelfunctie, shop=toys); fascia colour measured on the strip 2022-12-15 span 3588-3743; reviewer pin: Haarlemmerdijk 18 (toy shop): cream and white shop joinery (strip-sheet review (docs/reports/haarlemmer-strip-verdict-20261110.md) and the 1 m grid at 1.8x brightness)"
-    }
+    },
+    "eavesHeight": 11.4
    }
   ],
   "roof": {
@@ -79,6 +80,12 @@
    "confidence": 0.3,
    "ref": "scripts/block-face/faces/haarlemmerdijk-2-58-r1/strip.json#type:haarlemmer-shop-cornice-frieze",
    "at": null
+  },
+  "fronts/0/eavesHeight": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/buurten/haarlemmerbuurt-*-review-eaves.json: Haarlemmerdijk 18: the cornice top over the cream attic frieze at 11.4 m (strip-sheet review (docs/reports/haarlemmer-strip-verdict-20261110.md) and the 1 m grid at 1.8x brightness)",
+   "at": "2022-12-15"
   }
  },
  "schemaLimits": [
@@ -93,5 +100,6 @@
  ],
  "facts": {
   "pui": "shop"
- }
+ },
+ "route": "recipe"
 }

@@ -47,7 +47,8 @@
      "glazing": "split",
      "stallriser": "low",
      "evidence": "auto-place: osm-only (winkelfunctie, shop=clothes); fascia colour measured on the strip 2022-12-15 span 3437-3588"
-    }
+    },
+    "eavesHeight": 10.2
    }
   ],
   "roof": {
@@ -79,6 +80,12 @@
    "confidence": 0.3,
    "ref": "scripts/block-face/faces/haarlemmerdijk-2-58-r1/strip.json#type:haarlemmer-shop-gable",
    "at": null
+  },
+  "fronts/0/eavesHeight": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/buurten/haarlemmerbuurt-*-review-eaves.json: Haarlemmerdijk 20: gable foot (scroll tops) at 10.2 m, 2022-12-15",
+   "at": "2022-12-15"
   }
  },
  "schemaLimits": [
@@ -93,13 +100,10 @@
   {
    "component": "strip registration",
    "what": "every facade on the 2022-12-15 strip stands 0.4-0.9 m right of its BAG split; the models stand on BAG, so the sheet shows the neck of 20 off-centre"
-  },
-  {
-   "component": "roof behind crown",
-   "what": "Haarlemmerdijk 20: the recipe route draws the 3DBAG roof (max 11.6 m, ridge 11.0 m) behind the neck crown; the strip shows sky behind it. roof.form 'flat' and roof.source 'front' are read by the block-face compile only, not by the canal-house recipe"
   }
  ],
  "facts": {
   "pui": "shop"
- }
+ },
+ "route": "recipe"
 }

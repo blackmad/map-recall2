@@ -37,7 +37,8 @@
     "atticWindows": 1,
     "hoist": true,
     "doorBay": 1,
-    "basement": "none"
+    "basement": "none",
+    "eavesHeight": 14.5
    }
   ],
   "roof": {
@@ -68,6 +69,12 @@
    "confidence": 0.85,
    "ref": "docs/reports/haarlemmer-strip-verdict-20261110.md; strip 2024-11-21 span 3634-3818, 1 m grid: three ground bays, door in bay 1 of 0..2, wrought-iron window rails either side",
    "at": "2024-11-21"
+  },
+  "fronts/0/eavesHeight": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/buurten/haarlemmerbuurt-*-review-eaves.json: Haarlemmerstraat 52: front eaves/gable foot on the 1 m grid",
+   "at": "2024-11-21"
   }
  },
  "schemaLimits": [
@@ -86,13 +93,10 @@
   {
    "component": "ground storey",
    "what": "52: tall residential ground storey in stone with arched-head rails and a pilaster order; drawn as a plain tall window ground storey"
-  },
-  {
-   "component": "roof behind crown",
-   "what": "Haarlemmerstraat 52: the recipe route draws the 3DBAG roof (max 15.3 m, ridge 15.3 m) behind the neck crown; the strip shows sky behind it. roof.form 'flat' and roof.source 'front' are read by the block-face compile only, not by the canal-house recipe"
   }
  ],
  "facts": {
   "pui": "residential"
- }
+ },
+ "route": "recipe"
 }

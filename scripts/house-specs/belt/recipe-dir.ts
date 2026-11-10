@@ -5,7 +5,15 @@ import { execFileSync } from 'node:child_process';
 import { mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { toRecipe } from '../../../src/canalRecall/houseSpec/toRecipe.ts';
 
+export const HELP = `belt/recipe-dir.ts: materialise (or --clean) scratch recipe-route house directories for house:preview --recipe.
+
+  node --import tsx scripts/house-specs/belt/recipe-dir.ts <pandId...> [--clean] [--help]
+
+Writes scripts/building-recipes/houses/spec-<pandId>/{intent,facts}.json from scripts/house-specs/specs/<pandId>.json, the way
+house:publish step 3 does. Scratch: remove with --clean before committing (publish recreates them).`;
+
 const [, , ...ids] = process.argv;
+if (ids.includes('--help')) { console.log(HELP); process.exit(0); }
 const clean = ids.includes('--clean');
 for (const id of ids.filter(a => /^\d{16}$/.test(a))) {
   const dir = `scripts/building-recipes/houses/spec-${id}`;

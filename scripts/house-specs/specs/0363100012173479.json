@@ -48,7 +48,8 @@
       "colour": "#2a2a2a"
      },
      "evidence": "auto-place: osm-only (winkelfunctie, shop=clothes); fascia colour measured on the strip 2022-12-15 span 1249-1463"
-    }
+    },
+    "eavesHeight": 9.9
    }
   ],
   "roof": {
@@ -76,6 +77,12 @@
    "confidence": 0.6,
    "ref": "scripts/block-face/faces/haarlemmerdijk-117-143-r1/strip.json",
    "at": "2022-12-15"
+  },
+  "fronts/0/eavesHeight": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/buurten/haarlemmerbuurt-*-review-eaves.json: Haarlemmerdijk 131: front eaves/gable foot on the 1 m grid",
+   "at": "2022-12-15"
   }
  },
  "schemaLimits": [
@@ -94,5 +101,6 @@
  ],
  "facts": {
   "pui": "shop"
- }
+ },
+ "route": "recipe"
 }
