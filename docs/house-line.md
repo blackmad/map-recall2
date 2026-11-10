@@ -143,7 +143,7 @@ GLB and the photo (`/tmp/canal-pw.sh node --import tsx scripts/house-preview/gat
 
 ### Suppressed-face audit (issue #341)
 
-`node --import tsx scripts/house-audit/suppressed-faces.ts` (its HELP is `--help`; an npm script is the integrator's to add) lists every pand that a chunk-* or ordinary-* model suppresses in `models/covers.json` and checks its street-facing BAG walls (at least 4 m, on a named road in `streets-routing.json`, not party walls) against the placed model. Two tests: the brief's outward-triangle test (a triangle facing the wall within 1 m of its midpoint at half height), and a slab test, because a plain brick box passes the first and is the blank wall the ride shows. A wall is blank when it has no outward geometry or only a bare slab (every outward plane vertex on the wall's two ends). The self-check must pass before the numbers count: 0363100012116526's Nassaukade walls are bare slabs (blank), 0363100012236681's De Clercqstraat face is drawn. `scripts/house-audit/contact-sheet.ts` draws the top 20 blank walls (preview, installed route, 3/4 view). Output: `artifacts/house-audit/suppressed-faces.json` (gitignored), the sheet at `ui/2026-11-10-suppressed-faces/` in the screenshots repo.
+`node --import tsx scripts/house-audit/suppressed-faces.ts` (its HELP is `--help`; an npm script is the integrator's to add) lists every pand that a chunk-*, ordinary-* or landmark-* model suppresses in `models/covers.json` and checks its street-facing BAG walls (at least 4 m, on a named road in `streets-routing.json`, not party walls) against the placed model at 25 %, 50 % and 80 % of the BAG height (the roof maximum). A wall is blank when it is blank at 25 % or 50 %: no outward geometry, or a bare slab (every outward plane vertex on the wall's two ends, the H2b blank wall). A wall blank only at 80 % stops short of the eaves: a setback, gable or mansard may stand above it, so it is reported apart. The self-check must pass before the numbers count: 0363100012116526's Nassaukade walls are bare slabs (blank), 0363100012236681's De Clercqstraat face is drawn. `scripts/house-audit/contact-sheet.ts` draws the rows: each top-20 blank wall and three stops-short examples, framed on the flagged wall with `house:preview --wall <edge>` (`scripts/house-preview/wallSelect.ts`), plus the ride frames of the audit spots. Output: `artifacts/house-audit/suppressed-faces.json` (gitignored); sheets under `ui/2026-11-10-suppressed-faces/` in the screenshots repo.
 
 ### `--help`
 
@@ -181,6 +181,8 @@ Flags
                       sun and sky of the ride's sunny rig, wall gain, sky tint on glazing)
   --glb-lit           draw a GLB route's front through the rig's Lambert too (default: flat game colours,
                       which matched the ride frame; the Lambert drew an installed wall 0.11 L dark)
+  --wall <edge|deg>   frame this footprint wall: an edge index of the outer ring (the audit's edge field) or the edge whose outward
+                      normal bearing is nearest, e.g. 215deg. Sets the front and the 3/4 view's wall; overrides the reference's wall
   --whole-tile        build the chunk from every building of the pand's z14 tile, exactly as the runtime groups
                       it (~4 s a render); by default the chunk holds the tile's buildings within 30 m of the pand,
                       which drew the same pixels as the whole tile at Nassaukade (0363100012164843)

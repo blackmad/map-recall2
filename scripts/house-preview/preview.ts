@@ -26,6 +26,7 @@ import { measureFacade, type FacadeImage, type FacadeMeasurement } from '../../s
 import { gameColour } from '../../src/canalRecall/buildingRecipe/likeness.ts';
 import { renderElevation } from '../../src/canalRecall/landmarks/facadeCompare.ts';
 import { pickWall } from '../pand-reference/select.ts';
+import { pickWall as pickFootprintWall } from './wallSelect.ts';
 import { loadMaterialSoup } from '../landmarks/material-soup.ts';
 import type { MaterialSoup } from '../../src/canalRecall/landmarks/facadeCompare.ts';
 import { loadAtlas, ATLAS_DIR } from './atlas.ts';
@@ -61,6 +62,8 @@ Flags
                       sun and sky of the ride's sunny rig, wall gain, sky tint on glazing)
   --glb-lit           draw a GLB route's front through the rig's Lambert too (default: flat game colours,
                       which matched the ride frame; the Lambert drew an installed wall 0.11 L dark)
+  --wall <edge|deg>   frame this footprint wall: an edge index of the outer ring (the audit's edge field) or the edge whose outward
+                      normal bearing is nearest, e.g. 215deg. Sets the front and the 3/4 view's wall; overrides the reference's wall
   --whole-tile        build the chunk from every building of the pand's z14 tile, exactly as the runtime groups
                       it (~4 s a render); by default the chunk holds the tile's buildings within 30 m of the pand,
                       which drew the same pixels as the whole tile at Nassaukade (0363100012164843)
@@ -89,7 +92,7 @@ Chromium) or a ride frame.`;
 // Arguments
 // ---------------------------------------------------------------------------------------------------------------
 export type Route = 'generic' | 'spec' | 'installed' | 'recipe';
-type Args = { target?: string; spec?: string; intent?: string; route?: Exclude<Route, 'recipe'>; unlit: boolean; glbLit: boolean; photo: boolean; threeq: boolean; recipe: string | boolean; wholeTile: boolean; watch: boolean; look: string; ppm: number; out?: string; help: boolean };
+type Args = { target?: string; spec?: string; intent?: string; wall?: string; route?: Exclude<Route, 'recipe'>; unlit: boolean; glbLit: boolean; photo: boolean; threeq: boolean; recipe: string | boolean; wholeTile: boolean; watch: boolean; look: string; ppm: number; out?: string; help: boolean };
 export function parseArgs(argv: string[]): Args {
   const a: Args = { unlit: false, glbLit: false, photo: false, threeq: false, recipe: false, wholeTile: false, watch: false, look: 'photo', ppm: 50, help: false };
   for (let i = 0; i < argv.length; i++) {
@@ -110,6 +113,7 @@ export function parseArgs(argv: string[]): Args {
       case '--whole-tile': a.wholeTile = true; break;
       case '--recipe': a.recipe = inline ?? (argv[i + 1] && !argv[i + 1].startsWith('--') && !/^(NL\.IMBAG\.Pand\.)?\d{16}$/.test(argv[i + 1]) ? argv[++i] : true); break;
       case '--spec': a.spec = value(); break;
+      case '--wall': a.wall = value(); break;
       case '--intent': a.intent = value(); break;
       case '--look': a.look = value(); break;
       case '--ppm': a.ppm = Number(value()); break;
@@ -218,7 +222,13 @@ const boxOf = (f: Feature): [number, number, number, number] => {
 type LngLat = [number, number];
 export type FrontWall = { a: LngLat; b: LngLat; lengthM: number; source: string; reference?: string };
 
-async function frontWall(pandId: string, own: Feature, neighbours: Feature[]): Promise<FrontWall> {
+async function frontWall(pandId: string, own: Feature, neighbours: Feature[], wallSpec?: string): Promise<FrontWall> {
+  if (wallSpec) {
+    // --wall: the framed wall is a footprint edge (index or bearing), not the reference's or pickWall's choice.
+    const outer = (asPolygons(own.geometry)[0]?.[0] ?? []) as LngLat[];
+    const p = pickFootprintWall(outer, wallSpec);
+    return { a: p.a, b: p.b, lengthM: p.lengthM, source: `--wall ${wallSpec}: footprint edge ${p.edge} (outward ${p.bearingDeg.toFixed(0)} deg)` };
+  }
   const ref = path.join(REPO_ROOT, 'staging/pand-reference', bare(pandId), 'reference.json');
   if (fs.existsSync(ref)) {
     const r = readJson(ref);
@@ -494,7 +504,7 @@ export async function renderGeneric(session: PreviewSession, pandId: string, arg
   const atlas = (await session.ensureAtlas()).atlas;
   tm.mark('atlas');
 
-  const wall = await frontWall(pandId, own, neighbours);
+  const wall = await frontWall(pandId, own, neighbours, args.wall);
   const frame = wallFrame(wall);
   let zMax = 0;
   for (let v = 0; v < inOwn.length; v++) if (inOwn[v]) zMax = Math.max(zMax, mesh.positions[v * 3 + 2]);
@@ -565,7 +575,7 @@ async function renderGlb(session: PreviewSession, pandId: string, job: GlbJob, a
   const tile = session.tileOf(pandId), rows = await session.rows(tile);
   const own = rows.find(r => r.raw.properties.id === full(pandId))?.styled;
   if (!own) throw new Error(`${pandId} not in tile ${tile}`);
-  const wall = await frontWall(pandId, own, []);
+  const wall = await frontWall(pandId, own, [], args.wall);
   const frame = wallFrame(wall), soup = job.soup, P = soup.positions;
   // The wall's own slab: within the wall's span and no more than 3 m in front of its line (stoops, balconies).
   const along = (v: number) => (P[v * 3] - frame.origin[0]) * frame.right[0] + (P[v * 3 + 1] - frame.origin[1]) * frame.right[1];

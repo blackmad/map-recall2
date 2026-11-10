@@ -10,6 +10,15 @@ import { openRoute } from './helpers';
 type Spot = { name: string; centre: [number, number]; standDeg: number; standM: number; query?: string; faceDeg?: number; view?: 'chase' | 'cockpit'; camZoom?: number };
 
 const SPOTS: Spot[] = [
+  // Issue #341 audit: blank walls (top five of the ride-priority list) and stops-short examples, standing 26 m out on the wall's normal.
+  { name: 'audit-blank1-186003', centre: [4.891812, 52.3860703], standDeg: 274, standM: 26 },
+  { name: 'audit-blank2-063603', centre: [4.8491275, 52.3922765], standDeg: 179, standM: 26 },
+  { name: 'audit-blank3-184743', centre: [4.930919, 52.3677885], standDeg: 359, standM: 26 },
+  { name: 'audit-blank4-129127', centre: [4.9103075, 52.3555555], standDeg: 250, standM: 26 },
+  { name: 'audit-blank5-184743', centre: [4.9291305, 52.3677605], standDeg: 359, standM: 26 },
+  { name: 'audit-short1-088027', centre: [4.864121, 52.384944], standDeg: 179, standM: 26 },
+  { name: 'audit-short2-092013', centre: [4.8706509, 52.3664365], standDeg: 67, standM: 26 },
+  { name: 'audit-short3-164930', centre: [4.918371, 52.3717836], standDeg: 134, standM: 26 },
   { name: 'police-van-leijenberghlaan', centre: [4.8799828, 52.3311922], standDeg: 262, standM: 48 },
   { name: 'leidsestraat-67', centre: [4.8853524, 52.3651691], standDeg: 323, standM: 34 },
   { name: 'oosterkerk', centre: [4.9193125, 52.3699834], standDeg: 225, standM: 52 },

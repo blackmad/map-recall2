@@ -15,7 +15,7 @@ import { chunkMetres } from '../../src/canalRecall/world/shellMesh.ts';
 
 export const HELP = `node --import tsx scripts/house-audit/suppressed-faces.ts [flags]   (npm run house:audit once the integrator adds it)
 
-Lists the suppressed pands (models/covers.json, chunk-* and ordinary-* models) with a street-facing BAG wall at least
+Lists the suppressed pands (models/covers.json: chunk-*, ordinary-* and landmark-* models) with a street-facing BAG wall at least
 --min-len metres long on a named street that the placed model does not draw. Read-only.
 
 Method
@@ -25,10 +25,14 @@ Method
     path, steps, track, bridleway, motorway or trunk) within 15 m, the road lies on the outward side (at least 2 m out)
     and runs within 30 degrees of the wall. The nearest such road names the wall.
   Exposed: no other building edge lies within 0.5 m of the midpoint (party walls are not counted).
-  Covered: the placed model (chunks.json or the ordinary catalogue, placed as the runtime places it, the same formula
-    as scripts/house-preview/preview.ts placedToEnu) has an outward-facing triangle (winding normal, dot with the wall
-    normal above 0.5, near-vertical triangles only) within 1 m, in 3D, of the midpoint at half the BAG height.
-    "anyFacing" counts triangles facing either way, as a diagnostic.
+  Covered: the placed model (chunks.json, the ordinary catalogue, or for landmark-* the signature-landmarks surveyed
+    anchor and northOffsetDegrees, placed as scripts/house-preview/preview.ts placedToEnu) has an outward-facing triangle
+    (winding normal, dot with the wall normal above 0.5, near-vertical triangles only) within 1 m, in 3D, of the wall's
+    midpoint at 25 %, 50 % and 80 % of the BAG height (the roof maximum).
+  Classes: blank = blank at 25 % or 50 %: no outward geometry, or a bare slab (every outward plane vertex on the wall's two
+    ends). stops-short = blank only at 80 %: a setback, gable or mansard may stand above the eaves, reported apart from
+    blank. drawn = otherwise. Landmark placement is checked: the model's xy centre against the footprints it covers.
+  --wall <edge|deg>  (scripts/house-preview/preview.ts) frames a row on the same edge index.
   Self-check: pand 0363100012116526 (Nassaukade corner, chunk-face-clercq-236681) must come out with an uncovered
     Nassaukade wall, and pand 0363100012236681 (De Clercqstraat, the model's own face) must come out covered. Otherwise
     the script exits 1 and the numbers are not trusted.
@@ -42,7 +46,7 @@ Flags
 Output: <out>/suppressed-faces.json (every suppressed pand, every street-facing wall with its covered flags, the per-buurt
 table, the top list, the self-check) and a summary on stdout. Ride priority: buurten in the centre (Centrum-West,
 Centrum-Oost) first, then the inner ring (RIDE_PRIORITY_GEBIEDEN in scripts/register-facts/build-monument-facts.ts).
-Not covered: landmark-* models (their placement is not the runtime's chunk or ordinary placement; counted, not measured).`;
+Landmark models with no signature-landmarks placement are counted (withoutPlacement), not measured.`;
 
 const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '../..');
 const EXTRACT = path.join(ROOT, 'public/data/extracts/amsterdam');
@@ -51,6 +55,8 @@ const CENTRE = ['Centrum-West', 'Centrum-Oost'];
 const INNER = ['Westerpark', 'Oud-West, De Baarsjes', 'Oud-Zuid', 'De Pijp, Rivierenbuurt', 'Oud-Oost'];
 const SKIP_HIGHWAY = /^(cycleway|footway|path|steps|track|bridleway|motorway|motorway_link|trunk|trunk_link)$/;
 const COS52 = Math.cos(52.37 * Math.PI / 180);
+/** Fractions of the BAG height (the roof maximum) at which the wall is tested. */
+const HEIGHTS = [0.25, 0.5, 0.8];
 
 type V2 = [number, number];
 type V3 = [number, number, number];
@@ -209,6 +215,12 @@ function placementsOf(): Map<string, Placement> {
     if (out.has(e.id)) continue;
     out.set(e.id, { key: e.id, glb: glbOf(e.modelUrl), anchor: e.instance?.anchor ?? e.anchor, northOffsetDegrees: e.instance?.northOffsetDegrees ?? 0, mirror: !!e.instance?.mirror });
   }
+  // Landmarks: the signature catalogue's surveyed anchor and northOffsetDegrees (the fields its builder writes for placement).
+  const sig = readJson(path.join(CANAL, 'models/signature-landmarks.json')).models as Record<string, { modelUrl: string; surveyed?: { anchor: V2; northOffsetDegrees?: number } }>;
+  for (const [id, e] of Object.entries(sig)) {
+    if (out.has(id) || !e.surveyed) continue;
+    out.set(id, { key: id, glb: glbOf(e.modelUrl), anchor: e.surveyed.anchor, northOffsetDegrees: e.surveyed.northOffsetDegrees ?? 0, mirror: false });
+  }
   return out;
 }
 function placedToEnu(p: Placement): (x: number, y: number, z: number) => V3 {
@@ -333,51 +345,73 @@ async function main() {
 
   const covers = readJson(path.join(CANAL, 'models/covers.json')).models as Record<string, { p?: string[] }>;
   const placements = placementsOf();
-  const suppressed = new Map<string, { key: string; kind: 'chunk' | 'ordinary' }>();
+  const suppressed = new Map<string, { key: string; kind: 'chunk' | 'ordinary' | 'landmark' }>();
   const landmarkPands = new Set<string>();
   for (const [key, v] of Object.entries(covers)) for (const p of v.p ?? []) {
-    if (key.startsWith('chunk-') || key.startsWith('ordinary-')) { if (!suppressed.has(p)) suppressed.set(p, { key, kind: key.startsWith('chunk-') ? 'chunk' : 'ordinary' }); }
-    else landmarkPands.add(p);
+    const kind = key.startsWith('chunk-') ? 'chunk' : key.startsWith('ordinary-') ? 'ordinary' : 'landmark';
+    if (kind === 'landmark') landmarkPands.add(p);
+    if (!suppressed.has(p)) suppressed.set(p, { key, kind });
   }
-  console.log(`suppressed pands: ${suppressed.size} (chunk/ordinary); landmark-covered: ${landmarkPands.size} (not measured)`);
+  const chunkOrdinary = new Set<string>(); for (const [key, v] of Object.entries(covers)) if (!key.startsWith('landmark')) for (const p of v.p ?? []) if (key.startsWith('chunk-') || key.startsWith('ordinary-')) chunkOrdinary.add(p);
+  const overlap = [...landmarkPands].filter(p => chunkOrdinary.has(p)).length;
+  console.log(`suppressed pands: ${suppressed.size} distinct; chunk/ordinary-keyed ${chunkOrdinary.size}; landmark-keyed ${landmarkPands.size} (${overlap} of them also chunk/ordinary-keyed; reported separately)`);
 
   const { rings, edges, byPand, streetsGrid } = loadFootprints();
   console.log(`footprints: ${rings.length} rings, ${byPand.size} pands, ${(Date.now() - t0) / 1000}s`);
   const buurten = loadBuurten();
 
   const models = new Map<string, ModelTris>();
+  const unplaced = new Set<string>();
   const modelOf = async (key: string) => {
     let m = models.get(key);
     if (!m) {
       const p = placements.get(key);
-      if (!p) throw new Error(`${key}: no placement in chunks.json or the ordinary catalogue`);
+      if (!p) { unplaced.add(key); return null; }
       m = await modelTris(p);
       models.set(key, m);
     }
     return m;
   };
 
-  type Out = { pand: string; model: string; kind: string; buurt: string | null; gebied: string | null; tier: number | null; heightM: number; street: string; lengthM: number; midLngLat: V2; normal: V2; coveredOutward: boolean; coveredAny: boolean; bare: boolean | null; planeVertices: number; drawn: boolean; nearestOutwardM: number | null; nearestAnyM: number | null; streetDistM: number | null; streetHighway: string | null };
+  type Out = { pand: string; model: string; kind: string; buurt: string | null; gebied: string | null; tier: number | null; heightM: number; street: string; lengthM: number; midLngLat: V2; normal: V2; edge: number; ring: number; cls: 'blank' | 'stops-short' | 'drawn'; drawn: boolean; heights: Record<string, { outward: boolean; bare: boolean | null; nearestOutwardM: number | null }>; streetDistM: number | null; streetHighway: string | null };
   const walls: Out[] = [];
   const perPand: Record<string, { walls: number; uncovered: number; lengthM: number; uncoveredLengthM: number; streets: string[]; buurt: string | null }> = {};
-  let noFootprint = 0;
+  let noFootprint = 0, noPlacement = 0;
+  const placementCheck: Record<string, { pand: string; offsetM: number | null }> = {};
 
   for (const [pand, s] of suppressed) {
     const pr = byPand.get(pand);
     if (!pr) { noFootprint++; continue; }
     const ws = wallsOf(pand, pr, edges, streetsGrid, minLen).filter(w => w.exposed && w.street);
     const m = await modelOf(s.key);
+    if (!m) { noPlacement++; continue; }
     const [lng, lat] = inverseMetres(pr[0].pts[0][0], pr[0].pts[0][1]);
     const b = buurtOf(lng, lat, buurten);
+    if (s.kind === 'landmark' && !placementCheck[s.key]) {
+      // Placement sanity: the placed model's xy centre against the footprint centre of the pand it covers.
+      const T = m.tris; let sx = 0, sy = 0, n = 0;
+      for (let i = 0; i < T.length; i += 3) { sx += T[i]; sy += T[i + 1]; n++; }
+      // All the pands the model covers (a complex covers many), vertices averaged.
+      const rs = (covers[s.key].p ?? []).flatMap(q => byPand.get(q) ?? []);
+      const nv = rs.reduce((a, r) => a + r.pts.length, 0);
+      const fx = rs.reduce((a, r) => a + r.pts.reduce((q, v) => q + v[0], 0), 0) / nv;
+      const fy = rs.reduce((a, r) => a + r.pts.reduce((q, v) => q + v[1], 0), 0) / nv;
+      placementCheck[s.key] = { pand, offsetM: n ? +Math.hypot(sx / n - fx, sy / n - fy).toFixed(1) : null };
+    }
     const rec = { walls: 0, uncovered: 0, lengthM: 0, uncoveredLengthM: 0, streets: [] as string[], buurt: b?.name ?? null };
     for (const w of ws) {
-      const c = coverage(w, w.heightM || 10, m);
+      const H = w.heightM || 10;
+      const at = Object.fromEntries(HEIGHTS.map(f => [String(f), coverage(w, H * f, m)])) as Record<string, Coverage>;
+      const c = at['0.5'];
+      // Blank at 25 % or 50 % of the BAG height is blank. Blank only at 80 % (the roof maximum) is a setback candidate, not blank.
+      const blankUnion = HEIGHTS.filter(f => f < 0.8).some(f => !(at[String(f)].outward && !at[String(f)].bare));
+      const cls = blankUnion ? 'blank' : !(at['0.8'].outward && !at['0.8'].bare) ? 'stops-short' : 'drawn';
+      const drawn = cls === 'drawn';
       const ll = inverseMetres(w.midM[0], w.midM[1]);
       rec.walls++; rec.lengthM += w.lengthM;
       if (!rec.streets.includes(w.street!)) rec.streets.push(w.street!);
-      const drawn = c.outward && !c.bare;
-      if (!drawn) { rec.uncovered++; rec.uncoveredLengthM += w.lengthM; }
-      walls.push({ pand, model: s.key, kind: s.kind, buurt: b?.name ?? null, gebied: b?.gebied ?? null, tier: b?.tier ?? null, heightM: w.heightM, street: w.street!, lengthM: w.lengthM, midLngLat: [+ll[0].toFixed(7), +ll[1].toFixed(7)], normal: [+w.normal[0].toFixed(3), +w.normal[1].toFixed(3)], coveredOutward: c.outward, coveredAny: c.any, bare: c.bare, planeVertices: c.planeVertices, drawn, nearestOutwardM: c.nearestOutwardM, nearestAnyM: c.nearestAnyM, streetDistM: w.streetDistM, streetHighway: w.streetHighway });
+      if (cls !== 'drawn') { rec.uncovered++; rec.uncoveredLengthM += w.lengthM; }
+      walls.push({ pand, model: s.key, kind: s.kind, buurt: b?.name ?? null, gebied: b?.gebied ?? null, tier: b?.tier ?? null, heightM: H, street: w.street!, lengthM: w.lengthM, midLngLat: [+ll[0].toFixed(7), +ll[1].toFixed(7)], normal: [+w.normal[0].toFixed(3), +w.normal[1].toFixed(3)], edge: w.edge, ring: w.ring, cls, drawn, heights: Object.fromEntries(HEIGHTS.map(f => [String(f), { outward: at[String(f)].outward, bare: at[String(f)].bare, nearestOutwardM: at[String(f)].nearestOutwardM }])), streetDistM: w.streetDistM, streetHighway: w.streetHighway });
     }
     perPand[pand] = { ...rec, lengthM: +rec.lengthM.toFixed(2), uncoveredLengthM: +rec.uncoveredLengthM.toFixed(2) };
   }
@@ -387,7 +421,7 @@ async function main() {
   const check = (pand: string, street: RegExp, expectDrawn: boolean) => {
     const ws = walls.filter(w => w.pand === pand && street.test(w.street));
     const ok = ws.length > 0 && ws.every(w => w.drawn === expectDrawn);
-    return { pand, street: street.source, expectDrawn, walls: ws.map(w => ({ street: w.street, lengthM: w.lengthM, coveredOutward: w.coveredOutward, bare: w.bare, planeVertices: w.planeVertices, drawn: w.drawn, nearestOutwardM: w.nearestOutwardM, nearestAnyM: w.nearestAnyM, midLngLat: w.midLngLat, heightM: w.heightM })), ok };
+    return { pand, street: street.source, expectDrawn, walls: ws.map(w => ({ street: w.street, lengthM: w.lengthM, cls: w.cls, heights: w.heights, midLngLat: w.midLngLat, heightM: w.heightM })), ok };
   };
   // The known positive (H2b): a Nassaukade corner face that is a bare slab, so not drawn. The model's own face: drawn.
   const selfCheck = [check('0363100012116526', /Nassaukade/, false), check('0363100012236681', /Clercq/, true)];
@@ -399,32 +433,46 @@ async function main() {
     if (!w.buurt) continue;
     const r = byBuurt.get(w.buurt) ?? { name: w.buurt, gebied: w.gebied!, tier: w.tier!, pands: new Set<string>(), pandsUncovered: new Set<string>(), walls: 0, uncovered: 0, uncoveredLengthM: 0 };
     r.pands.add(w.pand); r.walls++;
-    if (!w.drawn) { r.uncovered++; r.uncoveredLengthM += w.lengthM; r.pandsUncovered.add(w.pand); }
+    if (w.cls === 'blank') { r.uncovered++; r.uncoveredLengthM += w.lengthM; r.pandsUncovered.add(w.pand); }
     byBuurt.set(w.buurt, r);
   }
   const table = [...byBuurt.values()].map(r => ({ buurt: r.name, gebied: r.gebied, tier: r.tier, pands: r.pands.size, pandsWithUncovered: r.pandsUncovered.size, walls: r.walls, uncoveredWalls: r.uncovered, uncoveredLengthM: +r.uncoveredLengthM.toFixed(1) }))
     .sort((a, b) => a.tier - b.tier || b.uncoveredWalls - a.uncoveredWalls);
-  const top = walls.filter(w => !w.drawn && w.tier !== null && w.tier <= 1).sort((a, b) => b.lengthM - a.lengthM).slice(0, topN);
+  const top = walls.filter(w => w.cls === 'blank' && w.tier !== null && w.tier <= 1).sort((a, b) => b.lengthM - a.lengthM).slice(0, topN);
 
   fs.mkdirSync(outDir, { recursive: true });
   const report = {
     generatedAt: new Date().toISOString(),
     method: 'scripts/house-audit/suppressed-faces.ts (see --help)',
     minLenM: minLen,
-    suppressedPands: suppressed.size, landmarkCoveredPands: landmarkPands.size, withoutFootprint: noFootprint,
-    totals: { pandsMeasured: Object.keys(perPand).length, walls: walls.length, noOutwardGeometry: walls.filter(w => !w.coveredOutward).length, bareSlabs: walls.filter(w => w.coveredOutward && w.bare).length, blankWalls: walls.filter(w => !w.drawn).length, blankLengthM: +walls.filter(w => !w.drawn).reduce((s, w) => s + w.lengthM, 0).toFixed(1) },
+    suppressedPands: suppressed.size, chunkOrdinaryPands: chunkOrdinary.size, landmarkCoveredPands: landmarkPands.size, landmarkAndChunkOverlap: overlap, withoutFootprint: noFootprint, withoutPlacement: noPlacement, unplacedModels: [...unplaced], landmarkPlacementCheck: placementCheck,
+    totals: {
+      pandsMeasured: Object.keys(perPand).length, walls: walls.length,
+      blank: walls.filter(w => w.cls === 'blank').length, blankLengthM: +walls.filter(w => w.cls === 'blank').reduce((s, w) => s + w.lengthM, 0).toFixed(1),
+      stopsShort: walls.filter(w => w.cls === 'stops-short').length, stopsShortLengthM: +walls.filter(w => w.cls === 'stops-short').reduce((s, w) => s + w.lengthM, 0).toFixed(1),
+      drawn: walls.filter(w => w.cls === 'drawn').length,
+      blankAt: Object.fromEntries(HEIGHTS.map(f => [String(f), walls.filter(w => !(w.heights[String(f)].outward && !w.heights[String(f)].bare)).length])),
+      noOutwardAt50: walls.filter(w => !w.heights['0.5'].outward).length,
+      bareAt50: walls.filter(w => w.heights['0.5'].outward && w.heights['0.5'].bare).length,
+      blankOnlyAt25: walls.filter(w => w.cls === 'blank' && w.heights['0.5'].outward && !w.heights['0.5'].bare).length,
+      blankOnlyAt50: walls.filter(w => w.cls === 'blank' && w.heights['0.25'].outward && !w.heights['0.25'].bare).length,
+    },
     selfCheck,
     perBuurt: table,
     top20RidePriority: top,
+    stopsShortTop: walls.filter(w => w.cls === 'stops-short' && w.tier !== null && w.tier <= 1).sort((a, b) => b.lengthM - a.lengthM).slice(0, 3),
     walls,
     perPand,
   };
   fs.writeFileSync(path.join(outDir, 'suppressed-faces.json'), JSON.stringify(report));
-  console.log(`\nTotals: ${report.totals.walls} walls: ${report.totals.noOutwardGeometry} with no outward geometry, ${report.totals.bareSlabs} bare slabs, ${report.totals.blankWalls} blank (${report.totals.blankLengthM} m)`);
+  console.log(`\nTotals: ${report.totals.walls} walls: ${report.totals.blank} blank (${report.totals.blankLengthM} m), ${report.totals.stopsShort} stop short of the eaves (blank only at 80 %), ${report.totals.drawn} drawn`);
+  console.log(`blank per height (walls blank at that height): ${JSON.stringify(report.totals.blankAt)}; blank only at 25 %: ${report.totals.blankOnlyAt25}; blank only at 50 % (not at 25 %): ${report.totals.blankOnlyAt50}`);
   console.log('buurt\tgebied\ttier\tpands\tpands w/ blank\twalls\tblank walls\tblank m');
   for (const r of table) console.log(`${r.buurt}\t${r.gebied}\t${r.tier}\t${r.pands}\t${r.pandsWithUncovered}\t${r.walls}\t${r.uncoveredWalls}\t${r.uncoveredLengthM}`);
   console.log(`\nTop ${topN} blank walls by length, ride-priority buurten:`);
   for (const w of top) console.log(`${w.pand}\t${w.street}\t${w.lengthM} m\t${w.buurt}\t${w.model}\t${w.midLngLat.join(',')}`);
+  console.log('stops-short examples (blank only at 80 %):');
+  for (const w of report.stopsShortTop) console.log(`${w.pand}\t${w.street}\t${w.lengthM} m\t${w.buurt}\t${w.model}\t${w.midLngLat.join(',')}`);
   console.log(`\nwrote ${path.relative(ROOT, path.join(outDir, 'suppressed-faces.json'))} in ${(Date.now() - t0) / 1000}s`);
   if (!selfCheck.every(c => c.ok)) { console.error('self-check FAILED: the numbers are not trusted'); process.exitCode = 1; }
 }
