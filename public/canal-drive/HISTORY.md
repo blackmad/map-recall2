@@ -1,5 +1,9 @@
 # Canal Recall — what is built
 
+**Erf exceptions and glazed parts (2026-11-10, a1 lanes).**
+- **Two rideable erf exceptions** (`docs/reports/erf-exceptions-20261110.md`): erf stays out of the plaza rule city-wide; `ERF_EXCEPTIONS` in `routing/bgtPlazas.ts` is a closed, reviewed list of two: the ASC SDW forecourt (feedback 637f346b, 1,062 m² newly rideable, roof-terrace corner cut) and the Radarweg office apron (4f47f105, 91 m²; the inner courtyard stays blocked). Geometry fetched from PDOK into `scripts/routing/bgt-erf-exceptions.json`; ratchets flipped to passing pins in `test:canal-car`; `test:bgt-plazas` keeps the list closed.
+- **Glazed parts** (`docs/reports/glass-parts-20261110.md`, feedback fc427560): building tiles dropped `building:material`, so the IJdok oriel and skybridge drew as opaque blue boxes. `glazedMaterial.ts` reads glass/mirror tags, `stamp-glass-material.ts` stamps 143 features in 15 z14 tiles, and `glassParts.ts applyGlazing` gives every storey the existing curtain-wall cell (same program, opaque, byte-identical without the tag; pinned in `test:glass-parts`, now in `check:canal`).
+
 **H10 `house:frames` and H11 design fields on the generic path (2026-11-10, #358, #361).**
 - **H10 (4371ef8a8, opus): `npm run house:frames`.**
   - It puts the own engine's first-person camera at a street panorama's pose and pairs the game frame with the panorama cut to the same heading, pitch and FOV.
