@@ -47,7 +47,7 @@ const readJson = async (f: string) => JSON.parse(await fs.readFile(f, 'utf8'));
 const r2 = (v: number) => +v.toFixed(2);
 
 type Raw = {rgb: Uint8Array; width: number; height: number};
-async function stripRaw(file: string): Promise<Raw> {
+export async function stripRaw(file: string): Promise<Raw> {
   const {data, info} = await sharp(file).removeAlpha().raw().toBuffer({resolveWithObject: true});
   return {rgb: new Uint8Array(data.buffer, data.byteOffset, data.length), width: info.width, height: info.height};
 }
@@ -93,7 +93,7 @@ function accentSide(raw: Raw, px: [number, number], ppm: number, eavesM: number)
 }
 
 /** Door side on the ground band (0.1-2.3 m): the darkest 0.9 m window of columns, if it is dark and in an outer third. */
-function doorSide(raw: Raw, px: [number, number], ppm: number, lowFront = false): 'left' | 'right' | null {
+export function doorSide(raw: Raw, px: [number, number], ppm: number, lowFront = false): 'left' | 'right' | null {
   // A one-storey front's windows are as dark as its door over 1.1-2.4 m: only the door is dark between its foot and the sills (0.8-1.05 m).
   const y0 = Math.round(raw.height - (lowFront ? 1.05 : 2.3) * ppm), y1 = Math.round(raw.height - (lowFront ? 0.8 : 0.1) * ppm), cols = px[1] - px[0];
   const dark = Array.from({length: cols}, (_, k) => {

@@ -1,0 +1,530 @@
+{
+ "street": "Dijkstraat",
+ "seed": "0363100012183064",
+ "members": [
+  "0363100012183064",
+  "0363100012183061",
+  "0363100012181801",
+  "0363100012171308",
+  "0363100012170912"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "trimmed at 0363100012183064 (face continues: 181805)"
+  },
+  {
+   "side": "right",
+   "reason": "trimmed at 0363100012170912 (face continues: 183057)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012165560",
+   "reason": "frontage 74.4 m from Dijkstraat"
+  },
+  {
+   "pandId": "0363100012165619",
+   "reason": "frontage 73.0 m from Dijkstraat"
+  },
+  {
+   "pandId": "0363100012165620",
+   "reason": "frontage 49.3 m from Dijkstraat"
+  },
+  {
+   "pandId": "0363100012165621",
+   "reason": "sightline to Dijkstraat crosses 0363100012171713"
+  },
+  {
+   "pandId": "0363100012165622",
+   "reason": "sightline to Dijkstraat crosses 0363100012170913"
+  },
+  {
+   "pandId": "0363100012165623",
+   "reason": "sightline to Dijkstraat crosses 0363100012171318"
+  },
+  {
+   "pandId": "0363100012170913",
+   "reason": "sightline to Dijkstraat crosses 0363100012182992"
+  },
+  {
+   "pandId": "0363100012170914",
+   "reason": "sightline to Dijkstraat crosses 0363100012170912"
+  },
+  {
+   "pandId": "0363100012171307",
+   "reason": "frontage 36.0 m from Dijkstraat"
+  },
+  {
+   "pandId": "0363100012171309",
+   "reason": "frontage 43.9 m from Dijkstraat"
+  },
+  {
+   "pandId": "0363100012171310",
+   "reason": "frontage 36.0 m from Dijkstraat"
+  },
+  {
+   "pandId": "0363100012171311",
+   "reason": "sightline to Dijkstraat crosses 0363100012183061"
+  },
+  {
+   "pandId": "0363100012171312",
+   "reason": "sightline to Dijkstraat crosses 0363100012171308"
+  },
+  {
+   "pandId": "0363100012171313",
+   "reason": "sightline to Dijkstraat crosses 0363100012181801"
+  },
+  {
+   "pandId": "0363100012171316",
+   "reason": "frontage 66.9 m from Dijkstraat"
+  },
+  {
+   "pandId": "0363100012171317",
+   "reason": "frontage 62.0 m from Dijkstraat"
+  },
+  {
+   "pandId": "0363100012171318",
+   "reason": "no frontage on Dijkstraat: No footprint edge faces Dijkstraat"
+  },
+  {
+   "pandId": "0363100012171319",
+   "reason": "no frontage on Dijkstraat: No footprint edge faces Dijkstraat"
+  },
+  {
+   "pandId": "0363100012171320",
+   "reason": "sightline to Dijkstraat crosses 0363100012183061"
+  },
+  {
+   "pandId": "0363100012171321",
+   "reason": "frontage 35.1 m from Dijkstraat"
+  },
+  {
+   "pandId": "0363100012171393",
+   "reason": "frontage 66.4 m from Dijkstraat"
+  },
+  {
+   "pandId": "0363100012171394",
+   "reason": "no frontage on Dijkstraat: No footprint edge faces Dijkstraat"
+  },
+  {
+   "pandId": "0363100012171397",
+   "reason": "frontage 71.8 m from Dijkstraat"
+  },
+  {
+   "pandId": "0363100012171398",
+   "reason": "frontage 62.5 m from Dijkstraat"
+  },
+  {
+   "pandId": "0363100012171399",
+   "reason": "frontage 91.1 m from Dijkstraat"
+  },
+  {
+   "pandId": "0363100012171401",
+   "reason": "frontage 61.6 m from Dijkstraat"
+  },
+  {
+   "pandId": "0363100012171403",
+   "reason": "frontage 61.0 m from Dijkstraat"
+  },
+  {
+   "pandId": "0363100012171638",
+   "reason": "frontage 87.1 m from Dijkstraat"
+  },
+  {
+   "pandId": "0363100012171700",
+   "reason": "frontage 63.4 m from Dijkstraat"
+  },
+  {
+   "pandId": "0363100012171712",
+   "reason": "frontage 43.4 m from Dijkstraat"
+  },
+  {
+   "pandId": "0363100012181802",
+   "reason": "sightline to Dijkstraat crosses 0363100012183061"
+  },
+  {
+   "pandId": "0363100012181803",
+   "reason": "sightline to Dijkstraat crosses 0363100012183061"
+  },
+  {
+   "pandId": "0363100012181808",
+   "reason": "no frontage on Dijkstraat: No footprint edge faces Dijkstraat"
+  },
+  {
+   "pandId": "0363100012181817",
+   "reason": "frontage 44.2 m from Dijkstraat"
+  },
+  {
+   "pandId": "0363100012182242",
+   "reason": "no frontage on Dijkstraat: No footprint edge faces Dijkstraat"
+  },
+  {
+   "pandId": "0363100012182243",
+   "reason": "frontage 104.2 m from Dijkstraat"
+  },
+  {
+   "pandId": "0363100012182302",
+   "reason": "frontage 31.0 m from Dijkstraat"
+  },
+  {
+   "pandId": "0363100012182303",
+   "reason": "frontage 38.8 m from Dijkstraat"
+  },
+  {
+   "pandId": "0363100012182584",
+   "reason": "sightline to Dijkstraat crosses 0363100012182585"
+  },
+  {
+   "pandId": "0363100012182585",
+   "reason": "sightline to Dijkstraat crosses 0363100012182586"
+  },
+  {
+   "pandId": "0363100012182586",
+   "reason": "sightline to Dijkstraat crosses 0363100012182587"
+  },
+  {
+   "pandId": "0363100012182607",
+   "reason": "frontage 69.1 m from Dijkstraat"
+  },
+  {
+   "pandId": "0363100012182608",
+   "reason": "frontage 74.2 m from Dijkstraat"
+  },
+  {
+   "pandId": "0363100012182609",
+   "reason": "sightline to Dijkstraat crosses 0363100012171318"
+  },
+  {
+   "pandId": "0363100012182610",
+   "reason": "frontage 35.8 m from Dijkstraat"
+  },
+  {
+   "pandId": "0363100012182611",
+   "reason": "no frontage on Dijkstraat: No footprint edge faces Dijkstraat"
+  },
+  {
+   "pandId": "0363100012182616",
+   "reason": "frontage 88.3 m from Dijkstraat"
+  },
+  {
+   "pandId": "0363100012182683",
+   "reason": "frontage 73.6 m from Dijkstraat"
+  },
+  {
+   "pandId": "0363100012182684",
+   "reason": "frontage 91.2 m from Dijkstraat"
+  },
+  {
+   "pandId": "0363100012182686",
+   "reason": "frontage 101.0 m from Dijkstraat"
+  },
+  {
+   "pandId": "0363100012182687",
+   "reason": "frontage 64.8 m from Dijkstraat"
+  },
+  {
+   "pandId": "0363100012182690",
+   "reason": "frontage 79.6 m from Dijkstraat"
+  },
+  {
+   "pandId": "0363100012182691",
+   "reason": "frontage 87.8 m from Dijkstraat"
+  },
+  {
+   "pandId": "0363100012182692",
+   "reason": "frontage 40.0 m from Dijkstraat"
+  },
+  {
+   "pandId": "0363100012182693",
+   "reason": "frontage 62.5 m from Dijkstraat"
+  },
+  {
+   "pandId": "0363100012182694",
+   "reason": "frontage 43.9 m from Dijkstraat"
+  },
+  {
+   "pandId": "0363100012182695",
+   "reason": "frontage 44.5 m from Dijkstraat"
+  },
+  {
+   "pandId": "0363100012182696",
+   "reason": "frontage 56.5 m from Dijkstraat"
+  },
+  {
+   "pandId": "0363100012182697",
+   "reason": "frontage 59.3 m from Dijkstraat"
+  },
+  {
+   "pandId": "0363100012182698",
+   "reason": "frontage 65.9 m from Dijkstraat"
+  },
+  {
+   "pandId": "0363100012182699",
+   "reason": "frontage 67.9 m from Dijkstraat"
+  },
+  {
+   "pandId": "0363100012182772",
+   "reason": "frontage 30.6 m from Dijkstraat"
+  },
+  {
+   "pandId": "0363100012182773",
+   "reason": "sightline to Dijkstraat crosses 0363100012182587"
+  },
+  {
+   "pandId": "0363100012182774",
+   "reason": "sightline to Dijkstraat crosses 0363100012182587"
+  },
+  {
+   "pandId": "0363100012182775",
+   "reason": "sightline to Dijkstraat crosses 0363100012182587"
+  },
+  {
+   "pandId": "0363100012182777",
+   "reason": "frontage 41.6 m from Dijkstraat"
+  },
+  {
+   "pandId": "0363100012182778",
+   "reason": "frontage 37.3 m from Dijkstraat"
+  },
+  {
+   "pandId": "0363100012182779",
+   "reason": "frontage 98.1 m from Dijkstraat"
+  },
+  {
+   "pandId": "0363100012182791",
+   "reason": "frontage 51.3 m from Dijkstraat"
+  },
+  {
+   "pandId": "0363100012182795",
+   "reason": "frontage 47.5 m from Dijkstraat"
+  },
+  {
+   "pandId": "0363100012182798",
+   "reason": "frontage 106.3 m from Dijkstraat"
+  },
+  {
+   "pandId": "0363100012182875",
+   "reason": "frontage 111.5 m from Dijkstraat"
+  },
+  {
+   "pandId": "0363100012182957",
+   "reason": "frontage 84.2 m from Dijkstraat"
+  },
+  {
+   "pandId": "0363100012182958",
+   "reason": "frontage 102.7 m from Dijkstraat"
+  },
+  {
+   "pandId": "0363100012182959",
+   "reason": "frontage 107.9 m from Dijkstraat"
+  },
+  {
+   "pandId": "0363100012182960",
+   "reason": "frontage 97.0 m from Dijkstraat"
+  },
+  {
+   "pandId": "0363100012182961",
+   "reason": "frontage 80.8 m from Dijkstraat"
+  },
+  {
+   "pandId": "0363100012182963",
+   "reason": "frontage 77.4 m from Dijkstraat"
+  },
+  {
+   "pandId": "0363100012182964",
+   "reason": "frontage 75.5 m from Dijkstraat"
+  },
+  {
+   "pandId": "0363100012182967",
+   "reason": "frontage 96.3 m from Dijkstraat"
+  },
+  {
+   "pandId": "0363100012182968",
+   "reason": "frontage 86.9 m from Dijkstraat"
+  },
+  {
+   "pandId": "0363100012182969",
+   "reason": "frontage 99.9 m from Dijkstraat"
+  },
+  {
+   "pandId": "0363100012182973",
+   "reason": "frontage 82.6 m from Dijkstraat"
+  },
+  {
+   "pandId": "0363100012182992",
+   "reason": "no frontage on Dijkstraat: No footprint edge faces Dijkstraat"
+  },
+  {
+   "pandId": "0363100012183053",
+   "reason": "sightline to Dijkstraat crosses 0363100012183060"
+  },
+  {
+   "pandId": "0363100012183054",
+   "reason": "sightline to Dijkstraat crosses 0363100012183055"
+  },
+  {
+   "pandId": "0363100012183055",
+   "reason": "no frontage on Dijkstraat: No footprint edge faces Dijkstraat"
+  },
+  {
+   "pandId": "0363100012183059",
+   "reason": "frontage 46.7 m from Dijkstraat"
+  },
+  {
+   "pandId": "0363100012183060",
+   "reason": "no frontage on Dijkstraat: No footprint edge faces Dijkstraat"
+  },
+  {
+   "pandId": "0363100012183063",
+   "reason": "sightline to Dijkstraat crosses 0363100012181804"
+  },
+  {
+   "pandId": "0363100012249774",
+   "reason": "frontage 38.5 m from Dijkstraat"
+  },
+  {
+   "pandId": "0363100012249775",
+   "reason": "frontage 64.5 m from Dijkstraat"
+  },
+  {
+   "pandId": "0363100012249776",
+   "reason": "frontage 76.9 m from Dijkstraat"
+  },
+  {
+   "pandId": "0363100012571628",
+   "reason": "frontage 38.6 m from Dijkstraat"
+  },
+  {
+   "pandId": "0363100012571629",
+   "reason": "frontage 44.2 m from Dijkstraat"
+  },
+  {
+   "pandId": "0363100012571630",
+   "reason": "frontage 54.9 m from Dijkstraat"
+  },
+  {
+   "pandId": "0363100012571631",
+   "reason": "no frontage on Dijkstraat: No footprint edge faces Dijkstraat"
+  },
+  {
+   "pandId": "0363100012571632",
+   "reason": "frontage 33.2 m from Dijkstraat"
+  },
+  {
+   "pandId": "0363100012571633",
+   "reason": "frontage 48.8 m from Dijkstraat"
+  },
+  {
+   "pandId": "0363100012571634",
+   "reason": "frontage 53.2 m from Dijkstraat"
+  },
+  {
+   "pandId": "0363100012571635",
+   "reason": "frontage 58.2 m from Dijkstraat"
+  },
+  {
+   "pandId": "0363100012571645",
+   "reason": "frontage 60.4 m from Dijkstraat"
+  },
+  {
+   "pandId": "0363100012571679",
+   "reason": "frontage 46.7 m from Dijkstraat"
+  },
+  {
+   "pandId": "0363100012571680",
+   "reason": "frontage 51.6 m from Dijkstraat"
+  },
+  {
+   "pandId": "0363100012171306",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012181804",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012182301",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012182587",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012182989",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012183062",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012186295",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012183064",
+   "alongM": 0,
+   "widthM": 5.44,
+   "eavesM": 10.95,
+   "roofMaxM": 18.04,
+   "storeys3dbag": 5,
+   "builtYear": 1763,
+   "uncertainty": [
+    "Frontage extended across a native jog of up to 1 m (possible partial front at the default 0.35 m).",
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012183061",
+   "alongM": 17.65,
+   "widthM": 23.37,
+   "eavesM": 11.04,
+   "roofMaxM": 14.88,
+   "storeys3dbag": 5,
+   "builtYear": 1983,
+   "uncertainty": [
+    "Frontage extended across a native jog of up to 1 m (possible partial front at the default 0.35 m).",
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012181801",
+   "alongM": 32.26,
+   "widthM": 5.85,
+   "eavesM": 9.14,
+   "roofMaxM": 15.04,
+   "storeys3dbag": 5,
+   "builtYear": 1905,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012171308",
+   "alongM": 38.05,
+   "widthM": 5.74,
+   "eavesM": 9.11,
+   "roofMaxM": 14.1,
+   "storeys3dbag": 4,
+   "builtYear": 1938,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012170912",
+   "alongM": 43.55,
+   "widthM": 5.25,
+   "eavesM": 8.36,
+   "roofMaxM": 10.89,
+   "storeys3dbag": 3,
+   "builtYear": 1905,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  }
+ ]
+}

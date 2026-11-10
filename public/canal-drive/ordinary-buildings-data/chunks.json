@@ -105995,6 +105995,248 @@
      ]
     }
    ]
+  },
+  {
+   "id": "chunk-face-rapenburg-89-103-r1",
+   "category": "street-survey",
+   "name": "face-rapenburg-89-103-r1",
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-rapenburg-89-103-r1.glb?asset=c6e56628e7d9fd88",
+   "sha256": "c6e56628e7d9fd885792a206d2440321453c73ae6afe59c1cac30502defed257",
+   "bytes": 104460,
+   "triangles": 3987,
+   "primitives": 10,
+   "instance": {
+    "anchor": [
+     4.910376546108662,
+     52.37039825606489
+    ],
+    "northOffsetDegrees": 40.4835,
+    "mirror": false
+   },
+   "bounds": {
+    "min": [
+     -5.783,
+     0,
+     -22.674
+    ],
+    "max": [
+     5.652,
+     14.941,
+     0.407
+    ]
+   },
+   "height": 14.941,
+   "suppress": [
+    "NL.IMBAG.Pand.0363100012181605",
+    "NL.IMBAG.Pand.0363100012170674"
+   ],
+   "replaces": [
+    "ordinary-0363100012181605",
+    "ordinary-0363100012170674"
+   ],
+   "footprint": {
+    "type": "MultiPolygon",
+    "coordinates": [
+     [
+      [
+       [
+        4.9105129,
+        52.3704978
+       ],
+       [
+        4.9105898,
+        52.370554
+       ],
+       [
+        4.9105275,
+        52.3705869
+       ],
+       [
+        4.9103137,
+        52.3704311
+       ],
+       [
+        4.9103763,
+        52.3703983
+       ],
+       [
+        4.910485,
+        52.3704775
+       ],
+       [
+        4.9104454,
+        52.3704983
+       ],
+       [
+        4.9104643,
+        52.370512
+       ],
+       [
+        4.9104539,
+        52.3705175
+       ],
+       [
+        4.9104629,
+        52.370524
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9106529,
+        52.3705207
+       ],
+       [
+        4.9105898,
+        52.370554
+       ],
+       [
+        4.9103763,
+        52.3703983
+       ],
+       [
+        4.9104398,
+        52.3703654
+       ]
+      ]
+     ]
+    ]
+   },
+   "pands": [
+    {
+     "recipeId": "rapenburg-181605",
+     "pandId": "0363100012181605",
+     "buildingId": "NL.IMBAG.Pand.0363100012181605",
+     "address": "Rapenburg 97",
+     "frontage": {
+      "x0": -5.624,
+      "x1": -0.014,
+      "widthM": 5.61
+     },
+     "bounds": {
+      "min": [
+       -5.783,
+       0,
+       -22.674
+      ],
+      "max": [
+       -0.014,
+       14.66,
+       0.407
+      ]
+     },
+     "triangles": 1798,
+     "ranges": [
+      {
+       "primitive": 1,
+       "firstTriangle": 0,
+       "triangleCount": 103
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 0,
+       "triangleCount": 492
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 0,
+       "triangleCount": 612
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 0,
+       "triangleCount": 28
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 0,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 0,
+       "triangleCount": 352
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 0,
+       "triangleCount": 168
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 0,
+       "triangleCount": 19
+      }
+     ]
+    },
+    {
+     "recipeId": "rapenburg-170674",
+     "pandId": "0363100012170674",
+     "buildingId": "NL.IMBAG.Pand.0363100012170674",
+     "address": "Rapenburg 99",
+     "frontage": {
+      "x0": -0.014,
+      "x1": 5.652,
+      "widthM": 5.665
+     },
+     "bounds": {
+      "min": [
+       -0.142,
+       0,
+       -18.237
+      ],
+      "max": [
+       5.652,
+       14.941,
+       0.142
+      ]
+     },
+     "triangles": 2189,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 0,
+       "triangleCount": 183
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 492,
+       "triangleCount": 168
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 612,
+       "triangleCount": 1328
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 24,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 352,
+       "triangleCount": 304
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 168,
+       "triangleCount": 168
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 19,
+       "triangleCount": 5
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 0,
+       "triangleCount": 9
+      }
+     ]
+    }
+   ]
   }
  ]
 }

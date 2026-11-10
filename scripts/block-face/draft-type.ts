@@ -21,7 +21,7 @@ import sharp from 'sharp';
 import {isOpeningCell, measureFacade, type FacadeImage} from '../../src/canalRecall/buildingRecipe/measureFacade.ts';
 import {classifyPixel, measureStripPalette} from '../../src/canalRecall/blockFace/stripPalette.ts';
 import {measureSkyline} from '../../src/canalRecall/blockFace/stripSkyline.ts';
-import {clusterFamilies, DRAFT, draftType, DraftRefused, inFamily, parseFamilyId, splitByWall, stat, storeyProfile, type PandMeasure, type PandRecord} from '../../src/canalRecall/blockFace/typeDraft.ts';
+import {clusterFamilies, columnAlignment, DRAFT, groundBandTop, draftType, DraftRefused, inFamily, parseFamilyId, splitByWall, stat, storeyProfile, type PandMeasure, type PandRecord} from '../../src/canalRecall/blockFace/typeDraft.ts';
 import {intake} from './intake.ts';
 
 const arg = (n: string) => process.argv.find(a => a.startsWith(`--${n}=`))?.slice(n.length + 3);
@@ -71,7 +71,7 @@ function windowColumns(a: {mask: Uint8Array; cols: number; rows: number; cell: n
   return {count: real.length, widthM: widths.length ? r2(widths[Math.floor(widths.length / 2)]) : null};
 }
 
-export async function measureFace(face: string, ids: Set<string>, record: Map<string, PandRecord>): Promise<PandMeasure[]> {
+export async function measureFace(face: string, ids: Set<string>, record: Map<string, PandRecord>, opts: {brightSky?: boolean; groundFirst?: boolean} = {}): Promise<PandMeasure[]> {
   const dir = path.join(FACES, face), strip = readJson(path.join(dir, 'strip.json'));
   const jpg = fs.existsSync(path.join(STAGING, face, 'strip.jpg')) ? path.join(STAGING, face, 'strip.jpg') : path.resolve(ROOT, strip.image);
   const raw = await stripRaw(jpg), out: PandMeasure[] = [];
@@ -81,12 +81,12 @@ export async function measureFace(face: string, ids: Set<string>, record: Map<st
     const f0 = facts.fronts[0], bagEaves = f0.eavesM >= 6 ? f0.eavesM : facts.heights.dak70pM;
     const storeys: number = facts.heights.storeys ?? rec.storeys3dbag ?? Math.max(2, Math.round(bagEaves / 3.1));
     const px: [number, number] = [Math.max(0, span.px[0]), Math.min(raw.width, span.px[1])], ppm = strip.pixelsPerMetre;
-    const sky = measureSkyline({rgb: raw.rgb, width: raw.width, height: raw.height, x0: px[0], x1: px[1], pixelsPerMetre: ppm});
+    const sky = measureSkyline({rgb: raw.rgb, width: raw.width, height: raw.height, x0: px[0], x1: px[1], pixelsPerMetre: ppm, brightSky: opts.brightSky});
     const skyOk = !!sky && sky.confidence >= 0.6 && sky.eavesM > 6;
     // The facade is read up to the lower of the 3DBAG and the photographed eaves (a gable's shoulder is no wall).
     const eavesM = skyOk ? Math.min(bagEaves, sky!.eavesM) : bagEaves;
     const palette = measureStripPalette({rgb: raw.rgb, width: raw.width, height: raw.height, x0: px[0], x1: px[1], pixelsPerMetre: ppm, eavesM});
-    let windowCols: number | null = null, pitchColumns: number | null = null, windowWidthM: number | null = null, glazing: number | null = null, profile = null as PandMeasure['storey'];
+    let groundTopM: number | null = null, alignment: number | null = null, windowCols: number | null = null, pitchColumns: number | null = null, windowWidthM: number | null = null, glazing: number | null = null, profile = null as PandMeasure['storey'];
     try {
       const lines = Array.from({length: storeys + 1}, (_, k) => r2(k * eavesM / storeys)), widthM = (px[1] - px[0]) / ppm;
       const m = measureFacade({image: spanImage(raw, px, ppm, strip.heightM), box: {u0: 0, u1: widthM, v0: 0, v1: eavesM}, lines});
@@ -94,7 +94,10 @@ export async function measureFace(face: string, ids: Set<string>, record: Map<st
       const wc = windowColumns({mask: m.mask, cols: m.cols, rows: m.rows, cell: m.cell, topM: eavesM, fromM: 4.4, toM: eavesM - 0.4});
       if (wc) { windowCols = wc.count; windowWidthM = wc.widthM; }
       const diag: {why?: string} = {};
-      profile = storeyProfile({mask: m.mask, cols: m.cols, rows: m.rows, cell: m.cell, topM: eavesM, eavesM, isOpen: isOpeningCell, diag});
+      // pand-fit (opts.groundFirst): read the ground band first and the window rows only above it.
+      if (opts.groundFirst) groundTopM = groundBandTop({mask: m.mask, cols: m.cols, rows: m.rows, cell: m.cell, topM: eavesM, eavesM, isOpen: isOpeningCell});
+      profile = storeyProfile({mask: m.mask, cols: m.cols, rows: m.rows, cell: m.cell, topM: eavesM, eavesM, isOpen: isOpeningCell, diag, ...(groundTopM ? {fromM: groundTopM + 0.4} : {})});
+      if (opts.groundFirst && profile) alignment = columnAlignment({mask: m.mask, cols: m.cols, rows: m.rows, cell: m.cell, topM: eavesM, isOpen: isOpeningCell}, profile.sillM.map((sl, k) => ({sill: sl, head: profile!.headM[k]})));
       if (!profile && process.env.DRAFT_DEBUG) console.log(`  ${face} ${span.pandId.slice(-6)} profile: ${diag.why}`);
     } catch { /* unread */ }
     out.push({
@@ -104,6 +107,7 @@ export async function measureFace(face: string, ids: Set<string>, record: Map<st
       palette: {wall: palette.wall, accent: palette.accent, frame: palette.frame, band: palette.band, cornice: palette.cornice, stucco: palette.stucco},
       bandRunsM: palette.bandRunsM.map(r => [r2(r[0]), r2(r[1])] as [number, number]),
       roofType: facts.attributes?.b3_dak_type ?? null,
+      ...(opts.groundFirst ? {groundTopM, alignment} : {}),
     });
   }
   return out;

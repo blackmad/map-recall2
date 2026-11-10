@@ -1,0 +1,255 @@
+{
+ "street": "Foeliedwarsstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T08:08:15.669Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012181564",
+   "addresses": [
+    "Foeliedwarsstraat 80",
+    "Foeliedwarsstraat 82",
+    "Foeliedwarsstraat 84",
+    "Foeliedwarsstraat 86",
+    "Foeliedwarsstraat 88"
+   ],
+   "groundUnits": [
+    {
+     "address": "Foeliedwarsstraat 80",
+     "use": "woonfunctie",
+     "areaM2": 86,
+     "bagId": "0363010000637772"
+    },
+    {
+     "address": "Foeliedwarsstraat 82",
+     "use": "woonfunctie",
+     "areaM2": 74,
+     "bagId": "0363010000637773"
+    },
+    {
+     "address": "Foeliedwarsstraat 84",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010000637774"
+    },
+    {
+     "address": "Foeliedwarsstraat 86",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000637775"
+    },
+    {
+     "address": "Foeliedwarsstraat 88",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000637776"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181580",
+   "addresses": [
+    "Foeliedwarsstraat 62"
+   ],
+   "groundUnits": [
+    {
+     "address": "Foeliedwarsstraat 62-H",
+     "use": "industriefunctie",
+     "areaM2": 79,
+     "bagId": "0363010000637769"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181579",
+   "addresses": [
+    "Foeliedwarsstraat 60A",
+    "Foeliedwarsstraat 60B",
+    "Foeliedwarsstraat 60C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Foeliedwarsstraat 60A",
+     "use": "woonfunctie",
+     "areaM2": 74,
+     "bagId": "0363010001041802"
+    },
+    {
+     "address": "Foeliedwarsstraat 60B",
+     "use": "woonfunctie",
+     "areaM2": 74,
+     "bagId": "0363010001041803"
+    },
+    {
+     "address": "Foeliedwarsstraat 60C",
+     "use": "woonfunctie",
+     "areaM2": 115,
+     "bagId": "0363010001041804"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012170742",
+   "addresses": [
+    "Foeliedwarsstraat 56",
+    "Foeliedwarsstraat 58"
+   ],
+   "groundUnits": [
+    {
+     "address": "Foeliedwarsstraat 56",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010001041800"
+    },
+    {
+     "address": "Foeliedwarsstraat 58",
+     "use": "kantoorfunctie",
+     "areaM2": 43,
+     "bagId": "0363010001041801"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012170743",
+   "addresses": [
+    "Foeliedwarsstraat 54"
+   ],
+   "groundUnits": [
+    {
+     "address": "Foeliedwarsstraat 54-H",
+     "use": "woonfunctie",
+     "areaM2": 96,
+     "bagId": "0363010000952930"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012170672",
+   "addresses": [
+    "Foeliedwarsstraat 50B",
+    "Foeliedwarsstraat 50D",
+    "Foeliedwarsstraat 50",
+    "Foeliedwarsstraat 50C",
+    "Foeliedwarsstraat 52",
+    "Foeliedwarsstraat 52A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Foeliedwarsstraat 50B",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010012111841"
+    },
+    {
+     "address": "Foeliedwarsstraat 50D",
+     "use": "woonfunctie",
+     "areaM2": 42,
+     "bagId": "0363010012111843"
+    },
+    {
+     "address": "Foeliedwarsstraat 50-H",
+     "use": "industriefunctie",
+     "areaM2": 123,
+     "bagId": "0363010000637753"
+    },
+    {
+     "address": "Foeliedwarsstraat 50C",
+     "use": "woonfunctie",
+     "areaM2": 64,
+     "bagId": "0363010012111842"
+    },
+    {
+     "address": "Foeliedwarsstraat 52A",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010012111840"
+    }
+   ],
+   "units": 9,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181533",
+   "addresses": [
+    "Foeliedwarsstraat 40C",
+    "Foeliedwarsstraat 40",
+    "Foeliedwarsstraat 40D",
+    "Foeliedwarsstraat 40B",
+    "Foeliedwarsstraat 40A",
+    "Foeliedwarsstraat 42A",
+    "Foeliedwarsstraat 42",
+    "Foeliedwarsstraat 42C",
+    "Foeliedwarsstraat 42B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Foeliedwarsstraat 42A",
+     "use": "woonfunctie",
+     "areaM2": 32,
+     "bagId": "0363010012112191"
+    },
+    {
+     "address": "Foeliedwarsstraat 40C",
+     "use": "woonfunctie",
+     "areaM2": 36,
+     "bagId": "0363010012121440"
+    },
+    {
+     "address": "Foeliedwarsstraat 42-H",
+     "use": "industriefunctie",
+     "areaM2": 60,
+     "bagId": "0363010000637750"
+    },
+    {
+     "address": "Foeliedwarsstraat 40-H",
+     "use": "woonfunctie",
+     "areaM2": 41,
+     "bagId": "0363010001022361"
+    },
+    {
+     "address": "Foeliedwarsstraat 40D",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010012121441"
+    },
+    {
+     "address": "Foeliedwarsstraat 42C",
+     "use": "woonfunctie",
+     "areaM2": 41,
+     "bagId": "0363010012121442"
+    },
+    {
+     "address": "Foeliedwarsstraat 40B",
+     "use": "woonfunctie",
+     "areaM2": 34,
+     "bagId": "0363010012112190"
+    },
+    {
+     "address": "Foeliedwarsstraat 40A",
+     "use": "woonfunctie",
+     "areaM2": 40,
+     "bagId": "0363010012112189"
+    },
+    {
+     "address": "Foeliedwarsstraat 42B",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010012112192"
+    }
+   ],
+   "units": 14,
+   "osm": []
+  }
+ ]
+}

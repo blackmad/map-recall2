@@ -31,6 +31,13 @@ export interface TypeMatchRule {
   /** BAG/3DBAG build years (inclusive); outside by more than `yearSlack` vetoes the type. */
   years: [number, number];
   yearSlack?: number;
+  /**
+   * Build years that are a register placeholder, not a date, for this type's pands: such a year neither passes nor vetoes
+   * the type (the year veto is skipped). Nieuwmarkt/Lastage 2026-11-10: 109 of 748 centre pands carry 1905 (Zuiderkerkbuurt
+   * 43 against 3 pands in 1900-1904 and 0 in 1906), 17th-18th c. gables and cornice houses whose BAG date is unknown.
+   * Absent = every year is a date (byte-identical).
+   */
+  unknownYears?: number[];
   /** 3DBAG eaves of the street front (m). */
   eavesM?: [number, number];
   /** 3DBAG bouwlagen the type is seen with. */
@@ -321,6 +328,7 @@ export function scoreType(t: MatchableType, ev: PandEvidence): TypeScore {
   if (!m) return {typeId: t.id, score: 0, veto: ['type has no match rule'], criteria};
   const slack = m.yearSlack ?? AUTO_PLACE.yearSlack;
   if (ev.builtYear === null) veto.push('no build year');
+  else if (m.unknownYears?.includes(ev.builtYear)) { /* a placeholder year: no year evidence either way */ }
   else if (ev.builtYear < m.years[0] - slack || ev.builtYear > m.years[1] + slack) veto.push(`built ${ev.builtYear}, type ${m.years.join('-')}`);
   veto.push(...frontageVetoes(t, ev));
   if (m.frontEavesM !== undefined && m.frontEavesUnscored) { /* drawn at the line, not scored */ }

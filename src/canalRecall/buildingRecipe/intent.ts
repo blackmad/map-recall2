@@ -408,6 +408,12 @@ export interface FrontIntent {
   bays: number | number[];
   /** Windows inside the gable/crown above the top full storey. */
   atticWindows?: number;
+  /**
+   * The gable light measured on the photo (Rapenburg 99, Nieuwmarkt/Lastage 2026-11-10: a 1.0 m light whose sill sits at the
+   * gable foot; the stock light is 0.5-0.9 m wide, 0.25 m over the foot): `light` its width (0.4..1.6 m) and `sill` its sill
+   * over the crown foot (-0.5..2 m). Single-crown side-by-side lights only (not round, stacked or grouped). Absent = byte-identical.
+   */
+  atticLight?: {light: number; sill: number};
   /** Roof dormers standing on the eaves line behind a cornice/flat front. */
   dormers?: number;
   /** 0-based bay (left-to-right, as seen from the street) holding the main door; null = no door. */
@@ -852,6 +858,19 @@ export interface GableOrnamentIntent {
 export interface GroundFrontIntent {
   kind: typeof GROUND_FRONT_KINDS[number];
   bays: GroundBay[];
+  /**
+   * Relative bay widths, one per bay left to right (Rapenburg 99: two 0.75-0.8 m doors beside a 2.5 m shop window). Absent =
+   * equal bays, byte-identical.
+   */
+  bayWeights?: number[];
+  /**
+   * One transom line in metres over the ground (0.8..4, under the beam): the door heads stop under it and the window bays
+   * take their transom bar on it, so the transom lights run as one row across the front (Rapenburg 99). Absent = the
+   * stock door height and the 0.74 bar, byte-identical.
+   */
+  transom?: number;
+  /** Vertical lights in each window bay (2..6; Rapenburg 99's shop window: four mullioned lights). Absent = the stock bar. */
+  lights?: number;
   colour?: string;
   shutterColour?: string;
   evidence?: string;
@@ -1785,6 +1804,11 @@ export function validateIntent(input: unknown): CanalHouseIntent {
     if (f.crownFinial && !['step', 'neck', 'raised-neck', 'bell'].includes(f.gable)) problems.push(`${at}.crownFinial: needs a step, neck or bell gable (a flat top to stand on)`);
     if (f.atticShape !== undefined) oneOf(f.atticShape, ATTIC_SHAPES, `${at}.atticShape`);
     if (f.atticShape === 'round' && !f.atticWindows) problems.push(`${at}.atticShape: round needs atticWindows >= 1`);
+    if (f.atticLight !== undefined) {
+      const l = f.atticLight as {light?: unknown; sill?: unknown};
+      if (!l || typeof l !== 'object' || Object.keys(l).some(k => k !== 'light' && k !== 'sill') || !(typeof l.light === 'number' && l.light >= 0.4 && l.light <= 1.6) || !(typeof l.sill === 'number' && l.sill >= -0.5 && l.sill <= 2)) problems.push(`${at}.atticLight: {light 0.4..1.6 m, sill -0.5..2 m over the crown foot}`);
+      if (!f.atticWindows || f.atticShape === 'round') problems.push(`${at}.atticLight: needs rectangular atticWindows >= 1`);
+    }
     if (f.windowProportion !== undefined) oneOf(f.windowProportion, WINDOW_PROPORTIONS, `${at}.windowProportion`);
     if (f.crownAt !== undefined && f.crownBays !== undefined) problems.push(`${at}: crownAt and crownBays are alternatives`);
     if (f.crownAt !== undefined || f.crownBays !== undefined) {
@@ -2141,7 +2165,7 @@ function windowProblems(f: FrontIntent, at: string, oneOf: (v: unknown, allowed:
 }
 
 const GABLE_ORNAMENT_KEYS = ['wings', 'finial', 'cartouche', 'ears', 'gablet'];
-const GROUND_FRONT_KEYS = ['kind', 'bays', 'colour', 'shutterColour', 'evidence'];
+const GROUND_FRONT_KEYS = ['kind', 'bays', 'bayWeights', 'transom', 'lights', 'colour', 'shutterColour', 'evidence'];
 /** Problems with the historic-front fields of one front (all optional; absent fields are never checked). */
 function historicProblems(f: FrontIntent, at: string, colour: (v: unknown, where: string) => void, oneOf: (v: unknown, allowed: readonly string[], where: string) => void): string[] {
   const problems: string[] = [];
@@ -2169,6 +2193,9 @@ function historicProblems(f: FrontIntent, at: string, colour: (v: unknown, where
     else g.bays.forEach((b, i) => oneOf(b, GROUND_BAYS, `${at}.groundFront.bays[${i}]`));
     if (g?.colour !== undefined) colour(g.colour, `${at}.groundFront.colour`);
     if (g?.shutterColour !== undefined) colour(g.shutterColour, `${at}.groundFront.shutterColour`);
+    if (g?.bayWeights !== undefined && !(Array.isArray(g.bayWeights) && Array.isArray(g.bays) && g.bayWeights.length === g.bays.length && g.bayWeights.every(w => typeof w === 'number' && w > 0 && w <= 20))) problems.push(`${at}.groundFront.bayWeights: one weight (0..20] per bay`);
+    if (g?.transom !== undefined && !(typeof g.transom === 'number' && g.transom >= 0.8 && g.transom <= 4)) problems.push(`${at}.groundFront.transom: 0.8..4 m over the ground`);
+    if (g?.lights !== undefined && !(Number.isInteger(g.lights) && g.lights >= 2 && g.lights <= 6)) problems.push(`${at}.groundFront.lights: 2..6 lights per window bay`);
     if (f.shopfront) problems.push(`${at}.groundFront: not together with shopfront (one ground storey)`);
     if (f.basement !== 'none') problems.push(`${at}.groundFront: a ground front stands on the street; use basement "none"`);
   }

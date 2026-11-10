@@ -1,0 +1,41 @@
+{
+ "street": "Brandewijnsteeg",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T08:06:28.260Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012181816",
+   "addresses": [
+    "Brandewijnsteeg 4"
+   ],
+   "groundUnits": [
+    {
+     "address": "Brandewijnsteeg 4",
+     "use": "woonfunctie",
+     "areaM2": 75,
+     "bagId": "0363010000906694"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181810",
+   "addresses": [
+    "Brandewijnsteeg 2"
+   ],
+   "groundUnits": [
+    {
+     "address": "Brandewijnsteeg 2",
+     "use": "industriefunctie",
+     "areaM2": 592,
+     "bagId": "0363010000866009"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  }
+ ]
+}

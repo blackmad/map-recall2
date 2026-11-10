@@ -1,0 +1,11 @@
+{
+ "note": "Lane gate floors (reviewPalettes.ts AcceptPin) after reading the strip at full size; the Opus strip review confirms or removes them.",
+ "pins": [
+  {
+   "pandId": "0363100012181605",
+   "type": "lastage-cornice-house",
+   "minNcc": 0.08,
+   "reason": "Rapenburg 97 (strip 2024-12-10, grey day): the dark brown brick reads olive (#3f3c30 raw) and the likeness counts it as foliage (31 %); no tree stands in front of the facade on the strip"
+  }
+ ]
+}
