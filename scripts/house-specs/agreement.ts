@@ -19,7 +19,10 @@ Hand truth: the block-face intents (scripts/block-face/faces/*/intent.json, auth
   hand      pands with a hand value for the field
   written   of those, pands where the writer stated the field
   agree     of those, the same value
-  precision agree / written        recall agree / hand`;
+  precision agree / written        recall agree / hand
+
+The photo-read hand set (data/house-line/hand-set-v1.json, docs/house-line.md §4c) is the gate set since H5h: score the writers
+against it with node --import tsx scripts/house-specs/hand-set/score.ts (the intents here are mostly type placements).`;
 
 export const WALL_L = 0.12;
 const FIELDS = ['bays', 'gable', 'finish', 'storeys', 'pui', 'wall'] as const;

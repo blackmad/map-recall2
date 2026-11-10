@@ -1,0 +1,3743 @@
+{
+ "version": 1,
+ "reader": "A: lane H5h (Claude Opus 5.5), reading log hand-set-v1.reader-a.tsv",
+ "date": "2026-11-10",
+ "convention": "Reading convention, hand set v1 (docs/house-line.md §4c). Read the pand's street front from the sheet: each panel is an archived\nrectified crop (x along the wall, y up from the ground) under a metre grid (thin line every metre, heavy every 3 m). Several panels are\nother capture years of the same wall: use them to see past trees and vans. Count on the grid, never on a small thumbnail.\n\naxes    Window columns of the upper storeys: vertical lines of openings above the ground storey. Take the storey with the most columns\n        (record axesPerStorey from storey 2 up only when storeys differ). One axis per separate opening in the masonry: two lights in\n        one opening split by a timber or stone mullion are one axis; two openings with a brick pier between are two. A balcony door\n        counts. A projecting bay window (erker) is one axis, however many lights it has. The ground storey (shopfront, doors) is not\n        counted.\n        A pand whose wall carries two house fronts counts both (all columns of the pand's street wall).\nstoreys Full storeys from the street-level storey up to the cornice line, or to the gable foot (where a gable's outline leaves the\n        party walls). The ground storey counts once however tall (shop or bel-etage). NOT counted: a souterrain (a storey half below the\n        pavement, windows at knee height, usually under a stoop) -> souterrain: true; an entresol/mezzanine inside a tall ground storey ->\n        entresol: true; windows inside the gable, crown or roof (dormers, a gable's attic storey) -> atticInCrown: true. A bel-etage over\n        a souterrain is storey 1. A full top storey in the front plane under a cornice counts.\ngable   The crown: spout (tuit), neck (hals), raised-neck (verhoogde hals), bell (klok), step (trap), point (a triangular or pointed\n        gable, punt), cornice (a horizontal moulded cornice/lijst, roof behind, flat or pitched), flat (a plain parapet, no moulding),\n        shouldered. null when the top is cut off or hidden.\nfinish  The upper wall: brick (bare brick, any colour), painted-brick (painted, brick coursing still visible), stucco (smooth render,\n        plaster, often with incised joints), stone (stone-faced). Ignore the ground storey.\nwall    Colour family of the main upper wall (not trim, not shopfront): white (white, cream, very pale), grey, buff (yellow, sand,\n        beige), orange (orange, salmon), red, red-brown, brown, dark (near-black, very dark brown or grey).\npui     Ground storey use: shop (shop window, cafe, office glazing), residential (house door and house windows), warehouse (loading doors).\nconfidence per field: high = clearly visible, one reading; med = partly hidden or one close alternative; low = mostly guessed.\n        value null (confidence low) when the field cannot be read. ref = the panel (A, B, C) you read it from.\nreadable false when no panel shows the pand's front (wrong wall, close-up, all hidden); then every value is null.",
+ "pands": [
+  {
+   "pandId": "0363100012174187",
+   "images": [
+    {
+     "ref": "source-data://pand-crops/0363100012174187/front.jpg",
+     "sha256": "a20f552a867e716cf64fb6d1995208204a7cb2b061e54e01fd322a817e69f26f"
+    }
+   ],
+   "readable": true,
+   "fields": {
+    "axes": {
+     "value": 3,
+     "confidence": "med",
+     "ref": "source-data://pand-crops/0363100012174187/front.jpg"
+    },
+    "storeys": {
+     "value": 5,
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012174187/front.jpg"
+    },
+    "gable": {
+     "value": "cornice",
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012174187/front.jpg"
+    },
+    "finish": {
+     "value": "brick",
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012174187/front.jpg"
+    },
+    "wall": {
+     "value": "brown",
+     "confidence": "med",
+     "ref": "source-data://pand-crops/0363100012174187/front.jpg"
+    },
+    "pui": {
+     "value": "residential",
+     "confidence": "med",
+     "ref": "source-data://pand-crops/0363100012174187/front.jpg"
+    }
+   },
+   "notes": "two erkers over storeys 3-4 plus balconies; storey 2 has three window groups (erker bases + centre coupled window)",
+   "group": "ab07"
+  },
+  {
+   "pandId": "0363100012172884",
+   "images": [
+    {
+     "ref": "source-data://pand-crops/0363100012172884/front.jpg",
+     "sha256": "7fef0f9e96d3bd873c1ea33bd58fc5db4896b4ed99db9e4fd76dd4da8adaa732"
+    }
+   ],
+   "readable": true,
+   "fields": {
+    "axes": {
+     "value": 1,
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012172884/front.jpg"
+    },
+    "storeys": {
+     "value": 2,
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012172884/front.jpg"
+    },
+    "atticInCrown": true,
+    "gable": {
+     "value": "neck",
+     "confidence": "med",
+     "ref": "source-data://pand-crops/0363100012172884/front.jpg"
+    },
+    "finish": {
+     "value": "brick",
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012172884/front.jpg"
+    },
+    "wall": {
+     "value": "red-brown",
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012172884/front.jpg"
+    },
+    "pui": {
+     "value": "shop",
+     "confidence": "low",
+     "ref": "source-data://pand-crops/0363100012172884/front.jpg"
+    }
+   },
+   "notes": "tiny front; one coupled window on storey 2; one window in the gable; neck vs bell outline (concave shoulders at 8.5 m)",
+   "group": "ab07"
+  },
+  {
+   "pandId": "0363100012172889",
+   "images": [
+    {
+     "ref": "source-data://pand-crops/0363100012172889/front.jpg",
+     "sha256": "62821727cc8930c63415da28e645b6aeb262d03c85bf9c996f1bcf70a439e228"
+    }
+   ],
+   "readable": true,
+   "fields": {
+    "axes": {
+     "value": 2,
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012172889/front.jpg"
+    },
+    "storeys": {
+     "value": 3,
+     "confidence": "med",
+     "ref": "source-data://pand-crops/0363100012172889/front.jpg"
+    },
+    "entresol": true,
+    "atticInCrown": true,
+    "gable": {
+     "value": "neck",
+     "confidence": "med",
+     "ref": "source-data://pand-crops/0363100012172889/front.jpg"
+    },
+    "finish": {
+     "value": "painted-brick",
+     "confidence": "med",
+     "ref": "source-data://pand-crops/0363100012172889/front.jpg"
+    },
+    "wall": {
+     "value": "dark",
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012172889/front.jpg"
+    },
+    "pui": {
+     "value": "residential",
+     "confidence": "med",
+     "ref": "source-data://pand-crops/0363100012172889/front.jpg"
+    }
+   },
+   "notes": "tall ground storey with transom lights (entresol); low third storey 10-11.5 m with one three-light window; top cut at 13.5 m",
+   "group": "ab07"
+  },
+  {
+   "pandId": "0363100012173353",
+   "images": [
+    {
+     "ref": "source-data://pand-crops/0363100012173353/years/2019.jpg",
+     "sha256": "95e65df38842b64acd2a287813b1afbe9963239c10c90ca41dd69bb70907e03c"
+    },
+    {
+     "ref": "source-data://pand-crops/0363100012173353/front.jpg",
+     "sha256": "430cdafb8eca9676ed5f71ff6d72f4d7b495465724d99158923ee6c210d3127f"
+    },
+    {
+     "ref": "source-data://pand-crops/0363100012173353/years/2022.jpg",
+     "sha256": "18a0c5fefdbec9304f7a9dbb4553de5db56a2196585ae2b06336e34e4e14d016"
+    }
+   ],
+   "readable": true,
+   "fields": {
+    "axes": {
+     "value": 3,
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012173353/front.jpg"
+    },
+    "storeys": {
+     "value": 3,
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012173353/front.jpg"
+    },
+    "atticInCrown": true,
+    "gable": {
+     "value": "neck",
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012173353/front.jpg"
+    },
+    "finish": {
+     "value": "brick",
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012173353/front.jpg"
+    },
+    "wall": {
+     "value": "red-brown",
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012173353/front.jpg"
+    },
+    "pui": {
+     "value": "residential",
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012173353/front.jpg"
+    }
+   },
+   "notes": "claw-piece neck gable, one gable window",
+   "group": "ab07"
+  },
+  {
+   "pandId": "0363100012173345",
+   "images": [
+    {
+     "ref": "source-data://pand-crops/0363100012173345/front.jpg",
+     "sha256": "adbbeb1cc84476494b2d1f4985ad6b1f18ef908ee68d9f50ca2a1e9f7d654eac"
+    }
+   ],
+   "readable": true,
+   "fields": {
+    "axes": {
+     "value": 2,
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012173345/front.jpg"
+    },
+    "storeys": {
+     "value": 3,
+     "confidence": "med",
+     "ref": "source-data://pand-crops/0363100012173345/front.jpg"
+    },
+    "souterrain": true,
+    "atticInCrown": true,
+    "gable": {
+     "value": "bell",
+     "confidence": "med",
+     "ref": "source-data://pand-crops/0363100012173345/front.jpg"
+    },
+    "finish": {
+     "value": "brick",
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012173345/front.jpg"
+    },
+    "wall": {
+     "value": "red",
+     "confidence": "med",
+     "ref": "source-data://pand-crops/0363100012173345/front.jpg"
+    },
+    "pui": {
+     "value": "residential",
+     "confidence": "med",
+     "ref": "source-data://pand-crops/0363100012173345/front.jpg"
+    }
+   },
+   "notes": "storey 3 one three-light window with raised centre; low basement lights at 0.5-1.2 m; curved flanks to a rounded top (bell rather than claw-piece neck)",
+   "group": "ab07"
+  },
+  {
+   "pandId": "0363100012168085",
+   "images": [
+    {
+     "ref": "source-data://pand-crops/0363100012168085/front.jpg",
+     "sha256": "f2d518ca181e7f43bf5cb5065452b111a9f4cbb827a83ea9e6608d3ed845ce7f"
+    }
+   ],
+   "readable": true,
+   "fields": {
+    "axes": {
+     "value": 9,
+     "confidence": "med",
+     "ref": "source-data://pand-crops/0363100012168085/front.jpg"
+    },
+    "storeys": {
+     "value": 3,
+     "confidence": "med",
+     "ref": "source-data://pand-crops/0363100012168085/front.jpg"
+    },
+    "souterrain": true,
+    "atticInCrown": true,
+    "gable": {
+     "value": "neck",
+     "confidence": "med",
+     "ref": "source-data://pand-crops/0363100012168085/front.jpg"
+    },
+    "finish": {
+     "value": "painted-brick",
+     "confidence": "med",
+     "ref": "source-data://pand-crops/0363100012168085/front.jpg"
+    },
+    "wall": {
+     "value": "grey",
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012168085/front.jpg"
+    },
+    "pui": {
+     "value": "residential",
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012168085/front.jpg"
+    }
+   },
+   "notes": "one pand of three house fronts with stoops, three plain rectangular neck tops with one window each; branches over the left",
+   "group": "ab07"
+  },
+  {
+   "pandId": "0363100012168155",
+   "images": [
+    {
+     "ref": "source-data://pand-crops/0363100012168155/years/2020.jpg",
+     "sha256": "5523d7cc39e23c11320e271f394667a347176a4a33313b22b33916dc804af4db"
+    },
+    {
+     "ref": "source-data://pand-crops/0363100012168155/front.jpg",
+     "sha256": "b039c6f29f1f7fd56329feabf19df5f006c2d89bd7041ef30fe57927f4151c7c"
+    },
+    {
+     "ref": "source-data://pand-crops/0363100012168155/years/2021.jpg",
+     "sha256": "91584299d0c98e545e1a4db89347079a27f2e5bef04d8f792b9ff4db71d0b947"
+    }
+   ],
+   "readable": true,
+   "fields": {
+    "axes": {
+     "value": 2,
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012168155/front.jpg"
+    },
+    "storeys": {
+     "value": 3,
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012168155/front.jpg"
+    },
+    "atticInCrown": true,
+    "gable": {
+     "value": "bell",
+     "confidence": "med",
+     "ref": "source-data://pand-crops/0363100012168155/front.jpg"
+    },
+    "finish": {
+     "value": "painted-brick",
+     "confidence": "med",
+     "ref": "source-data://pand-crops/0363100012168155/front.jpg"
+    },
+    "wall": {
+     "value": "dark",
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012168155/front.jpg"
+    },
+    "pui": {
+     "value": "residential",
+     "confidence": "med",
+     "ref": "source-data://pand-crops/0363100012168155/front.jpg"
+    }
+   },
+   "notes": "tall ground storey with transoms; curved flanks to a small rounded cap",
+   "group": "ab07"
+  },
+  {
+   "pandId": "0363100012173341",
+   "images": [
+    {
+     "ref": "source-data://pand-crops/0363100012173341/front.jpg",
+     "sha256": "231284e62e824c775a8f30d2a9f8df917cad01aa8b7f20fe04e9df35e9593784"
+    }
+   ],
+   "readable": true,
+   "fields": {
+    "axes": {
+     "value": 2,
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012173341/front.jpg"
+    },
+    "storeys": {
+     "value": 3,
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012173341/front.jpg"
+    },
+    "atticInCrown": true,
+    "gable": {
+     "value": "neck",
+     "confidence": "med",
+     "ref": "source-data://pand-crops/0363100012173341/front.jpg"
+    },
+    "finish": {
+     "value": "brick",
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012173341/front.jpg"
+    },
+    "wall": {
+     "value": "red-brown",
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012173341/front.jpg"
+    },
+    "pui": {
+     "value": "shop",
+     "confidence": "med",
+     "ref": "source-data://pand-crops/0363100012173341/front.jpg"
+    }
+   },
+   "notes": "small claws at the gable foot (10.3 m), arched cap",
+   "group": "ab07"
+  },
+  {
+   "pandId": "0363100012169981",
+   "images": [
+    {
+     "ref": "source-data://pand-crops/0363100012169981/front.jpg",
+     "sha256": "305cef1cfceb03547e7c1e62d818329a4087825c844607799543b56167a90947"
+    },
+    {
+     "ref": "source-data://pand-crops/0363100012169981/years/2018.jpg",
+     "sha256": "034a4928c4f38d1f6d2d420e0d421c04b9901e32af4f734e09eaa745df74805d"
+    }
+   ],
+   "readable": true,
+   "fields": {
+    "axes": {
+     "value": 3,
+     "confidence": "med",
+     "ref": "source-data://pand-crops/0363100012169981/front.jpg"
+    },
+    "axesPerStorey": [
+     2,
+     3
+    ],
+    "storeys": {
+     "value": 3,
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012169981/front.jpg"
+    },
+    "atticInCrown": true,
+    "gable": {
+     "value": "cornice",
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012169981/front.jpg"
+    },
+    "finish": {
+     "value": "brick",
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012169981/front.jpg"
+    },
+    "wall": {
+     "value": "dark",
+     "confidence": "med",
+     "ref": "source-data://pand-crops/0363100012169981/front.jpg"
+    },
+    "pui": {
+     "value": "shop",
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012169981/front.jpg"
+    }
+   },
+   "notes": "axesPerStorey 2,3: storey 3 window + balcony door + window inside one white surround; attic light in the cornice frieze; very dark brown brick",
+   "group": "ab07"
+  },
+  {
+   "pandId": "0363100012173134",
+   "images": [
+    {
+     "ref": "source-data://pand-crops/0363100012173134/front.jpg",
+     "sha256": "334b9fa95894bde6f242d3f5565b83f98613f5c0b69c1f23e0d40505fd467644"
+    },
+    {
+     "ref": "source-data://pand-crops/0363100012173134/years/2019.jpg",
+     "sha256": "271f5565241fe7d76243b6da6364a7650ddce19dfb794cfe5d080c3084990502"
+    }
+   ],
+   "readable": true,
+   "fields": {
+    "axes": {
+     "value": 2,
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012173134/front.jpg"
+    },
+    "storeys": {
+     "value": 3,
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012173134/front.jpg"
+    },
+    "atticInCrown": true,
+    "gable": {
+     "value": "flat",
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012173134/front.jpg"
+    },
+    "finish": {
+     "value": "brick",
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012173134/front.jpg"
+    },
+    "wall": {
+     "value": "red-brown",
+     "confidence": "med",
+     "ref": "source-data://pand-crops/0363100012173134/front.jpg"
+    },
+    "pui": {
+     "value": "residential",
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012173134/front.jpg"
+    }
+   },
+   "notes": "modern infill; each storey two wide multi-light openings; setback roof storey not counted",
+   "group": "ab07"
+  },
+  {
+   "pandId": "0363100012172576",
+   "images": [
+    {
+     "ref": "source-data://pand-crops/0363100012172576/front.jpg",
+     "sha256": "6ec5e413034ef4cefe0cfaca68b2c4b69d6c679ee62bc0fa7d0fd6a61bfcad53"
+    }
+   ],
+   "readable": true,
+   "fields": {
+    "axes": {
+     "value": 3,
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012172576/front.jpg"
+    },
+    "storeys": {
+     "value": 3,
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012172576/front.jpg"
+    },
+    "atticInCrown": true,
+    "gable": {
+     "value": "neck",
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012172576/front.jpg"
+    },
+    "finish": {
+     "value": "brick",
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012172576/front.jpg"
+    },
+    "wall": {
+     "value": "red-brown",
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012172576/front.jpg"
+    },
+    "pui": {
+     "value": "residential",
+     "confidence": "med",
+     "ref": "source-data://pand-crops/0363100012172576/front.jpg"
+    }
+   },
+   "notes": "claw pieces at the gable foot, one gable window",
+   "group": "ab07"
+  },
+  {
+   "pandId": "0363100012173058",
+   "images": [
+    {
+     "ref": "source-data://pand-crops/0363100012173058/front.jpg",
+     "sha256": "290395bed8bccf59864b4c2342d4cd520aea723dca452386be30e77104654490"
+    }
+   ],
+   "readable": true,
+   "fields": {
+    "axes": {
+     "value": 3,
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012173058/front.jpg"
+    },
+    "storeys": {
+     "value": 2,
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012173058/front.jpg"
+    },
+    "atticInCrown": true,
+    "gable": {
+     "value": "bell",
+     "confidence": "med",
+     "ref": "source-data://pand-crops/0363100012173058/front.jpg"
+    },
+    "finish": {
+     "value": "brick",
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012173058/front.jpg"
+    },
+    "wall": {
+     "value": "red-brown",
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012173058/front.jpg"
+    },
+    "pui": {
+     "value": "shop",
+     "confidence": "low",
+     "ref": "source-data://pand-crops/0363100012173058/front.jpg"
+    }
+   },
+   "notes": "concave flanks to a short rounded cap with small shoulders at 8.8 m (bell or neck); arched ground-storey glazing between pilasters",
+   "group": "ab07"
+  },
+  {
+   "pandId": "0363100012174743",
+   "images": [
+    {
+     "ref": "source-data://pand-crops/0363100012174743/front.jpg",
+     "sha256": "57afd3691d637a8b6247c7ffe79fb31b982f66bed8a5e4a764dceae8666d6438"
+    }
+   ],
+   "readable": true,
+   "fields": {
+    "axes": {
+     "value": 3,
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012174743/front.jpg"
+    },
+    "storeys": {
+     "value": 2,
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012174743/front.jpg"
+    },
+    "atticInCrown": true,
+    "gable": {
+     "value": "point",
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012174743/front.jpg"
+    },
+    "finish": {
+     "value": "brick",
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012174743/front.jpg"
+    },
+    "wall": {
+     "value": "brown",
+     "confidence": "med",
+     "ref": "source-data://pand-crops/0363100012174743/front.jpg"
+    },
+    "pui": {
+     "value": "residential",
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012174743/front.jpg"
+    }
+   },
+   "notes": "triangular gable with four windows on two levels; white rendered ground storey",
+   "group": "ab07"
+  },
+  {
+   "pandId": "0363100012168157",
+   "images": [
+    {
+     "ref": "source-data://pand-crops/0363100012168157/front.jpg",
+     "sha256": "0f4d76765b4b875506ce0a4a47ecb70b4e6ac7a2f00327723d7ff9d61fa59994"
+    }
+   ],
+   "readable": true,
+   "fields": {
+    "axes": {
+     "value": 2,
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012168157/front.jpg"
+    },
+    "storeys": {
+     "value": 3,
+     "confidence": "med",
+     "ref": "source-data://pand-crops/0363100012168157/front.jpg"
+    },
+    "atticInCrown": true,
+    "gable": {
+     "value": "point",
+     "confidence": "med",
+     "ref": "source-data://pand-crops/0363100012168157/front.jpg"
+    },
+    "finish": {
+     "value": "painted-brick",
+     "confidence": "med",
+     "ref": "source-data://pand-crops/0363100012168157/front.jpg"
+    },
+    "wall": {
+     "value": "dark",
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012168157/front.jpg"
+    },
+    "pui": {
+     "value": "residential",
+     "confidence": "med",
+     "ref": "source-data://pand-crops/0363100012168157/front.jpg"
+    }
+   },
+   "notes": "storey 3 one three-light window; straight-sided pointed gable (or spout) with one window",
+   "group": "ab07"
+  },
+  {
+   "pandId": "0363100012174971",
+   "images": [
+    {
+     "ref": "source-data://pand-crops/0363100012174971/front.jpg",
+     "sha256": "c146a0b89dc3b4674afe0eb7b8d926ed80f136196fbb1f16a5c37d2ecb00a2e4"
+    }
+   ],
+   "readable": true,
+   "fields": {
+    "axes": {
+     "value": 3,
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012174971/front.jpg"
+    },
+    "storeys": {
+     "value": 4,
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012174971/front.jpg"
+    },
+    "atticInCrown": true,
+    "gable": {
+     "value": "cornice",
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012174971/front.jpg"
+    },
+    "finish": {
+     "value": "brick",
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012174971/front.jpg"
+    },
+    "wall": {
+     "value": "brown",
+     "confidence": "med",
+     "ref": "source-data://pand-crops/0363100012174971/front.jpg"
+    },
+    "pui": {
+     "value": "shop",
+     "confidence": "med",
+     "ref": "source-data://pand-crops/0363100012174971/front.jpg"
+    }
+   },
+   "notes": "attic lights in the cornice frieze, hipped roof behind",
+   "group": "ab07"
+  },
+  {
+   "pandId": "0363100012174976",
+   "images": [
+    {
+     "ref": "source-data://pand-crops/0363100012174976/front.jpg",
+     "sha256": "1a00a3a4ee78430e2509931b23745ae60ff735b4c0177560a05f98fa185aba5a"
+    }
+   ],
+   "readable": true,
+   "fields": {
+    "axes": {
+     "value": 3,
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012174976/front.jpg"
+    },
+    "storeys": {
+     "value": 4,
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012174976/front.jpg"
+    },
+    "gable": {
+     "value": "cornice",
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012174976/front.jpg"
+    },
+    "finish": {
+     "value": "brick",
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012174976/front.jpg"
+    },
+    "wall": {
+     "value": "red-brown",
+     "confidence": "med",
+     "ref": "source-data://pand-crops/0363100012174976/front.jpg"
+    },
+    "pui": {
+     "value": "shop",
+     "confidence": "med",
+     "ref": "source-data://pand-crops/0363100012174976/front.jpg"
+    }
+   },
+   "notes": "white cornice band, tiled roof behind",
+   "group": "ab07"
+  },
+  {
+   "pandId": "0363100012172582",
+   "images": [
+    {
+     "ref": "source-data://pand-crops/0363100012172582/years/2025.jpg",
+     "sha256": "1209f2973291b2d82bba31225eebc7dc02c128b085f7706fffc5b070b79ee08c"
+    },
+    {
+     "ref": "source-data://pand-crops/0363100012172582/front.jpg",
+     "sha256": "167155cbffd126aa872444079a5a62550c1f1c9af161fd846fab38edacd9b60f"
+    },
+    {
+     "ref": "source-data://pand-crops/0363100012172582/years/2022.jpg",
+     "sha256": "ecd0031450723c976587b1ef49f8c098e9ed3a116cae7e507212743bda88152e"
+    }
+   ],
+   "readable": true,
+   "fields": {
+    "axes": {
+     "value": 3,
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012172582/front.jpg"
+    },
+    "storeys": {
+     "value": 4,
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012172582/front.jpg"
+    },
+    "gable": {
+     "value": "cornice",
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012172582/front.jpg"
+    },
+    "finish": {
+     "value": "brick",
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012172582/front.jpg"
+    },
+    "wall": {
+     "value": "brown",
+     "confidence": "med",
+     "ref": "source-data://pand-crops/0363100012172582/front.jpg"
+    },
+    "pui": {
+     "value": "residential",
+     "confidence": "med",
+     "ref": "source-data://pand-crops/0363100012172582/front.jpg"
+    }
+   },
+   "notes": "top storey has oculus, window, oculus (3 openings); big central double doors on the ground storey",
+   "group": "ab07"
+  },
+  {
+   "pandId": "0363100012168159",
+   "images": [
+    {
+     "ref": "source-data://pand-crops/0363100012168159/years/2021.jpg",
+     "sha256": "1d50f7dbd198719c64da56f03e371d8d5b643cfd9763f6cd67f93a9390fc1399"
+    },
+    {
+     "ref": "source-data://pand-crops/0363100012168159/front.jpg",
+     "sha256": "b293c522c680a82ee2cd73aa3de45a148aae449da8868e5d669f1b90252cf7d0"
+    }
+   ],
+   "readable": true,
+   "fields": {
+    "axes": {
+     "value": 3,
+     "confidence": "med",
+     "ref": "source-data://pand-crops/0363100012168159/years/2021.jpg"
+    },
+    "storeys": {
+     "value": 2,
+     "confidence": "low",
+     "ref": "source-data://pand-crops/0363100012168159/years/2021.jpg"
+    },
+    "gable": {
+     "value": "point",
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012168159/years/2021.jpg"
+    },
+    "finish": {
+     "value": "brick",
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012168159/years/2021.jpg"
+    },
+    "wall": {
+     "value": "red",
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012168159/years/2021.jpg"
+    },
+    "pui": {
+     "value": null,
+     "confidence": "low",
+     "ref": "source-data://pand-crops/0363100012168159/years/2021.jpg"
+    }
+   },
+   "notes": "a church front (rose window, pinnacles), not a house: storeys and pui do not apply well",
+   "group": "ab07"
+  },
+  {
+   "pandId": "0363100012174177",
+   "images": [
+    {
+     "ref": "source-data://pand-crops/0363100012174177/front.jpg",
+     "sha256": "d4b0b60c35c19f9472a1ecdb0a49d4b92adc900cf94cc471d953676daa24c5d4"
+    }
+   ],
+   "readable": true,
+   "fields": {
+    "axes": {
+     "value": 3,
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012174177/front.jpg"
+    },
+    "storeys": {
+     "value": 3,
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012174177/front.jpg"
+    },
+    "atticInCrown": true,
+    "gable": {
+     "value": "point",
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012174177/front.jpg"
+    },
+    "finish": {
+     "value": "brick",
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012174177/front.jpg"
+    },
+    "wall": {
+     "value": "red-brown",
+     "confidence": "med",
+     "ref": "source-data://pand-crops/0363100012174177/front.jpg"
+    },
+    "pui": {
+     "value": "shop",
+     "confidence": "med",
+     "ref": "source-data://pand-crops/0363100012174177/front.jpg"
+    }
+   },
+   "notes": "brick point gable with one window; the grey gable behind it belongs to another roof",
+   "group": "ab07"
+  },
+  {
+   "pandId": "0363100012168647",
+   "images": [
+    {
+     "ref": "source-data://pand-crops/0363100012168647/front.jpg",
+     "sha256": "511f2542e388f6b8a2d412aecc3ab9b9f0884eb36426782109a24bf21bc3ca42"
+    }
+   ],
+   "readable": true,
+   "fields": {
+    "axes": {
+     "value": 3,
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012168647/front.jpg"
+    },
+    "storeys": {
+     "value": 3,
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012168647/front.jpg"
+    },
+    "gable": {
+     "value": "cornice",
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012168647/front.jpg"
+    },
+    "finish": {
+     "value": "painted-brick",
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012168647/front.jpg"
+    },
+    "wall": {
+     "value": "dark",
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012168647/front.jpg"
+    },
+    "pui": {
+     "value": "residential",
+     "confidence": "med",
+     "ref": "source-data://pand-crops/0363100012168647/front.jpg"
+    }
+   },
+   "notes": "near-black painted brick, white cornice and ground-storey fascia; dormer behind; tree at right",
+   "group": "ab07"
+  },
+  {
+   "pandId": "0363100012168442",
+   "images": [
+    {
+     "ref": "source-data://pand-crops/0363100012168442/front.jpg",
+     "sha256": "8dd964f842deb872ff6216cd2752b33fdf9e45607420e846c1dc5371734e0c27"
+    }
+   ],
+   "readable": true,
+   "fields": {
+    "axes": {
+     "value": 3,
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012168442/front.jpg"
+    },
+    "storeys": {
+     "value": 4,
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012168442/front.jpg"
+    },
+    "atticInCrown": true,
+    "gable": {
+     "value": "cornice",
+     "confidence": "med",
+     "ref": "source-data://pand-crops/0363100012168442/front.jpg"
+    },
+    "finish": {
+     "value": "brick",
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012168442/front.jpg"
+    },
+    "wall": {
+     "value": "brown",
+     "confidence": "med",
+     "ref": "source-data://pand-crops/0363100012168442/front.jpg"
+    },
+    "pui": {
+     "value": "shop",
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012168442/front.jpg"
+    }
+   },
+   "notes": "narrow front, centre balcony doors; a recessed attic storey above the cornice",
+   "group": "ab07"
+  },
+  {
+   "pandId": "0363100012174653",
+   "images": [
+    {
+     "ref": "source-data://pand-crops/0363100012174653/front.jpg",
+     "sha256": "1c9bfcac63c59d4b228188860f9e59c5a1d552fd6143adaa5bbba5bf1270bbb4"
+    }
+   ],
+   "readable": true,
+   "fields": {
+    "axes": {
+     "value": 3,
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012174653/front.jpg"
+    },
+    "storeys": {
+     "value": 3,
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012174653/front.jpg"
+    },
+    "gable": {
+     "value": "cornice",
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012174653/front.jpg"
+    },
+    "finish": {
+     "value": "brick",
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012174653/front.jpg"
+    },
+    "wall": {
+     "value": "red",
+     "confidence": "med",
+     "ref": "source-data://pand-crops/0363100012174653/front.jpg"
+    },
+    "pui": {
+     "value": "residential",
+     "confidence": "med",
+     "ref": "source-data://pand-crops/0363100012174653/front.jpg"
+    }
+   },
+   "notes": "bracketed eaves cornice, one dormer; arched ground-storey window",
+   "group": "ab07"
+  },
+  {
+   "pandId": "0363100012169902",
+   "images": [
+    {
+     "ref": "source-data://pand-crops/0363100012169902/front.jpg",
+     "sha256": "18ce0066c3118e5ce7272d15e808bbb89987aae38206768e669b415602e90cd3"
+    },
+    {
+     "ref": "source-data://pand-crops/0363100012169902/years/2025.jpg",
+     "sha256": "5be7d9c8924bbd280382131f164c87564ebfb87a8e1a964277bbdf320a22cbb0"
+    },
+    {
+     "ref": "source-data://pand-crops/0363100012169902/years/2022.jpg",
+     "sha256": "f952d3cd2961e27548e09e2bbe06b0985ba8f5cfd4b293fe18d89f98d80fe00c"
+    }
+   ],
+   "readable": true,
+   "fields": {
+    "axes": {
+     "value": 2,
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012169902/front.jpg"
+    },
+    "storeys": {
+     "value": 3,
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012169902/front.jpg"
+    },
+    "atticInCrown": true,
+    "gable": {
+     "value": "point",
+     "confidence": "med",
+     "ref": "source-data://pand-crops/0363100012169902/front.jpg"
+    },
+    "finish": {
+     "value": "brick",
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012169902/front.jpg"
+    },
+    "wall": {
+     "value": "red-brown",
+     "confidence": "med",
+     "ref": "source-data://pand-crops/0363100012169902/front.jpg"
+    },
+    "pui": {
+     "value": "shop",
+     "confidence": "med",
+     "ref": "source-data://pand-crops/0363100012169902/front.jpg"
+    }
+   },
+   "notes": "straight-sided gable with one window, chimney on top; B half hidden by sheeting, C is a close-up",
+   "group": "ab07"
+  },
+  {
+   "pandId": "0363100012174746",
+   "images": [
+    {
+     "ref": "source-data://pand-crops/0363100012174746/front.jpg",
+     "sha256": "f0f1042d1cd56454ac127c64bd2bcb5373733db9f524b5b828fafa64c273df01"
+    }
+   ],
+   "readable": true,
+   "fields": {
+    "axes": {
+     "value": 4,
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012174746/front.jpg"
+    },
+    "storeys": {
+     "value": 3,
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012174746/front.jpg"
+    },
+    "gable": {
+     "value": "cornice",
+     "confidence": "med",
+     "ref": "source-data://pand-crops/0363100012174746/front.jpg"
+    },
+    "finish": {
+     "value": "brick",
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012174746/front.jpg"
+    },
+    "wall": {
+     "value": "red-brown",
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012174746/front.jpg"
+    },
+    "pui": {
+     "value": "residential",
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012174746/front.jpg"
+    }
+   },
+   "notes": "plain white cornice band, tiled roof and dormers behind",
+   "group": "ab07"
+  },
+  {
+   "pandId": "0363100012169914",
+   "images": [
+    {
+     "ref": "source-data://pand-crops/0363100012169914/front.jpg",
+     "sha256": "f8c19b3de50f9cd8e26de23e934b5c220fe9669f2451a22fc5ed04e47d4a0eea"
+    },
+    {
+     "ref": "source-data://pand-crops/0363100012169914/years/2022.jpg",
+     "sha256": "008ad4cd890c51b9af160894330d3f2e002c6de22464a89e6b5ff04b657e9611"
+    }
+   ],
+   "readable": true,
+   "fields": {
+    "axes": {
+     "value": 3,
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012169914/front.jpg"
+    },
+    "storeys": {
+     "value": 4,
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012169914/front.jpg"
+    },
+    "gable": {
+     "value": "cornice",
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012169914/front.jpg"
+    },
+    "finish": {
+     "value": "brick",
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012169914/front.jpg"
+    },
+    "wall": {
+     "value": "red-brown",
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012169914/front.jpg"
+    },
+    "pui": {
+     "value": "shop",
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012169914/front.jpg"
+    }
+   },
+   "notes": "frieze under the cornice, yellow quoins; roof dormer behind",
+   "group": "ab07"
+  },
+  {
+   "pandId": "0363100012173131",
+   "images": [
+    {
+     "ref": "source-data://pand-crops/0363100012173131/front.jpg",
+     "sha256": "0185450605510c20e5e3762929391eb879d618d83ac250e9f4938502a4870b9f"
+    }
+   ],
+   "readable": true,
+   "fields": {
+    "axes": {
+     "value": 3,
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012173131/front.jpg"
+    },
+    "storeys": {
+     "value": 3,
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012173131/front.jpg"
+    },
+    "gable": {
+     "value": "cornice",
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012173131/front.jpg"
+    },
+    "finish": {
+     "value": "brick",
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012173131/front.jpg"
+    },
+    "wall": {
+     "value": "brown",
+     "confidence": "med",
+     "ref": "source-data://pand-crops/0363100012173131/front.jpg"
+    },
+    "pui": {
+     "value": "shop",
+     "confidence": "med",
+     "ref": "source-data://pand-crops/0363100012173131/front.jpg"
+    }
+   },
+   "notes": "pediment hoods over the windows",
+   "group": "ab07"
+  },
+  {
+   "pandId": "0363100012172773",
+   "images": [
+    {
+     "ref": "source-data://pand-crops/0363100012172773/front.jpg",
+     "sha256": "8c4a509a86eb63e0af389ddf88a1d37c23508b2ea05c41b18f43e43ba79b4248"
+    },
+    {
+     "ref": "source-data://pand-crops/0363100012172773/years/2024.jpg",
+     "sha256": "bfa0b27886d5f6e87051dee1461b3f24b8ff67b2c39eb4041459b3edfa570a1f"
+    },
+    {
+     "ref": "source-data://pand-crops/0363100012172773/years/2022.jpg",
+     "sha256": "2edcf5bcf495d94d23133a0d5e89a4c0664c74917a914092ebeeb03bdbb87e1f"
+    }
+   ],
+   "readable": true,
+   "fields": {
+    "axes": {
+     "value": 7,
+     "confidence": "med",
+     "ref": "source-data://pand-crops/0363100012172773/front.jpg"
+    },
+    "storeys": {
+     "value": 5,
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012172773/front.jpg"
+    },
+    "gable": {
+     "value": "flat",
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012172773/front.jpg"
+    },
+    "finish": {
+     "value": "brick",
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012172773/front.jpg"
+    },
+    "wall": {
+     "value": "grey",
+     "confidence": "low",
+     "ref": "source-data://pand-crops/0363100012172773/front.jpg"
+    },
+    "pui": {
+     "value": "shop",
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012172773/front.jpg"
+    }
+   },
+   "notes": "modern block, 17 m; centre bay with two loggia columns and a small window between, curved balcony; colour grey-brown in A/B, sunlit buff in C",
+   "group": "ab07"
+  },
+  {
+   "pandId": "0363100012174564",
+   "images": [
+    {
+     "ref": "source-data://pand-crops/0363100012174564/front.jpg",
+     "sha256": "0b4282267ca2c7e759406bbab89707fdf28a0f3669b813b76fdbbe21ed3b6211"
+    }
+   ],
+   "readable": true,
+   "fields": {
+    "axes": {
+     "value": 3,
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012174564/front.jpg"
+    },
+    "storeys": {
+     "value": 4,
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012174564/front.jpg"
+    },
+    "atticInCrown": true,
+    "gable": {
+     "value": "bell",
+     "confidence": "med",
+     "ref": "source-data://pand-crops/0363100012174564/front.jpg"
+    },
+    "finish": {
+     "value": "brick",
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012174564/front.jpg"
+    },
+    "wall": {
+     "value": "red",
+     "confidence": "med",
+     "ref": "source-data://pand-crops/0363100012174564/front.jpg"
+    },
+    "pui": {
+     "value": "shop",
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012174564/front.jpg"
+    }
+   },
+   "notes": "neo-renaissance curved top gable with a window aedicule; white bands",
+   "group": "ab07"
+  },
+  {
+   "pandId": "0363100012173135",
+   "images": [
+    {
+     "ref": "source-data://pand-crops/0363100012173135/front.jpg",
+     "sha256": "1e552df36d6b155de156524c73adae6871f046452008113c108a39504bcbf603"
+    }
+   ],
+   "readable": true,
+   "fields": {
+    "axes": {
+     "value": 2,
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012173135/front.jpg"
+    },
+    "axesPerStorey": [
+     1,
+     2
+    ],
+    "storeys": {
+     "value": 3,
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012173135/front.jpg"
+    },
+    "entresol": true,
+    "atticInCrown": true,
+    "gable": {
+     "value": "neck",
+     "confidence": "med",
+     "ref": "source-data://pand-crops/0363100012173135/front.jpg"
+    },
+    "finish": {
+     "value": "brick",
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012173135/front.jpg"
+    },
+    "wall": {
+     "value": "red-brown",
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012173135/front.jpg"
+    },
+    "pui": {
+     "value": "shop",
+     "confidence": "med",
+     "ref": "source-data://pand-crops/0363100012173135/front.jpg"
+    }
+   },
+   "notes": "glazed entresol over the shop; storey 2 a wide erker (one axis), storey 3 two windows; small ornaments at the gable foot",
+   "group": "ab07"
+  },
+  {
+   "pandId": "0363100012172891",
+   "images": [
+    {
+     "ref": "source-data://pand-crops/0363100012172891/years/2019.jpg",
+     "sha256": "7159cc73cd8128e85405c728653ed37e66d5d9191e36d9d9fce4aed1e3b7f630"
+    },
+    {
+     "ref": "source-data://pand-crops/0363100012172891/front.jpg",
+     "sha256": "bd11c0d087320b373a46b1b8742eb9a235a724b5c95b6e49ecfc2f36c7e48a5d"
+    },
+    {
+     "ref": "source-data://pand-crops/0363100012172891/years/2022.jpg",
+     "sha256": "a0a8ab5e922f9ec8be86d0a345efb9bfed1a313deba5753b3c0733d285a397cb"
+    }
+   ],
+   "readable": true,
+   "fields": {
+    "axes": {
+     "value": 4,
+     "confidence": "med",
+     "ref": "source-data://pand-crops/0363100012172891/years/2019.jpg"
+    },
+    "storeys": {
+     "value": 4,
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012172891/years/2019.jpg"
+    },
+    "gable": {
+     "value": "cornice",
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012172891/years/2019.jpg"
+    },
+    "finish": {
+     "value": "brick",
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012172891/years/2019.jpg"
+    },
+    "wall": {
+     "value": "red-brown",
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012172891/years/2019.jpg"
+    },
+    "pui": {
+     "value": "residential",
+     "confidence": "med",
+     "ref": "source-data://pand-crops/0363100012172891/years/2019.jpg"
+    }
+   },
+   "notes": "corner building: the three panels show different walls (B 3 columns, C 2); read A, the describe crop; white bands, dormers behind the cornice",
+   "group": "ab07"
+  },
+  {
+   "pandId": "0363100012168606",
+   "images": [
+    {
+     "ref": "source-data://pand-crops/0363100012168606/front.jpg",
+     "sha256": "11dcd58e7b789a466497c9371bbffc71c011529539ab7f04f740e01090ad2810"
+    }
+   ],
+   "readable": true,
+   "fields": {
+    "axes": {
+     "value": 3,
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012168606/front.jpg"
+    },
+    "storeys": {
+     "value": 4,
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012168606/front.jpg"
+    },
+    "atticInCrown": true,
+    "gable": {
+     "value": "bell",
+     "confidence": "med",
+     "ref": "source-data://pand-crops/0363100012168606/front.jpg"
+    },
+    "finish": {
+     "value": "brick",
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012168606/front.jpg"
+    },
+    "wall": {
+     "value": "red-brown",
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012168606/front.jpg"
+    },
+    "pui": {
+     "value": "residential",
+     "confidence": "med",
+     "ref": "source-data://pand-crops/0363100012168606/front.jpg"
+    }
+   },
+   "notes": "curved flanks to a rounded cap, no vertical neck sides",
+   "group": "ab07"
+  },
+  {
+   "pandId": "0363100012170031",
+   "images": [
+    {
+     "ref": "source-data://pand-crops/0363100012170031/years/2024.jpg",
+     "sha256": "bbe252b8863fe46c8145140fce5311d12bca919882a09c758888611ac7bb79fa"
+    },
+    {
+     "ref": "source-data://pand-crops/0363100012170031/front.jpg",
+     "sha256": "df9147bf7994107a12e010ae62bfeeff967c0f47926017d841e1f7d9362a9d1e"
+    },
+    {
+     "ref": "source-data://pand-crops/0363100012170031/years/2022.jpg",
+     "sha256": "d9eca5fd69472e27db3fd9283f2526f0f77366054b48dbc01da599bf68aecfd8"
+    }
+   ],
+   "readable": true,
+   "fields": {
+    "axes": {
+     "value": 4,
+     "confidence": "med",
+     "ref": "source-data://pand-crops/0363100012170031/front.jpg"
+    },
+    "axesPerStorey": [
+     4,
+     2,
+     2
+    ],
+    "storeys": {
+     "value": 4,
+     "confidence": "med",
+     "ref": "source-data://pand-crops/0363100012170031/front.jpg"
+    },
+    "gable": {
+     "value": "point",
+     "confidence": "low",
+     "ref": "source-data://pand-crops/0363100012170031/front.jpg"
+    },
+    "finish": {
+     "value": "stucco",
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012170031/front.jpg"
+    },
+    "wall": {
+     "value": "white",
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012170031/front.jpg"
+    },
+    "pui": {
+     "value": "shop",
+     "confidence": "med",
+     "ref": "source-data://pand-crops/0363100012170031/front.jpg"
+    }
+   },
+   "notes": "storey 2 is a glazed band of four lights between pilasters, upper storeys two windows (typical 2); A is washed out but shows a pointed top at 10.7-12 m; B/C cut at 12 m",
+   "group": "ab07"
+  },
+  {
+   "pandId": "0363100012174646",
+   "images": [
+    {
+     "ref": "source-data://pand-crops/0363100012174646/front.jpg",
+     "sha256": "a3c23a77c542db0b8c31ceeccecaec0812fbb969116efecb763f5a978bf6cc4f"
+    }
+   ],
+   "readable": true,
+   "fields": {
+    "axes": {
+     "value": 3,
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012174646/front.jpg"
+    },
+    "storeys": {
+     "value": 3,
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012174646/front.jpg"
+    },
+    "gable": {
+     "value": "cornice",
+     "confidence": "med",
+     "ref": "source-data://pand-crops/0363100012174646/front.jpg"
+    },
+    "finish": {
+     "value": "brick",
+     "confidence": "med",
+     "ref": "source-data://pand-crops/0363100012174646/front.jpg"
+    },
+    "wall": {
+     "value": "dark",
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012174646/front.jpg"
+    },
+    "pui": {
+     "value": "residential",
+     "confidence": "med",
+     "ref": "source-data://pand-crops/0363100012174646/front.jpg"
+    }
+   },
+   "notes": "near-black brick, projecting eaves board; white band over the ground storey",
+   "group": "ab07"
+  },
+  {
+   "pandId": "0363100012174253",
+   "images": [
+    {
+     "ref": "source-data://pand-crops/0363100012174253/front.jpg",
+     "sha256": "3550142fe0616a451335d4f395120c27b78c8ab752618772840a1d077861b498"
+    }
+   ],
+   "readable": true,
+   "fields": {
+    "axes": {
+     "value": 3,
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012174253/front.jpg"
+    },
+    "storeys": {
+     "value": 4,
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012174253/front.jpg"
+    },
+    "atticInCrown": true,
+    "gable": {
+     "value": "bell",
+     "confidence": "med",
+     "ref": "source-data://pand-crops/0363100012174253/front.jpg"
+    },
+    "finish": {
+     "value": "brick",
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012174253/front.jpg"
+    },
+    "wall": {
+     "value": "red",
+     "confidence": "med",
+     "ref": "source-data://pand-crops/0363100012174253/front.jpg"
+    },
+    "pui": {
+     "value": "residential",
+     "confidence": "low",
+     "ref": "source-data://pand-crops/0363100012174253/front.jpg"
+    }
+   },
+   "notes": "curved flanks to a rounded top; dark painted ground storey",
+   "group": "ab07"
+  },
+  {
+   "pandId": "0363100012168077",
+   "images": [
+    {
+     "ref": "source-data://pand-crops/0363100012168077/front.jpg",
+     "sha256": "e9974b1995464af5e13bfe5fa35fd422cbc2148f1a0c44701ac2cdd6d92aa477"
+    }
+   ],
+   "readable": true,
+   "fields": {
+    "axes": {
+     "value": 3,
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012168077/front.jpg"
+    },
+    "storeys": {
+     "value": 4,
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012168077/front.jpg"
+    },
+    "souterrain": true,
+    "gable": {
+     "value": "cornice",
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012168077/front.jpg"
+    },
+    "finish": {
+     "value": "painted-brick",
+     "confidence": "med",
+     "ref": "source-data://pand-crops/0363100012168077/front.jpg"
+    },
+    "wall": {
+     "value": "dark",
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012168077/front.jpg"
+    },
+    "pui": {
+     "value": "residential",
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012168077/front.jpg"
+    }
+   },
+   "notes": "raised ground storey over basement lights; white cornice",
+   "group": "ab07"
+  },
+  {
+   "pandId": "0363100012170145",
+   "images": [
+    {
+     "ref": "source-data://pand-crops/0363100012170145/front.jpg",
+     "sha256": "5b739e7151ebcc35d20fc87fee8f41ad8a605ea3b9029c9fd3bb30cdc899f7ee"
+    }
+   ],
+   "readable": true,
+   "fields": {
+    "axes": {
+     "value": 3,
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012170145/front.jpg"
+    },
+    "storeys": {
+     "value": 4,
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012170145/front.jpg"
+    },
+    "atticInCrown": true,
+    "gable": {
+     "value": "cornice",
+     "confidence": "low",
+     "ref": "source-data://pand-crops/0363100012170145/front.jpg"
+    },
+    "finish": {
+     "value": "brick",
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012170145/front.jpg"
+    },
+    "wall": {
+     "value": "brown",
+     "confidence": "med",
+     "ref": "source-data://pand-crops/0363100012170145/front.jpg"
+    },
+    "pui": {
+     "value": "shop",
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012170145/front.jpg"
+    }
+   },
+   "notes": "centre erker over storeys 2-4; balustraded parapet with a central gabled dormer above (cornice vs flat)",
+   "group": "ab07"
+  },
+  {
+   "pandId": "0363100012174168",
+   "images": [
+    {
+     "ref": "source-data://pand-crops/0363100012174168/front.jpg",
+     "sha256": "2d6facadf070b055a7fb99fbb3c4f615706858101542942f0194333c7f7c7448"
+    }
+   ],
+   "readable": true,
+   "fields": {
+    "axes": {
+     "value": 3,
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012174168/front.jpg"
+    },
+    "storeys": {
+     "value": 4,
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012174168/front.jpg"
+    },
+    "gable": {
+     "value": "cornice",
+     "confidence": "low",
+     "ref": "source-data://pand-crops/0363100012174168/front.jpg"
+    },
+    "finish": {
+     "value": "brick",
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012174168/front.jpg"
+    },
+    "wall": {
+     "value": "dark",
+     "confidence": "med",
+     "ref": "source-data://pand-crops/0363100012174168/front.jpg"
+    },
+    "pui": {
+     "value": "shop",
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012174168/front.jpg"
+    }
+   },
+   "notes": "dark grey brick; thin white coping at 14.3 m, nothing visible above it (a tree hides the top left)",
+   "group": "ab07"
+  },
+  {
+   "pandId": "0363100012174180",
+   "images": [
+    {
+     "ref": "source-data://pand-crops/0363100012174180/front.jpg",
+     "sha256": "5f5fb5587a2b2e5f096fb947bff554d816786c6f1e8b694ebe790bbb1b72a1fe"
+    }
+   ],
+   "readable": true,
+   "fields": {
+    "axes": {
+     "value": null,
+     "confidence": "low",
+     "ref": "source-data://pand-crops/0363100012174180/front.jpg"
+    },
+    "storeys": {
+     "value": null,
+     "confidence": "low",
+     "ref": "source-data://pand-crops/0363100012174180/front.jpg"
+    },
+    "gable": {
+     "value": "step",
+     "confidence": "med",
+     "ref": "source-data://pand-crops/0363100012174180/front.jpg"
+    },
+    "finish": {
+     "value": "brick",
+     "confidence": "med",
+     "ref": "source-data://pand-crops/0363100012174180/front.jpg"
+    },
+    "wall": {
+     "value": "red-brown",
+     "confidence": "med",
+     "ref": "source-data://pand-crops/0363100012174180/front.jpg"
+    },
+    "pui": {
+     "value": "shop",
+     "confidence": "low",
+     "ref": "source-data://pand-crops/0363100012174180/front.jpg"
+    }
+   },
+   "notes": "smeared multi-panorama fusion (doubled edges); only the stepped outline and the brick read",
+   "group": "ab07"
+  },
+  {
+   "pandId": "0363100012174422",
+   "images": [
+    {
+     "ref": "source-data://pand-crops/0363100012174422/front.jpg",
+     "sha256": "7781319c83ad5b10d240569fc3e7a4177dc0e18f24d1ccbd25d11eadcf6d5815"
+    }
+   ],
+   "readable": true,
+   "fields": {
+    "axes": {
+     "value": 2,
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012174422/front.jpg"
+    },
+    "storeys": {
+     "value": 3,
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012174422/front.jpg"
+    },
+    "entresol": true,
+    "atticInCrown": true,
+    "gable": {
+     "value": "step",
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012174422/front.jpg"
+    },
+    "finish": {
+     "value": "brick",
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012174422/front.jpg"
+    },
+    "wall": {
+     "value": "brown",
+     "confidence": "med",
+     "ref": "source-data://pand-crops/0363100012174422/front.jpg"
+    },
+    "pui": {
+     "value": "residential",
+     "confidence": "med",
+     "ref": "source-data://pand-crops/0363100012174422/front.jpg"
+    }
+   },
+   "notes": "stone pilastered ground storey with an entresol window band; one gable window",
+   "group": "ab07"
+  },
+  {
+   "pandId": "0363100012172779",
+   "images": [
+    {
+     "ref": "source-data://pand-crops/0363100012172779/front.jpg",
+     "sha256": "aaade6627a8f85e9d408ac09be2838cc5447c7fa2ef767a9fad51d3c996af0fd"
+    }
+   ],
+   "readable": true,
+   "fields": {
+    "axes": {
+     "value": 2,
+     "confidence": "low",
+     "ref": "source-data://pand-crops/0363100012172779/front.jpg"
+    },
+    "storeys": {
+     "value": 2,
+     "confidence": "low",
+     "ref": "source-data://pand-crops/0363100012172779/front.jpg"
+    },
+    "atticInCrown": true,
+    "gable": {
+     "value": "neck",
+     "confidence": "low",
+     "ref": "source-data://pand-crops/0363100012172779/front.jpg"
+    },
+    "finish": {
+     "value": "brick",
+     "confidence": "med",
+     "ref": "source-data://pand-crops/0363100012172779/front.jpg"
+    },
+    "wall": {
+     "value": "brown",
+     "confidence": "low",
+     "ref": "source-data://pand-crops/0363100012172779/front.jpg"
+    },
+    "pui": {
+     "value": null,
+     "confidence": "low",
+     "ref": "source-data://pand-crops/0363100012172779/front.jpg"
+    }
+   },
+   "notes": "tree over the left half, dim; ornamented gable flank and an oculus",
+   "group": "ab07"
+  },
+  {
+   "pandId": "0363100012174696",
+   "images": [
+    {
+     "ref": "source-data://pand-crops/0363100012174696/front.jpg",
+     "sha256": "f960df0af444529e2dc7d30f725acc4c827098d199ea3134060a98f2762eba92"
+    }
+   ],
+   "readable": true,
+   "fields": {
+    "axes": {
+     "value": 6,
+     "confidence": "low",
+     "ref": "source-data://pand-crops/0363100012174696/front.jpg"
+    },
+    "storeys": {
+     "value": 4,
+     "confidence": "med",
+     "ref": "source-data://pand-crops/0363100012174696/front.jpg"
+    },
+    "gable": {
+     "value": "cornice",
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012174696/front.jpg"
+    },
+    "finish": {
+     "value": "brick",
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012174696/front.jpg"
+    },
+    "wall": {
+     "value": "red-brown",
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012174696/front.jpg"
+    },
+    "pui": {
+     "value": "residential",
+     "confidence": "med",
+     "ref": "source-data://pand-crops/0363100012174696/front.jpg"
+    }
+   },
+   "notes": "the crop holds two fronts: a taller cornice front (0-5.5 m, 3 axes, 4 storeys) and a lower one (5.5-10 m, 3 axes, 3 storeys + dormer); both counted",
+   "group": "ab07"
+  },
+  {
+   "pandId": "0363100012170043",
+   "images": [
+    {
+     "ref": "source-data://pand-crops/0363100012170043/front.jpg",
+     "sha256": "7b2bbab04000a570e5dee1122a91a4747995e90b0d9118691b4846bbf2efc421"
+    },
+    {
+     "ref": "source-data://pand-crops/0363100012170043/years/2021.jpg",
+     "sha256": "d092add182515685faabc91d53da8c29ac2706022bbfaa768d2d96f63c0767c4"
+    },
+    {
+     "ref": "source-data://pand-crops/0363100012170043/years/2020.jpg",
+     "sha256": "93a9626c9dfae1481ebd6811e9bad86364d0c859805d7b985db4237e1c21e3be"
+    }
+   ],
+   "readable": true,
+   "fields": {
+    "axes": {
+     "value": 2,
+     "confidence": "low",
+     "ref": "source-data://pand-crops/0363100012170043/front.jpg"
+    },
+    "storeys": {
+     "value": 3,
+     "confidence": "med",
+     "ref": "source-data://pand-crops/0363100012170043/front.jpg"
+    },
+    "souterrain": true,
+    "atticInCrown": true,
+    "gable": {
+     "value": "neck",
+     "confidence": "low",
+     "ref": "source-data://pand-crops/0363100012170043/front.jpg"
+    },
+    "finish": {
+     "value": "painted-brick",
+     "confidence": "med",
+     "ref": "source-data://pand-crops/0363100012170043/front.jpg"
+    },
+    "wall": {
+     "value": "dark",
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012170043/front.jpg"
+    },
+    "pui": {
+     "value": "residential",
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012170043/front.jpg"
+    }
+   },
+   "notes": "white stucco bel-etage over a souterrain with a stoop; B is smeared; a third window column at 3.3 m in A may be the neighbour's",
+   "group": "ab07"
+  },
+  {
+   "pandId": "0363100012167955",
+   "images": [
+    {
+     "ref": "source-data://pand-crops/0363100012167955/years/2022.jpg",
+     "sha256": "39dfadbcc9abb97215bf69f87e48215456c84d5affcbc67a710da00818559d38"
+    },
+    {
+     "ref": "source-data://pand-crops/0363100012167955/front.jpg",
+     "sha256": "01359607eca0a711067fb6b0b1b50af76e2f61fa9ac4cad9b5c14c42cb74a451"
+    }
+   ],
+   "readable": true,
+   "fields": {
+    "axes": {
+     "value": 3,
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012167955/years/2022.jpg"
+    },
+    "storeys": {
+     "value": 3,
+     "confidence": "med",
+     "ref": "source-data://pand-crops/0363100012167955/years/2022.jpg"
+    },
+    "atticInCrown": true,
+    "gable": {
+     "value": "flat",
+     "confidence": "med",
+     "ref": "source-data://pand-crops/0363100012167955/years/2022.jpg"
+    },
+    "finish": {
+     "value": "brick",
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012167955/years/2022.jpg"
+    },
+    "wall": {
+     "value": "red-brown",
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012167955/years/2022.jpg"
+    },
+    "pui": {
+     "value": "residential",
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012167955/years/2022.jpg"
+    }
+   },
+   "notes": "modern infill with a set-back top storey; A top smeared, B a close-up",
+   "group": "ab07"
+  },
+  {
+   "pandId": "0363100012174173",
+   "images": [
+    {
+     "ref": "source-data://pand-crops/0363100012174173/front.jpg",
+     "sha256": "ef63b2fe8e9cf1444ce68f5c79001f54bd132e6f966bbadac7d73540c053ec90"
+    }
+   ],
+   "readable": true,
+   "fields": {
+    "axes": {
+     "value": 5,
+     "confidence": "low",
+     "ref": "source-data://pand-crops/0363100012174173/front.jpg"
+    },
+    "storeys": {
+     "value": 3,
+     "confidence": "low",
+     "ref": "source-data://pand-crops/0363100012174173/front.jpg"
+    },
+    "gable": {
+     "value": "cornice",
+     "confidence": "low",
+     "ref": "source-data://pand-crops/0363100012174173/front.jpg"
+    },
+    "finish": {
+     "value": "painted-brick",
+     "confidence": "low",
+     "ref": "source-data://pand-crops/0363100012174173/front.jpg"
+    },
+    "wall": {
+     "value": "dark",
+     "confidence": "med",
+     "ref": "source-data://pand-crops/0363100012174173/front.jpg"
+    },
+    "pui": {
+     "value": "residential",
+     "confidence": "low",
+     "ref": "source-data://pand-crops/0363100012174173/front.jpg"
+    }
+   },
+   "notes": "a leafy tree and a trunk hide most of a ~10 m double front (dark painted sides, pale centre); top not visible",
+   "group": "ab07"
+  },
+  {
+   "pandId": "0363100012169988",
+   "images": [
+    {
+     "ref": "source-data://pand-crops/0363100012169988/front.jpg",
+     "sha256": "3df2bd3fb6a95b0995ee0472fae25de504b093aadadf88c1a67cb086b5463d1d"
+    }
+   ],
+   "readable": true,
+   "fields": {
+    "axes": {
+     "value": 4,
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012169988/front.jpg"
+    },
+    "storeys": {
+     "value": 4,
+     "confidence": "med",
+     "ref": "source-data://pand-crops/0363100012169988/front.jpg"
+    },
+    "gable": {
+     "value": "flat",
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012169988/front.jpg"
+    },
+    "finish": {
+     "value": "brick",
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012169988/front.jpg"
+    },
+    "wall": {
+     "value": "buff",
+     "confidence": "med",
+     "ref": "source-data://pand-crops/0363100012169988/front.jpg"
+    },
+    "pui": {
+     "value": "residential",
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012169988/front.jpg"
+    }
+   },
+   "notes": "post-war block of two parts: left 4 storeys, right 3 with a roof terrace; pinkish beige brick",
+   "group": "ab07"
+  },
+  {
+   "pandId": "0363100012174923",
+   "images": [
+    {
+     "ref": "source-data://pand-crops/0363100012174923/front.jpg",
+     "sha256": "fcb83398a2579967a825df255225e01c28e1d1765caa41261a79099dfdf65443"
+    }
+   ],
+   "readable": true,
+   "fields": {
+    "axes": {
+     "value": 6,
+     "confidence": "low",
+     "ref": "source-data://pand-crops/0363100012174923/front.jpg"
+    },
+    "storeys": {
+     "value": 3,
+     "confidence": "med",
+     "ref": "source-data://pand-crops/0363100012174923/front.jpg"
+    },
+    "atticInCrown": true,
+    "gable": {
+     "value": "neck",
+     "confidence": "med",
+     "ref": "source-data://pand-crops/0363100012174923/front.jpg"
+    },
+    "finish": {
+     "value": "brick",
+     "confidence": "med",
+     "ref": "source-data://pand-crops/0363100012174923/front.jpg"
+    },
+    "wall": {
+     "value": "brown",
+     "confidence": "med",
+     "ref": "source-data://pand-crops/0363100012174923/front.jpg"
+    },
+    "pui": {
+     "value": "residential",
+     "confidence": "med",
+     "ref": "source-data://pand-crops/0363100012174923/front.jpg"
+    }
+   },
+   "notes": "two fronts: left brown brick neck gable (3 axes), right dark painted gable behind a trunk (2-3 axes); gable/finish/colour read from the left front",
+   "group": "ab07"
+  },
+  {
+   "pandId": "0363100012169088",
+   "images": [
+    {
+     "ref": "source-data://pand-crops/0363100012169088/front.jpg",
+     "sha256": "c20f21990df4aa84341ad2a7d05d48431265b1c4b91e90fd6f3c4764fa671cf2"
+    }
+   ],
+   "readable": false,
+   "fields": {
+    "axes": {
+     "value": null,
+     "confidence": "low",
+     "ref": "source-data://pand-crops/0363100012169088/front.jpg"
+    },
+    "storeys": {
+     "value": null,
+     "confidence": "low",
+     "ref": "source-data://pand-crops/0363100012169088/front.jpg"
+    },
+    "gable": {
+     "value": null,
+     "confidence": "low",
+     "ref": "source-data://pand-crops/0363100012169088/front.jpg"
+    },
+    "finish": {
+     "value": null,
+     "confidence": "low",
+     "ref": "source-data://pand-crops/0363100012169088/front.jpg"
+    },
+    "wall": {
+     "value": null,
+     "confidence": "low",
+     "ref": "source-data://pand-crops/0363100012169088/front.jpg"
+    },
+    "pui": {
+     "value": null,
+     "confidence": "low",
+     "ref": "source-data://pand-crops/0363100012169088/front.jpg"
+    }
+   },
+   "notes": "the left half is a neighbour's corner shopfront close to the camera; the dark front behind is cut at the right edge, the pand cannot be isolated",
+   "group": "ab07"
+  },
+  {
+   "pandId": "0363100012174641",
+   "images": [
+    {
+     "ref": "source-data://pand-crops/0363100012174641/front.jpg",
+     "sha256": "b19820ea66705751c376dcecf5f9edda49e8fc79e6155fe8d168a2eb6be69233"
+    }
+   ],
+   "readable": true,
+   "fields": {
+    "axes": {
+     "value": 3,
+     "confidence": "med",
+     "ref": "source-data://pand-crops/0363100012174641/front.jpg"
+    },
+    "axesPerStorey": [
+     2,
+     2,
+     3,
+     3
+    ],
+    "storeys": {
+     "value": 5,
+     "confidence": "med",
+     "ref": "source-data://pand-crops/0363100012174641/front.jpg"
+    },
+    "atticInCrown": true,
+    "gable": {
+     "value": "point",
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012174641/front.jpg"
+    },
+    "finish": {
+     "value": "brick",
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012174641/front.jpg"
+    },
+    "wall": {
+     "value": "dark",
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012174641/front.jpg"
+    },
+    "pui": {
+     "value": "shop",
+     "confidence": "low",
+     "ref": "source-data://pand-crops/0363100012174641/front.jpg"
+    }
+   },
+   "notes": "a lamp post hides the right column; storeys 4-5 have a raised centre (hoist) window between two; one gable window",
+   "group": "ab07"
+  },
+  {
+   "pandId": "0363100012169091",
+   "images": [
+    {
+     "ref": "source-data://pand-crops/0363100012169091/front.jpg",
+     "sha256": "b87ce25106fb44f2f11f55f40f54949006a801da331148b005a4a0ff20210bcb"
+    }
+   ],
+   "readable": false,
+   "fields": {
+    "axes": {
+     "value": null,
+     "confidence": "low",
+     "ref": "source-data://pand-crops/0363100012169091/front.jpg"
+    },
+    "storeys": {
+     "value": null,
+     "confidence": "low",
+     "ref": "source-data://pand-crops/0363100012169091/front.jpg"
+    },
+    "gable": {
+     "value": null,
+     "confidence": "low",
+     "ref": "source-data://pand-crops/0363100012169091/front.jpg"
+    },
+    "finish": {
+     "value": null,
+     "confidence": "low",
+     "ref": "source-data://pand-crops/0363100012169091/front.jpg"
+    },
+    "wall": {
+     "value": null,
+     "confidence": "low",
+     "ref": "source-data://pand-crops/0363100012169091/front.jpg"
+    },
+    "pui": {
+     "value": null,
+     "confidence": "low",
+     "ref": "source-data://pand-crops/0363100012169091/front.jpg"
+    }
+   },
+   "notes": "an oblique close-up of a shopfront and one window; no front",
+   "group": "ab07"
+  },
+  {
+   "pandId": "0363100012168698",
+   "images": [
+    {
+     "ref": "source-data://pand-crops/0363100012168698/front.jpg",
+     "sha256": "12cc39df5934de9edfe66c6a11ce2c84d2f3b5e1d262ed1eea4da01d33606120"
+    },
+    {
+     "ref": "source-data://pand-crops/0363100012168698/years/2021.jpg",
+     "sha256": "9eb4a9afde507abef309afe7cd5fce7a721f19d42818d12062181bab88ec1a8f"
+    },
+    {
+     "ref": "source-data://pand-crops/0363100012168698/years/2017.jpg",
+     "sha256": "3322a19b99e0008479cf26698a31aacf1cef9718544c091c257aec6cac6bd11a"
+    }
+   ],
+   "readable": true,
+   "fields": {
+    "axes": {
+     "value": 3,
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012168698/front.jpg"
+    },
+    "storeys": {
+     "value": 3,
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012168698/front.jpg"
+    },
+    "souterrain": true,
+    "gable": {
+     "value": "cornice",
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012168698/front.jpg"
+    },
+    "finish": {
+     "value": "painted-brick",
+     "confidence": "med",
+     "ref": "source-data://pand-crops/0363100012168698/front.jpg"
+    },
+    "wall": {
+     "value": "dark",
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012168698/front.jpg"
+    },
+    "pui": {
+     "value": "residential",
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012168698/front.jpg"
+    }
+   },
+   "notes": "near-black painted brick, white cornice; basement under a stoop (A; B/C a houseboat hides the ground)",
+   "group": "ab07"
+  },
+  {
+   "pandId": "0363100012172583",
+   "images": [
+    {
+     "ref": "source-data://pand-crops/0363100012172583/front.jpg",
+     "sha256": "0008b56f4d7406a0ba378d2793846b17801131dbdcd97d8737fdb600d7d1f588"
+    }
+   ],
+   "readable": true,
+   "fields": {
+    "axes": {
+     "value": 3,
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012172583/front.jpg"
+    },
+    "storeys": {
+     "value": 5,
+     "confidence": "med",
+     "ref": "source-data://pand-crops/0363100012172583/front.jpg"
+    },
+    "gable": {
+     "value": "cornice",
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012172583/front.jpg"
+    },
+    "finish": {
+     "value": "brick",
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012172583/front.jpg"
+    },
+    "wall": {
+     "value": "brown",
+     "confidence": "med",
+     "ref": "source-data://pand-crops/0363100012172583/front.jpg"
+    },
+    "pui": {
+     "value": "residential",
+     "confidence": "med",
+     "ref": "source-data://pand-crops/0363100012172583/front.jpg"
+    }
+   },
+   "notes": "a loft storey with one central hoist opening under the cornice counted as storey 5; storey 4 is oculus-window-oculus",
+   "group": "ab07"
+  },
+  {
+   "pandId": "0363100012174184",
+   "images": [
+    {
+     "ref": "source-data://pand-crops/0363100012174184/front.jpg",
+     "sha256": "364c983d0983a5af5cf85a53f9c2542629e54809f8afbeb5b439e7710ed6a39e"
+    }
+   ],
+   "readable": true,
+   "fields": {
+    "axes": {
+     "value": 2,
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012174184/front.jpg"
+    },
+    "storeys": {
+     "value": 3,
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012174184/front.jpg"
+    },
+    "gable": {
+     "value": "cornice",
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012174184/front.jpg"
+    },
+    "finish": {
+     "value": "painted-brick",
+     "confidence": "low",
+     "ref": "source-data://pand-crops/0363100012174184/front.jpg"
+    },
+    "wall": {
+     "value": "dark",
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012174184/front.jpg"
+    },
+    "pui": {
+     "value": "residential",
+     "confidence": "med",
+     "ref": "source-data://pand-crops/0363100012174184/front.jpg"
+    }
+   },
+   "notes": "white cornice band, tiled roof with a dormer behind; a lamp post in front",
+   "group": "ab07"
+  },
+  {
+   "pandId": "0363100012169899",
+   "images": [
+    {
+     "ref": "source-data://pand-crops/0363100012169899/front.jpg",
+     "sha256": "b9af28cc5ac5b9e7615d062542f52d6affb24c300e854532379868a32c04f0f9"
+    }
+   ],
+   "readable": true,
+   "fields": {
+    "axes": {
+     "value": 6,
+     "confidence": "low",
+     "ref": "source-data://pand-crops/0363100012169899/front.jpg"
+    },
+    "storeys": {
+     "value": 3,
+     "confidence": "med",
+     "ref": "source-data://pand-crops/0363100012169899/front.jpg"
+    },
+    "souterrain": true,
+    "gable": {
+     "value": "cornice",
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012169899/front.jpg"
+    },
+    "finish": {
+     "value": "brick",
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012169899/front.jpg"
+    },
+    "wall": {
+     "value": "brown",
+     "confidence": "med",
+     "ref": "source-data://pand-crops/0363100012169899/front.jpg"
+    },
+    "pui": {
+     "value": "residential",
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012169899/front.jpg"
+    }
+   },
+   "notes": "the 14 m wall shows two cornice fronts (left 3 axes, right 3 axes plus a narrow window at 11 m); counted 6; basement lights under both",
+   "group": "ab07"
+  },
+  {
+   "pandId": "0363100012167956",
+   "images": [
+    {
+     "ref": "source-data://pand-crops/0363100012167956/front.jpg",
+     "sha256": "9db4efd3d80bca26257081c9aa0c9745ef5ca9eedc562cd7a3824f1b365ed683"
+    }
+   ],
+   "readable": false,
+   "fields": {
+    "axes": {
+     "value": null,
+     "confidence": "low",
+     "ref": "source-data://pand-crops/0363100012167956/front.jpg"
+    },
+    "storeys": {
+     "value": null,
+     "confidence": "low",
+     "ref": "source-data://pand-crops/0363100012167956/front.jpg"
+    },
+    "gable": {
+     "value": null,
+     "confidence": "low",
+     "ref": "source-data://pand-crops/0363100012167956/front.jpg"
+    },
+    "finish": {
+     "value": null,
+     "confidence": "low",
+     "ref": "source-data://pand-crops/0363100012167956/front.jpg"
+    },
+    "wall": {
+     "value": null,
+     "confidence": "low",
+     "ref": "source-data://pand-crops/0363100012167956/front.jpg"
+    },
+    "pui": {
+     "value": null,
+     "confidence": "low",
+     "ref": "source-data://pand-crops/0363100012167956/front.jpg"
+    }
+   },
+   "notes": "a close-up of two windows of a modern infill; no full front",
+   "group": "ab07"
+  },
+  {
+   "pandId": "0363100012174754",
+   "images": [
+    {
+     "ref": "source-data://pand-crops/0363100012174754/front.jpg",
+     "sha256": "4a6b75678a0c69b8a1bfc6b8de5337adcfa7b09245201105507692a845901990"
+    }
+   ],
+   "readable": true,
+   "fields": {
+    "axes": {
+     "value": 2,
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012174754/front.jpg"
+    },
+    "storeys": {
+     "value": 3,
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012174754/front.jpg"
+    },
+    "gable": {
+     "value": "cornice",
+     "confidence": "med",
+     "ref": "source-data://pand-crops/0363100012174754/front.jpg"
+    },
+    "finish": {
+     "value": "brick",
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012174754/front.jpg"
+    },
+    "wall": {
+     "value": "red-brown",
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012174754/front.jpg"
+    },
+    "pui": {
+     "value": "shop",
+     "confidence": "low",
+     "ref": "source-data://pand-crops/0363100012174754/front.jpg"
+    }
+   },
+   "notes": "a white van hides the ground storey; projecting eaves cornice",
+   "group": "ab07"
+  },
+  {
+   "pandId": "0363100012174428",
+   "images": [
+    {
+     "ref": "source-data://pand-crops/0363100012174428/front.jpg",
+     "sha256": "58b2fc241aa40e2c22397b5d7b28cb1ece0e53845defb5b617324c4998077440"
+    }
+   ],
+   "readable": true,
+   "fields": {
+    "axes": {
+     "value": 2,
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012174428/front.jpg"
+    },
+    "storeys": {
+     "value": 4,
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012174428/front.jpg"
+    },
+    "gable": {
+     "value": "cornice",
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012174428/front.jpg"
+    },
+    "finish": {
+     "value": "brick",
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012174428/front.jpg"
+    },
+    "wall": {
+     "value": "red-brown",
+     "confidence": "med",
+     "ref": "source-data://pand-crops/0363100012174428/front.jpg"
+    },
+    "pui": {
+     "value": "shop",
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012174428/front.jpg"
+    }
+   },
+   "notes": "top half overexposed; frieze vents under the cornice",
+   "group": "ab07"
+  },
+  {
+   "pandId": "0363100012173352",
+   "images": [
+    {
+     "ref": "source-data://pand-crops/0363100012173352/front.jpg",
+     "sha256": "3a453236745c0de0d0a89574b00b226ee6d23100b724744f00f4b80ddb886f7b"
+    },
+    {
+     "ref": "source-data://pand-crops/0363100012173352/years/2024.jpg",
+     "sha256": "b4575f95434a1a0201e00c68104d76c7c3519fa1dbd0b3068865568f7941bfbc"
+    }
+   ],
+   "readable": true,
+   "fields": {
+    "axes": {
+     "value": 3,
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012173352/front.jpg"
+    },
+    "storeys": {
+     "value": 3,
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012173352/front.jpg"
+    },
+    "gable": {
+     "value": "cornice",
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012173352/front.jpg"
+    },
+    "finish": {
+     "value": "painted-brick",
+     "confidence": "med",
+     "ref": "source-data://pand-crops/0363100012173352/front.jpg"
+    },
+    "wall": {
+     "value": "dark",
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012173352/front.jpg"
+    },
+    "pui": {
+     "value": "shop",
+     "confidence": "med",
+     "ref": "source-data://pand-crops/0363100012173352/front.jpg"
+    }
+   },
+   "notes": "bare tree in front (A), B is a trunk; white cornice",
+   "group": "ab07"
+  },
+  {
+   "pandId": "0363100100093912",
+   "images": [
+    {
+     "ref": "source-data://pand-crops/0363100100093912/front.jpg",
+     "sha256": "b637f8e74650dbc74b18794c0c616210e7ac21f265e513557077c709aca54dac"
+    }
+   ],
+   "readable": true,
+   "fields": {
+    "axes": {
+     "value": null,
+     "confidence": "low",
+     "ref": "source-data://pand-crops/0363100100093912/front.jpg"
+    },
+    "storeys": {
+     "value": 1,
+     "confidence": "med",
+     "ref": "source-data://pand-crops/0363100100093912/front.jpg"
+    },
+    "gable": {
+     "value": "flat",
+     "confidence": "low",
+     "ref": "source-data://pand-crops/0363100100093912/front.jpg"
+    },
+    "finish": {
+     "value": "brick",
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100100093912/front.jpg"
+    },
+    "wall": {
+     "value": "red-brown",
+     "confidence": "med",
+     "ref": "source-data://pand-crops/0363100100093912/front.jpg"
+    },
+    "pui": {
+     "value": "shop",
+     "confidence": "med",
+     "ref": "source-data://pand-crops/0363100100093912/front.jpg"
+    }
+   },
+   "notes": "a one-storey brick annex with a cafe sign and a roof slope behind; no upper storey, so no axes",
+   "group": "ab07"
+  },
+  {
+   "pandId": "0363100012169267",
+   "images": [
+    {
+     "ref": "source-data://pand-crops/0363100012169267/front.jpg",
+     "sha256": "8aa45e1ed27dfe717748a228843173aa9644ab51307d9b467873c57ea13f154d"
+    }
+   ],
+   "readable": true,
+   "fields": {
+    "axes": {
+     "value": 3,
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012169267/front.jpg"
+    },
+    "storeys": {
+     "value": 4,
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012169267/front.jpg"
+    },
+    "atticInCrown": true,
+    "gable": {
+     "value": "cornice",
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012169267/front.jpg"
+    },
+    "finish": {
+     "value": "brick",
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012169267/front.jpg"
+    },
+    "wall": {
+     "value": "red-brown",
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012169267/front.jpg"
+    },
+    "pui": {
+     "value": "shop",
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012169267/front.jpg"
+    }
+   },
+   "notes": "white banded voussoirs; attic frieze with small lights under the cornice",
+   "group": "ab07"
+  },
+  {
+   "pandId": "0363100012174080",
+   "images": [
+    {
+     "ref": "source-data://pand-crops/0363100012174080/front.jpg",
+     "sha256": "196c539b15f13aaa21ab47ee69d0d27254dd17b2cbd873ba965e9be3b2f08f99"
+    }
+   ],
+   "readable": true,
+   "fields": {
+    "axes": {
+     "value": 3,
+     "confidence": "low",
+     "ref": "source-data://pand-crops/0363100012174080/front.jpg"
+    },
+    "storeys": {
+     "value": 3,
+     "confidence": "med",
+     "ref": "source-data://pand-crops/0363100012174080/front.jpg"
+    },
+    "gable": {
+     "value": "flat",
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012174080/front.jpg"
+    },
+    "finish": {
+     "value": "brick",
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012174080/front.jpg"
+    },
+    "wall": {
+     "value": "grey",
+     "confidence": "med",
+     "ref": "source-data://pand-crops/0363100012174080/front.jpg"
+    },
+    "pui": {
+     "value": "residential",
+     "confidence": "high",
+     "ref": "source-data://pand-crops/0363100012174080/front.jpg"
+    }
+   },
+   "notes": "a 19 m modern ensemble of three masses (red brick tower, grey-striped blocks with roof terraces); axes counted on the front plane of storey 2",
+   "group": "ab07"
+  },
+  {
+   "pandId": "0363100012175320",
+   "images": [
+    {
+     "ref": "source-data://pand-reference-easy-houses/0363100012175320/front.jpg",
+     "sha256": "31f5a22d466da5d9c02a1d53f422fa012acca0ed806f63f72a228e8ab6664232"
+    },
+    {
+     "ref": "source-data://pand-reference-easy-houses/0363100012175320/front-alt.jpg",
+     "sha256": "56f8157a47df081c0507b3db76806aa76537d5f6c5ad88a0d217d3b6cdd7b0b6"
+    }
+   ],
+   "readable": true,
+   "fields": {
+    "axes": {
+     "value": 3,
+     "confidence": "high",
+     "ref": "source-data://pand-reference-easy-houses/0363100012175320/front-alt.jpg"
+    },
+    "storeys": {
+     "value": 4,
+     "confidence": "med",
+     "ref": "source-data://pand-reference-easy-houses/0363100012175320/front-alt.jpg"
+    },
+    "souterrain": true,
+    "gable": {
+     "value": "cornice",
+     "confidence": "high",
+     "ref": "source-data://pand-reference-easy-houses/0363100012175320/front-alt.jpg"
+    },
+    "finish": {
+     "value": "brick",
+     "confidence": "med",
+     "ref": "source-data://pand-reference-easy-houses/0363100012175320/front-alt.jpg"
+    },
+    "wall": {
+     "value": "brown",
+     "confidence": "med",
+     "ref": "source-data://pand-reference-easy-houses/0363100012175320/front-alt.jpg"
+    },
+    "pui": {
+     "value": "residential",
+     "confidence": "high",
+     "ref": "source-data://pand-reference-easy-houses/0363100012175320/front-alt.jpg"
+    }
+   },
+   "notes": "B (front-alt) shows the whole front to the cornice: bel-etage with stoop door + 3 storeys; A is a closer, cut view; a houseboat hides B's ground",
+   "group": "easy"
+  },
+  {
+   "pandId": "0363100012175318",
+   "images": [
+    {
+     "ref": "source-data://pand-reference-easy-houses/0363100012175318/front.jpg",
+     "sha256": "0251dd8cd85cf85f83231c8914756b56e63629667c340ed749dd5398f7d660aa"
+    },
+    {
+     "ref": "source-data://pand-reference-easy-houses/0363100012175318/front-alt.jpg",
+     "sha256": "175d4ee35a3a14d3810a6298c1e673963436e8401d75dfc885d2b2455da50172"
+    }
+   ],
+   "readable": true,
+   "fields": {
+    "axes": {
+     "value": 3,
+     "confidence": "high",
+     "ref": "source-data://pand-reference-easy-houses/0363100012175318/front.jpg"
+    },
+    "storeys": {
+     "value": 4,
+     "confidence": "low",
+     "ref": "source-data://pand-reference-easy-houses/0363100012175318/front.jpg"
+    },
+    "gable": {
+     "value": null,
+     "confidence": "low",
+     "ref": "source-data://pand-reference-easy-houses/0363100012175318/front.jpg"
+    },
+    "finish": {
+     "value": "brick",
+     "confidence": "high",
+     "ref": "source-data://pand-reference-easy-houses/0363100012175318/front.jpg"
+    },
+    "wall": {
+     "value": "brown",
+     "confidence": "med",
+     "ref": "source-data://pand-reference-easy-houses/0363100012175318/front.jpg"
+    },
+    "pui": {
+     "value": "shop",
+     "confidence": "med",
+     "ref": "source-data://pand-reference-easy-houses/0363100012175318/front.jpg"
+    }
+   },
+   "notes": "top cut at 14 m in both panels (at least ground + 3 storeys); houseboat over A's ground; balconied centre axis",
+   "group": "easy"
+  },
+  {
+   "pandId": "0363100012168136",
+   "images": [
+    {
+     "ref": "source-data://pand-reference-easy-houses/0363100012168136/front.jpg",
+     "sha256": "f770bededa4e0d3a76da4dca0fe06d28f7bfb03a3b422eb9dfc21c2c957bdc25"
+    },
+    {
+     "ref": "source-data://pand-reference-easy-houses/0363100012168136/front-alt.jpg",
+     "sha256": "f1c71fff2606b988d27e26f01e6d20f034dc0526c0adeb93e1675e282b27509e"
+    }
+   ],
+   "readable": true,
+   "fields": {
+    "axes": {
+     "value": 3,
+     "confidence": "high",
+     "ref": "source-data://pand-reference-easy-houses/0363100012168136/front.jpg"
+    },
+    "storeys": {
+     "value": 3,
+     "confidence": "med",
+     "ref": "source-data://pand-reference-easy-houses/0363100012168136/front.jpg"
+    },
+    "souterrain": true,
+    "atticInCrown": true,
+    "gable": {
+     "value": "neck",
+     "confidence": "low",
+     "ref": "source-data://pand-reference-easy-houses/0363100012168136/front.jpg"
+    },
+    "finish": {
+     "value": "stucco",
+     "confidence": "high",
+     "ref": "source-data://pand-reference-easy-houses/0363100012168136/front.jpg"
+    },
+    "wall": {
+     "value": "grey",
+     "confidence": "high",
+     "ref": "source-data://pand-reference-easy-houses/0363100012168136/front.jpg"
+    },
+    "pui": {
+     "value": "residential",
+     "confidence": "high",
+     "ref": "source-data://pand-reference-easy-houses/0363100012168136/front.jpg"
+    }
+   },
+   "notes": "bel-etage over a souterrain (stoop); one gable window; top cut at 15 m, only a slanting shoulder shows",
+   "group": "easy"
+  },
+  {
+   "pandId": "0363100012182857",
+   "images": [
+    {
+     "ref": "source-data://pand-reference-easy-houses/0363100012182857/front.jpg",
+     "sha256": "175de319bc0853517b222bf30e3cbb6c0bd05dc569549a9a463f35472922e7cf"
+    }
+   ],
+   "readable": true,
+   "fields": {
+    "axes": {
+     "value": 5,
+     "confidence": "high",
+     "ref": "source-data://pand-reference-easy-houses/0363100012182857/front.jpg"
+    },
+    "storeys": {
+     "value": 3,
+     "confidence": "med",
+     "ref": "source-data://pand-reference-easy-houses/0363100012182857/front.jpg"
+    },
+    "entresol": true,
+    "atticInCrown": true,
+    "gable": {
+     "value": "step",
+     "confidence": "high",
+     "ref": "source-data://pand-reference-easy-houses/0363100012182857/front.jpg"
+    },
+    "finish": {
+     "value": "brick",
+     "confidence": "high",
+     "ref": "source-data://pand-reference-easy-houses/0363100012182857/front.jpg"
+    },
+    "wall": {
+     "value": "red",
+     "confidence": "med",
+     "ref": "source-data://pand-reference-easy-houses/0363100012182857/front.jpg"
+    },
+    "pui": {
+     "value": "shop",
+     "confidence": "high",
+     "ref": "source-data://pand-reference-easy-houses/0363100012182857/front.jpg"
+    }
+   },
+   "notes": "two step gables over a 12 m front, white banded voussoirs and quoin blocks; entresol band over the shopfront",
+   "group": "easy"
+  },
+  {
+   "pandId": "0363100012182849",
+   "images": [
+    {
+     "ref": "source-data://pand-reference-easy-houses/0363100012182849/front.jpg",
+     "sha256": "2fa673b4c0f969c1808d0fab4f7153159b096045207ad786461ae23842096e2b"
+    },
+    {
+     "ref": "source-data://pand-reference-easy-houses/0363100012182849/front-alt.jpg",
+     "sha256": "f9166b65d1348e021484200829d9a1a16e8c5b79d369a742595473eb16f6a3c2"
+    }
+   ],
+   "readable": true,
+   "fields": {
+    "axes": {
+     "value": 2,
+     "confidence": "high",
+     "ref": "source-data://pand-reference-easy-houses/0363100012182849/front-alt.jpg"
+    },
+    "storeys": {
+     "value": 3,
+     "confidence": "med",
+     "ref": "source-data://pand-reference-easy-houses/0363100012182849/front-alt.jpg"
+    },
+    "entresol": true,
+    "atticInCrown": true,
+    "gable": {
+     "value": "cornice",
+     "confidence": "high",
+     "ref": "source-data://pand-reference-easy-houses/0363100012182849/front-alt.jpg"
+    },
+    "finish": {
+     "value": "brick",
+     "confidence": "high",
+     "ref": "source-data://pand-reference-easy-houses/0363100012182849/front-alt.jpg"
+    },
+    "wall": {
+     "value": "orange",
+     "confidence": "med",
+     "ref": "source-data://pand-reference-easy-houses/0363100012182849/front-alt.jpg"
+    },
+    "pui": {
+     "value": "shop",
+     "confidence": "high",
+     "ref": "source-data://pand-reference-easy-houses/0363100012182849/front-alt.jpg"
+    }
+   },
+   "notes": "shop plus a glazed entresol band (4.2-6 m) not counted; pediment dormer over the cornice",
+   "group": "easy"
+  },
+  {
+   "pandId": "0363100012182848",
+   "images": [
+    {
+     "ref": "source-data://pand-reference-easy-houses/0363100012182848/front.jpg",
+     "sha256": "7e003641e727b6df4abc0dfb4c9775e51946a439213bae96953e7b78a30de2f5"
+    },
+    {
+     "ref": "source-data://pand-reference-easy-houses/0363100012182848/front-alt.jpg",
+     "sha256": "3b8a3aee31e34d7a02047b6baaad7e6197e07e8ff091a7746838a5b3eb868b42"
+    }
+   ],
+   "readable": true,
+   "fields": {
+    "axes": {
+     "value": 2,
+     "confidence": "low",
+     "ref": "source-data://pand-reference-easy-houses/0363100012182848/front-alt.jpg"
+    },
+    "storeys": {
+     "value": null,
+     "confidence": "low",
+     "ref": "source-data://pand-reference-easy-houses/0363100012182848/front-alt.jpg"
+    },
+    "gable": {
+     "value": null,
+     "confidence": "low",
+     "ref": "source-data://pand-reference-easy-houses/0363100012182848/front-alt.jpg"
+    },
+    "finish": {
+     "value": "brick",
+     "confidence": "med",
+     "ref": "source-data://pand-reference-easy-houses/0363100012182848/front-alt.jpg"
+    },
+    "wall": {
+     "value": "brown",
+     "confidence": "med",
+     "ref": "source-data://pand-reference-easy-houses/0363100012182848/front-alt.jpg"
+    },
+    "pui": {
+     "value": "shop",
+     "confidence": "high",
+     "ref": "source-data://pand-reference-easy-houses/0363100012182848/front-alt.jpg"
+    }
+   },
+   "notes": "oblique, dim, lamp posts in front; the top is cut; only the cafe ground storey and two upper columns read",
+   "group": "easy"
+  },
+  {
+   "pandId": "0363100012176312",
+   "images": [
+    {
+     "ref": "source-data://pand-reference-easy-houses/0363100012176312/front.jpg",
+     "sha256": "c71cc7aca96210c1cc4948150ab081dc162a75eea25c0e6ed230c9ea3a22427a"
+    },
+    {
+     "ref": "source-data://pand-reference-easy-houses/0363100012176312/front-alt.jpg",
+     "sha256": "23b07264861c054810797c0f03e8a354133a4b47da342a3df1d9cfa6b9b161e6"
+    }
+   ],
+   "readable": true,
+   "fields": {
+    "axes": {
+     "value": 4,
+     "confidence": "med",
+     "ref": "source-data://pand-reference-easy-houses/0363100012176312/front-alt.jpg"
+    },
+    "storeys": {
+     "value": 4,
+     "confidence": "med",
+     "ref": "source-data://pand-reference-easy-houses/0363100012176312/front-alt.jpg"
+    },
+    "atticInCrown": true,
+    "gable": {
+     "value": "point",
+     "confidence": "med",
+     "ref": "source-data://pand-reference-easy-houses/0363100012176312/front-alt.jpg"
+    },
+    "finish": {
+     "value": "brick",
+     "confidence": "high",
+     "ref": "source-data://pand-reference-easy-houses/0363100012176312/front-alt.jpg"
+    },
+    "wall": {
+     "value": "red-brown",
+     "confidence": "high",
+     "ref": "source-data://pand-reference-easy-houses/0363100012176312/front-alt.jpg"
+    },
+    "pui": {
+     "value": "shop",
+     "confidence": "med",
+     "ref": "source-data://pand-reference-easy-houses/0363100012176312/front-alt.jpg"
+    }
+   },
+   "notes": "corner building seen from the canal (quay wall 0-5 m); corner erker counted as one axis; a cross gable over part of the front and dormers; an advertising column hides part of A",
+   "group": "easy"
+  },
+  {
+   "pandId": "0363100012176346",
+   "images": [
+    {
+     "ref": "source-data://pand-reference-easy-houses/0363100012176346/front.jpg",
+     "sha256": "e56a6ed480cb8e8384e054fc76e490bc075e64383e1166ce60982a52f73d5471"
+    },
+    {
+     "ref": "source-data://pand-reference-easy-houses/0363100012176346/front-alt.jpg",
+     "sha256": "78c711dd0fde4a0ebd943f1b4b5c9d5b19c468b3c63cd0b48c07371f5dd08596"
+    }
+   ],
+   "readable": true,
+   "fields": {
+    "axes": {
+     "value": 3,
+     "confidence": "high",
+     "ref": "source-data://pand-reference-easy-houses/0363100012176346/front.jpg"
+    },
+    "storeys": {
+     "value": 3,
+     "confidence": "med",
+     "ref": "source-data://pand-reference-easy-houses/0363100012176346/front.jpg"
+    },
+    "entresol": true,
+    "gable": {
+     "value": "flat",
+     "confidence": "med",
+     "ref": "source-data://pand-reference-easy-houses/0363100012176346/front.jpg"
+    },
+    "finish": {
+     "value": "brick",
+     "confidence": "high",
+     "ref": "source-data://pand-reference-easy-houses/0363100012176346/front.jpg"
+    },
+    "wall": {
+     "value": "red-brown",
+     "confidence": "high",
+     "ref": "source-data://pand-reference-easy-houses/0363100012176346/front.jpg"
+    },
+    "pui": {
+     "value": "shop",
+     "confidence": "high",
+     "ref": "source-data://pand-reference-easy-houses/0363100012176346/front.jpg"
+    }
+   },
+   "notes": "double-height shop storey with a glazed canopy (one storey + entresol); arched windows; arcaded parapet (flat vs cornice)",
+   "group": "easy"
+  },
+  {
+   "pandId": "0363100012169116",
+   "images": [
+    {
+     "ref": "source-data://pand-reference-easy-houses/0363100012169116/front.jpg",
+     "sha256": "c263ba35c4384564cf44504a8f36cdce673915667df59d26af0f70d5423cff39"
+    },
+    {
+     "ref": "source-data://pand-reference-easy-houses/0363100012169116/front-alt.jpg",
+     "sha256": "45e43305eb655c2dd09be7c3d68aa73d6ae1c105cc5c88acdc0e5ae8373d3856"
+    }
+   ],
+   "readable": true,
+   "fields": {
+    "axes": {
+     "value": 3,
+     "confidence": "high",
+     "ref": "source-data://pand-reference-easy-houses/0363100012169116/front-alt.jpg"
+    },
+    "storeys": {
+     "value": 4,
+     "confidence": "low",
+     "ref": "source-data://pand-reference-easy-houses/0363100012169116/front-alt.jpg"
+    },
+    "souterrain": true,
+    "gable": {
+     "value": null,
+     "confidence": "low",
+     "ref": "source-data://pand-reference-easy-houses/0363100012169116/front-alt.jpg"
+    },
+    "finish": {
+     "value": "brick",
+     "confidence": "high",
+     "ref": "source-data://pand-reference-easy-houses/0363100012169116/front-alt.jpg"
+    },
+    "wall": {
+     "value": "brown",
+     "confidence": "high",
+     "ref": "source-data://pand-reference-easy-houses/0363100012169116/front-alt.jpg"
+    },
+    "pui": {
+     "value": "residential",
+     "confidence": "high",
+     "ref": "source-data://pand-reference-easy-houses/0363100012169116/front-alt.jpg"
+    }
+   },
+   "notes": "both panels are cut at the sides and top: at least a bel-etage over basement lights + 3 storeys; crown not visible",
+   "group": "easy"
+  },
+  {
+   "pandId": "0363100012168578",
+   "images": [
+    {
+     "ref": "source-data://pand-reference-easy-houses/0363100012168578/front.jpg",
+     "sha256": "9792a2a7e3ea4c1f02f88749133f5aacc55d20ef3151d44d82c8a612e26b30c6"
+    },
+    {
+     "ref": "source-data://pand-reference-easy-houses/0363100012168578/front-alt.jpg",
+     "sha256": "2fea2434f45d817ec5674e4237371cfa8177f32b88671d4058286707e98a66d6"
+    }
+   ],
+   "readable": false,
+   "fields": {
+    "axes": {
+     "value": null,
+     "confidence": "low",
+     "ref": "source-data://pand-reference-easy-houses/0363100012168578/front.jpg"
+    },
+    "storeys": {
+     "value": null,
+     "confidence": "low",
+     "ref": "source-data://pand-reference-easy-houses/0363100012168578/front.jpg"
+    },
+    "gable": {
+     "value": null,
+     "confidence": "low",
+     "ref": "source-data://pand-reference-easy-houses/0363100012168578/front.jpg"
+    },
+    "finish": {
+     "value": null,
+     "confidence": "low",
+     "ref": "source-data://pand-reference-easy-houses/0363100012168578/front.jpg"
+    },
+    "wall": {
+     "value": null,
+     "confidence": "low",
+     "ref": "source-data://pand-reference-easy-houses/0363100012168578/front.jpg"
+    },
+    "pui": {
+     "value": null,
+     "confidence": "low",
+     "ref": "source-data://pand-reference-easy-houses/0363100012168578/front.jpg"
+    }
+   },
+   "notes": "both panels are oblique views of a 19 m wall of several fronts; B is under scaffolding",
+   "group": "easy"
+  },
+  {
+   "pandId": "0363100012180181",
+   "images": [
+    {
+     "ref": "source-data://pand-reference-easy-houses/0363100012180181/front.jpg",
+     "sha256": "4b06cca5ef85ad34fc3c2568463467c8aa0ff67aabe171d80c668f0ae4cbc583"
+    },
+    {
+     "ref": "source-data://pand-reference-easy-houses/0363100012180181/front-alt.jpg",
+     "sha256": "6444cd053541ae0f8b40fd2f9cbb7dbdf355ed0185adc261e394936d58d2028c"
+    }
+   ],
+   "readable": true,
+   "fields": {
+    "axes": {
+     "value": 3,
+     "confidence": "high",
+     "ref": "source-data://pand-reference-easy-houses/0363100012180181/front-alt.jpg"
+    },
+    "storeys": {
+     "value": 4,
+     "confidence": "high",
+     "ref": "source-data://pand-reference-easy-houses/0363100012180181/front-alt.jpg"
+    },
+    "gable": {
+     "value": "cornice",
+     "confidence": "high",
+     "ref": "source-data://pand-reference-easy-houses/0363100012180181/front-alt.jpg"
+    },
+    "finish": {
+     "value": "brick",
+     "confidence": "high",
+     "ref": "source-data://pand-reference-easy-houses/0363100012180181/front-alt.jpg"
+    },
+    "wall": {
+     "value": "orange",
+     "confidence": "med",
+     "ref": "source-data://pand-reference-easy-houses/0363100012180181/front-alt.jpg"
+    },
+    "pui": {
+     "value": "residential",
+     "confidence": "high",
+     "ref": "source-data://pand-reference-easy-houses/0363100012180181/front-alt.jpg"
+    }
+   },
+   "notes": "B (front-alt) shows the whole front; A is sky and a lamp; white cornice/attic band with a pediment dormer",
+   "group": "easy"
+  },
+  {
+   "pandId": "0363100012167483",
+   "images": [
+    {
+     "ref": "source-data://pand-reference-easy-houses/0363100012167483/front.jpg",
+     "sha256": "7511b9940cc4e25121dbae472ede97b937750c5c086d232b3d296c78c39fab48"
+    },
+    {
+     "ref": "source-data://pand-reference-easy-houses/0363100012167483/front-alt.jpg",
+     "sha256": "862e94d1337674646b792913897e70afd58be90fc587825b1cbeab3fba8f5852"
+    }
+   ],
+   "readable": true,
+   "fields": {
+    "axes": {
+     "value": 3,
+     "confidence": "high",
+     "ref": "source-data://pand-reference-easy-houses/0363100012167483/front.jpg"
+    },
+    "storeys": {
+     "value": 4,
+     "confidence": "high",
+     "ref": "source-data://pand-reference-easy-houses/0363100012167483/front.jpg"
+    },
+    "souterrain": true,
+    "gable": {
+     "value": "cornice",
+     "confidence": "med",
+     "ref": "source-data://pand-reference-easy-houses/0363100012167483/front.jpg"
+    },
+    "finish": {
+     "value": "painted-brick",
+     "confidence": "high",
+     "ref": "source-data://pand-reference-easy-houses/0363100012167483/front.jpg"
+    },
+    "wall": {
+     "value": "dark",
+     "confidence": "high",
+     "ref": "source-data://pand-reference-easy-houses/0363100012167483/front.jpg"
+    },
+    "pui": {
+     "value": "residential",
+     "confidence": "high",
+     "ref": "source-data://pand-reference-easy-houses/0363100012167483/front.jpg"
+    }
+   },
+   "notes": "near-black painted brick; bel-etage over a souterrain with a stoop (B); white cornice at the cut top",
+   "group": "easy"
+  },
+  {
+   "pandId": "0363100012171023",
+   "images": [
+    {
+     "ref": "source-data://pand-reference-easy-houses/0363100012171023/front.jpg",
+     "sha256": "143fc879366a5a68191286ca51ff15217e2af1fd9ddaf3df46bc66bf31f79e84"
+    },
+    {
+     "ref": "source-data://pand-reference-easy-houses/0363100012171023/front-alt.jpg",
+     "sha256": "99895da5cd8904388536c5ef8ded960e32e62df63e40bfc43d8a45b45b15a3e0"
+    }
+   ],
+   "readable": true,
+   "fields": {
+    "axes": {
+     "value": 3,
+     "confidence": "high",
+     "ref": "source-data://pand-reference-easy-houses/0363100012171023/front.jpg"
+    },
+    "storeys": {
+     "value": 4,
+     "confidence": "high",
+     "ref": "source-data://pand-reference-easy-houses/0363100012171023/front.jpg"
+    },
+    "atticInCrown": true,
+    "gable": {
+     "value": "point",
+     "confidence": "high",
+     "ref": "source-data://pand-reference-easy-houses/0363100012171023/front.jpg"
+    },
+    "finish": {
+     "value": "brick",
+     "confidence": "high",
+     "ref": "source-data://pand-reference-easy-houses/0363100012171023/front.jpg"
+    },
+    "wall": {
+     "value": "brown",
+     "confidence": "med",
+     "ref": "source-data://pand-reference-easy-houses/0363100012171023/front.jpg"
+    },
+    "pui": {
+     "value": "residential",
+     "confidence": "med",
+     "ref": "source-data://pand-reference-easy-houses/0363100012171023/front.jpg"
+    }
+   },
+   "notes": "pointed gable with two oculi and a window; centre French windows; light flare at 9.8 m",
+   "group": "easy"
+  },
+  {
+   "pandId": "0363100012116526",
+   "images": [
+    {
+     "ref": "source-data://block-face-strips/nassau-145-152/strip.jpg#px=0-547",
+     "sha256": "e39cfb290d3aa2024a6b2387903b685df8116c2a7dd1179b78971a5e45d37363"
+    }
+   ],
+   "readable": true,
+   "fields": {
+    "axes": {
+     "value": 6,
+     "confidence": "high",
+     "ref": "source-data://block-face-strips/nassau-145-152/strip.jpg#px=0-547"
+    },
+    "storeys": {
+     "value": 4,
+     "confidence": "high",
+     "ref": "source-data://block-face-strips/nassau-145-152/strip.jpg#px=0-547"
+    },
+    "gable": {
+     "value": "cornice",
+     "confidence": "high",
+     "ref": "source-data://block-face-strips/nassau-145-152/strip.jpg#px=0-547"
+    },
+    "finish": {
+     "value": "brick",
+     "confidence": "high",
+     "ref": "source-data://block-face-strips/nassau-145-152/strip.jpg#px=0-547"
+    },
+    "wall": {
+     "value": "red-brown",
+     "confidence": "high",
+     "ref": "source-data://block-face-strips/nassau-145-152/strip.jpg#px=0-547"
+    },
+    "pui": {
+     "value": "shop",
+     "confidence": "high",
+     "ref": "source-data://block-face-strips/nassau-145-152/strip.jpg#px=0-547"
+    }
+   },
+   "notes": "corner 151-152: two fronts (shop left with wreath ornaments, not openings; residential right); bracketed cornice and two dormers",
+   "group": "nassau"
+  },
+  {
+   "pandId": "0363100012164843",
+   "images": [
+    {
+     "ref": "source-data://block-face-strips/nassau-145-152/strip.jpg#px=467-784",
+     "sha256": "e39cfb290d3aa2024a6b2387903b685df8116c2a7dd1179b78971a5e45d37363"
+    }
+   ],
+   "readable": true,
+   "fields": {
+    "axes": {
+     "value": 3,
+     "confidence": "high",
+     "ref": "source-data://block-face-strips/nassau-145-152/strip.jpg#px=467-784"
+    },
+    "storeys": {
+     "value": 4,
+     "confidence": "high",
+     "ref": "source-data://block-face-strips/nassau-145-152/strip.jpg#px=467-784"
+    },
+    "atticInCrown": true,
+    "gable": {
+     "value": "step",
+     "confidence": "med",
+     "ref": "source-data://block-face-strips/nassau-145-152/strip.jpg#px=467-784"
+    },
+    "finish": {
+     "value": "brick",
+     "confidence": "med",
+     "ref": "source-data://block-face-strips/nassau-145-152/strip.jpg#px=467-784"
+    },
+    "wall": {
+     "value": "brown",
+     "confidence": "low",
+     "ref": "source-data://block-face-strips/nassau-145-152/strip.jpg#px=467-784"
+    },
+    "pui": {
+     "value": "residential",
+     "confidence": "med",
+     "ref": "source-data://block-face-strips/nassau-145-152/strip.jpg#px=467-784"
+    }
+   },
+   "notes": "backlit (golden-hour) and dark; a stepped crown with one window; balcony stack on the centre axis",
+   "group": "nassau"
+  },
+  {
+   "pandId": "0363100012161422",
+   "images": [
+    {
+     "ref": "source-data://block-face-strips/nassau-145-152/strip.jpg#px=704-1027",
+     "sha256": "e39cfb290d3aa2024a6b2387903b685df8116c2a7dd1179b78971a5e45d37363"
+    }
+   ],
+   "readable": true,
+   "fields": {
+    "axes": {
+     "value": 2,
+     "confidence": "med",
+     "ref": "source-data://block-face-strips/nassau-145-152/strip.jpg#px=704-1027"
+    },
+    "storeys": {
+     "value": 4,
+     "confidence": "high",
+     "ref": "source-data://block-face-strips/nassau-145-152/strip.jpg#px=704-1027"
+    },
+    "gable": {
+     "value": "cornice",
+     "confidence": "high",
+     "ref": "source-data://block-face-strips/nassau-145-152/strip.jpg#px=704-1027"
+    },
+    "finish": {
+     "value": "brick",
+     "confidence": "high",
+     "ref": "source-data://block-face-strips/nassau-145-152/strip.jpg#px=704-1027"
+    },
+    "wall": {
+     "value": "brown",
+     "confidence": "low",
+     "ref": "source-data://block-face-strips/nassau-145-152/strip.jpg#px=704-1027"
+    },
+    "pui": {
+     "value": "residential",
+     "confidence": "high",
+     "ref": "source-data://block-face-strips/nassau-145-152/strip.jpg#px=704-1027"
+    }
+   },
+   "notes": "left window column and a right paired-light / balcony column (two lights in one surround = one axis); pediment dormer; backlit",
+   "group": "nassau"
+  },
+  {
+   "pandId": "0363100012157426",
+   "images": [
+    {
+     "ref": "source-data://block-face-strips/nassau-145-152/strip.jpg#px=947-1271",
+     "sha256": "e39cfb290d3aa2024a6b2387903b685df8116c2a7dd1179b78971a5e45d37363"
+    }
+   ],
+   "readable": true,
+   "fields": {
+    "axes": {
+     "value": 3,
+     "confidence": "high",
+     "ref": "source-data://block-face-strips/nassau-145-152/strip.jpg#px=947-1271"
+    },
+    "storeys": {
+     "value": 4,
+     "confidence": "high",
+     "ref": "source-data://block-face-strips/nassau-145-152/strip.jpg#px=947-1271"
+    },
+    "gable": {
+     "value": "cornice",
+     "confidence": "high",
+     "ref": "source-data://block-face-strips/nassau-145-152/strip.jpg#px=947-1271"
+    },
+    "finish": {
+     "value": "brick",
+     "confidence": "high",
+     "ref": "source-data://block-face-strips/nassau-145-152/strip.jpg#px=947-1271"
+    },
+    "wall": {
+     "value": "brown",
+     "confidence": "med",
+     "ref": "source-data://block-face-strips/nassau-145-152/strip.jpg#px=947-1271"
+    },
+    "pui": {
+     "value": "residential",
+     "confidence": "high",
+     "ref": "source-data://block-face-strips/nassau-145-152/strip.jpg#px=947-1271"
+    }
+   },
+   "notes": "three axes, balconettes on the centre axis; cornice with a pointed dormer",
+   "group": "nassau"
+  },
+  {
+   "pandId": "0363100012160273",
+   "images": [
+    {
+     "ref": "source-data://block-face-strips/nassau-145-152/strip.jpg#px=1191-1561",
+     "sha256": "e39cfb290d3aa2024a6b2387903b685df8116c2a7dd1179b78971a5e45d37363"
+    }
+   ],
+   "readable": true,
+   "fields": {
+    "axes": {
+     "value": 3,
+     "confidence": "high",
+     "ref": "source-data://block-face-strips/nassau-145-152/strip.jpg#px=1191-1561"
+    },
+    "storeys": {
+     "value": 4,
+     "confidence": "high",
+     "ref": "source-data://block-face-strips/nassau-145-152/strip.jpg#px=1191-1561"
+    },
+    "atticInCrown": true,
+    "gable": {
+     "value": "bell",
+     "confidence": "low",
+     "ref": "source-data://block-face-strips/nassau-145-152/strip.jpg#px=1191-1561"
+    },
+    "finish": {
+     "value": "brick",
+     "confidence": "high",
+     "ref": "source-data://block-face-strips/nassau-145-152/strip.jpg#px=1191-1561"
+    },
+    "wall": {
+     "value": "brown",
+     "confidence": "med",
+     "ref": "source-data://block-face-strips/nassau-145-152/strip.jpg#px=1191-1561"
+    },
+    "pui": {
+     "value": "residential",
+     "confidence": "med",
+     "ref": "source-data://block-face-strips/nassau-145-152/strip.jpg#px=1191-1561"
+    }
+   },
+   "notes": "a curved brick crown with a dormer window group (bell vs mansard); full-width balcony on storey 2",
+   "group": "nassau"
+  },
+  {
+   "pandId": "0363100012160704",
+   "images": [
+    {
+     "ref": "source-data://block-face-strips/nassau-145-152/strip.jpg#px=1481-1806",
+     "sha256": "e39cfb290d3aa2024a6b2387903b685df8116c2a7dd1179b78971a5e45d37363"
+    }
+   ],
+   "readable": true,
+   "fields": {
+    "axes": {
+     "value": 3,
+     "confidence": "high",
+     "ref": "source-data://block-face-strips/nassau-145-152/strip.jpg#px=1481-1806"
+    },
+    "storeys": {
+     "value": 4,
+     "confidence": "high",
+     "ref": "source-data://block-face-strips/nassau-145-152/strip.jpg#px=1481-1806"
+    },
+    "gable": {
+     "value": "cornice",
+     "confidence": "high",
+     "ref": "source-data://block-face-strips/nassau-145-152/strip.jpg#px=1481-1806"
+    },
+    "finish": {
+     "value": "brick",
+     "confidence": "high",
+     "ref": "source-data://block-face-strips/nassau-145-152/strip.jpg#px=1481-1806"
+    },
+    "wall": {
+     "value": "red-brown",
+     "confidence": "high",
+     "ref": "source-data://block-face-strips/nassau-145-152/strip.jpg#px=1481-1806"
+    },
+    "pui": {
+     "value": "residential",
+     "confidence": "high",
+     "ref": "source-data://block-face-strips/nassau-145-152/strip.jpg#px=1481-1806"
+    }
+   },
+   "notes": "a glazed erker on storey 2 across the right two axes (counted by its window columns above); cornice with a dormer",
+   "group": "nassau"
+  },
+  {
+   "pandId": "0363100012159694",
+   "images": [
+    {
+     "ref": "source-data://block-face-strips/nassau-145-152/strip.jpg#px=1726-2003",
+     "sha256": "e39cfb290d3aa2024a6b2387903b685df8116c2a7dd1179b78971a5e45d37363"
+    }
+   ],
+   "readable": true,
+   "fields": {
+    "axes": {
+     "value": 2,
+     "confidence": "med",
+     "ref": "source-data://block-face-strips/nassau-145-152/strip.jpg#px=1726-2003"
+    },
+    "storeys": {
+     "value": 4,
+     "confidence": "high",
+     "ref": "source-data://block-face-strips/nassau-145-152/strip.jpg#px=1726-2003"
+    },
+    "gable": {
+     "value": "cornice",
+     "confidence": "high",
+     "ref": "source-data://block-face-strips/nassau-145-152/strip.jpg#px=1726-2003"
+    },
+    "finish": {
+     "value": "brick",
+     "confidence": "high",
+     "ref": "source-data://block-face-strips/nassau-145-152/strip.jpg#px=1726-2003"
+    },
+    "wall": {
+     "value": "red-brown",
+     "confidence": "med",
+     "ref": "source-data://block-face-strips/nassau-145-152/strip.jpg#px=1726-2003"
+    },
+    "pui": {
+     "value": "residential",
+     "confidence": "high",
+     "ref": "source-data://block-face-strips/nassau-145-152/strip.jpg#px=1726-2003"
+    }
+   },
+   "notes": "left window column and a right paired-light balcony column; cornice with a pointed dormer",
+   "group": "nassau"
+  }
+ ]
+}

@@ -1,0 +1,810 @@
+{
+ "minConfidence": "low",
+ "readerCeiling": {
+  "pands": 30,
+  "readableAgree": 29,
+  "all": {
+   "bays": {
+    "hand": 27,
+    "stated": 27,
+    "agree": 27,
+    "precision": 1,
+    "recall": 1
+   },
+   "bays±1": {
+    "hand": 27,
+    "stated": 27,
+    "agree": 27,
+    "precision": 1,
+    "recall": 1
+   },
+   "storeys": {
+    "hand": 28,
+    "stated": 28,
+    "agree": 28,
+    "precision": 1,
+    "recall": 1
+   },
+   "storeys±1": {
+    "hand": 28,
+    "stated": 28,
+    "agree": 28,
+    "precision": 1,
+    "recall": 1
+   },
+   "gable": {
+    "hand": 28,
+    "stated": 28,
+    "agree": 27,
+    "precision": 0.964,
+    "recall": 0.964
+   },
+   "finish": {
+    "hand": 28,
+    "stated": 28,
+    "agree": 26,
+    "precision": 0.929,
+    "recall": 0.929
+   },
+   "pui": {
+    "hand": 27,
+    "stated": 27,
+    "agree": 24,
+    "precision": 0.889,
+    "recall": 0.889
+   },
+   "wallFamily": {
+    "hand": 28,
+    "stated": 28,
+    "agree": 23,
+    "precision": 0.821,
+    "recall": 0.821
+   },
+   "wallTone": {
+    "hand": 28,
+    "stated": 28,
+    "agree": 25,
+    "precision": 0.893,
+    "recall": 0.893
+   }
+  },
+  "bothHigh": {
+   "bays": {
+    "hand": 22,
+    "stated": 21,
+    "agree": 21,
+    "precision": 1,
+    "recall": 0.955
+   },
+   "bays±1": {
+    "hand": 22,
+    "stated": 21,
+    "agree": 21,
+    "precision": 1,
+    "recall": 0.955
+   },
+   "storeys": {
+    "hand": 21,
+    "stated": 15,
+    "agree": 15,
+    "precision": 1,
+    "recall": 0.714
+   },
+   "storeys±1": {
+    "hand": 21,
+    "stated": 15,
+    "agree": 15,
+    "precision": 1,
+    "recall": 0.714
+   },
+   "gable": {
+    "hand": 15,
+    "stated": 11,
+    "agree": 11,
+    "precision": 1,
+    "recall": 0.733
+   },
+   "finish": {
+    "hand": 22,
+    "stated": 21,
+    "agree": 21,
+    "precision": 1,
+    "recall": 0.955
+   },
+   "pui": {
+    "hand": 12,
+    "stated": 7,
+    "agree": 7,
+    "precision": 1,
+    "recall": 0.583
+   },
+   "wallFamily": {
+    "hand": 9,
+    "stated": 8,
+    "agree": 8,
+    "precision": 1,
+    "recall": 0.889
+   },
+   "wallTone": {
+    "hand": 9,
+    "stated": 8,
+    "agree": 8,
+    "precision": 1,
+    "recall": 0.889
+   }
+  },
+  "disagreements": [
+   "175320 wallFamily: A brown / B red-brown",
+   "174184 pui: A residential / B shop",
+   "174653 pui: A residential / B shop",
+   "173134 wallFamily: A red-brown / B red",
+   "174923 wallFamily: A brown / B red-brown",
+   "174168 finish: A brick / B painted-brick",
+   "157426 wallFamily: A brown / B red-brown",
+   "164843 gable: A step / B shouldered",
+   "164843 finish: A brick / B painted-brick",
+   "164843 wallFamily: A brown / B dark",
+   "174187 pui: A residential / B shop"
+  ]
+ },
+ "writers": {
+  "familyMedians": {
+   "brown": {
+    "n": 9,
+    "hue": 32,
+    "sat": 0.17,
+    "light": 0.32
+   },
+   "red-brown": {
+    "n": 16,
+    "hue": 28,
+    "sat": 0.17,
+    "light": 0.44
+   },
+   "red": {
+    "n": 5,
+    "hue": 27,
+    "sat": 0.26,
+    "light": 0.55
+   },
+   "dark": {
+    "n": 8,
+    "hue": 187,
+    "sat": 0.1,
+    "light": 0.32
+   },
+   "grey": {
+    "n": 2,
+    "hue": 45,
+    "sat": 0.1,
+    "light": 0.29
+   },
+   "buff": {
+    "n": 1,
+    "hue": 40,
+    "sat": 0.29,
+    "light": 0.68
+   }
+  },
+  "pands": 60,
+  "goodTierPands": 36,
+  "tables": {
+   "register": {
+    "bays": {
+     "hand": 55,
+     "stated": 0,
+     "agree": 0,
+     "precision": null,
+     "recall": 0
+    },
+    "bays±1": {
+     "hand": 55,
+     "stated": 0,
+     "agree": 0,
+     "precision": null,
+     "recall": 0
+    },
+    "storeys": {
+     "hand": 56,
+     "stated": 0,
+     "agree": 0,
+     "precision": null,
+     "recall": 0
+    },
+    "storeys±1": {
+     "hand": 56,
+     "stated": 0,
+     "agree": 0,
+     "precision": null,
+     "recall": 0
+    },
+    "gable": {
+     "hand": 57,
+     "stated": 35,
+     "agree": 21,
+     "precision": 0.6,
+     "recall": 0.368
+    },
+    "finish": {
+     "hand": 57,
+     "stated": 2,
+     "agree": 1,
+     "precision": 0.5,
+     "recall": 0.018
+    },
+    "pui": {
+     "hand": 55,
+     "stated": 0,
+     "agree": 0,
+     "precision": null,
+     "recall": 0
+    },
+    "wallFamily": {
+     "hand": 57,
+     "stated": 0,
+     "agree": 0,
+     "precision": null,
+     "recall": 0
+    },
+    "wallTone": {
+     "hand": 57,
+     "stated": 0,
+     "agree": 0,
+     "precision": null,
+     "recall": 0
+    }
+   },
+   "bag": {
+    "bays": {
+     "hand": 55,
+     "stated": 0,
+     "agree": 0,
+     "precision": null,
+     "recall": 0
+    },
+    "bays±1": {
+     "hand": 55,
+     "stated": 0,
+     "agree": 0,
+     "precision": null,
+     "recall": 0
+    },
+    "storeys": {
+     "hand": 56,
+     "stated": 55,
+     "agree": 21,
+     "precision": 0.382,
+     "recall": 0.375
+    },
+    "storeys±1": {
+     "hand": 56,
+     "stated": 55,
+     "agree": 53,
+     "precision": 0.964,
+     "recall": 0.946
+    },
+    "gable": {
+     "hand": 57,
+     "stated": 0,
+     "agree": 0,
+     "precision": null,
+     "recall": 0
+    },
+    "finish": {
+     "hand": 57,
+     "stated": 0,
+     "agree": 0,
+     "precision": null,
+     "recall": 0
+    },
+    "pui": {
+     "hand": 55,
+     "stated": 0,
+     "agree": 0,
+     "precision": null,
+     "recall": 0
+    },
+    "wallFamily": {
+     "hand": 57,
+     "stated": 0,
+     "agree": 0,
+     "precision": null,
+     "recall": 0
+    },
+    "wallTone": {
+     "hand": 57,
+     "stated": 0,
+     "agree": 0,
+     "precision": null,
+     "recall": 0
+    }
+   },
+   "pixel": {
+    "bays": {
+     "hand": 55,
+     "stated": 5,
+     "agree": 5,
+     "precision": 1,
+     "recall": 0.091
+    },
+    "bays±1": {
+     "hand": 55,
+     "stated": 5,
+     "agree": 5,
+     "precision": 1,
+     "recall": 0.091
+    },
+    "storeys": {
+     "hand": 56,
+     "stated": 0,
+     "agree": 0,
+     "precision": null,
+     "recall": 0
+    },
+    "storeys±1": {
+     "hand": 56,
+     "stated": 0,
+     "agree": 0,
+     "precision": null,
+     "recall": 0
+    },
+    "gable": {
+     "hand": 57,
+     "stated": 0,
+     "agree": 0,
+     "precision": null,
+     "recall": 0
+    },
+    "finish": {
+     "hand": 57,
+     "stated": 0,
+     "agree": 0,
+     "precision": null,
+     "recall": 0
+    },
+    "pui": {
+     "hand": 55,
+     "stated": 0,
+     "agree": 0,
+     "precision": null,
+     "recall": 0
+    },
+    "wallFamily": {
+     "hand": 57,
+     "stated": 0,
+     "agree": 0,
+     "precision": null,
+     "recall": 0
+    },
+    "wallTone": {
+     "hand": 57,
+     "stated": 41,
+     "agree": 31,
+     "precision": 0.756,
+     "recall": 0.544
+    }
+   },
+   "jev": {
+    "bays": {
+     "hand": 55,
+     "stated": 31,
+     "agree": 25,
+     "precision": 0.806,
+     "recall": 0.455
+    },
+    "bays±1": {
+     "hand": 55,
+     "stated": 31,
+     "agree": 29,
+     "precision": 0.935,
+     "recall": 0.527
+    },
+    "storeys": {
+     "hand": 56,
+     "stated": 0,
+     "agree": 0,
+     "precision": null,
+     "recall": 0
+    },
+    "storeys±1": {
+     "hand": 56,
+     "stated": 0,
+     "agree": 0,
+     "precision": null,
+     "recall": 0
+    },
+    "gable": {
+     "hand": 57,
+     "stated": 1,
+     "agree": 1,
+     "precision": 1,
+     "recall": 0.018
+    },
+    "finish": {
+     "hand": 57,
+     "stated": 23,
+     "agree": 23,
+     "precision": 1,
+     "recall": 0.404
+    },
+    "pui": {
+     "hand": 55,
+     "stated": 12,
+     "agree": 11,
+     "precision": 0.917,
+     "recall": 0.2
+    },
+    "wallFamily": {
+     "hand": 57,
+     "stated": 0,
+     "agree": 0,
+     "precision": null,
+     "recall": 0
+    },
+    "wallTone": {
+     "hand": 57,
+     "stated": 0,
+     "agree": 0,
+     "precision": null,
+     "recall": 0
+    }
+   },
+   "merged": {
+    "bays": {
+     "hand": 55,
+     "stated": 31,
+     "agree": 25,
+     "precision": 0.806,
+     "recall": 0.455
+    },
+    "bays±1": {
+     "hand": 55,
+     "stated": 31,
+     "agree": 29,
+     "precision": 0.935,
+     "recall": 0.527
+    },
+    "storeys": {
+     "hand": 56,
+     "stated": 55,
+     "agree": 21,
+     "precision": 0.382,
+     "recall": 0.375
+    },
+    "storeys±1": {
+     "hand": 56,
+     "stated": 55,
+     "agree": 53,
+     "precision": 0.964,
+     "recall": 0.946
+    },
+    "gable": {
+     "hand": 57,
+     "stated": 35,
+     "agree": 21,
+     "precision": 0.6,
+     "recall": 0.368
+    },
+    "finish": {
+     "hand": 57,
+     "stated": 24,
+     "agree": 23,
+     "precision": 0.958,
+     "recall": 0.404
+    },
+    "pui": {
+     "hand": 55,
+     "stated": 12,
+     "agree": 11,
+     "precision": 0.917,
+     "recall": 0.2
+    },
+    "wallFamily": {
+     "hand": 57,
+     "stated": 0,
+     "agree": 0,
+     "precision": null,
+     "recall": 0
+    },
+    "wallTone": {
+     "hand": 57,
+     "stated": 41,
+     "agree": 31,
+     "precision": 0.756,
+     "recall": 0.544
+    }
+   }
+  },
+  "mergedGoodTier": {
+   "bays": {
+    "hand": 36,
+    "stated": 31,
+    "agree": 25,
+    "precision": 0.806,
+    "recall": 0.694
+   },
+   "bays±1": {
+    "hand": 36,
+    "stated": 31,
+    "agree": 29,
+    "precision": 0.935,
+    "recall": 0.806
+   },
+   "storeys": {
+    "hand": 36,
+    "stated": 36,
+    "agree": 13,
+    "precision": 0.361,
+    "recall": 0.361
+   },
+   "storeys±1": {
+    "hand": 36,
+    "stated": 36,
+    "agree": 36,
+    "precision": 1,
+    "recall": 1
+   },
+   "gable": {
+    "hand": 36,
+    "stated": 20,
+    "agree": 12,
+    "precision": 0.6,
+    "recall": 0.333
+   },
+   "finish": {
+    "hand": 36,
+    "stated": 24,
+    "agree": 23,
+    "precision": 0.958,
+    "recall": 0.639
+   },
+   "pui": {
+    "hand": 35,
+    "stated": 12,
+    "agree": 11,
+    "precision": 0.917,
+    "recall": 0.314
+   },
+   "wallFamily": {
+    "hand": 36,
+    "stated": 0,
+    "agree": 0,
+    "precision": null,
+    "recall": 0
+   },
+   "wallTone": {
+    "hand": 36,
+    "stated": 25,
+    "agree": 18,
+    "precision": 0.72,
+    "recall": 0.5
+   }
+  }
+ },
+ "oldHandTruth": {
+  "block-face (authored)": {
+   "bays": {
+    "hand": 7,
+    "stated": 7,
+    "agree": 7,
+    "precision": 1,
+    "recall": 1
+   },
+   "bays±1": {
+    "hand": 7,
+    "stated": 7,
+    "agree": 7,
+    "precision": 1,
+    "recall": 1
+   },
+   "storeys": {
+    "hand": 7,
+    "stated": 7,
+    "agree": 6,
+    "precision": 0.857,
+    "recall": 0.857
+   },
+   "storeys±1": {
+    "hand": 7,
+    "stated": 7,
+    "agree": 7,
+    "precision": 1,
+    "recall": 1
+   },
+   "gable": {
+    "hand": 7,
+    "stated": 7,
+    "agree": 6,
+    "precision": 0.857,
+    "recall": 0.857
+   },
+   "finish": {
+    "hand": 7,
+    "stated": 3,
+    "agree": 0,
+    "precision": 0,
+    "recall": 0
+   },
+   "pui": {
+    "hand": 7,
+    "stated": 7,
+    "agree": 7,
+    "precision": 1,
+    "recall": 1
+   },
+   "wallFamily": {
+    "hand": 7,
+    "stated": 0,
+    "agree": 0,
+    "precision": null,
+    "recall": 0
+   },
+   "wallTone": {
+    "hand": 7,
+    "stated": 7,
+    "agree": 4,
+    "precision": 0.571,
+    "recall": 0.571
+   }
+  },
+  "block-face (auto-placed)": {
+   "bays": {
+    "hand": 4,
+    "stated": 4,
+    "agree": 4,
+    "precision": 1,
+    "recall": 1
+   },
+   "bays±1": {
+    "hand": 4,
+    "stated": 4,
+    "agree": 4,
+    "precision": 1,
+    "recall": 1
+   },
+   "storeys": {
+    "hand": 4,
+    "stated": 4,
+    "agree": 3,
+    "precision": 0.75,
+    "recall": 0.75
+   },
+   "storeys±1": {
+    "hand": 4,
+    "stated": 4,
+    "agree": 4,
+    "precision": 1,
+    "recall": 1
+   },
+   "gable": {
+    "hand": 4,
+    "stated": 4,
+    "agree": 1,
+    "precision": 0.25,
+    "recall": 0.25
+   },
+   "finish": {
+    "hand": 4,
+    "stated": 0,
+    "agree": 0,
+    "precision": null,
+    "recall": 0
+   },
+   "pui": {
+    "hand": 4,
+    "stated": 4,
+    "agree": 2,
+    "precision": 0.5,
+    "recall": 0.5
+   },
+   "wallFamily": {
+    "hand": 4,
+    "stated": 0,
+    "agree": 0,
+    "precision": null,
+    "recall": 0
+   },
+   "wallTone": {
+    "hand": 4,
+    "stated": 4,
+    "agree": 2,
+    "precision": 0.5,
+    "recall": 0.5
+   }
+  }
+ },
+ "h9Review": {
+  "bays": {
+   "hand": 12,
+   "stated": 11,
+   "agree": 9,
+   "precision": 0.818,
+   "recall": 0.75
+  },
+  "bays±1": {
+   "hand": 12,
+   "stated": 11,
+   "agree": 10,
+   "precision": 0.909,
+   "recall": 0.833
+  },
+  "storeys": {
+   "hand": 11,
+   "stated": 10,
+   "agree": 3,
+   "precision": 0.3,
+   "recall": 0.273
+  },
+  "storeys±1": {
+   "hand": 11,
+   "stated": 10,
+   "agree": 10,
+   "precision": 1,
+   "recall": 0.909
+  },
+  "gable": {
+   "hand": 9,
+   "stated": 7,
+   "agree": 7,
+   "precision": 1,
+   "recall": 0.778
+  },
+  "finish": {
+   "hand": 12,
+   "stated": 0,
+   "agree": 0,
+   "precision": null,
+   "recall": 0
+  },
+  "pui": {
+   "hand": 12,
+   "stated": 0,
+   "agree": 0,
+   "precision": null,
+   "recall": 0
+  },
+  "wallFamily": {
+   "hand": 12,
+   "stated": 0,
+   "agree": 0,
+   "precision": null,
+   "recall": 0
+  },
+  "wallTone": {
+   "hand": 12,
+   "stated": 0,
+   "agree": 0,
+   "precision": null,
+   "recall": 0
+  }
+ },
+ "judgeRecall": {
+  "good": 41,
+  "n": 60,
+  "v1": {
+   "scored": 60,
+   "auc": 0.776,
+   "atJudgeGood": {
+    "picks": 36,
+    "precision": 0.833,
+    "recall": 0.732
+   },
+   "at04": {
+    "picks": 37,
+    "precision": 0.838,
+    "recall": 0.756
+   },
+   "lowestT90": 0.611
+  },
+  "v2": {
+   "scored": 18,
+   "auc": 0.312,
+   "at07": {
+    "picks": 13,
+    "precision": 0.615,
+    "recall": 0.727
+   },
+   "lowestT90": null
+  }
+ }
+}

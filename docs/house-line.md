@@ -14,7 +14,7 @@ describe ──► preview ──► compare ──► stage ──► publish
 | §1 The record (HouseSpec) and the generic path | H1 | landed (this section) |
 | §2 Preview in Node | H2 | stub |
 | §3 Stage and publish | H3 | stub |
-| §4 Describe at scale (crops → facts → spec) | H4 (§4a), H5 (§4b) | landed on the AB07 pilot |
+| §4 Describe at scale (crops → facts → spec) | H4 (§4a), H5 (§4b), H5h (§4c hand set) | landed on the AB07 pilot |
 | §5 The kit-gap queue | H6 | stub |
 
 ## §1 The record: HouseSpec
@@ -749,7 +749,8 @@ have a hand value, how many the writer stated, how many agree, precision (agree 
 within HSL lightness 0.12. It also prints the register as a reference for the listed pands (which is how Jev's gable was checked) and
 the worst disagreements; `worst-sheet.ts` draws them as contact sheets (crop, preview render of the merged spec, both values).
 **The hand set is thin and mostly not a photo reading**: on AB07, 33 of its 39 pands are auto-placed block-face intents (a type
-library's gable, bays and colour), 6 are authored recipes, none states a finish.
+library's gable, bays and colour), 6 are authored recipes, none states a finish. The photo-read hand set of §4c replaces it as the gate set
+(`scripts/house-specs/hand-set/score.ts`).
 
 #### Measured on AB07 (2026-11-10, Bloemgrachtbuurt, 662 pands)
 
@@ -794,6 +795,107 @@ On the pool of 228 labelled crops (the 150 plus the 78 labelled year picks) v1 g
 threshold reaches it, one half-split fails on precision, and the pool stays under 0.9 at recall 0.6. `JUDGE_GOOD` stays 0.5 and v1 stays
 the default (a judgement call: 0.4 costs about 0.07 precision for 0.16 recall); `--good-threshold 0.4` on `house:describe` is the
 switch. No re-pick was run: `pick.ts --prompt v2` re-judges the existing candidates (279 year crops, no panorama request).
+
+### §4c The photo-read hand set (lane H5h, #351)
+
+`data/house-line/hand-set-v1.json`: 80 pands read by hand from archived crops on a metre grid, the truth set for the describe
+writers (H5), H1c's bay counts (#350) and H9's easy houses (#345). It replaces agreement.ts's hand intents as the gate set: of the
+39 H5 hand pands 33 were auto-placed type placements, not photo readings. Schema, validator and the convention text:
+`src/canalRecall/houseSpec/handSet.ts` (`validateHandSet`, `READING_CONVENTION`, test `handSet.test.ts`).
+
+**The pands.** 60 AB07 pands drawn by `scripts/house-specs/hand-set/select.ts` (seed 351, `hand-set-v1.selection.json`), stratified
+before reading on proxies: crop tier (good 36, fallback 24), the register's gable group (step 3, neck 10, bell 10, point/spout 4,
+cornice 10, unlisted 23), dark vs light front (pixel wall HSL L < 0.38: dark 25, light 19, unknown 16; alternated within each cell)
+and Jev's finish (brick 22, stucco 1, unknown 37; rotated within each cell); crops labelled `bad` were skipped (14) and each cell
+keeps six reserves. 13 of H9's easy houses (the brief list less the shopfront-only 171851 and 171854). The 7 pands of block face
+`nassau-145-152` (the brief said 8; the face has 7 houses). Realised strata from the readings (reader A, 76 of 80 readable): gable
+cornice 35, neck 11, point 9, bell 7, flat 7, step 4, not visible 3; finish brick 62, painted-brick 12, stucco 2; wall red-brown 26,
+brown 21, dark 15, red 6, grey 4, orange 2, white 1, buff 1; tone (brown or dark = dark) dark 36, light 40; axes confidence high 55,
+med 11, low 10. White and stucco fronts are scarce in AB07 and the easy set: a later set should add them.
+
+**Images.** `sheets.ts` draws one sheet per pand: up to three archived panels (the describe crop first, then the manifest front and
+the best-of-years crops; the easy houses' `front` and `front-alt`; the Nassaukade strip cut by its span pixels with 1 m margins),
+each at least native size under a metre grid. No writer value, label or register fact is drawn. Every field records the panel it
+was read from (`ref`, a `source-data://` path, plus the file's sha256 in `images`). Refs resolve in `map-recall2-source-data`:
+`pand-crops/` (H4), `pand-reference-easy-houses/` (archived by this lane from H9's `staging/pand-reference`),
+`block-face-strips/nassau-145-152/strip.jpg#px=a-b`. No panorama was fetched.
+
+**The convention** (`READING_CONVENTION`, verbatim what both readers were given):
+
+- **axes** (= HouseSpec `bays`, `frontBays`): window columns of the upper storeys, the storey with the most columns
+  (`axesPerStorey` from storey 2 up when storeys differ). One axis per separate masonry opening: a mullioned pair of lights is one,
+  two openings with a brick pier between are two; a balcony door counts; an erker is one axis; the ground storey is not counted; a
+  pand whose wall carries two house fronts counts both. A front with no upper storey has axes null.
+- **storeys** (= FrontIntent `storeys`): full storeys from the street-level storey to the cornice line or the gable foot (where the
+  outline leaves the party walls). The ground storey counts once however tall. Not counted: a **souterrain** (half below the
+  pavement, windows at knee height, usually under a stoop; `souterrain: true`), an **entresol** inside a tall ground storey
+  (`entresol: true`), windows in the gable, crown or roof, dormers, a set-back roof storey (`atticInCrown: true`). A **bel-etage**
+  over a souterrain is storey 1. A full top storey in the front plane under a cornice counts.
+- **gable**: GABLES (spout, neck, raised-neck, bell, step, point, cornice, flat, shouldered); null when the top is cut off.
+- **finish**: brick, painted-brick (coursing still visible), stucco, stone; the upper wall, not the ground storey.
+- **wall**: white, grey, buff, orange, red, red-brown, brown, dark (the main upper wall). Tone: brown and dark read dark.
+- **pui**: shop, residential, warehouse. **confidence** per field: high, med, low.
+
+**Reader agreement (the ceiling).** A second Opus reader (`hand-set-v1.reader-b.json`) saw only the convention and 30 of the sheets
+(20 AB07, 5 easy, 5 Nassaukade; `hand-set-v1.reader-b-pands.json`), never reader A's values. Over the pands both readers stated:
+
+| field | both stated | agree | | field | both stated | agree |
+|---|---|---|---|---|---|---|
+| readable | 30 | 29 (0.97) | | finish | 28 | 26 (0.93) |
+| axes | 27 | 27 (1.00) | | pui | 27 | 24 (0.89) |
+| storeys | 28 | 28 (1.00) | | wall family | 28 | 23 (0.82) |
+| gable | 28 | 27 (0.96) | | wall tone | 28 | 25 (0.89) |
+
+Where both readers said `high` every field agreed (axes 21/21, storeys 15/15, gable 11/11, finish 21/21). The disagreements are a
+step vs shouldered crown on a backlit Nassaukade front, painted vs bare dark brick (2), shop vs residential on large ground-storey
+glazing (3) and neighbouring colour words (brown / red-brown / dark, 5). **No writer gate should exceed these rates**; the 0.85
+gate H5 named is above the ceiling for pui and wall colour.
+
+**Writers against the hand set** (`score.ts`; AB07, 60 pands, 57 readable; agree / stated = precision):
+
+| field | hand n | register | BAG | pixel | Jev | merged | reader ceiling |
+|---|---|---|---|---|---|---|---|
+| bays | 55 | | | 5/5 | 25/31 = 0.81 (+-1: 0.94) | 25/31 = 0.81 | 1.00 |
+| storeys | 56 | | 21/55 = 0.38 (+-1: 0.96) | | | 0.38 | 1.00 |
+| gable | 57 | 21/35 = 0.60 | | | 1/1 | 21/35 = 0.60 | 0.96 |
+| finish | 57 | 1/2 | | | 23/23 = 1.00 | 23/24 = 0.96 | 0.93 |
+| pui | 55 | | | | 11/12 = 0.92 | 0.92 | 0.89 |
+| wall tone | 57 | | | 31/41 = 0.76 | | 0.76 | 0.89 |
+
+- BAG storeys (eaves / 3 m) are one too many on 30 of 55, mostly fronts with no souterrain or entresol flag (27): a tall ground
+  storey or a cornice attic, not a convention mismatch.
+- Jev's six bay misses: three narrow fronts whose top storey is one three-light window (it says 3, the front has 2), two pands
+  carrying more than one front or a corner (168085 9 axes, 172891), and 170031, whose glazed storey 2 has 4 lights against 2 above
+  (Jev gave the typical storey). H1c should note that `bays` is the maximum storey, not the typical one.
+- The register's gable agrees on 21 of 35. The 14 misses: neck or bell where the photo shows a cornice or flat front (7, e.g.
+  174187, a cornice front with erkers), neck against bell (4), cornice where the photo shows a point gable (2), and a step gable that
+  is no longer on the front (174168). The register describes the monument, not always today's street front.
+- Wall colour: a writer hex is compared as a tone only (dark under HSL L 0.38, the split fixed before reading). A hex is **not**
+  mapped to a family word: a mapping fitted on this set would be scored on it. Median pixel colour per read family: brown h32 s0.17
+  l0.32 (n9), red-brown h28 s0.17 l0.44 (16), red h27 s0.26 l0.55 (5), dark l0.32 (8). The overcast crops pull hue to 27-32 for
+  every brick, so pixel colour separates lightness, not red from brown.
+
+**Old hand truth against the hand set** (11 of the 80 have an intent): authored block faces (the Nassaukade row) bays 7/7, storeys
+6/7, gable 6/7, wall tone 4/7; auto-placed faces bays 4/4, gable 1/4, pui 2/4. **H9's review values**: bays 9/11 (182857: H9 8, both
+readers 5), storeys 3/10 exact and 10/10 within one (H9 counted the souterrain or the attic band), gable 7/7.
+
+**Judge recall (step 0b on this set).** A describe crop is *good* when reader A read axes, storeys and gable from it at med/high (41 of
+60). Jev v1 quality: AUC 0.776; at `JUDGE_GOOD` 0.5 36 picks, precision 0.83, recall 0.73; at 0.4 precision 0.84, recall 0.76; the
+lowest threshold with precision >= 0.9 is 0.61. v2 scored only 18 of these crops (AUC 0.31, not usable). `JUDGE_GOOD` stays 0.5 and
+v1 stays the default (judgement ruling); these are numbers only.
+
+```
+node --import tsx scripts/house-specs/hand-set/select.ts     # the AB07 draw (hand-set-v1.selection.json)
+node --import tsx scripts/house-specs/hand-set/sheets.ts     # reading sheets -> artifacts/hand-set/sheets/<id>.jpg
+node --import tsx scripts/house-specs/hand-set/build.ts      # reader-a.tsv + reader-b.raw.json -> hand-set-v1.json, reader-b.json (validated)
+node --import tsx scripts/house-specs/hand-set/score.ts      # ceiling, writers, old truth, H9, judge recall -> hand-set-v1.scores.json
+node --import tsx scripts/house-specs/hand-set/contact.ts --pands <12 ids> --out <dir>   # the spot-check sheets
+```
+
+Archive: `HOUSE_CROPS_ARCHIVE` (default `~/Code/map-recall2-source-data-h5h`) and `SOURCE_DATA_MAIN` (default
+`~/Code/map-recall2-source-data`, for the block-face strip). Spot-check sheets for the user:
+`map-recall2-screenshots/ui/2026-11-10-house-h5h/contact-1.jpg`, `contact-2.jpg`. To extend the set, add rows to
+`hand-set-v1.reader-a.tsv` (columns in build.ts), rebuild, and have a second reader read a third of the new pands blind.
 
 ## §5 The kit-gap queue
 
