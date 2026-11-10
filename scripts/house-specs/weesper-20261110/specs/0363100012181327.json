@@ -1,0 +1,34 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012181327",
+ "address": "Henri Polaklaan 24",
+ "design": {
+  "fronts": [
+   {
+    "gable": "point"
+   }
+  ]
+ },
+ "provenance": {
+  "fronts/0/gable": {
+   "source": "author",
+   "confidence": 0.9,
+   "ref": "lane buurt-weesper hand read of block-face strip polaklaan-2-42 2024-12-10 (40 px/m): raised ground, double door with a white fanlight on the left axis, two upper storeys of three axes, a pointed brick gable with white coping",
+   "at": "2024-12-10"
+  }
+ },
+ "schemaLimits": [
+  {
+   "component": "gable ornament",
+   "what": "the white scrolled finial and the moulded white coping along both rakes; drawn as a thin cream rake"
+  },
+  {
+   "component": "gable window",
+   "what": "the pointed (lancet) or arched gable window with tracery; drawn as a square-headed window"
+  },
+  {
+   "component": "door",
+   "what": "the white fanlight with radiating tracery over the double door"
+  }
+ ]
+}

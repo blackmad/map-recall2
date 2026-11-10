@@ -1,0 +1,50 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012171265",
+ "address": "Plantage Badlaan 10",
+ "design": {
+  "fronts": [
+   {
+    "dormerStyle": "arched",
+    "balconies": {
+     "storeys": [
+      1,
+      2,
+      3
+     ],
+     "bays": [
+      1
+     ]
+    }
+   }
+  ]
+ },
+ "provenance": {
+  "fronts/0/dormerStyle": {
+   "source": "author",
+   "confidence": 0.9,
+   "ref": "lane buurt-weesper hand read of block-face strip badlaan-4-24 2023-01-02 (40 px/m): a balcony stack on storeys 1-3 of the middle axis, door left; domed dormer",
+   "at": "2023-01-02"
+  },
+  "fronts/0/balconies": {
+   "source": "author",
+   "confidence": 0.9,
+   "ref": "lane buurt-weesper hand read of block-face strip badlaan-4-24 2023-01-02 (40 px/m): a balcony stack on storeys 1-3 of the middle axis, door left; domed dormer",
+   "at": "2023-01-02"
+  }
+ },
+ "schemaLimits": [
+  {
+   "component": "window head",
+   "what": "the brick hoods are flat corbelled brick lintels; drawn as a segmental ring"
+  },
+  {
+   "component": "balcony",
+   "what": "balcony slabs on white stone consoles with a white console block beside each window head (Badlaan 10); the consoles are not drawn"
+  },
+  {
+   "component": "dormer",
+   "what": "the domed (round-topped) dormer hoods with a finial; drawn as an arched dormer"
+  }
+ ]
+}

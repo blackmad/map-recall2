@@ -70,30 +70,6 @@
    }
   },
   {
-   "pandId": "0363100012181398",
-   "slug": "polaklaan-181398",
-   "address": "Henri Polaklaan 22",
-   "type": {
-    "type": "plantage-1855-point-gable-row",
-    "measuredPalette": {
-     "brick": "#cca489",
-     "evidence": "strip 2024-12-10 span 1070-1280: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    }
-   },
-   "groundFloor": {
-    "use": "residential",
-    "bag": [
-     "woonfunctie"
-    ],
-    "photoDate": "2024-12-10",
-    "agreement": "bag-only",
-    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
-   },
-   "rhythm": {
-    "citation": "auto-place: plantage-1855-point-gable-row scored 1 on eaves 1, roof 1, stucco 1, columns 1; strip 2024-12-10 span 1070-1280"
-   }
-  },
-  {
    "pandId": "0363100012181399",
    "slug": "polaklaan-181399",
    "address": "Henri Polaklaan 20",

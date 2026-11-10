@@ -1,0 +1,34 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012181658",
+ "address": "Plantage Badlaan 14",
+ "design": {
+  "fronts": [
+   {
+    "dormerStyle": "arched"
+   }
+  ]
+ },
+ "provenance": {
+  "fronts/0/dormerStyle": {
+   "source": "author",
+   "confidence": 0.9,
+   "ref": "lane buurt-weesper hand read of block-face strip badlaan-4-24 2023-01-02 (40 px/m): balcony on storey 1 under the middle axis (type default), door right; domed dormer",
+   "at": "2023-01-02"
+  }
+ },
+ "schemaLimits": [
+  {
+   "component": "window head",
+   "what": "the brick hoods are flat corbelled brick lintels; drawn as a segmental ring"
+  },
+  {
+   "component": "balcony",
+   "what": "balcony slabs on white stone consoles with a white console block beside each window head (Badlaan 10); the consoles are not drawn"
+  },
+  {
+   "component": "dormer",
+   "what": "the domed (round-topped) dormer hoods with a finial; drawn as an arched dormer"
+  }
+ ]
+}

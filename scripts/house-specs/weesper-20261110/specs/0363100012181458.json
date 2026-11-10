@@ -1,0 +1,48 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012181458",
+ "address": "Sarphatistraat 179",
+ "design": {
+  "fronts": [
+   {
+    "balconies": {
+     "storeys": [
+      1,
+      2
+     ],
+     "bays": [
+      0,
+      1
+     ],
+     "projecting": true
+    }
+   }
+  ]
+ },
+ "provenance": {
+  "fronts/0/balconies": {
+   "source": "author",
+   "confidence": 0.9,
+   "ref": "lane buurt-weesper hand read of block-face strip sarphati-163-213 2017-03-31 (40 px/m): iron balconies on storeys 1-2 under both lights of the wide window pair; bays in viewer order (windows of the storey left to right, narrow window right)",
+   "at": "2017-03-31"
+  }
+ },
+ "schemaLimits": [
+  {
+   "component": "window head",
+   "what": "the dark relief lintel blocks (corbelled brick heads) over every upper window"
+  },
+  {
+   "component": "door",
+   "what": "double-leaf arched doors with fanlight tracery; drawn as one arched leaf"
+  },
+  {
+   "component": "tower",
+   "what": "the tower's own white cornice cap with a dentil band (TOWER_CAPS has no cornice cap)"
+  },
+  {
+   "component": "balcony",
+   "what": "the iron balconies stand on a thin slab carried by two stone corbel brackets; the kit draws the library's projecting guard without the corbels"
+  }
+ ]
+}
