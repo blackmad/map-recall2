@@ -1441,3 +1441,20 @@ takes `palette.brick` from the Nassaukade wall-fit; storeys 4 (STOREYS_DEFINITIO
 vs #594b48, dL 0.043, 7 vs 8 columns). Still unsaid: the attic face shows wall-coloured wedges beside each tower (the single
 `tower` does the same), and the corner's roof end.
 
+
+## §7 Oud-West period-palette measurement (lane #373, 2026-11-10)
+
+Question: whole 1875-1910 rows that panoramas show as dark purple-brown brick draw bright orange-red. Tool:
+`scripts/house-specs/oudwest-palette.ts` (`select`, `measure`) and `oudwest-palette-report.ts` (`report`, `pairs`), Node only, staging in
+`staging/oudwest-palette/`. Wall = `measureStripWallFit` on a 50 px/m rectified winter panorama (obliquity under 30 deg; windows, trim,
+foliage masked, wallFit's white balance); drawn = `bayLookFor` (with `buurtProfileAt`) -> `cityLookTint` -> `photoMatchedWallTint`, the runtime
+functions, not copies. 59 plain-brick c19 pands of the Oud-West / De Baarsjes gebied (Nov-Mar captures, two named examples relaxed to any season).
+
+* Measured mean L* 30.3 (C* 10.8); drawn today 54.5 (C* 27.0); dL mean +24.3, median +25.1, p10 +8.5, p90 +37.3.
+* All 59 draw from a **buurt profile** wall, not the bare period palette. The profile pools hold bright entries (pool mean L* 48) and grey
+  entries; `cityWallTint` (0.12 + 0.9 l, floor 0.3) adds ~4 L* and cannot draw darker than ~L* 37 (measured walls sit at 21-35).
+* Proposal (not a default; data in the report script): A) c19 period brick entries `#564543 #564543 #654a34 #594940 #594b40 ... #764e2e`
+  (buff / cream / stucco entries untouched); B) a brick lift `l' = clamp(l + 0.05, 0.14, 0.6)` below HSL l 0.62 and a 0.4 linear-light gain on
+  profile brick walls. A+B: dL mean +8.1, median +5.7, p10 -8.5, p90 +31.1; stucco, white and buff probes draw byte-identically.
+* Unstated material (no spec material, no register finish): 58 brick, 1 pale render, 11 grey/neutral of 70 measurable (83 % brick); 19 unmeasurable.
+* Pairs: screenshots repo `ui/2026-11-10-oudwest-palette/`.
