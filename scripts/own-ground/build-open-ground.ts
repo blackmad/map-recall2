@@ -26,7 +26,7 @@ import { fromLocal, toLocal } from '../../src/canalRecall/ownGround/groundStore.
 import { encodeLine, inRings, interiorPoint, polygonArea } from '../../src/canalRecall/ownGround/parks.ts';
 import type { OsmGroundExtract } from '../../src/canalRecall/ownGround/osmGround.ts';
 import { pixelVegetated, vegetatedShare, type CourtyardsCell } from '../../src/canalRecall/ownGround/courtyards.ts';
-import { ANCILLARY_SQUARE_MAX_M2 } from '../../src/canalRecall/ownGround/roadCells.ts';
+import { ANCILLARY_SQUARE_MAX_M2, decodeRoadCell, roadCellDir, type RoadCell, type RoadsManifest } from '../../src/canalRecall/ownGround/roadCells.ts';
 import { groundSurface, needsAerial, OPEN_GROUND_COVERS, OPEN_GROUND_TOTAL_BUDGET_GZ, type GroundSurfaceClass, type OpenGroundCell, type OpenGroundCover, type OpenGroundManifest } from '../../src/canalRecall/ownGround/groundSurface.ts';
 import type { Vec2 } from '../../src/canalRecall/ownGround/surface.ts';
 import { readOpenGroundRaw, OPEN_GROUND_COLLECTIONS, type OpenGroundCollection } from './fetch-bgt-open-ground.ts';
@@ -36,6 +36,7 @@ type LngLat = [number, number];
 const ROOT = 'public/data/extracts/amsterdam';
 const OSM = join(ROOT, 'own-ground-osm-v1');
 const COURTYARDS = join(ROOT, 'courtyards-v1');
+const ROADS = join(ROOT, 'roads-v1');
 const PUBLISHED = join(ROOT, 'open-ground-v1');
 const STAGING = 'artifacts/own-ground/staging/open-ground-v1';
 const CIR_CACHE = 'artifacts/own-ground/raw/cir-open-ground';
@@ -52,6 +53,7 @@ const arg = (n: string) => { const i = process.argv.indexOf(n); return i > 0 ? p
 const useCir = !process.argv.includes('--no-cir');
 const index = elevationIndex();
 const osmManifest = JSON.parse(readFileSync(join(OSM, 'cells.json'), 'utf8')) as { cells: string[] };
+const roadsDir = join(ROADS, roadCellDir(JSON.parse(readFileSync(join(ROADS, 'cells.json'), 'utf8')) as RoadsManifest));
 /** The cell (elevation-v1 key, as GroundStore.cellAt) of a game-frame point. */
 const cellOfLocal = (p: Vec2) => { const [lng, lat] = fromLocal(p[0], p[1]), [x, y] = lngLatToLocal(index, lng, lat); return cellKey(Math.floor(x / index.cellSizeM), Math.floor(y / index.cellSizeM)); };
 const gz = <T>(f: string): T | null => existsSync(f) ? JSON.parse(gunzipSync(readFileSync(f)).toString('utf8')) as T : null;
@@ -130,33 +132,37 @@ function simplifyRing(r: Vec2[]): Vec2[] {
   return [...simplify(closed.slice(0, mid + 1), SIMPLIFY_M).slice(0, -1), ...simplify(closed.slice(mid), SIMPLIFY_M).slice(0, -1)];
 }
 
-/** OSM area rings of the 3×3 neighbourhood (local frame), bucketed on a 50 m grid. */
+/**
+ * The polygons open ground is cut free of, 3×3 neighbourhood (local frame), bucketed on a 50 m grid: OSM area rings,
+ * and the roads-v1 surfaces above the ground (h ≥ 1: a bridge, viaduct or ramp polygon over the ground-level BGT
+ * partition, whose approaches the game draws at ground height: the Nauernaseweg way deck, bridge-gaps pin).
+ */
 class RingIndex {
   private readonly grid = new Map<number, number[]>();
-  readonly rings: { r: Vec2[]; b: [number, number, number, number] }[] = [];
-  add(r: Vec2[]) {
-    const b = bboxOf(r), k = this.rings.push({ r, b }) - 1;
+  readonly rings: { r: Vec2[][]; b: [number, number, number, number] }[] = [];
+  add(r: Vec2[], holes: Vec2[][] = []) {
+    const b = bboxOf(r), k = this.rings.push({ r: [r, ...holes], b }) - 1;
     for (let i = Math.floor(b[0] / 50); i <= Math.floor(b[2] / 50); i++) for (let j = Math.floor(b[1] / 50); j <= Math.floor(b[3] / 50); j++) {
       const g = i * 100000 + j, l = this.grid.get(g); if (l) l.push(k); else this.grid.set(g, [k]);
     }
   }
-  near(b: readonly number[]): { r: Vec2[]; b: [number, number, number, number] }[] {
+  near(b: readonly number[]): { r: Vec2[][]; b: [number, number, number, number] }[] {
     const out = new Set<number>();
     for (let i = Math.floor(b[0] / 50); i <= Math.floor(b[2] / 50); i++) for (let j = Math.floor(b[1] / 50); j <= Math.floor(b[3] / 50); j++) for (const k of this.grid.get(i * 100000 + j) ?? []) out.add(k);
     return [...out].map(k => this.rings[k]).filter(o => o.b[0] < b[2] && o.b[2] > b[0] && o.b[1] < b[3] && o.b[3] > b[1]);
   }
 }
 
-/** `rings` minus every OSM ring it overlaps, as polygons (rings outer first). Falls back to all-or-nothing on a clipping failure. */
+/** `rings` minus every OSM ring and raised road surface it overlaps, as polygons (rings outer first). Falls back to all-or-nothing on a clipping failure. */
 function cutFree(rings: Vec2[][], osm: RingIndex): { parts: Vec2[][][]; cut: boolean; failed: boolean } {
   const near = osm.near(bboxOf(rings[0]));
   if (!near.length) return { parts: [rings], cut: false, failed: false };
   try {
-    const res = polygonClipping.difference(rings as any, ...near.map(n => [n.r] as any));
+    const res = polygonClipping.difference(rings as any, ...near.map(n => n.r as any));
     return { parts: res as unknown as Vec2[][][], cut: true, failed: false };
   } catch {
     const at = interiorPoint(rings);
-    const under = !!at && near.some(n => inRings([n.r], at[0], at[1]));
+    const under = !!at && near.some(n => inRings(n.r, at[0], at[1]));
     return { parts: under ? [] : [rings], cut: true, failed: true };
   }
 }
@@ -184,6 +190,8 @@ async function cell(key: string): Promise<CellReport> {
     const k = `${cx + i}_${cy + j}`;
     for (const a of gz<OsmGroundExtract>(join(OSM, 'cells', `${k}.json.gz`))?.areas ?? []) for (const r of a.rings) if (r.length >= 4) osm.add(r.map(([x, y]) => toLocal(x, y) as Vec2));
     for (const a of gz<CourtyardsCell>(join(COURTYARDS, 'cells', `${k}.json.gz`))?.areas ?? []) courtyardIds.add(a.id);
+    const roads = gz<RoadCell>(join(roadsDir, `${k}.json.gz`));
+    if (roads) for (const s of decodeRoadCell(roads).surfaces) if (s.h >= 1 && s.rings[0].length >= 3) osm.add(s.rings[0], s.rings.slice(1).filter(r => r.length >= 3));
   }
   type Pick = { f: RawWegdeel; c: OpenGroundCollection; ll: LngLat[][]; local: Vec2[][]; at: Vec2; area: number; n: number };
   const picks: Pick[] = [];
@@ -299,7 +307,7 @@ async function main(): Promise<void> {
   const merge = (f: (r: CellReport) => Record<string, number>) => { const o: Record<string, number> = {}; for (const r of reports) for (const [k, v] of Object.entries(f(r))) add(o, k, v); return Object.fromEntries(Object.entries(o).sort((a, b) => b[1] - a[1])); };
   const byClass = (o: Record<string, number>) => { const c: Partial<Record<GroundSurfaceClass | 'grass (erf)', number>> = {}; for (const [k, v] of Object.entries(o)) { const cls = k.split(':')[0] as GroundSurfaceClass; c[cls] = (c[cls] ?? 0) + v; } return c; };
   const census = {
-    what: 'm² of BGT open ground (begroeid + onbegroeid terreindeel at ground level, not courtyards-v1, not a roads-v1 square, cut free of the OSM area fills) that draws as the land layer (paving grey), before and after open-ground-v1. Verges (ondersteunendwegdeel) are drawn by roads-v1 and not counted.',
+    what: 'm² of BGT open ground (begroeid + onbegroeid terreindeel at ground level, not courtyards-v1, not a roads-v1 square, cut free of the OSM area fills and the raised (h ≥ 1) roads-v1 surfaces) that draws as the land layer (paving grey), before and after open-ground-v1. Verges (ondersteunendwegdeel) are drawn by roads-v1 and not counted.',
     city: { before: merge(r => r.greyBefore), after: merge(r => r.greyAfter), beforeByClass: byClass(merge(r => r.greyBefore)), afterByClass: byClass(merge(r => r.greyAfter)) },
     centrum: { before: merge(r => r.greyBeforeCentrum), after: merge(r => r.greyAfterCentrum), beforeByClass: byClass(merge(r => r.greyBeforeCentrum)), afterByClass: byClass(merge(r => r.greyAfterCentrum)) },
   };
@@ -309,7 +317,7 @@ async function main(): Promise<void> {
     added: '2026-11-10', script: 'scripts/own-ground/build-open-ground.ts', classifier: 'src/canalRecall/ownGround/groundSurface.ts', doc: 'docs/reports/open-ground-look-20261110.md',
     bgt: { source: 'BGT via PDOK OGC API https://api.pdok.nl/lv/bgt/ogc/v1', licence: 'CC0 1.0', datetime: '2026-11-10T00:00:00Z', collections: [...OPEN_GROUND_COLLECTIONS] },
     imagery: useCir ? { source: `PDOK Luchtfoto CIR WMS ${WMS}`, layer: IMAGERY_LAYER, metresPerPixel: IMAGE_M_PER_PX, licence: 'CC BY 4.0 (Beeldmateriaal Nederland)', use: 'vegetated share of BGT erf (yard) polygons' } : null,
-    osm: '© OpenStreetMap contributors (ODbL): the area fills the extract is cut free of',
+    osm: '© OpenStreetMap contributors (ODbL): the area fills the extract is cut free of', roads: 'roads-v1 surfaces with h ≥ 1 (bridge, viaduct, ramp) are cut out as well',
   };
   const totals = { cells: reports.length, cellsWithAreas: reports.filter(r => r.bytes).length, candidates: sum(r => r.candidates), drawn: sum(r => r.drawn), parts: sum(r => r.parts), cutByOsm: sum(r => r.cutByOsm), clipFailures: sum(r => r.clipFailures), erf: sum(r => r.erf), erfGrass: sum(r => r.erfGrass), erfUnknown: sum(r => r.erfUnknown), m2, extractKB: Math.round(sum(r => r.bytes) / 1024), maxCellKB: Math.round(Math.max(0, ...reports.map(r => r.bytes)) / 1024) };
   mkdirSync(STAGING, { recursive: true });

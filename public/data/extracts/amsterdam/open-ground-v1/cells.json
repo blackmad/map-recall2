@@ -314,6 +314,7 @@
    "licence": "CC BY 4.0 (Beeldmateriaal Nederland)",
    "use": "vegetated share of BGT erf (yard) polygons"
   },
-  "osm": "© OpenStreetMap contributors (ODbL): the area fills the extract is cut free of"
+  "osm": "© OpenStreetMap contributors (ODbL): the area fills the extract is cut free of",
+  "roads": "roads-v1 surfaces with h ≥ 1 (bridge, viaduct, ramp) are cut out as well"
  }
 }

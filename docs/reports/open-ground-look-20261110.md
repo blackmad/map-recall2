@@ -12,7 +12,8 @@ reading as rideable paving. Rideability is unchanged.
   wegdeel `plein` / `voetgangersgebied` / `woonerf` and onbegroeid `gesloten` / `open verharding` are `paved-plaza`.
 - **Extract** `public/data/extracts/amsterdam/open-ground-v1/` (291 cells, 7.3 MB gz, largest cell 105 KB): the BGT
   begroeid and onbegroeid terreindeel at ground level that no other extract draws: not in courtyards-v1 (by BGT id),
-  not a roads-v1 square (paved onbegroeid up to 20,000 m²), cut free of every OSM area fill (polygon-clipping
+  not a roads-v1 square (paved onbegroeid up to 20,000 m²), cut free of every OSM area fill and of every raised
+  roads-v1 surface (h ≥ 1: the level-0 grass under a viaduct or way-deck approach drew over its carriageway) (polygon-clipping
   difference, so no two ground fills overlap; 1 clipping failure city-wide fell back to the interior-point test).
   `erf` yards, `zand`, `onverhard` and `half verhard` are judged by the PDOK CIR aerial (2025, 0.5 m): a yard at least
   50 % vegetated is grass, bare ground at least 30 % vegetated is grass (the early-spring flight: the Moermanskkade
@@ -64,6 +65,7 @@ shrub 516 ha, sand 310 ha, bare 87 ha. Full table: `staging/census.json` in the 
 | Moermanskkade (020e2132) | the empty lot (BGT zand, meadow on the photo) | meadow, land culled |
 | Sloterdijkerweg (28ae61fb) | woodland west of the road by the rail yard | meadow |
 | Nieuwmarkt | the paved square south of the Waag | unchanged (paving) |
+| Nauernaseweg (check:bridge-gaps) | the carriageway of the way-deck approach, two probes | nothing drawn (was bare and meadow over the road) |
 
 ## Frames
 
@@ -128,3 +130,14 @@ They must not become rideable plazas: check for an OSM `leisure=pitch` overlap.
   `"build:open-ground": "tsx scripts/own-ground/build-open-ground.ts"`.
 - Commit the archive `map-recall2-source-data/datasets/bgt-open-ground-20261110/`.
 - Later: rebuild the overview tiles and teach the far ring the open ground, so the far view stops showing it grey.
+
+## Follow-up: Nauernaseweg way deck (integrator 2026-11-10)
+
+`check:bridge-gaps` nauernaseweg-way-deck failed after the merge: 187.2 m² of carriageway off the road (≤ 160), land
+189, against 130.5 / 126 with open ground off. Cause: BGT is a partition per level, so the level-0 grass and bare
+ground under the h 1 road polygons of the way deck's approach were open ground, and where the game draws that
+approach at ground height the meadow (lift 18 mm) topped the asphalt. Fix at the source: build-open-ground.ts now
+also cuts every roads-v1 surface with h ≥ 1 out of the open ground (3×3 neighbourhood, holes kept). The pin is back
+to 130.5 m² / land 126 (identical to open ground off), pinned as the `nauernaseweg` spot (two carriageway probes:
+the old extract drew bare and meadow there). City-wide the cut removes 8.1 ha of meadow, 1.0 ha bare, 0.2 ha sand,
+0.3 ha shrub under raised roads (they show the land there, as before this lane); extract 7.3 MB gz unchanged.
