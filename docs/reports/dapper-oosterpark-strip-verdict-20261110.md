@@ -91,3 +91,35 @@ To fix:
 - Projecting balconies on carved stone brackets (Ruyschstraat).
 - A paneled cornice frieze (Swindenstraat), and a brick dentil frieze under the cornice (Ruyschstraat).
 - Tall arched top-storey heads with a tympanum (Ruyschstraat 76 and 78).
+
+---
+
+# Round 2 (re-check after fixes, sheets of 09:57 with house numbers)
+
+| Run | Verdict | Reason |
+|---|---|---|
+| Eerste Van Swindenstraat 391-401 | **merge** | All six shopfronts are now cream, and Cosme's is black. The cream residential doors landed, and so did the house door on the right for Dapper Post (236602). The cornice and frieze are now about 1.4 m deep. The upper rows sit about 0.3 m low against the photo, which is acceptable. |
+| Ruyschstraat 76-90 (r1 + r2) | **merge** | Every door landed: 88 right, 86 left, 82 right, 80 left, 78 arched right, 76 arched left. 90 now has a white shopfront. The flat top-storey heads landed on 90, 88, 86, 82 and 80, while 78 and 76 keep their segmental heads, which is correct. 90's lower-storey balcony is gone, and its white impost blocks are in. The rows line up with the photo within about 0.1 m. |
+| Ruyschstraat 331 / 339 | **hold**: the storey grid and eaves are too low | See below. |
+
+**Not landed on Ruyschstraat, and not blocking the merge:**
+- The cornice is still the thin cream fascia. Pin it to `#a29d95`, as in round 1, as a palette follow-up.
+- 90's photo has a door at each side of the shop glazing. The model shows one door (right) and a narrow glazed panel at the left. This is optional.
+
+## Ruyschstraat 331 and 339: close look (sheet ruysch-307-393-r1)
+
+The doors (331 right, 339 left) landed. The flat top-storey heads landed. 339's brick landed: it is now `#665851`, against my pin of `#655853`.
+
+**The geometry is wrong, though, and the overlay panel shows it plainly: every model window sits under the photo's.**
+- The model uses the 76-90 storey grid, with eaves of 13.44 m. 331 and 339 are **taller houses**.
+- The photo's ground storey is taller (door head about 3.1 m), and its upper storeys repeat at about 3.0 m. That puts the head lines at about 6.1, 9.1 and 12.1 m.
+- Above the top-storey heads, the brick frieze and cornice reach about **14.3 m**. 3DBAG's front attic is 14.95 m, which is consistent with this.
+- The model's head lines are at about 5.35, 8.35 and 11.2 m (the ground storey is about 2.4 m to the first head), and its cornice is at 13.4 m.
+- So every upper row is **about 0.75–0.9 m low**, and the eaves are **about 0.9 m low**.
+
+**Fix:**
+- Raise the eaves on both pands to about 14.3 m.
+- Set the storey grid to a ground storey of about 3.1 m (door head) and upper storeys at a pitch of about 3.0 m, so the heads land on about 6.1, 9.1 and 12.1 m.
+- Recolour the cornice. It is dark here, `#685d5c`, so use `#a29d95` or darker.
+
+Then re-sheet. The rest of the pand matches: the bays, balconies on all three upper storeys, the segmental middle and lower heads, and the doors.

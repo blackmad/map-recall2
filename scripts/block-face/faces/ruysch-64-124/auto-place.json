@@ -3,7 +3,7 @@
  "street": "Ruyschstraat",
  "library": "oud-west",
  "stripDate": "2023-01-02",
- "seconds": 43.33,
+ "seconds": 45.3,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -22,7 +22,7 @@
     "0363100012165864"
    ],
    "passed": true,
-   "triangles": 5909
+   "triangles": 6017
   },
   {
    "face": "ruysch-64-124-r2",
@@ -33,7 +33,7 @@
     "0363100012154180"
    ],
    "passed": true,
-   "triangles": 8237
+   "triangles": 8381
   }
  ],
  "pands": [
@@ -373,8 +373,8 @@
    ],
    "likeness": {
     "pandId": "0363100012159820",
-    "ncc": 0.315,
-    "nccRaw": 0.315,
+    "ncc": 0.321,
+    "nccRaw": 0.321,
     "shiftM": [
      0.4,
      -0.05
@@ -392,13 +392,13 @@
     },
     "glazing": {
      "photo": 0.39,
-     "model": 0.45
+     "model": 0.41
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.508
+    "iou": 0.516
    },
    "challengers": {}
   },
@@ -486,7 +486,7 @@
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.18 mean 0.43 vs photo 0.28"
+     "glazing storey band off by 0.18 mean 0.39 vs photo 0.28"
     ],
     "wall": {
      "photo": "#765f57",
@@ -495,13 +495,13 @@
     },
     "glazing": {
      "photo": 0.28,
-     "model": 0.43
+     "model": 0.39
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.61
+    "iou": 0.665
    },
    "challengers": {}
   },
@@ -601,13 +601,13 @@
     },
     "glazing": {
      "photo": 0.39,
-     "model": 0.43
+     "model": 0.39
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.81
+    "iou": 0.787
    },
    "challengers": {}
   },
@@ -664,7 +664,7 @@
    },
    "status": "held",
    "stage": "likeness",
-   "reason": "edge NCC 0.128 < 0.15 (photo vs model body; likeness.ts FAIL: wall dL +0.13; glazing storey band off by 0.30)",
+   "reason": "edge NCC 0.128 < 0.15 (photo vs model body; likeness.ts FAIL: wall dL +0.13; glazing storey band off by 0.28 mean 0.39 vs photo 0.50)",
    "likeness": {
     "pandId": "0363100012162209",
     "ncc": 0.128,
@@ -678,7 +678,7 @@
     "verdict": "FAIL",
     "reasons": [
      "wall dL +0.13",
-     "glazing storey band off by 0.30"
+     "glazing storey band off by 0.28 mean 0.39 vs photo 0.50"
     ],
     "wall": {
      "photo": "#6d4b40",
@@ -686,14 +686,14 @@
      "dL": 0.125
     },
     "glazing": {
-     "photo": 0.51,
-     "model": 0.42
+     "photo": 0.5,
+     "model": 0.39
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.32
+    "iou": 0.328
    },
    "challengers": {}
   },
@@ -787,14 +787,14 @@
      "dL": -0.031
     },
     "glazing": {
-     "photo": 0.34,
-     "model": 0.41
+     "photo": 0.33,
+     "model": 0.38
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.786
+    "iou": 0.708
    },
    "challengers": {}
   },
@@ -889,13 +889,13 @@
     },
     "glazing": {
      "photo": 0.33,
-     "model": 0.41
+     "model": 0.38
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.704
+    "iou": 0.735
    },
    "challengers": {}
   },
@@ -995,7 +995,7 @@
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.41 mean 0.41 vs photo 0.71"
+     "glazing storey band off by 0.44 mean 0.37 vs photo 0.70"
     ],
     "wall": {
      "photo": "#85564a",
@@ -1003,14 +1003,14 @@
      "dL": -0.022
     },
     "glazing": {
-     "photo": 0.71,
-     "model": 0.41
+     "photo": 0.7,
+     "model": 0.37
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.531
+    "iou": 0.516
    },
    "challengers": {}
   },
@@ -1119,13 +1119,13 @@
     },
     "glazing": {
      "photo": 0.33,
-     "model": 0.41
+     "model": 0.37
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.719
+    "iou": 0.782
    },
    "challengers": {}
   },
@@ -1182,7 +1182,7 @@
    },
    "status": "held",
    "stage": "likeness",
-   "reason": "edge NCC 0.142 < 0.15 (photo vs model body; likeness.ts WARN: mask IoU 0.35 < 0.45)",
+   "reason": "edge NCC 0.142 < 0.15 (photo vs model body; likeness.ts WARN: mask IoU 0.37 < 0.45)",
    "likeness": {
     "pandId": "0363100012158158",
     "ncc": 0.142,
@@ -1195,7 +1195,7 @@
     "abstain": null,
     "verdict": "WARN",
     "reasons": [
-     "mask IoU 0.35 < 0.45"
+     "mask IoU 0.37 < 0.45"
     ],
     "wall": {
      "photo": "#826659",
@@ -1204,13 +1204,13 @@
     },
     "glazing": {
      "photo": 0.3,
-     "model": 0.4
+     "model": 0.37
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.35
+    "iou": 0.37
    },
    "challengers": {}
   },
@@ -1280,7 +1280,7 @@
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.22 mean 0.42 vs photo 0.59"
+     "glazing storey band off by 0.22 mean 0.39 vs photo 0.59"
     ],
     "wall": {
      "photo": "#836156",
@@ -1289,13 +1289,13 @@
     },
     "glazing": {
      "photo": 0.59,
-     "model": 0.42
+     "model": 0.39
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.665
+    "iou": 0.667
    },
    "challengers": {}
   },

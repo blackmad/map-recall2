@@ -79,3 +79,13 @@ Source: `docs/reports/dapper-oosterpark-strip-verdict-20261110.md`. Same 15 pand
   `fit-wall-palette.ts` so the rendered wall lands on the verdict colours; the other pands keep the wall refits the first batch measured, now as palette pins.
 * Still limits: double-leaf door (80), brick frieze and carved brackets, tall tympanum heads (76, 78), the cream house door of 395 and 401 not changed (awning hid it).
 * `roof-golden.json` re-recorded: 6 Swinden pands reclassed (the deeper entablature moved their front hash), 4 intents changed, all in these faces.
+
+## Round 3 (2026-11-10): Opus round-2 verdict (Ruysch 331/339 and the cornice)
+
+* 331 and 339 use a new pand-pinned type `oosterpark-1900-balcony-camber-tall` (eaves 14.3 m, ground 3.3 m, uppers 3.0 m apart, heads at 6.1/9.1/12.1 m, a 2.0 m
+  brick-frieze entablature, since the gate allows upper storeys of 2.3-4.6 m only). The overlay now lines the window rows up with the photo; both pands re-installed.
+  The type pin is a pand pin (the face pin lists the other pands of the face).
+* Cornice colour `#a29d95` now lands in the chunk (checked on the sheet pixels, #a29d92). New kit: `palette.corniceAs: 'stone'` (intent.ts, historicPasses.ts):
+  `palette.cornice` repaints a mesh's material, but a chunk takes colours from the surface slot (`trim` = the window frames), so the cornice meshes move to the `stone` slot.
+  Cost: the timber dormer's cheeks take the stone colour too (grey, the photo's are white); posts and frame stay white. Needs a separate dormer slot.
+* 90's second door: reviewFronts cannot say it (a shopfront has one residential door and one shop entrance); the left door stays the shop entrance.

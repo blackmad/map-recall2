@@ -161,8 +161,8 @@ export const CHUNK_WALL_EXPOSURE_DATA: Readonly<Record<string, {readonly white: 
   'face-meeuwenplein-9-19-r1': {white: [198, 203, 206], stripOverDrawn: 1.083},
   'face-meeuwenplein-29-39-r1': {white: [211, 216, 218], stripOverDrawn: 0.93},
   'face-meeuwenplein-41-45': {white: [222, 226, 229], stripOverDrawn: 0.954},
+  'face-swinden-383-581-r1': {white: [179, 169, 156], stripOverDrawn: 0.988},
   'face-ruysch-64-124-r1': {white: [166, 165, 166], stripOverDrawn: 1.222},
   'face-ruysch-64-124-r2': {white: [164, 164, 166], stripOverDrawn: 1.071},
   'face-ruysch-307-393-r1': {white: [163, 164, 165], stripOverDrawn: 0.961},
-  'face-swinden-383-581-r1': {white: [179, 169, 156], stripOverDrawn: 0.988},
 };

@@ -3,6 +3,17 @@
  "reviewed": "2026-11-10",
  "pins": [
   {
+   "face": "ruysch-307-393",
+   "pands": [
+    "0363100012161684",
+    "0363100012155674"
+   ],
+   "types": [
+    "oosterpark-1900-balcony-camber-tall"
+   ],
+   "reason": "Ruyschstraat 331 and 339 are taller houses than 76-90 (Opus round 2): eaves 14.3 m and a 3.0 m storey pitch"
+  },
+  {
    "face": "ruysch-64-124",
    "types": [
     "oosterpark-1900-balcony-camber"
@@ -14,7 +25,18 @@
    "types": [
     "oosterpark-1900-balcony-camber"
    ],
-   "reason": "Ruyschstraat 307-393 (2023-01-02 strip): the same brick 3-axis fronts with centre balconettes and box dormers as Ruyschstraat 72-98; the stucco mansard type matched on year and width alone"
+   "reason": "Ruyschstraat 307-393 (2023-01-02 strip): the same brick 3-axis fronts with centre balconettes and box dormers as Ruyschstraat 72-98; the stucco mansard type matched on year and width alone",
+   "pands": [
+    "0363100012155605",
+    "0363100012162696",
+    "0363100012159606",
+    "0363100012156748",
+    "0363100012162898",
+    "0363100012157939",
+    "0363100012163888",
+    "0363100012159831",
+    "0363100012236020"
+   ]
   }
  ]
 }

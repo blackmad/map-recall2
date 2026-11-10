@@ -3,7 +3,7 @@
  "street": "Ruyschstraat",
  "library": "oud-west",
  "stripDate": "2020-04-29",
- "seconds": 21.41,
+ "seconds": 182.69,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -21,7 +21,7 @@
     "0363100012155674"
    ],
    "passed": true,
-   "triangles": 3825
+   "triangles": 3809
   }
  ],
  "pands": [
@@ -98,13 +98,13 @@
     },
     "glazing": {
      "photo": 0.35,
-     "model": 0.41
+     "model": 0.37
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.521,
+    "iou": 0.56,
     "footOffsetM": 0.53
    },
    "challengers": {}
@@ -182,13 +182,13 @@
     },
     "glazing": {
      "photo": 0.43,
-     "model": 0.41
+     "model": 0.37
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.542,
+    "iou": 0.582,
     "footOffsetM": 0.53
    },
    "challengers": {}
@@ -322,10 +322,10 @@
     "foliageShare": 0.01
    },
    "status": "placed",
-   "type": "oosterpark-1900-balcony-camber",
+   "type": "oosterpark-1900-balcony-camber-tall",
    "score": 1,
    "placement": {
-    "type": "oosterpark-1900-balcony-camber",
+    "type": "oosterpark-1900-balcony-camber-tall",
     "measuredPalette": {
      "brick": "#675154",
      "evidence": "strip 2020-04-29 span 661-880: trim-normalised wall (buildingRecipe/measureFacade.ts)"
@@ -344,30 +344,32 @@
    ],
    "likeness": {
     "pandId": "0363100012161684",
-    "ncc": 0.187,
-    "nccRaw": 0.187,
+    "ncc": 0.24,
+    "nccRaw": 0.24,
     "shiftM": [
      0.05,
-     -0.4
+     -0.05
     ],
     "usable": 0.97,
     "abstain": null,
-    "verdict": "PASS",
-    "reasons": [],
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing  mean 0.41 vs photo 0.31"
+    ],
     "wall": {
-     "photo": "#77605b",
+     "photo": "#78605b",
      "model": "#625d5c",
-     "dL": -0.039
+     "dL": -0.041
     },
     "glazing": {
-     "photo": 0.33,
-     "model": 0.4
+     "photo": 0.31,
+     "model": 0.41
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.688
+    "iou": 0.66
    },
    "challengers": {}
   },
@@ -438,10 +440,10 @@
     "foliageShare": 0
    },
    "status": "placed",
-   "type": "oosterpark-1900-balcony-camber",
+   "type": "oosterpark-1900-balcony-camber-tall",
    "score": 1,
    "placement": {
-    "type": "oosterpark-1900-balcony-camber",
+    "type": "oosterpark-1900-balcony-camber-tall",
     "measuredPalette": {
      "brick": "#6a5b54",
      "evidence": "strip 2020-04-29 span 880-1099: trim-normalised wall (buildingRecipe/measureFacade.ts)"
@@ -460,33 +462,32 @@
    ],
    "likeness": {
     "pandId": "0363100012155674",
-    "ncc": 0.19,
-    "nccRaw": 0.19,
+    "ncc": 0.181,
+    "nccRaw": 0.181,
     "shiftM": [
      -0.35,
-     -0.05
+     0
     ],
     "usable": 0.97,
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing  mean 0.40 vs photo 0.28",
-     "window shape tall vs photo square"
+     "glazing storey band off by 0.32 mean 0.42 vs photo 0.54"
     ],
     "wall": {
-     "photo": "#776259",
+     "photo": "#79635e",
      "model": "#696461",
-     "dL": -0.012
+     "dL": -0.025
     },
     "glazing": {
-     "photo": 0.28,
-     "model": 0.4
+     "photo": 0.54,
+     "model": 0.42
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.605
+    "iou": 0.587
    },
    "challengers": {}
   },
@@ -543,7 +544,7 @@
    },
    "status": "held",
    "stage": "likeness",
-   "reason": "edge NCC 0.113 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.24 mean 0.38 vs photo 0.26)",
+   "reason": "edge NCC 0.113 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.24 mean 0.36 vs photo 0.26)",
    "likeness": {
     "pandId": "0363100012156748",
     "ncc": 0.113,
@@ -556,7 +557,7 @@
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.24 mean 0.38 vs photo 0.26"
+     "glazing storey band off by 0.24 mean 0.36 vs photo 0.26"
     ],
     "wall": {
      "photo": "#71635a",
@@ -565,13 +566,13 @@
     },
     "glazing": {
      "photo": 0.26,
-     "model": 0.38
+     "model": 0.36
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.597
+    "iou": 0.621
    },
    "challengers": {}
   },
@@ -863,13 +864,13 @@
     },
     "glazing": {
      "photo": 0.43,
-     "model": 0.4
+     "model": 0.37
     },
     "columns": {
      "photo": 4,
      "model": 3
     },
-    "iou": 0.686
+    "iou": 0.722
    },
    "challengers": {}
   },
@@ -964,13 +965,13 @@
     },
     "glazing": {
      "photo": 0.31,
-     "model": 0.37
+     "model": 0.34
     },
     "columns": {
      "photo": 4,
      "model": 3
     },
-    "iou": 0.496
+    "iou": 0.452
    },
    "challengers": {}
   }

@@ -102,13 +102,13 @@
    "gable": "cornice",
    "dormers": 1,
    "dormerStyle": "plain",
-   "dormerBody": "stone",
    "dormerSize": {
     "sill": 0.3,
     "rise": 1.9,
     "setback": 0.8
    },
-   "note": "one white box dormer over the centre axis in a slate mansard (Ruyschstraat 72-98)"
+   "note": "one white box dormer over the centre axis in a slate mansard (Ruyschstraat 72-98)",
+   "dormerBody": "timber"
   }
  },
  "palettes": {
@@ -116,9 +116,10 @@
    "brick": "#6e4a3e",
    "frame": "#d8d3c6",
    "door": "black",
-   "stone": "#d8d3c6",
+   "stone": "#a29d95",
    "band": "#5a3b31",
-   "cornice": "#a29d95"
+   "cornice": "#a29d95",
+   "corniceAs": "stone"
   }
  },
  "roof": {
@@ -171,6 +172,7 @@
  ],
  "notes": [
   "Palette approximate; each placed pand takes its own strip wall.",
-  "Verdict 2026-11-10: top storey flat-headed under a brick lintel (Ruysch 90-80, 331, 339); 76 and 78 keep tall arched heads, so their pins remove axisHeads. Cornice grey #a29d95 (60 % of the way to the photo #716b68-#837f7b)."
+  "Verdict 2026-11-10: top storey flat-headed under a brick lintel (Ruysch 90-80, 331, 339); 76 and 78 keep tall arched heads, so their pins remove axisHeads. Cornice grey #a29d95 (60 % of the way to the photo #716b68-#837f7b).",
+  "Cornice on the stone slot (palette.corniceAs) so the chunk draws it #a29d95; the timber dormer keeps white posts and frame, its cheeks take the stone colour (kit gap: no separate dormer slot)."
  ]
 }
