@@ -53,6 +53,7 @@ import { footprintBase } from './placement.js';
 import { cutMesh, disposeTiles, setTileReach } from '../rendererShared/tiledGeometry.js';
 import { cellTileGrid, type CellTile } from './cellTiles.js';
 import { inTouchRing, residentRadius, touchAheadMarginM, touchResidentRadius, viewCornerReachM, viewReachM } from '../engine/worldStreamer.js';
+import { NearFarWatch, nearFarFlag } from './nearFarWatch.js';
 import { farBlockCells, farBlocksWithin, farHorizonEnabled, farRadiusM, horizonReachM, FAR_KEEP_M, FAR_STEP_M, type BuiltFar } from './farRing.js';
 import { routeRibbon } from './streets.js';
 import { disc, emptyMesh, merge, type MeshArrays } from './drape.js';
@@ -369,6 +370,8 @@ const AERIAL_RADIUS_M = 2000;
 /** A cell arriving in the ring (not an LOD swap of a resident one) dissolves in over this long. */
 export const FADE_MS = 400;
 const NEAR_M = 350;
+/** A far-tier part drawn this close to the view centre for NEAR_FAR_MS is a coverage defect (G4 #369). */
+export const NEAR_FAR_M = 150;
 const RESIDENCY_STEP_M = 60;
 
 /** Which mask channel cuts a layer: R = water (land, parks), G = water minus decks (street bands). */
@@ -488,6 +491,9 @@ export class OwnGround {
   private readonly farPending = new Set<string>();
   /** Far blocks with nothing to draw (outside the extracts). */
   private readonly farEmpty = new Set<string>();
+  private readonly nearFarWatch = new NearFarWatch();
+  private nearFarAt = 0;
+  private nearFarOn: boolean | undefined;
   private readonly farStats = { built: 0, buildMs: [] as number[] };
   /** The overview → city blend (transition on): drawn while `blend.active`, dithered by `blendUniform`. */
   readonly blend = new OverviewBlend();
@@ -726,6 +732,14 @@ export class OwnGround {
       for (const meshes of this.reachMeshes.values()) for (const m of meshes) setTileReach(m, reach);
     }
     if (visible && (this.overlayDirty || this.overlayRevision !== this.surfaceRevision)) this.rebuildOverlays();
+    if (visible && this.far.size && (this.nearFarOn ??= nearFarFlag())) {
+      const now = performance.now();
+      if (now - this.nearFarAt > 500) {
+        this.nearFarAt = now;
+        const report = this.nearFarWatch.step(now, this.nearFarParts());
+        if (report) try { (globalThis as any).dispatchEvent?.(new CustomEvent('canal-near-far', { detail: { ...report, zoom: this.zoom, radiusM: this.radiusM, farRadiusM: this.farRadius, centre: this.centre } })); } catch { /* no window */ }
+      }
+    }
     this.setBasemapHidden(visible && this.coversRider());
     return visible && this.resident.size > 0;
   }
@@ -955,6 +969,23 @@ export class OwnGround {
    * reader of coversRect (engine/overviewLayer.ts) knows when its answer may have changed.
    */
   coverRevision = 0;
+
+  /**
+   * G4 (#369): far-tier parts drawn within `r` metres of the view centre (the rider's neighbourhood), with why the
+   * resident cell does not hide them. The far tier is vertex-coloured on a 50 m grid: at the rider it reads as a blurry texture.
+   */
+  nearFarParts(r = NEAR_FAR_M): { key: string; distM: number; resident: boolean; fading: boolean; pending: boolean; lod: number | null }[] {
+    const c = this.centre, out: { key: string; distM: number; resident: boolean; fading: boolean; pending: boolean; lod: number | null }[] = [];
+    if (!c) return out;
+    for (const f of this.far.values()) for (const [key, mesh] of f.parts) {
+      if (!mesh.visible) continue;
+      const d = this.rectDistance(this.store.cellRect(key), c);
+      if (d > r) continue;
+      const res = this.resident.get(key);
+      out.push({ key, distM: Math.round(d), resident: !!res, fading: !!res?.fade, pending: this.pending.has(key), lod: res ? res.lod : null });
+    }
+    return out;
+  }
 
   /** A far part hides once the resident ring draws its cell (after the cell's dissolve). */
   private syncFar(): void {
@@ -1664,7 +1695,7 @@ export class OwnGround {
       downloadedKB: Object.fromEntries(Object.entries(this.store.loadedBytes).map(([k, v]) => [k, Math.round(v / 1024)])),
       overlays: Object.fromEntries(Object.entries(this.overlays).map(([k, m]) => [k, m ? m.geometry.index.count / 3 : 0])),
       far: {
-        radiusM: this.farRadius, blocks: this.far.size, pending: this.farPending.size, built: this.farStats.built, buildMsMedian: median(this.farStats.buildMs),
+        nearRider: this.nearFarParts(), radiusM: this.farRadius, blocks: this.far.size, pending: this.farPending.size, built: this.farStats.built, buildMsMedian: median(this.farStats.buildMs),
         parts: [...this.far.values()].reduce((n, f) => n + f.parts.size, 0), partsShown: [...this.far.values()].reduce((n, f) => n + [...f.parts.values()].filter(m => m.visible).length, 0),
         triangles: [...this.far.values()].reduce((n, f) => n + f.triangles, 0), geometryMB: +([...this.far.values()].reduce((n, f) => n + f.bytes, 0) / 1048576).toFixed(1),
       },

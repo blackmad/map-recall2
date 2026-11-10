@@ -42,6 +42,9 @@ interface CanalRecallGameGlobals {
 const config: CanalRuntimeConfig = window.CANAL_RUNTIME_CONFIG ?? {};
 const enabled = Boolean(config.sentryDsn);
 
+// G4 (#369): the far tier drawn within 150 m of the rider for > 2 s (ownGround/nearFarWatch.ts).
+if (enabled) window.addEventListener('canal-near-far', e => Sentry.addBreadcrumb({ category: 'ground', level: 'warning', message: 'far ground drawn near the rider', data: (e as CustomEvent).detail }));
+
 if (enabled) {
   Sentry.init({
     dsn: config.sentryDsn,
