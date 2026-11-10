@@ -12,8 +12,8 @@ describe ──► preview ──► compare ──► stage ──► publish
 | Station | Lane | Status |
 |---|---|---|
 | §1 The record (HouseSpec) and the generic path | H1 | landed (this section) |
-| §2 Preview in Node | H2 | stub |
-| §3 Stage and publish | H3 | stub |
+| §2 Preview in Node | H2 | landed |
+| §3 Stage and publish | H3 | landed |
 | §4 Describe at scale (crops → facts → spec) | H4 (§4a), H5 (§4b) | landed on the AB07 pilot |
 | §5 The kit-gap queue | H6 | stub |
 
@@ -493,7 +493,190 @@ Chromium) or a ride frame.
 
 ## §3 Stage and publish
 
-Stub (lane H3): `house:stage`, `house:publish`, per-tile covers, golden allowlists.
+Lanes stage, the integrator publishes once per batch. Nothing a lane does under `house:stage` touches `public/`.
+
+```
+lane:        spec ──► house:preview ──► house:stage ──► artifacts/house-specs/staging/<pandId>.json
+integrator:  house:publish  (one batch: merge → recipe route → compile touched cells → goldens → guard → check:canal → record)
+```
+
+### Layout
+
+| Path | Written by | What |
+|---|---|---|
+| `artifacts/house-specs/staging/<pandId>.json` | `house:stage` | `{spec, stagedAt, by, note, receipt}`; one file per pand, restaged = replaced |
+| `artifacts/house-specs/work/<batch>/{specs,intents}/` | `house:publish` | the batch's specs as plain files for `build-house-specs --extra-specs`; recipe-route intents (`toRecipe`) |
+| `artifacts/house-specs/logs/<batch>-<step>.log`, `<batch>-nightly.log` | `house:publish`, `nightly.sh` | one log per step |
+| `artifacts/house-specs/published/<batch>.json` | `house:publish` | what landed: specs, receipts, pand records, touched tiles and cells, cell files that changed, covers delta, installs, holds, the golden allow-list, per-step timings, wall time against the 15 min budget |
+| `artifacts/house-specs/published/<batch>/<pandId>/{staged.json,measure.json,compare.png}` | `house:publish` | the staged files moved here, with the receipt files |
+| `scripts/house-specs/specs/<pandId>.json` | `house:publish` (step 2) | the published specs, the durable source `build-house-specs` rebuilds the extract from (commit them) |
+| `<map-recall2-source-data>/house-specs/<batch>/` | `house:publish --archive` | the published directory copied for the archive worktree; the integrator commits and pushes it |
+
+### A receipt
+
+The receipt is what proves the spec was looked at: the `measure.json` and `compare.png` that `house:preview` wrote for this spec
+(`artifacts/house-preview/<pandId>/`), with their sha256 and the verdict word. `house:stage` refuses a spec with no preview
+output, or with a `measure.json` older than the spec file (re-run the preview). `--no-receipt "<reason>"` stages without one and
+records the reason (the preview cannot draw this house, or H2 is not merged); `house:publish` prints the count of each kind and
+refuses a receipt whose files changed after staging.
+
+### Commands and flags
+
+`--help` of each script prints exactly this text (the `HELP` constant of the script).
+
+```
+house:stage: validate a HouseSpec, attach the preview receipt, write it to the staging directory.
+
+  npm run house:stage -- <spec.json|pandId> [--note "..."] [--by <name>] [--preview-dir <dir>]
+                                           [--no-receipt "<reason>"] [--stale-receipt]
+  --help                                   this text
+
+<spec.json|pandId>   a spec file, or a 16-digit pand id read from scripts/house-specs/specs/<pandId>.json
+--note "..."         free text kept with the staged spec (shown in the publish table)
+--by <name>          who staged it (default: git user.name, else $USER)
+--preview-dir <dir>  where house:preview wrote this pand's measure.json and compare.png
+                     (default artifacts/house-preview/<pandId>)
+--no-receipt "<r>"   stage without a preview receipt; the reason is recorded and shown at publish (use it only when the
+                     preview cannot draw this house, and say what stands in for it)
+--stale-receipt      accept a measure.json older than the spec file (default: refused, the receipt must be of this spec)
+
+Writes artifacts/house-specs/staging/<pandId>.json = {spec, stagedAt, by, note, receipt}. Lanes stop here: house:publish is
+the integrator's (batch, covers, goldens, check:canal). A pand already staged is replaced.
+
+house:publish: publish the staged HouseSpecs as one batch (the integrator's command; lanes stop at house:stage).
+
+  npm run house:publish -- [--dry-run [--compile]] [--batch <name>] [--allow-extra <pandIds>]
+                           [--world-out <dir>] [--full-bake] [--goldens] [--archive <dir>]
+                           [--verbose] [--skip-check-canal "<reason>"] [--skip-suppression "<reason>"]
+  --help                   this text
+
+  --dry-run [--compile]     step 1 only (with --compile also a rehearsal of step 4 in a scratch copy of --world-out, compiled
+                           against the staged extract; nothing under public/ changes): merge the staged specs into a STAGED extract (public/data/extracts/amsterdam/staging/
+                           house-specs), print the per-pand field diff, the touched z14 tiles and the cells they rebuild, and
+                           the commands a real run would use. Nothing is published, installed or compiled.
+  --batch <name>           the batch name (default batch-YYYYMMDD-HHMM); names artifacts/house-specs/{published,logs}/<name>*
+  --allow-extra <ids>      pand ids whose extract record may change although no staged spec names them (default: any such
+                           change refuses the batch, it means a source drifted since the last publish)
+  --world-out <dir>        the world:compile staging directory (default artifacts/world/staging); needs a previous
+                           index.json there for --changed
+  --full-bake              when the shell code changed since that compile (world:compile --shell --changed refuses), run a full
+                           world:compile --shell instead of stopping
+  --goldens                run the four goldens even for a generic-route-only batch (default: only when a spec has route recipe)
+  --archive <dir>          the map-recall2-source-data checkout (default $MAP_RECALL_SOURCE_DATA): specs + receipts are copied
+                           to <dir>/house-specs/<batch>/ (the integrator commits and pushes that worktree)
+  --verbose                list every staged spec and every field of the diff (default: the first eight)
+  --skip-check-canal "<r>" do not run check:canal (a rehearsal only; the reason is recorded in published/<batch>.json)
+  --skip-suppression "<r>" do not run the suppression guard (same)
+
+Steps, in order (each timed in published/<batch>.json; logs in artifacts/house-specs/logs/<batch>-<step>.log):
+  1 merge      build-house-specs --extra-specs <batch dir>: staged tiles, diff vs the published extract, extra-pand refusal
+  2 write      copy the specs to scripts/house-specs/specs/, build-house-specs --publish (the published extract changes here)
+  3 recipe     only if a spec has route recipe: toRecipe -> houses/<id>/intent.json, facts, install.ts, build-covers,
+               copy covers.json, check:covers (covers.json changes here)
+  4 compile    world:compile --changed --shell (touched cells only; each tile hashes its own slice of covers.json); the cell
+               files that changed must all belong to a touched tile
+  5 goldens    fit-golden, large-mesh-hashes, roof-golden, block-kit-installed with --allow=<batch ids>; check:stale-installs
+  6 suppress   the #341 audit (house:audit) for every pand the batch's covers newly hide, plus recipe-route pands: a street wall
+               of 4 m or more left blank refuses the batch
+  7 check      check:canal once
+  8 record     published/<batch>.json, staged files moved to published/<batch>/, archive copy, the HISTORY/What's New paragraph,
+               and the commands that copy the compiled world into public/data/extracts/amsterdam/world-v1
+Exit code is non-zero on any gate failure; the working tree is left as it is for the integrator to inspect (git status).
+```
+
+### The batch rule
+
+Lanes never publish. A lane's last step is `house:stage`; it returns the staged pand ids in its hand-back. The integrator runs one
+`house:publish` for everything staged (`scripts/house-specs/nightly.sh` is that command with a log, for whenever the integrator
+chooses; the repo installs no cron). One batch = one commit, one HISTORY entry, one What's New note (the command prints drafts).
+
+### What each step does
+
+1. **merge.** The staged specs are written as plain files and `build-house-specs --extra-specs` resolves them with every other source
+   into the STAGED tiles (`public/data/extracts/amsterdam/staging/house-specs`). The staged tiles are diffed against the published
+   ones, field by field, per pand. A record that changes although no staged spec names that pand refuses the batch (a source drifted
+   since the last publish); `--allow-extra <ids>` accepts named ones. A staged pand that lies in no building tile also refuses.
+   `--dry-run` stops here and prints the diff, the touched z14 tiles and the cells that list them. `--dry-run --compile` also
+   rehearses step 4 in a scratch copy of the compile directory against the staged extract.
+2. **write.** The specs are copied to `scripts/house-specs/specs/` and `build-house-specs --publish` replaces the published
+   `house-specs/14`. This is the first step that changes `public/`.
+3. **recipe route.** Only for specs that resolve to `route: 'recipe'`. The intent is `toRecipe(resolved spec)` under the id of the
+   house directory that already carries the pand (its earlier sources are kept), else `spec-<pandId>`; `facts.ts` fills the facts of a new
+   directory; `install.ts --house=<ids>` compiles and installs; then `build-covers`, the covers copy to `models/covers.json` and
+   `check:covers`. **Stale installs:** a reinstall that fails its gates keeps the old GLB and writes `held-installs.json` with the
+   reason `staged spec <date>` (`check:stale-installs` then passes with the hold explicit); a new house that fails stops the batch.
+4. **compile.** `world:compile --changed --shell` into the compile directory. Every tile hashes its own inputs and its own slice of
+   `covers.json` (below), so only the cells that list a touched tile rebuild. After the compile the cell, shell and far files that
+   differ from the previous `index.json` are compared with the cells of the touched tiles; any file outside them fails the batch. If the shell code
+   changed since the last compile the compiler refuses `--shell --changed`; the command then stops and says so, or with `--full-bake`
+   runs a full `--shell` bake.
+5. **goldens.** `fit-golden`, `large-mesh-hashes`, `block-face/roof-golden` and `haparandaweg/check-installed` run with
+   `--allow=<ids>`: the batch's pand ids plus the house directories, block faces and block-kit specs that mention one. A change inside
+   the list is re-recorded; a change outside it fails the batch and its ids are printed. `check:stale-installs` runs last. Skipped for
+   a generic-route batch (no intent, face or kit spec changes); the per-cell compare of step 4 is the guard there. `--goldens` forces them.
+6. **suppression guard.** For every pand the batch newly hides (the covers delta) and every recipe-route pand, the #341 audit
+   (`scripts/house-audit/suppressed-faces.ts`, bare-slab test included) runs on this checkout; a street-facing BAG wall of 4 m or more
+   on a named street left blank (no outward geometry, or a bare slab) refuses the batch and prints pand, street and wall length. A
+   wall that only stops short of the eaves (a setback or gable) passes. The command calls the audit through the `SuppressionAudit`
+   interface (`publishPlan.ts`): it shells out to the script and reads `walls[]` of its JSON. It fails closed when the script is not on the branch.
+7. **check:canal**, once.
+8. **record.** `published/<batch>.json`, the staged files moved to `published/<batch>/`, the archive copy, and printed drafts of the HISTORY
+   line and the What's New note.
+
+### Covers per tile (`src/canalRecall/world/tileCovers.ts`)
+
+`covers.json` used to be a global compile input, so one install rebuilt the city. It reaches the world only through each cell's
+`hide` list, so it is now hashed per tile: the slice of `covers.json` that names a building of the tile (`coversHides`, the hide entries
+in compile order) is hashed beside the tile's own inputs and stored in `index.json` as `tileCovers`. The ids of each tile come from
+`<out>.tile-ids.json` (beside the compile directory, not in it, so publishing the directory does not carry it), keyed by the sha256 of the tile
+file and reused while the file is unchanged. A first run parses the tile files (about the cost of one full load). `--against`
+compares hidden lists per cell: a cell's hide list is compared when the reference's slice of every tile it lists equals ours (a
+reference compiled before this change is compared on the whole-file hash as before). `world:verify` also fails on a tile whose slice moved
+since the compile (`staleCovers`). Not hashed: the order of models inside `covers.json` across tiles (a reorder with no content change is not
+seen; run a full compile after one). `COVERS_FILE=<path>` points the compiler at another covers file (rehearsals, measurements).
+
+### Measured (2026-11-10, lane H3, 14-core Mac with other lanes running: load average 10 to 40 during the runs)
+
+What `world:compile` and the gates cost before the change and after it. A 50-spec batch is the 50 canal-belt pands of tiles
+8412/5384, 8413/5382 to 8413/5386 (generic route, one `bays` field each, author source), staged with `house:stage`.
+
+| Step | Before | After |
+|---|---|---|
+| `world:compile` full, no shell | 46 s | same cells (0 of 604 files differ) |
+| `world:compile --shell` full | 262 s | 199 s and 262 s (load 15); cells, shells and far files byte-identical to before (0 differing of 604, 564, 604) |
+| a **covers.json change** (one model, 2 pands in 2 tiles), `--changed --shell` | every cell: 604 cells, a full bake (~262 s) | 2 tiles changed, 12 cells rebuilt, **19 s**; 2 cell files differ, 11 shell and 10 far files |
+| a 50-spec batch, `--changed --shell` (6 tiles) | 6 tiles (spec files were already per tile) | 24 cells rebuilt, 22 cell/shell/far files differ, **33.8 s** |
+| `house:publish --dry-run --compile` for the 50 specs | n/a | **37 s** end to end (merge 1.8 s + compile 33.8 s) |
+| `world:verify` on that rehearsal | n/a | 8 s: 295 tiles, 350,337 buildings, 0 differing, 0 stale, 0 staleCovers |
+| `build-covers` / `check:covers` | 9 s / 1 s | same |
+| `test:fit-golden` / `large-mesh-hashes` / `roof-golden` / `test:block-kit-installed` / `check:stale-installs` | 5 s / 13 s / 9 s / under 1 s / 1 s | same, now with `--allow` |
+| #341 audit (`suppressed-faces.ts`, 2,636 walls) | n/a | 37 s |
+| `check:canal` | did not finish: stopped by hand at 25.8 min, 158 checks had passed, inside `check:rail-street` (8.5 min at 99 % CPU when load averaged 20 to 40); the brief's "about 6 min" does not hold on a loaded machine | not part of the batch timing |
+
+Gate arithmetic: merge 2 s + write 2 s + compile 34 s + verify 8 s is about a minute for the 50-spec batch, with the goldens skipped (generic
+route) and no suppression change; a recipe batch adds the installs, `build-covers` (9 s) and four goldens (under 30 s) plus the audit (37 s). The
+15 min budget is met by everything except `check:canal`, which alone took more than 15 min on this machine under this load; the integrator's
+timing of a batch is therefore its `check:canal` timing plus about a minute, and `--skip-check-canal "<reason>"` exists for rehearsals only.
+
+Decoded equivalence: the `--changed` rehearsal compiled into a scratch copy of the staging directory verifies against the default tile path
+(`world:verify`, `HOUSE_SPECS_DIR=staging/house-specs`) with 0 differing tiles. Two full compiles with different specs do not match byte for byte
+(604 of 604 cell files differ) because the shared string table is chosen from the cells' strings; a `--changed` run keeps the earlier table, which is
+why only the rebuilt cells differ in the numbers above.
+
+What was not run end to end: step 2 onwards of a real `house:publish` (writing `public/`, the recipe route's installs, the goldens'
+re-recording through the publish command, the suppression guard through the audit, `check:canal` inside the command). Each piece ran on its
+own: `--allow` against a deliberately altered golden for all four scripts (inside the list re-recorded to the exact original, outside it exit 1 with nothing
+written); the audit against its real JSON (219 blank street walls of 4 m or more in the existing suppressed set; the guard only looks at a batch's own pands);
+the compile and the verify as above. The first real batch is the integrator's and should be a small one.
+
+### The integrator's checklist for a batch
+
+1. `npm run house:publish -- --dry-run --compile` and read the diff, the receipts count and the cells it rebuilds. Unstage anything unexpected (delete its file in `artifacts/house-specs/staging/`).
+2. `npm run house:publish` (or `scripts/house-specs/nightly.sh`). Exit non-zero = a gate failed; the message names it, the step log is in `artifacts/house-specs/logs/`, and the working tree is as the batch left it.
+3. Copy the compiled world: `for d in cells shells far; do rsync -a --delete artifacts/world/staging/$d/ public/data/extracts/amsterdam/world-v1/$d/; done; cp artifacts/world/staging/{index.json,tiles.json,strings.bin} public/data/extracts/amsterdam/world-v1/`; then `npm run world:verify` (globalFresh true, 0 stale, 0 staleCovers, 0 differing) and `npm run test:world-format`.
+4. Recipe batches: rebuild covers-dependent bundles and stamps, `npm run test:canal-game-structure`, re-publish landmark cards if an extract regenerated.
+5. Commit specs, the published extract, world-v1 (and houses, GLBs, catalogue, covers, goldens for a recipe batch); push the archive worktree; paste the HISTORY and What's New drafts.
+
 
 ## §4 Describe at scale
 
