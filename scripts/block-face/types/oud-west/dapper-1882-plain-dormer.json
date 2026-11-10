@@ -1,0 +1,137 @@
+{
+ "schemaVersion": 1,
+ "kind": "house-type",
+ "id": "dapper-1882-plain-dormer",
+ "district": "oud-west",
+ "description": "Eerste Van Swindenstraat 391-401 (1882, strip 2022-01-12, gridded 40 px/m): plain red-brown brick, 3 axes on 5.0 m, shop ground to 3.0 m, three upper storeys of 2.85 m, 1.0 x 1.9 m cambered sash windows with white frames and sills, cream cornice with panelled frieze (11.1-12.2 m), a dark slate mansard behind it with skylights and one pointed wooden dormer per house (1.5 m wide, ridge 14.0 m, iron finial)",
+ "fit": {
+  "widthM": [
+   4.6,
+   5.5
+  ],
+  "storeys": [
+   4
+  ]
+ },
+ "match": {
+  "years": [
+   1881,
+   1882
+  ],
+  "yearSlack": 0,
+  "eavesM": [
+   12.2,
+   12.8
+  ],
+  "stucco": false,
+  "baysByWidth": [
+   {
+    "maxWidthM": 99,
+    "bays": 3
+   }
+  ],
+  "note": "Eerste Van Swindenstraat 391-401 (3DBAG eaves 12.56-12.60 m, 5.0 m wide, built 1882)"
+ },
+ "body": {
+  "storeys": 4,
+  "bays": 3,
+  "cornice": "heavy",
+  "windows": "t-window",
+  "windowHead": {
+   "kind": "segmental"
+  },
+  "windowHeights": [
+   0.7,
+   0.62,
+   0.66,
+   0.66
+  ],
+  "windowShare": 0.63,
+  "headLines": [
+   0.86,
+   0.7,
+   0.71,
+   0.71
+  ],
+  "storeyHeights": [
+   3.0,
+   2.85,
+   2.85,
+   2.85
+  ]
+ },
+ "crowns": {
+  "pediment-dormer": {
+   "gable": "cornice",
+   "dormers": 1,
+   "dormerStyle": "pediment",
+   "dormerBody": "stone",
+   "dormerSize": {
+    "sill": 0.25,
+    "rise": 1.3,
+    "setback": 1.0
+   },
+   "note": "one pointed pediment dormer with an iron finial per house on the centre axis (Swinden 391-401)"
+  }
+ },
+ "palettes": {
+  "red-brown": {
+   "brick": "#6e4b3d",
+   "frame": "#d9d4c0",
+   "door": "black",
+   "stone": "#d9d4c0",
+   "cornice": "#d6cfb8"
+  }
+ },
+ "roof": {
+  "material": "slate",
+  "source": "front",
+  "rise": 0.35,
+  "pitchDeg": 70,
+  "evidence": "Eerste Van Swindenstraat 391-401, 2022-01-12 strip: a dark slate mansard 1.0 m high behind the cornice (12.2-13.2 m) with skylights beside the dormer"
+ },
+ "rhythm": {
+  "bays": "3 window axes (2 on 4-5 m pands)",
+  "identicalBays": "upper storeys: equal axes, no balconies",
+  "windowsPerStorey": "ground: shop | 1: 3 | 2: 3 | 3: 3",
+  "symmetry": "symmetric above the ground",
+  "groundFloor": "shop per house, residential door beside it",
+  "signage": "per house",
+  "roofline": "heavy cream cornice with panelled frieze; dark slate mansard; one pointed dormer",
+  "photoRows": [
+   1,
+   3,
+   3,
+   3
+  ],
+  "photoGroundRows": 1,
+  "photoGables": 0,
+  "schemaLimits": [
+   "iron wall anchors",
+   "cornice frieze panels",
+   "skylights in the mansard"
+  ]
+ },
+ "evidence": [
+  {
+   "face": "swinden-383-581",
+   "pands": [
+    "159406",
+    "158925",
+    "165201",
+    "163378",
+    "236602",
+    "161671"
+   ],
+   "citation": "strip.jpg 2022-01-12, Eerste Van Swindenstraat 391-401 gridded at 40 px/m: three upper storeys, windows 1.0 x 1.9 m, heads at 5.0/7.8/10.6 m, cornice 11.1-12.2 m, dormer ridge 14.0 m"
+  }
+ ],
+ "schemaLimits": [
+  "iron wall anchors",
+  "cornice frieze panels",
+  "skylights in the mansard"
+ ],
+ "notes": [
+  "Palette: approximate; each placed pand takes its own trim-normalised strip wall."
+ ]
+}

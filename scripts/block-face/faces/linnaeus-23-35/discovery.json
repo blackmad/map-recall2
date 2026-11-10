@@ -1,0 +1,276 @@
+{
+ "street": "Linnaeusstraat",
+ "seed": "0363100012154124",
+ "members": [
+  "0363100012154124",
+  "0363100012159201",
+  "0363100012152605",
+  "0363100012112463",
+  "0363100012109340"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "next fronting pand 0363100012166134 33.2 m on shares no party wall (cross street or gap)"
+  },
+  {
+   "side": "right",
+   "reason": "next fronting pand 0363100012118480 58.2 m on shares no party wall (cross street or gap)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012068865",
+   "reason": "sightline to Linnaeusstraat crosses 0363100012158748"
+  },
+  {
+   "pandId": "0363100012074254",
+   "reason": "frontage 52.7 m from Linnaeusstraat"
+  },
+  {
+   "pandId": "0363100012077478",
+   "reason": "frontage 112.2 m from Linnaeusstraat"
+  },
+  {
+   "pandId": "0363100012078517",
+   "reason": "frontage 101.2 m from Linnaeusstraat"
+  },
+  {
+   "pandId": "0363100012082861",
+   "reason": "frontage 59.7 m from Linnaeusstraat"
+  },
+  {
+   "pandId": "0363100012088692",
+   "reason": "frontage 101.7 m from Linnaeusstraat"
+  },
+  {
+   "pandId": "0363100012091544",
+   "reason": "frontage 86.3 m from Linnaeusstraat"
+  },
+  {
+   "pandId": "0363100012094602",
+   "reason": "frontage 64.7 m from Linnaeusstraat"
+  },
+  {
+   "pandId": "0363100012095429",
+   "reason": "frontage 70.5 m from Linnaeusstraat"
+  },
+  {
+   "pandId": "0363100012097187",
+   "reason": "frontage 119.7 m from Linnaeusstraat"
+  },
+  {
+   "pandId": "0363100012101318",
+   "reason": "frontage 100.7 m from Linnaeusstraat"
+  },
+  {
+   "pandId": "0363100012112407",
+   "reason": "frontage 58.6 m from Linnaeusstraat"
+  },
+  {
+   "pandId": "0363100012140949",
+   "reason": "frontage 58.1 m from Linnaeusstraat"
+  },
+  {
+   "pandId": "0363100012141437",
+   "reason": "frontage 82.3 m from Linnaeusstraat"
+  },
+  {
+   "pandId": "0363100012152400",
+   "reason": "frontage 81.2 m from Linnaeusstraat"
+  },
+  {
+   "pandId": "0363100012152482",
+   "reason": "frontage 75.2 m from Linnaeusstraat"
+  },
+  {
+   "pandId": "0363100012153339",
+   "reason": "frontage 87.6 m from Linnaeusstraat"
+  },
+  {
+   "pandId": "0363100012153380",
+   "reason": "sightline to Linnaeusstraat crosses 0363100012236918"
+  },
+  {
+   "pandId": "0363100012153696",
+   "reason": "frontage 69.2 m from Linnaeusstraat"
+  },
+  {
+   "pandId": "0363100012153708",
+   "reason": "frontage 92.5 m from Linnaeusstraat"
+  },
+  {
+   "pandId": "0363100012154498",
+   "reason": "frontage 34.4 m from Linnaeusstraat"
+  },
+  {
+   "pandId": "0363100012155550",
+   "reason": "frontage 47.0 m from Linnaeusstraat"
+  },
+  {
+   "pandId": "0363100012155577",
+   "reason": "frontage 57.2 m from Linnaeusstraat"
+  },
+  {
+   "pandId": "0363100012156075",
+   "reason": "frontage 46.7 m from Linnaeusstraat"
+  },
+  {
+   "pandId": "0363100012156704",
+   "reason": "frontage 58.9 m from Linnaeusstraat"
+  },
+  {
+   "pandId": "0363100012158275",
+   "reason": "frontage 63.3 m from Linnaeusstraat"
+  },
+  {
+   "pandId": "0363100012158379",
+   "reason": "frontage 34.7 m from Linnaeusstraat"
+  },
+  {
+   "pandId": "0363100012160508",
+   "reason": "frontage 39.2 m from Linnaeusstraat"
+  },
+  {
+   "pandId": "0363100012161077",
+   "reason": "frontage 81.5 m from Linnaeusstraat"
+  },
+  {
+   "pandId": "0363100012161273",
+   "reason": "frontage 93.1 m from Linnaeusstraat"
+  },
+  {
+   "pandId": "0363100012163265",
+   "reason": "frontage 51.2 m from Linnaeusstraat"
+  },
+  {
+   "pandId": "0363100012163419",
+   "reason": "frontage 40.8 m from Linnaeusstraat"
+  },
+  {
+   "pandId": "0363100012163837",
+   "reason": "frontage 45.2 m from Linnaeusstraat"
+  },
+  {
+   "pandId": "0363100012165837",
+   "reason": "frontage 99.7 m from Linnaeusstraat"
+  },
+  {
+   "pandId": "0363100012166399",
+   "reason": "frontage 33.2 m from Linnaeusstraat"
+  },
+  {
+   "pandId": "0363100012187268",
+   "reason": "frontage 80.3 m from Linnaeusstraat"
+  },
+  {
+   "pandId": "0363100012193844",
+   "reason": "frontage 96.2 m from Linnaeusstraat"
+  },
+  {
+   "pandId": "0363100012213726",
+   "reason": "frontage 85.8 m from Linnaeusstraat"
+  },
+  {
+   "pandId": "0363100012215058",
+   "reason": "frontage 108.3 m from Linnaeusstraat"
+  },
+  {
+   "pandId": "0363100012219995",
+   "reason": "frontage 33.2 m from Linnaeusstraat"
+  },
+  {
+   "pandId": "0363100012221551",
+   "reason": "frontage 43.7 m from Linnaeusstraat"
+  },
+  {
+   "pandId": "0363100012226361",
+   "reason": "frontage 75.3 m from Linnaeusstraat"
+  },
+  {
+   "pandId": "0363100012230390",
+   "reason": "frontage 65.0 m from Linnaeusstraat"
+  },
+  {
+   "pandId": "0363100012233668",
+   "reason": "frontage 107.2 m from Linnaeusstraat"
+  },
+  {
+   "pandId": "0363100012236163",
+   "reason": "frontage 55.2 m from Linnaeusstraat"
+  },
+  {
+   "pandId": "0363100012236713",
+   "reason": "frontage 65.8 m from Linnaeusstraat"
+  },
+  {
+   "pandId": "0363100012096868",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012237251",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012570789",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012154124",
+   "alongM": 0,
+   "widthM": 7.57,
+   "eavesM": 16.55,
+   "roofMaxM": 19.55,
+   "storeys3dbag": 5,
+   "builtYear": 1881,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012159201",
+   "alongM": 7.24,
+   "widthM": 6.92,
+   "eavesM": 16.95,
+   "roofMaxM": 20.09,
+   "storeys3dbag": 5,
+   "builtYear": 1881,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012152605",
+   "alongM": 14.01,
+   "widthM": 6.61,
+   "eavesM": 17.07,
+   "roofMaxM": 20,
+   "storeys3dbag": 5,
+   "builtYear": 1881,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012112463",
+   "alongM": 20.42,
+   "widthM": 6.22,
+   "eavesM": 13.59,
+   "roofMaxM": 16.72,
+   "storeys3dbag": 5,
+   "builtYear": 1887,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012109340",
+   "alongM": 32.12,
+   "widthM": 17.17,
+   "eavesM": 14.99,
+   "roofMaxM": 17.31,
+   "storeys3dbag": 5,
+   "builtYear": 1985,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  }
+ ]
+}

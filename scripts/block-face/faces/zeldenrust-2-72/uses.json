@@ -1,0 +1,306 @@
+{
+ "street": "Mary Zeldenruststraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T07:57:51.386Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012083880",
+   "addresses": [
+    "Mary Zeldenruststraat 60",
+    "Mary Zeldenruststraat 62",
+    "Mary Zeldenruststraat 64",
+    "Mary Zeldenruststraat 66",
+    "Mary Zeldenruststraat 68",
+    "Mary Zeldenruststraat 70",
+    "Mary Zeldenruststraat 72"
+   ],
+   "groundUnits": [
+    {
+     "address": "Mary Zeldenruststraat 62",
+     "use": "woonfunctie",
+     "areaM2": 90,
+     "bagId": "0363010000928295"
+    },
+    {
+     "address": "Mary Zeldenruststraat 64",
+     "use": "woonfunctie",
+     "areaM2": 90,
+     "bagId": "0363010000928296"
+    },
+    {
+     "address": "Mary Zeldenruststraat 66",
+     "use": "woonfunctie",
+     "areaM2": 90,
+     "bagId": "0363010000928297"
+    },
+    {
+     "address": "Mary Zeldenruststraat 68",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000928299"
+    },
+    {
+     "address": "Mary Zeldenruststraat 70",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000928301"
+    },
+    {
+     "address": "Mary Zeldenruststraat 72",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000928303"
+    },
+    {
+     "address": "Mary Zeldenruststraat 60",
+     "use": "woonfunctie",
+     "areaM2": 92,
+     "bagId": "0363010000928294"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012086877",
+   "addresses": [
+    "Mary Zeldenruststraat 46",
+    "Mary Zeldenruststraat 48",
+    "Mary Zeldenruststraat 50",
+    "Mary Zeldenruststraat 52",
+    "Mary Zeldenruststraat 54",
+    "Mary Zeldenruststraat 56",
+    "Mary Zeldenruststraat 58"
+   ],
+   "groundUnits": [
+    {
+     "address": "Mary Zeldenruststraat 52",
+     "use": "woonfunctie",
+     "areaM2": 77,
+     "bagId": "0363010000928288"
+    },
+    {
+     "address": "Mary Zeldenruststraat 54",
+     "use": "woonfunctie",
+     "areaM2": 77,
+     "bagId": "0363010000928290"
+    },
+    {
+     "address": "Mary Zeldenruststraat 56",
+     "use": "woonfunctie",
+     "areaM2": 77,
+     "bagId": "0363010000928292"
+    },
+    {
+     "address": "Mary Zeldenruststraat 46",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000928282"
+    },
+    {
+     "address": "Mary Zeldenruststraat 48",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000928284"
+    },
+    {
+     "address": "Mary Zeldenruststraat 50",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000928286"
+    },
+    {
+     "address": "Mary Zeldenruststraat 58",
+     "use": "woonfunctie",
+     "areaM2": 94,
+     "bagId": "0363010000928293"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012073029",
+   "addresses": [
+    "Mary Zeldenruststraat 34",
+    "Mary Zeldenruststraat 36",
+    "Mary Zeldenruststraat 38",
+    "Mary Zeldenruststraat 40",
+    "Mary Zeldenruststraat 42",
+    "Mary Zeldenruststraat 44"
+   ],
+   "groundUnits": [
+    {
+     "address": "Mary Zeldenruststraat 38",
+     "use": "woonfunctie",
+     "areaM2": 82,
+     "bagId": "0363010000928273"
+    },
+    {
+     "address": "Mary Zeldenruststraat 40",
+     "use": "woonfunctie",
+     "areaM2": 82,
+     "bagId": "0363010000928275"
+    },
+    {
+     "address": "Mary Zeldenruststraat 42",
+     "use": "woonfunctie",
+     "areaM2": 99,
+     "bagId": "0363010000928278"
+    },
+    {
+     "address": "Mary Zeldenruststraat 44",
+     "use": "woonfunctie",
+     "areaM2": 87,
+     "bagId": "0363010000928280"
+    },
+    {
+     "address": "Mary Zeldenruststraat 36",
+     "use": "woonfunctie",
+     "areaM2": 98,
+     "bagId": "0363010000928271"
+    },
+    {
+     "address": "Mary Zeldenruststraat 34",
+     "use": "woonfunctie",
+     "areaM2": 87,
+     "bagId": "0363010000928269"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012135894",
+   "addresses": [
+    "Mary Zeldenruststraat 22",
+    "Mary Zeldenruststraat 24",
+    "Mary Zeldenruststraat 26",
+    "Mary Zeldenruststraat 28",
+    "Mary Zeldenruststraat 30",
+    "Mary Zeldenruststraat 32"
+   ],
+   "groundUnits": [
+    {
+     "address": "Mary Zeldenruststraat 26",
+     "use": "woonfunctie",
+     "areaM2": 82,
+     "bagId": "0363010000928261"
+    },
+    {
+     "address": "Mary Zeldenruststraat 28",
+     "use": "woonfunctie",
+     "areaM2": 82,
+     "bagId": "0363010000928263"
+    },
+    {
+     "address": "Mary Zeldenruststraat 24",
+     "use": "woonfunctie",
+     "areaM2": 99,
+     "bagId": "0363010000928259"
+    },
+    {
+     "address": "Mary Zeldenruststraat 22",
+     "use": "woonfunctie",
+     "areaM2": 87,
+     "bagId": "0363010000928257"
+    },
+    {
+     "address": "Mary Zeldenruststraat 30",
+     "use": "woonfunctie",
+     "areaM2": 98,
+     "bagId": "0363010000928265"
+    },
+    {
+     "address": "Mary Zeldenruststraat 32",
+     "use": "woonfunctie",
+     "areaM2": 87,
+     "bagId": "0363010000928267"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012149299",
+   "addresses": [
+    "Mary Zeldenruststraat 2",
+    "Mary Zeldenruststraat 4",
+    "Mary Zeldenruststraat 6",
+    "Mary Zeldenruststraat 8",
+    "Mary Zeldenruststraat 10",
+    "Mary Zeldenruststraat 12",
+    "Mary Zeldenruststraat 14",
+    "Mary Zeldenruststraat 16",
+    "Mary Zeldenruststraat 18",
+    "Mary Zeldenruststraat 20"
+   ],
+   "groundUnits": [
+    {
+     "address": "Mary Zeldenruststraat 12",
+     "use": "woonfunctie",
+     "areaM2": 37,
+     "bagId": "0363010000988765"
+    },
+    {
+     "address": "Mary Zeldenruststraat 2",
+     "use": "woonfunctie",
+     "areaM2": 89,
+     "bagId": "0363010000928231"
+    },
+    {
+     "address": "Mary Zeldenruststraat 4",
+     "use": "woonfunctie",
+     "areaM2": 85,
+     "bagId": "0363010000928233"
+    },
+    {
+     "address": "Mary Zeldenruststraat 6",
+     "use": "woonfunctie",
+     "areaM2": 85,
+     "bagId": "0363010000928235"
+    },
+    {
+     "address": "Mary Zeldenruststraat 8",
+     "use": "woonfunctie",
+     "areaM2": 85,
+     "bagId": "0363010000928237"
+    },
+    {
+     "address": "Mary Zeldenruststraat 10",
+     "use": "woonfunctie",
+     "areaM2": 37,
+     "bagId": "0363010000928246"
+    },
+    {
+     "address": "Mary Zeldenruststraat 14",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000928249"
+    },
+    {
+     "address": "Mary Zeldenruststraat 18",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000928253"
+    },
+    {
+     "address": "Mary Zeldenruststraat 20",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000928255"
+    },
+    {
+     "address": "Mary Zeldenruststraat 16",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000928251"
+    }
+   ],
+   "units": 10,
+   "osm": []
+  }
+ ]
+}

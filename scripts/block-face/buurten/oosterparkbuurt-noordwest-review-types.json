@@ -1,0 +1,20 @@
+{
+ "note": "Faces a reviewer restricted to one house type after reading the strip at full size.",
+ "reviewed": "2026-11-10",
+ "pins": [
+  {
+   "face": "ruysch-64-124",
+   "types": [
+    "oosterpark-1900-balcony-camber"
+   ],
+   "reason": "Ruyschstraat 72-98 (2023-01-02 strip, gridded): brick 3-axis fronts with centre balconettes and a box dormer in a slate mansard; the stucco mansard type matched on year and width alone"
+  },
+  {
+   "face": "ruysch-307-393",
+   "types": [
+    "oosterpark-1900-balcony-camber"
+   ],
+   "reason": "Ruyschstraat 307-393 (2023-01-02 strip): the same brick 3-axis fronts with centre balconettes and box dormers as Ruyschstraat 72-98; the stucco mansard type matched on year and width alone"
+  }
+ ]
+}

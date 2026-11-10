@@ -1,0 +1,552 @@
+{
+ "street": "Tilanusstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T08:23:25.589Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012159951",
+   "addresses": [
+    "Tilanusstraat 356",
+    "Tilanusstraat 358",
+    "Tilanusstraat 360",
+    "Tilanusstraat 362"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tilanusstraat 360",
+     "use": "woonfunctie",
+     "areaM2": 92,
+     "bagId": "0363010000828097"
+    },
+    {
+     "address": "Tilanusstraat 362",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010000828098"
+    },
+    {
+     "address": "Tilanusstraat 356",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000828095"
+    },
+    {
+     "address": "Tilanusstraat 358",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000828096"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012162616",
+   "addresses": [
+    "Tilanusstraat 348",
+    "Tilanusstraat 350",
+    "Tilanusstraat 352",
+    "Tilanusstraat 354"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tilanusstraat 354",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000828094"
+    },
+    {
+     "address": "Tilanusstraat 352",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000828093"
+    },
+    {
+     "address": "Tilanusstraat 348",
+     "use": "woonfunctie",
+     "areaM2": 63,
+     "bagId": "0363010000828091"
+    },
+    {
+     "address": "Tilanusstraat 350",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000828092"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012159569",
+   "addresses": [
+    "Tilanusstraat 340",
+    "Tilanusstraat 342",
+    "Tilanusstraat 344",
+    "Tilanusstraat 344A",
+    "Tilanusstraat 346"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tilanusstraat 340",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000828087"
+    },
+    {
+     "address": "Tilanusstraat 342",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000828088"
+    },
+    {
+     "address": "Tilanusstraat 344",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000828089"
+    },
+    {
+     "address": "Tilanusstraat 346",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000828090"
+    },
+    {
+     "address": "Tilanusstraat 344A",
+     "use": "woonfunctie",
+     "areaM2": 92,
+     "bagId": "0363010001994549"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012162070",
+   "addresses": [
+    "Tilanusstraat 332",
+    "Tilanusstraat 334",
+    "Tilanusstraat 336",
+    "Tilanusstraat 338"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tilanusstraat 332",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000828083"
+    },
+    {
+     "address": "Tilanusstraat 334",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000828084"
+    },
+    {
+     "address": "Tilanusstraat 336",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000828085"
+    },
+    {
+     "address": "Tilanusstraat 338",
+     "use": "woonfunctie",
+     "areaM2": 125,
+     "bagId": "0363010000828086"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012159277",
+   "addresses": [
+    "Tilanusstraat 324",
+    "Tilanusstraat 326",
+    "Tilanusstraat 328",
+    "Tilanusstraat 328A",
+    "Tilanusstraat 330"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tilanusstraat 324",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000828079"
+    },
+    {
+     "address": "Tilanusstraat 326",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000828080"
+    },
+    {
+     "address": "Tilanusstraat 328",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000828081"
+    },
+    {
+     "address": "Tilanusstraat 330",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000828082"
+    },
+    {
+     "address": "Tilanusstraat 328A",
+     "use": "woonfunctie",
+     "areaM2": 62,
+     "bagId": "0363010001036687"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012162162",
+   "addresses": [
+    "Tilanusstraat 316",
+    "Tilanusstraat 318",
+    "Tilanusstraat 320",
+    "Tilanusstraat 322",
+    "Tilanusstraat 322A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tilanusstraat 316",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000828075"
+    },
+    {
+     "address": "Tilanusstraat 318",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000828076"
+    },
+    {
+     "address": "Tilanusstraat 320",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000828077"
+    },
+    {
+     "address": "Tilanusstraat 322",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000828078"
+    },
+    {
+     "address": "Tilanusstraat 322A",
+     "use": "woonfunctie",
+     "areaM2": 86,
+     "bagId": "0363010001970325"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012157453",
+   "addresses": [
+    "Tilanusstraat 308",
+    "Tilanusstraat 310",
+    "Tilanusstraat 312",
+    "Tilanusstraat 314"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tilanusstraat 308",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000828071"
+    },
+    {
+     "address": "Tilanusstraat 310",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000828072"
+    },
+    {
+     "address": "Tilanusstraat 312",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000828073"
+    },
+    {
+     "address": "Tilanusstraat 314",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000828074"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012159395",
+   "addresses": [
+    "Tilanusstraat 300",
+    "Tilanusstraat 302",
+    "Tilanusstraat 304",
+    "Tilanusstraat 306",
+    "Tilanusstraat 306A",
+    "Tilanusstraat 306B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tilanusstraat 300",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010000828067"
+    },
+    {
+     "address": "Tilanusstraat 302",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000828068"
+    },
+    {
+     "address": "Tilanusstraat 304",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000828069"
+    },
+    {
+     "address": "Tilanusstraat 306",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000828070"
+    },
+    {
+     "address": "Tilanusstraat 306B",
+     "use": "woonfunctie",
+     "areaM2": 38,
+     "bagId": "0363010001034172"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012155684",
+   "addresses": [
+    "Tilanusstraat 292",
+    "Tilanusstraat 294",
+    "Tilanusstraat 296",
+    "Tilanusstraat 296D",
+    "Tilanusstraat 298"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tilanusstraat 292",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000828063"
+    },
+    {
+     "address": "Tilanusstraat 294",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000828064"
+    },
+    {
+     "address": "Tilanusstraat 296D",
+     "use": "woonfunctie",
+     "areaM2": 28,
+     "bagId": "0363010012163079"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012161763",
+   "addresses": [
+    "Tilanusstraat 284",
+    "Tilanusstraat 286",
+    "Tilanusstraat 288",
+    "Tilanusstraat 290A",
+    "Tilanusstraat 290"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tilanusstraat 284",
+     "use": "woonfunctie",
+     "areaM2": 78,
+     "bagId": "0363010000828059"
+    },
+    {
+     "address": "Tilanusstraat 286",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000828060"
+    },
+    {
+     "address": "Tilanusstraat 288",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000828061"
+    },
+    {
+     "address": "Tilanusstraat 290A",
+     "use": "woonfunctie",
+     "areaM2": 95,
+     "bagId": "0363010012124698"
+    },
+    {
+     "address": "Tilanusstraat 290",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000828062"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012155770",
+   "addresses": [
+    "Tilanusstraat 276",
+    "Tilanusstraat 278",
+    "Tilanusstraat 280",
+    "Tilanusstraat 280B",
+    "Tilanusstraat 280A",
+    "Tilanusstraat 282"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tilanusstraat 276",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000828055"
+    },
+    {
+     "address": "Tilanusstraat 278",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000828056"
+    },
+    {
+     "address": "Tilanusstraat 282",
+     "use": "woonfunctie",
+     "areaM2": 28,
+     "bagId": "0363010000828058"
+    },
+    {
+     "address": "Tilanusstraat 280",
+     "use": "woonfunctie",
+     "areaM2": 131,
+     "bagId": "0363010000828057"
+    },
+    {
+     "address": "Tilanusstraat 280B",
+     "use": "woonfunctie",
+     "areaM2": 64,
+     "bagId": "0363010012590499"
+    },
+    {
+     "address": "Tilanusstraat 280A",
+     "use": "woonfunctie",
+     "areaM2": 63,
+     "bagId": "0363010012590498"
+    }
+   ],
+   "units": 6,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2825255602,
+     "lngLat": [
+      4.9137839,
+      52.3588594
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "282",
+      "addr:postcode": "1091MX",
+      "addr:street": "Tilanusstraat",
+      "name:en": "Boutique Amsterdam",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "tourism": "guest_house",
+      "website": "https://eatbu.nl/cozy-amsterdam-b-amp-b-netherlands"
+     },
+     "fetchedAt": "2026-11-10T08:23:25.589Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012165810",
+   "addresses": [
+    "Tilanusstraat 268",
+    "Tilanusstraat 270",
+    "Tilanusstraat 272",
+    "Tilanusstraat 274"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tilanusstraat 270",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000828052"
+    },
+    {
+     "address": "Tilanusstraat 272",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000828053"
+    },
+    {
+     "address": "Tilanusstraat 274",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000828054"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012155532",
+   "addresses": [
+    "Tilanusstraat 260",
+    "Tilanusstraat 262",
+    "Tilanusstraat 264",
+    "Tilanusstraat 266"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tilanusstraat 264",
+     "use": "woonfunctie",
+     "areaM2": 59,
+     "bagId": "0363010000828049"
+    },
+    {
+     "address": "Tilanusstraat 266",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000828050"
+    },
+    {
+     "address": "Tilanusstraat 262",
+     "use": "woonfunctie",
+     "areaM2": 63,
+     "bagId": "0363010000828046"
+    },
+    {
+     "address": "Tilanusstraat 260",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000828045"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

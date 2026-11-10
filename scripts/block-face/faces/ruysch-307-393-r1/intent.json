@@ -1,0 +1,141 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "ruysch-307-393-r1",
+ "street": "Ruyschstraat",
+ "sources": [
+  {
+   "id": "strip-2020-04-29",
+   "kind": "street-panorama",
+   "capturedAt": "2020-04-29",
+   "image": "staging/block-face/ruysch-307-393-r1/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "auto-place (blockFace/autoPlace.ts)",
+  "passes": 1,
+  "note": "auto-placed from the oud-west library (buurt Oosterparkbuurt-Noordwest); scores and holds in scripts/block-face/faces/ruysch-307-393/auto-place.json"
+ },
+ "types": [
+  "oosterpark-1900-balcony-camber"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012161684",
+   "slug": "ruysch-161684",
+   "address": "Ruyschstraat 331",
+   "type": {
+    "type": "oosterpark-1900-balcony-camber",
+    "measuredPalette": {
+     "brick": "#675154",
+     "evidence": "strip 2020-04-29 span 661-880: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#4a4645"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2020-04-29",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "bays": "3 window axes",
+    "identicalBays": "centre axis: French windows with balconettes on every upper storey",
+    "windowsPerStorey": "ground: shop | 1: 3 | 2: 3 | 3: 3",
+    "symmetry": "symmetric about the centre axis",
+    "groundFloor": "shop per house",
+    "signage": "per house",
+    "roofline": "cream cornice over a brick frieze; slate mansard; one white box dormer",
+    "photoRows": [
+     1,
+     3,
+     3,
+     3
+    ],
+    "photoGroundRows": 1,
+    "photoGables": 0,
+    "schemaLimits": [
+     "iron balconette railings are drawn as the kit balcony",
+     "brick frieze under the cornice",
+     "carved stone brackets under the balconies"
+    ],
+    "citation": "auto-place: oosterpark-1900-balcony-camber scored 1 on stucco 1, columns 1; strip 2020-04-29 span 661-880"
+   }
+  },
+  {
+   "pandId": "0363100012155674",
+   "slug": "ruysch-155674",
+   "address": "Ruyschstraat 339",
+   "type": {
+    "type": "oosterpark-1900-balcony-camber",
+    "measuredPalette": {
+     "brick": "#6a5b54",
+     "evidence": "strip 2020-04-29 span 880-1099: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2020-04-29",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "bays": "3 window axes",
+    "identicalBays": "centre axis: French windows with balconettes on every upper storey",
+    "windowsPerStorey": "ground: shop | 1: 3 | 2: 3 | 3: 3",
+    "symmetry": "symmetric about the centre axis",
+    "groundFloor": "shop per house",
+    "signage": "per house",
+    "roofline": "cream cornice over a brick frieze; slate mansard; one white box dormer",
+    "photoRows": [
+     1,
+     3,
+     3,
+     3
+    ],
+    "photoGroundRows": 1,
+    "photoGables": 0,
+    "schemaLimits": [
+     "iron balconette railings are drawn as the kit balcony",
+     "brick frieze under the cornice",
+     "carved stone brackets under the balconies"
+    ],
+    "citation": "auto-place: oosterpark-1900-balcony-camber scored 1 on stucco 1, columns 1; strip 2020-04-29 span 880-1099"
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "auto-place: low attic behind the cornice; the strips show sky over the cornices of the type rows"
+  },
+  "measuredEaves": [
+   {
+    "pand": "0363100012161684",
+    "stripRow": 279,
+    "frontRoof": {},
+    "evidence": "auto-place: the oosterpark-1900-balcony-camber cornice line 13.5 m (measured on its exemplar strips; this pand's skyline unread); 3DBAG/PDOK eaves 15.5 m"
+   },
+   {
+    "pand": "0363100012155674",
+    "stripRow": 279,
+    "frontRoof": {},
+    "evidence": "auto-place: the oosterpark-1900-balcony-camber cornice line 13.5 m (measured on its exemplar strips; this pand's skyline unread); 3DBAG/PDOK eaves 15.62 m"
+   }
+  ]
+ }
+}

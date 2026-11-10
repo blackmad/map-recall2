@@ -1,0 +1,222 @@
+{
+ "face": "vlaming-101-207",
+ "street": "Pieter Vlamingstraat",
+ "library": "oud-west",
+ "stripDate": "2020-04-29",
+ "seconds": 2.61,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012095985",
+   "address": "Pieter Vlamingstraat 101",
+   "builtYear": 1992,
+   "widthM": 19.88,
+   "eavesM": 13.74,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#2c2a25",
+    "wallRaw": "#434836",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 763,
+     "confidence": 0.03,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.017,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.6 m at 0.57 (light 0.2): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.6,
+       "centre": 0.57,
+       "light": 0.2
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.48
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "no front on the strip: sky over the roof in 0 % of columns (< 75 %): the strip shows a nearer wall, fence or tree, not the front",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012126084",
+   "address": "Pieter Vlamingstraat 121",
+   "builtYear": 1992,
+   "widthM": 17.43,
+   "eavesM": 13.81,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#26241e",
+    "wallRaw": "#424537",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 763,
+     "confidence": 0.05,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.023,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6.75,
+       "widthM": 0.97,
+       "centre": 0.33
+      },
+      {
+       "atM": 6.45,
+       "widthM": 0.82,
+       "centre": 0.24
+      },
+      {
+       "atM": 5.55,
+       "widthM": 0.93,
+       "centre": 0.86
+      },
+      {
+       "atM": 4.95,
+       "widthM": 0.85,
+       "centre": 0.26
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.4
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "no front on the strip: sky over the roof in 1 % of columns (< 75 %): the strip shows a nearer wall, fence or tree, not the front",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012146206",
+   "address": "Pieter Vlamingstraat 143",
+   "builtYear": 1992,
+   "widthM": 18.6,
+   "eavesM": 13.74,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#27221c",
+    "wallRaw": "#424635",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 763,
+     "confidence": 0.01,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.021,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6.4,
+       "widthM": 0.82,
+       "centre": 0.56
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.48
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "no front on the strip: sky over the roof in 0 % of columns (< 75 %): the strip shows a nearer wall, fence or tree, not the front",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012125230",
+   "address": "Pieter Vlamingstraat 165",
+   "builtYear": 1992,
+   "widthM": 16.84,
+   "eavesM": 13.72,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#191816",
+    "wallRaw": "#3d4231",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 763,
+     "confidence": 0.03,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6.38,
+       "widthM": 1.1,
+       "centre": 0.19
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.55
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "no front on the strip: sky over the roof in 0 % of columns (< 75 %): the strip shows a nearer wall, fence or tree, not the front",
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

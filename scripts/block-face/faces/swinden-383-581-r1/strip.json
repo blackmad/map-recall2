@@ -1,0 +1,261 @@
+{
+ "face": "swinden-383-581-r1",
+ "image": "staging/block-face/swinden-383-581-r1/strip.jpg",
+ "pixelsPerMetre": 40,
+ "width": 1211,
+ "height": 724,
+ "groundNAP": 0.484,
+ "heightM": 18.09,
+ "frame": {
+  "midRD": [
+   123754.44225000001,
+   486224.0604166666
+  ],
+  "uRD": [
+   0.9453002713474307,
+   0.32620146687357826
+  ],
+  "nRD": [
+   0.32620146687357826,
+   -0.9453002713474307
+  ]
+ },
+ "x0M": -15.06,
+ "x1M": 15.21,
+ "date": "2022-01-12",
+ "coverage": 1,
+ "spans": [
+  {
+   "pandId": "0363100012159406",
+   "x0M": -15.06,
+   "x1M": -10.04,
+   "px": [
+    0,
+    201
+   ],
+   "date": "2022-01-12",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "TMX7316010203-002417_pano_0019_000085",
+     "timestamp": "2022-01-12T12:11:35.632160Z",
+     "distanceM": 16.1,
+     "obliquityDeg": 0.6,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-002417_pano_0019_000084",
+     "timestamp": "2022-01-12T12:11:34.661910Z",
+     "distanceM": 16.8,
+     "obliquityDeg": 16.8,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-002417_pano_0019_000086",
+     "timestamp": "2022-01-12T12:11:36.656920Z",
+     "distanceM": 16.9,
+     "obliquityDeg": 18,
+     "missingFraction": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012158925",
+   "x0M": -10.04,
+   "x1M": -5.04,
+   "px": [
+    201,
+    401
+   ],
+   "date": "2022-01-12",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "TMX7316010203-002417_pano_0019_000086",
+     "timestamp": "2022-01-12T12:11:36.656920Z",
+     "distanceM": 16.1,
+     "obliquityDeg": 0.6,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-002417_pano_0019_000085",
+     "timestamp": "2022-01-12T12:11:35.632160Z",
+     "distanceM": 16.8,
+     "obliquityDeg": 16.9,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-002417_pano_0019_000087",
+     "timestamp": "2022-01-12T12:11:37.757040Z",
+     "distanceM": 16.9,
+     "obliquityDeg": 17.8,
+     "missingFraction": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012165201",
+   "x0M": -5.04,
+   "x1M": -0.04,
+   "px": [
+    401,
+    601
+   ],
+   "date": "2022-01-12",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "TMX7316010203-002417_pano_0019_000087",
+     "timestamp": "2022-01-12T12:11:37.757040Z",
+     "distanceM": 16.1,
+     "obliquityDeg": 0.6,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-002417_pano_0019_000086",
+     "timestamp": "2022-01-12T12:11:36.656920Z",
+     "distanceM": 16.8,
+     "obliquityDeg": 16.8,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-002417_pano_0019_000088",
+     "timestamp": "2022-01-12T12:11:38.831890Z",
+     "distanceM": 16.9,
+     "obliquityDeg": 18,
+     "missingFraction": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012163378",
+   "x0M": -0.04,
+   "x1M": 4.96,
+   "px": [
+    601,
+    801
+   ],
+   "date": "2022-01-12",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "TMX7316010203-002417_pano_0019_000088",
+     "timestamp": "2022-01-12T12:11:38.831890Z",
+     "distanceM": 16.1,
+     "obliquityDeg": 0.9,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-002417_pano_0019_000087",
+     "timestamp": "2022-01-12T12:11:37.757040Z",
+     "distanceM": 16.8,
+     "obliquityDeg": 16.7,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-002417_pano_0019_000089",
+     "timestamp": "2022-01-12T12:11:39.866840Z",
+     "distanceM": 16.9,
+     "obliquityDeg": 18.2,
+     "missingFraction": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012236602",
+   "x0M": 4.99,
+   "x1M": 10.04,
+   "px": [
+    802,
+    1004
+   ],
+   "date": "2022-01-12",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "TMX7316010203-002417_pano_0019_000089",
+     "timestamp": "2022-01-12T12:11:39.866840Z",
+     "distanceM": 16.1,
+     "obliquityDeg": 0.2,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-002417_pano_0019_000090",
+     "timestamp": "2022-01-12T12:11:40.881870Z",
+     "distanceM": 17,
+     "obliquityDeg": 17.1,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-002417_pano_0019_000088",
+     "timestamp": "2022-01-12T12:11:38.831890Z",
+     "distanceM": 16.8,
+     "obliquityDeg": 17.7,
+     "missingFraction": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012161671",
+   "x0M": 10.04,
+   "x1M": 15.21,
+   "px": [
+    1004,
+    1211
+   ],
+   "date": "2022-01-12",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "TMX7316010203-002417_pano_0019_000090",
+     "timestamp": "2022-01-12T12:11:40.881870Z",
+     "distanceM": 16.1,
+     "obliquityDeg": 0.6,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-002417_pano_0019_000089",
+     "timestamp": "2022-01-12T12:11:39.866840Z",
+     "distanceM": 16.8,
+     "obliquityDeg": 16.9,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-002417_pano_0019_000091",
+     "timestamp": "2022-01-12T12:11:41.846840Z",
+     "distanceM": 16.9,
+     "obliquityDeg": 18,
+     "missingFraction": 0
+    }
+   ]
+  }
+ ],
+ "candidatesByDate": {
+  "2016-03-30": 11,
+  "2020-04-29": 11,
+  "2017-04-06": 11,
+  "2024-09-17": 11,
+  "2025-09-26": 11,
+  "2018-05-24": 11,
+  "2016-05-12": 11,
+  "2022-06-13": 11,
+  "2023-01-02": 9,
+  "2018-12-11": 11,
+  "2019-12-19": 11,
+  "2022-01-12": 11,
+  "2019-11-29": 11,
+  "2021-05-12": 11,
+  "2016-08-28": 0,
+  "2018-07-29": 0,
+  "2022-08-31": 0
+ },
+ "description": "Rectified orthographic elevation of the whole face on the frontage planes: x = chunk-frame metres along the face (left→right seen from the street) from x0M, y = metres above the shared ground (groundNAP) from the bottom; grey = no panorama data. Per-pand spans list the panoramas median-fused for that frontage.",
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (CC BY 4.0; faces and number plates blurred by the publisher)",
+ "croppedFrom": {
+  "face": "swinden-383-581",
+  "px": [
+   796,
+   2007
+  ]
+ }
+}

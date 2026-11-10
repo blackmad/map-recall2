@@ -1,0 +1,57 @@
+{
+ "street": "Ruyschstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T08:04:46.626Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012159820",
+   "addresses": [
+    "Ruyschstraat 90"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ruyschstraat 90-H",
+     "use": "kantoorfunctie,woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000800874"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012150384",
+   "addresses": [
+    "Ruyschstraat 88"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ruyschstraat 88-H",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010000800863"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012165864",
+   "addresses": [
+    "Ruyschstraat 86"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ruyschstraat 86-H",
+     "use": "woonfunctie",
+     "areaM2": 63,
+     "bagId": "0363010000800859"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

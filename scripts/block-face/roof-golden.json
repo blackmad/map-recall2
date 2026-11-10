@@ -5149,6 +5149,74 @@
     "hash": "bc019be4abf4863a",
     "class": "recipe"
    }
+  },
+  "ruysch-64-124-r1": {
+   "150384": {
+    "hash": "523ff3fe59e7964d",
+    "class": "front"
+   },
+   "159820": {
+    "hash": "4e08cbe7f9da43f1",
+    "class": "front"
+   },
+   "165864": {
+    "hash": "cd01eb48f7fae950",
+    "class": "front"
+   }
+  },
+  "ruysch-64-124-r2": {
+   "154180": {
+    "hash": "6e0769417ef6515d",
+    "class": "front"
+   },
+   "158466": {
+    "hash": "36cd42e7208b09b5",
+    "class": "front"
+   },
+   "160930": {
+    "hash": "3b82aaebd617fd42",
+    "class": "front"
+   },
+   "163039": {
+    "hash": "baa795b23ae81168",
+    "class": "front"
+   }
+  },
+  "ruysch-307-393-r1": {
+   "155674": {
+    "hash": "f4f5ebfcb826cd93",
+    "class": "front"
+   },
+   "161684": {
+    "hash": "01d420cca47575ce",
+    "class": "front"
+   }
+  },
+  "swinden-383-581-r1": {
+   "158925": {
+    "hash": "6516813ada999342",
+    "class": "front+row"
+   },
+   "159406": {
+    "hash": "9bb5beea922e19fd",
+    "class": "front"
+   },
+   "161671": {
+    "hash": "53f980dbd81adc95",
+    "class": "front"
+   },
+   "163378": {
+    "hash": "eac3d4708b404ff1",
+    "class": "front"
+   },
+   "165201": {
+    "hash": "ec6bb44e64041501",
+    "class": "front"
+   },
+   "236602": {
+    "hash": "799331274d96b42f",
+    "class": "front"
+   }
   }
  },
  "intents": {
@@ -5386,6 +5454,10 @@
   "java-93-149-r2": "5704908fbcefd2fa",
   "lampong-2-20-r1": "6d8c7d7d451ecd4d",
   "soenda-2-36-r1": "c3353dc56ae6c24b",
-  "soenda-2-36-r2": "01e457db56dd9f6b"
+  "soenda-2-36-r2": "01e457db56dd9f6b",
+  "ruysch-64-124-r1": "5cf9f32b0845252d",
+  "ruysch-64-124-r2": "b3962279388d4ed1",
+  "ruysch-307-393-r1": "ad93ec812fca3eb9",
+  "swinden-383-581-r1": "303f7fb19f6e12fa"
  }
 }
