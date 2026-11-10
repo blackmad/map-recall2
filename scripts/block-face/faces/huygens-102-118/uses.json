@@ -1,0 +1,210 @@
+{
+ "street": "Eerste Constantijn Huygensstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T09:50:21.611Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012165396",
+   "addresses": [
+    "Eerste Constantijn Huygensstraat 118"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Constantijn Huygensstraat 118",
+     "use": "logiesfunctie",
+     "areaM2": 202,
+     "bagId": "0363010012072633"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012160719",
+   "addresses": [
+    "Eerste Constantijn Huygensstraat 116"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Constantijn Huygensstraat 116",
+     "use": "woonfunctie",
+     "areaM2": 266,
+     "bagId": "0363010000544404"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012163854",
+   "addresses": [
+    "Eerste Constantijn Huygensstraat 114"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Constantijn Huygensstraat 114-H",
+     "use": "woonfunctie",
+     "areaM2": 120,
+     "bagId": "0363010001011566"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012160030",
+   "addresses": [
+    "Eerste Constantijn Huygensstraat 112"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Constantijn Huygensstraat 112-H",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000544392"
+    },
+    {
+     "address": "Eerste Constantijn Huygensstraat 112-O",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 123,
+     "bagId": "0363010000544393"
+    },
+    {
+     "address": "Eerste Constantijn Huygensstraat 112-1",
+     "use": "kantoorfunctie",
+     "areaM2": 85,
+     "bagId": "0363010000544394"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012158719",
+   "addresses": [
+    "Eerste Constantijn Huygensstraat 110"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Constantijn Huygensstraat 110-H",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000638014"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2411543478,
+     "lngLat": [
+      4.8753654,
+      52.3623193
+     ],
+     "tags": {
+      "amenity": "restaurant",
+      "check_date": "2025-08-25",
+      "cuisine": "italian",
+      "indoor_seating": "yes",
+      "name": "Trattoria Totò",
+      "outdoor_seating": "no",
+      "website": "http://www.trattoriatoto.nl/"
+     },
+     "fetchedAt": "2026-11-10T09:50:21.611Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012158176",
+   "addresses": [
+    "Eerste Constantijn Huygensstraat 108",
+    "Eerste Constantijn Huygensstraat 108A",
+    "Eerste Constantijn Huygensstraat 108B",
+    "Eerste Constantijn Huygensstraat 108C",
+    "Eerste Constantijn Huygensstraat 108D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Constantijn Huygensstraat 108-H",
+     "use": "woonfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000603611"
+    },
+    {
+     "address": "Eerste Constantijn Huygensstraat 108-H",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010012065051"
+    },
+    {
+     "address": "Eerste Constantijn Huygensstraat 108C",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010012092625"
+    },
+    {
+     "address": "Eerste Constantijn Huygensstraat 108D",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010012092626"
+    }
+   ],
+   "units": 16,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012163678",
+   "addresses": [
+    "Eerste Constantijn Huygensstraat 102",
+    "Eerste Constantijn Huygensstraat 104",
+    "Eerste Constantijn Huygensstraat 106"
+   ],
+   "groundUnits": [
+    {
+     "address": "Overtoom 89A",
+     "use": "winkelfunctie",
+     "areaM2": 652,
+     "bagId": "0363010000768482"
+    },
+    {
+     "address": "Eerste Constantijn Huygensstraat 106-H",
+     "use": "winkelfunctie",
+     "areaM2": 597,
+     "bagId": "0363010001005895"
+    }
+   ],
+   "units": 13,
+   "osm": [
+    {
+     "type": "node",
+     "id": 4846033922,
+     "lngLat": [
+      4.8752356,
+      52.362546
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "89",
+      "addr:postcode": "1054HC",
+      "addr:street": "Overtoom",
+      "check_date": "2025-03-12",
+      "email": "amsterdam@coco-mat.nl",
+      "name": "Coco-mat",
+      "name:nl": "Coco-mat",
+      "opening_hours": "Su 12:00-17:00; Mo 12:00-18:00; Tu-Sa 10:00-18:00",
+      "phone": "+31 20 489 2927",
+      "shop": "bed",
+      "website": "https://www.coco-mat.com/nl_nl/"
+     },
+     "fetchedAt": "2026-11-10T09:50:21.611Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,278 @@
+{
+ "street": "Oosteinde",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T09:31:26.006Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012182316",
+   "addresses": [
+    "Oosteinde 1",
+    "Oosteinde 3"
+   ],
+   "groundUnits": [
+    {
+     "address": "Oosteinde 3",
+     "use": "kantoorfunctie",
+     "areaM2": 303,
+     "bagId": "0363010000762413"
+    },
+    {
+     "address": "Oosteinde 1",
+     "use": "kantoorfunctie,woonfunctie",
+     "areaM2": 508,
+     "bagId": "0363010000759631"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012171465",
+   "addresses": [
+    "Oosteinde 5",
+    "Oosteinde 5A",
+    "Oosteinde 5B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Oosteinde 5",
+     "use": "woonfunctie",
+     "areaM2": 209,
+     "bagId": "0363010000567572"
+    },
+    {
+     "address": "Oosteinde 5A",
+     "use": "woonfunctie",
+     "areaM2": 186,
+     "bagId": "0363010012075052"
+    },
+    {
+     "address": "Oosteinde 5B",
+     "use": "woonfunctie",
+     "areaM2": 92,
+     "bagId": "0363010012075053"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012171464",
+   "addresses": [
+    "Oosteinde 9B",
+    "Oosteinde 9C",
+    "Oosteinde 9D",
+    "Oosteinde 9A",
+    "Oosteinde 9"
+   ],
+   "groundUnits": [
+    {
+     "address": "Oosteinde 9B",
+     "use": "kantoorfunctie",
+     "areaM2": 298,
+     "bagId": "0363010012592059"
+    },
+    {
+     "address": "Oosteinde 9C",
+     "use": "kantoorfunctie",
+     "areaM2": 244,
+     "bagId": "0363010012592060"
+    },
+    {
+     "address": "Oosteinde 9D",
+     "use": "kantoorfunctie",
+     "areaM2": 233,
+     "bagId": "0363010012592061"
+    },
+    {
+     "address": "Oosteinde 9B",
+     "use": "kantoorfunctie",
+     "areaM2": 298,
+     "bagId": "0363010012602604"
+    },
+    {
+     "address": "Oosteinde 9C",
+     "use": "kantoorfunctie",
+     "areaM2": 24,
+     "bagId": "0363010012602605"
+    },
+    {
+     "address": "Oosteinde 9D",
+     "use": "kantoorfunctie",
+     "areaM2": 233,
+     "bagId": "0363010012602606"
+    },
+    {
+     "address": "Oosteinde 9A",
+     "use": "kantoorfunctie",
+     "areaM2": 227,
+     "bagId": "0363010012592058"
+    },
+    {
+     "address": "Oosteinde 9",
+     "use": "kantoorfunctie",
+     "areaM2": 1145,
+     "bagId": "0363010000762416"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012182315",
+   "addresses": [
+    "Oosteinde 13"
+   ],
+   "groundUnits": [
+    {
+     "address": "Oosteinde 13-H",
+     "use": "woonfunctie",
+     "areaM2": 206,
+     "bagId": "0363010000762420"
+    },
+    {
+     "address": "Oosteinde 13-1",
+     "use": "kantoorfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000762421"
+    },
+    {
+     "address": "Oosteinde 13-2",
+     "use": "kantoorfunctie",
+     "areaM2": 80,
+     "bagId": "0363010012086185"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012182314",
+   "addresses": [
+    "Oosteinde 15",
+    "Oosteinde 17"
+   ],
+   "groundUnits": [
+    {
+     "address": "Oosteinde 15",
+     "use": "logiesfunctie",
+     "areaM2": 517,
+     "bagId": "0363010000762427"
+    },
+    {
+     "address": "Oosteinde 17",
+     "use": "logiesfunctie",
+     "areaM2": 296,
+     "bagId": "0363010000966477"
+    }
+   ],
+   "units": 2,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2737946900,
+     "lngLat": [
+      4.9016835,
+      52.3592418
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "15",
+      "addr:postcode": "1017WT",
+      "addr:street": "Oosteinde",
+      "name": "PH Hotel Oosteinde",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "tourism": "hotel",
+      "wikidata": "Q111875728"
+     },
+     "fetchedAt": "2026-11-10T09:31:26.006Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012182313",
+   "addresses": [
+    "Oosteinde 19"
+   ],
+   "groundUnits": [
+    {
+     "address": "Oosteinde 19",
+     "use": "kantoorfunctie",
+     "areaM2": 441,
+     "bagId": "0363010000961637"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012182310",
+   "addresses": [
+    "Oosteinde 21"
+   ],
+   "groundUnits": [
+    {
+     "address": "Oosteinde 21-H",
+     "use": "woonfunctie",
+     "areaM2": 148,
+     "bagId": "0363010000946169"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012182311",
+   "addresses": [
+    "Oosteinde 23"
+   ],
+   "groundUnits": [
+    {
+     "address": "Oosteinde 23-H",
+     "use": "kantoorfunctie",
+     "areaM2": 175,
+     "bagId": "0363010000944698"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012182312",
+   "addresses": [
+    "Oosteinde 25"
+   ],
+   "groundUnits": [
+    {
+     "address": "Oosteinde 25",
+     "use": "woonfunctie",
+     "areaM2": 136,
+     "bagId": "0363010000762429"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012171463",
+   "addresses": [
+    "Oosteinde 27"
+   ],
+   "groundUnits": [
+    {
+     "address": "Oosteinde 27",
+     "use": "kantoorfunctie",
+     "areaM2": 606,
+     "bagId": "0363010000762430"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  }
+ ]
+}
