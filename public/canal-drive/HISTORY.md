@@ -1,5 +1,21 @@
 # Canal Recall — what is built
 
+**Week 2 buurt: Timorpleinbuurt-Noord (Indische buurt), 31 pands installed after five Opus strip reviews (2026-11-10, lane/buurt-indische-20261110 at 8fd74f066, sonnet + Opus reviewer).** The buurt had no library; the lane surveyed it (457 pands, 76 faces, new `buurt-families.ts` and `grid-crop.ts`) and authored three measured types: `indisch-1913-arched-pair-dormer` (Djambistraat/Soendastraat), `indisch-1912-java-mansard-arches` (Javastraat 95-121) and `indisch-1914-red-sash-pairs` (Lampongstraat). Installed:
+- Djambistraat 9-21
+- Javastraat 97-109 and 113-117
+- Lampongstraat 2-10
+- Soendastraat 10-14 and 18-28
+
+The Opus reviewer cut the first 46 placements to 26, then 5, then 19, then 30, and the final round reached 31. Its rejections:
+- white accents that the photo lacks (cream cornices and sills became dark eaves and stone #4a4a45);
+- a dormer window 2.4× too tall;
+- mirroring decided by the door rather than the window pair;
+- flush doors;
+- the 2025 panorama's blue cast (Lampong brick white-balanced against a downpipe to #807c6d);
+- per-pand measured colours overriding the type palette (Soenda #6c5647, Java #72604f pins).
+
+Kit added, all byte-identical when absent: `dormerWindow` with light/apron/tall; `palette.sash`, so red sashes sit in cream frames; `palette.shade`, so a dark tympanum draws under a band brick; `doorReveal.edge`, a reveal against the party wall; `archRing.colour: wall`; window kind `casement-transom`; and a brickStripes pitch cap raised to 4 m. The shared portiek draws as two dark openings with a 0.3 m pier, because the GLB audit forbids a leaf closer than ~0.27 m to the party wall; the reviewer accepted it at gallery size. Javastraat 97/99 were re-placed into the installed r1 run so that 99 fits the 3,000 triangle budget, which re-lined the row clamp of 101 and 109 (the sheet looks the same). Verdicts are in `docs/reports/indische-strip-verdict-20261110.md`, sheets in map-recall2-source-data `block-face-strips/indische-20261110/`. The Makassarpleinbuurt re-run placed 58 with the existing types but renumbered installed runs, so it was not committed. Never run auto-place buurt-wide over installed runs.
+
 **Feedback E: OSM roof canopies at canopy height; a contemporary family behind `?newbuildFamily=1` (2026-11-10, lane/newbuild-kit-20261110 at d88f1dfdf, opus).** Slab cause: untagged OSM `building=roof` outlines under 1,000 m² were published at the 9 m default, which drew a slab at 8–9 m across a facade (Danzigerkade Ydek w848883149, feedback 2c486751). `osmHeightM` now gives them a 5 m top. `fix-osm-min-level.ts --publish` rewrote 172 canopies (344 features in 68 tiles in both tile sets); the integrator re-ran it on top of the post-2020 pands that share those tiles. They are pinned in `scripts/data/osm-roof-canopies.json` and `check:osm-min-level`. Slabs at 8–9 m: 192 → 20 (the 20 are station-sized or tagged). `contemporaryFamily.ts` (default OFF) covers 2005+ housing in every textured look: area walls measured from 94 panorama fronts, a tall French-balcony preset `modern#9`, and set-back glazed crowns. Storybook generic 2000+ white/pale: 79 % → 26 %. The flag stays off after the integrator looked at the strips (screenshots repo `buildings/2026-11-10-newbuild/all.jpg`):
 - Narva-eiland and the IJburg rows read better.
 - houthaven-2018 turns orange where the photo is dark purple-brown.

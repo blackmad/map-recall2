@@ -1,0 +1,154 @@
+{
+ "note": "Faces a reviewer restricted to some house types after reading the strip at full size (scripts/block-face/auto-place.ts, blockFace/reviewCrowns.ts typesForFace).",
+ "reviewed": "2026-11-10",
+ "pins": [
+  {
+   "face": "soenda-2-36",
+   "types": [
+    "indisch-1913-arched-pair-dormer"
+   ],
+   "reason": "Djambistraat 1-35 / Soendastraat 2-36 (2019-12-18 and 2020 strips, gridded): the arched pair over the paired doors and one brick dormer per front; the Javastraat mansard and the Lampong red-sash types match them on year, storeys and eaves alone"
+  },
+  {
+   "face": "java-93-149",
+   "types": [
+    "indisch-1912-java-mansard-arches"
+   ],
+   "reason": "Javastraat 95-121 (2023-01-02 strip, gridded): arched windows, balcony door and a black mansard over shops; the pitched-roof Djambi and the red-sash types match on year and storeys alone"
+  },
+  {
+   "face": "madura-35-79",
+   "types": [
+    "indisch-1912-java-mansard-arches"
+   ],
+   "reason": "Javastraat 95-121 (2023-01-02 strip, gridded): arched windows, balcony door and a black mansard over shops; the pitched-roof Djambi and the red-sash types match on year and storeys alone"
+  },
+  {
+   "face": "sumatra-26-34",
+   "types": [
+    "indisch-1912-java-mansard-arches"
+   ],
+   "reason": "Javastraat 95-121 (2023-01-02 strip, gridded): arched windows, balcony door and a black mansard over shops; the pitched-roof Djambi and the red-sash types match on year and storeys alone"
+  },
+  {
+   "face": "lampong-2-20",
+   "types": [
+    "indisch-1914-red-sash-pairs"
+   ],
+   "reason": "Lampongstraat 2-20 / Borneostraat 7-27 (2025-09-26, 2023-01-02 strips, gridded): four cream-framed axes in pairs, double white door, flat dormer; mirror pairs about the party wall"
+  },
+  {
+   "face": "borneo-7-27",
+   "types": [
+    "indisch-1914-red-sash-pairs"
+   ],
+   "reason": "Lampongstraat 2-20 / Borneostraat 7-27 (2025-09-26, 2023-01-02 strips, gridded): four cream-framed axes in pairs, double white door, flat dormer; mirror pairs about the party wall"
+  },
+  {
+   "face": "djambi-38-46",
+   "types": [
+    "indisch-1914-red-sash-pairs"
+   ],
+   "reason": "Lampongstraat 2-20 / Borneostraat 7-27 (2025-09-26, 2023-01-02 strips, gridded): four cream-framed axes in pairs, double white door, flat dormer; mirror pairs about the party wall"
+  },
+  {
+   "face": "djambi-1-29",
+   "types": [
+    "indisch-1913-arched-pair-dormer"
+   ],
+   "reason": "Djambistraat 1-35 / Soendastraat 2-36 (2019-12-18 and 2020 strips, gridded): the arched pair over the paired doors and one brick dormer per front; the Javastraat mansard and the Lampong red-sash types match them on year, storeys and eaves alone"
+  }
+ ],
+ "mirrors": [
+  {
+   "pandId": "0363100012069113",
+   "type": "indisch-1913-arched-pair-dormer",
+   "mirror": true,
+   "reason": "Soendastraat 26: arched window and door on the left, pairing with 28 across the wall"
+  },
+  {
+   "pandId": "0363100012132949",
+   "type": "indisch-1912-java-mansard-arches",
+   "mirror": true,
+   "reason": "Javastraat 93-149 strip 2023-01-02 (verdict 2026-11-10): the narrow arched pair sits LEFT of the balcony axis"
+  },
+  {
+   "pandId": "0363100012120527",
+   "type": "indisch-1912-java-mansard-arches",
+   "mirror": true,
+   "reason": "Javastraat 93-149 strip 2023-01-02 (verdict 2026-11-10): the narrow arched pair sits LEFT of the balcony axis"
+  },
+  {
+   "pandId": "0363100012133860",
+   "type": "indisch-1912-java-mansard-arches",
+   "mirror": true,
+   "reason": "Javastraat 93-149 strip 2023-01-02 (verdict 2026-11-10): the narrow arched pair sits LEFT of the balcony axis"
+  },
+  {
+   "pandId": "0363100012126147",
+   "type": "indisch-1912-java-mansard-arches",
+   "mirror": true,
+   "reason": "Javastraat 93-149 strip 2023-01-02 (verdict 2026-11-10): the narrow arched pair sits LEFT of the balcony axis"
+  },
+  {
+   "pandId": "0363100012138717",
+   "type": "indisch-1912-java-mansard-arches",
+   "mirror": false,
+   "reason": "Javastraat 93-149 strip 2023-01-02 (verdict 2026-11-10): the narrow arched pair sits RIGHT of the balcony axis"
+  },
+  {
+   "pandId": "0363100012081977",
+   "type": "indisch-1912-java-mansard-arches",
+   "mirror": false,
+   "reason": "Javastraat 93-149 strip 2023-01-02 (verdict 2026-11-10): the narrow arched pair sits RIGHT of the balcony axis"
+  },
+  {
+   "pandId": "0363100012085260",
+   "type": "indisch-1914-red-sash-pairs",
+   "mirror": true,
+   "reason": "Lampongstraat 6: narrow pair and door on the left"
+  },
+  {
+   "pandId": "0363100012064007",
+   "type": "indisch-1914-red-sash-pairs",
+   "mirror": false,
+   "reason": "Lampongstraat 4: wide pair on the left, door on the right"
+  },
+  {
+   "pandId": "0363100012067472",
+   "type": "indisch-1912-java-mansard-arches",
+   "mirror": false,
+   "reason": "Javastraat 95: [wide][balcony][narrow pair] in the photo, so the pair-first drawing is flipped (round-3 verdict)"
+  },
+  {
+   "pandId": "0363100012141749",
+   "type": "indisch-1912-java-mansard-arches",
+   "mirror": true,
+   "reason": "Javastraat 117: [narrow pair][balcony][wide] in the photo (round-3 verdict)"
+  },
+  {
+   "pandId": "0363100012090483",
+   "type": "indisch-1914-red-sash-pairs",
+   "mirror": true,
+   "reason": "Borneostraat 15: narrow pair and door on the LEFT (round-3 verdict; the gable stands on the 13|15 wall)"
+  },
+  {
+   "pandId": "0363100012108761",
+   "type": "indisch-1914-red-sash-pairs",
+   "mirror": false,
+   "reason": "Borneostraat 17: narrow pair and door on the RIGHT (round-3 verdict; the gable stands on the 17|19 wall)"
+  },
+  {
+   "pandId": "0363100012085970",
+   "type": "indisch-1912-java-mansard-arches",
+   "mirror": false,
+   "reason": "Javastraat 119: [wide window][balcony][narrow pair] in the photo (round-4 verdict)"
+  },
+  {
+   "pandId": "0363100012110585",
+   "type": "indisch-1912-java-mansard-arches",
+   "mirror": true,
+   "reason": "Javastraat 121: [narrow pair][balcony][wide window] in the photo (round-4 verdict)"
+  }
+ ]
+}

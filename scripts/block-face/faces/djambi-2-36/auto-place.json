@@ -1,0 +1,609 @@
+{
+ "face": "djambi-2-36",
+ "street": "Djambistraat",
+ "library": "indische-buurt",
+ "stripDate": "2023-01-02",
+ "seconds": 1.46,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012127733",
+   "address": "Djambistraat 32",
+   "builtYear": 1913,
+   "widthM": 13.4,
+   "eavesM": 6.87,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#554339",
+    "wallRaw": "#574a41",
+    "skyline": {
+     "eavesM": 8.93,
+     "eavesRow": 181,
+     "confidence": 0.72,
+     "crown": {
+      "widthM": 2.45,
+      "riseM": 1.72,
+      "topWidthM": 0.95,
+      "centre": 0.9
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 2.1 m at 0.1 (light 0.2): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 2.1,
+       "centre": 0.1,
+       "light": 0.2
+      },
+      {
+       "widthM": 0.88,
+       "centre": 0.43,
+       "light": 0.08
+      },
+      {
+       "widthM": 1,
+       "centre": 0.57,
+       "light": 0.07
+      },
+      {
+       "widthM": 2.05,
+       "centre": 0.9,
+       "light": 0.32
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best indisch-1912-java-mansard-arches: frontage 13.4 m, type 5.6-6.4 m)",
+   "best": {
+    "type": "indisch-1912-java-mansard-arches",
+    "score": 0,
+    "veto": [
+     "frontage 13.4 m, type 5.6-6.4 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 6.87 m = 4 storeys of 1.72 m vs the type's 3.08 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 0,
+      "note": "3DBAG bouwlagen 3 vs 5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 2 vs 4 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012148300",
+   "address": "Djambistraat 26",
+   "builtYear": 1913,
+   "widthM": 13.6,
+   "eavesM": 7.04,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#5b473c",
+    "wallRaw": "#584940",
+    "skyline": {
+     "eavesM": 9.1,
+     "eavesRow": 174,
+     "confidence": 0.61,
+     "crown": {
+      "widthM": 2.5,
+      "riseM": 1.68,
+      "topWidthM": 0.95,
+      "centre": 0.89
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 1.98 m at 0.11 (light 0.36): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.98,
+       "centre": 0.11,
+       "light": 0.36
+      },
+      {
+       "widthM": 0.85,
+       "centre": 0.42,
+       "light": 0.06
+      },
+      {
+       "widthM": 0.78,
+       "centre": 0.57,
+       "light": 0.06
+      },
+      {
+       "widthM": 1.98,
+       "centre": 0.89,
+       "light": 0.19
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best indisch-1912-java-mansard-arches: frontage 13.6 m, type 5.6-6.4 m)",
+   "best": {
+    "type": "indisch-1912-java-mansard-arches",
+    "score": 0,
+    "veto": [
+     "frontage 13.6 m, type 5.6-6.4 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 7.04 m = 4 storeys of 1.76 m vs the type's 3.08 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 0,
+      "note": "3DBAG bouwlagen 3 vs 5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 2 vs 4 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012104158",
+   "address": "Djambistraat 20",
+   "builtYear": 1913,
+   "widthM": 16.92,
+   "eavesM": 7.68,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#58463c",
+    "wallRaw": "#57473d",
+    "skyline": {
+     "eavesM": 8.35,
+     "eavesRow": 204,
+     "confidence": 0.91,
+     "crown": {
+      "widthM": 7.83,
+      "riseM": 5.1,
+      "topWidthM": 1.52,
+      "centre": 0.26
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 1.8 m at 0.19 (light 0.21): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.8,
+       "centre": 0.19,
+       "light": 0.21
+      },
+      {
+       "widthM": 1.63,
+       "centre": 0.41,
+       "light": 0.07
+      },
+      {
+       "widthM": 1.85,
+       "centre": 0.8,
+       "light": 0.19
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best indisch-1912-java-mansard-arches: frontage 16.92 m, type 5.6-6.4 m)",
+   "best": {
+    "type": "indisch-1912-java-mansard-arches",
+    "score": 0,
+    "veto": [
+     "frontage 16.92 m, type 5.6-6.4 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 7.68 m = 4 storeys of 1.92 m vs the type's 3.08 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 0,
+      "note": "3DBAG bouwlagen 3 vs 5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 3 vs 4 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012115019",
+   "address": "Djambistraat 14",
+   "builtYear": 1913,
+   "widthM": 16.91,
+   "eavesM": 7.35,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#5a473c",
+    "wallRaw": "#5d4d43",
+    "skyline": {
+     "eavesM": 9.78,
+     "eavesRow": 147,
+     "confidence": 0.8,
+     "crown": {
+      "widthM": 2.92,
+      "riseM": 3.67,
+      "topWidthM": 0.23,
+      "centre": 0.09
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 5,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 1.8 m at 0.18 (light 0.16): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.8,
+       "centre": 0.18,
+       "light": 0.16
+      },
+      {
+       "widthM": 1.95,
+       "centre": 0.58,
+       "light": 0.16
+      },
+      {
+       "widthM": 1.95,
+       "centre": 0.8,
+       "light": 0.24
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.02
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best indisch-1912-java-mansard-arches: frontage 16.91 m, type 5.6-6.4 m)",
+   "best": {
+    "type": "indisch-1912-java-mansard-arches",
+    "score": 0,
+    "veto": [
+     "frontage 16.91 m, type 5.6-6.4 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 7.35 m = 4 storeys of 1.84 m vs the type's 3.08 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 0,
+      "note": "3DBAG bouwlagen 3 vs 5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 5 vs 4 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012100391",
+   "address": "Djambistraat 8",
+   "builtYear": 1913,
+   "widthM": 13.6,
+   "eavesM": 7.2,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#5f4e44",
+    "wallRaw": "#62544c",
+    "skyline": {
+     "eavesM": 10.43,
+     "eavesRow": 121,
+     "confidence": 0.74,
+     "crown": {
+      "widthM": 2.8,
+      "riseM": 3.02,
+      "topWidthM": 0.3,
+      "centre": 0.25
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 2.02,
+     "bayCentre": 0.12,
+     "balconies": true,
+     "why": "dark open axis 1.15 m at 0.42 (light 0.37): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 2.1,
+       "centre": 0.12,
+       "light": 0.62
+      },
+      {
+       "widthM": 1.15,
+       "centre": 0.42,
+       "light": 0.37
+      },
+      {
+       "widthM": 1.15,
+       "centre": 0.57,
+       "light": 0.28
+      },
+      {
+       "widthM": 1.95,
+       "centre": 0.87,
+       "light": 0.34
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best indisch-1912-java-mansard-arches: frontage 13.6 m, type 5.6-6.4 m)",
+   "best": {
+    "type": "indisch-1912-java-mansard-arches",
+    "score": 0,
+    "veto": [
+     "frontage 13.6 m, type 5.6-6.4 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 7.2 m = 4 storeys of 1.8 m vs the type's 3.08 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 0,
+      "note": "3DBAG bouwlagen 3 vs 5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.003 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 3 vs 4 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012082255",
+   "address": "Djambistraat 2",
+   "builtYear": 1913,
+   "widthM": 13.4,
+   "eavesM": 7.3,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#5d4c42",
+    "wallRaw": "#61534a",
+    "skyline": {
+     "eavesM": 11.03,
+     "eavesRow": 97,
+     "confidence": 0.64,
+     "crown": {
+      "widthM": 1.88,
+      "riseM": 2.42,
+      "topWidthM": 0.3,
+      "centre": 0.4
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": "left",
+    "accentShare": 0.005,
+    "structure": {
+     "bayWidthM": 1.93,
+     "bayCentre": 0.11,
+     "balconies": true,
+     "why": "dark open axis 2.05 m at 0.11 (light 0.4): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 2.05,
+       "centre": 0.11,
+       "light": 0.4
+      },
+      {
+       "widthM": 1.1,
+       "centre": 0.42,
+       "light": 0.22
+      },
+      {
+       "widthM": 1.1,
+       "centre": 0.57,
+       "light": 0.22
+      },
+      {
+       "widthM": 1.95,
+       "centre": 0.88,
+       "light": 0.59
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.02
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best indisch-1912-java-mansard-arches: frontage 13.4 m, type 5.6-6.4 m)",
+   "best": {
+    "type": "indisch-1912-java-mansard-arches",
+    "score": 0,
+    "veto": [
+     "frontage 13.4 m, type 5.6-6.4 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 7.3 m = 4 storeys of 1.82 m vs the type's 3.08 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 0,
+      "note": "3DBAG bouwlagen 4 vs 5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.003 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 2 vs 4 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

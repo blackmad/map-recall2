@@ -1,0 +1,424 @@
+{
+ "street": "Delistraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-09T23:17:03.927Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012160632",
+   "addresses": [
+    "Delistraat 50"
+   ],
+   "groundUnits": [
+    {
+     "address": "Delistraat 50-H",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000620678"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012159602",
+   "addresses": [
+    "Delistraat 48"
+   ],
+   "groundUnits": [
+    {
+     "address": "Delistraat 48-H",
+     "use": "winkelfunctie,woonfunctie",
+     "areaM2": 31,
+     "bagId": "0363010000620674"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012163709",
+   "addresses": [
+    "Delistraat 46"
+   ],
+   "groundUnits": [
+    {
+     "address": "Delistraat 46-H",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000620670"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012164011",
+   "addresses": [
+    "Delistraat 44"
+   ],
+   "groundUnits": [
+    {
+     "address": "Delistraat 44-H",
+     "use": "industriefunctie",
+     "areaM2": 43,
+     "bagId": "0363010000620666"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012152916",
+   "addresses": [
+    "Delistraat 42"
+   ],
+   "groundUnits": [
+    {
+     "address": "Delistraat 42-H",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000620662"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012155855",
+   "addresses": [
+    "Delistraat 40"
+   ],
+   "groundUnits": [
+    {
+     "address": "Delistraat 40-H",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000620657"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012156865",
+   "addresses": [
+    "Delistraat 38A",
+    "Delistraat 38B",
+    "Delistraat 38C",
+    "Delistraat 38D",
+    "Delistraat 38E",
+    "Delistraat 38F",
+    "Delistraat 38H",
+    "Delistraat 38G"
+   ],
+   "groundUnits": [
+    {
+     "address": "Delistraat 38F",
+     "use": "woonfunctie",
+     "areaM2": 26,
+     "bagId": "0363010001994394"
+    },
+    {
+     "address": "Delistraat 38H",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010001994395"
+    },
+    {
+     "address": "Delistraat 38G",
+     "use": "woonfunctie",
+     "areaM2": 27,
+     "bagId": "0363010001994398"
+    }
+   ],
+   "units": 13,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012159581",
+   "addresses": [
+    "Delistraat 36B",
+    "Delistraat 36C",
+    "Delistraat 36D",
+    "Delistraat 36A",
+    "Delistraat 36E",
+    "Delistraat 36F",
+    "Delistraat 36G",
+    "Delistraat 36H"
+   ],
+   "groundUnits": [
+    {
+     "address": "Delistraat 36F",
+     "use": "woonfunctie",
+     "areaM2": 26,
+     "bagId": "0363010001994652"
+    },
+    {
+     "address": "Delistraat 36G",
+     "use": "woonfunctie",
+     "areaM2": 27,
+     "bagId": "0363010001994653"
+    },
+    {
+     "address": "Delistraat 36H",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010001994654"
+    }
+   ],
+   "units": 13,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012161665",
+   "addresses": [
+    "Delistraat 34A",
+    "Delistraat 34B",
+    "Delistraat 34C",
+    "Delistraat 34D",
+    "Delistraat 34E",
+    "Delistraat 34F",
+    "Delistraat 34G",
+    "Delistraat 34H"
+   ],
+   "groundUnits": [
+    {
+     "address": "Delistraat 34A",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000620646"
+    },
+    {
+     "address": "Delistraat 34F",
+     "use": "woonfunctie",
+     "areaM2": 26,
+     "bagId": "0363010001994425"
+    },
+    {
+     "address": "Delistraat 34G",
+     "use": "woonfunctie",
+     "areaM2": 27,
+     "bagId": "0363010001994426"
+    },
+    {
+     "address": "Delistraat 34H",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010001994427"
+    }
+   ],
+   "units": 12,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012166331",
+   "addresses": [
+    "Delistraat 32"
+   ],
+   "groundUnits": [
+    {
+     "address": "Delistraat 32-H",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010012158876"
+    },
+    {
+     "address": "Delistraat 32-H",
+     "use": "woonfunctie",
+     "areaM2": 104,
+     "bagId": "0363010001026416"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012162053",
+   "addresses": [
+    "Delistraat 30A",
+    "Delistraat 30B",
+    "Delistraat 30C",
+    "Delistraat 30D",
+    "Delistraat 30E",
+    "Delistraat 30G",
+    "Delistraat 30F",
+    "Delistraat 30H"
+   ],
+   "groundUnits": [
+    {
+     "address": "Delistraat 30A",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000620638"
+    },
+    {
+     "address": "Delistraat 30G",
+     "use": "woonfunctie",
+     "areaM2": 27,
+     "bagId": "0363010001994409"
+    },
+    {
+     "address": "Delistraat 30F",
+     "use": "woonfunctie",
+     "areaM2": 27,
+     "bagId": "0363010001994410"
+    },
+    {
+     "address": "Delistraat 30H",
+     "use": "woonfunctie",
+     "areaM2": 59,
+     "bagId": "0363010001994412"
+    }
+   ],
+   "units": 12,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012158166",
+   "addresses": [
+    "Delistraat 28"
+   ],
+   "groundUnits": [
+    {
+     "address": "Delistraat 28-H",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010000620634"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012156032",
+   "addresses": [
+    "Delistraat 26"
+   ],
+   "groundUnits": [
+    {
+     "address": "Delistraat 26-H",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000620630"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012156701",
+   "addresses": [
+    "Delistraat 24A",
+    "Delistraat 24B",
+    "Delistraat 24C",
+    "Delistraat 24D",
+    "Delistraat 24E",
+    "Delistraat 24F",
+    "Delistraat 24G",
+    "Delistraat 24H"
+   ],
+   "groundUnits": [
+    {
+     "address": "Delistraat 24B",
+     "use": "woonfunctie",
+     "areaM2": 26,
+     "bagId": "0363010003692212"
+    },
+    {
+     "address": "Delistraat 24C",
+     "use": "woonfunctie",
+     "areaM2": 26,
+     "bagId": "0363010003692213"
+    },
+    {
+     "address": "Delistraat 24D",
+     "use": "woonfunctie",
+     "areaM2": 26,
+     "bagId": "0363010003692214"
+    },
+    {
+     "address": "Delistraat 24E",
+     "use": "woonfunctie",
+     "areaM2": 26,
+     "bagId": "0363010003692215"
+    },
+    {
+     "address": "Delistraat 24F",
+     "use": "woonfunctie",
+     "areaM2": 26,
+     "bagId": "0363010003692216"
+    },
+    {
+     "address": "Delistraat 24G",
+     "use": "woonfunctie",
+     "areaM2": 26,
+     "bagId": "0363010003692218"
+    },
+    {
+     "address": "Delistraat 24H",
+     "use": "woonfunctie",
+     "areaM2": 83,
+     "bagId": "0363010003692221"
+    }
+   ],
+   "units": 9,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012121673",
+   "addresses": [
+    "Delistraat 22"
+   ],
+   "groundUnits": [
+    {
+     "address": "Delistraat 22-H",
+     "use": "woonfunctie",
+     "areaM2": 63,
+     "bagId": "0363010000620613"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012159432",
+   "addresses": [
+    "Delistraat 20"
+   ],
+   "groundUnits": [
+    {
+     "address": "Delistraat 20-H",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010001994388"
+    },
+    {
+     "address": "Delistraat 20-H",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010012134197"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012111692",
+   "addresses": [
+    "Delistraat 18"
+   ],
+   "groundUnits": [
+    {
+     "address": "Delistraat 18-H",
+     "use": "woonfunctie",
+     "areaM2": 78,
+     "bagId": "0363010012134196"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  }
+ ]
+}

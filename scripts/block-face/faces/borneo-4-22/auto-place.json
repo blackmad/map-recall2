@@ -1,0 +1,635 @@
+{
+ "face": "borneo-4-22",
+ "street": "Borneostraat",
+ "library": "indische-buurt",
+ "stripDate": "2021-02-18",
+ "seconds": 3.97,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012166721",
+   "address": "Borneostraat 22",
+   "builtYear": 1902,
+   "widthM": 6.05,
+   "eavesM": 15.1,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#835c4f",
+    "wallRaw": "#5f4a41",
+    "skyline": {
+     "eavesM": 19.63,
+     "eavesRow": 52,
+     "confidence": 0.36,
+     "crown": {
+      "widthM": 1.43,
+      "riseM": 1.3,
+      "topWidthM": 0.85,
+      "centre": 0.73
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.054,
+    "structure": {
+     "bayWidthM": 0.82,
+     "bayCentre": 0.84,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 11.88,
+       "widthM": 1,
+       "centre": 0.52
+      },
+      {
+       "atM": 8.8,
+       "widthM": 1.27,
+       "centre": 0.18
+      }
+     ]
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0.02
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best indisch-1912-java-mansard-arches: built 1902, type 1910-1914)",
+   "best": {
+    "type": "indisch-1912-java-mansard-arches",
+    "score": 0,
+    "veto": [
+     "built 1902, type 1910-1914"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 15.1 m = 4 storeys of 3.77 m vs the type's 3.08 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.006 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 3 vs 4 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012153181",
+   "address": "Borneostraat 20",
+   "builtYear": 1902,
+   "widthM": 6.26,
+   "eavesM": 15.12,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#685041",
+    "wallRaw": "#645144",
+    "skyline": {
+     "eavesM": 15.95,
+     "eavesRow": 199,
+     "confidence": 0.59,
+     "crown": {
+      "widthM": 1.88,
+      "riseM": 4.98,
+      "topWidthM": 1.15,
+      "centre": 0.82
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.071,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 12.72,
+       "widthM": 0.97,
+       "centre": 0.81
+      },
+      {
+       "atM": 11.82,
+       "widthM": 1.1,
+       "centre": 0.13
+      },
+      {
+       "atM": 8.82,
+       "widthM": 1.2,
+       "centre": 0.48
+      },
+      {
+       "atM": 5.75,
+       "widthM": 1.18,
+       "centre": 0.48
+      }
+     ]
+    },
+    "voidShare": 0.02,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best indisch-1912-java-mansard-arches: built 1902, type 1910-1914)",
+   "best": {
+    "type": "indisch-1912-java-mansard-arches",
+    "score": 0,
+    "veto": [
+     "built 1902, type 1910-1914"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 15.12 m = 4 storeys of 3.78 m vs the type's 3.08 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.008 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 3 vs 4 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012159033",
+   "address": "Borneostraat 18A",
+   "builtYear": 1902,
+   "widthM": 5.6,
+   "eavesM": 15.43,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#493e37",
+    "wallRaw": "#4c423e",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 837,
+     "confidence": 0.24,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": "right",
+    "accentShare": 0.024,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.63 m at 0.43 (light 0.19): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.63,
+       "centre": 0.43,
+       "light": 0.19
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0.02
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "no front on the strip: sky over the roof in 65 % of columns (< 75 %): the strip shows a nearer wall, fence or tree, not the front",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012161647",
+   "address": "Borneostraat 16A",
+   "builtYear": 1902,
+   "widthM": 5.63,
+   "eavesM": 15.86,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6f5d5b",
+    "wallRaw": "#554a46",
+    "skyline": {
+     "eavesM": 14.13,
+     "eavesRow": 272,
+     "confidence": 0.84,
+     "crown": {
+      "widthM": 3.48,
+      "riseM": 6.8,
+      "topWidthM": 0.97,
+      "centre": 0.34
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": "right",
+    "accentShare": 0.1,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 12.02,
+       "widthM": 1.1,
+       "centre": 0.77
+      },
+      {
+       "atM": 9.02,
+       "widthM": 1.2,
+       "centre": 0.12
+      },
+      {
+       "atM": 5.95,
+       "widthM": 1.13,
+       "centre": 0.12
+      }
+     ]
+    },
+    "voidShare": 0.04,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best indisch-1912-java-mansard-arches: built 1902, type 1910-1914)",
+   "best": {
+    "type": "indisch-1912-java-mansard-arches",
+    "score": 0,
+    "veto": [
+     "built 1902, type 1910-1914"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 15.86 m = 4 storeys of 3.96 m vs the type's 3.08 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.018 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 3 vs 4 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012236009",
+   "address": "Borneostraat 8",
+   "builtYear": 1902,
+   "widthM": 22.43,
+   "eavesM": 13.98,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#68544f",
+    "wallRaw": "#4f4139",
+    "skyline": {
+     "eavesM": 15.85,
+     "eavesRow": 203,
+     "confidence": 0.49,
+     "crown": {
+      "widthM": 1.82,
+      "riseM": 5.08,
+      "topWidthM": 0.15,
+      "centre": 0.95
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 4,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.001,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 1.02 m at 0.63 (light 0.27): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.02,
+       "centre": 0.63,
+       "light": 0.27
+      },
+      {
+       "widthM": 1.57,
+       "centre": 0.72,
+       "light": 0.33
+      },
+      {
+       "widthM": 1.2,
+       "centre": 0.82,
+       "light": 0.29
+      },
+      {
+       "widthM": 0.85,
+       "centre": 0.98,
+       "light": 0.21
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 12.18,
+       "widthM": 1.38,
+       "centre": 0.97
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best indisch-1912-java-mansard-arches: built 1902, type 1910-1914; frontage 22.43 m, type 5.6-6.4 m)",
+   "best": {
+    "type": "indisch-1912-java-mansard-arches",
+    "score": 0,
+    "veto": [
+     "built 1902, type 1910-1914",
+     "frontage 22.43 m, type 5.6-6.4 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 13.98 m = 4 storeys of 3.5 m vs the type's 3.08 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.002 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 4 vs 4 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012139830",
+   "address": "Borneostraat 4T",
+   "builtYear": 2005,
+   "widthM": 10.66,
+   "eavesM": 15.25,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#5f5257",
+    "wallRaw": "#434041",
+    "skyline": {
+     "eavesM": 16.5,
+     "eavesRow": 177,
+     "confidence": 0.79,
+     "crown": {
+      "widthM": 1.5,
+      "riseM": 1.65,
+      "topWidthM": 0.35,
+      "centre": 0.9
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 7,
+    "frontClass": "curtain",
+    "doorSide": "left",
+    "accentSide": "left",
+    "accentShare": 0.001,
+    "structure": {
+     "bayWidthM": 1.32,
+     "bayCentre": 0.74,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 11.43,
+       "widthM": 1.02,
+       "centre": 0.05
+      },
+      {
+       "atM": 8.57,
+       "widthM": 0.97,
+       "centre": 0.05
+      },
+      {
+       "atM": 5.65,
+       "widthM": 0.97,
+       "centre": 0.34
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best indisch-1912-java-mansard-arches: built 2005, type 1910-1914; frontage 10.66 m, type 5.6-6.4 m)",
+   "best": {
+    "type": "indisch-1912-java-mansard-arches",
+    "score": 0,
+    "veto": [
+     "built 2005, type 1910-1914",
+     "frontage 10.66 m, type 5.6-6.4 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 15.25 m = 4 storeys of 3.81 m vs the type's 3.08 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 7 vs 4 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012140332",
+   "address": "Borneostraat 4S",
+   "builtYear": 2005,
+   "widthM": 8.17,
+   "eavesM": 15.5,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#4f403a",
+    "wallRaw": "#3e3b39",
+    "skyline": {
+     "eavesM": 17.75,
+     "eavesRow": 127,
+     "confidence": 0.34,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": "left",
+    "accentShare": 0.046,
+    "structure": {
+     "bayWidthM": 0.93,
+     "bayCentre": 0.94,
+     "balconies": true,
+     "why": "bay-less open axis 0.68 m at 0.96 (light 0.67): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.68,
+       "centre": 0.96,
+       "light": 0.67
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 7.02,
+       "widthM": 1.9,
+       "centre": 0.18
+      }
+     ]
+    },
+    "voidShare": 0.02,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best indisch-1912-java-mansard-arches: built 2005, type 1910-1914; frontage 8.17 m, type 5.6-6.4 m)",
+   "best": {
+    "type": "indisch-1912-java-mansard-arches",
+    "score": 0,
+    "veto": [
+     "built 2005, type 1910-1914",
+     "frontage 8.17 m, type 5.6-6.4 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 15.5 m = 4 storeys of 3.88 m vs the type's 3.08 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.005 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

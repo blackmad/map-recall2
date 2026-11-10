@@ -1,0 +1,1210 @@
+{
+ "face": "java-134-196",
+ "street": "Javastraat",
+ "library": "indische-buurt",
+ "stripDate": "2023-01-02",
+ "seconds": 54.9,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [
+  {
+   "face": "java-134-196-r1",
+   "pands": [
+    "0363100012105625",
+    "0363100012142616",
+    "0363100012127951",
+    "0363100012090722"
+   ],
+   "passed": true,
+   "triangles": 3452
+  },
+  {
+   "face": "java-134-196-r2",
+   "pands": [
+    "0363100012137062",
+    "0363100012074328",
+    "0363100012113974"
+   ],
+   "passed": true,
+   "triangles": 3129
+  }
+ ],
+ "pands": [
+  {
+   "pandId": "0363100012062385",
+   "address": "Javastraat 166",
+   "builtYear": 1925,
+   "widthM": 6.35,
+   "eavesM": 13.34,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#554b43",
+    "wallRaw": "#595048",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 702,
+     "confidence": 0.09,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012107867",
+   "address": "Javastraat 158",
+   "builtYear": 1925,
+   "widthM": 18.76,
+   "eavesM": 13.4,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#564b43",
+    "wallRaw": "#595049",
+    "skyline": {
+     "eavesM": 13.65,
+     "eavesRow": 156,
+     "confidence": 0.92,
+     "crown": {
+      "widthM": 1.2,
+      "riseM": 3.53,
+      "topWidthM": 0.57,
+      "centre": 0.25
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 16,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best indisch-1912-java-mansard-arches: built 1925, type 1910-1914; frontage 18.76 m, type 5.6-6.4 m)",
+   "best": {
+    "type": "indisch-1912-java-mansard-arches",
+    "score": 0,
+    "veto": [
+     "built 1925, type 1910-1914",
+     "frontage 18.76 m, type 5.6-6.4 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 13.4 m = 4 storeys of 3.35 m vs the type's 3.08 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 16 vs 4 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012088889",
+   "address": "Javastraat 156",
+   "builtYear": 1925,
+   "widthM": 6.29,
+   "eavesM": 13.58,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#4e433c",
+    "wallRaw": "#4d443d",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 702,
+     "confidence": 0.19,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "no front on the strip: sky over the roof in 53 % of columns (< 75 %): the strip shows a nearer wall, fence or tree, not the front",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012105625",
+   "address": "Javastraat 154A",
+   "builtYear": 1925,
+   "widthM": 6.29,
+   "eavesM": 13.19,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#4c423b",
+    "wallRaw": "#4e453f",
+    "skyline": {
+     "eavesM": 16.75,
+     "eavesRow": 32,
+     "confidence": 0.6,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 6,
+    "frontClass": "columns",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "placed",
+   "type": "indisch-1925-stair-pair",
+   "score": 0.8,
+   "runnerUp": {
+    "typeId": "indisch-1926-white-attic",
+    "score": 0.8
+   },
+   "placement": {
+    "type": "indisch-1925-stair-pair",
+    "measuredPalette": {
+     "brick": "#4c423b",
+     "evidence": "strip 2023-01-02 span 1256-1508: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "near tie with indisch-1926-white-attic (0.8)",
+    "door right",
+    "crown gutter (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012105625",
+    "ncc": 0.271,
+    "nccRaw": 0.271,
+    "shiftM": [
+     -0.1,
+     0.4
+    ],
+    "usable": 0.99,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.18"
+    ],
+    "wall": {
+     "photo": "#4d433d",
+     "model": "#675950",
+     "dL": 0.088
+    },
+    "glazing": {
+     "photo": 0.27,
+     "model": 0.29
+    },
+    "columns": {
+     "photo": null,
+     "model": null
+    },
+    "iou": 0.437,
+    "footOffsetM": 1.27
+   },
+   "challengers": {
+    "indisch-1925-stair-pair": 0.271,
+    "indisch-1925-stair-pair~m": 0.068
+   }
+  },
+  {
+   "pandId": "0363100012142616",
+   "address": "Javastraat 152A",
+   "builtYear": 1925,
+   "widthM": 6.29,
+   "eavesM": 13.14,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#4e443d",
+    "wallRaw": "#4f4640",
+    "skyline": {
+     "eavesM": 16.75,
+     "eavesRow": 32,
+     "confidence": 0.82,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "placed",
+   "type": "indisch-1925-stair-pair",
+   "score": 1,
+   "runnerUp": {
+    "typeId": "indisch-1926-white-attic",
+    "score": 1
+   },
+   "placement": {
+    "type": "indisch-1925-stair-pair",
+    "mirror": true,
+    "measuredPalette": {
+     "brick": "#4e443d",
+     "evidence": "strip 2023-01-02 span 1508-1760: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "near tie with indisch-1926-white-attic (1)",
+    "door left: mirrored",
+    "crown gutter (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012142616",
+    "ncc": 0.263,
+    "nccRaw": 0.263,
+    "shiftM": [
+     -0.3,
+     0.4
+    ],
+    "usable": 0.98,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.38 mean 0.30 vs photo 0.59"
+    ],
+    "wall": {
+     "photo": "#4d433d",
+     "model": "#695b52",
+     "dL": 0.096
+    },
+    "glazing": {
+     "photo": 0.59,
+     "model": 0.3
+    },
+    "columns": {
+     "photo": null,
+     "model": null
+    },
+    "iou": 0.426,
+    "footOffsetM": 1.27
+   },
+   "challengers": {
+    "indisch-1925-stair-pair~m": 0.263,
+    "indisch-1925-stair-pair": 0.073
+   }
+  },
+  {
+   "pandId": "0363100012127951",
+   "address": "Javastraat 150A",
+   "builtYear": 1925,
+   "widthM": 6.29,
+   "eavesM": 13.08,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#4f453f",
+    "wallRaw": "#4f463f",
+    "skyline": {
+     "eavesM": 16.15,
+     "eavesRow": 56,
+     "confidence": 0.49,
+     "crown": {
+      "widthM": 0.57,
+      "riseM": 1.4,
+      "topWidthM": 0.07,
+      "centre": 0.59
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 6,
+    "frontClass": "columns",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "placed",
+   "type": "indisch-1925-stair-pair",
+   "score": 0.8,
+   "runnerUp": {
+    "typeId": "indisch-1926-white-attic",
+    "score": 0.8
+   },
+   "placement": {
+    "type": "indisch-1925-stair-pair",
+    "measuredPalette": {
+     "brick": "#4f453f",
+     "evidence": "strip 2023-01-02 span 1759-2011: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "near tie with indisch-1926-white-attic (0.8)",
+    "door right",
+    "crown gutter (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012127951",
+    "ncc": 0.227,
+    "nccRaw": 0.227,
+    "shiftM": [
+     0.35,
+     0.4
+    ],
+    "usable": 0.99,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.18 mean 0.29 vs photo 0.44"
+    ],
+    "wall": {
+     "photo": "#4f453f",
+     "model": "#695c54",
+     "dL": 0.092
+    },
+    "glazing": {
+     "photo": 0.44,
+     "model": 0.29
+    },
+    "columns": {
+     "photo": null,
+     "model": null
+    },
+    "iou": 0.46,
+    "footOffsetM": 1.27
+   },
+   "challengers": {
+    "indisch-1925-stair-pair": 0.227,
+    "indisch-1925-stair-pair~m": 0.065
+   }
+  },
+  {
+   "pandId": "0363100012090722",
+   "address": "Javastraat 148A",
+   "builtYear": 1925,
+   "widthM": 6.29,
+   "eavesM": 13.14,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#50453d",
+    "wallRaw": "#51463e",
+    "skyline": {
+     "eavesM": 16.35,
+     "eavesRow": 48,
+     "confidence": 0.9,
+     "crown": {
+      "widthM": 0.78,
+      "riseM": 1,
+      "topWidthM": 0.78,
+      "centre": 0.11
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 5,
+    "frontClass": "columns",
+    "doorSide": "left",
+    "accentSide": "right",
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "placed",
+   "type": "indisch-1925-stair-pair",
+   "score": 0.8,
+   "runnerUp": {
+    "typeId": "indisch-1926-white-attic",
+    "score": 0.8
+   },
+   "placement": {
+    "type": "indisch-1925-stair-pair",
+    "mirror": true,
+    "measuredPalette": {
+     "brick": "#50453d",
+     "evidence": "strip 2023-01-02 span 2011-2263: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "near tie with indisch-1926-white-attic (0.8)",
+    "door left: mirrored",
+    "crown gutter (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012090722",
+    "ncc": 0.199,
+    "nccRaw": 0.199,
+    "shiftM": [
+     -0.4,
+     0.2
+    ],
+    "usable": 0.99,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.25"
+    ],
+    "wall": {
+     "photo": "#50453e",
+     "model": "#6b5c51",
+     "dL": 0.09
+    },
+    "glazing": {
+     "photo": 0.25,
+     "model": 0.29
+    },
+    "columns": {
+     "photo": null,
+     "model": null
+    },
+    "iou": 0.35,
+    "footOffsetM": 1.27
+   },
+   "challengers": {
+    "indisch-1925-stair-pair~m": 0.199,
+    "indisch-1925-stair-pair": 0.054
+   }
+  },
+  {
+   "pandId": "0363100012136340",
+   "address": "Javastraat 146A",
+   "builtYear": 1924,
+   "widthM": 6.29,
+   "eavesM": 12.85,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#52433b",
+    "wallRaw": "#52443c",
+    "skyline": {
+     "eavesM": 16.65,
+     "eavesRow": 36,
+     "confidence": 0.76,
+     "crown": {
+      "widthM": 0.78,
+      "riseM": 0.8,
+      "topWidthM": 0.78,
+      "centre": 0.07
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 6,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0.9,
+     "bayCentre": 0.15,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 7.15,
+       "widthM": 0.88,
+       "centre": 0.12
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best indisch-1925-stair-pair scores 0.67 < 0.7 (roof rise 0.06 m (flat) vs pitched; strip columns 6 vs 2 bays)",
+   "best": {
+    "type": "indisch-1925-stair-pair",
+    "score": 0.67,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 12.85 m = 4 storeys of 3.21 m vs the type's 3.17 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 4 vs 4/5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 0,
+      "note": "roof rise 0.06 m (flat) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 6 vs 2 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012137062",
+   "address": "Javastraat 144",
+   "builtYear": 1924,
+   "widthM": 6.29,
+   "eavesM": 13.35,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#554840",
+    "wallRaw": "#554941",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 702,
+     "confidence": 0.23,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "placed",
+   "type": "indisch-1925-stair-pair",
+   "score": 1,
+   "placement": {
+    "type": "indisch-1925-stair-pair",
+    "measuredPalette": {
+     "brick": "#554840",
+     "evidence": "strip 2023-01-02 span 2514-2766: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "mirror": true
+   },
+   "notes": [
+    "crown gutter (type default)",
+    "photo decides: indisch-1925-stair-pair~m edge NCC 0.274 vs indisch-1925-stair-pair 0.122"
+   ],
+   "likeness": {
+    "pandId": "0363100012137062",
+    "ncc": 0.362,
+    "nccRaw": 0.362,
+    "shiftM": [
+     -0.1,
+     0.2
+    ],
+    "usable": 1,
+    "abstain": null,
+    "verdict": "PASS",
+    "reasons": [],
+    "wall": {
+     "photo": "#554941",
+     "model": "#6f5e54",
+     "dL": 0.088
+    },
+    "glazing": {
+     "photo": 0.26,
+     "model": 0.3
+    },
+    "columns": {
+     "photo": null,
+     "model": null
+    },
+    "iou": 0.454
+   },
+   "challengers": {
+    "indisch-1925-stair-pair": 0.116,
+    "indisch-1913-arched-pair-dormer": 0.089,
+    "indisch-1913-arched-pair-dormer~m": 0.223,
+    "indisch-1914-red-sash-pairs": 0.114,
+    "indisch-1914-red-sash-pairs~m": 0.1,
+    "indisch-1925-stair-pair~m": 0.274,
+    "indisch-1926-white-attic": 0.133
+   }
+  },
+  {
+   "pandId": "0363100012074328",
+   "address": "Javastraat 142",
+   "builtYear": 1924,
+   "widthM": 6.29,
+   "eavesM": 13.45,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#584c45",
+    "wallRaw": "#554a43",
+    "skyline": {
+     "eavesM": 16.75,
+     "eavesRow": 32,
+     "confidence": 0.38,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "placed",
+   "type": "indisch-1925-stair-pair",
+   "score": 1,
+   "runnerUp": {
+    "typeId": "indisch-1926-white-attic",
+    "score": 1
+   },
+   "placement": {
+    "type": "indisch-1925-stair-pair",
+    "measuredPalette": {
+     "brick": "#584c45",
+     "evidence": "strip 2023-01-02 span 2766-3018: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "near tie with indisch-1926-white-attic (1)",
+    "door unread",
+    "crown gutter (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012074328",
+    "ncc": 0.37,
+    "nccRaw": 0.37,
+    "shiftM": [
+     -0.4,
+     0.25
+    ],
+    "usable": 0.98,
+    "abstain": null,
+    "verdict": "PASS",
+    "reasons": [],
+    "wall": {
+     "photo": "#534741",
+     "model": "#726259",
+     "dL": 0.108
+    },
+    "glazing": {
+     "photo": 0.24,
+     "model": 0.3
+    },
+    "columns": {
+     "photo": null,
+     "model": null
+    },
+    "iou": 0.479
+   },
+   "challengers": {
+    "indisch-1925-stair-pair": 0.205,
+    "indisch-1913-arched-pair-dormer": 0.104,
+    "indisch-1913-arched-pair-dormer~m": 0.214,
+    "indisch-1914-red-sash-pairs": 0.204,
+    "indisch-1914-red-sash-pairs~m": 0.07,
+    "indisch-1925-stair-pair~m": 0.136,
+    "indisch-1926-white-attic": 0.056
+   }
+  },
+  {
+   "pandId": "0363100012113974",
+   "address": "Javastraat 140",
+   "builtYear": 1924,
+   "widthM": 6.29,
+   "eavesM": 15.55,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#3e3536",
+    "wallRaw": "#423939",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 702,
+     "confidence": 0.04,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "placed",
+   "type": "indisch-1926-attic-lights",
+   "score": 1,
+   "runnerUp": {
+    "typeId": "indisch-1925-stair-pair",
+    "score": 0.5
+   },
+   "placement": {
+    "type": "indisch-1926-attic-lights",
+    "measuredPalette": {
+     "brick": "#3e3536",
+     "evidence": "strip 2023-01-02 span 3017-3269: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown parapet (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012113974",
+    "ncc": 0.212,
+    "nccRaw": 0.212,
+    "shiftM": [
+     -0.4,
+     -0.4
+    ],
+    "usable": 0.98,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.49 mean 0.26 vs photo 0.48"
+    ],
+    "wall": {
+     "photo": "#3e3435",
+     "model": "#594c4d",
+     "dL": 0.1
+    },
+    "glazing": {
+     "photo": 0.48,
+     "model": 0.26
+    },
+    "columns": {
+     "photo": null,
+     "model": 3
+    },
+    "iou": 0.37
+   },
+   "challengers": {
+    "indisch-1926-attic-lights": 0.221
+   }
+  },
+  {
+   "pandId": "0363100012145792",
+   "address": "Javastraat 138A",
+   "builtYear": 1913,
+   "widthM": 5.36,
+   "eavesM": 12.12,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#363230",
+    "wallRaw": "#393533",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 702,
+     "confidence": 0.18,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "balcony slabs stacked at 9.5 m (1.8 m wide), 6.27 m (1.88 m wide)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 9.5,
+       "widthM": 1.8,
+       "centre": 0.59
+      },
+      {
+       "atM": 6.27,
+       "widthM": 1.88,
+       "centre": 0.58
+      },
+      {
+       "atM": 5.67,
+       "widthM": 1.02,
+       "centre": 0.21
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.02 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.33)",
+   "likeness": {
+    "pandId": "0363100012145792",
+    "ncc": 0.02,
+    "nccRaw": 0.02,
+    "shiftM": [
+     0.4,
+     0.4
+    ],
+    "usable": 0.98,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.33"
+    ],
+    "wall": {
+     "photo": "#383231",
+     "model": "#514b48",
+     "dL": 0.094
+    },
+    "glazing": {
+     "photo": 0.29,
+     "model": 0.37
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.246
+   },
+   "challengers": {
+    "indisch-1912-java-mansard-arches~m": 0.059,
+    "indisch-1912-java-mansard-arches": 0.132,
+    "indisch-1913-arched-pair-dormer": 0.199,
+    "indisch-1913-arched-pair-dormer~m": 0.073,
+    "indisch-1914-red-sash-pairs": 0.138,
+    "indisch-1914-red-sash-pairs~m": 0.156,
+    "indisch-1925-stair-pair": 0.303,
+    "indisch-1925-stair-pair~m": 0.333,
+    "indisch-1926-white-attic": 0.165
+   }
+  },
+  {
+   "pandId": "0363100012237042",
+   "address": "Javastraat 136",
+   "builtYear": 1913,
+   "widthM": 5.36,
+   "eavesM": 12.49,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#443c39",
+    "wallRaw": "#473e3c",
+    "skyline": {
+     "eavesM": 14.68,
+     "eavesRow": 115,
+     "confidence": 0.35,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.8 m at 0.46 (light 0.22): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.8,
+       "centre": 0.46,
+       "light": 0.22
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 9.55,
+       "widthM": 1.77,
+       "centre": 0.47
+      },
+      {
+       "atM": 6.17,
+       "widthM": 1.77,
+       "centre": 0.47
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.104 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.34 mean 0.40 vs photo 0.24)",
+   "likeness": {
+    "pandId": "0363100012237042",
+    "ncc": 0.104,
+    "nccRaw": 0.104,
+    "shiftM": [
+     -0.05,
+     -0.4
+    ],
+    "usable": 0.99,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.34 mean 0.40 vs photo 0.24"
+    ],
+    "wall": {
+     "photo": "#413937",
+     "model": "#5e534f",
+     "dL": 0.104
+    },
+    "glazing": {
+     "photo": 0.24,
+     "model": 0.4
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.275
+   },
+   "challengers": {
+    "indisch-1912-java-mansard-arches~m": 0.117,
+    "indisch-1912-java-mansard-arches": 0.142,
+    "indisch-1913-arched-pair-dormer": 0.238,
+    "indisch-1913-arched-pair-dormer~m": 0.236,
+    "indisch-1914-red-sash-pairs": 0.163,
+    "indisch-1914-red-sash-pairs~m": 0.132,
+    "indisch-1925-stair-pair": 0.254,
+    "indisch-1925-stair-pair~m": 0.304,
+    "indisch-1926-white-attic": 0.137
+   }
+  },
+  {
+   "pandId": "0363100012100526",
+   "address": "Javastraat 134B",
+   "builtYear": 1913,
+   "widthM": 6.93,
+   "eavesM": 12.43,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#33302d",
+    "wallRaw": "#403b39",
+    "skyline": {
+     "eavesM": 15.15,
+     "eavesRow": 96,
+     "confidence": 0.51,
+     "crown": {
+      "widthM": 1.68,
+      "riseM": 1.62,
+      "topWidthM": 1.48,
+      "centre": 0.13
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "frontClass": "columns",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.85 m at 0.67 (light 0.26): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.85,
+       "centre": 0.67,
+       "light": 0.26
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 9.57,
+       "widthM": 1.85,
+       "centre": 0.67
+      },
+      {
+       "atM": 6.27,
+       "widthM": 1.85,
+       "centre": 0.67
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best indisch-1912-java-mansard-arches: frontage 6.93 m, type 5.6-6.4 m)",
+   "best": {
+    "type": "indisch-1912-java-mansard-arches",
+    "score": 0,
+    "veto": [
+     "frontage 6.93 m, type 5.6-6.4 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 12.43 m = 4 storeys of 3.11 m vs the type's 3.08 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 2 vs 4 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

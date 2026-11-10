@@ -1,0 +1,519 @@
+{
+ "street": "Zeeburgerdijk",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T00:21:28.286Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012154823",
+   "addresses": [
+    "Zeeburgerdijk 53"
+   ],
+   "groundUnits": [
+    {
+     "address": "Zeeburgerdijk 53",
+     "use": "bijeenkomstfunctie,logiesfunctie",
+     "areaM2": 119,
+     "bagId": "0363010000878247"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012106205",
+   "addresses": [
+    "Zeeburgerdijk 55",
+    "Zeeburgerdijk 55A",
+    "Zeeburgerdijk 55B",
+    "Zeeburgerdijk 55C",
+    "Zeeburgerdijk 55D",
+    "Zeeburgerdijk 55E",
+    "Zeeburgerdijk 55F",
+    "Zeeburgerdijk 55G",
+    "Zeeburgerdijk 55H",
+    "Zeeburgerdijk 55K",
+    "Zeeburgerdijk 55L",
+    "Zeeburgerdijk 55M",
+    "Zeeburgerdijk 55N",
+    "Zeeburgerdijk 55P",
+    "Zeeburgerdijk 55R",
+    "Zeeburgerdijk 55S",
+    "Zeeburgerdijk 55T",
+    "Zeeburgerdijk 55U",
+    "Zeeburgerdijk 55V",
+    "Zeeburgerdijk 57"
+   ],
+   "groundUnits": [
+    {
+     "address": "Zeeburgerdijk 55-H",
+     "use": "industriefunctie",
+     "areaM2": 182,
+     "bagId": "0363010000878248"
+    },
+    {
+     "address": "Zeeburgerdijk 55-1",
+     "use": "kantoorfunctie",
+     "areaM2": 33,
+     "bagId": "0363010000878249"
+    },
+    {
+     "address": "Zeeburgerdijk 57-H",
+     "use": "winkelfunctie",
+     "areaM2": 82,
+     "bagId": "0363010001004226"
+    },
+    {
+     "address": "Zeeburgerdijk 55A",
+     "use": "bijeenkomstfunctie,woonfunctie",
+     "areaM2": 110,
+     "bagId": "0363010012079517"
+    },
+    {
+     "address": "Zeeburgerdijk 55B",
+     "use": "woonfunctie",
+     "areaM2": 41,
+     "bagId": "0363010012159994"
+    },
+    {
+     "address": "Zeeburgerdijk 55C",
+     "use": "woonfunctie",
+     "areaM2": 40,
+     "bagId": "0363010012159995"
+    },
+    {
+     "address": "Zeeburgerdijk 55D",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010012159996"
+    },
+    {
+     "address": "Zeeburgerdijk 55E",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010012159997"
+    },
+    {
+     "address": "Zeeburgerdijk 55F",
+     "use": "woonfunctie",
+     "areaM2": 40,
+     "bagId": "0363010012159998"
+    },
+    {
+     "address": "Zeeburgerdijk 55G",
+     "use": "woonfunctie",
+     "areaM2": 42,
+     "bagId": "0363010012159999"
+    },
+    {
+     "address": "Zeeburgerdijk 55H",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010012160000"
+    },
+    {
+     "address": "Zeeburgerdijk 55K",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010012160001"
+    },
+    {
+     "address": "Zeeburgerdijk 55L",
+     "use": "woonfunctie",
+     "areaM2": 40,
+     "bagId": "0363010012160002"
+    },
+    {
+     "address": "Zeeburgerdijk 55M",
+     "use": "woonfunctie",
+     "areaM2": 42,
+     "bagId": "0363010012160003"
+    },
+    {
+     "address": "Zeeburgerdijk 55N",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010012160004"
+    },
+    {
+     "address": "Zeeburgerdijk 55P",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010012160005"
+    },
+    {
+     "address": "Zeeburgerdijk 55R",
+     "use": "woonfunctie",
+     "areaM2": 40,
+     "bagId": "0363010012160006"
+    },
+    {
+     "address": "Zeeburgerdijk 55S",
+     "use": "woonfunctie",
+     "areaM2": 42,
+     "bagId": "0363010012160007"
+    },
+    {
+     "address": "Zeeburgerdijk 55T",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010012160008"
+    },
+    {
+     "address": "Zeeburgerdijk 55U",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010012160009"
+    },
+    {
+     "address": "Zeeburgerdijk 55V",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010012160010"
+    },
+    {
+     "address": "Zeeburgerdijk 57",
+     "use": "kantoorfunctie",
+     "areaM2": 212,
+     "bagId": "0363010012160011"
+    }
+   ],
+   "units": 28,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11637933300,
+     "lngLat": [
+      4.9348472,
+      52.3662433
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "55V",
+      "addr:postcode": "1094AA",
+      "addr:street": "Zeeburgerdijk",
+      "name": "Flink - Amsterdam, Zeeburg",
+      "office": "company"
+     },
+     "fetchedAt": "2026-11-10T00:21:28.286Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "way",
+     "id": 1071314299,
+     "lngLat": [
+      4.9347898,
+      52.3661625
+     ],
+     "tags": {
+      "amenity": "parking_space",
+      "parking": "surface"
+     },
+     "fetchedAt": "2026-11-10T00:21:28.286Z",
+     "match": "frontage",
+     "distanceM": 4.9
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012085899",
+   "addresses": [
+    "Zeeburgerdijk 59A",
+    "Zeeburgerdijk 59B",
+    "Zeeburgerdijk 59C",
+    "Zeeburgerdijk 59D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Zeeburgerdijk 59A",
+     "use": "woonfunctie",
+     "areaM2": 41,
+     "bagId": "0363010000878263"
+    },
+    {
+     "address": "Zeeburgerdijk 59B",
+     "use": "woonfunctie",
+     "areaM2": 40,
+     "bagId": "0363010000878264"
+    },
+    {
+     "address": "Zeeburgerdijk 59C",
+     "use": "woonfunctie",
+     "areaM2": 40,
+     "bagId": "0363010000878265"
+    },
+    {
+     "address": "Zeeburgerdijk 59D",
+     "use": "woonfunctie",
+     "areaM2": 96,
+     "bagId": "0363010000878266"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012236305",
+   "addresses": [
+    "Zeeburgerdijk 61A",
+    "Zeeburgerdijk 61C",
+    "Zeeburgerdijk 61D",
+    "Zeeburgerdijk 61E",
+    "Zeeburgerdijk 61B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Zeeburgerdijk 61A",
+     "use": "woonfunctie",
+     "areaM2": 40,
+     "bagId": "0363010000878271"
+    },
+    {
+     "address": "Zeeburgerdijk 61C",
+     "use": "woonfunctie",
+     "areaM2": 91,
+     "bagId": "0363010000878273"
+    },
+    {
+     "address": "Zeeburgerdijk 61D",
+     "use": "woonfunctie",
+     "areaM2": 90,
+     "bagId": "0363010000878274"
+    },
+    {
+     "address": "Zeeburgerdijk 61E",
+     "use": "woonfunctie",
+     "areaM2": 90,
+     "bagId": "0363010000878277"
+    },
+    {
+     "address": "Zeeburgerdijk 61B",
+     "use": "woonfunctie",
+     "areaM2": 91,
+     "bagId": "0363010000878272"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012150096",
+   "addresses": [
+    "Zeeburgerdijk 63A",
+    "Zeeburgerdijk 63B",
+    "Zeeburgerdijk 63C",
+    "Zeeburgerdijk 63D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Zeeburgerdijk 63A",
+     "use": "woonfunctie",
+     "areaM2": 41,
+     "bagId": "0363010000878282"
+    },
+    {
+     "address": "Zeeburgerdijk 63B",
+     "use": "woonfunctie",
+     "areaM2": 40,
+     "bagId": "0363010000878283"
+    },
+    {
+     "address": "Zeeburgerdijk 63C",
+     "use": "woonfunctie",
+     "areaM2": 40,
+     "bagId": "0363010000878284"
+    },
+    {
+     "address": "Zeeburgerdijk 63D",
+     "use": "woonfunctie",
+     "areaM2": 96,
+     "bagId": "0363010000878285"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012082517",
+   "addresses": [
+    "Zeeburgerdijk 65C",
+    "Zeeburgerdijk 65B",
+    "Zeeburgerdijk 65A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Zeeburgerdijk 65C",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000878292"
+    },
+    {
+     "address": "Zeeburgerdijk 65B",
+     "use": "woonfunctie",
+     "areaM2": 101,
+     "bagId": "0363010000878291"
+    },
+    {
+     "address": "Zeeburgerdijk 65A",
+     "use": "woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010000878290"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012068787",
+   "addresses": [
+    "Zeeburgerdijk 67B",
+    "Zeeburgerdijk 67A",
+    "Zeeburgerdijk 67C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Zeeburgerdijk 67B",
+     "use": "woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010000878298"
+    },
+    {
+     "address": "Zeeburgerdijk 67A",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000878297"
+    },
+    {
+     "address": "Zeeburgerdijk 67C",
+     "use": "woonfunctie",
+     "areaM2": 101,
+     "bagId": "0363010000878299"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012150787",
+   "addresses": [
+    "Zeeburgerdijk 69A",
+    "Zeeburgerdijk 69C",
+    "Zeeburgerdijk 69B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Zeeburgerdijk 69A",
+     "use": "woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010000878304"
+    },
+    {
+     "address": "Zeeburgerdijk 69C",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000878306"
+    },
+    {
+     "address": "Zeeburgerdijk 69B",
+     "use": "woonfunctie",
+     "areaM2": 101,
+     "bagId": "0363010000878305"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012101257",
+   "addresses": [
+    "Zeeburgerdijk 71B",
+    "Zeeburgerdijk 71C",
+    "Zeeburgerdijk 71A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Zeeburgerdijk 71B",
+     "use": "woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010000878309"
+    },
+    {
+     "address": "Zeeburgerdijk 71C",
+     "use": "woonfunctie",
+     "areaM2": 101,
+     "bagId": "0363010000878310"
+    },
+    {
+     "address": "Zeeburgerdijk 71A",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000878308"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012081431",
+   "addresses": [
+    "Zeeburgerdijk 73A",
+    "Zeeburgerdijk 73B",
+    "Zeeburgerdijk 73C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Zeeburgerdijk 73A",
+     "use": "woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010000878315"
+    },
+    {
+     "address": "Zeeburgerdijk 73B",
+     "use": "woonfunctie",
+     "areaM2": 101,
+     "bagId": "0363010000878316"
+    },
+    {
+     "address": "Zeeburgerdijk 73C",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000878317"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012089774",
+   "addresses": [
+    "Zeeburgerdijk 75B",
+    "Zeeburgerdijk 75C",
+    "Zeeburgerdijk 75A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Zeeburgerdijk 75B",
+     "use": "woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010000878323"
+    },
+    {
+     "address": "Zeeburgerdijk 75C",
+     "use": "woonfunctie",
+     "areaM2": 101,
+     "bagId": "0363010000878324"
+    },
+    {
+     "address": "Zeeburgerdijk 75A",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000878322"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  }
+ ]
+}

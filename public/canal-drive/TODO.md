@@ -40,6 +40,10 @@ here. Their design notes stay in `BUILDING_*.md`, `FACADE_*.md`, `LOD.md`, and
   - An office family for Westpoort (698 of 879 pale).
   - Plumb OSM gap-fill `start_date` into building facts (undated fills draw as 1860–1914 houses: Westpoort 32, IJburg 40, Overhoeks 18).
   - The world shells still carry the old 8–9 m canopy slabs until the next world:compile.
+- **Indische buurt holds and kit gaps (lane buurt-indische-20261110).**
+  - Held: Javastraat 95, 119 (dark brick hooded dormer), 121 (tall stepped dormer-gable); Djambistraat 23 (half-width door reveal fails `opening-outside`, cause unknown), Djambistraat 5/7/25/27, Djambistraat 40 (needs a 1914 three-light 'trio' type); Borneostraat 7-27 (gables on the 13|15 and 17|19 party walls, 21-25 a different design).
+  - Unauthored designs: Padang/Lombok/Djambi 2-36 three-storey gable rows (need `modules` with per-module crowns), Borneostraat 80-102, the 1902-05 ornamented rows (Java 1-91, Banka, Deli, Madura; 6+ designs a face), the Makassar 1933-37 blocks.
+  - Kit gaps: a pier-free shared portiek on a party wall; cream arch accents over a brick ring; iron sill rails/juliet balconies and gutter brackets; half-gable pair crowns beside held neighbours.
 - **Meshopt follow-ups.** `install-large.ts` still writes recipe-large GLBs uncompressed (call compressGlb + re-describe); `scripts/building-tiles/compile-recipes.ts` installedMatch compares staged vs installed bytes and now reports false for compressed installs (compare decoded geometry).
 
 ## City coverage programme (2026-11-07) — T0 whole city, T1 ride ring, T2 landmarks

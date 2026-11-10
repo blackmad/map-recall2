@@ -36,26 +36,33 @@ export interface DoorRevealIntent {
   riser?: number;
   /** Lining of the jambs: the wall's brick (default), a stone jamb, or a plastered one (drawn in the palette's pale stone: a trim-coloured lining is a frame part to the GLB audit, and on a deep portiek it reads as a frame outside its wall). */
   jamb?: 'brick' | 'stone' | 'plaster';
-  /** Opening width (m, 0.9..2.6) when the cavity is wider than the kit's door (a portiek before two doors). */
+  /** Opening width (m, 0.9..2.6; 0.4..2.6 with `edge`, a half of a shared opening) when the cavity is wider than the kit's door (a portiek before two doors). */
   span?: number;
   /** portiek: a flat's door on each side wall (needs deep >= 0.9). */
   sideDoors?: boolean;
   /** The leaf at the back: a panelled door (default) or a glazed stair door. */
   leaf?: 'door' | 'glazed';
+  /**
+   * The opening hugs the party wall on the door's side (no 5 cm margin) instead of standing centred in its door bay: with
+   * `span` set to half the shared opening, the two fronts of a pair draw one recessed opening straddling their party wall
+   * (Djambistraat, Soendastraat 1913: one 1.06 m recess on the wall, a mailbox panel on each jamb, a leaf for the pair).
+   * Absent = byte-identical.
+   */
+  edge?: boolean;
 }
 
-const KEYS = ['form', 'deep', 'steps', 'riser', 'jamb', 'span', 'sideDoors', 'leaf'];
+const KEYS = ['form', 'deep', 'steps', 'riser', 'jamb', 'span', 'sideDoors', 'leaf', 'edge'];
 const num = (v: unknown, lo: number, hi: number) => typeof v === 'number' && Number.isFinite(v) && v >= lo && v <= hi;
 /** The cavity's 4 cm linings stand inside the opening, over the frame's outer edge: the frames are drawn 4 cm wider so
  * the white frame keeps the 8 cm (door) and 6 cm (fanlight) the flush door shows. */
-export const DOOR_REVEAL = {riser: 0.17, sideDoorM: 0.9, sideDoorH: 2.3, doorTrim: 0.12, fanTrim: 0.1,
+export const DOOR_REVEAL = {riser: 0.17, sideDoorM: 0.9, sideDoorH: 2.3, doorTrim: 0.12, fanTrim: 0.1, edgeTrim: 0.12,
   /** Lining colour per third of the depth, mouth to leaf (door-shade.ts medians, see the module note). */
   shade: [1, 0.8, 0.78] as readonly number[]} as const;
 
 /** Problems with `doorReveal` on one front (`door`: the front has a door it can recess). */
 export function doorRevealProblems(d: unknown, front: {doorBay: number | null; doorArch?: unknown; groundFront?: unknown; shopfront?: {residentialDoor?: unknown}}, at: string): string[] {
   const a = `${at}.doorReveal`;
-  if (!d || typeof d !== 'object' || Array.isArray(d) || Object.keys(d).some(k => !KEYS.includes(k))) return [`${a}: {form, deep, steps?, riser?, jamb?, span?, sideDoors?, leaf?}`];
+  if (!d || typeof d !== 'object' || Array.isArray(d) || Object.keys(d).some(k => !KEYS.includes(k))) return [`${a}: {form, deep, steps?, riser?, jamb?, span?, sideDoors?, leaf?, edge?}`];
   const o = d as Record<string, unknown>, p: string[] = [];
   if (o.form !== 'reveal' && o.form !== 'portiek') p.push(`${a}.form: reveal | portiek`);
   const [lo, hi] = o.form === 'portiek' ? [0.5, 1.5] : [0.15, 0.7];
@@ -63,9 +70,10 @@ export function doorRevealProblems(d: unknown, front: {doorBay: number | null; d
   if (o.steps !== undefined && !(Number.isInteger(o.steps) && (o.steps as number) >= 0 && (o.steps as number) <= 5)) p.push(`${a}.steps: 0..5`);
   if (o.riser !== undefined && !num(o.riser, 0.12, 0.2)) p.push(`${a}.riser: 0.12..0.2 m`);
   if (o.jamb !== undefined && !['brick', 'stone', 'plaster'].includes(o.jamb as string)) p.push(`${a}.jamb: brick | stone | plaster`);
-  if (o.span !== undefined && !num(o.span, 0.9, 2.6)) p.push(`${a}.span: 0.9..2.6 m`);
+  if (o.span !== undefined && !num(o.span, o.edge === true ? 0.4 : 0.9, 2.6)) p.push(`${a}.span: ${o.edge === true ? 0.4 : 0.9}..2.6 m`);
   if (o.sideDoors !== undefined && (typeof o.sideDoors !== 'boolean' || (o.sideDoors && (o.form !== 'portiek' || !num(o.deep, 0.9, 1.5))))) p.push(`${a}.sideDoors: a portiek at least 0.9 m deep`);
   if (o.leaf !== undefined && o.leaf !== 'door' && o.leaf !== 'glazed') p.push(`${a}.leaf: door | glazed`);
+  if (o.edge !== undefined && o.edge !== true) p.push(`${a}.edge: true or absent`);
   if (front.groundFront !== undefined) p.push(`${a}: a groundFront draws its own doors`);
   if (front.doorBay === null && !front.shopfront?.residentialDoor) p.push(`${a}: needs a door (doorBay or a shop's residentialDoor)`);
   return p;
@@ -83,8 +91,8 @@ export function doorRevealOpenings(d: DoorRevealIntent, left: number, bottom: nu
   const landing = steps * riseM;
   const sideDoors = d.sideDoors ? {widthM: r3(Math.min(DOOR_REVEAL.sideDoorM, d.deep - 0.3)), heightM: r3(Math.min(DOOR_REVEAL.sideDoorH, doorH - (arch?.rise ?? 0) - landing - 0.05))} : undefined;
   const shade = [...DOOR_REVEAL.shade];
-  const door: CanalhouseOpening = {id: 'door', kind: 'door', leftM: left, bottomM: bottom, widthM: width, heightM: doorH, ...(arch ? {head: 'segmental' as const, headRiseM: arch.rise, headSegments: arch.segments} : {}), trimWidthM: DOOR_REVEAL.doorTrim, ...(arch ? {} : {verticalBars: [.5]}),
-    paneSurface: d.leaf === 'glazed' ? 'glass' : 'door', frameSurface: 'trim', barSurface: 'trim', recessM: d.deep,
+  const door: CanalhouseOpening = {id: 'door', kind: 'door', leftM: left, bottomM: bottom, widthM: width, heightM: doorH, ...(arch ? {head: 'segmental' as const, headRiseM: arch.rise, headSegments: arch.segments} : {}), trimWidthM: d.edge ? DOOR_REVEAL.edgeTrim : DOOR_REVEAL.doorTrim, ...(arch || d.edge ? {} : {verticalBars: [.5]}),
+    paneSurface: d.leaf === 'glazed' ? 'glass' : 'door', frameSurface: d.edge ? 'door' : 'trim', barSurface: d.edge ? 'door' : 'trim', recessM: d.deep,
     recessReturns: {glazedSides: [], ...(fan ? {omit: ['soffit' as const]} : {}), jambSurface, sillSurface: 'stone', ...(steps ? {steps: {count: steps, riseM}} : {}), ...(sideDoors ? {sideDoors} : {}), shade, ...(fan ? {jambsM: r3(doorH + transomH + 0.06)} : {})}};
   if (!fan) return [door];
   return [door, {id: 'door-transom', kind: 'window', leftM: left, bottomM: r3(bottom + doorH), widthM: width, heightM: r3(transomH + 0.06), trimWidthM: DOOR_REVEAL.fanTrim, frameSurface: 'trim', barSurface: 'trim',

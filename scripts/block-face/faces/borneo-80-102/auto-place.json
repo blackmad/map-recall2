@@ -1,0 +1,785 @@
+{
+ "face": "borneo-80-102",
+ "street": "Borneostraat",
+ "library": "indische-buurt",
+ "stripDate": "2020-04-29",
+ "seconds": 4.14,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012074432",
+   "address": "Borneostraat 102",
+   "builtYear": 1914,
+   "widthM": 5.78,
+   "eavesM": 15.89,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#50463c",
+    "wallRaw": "#4c453c",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 819,
+     "confidence": 0.17,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 9.07,
+       "widthM": 1.45,
+       "centre": 0.59
+      },
+      {
+       "atM": 8.63,
+       "widthM": 1.13,
+       "centre": 0.58
+      },
+      {
+       "atM": 5.77,
+       "widthM": 0.8,
+       "centre": 0.54
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.04
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "no front on the strip: sky over the roof in 67 % of columns (< 75 %): the strip shows a nearer wall, fence or tree, not the front",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012097629",
+   "address": "Borneostraat 100",
+   "builtYear": 1914,
+   "widthM": 5.62,
+   "eavesM": 15.92,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#493f35",
+    "wallRaw": "#453e35",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 819,
+     "confidence": 0,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "balcony slabs stacked at 9.02 m (1.5 m wide), 6.02 m (1.43 m wide)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 14.28,
+       "widthM": 1.02,
+       "centre": 0.43
+      },
+      {
+       "atM": 11.43,
+       "widthM": 0.82,
+       "centre": 0.34
+      },
+      {
+       "atM": 10.97,
+       "widthM": 0.82,
+       "centre": 0.18
+      },
+      {
+       "atM": 9.85,
+       "widthM": 0.9,
+       "centre": 0.48
+      },
+      {
+       "atM": 9.02,
+       "widthM": 1.5,
+       "centre": 0.46
+      },
+      {
+       "atM": 6.02,
+       "widthM": 1.43,
+       "centre": 0.48
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.07
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "no front on the strip: sky over the roof in 0 % of columns (< 75 %): the strip shows a nearer wall, fence or tree, not the front",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012233598",
+   "address": "Borneostraat 98C",
+   "builtYear": 1914,
+   "widthM": 5.6,
+   "eavesM": 15.64,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#65534b",
+    "wallRaw": "#50463d",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 819,
+     "confidence": 0,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "curtain",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.057,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "balcony slabs stacked at 12.35 m (5.15 m wide), 9.13 m (1.38 m wide), 6.05 m (1.4 m wide)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 12.35,
+       "widthM": 5.15,
+       "centre": 0.5
+      },
+      {
+       "atM": 9.13,
+       "widthM": 1.38,
+       "centre": 0.49
+      },
+      {
+       "atM": 6.05,
+       "widthM": 1.4,
+       "centre": 0.5
+      }
+     ]
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0.03
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best indisch-1912-java-mansard-arches scores 0.55 < 0.7 (3DBAG eaves 15.64 m = 4 storeys of 3.91 m vs the type's 3.08 m; strip columns 3 vs 4 bays)",
+   "best": {
+    "type": "indisch-1912-java-mansard-arches",
+    "score": 0.55,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 15.64 m = 4 storeys of 3.91 m vs the type's 3.08 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.016 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 3 vs 4 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012097275",
+   "address": "Borneostraat 96A",
+   "builtYear": 1914,
+   "widthM": 5.6,
+   "eavesM": 15.86,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#43352e",
+    "wallRaw": "#463c35",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 819,
+     "confidence": 0.05,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 7,
+    "frontClass": "curtain",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.048,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 12.4,
+       "widthM": 2,
+       "centre": 0.46
+      },
+      {
+       "atM": 9.18,
+       "widthM": 1.2,
+       "centre": 0.43
+      },
+      {
+       "atM": 6.1,
+       "widthM": 1.15,
+       "centre": 0.43
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.05
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "no front on the strip: sky over the roof in 0 % of columns (< 75 %): the strip shows a nearer wall, fence or tree, not the front",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012115806",
+   "address": "Borneostraat 94B",
+   "builtYear": 1913,
+   "widthM": 5.6,
+   "eavesM": 16.18,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#55463d",
+    "wallRaw": "#463e37",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 819,
+     "confidence": 0.09,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 7,
+    "frontClass": "curtain",
+    "doorSide": "right",
+    "accentSide": "right",
+    "accentShare": 0.003,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "balcony slabs stacked at 9.05 m (1.4 m wide), 6.05 m (1.25 m wide)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 13.7,
+       "widthM": 1.02,
+       "centre": 0.52
+      },
+      {
+       "atM": 9.05,
+       "widthM": 1.4,
+       "centre": 0.5
+      },
+      {
+       "atM": 6.05,
+       "widthM": 1.25,
+       "centre": 0.5
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "no front on the strip: sky over the roof in 17 % of columns (< 75 %): the strip shows a nearer wall, fence or tree, not the front",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012128027",
+   "address": "Borneostraat 92A",
+   "builtYear": 1913,
+   "widthM": 5.6,
+   "eavesM": 15.88,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#4d413a",
+    "wallRaw": "#50453e",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 819,
+     "confidence": 0.29,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "balcony slabs stacked at 12.8 m (2.63 m wide), 9.13 m (1.43 m wide), 6.05 m (1.43 m wide)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 12.8,
+       "widthM": 2.63,
+       "centre": 0.7
+      },
+      {
+       "atM": 9.13,
+       "widthM": 1.43,
+       "centre": 0.57
+      },
+      {
+       "atM": 6.05,
+       "widthM": 1.43,
+       "centre": 0.57
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best indisch-1912-java-mansard-arches scores 0.6 < 0.7 (3DBAG eaves 15.88 m = 4 storeys of 3.97 m vs the type's 3.08 m)",
+   "best": {
+    "type": "indisch-1912-java-mansard-arches",
+    "score": 0.6,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 15.88 m = 4 storeys of 3.97 m vs the type's 3.08 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012138203",
+   "address": "Borneostraat 90",
+   "builtYear": 1914,
+   "widthM": 5.75,
+   "eavesM": 15.31,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#3f322b",
+    "wallRaw": "#40352f",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 819,
+     "confidence": 0.05,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.028,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 5.92,
+       "widthM": 1.5,
+       "centre": 0.28
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.02
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "no front on the strip: sky over the roof in 0 % of columns (< 75 %): the strip shows a nearer wall, fence or tree, not the front",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012120215",
+   "address": "Borneostraat 88",
+   "builtYear": 1914,
+   "widthM": 5.75,
+   "eavesM": 13,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#443731",
+    "wallRaw": "#493d37",
+    "skyline": {
+     "eavesM": 20.07,
+     "eavesRow": 16,
+     "confidence": 0.48,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 4,
+    "frontClass": "columns",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 1.55,
+     "bayCentre": 0.63,
+     "balconies": true,
+     "why": "dark open axis 1.23 m at 0.64 (light 0.44): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.23,
+       "centre": 0.64,
+       "light": 0.44
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012130723",
+   "address": "Borneostraat 86",
+   "builtYear": 1914,
+   "widthM": 5.75,
+   "eavesM": 15.39,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#65524c",
+    "wallRaw": "#4c3f39",
+    "skyline": {
+     "eavesM": 19.57,
+     "eavesRow": 36,
+     "confidence": 0.4,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 5,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.056,
+    "structure": {
+     "bayWidthM": 1.02,
+     "bayCentre": 0.21,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best indisch-1912-java-mansard-arches scores 0.55 < 0.7 (3DBAG eaves 15.39 m = 4 storeys of 3.85 m vs the type's 3.08 m; strip columns 5 vs 4 bays)",
+   "best": {
+    "type": "indisch-1912-java-mansard-arches",
+    "score": 0.55,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 15.39 m = 4 storeys of 3.85 m vs the type's 3.08 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.01 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 5 vs 4 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012139295",
+   "address": "Borneostraat 84",
+   "builtYear": 1914,
+   "widthM": 5.75,
+   "eavesM": 12.92,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#41362e",
+    "wallRaw": "#453e34",
+    "skyline": {
+     "eavesM": 19.48,
+     "eavesRow": 40,
+     "confidence": 0.53,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.06
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012103586",
+   "address": "Borneostraat 82",
+   "builtYear": 1914,
+   "widthM": 4.86,
+   "eavesM": 15.45,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#62514b",
+    "wallRaw": "#493e38",
+    "skyline": {
+     "eavesM": 19.07,
+     "eavesRow": 56,
+     "confidence": 0.44,
+     "crown": {
+      "widthM": 0.78,
+      "riseM": 1,
+      "topWidthM": 0.57,
+      "centre": 0.54
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": "left",
+    "accentShare": 0.049,
+    "structure": {
+     "bayWidthM": 0.85,
+     "bayCentre": 0.16,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 12.45,
+       "widthM": 0.82,
+       "centre": 0.14
+      },
+      {
+       "atM": 8.85,
+       "widthM": 0.88,
+       "centre": 0.1
+      },
+      {
+       "atM": 6,
+       "widthM": 1.5,
+       "centre": 0.17
+      }
+     ]
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best indisch-1913-arched-pair-dormer scores 0.6 < 0.7 (3DBAG eaves 15.45 m = 4 storeys of 3.86 m vs the type's 3.2 m; roof rise 0.02 m (flat) vs pitched)",
+   "best": {
+    "type": "indisch-1913-arched-pair-dormer",
+    "score": 0.6,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 15.45 m = 4 storeys of 3.86 m vs the type's 3.2 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 0,
+      "note": "roof rise 0.02 m (flat) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.006 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012133565",
+   "address": "Borneostraat 80",
+   "builtYear": 1913,
+   "widthM": 8.93,
+   "eavesM": 13.05,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#40352e",
+    "wallRaw": "#403630",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 819,
+     "confidence": 0.11,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6.07,
+       "widthM": 1.45,
+       "centre": 0.8
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "no front on the strip: sky over the roof in 0 % of columns (< 75 %): the strip shows a nearer wall, fence or tree, not the front",
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}
