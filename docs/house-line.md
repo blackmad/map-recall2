@@ -1763,6 +1763,94 @@ family right on every pand with a photo reading, gable right where the register 
 bays ±1, Kinkerstraat 244-332 not darker than ΔL −0.03 (§1 "The wall colour"). Glazing is printed for information only
 (integrator ruling, H2d #342). Until H2d's `houseLine` measureFacade profile lands, the readings are H2c's.
 
+## §6c Belt builders: block-face houses as hand specs (`house:from-face`, lane belt-gg-west-build, #365)
+
+A belt builder turns canal fronts that a block-face lane read but never installed (a branch-only chunk, or a strip
+with no face intent) into HouseSpecs on the **recipe route**, one pand at a time, so they go through stage and
+publish like every other house. Chunk files from a lane branch are never merged directly.
+
+### Command
+
+```
+node --import tsx scripts/house-specs/from-face.ts --face herengracht-84-148-r1 [--pands <ids>] --fixes <fixes.json> --out <dir>
+node --import tsx scripts/house-specs/from-face.ts --face-file <run.json> --strip-face <face> --fixes <fixes.json> --out <dir>
+```
+
+`--help` prints the full text (the `HELP` constant in `scripts/house-specs/from-face.ts`). `--check` prints each
+pand's route and problems and writes nothing.
+
+- **`--face`** reads `scripts/block-face/faces/<id>/intent.json`, for example a lane's run face.
+- **`--face-file`** reads a *run file*: block-face form, typed by hand from a strip, with no install.
+  - Each house names a library type (`scripts/block-face/types/<district>/`) plus its `crown`, `mirror`, `doorBay`,
+    `overrides` and `measuredPalette`.
+  - `overrides` takes body keys only. Crown and ground keys (`atticSize`, `dormers`, `doorSurround`, ...) go in the
+    fixes file.
+  - Overriding `storeys` needs matching `windowHeights` and `headLines`.
+  - `groundFloor` needs `photoDate` and `agreement`, and `rhythm.citation` is required.
+  - Example: `scripts/house-specs/belt-gg-west/runs/`.
+- **`--fixes`** holds the reviewer's corrections per pand: `{ref, at, fields, why, limits, drop, address}`.
+  - Each field is written with source `author`, confidence 0.9, and `ref: "<photo>: <why>"`.
+  - `drop` removes a face field.
+  - `limits` are appended to `schemaLimits`.
+
+Provenance in the resulting spec:
+
+- `fromBlockFace` gives one whole-record receipt. `specFromFace` (`src/canalRecall/houseSpec/fromFace.ts`) gives
+  every face field its own copy of that receipt instead.
+- A type-default bay count keeps source `default`.
+- So the spec says which value came from the strip and which came from the reader.
+
+The spec is written only if it validates and `toRecipe` accepts it. An unchanged file is not rewritten, because
+`house:stage` refuses a preview receipt that is older than the spec.
+
+### The roof a front implies: `roof.source: "front"` on the recipe route (`src/canalRecall/blockFace/houseRoof.ts`)
+
+A block face replaces a pand's 3DBAG roof with the one its street front implies:
+
+- a flat top behind a cornice;
+- a saddle under a gable's crown.
+
+A recipe house used to compile straight on facts.json and so drew 3DBAG's roof. On Herengracht 92-96 and
+Keizersgracht 254/258 that was a red hip over the cornice, where the quay photo shows sky.
+
+`houseFrontRoof` runs the face's front-roof step for one house (`fitIntent`, then `frontRoofSpecs`, then
+`recipeRoofFacts`). It runs only when the intent says `roof.source: "front"`; `roof.form` forces a form and
+`roof.rakeClear` keeps a saddle under the crown. `compileHouse` calls it before `compileBuilding`, and the report
+gains `frontRoof`. Absent, the compile is byte-identical: the fit golden is unchanged and `houseRoof.test.ts`
+checks it.
+
+The ridge gate follows: when `facts.roofSource.kind === "front"`, `ridge-vs-3dbag` checks the generated roof
+against the fitted crown or cap instead of 3DBAG's ridge (`gates.ts`).
+
+Typical fixes:
+
+- cornice fronts: `roof/source: front`, `roof/form: flat`;
+- neck, bell and step gables: `roof/source: front`, `roof/rakeClear: true`.
+
+### Known limits (report them, do not fit around them)
+
+- **Rear-wing open edges.** On some standalone houses, `recipeRoof` with a flat front leaves the rear wings with
+  open edges: Herengracht 92 2.1 m, Herengracht 104 32 m, against a 2 m gate. Keep 3DBAG's roof (no roof fixes) and
+  record a limit, or hold the house.
+- **`towers[]`** (a raised centre over the cornice) on a standalone recipe house gives 10-15 m of open edges. Record
+  a `crown` limit instead.
+- **Corner houses.** The preview's `pickWall` takes the longest wall on the nearest road, which for a corner house
+  is the side wall (Keizersgracht 92). Preview with `--wall face`.
+- **Footprint against BAG.** A pand whose 3DBAG footprint covers about 0.88 of BAG (Keizersgracht 244A/246B) fails
+  `footprint-vs-bag`. Hold it.
+
+### Flow per batch
+
+1. Write the run file and fixes from gridded strip crops (40 px/m).
+2. Run `from-face`.
+3. Run `house:preview` (`scripts/house-preview/resolved.ts --specs <dir> <ids> --photo --threeq`). Read the
+   compare sheet and the gates in `artifacts/building-recipes/spec-<pand>/report.json`, then correct.
+4. Run `house:stage`.
+5. Run `house:frames` before/after pairs (one browser run at a time, through `/tmp/canal-pw.sh`).
+6. Hand the integrator about 20 pands with their SHA.
+
+A wall-flag miss on a pair needs a written cause, such as "front in full sun".
+
 ## §7 Review in the game (`house:frames`)
 
 Every earlier check looks at a house outside the game: `house:preview` draws a flat elevation, `install-large` a GLB in
