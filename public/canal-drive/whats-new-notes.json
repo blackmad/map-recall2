@@ -3,6 +3,27 @@
   "notes": [
     {
       "date": "2026-11-10",
+      "title": "Ground no longer turns sky-blue",
+      "text": "Since this morning's horizon change, wide open ground on the city's edge (IJburg, Houthaven) could take the sky's colour. Haze is now measured per pixel, so the ground keeps its own colour close by and only fades with real distance.",
+      "where": [
+        5.01181,
+        52.351982
+      ],
+      "images": [
+        {
+          "src": "ui/2026-11-10-sky-blue-ground/ijburg-before.jpg",
+          "alt": "IJburg new-builds with the open ground drawn in the sky's blue",
+          "caption": "Before: the ground took the sky colour."
+        },
+        {
+          "src": "ui/2026-11-10-sky-blue-ground/ijburg-after.jpg",
+          "alt": "The same IJburg view with the ground in its own sandy colour",
+          "caption": "After."
+        }
+      ]
+    },
+    {
+      "date": "2026-11-10",
       "title": "Landmarks no longer flicker in the distance",
       "text": "From the air, a landmark switching between its simple and detailed model now dissolves from one to the other instead of popping, and far landmarks fade into the same haze as the city around them. Kit buildings far away cross-fade as they load too.",
       "images": [
