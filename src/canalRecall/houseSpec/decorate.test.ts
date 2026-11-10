@@ -3,7 +3,8 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { houseSpecEnricher, houseSpecPatch, houseSpecsEnabled, SPEC_BAYS_HELD, withHouseSpec, withHouseSpecCrown, type HouseSpecView } from './decorate.ts';
 import { gameFeatureDecorator } from '../galleryPipeline.ts';
-import { frontageLayoutScale, SPEC_BAY_SCALE } from '../streetFacadeRendering.ts';
+import { frontageLayoutScale, specCellCount } from '../streetFacadeRendering.ts';
+import { layoutWall } from '../facadeLayout.ts';
 import { STYLE_DIMS } from '../facadeCells.ts';
 
 const feature = (p: Record<string, unknown>) => ({ type: 'Feature' as const, properties: { id: 'NL.IMBAG.Pand.0363100012182857', ...p } as Record<string, unknown>, geometry: null as any });
@@ -80,8 +81,30 @@ test('frontageLayoutScale: a stated bay count fits whole cells to the street run
   const s = frontageLayoutScale(undefined, fallback, 'canal', 8, { bays: 4, axesPerCell: 2 });
   assert.equal(s.bay, 8 / 2 / STYLE_DIMS.canal.bay);
   assert.equal(Math.round(8 / (STYLE_DIMS.canal.bay * s.bay)), 2);
-  // 3 bays on 2-axis cells round to 2 cells (a generic-cell limit); 6 bays on 3-axis cells over a narrow 5 m front clamp.
-  assert.equal(frontageLayoutScale(undefined, fallback, 'canal', 8, { bays: 3, axesPerCell: 2 }).bay, 8 / 2 / STYLE_DIMS.canal.bay);
-  assert.equal(frontageLayoutScale(undefined, fallback, 'canal', 5, { bays: 6, axesPerCell: 3 }).bay, Math.max(SPEC_BAY_SCALE.min, 5 / 2 / STYLE_DIMS.canal.bay));
-  assert.equal(frontageLayoutScale(undefined, fallback, 'canal', 3, { bays: 6, axesPerCell: 1 }).bay, SPEC_BAY_SCALE.min);
+  // An odd count on 2-axis cells draws the even number below (3 -> 2 columns, 5 -> 4), never the one above (H1b, #349).
+  assert.equal(specCellCount(3, 2, 8, STYLE_DIMS.canal.bay), 1);
+  assert.equal(specCellCount(5, 2, 12, STYLE_DIMS.canal.bay), 2);
+  // Cells no narrower than MIN_COLUMN_M per column: 6 bays on 3-axis cells over a narrow 5 m front is one cell.
+  assert.equal(specCellCount(6, 3, 5, STYLE_DIMS.canal.bay), 1);
+  // 1-axis cells carry any count exactly, down to the reach of the clamp (3 m cannot hold 6 cells).
+  assert.equal(specCellCount(3, 1, 12, STYLE_DIMS.canal.bay), 3);
+  assert.equal(specCellCount(6, 1, 3, STYLE_DIMS.canal.bay), 1);
+});
+
+// Three pands from the 2026-11-10 spot-check (#348), front length from measure.json `wall.lengthM`. The upper-storey
+// columns the mesher draws are layoutWall's cells x the cell's axes. Photo counts: measureFacade on the crop (9901: 3)
+// and hand-grid counts (4833: 2, 9665: 3). Before the fix the drawn counts were 6, 4 and 4.
+const doubling = [
+  { pand: '0363100012169901', style: 'canal', front: 8.85, bays: 5, axes: 2, photo: 3, was: 6 },
+  { pand: '0363100012174833', style: 'c19', front: 5.08, bays: 3, axes: 2, photo: 2, was: 4 },
+  { pand: '0363100012179665', style: 'canal', front: 5.7, bays: 3, axes: 2, photo: 3, was: 4 },
+] as const;
+for (const c of doubling) test(`bays: ${c.pand} draws the photo's ${c.photo} columns or the nearest the 2-axis cell reaches, never a doubling`, () => {
+  const s = frontageLayoutScale(undefined, { bay: 1.03, storey: 1, ground: 1 }, c.style, c.front, { bays: c.bays, axesPerCell: c.axes });
+  const drawn = layoutWall(c.style, c.front, 12, 0.3, true, s)!.bays * c.axes;
+  assert.ok(drawn < c.photo * 1.5, `${drawn} columns against a photo of ${c.photo}`);
+  assert.ok(drawn < c.was, `${drawn} must be fewer than the ${c.was} the cell rounding drew`);
+  // 2-axis cells draw even counts: the nearest to the photo is photo or photo + 1 (odd photo counts are a cell limit).
+  assert.ok(Math.abs(drawn - c.photo) <= 1, `${drawn} vs ${c.photo}`);
+  assert.ok(drawn <= c.bays, 'the drawn columns never exceed the stated bays');
 });
