@@ -560,8 +560,8 @@ by PRE_BLUR_PX (1.5 px Gaussian sigma at 50 px/m) before measureFacade. Atlas ca
 artifacts/house-preview/atlas-<look>-<size>-<painter hash>.bin (first run paints, later runs load).
 
 Overrides (until the HouseSpec resolver of lane H1 lands): fronts[0].gable -> monumentGable, palette.wall (or
-palette.brick) hex -> facadeMappedColour; every other design field is listed under overrides.notApplied in
-measure.json (the generic path has no property for it yet).
+palette.brick) hex -> facadeMappedColour, fronts[0].basement stoop (with its stoop fields) -> specStoop; every other
+design field is listed under overrides.notApplied in measure.json (the generic path has no property for it yet).
 
 Not reproduced: the far and roof distance tiers, mipmaps, cast shadows (a wall in another building's shadow draws
 sunlit), fog, the analytic window SDF, the ground lift, post-processing, the GLB slot cells (an installed GLB draws

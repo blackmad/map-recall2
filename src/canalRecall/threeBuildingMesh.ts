@@ -527,10 +527,16 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
     let extraTris = 0;
     const doorAllowed = doorWalls(bi);
     // The pavement in front of a wall, for a spec stoop (stoopExtra.ts): wall to street centreline less half a carriageway.
-    const stoopReach = (e: Edge): { stoopReachM?: number } => {
-      if (!streetGrid) return {};
-      const d = streetDistance(e, streetGrid, null, bi, FALLBACK_REACH_M);
-      return Number.isFinite(d) ? { stoopReachM: Math.max(0, d - GENERIC_STOOP.carriageHalfM) } : {};
+    // A spec stoop goes on one wall: the door wall nearest its street (a house can have a door wall on a back street
+    // too). It is forced first there and nowhere else, so no dice stoop lands on the other door walls.
+    const wallStreetM = (e: Edge) => streetGrid ? streetDistance(e, streetGrid, null, bi, FALLBACK_REACH_M) : Infinity;
+    const stoopWall = b.stoop ? [...doorAllowed].filter(e => e.len >= 2.5).sort((p, q) => wallStreetM(p) - wallStreetM(q))[0] ?? null : null;
+    const stoopFor = (e: Edge): Partial<ExtraContext> => {
+      if (!b.stoop) return {};
+      const others = (b.registerForce ?? []).filter(id => id !== 'stoop');
+      if (e !== stoopWall) return { registerForce: others };
+      const d = wallStreetM(e);
+      return { stoop: b.stoop, registerForce: [...others, 'stoop'], ...(Number.isFinite(d) ? { stoopReachM: Math.max(0, d - GENERIC_STOOP.carriageHalfM) } : {}) };
     };
     let groundSeen = Infinity;
     const streetEdges = [...doorAllowed];
@@ -640,7 +646,7 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
       run.forEach(({ e }, k) => {
         walls++;
         const s = layout.edgeStartM[k];
-        if (extraSink && !b.plainWalls && !e.hole && ((b.recipe?.openingGroup ? k === 0 && layout.lengthM >= 2.5 : e.len >= 2.5) || canopyRuns.has(k))) wallExtraContexts.push({ id: b.id, style: b.style, wallKey: edgeKey(e.x0, e.y0), f: { x0: e.x0, y0: e.y0, ux: (e.x1 - e.x0) / e.len, uy: (e.y1 - e.y0) / e.len, nx: e.nx, ny: e.ny, len: b.recipe?.openingGroup ? layout.lengthM : e.len }, base, top, layout: b.recipe?.openingGroup ? layout : edgeLayout(layout, k, e.len), wallHex: b.wallHex, accentHex: b.accentHex ?? '#ffffff', groundLevel: base < 0.5, period: b.period, ...(b.registerForce ? { registerForce: b.registerForce } : {}), ...(b.stoop ? { stoop: b.stoop, ...stoopReach(e) } : {}), recipe: b.recipe, runStart: k === 0, runEnd: k === run.length - 1, assemblyOwner: b.recipe?.facadeAssembly ? k === assemblyOwnerEdge : undefined, canopyOwner: b.recipe?.shopCanopy ? canopyRuns.has(k) : undefined, canopyFrames: canopyRuns.get(k), groundFrontageActive:!!(compound||regular||terrace), openings: b.recipe ? recipeBayOpenings(b.id, b.recipe, b.streetAppearance?.look === 'procedural' ? 'photo' : b.streetAppearance?.look ?? 'photo') : units ? units.openings : b.openings, streetSide: canopyRuns.has(k) || (b.recipe?.openingGroup ? run.some(r=>doorAllowed.has(r.e)) : doorAllowed.has(e)), shopfront: !!(b.shopfront || b.shop), roofKind: b.roof ? b.roof.plan.kind : 'flat' });
+        if (extraSink && !b.plainWalls && !e.hole && ((b.recipe?.openingGroup ? k === 0 && layout.lengthM >= 2.5 : e.len >= 2.5) || canopyRuns.has(k))) wallExtraContexts.push({ id: b.id, style: b.style, wallKey: edgeKey(e.x0, e.y0), f: { x0: e.x0, y0: e.y0, ux: (e.x1 - e.x0) / e.len, uy: (e.y1 - e.y0) / e.len, nx: e.nx, ny: e.ny, len: b.recipe?.openingGroup ? layout.lengthM : e.len }, base, top, layout: b.recipe?.openingGroup ? layout : edgeLayout(layout, k, e.len), wallHex: b.wallHex, accentHex: b.accentHex ?? '#ffffff', groundLevel: base < 0.5, period: b.period, ...(b.registerForce ? { registerForce: b.registerForce } : {}), ...stoopFor(e), recipe: b.recipe, runStart: k === 0, runEnd: k === run.length - 1, assemblyOwner: b.recipe?.facadeAssembly ? k === assemblyOwnerEdge : undefined, canopyOwner: b.recipe?.shopCanopy ? canopyRuns.has(k) : undefined, canopyFrames: canopyRuns.get(k), groundFrontageActive:!!(compound||regular||terrace), openings: b.recipe ? recipeBayOpenings(b.id, b.recipe, b.streetAppearance?.look === 'procedural' ? 'photo' : b.streetAppearance?.look ?? 'photo') : units ? units.openings : b.openings, streetSide: canopyRuns.has(k) || (b.recipe?.openingGroup ? run.some(r=>doorAllowed.has(r.e)) : doorAllowed.has(e)), shopfront: !!(b.shopfront || b.shop), roofKind: b.roof ? b.roof.plan.kind : 'flat' });
         // A projecting cornice under the flat lid: one sloped strip that catches the light and throws a shadow line.
         if (!b.surveyedEnvelope && !b.roof && b.plainLayer !== undefined && CORNICE_STYLES.has(b.style) && e.len >= 3.5 && !e.hole) {
           const z = top - 0.05, out = 0.26, drop = 0.22, nx = e.nx * out, ny = e.ny * out;

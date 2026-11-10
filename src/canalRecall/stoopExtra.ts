@@ -7,10 +7,10 @@
  * The painted door of the generic wall stands on the pavement, so the landing is laid at a bel-etage sill (the spec's
  * steps x rise when given, else GENERIC_STOOP.sillM) in front of its lower part. The planner's pavement check uses the
  * street in front of the wall: `stoopReachM` = wall-to-centreline distance less half the BGT median carriageway of a
- * residential street (own-ground-osm-v1/bgt-width-by-class.json: 5 m). A stated flight that does not fit there falls
+ * one-lane residential way (own-ground-osm-v1/bgt-width-by-class.json residential p10: 3 m). A stated flight that does not fit there falls
  * back to a front flight, then a side flight towards the longer free side, then the other side; else nothing is drawn.
  */
-import type { ExtraContext, ExtraSink, V3, WallFrame } from './facadeExtraCore.js';
+import { BOX_TRIS, type ExtraContext, type ExtraSink, type V3, type WallFrame } from './facadeExtraCore.js';
 import { doorSpan } from './facadeOrnaments.js';
 import { emitStoop, planStoop, STOOP, type StoopIntent, type StoopPlan } from './buildingRecipe/stoop.ts';
 import type { RailSink } from './buildingRecipe/ironRailing.ts';
@@ -20,8 +20,9 @@ export const GENERIC_STOOP = {
   sillM: 0.9,
   /** Never above this share of the ground storey (the painted door must still show above the landing). */
   maxSillShare: 0.42,
-  /** Half the BGT median carriageway width of a residential street (5 m). */
-  carriageHalfM: 2.5,
+  /** Half the carriageway of a one-lane canal quay: the BGT wegdeel p10 width of a residential way (3 m). The median
+   *  (5 m) left 0.5 m of pavement on Herengracht quays whose stoops are 1.2-2 m deep. */
+  carriageHalfM: 1.5,
   stone: '#cfc6b4', painted: '#efece4',
 } as const;
 
@@ -33,7 +34,9 @@ export function genericStoopPlan(c: ExtraContext): { plan: StoopPlan; x0: number
   const sill = Math.min(s.steps ? s.steps * rise : GENERIC_STOOP.sillM, GENERIC_STOOP.maxSillShare * c.layout.groundM);
   const ctx = { doorLeftM: d.x - d.hw, doorWidthM: 2 * d.hw, sillM: sill, frontWidthM: c.f.len, zoneM: c.stoopReachM };
   // The generic sill is not the measured one: steps follow it (a stated `steps` already set it).
-  const want: StoopIntent = { ...s, riseM: undefined, steps: s.steps ?? Math.max(2, Math.round(sill / rise)) };
+  // Nor is its souterrain: under a landing too low for the stated door, the opening becomes a window (or closes).
+  const under = s.under === 'door' && sill < STOOP.underDoor.minSillM ? (sill >= STOOP.underWindow.minSillM ? 'window' : 'closed') : s.under === 'window' && sill < STOOP.underWindow.minSillM ? 'closed' : s.under;
+  const want: StoopIntent = { ...s, riseM: undefined, steps: s.steps ?? Math.max(2, Math.round(sill / rise)), ...(under ? { under } : {}) };
   // The generic door is not the measured door, so a stated flight that does not fit there falls back: the front flight,
   // then along the wall towards the longer free side, then the other side.
   const leftRoom = d.x - d.hw, rightRoom = c.f.len - d.x - d.hw, toward = leftRoom >= rightRoom ? 'side-left' : 'side-right';
@@ -55,12 +58,33 @@ function wallSink(c: ExtraContext, s: ExtraSink, hex: string): RailSink {
   };
 }
 
+/** Counters for scripts (kit-stoep/cell-cost.ts): typed stoops drawn, and walls where the slabs stood in. */
+export const stoopExtraStats = { drawn: 0, noRoom: 0, noBudget: 0, simplified: 0 };
+
+/** Triangles `plan` costs on the streamed path (an ExtraSink box is BOX_TRIS, a quad two). */
+export function streamStoopTris(plan: StoopPlan): number {
+  let n = 0;
+  const count: RailSink = { box: () => { n += BOX_TRIS; }, quad: () => { n += 2; } };
+  emitStoop(plan, { body: count, iron: count, under: count }, { stream: true });
+  return n;
+}
+
+/** The stated railing, then cheaper ones, until the stoop fits the wall's free triangles: an ornate side flight with
+ *  its landing guard is ~216 triangles, over a 180-triangle street wall; bars ~130, plain ~90. The iron stays black. */
+const RAIL_LADDER = ['ornate', 'bars', 'plain'] as const;
+
 /** Draw the spec's stoop on this wall (atomic). True when drawn. */
 export function specStoopExtra(c: ExtraContext, s: ExtraSink): boolean {
   const got = genericStoopPlan(c);
-  if (!got) return false;
-  const { plan } = got, body = plan.material === 'brick' ? c.wallHex : plan.material === 'painted' ? GENERIC_STOOP.painted : GENERIC_STOOP.stone;
+  if (!got) { stoopExtraStats.noRoom++; return false; }
+  const stated = got.plan, room = s.room();
+  const ladder = RAIL_LADDER.slice(Math.max(0, RAIL_LADDER.indexOf(stated.railStyle as typeof RAIL_LADDER[number])));
+  const plan = ladder.map(railStyle => ({ ...stated, railStyle })).find(p => streamStoopTris(p) <= room) ?? stated;
+  if (plan.railStyle !== stated.railStyle) stoopExtraStats.simplified++;
+  const body = plan.material === 'brick' ? c.wallHex : plan.material === 'painted' ? GENERIC_STOOP.painted : GENERIC_STOOP.stone;
   s.begin();
   emitStoop(plan, { body: wallSink(c, s, body), iron: wallSink(c, s, STOOP.ironHex), under: wallSink(c, s, STOOP.underHex) }, { stream: true });
-  return s.commit();
+  const kept = s.commit();
+  if (kept) stoopExtraStats.drawn++; else stoopExtraStats.noBudget++;
+  return kept;
 }

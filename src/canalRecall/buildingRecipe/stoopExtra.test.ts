@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {ExtraSink, EXTRA_BUDGET, wallExtras, type ExtraContext} from '../facadeExtras.ts';
-import {genericStoopPlan, specStoopExtra} from '../stoopExtra.ts';
+import {genericStoopPlan, specStoopExtra, streamStoopTris} from '../stoopExtra.ts';
 import {houseSpecPatch} from '../houseSpec/decorate.ts';
 import {fromJev} from '../houseSpec/adapters.ts';
 import {judgementOf} from '../houseSpec/writers/jev.ts';
@@ -46,4 +46,13 @@ test('spec view -> specStoop property; Jev yes writes basement stoop', () => {
   const j = judgementOf('0363100012175702', 'crop.jpg', null, {stoop: {noul: 0.97}});
   assert.equal(fromJev(j).design.fronts?.[0]?.basement, 'stoop');
   assert.equal(judgementOf('0363100012175702', 'crop.jpg', null, {stoop: {noul: 0.2}}).stoop, undefined);
+});
+
+test('generic path: an ornate stoop over the wall budget draws with a cheaper iron railing, not the slabs', () => {
+  const c = wall({stoop: {flight: 'side-right', steps: 7, landing: {depth: 1.3, width: 2.2}, widthM: 1.1, railStyle: 'ornate', under: 'window'}, stoopReachM: 3.5, layout: {...wall().layout, doorBays: [0]}});
+  const plan = genericStoopPlan(c)!.plan;
+  assert.ok(streamStoopTris(plan) > EXTRA_BUDGET.wall, `ornate ${streamStoopTris(plan)}`);
+  const s = new ExtraSink(EXTRA_BUDGET.wall);
+  assert.ok(specStoopExtra(c, s));
+  assert.ok(s.tris.length <= EXTRA_BUDGET.wall && s.tris.some(t => t.hex === '#1d1f22'));
 });

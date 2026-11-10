@@ -127,8 +127,9 @@ const STREET_FURNITURE: readonly WallComponent[] = [
     const x = c.f.len / 2; s.box(c.f, x - 0.1, x + 0.1, 0, 1.0, c.top - 0.6, c.top - 0.42, WOOD, true);
     s.slope(c.f, x - 0.35, x + 0.35, 0, 1.1, c.top - 0.05, c.top - 0.4, WOOD); } },
   { id: 'stoop', group: 'stoop', styles: ['canal'], p: 0.5, build: (c, s) => {
-    // A spec-stated stoop (K-stoep #360) draws typed: flight, landing, iron balustrades (stoopExtra.ts).
-    if (c.stoop) { specStoopExtra(c, s); return; }
+    // A spec-stated stoop (K-stoep #360) draws typed: flight, landing, iron balustrades (stoopExtra.ts). Where the
+    // pavement has no room for it (or the budget), the three slabs below stand in, as before.
+    if (c.stoop && specStoopExtra(c, s)) return;
     const x = doorX(c); if (x == null || !c.groundLevel) return;
     for (let k = 0; k < 3; k++) s.box(c.f, x - 0.75, x + 0.75, 0, 1.2 - k * 0.35, c.base + k * 0.18, c.base + (k + 1) * 0.18, STONE);
     // Railings belong to the stoop: as their own component they stood on the pavement with no steps
@@ -312,8 +313,9 @@ const definingWall = (c: ExtraContext) => isStreetWall(c) && !!(c.recipe?.shopCa
 /** Give every supported face its defining assembly before spending on optional trim. */
 export function buildingWallExtras(contexts: readonly ExtraContext[], sink: ExtraSink): void {
   const original = sink.budget, baseline = Math.min(original, EXTRA_BUDGET.building);
+  // A spec stoop's wall (K-stoep #360) dresses right after the defining walls, before the budget is spent elsewhere.
   const ordered = contexts.map((c, i) => ({ c, i, state: { used: [], groups: new Set<string>(), spent: 0 } as DressingState }))
-    .sort((a, b) => Number(definingWall(b.c)) - Number(definingWall(a.c)) || a.i - b.i);
+    .sort((a, b) => Number(definingWall(b.c)) - Number(definingWall(a.c)) || Number(!!b.c.stoop) - Number(!!a.c.stoop) || a.i - b.i);
   const definingCount = ordered.filter(({ c }) => definingWall(c)).length;
   // Small explicit caller budgets still mean small budgets. Extra capacity is for supported
   // multi-face buildings, and is never available to their optional ornaments.
