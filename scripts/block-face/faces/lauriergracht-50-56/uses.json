@@ -1,0 +1,73 @@
+{
+ "street": "Lauriergracht",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched n/a (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012173920",
+   "addresses": [
+    "Lauriergracht 56"
+   ],
+   "groundUnits": [
+    {
+     "address": "Lauriergracht 56",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000577115"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012173921",
+   "addresses": [
+    "Lauriergracht 54"
+   ],
+   "groundUnits": [
+    {
+     "address": "Lauriergracht 54-H",
+     "use": "industriefunctie",
+     "areaM2": 38,
+     "bagId": "0363010000719426"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012173918",
+   "addresses": [
+    "Lauriergracht 52"
+   ],
+   "groundUnits": [
+    {
+     "address": "Lauriergracht 52-H",
+     "use": "industriefunctie",
+     "areaM2": 65,
+     "bagId": "0363010000719422"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012173919",
+   "addresses": [
+    "Lauriergracht 50"
+   ],
+   "groundUnits": [
+    {
+     "address": "Lauriergracht 50-H",
+     "use": "industriefunctie",
+     "areaM2": 85,
+     "bagId": "0363010000719417"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

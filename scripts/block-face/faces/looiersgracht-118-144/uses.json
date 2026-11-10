@@ -1,0 +1,292 @@
+{
+ "street": "Looiersgracht",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-30T01:48:42.626Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012174463",
+   "addresses": [
+    "Looiersgracht 140",
+    "Looiersgracht 142",
+    "Looiersgracht 142A",
+    "Looiersgracht 142B",
+    "Looiersgracht 142C",
+    "Looiersgracht 144"
+   ],
+   "groundUnits": [
+    {
+     "address": "Looiersgracht 142",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000728030"
+    },
+    {
+     "address": "Looiersgracht 144",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 90,
+     "bagId": "0363010000728031"
+    },
+    {
+     "address": "Looiersgracht 140",
+     "use": "kantoorfunctie",
+     "areaM2": 47,
+     "bagId": "0363010000946521"
+    },
+    {
+     "address": "Looiersgracht 142A",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010012149159"
+    },
+    {
+     "address": "Looiersgracht 142B",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010012149160"
+    },
+    {
+     "address": "Looiersgracht 142C",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010012149161"
+    }
+   ],
+   "units": 6,
+   "osm": [
+    {
+     "type": "node",
+     "id": 1356159784,
+     "lngLat": [
+      4.8791952,
+      52.3679416
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "144",
+      "addr:postcode": "1016VT",
+      "addr:street": "Looiersgracht",
+      "amenity": "pub",
+      "name": "Café De Jonge Wees",
+      "old_name": "Chaos",
+      "website": "https://dejongewees.nl"
+     },
+     "fetchedAt": "2026-10-30T01:48:42.626Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012174464",
+   "addresses": [
+    "Looiersgracht 132",
+    "Looiersgracht 134",
+    "Looiersgracht 136",
+    "Looiersgracht 138"
+   ],
+   "groundUnits": [
+    {
+     "address": "Looiersgracht 132",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010000728024"
+    },
+    {
+     "address": "Looiersgracht 134",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010000728025"
+    },
+    {
+     "address": "Looiersgracht 136",
+     "use": "woonfunctie",
+     "areaM2": 40,
+     "bagId": "0363010000728026"
+    },
+    {
+     "address": "Looiersgracht 138",
+     "use": "winkelfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000728027"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012174545",
+   "addresses": [
+    "Looiersgracht 118",
+    "Looiersgracht 120B",
+    "Looiersgracht 120C",
+    "Looiersgracht 120A",
+    "Looiersgracht 122A",
+    "Looiersgracht 122B",
+    "Looiersgracht 122C",
+    "Looiersgracht 124C",
+    "Looiersgracht 124A",
+    "Looiersgracht 124B",
+    "Looiersgracht 126A",
+    "Looiersgracht 126B",
+    "Looiersgracht 126C",
+    "Looiersgracht 128"
+   ],
+   "groundUnits": [
+    {
+     "address": "Derde Looiersdwarsstraat 12",
+     "use": "woonfunctie",
+     "areaM2": 112,
+     "bagId": "0363010000995631"
+    },
+    {
+     "address": "Derde Looiersdwarsstraat 14",
+     "use": "woonfunctie",
+     "areaM2": 124,
+     "bagId": "0363010000995632"
+    },
+    {
+     "address": "Derde Looiersdwarsstraat 16",
+     "use": "woonfunctie",
+     "areaM2": 94,
+     "bagId": "0363010000995633"
+    },
+    {
+     "address": "Derde Looiersdwarsstraat 18",
+     "use": "woonfunctie",
+     "areaM2": 86,
+     "bagId": "0363010000995634"
+    },
+    {
+     "address": "Derde Looiersdwarsstraat 20",
+     "use": "woonfunctie",
+     "areaM2": 94,
+     "bagId": "0363010000995635"
+    },
+    {
+     "address": "Derde Looiersdwarsstraat 22",
+     "use": "woonfunctie",
+     "areaM2": 86,
+     "bagId": "0363010000995636"
+    },
+    {
+     "address": "Derde Looiersdwarsstraat 24",
+     "use": "woonfunctie",
+     "areaM2": 94,
+     "bagId": "0363010000995637"
+    },
+    {
+     "address": "Derde Looiersdwarsstraat 26",
+     "use": "woonfunctie",
+     "areaM2": 86,
+     "bagId": "0363010000995638"
+    },
+    {
+     "address": "Derde Looiersdwarsstraat 28",
+     "use": "woonfunctie",
+     "areaM2": 82,
+     "bagId": "0363010000995639"
+    },
+    {
+     "address": "Derde Looiersdwarsstraat 30",
+     "use": "woonfunctie",
+     "areaM2": 91,
+     "bagId": "0363010000995640"
+    },
+    {
+     "address": "Derde Looiersdwarsstraat 32",
+     "use": "woonfunctie",
+     "areaM2": 110,
+     "bagId": "0363010000995641"
+    },
+    {
+     "address": "Looiersgracht 128",
+     "use": "winkelfunctie",
+     "areaM2": 314,
+     "bagId": "0363010000995643"
+    },
+    {
+     "address": "Looiersgracht 118",
+     "use": "woonfunctie",
+     "areaM2": 101,
+     "bagId": "0363010000995644"
+    },
+    {
+     "address": "Looiersgracht 120B",
+     "use": "woonfunctie",
+     "areaM2": 118,
+     "bagId": "0363010000995646"
+    },
+    {
+     "address": "Looiersgracht 120C",
+     "use": "woonfunctie",
+     "areaM2": 93,
+     "bagId": "0363010000995647"
+    },
+    {
+     "address": "Looiersgracht 122A",
+     "use": "woonfunctie",
+     "areaM2": 156,
+     "bagId": "0363010000995648"
+    },
+    {
+     "address": "Looiersgracht 122B",
+     "use": "woonfunctie",
+     "areaM2": 125,
+     "bagId": "0363010000995649"
+    },
+    {
+     "address": "Looiersgracht 124C",
+     "use": "woonfunctie",
+     "areaM2": 93,
+     "bagId": "0363010000995650"
+    },
+    {
+     "address": "Looiersgracht 122C",
+     "use": "woonfunctie",
+     "areaM2": 93,
+     "bagId": "0363010000995651"
+    },
+    {
+     "address": "Looiersgracht 124A",
+     "use": "woonfunctie",
+     "areaM2": 156,
+     "bagId": "0363010000995652"
+    },
+    {
+     "address": "Looiersgracht 126A",
+     "use": "woonfunctie",
+     "areaM2": 161,
+     "bagId": "0363010000995654"
+    },
+    {
+     "address": "Looiersgracht 126B",
+     "use": "woonfunctie",
+     "areaM2": 124,
+     "bagId": "0363010000995655"
+    },
+    {
+     "address": "Looiersgracht 126C",
+     "use": "woonfunctie",
+     "areaM2": 90,
+     "bagId": "0363010000995656"
+    },
+    {
+     "address": "Looiersgracht 124B",
+     "use": "woonfunctie",
+     "areaM2": 124,
+     "bagId": "0363010000995653"
+    },
+    {
+     "address": "Looiersgracht 120A",
+     "use": "woonfunctie",
+     "areaM2": 155,
+     "bagId": "0363010000995645"
+    }
+   ],
+   "units": 25,
+   "osm": []
+  }
+ ]
+}

@@ -1,0 +1,162 @@
+{
+ "street": "Elandsgracht",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-30T00:25:57.491Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012174549",
+   "addresses": [
+    "Elandsgracht 93",
+    "Elandsgracht 95"
+   ],
+   "groundUnits": [
+    {
+     "address": "Elandsgracht 93-H",
+     "use": "woonfunctie",
+     "areaM2": 41,
+     "bagId": "0363010000630951"
+    },
+    {
+     "address": "Elandsgracht 95-H",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000630956"
+    },
+    {
+     "address": "Elandsgracht 93-O",
+     "use": "winkelfunctie",
+     "areaM2": 260,
+     "bagId": "0363010003761581"
+    }
+   ],
+   "units": 9,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11989702361,
+     "lngLat": [
+      4.8794228,
+      52.3690366
+     ],
+     "tags": {
+      "name": "Engels",
+      "opening_hours": "Mo-Fr 09:00-18:00; Sa 09:00-17:00",
+      "shop": "paint"
+     },
+     "fetchedAt": "2026-10-30T00:25:57.491Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012174146",
+   "addresses": [
+    "Elandsgracht 97"
+   ],
+   "groundUnits": [
+    {
+     "address": "Elandsgracht 97-H",
+     "use": "woonfunctie",
+     "areaM2": 41,
+     "bagId": "0363010000630963"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012174145",
+   "addresses": [
+    "Elandsgracht 101"
+   ],
+   "groundUnits": [
+    {
+     "address": "Elandsgracht 101-H",
+     "use": "kantoorfunctie",
+     "areaM2": 84,
+     "bagId": "0363010000630975"
+    }
+   ],
+   "units": 6,
+   "osm": [
+    {
+     "type": "node",
+     "id": 3400742192,
+     "lngLat": [
+      4.8792303,
+      52.3689758
+     ],
+     "tags": {
+      "check_date:opening_hours": "2024-03-21",
+      "name": "Sunfit",
+      "opening_hours:signed": "no",
+      "shop": "beauty"
+     },
+     "fetchedAt": "2026-10-30T00:25:57.491Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012174562",
+   "addresses": [
+    "Elandsgracht 103",
+    "Elandsgracht 103E",
+    "Elandsgracht 103A",
+    "Elandsgracht 103D",
+    "Elandsgracht 103C",
+    "Elandsgracht 103B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Elandsgracht 103-H",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000630979"
+    },
+    {
+     "address": "Elandsgracht 103E",
+     "use": "woonfunctie",
+     "areaM2": 42,
+     "bagId": "0363010003761342"
+    },
+    {
+     "address": "Elandsgracht 103-O",
+     "use": "industriefunctie",
+     "areaM2": 82,
+     "bagId": "0363010011290375"
+    },
+    {
+     "address": "Elandsgracht 103A",
+     "use": "industriefunctie,woonfunctie",
+     "areaM2": 117,
+     "bagId": "0363010012068074"
+    },
+    {
+     "address": "Elandsgracht 103D",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010012068078"
+    },
+    {
+     "address": "Elandsgracht 103C",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010012068079"
+    },
+    {
+     "address": "Elandsgracht 103B",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010012068080"
+    }
+   ],
+   "units": 13,
+   "osm": []
+  }
+ ]
+}

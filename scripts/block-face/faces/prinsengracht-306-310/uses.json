@@ -1,0 +1,78 @@
+{
+ "street": "Prinsengracht",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-30T02:27:02.389Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012173881",
+   "addresses": [
+    "Prinsengracht 310"
+   ],
+   "groundUnits": [
+    {
+     "address": "Prinsengracht 310-H",
+     "use": "winkelfunctie",
+     "areaM2": 93,
+     "bagId": "0363010000966755"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012173879",
+   "addresses": [
+    "Prinsengracht 308A",
+    "Prinsengracht 308B",
+    "Prinsengracht 308C",
+    "Prinsengracht 308D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Prinsengracht 308A",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000784514"
+    },
+    {
+     "address": "Prinsengracht 308B",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 62,
+     "bagId": "0363010000784515"
+    },
+    {
+     "address": "Prinsengracht 308C",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010000784516"
+    },
+    {
+     "address": "Prinsengracht 308D",
+     "use": "woonfunctie",
+     "areaM2": 78,
+     "bagId": "0363010000784520"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012173858",
+   "addresses": [
+    "Prinsengracht 306"
+   ],
+   "groundUnits": [
+    {
+     "address": "Prinsengracht 306-H",
+     "use": "winkelfunctie,woonfunctie",
+     "areaM2": 84,
+     "bagId": "0363010000784511"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  }
+ ]
+}

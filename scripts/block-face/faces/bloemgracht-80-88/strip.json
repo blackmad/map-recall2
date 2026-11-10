@@ -1,0 +1,230 @@
+{
+ "face": "bloemgracht-80-88",
+ "image": "staging/block-face/bloemgracht-80-88/strip.jpg",
+ "pixelsPerMetre": 40,
+ "width": 1116,
+ "height": 818,
+ "groundNAP": 0.589,
+ "heightM": 20.44,
+ "frame": {
+  "midRD": [
+   120513.75460000001,
+   487561.27365000005
+  ],
+  "uRD": [
+   0.9493493524581518,
+   0.31422254372862524
+  ],
+  "nRD": [
+   0.31422254372862524,
+   -0.9493493524581518
+  ]
+ },
+ "x0M": -13.71,
+ "x1M": 14.19,
+ "date": "2023-03-13",
+ "coverage": 1,
+ "spans": [
+  {
+   "pandId": "0363100012169913",
+   "x0M": -13.71,
+   "x1M": -8.66,
+   "px": [
+    0,
+    202
+   ],
+   "date": "2023-03-13",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "TMX7316010203-002996_pano_0001_000061",
+     "timestamp": "2023-03-13T10:41:04.246400Z",
+     "distanceM": 25.1,
+     "obliquityDeg": 1.2,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-002996_pano_0001_000062",
+     "timestamp": "2023-03-13T10:41:04.841370Z",
+     "distanceM": 25.5,
+     "obliquityDeg": 10,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-002996_pano_0001_000060",
+     "timestamp": "2023-03-13T10:41:03.641360Z",
+     "distanceM": 25.5,
+     "obliquityDeg": 12.3,
+     "missingFraction": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012169905",
+   "x0M": -8.66,
+   "x1M": -3.02,
+   "px": [
+    202,
+    428
+   ],
+   "date": "2023-03-13",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "TMX7316010203-002996_pano_0001_000062",
+     "timestamp": "2023-03-13T10:41:04.841370Z",
+     "distanceM": 24.7,
+     "obliquityDeg": 0.4,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-002996_pano_0001_000061",
+     "timestamp": "2023-03-13T10:41:04.246400Z",
+     "distanceM": 25.3,
+     "obliquityDeg": 10.8,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-002996_pano_0001_000063",
+     "timestamp": "2023-03-13T10:41:05.446370Z",
+     "distanceM": 25,
+     "obliquityDeg": 11.8,
+     "missingFraction": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012169914",
+   "x0M": -3.02,
+   "x1M": 2.97,
+   "px": [
+    428,
+    668
+   ],
+   "date": "2023-03-13",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "TMX7316010203-002996_pano_0001_000063",
+     "timestamp": "2023-03-13T10:41:05.446370Z",
+     "distanceM": 24.6,
+     "obliquityDeg": 3.6,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-002996_pano_0001_000064",
+     "timestamp": "2023-03-13T10:41:06.086340Z",
+     "distanceM": 24.8,
+     "obliquityDeg": 7.9,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-002996_pano_0001_000062",
+     "timestamp": "2023-03-13T10:41:04.841370Z",
+     "distanceM": 25.4,
+     "obliquityDeg": 14.7,
+     "missingFraction": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012169915",
+   "x0M": 2.97,
+   "x1M": 8.47,
+   "px": [
+    667,
+    887
+   ],
+   "date": "2023-03-13",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "TMX7316010203-002996_pano_0001_000064",
+     "timestamp": "2023-03-13T10:41:06.086340Z",
+     "distanceM": 24.8,
+     "obliquityDeg": 4.9,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-002996_pano_0001_000065",
+     "timestamp": "2023-03-13T10:41:06.801320Z",
+     "distanceM": 24.8,
+     "obliquityDeg": 6.4,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-002996_pano_0001_000063",
+     "timestamp": "2023-03-13T10:41:05.446370Z",
+     "distanceM": 25.7,
+     "obliquityDeg": 15.9,
+     "missingFraction": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012169916",
+   "x0M": 8.48,
+   "x1M": 14.19,
+   "px": [
+    888,
+    1116
+   ],
+   "date": "2023-03-13",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "TMX7316010203-002996_pano_0001_000066",
+     "timestamp": "2023-03-13T10:41:07.546350Z",
+     "distanceM": 24.6,
+     "obliquityDeg": 3.9,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-002996_pano_0001_000065",
+     "timestamp": "2023-03-13T10:41:06.801320Z",
+     "distanceM": 24.7,
+     "obliquityDeg": 7.5,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-002996_pano_0001_000067",
+     "timestamp": "2023-03-13T10:41:08.281340Z",
+     "distanceM": 25.5,
+     "obliquityDeg": 15.1,
+     "missingFraction": 0
+    }
+   ]
+  }
+ ],
+ "candidatesByDate": {
+  "2016-08-17": 5,
+  "2023-02-13": 5,
+  "2025-07-03": 5,
+  "2023-02-06": 5,
+  "2018-05-14": 0,
+  "2023-01-11": 5,
+  "2020-01-10": 5,
+  "2024-12-16": 5,
+  "2023-02-20": 5,
+  "2023-03-06": 5,
+  "2023-03-20": 0,
+  "2018-05-02": 5,
+  "2019-05-13": 5,
+  "2022-04-29": 5,
+  "2023-01-30": 5,
+  "2023-03-13": 5,
+  "2023-03-27": 5,
+  "2023-02-27": 5,
+  "2020-04-24": 5,
+  "2019-01-15": 3,
+  "2021-03-17": 5,
+  "2022-04-22": 5,
+  "2021-01-22": 5,
+  "2017-03-13": 5,
+  "2024-12-17": 1,
+  "2018-05-03": 1,
+  "2023-01-16": 5
+ },
+ "description": "Rectified orthographic elevation of the whole face on the frontage planes: x = chunk-frame metres along the face (left→right seen from the street) from x0M, y = metres above the shared ground (groundNAP) from the bottom; grey = no panorama data. Per-pand spans list the panoramas median-fused for that frontage.",
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (CC BY 4.0; faces and number plates blurred by the publisher)"
+}

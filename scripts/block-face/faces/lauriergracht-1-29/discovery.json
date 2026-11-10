@@ -1,0 +1,724 @@
+{
+ "street": "Lauriergracht",
+ "seed": "0363100012173922",
+ "members": [
+  "0363100012173922",
+  "0363100012173928",
+  "0363100012173927",
+  "0363100012173926",
+  "0363100012173930",
+  "0363100012173929",
+  "0363100012173910",
+  "0363100012253926",
+  "0363100012173913",
+  "0363100012173932",
+  "0363100012173933",
+  "0363100012173934",
+  "0363100012173914"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "trimmed at 0363100012173922 (face continues: 173923)"
+  },
+  {
+   "side": "right",
+   "reason": "next fronting pand 0363100012169605 19.7 m on shares no party wall (cross street or gap)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012168551",
+   "reason": "frontage 38.4 m from Lauriergracht"
+  },
+  {
+   "pandId": "0363100012168594",
+   "reason": "sightline to Lauriergracht crosses 0363100012169613"
+  },
+  {
+   "pandId": "0363100012168598",
+   "reason": "frontage 34.3 m from Lauriergracht"
+  },
+  {
+   "pandId": "0363100012168599",
+   "reason": "frontage 49.9 m from Lauriergracht"
+  },
+  {
+   "pandId": "0363100012169025",
+   "reason": "frontage 71.3 m from Lauriergracht"
+  },
+  {
+   "pandId": "0363100012169026",
+   "reason": "frontage 71.3 m from Lauriergracht"
+  },
+  {
+   "pandId": "0363100012169596",
+   "reason": "sightline to Lauriergracht crosses 0363100012168594"
+  },
+  {
+   "pandId": "0363100012169597",
+   "reason": "sightline to Lauriergracht crosses 0363100012168594"
+  },
+  {
+   "pandId": "0363100012169602",
+   "reason": "frontage 39.9 m from Lauriergracht"
+  },
+  {
+   "pandId": "0363100012169603",
+   "reason": "frontage 48.2 m from Lauriergracht"
+  },
+  {
+   "pandId": "0363100012169606",
+   "reason": "sightline to Lauriergracht crosses 0363100012173934"
+  },
+  {
+   "pandId": "0363100012169954",
+   "reason": "frontage 34.1 m from Lauriergracht"
+  },
+  {
+   "pandId": "0363100012169956",
+   "reason": "sightline to Lauriergracht crosses 0363100012169959"
+  },
+  {
+   "pandId": "0363100012169958",
+   "reason": "sightline to Lauriergracht crosses 0363100012169956"
+  },
+  {
+   "pandId": "0363100012169959",
+   "reason": "sightline to Lauriergracht crosses 0363100012169960"
+  },
+  {
+   "pandId": "0363100012170019",
+   "reason": "frontage 71.2 m from Lauriergracht"
+  },
+  {
+   "pandId": "0363100012170020",
+   "reason": "frontage 71.2 m from Lauriergracht"
+  },
+  {
+   "pandId": "0363100012170021",
+   "reason": "frontage 71.3 m from Lauriergracht"
+  },
+  {
+   "pandId": "0363100012170026",
+   "reason": "frontage 51.5 m from Lauriergracht"
+  },
+  {
+   "pandId": "0363100012170027",
+   "reason": "frontage 48.3 m from Lauriergracht"
+  },
+  {
+   "pandId": "0363100012168595",
+   "reason": "frontage 53.4 m from Lauriergracht"
+  },
+  {
+   "pandId": "0363100012168597",
+   "reason": "sightline to Lauriergracht crosses 0363100012173909"
+  },
+  {
+   "pandId": "0363100012168600",
+   "reason": "no frontage on Lauriergracht: No footprint edge faces Lauriergracht"
+  },
+  {
+   "pandId": "0363100012168601",
+   "reason": "frontage 41.5 m from Lauriergracht"
+  },
+  {
+   "pandId": "0363100012169017",
+   "reason": "frontage 84.4 m from Lauriergracht"
+  },
+  {
+   "pandId": "0363100012169381",
+   "reason": "frontage 78.6 m from Lauriergracht"
+  },
+  {
+   "pandId": "0363100012169385",
+   "reason": "frontage 73.1 m from Lauriergracht"
+  },
+  {
+   "pandId": "0363100012169604",
+   "reason": "frontage 35.1 m from Lauriergracht"
+  },
+  {
+   "pandId": "0363100012173591",
+   "reason": "no frontage on Lauriergracht: No footprint edge faces Lauriergracht"
+  },
+  {
+   "pandId": "0363100012173592",
+   "reason": "no frontage on Lauriergracht: No footprint edge faces Lauriergracht"
+  },
+  {
+   "pandId": "0363100012173593",
+   "reason": "frontage 86.1 m from Lauriergracht"
+  },
+  {
+   "pandId": "0363100012173594",
+   "reason": "no frontage on Lauriergracht: No footprint edge faces Lauriergracht"
+  },
+  {
+   "pandId": "0363100012173595",
+   "reason": "frontage 40.0 m from Lauriergracht"
+  },
+  {
+   "pandId": "0363100012173596",
+   "reason": "frontage 40.5 m from Lauriergracht"
+  },
+  {
+   "pandId": "0363100012173597",
+   "reason": "frontage 60.1 m from Lauriergracht"
+  },
+  {
+   "pandId": "0363100012173598",
+   "reason": "frontage 55.9 m from Lauriergracht"
+  },
+  {
+   "pandId": "0363100012173599",
+   "reason": "frontage 76.3 m from Lauriergracht"
+  },
+  {
+   "pandId": "0363100012173600",
+   "reason": "frontage 40.5 m from Lauriergracht"
+  },
+  {
+   "pandId": "0363100012173601",
+   "reason": "frontage 70.3 m from Lauriergracht"
+  },
+  {
+   "pandId": "0363100012173602",
+   "reason": "frontage 65.2 m from Lauriergracht"
+  },
+  {
+   "pandId": "0363100012173904",
+   "reason": "frontage 58.8 m from Lauriergracht"
+  },
+  {
+   "pandId": "0363100012173906",
+   "reason": "frontage 60.8 m from Lauriergracht"
+  },
+  {
+   "pandId": "0363100012173907",
+   "reason": "frontage 67.8 m from Lauriergracht"
+  },
+  {
+   "pandId": "0363100012173908",
+   "reason": "frontage 70.5 m from Lauriergracht"
+  },
+  {
+   "pandId": "0363100012173915",
+   "reason": "sightline to Lauriergracht crosses 0363100012173914"
+  },
+  {
+   "pandId": "0363100012173606",
+   "reason": "frontage 96.2 m from Lauriergracht"
+  },
+  {
+   "pandId": "0363100012173608",
+   "reason": "frontage 76.3 m from Lauriergracht"
+  },
+  {
+   "pandId": "0363100012173609",
+   "reason": "no frontage on Lauriergracht: No footprint edge faces Lauriergracht"
+  },
+  {
+   "pandId": "0363100012173610",
+   "reason": "no frontage on Lauriergracht: No footprint edge faces Lauriergracht"
+  },
+  {
+   "pandId": "0363100012173663",
+   "reason": "frontage 71.5 m from Lauriergracht"
+  },
+  {
+   "pandId": "0363100012173664",
+   "reason": "frontage 76.0 m from Lauriergracht"
+  },
+  {
+   "pandId": "0363100012173665",
+   "reason": "frontage 82.4 m from Lauriergracht"
+  },
+  {
+   "pandId": "0363100012173666",
+   "reason": "frontage 45.6 m from Lauriergracht"
+  },
+  {
+   "pandId": "0363100012173667",
+   "reason": "frontage 64.2 m from Lauriergracht"
+  },
+  {
+   "pandId": "0363100012173668",
+   "reason": "no frontage on Lauriergracht: No footprint edge faces Lauriergracht"
+  },
+  {
+   "pandId": "0363100012173669",
+   "reason": "frontage 71.7 m from Lauriergracht"
+  },
+  {
+   "pandId": "0363100012173673",
+   "reason": "no frontage on Lauriergracht: No footprint edge faces Lauriergracht"
+  },
+  {
+   "pandId": "0363100012173675",
+   "reason": "no frontage on Lauriergracht: No footprint edge faces Lauriergracht"
+  },
+  {
+   "pandId": "0363100012173676",
+   "reason": "no frontage on Lauriergracht: No footprint edge faces Lauriergracht"
+  },
+  {
+   "pandId": "0363100012173677",
+   "reason": "no frontage on Lauriergracht: No footprint edge faces Lauriergracht"
+  },
+  {
+   "pandId": "0363100012173683",
+   "reason": "no frontage on Lauriergracht: No footprint edge faces Lauriergracht"
+  },
+  {
+   "pandId": "0363100012173684",
+   "reason": "frontage 69.7 m from Lauriergracht"
+  },
+  {
+   "pandId": "0363100012173882",
+   "reason": "frontage 63.7 m from Lauriergracht"
+  },
+  {
+   "pandId": "0363100012173894",
+   "reason": "frontage 80.6 m from Lauriergracht"
+  },
+  {
+   "pandId": "0363100012173895",
+   "reason": "frontage 80.2 m from Lauriergracht"
+  },
+  {
+   "pandId": "0363100012173900",
+   "reason": "frontage 81.0 m from Lauriergracht"
+  },
+  {
+   "pandId": "0363100012173902",
+   "reason": "frontage 65.8 m from Lauriergracht"
+  },
+  {
+   "pandId": "0363100012173903",
+   "reason": "frontage 87.1 m from Lauriergracht"
+  },
+  {
+   "pandId": "0363100012173905",
+   "reason": "frontage 63.7 m from Lauriergracht"
+  },
+  {
+   "pandId": "0363100012173911",
+   "reason": "frontage 36.5 m from Lauriergracht"
+  },
+  {
+   "pandId": "0363100012173912",
+   "reason": "frontage 31.2 m from Lauriergracht"
+  },
+  {
+   "pandId": "0363100012173924",
+   "reason": "sightline to Lauriergracht crosses 0363100012173925"
+  },
+  {
+   "pandId": "0363100012173925",
+   "reason": "sightline to Lauriergracht crosses 0363100012173927"
+  },
+  {
+   "pandId": "0363100012173956",
+   "reason": "frontage 45.4 m from Lauriergracht"
+  },
+  {
+   "pandId": "0363100012173957",
+   "reason": "frontage 48.4 m from Lauriergracht"
+  },
+  {
+   "pandId": "0363100012173958",
+   "reason": "frontage 48.4 m from Lauriergracht"
+  },
+  {
+   "pandId": "0363100012173959",
+   "reason": "frontage 52.1 m from Lauriergracht"
+  },
+  {
+   "pandId": "0363100012173960",
+   "reason": "frontage 49.6 m from Lauriergracht"
+  },
+  {
+   "pandId": "0363100012173961",
+   "reason": "frontage 71.4 m from Lauriergracht"
+  },
+  {
+   "pandId": "0363100012173962",
+   "reason": "frontage 71.2 m from Lauriergracht"
+  },
+  {
+   "pandId": "0363100012173963",
+   "reason": "frontage 71.4 m from Lauriergracht"
+  },
+  {
+   "pandId": "0363100012173965",
+   "reason": "frontage 71.3 m from Lauriergracht"
+  },
+  {
+   "pandId": "0363100012173966",
+   "reason": "frontage 71.1 m from Lauriergracht"
+  },
+  {
+   "pandId": "0363100012173971",
+   "reason": "frontage 48.2 m from Lauriergracht"
+  },
+  {
+   "pandId": "0363100012250988",
+   "reason": "frontage 42.2 m from Lauriergracht"
+  },
+  {
+   "pandId": "0363100012173931",
+   "reason": "sightline to Lauriergracht crosses 0363100012173924"
+  },
+  {
+   "pandId": "0363100012173935",
+   "reason": "frontage 43.1 m from Lauriergracht"
+  },
+  {
+   "pandId": "0363100012173936",
+   "reason": "frontage 52.2 m from Lauriergracht"
+  },
+  {
+   "pandId": "0363100012173937",
+   "reason": "frontage 54.9 m from Lauriergracht"
+  },
+  {
+   "pandId": "0363100012173945",
+   "reason": "sightline to Lauriergracht crosses 0363100012168597"
+  },
+  {
+   "pandId": "0363100012173946",
+   "reason": "sightline to Lauriergracht crosses 0363100012168597"
+  },
+  {
+   "pandId": "0363100012173947",
+   "reason": "frontage 45.5 m from Lauriergracht"
+  },
+  {
+   "pandId": "0363100012173949",
+   "reason": "frontage 51.7 m from Lauriergracht"
+  },
+  {
+   "pandId": "0363100012173950",
+   "reason": "frontage 53.2 m from Lauriergracht"
+  },
+  {
+   "pandId": "0363100012173967",
+   "reason": "sightline to Lauriergracht crosses 0363100012173916"
+  },
+  {
+   "pandId": "0363100012173968",
+   "reason": "frontage 34.2 m from Lauriergracht"
+  },
+  {
+   "pandId": "0363100012173969",
+   "reason": "frontage 48.6 m from Lauriergracht"
+  },
+  {
+   "pandId": "0363100012173970",
+   "reason": "frontage 45.5 m from Lauriergracht"
+  },
+  {
+   "pandId": "0363100012173973",
+   "reason": "sightline to Lauriergracht crosses 0363100012168597"
+  },
+  {
+   "pandId": "0363100012173974",
+   "reason": "sightline to Lauriergracht crosses 0363100012168597"
+  },
+  {
+   "pandId": "0363100012174129",
+   "reason": "no frontage on Lauriergracht: No footprint edge faces Lauriergracht"
+  },
+  {
+   "pandId": "0363100012174603",
+   "reason": "frontage 105.9 m from Lauriergracht"
+  },
+  {
+   "pandId": "0363100012174604",
+   "reason": "frontage 99.4 m from Lauriergracht"
+  },
+  {
+   "pandId": "0363100012174605",
+   "reason": "frontage 92.4 m from Lauriergracht"
+  },
+  {
+   "pandId": "0363100012174685",
+   "reason": "no frontage on Lauriergracht: No footprint edge faces Lauriergracht"
+  },
+  {
+   "pandId": "0363100012174688",
+   "reason": "frontage 86.2 m from Lauriergracht"
+  },
+  {
+   "pandId": "0363100012174870",
+   "reason": "frontage 84.8 m from Lauriergracht"
+  },
+  {
+   "pandId": "0363100012174880",
+   "reason": "frontage 41.6 m from Lauriergracht"
+  },
+  {
+   "pandId": "0363100012174881",
+   "reason": "frontage 49.4 m from Lauriergracht"
+  },
+  {
+   "pandId": "0363100012174882",
+   "reason": "frontage 43.8 m from Lauriergracht"
+  },
+  {
+   "pandId": "0363100012174883",
+   "reason": "frontage 42.1 m from Lauriergracht"
+  },
+  {
+   "pandId": "0363100012174884",
+   "reason": "frontage 40.8 m from Lauriergracht"
+  },
+  {
+   "pandId": "0363100012174885",
+   "reason": "frontage 65.3 m from Lauriergracht"
+  },
+  {
+   "pandId": "0363100012174960",
+   "reason": "frontage 69.2 m from Lauriergracht"
+  },
+  {
+   "pandId": "0363100012174961",
+   "reason": "frontage 65.8 m from Lauriergracht"
+  },
+  {
+   "pandId": "0363100012174962",
+   "reason": "frontage 68.8 m from Lauriergracht"
+  },
+  {
+   "pandId": "0363100012174963",
+   "reason": "frontage 82.1 m from Lauriergracht"
+  },
+  {
+   "pandId": "0363100012174964",
+   "reason": "no frontage on Lauriergracht: No footprint edge faces Lauriergracht"
+  },
+  {
+   "pandId": "0363100012185768",
+   "reason": "frontage 46.3 m from Lauriergracht"
+  },
+  {
+   "pandId": "0363100012249758",
+   "reason": "frontage 41.1 m from Lauriergracht"
+  },
+  {
+   "pandId": "0363100012249759",
+   "reason": "frontage 39.8 m from Lauriergracht"
+  },
+  {
+   "pandId": "0363100100092555",
+   "reason": "frontage 34.6 m from Lauriergracht"
+  },
+  {
+   "pandId": "0363100100092556",
+   "reason": "frontage 35.1 m from Lauriergracht"
+  },
+  {
+   "pandId": "0363100012571513",
+   "reason": "frontage 47.5 m from Lauriergracht"
+  },
+  {
+   "pandId": "0363100012169608",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012169609",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012169610",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012169611",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012169613",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012169955",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012169960",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012169607",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012173918",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012173919",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012173920",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012173921",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012173909",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012173916",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012173917",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012173922",
+   "alongM": 0,
+   "widthM": 4.45,
+   "eavesM": 11.36,
+   "roofMaxM": 13.98,
+   "storeys3dbag": 4,
+   "builtYear": 1990,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012173928",
+   "alongM": 4.37,
+   "widthM": 4.3,
+   "eavesM": 9.11,
+   "roofMaxM": 12.21,
+   "storeys3dbag": 4,
+   "builtYear": 1905,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012173927",
+   "alongM": 8.67,
+   "widthM": 4.3,
+   "eavesM": 8.8,
+   "roofMaxM": 11.66,
+   "storeys3dbag": 4,
+   "builtYear": 1828,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012173926",
+   "alongM": 12.94,
+   "widthM": 4.25,
+   "eavesM": 8.92,
+   "roofMaxM": 10.84,
+   "storeys3dbag": 3,
+   "builtYear": 1849,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012173930",
+   "alongM": 17.35,
+   "widthM": 4.59,
+   "eavesM": 9.38,
+   "roofMaxM": 10.79,
+   "storeys3dbag": 3,
+   "builtYear": 1866,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012173929",
+   "alongM": 21.98,
+   "widthM": 4.69,
+   "eavesM": 8.73,
+   "roofMaxM": 11.77,
+   "storeys3dbag": 4,
+   "builtYear": 1857,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012173910",
+   "alongM": 27.22,
+   "widthM": 5.81,
+   "eavesM": 10.87,
+   "roofMaxM": 16.35,
+   "storeys3dbag": 4,
+   "builtYear": 1905,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012253926",
+   "alongM": 35.23,
+   "widthM": 10.23,
+   "eavesM": 12.24,
+   "roofMaxM": 16.32,
+   "storeys3dbag": 4,
+   "builtYear": 1936,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012173913",
+   "alongM": 44.5,
+   "widthM": 8.31,
+   "eavesM": 8,
+   "roofMaxM": 12.87,
+   "storeys3dbag": 4,
+   "builtYear": 1735,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012173932",
+   "alongM": 50.77,
+   "widthM": 4.26,
+   "eavesM": 13.16,
+   "roofMaxM": 16.3,
+   "storeys3dbag": 5,
+   "builtYear": 1658,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012173933",
+   "alongM": 55.26,
+   "widthM": 4.72,
+   "eavesM": 12.92,
+   "roofMaxM": 18.08,
+   "storeys3dbag": 5,
+   "builtYear": 1937,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012173934",
+   "alongM": 59.7,
+   "widthM": 4.17,
+   "eavesM": 16.1,
+   "roofMaxM": 18.29,
+   "storeys3dbag": 5,
+   "builtYear": 1995,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012173914",
+   "alongM": 64.31,
+   "widthM": 5.05,
+   "eavesM": 13.26,
+   "roofMaxM": 16.26,
+   "storeys3dbag": 5,
+   "builtYear": 1889,
+   "uncertainty": []
+  }
+ ]
+}

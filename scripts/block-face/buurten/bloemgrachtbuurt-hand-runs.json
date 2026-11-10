@@ -1,0 +1,95 @@
+{
+ "note": "Runs placed by the lane from the strips (scripts/block-face/hand-place.ts): per pand the type, crown and storey count read at full size on the 2023-03-13 strips. Auto-place cannot read these rows: BAG dates restorations (1940, 1981), the skyline reads a tile saddle behind a cornice as a bell gable, and one row mixes 2.4 m and 3.3 m storeys. The Opus strip review confirms or amends.",
+ "reviewed": "2026-11-10",
+ "runs": [
+  {
+   "id": "egelantiersgracht-3-43-h1",
+   "face": "egelantiersgracht-3-43",
+   "reason": "Egelantiersgracht 11-13 (strip 2023-03-13): two cornice houses (15, the raised neck gable, does not compile: its frontage is not one straight wall)",
+   "houses": [
+    {
+     "pand": "174703",
+     "type": "jordaan-1850-cornice-house",
+     "crown": "dormer",
+     "storeys": 4,
+     "why": "Egelantiersgracht 11: two axes, ground and three storeys, white cornice at 11.3-12 m with one small dormer over the middle",
+     "eavesM": 12.0
+    },
+    {
+     "pand": "174775",
+     "type": "jordaan-1850-cornice-house",
+     "storeys": 4,
+     "why": "Egelantiersgracht 13: three axes, ground and three storeys under a plain white cornice at ~12.5 m (front behind a bare tree)",
+     "eavesM": 12.5
+    }
+   ]
+  },
+  {
+   "id": "egelantiersgracht-3-43-h2",
+   "face": "egelantiersgracht-3-43",
+   "reason": "Egelantiersgracht 19-27 (strip 2023-03-13): a cornice house with a dormer, two small bell gables, two cornice houses",
+   "houses": [
+    {
+     "pand": "174965",
+     "type": "jordaan-1850-cornice-house",
+     "storeys": 4,
+     "why": "Egelantiersgracht 19: three axes, ground and three storeys, white cornice at ~12 m with a small dormer (the small dormer is not drawn: the kit's dormer frame reaches past its dormer wall here, geometry audit opening-outside)",
+     "eavesM": 12.3,
+     "roof": {
+      "form": "attic",
+      "rise": 0.6,
+      "evidence": "strip 2023-03-13: a tile or slate roof face rises behind the cornice (3DBAG's p95 under 1.5 m over the cornice line drew a flat roof)"
+     }
+    },
+    {
+     "pand": "174781",
+     "type": "jordaan-1750-neck-gable",
+     "crown": "bell-low",
+     "storeys": 3,
+     "why": "Egelantiersgracht 21: three axes, ground and two storeys, a bell gable with one attic light to ~12.3 m",
+     "eavesM": 9.8
+    },
+    {
+     "pand": "174968",
+     "type": "jordaan-1750-neck-gable",
+     "crown": "bell-low",
+     "storeys": 3,
+     "why": "Egelantiersgracht 23: three axes, ground and two low storeys, a bell gable to ~12.3 m",
+     "eavesM": 9.8
+    },
+    {
+     "pand": "174977",
+     "type": "jordaan-1850-cornice-house",
+     "storeys": 4,
+     "why": "Egelantiersgracht 25: dark front behind a tree, ground and three storeys under a white cornice at ~12 m",
+     "eavesM": 12.0,
+     "roof": {
+      "form": "attic",
+      "rise": 0.6,
+      "evidence": "strip 2023-03-13: a tile or slate roof face rises behind the cornice (3DBAG's p95 under 1.5 m over the cornice line drew a flat roof)"
+     }
+    },
+    {
+     "pand": "174976",
+     "type": "jordaan-1850-cornice-house",
+     "storeys": 4,
+     "why": "Egelantiersgracht 27: three axes of white-framed windows, a white ground storey, ground and three storeys, a white frieze cornice at 12.5-13.2 m and a red tile saddle behind it (not a gable)",
+     "eavesM": 13.2,
+     "overrides": {
+      "paintedStoreys": {
+       "storeys": [
+        0
+       ],
+       "colour": "#e6e3da"
+      }
+     },
+     "roof": {
+      "form": "attic",
+      "rise": 0.6,
+      "evidence": "strip 2023-03-13: a tile or slate roof face rises behind the cornice (3DBAG's p95 under 1.5 m over the cornice line drew a flat roof)"
+     }
+    }
+   ]
+  }
+ ]
+}

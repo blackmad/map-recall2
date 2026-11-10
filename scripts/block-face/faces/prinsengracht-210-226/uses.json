@@ -1,0 +1,281 @@
+{
+ "street": "Prinsengracht",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-30T02:06:27.259Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012173939",
+   "addresses": [
+    "Prinsengracht 226"
+   ],
+   "groundUnits": [
+    {
+     "address": "Prinsengracht 226-H",
+     "use": "winkelfunctie",
+     "areaM2": 167,
+     "bagId": "0363010011211605"
+    },
+    {
+     "address": "Prinsengracht 226-H",
+     "use": "winkelfunctie",
+     "areaM2": 113,
+     "bagId": "0363010012078751"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012173944",
+   "addresses": [
+    "Prinsengracht 224A",
+    "Prinsengracht 224B",
+    "Prinsengracht 224C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Prinsengracht 224A",
+     "use": "woonfunctie",
+     "areaM2": 84,
+     "bagId": "0363010000784195"
+    },
+    {
+     "address": "Prinsengracht 224B",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010000784196"
+    },
+    {
+     "address": "Prinsengracht 224C",
+     "use": "woonfunctie",
+     "areaM2": 87,
+     "bagId": "0363010000784197"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012173943",
+   "addresses": [
+    "Prinsengracht 222A",
+    "Prinsengracht 222B",
+    "Prinsengracht 222C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Prinsengracht 222A",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010000784192"
+    },
+    {
+     "address": "Prinsengracht 222B",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010000784193"
+    },
+    {
+     "address": "Prinsengracht 222C",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000784194"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012173941",
+   "addresses": [
+    "Prinsengracht 220"
+   ],
+   "groundUnits": [
+    {
+     "address": "Prinsengracht 220-H",
+     "use": "industriefunctie",
+     "areaM2": 103,
+     "bagId": "0363010000993429"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012173942",
+   "addresses": [
+    "Prinsengracht 218"
+   ],
+   "groundUnits": [
+    {
+     "address": "Prinsengracht 218-H",
+     "use": "winkelfunctie",
+     "areaM2": 59,
+     "bagId": "0363010000784187"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012168636",
+   "addresses": [
+    "Prinsengracht 214B",
+    "Prinsengracht 214C",
+    "Prinsengracht 214D",
+    "Prinsengracht 214A",
+    "Prinsengracht 214E",
+    "Prinsengracht 216B",
+    "Prinsengracht 216C",
+    "Prinsengracht 216D",
+    "Prinsengracht 216E",
+    "Prinsengracht 216A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Prinsengracht 214B",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000784176"
+    },
+    {
+     "address": "Prinsengracht 214C",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000784177"
+    },
+    {
+     "address": "Prinsengracht 214D",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000784179"
+    },
+    {
+     "address": "Prinsengracht 216B",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000784183"
+    },
+    {
+     "address": "Prinsengracht 216C",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000784184"
+    },
+    {
+     "address": "Prinsengracht 216D",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000784185"
+    },
+    {
+     "address": "Prinsengracht 214A",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000784175"
+    },
+    {
+     "address": "Prinsengracht 216E",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000784186"
+    },
+    {
+     "address": "Prinsengracht 214E",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000784180"
+    },
+    {
+     "address": "Prinsengracht 216A",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000784182"
+    }
+   ],
+   "units": 10,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012173979",
+   "addresses": [
+    "Prinsengracht 210A",
+    "Prinsengracht 210B",
+    "Prinsengracht 210C",
+    "Prinsengracht 210D",
+    "Prinsengracht 210E",
+    "Prinsengracht 212A",
+    "Prinsengracht 212B",
+    "Prinsengracht 212C",
+    "Prinsengracht 212D",
+    "Prinsengracht 212E"
+   ],
+   "groundUnits": [
+    {
+     "address": "Prinsengracht 212A",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010000784161"
+    },
+    {
+     "address": "Prinsengracht 212B",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000784162"
+    },
+    {
+     "address": "Prinsengracht 212C",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000784163"
+    },
+    {
+     "address": "Prinsengracht 212D",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000784164"
+    },
+    {
+     "address": "Prinsengracht 212E",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000784165"
+    },
+    {
+     "address": "Prinsengracht 210A",
+     "use": "woonfunctie",
+     "areaM2": 87,
+     "bagId": "0363010000784145"
+    },
+    {
+     "address": "Prinsengracht 210B",
+     "use": "woonfunctie",
+     "areaM2": 87,
+     "bagId": "0363010000784148"
+    },
+    {
+     "address": "Prinsengracht 210C",
+     "use": "woonfunctie",
+     "areaM2": 87,
+     "bagId": "0363010000784149"
+    },
+    {
+     "address": "Prinsengracht 210D",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000784150"
+    },
+    {
+     "address": "Prinsengracht 210E",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000784151"
+    }
+   ],
+   "units": 10,
+   "osm": []
+  }
+ ]
+}

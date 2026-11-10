@@ -1,0 +1,231 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "lauriergracht-62-110-h2",
+ "street": "Lauriergracht",
+ "sources": [
+  {
+   "id": "strip-2023-03-20",
+   "kind": "street-panorama",
+   "capturedAt": "2023-03-20",
+   "image": "staging/block-face/lauriergracht-62-110-h2/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "lane hand placement (scripts/block-face/hand-place.ts)",
+  "passes": 1,
+  "note": "Lauriergracht 78-86 (strip 2023-03-20): 1840-1910 cornice fronts with white keystones and pedimented dormers, one painted white (88 is left out: BAG leaves a 0.9 m gap between 88 and 86); spec scripts/block-face/buurten/elandsgrachtbuurt-hand-runs.json"
+ },
+ "types": [
+  "jordaan-1850-cornice-house"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012169946",
+   "slug": "lauriergracht-169946",
+   "address": "Lauriergracht 86",
+   "type": {
+    "type": "jordaan-1850-cornice-house",
+    "overrides": {
+     "windowSurround": "keystone",
+     "windowShare": 0.6
+    },
+    "measuredPalette": {
+     "brick": "#755f57",
+     "evidence": "strip 2023-03-20 span 2070-2295: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "sportfunctie"
+    ],
+    "photoDate": "2023-03-20",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "hand placement (elandsgrachtbuurt-hand-runs.json): Lauriergracht 86: three axes, ground and three storeys, white keystones, a bracketed cornice at ~14.6 m, red tile roof with one pedimented dormer (the dormer is not drawn: the kit's dormer escapes this pand's surveyed footprint); strip 2023-03-20"
+   }
+  },
+  {
+   "pandId": "0363100012169892",
+   "slug": "lauriergracht-169892",
+   "address": "Lauriergracht 84",
+   "type": {
+    "type": "jordaan-1850-cornice-house",
+    "storeys": 3,
+    "crown": "dormer-low",
+    "overrides": {
+     "windowShare": 0.6
+    },
+    "paletteOverrides": {
+     "brick": "#6e5b52"
+    },
+    "roof": {
+     "material": "slate",
+     "form": "attic",
+     "pitchDeg": 60,
+     "rise": 0.6,
+     "evidence": "strip 2023-03-20: a steep slate roof face rises about 1.8 m behind the cornice to the dormer tops (3DBAG's p95 sits under 1.5 m over the cornice line, which drew a flat roof)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2023-03-20",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "hand placement (elandsgrachtbuurt-hand-runs.json): Lauriergracht 84: three axes, ground and two storeys under a white cornice at ~12.5 m, slate mansard with one pedimented dormer; strip 2023-03-20"
+   }
+  },
+  {
+   "pandId": "0363100012169942",
+   "slug": "lauriergracht-169942",
+   "address": "Lauriergracht 82",
+   "type": {
+    "type": "jordaan-1850-cornice-house",
+    "crown": "dormer-low",
+    "overrides": {
+     "windowShare": 0.6
+    },
+    "paletteOverrides": {
+     "brick": "#e4e2dc",
+     "wallMaterial": "painted-brick"
+    },
+    "roof": {
+     "material": "slate",
+     "evidence": "strip 2023-03-20: a dark slate mansard face behind the cornice"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2023-03-20",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "hand placement (elandsgrachtbuurt-hand-runs.json): Lauriergracht 82: a white painted front, two axes, ground and three storeys, cornice at ~14 m, one dormer; strip 2023-03-20"
+   }
+  },
+  {
+   "pandId": "0363100012169889",
+   "slug": "lauriergracht-169889",
+   "address": "Lauriergracht 80",
+   "type": {
+    "type": "jordaan-1850-cornice-house",
+    "crown": "dormer-low",
+    "overrides": {
+     "windowSurround": "keystone",
+     "windowShare": 0.6
+    },
+    "roof": {
+     "material": "slate",
+     "form": "attic",
+     "pitchDeg": 60,
+     "rise": 0.6,
+     "evidence": "strip 2023-03-20: a steep slate roof face rises about 1.8 m behind the cornice to the dormer tops (3DBAG's p95 sits under 1.5 m over the cornice line, which drew a flat roof)"
+    },
+    "measuredPalette": {
+     "brick": "#7b6964",
+     "evidence": "strip 2023-03-20 span 2710-2931: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "industriefunctie"
+    ],
+    "photoDate": "2023-03-20",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "hand placement (elandsgrachtbuurt-hand-runs.json): Lauriergracht 80: three axes, ground and three storeys with white keystones, cornice at ~13.6 m, a pedimented dormer; strip 2023-03-20"
+   }
+  },
+  {
+   "pandId": "0363100012169943",
+   "slug": "lauriergracht-169943",
+   "address": "Lauriergracht 78A",
+   "type": {
+    "type": "jordaan-1850-cornice-house",
+    "overrides": {
+     "windowHead": {
+      "kind": "segmental"
+     },
+     "windowShare": 0.6
+    },
+    "roof": {
+     "material": "slate",
+     "form": "attic",
+     "pitchDeg": 60,
+     "rise": 0.6,
+     "evidence": "strip 2023-03-20: a steep slate roof face rises about 1.8 m behind the cornice to the dormer tops (3DBAG's p95 sits under 1.5 m over the cornice line, which drew a flat roof)"
+    },
+    "measuredPalette": {
+     "brick": "#8d736a",
+     "evidence": "strip 2023-03-20 span 2930-3126: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2023-03-20",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "hand placement (elandsgrachtbuurt-hand-runs.json): Lauriergracht 78: three axes of segmental-headed white-framed windows, ground and three storeys, a bracketed frieze cornice at ~14.2 m, one pedimented dormer (its dormer is not drawn: the kit's dormer frame pierces a roof plane of this pand's 3DBAG roof, geometry audit opening-outside); strip 2023-03-20"
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "auto-place: low attic behind the cornice; the strips show sky over the cornices of the type rows"
+  },
+  "measuredEaves": [
+   {
+    "pand": "0363100012169946",
+    "stripRow": 222,
+    "evidence": "hand placement: cornice top read at 14.6 m on the strip 2023-03-20"
+   },
+   {
+    "pand": "0363100012169892",
+    "stripRow": 306,
+    "evidence": "hand placement: cornice top read at 12.5 m on the strip 2023-03-20"
+   },
+   {
+    "pand": "0363100012169942",
+    "stripRow": 246,
+    "evidence": "hand placement: cornice top read at 14 m on the strip 2023-03-20"
+   },
+   {
+    "pand": "0363100012169889",
+    "stripRow": 262,
+    "evidence": "hand placement: cornice top read at 13.6 m on the strip 2023-03-20"
+   },
+   {
+    "pand": "0363100012169943",
+    "stripRow": 238,
+    "evidence": "hand placement: cornice top read at 14.2 m on the strip 2023-03-20"
+   }
+  ]
+ }
+}

@@ -1,0 +1,301 @@
+{
+ "street": "Elandsgracht",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-30T00:12:32.244Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012241810",
+   "addresses": [
+    "Elandsgracht 92"
+   ],
+   "groundUnits": [
+    {
+     "address": "Elandsgracht 92",
+     "use": "winkelfunctie",
+     "areaM2": 355,
+     "bagId": "0363010000630950"
+    },
+    {
+     "address": "Elandsgracht 92",
+     "use": "bijeenkomstfunctie,logiesfunctie,overige gebruiksfunctie",
+     "areaM2": 1047,
+     "bagId": "0363010012076466"
+    }
+   ],
+   "units": 2,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2721833844,
+     "lngLat": [
+      4.8799417,
+      52.3695587
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "96-H",
+      "addr:postcode": "1016VA",
+      "addr:street": "Elandsgracht",
+      "check_date": "2024-05-31",
+      "craft": "photographic_laboratory",
+      "email": "info@key-color.nl",
+      "name": "key-color / het fotolab",
+      "opening_hours": "Mo-Fr 09:30-18:00; Sa 10:00-17:00",
+      "phone": "+31 20 620 1418",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "website": "https://www.key-color.nl"
+     },
+     "fetchedAt": "2026-10-30T00:12:32.244Z",
+     "match": "frontage",
+     "distanceM": 5.9
+    },
+    {
+     "type": "node",
+     "id": 7487206400,
+     "lngLat": [
+      4.8800704,
+      52.3695841
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "92",
+      "addr:postcode": "1016TZ",
+      "addr:street": "Elandsgracht",
+      "check_date": "2024-05-31",
+      "name": "Melrose",
+      "source": "BAG",
+      "source:date": "2021-01-29",
+      "tourism": "hotel",
+      "website": "https://www.melrosehotelamsterdam.com"
+     },
+     "fetchedAt": "2026-10-30T00:12:32.244Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012170186",
+   "addresses": [
+    "Elandsgracht 88"
+   ],
+   "groundUnits": [
+    {
+     "address": "Elandsgracht 88-H",
+     "use": "winkelfunctie",
+     "areaM2": 164,
+     "bagId": "0363010000630940"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11989733627,
+     "lngLat": [
+      4.880175,
+      52.3696202
+     ],
+     "tags": {
+      "name": "Edison",
+      "shop": "carpet"
+     },
+     "fetchedAt": "2026-10-30T00:12:32.244Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012170187",
+   "addresses": [
+    "Elandsgracht 86"
+   ],
+   "groundUnits": [
+    {
+     "address": "Elandsgracht 86-H",
+     "use": "kantoorfunctie",
+     "areaM2": 45,
+     "bagId": "0363010000630932"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012170188",
+   "addresses": [
+    "Elandsgracht 84"
+   ],
+   "groundUnits": [
+    {
+     "address": "Elandsgracht 84-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 64,
+     "bagId": "0363010000630923"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2721832085,
+     "lngLat": [
+      4.8802963,
+      52.3696519
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "84-H",
+      "addr:postcode": "1016TZ",
+      "addr:street": "Elandsgracht",
+      "amenity": "bar",
+      "check_date": "2024-03-20",
+      "name": "Bar Oldenhof",
+      "opening_hours": "Su-Th 18:00-01:00, Fr,Sa 18:00-02:00",
+      "source": "BAG",
+      "source:date": "2021-08-08"
+     },
+     "fetchedAt": "2026-10-30T00:12:32.244Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012170189",
+   "addresses": [
+    "Elandsgracht 82A",
+    "Elandsgracht 82B",
+    "Elandsgracht 82C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Elandsgracht 82A",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000630909"
+    },
+    {
+     "address": "Elandsgracht 82B",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010000630910"
+    },
+    {
+     "address": "Elandsgracht 82C",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000630911"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11989742223,
+     "lngLat": [
+      4.8803566,
+      52.3696718
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "82-H",
+      "addr:postcode": "1016TZ",
+      "addr:street": "Elandsgracht",
+      "amenity": "restaurant",
+      "cuisine": "indonesian",
+      "name": "Bromo Indah",
+      "opening_hours": "Su-Fr 16:00-21:30",
+      "website": "https://www.bromo-indah-amsterdam.nl/"
+     },
+     "fetchedAt": "2026-10-30T00:12:32.244Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012170185",
+   "addresses": [
+    "Elandsgracht 80A",
+    "Elandsgracht 80C",
+    "Elandsgracht 80B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Hazenstraat 70-H",
+     "use": "winkelfunctie",
+     "areaM2": 18,
+     "bagId": "0363010000660244"
+    },
+    {
+     "address": "Elandsgracht 80A",
+     "use": "woonfunctie",
+     "areaM2": 64,
+     "bagId": "0363010000959607"
+    },
+    {
+     "address": "Elandsgracht 80C",
+     "use": "winkelfunctie",
+     "areaM2": 36,
+     "bagId": "0363010000959608"
+    },
+    {
+     "address": "Elandsgracht 80B",
+     "use": "woonfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000959609"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2721831003,
+     "lngLat": [
+      4.8803998,
+      52.3698064
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "70-H",
+      "addr:postcode": "1016SR",
+      "addr:street": "Hazenstraat",
+      "name": "Lait De Choco",
+      "opening_hours": "We-Sa 10:30-18:00; Su 12:00-17:00",
+      "shop": "chocolate",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "website": "https://laitdechoco.com"
+     },
+     "fetchedAt": "2026-10-30T00:12:32.244Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 5191165227,
+     "lngLat": [
+      4.8804217,
+      52.3696875
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "80",
+      "addr:street": "Elandsgracht",
+      "check_date": "2025-11-15",
+      "name": "The Barberhood",
+      "shop": "hairdresser"
+     },
+     "fetchedAt": "2026-10-30T00:12:32.244Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,97 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "egelantiersgracht-3-43-h1",
+ "street": "Egelantiersgracht",
+ "sources": [
+  {
+   "id": "strip-2023-03-13",
+   "kind": "street-panorama",
+   "capturedAt": "2023-03-13",
+   "image": "staging/block-face/egelantiersgracht-3-43-h1/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "lane hand placement (scripts/block-face/hand-place.ts)",
+  "passes": 1,
+  "note": "Egelantiersgracht 11-13 (strip 2023-03-13): two cornice houses (15, the raised neck gable, does not compile: its frontage is not one straight wall); spec scripts/block-face/buurten/bloemgrachtbuurt-hand-runs.json"
+ },
+ "types": [
+  "jordaan-1850-cornice-house"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012174703",
+   "slug": "egelantiersgracht-174703",
+   "address": "Egelantiersgracht 11",
+   "type": {
+    "type": "jordaan-1850-cornice-house",
+    "crown": "dormer",
+    "measuredPalette": {
+     "brick": "#463b3d",
+     "evidence": "strip 2023-03-13 span 1184-1395: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2023-03-13",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "hand placement (bloemgrachtbuurt-hand-runs.json): Egelantiersgracht 11: two axes, ground and three storeys, white cornice at 11.3-12 m with one small dormer over the middle; strip 2023-03-13"
+   }
+  },
+  {
+   "pandId": "0363100012174775",
+   "slug": "egelantiersgracht-174775",
+   "address": "Egelantiersgracht 13",
+   "type": {
+    "type": "jordaan-1850-cornice-house",
+    "measuredPalette": {
+     "brick": "#35312c",
+     "evidence": "strip 2023-03-13 span 1395-1600: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2023-03-13",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "hand placement (bloemgrachtbuurt-hand-runs.json): Egelantiersgracht 13: three axes, ground and three storeys under a plain white cornice at ~12.5 m (front behind a bare tree); strip 2023-03-13"
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "auto-place: low attic behind the cornice; the strips show sky over the cornices of the type rows"
+  },
+  "measuredEaves": [
+   {
+    "pand": "0363100012174703",
+    "stripRow": 400,
+    "evidence": "hand placement: cornice top read at 12 m on the strip 2023-03-13"
+   },
+   {
+    "pand": "0363100012174775",
+    "stripRow": 380,
+    "evidence": "hand placement: cornice top read at 12.5 m on the strip 2023-03-13"
+   }
+  ]
+ }
+}

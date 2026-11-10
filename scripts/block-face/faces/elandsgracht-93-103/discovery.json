@@ -1,0 +1,531 @@
+{
+ "street": "Elandsgracht",
+ "seed": "0363100012174549",
+ "members": [
+  "0363100012174549",
+  "0363100012174146",
+  "0363100012174145",
+  "0363100012174562"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "trimmed at 0363100012174549 (face continues: 174550)"
+  },
+  {
+   "side": "right",
+   "reason": "next fronting pand 0363100012174159 15.3 m on shares no party wall (cross street or gap)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012168918",
+   "reason": "sightline to Elandsgracht crosses 0363100012168919"
+  },
+  {
+   "pandId": "0363100012168919",
+   "reason": "sightline to Elandsgracht crosses 0363100012168920"
+  },
+  {
+   "pandId": "0363100012168921",
+   "reason": "frontage 38.7 m from Elandsgracht"
+  },
+  {
+   "pandId": "0363100012168928",
+   "reason": "sightline to Elandsgracht crosses 0363100012174555"
+  },
+  {
+   "pandId": "0363100012168932",
+   "reason": "frontage 68.7 m from Elandsgracht"
+  },
+  {
+   "pandId": "0363100012168937",
+   "reason": "sightline to Elandsgracht crosses 0363100012174158"
+  },
+  {
+   "pandId": "0363100012168938",
+   "reason": "sightline to Elandsgracht crosses 0363100012174155"
+  },
+  {
+   "pandId": "0363100012168940",
+   "reason": "frontage 40.6 m from Elandsgracht"
+  },
+  {
+   "pandId": "0363100012169552",
+   "reason": "sightline to Elandsgracht crosses 0363100012174161"
+  },
+  {
+   "pandId": "0363100012169620",
+   "reason": "frontage 35.0 m from Elandsgracht"
+  },
+  {
+   "pandId": "0363100012170007",
+   "reason": "frontage 37.8 m from Elandsgracht"
+  },
+  {
+   "pandId": "0363100012170008",
+   "reason": "sightline to Elandsgracht crosses 0363100012168951"
+  },
+  {
+   "pandId": "0363100012170009",
+   "reason": "frontage 32.6 m from Elandsgracht"
+  },
+  {
+   "pandId": "0363100012170055",
+   "reason": "frontage 30.7 m from Elandsgracht"
+  },
+  {
+   "pandId": "0363100012170056",
+   "reason": "frontage 34.1 m from Elandsgracht"
+  },
+  {
+   "pandId": "0363100012167468",
+   "reason": "frontage 74.7 m from Elandsgracht"
+  },
+  {
+   "pandId": "0363100012167469",
+   "reason": "frontage 96.1 m from Elandsgracht"
+  },
+  {
+   "pandId": "0363100012167470",
+   "reason": "frontage 59.9 m from Elandsgracht"
+  },
+  {
+   "pandId": "0363100012167471",
+   "reason": "frontage 60.2 m from Elandsgracht"
+  },
+  {
+   "pandId": "0363100012167889",
+   "reason": "frontage 96.0 m from Elandsgracht"
+  },
+  {
+   "pandId": "0363100012167890",
+   "reason": "frontage 90.8 m from Elandsgracht"
+  },
+  {
+   "pandId": "0363100012168916",
+   "reason": "frontage 96.8 m from Elandsgracht"
+  },
+  {
+   "pandId": "0363100012168917",
+   "reason": "frontage 76.2 m from Elandsgracht"
+  },
+  {
+   "pandId": "0363100012169618",
+   "reason": "frontage 96.3 m from Elandsgracht"
+  },
+  {
+   "pandId": "0363100012169619",
+   "reason": "frontage 80.4 m from Elandsgracht"
+  },
+  {
+   "pandId": "0363100012169999",
+   "reason": "frontage 93.5 m from Elandsgracht"
+  },
+  {
+   "pandId": "0363100012170002",
+   "reason": "frontage 103.5 m from Elandsgracht"
+  },
+  {
+   "pandId": "0363100012170004",
+   "reason": "frontage 76.3 m from Elandsgracht"
+  },
+  {
+   "pandId": "0363100012170005",
+   "reason": "frontage 62.1 m from Elandsgracht"
+  },
+  {
+   "pandId": "0363100012170006",
+   "reason": "frontage 54.9 m from Elandsgracht"
+  },
+  {
+   "pandId": "0363100012170060",
+   "reason": "frontage 54.9 m from Elandsgracht"
+  },
+  {
+   "pandId": "0363100012170061",
+   "reason": "frontage 55.1 m from Elandsgracht"
+  },
+  {
+   "pandId": "0363100012170074",
+   "reason": "frontage 42.0 m from Elandsgracht"
+  },
+  {
+   "pandId": "0363100012170120",
+   "reason": "frontage 54.7 m from Elandsgracht"
+  },
+  {
+   "pandId": "0363100012170121",
+   "reason": "frontage 31.7 m from Elandsgracht"
+  },
+  {
+   "pandId": "0363100012170122",
+   "reason": "sightline to Elandsgracht crosses 0363100012253731"
+  },
+  {
+   "pandId": "0363100012170123",
+   "reason": "sightline to Elandsgracht crosses 0363100012169621"
+  },
+  {
+   "pandId": "0363100012170128",
+   "reason": "sightline to Elandsgracht crosses 0363100012168949"
+  },
+  {
+   "pandId": "0363100012170130",
+   "reason": "sightline to Elandsgracht crosses 0363100012170126"
+  },
+  {
+   "pandId": "0363100012170131",
+   "reason": "frontage 33.3 m from Elandsgracht"
+  },
+  {
+   "pandId": "0363100012170132",
+   "reason": "frontage 36.4 m from Elandsgracht"
+  },
+  {
+   "pandId": "0363100012170138",
+   "reason": "sightline to Elandsgracht crosses 0363100012170185"
+  },
+  {
+   "pandId": "0363100012174093",
+   "reason": "frontage 80.3 m from Elandsgracht"
+  },
+  {
+   "pandId": "0363100012174094",
+   "reason": "frontage 87.7 m from Elandsgracht"
+  },
+  {
+   "pandId": "0363100012174096",
+   "reason": "no frontage on Elandsgracht: No footprint edge faces Elandsgracht"
+  },
+  {
+   "pandId": "0363100012174097",
+   "reason": "frontage 69.3 m from Elandsgracht"
+  },
+  {
+   "pandId": "0363100012174098",
+   "reason": "frontage 49.1 m from Elandsgracht"
+  },
+  {
+   "pandId": "0363100012174099",
+   "reason": "frontage 58.0 m from Elandsgracht"
+  },
+  {
+   "pandId": "0363100012174147",
+   "reason": "sightline to Elandsgracht crosses 0363100012174145"
+  },
+  {
+   "pandId": "0363100012174160",
+   "reason": "frontage 31.3 m from Elandsgracht"
+  },
+  {
+   "pandId": "0363100012170059",
+   "reason": "frontage 54.9 m from Elandsgracht"
+  },
+  {
+   "pandId": "0363100012170064",
+   "reason": "frontage 73.5 m from Elandsgracht"
+  },
+  {
+   "pandId": "0363100012170067",
+   "reason": "frontage 80.0 m from Elandsgracht"
+  },
+  {
+   "pandId": "0363100012174148",
+   "reason": "frontage 31.6 m from Elandsgracht"
+  },
+  {
+   "pandId": "0363100012174149",
+   "reason": "sightline to Elandsgracht crosses 0363100012174152"
+  },
+  {
+   "pandId": "0363100012174150",
+   "reason": "sightline to Elandsgracht crosses 0363100012174159"
+  },
+  {
+   "pandId": "0363100012174151",
+   "reason": "frontage 33.9 m from Elandsgracht"
+  },
+  {
+   "pandId": "0363100012174154",
+   "reason": "sightline to Elandsgracht crosses 0363100012174145"
+  },
+  {
+   "pandId": "0363100012174162",
+   "reason": "frontage 39.2 m from Elandsgracht"
+  },
+  {
+   "pandId": "0363100012174164",
+   "reason": "frontage 39.7 m from Elandsgracht"
+  },
+  {
+   "pandId": "0363100012174165",
+   "reason": "frontage 40.1 m from Elandsgracht"
+  },
+  {
+   "pandId": "0363100012174166",
+   "reason": "sightline to Elandsgracht crosses 0363100012174156"
+  },
+  {
+   "pandId": "0363100012174339",
+   "reason": "frontage 40.1 m from Elandsgracht"
+  },
+  {
+   "pandId": "0363100012174341",
+   "reason": "sightline to Elandsgracht crosses 0363100012174346"
+  },
+  {
+   "pandId": "0363100012174342",
+   "reason": "sightline to Elandsgracht crosses 0363100012174347"
+  },
+  {
+   "pandId": "0363100012174343",
+   "reason": "sightline to Elandsgracht crosses 0363100012174347"
+  },
+  {
+   "pandId": "0363100012174344",
+   "reason": "sightline to Elandsgracht crosses 0363100012168933"
+  },
+  {
+   "pandId": "0363100012174345",
+   "reason": "sightline to Elandsgracht crosses 0363100012168954"
+  },
+  {
+   "pandId": "0363100012174348",
+   "reason": "sightline to Elandsgracht crosses 0363100012174349"
+  },
+  {
+   "pandId": "0363100012174553",
+   "reason": "sightline to Elandsgracht crosses 0363100012174554"
+  },
+  {
+   "pandId": "0363100012174556",
+   "reason": "sightline to Elandsgracht crosses 0363100012174550"
+  },
+  {
+   "pandId": "0363100012174557",
+   "reason": "sightline to Elandsgracht crosses 0363100012174550"
+  },
+  {
+   "pandId": "0363100012174558",
+   "reason": "sightline to Elandsgracht crosses 0363100012174161"
+  },
+  {
+   "pandId": "0363100012174560",
+   "reason": "sightline to Elandsgracht crosses 0363100012174161"
+  },
+  {
+   "pandId": "0363100012242759",
+   "reason": "frontage 39.2 m from Elandsgracht"
+  },
+  {
+   "pandId": "0363100012253731",
+   "reason": "sightline to Elandsgracht crosses 0363100012169621"
+  },
+  {
+   "pandId": "0363100012174467",
+   "reason": "frontage 86.4 m from Elandsgracht"
+  },
+  {
+   "pandId": "0363100012174468",
+   "reason": "frontage 81.7 m from Elandsgracht"
+  },
+  {
+   "pandId": "0363100012174469",
+   "reason": "frontage 74.2 m from Elandsgracht"
+  },
+  {
+   "pandId": "0363100012174470",
+   "reason": "frontage 67.5 m from Elandsgracht"
+  },
+  {
+   "pandId": "0363100012174545",
+   "reason": "frontage 67.4 m from Elandsgracht"
+  },
+  {
+   "pandId": "0363100012174546",
+   "reason": "frontage 52.9 m from Elandsgracht"
+  },
+  {
+   "pandId": "0363100012174547",
+   "reason": "frontage 38.8 m from Elandsgracht"
+  },
+  {
+   "pandId": "0363100012174548",
+   "reason": "frontage 53.0 m from Elandsgracht"
+  },
+  {
+   "pandId": "0363100012240264",
+   "reason": "frontage 93.9 m from Elandsgracht"
+  },
+  {
+   "pandId": "0363100012165428",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012168920",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012168926",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012168929",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012168930",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012168933",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012168935",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012168936",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012168954",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012170185",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012170186",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012170187",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012170188",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012170189",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012170202",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012170203",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012174155",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012174156",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012174157",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012174158",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012174346",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012174347",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012174349",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012174350",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012174351",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012174352",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012174551",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012174552",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012174554",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012174555",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012241810",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012174549",
+   "alongM": 0,
+   "widthM": 11.47,
+   "eavesM": 15.48,
+   "roofMaxM": 19.17,
+   "storeys3dbag": 0,
+   "builtYear": 1920,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012174146",
+   "alongM": 8.63,
+   "widthM": 5.79,
+   "eavesM": 15.46,
+   "roofMaxM": 19.15,
+   "storeys3dbag": 5,
+   "builtYear": 1940,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012174145",
+   "alongM": 14.36,
+   "widthM": 5.68,
+   "eavesM": 13.25,
+   "roofMaxM": 17.65,
+   "storeys3dbag": 5,
+   "builtYear": 1892,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012174562",
+   "alongM": 19.87,
+   "widthM": 5.35,
+   "eavesM": 14.7,
+   "roofMaxM": 18.18,
+   "storeys3dbag": 0,
+   "builtYear": 1005,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  }
+ ]
+}

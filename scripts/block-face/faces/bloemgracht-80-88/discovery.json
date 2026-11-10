@@ -1,0 +1,823 @@
+{
+ "street": "Bloemgracht",
+ "seed": "0363100012169916",
+ "members": [
+  "0363100012169913",
+  "0363100012169905",
+  "0363100012169914",
+  "0363100012169915",
+  "0363100012169916"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "trimmed at 0363100012169913 (face continues: 174186 168077 168076 168084 168078 168155 168156 168157 168162 168158 168159 571976 169912 169901)"
+  },
+  {
+   "side": "right",
+   "reason": "trimmed at 0363100012169916 (face continues: 170045)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012168751",
+   "reason": "frontage 53.1 m from Bloemgracht"
+  },
+  {
+   "pandId": "0363100012168763",
+   "reason": "frontage 52.6 m from Bloemgracht"
+  },
+  {
+   "pandId": "0363100012168764",
+   "reason": "frontage 52.6 m from Bloemgracht"
+  },
+  {
+   "pandId": "0363100012168147",
+   "reason": "frontage 31.9 m from Bloemgracht"
+  },
+  {
+   "pandId": "0363100012168148",
+   "reason": "frontage 33.4 m from Bloemgracht"
+  },
+  {
+   "pandId": "0363100012168149",
+   "reason": "frontage 64.5 m from Bloemgracht"
+  },
+  {
+   "pandId": "0363100012168154",
+   "reason": "frontage 123.2 m from Bloemgracht"
+  },
+  {
+   "pandId": "0363100012168160",
+   "reason": "frontage 71.1 m from Bloemgracht"
+  },
+  {
+   "pandId": "0363100012168161",
+   "reason": "frontage 32.5 m from Bloemgracht"
+  },
+  {
+   "pandId": "0363100012168651",
+   "reason": "sightline to Bloemgracht crosses 0363100012170207"
+  },
+  {
+   "pandId": "0363100012168652",
+   "reason": "frontage 31.0 m from Bloemgracht"
+  },
+  {
+   "pandId": "0363100012168653",
+   "reason": "frontage 79.8 m from Bloemgracht"
+  },
+  {
+   "pandId": "0363100012168654",
+   "reason": "frontage 52.7 m from Bloemgracht"
+  },
+  {
+   "pandId": "0363100012168655",
+   "reason": "frontage 33.8 m from Bloemgracht"
+  },
+  {
+   "pandId": "0363100012168657",
+   "reason": "frontage 79.3 m from Bloemgracht"
+  },
+  {
+   "pandId": "0363100012168690",
+   "reason": "frontage 80.1 m from Bloemgracht"
+  },
+  {
+   "pandId": "0363100012168691",
+   "reason": "frontage 70.2 m from Bloemgracht"
+  },
+  {
+   "pandId": "0363100012168692",
+   "reason": "frontage 70.2 m from Bloemgracht"
+  },
+  {
+   "pandId": "0363100012168693",
+   "reason": "frontage 70.2 m from Bloemgracht"
+  },
+  {
+   "pandId": "0363100012168694",
+   "reason": "frontage 73.8 m from Bloemgracht"
+  },
+  {
+   "pandId": "0363100012168707",
+   "reason": "frontage 35.5 m from Bloemgracht"
+  },
+  {
+   "pandId": "0363100012168750",
+   "reason": "frontage 52.7 m from Bloemgracht"
+  },
+  {
+   "pandId": "0363100012168752",
+   "reason": "frontage 52.8 m from Bloemgracht"
+  },
+  {
+   "pandId": "0363100012168753",
+   "reason": "frontage 70.2 m from Bloemgracht"
+  },
+  {
+   "pandId": "0363100012168756",
+   "reason": "frontage 34.5 m from Bloemgracht"
+  },
+  {
+   "pandId": "0363100012168760",
+   "reason": "frontage 70.2 m from Bloemgracht"
+  },
+  {
+   "pandId": "0363100012168761",
+   "reason": "frontage 79.3 m from Bloemgracht"
+  },
+  {
+   "pandId": "0363100012168762",
+   "reason": "frontage 52.6 m from Bloemgracht"
+  },
+  {
+   "pandId": "0363100012169088",
+   "reason": "frontage 88.5 m from Bloemgracht"
+  },
+  {
+   "pandId": "0363100012169091",
+   "reason": "frontage 40.8 m from Bloemgracht"
+  },
+  {
+   "pandId": "0363100012169092",
+   "reason": "frontage 35.4 m from Bloemgracht"
+  },
+  {
+   "pandId": "0363100012169848",
+   "reason": "sightline to Bloemgracht crosses 0363100012168076"
+  },
+  {
+   "pandId": "0363100012169849",
+   "reason": "frontage 33.7 m from Bloemgracht"
+  },
+  {
+   "pandId": "0363100012169898",
+   "reason": "frontage 89.2 m from Bloemgracht"
+  },
+  {
+   "pandId": "0363100012169900",
+   "reason": "frontage 70.5 m from Bloemgracht"
+  },
+  {
+   "pandId": "0363100012169902",
+   "reason": "frontage 73.9 m from Bloemgracht"
+  },
+  {
+   "pandId": "0363100012169903",
+   "reason": "frontage 52.7 m from Bloemgracht"
+  },
+  {
+   "pandId": "0363100012169904",
+   "reason": "frontage 33.1 m from Bloemgracht"
+  },
+  {
+   "pandId": "0363100012169906",
+   "reason": "sightline to Bloemgracht crosses 0363100012170045"
+  },
+  {
+   "pandId": "0363100012169907",
+   "reason": "frontage 81.5 m from Bloemgracht"
+  },
+  {
+   "pandId": "0363100012169908",
+   "reason": "frontage 77.8 m from Bloemgracht"
+  },
+  {
+   "pandId": "0363100012169909",
+   "reason": "frontage 33.8 m from Bloemgracht"
+  },
+  {
+   "pandId": "0363100012169910",
+   "reason": "frontage 32.2 m from Bloemgracht"
+  },
+  {
+   "pandId": "0363100012169911",
+   "reason": "frontage 85.2 m from Bloemgracht"
+  },
+  {
+   "pandId": "0363100012169917",
+   "reason": "sightline to Bloemgracht crosses 0363100012169906"
+  },
+  {
+   "pandId": "0363100012169918",
+   "reason": "frontage 70.3 m from Bloemgracht"
+  },
+  {
+   "pandId": "0363100012169966",
+   "reason": "frontage 65.8 m from Bloemgracht"
+  },
+  {
+   "pandId": "0363100012169967",
+   "reason": "frontage 81.7 m from Bloemgracht"
+  },
+  {
+   "pandId": "0363100012169968",
+   "reason": "frontage 77.7 m from Bloemgracht"
+  },
+  {
+   "pandId": "0363100012169969",
+   "reason": "frontage 85.3 m from Bloemgracht"
+  },
+  {
+   "pandId": "0363100012169970",
+   "reason": "frontage 77.7 m from Bloemgracht"
+  },
+  {
+   "pandId": "0363100012169971",
+   "reason": "frontage 70.7 m from Bloemgracht"
+  },
+  {
+   "pandId": "0363100012169972",
+   "reason": "frontage 70.2 m from Bloemgracht"
+  },
+  {
+   "pandId": "0363100012169973",
+   "reason": "frontage 52.7 m from Bloemgracht"
+  },
+  {
+   "pandId": "0363100012169974",
+   "reason": "frontage 70.6 m from Bloemgracht"
+  },
+  {
+   "pandId": "0363100012169975",
+   "reason": "frontage 65.8 m from Bloemgracht"
+  },
+  {
+   "pandId": "0363100012169976",
+   "reason": "frontage 62.2 m from Bloemgracht"
+  },
+  {
+   "pandId": "0363100012169977",
+   "reason": "frontage 53.1 m from Bloemgracht"
+  },
+  {
+   "pandId": "0363100012169978",
+   "reason": "frontage 70.1 m from Bloemgracht"
+  },
+  {
+   "pandId": "0363100012169979",
+   "reason": "frontage 62.2 m from Bloemgracht"
+  },
+  {
+   "pandId": "0363100012169980",
+   "reason": "frontage 52.6 m from Bloemgracht"
+  },
+  {
+   "pandId": "0363100012169981",
+   "reason": "frontage 33.1 m from Bloemgracht"
+  },
+  {
+   "pandId": "0363100012169982",
+   "reason": "frontage 33.8 m from Bloemgracht"
+  },
+  {
+   "pandId": "0363100012169983",
+   "reason": "frontage 53.8 m from Bloemgracht"
+  },
+  {
+   "pandId": "0363100012169984",
+   "reason": "frontage 53.7 m from Bloemgracht"
+  },
+  {
+   "pandId": "0363100012169985",
+   "reason": "frontage 53.7 m from Bloemgracht"
+  },
+  {
+   "pandId": "0363100012169986",
+   "reason": "frontage 53.5 m from Bloemgracht"
+  },
+  {
+   "pandId": "0363100012169987",
+   "reason": "sightline to Bloemgracht crosses 0363100012169906"
+  },
+  {
+   "pandId": "0363100012172576",
+   "reason": "frontage 64.9 m from Bloemgracht"
+  },
+  {
+   "pandId": "0363100012172577",
+   "reason": "frontage 64.9 m from Bloemgracht"
+  },
+  {
+   "pandId": "0363100012172768",
+   "reason": "frontage 65.0 m from Bloemgracht"
+  },
+  {
+   "pandId": "0363100012172769",
+   "reason": "frontage 64.9 m from Bloemgracht"
+  },
+  {
+   "pandId": "0363100012169988",
+   "reason": "frontage 32.2 m from Bloemgracht"
+  },
+  {
+   "pandId": "0363100012169989",
+   "reason": "sightline to Bloemgracht crosses 0363100012169899"
+  },
+  {
+   "pandId": "0363100012170031",
+   "reason": "frontage 35.7 m from Bloemgracht"
+  },
+  {
+   "pandId": "0363100012170032",
+   "reason": "frontage 53.3 m from Bloemgracht"
+  },
+  {
+   "pandId": "0363100012170033",
+   "reason": "frontage 53.1 m from Bloemgracht"
+  },
+  {
+   "pandId": "0363100012170034",
+   "reason": "frontage 52.8 m from Bloemgracht"
+  },
+  {
+   "pandId": "0363100012170035",
+   "reason": "frontage 52.6 m from Bloemgracht"
+  },
+  {
+   "pandId": "0363100012170036",
+   "reason": "frontage 34.0 m from Bloemgracht"
+  },
+  {
+   "pandId": "0363100012170037",
+   "reason": "sightline to Bloemgracht crosses 0363100012170038"
+  },
+  {
+   "pandId": "0363100012170038",
+   "reason": "sightline to Bloemgracht crosses 0363100012170039"
+  },
+  {
+   "pandId": "0363100012170040",
+   "reason": "frontage 32.8 m from Bloemgracht"
+  },
+  {
+   "pandId": "0363100012170041",
+   "reason": "frontage 33.2 m from Bloemgracht"
+  },
+  {
+   "pandId": "0363100012170042",
+   "reason": "frontage 33.0 m from Bloemgracht"
+  },
+  {
+   "pandId": "0363100012170043",
+   "reason": "frontage 31.5 m from Bloemgracht"
+  },
+  {
+   "pandId": "0363100012170044",
+   "reason": "frontage 52.6 m from Bloemgracht"
+  },
+  {
+   "pandId": "0363100012170046",
+   "reason": "frontage 33.1 m from Bloemgracht"
+  },
+  {
+   "pandId": "0363100012170047",
+   "reason": "frontage 89.6 m from Bloemgracht"
+  },
+  {
+   "pandId": "0363100012170100",
+   "reason": "frontage 87.4 m from Bloemgracht"
+  },
+  {
+   "pandId": "0363100012170155",
+   "reason": "frontage 34.6 m from Bloemgracht"
+  },
+  {
+   "pandId": "0363100012170157",
+   "reason": "frontage 42.9 m from Bloemgracht"
+  },
+  {
+   "pandId": "0363100012170158",
+   "reason": "frontage 45.4 m from Bloemgracht"
+  },
+  {
+   "pandId": "0363100012170211",
+   "reason": "sightline to Bloemgracht crosses 0363100012170207"
+  },
+  {
+   "pandId": "0363100012170214",
+   "reason": "frontage 35.3 m from Bloemgracht"
+  },
+  {
+   "pandId": "0363100012170217",
+   "reason": "frontage 44.4 m from Bloemgracht"
+  },
+  {
+   "pandId": "0363100012170219",
+   "reason": "frontage 44.6 m from Bloemgracht"
+  },
+  {
+   "pandId": "0363100012170220",
+   "reason": "frontage 44.7 m from Bloemgracht"
+  },
+  {
+   "pandId": "0363100012172582",
+   "reason": "frontage 65.0 m from Bloemgracht"
+  },
+  {
+   "pandId": "0363100012172583",
+   "reason": "frontage 65.0 m from Bloemgracht"
+  },
+  {
+   "pandId": "0363100012172860",
+   "reason": "sightline to Bloemgracht crosses 0363100012173054"
+  },
+  {
+   "pandId": "0363100012172861",
+   "reason": "sightline to Bloemgracht crosses 0363100012172858"
+  },
+  {
+   "pandId": "0363100012172882",
+   "reason": "frontage 77.1 m from Bloemgracht"
+  },
+  {
+   "pandId": "0363100012172885",
+   "reason": "frontage 70.0 m from Bloemgracht"
+  },
+  {
+   "pandId": "0363100012173057",
+   "reason": "sightline to Bloemgracht crosses 0363100012173350"
+  },
+  {
+   "pandId": "0363100012173351",
+   "reason": "sightline to Bloemgracht crosses 0363100012172781"
+  },
+  {
+   "pandId": "0363100012173353",
+   "reason": "sightline to Bloemgracht crosses 0363100012172857"
+  },
+  {
+   "pandId": "0363100012173354",
+   "reason": "sightline to Bloemgracht crosses 0363100012172857"
+  },
+  {
+   "pandId": "0363100012174020",
+   "reason": "frontage 35.1 m from Bloemgracht"
+  },
+  {
+   "pandId": "0363100012174021",
+   "reason": "frontage 42.5 m from Bloemgracht"
+  },
+  {
+   "pandId": "0363100012174025",
+   "reason": "frontage 40.9 m from Bloemgracht"
+  },
+  {
+   "pandId": "0363100012174026",
+   "reason": "frontage 40.9 m from Bloemgracht"
+  },
+  {
+   "pandId": "0363100012174027",
+   "reason": "frontage 34.4 m from Bloemgracht"
+  },
+  {
+   "pandId": "0363100012174028",
+   "reason": "frontage 33.9 m from Bloemgracht"
+  },
+  {
+   "pandId": "0363100012174030",
+   "reason": "frontage 34.9 m from Bloemgracht"
+  },
+  {
+   "pandId": "0363100012172886",
+   "reason": "frontage 70.1 m from Bloemgracht"
+  },
+  {
+   "pandId": "0363100012172887",
+   "reason": "frontage 70.1 m from Bloemgracht"
+  },
+  {
+   "pandId": "0363100012172888",
+   "reason": "frontage 70.1 m from Bloemgracht"
+  },
+  {
+   "pandId": "0363100012172889",
+   "reason": "frontage 70.1 m from Bloemgracht"
+  },
+  {
+   "pandId": "0363100012173046",
+   "reason": "frontage 52.7 m from Bloemgracht"
+  },
+  {
+   "pandId": "0363100012173047",
+   "reason": "frontage 52.7 m from Bloemgracht"
+  },
+  {
+   "pandId": "0363100012173050",
+   "reason": "frontage 52.8 m from Bloemgracht"
+  },
+  {
+   "pandId": "0363100012173052",
+   "reason": "frontage 52.8 m from Bloemgracht"
+  },
+  {
+   "pandId": "0363100012173133",
+   "reason": "sightline to Bloemgracht crosses 0363100012173056"
+  },
+  {
+   "pandId": "0363100012173134",
+   "reason": "frontage 33.6 m from Bloemgracht"
+  },
+  {
+   "pandId": "0363100012173135",
+   "reason": "sightline to Bloemgracht crosses 0363100012173048"
+  },
+  {
+   "pandId": "0363100012173339",
+   "reason": "sightline to Bloemgracht crosses 0363100012173055"
+  },
+  {
+   "pandId": "0363100012173340",
+   "reason": "sightline to Bloemgracht crosses 0363100012173056"
+  },
+  {
+   "pandId": "0363100012173341",
+   "reason": "sightline to Bloemgracht crosses 0363100012173049"
+  },
+  {
+   "pandId": "0363100012173343",
+   "reason": "sightline to Bloemgracht crosses 0363100012172859"
+  },
+  {
+   "pandId": "0363100012173344",
+   "reason": "sightline to Bloemgracht crosses 0363100012173051"
+  },
+  {
+   "pandId": "0363100012173421",
+   "reason": "frontage 70.1 m from Bloemgracht"
+  },
+  {
+   "pandId": "0363100012174011",
+   "reason": "sightline to Bloemgracht crosses 0363100012174017"
+  },
+  {
+   "pandId": "0363100012174016",
+   "reason": "sightline to Bloemgracht crosses 0363100012168702"
+  },
+  {
+   "pandId": "0363100012174018",
+   "reason": "frontage 41.1 m from Bloemgracht"
+  },
+  {
+   "pandId": "0363100012174019",
+   "reason": "frontage 43.6 m from Bloemgracht"
+  },
+  {
+   "pandId": "0363100012174022",
+   "reason": "frontage 30.7 m from Bloemgracht"
+  },
+  {
+   "pandId": "0363100012174023",
+   "reason": "frontage 35.4 m from Bloemgracht"
+  },
+  {
+   "pandId": "0363100012174024",
+   "reason": "frontage 39.9 m from Bloemgracht"
+  },
+  {
+   "pandId": "0363100012174033",
+   "reason": "frontage 44.2 m from Bloemgracht"
+  },
+  {
+   "pandId": "0363100012174034",
+   "reason": "frontage 41.0 m from Bloemgracht"
+  },
+  {
+   "pandId": "0363100012174035",
+   "reason": "sightline to Bloemgracht crosses 0363100012168703"
+  },
+  {
+   "pandId": "0363100012174036",
+   "reason": "frontage 48.4 m from Bloemgracht"
+  },
+  {
+   "pandId": "0363100012174037",
+   "reason": "frontage 65.0 m from Bloemgracht"
+  },
+  {
+   "pandId": "0363100012174242",
+   "reason": "sightline to Bloemgracht crosses 0363100012168155"
+  },
+  {
+   "pandId": "0363100012174243",
+   "reason": "frontage 80.7 m from Bloemgracht"
+  },
+  {
+   "pandId": "0363100012174245",
+   "reason": "frontage 54.0 m from Bloemgracht"
+  },
+  {
+   "pandId": "0363100012174246",
+   "reason": "frontage 32.5 m from Bloemgracht"
+  },
+  {
+   "pandId": "0363100012174633",
+   "reason": "frontage 123.9 m from Bloemgracht"
+  },
+  {
+   "pandId": "0363100012239612",
+   "reason": "frontage 31.1 m from Bloemgracht"
+  },
+  {
+   "pandId": "0363100012239834",
+   "reason": "frontage 65.0 m from Bloemgracht"
+  },
+  {
+   "pandId": "0363100012571514",
+   "reason": "sightline to Bloemgracht crosses 0363100012170039"
+  },
+  {
+   "pandId": "0363100012572336",
+   "reason": "frontage 52.6 m from Bloemgracht"
+  },
+  {
+   "pandId": "0363100012168695",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012168747",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012168749",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012168758",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012168696",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012168697",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012168701",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012168702",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012168703",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012168704",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012168705",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012169087",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012169897",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012170207",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012170208",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012170209",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012170210",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012170212",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012170213",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012170221",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012170223",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012170224",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012174010",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012174017",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012174040",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012174041",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012174178",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012174179",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012174180",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012174184",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012174269",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012239635",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012169913",
+   "alongM": -22.51,
+   "widthM": 5.08,
+   "eavesM": 12.97,
+   "roofMaxM": 16.6,
+   "storeys3dbag": 5,
+   "builtYear": 1890,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012169905",
+   "alongM": -17.17,
+   "widthM": 5.64,
+   "eavesM": 11.41,
+   "roofMaxM": 15.69,
+   "storeys3dbag": 4,
+   "builtYear": 1882,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012169914",
+   "alongM": -11.36,
+   "widthM": 5.99,
+   "eavesM": 14.15,
+   "roofMaxM": 18.35,
+   "storeys3dbag": 0,
+   "builtYear": 1879,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012169915",
+   "alongM": -5.61,
+   "widthM": 5.51,
+   "eavesM": 14.38,
+   "roofMaxM": 18.44,
+   "storeys3dbag": 5,
+   "builtYear": 1876,
+   "uncertainty": [
+    "Frontage extended across a native jog of up to 1 m (possible partial front at the default 0.35 m).",
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012169916",
+   "alongM": 0,
+   "widthM": 5.71,
+   "eavesM": 13.96,
+   "roofMaxM": 18.19,
+   "storeys3dbag": 5,
+   "builtYear": 1843,
+   "uncertainty": []
+  }
+ ]
+}

@@ -1,0 +1,89 @@
+{
+ "street": "Prinsengracht",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-30T02:26:22.264Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012173861",
+   "addresses": [
+    "Prinsengracht 300"
+   ],
+   "groundUnits": [
+    {
+     "address": "Prinsengracht 300",
+     "use": "kantoorfunctie",
+     "areaM2": 37,
+     "bagId": "0363010012124709"
+    },
+    {
+     "address": "Prinsengracht 300-H",
+     "use": "woonfunctie",
+     "areaM2": 117,
+     "bagId": "0363010000784504"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012173876",
+   "addresses": [
+    "Prinsengracht 298"
+   ],
+   "groundUnits": [
+    {
+     "address": "Prinsengracht 298",
+     "use": "woonfunctie",
+     "areaM2": 192,
+     "bagId": "0363010011259274"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012173877",
+   "addresses": [
+    "Prinsengracht 296"
+   ],
+   "groundUnits": [
+    {
+     "address": "Prinsengracht 296-H",
+     "use": "winkelfunctie",
+     "areaM2": 207,
+     "bagId": "0363010000784494"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 798894872,
+     "lngLat": [
+      4.8823503,
+      52.3700007
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "296-H",
+      "addr:postcode": "1016HW",
+      "addr:street": "Prinsengracht",
+      "amenity": "pub",
+      "check_date": "2024-05-31",
+      "indoor_seating": "yes",
+      "name": "Cafe de Eland",
+      "opening_hours:signed": "no",
+      "outdoor_seating": "yes",
+      "source": "BAG",
+      "source:date": "2014-02-11"
+     },
+     "fetchedAt": "2026-10-30T02:26:22.264Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

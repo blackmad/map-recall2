@@ -1,0 +1,263 @@
+{
+ "street": "Prinsengracht",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-30T02:08:24.783Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012168595",
+   "addresses": [
+    "Prinsengracht 270"
+   ],
+   "groundUnits": [
+    {
+     "address": "Prinsengracht 270-H",
+     "use": "industriefunctie",
+     "areaM2": 98,
+     "bagId": "0363010000784429"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012173935",
+   "addresses": [
+    "Prinsengracht 266",
+    "Prinsengracht 268",
+    "Prinsengracht 268A",
+    "Prinsengracht 268B",
+    "Prinsengracht 268C",
+    "Prinsengracht 268D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Prinsengracht 268-2",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000976388"
+    },
+    {
+     "address": "Prinsengracht 268-1",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000966749"
+    },
+    {
+     "address": "Prinsengracht 266",
+     "use": "winkelfunctie",
+     "areaM2": 230,
+     "bagId": "0363010001975603"
+    },
+    {
+     "address": "Prinsengracht 268A",
+     "use": "woonfunctie",
+     "areaM2": 178,
+     "bagId": "0363010001975604"
+    },
+    {
+     "address": "Prinsengracht 268B",
+     "use": "woonfunctie",
+     "areaM2": 162,
+     "bagId": "0363010001975606"
+    },
+    {
+     "address": "Prinsengracht 268C",
+     "use": "woonfunctie",
+     "areaM2": 117,
+     "bagId": "0363010001975607"
+    },
+    {
+     "address": "Prinsengracht 268D",
+     "use": "woonfunctie",
+     "areaM2": 162,
+     "bagId": "0363010001975608"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012173911",
+   "addresses": [
+    "Prinsengracht 264"
+   ],
+   "groundUnits": [
+    {
+     "address": "Prinsengracht 264-H",
+     "use": "industriefunctie",
+     "areaM2": 76,
+     "bagId": "0363010000784423"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012173912",
+   "addresses": [
+    "Prinsengracht 262"
+   ],
+   "groundUnits": [
+    {
+     "address": "Prinsengracht 262-H",
+     "use": "winkelfunctie",
+     "areaM2": 134,
+     "bagId": "0363010000784419"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012173931",
+   "addresses": [
+    "Prinsengracht 260"
+   ],
+   "groundUnits": [
+    {
+     "address": "Prinsengracht 260-H",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010000784413"
+    },
+    {
+     "address": "Prinsengracht 260-O",
+     "use": "winkelfunctie",
+     "areaM2": 101,
+     "bagId": "0363010000784414"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2721824866,
+     "lngLat": [
+      4.8824744,
+      52.3714654
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "260-O",
+      "addr:postcode": "1016HG",
+      "addr:street": "Prinsengracht",
+      "books": "antiquarian",
+      "name": "Le Flaneur",
+      "opening_hours": "Mo-We 12:00-19:00; Th-Sa 11:00-19:00; Su 13:00-19:00",
+      "phone": "+31 6 80042091",
+      "shop": "books",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "website": "https://leflaneuramsterdam.com"
+     },
+     "fetchedAt": "2026-10-30T02:08:24.783Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012173924",
+   "addresses": [
+    "Prinsengracht 258A",
+    "Prinsengracht 258C",
+    "Prinsengracht 258D",
+    "Prinsengracht 258E",
+    "Prinsengracht 258F",
+    "Prinsengracht 258B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Prinsengracht 258A",
+     "use": "woonfunctie",
+     "areaM2": 124,
+     "bagId": "0363010000784403"
+    },
+    {
+     "address": "Prinsengracht 258C",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000784405"
+    },
+    {
+     "address": "Prinsengracht 258D",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000784406"
+    },
+    {
+     "address": "Prinsengracht 258E",
+     "use": "woonfunctie",
+     "areaM2": 121,
+     "bagId": "0363010000784407"
+    },
+    {
+     "address": "Prinsengracht 258F",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000784408"
+    },
+    {
+     "address": "Prinsengracht 258B",
+     "use": "woonfunctie",
+     "areaM2": 64,
+     "bagId": "0363010000784404"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012173925",
+   "addresses": [
+    "Prinsengracht 256"
+   ],
+   "groundUnits": [
+    {
+     "address": "Prinsengracht 256-H",
+     "use": "kantoorfunctie",
+     "areaM2": 143,
+     "bagId": "0363010001012958"
+    },
+    {
+     "address": "Prinsengracht 256-1",
+     "use": "kantoorfunctie",
+     "areaM2": 140,
+     "bagId": "0363010012161640"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012173923",
+   "addresses": [
+    "Prinsengracht 254"
+   ],
+   "groundUnits": [
+    {
+     "address": "Prinsengracht 254-H",
+     "use": "woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010000784381"
+    },
+    {
+     "address": "Prinsengracht 254-H",
+     "use": "winkelfunctie",
+     "areaM2": 56,
+     "bagId": "0363010012599366"
+    },
+    {
+     "address": "Lauriergracht 1A",
+     "use": "woonfunctie",
+     "areaM2": 39,
+     "bagId": "0363010012599368"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

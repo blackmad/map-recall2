@@ -1,0 +1,159 @@
+{
+ "street": "Elandsgracht",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-30T00:17:20.417Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012169407",
+   "addresses": [
+    "Elandsgracht 27"
+   ],
+   "groundUnits": [
+    {
+     "address": "Elandsgracht 27-H",
+     "use": "winkelfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000630764"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2721824996,
+     "lngLat": [
+      4.8813926,
+      52.3696978
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "27-H",
+      "addr:postcode": "1016TM",
+      "addr:street": "Elandsgracht",
+      "alt_name": "Kaashuis Tromp",
+      "branch": "Amsterdam Elandsgracht",
+      "brand": "Zuivelhoeve",
+      "brand:website": "https://www.zuivelhoeve.nl",
+      "brand:wikidata": "Q106581549",
+      "check_date": "2026-10-22",
+      "check_date:opening_hours": "2026-10-22",
+      "email": "elandsgracht@kaashuistromp.nl",
+      "name": "Zuivelhoeve by Kaashuis Tromp",
+      "opening_hours": "Mo-Sa 08:30-19:00; Su 08:30-18:00",
+      "phone": "+31 20 6230010",
+      "shop": "cheese",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "website": "https://winkels.zuivelhoeve.nl/zuivelhoeve-by-kaashuis-tromp-amsterdam-elandsgracht/",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-30T00:17:20.417Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012169401",
+   "addresses": [
+    "Elandsgracht 29"
+   ],
+   "groundUnits": [
+    {
+     "address": "Elandsgracht 29-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 59,
+     "bagId": "0363010000630768"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012169358",
+   "addresses": [
+    "Elandsgracht 31"
+   ],
+   "groundUnits": [
+    {
+     "address": "Elandsgracht 31",
+     "use": "woonfunctie",
+     "areaM2": 128,
+     "bagId": "0363010000630771"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 3400741581,
+     "lngLat": [
+      4.881275,
+      52.3696548
+     ],
+     "tags": {
+      "amenity": "restaurant",
+      "check_date": "2025-02-23",
+      "indoor_seating": "yes",
+      "name": "Rakang Thaï restaurant",
+      "outdoor_seating": "yes",
+      "website": "http://www.rakang.nl"
+     },
+     "fetchedAt": "2026-10-30T00:17:20.417Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012169357",
+   "addresses": [
+    "Elandsgracht 33"
+   ],
+   "groundUnits": [
+    {
+     "address": "Elandsgracht 33",
+     "use": "woonfunctie",
+     "areaM2": 156,
+     "bagId": "0363010003714136"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012170194",
+   "addresses": [
+    "Elandsgracht 35"
+   ],
+   "groundUnits": [
+    {
+     "address": "Elandsgracht 35",
+     "use": "bijeenkomstfunctie,woonfunctie",
+     "areaM2": 170,
+     "bagId": "0363010000630781"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 14309242974,
+     "lngLat": [
+      4.8811944,
+      52.3696202
+     ],
+     "tags": {
+      "name": "WM gallery",
+      "tourism": "gallery"
+     },
+     "fetchedAt": "2026-10-30T00:17:20.417Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}
