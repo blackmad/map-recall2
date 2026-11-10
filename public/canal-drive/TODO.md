@@ -34,6 +34,12 @@ here. Their design notes stay in `BUILDING_*.md`, `FACADE_*.md`, `LOD.md`, and
   - a size answer for the 44 MB mesh tiles.
 
   Then re-run the pose A/B and convert the 143 chunks to `kind: glb`. The pilot data is stale: all 14 Bilderdijkstraat chunks differ from installed, and bilder-079721-x2 is null. The `tile-buildings.bundle.js` is stale against source by 44 lines. `?recipeTiles=1` has never been exercised on ENGINE=own.
+- **Feedback E follow-ups (newbuild-kit report `docs/reports/newbuild-kit-20261110.md`).**
+  - `?newbuildFamily=1`: per-pand measured walls instead of the area draw before any flip; houthaven-2018 renders orange against a purple-brown photo and Zeeburgereiland 2016 dark brown against a white one. Flipping changes the BAY layer count (191 → 192) and the shell hash, so it needs a world:compile.
+  - Large-recipe `otherWalls: "blank"` on 142 of 163 recipes (1.50 M of 1.98 M m²): a texture-only window grid inside the triangle gate.
+  - An office family for Westpoort (698 of 879 pale).
+  - Plumb OSM gap-fill `start_date` into building facts (undated fills draw as 1860–1914 houses: Westpoort 32, IJburg 40, Overhoeks 18).
+  - The world shells still carry the old 8–9 m canopy slabs until the next world:compile.
 - **Meshopt follow-ups.** `install-large.ts` still writes recipe-large GLBs uncompressed (call compressGlb + re-describe); `scripts/building-tiles/compile-recipes.ts` installedMatch compares staged vs installed bytes and now reports false for compressed installs (compare decoded geometry).
 
 ## City coverage programme (2026-11-07) — T0 whole city, T1 ride ring, T2 landmarks

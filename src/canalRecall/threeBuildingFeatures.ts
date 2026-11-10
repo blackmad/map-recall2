@@ -30,6 +30,7 @@ import { ccwRing, designInLook, gardenRoomDesign, gardenRoomGlassHex, gardenRoom
 import { GARDEN_ROOM_TONES } from './look/palette.js';
 import { buurtProfileAt } from './buurtProfiles/data.js';
 import { profileWallBeatsMaterial, storeyScaleOf } from './buurtProfiles/profiles.js';
+import { SETBACK_CLADDING_HEX, SETBACK_INSET_M, SETBACK_STOREY_M, insetRing } from './contemporaryFamily.js';
 
 /** 'untextured' draws with the procedural cells' flat layer only: plain colours, real shapes (look/palette.ts). */
 export type { BuildingLook };
@@ -134,7 +135,7 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook, coarse = f
     const at = polygons[0]?.[0]?.[0];
     const profile = at ? buurtProfileAt(at[0], at[1]) : null;
     const bay = bayLookFor(id, year, Number(p.height) || heightM, look as Look, shopfrontOf(p), undefined, periodWallOf(p), profile,
-      year !== null && year >= 1945 ? { footprintM2: footprintAreaM2(feature.geometry), buildingType: typeof p.buildingType === 'string' ? p.buildingType : null } : undefined);
+      year !== null && year >= 1945 ? { footprintM2: footprintAreaM2(feature.geometry), buildingType: typeof p.buildingType === 'string' ? p.buildingType : null, at: at ? [at[0], at[1]] as const : undefined } : undefined);
     profileWall = bay.profileWall; spandrelAccent = bay.modern?.accent;
     building = { id, polygons, heightM, minHeightM, style: bay.layout, wallHex: bay.wallHex, accentHex: bay.accentHex, layers: bay.layers, groundHex: bay.groundHex };
     const storeyScale = storeyScaleOf(profile?.eras[bay.archetype], STYLE_DIMS[bay.layout].storey);
@@ -142,6 +143,7 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook, coarse = f
     building.openings = bayVariantOpenings({ ...bay.variant, kind: 'upper' }, look as Look);
     plain = bay.plain; roofBase = BAY_LAYER_COUNT; layout = bay.layout; building.plainLayer = bay.plain;
     if ((FACADE_STYLES as readonly string[]).includes(String(p.facadeStyle)) && p.facadeStyle !== bay.layout) building.period = p.facadeStyle as FacadeStyle;
+    if (bay.contemporary?.setback) building.setbackCrown = true;
   } else {
     layout = (FACADE_STYLES as readonly string[]).includes(String(p.facadeStyle)) ? p.facadeStyle as FacadeStyle : 'c19';
     building = { id, polygons, heightM, minHeightM, style: layout, wallHex: typeof p.sideColour === 'string' ? p.sideColour : DEFAULT_FACADE_WALL_HEX, shop: layout !== 'tower' && (shopfrontOf(p) ? shopfrontOf(p) !== 'quiet' : hashShop(id)) };
@@ -232,6 +234,29 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook, coarse = f
   return building;
 }
 
+
+/**
+ * The contemporary family's set-back top storey (contemporaryFamily.ts): the body stops a storey short under its own
+ * flat lid (the terrace), and the top storey stands SETBACK_INSET_M in from the outer walls, glazed in the curtain
+ * cell under anthracite panel cladding. Only for a faced flat-roofed building the family marked, with a clean inset
+ * outline (insetRing); anything else draws as before.
+ */
+export function withSetbackCrown(b: MeshBuilding, look: BuildingLook): MeshBuilding[] {
+  if (!b.setbackCrown || b.bare || b.roof || !b.lid || !b.layers || b.surveyedEnvelope || b.polygons.length !== 1) return [b];
+  const top = b.heightM, bodyTop = top - SETBACK_STOREY_M;
+  if (bodyTop - b.minHeightM < 2 * SETBACK_STOREY_M) return [b];
+  const inset = insetRing(b.polygons[0][0], SETBACK_INSET_M);
+  if (!inset) return [b];
+  const cladding = lookHex(SETBACK_CLADDING_HEX, look);
+  const body: MeshBuilding = { ...b, heightM: bodyTop, setbackCrown: false, measuredRoof: undefined, flatRoof: b.flatRoof ? { ...b.flatRoof, box: false } : undefined };
+  const crown: MeshBuilding = {
+    ...b, id: `${b.id}:setback`, polygons: [[inset]], minHeightM: bodyTop, heightM: top, setbackCrown: false,
+    wallHex: cladding, accentHex: cladding, groundHex: undefined, layers: { upper: bayLayer('modern', 7, 'upper'), ground: bayLayer('modern', 7, 'upper'), door: bayLayer('modern', 7, 'upper') },
+    shop: false, shopfront: false, signature: undefined, chain: undefined, extras: false, streetAppearance: undefined, gardenRoom: undefined,
+    flatRoof: b.flatRoof ? { ...b.flatRoof, lip: false } : undefined, period: undefined,
+  };
+  return [body, crown];
+}
 
 /** `gardenRoom: rule` for a shed that is a garden room (gardenRooms.ts), nothing otherwise. */
 const gardenRoomMark = (f: Feature): { gardenRoom?: string } => {
@@ -358,7 +383,7 @@ export function buildFeatureChunk(features: readonly Feature[], look: BuildingLo
       building.streetAppearance = { profiles: localProfiles, look, sourceHeightM: Number(f.properties.height) || building.heightM, year: p.constructionYear == null || !Number.isFinite(Number(p.constructionYear)) ? null : Number(p.constructionYear), mappedWallHex, shopfront: shopfrontOf(p), periodWallHex: periodWallOf(p) };
     }
     return building;
-  }).filter((b): b is MeshBuilding => !!b), ORIGIN, mode === 'coarse' ? 'walls' : mode, streets, contextFeatures.map(f=>{const roofed=(mode==='coarse'||mode==='shell')&&!!chunkOptions.shellRoofs&&!f.properties.gardenShed&&!f.properties.kitRoof;const b=meshBuildingFor(f,look,(mode==='coarse'||mode==='shell')&&!roofed);if(b){const binding=surveyedEnvelopes.get(b.id),g=f.geometry as {type?:string;coordinates?:number[][][]};if(binding&&binding.nativeParentId===b.id&&g.type==='Polygon'&&binding.installedFootprintFingerprint===envelopeFootprintFingerprint(g as {type:'Polygon';coordinates:number[][][]})&&binding.nativeMetadata.aggregateHeightM===Number(f.properties.height)&&binding.nativeMetadata.constructionYear===Number(f.properties.constructionYear)&&binding.meshOrigin.lng===ORIGIN.lng&&binding.meshOrigin.lat===ORIGIN.lat)b.surveyedEnvelope=binding;}if(b&&(mode==='coarse'||mode==='shell')&&!(roofed&&b.roof&&shellRoofed(b.roof.plan))){b.heightM=f.properties.kitRoof?wallTopHeightM(f.properties):Number(f.properties.height)||b.heightM;b.roof=undefined;}return b;}).filter((b):b is MeshBuilding=>!!b), hostOpenings);
+  }).filter((b): b is MeshBuilding => !!b).flatMap(b => b.setbackCrown ? withSetbackCrown(b, look) : [b]), ORIGIN, mode === 'coarse' ? 'walls' : mode, streets, contextFeatures.map(f=>{const roofed=(mode==='coarse'||mode==='shell')&&!!chunkOptions.shellRoofs&&!f.properties.gardenShed&&!f.properties.kitRoof;const b=meshBuildingFor(f,look,(mode==='coarse'||mode==='shell')&&!roofed);if(b){const binding=surveyedEnvelopes.get(b.id),g=f.geometry as {type?:string;coordinates?:number[][][]};if(binding&&binding.nativeParentId===b.id&&g.type==='Polygon'&&binding.installedFootprintFingerprint===envelopeFootprintFingerprint(g as {type:'Polygon';coordinates:number[][][]})&&binding.nativeMetadata.aggregateHeightM===Number(f.properties.height)&&binding.nativeMetadata.constructionYear===Number(f.properties.constructionYear)&&binding.meshOrigin.lng===ORIGIN.lng&&binding.meshOrigin.lat===ORIGIN.lat)b.surveyedEnvelope=binding;}if(b&&(mode==='coarse'||mode==='shell')&&!(roofed&&b.roof&&shellRoofed(b.roof.plan))){b.heightM=f.properties.kitRoof?wallTopHeightM(f.properties):Number(f.properties.height)||b.heightM;b.roof=undefined;}return b;}).filter((b):b is MeshBuilding=>!!b), hostOpenings);
   if (!garden.length || mode === 'extras') return chunk;
   const flatLayer = (cellSetOf(look) === 'procedural' ? CELL_LAYER_COUNT : BAY_LAYER_COUNT) + 3;
   return appendAllotmentHouses(chunk, garden, ORIGIN, flatLayer, mode === 'coarse' || mode === 'shell');

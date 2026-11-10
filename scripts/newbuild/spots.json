@@ -1,0 +1,95 @@
+[
+ {
+  "slug": "user-narva-houthaven",
+  "name": "Narva-eiland (feedback 1c694c0d)",
+  "lng": 4.881412,
+  "lat": 52.39353,
+  "bearing": 50,
+  "distM": 60,
+  "eyeM": 14
+ },
+ {
+  "slug": "user-westpoort-slab",
+  "name": "Danzigerkade Ydek canopy (feedback 2c486751)",
+  "lng": 4.87207,
+  "lat": 52.39879,
+  "bearing": 60,
+  "distM": 70,
+  "eyeM": 14
+ },
+ {
+  "slug": "user-houthavenkade-26",
+  "name": "Houthavenkade 26 / 4e Gymnasium (feedback 75242f30)",
+  "lng": 4.876389,
+  "lat": 52.394353,
+  "bearing": 200,
+  "distM": 110,
+  "eyeM": 18
+ },
+ {
+  "slug": "houthaven-2021-orange",
+  "name": "houthaven-2021-orange (pand 0363100012252867, 2021)",
+  "pand": "0363100012252867",
+  "lng": 4.877741,
+  "lat": 52.393351,
+  "bearing": 230,
+  "distM": 55,
+  "eyeM": 10,
+  "targetM": 7.78
+ },
+ {
+  "slug": "houthaven-2018-dark",
+  "name": "houthaven-2018-dark (pand 0363100012247676, 2018)",
+  "pand": "0363100012247676",
+  "lng": 4.879431,
+  "lat": 52.394622,
+  "bearing": 74,
+  "distM": 55,
+  "eyeM": 10,
+  "targetM": 8.815
+ },
+ {
+  "slug": "ijburg-2021",
+  "name": "ijburg-2021 (pand 0363100012253701, 2021)",
+  "pand": "0363100012253701",
+  "lng": 5.011895,
+  "lat": 52.352053,
+  "bearing": 153,
+  "distM": 55,
+  "eyeM": 10,
+  "targetM": 9.985
+ },
+ {
+  "slug": "ijburg-2009",
+  "name": "ijburg-2009 (pand 0363100012154305, 2009)",
+  "pand": "0363100012154305",
+  "lng": 4.981711,
+  "lat": 52.360042,
+  "bearing": 236,
+  "distM": 55,
+  "eyeM": 10,
+  "targetM": 6.715
+ },
+ {
+  "slug": "sluisbuurt-2025",
+  "name": "sluisbuurt-2025 (pand 0363100012570345, 2025)",
+  "pand": "0363100012570345",
+  "lng": 4.961568,
+  "lat": 52.376055,
+  "bearing": 352,
+  "distM": 55,
+  "eyeM": 10,
+  "targetM": 12
+ },
+ {
+  "slug": "zeeburgereiland-2016",
+  "name": "zeeburgereiland-2016 (pand 0363100012244416, 2016)",
+  "pand": "0363100012244416",
+  "lng": 4.965184,
+  "lat": 52.375052,
+  "bearing": 131,
+  "distM": 55,
+  "eyeM": 10,
+  "targetM": 9.735
+ }
+]

@@ -40,7 +40,7 @@ export interface BayVariant {
   openingOccupancy?: number;
   openingHeight?: number;
   sash?: 'plain' | 'transom' | 'paired-transom' | 'six-over-six';
-  facadeAssembly?: 'stacked-open-balcony' | 'stacked-iron-balcony';
+  facadeAssembly?: 'stacked-open-balcony' | 'stacked-iron-balcony' | 'french-balcony';
   openingGroup?: 'canal-two' | 'canal-three' | 'canal-return';
   groundAssembly?: 'tall-side-entry' | 'tall-commercial';
   entranceAssembly?: 'raised-pilaster' | 'raised-plain';
@@ -442,6 +442,22 @@ function layoutWindows(p: Painter, v: BayVariant, w: number, y: number, h: numbe
   if(v.entranceAssembly==='raised-pilaster'){for(const axis of [.205,.53,.80])windowAt(p,w*axis-ww/2,y,ww,h,v);return;}
   if(v.facadeAssembly==='stacked-open-balcony'){for(const axis of [.17,.5,.83]){const wide=w*(axis===.5?.28:.145);windowAt(p,w*axis-wide/2,y,wide,h,{...v,sash:axis===.5?'paired-transom':'transom'});}return;}
   for (let i = 0; i < v.windows; i++) windowAt(p, ((i + 0.5) / v.windows) * w - ww / 2, y, ww, h, v);
+  if (v.facadeAssembly === 'french-balcony') frenchBalconyRails(p, v, w, ww, y, h);
+}
+
+/**
+ * A French balcony (contemporaryFamily.ts): a dark steel rail across the lower third of each tall window, a top bar and
+ * thin balusters, drawn as ink (untinted) so it stays dark on any wall.
+ */
+function frenchBalconyRails(p: Painter, v: BayVariant, w: number, ww: number, y: number, h: number): void {
+  const { ctx } = p, top = y + h * 0.64, bottom = y + h - 4, ink = p.cartoon ? '#1f2224' : '#2a2d2e';
+  p.fill('ink', ink);
+  for (let i = 0; i < v.windows; i++) {
+    const x0 = ((i + 0.5) / v.windows) * w - ww / 2 - 4, width = ww + 8;
+    ctx.fillRect(x0, top, width, 5);
+    ctx.fillRect(x0, bottom - 3, width, 3);
+    for (let x = x0 + 9; x < x0 + width - 4; x += 11) ctx.fillRect(x, top + 5, 2, bottom - top - 8);
+  }
 }
 
 /**

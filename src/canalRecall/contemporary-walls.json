@@ -1,0 +1,142 @@
+{
+ "schemaVersion": 1,
+ "licence": "Gemeente Amsterdam panorama, CC BY 4.0",
+ "source": "scripts/newbuild/sample-panos.ts (2005+ BAG pands, 2019+ panoramas)",
+ "liftL": 12,
+ "areas": {
+  "Houthaven": {
+   "centre": [
+    4.8775,
+    52.3935
+   ],
+   "walls": [
+    "pe3e4de",
+    "b4a4342",
+    "beb9b76",
+    "bbf7d61",
+    "bc48266",
+    "bc38266",
+    "bc58367",
+    "bc5744c",
+    "bc6774e",
+    "bc6774d",
+    "b504544",
+    "b544644",
+    "b4f4242",
+    "b594842",
+    "b55423c",
+    "b55423c",
+    "b493b3a",
+    "b483b3b",
+    "b493a39",
+    "b423133",
+    "b704c40",
+    "b704c40",
+    "b5e5f5a",
+    "b554238",
+    "b6c5450",
+    "b67594b",
+    "pf5e9ad",
+    "bde9267",
+    "bde9368",
+    "bed9361",
+    "be3986c",
+    "be3986c",
+    "bf38c55",
+    "be98e60",
+    "bea9060",
+    "bec9260",
+    "bde9e82"
+   ]
+  },
+  "IJburg": {
+   "centre": [
+    4.99,
+    52.356
+   ],
+   "walls": [
+    "pdeebe9",
+    "pe0eae9",
+    "babafad",
+    "b57565b",
+    "ba29890",
+    "b7c7579",
+    "b6d6d6d",
+    "b6e696a",
+    "pedd3c8",
+    "b6a6b6d",
+    "b656161",
+    "pf0e8d0",
+    "b686567",
+    "b757272",
+    "b4d4e52",
+    "b626066",
+    "b6d6d71",
+    "pffe0cc",
+    "bb4a298",
+    "b8c8078",
+    "b737a79",
+    "b767d7c",
+    "b7d554e",
+    "pdcebe9",
+    "b726f6f",
+    "b72726d",
+    "b3b3d3e",
+    "pc1be97"
+   ]
+  },
+  "Overhoeks": {
+   "centre": [
+    4.9,
+    52.386
+   ],
+   "walls": [
+    "b4e514d",
+    "b464742"
+   ]
+  },
+  "Sluisbuurt": {
+   "centre": [
+    4.956,
+    52.373
+   ],
+   "walls": [
+    "b8e9088"
+   ]
+  },
+  "Zeeburgereiland": {
+   "centre": [
+    4.961,
+    52.369
+   ],
+   "walls": [
+    "b555050",
+    "b606162",
+    "b66615e",
+    "b4c5050",
+    "b3c3f3e",
+    "peeeba9",
+    "b4d4d4f",
+    "b88837d",
+    "b84807b",
+    "b807c78",
+    "pecddaf",
+    "b35373b",
+    "b4e504d",
+    "b6a6a69",
+    "b494a44",
+    "bd98c89",
+    "pf0e8ce",
+    "b586560",
+    "ba1877e",
+    "b5b4f41",
+    "pefe8d0",
+    "b7c7e78",
+    "pe0c6ab",
+    "b3d4241",
+    "pdcd5ba",
+    "b47423a"
+   ]
+  }
+ }
+}
