@@ -3,7 +3,7 @@
  "street": "Jan Haringstraat",
  "library": "landlust",
  "stripDate": "2024-11-21",
- "seconds": 5.66,
+ "seconds": 5.38,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -258,21 +258,25 @@
     "measuredPalette": {
      "brick": "#745f41",
      "evidence": "strip 2024-11-21 span 547-802: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#69563d"
     }
    },
    "notes": [
     "door right: mirrored",
-    "crown gutter (type default)"
+    "crown gutter (type default)",
+    "palette pinned: Haringstraat 26-38 (Opus verdict): model about #836b49 against photo about #52432e"
    ],
    "likeness": {
     "pandId": "0363100012068528",
-    "ncc": 0.756,
-    "nccRaw": 0.756,
+    "ncc": 0.753,
+    "nccRaw": 0.753,
     "shiftM": [
      -0.2,
-     -0.05
+     -0.1
     ],
-    "usable": 0.64,
+    "usable": 0.65,
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
@@ -282,8 +286,8 @@
     ],
     "wall": {
      "photo": "#6b583c",
-     "model": "#907650",
-     "dL": 0.112
+     "model": "#856d4d",
+     "dL": 0.084
     },
     "glazing": {
      "photo": 0.13,
@@ -296,8 +300,8 @@
     "iou": 0.396
    },
    "challengers": {
-    "landlust-1934-tile-pair~m": 0.756,
-    "landlust-1934-tile-pair": 0.211
+    "landlust-1934-tile-pair~m": 0.753,
+    "landlust-1934-tile-pair": 0.217
    }
   },
   {
@@ -354,16 +358,20 @@
     "measuredPalette": {
      "brick": "#806a4a",
      "evidence": "strip 2024-11-21 span 803-1042: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#69563d"
     }
    },
    "notes": [
     "door left",
-    "crown gutter (type default)"
+    "crown gutter (type default)",
+    "palette pinned: Haringstraat 26-38 (Opus verdict): model about #836b49 against photo about #52432e"
    ],
    "likeness": {
     "pandId": "0363100012072687",
-    "ncc": 0.406,
-    "nccRaw": 0.406,
+    "ncc": 0.405,
+    "nccRaw": 0.405,
     "shiftM": [
      -0.4,
      -0.1
@@ -378,8 +386,8 @@
     ],
     "wall": {
      "photo": "#7c6546",
-     "model": "#9a8059",
-     "dL": 0.096
+     "model": "#856d4d",
+     "dL": 0.031
     },
     "glazing": {
      "photo": 0.27,
@@ -392,8 +400,8 @@
     "iou": 0.321
    },
    "challengers": {
-    "landlust-1934-tile-pair": 0.406,
-    "landlust-1934-tile-pair~m": 0.377
+    "landlust-1934-tile-pair": 0.405,
+    "landlust-1934-tile-pair~m": 0.375
    }
   },
   {
@@ -455,16 +463,20 @@
     "measuredPalette": {
      "brick": "#756245",
      "evidence": "strip 2024-11-21 span 1042-1289: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#69563d"
     }
    },
    "notes": [
     "door left",
-    "crown gutter (type default)"
+    "crown gutter (type default)",
+    "palette pinned: Haringstraat 26-38 (Opus verdict): model about #836b49 against photo about #52432e"
    ],
    "likeness": {
     "pandId": "0363100012071938",
-    "ncc": 0.625,
-    "nccRaw": 0.625,
+    "ncc": 0.623,
+    "nccRaw": 0.623,
     "shiftM": [
      -0.1,
      -0.05
@@ -477,8 +489,8 @@
     ],
     "wall": {
      "photo": "#746043",
-     "model": "#907855",
-     "dL": 0.09
+     "model": "#856d4d",
+     "dL": 0.053
     },
     "glazing": {
      "photo": 0.37,
@@ -491,7 +503,7 @@
     "iou": 0.568
    },
    "challengers": {
-    "landlust-1934-tile-pair": 0.625,
+    "landlust-1934-tile-pair": 0.623,
     "landlust-1934-tile-pair~m": 0.257
    }
   },

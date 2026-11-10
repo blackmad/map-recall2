@@ -3,7 +3,7 @@
  "street": "Jasper Leijnsenstraat",
  "library": "landlust",
  "stripDate": "2024-11-21",
- "seconds": 10.92,
+ "seconds": 11.27,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -22,13 +22,19 @@
     "0363100012107813",
     "0363100012123427",
     "0363100012140619",
-    "0363100012081763",
-    "0363100012132371",
+    "0363100012081763"
+   ],
+   "passed": true,
+   "triangles": 7678
+  },
+  {
+   "face": "leijnsen-2-30-r2",
+   "pands": [
     "0363100012137482",
     "0363100012117865"
    ],
    "passed": true,
-   "triangles": 11591
+   "triangles": 2568
   }
  ],
  "pands": [
@@ -199,19 +205,23 @@
     "measuredPalette": {
      "brick": "#7c6546",
      "evidence": "strip 2024-11-21 span 527-776: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#6c583e"
     }
    },
    "notes": [
     "door unread: as drawn, the opposite of 074955",
-    "crown gutter (type default)"
+    "crown gutter (type default)",
+    "palette pinned: Leijnsenstraat 2-30 (Opus verdict): model olive-tan about #8a6f4e against photo red-brown about #584834; one brick for the run"
    ],
    "likeness": {
     "pandId": "0363100012064868",
-    "ncc": 0.63,
-    "nccRaw": 0.63,
+    "ncc": 0.579,
+    "nccRaw": 0.579,
     "shiftM": [
      -0.1,
-     0.2
+     0.25
     ],
     "usable": 0.77,
     "abstain": null,
@@ -222,23 +232,23 @@
     ],
     "wall": {
      "photo": "#796345",
-     "model": "#977b55",
-     "dL": 0.09
+     "model": "#886f4e",
+     "dL": 0.047
     },
     "glazing": {
-     "photo": 0.36,
+     "photo": 0.33,
      "model": 0.37
     },
     "columns": {
      "photo": 2,
      "model": null
     },
-    "iou": 0.628,
-    "footOffsetM": 0.85
+    "iou": 0.579,
+    "footOffsetM": 1.02
    },
    "challengers": {
-    "landlust-1934-tile-pair": 0.63,
-    "landlust-1934-tile-pair~m": -0.022
+    "landlust-1934-tile-pair": 0.579,
+    "landlust-1934-tile-pair~m": -0.023
    }
   },
   {
@@ -291,47 +301,51 @@
     "measuredPalette": {
      "brick": "#796548",
      "evidence": "strip 2024-11-21 span 775-1022: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#6c583e"
     }
    },
    "notes": [
     "door right: mirrored",
-    "crown gutter (type default)"
+    "crown gutter (type default)",
+    "palette pinned: Leijnsenstraat 2-30 (Opus verdict): model olive-tan about #8a6f4e against photo red-brown about #584834; one brick for the run"
    ],
    "likeness": {
     "pandId": "0363100012074955",
-    "ncc": 0.65,
-    "nccRaw": 0.65,
+    "ncc": 0.605,
+    "nccRaw": 0.605,
     "shiftM": [
      -0.1,
-     0.25
+     0.3
     ],
     "usable": 0.72,
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.16",
+     "glazing storey band off by 0.18 mean 0.37 vs photo 0.27",
      "window shape none vs photo tall",
      "columns none vs photo 2"
     ],
     "wall": {
-     "photo": "#776346",
-     "model": "#937b58",
-     "dL": 0.09
+     "photo": "#766246",
+     "model": "#886f4e",
+     "dL": 0.051
     },
     "glazing": {
-     "photo": 0.3,
+     "photo": 0.27,
      "model": 0.37
     },
     "columns": {
      "photo": 2,
      "model": null
     },
-    "iou": 0.674,
-    "footOffsetM": 0.85
+    "iou": 0.64,
+    "footOffsetM": 1.02
    },
    "challengers": {
-    "landlust-1934-tile-pair~m": 0.65,
-    "landlust-1934-tile-pair": -0.016
+    "landlust-1934-tile-pair~m": 0.605,
+    "landlust-1934-tile-pair": -0.013
    }
   },
   {
@@ -398,46 +412,50 @@
     "measuredPalette": {
      "brick": "#766246",
      "evidence": "strip 2024-11-21 span 1022-1269: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#6c583e"
     }
    },
    "notes": [
     "door unread: as drawn, the opposite of 074955",
-    "crown gutter (type default)"
+    "crown gutter (type default)",
+    "palette pinned: Leijnsenstraat 2-30 (Opus verdict): model olive-tan about #8a6f4e against photo red-brown about #584834; one brick for the run"
    ],
    "likeness": {
     "pandId": "0363100012107813",
-    "ncc": 0.658,
-    "nccRaw": 0.658,
+    "ncc": 0.611,
+    "nccRaw": 0.611,
     "shiftM": [
      -0.15,
-     0.25
+     0.3
     ],
-    "usable": 0.68,
+    "usable": 0.67,
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.28 mean 0.37 vs photo 0.12",
+     "glazing storey band off by 0.24 mean 0.37 vs photo 0.17",
      "window shape none vs photo tall",
      "columns none vs photo 2"
     ],
     "wall": {
-     "photo": "#766249",
-     "model": "#917856",
-     "dL": 0.078
+     "photo": "#746045",
+     "model": "#886f4e",
+     "dL": 0.057
     },
     "glazing": {
-     "photo": 0.12,
+     "photo": 0.17,
      "model": 0.37
     },
     "columns": {
      "photo": 2,
      "model": null
     },
-    "iou": 0.446,
-    "footOffsetM": 0.85
+    "iou": 0.534,
+    "footOffsetM": 1.02
    },
    "challengers": {
-    "landlust-1934-tile-pair": 0.658,
+    "landlust-1934-tile-pair": 0.611,
     "landlust-1934-tile-pair~m": 0.059
    }
   },
@@ -485,32 +503,36 @@
     "measuredPalette": {
      "brick": "#806748",
      "evidence": "strip 2024-11-21 span 1270-1517: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#6c583e"
     }
    },
    "notes": [
     "door right: mirrored",
-    "crown gutter (type default)"
+    "crown gutter (type default)",
+    "palette pinned: Leijnsenstraat 2-30 (Opus verdict): model olive-tan about #8a6f4e against photo red-brown about #584834; one brick for the run"
    ],
    "likeness": {
     "pandId": "0363100012123427",
-    "ncc": 0.608,
-    "nccRaw": 0.608,
+    "ncc": 0.552,
+    "nccRaw": 0.552,
     "shiftM": [
      -0.05,
-     0.25
+     0.3
     ],
     "usable": 0.72,
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.20 mean 0.37 vs photo 0.20",
-     "window shape none vs photo square",
+     "glazing storey band off by 0.19 mean 0.37 vs photo 0.20",
+     "window shape none vs photo tall",
      "columns none vs photo 2"
     ],
     "wall": {
-     "photo": "#7b6647",
-     "model": "#9a7c57",
-     "dL": 0.092
+     "photo": "#7a6546",
+     "model": "#886f4e",
+     "dL": 0.043
     },
     "glazing": {
      "photo": 0.2,
@@ -520,12 +542,12 @@
      "photo": 2,
      "model": null
     },
-    "iou": 0.529,
-    "footOffsetM": 0.85
+    "iou": 0.509,
+    "footOffsetM": 1.02
    },
    "challengers": {
-    "landlust-1934-tile-pair~m": 0.608,
-    "landlust-1934-tile-pair": -0.019
+    "landlust-1934-tile-pair~m": 0.552,
+    "landlust-1934-tile-pair": -0.002
    }
   },
   {
@@ -587,19 +609,23 @@
     "measuredPalette": {
      "brick": "#796447",
      "evidence": "strip 2024-11-21 span 1517-1744: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#6c583e"
     }
    },
    "notes": [
     "door left",
-    "crown gutter (type default)"
+    "crown gutter (type default)",
+    "palette pinned: Leijnsenstraat 2-30 (Opus verdict): model olive-tan about #8a6f4e against photo red-brown about #584834; one brick for the run"
    ],
    "likeness": {
     "pandId": "0363100012140619",
-    "ncc": 0.568,
-    "nccRaw": 0.568,
+    "ncc": 0.522,
+    "nccRaw": 0.522,
     "shiftM": [
      0.15,
-     0.25
+     0.3
     ],
     "usable": 0.73,
     "abstain": null,
@@ -609,24 +635,24 @@
      "columns none vs photo 2"
     ],
     "wall": {
-     "photo": "#796245",
-     "model": "#937a57",
-     "dL": 0.086
+     "photo": "#766043",
+     "model": "#886f4e",
+     "dL": 0.057
     },
     "glazing": {
-     "photo": 0.35,
+     "photo": 0.38,
      "model": 0.39
     },
     "columns": {
      "photo": 2,
      "model": null
     },
-    "iou": 0.589,
-    "footOffsetM": 0.85
+    "iou": 0.585,
+    "footOffsetM": 1.02
    },
    "challengers": {
-    "landlust-1934-tile-pair": 0.568,
-    "landlust-1934-tile-pair~m": -0.038
+    "landlust-1934-tile-pair": 0.522,
+    "landlust-1934-tile-pair~m": -0.029
    }
   },
   {
@@ -689,16 +715,20 @@
     "measuredPalette": {
      "brick": "#796547",
      "evidence": "strip 2024-11-21 span 1744-2012: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#6c583e"
     }
    },
    "notes": [
     "door right: mirrored",
-    "crown gutter (type default)"
+    "crown gutter (type default)",
+    "palette pinned: Leijnsenstraat 2-30 (Opus verdict): model olive-tan about #8a6f4e against photo red-brown about #584834; one brick for the run"
    ],
    "likeness": {
     "pandId": "0363100012081763",
-    "ncc": 0.519,
-    "nccRaw": 0.519,
+    "ncc": 0.457,
+    "nccRaw": 0.457,
     "shiftM": [
      0.25,
      0.4
@@ -707,29 +737,27 @@
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.20 mean 0.38 vs photo 0.20",
-     "window shape none vs photo tall",
-     "columns none vs photo 4"
+     "glazing storey band off by 0.31 mean 0.38 vs photo 0.59"
     ],
     "wall": {
-     "photo": "#776346",
-     "model": "#937b57",
-     "dL": 0.088
+     "photo": "#7a6344",
+     "model": "#886f4e",
+     "dL": 0.047
     },
     "glazing": {
-     "photo": 0.2,
+     "photo": 0.59,
      "model": 0.38
     },
     "columns": {
-     "photo": 4,
+     "photo": null,
      "model": null
     },
-    "iou": 0.413,
-    "footOffsetM": 0.85
+    "iou": 0.459,
+    "footOffsetM": 1.02
    },
    "challengers": {
-    "landlust-1934-tile-pair~m": 0.519,
-    "landlust-1934-tile-pair": -0.001
+    "landlust-1934-tile-pair~m": 0.457,
+    "landlust-1934-tile-pair": -0.003
    }
   },
   {
@@ -778,53 +806,11 @@
     "voidShare": 0,
     "foliageShare": 0.2
    },
-   "status": "placed",
-   "type": "landlust-1934-tile-pair",
-   "score": 1,
-   "placement": {
-    "type": "landlust-1934-tile-pair",
-    "mirror": true,
-    "measuredPalette": {
-     "brick": "#6f5d42",
-     "evidence": "strip 2024-11-21 span 2011-2258: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    }
-   },
-   "notes": [
-    "door right: mirrored",
-    "crown gutter (type default)"
-   ],
-   "likeness": {
-    "pandId": "0363100012132371",
-    "ncc": 0.481,
-    "nccRaw": 0.481,
-    "shiftM": [
-     -0.05,
-     -0.4
-    ],
-    "usable": 0.67,
-    "abstain": null,
-    "verdict": "PASS",
-    "reasons": [],
-    "wall": {
-     "photo": "#715d41",
-     "model": "#8a7452",
-     "dL": 0.082
-    },
-    "glazing": {
-     "photo": 0.33,
-     "model": 0.37
-    },
-    "columns": {
-     "photo": null,
-     "model": null
-    },
-    "iou": 0.473,
-    "footOffsetM": 0.85
-   },
-   "challengers": {
-    "landlust-1934-tile-pair~m": 0.481,
-    "landlust-1934-tile-pair": 0.043
-   }
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Opus verdict: the photo has a canted erker over storeys 1-2 and wide ground windows, a front the tile-pair type does not draw",
+   "likeness": null,
+   "challengers": {}
   },
   {
    "pandId": "0363100012137482",
@@ -885,47 +871,47 @@
     "measuredPalette": {
      "brick": "#6e5c41",
      "evidence": "strip 2024-11-21 span 2259-2506: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#6c583e"
     }
    },
    "notes": [
     "door left",
-    "crown gutter (type default)"
+    "crown gutter (type default)",
+    "palette pinned: Leijnsenstraat 2-30 (Opus verdict): model olive-tan about #8a6f4e against photo red-brown about #584834; one brick for the run"
    ],
    "likeness": {
     "pandId": "0363100012137482",
-    "ncc": 0.623,
-    "nccRaw": 0.623,
+    "ncc": 0.533,
+    "nccRaw": 0.533,
     "shiftM": [
      -0.05,
-     -0.25
+     -0.1
     ],
-    "usable": 0.69,
+    "usable": 0.7,
     "abstain": null,
-    "verdict": "FAIL",
-    "reasons": [
-     "glazing storey band off by 0.16",
-     "window shape none vs photo square",
-     "columns none vs photo 2"
-    ],
+    "verdict": "PASS",
+    "reasons": [],
     "wall": {
-     "photo": "#766044",
-     "model": "#897351",
+     "photo": "#735e43",
+     "model": "#886f4e",
      "dL": 0.063
     },
     "glazing": {
-     "photo": 0.42,
-     "model": 0.37
+     "photo": 0.44,
+     "model": 0.39
     },
     "columns": {
-     "photo": 2,
-     "model": null
+     "photo": null,
+     "model": 2
     },
-    "iou": 0.526,
-    "footOffsetM": 0.85
+    "iou": 0.545,
+    "footOffsetM": 1.35
    },
    "challengers": {
-    "landlust-1934-tile-pair": 0.623,
-    "landlust-1934-tile-pair~m": 0.055
+    "landlust-1934-tile-pair": 0.533,
+    "landlust-1934-tile-pair~m": 0.054
    }
   },
   {
@@ -978,45 +964,51 @@
     "measuredPalette": {
      "brick": "#816341",
      "evidence": "strip 2024-11-21 span 2505-2753: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#6c583e"
     }
    },
    "notes": [
     "door right: mirrored",
-    "crown gutter (type default)"
+    "crown gutter (type default)",
+    "palette pinned: Leijnsenstraat 2-30 (Opus verdict): model olive-tan about #8a6f4e against photo red-brown about #584834; one brick for the run"
    ],
    "likeness": {
     "pandId": "0363100012117865",
-    "ncc": 0.51,
-    "nccRaw": 0.51,
+    "ncc": 0.481,
+    "nccRaw": 0.481,
     "shiftM": [
-     -0.05,
-     -0.25
+     0,
+     -0.05
     ],
     "usable": 0.7,
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.20"
+     "glazing storey band off by 0.40 mean 0.37 vs photo 0.60",
+     "window shape none vs photo square",
+     "columns none vs photo 2"
     ],
     "wall": {
-     "photo": "#806241",
-     "model": "#9d784f",
-     "dL": 0.084
+     "photo": "#816141",
+     "model": "#886f4e",
+     "dL": 0.039
     },
     "glazing": {
-     "photo": 0.46,
-     "model": 0.36
+     "photo": 0.6,
+     "model": 0.37
     },
     "columns": {
-     "photo": null,
+     "photo": 2,
      "model": null
     },
-    "iou": 0.459,
-    "footOffsetM": 0.85
+    "iou": 0.478,
+    "footOffsetM": 1.35
    },
    "challengers": {
-    "landlust-1934-tile-pair~m": 0.51,
-    "landlust-1934-tile-pair": 0.01
+    "landlust-1934-tile-pair~m": 0.481,
+    "landlust-1934-tile-pair": -0.009
    }
   },
   {

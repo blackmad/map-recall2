@@ -3,7 +3,7 @@
  "street": "Coppelstockstraat",
  "library": "landlust",
  "stripDate": "2024-11-21",
- "seconds": 15.75,
+ "seconds": 11.56,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -199,20 +199,23 @@
    "score": 0.9,
    "placement": {
     "type": "landlust-1933-three-axis-tile",
-    "mirror": true,
     "measuredPalette": {
      "brick": "#7b5a44",
      "evidence": "strip 2024-11-21 span 527-782: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#6b5a46"
     }
    },
    "notes": [
-    "door left: mirrored",
-    "crown gutter (type default)"
+    "crown gutter (type default)",
+    "palette pinned: Coppelstockstraat 29-41 (Opus verdict): the model was a patchwork from #88644b to #7e7662, the photo a uniform #564c3c-#5f5442; one brick for the run",
+    "door reviewer pin: as drawn (Coppelstockstraat 29-41 (strip sheet, Opus verdict 2026-11-10): the photo's door and wide ground window are swapped against the model on every pand; flipped)"
    ],
    "likeness": {
     "pandId": "0363100012149193",
-    "ncc": 0.297,
-    "nccRaw": 0.297,
+    "ncc": 0.298,
+    "nccRaw": 0.298,
     "shiftM": [
      0.35,
      0.4
@@ -221,13 +224,13 @@
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "wall dL +0.18",
+     "wall dL +0.16",
      "glazing storey band off by 0.30 mean 0.36 vs photo 0.52"
     ],
     "wall": {
      "photo": "#5b4230",
-     "model": "#966e53",
-     "dL": 0.184
+     "model": "#857057",
+     "dL": 0.159
     },
     "glazing": {
      "photo": 0.52,
@@ -237,11 +240,11 @@
      "photo": 3,
      "model": 3
     },
-    "iou": 0.427
+    "iou": 0.432
    },
    "challengers": {
-    "landlust-1933-three-axis-tile~m": 0.297,
-    "landlust-1933-three-axis-tile": 0.52
+    "landlust-1933-three-axis-tile": 0.298,
+    "landlust-1933-three-axis-tile~m": 0.52
    }
   },
   {
@@ -304,16 +307,21 @@
     "measuredPalette": {
      "brick": "#745a41",
      "evidence": "strip 2024-11-21 span 782-1026: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    }
+    },
+    "paletteOverrides": {
+     "brick": "#6b5a46"
+    },
+    "mirror": true
    },
    "notes": [
-    "door right",
-    "crown gutter (type default)"
+    "crown gutter (type default)",
+    "palette pinned: Coppelstockstraat 29-41 (Opus verdict): the model was a patchwork from #88644b to #7e7662, the photo a uniform #564c3c-#5f5442; one brick for the run",
+    "door reviewer pin: mirrored (Coppelstockstraat 29-41 (strip sheet, Opus verdict 2026-11-10): the photo's door and wide ground window are swapped against the model on every pand; flipped)"
    ],
    "likeness": {
     "pandId": "0363100012066272",
-    "ncc": 0.203,
-    "nccRaw": 0.203,
+    "ncc": 0.204,
+    "nccRaw": 0.204,
     "shiftM": [
      -0.35,
      0.25
@@ -322,12 +330,12 @@
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "wall dL +0.13"
+     "wall dL +0.12"
     ],
     "wall": {
      "photo": "#664e38",
-     "model": "#906f50",
-     "dL": 0.129
+     "model": "#857057",
+     "dL": 0.122
     },
     "glazing": {
      "photo": 0.37,
@@ -337,11 +345,11 @@
      "photo": 3,
      "model": 3
     },
-    "iou": 0.464
+    "iou": 0.465
    },
    "challengers": {
-    "landlust-1933-three-axis-tile": 0.203,
-    "landlust-1933-three-axis-tile~m": 0.466
+    "landlust-1933-three-axis-tile~m": 0.204,
+    "landlust-1933-three-axis-tile": 0.468
    }
   },
   {
@@ -406,20 +414,23 @@
    "score": 0.9,
    "placement": {
     "type": "landlust-1933-three-axis-tile",
-    "mirror": true,
     "measuredPalette": {
      "brick": "#746d5a",
      "evidence": "strip 2024-11-21 span 1026-1270: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#6b5a46"
     }
    },
    "notes": [
-    "door left: mirrored",
-    "crown gutter (type default)"
+    "crown gutter (type default)",
+    "palette pinned: Coppelstockstraat 29-41 (Opus verdict): the model was a patchwork from #88644b to #7e7662, the photo a uniform #564c3c-#5f5442; one brick for the run",
+    "door reviewer pin: as drawn (Coppelstockstraat 29-41 (strip sheet, Opus verdict 2026-11-10): the photo's door and wide ground window are swapped against the model on every pand; flipped)"
    ],
    "likeness": {
     "pandId": "0363100012104481",
-    "ncc": 0.237,
-    "nccRaw": 0.237,
+    "ncc": 0.248,
+    "nccRaw": 0.248,
     "shiftM": [
      0.3,
      0.25
@@ -428,16 +439,15 @@
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "wall dL +0.16",
-     "glazing storey band off by 0.30 mean 0.35 vs photo 0.21"
+     "glazing storey band off by 0.29 mean 0.35 vs photo 0.22"
     ],
     "wall": {
      "photo": "#6b523b",
-     "model": "#8b826c",
-     "dL": 0.159
+     "model": "#857057",
+     "dL": 0.106
     },
     "glazing": {
-     "photo": 0.21,
+     "photo": 0.22,
      "model": 0.35
     },
     "columns": {
@@ -447,8 +457,8 @@
     "iou": 0.36
    },
    "challengers": {
-    "landlust-1933-three-axis-tile~m": 0.237,
-    "landlust-1933-three-axis-tile": 0.511
+    "landlust-1933-three-axis-tile": 0.248,
+    "landlust-1933-three-axis-tile~m": 0.516
    }
   },
   {
@@ -499,18 +509,23 @@
     "measuredPalette": {
      "brick": "#746046",
      "evidence": "strip 2024-11-21 span 1270-1514: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    }
+    },
+    "paletteOverrides": {
+     "brick": "#6b5a46"
+    },
+    "mirror": true
    },
    "notes": [
-    "door unread: as drawn, the opposite of 104481",
-    "crown gutter (type default)"
+    "crown gutter (type default)",
+    "palette pinned: Coppelstockstraat 29-41 (Opus verdict): the model was a patchwork from #88644b to #7e7662, the photo a uniform #564c3c-#5f5442; one brick for the run",
+    "door reviewer pin: mirrored (Coppelstockstraat 29-41 (strip sheet, Opus verdict 2026-11-10): the photo's door and wide ground window are swapped against the model on every pand; flipped)"
    ],
    "likeness": {
     "pandId": "0363100012104480",
-    "ncc": 0.254,
-    "nccRaw": 0.254,
+    "ncc": 0.252,
+    "nccRaw": 0.252,
     "shiftM": [
-     -0.35,
+     -0.3,
      0.35
     ],
     "usable": 0.54,
@@ -521,8 +536,8 @@
     ],
     "wall": {
      "photo": "#695640",
-     "model": "#8f7656",
-     "dL": 0.118
+     "model": "#857057",
+     "dL": 0.1
     },
     "glazing": {
      "photo": 0.23,
@@ -532,11 +547,11 @@
      "photo": null,
      "model": 3
     },
-    "iou": 0.444
+    "iou": 0.446
    },
    "challengers": {
-    "landlust-1933-three-axis-tile": 0.254,
-    "landlust-1933-three-axis-tile~m": 0.46
+    "landlust-1933-three-axis-tile~m": 0.252,
+    "landlust-1933-three-axis-tile": 0.461
    }
   },
   {
@@ -590,20 +605,23 @@
    "score": 0.9,
    "placement": {
     "type": "landlust-1933-three-axis-tile",
-    "mirror": true,
     "measuredPalette": {
      "brick": "#736046",
      "evidence": "strip 2024-11-21 span 1514-1758: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#6b5a46"
     }
    },
    "notes": [
-    "door left: mirrored",
-    "crown gutter (type default)"
+    "crown gutter (type default)",
+    "palette pinned: Coppelstockstraat 29-41 (Opus verdict): the model was a patchwork from #88644b to #7e7662, the photo a uniform #564c3c-#5f5442; one brick for the run",
+    "door reviewer pin: as drawn (Coppelstockstraat 29-41 (strip sheet, Opus verdict 2026-11-10): the photo's door and wide ground window are swapped against the model on every pand; flipped)"
    ],
    "likeness": {
     "pandId": "0363100012122456",
-    "ncc": 0.221,
-    "nccRaw": 0.221,
+    "ncc": 0.226,
+    "nccRaw": 0.226,
     "shiftM": [
      0.3,
      0.35
@@ -616,8 +634,8 @@
     ],
     "wall": {
      "photo": "#6d5c45",
-     "model": "#8e7656",
-     "dL": 0.098
+     "model": "#857057",
+     "dL": 0.082
     },
     "glazing": {
      "photo": 0.21,
@@ -627,11 +645,11 @@
      "photo": 3,
      "model": 3
     },
-    "iou": 0.31
+    "iou": 0.308
    },
    "challengers": {
-    "landlust-1933-three-axis-tile~m": 0.221,
-    "landlust-1933-three-axis-tile": 0.416
+    "landlust-1933-three-axis-tile": 0.226,
+    "landlust-1933-three-axis-tile~m": 0.42
    }
   },
   {
@@ -688,16 +706,21 @@
     "measuredPalette": {
      "brick": "#7a674e",
      "evidence": "strip 2024-11-21 span 1758-2002: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    }
+    },
+    "paletteOverrides": {
+     "brick": "#6b5a46"
+    },
+    "mirror": true
    },
    "notes": [
-    "door right",
-    "crown gutter (type default)"
+    "crown gutter (type default)",
+    "palette pinned: Coppelstockstraat 29-41 (Opus verdict): the model was a patchwork from #88644b to #7e7662, the photo a uniform #564c3c-#5f5442; one brick for the run",
+    "door reviewer pin: mirrored (Coppelstockstraat 29-41 (strip sheet, Opus verdict 2026-11-10): the photo's door and wide ground window are swapped against the model on every pand; flipped)"
    ],
    "likeness": {
     "pandId": "0363100012100119",
-    "ncc": 0.158,
-    "nccRaw": 0.158,
+    "ncc": 0.156,
+    "nccRaw": 0.156,
     "shiftM": [
      -0.4,
      0.25
@@ -710,8 +733,8 @@
     ],
     "wall": {
      "photo": "#725e4a",
-     "model": "#937c5e",
-     "dL": 0.104
+     "model": "#857057",
+     "dL": 0.063
     },
     "glazing": {
      "photo": 0.48,
@@ -721,11 +744,11 @@
      "photo": 3,
      "model": 3
     },
-    "iou": 0.41
+    "iou": 0.417
    },
    "challengers": {
-    "landlust-1933-three-axis-tile": 0.158,
-    "landlust-1933-three-axis-tile~m": 0.433
+    "landlust-1933-three-axis-tile~m": 0.156,
+    "landlust-1933-three-axis-tile": 0.443
    }
   },
   {
@@ -774,20 +797,23 @@
    "score": 0.81,
    "placement": {
     "type": "landlust-1933-three-axis-tile",
-    "mirror": true,
     "measuredPalette": {
      "brick": "#504130",
      "evidence": "strip 2024-11-21 span 2002-2246: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#6b5a46"
     }
    },
    "notes": [
-    "door left: mirrored",
-    "crown gutter (type default)"
+    "crown gutter (type default)",
+    "palette pinned: Coppelstockstraat 29-41 (Opus verdict): the model was a patchwork from #88644b to #7e7662, the photo a uniform #564c3c-#5f5442; one brick for the run",
+    "door reviewer pin: as drawn (Coppelstockstraat 29-41 (strip sheet, Opus verdict 2026-11-10): the photo's door and wide ground window are swapped against the model on every pand; flipped)"
    ],
    "likeness": {
     "pandId": "0363100012089839",
-    "ncc": 0.208,
-    "nccRaw": 0.208,
+    "ncc": 0.198,
+    "nccRaw": 0.198,
     "shiftM": [
      0.3,
      0.3
@@ -796,12 +822,12 @@
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.15 mean 0.36 vs photo 0.26"
+     "glazing  mean 0.36 vs photo 0.26"
     ],
     "wall": {
      "photo": "#705d44",
-     "model": "#6e5a42",
-     "dL": -0.008
+     "model": "#857057",
+     "dL": 0.078
     },
     "glazing": {
      "photo": 0.26,
@@ -811,11 +837,11 @@
      "photo": 3,
      "model": 3
     },
-    "iou": 0.389
+    "iou": 0.395
    },
    "challengers": {
-    "landlust-1933-three-axis-tile~m": 0.208,
-    "landlust-1933-three-axis-tile": 0.482
+    "landlust-1933-three-axis-tile": 0.198,
+    "landlust-1933-three-axis-tile~m": 0.469
    }
   },
   {
@@ -1177,12 +1203,12 @@
    },
    "status": "held",
    "stage": "match",
-   "reason": "every type vetoed (best landlust-1933-three-axis-tile: built 1924, type 1932-1935; frontage 12.99 m, type 5.8-6.6 m)",
+   "reason": "every type vetoed (best landlust-1933-three-axis-tile: built 1924, type 1932-1940; frontage 12.99 m, type 5.8-6.6 m)",
    "best": {
     "type": "landlust-1933-three-axis-tile",
     "score": 0,
     "veto": [
-     "built 1924, type 1932-1935",
+     "built 1924, type 1932-1940",
      "frontage 12.99 m, type 5.8-6.6 m"
     ],
     "criteria": [
@@ -1270,12 +1296,12 @@
    },
    "status": "held",
    "stage": "match",
-   "reason": "every type vetoed (best landlust-1933-three-axis-tile: built 1924, type 1932-1935; frontage 9.2 m, type 5.8-6.6 m)",
+   "reason": "every type vetoed (best landlust-1933-three-axis-tile: built 1924, type 1932-1940; frontage 9.2 m, type 5.8-6.6 m)",
    "best": {
     "type": "landlust-1933-three-axis-tile",
     "score": 0,
     "veto": [
-     "built 1924, type 1932-1935",
+     "built 1924, type 1932-1940",
      "frontage 9.2 m, type 5.8-6.6 m"
     ],
     "criteria": [

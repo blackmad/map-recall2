@@ -3,7 +3,7 @@
  "street": "Bestevâerstraat",
  "library": "landlust",
  "stripDate": "2024-11-21",
- "seconds": 10.09,
+ "seconds": 15.88,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -13,17 +13,7 @@
   "widthSlackM": 0.4,
   "flatRoofRiseM": 1.5
  },
- "runs": [
-  {
-   "face": "bestever-64-78-r1",
-   "pands": [
-    "0363100012080563",
-    "0363100012144446"
-   ],
-   "passed": true,
-   "triangles": 1876
-  }
- ],
+ "runs": [],
  "pands": [
   {
    "pandId": "0363100012064428",
@@ -150,62 +140,11 @@
     "voidShare": 0,
     "foliageShare": 0.07
    },
-   "status": "placed",
-   "type": "landlust-1924-bestevaer-half-block",
-   "score": 0.86,
-   "runnerUp": {
-    "typeId": "landlust-1924-bestevaer-stair-block",
-    "score": 0
-   },
-   "placement": {
-    "type": "landlust-1924-bestevaer-half-block",
-    "mirror": true,
-    "measuredPalette": {
-     "brick": "#98764a",
-     "evidence": "strip 2024-11-21 span 280-526: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    }
-   },
-   "notes": [
-    "door left: mirrored",
-    "crown parapet (type default)"
-   ],
-   "likeness": {
-    "pandId": "0363100012080563",
-    "ncc": 0.401,
-    "nccRaw": 0.401,
-    "shiftM": [
-     0.3,
-     0.4
-    ],
-    "usable": 0.88,
-    "abstain": null,
-    "verdict": "FAIL",
-    "reasons": [
-     "wall dL +0.22",
-     "glazing storey band off by 0.28 mean 0.24 vs photo 0.00"
-    ],
-    "wall": {
-     "photo": "#6a532e",
-     "model": "#af8a5a",
-     "dL": 0.222
-    },
-    "glazing": {
-     "photo": 0,
-     "model": 0.24
-    },
-    "columns": {
-     "photo": null,
-     "model": 2
-    },
-    "iou": 0,
-    "footOffsetM": 1.18
-   },
-   "challengers": {
-    "landlust-1924-bestevaer-half-block~m": 0.401,
-    "landlust-1924-bestevaer-half-block": 0.354,
-    "landlust-1924-bestevaer-stair-block~m": 0.249,
-    "landlust-1924-bestevaer-stair-block": 0.245
-   }
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Opus verdict 2026-11-10: HOLD the Bestevaer stair/half blocks (no plinth with an arched stair door at the pilaster, no glass-brick pilaster, patchwork per-pand tone); re-place only with a kit piece placed by architectural block, see docs/reports/landlust-plinth-block-kit-note-20261110.md",
+   "likeness": null,
+   "challengers": {}
   },
   {
    "pandId": "0363100012144446",
@@ -247,60 +186,11 @@
     "voidShare": 0,
     "foliageShare": 0.03
    },
-   "status": "placed",
-   "type": "landlust-1924-bestevaer-half-block",
-   "score": 1,
-   "runnerUp": {
-    "typeId": "landlust-1924-bestevaer-stair-block",
-    "score": 0
-   },
-   "placement": {
-    "type": "landlust-1924-bestevaer-half-block",
-    "measuredPalette": {
-     "brick": "#765b20",
-     "evidence": "strip 2024-11-21 span 526-772: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    }
-   },
-   "notes": [
-    "door unread: as drawn, the opposite of 080563",
-    "crown parapet (type default)"
-   ],
-   "likeness": {
-    "pandId": "0363100012144446",
-    "ncc": 0.171,
-    "nccRaw": 0.171,
-    "shiftM": [
-     -0.4,
-     0.4
-    ],
-    "usable": 0.9,
-    "abstain": null,
-    "verdict": "FAIL",
-    "reasons": [
-     "glazing storey band off by 0.31 mean 0.24 vs photo 0.41"
-    ],
-    "wall": {
-     "photo": "#674f20",
-     "model": "#937431",
-     "dL": 0.12
-    },
-    "glazing": {
-     "photo": 0.41,
-     "model": 0.24
-    },
-    "columns": {
-     "photo": null,
-     "model": 2
-    },
-    "iou": 0.318,
-    "footOffsetM": 1.18
-   },
-   "challengers": {
-    "landlust-1924-bestevaer-half-block": 0.171,
-    "landlust-1924-bestevaer-half-block~m": 0.274,
-    "landlust-1924-bestevaer-stair-block": 0.144,
-    "landlust-1924-bestevaer-stair-block~m": 0.132
-   }
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Opus verdict 2026-11-10: HOLD the Bestevaer stair/half blocks (no plinth with an arched stair door at the pilaster, no glass-brick pilaster, patchwork per-pand tone); re-place only with a kit piece placed by architectural block, see docs/reports/landlust-plinth-block-kit-note-20261110.md",
+   "likeness": null,
+   "challengers": {}
   },
   {
    "pandId": "0363100012145241",

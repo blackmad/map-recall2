@@ -54,6 +54,9 @@
     "measuredPalette": {
      "brick": "#8b5a3d",
      "evidence": "strip 2024-11-21 span 514-1028: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#7a4c2f"
     }
    },
    "groundFloor": {
@@ -126,6 +129,9 @@
     "measuredPalette": {
      "brick": "#865439",
      "evidence": "strip 2024-11-21 span 2056-2570: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#7a4c2f"
     }
    },
    "groundFloor": {
@@ -150,6 +156,9 @@
     "measuredPalette": {
      "brick": "#98613f",
      "evidence": "strip 2024-11-21 span 2570-3084: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#7a4c2f"
     }
    },
    "groundFloor": {
@@ -174,6 +183,9 @@
     "measuredPalette": {
      "brick": "#935f3e",
      "evidence": "strip 2024-11-21 span 3084-3598: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#7a4c2f"
     }
    },
    "groundFloor": {
@@ -198,6 +210,9 @@
     "measuredPalette": {
      "brick": "#9f6946",
      "evidence": "strip 2024-11-21 span 3598-4112: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#7a4c2f"
     }
    },
    "groundFloor": {
@@ -254,6 +269,16 @@
     "pand": "0363100012082410",
     "stripRow": 174,
     "evidence": "auto-place: strip skyline cornice 10.65 m within 1 m of the landlust-1934-slot-block line 10.1 m; 3DBAG/PDOK eaves 10.19 m"
+   },
+   {
+    "pand": "0363100012066626",
+    "stripRow": 174,
+    "evidence": "review pin: Callenburgstraat 27: the photo eaves run continuous across the 8 pands of the run at 10.65 m; the model stepped down 0.5 m"
+   },
+   {
+    "pand": "0363100012063567",
+    "stripRow": 174,
+    "evidence": "review pin: Callenburgstraat 31: as 27, the row line 10.65 m"
    }
   ]
  }

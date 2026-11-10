@@ -30,6 +30,9 @@
     "measuredPalette": {
      "brick": "#7c6546",
      "evidence": "strip 2024-11-21 span 527-776: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#6c583e"
     }
    },
    "groundFloor": {
@@ -55,6 +58,9 @@
     "measuredPalette": {
      "brick": "#796548",
      "evidence": "strip 2024-11-21 span 775-1022: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#6c583e"
     }
    },
    "groundFloor": {
@@ -79,6 +85,9 @@
     "measuredPalette": {
      "brick": "#766246",
      "evidence": "strip 2024-11-21 span 1022-1269: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#6c583e"
     }
    },
    "groundFloor": {
@@ -104,6 +113,9 @@
     "measuredPalette": {
      "brick": "#806748",
      "evidence": "strip 2024-11-21 span 1270-1517: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#6c583e"
     }
    },
    "groundFloor": {
@@ -128,6 +140,9 @@
     "measuredPalette": {
      "brick": "#796447",
      "evidence": "strip 2024-11-21 span 1517-1744: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#6c583e"
     }
    },
    "groundFloor": {
@@ -153,6 +168,9 @@
     "measuredPalette": {
      "brick": "#796547",
      "evidence": "strip 2024-11-21 span 1744-2012: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#6c583e"
     }
    },
    "groundFloor": {
@@ -166,80 +184,6 @@
    },
    "rhythm": {
     "citation": "auto-place: landlust-1934-tile-pair scored 0.84 on eaves -, storeys 1, roof 1, stucco 1, columns 0.4; strip 2024-11-21 span 1744-2012"
-   }
-  },
-  {
-   "pandId": "0363100012132371",
-   "slug": "leijnsen-132371",
-   "address": "Jasper Leijnsenstraat 14",
-   "type": {
-    "type": "landlust-1934-tile-pair",
-    "mirror": true,
-    "measuredPalette": {
-     "brick": "#6f5d42",
-     "evidence": "strip 2024-11-21 span 2011-2258: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    }
-   },
-   "groundFloor": {
-    "use": "residential",
-    "bag": [
-     "woonfunctie"
-    ],
-    "photoDate": "2024-11-21",
-    "agreement": "bag-only",
-    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
-   },
-   "rhythm": {
-    "citation": "auto-place: landlust-1934-tile-pair scored 1 on eaves -, storeys 1, roof 1, stucco 1; strip 2024-11-21 span 2011-2258"
-   }
-  },
-  {
-   "pandId": "0363100012137482",
-   "slug": "leijnsen-137482",
-   "address": "Jasper Leijnsenstraat 12",
-   "type": {
-    "type": "landlust-1934-tile-pair",
-    "measuredPalette": {
-     "brick": "#6e5c41",
-     "evidence": "strip 2024-11-21 span 2259-2506: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    }
-   },
-   "groundFloor": {
-    "use": "residential",
-    "bag": [
-     "woonfunctie"
-    ],
-    "photoDate": "2024-11-21",
-    "agreement": "bag-only",
-    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
-   },
-   "rhythm": {
-    "citation": "auto-place: landlust-1934-tile-pair scored 1 on eaves -, storeys 1, roof 1, stucco 1; strip 2024-11-21 span 2259-2506"
-   }
-  },
-  {
-   "pandId": "0363100012117865",
-   "slug": "leijnsen-117865",
-   "address": "Jasper Leijnsenstraat 10",
-   "type": {
-    "type": "landlust-1934-tile-pair",
-    "mirror": true,
-    "measuredPalette": {
-     "brick": "#816341",
-     "evidence": "strip 2024-11-21 span 2505-2753: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    }
-   },
-   "groundFloor": {
-    "use": "residential",
-    "bag": [
-     "woonfunctie"
-    ],
-    "photoDate": "2024-11-21",
-    "agreement": "bag-only",
-    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
-   },
-   "rhythm": {
-    "citation": "auto-place: landlust-1934-tile-pair scored 0.84 on eaves -, storeys 1, roof 1, stucco 1, columns 0.4; strip 2024-11-21 span 2505-2753"
    }
   }
  ],
@@ -289,24 +233,6 @@
     "stripRow": 351,
     "frontRoof": {},
     "evidence": "auto-place: the landlust-1934-tile-pair cornice line 12 m (measured on its exemplar strips; this pand's skyline unread); 3DBAG/PDOK eaves 12.85 m"
-   },
-   {
-    "pand": "0363100012132371",
-    "stripRow": 351,
-    "frontRoof": {},
-    "evidence": "auto-place: the landlust-1934-tile-pair cornice line 12 m (measured on its exemplar strips; this pand's skyline unread); 3DBAG/PDOK eaves 13.68 m"
-   },
-   {
-    "pand": "0363100012137482",
-    "stripRow": 351,
-    "frontRoof": {},
-    "evidence": "auto-place: the landlust-1934-tile-pair cornice line 12 m (measured on its exemplar strips; this pand's skyline unread); 3DBAG/PDOK eaves 13.7 m"
-   },
-   {
-    "pand": "0363100012117865",
-    "stripRow": 351,
-    "frontRoof": {},
-    "evidence": "auto-place: the landlust-1934-tile-pair cornice line 12 m (measured on its exemplar strips; this pand's skyline unread); 3DBAG/PDOK eaves 13.8 m"
    }
   ]
  }

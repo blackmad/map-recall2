@@ -10,13 +10,6 @@
    "reason": "Haringstraat 6-18 (2024-11 strip): every front has the white-framed wide+narrow window pair, the attic ribbon and the white eaves slab; no erker (the erker-attic type took Haringstraat 12 on a 0.19 NCC near tie)"
   },
   {
-   "face": "treslong-5-59",
-   "types": [
-    "landlust-1933-erker-window"
-   ],
-   "reason": "Treslongstraat 5-59 (strip gridded 1 m): erker + single window per pand under a dark tiled roof on every front 17-51; no other design on the face"
-  },
-  {
    "face": "callenburg-2-32",
    "types": [
     "landlust-1934-slot-block"
@@ -163,6 +156,96 @@
     "landlust-1933-three-axis-tile"
    ],
    "reason": "Haringstraat 13-27 strip: three equal windows on two rows over a wide ground window and a door under a tile roof with dormers (the Coppelstockstraat front); the four-storey and tile-pair types were matched on year and width"
+  },
+  {
+   "face": "treslong-5-19-a",
+   "types": [
+    "landlust-1933-erker-window"
+   ],
+   "reason": "Treslongstraat 5-35 erker run, split into 4-pand faces to stay under the geometry-audit overlap allowance"
+  },
+  {
+   "face": "treslong-5-19-b",
+   "types": [
+    "landlust-1933-erker-window"
+   ],
+   "reason": "Treslongstraat 5-35 erker run, split into 4-pand faces to stay under the geometry-audit overlap allowance"
+  },
+  {
+   "face": "treslong-21-35-a",
+   "types": [
+    "landlust-1933-erker-window"
+   ],
+   "reason": "Treslongstraat 5-35 erker run, split into 4-pand faces to stay under the geometry-audit overlap allowance"
+  },
+  {
+   "face": "treslong-21-35-b",
+   "types": [
+    "landlust-1933-erker-window"
+   ],
+   "reason": "Treslongstraat 5-35 erker run, split into 4-pand faces to stay under the geometry-audit overlap allowance"
+  }
+ ],
+ "mirrors": [
+  {
+   "pandId": "0363100012149193",
+   "type": "landlust-1933-three-axis-tile",
+   "mirror": false,
+   "reason": "Coppelstockstraat 29-41 (strip sheet, Opus verdict 2026-11-10): the photo's door and wide ground window are swapped against the model on every pand; flipped"
+  },
+  {
+   "pandId": "0363100012066272",
+   "type": "landlust-1933-three-axis-tile",
+   "mirror": true,
+   "reason": "Coppelstockstraat 29-41 (strip sheet, Opus verdict 2026-11-10): the photo's door and wide ground window are swapped against the model on every pand; flipped"
+  },
+  {
+   "pandId": "0363100012104481",
+   "type": "landlust-1933-three-axis-tile",
+   "mirror": false,
+   "reason": "Coppelstockstraat 29-41 (strip sheet, Opus verdict 2026-11-10): the photo's door and wide ground window are swapped against the model on every pand; flipped"
+  },
+  {
+   "pandId": "0363100012104480",
+   "type": "landlust-1933-three-axis-tile",
+   "mirror": true,
+   "reason": "Coppelstockstraat 29-41 (strip sheet, Opus verdict 2026-11-10): the photo's door and wide ground window are swapped against the model on every pand; flipped"
+  },
+  {
+   "pandId": "0363100012122456",
+   "type": "landlust-1933-three-axis-tile",
+   "mirror": false,
+   "reason": "Coppelstockstraat 29-41 (strip sheet, Opus verdict 2026-11-10): the photo's door and wide ground window are swapped against the model on every pand; flipped"
+  },
+  {
+   "pandId": "0363100012100119",
+   "type": "landlust-1933-three-axis-tile",
+   "mirror": true,
+   "reason": "Coppelstockstraat 29-41 (strip sheet, Opus verdict 2026-11-10): the photo's door and wide ground window are swapped against the model on every pand; flipped"
+  },
+  {
+   "pandId": "0363100012089839",
+   "type": "landlust-1933-three-axis-tile",
+   "mirror": false,
+   "reason": "Coppelstockstraat 29-41 (strip sheet, Opus verdict 2026-11-10): the photo's door and wide ground window are swapped against the model on every pand; flipped"
+  },
+  {
+   "pandId": "0363100012121629",
+   "type": "landlust-1933-erker-window",
+   "mirror": true,
+   "reason": "Treslongstraat 5-59 (Opus verdict 2026-11-10): the erker alternates every pand; pand 12: the photo has the narrow window and door on the left and the erker on the right"
+  },
+  {
+   "pandId": "0363100012068576",
+   "type": "landlust-1933-erker-window",
+   "mirror": false,
+   "reason": "Treslongstraat 5-59 (Opus verdict 2026-11-10): the erker alternates every pand; pand 13: the photo has the erker on the left and the door on the right"
+  },
+  {
+   "pandId": "0363100012145888",
+   "type": "landlust-1933-erker-window",
+   "mirror": true,
+   "reason": "Treslongstraat 5-59 (Opus verdict 2026-11-10): the erker alternates every pand; pand 16: the photo has the narrow window on the left and the erker on the right"
   }
  ]
 }

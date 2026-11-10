@@ -2,33 +2,33 @@
  "face": "leijnsen-2-30-r1",
  "image": "staging/block-face/leijnsen-2-30-r1/strip.jpg",
  "pixelsPerMetre": 40,
- "width": 2226,
+ "width": 1485,
  "height": 831,
  "groundNAP": 0.5,
  "heightM": 20.78,
  "frame": {
   "midRD": [
-   119223.61384027777,
-   487784.10733333323
+   119214.4675625,
+   487782.4258333333
   ],
   "uRD": [
-   0.9831880778111035,
-   0.1825957383131039
+   0.9836759465620508,
+   0.17994897097581142
   ],
   "nRD": [
-   0.1825957383131039,
-   -0.9831880778111035
+   0.17994897097581142,
+   -0.9836759465620508
   ]
  },
- "x0M": -27.79,
- "x1M": 27.86,
+ "x0M": -18.49,
+ "x1M": 18.64,
  "date": "2024-11-21",
  "coverage": 1,
  "spans": [
   {
    "pandId": "0363100012064868",
-   "x0M": -27.79,
-   "x1M": -21.56,
+   "x0M": -18.49,
+   "x1M": -12.26,
    "px": [
     0,
     249
@@ -61,8 +61,8 @@
   },
   {
    "pandId": "0363100012074955",
-   "x0M": -21.59,
-   "x1M": -15.41,
+   "x0M": -12.29,
+   "x1M": -6.11,
    "px": [
     248,
     495
@@ -95,8 +95,8 @@
   },
   {
    "pandId": "0363100012107813",
-   "x0M": -15.41,
-   "x1M": -9.24,
+   "x0M": -6.11,
+   "x1M": 0.06,
    "px": [
     495,
     742
@@ -129,8 +129,8 @@
   },
   {
    "pandId": "0363100012123427",
-   "x0M": -9.21,
-   "x1M": -3.04,
+   "x0M": 0.09,
+   "x1M": 6.26,
    "px": [
     743,
     990
@@ -163,8 +163,8 @@
   },
   {
    "pandId": "0363100012140619",
-   "x0M": -3.04,
-   "x1M": 2.64,
+   "x0M": 6.26,
+   "x1M": 11.94,
    "px": [
     990,
     1217
@@ -197,8 +197,8 @@
   },
   {
    "pandId": "0363100012081763",
-   "x0M": 2.64,
-   "x1M": 9.34,
+   "x0M": 11.94,
+   "x1M": 18.64,
    "px": [
     1217,
     1485
@@ -225,108 +225,6 @@
      "timestamp": "2024-11-21T12:09:53Z",
      "distanceM": 19,
      "obliquityDeg": 21.4,
-     "missingFraction": 0
-    }
-   ]
-  },
-  {
-   "pandId": "0363100012132371",
-   "x0M": 9.31,
-   "x1M": 15.48,
-   "px": [
-    1484,
-    1731
-   ],
-   "date": "2024-11-21",
-   "fallbackDate": false,
-   "panoramas": [
-    {
-     "panoId": "terdam_21112024_Track52_Sphere_00012",
-     "timestamp": "2024-11-21T12:09:53Z",
-     "distanceM": 17.8,
-     "obliquityDeg": 1.6,
-     "missingFraction": 0
-    },
-    {
-     "panoId": "terdam_21112024_Track52_Sphere_00013",
-     "timestamp": "2024-11-21T12:09:54Z",
-     "distanceM": 18.4,
-     "obliquityDeg": 14.3,
-     "missingFraction": 0
-    },
-    {
-     "panoId": "terdam_21112024_Track52_Sphere_00011",
-     "timestamp": "2024-11-21T12:09:52Z",
-     "distanceM": 18.6,
-     "obliquityDeg": 17.2,
-     "missingFraction": 0
-    }
-   ]
-  },
-  {
-   "pandId": "0363100012137482",
-   "x0M": 15.51,
-   "x1M": 21.69,
-   "px": [
-    1732,
-    1979
-   ],
-   "date": "2024-11-21",
-   "fallbackDate": false,
-   "panoramas": [
-    {
-     "panoId": "terdam_21112024_Track52_Sphere_00011",
-     "timestamp": "2024-11-21T12:09:52Z",
-     "distanceM": 17.7,
-     "obliquityDeg": 2.3,
-     "missingFraction": 0
-    },
-    {
-     "panoId": "terdam_21112024_Track52_Sphere_00010",
-     "timestamp": "2024-11-21T12:09:51Z",
-     "distanceM": 18.1,
-     "obliquityDeg": 13.7,
-     "missingFraction": 0
-    },
-    {
-     "panoId": "terdam_21112024_Track52_Sphere_00012",
-     "timestamp": "2024-11-21T12:09:53Z",
-     "distanceM": 18.6,
-     "obliquityDeg": 17.8,
-     "missingFraction": 0
-    }
-   ]
-  },
-  {
-   "pandId": "0363100012117865",
-   "x0M": 21.66,
-   "x1M": 27.86,
-   "px": [
-    1978,
-    2226
-   ],
-   "date": "2024-11-21",
-   "fallbackDate": false,
-   "panoramas": [
-    {
-     "panoId": "terdam_21112024_Track52_Sphere_00010",
-     "timestamp": "2024-11-21T12:09:51Z",
-     "distanceM": 17.7,
-     "obliquityDeg": 6.1,
-     "missingFraction": 0
-    },
-    {
-     "panoId": "terdam_21112024_Track52_Sphere_00009",
-     "timestamp": "2024-11-21T12:09:50Z",
-     "distanceM": 18,
-     "obliquityDeg": 9.9,
-     "missingFraction": 0
-    },
-    {
-     "panoId": "terdam_21112024_Track52_Sphere_00011",
-     "timestamp": "2024-11-21T12:09:52Z",
-     "distanceM": 19,
-     "obliquityDeg": 21.3,
      "missingFraction": 0
     }
    ]
@@ -364,7 +262,7 @@
   "face": "leijnsen-2-30",
   "px": [
    527,
-   2753
+   2012
   ]
  }
 }

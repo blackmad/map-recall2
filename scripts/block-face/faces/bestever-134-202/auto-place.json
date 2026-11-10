@@ -3,7 +3,7 @@
  "street": "Bestevâerstraat",
  "library": "landlust",
  "stripDate": "2024-11-21",
- "seconds": 18.78,
+ "seconds": 3.42,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -13,34 +13,7 @@
   "widthSlackM": 0.4,
   "flatRoofRiseM": 1.5
  },
- "runs": [
-  {
-   "face": "bestever-134-202-r1",
-   "pands": [
-    "0363100012138101"
-   ],
-   "passed": true,
-   "triangles": 1750
-  },
-  {
-   "face": "bestever-134-202-r2",
-   "pands": [
-    "0363100012100977",
-    "0363100012094201"
-   ],
-   "passed": true,
-   "triangles": 3481
-  },
-  {
-   "face": "bestever-134-202-r3",
-   "pands": [
-    "0363100012090379",
-    "0363100012151749"
-   ],
-   "passed": true,
-   "triangles": 2869
-  }
- ],
+ "runs": [],
  "pands": [
   {
    "pandId": "0363100012147479",
@@ -177,61 +150,11 @@
     "voidShare": 0,
     "foliageShare": 0.12
    },
-   "status": "placed",
-   "type": "landlust-1924-bestevaer-stair-block",
-   "score": 0.77,
-   "runnerUp": {
-    "typeId": "landlust-1924-bestevaer-half-block",
-    "score": 0
-   },
-   "placement": {
-    "type": "landlust-1924-bestevaer-stair-block",
-    "mirror": true,
-    "measuredPalette": {
-     "brick": "#6f5d3e",
-     "evidence": "strip 2024-11-21 span 539-1026: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    }
-   },
-   "notes": [
-    "door left: mirrored",
-    "crown parapet (type default)",
-    "lone pand: a stair block on its own: landlust-1924-bestevaer-stair-block opts in to one-house faces from 5 m (frontage 12.18 m)"
-   ],
-   "likeness": {
-    "pandId": "0363100012138101",
-    "ncc": 0.506,
-    "nccRaw": 0.506,
-    "shiftM": [
-     -0.3,
-     0.25
-    ],
-    "usable": 0.8,
-    "abstain": null,
-    "verdict": "FAIL",
-    "reasons": [
-     "wall dL +0.18",
-     "glazing storey band off by 0.18 mean 0.24 vs photo 0.34"
-    ],
-    "wall": {
-     "photo": "#50432e",
-     "model": "#8b754e",
-     "dL": 0.178
-    },
-    "glazing": {
-     "photo": 0.34,
-     "model": 0.24
-    },
-    "columns": {
-     "photo": null,
-     "model": 4
-    },
-    "iou": 0.194,
-    "footOffsetM": 0.88
-   },
-   "challengers": {
-    "landlust-1924-bestevaer-stair-block~m": 0.506,
-    "landlust-1924-bestevaer-stair-block": 0.357
-   }
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Opus verdict 2026-11-10: HOLD the Bestevaer stair/half blocks (no plinth with an arched stair door at the pilaster, no glass-brick pilaster, patchwork per-pand tone); re-place only with a kit piece placed by architectural block, see docs/reports/landlust-plinth-block-kit-note-20261110.md",
+   "likeness": null,
+   "challengers": {}
   },
   {
    "pandId": "0363100012076341",
@@ -511,60 +434,11 @@
     "voidShare": 0,
     "foliageShare": 0.13
    },
-   "status": "placed",
-   "type": "landlust-1924-bestevaer-stair-block",
-   "score": 0.86,
-   "runnerUp": {
-    "typeId": "landlust-1924-bestevaer-half-block",
-    "score": 0
-   },
-   "placement": {
-    "type": "landlust-1924-bestevaer-stair-block",
-    "mirror": true,
-    "measuredPalette": {
-     "brick": "#7c653e",
-     "evidence": "strip 2024-11-21 span 1983-2463: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    }
-   },
-   "notes": [
-    "door left: mirrored",
-    "crown parapet (type default)"
-   ],
-   "likeness": {
-    "pandId": "0363100012100977",
-    "ncc": 0.297,
-    "nccRaw": 0.297,
-    "shiftM": [
-     0.4,
-     0.35
-    ],
-    "usable": 0.82,
-    "abstain": null,
-    "verdict": "FAIL",
-    "reasons": [
-     "wall dL +0.13",
-     "glazing storey band off by 0.24"
-    ],
-    "wall": {
-     "photo": "#6e5b36",
-     "model": "#987c4c",
-     "dL": 0.125
-    },
-    "glazing": {
-     "photo": 0.15,
-     "model": 0.25
-    },
-    "columns": {
-     "photo": 5,
-     "model": 4
-    },
-    "iou": 0.209,
-    "footOffsetM": 1.18
-   },
-   "challengers": {
-    "landlust-1924-bestevaer-stair-block~m": 0.297,
-    "landlust-1924-bestevaer-stair-block": 0.286
-   }
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Opus verdict 2026-11-10: HOLD the Bestevaer stair/half blocks (no plinth with an arched stair door at the pilaster, no glass-brick pilaster, patchwork per-pand tone); re-place only with a kit piece placed by architectural block, see docs/reports/landlust-plinth-block-kit-note-20261110.md",
+   "likeness": null,
+   "challengers": {}
   },
   {
    "pandId": "0363100012094201",
@@ -606,62 +480,11 @@
     "voidShare": 0,
     "foliageShare": 0.13
    },
-   "status": "placed",
-   "type": "landlust-1924-bestevaer-stair-block",
-   "score": 1,
-   "runnerUp": {
-    "typeId": "landlust-1924-bestevaer-half-block",
-    "score": 0
-   },
-   "placement": {
-    "type": "landlust-1924-bestevaer-stair-block",
-    "measuredPalette": {
-     "brick": "#796644",
-     "evidence": "strip 2024-11-21 span 2463-2949: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    }
-   },
-   "notes": [
-    "door unread: as drawn, the opposite of 100977",
-    "crown parapet (type default)"
-   ],
-   "likeness": {
-    "pandId": "0363100012094201",
-    "ncc": 0.293,
-    "nccRaw": 0.293,
-    "shiftM": [
-     0.15,
-     0.35
-    ],
-    "usable": 0.81,
-    "abstain": null,
-    "verdict": "FAIL",
-    "reasons": [
-     "wall dL +0.14",
-     "window shape square vs photo tall",
-     "columns 4 vs photo 6"
-    ],
-    "wall": {
-     "photo": "#65553b",
-     "model": "#947d53",
-     "dL": 0.139
-    },
-    "glazing": {
-     "photo": 0.31,
-     "model": 0.25
-    },
-    "columns": {
-     "photo": 6,
-     "model": 4
-    },
-    "iou": 0.273,
-    "footOffsetM": 1.18
-   },
-   "challengers": {
-    "landlust-1924-bestevaer-stair-block": 0.293,
-    "landlust-1924-bestevaer-half-block": 0.257,
-    "landlust-1924-bestevaer-half-block~m": 0.241,
-    "landlust-1924-bestevaer-stair-block~m": 0.19
-   }
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Opus verdict 2026-11-10: HOLD the Bestevaer stair/half blocks (no plinth with an arched stair door at the pilaster, no glass-brick pilaster, patchwork per-pand tone); re-place only with a kit piece placed by architectural block, see docs/reports/landlust-plinth-block-kit-note-20261110.md",
+   "likeness": null,
+   "challengers": {}
   },
   {
    "pandId": "0363100012122498",
@@ -782,60 +605,11 @@
     "voidShare": 0,
     "foliageShare": 0.07
    },
-   "status": "placed",
-   "type": "landlust-1924-bestevaer-stair-block",
-   "score": 1,
-   "runnerUp": {
-    "typeId": "landlust-1924-bestevaer-half-block",
-    "score": 0
-   },
-   "placement": {
-    "type": "landlust-1924-bestevaer-stair-block",
-    "measuredPalette": {
-     "brick": "#775b35",
-     "evidence": "strip 2024-11-21 span 3347-3798: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    }
-   },
-   "notes": [
-    "door unread",
-    "crown parapet (type default)"
-   ],
-   "likeness": {
-    "pandId": "0363100012090379",
-    "ncc": 0.317,
-    "nccRaw": 0.317,
-    "shiftM": [
-     -0.4,
-     -0.4
-    ],
-    "usable": 0.85,
-    "abstain": null,
-    "verdict": "FAIL",
-    "reasons": [
-     "wall dL +0.16",
-     "glazing storey band off by 0.28 mean 0.25 vs photo 0.10"
-    ],
-    "wall": {
-     "photo": "#5a472b",
-     "model": "#957243",
-     "dL": 0.163
-    },
-    "glazing": {
-     "photo": 0.1,
-     "model": 0.25
-    },
-    "columns": {
-     "photo": null,
-     "model": 4
-    },
-    "iou": 0.128
-   },
-   "challengers": {
-    "landlust-1924-bestevaer-stair-block": 0.317,
-    "landlust-1924-bestevaer-half-block": 0.054,
-    "landlust-1924-bestevaer-half-block~m": 0.005,
-    "landlust-1924-bestevaer-stair-block~m": 0.168
-   }
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Opus verdict 2026-11-10: HOLD the Bestevaer stair/half blocks (no plinth with an arched stair door at the pilaster, no glass-brick pilaster, patchwork per-pand tone); re-place only with a kit piece placed by architectural block, see docs/reports/landlust-plinth-block-kit-note-20261110.md",
+   "likeness": null,
+   "challengers": {}
   },
   {
    "pandId": "0363100012151749",
@@ -872,74 +646,11 @@
     "voidShare": 0,
     "foliageShare": 0.1
    },
-   "status": "placed",
-   "type": "landlust-1924-bestevaer-half-block",
-   "score": 0.77,
-   "runnerUp": {
-    "typeId": "landlust-1924-bestevaer-stair-block",
-    "score": 0
-   },
-   "placement": {
-    "type": "landlust-1924-bestevaer-half-block",
-    "ground": {
-     "shopfront": {
-      "colour": "#463621",
-      "fascia": true,
-      "entrance": "centre",
-      "glazing": "split",
-      "stallriser": "low",
-      "residentialDoor": {
-       "side": "left",
-       "colour": "#2a2a2a"
-      },
-      "evidence": "auto-place: bag-only (winkelfunctie,woonfunctie); fascia colour measured on the strip 2024-11-21 span 3799-4096"
-     }
-    },
-    "mirror": true,
-    "measuredPalette": {
-     "brick": "#685032",
-     "evidence": "strip 2024-11-21 span 3799-4096: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    }
-   },
-   "notes": [
-    "door left: mirrored",
-    "crown parapet (type default)"
-   ],
-   "likeness": {
-    "pandId": "0363100012151749",
-    "ncc": 0.353,
-    "nccRaw": 0.353,
-    "shiftM": [
-     0.4,
-     -0.3
-    ],
-    "usable": 0.83,
-    "abstain": null,
-    "verdict": "FAIL",
-    "reasons": [
-     "glazing storey band off by 0.19 mean 0.29 vs photo 0.13",
-     "window shape wide vs photo square",
-     "columns 2 vs photo 3"
-    ],
-    "wall": {
-     "photo": "#614a2e",
-     "model": "#876841",
-     "dL": 0.112
-    },
-    "glazing": {
-     "photo": 0.13,
-     "model": 0.29
-    },
-    "columns": {
-     "photo": 3,
-     "model": 2
-    },
-    "iou": 0.278
-   },
-   "challengers": {
-    "landlust-1924-bestevaer-half-block~m": 0.034,
-    "landlust-1924-bestevaer-half-block": 0.185
-   }
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Opus verdict 2026-11-10: HOLD the Bestevaer stair/half blocks (no plinth with an arched stair door at the pilaster, no glass-brick pilaster, patchwork per-pand tone); re-place only with a kit piece placed by architectural block, see docs/reports/landlust-plinth-block-kit-note-20261110.md",
+   "likeness": null,
+   "challengers": {}
   }
  ]
 }

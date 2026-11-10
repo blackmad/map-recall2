@@ -7,10 +7,7 @@
   "0363100012107813",
   "0363100012123427",
   "0363100012140619",
-  "0363100012081763",
-  "0363100012132371",
-  "0363100012137482",
-  "0363100012117865"
+  "0363100012081763"
  ],
  "ends": [
   {
@@ -19,7 +16,7 @@
   },
   {
    "side": "right",
-   "reason": "run of leijnsen-2-30: 077897 held (auto-place.json)"
+   "reason": "run of leijnsen-2-30: 132371 held (auto-place.json)"
   }
  ],
  "rejected": [
@@ -1548,38 +1545,6 @@
    "widthM": 6.69,
    "eavesM": 12.85,
    "roofMaxM": 17.35,
-   "storeys3dbag": 5,
-   "builtYear": 1934,
-   "uncertainty": []
-  },
-  {
-   "pandId": "0363100012132371",
-   "alongM": -37.17,
-   "widthM": 6.18,
-   "eavesM": 13.68,
-   "roofMaxM": 17.55,
-   "storeys3dbag": 5,
-   "builtYear": 1934,
-   "uncertainty": [
-    "Short native jogs retained; the frontage is not a single planar facade."
-   ]
-  },
-  {
-   "pandId": "0363100012137482",
-   "alongM": -30.99,
-   "widthM": 6.16,
-   "eavesM": 13.7,
-   "roofMaxM": 17.6,
-   "storeys3dbag": 5,
-   "builtYear": 1934,
-   "uncertainty": []
-  },
-  {
-   "pandId": "0363100012117865",
-   "alongM": -24.81,
-   "widthM": 6.2,
-   "eavesM": 13.8,
-   "roofMaxM": 17.71,
    "storeys3dbag": 5,
    "builtYear": 1934,
    "uncertainty": []

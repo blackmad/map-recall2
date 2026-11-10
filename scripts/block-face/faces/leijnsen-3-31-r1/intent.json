@@ -30,6 +30,9 @@
     "measuredPalette": {
      "brick": "#855f45",
      "evidence": "strip 2024-11-21 span 89-333: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#745b41"
     }
    },
    "groundFloor": {
@@ -55,6 +58,9 @@
     "measuredPalette": {
      "brick": "#816147",
      "evidence": "strip 2024-11-21 span 334-578: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#745b41"
     }
    },
    "groundFloor": {
@@ -79,6 +85,9 @@
     "measuredPalette": {
      "brick": "#6b5940",
      "evidence": "strip 2024-11-21 span 578-822: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#745b41"
     }
    },
    "groundFloor": {
@@ -104,6 +113,9 @@
     "measuredPalette": {
      "brick": "#79654a",
      "evidence": "strip 2024-11-21 span 822-1066: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#745b41"
     }
    },
    "groundFloor": {
@@ -128,6 +140,9 @@
     "measuredPalette": {
      "brick": "#6c5e45",
      "evidence": "strip 2024-11-21 span 1066-1310: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#745b41"
     }
    },
    "groundFloor": {

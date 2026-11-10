@@ -3,7 +3,7 @@
  "street": "Jasper Leijnsenstraat",
  "library": "landlust",
  "stripDate": "2024-11-21",
- "seconds": 8.95,
+ "seconds": 7.27,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -162,11 +162,15 @@
     "measuredPalette": {
      "brick": "#855f45",
      "evidence": "strip 2024-11-21 span 89-333: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#745b41"
     }
    },
    "notes": [
     "door right",
-    "crown flat-slab (type default)"
+    "crown flat-slab (type default)",
+    "palette pinned: Leijnsenstraat 11-19 (Opus verdict): model red/olive patchwork about #8a6a4c against photo about #655039; one brick for the run"
    ],
    "likeness": {
     "pandId": "0363100012078570",
@@ -184,8 +188,8 @@
     ],
     "wall": {
      "photo": "#7d5f41",
-     "model": "#a07253",
-     "dL": 0.104
+     "model": "#907150",
+     "dL": 0.067
     },
     "glazing": {
      "photo": 0.35,
@@ -199,7 +203,7 @@
    },
    "challengers": {
     "landlust-1938-pair-attic": 0.238,
-    "landlust-1938-pair-attic~m": 0.274
+    "landlust-1938-pair-attic~m": 0.268
    }
   },
   {
@@ -252,21 +256,25 @@
     "measuredPalette": {
      "brick": "#816147",
      "evidence": "strip 2024-11-21 span 334-578: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#745b41"
     }
    },
    "notes": [
     "door left: mirrored",
-    "crown flat-slab (type default)"
+    "crown flat-slab (type default)",
+    "palette pinned: Leijnsenstraat 11-19 (Opus verdict): model red/olive patchwork about #8a6a4c against photo about #655039; one brick for the run"
    ],
    "likeness": {
     "pandId": "0363100012121647",
-    "ncc": 0.213,
-    "nccRaw": 0.213,
+    "ncc": 0.21,
+    "nccRaw": 0.21,
     "shiftM": [
-     -0.15,
+     -0.1,
      0.35
     ],
-    "usable": 0.74,
+    "usable": 0.75,
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
@@ -274,8 +282,8 @@
     ],
     "wall": {
      "photo": "#7b5d40",
-     "model": "#9c7556",
-     "dL": 0.108
+     "model": "#907150",
+     "dL": 0.073
     },
     "glazing": {
      "photo": 0.41,
@@ -288,8 +296,8 @@
     "iou": 0.519
    },
    "challengers": {
-    "landlust-1938-pair-attic~m": 0.213,
-    "landlust-1938-pair-attic": 0.243
+    "landlust-1938-pair-attic~m": 0.21,
+    "landlust-1938-pair-attic": 0.239
    }
   },
   {
@@ -341,16 +349,20 @@
     "measuredPalette": {
      "brick": "#6b5940",
      "evidence": "strip 2024-11-21 span 578-822: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#745b41"
     }
    },
    "notes": [
     "door right",
-    "crown flat-slab (type default)"
+    "crown flat-slab (type default)",
+    "palette pinned: Leijnsenstraat 11-19 (Opus verdict): model red/olive patchwork about #8a6a4c against photo about #655039; one brick for the run"
    ],
    "likeness": {
     "pandId": "0363100012066007",
-    "ncc": 0.224,
-    "nccRaw": 0.224,
+    "ncc": 0.226,
+    "nccRaw": 0.226,
     "shiftM": [
      -0.15,
      0.25
@@ -363,8 +375,8 @@
     ],
     "wall": {
      "photo": "#62523a",
-     "model": "#877051",
-     "dL": 0.118
+     "model": "#907150",
+     "dL": 0.133
     },
     "glazing": {
      "photo": 0.26,
@@ -377,8 +389,8 @@
     "iou": 0.375
    },
    "challengers": {
-    "landlust-1938-pair-attic": 0.224,
-    "landlust-1938-pair-attic~m": 0.22
+    "landlust-1938-pair-attic": 0.226,
+    "landlust-1938-pair-attic~m": 0.221
    }
   },
   {
@@ -425,16 +437,20 @@
     "measuredPalette": {
      "brick": "#79654a",
      "evidence": "strip 2024-11-21 span 822-1066: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#745b41"
     }
    },
    "notes": [
     "door left: mirrored",
-    "crown flat-slab (type default)"
+    "crown flat-slab (type default)",
+    "palette pinned: Leijnsenstraat 11-19 (Opus verdict): model red/olive patchwork about #8a6a4c against photo about #655039; one brick for the run"
    ],
    "likeness": {
     "pandId": "0363100012104220",
-    "ncc": 0.27,
-    "nccRaw": 0.27,
+    "ncc": 0.26,
+    "nccRaw": 0.26,
     "shiftM": [
      -0.25,
      0.35
@@ -447,8 +463,8 @@
     ],
     "wall": {
      "photo": "#5a4a38",
-     "model": "#937b5a",
-     "dL": 0.178
+     "model": "#907150",
+     "dL": 0.153
     },
     "glazing": {
      "photo": 0.31,
@@ -461,8 +477,8 @@
     "iou": 0.441
    },
    "challengers": {
-    "landlust-1938-pair-attic~m": 0.27,
-    "landlust-1938-pair-attic": 0.17
+    "landlust-1938-pair-attic~m": 0.26,
+    "landlust-1938-pair-attic": 0.168
    }
   },
   {
@@ -508,16 +524,20 @@
     "measuredPalette": {
      "brick": "#6c5e45",
      "evidence": "strip 2024-11-21 span 1066-1310: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#745b41"
     }
    },
    "notes": [
     "door right",
-    "crown flat-slab (type default)"
+    "crown flat-slab (type default)",
+    "palette pinned: Leijnsenstraat 11-19 (Opus verdict): model red/olive patchwork about #8a6a4c against photo about #655039; one brick for the run"
    ],
    "likeness": {
     "pandId": "0363100012073086",
-    "ncc": 0.284,
-    "nccRaw": 0.284,
+    "ncc": 0.283,
+    "nccRaw": 0.283,
     "shiftM": [
      -0.15,
      0.4
@@ -530,8 +550,8 @@
     ],
     "wall": {
      "photo": "#67573f",
-     "model": "#877556",
-     "dL": 0.108
+     "model": "#907150",
+     "dL": 0.114
     },
     "glazing": {
      "photo": 0.36,
@@ -544,8 +564,8 @@
     "iou": 0.492
    },
    "challengers": {
-    "landlust-1938-pair-attic": 0.284,
-    "landlust-1938-pair-attic~m": 0.208
+    "landlust-1938-pair-attic": 0.283,
+    "landlust-1938-pair-attic~m": 0.207
    }
   },
   {

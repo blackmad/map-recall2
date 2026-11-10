@@ -54,6 +54,9 @@
     "measuredPalette": {
      "brick": "#7e4a2d",
      "evidence": "strip 2024-11-21 span 2049-2561: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#7a4c2f"
     }
    },
    "groundFloor": {
@@ -83,8 +86,8 @@
   "measuredEaves": [
    {
     "pand": "0363100012114763",
-    "stripRow": 168,
-    "evidence": "auto-place: strip skyline cornice 10.93 m within 1 m of the landlust-1934-slot-block line 10.1 m; 3DBAG/PDOK eaves 10.06 m"
+    "stripRow": 201,
+    "evidence": "review pin: Haenstraat 19: one eaves line with no. 15 in the photo; the model's +0.94 m step is a lone 3DBAG outlier"
    }
   ]
  }

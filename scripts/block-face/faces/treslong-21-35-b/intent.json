@@ -1,0 +1,165 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "treslong-21-35-b",
+ "street": "Bloys van Treslongstraat",
+ "sources": [
+  {
+   "id": "strip-2024-11-21",
+   "kind": "street-panorama",
+   "capturedAt": "2024-11-21",
+   "image": "staging/block-face/treslong-21-35-b/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "auto-place (blockFace/autoPlace.ts)",
+  "passes": 1,
+  "note": "auto-placed from the landlust library (buurt Landlust-Zuid); scores and holds in scripts/block-face/faces/treslong-21-35-b/auto-place.json"
+ },
+ "types": [
+  "landlust-1933-erker-window"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012068576",
+   "slug": "treslong-068576",
+   "address": "Bloys van Treslongstraat 29",
+   "type": {
+    "type": "landlust-1933-erker-window",
+    "measuredPalette": {
+     "brick": "#48311c",
+     "evidence": "strip 2024-11-21 span 0-248: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#573f2b"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2024-11-21",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: landlust-1933-erker-window scored 0.89 on eaves 0.5, storeys 1, roof 1, stucco 1, bag-bay 1; strip 2024-11-21 span 0-248"
+   }
+  },
+  {
+   "pandId": "0363100012111921",
+   "slug": "treslong-111921",
+   "address": "Bloys van Treslongstraat 31",
+   "type": {
+    "type": "landlust-1933-erker-window",
+    "measuredPalette": {
+     "brick": "#3c2919",
+     "evidence": "strip 2024-11-21 span 248-492: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#573f2b"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2024-11-21",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: landlust-1933-erker-window scored 0.78 on eaves 0, storeys 1, roof 1, stucco 1, bag-bay 1; strip 2024-11-21 span 248-492"
+   }
+  },
+  {
+   "pandId": "0363100012105923",
+   "slug": "treslong-105923",
+   "address": "Bloys van Treslongstraat 33",
+   "type": {
+    "type": "landlust-1933-erker-window",
+    "measuredPalette": {
+     "brick": "#402b19",
+     "evidence": "strip 2024-11-21 span 492-736: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#573f2b"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2024-11-21",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: landlust-1933-erker-window scored 0.78 on eaves 0, storeys 1, roof 1, stucco 1, bag-bay 1; strip 2024-11-21 span 492-736"
+   }
+  },
+  {
+   "pandId": "0363100012145888",
+   "slug": "treslong-145888",
+   "address": "Bloys van Treslongstraat 35",
+   "type": {
+    "type": "landlust-1933-erker-window",
+    "measuredPalette": {
+     "brick": "#412f1e",
+     "evidence": "strip 2024-11-21 span 736-980: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#573f2b"
+    },
+    "mirror": true
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2024-11-21",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: landlust-1933-erker-window scored 0.78 on eaves 0, storeys 1, roof 1, stucco 1, bag-bay 1; strip 2024-11-21 span 736-980"
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "auto-place: low attic behind the cornice; the strips show sky over the cornices of the type rows"
+  },
+  "measuredEaves": [
+   {
+    "pand": "0363100012111921",
+    "stripRow": 223,
+    "frontRoof": {},
+    "evidence": "auto-place: the landlust-1933-erker-window cornice line 9.9 m (measured on its exemplar strips; this pand's skyline unread); 3DBAG/PDOK eaves 11.24 m"
+   },
+   {
+    "pand": "0363100012105923",
+    "stripRow": 223,
+    "frontRoof": {},
+    "evidence": "auto-place: the landlust-1933-erker-window cornice line 9.9 m (measured on its exemplar strips; this pand's skyline unread); 3DBAG/PDOK eaves 11.22 m"
+   },
+   {
+    "pand": "0363100012145888",
+    "stripRow": 223,
+    "frontRoof": {},
+    "evidence": "auto-place: the landlust-1933-erker-window cornice line 9.9 m (measured on its exemplar strips; this pand's skyline unread); 3DBAG/PDOK eaves 11.18 m"
+   }
+  ]
+ }
+}

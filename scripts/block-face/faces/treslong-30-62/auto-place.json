@@ -3,7 +3,7 @@
  "street": "Bloys van Treslongstraat",
  "library": "landlust",
  "stripDate": "2024-11-21",
- "seconds": 15.35,
+ "seconds": 3.94,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -13,18 +13,7 @@
   "widthSlackM": 0.4,
   "flatRoofRiseM": 1.5
  },
- "runs": [
-  {
-   "face": "treslong-30-62-r1",
-   "pands": [
-    "0363100012128490",
-    "0363100012152115",
-    "0363100012096543"
-   ],
-   "passed": false,
-   "triangles": 3610
-  }
- ],
+ "runs": [],
  "pands": [
   {
    "pandId": "0363100012128490",
@@ -67,60 +56,11 @@
     "voidShare": 0,
     "foliageShare": 0.11
    },
-   "status": "placed",
-   "type": "landlust-1924-bestevaer-half-block",
-   "score": 0.86,
-   "runnerUp": {
-    "typeId": "landlust-1924-bestevaer-stair-block",
-    "score": 0
-   },
-   "placement": {
-    "type": "landlust-1924-bestevaer-half-block",
-    "measuredPalette": {
-     "brick": "#78644c",
-     "evidence": "strip 2024-11-21 span 0-285: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    }
-   },
-   "notes": [
-    "door right",
-    "crown parapet (type default)"
-   ],
-   "likeness": {
-    "pandId": "0363100012128490",
-    "ncc": 0.463,
-    "nccRaw": 0.463,
-    "shiftM": [
-     0,
-     0
-    ],
-    "usable": 0.8,
-    "abstain": null,
-    "verdict": "FAIL",
-    "reasons": [
-     "glazing storey band off by 0.23",
-     "columns 2 vs photo 3"
-    ],
-    "wall": {
-     "photo": "#79654e",
-     "model": "#91795c",
-     "dL": 0.075
-    },
-    "glazing": {
-     "photo": 0.17,
-     "model": 0.24
-    },
-    "columns": {
-     "photo": 3,
-     "model": 2
-    },
-    "iou": 0.377
-   },
-   "challengers": {
-    "landlust-1924-bestevaer-half-block": 0.463,
-    "landlust-1924-bestevaer-half-block~m": 0.236,
-    "landlust-1924-bestevaer-stair-block": 0.142,
-    "landlust-1924-bestevaer-stair-block~m": 0.185
-   }
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Opus verdict: the same design as Bestevaerstraat; its run does not compile (not a straight surveyed wall)",
+   "likeness": null,
+   "challengers": {}
   },
   {
    "pandId": "0363100012152115",
@@ -163,58 +103,11 @@
     "voidShare": 0,
     "foliageShare": 0.14
    },
-   "status": "placed",
-   "type": "landlust-1924-bestevaer-half-block",
-   "score": 1,
-   "runnerUp": {
-    "typeId": "landlust-1924-bestevaer-stair-block",
-    "score": 0
-   },
-   "placement": {
-    "type": "landlust-1924-bestevaer-half-block",
-    "mirror": true,
-    "measuredPalette": {
-     "brick": "#866f50",
-     "evidence": "strip 2024-11-21 span 288-540: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    }
-   },
-   "notes": [
-    "door left: mirrored",
-    "crown parapet (type default)"
-   ],
-   "likeness": {
-    "pandId": "0363100012152115",
-    "ncc": 0.319,
-    "nccRaw": 0.319,
-    "shiftM": [
-     -0.2,
-     -0.05
-    ],
-    "usable": 0.77,
-    "abstain": null,
-    "verdict": "FAIL",
-    "reasons": [
-     "glazing storey band off by 0.21"
-    ],
-    "wall": {
-     "photo": "#7b664a",
-     "model": "#9f845f",
-     "dL": 0.112
-    },
-    "glazing": {
-     "photo": 0.2,
-     "model": 0.24
-    },
-    "columns": {
-     "photo": 2,
-     "model": 2
-    },
-    "iou": 0.297
-   },
-   "challengers": {
-    "landlust-1924-bestevaer-half-block~m": 0.319,
-    "landlust-1924-bestevaer-half-block": 0.405
-   }
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Opus verdict: the same design as Bestevaerstraat; its run does not compile (not a straight surveyed wall)",
+   "likeness": null,
+   "challengers": {}
   },
   {
    "pandId": "0363100012096543",
@@ -251,58 +144,11 @@
     "voidShare": 0,
     "foliageShare": 0.12
    },
-   "status": "placed",
-   "type": "landlust-1924-bestevaer-stair-block",
-   "score": 0.86,
-   "runnerUp": {
-    "typeId": "landlust-1924-bestevaer-half-block",
-    "score": 0
-   },
-   "placement": {
-    "type": "landlust-1924-bestevaer-stair-block",
-    "measuredPalette": {
-     "brick": "#775e47",
-     "evidence": "strip 2024-11-21 span 540-1044: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    }
-   },
-   "notes": [
-    "door unread",
-    "crown parapet (type default)",
-    "lone pand: a stair block on its own: landlust-1924-bestevaer-stair-block opts in to one-house faces from 5 m (frontage 12.6 m)"
-   ],
-   "likeness": {
-    "pandId": "0363100012096543",
-    "ncc": 0.312,
-    "nccRaw": 0.312,
-    "shiftM": [
-     0.3,
-     -0.1
-    ],
-    "usable": 0.8,
-    "abstain": null,
-    "verdict": "FAIL",
-    "reasons": [
-     "window shape square vs photo tall"
-    ],
-    "wall": {
-     "photo": "#785e48",
-     "model": "#917357",
-     "dL": 0.078
-    },
-    "glazing": {
-     "photo": 0.25,
-     "model": 0.25
-    },
-    "columns": {
-     "photo": 5,
-     "model": 4
-    },
-    "iou": 0.292
-   },
-   "challengers": {
-    "landlust-1924-bestevaer-stair-block": 0.192,
-    "landlust-1924-bestevaer-stair-block~m": 0.175
-   }
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Opus verdict: the same design as Bestevaerstraat; its run does not compile (not a straight surveyed wall)",
+   "likeness": null,
+   "challengers": {}
   },
   {
    "pandId": "0363100012110115",

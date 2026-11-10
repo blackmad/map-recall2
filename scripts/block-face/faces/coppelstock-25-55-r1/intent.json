@@ -27,10 +27,12 @@
    "address": "Coppelstockstraat 29",
    "type": {
     "type": "landlust-1933-three-axis-tile",
-    "mirror": true,
     "measuredPalette": {
      "brick": "#7b5a44",
      "evidence": "strip 2024-11-21 span 527-782: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#6b5a46"
     }
    },
    "groundFloor": {
@@ -55,7 +57,11 @@
     "measuredPalette": {
      "brick": "#745a41",
      "evidence": "strip 2024-11-21 span 782-1026: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    }
+    },
+    "paletteOverrides": {
+     "brick": "#6b5a46"
+    },
+    "mirror": true
    },
    "groundFloor": {
     "use": "residential",
@@ -76,10 +82,12 @@
    "address": "Coppelstockstraat 33",
    "type": {
     "type": "landlust-1933-three-axis-tile",
-    "mirror": true,
     "measuredPalette": {
      "brick": "#746d5a",
      "evidence": "strip 2024-11-21 span 1026-1270: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#6b5a46"
     }
    },
    "groundFloor": {
@@ -104,7 +112,11 @@
     "measuredPalette": {
      "brick": "#746046",
      "evidence": "strip 2024-11-21 span 1270-1514: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    }
+    },
+    "paletteOverrides": {
+     "brick": "#6b5a46"
+    },
+    "mirror": true
    },
    "groundFloor": {
     "use": "residential",
@@ -125,10 +137,12 @@
    "address": "Coppelstockstraat 37",
    "type": {
     "type": "landlust-1933-three-axis-tile",
-    "mirror": true,
     "measuredPalette": {
      "brick": "#736046",
      "evidence": "strip 2024-11-21 span 1514-1758: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#6b5a46"
     }
    },
    "groundFloor": {
@@ -153,7 +167,11 @@
     "measuredPalette": {
      "brick": "#7a674e",
      "evidence": "strip 2024-11-21 span 1758-2002: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    }
+    },
+    "paletteOverrides": {
+     "brick": "#6b5a46"
+    },
+    "mirror": true
    },
    "groundFloor": {
     "use": "residential",
@@ -174,10 +192,12 @@
    "address": "Coppelstockstraat 41",
    "type": {
     "type": "landlust-1933-three-axis-tile",
-    "mirror": true,
     "measuredPalette": {
      "brick": "#504130",
      "evidence": "strip 2024-11-21 span 2002-2246: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#6b5a46"
     }
    },
    "groundFloor": {

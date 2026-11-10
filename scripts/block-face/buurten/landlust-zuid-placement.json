@@ -1,12 +1,12 @@
 {
  "buurt": "landlust-zuid",
  "library": "landlust",
- "generatedAt": "2026-11-10T03:03:52.059Z",
- "seconds": 11.7,
+ "generatedAt": "2026-11-10T03:50:42.879Z",
+ "seconds": 20.87,
  "totals": {
-  "faces": 36,
-  "pands": 332,
-  "placed": 111
+  "faces": 42,
+  "pands": 364,
+  "placed": 105
  },
  "faces": [
   {
@@ -26,7 +26,7 @@
      "triangles": 3755
     }
    ],
-   "seconds": 5.94,
+   "seconds": 5.61,
    "byType": {
     "landlust-1934-slot-block": 2
    },
@@ -56,7 +56,7 @@
      "triangles": 3701
     }
    ],
-   "seconds": 5.67,
+   "seconds": 5.5,
    "byType": {
     "landlust-1934-slot-block": 2
    },
@@ -73,242 +73,108 @@
    "face": "bestever-134-202",
    "street": "Bestevâerstraat",
    "pands": 10,
-   "placed": 5,
-   "held": 5,
-   "runs": [
-    {
-     "face": "bestever-134-202-r1",
-     "pands": [
-      "0363100012138101"
-     ],
-     "passed": true,
-     "triangles": 1750
-    },
-    {
-     "face": "bestever-134-202-r2",
-     "pands": [
-      "0363100012100977",
-      "0363100012094201"
-     ],
-     "passed": true,
-     "triangles": 3481
-    },
-    {
-     "face": "bestever-134-202-r3",
-     "pands": [
-      "0363100012090379",
-      "0363100012151749"
-     ],
-     "passed": true,
-     "triangles": 2869
-    }
-   ],
-   "seconds": 18.78,
-   "byType": {
-    "landlust-1924-bestevaer-stair-block": 4,
-    "landlust-1924-bestevaer-half-block": 1
-   },
+   "placed": 0,
+   "held": 10,
+   "runs": [],
+   "seconds": 3.42,
+   "byType": {},
    "installed": 0,
    "holds": {
     "evidence": 0,
     "match": 5,
     "likeness": 0,
     "run": 0,
-    "review": 0
+    "review": 5
    }
   },
   {
    "face": "bestever-141-213",
    "street": "Bestevâerstraat",
    "pands": 13,
-   "placed": 6,
-   "held": 7,
-   "runs": [
-    {
-     "face": "bestever-141-213-r1",
-     "pands": [
-      "0363100012073127"
-     ],
-     "passed": true,
-     "triangles": 1192
-    },
-    {
-     "face": "bestever-141-213-r2",
-     "pands": [
-      "0363100012129595",
-      "0363100012105791",
-      "0363100012117468",
-      "0363100012104319"
-     ],
-     "passed": true,
-     "triangles": 6031
-    },
-    {
-     "face": "bestever-141-213-r3",
-     "pands": [
-      "0363100012074071"
-     ],
-     "passed": true,
-     "triangles": 930
-    }
-   ],
-   "seconds": 38.16,
-   "byType": {
-    "landlust-1924-bestevaer-half-block": 3,
-    "landlust-1924-bestevaer-stair-block": 3
-   },
+   "placed": 0,
+   "held": 13,
+   "runs": [],
+   "seconds": 3.42,
+   "byType": {},
    "installed": 0,
    "holds": {
     "evidence": 0,
     "match": 5,
-    "likeness": 2,
+    "likeness": 0,
     "run": 0,
-    "review": 0
+    "review": 8
    }
   },
   {
    "face": "bestever-63-139",
    "street": "Bestevâerstraat",
    "pands": 11,
-   "placed": 8,
-   "held": 3,
-   "runs": [
-    {
-     "face": "bestever-63-139-r1",
-     "pands": [
-      "0363100012109120",
-      "0363100012097447",
-      "0363100012109160",
-      "0363100012122641"
-     ],
-     "passed": true,
-     "triangles": 5320
-    },
-    {
-     "face": "bestever-63-139-r2",
-     "pands": [
-      "0363100012112971",
-      "0363100012097070",
-      "0363100012074159",
-      "0363100012133883"
-     ],
-     "passed": true,
-     "triangles": 5484
-    }
-   ],
-   "seconds": 26.38,
-   "byType": {
-    "landlust-1924-bestevaer-half-block": 4,
-    "landlust-1924-bestevaer-stair-block": 4
-   },
+   "placed": 0,
+   "held": 11,
+   "runs": [],
+   "seconds": 3.46,
+   "byType": {},
    "installed": 0,
    "holds": {
     "evidence": 0,
     "match": 3,
     "likeness": 0,
     "run": 0,
-    "review": 0
+    "review": 8
    }
   },
   {
    "face": "bestever-64-78",
    "street": "Bestevâerstraat",
    "pands": 7,
-   "placed": 2,
-   "held": 5,
-   "runs": [
-    {
-     "face": "bestever-64-78-r1",
-     "pands": [
-      "0363100012080563",
-      "0363100012144446"
-     ],
-     "passed": true,
-     "triangles": 1876
-    }
-   ],
-   "seconds": 10.09,
-   "byType": {
-    "landlust-1924-bestevaer-half-block": 2
-   },
+   "placed": 0,
+   "held": 7,
+   "runs": [],
+   "seconds": 15.88,
+   "byType": {},
    "installed": 0,
    "holds": {
     "evidence": 0,
     "match": 4,
     "likeness": 1,
     "run": 0,
-    "review": 0
+    "review": 2
    }
   },
   {
    "face": "bestever-80-96",
    "street": "Bestevâerstraat",
    "pands": 8,
-   "placed": 1,
-   "held": 7,
-   "runs": [
-    {
-     "face": "bestever-80-96-r1",
-     "pands": [
-      "0363100012150285"
-     ],
-     "passed": true,
-     "triangles": 963
-    }
-   ],
-   "seconds": 7.75,
-   "byType": {
-    "landlust-1924-bestevaer-half-block": 1
-   },
+   "placed": 0,
+   "held": 8,
+   "runs": [],
+   "seconds": 6.33,
+   "byType": {},
    "installed": 0,
    "holds": {
     "evidence": 0,
     "match": 6,
     "likeness": 1,
     "run": 0,
-    "review": 0
+    "review": 1
    }
   },
   {
    "face": "bestever-98-128",
    "street": "Bestevâerstraat",
    "pands": 12,
-   "placed": 6,
-   "held": 6,
-   "runs": [
-    {
-     "face": "bestever-98-128-r1",
-     "pands": [
-      "0363100012098396",
-      "0363100012115201"
-     ],
-     "passed": true,
-     "triangles": 2732
-    },
-    {
-     "face": "bestever-98-128-r2",
-     "pands": [
-      "0363100012125415",
-      "0363100012092821",
-      "0363100012087761",
-      "0363100012116325"
-     ],
-     "passed": true,
-     "triangles": 5436
-    }
-   ],
-   "seconds": 18.05,
-   "byType": {
-    "landlust-1924-bestevaer-half-block": 3,
-    "landlust-1924-bestevaer-stair-block": 3
-   },
+   "placed": 0,
+   "held": 12,
+   "runs": [],
+   "seconds": 3.9,
+   "byType": {},
    "installed": 0,
    "holds": {
     "evidence": 0,
     "match": 6,
     "likeness": 0,
     "run": 0,
-    "review": 0
+    "review": 6
    }
   },
   {
@@ -338,7 +204,7 @@
      "triangles": 5607
     }
    ],
-   "seconds": 13.85,
+   "seconds": 10.77,
    "byType": {
     "landlust-1934-slot-block": 5
    },
@@ -371,10 +237,10 @@
       "0363100012063567"
      ],
      "passed": true,
-     "triangles": 14695
+     "triangles": 14685
     }
    ],
-   "seconds": 44.16,
+   "seconds": 27.82,
    "byType": {
     "landlust-1934-slot-block": 8
    },
@@ -409,7 +275,7 @@
      "triangles": 6532
     }
    ],
-   "seconds": 15.75,
+   "seconds": 11.56,
    "byType": {
     "landlust-1933-three-axis-tile": 7
    },
@@ -429,7 +295,7 @@
    "placed": 0,
    "held": 7,
    "runs": [],
-   "seconds": 2.56,
+   "seconds": 2.41,
    "byType": {},
    "installed": 0,
    "holds": {
@@ -447,7 +313,7 @@
    "placed": 0,
    "held": 4,
    "runs": [],
-   "seconds": 9.71,
+   "seconds": 4.74,
    "byType": {},
    "installed": 0,
    "holds": {
@@ -465,7 +331,7 @@
    "placed": 0,
    "held": 15,
    "runs": [],
-   "seconds": 16.78,
+   "seconds": 21.55,
    "byType": {},
    "installed": 0,
    "holds": {
@@ -501,7 +367,7 @@
      "triangles": 3704
     }
    ],
-   "seconds": 12.81,
+   "seconds": 10.46,
    "byType": {
     "landlust-1934-slot-block": 3
    },
@@ -546,7 +412,7 @@
      "triangles": 2400
     }
    ],
-   "seconds": 12.92,
+   "seconds": 12,
    "byType": {
     "landlust-1935-slot-block-four": 3
    },
@@ -563,62 +429,36 @@
    "face": "haring-1-11",
    "street": "Jan Haringstraat",
    "pands": 6,
-   "placed": 2,
-   "held": 4,
-   "runs": [
-    {
-     "face": "haring-1-11-r1",
-     "pands": [
-      "0363100012148081",
-      "0363100012062858"
-     ],
-     "passed": true,
-     "triangles": 2419
-    }
-   ],
-   "seconds": 4.02,
-   "byType": {
-    "landlust-1937-three-axis-four": 2
-   },
+   "placed": 0,
+   "held": 6,
+   "runs": [],
+   "seconds": 1.11,
+   "byType": {},
    "installed": 0,
    "holds": {
     "evidence": 0,
     "match": 4,
     "likeness": 0,
     "run": 0,
-    "review": 0
+    "review": 2
    }
   },
   {
    "face": "haring-13-27",
    "street": "Jan Haringstraat",
    "pands": 9,
-   "placed": 4,
-   "held": 5,
-   "runs": [
-    {
-     "face": "haring-13-27-r1",
-     "pands": [
-      "0363100012066992",
-      "0363100012098683",
-      "0363100012144291",
-      "0363100012100954"
-     ],
-     "passed": false,
-     "triangles": 3798
-    }
-   ],
-   "seconds": 7.03,
-   "byType": {
-    "landlust-1933-three-axis-tile": 4
-   },
+   "placed": 0,
+   "held": 9,
+   "runs": [],
+   "seconds": 1.16,
+   "byType": {},
    "installed": 0,
    "holds": {
     "evidence": 0,
     "match": 3,
     "likeness": 0,
     "run": 2,
-    "review": 0
+    "review": 4
    }
   },
   {
@@ -639,7 +479,7 @@
      "triangles": 3985
     }
    ],
-   "seconds": 5.66,
+   "seconds": 5.38,
    "byType": {
     "landlust-1934-tile-pair": 3
    },
@@ -672,7 +512,7 @@
      "triangles": 6921
     }
    ],
-   "seconds": 6.99,
+   "seconds": 6.74,
    "byType": {
     "landlust-1938-ribbon-attic": 5
    },
@@ -689,8 +529,8 @@
    "face": "leijnsen-2-30",
    "street": "Jasper Leijnsenstraat",
    "pands": 15,
-   "placed": 9,
-   "held": 6,
+   "placed": 8,
+   "held": 7,
    "runs": [
     {
      "face": "leijnsen-2-30-r1",
@@ -700,18 +540,24 @@
       "0363100012107813",
       "0363100012123427",
       "0363100012140619",
-      "0363100012081763",
-      "0363100012132371",
+      "0363100012081763"
+     ],
+     "passed": true,
+     "triangles": 7678
+    },
+    {
+     "face": "leijnsen-2-30-r2",
+     "pands": [
       "0363100012137482",
       "0363100012117865"
      ],
      "passed": true,
-     "triangles": 11591
+     "triangles": 2568
     }
    ],
-   "seconds": 10.92,
+   "seconds": 11.27,
    "byType": {
-    "landlust-1934-tile-pair": 9
+    "landlust-1934-tile-pair": 8
    },
    "installed": 0,
    "holds": {
@@ -719,7 +565,7 @@
     "match": 2,
     "likeness": 0,
     "run": 2,
-    "review": 0
+    "review": 1
    }
   },
   {
@@ -742,7 +588,7 @@
      "triangles": 5441
     }
    ],
-   "seconds": 8.95,
+   "seconds": 7.27,
    "byType": {
     "landlust-1938-pair-attic": 5
    },
@@ -762,7 +608,7 @@
    "placed": 0,
    "held": 6,
    "runs": [],
-   "seconds": 1.5,
+   "seconds": 0.94,
    "byType": {},
    "installed": 0,
    "holds": {
@@ -780,7 +626,7 @@
    "placed": 0,
    "held": 8,
    "runs": [],
-   "seconds": 1.62,
+   "seconds": 2.18,
    "byType": {},
    "installed": 0,
    "holds": {
@@ -798,7 +644,7 @@
    "placed": 0,
    "held": 15,
    "runs": [],
-   "seconds": 3.15,
+   "seconds": 4.5,
    "byType": {},
    "installed": 0,
    "holds": {
@@ -816,7 +662,7 @@
    "placed": 0,
    "held": 11,
    "runs": [],
-   "seconds": 3.9,
+   "seconds": 5.72,
    "byType": {},
    "installed": 0,
    "holds": {
@@ -834,7 +680,7 @@
    "placed": 0,
    "held": 11,
    "runs": [],
-   "seconds": 3.19,
+   "seconds": 4.36,
    "byType": {},
    "installed": 0,
    "holds": {
@@ -846,33 +692,219 @@
    }
   },
   {
+   "face": "treslong-21-35",
+   "street": "Bloys van Treslongstraat",
+   "pands": 8,
+   "placed": 8,
+   "held": 0,
+   "runs": [
+    {
+     "face": "treslong-21-35",
+     "pands": [
+      "0363100012146039",
+      "0363100012144404",
+      "0363100012114752",
+      "0363100012121629",
+      "0363100012068576",
+      "0363100012111921",
+      "0363100012105923",
+      "0363100012145888"
+     ],
+     "passed": false,
+     "triangles": 10306
+    }
+   ],
+   "seconds": 7.81,
+   "byType": {
+    "landlust-1933-erker-window": 8
+   },
+   "installed": 0,
+   "holds": {
+    "evidence": 0,
+    "match": 0,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "treslong-21-35-a",
+   "street": "Bloys van Treslongstraat",
+   "pands": 4,
+   "placed": 4,
+   "held": 0,
+   "runs": [
+    {
+     "face": "treslong-21-35-a",
+     "pands": [
+      "0363100012146039",
+      "0363100012144404",
+      "0363100012114752",
+      "0363100012121629"
+     ],
+     "passed": true,
+     "triangles": 5100
+    }
+   ],
+   "seconds": 5,
+   "byType": {
+    "landlust-1933-erker-window": 4
+   },
+   "installed": 0,
+   "holds": {
+    "evidence": 0,
+    "match": 0,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "treslong-21-35-b",
+   "street": "Bloys van Treslongstraat",
+   "pands": 4,
+   "placed": 4,
+   "held": 0,
+   "runs": [
+    {
+     "face": "treslong-21-35-b",
+     "pands": [
+      "0363100012068576",
+      "0363100012111921",
+      "0363100012105923",
+      "0363100012145888"
+     ],
+     "passed": true,
+     "triangles": 5174
+    }
+   ],
+   "seconds": 4.88,
+   "byType": {
+    "landlust-1933-erker-window": 4
+   },
+   "installed": 0,
+   "holds": {
+    "evidence": 0,
+    "match": 0,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
    "face": "treslong-30-62",
    "street": "Bloys van Treslongstraat",
    "pands": 15,
-   "placed": 3,
-   "held": 12,
-   "runs": [
-    {
-     "face": "treslong-30-62-r1",
-     "pands": [
-      "0363100012128490",
-      "0363100012152115",
-      "0363100012096543"
-     ],
-     "passed": false,
-     "triangles": 3610
-    }
-   ],
-   "seconds": 15.35,
-   "byType": {
-    "landlust-1924-bestevaer-half-block": 2,
-    "landlust-1924-bestevaer-stair-block": 1
-   },
+   "placed": 0,
+   "held": 15,
+   "runs": [],
+   "seconds": 3.94,
+   "byType": {},
    "installed": 0,
    "holds": {
     "evidence": 2,
     "match": 1,
     "likeness": 9,
+    "run": 0,
+    "review": 3
+   }
+  },
+  {
+   "face": "treslong-5-19",
+   "street": "Bloys van Treslongstraat",
+   "pands": 8,
+   "placed": 8,
+   "held": 0,
+   "runs": [
+    {
+     "face": "treslong-5-19",
+     "pands": [
+      "0363100012151165",
+      "0363100012151495",
+      "0363100012126346",
+      "0363100012114449",
+      "0363100012109065",
+      "0363100012113093",
+      "0363100012132461",
+      "0363100012065427"
+     ],
+     "passed": false,
+     "triangles": 10204
+    }
+   ],
+   "seconds": 8.88,
+   "byType": {
+    "landlust-1933-erker-window": 8
+   },
+   "installed": 0,
+   "holds": {
+    "evidence": 0,
+    "match": 0,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "treslong-5-19-a",
+   "street": "Bloys van Treslongstraat",
+   "pands": 4,
+   "placed": 4,
+   "held": 0,
+   "runs": [
+    {
+     "face": "treslong-5-19-a",
+     "pands": [
+      "0363100012151165",
+      "0363100012151495",
+      "0363100012126346",
+      "0363100012114449"
+     ],
+     "passed": true,
+     "triangles": 5103
+    }
+   ],
+   "seconds": 5.99,
+   "byType": {
+    "landlust-1933-erker-window": 4
+   },
+   "installed": 0,
+   "holds": {
+    "evidence": 0,
+    "match": 0,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "treslong-5-19-b",
+   "street": "Bloys van Treslongstraat",
+   "pands": 4,
+   "placed": 4,
+   "held": 0,
+   "runs": [
+    {
+     "face": "treslong-5-19-b",
+     "pands": [
+      "0363100012109065",
+      "0363100012113093",
+      "0363100012132461",
+      "0363100012065427"
+     ],
+     "passed": true,
+     "triangles": 5148
+    }
+   ],
+   "seconds": 4.98,
+   "byType": {
+    "landlust-1933-erker-window": 4
+   },
+   "installed": 0,
+   "holds": {
+    "evidence": 0,
+    "match": 0,
+    "likeness": 0,
     "run": 0,
     "review": 0
    }
@@ -904,11 +936,11 @@
       "0363100012105923",
       "0363100012145888"
      ],
-     "passed": true,
-     "triangles": 20549
+     "passed": false,
+     "triangles": 20550
     }
    ],
-   "seconds": 17.98,
+   "seconds": 13.11,
    "byType": {
     "landlust-1933-erker-window": 16
    },
@@ -939,7 +971,7 @@
      "triangles": 3349
     }
    ],
-   "seconds": 7.44,
+   "seconds": 9.32,
    "byType": {
     "landlust-1938-pair-attic": 3
    },
@@ -959,7 +991,7 @@
    "placed": 0,
    "held": 5,
    "runs": [],
-   "seconds": 3.78,
+   "seconds": 1.25,
    "byType": {},
    "installed": 0,
    "holds": {
@@ -977,7 +1009,7 @@
    "placed": 0,
    "held": 5,
    "runs": [],
-   "seconds": 6.37,
+   "seconds": 1.2,
    "byType": {},
    "installed": 0,
    "holds": {
@@ -995,7 +1027,7 @@
    "placed": 0,
    "held": 7,
    "runs": [],
-   "seconds": 10.74,
+   "seconds": 9.33,
    "byType": {},
    "installed": 0,
    "holds": {
@@ -1013,7 +1045,7 @@
    "placed": 0,
    "held": 7,
    "runs": [],
-   "seconds": 3.27,
+   "seconds": 6.48,
    "byType": {},
    "installed": 0,
    "holds": {
@@ -1031,7 +1063,7 @@
    "placed": 0,
    "held": 7,
    "runs": [],
-   "seconds": 8.2,
+   "seconds": 10.5,
    "byType": {},
    "installed": 0,
    "holds": {
@@ -1067,7 +1099,7 @@
      "triangles": 2487
     }
    ],
-   "seconds": 33.99,
+   "seconds": 57.74,
    "byType": {
     "landlust-1935-slot-block-four": 3
    },

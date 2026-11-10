@@ -3,7 +3,7 @@
  "street": "Jan den Haenstraat",
  "library": "landlust",
  "stripDate": "2024-11-21",
- "seconds": 12.92,
+ "seconds": 12,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -414,20 +414,24 @@
     "measuredPalette": {
      "brick": "#956b4d",
      "evidence": "strip 2024-11-21 span 1536-2049: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#815f45"
     }
    },
    "notes": [
     "door unread",
     "crown parapet (type default)",
+    "palette pinned: Haenstraat 20: model #9b7255 against photo #70533a; 60 % of the way (Opus verdict)",
     "lone pand: a stair block on its own: landlust-1935-slot-block-four opts in to one-house faces from 5 m (frontage 12.82 m)"
    ],
    "likeness": {
     "pandId": "0363100012084532",
-    "ncc": 0.406,
-    "nccRaw": 0.406,
+    "ncc": 0.421,
+    "nccRaw": 0.421,
     "shiftM": [
      0,
-     0.3
+     0.25
     ],
     "usable": 0.9,
     "abstain": null,
@@ -438,8 +442,8 @@
     ],
     "wall": {
      "photo": "#8b6446",
-     "model": "#ab7e5d",
-     "dL": 0.108
+     "model": "#9c7353",
+     "dL": 0.059
     },
     "glazing": {
      "photo": 0.14,
@@ -452,8 +456,8 @@
     "iou": 0.469
    },
    "challengers": {
-    "landlust-1935-slot-block-four": 0.406,
-    "landlust-1935-slot-block-four~m": 0.405
+    "landlust-1935-slot-block-four": 0.421,
+    "landlust-1935-slot-block-four~m": 0.418
    }
   },
   {
@@ -598,20 +602,24 @@
     "measuredPalette": {
      "brick": "#a37253",
      "evidence": "strip 2024-11-21 span 2561-3073: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#88654b"
     }
    },
    "notes": [
     "door unread",
     "crown parapet (type default)",
+    "palette pinned: Haenstraat 12: model #a1785e against photo #77583f; 60 % of the way (Opus verdict)",
     "lone pand: a stair block on its own: landlust-1935-slot-block-four opts in to one-house faces from 5 m (frontage 12.8 m)"
    ],
    "likeness": {
     "pandId": "0363100012102574",
-    "ncc": 0.363,
-    "nccRaw": 0.363,
+    "ncc": 0.368,
+    "nccRaw": 0.368,
     "shiftM": [
      0,
-     0.35
+     0.3
     ],
     "usable": 0.91,
     "abstain": null,
@@ -622,8 +630,8 @@
     ],
     "wall": {
      "photo": "#9b6e50",
-     "model": "#b28568",
-     "dL": 0.092
+     "model": "#a27859",
+     "dL": 0.031
     },
     "glazing": {
      "photo": 0.15,
@@ -636,8 +644,8 @@
     "iou": 0.496
    },
    "challengers": {
-    "landlust-1935-slot-block-four": 0.363,
-    "landlust-1935-slot-block-four~m": 0.36
+    "landlust-1935-slot-block-four": 0.368,
+    "landlust-1935-slot-block-four~m": 0.367
    }
   },
   {

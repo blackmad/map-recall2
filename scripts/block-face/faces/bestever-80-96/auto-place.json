@@ -3,7 +3,7 @@
  "street": "Bestevâerstraat",
  "library": "landlust",
  "stripDate": "2024-11-21",
- "seconds": 7.75,
+ "seconds": 6.33,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -13,16 +13,7 @@
   "widthSlackM": 0.4,
   "flatRoofRiseM": 1.5
  },
- "runs": [
-  {
-   "face": "bestever-80-96-r1",
-   "pands": [
-    "0363100012150285"
-   ],
-   "passed": true,
-   "triangles": 963
-  }
- ],
+ "runs": [],
  "pands": [
   {
    "pandId": "0363100012114797",
@@ -235,60 +226,11 @@
     "voidShare": 0,
     "foliageShare": 0.1
    },
-   "status": "placed",
-   "type": "landlust-1924-bestevaer-half-block",
-   "score": 0.85,
-   "runnerUp": {
-    "typeId": "landlust-1924-bestevaer-stair-block",
-    "score": 0
-   },
-   "placement": {
-    "type": "landlust-1924-bestevaer-half-block",
-    "mirror": true,
-    "measuredPalette": {
-     "brick": "#6a5437",
-     "evidence": "strip 2024-11-21 span 525-771: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    }
-   },
-   "notes": [
-    "door left: mirrored",
-    "crown parapet (type default)",
-    "lone pand: a stair block on its own: landlust-1924-bestevaer-half-block opts in to one-house faces from 5 m (frontage 6.16 m)"
-   ],
-   "likeness": {
-    "pandId": "0363100012150285",
-    "ncc": 0.473,
-    "nccRaw": 0.473,
-    "shiftM": [
-     0.4,
-     -0.15
-    ],
-    "usable": 0.81,
-    "abstain": null,
-    "verdict": "FAIL",
-    "reasons": [
-     "wall dL +0.13",
-     "glazing storey band off by 0.26 mean 0.25 vs photo 0.12"
-    ],
-    "wall": {
-     "photo": "#5d472d",
-     "model": "#886c46",
-     "dL": 0.133
-    },
-    "glazing": {
-     "photo": 0.12,
-     "model": 0.25
-    },
-    "columns": {
-     "photo": 2,
-     "model": 2
-    },
-    "iou": 0.314
-   },
-   "challengers": {
-    "landlust-1924-bestevaer-half-block~m": 0.473,
-    "landlust-1924-bestevaer-half-block": 0.255
-   }
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Opus verdict 2026-11-10: HOLD the Bestevaer stair/half blocks (no plinth with an arched stair door at the pilaster, no glass-brick pilaster, patchwork per-pand tone); re-place only with a kit piece placed by architectural block, see docs/reports/landlust-plinth-block-kit-note-20261110.md",
+   "likeness": null,
+   "challengers": {}
   },
   {
    "pandId": "0363100012084867",

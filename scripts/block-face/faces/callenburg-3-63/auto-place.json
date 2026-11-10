@@ -3,7 +3,7 @@
  "street": "Gerard Callenburgstraat",
  "library": "landlust",
  "stripDate": "2024-11-21",
- "seconds": 44.16,
+ "seconds": 27.82,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -27,7 +27,7 @@
     "0363100012063567"
    ],
    "passed": true,
-   "triangles": 14695
+   "triangles": 14685
   }
  ],
  "pands": [
@@ -194,16 +194,20 @@
     "measuredPalette": {
      "brick": "#8b5a3d",
      "evidence": "strip 2024-11-21 span 514-1028: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#7a4c2f"
     }
    },
    "notes": [
     "door unread",
-    "crown parapet (type default)"
+    "crown parapet (type default)",
+    "palette pinned: Callenburgstraat 3-63 / Haenstraat 3-31 (Opus verdict 2026-11-10): the model read #986344-#a3704e against photo #6e4a32-#714c34 (#8f5534 against #5d412d on Haen 19); one brick for the run, 60 % of the way from the model wall to the photo median"
    ],
    "likeness": {
     "pandId": "0363100012073024",
-    "ncc": 0.468,
-    "nccRaw": 0.468,
+    "ncc": 0.457,
+    "nccRaw": 0.457,
     "shiftM": [
      0.25,
      0.15
@@ -212,13 +216,12 @@
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "wall dL +0.15",
      "glazing storey band off by 0.31 mean 0.22 vs photo 0.41"
     ],
     "wall": {
      "photo": "#794a2f",
-     "model": "#a86d4a",
-     "dL": 0.145
+     "model": "#9a603b",
+     "dL": 0.088
     },
     "glazing": {
      "photo": 0.41,
@@ -231,10 +234,10 @@
     "iou": 0.453
    },
    "challengers": {
-    "landlust-1934-slot-block": 0.468,
+    "landlust-1934-slot-block": 0.457,
     "landlust-1933-three-axis-tile": 0.257,
     "landlust-1933-three-axis-tile~m": 0.257,
-    "landlust-1934-slot-block~m": 0.477,
+    "landlust-1934-slot-block~m": 0.467,
     "landlust-1937-three-axis-four": 0.27,
     "landlust-1937-three-axis-four~m": 0.27
    }
@@ -508,16 +511,20 @@
     "measuredPalette": {
      "brick": "#865439",
      "evidence": "strip 2024-11-21 span 2056-2570: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#7a4c2f"
     }
    },
    "notes": [
     "door unread",
-    "crown parapet (type default)"
+    "crown parapet (type default)",
+    "palette pinned: Callenburgstraat 3-63 / Haenstraat 3-31 (Opus verdict 2026-11-10): the model read #986344-#a3704e against photo #6e4a32-#714c34 (#8f5534 against #5d412d on Haen 19); one brick for the run, 60 % of the way from the model wall to the photo median"
    ],
    "likeness": {
     "pandId": "0363100012137010",
-    "ncc": 0.479,
-    "nccRaw": 0.479,
+    "ncc": 0.472,
+    "nccRaw": 0.472,
     "shiftM": [
      0.15,
      0.15
@@ -530,8 +537,8 @@
     ],
     "wall": {
      "photo": "#875539",
-     "model": "#a46746",
-     "dL": 0.082
+     "model": "#9a603b",
+     "dL": 0.041
     },
     "glazing": {
      "photo": 0.41,
@@ -544,10 +551,10 @@
     "iou": 0.443
    },
    "challengers": {
-    "landlust-1934-slot-block": 0.479,
+    "landlust-1934-slot-block": 0.472,
     "landlust-1933-three-axis-tile": 0.259,
     "landlust-1933-three-axis-tile~m": 0.259,
-    "landlust-1934-slot-block~m": 0.477,
+    "landlust-1934-slot-block~m": 0.474,
     "landlust-1937-three-axis-four": 0.232,
     "landlust-1937-three-axis-four~m": 0.232
    }
@@ -610,18 +617,22 @@
     "measuredPalette": {
      "brick": "#98613f",
      "evidence": "strip 2024-11-21 span 2570-3084: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#7a4c2f"
     }
    },
    "notes": [
     "door unread",
-    "crown parapet (type default)"
+    "crown parapet (type default)",
+    "palette pinned: Callenburgstraat 3-63 / Haenstraat 3-31 (Opus verdict 2026-11-10): the model read #986344-#a3704e against photo #6e4a32-#714c34 (#8f5534 against #5d412d on Haen 19); one brick for the run, 60 % of the way from the model wall to the photo median"
    ],
    "likeness": {
     "pandId": "0363100012082410",
-    "ncc": 0.457,
-    "nccRaw": 0.457,
+    "ncc": 0.452,
+    "nccRaw": 0.452,
     "shiftM": [
-     0.15,
+     0.1,
      0.15
     ],
     "usable": 0.91,
@@ -634,8 +645,8 @@
     ],
     "wall": {
      "photo": "#95603d",
-     "model": "#b4734b",
-     "dL": 0.088
+     "model": "#9a603b",
+     "dL": 0.006
     },
     "glazing": {
      "photo": 0.58,
@@ -648,10 +659,10 @@
     "iou": 0.326
    },
    "challengers": {
-    "landlust-1934-slot-block": 0.457,
+    "landlust-1934-slot-block": 0.452,
     "landlust-1933-three-axis-tile": 0.263,
     "landlust-1933-three-axis-tile~m": 0.263,
-    "landlust-1934-slot-block~m": 0.467,
+    "landlust-1934-slot-block~m": 0.474,
     "landlust-1937-three-axis-four": 0.217,
     "landlust-1937-three-axis-four~m": 0.217
    }
@@ -719,46 +730,50 @@
     "measuredPalette": {
      "brick": "#935f3e",
      "evidence": "strip 2024-11-21 span 3084-3598: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#7a4c2f"
     }
    },
    "notes": [
     "door unread",
-    "crown parapet (type default)"
+    "crown parapet (type default)",
+    "palette pinned: Callenburgstraat 3-63 / Haenstraat 3-31 (Opus verdict 2026-11-10): the model read #986344-#a3704e against photo #6e4a32-#714c34 (#8f5534 against #5d412d on Haen 19); one brick for the run, 60 % of the way from the model wall to the photo median"
    ],
    "likeness": {
     "pandId": "0363100012066626",
-    "ncc": 0.447,
-    "nccRaw": 0.447,
+    "ncc": 0.452,
+    "nccRaw": 0.452,
     "shiftM": [
      0.1,
-     -0.15
+     0.2
     ],
     "usable": 0.89,
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.24 mean 0.21 vs photo 0.38"
+     "glazing storey band off by 0.45 mean 0.22 vs photo 0.56"
     ],
     "wall": {
-     "photo": "#8d5e3f",
-     "model": "#af714a",
-     "dL": 0.088
+     "photo": "#7f4d30",
+     "model": "#9a603b",
+     "dL": 0.075
     },
     "glazing": {
-     "photo": 0.38,
-     "model": 0.21
+     "photo": 0.56,
+     "model": 0.22
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.395
+    "iou": 0.341
    },
    "challengers": {
-    "landlust-1934-slot-block": 0.447,
+    "landlust-1934-slot-block": 0.452,
     "landlust-1933-three-axis-tile": 0.289,
     "landlust-1933-three-axis-tile~m": 0.289,
-    "landlust-1934-slot-block~m": 0.445,
+    "landlust-1934-slot-block~m": 0.434,
     "landlust-1937-three-axis-four": 0.245,
     "landlust-1937-three-axis-four~m": 0.245
    }
@@ -837,47 +852,51 @@
     "measuredPalette": {
      "brick": "#9f6946",
      "evidence": "strip 2024-11-21 span 3598-4112: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#7a4c2f"
     }
    },
    "notes": [
     "door unread",
-    "crown parapet (type default)"
+    "crown parapet (type default)",
+    "palette pinned: Callenburgstraat 3-63 / Haenstraat 3-31 (Opus verdict 2026-11-10): the model read #986344-#a3704e against photo #6e4a32-#714c34 (#8f5534 against #5d412d on Haen 19); one brick for the run, 60 % of the way from the model wall to the photo median"
    ],
    "likeness": {
     "pandId": "0363100012063567",
-    "ncc": 0.454,
-    "nccRaw": 0.454,
+    "ncc": 0.447,
+    "nccRaw": 0.447,
     "shiftM": [
      0.05,
-     -0.15
+     0.15
     ],
     "usable": 0.9,
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "wall dL +0.19",
-     "glazing storey band off by 0.44 mean 0.21 vs photo 0.53"
+     "glazing storey band off by 0.46 mean 0.22 vs photo 0.55",
+     "columns 8 vs photo 6"
     ],
     "wall": {
-     "photo": "#7b4b31",
-     "model": "#b57c56",
-     "dL": 0.186
+     "photo": "#7e4e34",
+     "model": "#9a603b",
+     "dL": 0.069
     },
     "glazing": {
-     "photo": 0.53,
-     "model": 0.21
+     "photo": 0.55,
+     "model": 0.22
     },
     "columns": {
      "photo": 3,
-     "model": 3
+     "model": 8
     },
-    "iou": 0.36
+    "iou": 0.361
    },
    "challengers": {
-    "landlust-1934-slot-block": 0.454,
+    "landlust-1934-slot-block": 0.447,
     "landlust-1933-three-axis-tile": 0.285,
     "landlust-1933-three-axis-tile~m": 0.285,
-    "landlust-1934-slot-block~m": 0.463,
+    "landlust-1934-slot-block~m": 0.444,
     "landlust-1937-three-axis-four": 0.22,
     "landlust-1937-three-axis-four~m": 0.22
    }

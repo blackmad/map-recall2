@@ -35,6 +35,7 @@ import {STRIP_LIKENESS, spanLikeness} from '../../src/canalRecall/blockFace/stri
 import {runFootOffset} from '../../src/canalRecall/blockFace/stripFoot.ts';
 import {applyCrownPins, applyMirrorPins, crownPinProblems, holdBrokenPairs, mirrorPinProblems, typePinProblems, typesForFace, typesForPand, type CrownPin, type MirrorPin, type TypePin} from '../../src/canalRecall/blockFace/reviewCrowns.ts';
 import {applyDoorPins, doorPinProblems, type DoorPin} from '../../src/canalRecall/blockFace/reviewDoors.ts';
+import {applyEavesPins, eavesPinProblems, type EavesPin} from '../../src/canalRecall/blockFace/reviewEaves.ts';
 import {acceptFloorFor, acceptPinProblems, applyPalettePins, palettePinProblems, type AcceptPin, type PalettePin} from '../../src/canalRecall/blockFace/reviewPalettes.ts';
 import {frontBump} from '../../src/canalRecall/blockFace/bayOutline.ts';
 import {FACES, STAGING} from './intake.ts';
@@ -122,6 +123,8 @@ const EVIDENCE_GATE = !process.argv.includes('--no-evidence-gate');
 const PHOTO_EAVES = {on: process.argv.includes('--photo-eaves'), minConfidence: 0.6, minM: 6, minDeltaM: 0.4, maxRiseM: 1.5, maxDropM: 4} as const;
 /** Pands whose eaves the strip skyline measured (--photo-eaves), keyed by pand id; read back by `withPhotoEaves`. */
 const photoEaves = new Map<string, {row: number; eavesM: number; bagM: number; confidence: number}>();
+/** Reviewer eaves pins (`<buurt>-review-eaves.json`), read once in main. */
+let eavesPins: EavesPin[] = [];
 /**
  * The run face with `continuity.measuredEaves` for its photo-eaves pands (--photo-eaves) and the pands placed with a
  * `match.frontEavesM` type (their own skyline cornice near the type's line, else the line); a cornice under 3DBAG's eaves
@@ -141,7 +144,8 @@ function withPhotoEaves(intent: ReturnType<typeof runIntent>, types: MatchableTy
     return e ? [{pand: h.pandId, stripRow: e.row, ...(e.eavesM < e.bagM ? {frontRoof: {}} : {}),
       evidence: `auto-place --photo-eaves: strip skyline cornice ${e.eavesM} m (confidence ${e.confidence}) vs 3DBAG/PDOK eaves ${e.bagM} m`}] : [];
   });
-  return m.length ? {...intent, continuity: {...intent.continuity, measuredEaves: m}} : intent;
+  const pinned = applyEavesPins(m.length ? m : undefined, eavesPins, intent.houses.map(h => h.pandId), id => evs.find(e => e.pandId === id)?.eavesM, strip);
+  return pinned?.length ? {...intent, continuity: {...intent.continuity, measuredEaves: pinned}} : intent;
 }
 
 async function faceEvidence(faceId: string) {
@@ -308,6 +312,11 @@ if (process.argv[1]?.endsWith('block-face/auto-place.ts')) {
   const palettePinErrors = palettePinProblems(palettePins, types);
   if (palettePinErrors.length) throw Error(`${palettesFile}: ${palettePinErrors.join('; ')}`);
   // Gate floors a reviewer set after judging a sheet on a hazy strip (blockFace/reviewPalettes.ts).
+  const eavesFile = path.join('scripts/block-face/buurten', `${buurt}-review-eaves.json`);
+  eavesPins = existsSync(eavesFile) ? (await readJson(eavesFile)).pins : [];
+  const eavesPinErrors = eavesPinProblems(eavesPins);
+  if (eavesPinErrors.length) throw Error(`${eavesFile}: ${eavesPinErrors.join('; ')}`);
+
   const acceptsFile = path.join('scripts/block-face/buurten', `${buurt}-review-accepts.json`);
   const acceptPins: AcceptPin[] = existsSync(acceptsFile) ? (await readJson(acceptsFile)).pins : [];
   const acceptPinErrors = acceptPinProblems(acceptPins, types);

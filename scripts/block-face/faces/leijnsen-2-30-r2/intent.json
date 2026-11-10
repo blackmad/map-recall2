@@ -1,0 +1,105 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "leijnsen-2-30-r2",
+ "street": "Jasper Leijnsenstraat",
+ "sources": [
+  {
+   "id": "strip-2024-11-21",
+   "kind": "street-panorama",
+   "capturedAt": "2024-11-21",
+   "image": "staging/block-face/leijnsen-2-30-r2/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "auto-place (blockFace/autoPlace.ts)",
+  "passes": 1,
+  "note": "auto-placed from the landlust library (buurt Landlust-Zuid); scores and holds in scripts/block-face/faces/leijnsen-2-30/auto-place.json"
+ },
+ "types": [
+  "landlust-1934-tile-pair"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012137482",
+   "slug": "leijnsen-137482",
+   "address": "Jasper Leijnsenstraat 12",
+   "type": {
+    "type": "landlust-1934-tile-pair",
+    "measuredPalette": {
+     "brick": "#6e5c41",
+     "evidence": "strip 2024-11-21 span 2259-2506: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#6c583e"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2024-11-21",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: landlust-1934-tile-pair scored 1 on eaves -, storeys 1, roof 1, stucco 1; strip 2024-11-21 span 2259-2506"
+   }
+  },
+  {
+   "pandId": "0363100012117865",
+   "slug": "leijnsen-117865",
+   "address": "Jasper Leijnsenstraat 10",
+   "type": {
+    "type": "landlust-1934-tile-pair",
+    "mirror": true,
+    "measuredPalette": {
+     "brick": "#816341",
+     "evidence": "strip 2024-11-21 span 2505-2753: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#6c583e"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2024-11-21",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: landlust-1934-tile-pair scored 0.84 on eaves -, storeys 1, roof 1, stucco 1, columns 0.4; strip 2024-11-21 span 2505-2753"
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "auto-place: low attic behind the cornice; the strips show sky over the cornices of the type rows"
+  },
+  "measuredEaves": [
+   {
+    "pand": "0363100012137482",
+    "stripRow": 351,
+    "frontRoof": {},
+    "evidence": "auto-place: the landlust-1934-tile-pair cornice line 12 m (measured on its exemplar strips; this pand's skyline unread); 3DBAG/PDOK eaves 13.7 m"
+   },
+   {
+    "pand": "0363100012117865",
+    "stripRow": 351,
+    "frontRoof": {},
+    "evidence": "auto-place: the landlust-1934-tile-pair cornice line 12 m (measured on its exemplar strips; this pand's skyline unread); 3DBAG/PDOK eaves 13.8 m"
+   }
+  ]
+ }
+}

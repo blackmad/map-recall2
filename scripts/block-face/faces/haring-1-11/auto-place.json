@@ -3,7 +3,7 @@
  "street": "Jan Haringstraat",
  "library": "landlust",
  "stripDate": "2024-11-21",
- "seconds": 4.02,
+ "seconds": 1.11,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -13,17 +13,7 @@
   "widthSlackM": 0.4,
   "flatRoofRiseM": 1.5
  },
- "runs": [
-  {
-   "face": "haring-1-11-r1",
-   "pands": [
-    "0363100012148081",
-    "0363100012062858"
-   ],
-   "passed": true,
-   "triangles": 2419
-  }
- ],
+ "runs": [],
  "pands": [
   {
    "pandId": "0363100012143406",
@@ -168,53 +158,11 @@
     "voidShare": 0,
     "foliageShare": 0.07
    },
-   "status": "placed",
-   "type": "landlust-1937-three-axis-four",
-   "score": 1,
-   "placement": {
-    "type": "landlust-1937-three-axis-four",
-    "measuredPalette": {
-     "brick": "#684f3b",
-     "evidence": "strip 2024-11-21 span 547-789: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    }
-   },
-   "notes": [
-    "door right",
-    "crown gutter (type default)"
-   ],
-   "likeness": {
-    "pandId": "0363100012148081",
-    "ncc": 0.32,
-    "nccRaw": 0.32,
-    "shiftM": [
-     0.1,
-     -0.35
-    ],
-    "usable": 0.79,
-    "abstain": null,
-    "verdict": "FAIL",
-    "reasons": [
-     "glazing storey band off by 0.43 mean 0.35 vs photo 0.54"
-    ],
-    "wall": {
-     "photo": "#5e4736",
-     "model": "#85654b",
-     "dL": 0.118
-    },
-    "glazing": {
-     "photo": 0.54,
-     "model": 0.35
-    },
-    "columns": {
-     "photo": 3,
-     "model": 3
-    },
-    "iou": 0.466
-   },
-   "challengers": {
-    "landlust-1937-three-axis-four": 0.32,
-    "landlust-1937-three-axis-four~m": 0.027
-   }
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Opus verdict: mirrored the wrong way and no tile roof; the top window row is under lens flare",
+   "likeness": null,
+   "challengers": {}
   },
   {
    "pandId": "0363100012062858",
@@ -257,54 +205,11 @@
     "voidShare": 0,
     "foliageShare": 0.09
    },
-   "status": "placed",
-   "type": "landlust-1937-three-axis-four",
-   "score": 1,
-   "placement": {
-    "type": "landlust-1937-three-axis-four",
-    "mirror": true,
-    "measuredPalette": {
-     "brick": "#614937",
-     "evidence": "strip 2024-11-21 span 789-1031: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    }
-   },
-   "notes": [
-    "door left: mirrored",
-    "crown gutter (type default)"
-   ],
-   "likeness": {
-    "pandId": "0363100012062858",
-    "ncc": 0.341,
-    "nccRaw": 0.341,
-    "shiftM": [
-     0.2,
-     -0.35
-    ],
-    "usable": 0.75,
-    "abstain": null,
-    "verdict": "FAIL",
-    "reasons": [
-     "glazing storey band off by 0.26 mean 0.35 vs photo 0.50"
-    ],
-    "wall": {
-     "photo": "#5c4735",
-     "model": "#7e5f48",
-     "dL": 0.104
-    },
-    "glazing": {
-     "photo": 0.5,
-     "model": 0.35
-    },
-    "columns": {
-     "photo": 3,
-     "model": 3
-    },
-    "iou": 0.431
-   },
-   "challengers": {
-    "landlust-1937-three-axis-four~m": 0.341,
-    "landlust-1937-three-axis-four": 0.055
-   }
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Opus verdict: mirrored the wrong way; the top row count is unverified",
+   "likeness": null,
+   "challengers": {}
   },
   {
    "pandId": "0363100012063321",

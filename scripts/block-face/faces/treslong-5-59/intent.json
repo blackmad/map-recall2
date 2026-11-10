@@ -30,6 +30,9 @@
     "measuredPalette": {
      "brick": "#493a2d",
      "evidence": "strip 2024-11-21 span 0-248: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#573f2b"
     }
    },
    "groundFloor": {
@@ -55,6 +58,9 @@
     "measuredPalette": {
      "brick": "#9ba4a9",
      "evidence": "strip 2024-11-21 span 248-496: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#573f2b"
     }
    },
    "groundFloor": {
@@ -79,6 +85,9 @@
     "measuredPalette": {
      "brick": "#543f2d",
      "evidence": "strip 2024-11-21 span 496-744: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#573f2b"
     }
    },
    "groundFloor": {
@@ -104,6 +113,9 @@
      "brick": "#463221",
      "evidence": "strip 2024-11-21 span 744-992: trim-normalised wall (buildingRecipe/measureFacade.ts)"
     },
+    "paletteOverrides": {
+     "brick": "#573f2b"
+    },
     "mirror": true
    },
    "groundFloor": {
@@ -128,6 +140,9 @@
     "measuredPalette": {
      "brick": "#523a27",
      "evidence": "strip 2024-11-21 span 992-1240: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#573f2b"
     }
    },
    "groundFloor": {
@@ -153,6 +168,9 @@
      "brick": "#533823",
      "evidence": "strip 2024-11-21 span 1240-1492: trim-normalised wall (buildingRecipe/measureFacade.ts)"
     },
+    "paletteOverrides": {
+     "brick": "#573f2b"
+    },
     "mirror": true
    },
    "groundFloor": {
@@ -177,6 +195,9 @@
     "measuredPalette": {
      "brick": "#674e36",
      "evidence": "strip 2024-11-21 span 1492-1744: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#573f2b"
     }
    },
    "groundFloor": {
@@ -202,6 +223,9 @@
     "measuredPalette": {
      "brick": "#62452e",
      "evidence": "strip 2024-11-21 span 1744-1996: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#573f2b"
     }
    },
    "groundFloor": {
@@ -226,6 +250,9 @@
     "measuredPalette": {
      "brick": "#6e492c",
      "evidence": "strip 2024-11-21 span 1996-2248: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#573f2b"
     }
    },
    "groundFloor": {
@@ -251,6 +278,9 @@
      "brick": "#593f28",
      "evidence": "strip 2024-11-21 span 2248-2496: trim-normalised wall (buildingRecipe/measureFacade.ts)"
     },
+    "paletteOverrides": {
+     "brick": "#573f2b"
+    },
     "mirror": true
    },
    "groundFloor": {
@@ -275,6 +305,9 @@
     "measuredPalette": {
      "brick": "#492f1a",
      "evidence": "strip 2024-11-21 span 2496-2744: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#573f2b"
     }
    },
    "groundFloor": {
@@ -299,7 +332,11 @@
     "measuredPalette": {
      "brick": "#3f2918",
      "evidence": "strip 2024-11-21 span 2744-2992: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    }
+    },
+    "paletteOverrides": {
+     "brick": "#573f2b"
+    },
+    "mirror": true
    },
    "groundFloor": {
     "use": "residential",
@@ -320,10 +357,12 @@
    "address": "Bloys van Treslongstraat 29",
    "type": {
     "type": "landlust-1933-erker-window",
-    "mirror": true,
     "measuredPalette": {
      "brick": "#48321f",
      "evidence": "strip 2024-11-21 span 2992-3240: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#573f2b"
     }
    },
    "groundFloor": {
@@ -349,6 +388,9 @@
     "measuredPalette": {
      "brick": "#3c2919",
      "evidence": "strip 2024-11-21 span 3240-3484: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#573f2b"
     }
    },
    "groundFloor": {
@@ -373,6 +415,9 @@
     "measuredPalette": {
      "brick": "#3e2817",
      "evidence": "strip 2024-11-21 span 3484-3728: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#573f2b"
     }
    },
    "groundFloor": {
@@ -397,7 +442,11 @@
     "measuredPalette": {
      "brick": "#3f2d1b",
      "evidence": "strip 2024-11-21 span 3728-3972: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    }
+    },
+    "paletteOverrides": {
+     "brick": "#573f2b"
+    },
+    "mirror": true
    },
    "groundFloor": {
     "use": "residential",

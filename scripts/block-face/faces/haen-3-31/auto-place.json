@@ -3,7 +3,7 @@
  "street": "Jan den Haenstraat",
  "library": "landlust",
  "stripDate": "2024-11-21",
- "seconds": 12.81,
+ "seconds": 10.46,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -362,7 +362,7 @@
     "abstain": null,
     "verdict": "WARN",
     "reasons": [
-     "mask IoU 0.314 < 0.45"
+     "mask IoU 0.327 < 0.45"
     ],
     "wall": {
      "photo": "#8f5c3d",
@@ -371,13 +371,13 @@
     },
     "glazing": {
      "photo": 0.19,
-     "model": 0.21
+     "model": 0.22
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.314
+    "iou": 0.327
    },
    "challengers": {
     "landlust-1934-slot-block": 0.429,
@@ -444,47 +444,49 @@
     "measuredPalette": {
      "brick": "#7e4a2d",
      "evidence": "strip 2024-11-21 span 2049-2561: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#7a4c2f"
     }
    },
    "notes": [
     "door unread",
-    "crown parapet (type default)"
+    "crown parapet (type default)",
+    "palette pinned: Callenburgstraat 3-63 / Haenstraat 3-31 (Opus verdict 2026-11-10): the model read #986344-#a3704e against photo #6e4a32-#714c34 (#8f5534 against #5d412d on Haen 19); one brick for the run, 60 % of the way from the model wall to the photo median"
    ],
    "likeness": {
     "pandId": "0363100012114763",
-    "ncc": 0.397,
-    "nccRaw": 0.397,
+    "ncc": 0.382,
+    "nccRaw": 0.382,
     "shiftM": [
      0.1,
-     0.35
+     -0.15
     ],
-    "usable": 0.93,
+    "usable": 0.94,
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "wall dL +0.17",
-     "glazing storey band off by 0.33 mean 0.21 vs photo 0.43",
-     "window shape tall vs photo square",
-     "columns 8 vs photo 3"
+     "wall dL +0.13",
+     "glazing storey band off by 0.27 mean 0.21 vs photo 0.42"
     ],
     "wall": {
-     "photo": "#5c3b26",
-     "model": "#9e5d39",
-     "dL": 0.167
+     "photo": "#6a4229",
+     "model": "#9a603b",
+     "dL": 0.129
     },
     "glazing": {
-     "photo": 0.43,
+     "photo": 0.42,
      "model": 0.21
     },
     "columns": {
      "photo": 3,
-     "model": 8
+     "model": 3
     },
-    "iou": 0.364
+    "iou": 0.326
    },
    "challengers": {
-    "landlust-1934-slot-block": 0.397,
-    "landlust-1934-slot-block~m": 0.376
+    "landlust-1934-slot-block": 0.382,
+    "landlust-1934-slot-block~m": 0.375
    }
   },
   {

@@ -3,7 +3,7 @@
  "street": "Gerard Callenburgstraat",
  "library": "landlust",
  "stripDate": "2024-11-21",
- "seconds": 13.85,
+ "seconds": 10.77,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -581,33 +581,37 @@
     "measuredPalette": {
      "brick": "#955b34",
      "evidence": "strip 2024-11-21 span 2561-3073: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#7a4c2f"
     }
    },
    "notes": [
     "door unread",
-    "crown parapet (type default)"
+    "crown parapet (type default)",
+    "palette pinned: Callenburgstraat 3-63 / Haenstraat 3-31 (Opus verdict 2026-11-10): the model read #986344-#a3704e against photo #6e4a32-#714c34 (#8f5534 against #5d412d on Haen 19); one brick for the run, 60 % of the way from the model wall to the photo median"
    ],
    "likeness": {
     "pandId": "0363100012105359",
-    "ncc": 0.457,
-    "nccRaw": 0.457,
+    "ncc": 0.429,
+    "nccRaw": 0.429,
     "shiftM": [
      0,
-     -0.25
+     -0.3
     ],
     "usable": 0.96,
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "wall dL +0.20",
+     "wall dL +0.14",
      "glazing storey band off by 0.55 mean 0.21 vs photo 0.56",
      "window shape tall vs photo square",
      "columns 6 vs photo 3"
     ],
     "wall": {
      "photo": "#694025",
-     "model": "#b36e3f",
-     "dL": 0.196
+     "model": "#9a603b",
+     "dL": 0.139
     },
     "glazing": {
      "photo": 0.56,
@@ -620,8 +624,8 @@
     "iou": 0.339
    },
    "challengers": {
-    "landlust-1934-slot-block": 0.457,
-    "landlust-1934-slot-block~m": 0.45
+    "landlust-1934-slot-block": 0.429,
+    "landlust-1934-slot-block~m": 0.425
    }
   },
   {
