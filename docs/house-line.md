@@ -1441,3 +1441,57 @@ takes `palette.brick` from the Nassaukade wall-fit; storeys 4 (STOREYS_DEFINITIO
 vs #594b48, dL 0.043, 7 vs 8 columns). Still unsaid: the attic face shows wall-coloured wedges beside each tower (the single
 `tower` does the same), and the corner's roof end.
 
+
+### Round 3 (the GLB audit on install, #354)
+
+Installing the round-2 chunks failed the GLB audit (`scripts/audit-glb-quality.ts`): nassau-145-152 opening-outside 18 parts
+1.09 m2 and coplanar 1.6 m2; clercq-236681 opening-outside 18 parts 5.92 m2, zfight-tight 6.9 m2, geometry-regression 7.2 m2.
+Compiling main's pre-H7 intents gives the same opening-outside and coplanar numbers, so only the tight pairs were H7's (tower and
+rosette stone 2-3 cm on the brick, and a front-level `palette.brick` that drew a second wall 5 cm over the shell). The fixes, all
+at the source:
+
+* **Towers and rosettes at the relief step.** The tower facing is stone pieces 9 cm proud (two 4.5 cm kit steps,
+  `TOWER_FACING_DEPTH_M`): piers either side and panels below, between and above the lights, never over a light or the raised
+  profile's 8 cm edge trim (`fit.ts`). A rosette is a ring of two half annuli and a boss, both 9 cm proud; the field disc is gone
+  (`rosettes.ts`).
+* **One palette per house.** A palette on a front of a multi-front house draws a second shell; the corner's Nassaukade colour
+  went to `design.palette.brick` (`clercq-236681/intent.json` notes).
+* **A `paint` slot.** Painted timber (the Oud-West timber balconies' platform and guard) took the `trim`/`door` surfaces, which are
+  opening slots that the audit holds to a wall; it now exports as `paint` (`soup.ts`, `building-recipes/compile.ts`), which the
+  look already draws like frame. This is the #81 precedent.
+* **Projecting balcony returns** (`canalhouseRecipes.ts`). On a platform the side returns run along the centre of its stone
+  piers, in stone. A 0.6 m door-slot bar falls under the 2 m handrail exemption and was judged as a loose sill.
+* **Mansard party ends** (`historicPasses.ts addMansards`) are a mesh of their own in the shell material, not slate in the plane
+  of the neighbour's brick (Nassaukade 147: 1.4 m2 coplanar).
+* **Dormers with a stone or timber front** (`dormerBody`) stand `DORMER_HOST_FRONT_SETBACK_M` (0.14 m) behind the frontage on a
+  mansard. At 5 cm their stone heads were in the cornice's plane. The installed (quantized) GLB then judged two panes against the
+  cornice (2 parts, 0.51 m2) even though the plain staging GLB passed. The clercq types take `dormerBody: "timber"`: with
+  `stone` the front glass had no host wall.
+* **The corner roof hips** (`recipeRoof.ts` `sideFronts`, filled by `blockFace/compile.ts`). A corner pand's attic also falls to
+  its fronts on other streets and to a chamfer of 0.3-6 m between them. Each roof piece is cut where its plane meets the side's
+  steep face, so every part stays planar. This removes the wall wedges beside the towers, the vertical slate end on the
+  Nassaukade, and the 2 m brick gable over the chamfer.
+* **One owner per pand.** nassau-145-152 and clercq-236681 both suppressed the corner 116526, and `--install` replaces any chunk
+  that shares a suppressed pand, so each install dropped the other face. The corner stays with clercq-236681, which models both its
+  fronts. nassau-145-152 is trimmed to 6 pands: its span, uses, discovery member and pand facts are removed, and the strip image
+  keeps its full width. `batch.ts trimShared` does the same thing for batch runs.
+
+How to measure, per face:
+
+```
+npm run block-face:compile -- --face=<id>                           # gates + audit on the plain staging GLB
+zsh scripts/house-specs/pilot-20261110/audit/zpatches.sh <id>                     # every tight / coplanar patch
+node --import tsx scripts/house-specs/pilot-20261110/audit/outside.ts staging/block-face/<id>/chunk.glb
+node --import tsx scripts/house-specs/pilot-20261110/audit/installed-audit.ts <id> <dir>   # the audit on the bytes --install writes
+node --import tsx scripts/house-specs/pilot-20261110/audit/far-tier.ts staging/block-face/<id>/chunk.glb <out.lod2.glb>   # far tier
+node --import tsx scripts/house-specs/pilot-20261110/audit/far-raw.ts <out.lod2.glb>       # material-blind, the lod2 has no names
+```
+
+After: both faces install with `--install` (nassau first, "replaced nothing"; then clercq, which replaces only itself). The
+installed GLBs fail only `holes`, the party-wall loops that main's installed chunks also show. Near tier: coplanar 0.08 / 0 m2
+(slivers under the patch minimum), tight 0 / 0.07 m2, opening-outside 0 / 0. Far tier (lod2): gated coplanar and tight 0 on both.
+The lod2 has no material names, and the material-blind tight area on the corner's Nassaukade end is 1.43 m2 (25 m2 before).
+`test:block-face` roof golden CHANGED lists these two faces only.
+
+Still unsaid: the corner's 2.3 m chamfer is a blank brick face with no cornice. The photo shows a narrow bevel with windows,
+and no front covers a chamfer.
