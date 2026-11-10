@@ -279,7 +279,9 @@ export const ROOF_COMPONENTS: readonly RoofComponent[] = [
  * until that wall has been dressed (walls arrive in ring order, often back walls first).
  * Measured on the 40-house sample of scripts/check-facade-extras.ts; see HISTORY.md for the cost.
  */
-export const EXTRA_BUDGET = { wall: 180, sideWall: 30, building: 230, streetReserve: 160 } as const;
+/** `stoopWall`: what a spec stoop's street wall (K-stoep #360) may spend past `wall`, still inside `building`: a double
+ *  flight is 15 tread/landing boxes (120 triangles) before its iron, 188 with plain rails, 212 with bars. */
+export const EXTRA_BUDGET = { wall: 180, sideWall: 30, building: 230, streetReserve: 160, stoopWall: 60 } as const;
 
 /** Everything a wall can get: the architecture first (it is what reads from down the street), then the furniture. */
 // The budget runs out in this order, so the parts that read from down the street come first:
@@ -353,7 +355,7 @@ function dressWall(c: ExtraContext, sink: ExtraSink, state: DressingState, phase
   const { used, groups } = state, beforeWall = sink.tris.length;
   const street = isStreetWall(c), period = c.period ?? c.style, outer = sink.budget;
   const reserve = street || streetDressed.has(sink) ? 0 : EXTRA_BUDGET.streetReserve;
-  const remaining = Math.max(0, (street ? EXTRA_BUDGET.wall : EXTRA_BUDGET.sideWall) - state.spent);
+  const remaining = Math.max(0, (street ? EXTRA_BUDGET.wall + (c.stoop ? EXTRA_BUDGET.stoopWall : 0) : EXTRA_BUDGET.sideWall) - state.spent);
   sink.budget = Math.max(sink.tris.length, Math.min(outer - reserve, sink.tris.length + remaining));
   if(phase!=='optional'&&street&&c.recipe?.shopCanopy){
     const before=sink.tris.length;

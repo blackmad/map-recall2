@@ -43,6 +43,8 @@ import { fitRect, roofTrianglesForOutline, type RoofDims, type RoofPlan, type Ro
 import { measuredRoofFurniture } from './roofs/roofFurniture.js';
 import { BOX_H_M, BOX_HEX, BOX_L_M, BOX_W_M, FLAT_SURFACE_BUDGET, LIP_H_M, parapetLipTris, roofBoxTris, stairCorePoint } from './roofs/flatRoofSurface.js';
 import type { FurnitureItem } from './roofs/roofSlots.js';
+/** Door walls this much further from the street than the nearest still count as on the nearest road (stoop wall choice). */
+const STOOP_ROAD_SLACK_M = 4;
 
 export type MeshBuilding = {
   /** Diagnostic-only, already validated exact native parent/envelope binding. */
@@ -528,9 +530,13 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
     const doorAllowed = doorWalls(bi);
     // The pavement in front of a wall, for a spec stoop (stoopExtra.ts): wall to street centreline less half a carriageway.
     // A spec stoop goes on one wall: the door wall nearest its street (a house can have a door wall on a back street
-    // too). It is forced first there and nowhere else, so no dice stoop lands on the other door walls.
+    // too). It is forced first there and nowhere else, so no dice stoop lands on the other door walls. Like the photo
+    // pipeline's pickWall (the longest wall on the nearest road), the longest door wall within STOOP_ROAD_SLACK_M of the
+    // nearest: a 3 m return at a Keizersgracht corner sat 1 m nearer the centreline than the 9 m front (0363100012169111).
     const wallStreetM = (e: Edge) => streetGrid ? streetDistance(e, streetGrid, null, bi, FALLBACK_REACH_M) : Infinity;
-    const stoopWall = b.stoop ? [...doorAllowed].filter(e => e.len >= 2.5).sort((p, q) => wallStreetM(p) - wallStreetM(q))[0] ?? null : null;
+    const stoopCands = b.stoop ? [...doorAllowed].filter(e => e.len >= 2.5).map(e => ({ e, d: wallStreetM(e) })) : [];
+    const nearestM = Math.min(...stoopCands.map(c => c.d));
+    const stoopWall = stoopCands.filter(c => !(c.d > nearestM + STOOP_ROAD_SLACK_M)).sort((p, q) => q.e.len - p.e.len)[0]?.e ?? null;
     const stoopFor = (e: Edge): Partial<ExtraContext> => {
       if (!b.stoop) return {};
       const others = (b.registerForce ?? []).filter(id => id !== 'stoop');

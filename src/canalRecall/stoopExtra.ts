@@ -40,8 +40,9 @@ export function genericStoopPlan(c: ExtraContext): { plan: StoopPlan; x0: number
   // The generic door is not the measured door, so a stated flight that does not fit there falls back: the front flight,
   // then along the wall towards the longer free side, then the other side.
   const leftRoom = d.x - d.hw, rightRoom = c.f.len - d.x - d.hw, toward = leftRoom >= rightRoom ? 'side-left' : 'side-right';
+  // Each fallback (the stated flight first) drops the stated landing and width, which were measured on the real door.
   const order = [want.flight ?? 'front', 'front', toward, toward === 'side-left' ? 'side-right' : 'side-left'] as const;
-  const tries: StoopIntent[] = [...new Set(order)].map((flight, i) => i === 0 ? want : { ...want, flight, widthM: undefined, landing: undefined });
+  const tries: StoopIntent[] = [want, ...[...new Set(order)].map(flight => ({ ...want, flight, widthM: undefined, landing: undefined }))];
   for (const t of tries) { const p = planStoop(t, ctx); if (p.plan) return { plan: p.plan, x0: 0 }; }
   return null;
 }
