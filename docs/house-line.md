@@ -1776,8 +1776,8 @@ Output per pand (or per `key` of a `--list` entry): `<out>/<key>/{photo.jpg, gam
 
 | Step | Where | What |
 |---|---|---|
-| wall | `pand-reference/select.ts pickWall` | the street wall (`--bearing`, or a `--list` entry's `bearing`/`at` for one wall of a large pand) |
-| panorama | `rankPanos` (5-35 m, obliquity <= 55) | `--year` filter; `--season winter` puts Nov-Mar first; the top three then by least foliage on the wall (a 2000 px pre-pass), then rank |
+| wall | `pand-reference/select.ts pickWall` | the street wall (`--bearing`, or a `--list` entry's `bearing`/`at` for one wall of a large pand; a front drawn as a bay or in short jogs is taken as the chord of the ring edges facing the bearing, e.g. Nassaukade 146 = 160704 with `bearing` 96) |
+| panorama | `rankPanos` (5-35 m, obliquity <= 55) | `--year` filter; `--season winter` puts Nov-Mar first; a 2000 px pre-pass over the first three (up to eight while fewer than two pass) rejects sun glare (> 12 % of the frame 0-20 deg below the horizon blown out, min RGB > 225: `GLARE_MAX`; the band stops above the recording car's bonnet, white on some captures) and a washed-out wall (> 30 % bright and colourless, `washedOutFraction`'s rule, where another candidate reads 25 % less: a white front is not rejected), even in winter; then least foliage on the wall, then rank. The caption's `why` lists what was rejected |
 | pose | `scripts/house-frames/pose.ts aimPose` | at the panorama, eye 2.44 m over the ground (`lensFor`'s datum), heading at the wall centre, 5-30 deg down, the narrowest vertical FOV in 45-120 deg that fits the wall and 1.5 m above it |
 | photo | `photo.ts cutPerspective` | a pinhole cut of the equirectangular panorama (4000 px; `--pano-size`) with the game's camera frame, rays turned onto the RD grid (`gridConvergenceDeg`, about -0.4 deg) |
 | game | `tests/e2e/house-frames.spec.ts` | one page for the list (`?engine=own&cam=fps` + `--query`), re-opened every 40 poses or after a crash; per pose: teleport, the pose handed to the engine, `settleWorld`, HUD hidden, screenshot, `inspectBuilding` picks over the wall |
@@ -1803,11 +1803,12 @@ it?). Gate: median photo offset <= 2 % over the validation set, any pose > 3 % i
 
 | Flag | Rule |
 |---|---|
-| blank wall | the game's wall reads <= 1 opening (a bare slab's edge strip reads as one) where the photo reads >= 3 (`measureFacade`, houseLine profile, on the wall rectified out of each half at 25 px/m) |
 | missing | >= 50 % of 35 wall picks hit sky or ground |
 | other building | >= 50 % of the wall picks hit another building or model (a cover that does not draw this wall; a neighbour in front) |
 | roof offset | the game's skyline over the wall (median of 7 columns, read on the wall plane) sits more than 1 m from the projected crown line (tile height) while the photo's sits within 1 m of it; or a model's surface stands >= 1.2 m over the crown line on 2 of 7 columns |
-| wall colour | \|dL\| > 0.12 between the halves' wall colours; advisory until the H2e clusterWall fix and H9 round 3 land |
+| wall colour | relative, the H9 rule: in each half, rel = the pand's wall L / the mean of its two neighbours' (strips 3-5 m past each wall end on the wall's line; L = trimmed 30-70 % mean of HSL lightness from 3 m to min(12 m, 85 % of the height), leaves and, on the neighbours, sky dropped). Fires when \|ln(rel game / rel photo)\| > 0.35 (`COLOUR_REL_MAX`), only when both neighbour strips read in both halves with < 25 % sky, and not on a missing / other-building pair. Exposure and white balance cancel; the absolute \|dL\| > 0.12 rule it replaces fired on 24 of 35 |
+
+Opening counts (photo and game, `measureFacade` houseLine profile on the wall rectified out of each half at 25 px/m) are printed as advisory only, with a `possible blank wall` note where the game reads <= 1 and the photo >= 3; no flag fires from them. Measured against the H5h hand counts (`data/house-line/hand-set-v1.json`, 69 readable single fronts, photo halves): columns read on 33, equal to the hand axes on 14 and within one on 25; openings / (axes x storeys) median 1.44 (p10 0.67, p90 2.5), within 30 % on 20 of 61. Not good enough to flag on |
 
 Generic houses pick as footprint prisms (`threeBuildingsBrowser.ts inspectAtScreen`), so picks say who owns the wall,
 not what its roof looks like; installed models (chunks, ordinary, landmarks) are ray-cast on their meshes.
@@ -1820,7 +1821,7 @@ One line per item; the countable ones carry the H5h blind reader ceiling (§4c),
 2. Storeys: same count above the ground storey? (ceiling 1.00)
 3. Window axes: same number of bays, roughly where the photo has them? (ceiling 1.00)
 4. Colour family and darkness: wall family (ceiling 0.81) and tone (ceiling 0.89), judged against the neighbours in the same frame, not in absolute terms.
-5. Blank or missing wall: is there a front where the photo has one, with openings? (the blank-wall / missing flags)
+5. Blank or missing wall: is there a front where the photo has one, with openings? (the missing flag; the `possible blank wall` note is advisory)
 6. Roof offset: does the roof sit on the walls, at the photo's height? (the roof flag)
 7. Shopfront (pui): shop vs residential ground storey (ceiling 0.88).
 8. Kit gaps: anything the photo shows that the kit cannot say (oriel, balcony type, ornament, painted bands) goes to the kit-gap queue (§5) as a `schemaLimits` entry, not into the nearest option.
@@ -1854,7 +1855,26 @@ median 3.0 s; under a shared slot with a check:canal gate queued.
 
 Gate: `check:canal` green on this branch (162 checks, EXIT 0, 2026-11-10 20:01, `CANAL_PW_EXCLUSIVE=1`).
 
-Flags on the 35 (before): blankWall 1 (116526), missing 2, otherBuilding 3, roofOffset 4, wallColour 24. The wall-colour
-flag fires on most pairs (sunlit or white-balanced photos against the lit look): read it as advisory only, as the brief
-says, until H2e and H9 round 3 land.
+Flags on the 35 (before, first rules): blankWall 1 (116526), missing 2, otherBuilding 3, roofOffset 4, wallColour 24.
+
+### Round 2 (2026-11-10): relative wall colour, glare, advisory openings, Nassaukade 146
+
+- **Wall colour**, relative (rule above). Calibrated on H7's set, which the judgement session read as right: Nassaukade
+  145-152 (rerun, 6 pairs) and Clercqstraat 236681 (9 pairs). 11 of the 15 read with both neighbour strips; their largest
+  |score| is 0.27 (164843), so the 0.35 threshold leaves them quiet: **H7 false positives 0 of 15**. (116526 reads 0.39 on one strip
+  only, the neighbour's dark-with-white-trim front rather than the pand: why one strip is not enough. H7's first Nassaukade
+  run picked 160704's Da Costakade rear wall, -0.36, which the other-building guard keeps quiet.) On the 35 validation walls it
+  reads 10 with both strips and fires on 5: 169916 (cream for dark brown brick) and Nieuwmarkt 182850, 182853, 182854,
+  182855, generic fronts whose colour is visibly wrong on the sheet (a white front for dark brick, pink brick for dark
+  grey). The trim is the 30-70 % quantiles: 40-90 % let a dark front's white trim lift it (164843 on the rerun, 0.38).
+- **Pose pick.** 164843's 2019-01-09 pick had flare over the left third: 16 % of the frame 0-20 deg below the horizon
+  blown out in the pre-pass (on the full cuts: 16 %; the next highest of 60 photos reads 10 %, Nieuwmarkt 182857's white
+  ground storey, a thin margin). The rerun rejects it (`rejected 2019-01-09 glare 16%`) and takes another 2019-01-09
+  panorama with 0 %. Without the 20 deg band the recording car's white bonnet read as glare (244160-e13's 2016 capture,
+  18 %). On an any-season pick the washed-out rule now also drops 244160-e13's 2016-07-29 capture (62 %, the tower's
+  glazing under construction) for 2021-04-30.
+- **Nassaukade 146 (160704)** from the Nassaukade side: `--list` entry `{"bearing": 96, "at": [4.87384, 52.37225]}`. Its
+  front is drawn as a bay (edges of 2.7, 1.1 and 1.7 m), which `exposedWalls` drops, so `wallAt` now takes the chord of the
+  facing edges (6.3 m). The 2021-03-24 panorama 8.2 m off; picks on chunk-face-nassau-145-152, no flags, colour score -0.10.
+
 

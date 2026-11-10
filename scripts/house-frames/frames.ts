@@ -19,7 +19,7 @@ import { exposedWalls, listPanos, pickWall, rankPanos, type PanoPick, type Wall 
 import { isLeaf } from '../../src/canalRecall/buildingRecipe/measureFacade.ts';
 import { aimPose, fpsFor, frameFor, gridConvergenceDeg, hfovDeg, wallOutline, wallPoint, CROWN_EXTRA_M, FRAME_H, FRAME_W, type FramePose, type WallQuad } from './pose.ts';
 import { cutPerspective, loadEquirect, type PanoSize, type Rgb8 } from './photo.ts';
-import { bare, edgeOffsets, flagsFor, measureHalf, pickSamples, readPicks, skyline, skylineMedian, type EdgeRead, type Hit, type PickSample } from './analyse.ts';
+import { bare, edgeOffsets, flagsFor, measureHalf, openingsNote, pickSamples, relativeColour, readPicks, skyline, skylineMedian, type EdgeRead, type Hit, type PickSample } from './analyse.ts';
 
 export const HELP = `npm run house:frames -- <input> [flags]
 
@@ -54,7 +54,9 @@ Flags
 Per pand: <out>/<pand>/{photo.jpg, game.png, pair.jpg, pose.json}; per 6 pairs: <out>/contact-N.jpg; <out>/summary.json.
 
 Pose: the street wall is pand-reference/select.ts pickWall; the panorama rankPanos (5-35 m, obliquity <= 55 deg),
-re-ordered winter first (--season winter), then lowest foliage on the wall (a 2000 px pre-pass), then rank. The camera
+re-ordered winter first (--season winter); a 2000 px pre-pass rejects sun glare (> 12 % of the frame 0-20 deg below the
+horizon blown out) and a washed-out wall (> 30 % bright and colourless where another year reads 25 % less: scaffold sheeting,
+overexposure; a white front is kept), then lowest foliage on the wall, then rank. The camera
 stands at the panorama's position at its eye height (2.44 m over the ground, lensFor's datum), heads at the wall centre,
 looks 5-30 deg down (the game camera cannot look up: MAX_PITCH_DEG 85) and opens its vertical FOV (45-120 deg) until the
 wall and 1.5 m above it fit; a wall too tall for 120 deg is listed as clipped.
@@ -69,9 +71,12 @@ Checks (pose.json)
   picks        the game's surfaces at 35 wall points and 14 over the crown: this pand, its cover model, another
                building, or sky/ground; 'drew' names the model or path (generic houses pick as footprint prisms)
   skyline      per column over the wall, where each half's sky ends (m on the wall plane); medians vs the crown line
-  flags        blank wall (game <= 1 opening where the photo has >= 3, H2d houseLine profile), missing (>= 50 % sky or
+  openings     photo and game counts (H2d houseLine profile), advisory only: a 'possible blank wall' note where the game
+               reads <= 1 and the photo >= 3; no flag until checked against the H5h hand counts
+  flags        missing (>= 50 % sky or
                ground), other building (>= 50 % another building or model), roof offset (the game's skyline > 1 m from the crown line
-               where the photo's is within 1 m; or a model drawn >= 1.2 m over it on 2 of 7 columns), wall colour (|dL| > 0.12; advisory until H2e and H9 round 3)
+               where the photo's is within 1 m; or a model drawn >= 1.2 m over it on 2 of 7 columns), wall colour (the pand's wall L over its two neighbours' in the same
+               half, photo vs game, |ln ratio| > 0.35; both neighbour strips must read, and the picks must say the wall is this pand's)
 
 Review: docs/house-line.md §7. Builders are accepted on these pairs, read by opus or a human.
 `;
@@ -152,27 +157,59 @@ function wallAt(fp: Footprint, others: Footprint[], at: [number, number], bearin
   if (exposed[0] && dist(exposed[0]) < 3) return { wall: exposed[0], note: `the exposed wall at ${at.join(',')}` };
   const all = exposedWalls(fp, []).filter(faces).sort((a, b) => dist(a) - dist(b));
   if (all[0] && dist(all[0]) < 3) return { wall: all[0], note: `the ring edge at ${at.join(',')} (not exposed by select.ts's rule)` };
+  // A front drawn as a bay or in jogs (each piece under exposedWalls' length): the chord of the longest run of consecutive
+  // ring edges facing within 50 deg of `bearing`, when it passes within 3 m of `at` (Nassaukade 146, 160704).
+  if (bearing !== undefined) {
+    const r = fp.ring.length > 1 && fp.ring[0].x === fp.ring[fp.ring.length - 1].x && fp.ring[0].y === fp.ring[fp.ring.length - 1].y ? fp.ring.slice(0, -1) : fp.ring;
+    const area = r.reduce((s, p, i) => s + p.x * r[(i + 1) % r.length].y - r[(i + 1) % r.length].x * p.y, 0), sign = area > 0 ? 1 : -1; // outward normal for either winding
+    const facesB = (i: number) => { const a = r[i], b = r[(i + 1) % r.length], len = Math.hypot(b.x - a.x, b.y - a.y); if (len < 0.05) return true; const nx = sign * (b.y - a.y) / len, ny = -sign * (b.x - a.x) / len; return Math.abs(((Math.atan2(nx, ny) * 180 / Math.PI - bearing + 540) % 360) - 180) < 50; };
+    let best: Wall | null = null;
+    for (let i = 0; i < r.length; i++) {
+      if (!facesB(i) || facesB((i - 1 + r.length) % r.length)) continue; // the start of a run
+      let j = i; while (j - i < r.length - 1 && facesB((j + 1) % r.length)) j++;
+      const a = r[i], b = r[(j + 1) % r.length], len = Math.hypot(b.x - a.x, b.y - a.y);
+      if (len < 2) continue;
+      const w: Wall = { a, b, len, nx: sign * (b.y - a.y) / len, ny: -sign * (b.x - a.x) / len, mid: { x: (a.x + b.x) / 2, y: (a.y + b.y) / 2 }, roadDistM: NaN, facing: NaN };
+      if (dist(w) < 3 && (!best || w.len > best.len)) best = w;
+    }
+    if (best) return { wall: best, note: `the chord of the ring edges facing ${bearing} at ${at.join(',')} (a bay or jogged front)` };
+  }
   return { wall: null, note: `no wall within 3 m of ${at.join(',')} facing ${bearing}` };
 }
 
 const WINTER = new Set([11, 12, 1, 2, 3]);
 const monthOf = (ts: string) => Number(String(ts).slice(5, 7));
 
-/** Share of foliage inside the projected wall of a small cut (2000 px panorama, 360 x 225 frame). */
-async function wallFoliage(p: PanoPick, wall: WallQuad): Promise<number | null> {
+/** Pose pick: a panorama is rejected when this share of its frame 0-GLARE_BAND_DEG below the horizon is blown out (sun glare, flare). */
+export const GLARE_MAX = 0.12, GLARE_BAND_DEG = 20;
+/** ... or when this share of the wall is bright and colourless (scaffold sheeting, overexposure) and another candidate's
+ * wall reads WASHED_MARGIN less (a white front is washed out in every year and is not rejected). */
+export const WASHED_MAX = 0.3, WASHED_MARGIN = 0.25;
+type PanoQuality = { leaf: number | null; glare: number | null; washed: number | null };
+
+/** A small cut (2000 px panorama, 360 px wide frame): foliage and washed-out shares on the projected wall, blown-out share below the horizon. */
+async function panoQuality(p: PanoPick, wall: WallQuad): Promise<PanoQuality> {
   const img = await loadEquirect(p.record, 'small');
-  if (!img) return null;
+  if (!img) return { leaf: null, glare: null, washed: null };
   const ll: [number, number] = [p.record.geometry.coordinates[0], p.record.geometry.coordinates[1]];
-  const pose = aimPose({ lngLat: ll }, wall, { width: 360, height: 225 }), f = frameFor(pose);
+  const pose = aimPose({ lngLat: ll }, wall, { width: 360, height: 225 }), f = frameFor(pose), W = pose.width, H = pose.height;
   const cut = cutPerspective(img, f, gridConvergenceDeg(ll)), len = Math.hypot(wall.b.x - wall.a.x, wall.b.y - wall.a.y);
-  let n = 0, leaf = 0;
+  let n = 0, leaf = 0, wn = 0, wash = 0;
   for (let i = 1; i < 12; i++) for (let j = 1; j < 10; j++) {
     const s = wallPoint(f, pose, wall, len * i / 12, wall.heightM * j / 10);
-    if (s.depth <= 0 || s.x < 0 || s.y < 0 || s.x >= 360 || s.y >= 225) continue;
-    const o = (Math.floor(s.y) * 360 + Math.floor(s.x)) * 3; n++;
-    if (isLeaf(cut.data[o], cut.data[o + 1], cut.data[o + 2])) leaf++;
+    if (s.depth <= 0 || s.x < 0 || s.y < 0 || s.x >= W || s.y >= H) continue;
+    const o = (Math.floor(s.y) * W + Math.floor(s.x)) * 3, r = cut.data[o], g = cut.data[o + 1], b = cut.data[o + 2]; n++;
+    if (isLeaf(r, g, b)) leaf++;
+    if (j >= 2 && j <= 8) { wn++; const hi = Math.max(r, g, b), lo = Math.min(r, g, b); if (lo > 150 && hi - lo < 55) wash++; } // rectify.ts washedOutFraction's rule, mid-wall
   }
-  return n ? leaf / n : null;
+  // 0-20 deg below the horizon: street level, clear of the recording car's bonnet (white on some captures) further down.
+  const horizon = Math.max(0, Math.ceil(H / 2 - f.focal * Math.tan(pose.lookDownDeg * Math.PI / 180)));
+  let below = 0, blown = 0;
+  for (let y = horizon; y < H; y++) {
+    if (Math.atan((y + 0.5 - H / 2) / f.focal) * 180 / Math.PI + pose.lookDownDeg > GLARE_BAND_DEG) break;
+    for (let x = 0; x < W; x++) { const o = (y * W + x) * 3; below++; if (Math.min(cut.data[o], cut.data[o + 1], cut.data[o + 2]) > 225) blown++; }
+  }
+  return { leaf: n ? leaf / n : null, glare: below ? blown / below : null, washed: wn ? wash / wn : null };
 }
 
 /** The named street the wall faces: the nearest centreline point within 40 m that lies in front of the wall. */
@@ -209,14 +246,26 @@ async function prepare(entry: Entry, fp: Footprint | undefined, args: Args): Pro
   if (args.year) ranked = ranked.filter(c => c.missionYear === args.year);
   if (!ranked.length) return { pandId, skip: args.year ? `no panorama of ${args.year} in 5-35 m` : 'no panorama in 5-35 m (obliquity <= 55)' };
   const why: string[] = [note];
-  // Winter first, then lowest foliage on the wall, then rank (the top three after the season sort get the pre-pass).
+  // Winter first; glare and washed-out walls rejected (pre-pass over the first 3, extended to 8 while fewer than 2 pass);
+  // then lowest foliage on the wall, then rank.
   const seasonKey = (c: PanoPick) => args.season === 'winter' && !WINTER.has(monthOf(c.timestamp)) ? 1 : 0;
   const order = ranked.map((c, i) => ({ c, i })).sort((a, b) => seasonKey(a.c) - seasonKey(b.c) || a.i - b.i);
-  const pool = order.slice(0, 3);
-  for (const p of pool) (p as any).leaf = await wallFoliage(p.c, quad).catch(() => null);
-  pool.sort((a, b) => Math.round(((a as any).leaf ?? 1) * 10) - Math.round(((b as any).leaf ?? 1) * 10) || seasonKey(a.c) - seasonKey(b.c) || a.i - b.i);
-  const chosen = pool[0], pick = chosen.c, foliage: number | null = (chosen as any).leaf ?? null;
-  why.push(`panorama ${pick.panoId}: rank ${chosen.i + 1} of ${ranked.length}${args.season === 'winter' ? `, ${WINTER.has(monthOf(pick.timestamp)) ? 'winter' : 'no winter capture'}` : ''}, foliage ${foliage == null ? '?' : (foliage * 100).toFixed(0) + '%'} (pre-pass over ${pool.length})`);
+  const pool: { c: PanoPick; i: number; q: PanoQuality; reject?: string }[] = [];
+  const judge = () => {
+    const minWash = Math.min(...pool.map(p => p.q.washed ?? 1));
+    for (const p of pool) p.reject = (p.q.glare ?? 0) > GLARE_MAX ? `glare ${((p.q.glare ?? 0) * 100).toFixed(0)}%`
+      : (p.q.washed ?? 0) > WASHED_MAX && (p.q.washed ?? 0) - minWash > WASHED_MARGIN ? `washed out ${((p.q.washed ?? 0) * 100).toFixed(0)}%` : undefined;
+    return pool.filter(p => !p.reject).length;
+  };
+  for (const o of order) {
+    if (pool.length >= 8 || (pool.length >= 3 && judge() >= 2)) break;
+    pool.push({ ...o, q: await panoQuality(o.c, quad).catch(() => ({ leaf: null, glare: null, washed: null })) });
+  }
+  judge();
+  const rejected = pool.filter(p => p.reject), live = pool.filter(p => !p.reject).length ? pool.filter(p => !p.reject) : [...pool].sort((a, b) => (a.q.glare ?? 0) - (b.q.glare ?? 0));
+  live.sort((a, b) => Math.round((a.q.leaf ?? 1) * 10) - Math.round((b.q.leaf ?? 1) * 10) || seasonKey(a.c) - seasonKey(b.c) || a.i - b.i);
+  const chosen = live[0], pick = chosen.c, foliage: number | null = chosen.q.leaf;
+  why.push(`panorama ${pick.panoId}: rank ${chosen.i + 1} of ${ranked.length}${args.season === 'winter' ? `, ${WINTER.has(monthOf(pick.timestamp)) ? 'winter' : 'no winter capture'}` : ''}, foliage ${foliage == null ? '?' : (foliage * 100).toFixed(0) + '%'}, glare ${chosen.q.glare == null ? '?' : (chosen.q.glare * 100).toFixed(0) + '%'} (pre-pass over ${pool.length}${rejected.length ? `; rejected ${rejected.map(p => `${p.c.timestamp.slice(0, 10)} ${p.reject}`).join(', ')}` : ''}${chosen.reject ? '; every candidate rejected, least glare kept' : ''})`);
   const ll: [number, number] = [pick.record.geometry.coordinates[0], pick.record.geometry.coordinates[1]];
   const published = Number(pick.record.geometry.coordinates[2]);
   const pose = aimPose({ lngLat: ll, cameraNap: published > 0 ? published - 43.5 : null }, quad);
@@ -286,7 +335,7 @@ function captionLines(r: any): string[] {
     `${r.key !== r.pandId ? r.key + ' ' : ''}${r.pandId}  ${r.street || '?'}  |  pano ${String(r.pick.timestamp).slice(0, 10)}  ${r.pick.distM.toFixed(1)} m  obl ${r.pick.obliquityDeg.toFixed(0)}°  |  vfov ${r.pose.vfovDeg.toFixed(0)}°${r.pose.clipped.length ? ` clipped ${r.pose.clipped.join('+')}` : ''}`,
     `drew: ${r.route}${r.picks?.drawnBy ? ` (picked ${r.picks.drawnBy})` : ''}  |  ${r.query || '(default world)'}${r.label && r.label !== 'run' ? `  |  ${r.label}` : ''}`,
     flags.length ? `FLAGS ${flags.join(', ')}` : 'no flags',
-    `edges photo ${e(r.edges.photo)}  game ${e(r.edges.game)}  |  openings photo ${r.measure.photo.openings ?? '?'} game ${r.measure.game.openings ?? '?'}  |  skyline game ${r.skyline?.offset?.game?.medianM ?? '?'} photo ${r.skyline?.offset?.photo?.medianM ?? '?'} crown ${r.wall.heightM} m`,
+    `edges photo ${e(r.edges.photo)}  game ${e(r.edges.game)}  |  openings (advisory) photo ${r.measure.photo.openings ?? '?'} game ${r.measure.game.openings ?? '?'}${r.advisory?.openings ? ' ' + r.advisory.openings : ''}  |  rel L photo ${r.colour?.photo?.rel ?? '?'} game ${r.colour?.game?.rel ?? '?'}  |  skyline game ${r.skyline?.offset?.game?.medianM ?? '?'} photo ${r.skyline?.offset?.photo?.medianM ?? '?'} crown ${r.wall.heightM} m`,
   ];
 }
 
@@ -337,9 +386,11 @@ async function post(prep: Prepared, args: Args, job: any): Promise<any> {
   const measure = { photo: measureHalf(photo, frame, prep.pose, prep.wall), game: measureHalf(game, frame, prep.pose, prep.wall) };
   const sky = { photo: skyline(photo, frame, prep.pose, prep.wall), game: skyline(game, frame, prep.pose, prep.wall) };
   const skyOff = { game: skylineMedian(sky.game), photo: skylineMedian(sky.photo), crownM: prep.wall.heightM };
-  const flags = flagsFor(picks, measure.game, measure.photo, { crownM: prep.wall.heightM, game: skyOff.game.medianM, photo: skyOff.photo.medianM, above: cols.size });
+  const colour = relativeColour(photo, game, frame, prep.pose, prep.wall);
+  const flags = flagsFor(picks, measure.game, measure.photo, { crownM: prep.wall.heightM, game: skyOff.game.medianM, photo: skyOff.photo.medianM, above: cols.size }, colour);
+  const advisory = { openings: openingsNote(measure.game, measure.photo, flags.missing) };
   const fpsUsed = g.picks?.fps ?? null;
-  const r = { pandId: prep.pandId, key: prep.key, street: prep.street, label: args.label, query: job.query, route: prep.route, why: prep.why, wall: prep.wall, wallLenM: prep.wallLenM, pick: prep.pick, pose: prep.pose, hfovDeg: prep.hfovDeg, fps: fpsFor(prep.pose), fpsUsed, foliage: prep.foliage, candidates: prep.candidates, edges, skyline: { ...sky, offset: skyOff }, picks, measure, flags, settle: g.settle, ms: g.ms };
+  const r = { pandId: prep.pandId, key: prep.key, street: prep.street, label: args.label, query: job.query, route: prep.route, why: prep.why, wall: prep.wall, wallLenM: prep.wallLenM, pick: prep.pick, pose: prep.pose, hfovDeg: prep.hfovDeg, fps: fpsFor(prep.pose), fpsUsed, foliage: prep.foliage, candidates: prep.candidates, edges, skyline: { ...sky, offset: skyOff }, picks, measure, colour, flags, advisory, settle: g.settle, ms: g.ms };
   fs.writeFileSync(path.join(dir, 'pose.json'), JSON.stringify(r, null, 1));
   fs.writeFileSync(path.join(dir, 'pair.jpg'), await pairImage(dir, r, 720, 15));
   return r;
@@ -388,7 +439,9 @@ export async function main(argv = process.argv.slice(2)) {
   const summary = {
     input: args.inputName, label: args.label, query: args.query, pands: args.pands.length, prepared: prepared.length, skipped, framed: ok.length,
     alignment: { photoEdges: photoEdges.length, medianPct: +quantile(photoEdges, 0.5).toFixed(2), p90Pct: +quantile(photoEdges, 0.9).toFixed(2), over3: ok.flatMap(r => r.edges.photo.filter((e: EdgeRead) => e.found && e.side !== 'crown' && Math.abs(e.offsetPct) > 3).map((e: EdgeRead) => `${r.pandId} ${e.side} ${e.offsetPct}%`)), gameEdges: gameEdges.length, gameMedianPct: +quantile(gameEdges, 0.5).toFixed(2) },
-    flags: Object.fromEntries(['blankWall', 'missing', 'otherBuilding', 'roofOffset', 'wallColour'].map(k => [k, ok.filter(r => r.flags[k]).map(r => r.pandId)])),
+    flags: Object.fromEntries(['missing', 'otherBuilding', 'roofOffset', 'wallColour'].map(k => [k, ok.filter(r => r.flags[k]).map(r => r.pandId)])),
+    advisory: { possibleBlankWall: ok.filter(r => r.advisory?.openings).map(r => r.pandId) },
+    colourScores: ok.map(r => [r.pandId, r.colour?.score ?? null]),
     throughput: timings ? { poses: timings.poses, wallS: +(timings.wallMs / 1000).toFixed(1), pairsPerMin: +(timings.poses / (timings.wallMs / 60000)).toFixed(2), opened: timings.opened, settleMedianS: +(quantile(timings.timings.map((t: any) => t.settle), 0.5) / 1000).toFixed(1) } : null,
     sheets,
   };
