@@ -19,19 +19,39 @@ async function slot<T>(fn: () => Promise<T>): Promise<T> {
   try { return await fn(); } finally { active--; waiting.shift()?.(); }
 }
 const sleep = (ms: number) => new Promise(r => setTimeout(r, ms));
+/**
+ * Opt-in politeness for city-scale runs (scripts/house-crops): `minGapMs` spaces the START of every network request
+ * process-wide (cache hits never reach `get`), `maxAttempts` raises the retry count, and a 429 or 5xx backs off
+ * exponentially (honouring Retry-After). Defaults keep the old behaviour: no spacing, 4 attempts, 400 ms * 2^i.
+ */
+export const http = { minGapMs: 0, maxAttempts: 4, userAgent: UA, requests: 0, bytes: 0, retries: 0, status429: 0, status5xx: 0, failures: 0 };
+let nextStart = 0;
+async function pace() {
+  if (!http.minGapMs) return;
+  const at = Math.max(Date.now(), nextStart); nextStart = at + http.minGapMs;
+  if (at > Date.now()) await sleep(at - Date.now());
+}
 async function get(url: string): Promise<Buffer> {
   let err: unknown;
-  for (let i = 0; i < 4; i++) {
+  for (let i = 0; i < http.maxAttempts; i++) {
+    let wait = 400 * 2 ** i;
     try {
       const bytes = await slot(async () => {
-        const res = await fetch(url, { headers: { 'User-Agent': UA } });
-        if (!res.ok) { const e: any = new Error(`HTTP ${res.status} ${url}`); e.status = res.status; throw e; }
-        return Buffer.from(await res.arrayBuffer());
+        await pace();
+        http.requests++;
+        const res = await fetch(url, { headers: { 'User-Agent': http.userAgent } });
+        if (!res.ok) {
+          if (res.status === 429) http.status429++; else if (res.status >= 500) http.status5xx++;
+          const ra = Number(res.headers.get('retry-after')); if (ra > 0) wait = Math.max(wait, Math.min(ra, 120) * 1000);
+          const e: any = new Error(`HTTP ${res.status} ${url}`); e.status = res.status; throw e;
+        }
+        const b = Buffer.from(await res.arrayBuffer()); http.bytes += b.length; return b;
       });
       return bytes;
     } catch (e: any) { err = e; if (e.status && e.status < 500 && e.status !== 429) break; }
-    await sleep(400 * 2 ** i);
+    if (i + 1 < http.maxAttempts) { http.retries++; await sleep(wait); }
   }
+  http.failures++;
   throw err;
 }
 const cachePath = (url: string, ext: string) => path.join(CACHE_DIR, crypto.createHash('sha1').update(url).digest('hex') + ext);
