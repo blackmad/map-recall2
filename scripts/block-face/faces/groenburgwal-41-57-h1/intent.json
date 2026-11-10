@@ -1,0 +1,164 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "groenburgwal-41-57-h1",
+ "street": "Groenburgwal",
+ "sources": [
+  {
+   "id": "strip-2025-01-08",
+   "kind": "street-panorama",
+   "capturedAt": "2025-01-08",
+   "image": "staging/block-face/groenburgwal-41-57-h1/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "lane hand placement (scripts/block-face/hand-place.ts)",
+  "passes": 1,
+  "note": "Groenburgwal 51-57 (strip 2025-01-08, winter: bare branches in the sky, fronts clear): a dark neck gable, a cornice house with a small bell top, a souterrain bell house, a cornice house with a dormer (41 and the 45A-47 double front under one pediment are not in this run); 49 held: its wide ribbon window row 4.0-5.8 m is not in the kit (edge NCC 0.05 with three sashes); spec scripts/block-face/buurten/zuiderkerkbuurt-hand-runs.json"
+ },
+ "types": [
+  "jordaan-1750-neck-gable",
+  "jordaan-1850-cornice-house",
+  "belt-1700-canal-house"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012178635",
+   "slug": "groenburgwal-178635",
+   "address": "Groenburgwal 51",
+   "type": {
+    "type": "jordaan-1750-neck-gable",
+    "storeys": 2,
+    "measuredPalette": {
+     "brick": "#2f2e22",
+     "evidence": "strip 2025-01-08 span 1146-1312: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2025-01-08",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "hand placement (zuiderkerkbuurt-hand-runs.json): Groenburgwal 51: a narrow dark-painted front, door left and a window in the ground storey, three windows 4.5-6.0 m, a neck gable with white claws from 8 m to about 10.8 m with one window; strip 2025-01-08"
+   }
+  },
+  {
+   "pandId": "0363100012178362",
+   "slug": "groenburgwal-178362",
+   "address": "Groenburgwal 53",
+   "type": {
+    "type": "jordaan-1850-cornice-house",
+    "storeys": 3,
+    "crown": "dormer",
+    "measuredPalette": {
+     "brick": "#50412f",
+     "evidence": "strip 2025-01-08 span 1312-1494: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2025-01-08",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "hand placement (zuiderkerkbuurt-hand-runs.json): Groenburgwal 53: two axes, red double door left, windows 4.6-6.6 / 7.3-9.3 m, a white cornice 10.5-11 m with a small raised top over the middle (drawn as the kit's stone dormer: the kit has no bell-topped dormer); strip 2025-01-08"
+   }
+  },
+  {
+   "pandId": "0363100012178637",
+   "slug": "groenburgwal-178637",
+   "address": "Groenburgwal 55A",
+   "type": {
+    "type": "belt-1700-canal-house",
+    "crown": "bell",
+    "overrides": {
+     "entablature": null
+    },
+    "paletteOverrides": {
+     "brick": "#201c17"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2025-01-08",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "hand placement (zuiderkerkbuurt-hand-runs.json): Groenburgwal 55A: a light stone souterrain to 2.2 m, bel-etage windows 2.3-4.8 m, two axes in three storeys 5.6-8.0 / 8.8-10.7 / 11.6-13.3 m, a tall bell gable with a white crest from 14.5 m to about 18.4 m with one light (brick fitted with fitWallBrick to the photo wall #4a4233); strip 2025-01-08"
+   }
+  },
+  {
+   "pandId": "0363100012178446",
+   "slug": "groenburgwal-178446",
+   "address": "Groenburgwal 57",
+   "type": {
+    "type": "jordaan-1850-cornice-house",
+    "crown": "dormer",
+    "measuredPalette": {
+     "brick": "#4d4435",
+     "evidence": "strip 2025-01-08 span 1756-1982: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie",
+     "overige gebruiksfunctie"
+    ],
+    "photoDate": "2025-01-08",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "hand placement (zuiderkerkbuurt-hand-runs.json): Groenburgwal 57: three axes, a ground storey with doors and windows to 3.9 m, windows 4.3-6.2 / 7.1-8.9 / 9.8-11.7 m, a white cornice 12.3-13.2 m and a pediment dormer over the middle; strip 2025-01-08"
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "auto-place: low attic behind the cornice; the strips show sky over the cornices of the type rows"
+  },
+  "measuredEaves": [
+   {
+    "pand": "0363100012178635",
+    "stripRow": 643,
+    "evidence": "hand placement: cornice top read at 8 m on the strip 2025-01-08"
+   },
+   {
+    "pand": "0363100012178362",
+    "stripRow": 523,
+    "evidence": "hand placement: cornice top read at 11 m on the strip 2025-01-08"
+   },
+   {
+    "pand": "0363100012178637",
+    "stripRow": 383,
+    "evidence": "hand placement: cornice top read at 14.5 m on the strip 2025-01-08"
+   },
+   {
+    "pand": "0363100012178446",
+    "stripRow": 435,
+    "evidence": "hand placement: cornice top read at 13.2 m on the strip 2025-01-08"
+   }
+  ]
+ }
+}

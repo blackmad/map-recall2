@@ -1,6 +1,6 @@
 {
  "version": 1,
- "generatedAt": "2026-11-10T09:06:46.467Z",
+ "generatedAt": "2026-11-10T09:49:01.749Z",
  "chunks": [
   {
    "id": "chunk-face-bilder-080336-090492",
@@ -102780,6 +102780,1130 @@
        "primitive": 9,
        "firstTriangle": 11,
        "triangleCount": 13
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "chunk-face-groenburgwal-41-57-h1",
+   "category": "street-survey",
+   "name": "face-groenburgwal-41-57-h1",
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-groenburgwal-41-57-h1.glb?asset=d1a0b1fa1f96bd7c",
+   "sha256": "d1a0b1fa1f96bd7c46bc9d5eec2be59f377cd5b6f44d6025e533fa58225c4398",
+   "bytes": 157880,
+   "triangles": 6066,
+   "primitives": 14,
+   "instance": {
+    "anchor": [
+     4.898046239882716,
+     52.36840642564703
+    ],
+    "northOffsetDegrees": 118.7088,
+    "mirror": false
+   },
+   "bounds": {
+    "min": [
+     -9.374,
+     0,
+     -14.285
+    ],
+    "max": [
+     11.526,
+     17.867,
+     1.363
+    ]
+   },
+   "height": 17.867,
+   "suppress": [
+    "NL.IMBAG.Pand.0363100012178635",
+    "NL.IMBAG.Pand.0363100012178362",
+    "NL.IMBAG.Pand.0363100012178637",
+    "NL.IMBAG.Pand.0363100012178446"
+   ],
+   "replaces": [
+    "ordinary-0363100012178635",
+    "ordinary-0363100012178362",
+    "ordinary-0363100012178637",
+    "ordinary-0363100012178446"
+   ],
+   "footprint": {
+    "type": "MultiPolygon",
+    "coordinates": [
+     [
+      [
+       [
+        4.8981126,
+        52.3684802
+       ],
+       [
+        4.8980823,
+        52.3684478
+       ],
+       [
+        4.8982022,
+        52.3684041
+       ],
+       [
+        4.898235,
+        52.3684375
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8980823,
+        52.3684478
+       ],
+       [
+        4.8980516,
+        52.3684115
+       ],
+       [
+        4.8981467,
+        52.3683771
+       ],
+       [
+        4.8981663,
+        52.3683976
+       ],
+       [
+        4.8981881,
+        52.3683897
+       ],
+       [
+        4.8982022,
+        52.3684041
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8980516,
+        52.3684115
+       ],
+       [
+        4.89802,
+        52.3683768
+       ],
+       [
+        4.8980069,
+        52.3683812
+       ],
+       [
+        4.8979993,
+        52.3683726
+       ],
+       [
+        4.8980122,
+        52.3683682
+       ],
+       [
+        4.8980048,
+        52.3683601
+       ],
+       [
+        4.8981126,
+        52.3683178
+       ],
+       [
+        4.8980953,
+        52.3682987
+       ],
+       [
+        4.8981758,
+        52.3682878
+       ],
+       [
+        4.8981887,
+        52.3682985
+       ],
+       [
+        4.8981739,
+        52.3683061
+       ],
+       [
+        4.8982251,
+        52.368349
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8980048,
+        52.3683601
+       ],
+       [
+        4.8979648,
+        52.3683156
+       ],
+       [
+        4.8980822,
+        52.3682843
+       ],
+       [
+        4.8981126,
+        52.3683178
+       ]
+      ]
+     ]
+    ]
+   },
+   "pands": [
+    {
+     "recipeId": "groenburgwal-178635",
+     "pandId": "0363100012178635",
+     "buildingId": "NL.IMBAG.Pand.0363100012178635",
+     "address": "Groenburgwal 51",
+     "frontage": {
+      "x0": -9.373,
+      "x1": -5.22,
+      "widthM": 4.152
+     },
+     "bounds": {
+      "min": [
+       -9.374,
+       0,
+       -9.609
+      ],
+      "max": [
+       -4.882,
+       12.809,
+       1.13
+      ]
+     },
+     "triangles": 1238,
+     "ranges": [
+      {
+       "primitive": 1,
+       "firstTriangle": 0,
+       "triangleCount": 146
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 0,
+       "triangleCount": 84
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 0,
+       "triangleCount": 884
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 0,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 0,
+       "triangleCount": 88
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 0,
+       "triangleCount": 4
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 0,
+       "triangleCount": 8
+      }
+     ]
+    },
+    {
+     "recipeId": "groenburgwal-178362",
+     "pandId": "0363100012178362",
+     "buildingId": "NL.IMBAG.Pand.0363100012178362",
+     "address": "Groenburgwal 53",
+     "frontage": {
+      "x0": -5.22,
+      "x1": -0.67,
+      "widthM": 4.55
+     },
+     "bounds": {
+      "min": [
+       -5.22,
+       0,
+       -9.44
+      ],
+      "max": [
+       -0.433,
+       12.768,
+       0.243
+      ]
+     },
+     "triangles": 1018,
+     "ranges": [
+      {
+       "primitive": 3,
+       "firstTriangle": 0,
+       "triangleCount": 52
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 84,
+       "triangleCount": 172
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 884,
+       "triangleCount": 620
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 24,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 88,
+       "triangleCount": 126
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 4,
+       "triangleCount": 6
+      },
+      {
+       "primitive": 12,
+       "firstTriangle": 0,
+       "triangleCount": 6
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 8,
+       "triangleCount": 12
+      }
+     ]
+    },
+    {
+     "recipeId": "groenburgwal-178637",
+     "pandId": "0363100012178637",
+     "buildingId": "NL.IMBAG.Pand.0363100012178637",
+     "address": "Groenburgwal 55A",
+     "frontage": {
+      "x0": -0.67,
+      "x1": 3.752,
+      "widthM": 4.423
+     },
+     "bounds": {
+      "min": [
+       -0.671,
+       0,
+       -14.285
+      ],
+      "max": [
+       8.895,
+       17.867,
+       1.363
+      ]
+     },
+     "triangles": 2616,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 0,
+       "triangleCount": 233
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 0,
+       "triangleCount": 584
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 1504,
+       "triangleCount": 1556
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 0,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 214,
+       "triangleCount": 198
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 10,
+       "triangleCount": 14
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 20,
+       "triangleCount": 7
+      }
+     ]
+    },
+    {
+     "recipeId": "groenburgwal-178446",
+     "pandId": "0363100012178446",
+     "buildingId": "NL.IMBAG.Pand.0363100012178446",
+     "address": "Groenburgwal 57",
+     "frontage": {
+      "x0": 5.875,
+      "x1": 11.526,
+      "widthM": 5.65
+     },
+     "bounds": {
+      "min": [
+       5.875,
+       0,
+       -8.708
+      ],
+      "max": [
+       11.526,
+       15.546,
+       0.172
+      ]
+     },
+     "triangles": 1194,
+     "ranges": [
+      {
+       "primitive": 2,
+       "firstTriangle": 0,
+       "triangleCount": 30
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 256,
+       "triangleCount": 208
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 3060,
+       "triangleCount": 764
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 12,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 36,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 412,
+       "triangleCount": 156
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 24,
+       "triangleCount": 3
+      },
+      {
+       "primitive": 12,
+       "firstTriangle": 6,
+       "triangleCount": 4
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 27,
+       "triangleCount": 5
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "chunk-face-kloveniersburgwal-5-21-h1",
+   "category": "street-survey",
+   "name": "face-kloveniersburgwal-5-21-h1",
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-kloveniersburgwal-5-21-h1.glb?asset=d6805409ae0ba280",
+   "sha256": "d6805409ae0ba2808fe39cdd79505c54fd2b4aaeb9c12145224f8ba4c3fbcdbf",
+   "bytes": 157680,
+   "triangles": 6345,
+   "primitives": 12,
+   "instance": {
+    "anchor": [
+     4.899974445736071,
+     52.37190616199148
+    ],
+    "northOffsetDegrees": 119.1384,
+    "mirror": false
+   },
+   "bounds": {
+    "min": [
+     -7.799,
+     0,
+     -22.366
+    ],
+    "max": [
+     6.763,
+     17.922,
+     1.099
+    ]
+   },
+   "height": 17.922,
+   "suppress": [
+    "NL.IMBAG.Pand.0363100012182586",
+    "NL.IMBAG.Pand.0363100012182585",
+    "NL.IMBAG.Pand.0363100012182584"
+   ],
+   "replaces": [
+    "ordinary-0363100012182586",
+    "ordinary-0363100012182585",
+    "ordinary-0363100012182584"
+   ],
+   "footprint": {
+    "type": "MultiPolygon",
+    "coordinates": [
+     [
+      [
+       [
+        4.9002121,
+        52.3719021
+       ],
+       [
+        4.9000234,
+        52.3719601
+       ],
+       [
+        4.8999902,
+        52.3719231
+       ],
+       [
+        4.9002755,
+        52.3718354
+       ],
+       [
+        4.9003017,
+        52.3718745
+       ],
+       [
+        4.9002262,
+        52.3718977
+       ],
+       [
+        4.900212,
+        52.3718806
+       ],
+       [
+        4.900198,
+        52.3718849
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8999902,
+        52.3719231
+       ],
+       [
+        4.8999583,
+        52.3718886
+       ],
+       [
+        4.9002509,
+        52.3717986
+       ],
+       [
+        4.9002755,
+        52.3718354
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9001151,
+        52.3718404
+       ],
+       [
+        4.8999583,
+        52.3718886
+       ],
+       [
+        4.8999261,
+        52.3718535
+       ],
+       [
+        4.9001018,
+        52.3717938
+       ],
+       [
+        4.9001012,
+        52.3717932
+       ],
+       [
+        4.9001854,
+        52.3717645
+       ],
+       [
+        4.9002118,
+        52.3717935
+       ],
+       [
+        4.9002242,
+        52.3717895
+       ],
+       [
+        4.9002307,
+        52.3717973
+       ],
+       [
+        4.9002467,
+        52.3717923
+       ],
+       [
+        4.9002509,
+        52.3717986
+       ],
+       [
+        4.9001689,
+        52.3718238
+       ],
+       [
+        4.900156,
+        52.3718081
+       ],
+       [
+        4.9001022,
+        52.3718246
+       ]
+      ]
+     ]
+    ]
+   },
+   "pands": [
+    {
+     "recipeId": "kloveniersburgwal-182586",
+     "pandId": "0363100012182586",
+     "buildingId": "NL.IMBAG.Pand.0363100012182586",
+     "address": "Kloveniersburgwal 5",
+     "frontage": {
+      "x0": -6.868,
+      "x1": -2.173,
+      "widthM": 4.696
+     },
+     "bounds": {
+      "min": [
+       -7.799,
+       0,
+       -21.739
+      ],
+      "max": [
+       -2.172,
+       17.922,
+       1.099
+      ]
+     },
+     "triangles": 2113,
+     "ranges": [
+      {
+       "primitive": 1,
+       "firstTriangle": 0,
+       "triangleCount": 278
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 0,
+       "triangleCount": 144
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 0,
+       "triangleCount": 1192
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 0,
+       "triangleCount": 204
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 0,
+       "triangleCount": 164
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 0,
+       "triangleCount": 114
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 0,
+       "triangleCount": 5
+      }
+     ]
+    },
+    {
+     "recipeId": "kloveniersburgwal-182585",
+     "pandId": "0363100012182585",
+     "buildingId": "NL.IMBAG.Pand.0363100012182585",
+     "address": "Kloveniersburgwal 7",
+     "frontage": {
+      "x0": -2.173,
+      "x1": 2.245,
+      "widthM": 4.418
+     },
+     "bounds": {
+      "min": [
+       -3.127,
+       0,
+       -22.275
+      ],
+      "max": [
+       2.245,
+       17.531,
+       1.093
+      ]
+     },
+     "triangles": 1981,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 0,
+       "triangleCount": 202
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 144,
+       "triangleCount": 144
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 1192,
+       "triangleCount": 1184
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 12,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 0,
+       "triangleCount": 204
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 164,
+       "triangleCount": 162
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 114,
+       "triangleCount": 67
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 5,
+       "triangleCount": 6
+      }
+     ]
+    },
+    {
+     "recipeId": "kloveniersburgwal-182584",
+     "pandId": "0363100012182584",
+     "buildingId": "NL.IMBAG.Pand.0363100012182584",
+     "address": "Kloveniersburgwal 9E",
+     "frontage": {
+      "x0": 2.245,
+      "x1": 6.724,
+      "widthM": 4.479
+     },
+     "bounds": {
+      "min": [
+       1.265,
+       0,
+       -22.366
+      ],
+      "max": [
+       6.763,
+       17.597,
+       0.149
+      ]
+     },
+     "triangles": 2251,
+     "ranges": [
+      {
+       "primitive": 2,
+       "firstTriangle": 0,
+       "triangleCount": 284
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 288,
+       "triangleCount": 144
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 2376,
+       "triangleCount": 1312
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 24,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 0,
+       "triangleCount": 284
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 326,
+       "triangleCount": 164
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 181,
+       "triangleCount": 39
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 11,
+       "triangleCount": 12
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "chunk-face-kloveniersburgwal-5-21-h2",
+   "category": "street-survey",
+   "name": "face-kloveniersburgwal-5-21-h2",
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-kloveniersburgwal-5-21-h2.glb?asset=20c0ca4e0121bca5",
+   "sha256": "20c0ca4e0121bca5e2c7baec32acf94b647c57295003118b31beefbabaddae9a",
+   "bytes": 145180,
+   "triangles": 5653,
+   "primitives": 11,
+   "instance": {
+    "anchor": [
+     4.899825730993249,
+     52.37174652146977
+    ],
+    "northOffsetDegrees": 119.4043,
+    "mirror": false
+   },
+   "bounds": {
+    "min": [
+     -8.332,
+     0,
+     -21.765
+    ],
+    "max": [
+     8.691,
+     19.119,
+     1.089
+    ]
+   },
+   "height": 19.119,
+   "suppress": [
+    "NL.IMBAG.Pand.0363100012182777",
+    "NL.IMBAG.Pand.0363100012571679",
+    "NL.IMBAG.Pand.0363100012571680"
+   ],
+   "replaces": [
+    "ordinary-0363100012182777",
+    "ordinary-0363100012571679",
+    "ordinary-0363100012571680"
+   ],
+   "footprint": {
+    "type": "MultiPolygon",
+    "coordinates": [
+     [
+      [
+       [
+        4.8998451,
+        52.3717675
+       ],
+       [
+        4.900107,
+        52.3716786
+       ],
+       [
+        4.9001379,
+        52.3717246
+       ],
+       [
+        4.900064,
+        52.3717497
+       ],
+       [
+        4.900063,
+        52.3717486
+       ],
+       [
+        4.8998832,
+        52.3718097
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8998094,
+        52.3717277
+       ],
+       [
+        4.9000776,
+        52.3716347
+       ],
+       [
+        4.900107,
+        52.3716786
+       ],
+       [
+        4.8998451,
+        52.3717675
+       ],
+       [
+        4.8998101,
+        52.3717289
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8997622,
+        52.371679
+       ],
+       [
+        4.9000412,
+        52.3715823
+       ],
+       [
+        4.9000776,
+        52.3716347
+       ],
+       [
+        4.8998094,
+        52.3717277
+       ]
+      ]
+     ]
+    ]
+   },
+   "pands": [
+    {
+     "recipeId": "kloveniersburgwal-182777",
+     "pandId": "0363100012182777",
+     "buildingId": "NL.IMBAG.Pand.0363100012182777",
+     "address": "Kloveniersburgwal 15A",
+     "frontage": {
+      "x0": -8.044,
+      "x1": -2.685,
+      "widthM": 5.358
+     },
+     "bounds": {
+      "min": [
+       -8.332,
+       0,
+       -20.399
+      ],
+      "max": [
+       -2.684,
+       15.8,
+       0.221
+      ]
+     },
+     "triangles": 1761,
+     "ranges": [
+      {
+       "primitive": 2,
+       "firstTriangle": 0,
+       "triangleCount": 92
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 0,
+       "triangleCount": 492
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 0,
+       "triangleCount": 564
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 0,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 0,
+       "triangleCount": 352
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 0,
+       "triangleCount": 156
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 0,
+       "triangleCount": 67
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 0,
+       "triangleCount": 2
+      }
+     ]
+    },
+    {
+     "recipeId": "kloveniersburgwal-571679",
+     "pandId": "0363100012571679",
+     "buildingId": "NL.IMBAG.Pand.0363100012571679",
+     "address": "Kloveniersburgwal 17A",
+     "frontage": {
+      "x0": -2.685,
+      "x1": 2.372,
+      "widthM": 5.057
+     },
+     "bounds": {
+      "min": [
+       -2.84,
+       0,
+       -21.05
+      ],
+      "max": [
+       2.392,
+       19.119,
+       1.089
+      ]
+     },
+     "triangles": 2126,
+     "ranges": [
+      {
+       "primitive": 1,
+       "firstTriangle": 0,
+       "triangleCount": 198
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 492,
+       "triangleCount": 144
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 564,
+       "triangleCount": 1208
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 24,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 352,
+       "triangleCount": 284
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 156,
+       "triangleCount": 168
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 67,
+       "triangleCount": 94
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 2,
+       "triangleCount": 6
+      }
+     ]
+    },
+    {
+     "recipeId": "kloveniersburgwal-571680",
+     "pandId": "0363100012571680",
+     "buildingId": "NL.IMBAG.Pand.0363100012571680",
+     "address": "Kloveniersburgwal 19A",
+     "frontage": {
+      "x0": 2.372,
+      "x1": 8.67,
+      "widthM": 6.298
+     },
+     "bounds": {
+      "min": [
+       2.372,
+       0,
+       -21.765
+      ],
+      "max": [
+       8.691,
+       16.9,
+       0.244
+      ]
+     },
+     "triangles": 1766,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 0,
+       "triangleCount": 71
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 636,
+       "triangleCount": 492
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 1772,
+       "triangleCount": 612
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 12,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 48,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 636,
+       "triangleCount": 352
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 324,
+       "triangleCount": 168
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 161,
+       "triangleCount": 31
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 8,
+       "triangleCount": 4
       }
      ]
     }

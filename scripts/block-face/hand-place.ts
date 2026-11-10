@@ -5,7 +5,7 @@
  * mirror and ground, and this script writes the run face exactly as auto-place would (run directory with the cropped
  * strip, measured wall per pand, BAG/OSM ground use and shop fronts), but with the reviewer's choices. Never installs.
  *
- *   node --import tsx scripts/block-face/hand-place.ts --buurt=bloemgrachtbuurt --district=jordaan [--only=<run>,...]
+ *   node --import tsx scripts/block-face/hand-place.ts --buurt=bloemgrachtbuurt --district=jordaan[,<district>...] [--only=<run>,...]
  *
  * Reads scripts/block-face/buurten/<buurt>-hand-runs.json:
  *   {note, runs: [{id, face, reason, houses: [{pand, type, crown?, storeys, mirror?, shop?, ground?, overrides?,
@@ -35,8 +35,9 @@ async function main() {
   if (!buurt || !district) throw Error('--buurt and --district are required');
   const only = arg('only')?.split(',');
   const spec: {runs: HandRun[]} = await readJson(path.join('scripts/block-face/buurten', `${buurt}-hand-runs.json`));
-  const dir = path.join(TYPE_LIBRARY_DIR, district);
-  const types: HouseTypeIntent[] = await Promise.all((await fs.readdir(dir)).filter(f => f.endsWith('.json')).sort().map(f => readJson(path.join(dir, f))));
+  // --district may list several libraries (comma-separated): a belt lane mixes its own types with the Jordaan and GG-Zuid ones.
+  const types: HouseTypeIntent[] = [];
+  for (const d of district.split(',')) { const dir = path.join(TYPE_LIBRARY_DIR, d); types.push(...await Promise.all((await fs.readdir(dir)).filter(f => f.endsWith('.json')).sort().map(f => readJson(path.join(dir, f))))); }
   for (const run of spec.runs.filter(r => !only || only.includes(r.id))) {
     const {discovery, strip, uses, evs} = await faceEvidence(run.face);
     const problems = handRunProblems(run, discovery.members, types);

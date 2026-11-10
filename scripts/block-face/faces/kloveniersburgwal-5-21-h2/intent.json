@@ -1,0 +1,134 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "kloveniersburgwal-5-21-h2",
+ "street": "Kloveniersburgwal",
+ "sources": [
+  {
+   "id": "strip-2023-03-13",
+   "kind": "street-panorama",
+   "capturedAt": "2023-03-13",
+   "image": "staging/block-face/kloveniersburgwal-5-21-h2/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "lane hand placement (scripts/block-face/hand-place.ts)",
+  "passes": 1,
+  "note": "Kloveniersburgwal 15A-19A (strip 2023-03-13): a frieze cornice house, a tall neck gable, a frieze cornice house (11A, a step gable, and 21D, irregular arched windows, are held); spec scripts/block-face/buurten/zuiderkerkbuurt-hand-runs.json"
+ },
+ "types": [
+  "lastage-cornice-house",
+  "lastage-bell-house"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012182777",
+   "slug": "kloveniersburgwal-182777",
+   "address": "Kloveniersburgwal 15A",
+   "type": {
+    "type": "lastage-cornice-house",
+    "crown": "none",
+    "overrides": {
+     "entablature": null
+    },
+    "measuredPalette": {
+     "brick": "#463735",
+     "evidence": "strip 2023-03-13 span 771-985: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2023-03-13",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "hand placement (zuiderkerkbuurt-hand-runs.json): Kloveniersburgwal 15A: glazed ground to 5 m, three axes in three storeys (5.3-6.9 / 8.0-10.0 / 12.0-13.3 m) with white sills, brick to a plain cornice to 15.6 m (no white entablature: the band is brick on the photo); strip 2023-03-13"
+   }
+  },
+  {
+   "pandId": "0363100012571679",
+   "slug": "kloveniersburgwal-571679",
+   "address": "Kloveniersburgwal 17A",
+   "type": {
+    "type": "lastage-bell-house",
+    "measuredPalette": {
+     "brick": "#433c37",
+     "evidence": "strip 2023-03-13 span 985-1187: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2023-03-13",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "hand placement (zuiderkerkbuurt-hand-runs.json): Kloveniersburgwal 17A: light ground storey to 5.4 m, three axes in three storeys with white frames, a tall neck gable with a balcony door from 15 m to about 20 m; strip 2023-03-13"
+   }
+  },
+  {
+   "pandId": "0363100012571680",
+   "slug": "kloveniersburgwal-571680",
+   "address": "Kloveniersburgwal 19A",
+   "type": {
+    "type": "lastage-cornice-house",
+    "crown": "none",
+    "overrides": {
+     "entablature": null
+    },
+    "measuredPalette": {
+     "brick": "#413633",
+     "evidence": "strip 2023-03-13 span 1187-1439: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2023-03-13",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "hand placement (zuiderkerkbuurt-hand-runs.json): Kloveniersburgwal 19A: white pui ground to 4.5 m, three axes in three storeys with white surrounds (5.0-7.0 / 8.7-10.6 / 12.0-14.0 m), a brick frieze with small white blocks under the cornice to 16.7 m (no white entablature: the band is brick on the photo); strip 2023-03-13"
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "auto-place: low attic behind the cornice; the strips show sky over the cornices of the type rows"
+  },
+  "measuredEaves": [
+   {
+    "pand": "0363100012182777",
+    "stripRow": 270,
+    "evidence": "hand placement: cornice top read at 15.6 m on the strip 2023-03-13"
+   },
+   {
+    "pand": "0363100012571679",
+    "stripRow": 294,
+    "evidence": "hand placement: cornice top read at 15 m on the strip 2023-03-13"
+   },
+   {
+    "pand": "0363100012571680",
+    "stripRow": 226,
+    "evidence": "hand placement: cornice top read at 16.7 m on the strip 2023-03-13"
+   }
+  ]
+ }
+}

@@ -1,0 +1,186 @@
+{
+ "street": "Kloveniersburgwal",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T08:54:13.601Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012182586",
+   "addresses": [
+    "Kloveniersburgwal 5"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kloveniersburgwal 5-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 180,
+     "bagId": "0363010000708136"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2725753101,
+     "lngLat": [
+      4.9000321,
+      52.3719346
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "5",
+      "addr:postcode": "1011JT",
+      "addr:street": "Kloveniersburgwal",
+      "amenity": "restaurant",
+      "cuisine": "italian;polish",
+      "name": "Cafe Piazza",
+      "opening_hours": "Su-Th 15:00-23:00; Fr-Sa 15:00-23:30",
+      "phone": "+31 20 423 0164",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "website": "https://cafepiazza.nl",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-11-10T08:54:13.601Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012182585",
+   "addresses": [
+    "Kloveniersburgwal 7",
+    "Kloveniersburgwal 7A",
+    "Kloveniersburgwal 7B",
+    "Kloveniersburgwal 7C",
+    "Kloveniersburgwal 7D",
+    "Kloveniersburgwal 7E",
+    "Kloveniersburgwal 7F"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kloveniersburgwal 7",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 387,
+     "bagId": "0363010000708141"
+    },
+    {
+     "address": "Kloveniersburgwal 7",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 148,
+     "bagId": "0363010012098827"
+    },
+    {
+     "address": "Kloveniersburgwal 7A",
+     "use": "woonfunctie",
+     "areaM2": 202,
+     "bagId": "0363010012098828"
+    },
+    {
+     "address": "Kloveniersburgwal 7B",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010012108248"
+    },
+    {
+     "address": "Kloveniersburgwal 7C",
+     "use": "woonfunctie",
+     "areaM2": 23,
+     "bagId": "0363010012108249"
+    },
+    {
+     "address": "Kloveniersburgwal 7D",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010012108250"
+    },
+    {
+     "address": "Kloveniersburgwal 7E",
+     "use": "woonfunctie",
+     "areaM2": 28,
+     "bagId": "0363010012108251"
+    },
+    {
+     "address": "Kloveniersburgwal 7F",
+     "use": "woonfunctie",
+     "areaM2": 64,
+     "bagId": "0363010012108252"
+    }
+   ],
+   "units": 8,
+   "osm": [
+    {
+     "type": "node",
+     "id": 13277540101,
+     "lngLat": [
+      4.9000207,
+      52.371892
+     ],
+     "tags": {
+      "addr:housenumber": "7",
+      "addr:postcode": "1011JT",
+      "addr:street": "Kloveniersburgwal",
+      "amenity": "restaurant",
+      "cuisine": "italian",
+      "name": "Ristorante Papa Carlo",
+      "opening_hours": "Mo-Su 12:30-22:30",
+      "outdoor_seating": "no",
+      "phone": "+31 20 363 6293",
+      "self_service": "no",
+      "website": "https://www.ristorantepapacarlo.nl/",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-11-10T08:54:13.601Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012182584",
+   "addresses": [
+    "Kloveniersburgwal 9E",
+    "Kloveniersburgwal 9D",
+    "Kloveniersburgwal 9A",
+    "Kloveniersburgwal 9B",
+    "Kloveniersburgwal 9C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kloveniersburgwal 9E",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010000708143"
+    },
+    {
+     "address": "Kloveniersburgwal 9D",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 42,
+     "bagId": "0363010000708144"
+    },
+    {
+     "address": "Kloveniersburgwal 9A",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010000708145"
+    },
+    {
+     "address": "Kloveniersburgwal 9B",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000708146"
+    },
+    {
+     "address": "Kloveniersburgwal 9C",
+     "use": "woonfunctie",
+     "areaM2": 41,
+     "bagId": "0363010000708147"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  }
+ ]
+}

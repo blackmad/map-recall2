@@ -1,0 +1,120 @@
+{
+ "note": "Runs placed by the lane from the strips (scripts/block-face/hand-place.ts, the Jordaan method): per pand the type, crown, storeys, door side and the cornice line read at full size on a gridded crop (40 px/m). Kloveniersburgwal 5-21 is the 2023-03-13 strip (rain smears in the sky over 9E-17A; the fronts are clear).",
+ "reviewed": "2026-11-10",
+ "runs": [
+  {
+   "id": "kloveniersburgwal-5-21-h1",
+   "face": "kloveniersburgwal-5-21",
+   "reason": "Kloveniersburgwal 5-9E (strip 2023-03-13): two neck gables and a bell gable over shop and pui grounds",
+   "houses": [
+    {
+     "pand": "182586",
+     "type": "lastage-bell-house",
+     "crown": "neck",
+     "storeys": 4,
+     "eavesM": 14.3,
+     "why": "Kloveniersburgwal 5: shop ground to 5.3 m, three axes of windows in three storeys (6.5-8.4 / 9.5-11.5 / 12.3-13.8 m), a neck gable with white carved claws from 14.3 m to about 17.8 m"
+    },
+    {
+     "pand": "182585",
+     "type": "lastage-bell-house",
+     "crown": "neck",
+     "storeys": 4,
+     "eavesM": 14.0,
+     "why": "Kloveniersburgwal 7: dark shop ground to 5 m, three axes in three storeys, a small neck gable with one light from 14 m to about 16.5 m"
+    },
+    {
+     "pand": "182584",
+     "type": "lastage-bell-house",
+     "crown": "bell",
+     "storeys": 4,
+     "eavesM": 14.6,
+     "why": "Kloveniersburgwal 9E: white pui ground (door left, wide window), three axes in three storeys, a bell gable with white claws from 14.6 m to about 17.2 m"
+    }
+   ]
+  },
+  {
+   "id": "kloveniersburgwal-5-21-h2",
+   "face": "kloveniersburgwal-5-21",
+   "reason": "Kloveniersburgwal 15A-19A (strip 2023-03-13): a frieze cornice house, a tall neck gable, a frieze cornice house (11A, a step gable, and 21D, irregular arched windows, are held)",
+   "houses": [
+    {
+     "pand": "182777",
+     "type": "lastage-cornice-house",
+     "crown": "none",
+     "storeys": 4,
+     "eavesM": 15.6,
+     "why": "Kloveniersburgwal 15A: glazed ground to 5 m, three axes in three storeys (5.3-6.9 / 8.0-10.0 / 12.0-13.3 m) with white sills, brick to a plain cornice to 15.6 m (no white entablature: the band is brick on the photo)",
+     "overrides": {
+      "entablature": null
+     }
+    },
+    {
+     "pand": "571679",
+     "type": "lastage-bell-house",
+     "crown": "neck",
+     "storeys": 4,
+     "eavesM": 15.0,
+     "why": "Kloveniersburgwal 17A: light ground storey to 5.4 m, three axes in three storeys with white frames, a tall neck gable with a balcony door from 15 m to about 20 m"
+    },
+    {
+     "pand": "571680",
+     "type": "lastage-cornice-house",
+     "crown": "none",
+     "storeys": 4,
+     "eavesM": 16.7,
+     "why": "Kloveniersburgwal 19A: white pui ground to 4.5 m, three axes in three storeys with white surrounds (5.0-7.0 / 8.7-10.6 / 12.0-14.0 m), a brick frieze with small white blocks under the cornice to 16.7 m (no white entablature: the band is brick on the photo)",
+     "overrides": {
+      "entablature": null
+     }
+    }
+   ]
+  },
+  {
+   "id": "groenburgwal-41-57-h1",
+   "face": "groenburgwal-41-57",
+   "reason": "Groenburgwal 51-57 (strip 2025-01-08, winter: bare branches in the sky, fronts clear): a dark neck gable, a cornice house with a small bell top, a souterrain bell house, a cornice house with a dormer (41 and the 45A-47 double front under one pediment are not in this run); 49 held: its wide ribbon window row 4.0-5.8 m is not in the kit (edge NCC 0.05 with three sashes)",
+   "houses": [
+    {
+     "pand": "178635",
+     "type": "jordaan-1750-neck-gable",
+     "crown": "neck",
+     "storeys": 2,
+     "eavesM": 8.0,
+     "why": "Groenburgwal 51: a narrow dark-painted front, door left and a window in the ground storey, three windows 4.5-6.0 m, a neck gable with white claws from 8 m to about 10.8 m with one window"
+    },
+    {
+     "pand": "178362",
+     "type": "jordaan-1850-cornice-house",
+     "crown": "dormer",
+     "storeys": 3,
+     "eavesM": 11.0,
+     "why": "Groenburgwal 53: two axes, red double door left, windows 4.6-6.6 / 7.3-9.3 m, a white cornice 10.5-11 m with a small raised top over the middle (drawn as the kit's stone dormer: the kit has no bell-topped dormer)"
+    },
+    {
+     "pand": "178637",
+     "type": "belt-1700-canal-house",
+     "crown": "bell",
+     "storeys": 4,
+     "eavesM": 14.5,
+     "overrides": {
+      "entablature": null
+     },
+     "why": "Groenburgwal 55A: a light stone souterrain to 2.2 m, bel-etage windows 2.3-4.8 m, two axes in three storeys 5.6-8.0 / 8.8-10.7 / 11.6-13.3 m, a tall bell gable with a white crest from 14.5 m to about 18.4 m with one light (brick fitted with fitWallBrick to the photo wall #4a4233)",
+     "wall": false,
+     "paletteOverrides": {
+      "brick": "#201c17"
+     }
+    },
+    {
+     "pand": "178446",
+     "type": "jordaan-1850-cornice-house",
+     "crown": "dormer",
+     "storeys": 4,
+     "eavesM": 13.2,
+     "why": "Groenburgwal 57: three axes, a ground storey with doors and windows to 3.9 m, windows 4.3-6.2 / 7.1-8.9 / 9.8-11.7 m, a white cornice 12.3-13.2 m and a pediment dormer over the middle"
+    }
+   ]
+  }
+ ]
+}

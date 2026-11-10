@@ -1,0 +1,100 @@
+{
+ "street": "Groenburgwal",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T08:38:52.324Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012178635",
+   "addresses": [
+    "Groenburgwal 51"
+   ],
+   "groundUnits": [
+    {
+     "address": "Groenburgwal 51",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010000651579"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012178362",
+   "addresses": [
+    "Groenburgwal 53"
+   ],
+   "groundUnits": [
+    {
+     "address": "Groenburgwal 53",
+     "use": "woonfunctie",
+     "areaM2": 109,
+     "bagId": "0363010000556513"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012178637",
+   "addresses": [
+    "Groenburgwal 55A",
+    "Groenburgwal 55B",
+    "Groenburgwal 55C",
+    "Groenburgwal 55D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Groenburgwal 55A",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010001964218"
+    },
+    {
+     "address": "Groenburgwal 55B",
+     "use": "woonfunctie",
+     "areaM2": 139,
+     "bagId": "0363010001964219"
+    },
+    {
+     "address": "Groenburgwal 55C",
+     "use": "woonfunctie",
+     "areaM2": 63,
+     "bagId": "0363010001964220"
+    },
+    {
+     "address": "Groenburgwal 55D",
+     "use": "woonfunctie",
+     "areaM2": 115,
+     "bagId": "0363010001964221"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012178446",
+   "addresses": [
+    "Groenburgwal 57"
+   ],
+   "groundUnits": [
+    {
+     "address": "Groenburgwal 57-H",
+     "use": "woonfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000651595"
+    },
+    {
+     "address": "Groenburgwal 57-O",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000651596"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  }
+ ]
+}

@@ -1,0 +1,176 @@
+{
+ "street": "Kloveniersburgwal",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T08:54:13.601Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012182777",
+   "addresses": [
+    "Kloveniersburgwal 15A",
+    "Kloveniersburgwal 15B",
+    "Kloveniersburgwal 15C",
+    "Kloveniersburgwal 15D",
+    "Kloveniersburgwal 15E",
+    "Kloveniersburgwal 15G"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kloveniersburgwal 15A",
+     "use": "woonfunctie",
+     "areaM2": 30,
+     "bagId": "0363010000708159"
+    },
+    {
+     "address": "Kloveniersburgwal 15B",
+     "use": "woonfunctie",
+     "areaM2": 30,
+     "bagId": "0363010000990274"
+    },
+    {
+     "address": "Kloveniersburgwal 15C",
+     "use": "woonfunctie",
+     "areaM2": 30,
+     "bagId": "0363010000990275"
+    },
+    {
+     "address": "Kloveniersburgwal 15D",
+     "use": "woonfunctie",
+     "areaM2": 30,
+     "bagId": "0363010000990276"
+    },
+    {
+     "address": "Kloveniersburgwal 15E",
+     "use": "woonfunctie",
+     "areaM2": 30,
+     "bagId": "0363010000990277"
+    },
+    {
+     "address": "Kloveniersburgwal 15G",
+     "use": "woonfunctie",
+     "areaM2": 30,
+     "bagId": "0363010000990279"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012571679",
+   "addresses": [
+    "Kloveniersburgwal 17A",
+    "Kloveniersburgwal 17B",
+    "Kloveniersburgwal 17C",
+    "Kloveniersburgwal 17D",
+    "Kloveniersburgwal 17E",
+    "Kloveniersburgwal 17F",
+    "Kloveniersburgwal 17G"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kloveniersburgwal 17A",
+     "use": "woonfunctie",
+     "areaM2": 30,
+     "bagId": "0363010000990280"
+    },
+    {
+     "address": "Kloveniersburgwal 17B",
+     "use": "woonfunctie",
+     "areaM2": 30,
+     "bagId": "0363010000990281"
+    },
+    {
+     "address": "Kloveniersburgwal 17C",
+     "use": "woonfunctie",
+     "areaM2": 30,
+     "bagId": "0363010000990282"
+    },
+    {
+     "address": "Kloveniersburgwal 17D",
+     "use": "woonfunctie",
+     "areaM2": 30,
+     "bagId": "0363010000990283"
+    },
+    {
+     "address": "Kloveniersburgwal 17E",
+     "use": "woonfunctie",
+     "areaM2": 30,
+     "bagId": "0363010000990284"
+    },
+    {
+     "address": "Kloveniersburgwal 17F",
+     "use": "woonfunctie",
+     "areaM2": 30,
+     "bagId": "0363010000990285"
+    },
+    {
+     "address": "Kloveniersburgwal 17G",
+     "use": "woonfunctie",
+     "areaM2": 30,
+     "bagId": "0363010000990286"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012571680",
+   "addresses": [
+    "Kloveniersburgwal 19A",
+    "Kloveniersburgwal 19B",
+    "Kloveniersburgwal 19D",
+    "Kloveniersburgwal 19E",
+    "Kloveniersburgwal 19F",
+    "Kloveniersburgwal 19C",
+    "Kloveniersburgwal 19G"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kloveniersburgwal 19A",
+     "use": "woonfunctie",
+     "areaM2": 30,
+     "bagId": "0363010000990287"
+    },
+    {
+     "address": "Kloveniersburgwal 19B",
+     "use": "woonfunctie",
+     "areaM2": 30,
+     "bagId": "0363010000990288"
+    },
+    {
+     "address": "Kloveniersburgwal 19D",
+     "use": "woonfunctie",
+     "areaM2": 30,
+     "bagId": "0363010000990289"
+    },
+    {
+     "address": "Kloveniersburgwal 19E",
+     "use": "woonfunctie",
+     "areaM2": 30,
+     "bagId": "0363010000990290"
+    },
+    {
+     "address": "Kloveniersburgwal 19F",
+     "use": "woonfunctie",
+     "areaM2": 30,
+     "bagId": "0363010000990291"
+    },
+    {
+     "address": "Kloveniersburgwal 19C",
+     "use": "woonfunctie",
+     "areaM2": 30,
+     "bagId": "0363010000990292"
+    },
+    {
+     "address": "Kloveniersburgwal 19G",
+     "use": "woonfunctie",
+     "areaM2": 30,
+     "bagId": "0363010000990293"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  }
+ ]
+}
