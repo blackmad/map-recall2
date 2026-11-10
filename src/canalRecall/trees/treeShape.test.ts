@@ -10,7 +10,7 @@ const g: ViewGeometry = { width: 400, height: 400, fovDeg: 90, pitchDeg: 30, cam
 
 test('pixel rays land on the trunk plane where the inverse projection put them', () => {
   for (const [lat, h] of [[0, 2.5], [3, 10], [-4, 18]]) {
-    const u = columnOfLateral(g, lat), v = rowOfHeight(g, h), p = onPlane(g, u, v)!;
+    const v = rowOfHeight(g, h), u = columnOfLateral(g, lat, v), p = onPlane(g, u, v)!;
     assert.ok(Math.abs(p[1] - h) < 0.05, `height ${p[1]} vs ${h}`);
     assert.ok(Math.abs(p[0] - lat) < 0.25, `lateral ${p[0]} vs ${lat}`);
   }
@@ -70,9 +70,25 @@ test('?treeShape off is byte-identical; on keeps lobe count and fork-relevant ax
       assert.equal(a.lobes.length, o.lobes.length);
       // Forks are drawn for lobes off the trunk axis (> 0.1 m): the shaper must not add any.
       const forks = (t: typeof a) => t.lobes.filter((l: { offset: number[] }) => Math.hypot(l.offset[0], l.offset[2]) > 0.1).length;
-      assert.equal(forks(a), forks(o), species);
+      // A corrected archetype brings its own lobes (Robusta: airy-oval, two forks); otherwise none are added.
+      if (a.archetype === o.archetype) assert.equal(forks(a), forks(o), species);
+      else assert.equal(a.archetype, 'airy-oval', species);
       assert.notEqual(JSON.stringify(a.lobes), JSON.stringify(b.lobes), 'two trees of one row differ');
       assert.ok(a.height >= 24 && a.height <= 32);
     }
   } finally { (globalThis as Record<string, unknown>).__canalRecallTreeShape = undefined; setTreeShaper(null); }
+});
+
+test('canopy width from a synthetic CHM: across the row for a row, mean diameter for a lone tree', async () => {
+  const { measureCanopy } = await import('./silhouetteMeasure.ts');
+  const n = 80, cell = 0.5, chm = new Float32Array(n * n);
+  // A row of 10 m wide, 20 m tall crowns every 8 m along east: touching along the row, 10 m across.
+  for (let r = 0; r < n; r++) for (let c = 0; c < n; c++) {
+    const e = (c + 0.5 - n / 2) * cell, nn = (n / 2 - r - 0.5) * cell;
+    for (let k = -3; k <= 3; k++) { const d = Math.hypot(e - k * 8, nn); if (d < 5) chm[r * n + c] = Math.max(chm[r * n + c], 20 - d); }
+  }
+  const m = measureCanopy({ width: n, height: n, cell, chm }, [1, 0])!;
+  assert.ok(Math.abs(m.top - 20) < 0.5, `top ${m.top}`);
+  assert.ok(Math.abs(m.width - 10) <= 1, `across ${m.width}`);
+  assert.ok(m.along > m.width, 'along the row the crowns run together');
 });

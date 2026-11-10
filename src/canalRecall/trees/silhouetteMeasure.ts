@@ -68,10 +68,11 @@ export function rowOfHeight(g: ViewGeometry, height: number): number {
   return g.height / 2 - Math.tan(e) * f - 0.5;
 }
 
-/** Image column of a lateral offset on the trunk plane. */
-export function columnOfLateral(g: ViewGeometry, lateral: number): number {
-  const f = (g.width / 2) / Math.tan((g.fovDeg / 2) * DEG);
-  return g.width / 2 + (lateral / g.distance) * f - 0.5;
+/** Image column of a lateral offset on the trunk plane, in image row `row` (default: the camera-height row). */
+export function columnOfLateral(g: ViewGeometry, lateral: number, row = rowOfHeight(g, g.cameraHeight)): number {
+  const f = (g.width / 2) / Math.tan((g.fovDeg / 2) * DEG), y = (g.height / 2 - row - 0.5) / f, p = g.pitchDeg * DEG;
+  const fw = Math.cos(p) - y * Math.sin(p);
+  return g.width / 2 + (lateral * fw / g.distance) * f - 0.5;
 }
 
 /**
@@ -138,10 +139,10 @@ export function measureCrown(maskIn: Uint8Array, g: ViewGeometry, o: MeasureOpti
   }
   if (bestCol < 0 || best < H * 0.04) return null;
   const left = o.leftLimit ?? -Infinity, right = o.rightLimit ?? Infinity;
-  const lc = Math.max(0, Math.floor(columnOfLateral(g, left))), rc = Math.min(W - 1, Math.ceil(columnOfLateral(g, right)));
   let maxW = 0, widestRow = bestTop, capped = false, filled = 0, area = 0;
   const rows: Array<[number, number]> = [];
   for (let y = bestTop; y <= bestBottom; y++) {
+    const lc = Math.max(0, Math.floor(columnOfLateral(g, left, y))), rc = Math.min(W - 1, Math.ceil(columnOfLateral(g, right, y)));
     let a = bestCol, b = bestCol;
     while (a - 1 >= lc && mask[y * W + a - 1]) a--;
     while (b + 1 <= rc && mask[y * W + b + 1]) b++;
@@ -185,4 +186,105 @@ export function outlineOf(width: number, crownHeight: number, widestFraction: nu
   if (r > 1.15) return 'spreading';
   if (r > 0.82) return 'rounded';
   return 'ovoid';
+}
+
+/** A canopy-height grid (metres above ground), row-major, north row first, `cell` metres per pixel, centred on the trunk. */
+export interface CanopyGrid { width: number; height: number; cell: number; chm: Float32Array | number[]; }
+
+export interface CanopyMeasure {
+  /** Highest canopy within 2 m of the trunk, metres. */
+  top: number;
+  /** Crown width across the row (or the mean of four directions for a lone tree), metres. */
+  width: number;
+  /** Crown width along the row; a lower bound when the next crown touches it. */
+  along: number;
+}
+
+/**
+ * Crown width from the AHN canopy height model: walk out from the trunk until the canopy falls below half of the
+ * tree's top (or rises 1.5 m above it: a building), at most 0.75 × top. `row` is the unit [east, north] row axis.
+ */
+export function measureCanopy(g: CanopyGrid, row: [number, number] | null): CanopyMeasure | null {
+  const cx = g.width / 2, cy = g.height / 2;
+  // Leaf-off returns are sparse inside a deciduous crown: a 3 × 3 max filter fills the gaps between branches; the
+  // half-window it adds on each side is taken off the widths again (DILATE_BIAS).
+  const k = 1, D = new Float32Array(g.width * g.height);
+  for (let r = 0; r < g.height; r++) for (let c = 0; c < g.width; c++) {
+    let m = NaN;
+    for (let dr = -k; dr <= k; dr++) for (let dc = -k; dc <= k; dc++) { const rr = r + dr, cc = c + dc; if (rr >= 0 && cc >= 0 && rr < g.height && cc < g.width) { const v = g.chm[rr * g.width + cc]; if (v > m || Number.isNaN(m)) m = v; } }
+    D[r * g.width + c] = m;
+  }
+  const DILATE_BIAS = 2 * k * g.cell;
+  const at = (e: number, n: number) => {
+    const c = Math.floor(cx + e / g.cell), r = Math.floor(cy - n / g.cell);
+    return c < 0 || r < 0 || c >= g.width || r >= g.height ? NaN : D[r * g.width + c];
+  };
+  let top = -Infinity;
+  for (let e = -2; e <= 2; e += g.cell) for (let n = -2; n <= 2; n += g.cell) if (e * e + n * n <= 4) { const v = at(e, n); if (v > top) top = v; }
+  if (!(top > 2)) return null;
+  const limit = Math.max(2, 0.5 * top), reach = 0.75 * top;
+  const walk = (de: number, dn: number) => {
+    let s = 0;
+    for (let d = g.cell / 2; d <= reach; d += g.cell / 2) {
+      const v = at(de * d, dn * d);
+      if (!(v >= limit) || v > top + 1.5) break;
+      s = d;
+    }
+    return s;
+  };
+  const span = (de: number, dn: number) => Math.max(0, walk(de, dn) + walk(-de, -dn) - DILATE_BIAS);
+  const axis: [number, number] = row ?? [1, 0];
+  const across = span(-axis[1], axis[0]), along = span(axis[0], axis[1]);
+  const width = row ? across : (across + along + span(Math.SQRT1_2, Math.SQRT1_2) + span(Math.SQRT1_2, -Math.SQRT1_2)) / 4;
+  return { top: +top.toFixed(2), width: +width.toFixed(2), along: +along.toFixed(2) };
+}
+
+/**
+ * Crown width from a leaf-on orthophoto (PDOK 2024_orthoHR, flown in summer) masked by "something tall here" from the
+ * leaf-off AHN canopy height: green pixels over lawns, hedges and water fail the height test, branches without leaves
+ * fail the colour test. The crown is the masked component nearest the trunk (an ortho is not a true ortho: a tall
+ * crown leans away from nadir by a few metres); its width is its extent across the row axis within a 3 m band along
+ * the row (or the mean of across and along for a lone tree). The grid is centred on the trunk, north row first.
+ */
+export interface OrthoGrid { width: number; height: number; cell: number; rgb: Uint8Array | Uint8ClampedArray; channels: number; tall: (e: number, n: number) => boolean; }
+export interface OrthoCrown { width: number; along: number; offset: number; pixels: number; }
+
+export const isLeafOn = (r: number, g: number, b: number): boolean => { const s = r + g + b; return s > 30 && 2 * g - r - b > 0.04 * s && g >= b; };
+
+/** Half the distance to the nearest inventory tree on each side, across and along the row axis (metres, positive). */
+export interface CrownCaps { left: number; right: number; back: number; front: number; }
+
+export function measureOrthoCrown(o: OrthoGrid, row: [number, number] | null, reach: number, caps: CrownCaps = { left: Infinity, right: Infinity, back: Infinity, front: Infinity }): OrthoCrown | null {
+  const { width: W, height: H, cell } = o, cx = W / 2, cy = H / 2;
+  const en = (i: number): [number, number] => [((i % W) + 0.5 - cx) * cell, (cy - Math.floor(i / W) - 0.5) * cell];
+  const ok = new Uint8Array(W * H);
+  for (let i = 0; i < W * H; i++) {
+    const [e, n] = en(i);
+    if (e * e + n * n > reach * reach) continue;
+    if (isLeafOn(o.rgb[i * o.channels], o.rgb[i * o.channels + 1], o.rgb[i * o.channels + 2]) && o.tall(e, n)) ok[i] = 1;
+  }
+  let seed = -1, bestD = 3.5 * 3.5;
+  for (let i = 0; i < W * H; i++) if (ok[i]) { const [e, n] = en(i), d = e * e + n * n; if (d < bestD) { bestD = d; seed = i; } }
+  if (seed < 0) return null;
+  const comp: number[] = [], seen = new Uint8Array(W * H), stack = [seed]; seen[seed] = 1;
+  while (stack.length) {
+    const i = stack.pop()!; comp.push(i);
+    const x = i % W, y = (i / W) | 0;
+    for (const [dx, dy] of [[1, 0], [-1, 0], [0, 1], [0, -1]]) {
+      const xx = x + dx, yy = y + dy, j = yy * W + xx;
+      if (xx >= 0 && yy >= 0 && xx < W && yy < H && ok[j] && !seen[j]) { seen[j] = 1; stack.push(j); }
+    }
+  }
+  const axis = row ?? [1, 0], perp: [number, number] = [-axis[1], axis[0]];
+  const [se, sn] = en(seed), sAlong = se * axis[0] + sn * axis[1], sAcross = se * perp[0] + sn * perp[1];
+  let a0 = Infinity, a1 = -Infinity, l0 = Infinity, l1 = -Infinity;
+  for (const i of comp) {
+    const [e, n] = en(i), al = e * axis[0] + n * axis[1], ac = e * perp[0] + n * perp[1];
+    // A neighbour's crown begins halfway to its trunk: canopy that runs on into it is not this tree's.
+    if (Math.abs(al - sAlong) <= 1.5 && ac >= -caps.left && ac <= caps.right) { a0 = Math.min(a0, ac); a1 = Math.max(a1, ac); }
+    if (Math.abs(ac - sAcross) <= 1.5 && al >= -caps.back && al <= caps.front) { l0 = Math.min(l0, al); l1 = Math.max(l1, al); }
+  }
+  if (!(a1 >= a0) || !(l1 >= l0)) return null;
+  const across = a1 - a0 + cell, along = l1 - l0 + cell;
+  return { width: +(row ? across : (across + along) / 2).toFixed(2), along: +along.toFixed(2), offset: +Math.sqrt(bestD).toFixed(2), pixels: comp.length };
 }
