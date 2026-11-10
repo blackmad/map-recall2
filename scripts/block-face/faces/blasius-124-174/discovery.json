@@ -1,0 +1,345 @@
+{
+ "street": "Blasiusstraat",
+ "seed": "0363100012143306",
+ "members": [
+  "0363100012134675",
+  "0363100012120159",
+  "0363100012131294",
+  "0363100012143306"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "next fronting pand 0363100012124921 26.3 m on shares no party wall (cross street or gap)"
+  },
+  {
+   "side": "right",
+   "reason": "trimmed at 0363100012143306 (face continues: 152594 157190 157386 162660 167291 160967 159767 155712 165397 155620 163439 158619 159877 251301 166289 101460 235931 165732 106512 113169)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012101569",
+   "reason": "frontage 78.2 m from Blasiusstraat"
+  },
+  {
+   "pandId": "0363100012065583",
+   "reason": "frontage 114.3 m from Blasiusstraat"
+  },
+  {
+   "pandId": "0363100012075560",
+   "reason": "frontage 101.3 m from Blasiusstraat"
+  },
+  {
+   "pandId": "0363100012077936",
+   "reason": "frontage 73.9 m from Blasiusstraat"
+  },
+  {
+   "pandId": "0363100012083299",
+   "reason": "frontage 77.6 m from Blasiusstraat"
+  },
+  {
+   "pandId": "0363100012084666",
+   "reason": "sightline to Blasiusstraat crosses 0363100012134675"
+  },
+  {
+   "pandId": "0363100012091930",
+   "reason": "frontage 40.7 m from Blasiusstraat"
+  },
+  {
+   "pandId": "0363100012092390",
+   "reason": "frontage 73.7 m from Blasiusstraat"
+  },
+  {
+   "pandId": "0363100012116525",
+   "reason": "frontage 73.8 m from Blasiusstraat"
+  },
+  {
+   "pandId": "0363100012117430",
+   "reason": "frontage 73.8 m from Blasiusstraat"
+  },
+  {
+   "pandId": "0363100012118444",
+   "reason": "frontage 74.3 m from Blasiusstraat"
+  },
+  {
+   "pandId": "0363100012118445",
+   "reason": "frontage 88.2 m from Blasiusstraat"
+  },
+  {
+   "pandId": "0363100012121766",
+   "reason": "sightline to Blasiusstraat crosses 0363100012090102"
+  },
+  {
+   "pandId": "0363100012123253",
+   "reason": "frontage 77.7 m from Blasiusstraat"
+  },
+  {
+   "pandId": "0363100012126283",
+   "reason": "frontage 36.9 m from Blasiusstraat"
+  },
+  {
+   "pandId": "0363100012145190",
+   "reason": "frontage 42.3 m from Blasiusstraat"
+  },
+  {
+   "pandId": "0363100012150384",
+   "reason": "frontage 41.5 m from Blasiusstraat"
+  },
+  {
+   "pandId": "0363100012152760",
+   "reason": "frontage 77.4 m from Blasiusstraat"
+  },
+  {
+   "pandId": "0363100012153640",
+   "reason": "frontage 77.6 m from Blasiusstraat"
+  },
+  {
+   "pandId": "0363100012154180",
+   "reason": "frontage 40.7 m from Blasiusstraat"
+  },
+  {
+   "pandId": "0363100012155764",
+   "reason": "frontage 43.3 m from Blasiusstraat"
+  },
+  {
+   "pandId": "0363100012156726",
+   "reason": "frontage 45.7 m from Blasiusstraat"
+  },
+  {
+   "pandId": "0363100012157783",
+   "reason": "frontage 43.4 m from Blasiusstraat"
+  },
+  {
+   "pandId": "0363100012158158",
+   "reason": "frontage 40.7 m from Blasiusstraat"
+  },
+  {
+   "pandId": "0363100012158203",
+   "reason": "frontage 45.9 m from Blasiusstraat"
+  },
+  {
+   "pandId": "0363100012158466",
+   "reason": "frontage 44.0 m from Blasiusstraat"
+  },
+  {
+   "pandId": "0363100012158632",
+   "reason": "frontage 45.7 m from Blasiusstraat"
+  },
+  {
+   "pandId": "0363100012158824",
+   "reason": "frontage 77.7 m from Blasiusstraat"
+  },
+  {
+   "pandId": "0363100012204426",
+   "reason": "frontage 32.5 m from Blasiusstraat"
+  },
+  {
+   "pandId": "0363100012210109",
+   "reason": "sightline to Blasiusstraat crosses 0363100012084737"
+  },
+  {
+   "pandId": "0363100012236748",
+   "reason": "frontage 38.1 m from Blasiusstraat"
+  },
+  {
+   "pandId": "0363100012159433",
+   "reason": "frontage 44.1 m from Blasiusstraat"
+  },
+  {
+   "pandId": "0363100012159820",
+   "reason": "frontage 45.9 m from Blasiusstraat"
+  },
+  {
+   "pandId": "0363100012160016",
+   "reason": "frontage 77.3 m from Blasiusstraat"
+  },
+  {
+   "pandId": "0363100012160930",
+   "reason": "frontage 44.1 m from Blasiusstraat"
+  },
+  {
+   "pandId": "0363100012161310",
+   "reason": "frontage 44.0 m from Blasiusstraat"
+  },
+  {
+   "pandId": "0363100012162209",
+   "reason": "frontage 42.0 m from Blasiusstraat"
+  },
+  {
+   "pandId": "0363100012162321",
+   "reason": "frontage 45.7 m from Blasiusstraat"
+  },
+  {
+   "pandId": "0363100012163039",
+   "reason": "frontage 40.7 m from Blasiusstraat"
+  },
+  {
+   "pandId": "0363100012165366",
+   "reason": "frontage 77.5 m from Blasiusstraat"
+  },
+  {
+   "pandId": "0363100012165410",
+   "reason": "frontage 77.3 m from Blasiusstraat"
+  },
+  {
+   "pandId": "0363100012165861",
+   "reason": "frontage 45.8 m from Blasiusstraat"
+  },
+  {
+   "pandId": "0363100012165864",
+   "reason": "frontage 43.3 m from Blasiusstraat"
+  },
+  {
+   "pandId": "0363100012166792",
+   "reason": "frontage 43.0 m from Blasiusstraat"
+  },
+  {
+   "pandId": "0363100012167265",
+   "reason": "frontage 77.4 m from Blasiusstraat"
+  },
+  {
+   "pandId": "0363100012185785",
+   "reason": "sightline to Blasiusstraat crosses 0363100012143306"
+  },
+  {
+   "pandId": "0363100012185786",
+   "reason": "sightline to Blasiusstraat crosses 0363100012143306"
+  },
+  {
+   "pandId": "0363100012185787",
+   "reason": "sightline to Blasiusstraat crosses 0363100012143306"
+  },
+  {
+   "pandId": "0363100012185788",
+   "reason": "sightline to Blasiusstraat crosses 0363100012143306"
+  },
+  {
+   "pandId": "0363100012194021",
+   "reason": "frontage 102.1 m from Blasiusstraat"
+  },
+  {
+   "pandId": "0363100012194022",
+   "reason": "frontage 102.2 m from Blasiusstraat"
+  },
+  {
+   "pandId": "0363100012194023",
+   "reason": "frontage 102.3 m from Blasiusstraat"
+  },
+  {
+   "pandId": "0363100012194024",
+   "reason": "frontage 102.4 m from Blasiusstraat"
+  },
+  {
+   "pandId": "0363100012194025",
+   "reason": "frontage 102.5 m from Blasiusstraat"
+  },
+  {
+   "pandId": "0363100012215057",
+   "reason": "sightline to Blasiusstraat crosses 0363100012165732"
+  },
+  {
+   "pandId": "0363100012221775",
+   "reason": "sightline to Blasiusstraat crosses 0363100012235931"
+  },
+  {
+   "pandId": "0363100012236804",
+   "reason": "frontage 77.5 m from Blasiusstraat"
+  },
+  {
+   "pandId": "0363100012246848",
+   "reason": "frontage 73.1 m from Blasiusstraat"
+  },
+  {
+   "pandId": "0363100012071678",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012084336",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012084737",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012089563",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012090102",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012104085",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012119020",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012160922",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012162116",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012165667",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012243155",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012134675",
+   "alongM": -56.77,
+   "widthM": 16.11,
+   "eavesM": 15.11,
+   "roofMaxM": 15.13,
+   "storeys3dbag": 5,
+   "builtYear": 1993,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012120159",
+   "alongM": -37.2,
+   "widthM": 23.04,
+   "eavesM": 13.05,
+   "roofMaxM": 13.13,
+   "storeys3dbag": 5,
+   "builtYear": 1954,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012131294",
+   "alongM": -14.92,
+   "widthM": 21.53,
+   "eavesM": 13.42,
+   "roofMaxM": 16.24,
+   "storeys3dbag": 5,
+   "builtYear": 1955,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012143306",
+   "alongM": 0,
+   "widthM": 8.3,
+   "eavesM": 12.39,
+   "roofMaxM": 15.54,
+   "storeys3dbag": 5,
+   "builtYear": 1954,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  }
+ ]
+}

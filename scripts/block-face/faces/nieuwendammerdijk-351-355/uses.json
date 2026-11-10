@@ -1,0 +1,89 @@
+{
+ "street": "Nieuwendammerdijk",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T07:38:34.624Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012138726",
+   "addresses": [
+    "Nieuwendammerdijk 351"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwendammerdijk 351",
+     "use": "woonfunctie",
+     "areaM2": 152,
+     "bagId": "0363010000751869"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012109514",
+   "addresses": [
+    "Nieuwendammerdijk 351A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwendammerdijk 351A",
+     "use": "woonfunctie",
+     "areaM2": 152,
+     "bagId": "0363010000751870"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012121928",
+   "addresses": [
+    "Nieuwendammerdijk 353"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwendammerdijk 353",
+     "use": "woonfunctie",
+     "areaM2": 112,
+     "bagId": "0363010000751871"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012107327",
+   "addresses": [
+    "Nieuwendammerdijk 353A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwendammerdijk 353A",
+     "use": "woonfunctie",
+     "areaM2": 95,
+     "bagId": "0363010000751872"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012094972",
+   "addresses": [
+    "Nieuwendammerdijk 355"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwendammerdijk 355",
+     "use": "woonfunctie",
+     "areaM2": 193,
+     "bagId": "0363010000751873"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  }
+ ]
+}

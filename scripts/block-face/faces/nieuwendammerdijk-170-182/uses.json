@@ -1,0 +1,121 @@
+{
+ "street": "Nieuwendammerdijk",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T07:13:32.521Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012155363",
+   "addresses": [
+    "Nieuwendammerdijk 182"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwendammerdijk 182",
+     "use": "woonfunctie",
+     "areaM2": 95,
+     "bagId": "0363010000751745"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012163571",
+   "addresses": [
+    "Nieuwendammerdijk 180"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwendammerdijk 180",
+     "use": "woonfunctie",
+     "areaM2": 86,
+     "bagId": "0363010000751743"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012158024",
+   "addresses": [
+    "Nieuwendammerdijk 178"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwendammerdijk 178",
+     "use": "woonfunctie",
+     "areaM2": 100,
+     "bagId": "0363010000751740"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012163716",
+   "addresses": [
+    "Nieuwendammerdijk 176"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwendammerdijk 176",
+     "use": "woonfunctie",
+     "areaM2": 156,
+     "bagId": "0363010000751736"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012164634",
+   "addresses": [
+    "Nieuwendammerdijk 174"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwendammerdijk 174",
+     "use": "woonfunctie",
+     "areaM2": 106,
+     "bagId": "0363010000751735"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012162617",
+   "addresses": [
+    "Nieuwendammerdijk 172"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwendammerdijk 172",
+     "use": "woonfunctie",
+     "areaM2": 124,
+     "bagId": "0363010000751733"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012099437",
+   "addresses": [
+    "Nieuwendammerdijk 170A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwendammerdijk 170A",
+     "use": "woonfunctie",
+     "areaM2": 127,
+     "bagId": "0363010000751731"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  }
+ ]
+}

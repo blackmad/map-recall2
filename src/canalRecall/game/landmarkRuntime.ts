@@ -563,6 +563,15 @@ export class GameLandmarkRuntime {
           ? toWorld([lat, lng])
           : this.osmLoader.latLngToGamePoint(lat, lng, centerLat, centerLng, segments, false)
       ));
+      // Free Ride pins stand at the landmark itself, not at the road/canal point the route targets snap to (S5, #333).
+      if (!isTransit(this.travelMode)) {
+        for (const landmark of this.landmarks) {
+          if (!landmark.lngLat) continue;
+          const own = toWorld([landmark.lngLat[1], landmark.lngLat[0]]);
+          landmark.ownX = own.x;
+          landmark.ownY = own.y;
+        }
+      }
       const landmarks = this.landmarks;
 
       // Photos are fetched as the player approaches, not up front. Preloading

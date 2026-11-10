@@ -1,0 +1,524 @@
+{
+ "street": "Tilanusstraat",
+ "seed": "0363100012155532",
+ "members": [
+  "0363100012159951",
+  "0363100012162616",
+  "0363100012159569",
+  "0363100012162070",
+  "0363100012159277",
+  "0363100012162162",
+  "0363100012157453",
+  "0363100012159395",
+  "0363100012155684",
+  "0363100012161763",
+  "0363100012155770",
+  "0363100012165810",
+  "0363100012155532"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "no further pand fronts the street in the fetched area"
+  },
+  {
+   "side": "right",
+   "reason": "trimmed at 0363100012155532 (face continues: 237304)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012063468",
+   "reason": "frontage 48.6 m from Tilanusstraat"
+  },
+  {
+   "pandId": "0363100012079614",
+   "reason": "sightline to Tilanusstraat crosses 0363100012159599"
+  },
+  {
+   "pandId": "0363100012083299",
+   "reason": "frontage 42.1 m from Tilanusstraat"
+  },
+  {
+   "pandId": "0363100012083528",
+   "reason": "frontage 34.7 m from Tilanusstraat"
+  },
+  {
+   "pandId": "0363100012085060",
+   "reason": "frontage 42.7 m from Tilanusstraat"
+  },
+  {
+   "pandId": "0363100012088363",
+   "reason": "no frontage on Tilanusstraat: No footprint edge faces Tilanusstraat"
+  },
+  {
+   "pandId": "0363100012090461",
+   "reason": "no frontage on Tilanusstraat: No footprint edge faces Tilanusstraat"
+  },
+  {
+   "pandId": "0363100012090902",
+   "reason": "frontage 34.2 m from Tilanusstraat"
+  },
+  {
+   "pandId": "0363100012093393",
+   "reason": "frontage 38.9 m from Tilanusstraat"
+  },
+  {
+   "pandId": "0363100012094518",
+   "reason": "frontage 39.6 m from Tilanusstraat"
+  },
+  {
+   "pandId": "0363100012100364",
+   "reason": "no frontage on Tilanusstraat: No footprint edge faces Tilanusstraat"
+  },
+  {
+   "pandId": "0363100012106618",
+   "reason": "frontage 38.9 m from Tilanusstraat"
+  },
+  {
+   "pandId": "0363100012121398",
+   "reason": "no frontage on Tilanusstraat: No footprint edge faces Tilanusstraat"
+  },
+  {
+   "pandId": "0363100012121766",
+   "reason": "frontage 88.6 m from Tilanusstraat"
+  },
+  {
+   "pandId": "0363100012122461",
+   "reason": "frontage 38.8 m from Tilanusstraat"
+  },
+  {
+   "pandId": "0363100012124921",
+   "reason": "frontage 70.8 m from Tilanusstraat"
+  },
+  {
+   "pandId": "0363100012134460",
+   "reason": "frontage 33.8 m from Tilanusstraat"
+  },
+  {
+   "pandId": "0363100012135498",
+   "reason": "no frontage on Tilanusstraat: No footprint edge faces Tilanusstraat"
+  },
+  {
+   "pandId": "0363100012135740",
+   "reason": "no frontage on Tilanusstraat: No footprint edge faces Tilanusstraat"
+  },
+  {
+   "pandId": "0363100012137198",
+   "reason": "frontage 56.9 m from Tilanusstraat"
+  },
+  {
+   "pandId": "0363100012138929",
+   "reason": "frontage 39.2 m from Tilanusstraat"
+  },
+  {
+   "pandId": "0363100012145159",
+   "reason": "no frontage on Tilanusstraat: No footprint edge faces Tilanusstraat"
+  },
+  {
+   "pandId": "0363100012145190",
+   "reason": "frontage 73.9 m from Tilanusstraat"
+  },
+  {
+   "pandId": "0363100012145863",
+   "reason": "frontage 39.4 m from Tilanusstraat"
+  },
+  {
+   "pandId": "0363100012146383",
+   "reason": "no frontage on Tilanusstraat: No footprint edge faces Tilanusstraat"
+  },
+  {
+   "pandId": "0363100012152496",
+   "reason": "frontage 37.9 m from Tilanusstraat"
+  },
+  {
+   "pandId": "0363100012154202",
+   "reason": "sightline to Tilanusstraat crosses 0363100012158236"
+  },
+  {
+   "pandId": "0363100012155605",
+   "reason": "frontage 38.1 m from Tilanusstraat"
+  },
+  {
+   "pandId": "0363100012155674",
+   "reason": "frontage 37.5 m from Tilanusstraat"
+  },
+  {
+   "pandId": "0363100012155764",
+   "reason": "frontage 74.1 m from Tilanusstraat"
+  },
+  {
+   "pandId": "0363100012156748",
+   "reason": "frontage 37.4 m from Tilanusstraat"
+  },
+  {
+   "pandId": "0363100012156889",
+   "reason": "frontage 42.4 m from Tilanusstraat"
+  },
+  {
+   "pandId": "0363100012157037",
+   "reason": "frontage 39.1 m from Tilanusstraat"
+  },
+  {
+   "pandId": "0363100012157783",
+   "reason": "frontage 74.2 m from Tilanusstraat"
+  },
+  {
+   "pandId": "0363100012157939",
+   "reason": "frontage 36.2 m from Tilanusstraat"
+  },
+  {
+   "pandId": "0363100012158228",
+   "reason": "sightline to Tilanusstraat crosses 0363100012162497"
+  },
+  {
+   "pandId": "0363100012158236",
+   "reason": "sightline to Tilanusstraat crosses 0363100012158886"
+  },
+  {
+   "pandId": "0363100012158886",
+   "reason": "no frontage on Tilanusstraat: No footprint edge faces Tilanusstraat"
+  },
+  {
+   "pandId": "0363100012159066",
+   "reason": "frontage 71.8 m from Tilanusstraat"
+  },
+  {
+   "pandId": "0363100012159139",
+   "reason": "no frontage on Tilanusstraat: No footprint edge faces Tilanusstraat"
+  },
+  {
+   "pandId": "0363100012159433",
+   "reason": "frontage 74.4 m from Tilanusstraat"
+  },
+  {
+   "pandId": "0363100012159496",
+   "reason": "sightline to Tilanusstraat crosses 0363100012236263"
+  },
+  {
+   "pandId": "0363100012159599",
+   "reason": "sightline to Tilanusstraat crosses 0363100012236768"
+  },
+  {
+   "pandId": "0363100012159606",
+   "reason": "frontage 37.8 m from Tilanusstraat"
+  },
+  {
+   "pandId": "0363100012159618",
+   "reason": "sightline to Tilanusstraat crosses 0363100012159139"
+  },
+  {
+   "pandId": "0363100012159831",
+   "reason": "frontage 36.8 m from Tilanusstraat"
+  },
+  {
+   "pandId": "0363100012159998",
+   "reason": "frontage 41.9 m from Tilanusstraat"
+  },
+  {
+   "pandId": "0363100012160601",
+   "reason": "frontage 31.2 m from Tilanusstraat"
+  },
+  {
+   "pandId": "0363100012161310",
+   "reason": "frontage 74.3 m from Tilanusstraat"
+  },
+  {
+   "pandId": "0363100012161684",
+   "reason": "frontage 37.6 m from Tilanusstraat"
+  },
+  {
+   "pandId": "0363100012162321",
+   "reason": "frontage 74.5 m from Tilanusstraat"
+  },
+  {
+   "pandId": "0363100012162696",
+   "reason": "frontage 37.9 m from Tilanusstraat"
+  },
+  {
+   "pandId": "0363100012162898",
+   "reason": "frontage 37.2 m from Tilanusstraat"
+  },
+  {
+   "pandId": "0363100012163707",
+   "reason": "sightline to Tilanusstraat crosses 0363100012159139"
+  },
+  {
+   "pandId": "0363100012163888",
+   "reason": "frontage 37.0 m from Tilanusstraat"
+  },
+  {
+   "pandId": "0363100012163948",
+   "reason": "sightline to Tilanusstraat crosses 0363100012162497"
+  },
+  {
+   "pandId": "0363100012164361",
+   "reason": "frontage 41.8 m from Tilanusstraat"
+  },
+  {
+   "pandId": "0363100012165410",
+   "reason": "frontage 38.8 m from Tilanusstraat"
+  },
+  {
+   "pandId": "0363100012166557",
+   "reason": "no frontage on Tilanusstraat: No footprint edge faces Tilanusstraat"
+  },
+  {
+   "pandId": "0363100012167265",
+   "reason": "frontage 42.0 m from Tilanusstraat"
+  },
+  {
+   "pandId": "0363100012195376",
+   "reason": "frontage 34.5 m from Tilanusstraat"
+  },
+  {
+   "pandId": "0363100012198655",
+   "reason": "sightline to Tilanusstraat crosses 0363100012166008"
+  },
+  {
+   "pandId": "0363100012206321",
+   "reason": "frontage 33.5 m from Tilanusstraat"
+  },
+  {
+   "pandId": "0363100012215085",
+   "reason": "sightline to Tilanusstraat crosses 0363100012159414"
+  },
+  {
+   "pandId": "0363100012230558",
+   "reason": "no frontage on Tilanusstraat: No footprint edge faces Tilanusstraat"
+  },
+  {
+   "pandId": "0363100012236020",
+   "reason": "frontage 33.4 m from Tilanusstraat"
+  },
+  {
+   "pandId": "0363100012237010",
+   "reason": "frontage 41.1 m from Tilanusstraat"
+  },
+  {
+   "pandId": "0363100012237252",
+   "reason": "frontage 34.0 m from Tilanusstraat"
+  },
+  {
+   "pandId": "0363100012253764",
+   "reason": "frontage 66.9 m from Tilanusstraat"
+  },
+  {
+   "pandId": "0363100012092532",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012150546",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012152682",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012152778",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012153263",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012156355",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012157243",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012158038",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012159006",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012159414",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012160451",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012160479",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012161704",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012162497",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012163336",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012163492",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012164033",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012164874",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012166008",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012166422",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012236768",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012159951",
+   "alongM": -66.94,
+   "widthM": 6.61,
+   "eavesM": 15.62,
+   "roofMaxM": 15.83,
+   "storeys3dbag": 5,
+   "builtYear": 1900,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012162616",
+   "alongM": -60.64,
+   "widthM": 6,
+   "eavesM": 15.63,
+   "roofMaxM": 15.88,
+   "storeys3dbag": 5,
+   "builtYear": 1900,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012159569",
+   "alongM": -54.9,
+   "widthM": 5.47,
+   "eavesM": 15.58,
+   "roofMaxM": 18.72,
+   "storeys3dbag": 5,
+   "builtYear": 1900,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012162070",
+   "alongM": -49.42,
+   "widthM": 5.48,
+   "eavesM": 15.7,
+   "roofMaxM": 18.75,
+   "storeys3dbag": 5,
+   "builtYear": 1900,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012159277",
+   "alongM": -43.94,
+   "widthM": 5.5,
+   "eavesM": 15.66,
+   "roofMaxM": 15.71,
+   "storeys3dbag": 5,
+   "builtYear": 1900,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012162162",
+   "alongM": -38.44,
+   "widthM": 5.48,
+   "eavesM": 15.8,
+   "roofMaxM": 18.63,
+   "storeys3dbag": 5,
+   "builtYear": 1900,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012157453",
+   "alongM": -32.97,
+   "widthM": 5.48,
+   "eavesM": 15.85,
+   "roofMaxM": 15.88,
+   "storeys3dbag": 5,
+   "builtYear": 1900,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012159395",
+   "alongM": -27.5,
+   "widthM": 5.44,
+   "eavesM": 15.88,
+   "roofMaxM": 18.57,
+   "storeys3dbag": 5,
+   "builtYear": 1900,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012155684",
+   "alongM": -22.04,
+   "widthM": 5.49,
+   "eavesM": 15.85,
+   "roofMaxM": 15.87,
+   "storeys3dbag": 5,
+   "builtYear": 1900,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012161763",
+   "alongM": -16.56,
+   "widthM": 5.49,
+   "eavesM": 15.8,
+   "roofMaxM": 18.56,
+   "storeys3dbag": 5,
+   "builtYear": 1900,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012155770",
+   "alongM": -11.06,
+   "widthM": 5.51,
+   "eavesM": 15.66,
+   "roofMaxM": 15.7,
+   "storeys3dbag": 5,
+   "builtYear": 1900,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012165810",
+   "alongM": -5.54,
+   "widthM": 5.54,
+   "eavesM": 15.93,
+   "roofMaxM": 15.97,
+   "storeys3dbag": 5,
+   "builtYear": 1900,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012155532",
+   "alongM": 0,
+   "widthM": 5.54,
+   "eavesM": 16.08,
+   "roofMaxM": 16.14,
+   "storeys3dbag": 5,
+   "builtYear": 1905,
+   "uncertainty": []
+  }
+ ]
+}

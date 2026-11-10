@@ -1,0 +1,85 @@
+{
+ "street": "Ruyschstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T08:04:46.626Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012158466",
+   "addresses": [
+    "Ruyschstraat 82"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ruyschstraat 82-H",
+     "use": "woonfunctie",
+     "areaM2": 120,
+     "bagId": "0363010000800848"
+    },
+    {
+     "address": "Ruyschstraat 82-H",
+     "use": "woonfunctie",
+     "areaM2": 211,
+     "bagId": "0363010012072972"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012160930",
+   "addresses": [
+    "Ruyschstraat 80"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ruyschstraat 80-H",
+     "use": "woonfunctie",
+     "areaM2": 205,
+     "bagId": "0363010012072973"
+    },
+    {
+     "address": "Ruyschstraat 80-H",
+     "use": "woonfunctie",
+     "areaM2": 119,
+     "bagId": "0363010000800844"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012163039",
+   "addresses": [
+    "Ruyschstraat 78"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ruyschstraat 78-H",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000800836"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012154180",
+   "addresses": [
+    "Ruyschstraat 76"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ruyschstraat 76-H",
+     "use": "woonfunctie",
+     "areaM2": 64,
+     "bagId": "0363010000800828"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

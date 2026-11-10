@@ -1,0 +1,347 @@
+{
+ "street": "Commelinstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T07:13:36.202Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012081086",
+   "addresses": [
+    "Commelinstraat 145",
+    "Commelinstraat 147",
+    "Commelinstraat 149",
+    "Commelinstraat 151",
+    "Commelinstraat 153",
+    "Commelinstraat 155",
+    "Commelinstraat 157",
+    "Commelinstraat 159"
+   ],
+   "groundUnits": [
+    {
+     "address": "Commelinstraat 145",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000607762"
+    },
+    {
+     "address": "Commelinstraat 147",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000607763"
+    },
+    {
+     "address": "Commelinstraat 149",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000607764"
+    },
+    {
+     "address": "Commelinstraat 153",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000607766"
+    },
+    {
+     "address": "Commelinstraat 155",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000607767"
+    },
+    {
+     "address": "Commelinstraat 157",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000607768"
+    },
+    {
+     "address": "Commelinstraat 159",
+     "use": "woonfunctie",
+     "areaM2": 104,
+     "bagId": "0363010000607769"
+    },
+    {
+     "address": "Commelinstraat 151",
+     "use": "woonfunctie",
+     "areaM2": 99,
+     "bagId": "0363010000607765"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012115265",
+   "addresses": [
+    "Commelinstraat 159A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Commelinstraat 159A",
+     "use": "industriefunctie",
+     "areaM2": 40,
+     "bagId": "0363010001014813"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012132237",
+   "addresses": [
+    "Commelinstraat 177",
+    "Commelinstraat 179",
+    "Commelinstraat 181",
+    "Commelinstraat 183",
+    "Commelinstraat 185",
+    "Commelinstraat 187",
+    "Commelinstraat 189",
+    "Commelinstraat 191",
+    "Commelinstraat 193",
+    "Commelinstraat 195",
+    "Commelinstraat 197",
+    "Commelinstraat 199",
+    "Commelinstraat 201",
+    "Commelinstraat 203"
+   ],
+   "groundUnits": [
+    {
+     "address": "Commelinstraat 177",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000607778"
+    },
+    {
+     "address": "Commelinstraat 181",
+     "use": "woonfunctie",
+     "areaM2": 95,
+     "bagId": "0363010000607780"
+    },
+    {
+     "address": "Commelinstraat 183",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000607781"
+    },
+    {
+     "address": "Commelinstraat 185",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000607782"
+    },
+    {
+     "address": "Commelinstraat 187",
+     "use": "woonfunctie",
+     "areaM2": 104,
+     "bagId": "0363010000607783"
+    },
+    {
+     "address": "Commelinstraat 191",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000607785"
+    },
+    {
+     "address": "Commelinstraat 193",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000607786"
+    },
+    {
+     "address": "Commelinstraat 197",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000607788"
+    },
+    {
+     "address": "Commelinstraat 199",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000607789"
+    },
+    {
+     "address": "Commelinstraat 201",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000607790"
+    },
+    {
+     "address": "Commelinstraat 203",
+     "use": "woonfunctie",
+     "areaM2": 99,
+     "bagId": "0363010000607791"
+    },
+    {
+     "address": "Commelinstraat 179",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000607779"
+    },
+    {
+     "address": "Commelinstraat 195",
+     "use": "woonfunctie",
+     "areaM2": 113,
+     "bagId": "0363010000607787"
+    },
+    {
+     "address": "Commelinstraat 189",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000607784"
+    }
+   ],
+   "units": 14,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012100393",
+   "addresses": [
+    "Commelinstraat 205",
+    "Commelinstraat 207",
+    "Commelinstraat 209",
+    "Commelinstraat 211",
+    "Commelinstraat 213",
+    "Commelinstraat 215",
+    "Commelinstraat 217",
+    "Commelinstraat 219"
+   ],
+   "groundUnits": [
+    {
+     "address": "Commelinstraat 205",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000607792"
+    },
+    {
+     "address": "Commelinstraat 207",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000607793"
+    },
+    {
+     "address": "Commelinstraat 209",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000607794"
+    },
+    {
+     "address": "Commelinstraat 213",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000607796"
+    },
+    {
+     "address": "Commelinstraat 217",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000607798"
+    },
+    {
+     "address": "Commelinstraat 219",
+     "use": "woonfunctie",
+     "areaM2": 104,
+     "bagId": "0363010000607799"
+    },
+    {
+     "address": "Commelinstraat 211",
+     "use": "woonfunctie",
+     "areaM2": 112,
+     "bagId": "0363010000607795"
+    },
+    {
+     "address": "Commelinstraat 215",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000607797"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012128935",
+   "addresses": [
+    "Commelinstraat 221",
+    "Commelinstraat 223",
+    "Commelinstraat 225",
+    "Commelinstraat 227",
+    "Commelinstraat 229",
+    "Commelinstraat 231",
+    "Commelinstraat 233",
+    "Commelinstraat 235",
+    "Commelinstraat 237",
+    "Commelinstraat 239"
+   ],
+   "groundUnits": [
+    {
+     "address": "Commelinstraat 221",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000607800"
+    },
+    {
+     "address": "Commelinstraat 223",
+     "use": "woonfunctie",
+     "areaM2": 74,
+     "bagId": "0363010000607801"
+    },
+    {
+     "address": "Commelinstraat 225",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000607802"
+    },
+    {
+     "address": "Commelinstraat 229",
+     "use": "woonfunctie",
+     "areaM2": 74,
+     "bagId": "0363010000607804"
+    },
+    {
+     "address": "Commelinstraat 231",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000607805"
+    },
+    {
+     "address": "Commelinstraat 235",
+     "use": "woonfunctie",
+     "areaM2": 74,
+     "bagId": "0363010000607807"
+    },
+    {
+     "address": "Commelinstraat 237",
+     "use": "woonfunctie",
+     "areaM2": 104,
+     "bagId": "0363010000607808"
+    },
+    {
+     "address": "Commelinstraat 239",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000607809"
+    },
+    {
+     "address": "Pontanusstraat 27",
+     "use": "kantoorfunctie",
+     "areaM2": 135,
+     "bagId": "0363010000779514"
+    },
+    {
+     "address": "Commelinstraat 233",
+     "use": "woonfunctie",
+     "areaM2": 115,
+     "bagId": "0363010000607806"
+    },
+    {
+     "address": "Commelinstraat 227",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000607803"
+    }
+   ],
+   "units": 11,
+   "osm": []
+  }
+ ]
+}

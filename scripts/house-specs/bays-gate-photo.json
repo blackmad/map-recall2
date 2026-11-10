@@ -1,0 +1,29 @@
+{
+ "note": "Upper-storey window columns counted by hand on the 852 px-tall rectified crops (staging/pand-reference/<pand>/front.jpg, the #348 sample, seed 20261110), 2026-11-10 H1b. null = not scorable (close crop of brick/one window, or an oblique wall). Counts differ from the #348 eye counts on small strips for 60074 (4 -> 3) and 62119 (4 -> 3). H1c (#350) correction: 74833 and 69913 are 3 (a tree hid the third column on the primary crop; the alt-year crop front-alt.jpg and the H4 archive crop show three axes clearly).",
+ "photo": {
+  "0363100012173345": 2,
+  "0363100012169901": 3,
+  "0363100012174833": 3,
+  "0363100012179665": 3,
+  "0363100012161457": 3,
+  "0363100012154359": 3,
+  "0363100012174415": 3,
+  "0363100012168603": 2,
+  "0363100012167881": null,
+  "0363100012169913": 3,
+  "0363100012160646": 3,
+  "0363100012174416": 3,
+  "0363100012169916": 3,
+  "0363100012176393": 3,
+  "0363100012169849": 2,
+  "0363100012168161": 2,
+  "0363100012160074": 3,
+  "0363100012159845": 3,
+  "0363100012160810": null,
+  "0363100012169842": null,
+  "0363100012171052": 3,
+  "0363100012174091": null,
+  "0363100012162119": 3,
+  "0363100012170045": null
+ }
+}

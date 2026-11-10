@@ -1,0 +1,155 @@
+{
+ "street": "Pieter Vlamingstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T07:44:41.110Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012153459",
+   "addresses": [
+    "Pieter Vlamingstraat 5"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter Vlamingstraat 5",
+     "use": "kantoorfunctie",
+     "areaM2": 77,
+     "bagId": "0363010003701334"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 12744681752,
+     "lngLat": [
+      4.9254097,
+      52.3648936
+     ],
+     "tags": {
+      "name": "Homemade Heaven",
+      "shop": "gift"
+     },
+     "fetchedAt": "2026-11-10T07:44:41.110Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012160168",
+   "addresses": [
+    "Pieter Vlamingstraat 7A",
+    "Pieter Vlamingstraat 7B",
+    "Pieter Vlamingstraat 7C",
+    "Pieter Vlamingstraat 7D",
+    "Pieter Vlamingstraat 7E",
+    "Pieter Vlamingstraat 7F"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter Vlamingstraat 7A",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010003701335"
+    },
+    {
+     "address": "Pieter Vlamingstraat 7B",
+     "use": "woonfunctie",
+     "areaM2": 78,
+     "bagId": "0363010003701336"
+    },
+    {
+     "address": "Pieter Vlamingstraat 7C",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010003701337"
+    },
+    {
+     "address": "Pieter Vlamingstraat 7D",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010003701338"
+    },
+    {
+     "address": "Pieter Vlamingstraat 7E",
+     "use": "woonfunctie",
+     "areaM2": 39,
+     "bagId": "0363010003701339"
+    },
+    {
+     "address": "Pieter Vlamingstraat 7F",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010003701340"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012161692",
+   "addresses": [
+    "Pieter Vlamingstraat 9"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter Vlamingstraat 9",
+     "use": "kantoorfunctie",
+     "areaM2": 40,
+     "bagId": "0363010003701341"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 12744678238,
+     "lngLat": [
+      4.9255348,
+      52.3649247
+     ],
+     "tags": {
+      "name": "The Dental Suite",
+      "shop": "beauty"
+     },
+     "fetchedAt": "2026-11-10T07:44:41.110Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012155803",
+   "addresses": [
+    "Pieter Vlamingstraat 11"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter Vlamingstraat 11-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 47,
+     "bagId": "0363010001012480"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 12744702902,
+     "lngLat": [
+      4.92562,
+      52.3649418
+     ],
+     "tags": {
+      "shop": "vacant"
+     },
+     "fetchedAt": "2026-11-10T07:44:41.110Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

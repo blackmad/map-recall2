@@ -1,0 +1,238 @@
+{
+ "street": "Plantage Badlaan",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T07:09:39.016Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012181740",
+   "addresses": [
+    "Plantage Badlaan 24"
+   ],
+   "groundUnits": [
+    {
+     "address": "Plantage Badlaan 24-H",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000777277"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181743",
+   "addresses": [
+    "Plantage Badlaan 22"
+   ],
+   "groundUnits": [
+    {
+     "address": "Plantage Badlaan 22-H",
+     "use": "woonfunctie",
+     "areaM2": 101,
+     "bagId": "0363010000777275"
+    },
+    {
+     "address": "Plantage Badlaan 22-H",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010012598453"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012170227",
+   "addresses": [
+    "Plantage Badlaan 20"
+   ],
+   "groundUnits": [
+    {
+     "address": "Plantage Badlaan 20-H",
+     "use": "woonfunctie",
+     "areaM2": 143,
+     "bagId": "0363010000777271"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012171267",
+   "addresses": [
+    "Plantage Badlaan 18"
+   ],
+   "groundUnits": [
+    {
+     "address": "Plantage Badlaan 18-H",
+     "use": "woonfunctie",
+     "areaM2": 190,
+     "bagId": "0363010000980710"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181659",
+   "addresses": [
+    "Plantage Badlaan 16A",
+    "Plantage Badlaan 16B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Plantage Badlaan 16A",
+     "use": "woonfunctie",
+     "areaM2": 100,
+     "bagId": "0363010000777259"
+    },
+    {
+     "address": "Plantage Badlaan 16B",
+     "use": "woonfunctie",
+     "areaM2": 138,
+     "bagId": "0363010000777260"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181658",
+   "addresses": [
+    "Plantage Badlaan 14"
+   ],
+   "groundUnits": [
+    {
+     "address": "Plantage Badlaan 14-H",
+     "use": "woonfunctie",
+     "areaM2": 100,
+     "bagId": "0363010001036676"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181657",
+   "addresses": [
+    "Plantage Badlaan 12"
+   ],
+   "groundUnits": [
+    {
+     "address": "Plantage Badlaan 12-H",
+     "use": "woonfunctie",
+     "areaM2": 96,
+     "bagId": "0363010001014472"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012171265",
+   "addresses": [
+    "Plantage Badlaan 10"
+   ],
+   "groundUnits": [
+    {
+     "address": "Plantage Badlaan 10-H",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000777235"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012171264",
+   "addresses": [
+    "Plantage Badlaan 8A",
+    "Plantage Badlaan 8B",
+    "Plantage Badlaan 8C",
+    "Plantage Badlaan 8D",
+    "Plantage Badlaan 8E"
+   ],
+   "groundUnits": [
+    {
+     "address": "Plantage Badlaan 8A",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000777229"
+    },
+    {
+     "address": "Plantage Badlaan 8B",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000777230"
+    },
+    {
+     "address": "Plantage Badlaan 8C",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000777231"
+    },
+    {
+     "address": "Plantage Badlaan 8D",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000777232"
+    },
+    {
+     "address": "Plantage Badlaan 8E",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010001038958"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012171258",
+   "addresses": [
+    "Plantage Badlaan 6"
+   ],
+   "groundUnits": [
+    {
+     "address": "Plantage Badlaan 6-H",
+     "use": "woonfunctie",
+     "areaM2": 88,
+     "bagId": "0363010000777221"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012171257",
+   "addresses": [
+    "Plantage Badlaan 4"
+   ],
+   "groundUnits": [
+    {
+     "address": "Plantage Badlaan 4-H",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000777215"
+    },
+    {
+     "address": "Plantage Badlaan 4-O",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 28,
+     "bagId": "0363010001024324"
+    },
+    {
+     "address": "Plantage Badlaan 4-H",
+     "use": "woonfunctie",
+     "areaM2": 119,
+     "bagId": "0363010012167223"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  }
+ ]
+}

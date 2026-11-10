@@ -27,6 +27,7 @@ import {cleanRoof, type RoofCleanupReport} from './roofCleanup.ts';
 import {gableOrnaments} from './gableOrnament.ts';
 import {entablatureCornice} from './entablature.ts';
 import type {CanalhouseOrnament} from '../canalhouseRecipes.ts';
+import {rosetteOrnaments, rosettesInPlaceOfWindows} from './rosettes.ts';
 
 export const ROOF_COLOURS: Record<CanalHouseIntent['roof']['material'], {steep: string; low: string; flat: string}> = {
   slate: {steep: '#3b4047', low: '#4b5056', flat: '#6a6c6c'},
@@ -123,7 +124,7 @@ export interface FitReport {
     /** Towers rising over the eaves (elevation metres, the facade frame's x). A corner tower (`tower.corner`) lists its
      * plan on the owning front (recipe-local footprint metres: corner, along this front, opposite, along the partner front)
      * and `partner` on the other front, whose wall only rises. */
-    towers?: {leftM: number; widthM: number; bottomM: number; topM: number; cap: 'pyramid' | 'flat' | 'stepped' | 'merlons'; corner?: {role: 'owner' | 'partner'; plan?: CanalhousePoint[]; walls?: number[]}}[];
+    towers?: {leftM: number; widthM: number; bottomM: number; topM: number; cap: 'pyramid' | 'flat' | 'stepped' | 'merlons'; /** `towers[].finish`: a stone body and cap (addTowers) */ finish?: 'stone'; corner?: {role: 'owner' | 'partner'; plan?: CanalhousePoint[]; walls?: number[]}}[];
     /** Rigid shop canopy (facade x): slab underside `bottomM`; an end on a party wall (`partyStart`/`partyEnd`, facade-x order) runs to the party plane. */
     canopy?: {leftM: number; widthM: number; bottomM: number; projectM: number; thicknessM: number; fasciaM: number; fasciaDepthM: number; partyStart: boolean; partyEnd: boolean; colour: string; fasciaColour: string;
       /** Glass-block band over the canopy (`awning.glassBlocks`), facade x (leftM, widthM) and heights. */
@@ -249,7 +250,7 @@ function layoutFront(f: FrontIntent, width: number, heightTop: number): Layout {
   // `windowHead`: segmental (rise 0.14 x width) or round heads on the listed storeys (default every storey above the ground).
   const wh = f.windowHead, headStorey = (s: number) => !!wh && wh.kind !== 'flat' && wh.kind !== 'relieving' && (wh.storeys ? wh.storeys.includes(s) : s > 0);
   // Round-arched storeys: a semicircular head (rise = half the width).
-  const headFor = (s: number, w: number) => headStorey(s) ? {head: 'segmental' as const, headRiseM: wh!.kind === 'round' ? Math.floor(w / 2 * 1000) / 1000 : round(w * 0.08), headSegments: 6}
+  const headFor = (s: number, w: number) => headStorey(s) ? {head: 'segmental' as const, headRiseM: wh!.kind === 'round' ? Math.floor(w / 2 * 1000) / 1000 : wh!.rise ?? round(w * 0.08), headSegments: 6}
     : f.archedStoreys?.includes(s) ? {head: 'segmental' as const, headRiseM: Math.floor(w / 2 * 1000) / 1000, headSegments: 6} : segmental;
   const heightShares = f.windowHeights === 'diminishing' ? Array.from({length: n}, (_, s) => DIMINISHING_WINDOW_HEIGHTS[Math.min(s, DIMINISHING_WINDOW_HEIGHTS.length - 1)]) : f.windowHeights;
   const openings: CanalhouseOpening[] = [], glazedBays: CanalhouseGlazedBay[] = [], balconies: Layout['balconies'] = [];
@@ -615,17 +616,23 @@ const GROUND_FRONT = {arcade: {pierM: 0.34, beamM: 0.32, riserM: 0.5}, pui: {pie
 export function groundFrontLayout(g: NonNullable<FrontIntent['groundFront']>, width: number, h: number, openings: CanalhouseOpening[]): CanalhouseFacadeBlock[] {
   const k = GROUND_FRONT[g.kind], n = g.bays.length, framed = g.kind !== 'wall';
   const pier = Math.min(k.pierM, width * 0.06), ow = (width - (n + 1) * pier) / n;
-  if (ow < 0.45) throw Error(`groundFront: ${n} bays do not fit a ${round(width, 2)} m front`);
+  // `bayWeights`: measured bay widths (Rapenburg 99); absent = equal bays, the arithmetic below is the stock one.
+  const wsum = g.bayWeights ? g.bayWeights.reduce((a, b) => a + b, 0) : 0;
+  const bw = (i: number) => g.bayWeights ? (width - (n + 1) * pier) * g.bayWeights[i] / wsum : ow;
+  const bl = (i: number) => g.bayWeights ? pier + Array.from({length: i}, (_, j) => bw(j) + pier).reduce((a, b) => a + b, 0) : pier + i * (ow + pier);
+  if (Array.from({length: n}, (_, i) => bw(i)).some(v => v < 0.45)) throw Error(`groundFront: ${n} bays do not fit a ${round(width, 2)} m front`);
   const top = framed ? h - k.beamM - 0.04 : h * 0.86, blocks: CanalhouseFacadeBlock[] = [];
   const joinery = framed ? 'shop' as const : 'trim' as const;
   if (framed) {
-    for (let i = 0; i <= n; i++) blocks.push({id: `gf-pier-${i}`, leftM: Math.min(round(i * (ow + pier)), Math.floor((width - round(pier)) * 1000 - 1) / 1000), bottomM: 0.3, widthM: round(pier), heightM: round(h - k.beamM - 0.3), depthM: g.kind === 'arcade' ? 0.12 : 0.08, surface: 'shop'});
+    for (let i = 0; i <= n; i++) blocks.push({id: `gf-pier-${i}`, leftM: Math.min(round(g.bayWeights ? bl(i) - pier : i * (ow + pier)), Math.floor((width - round(pier)) * 1000 - 1) / 1000), bottomM: 0.3, widthM: round(pier), heightM: round(h - k.beamM - 0.3), depthM: g.kind === 'arcade' ? 0.12 : 0.08, surface: 'shop'});
     blocks.push({id: 'gf-beam', leftM: 0, bottomM: round(h - k.beamM), widthM: Math.floor(width * 1000) / 1000, heightM: round(k.beamM - 0.02), depthM: g.kind === 'arcade' ? 0.14 : 0.1, surface: 'shop'});
   }
+  // `transom`: one line for the door heads and the window transom bars (absent: the stock heights).
+  const line = g.transom !== undefined ? Math.min(g.transom, top - 0.36) : null;
   g.bays.forEach((kind, i) => {
-    const left = pier + i * (ow + pier) + (framed ? 0.02 : 0), w = ow - (framed ? 0.04 : 0), id = `gf-b${i}`;
+    const left = bl(i) + (framed ? 0.02 : 0), w = bw(i) - (framed ? 0.04 : 0), id = `gf-b${i}`;
     if (kind === 'door' || kind === 'glazed-door') {
-      const dw = Math.min(w, kind === 'door' ? 1.25 : 1.6), dl = left + (w - dw) / 2, dh = Math.min(top - 0.55, 2.6);
+      const dw = Math.min(w, kind === 'door' ? 1.25 : 1.6), dl = left + (w - dw) / 2, dh = line !== null ? line - 0.08 : Math.min(top - 0.55, 2.6);
       openings.push({id: `${id}-door`, kind: 'door', leftM: round(dl), bottomM: 0.02, widthM: round(dw), heightM: round(dh), trimWidthM: 0.07, verticalBars: [.5], paneSurface: kind === 'door' ? 'door' : 'glass', frameSurface: joinery, barSurface: joinery});
       const th = top - (0.02 + dh + 0.06);
       if (th >= 0.3) openings.push({id: `${id}-transom`, kind: 'window', leftM: round(left), bottomM: round(0.02 + dh + 0.06), widthM: round(w), heightM: round(th), trimWidthM: 0.06, ...(w > 1.1 ? {verticalBars: [.5]} : {}), frameSurface: joinery, barSurface: joinery});
@@ -638,7 +645,9 @@ export function groundFrontLayout(g: NonNullable<FrontIntent['groundFront']>, wi
     if (framed) blocks.push({id: `${id}-riser`, leftM: round(left), bottomM: 0.02, widthM: round(w), heightM: round(sill - 0.02), depthM: GROUND_FRONT_PANEL_DEPTH_M, surface: 'shop'});
     if (kind === 'panel') { openings.push({id: `${id}-panel`, kind: 'window', leftM: round(left), bottomM: round(sill), widthM: round(w), heightM: round(top - sill), trimWidthM: 0.07, paneSurface: 'door', frameSurface: joinery, barSurface: joinery}); return; }
     if (kind === 'shutter') { openings.push({id: `${id}-shutter`, kind: 'window', leftM: round(left), bottomM: round(sill), widthM: round(w), heightM: round(top - sill), trimWidthM: 0.07, paneSurface: 'door', horizontalBars: [0.15, 0.3, 0.45, 0.6, 0.75, 0.9], frameSurface: joinery, barSurface: joinery}); return; }
-    openings.push({id: `${id}-window`, kind: 'window', leftM: round(left), bottomM: round(sill), widthM: round(w), heightM: round(top - sill), trimWidthM: 0.07, ...(w > 1.1 ? {verticalBars: [.5]} : {}), horizontalBars: [0.74], frameSurface: joinery, barSurface: joinery});
+    const bars = g.lights ? {verticalBars: Array.from({length: g.lights - 1}, (_, j) => round((j + 1) / g.lights!, 4))} : w > 1.1 ? {verticalBars: [.5]} : {};
+    const bar = line !== null && line > sill + 0.3 ? round((line - sill) / (top - sill), 4) : 0.74;
+    openings.push({id: `${id}-window`, kind: 'window', leftM: round(left), bottomM: round(sill), widthM: round(w), heightM: round(top - sill), trimWidthM: 0.07, ...bars, horizontalBars: [bar], frameSurface: joinery, barSurface: joinery});
   });
   return blocks;
 }
@@ -874,6 +883,9 @@ export function fitIntent(intent: CanalHouseIntent, surveyFacts: BuildingFacts):
     // A tall plain parapet (`parapet`, De Baarsjes): the full storeys end `courses` brick courses under the eaves.
     const parapetM = front.parapet && !gabled ? round(front.parapet.courses * COURSE_M) : null;
     const layout = layoutFront(front, mw, eaves - (gabled ? 0.2 : parapetM ?? corniceH + 0.15));
+    // Wall rosettes on blind axes (rosettes.ts): their windows leave the layout before anything is derived from it.
+    const rosetteCut = front.rosettes ? rosettesInPlaceOfWindows(layout.openings, front.rosettes) : null;
+    if (rosetteCut) { layout.openings = rosetteCut.openings; warnings.push(...rosetteCut.missing.map(m => `${front.id}: rosette ${m}`)); }
     // A crown on part of the front: [x0, x1] in module metres from the viewer's left (`crownAt` fractions or `crownBays` axes).
     const crownSpan: [number, number] | null = front.crownAt ? [front.crownAt.from * mw, front.crownAt.to * mw]
       : front.crownBays ? [layout.bayEdges[front.crownBays.from], layout.bayEdges[front.crownBays.to + 1]] : null;
@@ -1035,6 +1047,18 @@ export function fitIntent(intent: CanalHouseIntent, surveyFacts: BuildingFacts):
         if (moduleProfile.at(-1)![0] < mw - 0.01) moduleProfile.push([mw, eaves]);
       }
     }
+    // More towers over bays (`towers`, lane H7 round 2: the Nassaukade corner's two stone towers on the cornice): each rises
+    // like `tower` (the front wall's profile, one light, compile.ts addTowers body and cap); `finish: stone` faces it in stone.
+    const extraTowers: {span: [number, number]; top: number; t: NonNullable<FrontIntent['towers']>[number]}[] = [];
+    for (const t of front.towers ?? []) {
+      const span: [number, number] = [layout.bayEdges[t.bays.from], layout.bayEdges[t.bays.to + 1]], top = round(eaves + t.rise * upperStoreyM);
+      if ((moduleProfile && moduleProfile.some(([x, y]) => y > eaves + 1e-6 && x > span[0] - 0.05 && x < span[1] + 0.05)) || (towerSpan && span[0] < towerSpan[1] + 0.05 && span[1] > towerSpan[0] - 0.05)) { warnings.push(`${front.id}: tower over bays ${t.bays.from}-${t.bays.to} overlaps a crown or tower; skipped`); continue; }
+      const base = moduleProfile ?? [[0, eaves], [mw, eaves]] as CanalhousePoint[];
+      moduleProfile = [...base.filter(p => p[0] <= span[0] + 1e-6), [span[0], eaves], [span[0], top], [span[1], top], [span[1], eaves], ...base.filter(p => p[0] >= span[1] - 1e-6)];
+      if (moduleProfile[0][0] > 0.01) moduleProfile.unshift([0, eaves]);
+      if (moduleProfile.at(-1)![0] < mw - 0.01) moduleProfile.push([mw, eaves]);
+      extraTowers.push({span, top, t});
+    }
     const profile = moduleProfile ? Array.from({length: count}, (_, k) => moduleProfile!.map(([x, y]) => [place(k, x), y] as CanalhousePoint)).flat() : [[0, eaves], [width, eaves]] as CanalhousePoint[];
     // Stone ornament of a historic front (wings, ears, cartouche, finial on gables; a gablet/crest on a cornice front).
     if (front.gableOrnament) {
@@ -1049,6 +1073,12 @@ export function fitIntent(intent: CanalHouseIntent, surveyFacts: BuildingFacts):
       }
       if (pieces2.length) elevation.ornaments = seen([...(elevation.ornaments?.value ?? []), ...pieces2]);
     }
+    if (rosetteCut?.discs.length) {
+      const made: CanalhouseOrnament[] = [];
+      for (let m = 0; m < count; m++) for (const d of rosetteCut.discs) for (const o of rosetteOrnaments(d, `${pieces.length > 1 ? front.id + '-' : ''}${count > 1 ? `m${m}-` : ''}`))
+        made.push({...o, profile: o.profile.map(([x, y]) => [round(mirrored ? width - place(m, x) : place(m, x), 4), y] as CanalhousePoint)});
+      elevation.ornaments = seen([...(elevation.ornaments?.value ?? []), ...made]);
+    }
     if (towerSpan && front.tower?.lights === 'per-axis' && front.tower.bays) {
       // One light per spanned axis on the body's axis centres, the top-storey windows' width (a wall dormer over two axes).
       const tb = front.tower.bays, topWins = layout.openings.filter(o => o.kind === 'window' && new RegExp(`^s${front.storeys - 1}-b\\d+[ab]?$`).test(o.id));
@@ -1062,6 +1092,15 @@ export function fitIntent(intent: CanalHouseIntent, surveyFacts: BuildingFacts):
       const tw = towerSpan[1] - towerSpan[0], ww = clamp(tw * 0.38, 0.45, 1.0), wh = clamp(upperStoreyM * 0.5, 0.6, 1.6), cx = (towerSpan[0] + towerSpan[1]) / 2;
       for (let m = 0; m < count; m++) for (let r = 0; eaves + r * upperStoreyM + 0.3 * upperStoreyM + wh <= towerTop - 0.25; r++)
         elevation.openings.value.push({id: `${pieces.length > 1 ? front.id + '-' : ''}tower-${r}${count > 1 ? `-m${m}` : ''}`, kind: 'window', leftM: round(flipX(place(m, cx - ww / 2, ww), ww)), bottomM: round(eaves + r * upperStoreyM + 0.3 * upperStoreyM), widthM: round(ww), heightM: round(wh), trimWidthM: 0.06, ...WINDOW_BARS[front.windows === 'shop' ? 'sash' : front.windows], frameSurface: 'trim', barSurface: 'trim'});
+    }
+    const towerFacings: NonNullable<CanalhouseElevation['bands']>['value'] = [];
+    for (const [k, x] of extraTowers.entries()) {
+      // One light centred in the tower per storey of rise (as `tower`); `lightRise`/`lightSill` size it (default 0.5 / 0.3).
+      const tw = x.span[1] - x.span[0], ww = clamp(tw * 0.38, 0.45, 1.0), wh = round(upperStoreyM * (x.t.lightRise ?? 0.5)), cx = (x.span[0] + x.span[1]) / 2, sill = x.t.lightSill ?? 0.3;
+      for (let m = 0; m < count; m++) for (let r = 0; eaves + (r + sill) * upperStoreyM + wh <= x.top - 0.25; r++)
+        elevation.openings.value.push({id: `${pieces.length > 1 ? front.id + '-' : ''}towers${k}-${r}${count > 1 ? `-m${m}` : ''}`, kind: 'window', leftM: round(flipX(place(m, cx - ww / 2, ww), ww)), bottomM: round(eaves + (r + sill) * upperStoreyM), widthM: round(ww), heightM: wh, trimWidthM: 0.06, ...WINDOW_BARS[front.windows === 'shop' ? 'sash' : front.windows], frameSurface: 'trim', barSurface: 'trim'});
+      if (x.t.finish === 'stone') for (let m = 0; m < count; m++)
+        towerFacings.push({id: `${pieces.length > 1 ? front.id + '-' : ''}towers${k}-facing${count > 1 ? `-m${m}` : ''}`, leftM: round(flipX(place(m, x.span[0], tw), tw) + 0.005), bottomM: round(eaves), widthM: round(tw - 0.01), heightM: round(x.top - eaves - 0.02), depthM: 0.03, surface: 'stone'});
     }
     if (groupCrowns) {
       // Gable lights per crown, side by side (or stacked up a neck), centred on each crown.
@@ -1102,7 +1141,8 @@ export function fitIntent(intent: CanalHouseIntent, surveyFacts: BuildingFacts):
       // Attic windows inside the crown.
       const attic = front.atticWindows ?? 0, rise = crownTop - eaves;
       if (attic > 0 && rise > 1.2 && !groupCrowns) {
-        const w = clamp((crownSpan ? crownW * 0.2 : mw * 0.14), 0.5, 0.9), h = clamp(rise * 0.4, 0.6, 1.4), gap = w * 0.5, total = attic * w + (attic - 1) * gap;
+        // `atticLight`: the measured light width (absent: the stock 0.5-0.9 m).
+        const w = front.atticLight ? front.atticLight.light : clamp((crownSpan ? crownW * 0.2 : mw * 0.14), 0.5, 0.9), h = clamp(rise * 0.4, 0.6, 1.4), gap = w * 0.5, total = attic * w + (attic - 1) * gap;
         // Gable lights follow a partial crown: on its bay axes when there is one light per bay, else centred on it.
         const onAxes = front.crownBays && front.crownBays.to - front.crownBays.from + 1 === attic ? layout.axisCentres.slice(front.crownBays.from, front.crownBays.to + 1) : null;
         const crownCentre = crownSpan ? (crownSpan[0] + crownSpan[1]) / 2 : mw / 2;
@@ -1113,7 +1153,7 @@ export function fitIntent(intent: CanalHouseIntent, surveyFacts: BuildingFacts):
         if (round) for (let m = 0; m < count; m++) for (let k = 0; k < attic; k++) elevation.openings.value.push({id: `${pieces.length > 1 ? front.id + "-" : ""}attic-${k}${count > 1 ? `-m${m}` : ''}`, kind: 'window', head: 'oval', leftM: flipX(place(m, (onAxes ? onAxes[k] : crownCentre) - od / 2, od), od), bottomM: eaves + Math.min(rise - od - 0.3, rise * 0.3), widthM: od, heightM: od, trimWidthM: 0.06, frameSurface: 'trim', barSurface: 'trim'});
         else {
           // Side-by-side lights that would escape a narrow crown (three lights in a gable) shrink until they fit under it.
-          const planned = Array.from({length: attic}, (_, k) => ({left: atticLeft(k), width: w, bottom: eaves + 0.25 + (stack ? k * (hh + 0.3) : 0), height: stack ? hh : h}));
+          const planned = Array.from({length: attic}, (_, k) => ({left: atticLeft(k), width: w, bottom: eaves + (front.atticLight && !stack ? front.atticLight.sill : 0.25) + (stack ? k * (hh + 0.3) : 0), height: stack ? hh : h}));
           const lights = stack || !moduleProfile ? planned : fitGableLights(moduleProfile, planned, warnings, front.id);
           for (let m = 0; m < count; m++) lights.forEach((l, k) => elevation.openings.value.push({id: `${pieces.length > 1 ? front.id + "-" : ""}attic-${k}${count > 1 ? `-m${m}` : ''}`, kind: 'window', leftM: flipX(place(m, l.left, l.width), l.width), bottomM: l.bottom, widthM: l.width, heightM: l.height, trimWidthM: 0.06, ...WINDOW_BARS[front.windows === 'shop' ? 'sash' : front.windows], frameSurface: 'trim', barSurface: 'trim'}));
         }
@@ -1301,9 +1341,12 @@ export function fitIntent(intent: CanalHouseIntent, surveyFacts: BuildingFacts):
       const atStart = (side === 'leftEnd') !== mirrored;
       return [{leftM: round(flipX(viewerLeft, w)), widthM: w, bottomM, topM, party: kind === 'half' ? (atStart ? 'start' as const : 'end' as const) : null}];
     }), ...innerLisenes(front, layout, width, bodyEaves, parapetM, canopy, flipX, warnings)] : undefined;
+    // Stone facings of `towers` (finish stone), after every other band of the front.
+    if (towerFacings.length) elevation.bands = seen([...(elevation.bands?.value ?? []), ...towerFacings]);
     reports.push({id: front.id, widthM: round(width), eavesM: round(eaves), crownTopM: round(groupCrowns ? Math.max(...groupCrowns.map(g => g.top)) : crownTop), storeyHeightsM: layout.storeyHeights, mirrored, edge: [edgeIndex, endIndex], frontageDeviationM: round(deviation), frontageOutsetM: round(maxOut, 4), polygonIndex, ...(fasciaRect ? {fascia: fasciaRect} : {}), ...(signBand ? {signBand} : {}),
       ...(mansard ? {mansard} : {}), ...(towerSpan ? {towers: Array.from({length: count}, (_, m) => ({leftM: round(flipX(place(m, towerSpan![0], towerSpan![1] - towerSpan![0]), towerSpan![1] - towerSpan![0])), widthM: round(towerSpan![1] - towerSpan![0]), bottomM: round(bodyEaves), topM: towerTop, cap: cornerEnd ? corner!.cap : front.tower!.cap,
-        ...(cornerEnd ? {corner: {role: cornerEnd.role, ...(cornerEnd.role === 'owner' ? {plan: corner!.plan, walls: corner!.walls} : {})}} : {})}))} : {}), ...(measuredEaves !== undefined ? {measuredEaves: true} : {}),
+        ...(cornerEnd ? {corner: {role: cornerEnd.role, ...(cornerEnd.role === 'owner' ? {plan: corner!.plan, walls: corner!.walls} : {})}} : {})}))} : {}),
+      ...(extraTowers.length ? {towers: [...(towerSpan ? Array.from({length: count}, (_, m) => ({leftM: round(flipX(place(m, towerSpan![0], towerSpan![1] - towerSpan![0]), towerSpan![1] - towerSpan![0])), widthM: round(towerSpan![1] - towerSpan![0]), bottomM: round(bodyEaves), topM: towerTop, cap: cornerEnd ? corner!.cap : front.tower!.cap, ...(cornerEnd ? {corner: {role: cornerEnd.role, ...(cornerEnd.role === 'owner' ? {plan: corner!.plan, walls: corner!.walls} : {})}} : {})})) : []), ...extraTowers.flatMap(x => Array.from({length: count}, (_, m) => ({leftM: round(flipX(place(m, x.span[0], x.span[1] - x.span[0]), x.span[1] - x.span[0])), widthM: round(x.span[1] - x.span[0]), bottomM: round(bodyEaves), topM: x.top, cap: x.t.cap, ...(x.t.finish === 'stone' ? {finish: 'stone' as const} : {})})))]} : {}), ...(measuredEaves !== undefined ? {measuredEaves: true} : {}),
       ...(canopy ? {canopy} : {}),
       ...(lisenes ? {lisenes} : {}),
       ...(erker?.oriel ? {erker: {leftM: round(flipX(erker.leftM, erker.widthM)), widthM: erker.widthM, frontWidthM: erker.oriel.frontWidthM, depthM: erker.oriel.depthM, topM: erker.topM, cap: 'none' as const,

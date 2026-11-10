@@ -1,0 +1,123 @@
+{
+ "street": "Rapenburg",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T08:18:00.094Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012182736",
+   "addresses": [
+    "Rapenburg 1",
+    "Rapenburg 3"
+   ],
+   "groundUnits": [
+    {
+     "address": "Rapenburg 1",
+     "use": "kantoorfunctie,woonfunctie",
+     "areaM2": 232,
+     "bagId": "0363010000951666"
+    }
+   ],
+   "units": 11,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012182735",
+   "addresses": [
+    "Rapenburg 5",
+    "Rapenburg 7"
+   ],
+   "groundUnits": [
+    {
+     "address": "Rapenburg 7-H",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 20,
+     "bagId": "0363010000788002"
+    },
+    {
+     "address": "Rapenburg 5-H",
+     "use": "woonfunctie",
+     "areaM2": 150,
+     "bagId": "0363010000787995"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012182734",
+   "addresses": [
+    "Rapenburg 13"
+   ],
+   "groundUnits": [
+    {
+     "address": "Rapenburg 13",
+     "use": "woonfunctie",
+     "areaM2": 112,
+     "bagId": "0363010000788016"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012170619",
+   "addresses": [
+    "Rapenburg 15",
+    "Rapenburg 17A",
+    "Rapenburg 17C",
+    "Rapenburg 17B",
+    "Rapenburg 19A",
+    "Rapenburg 19B",
+    "Rapenburg 19C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Rapenburg 19A",
+     "use": "woonfunctie",
+     "areaM2": 85,
+     "bagId": "0363010000788030"
+    },
+    {
+     "address": "Rapenburg 17A",
+     "use": "woonfunctie",
+     "areaM2": 87,
+     "bagId": "0363010000788026"
+    },
+    {
+     "address": "Rapenburg 17C",
+     "use": "woonfunctie",
+     "areaM2": 121,
+     "bagId": "0363010000788028"
+    },
+    {
+     "address": "Rapenburg 19B",
+     "use": "woonfunctie",
+     "areaM2": 78,
+     "bagId": "0363010000788031"
+    },
+    {
+     "address": "Rapenburg 17B",
+     "use": "woonfunctie",
+     "areaM2": 87,
+     "bagId": "0363010000788027"
+    },
+    {
+     "address": "Rapenburg 15",
+     "use": "woonfunctie",
+     "areaM2": 96,
+     "bagId": "0363010000788022"
+    },
+    {
+     "address": "Rapenburg 19C",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010000788032"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  }
+ ]
+}

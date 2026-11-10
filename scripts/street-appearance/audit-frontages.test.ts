@@ -8,6 +8,7 @@ import test from 'node:test';
 // Re-recorded 2026-10-29 after #99 (Stationsplein paviljoens added, Beurs and Centraal rebuilt in signature-landmarks.json); frontages byte-identical, only input hashes moved.
 // Re-recorded 2026-10-29 after #100 follow-up (threeBuildingsBrowser.ts span/tile draw ranges); frontages byte-identical, only input hashes moved.
 // Re-recorded 2026-10-30 after #117 (modern facades in bayLook.ts/genericFacades.ts); frontages byte-identical, only input hashes moved.
+// Re-recorded 2026-11-10 with bake-frontages.ts after b712de6b5 (#123 Oosterdok walls: signature-landmarks.json suppressOsmIds feed the admission input hashes) went unrecorded for 11 days; test:street-appearance was not in check:canal. Frontages and profiles.json byte-identical, only the 20 survey hashes and the manifest's survey hash moved.
 import assert from 'node:assert/strict';
 import { auditFrontages } from './audit-frontages.ts';
 import { assessStreetAppearanceSourceAdmission } from './survey-admission.ts';

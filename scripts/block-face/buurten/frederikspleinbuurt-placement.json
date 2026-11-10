@@ -1,0 +1,51 @@
+{
+ "buurt": "frederikspleinbuurt",
+ "library": "de-pijp",
+ "generatedAt": "2026-11-10T09:06:56.794Z",
+ "seconds": 12.25,
+ "totals": {
+  "faces": 1,
+  "pands": 10,
+  "placed": 7
+ },
+ "faces": [
+  {
+   "face": "witsen-1-19",
+   "street": "Nicolaas Witsenstraat",
+   "pands": 10,
+   "placed": 7,
+   "held": 3,
+   "runs": [
+    {
+     "face": "witsen-1-19-r1",
+     "pands": [
+      "0363100012177762",
+      "0363100012177761",
+      "0363100012177760",
+      "0363100012177759",
+      "0363100012171225",
+      "0363100012178936",
+      "0363100012178935"
+     ],
+     "passed": true,
+     "triangles": 12402
+    }
+   ],
+   "seconds": 12.24,
+   "byType": {
+    "witsen-1890-iron-zinc-mansard": 2,
+    "witsen-1890-balustrade-mansard": 2,
+    "witsen-1890-plain-block-mansard": 2,
+    "witsen-1890-balconette-zinc-mansard": 1
+   },
+   "installed": 0,
+   "holds": {
+    "evidence": 0,
+    "match": 1,
+    "likeness": 0,
+    "run": 1,
+    "review": 1
+   }
+  }
+ ]
+}

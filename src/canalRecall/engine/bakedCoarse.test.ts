@@ -13,6 +13,9 @@ const grid: string[] = [];
 for (let i = -4; i <= 4; i++) for (let j = -4; j <= 4; j++) grid.push(`${i}_${j}`);
 const avail = (keys: string[]) => new Map(keys.map(k => [k, 1000]));
 
+/** A fixed clock: the dissolve start and every frame read it, so a slow machine cannot move a mid-fade reading (lane Q1). */
+const NOW = 5_000_000;
+
 test('flag: on by default on desktop, off on touch; ?bakedCoarse=0 / the global off, =1 forces it on touch too', () => {
   assert.equal(bakedCoarseEnabled(false, '', {}), true, 'desktop default on (the 2026-11-07 Da Costakade gap was a held-sync spec artefact)');
   assert.equal(bakedCoarseEnabled(true, '', {}), false);
@@ -153,7 +156,7 @@ function harness(cellsWithShell: string[]) {
 
 test('BakedCoarse: covers the planned cells at once, installs one mesh per cell at its origin, attaches it, dissolves in, then counts as drawn', async () => {
   const h = harness(['0_0', '1_0', '5_5']);
-  const baked = new BakedCoarse(h.host, { budget: { cells: 10, triangles: 1e6 } });
+  const baked = new BakedCoarse(h.host, { now: () => NOW, budget: { cells: 10, triangles: 1e6 } });
   baked.update(centre[0], centre[1], false);
   baked.plan(new Set(['0_0', '1_0', '2_0']));
   assert.ok(baked.covers('0_0') && baked.covers('1_0'), 'covered while in flight');
@@ -170,9 +173,9 @@ test('BakedCoarse: covers the planned cells at once, installs one mesh per cell 
   assert.deepEqual([...m.geometry.getAttribute('hidden').array.subarray(0, 4)], [1, 1, 1, 0], 'the host filled the per-building state');
   assert.ok(h.attached.has('0_0'));
   assert.equal(baked.drawn('0_0'), false, 'dissolving');
-  baked.frame(performance.now() + BAKED_FADE_MS / 2);
+  baked.frame(NOW + BAKED_FADE_MS / 2);
   assert.ok(h.clones[0].uniforms.cityFade.value > 0.3 && h.clones[0].uniforms.cityFade.value < 0.7);
-  baked.frame(performance.now() + BAKED_FADE_MS + 10);
+  baked.frame(NOW + BAKED_FADE_MS + 10);
   assert.equal(baked.drawn('0_0'), true);
   assert.equal(m.material, h.material);
   assert.ok(h.clones[0].disposed);
@@ -210,7 +213,7 @@ test('compact layout (lane R4-I #253): accents RGB, everything else byte-identic
     const h = harness(['0_0']), asked: (boolean | undefined)[] = [];
     const fetch = h.host.fetchShell;
     h.host.fetchShell = (key, signal, exact, comp) => { asked.push(comp); return fetch(key, signal, exact, comp).then(d => ({ ...d, ...bakedCellArrays(shel(), ['a', 'b', 'c'], false, !!comp) })); };
-    const baked = new BakedCoarse(h.host, { budget: { cells: 10, triangles: 1e6 }, compact });
+    const baked = new BakedCoarse(h.host, { now: () => NOW, budget: { cells: 10, triangles: 1e6 }, compact });
     baked.update(centre[0] + 0.05, centre[1] + 0.05, false);
     baked.plan(new Set(['0_0']));
     await settle(); await settle();
@@ -245,7 +248,7 @@ test('release from the air (lane R4-I #253): the flag, the pure rule with hyster
   const h = harness(['0_0', '3_0']);
   let farReady = true;
   h.host.farReady = () => farReady;
-  const baked = new BakedCoarse(h.host, { budget: { cells: 10, triangles: 1e6 }, releaseM: 1800 });
+  const baked = new BakedCoarse(h.host, { now: () => NOW, budget: { cells: 10, triangles: 1e6 }, releaseM: 1800 });
   baked.update(centre[0], centre[1], false);
   baked.plan(new Set(['0_0', '3_0']));
   await settle(); await settle();
@@ -271,7 +274,7 @@ test('BakedCoarse: a failed fetch uncovers its cell and asks for a regroup (runt
   const h = harness(['0_0', '1_0']);
   let calls = 0;
   h.host.fetchShell = async key => { calls++; if (key === '1_0') throw new Error('404'); throw new DOMException('gone', 'AbortError'); };
-  const baked = new BakedCoarse(h.host, { budget: { cells: 10, triangles: 1e6 } });
+  const baked = new BakedCoarse(h.host, { now: () => NOW, budget: { cells: 10, triangles: 1e6 } });
   const warn = console.warn; console.warn = () => {};
   baked.plan(new Set(['0_0', '1_0']));
   await settle(); await settle();
@@ -285,7 +288,7 @@ test('BakedCoarse: a failed fetch uncovers its cell and asks for a regroup (runt
 
 test('BakedCoarse: at street level a near cell keeps its positions and lifts buildings onto their base in slices', async () => {
   const h = harness(['0_0']);
-  const baked = new BakedCoarse(h.host, { budget: { cells: 10, triangles: 1e6 } });
+  const baked = new BakedCoarse(h.host, { now: () => NOW, budget: { cells: 10, triangles: 1e6 } });
   baked.update(centre[0], centre[1], true);
   baked.plan(new Set(['0_0']));
   await settle(); await settle();
@@ -306,7 +309,7 @@ test('BakedCoarse: at street level a near cell keeps its positions and lifts bui
   const h2 = harness(['0_0', '5_5']);
   const fetch = h2.host.fetchShell;
   h2.host.fetchShell = (key, signal, exact) => { asked.push([key, exact]); return fetch(key, signal, exact); };
-  const b2 = new BakedCoarse(h2.host, { budget: { cells: 10, triangles: 1e6 } });
+  const b2 = new BakedCoarse(h2.host, { now: () => NOW, budget: { cells: 10, triangles: 1e6 } });
   b2.update(centre[0], centre[1], true);
   b2.plan(new Set(['0_0', '5_5']));
   await settle(); await settle();
@@ -315,7 +318,7 @@ test('BakedCoarse: at street level a near cell keeps its positions and lifts bui
   const asked3: [string, boolean | undefined][] = [];
   const h3 = harness(['0_0']);
   h3.host.fetchShell = async (key, _signal, exact) => { asked3.push([key, exact]); return { key, ...bakedCellArrays(shel(), ['a', 'b', 'c'], !exact), gzBytes: 100 }; };
-  const b3 = new BakedCoarse(h3.host, { budget: { cells: 10, triangles: 1e6 } });
+  const b3 = new BakedCoarse(h3.host, { now: () => NOW, budget: { cells: 10, triangles: 1e6 } });
   b3.plan(new Set(['0_0']));
   b3.update(centre[0], centre[1], true);
   await settle(); await settle(); await settle(); await settle();
@@ -326,14 +329,14 @@ test('BakedCoarse: at street level a near cell keeps its positions and lifts bui
 
 test('BakedCoarse paceInstalls (?arrivalPace, lane R4-E #248): fetched cells wait and install one a frame, nearest first; a cell planned away while waiting never installs and is not fetched twice', async () => {
   const h = harness(['0_0', '1_0', '2_0', '3_0']);
-  const baked = new BakedCoarse(h.host, { budget: { cells: 10, triangles: 1e6 }, paceInstalls: true });
+  const baked = new BakedCoarse(h.host, { now: () => NOW, budget: { cells: 10, triangles: 1e6 }, paceInstalls: true });
   baked.update(centre[0], centre[1], false);
   baked.plan(new Set(['0_0', '1_0', '2_0', '3_0']));
   await settle(); await settle();
   assert.equal(h.fetched.length, 4, 'every fetch went out (BAKED_INFLIGHT 4)');
   assert.equal(h.added.length, 0, 'nothing installs on the fetch');
   assert.equal(baked.stats().pending, 4);
-  const t = performance.now() + 1000;
+  const t = NOW + 1000;
   baked.frame(t); baked.frame(t + 1);
   assert.deepEqual(h.added.map(m => m.name), ['baked-coarse/0_0'], 'one install in one frame (two calls 1 ms apart), the nearest');
   baked.frame(t + 16);
@@ -347,7 +350,7 @@ test('BakedCoarse paceInstalls (?arrivalPace, lane R4-E #248): fetched cells wai
   assert.equal(baked.stats().pending, 0);
   // Unpaced (the default): installs on the fetch, as before.
   const h2 = harness(['0_0', '1_0']);
-  const b2 = new BakedCoarse(h2.host, { budget: { cells: 10, triangles: 1e6 } });
+  const b2 = new BakedCoarse(h2.host, { now: () => NOW, budget: { cells: 10, triangles: 1e6 } });
   b2.update(centre[0], centre[1], false);
   b2.plan(new Set(['0_0', '1_0']));
   await settle(); await settle();
@@ -358,7 +361,7 @@ test('BakedCoarse.holdsFar (lane R4-K #255): the far prisms stand in for a relea
   const h = harness(['0_0', '3_0']);
   h.host.farReady = () => true;
   // Release off: never holds, whatever is drawn (the far tier's R2-B hand-over is unchanged).
-  const off = new BakedCoarse(h.host, { budget: { cells: 10, triangles: 1e6 } });
+  const off = new BakedCoarse(h.host, { now: () => NOW, budget: { cells: 10, triangles: 1e6 } });
   off.update(centre[0], centre[1], false);
   off.plan(new Set(['0_0', '3_0']));
   assert.ok(!off.holdsFar('0_0') && !off.holdsFar('3_0'), 'off: arriving cells are not held');
@@ -366,12 +369,12 @@ test('BakedCoarse.holdsFar (lane R4-K #255): the far prisms stand in for a relea
 
   const h2 = harness(['0_0', '3_0']);
   h2.host.farReady = () => true;
-  const baked = new BakedCoarse(h2.host, { budget: { cells: 10, triangles: 1e6 }, releaseM: 1800 });
+  const baked = new BakedCoarse(h2.host, { now: () => NOW, budget: { cells: 10, triangles: 1e6 }, releaseM: 1800 });
   baked.update(centre[0], centre[1], false);
   baked.plan(new Set(['0_0', '3_0']));
   assert.ok(baked.holdsFar('3_0'), 'covered and still arriving: the prisms show');
   await settle(); await settle();
-  baked.frame(performance.now() + BAKED_FADE_MS + 1);
+  baked.frame(NOW + BAKED_FADE_MS + 1);
   assert.ok(baked.drawn('3_0') && !baked.holdsFar('3_0'), 'drawn: the baked mesh hides the prisms');
   baked.setEye(centre[0], centre[1]);
   assert.ok(!baked.drawn('3_0') && baked.holdsFar('3_0'), 'released: the prisms show');
@@ -380,7 +383,7 @@ test('BakedCoarse.holdsFar (lane R4-K #255): the far prisms stand in for a relea
   // Return: fetched again, installed with a dissolve; held (prisms shown) until the dissolve is done, then hidden.
   baked.setEye(centre[0] + 0.03, centre[1]);
   await settle(); await settle();
-  const t0 = performance.now();
+  const t0 = NOW;
   assert.ok(baked.holdsFar('3_0'), 'dissolving in: the prisms stay under it');
   baked.frame(t0 + BAKED_FADE_MS / 2);
   assert.ok(baked.holdsFar('3_0'), 'half way: still held');
@@ -391,11 +394,11 @@ test('BakedCoarse.holdsFar (lane R4-K #255): the far prisms stand in for a relea
 test('BakedCoarse release (lane R4-K): a released cell the plan only keeps stays covered (no runtime coarse), and is fetched again on its return', async () => {
   const h = harness(['0_0', '1_0', '2_0']);
   h.host.farReady = () => true;
-  const baked = new BakedCoarse(h.host, { budget: { cells: 10, triangles: 1e6 }, releaseM: 1800 });
+  const baked = new BakedCoarse(h.host, { now: () => NOW, budget: { cells: 10, triangles: 1e6 }, releaseM: 1800 });
   baked.update(centre[0], centre[1], false);
   baked.plan(new Set(['0_0', '1_0', '2_0']));
   await settle(); await settle();
-  baked.frame(performance.now() + BAKED_FADE_MS + 1);
+  baked.frame(NOW + BAKED_FADE_MS + 1);
   assert.equal(baked.stats().drawn, 3);
   // The eye far to the west: every cell released.
   const west = centre[0] - 0.08;
@@ -409,6 +412,6 @@ test('BakedCoarse release (lane R4-K): a released cell the plan only keeps stays
   await settle(); await settle();
   for (const k of ['0_0', '1_0']) assert.equal(h.fetched.filter(f => f === k).length, 2, `${k} fetched again`);
   assert.ok(baked.holdsFar('2_0') && h.fetched.filter(f => f === '2_0').length === 1, '2_0 (1,500 m) stays released: hysteresis to 1,200 m');
-  baked.frame(performance.now() + BAKED_FADE_MS + 1);
+  baked.frame(NOW + BAKED_FADE_MS + 1);
   assert.ok(baked.drawn('1_0') && !baked.holdsFar('1_0'));
 });

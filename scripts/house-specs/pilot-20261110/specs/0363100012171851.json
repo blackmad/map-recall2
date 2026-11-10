@@ -1,0 +1,42 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012171851",
+ "address": "Nieuwmarkt 6",
+ "design": {
+  "fronts": [
+   {
+    "gable": "step",
+    "bays": 2
+   }
+  ],
+  "palette": {
+   "wallMaterial": "brick"
+  }
+ },
+ "provenance": {
+  "fronts/0/gable": {
+   "source": "author",
+   "confidence": 0.9,
+   "ref": "h7 hand read of source-data-h7 pand-crops/0363100012171851/front.jpg (2025-01-08, --prefer-bearing 114): confirms the register (rce) step gable on the photo",
+   "at": "2026-11-10"
+  },
+  "fronts/0/bays": {
+   "source": "author",
+   "confidence": 0.9,
+   "ref": "h7 hand read of source-data-h7 pand-crops/0363100012171851/front.jpg (2025-01-08, --prefer-bearing 114): two window axes above the shop (held)",
+   "at": "2026-11-10"
+  },
+  "palette/wallMaterial": {
+   "source": "author",
+   "confidence": 0.9,
+   "ref": "h7 hand read of source-data-h7 pand-crops/0363100012171851/front.jpg (2025-01-08, --prefer-bearing 114): bare orange-red brick, no paint",
+   "at": "2026-11-10"
+  }
+ },
+ "schemaLimits": [
+  {
+   "component": "palette",
+   "what": "speklagen: white stone bands through the step gable (generic path has no band component)"
+  }
+ ]
+}

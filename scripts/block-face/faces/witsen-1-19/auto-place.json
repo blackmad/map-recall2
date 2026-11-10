@@ -1,0 +1,927 @@
+{
+ "face": "witsen-1-19",
+ "street": "Nicolaas Witsenstraat",
+ "library": "de-pijp",
+ "stripDate": "2024-12-04",
+ "seconds": 12.24,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [
+  {
+   "face": "witsen-1-19-r1",
+   "pands": [
+    "0363100012177762",
+    "0363100012177761",
+    "0363100012177760",
+    "0363100012177759",
+    "0363100012171225",
+    "0363100012178936",
+    "0363100012178935"
+   ],
+   "passed": true,
+   "triangles": 12402
+  }
+ ],
+ "pands": [
+  {
+   "pandId": "0363100012177794",
+   "address": "Nicolaas Witsenstraat 1",
+   "builtYear": 1882,
+   "widthM": 5.98,
+   "eavesM": 14.13,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 0,
+    "toM": 1.73,
+    "depthM": 0.88,
+    "centre": 0.146,
+    "lineRD": [
+     [
+      121568.8419375,
+      485796.617
+     ],
+     [
+      121567.5049375,
+      485791.174
+     ]
+    ]
+   },
+   "strip": {
+    "wall": "#695d49",
+    "wallRaw": "#565344",
+    "skyline": {
+     "eavesM": 14.13,
+     "eavesRow": 240,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.4,
+      "riseM": 1.63,
+      "topWidthM": 1.73,
+      "centre": 0.47
+     }
+    },
+    "stucco": false,
+    "bands": 6,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.21,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 5.27,
+       "widthM": 0.8,
+       "centre": 0.82
+      }
+     ]
+    },
+    "voidShare": 0.04,
+    "foliageShare": 0.23
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012177793",
+   "address": "Nicolaas Witsenstraat 3",
+   "builtYear": 1930,
+   "widthM": 6.01,
+   "eavesM": 15.25,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#775b49",
+    "wallRaw": "#6b5d4d",
+    "skyline": {
+     "eavesM": 15.25,
+     "eavesRow": 195,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.18,
+      "riseM": 1.68,
+      "topWidthM": 0.33,
+      "centre": 0.5
+     }
+    },
+    "stucco": false,
+    "bands": 4,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.142,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 7.6,
+       "widthM": 1.13,
+       "centre": 0.14
+      },
+      {
+       "atM": 5.72,
+       "widthM": 1.68,
+       "centre": 0.23
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.27
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best pijp-1875-shop-dormer: built 1930, type 1875-1877)",
+   "best": {
+    "type": "pijp-1875-shop-dormer",
+    "score": 0,
+    "veto": [
+     "built 1930, type 1875-1877"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 15.25 m = 3 storeys of 5.08 m vs the type's 4.03 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 0,
+      "note": "roof rise 0.42 m (flat) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.114 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012177763",
+   "address": "Nicolaas Witsenstraat 3D",
+   "builtYear": 1873,
+   "widthM": 6.04,
+   "eavesM": 15.18,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#7e6652",
+    "wallRaw": "#736758",
+    "skyline": {
+     "eavesM": 15.18,
+     "eavesRow": 198,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.155,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 13.53,
+       "widthM": 0.95,
+       "centre": 0.71
+      },
+      {
+       "atM": 12.92,
+       "widthM": 0.85,
+       "centre": 0.12
+      },
+      {
+       "atM": 5.8,
+       "widthM": 1.63,
+       "centre": 0.57
+      }
+     ]
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0.31
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Nicolaas Witsenstraat 3-5 (1873): a lighter painted ground storey and a different four-row design; the Den Texstraat type was drawn on it by the library",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012177762",
+   "address": "Nicolaas Witsenstraat 7",
+   "builtYear": 1877,
+   "widthM": 6.3,
+   "eavesM": 17.18,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#695342",
+    "wallRaw": "#5b5142",
+    "skyline": {
+     "eavesM": 17.18,
+     "eavesRow": 118,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.8,
+      "riseM": 2.18,
+      "topWidthM": 1.57,
+      "centre": 0.47
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.095,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 8.02,
+       "widthM": 1.38,
+       "centre": 0.25
+      },
+      {
+       "atM": 6.75,
+       "widthM": 0.93,
+       "centre": 0.51
+      }
+     ]
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0.24
+   },
+   "status": "placed",
+   "type": "witsen-1890-iron-zinc-mansard",
+   "score": 1,
+   "placement": {
+    "type": "witsen-1890-iron-zinc-mansard",
+    "mirror": true,
+    "measuredPalette": {
+     "brick": "#695342",
+     "evidence": "strip 2024-12-04 span 721-973: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#493c2f"
+    }
+   },
+   "notes": [
+    "door right: mirrored",
+    "crown mansard-box-dormer (type default)",
+    "palette pinned: Opus round 2 brick pin (60 %% of the way to the strip median), drawn as measured; palette #493c2f fitted by fit-wall-palette.ts so the render lands on #5e4d3c"
+   ],
+   "likeness": {
+    "pandId": "0363100012177762",
+    "ncc": 0.168,
+    "nccRaw": 0.168,
+    "shiftM": [
+     0.1,
+     -0.3
+    ],
+    "usable": 0.7,
+    "abstain": null,
+    "verdict": "PASS",
+    "reasons": [],
+    "wall": {
+     "photo": "#735b48",
+     "model": "#675542",
+     "dL": -0.035
+    },
+    "glazing": {
+     "photo": 0.41,
+     "model": 0.48
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.488
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012177761",
+   "address": "Nicolaas Witsenstraat 9",
+   "builtYear": 1879,
+   "widthM": 6.3,
+   "eavesM": 17.15,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#7e6552",
+    "wallRaw": "#685b4c",
+    "skyline": {
+     "eavesM": 17.15,
+     "eavesRow": 119,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.5,
+      "riseM": 1.28,
+      "topWidthM": 0.82,
+      "centre": 0.51
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.12,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 15.57,
+       "widthM": 1.02,
+       "centre": 0.72
+      },
+      {
+       "atM": 8.52,
+       "widthM": 1.07,
+       "centre": 0.5
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.16
+   },
+   "status": "placed",
+   "type": "witsen-1890-balustrade-mansard",
+   "score": 1,
+   "placement": {
+    "type": "witsen-1890-balustrade-mansard",
+    "measuredPalette": {
+     "brick": "#7e6552",
+     "evidence": "strip 2024-12-04 span 973-1225: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#665445"
+    }
+   },
+   "notes": [
+    "door left",
+    "crown mansard-box-dormer (type default)",
+    "palette pinned: Opus round 2 brick pin (60 %% of the way to the strip median), drawn as measured; palette #665445 fitted by fit-wall-palette.ts so the render lands on #74604e"
+   ],
+   "likeness": {
+    "pandId": "0363100012177761",
+    "ncc": 0.26,
+    "nccRaw": 0.26,
+    "shiftM": [
+     0.05,
+     -0.3
+    ],
+    "usable": 0.7,
+    "abstain": null,
+    "verdict": "PASS",
+    "reasons": [],
+    "wall": {
+     "photo": "#7b6350",
+     "model": "#806a57",
+     "dL": 0.024
+    },
+    "glazing": {
+     "photo": 0.49,
+     "model": 0.47
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.554
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012177760",
+   "address": "Nicolaas Witsenstraat 11",
+   "builtYear": 1873,
+   "widthM": 6.3,
+   "eavesM": 17.7,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#4a4033",
+    "wallRaw": "#4c483b",
+    "skyline": {
+     "eavesM": 17.57,
+     "eavesRow": 102,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.125,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 15.4,
+       "widthM": 1.77,
+       "centre": 0.85
+      },
+      {
+       "atM": 6.85,
+       "widthM": 1.2,
+       "centre": 0.5
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.21
+   },
+   "status": "placed",
+   "type": "witsen-1890-balustrade-mansard",
+   "score": 1,
+   "placement": {
+    "type": "witsen-1890-balustrade-mansard",
+    "mirror": true,
+    "measuredPalette": {
+     "brick": "#4a4033",
+     "evidence": "strip 2024-12-04 span 1225-1477: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#211c18"
+    }
+   },
+   "notes": [
+    "door right: mirrored",
+    "crown mansard-box-dormer (type default)",
+    "palette pinned: Opus round 2 brick pin (60 %% of the way to the strip median), drawn as measured; palette #211c18 fitted by fit-wall-palette.ts so the render lands on #4b4033"
+   ],
+   "likeness": {
+    "pandId": "0363100012177760",
+    "ncc": 0.513,
+    "nccRaw": 0.513,
+    "shiftM": [
+     0,
+     -0.15
+    ],
+    "usable": 0.65,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.18 mean 0.47 vs photo 0.32"
+    ],
+    "wall": {
+     "photo": "#4e4032",
+     "model": "#594b40",
+     "dL": 0.049
+    },
+    "glazing": {
+     "photo": 0.32,
+     "model": 0.47
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.673
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012177759",
+   "address": "Nicolaas Witsenstraat 13",
+   "builtYear": 1891,
+   "widthM": 6.3,
+   "eavesM": 17.48,
+   "storeys3dbag": 0,
+   "bagBay": null,
+   "strip": {
+    "wall": "#54483c",
+    "wallRaw": "#403c30",
+    "skyline": {
+     "eavesM": 17.48,
+     "eavesRow": 106,
+     "confidence": 1,
+     "crown": {
+      "widthM": 3.17,
+      "riseM": 1.88,
+      "topWidthM": 0.35,
+      "centre": 0.55
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.058,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 5.02,
+       "widthM": 1.05,
+       "centre": 0.16
+      },
+      {
+       "atM": 4.72,
+       "widthM": 1,
+       "centre": 0.16
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.25
+   },
+   "status": "placed",
+   "type": "witsen-1890-plain-block-mansard",
+   "score": 1,
+   "placement": {
+    "type": "witsen-1890-plain-block-mansard",
+    "measuredPalette": {
+     "brick": "#54483c",
+     "evidence": "strip 2024-12-04 span 1477-1729: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#2c2721"
+    }
+   },
+   "notes": [
+    "door left",
+    "crown mansard-box-dormer (type default)",
+    "palette pinned: Opus round 2 brick pin (60 %% of the way to the strip median), drawn as measured; palette #2c2721 fitted by fit-wall-palette.ts so the render lands on #4a4133"
+   ],
+   "likeness": {
+    "pandId": "0363100012177759",
+    "ncc": 0.244,
+    "nccRaw": 0.244,
+    "shiftM": [
+     -0.05,
+     -0.05
+    ],
+    "usable": 0.58,
+    "abstain": null,
+    "verdict": "NO EVIDENCE",
+    "reasons": [
+     "foliage 27 % > 25 %"
+    ],
+    "wall": {
+     "photo": "#59493b",
+     "model": "#574d42",
+     "dL": 0.01
+    },
+    "glazing": {
+     "photo": 0.1,
+     "model": 0.46
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.26
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012171225",
+   "address": "Nicolaas Witsenstraat 15",
+   "builtYear": 1891,
+   "widthM": 6.12,
+   "eavesM": 17.68,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#685540",
+    "wallRaw": "#434134",
+    "skyline": {
+     "eavesM": 17.63,
+     "eavesRow": 100,
+     "confidence": 0.96,
+     "crown": {
+      "widthM": 2.35,
+      "riseM": 2.5,
+      "topWidthM": 0.2,
+      "centre": 0.52
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.032,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 4.8,
+       "widthM": 1,
+       "centre": 0.13
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.32
+   },
+   "status": "placed",
+   "type": "witsen-1890-plain-block-mansard",
+   "score": 1,
+   "placement": {
+    "type": "witsen-1890-plain-block-mansard",
+    "mirror": true,
+    "paletteOverrides": {
+     "brick": "#2e2820"
+    }
+   },
+   "notes": [
+    "door right: mirrored",
+    "crown mansard-box-dormer (type default)",
+    "palette pinned: Opus round 2 brick pin (60 %% of the way to the strip median), drawn as measured; palette #2e2820 fitted by fit-wall-palette.ts so the render lands on #4f4536"
+   ],
+   "likeness": {
+    "pandId": "0363100012171225",
+    "ncc": 0.179,
+    "nccRaw": 0.179,
+    "shiftM": [
+     -0.05,
+     -0.2
+    ],
+    "usable": 0.52,
+    "abstain": null,
+    "verdict": "NO EVIDENCE",
+    "reasons": [
+     "foliage 29 % > 25 %"
+    ],
+    "wall": {
+     "photo": "#695745",
+     "model": "#5a4e3f",
+     "dL": -0.041
+    },
+    "glazing": {
+     "photo": 0.45,
+     "model": 0.46
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.657
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012178936",
+   "address": "Nicolaas Witsenstraat 17",
+   "builtYear": 1891,
+   "widthM": 6.21,
+   "eavesM": 17.77,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#695143",
+    "wallRaw": "#5f584a",
+    "skyline": {
+     "eavesM": 17.6,
+     "eavesRow": 101,
+     "confidence": 0.93,
+     "crown": {
+      "widthM": 2.27,
+      "riseM": 2.52,
+      "topWidthM": 0.55,
+      "centre": 0.48
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.052,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 10.1,
+       "widthM": 1.23,
+       "centre": 0.82
+      },
+      {
+       "atM": 5.38,
+       "widthM": 1.07,
+       "centre": 0.54
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.26
+   },
+   "status": "placed",
+   "type": "witsen-1890-iron-zinc-mansard",
+   "score": 1,
+   "placement": {
+    "type": "witsen-1890-iron-zinc-mansard",
+    "measuredPalette": {
+     "brick": "#695143",
+     "evidence": "strip 2024-12-04 span 1974-2222: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#4b3f34"
+    }
+   },
+   "notes": [
+    "door left",
+    "crown mansard-box-dormer (type default)",
+    "palette pinned: Opus round 2 brick pin (60 %% of the way to the strip median), drawn as measured; palette #4b3f34 fitted by fit-wall-palette.ts so the render lands on #5e4f41"
+   ],
+   "likeness": {
+    "pandId": "0363100012178936",
+    "ncc": 0.27,
+    "nccRaw": 0.27,
+    "shiftM": [
+     -0.1,
+     -0.25
+    ],
+    "usable": 0.63,
+    "abstain": null,
+    "verdict": "PASS",
+    "reasons": [],
+    "wall": {
+     "photo": "#705444",
+     "model": "#685748",
+     "dL": -0.008
+    },
+    "glazing": {
+     "photo": 0.43,
+     "model": 0.47
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.596
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012178935",
+   "address": "Nicolaas Witsenstraat 19B",
+   "builtYear": 1891,
+   "widthM": 6.45,
+   "eavesM": 17.89,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#5d4739",
+    "wallRaw": "#615142",
+    "skyline": {
+     "eavesM": 17.57,
+     "eavesRow": 102,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.98,
+      "riseM": 1.15,
+      "topWidthM": 1.95,
+      "centre": 0.47
+     }
+    },
+    "stucco": false,
+    "bands": 2,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.136,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 7.82,
+       "widthM": 1.27,
+       "centre": 0.16
+      }
+     ]
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0.24
+   },
+   "status": "placed",
+   "type": "witsen-1890-balconette-zinc-mansard",
+   "score": 1,
+   "placement": {
+    "type": "witsen-1890-balconette-zinc-mansard",
+    "measuredPalette": {
+     "brick": "#5d4739",
+     "evidence": "strip 2024-12-04 span 2222-2480: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "mirror": true,
+    "paletteOverrides": {
+     "brick": "#4e3f31"
+    }
+   },
+   "notes": [
+    "crown mansard-box-dormer (type default)",
+    "door right: mirrored: reviewer pin (Nicolaas Witsenstraat 19B (Opus round 2): two windows, door on the right in the photo)",
+    "palette pinned: Opus round 2 brick pin (60 %% of the way to the strip median), drawn as measured; palette #4e3f31 fitted by fit-wall-palette.ts so the render lands on #624f3e"
+   ],
+   "likeness": {
+    "pandId": "0363100012178935",
+    "ncc": 0.418,
+    "nccRaw": 0.418,
+    "shiftM": [
+     -0.2,
+     -0.3
+    ],
+    "usable": 0.65,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing  mean 0.47 vs photo 0.28"
+    ],
+    "wall": {
+     "photo": "#5d4638",
+     "model": "#6c5744",
+     "dL": 0.053
+    },
+    "glazing": {
+     "photo": 0.28,
+     "model": 0.47
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.622
+   },
+   "challengers": {}
+  }
+ ]
+}

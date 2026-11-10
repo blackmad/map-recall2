@@ -36,7 +36,10 @@ import { industrialKitEnabled, industrialMeshSpec, industrialWallHex } from './i
 
 /** 'untextured' draws with the procedural cells' flat layer only: plain colours, real shapes (look/palette.ts). */
 export type { BuildingLook };
-/** The shopfront the decorator stamped (`shopKind`, or `shopQuiet` for none); undefined without the extract. */
+/**
+ * The shopfront the decorator stamped (`shopKind`, or `shopQuiet` for none); undefined without the extract. Undefined
+ * draws NO shop: the old random third (hashShop, bayLook's hash draw) put shops on warehouses (shopGate.ts, 2026-11-10).
+ */
 const shopfrontOf = (p: Record<string, unknown>): ShopKind | 'quiet' | undefined =>
   typeof p.shopKind === 'string' ? p.shopKind as ShopKind : p.shopQuiet ? 'quiet' : undefined;
 /** The texture set a look draws from (look/palette.ts `LOOK_VARIANTS`). */
@@ -44,8 +47,6 @@ export { cellSetOf };
 export type Feature = { type: 'Feature'; properties: Record<string, unknown>; geometry: unknown };
 /** One fixed origin for the whole city: float32 metres stay sub-millimetre within 10 km. */
 export const ORIGIN = { lng: 4.9, lat: 52.37 };
-
-const hashShop = (id: string) => { let h = 2166136261; for (const c of `${id}:shop`) { h ^= c.charCodeAt(0); h = Math.imul(h, 16777619); } return (h >>> 0) / 4294967296 < 0.3; };
 
 export const asPolygons = (geometry: unknown): number[][][][] => {
   const g = geometry as { type?: string; coordinates?: unknown } | null;
@@ -136,7 +137,7 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook, coarse = f
     const year = p.constructionYear === null || p.constructionYear === undefined || !Number.isFinite(Number(p.constructionYear)) ? null : Number(p.constructionYear);
     const at = polygons[0]?.[0]?.[0];
     const profile = at ? buurtProfileAt(at[0], at[1]) : null;
-    const bay = bayLookFor(id, year, Number(p.height) || heightM, look as Look, shopfrontOf(p), undefined, periodWallOf(p), profile,
+    const bay = bayLookFor(id, year, Number(p.height) || heightM, look as Look, shopfrontOf(p) ?? 'quiet', undefined, periodWallOf(p), profile,
       year !== null && year >= 1945 ? { footprintM2: footprintAreaM2(feature.geometry), buildingType: typeof p.buildingType === 'string' ? p.buildingType : null, at: at ? [at[0], at[1]] as const : undefined } : undefined);
     profileWall = bay.profileWall; spandrelAccent = bay.modern?.accent;
     building = { id, polygons, heightM, minHeightM, style: bay.layout, wallHex: bay.wallHex, accentHex: bay.accentHex, layers: bay.layers, groundHex: bay.groundHex };
@@ -149,16 +150,20 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook, coarse = f
     if (bay.contemporary?.setback) building.setbackCrown = true;
   } else {
     layout = (FACADE_STYLES as readonly string[]).includes(String(p.facadeStyle)) ? p.facadeStyle as FacadeStyle : 'c19';
-    building = { id, polygons, heightM, minHeightM, style: layout, wallHex: typeof p.sideColour === 'string' ? p.sideColour : DEFAULT_FACADE_WALL_HEX, shop: layout !== 'tower' && (shopfrontOf(p) ? shopfrontOf(p) !== 'quiet' : hashShop(id)) };
+    building = { id, polygons, heightM, minHeightM, style: layout, wallHex: typeof p.sideColour === 'string' ? p.sideColour : DEFAULT_FACADE_WALL_HEX, shop: layout !== 'tower' && !!shopfrontOf(p) && shopfrontOf(p) !== 'quiet' };
     building.openings = proceduralOpenings(layout);
     plain = cellLayer(layout, 'plain', lookVariant(id)); roofBase = CELL_LAYER_COUNT; building.plainLayer = plain;
   }
+  // A HouseSpec's reads (houseSpec/decorate.ts): the street run's bay count, crown and period, and a wall colour
+  // measured on a street photo. Absent unless the spec extract stamped the pand (`?houseSpecs=0` = absent).
+  const specRecipe = p.specRecipe && typeof p.specRecipe === 'object' && !Array.isArray(p.specRecipe) ? p.specRecipe as NonNullable<MeshBuilding['specRecipe']> : undefined;
+  if (specRecipe) building.specRecipe = specRecipe;
   // A sourced hex color survives PHOTO decoration; material-only hues remain explicitly display priors.
   let sourcedWall: string | undefined;
   if (look === 'photo') {
     // A buurt profile's measured wall (bayLook.ts) outranks a city-wide material-family hue of the same family.
     const materialPrior = profileWall && profileWallBeatsMaterial(p.material, profileWall) ? undefined : p.facadeMaterialColourPrior;
-    const sourced = [p.facadeMappedColour, p.sideColourSource === 'measured-accepted' ? p.sideColour : undefined, materialPrior].find(v => typeof v === 'string' && /^#[0-9a-f]{6}$/i.test(v));
+    const sourced = [specRecipe?.wallHex, p.facadeMappedColour, p.sideColourSource === 'measured-accepted' ? p.sideColour : undefined, materialPrior].find(v => typeof v === 'string' && /^#[0-9a-f]{6}$/i.test(v));
     if (sourced) building.wallHex = String(sourced);
     sourcedWall = sourced ? String(sourced) : undefined;
   }

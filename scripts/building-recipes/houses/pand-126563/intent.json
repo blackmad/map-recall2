@@ -1,0 +1,213 @@
+{
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "pand-126563",
+ "pandId": "0363100012126563",
+ "address": "BAG pand 0363100012126563",
+ "sources": [
+  {
+   "id": "pano-2020-05-06-w01-270",
+   "kind": "street-panorama",
+   "capturedAt": "2020-05-06",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001691_pano_0000_000204/",
+   "image": "source-data://pand-reference-walls/0363100012126563/w01-270.jpg",
+   "sha256": "4074660148910e7ad54ae25258182af72c6bdf9dfacf9c1c78ff7b1bcc0b27c3",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2019-04-26-w03-360",
+   "kind": "street-panorama",
+   "capturedAt": "2019-04-26",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001143_pano_0001_000796/",
+   "image": "source-data://pand-reference-walls/0363100012126563/w03-360.jpg",
+   "sha256": "eac8d5d708cb7c069fd88269514f3c40cfd1a79f1206fb509b599d0b125db504",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2019-12-04-w01-270L",
+   "kind": "street-panorama",
+   "capturedAt": "2019-12-04",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001485_pano_0000_000061/",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2022-03-24-w03-360L",
+   "kind": "street-panorama",
+   "capturedAt": "2022-03-24",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002478_pano_0000_001807/",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "walls": [
+  {
+   "wallSurfaces": [
+    35
+   ],
+   "street": "Anthony Fokkerweg",
+   "system": "blank",
+   "entrance": true,
+   "palette": {
+    "brick": "#6a6f72"
+   },
+   "baysPerStorey": 34,
+   "storeys": 2,
+   "groundFactor": 0.66,
+   "ribbonStoreys": [
+    {
+     "storeys": [
+      0
+     ],
+     "sill": 0.03,
+     "h": 0.93,
+     "lights": 1,
+     "rows": [
+      0.74
+     ],
+     "frame": "#d6d8d4"
+    }
+   ],
+   "signBoards": [
+    {
+     "along": [
+      0,
+      0.169
+     ],
+     "up": [
+      0.62,
+      0.9
+     ],
+     "colour": "#86aab4"
+    },
+    {
+     "along": [
+      0.186,
+      0.279
+     ],
+     "up": [
+      0.42,
+      0.85
+     ],
+     "colour": "#3a3d3a"
+    },
+    {
+     "along": [
+      0.346,
+      0.601
+     ],
+     "up": [
+      0.45,
+      0.84
+     ],
+     "colour": "#82405a"
+    }
+   ],
+   "hand": [
+    "system",
+    "storeys",
+    "groundFactor",
+    "baysPerStorey",
+    "ribbonStoreys",
+    "signBoards",
+    "palette.glass"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    11
+   ],
+   "street": "Valschermkade",
+   "system": "blank",
+   "palette": {
+    "brick": "#414044"
+   },
+   "baysPerStorey": 9,
+   "storeys": 2,
+   "groundFactor": 0.66,
+   "ribbonStoreys": [
+    {
+     "storeys": [
+      0
+     ],
+     "sill": 0.01,
+     "h": 0.95,
+     "lights": 1,
+     "head": {
+      "h": 0.25,
+      "colour": "#2e4c61"
+     },
+     "frame": "#787973"
+    }
+   ],
+   "groundPiers": {
+    "every": 1,
+    "w": 0.085,
+    "colour": "#787973"
+   },
+   "signBoards": [
+    {
+     "along": [
+      0,
+      1
+     ],
+     "up": [
+      0.61,
+      0.89
+     ],
+     "colour": "#416480"
+    }
+   ],
+   "hand": [
+    "system",
+    "storeys",
+    "groundFactor",
+    "baysPerStorey",
+    "ribbonStoreys",
+    "groundPiers",
+    "signBoards"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    24
+   ],
+   "street": "Valschermkade",
+   "system": "brick-bay-grid"
+  },
+  {
+   "wallSurfaces": [
+    22,
+    36
+   ],
+   "system": "brick-bay-grid"
+  },
+  {
+   "wallSurfaces": [
+    18,
+    30
+   ],
+   "system": "brick-bay-grid"
+  }
+ ],
+ "otherWalls": "blank",
+ "palette": {
+  "brick": "#6a6f72",
+  "frame": "#efece4",
+  "door": "#2a2a2a",
+  "wallMaterial": "stucco"
+ },
+ "draftedBy": "factory",
+ "notes": [
+  "Drafted by draftLarge.ts from the 3DBAG panels: systems, colours, window shapes and bays are placeholders until measure.ts --write.",
+  "Panels left blank by the draft: 0 (6.5 m, under 3 m tall); 2 (37 m, party wall); 17 (8.1 m, party wall); 8 (2.3 m, unnamed panel under 8 m); 33 (3.1 m, unnamed panel under 8 m); 18 (2.2 m, party wall); 14 (2.2 m, party wall); 19 (2.9 m, unnamed panel under 8 m); 25 (5.3 m, under 3 m tall); 35 (2.2 m, unnamed panel under 8 m); 9 (2.3 m, unnamed panel under 8 m); 27 (4.3 m, under 3 m tall); 4 (3 m, under 3 m tall); 24 (3.1 m, under 3 m tall); 34 (2.6 m, under 3 m tall).",
+  "Measured 2026-11-10 (measure.ts, evidence in measured.json): groups 0, 1 take the photo's wall and glass colour, window shape, bay count and front class; walls[1] glass #2a3436 not used (not darker than the wall #414044 by 10 L*, or tinted): kit glass kept; walls[1] bays 24 from the likeness grid (padded measurement 18); unphotographed walls take #6a6f72 (stucco), the area-weighted median of groups 0, 1.",
+  "Ribbon storeys 2026-11-10 (lane kitgap-ribbon-20261110), both street fronts are a retail box: a shopfront strip under a blank clad storey with sign boards, not two storeys of punched windows (the r2 hold: 'needs shopfront ribbon + sign band'). Storey lines: two storeys, the shop storey 3.5 m (groundFactor 0.66) under the clad storey to the 9.3 m eaves. walls[1] Valschermkade (w03-360, 2019-04-26, 50 px/m, ground at y 507): nine 4.0 m bays of shop glass 0.04-3.38 m (ribbon on storey 0, sill 0.01, h 0.95) with one blue-grey fascia light per bay in its top quarter (head 0.25, #2e4c61, 2.54-3.38 m), pale aluminium piers 0.35 m wide on every bay edge (groundPiers 0.085 of the bay, #787973, raw crop), the clad wall #414044 (measured) and the blue Beddenreus sign band across the whole front 5.7-8.3 m (signBoards up 0.61-0.89 of the 9.3 m top, #416480). walls[0] Anthony Fokkerweg (w01-270, 2020-05-06): 34 lights 1.9 m wide in white frames #d6d8d4, 0.15-3.3 m, a transom at 0.74 of the glazing (2.46 m) under glazed transom lights; sign boards from the photo: Beddenreus 0-17 % of the front at 5.8-8.3 m (#86aab4), the Beter Bed glass bay 19-28 % at 3.9-7.9 m as a dark board (#3a3d3a), LeenBakker 35-60 % at 4.2-7.8 m (#82405a). Not drawn: the board lettering and logos, the Praxis letters (no board behind them), the entrance canopy box's own depth, the white grid of the Praxis shopfront (three rows). walls[0] glass: the measured #625249 is the shop window stickers (magenta and pink posters), so the kit glass is kept."
+ ],
+ "measured": {
+  "date": "2026-11-10",
+  "groups": [
+   0,
+   1
+  ],
+  "otherWalls": true
+ }
+}

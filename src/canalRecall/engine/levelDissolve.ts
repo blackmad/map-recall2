@@ -46,6 +46,21 @@ export function landmarkArriveFlag(): boolean {
   if (asked === false || asked === '0' || asked === 'false' || asked === 'off') return false;
   return LANDMARK_ARRIVE_DEFAULT;
 }
+/**
+ * Lane P5 (#332): during an arrival dissolve the facade / kit building the landmark replaces stays drawn (it is not
+ * suppressed until the dissolve ends), so the arriving landmark is never see-through. `?landmarkHold=0` (or
+ * `window.__canalRecallLandmarkHold = false`) suppresses it at once again; off with `?landmarkArrive=0`.
+ */
+export const LANDMARK_HOLD_DEFAULT = true;
+export function landmarkHoldFlag(): boolean {
+  if (!landmarkArriveFlag()) return false;
+  const g = globalThis as { __canalRecallLandmarkHold?: boolean | string; location?: { search?: string } };
+  const m = /[?&]landmarkHold=([^&]*)/.exec(g.location?.search ?? '');
+  const asked = g.__canalRecallLandmarkHold ?? (m ? m[1] : null);
+  if (asked === true || asked === '1' || asked === 'true' || asked === 'on') return true;
+  if (asked === false || asked === '0' || asked === 'false' || asked === 'off') return false;
+  return LANDMARK_HOLD_DEFAULT;
+}
 /** An empty level: the outgoing side of an arrival dissolve. */
 export const NO_LEVEL = { traverse(_fn: (o: any) => void): void { /* nothing drawn */ } };
 

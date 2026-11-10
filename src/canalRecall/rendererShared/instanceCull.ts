@@ -20,6 +20,8 @@ export type CullStats = { instances: number; kept: number; needed: number; uploa
 export class InstanceCull {
   private readonly matrices: Float32Array;
   private readonly colours: Float32Array | null;
+  /** Per-instance attributes on the mesh's own geometry (lane P5 `treeFade`): full copies, compacted like the colours. */
+  private readonly extras: { attr: any; full: Float32Array; size: number }[];
   /** Per instance: centre x, y, z and radius (local frame). */
   private readonly spheres: Float32Array;
   private readonly keptFlags: Uint8Array;
@@ -32,6 +34,9 @@ export class InstanceCull {
     const n = mesh.count;
     this.matrices = Float32Array.from(mesh.instanceMatrix.array.subarray(0, n * 16));
     this.colours = mesh.instanceColor ? Float32Array.from(mesh.instanceColor.array.subarray(0, n * 3)) : null;
+    this.extras = Object.values(mesh.geometry?.attributes ?? {}).filter((a: any) => a?.isInstancedBufferAttribute)
+      .map((attr: any) => ({ attr, size: attr.itemSize, full: Float32Array.from(attr.array.subarray(0, n * attr.itemSize)) }));
+    for (const e of this.extras) e.attr.setUsage?.(THREE.DynamicDrawUsage);
     this.spheres = instanceSpheres(THREE, mesh.geometry, this.matrices, n);
     this.keptFlags = new Uint8Array(n);
     this.stats = { instances: n, kept: n, needed: n, uploads: 0 };
@@ -77,6 +82,7 @@ export class InstanceCull {
       if (!keep) continue;
       m.set(this.matrices.subarray(16 * i, 16 * i + 16), 16 * k);
       if (c && this.colours) c.set(this.colours.subarray(3 * i, 3 * i + 3), 3 * k);
+      for (const e of this.extras) e.attr.array.set(e.full.subarray(e.size * i, e.size * i + e.size), e.size * k);
       k++;
     }
     this.keptCount = k;
@@ -85,7 +91,18 @@ export class InstanceCull {
     this.stats.uploads++;
     upload(this.mesh.instanceMatrix, k * 16);
     if (this.mesh.instanceColor) upload(this.mesh.instanceColor, k * 3);
+    for (const e of this.extras) upload(e.attr, k * e.size);
     return true;
+  }
+
+  /** The full (uncompacted) instance arrays: matrices, colours and each extra attribute by name. */
+  full(): { matrices: Float32Array; colours: Float32Array | null; extras: Record<string, Float32Array> } {
+    const extras: Record<string, Float32Array> = {};
+    for (const [name, attr] of Object.entries(this.mesh.geometry?.attributes ?? {})) {
+      const e = this.extras.find(x => x.attr === attr);
+      if (e) extras[name] = e.full;
+    }
+    return { matrices: this.matrices, colours: this.colours, extras };
   }
 
   /** Every instance back in the buffers (the opt-out, a context loss). */
@@ -93,6 +110,7 @@ export class InstanceCull {
     const n = this.stats.instances;
     (this.mesh.instanceMatrix.array as Float32Array).set(this.matrices);
     if (this.colours) (this.mesh.instanceColor.array as Float32Array).set(this.colours);
+    for (const e of this.extras) { e.attr.array.set(e.full); upload(e.attr, n * e.size); }
     this.mesh.count = n;
     this.keptFlags.fill(1);
     this.keptCount = -1;

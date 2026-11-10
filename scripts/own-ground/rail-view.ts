@@ -3,7 +3,7 @@
 // shader: no textures, no polygon offsets, no shadows. The ballast gets its sleepers back from the bed's UV (v along
 // the track), so the tracks read as tracks.
 //
-//   npx tsx scripts/own-ground/rail-view.ts <lng> <lat> <bearingDeg> [distM=90] [heightM=40] [out.png] [--w=960] [--h=540] [--lod=1] [--before | --round2 (no rail bridge structure) | --legacy | --onStreet=0 (the centreline-crossing level-crossing test only)] [--buildings [--infra=<rail-infra-buildings.json>]]
+//   npx tsx scripts/own-ground/rail-view.ts <lng> <lat> <bearingDeg> [distM=90] [heightM=40] [out.png] [--w=960] [--h=540] [--lod=1] [--before | --round2 (no rail bridge structure) | --legacy | --onStreet=0 (the centreline-crossing level-crossing test only) | --spans=0 (no deck spans over streets, railSpans.ts)] [--buildings [--infra=<rail-infra-buildings.json>]]
 //
 // The camera stands `distM` behind the spot (against the bearing) and `heightM` up, looking at the spot.
 import sharp from 'sharp';
@@ -13,7 +13,7 @@ import { RAIL_TONES, SLEEPER_TILE_M } from '../../src/canalRecall/ownGround/rail
 import { railCells } from './probe-rails.ts';
 
 const C: Partial<Record<GroundLayer, readonly number[]>> = {
-  land: [222, 211, 190], park: [126, 170, 96], wood: [96, 140, 76], square: [214, 206, 192], parking: [150, 150, 154], garden: [140, 168, 110],
+  land: [222, 211, 190], park: [126, 170, 96], wood: [96, 140, 76], square: [214, 206, 192], parking: [150, 150, 154], garden: [140, 168, 110], bare: [190, 172, 146],
   asphalt: [86, 88, 92], klinker: [150, 104, 88], brick: [188, 176, 166], cycle: [196, 88, 80], paving: [206, 200, 190], gravel: [196, 184, 158],
   kerb: [235, 230, 220], paint: [250, 250, 250], water: [70, 130, 190], quay: [150, 140, 128], deckBody: [160, 155, 146], deckTop: [180, 172, 160],
   tram: [60, 60, 64], bollard: [120, 40, 30], lawn: [126, 176, 92], bed: [140, 118, 90], shrub: [86, 130, 70], bark: [120, 90, 70], sand: [226, 210, 166],
@@ -93,7 +93,7 @@ async function main(): Promise<void> {
   const out = args[5] ?? `artifacts/rail-look/view-${lng}-${lat}.png`;
   const w = opt('w', 960), h = opt('h', 540), lod = process.argv.includes('--lod=1') ? 1 : 0;
   // --before: main's #145 beds without railProfile.ts (`railLevels: false`); --legacy: rail-v1 of build 04e3c88.
-  const { cells, x, y, store } = await railCells(lng, lat, Math.max(200, dist * 2.5), lod as 0 | 1, process.argv.includes('--legacy') ? { railLegacy: true } : process.argv.includes('--before') ? { railLevels: false } : process.argv.includes('--round2') ? { railBridges: false } : process.argv.includes('--onStreet=0') ? { railOnStreet: false } : {});
+  const { cells, x, y, store } = await railCells(lng, lat, Math.max(200, dist * 2.5), lod as 0 | 1, process.argv.includes('--legacy') ? { railLegacy: true } : process.argv.includes('--before') ? { railLevels: false } : process.argv.includes('--round2') ? { railBridges: false } : process.argv.includes('--onStreet=0') ? { railOnStreet: false } : process.argv.includes('--spans=0') ? { railSpans: false } : {});
   const own = cells.find(c => x >= c.rect[0] && x < c.rect[2] && y >= c.rect[1] && y < c.rect[3]);
   void own;
   // --buildings: the building tiles as plain extrusions (brick walls, pale roofs, as the house generator reads from far);

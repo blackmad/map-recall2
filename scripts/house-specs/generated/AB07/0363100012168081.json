@@ -1,0 +1,115 @@
+{
+ "version": 1,
+ "pandId": "0363100012168081",
+ "buurt": "AB07",
+ "crop": {
+  "tier": "good",
+  "file": "years/2025.jpg",
+  "year": 2025,
+  "quality": 0.677,
+  "panoIds": [
+   "recording_2025-07-03_08-35-58_00107"
+  ],
+  "date": null,
+  "reasons": [],
+  "ppm": 50
+ },
+ "writers": {
+  "register": null,
+  "bag": {
+   "schemaVersion": 1,
+   "pandId": "0363100012168081",
+   "design": {},
+   "provenance": {
+    "facts/facadeYear": {
+     "source": "bag",
+     "confidence": 0.5,
+     "ref": "bag-facts:0363100012168081",
+     "at": null
+    }
+   },
+   "facts": {
+    "facadeYear": 1990
+   }
+  },
+  "pixel": {
+   "schemaVersion": 1,
+   "pandId": "0363100012168081",
+   "design": {
+    "palette": {
+     "brick": "#7b8384"
+    }
+   },
+   "provenance": {
+    "palette/brick": {
+     "source": "streetlevel-measured",
+     "confidence": 0.45,
+     "ref": "source-data://pand-crops/0363100012168081/years/2025.jpg#good",
+     "at": null
+    }
+   }
+  },
+  "jev": {
+   "schemaVersion": 1,
+   "pandId": "0363100012168081",
+   "design": {
+    "fronts": [
+     {
+      "bays": 3
+     }
+    ]
+   },
+   "provenance": {
+    "fronts/0/bays": {
+     "source": "vision-judge",
+     "confidence": 0.99,
+     "ref": "source-data://pand-crops/0363100012168081/years/2025.jpg",
+     "at": null
+    }
+   }
+  }
+ },
+ "spec": {
+  "schemaVersion": 1,
+  "pandId": "0363100012168081",
+  "design": {
+   "fronts": [
+    {
+     "bays": 3
+    }
+   ],
+   "palette": {
+    "brick": "#7b8384"
+   }
+  },
+  "provenance": {
+   "fronts/0/bays": {
+    "source": "vision-judge",
+    "confidence": 0.99,
+    "ref": "source-data://pand-crops/0363100012168081/years/2025.jpg",
+    "at": null
+   },
+   "palette/brick": {
+    "source": "streetlevel-measured",
+    "confidence": 0.45,
+    "ref": "source-data://pand-crops/0363100012168081/years/2025.jpg#good",
+    "at": null
+   },
+   "facts/facadeYear": {
+    "source": "bag",
+    "confidence": 0.5,
+    "ref": "bag-facts:0363100012168081",
+    "at": null
+   }
+  },
+  "facts": {
+   "facadeYear": 1990
+  }
+ },
+ "disagreements": [],
+ "jev": {
+  "cached": true,
+  "hash": "ab647dd689e0afdabcf5295b83855576",
+  "usd": 0
+ }
+}

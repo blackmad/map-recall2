@@ -1,6 +1,7 @@
 // The game's building decoration chain, assembled for the gallery pages.
 // vector-map.js `_applyFeatureDecorator` + the tile streamer do, per feature:
-//   decorateBuildingFeature (citywide priors) -> exceptLandmarks(decorateRoof(withMonumentGable(decorateFacade)))
+//   decorateBuildingFeature (citywide priors) -> exceptLandmarks(decorateRoof(withHouseSpecCrown(withMonumentGable(
+//   decorateFacade(withHouseSpec(withRegisterFacts))))))
 //   -> decorateKitRoof -> decorateFront -> decorateShopfront
 // then the chunk worker calls buildFeatureChunk. This module repeats that order from the same
 // functions, so a gallery render is the game's code path, not a look-alike. Pure (no DOM, no three);
@@ -11,6 +12,7 @@ import { constructionYearEnricher, decorateFacade } from './genericFacades.js';
 import { decorateRoof, exceptLandmarks } from './roofMesh.js';
 import { withMonumentGable, type MonumentGables } from './monumentGables.js';
 import { withRegisterFacts, type RegisterFactsMap } from './facade/registerRecipe.js';
+import { withHouseSpec, withHouseSpecCrown } from './houseSpec/decorate.js';
 import { KIT_MODELLED_IDS, decorateKitRoof } from './landmarkKits.js';
 import { decorateFront } from './landmarkFrontData.js';
 import { decorateShopfront } from './shopfronts.js';
@@ -41,7 +43,9 @@ export function gameFeatureDecorator(options: DecoratorOptions = {}): (feature: 
   const { gables, registerFacts, landmarkIds = new Set<string>(), listed, afterFacade } = options;
   const named = gables && gables.size ? (f: Feature) => withMonumentGable(f, gables) : (f: Feature) => f;
   const registered = registerFacts && registerFacts.size ? (f: Feature) => withRegisterFacts(f, registerFacts) : (f: Feature) => f;
-  const decorate = (f: Feature) => decorateRoof(named((afterFacade ?? ((x: Feature) => x))(decorateFacade(registered(f)))));
+  // HouseSpecs (houseSpec/decorate.ts) outrank the register: their facts step runs right after it, their crown step
+  // after withMonumentGable (which would otherwise restore the register's gable). Both are no-ops without `p.houseSpec`.
+  const decorate = (f: Feature) => decorateRoof(withHouseSpecCrown(named((afterFacade ?? ((x: Feature) => x))(decorateFacade(withHouseSpec(registered(f)))))));
   const base = exceptLandmarks(decorate, landmarkIds, KIT_MODELLED_IDS, listed);
   return (f: Feature) => decorateShopfront(decorateFront(decorateKitRoof(base(f))));
 }

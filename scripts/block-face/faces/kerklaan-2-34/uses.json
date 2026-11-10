@@ -1,0 +1,528 @@
+{
+ "street": "Plantage Kerklaan",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T07:18:28.835Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012181244",
+   "addresses": [
+    "Plantage Kerklaan 34"
+   ],
+   "groundUnits": [
+    {
+     "address": "Plantage Kerklaan 34-H",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000777472"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181243",
+   "addresses": [
+    "Plantage Kerklaan 32"
+   ],
+   "groundUnits": [
+    {
+     "address": "Plantage Kerklaan 32-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 97,
+     "bagId": "0363010000777467"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 12118891413,
+     "lngLat": [
+      4.9117009,
+      52.3660967
+     ],
+     "tags": {
+      "addr:housenumber": "32HS",
+      "addr:street": "Plantage Kerklaan",
+      "amenity": "restaurant",
+      "check_date": "2024-08-18",
+      "cuisine": "pizza",
+      "name": "La Roma",
+      "opening_hours": "Mo-Su 12:00-22:30",
+      "website": "https://www.pizzeriasteakhouse-la-roma.nl/"
+     },
+     "fetchedAt": "2026-11-10T07:18:28.835Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012181242",
+   "addresses": [
+    "Plantage Kerklaan 30"
+   ],
+   "groundUnits": [
+    {
+     "address": "Plantage Kerklaan 30-H",
+     "use": "winkelfunctie,woonfunctie",
+     "areaM2": 35,
+     "bagId": "0363010000777463"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 432445895,
+     "lngLat": [
+      4.9116659,
+      52.3660615
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:country": "NL",
+      "addr:street": "Plantage Middenlaan",
+      "check_date": "2026-10-05",
+      "check_date:opening_hours": "2026-10-05",
+      "fixme": "Gift shop or convenience store? Not open when surveyed",
+      "name": "Blin",
+      "opening_hours": "Mo-Fr 11:00-19:00; Sa 11:00-17:00; Su 12:00-17:00",
+      "shop": "gift",
+      "source": "survey"
+     },
+     "fetchedAt": "2026-11-10T07:18:28.835Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012181241",
+   "addresses": [
+    "Plantage Kerklaan 28"
+   ],
+   "groundUnits": [
+    {
+     "address": "Plantage Kerklaan 28-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 103,
+     "bagId": "0363010000777459"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 440009812,
+     "lngLat": [
+      4.9116177,
+      52.3660271
+     ],
+     "tags": {
+      "addr:housenumber": "28",
+      "addr:street": "Plantage Kerklaan",
+      "amenity": "restaurant",
+      "check_date": "2026-10-02",
+      "check_date:opening_hours": "2026-10-02",
+      "cuisine": "ramen",
+      "name": "Vatten Ramen",
+      "opening_hours": "Mo-Su 12:00-16:00,17:00-21:00",
+      "website": "https://www.instagram.com/vattenramen/"
+     },
+     "fetchedAt": "2026-11-10T07:18:28.835Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012181240",
+   "addresses": [
+    "Plantage Kerklaan 26"
+   ],
+   "groundUnits": [
+    {
+     "address": "Plantage Kerklaan 26-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 99,
+     "bagId": "0363010000777453"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 4453872010,
+     "lngLat": [
+      4.9115971,
+      52.3659774
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "26",
+      "addr:street": "Plantage Kerklaan",
+      "amenity": "restaurant",
+      "check_date": "2026-10-05",
+      "check_date:opening_hours": "2026-10-05",
+      "cuisine": "japanese",
+      "diet:vegan": "yes",
+      "diet:vegetarian": "yes",
+      "name": "Tempura",
+      "opening_hours": "Tu-Su 17:00-23:00",
+      "phone": "+31 20 428 7132",
+      "website": "https://www.restauranttempura.nl",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-11-10T07:18:28.835Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012181246",
+   "addresses": [
+    "Plantage Kerklaan 24"
+   ],
+   "groundUnits": [
+    {
+     "address": "Plantage Kerklaan 24-H",
+     "use": "winkelfunctie,woonfunctie",
+     "areaM2": 105,
+     "bagId": "0363010000777445"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2742862882,
+     "lngLat": [
+      4.9115795,
+      52.3659329
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "24-H",
+      "addr:postcode": "1018TB",
+      "addr:street": "Plantage Kerklaan",
+      "amenity": "cafe",
+      "check_date": "2026-10-02",
+      "email": "info@sagra.nl",
+      "name": "Sagra",
+      "opening_hours": "Mo-Fr 11:00-20:00; Sa 10:00-18:00",
+      "phone": "+31 20 320 6195",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "takeaway": "yes",
+      "website": "https://www.sagra.nl/"
+     },
+     "fetchedAt": "2026-11-10T07:18:28.835Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012170488",
+   "addresses": [
+    "Plantage Kerklaan 22"
+   ],
+   "groundUnits": [
+    {
+     "address": "Plantage Kerklaan 22-H",
+     "use": "woonfunctie",
+     "areaM2": 170,
+     "bagId": "0363010012088809"
+    },
+    {
+     "address": "Plantage Kerklaan 22-H",
+     "use": "woonfunctie",
+     "areaM2": 137,
+     "bagId": "0363010012163821"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012170487",
+   "addresses": [
+    "Plantage Kerklaan 20"
+   ],
+   "groundUnits": [
+    {
+     "address": "Plantage Kerklaan 20-H",
+     "use": "woonfunctie",
+     "areaM2": 96,
+     "bagId": "0363010001020127"
+    },
+    {
+     "address": "Plantage Kerklaan 20-H",
+     "use": "woonfunctie",
+     "areaM2": 161,
+     "bagId": "0363010012603377"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181653",
+   "addresses": [
+    "Plantage Kerklaan 18"
+   ],
+   "groundUnits": [
+    {
+     "address": "Plantage Kerklaan 18-H",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000777425"
+    },
+    {
+     "address": "Plantage Kerklaan 18-O",
+     "use": "industriefunctie",
+     "areaM2": 61,
+     "bagId": "0363010000777426"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012180477",
+   "addresses": [
+    "Plantage Kerklaan 16"
+   ],
+   "groundUnits": [
+    {
+     "address": "Plantage Kerklaan 16-H",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000777418"
+    },
+    {
+     "address": "Plantage Kerklaan 16-O",
+     "use": "industriefunctie",
+     "areaM2": 85,
+     "bagId": "0363010000777419"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2742862587,
+     "lngLat": [
+      4.9114192,
+      52.3657913
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "16-H",
+      "addr:postcode": "1018TB",
+      "addr:street": "Plantage Kerklaan",
+      "check_date": "2026-01-18",
+      "check_date:opening_hours": "2026-01-18",
+      "name": "Het Rijwielherstellingsoord",
+      "opening_hours": "Tu-Fr 10:00-18:00",
+      "shop": "bicycle",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.hetrijwielherstellingsoord.nl"
+     },
+     "fetchedAt": "2026-11-10T07:18:28.835Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012180476",
+   "addresses": [
+    "Plantage Kerklaan 14"
+   ],
+   "groundUnits": [
+    {
+     "address": "Plantage Kerklaan 14-H",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000777411"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012180475",
+   "addresses": [
+    "Plantage Kerklaan 12"
+   ],
+   "groundUnits": [],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11021730184,
+     "lngLat": [
+      4.9113422,
+      52.3657164
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "12",
+      "addr:postcode": "1018TA",
+      "addr:street": "Plantage Kerklaan",
+      "amenity": "fast_food",
+      "branch": "Amsterdam Plantage",
+      "brand": "De Pizzabakkers",
+      "brand:website": "https://www.depizzabakkers.nl",
+      "brand:wikidata": "Q124218622",
+      "check_date": "2026-10-01",
+      "cuisine": "pizza",
+      "description": "To Go Bar",
+      "email": "plantage@depizzabakkers.nl",
+      "name": "De Pizzabakkers To Go",
+      "opening_hours": "Mo-Su 17:00-21:00",
+      "phone": "+31 20 3039244",
+      "takeaway": "only",
+      "website": "https://www.depizzabakkers.nl/vestigingen/amsterdam-plantage/"
+     },
+     "fetchedAt": "2026-11-10T07:18:28.835Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012180481",
+   "addresses": [
+    "Plantage Kerklaan 10"
+   ],
+   "groundUnits": [
+    {
+     "address": "Plantage Kerklaan 10-H",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000777397"
+    },
+    {
+     "address": "Plantage Kerklaan 10-O",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 63,
+     "bagId": "0363010000777398"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012180480",
+   "addresses": [
+    "Plantage Kerklaan 8"
+   ],
+   "groundUnits": [
+    {
+     "address": "Plantage Kerklaan 8-H",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000777389"
+    },
+    {
+     "address": "Plantage Kerklaan 8-O",
+     "use": "industriefunctie",
+     "areaM2": 69,
+     "bagId": "0363010000777390"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012180479",
+   "addresses": [
+    "Plantage Kerklaan 6"
+   ],
+   "groundUnits": [
+    {
+     "address": "Plantage Kerklaan 6-H",
+     "use": "woonfunctie",
+     "areaM2": 41,
+     "bagId": "0363010000777380"
+    },
+    {
+     "address": "Plantage Kerklaan 6-O",
+     "use": "kantoorfunctie",
+     "areaM2": 57,
+     "bagId": "0363010000777381"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012180486",
+   "addresses": [
+    "Plantage Kerklaan 4"
+   ],
+   "groundUnits": [
+    {
+     "address": "Plantage Kerklaan 4-H",
+     "use": "woonfunctie",
+     "areaM2": 41,
+     "bagId": "0363010000777372"
+    },
+    {
+     "address": "Plantage Kerklaan 4-O",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 42,
+     "bagId": "0363010001172178"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012180485",
+   "addresses": [
+    "Plantage Kerklaan 2"
+   ],
+   "groundUnits": [
+    {
+     "address": "Plantage Kerklaan 2-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 174,
+     "bagId": "0363010000777366"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2742862725,
+     "lngLat": [
+      4.9111744,
+      52.3655365
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "2-H",
+      "addr:postcode": "1018TA",
+      "addr:street": "Plantage Kerklaan",
+      "amenity": "restaurant",
+      "name": "Pizzabakkers",
+      "opening_hours": "Mo,Tu 16:00-22:00; We-Su 12:00-22:00",
+      "source": "BAG",
+      "source:date": "2014-03-24"
+     },
+     "fetchedAt": "2026-11-10T07:18:28.835Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

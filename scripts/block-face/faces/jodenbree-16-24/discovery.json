@@ -1,0 +1,256 @@
+{
+ "street": "Jodenbreestraat",
+ "seed": "0363100012182904",
+ "members": [
+  "0363100012165556",
+  "0363100012182905",
+  "0363100012182904"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "trimmed at 0363100012165556 (face continues: 182519 165554)"
+  },
+  {
+   "side": "right",
+   "reason": "trimmed at 0363100012182904 (face continues: 182906 251237 182907 165555)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012171990",
+   "reason": "sightline to Jodenbreestraat crosses 0363100012171993"
+  },
+  {
+   "pandId": "0363100012182513",
+   "reason": "frontage 73.5 m from Jodenbreestraat"
+  },
+  {
+   "pandId": "0363100012182515",
+   "reason": "frontage 39.8 m from Jodenbreestraat"
+  },
+  {
+   "pandId": "0363100012182516",
+   "reason": "sightline to Jodenbreestraat crosses 0363100012171992"
+  },
+  {
+   "pandId": "0363100012182517",
+   "reason": "frontage 34.6 m from Jodenbreestraat"
+  },
+  {
+   "pandId": "0363100012186092",
+   "reason": "frontage 105.8 m from Jodenbreestraat"
+  },
+  {
+   "pandId": "0363100012254435",
+   "reason": "frontage 72.4 m from Jodenbreestraat"
+  },
+  {
+   "pandId": "0363100012254436",
+   "reason": "frontage 73.8 m from Jodenbreestraat"
+  },
+  {
+   "pandId": "0363100012254437",
+   "reason": "frontage 75.6 m from Jodenbreestraat"
+  },
+  {
+   "pandId": "0363100012254438",
+   "reason": "frontage 77.8 m from Jodenbreestraat"
+  },
+  {
+   "pandId": "0363100012254439",
+   "reason": "frontage 75.1 m from Jodenbreestraat"
+  },
+  {
+   "pandId": "0363100012254440",
+   "reason": "frontage 76.5 m from Jodenbreestraat"
+  },
+  {
+   "pandId": "0363100012254441",
+   "reason": "frontage 78.2 m from Jodenbreestraat"
+  },
+  {
+   "pandId": "0363100012254442",
+   "reason": "frontage 80.3 m from Jodenbreestraat"
+  },
+  {
+   "pandId": "0363100012254443",
+   "reason": "frontage 90.3 m from Jodenbreestraat"
+  },
+  {
+   "pandId": "0363100012254444",
+   "reason": "frontage 91.4 m from Jodenbreestraat"
+  },
+  {
+   "pandId": "0363100012254445",
+   "reason": "frontage 92.8 m from Jodenbreestraat"
+  },
+  {
+   "pandId": "0363100012254446",
+   "reason": "frontage 94.6 m from Jodenbreestraat"
+  },
+  {
+   "pandId": "0363100012254447",
+   "reason": "frontage 93.0 m from Jodenbreestraat"
+  },
+  {
+   "pandId": "0363100012254448",
+   "reason": "frontage 94.1 m from Jodenbreestraat"
+  },
+  {
+   "pandId": "0363100012171998",
+   "reason": "frontage 88.1 m from Jodenbreestraat"
+  },
+  {
+   "pandId": "0363100012178153",
+   "reason": "frontage 62.6 m from Jodenbreestraat"
+  },
+  {
+   "pandId": "0363100012182528",
+   "reason": "frontage 95.5 m from Jodenbreestraat"
+  },
+  {
+   "pandId": "0363100012182529",
+   "reason": "frontage 100.0 m from Jodenbreestraat"
+  },
+  {
+   "pandId": "0363100012182603",
+   "reason": "frontage 91.2 m from Jodenbreestraat"
+  },
+  {
+   "pandId": "0363100012182903",
+   "reason": "frontage 30.6 m from Jodenbreestraat"
+  },
+  {
+   "pandId": "0363100012182908",
+   "reason": "frontage 41.8 m from Jodenbreestraat"
+  },
+  {
+   "pandId": "0363100012182913",
+   "reason": "no frontage on Jodenbreestraat: No footprint edge faces Jodenbreestraat"
+  },
+  {
+   "pandId": "0363100012182983",
+   "reason": "no frontage on Jodenbreestraat: No footprint edge faces Jodenbreestraat"
+  },
+  {
+   "pandId": "0363100012182984",
+   "reason": "frontage 47.1 m from Jodenbreestraat"
+  },
+  {
+   "pandId": "0363100012182987",
+   "reason": "frontage 38.9 m from Jodenbreestraat"
+  },
+  {
+   "pandId": "0363100012254449",
+   "reason": "frontage 95.5 m from Jodenbreestraat"
+  },
+  {
+   "pandId": "0363100012254450",
+   "reason": "frontage 97.2 m from Jodenbreestraat"
+  },
+  {
+   "pandId": "0363100012254451",
+   "reason": "frontage 77.6 m from Jodenbreestraat"
+  },
+  {
+   "pandId": "0363100012254452",
+   "reason": "frontage 77.5 m from Jodenbreestraat"
+  },
+  {
+   "pandId": "0363100012254453",
+   "reason": "frontage 77.4 m from Jodenbreestraat"
+  },
+  {
+   "pandId": "0363100012254454",
+   "reason": "frontage 80.3 m from Jodenbreestraat"
+  },
+  {
+   "pandId": "0363100012254455",
+   "reason": "frontage 80.2 m from Jodenbreestraat"
+  },
+  {
+   "pandId": "0363100012254456",
+   "reason": "frontage 80.1 m from Jodenbreestraat"
+  },
+  {
+   "pandId": "0363100012254457",
+   "reason": "frontage 95.7 m from Jodenbreestraat"
+  },
+  {
+   "pandId": "0363100012254458",
+   "reason": "frontage 95.5 m from Jodenbreestraat"
+  },
+  {
+   "pandId": "0363100012254459",
+   "reason": "frontage 95.4 m from Jodenbreestraat"
+  },
+  {
+   "pandId": "0363100012254460",
+   "reason": "frontage 98.4 m from Jodenbreestraat"
+  },
+  {
+   "pandId": "0363100012254461",
+   "reason": "frontage 98.3 m from Jodenbreestraat"
+  },
+  {
+   "pandId": "0363100012254462",
+   "reason": "frontage 98.2 m from Jodenbreestraat"
+  },
+  {
+   "pandId": "0363100012171628",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012182520",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012182986",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012185418",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012185844",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012165556",
+   "alongM": -21.85,
+   "widthM": 6.76,
+   "eavesM": 12.88,
+   "roofMaxM": 15.7,
+   "storeys3dbag": 5,
+   "builtYear": 1742,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012182905",
+   "alongM": -10.72,
+   "widthM": 15.52,
+   "eavesM": 14.3,
+   "roofMaxM": 15.83,
+   "storeys3dbag": 5,
+   "builtYear": 1983,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012182904",
+   "alongM": 0,
+   "widthM": 5.93,
+   "eavesM": 17.24,
+   "roofMaxM": 17.27,
+   "storeys3dbag": 5,
+   "builtYear": 2001,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  }
+ ]
+}

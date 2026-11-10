@@ -1,0 +1,280 @@
+{
+ "version": 1,
+ "rulesVersion": 4,
+ "buurt": {
+  "code": "EQ01",
+  "cbsCode": "BU0363EQ01",
+  "name": "Da Costabuurt-Noord",
+  "gebied": "Oud-West, De Baarsjes"
+ },
+ "archive": "pand-crops",
+ "thresholds": {
+  "voidShare": 0.35,
+  "foliage": 0.3,
+  "washedOut": 0.25,
+  "occluderShare": 0.35,
+  "obliquityDeg": 55,
+  "fallbackObliquityDeg": 55,
+  "straightDeg": 35,
+  "cameraDistanceM": [
+   5,
+   35
+  ],
+  "minWallM": 3.5,
+  "minHeightCover": 0.85,
+  "minEdgeDensity": 0.04,
+  "narrowWallM": 4
+ },
+ "createdAt": "2026-11-10T15:11:29.135Z",
+ "sessions": [
+  {
+   "startedAt": "2026-11-10T15:11:29.135Z",
+   "wallSeconds": 21,
+   "requests": 12,
+   "bytes": 20903513,
+   "retries": 0,
+   "status429": 0,
+   "status5xx": 0,
+   "failures": 0,
+   "pands": 7,
+   "rateMs": 500,
+   "endedAt": "2026-11-10T15:11:50.018Z"
+  }
+ ],
+ "pands": {
+  "0363100012116526": {
+   "status": "ok",
+   "method": "wall",
+   "usable": true,
+   "reasons": [],
+   "flags": {
+    "foliage": 0.212,
+    "foliagePlain": 0.212,
+    "wbApplied": false,
+    "washedOut": 0.002,
+    "missing": 0,
+    "voidShare": 0,
+    "occluderShare": 0.211,
+    "obliquity": 14.8,
+    "cameraDistance": 7.2,
+    "rayBlocked": false,
+    "wallWidthM": 12.89,
+    "heightCover": 1,
+    "edgeDensity": 0.129,
+    "seamStep": 99.5,
+    "strip": false
+   },
+   "archive": "pand-crops/0363100012116526",
+   "panoIds": [
+    "b_20241121_0951_Track22_Sphere_00480"
+   ],
+   "date": "2024-11-21",
+   "ppm": 50,
+   "widthM": 12.89,
+   "attempts": 1,
+   "chosenYear": 2024,
+   "yearsTried": 1
+  },
+  "0363100012164843": {
+   "status": "ok",
+   "method": "wall",
+   "usable": true,
+   "reasons": [],
+   "flags": {
+    "foliage": 0.024,
+    "foliagePlain": 0.058,
+    "wbApplied": true,
+    "washedOut": 0,
+    "missing": 0,
+    "voidShare": 0,
+    "occluderShare": 0.315,
+    "obliquity": 2.1,
+    "cameraDistance": 16,
+    "rayBlocked": false,
+    "wallWidthM": 5.92,
+    "heightCover": 1,
+    "edgeDensity": 0.172,
+    "seamStep": 40.9,
+    "strip": false
+   },
+   "archive": "pand-crops/0363100012164843",
+   "panoIds": [
+    "TMX7316010203-002548_pano_0000_000615"
+   ],
+   "date": "2022-04-26",
+   "ppm": 50,
+   "widthM": 5.92,
+   "attempts": 2,
+   "chosenYear": 2022,
+   "yearsTried": 2
+  },
+  "0363100012161422": {
+   "status": "ok",
+   "method": "wall",
+   "usable": true,
+   "reasons": [],
+   "flags": {
+    "foliage": 0.078,
+    "foliagePlain": 0.314,
+    "wbApplied": true,
+    "washedOut": 0.008,
+    "missing": 0,
+    "voidShare": 0,
+    "occluderShare": 0.096,
+    "obliquity": 15.4,
+    "cameraDistance": 6.9,
+    "rayBlocked": false,
+    "wallWidthM": 6.05,
+    "heightCover": 1,
+    "edgeDensity": 0.277,
+    "seamStep": 57.2,
+    "strip": false
+   },
+   "archive": "pand-crops/0363100012161422",
+   "panoIds": [
+    "b_20241121_0951_Track22_Sphere_00477"
+   ],
+   "date": "2024-11-21",
+   "ppm": 50,
+   "widthM": 6.05,
+   "attempts": 1,
+   "chosenYear": 2024,
+   "yearsTried": 1
+  },
+  "0363100012157426": {
+   "status": "ok",
+   "method": "wall",
+   "usable": true,
+   "reasons": [],
+   "flags": {
+    "foliage": 0.239,
+    "foliagePlain": 0.239,
+    "wbApplied": false,
+    "washedOut": 0.023,
+    "missing": 0,
+    "voidShare": 0,
+    "occluderShare": 0.07,
+    "obliquity": 11.7,
+    "cameraDistance": 6.6,
+    "rayBlocked": false,
+    "wallWidthM": 6.12,
+    "heightCover": 1,
+    "edgeDensity": 0.272,
+    "seamStep": 79.4,
+    "strip": false
+   },
+   "archive": "pand-crops/0363100012157426",
+   "panoIds": [
+    "b_20241121_0951_Track22_Sphere_00476"
+   ],
+   "date": "2024-11-21",
+   "ppm": 50,
+   "widthM": 6.12,
+   "attempts": 1,
+   "chosenYear": 2024,
+   "yearsTried": 1
+  },
+  "0363100012160273": {
+   "status": "ok",
+   "method": "wall",
+   "usable": true,
+   "reasons": [],
+   "flags": {
+    "foliage": 0.06,
+    "foliagePlain": 0.209,
+    "wbApplied": true,
+    "washedOut": 0.023,
+    "missing": 0,
+    "voidShare": 0,
+    "occluderShare": 0.333,
+    "obliquity": 4.1,
+    "cameraDistance": 6.5,
+    "rayBlocked": false,
+    "wallWidthM": 7.23,
+    "heightCover": 1,
+    "edgeDensity": 0.228,
+    "seamStep": 94.8,
+    "strip": false
+   },
+   "archive": "pand-crops/0363100012160273",
+   "panoIds": [
+    "b_20241121_0951_Track22_Sphere_00475"
+   ],
+   "date": "2024-11-21",
+   "ppm": 50,
+   "widthM": 7.23,
+   "attempts": 1,
+   "chosenYear": 2024,
+   "yearsTried": 1
+  },
+  "0363100012160704": {
+   "status": "ok",
+   "method": "wall",
+   "usable": false,
+   "reasons": [
+    "blocked",
+    "blank"
+   ],
+   "flags": {
+    "foliage": 0.003,
+    "foliagePlain": 0.008,
+    "wbApplied": true,
+    "washedOut": 0,
+    "missing": 0,
+    "voidShare": 0,
+    "occluderShare": 0.048,
+    "obliquity": 8.8,
+    "cameraDistance": 34.9,
+    "rayBlocked": true,
+    "wallWidthM": 3.81,
+    "heightCover": 1,
+    "edgeDensity": 0.003,
+    "seamStep": 20.3,
+    "strip": false
+   },
+   "archive": "pand-crops/0363100012160704",
+   "panoIds": [
+    "TMX7316010203-002929_pano_0013_000035"
+   ],
+   "date": "2023-01-12",
+   "ppm": 50,
+   "widthM": 3.81,
+   "attempts": 1,
+   "chosenYear": 2022,
+   "yearsTried": 1
+  },
+  "0363100012159694": {
+   "status": "ok",
+   "method": "wall",
+   "usable": true,
+   "reasons": [],
+   "flags": {
+    "foliage": 0.218,
+    "foliagePlain": 0.218,
+    "wbApplied": false,
+    "washedOut": 0.073,
+    "missing": 0,
+    "voidShare": 0,
+    "occluderShare": 0.118,
+    "obliquity": 6,
+    "cameraDistance": 6.7,
+    "rayBlocked": false,
+    "wallWidthM": 5.94,
+    "heightCover": 1,
+    "edgeDensity": 0.28,
+    "seamStep": 74.7,
+    "strip": false
+   },
+   "archive": "pand-crops/0363100012159694",
+   "panoIds": [
+    "b_20241121_0951_Track22_Sphere_00472"
+   ],
+   "date": "2024-11-21",
+   "ppm": 50,
+   "widthM": 5.94,
+   "attempts": 1,
+   "chosenYear": 2024,
+   "yearsTried": 1
+  }
+ }
+}

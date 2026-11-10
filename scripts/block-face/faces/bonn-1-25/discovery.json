@@ -1,0 +1,1310 @@
+{
+ "street": "Andreas Bonnstraat",
+ "seed": "0363100012121398",
+ "members": [
+  "0363100012121398",
+  "0363100012137198",
+  "0363100012063468",
+  "0363100012156889",
+  "0363100012152496",
+  "0363100012160601",
+  "0363100012154202",
+  "0363100012158236",
+  "0363100012158886",
+  "0363100012166557",
+  "0363100012152778",
+  "0363100012161704",
+  "0363100012159139"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "next fronting pand 0363100012076908 106.5 m on shares no party wall (cross street or gap)"
+  },
+  {
+   "side": "right",
+   "reason": "no further pand fronts the street in the fetched area"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012061848",
+   "reason": "no frontage on Andreas Bonnstraat: No footprint edge faces Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012085377",
+   "reason": "frontage 122.3 m from Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012091868",
+   "reason": "no frontage on Andreas Bonnstraat: No footprint edge faces Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012092786",
+   "reason": "frontage 117.4 m from Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012093163",
+   "reason": "frontage 154.1 m from Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012063505",
+   "reason": "frontage 42.5 m from Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012064799",
+   "reason": "frontage 93.2 m from Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012066166",
+   "reason": "no frontage on Andreas Bonnstraat: No footprint edge faces Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012067569",
+   "reason": "frontage 37.6 m from Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012070638",
+   "reason": "no frontage on Andreas Bonnstraat: No footprint edge faces Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012074769",
+   "reason": "frontage 32.6 m from Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012075399",
+   "reason": "frontage 129.2 m from Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012075482",
+   "reason": "no frontage on Andreas Bonnstraat: No footprint edge faces Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012076685",
+   "reason": "no frontage on Andreas Bonnstraat: No footprint edge faces Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012078068",
+   "reason": "no frontage on Andreas Bonnstraat: No footprint edge faces Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012079614",
+   "reason": "sightline to Andreas Bonnstraat crosses 0363100012237252"
+  },
+  {
+   "pandId": "0363100012083299",
+   "reason": "frontage 116.8 m from Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012083528",
+   "reason": "no frontage on Andreas Bonnstraat: No footprint edge faces Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012084114",
+   "reason": "frontage 74.9 m from Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012084752",
+   "reason": "no frontage on Andreas Bonnstraat: No footprint edge faces Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012088234",
+   "reason": "frontage 121.9 m from Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012090902",
+   "reason": "sightline to Andreas Bonnstraat crosses 0363100012135498"
+  },
+  {
+   "pandId": "0363100012092532",
+   "reason": "frontage 37.4 m from Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012064922",
+   "reason": "no frontage on Andreas Bonnstraat: No footprint edge faces Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012069114",
+   "reason": "no frontage on Andreas Bonnstraat: No footprint edge faces Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012071120",
+   "reason": "no frontage on Andreas Bonnstraat: No footprint edge faces Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012073029",
+   "reason": "frontage 79.1 m from Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012073733",
+   "reason": "no frontage on Andreas Bonnstraat: No footprint edge faces Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012077446",
+   "reason": "no frontage on Andreas Bonnstraat: No footprint edge faces Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012081013",
+   "reason": "frontage 72.0 m from Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012081247",
+   "reason": "frontage 80.3 m from Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012083880",
+   "reason": "no frontage on Andreas Bonnstraat: No footprint edge faces Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012086519",
+   "reason": "no frontage on Andreas Bonnstraat: No footprint edge faces Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012086773",
+   "reason": "frontage 39.8 m from Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012086877",
+   "reason": "frontage 84.8 m from Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012086984",
+   "reason": "no frontage on Andreas Bonnstraat: No footprint edge faces Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012087566",
+   "reason": "no frontage on Andreas Bonnstraat: No footprint edge faces Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012092001",
+   "reason": "frontage 106.4 m from Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012097902",
+   "reason": "frontage 57.4 m from Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012101569",
+   "reason": "no frontage on Andreas Bonnstraat: No footprint edge faces Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012105777",
+   "reason": "frontage 41.2 m from Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012115822",
+   "reason": "frontage 139.0 m from Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012124335",
+   "reason": "no frontage on Andreas Bonnstraat: No footprint edge faces Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012125644",
+   "reason": "frontage 110.3 m from Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012125707",
+   "reason": "no frontage on Andreas Bonnstraat: No footprint edge faces Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012093393",
+   "reason": "frontage 97.6 m from Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012094518",
+   "reason": "sightline to Andreas Bonnstraat crosses 0363100012085060"
+  },
+  {
+   "pandId": "0363100012099249",
+   "reason": "frontage 45.3 m from Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012106618",
+   "reason": "no frontage on Andreas Bonnstraat: No footprint edge faces Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012112263",
+   "reason": "no frontage on Andreas Bonnstraat: No footprint edge faces Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012112665",
+   "reason": "frontage 62.0 m from Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012114055",
+   "reason": "frontage 69.2 m from Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012115258",
+   "reason": "sightline to Andreas Bonnstraat crosses 0363100012063468"
+  },
+  {
+   "pandId": "0363100012119052",
+   "reason": "frontage 86.9 m from Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012120946",
+   "reason": "frontage 63.9 m from Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012121766",
+   "reason": "frontage 147.0 m from Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012123253",
+   "reason": "no frontage on Andreas Bonnstraat: No footprint edge faces Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012124921",
+   "reason": "frontage 64.2 m from Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012093334",
+   "reason": "no frontage on Andreas Bonnstraat: No footprint edge faces Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012093442",
+   "reason": "frontage 51.8 m from Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012093449",
+   "reason": "no frontage on Andreas Bonnstraat: No footprint edge faces Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012093772",
+   "reason": "frontage 122.8 m from Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012097151",
+   "reason": "frontage 130.2 m from Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012097882",
+   "reason": "no frontage on Andreas Bonnstraat: No footprint edge faces Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012099964",
+   "reason": "no frontage on Andreas Bonnstraat: No footprint edge faces Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012101066",
+   "reason": "no frontage on Andreas Bonnstraat: No footprint edge faces Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012101376",
+   "reason": "no frontage on Andreas Bonnstraat: No footprint edge faces Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012101996",
+   "reason": "no frontage on Andreas Bonnstraat: No footprint edge faces Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012106148",
+   "reason": "frontage 55.5 m from Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012110029",
+   "reason": "no frontage on Andreas Bonnstraat: No footprint edge faces Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012111015",
+   "reason": "no frontage on Andreas Bonnstraat: No footprint edge faces Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012112529",
+   "reason": "no frontage on Andreas Bonnstraat: No footprint edge faces Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012113688",
+   "reason": "no frontage on Andreas Bonnstraat: No footprint edge faces Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012117471",
+   "reason": "no frontage on Andreas Bonnstraat: No footprint edge faces Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012117748",
+   "reason": "frontage 136.7 m from Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012120940",
+   "reason": "no frontage on Andreas Bonnstraat: No footprint edge faces Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012121324",
+   "reason": "no frontage on Andreas Bonnstraat: No footprint edge faces Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012122406",
+   "reason": "no frontage on Andreas Bonnstraat: No footprint edge faces Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012123498",
+   "reason": "no frontage on Andreas Bonnstraat: No footprint edge faces Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012124352",
+   "reason": "frontage 148.3 m from Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012126772",
+   "reason": "no frontage on Andreas Bonnstraat: No footprint edge faces Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012126912",
+   "reason": "no frontage on Andreas Bonnstraat: No footprint edge faces Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012127076",
+   "reason": "no frontage on Andreas Bonnstraat: No footprint edge faces Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012128359",
+   "reason": "frontage 105.6 m from Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012137737",
+   "reason": "frontage 132.6 m from Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012145144",
+   "reason": "sightline to Andreas Bonnstraat crosses 0363100012064037"
+  },
+  {
+   "pandId": "0363100012152781",
+   "reason": "frontage 82.2 m from Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012130219",
+   "reason": "no frontage on Andreas Bonnstraat: No footprint edge faces Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012130223",
+   "reason": "frontage 98.5 m from Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012132067",
+   "reason": "sightline to Andreas Bonnstraat crosses 0363100012253764"
+  },
+  {
+   "pandId": "0363100012134460",
+   "reason": "frontage 93.3 m from Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012134486",
+   "reason": "frontage 34.3 m from Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012135498",
+   "reason": "no frontage on Andreas Bonnstraat: No footprint edge faces Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012135740",
+   "reason": "no frontage on Andreas Bonnstraat: No footprint edge faces Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012137641",
+   "reason": "frontage 82.2 m from Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012138929",
+   "reason": "sightline to Andreas Bonnstraat crosses 0363100012106618"
+  },
+  {
+   "pandId": "0363100012145190",
+   "reason": "frontage 133.0 m from Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012145863",
+   "reason": "sightline to Andreas Bonnstraat crosses 0363100012085060"
+  },
+  {
+   "pandId": "0363100012150546",
+   "reason": "frontage 36.8 m from Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012152760",
+   "reason": "no frontage on Andreas Bonnstraat: No footprint edge faces Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012153263",
+   "reason": "frontage 36.7 m from Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012153640",
+   "reason": "no frontage on Andreas Bonnstraat: No footprint edge faces Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012153789",
+   "reason": "no frontage on Andreas Bonnstraat: No footprint edge faces Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012153841",
+   "reason": "frontage 49.2 m from Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012154172",
+   "reason": "frontage 72.1 m from Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012154179",
+   "reason": "frontage 45.0 m from Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012155532",
+   "reason": "no frontage on Andreas Bonnstraat: No footprint edge faces Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012130452",
+   "reason": "no frontage on Andreas Bonnstraat: No footprint edge faces Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012130609",
+   "reason": "no frontage on Andreas Bonnstraat: No footprint edge faces Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012133358",
+   "reason": "sightline to Andreas Bonnstraat crosses 0363100012076908"
+  },
+  {
+   "pandId": "0363100012133373",
+   "reason": "no frontage on Andreas Bonnstraat: No footprint edge faces Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012135894",
+   "reason": "frontage 73.0 m from Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012142563",
+   "reason": "frontage 102.2 m from Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012143244",
+   "reason": "frontage 58.9 m from Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012145875",
+   "reason": "no frontage on Andreas Bonnstraat: No footprint edge faces Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012147310",
+   "reason": "frontage 66.5 m from Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012147496",
+   "reason": "frontage 137.5 m from Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012149299",
+   "reason": "frontage 62.4 m from Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012150944",
+   "reason": "frontage 124.0 m from Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012151587",
+   "reason": "no frontage on Andreas Bonnstraat: No footprint edge faces Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012153583",
+   "reason": "no frontage on Andreas Bonnstraat: No footprint edge faces Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012153984",
+   "reason": "no frontage on Andreas Bonnstraat: No footprint edge faces Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012155605",
+   "reason": "no frontage on Andreas Bonnstraat: No footprint edge faces Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012155674",
+   "reason": "no frontage on Andreas Bonnstraat: No footprint edge faces Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012155684",
+   "reason": "no frontage on Andreas Bonnstraat: No footprint edge faces Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012155764",
+   "reason": "frontage 136.2 m from Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012155770",
+   "reason": "no frontage on Andreas Bonnstraat: No footprint edge faces Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012156111",
+   "reason": "frontage 75.2 m from Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012156748",
+   "reason": "no frontage on Andreas Bonnstraat: No footprint edge faces Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012157037",
+   "reason": "frontage 104.2 m from Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012157243",
+   "reason": "no frontage on Andreas Bonnstraat: No footprint edge faces Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012157453",
+   "reason": "no frontage on Andreas Bonnstraat: No footprint edge faces Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012157783",
+   "reason": "frontage 137.6 m from Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012157939",
+   "reason": "no frontage on Andreas Bonnstraat: No footprint edge faces Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012158038",
+   "reason": "no frontage on Andreas Bonnstraat: No footprint edge faces Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012158228",
+   "reason": "sightline to Andreas Bonnstraat crosses 0363100012083528"
+  },
+  {
+   "pandId": "0363100012158824",
+   "reason": "no frontage on Andreas Bonnstraat: No footprint edge faces Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012159006",
+   "reason": "no frontage on Andreas Bonnstraat: No footprint edge faces Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012159066",
+   "reason": "no frontage on Andreas Bonnstraat: No footprint edge faces Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012159277",
+   "reason": "no frontage on Andreas Bonnstraat: No footprint edge faces Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012159395",
+   "reason": "no frontage on Andreas Bonnstraat: No footprint edge faces Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012159414",
+   "reason": "no frontage on Andreas Bonnstraat: No footprint edge faces Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012159433",
+   "reason": "frontage 141.1 m from Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012159496",
+   "reason": "frontage 88.5 m from Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012159569",
+   "reason": "no frontage on Andreas Bonnstraat: No footprint edge faces Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012159599",
+   "reason": "frontage 33.6 m from Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012159606",
+   "reason": "no frontage on Andreas Bonnstraat: No footprint edge faces Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012159618",
+   "reason": "no frontage on Andreas Bonnstraat: No footprint edge faces Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012159831",
+   "reason": "no frontage on Andreas Bonnstraat: No footprint edge faces Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012159951",
+   "reason": "no frontage on Andreas Bonnstraat: No footprint edge faces Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012159998",
+   "reason": "frontage 108.6 m from Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012160016",
+   "reason": "no frontage on Andreas Bonnstraat: No footprint edge faces Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012160132",
+   "reason": "frontage 90.6 m from Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012160451",
+   "reason": "no frontage on Andreas Bonnstraat: No footprint edge faces Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012160479",
+   "reason": "no frontage on Andreas Bonnstraat: No footprint edge faces Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012160685",
+   "reason": "frontage 83.8 m from Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012160888",
+   "reason": "frontage 77.5 m from Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012161310",
+   "reason": "frontage 139.2 m from Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012161624",
+   "reason": "no frontage on Andreas Bonnstraat: No footprint edge faces Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012161684",
+   "reason": "no frontage on Andreas Bonnstraat: No footprint edge faces Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012161763",
+   "reason": "no frontage on Andreas Bonnstraat: No footprint edge faces Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012162070",
+   "reason": "no frontage on Andreas Bonnstraat: No footprint edge faces Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012162162",
+   "reason": "no frontage on Andreas Bonnstraat: No footprint edge faces Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012162321",
+   "reason": "frontage 143.2 m from Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012156540",
+   "reason": "no frontage on Andreas Bonnstraat: No footprint edge faces Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012186480",
+   "reason": "frontage 115.8 m from Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012162497",
+   "reason": "frontage 41.8 m from Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012162616",
+   "reason": "no frontage on Andreas Bonnstraat: No footprint edge faces Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012162696",
+   "reason": "no frontage on Andreas Bonnstraat: No footprint edge faces Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012162898",
+   "reason": "no frontage on Andreas Bonnstraat: No footprint edge faces Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012163336",
+   "reason": "no frontage on Andreas Bonnstraat: No footprint edge faces Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012163492",
+   "reason": "frontage 48.1 m from Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012163586",
+   "reason": "frontage 93.9 m from Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012163707",
+   "reason": "no frontage on Andreas Bonnstraat: No footprint edge faces Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012163888",
+   "reason": "no frontage on Andreas Bonnstraat: No footprint edge faces Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012163948",
+   "reason": "frontage 32.2 m from Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012164033",
+   "reason": "frontage 44.4 m from Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012164361",
+   "reason": "frontage 105.0 m from Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012164874",
+   "reason": "frontage 39.9 m from Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012165366",
+   "reason": "no frontage on Andreas Bonnstraat: No footprint edge faces Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012165410",
+   "reason": "frontage 108.5 m from Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012165810",
+   "reason": "no frontage on Andreas Bonnstraat: No footprint edge faces Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012166008",
+   "reason": "frontage 41.4 m from Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012166277",
+   "reason": "frontage 66.2 m from Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012167265",
+   "reason": "frontage 113.0 m from Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012188665",
+   "reason": "sightline to Andreas Bonnstraat crosses 0363100012118119"
+  },
+  {
+   "pandId": "0363100012191464",
+   "reason": "no frontage on Andreas Bonnstraat: No footprint edge faces Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012193025",
+   "reason": "frontage 54.7 m from Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012194013",
+   "reason": "no frontage on Andreas Bonnstraat: No footprint edge faces Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012194014",
+   "reason": "no frontage on Andreas Bonnstraat: No footprint edge faces Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012194015",
+   "reason": "no frontage on Andreas Bonnstraat: No footprint edge faces Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012194016",
+   "reason": "no frontage on Andreas Bonnstraat: No footprint edge faces Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012194017",
+   "reason": "no frontage on Andreas Bonnstraat: No footprint edge faces Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012194018",
+   "reason": "no frontage on Andreas Bonnstraat: No footprint edge faces Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012194019",
+   "reason": "no frontage on Andreas Bonnstraat: No footprint edge faces Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012194020",
+   "reason": "no frontage on Andreas Bonnstraat: No footprint edge faces Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012194021",
+   "reason": "no frontage on Andreas Bonnstraat: No footprint edge faces Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012194022",
+   "reason": "no frontage on Andreas Bonnstraat: No footprint edge faces Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012194023",
+   "reason": "no frontage on Andreas Bonnstraat: No footprint edge faces Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012194024",
+   "reason": "no frontage on Andreas Bonnstraat: No footprint edge faces Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012163285",
+   "reason": "no frontage on Andreas Bonnstraat: No footprint edge faces Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012164446",
+   "reason": "no frontage on Andreas Bonnstraat: No footprint edge faces Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012165992",
+   "reason": "no frontage on Andreas Bonnstraat: No footprint edge faces Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012167263",
+   "reason": "no frontage on Andreas Bonnstraat: No footprint edge faces Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012192463",
+   "reason": "no frontage on Andreas Bonnstraat: No footprint edge faces Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012193063",
+   "reason": "frontage 72.5 m from Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012193064",
+   "reason": "no frontage on Andreas Bonnstraat: No footprint edge faces Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012193065",
+   "reason": "no frontage on Andreas Bonnstraat: No footprint edge faces Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012193066",
+   "reason": "no frontage on Andreas Bonnstraat: No footprint edge faces Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012193067",
+   "reason": "frontage 69.3 m from Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012193068",
+   "reason": "frontage 63.4 m from Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012193069",
+   "reason": "frontage 64.7 m from Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012193070",
+   "reason": "no frontage on Andreas Bonnstraat: No footprint edge faces Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012195527",
+   "reason": "frontage 30.3 m from Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012205751",
+   "reason": "frontage 46.7 m from Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012240319",
+   "reason": "frontage 125.9 m from Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012194025",
+   "reason": "no frontage on Andreas Bonnstraat: No footprint edge faces Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012195376",
+   "reason": "sightline to Andreas Bonnstraat crosses 0363100012158236"
+  },
+  {
+   "pandId": "0363100012198655",
+   "reason": "no frontage on Andreas Bonnstraat: No footprint edge faces Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012199836",
+   "reason": "sightline to Andreas Bonnstraat crosses 0363100012144373"
+  },
+  {
+   "pandId": "0363100012204354",
+   "reason": "frontage 74.5 m from Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012205088",
+   "reason": "sightline to Andreas Bonnstraat crosses 0363100012086336"
+  },
+  {
+   "pandId": "0363100012205655",
+   "reason": "sightline to Andreas Bonnstraat crosses 0363100012115312"
+  },
+  {
+   "pandId": "0363100012206321",
+   "reason": "sightline to Andreas Bonnstraat crosses 0363100012158886"
+  },
+  {
+   "pandId": "0363100012208334",
+   "reason": "frontage 94.0 m from Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012211645",
+   "reason": "no frontage on Andreas Bonnstraat: No footprint edge faces Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012215085",
+   "reason": "no frontage on Andreas Bonnstraat: No footprint edge faces Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012215832",
+   "reason": "no frontage on Andreas Bonnstraat: No footprint edge faces Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012218713",
+   "reason": "sightline to Andreas Bonnstraat crosses 0363100012154617"
+  },
+  {
+   "pandId": "0363100012221456",
+   "reason": "sightline to Andreas Bonnstraat crosses 0363100012106328"
+  },
+  {
+   "pandId": "0363100012222469",
+   "reason": "frontage 84.5 m from Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012223055",
+   "reason": "frontage 75.0 m from Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012229509",
+   "reason": "frontage 80.1 m from Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012230558",
+   "reason": "no frontage on Andreas Bonnstraat: No footprint edge faces Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012232505",
+   "reason": "frontage 58.2 m from Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012233055",
+   "reason": "sightline to Andreas Bonnstraat crosses 0363100012253764"
+  },
+  {
+   "pandId": "0363100012233431",
+   "reason": "no frontage on Andreas Bonnstraat: No footprint edge faces Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012233566",
+   "reason": "no frontage on Andreas Bonnstraat: No footprint edge faces Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012233570",
+   "reason": "no frontage on Andreas Bonnstraat: No footprint edge faces Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012233658",
+   "reason": "no frontage on Andreas Bonnstraat: No footprint edge faces Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012234263",
+   "reason": "sightline to Andreas Bonnstraat crosses 0363100012092490"
+  },
+  {
+   "pandId": "0363100012235974",
+   "reason": "frontage 32.9 m from Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012236020",
+   "reason": "no frontage on Andreas Bonnstraat: No footprint edge faces Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012236263",
+   "reason": "frontage 78.1 m from Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012236272",
+   "reason": "no frontage on Andreas Bonnstraat: No footprint edge faces Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012236273",
+   "reason": "no frontage on Andreas Bonnstraat: No footprint edge faces Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012236274",
+   "reason": "no frontage on Andreas Bonnstraat: No footprint edge faces Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012236586",
+   "reason": "frontage 43.0 m from Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012236722",
+   "reason": "frontage 43.6 m from Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012236768",
+   "reason": "frontage 41.5 m from Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012236804",
+   "reason": "no frontage on Andreas Bonnstraat: No footprint edge faces Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012236956",
+   "reason": "no frontage on Andreas Bonnstraat: No footprint edge faces Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012237010",
+   "reason": "sightline to Andreas Bonnstraat crosses 0363100012237252"
+  },
+  {
+   "pandId": "0363100012237252",
+   "reason": "no frontage on Andreas Bonnstraat: No footprint edge faces Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012237304",
+   "reason": "frontage 71.3 m from Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012196830",
+   "reason": "no frontage on Andreas Bonnstraat: No footprint edge faces Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012207824",
+   "reason": "no frontage on Andreas Bonnstraat: No footprint edge faces Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012230617",
+   "reason": "no frontage on Andreas Bonnstraat: No footprint edge faces Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012236231",
+   "reason": "no frontage on Andreas Bonnstraat: No footprint edge faces Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012236498",
+   "reason": "no frontage on Andreas Bonnstraat: No footprint edge faces Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100012236788",
+   "reason": "no frontage on Andreas Bonnstraat: No footprint edge faces Andreas Bonnstraat"
+  },
+  {
+   "pandId": "0363100100092329",
+   "reason": "sightline to Andreas Bonnstraat crosses 0363100012064037"
+  },
+  {
+   "pandId": "0363100012064037",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012068295",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012083563",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012090486",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012085060",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012086336",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012088363",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012090461",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012092490",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012100364",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012106328",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012115312",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012118119",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012122461",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012130246",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012144373",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012145159",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012146383",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012152682",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012154617",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012156355",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012166422",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012253764",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012253852",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 180,
+ "pands": [
+  {
+   "pandId": "0363100012121398",
+   "alongM": 0,
+   "widthM": 7.32,
+   "eavesM": 14.92,
+   "roofMaxM": 18.88,
+   "storeys3dbag": 5,
+   "builtYear": 1920,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012137198",
+   "alongM": 7.22,
+   "widthM": 7.12,
+   "eavesM": 15.01,
+   "roofMaxM": 17.21,
+   "storeys3dbag": 5,
+   "builtYear": 1920,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012063468",
+   "alongM": 15.56,
+   "widthM": 9.56,
+   "eavesM": 14.96,
+   "roofMaxM": 17.15,
+   "storeys3dbag": 5,
+   "builtYear": 1920,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012156889",
+   "alongM": 23.35,
+   "widthM": 6.02,
+   "eavesM": 14.25,
+   "roofMaxM": 19.57,
+   "storeys3dbag": 5,
+   "builtYear": 1904,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012152496",
+   "alongM": 29.37,
+   "widthM": 6.01,
+   "eavesM": 14.35,
+   "roofMaxM": 19.93,
+   "storeys3dbag": 5,
+   "builtYear": 1904,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012160601",
+   "alongM": 35.38,
+   "widthM": 6.02,
+   "eavesM": 14.95,
+   "roofMaxM": 19.94,
+   "storeys3dbag": 5,
+   "builtYear": 1904,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012154202",
+   "alongM": 41.4,
+   "widthM": 6.01,
+   "eavesM": 14.39,
+   "roofMaxM": 18.53,
+   "storeys3dbag": 5,
+   "builtYear": 1904,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012158236",
+   "alongM": 47.4,
+   "widthM": 6.01,
+   "eavesM": 14.41,
+   "roofMaxM": 20.09,
+   "storeys3dbag": 5,
+   "builtYear": 1904,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012158886",
+   "alongM": 53.41,
+   "widthM": 6.01,
+   "eavesM": 15.14,
+   "roofMaxM": 19,
+   "storeys3dbag": 5,
+   "builtYear": 1904,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012166557",
+   "alongM": 59.41,
+   "widthM": 6,
+   "eavesM": 14.6,
+   "roofMaxM": 19.63,
+   "storeys3dbag": 5,
+   "builtYear": 1904,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012152778",
+   "alongM": 65.41,
+   "widthM": 6,
+   "eavesM": 14.67,
+   "roofMaxM": 18.83,
+   "storeys3dbag": 5,
+   "builtYear": 1904,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012161704",
+   "alongM": 71.4,
+   "widthM": 5.98,
+   "eavesM": 14.93,
+   "roofMaxM": 19.66,
+   "storeys3dbag": 5,
+   "builtYear": 1904,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012159139",
+   "alongM": 80.41,
+   "widthM": 12.03,
+   "eavesM": 14.76,
+   "roofMaxM": 19.17,
+   "storeys3dbag": 5,
+   "builtYear": 1904,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  }
+ ]
+}

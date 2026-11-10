@@ -1,0 +1,79 @@
+{
+ "buurt": "zuiderkerkbuurt",
+ "library": "nieuwmarkt",
+ "generatedAt": "2026-11-10T08:31:41.563Z",
+ "seconds": 19.31,
+ "totals": {
+  "faces": 3,
+  "pands": 22,
+  "placed": 2
+ },
+ "faces": [
+  {
+   "face": "groenburgwal-2-30",
+   "street": "Groenburgwal",
+   "pands": 11,
+   "placed": 2,
+   "held": 9,
+   "runs": [
+    {
+     "face": "groenburgwal-2-30-r1",
+     "pands": [
+      "0363100012186088",
+      "0363100012171386"
+     ],
+     "passed": false,
+     "triangles": 3859
+    }
+   ],
+   "seconds": 17.05,
+   "byType": {
+    "lastage-bell-house": 2
+   },
+   "installed": 0,
+   "holds": {
+    "evidence": 1,
+    "match": 8,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "groenburgwal-36-44",
+   "street": "Groenburgwal",
+   "pands": 5,
+   "placed": 0,
+   "held": 5,
+   "runs": [],
+   "seconds": 1.29,
+   "byType": {},
+   "installed": 0,
+   "holds": {
+    "evidence": 0,
+    "match": 3,
+    "likeness": 0,
+    "run": 2,
+    "review": 0
+   }
+  },
+  {
+   "face": "groenburgwal-46-56",
+   "street": "Groenburgwal",
+   "pands": 6,
+   "placed": 0,
+   "held": 6,
+   "runs": [],
+   "seconds": 0.95,
+   "byType": {},
+   "installed": 0,
+   "holds": {
+    "evidence": 3,
+    "match": 2,
+    "likeness": 0,
+    "run": 1,
+    "review": 0
+   }
+  }
+ ]
+}

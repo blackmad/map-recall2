@@ -43,7 +43,16 @@ test('coarse tiles retain local window grouping and palette without shaped roofs
       assert.equal(local.ranges[0].id, feature.properties.id, 'native identity retained');
       assert.deepEqual(local, buildFeatureChunk([feature], look, 'coarse', streets, [profile]), 'deterministic coarse output');
       const simple = { ...feature, properties: { ...feature.properties, roofPlanned: false, roofEavesHeightM: undefined } };
-      assert.deepEqual(local, buildFeatureChunk([simple], look, 'walls', streets, [profile]), 'coarse output contains only ordinary facade cells and simple lid, no crown or balcony relief');
+      // The reference is the walls chunk of the same building as a plain flat lid. Lane R5-E (836fb00ef) gives a *real* flat roof
+      // a build-year tone, a surface layer and a parapet lip; this fixture's pitched roof is simplified by coarse LOD, not
+      // flat, so the reference is built with that flat-roof treatment off (`?flatRoofTone=0&flatRoofSurface=0`).
+      const globals = globalThis as { location?: { search: string } };
+      const hadLocation = Object.prototype.hasOwnProperty.call(globals, 'location'), previousLocation = globals.location;
+      globals.location = { search: '?flatRoofTone=0&flatRoofSurface=0' };
+      let reference;
+      try { reference = buildFeatureChunk([simple], look, 'walls', streets, [profile]); }
+      finally { if (hadLocation) globals.location = previousLocation; else delete globals.location; }
+      assert.deepEqual(local, reference, 'coarse output contains only ordinary facade cells and simple lid, no crown or balcony relief');
     }
     assert.equal(reliefCalls, 0, 'coarse mode never invokes relief builders');
     assert.equal(JSON.stringify(feature), original, 'input geometry and properties untouched');

@@ -70,6 +70,10 @@ export interface Landmark extends LandmarkNotice {
   type: string;
   x: number;
   y: number;
+  /** The extract's own point in world px, before the road/canal snap of `x`/`y` (boat and bike only). Free Ride
+   *  pins stand here (lane S5, #333); route targets keep the snapped `x`/`y`. */
+  ownX?: number;
+  ownY?: number;
   lngLat: LngLat;
   detail: string;
   longDetail: string;

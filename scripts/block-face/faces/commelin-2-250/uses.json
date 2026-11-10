@@ -1,0 +1,491 @@
+{
+ "street": "Commelinstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-09T23:15:12.652Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012233668",
+   "addresses": [
+    "Commelinstraat 112",
+    "Commelinstraat 114",
+    "Commelinstraat 116",
+    "Commelinstraat 118",
+    "Commelinstraat 120",
+    "Commelinstraat 122",
+    "Commelinstraat 124",
+    "Commelinstraat 126",
+    "Commelinstraat 128",
+    "Commelinstraat 130"
+   ],
+   "groundUnits": [
+    {
+     "address": "Commelinstraat 112",
+     "use": "woonfunctie",
+     "areaM2": 81,
+     "bagId": "0363010000658185"
+    },
+    {
+     "address": "Commelinstraat 114",
+     "use": "woonfunctie",
+     "areaM2": 81,
+     "bagId": "0363010000658186"
+    },
+    {
+     "address": "Commelinstraat 116",
+     "use": "woonfunctie",
+     "areaM2": 64,
+     "bagId": "0363010000658187"
+    },
+    {
+     "address": "Commelinstraat 118",
+     "use": "woonfunctie",
+     "areaM2": 64,
+     "bagId": "0363010000658188"
+    },
+    {
+     "address": "Commelinstraat 120",
+     "use": "woonfunctie",
+     "areaM2": 64,
+     "bagId": "0363010000658189"
+    },
+    {
+     "address": "Commelinstraat 122",
+     "use": "woonfunctie",
+     "areaM2": 64,
+     "bagId": "0363010000658190"
+    },
+    {
+     "address": "Commelinstraat 124",
+     "use": "woonfunctie",
+     "areaM2": 64,
+     "bagId": "0363010000658191"
+    },
+    {
+     "address": "Commelinstraat 126",
+     "use": "woonfunctie",
+     "areaM2": 64,
+     "bagId": "0363010000658192"
+    },
+    {
+     "address": "Commelinstraat 128",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000658193"
+    },
+    {
+     "address": "Commelinstraat 130",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000658194"
+    }
+   ],
+   "units": 10,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012078517",
+   "addresses": [
+    "Commelinstraat 102",
+    "Commelinstraat 104",
+    "Commelinstraat 106",
+    "Commelinstraat 108"
+   ],
+   "groundUnits": [
+    {
+     "address": "Commelinstraat 102",
+     "use": "woonfunctie",
+     "areaM2": 81,
+     "bagId": "0363010000658178"
+    },
+    {
+     "address": "Commelinstraat 104",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000658179"
+    },
+    {
+     "address": "Commelinstraat 106",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000658180"
+    },
+    {
+     "address": "Commelinstraat 108",
+     "use": "woonfunctie",
+     "areaM2": 120,
+     "bagId": "0363010003761386"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012141437",
+   "addresses": [
+    "Commelinstraat 76",
+    "Commelinstraat 78",
+    "Commelinstraat 80",
+    "Commelinstraat 82",
+    "Commelinstraat 84",
+    "Commelinstraat 86",
+    "Commelinstraat 88",
+    "Commelinstraat 90",
+    "Commelinstraat 92",
+    "Commelinstraat 94",
+    "Commelinstraat 96",
+    "Commelinstraat 98",
+    "Commelinstraat 100"
+   ],
+   "groundUnits": [
+    {
+     "address": "Commelinstraat 76",
+     "use": "woonfunctie",
+     "areaM2": 86,
+     "bagId": "0363010000619992"
+    },
+    {
+     "address": "Commelinstraat 78",
+     "use": "woonfunctie",
+     "areaM2": 82,
+     "bagId": "0363010000619993"
+    },
+    {
+     "address": "Commelinstraat 100",
+     "use": "woonfunctie",
+     "areaM2": 87,
+     "bagId": "0363010000619994"
+    },
+    {
+     "address": "Commelinstraat 92",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000620035"
+    },
+    {
+     "address": "Commelinstraat 96",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000635061"
+    },
+    {
+     "address": "Commelinstraat 94",
+     "use": "woonfunctie",
+     "areaM2": 35,
+     "bagId": "0363010000987304"
+    },
+    {
+     "address": "Commelinstraat 98",
+     "use": "woonfunctie",
+     "areaM2": 35,
+     "bagId": "0363010000988433"
+    },
+    {
+     "address": "Commelinstraat 86",
+     "use": "woonfunctie",
+     "areaM2": 74,
+     "bagId": "0363010000620002"
+    },
+    {
+     "address": "Commelinstraat 88",
+     "use": "woonfunctie",
+     "areaM2": 85,
+     "bagId": "0363010000620000"
+    },
+    {
+     "address": "Commelinstraat 90",
+     "use": "woonfunctie",
+     "areaM2": 74,
+     "bagId": "0363010000620003"
+    },
+    {
+     "address": "Commelinstraat 84",
+     "use": "woonfunctie",
+     "areaM2": 85,
+     "bagId": "0363010000619999"
+    },
+    {
+     "address": "Commelinstraat 80",
+     "use": "woonfunctie",
+     "areaM2": 85,
+     "bagId": "0363010000619998"
+    },
+    {
+     "address": "Commelinstraat 82",
+     "use": "woonfunctie",
+     "areaM2": 74,
+     "bagId": "0363010000620001"
+    }
+   ],
+   "units": 13,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012095429",
+   "addresses": [
+    "Commelinstraat 38",
+    "Commelinstraat 40",
+    "Commelinstraat 42",
+    "Commelinstraat 44",
+    "Commelinstraat 46",
+    "Commelinstraat 48",
+    "Commelinstraat 50"
+   ],
+   "groundUnits": [
+    {
+     "address": "Commelinstraat 40",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000948317"
+    },
+    {
+     "address": "Commelinstraat 42",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000948318"
+    },
+    {
+     "address": "Commelinstraat 46",
+     "use": "woonfunctie",
+     "areaM2": 74,
+     "bagId": "0363010000948319"
+    },
+    {
+     "address": "Commelinstraat 44",
+     "use": "woonfunctie",
+     "areaM2": 74,
+     "bagId": "0363010000948320"
+    },
+    {
+     "address": "Commelinstraat 48",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000948321"
+    },
+    {
+     "address": "Commelinstraat 50",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000948322"
+    },
+    {
+     "address": "Commelinstraat 38",
+     "use": "woonfunctie",
+     "areaM2": 135,
+     "bagId": "0363010001012998"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012094602",
+   "addresses": [
+    "Commelinstraat 16",
+    "Commelinstraat 16A",
+    "Commelinstraat 16B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Commelinstraat 16-H",
+     "use": "woonfunctie",
+     "areaM2": 136,
+     "bagId": "0363010000607513"
+    },
+    {
+     "address": "Commelinstraat 16A",
+     "use": "kantoorfunctie",
+     "areaM2": 82,
+     "bagId": "0363010012082222"
+    },
+    {
+     "address": "Commelinstraat 16B",
+     "use": "woonfunctie",
+     "areaM2": 94,
+     "bagId": "0363010012082223"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012112407",
+   "addresses": [
+    "Commelinstraat 14"
+   ],
+   "groundUnits": [],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012074254",
+   "addresses": [
+    "Commelinstraat 12"
+   ],
+   "groundUnits": [
+    {
+     "address": "Commelinstraat 12-H",
+     "use": "woonfunctie",
+     "areaM2": 126,
+     "bagId": "0363010000607493"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012156075",
+   "addresses": [
+    "Commelinstraat 10"
+   ],
+   "groundUnits": [
+    {
+     "address": "Commelinstraat 10-H",
+     "use": "woonfunctie",
+     "areaM2": 119,
+     "bagId": "0363010012062189"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012163419",
+   "addresses": [
+    "Commelinstraat 8"
+   ],
+   "groundUnits": [
+    {
+     "address": "Commelinstraat 8-H",
+     "use": "woonfunctie",
+     "areaM2": 119,
+     "bagId": "0363010012062188"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012158379",
+   "addresses": [
+    "Commelinstraat 6"
+   ],
+   "groundUnits": [
+    {
+     "address": "Commelinstraat 6-O",
+     "use": "industriefunctie,woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010000607465"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012153380",
+   "addresses": [
+    "Commelinstraat 4"
+   ],
+   "groundUnits": [
+    {
+     "address": "Commelinstraat 4-O",
+     "use": "kantoorfunctie",
+     "areaM2": 122,
+     "bagId": "0363010000607457"
+    },
+    {
+     "address": "Commelinstraat 4-H",
+     "use": "woonfunctie",
+     "areaM2": 118,
+     "bagId": "0363010012062187"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012236918",
+   "addresses": [
+    "Commelinstraat 2",
+    "Commelinstraat 2D",
+    "Commelinstraat 2E",
+    "Commelinstraat 2F",
+    "Commelinstraat 2B",
+    "Commelinstraat 2C",
+    "Commelinstraat 2A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Linnaeusstraat 11A",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 471,
+     "bagId": "0363010001003755"
+    },
+    {
+     "address": "Commelinstraat 2D",
+     "use": "woonfunctie",
+     "areaM2": 63,
+     "bagId": "0363010012077352"
+    },
+    {
+     "address": "Commelinstraat 2E",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010012077353"
+    },
+    {
+     "address": "Commelinstraat 2F",
+     "use": "woonfunctie",
+     "areaM2": 63,
+     "bagId": "0363010012077354"
+    },
+    {
+     "address": "Commelinstraat 2C",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010012077357"
+    },
+    {
+     "address": "Linnaeusstraat 11A",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 274,
+     "bagId": "0363010012172058"
+    },
+    {
+     "address": "Commelinstraat 2",
+     "use": "kantoorfunctie",
+     "areaM2": 132,
+     "bagId": "0363010012172059"
+    }
+   ],
+   "units": 12,
+   "osm": [
+    {
+     "type": "node",
+     "id": 4711855889,
+     "lngLat": [
+      4.9239189,
+      52.3630468
+     ],
+     "tags": {
+      "amenity": "cafe",
+      "check_date": "2023-09-02",
+      "diet:halal": "no",
+      "internet_access": "wlan",
+      "internet_access:fee": "no",
+      "name": "Louie Louie",
+      "name:nl": "Louie Louie",
+      "note": "Horecagroep 3WO",
+      "opening_hours": "Mo-Th,Su 09:00-01:00; Fr-Sa 09:00-03:00",
+      "outdoor_seating": "yes",
+      "website": "https://louielouie.nl/"
+     },
+     "fetchedAt": "2026-11-09T23:15:12.652Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

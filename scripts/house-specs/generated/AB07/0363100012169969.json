@@ -1,0 +1,104 @@
+{
+ "version": 1,
+ "pandId": "0363100012169969",
+ "buurt": "AB07",
+ "crop": null,
+ "writers": {
+  "register": {
+   "schemaVersion": 1,
+   "pandId": "0363100012169969",
+   "design": {},
+   "provenance": {
+    "facts/facadeYear": {
+     "source": "monument-text",
+     "confidence": 0.7,
+     "ref": "rce:978",
+     "at": null
+    },
+    "facts/elements": {
+     "source": "monument-text",
+     "confidence": 0.6,
+     "ref": "rce:978",
+     "at": null
+    }
+   },
+   "facts": {
+    "facadeYear": 1837,
+    "elements": [
+     "gable-stone"
+    ]
+   }
+  },
+  "bag": {
+   "schemaVersion": 1,
+   "pandId": "0363100012169969",
+   "design": {},
+   "provenance": {
+    "facts/facadeYear": {
+     "source": "bag",
+     "confidence": 0.5,
+     "ref": "bag-facts:0363100012169969",
+     "at": null
+    }
+   },
+   "facts": {
+    "facadeYear": 1616
+   }
+  }
+ },
+ "spec": {
+  "schemaVersion": 1,
+  "pandId": "0363100012169969",
+  "design": {
+   "notes": [
+    "describe: facts/facadeYear disagrees: register 1837 (monument-text 0.7) vs bag 1616 (bag 0.5); register wins"
+   ]
+  },
+  "provenance": {
+   "facts/elements": {
+    "source": "monument-text",
+    "confidence": 0.6,
+    "ref": "rce:978",
+    "at": null
+   },
+   "facts/facadeYear": {
+    "source": "monument-text",
+    "confidence": 0.7,
+    "ref": "rce:978",
+    "at": null
+   },
+   "notes": {
+    "source": "default",
+    "confidence": 0,
+    "ref": "house:describe",
+    "at": null
+   }
+  },
+  "facts": {
+   "elements": [
+    "gable-stone"
+   ],
+   "facadeYear": 1837
+  }
+ },
+ "disagreements": [
+  {
+   "path": "facts/facadeYear",
+   "values": [
+    {
+     "writer": "register",
+     "value": 1837,
+     "source": "monument-text",
+     "confidence": 0.7
+    },
+    {
+     "writer": "bag",
+     "value": 1616,
+     "source": "bag",
+     "confidence": 0.5
+    }
+   ],
+   "picked": "register"
+  }
+ ]
+}

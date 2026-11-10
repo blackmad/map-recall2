@@ -1,0 +1,357 @@
+{
+ "face": "linnaeus-13-21",
+ "street": "Linnaeusstraat",
+ "library": "oud-west",
+ "stripDate": "2023-01-02",
+ "seconds": 1.25,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012158364",
+   "address": "Linnaeusstraat 13",
+   "builtYear": 1882,
+   "widthM": 6.19,
+   "eavesM": 18.29,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#2c2c24",
+    "wallRaw": "#423c35",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 848,
+     "confidence": 0.3,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.001,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.04
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "no front on the strip: sky over the roof in 44 % of columns (< 75 %): the strip shows a nearer wall, fence or tree, not the front",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012157163",
+   "address": "Linnaeusstraat 15",
+   "builtYear": 1882,
+   "widthM": 6.14,
+   "eavesM": 18.22,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#3e342f",
+    "wallRaw": "#44403b",
+    "skyline": {
+     "eavesM": 20.18,
+     "eavesRow": 41,
+     "confidence": 0.43,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": "right",
+    "accentSide": "right",
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 8.1,
+       "widthM": 1.15,
+       "centre": 0.16
+      },
+      {
+       "atM": 5.55,
+       "widthM": 1,
+       "centre": 0.31
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "no front on the strip: sky over the roof in 74 % of columns (< 75 %): the strip shows a nearer wall, fence or tree, not the front",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012163547",
+   "address": "Linnaeusstraat 17",
+   "builtYear": 1882,
+   "widthM": 5.88,
+   "eavesM": 17.7,
+   "storeys3dbag": 0,
+   "bagBay": null,
+   "strip": {
+    "wall": "#1c1c17",
+    "wallRaw": "#4a4b47",
+    "skyline": {
+     "eavesM": 17.95,
+     "eavesRow": 130,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.3,
+      "riseM": 0.85,
+      "topWidthM": 1.25,
+      "centre": 0.48
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "balcony slabs stacked at 15.15 m (1.43 m wide), 12 m (1.4 m wide), 8.93 m (1.3 m wide)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 16.42,
+       "widthM": 0.9,
+       "centre": 0.92
+      },
+      {
+       "atM": 15.15,
+       "widthM": 1.43,
+       "centre": 0.48
+      },
+      {
+       "atM": 12,
+       "widthM": 1.4,
+       "centre": 0.48
+      },
+      {
+       "atM": 8.93,
+       "widthM": 1.3,
+       "centre": 0.81
+      },
+      {
+       "atM": 8.63,
+       "widthM": 1.02,
+       "centre": 0.13
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best dapper-1882-plain-dormer scores 0.47 < 0.7 (3DBAG eaves 17.7 m = 4 storeys of 4.42 m vs the type's 3.1 m; strip columns 2 vs 3 bays)",
+   "best": {
+    "type": "dapper-1882-plain-dormer",
+    "score": 0.47,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 17.7 m = 4 storeys of 4.42 m vs the type's 3.1 m"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 2 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012158748",
+   "address": "Linnaeusstraat 19",
+   "builtYear": 1882,
+   "widthM": 2.75,
+   "eavesM": 18.32,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#433731",
+    "wallRaw": "#433a35",
+    "skyline": {
+     "eavesM": 17.3,
+     "eavesRow": 156,
+     "confidence": 0.63,
+     "crown": {
+      "widthM": 1.52,
+      "riseM": 3.9,
+      "topWidthM": 0.57,
+      "centre": 0.57
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.013,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best clercq-e-corbel-brick: built 1882, type 1899-1903; frontage 2.75 m, type 5.8-6.2 m)",
+   "best": {
+    "type": "clercq-e-corbel-brick",
+    "score": 0,
+    "veto": [
+     "built 1882, type 1899-1903",
+     "frontage 2.75 m, type 5.8-6.2 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 18.32 m = 4 storeys of 4.58 m vs the type's 3.48 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 0,
+      "note": "roof rise 0.78 m (flat) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.001 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012166134",
+   "address": "Linnaeusstraat 21",
+   "builtYear": 1882,
+   "widthM": 2.75,
+   "eavesM": 16.18,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#3b332d",
+    "wallRaw": "#403732",
+    "skyline": {
+     "eavesM": 18.1,
+     "eavesRow": 124,
+     "confidence": 0.48,
+     "crown": {
+      "widthM": 0.97,
+      "riseM": 3.1,
+      "topWidthM": 0.25,
+      "centre": 0.19
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "ribbon",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best clercq-e-corbel-brick: built 1882, type 1899-1903; frontage 2.75 m, type 5.8-6.2 m)",
+   "best": {
+    "type": "clercq-e-corbel-brick",
+    "score": 0,
+    "veto": [
+     "built 1882, type 1899-1903",
+     "frontage 2.75 m, type 5.8-6.2 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 16.18 m = 4 storeys of 4.04 m vs the type's 3.48 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 2.78 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

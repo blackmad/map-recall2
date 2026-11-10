@@ -1,0 +1,129 @@
+{
+ "street": "Krom Boomssloot",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T08:18:30.443Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012182791",
+   "addresses": [
+    "Krom Boomssloot 22"
+   ],
+   "groundUnits": [
+    {
+     "address": "Krom Boomssloot 22",
+     "use": "kantoorfunctie",
+     "areaM2": 1030,
+     "bagId": "0363010000713522"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012182696",
+   "addresses": [
+    "Krom Boomssloot 20"
+   ],
+   "groundUnits": [
+    {
+     "address": "Krom Boomssloot 20-H",
+     "use": "woonfunctie",
+     "areaM2": 141,
+     "bagId": "0363010000612625"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012182697",
+   "addresses": [
+    "Krom Boomssloot 18"
+   ],
+   "groundUnits": [
+    {
+     "address": "Krom Boomssloot 18-H",
+     "use": "industriefunctie",
+     "areaM2": 170,
+     "bagId": "0363010000991886"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012182698",
+   "addresses": [
+    "Krom Boomssloot 16L",
+    "Krom Boomssloot 16A",
+    "Krom Boomssloot 16B",
+    "Krom Boomssloot 16C",
+    "Krom Boomssloot 16D",
+    "Krom Boomssloot 16E",
+    "Krom Boomssloot 16F",
+    "Krom Boomssloot 16G",
+    "Krom Boomssloot 16K"
+   ],
+   "groundUnits": [
+    {
+     "address": "Krom Boomssloot 16L",
+     "use": "woonfunctie",
+     "areaM2": 36,
+     "bagId": "0363010001970909"
+    },
+    {
+     "address": "Krom Boomssloot 16A",
+     "use": "industriefunctie",
+     "areaM2": 95,
+     "bagId": "0363010001169680"
+    },
+    {
+     "address": "Krom Boomssloot 16B",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010001169681"
+    },
+    {
+     "address": "Krom Boomssloot 16C",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010001169682"
+    },
+    {
+     "address": "Krom Boomssloot 16D",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010001169683"
+    },
+    {
+     "address": "Krom Boomssloot 16E",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010001169684"
+    },
+    {
+     "address": "Krom Boomssloot 16F",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010001169685"
+    },
+    {
+     "address": "Krom Boomssloot 16G",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010001169686"
+    },
+    {
+     "address": "Krom Boomssloot 16K",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010001169687"
+    }
+   ],
+   "units": 9,
+   "osm": []
+  }
+ ]
+}
