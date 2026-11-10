@@ -1,5 +1,18 @@
 # Canal Recall — what is built
 
+**House-line crops and measures: H4 crops + Jev picker, H2d measure profiles (2026-11-10, #339, #342).**
+- **H4 `house:crops`** (a1664e9c0…cb4379e26, sonnet). Resumable, paced facade crops per buurt, piloted on Bloemgrachtbuurt AB07 (662 pands, 40 in hand intents).
+  - **H4 flags overstated the yield.** H4's flags said 70.1 % usable. The judgement session's read of the sheet put the real share at 40–55 %.
+  - **H4b added checks and labels.** Wall choice (obliquity, camera ray through another footprint), a size floor, a content check, a1's `stripWhiteBalance.ts`, best of up to 6 mission years, and 150 hand labels. Against those labels the true good share was 42.7 %, with `usable` precision 0.51. Multi-year raised flag-usable but not true good.
+  - **H4c changed how a crop is picked.** A Jev quality judge on cached crops (`judge.ts`, `pick.ts`; $0.028 for 426 calls, key only from the user's login environment). washed-out became highlight clipping: on the labels it now fires 7 times and loses 1 good front, where it fired 59 times and lost 28 (white canal fronts). The oblique cap is 55°. Judge AUC is 0.89; at `JUDGE_GOOD` 0.5, precision 0.92–0.94 and recall about 0.4. The picked crop is good 56 % of the time, against 50.5 % before.
+  - **What `usable` means now.** It is a pre-filter only. H5 uses tiers (good / fallback) plus a judge recall pass, because the misses are dark, narrow canal fronts.
+  - **Disk rule.** `crops.ts` refuses to start if it would leave less than 15 GB free, and purges the panoramas it touched afterwards. On 2026-11-10 the disk reached 2.4 GB free, and the user approved deleting cached panoramas older than 1 November.
+  - Crops are archived in map-recall2-source-data at eba1f2132 (`pand-crops/`).
+- **H2d measure profiles** (74cf291e6, 6b6d5a142, sonnet). `MEASURE_PROFILES` in measureFacade.
+  - `installGate` (groups + solidBody) is the default, so likenessGate and install-large see 0 verdict flips on the 448-group replay.
+  - `houseLine` (+ core + clusterWall) is used by house:preview and the line. It holds wall ΔL spread under ±10 cm box jitter to 0.020, down from 0.437, but would flip 13 installed verdicts, so it stays off the install path until a sheet of those 13 is read.
+  - Glazing is informational in house-line verdicts: within ±0.10 on only 6 of 12 labelled fronts. The verdict rests on wall colour family, column count, storeys and window shape. The hand-grid value for 164843 is 0.375 (the earlier label of 0.25 was wrong).
+
 **House-line tools: H2 preview, H2c wall vs trim, the suppressed-face audit (2026-11-10, #338, #340, #341).**
 - **H2 + H2b: `house:preview` in Node** (e06f8dcff, opus). It renders a pand's front through the game's decorator chain and chunk builder, with the facade atlas painted under @napi-rs/canvas stubs and a software rasteriser. It takes 1.5–1.8 s cold and 0.09–0.20 s per `--watch` re-render.
   - By default it draws the route the game draws (`--route generic|spec|installed`), with the route printed in the sheet header.
