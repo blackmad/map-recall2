@@ -31,7 +31,8 @@
     "measuredPalette": {
      "brick": "#574942",
      "evidence": "strip 2023-01-02 span 1374-1598: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    }
+    },
+    "crown": "domed-dormer"
    },
    "groundFloor": {
     "use": "residential",
@@ -56,7 +57,8 @@
     "measuredPalette": {
      "brick": "#4c433d",
      "evidence": "strip 2023-01-02 span 1599-1822: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    }
+    },
+    "crown": "domed-dormer"
    },
    "groundFloor": {
     "use": "residential",
@@ -81,6 +83,19 @@
     "measuredPalette": {
      "brick": "#4a423d",
      "evidence": "strip 2023-01-02 span 1823-2047: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "crown": "domed-dormer",
+    "overrides": {
+     "balconies": {
+      "storeys": [
+       1,
+       2,
+       3
+      ],
+      "bays": [
+       1
+      ]
+     }
     }
    },
    "groundFloor": {
@@ -105,7 +120,20 @@
     "measuredPalette": {
      "brick": "#5c4a43",
      "evidence": "strip 2023-01-02 span 2047-2271: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    }
+    },
+    "crown": "domed-dormer",
+    "overrides": {
+     "balconies": {
+      "storeys": [
+       1,
+       2
+      ],
+      "bays": [
+       1
+      ]
+     }
+    },
+    "doorBay": 2
    },
    "groundFloor": {
     "use": "residential",
@@ -129,7 +157,8 @@
     "measuredPalette": {
      "brick": "#5b4a42",
      "evidence": "strip 2023-01-02 span 2271-2495: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    }
+    },
+    "crown": "domed-dormer"
    },
    "groundFloor": {
     "use": "residential",

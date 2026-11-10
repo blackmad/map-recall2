@@ -30,6 +30,18 @@
     "measuredPalette": {
      "brick": "#665a4c",
      "evidence": "strip 2017-03-31 span 517-776: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "overrides": {
+     "balconies": {
+      "storeys": [
+       1,
+       2
+      ],
+      "bays": [
+       1
+      ],
+      "projecting": true
+     }
     }
    },
    "groundFloor": {
@@ -72,6 +84,19 @@
     "mirror": true,
     "paletteOverrides": {
      "brick": "#645444"
+    },
+    "overrides": {
+     "balconies": {
+      "storeys": [
+       1,
+       2
+      ],
+      "bays": [
+       0,
+       1
+      ],
+      "projecting": true
+     }
     }
    },
    "groundFloor": {
@@ -110,6 +135,18 @@
     "measuredPalette": {
      "brick": "#625549",
      "evidence": "strip 2017-03-31 span 1034-1292: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "overrides": {
+     "balconies": {
+      "storeys": [
+       1,
+       2
+      ],
+      "bays": [
+       1
+      ],
+      "projecting": true
+     }
     }
    },
    "groundFloor": {
@@ -149,7 +186,19 @@
      "brick": "#725e4c",
      "evidence": "strip 2017-03-31 span 1293-1552: trim-normalised wall (buildingRecipe/measureFacade.ts)"
     },
-    "mirror": true
+    "mirror": true,
+    "overrides": {
+     "balconies": {
+      "storeys": [
+       1,
+       2
+      ],
+      "bays": [
+       1
+      ],
+      "projecting": true
+     }
+    }
    },
    "groundFloor": {
     "use": "residential",
@@ -187,6 +236,18 @@
     "measuredPalette": {
      "brick": "#6f594a",
      "evidence": "strip 2017-03-31 span 1551-1809: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "overrides": {
+     "balconies": {
+      "storeys": [
+       1,
+       2
+      ],
+      "bays": [
+       1
+      ],
+      "projecting": true
+     }
     }
    },
    "groundFloor": {
@@ -229,6 +290,19 @@
     "mirror": true,
     "paletteOverrides": {
      "brick": "#635545"
+    },
+    "overrides": {
+     "balconies": {
+      "storeys": [
+       1,
+       2
+      ],
+      "bays": [
+       0,
+       1
+      ],
+      "projecting": true
+     }
     }
    },
    "groundFloor": {
@@ -270,6 +344,19 @@
     },
     "paletteOverrides": {
      "brick": "#645544"
+    },
+    "overrides": {
+     "balconies": {
+      "storeys": [
+       1,
+       2
+      ],
+      "bays": [
+       0,
+       1
+      ],
+      "projecting": true
+     }
     }
    },
    "groundFloor": {

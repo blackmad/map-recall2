@@ -29,6 +29,18 @@
     "type": "sarphati-1910-arched-tower-pair",
     "paletteOverrides": {
      "brick": "#5a4636"
+    },
+    "overrides": {
+     "balconies": {
+      "storeys": [
+       1,
+       2
+      ],
+      "bays": [
+       1
+      ],
+      "projecting": true
+     }
     }
    },
    "groundFloor": {
@@ -53,6 +65,18 @@
     "mirror": true,
     "paletteOverrides": {
      "brick": "#5a4636"
+    },
+    "overrides": {
+     "balconies": {
+      "storeys": [
+       1,
+       2
+      ],
+      "bays": [
+       1
+      ],
+      "projecting": true
+     }
     }
    },
    "groundFloor": {

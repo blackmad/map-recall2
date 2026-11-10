@@ -30,6 +30,18 @@
     "mirror": true,
     "paletteOverrides": {
      "brick": "#4a3a2c"
+    },
+    "overrides": {
+     "balconies": {
+      "storeys": [
+       1,
+       2
+      ],
+      "bays": [
+       1
+      ],
+      "projecting": true
+     }
     }
    },
    "groundFloor": {
@@ -57,6 +69,18 @@
     },
     "paletteOverrides": {
      "brick": "#4a3a2c"
+    },
+    "overrides": {
+     "balconies": {
+      "storeys": [
+       1,
+       2
+      ],
+      "bays": [
+       1
+      ],
+      "projecting": true
+     }
     }
    },
    "groundFloor": {
@@ -81,6 +105,18 @@
     "mirror": true,
     "paletteOverrides": {
      "brick": "#4a3a2c"
+    },
+    "overrides": {
+     "balconies": {
+      "storeys": [
+       1,
+       2
+      ],
+      "bays": [
+       1
+      ],
+      "projecting": true
+     }
     }
    },
    "groundFloor": {
