@@ -28,6 +28,7 @@
       "id": "front0",
       "street": "Oudezijds Achterburgwal",
       "gable": "neck",
+      "crownSurface": "stone",
       "crownAt": {
        "from": 0.28,
        "to": 0.72
@@ -78,10 +79,10 @@
      "material": "slate"
     },
     "palette": {
-     "brick": "#5a3e32",
+     "brick": "#4f3d2e",
      "frame": "white-painted",
      "door": "#2a2420",
-     "stone": "#ecebe4",
+     "stone": "#e2dccb",
      "cornice": "#e8e6de"
     }
    },
@@ -109,7 +110,7 @@
     ],
     "photoGables": 1,
     "schemaLimits": [
-     "the raised centre is white stone in the photo; drawn as a brick neck gable over the middle axis, its arched light square",
+     "the raised white stone centre is drawn as a stone neck over the middle axis; its arched light is square",
      "the carved crest is not drawn"
     ]
    }
@@ -184,7 +185,7 @@
      "material": "black-tile"
     },
     "palette": {
-     "brick": "#663f33",
+     "brick": "#31231a",
      "frame": "white-painted",
      "door": "#2a2622",
      "stone": "#ecebe4",
@@ -289,7 +290,7 @@
      "material": "red-tile"
     },
     "palette": {
-     "brick": "#76705f",
+     "brick": "#575341",
      "wallMaterial": "stucco",
      "frame": "white-painted",
      "door": "#2a2826",
@@ -345,7 +346,10 @@
    {
     "pand": "0363100012178649",
     "stripRow": 310,
-    "evidence": "top of the white cornice (14.3 m)"
+    "frontRoof": {
+     "topRow": 309
+    },
+    "evidence": "top of the white cornice (14.3 m); the photo shows red tile only behind the centre dormer, sky elsewhere (Opus verdict 2026-11-10, flatBehindCornice)"
    }
   ]
  }

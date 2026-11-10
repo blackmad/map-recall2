@@ -61,6 +61,44 @@ historic `design` (the precedent of `wallen-oza-41-57` and `nassau-145-152`) fro
   * Intakes that failed with "Overpass unavailable": Doelenstraat 2-20 and Oudezijds Achterburgwal 188-196.
   * Faces still in the BG intake queue: Achterburgwal 151-153, 189-197 and 203-205; Voorburgwal 181-193 and 217-249; Kloveniersburgwal 52-62; Rusland 3-29 and 10-26.
 
+## Round 2: Opus verdict applied (`docs/reports/burgwallen-strip-verdict-20261110.md`)
+No holds: 4 install, 19 install-with-fix. All 23 pands are reinstalled with the fixes below; every sheet was looked at again (overlay and model).
+* **Rows.**
+  * Kalverstraat 186 and 184 (rows 0.5-0.9 m low): the photo wall runs to 14.0 m and the console cornice with its soffit to 15.0 m. Eaves now read 15.0 m, under a 1.0 m white console `entablature`.
+  * Kalverstraat 199 (rows 0.5 m low): storeys re-measured.
+  * Kalverstraat 204 Dogo (top row 0.9 m low): raised.
+  * Kloveniersburgwal 90 (top row 0.9 m low): raised under the cornice, so the block arches meet it.
+  * Achterburgwal 167-169 (rows 2-3 about 0.7 m low): storeys re-measured; the neck lights are 1.0 m wide.
+* **Gables.**
+  * Kalverstraat 182: foot 15.0 m, apex 18.75 m (first step 1.2 m higher, apex 0.75 m higher).
+  * Kalverstraat 199: a narrow neck (0.4 of the front) on straight flanks that rise only 0.2 of the crown, over a flat cornice.
+    `crownAt` with a full-width neck drew the same shape, but it put the blue pui's glazed door outside the wall silhouette (opening-outside audit), so it was not used.
+  * Cruyff: a 1.4 m neck (0.26 of the front) with a pointed pediment cap.
+  * Pearle: shoulders 1.1 m higher (foot 14.4 m) and a 1.6 m gable light.
+  * Kloveniersburgwal 100: the stepped gable is 1.2 m lower.
+  * Spui 11: a 1.3 m two-light gable window.
+* **Sky instead of roof.**
+  * Spui 13 (Provelo), Kloveniersburgwal 100 and Achterburgwal 179 use `continuity.measuredEaves[].frontRoof.topRow` = cornice row - 1. This is the existing front-roof cap, the same mechanism `reviewRoofs.ts` `flatBehindCornice` writes.
+  * The Provelo dormer is white stone with a pediment.
+* **White.**
+  * Bands, blocks and cornices are `#e8e6e0` on Kalverstraat 182, Kloveniersburgwal 90-102 and Achterburgwal 167.
+  * Achterburgwal 175's raised centre is white stone (`crownSurface: 'stone'`, `#e2dccb`).
+  * Kalverstraat 186, 184 and 195 have white console entablatures.
+* **Colour.**
+  * Bricks come from `fitWallBrick`, using `scripts/block-face/fit-wall-palette.ts`, a byte-identical copy of the Dapper lane's file. Each brick is fitted to the verdict's target where the review's wall sample is sane: Kalverstraat 195, Cruyff, Dogo, Achterburgwal 158, 167, 169, 177, 179 and 206. The fit for 206 cannot reach its target and stops at the city brick floor.
+  * Where the sample reads glass or roof (blue model hue), the verdict target is divided by 1.14: Kalverstraat 184 and 182, Achterburgwal 175.
+  * Achterburgwal 202 is painted near-black olive (`painted-brick`). On the model the wall is dark olive; the review's wall sample still reads blue-grey there.
+* **Kit additions** (typed, validated, tested in `buildingRecipe/crownStoneAttic.test.ts`, byte-identical when absent):
+  * `crownSurface: 'stone'` draws the whole crown in the stone colour (the white raised centre of Achterburgwal 175).
+  * `atticLightWidth` (0.4-2.2 m) gives a measured gable-light width, in place of the default share that is clamped to 0.5-0.9 m (Spui 11, Pearle, Achterburgwal 167-169).
+  * A narrow neck on a flat cornice and console entablatures needed no new code: the kit's neck fields and `entablature.consoles` express them.
+* **Still not expressed:**
+  * the small light in Spui 11's top step;
+  * the sculpted aedicule of Provelo;
+  * the crest on 175;
+  * the arched basements of 177 and 206;
+  * the cream string courses of 167, which are drawn on the storey lines, not on the sill and head lines.
+
 ## Pipeline fixes (typed, tested)
 * **Intake skips unpublished panorama days** (`scripts/block-face/intake.ts`, `blockFace/strip.ts` `withoutDays`). The panorama API lists 2023-04-03, 2023-04-11 and 2023-04-17 in the centre, but their images answer 404. The planner picked them as the newest full-coverage day and wrote grey strips that still claimed coverage 1. Intake now sends one HEAD per capture day and drops days that answer 404.
   * Named regression: `burgwallen.test.ts`, "Kloveniersburgwal 48-50: … 2023-04-17 … never planned".

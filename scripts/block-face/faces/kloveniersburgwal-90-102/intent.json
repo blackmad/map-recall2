@@ -56,13 +56,13 @@
        "from": 1,
        "to": 2
       },
-      "crownRise": 1.15,
+      "crownRise": 0.85,
       "crownSteps": 3,
       "cornice": "bracketed",
       "entablature": {
        "rise": 1.6,
        "cap": 0.35,
-       "frieze": "wall",
+       "frieze": "trim",
        "consoles": 5,
        "architrave": 0.12
       },
@@ -92,8 +92,8 @@
      "brick": "#9c6a52",
      "frame": "white-painted",
      "door": "#26302a",
-     "stone": "#e6dcc6",
-     "cornice": "#e6dcc6"
+     "stone": "#e8e6e0",
+     "cornice": "#e8e6e0"
     }
    },
    "groundFloor": {
@@ -110,7 +110,7 @@
     "symmetry": "symmetric above the ground",
     "groundFloor": "house door under a top light, three tall windows",
     "signage": "none",
-    "roofline": "bracketed white cornice at 12.0 m over a frieze 10.4-11.8 m; a stepped brick wall gable over axes 1-2, apex 15.6 m",
+    "roofline": "bracketed white cornice at 12.0 m over a frieze 10.4-11.8 m; a stepped brick wall gable over axes 1-2, apex about 14.4 m",
     "citation": "strip.jpg pand 1 (2023-03-27)",
     "photoRows": [
      4,
@@ -190,7 +190,7 @@
       ],
       "headLines": [
        0.8,
-       0.55
+       0.75
       ]
      }
     ],
@@ -201,8 +201,8 @@
      "brick": "#9c6a52",
      "frame": "white-painted",
      "door": "#26302a",
-     "stone": "#e6dcc6",
-     "cornice": "#e6dcc6"
+     "stone": "#e8e6e0",
+     "cornice": "#e8e6e0"
     }
    },
    "groundFloor": {
@@ -242,7 +242,10 @@
    {
     "pand": "0363100012171156",
     "stripRow": 405,
-    "evidence": "top of the bracketed cornice, grid crop k100"
+    "frontRoof": {
+     "topRow": 404
+    },
+    "evidence": "top of the bracketed cornice, grid crop k100; no slate behind it in the photo, only the stepped wall gable (Opus verdict 2026-11-10: hide the slate, lower the gable 1.2 m, white entablature on consoles)"
    },
    {
     "pand": "0363100012171162",

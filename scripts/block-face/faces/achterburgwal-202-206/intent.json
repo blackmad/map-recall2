@@ -79,7 +79,7 @@
      "material": "red-tile"
     },
     "palette": {
-     "brick": "#56402f",
+     "brick": "#2a2219",
      "frame": "white-painted",
      "door": "#232624",
      "stone": "#e4e0d4",
@@ -125,7 +125,7 @@
       "id": "front0",
       "street": "Oudezijds Achterburgwal",
       "gable": "cornice",
-      "cornice": "heavy",
+      "cornice": "simple",
       "storeys": 2,
       "bays": 4,
       "doorBay": null,
@@ -175,7 +175,8 @@
      "material": "black-tile"
     },
     "palette": {
-     "brick": "#252120",
+     "brick": "#2a2a1a",
+     "wallMaterial": "painted-brick",
      "frame": "white-painted",
      "door": "#202322",
      "stone": "#e4e0d4",

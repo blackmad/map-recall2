@@ -1069,7 +1069,7 @@ export function fitIntent(intent: CanalHouseIntent, surveyFacts: BuildingFacts):
       // Museumkwartier #159: 3.5980496799642876 vs 3.598049679964287 put the head before the foot and cut a V into a
       // step gable's top), so x within 1e-9 counts as equal, the stable sort keeps the outline's own order and the riser takes one x.
       const plumb = front.gable === 'shouldered' || !!front.crownHalf;
-      elevation.crown = seen({profile: (plumb && mirrored ? [...profile].reverse() : profile).map(([x, y]) => [Math.min(width, Math.max(0, mirrored ? width - x : x)), Math.max(eaves, y)] as CanalhousePoint).sort((p, q) => Math.abs(p[0] - q[0]) < 1e-9 ? 0 : p[0] - q[0]).map((p, i, a) => i > 0 && p[0] < a[i - 1][0] ? [a[i - 1][0], p[1]] as CanalhousePoint : p), depthM: 0.18, trimWidthM: front.renderedGable ? 0 : 0.08, surface: 'wall'});
+      elevation.crown = seen({profile: (plumb && mirrored ? [...profile].reverse() : profile).map(([x, y]) => [Math.min(width, Math.max(0, mirrored ? width - x : x)), Math.max(eaves, y)] as CanalhousePoint).sort((p, q) => Math.abs(p[0] - q[0]) < 1e-9 ? 0 : p[0] - q[0]).map((p, i, a) => i > 0 && p[0] < a[i - 1][0] ? [a[i - 1][0], p[1]] as CanalhousePoint : p), depthM: 0.18, trimWidthM: front.renderedGable ? 0 : 0.08, surface: front.crownSurface ?? 'wall'});
       // `renderedGable.bargeboard`: painted boards inside each raking edge of the crown, in the trim colour (bargeboards.ts);
       // they replace the crown's trim edge boxes (a frame-class box past the gable end is judged an opening outside its wall).
       if (front.renderedGable) { const boards = bargeboardOrnaments(elevation.crown.value.profile, eaves, front.renderedGable.bargeboard, width); if (boards.length) elevation.ornaments = elevation.ornaments ? {...elevation.ornaments, value: [...elevation.ornaments.value, ...boards]} : seen(boards); }
@@ -1090,7 +1090,7 @@ export function fitIntent(intent: CanalHouseIntent, surveyFacts: BuildingFacts):
       // Attic windows inside the crown.
       const attic = front.atticWindows ?? 0, rise = crownTop - eaves;
       if (attic > 0 && rise > 1.2 && !groupCrowns) {
-        const w = clamp((crownSpan ? crownW * 0.2 : mw * 0.14), 0.5, 0.9), h = clamp(rise * 0.4, 0.6, 1.4), gap = w * 0.5, total = attic * w + (attic - 1) * gap;
+        const w = front.atticLightWidth ?? clamp((crownSpan ? crownW * 0.2 : mw * 0.14), 0.5, 0.9), h = clamp(rise * 0.4, 0.6, 1.4), gap = w * 0.5, total = attic * w + (attic - 1) * gap;
         // Gable lights follow a partial crown: on its bay axes when there is one light per bay, else centred on it.
         const onAxes = front.crownBays && front.crownBays.to - front.crownBays.from + 1 === attic ? layout.axisCentres.slice(front.crownBays.from, front.crownBays.to + 1) : null;
         const crownCentre = crownSpan ? (crownSpan[0] + crownSpan[1]) / 2 : mw / 2;

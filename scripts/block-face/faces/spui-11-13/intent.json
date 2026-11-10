@@ -31,6 +31,7 @@
       "crownRise": 1.4,
       "crownSteps": 3,
       "atticWindows": 1,
+      "atticLightWidth": 1.3,
       "cornice": "none",
       "storeys": 3,
       "bays": 2,
@@ -113,7 +114,7 @@
     "photoGables": 1,
     "schemaLimits": [
      "the carved white crown piece on the top step is not drawn",
-     "the gable holds a wide two-light window at its foot and a small light near the top; the kit draws one narrow attic light"
+     "the small light in the top step is not drawn (one attic light per step gable)"
     ]
    }
   },
@@ -151,7 +152,7 @@
       },
       "dormers": 1,
       "dormerStyle": "pediment",
-      "dormerBody": "timber",
+      "dormerBody": "stone",
       "storeyHeights": [
        5.1,
        2.9,
@@ -244,7 +245,10 @@
    {
     "pand": "0363100012175739",
     "stripRow": 233,
-    "evidence": "top of the white cornice (11.5 m)"
+    "frontRoof": {
+     "topRow": 232
+    },
+    "evidence": "top of the white cornice (11.5 m); no roof rise behind it: the photo shows sky round the white aedicule dormer (Opus verdict 2026-11-10, flatBehindCornice)"
    }
   ]
  }

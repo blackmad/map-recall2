@@ -28,7 +28,14 @@
       "id": "front0",
       "street": "Kalverstraat",
       "gable": "cornice",
-      "cornice": "simple",
+      "cornice": "bracketed",
+      "entablature": {
+       "rise": 0.9,
+       "cap": 0.3,
+       "frieze": "trim",
+       "consoles": 8,
+       "architrave": 0.08
+      },
       "storeys": 4,
       "bays": 6,
       "doorBay": null,
@@ -69,7 +76,7 @@
      "material": "black-tile"
     },
     "palette": {
-     "brick": "#957260",
+     "brick": "#a18064",
      "frame": "white-painted",
      "door": "black",
      "stone": "#ece9e0",
@@ -229,10 +236,13 @@
       "street": "Kalverstraat",
       "gable": "neck",
       "crownCap": "flat",
-      "crownRise": 0.85,
-      "crownNeckWidth": 0.38,
+      "crownRise": 0.93,
+      "crownNeckWidth": 0.4,
+      "crownShoulderRise": 0.2,
+      "crownShoulder": "straight",
       "atticWindows": 1,
-      "cornice": "none",
+      "atticLightWidth": 1.3,
+      "cornice": "simple",
       "storeys": 4,
       "bays": 3,
       "doorBay": null,
@@ -242,21 +252,21 @@
       "windowShare": 0.62,
       "storeyHeights": [
        4.4,
-       2.9,
-       2.7,
-       2.6
+       3.1,
+       2.85,
+       2.55
       ],
       "windowHeights": [
        0.6,
-       0.66,
-       0.59,
-       0.65
+       0.61,
+       0.56,
+       0.67
       ],
       "headLines": [
        0.8,
-       0.76,
-       0.78,
-       0.85
+       0.87,
+       0.84,
+       0.84
       ],
       "groundFront": {
        "kind": "pui",
@@ -297,7 +307,7 @@
     "symmetry": "symmetric",
     "groundFloor": "blue-framed shop",
     "signage": "none",
-    "roofline": "brick neck gable from 12.7 m to about 15 m with a light in the neck; ornament washed out",
+    "roofline": "flat cornice across the front at 13.2 m with a narrow raised neck (2.1 m wide) over the middle to 15.7 m, a 1.4 m light in it and a sculpted crown",
     "citation": "strip.jpg pand 3 (2025-01-20)",
     "photoRows": [
      1,
@@ -309,7 +319,7 @@
     "photoGables": 1,
     "schemaLimits": [
      "the right display window is drawn as a dark panel: a third glazed bay at the right end reaches past the wall silhouette (geometry audit opening-outside), so the pui keeps it closed",
-     "claw pieces and the crowning ornament are washed out in the strip and not drawn"
+     "the sculpted crown on the neck is not drawn"
     ]
    }
   }
@@ -322,8 +332,8 @@
   "measuredEaves": [
    {
     "pand": "0363100012175256",
-    "stripRow": 589,
-    "evidence": "top of the white cornice (grid crop k195, 13.0 m)"
+    "stripRow": 569,
+    "evidence": "top of the deep console cornice (grid crop k195, 13.5 m; Opus verdict 2026-11-10: deepen the cornice)"
    },
    {
     "pand": "0363100012175255",
@@ -332,8 +342,8 @@
    },
    {
     "pand": "0363100012175232",
-    "stripRow": 601,
-    "evidence": "gable foot (12.7 m)"
+    "stripRow": 581,
+    "evidence": "top of the flat cornice either side of the raised neck (grid crop k199g, 13.2 m; Opus verdict: a narrow neck on a flat cornice, rows 0.5 m low)"
    }
   ]
  }

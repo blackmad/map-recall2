@@ -395,6 +395,17 @@ export interface FrontIntent {
   crownSteps?: number;
   /** A small finial block on the flat top of a step/neck/bell crown. */
   crownFinial?: boolean;
+  /**
+   * `stone`: the whole crown (gable, neck or raised centre) is drawn in the stone colour instead of the wall (Oudezijds
+   * Achterburgwal 175, 2026-11-10: a white stone raised centre over a brick cornice front). Absent = wall, byte-identical.
+   */
+  crownSurface?: 'stone';
+  /**
+   * Width of each attic (gable) light in metres, measured on the photo (0.4..2.2), instead of the default share of the
+   * crown (clamped 0.5-0.9 m). Spui 11 (a 1.3 m two-light window at the foot of a step gable), Kalverstraat 206 (a 1.6 m
+   * three-light neck window). Lights that would escape the crown still shrink to fit. Absent = byte-identical.
+   */
+  atticLightWidth?: number;
   /** `round`: the attic window is a round oculus instead of a rectangular light. */
   atticShape?: typeof ATTIC_SHAPES[number];
   /** `tall`: windows about 1.25x as high as the default for their width and set lower in the storey (two-light sashes of the 1870s). */
@@ -1750,6 +1761,8 @@ export function validateIntent(input: unknown): CanalHouseIntent {
     if (f.crownSteps !== undefined) { count(f.crownSteps, `${at}.crownSteps`, 1, 6); if (f.gable !== 'step') problems.push(`${at}.crownSteps: only a step gable has steps`); }
     if (f.crownFinial !== undefined && typeof f.crownFinial !== 'boolean') problems.push(`${at}.crownFinial must be boolean`);
     if (f.crownFinial && !['step', 'neck', 'raised-neck', 'bell'].includes(f.gable)) problems.push(`${at}.crownFinial: needs a step, neck or bell gable (a flat top to stand on)`);
+    if (f.crownSurface !== undefined && f.crownSurface !== 'stone') problems.push(`${at}.crownSurface: "stone" or absent`);
+    if (f.atticLightWidth !== undefined && !(typeof f.atticLightWidth === 'number' && f.atticLightWidth >= 0.4 && f.atticLightWidth <= 2.2 && (f.atticWindows ?? 0) > 0)) problems.push(`${at}.atticLightWidth: 0.4..2.2 m, with atticWindows`);
     if (f.atticShape !== undefined) oneOf(f.atticShape, ATTIC_SHAPES, `${at}.atticShape`);
     if (f.atticShape === 'round' && !f.atticWindows) problems.push(`${at}.atticShape: round needs atticWindows >= 1`);
     if (f.windowProportion !== undefined) oneOf(f.windowProportion, WINDOW_PROPORTIONS, `${at}.windowProportion`);

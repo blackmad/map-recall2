@@ -133,6 +133,8 @@
       "storeys": 4,
       "gable": "neck",
       "crownCap": "pediment",
+      "crownCapRatio": 0.5,
+      "crownNeckWidth": 0.26,
       "crownRise": 1.0,
       "bays": 3,
       "windows": "casement-toplight",
@@ -179,7 +181,7 @@
      "material": "black-tile"
     },
     "palette": {
-     "brick": "#7a5e52",
+     "brick": "#736158",
      "frame": "white-painted",
      "door": "black",
      "stone": "#e8e5dc"
@@ -227,11 +229,12 @@
       "cornice": "none",
       "storeys": 4,
       "gable": "bell",
-      "crownRise": 1.5,
+      "crownRise": 1.1,
       "bays": 3,
       "windows": "casement-toplight",
       "windowShare": 0.8,
       "atticWindows": 1,
+      "atticLightWidth": 1.6,
       "gableOrnament": {
        "wings": "volutes"
       },
@@ -239,19 +242,19 @@
        4.9,
        2.9,
        2.8,
-       2.5
+       3.6
       ],
       "windowHeights": [
        0.6,
        0.6,
        0.55,
-       0.55
+       0.38
       ],
       "headLines": [
        0.8,
        0.66,
        0.6,
-       0.62
+       0.43
       ],
       "shopfront": {
        "colour": "#2a2c2b",
@@ -347,7 +350,7 @@
        0.8,
        0.86,
        0.86,
-       0.6
+       0.86
       ],
       "shopfront": {
        "colour": "black",
@@ -369,7 +372,7 @@
      "material": "black-tile"
     },
     "palette": {
-     "brick": "#55535a",
+     "brick": "#6f6c72",
      "wallMaterial": "painted-brick",
      "frame": "white-painted",
      "door": "black",
@@ -421,8 +424,8 @@
    },
    {
     "pand": "0363100012175223",
-    "stripRow": 181,
-    "evidence": "gable foot under the volutes (13.3 m)"
+    "stripRow": 137,
+    "evidence": "gable shoulders under the volutes (14.4 m; Opus verdict 2026-11-10: shoulders and the wide gable window 1.1 m higher than the first reading at 13.3 m)"
    },
    {
     "pand": "0363100012175224",
