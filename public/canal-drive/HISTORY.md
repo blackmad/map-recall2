@@ -1,5 +1,17 @@
 # Canal Recall — what is built
 
+**H5h photo-read hand set and J2 Jev capabilities (2026-11-10, #351, #353).**
+- **H5h** (4db067da6, opus): `data/house-line/hand-set-v1.json` is the house line's truth set.
+  - 80 pands: 60 stratified AB07, 13 easy houses and 7 Nassaukade, plus 40 gable-only crown rows. Each field carries a confidence and a `source-data://` crop ref. A field the crop cannot show is `unknown` and never scored.
+  - Seven pands with several fronts are `extent: multi`, which is why HouseSpec `design.fronts[]` now states each front's `share`.
+  - One storeys definition (full street-facing storeys, no souterrain and no attic-in-crown) now holds for H5, H9 and H1c.
+- **Blind reader ceilings:** axes 1.00, storeys 1.00, gable 0.86 (pooled), finish 0.92, pui 0.88, wall tone 0.89, wall family 0.81. Gates are ceiling − 0.1, judged by Wilson 95 % intervals; gable needs n ≥ 60.
+- **What passed:** Jev finish (23/23). Failed: BAG storeys (0.43, now off; BAG stays the height source) and register gable as a crown writer (0.60). Its misses are historic crowns that are a cornice today. Open: Jev bays, Jev storeys (good tier 0.88, off until more rows), pui and wall tone. Facade storeys stay unwritten rather than wrong.
+- **J2** (032290b8e, sonnet, $0.11; docs/reviews/jev-capabilities-j2-20261110.md):
+  - Reliable: cross-year same-building (46/48), shopfront (16/16), reworded dormer, balcony, stoop and colour family. Colour family is used as a corrector, not a hex.
+  - Not reliable: white bands and surrounds, basement, crown-only gable crops and per-render likeness (it picks the decoy 11 of 28 times).
+  - The 28 likeness triples await the judgement session's labels.
+
 **H5 house describe (2026-11-10, #346, d60938093, sonnet).** `npm run house:describe` merges four writers in trust order: register, BAG, pixel and Jev. Input is H4's crops in good/fallback/none tiers. It keeps a disagreement log, a Jev cache keyed by crop hash, and hard budgets of $2 per run and $3 per buurt (AB07 spent $0.07 in total). `agreement.ts` builds the worst-twelve sheets.
 - **Gated off by measurement.** Pixel storeys were 7/16 right, no better than BAG. Pixel bays are written only when the column pitch resolves. Jev gable is limited to step and plain, since its cornice contradicted the register 5 of 8 times on canal fronts.
 - **Agreement against the 39 "hand" pands:** bays 3/4, gable 9/14, storeys 19/39. That set turned out to be mostly type placements (33 of 39), so the 0.85 gate was not assessable.
