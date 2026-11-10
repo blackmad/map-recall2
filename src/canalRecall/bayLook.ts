@@ -89,13 +89,24 @@ export const BAY_STYLES: Record<Archetype, readonly BayStyle[]> = {
 const ARCHETYPES = Object.keys(BAY_STYLES) as Archetype[];
 
 type Entry = { archetype: Archetype; style: number; kind: (typeof BAY_KINDS)[number]; layer: number; restrainedShop?: boolean; originalMasonry?: boolean };
+/**
+ * A restrained shopfront (bayTextures.ts `quietShopAt`) reads its kind twice: the bar's fascia ink and the valance of
+ * the mapped cafe/restaurant kinds. Every other kind paints the same pixels, colour and mask, in every look (pinned by
+ * contemporaryFamilyOn.test.ts), so with the contemporary family on the seven restrained kinds share three cells per
+ * archetype, each named by the kind that owns it (shopCafe, shopBar, shopWindow): 16 layers freed for the family's 6.
+ * The procedural array is CELL_LAYER_COUNT cells, four roofs, the bay cells and the glass-block cell, and stood at
+ * exactly 256 byte layers before (paintLookAtlas.ts lookAtlasLayers). Flag off: one cell per kind, the layer table and
+ * the baked shells' hash (world/shellLayers.ts) as before.
+ */
+const RESTRAINED_SHOP_CELL: Record<ShopKind, ShopKind> = { groundShop: 'shopCafe', shopCafe: 'shopCafe', shopBar: 'shopBar', shopWindow: 'shopWindow', shopDeli: 'shopWindow', shopFlorist: 'shopWindow', shopBike: 'shopWindow' };
+const sharedRestrainedShops = newbuildFamilyEnabled();
 // Shop cells are shared by period and art direction, not every opening preset.
 // Share only cells whose painter output is identical. Upper cells do not draw
 // ground assemblies; side-entry ground and groundDoor both paint the same door.
 function cellKey(archetype: Archetype, style: number, kind: BayKind, restrainedShop = false): string {
   const variant = { ...BAY_STYLES[archetype][style] };
   if (kind === 'plain') return `${archetype}|plain|${variant.wallMaterial ?? (archetype === 'modern' ? 'smooth' : 'brick')}`;
-  if (isShopKind(kind)) return `${archetype}|${kind}|${restrainedShop}`;
+  if (isShopKind(kind)) return `${archetype}|${restrainedShop && sharedRestrainedShops ? RESTRAINED_SHOP_CELL[kind as ShopKind] : kind}|${restrainedShop}`;
   if (kind === 'upper') delete variant.groundAssembly;
   if (kind === 'groundDoor' && variant.groundAssembly === 'tall-side-entry') kind = 'ground';
   return `${archetype}|${kind}|${JSON.stringify(variant)}`;
@@ -108,8 +119,10 @@ for (const archetype of ARCHETYPES) for (const [style] of BAY_STYLES[archetype].
   if (!cellLayers.has(key)) { cellLayers.set(key, entries.length); entries.push({ archetype, style, kind }); }
 }
 for (const archetype of ARCHETYPES) for (const kind of SHOP_KINDS) {
-  cellLayers.set(cellKey(archetype, 0, kind, true), entries.length);
-  entries.push({ archetype, style: 0, kind, restrainedShop: true });
+  const key = cellKey(archetype, 0, kind, true);
+  if (cellLayers.has(key)) continue;
+  cellLayers.set(key, entries.length);
+  entries.push({ archetype, style: 0, kind: sharedRestrainedShops ? RESTRAINED_SHOP_CELL[kind] : kind, restrainedShop: true });
 }
 // A source-supported brick wall must not inherit the smooth modern fallback
 // from an absent construction year. This cell contains original generated pixels.

@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import { BAY_LAYER_COUNT, BAY_STYLES, bayLookFor } from './bayLook.js';
 import { MODERN_STYLE, MODERN_WALLS, modernEraFor, modernUseFor, modernVocabulary } from './modernFacades.js';
 import { buurtProfileAt } from './buurtProfiles/data.js';
+import { newbuildFamilyEnabled } from './contemporaryFamily.js';
 
 const BUURT_PROFILES_FOR_TEST = buurtProfileAt(4.8821, 52.3768);
 
@@ -19,8 +20,9 @@ test('preset indices name the presets they claim', () => {
   assert.equal(m[MODERN_STYLE.ribbon].family, 'ribbon');
   assert.equal(m[MODERN_STYLE.curtain].family, 'curtain');
   assert.equal(m[MODERN_STYLE.gallery].facadeAssembly, 'stacked-open-balcony');
-  // No new texture layers: the vocabulary only selects presets already in the array.
-  assert.equal(BAY_LAYER_COUNT, 191);
+  // No new texture layers: the vocabulary only selects presets already in the array (the contemporary family's own
+  // table, `?newbuildFamily=1`, is pinned in contemporaryFamilyOn.test.ts).
+  assert.equal(BAY_LAYER_COUNT, newbuildFamilyEnabled() ? 181 : 191);
 });
 
 test('pre-1945 and undated buildings never take the modern vocabulary', () => {
@@ -80,6 +82,8 @@ test('deterministic, brick walls take brick swatches and smooth walls concrete o
     const isBrick = BAY_STYLES.modern[v.styleIndex].wallMaterial === 'brick';
     assert.equal(brick.has(v.wall), isBrick, `${id} ${v.style} ${v.wall}`);
     const look = bayLookFor(id, f.year, f.heightM, 'photo', undefined, undefined, undefined, null, f);
+    // The contemporary family (`?newbuildFamily=1`) outranks the vocabulary for 2005+ housing (bayLook.ts bayLookFor).
+    if (look.contemporary) { assert.ok(newbuildFamilyEnabled()); assert.equal(look.style, look.contemporary.styleIndex); continue; }
     assert.equal(look.wallHex, v.wall);
     assert.equal(look.style, v.styleIndex);
     if (v.style === 'ribbon' || v.style === 'curtain') assert.equal(look.accentHex, v.accent);
