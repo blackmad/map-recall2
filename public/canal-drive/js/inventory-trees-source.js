@@ -13,7 +13,8 @@ import {RebuildCoalescer,extrasRebuildSync} from '../../../src/canalRecall/rende
 import {treeRebuildGap} from '../../../src/canalRecall/engine/arrivalPace.ts';
 import {isAerialView} from '../../../src/canalRecall/rendererShared/aerialView.ts';
 import {TreeInstanceCache,groupOf,treesIncrementalFlag} from '../../../src/canalRecall/rendererShared/treeInstances.ts';
-import {TREE_FADE_MS,treeFadeFlag,fadeClock,diffGroup,leavingArrays,patchTreeFadeMaterial,fadeGeometry,releaseFadeGeometry} from '../../../src/canalRecall/rendererShared/treeFade.ts';
+import {TREE_TILE_KEEP,treeTileKeepFlag,keepTiles,DroppedTileCache} from '../../../src/canalRecall/rendererShared/treeTileKeep.ts';
+import {TREE_FADE_MS,treeFadeFlag,treeShadowFadeFlag,fadeClock,diffGroup,leavingArrays,patchTreeFadeMaterial,fadeGeometry,releaseFadeGeometry} from '../../../src/canalRecall/rendererShared/treeFade.ts';
 const {THREE} = window.CanalRecallThree;
 const MIN_ZOOM = 15.5;
 const BUDGET = 12;
@@ -69,7 +70,13 @@ export class InventoryTrees {
     this.scene=new THREE.Group();
     // `?treeFade` (lane P5 #332, rendererShared/treeFade.ts): trees a rebuild adds dissolve in, trees it drops dissolve
     // out on a leaving mesh; kept trees are untouched. Off (`=0`, or `?popFade=0`): the one-frame swap as before.
-    this.fadeOn=!!this.sharedFrame&&treeFadeFlag();this.fadeNow={value:fadeClock()};this.leaving=[];this.fadeUntil=0;this.debugFade={rebuilds:0,entered:0,kept:0,left:0};
+    this.fadeOn=!!this.sharedFrame&&treeFadeFlag();this.fadeNow={value:fadeClock()};
+    // `?treeShadowFade=0`: the shadows of entering and leaving trees switch in one frame, as in P5.
+    this.fadeDepth=this.fadeOn&&treeShadowFadeFlag()?patchTreeFadeMaterial(new THREE.MeshDepthMaterial(),this.fadeNow,TREE_FADE_MS):null;this.leaving=[];this.fadeUntil=0;this.debugFade={rebuilds:0,entered:0,kept:0,left:0};
+    // `?treeTileKeep` (lane P6 #334, rendererShared/treeTileKeep.ts): a resident tile stays while it ranks within the
+    // budget plus a keep band, and a tile that leaves keeps its records for a while, so flying back does not refetch it.
+    this.tileKeep=treeTileKeepFlag()?TREE_TILE_KEEP:{...TREE_TILE_KEEP,keepExtra:0,cacheMax:0};this.dropped=new DroppedTileCache(this.tileKeep);
+    this.debugTileCache={restores:0,size:0,fetches:0,drops:0};
     this.origin=maplibregl.MercatorCoordinate.fromLngLat([4.9,52.37],0);
     this.scale=this.origin.meterInMercatorCoordinateUnits();
     this.transform=new THREE.Matrix4().makeTranslation(this.origin.x,this.origin.y,this.origin.z).scale(new THREE.Vector3(this.scale,-this.scale,this.scale));
@@ -93,6 +100,7 @@ export class InventoryTrees {
     this.clear();this.flushFades();this.map.off('moveend',this.move);
     for(const geometry of this.geometries.values())geometry.dispose();
     for(const material of this.materials.values())material.dispose();
+    this.fadeDepth?.dispose();
     this.geometries.clear();this.materials.clear();
   }
   async load(root) {
@@ -125,11 +133,11 @@ export class InventoryTrees {
   }
   clear() {
     for (const c of this.pending.values()) c.abort();
-    this.pending.clear();this.tiles.clear();this.queue=[];this.residency.invalidate();this.rebuilds.cancel();this.disposeMeshes();this.flushFades();
+    this.pending.clear();this.tiles.clear();this.dropped?.clear();this.queue=[];this.residency.invalidate();this.rebuilds.cancel();this.disposeMeshes();this.flushFades();
   }
   disposeMeshes() {
     for(const m of this.meshes){this.scene.remove(m);m.dispose?.();if(m.geometry?.userData?.treeFadeShared)releaseFadeGeometry(m.geometry);}
-    for(const c of this.culls)if(c.shadow){this.scene.remove(c.shadow);c.shadow.dispose?.();}
+    for(const c of this.culls)if(c.shadow){this.scene.remove(c.shadow);if(c.disposeShadow)c.disposeShadow();else c.shadow.dispose?.();}
     this.meshes=[];this.culls=[];this.debugTrees=0;
   }
   // The start-of-ride flight holds the trees where it will land: its overview
@@ -144,9 +152,13 @@ export class InventoryTrees {
     const [x0,y1]=tile(b.west,b.south),[x1,y0]=tile(b.east,b.north),[cx,cy]=tile(c.lng,c.lat);
     const wanted=[];
     for(let x=x0;x<=x1;x++)for(let y=y0;y<=y1;y++){const key=`15/${x}/${y}`;if(this.meta.has(key))wanted.push({key,d:(x-cx)**2+(y-cy)**2});}
-    wanted.sort((a,b)=>a.d-b.d);const keys=new Set(wanted.slice(0,BUDGET).map(t=>t.key));
-    for(const key of this.tiles.keys())if(!keys.has(key)){this.tiles.delete(key);this.residency.invalidate();}
+    wanted.sort((a,b)=>a.d-b.d);const keys=keepTiles(wanted.map(t=>t.key),this.tiles,{budget:BUDGET,keepExtra:this.tileKeep.keepExtra});
+    const now=performance.now();
+    for(const key of this.tiles.keys())if(!keys.has(key)){this.dropped.put(key,this.tiles.get(key),now);this.tiles.delete(key);this.debugTileCache.drops++;this.residency.invalidate();}
     for(const [key,c] of this.pending)if(!keys.has(key)){c.abort();this.pending.delete(key);}
+    // A tile that left a moment ago comes back from the cache: no fetch, no parse, and its compiled arrays are kept.
+    for(const key of keys)if(!this.tiles.has(key)&&!this.pending.has(key)){const data=this.dropped.take(key,now);if(data){this.tiles.set(key,data);this.residency.invalidate();this.rebuilds.request();}}
+    this.debugTileCache.restores=this.dropped.restores;this.debugTileCache.size=this.dropped.size;
     this.queue=[...keys].filter(k=>!this.tiles.has(k)&&!this.pending.has(k));
     if(this.residency.needsRebuild(b,this.buildKey()))this.rebuilds.request();
     this.pump();
@@ -164,7 +176,7 @@ export class InventoryTrees {
       const text=bytes[0]===0x1f&&bytes[1]===0x8b ? await new Response(new Blob([bytes]).stream().pipeThrough(new DecompressionStream('gzip'))).text() : new TextDecoder().decode(bytes);
       const data=JSON.parse(text);
       if(data.version!==1||data.key!==key||!Array.isArray(data.trees))throw Error('Invalid municipal tree tile');
-      if(!controller.signal.aborted&&generation===this.generation){this.tiles.set(key,data.trees);this.residency.invalidate();this.rebuilds.request();}
+      if(!controller.signal.aborted&&generation===this.generation){this.debugTileCache.fetches++;this.tiles.set(key,data.trees);this.residency.invalidate();this.rebuilds.request();}
     } catch(error){if(error.name!=='AbortError')console.warn(`Tree tile ${key} unavailable`,error);}
     finally{if(this.pending.get(key)===controller)this.pending.delete(key);this.pump();}
   }
@@ -282,7 +294,9 @@ export class InventoryTrees {
       const a=leavingArrays(g,leaving,now),shared=this.geometries.get(g.geometryKey);if(!shared)continue;
       const m=new THREE.InstancedMesh(fadeGeometry(THREE,shared,a.fades),g.material,leaving.length);
       m.instanceMatrix.array.set(a.matrices);if(a.colours)m.instanceColor=new THREE.InstancedBufferAttribute(a.colours,3);
-      m.frustumCulled=false;m.castShadow=false;m.receiveShadow=!!this.sharedFrame;m.userData.wood=g.wood;m.userData.leaving=true;
+      // Lane P6 (#334): a leaving tree keeps casting until its fade ends, and its shadow dissolves with it.
+      const shade=!!this.sharedFrame&&!!this.fadeDepth;
+      m.frustumCulled=false;m.castShadow=shade;if(shade)m.customDepthMaterial=this.fadeDepth;m.receiveShadow=!!this.sharedFrame;m.userData.wood=g.wood;m.userData.leaving=true;
       this.scene.add(m);this.leaving.push({mesh:m,end:performance.now()+TREE_FADE_MS+50});
       this.fadeTally.left+=leaving.length;
     }
@@ -316,6 +330,8 @@ export class InventoryTrees {
     m.instanceMatrix.needsUpdate=true;m.instanceColor.needsUpdate=true;m.frustumCulled=false;
     if(this.sharedFrame){m.castShadow=true;m.receiveShadow=true;}
     this.scene.add(m);this.meshes.push(m);
-    if(this.cullOn){const c=new InstanceCull(THREE,m,{castShadow:m.castShadow});if(c.shadow)this.scene.add(c.shadow);this.culls.push(c);}
+    // Lane P6 (#334): the depth pass takes the same dissolve, so a tree's shadow fades in and out with the tree.
+    if(this.fadeDepth&&m.castShadow)m.customDepthMaterial=this.fadeDepth;
+    if(this.cullOn){const c=new InstanceCull(THREE,m,{castShadow:m.castShadow});if(c.shadow){if(this.fadeDepth)c.shadow.customDepthMaterial=this.fadeDepth;this.scene.add(c.shadow);}this.culls.push(c);}
   }
 }

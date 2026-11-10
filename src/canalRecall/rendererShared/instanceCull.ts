@@ -43,7 +43,10 @@ export class InstanceCull {
     // The shadow twin: the full arrays, drawn only by the shadow pass.
     this.shadow = null;
     if (options.castShadow) {
-      const twin = new THREE.InstancedMesh(mesh.geometry, mesh.material, n);
+      // With per-instance extras (lane P6 #334: `treeFade` for a fading depth material) the twin needs its own full
+      // copies: the mesh's are compacted to the kept set. It shares every other attribute and the index (one GPU copy);
+      // free it with `disposeShadow()`. Without extras the twin draws the mesh's geometry, as before.
+      const twin = new THREE.InstancedMesh(this.extras.length ? twinGeometry(THREE, mesh.geometry, n) : mesh.geometry, mesh.material, n);
       twin.instanceMatrix.array.set(this.matrices);
       if (this.colours) { twin.setColorAt(0, new THREE.Color()); twin.instanceColor.array.set(this.colours); }
       twin.frustumCulled = false; twin.castShadow = true; twin.receiveShadow = false;
@@ -105,6 +108,19 @@ export class InstanceCull {
     return { matrices: this.matrices, colours: this.colours, extras };
   }
 
+  /** Free the shadow twin (its own instanced copies, never the shared attributes); call after removing it. */
+  disposeShadow(): void {
+    const twin = this.shadow;
+    if (!twin) return;
+    twin.dispose?.();
+    const g = twin.geometry;
+    if (g !== this.mesh.geometry && g?.userData?.instanceCullTwin) {
+      for (const [name, attr] of Object.entries(g.attributes)) if (!(attr as any).isInstancedBufferAttribute) g.deleteAttribute(name);
+      g.index = null;
+      g.dispose();
+    }
+  }
+
   /** Every instance back in the buffers (the opt-out, a context loss). */
   restore(): void {
     const n = this.stats.instances;
@@ -118,6 +134,18 @@ export class InstanceCull {
     upload(this.mesh.instanceMatrix, n * 16);
     if (this.mesh.instanceColor) upload(this.mesh.instanceColor, n * 3);
   }
+}
+
+/** A geometry sharing `shared`'s plain attributes and index with full copies of its instanced ones (first `n`). */
+function twinGeometry(THREE: any, shared: any, n: number): any {
+  const g = new THREE.BufferGeometry();
+  for (const [name, attr] of Object.entries(shared.attributes) as [string, any][]) {
+    g.setAttribute(name, attr.isInstancedBufferAttribute ? new THREE.InstancedBufferAttribute(Float32Array.from(attr.array.subarray(0, n * attr.itemSize)), attr.itemSize) : attr);
+  }
+  if (shared.index) g.setIndex(shared.index);
+  g.boundingSphere = shared.boundingSphere; g.boundingBox = shared.boundingBox; g.groups = shared.groups;
+  g.userData.instanceCullTwin = true;
+  return g;
 }
 
 function upload(attribute: any, count: number): void {

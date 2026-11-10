@@ -27,6 +27,18 @@ export function treeFadeFlag(): boolean {
   return TREE_FADE_DEFAULT;
 }
 
+/**
+ * Lane P6 (#334): the depth pass takes the dissolve too (a fade-patched MeshDepthMaterial as the trees' and their
+ * shadow twins' `customDepthMaterial`), and a leaving mesh keeps casting until its fade ends. `?treeShadowFade=0`
+ * (or `window.__canalRecallTreeShadowFade = false`): shadows switch in one frame as in P5. Needs `treeFade`.
+ */
+export function treeShadowFadeFlag(): boolean {
+  const g = globalThis as { __canalRecallTreeShadowFade?: boolean | string; location?: { search?: string } };
+  const m = /[?&]treeShadowFade=([^&]*)/.exec(g.location?.search ?? '');
+  const asked = g.__canalRecallTreeShadowFade ?? (m ? m[1] : null);
+  return !(asked === false || asked === '0' || asked === 'false' || asked === 'off');
+}
+
 /** One group's full instance arrays (before culling compacts them) and their fade values. */
 export type GroupSnapshot = { matrices: Float32Array; colours: Float32Array | null; fades: Float32Array | null; count: number };
 

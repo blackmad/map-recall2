@@ -157,9 +157,26 @@ const setup = await page.evaluate(workerSrc => {
     landmarkAdd: wrap(sl, '_add', function (base, a) { const r = base.apply(this, a); const en = (this._entries || []).find(e => e.spec.id === a[0]?.id); log('landmark', 'arrive', !!(en && this._levelFades?.has?.(en)), null, a[0]?.id, anchorOf(a[0])); return r; }),
     landmarkDrop: wrap(sl, '_dropEntries', function (base, a) { const objs = (this._entries || []).filter(e => a[0]?.has?.(e.spec.id)).map(e => [e.spec.id, anchorOf(e.spec, e)]); const r = base.apply(this, a); for (const [id, an] of objs) log('landmark', 'leave', false, null, id, an); return r; }),
     landmarkLevel: wrap(sl, '_swapLevel', function (base, a) { const r = base.apply(this, a); log('landmark', 'swap', !!this._levelFades?.has?.(a[0]), null, `${a[0]?.spec?.id}:${a[2]}`, anchorOf(a[0]?.spec, a[0])); return r; }),
-    trees: wrap(tr, 'rebuild', function (base, a) { this.lastFade = null; const r = base.apply(this, a); const lf = this.lastFade; log('trees', 'rebuild', !!lf?.dissolved, null, lf ? `+${lf.entered}/-${lf.left}/=${lf.kept}` : ''); return r; }),
+    trees: wrap(tr, 'rebuild', function (base, a) { this.lastFade = null; const t0 = performance.now(); const r = base.apply(this, a); const ms = performance.now() - t0; const lf = this.lastFade; log('trees', 'rebuild', !!lf?.dissolved, null, lf ? `+${lf.entered}/-${lf.left}/=${lf.kept}` : ''); if (P.on) P.events.at(-1).ms = +ms.toFixed(1); return r; }),
     ground: wrap(og, 'install', function (base, a) { const before = this.resident?.get?.(a[0]?.key)?.group; const r = base.apply(this, a); const now = this.resident?.get?.(a[0]?.key)?.group; if (now && now !== before) log('ground', before ? 'swap' : 'arrive', false, now, a[0]?.key); return r; }),
   };
+  // Tree tile churn (lane P6 #334): every municipal tree tile fetch and drop while measuring. A refetch is a fetch of
+  // a key dropped earlier in the window; its bytes (the response body) and age since the drop are logged. Restores
+  // from the trees' recently-dropped cache (no fetch) are read from the source's own counters.
+  const TT = P.treeTiles = { fetches: [], drops: [], restores0: tr?.debugTileCache?.restores ?? 0 };
+  const lastDrop = new Map();
+  const baseFetch = window.fetch.bind(window);
+  window.fetch = async (input, init) => {
+    const url = String(input?.url ?? input);
+    const m = /municipal-trees\/.*?(\d+)[/_-](\d+)[/_-](\d+)/.exec(url);
+    const r = await baseFetch(input, init);
+    if (m && P.on) {
+      const key = `${m[1]}/${m[2]}/${m[3]}`, t = performance.now();
+      r.clone().arrayBuffer().then(b => { const d = lastDrop.get(key); TT.fetches.push({ key, t, bytes: b.byteLength, sinceDropS: d == null ? null : +((t - d) / 1000).toFixed(1) }); }).catch(() => {});
+    }
+    return r;
+  };
+  if (tr?.tiles) { const del = tr.tiles.delete.bind(tr.tiles); tr.tiles.delete = k => { if (P.on && tr.tiles.has(k)) { lastDrop.set(k, performance.now()); TT.drops.push({ key: k, t: performance.now(), trees: tr.tiles.get(k)?.length ?? 0 }); } return del(k); }; }
   const worker = new Worker(URL.createObjectURL(new Blob([workerSrc], { type: 'text/javascript' })));
   P.worker = worker;
   worker.onmessage = e => { if (e.data.type === 'result') P.results.push({ i: e.data.i, area: e.data.area }); else if (e.data.type === 'dump') P.dump = e.data.keep; };
@@ -203,6 +220,11 @@ const raw = await page.evaluate(() => {
     gaps: (() => { const c = P.captures, d = []; for (let k = 1; k < c.length; k++) d.push(c[k][1] - c[k - 1][1]); d.sort((a, b) => a - b); const at = f => d.length ? +d[Math.min(d.length - 1, Math.floor(d.length * f))].toFixed(1) : null; return { p50: at(0.5), p99: at(0.99), over33: d.filter(x => x > 33).length }; })(),
     info: (() => { const r = vm._sharedFrame?.renderer ?? vm.host?.renderer; const m = r?.info?.memory; return { geometries: m?.geometries ?? null, textures: m?.textures ?? null, calls: r?.info?.render?.calls ?? null, triangles: r?.info?.render?.triangles ?? null }; })(),
     gl: (() => { try { const c = window.__canalPerf?.gl; const t = c?.resident?.totals?.() ?? c?.counters?.totals?.() ?? null; return t; } catch { return null; } })(),
+    treeTiles: (() => { const T = P.treeTiles, tr = vm._inventoryTrees; const re = T.fetches.filter(f => f.sinceDropS != null);
+      return { fetches: T.fetches.length, drops: T.drops.length, refetches: re.length, refetchWithin30s: re.filter(f => f.sinceDropS <= 30).length,
+        bytesFetched: T.fetches.reduce((s, f) => s + f.bytes, 0), bytesRefetched: re.reduce((s, f) => s + f.bytes, 0), treesDropped: T.drops.reduce((s, d) => s + d.trees, 0),
+        restores: (tr?.debugTileCache?.restores ?? 0) - T.restores0, cacheSize: tr?.debugTileCache?.size ?? null, resident: tr?.tiles?.size ?? null,
+        sinceDropS: re.map(f => f.sinceDropS) }; })(),
     stats: { far: vm._farShells?.stats?.() ?? null, baked: vm._bakedCoarse?.stats?.() ?? null, groundFar: vm._ownGround?.farRadiusM ?? null } };
 });
 // Heap after a forced GC (lane P3 #328): the end-of-run usedJSHeapSize includes garbage not yet collected, so a
@@ -262,11 +284,12 @@ for (const [i] of raw.captures) {
 }
 for (const t of Object.values(tiers)) for (const c of Object.values(t)) c.diffPx = Math.round(c.diffPx);
 const secs = (raw.captures.at(-1)[1] - raw.captures[0][1]) / 1000;
-const summary = { renderMs: raw.renderMs, gaps: raw.gaps, info: raw.info, gl: raw.gl, stats: raw.stats, mode, device, qs, seconds: +secs.toFixed(1), frames: raw.captures.length, fog: raw.fog, limit: raw.limit, heapMB: { start: heap0, end: raw.heapMB, endGC: heapGC }, heapByCtor, diffPxTotal: total, diffPxUnexplained: unexplained, tiers, hooked: setup.hooked, rails: setup.rails, errors };
+const summary = { treeTiles: raw.treeTiles, renderMs: raw.renderMs, gaps: raw.gaps, info: raw.info, gl: raw.gl, stats: raw.stats, mode, device, qs, seconds: +secs.toFixed(1), frames: raw.captures.length, fog: raw.fog, limit: raw.limit, heapMB: { start: heap0, end: raw.heapMB, endGC: heapGC }, heapByCtor, diffPxTotal: total, diffPxUnexplained: unexplained, tiers, hooked: setup.hooked, rails: setup.rails, errors };
 fs.mkdirSync(path.dirname(out), { recursive: true });
 fs.writeFileSync(out, JSON.stringify({ summary, events: raw.events }, null, 1));
 if (framesDir) { fs.mkdirSync(framesDir, { recursive: true }); dump.forEach((k, j) => fs.writeFileSync(path.join(framesDir, `${mode}-${device}-${j}-f${k.i}-${k.area}px.jpg`), Buffer.from(k.jpg.split(',')[1], 'base64'))); }
 console.log(`${mode} ${device} ${qs}: ${summary.seconds}s ${summary.frames} frames; fog ${JSON.stringify(raw.fog)} limit ${JSON.stringify(raw.limit)}; diff px ${total} (unexplained ${unexplained}); heap ${heap0}->${raw.heapMB} MB (after GC ${heapGC})`);
+console.log('tree tiles', JSON.stringify(raw.treeTiles));
 if (heapByCtor) console.log('heap by constructor', JSON.stringify(heapByCtor));
 console.log(`render ms ${JSON.stringify(raw.renderMs)} gaps ${JSON.stringify(raw.gaps)} info ${JSON.stringify(raw.info)} far ${JSON.stringify(raw.stats.far)} groundFar ${raw.stats.groundFar}`);
 console.log('tier          band       events onScreen faded POPS (visible) diffPx diffFrames');
