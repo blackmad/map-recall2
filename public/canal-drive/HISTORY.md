@@ -1,5 +1,13 @@
 # Canal Recall — what is built
 
+**Odd-bay cells; spec bays released (2026-11-10, H1c #350, 7c4c72fe3, opus).**
+- **Audit:** the 169901 over-count (5 for a photo 3) came from recipe intent bloemgracht-90. Auto-placed type bays that the strip did not confirm are now a `default` source and never written, so view bays went from 1,348 to 919.
+- **Odd bays:** a 3- or 1-bay front on a two-window canal/c19 cell draws as half-cell axis units (`axisUnitPlan`, streetFacadeRendering.ts). They reuse the cell's own sills, heads, frames and keystones; no atlas layer was added.
+- **Gate (#348 sample):** closer on 12/19 scorable, worse on none. The mesh is byte-identical while held. When released, about 400 buildings change: 397 odd-bay spec'd ones and 3 neighbours, which pick up a flat-roof piece via the R5-E budget.
+- **Rollback:** `SPEC_BAYS_HELD = true` plus a world-v1 recompile. `?oddAxisCells=0` does not reach the building worker.
+- **Kit still can't draw:** fronts whose storeys differ in axis count (170031) and asymmetric 3-axis fronts.
+- **Integrator note:** the test:street-appearance failures (cohorts + coarse lip) predate a332381a9, and a1 is bisecting them.
+
 **H5h photo-read hand set and J2 Jev capabilities (2026-11-10, #351, #353).**
 - **H5h** (4db067da6, opus): `data/house-line/hand-set-v1.json` is the house line's truth set.
   - 80 pands: 60 stratified AB07, 13 easy houses and 7 Nassaukade, plus 40 gable-only crown rows. Each field carries a confidence and a `source-data://` crop ref. A field the crop cannot show is `unknown` and never scored.

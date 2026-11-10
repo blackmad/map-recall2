@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "test:canal-elevation": "node --import tsx --test src/canalRecall/elevation/elevation.test.ts",
-    "test:house-spec": "node --import tsx --test src/canalRecall/houseSpec/spec.test.ts src/canalRecall/houseSpec/adapters.test.ts src/canalRecall/houseSpec/decorate.test.ts src/canalRecall/houseSpec/extractStamp.test.ts src/canalRecall/houseSpec/previewVerdict.test.ts src/canalRecall/houseSpec/softRaster.test.ts scripts/house-preview/help.test.ts scripts/house-preview/nodeDom.test.ts scripts/house-preview/wallSelect.test.ts scripts/house-crops/flags.test.ts src/canalRecall/houseSpec/writers/writers.test.ts scripts/house-specs/describe.test.ts src/canalRecall/houseSpec/handSet.test.ts",
+    "test:house-spec": "node --import tsx --test src/canalRecall/houseSpec/spec.test.ts src/canalRecall/houseSpec/adapters.test.ts src/canalRecall/houseSpec/decorate.test.ts src/canalRecall/houseSpec/extractStamp.test.ts src/canalRecall/houseSpec/previewVerdict.test.ts src/canalRecall/houseSpec/softRaster.test.ts scripts/house-preview/help.test.ts scripts/house-preview/nodeDom.test.ts scripts/house-preview/wallSelect.test.ts scripts/house-crops/flags.test.ts src/canalRecall/houseSpec/writers/writers.test.ts scripts/house-specs/describe.test.ts src/canalRecall/houseSpec/handSet.test.ts src/canalRecall/axisUnits.test.ts",
     "house:specs": "node --import tsx scripts/house-specs/build-house-specs.ts",
     "house:stage": "node --import tsx scripts/house-specs/stage.ts",
     "house:publish": "node --max-old-space-size=8192 --import tsx scripts/house-specs/publish.ts",
