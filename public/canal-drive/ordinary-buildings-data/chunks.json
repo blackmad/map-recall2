@@ -105423,6 +105423,578 @@
      ]
     }
    ]
+  },
+  {
+   "id": "chunk-face-badlaan-1-21-r1",
+   "category": "street-survey",
+   "name": "face-badlaan-1-21-r1",
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-badlaan-1-21-r1.glb?asset=76cf3830de8d1038",
+   "sha256": "76cf3830de8d1038a2911cb541597e4ff0a072e72f49999d432edd056f3b2562",
+   "bytes": 273392,
+   "triangles": 11426,
+   "primitives": 14,
+   "instance": {
+    "anchor": [
+     4.916665232174304,
+     52.364265235358076
+    ],
+    "northOffsetDegrees": 299.4349,
+    "mirror": false
+   },
+   "bounds": {
+    "min": [
+     -14.669,
+     0,
+     -14.979
+    ],
+    "max": [
+     14.467,
+     14.868,
+     0.233
+    ]
+   },
+   "height": 14.868,
+   "suppress": [
+    "NL.IMBAG.Pand.0363100012181075",
+    "NL.IMBAG.Pand.0363100012181073",
+    "NL.IMBAG.Pand.0363100012171260",
+    "NL.IMBAG.Pand.0363100012171261",
+    "NL.IMBAG.Pand.0363100012170230"
+   ],
+   "replaces": [
+    "ordinary-0363100012181075",
+    "ordinary-0363100012181073",
+    "ordinary-0363100012171260",
+    "ordinary-0363100012171261",
+    "ordinary-0363100012170230"
+   ],
+   "footprint": {
+    "type": "MultiPolygon",
+    "coordinates": [
+     [
+      [
+       [
+        4.9164111,
+        52.3642628
+       ],
+       [
+        4.9163882,
+        52.3642381
+       ],
+       [
+        4.9164335,
+        52.3642224
+       ],
+       [
+        4.9164137,
+        52.3642011
+       ],
+       [
+        4.9165599,
+        52.3641502
+       ],
+       [
+        4.9165616,
+        52.3641522
+       ],
+       [
+        4.9165599,
+        52.3641528
+       ],
+       [
+        4.9166009,
+        52.3641967
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9164991,
+        52.364293
+       ],
+       [
+        4.9164792,
+        52.3642716
+       ],
+       [
+        4.9164339,
+        52.3642874
+       ],
+       [
+        4.9164111,
+        52.3642628
+       ],
+       [
+        4.9166009,
+        52.3641967
+       ],
+       [
+        4.9166439,
+        52.3642426
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9164964,
+        52.3643547
+       ],
+       [
+        4.9164725,
+        52.3643289
+       ],
+       [
+        4.9165178,
+        52.3643132
+       ],
+       [
+        4.9164991,
+        52.364293
+       ],
+       [
+        4.9166439,
+        52.3642426
+       ],
+       [
+        4.9166867,
+        52.3642885
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9165842,
+        52.3643848
+       ],
+       [
+        4.9165656,
+        52.3643647
+       ],
+       [
+        4.9165204,
+        52.3643805
+       ],
+       [
+        4.9164964,
+        52.3643547
+       ],
+       [
+        4.9166867,
+        52.3642885
+       ],
+       [
+        4.9167295,
+        52.3643342
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9167704,
+        52.364378
+       ],
+       [
+        4.9166596,
+        52.3644166
+       ],
+       [
+        4.9166188,
+        52.3643727
+       ],
+       [
+        4.9167295,
+        52.3643342
+       ]
+      ]
+     ]
+    ]
+   },
+   "pands": [
+    {
+     "recipeId": "badlaan-181075",
+     "pandId": "0363100012181075",
+     "buildingId": "NL.IMBAG.Pand.0363100012181075",
+     "address": "Plantage Badlaan 13",
+     "frontage": {
+      "x0": -14.669,
+      "x1": -8.794,
+      "widthM": 5.876
+     },
+     "bounds": {
+      "min": [
+       -14.669,
+       0,
+       -14.979
+      ],
+      "max": [
+       -8.762,
+       14.755,
+       0.233
+      ]
+     },
+     "triangles": 2320,
+     "ranges": [
+      {
+       "primitive": 1,
+       "firstTriangle": 0,
+       "triangleCount": 115
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 0,
+       "triangleCount": 1136
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 0,
+       "triangleCount": 136
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 0,
+       "triangleCount": 576
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 0,
+       "triangleCount": 132
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 0,
+       "triangleCount": 176
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 0,
+       "triangleCount": 23
+      },
+      {
+       "primitive": 12,
+       "firstTriangle": 0,
+       "triangleCount": 5
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 0,
+       "triangleCount": 9
+      }
+     ]
+    },
+    {
+     "recipeId": "badlaan-181073",
+     "pandId": "0363100012181073",
+     "buildingId": "NL.IMBAG.Pand.0363100012181073",
+     "address": "Plantage Badlaan 15",
+     "frontage": {
+      "x0": -8.794,
+      "x1": -2.905,
+      "widthM": 5.889
+     },
+     "bounds": {
+      "min": [
+       -8.794,
+       0,
+       -14.972
+      ],
+      "max": [
+       -2.881,
+       14.781,
+       0.147
+      ]
+     },
+     "triangles": 2281,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 0,
+       "triangleCount": 64
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 1136,
+       "triangleCount": 1136
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 136,
+       "triangleCount": 136
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 576,
+       "triangleCount": 600
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 12,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 132,
+       "triangleCount": 132
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 176,
+       "triangleCount": 182
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 23,
+       "triangleCount": 10
+      },
+      {
+       "primitive": 12,
+       "firstTriangle": 5,
+       "triangleCount": 3
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 9,
+       "triangleCount": 6
+      }
+     ]
+    },
+    {
+     "recipeId": "badlaan-171260",
+     "pandId": "0363100012171260",
+     "buildingId": "NL.IMBAG.Pand.0363100012171260",
+     "address": "Plantage Badlaan 17",
+     "frontage": {
+      "x0": -2.905,
+      "x1": 2.971,
+      "widthM": 5.876
+     },
+     "bounds": {
+      "min": [
+       -2.905,
+       0,
+       -14.954
+      ],
+      "max": [
+       3.004,
+       14.844,
+       0.175
+      ]
+     },
+     "triangles": 2287,
+     "ranges": [
+      {
+       "primitive": 2,
+       "firstTriangle": 0,
+       "triangleCount": 72
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 2272,
+       "triangleCount": 1120
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 272,
+       "triangleCount": 136
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 1176,
+       "triangleCount": 600
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 24,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 264,
+       "triangleCount": 132
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 358,
+       "triangleCount": 182
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 33,
+       "triangleCount": 20
+      },
+      {
+       "primitive": 12,
+       "firstTriangle": 8,
+       "triangleCount": 4
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 15,
+       "triangleCount": 9
+      }
+     ]
+    },
+    {
+     "recipeId": "badlaan-171261",
+     "pandId": "0363100012171261",
+     "buildingId": "NL.IMBAG.Pand.0363100012171261",
+     "address": "Plantage Badlaan 19",
+     "frontage": {
+      "x0": 2.971,
+      "x1": 8.837,
+      "widthM": 5.866
+     },
+     "bounds": {
+      "min": [
+       2.971,
+       0,
+       -14.947
+      ],
+      "max": [
+       8.861,
+       14.868,
+       0.204
+      ]
+     },
+     "triangles": 2300,
+     "ranges": [
+      {
+       "primitive": 3,
+       "firstTriangle": 0,
+       "triangleCount": 71
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 3392,
+       "triangleCount": 1136
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 408,
+       "triangleCount": 136
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 1776,
+       "triangleCount": 600
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 36,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 396,
+       "triangleCount": 132
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 540,
+       "triangleCount": 182
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 53,
+       "triangleCount": 20
+      },
+      {
+       "primitive": 12,
+       "firstTriangle": 12,
+       "triangleCount": 3
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 24,
+       "triangleCount": 8
+      }
+     ]
+    },
+    {
+     "recipeId": "badlaan-170230",
+     "pandId": "0363100012170230",
+     "buildingId": "NL.IMBAG.Pand.0363100012170230",
+     "address": "Plantage Badlaan 21",
+     "frontage": {
+      "x0": 8.837,
+      "x1": 14.449,
+      "widthM": 5.612
+     },
+     "bounds": {
+      "min": [
+       8.837,
+       0,
+       -8.678
+      ],
+      "max": [
+       14.467,
+       14.424,
+       0.231
+      ]
+     },
+     "triangles": 2238,
+     "ranges": [
+      {
+       "primitive": 4,
+       "firstTriangle": 0,
+       "triangleCount": 53
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 4528,
+       "triangleCount": 1136
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 544,
+       "triangleCount": 136
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 2376,
+       "triangleCount": 576
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 48,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 528,
+       "triangleCount": 132
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 722,
+       "triangleCount": 176
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 73,
+       "triangleCount": 10
+      },
+      {
+       "primitive": 12,
+       "firstTriangle": 15,
+       "triangleCount": 3
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 32,
+       "triangleCount": 4
+      }
+     ]
+    }
+   ]
   }
  ]
 }

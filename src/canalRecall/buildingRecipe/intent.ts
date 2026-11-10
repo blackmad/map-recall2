@@ -455,7 +455,9 @@ export interface FrontIntent {
    * plain brick. `relieving` = a square-headed window under a segmental relieving arch (rise 0.25 x its span) springing
    * just above the head over a brick tympanum: it needs an archRing. Not together with `archedStoreys`.
    */
-  windowHead?: {kind: typeof WINDOW_HEADS[number]; storeys?: number[]; archRing?: {colour: typeof ARCH_RING_COLOURS[number]; style?: typeof ARCH_RING_STYLES[number]; keystone?: boolean; widthCourses?: number;
+  windowHead?: {kind: typeof WINDOW_HEADS[number]; storeys?: number[];
+      /** Segmental heads: the arch rise in metres (0.04..0.4) instead of 0.08 x the window width (Plantage Badlaan 13-21: a flattened basket arch, 0.15). Absent = byte-identical. */
+      rise?: number; archRing?: {colour: typeof ARCH_RING_COLOURS[number]; style?: typeof ARCH_RING_STYLES[number]; keystone?: boolean; widthCourses?: number;
       /** `style: springers`: [length outward from the arch foot, height] in metres (default [0.14, 0.18]). */
       springerSize?: [number, number];
       /** Relieving arches only: `round` = a semicircle over the span (rise = half the span) instead of the segmental 0.25. */
@@ -2091,7 +2093,7 @@ function windowProblems(f: FrontIntent, at: string, oneOf: (v: unknown, allowed:
   }
   const h = f.windowHead;
   if (h !== undefined) {
-    for (const k of Object.keys(h ?? {})) if (!['kind', 'storeys', 'archRing', 'tympanum'].includes(k)) p.push(`${at}.windowHead.${k}: unknown field (kind, storeys, archRing, tympanum)`);
+    for (const k of Object.keys(h ?? {})) if (!['kind', 'storeys', 'rise', 'archRing', 'tympanum'].includes(k)) p.push(`${at}.windowHead.${k}: unknown field (kind, storeys, rise, archRing, tympanum)`);
     if (h?.tympanum !== undefined) {
       oneOf(h.tympanum, TYMPANUM_FILLS, `${at}.windowHead.tympanum`);
       if (h.kind === 'relieving' ? h.tympanum === 'stone' : h.kind !== 'segmental' && h.kind !== 'round') p.push(`${at}.windowHead.tympanum: only under a segmental or round head, or "dark" or "band" under a relieving arch`);
@@ -2100,6 +2102,7 @@ function windowProblems(f: FrontIntent, at: string, oneOf: (v: unknown, allowed:
     if (h?.storeys !== undefined && (!Array.isArray(h.storeys) || h.storeys.some(s => !Number.isInteger(s) || s < 0 || s >= f.storeys))) p.push(`${at}.windowHead.storeys: storey indices 0..${f.storeys - 1}`);
     if (f.archedStoreys !== undefined) p.push(`${at}.windowHead: not together with archedStoreys`);
     if (f.windows === 'arched') p.push(`${at}.windowHead: windows "arched" already sets a head; pick a pane layout`);
+    if (h?.rise !== undefined && (h.kind !== 'segmental' || !(typeof h.rise === 'number' && h.rise >= 0.04 && h.rise <= 0.4))) p.push(`${at}.windowHead.rise: metres 0.04..0.4, only on a segmental head`);
     const r = h?.archRing;
     if (r !== undefined) {
       for (const k of Object.keys(r ?? {})) if (!['colour', 'style', 'keystone', 'widthCourses', 'springerSize', 'shape', 'springGap'].includes(k)) p.push(`${at}.windowHead.archRing.${k}: unknown field (colour, style, keystone, widthCourses, springerSize, shape, springGap)`);

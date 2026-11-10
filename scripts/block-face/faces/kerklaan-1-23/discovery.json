@@ -1,0 +1,449 @@
+{
+ "street": "Plantage Kerklaan",
+ "seed": "0363100012170484",
+ "members": [
+  "0363100012170484",
+  "0363100012170485",
+  "0363100012170486",
+  "0363100012170542",
+  "0363100012181318",
+  "0363100012181319",
+  "0363100012181320",
+  "0363100012181315",
+  "0363100012181316",
+  "0363100012181311",
+  "0363100012181312",
+  "0363100012180951"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "trimmed at 0363100012170484 (face continues: 170480)"
+  },
+  {
+   "side": "right",
+   "reason": "trimmed at 0363100012180951 (face continues: 181313)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012164971",
+   "reason": "frontage 67.3 m from Plantage Kerklaan"
+  },
+  {
+   "pandId": "0363100012170543",
+   "reason": "frontage 38.1 m from Plantage Kerklaan"
+  },
+  {
+   "pandId": "0363100012180482",
+   "reason": "frontage 46.2 m from Plantage Kerklaan"
+  },
+  {
+   "pandId": "0363100012180483",
+   "reason": "frontage 39.2 m from Plantage Kerklaan"
+  },
+  {
+   "pandId": "0363100012180484",
+   "reason": "frontage 32.1 m from Plantage Kerklaan"
+  },
+  {
+   "pandId": "0363100012180492",
+   "reason": "frontage 46.7 m from Plantage Kerklaan"
+  },
+  {
+   "pandId": "0363100012180494",
+   "reason": "frontage 53.2 m from Plantage Kerklaan"
+  },
+  {
+   "pandId": "0363100012180495",
+   "reason": "frontage 60.2 m from Plantage Kerklaan"
+  },
+  {
+   "pandId": "0363100012180952",
+   "reason": "sightline to Plantage Kerklaan crosses 0363100012181245"
+  },
+  {
+   "pandId": "0363100012164939",
+   "reason": "frontage 34.2 m from Plantage Kerklaan"
+  },
+  {
+   "pandId": "0363100012164948",
+   "reason": "frontage 87.8 m from Plantage Kerklaan"
+  },
+  {
+   "pandId": "0363100012170476",
+   "reason": "frontage 35.7 m from Plantage Kerklaan"
+  },
+  {
+   "pandId": "0363100012170477",
+   "reason": "frontage 41.2 m from Plantage Kerklaan"
+  },
+  {
+   "pandId": "0363100012170478",
+   "reason": "frontage 46.7 m from Plantage Kerklaan"
+  },
+  {
+   "pandId": "0363100012170479",
+   "reason": "frontage 51.5 m from Plantage Kerklaan"
+  },
+  {
+   "pandId": "0363100012170481",
+   "reason": "frontage 66.4 m from Plantage Kerklaan"
+  },
+  {
+   "pandId": "0363100012170482",
+   "reason": "frontage 57.1 m from Plantage Kerklaan"
+  },
+  {
+   "pandId": "0363100012170483",
+   "reason": "frontage 63.2 m from Plantage Kerklaan"
+  },
+  {
+   "pandId": "0363100012170498",
+   "reason": "frontage 67.4 m from Plantage Kerklaan"
+  },
+  {
+   "pandId": "0363100012170501",
+   "reason": "frontage 137.6 m from Plantage Kerklaan"
+  },
+  {
+   "pandId": "0363100012170540",
+   "reason": "frontage 57.6 m from Plantage Kerklaan"
+  },
+  {
+   "pandId": "0363100012180950",
+   "reason": "frontage 31.6 m from Plantage Kerklaan"
+  },
+  {
+   "pandId": "0363100012181280",
+   "reason": "frontage 30.2 m from Plantage Kerklaan"
+  },
+  {
+   "pandId": "0363100012181281",
+   "reason": "frontage 33.2 m from Plantage Kerklaan"
+  },
+  {
+   "pandId": "0363100012181283",
+   "reason": "frontage 90.0 m from Plantage Kerklaan"
+  },
+  {
+   "pandId": "0363100012181322",
+   "reason": "frontage 31.5 m from Plantage Kerklaan"
+  },
+  {
+   "pandId": "0363100012181323",
+   "reason": "sightline to Plantage Kerklaan crosses 0363100012181244"
+  },
+  {
+   "pandId": "0363100012181324",
+   "reason": "sightline to Plantage Kerklaan crosses 0363100012180952"
+  },
+  {
+   "pandId": "0363100012181650",
+   "reason": "sightline to Plantage Kerklaan crosses 0363100012180486"
+  },
+  {
+   "pandId": "0363100012181651",
+   "reason": "frontage 69.3 m from Plantage Kerklaan"
+  },
+  {
+   "pandId": "0363100012181652",
+   "reason": "frontage 84.5 m from Plantage Kerklaan"
+  },
+  {
+   "pandId": "0363100012181284",
+   "reason": "frontage 79.8 m from Plantage Kerklaan"
+  },
+  {
+   "pandId": "0363100012181310",
+   "reason": "sightline to Plantage Kerklaan crosses 0363100012181313"
+  },
+  {
+   "pandId": "0363100012181321",
+   "reason": "frontage 48.9 m from Plantage Kerklaan"
+  },
+  {
+   "pandId": "0363100012181352",
+   "reason": "frontage 79.8 m from Plantage Kerklaan"
+  },
+  {
+   "pandId": "0363100012181353",
+   "reason": "frontage 84.2 m from Plantage Kerklaan"
+  },
+  {
+   "pandId": "0363100012181354",
+   "reason": "frontage 69.4 m from Plantage Kerklaan"
+  },
+  {
+   "pandId": "0363100012181355",
+   "reason": "frontage 114.0 m from Plantage Kerklaan"
+  },
+  {
+   "pandId": "0363100012181356",
+   "reason": "frontage 114.4 m from Plantage Kerklaan"
+  },
+  {
+   "pandId": "0363100012181357",
+   "reason": "frontage 107.5 m from Plantage Kerklaan"
+  },
+  {
+   "pandId": "0363100012181358",
+   "reason": "frontage 101.6 m from Plantage Kerklaan"
+  },
+  {
+   "pandId": "0363100012181359",
+   "reason": "frontage 96.1 m from Plantage Kerklaan"
+  },
+  {
+   "pandId": "0363100012181360",
+   "reason": "frontage 113.1 m from Plantage Kerklaan"
+  },
+  {
+   "pandId": "0363100012181361",
+   "reason": "frontage 117.5 m from Plantage Kerklaan"
+  },
+  {
+   "pandId": "0363100012181362",
+   "reason": "frontage 121.4 m from Plantage Kerklaan"
+  },
+  {
+   "pandId": "0363100012181363",
+   "reason": "frontage 117.6 m from Plantage Kerklaan"
+  },
+  {
+   "pandId": "0363100012181364",
+   "reason": "frontage 128.6 m from Plantage Kerklaan"
+  },
+  {
+   "pandId": "0363100012181365",
+   "reason": "frontage 46.8 m from Plantage Kerklaan"
+  },
+  {
+   "pandId": "0363100012181366",
+   "reason": "frontage 79.7 m from Plantage Kerklaan"
+  },
+  {
+   "pandId": "0363100012181368",
+   "reason": "frontage 89.8 m from Plantage Kerklaan"
+  },
+  {
+   "pandId": "0363100012181369",
+   "reason": "frontage 79.5 m from Plantage Kerklaan"
+  },
+  {
+   "pandId": "0363100012185999",
+   "reason": "frontage 130.5 m from Plantage Kerklaan"
+  },
+  {
+   "pandId": "0363100012186087",
+   "reason": "frontage 120.4 m from Plantage Kerklaan"
+  },
+  {
+   "pandId": "0363100012253539",
+   "reason": "frontage 41.5 m from Plantage Kerklaan"
+  },
+  {
+   "pandId": "0363100012170473",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012170487",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012170488",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012170549",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012180475",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012180476",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012180477",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012180481",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012181240",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012181241",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012181242",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012181243",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012181244",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012181245",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012181246",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012180479",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012180480",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012180485",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012180486",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012181653",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012170484",
+   "alongM": 0,
+   "widthM": 6.24,
+   "eavesM": 16.52,
+   "roofMaxM": 17.8,
+   "storeys3dbag": 5,
+   "builtYear": 1866,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012170485",
+   "alongM": 6.5,
+   "widthM": 6.76,
+   "eavesM": 14.81,
+   "roofMaxM": 17.76,
+   "storeys3dbag": 5,
+   "builtYear": 1831,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012170486",
+   "alongM": 13.25,
+   "widthM": 6.75,
+   "eavesM": 14.86,
+   "roofMaxM": 17.73,
+   "storeys3dbag": 5,
+   "builtYear": 1879,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012170542",
+   "alongM": 20,
+   "widthM": 6.76,
+   "eavesM": 14.91,
+   "roofMaxM": 17.89,
+   "storeys3dbag": 5,
+   "builtYear": 1853,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012181318",
+   "alongM": 26.77,
+   "widthM": 6.78,
+   "eavesM": 14.97,
+   "roofMaxM": 17.99,
+   "storeys3dbag": 5,
+   "builtYear": 1829,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012181319",
+   "alongM": 33.61,
+   "widthM": 6.91,
+   "eavesM": 13.56,
+   "roofMaxM": 17,
+   "storeys3dbag": 5,
+   "builtYear": 1900,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012181320",
+   "alongM": 40.52,
+   "widthM": 6.9,
+   "eavesM": 13.62,
+   "roofMaxM": 17.01,
+   "storeys3dbag": 5,
+   "builtYear": 1878,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012181315",
+   "alongM": 47.2,
+   "widthM": 6.47,
+   "eavesM": 13.94,
+   "roofMaxM": 17.03,
+   "storeys3dbag": 5,
+   "builtYear": 1836,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012181316",
+   "alongM": 53.4,
+   "widthM": 5.91,
+   "eavesM": 13.88,
+   "roofMaxM": 17.12,
+   "storeys3dbag": 5,
+   "builtYear": 1825,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012181311",
+   "alongM": 59.62,
+   "widthM": 6.53,
+   "eavesM": 13.77,
+   "roofMaxM": 16.87,
+   "storeys3dbag": 5,
+   "builtYear": 1866,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012181312",
+   "alongM": 66.07,
+   "widthM": 6.38,
+   "eavesM": 13.29,
+   "roofMaxM": 16.97,
+   "storeys3dbag": 5,
+   "builtYear": 1889,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012180951",
+   "alongM": 72.46,
+   "widthM": 6.39,
+   "eavesM": 13.4,
+   "roofMaxM": 17,
+   "storeys3dbag": 4,
+   "builtYear": 1858,
+   "uncertainty": []
+  }
+ ]
+}

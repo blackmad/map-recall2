@@ -249,7 +249,7 @@ function layoutFront(f: FrontIntent, width: number, heightTop: number): Layout {
   // `windowHead`: segmental (rise 0.14 x width) or round heads on the listed storeys (default every storey above the ground).
   const wh = f.windowHead, headStorey = (s: number) => !!wh && wh.kind !== 'flat' && wh.kind !== 'relieving' && (wh.storeys ? wh.storeys.includes(s) : s > 0);
   // Round-arched storeys: a semicircular head (rise = half the width).
-  const headFor = (s: number, w: number) => headStorey(s) ? {head: 'segmental' as const, headRiseM: wh!.kind === 'round' ? Math.floor(w / 2 * 1000) / 1000 : round(w * 0.08), headSegments: 6}
+  const headFor = (s: number, w: number) => headStorey(s) ? {head: 'segmental' as const, headRiseM: wh!.kind === 'round' ? Math.floor(w / 2 * 1000) / 1000 : wh!.rise ?? round(w * 0.08), headSegments: 6}
     : f.archedStoreys?.includes(s) ? {head: 'segmental' as const, headRiseM: Math.floor(w / 2 * 1000) / 1000, headSegments: 6} : segmental;
   const heightShares = f.windowHeights === 'diminishing' ? Array.from({length: n}, (_, s) => DIMINISHING_WINDOW_HEIGHTS[Math.min(s, DIMINISHING_WINDOW_HEIGHTS.length - 1)]) : f.windowHeights;
   const openings: CanalhouseOpening[] = [], glazedBays: CanalhouseGlazedBay[] = [], balconies: Layout['balconies'] = [];
