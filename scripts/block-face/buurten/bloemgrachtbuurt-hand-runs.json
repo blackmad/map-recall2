@@ -90,6 +90,103 @@
      }
     }
    ]
+  },
+  {
+   "id": "bloemgracht-90-128-h1",
+   "face": "bloemgracht-90-128",
+   "reason": "Bloemgracht 94-104 (strip 2023-03-13): four cornice fronts with white frieze tops and a tall neck gable, one black-painted",
+   "houses": [
+    {
+     "pand": "168075",
+     "type": "jordaan-1850-cornice-house",
+     "storeys": 4,
+     "eavesM": 14.6,
+     "overrides": {
+      "cornice": "frieze"
+     },
+     "why": "three axes of white-framed windows, ground and three storeys, a white attic frieze 14.6-16.4 m with a small bell top over the middle (the bell top is not drawn)"
+    },
+    {
+     "pand": "168080",
+     "type": "jordaan-1750-neck-gable",
+     "crown": "neck",
+     "storeys": 4,
+     "eavesM": 14.6,
+     "why": "a 6.7 m brick front of three axes, ground and three storeys, a tall neck gable with one attic light to ~19 m",
+     "wall": false,
+     "paletteOverrides": {
+      "brick": "#6a5048"
+     }
+    },
+    {
+     "pand": "174186",
+     "type": "jordaan-1850-cornice-house",
+     "storeys": 4,
+     "eavesM": 14.5,
+     "overrides": {
+      "cornice": "frieze"
+     },
+     "why": "three axes, ground and three storeys, a white frieze top 14.5-16 m with a small bell crest (not drawn)",
+     "wall": false,
+     "paletteOverrides": {
+      "brick": "#4f4039"
+     }
+    },
+    {
+     "pand": "168077",
+     "type": "jordaan-1850-cornice-house",
+     "storeys": 4,
+     "eavesM": 14.6,
+     "wall": false,
+     "paletteOverrides": {
+      "brick": "#2e2a28",
+      "wallMaterial": "painted-brick"
+     },
+     "overrides": {
+      "windowHead": {
+       "kind": "segmental"
+      },
+      "cornice": "heavy"
+     },
+     "why": "a black-painted front, three axes of segmental-headed white windows, ground and three storeys, a white cornice at ~14.6 m"
+    },
+    {
+     "pand": "168076",
+     "type": "jordaan-1850-cornice-house",
+     "storeys": 4,
+     "eavesM": 14.6,
+     "overrides": {
+      "cornice": "frieze"
+     },
+     "why": "three axes, ground and three storeys, a white frieze top 14.6-16 m with a small bell crest (not drawn)"
+    }
+   ]
+  },
+  {
+   "id": "bloemgracht-4-10-h1",
+   "face": "bloemgracht-4-10",
+   "reason": "Bloemgracht 6-8 (strip 2023-03-13): a bell gable with a white ground storey and a five-storey cornice house (4 is held: its balustraded attic frieze drew as a tile attic and OSM's cafe as a shop window; 10, a red front under a round oculus, is held: the kit has no oculus top)",
+   "houses": [
+    {
+     "pand": "174495",
+     "type": "jordaan-1750-neck-gable",
+     "crown": "bell-low",
+     "storeys": 4,
+     "eavesM": 14.0,
+     "why": "Bloemgracht 8: three axes, a white-painted ground storey, ground and three storeys, a bell gable with one attic light and a crest to ~19 m (the strip wall reads green from the winter cast; brick set by eye; the white ground storey is not drawn)",
+     "wall": false,
+     "paletteOverrides": {
+      "brick": "#5e4a42"
+     }
+    },
+    {
+     "pand": "174496",
+     "type": "jordaan-1850-cornice-house",
+     "storeys": 5,
+     "eavesM": 16.5,
+     "why": "Bloemgracht 6: three axes, ground and four storeys, a white cornice at ~16.5 m (the glass balconies are not drawn)"
+    }
+   ]
   }
  ]
 }

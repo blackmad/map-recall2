@@ -22,7 +22,7 @@
  },
  "x0M": -37.32,
  "x1M": 39.86,
- "date": "2024-12-16",
+ "date": "2020-01-10",
  "coverage": 1,
  "spans": [
   {
@@ -33,28 +33,28 @@
     0,
     148
    ],
-   "date": "2024-12-16",
+   "date": "2020-01-10",
    "fallbackDate": false,
    "panoramas": [
     {
-     "panoId": "b_20241216_0911_Track02_Sphere_00009",
-     "timestamp": "2024-12-16T09:18:06Z",
-     "distanceM": 17.1,
-     "obliquityDeg": 0.8,
+     "panoId": "TMX7316010203-001551_pano_0000_000790",
+     "timestamp": "2020-01-10T11:16:57.622120Z",
+     "distanceM": 18.4,
+     "obliquityDeg": 3.3,
      "missingFraction": 0
     },
     {
-     "panoId": "b_20241216_0911_Track18_Sphere_00270",
-     "timestamp": "2024-12-16T10:25:23Z",
-     "distanceM": 11.7,
-     "obliquityDeg": 1.4,
+     "panoId": "TMX7316010203-001551_pano_0000_000791",
+     "timestamp": "2020-01-10T11:16:58.212020Z",
+     "distanceM": 18.6,
+     "obliquityDeg": 12.2,
      "missingFraction": 0
     },
     {
-     "panoId": "b_20241216_0911_Track02_Sphere_00010",
-     "timestamp": "2024-12-16T09:18:07Z",
-     "distanceM": 17.8,
-     "obliquityDeg": 14.9,
+     "panoId": "TMX7316010203-001551_pano_0000_000789",
+     "timestamp": "2020-01-10T11:16:57.032180Z",
+     "distanceM": 19.5,
+     "obliquityDeg": 17.9,
      "missingFraction": 0
     }
    ]
@@ -67,28 +67,28 @@
     148,
     459
    ],
-   "date": "2024-12-16",
+   "date": "2020-01-10",
    "fallbackDate": false,
    "panoramas": [
     {
-     "panoId": "b_20241216_0911_Track02_Sphere_00010",
-     "timestamp": "2024-12-16T09:18:07Z",
-     "distanceM": 17.3,
-     "obliquityDeg": 3.9,
+     "panoId": "TMX7316010203-001551_pano_0000_000791",
+     "timestamp": "2020-01-10T11:16:58.212020Z",
+     "distanceM": 18.3,
+     "obliquityDeg": 5.8,
      "missingFraction": 0
     },
     {
-     "panoId": "b_20241216_0911_Track18_Sphere_00269",
-     "timestamp": "2024-12-16T10:25:22Z",
-     "distanceM": 12,
-     "obliquityDeg": 5.4,
+     "panoId": "TMX7316010203-001551_pano_0000_000792",
+     "timestamp": "2020-01-10T11:16:58.792020Z",
+     "distanceM": 18.4,
+     "obliquityDeg": 9.8,
      "missingFraction": 0
     },
     {
-     "panoId": "b_20241216_0911_Track02_Sphere_00011",
-     "timestamp": "2024-12-16T09:18:08Z",
-     "distanceM": 17.8,
-     "obliquityDeg": 12.1,
+     "panoId": "TMX7316010203-001551_pano_0000_000790",
+     "timestamp": "2020-01-10T11:16:57.622120Z",
+     "distanceM": 19.6,
+     "obliquityDeg": 20.4,
      "missingFraction": 0
     }
    ]
@@ -101,28 +101,28 @@
     459,
     609
    ],
-   "date": "2024-12-16",
+   "date": "2020-01-10",
    "fallbackDate": false,
    "panoramas": [
     {
-     "panoId": "b_20241216_0911_Track02_Sphere_00011",
-     "timestamp": "2024-12-16T09:18:08Z",
-     "distanceM": 17.6,
-     "obliquityDeg": 6.9,
+     "panoId": "TMX7316010203-001551_pano_0000_000793",
+     "timestamp": "2020-01-10T11:16:59.361980Z",
+     "distanceM": 18.3,
+     "obliquityDeg": 7.1,
      "missingFraction": 0
     },
     {
-     "panoId": "b_20241216_0911_Track18_Sphere_00268",
-     "timestamp": "2024-12-16T10:25:21Z",
-     "distanceM": 12.2,
-     "obliquityDeg": 8.4,
+     "panoId": "TMX7316010203-001551_pano_0000_000792",
+     "timestamp": "2020-01-10T11:16:58.792020Z",
+     "distanceM": 18.3,
+     "obliquityDeg": 8.6,
      "missingFraction": 0
     },
     {
-     "panoId": "b_20241216_0911_Track02_Sphere_00012",
-     "timestamp": "2024-12-16T09:18:09Z",
-     "distanceM": 18,
-     "obliquityDeg": 9,
+     "panoId": "TMX7316010203-001551_pano_0000_000794",
+     "timestamp": "2020-01-10T11:16:59.922000Z",
+     "distanceM": 19.7,
+     "obliquityDeg": 21.6,
      "missingFraction": 0
     }
    ]
@@ -135,28 +135,28 @@
     609,
     758
    ],
-   "date": "2024-12-16",
+   "date": "2020-01-10",
    "fallbackDate": false,
    "panoramas": [
     {
-     "panoId": "b_20241216_0911_Track18_Sphere_00267",
-     "timestamp": "2024-12-16T10:25:19Z",
-     "distanceM": 12.1,
-     "obliquityDeg": 1.7,
+     "panoId": "TMX7316010203-001551_pano_0000_000793",
+     "timestamp": "2020-01-10T11:16:59.361980Z",
+     "distanceM": 18.2,
+     "obliquityDeg": 4.4,
      "missingFraction": 0
     },
     {
-     "panoId": "b_20241216_0911_Track02_Sphere_00012",
-     "timestamp": "2024-12-16T09:18:09Z",
-     "distanceM": 17.7,
-     "obliquityDeg": 2.7,
+     "panoId": "TMX7316010203-001551_pano_0000_000794",
+     "timestamp": "2020-01-10T11:16:59.922000Z",
+     "distanceM": 18.6,
+     "obliquityDeg": 11.2,
      "missingFraction": 0
     },
     {
-     "panoId": "b_20241216_0911_Track02_Sphere_00013",
-     "timestamp": "2024-12-16T09:18:09Z",
-     "distanceM": 18.4,
-     "obliquityDeg": 12.9,
+     "panoId": "TMX7316010203-001551_pano_0000_000792",
+     "timestamp": "2020-01-10T11:16:58.792020Z",
+     "distanceM": 19.2,
+     "obliquityDeg": 19.4,
      "missingFraction": 0
     }
    ]
@@ -169,28 +169,28 @@
     758,
     908
    ],
-   "date": "2024-12-16",
+   "date": "2020-01-10",
    "fallbackDate": false,
    "panoramas": [
     {
-     "panoId": "b_20241216_0911_Track18_Sphere_00266",
-     "timestamp": "2024-12-16T10:25:18Z",
-     "distanceM": 12.1,
-     "obliquityDeg": 1.2,
+     "panoId": "TMX7316010203-001551_pano_0000_000794",
+     "timestamp": "2020-01-10T11:16:59.922000Z",
+     "distanceM": 18.3,
+     "obliquityDeg": 3.4,
      "missingFraction": 0
     },
     {
-     "panoId": "b_20241216_0911_Track02_Sphere_00013",
-     "timestamp": "2024-12-16T09:18:09Z",
-     "distanceM": 18,
-     "obliquityDeg": 1.8,
-     "missingFraction": 0
-    },
-    {
-     "panoId": "b_20241216_0911_Track02_Sphere_00014",
-     "timestamp": "2024-12-16T09:18:10Z",
+     "panoId": "TMX7316010203-001551_pano_0000_000795",
+     "timestamp": "2020-01-10T11:17:00.472000Z",
      "distanceM": 19,
-     "obliquityDeg": 13.4,
+     "obliquityDeg": 11.8,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-001551_pano_0000_000793",
+     "timestamp": "2020-01-10T11:16:59.361980Z",
+     "distanceM": 18.9,
+     "obliquityDeg": 18.8,
      "missingFraction": 0
     }
    ]
@@ -203,28 +203,28 @@
     908,
     1067
    ],
-   "date": "2024-12-16",
+   "date": "2020-01-10",
    "fallbackDate": false,
    "panoramas": [
     {
-     "panoId": "b_20241216_0911_Track02_Sphere_00014",
-     "timestamp": "2024-12-16T09:18:10Z",
-     "distanceM": 18.4,
-     "obliquityDeg": 5.7,
+     "panoId": "TMX7316010203-001551_pano_0000_000795",
+     "timestamp": "2020-01-10T11:17:00.472000Z",
+     "distanceM": 18.6,
+     "obliquityDeg": 4.2,
      "missingFraction": 0
     },
     {
-     "panoId": "b_20241216_0911_Track02_Sphere_00013",
-     "timestamp": "2024-12-16T09:18:09Z",
-     "distanceM": 18.5,
-     "obliquityDeg": 9.8,
+     "panoId": "TMX7316010203-001551_pano_0000_000794",
+     "timestamp": "2020-01-10T11:16:59.922000Z",
+     "distanceM": 18.9,
+     "obliquityDeg": 11.1,
      "missingFraction": 0
     },
     {
-     "panoId": "b_20241216_0911_Track18_Sphere_00265",
-     "timestamp": "2024-12-16T10:25:17Z",
-     "distanceM": 12.4,
-     "obliquityDeg": 11.7,
+     "panoId": "TMX7316010203-001551_pano_0000_000796",
+     "timestamp": "2020-01-10T11:17:01.012090Z",
+     "distanceM": 19.6,
+     "obliquityDeg": 18.9,
      "missingFraction": 0
     }
    ]
@@ -237,28 +237,28 @@
     1067,
     1309
    ],
-   "date": "2024-12-16",
+   "date": "2020-01-10",
    "fallbackDate": false,
    "panoramas": [
     {
-     "panoId": "b_20241216_0911_Track02_Sphere_00015",
-     "timestamp": "2024-12-16T09:18:11Z",
-     "distanceM": 18.5,
-     "obliquityDeg": 4,
-     "missingFraction": 0
-    },
-    {
-     "panoId": "b_20241216_0911_Track02_Sphere_00014",
-     "timestamp": "2024-12-16T09:18:10Z",
+     "panoId": "TMX7316010203-001551_pano_0000_000796",
+     "timestamp": "2020-01-10T11:17:01.012090Z",
      "distanceM": 18.6,
-     "obliquityDeg": 11.3,
+     "obliquityDeg": 2.6,
      "missingFraction": 0
     },
     {
-     "panoId": "b_20241216_0911_Track18_Sphere_00264",
-     "timestamp": "2024-12-16T10:25:16Z",
-     "distanceM": 12.4,
-     "obliquityDeg": 12.5,
+     "panoId": "TMX7316010203-001551_pano_0000_000795",
+     "timestamp": "2020-01-10T11:17:00.472000Z",
+     "distanceM": 18.8,
+     "obliquityDeg": 12.7,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-001551_pano_0000_000797",
+     "timestamp": "2020-01-10T11:17:01.541970Z",
+     "distanceM": 19.6,
+     "obliquityDeg": 17.3,
      "missingFraction": 0
     }
    ]
@@ -271,28 +271,28 @@
     1309,
     1515
    ],
-   "date": "2024-12-16",
+   "date": "2020-01-10",
    "fallbackDate": false,
    "panoramas": [
     {
-     "panoId": "b_20241216_0911_Track02_Sphere_00016",
-     "timestamp": "2024-12-16T09:18:11Z",
+     "panoId": "TMX7316010203-001551_pano_0000_000797",
+     "timestamp": "2020-01-10T11:17:01.541970Z",
      "distanceM": 18.8,
-     "obliquityDeg": 1.8,
+     "obliquityDeg": 0.4,
      "missingFraction": 0
     },
     {
-     "panoId": "b_20241216_0911_Track18_Sphere_00263",
-     "timestamp": "2024-12-16T10:25:15Z",
-     "distanceM": 12.5,
-     "obliquityDeg": 11.2,
+     "panoId": "TMX7316010203-001551_pano_0000_000796",
+     "timestamp": "2020-01-10T11:17:01.012090Z",
+     "distanceM": 19.2,
+     "obliquityDeg": 14.6,
      "missingFraction": 0
     },
     {
-     "panoId": "b_20241216_0911_Track02_Sphere_00015",
-     "timestamp": "2024-12-16T09:18:11Z",
-     "distanceM": 19.1,
-     "obliquityDeg": 13.3,
+     "panoId": "TMX7316010203-001551_pano_0000_000798",
+     "timestamp": "2020-01-10T11:17:02.061980Z",
+     "distanceM": 19.7,
+     "obliquityDeg": 15.1,
      "missingFraction": 0
     }
    ]
@@ -305,28 +305,28 @@
     1514,
     1801
    ],
-   "date": "2024-12-16",
+   "date": "2020-01-10",
    "fallbackDate": false,
    "panoramas": [
     {
-     "panoId": "b_20241216_0911_Track02_Sphere_00017",
-     "timestamp": "2024-12-16T09:18:12Z",
+     "panoId": "TMX7316010203-001551_pano_0000_000798",
+     "timestamp": "2020-01-10T11:17:02.061980Z",
      "distanceM": 19.1,
-     "obliquityDeg": 1.7,
+     "obliquityDeg": 3.1,
      "missingFraction": 0
     },
     {
-     "panoId": "b_20241216_0911_Track18_Sphere_00262",
-     "timestamp": "2024-12-16T10:25:15Z",
-     "distanceM": 12.4,
-     "obliquityDeg": 6.9,
+     "panoId": "TMX7316010203-001551_pano_0000_001041",
+     "timestamp": "2020-01-10T11:22:34.474170Z",
+     "distanceM": 28.5,
+     "obliquityDeg": 12.8,
      "missingFraction": 0
     },
     {
-     "panoId": "b_20241216_0911_Track02_Sphere_00018",
-     "timestamp": "2024-12-16T09:18:13Z",
-     "distanceM": 19.8,
-     "obliquityDeg": 13.1,
+     "panoId": "TMX7316010203-001551_pano_0000_001042",
+     "timestamp": "2020-01-10T11:22:37.399200Z",
+     "distanceM": 22.8,
+     "obliquityDeg": 17.1,
      "missingFraction": 0
     }
    ]
@@ -339,28 +339,28 @@
     1801,
     1960
    ],
-   "date": "2024-12-16",
+   "date": "2020-01-10",
    "fallbackDate": false,
    "panoramas": [
     {
-     "panoId": "b_20241216_0911_Track09_Sphere_00090",
-     "timestamp": "2024-12-16T09:53:36Z",
-     "distanceM": 26,
-     "obliquityDeg": 1.7,
+     "panoId": "TMX7316010203-001551_pano_0000_001041",
+     "timestamp": "2020-01-10T11:22:34.474170Z",
+     "distanceM": 27.8,
+     "obliquityDeg": 1.9,
      "missingFraction": 0
     },
     {
-     "panoId": "b_20241216_0911_Track02_Sphere_00018",
-     "timestamp": "2024-12-16T09:18:13Z",
-     "distanceM": 19.4,
-     "obliquityDeg": 2.8,
+     "panoId": "TMX7316010203-001551_pano_0000_001042",
+     "timestamp": "2020-01-10T11:22:37.399200Z",
+     "distanceM": 21.9,
+     "obliquityDeg": 3.4,
      "missingFraction": 0
     },
     {
-     "panoId": "b_20241216_0911_Track18_Sphere_00261",
-     "timestamp": "2024-12-16T10:25:14Z",
-     "distanceM": 12.5,
-     "obliquityDeg": 5,
+     "panoId": "TMX7316010203-001551_pano_0000_001043",
+     "timestamp": "2020-01-10T11:22:39.449190Z",
+     "distanceM": 18.4,
+     "obliquityDeg": 15.2,
      "missingFraction": 0
     }
    ]
@@ -373,28 +373,28 @@
     1961,
     2114
    ],
-   "date": "2024-12-16",
+   "date": "2020-01-10",
    "fallbackDate": false,
    "panoramas": [
     {
-     "panoId": "b_20241216_0911_Track02_Sphere_00019",
-     "timestamp": "2024-12-16T09:18:13Z",
-     "distanceM": 19.6,
-     "obliquityDeg": 0.5,
+     "panoId": "TMX7316010203-001551_pano_0000_001043",
+     "timestamp": "2020-01-10T11:22:39.449190Z",
+     "distanceM": 17.8,
+     "obliquityDeg": 2.9,
      "missingFraction": 0
     },
     {
-     "panoId": "b_20241216_0911_Track09_Sphere_00090",
-     "timestamp": "2024-12-16T09:53:36Z",
-     "distanceM": 26.2,
+     "panoId": "TMX7316010203-001551_pano_0000_001041",
+     "timestamp": "2020-01-10T11:22:34.474170Z",
+     "distanceM": 28,
+     "obliquityDeg": 6.1,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-001551_pano_0000_001042",
+     "timestamp": "2020-01-10T11:22:37.399200Z",
+     "distanceM": 22,
      "obliquityDeg": 6.9,
-     "missingFraction": 0
-    },
-    {
-     "panoId": "b_20241216_0911_Track18_Sphere_00260",
-     "timestamp": "2024-12-16T10:25:13Z",
-     "distanceM": 12.7,
-     "obliquityDeg": 10.7,
      "missingFraction": 0
     }
    ]
@@ -407,28 +407,28 @@
     2114,
     2572
    ],
-   "date": "2024-12-16",
+   "date": "2020-01-10",
    "fallbackDate": false,
    "panoramas": [
     {
-     "panoId": "b_20241216_0911_Track18_Sphere_00259",
-     "timestamp": "2024-12-16T10:25:13Z",
-     "distanceM": 12.4,
-     "obliquityDeg": 0.4,
-     "missingFraction": 0
-    },
-    {
-     "panoId": "b_20241216_0911_Track02_Sphere_00020",
-     "timestamp": "2024-12-16T09:18:14Z",
-     "distanceM": 19.9,
+     "panoId": "TMX7316010203-001551_pano_0000_001044",
+     "timestamp": "2020-01-10T11:22:40.654100Z",
+     "distanceM": 15.6,
      "obliquityDeg": 5.7,
      "missingFraction": 0
     },
     {
-     "panoId": "b_20241216_0911_Track02_Sphere_00021",
-     "timestamp": "2024-12-16T09:18:15Z",
-     "distanceM": 20.1,
-     "obliquityDeg": 8.4,
+     "panoId": "TMX7316010203-001551_pano_0000_000802",
+     "timestamp": "2020-01-10T11:17:04.071970Z",
+     "distanceM": 19.9,
+     "obliquityDeg": 6.7,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-001551_pano_0000_000801",
+     "timestamp": "2020-01-10T11:17:03.576990Z",
+     "distanceM": 19.9,
+     "obliquityDeg": 7.6,
      "missingFraction": 0
     }
    ]
@@ -441,28 +441,28 @@
     2572,
     2723
    ],
-   "date": "2024-12-16",
+   "date": "2020-01-10",
    "fallbackDate": false,
    "panoramas": [
     {
-     "panoId": "b_20241216_0911_Track02_Sphere_00022",
-     "timestamp": "2024-12-16T09:18:16Z",
-     "distanceM": 20,
-     "obliquityDeg": 0.6,
+     "panoId": "TMX7316010203-001551_pano_0000_000803",
+     "timestamp": "2020-01-10T11:17:04.561990Z",
+     "distanceM": 19.8,
+     "obliquityDeg": 1.3,
      "missingFraction": 0
     },
     {
-     "panoId": "b_20241216_0911_Track18_Sphere_00257",
-     "timestamp": "2024-12-16T10:25:12Z",
-     "distanceM": 12.6,
-     "obliquityDeg": 11.2,
+     "panoId": "TMX7316010203-001551_pano_0000_001046",
+     "timestamp": "2020-01-10T11:22:42.234100Z",
+     "distanceM": 14.9,
+     "obliquityDeg": 3.7,
      "missingFraction": 0
     },
     {
-     "panoId": "b_20241216_0911_Track18_Sphere_00258",
-     "timestamp": "2024-12-16T10:25:12Z",
-     "distanceM": 12.6,
-     "obliquityDeg": 11.7,
+     "panoId": "TMX7316010203-001551_pano_0000_000804",
+     "timestamp": "2020-01-10T11:17:05.052090Z",
+     "distanceM": 20.2,
+     "obliquityDeg": 13,
      "missingFraction": 0
     }
    ]
@@ -475,28 +475,28 @@
     2723,
     2909
    ],
-   "date": "2024-12-16",
+   "date": "2020-01-10",
    "fallbackDate": false,
    "panoramas": [
     {
-     "panoId": "b_20241216_0911_Track02_Sphere_00023",
-     "timestamp": "2024-12-16T09:18:16Z",
-     "distanceM": 19.8,
-     "obliquityDeg": 3.1,
+     "panoId": "TMX7316010203-001551_pano_0000_000804",
+     "timestamp": "2020-01-10T11:17:05.052090Z",
+     "distanceM": 19.6,
+     "obliquityDeg": 1.2,
      "missingFraction": 0
     },
     {
-     "panoId": "b_20241216_0911_Track18_Sphere_00257",
-     "timestamp": "2024-12-16T10:25:12Z",
-     "distanceM": 12.4,
-     "obliquityDeg": 8,
+     "panoId": "TMX7316010203-001551_pano_0000_001047",
+     "timestamp": "2020-01-10T11:22:42.844090Z",
+     "distanceM": 14.8,
+     "obliquityDeg": 7.2,
      "missingFraction": 0
     },
     {
-     "panoId": "b_20241216_0911_Track02_Sphere_00022",
-     "timestamp": "2024-12-16T09:18:16Z",
-     "distanceM": 20.3,
-     "obliquityDeg": 11.1,
+     "panoId": "TMX7316010203-001551_pano_0000_001046",
+     "timestamp": "2020-01-10T11:22:42.234100Z",
+     "distanceM": 15.1,
+     "obliquityDeg": 12.2,
      "missingFraction": 0
     }
    ]
@@ -509,28 +509,28 @@
     2909,
     3087
    ],
-   "date": "2024-12-16",
+   "date": "2020-01-10",
    "fallbackDate": false,
    "panoramas": [
     {
-     "panoId": "b_20241216_0911_Track02_Sphere_00024",
-     "timestamp": "2024-12-16T09:18:17Z",
+     "panoId": "TMX7316010203-001551_pano_0000_000805",
+     "timestamp": "2020-01-10T11:17:05.541960Z",
      "distanceM": 19.5,
-     "obliquityDeg": 2.3,
+     "obliquityDeg": 0.5,
      "missingFraction": 0
     },
     {
-     "panoId": "b_20241216_0911_Track18_Sphere_00256",
-     "timestamp": "2024-12-16T10:25:11Z",
-     "distanceM": 12.4,
-     "obliquityDeg": 7.9,
+     "panoId": "TMX7316010203-001551_pano_0000_001048",
+     "timestamp": "2020-01-10T11:22:43.404070Z",
+     "distanceM": 14.9,
+     "obliquityDeg": 7.3,
      "missingFraction": 0
     },
     {
-     "panoId": "b_20241216_0911_Track02_Sphere_00023",
-     "timestamp": "2024-12-16T09:18:16Z",
-     "distanceM": 20.1,
-     "obliquityDeg": 11.8,
+     "panoId": "TMX7316010203-001551_pano_0000_001047",
+     "timestamp": "2020-01-10T11:22:42.844090Z",
+     "distanceM": 15,
+     "obliquityDeg": 12.2,
      "missingFraction": 0
     }
    ]
@@ -567,11 +567,8 @@
   "2020-04-22": 0,
   "2025-06-16": 0,
   "2022-09-05": 0,
-  "2023-04-03": 0,
   "2023-03-06": 0,
-  "2023-04-11": 0,
   "2023-01-30": 0,
-  "2023-04-17": 0,
   "2022-01-27": 0,
   "2017-03-13": 0,
   "2021-01-25": 0,

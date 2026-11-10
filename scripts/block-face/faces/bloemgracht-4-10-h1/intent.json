@@ -1,0 +1,99 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "bloemgracht-4-10-h1",
+ "street": "Bloemgracht",
+ "sources": [
+  {
+   "id": "strip-2023-03-13",
+   "kind": "street-panorama",
+   "capturedAt": "2023-03-13",
+   "image": "staging/block-face/bloemgracht-4-10-h1/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "lane hand placement (scripts/block-face/hand-place.ts)",
+  "passes": 1,
+  "note": "Bloemgracht 6-8 (strip 2023-03-13): a bell gable with a white ground storey and a five-storey cornice house (4 is held: its balustraded attic frieze drew as a tile attic and OSM's cafe as a shop window; 10, a red front under a round oculus, is held: the kit has no oculus top); spec scripts/block-face/buurten/bloemgrachtbuurt-hand-runs.json"
+ },
+ "types": [
+  "jordaan-1750-neck-gable",
+  "jordaan-1850-cornice-house"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012174495",
+   "slug": "bloemgracht-174495",
+   "address": "Bloemgracht 8",
+   "type": {
+    "type": "jordaan-1750-neck-gable",
+    "storeys": 4,
+    "crown": "bell-low",
+    "paletteOverrides": {
+     "brick": "#5e4a42"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2023-03-13",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "hand placement (bloemgrachtbuurt-hand-runs.json): Bloemgracht 8: three axes, a white-painted ground storey, ground and three storeys, a bell gable with one attic light and a crest to ~19 m (the strip wall reads green from the winter cast; brick set by eye; the white ground storey is not drawn); strip 2023-03-13"
+   }
+  },
+  {
+   "pandId": "0363100012174496",
+   "slug": "bloemgracht-174496",
+   "address": "Bloemgracht 6D",
+   "type": {
+    "type": "jordaan-1850-cornice-house",
+    "storeys": 5,
+    "measuredPalette": {
+     "brick": "#57504e",
+     "evidence": "strip 2023-03-13 span 437-656: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2023-03-13",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "hand placement (bloemgrachtbuurt-hand-runs.json): Bloemgracht 6: three axes, ground and four storeys, a white cornice at ~16.5 m (the glass balconies are not drawn); strip 2023-03-13"
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "auto-place: low attic behind the cornice; the strips show sky over the cornices of the type rows"
+  },
+  "measuredEaves": [
+   {
+    "pand": "0363100012174495",
+    "stripRow": 269,
+    "evidence": "hand placement: cornice top read at 14 m on the strip 2023-03-13"
+   },
+   {
+    "pand": "0363100012174496",
+    "stripRow": 169,
+    "evidence": "hand placement: cornice top read at 16.5 m on the strip 2023-03-13"
+   }
+  ]
+ }
+}

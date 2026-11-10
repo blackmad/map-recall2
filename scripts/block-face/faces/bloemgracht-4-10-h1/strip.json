@@ -1,0 +1,144 @@
+{
+ "face": "bloemgracht-4-10-h1",
+ "image": "staging/block-face/bloemgracht-4-10-h1/strip.jpg",
+ "pixelsPerMetre": 40,
+ "width": 429,
+ "height": 829,
+ "groundNAP": 0.341,
+ "heightM": 20.73,
+ "frame": {
+  "midRD": [
+   120675.81556249999,
+   487619.85900000005
+  ],
+  "uRD": [
+   0.939834289703274,
+   0.3416306600671884
+  ],
+  "nRD": [
+   0.3416306600671884,
+   -0.939834289703274
+  ]
+ },
+ "x0M": -5.31,
+ "x1M": 5.42,
+ "date": "2023-03-13",
+ "coverage": 1,
+ "spans": [
+  {
+   "pandId": "0363100012174495",
+   "x0M": -5.31,
+   "x1M": -0.06,
+   "px": [
+    0,
+    210
+   ],
+   "date": "2023-03-13",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "TMX7316010203-002996_pano_0002_000133",
+     "timestamp": "2023-03-13T10:51:15.536950Z",
+     "distanceM": 25.6,
+     "obliquityDeg": 2.9,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-002996_pano_0002_000132",
+     "timestamp": "2023-03-13T10:51:14.911990Z",
+     "distanceM": 22.4,
+     "obliquityDeg": 6.8,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-002996_pano_0001_000103",
+     "timestamp": "2023-03-13T10:41:33.986220Z",
+     "distanceM": 5.2,
+     "obliquityDeg": 7.9,
+     "missingFraction": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012174496",
+   "x0M": -0.06,
+   "x1M": 5.42,
+   "px": [
+    210,
+    429
+   ],
+   "date": "2023-03-13",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "TMX7316010203-002996_pano_0001_000102",
+     "timestamp": "2023-03-13T10:41:33.076140Z",
+     "distanceM": 6.9,
+     "obliquityDeg": 0.9,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-002996_pano_0002_000131",
+     "timestamp": "2023-03-13T10:51:14.282010Z",
+     "distanceM": 18.9,
+     "obliquityDeg": 2.7,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-002996_pano_0001_000098",
+     "timestamp": "2023-03-13T10:41:28.551160Z",
+     "distanceM": 21.8,
+     "obliquityDeg": 7,
+     "missingFraction": 0
+    }
+   ]
+  }
+ ],
+ "candidatesByDate": {
+  "2020-04-24": 4,
+  "2018-05-03": 4,
+  "2023-01-30": 4,
+  "2023-02-13": 4,
+  "2018-05-14": 2,
+  "2023-01-16": 4,
+  "2021-03-17": 4,
+  "2025-07-03": 3,
+  "2024-12-16": 4,
+  "2023-02-06": 4,
+  "2018-05-02": 4,
+  "2023-03-27": 4,
+  "2016-08-17": 4,
+  "2023-03-20": 3,
+  "2022-01-27": 4,
+  "2023-02-20": 4,
+  "2023-01-11": 4,
+  "2020-01-10": 4,
+  "2023-03-13": 4,
+  "2023-02-27": 4,
+  "2019-01-15": 4,
+  "2023-03-06": 4,
+  "2022-04-22": 4,
+  "2020-01-08": 4,
+  "2022-04-29": 4,
+  "2025-06-16": 4,
+  "2019-05-13": 2,
+  "2024-12-17": 0,
+  "2024-11-21": 4,
+  "2022-09-05": 4,
+  "2016-08-15": 4,
+  "2020-04-22": 4,
+  "2022-04-25": 4,
+  "2021-01-22": 4,
+  "2017-03-13": 4,
+  "2021-01-25": 0
+ },
+ "description": "Rectified orthographic elevation of the whole face on the frontage planes: x = chunk-frame metres along the face (left→right seen from the street) from x0M, y = metres above the shared ground (groundNAP) from the bottom; grey = no panorama data. Per-pand spans list the panoramas median-fused for that frontage.",
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (CC BY 4.0; faces and number plates blurred by the publisher)",
+ "croppedFrom": {
+  "face": "bloemgracht-4-10",
+  "px": [
+   227,
+   656
+  ]
+ }
+}

@@ -1,0 +1,273 @@
+{
+ "street": "Bloemgracht",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T08:22:35.632Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012168075",
+   "addresses": [
+    "Bloemgracht 126"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bloemgracht 126-H",
+     "use": "industriefunctie",
+     "areaM2": 184,
+     "bagId": "0363010000588723"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2720969997,
+     "lngLat": [
+      4.8794322,
+      52.3745431
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "126-H",
+      "addr:postcode": "1015TP",
+      "addr:street": "Bloemgracht",
+      "name": "Playback Images",
+      "office": "company",
+      "phone": "+31 20 210 1587",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "website": "https://playbackimages.com"
+     },
+     "fetchedAt": "2026-11-10T08:22:35.632Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 11210963862,
+     "lngLat": [
+      4.8794048,
+      52.374537
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "126-H",
+      "addr:postcode": "1015TP",
+      "addr:street": "Bloemgracht",
+      "name": "Better Call Sol",
+      "office": "company",
+      "phone": "+31 6 21596013",
+      "website": "https://bettercallsol.film"
+     },
+     "fetchedAt": "2026-11-10T08:22:35.632Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 11782481078,
+     "lngLat": [
+      4.8794126,
+      52.3744669
+     ],
+     "tags": {
+      "amenity": "bicycle_parking",
+      "bicycle_parking": "stands",
+      "capacity": "8",
+      "covered": "no"
+     },
+     "fetchedAt": "2026-11-10T08:22:35.632Z",
+     "match": "frontage",
+     "distanceM": 6.5
+    },
+    {
+     "type": "way",
+     "id": 1465651920,
+     "lngLat": [
+      4.879461,
+      52.3744776
+     ],
+     "tags": {
+      "access": "yes",
+      "amenity": "parking_space"
+     },
+     "fetchedAt": "2026-11-10T08:22:35.632Z",
+     "match": "frontage",
+     "distanceM": 6.5
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012168080",
+   "addresses": [
+    "Bloemgracht 124B",
+    "Bloemgracht 124C",
+    "Bloemgracht 124D",
+    "Bloemgracht 124E",
+    "Bloemgracht 124A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bloemgracht 124B",
+     "use": "woonfunctie",
+     "areaM2": 74,
+     "bagId": "0363010001013035"
+    },
+    {
+     "address": "Bloemgracht 124C",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010001013036"
+    },
+    {
+     "address": "Bloemgracht 124D",
+     "use": "industriefunctie",
+     "areaM2": 111,
+     "bagId": "0363010001013037"
+    },
+    {
+     "address": "Bloemgracht 124E",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010001013038"
+    },
+    {
+     "address": "Bloemgracht 124A",
+     "use": "woonfunctie",
+     "areaM2": 74,
+     "bagId": "0363010000588718"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11210948232,
+     "lngLat": [
+      4.8794867,
+      52.37456
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "124",
+      "addr:postcode": "1015TP",
+      "addr:street": "Bloemgracht",
+      "check_date": "2025-10-21",
+      "name": "Drukkerij De Haan",
+      "opening_hours": "Mo-Fr 08:00-12:00, 13:00-16:30",
+      "phone": "+31 20 623 2888",
+      "shop": "copyshop",
+      "website": "https://www.drukkerijdehaan.nl"
+     },
+     "fetchedAt": "2026-11-10T08:22:35.632Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012174186",
+   "addresses": [
+    "Bloemgracht 122A",
+    "Bloemgracht 122B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bloemgracht 122A",
+     "use": "woonfunctie",
+     "areaM2": 108,
+     "bagId": "0363010000788637"
+    },
+    {
+     "address": "Bloemgracht 122B",
+     "use": "woonfunctie",
+     "areaM2": 78,
+     "bagId": "0363010000588712"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012168077",
+   "addresses": [
+    "Bloemgracht 120"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bloemgracht 120-H",
+     "use": "woonfunctie",
+     "areaM2": 82,
+     "bagId": "0363010000588697"
+    },
+    {
+     "address": "Bloemgracht 120-O",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000588698"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11782482119,
+     "lngLat": [
+      4.8796899,
+      52.3745347
+     ],
+     "tags": {
+      "amenity": "bicycle_parking",
+      "bicycle_parking": "stands",
+      "capacity": "6",
+      "covered": "no"
+     },
+     "fetchedAt": "2026-11-10T08:22:35.632Z",
+     "match": "frontage",
+     "distanceM": 5.9
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012168076",
+   "addresses": [
+    "Bloemgracht 118"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bloemgracht 118-H",
+     "use": "woonfunctie",
+     "areaM2": 173,
+     "bagId": "0363010001171659"
+    },
+    {
+     "address": "Bloemgracht 118-H",
+     "use": "woonfunctie",
+     "areaM2": 100,
+     "bagId": "0363010012085254"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11782482119,
+     "lngLat": [
+      4.8796899,
+      52.3745347
+     ],
+     "tags": {
+      "amenity": "bicycle_parking",
+      "bicycle_parking": "stands",
+      "capacity": "6",
+      "covered": "no"
+     },
+     "fetchedAt": "2026-11-10T08:22:35.632Z",
+     "match": "frontage",
+     "distanceM": 5.9
+    }
+   ]
+  }
+ ]
+}
