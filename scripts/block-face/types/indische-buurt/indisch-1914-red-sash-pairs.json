@@ -196,10 +196,10 @@
   }
  ],
  "schemaLimits": [
-  "the paired double-leaf door with one shared white frame (drawn as a single leaf)",
-  "the low iron rail under the wide windows",
-  "the bracket row under the gutter",
-  "Djambistraat 40's group of three narrow lights on the door side (the type draws two)"
+   { "component": "door", "what": "paired doors", "prose": "the paired double-leaf door with one shared white frame (drawn as a single leaf)" },
+   { "component": "balcony", "what": "balcony railings", "prose": "the low iron rail under the wide windows" },
+   { "component": "roof", "what": "gutters and downpipes", "prose": "the bracket row under the gutter" },
+   { "component": "door", "what": "door detail", "prose": "Djambistraat 40's group of three narrow lights on the door side (the type draws two)" }
  ],
  "notes": []
 }

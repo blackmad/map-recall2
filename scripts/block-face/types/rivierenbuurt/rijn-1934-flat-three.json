@@ -153,9 +153,9 @@
   }
  ],
  "schemaLimits": [
-  "the two house doors side by side under one transom are drawn as one door",
-  "the dark brick soldier course at 3.0 m",
-  "the toplight's single pane over two casements is the kit's casement-toplight"
+   { "component": "door", "what": "paired doors", "prose": "the two house doors side by side under one transom are drawn as one door" },
+   { "component": "wall", "what": "ground storey brick", "prose": "the dark brick soldier course at 3.0 m" },
+   { "component": "openings", "what": "window sash bars and panes", "prose": "the toplight's single pane over two casements is the kit's casement-toplight" }
  ],
  "notes": [
   "Palette: the type default is a mid red-brown; every placed pand takes its trim-normalised strip wall (auto-place measuredPalette)."

@@ -200,10 +200,10 @@
   }
  ],
  "schemaLimits": [
-  "the setback fifth storey behind the parapet with its white roof-terrace railing (12.0-13.3 m) is not drawn",
-  "the header-course brick ladders either side of the stair windows (a lighter orange brick) are not drawn",
-  "the stair windows sit half a storey above the main windows' line and carry a transom; drawn as plain single lights on the main head line",
-  "the raised stair panel's own dentil frieze"
+   { "component": "balcony", "what": "balcony railings", "prose": "the setback fifth storey behind the parapet with its white roof-terrace railing (12.0-13.3 m) is not drawn" },
+   { "component": "openings", "what": "stair windows off the storey line", "prose": "the header-course brick ladders either side of the stair windows (a lighter orange brick) are not drawn" },
+   { "component": "openings", "what": "stair windows off the storey line", "prose": "the stair windows sit half a storey above the main windows' line and carry a transom; drawn as plain single lights on the main head line" },
+   { "component": "cornice", "what": "cornice frieze panels", "prose": "the raised stair panel's own dentil frieze" }
  ],
  "notes": [
   "Palette: the type default is a mid red-brown; every placed pand takes its trim-normalised strip wall (auto-place measuredPalette)."

@@ -137,9 +137,9 @@
   "photoGroundRows": 1,
   "photoGables": 0,
   "schemaLimits": [
-   "the hood friezes' dentil pattern and the rosettes between them are a plain cream ledge",
-   "the white stucco pilasters at the party walls (46-48) are not drawn",
-   "the yellow brick courses of 44 and 48 are not drawn"
+    { "component": "cornice", "what": "frieze and dentils", "prose": "the hood friezes' dentil pattern and the rosettes between them are a plain cream ledge" },
+    { "component": "wall", "what": "pilasters and piers", "prose": "the white stucco pilasters at the party walls (46-48) are not drawn" },
+    { "component": "wall", "what": "brick courses and bands", "prose": "the yellow brick courses of 44 and 48 are not drawn" }
   ]
  },
  "evidence": [

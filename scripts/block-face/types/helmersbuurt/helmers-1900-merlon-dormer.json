@@ -146,8 +146,8 @@
   }
  ],
  "schemaLimits": [
-  "the arched heads of the wall-dormer lights are square",
-  "58 and 50-52 carry a painted timber oriel on storey 1: held"
+   { "component": "dormer", "what": "dormer lights", "prose": "the arched heads of the wall-dormer lights are square" },
+   { "component": "openings", "what": "oriels and bay windows", "prose": "58 and 50-52 carry a painted timber oriel on storey 1: held" }
  ],
  "notes": [
   "Palette: read on the 2023-01-12 strip; placed pands take their own measured wall.",

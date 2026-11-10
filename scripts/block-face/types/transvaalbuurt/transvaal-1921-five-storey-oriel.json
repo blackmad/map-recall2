@@ -195,9 +195,9 @@
   }
  ],
  "schemaLimits": [
-  "the house door beside the first window axis is not drawn (one door per front: the portiek door)",
-  "the stair windows are drawn as ordinary windows on the stair axis, not offset half a storey",
-  "a fifth dormer on some Tugelaweg pands is not drawn"
+   { "component": "door", "what": "paired doors", "prose": "the house door beside the first window axis is not drawn (one door per front: the portiek door)" },
+   { "component": "openings", "what": "stair windows off the storey line", "prose": "the stair windows are drawn as ordinary windows on the stair axis, not offset half a storey" },
+   { "component": "dormer", "what": "dormer count and placement", "prose": "a fifth dormer on some Tugelaweg pands is not drawn" }
  ],
  "notes": [
   "HELD (#154, 2026-11-01): authored and measured on Retiefstraat 2-28 / Tugelaweg 19-31, but no pand is placed. Every candidate scores edge NCC 0.01-0.13 against its strip (gate 0.15): the kit's casement-toplight panes and glazing band do not match the stone-mullioned, small-paned windows, and the four flat dormers cost ~80 tris a house so a 18 m house is 3.3k triangles (budget 3000). Fix the window kind and a cheaper dormer before this type can place."

@@ -105,7 +105,7 @@ for (const id of faceIds) {
     return {
       pandId, address: h?.address ?? addresses(pandId)[0] ?? `pand ${pandId}`,
       ...(gf ? {shop: {use: String(gf.use ?? ''), ...(gf.name ? {name: gf.name} : {}), ...(gf.agreement ? {agreement: gf.agreement} : {})}} : {}),
-      limits: h?.rhythm?.schemaLimits ?? [],
+      limits: (h?.rhythm?.schemaLimits ?? []).map((l: any) => (typeof l === 'string' ? l : l.prose ?? l.what)),
       ...(rear ? {rear: `${rear.source}: ${rear.edges.map((e: any) => `${e.windowsPerStorey}/storey on ${e.lengthM} m`).join(', ')}`} : {}),
     };
   });

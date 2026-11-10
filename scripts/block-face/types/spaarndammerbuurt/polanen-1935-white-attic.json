@@ -191,9 +191,9 @@
   }
  ],
  "schemaLimits": [
-  "the portiek arch is one opening across the party wall; each house draws its half as a narrow arched door, so the pair reads as two arches side by side",
-  "the ground window stands 1.2 m nearer the door than on the photo (the ground storey's own bay widths centre it)",
-  "the overhang is drawn flat-ended; the attic's thin white sill ledge under the band"
+   { "component": "door", "what": "arched door heads", "prose": "the portiek arch is one opening across the party wall; each house draws its half as a narrow arched door, so the pair reads as two arches side by side" },
+   { "component": "pui", "what": "shopfront and arcade", "prose": "the ground window stands 1.2 m nearer the door than on the photo (the ground storey's own bay widths centre it)" },
+   { "component": "roof", "what": "overhang and soffit", "prose": "the overhang is drawn flat-ended; the attic's thin white sill ledge under the band" }
  ],
  "notes": [
   "Palette: every placed pand takes its trim-normalised strip wall (auto-place measuredPalette).",

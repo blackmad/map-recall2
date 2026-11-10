@@ -175,8 +175,8 @@
   }
  ],
  "schemaLimits": [
-  "the gable volutes and the stone cartouche in the bell gables are not drawn",
-  "the dormers of the attic storey between the gables are not drawn"
+   { "component": "ornament", "what": "keystones and cartouches", "prose": "the gable volutes and the stone cartouche in the bell gables are not drawn" },
+   { "component": "dormer", "what": "dormer detail", "prose": "the dormers of the attic storey between the gables are not drawn" }
  ],
  "notes": [
   "Palette: one measured brick for the row (Transvaalbuurt lesson 10); the per-pand strip walls differ by exposure and street trees, not by brick."

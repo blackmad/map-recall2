@@ -142,8 +142,8 @@
   }
  ],
  "schemaLimits": [
-  "the windows' horizontal glazing bars",
-  "the paired doors under one transom are drawn as one door"
+   { "component": "openings", "what": "window sash bars and panes", "prose": "the windows' horizontal glazing bars" },
+   { "component": "door", "what": "paired doors", "prose": "the paired doors under one transom are drawn as one door" }
  ],
  "notes": []
 }

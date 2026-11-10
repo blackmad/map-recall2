@@ -182,9 +182,9 @@
   }
  ],
  "schemaLimits": [
-  "one window kind per storey: the single axis's low wide multi-pane window is drawn as a small-over-one sash like the pair",
-  "the double house doors are drawn as one door",
-  "the cornice brackets"
+   { "component": "openings", "what": "window heights and axes", "prose": "one window kind per storey: the single axis's low wide multi-pane window is drawn as a small-over-one sash like the pair" },
+   { "component": "door", "what": "paired doors", "prose": "the double house doors are drawn as one door" },
+   { "component": "cornice", "what": "cornice detail", "prose": "the cornice brackets" }
  ],
  "notes": [
   "Kit added: tilePanels place \"sills\" (square tiles under a window) beside the tile-bay type's \"piers\" diamonds."

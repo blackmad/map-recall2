@@ -224,5 +224,10 @@ classified queue is in the generated doc.
   classify as their nearest part, so they still count. They should move off the kit queue when someone sorts them.
 - `toSpecLimit` reads a `"component: what"` line by its first colon, so some prose becomes a component (`a`, `b`).
   The classifier reads the `what` text, so it does not depend on that; the adapter still needs fixing.
-- Type lines reach the queue but not the house specs: `fromBlockFace` reads a house's rhythm and the face limits, not
-  its type's `schemaLimits`. 17 houses name a type with no library file.
+- A block-face type has two kinds of limit line. Its top-level `schemaLimits` (what the type cannot say) reach the queue
+  only: `fromBlockFace` does not read them into the house spec. Its `rhythm.schemaLimits` are inherited by every typed
+  house (`intent.ts` `houseIntents`), so they reach the spec through the house's rhythm. 17 houses name a type with no
+  library file.
+- Type lines were classified in place (2026-11-10): each is `{component, what, prose}`, where `what` is the canonical
+  wording and `prose` the original line. Readers keep the prose: `toSpecLimit` (spec `schemaLimits`), the street survey
+  and the block-face review sheet. The published spec extract still holds the old prose until it is regenerated.

@@ -80,7 +80,7 @@ const add = (pandId: string, text: string, structured: string | undefined, sourc
 for (const file of walk(SPECS, f => f.endsWith('.json.gz'))) {
   const tile = JSON.parse(gunzipSync(readFileSync(file)).toString('utf8'));
   for (const [feature, rec] of Object.entries<any>(tile.buildings ?? {})) {
-    const specLines = ((rec.l ?? []) as Array<{ component?: string; what?: string }>).filter(l => typeof l?.what === 'string' && l.what.trim());
+    const specLines = ((rec.l ?? []) as Array<{ component?: string; what?: string; prose?: string }>).filter(l => typeof l?.what === 'string' && l.what.trim());
     if (!specLines.length) continue;
     const pandId = digitsOf(feature);
     const face = faceOf.get(pandId);
@@ -88,7 +88,7 @@ for (const file of walk(SPECS, f => f.endsWith('.json.gz'))) {
     if (face) stats.specPandsInFaces++;
     for (const l of specLines) {
       stats.specLines++;
-      add(pandId, l.what!, l.component, 'spec', face?.intentPath ?? rel(file), face?.cropPath ?? null, face?.date ?? null);
+      add(pandId, (l as { prose?: string }).prose ?? l.what!, l.component, 'spec', face?.intentPath ?? rel(file), face?.cropPath ?? null, face?.date ?? null);
     }
   }
 }

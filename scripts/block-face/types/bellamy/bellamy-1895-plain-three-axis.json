@@ -104,7 +104,7 @@
   }
  ],
  "schemaLimits": [
-  "the light brick lintel course over the second-storey windows"
+   { "component": "openings", "what": "brick flat arches", "prose": "the light brick lintel course over the second-storey windows" }
  ],
  "notes": []
 }

@@ -208,9 +208,9 @@
   }
  ],
  "schemaLimits": [
-  "the brick diamond and lozenge frieze under the cornice (Hasebroekstraat 6-16) is not drawn",
-  "the flared overhanging cap of the box dormers",
-  "Bellamyplein's square brick towers over an outer axis are drawn as the neck or box crown"
+   { "component": "cornice", "what": "frieze and dentils", "prose": "the brick diamond and lozenge frieze under the cornice (Hasebroekstraat 6-16) is not drawn" },
+   { "component": "dormer", "what": "dormer caps and pediments", "prose": "the flared overhanging cap of the box dormers" },
+   { "component": "crown", "what": "gable and crown form", "prose": "Bellamyplein's square brick towers over an outer axis are drawn as the neck or box crown" }
  ],
  "notes": [
   "Palette: dark brown from the trim-normalised walls of hasebroek-2-46 (2022-01-04, overcast); every placed pand carries its own measured brick.",

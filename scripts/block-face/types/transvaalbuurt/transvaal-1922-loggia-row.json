@@ -154,10 +154,10 @@
   }
  ],
  "schemaLimits": [
-  "the loggia's brick parapet is pierced by small cross-shaped holes; drawn solid",
-  "the loggia of a pair is one opening across the party wall; drawn as two halves, each with a thin brick jamb at the party line",
-  "the door pair is drawn as one door",
-  "the roof lights in the tile face are not drawn"
+   { "component": "balcony", "what": "loggia and recessed balconies", "prose": "the loggia's brick parapet is pierced by small cross-shaped holes; drawn solid" },
+   { "component": "balcony", "what": "loggia and recessed balconies", "prose": "the loggia of a pair is one opening across the party wall; drawn as two halves, each with a thin brick jamb at the party line" },
+   { "component": "door", "what": "paired doors", "prose": "the door pair is drawn as one door" },
+   { "component": "roof", "what": "roof lights and terraces", "prose": "the roof lights in the tile face are not drawn" }
  ],
  "notes": [
   "Kit: FrontIntent.loggia (buildingRecipe/frontLoggia.ts, #158) is the recessed loggia on an ordinary front: the axis's window becomes an opening cut 1 m into the wall over a parapet, glazed at its back."

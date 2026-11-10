@@ -133,8 +133,8 @@
   "photoGroundRows": 1,
   "photoGables": 0,
   "schemaLimits": [
-   "the heads' slight camber is flat",
-   "the dormer's low side cheeks are not drawn"
+    { "component": "openings", "what": "window heads and arches", "prose": "the heads' slight camber is flat" },
+    { "component": "dormer", "what": "dormer cheeks and ears", "prose": "the dormer's low side cheeks are not drawn" }
   ]
  },
  "evidence": [

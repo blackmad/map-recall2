@@ -68,8 +68,8 @@
     "photoGroundRows": 1,
     "photoGables": 0,
     "schemaLimits": [
-      "the white attic band is painted timber; drawn as white painted bands and piers over brick",
-      "the balcony depth (0.5 m) is not measurable on the ortho strip"
+      { "component": "wall", "what": "brick courses and bands", "prose": "the white attic band is painted timber; drawn as white painted bands and piers over brick" },
+      { "component": "balcony", "what": "balcony depth", "prose": "the balcony depth (0.5 m) is not measurable on the ortho strip" }
     ]
   },
   "evidence": [
@@ -105,8 +105,8 @@
     }
   ],
   "schemaLimits": [
-    "painted timber attic band",
-    "balcony depth"
+    { "component": "wall", "what": "brick courses and bands", "prose": "painted timber attic band" },
+    { "component": "balcony", "what": "balcony depth", "prose": "balcony depth" }
   ],
   "notes": [
     "Placed on evertsen-139-143, -145-155, -146-150 and -152-160 (lane de-baarsjes-faces-20261016); mirror: true puts the paired doors at the left.",

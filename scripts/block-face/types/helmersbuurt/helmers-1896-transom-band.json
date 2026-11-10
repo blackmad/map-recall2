@@ -155,10 +155,10 @@
   }
  ],
  "schemaLimits": [
-  "the dentilled cornice over a brick frieze is the heavy cornice",
-  "the bellied balconettes on bracketed slabs are the straight projecting guard",
-  "the white lintel pieces over the storey-3 windows are not drawn",
-  "the tympana's moulded-brick fan pattern is a flat dark fill"
+   { "component": "cornice", "what": "frieze and dentils", "prose": "the dentilled cornice over a brick frieze is the heavy cornice" },
+   { "component": "balcony", "what": "balcony brackets", "prose": "the bellied balconettes on bracketed slabs are the straight projecting guard" },
+   { "component": "openings", "what": "brick flat arches", "prose": "the white lintel pieces over the storey-3 windows are not drawn" },
+   { "component": "openings", "what": "window heads and arches", "prose": "the tympana's moulded-brick fan pattern is a flat dark fill" }
  ],
  "notes": [
   "Palette: read on the 2023-01-12 strip; placed pands take their own measured wall."

@@ -70,7 +70,7 @@
   "photoGroundRows": 1,
   "photoGables": 0,
   "schemaLimits": [
-   "the chamfered corner and the Nassaukade front are not modelled on this face (inferred: one front)"
+    { "component": "wall", "what": "corner and massing", "prose": "the chamfered corner and the Nassaukade front are not modelled on this face (inferred: one front)" }
   ]
  },
  "evidence": [

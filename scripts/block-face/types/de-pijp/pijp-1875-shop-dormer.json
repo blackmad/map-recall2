@@ -135,9 +135,9 @@
   "photoGroundRows": 1,
   "photoGables": 0,
   "schemaLimits": [
-   "the square frieze vents of 12 are not drawn",
-   "the iron balconettes at the storey-1 and storey-2 sills of 12 are not drawn",
-   "the slightly cambered brick heads are flat"
+    { "component": "cornice", "what": "frieze and dentils", "prose": "the square frieze vents of 12 are not drawn" },
+    { "component": "balcony", "what": "balcony railings", "prose": "the iron balconettes at the storey-1 and storey-2 sills of 12 are not drawn" },
+    { "component": "openings", "what": "window heads and arches", "prose": "the slightly cambered brick heads are flat" }
   ]
  },
  "evidence": [

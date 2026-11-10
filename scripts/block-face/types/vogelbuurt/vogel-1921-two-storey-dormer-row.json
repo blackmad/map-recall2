@@ -143,10 +143,10 @@
   }
  ],
  "schemaLimits": [
-  "the grey brick of Flamingostraat (lighter, grey-yellow) against the red-brown of Pelikaanstraat is one palette here",
-  "the crow-step teeth along the raking edge",
-  "the white window sills and the lintel soldier courses",
-  "the cornice's brick corbel course"
+   { "component": "wall", "what": "wall colour and finish", "prose": "the grey brick of Flamingostraat (lighter, grey-yellow) against the red-brown of Pelikaanstraat is one palette here" },
+   { "component": "roof", "what": "parapet and coping", "prose": "the crow-step teeth along the raking edge" },
+   { "component": "openings", "what": "brick flat arches", "prose": "the white window sills and the lintel soldier courses" },
+   { "component": "cornice", "what": "corbel course", "prose": "the cornice's brick corbel course" }
  ],
  "notes": [
   "Palette: brick #7d5446 is the dark-brown family of Pelikaan/Pluvier strips; Flamingostraat photographs grey-yellow; use a palette pin per row where the photo says so."

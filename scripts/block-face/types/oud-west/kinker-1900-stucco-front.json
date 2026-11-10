@@ -70,7 +70,7 @@
   "photoGroundRows": 1,
   "photoGables": 0,
   "schemaLimits": [
-   "moulded window architraves in the paint are drawn as stone lintels and sills"
+    { "component": "openings", "what": "brick flat arches", "prose": "moulded window architraves in the paint are drawn as stone lintels and sills" }
   ]
  },
  "evidence": [
@@ -85,7 +85,7 @@
   }
  ],
  "schemaLimits": [
-  "painted architraves"
+   { "component": "openings", "what": "window surrounds and frames", "prose": "painted architraves" }
  ],
  "notes": [
   "Few on Kinkerstraat (3 exemplars); the plan expected more. Palette: strip medians from scripts/block-face/palette-from-strip.ts (staging/street-types/kinkerstraat/palette.json)."

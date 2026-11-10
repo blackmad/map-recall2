@@ -296,9 +296,9 @@
   }
  ],
  "schemaLimits": [
-  "the tall slot lights run through both upper storeys; drawn as one narrow window per storey",
-  "four doors in two pairs under one canopy: one door and a window are drawn",
-  "the zinc dormers (10.1-12.2 m) are not drawn"
+   { "component": "openings", "what": "slot and narrow lights", "prose": "the tall slot lights run through both upper storeys; drawn as one narrow window per storey" },
+   { "component": "door", "what": "door canopies", "prose": "four doors in two pairs under one canopy: one door and a window are drawn" },
+   { "component": "dormer", "what": "dormer count and placement", "prose": "the zinc dormers (10.1-12.2 m) are not drawn" }
  ],
  "notes": [
   "Palette: type default red-brown; placed pands take their trim-normalised strip wall."

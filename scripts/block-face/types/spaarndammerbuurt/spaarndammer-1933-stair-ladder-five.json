@@ -189,9 +189,9 @@
   }
  ],
  "schemaLimits": [
-  "the overhang soffit is drawn plain; the photo shows a ribbed (coffered) white soffit",
-  "3DBAG reads a pitched roof (ridge 16.4 m) hidden behind the overhang; the front reads flat and the chimney stacks are not drawn",
-  "the long ground window under the last two axes is drawn 2.8 m wide (the ground grid caps a window at 2.8 m); rectified 5.2 m"
+   { "component": "roof", "what": "overhang and soffit", "prose": "the overhang soffit is drawn plain; the photo shows a ribbed (coffered) white soffit" },
+   { "component": "roof", "what": "overhang and soffit", "prose": "3DBAG reads a pitched roof (ridge 16.4 m) hidden behind the overhang; the front reads flat and the chimney stacks are not drawn" },
+   { "component": "pui", "what": "shopfront and arcade", "prose": "the long ground window under the last two axes is drawn 2.8 m wide (the ground grid caps a window at 2.8 m); rectified 5.2 m" }
  ],
  "notes": [
   "Palette: every placed pand takes its trim-normalised strip wall (auto-place measuredPalette)."

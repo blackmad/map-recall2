@@ -136,7 +136,7 @@
   "photoGroundRows": 1,
   "photoGables": 0,
   "schemaLimits": [
-   "the cornice consoles of Govert Flinckstraat 265-287 are drawn as a plain frieze"
+    { "component": "cornice", "what": "frieze and dentils", "prose": "the cornice consoles of Govert Flinckstraat 265-287 are drawn as a plain frieze" }
   ]
  },
  "evidence": [

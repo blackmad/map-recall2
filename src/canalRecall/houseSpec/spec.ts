@@ -70,14 +70,16 @@ export interface HouseSpec {
 
 /** One kit limit: `component` names the kit part (a window kind, a crown ornament, a roof form), `what` says what the
  *  photo has that the kit cannot draw. */
-export interface SpecLimit { component: string; what: string }
+export interface SpecLimit { component: string; what: string; /** The original photo-reading line, kept when `what` is a canonical wording (kitGapVocabulary.ts). */ prose?: string }
 
 /** A limit in either form: the object as is, or a legacy `"component: what"` string (component = one to three words
  *  before the first colon; anything else is filed under `facade`). Null for an empty or malformed entry. */
 export function toSpecLimit(entry: unknown): SpecLimit | null {
   if (entry && typeof entry === 'object' && !Array.isArray(entry)) {
     const { component, what } = entry as Record<string, unknown>;
-    return typeof component === 'string' && component.trim() && typeof what === 'string' && what.trim() ? { component: component.trim(), what: what.trim() } : null;
+    const prose = (entry as Record<string, unknown>).prose;
+    if (!(typeof component === 'string' && component.trim() && typeof what === 'string' && what.trim())) return null;
+    return typeof prose === 'string' && prose.trim() ? { component: component.trim(), what: what.trim(), prose: prose.trim() } : { component: component.trim(), what: what.trim() };
   }
   if (typeof entry !== 'string' || !entry.trim()) return null;
   const t = entry.trim().replace(/^\d{6}:\s*/, ''); // face limitations are `<pand6>: <what>`

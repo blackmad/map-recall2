@@ -154,10 +154,10 @@
   "photoGroundRows": 1,
   "photoGables": 0,
   "schemaLimits": [
-   "the dark rubbed-brick ring between the white springers is not drawn (no band brick measured; the springers style draws no ring)",
-   "the springers are square slabs; the photo's are wedge-shaped, rising toward the arch (a V over each pier)",
-   "pediment dormer cheeks are plain (no scrolls); the frieze consoles and panels are a plain frieze",
-   "iron wall anchors between the windows (in the gap between two springers) are not drawn"
+    { "component": "wall", "what": "brick courses and bands", "prose": "the dark rubbed-brick ring between the white springers is not drawn (no band brick measured; the springers style draws no ring)" },
+    { "component": "openings", "what": "window heads and arches", "prose": "the springers are square slabs; the photo's are wedge-shaped, rising toward the arch (a V over each pier)" },
+    { "component": "dormer", "what": "dormer cheeks and ears", "prose": "pediment dormer cheeks are plain (no scrolls); the frieze consoles and panels are a plain frieze" },
+    { "component": "ornament", "what": "wall anchors", "prose": "iron wall anchors between the windows (in the gap between two springers) are not drawn" }
   ]
  },
  "evidence": [
@@ -207,10 +207,10 @@
   }
  ],
  "schemaLimits": [
-  "white tympanum lunettes (244-332 236631, 156795) are a placement override (windowHead.tympanum: stone)",
-  "rubbed-brick arch ring colour",
-  "dormer scroll cheeks",
-  "red-brown-sunlit palette keeps the unmeasured stone (no white course measured on its strips)"
+   { "component": "openings", "what": "window heads and arches", "prose": "white tympanum lunettes (244-332 236631, 156795) are a placement override (windowHead.tympanum: stone)" },
+   { "component": "openings", "what": "window heads and arches", "prose": "rubbed-brick arch ring colour" },
+   { "component": "dormer", "what": "dormer cheeks and ears", "prose": "dormer scroll cheeks" },
+   { "component": "wall", "what": "brick courses and bands", "prose": "red-brown-sunlit palette keeps the unmeasured stone (no white course measured on its strips)" }
  ],
  "notes": [
   "Palette: strip medians from scripts/block-face/palette-from-strip.ts (staging/street-types/kinkerstraat/palette.json); kinker-2-30 = median of pands 6-14 on the overcast 2024-12-11 strip, cornice from 236814 (the only cornice whose light pixels pass 35 %).",

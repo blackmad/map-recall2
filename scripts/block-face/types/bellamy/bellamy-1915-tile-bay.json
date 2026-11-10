@@ -185,9 +185,9 @@
   }
  ],
  "schemaLimits": [
-  "the oriel is drawn three-faced; the photo's is segmental in plan",
-  "the dark checkered brick courses",
-  "one dormer height for both dormers (the narrow-axis dormer is 1.0 m in the photo, drawn 1.45 m)"
+   { "component": "openings", "what": "oriels and bay windows", "prose": "the oriel is drawn three-faced; the photo's is segmental in plan" },
+   { "component": "wall", "what": "brick courses and bands", "prose": "the dark checkered brick courses" },
+   { "component": "dormer", "what": "dormer count and placement", "prose": "one dormer height for both dormers (the narrow-axis dormer is 1.0 m in the photo, drawn 1.45 m)" }
  ],
  "notes": []
 }

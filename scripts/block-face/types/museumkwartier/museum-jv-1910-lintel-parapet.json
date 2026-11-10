@@ -138,8 +138,8 @@
   }
  ],
  "schemaLimits": [
-  "the parapet's recessed panels and its moulded foot are drawn as plain brick under the coping",
-  "the balcony slabs' cast brackets are the library's projecting balcony"
+   { "component": "roof", "what": "parapet and coping", "prose": "the parapet's recessed panels and its moulded foot are drawn as plain brick under the coping" },
+   { "component": "balcony", "what": "balcony brackets", "prose": "the balcony slabs' cast brackets are the library's projecting balcony" }
  ],
  "notes": [
   "Palette: placed pands take their own measured wall (auto-place measuredPalette); one brick per row from tree-free columns at install."

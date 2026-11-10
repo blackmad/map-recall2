@@ -146,9 +146,9 @@
   }
  ],
  "schemaLimits": [
-  "the relieving arch field is a flat ochre fill (palette band); the photo shows a small chequer of moulded brick",
-  "the top storey keystone over the flat heads is not drawn (keystones follow the relieving arches only)",
-  "211A has a shop window on the ground storey; held"
+   { "component": "wall", "what": "brick courses and bands", "prose": "the relieving arch field is a flat ochre fill (palette band); the photo shows a small chequer of moulded brick" },
+   { "component": "ornament", "what": "keystones and cartouches", "prose": "the top storey keystone over the flat heads is not drawn (keystones follow the relieving arches only)" },
+   { "component": "pui", "what": "shopfront and arcade", "prose": "211A has a shop window on the ground storey; held" }
  ],
  "notes": [
   "Palette: strip medians of 211A-213 (2024-11-29): wall #9a7d62, tympanum ochre #b39466, white trim #eeeae0.",

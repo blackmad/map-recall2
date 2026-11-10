@@ -8,11 +8,12 @@ import fs from 'node:fs';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import type {HouseTypeIntent} from './houseType.ts';
+import type {RhythmLimit} from './intent.ts';
 
 /** A house type as stored in the library: an inline type plus where it lives and what the schema cannot say. */
 export interface LibraryHouseType extends HouseTypeIntent {
   district: string;
-  schemaLimits?: string[];
+  schemaLimits?: RhythmLimit[];
 }
 
 /** Resolves a library type id; undefined when there is no such type. */

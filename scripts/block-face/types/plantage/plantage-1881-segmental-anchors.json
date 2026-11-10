@@ -133,8 +133,8 @@
   "photoGroundRows": 1,
   "photoGables": 0,
   "schemaLimits": [
-   "the sculpted keystone heads of 44 are plain blocks",
-   "the dormer's low side cheeks are not drawn"
+    { "component": "ornament", "what": "keystones and cartouches", "prose": "the sculpted keystone heads of 44 are plain blocks" },
+    { "component": "dormer", "what": "dormer cheeks and ears", "prose": "the dormer's low side cheeks are not drawn" }
   ]
  },
  "evidence": [
@@ -150,6 +150,6 @@
   }
  ],
  "schemaLimits": [
-  "the top light is drawn at the t-window ratio; window heights grow upward in the photo (2.2, 2.6, 2.7 m) and are read per storey"
+   { "component": "openings", "what": "window heights and axes", "prose": "the top light is drawn at the t-window ratio; window heights grow upward in the photo (2.2, 2.6, 2.7 m) and are read per storey" }
  ]
 }

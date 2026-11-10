@@ -67,9 +67,9 @@
     "photoGroundRows": 1,
     "photoGables": 0,
     "schemaLimits": [
-      "the white bands' small dentil blocks under the head band are not drawn",
-      "the canopy sits on the measured wall band; its photo height is read off a strip that lifts the projecting slab (parallax), so it is approximate to about 0.2 m",
-      "the curved corner at 9-11 (090327) is drawn square"
+      { "component": "cornice", "what": "frieze and dentils", "prose": "the white bands' small dentil blocks under the head band are not drawn" },
+      { "component": "door", "what": "door canopies", "prose": "the canopy sits on the measured wall band; its photo height is read off a strip that lifts the projecting slab (parallax), so it is approximate to about 0.2 m" },
+      { "component": "wall", "what": "corner and massing", "prose": "the curved corner at 9-11 (090327) is drawn square" }
     ]
   },
   "evidence": [
@@ -85,9 +85,9 @@
     }
   ],
   "schemaLimits": [
-    "dentil blocks under the head band",
-    "curved corner at 9-11",
-    "the corner group's diamond-brick frieze, cast-iron balustrade over the canopy and half-round oriels (35-41)"
+    { "component": "cornice", "what": "frieze and dentils", "prose": "dentil blocks under the head band" },
+    { "component": "wall", "what": "corner and massing", "prose": "curved corner at 9-11" },
+    { "component": "door", "what": "door canopies", "prose": "the corner group's diamond-brick frieze, cast-iron balustrade over the canopy and half-round oriels (35-41)" }
   ],
   "notes": [
     "Palette: strip medians (2021-03-26, sunny, leaf-off) over the row's pands; the white bands keep their measured grey (#a5a59e) with stoneMaterial painted so the look draws them as measured.",

@@ -61,8 +61,8 @@
     "photoGroundRows": 1,
     "photoGables": 0,
     "schemaLimits": [
-      "signs on the glass-block band are not drawn",
-      "the two halves of a party-wall window keep a 4 cm brick pier between them (one window on the photo)"
+      { "component": "pui", "what": "signs on the glass-block band", "prose": "signs on the glass-block band are not drawn" },
+      { "component": "openings", "what": "party-wall window split", "prose": "the two halves of a party-wall window keep a 4 cm brick pier between them (one window on the photo)" }
     ]
   },
   "evidence": [
@@ -88,7 +88,7 @@
     }
   ],
   "schemaLimits": [
-    "signs on the glass-block band"
+    { "component": "pui", "what": "signs on the glass-block band", "prose": "signs on the glass-block band" }
   ],
   "notes": [
     "Each house's shop gives awning {style: rigid, glassBlocks: {rows: 7}, wallCourses: 16}; palette.band is the hood/slab concrete (the hood slab takes the band colour).",

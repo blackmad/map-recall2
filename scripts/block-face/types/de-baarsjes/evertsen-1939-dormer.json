@@ -116,8 +116,8 @@
     "photoGroundRows": 1,
     "photoGables": 0,
     "schemaLimits": [
-      "the arched door heads are drawn square",
-      "the dormer's three lights are drawn as two lights in the kit's flat dormer"
+      { "component": "door", "what": "arched door heads", "prose": "the arched door heads are drawn square" },
+      { "component": "dormer", "what": "dormer lights", "prose": "the dormer's three lights are drawn as two lights in the kit's flat dormer" }
     ]
   },
   "evidence": [
@@ -145,8 +145,8 @@
     }
   ],
   "schemaLimits": [
-    "arched door heads",
-    "three-light dormer"
+    { "component": "door", "what": "arched door heads", "prose": "arched door heads" },
+    { "component": "dormer", "what": "dormer count and placement", "prose": "three-light dormer" }
   ],
   "notes": [
     "Placed on evertsen-145-155 and evertsen-152-160 (lane de-baarsjes-faces-20261016). mirror: true puts the narrow axis (and the doors) at the left.",

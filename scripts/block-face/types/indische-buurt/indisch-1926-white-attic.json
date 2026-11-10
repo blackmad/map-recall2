@@ -77,9 +77,9 @@
   }
  ],
  "schemaLimits": [
-  "the white top storey's pilasters with small capitals between the windows",
-  "the soldier course over the ground storey",
-  "the doors stand on the first/last axis, not against the party wall"
+   { "component": "wall", "what": "pilasters and piers", "prose": "the white top storey's pilasters with small capitals between the windows" },
+   { "component": "wall", "what": "brick courses and bands", "prose": "the soldier course over the ground storey" },
+   { "component": "door", "what": "door position", "prose": "the doors stand on the first/last axis, not against the party wall" }
  ],
  "notes": []
 }

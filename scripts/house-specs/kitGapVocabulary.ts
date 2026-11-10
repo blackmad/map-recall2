@@ -48,11 +48,11 @@ export const RULES: readonly Rule[] = [
   R('pui', 'shopfront and arcade', /shop|arcade|storefront|mezzanine|ground[- ]floor|ground window|glass-block/),
   R('ornament', 'wall anchors', /anchor/),
   // doors and canopies
-  R('door', 'door canopies', /canopy|awning/),
+  R('door', 'door canopies', /canopy|canopies|awning/),
   R('door', 'arched door heads', /(arch|arched|round-arched|stair-door)[^.;]*\bdoor|\bdoor[^.;]*(arch|head)/),
   R('door', 'paired doors', /(pair|paired|two|double|four|shared|portico)\b[^.;]*\bdoors?\b|\bdoor pair|\bone door|as one door/),
   R('door', 'door side lights', /side ?lights?|mailbox/),
-  R('door', 'door position', /door[^.;]*(axis|party wall|stand)|stand on the (first|last)/),
+  R('door', 'door position', /door[^.;]*(axis|party wall|stand|position)|stand on the (first|last)/),
   R('door', 'door detail', /\bdoors?\b|stoop/),
   // front gardens and street furniture: not the building
   R('other', 'front gardens and stalls', /garden|hedge|fence|market stall|flower|plant box/),

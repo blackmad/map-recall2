@@ -237,10 +237,10 @@
   }
  ],
  "schemaLimits": [
-  "the top band's small consoles and the dark header-brick vents over the storey 1-2 pairs are not drawn",
-  "the top band is lifted 0.5 m over the top-storey window heads (bandHeights.headLift), as the strip shows",
-  "the stair window's white mullion between its two halves is the two pands' frames meeting at the party wall",
-  "the French doors of the ground floor are drawn as four-light windows"
+   { "component": "ornament", "what": "brackets and consoles", "prose": "the top band's small consoles and the dark header-brick vents over the storey 1-2 pairs are not drawn" },
+   { "component": "openings", "what": "window heights and axes", "prose": "the top band is lifted 0.5 m over the top-storey window heads (bandHeights.headLift), as the strip shows" },
+   { "component": "openings", "what": "stair windows off the storey line", "prose": "the stair window's white mullion between its two halves is the two pands' frames meeting at the party wall" },
+   { "component": "pui", "what": "shopfront and arcade", "prose": "the French doors of the ground floor are drawn as four-light windows" }
  ],
  "notes": [
   "Palette: the type default is the measured purple-brown of 17A-31A (#716357-#7c6a64); every placed pand takes its trim-normalised strip wall (auto-place measuredPalette)."

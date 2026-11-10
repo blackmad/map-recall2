@@ -188,8 +188,8 @@
   }
  ],
  "schemaLimits": [
-  "the portiek (two doors and two side lights) straddles the BAG party wall; each house draws its own door",
-  "the window rows of the neighbouring flat fronts sit about 0.5 m off the BAG party lines (as on the strip); the types keep to the pand"
+   { "component": "door", "what": "paired doors", "prose": "the portiek (two doors and two side lights) straddles the BAG party wall; each house draws its own door" },
+   { "component": "openings", "what": "window detail", "prose": "the window rows of the neighbouring flat fronts sit about 0.5 m off the BAG party lines (as on the strip); the types keep to the pand" }
  ],
  "notes": [
   "Palette: the type default is a mid red-brown; every placed pand takes its trim-normalised strip wall (auto-place measuredPalette)."

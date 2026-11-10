@@ -7,7 +7,7 @@ import { defaulted, measured } from '../facade/evidence.ts';
 import { unobservedHouse } from '../facade/houseRecord.ts';
 import { registerFactsFromExtract } from '../facade/registerRecipe.ts';
 import { asLimit, fromBlockFace, fromHouseRecord, fromJev, fromRecipeIntent, fromRegisterFacts } from './adapters.ts';
-import { validateSpec } from './spec.ts';
+import { toSpecLimit, validateSpec } from './spec.ts';
 import { resolveSpecs } from './resolve.ts';
 
 const json = (p: string) => JSON.parse(readFileSync(p, 'utf8'));
@@ -102,13 +102,17 @@ test('fromBlockFace: a1 object limits {component, what} (the shape on lane/belt-
   ] });
   const first = fromBlockFace(face, '0363100012065375')!, second = fromBlockFace(face, '0363100012144634')!, last = fromBlockFace(face, '0363100012113386')!;
   validateSpec(first); validateSpec(second); validateSpec(last);
-  // (Houses may also carry their type's legacy rhythm strings, filed under `facade`.)
-  const own = (s: typeof first) => s.schemaLimits?.map(l => l.component).filter(c => c !== 'facade');
-  assert.deepEqual(own(first), ['gable ornament', 'roof']);
-  assert.deepEqual(own(second), ['gable ornament', 'ground storey', 'roof']);
+  // (Houses may also carry their type's rhythm limits: the type's lines are classified to a kit component, and each
+  // keeps its photo prose, so the face's own components are a subset rather than the whole list.)
+  const own = (s: typeof first) => s.schemaLimits?.map(l => l.component) ?? [];
+  assert.ok(['gable ornament', 'roof'].every(c => own(first).includes(c)), JSON.stringify(own(first)));
+  assert.ok(['gable ornament', 'ground storey', 'roof'].every(c => own(second).includes(c)), JSON.stringify(own(second)));
   assert.match(second.schemaLimits!.find(l => l.component === 'ground storey')!.what, /two tall arched windows/);
-  // The last house: its own legacy rhythm strings (filed under facade) plus the face-wide roof limit.
-  assert.deepEqual([...new Set(last.schemaLimits?.map(l => l.component))], ['facade', 'roof']);
+  // The last house: the face-wide roof limit plus its own legacy rhythm strings.
+  assert.ok(own(last).includes('roof'));
+  // A classified line keeps the photo prose beside its canonical wording (toSpecLimit reads both).
+  assert.deepEqual(toSpecLimit({ component: 'door', what: 'door canopies', prose: 'the canopy over the paired doors is not drawn' }),
+    { component: 'door', what: 'door canopies', prose: 'the canopy over the paired doors is not drawn' });
 });
 
 test('limits: legacy strings and objects read the same way', () => {

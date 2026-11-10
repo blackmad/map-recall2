@@ -129,8 +129,8 @@
   "photoGroundRows": 1,
   "photoGables": 1,
   "schemaLimits": [
-   "the sandstone scrolls (klauwstukken) beside the neck are not drawn",
-   "the gable cap ornaments are not drawn"
+    { "component": "crown", "what": "gable scrollwork and volutes", "prose": "the sandstone scrolls (klauwstukken) beside the neck are not drawn" },
+    { "component": "crown", "what": "gable and crown form", "prose": "the gable cap ornaments are not drawn" }
   ]
  },
  "evidence": [

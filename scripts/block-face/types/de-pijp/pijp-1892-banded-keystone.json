@@ -146,8 +146,8 @@
   "photoGroundRows": 1,
   "photoGables": 0,
   "schemaLimits": [
-   "the frieze's corbel table is plain brick",
-   "the market stalls in front of the shops are not part of the building"
+    { "component": "cornice", "what": "frieze and dentils", "prose": "the frieze's corbel table is plain brick" },
+    { "component": "pui", "what": "shopfront and arcade", "prose": "the market stalls in front of the shops are not part of the building" }
   ]
  },
  "evidence": [

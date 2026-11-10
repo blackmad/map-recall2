@@ -160,9 +160,9 @@
   }
  ],
  "schemaLimits": [
-  "the chequered tympanum is a flat ochre fill (palette band)",
-  "the bellied balconettes on bracketed slabs are the straight projecting guard",
-  "the decorated brick frieze over storey 3 is plain wall"
+   { "component": "wall", "what": "brick courses and bands", "prose": "the chequered tympanum is a flat ochre fill (palette band)" },
+   { "component": "balcony", "what": "balcony brackets", "prose": "the bellied balconettes on bracketed slabs are the straight projecting guard" },
+   { "component": "cornice", "what": "frieze and dentils", "prose": "the decorated brick frieze over storey 3 is plain wall" }
  ],
  "notes": [
   "Palette: read on the hazy 2023-01-12 strip; placed pands take their own measured wall."

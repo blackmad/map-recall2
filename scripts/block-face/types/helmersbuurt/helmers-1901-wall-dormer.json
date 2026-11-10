@@ -131,7 +131,7 @@
   }
  ],
  "schemaLimits": [
-  "the wall dormer's curved (bell) stone top is a flat cap"
+   { "component": "dormer", "what": "dormer caps and pediments", "prose": "the wall dormer's curved (bell) stone top is a flat cap" }
  ],
  "notes": [
   "Palette: strip medians 241-243 (2024-11-29), sunlit patches excluded: wall #7f5442."

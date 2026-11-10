@@ -180,10 +180,10 @@
   }
  ],
  "schemaLimits": [
-  "the iron sill rails (low juliet balcony) under every upper window",
-  "a pointed brick GABLE over two or three fronts (Djambistraat 1-5, 9-13) is drawn as the dormer",
-  "the mailbox panel on each jamb of the shared door, and the shared single leaf (drawn as a half-width leaf per front)",
-  "the lower single light under a top light at 0.68 of the window height (dark-green sashes)"
+   { "component": "balcony", "what": "balcony railings", "prose": "the iron sill rails (low juliet balcony) under every upper window" },
+   { "component": "dormer", "what": "dormer detail", "prose": "a pointed brick GABLE over two or three fronts (Djambistraat 1-5, 9-13) is drawn as the dormer" },
+   { "component": "door", "what": "paired doors", "prose": "the mailbox panel on each jamb of the shared door, and the shared single leaf (drawn as a half-width leaf per front)" },
+   { "component": "openings", "what": "window heights and axes", "prose": "the lower single light under a top light at 0.68 of the window height (dark-green sashes)" }
  ],
  "notes": []
 }

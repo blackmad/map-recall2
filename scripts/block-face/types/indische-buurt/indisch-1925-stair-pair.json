@@ -75,9 +75,9 @@
   }
  ],
  "schemaLimits": [
-  "the small dormer off the stair pair on some houses",
-  "the brick course under the top-storey windows",
-  "the stair pair's light frame between the two lights"
+   { "component": "dormer", "what": "dormer count and placement", "prose": "the small dormer off the stair pair on some houses" },
+   { "component": "wall", "what": "brick courses and bands", "prose": "the brick course under the top-storey windows" },
+   { "component": "openings", "what": "stair windows off the storey line", "prose": "the stair pair's light frame between the two lights" }
  ],
  "notes": []
 }

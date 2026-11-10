@@ -152,7 +152,7 @@ export async function reviewFace(faceId: string, glbOverride?: string, label?: s
     const rear = (report.rears ?? []).find((r: any) => r.pandId === h.pandId);
     const rearLines = [roofLine, ...(rowLine ? [rowLine] : []), ...(rear ? [`rear: INFERRED (no photo), ${rear.windows} plain windows`] : [])];
     rearLines.forEach((l, k) => { svg += tx(126 + checks.length * 16 + 18 + k * 15, 11, clip(l, 11), '#7a1fa2', 'bold'); });
-    (h.rhythm.schemaLimits ?? []).slice(0, 3).forEach((l, k) => { svg += tx(126 + checks.length * 16 + 20 + (rearLines.length + k) * 15, 11, clip(`limit: ${l}`, 11), '#6b4e00'); });
+    (h.rhythm.schemaLimits ?? []).slice(0, 3).forEach((l, k) => { svg += tx(126 + checks.length * 16 + 20 + (rearLines.length + k) * 15, 11, clip(`limit: ${typeof l === 'string' ? l : l.prose ?? l.what}`, 11), '#6b4e00'); });
     void cbad;
   });
   report.interference.forEach((it: any, i: number) => {

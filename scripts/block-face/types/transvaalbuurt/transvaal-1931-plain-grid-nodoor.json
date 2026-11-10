@@ -195,9 +195,9 @@
   }
  ],
  "schemaLimits": [
-  "the erkers are shallow canted boxes with blue frames; drawn as square box frames (bayWindows.hood) in the trim colour",
-  "the rainwater heads and downpipes at the party walls are not drawn",
-  "the ground storey's light courses are drawn as thin band-brick stripes (brickStripes)"
+   { "component": "openings", "what": "oriels and bay windows", "prose": "the erkers are shallow canted boxes with blue frames; drawn as square box frames (bayWindows.hood) in the trim colour" },
+   { "component": "roof", "what": "gutters and downpipes", "prose": "the rainwater heads and downpipes at the party walls are not drawn" },
+   { "component": "wall", "what": "ground storey brick", "prose": "the ground storey's light courses are drawn as thin band-brick stripes (brickStripes)" }
  ],
  "notes": [
   "Palette: the type default is the raw strip wall of tree-free piers; every placed pand takes its trim-normalised strip wall (auto-place measuredPalette); one brick per row at review (lesson 10)."

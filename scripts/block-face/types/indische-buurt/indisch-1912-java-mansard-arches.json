@@ -184,10 +184,10 @@
   }
  ],
  "schemaLimits": [
-  "the stepped brick corbel under the storey-2 sill",
-  "the stair of dormer variants (some fronts have the dormer off the balcony axis)",
-  "the stepped brick corbel under the storey-2 sill",
-  "the cream voussoirs alternating with brick in the arch rings (one band colour)"
+   { "component": "cornice", "what": "corbel course", "prose": "the stepped brick corbel under the storey-2 sill" },
+   { "component": "balcony", "what": "balcony railings", "prose": "the stair of dormer variants (some fronts have the dormer off the balcony axis)" },
+   { "component": "cornice", "what": "corbel course", "prose": "the stepped brick corbel under the storey-2 sill" },
+   { "component": "wall", "what": "brick courses and bands", "prose": "the cream voussoirs alternating with brick in the arch rings (one band colour)" }
  ],
  "notes": []
 }

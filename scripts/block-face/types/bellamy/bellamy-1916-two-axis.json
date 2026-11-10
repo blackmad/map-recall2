@@ -46,6 +46,9 @@
  "evidence": [
   {"face": "bellamy-18-50", "pands": ["162936", "161048", "153671", "165951"], "citation": "strip.jpg 2024-12-11 pands 9-12: four identical 2-axis fronts, doors in pairs at 9|10 and 11|12 (washed-out strip)"}
  ],
- "schemaLimits": ["the brick corbel course under the cornice", "the setback roof-terrace boxes"],
+ "schemaLimits": [
+   { "component": "cornice", "what": "corbel course", "prose": "the brick corbel course under the cornice" },
+   { "component": "roof", "what": "roof lights and terraces", "prose": "the setback roof-terrace boxes" }
+ ],
  "notes": ["The strip is washed out (2024-12-11 low sun): the palette brick is the trim-normalised wall, not the raw median."]
 }

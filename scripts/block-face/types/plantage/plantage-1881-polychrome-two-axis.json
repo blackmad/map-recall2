@@ -135,8 +135,8 @@
   "photoGroundRows": 1,
   "photoGables": 0,
   "schemaLimits": [
-   "the sculpted keystone heads of 44 are plain blocks",
-   "the dormer's low side cheeks are not drawn"
+    { "component": "ornament", "what": "keystones and cartouches", "prose": "the sculpted keystone heads of 44 are plain blocks" },
+    { "component": "dormer", "what": "dormer cheeks and ears", "prose": "the dormer's low side cheeks are not drawn" }
   ]
  },
  "evidence": [
@@ -152,7 +152,7 @@
   }
  ],
  "schemaLimits": [
-  "the yellow cross hood is a plain arch ring; the speklagen are a band course every 0.5 m not the measured 0.2 m pitch",
-  "the yellow frieze band and the scrolled dormer pediment are not drawn; the hood is five alternating voussoir blocks, the cross crown is the keystone block"
+   { "component": "openings", "what": "window heights and axes", "prose": "the yellow cross hood is a plain arch ring; the speklagen are a band course every 0.5 m not the measured 0.2 m pitch" },
+   { "component": "dormer", "what": "dormer caps and pediments", "prose": "the yellow frieze band and the scrolled dormer pediment are not drawn; the hood is five alternating voussoir blocks, the cross crown is the keystone block" }
  ]
 }

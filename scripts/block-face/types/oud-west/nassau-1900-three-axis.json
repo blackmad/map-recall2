@@ -143,10 +143,10 @@
   "photoGables": 0
  },
  "schemaLimits": [
-  "T-windows drawn as t-window since the Nassaukade merge (transom at 0.76 of the window; the photo top light is about 0.22 of it)",
-  "the band at the transom line is a flat stucco strip; the real ones are moulded",
-  "iron balconettes on storey 3 are the library guard, not the wrought scroll grille",
-  "window heights and head lines are measured on 148 (window 5.0-7.1, 8.3-10.4, 11.5-13.55 m on the kit's 15.4 m storeys [4.54, 3.44, 3.30, 3.17]); the transom band at 0.65 of the window is 148's storey-2 band (9.67 m); its storey-1 band runs at the head line and storey 3 has none, which one band line per front cannot say"
+   { "component": "openings", "what": "window sash bars and panes", "prose": "T-windows drawn as t-window since the Nassaukade merge (transom at 0.76 of the window; the photo top light is about 0.22 of it)" },
+   { "component": "wall", "what": "brick courses and bands", "prose": "the band at the transom line is a flat stucco strip; the real ones are moulded" },
+   { "component": "balcony", "what": "balcony railings", "prose": "iron balconettes on storey 3 are the library guard, not the wrought scroll grille" },
+   { "component": "openings", "what": "window heights and axes", "prose": "window heights and head lines are measured on 148 (window 5.0-7.1, 8.3-10.4, 11.5-13.55 m on the kit's 15.4 m storeys [4.54, 3.44, 3.30, 3.17]); the transom band at 0.65 of the window is 148's storey-2 band (9.67 m); its storey-1 band runs at the head line and storey 3 has none, which one band line per front cannot say" }
  ],
  "evidence": [
   {

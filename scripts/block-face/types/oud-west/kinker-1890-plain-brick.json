@@ -119,8 +119,8 @@
   "photoGroundRows": 1,
   "photoGables": 0,
   "schemaLimits": [
-   "brick flat-arch lintels over the windows are not drawn",
-   "iron wall anchors"
+    { "component": "openings", "what": "brick flat arches", "prose": "brick flat-arch lintels over the windows are not drawn" },
+    { "component": "ornament", "what": "wall anchors", "prose": "iron wall anchors" }
   ]
  },
  "evidence": [
@@ -172,10 +172,10 @@
   }
  ],
  "schemaLimits": [
-  "brick flat arches",
-  "iron wall anchors",
-  "cornice frieze panels",
-  "round-topped dormers with a shell hood (22-24) are drawn as pediment dormers: the pointed dormer read far too tall on the first sheet"
+   { "component": "openings", "what": "brick flat arches", "prose": "brick flat arches" },
+   { "component": "ornament", "what": "wall anchors", "prose": "iron wall anchors" },
+   { "component": "cornice", "what": "cornice frieze panels", "prose": "cornice frieze panels" },
+   { "component": "dormer", "what": "dormer caps and pediments", "prose": "round-topped dormers with a shell hood (22-24) are drawn as pediment dormers: the pointed dormer read far too tall on the first sheet" }
  ],
  "notes": [
   "Palette: strip medians from scripts/block-face/palette-from-strip.ts (staging/street-types/kinkerstraat/palette.json): red-brown = median of 22 exemplar pands (mixed 2024-11-29 sunlit and 2024-12-11 overcast strips); kinker-2-30 from 235988 (24)."

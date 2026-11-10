@@ -265,9 +265,9 @@
   }
  ],
  "schemaLimits": [
-  "the segmental brick relieving arches over the Transvaalstraat windows and the arched balcony windows of Retiefstraat 3-41 are flat heads",
-  "Retiefstraat 3-41 axes are of three widths (2.5, 2.0 and a narrow pair); drawn as three equal bays",
-  "the 10 m Transvaalstraat 7-19 double fronts (two houses under one BAG pand, two dormers) are one module with four axes and one dormer"
+   { "component": "openings", "what": "brick flat arches", "prose": "the segmental brick relieving arches over the Transvaalstraat windows and the arched balcony windows of Retiefstraat 3-41 are flat heads" },
+   { "component": "openings", "what": "window heights and axes", "prose": "Retiefstraat 3-41 axes are of three widths (2.5, 2.0 and a narrow pair); drawn as three equal bays" },
+   { "component": "dormer", "what": "dormer detail", "prose": "the 10 m Transvaalstraat 7-19 double fronts (two houses under one BAG pand, two dormers) are one module with four axes and one dormer" }
  ],
  "notes": [
   "Round 3 (#152, 2026-11-01): match.crownFromType none. The 2023-01-02 strips have bare branches over every front (skyline eaves 15.5-18.4 m over a 13 m cornice), so a skyline that is unread, fits no crown, stands over the pand's 3DBAG roof max or hugs one party wall gives the cornice crown, not the first variant (the point gable drawn on Smitstraat 36-38, Transvaalstraat 54-56 and Laing's Nekstraat 36-38). A real gable or wall dormer under a polluted sky is a reviewer crown pin (transvaalbuurt-oost-review-crowns.json). roof.rakeClear: the saddle under the point gable stays 4 cm square under its rakes (GLB audit zfight-tight).",

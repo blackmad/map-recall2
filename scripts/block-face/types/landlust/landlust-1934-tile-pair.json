@@ -190,9 +190,9 @@
   }
  ],
  "schemaLimits": [
-  "the box dormers (2.0 m wide, 13.2-14.5 m) are not drawn",
-  "the paired-door canopy is not drawn",
-  "the two-over-two sash bars are simplified"
+   { "component": "dormer", "what": "dormer count and placement", "prose": "the box dormers (2.0 m wide, 13.2-14.5 m) are not drawn" },
+   { "component": "door", "what": "door canopies", "prose": "the paired-door canopy is not drawn" },
+   { "component": "openings", "what": "window sash bars and panes", "prose": "the two-over-two sash bars are simplified" }
  ],
  "notes": [
   "Palette: type default red-brown; placed pands take their trim-normalised strip wall."

@@ -92,8 +92,8 @@
   "roofline": "stepped gable with one attic light",
   "photoGables": 1,
   "schemaLimits": [
-   "iron wall anchors",
-   "relieving arch over the attic light"
+    { "component": "ornament", "what": "wall anchors", "prose": "iron wall anchors" },
+    { "component": "openings", "what": "window heads and arches", "prose": "relieving arch over the attic light" }
   ]
  },
  "evidence": [
@@ -117,7 +117,7 @@
   "Promoted to the Oud-West library 2026-10-14 (lane kinker-colour-fidelity) from kinker-65-87 inline; the first palette is the inline one, so placements resolve unchanged. Per-pand palettes are palette-from-strip medians."
  ],
  "schemaLimits": [
-  "iron wall anchors",
-  "relieving arch over the attic light"
+   { "component": "ornament", "what": "wall anchors", "prose": "iron wall anchors" },
+   { "component": "openings", "what": "window heads and arches", "prose": "relieving arch over the attic light" }
  ]
 }

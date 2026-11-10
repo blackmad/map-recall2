@@ -190,9 +190,9 @@
   }
  ],
  "schemaLimits": [
-  "the glass-brick pilaster is drawn as a plain brick lisene",
-  "the arched stair-door head and the dark plinth step are drawn as a rectangular door in a banded ground",
-  "the window sashes' horizontal rail is not drawn"
+   { "component": "wall", "what": "pilasters and piers", "prose": "the glass-brick pilaster is drawn as a plain brick lisene" },
+   { "component": "door", "what": "arched door heads", "prose": "the arched stair-door head and the dark plinth step are drawn as a rectangular door in a banded ground" },
+   { "component": "openings", "what": "window sash bars and panes", "prose": "the window sashes' horizontal rail is not drawn" }
  ],
  "notes": [
   "Palette: type default is a white-balance corrected median; every placed pand takes its trim-normalised strip wall (auto-place measuredPalette)."

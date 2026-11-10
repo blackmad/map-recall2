@@ -36,6 +36,9 @@ export interface GroundFloorUse {
   note?: string;
 }
 
+/** One schemaLimits line: the original prose, or the kit component and canonical wording with the prose kept. */
+export type RhythmLimit = string | { component: string; what: string; prose?: string };
+
 /** Facade rhythm spec for one wall, from the strip (acceptance checklist item 1). */
 export interface RhythmSpec {
   bays: string;
@@ -55,8 +58,9 @@ export interface RhythmSpec {
    * on either side, e.g. `[2, 1, 3, 3, 3, 1]`). See `blockFace/openingCount.ts`. */
   photoGroundRows?: number;
   photoGables?: number;
-  /** Things the schema cannot express that the model will therefore get wrong (shown on the review sheet). */
-  schemaLimits?: string[];
+  /** Things the schema cannot express that the model will therefore get wrong (shown on the review sheet). A line is the
+   *  original prose, or `{component, what, prose}` once classified (scripts/house-specs/kitGapVocabulary.ts). */
+  schemaLimits?: RhythmLimit[];
 }
 
 export interface BlockFaceHouse {

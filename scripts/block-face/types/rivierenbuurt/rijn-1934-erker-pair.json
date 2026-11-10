@@ -184,8 +184,8 @@
   }
  ],
  "schemaLimits": [
-  "the two house doors under one transom are drawn as one door",
-  "the erker's glazing is rectified higher than it stands (it projects toward the camera); panels are set from the corrected heights"
+   { "component": "door", "what": "paired doors", "prose": "the two house doors under one transom are drawn as one door" },
+   { "component": "openings", "what": "oriels and bay windows", "prose": "the erker's glazing is rectified higher than it stands (it projects toward the camera); panels are set from the corrected heights" }
  ],
  "notes": [
   "Palette: the type default is a mid red-brown; every placed pand takes its trim-normalised strip wall (auto-place measuredPalette)."

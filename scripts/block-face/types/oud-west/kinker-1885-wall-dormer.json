@@ -100,9 +100,9 @@
   "roofline": "bracketed cornice broken by a centre brick wall dormer",
   "photoGables": 0,
   "schemaLimits": [
-   "iron wall anchors",
-   "carved end consoles of the cornice",
-   "iron finial on the dormer cap"
+    { "component": "ornament", "what": "wall anchors", "prose": "iron wall anchors" },
+    { "component": "cornice", "what": "cornice detail", "prose": "carved end consoles of the cornice" },
+    { "component": "dormer", "what": "dormer caps and pediments", "prose": "iron finial on the dormer cap" }
   ]
  },
  "evidence": [
@@ -127,8 +127,8 @@
   "Promoted to the Oud-West library 2026-10-14 (lane kinker-colour-fidelity) from kinker-1-29 inline; the first palette is the inline one, so placements resolve unchanged. Per-pand palettes are palette-from-strip medians (wall, frame, band as stone)."
  ],
  "schemaLimits": [
-  "iron wall anchors",
-  "carved end consoles of the cornice",
-  "iron finial on the dormer cap"
+   { "component": "ornament", "what": "wall anchors", "prose": "iron wall anchors" },
+   { "component": "cornice", "what": "cornice detail", "prose": "carved end consoles of the cornice" },
+   { "component": "dormer", "what": "dormer caps and pediments", "prose": "iron finial on the dormer cap" }
  ]
 }

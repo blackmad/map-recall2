@@ -178,9 +178,9 @@
   }
  ],
  "schemaLimits": [
-  "the attic ribbon's three lights per pier are drawn as one window per equal axis",
-  "the glazing bars (two over two) are simplified",
-  "the canopy over the paired doors is not drawn"
+   { "component": "openings", "what": "window heights and axes", "prose": "the attic ribbon's three lights per pier are drawn as one window per equal axis" },
+   { "component": "openings", "what": "window sash bars and panes", "prose": "the glazing bars (two over two) are simplified" },
+   { "component": "door", "what": "door canopies", "prose": "the canopy over the paired doors is not drawn" }
  ],
  "notes": [
   "Palette: type default red-brown; placed pands take their trim-normalised strip wall."

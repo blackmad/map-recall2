@@ -164,9 +164,9 @@
   }
  ],
  "schemaLimits": [
-  "the round-arched house door is the library's square door",
-  "the bellied balconettes are the straight projecting guard",
-  "the dormer's brick pedestal and iron finial are not drawn"
+   { "component": "door", "what": "arched door heads", "prose": "the round-arched house door is the library's square door" },
+   { "component": "balcony", "what": "balcony railings", "prose": "the bellied balconettes are the straight projecting guard" },
+   { "component": "dormer", "what": "dormer caps and pediments", "prose": "the dormer's brick pedestal and iron finial are not drawn" }
  ],
  "notes": [
   "Palette: read on the hazy 2023-01-12 strip; placed pands take their own measured wall.",

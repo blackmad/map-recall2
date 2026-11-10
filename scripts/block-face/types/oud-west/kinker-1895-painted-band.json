@@ -114,8 +114,8 @@
   "photoGroundRows": 1,
   "photoGables": 0,
   "schemaLimits": [
-   "white sills are plain slabs (the 26 consoles are windowSills: consoles, which needs a surround storey)",
-   "the decorative dark rubbed-brick arch band of 26 is not drawn"
+    { "component": "ornament", "what": "brackets and consoles", "prose": "white sills are plain slabs (the 26 consoles are windowSills: consoles, which needs a surround storey)" },
+    { "component": "wall", "what": "brick courses and bands", "prose": "the decorative dark rubbed-brick arch band of 26 is not drawn" }
   ]
  },
  "evidence": [
@@ -147,7 +147,7 @@
   }
  ],
  "schemaLimits": [
-  "the eared window surrounds the plan expected were not found on any Kinkerstraat strip; the white dressing here is blocked heads and keystones"
+   { "component": "ornament", "what": "keystones and cartouches", "prose": "the eared window surrounds the plan expected were not found on any Kinkerstraat strip; the white dressing here is blocked heads and keystones" }
  ],
  "notes": [
   "Palette: strip medians from scripts/block-face/palette-from-strip.ts (staging/street-types/kinkerstraat/palette.json) (236471 black-painted, 158140 dark brown); stone = band-row median of the group (n=3).",

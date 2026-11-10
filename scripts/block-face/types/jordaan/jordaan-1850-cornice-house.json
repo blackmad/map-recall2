@@ -148,7 +148,7 @@
   "photoGroundRows": 1,
   "photoGables": 0,
   "schemaLimits": [
-   "the 18th c. cornice ornament (Louis XIV/XV) is drawn as a plain cornice"
+    { "component": "cornice", "what": "cornice detail", "prose": "the 18th c. cornice ornament (Louis XIV/XV) is drawn as a plain cornice" }
   ]
  },
  "evidence": [

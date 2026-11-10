@@ -94,9 +94,9 @@
   }
  ],
  "schemaLimits": [
-  "the darker ground-storey brick and the soldier-course ledge over it",
-  "the doors stand on the first/last axis, not against the party wall, and a pair is drawn as one door",
-  "the small brick header accents at the storey lines (Boetonstraat)"
+   { "component": "wall", "what": "ground storey brick", "prose": "the darker ground-storey brick and the soldier-course ledge over it" },
+   { "component": "door", "what": "paired doors", "prose": "the doors stand on the first/last axis, not against the party wall, and a pair is drawn as one door" },
+   { "component": "openings", "what": "window heights and axes", "prose": "the small brick header accents at the storey lines (Boetonstraat)" }
  ],
  "notes": []
 }

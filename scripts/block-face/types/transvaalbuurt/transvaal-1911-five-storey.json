@@ -266,9 +266,9 @@
   }
  ],
  "schemaLimits": [
-  "the round-arched house doors of Retiefstraat 45-75 are flat heads",
-  "a pointed gable is drawn over the whole front; on Retiefstraat 45-75 it covers about two thirds and stands beside a steep tile roof face with dormers",
-  "Pretoriusstraat 72-120 gables carry three attic lights; one is drawn"
+   { "component": "door", "what": "arched door heads", "prose": "the round-arched house doors of Retiefstraat 45-75 are flat heads" },
+   { "component": "dormer", "what": "dormer detail", "prose": "a pointed gable is drawn over the whole front; on Retiefstraat 45-75 it covers about two thirds and stands beside a steep tile roof face with dormers" },
+   { "component": "crown", "what": "gable and crown form", "prose": "Pretoriusstraat 72-120 gables carry three attic lights; one is drawn" }
  ],
  "notes": [
   "Round 3 (#152, 2026-11-01): match.crownFromType none. The 2023-01-02 strips have bare branches over every front (skyline eaves 15.5-18.4 m over a 13 m cornice), so a skyline that is unread, fits no crown, stands over the pand's 3DBAG roof max or hugs one party wall gives the cornice crown, not the first variant (the point gable drawn on Smitstraat 36-38, Transvaalstraat 54-56 and Laing's Nekstraat 36-38). A real gable or wall dormer under a polluted sky is a reviewer crown pin (transvaalbuurt-oost-review-crowns.json). roof.rakeClear: the saddle under the point gable stays 4 cm square under its rakes (GLB audit zfight-tight).",

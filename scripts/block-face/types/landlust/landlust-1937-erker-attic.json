@@ -191,9 +191,9 @@
   }
  ],
  "schemaLimits": [
-  "the canted erker is drawn as a square box bay (bayWindows)",
-  "the white window frames' glazing bars are simplified",
-  "the attic row is drawn as three equal axes (photo: three 1.0 m windows at 2 m pitch)"
+   { "component": "openings", "what": "oriels and bay windows", "prose": "the canted erker is drawn as a square box bay (bayWindows)" },
+   { "component": "openings", "what": "window sash bars and panes", "prose": "the white window frames' glazing bars are simplified" },
+   { "component": "openings", "what": "window heights and axes", "prose": "the attic row is drawn as three equal axes (photo: three 1.0 m windows at 2 m pitch)" }
  ],
  "notes": [
   "Palette: type default dark red-brown; placed pands take their trim-normalised strip wall."

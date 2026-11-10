@@ -241,12 +241,12 @@
   }
  ],
  "schemaLimits": [
-  "the stair lights climb half a storey off the main window line between ochre header-brick ladders; drawn as narrow paired lights on the main head line, no ladders",
-  "the tower's flank windows sit 0.3-0.7 m higher than the main windows; drawn on the main line",
-  "the grey canopy spans the tower's whole 5.8 m ground storey; groundCanopy draws it over the door only (overhang <= 0.4 m)",
-  "the setback roof storey with its white roof-terrace railing (14.4-15.3 m) is not drawn",
-  "the yellow brick piers between the windows of a pair are not drawn",
-  "the single end window stands at the end BAG gives it; on 30-32 that end is blank wall (the pair moves 3 m in)"
+   { "component": "openings", "what": "stair windows off the storey line", "prose": "the stair lights climb half a storey off the main window line between ochre header-brick ladders; drawn as narrow paired lights on the main head line, no ladders" },
+   { "component": "wall", "what": "corner and massing", "prose": "the tower's flank windows sit 0.3-0.7 m higher than the main windows; drawn on the main line" },
+   { "component": "door", "what": "door canopies", "prose": "the grey canopy spans the tower's whole 5.8 m ground storey; groundCanopy draws it over the door only (overhang <= 0.4 m)" },
+   { "component": "balcony", "what": "balcony railings", "prose": "the setback roof storey with its white roof-terrace railing (14.4-15.3 m) is not drawn" },
+   { "component": "wall", "what": "pilasters and piers", "prose": "the yellow brick piers between the windows of a pair are not drawn" },
+   { "component": "wall", "what": "wall colour and finish", "prose": "the single end window stands at the end BAG gives it; on 30-32 that end is blank wall (the pair moves 3 m in)" }
  ],
  "notes": [
   "Palette: the type default is the raw strip wall of the tree-free piers; every placed pand takes its trim-normalised strip wall (auto-place measuredPalette).",

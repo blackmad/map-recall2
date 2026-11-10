@@ -180,9 +180,9 @@
   }
  ],
  "schemaLimits": [
-  "the ground storey's canted bay under the erker is drawn as a flat window under the erker console (bayWindows.storeys start at 1)",
-  "the top band varies along the row (Boterdiepstraat 19: four lights frame to frame; 21: six narrow lights); the type draws the common three two-light windows with brick piers (storeyRibbons pier 0.38), not the white posts between them",
-  "the door's side light is part of the door opening"
+   { "component": "openings", "what": "oriels and bay windows", "prose": "the ground storey's canted bay under the erker is drawn as a flat window under the erker console (bayWindows.storeys start at 1)" },
+   { "component": "openings", "what": "slot and narrow lights", "prose": "the top band varies along the row (Boterdiepstraat 19: four lights frame to frame; 21: six narrow lights); the type draws the common three two-light windows with brick piers (storeyRibbons pier 0.38), not the white posts between them" },
+   { "component": "door", "what": "door side lights", "prose": "the door's side light is part of the door opening" }
  ],
  "notes": [
   "Palette: the type default is a mid red-brown; every placed pand takes its trim-normalised strip wall (auto-place measuredPalette)."

@@ -124,7 +124,7 @@
   "photoGroundRows": 1,
   "photoGables": 0,
   "schemaLimits": [
-   "the white arch rings are drawn as keystones only"
+    { "component": "ornament", "what": "keystones and cartouches", "prose": "the white arch rings are drawn as keystones only" }
   ]
  },
  "match": {

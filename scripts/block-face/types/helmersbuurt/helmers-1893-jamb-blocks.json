@@ -128,8 +128,8 @@
   }
  ],
  "schemaLimits": [
-  "the window sills under the keystone surround are the library's keystone dressing only (the photo has white sills too)",
-  "the dormer is the library pediment dormer; 120 has a carved dormer flanked by two box dormers"
+   { "component": "ornament", "what": "keystones and cartouches", "prose": "the window sills under the keystone surround are the library's keystone dressing only (the photo has white sills too)" },
+   { "component": "dormer", "what": "dormer caps and pediments", "prose": "the dormer is the library pediment dormer; 120 has a carved dormer flanked by two box dormers" }
  ],
  "notes": [
   "Palette: strip medians of 116 (shaded) and 118 (sunlit), 2024-11-29; placed pands take their own measured wall.",

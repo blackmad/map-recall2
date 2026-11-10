@@ -112,9 +112,9 @@
   "photoGroundRows": 1,
   "photoGables": 0,
   "schemaLimits": [
-   "iron wall anchors",
-   "skylights in the mansard",
-   "cornice frieze panels (the frieze is a flush band)"
+    { "component": "ornament", "what": "wall anchors", "prose": "iron wall anchors" },
+    { "component": "roof", "what": "roof lights and terraces", "prose": "skylights in the mansard" },
+    { "component": "cornice", "what": "cornice frieze panels", "prose": "cornice frieze panels (the frieze is a flush band)" }
   ]
  },
  "evidence": [
@@ -132,9 +132,9 @@
   }
  ],
  "schemaLimits": [
-  "iron wall anchors",
-  "skylights in the mansard",
-  "cornice frieze panels (the frieze is a flush band)"
+   { "component": "ornament", "what": "wall anchors", "prose": "iron wall anchors" },
+   { "component": "roof", "what": "roof lights and terraces", "prose": "skylights in the mansard" },
+   { "component": "cornice", "what": "cornice frieze panels", "prose": "cornice frieze panels (the frieze is a flush band)" }
  ],
  "notes": [
   "Palette: approximate; each placed pand takes its own trim-normalised strip wall."

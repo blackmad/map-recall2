@@ -234,10 +234,10 @@
   }
  ],
  "schemaLimits": [
-  "the diaper (a lattice of lighter headers over the whole wall) is not drawn: the wall is its mean colour. Geometry facings would need thousands of triangles over a 3000-triangle front; it needs a patterned brick material in the engine",
-  "the box windows are canted corner windows with teal frames; drawn as square box frames (bayWindows.hood) in the trim colour",
-  "the light hoods over the small top-storey windows are not drawn",
-  "the ground storey's darker brick is drawn in the wall brick"
+   { "component": "wall", "what": "brick courses and bands", "prose": "the diaper (a lattice of lighter headers over the whole wall) is not drawn: the wall is its mean colour. Geometry facings would need thousands of triangles over a 3000-triangle front; it needs a patterned brick material in the engine" },
+   { "component": "openings", "what": "oriels and bay windows", "prose": "the box windows are canted corner windows with teal frames; drawn as square box frames (bayWindows.hood) in the trim colour" },
+   { "component": "openings", "what": "window heads and arches", "prose": "the light hoods over the small top-storey windows are not drawn" },
+   { "component": "wall", "what": "ground storey brick", "prose": "the ground storey's darker brick is drawn in the wall brick" }
  ],
  "notes": [
   "Palette: the type default is the raw strip wall; every placed pand takes its trim-normalised strip wall (auto-place measuredPalette); one brick per row at review (lesson 10).",

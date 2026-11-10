@@ -74,8 +74,8 @@
     "photoGroundRows": 1,
     "photoGables": 0,
     "schemaLimits": [
-      "signs on the glass-block band are not drawn",
-      "the two halves of a party-wall window keep a 4 cm brick pier between them (one window on the photo)"
+      { "component": "pui", "what": "signs on the glass-block band", "prose": "signs on the glass-block band are not drawn" },
+      { "component": "openings", "what": "party-wall window split", "prose": "the two halves of a party-wall window keep a 4 cm brick pier between them (one window on the photo)" }
     ]
   },
   "evidence": [
@@ -101,8 +101,8 @@
     }
   ],
   "schemaLimits": [
-    "signs on the glass-block band",
-    "121-125 (085815) is one 37 m mass: placed in modules of this body on evertsen-91-135"
+    { "component": "pui", "what": "signs on the glass-block band", "prose": "signs on the glass-block band" },
+    { "component": "wall", "what": "corner and massing", "prose": "121-125 (085815) is one 37 m mass: placed in modules of this body on evertsen-91-135" }
   ],
   "notes": [
     "Each house's shop gives awning {style: rigid, glassBlocks: {rows: 8}, wallCourses: 8} so the canopy and the band land on the measured lines; palette.glassBlock exports the band as its own measured material.",

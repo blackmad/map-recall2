@@ -119,7 +119,7 @@
   }
  ],
  "schemaLimits": [
-  "the cartouche over each head is a plain keystone block"
+   { "component": "ornament", "what": "keystones and cartouches", "prose": "the cartouche over each head is a plain keystone block" }
  ],
  "grounds": {
   "door-left": {

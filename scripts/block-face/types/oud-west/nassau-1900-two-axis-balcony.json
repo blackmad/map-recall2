@@ -134,8 +134,8 @@
   "photoGables": 0
  },
  "schemaLimits": [
-  "the balcony platforms are 0.75 m deep and the brackets one carved profile; the real brackets are deeper scrolls",
-  "window heights and head lines are measured on 149 (window 4.95-7.15, 8.2-10.35, 11.35-13.55 m, drawn 0.65 = 2.06 m so the sill clears the kit storey floor, on the kit's storeys [4.54, 3.44, 3.30, 3.17]); 149's storey-2 band runs at the head line where its storey-1 band is at 0.65 of the window"
+   { "component": "balcony", "what": "balcony depth", "prose": "the balcony platforms are 0.75 m deep and the brackets one carved profile; the real brackets are deeper scrolls" },
+   { "component": "openings", "what": "window heights and axes", "prose": "window heights and head lines are measured on 149 (window 4.95-7.15, 8.2-10.35, 11.35-13.55 m, drawn 0.65 = 2.06 m so the sill clears the kit storey floor, on the kit's storeys [4.54, 3.44, 3.30, 3.17]); 149's storey-2 band runs at the head line where its storey-1 band is at 0.65 of the window" }
  ],
  "evidence": [
   {

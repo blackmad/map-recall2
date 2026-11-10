@@ -139,8 +139,8 @@
   "photoGroundRows": 1,
   "photoGables": 0,
   "schemaLimits": [
-   "the short slate mansard face (15.1-16.3 m) and its roof lights beside the dormer are drawn as the pitched roof: the kit's mansard put the dormer frames through the roof face and its slate coplanar with the party walls (audit)",
-   "the dormer's carved ears and side cheeks are plain"
+    { "component": "dormer", "what": "dormer count and placement", "prose": "the short slate mansard face (15.1-16.3 m) and its roof lights beside the dormer are drawn as the pitched roof: the kit's mansard put the dormer frames through the roof face and its slate coplanar with the party walls (audit)" },
+    { "component": "dormer", "what": "dormer cheeks and ears", "prose": "the dormer's carved ears and side cheeks are plain" }
   ]
  },
  "evidence": [

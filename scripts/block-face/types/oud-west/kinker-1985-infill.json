@@ -80,11 +80,11 @@
   "photoGroundRows": 1,
   "photoGables": 0,
   "schemaLimits": [
-   "the recessed two-storey arcade with a first-floor gallery (piers, gallery rail, shops set back ~3 m) is drawn as a flush double-height shopfront with a mezzanine band",
-   "the roof boxes' fronts are glazed with white frames in the kit; on the photo they are dark",
-   "the wide three-light window on storey 3 is drawn about 1.5 m wide (photo ~2.2 m)",
-   "recessed glazed stair slots between modules",
-   "the curved drum corner and cream set-back top storey of 125 and 173-225 are not in the kit"
+    { "component": "pui", "what": "shopfront and arcade", "prose": "the recessed two-storey arcade with a first-floor gallery (piers, gallery rail, shops set back ~3 m) is drawn as a flush double-height shopfront with a mezzanine band" },
+    { "component": "roof", "what": "roof lights and terraces", "prose": "the roof boxes' fronts are glazed with white frames in the kit; on the photo they are dark" },
+    { "component": "openings", "what": "window sash bars and panes", "prose": "the wide three-light window on storey 3 is drawn about 1.5 m wide (photo ~2.2 m)" },
+    { "component": "wall", "what": "corner and massing", "prose": "recessed glazed stair slots between modules" },
+    { "component": "roof", "what": "roof lights and terraces", "prose": "the curved drum corner and cream set-back top storey of 125 and 173-225 are not in the kit" }
   ]
  },
  "evidence": [
@@ -120,10 +120,10 @@
   }
  ],
  "schemaLimits": [
-  "arcade with gallery",
-  "set-back top storey",
-  "drum corner",
-  "stair slots"
+   { "component": "pui", "what": "shopfront and arcade", "prose": "arcade with gallery" },
+   { "component": "roof", "what": "roof lights and terraces", "prose": "set-back top storey" },
+   { "component": "wall", "what": "corner and massing", "prose": "drum corner" },
+   { "component": "openings", "what": "slot and narrow lights", "prose": "stair slots" }
  ],
  "notes": [
   "Palette: strip medians from scripts/block-face/palette-from-strip.ts (staging/street-types/kinkerstraat/palette.json) (median of 18 exemplar pands)."

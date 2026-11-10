@@ -149,8 +149,8 @@
   }
  ],
  "schemaLimits": [
-  "the dentil course and dark header frieze under the gutter are plain brick",
-  "the narrow side lights beside the wide casements are not drawn"
+   { "component": "cornice", "what": "frieze and dentils", "prose": "the dentil course and dark header frieze under the gutter are plain brick" },
+   { "component": "door", "what": "door side lights", "prose": "the narrow side lights beside the wide casements are not drawn" }
  ],
  "notes": []
 }

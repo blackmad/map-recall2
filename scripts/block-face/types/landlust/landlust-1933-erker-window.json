@@ -197,9 +197,9 @@
   }
  ],
  "schemaLimits": [
-  "the roof dormers and roof windows are not drawn",
-  "the canted erker is drawn as a square box bay (bayWindows)",
-  "the canopy over the paired doors is not drawn"
+   { "component": "dormer", "what": "dormer count and placement", "prose": "the roof dormers and roof windows are not drawn" },
+   { "component": "openings", "what": "oriels and bay windows", "prose": "the canted erker is drawn as a square box bay (bayWindows)" },
+   { "component": "door", "what": "door canopies", "prose": "the canopy over the paired doors is not drawn" }
  ],
  "notes": [
   "Palette: type default dark red-brown; placed pands take their trim-normalised strip wall."

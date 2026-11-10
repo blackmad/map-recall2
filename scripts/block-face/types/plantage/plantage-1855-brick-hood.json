@@ -145,8 +145,8 @@
   "photoGroundRows": 1,
   "photoGables": 0,
   "schemaLimits": [
-   "the sculpted keystone heads of 44 are plain blocks",
-   "the dormer's low side cheeks are not drawn"
+    { "component": "ornament", "what": "keystones and cartouches", "prose": "the sculpted keystone heads of 44 are plain blocks" },
+    { "component": "dormer", "what": "dormer cheeks and ears", "prose": "the dormer's low side cheeks are not drawn" }
   ]
  },
  "evidence": [
@@ -161,7 +161,7 @@
   }
  ],
  "schemaLimits": [
-  "the corbelled hood is drawn as an arch ring",
-  "the green iron console under the storey-2 sills is a plain sill"
+   { "component": "cornice", "what": "corbel course", "prose": "the corbelled hood is drawn as an arch ring" },
+   { "component": "ornament", "what": "brackets and consoles", "prose": "the green iron console under the storey-2 sills is a plain sill" }
  ]
 }

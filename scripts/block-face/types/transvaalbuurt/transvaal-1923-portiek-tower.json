@@ -207,11 +207,11 @@
   }
  ],
  "schemaLimits": [
-  "the setback fifth storey behind the parapet with its white roof-terrace railing (12.0-13.3 m) is not drawn",
-  "the header-course brick ladders either side of the stair windows (a lighter orange brick) are not drawn",
-  "the stair windows sit half a storey above the main windows' line and carry a transom; drawn as plain single lights on the main head line",
-  "the narrow slit lights flanking the tower and the tower's two small square top lights (drawn as one centred light)",
-  "the tower projects a little and its top corners are rounded; drawn flush and square"
+   { "component": "balcony", "what": "balcony railings", "prose": "the setback fifth storey behind the parapet with its white roof-terrace railing (12.0-13.3 m) is not drawn" },
+   { "component": "openings", "what": "stair windows off the storey line", "prose": "the header-course brick ladders either side of the stair windows (a lighter orange brick) are not drawn" },
+   { "component": "openings", "what": "stair windows off the storey line", "prose": "the stair windows sit half a storey above the main windows' line and carry a transom; drawn as plain single lights on the main head line" },
+   { "component": "wall", "what": "corner and massing", "prose": "the narrow slit lights flanking the tower and the tower's two small square top lights (drawn as one centred light)" },
+   { "component": "wall", "what": "corner and massing", "prose": "the tower projects a little and its top corners are rounded; drawn flush and square" }
  ],
  "notes": [
   "Palette: the type default is a mid red-brown; every placed pand takes its trim-normalised strip wall (auto-place measuredPalette)."

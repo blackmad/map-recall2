@@ -195,11 +195,11 @@
   }
  ],
  "schemaLimits": [
-  "the staircase windows sit half a storey up (landings); they are drawn on the storey lines",
-  "the stone corbels that cap the lisenes under the attic and the stone blocks either side of the door",
-  "the larger centre attic light over the staircase",
-  "the overhang's rounded ends at the corners of the row",
-  "the visual module is centred about 0.5 m right of the BAG pand's centre; the front is drawn symmetric on the pand"
+   { "component": "openings", "what": "stair windows off the storey line", "prose": "the staircase windows sit half a storey up (landings); they are drawn on the storey lines" },
+   { "component": "door", "what": "door detail", "prose": "the stone corbels that cap the lisenes under the attic and the stone blocks either side of the door" },
+   { "component": "openings", "what": "window sash bars and panes", "prose": "the larger centre attic light over the staircase" },
+   { "component": "roof", "what": "overhang and soffit", "prose": "the overhang's rounded ends at the corners of the row" },
+   { "component": "wall", "what": "corner and massing", "prose": "the visual module is centred about 0.5 m right of the BAG pand's centre; the front is drawn symmetric on the pand" }
  ],
  "notes": [
   "Palette: every placed pand takes its trim-normalised strip wall (auto-place measuredPalette)."

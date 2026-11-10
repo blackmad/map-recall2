@@ -228,10 +228,10 @@
   }
  ],
  "schemaLimits": [
-  "the moulded zigzag frieze under the cornice is drawn as plain wall (entablature frieze)",
-  "the oriel's heavy carved stone console is the kit's oriel console slab",
-  "the oriel's angled hood and its glazing bars are the kit's hipped erker cap and two front lights",
-  "the top storey's centre window over the oriel is drawn full height; the photo's is shortened by the oriel hood"
+   { "component": "cornice", "what": "frieze and dentils", "prose": "the moulded zigzag frieze under the cornice is drawn as plain wall (entablature frieze)" },
+   { "component": "openings", "what": "oriels and bay windows", "prose": "the oriel's heavy carved stone console is the kit's oriel console slab" },
+   { "component": "openings", "what": "oriels and bay windows", "prose": "the oriel's angled hood and its glazing bars are the kit's hipped erker cap and two front lights" },
+   { "component": "openings", "what": "oriels and bay windows", "prose": "the top storey's centre window over the oriel is drawn full height; the photo's is shortened by the oriel hood" }
  ],
  "notes": [
   "Palette: placed pands take their own measured wall (auto-place measuredPalette); one brick per row from tree-free columns at install."

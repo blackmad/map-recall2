@@ -119,7 +119,7 @@
   "photoGroundRows": 1,
   "photoGables": 0,
   "schemaLimits": [
-   "the souterrain windows under the ground storey are not drawn"
+    { "component": "openings", "what": "window detail", "prose": "the souterrain windows under the ground storey are not drawn" }
   ]
  },
  "match": {

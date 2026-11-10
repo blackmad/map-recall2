@@ -140,8 +140,8 @@
   }
  ],
  "schemaLimits": [
-  "two doors per pand (a double portiek door pair); one door is drawn",
-  "the plant boxes on the door canopy are not drawn"
+   { "component": "door", "what": "paired doors", "prose": "two doors per pand (a double portiek door pair); one door is drawn" },
+   { "component": "door", "what": "door canopies", "prose": "the plant boxes on the door canopy are not drawn" }
  ],
  "notes": [
   "Palette: the type default is a mid brown; every placed pand takes its trim-normalised strip wall (auto-place measuredPalette).",

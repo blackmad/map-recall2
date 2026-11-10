@@ -97,8 +97,8 @@
   "photoGroundRows": 1,
   "photoGables": 0,
   "schemaLimits": [
-   "the centre dormer's arched light and scrolled pediment are a plain pedimented dormer",
-   "the shop puis' transom lights are one transom bar"
+    { "component": "dormer", "what": "dormer caps and pediments", "prose": "the centre dormer's arched light and scrolled pediment are a plain pedimented dormer" },
+    { "component": "pui", "what": "shopfront and arcade", "prose": "the shop puis' transom lights are one transom bar" }
   ]
  },
  "evidence": [

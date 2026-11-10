@@ -164,9 +164,9 @@
   }
  ],
  "schemaLimits": [
-  "the door pair is drawn as one door",
-  "the roof lights in the tile face are not drawn",
-  "the boarded (horizontally ribbed) panel between the bay's lights is a flat painted panel"
+   { "component": "door", "what": "paired doors", "prose": "the door pair is drawn as one door" },
+   { "component": "roof", "what": "roof lights and terraces", "prose": "the roof lights in the tile face are not drawn" },
+   { "component": "openings", "what": "window sash bars and panes", "prose": "the boarded (horizontally ribbed) panel between the bay's lights is a flat painted panel" }
  ],
  "notes": []
 }

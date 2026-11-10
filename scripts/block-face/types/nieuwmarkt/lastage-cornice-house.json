@@ -183,8 +183,8 @@
   "photoGroundRows": 1,
   "photoGables": 0,
   "schemaLimits": [
-   "the frieze has no oculi or console brackets",
-   "the ground storey shop glazing bars are not drawn"
+    { "component": "cornice", "what": "frieze and dentils", "prose": "the frieze has no oculi or console brackets" },
+    { "component": "pui", "what": "shopfront and arcade", "prose": "the ground storey shop glazing bars are not drawn" }
   ]
  },
  "evidence": [

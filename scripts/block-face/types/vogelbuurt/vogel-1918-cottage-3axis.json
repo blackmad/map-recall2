@@ -128,10 +128,10 @@
   }
  ],
  "schemaLimits": [
-  "the small high window (sill 1.6 m, head 2.45 m) is drawn at the wide window's height",
-  "the 0.65 m raised plinth: storey height 3.3 m includes it",
-  "brick bands under the gutter and the small ventilation bricks are not drawn",
-  "hedges and front gardens"
+   { "component": "openings", "what": "window heights and axes", "prose": "the small high window (sill 1.6 m, head 2.45 m) is drawn at the wide window's height" },
+   { "component": "openings", "what": "window heights and axes", "prose": "the 0.65 m raised plinth: storey height 3.3 m includes it" },
+   { "component": "roof", "what": "gutters and downpipes", "prose": "brick bands under the gutter and the small ventilation bricks are not drawn" },
+   { "component": "other", "what": "front gardens and stalls", "prose": "hedges and front gardens" }
  ],
  "notes": [
   "Palette: brick #8f6a58 is one tone for the buurt, not per pand: strips of one date differ by 2x in exposure (raw brick medians 77-221 on 2025-09-22) and the trim normalisation locks onto hedges and the dark timber band, so measuredWall is off. The tone is the median of the 8 darker-exposed strips (raw 86-105,66-85,58-74) lifted x1.5; a reviewer should pin the row if a photo disagrees. Opus verdict 2026-11-10: photo wall median #554339 (vogel-3-11-r1), so brick moved to #74584a, about 60 % of the way from the lifted figure to the photo."

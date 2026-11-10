@@ -125,9 +125,9 @@
   }
  ],
  "schemaLimits": [
-  "balcony on corbels over the door",
-  "pilaster strips at the party walls",
-  "the cream window surrounds"
+   { "component": "door", "what": "door detail", "prose": "balcony on corbels over the door" },
+   { "component": "wall", "what": "pilasters and piers", "prose": "pilaster strips at the party walls" },
+   { "component": "openings", "what": "window surrounds and frames", "prose": "the cream window surrounds" }
  ],
  "notes": []
 }

@@ -61,8 +61,8 @@
     "photoGroundRows": 1,
     "photoGables": 0,
     "schemaLimits": [
-      "43-53's windows are small-paned all over (ladder-like crosses at thirds); drawn as a gridded top light over two casements",
-      "signs on the glass-block band are not drawn"
+      { "component": "wall", "what": "brick courses and bands", "prose": "43-53's windows are small-paned all over (ladder-like crosses at thirds); drawn as a gridded top light over two casements" },
+      { "component": "pui", "what": "signs on the glass-block band", "prose": "signs on the glass-block band are not drawn" }
     ]
   },
   "evidence": [
@@ -88,8 +88,8 @@
     }
   ],
   "schemaLimits": [
-    "all-over small panes on 43-53",
-    "signs on the glass-block band"
+    { "component": "openings", "what": "window sash bars and panes", "prose": "all-over small panes on 43-53" },
+    { "component": "pui", "what": "signs on the glass-block band", "prose": "signs on the glass-block band" }
   ],
   "notes": [
     "Each house's shop gives awning {style: rigid, glassBlocks: {rows: 6}, wallCourses: 16}. On 43-53 a placement may override windows to ladder."

@@ -136,8 +136,8 @@
   "photoGroundRows": 1,
   "photoGables": 0,
   "schemaLimits": [
-   "the dormer finial is not drawn",
-   "cast-iron balconettes on some fronts (Tweede Jan van der Heijdenstraat 2-40) are not drawn"
+    { "component": "dormer", "what": "dormer caps and pediments", "prose": "the dormer finial is not drawn" },
+    { "component": "balcony", "what": "balcony railings", "prose": "cast-iron balconettes on some fronts (Tweede Jan van der Heijdenstraat 2-40) are not drawn" }
   ]
  },
  "evidence": [

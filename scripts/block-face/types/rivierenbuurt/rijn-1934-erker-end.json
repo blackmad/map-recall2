@@ -168,8 +168,8 @@
   }
  ],
  "schemaLimits": [
-  "the erker meets the party wall: the oriel is drawn whole inside the house, a few centimetres short of the wall",
-  "the portiek (two doors and side lights) is drawn as one door"
+   { "component": "openings", "what": "oriels and bay windows", "prose": "the erker meets the party wall: the oriel is drawn whole inside the house, a few centimetres short of the wall" },
+   { "component": "door", "what": "paired doors", "prose": "the portiek (two doors and side lights) is drawn as one door" }
  ],
  "notes": [
   "Palette: the type default is a mid red-brown; every placed pand takes its trim-normalised strip wall (auto-place measuredPalette)."

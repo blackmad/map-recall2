@@ -101,9 +101,9 @@
   "photoGroundRows": 1,
   "photoGables": 0,
   "schemaLimits": [
-   "the narrow centre French window is drawn as wide as the side windows (+15 %)",
-   "curved neck gables are drawn as bell gables",
-   "the relieving-arch brick (#4a3628) is 0.8 x the measured wall, not measured separately"
+    { "component": "openings", "what": "slot and narrow lights", "prose": "the narrow centre French window is drawn as wide as the side windows (+15 %)" },
+    { "component": "crown", "what": "gable and crown form", "prose": "curved neck gables are drawn as bell gables" },
+    { "component": "openings", "what": "window heads and arches", "prose": "the relieving-arch brick (#4a3628) is 0.8 x the measured wall, not measured separately" }
   ]
  },
  "evidence": [
@@ -134,9 +134,9 @@
   }
  ],
  "schemaLimits": [
-  "narrow centre French window",
-  "curved gable",
-  "1902 projecting iron balconies (334-374) need `balconies.projecting` per placement"
+   { "component": "openings", "what": "slot and narrow lights", "prose": "narrow centre French window" },
+   { "component": "crown", "what": "gable and crown form", "prose": "curved gable" },
+   { "component": "balcony", "what": "balcony railings", "prose": "1902 projecting iron balconies (334-374) need `balconies.projecting` per placement" }
  ],
  "notes": [
   "Palette: strip medians from scripts/block-face/palette-from-strip.ts (staging/street-types/kinkerstraat/palette.json) (median of 13 exemplar pands)."

@@ -150,8 +150,8 @@
   }
  ],
  "schemaLimits": [
-  "the corbel-table frieze is drawn as a band-brick course with two staggered rows of corbel blocks (corbelTable); the photo's lattice is moulded brick with diamond joints, its relief not drawn",
-  "the carved crest on the dormer pediment is not drawn"
+   { "component": "cornice", "what": "frieze and dentils", "prose": "the corbel-table frieze is drawn as a band-brick course with two staggered rows of corbel blocks (corbelTable); the photo's lattice is moulded brick with diamond joints, its relief not drawn" },
+   { "component": "dormer", "what": "dormer caps and pediments", "prose": "the carved crest on the dormer pediment is not drawn" }
  ],
  "notes": [
   "Palette: placed pands take their own measured wall (auto-place measuredPalette); one brick per row from tree-free columns at install (lesson 10)."

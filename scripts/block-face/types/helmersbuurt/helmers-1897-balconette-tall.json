@@ -138,9 +138,9 @@
   }
  ],
  "schemaLimits": [
-  "the 2x2 small-pane top light of storey 1 is drawn as the t-window's single top light (transom at 0.76 of the window; the photo transom is at 0.6-0.63)",
-  "the bellied (bombe) iron balconette is the library's straight projecting guard",
-  "the dormer's finial is not drawn"
+   { "component": "openings", "what": "window sash bars and panes", "prose": "the 2x2 small-pane top light of storey 1 is drawn as the t-window's single top light (transom at 0.76 of the window; the photo transom is at 0.6-0.63)" },
+   { "component": "balcony", "what": "balcony railings", "prose": "the bellied (bombe) iron balconette is the library's straight projecting guard" },
+   { "component": "dormer", "what": "dormer caps and pediments", "prose": "the dormer's finial is not drawn" }
  ],
  "notes": [
   "Palette: strip medians (scripts/block-face/palette-from-strip.ts --face=helmers-209-253 --frame=white-painted): walls 217-229 #8e7256..#a9886c, median #97785a; cornice #e3d5af (225, sunlit); placed pands take their own measured wall.",

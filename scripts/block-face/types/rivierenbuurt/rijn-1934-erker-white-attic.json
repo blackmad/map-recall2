@@ -191,9 +191,9 @@
   }
  ],
  "schemaLimits": [
-  "the ground storey's canted bay under the erker is drawn as a flat window under the erker console",
-  "the erker's white flat cap over storey 2 is not drawn (an oriel stops under the eaves without a cap)",
-  "the attic windows keep one 1.53 m pitch along the row, across the party walls; the type draws four per house, evenly spaced"
+   { "component": "openings", "what": "oriels and bay windows", "prose": "the ground storey's canted bay under the erker is drawn as a flat window under the erker console" },
+   { "component": "openings", "what": "oriels and bay windows", "prose": "the erker's white flat cap over storey 2 is not drawn (an oriel stops under the eaves without a cap)" },
+   { "component": "openings", "what": "window heights and axes", "prose": "the attic windows keep one 1.53 m pitch along the row, across the party walls; the type draws four per house, evenly spaced" }
  ],
  "notes": [
   "Palette: the type default is a mid red-brown; every placed pand takes its trim-normalised strip wall (auto-place measuredPalette)."

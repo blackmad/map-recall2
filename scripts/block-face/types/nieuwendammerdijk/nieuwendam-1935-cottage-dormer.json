@@ -147,8 +147,8 @@
   }
  ],
  "schemaLimits": [
-  "the white fascia and bracket detail",
-  "the dike garden railing"
+   { "component": "cornice", "what": "frieze and dentils", "prose": "the white fascia and bracket detail" },
+   { "component": "other", "what": "front gardens and stalls", "prose": "the dike garden railing" }
  ],
  "notes": []
 }

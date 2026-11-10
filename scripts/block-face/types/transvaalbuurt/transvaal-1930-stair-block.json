@@ -236,11 +236,11 @@
   }
  ],
  "schemaLimits": [
-  "the stair lights climb half a storey off the main window line (heads 8.8 and 11.8 m against 9.75 and 12.9 m, a small light at 5.0-5.4 m over the door); drawn on the main head line",
-  "the ochre header-brick stair panel is drawn as close brick stripes in the band brick (brickStripes), cut round the stair lights",
-  "the small windows beside the stair axis are 1.05 m tall against the pairs' 1.5 m; drawn as tall as the pairs",
-  "the setback roof storey with its white roof-terrace railing (14.4-15.3 m) is not drawn",
-  "the yellow brick piers between the windows of a pair are not drawn"
+   { "component": "door", "what": "door detail", "prose": "the stair lights climb half a storey off the main window line (heads 8.8 and 11.8 m against 9.75 and 12.9 m, a small light at 5.0-5.4 m over the door); drawn on the main head line" },
+   { "component": "openings", "what": "stair windows off the storey line", "prose": "the ochre header-brick stair panel is drawn as close brick stripes in the band brick (brickStripes), cut round the stair lights" },
+   { "component": "openings", "what": "stair windows off the storey line", "prose": "the small windows beside the stair axis are 1.05 m tall against the pairs' 1.5 m; drawn as tall as the pairs" },
+   { "component": "balcony", "what": "balcony railings", "prose": "the setback roof storey with its white roof-terrace railing (14.4-15.3 m) is not drawn" },
+   { "component": "wall", "what": "pilasters and piers", "prose": "the yellow brick piers between the windows of a pair are not drawn" }
  ],
  "notes": [
   "Palette: the type default is the raw strip wall of the tree-free piers; every placed pand takes its trim-normalised strip wall (auto-place measuredPalette).",

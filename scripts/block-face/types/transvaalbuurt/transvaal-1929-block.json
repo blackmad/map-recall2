@@ -221,11 +221,11 @@
   }
  ],
  "schemaLimits": [
-  "the stair panel's paired slit lights per half landing are drawn as one small light per storey on the stair axis",
-  "the band windows' top-light rows of small panes and the slit lights beside the balcony windows are not drawn",
-  "the dark brick ground storey is a dark paint facing over the render (plaster grain, not brick; its orange header specks are not drawn)",
-  "BAG cuts the row so that the stair panel sits up to 1.8 m off the pand centre on some blocks (95-96 at 5.2 m of 13.9 m); the type draws it centred",
-  "the small iron balconies (0.3 m out) are drawn as flush guards, and the narrow windows either side of the stair panel without their top light: with both the stair block is 3,446 triangles against the 3,000 budget (flush guards 3,086, plain narrow windows 2,894)"
+   { "component": "openings", "what": "stair windows off the storey line", "prose": "the stair panel's paired slit lights per half landing are drawn as one small light per storey on the stair axis" },
+   { "component": "wall", "what": "brick courses and bands", "prose": "the band windows' top-light rows of small panes and the slit lights beside the balcony windows are not drawn" },
+   { "component": "wall", "what": "ground storey brick", "prose": "the dark brick ground storey is a dark paint facing over the render (plaster grain, not brick; its orange header specks are not drawn)" },
+   { "component": "openings", "what": "stair windows off the storey line", "prose": "BAG cuts the row so that the stair panel sits up to 1.8 m off the pand centre on some blocks (95-96 at 5.2 m of 13.9 m); the type draws it centred" },
+   { "component": "balcony", "what": "balcony railings", "prose": "the small iron balconies (0.3 m out) are drawn as flush guards, and the narrow windows either side of the stair panel without their top light: with both the stair block is 3,446 triangles against the 3,000 budget (flush guards 3,086, plain narrow windows 2,894)" }
  ],
  "notes": [
   "Kit (2026-11-01, #153): paintedStoreys.panels (fit.ts paintedPanelBlocks) draws the grey stair panel; the wall is the cream render (palette wallMaterial stucco) and the dark ground storey is paintedStoreys [0], one cut facing instead of three: the three painted upper storeys cost 790 triangles and put the stair block over the 3,000-triangle budget.",

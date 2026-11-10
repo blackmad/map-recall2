@@ -151,9 +151,9 @@
   "photoGroundRows": 1,
   "photoGables": 0,
   "schemaLimits": [
-   "iron balconette railings are drawn as the kit balcony",
-   "brick frieze under the cornice",
-   "carved stone brackets under the balconies"
+    { "component": "balcony", "what": "balcony railings", "prose": "iron balconette railings are drawn as the kit balcony" },
+    { "component": "cornice", "what": "frieze and dentils", "prose": "brick frieze under the cornice" },
+    { "component": "balcony", "what": "balcony brackets", "prose": "carved stone brackets under the balconies" }
   ]
  },
  "evidence": [
@@ -167,9 +167,9 @@
   }
  ],
  "schemaLimits": [
-  "iron balconette railings are drawn as the kit balcony",
-  "brick frieze under the cornice",
-  "carved stone brackets under the balconies"
+   { "component": "balcony", "what": "balcony railings", "prose": "iron balconette railings are drawn as the kit balcony" },
+   { "component": "cornice", "what": "frieze and dentils", "prose": "brick frieze under the cornice" },
+   { "component": "balcony", "what": "balcony brackets", "prose": "carved stone brackets under the balconies" }
  ],
  "notes": [
   "Palette approximate; each placed pand takes its own strip wall.",

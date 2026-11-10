@@ -135,7 +135,7 @@
   "photoGroundRows": 1,
   "photoGables": 0,
   "schemaLimits": [
-   "the pointed (bell) dormer caps of Stalpertstraat are drawn as pediments"
+    { "component": "dormer", "what": "dormer caps and pediments", "prose": "the pointed (bell) dormer caps of Stalpertstraat are drawn as pediments" }
   ]
  },
  "evidence": [

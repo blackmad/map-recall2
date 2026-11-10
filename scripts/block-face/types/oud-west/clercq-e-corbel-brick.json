@@ -115,9 +115,9 @@
   "photoGroundRows": 1,
   "photoGables": 0,
   "schemaLimits": [
-   "the corbel table is modelled as a bracketed cornice",
-   "stone blocks in the window arches are approximated by keystones and stone arch rings",
-   "the tower-dormer windows are not drawn (a tower rising < 1 storey gets no light); the photo has one two-light window per tower"
+    { "component": "cornice", "what": "corbel course", "prose": "the corbel table is modelled as a bracketed cornice" },
+    { "component": "ornament", "what": "keystones and cartouches", "prose": "stone blocks in the window arches are approximated by keystones and stone arch rings" },
+    { "component": "dormer", "what": "dormer lights", "prose": "the tower-dormer windows are not drawn (a tower rising < 1 storey gets no light); the photo has one two-light window per tower" }
   ]
  },
  "evidence": [

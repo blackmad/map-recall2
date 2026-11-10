@@ -142,10 +142,10 @@
   }
  ],
  "schemaLimits": [
-  "the brick dentil cornice is the plain simple cornice",
-  "the dark soldier lintels over the windows are not drawn",
-  "the small dormer beside the wall dormer is not drawn",
-  "the balcony slabs' cast brackets are the library's projecting balcony"
+   { "component": "cornice", "what": "frieze and dentils", "prose": "the brick dentil cornice is the plain simple cornice" },
+   { "component": "openings", "what": "brick flat arches", "prose": "the dark soldier lintels over the windows are not drawn" },
+   { "component": "dormer", "what": "dormer count and placement", "prose": "the small dormer beside the wall dormer is not drawn" },
+   { "component": "balcony", "what": "balcony brackets", "prose": "the balcony slabs' cast brackets are the library's projecting balcony" }
  ],
  "notes": [
   "Palette: read on the hazy 2023-01-12 strip (overcast, low contrast); placed pands take their own measured wall."

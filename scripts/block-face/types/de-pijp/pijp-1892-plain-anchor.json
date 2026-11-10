@@ -129,7 +129,7 @@
   "photoGroundRows": 1,
   "photoGables": 0,
   "schemaLimits": [
-   "the white lozenges in the frieze are not drawn"
+    { "component": "cornice", "what": "frieze and dentils", "prose": "the white lozenges in the frieze are not drawn" }
   ]
  },
  "evidence": [

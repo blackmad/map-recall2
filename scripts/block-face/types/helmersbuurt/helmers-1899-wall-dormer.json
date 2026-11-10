@@ -145,9 +145,9 @@
   }
  ],
  "schemaLimits": [
-  "the patterned brick frieze under the cornice is plain wall",
-  "the bellied balconettes are the straight projecting guard",
-  "the wall dormer's stepped stone cap is a flat cap"
+   { "component": "cornice", "what": "frieze and dentils", "prose": "the patterned brick frieze under the cornice is plain wall" },
+   { "component": "balcony", "what": "balcony railings", "prose": "the bellied balconettes are the straight projecting guard" },
+   { "component": "dormer", "what": "dormer caps and pediments", "prose": "the wall dormer's stepped stone cap is a flat cap" }
  ],
  "notes": [
   "Palette: strip medians 233-239 (2024-11-29), sunlit patches excluded: wall #8e5c47."

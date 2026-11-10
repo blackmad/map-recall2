@@ -177,8 +177,8 @@
   }
  ],
  "schemaLimits": [
-  "the box dormer per pand and the two-over-two sash bars are not drawn",
-  "the door canopy is not drawn"
+   { "component": "dormer", "what": "dormer count and placement", "prose": "the box dormer per pand and the two-over-two sash bars are not drawn" },
+   { "component": "door", "what": "door canopies", "prose": "the door canopy is not drawn" }
  ],
  "notes": [
   "Palette: type default dark red-brown; placed pands take their trim-normalised strip wall."
