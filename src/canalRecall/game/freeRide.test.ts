@@ -83,6 +83,9 @@ test('a tap hits the marker label or its stem', () => {
   assert.equal(markerAt(placed, 400, 300 - MARKER_STEM - 12)?.key, 'm');
   assert.equal(markerAt(placed, 400, 299)?.key, 'm');
   assert.equal(markerAt(placed, 600, 300), null);
+  // Beside the stem, under the plate's ends, is the canal below the pill, not the pill (lane S2, #314).
+  assert.equal(markerAt(placed, 445, 300 - 4), null);
+  assert.equal(markerAt(placed, 404, 300 - 4)?.key, 'm');
 });
 
 test('marker labels cut long names on a word', () => {

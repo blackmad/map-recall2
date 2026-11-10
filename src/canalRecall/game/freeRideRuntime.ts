@@ -33,6 +33,7 @@ import {
 } from './freeRide';
 import { isWorthACard } from './landmarkData';
 import { isBoat } from './modes';
+import { bridgeMarkerAnchor, freeRideWayTapAllowed, landAnchor, tapOnOpenWater, type IsWater } from './freeRideWater';
 import type { LandmarkHost } from './host';
 import type { Hud, Track } from './collaborators';
 import { DEFAULT_NOTICE_CONFIG, type NoticeHold } from './landmarkNotice';
@@ -276,10 +277,10 @@ export class GameFreeRideRuntime {
     if (this._freeRideRefresh > 0) return;
     this._freeRideRefresh = FREE_RIDE_REFRESH_SECONDS;
     const catalog = this._freeRideCatalog();
-    this._freeRideNearby = nearbyPlaces(this.player, catalog, {
+    this._freeRideNearby = this._freeRideOnLand(nearbyPlaces(this.player, catalog, {
       radiusPx: FREE_RIDE_MARKER_RADIUS_M * PIXELS_PER_METER,
       bridgeRadiusPx: FREE_RIDE_BRIDGE_RADIUS_M * PIXELS_PER_METER,
-    });
+    }));
     if (collection) {
       const list = this._freeRideChecklist(this.currentNeighborhood);
       const progress = checklistProgress(list, collection.opened);
@@ -574,6 +575,27 @@ export class GameFreeRideRuntime {
     return { x: (box.left - canvas.left) * sx, y: (box.top - canvas.top) * sy, w: box.width * sx, h: box.height * sy };
   }
 
+  /** The engine's water test (water.json), or null before the water index is up. */
+  _freeRideIsWater(): IsWater | null {
+    const map = this.vectorMap;
+    if (!map?.isWater || !this.osmLoader) return null;
+    return (x, y) => map.isWater(x, y, this.osmLoader);
+  }
+
+  /** Marker anchors off open water (lane S2, #314): a bridge on its deck where it reaches land at the end nearer the
+   *  rider, a landmark whose point lies in a canal on the nearest quay; a place with no land in reach gets no marker. */
+  _freeRideOnLand(nearby: FreeRideNearby[]): FreeRideNearby[] {
+    const isWater = this._freeRideIsWater();
+    if (!isWater || !this.player) return nearby;
+    const out: FreeRideNearby[] = [];
+    for (const place of nearby) {
+      const bridge = place.kind === 'bridge' ? this.bridges?.find(b => `bridge:${b.id}` === place.key) : null;
+      const at = bridge ? bridgeMarkerAnchor(bridge.lines, place, this.player, isWater) : landAnchor(place, isWater);
+      if (at) out.push(at.x === place.x && at.y === place.y ? place : { ...place, x: at.x, y: at.y });
+    }
+    return out;
+  }
+
   /** The marker under a canvas point, for the hover cursor. */
   _freeRideMarkerAt(x: number, y: number): PlacedMarker | null {
     return this.freeRide ? markerAt(this._freeRideMarkers || [], x, y) : null;
@@ -586,17 +608,31 @@ export class GameFreeRideRuntime {
    * Returns true when something opened.
    */
   _freeRideClick(x: number, y: number, clientX: number, clientY: number): boolean {
+    // Open water answers only through a pill itself (lanes S2/S2b, #314): no plate slop, no stem, no statue on the
+    // quay, no landmark, no street beside it. A boat's tap on its water names that canal (ruling 2026-11-09): the
+    // water's own card, from a deliberate tap on the water body only, through the one bottom card like any other.
+    const onWater = this._freeRideTapOnWater(clientX, clientY);
     const token = this._freeRideCollection?.tokenScreen;
-    if (token && Math.hypot(x - token.x, y - token.y) <= token.size / 2 + 10) return this._openFreeRideLandmark(token.key);
-    const marker = this._freeRideMarkerAt(x, y);
+    if (token && Math.hypot(x - token.x, y - token.y) <= token.size / 2 + (onWater ? 0 : 10)) return this._openFreeRideLandmark(token.key);
+    const marker = this.freeRide ? markerAt(this._freeRideMarkers || [], x, y, onWater ? 0 : 6, !onWater) : null;
     if (marker) return this._openFreeRidePlace(marker.key);
     const before = this._landmarkNotice;
-    this._inspectBuildingAt(clientX, clientY);
+    if (!onWater) this._inspectBuildingAt(clientX, clientY);
     if (this._landmarkNotice && this._landmarkNotice !== before) {
       this._noteFreeRideOpened(this._landmarkNotice.id);
       return true;
     }
+    if (!freeRideWayTapAllowed(onWater, isBoat(this.travelMode))) return false;
     return this._openFreeRideWayAt(clientX, clientY);
+  }
+
+  /** True when the tap lands on open water: nothing drawn (building, model, label) over a ground point that is water. */
+  _freeRideTapOnWater(clientX: number, clientY: number): boolean {
+    const isWater = this._freeRideIsWater();
+    const rect = this.canvas.getBoundingClientRect();
+    const world = isWater ? this.vectorMap.screenToWorld?.(clientX - rect.left, clientY - rect.top, rect, this.osmLoader) : null;
+    if (!isWater || !world || !isWater(world.x, world.y)) return false;
+    return tapOnOpenWater(this.vectorMap.inspectBuilding(clientX - rect.left, clientY - rect.top, rect), true);
   }
 
   /** Open a landmark's card by id (the token's place need not have a marker). */

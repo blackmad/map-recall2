@@ -6,7 +6,7 @@
     "buildingsModelled": "600+",
     "landmarkModels": "420",
     "kitBuildings": "13,000+",
-    "buildings3d": "340,000+",
+    "buildings3d": "350,000+",
     "placesToVisit": "390+",
     "factsToDiscover": "8,100+",
     "triviaFacts": "2,300+",
@@ -43,7 +43,7 @@
       ]
     },
     "buildings3d": {
-      "count": 349854,
+      "count": 350964,
       "note": "Every building in the 3D city: BAG footprints with 3DBAG heights, including the modelled ones.",
       "sources": [
         "public/data/extracts/amsterdam/building-tiles/index-z14.json"

@@ -78,3 +78,21 @@ export function withinReach(anchor: readonly [number, number] | null | undefined
   if (!anchor || !Number.isFinite(reachM)) return true;
   return anchorDistanceM(anchor, centre) - radiusM <= reachM;
 }
+
+/**
+ * Residency hysteresis (lane P2, #325; on with `?popFade`, engine/popFade.ts): a model enters at the reach and is kept
+ * while within KEEP_FACTOR x the reach, and none is given back within MIN_DWELL_MS of arriving, so a camera that
+ * hovers at the reach does not swap the same model in and out (the user's far pop).
+ */
+export const RESIDENCY_KEEP_FACTOR = 1.25;
+export const RESIDENCY_MIN_DWELL_MS = 10_000;
+
+/** The reach a resident model is judged against: the entry reach, or the keep reach with hysteresis on. */
+export function keepReachM(reachM: number, hysteresis: boolean): number {
+  return hysteresis && Number.isFinite(reachM) ? reachM * RESIDENCY_KEEP_FACTOR : reachM;
+}
+
+/** Whether a model that arrived at `addedAt` may be evicted at `now` (always with hysteresis off or no arrival time). */
+export function pastMinDwell(addedAt: number | undefined, now: number, hysteresis: boolean): boolean {
+  return !hysteresis || addedAt === undefined || !Number.isFinite(addedAt) || now - addedAt >= RESIDENCY_MIN_DWELL_MS;
+}

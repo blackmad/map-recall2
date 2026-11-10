@@ -2719,12 +2719,13 @@
     }
     return placed;
   }
-  function markerAt(placed, x, y, slop = 6) {
+  var MARKER_STEM_HALF_WIDTH = 8;
+  function markerAt(placed, x, y, slop = 6, stem = true) {
     for (let i = placed.length - 1; i >= 0; i--) {
-      const { box, anchorY } = placed[i];
-      if (x >= box.x - slop && x <= box.x + box.w + slop && y >= box.y - slop && y <= Math.max(box.y + box.h, anchorY) + slop) {
-        return placed[i];
-      }
+      const { box, anchorX, anchorY } = placed[i];
+      const onPlate = x >= box.x - slop && x <= box.x + box.w + slop && y >= box.y - slop && y <= box.y + box.h + slop;
+      const onStem = stem && Math.abs(x - anchorX) <= MARKER_STEM_HALF_WIDTH && y >= box.y + box.h && y <= anchorY + slop;
+      if (onPlate || onStem) return placed[i];
     }
     return null;
   }
@@ -2774,6 +2775,75 @@
   }
   function isWorthACard(landmark) {
     return !!(landmark.detail || landmark.longDetail || landmark.imageUrl || landmark.wikipediaUrl);
+  }
+
+  // src/canalRecall/game/freeRideWater.ts
+  var DECK_VERTEX_REACH_PX = 60 * 3;
+  var DECK_LAND_SEARCH_PX = 12 * 3;
+  var DECK_LAND_STEP_PX = 2 * 3;
+  function deckPoints(lines, crossing, isWater = () => false, reachPx = DECK_VERTEX_REACH_PX) {
+    const out = [];
+    const near = (p) => Math.hypot(p.x - crossing.x, p.y - crossing.y) <= reachPx;
+    for (const line of lines) {
+      if (!line || line.length < 2 || !line.some(near)) continue;
+      for (const p of line) if (near(p)) out.push({ x: p.x, y: p.y });
+      for (const [end, prev] of [[line[0], line[1]], [line[line.length - 1], line[line.length - 2]]]) {
+        const dx = end.x - prev.x, dy = end.y - prev.y, len = Math.hypot(dx, dy);
+        if (!len || !near(end) || !isWater(end.x, end.y)) continue;
+        for (let d = DECK_LAND_STEP_PX; d <= DECK_LAND_SEARCH_PX; d += DECK_LAND_STEP_PX) {
+          const p = { x: end.x + dx / len * d, y: end.y + dy / len * d };
+          if (!isWater(p.x, p.y)) {
+            out.push(p);
+            break;
+          }
+        }
+      }
+    }
+    return out;
+  }
+  var LAND_MARGIN_PX = 3 * 3;
+  function withLandMargin(isWater, marginPx = LAND_MARGIN_PX) {
+    return (x, y) => {
+      if (isWater(x, y)) return true;
+      for (let i = 0; i < 8; i++) {
+        const a = i / 8 * Math.PI * 2;
+        if (isWater(x + Math.cos(a) * marginPx, y + Math.sin(a) * marginPx)) return true;
+      }
+      return false;
+    };
+  }
+  var DECK_SETTLE_PX = 12 * 3;
+  function bridgeMarkerAnchor(lines, crossing, rider, isWater) {
+    if (!isWater) return { x: crossing.x, y: crossing.y };
+    const solid = withLandMargin(isWater);
+    if (!solid(crossing.x, crossing.y)) return { x: crossing.x, y: crossing.y };
+    const deck = deckPoints(lines, crossing, isWater).filter((p) => !isWater(p.x, p.y)).sort((a, b) => Math.hypot(a.x - rider.x, a.y - rider.y) - Math.hypot(b.x - rider.x, b.y - rider.y));
+    for (const p of deck) {
+      const at = landAnchor(p, isWater, DECK_SETTLE_PX);
+      if (at) return at;
+    }
+    return null;
+  }
+  var LAND_SEARCH_PX = 40 * 3;
+  var LAND_RING_STEP_PX = 3 * 3;
+  function landAnchor(point, isWater, maxPx = LAND_SEARCH_PX) {
+    if (!isWater) return { x: point.x, y: point.y };
+    const solid = withLandMargin(isWater);
+    if (!solid(point.x, point.y)) return { x: point.x, y: point.y };
+    for (let r = LAND_RING_STEP_PX; r <= maxPx; r += LAND_RING_STEP_PX) {
+      for (let i = 0; i < 16; i++) {
+        const a = i / 16 * Math.PI * 2;
+        const p = { x: point.x + Math.cos(a) * r, y: point.y + Math.sin(a) * r };
+        if (!solid(p.x, p.y)) return p;
+      }
+    }
+    return null;
+  }
+  function tapOnOpenWater(surfaceHit, groundWater) {
+    return !surfaceHit && groundWater;
+  }
+  function freeRideWayTapAllowed(onWater, boat) {
+    return boat ? onWater : !onWater;
   }
 
   // src/canalRecall/game/landmarkNotice.ts
@@ -3588,10 +3658,10 @@
       if (this._freeRideRefresh > 0) return;
       this._freeRideRefresh = FREE_RIDE_REFRESH_SECONDS;
       const catalog = this._freeRideCatalog();
-      this._freeRideNearby = nearbyPlaces(this.player, catalog, {
+      this._freeRideNearby = this._freeRideOnLand(nearbyPlaces(this.player, catalog, {
         radiusPx: FREE_RIDE_MARKER_RADIUS_M * PIXELS_PER_METER,
         bridgeRadiusPx: FREE_RIDE_BRIDGE_RADIUS_M * PIXELS_PER_METER
-      });
+      }));
       if (collection) {
         const list = this._freeRideChecklist(this.currentNeighborhood);
         const progress = checklistProgress(list, collection.opened);
@@ -3874,6 +3944,25 @@
       const sx = CANVAS_W / canvas.width, sy = CANVAS_H / canvas.height;
       return { x: (box.left - canvas.left) * sx, y: (box.top - canvas.top) * sy, w: box.width * sx, h: box.height * sy };
     }
+    /** The engine's water test (water.json), or null before the water index is up. */
+    _freeRideIsWater() {
+      const map = this.vectorMap;
+      if (!map?.isWater || !this.osmLoader) return null;
+      return (x, y) => map.isWater(x, y, this.osmLoader);
+    }
+    /** Marker anchors off open water (lane S2, #314): a bridge on its deck where it reaches land at the end nearer the
+     *  rider, a landmark whose point lies in a canal on the nearest quay; a place with no land in reach gets no marker. */
+    _freeRideOnLand(nearby) {
+      const isWater = this._freeRideIsWater();
+      if (!isWater || !this.player) return nearby;
+      const out = [];
+      for (const place of nearby) {
+        const bridge = place.kind === "bridge" ? this.bridges?.find((b) => `bridge:${b.id}` === place.key) : null;
+        const at = bridge ? bridgeMarkerAnchor(bridge.lines, place, this.player, isWater) : landAnchor(place, isWater);
+        if (at) out.push(at.x === place.x && at.y === place.y ? place : { ...place, x: at.x, y: at.y });
+      }
+      return out;
+    }
     /** The marker under a canvas point, for the hover cursor. */
     _freeRideMarkerAt(x, y) {
       return this.freeRide ? markerAt(this._freeRideMarkers || [], x, y) : null;
@@ -3885,17 +3974,27 @@
      * Returns true when something opened.
      */
     _freeRideClick(x, y, clientX, clientY) {
+      const onWater = this._freeRideTapOnWater(clientX, clientY);
       const token = this._freeRideCollection?.tokenScreen;
-      if (token && Math.hypot(x - token.x, y - token.y) <= token.size / 2 + 10) return this._openFreeRideLandmark(token.key);
-      const marker = this._freeRideMarkerAt(x, y);
+      if (token && Math.hypot(x - token.x, y - token.y) <= token.size / 2 + (onWater ? 0 : 10)) return this._openFreeRideLandmark(token.key);
+      const marker = this.freeRide ? markerAt(this._freeRideMarkers || [], x, y, onWater ? 0 : 6, !onWater) : null;
       if (marker) return this._openFreeRidePlace(marker.key);
       const before = this._landmarkNotice;
-      this._inspectBuildingAt(clientX, clientY);
+      if (!onWater) this._inspectBuildingAt(clientX, clientY);
       if (this._landmarkNotice && this._landmarkNotice !== before) {
         this._noteFreeRideOpened(this._landmarkNotice.id);
         return true;
       }
+      if (!freeRideWayTapAllowed(onWater, isBoat(this.travelMode))) return false;
       return this._openFreeRideWayAt(clientX, clientY);
+    }
+    /** True when the tap lands on open water: nothing drawn (building, model, label) over a ground point that is water. */
+    _freeRideTapOnWater(clientX, clientY) {
+      const isWater = this._freeRideIsWater();
+      const rect = this.canvas.getBoundingClientRect();
+      const world = isWater ? this.vectorMap.screenToWorld?.(clientX - rect.left, clientY - rect.top, rect, this.osmLoader) : null;
+      if (!isWater || !world || !isWater(world.x, world.y)) return false;
+      return tapOnOpenWater(this.vectorMap.inspectBuilding(clientX - rect.left, clientY - rect.top, rect), true);
     }
     /** Open a landmark's card by id (the token's place need not have a marker). */
     _openFreeRideLandmark(key) {
