@@ -330,6 +330,13 @@ session approves the v2 flip sheet; `installGate` stays a named profile for one 
    canopy and bare trees). Foliage over the wall already abstains above 25 % of the cells; leafless branches are not counted as foliage
    (open: a branch-density measure).
 
+Replay of the 448 groups, `installGate` -> `houseLine` (H2e): FAIL 263 -> 158, NO EVIDENCE 94 -> 116, WARN 69 -> 142, PASS 22 -> 32; 122 verdicts move:
+84 FAIL -> WARN/PASS that lose only a glazing reason (fix 1), 22 non-street walls -> NO EVIDENCE (fix 3), 16 others (the 13 of the first sheet, minus
+Hotel Arena walls[0], plus Barlaeus walls[2], Hotel Arena walls[1], Koninginneweg 1 walls[3], Oba Javaplein walls[2], Overtoom 283 walls[1], Pand-083604 walls[5],
+Singel 457 walls[1]), each read against its photo on the v2 sheet (screenshots repo `ui/2026-11-10-houseline-flips-v2/`): 15 are corrections, one is not
+(Montessori van Ostade walls[0]: `clusterWall` takes the paler brick cluster, wall dL -0.20; open). Six groups newly FAIL (all street-facing, listed in
+`houseline-new-fails.json`).
+
 Fixtures: `src/canalRecall/buildingRecipe/fixtures/houseline/{hotel-arena-236788.g0,pand-070306.g5}.{json,bin}` (dumped likeness groups:
 `likeness-replay.ts --dump`), tested by `houseLineFixtures.test.ts` (run `node --import tsx --test src/canalRecall/buildingRecipe/houseLineFixtures.test.ts`; the integrator joins it to `test:house-spec`). Rule for the flip: a new FAIL on an
 already-installed house goes on a review list (`artifacts/house-line/houseline-new-fails.json`, built by
