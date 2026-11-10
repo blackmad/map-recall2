@@ -59,6 +59,8 @@ Flags
   --unlit             the legacy unlit look: the near-tier facade shader with its baked shade for generic chunks,
                       renderElevation in flat game colours for GLBs (default: the lit city look for generic chunks,
                       sun and sky of the ride's sunny rig, wall gain, sky tint on glazing)
+  --no-wall-vs-trim   measure the wall as before lane H2c: a pale thin band may be picked as the wall on a dark front
+                      (default: wallTrim.ts, the dark body outweighing the bands is the wall)
   --glb-lit           draw a GLB route's front through the rig's Lambert too (default: flat game colours,
                       which matched the ride frame; the Lambert drew an installed wall 0.11 L dark)
   --whole-tile        build the chunk from every building of the pand's z14 tile, exactly as the runtime groups
@@ -71,7 +73,7 @@ Flags
   --out <dir>         output directory (default artifacts/house-preview/<pand>)
   --help              this text
 
-Output: <out>/front.png, threeq.png (--threeq), compare.png (--photo), measure.json (route, timings, wall,
+Output: <out>/front.png, threeq.png (--threeq), photo.png + compare.png (--photo), measure.json (route, timings, wall,
 overrides, measurements, verdict). The sheet header names the route and the look. Render and photo are both blurred
 by PRE_BLUR_PX (1.5 px Gaussian sigma at 50 px/m) before measureFacade. Atlas cache:
 artifacts/house-preview/atlas-<look>-<size>-<painter hash>.bin (first run paints, later runs load).
@@ -101,6 +103,7 @@ export function parseArgs(argv: string[]): Args {
       case '--threeq': a.threeq = true; break;
       case '--unlit': a.unlit = true; break;
       case '--glb-lit': a.glbLit = true; break;
+      case '--no-wall-vs-trim': break; // read by measureBlurred
       case '--route': {
         const r = value();
         if (r !== 'generic' && r !== 'spec' && r !== 'installed') throw new Error(`--route ${r}: generic, spec or installed`);
@@ -309,7 +312,7 @@ const timer = (): Timer => { let t0 = performance.now(); const t: Record<string,
 
 /** measureFacade after the shared pre-blur (previewVerdict.ts PRE_BLUR_PX), so render and photo measure alike. */
 export function measureBlurred(image: FacadeImage, box: Parameters<typeof measureFacade>[0]['box'], lines: number[]): FacadeMeasurement {
-  return measureFacade({ image: { ...image, rgb: blurRgb(image.rgb, image.width, image.height, PRE_BLUR_PX) }, box, lines });
+  return measureFacade({ image: { ...image, rgb: blurRgb(image.rgb, image.width, image.height, PRE_BLUR_PX) }, box, lines, ...(process.argv.includes('--no-wall-vs-trim') ? { wallVsTrim: false } : {}) });
 }
 
 // ---------------------------------------------------------------------------------------------------------------
@@ -433,6 +436,7 @@ async function finish(f: Finish): Promise<PreviewResult> {
       const verdict = previewVerdict(renderM, photoM);
       measure.photo = { file: path.relative(REPO_ROOT, photo.file), kind: photo.kind, measure: summary(photoM) };
       measure.verdict = verdict;
+      fs.writeFileSync(path.join(f.out, 'photo.png'), photo.png); f.files.push(path.join(f.out, 'photo.png'));
       f.files.push(path.join(f.out, 'compare.png'));
       await compareSheet([{ png: await sharp(f.files[0]).png().toBuffer(), label: f.label, topM: top }, { png: photo.png, label: photo.kind, topM: photo.image.topM }], args.ppm, verdict, f.files[f.files.length - 1], `route ${f.route} (${f.why}) · ${look}`);
       tm.mark('photo');

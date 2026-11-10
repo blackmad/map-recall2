@@ -215,6 +215,32 @@ face is a blank wall in the game.
 preview, the `render.ts` frame and the photo, before `measureFacade`. The raster's hard-edged mullions and the
 Chromium frame's antialiased ones fell either side of the glazing threshold; a photo is soft at the lens already.
 
+### Wall vs trim (lane H2c)
+
+`measureFacade` reports the **wall** colour: the dominant colour by area outside the openings. Cornices, sills, window
+frames, quoins and speklagen are **trim**: thin, pale bands that run in the floor zones. White still wins when it is the
+dominant area (a plastered or white-painted front), because the rule only fires when something darker outweighs the band.
+
+Before H2c, on a dark front with white bands (the Nassaukade 0363100012164843 render: brown wall `#3d2722`) the pale band
+cluster is enriched in the floor zones and the dark wall is not (enrichment 0.83 < 0.9), so the band was taken as the wall
+(`#b0a99a`) and the real wall counted as glazing. `src/canalRecall/buildingRecipe/wallTrim.ts` `wallVsTrim` is the one rule,
+with the named constants `WALL_VS_TRIM`: a cluster in the wall set is a **band** when it is pale (L* >= 45), near-neutral
+(chroma < 12) and thin (< 35 % of its cells have all eight neighbours in it). A band leaves the wall set when a cluster that is
+**not glass-like, warm (a + b > 12, b > 4), solid (>= 35 %), at least 20 L* darker, at least 15 % of the clustered cells and no
+smaller than the band** exists; that cluster (and the tones within dE 12 of it) is the wall. The two guards beyond the area
+test came from the large-tier replay: without "warm" and "neutral band" the rule moved eight installed photo groups, among
+them a glass front read as dark wall (Zuidoost Gaasperdam walls[0], Schaafstraat 17 walls[1]); with them it moves none.
+
+`wallVsTrim: false` on `MeasureInput` (`--no-wall-vs-trim` on `preview.ts`, `gate.ts` and `likeness-replay.ts --replay`)
+is the pre-H2c reading. Pinned by `wallTrim.test.ts`: eight hand-labelled fronts (`fixtures/wall-trim/cases.json`: the
+Nassaukade render and photo, 161422, the two recipe fronts, the 116526 strip crop, two white-painted slabs) with a wall
+colour radius, trim yes/no and glazing +-0.1, plus the rule on cluster statistics. Known limit, outside the wall pick: on a
+dark front the opening pass still fills every storey into one frame, so glazing reads 0.86 where the eye says 0.25; four
+labelled fronts pin that miss (`knownMiss`) until the opening pass is fixed.
+
+The replay behind the no-flip claim: `likeness-replay.ts --dump` (needs `MAP_RECALL_SOURCE_DATA`), then `--replay` with and
+without `--no-wall-vs-trim`, then `--diff`: 448 groups of 160 installed large houses, 0 verdicts and 0 reasons moved.
+
 ### 3/4 view
 
 `--threeq`: a 20° vertical field of view from 38° off the wall's normal, far enough to hold 1.6 × the wall, eye at
@@ -239,7 +265,7 @@ like an installed one, then the same measurement. One command covers every route
 
 ### Output and cache
 
-- `artifacts/house-preview/<pand>/front.png`, `threeq.png` (`--threeq`), `compare.png` (`--photo`), `measure.json`
+- `artifacts/house-preview/<pand>/front.png`, `threeq.png` (`--threeq`), `photo.png` + `compare.png` (`--photo`), `measure.json`
   (wall, heights and storey lines, chunk counts, the decorated properties, overrides applied and not applied, both
   measurements, the verdict, timings).
 - Atlas cache: `artifacts/house-preview/atlas-<look>-<size>-<hash>.bin`, colour RGBA then mask RG
@@ -322,6 +348,8 @@ Flags
   --unlit             the legacy unlit look: the near-tier facade shader with its baked shade for generic chunks,
                       renderElevation in flat game colours for GLBs (default: the lit city look for generic chunks,
                       sun and sky of the ride's sunny rig, wall gain, sky tint on glazing)
+  --no-wall-vs-trim   measure the wall as before lane H2c: a pale thin band may be picked as the wall on a dark front
+                      (default: wallTrim.ts, the dark body outweighing the bands is the wall)
   --glb-lit           draw a GLB route's front through the rig's Lambert too (default: flat game colours,
                       which matched the ride frame; the Lambert drew an installed wall 0.11 L dark)
   --whole-tile        build the chunk from every building of the pand's z14 tile, exactly as the runtime groups
@@ -334,7 +362,7 @@ Flags
   --out <dir>         output directory (default artifacts/house-preview/<pand>)
   --help              this text
 
-Output: <out>/front.png, threeq.png (--threeq), compare.png (--photo), measure.json (route, timings, wall,
+Output: <out>/front.png, threeq.png (--threeq), photo.png + compare.png (--photo), measure.json (route, timings, wall,
 overrides, measurements, verdict). The sheet header names the route and the look. Render and photo are both blurred
 by PRE_BLUR_PX (1.5 px Gaussian sigma at 50 px/m) before measureFacade. Atlas cache:
 artifacts/house-preview/atlas-<look>-<size>-<painter hash>.bin (first run paints, later runs load).
