@@ -31,6 +31,24 @@ export function landmarkDissolveFlag(): boolean {
   return LANDMARK_DISSOLVE_DEFAULT;
 }
 
+/**
+ * Landmark arrivals (lane P4, #330): a model's first appearance (residency arrival, 18 a minute beyond 1.2 km from the
+ * air after P3) dissolves in on the same screen-door band, a level dissolve with no outgoing level. `?landmarkArrive=0`
+ * (or `window.__canalRecallLandmarkArrive = false`) restores the one-frame arrival; off with `?landmarkDissolve=0`.
+ */
+export const LANDMARK_ARRIVE_DEFAULT = true;
+export function landmarkArriveFlag(): boolean {
+  if (!landmarkDissolveFlag()) return false;
+  const g = globalThis as { __canalRecallLandmarkArrive?: boolean | string; location?: { search?: string } };
+  const m = /[?&]landmarkArrive=([^&]*)/.exec(g.location?.search ?? '');
+  const asked = g.__canalRecallLandmarkArrive ?? (m ? m[1] : null);
+  if (asked === true || asked === '1' || asked === 'true' || asked === 'on') return true;
+  if (asked === false || asked === '0' || asked === 'false' || asked === 'off') return false;
+  return LANDMARK_ARRIVE_DEFAULT;
+}
+/** An empty level: the outgoing side of an arrival dissolve. */
+export const NO_LEVEL = { traverse(_fn: (o: any) => void): void { /* nothing drawn */ } };
+
 const DECLS = 'uniform float lodDissolveLo;\nuniform float lodDissolveHi;\n';
 const DISCARD = '\n{ float lodDissolveHash = fract(dot(floor(gl_FragCoord.xy), vec2(0.754877666, 0.569840296)));'
   + ' if (lodDissolveHash < lodDissolveLo || lodDissolveHash >= lodDissolveHi) discard; }\n';

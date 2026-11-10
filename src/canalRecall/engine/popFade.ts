@@ -62,3 +62,20 @@ export class LeavingFades {
   flush(): void { this.step(Infinity); }
   get size(): number { return this.leaving.length; }
 }
+
+/**
+ * `?farHandFade` (lane P4 #330, under popFade): the far tier's per-tile hand-over to the coarse / baked / detail tiers
+ * (a part's `hidden` toggled in one frame) dissolves instead. The toggled part draws once more through a ghost mesh
+ * that shares the cell's buffers (its own `hidden` byte per vertex: the part alone) on a fade clone of the chunk
+ * material (`cityFade`, the same program), fading out as the part hands over, or in as it comes back.
+ */
+export const FAR_HAND_FADE_DEFAULT = true;
+export function farHandFadeFlag(): boolean {
+  if (!popFadeFlag()) return false;
+  const g = globalThis as { __canalRecallFarHandFade?: boolean | string; location?: { search?: string } };
+  const m = /[?&]farHandFade=([^&]*)/.exec(g.location?.search ?? '');
+  const asked = g.__canalRecallFarHandFade ?? (m ? m[1] : null);
+  if (asked === true || asked === '1' || asked === 'true' || asked === 'on') return true;
+  if (asked === false || asked === '0' || asked === 'false' || asked === 'off') return false;
+  return FAR_HAND_FADE_DEFAULT;
+}
