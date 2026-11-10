@@ -1,0 +1,168 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012174965",
+ "address": "Egelantiersgracht 19",
+ "design": {
+  "fronts": [
+   {
+    "id": "front0",
+    "basement": "none",
+    "cornice": "frieze",
+    "windows": "sash",
+    "windowSurround": "sill",
+    "hoist": false,
+    "street": "Egelantiersgracht",
+    "gable": "cornice",
+    "storeys": 4,
+    "bays": 3,
+    "storeyHeights": [
+     4.3,
+     2.9,
+     2.4,
+     2
+    ],
+    "doorBay": 0
+   }
+  ],
+  "roof": {
+   "material": "bitumen"
+  },
+  "palette": {
+   "frame": "white-painted",
+   "door": "#26302a",
+   "stone": "#ebe8df",
+   "cornice": "#ebe8df",
+   "stoneMaterial": "painted",
+   "brick": "#504c4c",
+   "wallMaterial": "brick"
+  }
+ },
+ "provenance": {
+  "fronts/0/id": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): three axes: ground 0-4.0 m (door left, ivy); storeys at 4.6-6.7, 7.4-9.1, 9.8-11.2 m; a white frieze and cornice 11.4-12.4 m with a small lantern ornament to ~14 m and sky above (no roof shows); brick #504c4c (eland review: rows, door left and brick #5c5653 match)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/basement": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): three axes: ground 0-4.0 m (door left, ivy); storeys at 4.6-6.7, 7.4-9.1, 9.8-11.2 m; a white frieze and cornice 11.4-12.4 m with a small lantern ornament to ~14 m and sky above (no roof shows); brick #504c4c (eland review: rows, door left and brick #5c5653 match) (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/cornice": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): three axes: ground 0-4.0 m (door left, ivy); storeys at 4.6-6.7, 7.4-9.1, 9.8-11.2 m; a white frieze and cornice 11.4-12.4 m with a small lantern ornament to ~14 m and sky above (no roof shows); brick #504c4c (eland review: rows, door left and brick #5c5653 match)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/windows": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): three axes: ground 0-4.0 m (door left, ivy); storeys at 4.6-6.7, 7.4-9.1, 9.8-11.2 m; a white frieze and cornice 11.4-12.4 m with a small lantern ornament to ~14 m and sky above (no roof shows); brick #504c4c (eland review: rows, door left and brick #5c5653 match)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/windowSurround": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): three axes: ground 0-4.0 m (door left, ivy); storeys at 4.6-6.7, 7.4-9.1, 9.8-11.2 m; a white frieze and cornice 11.4-12.4 m with a small lantern ornament to ~14 m and sky above (no roof shows); brick #504c4c (eland review: rows, door left and brick #5c5653 match) (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/hoist": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): three axes: ground 0-4.0 m (door left, ivy); storeys at 4.6-6.7, 7.4-9.1, 9.8-11.2 m; a white frieze and cornice 11.4-12.4 m with a small lantern ornament to ~14 m and sky above (no roof shows); brick #504c4c (eland review: rows, door left and brick #5c5653 match) (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/street": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): three axes: ground 0-4.0 m (door left, ivy); storeys at 4.6-6.7, 7.4-9.1, 9.8-11.2 m; a white frieze and cornice 11.4-12.4 m with a small lantern ornament to ~14 m and sky above (no roof shows); brick #504c4c (eland review: rows, door left and brick #5c5653 match)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/gable": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): three axes: ground 0-4.0 m (door left, ivy); storeys at 4.6-6.7, 7.4-9.1, 9.8-11.2 m; a white frieze and cornice 11.4-12.4 m with a small lantern ornament to ~14 m and sky above (no roof shows); brick #504c4c (eland review: rows, door left and brick #5c5653 match)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/storeys": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): three axes: ground 0-4.0 m (door left, ivy); storeys at 4.6-6.7, 7.4-9.1, 9.8-11.2 m; a white frieze and cornice 11.4-12.4 m with a small lantern ornament to ~14 m and sky above (no roof shows); brick #504c4c (eland review: rows, door left and brick #5c5653 match)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/bays": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): three axes: ground 0-4.0 m (door left, ivy); storeys at 4.6-6.7, 7.4-9.1, 9.8-11.2 m; a white frieze and cornice 11.4-12.4 m with a small lantern ornament to ~14 m and sky above (no roof shows); brick #504c4c (eland review: rows, door left and brick #5c5653 match)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/storeyHeights": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): three axes: ground 0-4.0 m (door left, ivy); storeys at 4.6-6.7, 7.4-9.1, 9.8-11.2 m; a white frieze and cornice 11.4-12.4 m with a small lantern ornament to ~14 m and sky above (no roof shows); brick #504c4c (eland review: rows, door left and brick #5c5653 match)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/doorBay": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): three axes: ground 0-4.0 m (door left, ivy); storeys at 4.6-6.7, 7.4-9.1, 9.8-11.2 m; a white frieze and cornice 11.4-12.4 m with a small lantern ornament to ~14 m and sky above (no roof shows); brick #504c4c (eland review: rows, door left and brick #5c5653 match)",
+   "at": "2023-03-13"
+  },
+  "roof/material": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): three axes: ground 0-4.0 m (door left, ivy); storeys at 4.6-6.7, 7.4-9.1, 9.8-11.2 m; a white frieze and cornice 11.4-12.4 m with a small lantern ornament to ~14 m and sky above (no roof shows); brick #504c4c (eland review: rows, door left and brick #5c5653 match)",
+   "at": "2023-03-13"
+  },
+  "palette/frame": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): three axes: ground 0-4.0 m (door left, ivy); storeys at 4.6-6.7, 7.4-9.1, 9.8-11.2 m; a white frieze and cornice 11.4-12.4 m with a small lantern ornament to ~14 m and sky above (no roof shows); brick #504c4c (eland review: rows, door left and brick #5c5653 match) (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/door": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): three axes: ground 0-4.0 m (door left, ivy); storeys at 4.6-6.7, 7.4-9.1, 9.8-11.2 m; a white frieze and cornice 11.4-12.4 m with a small lantern ornament to ~14 m and sky above (no roof shows); brick #504c4c (eland review: rows, door left and brick #5c5653 match) (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/stone": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): three axes: ground 0-4.0 m (door left, ivy); storeys at 4.6-6.7, 7.4-9.1, 9.8-11.2 m; a white frieze and cornice 11.4-12.4 m with a small lantern ornament to ~14 m and sky above (no roof shows); brick #504c4c (eland review: rows, door left and brick #5c5653 match) (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/cornice": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): three axes: ground 0-4.0 m (door left, ivy); storeys at 4.6-6.7, 7.4-9.1, 9.8-11.2 m; a white frieze and cornice 11.4-12.4 m with a small lantern ornament to ~14 m and sky above (no roof shows); brick #504c4c (eland review: rows, door left and brick #5c5653 match) (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/stoneMaterial": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): three axes: ground 0-4.0 m (door left, ivy); storeys at 4.6-6.7, 7.4-9.1, 9.8-11.2 m; a white frieze and cornice 11.4-12.4 m with a small lantern ornament to ~14 m and sky above (no roof shows); brick #504c4c (eland review: rows, door left and brick #5c5653 match) (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/brick": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): three axes: ground 0-4.0 m (door left, ivy); storeys at 4.6-6.7, 7.4-9.1, 9.8-11.2 m; a white frieze and cornice 11.4-12.4 m with a small lantern ornament to ~14 m and sky above (no roof shows); brick #504c4c (eland review: rows, door left and brick #5c5653 match)",
+   "at": "2023-03-13"
+  },
+  "palette/wallMaterial": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): three axes: ground 0-4.0 m (door left, ivy); storeys at 4.6-6.7, 7.4-9.1, 9.8-11.2 m; a white frieze and cornice 11.4-12.4 m with a small lantern ornament to ~14 m and sky above (no roof shows); brick #504c4c (eland review: rows, door left and brick #5c5653 match)",
+   "at": "2023-03-13"
+  }
+ },
+ "schemaLimits": [
+  {
+   "component": "cornice",
+   "what": "a small lantern-shaped ornament on the cornice is not drawn"
+  }
+ ]
+}

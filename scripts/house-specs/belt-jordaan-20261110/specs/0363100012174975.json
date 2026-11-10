@@ -1,0 +1,233 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012174975",
+ "address": "Egelantiersgracht 29",
+ "design": {
+  "fronts": [
+   {
+    "id": "front0",
+    "basement": "none",
+    "cornice": "simple",
+    "windows": "sash",
+    "windowSurround": "sill",
+    "hoist": false,
+    "street": "Egelantiersgracht",
+    "gable": "cornice",
+    "storeys": 4,
+    "bays": [
+     3,
+     2,
+     2,
+     2
+    ],
+    "storeyHeights": [
+     4.2,
+     2.9,
+     2.9,
+     2.4
+    ],
+    "doorBay": 0,
+    "paintedStoreys": {
+     "storeys": [
+      3
+     ],
+     "colour": "#ece9e0"
+    },
+    "groundFront": {
+     "kind": "pui",
+     "bays": [
+      "door",
+      "window",
+      "window"
+     ],
+     "colour": "#ece9e0",
+     "evidence": "strip 2023-03-13: white ground storey"
+    },
+    "dormers": 1,
+    "dormerStyle": "plain",
+    "dormerBody": "stone",
+    "dormerSize": {
+     "sill": 0.1,
+     "rise": 1.4,
+     "setback": 0.35
+    }
+   }
+  ],
+  "roof": {
+   "material": "red-tile"
+  },
+  "palette": {
+   "frame": "white-painted",
+   "door": "#26302a",
+   "stone": "#ebe8df",
+   "cornice": "#ebe8df",
+   "stoneMaterial": "painted",
+   "brick": "#4c3e3e",
+   "wallMaterial": "brick"
+  }
+ },
+ "provenance": {
+  "fronts/0/id": {
+   "source": "author",
+   "confidence": 0.75,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): three axes: a white ground 0-3.9 m; storeys at 4.9-6.6 and 7.8-9.6 m; a white-painted timber top storey with a window band at 10.8-12.2 m; a red tile roof with a dormer to ~15.5 m; red-brown brick #4c3e3e",
+   "at": "2023-03-13"
+  },
+  "fronts/0/basement": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): three axes: a white ground 0-3.9 m; storeys at 4.9-6.6 and 7.8-9.6 m; a white-painted timber top storey with a window band at 10.8-12.2 m; a red tile roof with a dormer to ~15.5 m; red-brown brick #4c3e3e (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/cornice": {
+   "source": "author",
+   "confidence": 0.75,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): three axes: a white ground 0-3.9 m; storeys at 4.9-6.6 and 7.8-9.6 m; a white-painted timber top storey with a window band at 10.8-12.2 m; a red tile roof with a dormer to ~15.5 m; red-brown brick #4c3e3e",
+   "at": "2023-03-13"
+  },
+  "fronts/0/windows": {
+   "source": "author",
+   "confidence": 0.75,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): three axes: a white ground 0-3.9 m; storeys at 4.9-6.6 and 7.8-9.6 m; a white-painted timber top storey with a window band at 10.8-12.2 m; a red tile roof with a dormer to ~15.5 m; red-brown brick #4c3e3e",
+   "at": "2023-03-13"
+  },
+  "fronts/0/windowSurround": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): three axes: a white ground 0-3.9 m; storeys at 4.9-6.6 and 7.8-9.6 m; a white-painted timber top storey with a window band at 10.8-12.2 m; a red tile roof with a dormer to ~15.5 m; red-brown brick #4c3e3e (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/hoist": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): three axes: a white ground 0-3.9 m; storeys at 4.9-6.6 and 7.8-9.6 m; a white-painted timber top storey with a window band at 10.8-12.2 m; a red tile roof with a dormer to ~15.5 m; red-brown brick #4c3e3e (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/street": {
+   "source": "author",
+   "confidence": 0.75,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): three axes: a white ground 0-3.9 m; storeys at 4.9-6.6 and 7.8-9.6 m; a white-painted timber top storey with a window band at 10.8-12.2 m; a red tile roof with a dormer to ~15.5 m; red-brown brick #4c3e3e",
+   "at": "2023-03-13"
+  },
+  "fronts/0/gable": {
+   "source": "author",
+   "confidence": 0.75,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): three axes: a white ground 0-3.9 m; storeys at 4.9-6.6 and 7.8-9.6 m; a white-painted timber top storey with a window band at 10.8-12.2 m; a red tile roof with a dormer to ~15.5 m; red-brown brick #4c3e3e",
+   "at": "2023-03-13"
+  },
+  "fronts/0/storeys": {
+   "source": "author",
+   "confidence": 0.75,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): three axes: a white ground 0-3.9 m; storeys at 4.9-6.6 and 7.8-9.6 m; a white-painted timber top storey with a window band at 10.8-12.2 m; a red tile roof with a dormer to ~15.5 m; red-brown brick #4c3e3e",
+   "at": "2023-03-13"
+  },
+  "fronts/0/bays": {
+   "source": "author",
+   "confidence": 0.75,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): three axes: a white ground 0-3.9 m; storeys at 4.9-6.6 and 7.8-9.6 m; a white-painted timber top storey with a window band at 10.8-12.2 m; a red tile roof with a dormer to ~15.5 m; red-brown brick #4c3e3e",
+   "at": "2023-03-13"
+  },
+  "fronts/0/storeyHeights": {
+   "source": "author",
+   "confidence": 0.75,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): three axes: a white ground 0-3.9 m; storeys at 4.9-6.6 and 7.8-9.6 m; a white-painted timber top storey with a window band at 10.8-12.2 m; a red tile roof with a dormer to ~15.5 m; red-brown brick #4c3e3e",
+   "at": "2023-03-13"
+  },
+  "fronts/0/doorBay": {
+   "source": "author",
+   "confidence": 0.75,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): three axes: a white ground 0-3.9 m; storeys at 4.9-6.6 and 7.8-9.6 m; a white-painted timber top storey with a window band at 10.8-12.2 m; a red tile roof with a dormer to ~15.5 m; red-brown brick #4c3e3e",
+   "at": "2023-03-13"
+  },
+  "fronts/0/paintedStoreys": {
+   "source": "author",
+   "confidence": 0.75,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): three axes: a white ground 0-3.9 m; storeys at 4.9-6.6 and 7.8-9.6 m; a white-painted timber top storey with a window band at 10.8-12.2 m; a red tile roof with a dormer to ~15.5 m; red-brown brick #4c3e3e",
+   "at": "2023-03-13"
+  },
+  "fronts/0/groundFront": {
+   "source": "author",
+   "confidence": 0.75,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): three axes: a white ground 0-3.9 m; storeys at 4.9-6.6 and 7.8-9.6 m; a white-painted timber top storey with a window band at 10.8-12.2 m; a red tile roof with a dormer to ~15.5 m; red-brown brick #4c3e3e",
+   "at": "2023-03-13"
+  },
+  "fronts/0/dormers": {
+   "source": "author",
+   "confidence": 0.75,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): three axes: a white ground 0-3.9 m; storeys at 4.9-6.6 and 7.8-9.6 m; a white-painted timber top storey with a window band at 10.8-12.2 m; a red tile roof with a dormer to ~15.5 m; red-brown brick #4c3e3e",
+   "at": "2023-03-13"
+  },
+  "fronts/0/dormerStyle": {
+   "source": "author",
+   "confidence": 0.75,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): three axes: a white ground 0-3.9 m; storeys at 4.9-6.6 and 7.8-9.6 m; a white-painted timber top storey with a window band at 10.8-12.2 m; a red tile roof with a dormer to ~15.5 m; red-brown brick #4c3e3e",
+   "at": "2023-03-13"
+  },
+  "fronts/0/dormerBody": {
+   "source": "author",
+   "confidence": 0.75,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): three axes: a white ground 0-3.9 m; storeys at 4.9-6.6 and 7.8-9.6 m; a white-painted timber top storey with a window band at 10.8-12.2 m; a red tile roof with a dormer to ~15.5 m; red-brown brick #4c3e3e",
+   "at": "2023-03-13"
+  },
+  "fronts/0/dormerSize": {
+   "source": "author",
+   "confidence": 0.75,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): three axes: a white ground 0-3.9 m; storeys at 4.9-6.6 and 7.8-9.6 m; a white-painted timber top storey with a window band at 10.8-12.2 m; a red tile roof with a dormer to ~15.5 m; red-brown brick #4c3e3e",
+   "at": "2023-03-13"
+  },
+  "roof/material": {
+   "source": "author",
+   "confidence": 0.75,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): three axes: a white ground 0-3.9 m; storeys at 4.9-6.6 and 7.8-9.6 m; a white-painted timber top storey with a window band at 10.8-12.2 m; a red tile roof with a dormer to ~15.5 m; red-brown brick #4c3e3e",
+   "at": "2023-03-13"
+  },
+  "palette/frame": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): three axes: a white ground 0-3.9 m; storeys at 4.9-6.6 and 7.8-9.6 m; a white-painted timber top storey with a window band at 10.8-12.2 m; a red tile roof with a dormer to ~15.5 m; red-brown brick #4c3e3e (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/door": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): three axes: a white ground 0-3.9 m; storeys at 4.9-6.6 and 7.8-9.6 m; a white-painted timber top storey with a window band at 10.8-12.2 m; a red tile roof with a dormer to ~15.5 m; red-brown brick #4c3e3e (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/stone": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): three axes: a white ground 0-3.9 m; storeys at 4.9-6.6 and 7.8-9.6 m; a white-painted timber top storey with a window band at 10.8-12.2 m; a red tile roof with a dormer to ~15.5 m; red-brown brick #4c3e3e (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/cornice": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): three axes: a white ground 0-3.9 m; storeys at 4.9-6.6 and 7.8-9.6 m; a white-painted timber top storey with a window band at 10.8-12.2 m; a red tile roof with a dormer to ~15.5 m; red-brown brick #4c3e3e (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/stoneMaterial": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): three axes: a white ground 0-3.9 m; storeys at 4.9-6.6 and 7.8-9.6 m; a white-painted timber top storey with a window band at 10.8-12.2 m; a red tile roof with a dormer to ~15.5 m; red-brown brick #4c3e3e (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/brick": {
+   "source": "author",
+   "confidence": 0.75,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): three axes: a white ground 0-3.9 m; storeys at 4.9-6.6 and 7.8-9.6 m; a white-painted timber top storey with a window band at 10.8-12.2 m; a red tile roof with a dormer to ~15.5 m; red-brown brick #4c3e3e",
+   "at": "2023-03-13"
+  },
+  "palette/wallMaterial": {
+   "source": "author",
+   "confidence": 0.75,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): three axes: a white ground 0-3.9 m; storeys at 4.9-6.6 and 7.8-9.6 m; a white-painted timber top storey with a window band at 10.8-12.2 m; a red tile roof with a dormer to ~15.5 m; red-brown brick #4c3e3e",
+   "at": "2023-03-13"
+  }
+ },
+ "schemaLimits": [
+  {
+   "component": "top storey",
+   "what": "the top storey is a white timber wall with a band of windows (painted storey over brick)"
+  }
+ ]
+}

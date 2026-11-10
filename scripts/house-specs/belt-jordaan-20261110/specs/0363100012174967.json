@@ -1,0 +1,220 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012174967",
+ "address": "Egelantiersgracht 17",
+ "design": {
+  "fronts": [
+   {
+    "id": "front0",
+    "basement": "none",
+    "cornice": "none",
+    "windows": "sash",
+    "windowSurround": "sill",
+    "hoist": false,
+    "street": "Egelantiersgracht",
+    "gable": "step",
+    "crownRise": 1.4,
+    "crownFinial": true,
+    "atticWindows": 1,
+    "storeys": 4,
+    "bays": 2,
+    "storeyHeights": [
+     4.3,
+     3.1,
+     3.1,
+     3.4
+    ],
+    "doorBay": 1,
+    "bands": "storey",
+    "windowHead": {
+     "kind": "segmental",
+     "archRing": {
+      "colour": "stone",
+      "style": "solid"
+     }
+    }
+   }
+  ],
+  "roof": {
+   "material": "red-tile",
+   "squareSaddle": true
+  },
+  "palette": {
+   "frame": "white-painted",
+   "door": "#8a2a26",
+   "stone": "#ebe8df",
+   "cornice": "#ebe8df",
+   "stoneMaterial": "painted",
+   "brick": "#4b403d",
+   "wallMaterial": "brick"
+  }
+ },
+ "provenance": {
+  "fronts/0/id": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): a Neo-Renaissance front: two axes; a shop ground 0-4.0 m with white pilasters and a red arched door right; storeys at 4.7-6.7, 7.8-9.7, 11.0-12.9 m under segmental relieving arches with white springer bands; a step gable 13.9-17.8 m with one light and a finial; red-brown brick #4b403d",
+   "at": "2023-03-13"
+  },
+  "fronts/0/basement": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): a Neo-Renaissance front: two axes; a shop ground 0-4.0 m with white pilasters and a red arched door right; storeys at 4.7-6.7, 7.8-9.7, 11.0-12.9 m under segmental relieving arches with white springer bands; a step gable 13.9-17.8 m with one light and a finial; red-brown brick #4b403d (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/cornice": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): a Neo-Renaissance front: two axes; a shop ground 0-4.0 m with white pilasters and a red arched door right; storeys at 4.7-6.7, 7.8-9.7, 11.0-12.9 m under segmental relieving arches with white springer bands; a step gable 13.9-17.8 m with one light and a finial; red-brown brick #4b403d (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/windows": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): a Neo-Renaissance front: two axes; a shop ground 0-4.0 m with white pilasters and a red arched door right; storeys at 4.7-6.7, 7.8-9.7, 11.0-12.9 m under segmental relieving arches with white springer bands; a step gable 13.9-17.8 m with one light and a finial; red-brown brick #4b403d",
+   "at": "2023-03-13"
+  },
+  "fronts/0/windowSurround": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): a Neo-Renaissance front: two axes; a shop ground 0-4.0 m with white pilasters and a red arched door right; storeys at 4.7-6.7, 7.8-9.7, 11.0-12.9 m under segmental relieving arches with white springer bands; a step gable 13.9-17.8 m with one light and a finial; red-brown brick #4b403d (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/hoist": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): a Neo-Renaissance front: two axes; a shop ground 0-4.0 m with white pilasters and a red arched door right; storeys at 4.7-6.7, 7.8-9.7, 11.0-12.9 m under segmental relieving arches with white springer bands; a step gable 13.9-17.8 m with one light and a finial; red-brown brick #4b403d (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/street": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): a Neo-Renaissance front: two axes; a shop ground 0-4.0 m with white pilasters and a red arched door right; storeys at 4.7-6.7, 7.8-9.7, 11.0-12.9 m under segmental relieving arches with white springer bands; a step gable 13.9-17.8 m with one light and a finial; red-brown brick #4b403d",
+   "at": "2023-03-13"
+  },
+  "fronts/0/gable": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): a Neo-Renaissance front: two axes; a shop ground 0-4.0 m with white pilasters and a red arched door right; storeys at 4.7-6.7, 7.8-9.7, 11.0-12.9 m under segmental relieving arches with white springer bands; a step gable 13.9-17.8 m with one light and a finial; red-brown brick #4b403d",
+   "at": "2023-03-13"
+  },
+  "fronts/0/crownRise": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): a Neo-Renaissance front: two axes; a shop ground 0-4.0 m with white pilasters and a red arched door right; storeys at 4.7-6.7, 7.8-9.7, 11.0-12.9 m under segmental relieving arches with white springer bands; a step gable 13.9-17.8 m with one light and a finial; red-brown brick #4b403d",
+   "at": "2023-03-13"
+  },
+  "fronts/0/crownFinial": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): a Neo-Renaissance front: two axes; a shop ground 0-4.0 m with white pilasters and a red arched door right; storeys at 4.7-6.7, 7.8-9.7, 11.0-12.9 m under segmental relieving arches with white springer bands; a step gable 13.9-17.8 m with one light and a finial; red-brown brick #4b403d",
+   "at": "2023-03-13"
+  },
+  "fronts/0/atticWindows": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): a Neo-Renaissance front: two axes; a shop ground 0-4.0 m with white pilasters and a red arched door right; storeys at 4.7-6.7, 7.8-9.7, 11.0-12.9 m under segmental relieving arches with white springer bands; a step gable 13.9-17.8 m with one light and a finial; red-brown brick #4b403d",
+   "at": "2023-03-13"
+  },
+  "fronts/0/storeys": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): a Neo-Renaissance front: two axes; a shop ground 0-4.0 m with white pilasters and a red arched door right; storeys at 4.7-6.7, 7.8-9.7, 11.0-12.9 m under segmental relieving arches with white springer bands; a step gable 13.9-17.8 m with one light and a finial; red-brown brick #4b403d",
+   "at": "2023-03-13"
+  },
+  "fronts/0/bays": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): a Neo-Renaissance front: two axes; a shop ground 0-4.0 m with white pilasters and a red arched door right; storeys at 4.7-6.7, 7.8-9.7, 11.0-12.9 m under segmental relieving arches with white springer bands; a step gable 13.9-17.8 m with one light and a finial; red-brown brick #4b403d",
+   "at": "2023-03-13"
+  },
+  "fronts/0/storeyHeights": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): a Neo-Renaissance front: two axes; a shop ground 0-4.0 m with white pilasters and a red arched door right; storeys at 4.7-6.7, 7.8-9.7, 11.0-12.9 m under segmental relieving arches with white springer bands; a step gable 13.9-17.8 m with one light and a finial; red-brown brick #4b403d",
+   "at": "2023-03-13"
+  },
+  "fronts/0/doorBay": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): a Neo-Renaissance front: two axes; a shop ground 0-4.0 m with white pilasters and a red arched door right; storeys at 4.7-6.7, 7.8-9.7, 11.0-12.9 m under segmental relieving arches with white springer bands; a step gable 13.9-17.8 m with one light and a finial; red-brown brick #4b403d",
+   "at": "2023-03-13"
+  },
+  "fronts/0/bands": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): a Neo-Renaissance front: two axes; a shop ground 0-4.0 m with white pilasters and a red arched door right; storeys at 4.7-6.7, 7.8-9.7, 11.0-12.9 m under segmental relieving arches with white springer bands; a step gable 13.9-17.8 m with one light and a finial; red-brown brick #4b403d",
+   "at": "2023-03-13"
+  },
+  "fronts/0/windowHead": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): a Neo-Renaissance front: two axes; a shop ground 0-4.0 m with white pilasters and a red arched door right; storeys at 4.7-6.7, 7.8-9.7, 11.0-12.9 m under segmental relieving arches with white springer bands; a step gable 13.9-17.8 m with one light and a finial; red-brown brick #4b403d",
+   "at": "2023-03-13"
+  },
+  "roof/material": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): a Neo-Renaissance front: two axes; a shop ground 0-4.0 m with white pilasters and a red arched door right; storeys at 4.7-6.7, 7.8-9.7, 11.0-12.9 m under segmental relieving arches with white springer bands; a step gable 13.9-17.8 m with one light and a finial; red-brown brick #4b403d",
+   "at": "2023-03-13"
+  },
+  "roof/squareSaddle": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): a Neo-Renaissance front: two axes; a shop ground 0-4.0 m with white pilasters and a red arched door right; storeys at 4.7-6.7, 7.8-9.7, 11.0-12.9 m under segmental relieving arches with white springer bands; a step gable 13.9-17.8 m with one light and a finial; red-brown brick #4b403d",
+   "at": "2023-03-13"
+  },
+  "palette/frame": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): a Neo-Renaissance front: two axes; a shop ground 0-4.0 m with white pilasters and a red arched door right; storeys at 4.7-6.7, 7.8-9.7, 11.0-12.9 m under segmental relieving arches with white springer bands; a step gable 13.9-17.8 m with one light and a finial; red-brown brick #4b403d (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/door": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): a Neo-Renaissance front: two axes; a shop ground 0-4.0 m with white pilasters and a red arched door right; storeys at 4.7-6.7, 7.8-9.7, 11.0-12.9 m under segmental relieving arches with white springer bands; a step gable 13.9-17.8 m with one light and a finial; red-brown brick #4b403d",
+   "at": "2023-03-13"
+  },
+  "palette/stone": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): a Neo-Renaissance front: two axes; a shop ground 0-4.0 m with white pilasters and a red arched door right; storeys at 4.7-6.7, 7.8-9.7, 11.0-12.9 m under segmental relieving arches with white springer bands; a step gable 13.9-17.8 m with one light and a finial; red-brown brick #4b403d (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/cornice": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): a Neo-Renaissance front: two axes; a shop ground 0-4.0 m with white pilasters and a red arched door right; storeys at 4.7-6.7, 7.8-9.7, 11.0-12.9 m under segmental relieving arches with white springer bands; a step gable 13.9-17.8 m with one light and a finial; red-brown brick #4b403d (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/stoneMaterial": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): a Neo-Renaissance front: two axes; a shop ground 0-4.0 m with white pilasters and a red arched door right; storeys at 4.7-6.7, 7.8-9.7, 11.0-12.9 m under segmental relieving arches with white springer bands; a step gable 13.9-17.8 m with one light and a finial; red-brown brick #4b403d (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/brick": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): a Neo-Renaissance front: two axes; a shop ground 0-4.0 m with white pilasters and a red arched door right; storeys at 4.7-6.7, 7.8-9.7, 11.0-12.9 m under segmental relieving arches with white springer bands; a step gable 13.9-17.8 m with one light and a finial; red-brown brick #4b403d",
+   "at": "2023-03-13"
+  },
+  "palette/wallMaterial": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): a Neo-Renaissance front: two axes; a shop ground 0-4.0 m with white pilasters and a red arched door right; storeys at 4.7-6.7, 7.8-9.7, 11.0-12.9 m under segmental relieving arches with white springer bands; a step gable 13.9-17.8 m with one light and a finial; red-brown brick #4b403d",
+   "at": "2023-03-13"
+  }
+ },
+ "schemaLimits": [
+  {
+   "component": "gable ornament",
+   "what": "arched panels and stone dressings on the steps are not drawn"
+  },
+  {
+   "component": "ground storey",
+   "what": "the round-arched red door beside the shop glazing is drawn square"
+  }
+ ]
+}

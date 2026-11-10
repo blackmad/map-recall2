@@ -1,0 +1,193 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012174780",
+ "address": "Egelantiersgracht 5",
+ "design": {
+  "fronts": [
+   {
+    "id": "front0",
+    "basement": "none",
+    "cornice": "simple",
+    "windows": "sash",
+    "windowSurround": "sill",
+    "hoist": false,
+    "street": "Egelantiersgracht",
+    "gable": "cornice",
+    "storeys": 3,
+    "bays": 4,
+    "storeyHeights": [
+     4.6,
+     3.2,
+     3.2
+    ],
+    "doorBay": 2,
+    "dormers": 2,
+    "dormerStyle": "plain",
+    "dormerBody": "stone",
+    "dormerSize": {
+     "sill": 0.1,
+     "rise": 1.2,
+     "setback": 0.35
+    }
+   }
+  ],
+  "roof": {
+   "material": "red-tile"
+  },
+  "palette": {
+   "frame": "white-painted",
+   "door": "#26302a",
+   "stone": "#ebe8df",
+   "cornice": "#ebe8df",
+   "stoneMaterial": "painted",
+   "brick": "#5d534f",
+   "wallMaterial": "brick"
+  }
+ },
+ "provenance": {
+  "fronts/0/id": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): an 8.4 m front of four axes: ground 0-4.4 m (windows 2.6-4.2 m, the door on the third axis); storeys at 5.5-7.0 and 8.6-10.4 m; a white cornice 11.1-11.9 m; a red tile roof with two small dormers 12.3-13.5 m; red-brown brick #5d534f",
+   "at": "2023-03-13"
+  },
+  "fronts/0/basement": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): an 8.4 m front of four axes: ground 0-4.4 m (windows 2.6-4.2 m, the door on the third axis); storeys at 5.5-7.0 and 8.6-10.4 m; a white cornice 11.1-11.9 m; a red tile roof with two small dormers 12.3-13.5 m; red-brown brick #5d534f (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/cornice": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): an 8.4 m front of four axes: ground 0-4.4 m (windows 2.6-4.2 m, the door on the third axis); storeys at 5.5-7.0 and 8.6-10.4 m; a white cornice 11.1-11.9 m; a red tile roof with two small dormers 12.3-13.5 m; red-brown brick #5d534f",
+   "at": "2023-03-13"
+  },
+  "fronts/0/windows": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): an 8.4 m front of four axes: ground 0-4.4 m (windows 2.6-4.2 m, the door on the third axis); storeys at 5.5-7.0 and 8.6-10.4 m; a white cornice 11.1-11.9 m; a red tile roof with two small dormers 12.3-13.5 m; red-brown brick #5d534f",
+   "at": "2023-03-13"
+  },
+  "fronts/0/windowSurround": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): an 8.4 m front of four axes: ground 0-4.4 m (windows 2.6-4.2 m, the door on the third axis); storeys at 5.5-7.0 and 8.6-10.4 m; a white cornice 11.1-11.9 m; a red tile roof with two small dormers 12.3-13.5 m; red-brown brick #5d534f (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/hoist": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): an 8.4 m front of four axes: ground 0-4.4 m (windows 2.6-4.2 m, the door on the third axis); storeys at 5.5-7.0 and 8.6-10.4 m; a white cornice 11.1-11.9 m; a red tile roof with two small dormers 12.3-13.5 m; red-brown brick #5d534f (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/street": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): an 8.4 m front of four axes: ground 0-4.4 m (windows 2.6-4.2 m, the door on the third axis); storeys at 5.5-7.0 and 8.6-10.4 m; a white cornice 11.1-11.9 m; a red tile roof with two small dormers 12.3-13.5 m; red-brown brick #5d534f",
+   "at": "2023-03-13"
+  },
+  "fronts/0/gable": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): an 8.4 m front of four axes: ground 0-4.4 m (windows 2.6-4.2 m, the door on the third axis); storeys at 5.5-7.0 and 8.6-10.4 m; a white cornice 11.1-11.9 m; a red tile roof with two small dormers 12.3-13.5 m; red-brown brick #5d534f",
+   "at": "2023-03-13"
+  },
+  "fronts/0/storeys": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): an 8.4 m front of four axes: ground 0-4.4 m (windows 2.6-4.2 m, the door on the third axis); storeys at 5.5-7.0 and 8.6-10.4 m; a white cornice 11.1-11.9 m; a red tile roof with two small dormers 12.3-13.5 m; red-brown brick #5d534f",
+   "at": "2023-03-13"
+  },
+  "fronts/0/bays": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): an 8.4 m front of four axes: ground 0-4.4 m (windows 2.6-4.2 m, the door on the third axis); storeys at 5.5-7.0 and 8.6-10.4 m; a white cornice 11.1-11.9 m; a red tile roof with two small dormers 12.3-13.5 m; red-brown brick #5d534f",
+   "at": "2023-03-13"
+  },
+  "fronts/0/storeyHeights": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): an 8.4 m front of four axes: ground 0-4.4 m (windows 2.6-4.2 m, the door on the third axis); storeys at 5.5-7.0 and 8.6-10.4 m; a white cornice 11.1-11.9 m; a red tile roof with two small dormers 12.3-13.5 m; red-brown brick #5d534f",
+   "at": "2023-03-13"
+  },
+  "fronts/0/doorBay": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): an 8.4 m front of four axes: ground 0-4.4 m (windows 2.6-4.2 m, the door on the third axis); storeys at 5.5-7.0 and 8.6-10.4 m; a white cornice 11.1-11.9 m; a red tile roof with two small dormers 12.3-13.5 m; red-brown brick #5d534f",
+   "at": "2023-03-13"
+  },
+  "fronts/0/dormers": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): an 8.4 m front of four axes: ground 0-4.4 m (windows 2.6-4.2 m, the door on the third axis); storeys at 5.5-7.0 and 8.6-10.4 m; a white cornice 11.1-11.9 m; a red tile roof with two small dormers 12.3-13.5 m; red-brown brick #5d534f",
+   "at": "2023-03-13"
+  },
+  "fronts/0/dormerStyle": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): an 8.4 m front of four axes: ground 0-4.4 m (windows 2.6-4.2 m, the door on the third axis); storeys at 5.5-7.0 and 8.6-10.4 m; a white cornice 11.1-11.9 m; a red tile roof with two small dormers 12.3-13.5 m; red-brown brick #5d534f",
+   "at": "2023-03-13"
+  },
+  "fronts/0/dormerBody": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): an 8.4 m front of four axes: ground 0-4.4 m (windows 2.6-4.2 m, the door on the third axis); storeys at 5.5-7.0 and 8.6-10.4 m; a white cornice 11.1-11.9 m; a red tile roof with two small dormers 12.3-13.5 m; red-brown brick #5d534f",
+   "at": "2023-03-13"
+  },
+  "fronts/0/dormerSize": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): an 8.4 m front of four axes: ground 0-4.4 m (windows 2.6-4.2 m, the door on the third axis); storeys at 5.5-7.0 and 8.6-10.4 m; a white cornice 11.1-11.9 m; a red tile roof with two small dormers 12.3-13.5 m; red-brown brick #5d534f",
+   "at": "2023-03-13"
+  },
+  "roof/material": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): an 8.4 m front of four axes: ground 0-4.4 m (windows 2.6-4.2 m, the door on the third axis); storeys at 5.5-7.0 and 8.6-10.4 m; a white cornice 11.1-11.9 m; a red tile roof with two small dormers 12.3-13.5 m; red-brown brick #5d534f",
+   "at": "2023-03-13"
+  },
+  "palette/frame": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): an 8.4 m front of four axes: ground 0-4.4 m (windows 2.6-4.2 m, the door on the third axis); storeys at 5.5-7.0 and 8.6-10.4 m; a white cornice 11.1-11.9 m; a red tile roof with two small dormers 12.3-13.5 m; red-brown brick #5d534f (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/door": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): an 8.4 m front of four axes: ground 0-4.4 m (windows 2.6-4.2 m, the door on the third axis); storeys at 5.5-7.0 and 8.6-10.4 m; a white cornice 11.1-11.9 m; a red tile roof with two small dormers 12.3-13.5 m; red-brown brick #5d534f (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/stone": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): an 8.4 m front of four axes: ground 0-4.4 m (windows 2.6-4.2 m, the door on the third axis); storeys at 5.5-7.0 and 8.6-10.4 m; a white cornice 11.1-11.9 m; a red tile roof with two small dormers 12.3-13.5 m; red-brown brick #5d534f (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/cornice": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): an 8.4 m front of four axes: ground 0-4.4 m (windows 2.6-4.2 m, the door on the third axis); storeys at 5.5-7.0 and 8.6-10.4 m; a white cornice 11.1-11.9 m; a red tile roof with two small dormers 12.3-13.5 m; red-brown brick #5d534f (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/stoneMaterial": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): an 8.4 m front of four axes: ground 0-4.4 m (windows 2.6-4.2 m, the door on the third axis); storeys at 5.5-7.0 and 8.6-10.4 m; a white cornice 11.1-11.9 m; a red tile roof with two small dormers 12.3-13.5 m; red-brown brick #5d534f (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/brick": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): an 8.4 m front of four axes: ground 0-4.4 m (windows 2.6-4.2 m, the door on the third axis); storeys at 5.5-7.0 and 8.6-10.4 m; a white cornice 11.1-11.9 m; a red tile roof with two small dormers 12.3-13.5 m; red-brown brick #5d534f",
+   "at": "2023-03-13"
+  },
+  "palette/wallMaterial": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): an 8.4 m front of four axes: ground 0-4.4 m (windows 2.6-4.2 m, the door on the third axis); storeys at 5.5-7.0 and 8.6-10.4 m; a white cornice 11.1-11.9 m; a red tile roof with two small dormers 12.3-13.5 m; red-brown brick #5d534f",
+   "at": "2023-03-13"
+  }
+ }
+}

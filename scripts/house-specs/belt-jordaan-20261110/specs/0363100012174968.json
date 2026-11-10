@@ -1,0 +1,214 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012174968",
+ "address": "Egelantiersgracht 23",
+ "design": {
+  "fronts": [
+   {
+    "id": "front0",
+    "basement": "none",
+    "cornice": "none",
+    "windows": "sash",
+    "windowSurround": "sill",
+    "hoist": false,
+    "street": "Egelantiersgracht",
+    "gable": "neck",
+    "crownRise": 0.95,
+    "crownCap": "rounded",
+    "atticWindows": 1,
+    "storeys": 3,
+    "bays": [
+     3,
+     2,
+     3
+    ],
+    "storeyHeights": [
+     4.4,
+     2.4,
+     2.4
+    ],
+    "doorBay": 1,
+    "groundFront": {
+     "kind": "pui",
+     "bays": [
+      "window",
+      "door",
+      "window"
+     ],
+     "bayWeights": [
+      1.2,
+      0.8,
+      1.6
+     ],
+     "colour": "#ece9e0",
+     "evidence": "strip 2023-03-13: a white timber shopfront across the full width"
+    }
+   }
+  ],
+  "roof": {
+   "material": "red-tile",
+   "squareSaddle": true
+  },
+  "palette": {
+   "frame": "white-painted",
+   "door": "#26302a",
+   "stone": "#ebe8df",
+   "cornice": "#ebe8df",
+   "stoneMaterial": "painted",
+   "brick": "#5b514e",
+   "wallMaterial": "brick"
+  }
+ },
+ "provenance": {
+  "fronts/0/id": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): a white timber shopfront across the full ground 0-4.0 m (door second from left); two large windows at 4.8-6.6 m; three windows at 6.7-8.4 m, the centre one tall; a neck gable 9.5-11.8 m with small claws, one attic light and a rounded cap; brick #5b514e (eland review: neck, not bell; #6e5f5c)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/basement": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): a white timber shopfront across the full ground 0-4.0 m (door second from left); two large windows at 4.8-6.6 m; three windows at 6.7-8.4 m, the centre one tall; a neck gable 9.5-11.8 m with small claws, one attic light and a rounded cap; brick #5b514e (eland review: neck, not bell; #6e5f5c) (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/cornice": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): a white timber shopfront across the full ground 0-4.0 m (door second from left); two large windows at 4.8-6.6 m; three windows at 6.7-8.4 m, the centre one tall; a neck gable 9.5-11.8 m with small claws, one attic light and a rounded cap; brick #5b514e (eland review: neck, not bell; #6e5f5c) (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/windows": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): a white timber shopfront across the full ground 0-4.0 m (door second from left); two large windows at 4.8-6.6 m; three windows at 6.7-8.4 m, the centre one tall; a neck gable 9.5-11.8 m with small claws, one attic light and a rounded cap; brick #5b514e (eland review: neck, not bell; #6e5f5c)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/windowSurround": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): a white timber shopfront across the full ground 0-4.0 m (door second from left); two large windows at 4.8-6.6 m; three windows at 6.7-8.4 m, the centre one tall; a neck gable 9.5-11.8 m with small claws, one attic light and a rounded cap; brick #5b514e (eland review: neck, not bell; #6e5f5c) (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/hoist": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): a white timber shopfront across the full ground 0-4.0 m (door second from left); two large windows at 4.8-6.6 m; three windows at 6.7-8.4 m, the centre one tall; a neck gable 9.5-11.8 m with small claws, one attic light and a rounded cap; brick #5b514e (eland review: neck, not bell; #6e5f5c) (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/street": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): a white timber shopfront across the full ground 0-4.0 m (door second from left); two large windows at 4.8-6.6 m; three windows at 6.7-8.4 m, the centre one tall; a neck gable 9.5-11.8 m with small claws, one attic light and a rounded cap; brick #5b514e (eland review: neck, not bell; #6e5f5c)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/gable": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): a white timber shopfront across the full ground 0-4.0 m (door second from left); two large windows at 4.8-6.6 m; three windows at 6.7-8.4 m, the centre one tall; a neck gable 9.5-11.8 m with small claws, one attic light and a rounded cap; brick #5b514e (eland review: neck, not bell; #6e5f5c)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/crownRise": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): a white timber shopfront across the full ground 0-4.0 m (door second from left); two large windows at 4.8-6.6 m; three windows at 6.7-8.4 m, the centre one tall; a neck gable 9.5-11.8 m with small claws, one attic light and a rounded cap; brick #5b514e (eland review: neck, not bell; #6e5f5c)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/crownCap": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): a white timber shopfront across the full ground 0-4.0 m (door second from left); two large windows at 4.8-6.6 m; three windows at 6.7-8.4 m, the centre one tall; a neck gable 9.5-11.8 m with small claws, one attic light and a rounded cap; brick #5b514e (eland review: neck, not bell; #6e5f5c)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/atticWindows": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): a white timber shopfront across the full ground 0-4.0 m (door second from left); two large windows at 4.8-6.6 m; three windows at 6.7-8.4 m, the centre one tall; a neck gable 9.5-11.8 m with small claws, one attic light and a rounded cap; brick #5b514e (eland review: neck, not bell; #6e5f5c)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/storeys": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): a white timber shopfront across the full ground 0-4.0 m (door second from left); two large windows at 4.8-6.6 m; three windows at 6.7-8.4 m, the centre one tall; a neck gable 9.5-11.8 m with small claws, one attic light and a rounded cap; brick #5b514e (eland review: neck, not bell; #6e5f5c)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/bays": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): a white timber shopfront across the full ground 0-4.0 m (door second from left); two large windows at 4.8-6.6 m; three windows at 6.7-8.4 m, the centre one tall; a neck gable 9.5-11.8 m with small claws, one attic light and a rounded cap; brick #5b514e (eland review: neck, not bell; #6e5f5c)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/storeyHeights": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): a white timber shopfront across the full ground 0-4.0 m (door second from left); two large windows at 4.8-6.6 m; three windows at 6.7-8.4 m, the centre one tall; a neck gable 9.5-11.8 m with small claws, one attic light and a rounded cap; brick #5b514e (eland review: neck, not bell; #6e5f5c)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/doorBay": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): a white timber shopfront across the full ground 0-4.0 m (door second from left); two large windows at 4.8-6.6 m; three windows at 6.7-8.4 m, the centre one tall; a neck gable 9.5-11.8 m with small claws, one attic light and a rounded cap; brick #5b514e (eland review: neck, not bell; #6e5f5c)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/groundFront": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): a white timber shopfront across the full ground 0-4.0 m (door second from left); two large windows at 4.8-6.6 m; three windows at 6.7-8.4 m, the centre one tall; a neck gable 9.5-11.8 m with small claws, one attic light and a rounded cap; brick #5b514e (eland review: neck, not bell; #6e5f5c)",
+   "at": "2023-03-13"
+  },
+  "roof/material": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): a white timber shopfront across the full ground 0-4.0 m (door second from left); two large windows at 4.8-6.6 m; three windows at 6.7-8.4 m, the centre one tall; a neck gable 9.5-11.8 m with small claws, one attic light and a rounded cap; brick #5b514e (eland review: neck, not bell; #6e5f5c)",
+   "at": "2023-03-13"
+  },
+  "roof/squareSaddle": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): a white timber shopfront across the full ground 0-4.0 m (door second from left); two large windows at 4.8-6.6 m; three windows at 6.7-8.4 m, the centre one tall; a neck gable 9.5-11.8 m with small claws, one attic light and a rounded cap; brick #5b514e (eland review: neck, not bell; #6e5f5c)",
+   "at": "2023-03-13"
+  },
+  "palette/frame": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): a white timber shopfront across the full ground 0-4.0 m (door second from left); two large windows at 4.8-6.6 m; three windows at 6.7-8.4 m, the centre one tall; a neck gable 9.5-11.8 m with small claws, one attic light and a rounded cap; brick #5b514e (eland review: neck, not bell; #6e5f5c) (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/door": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): a white timber shopfront across the full ground 0-4.0 m (door second from left); two large windows at 4.8-6.6 m; three windows at 6.7-8.4 m, the centre one tall; a neck gable 9.5-11.8 m with small claws, one attic light and a rounded cap; brick #5b514e (eland review: neck, not bell; #6e5f5c) (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/stone": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): a white timber shopfront across the full ground 0-4.0 m (door second from left); two large windows at 4.8-6.6 m; three windows at 6.7-8.4 m, the centre one tall; a neck gable 9.5-11.8 m with small claws, one attic light and a rounded cap; brick #5b514e (eland review: neck, not bell; #6e5f5c) (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/cornice": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): a white timber shopfront across the full ground 0-4.0 m (door second from left); two large windows at 4.8-6.6 m; three windows at 6.7-8.4 m, the centre one tall; a neck gable 9.5-11.8 m with small claws, one attic light and a rounded cap; brick #5b514e (eland review: neck, not bell; #6e5f5c) (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/stoneMaterial": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): a white timber shopfront across the full ground 0-4.0 m (door second from left); two large windows at 4.8-6.6 m; three windows at 6.7-8.4 m, the centre one tall; a neck gable 9.5-11.8 m with small claws, one attic light and a rounded cap; brick #5b514e (eland review: neck, not bell; #6e5f5c) (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/brick": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): a white timber shopfront across the full ground 0-4.0 m (door second from left); two large windows at 4.8-6.6 m; three windows at 6.7-8.4 m, the centre one tall; a neck gable 9.5-11.8 m with small claws, one attic light and a rounded cap; brick #5b514e (eland review: neck, not bell; #6e5f5c)",
+   "at": "2023-03-13"
+  },
+  "palette/wallMaterial": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): a white timber shopfront across the full ground 0-4.0 m (door second from left); two large windows at 4.8-6.6 m; three windows at 6.7-8.4 m, the centre one tall; a neck gable 9.5-11.8 m with small claws, one attic light and a rounded cap; brick #5b514e (eland review: neck, not bell; #6e5f5c)",
+   "at": "2023-03-13"
+  }
+ }
+}
