@@ -1,8 +1,8 @@
 {
  "buurt": "frederikspleinbuurt",
  "library": "de-pijp",
- "generatedAt": "2026-11-10T08:47:40.160Z",
- "seconds": 21.36,
+ "generatedAt": "2026-11-10T09:06:56.794Z",
+ "seconds": 12.25,
  "totals": {
   "faces": 1,
   "pands": 10,
@@ -28,12 +28,15 @@
       "0363100012178935"
      ],
      "passed": true,
-     "triangles": 9330
+     "triangles": 12402
     }
    ],
-   "seconds": 21.35,
+   "seconds": 12.24,
    "byType": {
-    "witsen-1890-plain-block-mansard": 7
+    "witsen-1890-iron-zinc-mansard": 2,
+    "witsen-1890-balustrade-mansard": 2,
+    "witsen-1890-plain-block-mansard": 2,
+    "witsen-1890-balconette-zinc-mansard": 1
    },
    "installed": 0,
    "holds": {

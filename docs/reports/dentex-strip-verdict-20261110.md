@@ -123,3 +123,103 @@ installing it "near enough".
 | Paint, 20 | #3f494a (top), #303b3c (middle) | #505c67 |
 | Cornice body, r1 / r2 / 22 | #62614c–#736e56 / #757362 / #7a7861 | cream, about #e8e4d8 |
 | White blocks, r2 | #fdfdf6 | olive lintel strips |
+
+---
+
+# Round 2 (re-review after fixes, plus Nicolaas Witsenstraat)
+
+Sheets: `sheet-tex-1-59-r1-round2`, `sheet-tex-1-59-r2-round2`, `sheet-tex-8-58-r1-round2` and `sheet-witsen-1-19-r1-frederiksplein`.
+Hex values are strip medians of pier boxes. The photo has the same slight yellow-green cast as in round 1.
+
+## Did the round-1 fixes land?
+
+| Round-1 fix | Status |
+|---|---|
+| White blocks on the head-line piers, white keystones, white dentil row under the cornice | **Landed, but under-scaled.** The model draws small squares, about 0.25 m. In the photo the pier blocks are about 0.5 m wide and 0.3 m tall, and they read as a broken white band. Enlarge them. |
+| Erkers on 11 and 15 | **Landed.** The top-floor railing on the erker roof is still missing on 11 and 15 (optional). |
+| Narrower single-light dormer on the hood-bracket type | **Partly landed.** It is now single-light and narrow, but the whole dormer is glass. The photo is a white body about 1.9 m wide with a light of about 0.7 m between white cheeks. Add white cheeks of about 0.4 m each side. |
+| 11's row line | **Landed** (13.18 m). |
+| 27 mirror | **Landed.** The door is now on the left. |
+| Remove 23's middle-storey balcony | **Landed.** |
+| Flat middle-storey heads on r2 | **Landed.** |
+| 27's eaves to the row line | **Landed** (13.71 m). |
+| Brick `#645341` (r1/r2) and `#655444` (22) | **Not landed.** The models are still `#735f4b`/`#74604c`. The photo reads `#594d3d` (r1) and `#5b5141` (r2). |
+| Cornice body `#9e9a84` | **Not landed.** The model frieze is still pale, `#d9d5c9`. The photo cornice reads `#78745c` (r1) and `#66644b` (8-58). |
+| Paint on 20, `#424c51` | **Not landed.** The model is `#4e5c62`, still blue. The photo is `#3f494a`. |
+| Three-part r2 dormer with white body and raised centre | **Not landed.** It is still three equal glass lights. |
+| Fan of white voussoirs over the ground windows on 20 | **Not landed.** The model draws small blocks. This is a kit gap; keep it on the list. |
+
+## Verdicts: Den Texstraat
+
+The palette pins below are the main remaining gap. They are palette-only, so once they are in, no re-sheet is needed for the pands marked *palette*.
+
+| Pand | BAG | Verdict | Still to do |
+|---|---|---|---|
+| 7 (released by the roof pin) | 179436 | **install-with-fix**, or hold | The photo has a **white erker on the middle-storey centre axis, with a balcony railing over it**, like 11 and 15. The model has none: add it. Hold if it cannot be added. Then brick and cornice. |
+| 9 (released by the roof pin) | 179435 | **install-with-fix** | Its frieze sits about 0.4 m above the row (eaves 13.48 m against 13.06–13.18 m), while the photo cornice runs continuously. Clamp to about 13.1 m. Then brick and cornice. |
+| 11 | 179430 | **install-with-fix** (*palette*) | Brick, cornice, dormer cheeks. |
+| 13 | 179429 | **install-with-fix** (*palette*) | Brick, cornice, dormer cheeks. |
+| 15 | 179383 | **install-with-fix** (*palette*) | Brick, cornice, dormer cheeks. |
+| 21 | 179512 | **install-with-fix** (*palette*) | Cornice, dormer. Its brick passes the gate; it takes the run value `#645341`. |
+| 23 | 179511 | **install-with-fix** (*palette*) | Brick, cornice, dormer. |
+| 25 | 179510 | **install-with-fix** (*palette*) | Brick, cornice, dormer. |
+| 27 | 179509 | **install-with-fix** (*palette*) | Brick, cornice, dormer. The lighter slate `~#6f7580` remains optional. |
+| 24 (released by the roof pin) | 179378 | **install-with-fix**, or hold | The photo has a **white erker on the middle-storey centre with a balcony on top**; the model has none. Add it, or hold. The paint is near-black grey, `#3c3f3a`; the model is `#4d5562`, which is blue. Use **`#43484a`**. |
+| 22 | 179377 | **install-with-fix** (*palette*) | Brick **`#655444`** (the photo is `#615447`, the model `#73614f`). Cornice. |
+| 20 | 179379 | **install-with-fix** (*palette*) | Paint **`#424c51`**, cornice. The voussoir fan is a kit gap. The use stays a house. |
+| 18 (released by the roof pin) | 179380 | **install-with-fix** | Its brick is far off: the photo is a dark red-brown `#3c362c`, the model `#6f5846`. Use **`#504436`**. Add the **iron balcony on the top-storey centre**. The white voussoir fan over the ground windows is the same gap as on 20. The door on the right matches. |
+
+Palette summary for the lane's pins:
+- **Wall:** `#645341` for runs r1 and r2; `#655444` for 22; `#504436` for 18; `#43484a` for 24; `#424c51` for 20.
+- **Cornice and frieze body:** `#9e9a84` on all Den Texstraat pands. Keep white only for the lip, blocks and dentils.
+- **Dormers:** white cheeks on the single-light dormers. For r2, a white body, narrower side lights and a lifted centre.
+- **Blocks:** enlarge the head-line pier blocks to about 0.5 × 0.3 m.
+
+## Verdicts: Nicolaas Witsenstraat 7-19B (witsen-1890-plain-block-mansard)
+
+**What matches:**
+- Three bays and four storeys.
+- Flat heads with white keystone blocks; white frames and sills; two-light casements with top lights.
+- Door side on six of the seven pands.
+- The mansard cap at 17.4 m matches the slate mansard top on pands 2–5.
+
+**Fixes for the whole run:**
+1. **Balconies (missing everywhere).** Every pand has centre-axis balconies on the second and third storeys (the two middle storeys), on white consoles.
+   - Pands 177761 and 177760 have **white stone balustrades**.
+   - Pands 177762, 177759, 171225 and 178936 have iron railings on stone slabs.
+   - Pand 178935 has iron balconettes with planters.
+   - The model has none. Add them from the kit's balcony and console components.
+2. **Brick (gate fails on six of seven).** The models are too light. Per pand, 60 % of the way to the photo:
+
+   | Pand | Photo | Model | Pin |
+   |---|---|---|---|
+   | 177762 | #4e4232 | #775e4b | **#5e4d3c** |
+   | 177761 | #665747 | #886e59 | **#74604e** |
+   | 177760 | #3f3529 | #5d5141 | **#4b4033** |
+   | 177759 | #393225 | #645749 | **#4a4133** |
+   | 171225 | #3c392b | #6b5847 | **#4f4536** |
+   | 178936 | #4e4639 | #775d4c | **#5e4f41** |
+   | 178935 | #5b4a3a | #6f5544 | gate passes; keep |
+
+3. **Upper window rows.** The top two upper storeys sit about 0.5 m low and the lowest upper storey about 0.25 m low, against the photo. Raise them. The ground storey matches.
+4. **Dormers.** The photo dormers are white, tall and single-light under a pediment. 177761 also has two small side dormers. The model's square two-light dormer is a known kit limit.
+5. **Pands 177762, 178936 and 178935 are a different front.** They have a tall white cornice with a console or dentil band, about 1.5 m. Above it is a **light grey-green roof face** (`#6d7160`–`#75725e`, probably zinc), not the dark slate mansard of pands 2–5 (`#424643`). Pin their roof colour toward the photo, **`#5f6560`** (60 % of the way from the model's `#4b535f`), and deepen the cornice. The console band is a kit gap.
+
+| Pand | BAG | Verdict | Pand-specific |
+|---|---|---|---|
+| 1 | 177762 | **install-with-fix** | Iron balconies; brick; zinc roof face; heavy cornice. |
+| 2 | 177761 | **install-with-fix** | Stone-balustrade balconies; brick; side dormers (or list them as a gap). |
+| 3 | 177760 | **install-with-fix** | Stone-balustrade balconies; brick. |
+| 4 | 177759 | **install-with-fix** | Balconies; brick. |
+| 5 | 171225 | **install-with-fix** | Balconies; brick. |
+| 6 | 178936 | **install-with-fix** | Iron balconies on consoles; brick; zinc roof face; heavy cornice. |
+| 7 | 178935 | **install-with-fix** | **Mirror flip**: the door is on the right in the photo and on the left in the model. Add `{pandId: "<178935 full id>", type: "witsen-1890-plain-block-mansard", mirror: <flip>, reason: "photo: two windows, door right"}` to `den-texbuurt-review-types.json` or the Frederiksplein equivalent. Also balconettes, zinc roof face and heavy cornice. |
+
+The Witsen balconies are the blocking item. Without them the row reads as plain block fronts, which the photo is not, so hold the run if the balconies cannot be added.
+
+## Kit gaps still open (round 2)
+
+- A fan of white radiating voussoirs over flat-headed ground windows (Den Texstraat 18 and 20).
+- Ornate dormer pediments with scrolls, and the r2 dormer with a raised centre.
+- A white console or dentil cornice band (Witsen 177762, 178936 and 178935).
+- White stone balustrade balconies (Witsen 177761 and 177760), if the kit has only iron railings.

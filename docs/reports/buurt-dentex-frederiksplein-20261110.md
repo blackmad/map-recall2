@@ -58,3 +58,12 @@ Why `--no-gate`: the likeness gate abstains on these fronts ("usable photo 30-47
 Round 2 adds `reviewRoofs.ts`, `pierBlocks.ts` and `dormerLights 1`; `test:block-face` 329/329, `test:building-recipes` 499/499, tsc clean. Roof golden was re-recorded for the tex and witsen faces only.
 
 Rebuild covers.json, explorer-looks.json, `chunkWallExposureData.ts` (already written by `compile.ts --install`), bundles; `roof-golden.json` was re-recorded (additions only, 0 reclassed). `test:block-face` 322/322, tsc clean. tex-8-58 stripOverDrawn 0.76 (below the batch's 0.8 floor: the run is dark painted fronts under a bright mansard).
+
+## Round 3 (Opus round-2 verdict)
+
+* **Colour check:** a literal palette pin renders about 1.14x lighter than the pinned hex (`cityWallTint` lifts brick into the city range; the sheet lit-render adds a little more). Brick pins on all four runs now go through `fitWallBrick` (`fit-wall-palette.ts`), and cornice bands use `entablature.frieze: wall` because `palette.cornice` is mixed into the city sandstone. After the fit the model reads within about 0.05 of the photo on Den Texstraat (#635442 vs #5d5948-#6b6a57) and Witsenstraat.
+* **Den Texstraat:** white dormer cheeks (dormerBody stone, narrow light), pier blocks 0.8 x 0.5 x 0.3 with dentils (new typed `pierBlocks` kit piece, byte-identical when absent), erkers on 7, 11, 15 and 24, balcony variant on 18, brick fits, eaves pin. Reinstalled tex-1-59-r1, tex-1-59-r2, tex-8-58-r1.
+* **Witsenstraat:** stone balustrade balconies (turned rail on white consoles) on 177761 and 177760 on the two middle storeys, iron elsewhere; per-pand fitted bricks; zinc roof and deeper console cornice on 177762, 178936, 178935; raised upper window rows. Reinstalled witsen-1-19-r1 (7 pands).
+* **Still not expressible:** Den Texstraat r2 (21-27) dormer is one white gable with a three-light window, not a three-part dormer with a raised centre under a pediment; its centre balcony spans one storey only. Den Texstraat 24 and 20 paint is the fitted dark brick, painted-brick not used. Erkers on 7 and 24 lack the balcony above. Witsen stone balustrades are a turned rail, not a solid stone balustrade.
+* Roof golden re-recorded (1 reclassed face of mine, 4 intent changes, all own faces). `test:block-face` 329/329, lint clean.
+* Integrator rebuilds: covers.json, explorer-looks.json, bundles; `chunkWallExposureData.ts` is already written.

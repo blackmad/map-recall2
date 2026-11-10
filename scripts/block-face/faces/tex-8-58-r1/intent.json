@@ -18,6 +18,8 @@
   "note": "auto-placed from the de-pijp library (buurt Den Texbuurt); scores and holds in scripts/block-face/faces/tex-8-58/auto-place.json"
  },
  "types": [
+  "tex-1882-hood-bracket-balcony",
+  "tex-1882-hood-bracket-erker",
   "tex-1882-hood-bracket-mansard"
  ],
  "houses": [
@@ -26,14 +28,16 @@
    "slug": "tex-179378",
    "address": "Den Texstraat 24",
    "type": {
-    "type": "tex-1882-hood-bracket-mansard",
+    "type": "tex-1882-hood-bracket-erker",
     "mirror": true,
     "measuredPalette": {
      "brick": "#867e6d",
      "evidence": "strip 2024-12-04 span 1519-1769: trim-normalised wall (buildingRecipe/measureFacade.ts)"
     },
     "paletteOverrides": {
-     "brick": "#45474c"
+     "brick": "#43484a",
+     "wallMaterial": "painted-brick",
+     "wallTint": "measured"
     }
    },
    "groundFloor": {
@@ -46,7 +50,7 @@
     "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
    },
    "rhythm": {
-    "citation": "auto-place: tex-1882-hood-bracket-mansard scored 1 on eaves 1, stucco 1, columns 1; strip 2024-12-04 span 1519-1769"
+    "citation": "auto-place: tex-1882-hood-bracket-erker scored 1 on eaves 1, stucco 1, columns 1; strip 2024-12-04 span 1519-1769"
    }
   },
   {
@@ -57,7 +61,7 @@
     "type": "tex-1882-hood-bracket-mansard",
     "mirror": true,
     "paletteOverrides": {
-     "brick": "#655444"
+     "brick": "#544639"
     }
    },
    "groundFloor": {
@@ -91,7 +95,9 @@
      "evidence": "strip 2024-12-04 span 2015-2264: trim-normalised wall (buildingRecipe/measureFacade.ts)"
     },
     "paletteOverrides": {
-     "brick": "#424c51"
+     "brick": "#424c51",
+     "wallMaterial": "painted-brick",
+     "wallTint": "measured"
     }
    },
    "groundFloor": {
@@ -112,14 +118,14 @@
    "slug": "tex-179380",
    "address": "Den Texstraat 18",
    "type": {
-    "type": "tex-1882-hood-bracket-mansard",
+    "type": "tex-1882-hood-bracket-balcony",
     "mirror": true,
     "measuredPalette": {
      "brick": "#483d33",
      "evidence": "strip 2024-12-04 span 2264-2513: trim-normalised wall (buildingRecipe/measureFacade.ts)"
     },
     "paletteOverrides": {
-     "brick": "#5e4a3b"
+     "brick": "#372e25"
     }
    },
    "groundFloor": {
@@ -132,7 +138,7 @@
     "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
    },
    "rhythm": {
-    "citation": "auto-place: tex-1882-hood-bracket-mansard scored 0.82 on eaves 0.5, stucco 1, columns 1; strip 2024-12-04 span 2264-2513"
+    "citation": "auto-place: tex-1882-hood-bracket-balcony scored 0.82 on eaves 0.5, stucco 1, columns 1; strip 2024-12-04 span 2264-2513"
    }
   }
  ],
@@ -153,7 +159,7 @@
     "frontRoof": {
      "topRow": 286
     },
-    "evidence": "auto-place: strip skyline cornice 13.4 m within 1 m of the tex-1882-hood-bracket-mansard line 13.5 m; 3DBAG/PDOK eaves 14.45 m; reviewer roof pin: cornice 13.5 m, roof top 14.3 m (Den Texstraat 24 (tex strips 2024-12-04): the dormer stands on the slate behind a 13.5 m cornice, the photo shows sky above it; 3DBAG ridge is 2-3 m higher)"
+    "evidence": "auto-place: strip skyline cornice 13.4 m within 1 m of the tex-1882-hood-bracket-erker line 13.5 m; 3DBAG/PDOK eaves 14.45 m; reviewer roof pin: cornice 13.5 m, roof top 14.3 m (Den Texstraat 24 (tex strips 2024-12-04): the dormer stands on the slate behind a 13.5 m cornice, the photo shows sky above it; 3DBAG ridge is 2-3 m higher)"
    },
    {
     "pand": "0363100012179377",
@@ -173,7 +179,7 @@
     "frontRoof": {
      "topRow": 286
     },
-    "evidence": "auto-place: the tex-1882-hood-bracket-mansard cornice line 13.5 m (measured on its exemplar strips; this pand's skyline unread); 3DBAG/PDOK eaves 14.42 m; reviewer roof pin: cornice 13.5 m, roof top 14.3 m (Den Texstraat 18 (tex strips 2024-12-04): the dormer stands on the slate behind a 13.5 m cornice, the photo shows sky above it; 3DBAG ridge is 2-3 m higher)"
+    "evidence": "auto-place: the tex-1882-hood-bracket-balcony cornice line 13.5 m (measured on its exemplar strips; this pand's skyline unread); 3DBAG/PDOK eaves 14.42 m; reviewer roof pin: cornice 13.5 m, roof top 14.3 m (Den Texstraat 18 (tex strips 2024-12-04): the dormer stands on the slate behind a 13.5 m cornice, the photo shows sky above it; 3DBAG ridge is 2-3 m higher)"
    }
   ]
  }

@@ -27,7 +27,7 @@
    "slug": "tex-179436",
    "address": "Den Texstraat 7",
    "type": {
-    "type": "tex-1882-hood-bracket-mansard"
+    "type": "tex-1882-hood-bracket-erker"
    },
    "groundFloor": {
     "use": "residential",
@@ -39,7 +39,7 @@
     "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
    },
    "rhythm": {
-    "citation": "auto-place: tex-1882-hood-bracket-mansard scored 1 on eaves 1, stucco -; strip 2024-12-04 span 1215-1459"
+    "citation": "auto-place: tex-1882-hood-bracket-erker scored 1 on eaves 1, stucco -; strip 2024-12-04 span 1215-1459"
    }
   },
   {
@@ -143,15 +143,15 @@
    {
     "pand": "0363100012179436",
     "stripRow": 276,
-    "evidence": "auto-place: strip skyline cornice 13.07 m within 1 m of the tex-1882-hood-bracket-mansard line 13.5 m; 3DBAG/PDOK eaves 11.16 m"
+    "evidence": "auto-place: strip skyline cornice 13.07 m within 1 m of the tex-1882-hood-bracket-erker line 13.5 m; 3DBAG/PDOK eaves 11.16 m"
    },
    {
     "pand": "0363100012179435",
-    "stripRow": 259,
+    "stripRow": 275,
     "frontRoof": {
      "topRow": 227
     },
-    "evidence": "auto-place: strip skyline cornice 13.05 m within 1 m of the tex-1882-hood-bracket-mansard line 13.5 m; 3DBAG/PDOK eaves 14.15 m; reviewer roof pin: cornice 13.5 m, roof top 14.3 m (Den Texstraat 9 (tex strips 2024-12-04): the dormer stands on the slate behind a 13.5 m cornice, the photo shows sky above it; 3DBAG ridge is 2-3 m higher)"
+    "evidence": "auto-place: strip skyline cornice 13.05 m within 1 m of the tex-1882-hood-bracket-mansard line 13.5 m; 3DBAG/PDOK eaves 14.15 m; reviewer roof pin: cornice 13.1 m, roof top 14.3 m (Den Texstraat 9 (tex strips 2024-12-04): the dormer stands on the slate behind a 13.5 m cornice, the photo shows sky above it; 3DBAG ridge is 2-3 m higher; round 2: the cornice runs continuous across 7-15 at 13.1 m, the model stood 0.4 m high (Opus))"
    },
    {
     "pand": "0363100012179430",

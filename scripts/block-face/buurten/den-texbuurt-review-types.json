@@ -8,7 +8,6 @@
     "tex-1882-hood-bracket-mansard"
    ],
    "pands": [
-    "0363100012179436",
     "0363100012179435",
     "0363100012179429"
    ],
@@ -33,10 +32,8 @@
    ],
    "pands": [
     "0363100012179507",
-    "0363100012179378",
     "0363100012179377",
-    "0363100012179379",
-    "0363100012179380"
+    "0363100012179379"
    ],
    "reason": "Den Texstraat 18-26 (2024-12-04 strip, gridded): same design as Den Texstraat 7-15, painted dark grey on 20-26 and brick on 18"
   },
@@ -60,6 +57,36 @@
     "0363100012179511"
    ],
    "reason": "Opus verdict: Den Texstraat 23 has the balcony on the top storey only"
+  },
+  {
+   "face": "tex-1-59",
+   "types": [
+    "tex-1882-hood-bracket-erker"
+   ],
+   "pands": [
+    "0363100012179436"
+   ],
+   "reason": "Opus round 2: Den Texstraat 7 has the white erker on the middle-storey centre with a balcony railing over it, like 11 and 15"
+  },
+  {
+   "face": "tex-8-58",
+   "types": [
+    "tex-1882-hood-bracket-erker"
+   ],
+   "pands": [
+    "0363100012179378"
+   ],
+   "reason": "Opus round 2: Den Texstraat 24 has the white erker on the middle-storey centre"
+  },
+  {
+   "face": "tex-8-58",
+   "types": [
+    "tex-1882-hood-bracket-balcony"
+   ],
+   "pands": [
+    "0363100012179380"
+   ],
+   "reason": "Opus round 2: Den Texstraat 18 has an iron balcony on the top-storey centre"
   }
  ]
 }

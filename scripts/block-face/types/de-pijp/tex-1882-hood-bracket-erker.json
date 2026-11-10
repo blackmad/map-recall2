@@ -66,7 +66,7 @@
   "entablature": {
    "rise": 1.3,
    "cap": 0.35,
-   "frieze": "trim",
+   "frieze": "wall",
    "architrave": 0.1
   },
   "pierBlocks": {
@@ -75,13 +75,13 @@
     1,
     2
    ],
-   "long": 0.55,
-   "short": 0.28,
+   "long": 0.8,
+   "short": 0.5,
    "rise": 0.3,
    "dentils": {
-    "pitch": 0.45,
-    "block": 0.2,
-    "rise": 0.2
+    "pitch": 0.5,
+    "block": 0.3,
+    "rise": 0.25
    }
   },
   "bayWindows": {
@@ -114,8 +114,12 @@
     "rise": 2.1,
     "setback": 0.4
    },
-   "note": "Opus verdict 2026-11-10: one narrow light (0.7 m) between white cheeks under a tall white pediment, about 1.9 m overall; the scroll consoles and the crowning ornament are not in the kit",
-   "dormerLights": 1
+   "note": "Opus verdict 2026-11-10: one narrow light (0.7 m) between white cheeks under a tall white pediment, about 1.9 m overall; the scroll consoles and the crowning ornament are not in the kit; round 2: white body with the light between white cheeks (dormerWindow)",
+   "dormerWindow": {
+    "light": 0.7,
+    "apron": 0.3,
+    "tall": 1.1
+   }
   }
  },
  "grounds": {
@@ -132,7 +136,7 @@
  },
  "palettes": {
   "dark-brown-1882": {
-   "brick": "#645341",
+   "brick": "#514435",
    "frame": "white-painted",
    "door": "#2a2a2a",
    "stone": "#f0efe6",
@@ -176,6 +180,7 @@
   }
  ],
  "notes": [
-  "Opus verdict (dentex-strip-verdict-20261110): white head-line pier blocks and dentils (pierBlocks), keystones on every head, brick #645341, cornice body #9e9a84"
+  "Opus verdict (dentex-strip-verdict-20261110): white head-line pier blocks and dentils (pierBlocks), keystones on every head, brick #645341, cornice body #9e9a84",
+  "brick #645341 is the verdict colour; the palette holds #514435 (scripts/block-face/fit-wall-palette.ts) so the lit sheet render lands on it"
  ]
 }

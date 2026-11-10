@@ -1,8 +1,8 @@
 {
  "buurt": "den-texbuurt",
  "library": "de-pijp",
- "generatedAt": "2026-11-10T08:39:37.037Z",
- "seconds": 50.87,
+ "generatedAt": "2026-11-10T09:06:43.922Z",
+ "seconds": 28.79,
  "totals": {
   "faces": 2,
   "pands": 31,
@@ -26,7 +26,7 @@
       "0363100012179383"
      ],
      "passed": true,
-     "triangles": 8306
+     "triangles": 8643
     },
     {
      "face": "tex-1-59-r2",
@@ -37,13 +37,13 @@
       "0363100012179509"
      ],
      "passed": true,
-     "triangles": 6893
+     "triangles": 6997
     }
    ],
-   "seconds": 35.65,
+   "seconds": 12.73,
    "byType": {
-    "tex-1882-hood-bracket-mansard": 3,
-    "tex-1882-hood-bracket-erker": 2,
+    "tex-1882-hood-bracket-erker": 3,
+    "tex-1882-hood-bracket-mansard": 2,
     "tex-1876-balcony-wide-dormer": 3,
     "tex-1876-balcony-top-only": 1
    },
@@ -72,12 +72,14 @@
       "0363100012179380"
      ],
      "passed": true,
-     "triangles": 6728
+     "triangles": 7152
     }
    ],
-   "seconds": 15.19,
+   "seconds": 16.02,
    "byType": {
-    "tex-1882-hood-bracket-mansard": 4
+    "tex-1882-hood-bracket-erker": 1,
+    "tex-1882-hood-bracket-mansard": 2,
+    "tex-1882-hood-bracket-balcony": 1
    },
    "installed": 0,
    "holds": {

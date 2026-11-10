@@ -3,7 +3,7 @@
  "street": "Nicolaas Witsenstraat",
  "library": "de-pijp",
  "stripDate": "2024-12-04",
- "seconds": 21.35,
+ "seconds": 12.24,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -26,7 +26,7 @@
     "0363100012178935"
    ],
    "passed": true,
-   "triangles": 9330
+   "triangles": 12402
   }
  ],
  "pands": [
@@ -296,48 +296,50 @@
     "foliageShare": 0.24
    },
    "status": "placed",
-   "type": "witsen-1890-plain-block-mansard",
+   "type": "witsen-1890-iron-zinc-mansard",
    "score": 1,
    "placement": {
-    "type": "witsen-1890-plain-block-mansard",
+    "type": "witsen-1890-iron-zinc-mansard",
     "mirror": true,
     "measuredPalette": {
      "brick": "#695342",
      "evidence": "strip 2024-12-04 span 721-973: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#493c2f"
     }
    },
    "notes": [
     "door right: mirrored",
-    "crown mansard-box-dormer (type default)"
+    "crown mansard-box-dormer (type default)",
+    "palette pinned: Opus round 2 brick pin (60 %% of the way to the strip median), drawn as measured; palette #493c2f fitted by fit-wall-palette.ts so the render lands on #5e4d3c"
    ],
    "likeness": {
     "pandId": "0363100012177762",
-    "ncc": 0.218,
-    "nccRaw": 0.218,
+    "ncc": 0.168,
+    "nccRaw": 0.168,
     "shiftM": [
-     -0.1,
-     -0.15
+     0.1,
+     -0.3
     ],
     "usable": 0.7,
     "abstain": null,
-    "verdict": "FAIL",
-    "reasons": [
-     "glazing storey band off by 0.18"
-    ],
+    "verdict": "PASS",
+    "reasons": [],
     "wall": {
      "photo": "#735b48",
-     "model": "#846853",
-     "dL": 0.055
+     "model": "#675542",
+     "dL": -0.035
     },
     "glazing": {
      "photo": 0.41,
-     "model": 0.43
+     "model": 0.48
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.547
+    "iou": 0.488
    },
    "challengers": {}
   },
@@ -393,47 +395,49 @@
     "foliageShare": 0.16
    },
    "status": "placed",
-   "type": "witsen-1890-plain-block-mansard",
+   "type": "witsen-1890-balustrade-mansard",
    "score": 1,
    "placement": {
-    "type": "witsen-1890-plain-block-mansard",
+    "type": "witsen-1890-balustrade-mansard",
     "measuredPalette": {
      "brick": "#7e6552",
      "evidence": "strip 2024-12-04 span 973-1225: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#665445"
     }
    },
    "notes": [
     "door left",
-    "crown mansard-box-dormer (type default)"
+    "crown mansard-box-dormer (type default)",
+    "palette pinned: Opus round 2 brick pin (60 %% of the way to the strip median), drawn as measured; palette #665445 fitted by fit-wall-palette.ts so the render lands on #74604e"
    ],
    "likeness": {
     "pandId": "0363100012177761",
-    "ncc": 0.186,
-    "nccRaw": 0.186,
+    "ncc": 0.26,
+    "nccRaw": 0.26,
     "shiftM": [
      0.05,
-     -0.4
+     -0.3
     ],
     "usable": 0.7,
     "abstain": null,
-    "verdict": "FAIL",
-    "reasons": [
-     "glazing storey band off by 0.23"
-    ],
+    "verdict": "PASS",
+    "reasons": [],
     "wall": {
      "photo": "#7b6350",
-     "model": "#967962",
-     "dL": 0.088
+     "model": "#806a57",
+     "dL": 0.024
     },
     "glazing": {
      "photo": 0.49,
-     "model": 0.43
+     "model": 0.47
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.533
+    "iou": 0.554
    },
    "challengers": {}
   },
@@ -484,48 +488,52 @@
     "foliageShare": 0.21
    },
    "status": "placed",
-   "type": "witsen-1890-plain-block-mansard",
+   "type": "witsen-1890-balustrade-mansard",
    "score": 1,
    "placement": {
-    "type": "witsen-1890-plain-block-mansard",
+    "type": "witsen-1890-balustrade-mansard",
     "mirror": true,
     "measuredPalette": {
      "brick": "#4a4033",
      "evidence": "strip 2024-12-04 span 1225-1477: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#211c18"
     }
    },
    "notes": [
     "door right: mirrored",
-    "crown mansard-box-dormer (type default)"
+    "crown mansard-box-dormer (type default)",
+    "palette pinned: Opus round 2 brick pin (60 %% of the way to the strip median), drawn as measured; palette #211c18 fitted by fit-wall-palette.ts so the render lands on #4b4033"
    ],
    "likeness": {
     "pandId": "0363100012177760",
-    "ncc": 0.511,
-    "nccRaw": 0.511,
+    "ncc": 0.513,
+    "nccRaw": 0.513,
     "shiftM": [
      0,
-     -0.35
+     -0.15
     ],
-    "usable": 0.66,
+    "usable": 0.65,
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing  mean 0.43 vs photo 0.32"
+     "glazing storey band off by 0.18 mean 0.47 vs photo 0.32"
     ],
     "wall": {
      "photo": "#4e4032",
-     "model": "#675947",
-     "dL": 0.09
+     "model": "#594b40",
+     "dL": 0.049
     },
     "glazing": {
      "photo": 0.32,
-     "model": 0.43
+     "model": 0.47
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.64
+    "iou": 0.673
    },
    "challengers": {}
   },
@@ -588,19 +596,23 @@
     "measuredPalette": {
      "brick": "#54483c",
      "evidence": "strip 2024-12-04 span 1477-1729: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#2c2721"
     }
    },
    "notes": [
     "door left",
-    "crown mansard-box-dormer (type default)"
+    "crown mansard-box-dormer (type default)",
+    "palette pinned: Opus round 2 brick pin (60 %% of the way to the strip median), drawn as measured; palette #2c2721 fitted by fit-wall-palette.ts so the render lands on #4a4133"
    ],
    "likeness": {
     "pandId": "0363100012177759",
-    "ncc": 0.218,
-    "nccRaw": 0.218,
+    "ncc": 0.244,
+    "nccRaw": 0.244,
     "shiftM": [
      -0.05,
-     -0.4
+     -0.05
     ],
     "usable": 0.58,
     "abstain": null,
@@ -610,18 +622,18 @@
     ],
     "wall": {
      "photo": "#59493b",
-     "model": "#6f5f50",
-     "dL": 0.084
+     "model": "#574d42",
+     "dL": 0.01
     },
     "glazing": {
-     "photo": 0.11,
-     "model": 0.43
+     "photo": 0.1,
+     "model": 0.46
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.283
+    "iou": 0.26
    },
    "challengers": {}
   },
@@ -676,21 +688,25 @@
    "score": 1,
    "placement": {
     "type": "witsen-1890-plain-block-mansard",
-    "mirror": true
+    "mirror": true,
+    "paletteOverrides": {
+     "brick": "#2e2820"
+    }
    },
    "notes": [
     "door right: mirrored",
-    "crown mansard-box-dormer (type default)"
+    "crown mansard-box-dormer (type default)",
+    "palette pinned: Opus round 2 brick pin (60 %% of the way to the strip median), drawn as measured; palette #2e2820 fitted by fit-wall-palette.ts so the render lands on #4f4536"
    ],
    "likeness": {
     "pandId": "0363100012171225",
-    "ncc": 0.185,
-    "nccRaw": 0.185,
+    "ncc": 0.179,
+    "nccRaw": 0.179,
     "shiftM": [
-     -0.2,
-     -0.25
+     -0.05,
+     -0.2
     ],
-    "usable": 0.53,
+    "usable": 0.52,
     "abstain": null,
     "verdict": "NO EVIDENCE",
     "reasons": [
@@ -698,18 +714,18 @@
     ],
     "wall": {
      "photo": "#695745",
-     "model": "#76614e",
-     "dL": 0.043
+     "model": "#5a4e3f",
+     "dL": -0.041
     },
     "glazing": {
      "photo": 0.45,
-     "model": 0.42
+     "model": 0.46
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.61
+    "iou": 0.657
    },
    "challengers": {}
   },
@@ -765,45 +781,49 @@
     "foliageShare": 0.26
    },
    "status": "placed",
-   "type": "witsen-1890-plain-block-mansard",
+   "type": "witsen-1890-iron-zinc-mansard",
    "score": 1,
    "placement": {
-    "type": "witsen-1890-plain-block-mansard",
+    "type": "witsen-1890-iron-zinc-mansard",
     "measuredPalette": {
      "brick": "#695143",
      "evidence": "strip 2024-12-04 span 1974-2222: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#4b3f34"
     }
    },
    "notes": [
     "door left",
-    "crown mansard-box-dormer (type default)"
+    "crown mansard-box-dormer (type default)",
+    "palette pinned: Opus round 2 brick pin (60 %% of the way to the strip median), drawn as measured; palette #4b3f34 fitted by fit-wall-palette.ts so the render lands on #5e4f41"
    ],
    "likeness": {
     "pandId": "0363100012178936",
-    "ncc": 0.274,
-    "nccRaw": 0.274,
+    "ncc": 0.27,
+    "nccRaw": 0.27,
     "shiftM": [
-     -0.05,
-     -0.05
+     -0.1,
+     -0.25
     ],
-    "usable": 0.65,
+    "usable": 0.63,
     "abstain": null,
     "verdict": "PASS",
     "reasons": [],
     "wall": {
      "photo": "#705444",
-     "model": "#846654",
-     "dL": 0.071
+     "model": "#685748",
+     "dL": -0.008
     },
     "glazing": {
      "photo": 0.43,
-     "model": 0.42
+     "model": 0.47
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.601
+    "iou": 0.596
    },
    "challengers": {}
   },
@@ -854,47 +874,52 @@
     "foliageShare": 0.24
    },
    "status": "placed",
-   "type": "witsen-1890-plain-block-mansard",
+   "type": "witsen-1890-balconette-zinc-mansard",
    "score": 1,
    "placement": {
-    "type": "witsen-1890-plain-block-mansard",
+    "type": "witsen-1890-balconette-zinc-mansard",
     "measuredPalette": {
      "brick": "#5d4739",
      "evidence": "strip 2024-12-04 span 2222-2480: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "mirror": true,
+    "paletteOverrides": {
+     "brick": "#4e3f31"
     }
    },
    "notes": [
-    "door left",
-    "crown mansard-box-dormer (type default)"
+    "crown mansard-box-dormer (type default)",
+    "door right: mirrored: reviewer pin (Nicolaas Witsenstraat 19B (Opus round 2): two windows, door on the right in the photo)",
+    "palette pinned: Opus round 2 brick pin (60 %% of the way to the strip median), drawn as measured; palette #4e3f31 fitted by fit-wall-palette.ts so the render lands on #624f3e"
    ],
    "likeness": {
     "pandId": "0363100012178935",
-    "ncc": 0.398,
-    "nccRaw": 0.398,
+    "ncc": 0.418,
+    "nccRaw": 0.418,
     "shiftM": [
      -0.2,
-     -0.15
+     -0.3
     ],
-    "usable": 0.66,
+    "usable": 0.65,
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing  mean 0.43 vs photo 0.28"
+     "glazing  mean 0.47 vs photo 0.28"
     ],
     "wall": {
      "photo": "#5d4638",
-     "model": "#7a5d4b",
-     "dL": 0.094
+     "model": "#6c5744",
+     "dL": 0.053
     },
     "glazing": {
      "photo": 0.28,
-     "model": 0.43
+     "model": 0.47
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.684
+    "iou": 0.622
    },
    "challengers": {}
   }

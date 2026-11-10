@@ -3,7 +3,7 @@
  "street": "Den Texstraat",
  "library": "de-pijp",
  "stripDate": "2024-12-04",
- "seconds": 15.19,
+ "seconds": 16.02,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -23,7 +23,7 @@
     "0363100012179380"
    ],
    "passed": true,
-   "triangles": 6728
+   "triangles": 7152
   }
  ],
  "pands": [
@@ -286,9 +286,9 @@
    },
    "status": "held",
    "stage": "match",
-   "reason": "best witsen-1890-plain-block-mansard scores 0.64 < 0.7 (strip cornice 12.65 m vs the type's 15.2 m (wall-dormer skyline 17.3 m))",
+   "reason": "best witsen-1890-balconette-zinc-mansard scores 0.64 < 0.7 (strip cornice 12.65 m vs the type's 15.2 m (wall-dormer skyline 17.3 m))",
    "best": {
-    "type": "witsen-1890-plain-block-mansard",
+    "type": "witsen-1890-balconette-zinc-mansard",
     "score": 0.64,
     "veto": [],
     "criteria": [
@@ -368,9 +368,9 @@
    },
    "status": "held",
    "stage": "match",
-   "reason": "best witsen-1890-plain-block-mansard scores 0.64 < 0.7 (strip cornice 12.5 m vs the type's 15.2 m (wall-dormer skyline 17.3 m))",
+   "reason": "best witsen-1890-balconette-zinc-mansard scores 0.64 < 0.7 (strip cornice 12.5 m vs the type's 15.2 m (wall-dormer skyline 17.3 m))",
    "best": {
-    "type": "witsen-1890-plain-block-mansard",
+    "type": "witsen-1890-balconette-zinc-mansard",
     "score": 0.64,
     "veto": [],
     "criteria": [
@@ -541,52 +541,55 @@
     "foliageShare": 0.26
    },
    "status": "placed",
-   "type": "tex-1882-hood-bracket-mansard",
+   "type": "tex-1882-hood-bracket-erker",
    "score": 1,
    "placement": {
-    "type": "tex-1882-hood-bracket-mansard",
+    "type": "tex-1882-hood-bracket-erker",
     "mirror": true,
     "measuredPalette": {
      "brick": "#867e6d",
      "evidence": "strip 2024-12-04 span 1519-1769: trim-normalised wall (buildingRecipe/measureFacade.ts)"
     },
     "paletteOverrides": {
-     "brick": "#45474c"
+     "brick": "#43484a",
+     "wallMaterial": "painted-brick",
+     "wallTint": "measured"
     }
    },
    "notes": [
     "door right: mirrored",
     "crown mansard-pediment-dormer (type default)",
-    "palette pinned: Den Texstraat 24: dark charcoal painted front; strip wall median #4d4c3e (overcast) read as beige-grey by the type palette; first pin #4f4f4c rendered olive through the city tint, so a cooler charcoal"
+    "palette pinned: Den Texstraat 24: painted near-black grey, strip #3c3f3a; Opus #43484a; painted-brick so it is not lifted into the brick range"
    ],
    "likeness": {
     "pandId": "0363100012179378",
-    "ncc": 0.105,
-    "nccRaw": 0.105,
+    "ncc": 0.109,
+    "nccRaw": 0.109,
     "shiftM": [
-     -0.15,
+     -0.1,
      0.4
     ],
     "usable": 0.56,
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.34 mean 0.48 vs photo 0.77"
+     "wall dL -0.17",
+     "glazing storey band off by 0.24 mean 0.46 vs photo 0.78"
     ],
     "wall": {
      "photo": "#807666",
-     "model": "#5b5e64",
-     "dL": -0.076
+     "model": "#43484a",
+     "dL": -0.175
     },
     "glazing": {
-     "photo": 0.77,
-     "model": 0.48
+     "photo": 0.78,
+     "model": 0.46
     },
     "columns": {
      "photo": null,
      "model": 3
     },
-    "iou": 0.555
+    "iou": 0.515
    },
    "challengers": {}
   },
@@ -648,18 +651,18 @@
     "type": "tex-1882-hood-bracket-mansard",
     "mirror": true,
     "paletteOverrides": {
-     "brick": "#655444"
+     "brick": "#544639"
     }
    },
    "notes": [
     "door right: mirrored",
     "crown mansard-pediment-dormer (type default)",
-    "palette pinned: Den Texstraat 22: brown brick; strip median #605849, lifted 1.15x per the Indische lesson; Opus verdict: #655444 (60 % of the way to the photo)"
+    "palette pinned: Den Texstraat 22: strip pier median #615447; Opus 60 % rule #655444, drawn as measured (wallTint measured: the city wall tint lifted #645341 to #735f4b on the sheet); palette #544639 fitted by fit-wall-palette.ts so the render lands on #655444"
    ],
    "likeness": {
     "pandId": "0363100012179377",
-    "ncc": 0.032,
-    "nccRaw": 0.032,
+    "ncc": 0.046,
+    "nccRaw": 0.046,
     "shiftM": [
      -0.15,
      -0.4
@@ -672,18 +675,18 @@
     ],
     "wall": {
      "photo": "#71614f",
-     "model": "#7f6a56",
-     "dL": 0.041
+     "model": "#705d4c",
+     "dL": -0.008
     },
     "glazing": {
      "photo": 0.63,
-     "model": 0.48
+     "model": 0.41
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.637
+    "iou": 0.568
    },
    "challengers": {}
   },
@@ -744,18 +747,20 @@
      "evidence": "strip 2024-12-04 span 2015-2264: trim-normalised wall (buildingRecipe/measureFacade.ts)"
     },
     "paletteOverrides": {
-     "brick": "#424c51"
+     "brick": "#424c51",
+     "wallMaterial": "painted-brick",
+     "wallTint": "measured"
     }
    },
    "notes": [
     "door right: mirrored",
     "crown mansard-pediment-dormer (type default)",
-    "palette pinned: Den Texstraat 20: dark blue-grey painted front; strip median #525348; Opus verdict: painted near-black grey #3f494a/#303b3c, 60 % rule #424c51"
+    "palette pinned: Den Texstraat 20: painted near-black grey, strip #3f494a/#303b3c; Opus #424c51; painted-brick"
    ],
    "likeness": {
     "pandId": "0363100012179379",
-    "ncc": 0.141,
-    "nccRaw": 0.141,
+    "ncc": 0.112,
+    "nccRaw": 0.112,
     "shiftM": [
      0,
      0.4
@@ -764,24 +769,23 @@
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "wall dL +0.16",
-     "glazing storey band off by 0.46 mean 0.47 vs photo 0.74",
+     "glazing storey band off by 0.46 mean 0.40 vs photo 0.74",
      "wall family unresolved (#373b37 is dark and neutral, brick courses not resolved): lightness and hue judged only"
     ],
     "wall": {
      "photo": "#373b37",
-     "model": "#57646b",
-     "dL": 0.157
+     "model": "#424c51",
+     "dL": 0.065
     },
     "glazing": {
      "photo": 0.74,
-     "model": 0.47
+     "model": 0.4
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.451
+    "iou": 0.424
    },
    "challengers": {}
   },
@@ -832,28 +836,28 @@
     "foliageShare": 0.11
    },
    "status": "placed",
-   "type": "tex-1882-hood-bracket-mansard",
+   "type": "tex-1882-hood-bracket-balcony",
    "score": 0.82,
    "placement": {
-    "type": "tex-1882-hood-bracket-mansard",
+    "type": "tex-1882-hood-bracket-balcony",
     "mirror": true,
     "measuredPalette": {
      "brick": "#483d33",
      "evidence": "strip 2024-12-04 span 2264-2513: trim-normalised wall (buildingRecipe/measureFacade.ts)"
     },
     "paletteOverrides": {
-     "brick": "#5e4a3b"
+     "brick": "#372e25"
     }
    },
    "notes": [
     "door right: mirrored",
     "crown mansard-pediment-dormer (type default)",
-    "palette pinned: Den Texstraat 18: dark brown brick; strip median #3c3429 (shaded), lifted"
+    "palette pinned: Den Texstraat 18: strip median #3c362c; Opus 60 % rule #504436, drawn as measured; palette #372e25 fitted by fit-wall-palette.ts so the render lands on #504436"
    ],
    "likeness": {
     "pandId": "0363100012179380",
-    "ncc": 0.114,
-    "nccRaw": 0.114,
+    "ncc": 0.178,
+    "nccRaw": 0.178,
     "shiftM": [
      0.4,
      -0.4
@@ -862,23 +866,23 @@
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.45 mean 0.48 vs photo 0.71",
+     "glazing storey band off by 0.45 mean 0.42 vs photo 0.71",
      "wall family unresolved (#4e5657 is dark and neutral, brick courses not resolved): lightness and hue judged only"
     ],
     "wall": {
      "photo": "#4e5657",
-     "model": "#7a604d",
-     "dL": 0.067
+     "model": "#5b4c3e",
+     "dL": -0.024
     },
     "glazing": {
      "photo": 0.71,
-     "model": 0.48
+     "model": 0.42
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.467
+    "iou": 0.473
    },
    "challengers": {}
   },
