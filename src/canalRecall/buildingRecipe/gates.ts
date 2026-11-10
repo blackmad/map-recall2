@@ -124,6 +124,13 @@ export function evaluateGates(tris: Tri[], facts: BuildingFacts, fit: FitReport,
   const roofY = tris.filter(t => t.surface === 'roof').flatMap(t => [t.a[1], t.b[1], t.c[1]]);
   const roofMax = Math.max(...roofY);
   const cleanup = fit.roofCleanup;
+  // A roof the front implies (blockFace/houseRoof.ts, `roof.source: "front"` on a recipe house): judged as a block face
+  // judges it (blockFace/compile.ts height-vs-3dbag 'front'): under the crown line + 0.3 m (dormers: the allowance), not under the eaves.
+  const frontRoof = facts.roofSource?.kind === 'front' ? facts.roofSource : undefined;
+  if (frontRoof) {
+    const line = frontRoof.crownTopM ?? frontRoof.capM, eaves = Math.min(...fit.fronts.map(f => f.eavesM));
+    g('ridge-vs-3dbag', roofMax <= line + 0.3 + (fit.roofAllowanceM ?? 0) && roofMax >= eaves - 0.05, {modelM: +roofMax.toFixed(2), crownTopM: +line.toFixed(2), threeDBagM: +frontRoof.surveyRoofMaxM.toFixed(2), roof: 'front'}, 'front roof: max <= the crown line + 0.3 m (declared dormers + their allowance) and >= the eaves - 0.05 m');
+  } else
   g('ridge-vs-3dbag', roofMax - facts.heights.roofMaxM <= 0.3 + (fit.roofAllowanceM ?? 0) && facts.heights.roofMaxM - roofMax <= 0.3, {modelM: +roofMax.toFixed(2), threeDBagM: +facts.heights.roofMaxM.toFixed(2), ...(cleanup ? {surveyM: cleanup.surveyRoofMaxM, cleanup: cleanup.actions.map(a => `${a.kind} ${a.fromTopM}->${a.toTopM} m`)} : {})}, '|Δ| <= 0.30 m (roof max vs LoD2.2 roof max after roofCleanup.ts artefact removal); declared dormers may stand 1.9 m above it (LoD2.2 has none)');
   // Clean-up removes artefacts, never the roof: at most a quarter of the surveyed roof area may be clamped.
   if (cleanup) g('roof-cleanup', cleanup.removedAreaM2 <= cleanup.roofAreaM2 * 0.25, {removedM2: cleanup.removedAreaM2, roofM2: cleanup.roofAreaM2, actions: cleanup.actions.length}, 'clamped artefact area <= 25% of the LoD2.2 roof');

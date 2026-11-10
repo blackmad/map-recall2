@@ -17,6 +17,7 @@ import {KHRMeshQuantization} from '@gltf-transform/extensions';
 import {canalhouseGroupToGlb} from '../canalhouse-recipes/export-glb.ts';
 import {compileBuilding, resolveIntent, canonicalIntentKey} from '../../src/canalRecall/buildingRecipe/compile.ts';
 import {evaluateGates, type Tri} from '../../src/canalRecall/buildingRecipe/gates.ts';
+import {houseFrontRoof} from '../../src/canalRecall/blockFace/houseRoof.ts';
 import {openingsWithinWallsGate} from '../../src/canalRecall/buildingRecipe/roofChecks.ts';
 import {trustFactsGround, type BuildingFacts} from '../../src/canalRecall/buildingRecipe/facts.ts';
 import {sharedTerrain} from '../lib/terrainField.ts';
@@ -62,7 +63,9 @@ export async function compileHouse(id: string) {
   const t0 = performance.now();
   const {raw, intent} = await loadIntent(id);
   // On the trusted ground (bag3dCityJson.ts `pandGroundNap`): a facts.json built before the terrain rule is re-measured here.
-  const facts: BuildingFacts = trustFactsGround(await readJson(path.join(HOUSES, id, 'facts.json')), sharedTerrain());
+  const surveyFacts: BuildingFacts = trustFactsGround(await readJson(path.join(HOUSES, id, 'facts.json')), sharedTerrain());
+  // `roof.source: "front"`: the roof the street front implies, as a block face draws it (blockFace/houseRoof.ts); else the same facts.
+  const {facts, report: frontRoof} = houseFrontRoof(intent, surveyFacts);
   const built = compileBuilding(intent, facts);
   const t1 = performance.now();
   const glb = await canalhouseGroupToGlb(intent.id, built.group, {metreUvs: true, slotFor: slotFor(intent)});
@@ -76,6 +79,7 @@ export async function compileHouse(id: string) {
   await fs.writeFile(path.join(out, 'fitted-recipe.json'), JSON.stringify({anchorRD: built.anchorRD, recipe: built.recipe}, null, 1) + '\n');
   const report = {id, pandId: intent.pandId, sameAs: raw.sameAs ?? null, intentKey: createHash('sha256').update(canonicalIntentKey(intent)).digest('hex').slice(0, 16),
     anchorRD: built.anchorRD, fit: built.fit, roofClasses: built.roofClasses, vergeTriangles: built.vergeTriangles,
+    ...(frontRoof ? {frontRoof} : {}),
     triangles: glb.triangles, bytes: glb.bytes.length, materials: glb.materials, sha256: createHash('sha256').update(glb.bytes).digest('hex'),
     gates, topology: {components: topology.components, floating: topology.floating, openEdges: topology.openEdges, openEdgeLengthM: +topology.openEdgeLengthM.toFixed(2)},
     passed: gates.every(g => g.pass || g.advisory), timings: {fitCompileMs: +(t1 - t0).toFixed(1), exportGateMs: +(performance.now() - t1).toFixed(1)}};
