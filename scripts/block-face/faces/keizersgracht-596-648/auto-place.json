@@ -3,7 +3,7 @@
  "street": "Keizersgracht",
  "library": "grachtengordel-zuid",
  "stripDate": "2023-03-27",
- "seconds": 42.34,
+ "seconds": 24.42,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -21,7 +21,7 @@
     "0363100012175654"
    ],
    "passed": true,
-   "triangles": 3322
+   "triangles": 3862
   },
   {
    "face": "keizersgracht-596-648-r2",
@@ -30,7 +30,7 @@
     "0363100012176066"
    ],
    "passed": true,
-   "triangles": 4721
+   "triangles": 4769
   }
  ],
  "pands": [
@@ -210,16 +210,35 @@
     "measuredPalette": {
      "brick": "#665852",
      "evidence": "strip 2023-03-27 span 740-1043: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "stone": "#878279",
+     "cornice": "#c7bda6"
+    },
+    "overrides": {
+     "windows": "sash-6-over-6",
+     "windowFrames": {
+      "frame": 0.12,
+      "eared": {
+       "upper": 2
+      }
+     }
+    },
+    "ground": "base-door-left",
+    "roof": {
+     "form": "flat"
     }
    },
    "notes": [
     "crown cornice: skyline no crown over the eaves",
-    "door left: reviewer pin (Keizersgracht 616A (2023-03-27 strip): the souterrain door and the bel-etage axis above it are on the left)"
+    "door left: reviewer pin (Keizersgracht 616A (2023-03-27 strip): the souterrain door and the bel-etage axis above it are on the left)",
+    "palette pinned: Keizersgracht 616A: dark grey stone base (strip median #524e4b) and a sandstone frieze (#b1a384); the model drew both near-white",
+    "overrides pinned: Keizersgracht 616A: no stoop door; three bel-etage windows and a street-level door in the left bay of the stone base (0.15-2.85 m). Sashes three lights wide, six-over-six; eared white surrounds on the top two storeys (11.7-16.9 m); sky directly over the cornice cap, so a flat roof behind it (3DBAG stands under the cornice at the facade)"
    ],
    "likeness": {
     "pandId": "0363100012175655",
-    "ncc": 0.367,
-    "nccRaw": 0.367,
+    "ncc": 0.415,
+    "nccRaw": 0.415,
     "shiftM": [
      0.1,
      -0.4
@@ -228,7 +247,7 @@
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing  mean 0.42 vs photo 0.26"
+     "glazing  mean 0.44 vs photo 0.26"
     ],
     "wall": {
      "photo": "#695a55",
@@ -237,13 +256,13 @@
     },
     "glazing": {
      "photo": 0.26,
-     "model": 0.42
+     "model": 0.44
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.518
+    "iou": 0.515
    },
    "challengers": {}
   },
@@ -298,31 +317,49 @@
    "placement": {
     "type": "belt-1700-canal-house",
     "overrides": {
-     "bays": 2
+     "bays": 2,
+     "storeyWindows": {
+      "0": "sash-1-over-1"
+     },
+     "windowFrames": {
+      "frame": 0.12,
+      "eared": {
+       "upper": 3
+      }
+     }
     },
     "mirror": true,
     "measuredPalette": {
      "brick": "#80726a",
      "evidence": "strip 2023-03-27 span 1043-1258: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "stone": "#a5a69e"
+    },
+    "ground": "base-door-left",
+    "roof": {
+     "form": "flat"
     }
    },
    "notes": [
     "door right: mirrored",
-    "crown cornice: skyline no crown over the eaves"
+    "crown cornice: skyline no crown over the eaves",
+    "palette pinned: Keizersgracht 614: a light grey rendered base (strip median #858988)",
+    "overrides pinned: Keizersgracht 614: no stoop door; two bel-etage windows, the base window on the left and the street door on the right (mirrored with the house). Bel-etage sashes one-over-one (4.1-7.1 m); eared surrounds over the three upper storeys; sky directly over the cornice cap, so a flat roof behind it (3DBAG stands under the cornice at the facade)"
    ],
    "likeness": {
     "pandId": "0363100012175654",
-    "ncc": 0.215,
-    "nccRaw": 0.215,
+    "ncc": 0.168,
+    "nccRaw": 0.168,
     "shiftM": [
-     -0.15,
+     -0.05,
      0.4
     ],
-    "usable": 0.93,
+    "usable": 0.92,
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.31 mean 0.41 vs photo 0.19"
+     "glazing storey band off by 0.33 mean 0.46 vs photo 0.19"
     ],
     "wall": {
      "photo": "#7e6e65",
@@ -331,13 +368,13 @@
     },
     "glazing": {
      "photo": 0.19,
-     "model": 0.41
+     "model": 0.46
     },
     "columns": {
      "photo": 2,
      "model": 2
     },
-    "iou": 0.341
+    "iou": 0.355
    },
    "challengers": {}
   },
@@ -457,25 +494,51 @@
      "brick": "#7f6b69",
      "evidence": "strip 2023-03-27 span 1633-1936: trim-normalised wall (buildingRecipe/measureFacade.ts)"
     },
-    "mirror": true
+    "mirror": true,
+    "paletteOverrides": {
+     "stone": "#999588"
+    },
+    "overrides": {
+     "windows": "cross",
+     "storeyWindows": {
+      "last": "casement-transom"
+     },
+     "headLines": [
+      0.86,
+      0.95,
+      0.92,
+      0.8
+     ],
+     "windowHeights": [
+      0.75,
+      0.8,
+      0.74,
+      0.6
+     ]
+    },
+    "roof": {
+     "form": "flat"
+    }
    },
    "notes": [
     "crown cornice: reviewer pin (Keizersgracht 610 (2023-03-27 strip): a frieze cornice with consoles and sky over it, no dormer; the skyline read the cornice cap as a dormer)",
-    "door right: mirrored: reviewer pin (Keizersgracht 610 (2023-03-27 strip): the stoop door with its white surround and fanlight stands on the right axis)"
+    "door right: mirrored: reviewer pin (Keizersgracht 610 (2023-03-27 strip): the stoop door with its white surround and fanlight stands on the right axis)",
+    "palette pinned: Keizersgracht 610: a grey stone base (strip median #716d64)",
+    "overrides pinned: Keizersgracht 610: cross windows (a mullion and one transom, two by two); on the top storey one wide light under a top light; the upper heads stand about 0.6 m higher than the type's line and the glass is taller; sky directly over the cornice cap, so a flat roof behind it (3DBAG stands under the cornice at the facade)"
    ],
    "likeness": {
     "pandId": "0363100012167896",
-    "ncc": 0.18,
-    "nccRaw": 0.18,
+    "ncc": 0.206,
+    "nccRaw": 0.206,
     "shiftM": [
-     -0.15,
+     0,
      -0.4
     ],
     "usable": 0.93,
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.34 mean 0.42 vs photo 0.25"
+     "glazing storey band off by 0.39 mean 0.45 vs photo 0.25"
     ],
     "wall": {
      "photo": "#806b6a",
@@ -484,13 +547,13 @@
     },
     "glazing": {
      "photo": 0.25,
-     "model": 0.42
+     "model": 0.45
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.26
+    "iou": 0.285
    },
    "challengers": {}
   },
@@ -553,25 +616,45 @@
      "brick": "#706360",
      "evidence": "strip 2023-03-27 span 1935-2232: trim-normalised wall (buildingRecipe/measureFacade.ts)"
     },
-    "crown": "neck"
+    "crown": "neck",
+    "paletteOverrides": {
+     "stone": "#999588"
+    },
+    "overrides": {
+     "windows": "sash-6-over-6",
+     "headLines": [
+      0.86,
+      0.95,
+      0.92,
+      0.8
+     ],
+     "windowHeights": [
+      0.75,
+      0.8,
+      0.74,
+      0.6
+     ]
+    }
    },
    "notes": [
     "crown neck: reviewer pin (Keizersgracht 608 (2023-03-27 strip): a neck gable with sandstone wing pieces and a cartouche over the 17.8 m gable foot)",
-    "door left: reviewer pin (Keizersgracht 608 (2023-03-27 strip): the stoop door with a white pilaster surround stands on the left axis)"
+    "door left: reviewer pin (Keizersgracht 608 (2023-03-27 strip): the stoop door with a white pilaster surround stands on the left axis)",
+    "palette pinned: Keizersgracht 608: a grey stone base, as on 610",
+    "overrides pinned: Keizersgracht 608: sashes three lights wide, six-over-six; the upper heads stand about 0.6 m higher than the type's line, as on 610"
    ],
    "likeness": {
     "pandId": "0363100012176066",
-    "ncc": 0.164,
-    "nccRaw": 0.164,
+    "ncc": 0.193,
+    "nccRaw": 0.193,
     "shiftM": [
      -0.05,
-     -0.3
+     -0.4
     ],
     "usable": 0.86,
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.16 mean 0.33 vs photo 0.47"
+     "glazing  mean 0.37 vs photo 0.47"
     ],
     "wall": {
      "photo": "#6d5f5e",
@@ -580,13 +663,13 @@
     },
     "glazing": {
      "photo": 0.47,
-     "model": 0.33
+     "model": 0.37
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.511
+    "iou": 0.609
    },
    "challengers": {}
   },
@@ -699,11 +782,11 @@
    },
    "status": "held",
    "stage": "likeness",
-   "reason": "edge NCC 0.053 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.17 mean 0.46 vs photo 0.18; window shape tall vs photo square; columns 5 vs photo 3)",
+   "reason": "edge NCC 0.054 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.21 mean 0.47 vs photo 0.19; window shape tall vs photo square; columns 5 vs photo 3)",
    "likeness": {
     "pandId": "0363100012176068",
-    "ncc": 0.053,
-    "nccRaw": 0.053,
+    "ncc": 0.054,
+    "nccRaw": 0.054,
     "shiftM": [
      -0.35,
      0.3
@@ -712,7 +795,7 @@
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.17 mean 0.46 vs photo 0.18",
+     "glazing storey band off by 0.21 mean 0.47 vs photo 0.19",
      "window shape tall vs photo square",
      "columns 5 vs photo 3"
     ],
@@ -722,17 +805,17 @@
      "dL": 0.073
     },
     "glazing": {
-     "photo": 0.18,
-     "model": 0.46
+     "photo": 0.19,
+     "model": 0.47
     },
     "columns": {
      "photo": 3,
      "model": 5
     },
-    "iou": 0.126
+    "iou": 0.135
    },
    "challengers": {
-    "belt-1700-canal-house": 0.075
+    "belt-1700-canal-house": 0.066
    }
   },
   {
@@ -798,20 +881,21 @@
    },
    "status": "held",
    "stage": "likeness",
-   "reason": "edge NCC 0.123 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.17 mean 0.49 vs photo 0.33; wall family unresolved (#545158 is dark and neutral, brick courses not resolved): lightness and hue judged only)",
+   "reason": "edge NCC 0.127 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.17 mean 0.51 vs photo 0.34; window shape tall vs photo square; wall family unresolved (#545158 is dark and neutral, brick courses not resolved): lightness and hue judged only)",
    "likeness": {
     "pandId": "0363100012167895",
-    "ncc": 0.123,
-    "nccRaw": 0.123,
+    "ncc": 0.127,
+    "nccRaw": 0.127,
     "shiftM": [
      0.1,
-     -0.3
+     -0.35
     ],
-    "usable": 0.77,
+    "usable": 0.78,
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.17 mean 0.49 vs photo 0.33",
+     "glazing storey band off by 0.17 mean 0.51 vs photo 0.34",
+     "window shape tall vs photo square",
      "wall family unresolved (#545158 is dark and neutral, brick courses not resolved): lightness and hue judged only"
     ],
     "wall": {
@@ -820,14 +904,14 @@
      "dL": 0.059
     },
     "glazing": {
-     "photo": 0.33,
-     "model": 0.49
+     "photo": 0.34,
+     "model": 0.51
     },
     "columns": {
      "photo": 2,
      "model": 2
     },
-    "iou": 0.363
+    "iou": 0.399
    },
    "challengers": {}
   },
@@ -884,21 +968,21 @@
    },
    "status": "held",
    "stage": "likeness",
-   "reason": "edge NCC 0.089 < 0.15 (photo vs model body; likeness.ts FAIL: wall dL +0.12; glazing storey band off by 0.34; wall family unresolved (#5a5660 is dark and neutral, brick courses not resolved): lightness and hue judged only; columns 2 vs photo 3)",
+   "reason": "edge NCC 0.083 < 0.15 (photo vs model body; likeness.ts FAIL: wall dL +0.12; glazing storey band off by 0.47; wall family unresolved (#5a5660 is dark and neutral, brick courses not resolved): lightness and hue judged only; columns 2 vs photo 3)",
    "likeness": {
     "pandId": "0363100012165043",
-    "ncc": 0.089,
-    "nccRaw": 0.089,
+    "ncc": 0.083,
+    "nccRaw": 0.083,
     "shiftM": [
      0.15,
-     0
+     0.05
     ],
     "usable": 0.92,
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
      "wall dL +0.12",
-     "glazing storey band off by 0.34",
+     "glazing storey band off by 0.47",
      "wall family unresolved (#5a5660 is dark and neutral, brick courses not resolved): lightness and hue judged only",
      "columns 2 vs photo 3"
     ],
@@ -908,14 +992,14 @@
      "dL": 0.124
     },
     "glazing": {
-     "photo": 0.53,
-     "model": 0.48
+     "photo": 0.51,
+     "model": 0.51
     },
     "columns": {
      "photo": 3,
      "model": 2
     },
-    "iou": 0.325
+    "iou": 0.337
    },
    "challengers": {}
   },
@@ -964,17 +1048,17 @@
    "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
    "likeness": {
     "pandId": "0363100012165044",
-    "ncc": 0.154,
-    "nccRaw": 0.154,
+    "ncc": 0.172,
+    "nccRaw": 0.172,
     "shiftM": [
-     0.05,
-     -0.3
+     0,
+     0.4
     ],
-    "usable": 0.95,
+    "usable": 0.93,
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.69 mean 0.50 vs photo 0.76",
+     "glazing storey band off by 0.62 mean 0.53 vs photo 0.70",
      "wall family unresolved (#7f7e7a is dark and neutral, brick courses not resolved): lightness and hue judged only"
     ],
     "wall": {
@@ -983,14 +1067,14 @@
      "dL": -0.098
     },
     "glazing": {
-     "photo": 0.76,
-     "model": 0.5
+     "photo": 0.7,
+     "model": 0.53
     },
     "columns": {
-     "photo": 3,
+     "photo": 4,
      "model": 2
     },
-    "iou": 0.483
+    "iou": 0.506
    },
    "challengers": {}
   },
@@ -1042,20 +1126,20 @@
    },
    "status": "held",
    "stage": "likeness",
-   "reason": "edge NCC 0.071 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.28 mean 0.50 vs photo 0.20; window shape square vs photo tall; columns 5 vs photo 3)",
+   "reason": "edge NCC 0.082 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.32 mean 0.51 vs photo 0.20; window shape square vs photo tall; columns 5 vs photo 3)",
    "likeness": {
     "pandId": "0363100012165045",
-    "ncc": 0.071,
-    "nccRaw": 0.071,
+    "ncc": 0.082,
+    "nccRaw": 0.082,
     "shiftM": [
      0.4,
-     -0.05
+     0.4
     ],
-    "usable": 0.96,
+    "usable": 0.95,
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.28 mean 0.50 vs photo 0.20",
+     "glazing storey band off by 0.32 mean 0.51 vs photo 0.20",
      "window shape square vs photo tall",
      "columns 5 vs photo 3"
     ],
@@ -1066,7 +1150,7 @@
     },
     "glazing": {
      "photo": 0.2,
-     "model": 0.5
+     "model": 0.51
     },
     "columns": {
      "photo": 3,

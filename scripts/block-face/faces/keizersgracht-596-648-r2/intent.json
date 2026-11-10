@@ -31,7 +31,31 @@
      "brick": "#7f6b69",
      "evidence": "strip 2023-03-27 span 1633-1936: trim-normalised wall (buildingRecipe/measureFacade.ts)"
     },
-    "mirror": true
+    "mirror": true,
+    "paletteOverrides": {
+     "stone": "#999588"
+    },
+    "overrides": {
+     "windows": "cross",
+     "storeyWindows": {
+      "last": "casement-transom"
+     },
+     "headLines": [
+      0.86,
+      0.95,
+      0.92,
+      0.8
+     ],
+     "windowHeights": [
+      0.75,
+      0.8,
+      0.74,
+      0.6
+     ]
+    },
+    "roof": {
+     "form": "flat"
+    }
    },
    "groundFloor": {
     "use": "office",
@@ -56,7 +80,25 @@
      "brick": "#706360",
      "evidence": "strip 2023-03-27 span 1935-2232: trim-normalised wall (buildingRecipe/measureFacade.ts)"
     },
-    "crown": "neck"
+    "crown": "neck",
+    "paletteOverrides": {
+     "stone": "#999588"
+    },
+    "overrides": {
+     "windows": "sash-6-over-6",
+     "headLines": [
+      0.86,
+      0.95,
+      0.92,
+      0.8
+     ],
+     "windowHeights": [
+      0.75,
+      0.8,
+      0.74,
+      0.6
+     ]
+    }
    },
    "groundFloor": {
     "use": "residential",

@@ -22,6 +22,7 @@ import type {ParapetBandIntent} from './parapetBand.ts';
 import {friezeVentProblems} from './friezeVents.ts';
 import {corbelTableProblems, type CorbelTableIntent} from './corbelTable.ts';
 import {wallAnchorProblems} from './wallAnchors.ts';
+import {beltFrontProblems, type DoorSurroundIntent, type WindowFramesIntent} from './beltFront.ts';
 import {entablatureProblems} from './entablature.ts';
 import {jambBlockProblems} from './jambBlocks.ts';
 import type {ArchKind} from '../blockBuilding/arch.ts';
@@ -86,7 +87,7 @@ export const BASEMENTS = ['none', 'windows', 'stoop', 'stoop-and-windows'] as co
  * `sash-4-over-4` (Grachtengordel-Zuid, Keizersgracht 606-618, 2023-03-27 strip): the 19th-c. reglazed sliding sash, two panes
  * across and two up in each sash, thin bars and a heavier meeting rail at half height.
  */
-export const WINDOWS = ['sash', 'sash-small-panes', 'cross', 'plain', 'arched', 'shop', 'two-light', 'ladder', 'sash-6-over-6', 'sash-8-over-8', 'sash-9-over-9', 'six-pane', 't-window', 'small-over-one', 'cross-transom', 'casement-toplight', 'casement-transom', 'casement-gridded-toplight', 'casement-triple', 'casement-toplight-double', 'casement-gridded-toplight-double', 'casement-pair', 'casement-small-panes', 'casement-sidelights-toplight', 'sash-4-over-4'] as const;
+export const WINDOWS = ['sash', 'sash-small-panes', 'cross', 'plain', 'arched', 'shop', 'two-light', 'ladder', 'sash-6-over-6', 'sash-8-over-8', 'sash-9-over-9', 'six-pane', 't-window', 'small-over-one', 'cross-transom', 'casement-toplight', 'casement-transom', 'casement-gridded-toplight', 'casement-triple', 'casement-toplight-double', 'casement-gridded-toplight-double', 'casement-pair', 'casement-small-panes', 'casement-sidelights-toplight', 'sash-4-over-4', 'sash-1-over-1'] as const;
 export type WindowKind = typeof WINDOWS[number];
 /** `relieving`: a flat-headed window under a segmental relieving arch (brick tympanum), the 17th-c. canal front. */
 export const WINDOW_HEADS = ['flat', 'segmental', 'round', 'relieving'] as const;
@@ -509,6 +510,16 @@ export interface FrontIntent {
   windowSurround?: typeof WINDOW_SURROUNDS[number];
   /** 0-based storeys carrying the surround; default every window storey above the shopfront. */
   surroundStoreys?: number[];
+  /** Thick painted window frames, with an eared surround on the top storeys (Keizersgracht 616A; buildingRecipe/beltFront.ts). Absent = byte-identical. */
+  windowFrames?: WindowFramesIntent;
+  /** A street-level door in the souterrain's base on this ground bay, under an all-window bel-etage (Keizersgracht 616A, 614; beltFront.ts). Absent = byte-identical. */
+  basementDoor?: number;
+  /** Painted pilasters and a cap round the main door and its fanlight (Keizersgracht 610, 608; beltFront.ts). Absent = byte-identical. */
+  doorSurround?: DoorSurroundIntent;
+  /** Iron rails on both sides of the stoop flight, `rail` m (beltFront.ts). Absent = byte-identical. */
+  stoopRails?: {rail: number};
+  /** Width (m) of each gable/attic light instead of the 0.5-0.9 m rule (Keizersgracht 608's 1.5 m neck window). Absent = byte-identical. */
+  atticWindowWidth?: number;
   /** Alternating long/short stone corner blocks up both edges of the front. Default none. */
   quoins?: typeof QUOINS[number];
   /** Iron/stone balcony guards on upper-storey windows. `storeys` are 0-based (ground = 0, so >= 1); the window becomes a full-height French window. */
@@ -681,7 +692,9 @@ export interface FrontIntent {
    * (`wall`), an `architrave` fillet at its foot, and `consoles` console brackets end to end. Needs a cornice.
    * Absent = the style's cornice, byte-identical.
    */
-  entablature?: {rise: number; cap: number; frieze: 'trim' | 'wall'; capDepth?: number; architrave?: number; consoles?: number};
+  entablature?: {rise: number; cap: number; frieze: 'trim' | 'wall'; capDepth?: number; architrave?: number; consoles?: number;
+    /** A row of dentil/modillion blocks under the cap: `block` m wide at `pitch`, `rise` m tall (Keizersgracht 616A, 610). Absent = byte-identical. */
+    dentils?: {pitch: number; block: number; rise: number}};
   /**
    * Jamb blocks (Eerste Helmersstraat 116-122, 1893; buildingRecipe/jambBlocks.ts): `count` white stone blocks on each
    * jamb of every window of the listed `storeys` (default all), evenly spaced up the opening, `rise` m high, reaching
@@ -840,6 +853,8 @@ export interface GableOrnamentIntent {
   cartouche?: boolean;
   ears?: boolean;
   gablet?: typeof ROOF_GABLETS[number];
+  /** Wing piece depth under the shoulder (m, 0.2..2.5) and its scroll in proportion, instead of the 0.18-0.42 m rule (Keizersgracht 608's 2 m claw pieces). Absent = byte-identical. */
+  wingDepth?: number;
 }
 export interface GroundFrontIntent {
   kind: typeof GROUND_FRONT_KINDS[number];
@@ -1668,6 +1683,7 @@ export function validateIntent(input: unknown): CanalHouseIntent {
       else if (h.colour === 'band' && !(f.palette?.band ?? intent.palette.band)) problems.push(`${at}.windowHoods: colour band needs palette.band`);
     }
     if (f.wallAnchors !== undefined) problems.push(...wallAnchorProblems(f, at));
+    if (f.windowFrames !== undefined || f.basementDoor !== undefined || f.doorSurround !== undefined || f.stoopRails !== undefined || f.atticWindowWidth !== undefined) problems.push(...beltFrontProblems(f, at));
     if (f.tilePanels !== undefined) problems.push(...tilePanelProblems(f, at));
     if (f.friezeVents !== undefined) problems.push(...friezeVentProblems(f, at));
     if (f.corbelTable !== undefined) problems.push(...corbelTableProblems(f, at, f.palette?.band ?? intent.palette.band));
@@ -2108,7 +2124,7 @@ function windowProblems(f: FrontIntent, at: string, oneOf: (v: unknown, allowed:
   return p;
 }
 
-const GABLE_ORNAMENT_KEYS = ['wings', 'finial', 'cartouche', 'ears', 'gablet'];
+const GABLE_ORNAMENT_KEYS = ['wings', 'finial', 'cartouche', 'ears', 'gablet', 'wingDepth'];
 const GROUND_FRONT_KEYS = ['kind', 'bays', 'colour', 'shutterColour', 'evidence'];
 /** Problems with the historic-front fields of one front (all optional; absent fields are never checked). */
 function historicProblems(f: FrontIntent, at: string, colour: (v: unknown, where: string) => void, oneOf: (v: unknown, allowed: readonly string[], where: string) => void): string[] {
@@ -2120,6 +2136,7 @@ function historicProblems(f: FrontIntent, at: string, colour: (v: unknown, where
     else {
       for (const k of Object.keys(o)) if (!GABLE_ORNAMENT_KEYS.includes(k)) problems.push(`${at}.gableOrnament.${k}: unknown field (one of ${GABLE_ORNAMENT_KEYS.join(', ')})`);
       if (o.wings !== undefined) { oneOf(o.wings, GABLE_WINGS, `${at}.gableOrnament.wings`); if (!shoulders) problems.push(`${at}.gableOrnament.wings: wing pieces fill the shoulders of a neck or bell gable (gable ${f.gable})`); }
+      if (o.wingDepth !== undefined && (!(typeof o.wingDepth === 'number' && o.wingDepth >= 0.2 && o.wingDepth <= 2.5) || !o.wings)) problems.push(`${at}.gableOrnament.wingDepth: 0.2..2.5 m, with wings`);
       if (o.ears !== undefined && typeof o.ears !== 'boolean') problems.push(`${at}.gableOrnament.ears must be boolean`);
       if (o.ears && !shoulders) problems.push(`${at}.gableOrnament.ears: ears sit where a neck/bell meets its cap (gable ${f.gable})`);
       if (o.cartouche !== undefined && typeof o.cartouche !== 'boolean') problems.push(`${at}.gableOrnament.cartouche must be boolean`);

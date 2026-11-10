@@ -30,6 +30,23 @@
     "measuredPalette": {
      "brick": "#665852",
      "evidence": "strip 2023-03-27 span 740-1043: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "stone": "#878279",
+     "cornice": "#c7bda6"
+    },
+    "overrides": {
+     "windows": "sash-6-over-6",
+     "windowFrames": {
+      "frame": 0.12,
+      "eared": {
+       "upper": 2
+      }
+     }
+    },
+    "ground": "base-door-left",
+    "roof": {
+     "form": "flat"
     }
    },
    "groundFloor": {
@@ -53,12 +70,28 @@
    "type": {
     "type": "belt-1700-canal-house",
     "overrides": {
-     "bays": 2
+     "bays": 2,
+     "storeyWindows": {
+      "0": "sash-1-over-1"
+     },
+     "windowFrames": {
+      "frame": 0.12,
+      "eared": {
+       "upper": 3
+      }
+     }
     },
     "mirror": true,
     "measuredPalette": {
      "brick": "#80726a",
      "evidence": "strip 2023-03-27 span 1043-1258: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "stone": "#a5a69e"
+    },
+    "ground": "base-door-left",
+    "roof": {
+     "form": "flat"
     }
    },
    "groundFloor": {

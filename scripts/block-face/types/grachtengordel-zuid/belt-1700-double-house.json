@@ -99,6 +99,9 @@
    "cap": 0.5,
    "frieze": "trim",
    "architrave": 0.15
+  },
+  "windowFrames": {
+   "frame": 0.12
   }
  },
  "crowns": {
@@ -137,7 +140,14 @@
    "doorBay": 2,
    "basement": "stoop-and-windows",
    "souterrain": true,
-   "note": "the stoop climbs to the bel-etage door on the centre axis over a stone souterrain with barred lights"
+   "note": "the stoop climbs to the bel-etage door on the centre axis over a stone souterrain with barred lights",
+   "doorSurround": {
+    "pilaster": 0.22,
+    "cap": 0.3
+   },
+   "stoopRails": {
+    "rail": 0.9
+   }
   }
  },
  "palettes": {
@@ -197,6 +207,8 @@
  ],
  "notes": [
   "Eaves of these fronts are the TOP of the frieze cornice (the entablature hangs under the eaves); reviewer eaves pins with countStoreys give that line where 3DBAG reads lower",
-  "The bel-etage weight is 4.2 (measured 4.4-4.9 m on Keizersgracht 606-616): the compile gate holds every storey over the souterrain to 2.3-4.6 m, and at 18-19 m eaves a heavier weight crosses 4.6 m"
+  "The bel-etage weight is 4.2 (measured 4.4-4.9 m on Keizersgracht 606-616): the compile gate holds every storey over the souterrain to 2.3-4.6 m, and at 18-19 m eaves a heavier weight crosses 4.6 m",
+  "2026-11-10 kit round (docs/reports/gg-zuid-strip-verdict-20261110.md): white frames 0.12 m (windowFrames), a painted door surround (0.22 m pilasters, 0.3 m cap) and 0.9 m stoop rails on the stoop ground. The strip shows the cornice 3-4 m tall, but that is the soffit stretched by rectification; 3DBAG and the frieze foot put the facade-plane entablature at about 2.4 m.",
+  "Not drawn yet: the modillion row (entablature.dentils). On Keizersgracht 616A and 610 the two end blocks of the first house of each run fail the GLB audit opening-outside check (0.03-0.05 m2 each, 18.4-18.8 m), even 0.7 m in from the party walls. Parked until the audit host wall behind the frieze is understood."
  ]
 }

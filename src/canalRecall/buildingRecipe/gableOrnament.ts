@@ -72,13 +72,14 @@ export function gableOrnaments({ornament: o, profile, eavesM, widthM, idPrefix}:
     const rise = lm.shoulderY - eavesM, neckW = lm.neckLeft - x0;
     if (o.wings && neckW > 0.3 && rise > 0.3) {
       // Band under the shoulder silhouette, a little proud of it, ending at the neck; a volute curls at the outer foot.
-      const thick = Math.min(0.42, Math.max(0.18, rise * 0.3)), lift = 0.04;
+      // `wingDepth` (Keizersgracht 608): a measured wing depth; else the 0.18-0.42 m rule.
+      const thick = o.wingDepth !== undefined ? Math.min(o.wingDepth, rise) : Math.min(0.42, Math.max(0.18, rise * 0.3)), lift = 0.04;
       const top = lm.shoulder.map(([x, y]) => pt(x, y + lift));
       const bottom = lm.shoulder.map(([x, y], k) => pt(Math.min(lm.neckLeft, x + (k === 0 ? 0.0 : 0)), Math.max(eavesM, y - thick))).reverse();
       const left = [...top, pt(lm.neckLeft, lm.shoulderY + lift), pt(lm.neckLeft, Math.max(eavesM, lm.shoulderY - thick)), ...bottom.slice(1)];
       add('wing-l', left, 0.06);
       add('wing-r', mirror(left), 0.06);
-      const r = Math.min(0.32, Math.max(0.16, neckW * 0.18, rise * 0.2));
+      const r = o.wingDepth !== undefined ? Math.min(neckW * 0.4, Math.max(0.16, o.wingDepth * 0.3)) : Math.min(0.32, Math.max(0.16, neckW * 0.18, rise * 0.2));
       if (o.wings === 'volutes') {
         add('volute-l', volute(x0 + r + 0.02, eavesM + r + 0.02, r, -1), 0.1);
         add('volute-r', volute(x1 - r - 0.02, eavesM + r + 0.02, r, 1), 0.1);

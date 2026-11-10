@@ -70,3 +70,24 @@ test('typeGround: a register shop under the type ground is recorded as the resid
   assert.equal(typeGroundUse(plain, use, true), use);
   assert.equal(typeGroundUse(own, {...use, use: 'office'}, false).use, 'office');
 });
+
+test('override pins: body fields, a named ground and the roof land on the pinned type only; bad pins are refused', async () => {
+  const {applyOverridePins, overridePinProblems} = await import('./reviewOverrides.ts');
+  const types = [{id: T.id, grounds: T.grounds as Record<string, unknown>}];
+  const pin = {pandId: '0363100012175655', type: T.id, ground: 'base-door-left', overrides: {windows: 'sash-6-over-6' as const}, roof: {form: 'flat' as const}, reason: 'r'};
+  assert.deepEqual(overridePinProblems([pin], types), []);
+  assert.equal(overridePinProblems([{...pin, ground: 'nope'}], types).length, 1);
+  assert.equal(overridePinProblems([{pandId: pin.pandId, type: T.id, reason: 'r'}], types).length, 1);
+  assert.equal(overridePinProblems([{...pin, type: 'other'}], types).length, 1);
+  const placed = (typeId: string) => ({kind: 'placed' as const, pandId: pin.pandId, typeId, score: 1, notes: [], house: {pandId: pin.pandId, slug: 's', address: 'a', type: {type: typeId}} as never});
+  const ds = [placed(T.id), placed('other')];
+  assert.deepEqual(applyOverridePins(ds as never, [pin]), [pin.pandId]);
+  const h = (ds[0].house as {type: Record<string, unknown>}).type;
+  assert.deepEqual([h.ground, h.overrides, h.roof], ['base-door-left', {windows: 'sash-6-over-6'}, {form: 'flat'}]);
+  assert.deepEqual((ds[1].house as {type: Record<string, unknown>}).type, {type: 'other'});
+  // The base-door ground resolves and validates (no stoop door; the street door in the base).
+  const d = design({type: T.id, ground: 'base-door-left'});
+  assert.equal(d.fronts[0].doorBay, null);
+  assert.equal(d.fronts[0].basementDoor, 0);
+  assert.doesNotThrow(() => validateIntent(intent(d)));
+});

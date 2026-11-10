@@ -1,6 +1,6 @@
 {
  "version": 1,
- "generatedAt": "2026-11-10T08:55:19.186Z",
+ "generatedAt": "2026-11-10T09:31:42.759Z",
  "chunks": [
   {
    "id": "chunk-face-bilder-080336-090492",
@@ -99452,11 +99452,11 @@
    "id": "chunk-face-keizersgracht-596-648-r1",
    "category": "street-survey",
    "name": "face-keizersgracht-596-648-r1",
-   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-keizersgracht-596-648-r1.glb?asset=3636d754cd986612",
-   "sha256": "3636d754cd9866124f8126ae9e9af29061caedaa01222fb022e151b54f8d872f",
-   "bytes": 85772,
-   "triangles": 3322,
-   "primitives": 9,
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-keizersgracht-596-648-r1.glb?asset=e09b4371a5ca418d",
+   "sha256": "e09b4371a5ca418da8273f40e67934612f2dedd94f1657499811acd115b8d682",
+   "bytes": 96732,
+   "triangles": 3862,
+   "primitives": 10,
    "instance": {
     "anchor": [
      4.890496836223297,
@@ -99473,11 +99473,11 @@
     ],
     "max": [
      5.945,
-     20.617,
-     1.401
+     19.35,
+     0.402
     ]
    },
-   "height": 20.617,
+   "height": 19.35,
    "suppress": [
     "NL.IMBAG.Pand.0363100012175655",
     "NL.IMBAG.Pand.0363100012175654"
@@ -99578,51 +99578,46 @@
       ],
       "max": [
        0.555,
-       20.617,
-       1.4
+       19.35,
+       0.401
       ]
      },
-     "triangles": 1920,
+     "triangles": 2280,
      "ranges": [
       {
        "primitive": 0,
        "firstTriangle": 0,
-       "triangleCount": 125
+       "triangleCount": 117
       },
       {
        "primitive": 2,
        "firstTriangle": 0,
-       "triangleCount": 432
-      },
-      {
-       "primitive": 3,
-       "firstTriangle": 0,
-       "triangleCount": 40
+       "triangleCount": 264
       },
       {
        "primitive": 4,
        "firstTriangle": 0,
-       "triangleCount": 1088
-      },
-      {
-       "primitive": 5,
-       "firstTriangle": 0,
-       "triangleCount": 12
+       "triangleCount": 40
       },
       {
        "primitive": 6,
        "firstTriangle": 0,
-       "triangleCount": 176
+       "triangleCount": 1628
       },
       {
        "primitive": 7,
        "firstTriangle": 0,
-       "triangleCount": 40
+       "triangleCount": 12
       },
       {
        "primitive": 8,
        "firstTriangle": 0,
-       "triangleCount": 7
+       "triangleCount": 176
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 0,
+       "triangleCount": 43
       }
      ]
     },
@@ -99645,10 +99640,10 @@
       "max": [
        5.945,
        19.25,
-       1.401
+       0.402
       ]
      },
-     "triangles": 1402,
+     "triangles": 1582,
      "ranges": [
       {
        "primitive": 1,
@@ -99656,33 +99651,33 @@
        "triangleCount": 107
       },
       {
-       "primitive": 2,
-       "firstTriangle": 432,
-       "triangleCount": 324
-      },
-      {
        "primitive": 3,
-       "firstTriangle": 40,
-       "triangleCount": 40
-      },
-      {
-       "primitive": 4,
-       "firstTriangle": 1088,
-       "triangleCount": 724
+       "firstTriangle": 0,
+       "triangleCount": 180
       },
       {
        "primitive": 5,
+       "firstTriangle": 0,
+       "triangleCount": 40
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 1628,
+       "triangleCount": 1048
+      },
+      {
+       "primitive": 7,
        "firstTriangle": 12,
        "triangleCount": 12
       },
       {
-       "primitive": 6,
+       "primitive": 8,
        "firstTriangle": 176,
        "triangleCount": 116
       },
       {
-       "primitive": 7,
-       "firstTriangle": 40,
+       "primitive": 9,
+       "firstTriangle": 43,
        "triangleCount": 79
       }
      ]
@@ -99693,11 +99688,11 @@
    "id": "chunk-face-keizersgracht-596-648-r2",
    "category": "street-survey",
    "name": "face-keizersgracht-596-648-r2",
-   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-keizersgracht-596-648-r2.glb?asset=a47cf93670ac162f",
-   "sha256": "a47cf93670ac162f220b049eb46d5b9fcf3247c24d3c3feea164f7d47d829fa4",
-   "bytes": 117904,
-   "triangles": 4721,
-   "primitives": 10,
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-keizersgracht-596-648-r2.glb?asset=9acc2e4765f380b9",
+   "sha256": "9acc2e4765f380b9efc607fd1a7e622a718b9da884f24dfff4fe613fbb108fb3",
+   "bytes": 117456,
+   "triangles": 4769,
+   "primitives": 9,
    "instance": {
     "anchor": [
      4.890169751137856,
@@ -99715,7 +99710,7 @@
     "max": [
      7.486,
      21.558,
-     1.401
+     1.421
     ]
    },
    "height": 21.558,
@@ -99839,16 +99834,16 @@
       ],
       "max": [
        0.047,
-       20.601,
-       1.401
+       19.23,
+       1.421
       ]
      },
-     "triangles": 2136,
+     "triangles": 1932,
      "ranges": [
       {
        "primitive": 1,
        "firstTriangle": 0,
-       "triangleCount": 186
+       "triangleCount": 178
       },
       {
        "primitive": 2,
@@ -99863,12 +99858,12 @@
       {
        "primitive": 4,
        "firstTriangle": 0,
-       "triangleCount": 1168
+       "triangleCount": 904
       },
       {
        "primitive": 5,
        "firstTriangle": 0,
-       "triangleCount": 12
+       "triangleCount": 84
       },
       {
        "primitive": 6,
@@ -99878,17 +99873,12 @@
       {
        "primitive": 7,
        "firstTriangle": 0,
-       "triangleCount": 86
+       "triangleCount": 89
       },
       {
        "primitive": 8,
        "firstTriangle": 0,
-       "triangleCount": 5
-      },
-      {
-       "primitive": 9,
-       "firstTriangle": 0,
-       "triangleCount": 11
+       "triangleCount": 9
       }
      ]
     },
@@ -99911,10 +99901,10 @@
       "max": [
        7.486,
        21.558,
-       1.401
+       1.421
       ]
      },
-     "triangles": 2585,
+     "triangles": 2837,
      "ranges": [
       {
        "primitive": 0,
@@ -99928,13 +99918,13 @@
       },
       {
        "primitive": 4,
-       "firstTriangle": 1168,
-       "triangleCount": 1492
+       "firstTriangle": 904,
+       "triangleCount": 1672
       },
       {
        "primitive": 5,
-       "firstTriangle": 12,
-       "triangleCount": 24
+       "firstTriangle": 84,
+       "triangleCount": 96
       },
       {
        "primitive": 6,
@@ -99943,12 +99933,12 @@
       },
       {
        "primitive": 7,
-       "firstTriangle": 86,
+       "firstTriangle": 89,
        "triangleCount": 8
       },
       {
-       "primitive": 9,
-       "firstTriangle": 11,
+       "primitive": 8,
+       "firstTriangle": 9,
        "triangleCount": 13
       }
      ]

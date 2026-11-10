@@ -1,8 +1,8 @@
 {
  "buurt": "vijzelstraatbuurt",
  "library": "grachtengordel-zuid",
- "generatedAt": "2026-11-10T08:56:15.300Z",
- "seconds": 13.7,
+ "generatedAt": "2026-11-10T09:31:23.538Z",
+ "seconds": 24.42,
  "totals": {
   "faces": 4,
   "pands": 33,
@@ -77,7 +77,7 @@
       "0363100012175654"
      ],
      "passed": true,
-     "triangles": 3322
+     "triangles": 3862
     },
     {
      "face": "keizersgracht-596-648-r2",
@@ -86,10 +86,10 @@
       "0363100012176066"
      ],
      "passed": true,
-     "triangles": 4721
+     "triangles": 4769
     }
    ],
-   "seconds": 42.34,
+   "seconds": 24.42,
    "byType": {
     "belt-1700-canal-house": 4
    },

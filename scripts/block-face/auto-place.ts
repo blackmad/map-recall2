@@ -34,6 +34,8 @@ import {renderModels, closeRenderer} from '../building-recipes/render.ts';
 import {STRIP_LIKENESS, spanLikeness} from '../../src/canalRecall/blockFace/stripLikeness.ts';
 import {lowFrontFootMaxM, runFootOffset} from '../../src/canalRecall/blockFace/stripFoot.ts';
 import {applyCrownPins, applyMirrorPins, crownPinProblems, holdBrokenPairs, mirrorPinProblems, typePinProblems, typesForFace, typesForPand, type CrownPin, type MirrorPin, type TypePin} from '../../src/canalRecall/blockFace/reviewCrowns.ts';
+import {applyRoofPins, roofPinProblems, type RoofPin} from '../../src/canalRecall/blockFace/reviewRoofs.ts';
+import {applyOverridePins, overridePinProblems, type OverridePin} from '../../src/canalRecall/blockFace/reviewOverrides.ts';
 import {applyDoorPins, doorPinProblems, type DoorPin} from '../../src/canalRecall/blockFace/reviewDoors.ts';
 import {applyEavesPins, eavesPinProblems, storeyEaves, type EavesPin} from '../../src/canalRecall/blockFace/reviewEaves.ts';
 import {acceptFloorFor, acceptPinProblems, applyPalettePins, palettePinProblems, type AcceptPin, type PalettePin} from '../../src/canalRecall/blockFace/reviewPalettes.ts';
@@ -122,6 +124,8 @@ async function loadTypes(district: string): Promise<MatchableType[]> {
 /** The strip evidence gate (#120) runs by default; --no-evidence-gate reproduces the pre-gate placements. */
 const EVIDENCE_GATE = !process.argv.includes('--no-evidence-gate');
 const PHOTO_EAVES = {on: process.argv.includes('--photo-eaves'), minConfidence: 0.6, minM: 6, minDeltaM: 0.4, maxRiseM: 1.5, maxDropM: 4} as const;
+/** Reviewer roof pins of the buurt (`<buurt>-review-roofs.json`, blockFace/reviewRoofs.ts); empty = byte-identical. */
+let roofPins: RoofPin[] = [];
 /** Pands whose eaves the strip skyline measured (--photo-eaves), keyed by pand id; read back by `withPhotoEaves`. */
 const photoEaves = new Map<string, {row: number; eavesM: number; bagM: number; confidence: number}>();
 /** Reviewer eaves pins (`<buurt>-review-eaves.json`), read once in main. */
@@ -146,7 +150,8 @@ function withPhotoEaves(intent: ReturnType<typeof runIntent>, types: MatchableTy
       evidence: `auto-place --photo-eaves: strip skyline cornice ${e.eavesM} m (confidence ${e.confidence}) vs 3DBAG/PDOK eaves ${e.bagM} m`}] : [];
   });
   const pinned = applyEavesPins(m.length ? m : undefined, eavesPins, intent.houses.map(h => h.pandId), id => evs.find(e => e.pandId === id)?.eavesM, strip);
-  return pinned?.length ? {...intent, continuity: {...intent.continuity, measuredEaves: pinned}} : intent;
+  const roofed = pinned?.length ? applyRoofPins(pinned, roofPins, intent.houses.map(h => h.pandId), strip) : pinned;
+  return roofed?.length ? {...intent, continuity: {...intent.continuity, measuredEaves: roofed}} : intent;
 }
 
 async function faceEvidence(faceId: string) {
@@ -294,6 +299,10 @@ if (process.argv[1]?.endsWith('block-face/auto-place.ts')) {
   // Pands held after a review of their run's strip sheet (scripts/block-face/buurten/<buurt>-review-holds.json).
   const holdsFile = path.join('scripts/block-face/buurten', `${buurt}-review-holds.json`);
   const reviewHolds = new Map<string, string>(existsSync(holdsFile) ? (await readJson(holdsFile)).holds.map((h: {pandId: string; reason: string}) => [h.pandId, h.reason]) : []);
+  const roofsFile = path.join('scripts/block-face/buurten', `${buurt}-review-roofs.json`);
+  roofPins = existsSync(roofsFile) ? (await readJson(roofsFile)).pins : [];
+  const roofPinErrs = roofPinProblems(roofPins);
+  if (roofPinErrs.length) throw Error(`${roofsFile}: ${roofPinErrs.join('; ')}`);
   // Crowns a reviewer pinned after reading the strip (blockFace/reviewCrowns.ts): flat crowns the skyline cannot tell apart.
   const crownsFile = path.join('scripts/block-face/buurten', `${buurt}-review-crowns.json`);
   const crownPins: CrownPin[] = existsSync(crownsFile) ? (await readJson(crownsFile)).pins : [];
@@ -322,6 +331,11 @@ if (process.argv[1]?.endsWith('block-face/auto-place.ts')) {
   const eavesPinErrors = eavesPinProblems(eavesPins);
   if (eavesPinErrors.length) throw Error(`${eavesFile}: ${eavesPinErrors.join('; ')}`);
 
+  // Per-pand body, ground and crown fields a reviewer measured on the strip (blockFace/reviewOverrides.ts).
+  const overridesFile = path.join('scripts/block-face/buurten', `${buurt}-review-overrides.json`);
+  const overridePins: OverridePin[] = existsSync(overridesFile) ? (await readJson(overridesFile)).pins : [];
+  const overridePinErrors = overridePinProblems(overridePins, types);
+  if (overridePinErrors.length) throw Error(`${overridesFile}: ${overridePinErrors.join('; ')}`);
   const acceptsFile = path.join('scripts/block-face/buurten', `${buurt}-review-accepts.json`);
   const acceptPins: AcceptPin[] = existsSync(acceptsFile) ? (await readJson(acceptsFile)).pins : [];
   const acceptPinErrors = acceptPinProblems(acceptPins, types);
@@ -380,6 +394,7 @@ if (process.argv[1]?.endsWith('block-face/auto-place.ts')) {
     if (crownPins.length) { const pinned = applyCrownPins(f.id, decisions, crownPins, types); if (pinned.length) console.log(`${f.id}: crown pinned on ${pinned.length} pand(s)`); }
     if (doorPins.length) { const pinned = applyDoorPins(decisions, doorPins, types); if (pinned.length) console.log(`${f.id}: door pinned on ${pinned.length} pand(s)`); }
     if (palettePins.length) { const pinned = applyPalettePins(decisions, palettePins); if (pinned.length) console.log(`${f.id}: palette pinned on ${pinned.length} pand(s)`); }
+    if (overridePins.length) { const pinned = applyOverridePins(decisions, overridePins); if (pinned.length) console.log(`${f.id}: overrides pinned on ${pinned.length} pand(s)`); }
     fillPairs(decisions, types);
     if (mirrorPins.length) { const pinned = applyMirrorPins(decisions, mirrorPins); if (pinned.length) console.log(`${f.id}: side pinned on ${pinned.length} pand(s)`); }
     const rowSet = rowCoherence(decisions, types, evs, strip.date);

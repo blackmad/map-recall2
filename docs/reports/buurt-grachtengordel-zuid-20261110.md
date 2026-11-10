@@ -101,3 +101,68 @@ Of the four faces that were not intaked by hand, I looked at the sheets of three
 
 - AG04 Spiegelbuurt and AG02 Geelvinckbuurt.
 - The Prinsengracht, Reguliersgracht and Vijzelstraat faces. Prinsengracht eaves are 10–11.6 m, so those faces need a lower type.
+
+## Kit round 2 (after the Opus strip review, docs/reports/gg-zuid-strip-verdict-20261110.md)
+
+I re-installed Keizersgracht 616A, 614, 610 and 608 (runs r1 and r2) with the fixes below. Every gate passes and the GLB audit is clean.
+
+Edge NCC before → after:
+
+| Pand | Before | After |
+|---|---|---|
+| 616A | 0.367 | 0.415 |
+| 610 | 0.180 | 0.206 |
+| 608 | 0.164 | 0.193 |
+| 614 | 0.215 | 0.168 |
+
+614 dropped: the grey base and the one-over-one sashes are what the reviewer asked for, but they remove edges.
+
+### New kit
+
+Each part is typed, tested in `buildingRecipe/beltFront.test.ts` and `blockFace/grachtengordelZuid.test.ts`, and byte-identical when absent.
+
+- **`windowFrames`** (`beltFront.ts`):
+  - `{frame}` draws the thick white window frames, 0.12 m on the belt, in place of the 0.07 m default.
+  - `eared: {upper, band?, ear?, drop?}` draws painted eared surrounds on the top storeys: jamb bands, a head running past them, and ears dropping down the jambs. 616A has them on the top 2 storeys, 614 on the top 3.
+- **`basementDoor`:** a street-level door in the stone base, under an all-window bel-etage. The type's `base-door-left` ground selects it, and mirroring moves it to the right (614). Its cream surround is the door frame drawn 0.14 m wide.
+- **`doorSurround {pilaster, cap}`:** painted pilasters and a cap round the stoop door and its fanlight, set 0.03 m clear of the door frame so the faces are not coplanar.
+- **`stoopRails {rail}`:** rails on both sides of the stoop, using the library's existing `entrance.rails`.
+- **`atticWindowWidth`:** a crown field; 608's neck light is 1.4 m wide.
+- **`gableOrnament.wingDepth`:** 608's claw pieces at 1.8 m. The scroll grows in proportion.
+- **`sash-1-over-1`:** a new window kind (614's bel-etage).
+- **`entablature.dentils {pitch, block, rise}`:** a modillion row under the cap. It is in the kit but **not used by the types**: on the first house of each run, the two end blocks fail the GLB audit's opening-outside check. Each failing block is 0.03–0.05 m² at 18.4–18.8 m. Moving the row 0.7 m in from the party walls did not help, and I did not weaken the audit.
+- **Review pins:**
+  - **`<buurt>-review-overrides.json`** (`blockFace/reviewOverrides.ts`) sets per pand:
+    - body fields: windows, storeyWindows, headLines, windowHeights, windowFrames;
+    - a named ground variant;
+    - the placement roof.
+  - **`reviewRoofs.ts`** is ported from lane/buurt-dentex-frederiksplein-20261110 (639978c1f), byte-for-byte, and hooked into auto-place. It is not used here: 3DBAG stands under the cornice at the facade, so a roof pin cannot re-pitch the roof. The flat roof comes from an override pin with `roof: {form: "flat"}` (616A, 614, 610), and the red tile behind the cornice is gone.
+
+### Per-pand fixes (override and palette pins)
+
+- **616A:**
+  - base-door ground, door on the left;
+  - six-over-six sashes;
+  - eared surrounds on the top 2 storeys;
+  - stone `#878279`, frieze `#c7bda6`.
+- **614:**
+  - base-door ground, mirrored to the right;
+  - one-over-one sashes on the bel-etage;
+  - eared surrounds on the top 3 storeys;
+  - stone `#a5a69e`.
+- **610:**
+  - `cross` windows, with a `casement-transom` light on the top storey;
+  - heads raised (headLines 0.95/0.92, taller windowHeights);
+  - stone `#999588`.
+- **608:**
+  - six-over-six sashes;
+  - heads raised as on 610;
+  - a 1.4 m gable light;
+  - 1.8 m wing pieces;
+  - stone `#999588`.
+
+### Findings
+
+- **Frieze cornices taller than 2.4 m are not needed.** The 3–4.5 m band on the strip is the modillion soffit, seen from below and stretched by rectification. 3DBAG and the frieze foot put the entablature on the facade plane at about 2.4 m (616A: frieze foot 17.0 m, cornice 19.3 m). The 2.4 m limit stays; `helmersKit.test.ts` pins it.
+- **The kit has one stone colour per house.** Pinning 608's base grey also greys its sandstone wing pieces and cartouche. A separate ornament or plinth colour slot would fix this.
+- **Double-house triangle budget.** It is not addressed. No double-house is installed, and Herengracht 520 is held on likeness at 3,430 triangles.
