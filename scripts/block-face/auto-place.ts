@@ -34,6 +34,7 @@ import {renderModels, closeRenderer} from '../building-recipes/render.ts';
 import {STRIP_LIKENESS, spanLikeness} from '../../src/canalRecall/blockFace/stripLikeness.ts';
 import {lowFrontFootMaxM, runFootOffset} from '../../src/canalRecall/blockFace/stripFoot.ts';
 import {applyCrownPins, applyMirrorPins, crownPinProblems, holdBrokenPairs, mirrorPinProblems, typePinProblems, typesForFace, typesForPand, type CrownPin, type MirrorPin, type TypePin} from '../../src/canalRecall/blockFace/reviewCrowns.ts';
+import {eavesPinProblems as faceEavesPinProblems, pinnedEaves, type EavesPin as FaceEavesPin} from '../../src/canalRecall/blockFace/reviewFaceEaves.ts';
 import {applyDoorPins, doorPinProblems, type DoorPin} from '../../src/canalRecall/blockFace/reviewDoors.ts';
 import {applyEavesPins, eavesPinProblems, type EavesPin} from '../../src/canalRecall/blockFace/reviewEaves.ts';
 import {acceptFloorFor, acceptPinProblems, applyPalettePins, palettePinProblems, type AcceptPin, type PalettePin} from '../../src/canalRecall/blockFace/reviewPalettes.ts';
@@ -134,7 +135,7 @@ let eavesPins: EavesPin[] = [];
 function withPhotoEaves(intent: ReturnType<typeof runIntent>, types: MatchableType[], evs: PandEvidence[], strip: {height: number; pixelsPerMetre: number}): ReturnType<typeof runIntent> {
   const m = intent.houses.flatMap(h => {
     const ev = evs.find(e => e.pandId === h.pandId), t = types.find(x => x.id === h.type?.type);
-    const fe = t && ev ? frontEavesFor(t, ev) : null, bagM = photoEaves.get(h.pandId)?.bagM ?? ev?.eavesM;
+    const fe = t && ev ? frontEavesFor(t, ev) : null, bagM = photoEaves.get(h.pandId)?.bagM ?? ev?.surveyEavesM ?? ev?.eavesM;
     if (fe && ev && bagM !== undefined) {
       if (Math.abs(fe.eavesM - bagM) <= PHOTO_EAVES.minDeltaM && !photoEaves.has(h.pandId)) return [];
       return [{pand: h.pandId, stripRow: Math.round(strip.height - fe.eavesM * strip.pixelsPerMetre), ...(fe.eavesM < bagM && !t!.match?.keepSurveyRoof ? {frontRoof: {}} : {}),
@@ -149,16 +150,22 @@ function withPhotoEaves(intent: ReturnType<typeof runIntent>, types: MatchableTy
   return pinned?.length ? {...intent, continuity: {...intent.continuity, measuredEaves: pinned}} : intent;
 }
 
-async function faceEvidence(faceId: string) {
+async function faceEvidence(faceId: string, buurt?: string) {
   const dir = path.join(FACES, faceId);
+  // Per-face gutter pins (reviewFaceEaves.ts, Nieuwendammerdijk); the per-pand eaves pins (reviewEaves.ts) apply in withPhotoEaves.
+  const faceEavesFile = buurt ? path.join('scripts/block-face/buurten', `${buurt}-review-face-eaves.json`) : '';
+  const faceEavesPins: FaceEavesPin[] = faceEavesFile && existsSync(faceEavesFile) ? (await readJson(faceEavesFile)).pins ?? [] : [];
+  const faceEavesProblems = faceEavesPinProblems(faceEavesPins);
+  if (faceEavesProblems.length) throw Error(`${faceEavesFile}: ${faceEavesProblems.join('; ')}`);
+  const pinnedEavesM = pinnedEaves(faceEavesPins, faceId);
   const [discovery, strip, uses] = await Promise.all(['discovery', 'strip', 'uses'].map(n => readJson(path.join(dir, `${n}.json`))));
   const raw = await stripRaw(path.join(STAGING, faceId, 'strip.jpg'));
   const evs: PandEvidence[] = [];
   for (const id of discovery.members as string[]) {
     const facts: BuildingFacts = await readJson(path.join(dir, 'pands', id, 'facts.json'));
     const u = uses.pands.find((p: any) => p.pandId === id), span = strip.spans.find((s: any) => s.pandId === id);
-    const f0 = facts.fronts[0], eavesM = f0.eavesM >= 6 || f0.eavesM <= 5 ? f0.eavesM : facts.heights.dak70pM; // <= 5 m: a one-storey front's own gutter (Vogelbuurt cottages), not the roof's 70th percentile
-    const ev: PandEvidence = {pandId: id, address: u?.addresses?.[0] ?? `pand ${id.slice(-6)}`, builtYear: facts.heights.builtYear, widthM: r2(f0.widthM), eavesM: r2(eavesM), roofMaxM: r2(facts.heights.roofMaxM), storeys3dbag: facts.heights.storeys,
+    const f0 = facts.fronts[0], eavesM = pinnedEavesM ?? (f0.eavesM >= 6 || f0.eavesM <= 5 ? f0.eavesM : facts.heights.dak70pM); // <= 5 m: a one-storey front's own gutter (Vogelbuurt cottages), not the roof's 70th percentile
+    const ev: PandEvidence = {pandId: id, address: u?.addresses?.[0] ?? `pand ${id.slice(-6)}`, builtYear: facts.heights.builtYear, widthM: r2(f0.widthM), eavesM: r2(eavesM), ...(pinnedEavesM !== null ? {surveyEavesM: r2(f0.eavesM)} : {}), roofMaxM: r2(facts.heights.roofMaxM), storeys3dbag: facts.heights.storeys,
       groundUses: [...new Set<string>((u?.groundUnits ?? []).map((g: any) => g.use))],
       osm: (u?.osm ?? []).map((b: any) => ({type: b.type, id: b.id, name: b.tags.name, category: osmCategory(b.tags)})),
       // The bay of the discovered BAG front (bay-outline.ts / intake --bay-outline=auto keep it in facts-bay-outline.json).
@@ -183,7 +190,7 @@ async function faceEvidence(faceId: string) {
         photoEaves.set(id, {row: skyline.eavesRow, eavesM: r2(skyline.eavesM), bagM: ev.eavesM, confidence: skyline.confidence});
         ev.eavesM = r2(skyline.eavesM);
       }
-      const front = EVIDENCE_GATE ? measureSpanEvidence({rgb: raw.rgb, width: raw.width, height: raw.height, px, pixelsPerMetre: strip.pixelsPerMetre, eavesM: f0.eavesM, roofM: facts.heights.roofMaxM, panoramas: span.panoramas}) : null;
+      const front = EVIDENCE_GATE ? measureSpanEvidence({rgb: raw.rgb, width: raw.width, height: raw.height, px, pixelsPerMetre: strip.pixelsPerMetre, eavesM: pinnedEavesM ?? f0.eavesM, roofM: facts.heights.roofMaxM, panoramas: span.panoramas}) : null;
       const skyBound = measureSkyBound({rgb: raw.rgb, width: raw.width, height: raw.height, x0: px[0], x1: px[1], pixelsPerMetre: strip.pixelsPerMetre});
       ev.strip = {date: span.date, px, palette, wall, skyline, skyBound, ...evidenceShares(raw, px, strip.pixelsPerMetre, eavesM), ...(front ? {frontEvidence: {...evidenceVerdict(front), skyCols: front.skyCols}} : {}), columns, ...(frontClass ? {frontClass} : {}), doorSide: doorSide(raw, px, strip.pixelsPerMetre, eavesM <= 5), ...(a => ({accentSide: a.side, accentShare: a.share}))(accentSide(raw, px, strip.pixelsPerMetre, eavesM)), structure};
     }
@@ -336,7 +343,7 @@ if (process.argv[1]?.endsWith('block-face/auto-place.ts')) {
   const dateGains = new Map<string, number[][]>();
   if (process.argv.includes('--row-exposure=date')) for (const f of doc.faces) {
     if ((only && !only.includes(f.id)) || !existsSync(path.join(FACES, f.id, 'strip.json')) || !existsSync(path.join(STAGING, f.id, 'strip.jpg'))) continue;
-    const {strip, evs} = await faceEvidence(f.id);
+    const {strip, evs} = await faceEvidence(f.id, buurt);
     dateGains.set(strip.date, [...(dateGains.get(strip.date) ?? []), ...trimGains(evs)]);
   }
   for (const f of doc.faces) {
@@ -362,7 +369,7 @@ if (process.argv[1]?.endsWith('block-face/auto-place.ts')) {
     if (handRuns.length) { console.log(`${f.id}: skipped, hand-authored run face ${handRuns.join(', ')}`); summary.push({face: f.id, status: `hand-authored ${handRuns.join(', ')}`}); continue; }
     const tf = performance.now();
     if (types !== library) console.log(`${f.id}: types pinned to ${types.map(t => t.id).join(', ')}`);
-    const {discovery, strip, uses, evs} = await faceEvidence(f.id);
+    const {discovery, strip, uses, evs} = await faceEvidence(f.id, buurt);
     if (rowExposureOn) {
       const pooled = dateGains.get(strip.date), g = rowExposure(evs, pooled && pooled.length >= 8 ? medianGain(pooled) : undefined);
       if (g) console.log(`${f.id}: row exposure gain ${g.join('/')} over ${evs.filter(e => e.strip?.wallOwnGain).length} pands${pooled ? ` (pooled over ${pooled.length} pands of ${strip.date})` : ''}`);

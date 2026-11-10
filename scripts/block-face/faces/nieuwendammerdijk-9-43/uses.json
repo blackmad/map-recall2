@@ -1,0 +1,319 @@
+{
+ "street": "Nieuwendammerdijk",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T07:21:13.602Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012160620",
+   "addresses": [
+    "Nieuwendammerdijk 9"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwendammerdijk 9",
+     "use": "woonfunctie",
+     "areaM2": 64,
+     "bagId": "0363010000751574"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012162864",
+   "addresses": [
+    "Nieuwendammerdijk 11"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwendammerdijk 11",
+     "use": "woonfunctie",
+     "areaM2": 117,
+     "bagId": "0363010000751576"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012164308",
+   "addresses": [
+    "Nieuwendammerdijk 13"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwendammerdijk 13",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000751578"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012166568",
+   "addresses": [
+    "Nieuwendammerdijk 15"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwendammerdijk 15",
+     "use": "woonfunctie",
+     "areaM2": 121,
+     "bagId": "0363010000751580"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012162453",
+   "addresses": [
+    "Nieuwendammerdijk 17"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwendammerdijk 17",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000751582"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012156497",
+   "addresses": [
+    "Nieuwendammerdijk 19"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwendammerdijk 19",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000751584"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2848469239,
+     "lngLat": [
+      4.925809,
+      52.3911097
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "19",
+      "addr:postcode": "1025LC",
+      "addr:street": "Nieuwendammerdijk",
+      "source": "BAG",
+      "source:date": "2014-05-07",
+      "tourism": "apartment",
+      "website": "https://eatbu.nl/apartement-with-terras-in-amsterdam-noord-netherlands"
+     },
+     "fetchedAt": "2026-11-10T07:21:13.602Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012162658",
+   "addresses": [
+    "Nieuwendammerdijk 21"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwendammerdijk 21",
+     "use": "woonfunctie",
+     "areaM2": 120,
+     "bagId": "0363010000751586"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012153113",
+   "addresses": [
+    "Nieuwendammerdijk 23"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwendammerdijk 23",
+     "use": "woonfunctie",
+     "areaM2": 148,
+     "bagId": "0363010000751588"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012158438",
+   "addresses": [
+    "Nieuwendammerdijk 25"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwendammerdijk 25",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000751590"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012156288",
+   "addresses": [
+    "Nieuwendammerdijk 27"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwendammerdijk 27",
+     "use": "woonfunctie",
+     "areaM2": 144,
+     "bagId": "0363010000751592"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012162139",
+   "addresses": [
+    "Nieuwendammerdijk 29"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwendammerdijk 29",
+     "use": "woonfunctie",
+     "areaM2": 160,
+     "bagId": "0363010000751594"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012163790",
+   "addresses": [
+    "Nieuwendammerdijk 31"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwendammerdijk 31",
+     "use": "woonfunctie",
+     "areaM2": 173,
+     "bagId": "0363010000751596"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012160887",
+   "addresses": [
+    "Nieuwendammerdijk 33"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwendammerdijk 33",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000751598"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012159446",
+   "addresses": [
+    "Nieuwendammerdijk 35"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwendammerdijk 35",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010000751599"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012163971",
+   "addresses": [
+    "Nieuwendammerdijk 37"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwendammerdijk 37",
+     "use": "woonfunctie",
+     "areaM2": 133,
+     "bagId": "0363010000751601"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012152664",
+   "addresses": [
+    "Nieuwendammerdijk 39"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwendammerdijk 39",
+     "use": "woonfunctie",
+     "areaM2": 85,
+     "bagId": "0363010000751603"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012164697",
+   "addresses": [
+    "Nieuwendammerdijk 41"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwendammerdijk 41",
+     "use": "woonfunctie",
+     "areaM2": 139,
+     "bagId": "0363010000751605"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012152408",
+   "addresses": [
+    "Nieuwendammerdijk 43"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwendammerdijk 43",
+     "use": "woonfunctie",
+     "areaM2": 158,
+     "bagId": "0363010000751607"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  }
+ ]
+}

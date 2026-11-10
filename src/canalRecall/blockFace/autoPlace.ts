@@ -257,6 +257,8 @@ export interface PandEvidence {
   builtYear: number | null;
   widthM: number;
   eavesM: number;
+  /** The 3DBAG/PDOK eaves when a reviewer's eaves pin replaced `eavesM` (reviewFaceEaves.ts); absent = `eavesM` is the survey's. */
+  surveyEavesM?: number;
   roofMaxM: number;
   storeys3dbag: number | null;
   /** BAG gebruiksdoel of the ground units, and the OSM businesses assigned to the pand (blockFace/uses.ts). */
