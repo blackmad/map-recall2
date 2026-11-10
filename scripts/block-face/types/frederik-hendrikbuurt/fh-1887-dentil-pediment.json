@@ -81,9 +81,9 @@
   },
   "point-gable": {
    "gable": "point",
-   "crownRise": 2.6,
+   "crownRise": 1.15,
    "atticWindows": 1,
-   "note": "houweningen-1-31 pands 2 and 9, hendrik-134-154: a pointed brick gable with one attic light, about 2.6 m over the cornice"
+   "note": "pointed brick gable with one attic light; strips houweningen-1-31 2021-02-22 (pands 15/31 at px 1704-1892 and 3208-3396), hendrik-134-154 2022-04-29: apex 17.1 m over the ground against 3DBAG eaves 13.7 m, 3.4 m = 1.15 upper storeys of 2.95 m (was 2.6, read as metres: crownRise is in upper-storey heights, so it drew 7.5 m)"
   },
   "none": {
    "gable": "cornice",

@@ -18,7 +18,8 @@
   "note": "auto-placed from the frederik-hendrikbuurt library (buurt Frederik Hendrikbuurt-Zuidoost); scores and holds in scripts/block-face/faces/houweningen-1-31/auto-place.json"
  },
  "types": [
-  "fh-1887-dentil-pediment"
+  "fh-1887-dentil-pediment",
+  "fh-1887-plain-anchor-pediment"
  ],
  "houses": [
   {
@@ -50,12 +51,11 @@
    "slug": "houweningen-157843",
    "address": "Van Houweningenstraat 7",
    "type": {
-    "type": "fh-1887-dentil-pediment",
+    "type": "fh-1887-plain-anchor-pediment",
     "measuredPalette": {
      "brick": "#6a584c",
      "evidence": "strip 2021-02-22 span 950-1138: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    },
-    "mirror": true
+    }
    },
    "groundFloor": {
     "use": "residential",
@@ -67,7 +67,7 @@
     "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
    },
    "rhythm": {
-    "citation": "auto-place: fh-1887-dentil-pediment scored 1 on eaves 1, roof 1, stucco 1; strip 2021-02-22 span 950-1138"
+    "citation": "auto-place: fh-1887-plain-anchor-pediment scored 1 on eaves 1, roof 1, stucco 1; strip 2021-02-22 span 950-1138"
    }
   }
  ],

@@ -19,7 +19,7 @@
  },
  "types": [
   "fh-1887-arched-gable",
-  "fh-1887-dentil-pediment"
+  "fh-1887-plain-anchor-pediment"
  ],
  "houses": [
   {
@@ -27,7 +27,7 @@
    "slug": "houweningen-156794",
    "address": "Van Houweningenstraat 29",
    "type": {
-    "type": "fh-1887-dentil-pediment",
+    "type": "fh-1887-plain-anchor-pediment",
     "measuredPalette": {
      "brick": "#7a635b",
      "evidence": "strip 2021-02-22 span 3020-3208: trim-normalised wall (buildingRecipe/measureFacade.ts)"
@@ -43,7 +43,7 @@
     "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
    },
    "rhythm": {
-    "citation": "auto-place: fh-1887-dentil-pediment scored 1 on eaves 1, roof 1, stucco 1; strip 2021-02-22 span 3020-3208"
+    "citation": "auto-place: fh-1887-plain-anchor-pediment scored 1 on eaves 1, roof 1, stucco 1; strip 2021-02-22 span 3020-3208"
    }
   },
   {
@@ -76,7 +76,7 @@
    "slug": "houweningen-165776",
    "address": "Van Houweningenstraat 31A",
    "type": {
-    "type": "fh-1887-dentil-pediment",
+    "type": "fh-1887-plain-anchor-pediment",
     "measuredPalette": {
      "brick": "#79645b",
      "evidence": "strip 2021-02-22 span 3396-3608: trim-normalised wall (buildingRecipe/measureFacade.ts)"
@@ -92,7 +92,7 @@
     "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
    },
    "rhythm": {
-    "citation": "auto-place: fh-1887-dentil-pediment scored 1 on eaves 1, roof 1, stucco 1; strip 2021-02-22 span 3396-3608"
+    "citation": "auto-place: fh-1887-plain-anchor-pediment scored 1 on eaves 1, roof 1, stucco 1; strip 2021-02-22 span 3396-3608"
    }
   }
  ],

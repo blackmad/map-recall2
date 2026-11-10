@@ -3,7 +3,7 @@
  "street": "Frederik Hendrikstraat",
  "library": "frederik-hendrikbuurt",
  "stripDate": "2022-04-29",
- "seconds": 92.89,
+ "seconds": 83.93,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -20,8 +20,7 @@
     "0363100012158151",
     "0363100012157111"
    ],
-   "passed": true,
-   "triangles": 4752
+   "installed": true
   },
   {
    "face": "hendrik-134-154-r2",
@@ -29,8 +28,7 @@
     "0363100012160880",
     "0363100012164007"
    ],
-   "passed": true,
-   "triangles": 4848
+   "installed": true
   }
  ],
  "pands": [
@@ -76,40 +74,38 @@
     "foliageShare": 0.02
    },
    "status": "held",
-   "stage": "run",
-   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "stage": "likeness",
+   "reason": "edge NCC 0.109 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.15)",
    "likeness": {
     "pandId": "0363100012161572",
-    "ncc": 0.15,
-    "nccRaw": 0.15,
+    "ncc": 0.109,
+    "nccRaw": 0.109,
     "shiftM": [
      -0.1,
-     -0.15
+     0.4
     ],
     "usable": 0.93,
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.18"
+     "glazing storey band off by 0.15"
     ],
     "wall": {
-     "photo": "#7b655c",
+     "photo": "#7b645c",
      "model": "#91776b",
      "dL": 0.073
     },
     "glazing": {
-     "photo": 0.46,
+     "photo": 0.43,
      "model": 0.42
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.465
+    "iou": 0.447
    },
-   "challengers": {
-    "fh-1887-dentil-pediment~m": 0.15
-   }
+   "challengers": {}
   },
   {
    "pandId": "0363100012156720",
@@ -147,40 +143,38 @@
     "foliageShare": 0.03
    },
    "status": "held",
-   "stage": "likeness",
-   "reason": "edge NCC 0.14 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.26)",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
    "likeness": {
     "pandId": "0363100012156720",
-    "ncc": 0.14,
-    "nccRaw": 0.14,
+    "ncc": 0.152,
+    "nccRaw": 0.152,
     "shiftM": [
      -0.05,
      0.4
     ],
-    "usable": 0.9,
+    "usable": 0.92,
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.26"
+     "glazing storey band off by 0.23"
     ],
     "wall": {
-     "photo": "#7e6760",
+     "photo": "#7c6560",
      "model": "#907365",
-     "dL": 0.045
+     "dL": 0.049
     },
     "glazing": {
-     "photo": 0.44,
-     "model": 0.4
+     "photo": 0.4,
+     "model": 0.34
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.352
+    "iou": 0.339
    },
-   "challengers": {
-    "fh-1887-arched-gable": 0.141
-   }
+   "challengers": {}
   },
   {
    "pandId": "0363100012158151",
@@ -263,7 +257,8 @@
    },
    "challengers": {
     "fh-1887-dentil-pediment~m": 0.237
-   }
+   },
+   "installed": "hendrik-134-154-r1"
   },
   {
    "pandId": "0363100012157111",
@@ -351,7 +346,8 @@
    },
    "challengers": {
     "fh-1887-dentil-pediment": 0.198
-   }
+   },
+   "installed": "hendrik-134-154-r1"
   },
   {
    "pandId": "0363100012164721",
@@ -396,11 +392,11 @@
    },
    "status": "held",
    "stage": "likeness",
-   "reason": "edge NCC 0.141 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.41 mean 0.38 vs photo 0.60)",
+   "reason": "edge NCC 0.14 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.36 mean 0.38 vs photo 0.58)",
    "likeness": {
     "pandId": "0363100012164721",
-    "ncc": 0.141,
-    "nccRaw": 0.141,
+    "ncc": 0.14,
+    "nccRaw": 0.14,
     "shiftM": [
      -0.1,
      0.05
@@ -409,26 +405,24 @@
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.41 mean 0.38 vs photo 0.60"
+     "glazing storey band off by 0.36 mean 0.38 vs photo 0.58"
     ],
     "wall": {
-     "photo": "#766257",
+     "photo": "#776358",
      "model": "#8f7569",
-     "dL": 0.084
+     "dL": 0.08
     },
     "glazing": {
-     "photo": 0.6,
+     "photo": 0.58,
      "model": 0.38
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.382
+    "iou": 0.386
    },
-   "challengers": {
-    "fh-1887-dentil-pediment~m": 0.144
-   }
+   "challengers": {}
   },
   {
    "pandId": "0363100012167163",
@@ -475,36 +469,34 @@
    "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
    "likeness": {
     "pandId": "0363100012167163",
-    "ncc": 0.231,
-    "nccRaw": 0.231,
+    "ncc": 0.204,
+    "nccRaw": 0.204,
     "shiftM": [
      -0.1,
-     -0.05
+     0.4
     ],
-    "usable": 0.94,
+    "usable": 0.93,
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.20"
+     "glazing storey band off by 0.22"
     ],
     "wall": {
-     "photo": "#725f55",
+     "photo": "#735f55",
      "model": "#8e7669",
-     "dL": 0.094
+     "dL": 0.092
     },
     "glazing": {
-     "photo": 0.35,
+     "photo": 0.34,
      "model": 0.39
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.45
+    "iou": 0.402
    },
-   "challengers": {
-    "fh-1887-dentil-pediment": 0.225
-   }
+   "challengers": {}
   },
   {
    "pandId": "0363100012158916",
@@ -548,39 +540,37 @@
    },
    "status": "held",
    "stage": "likeness",
-   "reason": "edge NCC 0.135 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.24)",
+   "reason": "edge NCC 0.125 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.23)",
    "likeness": {
     "pandId": "0363100012158916",
-    "ncc": 0.135,
-    "nccRaw": 0.135,
+    "ncc": 0.125,
+    "nccRaw": 0.125,
     "shiftM": [
      -0.1,
-     -0.15
+     0.25
     ],
-    "usable": 0.94,
+    "usable": 0.96,
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.24"
+     "glazing storey band off by 0.23"
     ],
     "wall": {
-     "photo": "#7b665a",
+     "photo": "#7e6962",
      "model": "#90796b",
-     "dL": 0.075
+     "dL": 0.053
     },
     "glazing": {
-     "photo": 0.44,
-     "model": 0.38
+     "photo": 0.43,
+     "model": 0.35
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.435
+    "iou": 0.345
    },
-   "challengers": {
-    "fh-1887-dentil-pediment~m": 0.138
-   }
+   "challengers": {}
   },
   {
    "pandId": "0363100012152966",
@@ -627,36 +617,34 @@
    "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
    "likeness": {
     "pandId": "0363100012152966",
-    "ncc": 0.196,
-    "nccRaw": 0.196,
+    "ncc": 0.188,
+    "nccRaw": 0.188,
     "shiftM": [
      -0.1,
-     -0.05
+     0.4
     ],
     "usable": 0.81,
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.26 mean 0.39 vs photo 0.28"
+     "glazing storey band off by 0.25 mean 0.40 vs photo 0.27"
     ],
     "wall": {
-     "photo": "#746255",
+     "photo": "#736255",
      "model": "#8c7868",
-     "dL": 0.084
+     "dL": 0.086
     },
     "glazing": {
-     "photo": 0.28,
-     "model": 0.39
+     "photo": 0.27,
+     "model": 0.4
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.438
+    "iou": 0.385
    },
-   "challengers": {
-    "fh-1887-dentil-pediment": 0.199
-   }
+   "challengers": {}
   },
   {
    "pandId": "0363100012165508",
@@ -700,39 +688,37 @@
    },
    "status": "held",
    "stage": "likeness",
-   "reason": "edge NCC 0.137 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.48 mean 0.39 vs photo 0.61)",
+   "reason": "edge NCC 0.12 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.63)",
    "likeness": {
     "pandId": "0363100012165508",
-    "ncc": 0.137,
-    "nccRaw": 0.137,
+    "ncc": 0.12,
+    "nccRaw": 0.12,
     "shiftM": [
      -0.05,
      0
     ],
-    "usable": 0.89,
+    "usable": 0.91,
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.48 mean 0.39 vs photo 0.61"
+     "glazing storey band off by 0.63"
     ],
     "wall": {
-     "photo": "#76655a",
+     "photo": "#726256",
      "model": "#8f786d",
-     "dL": 0.086
+     "dL": 0.102
     },
     "glazing": {
-     "photo": 0.61,
+     "photo": 0.49,
      "model": 0.39
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.41
+    "iou": 0.36
    },
-   "challengers": {
-    "fh-1887-dentil-pediment~m": 0.132
-   }
+   "challengers": {}
   },
   {
    "pandId": "0363100012160880",
@@ -819,7 +805,8 @@
    },
    "challengers": {
     "fh-1887-dentil-pediment": 0.203
-   }
+   },
+   "installed": "hendrik-134-154-r2"
   },
   {
    "pandId": "0363100012164007",
@@ -905,7 +892,8 @@
    },
    "challengers": {
     "fh-1887-dentil-pediment~m": 0.198
-   }
+   },
+   "installed": "hendrik-134-154-r2"
   },
   {
    "pandId": "0363100012152931",
@@ -948,40 +936,10 @@
     "foliageShare": 0.21
    },
    "status": "held",
-   "stage": "likeness",
-   "reason": "edge NCC 0.122 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.22 mean 0.42 vs photo 0.27)",
-   "likeness": {
-    "pandId": "0363100012152931",
-    "ncc": 0.122,
-    "nccRaw": 0.122,
-    "shiftM": [
-     -0.1,
-     0.4
-    ],
-    "usable": 0.59,
-    "abstain": null,
-    "verdict": "FAIL",
-    "reasons": [
-     "glazing storey band off by 0.22 mean 0.42 vs photo 0.27"
-    ],
-    "wall": {
-     "photo": "#816d64",
-     "model": "#956955",
-     "dL": 0.01
-    },
-    "glazing": {
-     "photo": 0.27,
-     "model": 0.42
-    },
-    "columns": {
-     "photo": 3,
-     "model": 3
-    },
-    "iou": 0.279
-   },
-   "challengers": {
-    "fh-1887-arched-gable": 0.129
-   }
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": null,
+   "challengers": {}
   }
  ]
 }

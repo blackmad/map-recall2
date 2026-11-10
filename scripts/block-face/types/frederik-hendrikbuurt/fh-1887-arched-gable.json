@@ -69,14 +69,18 @@
     "style": "blocks",
     "keystone": true
    }
+  },
+  "wallAnchors": {
+   "over": 0.35
   }
  },
  "crowns": {
   "point-gable": {
    "gable": "point",
-   "crownRise": 1.5,
+   "crownRise": 1.15,
    "atticWindows": 1,
-   "note": "houweningen-1-31 pands 2 and 9, hendrik-134-154: a pointed brick gable with one attic light, about 2.6 m over the cornice"
+   "note": "pointed brick gable with one attic light, no white cornice (the neighbours cornice stops at the gable pand); strips houweningen-1-31 2021-02-22 (pands 15/31 at px 1704-1892 and 3208-3396), hendrik-134-154 2022-04-29: apex 17.1 m over the ground against 3DBAG eaves 13.7 m, 3.4 m = 1.15 upper storeys of 2.95 m (was 1.5 = 4.4 m, drawn about 1 m too tall)",
+   "cornice": "none"
   }
  },
  "palettes": {
@@ -108,7 +112,7 @@
    3
   ],
   "photoGroundRows": 1,
-  "citation": "strips houweningen-1-31 2021-02-22, hendrik-134-154 2022-04-29",
+  "citation": "strips houweningen-1-31 2021-02-22, hendrik-134-154 2022-04-29; iron wall anchors on every pier read on houweningen-1-31 15 and 31",
   "signage": "none above the ground; per-door numbers",
   "identicalBays": "upper storeys: equal axes, no balconies"
  },
@@ -196,9 +200,9 @@
   }
  ],
  "schemaLimits": [
-  "iron wall anchors and brick roundels",
   "arched ground heads on some pands (see fh-1887-arched-gable)",
-  "the top storey's arch rings are not drawn (they reach the cornice and fail the opening-outside audit); storeys 1 and 2 carry them"
+  "the top storey's arch rings are not drawn (they reach the cornice and fail the opening-outside audit); storeys 1 and 2 carry them",
+  "round-arched ground heads with white blocks over the door pair and the wide window"
  ],
  "grounds": {
   "door-left": {

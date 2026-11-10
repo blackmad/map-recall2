@@ -1,12 +1,12 @@
 {
  "buurt": "frederik-hendrikbuurt-zuidoost",
  "library": "frederik-hendrikbuurt",
- "generatedAt": "2026-11-10T09:31:05.856Z",
- "seconds": 41.72,
+ "generatedAt": "2026-11-10T20:52:38.534Z",
+ "seconds": 558.02,
  "totals": {
   "faces": 4,
   "pands": 67,
-  "placed": 48
+  "placed": 40
  },
  "faces": [
   {
@@ -22,8 +22,7 @@
       "0363100012158151",
       "0363100012157111"
      ],
-     "passed": true,
-     "triangles": 4752
+     "installed": true
     },
     {
      "face": "hendrik-134-154-r2",
@@ -31,20 +30,19 @@
       "0363100012160880",
       "0363100012164007"
      ],
-     "passed": true,
-     "triangles": 4848
+     "installed": true
     }
    ],
-   "seconds": 92.89,
+   "seconds": 83.93,
    "byType": {
     "fh-1887-dentil-pediment": 4
    },
-   "installed": 0,
+   "installed": 4,
    "holds": {
     "evidence": 0,
     "match": 0,
-    "likeness": 5,
-    "run": 3,
+    "likeness": 4,
+    "run": 4,
     "review": 0
    }
   },
@@ -62,26 +60,7 @@
       "0363100012157843"
      ],
      "passed": false,
-     "triangles": 4661
-    },
-    {
-     "face": "houweningen-1-31-r2",
-     "pands": [
-      "0363100012158949",
-      "0363100012157672"
-     ],
-     "passed": true,
-     "triangles": 4914
-    },
-    {
-     "face": "houweningen-1-31-r3",
-     "pands": [
-      "0363100012156727",
-      "0363100012167046",
-      "0363100012157692"
-     ],
-     "passed": true,
-     "triangles": 7311
+     "triangles": 3773
     },
     {
      "face": "houweningen-1-31-r4",
@@ -91,20 +70,38 @@
       "0363100012165776"
      ],
      "passed": true,
-     "triangles": 6957
+     "triangles": 4821
+    },
+    {
+     "face": "houweningen-1-31-r2",
+     "pands": [
+      "0363100012158949",
+      "0363100012157672"
+     ],
+     "installed": true
+    },
+    {
+     "face": "houweningen-1-31-r3",
+     "pands": [
+      "0363100012156727",
+      "0363100012167046",
+      "0363100012157692"
+     ],
+     "installed": true
     }
    ],
-   "seconds": 56.1,
+   "seconds": 60.96,
    "byType": {
-    "fh-1887-dentil-pediment": 9,
+    "fh-1887-dentil-pediment": 6,
+    "fh-1887-plain-anchor-pediment": 3,
     "fh-1887-arched-gable": 1
    },
-   "installed": 0,
+   "installed": 5,
    "holds": {
     "evidence": 0,
     "match": 4,
-    "likeness": 3,
-    "run": 0,
+    "likeness": 2,
+    "run": 1,
     "review": 0
    }
   },
@@ -136,13 +133,14 @@
       "0363100012162506"
      ],
      "passed": false,
-     "triangles": 36989
+     "triangles": 31601
     }
    ],
-   "seconds": 48.16,
+   "seconds": 166.25,
    "byType": {
-    "fh-1887-dentil-pediment": 14,
-    "fh-1887-arched-gable": 2
+    "fh-1887-plain-anchor-pediment": 6,
+    "fh-1887-arched-gable": 2,
+    "fh-1887-dentil-pediment": 8
    },
    "installed": 0,
    "holds": {
@@ -157,8 +155,8 @@
    "face": "reigersbergen-1-37",
    "street": "Van Reigersbergenstraat",
    "pands": 19,
-   "placed": 18,
-   "held": 1,
+   "placed": 10,
+   "held": 9,
    "runs": [
     {
      "face": "reigersbergen-1-37-r1",
@@ -170,40 +168,33 @@
       "0363100012153678",
       "0363100012152999",
       "0363100012163303",
-      "0363100012163395",
-      "0363100012157676",
-      "0363100012155474",
-      "0363100012153212"
+      "0363100012163395"
      ],
      "passed": true,
-     "triangles": 24137
+     "triangles": 15426
     },
     {
      "face": "reigersbergen-1-37-r2",
      "pands": [
-      "0363100012153758",
-      "0363100012164833",
-      "0363100012156927",
-      "0363100012153810",
-      "0363100012162778",
-      "0363100012156249",
-      "0363100012160664"
+      "0363100012155474",
+      "0363100012153212"
      ],
-     "passed": false,
-     "triangles": 15896
+     "passed": true,
+     "triangles": 3333
     }
    ],
-   "seconds": 41.72,
+   "seconds": 246.82,
    "byType": {
-    "fh-1887-dentil-pediment": 15,
-    "fh-1887-arched-gable": 3
+    "fh-1887-plain-anchor-pediment": 4,
+    "fh-1887-arched-gable": 2,
+    "fh-1887-dentil-pediment": 4
    },
    "installed": 0,
    "holds": {
     "evidence": 0,
     "match": 0,
-    "likeness": 0,
-    "run": 0,
+    "likeness": 6,
+    "run": 2,
     "review": 1
    }
   }

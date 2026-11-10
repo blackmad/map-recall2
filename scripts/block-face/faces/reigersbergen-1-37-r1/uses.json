@@ -147,54 +147,6 @@
    ],
    "units": 4,
    "osm": []
-  },
-  {
-   "pandId": "0363100012157676",
-   "addresses": [
-    "Van Reigersbergenstraat 17"
-   ],
-   "groundUnits": [
-    {
-     "address": "Van Reigersbergenstraat 17-H",
-     "use": "woonfunctie",
-     "areaM2": 38,
-     "bagId": "0363010000845823"
-    }
-   ],
-   "units": 4,
-   "osm": []
-  },
-  {
-   "pandId": "0363100012155474",
-   "addresses": [
-    "Van Reigersbergenstraat 19"
-   ],
-   "groundUnits": [
-    {
-     "address": "Van Reigersbergenstraat 19-H",
-     "use": "woonfunctie",
-     "areaM2": 38,
-     "bagId": "0363010000845827"
-    }
-   ],
-   "units": 4,
-   "osm": []
-  },
-  {
-   "pandId": "0363100012153212",
-   "addresses": [
-    "Van Reigersbergenstraat 21"
-   ],
-   "groundUnits": [
-    {
-     "address": "Van Reigersbergenstraat 21-H",
-     "use": "woonfunctie",
-     "areaM2": 38,
-     "bagId": "0363010000845831"
-    }
-   ],
-   "units": 4,
-   "osm": []
   }
  ]
 }

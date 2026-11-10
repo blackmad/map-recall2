@@ -1,6 +1,6 @@
 {
  "note": "Door sides from the red door pair of each pand span (centroid of red in the ground band); the pairs alternate left/right along every row.",
- "reviewed": "2026-11-10 (lane, from the sheets)",
+ "reviewed": "2026-11-10 round 3 (lane, pand by pand off the strips: the rows alternate dentil pair / plain / gable)",
  "pins": [
   {
    "face": "hendrik-134-154",
@@ -8,18 +8,26 @@
     "fh-1887-dentil-pediment"
    ],
    "pands": [
-    "0363100012161572",
-    "0363100012158151",
     "0363100012157111",
     "0363100012164721",
-    "0363100012167163",
-    "0363100012158916",
-    "0363100012152966",
     "0363100012165508",
-    "0363100012160880",
+    "0363100012160880"
+   ],
+   "reason": "white dentil lintels and white head bands on every storey (the dentil pairs of the row)"
+  },
+  {
+   "face": "hendrik-134-154",
+   "types": [
+    "fh-1887-plain-anchor-pediment"
+   ],
+   "pands": [
+    "0363100012161572",
+    "0363100012158151",
+    "0363100012167163",
+    "0363100012152966",
     "0363100012164007"
    ],
-   "reason": "1885-90 four-storey 3-axis dentil front with a pediment dormer"
+   "reason": "flat brick heads, iron wall anchors, no white dressing (read pand by pand off the strip; round 2 had these as dentil fronts)"
   },
   {
    "face": "hendrik-134-154",
@@ -28,6 +36,7 @@
    ],
    "pands": [
     "0363100012156720",
+    "0363100012158916",
     "0363100012152931"
    ],
    "reason": "pointed brick gable over round-arched heads"
@@ -41,20 +50,29 @@
     "0363100012159613",
     "0363100012154093",
     "0363100012160230",
-    "0363100012157843",
     "0363100012165392",
     "0363100012158949",
-    "0363100012157672",
-    "0363100012156727",
     "0363100012167046",
     "0363100012157692",
-    "0363100012166596",
     "0363100012165332",
-    "0363100012162863",
+    "0363100012162863"
+   ],
+   "reason": "white dentil lintels and white head bands on every storey (the dentil pairs of the row)"
+  },
+  {
+   "face": "houweningen-1-31",
+   "types": [
+    "fh-1887-plain-anchor-pediment"
+   ],
+   "pands": [
+    "0363100012157843",
+    "0363100012157672",
+    "0363100012156727",
+    "0363100012166596",
     "0363100012156794",
     "0363100012165776"
    ],
-   "reason": "1885-90 four-storey 3-axis dentil front with a pediment dormer"
+   "reason": "flat brick heads, iron wall anchors, no white dressing (read pand by pand off the strip; round 2 had these as dentil fronts)"
   },
   {
    "face": "houweningen-1-31",
@@ -73,24 +91,33 @@
     "fh-1887-dentil-pediment"
    ],
    "pands": [
-    "0363100012161489",
-    "0363100012155831",
     "0363100012156059",
     "0363100012153678",
-    "0363100012152999",
     "0363100012163303",
     "0363100012163395",
-    "0363100012157676",
-    "0363100012153212",
     "0363100012166918",
     "0363100012153758",
-    "0363100012164833",
     "0363100012156927",
-    "0363100012153810",
+    "0363100012153810"
+   ],
+   "reason": "white dentil lintels and white head bands on every storey (the dentil pairs of the row)"
+  },
+  {
+   "face": "reigersbergen-1-37",
+   "types": [
+    "fh-1887-plain-anchor-pediment"
+   ],
+   "pands": [
+    "0363100012161489",
+    "0363100012155831",
+    "0363100012152999",
+    "0363100012157676",
+    "0363100012153212",
+    "0363100012164833",
     "0363100012162778",
     "0363100012160664"
    ],
-   "reason": "1885-90 four-storey 3-axis dentil front with a pediment dormer"
+   "reason": "flat brick heads, iron wall anchors, no white dressing (read pand by pand off the strip; round 2 had these as dentil fronts)"
   },
   {
    "face": "reigersbergen-1-37",
@@ -110,24 +137,33 @@
     "fh-1887-dentil-pediment"
    ],
    "pands": [
-    "0363100012161605",
-    "0363100012153807",
     "0363100012158366",
     "0363100012162380",
-    "0363100012163315",
     "0363100012159933",
     "0363100012167020",
-    "0363100012156096",
-    "0363100012163814",
     "0363100012167267",
     "0363100012165393",
-    "0363100012159135",
     "0363100012163222",
-    "0363100012162506",
+    "0363100012162506"
+   ],
+   "reason": "white dentil lintels and white head bands on every storey (the dentil pairs of the row)"
+  },
+  {
+   "face": "houweningen-2-38",
+   "types": [
+    "fh-1887-plain-anchor-pediment"
+   ],
+   "pands": [
+    "0363100012161605",
+    "0363100012153807",
+    "0363100012163315",
+    "0363100012156096",
+    "0363100012163814",
+    "0363100012159135",
     "0363100012158704",
     "0363100012163630"
    ],
-   "reason": "1885-90 four-storey 3-axis dentil front with a pediment dormer"
+   "reason": "flat brick heads, iron wall anchors, no white dressing (read pand by pand off the strip; round 2 had these as dentil fronts)"
   },
   {
    "face": "houweningen-2-38",

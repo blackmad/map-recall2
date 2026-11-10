@@ -6,118 +6,32 @@
  },
  "pands": [
   {
-   "pandId": "0363100012153758",
+   "pandId": "0363100012155474",
    "addresses": [
-    "Van Reigersbergenstraat 25"
+    "Van Reigersbergenstraat 19"
    ],
    "groundUnits": [
     {
-     "address": "Van Reigersbergenstraat 25-H",
+     "address": "Van Reigersbergenstraat 19-H",
      "use": "woonfunctie",
      "areaM2": 38,
-     "bagId": "0363010000845839"
+     "bagId": "0363010000845827"
     }
    ],
    "units": 4,
    "osm": []
   },
   {
-   "pandId": "0363100012164833",
+   "pandId": "0363100012153212",
    "addresses": [
-    "Van Reigersbergenstraat 27"
+    "Van Reigersbergenstraat 21"
    ],
    "groundUnits": [
     {
-     "address": "Van Reigersbergenstraat 27-H",
+     "address": "Van Reigersbergenstraat 21-H",
      "use": "woonfunctie",
      "areaM2": 38,
-     "bagId": "0363010000845843"
-    }
-   ],
-   "units": 4,
-   "osm": []
-  },
-  {
-   "pandId": "0363100012156927",
-   "addresses": [
-    "Van Reigersbergenstraat 29"
-   ],
-   "groundUnits": [
-    {
-     "address": "Van Reigersbergenstraat 29-H",
-     "use": "woonfunctie",
-     "areaM2": 38,
-     "bagId": "0363010000845847"
-    }
-   ],
-   "units": 4,
-   "osm": []
-  },
-  {
-   "pandId": "0363100012153810",
-   "addresses": [
-    "Van Reigersbergenstraat 31"
-   ],
-   "groundUnits": [
-    {
-     "address": "Van Reigersbergenstraat 31-H",
-     "use": "woonfunctie",
-     "areaM2": 38,
-     "bagId": "0363010000845851"
-    }
-   ],
-   "units": 4,
-   "osm": []
-  },
-  {
-   "pandId": "0363100012162778",
-   "addresses": [
-    "Van Reigersbergenstraat 33"
-   ],
-   "groundUnits": [
-    {
-     "address": "Van Reigersbergenstraat 33-H",
-     "use": "woonfunctie",
-     "areaM2": 38,
-     "bagId": "0363010000845855"
-    }
-   ],
-   "units": 4,
-   "osm": []
-  },
-  {
-   "pandId": "0363100012156249",
-   "addresses": [
-    "Van Reigersbergenstraat 35"
-   ],
-   "groundUnits": [
-    {
-     "address": "Van Reigersbergenstraat 35-H",
-     "use": "woonfunctie",
-     "areaM2": 38,
-     "bagId": "0363010000845859"
-    },
-    {
-     "address": "Derde Hugo de Grootstraat 50-H",
-     "use": "woonfunctie",
-     "areaM2": 35,
-     "bagId": "0363010000555400"
-    }
-   ],
-   "units": 8,
-   "osm": []
-  },
-  {
-   "pandId": "0363100012160664",
-   "addresses": [
-    "Van Reigersbergenstraat 37"
-   ],
-   "groundUnits": [
-    {
-     "address": "Derde Hugo de Grootstraat 52",
-     "use": "industriefunctie",
-     "areaM2": 16,
-     "bagId": "0363010001002787"
+     "bagId": "0363010000845831"
     }
    ],
    "units": 4,

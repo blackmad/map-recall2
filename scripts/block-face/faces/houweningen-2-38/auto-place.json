@@ -3,7 +3,7 @@
  "street": "Van Houweningenstraat",
  "library": "frederik-hendrikbuurt",
  "stripDate": "2021-02-22",
- "seconds": 48.16,
+ "seconds": 166.25,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -35,7 +35,7 @@
     "0363100012162506"
    ],
    "passed": false,
-   "triangles": 36989
+   "triangles": 31601
   }
  ],
  "pands": [
@@ -80,33 +80,31 @@
     "foliageShare": 0.03
    },
    "status": "placed",
-   "type": "fh-1887-dentil-pediment",
+   "type": "fh-1887-plain-anchor-pediment",
    "score": 1,
    "placement": {
-    "type": "fh-1887-dentil-pediment",
+    "type": "fh-1887-plain-anchor-pediment",
     "measuredPalette": {
      "brick": "#735d4e",
      "evidence": "strip 2021-02-22 span 0-184: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    },
-    "mirror": true
+    }
    },
    "notes": [
-    "crown pediment-dormer (type default)",
-    "door reviewer pin: mirrored (red door pair right of centre on the strip (red-pixel centroid of the ground band, x/width > 0.5; Reigersbergenstraat (cast strip) by the alternation anchored on the measured 164833))"
+    "crown pediment-dormer (type default)"
    ],
    "likeness": {
     "pandId": "0363100012161605",
-    "ncc": 0.449,
-    "nccRaw": 0.449,
+    "ncc": 0.492,
+    "nccRaw": 0.492,
     "shiftM": [
-     0.2,
+     0.25,
      0.4
     ],
     "usable": 0.91,
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.27 mean 0.40 vs photo 0.58"
+     "glazing storey band off by 0.27 mean 0.41 vs photo 0.58"
     ],
     "wall": {
      "photo": "#766152",
@@ -115,17 +113,15 @@
     },
     "glazing": {
      "photo": 0.58,
-     "model": 0.4
+     "model": 0.41
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.505
+    "iou": 0.502
    },
-   "challengers": {
-    "fh-1887-dentil-pediment~m": 0.449
-   }
+   "challengers": {}
   },
   {
    "pandId": "0363100012156521",
@@ -182,17 +178,17 @@
    ],
    "likeness": {
     "pandId": "0363100012156521",
-    "ncc": 0.193,
-    "nccRaw": 0.193,
+    "ncc": 0.215,
+    "nccRaw": 0.215,
     "shiftM": [
      0.25,
      0.4
     ],
     "usable": 0.94,
     "abstain": null,
-    "verdict": "WARN",
+    "verdict": "FAIL",
     "reasons": [
-     "mask IoU 0.404 < 0.45"
+     "glazing storey band off by 0.15"
     ],
     "wall": {
      "photo": "#705c4d",
@@ -201,17 +197,15 @@
     },
     "glazing": {
      "photo": 0.32,
-     "model": 0.41
+     "model": 0.36
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.404
+    "iou": 0.406
    },
-   "challengers": {
-    "fh-1887-arched-gable": 0.193
-   }
+   "challengers": {}
   },
   {
    "pandId": "0363100012153807",
@@ -254,24 +248,22 @@
     "foliageShare": 0.03
    },
    "status": "placed",
-   "type": "fh-1887-dentil-pediment",
+   "type": "fh-1887-plain-anchor-pediment",
    "score": 1,
    "placement": {
-    "type": "fh-1887-dentil-pediment",
+    "type": "fh-1887-plain-anchor-pediment",
     "measuredPalette": {
      "brick": "#6e5a49",
      "evidence": "strip 2021-02-22 span 379-567: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    },
-    "mirror": true
+    }
    },
    "notes": [
-    "crown pediment-dormer (type default)",
-    "door reviewer pin: mirrored (red door pair right of centre on the strip (red-pixel centroid of the ground band, x/width > 0.5; Reigersbergenstraat (cast strip) by the alternation anchored on the measured 164833))"
+    "crown pediment-dormer (type default)"
    ],
    "likeness": {
     "pandId": "0363100012153807",
-    "ncc": 0.588,
-    "nccRaw": 0.588,
+    "ncc": 0.648,
+    "nccRaw": 0.648,
     "shiftM": [
      0.2,
      0.4
@@ -293,11 +285,9 @@
      "photo": 3,
      "model": 3
     },
-    "iou": 0.638
+    "iou": 0.628
    },
-   "challengers": {
-    "fh-1887-dentil-pediment~m": 0.588
-   }
+   "challengers": {}
   },
   {
    "pandId": "0363100012158366",
@@ -349,11 +339,11 @@
    ],
    "likeness": {
     "pandId": "0363100012158366",
-    "ncc": 0.39,
-    "nccRaw": 0.39,
+    "ncc": 0.387,
+    "nccRaw": 0.387,
     "shiftM": [
      0.3,
-     0.35
+     0.3
     ],
     "usable": 0.92,
     "abstain": null,
@@ -374,9 +364,7 @@
     },
     "iou": 0.617
    },
-   "challengers": {
-    "fh-1887-dentil-pediment": 0.39
-   }
+   "challengers": {}
   },
   {
    "pandId": "0363100012162380",
@@ -430,8 +418,8 @@
    ],
    "likeness": {
     "pandId": "0363100012162380",
-    "ncc": 0.39,
-    "nccRaw": 0.39,
+    "ncc": 0.392,
+    "nccRaw": 0.392,
     "shiftM": [
      0.25,
      0.3
@@ -455,9 +443,7 @@
     },
     "iou": 0.57
    },
-   "challengers": {
-    "fh-1887-dentil-pediment~m": 0.39
-   }
+   "challengers": {}
   },
   {
    "pandId": "0363100012163315",
@@ -500,10 +486,10 @@
     "foliageShare": 0.02
    },
    "status": "placed",
-   "type": "fh-1887-dentil-pediment",
+   "type": "fh-1887-plain-anchor-pediment",
    "score": 1,
    "placement": {
-    "type": "fh-1887-dentil-pediment",
+    "type": "fh-1887-plain-anchor-pediment",
     "measuredPalette": {
      "brick": "#776251",
      "evidence": "strip 2021-02-22 span 943-1131: trim-normalised wall (buildingRecipe/measureFacade.ts)"
@@ -514,8 +500,8 @@
    ],
    "likeness": {
     "pandId": "0363100012163315",
-    "ncc": 0.604,
-    "nccRaw": 0.604,
+    "ncc": 0.65,
+    "nccRaw": 0.65,
     "shiftM": [
      0.15,
      0.4
@@ -531,17 +517,15 @@
     },
     "glazing": {
      "photo": 0.36,
-     "model": 0.39
+     "model": 0.4
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.596
+    "iou": 0.586
    },
-   "challengers": {
-    "fh-1887-dentil-pediment": 0.604
-   }
+   "challengers": {}
   },
   {
    "pandId": "0363100012159933",
@@ -600,8 +584,8 @@
    ],
    "likeness": {
     "pandId": "0363100012159933",
-    "ncc": 0.359,
-    "nccRaw": 0.359,
+    "ncc": 0.362,
+    "nccRaw": 0.362,
     "shiftM": [
      0.3,
      0.35
@@ -625,9 +609,7 @@
     },
     "iou": 0.513
    },
-   "challengers": {
-    "fh-1887-dentil-pediment~m": 0.359
-   }
+   "challengers": {}
   },
   {
    "pandId": "0363100012167020",
@@ -684,8 +666,8 @@
    ],
    "likeness": {
     "pandId": "0363100012167020",
-    "ncc": 0.396,
-    "nccRaw": 0.396,
+    "ncc": 0.39,
+    "nccRaw": 0.39,
     "shiftM": [
      0.25,
      0.4
@@ -711,9 +693,7 @@
     },
     "iou": 0.47
    },
-   "challengers": {
-    "fh-1887-dentil-pediment": 0.396
-   }
+   "challengers": {}
   },
   {
    "pandId": "0363100012156096",
@@ -751,24 +731,22 @@
     "foliageShare": 0.02
    },
    "status": "placed",
-   "type": "fh-1887-dentil-pediment",
+   "type": "fh-1887-plain-anchor-pediment",
    "score": 1,
    "placement": {
-    "type": "fh-1887-dentil-pediment",
+    "type": "fh-1887-plain-anchor-pediment",
     "measuredPalette": {
      "brick": "#796454",
      "evidence": "strip 2021-02-22 span 1507-1695: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    },
-    "mirror": true
+    }
    },
    "notes": [
-    "crown pediment-dormer (type default)",
-    "door reviewer pin: mirrored (red door pair right of centre on the strip (red-pixel centroid of the ground band, x/width > 0.5; Reigersbergenstraat (cast strip) by the alternation anchored on the measured 164833))"
+    "crown pediment-dormer (type default)"
    ],
    "likeness": {
     "pandId": "0363100012156096",
-    "ncc": 0.475,
-    "nccRaw": 0.475,
+    "ncc": 0.526,
+    "nccRaw": 0.526,
     "shiftM": [
      0.2,
      0.4
@@ -777,7 +755,7 @@
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.20"
+     "glazing storey band off by 0.19"
     ],
     "wall": {
      "photo": "#75604f",
@@ -792,11 +770,9 @@
      "photo": 3,
      "model": 3
     },
-    "iou": 0.601
+    "iou": 0.604
    },
-   "challengers": {
-    "fh-1887-dentil-pediment~m": 0.475
-   }
+   "challengers": {}
   },
   {
    "pandId": "0363100012159242",
@@ -859,18 +835,16 @@
    ],
    "likeness": {
     "pandId": "0363100012159242",
-    "ncc": 0.178,
-    "nccRaw": 0.178,
+    "ncc": 0.191,
+    "nccRaw": 0.191,
     "shiftM": [
      0.15,
      0.4
     ],
     "usable": 0.94,
     "abstain": null,
-    "verdict": "WARN",
-    "reasons": [
-     "mask IoU 0.44 < 0.45"
-    ],
+    "verdict": "PASS",
+    "reasons": [],
     "wall": {
      "photo": "#6f5e54",
      "model": "#8c786b",
@@ -878,17 +852,15 @@
     },
     "glazing": {
      "photo": 0.42,
-     "model": 0.4
+     "model": 0.35
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.44
+    "iou": 0.465
    },
-   "challengers": {
-    "fh-1887-arched-gable": 0.178
-   }
+   "challengers": {}
   },
   {
    "pandId": "0363100012163814",
@@ -936,27 +908,25 @@
     "foliageShare": 0.03
    },
    "status": "placed",
-   "type": "fh-1887-dentil-pediment",
+   "type": "fh-1887-plain-anchor-pediment",
    "score": 1,
    "placement": {
-    "type": "fh-1887-dentil-pediment",
+    "type": "fh-1887-plain-anchor-pediment",
     "measuredPalette": {
      "brick": "#766455",
      "evidence": "strip 2021-02-22 span 1883-2071: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    },
-    "mirror": true
+    }
    },
    "notes": [
-    "crown pediment-dormer (type default)",
-    "door reviewer pin: mirrored (red door pair right of centre on the strip (red-pixel centroid of the ground band, x/width > 0.5; Reigersbergenstraat (cast strip) by the alternation anchored on the measured 164833))"
+    "crown pediment-dormer (type default)"
    ],
    "likeness": {
     "pandId": "0363100012163814",
-    "ncc": 0.537,
-    "nccRaw": 0.537,
+    "ncc": 0.55,
+    "nccRaw": 0.55,
     "shiftM": [
      0.25,
-     0.4
+     0.35
     ],
     "usable": 0.92,
     "abstain": null,
@@ -975,11 +945,9 @@
      "photo": 3,
      "model": 3
     },
-    "iou": 0.606
+    "iou": 0.585
    },
-   "challengers": {
-    "fh-1887-dentil-pediment~m": 0.537
-   }
+   "challengers": {}
   },
   {
    "pandId": "0363100012167267",
@@ -1036,8 +1004,8 @@
    ],
    "likeness": {
     "pandId": "0363100012167267",
-    "ncc": 0.385,
-    "nccRaw": 0.385,
+    "ncc": 0.393,
+    "nccRaw": 0.393,
     "shiftM": [
      0.25,
      0.4
@@ -1064,9 +1032,7 @@
     },
     "iou": 0.495
    },
-   "challengers": {
-    "fh-1887-dentil-pediment": 0.385
-   }
+   "challengers": {}
   },
   {
    "pandId": "0363100012165393",
@@ -1077,7 +1043,7 @@
    "storeys3dbag": 5,
    "bagBay": null,
    "strip": {
-    "wall": "#776355",
+    "wall": "#786455",
     "wallRaw": "#7e6c5d",
     "skyline": {
      "eavesM": 14.13,
@@ -1114,7 +1080,7 @@
    "placement": {
     "type": "fh-1887-dentil-pediment",
     "measuredPalette": {
-     "brick": "#776355",
+     "brick": "#786455",
      "evidence": "strip 2021-02-22 span 2255-2448: trim-normalised wall (buildingRecipe/measureFacade.ts)"
     },
     "mirror": true
@@ -1125,8 +1091,8 @@
    ],
    "likeness": {
     "pandId": "0363100012165393",
-    "ncc": 0.365,
-    "nccRaw": 0.365,
+    "ncc": 0.362,
+    "nccRaw": 0.362,
     "shiftM": [
      0.2,
      0.4
@@ -1139,8 +1105,8 @@
     ],
     "wall": {
      "photo": "#756355",
-     "model": "#8f7766",
-     "dL": 0.084
+     "model": "#907866",
+     "dL": 0.086
     },
     "glazing": {
      "photo": 0.44,
@@ -1152,9 +1118,7 @@
     },
     "iou": 0.524
    },
-   "challengers": {
-    "fh-1887-dentil-pediment~m": 0.365
-   }
+   "challengers": {}
   },
   {
    "pandId": "0363100012159135",
@@ -1192,10 +1156,10 @@
     "foliageShare": 0.05
    },
    "status": "placed",
-   "type": "fh-1887-dentil-pediment",
+   "type": "fh-1887-plain-anchor-pediment",
    "score": 1,
    "placement": {
-    "type": "fh-1887-dentil-pediment",
+    "type": "fh-1887-plain-anchor-pediment",
     "measuredPalette": {
      "brick": "#776354",
      "evidence": "strip 2021-02-22 span 2448-2636: trim-normalised wall (buildingRecipe/measureFacade.ts)"
@@ -1206,8 +1170,8 @@
    ],
    "likeness": {
     "pandId": "0363100012159135",
-    "ncc": 0.502,
-    "nccRaw": 0.502,
+    "ncc": 0.511,
+    "nccRaw": 0.511,
     "shiftM": [
      0.15,
      0.4
@@ -1216,7 +1180,7 @@
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.31 mean 0.39 vs photo 0.54",
+     "glazing storey band off by 0.31 mean 0.40 vs photo 0.54",
      "columns 3 vs photo 4"
     ],
     "wall": {
@@ -1226,17 +1190,15 @@
     },
     "glazing": {
      "photo": 0.54,
-     "model": 0.39
+     "model": 0.4
     },
     "columns": {
      "photo": 4,
      "model": 3
     },
-    "iou": 0.473
+    "iou": 0.468
    },
-   "challengers": {
-    "fh-1887-dentil-pediment": 0.502
-   }
+   "challengers": {}
   },
   {
    "pandId": "0363100012163222",
@@ -1290,8 +1252,8 @@
    ],
    "likeness": {
     "pandId": "0363100012163222",
-    "ncc": 0.388,
-    "nccRaw": 0.388,
+    "ncc": 0.382,
+    "nccRaw": 0.382,
     "shiftM": [
      0.15,
      0.4
@@ -1315,9 +1277,7 @@
     },
     "iou": 0.516
    },
-   "challengers": {
-    "fh-1887-dentil-pediment~m": 0.388
-   }
+   "challengers": {}
   },
   {
    "pandId": "0363100012162506",
@@ -1374,8 +1334,8 @@
    ],
    "likeness": {
     "pandId": "0363100012162506",
-    "ncc": 0.355,
-    "nccRaw": 0.355,
+    "ncc": 0.351,
+    "nccRaw": 0.351,
     "shiftM": [
      0.15,
      0.4
@@ -1401,9 +1361,7 @@
     },
     "iou": 0.417
    },
-   "challengers": {
-    "fh-1887-dentil-pediment": 0.355
-   }
+   "challengers": {}
   },
   {
    "pandId": "0363100012158704",
@@ -1447,7 +1405,7 @@
    },
    "status": "held",
    "stage": "match",
-   "reason": "era guard: the strip reads ribbon windows; fh-1887-dentil-pediment is a punched-window type",
+   "reason": "era guard: the strip reads ribbon windows; fh-1887-plain-anchor-pediment is a punched-window type",
    "likeness": null,
    "challengers": {}
   },
@@ -1551,7 +1509,7 @@
    },
    "status": "held",
    "stage": "match",
-   "reason": "era guard: the strip reads ribbon windows; fh-1887-dentil-pediment is a punched-window type",
+   "reason": "era guard: the strip reads ribbon windows; fh-1887-plain-anchor-pediment is a punched-window type",
    "likeness": null,
    "challengers": {}
   }

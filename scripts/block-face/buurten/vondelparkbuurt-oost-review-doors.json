@@ -1,0 +1,28 @@
+{
+ "pins": [
+  {
+   "pandId": "0363100012160719",
+   "type": "huygens-1873-balcony-pediment-mansard",
+   "side": "left",
+   "reason": "huygens-102-118 strip 2024-12-11: 116: red door on the left"
+  },
+  {
+   "pandId": "0363100012163854",
+   "type": "huygens-1873-balcony-pediment-mansard",
+   "side": "right",
+   "reason": "huygens-102-118 strip 2024-12-11: 114: door right"
+  },
+  {
+   "pandId": "0363100012158719",
+   "type": "huygens-1873-balcony-pediment-mansard",
+   "side": "left",
+   "reason": "huygens-102-118 strip 2024-12-11: 110: door left"
+  },
+  {
+   "pandId": "0363100012158176",
+   "type": "huygens-1873-balcony-pediment-mansard",
+   "side": "right",
+   "reason": "huygens-102-118 strip 2024-12-11: 108: door right"
+  }
+ ]
+}

@@ -9,10 +9,7 @@
   "0363100012153678",
   "0363100012152999",
   "0363100012163303",
-  "0363100012163395",
-  "0363100012157676",
-  "0363100012155474",
-  "0363100012153212"
+  "0363100012163395"
  ],
  "ends": [
   {
@@ -21,7 +18,7 @@
   },
   {
    "side": "right",
-   "reason": "run of reigersbergen-1-37: 166918 held (auto-place.json)"
+   "reason": "run of reigersbergen-1-37: 157676 held (auto-place.json)"
   }
  ],
  "rejected": [
@@ -1632,36 +1629,6 @@
    "widthM": 4.81,
    "eavesM": 13.76,
    "roofMaxM": 16.88,
-   "storeys3dbag": 5,
-   "builtYear": 1888,
-   "uncertainty": []
-  },
-  {
-   "pandId": "0363100012157676",
-   "alongM": 37.8,
-   "widthM": 4.71,
-   "eavesM": 13.64,
-   "roofMaxM": 17.27,
-   "storeys3dbag": 5,
-   "builtYear": 1888,
-   "uncertainty": []
-  },
-  {
-   "pandId": "0363100012155474",
-   "alongM": 42.51,
-   "widthM": 4.7,
-   "eavesM": 14.02,
-   "roofMaxM": 17.01,
-   "storeys3dbag": 5,
-   "builtYear": 1888,
-   "uncertainty": []
-  },
-  {
-   "pandId": "0363100012153212",
-   "alongM": 47.21,
-   "widthM": 4.71,
-   "eavesM": 13.64,
-   "roofMaxM": 17.17,
    "storeys3dbag": 5,
    "builtYear": 1888,
    "uncertainty": []

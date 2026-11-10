@@ -2,22 +2,17 @@
  "street": "Van Reigersbergenstraat",
  "seed": "0363100012161489",
  "members": [
-  "0363100012153758",
-  "0363100012164833",
-  "0363100012156927",
-  "0363100012153810",
-  "0363100012162778",
-  "0363100012156249",
-  "0363100012160664"
+  "0363100012155474",
+  "0363100012153212"
  ],
  "ends": [
   {
    "side": "left",
-   "reason": "run of reigersbergen-1-37: 166918 held (auto-place.json)"
+   "reason": "run of reigersbergen-1-37: 157676 held (auto-place.json)"
   },
   {
    "side": "right",
-   "reason": "next fronting pand 0363100012108051 29.6 m on shares no party wall (cross street or gap)"
+   "reason": "run of reigersbergen-1-37: 166918 held (auto-place.json)"
   }
  ],
  "rejected": [
@@ -1553,73 +1548,21 @@
  "areaHalfSizeM": 180,
  "pands": [
   {
-   "pandId": "0363100012153758",
-   "alongM": 56.63,
-   "widthM": 4.71,
-   "eavesM": 13.72,
-   "roofMaxM": 16.85,
-   "storeys3dbag": 5,
-   "builtYear": 1888,
-   "uncertainty": [
-    "Short native jogs retained; the frontage is not a single planar facade."
-   ]
-  },
-  {
-   "pandId": "0363100012164833",
-   "alongM": 61.34,
-   "widthM": 4.72,
-   "eavesM": 13.61,
-   "roofMaxM": 17.16,
-   "storeys3dbag": 5,
-   "builtYear": 1888,
-   "uncertainty": []
-  },
-  {
-   "pandId": "0363100012156927",
-   "alongM": 66,
-   "widthM": 4.59,
-   "eavesM": 13.64,
-   "roofMaxM": 17.12,
-   "storeys3dbag": 5,
-   "builtYear": 1888,
-   "uncertainty": []
-  },
-  {
-   "pandId": "0363100012153810",
-   "alongM": 70.7,
-   "widthM": 4.81,
-   "eavesM": 13.59,
-   "roofMaxM": 17.32,
-   "storeys3dbag": 5,
-   "builtYear": 1888,
-   "uncertainty": []
-  },
-  {
-   "pandId": "0363100012162778",
-   "alongM": 75.45,
+   "pandId": "0363100012155474",
+   "alongM": 42.51,
    "widthM": 4.7,
-   "eavesM": 13.49,
-   "roofMaxM": 17.16,
+   "eavesM": 14.02,
+   "roofMaxM": 17.01,
    "storeys3dbag": 5,
    "builtYear": 1888,
    "uncertainty": []
   },
   {
-   "pandId": "0363100012156249",
-   "alongM": 80.3,
-   "widthM": 5,
-   "eavesM": 13.61,
-   "roofMaxM": 17.4,
-   "storeys3dbag": 5,
-   "builtYear": 1888,
-   "uncertainty": []
-  },
-  {
-   "pandId": "0363100012160664",
-   "alongM": 85.29,
-   "widthM": 4.98,
-   "eavesM": 13.56,
-   "roofMaxM": 17.75,
+   "pandId": "0363100012153212",
+   "alongM": 47.21,
+   "widthM": 4.71,
+   "eavesM": 13.64,
+   "roofMaxM": 17.17,
    "storeys3dbag": 5,
    "builtYear": 1888,
    "uncertainty": []

@@ -5,9 +5,9 @@
  "street": "Van Reigersbergenstraat",
  "sources": [
   {
-   "id": "strip-2024-09-11",
+   "id": "strip-2022-10-07",
    "kind": "street-panorama",
-   "capturedAt": "2024-09-11",
+   "capturedAt": "2022-10-07",
    "image": "staging/block-face/reigersbergen-1-37-r1/strip.jpg",
    "license": "Gemeente Amsterdam panorama, CC BY 4.0"
   }
@@ -19,7 +19,8 @@
  },
  "types": [
   "fh-1887-arched-gable",
-  "fh-1887-dentil-pediment"
+  "fh-1887-dentil-pediment",
+  "fh-1887-plain-anchor-pediment"
  ],
  "houses": [
   {
@@ -27,20 +28,20 @@
    "slug": "reigersbergen-161489",
    "address": "Van Reigersbergenstraat 1",
    "type": {
-    "type": "fh-1887-dentil-pediment",
+    "type": "fh-1887-plain-anchor-pediment",
     "ground": {
      "shopfront": {
-      "colour": "#5c5d59",
+      "colour": "#4e443c",
       "fascia": true,
       "entrance": "centre",
       "glazing": "split",
       "stallriser": "low",
-      "evidence": "auto-place: bag-only (winkelfunctie); fascia colour measured on the strip 2024-09-11 span 0-191"
+      "evidence": "auto-place: bag-only (winkelfunctie); fascia colour measured on the strip 2022-10-07 span 0-191"
      }
     },
     "measuredPalette": {
-     "brick": "#71665e",
-     "evidence": "strip 2024-09-11 span 0-191: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+     "brick": "#75675d",
+     "evidence": "strip 2022-10-07 span 0-191: trim-normalised wall (buildingRecipe/measureFacade.ts)"
     },
     "paletteOverrides": {
      "brick": "#72584a"
@@ -51,12 +52,12 @@
     "bag": [
      "winkelfunctie"
     ],
-    "photoDate": "2024-09-11",
+    "photoDate": "2022-10-07",
     "agreement": "bag-only",
     "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
    },
    "rhythm": {
-    "citation": "auto-place: fh-1887-dentil-pediment scored 1 on eaves 1, roof 1, stucco 1, columns 1; strip 2024-09-11 span 0-191"
+    "citation": "auto-place: fh-1887-plain-anchor-pediment scored 1 on eaves 1, roof 1, stucco 1, columns 1; strip 2022-10-07 span 0-191"
    }
   },
   {
@@ -66,8 +67,8 @@
    "type": {
     "type": "fh-1887-arched-gable",
     "measuredPalette": {
-     "brick": "#656863",
-     "evidence": "strip 2024-09-11 span 191-382: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+     "brick": "#78655b",
+     "evidence": "strip 2022-10-07 span 191-382: trim-normalised wall (buildingRecipe/measureFacade.ts)"
     },
     "paletteOverrides": {
      "brick": "#72584a"
@@ -79,12 +80,12 @@
     "bag": [
      "woonfunctie"
     ],
-    "photoDate": "2024-09-11",
+    "photoDate": "2022-10-07",
     "agreement": "bag-only",
     "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
    },
    "rhythm": {
-    "citation": "auto-place: fh-1887-arched-gable scored 1 on eaves 1, roof 1, stucco 1, columns 1; strip 2024-09-11 span 191-382"
+    "citation": "auto-place: fh-1887-arched-gable scored 1 on eaves 1, roof 1, stucco 1, columns 1; strip 2022-10-07 span 191-382"
    }
   },
   {
@@ -92,10 +93,10 @@
    "slug": "reigersbergen-155831",
    "address": "Van Reigersbergenstraat 5",
    "type": {
-    "type": "fh-1887-dentil-pediment",
+    "type": "fh-1887-plain-anchor-pediment",
     "measuredPalette": {
-     "brick": "#6b5f56",
-     "evidence": "strip 2024-09-11 span 382-573: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+     "brick": "#786457",
+     "evidence": "strip 2022-10-07 span 382-573: trim-normalised wall (buildingRecipe/measureFacade.ts)"
     },
     "paletteOverrides": {
      "brick": "#72584a"
@@ -106,12 +107,12 @@
     "bag": [
      "woonfunctie"
     ],
-    "photoDate": "2024-09-11",
+    "photoDate": "2022-10-07",
     "agreement": "bag-only",
     "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
    },
    "rhythm": {
-    "citation": "auto-place: fh-1887-dentil-pediment scored 1 on eaves 1, roof 1, stucco 1, columns 1; strip 2024-09-11 span 382-573"
+    "citation": "auto-place: fh-1887-plain-anchor-pediment scored 1 on eaves 1, roof 1, stucco 1, columns 1; strip 2022-10-07 span 382-573"
    }
   },
   {
@@ -120,10 +121,9 @@
    "address": "Van Reigersbergenstraat 7",
    "type": {
     "type": "fh-1887-dentil-pediment",
-    "ground": "door-left",
     "measuredPalette": {
-     "brick": "#6d6258",
-     "evidence": "strip 2024-09-11 span 573-752: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+     "brick": "#79685d",
+     "evidence": "strip 2022-10-07 span 573-752: trim-normalised wall (buildingRecipe/measureFacade.ts)"
     },
     "paletteOverrides": {
      "brick": "#72584a"
@@ -135,12 +135,12 @@
     "bag": [
      "woonfunctie"
     ],
-    "photoDate": "2024-09-11",
+    "photoDate": "2022-10-07",
     "agreement": "bag-only",
     "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
    },
    "rhythm": {
-    "citation": "auto-place: fh-1887-dentil-pediment scored 0.77 on eaves 1, roof 1, stucco 1, columns 0; strip 2024-09-11 span 573-752"
+    "citation": "auto-place: fh-1887-dentil-pediment scored 1 on eaves 1, roof 1, stucco 1; strip 2022-10-07 span 573-752"
    }
   },
   {
@@ -150,8 +150,8 @@
    "type": {
     "type": "fh-1887-dentil-pediment",
     "measuredPalette": {
-     "brick": "#655c53",
-     "evidence": "strip 2024-09-11 span 752-948: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+     "brick": "#776459",
+     "evidence": "strip 2022-10-07 span 752-948: trim-normalised wall (buildingRecipe/measureFacade.ts)"
     },
     "paletteOverrides": {
      "brick": "#72584a"
@@ -162,12 +162,12 @@
     "bag": [
      "woonfunctie"
     ],
-    "photoDate": "2024-09-11",
+    "photoDate": "2022-10-07",
     "agreement": "bag-only",
     "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
    },
    "rhythm": {
-    "citation": "auto-place: fh-1887-dentil-pediment scored 1 on eaves 1, roof 1, stucco 1, columns 1; strip 2024-09-11 span 752-948"
+    "citation": "auto-place: fh-1887-dentil-pediment scored 1 on eaves 1, roof 1, stucco 1, columns 1; strip 2022-10-07 span 752-948"
    }
   },
   {
@@ -175,28 +175,26 @@
    "slug": "reigersbergen-152999",
    "address": "Van Reigersbergenstraat 11",
    "type": {
-    "type": "fh-1887-dentil-pediment",
-    "ground": "door-left",
+    "type": "fh-1887-plain-anchor-pediment",
     "measuredPalette": {
-     "brick": "#695f57",
-     "evidence": "strip 2024-09-11 span 949-1137: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+     "brick": "#716157",
+     "evidence": "strip 2022-10-07 span 949-1137: trim-normalised wall (buildingRecipe/measureFacade.ts)"
     },
     "paletteOverrides": {
      "brick": "#72584a"
-    },
-    "mirror": true
+    }
    },
    "groundFloor": {
     "use": "residential",
     "bag": [
      "woonfunctie"
     ],
-    "photoDate": "2024-09-11",
+    "photoDate": "2022-10-07",
     "agreement": "bag-only",
     "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
    },
    "rhythm": {
-    "citation": "auto-place: fh-1887-dentil-pediment scored 1 on eaves 1, roof 1, stucco 1, columns 1; strip 2024-09-11 span 949-1137"
+    "citation": "auto-place: fh-1887-plain-anchor-pediment scored 1 on eaves 1, roof 1, stucco 1, columns 1; strip 2022-10-07 span 949-1137"
    }
   },
   {
@@ -206,8 +204,8 @@
    "type": {
     "type": "fh-1887-dentil-pediment",
     "measuredPalette": {
-     "brick": "#5f5752",
-     "evidence": "strip 2024-09-11 span 1137-1321: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+     "brick": "#726157",
+     "evidence": "strip 2022-10-07 span 1137-1321: trim-normalised wall (buildingRecipe/measureFacade.ts)"
     },
     "paletteOverrides": {
      "brick": "#72584a"
@@ -218,12 +216,12 @@
     "bag": [
      "woonfunctie"
     ],
-    "photoDate": "2024-09-11",
+    "photoDate": "2022-10-07",
     "agreement": "bag-only",
     "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
    },
    "rhythm": {
-    "citation": "auto-place: fh-1887-dentil-pediment scored 1 on eaves 1, roof 1, stucco 1, columns 1; strip 2024-09-11 span 1137-1321"
+    "citation": "auto-place: fh-1887-dentil-pediment scored 1 on eaves 1, roof 1, stucco 1, columns 1; strip 2022-10-07 span 1137-1321"
    }
   },
   {
@@ -232,10 +230,9 @@
    "address": "Van Reigersbergenstraat 15",
    "type": {
     "type": "fh-1887-dentil-pediment",
-    "ground": "door-left",
     "measuredPalette": {
-     "brick": "#675d56",
-     "evidence": "strip 2024-09-11 span 1321-1513: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+     "brick": "#9d9593",
+     "evidence": "strip 2022-10-07 span 1321-1513: trim-normalised wall (buildingRecipe/measureFacade.ts)"
     },
     "paletteOverrides": {
      "brick": "#72584a"
@@ -247,94 +244,12 @@
     "bag": [
      "woonfunctie"
     ],
-    "photoDate": "2024-09-11",
+    "photoDate": "2022-10-07",
     "agreement": "bag-only",
     "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
    },
    "rhythm": {
-    "citation": "auto-place: fh-1887-dentil-pediment scored 1 on eaves 1, roof 1, stucco 1, columns 1; strip 2024-09-11 span 1321-1513"
-   }
-  },
-  {
-   "pandId": "0363100012157676",
-   "slug": "reigersbergen-157676",
-   "address": "Van Reigersbergenstraat 17",
-   "type": {
-    "type": "fh-1887-dentil-pediment",
-    "measuredPalette": {
-     "brick": "#72665e",
-     "evidence": "strip 2024-09-11 span 1513-1701: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    },
-    "paletteOverrides": {
-     "brick": "#72584a"
-    }
-   },
-   "groundFloor": {
-    "use": "residential",
-    "bag": [
-     "woonfunctie"
-    ],
-    "photoDate": "2024-09-11",
-    "agreement": "bag-only",
-    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
-   },
-   "rhythm": {
-    "citation": "auto-place: fh-1887-dentil-pediment scored 1 on eaves 1, roof 1, stucco 1, columns 1; strip 2024-09-11 span 1513-1701"
-   }
-  },
-  {
-   "pandId": "0363100012155474",
-   "slug": "reigersbergen-155474",
-   "address": "Van Reigersbergenstraat 19",
-   "type": {
-    "type": "fh-1887-arched-gable",
-    "measuredPalette": {
-     "brick": "#736961",
-     "evidence": "strip 2024-09-11 span 1701-1889: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    },
-    "paletteOverrides": {
-     "brick": "#72584a"
-    },
-    "mirror": true
-   },
-   "groundFloor": {
-    "use": "residential",
-    "bag": [
-     "woonfunctie"
-    ],
-    "photoDate": "2024-09-11",
-    "agreement": "bag-only",
-    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
-   },
-   "rhythm": {
-    "citation": "auto-place: fh-1887-arched-gable scored 1 on eaves 1, roof 1, stucco 1, columns 1; strip 2024-09-11 span 1701-1889"
-   }
-  },
-  {
-   "pandId": "0363100012153212",
-   "slug": "reigersbergen-153212",
-   "address": "Van Reigersbergenstraat 21",
-   "type": {
-    "type": "fh-1887-dentil-pediment",
-    "measuredPalette": {
-     "brick": "#70645d",
-     "evidence": "strip 2024-09-11 span 1890-2078: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    },
-    "paletteOverrides": {
-     "brick": "#72584a"
-    }
-   },
-   "groundFloor": {
-    "use": "residential",
-    "bag": [
-     "woonfunctie"
-    ],
-    "photoDate": "2024-09-11",
-    "agreement": "bag-only",
-    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
-   },
-   "rhythm": {
-    "citation": "auto-place: fh-1887-dentil-pediment scored 1 on eaves 1, roof 1, stucco 1, columns 1; strip 2024-09-11 span 1890-2078"
+    "citation": "auto-place: fh-1887-dentil-pediment scored 1 on eaves 1, roof 1, stucco 1; strip 2022-10-07 span 1321-1513"
    }
   }
  ],
