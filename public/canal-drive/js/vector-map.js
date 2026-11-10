@@ -1285,7 +1285,10 @@ class VectorBasemap {
     // Listed buildings whose register description names their gable (monument-gables.json) draw that gable.
     const gables = this._monumentGables;
     const named = gables && gables.size && api.withMonumentGable ? (feature) => api.withMonumentGable(feature, gables) : (feature) => feature;
-    const decorate = withRoofs ? (feature) => api.decorateRoof(named(Facades.decorateFacade(feature))) : Facades.decorateFacade;
+    // The register's facade facts (monument-facts.json: era, wall finish, stated extras) read before the facade; `?registerFacts=0` skips them.
+    const facts = this._registerFacts;
+    const registered = facts && facts.size && api && api.withRegisterFacts ? (feature) => api.withRegisterFacts(feature, facts) : (feature) => feature;
+    const decorate = withRoofs ? (feature) => api.decorateRoof(named(Facades.decorateFacade(registered(feature)))) : (feature) => Facades.decorateFacade(registered(feature));
     // Landmark buildings (churches, museums, Centraal…) keep their own form: no generic facade or roof.
     if (!this._landmarkBuildingIds) this._landmarkBuildingIds = new Set();
     const base = api && api.exceptLandmarks ? api.exceptLandmarks(decorate, this._landmarkBuildingIds, this._listedLandmarks) : decorate;
@@ -1310,6 +1313,23 @@ class VectorBasemap {
       this._applyFeatureDecorator();
     } catch (error) {
       console.warn('Monument gables unavailable; listed buildings get period gables.', error);
+    }
+  }
+
+  /** The monuments register's parsed facade facts (monument-facts.json), fetched once; re-decorates when they arrive. */
+  async _loadRegisterFacts() {
+    if (this._registerFactsRequested) return;
+    this._registerFactsRequested = true;
+    try {
+      const api = window.CanalRecallThreeBuildings;
+      if (!api || !api.registerFactsEnabled || !api.registerFactsEnabled(window.location.search)) return;
+      const response = await fetch(this._extractFile('monument-facts.json'));
+      if (!response.ok) return;
+      const data = await response.json();
+      this._registerFacts = new Map(Object.entries(data.buildings || {}));
+      this._applyFeatureDecorator();
+    } catch (error) {
+      console.warn('Register facts unavailable; listed buildings keep their BAG-year looks.', error);
     }
   }
 
@@ -1545,6 +1565,7 @@ class VectorBasemap {
       this._applyFeatureDecorator();
       this._loadLandmarkBuildingIds();
       this._loadMonumentGables();
+      this._loadRegisterFacts();
     }
     let available = false;
     try {

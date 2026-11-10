@@ -29,8 +29,8 @@ import { SegmentGrid } from './streetFronts.js';
 import { ccwRing, designInLook, gardenRoomDesign, gardenRoomGlassHex, gardenRoomLidHex, gardenRoomRule, gardenRoomTriangles, glassEdge, mainHouse, nearestStreetPoint, partyWalls, HOUSE_REACH_M, type Neighbour, type Pt } from './gardenRooms.js';
 import { GARDEN_ROOM_TONES } from './look/palette.js';
 import { buurtProfileAt } from './buurtProfiles/data.js';
-import { profileWallBeatsMaterial, storeyScaleOf } from './buurtProfiles/profiles.js';
 import { SETBACK_CLADDING_HEX, SETBACK_INSET_M, SETBACK_STOREY_M, insetRing } from './contemporaryFamily.js';
+import { profileWallBeatsMaterial, storeyScaleOf } from './buurtProfiles/profiles.js';
 import { levelWallHex } from './look/paletteLevel.js';
 import { industrialKitEnabled, industrialMeshSpec, industrialWallHex } from './industrial/industrialKit.js';
 
@@ -246,6 +246,7 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook, coarse = f
   // Facade extras for every faced building; the plain and Untextured looks stay light.
   // Never on a landmark kit's walls: church hosts drew hoist beams and stray strips (user 2026-10-03).
   building.extras = !building.bare && !p.kitWall && !p.largeTier && look !== 'untextured';
+  if (Array.isArray(p.registerForce) && p.registerForce.length && building.extras) building.registerForce = p.registerForce as string[];
   if (look === 'untextured') {
     // Untextured: one flat layer for every wall and roof face, so only colour and shape remain.
     const flat = roofBase + 3;

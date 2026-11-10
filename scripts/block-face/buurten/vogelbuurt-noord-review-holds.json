@@ -1,0 +1,166 @@
+{
+ "note": "Pands held after reading the strip sheets.",
+ "reviewed": "2026-11-10 (lane)",
+ "holds": [
+  {
+   "pandId": "0363100012092470",
+   "address": "Kalkoenstraat 12",
+   "reason": "the strip span shows the side wall of the corner building and the Pelikaanstraat street sign, not this pand's front"
+  },
+  {
+   "pandId": "0363100012063000",
+   "address": "Flamingostraat 10",
+   "reason": "Opus strip verdict 2026-11-10: step-gable run flamingo-4-10; held until the coordinator sends the correctly mirrored non-gable pands back for another Opus look"
+  },
+  {
+   "pandId": "0363100012087661",
+   "address": "Flamingostraat 8",
+   "reason": "Opus strip verdict 2026-11-10: step-gable run flamingo-4-10; held until the coordinator sends the correctly mirrored non-gable pands back for another Opus look"
+  },
+  {
+   "pandId": "0363100012066422",
+   "address": "Flamingostraat 6",
+   "reason": "Opus strip verdict 2026-11-10: step-gable run flamingo-4-10; held until the coordinator sends the correctly mirrored non-gable pands back for another Opus look"
+  },
+  {
+   "pandId": "0363100012129921",
+   "address": "Flamingostraat 4",
+   "reason": "Opus strip verdict 2026-11-10: step-gable run flamingo-4-10; held until the coordinator sends the correctly mirrored non-gable pands back for another Opus look"
+  },
+  {
+   "pandId": "0363100012070462",
+   "address": "Flamingostraat 28",
+   "reason": "Opus strip verdict 2026-11-10: step-gable run flamingo-14-28-r1; held until the coordinator sends the correctly mirrored non-gable pands back for another Opus look"
+  },
+  {
+   "pandId": "0363100012098790",
+   "address": "Flamingostraat 26",
+   "reason": "Opus strip verdict 2026-11-10: step-gable run flamingo-14-28-r1; held until the coordinator sends the correctly mirrored non-gable pands back for another Opus look"
+  },
+  {
+   "pandId": "0363100012092344",
+   "address": "Flamingostraat 24",
+   "reason": "Opus strip verdict 2026-11-10: step-gable run flamingo-14-28-r1; held until the coordinator sends the correctly mirrored non-gable pands back for another Opus look"
+  },
+  {
+   "pandId": "0363100012141395",
+   "address": "Flamingostraat 18",
+   "reason": "Opus strip verdict 2026-11-10: step-gable run flamingo-14-28-r2; held until the coordinator sends the correctly mirrored non-gable pands back for another Opus look"
+  },
+  {
+   "pandId": "0363100012120930",
+   "address": "Flamingostraat 16",
+   "reason": "Opus strip verdict 2026-11-10: step-gable run flamingo-14-28-r2; held until the coordinator sends the correctly mirrored non-gable pands back for another Opus look"
+  },
+  {
+   "pandId": "0363100012137382",
+   "address": "Kalkoenstraat 13",
+   "reason": "Opus strip verdict 2026-11-10: step-gable run kalkoen-13-17; held until the coordinator sends the correctly mirrored non-gable pands back for another Opus look"
+  },
+  {
+   "pandId": "0363100012100538",
+   "address": "Kalkoenstraat 15",
+   "reason": "Opus strip verdict 2026-11-10: step-gable run kalkoen-13-17; held until the coordinator sends the correctly mirrored non-gable pands back for another Opus look"
+  },
+  {
+   "pandId": "0363100012139726",
+   "address": "Kalkoenstraat 17",
+   "reason": "Opus strip verdict 2026-11-10: step-gable run kalkoen-13-17; held until the coordinator sends the correctly mirrored non-gable pands back for another Opus look"
+  },
+  {
+   "pandId": "0363100012087399",
+   "address": "Pelikaanstraat 17",
+   "reason": "Opus strip verdict 2026-11-10: step-gable run pelikaan-13-27-r1; held until the coordinator sends the correctly mirrored non-gable pands back for another Opus look"
+  },
+  {
+   "pandId": "0363100012087361",
+   "address": "Pelikaanstraat 19",
+   "reason": "Opus strip verdict 2026-11-10: step-gable run pelikaan-13-27-r1; held until the coordinator sends the correctly mirrored non-gable pands back for another Opus look"
+  },
+  {
+   "pandId": "0363100012070701",
+   "address": "Pluvierplein 5",
+   "reason": "Opus strip verdict 2026-11-10: step-gable run pluvierplein-5-15-r1; held until the coordinator sends the correctly mirrored non-gable pands back for another Opus look"
+  },
+  {
+   "pandId": "0363100012151759",
+   "address": "Pluvierplein 7",
+   "reason": "Opus strip verdict 2026-11-10: step-gable run pluvierplein-5-15-r1; held until the coordinator sends the correctly mirrored non-gable pands back for another Opus look"
+  },
+  {
+   "pandId": "0363100012149277",
+   "address": "Pluvierplein 13",
+   "reason": "Opus strip verdict 2026-11-10: step-gable run pluvierplein-5-15-r2; held until the coordinator sends the correctly mirrored non-gable pands back for another Opus look"
+  },
+  {
+   "pandId": "0363100012125723",
+   "address": "Pluvierplein 15",
+   "reason": "Opus strip verdict 2026-11-10: step-gable run pluvierplein-5-15-r2; held until the coordinator sends the correctly mirrored non-gable pands back for another Opus look"
+  },
+  {
+   "pandId": "0363100012104432",
+   "address": "Pelikaanstraat 3",
+   "reason": "Opus strip verdict 2026-11-10: gable crown pin added (verdict): held with the gable runs"
+  },
+  {
+   "pandId": "0363100012153865",
+   "address": "Pelikaanstraat 9",
+   "reason": "Opus strip verdict 2026-11-10: gable crown pin added (verdict): held with the gable runs"
+  },
+  {
+   "pandId": "0363100012093588",
+   "address": "Eerste Vogelstraat 14",
+   "reason": "Opus strip verdict 2026-11-10: vogel-2-16-r1: mis-mirrored (pins to be corrected, verdict)"
+  },
+  {
+   "pandId": "0363100012122579",
+   "address": "Eerste Vogelstraat 12",
+   "reason": "Opus strip verdict 2026-11-10: vogel-2-16-r1: mis-mirrored (photo puts pand 2 doors on the left, verdict)"
+  },
+  {
+   "pandId": "0363100012109169",
+   "address": "Eerste Vogelstraat 10",
+   "reason": "Opus strip verdict 2026-11-10: vogel-2-16-r1: held with the run (verdict)"
+  },
+  {
+   "pandId": "0363100012083966",
+   "address": "Vierde Vogelstraat 2",
+   "reason": "Opus strip verdict 2026-11-10: photo reads window then door, model draws door then window; flip the mirror (verdict)"
+  },
+  {
+   "pandId": "0363100012124606",
+   "address": "Derde Vogelstraat 13",
+   "reason": "Opus strip verdict 2026-11-10: a hedge hides the door and the photo door looks to be on the left (verdict)"
+  },
+  {
+   "pandId": "0363100012131492",
+   "address": "Zamenhofstraat 52",
+   "reason": "Opus strip verdict 2026-11-10: wrong mirror; the photo door is on the right (verdict)"
+  },
+  {
+   "pandId": "0363100012064115",
+   "address": "Zamenhofstraat 12",
+   "reason": "Opus strip verdict 2026-11-10: no door visible where the model draws one at the left (verdict)"
+  },
+  {
+   "pandId": "0363100012149443",
+   "address": "Zamenhofstraat 56",
+   "reason": "Opus strip verdict 2026-11-10: model window sits about 1 m off the photo and no doors are visible (verdict)"
+  },
+  {
+   "pandId": "0363100012146996",
+   "address": "Zamenhofstraat 54",
+   "reason": "Opus strip verdict 2026-11-10: model window sits about 1 m off the photo and no doors are visible (verdict)"
+  },
+  {
+   "pandId": "0363100012112593",
+   "address": "Zamenhofstraat 80",
+   "reason": "Opus strip verdict 2026-11-10: a hedge hides the door (verdict)"
+  },
+  {
+   "pandId": "0363100012062919",
+   "address": "Zamenhofstraat 78",
+   "reason": "Opus strip verdict 2026-11-10: window about 1 m off the photo (verdict)"
+  }
+ ]
+}

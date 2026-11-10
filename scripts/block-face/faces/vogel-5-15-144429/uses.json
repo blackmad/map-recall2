@@ -1,0 +1,73 @@
+{
+ "street": "Tweede Vogelstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched n/a (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012144429",
+   "addresses": [
+    "Tweede Vogelstraat 5"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Vogelstraat 5",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010001012293"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012103994",
+   "addresses": [
+    "Tweede Vogelstraat 7"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Vogelstraat 7",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010001012294"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012150433",
+   "addresses": [
+    "Tweede Vogelstraat 13"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Vogelstraat 13",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010001012296"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012078328",
+   "addresses": [
+    "Tweede Vogelstraat 15"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Vogelstraat 15",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010001012298"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  }
+ ]
+}

@@ -3219,6 +3219,43 @@
     return freeRideCollectionEnabled(search);
   }
 
+  // src/canalRecall/engine/toonLook.ts
+  function toonLookFlag() {
+    const g = globalThis;
+    const asked = g.__canalRecallLook ?? (typeof URLSearchParams === "function" ? new URLSearchParams(g.location?.search ?? "").get("look") : null);
+    return asked === "toon";
+  }
+
+  // src/canalRecall/look/toonFronts.ts
+  var TOON_FRONT_BRICK = ["#a8503a", "#9a4a38", "#8c4632", "#b05a40", "#7a3b2c"];
+  var TOON_FRONT_DARK = ["#2b2d2c", "#2f4a3a", "#5a2a26", "#25344a"];
+  var TOON_FRONT_LIGHT = ["#e8dfc9", "#f1eee6", "#d3b184", "#e2d5ba"];
+  var TOON_WALLS = [
+    TOON_FRONT_BRICK[0],
+    TOON_FRONT_BRICK[0],
+    TOON_FRONT_BRICK[1],
+    TOON_FRONT_BRICK[2],
+    TOON_FRONT_BRICK[3],
+    TOON_FRONT_BRICK[4],
+    TOON_FRONT_DARK[0],
+    TOON_FRONT_DARK[1],
+    TOON_FRONT_DARK[2],
+    TOON_FRONT_LIGHT[0],
+    TOON_FRONT_LIGHT[2]
+  ];
+  var TOON_ACCENTS = ["#2f4a3a", "#25344a", "#5a2a26", "#2b2d2c", "#e0a526"];
+  var TOON_PERIOD_WALLS = {
+    canal: [TOON_FRONT_BRICK[4], TOON_FRONT_BRICK[4], TOON_FRONT_BRICK[1], TOON_FRONT_BRICK[2], TOON_FRONT_DARK[0], TOON_FRONT_DARK[1], TOON_FRONT_LIGHT[0]],
+    c19: [TOON_FRONT_BRICK[0], TOON_FRONT_BRICK[3], TOON_FRONT_BRICK[1], TOON_FRONT_LIGHT[3], TOON_FRONT_LIGHT[2], TOON_FRONT_LIGHT[0]],
+    school: [TOON_FRONT_BRICK[2], TOON_FRONT_BRICK[4], TOON_FRONT_BRICK[1], TOON_FRONT_BRICK[3]]
+  };
+  var TOON_GROUND_PAINTS = ["#f1eee6", "#f1eee6", "#f1eee6", "#e8dfc9", "#e8dfc9", "#2b2d2c", "#2f4a3a", "#5a2a26", "#25344a", "#8b8f8c"];
+  function toonFrontsActive() {
+    if (!toonLookFlag()) return false;
+    const g = globalThis;
+    return (g.__canalRecallToonFronts ?? (typeof URLSearchParams === "function" ? new URLSearchParams(g.location?.search ?? "").get("toonFronts") : null)) !== "candy";
+  }
+
   // src/canalRecall/look/palette.ts
   var PHOTO_WALL_CELL_MEAN = 225;
   var PHOTO_CALM = { wallPull: 0.7, glassLift: 0.5, liftBrick: true };
@@ -3275,6 +3312,27 @@
   var FLAT_ROOF_TONES = { gravel: ROOF_SLOT_TONES.gravel.hex, membrane: ROOF_SLOT_TONES["white-membrane"].hex, bitumen: ROOF_SLOT_TONES["bitumen-dark"].hex, pebble: ROOF_SLOT_TONES["bitumen-light"].hex };
   var FLAT_ROOF_GREYS = [FLAT_ROOF_TONES.gravel, FLAT_ROOF_TONES.membrane, FLAT_ROOF_TONES.bitumen, FLAT_ROOF_TONES.pebble];
   var CITY_ROOF = { tile: ROOF_TONES.photo.tile, slate: ROOF_TONES.photo.slate, flat: FLAT_ROOF_GREYS };
+  var ILLUSTRATED_WALLS = ["#d9674a", "#e58a5c", "#eab85f", "#f0dfb8", "#e5a396", "#9dbb9b", "#7ea3c2", "#c9714a", "#f2c14e", "#b9a1c9"];
+  var ILLUSTRATED_ACCENTS = ["#2a8c8c", "#e0a526", "#d9453d", "#2c4a7c", "#7a3b6e", "#2f6b45", "#4aa3d9"];
+  var ILLUSTRATED = {
+    canal: { walls: ILLUSTRATED_WALLS, accents: ILLUSTRATED_ACCENTS },
+    c19: { walls: ILLUSTRATED_WALLS, accents: ILLUSTRATED_ACCENTS },
+    school: { walls: ["#9c5a42", "#8a4b3a", "#a8664c", "#7a4a40"], accents: ["#2c4a7c", "#2a8c8c", "#e0a526"] },
+    modern: { walls: ["#f4efe6", "#dcdcd6", "#e9d9c0", "#b9c4cc", "#f0c9a9"], accents: ["#2a8c8c", "#d9453d", "#2c4a7c", "#e0a526"] }
+  };
+  var PHOTO_PASTEL = ["#ffffff", "#f2d9c8", "#d9b9a4", "#e6c9b0", "#c9a38c", "#f0e4d2", "#ffd9b0", "#e8c0b0", "#d0c8c0"];
+  var PHOTO_DARK_ACCENTS = ["#243a2f", "#1f2a3a", "#3a1f1c", "#222222", "#2f4a3c", "#6b2b2b", "#2c3e50"];
+  var PALETTES = {
+    cartoon: ILLUSTRATED,
+    storybook: ILLUSTRATED,
+    photo: {
+      canal: { walls: PHOTO_PASTEL, accents: PHOTO_DARK_ACCENTS },
+      c19: { walls: PHOTO_PASTEL, accents: PHOTO_DARK_ACCENTS },
+      school: { walls: ["#b89080", "#a88070", "#9c7868"], accents: ["#1f2a3a", "#243a2f", "#3a1f1c"] },
+      modern: { walls: ["#f2f2ee", "#d8d8d2", "#e8dcc8", "#c8d0d4"], accents: ["#2c3e50", "#6b2b2b", "#243a2f"] }
+    }
+  };
+  var CARTOON_WALLS = ["#e8573d", "#e8573d", "#ee7f2c", "#f2b92e", "#f2b92e", "#2a9d8f", "#4672b0", "#f3e6c8", "#d96a4d"];
   var PERIOD_WALLS = {
     photo: {
       canal: ["#7a3b2c", "#7a3b2c", "#6b3428", "#8c4632", "#9a5846", "#b05a40", "#4a2e26", "#2e2a27", "#3e4a40", "#5d605a", "#e4ddcd"],
@@ -3295,6 +3353,18 @@
       modern: null
     }
   };
+  var GROUND_PAINTS = {
+    photo: ["#f1eee6", "#f1eee6", "#f1eee6", "#e8dfc9", "#e8dfc9", "#2b2d2c", "#2f4a3a", "#5a2a26", "#25344a", "#8b8f8c"],
+    storybook: ["#f6f1e4", "#f6f1e4", "#f6f1e4", "#efe2c2", "#efe2c2", "#3a3d3c", "#3f6a52", "#8a3b33", "#3a527a", "#a3a8a4"],
+    cartoon: ["#fffaf0", "#fffaf0", "#fffaf0", "#ffe9b8", "#ffe9b8", "#3b3b4a", "#2a9d8f", "#d9453d", "#4672b0", "#f2b92e"]
+  };
+  if (toonFrontsActive()) {
+    for (const period of ["canal", "c19", "school"]) PERIOD_WALLS.cartoon[period] = TOON_PERIOD_WALLS[period];
+    const toonSet = { walls: [...TOON_WALLS], accents: [...TOON_ACCENTS] };
+    PALETTES.cartoon = { canal: toonSet, c19: toonSet, school: toonSet, modern: PALETTES.cartoon.modern };
+    CARTOON_WALLS.splice(0, CARTOON_WALLS.length, ...TOON_WALLS);
+    GROUND_PAINTS.cartoon = TOON_GROUND_PAINTS;
+  }
   var PERIOD_PRIORS = {
     canal: { label: "canal-house centre (before 1860)", wall: PERIOD_WALLS.photo.canal[0], roof: ROOF_TONES.photo.tile[0] },
     c19: { label: "19th-century ring (1860-1914)", wall: PERIOD_WALLS.photo.c19[0], roof: ROOF_TONES.photo.tile[1] },

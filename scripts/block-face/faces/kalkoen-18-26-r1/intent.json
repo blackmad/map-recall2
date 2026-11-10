@@ -1,0 +1,92 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "kalkoen-18-26-r1",
+ "street": "Kalkoenstraat",
+ "sources": [
+  {
+   "id": "strip-2025-09-22",
+   "kind": "street-panorama",
+   "capturedAt": "2025-09-22",
+   "image": "staging/block-face/kalkoen-18-26-r1/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "auto-place (blockFace/autoPlace.ts)",
+  "passes": 1,
+  "note": "auto-placed from the vogelbuurt library (buurt Vogelbuurt-Noord); scores and holds in scripts/block-face/faces/kalkoen-18-26/auto-place.json"
+ },
+ "types": [
+  "vogel-1921-two-storey-dormer-row"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012123527",
+   "slug": "kalkoen-123527",
+   "address": "Kalkoenstraat 20",
+   "type": {
+    "type": "vogel-1921-two-storey-dormer-row",
+    "measuredPalette": {
+     "brick": "#534f4b",
+     "evidence": "strip 2025-09-22 span 773-1026: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2025-09-22",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: vogel-1921-two-storey-dormer-row scored 1 on storeys 1, roof 1, stucco 1; strip 2025-09-22 span 773-1026"
+   }
+  },
+  {
+   "pandId": "0363100012086436",
+   "slug": "kalkoen-086436",
+   "address": "Kalkoenstraat 18",
+   "type": {
+    "type": "vogel-1921-two-storey-dormer-row",
+    "measuredPalette": {
+     "brick": "#78675e",
+     "evidence": "strip 2022-05-11 span 1026-1291: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "mirror": true
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2025-09-22",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: vogel-1921-two-storey-dormer-row scored 1 on storeys 1, roof 1, stucco 1; strip 2022-05-11 span 1026-1291"
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "auto-place: low attic behind the cornice; the strips show sky over the cornices of the type rows"
+  },
+  "measuredEaves": [
+   {
+    "pand": "0363100012123527",
+    "stripRow": 298,
+    "evidence": "auto-place: the vogel-1921-two-storey-dormer-row cornice line 6.45 m (measured on its exemplar strips; this pand's skyline unread); 3DBAG/PDOK eaves 7.01 m"
+   }
+  ]
+ }
+}

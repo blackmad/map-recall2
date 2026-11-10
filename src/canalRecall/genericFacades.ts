@@ -138,6 +138,16 @@ export function footprintAreaM2(geometry: unknown): number {
 
 type Feature = { type: 'Feature'; properties: Record<string, unknown>; geometry: unknown };
 
+const BRICK_COLOURS: readonly ContextualBuildingColour[] = ['priorBrickRed', 'priorBrickBrown', 'priorBrickDark', 'priorBrickBuff'];
+/** The wall colour kept in the register's finish family: light (plaster, paint, stone) or brick. */
+function registerFinishColour(colour: ContextualBuildingColour, finish: 'light' | 'brick', styleColours: readonly ContextualBuildingColour[], id: string): ContextualBuildingColour {
+  const isBrick = BRICK_COLOURS.includes(colour);
+  if (finish === 'light') return isBrick ? 'priorPlaster' : colour;
+  if (isBrick) return colour;
+  const bricks = styleColours.filter(c => BRICK_COLOURS.includes(c));
+  return bricks.length ? bricks[stableIndex(id, bricks.length)] : 'priorBrickRed';
+}
+
 /**
  * The streamer's post-decoration hook: give a building a facade key, and the
  * period-plausible wall colour that key bakes in. Buildings on the
@@ -162,7 +172,9 @@ export function decorateFacade<T extends Feature>(feature: T): T {
   const style = facadeStyleFor({ year, heightM, minHeightM, footprintM2: footprintAreaM2(feature.geometry) });
   if (!style) return feature;
   const colours = FACADE_STYLE_COLOURS[style];
-  const colour = mapped ?? colours[stableIndex(String(p.id ?? ''), colours.length)];
+  let colour = mapped ?? colours[stableIndex(String(p.id ?? ''), colours.length)];
+  // The monuments register states the wall (registerRecipe.ts): a plastered or painted front is not brick, a brick one is.
+  if (!mapped && (p.registerFinish === 'light' || p.registerFinish === 'brick')) colour = registerFinishColour(colour, p.registerFinish, colours, String(p.id ?? ''));
   const hex = CONTEXTUAL_BUILDING_COLOURS[colour];
   return { ...feature, properties: { ...p, facade: facadeKey(style, colour), facadeStyle: style, ...(explicit ? { facadeMappedColour: explicit.trim() } : materialPrior ? { facadeMaterialColourPrior: materialPrior } : {}), sideColour: mutedWallHex(hex), groundColour: mutedWallHex(hex) } };
 }

@@ -1,6 +1,7 @@
 import { test, expect, type Page } from '@playwright/test';
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { openRoute, settleWorld } from './helpers';
+import { bridgesFromExtract } from './ownGroundBridges';
 
 // First-person riding camera (issue #171, lane fps-camera-20261109). The switch is `?cam=fps` or the V key.
 //   ENGINE=own BUNDLES_DIR=<dir with a fresh engine.bundle.js> PW_PORT=4745 /tmp/canal-pw.sh npx playwright test fps-camera.spec --project=desktop --workers=1
@@ -70,6 +71,7 @@ test('toggling the first-person camera renders a frame with no errors', async ({
   expect(fps.pitch, 'level-ish view').toBeGreaterThan(chasePitch);
   expect(fps.fov).toBeCloseTo(72, 3);
   expect(fps.eyeZ, `eye height over the rider ${JSON.stringify(fps)}`).toBeCloseTo(1.6, 2);
+  expect(await page.evaluate(() => (window as any).__canalRecallFpsHidePin), 'destination pin hidden while racing in FPS').toBe(true);
   const url: string = await page.evaluate(() => (window as any).canalRecallGame.vectorMap.captureFrame().then((c: HTMLCanvasElement | null) => c?.toDataURL('image/png') ?? ''));
   expect(url.length, 'a frame was drawn').toBeGreaterThan(5000);
 
@@ -77,6 +79,7 @@ test('toggling the first-person camera renders a frame with no errors', async ({
   await expect.poll(() => vm('fpsCameraOn')).toBe(false);
   await page.waitForTimeout(1500);
   const back = await page.evaluate(() => { const c = (window as any).canalRecallGame.vectorMap.cameraMap.camera; return { fov: c.fovDeg, pitch: c.pitch }; });
+  expect(await page.evaluate(() => (window as any).__canalRecallFpsHidePin), 'pin back in chase').toBe(false);
   expect(back.fov, 'lens restored').toBeCloseTo(36.87, 1);
   expect(back.pitch).toBeLessThan(80);
   expect(errors, errors.join('\n')).toEqual([]);
@@ -100,4 +103,36 @@ test('toggling the first-person camera renders a frame with no errors', async ({
   }
   writeFileSync(`${OUT}/cost-${info.project.name}.json`, JSON.stringify(costs, null, 2));
   console.log(JSON.stringify(costs, null, 2));
+});
+
+/** The eye over a real deck: the Torensluis (BRU0009, measured profile in elevation-v1/bridges.json; the Magere Brug is a fallback footprint with no deck profile). */
+test('on a bridge deck the eye is 1.6 m over the deck', async ({ page }) => {
+  test.setTimeout(120_000);
+  const [bridge] = bridgesFromExtract(['BRU0009']);
+  await openRoute(page, { travelMode: 'car', viewMode: 'chase', abortHeavyTiles: true, query: '?engine=own&cam=fps' });
+  await teleport(page, bridge.lng, bridge.lat, bridge.bearing);
+  await page.waitForTimeout(2500);
+  await teleport(page, bridge.lng, bridge.lat, bridge.bearing);
+  await expect.poll(async () => page.evaluate(({ lng, lat }) => {
+    const v = (window as any).canalRecallGame.vectorMap, c = v.cameraMap.camera, g = v._ownGround;
+    if (!g?.ready || !v._lastFps) return null;
+    const deck = g.heightAt([lng, lat]);
+    return { deck, eyeOverDeck: c.frame().eye[2] + 0 - deck, elevation: c.elevation };
+  }, { lng: bridge.lng, lat: bridge.lat }), { timeout: 60_000, intervals: [1000] }).toMatchObject({ eyeOverDeck: expect.closeTo(1.6, 1) });
+  const r = await page.evaluate(({ lng, lat }) => { const v = (window as any).canalRecallGame.vectorMap; return { deck: v._ownGround.heightAt([lng, lat]), quay: v._ownGround.heightAt([lng + 0.0006, lat + 0.0006]), stuck: v._lastFps?.stuckId }; }, { lng: bridge.lng, lat: bridge.lat });
+  console.log('torensluis', JSON.stringify(r));
+  expect(r.deck, 'the deck is above the water level').toBeGreaterThan(0);
+});
+
+test('stuck probe', async ({ page }) => {
+  test.skip(!process.env.FPS_PROBE, 'set FPS_PROBE=1');
+  test.setTimeout(240_000);
+  await openRoute(page, { travelMode: 'car', viewMode: 'chase', abortHeavyTiles: true, query: '?engine=own&cam=fps' });
+  for (const spot of SPOTS) {
+    await teleport(page, spot.lng, spot.lat, spot.bearing);
+    await page.waitForTimeout(2500);
+    await teleport(page, spot.lng, spot.lat, spot.bearing);
+    await page.waitForTimeout(2500);
+    console.log(spot.name, JSON.stringify(await page.evaluate(() => { const v = (window as any).canalRecallGame.vectorMap; return { stuck: v._fpsStuckInfo, last: v._lastFps && { back: v._lastFps.backM, stuckId: v._lastFps.stuckId } }; })));
+  }
 });

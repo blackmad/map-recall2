@@ -1,0 +1,137 @@
+{
+ "street": "Lange Vogelstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched n/a (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012135700",
+   "addresses": [
+    "Lange Vogelstraat 17"
+   ],
+   "groundUnits": [
+    {
+     "address": "Lange Vogelstraat 17",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000723380"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012076808",
+   "addresses": [
+    "Lange Vogelstraat 19"
+   ],
+   "groundUnits": [
+    {
+     "address": "Lange Vogelstraat 19",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000723382"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012099577",
+   "addresses": [
+    "Lange Vogelstraat 21"
+   ],
+   "groundUnits": [
+    {
+     "address": "Lange Vogelstraat 21",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000723384"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012100692",
+   "addresses": [
+    "Lange Vogelstraat 23"
+   ],
+   "groundUnits": [
+    {
+     "address": "Lange Vogelstraat 23",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010000723386"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012106658",
+   "addresses": [
+    "Lange Vogelstraat 25"
+   ],
+   "groundUnits": [
+    {
+     "address": "Lange Vogelstraat 25",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010000723388"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012144561",
+   "addresses": [
+    "Lange Vogelstraat 27"
+   ],
+   "groundUnits": [
+    {
+     "address": "Lange Vogelstraat 27",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000723390"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012135886",
+   "addresses": [
+    "Lange Vogelstraat 29"
+   ],
+   "groundUnits": [
+    {
+     "address": "Lange Vogelstraat 29",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000723392"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012084589",
+   "addresses": [
+    "Lange Vogelstraat 31"
+   ],
+   "groundUnits": [
+    {
+     "address": "Lange Vogelstraat 31",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000723394"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  }
+ ]
+}

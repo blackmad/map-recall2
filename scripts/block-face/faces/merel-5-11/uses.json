@@ -1,0 +1,108 @@
+{
+ "street": "Merelstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T02:09:56.364Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012120081",
+   "addresses": [
+    "Merelstraat 5"
+   ],
+   "groundUnits": [
+    {
+     "address": "Merelstraat 5-H",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000742380"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012103632",
+   "addresses": [
+    "Merelstraat 7A",
+    "Merelstraat 7B",
+    "Merelstraat 7C",
+    "Merelstraat 7D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Merelstraat 7A",
+     "use": "woonfunctie",
+     "areaM2": 159,
+     "bagId": "0363010000958714"
+    },
+    {
+     "address": "Merelstraat 7B",
+     "use": "woonfunctie",
+     "areaM2": 59,
+     "bagId": "0363010000958715"
+    },
+    {
+     "address": "Merelstraat 7C",
+     "use": "woonfunctie",
+     "areaM2": 127,
+     "bagId": "0363010000958716"
+    },
+    {
+     "address": "Merelstraat 7D",
+     "use": "woonfunctie",
+     "areaM2": 177,
+     "bagId": "0363010000958717"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012073124",
+   "addresses": [
+    "Merelstraat 9",
+    "Merelstraat 11"
+   ],
+   "groundUnits": [
+    {
+     "address": "Merelstraat 9-H",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000742387"
+    },
+    {
+     "address": "Merelstraat 11",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000742391"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2848620102,
+     "lngLat": [
+      4.924556,
+      52.3901455
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "317",
+      "addr:postcode": "1022AL",
+      "addr:street": "Meeuwenlaan",
+      "name": "Aitmaten",
+      "shop": "supermarket",
+      "source": "BAG",
+      "source:date": "2014-05-07",
+      "website": "https://aitmaten-supermarkt.nl/"
+     },
+     "fetchedAt": "2026-11-10T02:09:56.364Z",
+     "match": "frontage",
+     "distanceM": 4.5
+    }
+   ]
+  }
+ ]
+}

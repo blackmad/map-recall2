@@ -1,0 +1,703 @@
+{
+ "street": "Eerste Vogelstraat",
+ "seed": "0363100012079661",
+ "members": [
+  "0363100012076999",
+  "0363100012082673",
+  "0363100012127241",
+  "0363100012084233",
+  "0363100012118497",
+  "0363100012079661"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "next fronting pand 0363100012092948 9.4 m on shares no party wall (cross street or gap)"
+  },
+  {
+   "side": "right",
+   "reason": "next fronting pand 0363100012114049 12.1 m on shares no party wall (cross street or gap)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012064115",
+   "reason": "frontage 56.0 m from Eerste Vogelstraat"
+  },
+  {
+   "pandId": "0363100012068107",
+   "reason": "no frontage on Eerste Vogelstraat: No footprint edge faces Eerste Vogelstraat"
+  },
+  {
+   "pandId": "0363100012071869",
+   "reason": "frontage 37.2 m from Eerste Vogelstraat"
+  },
+  {
+   "pandId": "0363100012072702",
+   "reason": "sightline to Eerste Vogelstraat crosses 0363100012118636"
+  },
+  {
+   "pandId": "0363100012076219",
+   "reason": "frontage 37.1 m from Eerste Vogelstraat"
+  },
+  {
+   "pandId": "0363100012078281",
+   "reason": "frontage 36.9 m from Eerste Vogelstraat"
+  },
+  {
+   "pandId": "0363100012080002",
+   "reason": "sightline to Eerste Vogelstraat crosses 0363100012111907"
+  },
+  {
+   "pandId": "0363100012086570",
+   "reason": "sightline to Eerste Vogelstraat crosses 0363100012083374"
+  },
+  {
+   "pandId": "0363100012062516",
+   "reason": "frontage 89.6 m from Eerste Vogelstraat"
+  },
+  {
+   "pandId": "0363100012062882",
+   "reason": "sightline to Eerste Vogelstraat crosses 0363100012065836"
+  },
+  {
+   "pandId": "0363100012062910",
+   "reason": "sightline to Eerste Vogelstraat crosses 0363100012121047"
+  },
+  {
+   "pandId": "0363100012063241",
+   "reason": "no frontage on Eerste Vogelstraat: No footprint edge faces Eerste Vogelstraat"
+  },
+  {
+   "pandId": "0363100012063850",
+   "reason": "frontage 107.1 m from Eerste Vogelstraat"
+  },
+  {
+   "pandId": "0363100012063945",
+   "reason": "sightline to Eerste Vogelstraat crosses 0363100012076655"
+  },
+  {
+   "pandId": "0363100012064187",
+   "reason": "frontage 52.0 m from Eerste Vogelstraat"
+  },
+  {
+   "pandId": "0363100012065299",
+   "reason": "sightline to Eerste Vogelstraat crosses 0363100012079661"
+  },
+  {
+   "pandId": "0363100012065314",
+   "reason": "frontage 52.6 m from Eerste Vogelstraat"
+  },
+  {
+   "pandId": "0363100012065836",
+   "reason": "sightline to Eerste Vogelstraat crosses 0363100012091400"
+  },
+  {
+   "pandId": "0363100012066995",
+   "reason": "frontage 74.2 m from Eerste Vogelstraat"
+  },
+  {
+   "pandId": "0363100012067081",
+   "reason": "sightline to Eerste Vogelstraat crosses 0363100012121063"
+  },
+  {
+   "pandId": "0363100012067236",
+   "reason": "sightline to Eerste Vogelstraat crosses 0363100012097236"
+  },
+  {
+   "pandId": "0363100012067531",
+   "reason": "sightline to Eerste Vogelstraat crosses 0363100012063241"
+  },
+  {
+   "pandId": "0363100012067750",
+   "reason": "frontage 37.1 m from Eerste Vogelstraat"
+  },
+  {
+   "pandId": "0363100012069851",
+   "reason": "frontage 74.1 m from Eerste Vogelstraat"
+  },
+  {
+   "pandId": "0363100012072678",
+   "reason": "frontage 127.1 m from Eerste Vogelstraat"
+  },
+  {
+   "pandId": "0363100012073659",
+   "reason": "frontage 37.0 m from Eerste Vogelstraat"
+  },
+  {
+   "pandId": "0363100012076566",
+   "reason": "frontage 89.7 m from Eerste Vogelstraat"
+  },
+  {
+   "pandId": "0363100012076655",
+   "reason": "sightline to Eerste Vogelstraat crosses 0363100012092948"
+  },
+  {
+   "pandId": "0363100012076808",
+   "reason": "frontage 84.1 m from Eerste Vogelstraat"
+  },
+  {
+   "pandId": "0363100012078306",
+   "reason": "frontage 52.7 m from Eerste Vogelstraat"
+  },
+  {
+   "pandId": "0363100012078328",
+   "reason": "sightline to Eerste Vogelstraat crosses 0363100012093588"
+  },
+  {
+   "pandId": "0363100012079189",
+   "reason": "frontage 84.1 m from Eerste Vogelstraat"
+  },
+  {
+   "pandId": "0363100012079781",
+   "reason": "frontage 79.1 m from Eerste Vogelstraat"
+  },
+  {
+   "pandId": "0363100012080054",
+   "reason": "sightline to Eerste Vogelstraat crosses 0363100012082673"
+  },
+  {
+   "pandId": "0363100012080292",
+   "reason": "frontage 89.3 m from Eerste Vogelstraat"
+  },
+  {
+   "pandId": "0363100012081710",
+   "reason": "frontage 57.0 m from Eerste Vogelstraat"
+  },
+  {
+   "pandId": "0363100012081976",
+   "reason": "frontage 41.9 m from Eerste Vogelstraat"
+  },
+  {
+   "pandId": "0363100012082395",
+   "reason": "frontage 54.4 m from Eerste Vogelstraat"
+  },
+  {
+   "pandId": "0363100012083019",
+   "reason": "frontage 89.1 m from Eerste Vogelstraat"
+  },
+  {
+   "pandId": "0363100012084318",
+   "reason": "frontage 84.3 m from Eerste Vogelstraat"
+  },
+  {
+   "pandId": "0363100012084589",
+   "reason": "frontage 122.1 m from Eerste Vogelstraat"
+  },
+  {
+   "pandId": "0363100012085288",
+   "reason": "frontage 94.3 m from Eerste Vogelstraat"
+  },
+  {
+   "pandId": "0363100012090581",
+   "reason": "frontage 37.1 m from Eerste Vogelstraat"
+  },
+  {
+   "pandId": "0363100012090940",
+   "reason": "no frontage on Eerste Vogelstraat: No footprint edge faces Eerste Vogelstraat"
+  },
+  {
+   "pandId": "0363100012091925",
+   "reason": "frontage 37.1 m from Eerste Vogelstraat"
+  },
+  {
+   "pandId": "0363100012100514",
+   "reason": "sightline to Eerste Vogelstraat crosses 0363100012072702"
+  },
+  {
+   "pandId": "0363100012101216",
+   "reason": "frontage 46.9 m from Eerste Vogelstraat"
+  },
+  {
+   "pandId": "0363100012101771",
+   "reason": "frontage 57.4 m from Eerste Vogelstraat"
+  },
+  {
+   "pandId": "0363100012108165",
+   "reason": "frontage 51.9 m from Eerste Vogelstraat"
+  },
+  {
+   "pandId": "0363100012087612",
+   "reason": "frontage 52.5 m from Eerste Vogelstraat"
+  },
+  {
+   "pandId": "0363100012088357",
+   "reason": "frontage 89.7 m from Eerste Vogelstraat"
+  },
+  {
+   "pandId": "0363100012088645",
+   "reason": "frontage 74.1 m from Eerste Vogelstraat"
+  },
+  {
+   "pandId": "0363100012090616",
+   "reason": "frontage 36.9 m from Eerste Vogelstraat"
+  },
+  {
+   "pandId": "0363100012091188",
+   "reason": "frontage 52.6 m from Eerste Vogelstraat"
+  },
+  {
+   "pandId": "0363100012091400",
+   "reason": "sightline to Eerste Vogelstraat crosses 0363100012133462"
+  },
+  {
+   "pandId": "0363100012092462",
+   "reason": "sightline to Eerste Vogelstraat crosses 0363100012084233"
+  },
+  {
+   "pandId": "0363100012094588",
+   "reason": "frontage 122.2 m from Eerste Vogelstraat"
+  },
+  {
+   "pandId": "0363100012096215",
+   "reason": "frontage 127.2 m from Eerste Vogelstraat"
+  },
+  {
+   "pandId": "0363100012097822",
+   "reason": "frontage 74.3 m from Eerste Vogelstraat"
+  },
+  {
+   "pandId": "0363100012099269",
+   "reason": "frontage 89.7 m from Eerste Vogelstraat"
+  },
+  {
+   "pandId": "0363100012099577",
+   "reason": "frontage 89.1 m from Eerste Vogelstraat"
+  },
+  {
+   "pandId": "0363100012100692",
+   "reason": "frontage 94.1 m from Eerste Vogelstraat"
+  },
+  {
+   "pandId": "0363100012101482",
+   "reason": "frontage 89.5 m from Eerste Vogelstraat"
+  },
+  {
+   "pandId": "0363100012103994",
+   "reason": "sightline to Eerste Vogelstraat crosses 0363100012106420"
+  },
+  {
+   "pandId": "0363100012104208",
+   "reason": "frontage 112.2 m from Eerste Vogelstraat"
+  },
+  {
+   "pandId": "0363100012104456",
+   "reason": "sightline to Eerste Vogelstraat crosses 0363100012092948"
+  },
+  {
+   "pandId": "0363100012106658",
+   "reason": "frontage 99.2 m from Eerste Vogelstraat"
+  },
+  {
+   "pandId": "0363100012107391",
+   "reason": "frontage 37.0 m from Eerste Vogelstraat"
+  },
+  {
+   "pandId": "0363100012107760",
+   "reason": "frontage 74.1 m from Eerste Vogelstraat"
+  },
+  {
+   "pandId": "0363100012108562",
+   "reason": "sightline to Eerste Vogelstraat crosses 0363100012076999"
+  },
+  {
+   "pandId": "0363100012111139",
+   "reason": "sightline to Eerste Vogelstraat crosses 0363100012067236"
+  },
+  {
+   "pandId": "0363100012111314",
+   "reason": "sightline to Eerste Vogelstraat crosses 0363100012116965"
+  },
+  {
+   "pandId": "0363100012116509",
+   "reason": "frontage 107.1 m from Eerste Vogelstraat"
+  },
+  {
+   "pandId": "0363100012117598",
+   "reason": "sightline to Eerste Vogelstraat crosses 0363100012063241"
+  },
+  {
+   "pandId": "0363100012120169",
+   "reason": "sightline to Eerste Vogelstraat crosses 0363100012122155"
+  },
+  {
+   "pandId": "0363100012120569",
+   "reason": "frontage 74.1 m from Eerste Vogelstraat"
+  },
+  {
+   "pandId": "0363100012120731",
+   "reason": "sightline to Eerste Vogelstraat crosses 0363100012063241"
+  },
+  {
+   "pandId": "0363100012123838",
+   "reason": "sightline to Eerste Vogelstraat crosses 0363100012108489"
+  },
+  {
+   "pandId": "0363100012124024",
+   "reason": "frontage 56.9 m from Eerste Vogelstraat"
+  },
+  {
+   "pandId": "0363100012124451",
+   "reason": "sightline to Eerste Vogelstraat crosses 0363100012118636"
+  },
+  {
+   "pandId": "0363100012135860",
+   "reason": "frontage 41.9 m from Eerste Vogelstraat"
+  },
+  {
+   "pandId": "0363100012141291",
+   "reason": "frontage 37.0 m from Eerste Vogelstraat"
+  },
+  {
+   "pandId": "0363100012121730",
+   "reason": "frontage 37.1 m from Eerste Vogelstraat"
+  },
+  {
+   "pandId": "0363100012122155",
+   "reason": "sightline to Eerste Vogelstraat crosses 0363100012123001"
+  },
+  {
+   "pandId": "0363100012122702",
+   "reason": "frontage 36.9 m from Eerste Vogelstraat"
+  },
+  {
+   "pandId": "0363100012123001",
+   "reason": "sightline to Eerste Vogelstraat crosses 0363100012133462"
+  },
+  {
+   "pandId": "0363100012123207",
+   "reason": "frontage 52.5 m from Eerste Vogelstraat"
+  },
+  {
+   "pandId": "0363100012123312",
+   "reason": "frontage 107.2 m from Eerste Vogelstraat"
+  },
+  {
+   "pandId": "0363100012123354",
+   "reason": "frontage 52.7 m from Eerste Vogelstraat"
+  },
+  {
+   "pandId": "0363100012123606",
+   "reason": "frontage 74.2 m from Eerste Vogelstraat"
+  },
+  {
+   "pandId": "0363100012123947",
+   "reason": "frontage 36.9 m from Eerste Vogelstraat"
+  },
+  {
+   "pandId": "0363100012124242",
+   "reason": "sightline to Eerste Vogelstraat crosses 0363100012067236"
+  },
+  {
+   "pandId": "0363100012124606",
+   "reason": "frontage 89.6 m from Eerste Vogelstraat"
+  },
+  {
+   "pandId": "0363100012127132",
+   "reason": "frontage 36.9 m from Eerste Vogelstraat"
+  },
+  {
+   "pandId": "0363100012129583",
+   "reason": "sightline to Eerste Vogelstraat crosses 0363100012078199"
+  },
+  {
+   "pandId": "0363100012131492",
+   "reason": "sightline to Eerste Vogelstraat crosses 0363100012076655"
+  },
+  {
+   "pandId": "0363100012131550",
+   "reason": "sightline to Eerste Vogelstraat crosses 0363100012132959"
+  },
+  {
+   "pandId": "0363100012132631",
+   "reason": "frontage 74.0 m from Eerste Vogelstraat"
+  },
+  {
+   "pandId": "0363100012133462",
+   "reason": "no frontage on Eerste Vogelstraat: No footprint edge faces Eerste Vogelstraat"
+  },
+  {
+   "pandId": "0363100012133910",
+   "reason": "frontage 52.5 m from Eerste Vogelstraat"
+  },
+  {
+   "pandId": "0363100012133967",
+   "reason": "frontage 107.2 m from Eerste Vogelstraat"
+  },
+  {
+   "pandId": "0363100012134789",
+   "reason": "frontage 107.2 m from Eerste Vogelstraat"
+  },
+  {
+   "pandId": "0363100012135488",
+   "reason": "sightline to Eerste Vogelstraat crosses 0363100012063241"
+  },
+  {
+   "pandId": "0363100012135700",
+   "reason": "frontage 79.1 m from Eerste Vogelstraat"
+  },
+  {
+   "pandId": "0363100012135886",
+   "reason": "frontage 117.1 m from Eerste Vogelstraat"
+  },
+  {
+   "pandId": "0363100012136571",
+   "reason": "frontage 74.0 m from Eerste Vogelstraat"
+  },
+  {
+   "pandId": "0363100012137341",
+   "reason": "frontage 79.3 m from Eerste Vogelstraat"
+  },
+  {
+   "pandId": "0363100012137372",
+   "reason": "frontage 89.7 m from Eerste Vogelstraat"
+  },
+  {
+   "pandId": "0363100012138583",
+   "reason": "sightline to Eerste Vogelstraat crosses 0363100012079816"
+  },
+  {
+   "pandId": "0363100012138634",
+   "reason": "frontage 37.1 m from Eerste Vogelstraat"
+  },
+  {
+   "pandId": "0363100012139381",
+   "reason": "frontage 52.0 m from Eerste Vogelstraat"
+  },
+  {
+   "pandId": "0363100012141706",
+   "reason": "sightline to Eerste Vogelstraat crosses 0363100012063241"
+  },
+  {
+   "pandId": "0363100012142347",
+   "reason": "sightline to Eerste Vogelstraat crosses 0363100012079816"
+  },
+  {
+   "pandId": "0363100012142488",
+   "reason": "frontage 74.1 m from Eerste Vogelstraat"
+  },
+  {
+   "pandId": "0363100012142979",
+   "reason": "frontage 89.7 m from Eerste Vogelstraat"
+  },
+  {
+   "pandId": "0363100012144274",
+   "reason": "sightline to Eerste Vogelstraat crosses 0363100012063241"
+  },
+  {
+   "pandId": "0363100012144429",
+   "reason": "sightline to Eerste Vogelstraat crosses 0363100012137810"
+  },
+  {
+   "pandId": "0363100012144561",
+   "reason": "frontage 112.1 m from Eerste Vogelstraat"
+  },
+  {
+   "pandId": "0363100012151554",
+   "reason": "frontage 42.1 m from Eerste Vogelstraat"
+  },
+  {
+   "pandId": "0363100012154722",
+   "reason": "sightline to Eerste Vogelstraat crosses 0363100012072702"
+  },
+  {
+   "pandId": "0363100012161061",
+   "reason": "frontage 39.2 m from Eerste Vogelstraat"
+  },
+  {
+   "pandId": "0363100012217425",
+   "reason": "no frontage on Eerste Vogelstraat: No footprint edge faces Eerste Vogelstraat"
+  },
+  {
+   "pandId": "0363100012146996",
+   "reason": "frontage 37.0 m from Eerste Vogelstraat"
+  },
+  {
+   "pandId": "0363100012147035",
+   "reason": "sightline to Eerste Vogelstraat crosses 0363100012067236"
+  },
+  {
+   "pandId": "0363100012147250",
+   "reason": "frontage 46.9 m from Eerste Vogelstraat"
+  },
+  {
+   "pandId": "0363100012147442",
+   "reason": "no frontage on Eerste Vogelstraat: No footprint edge faces Eerste Vogelstraat"
+  },
+  {
+   "pandId": "0363100012147525",
+   "reason": "sightline to Eerste Vogelstraat crosses 0363100012121063"
+  },
+  {
+   "pandId": "0363100012149443",
+   "reason": "frontage 42.0 m from Eerste Vogelstraat"
+  },
+  {
+   "pandId": "0363100012150171",
+   "reason": "frontage 89.7 m from Eerste Vogelstraat"
+  },
+  {
+   "pandId": "0363100012150433",
+   "reason": "sightline to Eerste Vogelstraat crosses 0363100012109169"
+  },
+  {
+   "pandId": "0363100012150842",
+   "reason": "frontage 117.2 m from Eerste Vogelstraat"
+  },
+  {
+   "pandId": "0363100012151653",
+   "reason": "frontage 47.0 m from Eerste Vogelstraat"
+  },
+  {
+   "pandId": "0363100012151858",
+   "reason": "sightline to Eerste Vogelstraat crosses 0363100012079661"
+  },
+  {
+   "pandId": "0363100012153864",
+   "reason": "frontage 37.1 m from Eerste Vogelstraat"
+  },
+  {
+   "pandId": "0363100012158267",
+   "reason": "no frontage on Eerste Vogelstraat: No footprint edge faces Eerste Vogelstraat"
+  },
+  {
+   "pandId": "0363100012185782",
+   "reason": "no frontage on Eerste Vogelstraat: No footprint edge faces Eerste Vogelstraat"
+  },
+  {
+   "pandId": "0363100012207991",
+   "reason": "no frontage on Eerste Vogelstraat: No footprint edge faces Eerste Vogelstraat"
+  },
+  {
+   "pandId": "0363100012207992",
+   "reason": "frontage 56.5 m from Eerste Vogelstraat"
+  },
+  {
+   "pandId": "0363100012078199",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012079816",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012083374",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012094056",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012101772",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012108489",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012111907",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012116965",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012118636",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012121047",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012134122",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012121063",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012121416",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012128397",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012132959",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012145652",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012076999",
+   "alongM": -27.54,
+   "widthM": 5.01,
+   "eavesM": 3.34,
+   "roofMaxM": 5.51,
+   "storeys3dbag": 2,
+   "builtYear": 1918,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012082673",
+   "alongM": -23.01,
+   "widthM": 4.04,
+   "eavesM": 3.32,
+   "roofMaxM": 5.48,
+   "storeys3dbag": 2,
+   "builtYear": 1918,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012127241",
+   "alongM": -18.01,
+   "widthM": 5.97,
+   "eavesM": 3.33,
+   "roofMaxM": 5.49,
+   "storeys3dbag": 2,
+   "builtYear": 1918,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012084233",
+   "alongM": -12.97,
+   "widthM": 4.12,
+   "eavesM": 3.33,
+   "roofMaxM": 5.5,
+   "storeys3dbag": 2,
+   "builtYear": 1918,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012118497",
+   "alongM": -7.96,
+   "widthM": 5.89,
+   "eavesM": 3.31,
+   "roofMaxM": 5.46,
+   "storeys3dbag": 2,
+   "builtYear": 1918,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012079661",
+   "alongM": 0,
+   "widthM": 10.04,
+   "eavesM": 3.31,
+   "roofMaxM": 5.47,
+   "storeys3dbag": 2,
+   "builtYear": 1918,
+   "uncertainty": []
+  }
+ ]
+}

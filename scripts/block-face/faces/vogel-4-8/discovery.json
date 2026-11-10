@@ -1,0 +1,652 @@
+{
+ "street": "Vijfde Vogelstraat",
+ "seed": "0363100012103853",
+ "members": [
+  "0363100012090748",
+  "0363100012144578",
+  "0363100012103853"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "next fronting pand 0363100012128642 11.4 m on shares no party wall (cross street or gap)"
+  },
+  {
+   "side": "right",
+   "reason": "next fronting pand 0363100012061698 9.0 m on shares no party wall (cross street or gap)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012062516",
+   "reason": "frontage 69.7 m from Vijfde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012063850",
+   "reason": "frontage 52.3 m from Vijfde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012065937",
+   "reason": "frontage 69.9 m from Vijfde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012068684",
+   "reason": "sightline to Vijfde Vogelstraat crosses 0363100012136147"
+  },
+  {
+   "pandId": "0363100012072678",
+   "reason": "frontage 38.7 m from Vijfde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012076424",
+   "reason": "sightline to Vijfde Vogelstraat crosses 0363100012065957"
+  },
+  {
+   "pandId": "0363100012079324",
+   "reason": "sightline to Vijfde Vogelstraat crosses 0363100012104899"
+  },
+  {
+   "pandId": "0363100012080292",
+   "reason": "frontage 75.4 m from Vijfde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012083174",
+   "reason": "frontage 30.1 m from Vijfde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012084318",
+   "reason": "frontage 80.3 m from Vijfde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012084589",
+   "reason": "frontage 43.5 m from Vijfde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012085239",
+   "reason": "sightline to Vijfde Vogelstraat crosses 0363100012130216"
+  },
+  {
+   "pandId": "0363100012085288",
+   "reason": "frontage 57.6 m from Vijfde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012086230",
+   "reason": "sightline to Vijfde Vogelstraat crosses 0363100012065957"
+  },
+  {
+   "pandId": "0363100012086231",
+   "reason": "frontage 36.7 m from Vijfde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012087612",
+   "reason": "frontage 106.7 m from Vijfde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012088357",
+   "reason": "frontage 69.7 m from Vijfde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012088825",
+   "reason": "frontage 52.3 m from Vijfde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012062617",
+   "reason": "sightline to Vijfde Vogelstraat crosses 0363100012106317"
+  },
+  {
+   "pandId": "0363100012064086",
+   "reason": "frontage 57.0 m from Vijfde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012064504",
+   "reason": "frontage 51.3 m from Vijfde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012065540",
+   "reason": "frontage 52.3 m from Vijfde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012066125",
+   "reason": "sightline to Vijfde Vogelstraat crosses 0363100012090748"
+  },
+  {
+   "pandId": "0363100012066394",
+   "reason": "no frontage on Vijfde Vogelstraat: No footprint edge faces Vijfde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012067121",
+   "reason": "frontage 71.0 m from Vijfde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012068698",
+   "reason": "frontage 98.3 m from Vijfde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012070328",
+   "reason": "frontage 98.4 m from Vijfde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012071224",
+   "reason": "frontage 36.8 m from Vijfde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012071815",
+   "reason": "frontage 77.9 m from Vijfde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012073092",
+   "reason": "frontage 98.4 m from Vijfde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012074255",
+   "reason": "frontage 98.8 m from Vijfde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012076432",
+   "reason": "frontage 56.9 m from Vijfde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012079772",
+   "reason": "sightline to Vijfde Vogelstraat crosses 0363100012137760"
+  },
+  {
+   "pandId": "0363100012083531",
+   "reason": "frontage 98.1 m from Vijfde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012083966",
+   "reason": "sightline to Vijfde Vogelstraat crosses 0363100012104069"
+  },
+  {
+   "pandId": "0363100012084339",
+   "reason": "sightline to Vijfde Vogelstraat crosses 0363100012061698"
+  },
+  {
+   "pandId": "0363100012085295",
+   "reason": "frontage 51.4 m from Vijfde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012085777",
+   "reason": "frontage 46.9 m from Vijfde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012086482",
+   "reason": "no frontage on Vijfde Vogelstraat: No footprint edge faces Vijfde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012086860",
+   "reason": "no frontage on Vijfde Vogelstraat: No footprint edge faces Vijfde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012087707",
+   "reason": "frontage 71.4 m from Vijfde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012087797",
+   "reason": "sightline to Vijfde Vogelstraat crosses 0363100012079772"
+  },
+  {
+   "pandId": "0363100012088960",
+   "reason": "sightline to Vijfde Vogelstraat crosses 0363100012061698"
+  },
+  {
+   "pandId": "0363100012090564",
+   "reason": "sightline to Vijfde Vogelstraat crosses 0363100012141926"
+  },
+  {
+   "pandId": "0363100012091593",
+   "reason": "frontage 85.0 m from Vijfde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012094588",
+   "reason": "frontage 42.9 m from Vijfde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012096215",
+   "reason": "frontage 38.1 m from Vijfde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012097156",
+   "reason": "sightline to Vijfde Vogelstraat crosses 0363100012079324"
+  },
+  {
+   "pandId": "0363100012097822",
+   "reason": "frontage 90.2 m from Vijfde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012098785",
+   "reason": "sightline to Vijfde Vogelstraat crosses 0363100012071049"
+  },
+  {
+   "pandId": "0363100012100260",
+   "reason": "sightline to Vijfde Vogelstraat crosses 0363100012065957"
+  },
+  {
+   "pandId": "0363100012101482",
+   "reason": "frontage 69.7 m from Vijfde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012104208",
+   "reason": "frontage 52.7 m from Vijfde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012105876",
+   "reason": "frontage 52.3 m from Vijfde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012106658",
+   "reason": "frontage 58.2 m from Vijfde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012107391",
+   "reason": "frontage 106.8 m from Vijfde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012107760",
+   "reason": "frontage 85.2 m from Vijfde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012108351",
+   "reason": "frontage 90.0 m from Vijfde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012108395",
+   "reason": "sightline to Vijfde Vogelstraat crosses 0363100012065957"
+  },
+  {
+   "pandId": "0363100012109073",
+   "reason": "frontage 74.8 m from Vijfde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012109523",
+   "reason": "frontage 85.4 m from Vijfde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012110238",
+   "reason": "sightline to Vijfde Vogelstraat crosses 0363100012104899"
+  },
+  {
+   "pandId": "0363100012110498",
+   "reason": "sightline to Vijfde Vogelstraat crosses 0363100012136147"
+  },
+  {
+   "pandId": "0363100012092832",
+   "reason": "frontage 51.3 m from Vijfde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012094025",
+   "reason": "frontage 98.2 m from Vijfde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012097154",
+   "reason": "frontage 51.9 m from Vijfde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012097295",
+   "reason": "frontage 51.3 m from Vijfde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012097484",
+   "reason": "frontage 51.0 m from Vijfde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012098040",
+   "reason": "no frontage on Vijfde Vogelstraat: No footprint edge faces Vijfde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012100095",
+   "reason": "frontage 76.3 m from Vijfde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012100314",
+   "reason": "frontage 46.0 m from Vijfde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012101207",
+   "reason": "sightline to Vijfde Vogelstraat crosses 0363100012062617"
+  },
+  {
+   "pandId": "0363100012102702",
+   "reason": "frontage 51.0 m from Vijfde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012103178",
+   "reason": "no frontage on Vijfde Vogelstraat: No footprint edge faces Vijfde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012103472",
+   "reason": "frontage 51.2 m from Vijfde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012104339",
+   "reason": "frontage 52.5 m from Vijfde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012105670",
+   "reason": "frontage 105.9 m from Vijfde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012106782",
+   "reason": "frontage 69.9 m from Vijfde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012106957",
+   "reason": "sightline to Vijfde Vogelstraat crosses 0363100012079772"
+  },
+  {
+   "pandId": "0363100012107990",
+   "reason": "frontage 73.3 m from Vijfde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012108071",
+   "reason": "no frontage on Vijfde Vogelstraat: No footprint edge faces Vijfde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012109019",
+   "reason": "sightline to Vijfde Vogelstraat crosses 0363100012061698"
+  },
+  {
+   "pandId": "0363100012109124",
+   "reason": "frontage 48.9 m from Vijfde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012110818",
+   "reason": "sightline to Vijfde Vogelstraat crosses 0363100012061698"
+  },
+  {
+   "pandId": "0363100012111634",
+   "reason": "frontage 66.5 m from Vijfde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012115379",
+   "reason": "sightline to Vijfde Vogelstraat crosses 0363100012097544"
+  },
+  {
+   "pandId": "0363100012116509",
+   "reason": "frontage 52.4 m from Vijfde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012117406",
+   "reason": "sightline to Vijfde Vogelstraat crosses 0363100012079324"
+  },
+  {
+   "pandId": "0363100012120077",
+   "reason": "frontage 36.8 m from Vijfde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012120708",
+   "reason": "frontage 80.0 m from Vijfde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012121571",
+   "reason": "sightline to Vijfde Vogelstraat crosses 0363100012065957"
+  },
+  {
+   "pandId": "0363100012123207",
+   "reason": "frontage 106.8 m from Vijfde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012124606",
+   "reason": "frontage 69.7 m from Vijfde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012132631",
+   "reason": "frontage 85.2 m from Vijfde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012133910",
+   "reason": "frontage 106.7 m from Vijfde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012135886",
+   "reason": "frontage 48.4 m from Vijfde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012137341",
+   "reason": "frontage 85.3 m from Vijfde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012140660",
+   "reason": "frontage 37.3 m from Vijfde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012142488",
+   "reason": "frontage 85.2 m from Vijfde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012144561",
+   "reason": "frontage 53.3 m from Vijfde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012146114",
+   "reason": "sightline to Vijfde Vogelstraat crosses 0363100012087867"
+  },
+  {
+   "pandId": "0363100012147609",
+   "reason": "sightline to Vijfde Vogelstraat crosses 0363100012130936"
+  },
+  {
+   "pandId": "0363100012116748",
+   "reason": "no frontage on Vijfde Vogelstraat: No footprint edge faces Vijfde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012116764",
+   "reason": "sightline to Vijfde Vogelstraat crosses 0363100012073375"
+  },
+  {
+   "pandId": "0363100012120334",
+   "reason": "sightline to Vijfde Vogelstraat crosses 0363100012104069"
+  },
+  {
+   "pandId": "0363100012122354",
+   "reason": "frontage 41.9 m from Vijfde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012122850",
+   "reason": "frontage 51.8 m from Vijfde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012129284",
+   "reason": "frontage 61.7 m from Vijfde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012129359",
+   "reason": "sightline to Vijfde Vogelstraat crosses 0363100012128498"
+  },
+  {
+   "pandId": "0363100012129852",
+   "reason": "frontage 97.4 m from Vijfde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012129931",
+   "reason": "frontage 51.2 m from Vijfde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012130045",
+   "reason": "frontage 64.3 m from Vijfde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012130615",
+   "reason": "sightline to Vijfde Vogelstraat crosses 0363100012062617"
+  },
+  {
+   "pandId": "0363100012130637",
+   "reason": "sightline to Vijfde Vogelstraat crosses 0363100012061698"
+  },
+  {
+   "pandId": "0363100012133044",
+   "reason": "sightline to Vijfde Vogelstraat crosses 0363100012062617"
+  },
+  {
+   "pandId": "0363100012134309",
+   "reason": "frontage 51.1 m from Vijfde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012136383",
+   "reason": "sightline to Vijfde Vogelstraat crosses 0363100012079772"
+  },
+  {
+   "pandId": "0363100012137039",
+   "reason": "frontage 77.9 m from Vijfde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012137379",
+   "reason": "frontage 36.9 m from Vijfde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012143096",
+   "reason": "frontage 71.0 m from Vijfde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012143231",
+   "reason": "frontage 112.9 m from Vijfde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012143803",
+   "reason": "frontage 75.0 m from Vijfde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012144761",
+   "reason": "frontage 120.0 m from Vijfde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012145224",
+   "reason": "frontage 54.7 m from Vijfde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012147662",
+   "reason": "frontage 37.0 m from Vijfde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012150842",
+   "reason": "frontage 47.8 m from Vijfde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012219881",
+   "reason": "sightline to Vijfde Vogelstraat crosses 0363100012087867"
+  },
+  {
+   "pandId": "0363100012219882",
+   "reason": "sightline to Vijfde Vogelstraat crosses 0363100012136147"
+  },
+  {
+   "pandId": "0363100012219883",
+   "reason": "sightline to Vijfde Vogelstraat crosses 0363100012130216"
+  },
+  {
+   "pandId": "0363100012219884",
+   "reason": "sightline to Vijfde Vogelstraat crosses 0363100012130216"
+  },
+  {
+   "pandId": "0363100012147816",
+   "reason": "frontage 84.8 m from Vijfde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012148859",
+   "reason": "frontage 51.3 m from Vijfde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012149482",
+   "reason": "frontage 51.2 m from Vijfde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012165845",
+   "reason": "frontage 127.0 m from Vijfde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012191595",
+   "reason": "sightline to Vijfde Vogelstraat crosses 0363100012144578"
+  },
+  {
+   "pandId": "0363100012191596",
+   "reason": "sightline to Vijfde Vogelstraat crosses 0363100012137414"
+  },
+  {
+   "pandId": "0363100012207953",
+   "reason": "frontage 69.4 m from Vijfde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012221914",
+   "reason": "frontage 91.8 m from Vijfde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012239119",
+   "reason": "no frontage on Vijfde Vogelstraat: No footprint edge faces Vijfde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012086556",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012104899",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012091738",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012102795",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012104069",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012104897",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012106317",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012140588",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012128498",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012137760",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012090748",
+   "alongM": -13.02,
+   "widthM": 9.99,
+   "eavesM": 3.35,
+   "roofMaxM": 5.53,
+   "storeys3dbag": 2,
+   "builtYear": 1919,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012144578",
+   "alongM": -5.01,
+   "widthM": 6.03,
+   "eavesM": 3.31,
+   "roofMaxM": 5.48,
+   "storeys3dbag": 2,
+   "builtYear": 1919,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012103853",
+   "alongM": 0,
+   "widthM": 4,
+   "eavesM": 3.29,
+   "roofMaxM": 5.5,
+   "storeys3dbag": 2,
+   "builtYear": 1919,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  }
+ ]
+}

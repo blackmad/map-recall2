@@ -34,7 +34,7 @@ import { isTouchPointer, START_SETTLE_GROUND_RADIUS_M, START_SETTLE_LEGACY_CAP_M
 import { CameraMap, EngineCamera, unitsPerMetre, mercatorX, mercatorY } from './cameraMap';
 import { GameCameraSolver, lngLatToWorld, worldToLngLat, type GameCamera, type LoaderFrame } from './gameCamera';
 import { clearCamera, clearanceResidents, residentIndex } from './cameraClearance';
-import { clearEye, coverAheadPoints, easePullIn, eyeInsideBuilding, nearPlaneReachM, EYE_WALL_MARGIN_M, type Eye } from './streetVisibility';
+import { clearEye, coverAheadPoints, easePullIn, eyeInsideBuilding, footprintTopM, nearPlaneReachM, EYE_WALL_MARGIN_M, type Eye } from './streetVisibility';
 import { RiderCoverTracker } from './riderCover';
 import { idleScheduler } from './idleBoxGrid';
 import { coverRouteFlag, routeAheadPoints, type LngLat as CoverLngLat } from '../coveredPassage';
@@ -51,6 +51,7 @@ import { AERIAL_EYE_MIN_M, eyeHeightM, isAerialView } from '../rendererShared/ae
 import { AerialPower, aerialLeversFromQuery } from './aerialPower';
 import { BASE_REFRESH_BUDGET_MS } from '../rendererShared/baseRefreshBudget';
 import { ToonPost, toonLookFlag } from './toonLook';
+import { CorridorPost, corridorFocusFlag } from './corridorFocus';
 import { SmaaPost, smaaFlag } from './postAA';
 import { COVER_POLL_MS, isCoveredState } from '../labels/coveredState';
 import { AERIAL_POI_MAX, LabelLayer, type PointLabel } from './overlays/labelLayer';
@@ -67,7 +68,7 @@ import { LabelOcclusion } from './labelOcclusion';
 import { withLabelPand } from './labelPand';
 import { SpoilerSources } from './spoilerSources';
 import { groundCentre, groundViewFlag } from '../ownGround/groundResidency';
-import { clearBackM, fpsPose, fpsRequested, headBobM, stepFpsYaw, FPS_FAR_CAP_M, FPS_NEAR_DIVISOR, type FpsPose } from './fpsCamera';
+import { clearBackM, FPS_EYE_HEIGHT_M, fpsPose, fpsRequested, headBobM, stepFpsYaw, FPS_FAR_CAP_M, FPS_NEAR_DIVISOR, type FpsPose } from './fpsCamera';
 import { DEFAULT_FOV_DEG, MAX_PITCH_DEG } from '../ownMap/mapCamera';
 
 declare const CANVAS_W: number;
@@ -244,6 +245,7 @@ export class OwnWorldView implements WorldViewOracles {
   private buildingLookNow: BuildingLookId = 'photo';
   /** The toon look's palette pass (`?look=toon`, #161); null otherwise. */
   private toonPost: ToonPost | null = null;
+  private corridorPost: CorridorPost | null = null;
   /** `?smaa=1` (lane R3-A #230): SMAA 1x over the resolved frame, before the toon remap. */
   private smaaPost: SmaaPost | null = null;
   private buildingLookLocked = false;
@@ -349,6 +351,7 @@ export class OwnWorldView implements WorldViewOracles {
     if (urlLook) { this.buildingLookNow = urlLook; this.buildingLookLocked = true; }
     // The toon look (#161) starts from the Cartoon buildings look; an explicit ?buildings3d= still wins.
     const toon = toonLookFlag();
+    const corridor = corridorFocusFlag();
     if (toon && !urlLook) { this.buildingLookNow = 'cartoon'; this.buildingLookLocked = true; }
     const three = W().CanalRecallThree;
     if (!three?.THREE) throw new Error('OwnWorldView needs window.CanalRecallThree');
@@ -370,8 +373,10 @@ export class OwnWorldView implements WorldViewOracles {
       // per rendered frame and the idle checks run on render, so at 1 Hz the start pose's cells were still missing at
       // the 6 s cap (R5-B2 #261). startSettle.ts startSettleCoveredFrameMs.
       coveredFrameMs: () => (W().canalRecallGame?.state === LOADING_STATE ? (this._startPose || this._startShellsBusy ? startSettleCoveredFrameMs(isTouchPointer(W())) : COVERED_FRAME_MS) : null),
-      ...(toon || smaa ? { post: (renderer: any, width: number, height: number) => {
+      ...(toon || smaa || corridor ? { post: (renderer: any, width: number, height: number) => {
         if (smaa) (this.smaaPost ??= new SmaaPost(THREE)).apply(renderer, width, height);
+        // Corridor emphasis first: the toon palette then remaps what it leaves.
+        if (corridor) (this.corridorPost ??= new CorridorPost(THREE)).apply(renderer, width, height);
         if (toon) (this.toonPost ??= new ToonPost(THREE)).apply(renderer, width, height);
       } } : {}),
     }, { antialias, pixelRatio: Math.min(dpr, cap), clearColor: clear, renderOnChange: flag('renderOnChange', '__canalRecallRenderOnChange', true), clearGuard: flag('skyClear', '__canalRecallSkyClear', true) });
@@ -638,7 +643,7 @@ export class OwnWorldView implements WorldViewOracles {
   }
 
   /** Monument gables, listed landmarks, landmark building ids: what the live tile path decorates with (vector-map.js). */
-  private decoration: { gables: Map<string, unknown> | null; listed: Set<string> | undefined; landmarks: Set<string> } = { gables: null, listed: undefined, landmarks: new Set() };
+  private decoration: { gables: Map<string, unknown> | null; listed: Set<string> | undefined; landmarks: Set<string>; registerFacts?: Map<string, unknown> } = { gables: null, listed: undefined, landmarks: new Set() };
 
   /**
    * The building decorator, as vector-map.js `_applyFeatureDecorator` builds it: facade, monument gable, roof, landmark
@@ -651,7 +656,10 @@ export class OwnWorldView implements WorldViewOracles {
     if (!api || !Facades || !city) return;
     const { gables, listed, landmarks } = this.decoration;
     const named = gables?.size && api.withMonumentGable ? (f: any) => api.withMonumentGable(f, gables) : (f: any) => f;
-    const decorate = api.decorateRoof ? (f: any) => api.decorateRoof(named(Facades.decorateFacade(f))) : Facades.decorateFacade;
+    // Register facts (facade/registerRecipe.ts) read before the facade so the era, wall family and forced extras follow the register.
+    const facts = this.decoration.registerFacts;
+    const registered = facts?.size && api.withRegisterFacts ? (f: any) => api.withRegisterFacts(f, facts) : (f: any) => f;
+    const decorate = api.decorateRoof ? (f: any) => api.decorateRoof(named(Facades.decorateFacade(registered(f)))) : (f: any) => Facades.decorateFacade(registered(f));
     const base = api.exceptLandmarks ? api.exceptLandmarks(decorate, landmarks, listed) : decorate;
     city.setFeatureDecorator(api.decorateKitRoof ? (f: any) => api.decorateShopfront(api.decorateFront(api.decorateKitRoof(base(f)))) : base);
   }
@@ -666,6 +674,12 @@ export class OwnWorldView implements WorldViewOracles {
         if (!data) return;
         this.decoration.gables = new Map(Object.entries(data.buildings || {}));
         this.decoration.listed = new Set(data.listedLandmarks || []);
+        this.decorateCity();
+      }),
+      // The monuments register's facts (monument-facts.json, published by the integrator); `?registerFacts=0` skips them.
+      json('monument-facts.json').then(data => {
+        if (!data || !api?.registerFactsEnabled?.(W().location?.search)) return;
+        this.decoration.registerFacts = new Map(Object.entries(data.buildings || {}));
         this.decorateCity();
       }),
       json('landmark-buildings.json').then(data => {
@@ -1324,8 +1338,11 @@ export class OwnWorldView implements WorldViewOracles {
     const elevation = surface ? (view.detached || view.introFlat > 0 ? 0 : this.riderSurfaceM) : 0;
     // First-person view (`?cam=fps`, V): the eye on the rider at 1.6 m (engine/fpsCamera.ts). It replaces the chase solve.
     const fps = this.fps && !view.detached && view.introFlat === 0 && this.riderAngle != null && (camera.viewMode === 'chase' || camera.viewMode === 'cockpit') ? this.solveFps(view, elevation) : null;
-    if (!fps && this.fpsDrawn) this.leaveFps();
+    if (!fps && this.fpsDrawn) { this.leaveFps(); W().__canalRecallFpsHidePin = false; }
     this.fpsDrawn = !!fps;
+    // The legacy canvas draws the DESTINATION pin and pill over the map; at eye level it reads as an address sign on a
+    // facade, so renderer.js skips it while this is set (racing only: the finish card shows it again).
+    W().__canalRecallFpsHidePin = !!fps && W().canalRecallGame?.state === 4;
     if (!fps && view.needsClearance && this._completeCity?.sampleFeatures) {
       const result = clearCamera(view.pitch, view.lngLat, view.subject, pitch => {
         const probe = new EngineCamera(() => this.host.viewport(), { center: view.lngLat, zoom: view.zoom, bearing: view.bearing, pitch, elevation, maxPitch: this.cameraMap.camera.maxPitch });
@@ -1429,6 +1446,7 @@ export class OwnWorldView implements WorldViewOracles {
   private fpsLensSet = false;
   private fpsSaved: { maxPitch: number; maxZoom: number } | null = null;
   /** Measurement: the last first-person pose and its clearance (specs read it). */
+  _fpsStuckInfo: unknown = null;
   _lastFps: { pose: FpsPose; backM: number; stuckId: string | null; elevation: number } | null = null;
   fpsCameraOn(): boolean { return this.fps; }
   setFpsCamera(on: boolean): void {
@@ -1476,6 +1494,7 @@ export class OwnWorldView implements WorldViewOracles {
         // The rider is inside a footprint (a covered passage): ghost it rather than lose the view.
         const f = blockerAt(0) as { properties?: Record<string, unknown>; id?: unknown } | null;
         stuckId = f ? String(f.properties?.id ?? f.id ?? '') || null : null;
+        this._fpsStuckInfo = f ? { id: stuckId, top: footprintTopM(f.properties), exact: !!eyeInsideBuilding({ lngLat: fpsPose({ ...base }).eye.lngLat, altitude: elevation + FPS_EYE_HEIGHT_M }, resident, 0), eye: fpsPose({ ...base }).eye.lngLat, elevation, reach } : null;
       }
       if (stuckId !== this.fpsStuckId) { this.fpsStuckId = stuckId; this._threeBuildings?.setGhosted?.('eye', stuckId ? [stuckId] : []); }
     }

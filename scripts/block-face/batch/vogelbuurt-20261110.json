@@ -1,0 +1,113 @@
+{
+ "name": "vogelbuurt-20261110",
+ "buurt": "vogelbuurt-noord",
+ "library": "vogelbuurt",
+ "generatedAt": "2026-11-10T03:58:47.753Z",
+ "method": "scripts/block-face/batch.ts",
+ "totals": {
+  "faces": 4,
+  "runs": 4,
+  "installed": 4,
+  "installedPands": 11,
+  "failed": 0,
+  "byReason": {}
+ },
+ "rows": [
+  {
+   "face": "meeuwenplein-1-7",
+   "street": "Meeuwenplein",
+   "ride": null,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
+   "nccMin": 0.18,
+   "nccMedian": 0.22,
+   "stripOverDrawn": 0.939,
+   "wallFits": 3,
+   "droppedCorners": [],
+   "triangles": 1899,
+   "sheet": "staging/block-face/meeuwenplein-1-7-r1/review/strip-sheet.png",
+   "stripDate": "2019-11-15",
+   "run": "meeuwenplein-1-7-r1",
+   "pands": 3,
+   "mode": "auto-place",
+   "status": "installed",
+   "reasons": [],
+   "seconds": 9.9
+  },
+  {
+   "face": "meeuwenplein-9-19",
+   "street": "Meeuwenplein",
+   "ride": null,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
+   "nccMin": 0.361,
+   "nccMedian": 0.387,
+   "stripOverDrawn": 1.083,
+   "wallFits": 3,
+   "droppedCorners": [],
+   "triangles": 2039,
+   "sheet": "staging/block-face/meeuwenplein-9-19-r1/review/strip-sheet.png",
+   "stripDate": "2019-11-15",
+   "run": "meeuwenplein-9-19-r1",
+   "pands": 3,
+   "mode": "auto-place",
+   "status": "installed",
+   "reasons": [],
+   "seconds": 6.2
+  },
+  {
+   "face": "meeuwenplein-29-39",
+   "street": "Meeuwenplein",
+   "ride": null,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
+   "nccMin": 0.167,
+   "nccMedian": 0.269,
+   "stripOverDrawn": 0.93,
+   "wallFits": 2,
+   "droppedCorners": [],
+   "triangles": 1311,
+   "sheet": "staging/block-face/meeuwenplein-29-39-r1/review/strip-sheet.png",
+   "stripDate": "2019-11-15",
+   "run": "meeuwenplein-29-39-r1",
+   "pands": 2,
+   "mode": "auto-place",
+   "status": "installed",
+   "reasons": [],
+   "seconds": 5.4
+  },
+  {
+   "face": "meeuwenplein-41-45",
+   "street": "Meeuwenplein",
+   "ride": null,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
+   "nccMin": 0.373,
+   "nccMedian": 0.432,
+   "stripOverDrawn": 0.954,
+   "wallFits": 3,
+   "droppedCorners": [],
+   "triangles": 1945,
+   "sheet": "staging/block-face/meeuwenplein-41-45/review/strip-sheet.png",
+   "stripDate": "2019-11-15",
+   "run": "meeuwenplein-41-45",
+   "pands": 3,
+   "mode": "auto-place",
+   "status": "installed",
+   "reasons": [],
+   "seconds": 5.5
+  }
+ ]
+}

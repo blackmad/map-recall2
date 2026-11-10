@@ -1,0 +1,77 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "vogel-1-15-r1",
+ "street": "Lange Vogelstraat",
+ "sources": [
+  {
+   "id": "strip-2022-05-10",
+   "kind": "street-panorama",
+   "capturedAt": "2022-05-10",
+   "image": "staging/block-face/vogel-1-15-r1/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "auto-place (blockFace/autoPlace.ts)",
+  "passes": 1,
+  "note": "auto-placed from the vogelbuurt library (buurt Vogelbuurt-Noord); scores and holds in scripts/block-face/faces/vogel-1-15/auto-place.json"
+ },
+ "types": [
+  "vogel-1918-timber-band-cottage"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012141706",
+   "slug": "vogel-141706",
+   "address": "Lange Vogelstraat 1",
+   "type": {
+    "type": "vogel-1918-timber-band-cottage"
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2022-05-10",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: vogel-1918-timber-band-cottage scored 0.77 on eaves 1, storeys 1, stucco 1, columns 0; strip 2022-05-10 span 0-200"
+   }
+  },
+  {
+   "pandId": "0363100012144274",
+   "slug": "vogel-144274",
+   "address": "Lange Vogelstraat 3",
+   "type": {
+    "type": "vogel-1918-timber-band-cottage",
+    "mirror": true
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2022-05-10",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: vogel-1918-timber-band-cottage scored 1 on eaves 1, storeys 1, stucco 1, columns 1; strip 2022-05-10 span 200-400"
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "auto-place: low attic behind the cornice; the strips show sky over the cornices of the type rows"
+  }
+ }
+}

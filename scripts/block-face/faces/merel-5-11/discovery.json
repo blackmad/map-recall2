@@ -1,0 +1,488 @@
+{
+ "street": "Merelstraat",
+ "seed": "0363100012120081",
+ "members": [
+  "0363100012120081",
+  "0363100012103632",
+  "0363100012073124"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "no further pand fronts the street in the fetched area"
+  },
+  {
+   "side": "right",
+   "reason": "no further pand fronts the street in the fetched area"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012061542",
+   "reason": "frontage 36.8 m from Merelstraat"
+  },
+  {
+   "pandId": "0363100012065905",
+   "reason": "frontage 78.0 m from Merelstraat"
+  },
+  {
+   "pandId": "0363100012067427",
+   "reason": "frontage 38.9 m from Merelstraat"
+  },
+  {
+   "pandId": "0363100012067838",
+   "reason": "frontage 38.2 m from Merelstraat"
+  },
+  {
+   "pandId": "0363100012070701",
+   "reason": "frontage 35.2 m from Merelstraat"
+  },
+  {
+   "pandId": "0363100012073820",
+   "reason": "frontage 56.1 m from Merelstraat"
+  },
+  {
+   "pandId": "0363100012079610",
+   "reason": "sightline to Merelstraat crosses 0363100012072893"
+  },
+  {
+   "pandId": "0363100012080458",
+   "reason": "frontage 80.7 m from Merelstraat"
+  },
+  {
+   "pandId": "0363100012083680",
+   "reason": "frontage 63.0 m from Merelstraat"
+  },
+  {
+   "pandId": "0363100012084287",
+   "reason": "frontage 69.3 m from Merelstraat"
+  },
+  {
+   "pandId": "0363100012085326",
+   "reason": "frontage 44.6 m from Merelstraat"
+  },
+  {
+   "pandId": "0363100012085420",
+   "reason": "sightline to Merelstraat crosses 0363100012073124"
+  },
+  {
+   "pandId": "0363100012086855",
+   "reason": "frontage 66.4 m from Merelstraat"
+  },
+  {
+   "pandId": "0363100012087361",
+   "reason": "frontage 96.7 m from Merelstraat"
+  },
+  {
+   "pandId": "0363100012087399",
+   "reason": "frontage 103.0 m from Merelstraat"
+  },
+  {
+   "pandId": "0363100012089126",
+   "reason": "frontage 48.1 m from Merelstraat"
+  },
+  {
+   "pandId": "0363100012090671",
+   "reason": "frontage 79.3 m from Merelstraat"
+  },
+  {
+   "pandId": "0363100012091057",
+   "reason": "no frontage on Merelstraat: No footprint edge faces Merelstraat"
+  },
+  {
+   "pandId": "0363100012091888",
+   "reason": "frontage 81.9 m from Merelstraat"
+  },
+  {
+   "pandId": "0363100012091921",
+   "reason": "frontage 43.6 m from Merelstraat"
+  },
+  {
+   "pandId": "0363100012093848",
+   "reason": "frontage 75.7 m from Merelstraat"
+  },
+  {
+   "pandId": "0363100012094241",
+   "reason": "sightline to Merelstraat crosses 0363100012081925"
+  },
+  {
+   "pandId": "0363100012097975",
+   "reason": "frontage 86.1 m from Merelstraat"
+  },
+  {
+   "pandId": "0363100012099505",
+   "reason": "frontage 78.5 m from Merelstraat"
+  },
+  {
+   "pandId": "0363100012100275",
+   "reason": "frontage 34.0 m from Merelstraat"
+  },
+  {
+   "pandId": "0363100012103927",
+   "reason": "frontage 31.8 m from Merelstraat"
+  },
+  {
+   "pandId": "0363100012107449",
+   "reason": "sightline to Merelstraat crosses 0363100012066068"
+  },
+  {
+   "pandId": "0363100012108368",
+   "reason": "frontage 90.3 m from Merelstraat"
+  },
+  {
+   "pandId": "0363100012111816",
+   "reason": "frontage 91.8 m from Merelstraat"
+  },
+  {
+   "pandId": "0363100012113533",
+   "reason": "frontage 80.1 m from Merelstraat"
+  },
+  {
+   "pandId": "0363100012113975",
+   "reason": "sightline to Merelstraat crosses 0363100012062796"
+  },
+  {
+   "pandId": "0363100012115096",
+   "reason": "frontage 103.8 m from Merelstraat"
+  },
+  {
+   "pandId": "0363100012115376",
+   "reason": "sightline to Merelstraat crosses 0363100012062796"
+  },
+  {
+   "pandId": "0363100012115389",
+   "reason": "frontage 32.4 m from Merelstraat"
+  },
+  {
+   "pandId": "0363100012116365",
+   "reason": "sightline to Merelstraat crosses 0363100012081925"
+  },
+  {
+   "pandId": "0363100012120713",
+   "reason": "frontage 84.1 m from Merelstraat"
+  },
+  {
+   "pandId": "0363100012121272",
+   "reason": "sightline to Merelstraat crosses 0363100012081925"
+  },
+  {
+   "pandId": "0363100012121384",
+   "reason": "frontage 71.8 m from Merelstraat"
+  },
+  {
+   "pandId": "0363100012124227",
+   "reason": "sightline to Merelstraat crosses 0363100012062796"
+  },
+  {
+   "pandId": "0363100012125723",
+   "reason": "frontage 39.8 m from Merelstraat"
+  },
+  {
+   "pandId": "0363100012128530",
+   "reason": "frontage 97.9 m from Merelstraat"
+  },
+  {
+   "pandId": "0363100012129687",
+   "reason": "frontage 33.0 m from Merelstraat"
+  },
+  {
+   "pandId": "0363100012130020",
+   "reason": "frontage 88.3 m from Merelstraat"
+  },
+  {
+   "pandId": "0363100012131893",
+   "reason": "frontage 109.3 m from Merelstraat"
+  },
+  {
+   "pandId": "0363100012136196",
+   "reason": "frontage 57.0 m from Merelstraat"
+  },
+  {
+   "pandId": "0363100012137973",
+   "reason": "frontage 94.8 m from Merelstraat"
+  },
+  {
+   "pandId": "0363100012141895",
+   "reason": "frontage 38.2 m from Merelstraat"
+  },
+  {
+   "pandId": "0363100012142974",
+   "reason": "frontage 38.7 m from Merelstraat"
+  },
+  {
+   "pandId": "0363100012144524",
+   "reason": "frontage 44.6 m from Merelstraat"
+  },
+  {
+   "pandId": "0363100012145013",
+   "reason": "frontage 62.0 m from Merelstraat"
+  },
+  {
+   "pandId": "0363100012148098",
+   "reason": "no frontage on Merelstraat: No footprint edge faces Merelstraat"
+  },
+  {
+   "pandId": "0363100012149277",
+   "reason": "frontage 38.5 m from Merelstraat"
+  },
+  {
+   "pandId": "0363100012151759",
+   "reason": "frontage 36.5 m from Merelstraat"
+  },
+  {
+   "pandId": "0363100012155017",
+   "reason": "frontage 48.2 m from Merelstraat"
+  },
+  {
+   "pandId": "0363100012167362",
+   "reason": "no frontage on Merelstraat: No footprint edge faces Merelstraat"
+  },
+  {
+   "pandId": "0363100012188176",
+   "reason": "frontage 32.1 m from Merelstraat"
+  },
+  {
+   "pandId": "0363100012188828",
+   "reason": "sightline to Merelstraat crosses 0363100012064330"
+  },
+  {
+   "pandId": "0363100012188830",
+   "reason": "sightline to Merelstraat crosses 0363100012064330"
+  },
+  {
+   "pandId": "0363100012188831",
+   "reason": "sightline to Merelstraat crosses 0363100012070874"
+  },
+  {
+   "pandId": "0363100012188832",
+   "reason": "sightline to Merelstraat crosses 0363100012070874"
+  },
+  {
+   "pandId": "0363100012188833",
+   "reason": "sightline to Merelstraat crosses 0363100012070874"
+  },
+  {
+   "pandId": "0363100012188834",
+   "reason": "sightline to Merelstraat crosses 0363100012070874"
+  },
+  {
+   "pandId": "0363100012188835",
+   "reason": "sightline to Merelstraat crosses 0363100012070874"
+  },
+  {
+   "pandId": "0363100012188836",
+   "reason": "sightline to Merelstraat crosses 0363100012122296"
+  },
+  {
+   "pandId": "0363100012188837",
+   "reason": "sightline to Merelstraat crosses 0363100012122296"
+  },
+  {
+   "pandId": "0363100012188838",
+   "reason": "frontage 40.1 m from Merelstraat"
+  },
+  {
+   "pandId": "0363100012188839",
+   "reason": "frontage 40.4 m from Merelstraat"
+  },
+  {
+   "pandId": "0363100012188841",
+   "reason": "sightline to Merelstraat crosses 0363100012062796"
+  },
+  {
+   "pandId": "0363100012188842",
+   "reason": "sightline to Merelstraat crosses 0363100012062796"
+  },
+  {
+   "pandId": "0363100012188843",
+   "reason": "sightline to Merelstraat crosses 0363100012122296"
+  },
+  {
+   "pandId": "0363100012188845",
+   "reason": "frontage 41.4 m from Merelstraat"
+  },
+  {
+   "pandId": "0363100012188847",
+   "reason": "frontage 40.8 m from Merelstraat"
+  },
+  {
+   "pandId": "0363100012188848",
+   "reason": "frontage 62.2 m from Merelstraat"
+  },
+  {
+   "pandId": "0363100012188849",
+   "reason": "frontage 60.6 m from Merelstraat"
+  },
+  {
+   "pandId": "0363100012188850",
+   "reason": "frontage 59.1 m from Merelstraat"
+  },
+  {
+   "pandId": "0363100012191196",
+   "reason": "frontage 95.0 m from Merelstraat"
+  },
+  {
+   "pandId": "0363100012191197",
+   "reason": "frontage 93.0 m from Merelstraat"
+  },
+  {
+   "pandId": "0363100012191198",
+   "reason": "frontage 82.2 m from Merelstraat"
+  },
+  {
+   "pandId": "0363100012191199",
+   "reason": "frontage 80.3 m from Merelstraat"
+  },
+  {
+   "pandId": "0363100012191200",
+   "reason": "frontage 69.5 m from Merelstraat"
+  },
+  {
+   "pandId": "0363100012191201",
+   "reason": "frontage 67.5 m from Merelstraat"
+  },
+  {
+   "pandId": "0363100012194275",
+   "reason": "frontage 95.2 m from Merelstraat"
+  },
+  {
+   "pandId": "0363100012194276",
+   "reason": "frontage 93.3 m from Merelstraat"
+  },
+  {
+   "pandId": "0363100012194277",
+   "reason": "frontage 82.4 m from Merelstraat"
+  },
+  {
+   "pandId": "0363100012194278",
+   "reason": "frontage 80.5 m from Merelstraat"
+  },
+  {
+   "pandId": "0363100012194279",
+   "reason": "frontage 69.8 m from Merelstraat"
+  },
+  {
+   "pandId": "0363100012194280",
+   "reason": "frontage 67.8 m from Merelstraat"
+  },
+  {
+   "pandId": "0363100012194592",
+   "reason": "frontage 89.8 m from Merelstraat"
+  },
+  {
+   "pandId": "0363100012194593",
+   "reason": "frontage 87.9 m from Merelstraat"
+  },
+  {
+   "pandId": "0363100012200400",
+   "reason": "sightline to Merelstraat crosses 0363100012103632"
+  },
+  {
+   "pandId": "0363100012205053",
+   "reason": "sightline to Merelstraat crosses 0363100012205058"
+  },
+  {
+   "pandId": "0363100012205054",
+   "reason": "frontage 32.9 m from Merelstraat"
+  },
+  {
+   "pandId": "0363100012205056",
+   "reason": "frontage 46.1 m from Merelstraat"
+  },
+  {
+   "pandId": "0363100012205057",
+   "reason": "frontage 43.8 m from Merelstraat"
+  },
+  {
+   "pandId": "0363100012211568",
+   "reason": "sightline to Merelstraat crosses 0363100012103632"
+  },
+  {
+   "pandId": "0363100012227123",
+   "reason": "sightline to Merelstraat crosses 0363100012103632"
+  },
+  {
+   "pandId": "0363100012252464",
+   "reason": "no frontage on Merelstraat: No footprint edge faces Merelstraat"
+  },
+  {
+   "pandId": "0363100012254205",
+   "reason": "frontage 62.8 m from Merelstraat"
+  },
+  {
+   "pandId": "0363100012062796",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012064330",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012066068",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012070874",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012072893",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012081925",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012122296",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012188175",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012205055",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012205058",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012120081",
+   "alongM": 0,
+   "widthM": 5.4,
+   "eavesM": 7.34,
+   "roofMaxM": 11.29,
+   "storeys3dbag": 4,
+   "builtYear": 1928,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012103632",
+   "alongM": 14.77,
+   "widthM": 24.14,
+   "eavesM": 9.2,
+   "roofMaxM": 14.09,
+   "storeys3dbag": 4,
+   "builtYear": 1920,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012073124",
+   "alongM": 33.76,
+   "widthM": 13.86,
+   "eavesM": 7.82,
+   "roofMaxM": 11.73,
+   "storeys3dbag": 4,
+   "builtYear": 1928,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  }
+ ]
+}

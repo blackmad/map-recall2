@@ -1,0 +1,261 @@
+{
+ "face": "vogel-3-9",
+ "street": "Korte Vogelstraat",
+ "library": "vogelbuurt",
+ "stripDate": "2025-09-22",
+ "seconds": 0.13,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012071869",
+   "address": "Korte Vogelstraat 3",
+   "builtYear": 1918,
+   "widthM": 5.9,
+   "eavesM": 3.47,
+   "storeys3dbag": 2,
+   "bagBay": null,
+   "strip": {
+    "wall": "#8f8d87",
+    "wallRaw": "#efdac8",
+    "skyline": {
+     "eavesM": 5.05,
+     "eavesRow": 100,
+     "confidence": 0.72,
+     "crown": {
+      "widthM": 2.2,
+      "riseM": 2.5,
+      "topWidthM": 1.2,
+      "centre": 0.36
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": null,
+    "frontClass": "blank",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "one-storey front (eaves <= 6 m): no balcony",
+     "openAxes": [
+      {
+       "widthM": 2.02,
+       "centre": 0.43,
+       "light": 0.15
+      },
+      {
+       "widthM": 0.9,
+       "centre": 0.88,
+       "light": 0.15
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.06,
+    "foliageShare": 0.08
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012090581",
+   "address": "Korte Vogelstraat 5",
+   "builtYear": 1918,
+   "widthM": 3.98,
+   "eavesM": 3.44,
+   "storeys3dbag": 2,
+   "bagBay": null,
+   "strip": {
+    "wall": "#4f4d46",
+    "wallRaw": "#dfcab6",
+    "skyline": {
+     "eavesM": 6.35,
+     "eavesRow": 48,
+     "confidence": 0.73,
+     "crown": {
+      "widthM": 1.1,
+      "riseM": 1.13,
+      "topWidthM": 0.85,
+      "centre": 0.37
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "one-storey front (eaves <= 6 m): no balcony",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 2.4,
+       "widthM": 0.88,
+       "centre": 0.38
+      }
+     ]
+    },
+    "voidShare": 0.09,
+    "foliageShare": 0.04
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best vogel-1918-cottage-2axis scores 0.6 < 0.7 (strip cornice 6.35 m vs the type's 3.2 m (wall-dormer skyline 4.55 m))",
+   "best": {
+    "type": "vogel-1918-cottage-2axis",
+    "score": 0.6,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 6.35 m vs the type's 3.2 m (wall-dormer skyline 4.55 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 2 vs 0/1/2"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.112 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012091925",
+   "address": "Korte Vogelstraat 7",
+   "builtYear": 1918,
+   "widthM": 6.36,
+   "eavesM": 3.41,
+   "storeys3dbag": 2,
+   "bagBay": null,
+   "strip": {
+    "wall": "#3a3a33",
+    "wallRaw": "#8b8f82",
+    "skyline": {
+     "eavesM": 5.45,
+     "eavesRow": 84,
+     "confidence": 0.78,
+     "crown": {
+      "widthM": 2.38,
+      "riseM": 2.1,
+      "topWidthM": 1.35,
+      "centre": 0.32
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "one-storey front (eaves <= 6 m): no balcony",
+     "openAxes": [
+      {
+       "widthM": 0.88,
+       "centre": 0.07,
+       "light": 0.04
+      },
+      {
+       "widthM": 0.7,
+       "centre": 0.3,
+       "light": 0.11
+      },
+      {
+       "widthM": 1.2,
+       "centre": 0.48,
+       "light": 0.14
+      },
+      {
+       "widthM": 0.88,
+       "centre": 0.84,
+       "light": 0.28
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.05,
+    "foliageShare": 0.07
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012076219",
+   "address": "Korte Vogelstraat 9",
+   "builtYear": 1918,
+   "widthM": 3.8,
+   "eavesM": 3.45,
+   "storeys3dbag": 2,
+   "bagBay": null,
+   "strip": {
+    "wall": "#1c241b",
+    "wallRaw": "#3b3b31",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 302,
+     "confidence": 0.03,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "one-storey front (eaves <= 6 m): no balcony",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0.43
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "no front on the strip: sky over the roof in 8 % of columns (< 75 %): the strip shows a nearer wall, fence or tree, not the front",
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

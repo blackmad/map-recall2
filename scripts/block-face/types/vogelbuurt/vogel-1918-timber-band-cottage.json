@@ -1,0 +1,157 @@
+{
+ "schemaVersion": 1,
+ "kind": "house-type",
+ "id": "vogel-1918-timber-band-cottage",
+ "district": "vogelbuurt",
+ "description": "Vogelbuurt-Noord 1918-19 single-storey cottages with a dark tarred-timber band (Zamenhofstraat 6-90, Lange Vogelstraat, Vogelplantsoen): 5.0 m fronts, brick to 3.0 m with a one-metre dark boarded band under a bracketed gutter at 4.1 m, a wide two-light window and a dark door in a pale frame; the doors pair across the party wall; a cream timber box dormer about 3 m wide stands against the party wall on the window side and joins its neighbour's into one 6 m dormer",
+ "fit": {
+  "widthM": [
+   4.4,
+   5.6
+  ],
+  "storeys": [
+   1
+  ]
+ },
+ "match": {
+  "years": [
+   1916,
+   1922
+  ],
+  "storeys3dbag": [
+   0,
+   1,
+   2
+  ],
+  "stucco": false,
+  "balconies": false,
+  "mirrorForDoor": "right",
+  "frontEavesM": 4.1,
+  "frontSkylineM": 6.0,
+  "keepSurveyRoof": true,
+  "note": "BAG 1918-19 on 31 of 31 Zamenhofstraat pands, 3DBAG roof max 6.5-7.2 m (dormers); the strip skyline reads the dormer top at 5.7-6.8 m over the 4.1 m gutter",
+  "measuredWall": false
+ },
+ "body": {
+  "storeys": 1,
+  "bays": 2,
+  "axisGrid": 2,
+  "bayWidths": [
+   4.0,
+   1.0
+  ],
+  "bayFill": [
+   0.5,
+   0.75
+  ],
+  "cornice": "none",
+  "windows": "casement-pair",
+  "storeyHeights": [
+   4.1
+  ],
+  "windowHeights": [
+   0.32
+  ],
+  "headLines": [
+   0.595
+  ],
+  "paintedStoreys": {
+   "storeys": [
+    0
+   ],
+   "colour": "#2c2b30",
+   "from": 3.0
+  }
+ },
+ "crowns": {
+  "half-dormer": {
+   "gable": "cornice",
+   "dormers": 1,
+   "dormerStyle": "flat",
+   "dormerBody": "timber",
+   "dormerLights": 5,
+   "dormerSize": {
+    "sill": 0.5,
+    "rise": 1.4,
+    "setback": 0.3
+   },
+   "eavesOverhang": {
+    "projection": 0.3,
+    "fascia": 0.1,
+    "colour": "#c4c2b6",
+    "soffit": "#33302d"
+   },
+   "note": "Zamenhofstraat 6-12 (2025-09-22): a cream timber box dormer 3.1 m wide, 4.6-6.0 m, against the party wall on the window side; neighbours' halves join (6.2 m wide over 1.9-8.1 m)",
+   "dormerAt": [
+    {
+     "from": 0.1,
+     "to": 0.72
+    }
+   ]
+  },
+  "none": {
+   "gable": "cornice",
+   "eavesOverhang": {
+    "projection": 0.3,
+    "fascia": 0.1,
+    "colour": "#c4c2b6",
+    "soffit": "#33302d"
+   },
+   "note": "gutter only"
+  }
+ },
+ "grounds": {
+  "door-right": {
+   "doorBay": 1,
+   "note": "dark single leaf 0.75 m in a pale frame with a transom, at the party wall; the neighbour mirrors it so the doors stand in pairs 1.7 m apart"
+  }
+ },
+ "palettes": {
+  "red-brick": {
+   "brick": "#74584a",
+   "frame": "#d6d9cc",
+   "door": "#232323",
+   "stone": "#d6d9cc",
+   "cornice": "#c4c2b6"
+  }
+ },
+ "roof": {
+  "material": "red-tile"
+ },
+ "rhythm": {
+  "bays": "wide window, door",
+  "identicalBays": "no",
+  "windowsPerStorey": "1 storey",
+  "symmetry": "mirror pairs about the party wall; dormers and doors pair across it",
+  "groundFloor": "door at the party wall",
+  "signage": "none",
+  "roofline": "bracketed gutter, long tiled roof, box dormer per pair",
+  "photoRows": [
+   2,
+   1
+  ],
+  "photoGroundRows": 1
+ },
+ "evidence": [
+  {
+   "face": "zamenhof-6-12",
+   "pands": [
+    "064115",
+    "122427",
+    "085003",
+    "110286"
+   ],
+   "citation": "strip.jpg 2025-09-22, 40 px/m, 1 m grid: pands 5.0 m; wide window 2.0 m at 2.0-4.0 m, sill 1.12 m, head 2.44 m; door 0.75 m (0.9 m with frame) at 9.1-10.8 m (a pair across the wall); dark boarded band 3.0-4.0 m; gutter with bracket row 4.1 m; dormer 4.6-6.0 m, 6.2 m wide over the party wall at 5.0 m, five narrow lights; foot of the door 0.5 m over the strip's bottom row"
+  }
+ ],
+ "schemaLimits": [
+  "the 6.2 m dormer is two 3.1 m halves, drawn as one dormer per front",
+  "dormer lights are the kit's, not the photo's five narrow lights",
+  "brick course under the timber band and the ventilation bricks are not drawn",
+  "the front garden hedge"
+ ],
+ "notes": [
+  "Palette: brick #8f6a58 is one tone for the buurt, not per pand: strips of one date differ by 2x in exposure (raw brick medians 77-221 on 2025-09-22) and the trim normalisation locks onto hedges and the dark timber band, so measuredWall is off. The tone is the median of the 8 darker-exposed strips (raw 86-105,66-85,58-74) lifted x1.5; a reviewer should pin the row if a photo disagrees. Opus verdict 2026-11-10: photo wall median #554339 (vogel-3-11-r1), so brick moved to #74584a, about 60 % of the way from the lifted figure to the photo.",
+  "The timber band colour #2c2b30 is read from Zamenhofstraat 6-12 (the strip's dark boarding), not a type default for other streets."
+ ]
+}

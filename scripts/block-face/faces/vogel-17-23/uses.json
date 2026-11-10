@@ -1,0 +1,73 @@
+{
+ "street": "Eerste Vogelstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched n/a (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012121416",
+   "addresses": [
+    "Eerste Vogelstraat 17"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Vogelstraat 17",
+     "use": "woonfunctie",
+     "areaM2": 34,
+     "bagId": "0363010000549371"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012116965",
+   "addresses": [
+    "Eerste Vogelstraat 19"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Vogelstraat 19",
+     "use": "woonfunctie",
+     "areaM2": 35,
+     "bagId": "0363010000549373"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012094056",
+   "addresses": [
+    "Eerste Vogelstraat 21"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Vogelstraat 21",
+     "use": "woonfunctie",
+     "areaM2": 35,
+     "bagId": "0363010000549375"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012078199",
+   "addresses": [
+    "Eerste Vogelstraat 23"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Vogelstraat 23",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010001012292"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  }
+ ]
+}

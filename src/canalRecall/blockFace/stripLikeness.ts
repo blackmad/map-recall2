@@ -32,6 +32,9 @@ export const STRIP_LIKENESS = {
   minUsable: 0.5,
 } as const;
 
+/** The body band's foot: the top of the ground storey, or 1.3 m for a one-storey front (front gardens and hedges mask the foot below) (eaves <= 6 m: no storey to skip; Vogelbuurt cottages). Taller fronts are byte-identical. */
+export const bodyFromFor = (eavesM: number) => eavesM > 6 ? STRIP_LIKENESS.bodyFromM : 1.3;
+
 /** Luma of an RGB (3-channel) buffer region, resampled (box) to `ppm`; `photo` masks placeholder grey and foliage. */
 export function grayRegion(rgb: Uint8Array, width: number, x0: number, x1: number, y0: number, y1: number, scale: number, photo: boolean): Gray {
   const W = Math.max(1, Math.floor((x1 - x0) / scale)), H = Math.max(1, Math.floor((y1 - y0) / scale));
@@ -111,7 +114,7 @@ export function spanLikeness(a: {photoRgb: Uint8Array; modelRgb: Uint8Array; wid
    */
   footOffsetM?: number}) {
   const scale = a.pixelsPerMetre / STRIP_LIKENESS.ppm, inset = Math.round((a.px[1] - a.px[0]) * 0.04);
-  const y0 = Math.max(0, Math.round(a.height - (a.eavesM - STRIP_LIKENESS.topMarginM) * a.pixelsPerMetre)), y1 = Math.round(a.height - STRIP_LIKENESS.bodyFromM * a.pixelsPerMetre);
+  const y0 = Math.max(0, Math.round(a.height - (a.eavesM - STRIP_LIKENESS.topMarginM) * a.pixelsPerMetre)), y1 = Math.round(a.height - bodyFromFor(a.eavesM) * a.pixelsPerMetre);
   const x0 = a.px[0] + inset, x1 = a.px[1] - inset;
   if (y1 - y0 < 40 || x1 - x0 < 20) return {ncc: null, dx: 0, dy: 0, usable: 0, abstain: 'span too small'};
   const foot = a.footOffsetM && a.footOffsetM > 0 && a.footOffsetM < a.eavesM ? a.footOffsetM : 0;

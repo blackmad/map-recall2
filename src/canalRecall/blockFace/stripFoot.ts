@@ -14,12 +14,13 @@ export const FACADE_FOOT = {maxM: 2.4, bandM: 0.2, minStep: 15, pavingIqr: 16, m
 
 export interface FootReading { offsetM: number; row: number | null; step: number; pavingIqr: number | null }
 
-export function measureFacadeFoot(a: {rgb: Uint8Array; width: number; height: number; x0: number; x1: number; pixelsPerMetre: number}): FootReading {
+/** `maxM` caps the reading: a one-storey front's plinth is under 1 m, and its dark timber band or window head is no pavement edge (Zamenhofstraat 54-60 read 2.3 m). */
+export function measureFacadeFoot(a: {rgb: Uint8Array; width: number; height: number; x0: number; x1: number; pixelsPerMetre: number; maxM?: number}): FootReading {
   const {rgb, width, height, pixelsPerMetre: ppm} = a, inset = Math.round((a.x1 - a.x0) * FACADE_FOOT.insetShare);
   const x0 = Math.max(0, Math.round(a.x0) + inset), x1 = Math.min(width, Math.round(a.x1) - inset), k = Math.max(2, Math.round(FACADE_FOOT.bandM * ppm));
   const none: FootReading = {offsetM: 0, row: null, step: 0, pavingIqr: null};
   if (x1 - x0 < 10) return none;
-  const yTop = Math.max(k, Math.round(height - FACADE_FOOT.maxM * ppm));
+  const yTop = Math.max(k, Math.round(height - (a.maxM ?? FACADE_FOOT.maxM) * ppm));
   const med = new Float64Array(height), iqr = new Float64Array(height), v = new Float64Array(x1 - x0);
   for (let y = yTop - k; y < height; y++) {
     for (let x = x0; x < x1; x++) { const i = (y * width + x) * 3; v[x - x0] = 0.299 * rgb[i] + 0.587 * rgb[i + 1] + 0.114 * rgb[i + 2]; }
@@ -57,8 +58,11 @@ export function stripFootOffset(readings: readonly FootReading[]): {offsetM: num
  * The facade foot of a strip image (auto-place.ts runLikeness, review.ts sheets): every span read, one offset per strip.
  * `enabled` false (`--no-foot`) reads the strip from its bottom row as before #157.
  */
-export function runFootOffset(raw: {rgb: Uint8Array; width: number; height: number}, strip: {spans: {px: [number, number]}[]; pixelsPerMetre: number}, enabled = true) {
+export function runFootOffset(raw: {rgb: Uint8Array; width: number; height: number}, strip: {spans: {px: [number, number]}[]; pixelsPerMetre: number}, enabled = true, maxM?: number) {
   if (!enabled) return {offsetM: 0, read: 0, spans: strip.spans.length, spreadM: null as number | null, readings: [] as number[]};
-  const readings = strip.spans.map(s => measureFacadeFoot({rgb: raw.rgb, width: raw.width, height: raw.height, x0: s.px[0], x1: s.px[1], pixelsPerMetre: strip.pixelsPerMetre}));
+  const readings = strip.spans.map(s => measureFacadeFoot({rgb: raw.rgb, width: raw.width, height: raw.height, x0: s.px[0], x1: s.px[1], pixelsPerMetre: strip.pixelsPerMetre, maxM}));
   return {...stripFootOffset(readings), readings: readings.map(r => r.offsetM)};
 }
+
+/** The foot search limit for a run whose fronts are all this low (eaves <= 5 m: one-storey cottages): 1 m. Taller runs: undefined = FACADE_FOOT.maxM, byte-identical. */
+export const lowFrontFootMaxM = (eavesM: readonly number[]): number | undefined => eavesM.length && eavesM.every(e => e <= 5) ? 1.0 : undefined;

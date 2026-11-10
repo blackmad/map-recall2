@@ -1,0 +1,146 @@
+{
+ "face": "kalkoen-2-6",
+ "street": "Kalkoenstraat",
+ "library": "vogelbuurt",
+ "stripDate": "2018-12-18",
+ "seconds": 0.23,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012083296",
+   "address": "Kalkoenstraat 6",
+   "builtYear": 1924,
+   "widthM": 6.86,
+   "eavesM": 7.41,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#a79f99",
+    "wallRaw": "#948e89",
+    "skyline": {
+     "eavesM": 10.75,
+     "eavesRow": 175,
+     "confidence": 0.46,
+     "crown": {
+      "widthM": 2.63,
+      "riseM": 4.38,
+      "topWidthM": 0.9,
+      "centre": 0.43
+     }
+    },
+    "stucco": false,
+    "bands": 4,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.579,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 1.8 m at 0.86 (light 0.3): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.8,
+       "centre": 0.86,
+       "light": 0.3
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.08,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "no front on the strip: sky over the roof in 59 % of columns (< 75 %): the strip shows a nearer wall, fence or tree, not the front",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012083297",
+   "address": "Kalkoenstraat 4",
+   "builtYear": 1927,
+   "widthM": 6.07,
+   "eavesM": 7.68,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#7e8281",
+    "wallRaw": null,
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 605,
+     "confidence": 0.02,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "blank",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": null,
+    "voidShare": 1,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "strip 100 % without panorama data",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012132795",
+   "address": "Kalkoenstraat 2",
+   "builtYear": 1927,
+   "widthM": 6.63,
+   "eavesM": 8.3,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#665a51",
+    "wallRaw": "#52473e",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 605,
+     "confidence": 0.27,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.129,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.02
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "no front on the strip: sky over the roof in 56 % of columns (< 75 %): the strip shows a nearer wall, fence or tree, not the front",
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

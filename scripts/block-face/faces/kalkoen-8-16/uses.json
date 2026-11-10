@@ -1,0 +1,89 @@
+{
+ "street": "Kalkoenstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched n/a (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012125954",
+   "addresses": [
+    "Kalkoenstraat 16"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kalkoenstraat 16-H",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000696699"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012099283",
+   "addresses": [
+    "Kalkoenstraat 14"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kalkoenstraat 14-H",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000696695"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012092470",
+   "addresses": [
+    "Kalkoenstraat 12"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kalkoenstraat 12-H",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000696691"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012109590",
+   "addresses": [
+    "Kalkoenstraat 10"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kalkoenstraat 10-H",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000696689"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012105550",
+   "addresses": [
+    "Kalkoenstraat 8"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kalkoenstraat 8-H",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000696685"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  }
+ ]
+}

@@ -69,8 +69,15 @@ export function openSky(r: number, g: number, b: number, l: number, smooth: bool
 }
 
 /** Body band (4.4 m .. eaves - 1 m) rows, top and bottom (strip y runs down). */
+/**
+ * The body band in metres above the strip foot: 4.4 m .. eaves - 1 m skips the shopfront storey, which a low front
+ * (eaves <= 6 m: the one-storey Vogelbuurt cottages, eaves 3.3-4.3 m) does not have; there it is 0.9 m .. eaves - 0.4 m.
+ * Taller fronts are byte-identical.
+ */
+export function bodyBandM(eavesM: number): [number, number] { return eavesM > 6 ? [4.4, eavesM - 1] : [0.9, Math.max(1.2, eavesM - 0.4)]; }
 function bodyRows(height: number, ppm: number, eavesM: number): [number, number] {
-  return [Math.max(0, Math.round(height - (eavesM - 1) * ppm)), Math.min(height, Math.round(height - 4.4 * ppm))];
+  const [lo, hi] = bodyBandM(eavesM);
+  return [Math.max(0, Math.round(height - hi * ppm)), Math.min(height, Math.round(height - lo * ppm))];
 }
 
 /** Shares of placeholder grey and foliage in the body band of a span (6 % inset each side), and its median luma. */

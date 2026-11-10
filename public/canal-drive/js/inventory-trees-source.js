@@ -2,6 +2,7 @@ import {treeTypology} from '../da-costa-block/tree-typology.js';
 import {allotmentCanopyTrees,scopeAllotmentCrown} from './allotment-canopy.js';
 import {ViewResidency} from '../../../src/canalRecall/viewResidency.ts';
 import {foliageDisplayHex} from '../../../src/canalRecall/look/palette.ts';
+import {calmFoliage,treeCalmFlag} from '../../../src/canalRecall/look/calmTones.ts';
 import {roseBushInstances,roseBushVertexColours} from '../../../src/canalRecall/roseBeds.ts';
 import roseGardens from './rose-garden-data.js';
 // The view comes from the WorldCamera (engine/worldCameraOf.ts, P5 B6), not the CameraMap shim (#129: ~220 calls/s).
@@ -174,7 +175,7 @@ export class InventoryTrees {
     const point=this.maplibregl.MercatorCoordinate.fromLngLat([tree.lng,tree.lat],0);
     const x=(point.x-this.origin.x)/this.scale,south=(point.y-this.origin.y)/this.scale;
     const native=treeTypology({...tree,position:[x,south]});const t=variant?scopeAllotmentCrown(tree,native):native;
-    const lobeColours=t?t.lobes.map(l=>new THREE.Color().set(foliageDisplayHex(t.foliage)).multiplyScalar([1,1.10,.86][l.tone])):null;
+    const lobeColours=t?t.lobes.map(l=>new THREE.Color().set(treeCalmFlag()?calmFoliage(foliageDisplayHex(t.foliage)):foliageDisplayHex(t.foliage)).multiplyScalar([1,1.10,.86][l.tone])):null;
     return shapes[variant]={x,south,t,lobeColours,bark:t?new THREE.Color(t.bark):null};
   }
   rebuild() {

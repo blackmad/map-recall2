@@ -39,6 +39,8 @@ import type {SignBoardIntent} from '../blockBuilding/signBoards.ts';
  * rise plumb from the eaves for `shouldered.shoulder` before a shallow rake climbs `rise` to a point (or a flat top
  * `flatTop` wide). Needs `shouldered`.
  */
+/** `otherWalls` value: blank walls painted with the city look's shader window grid (look/cityLook.ts WINDOW_GRID_LAYER). */
+export const OTHER_WINDOW_GRID = 'window-grid' as const;
 export const GABLES = ['spout', 'neck', 'raised-neck', 'bell', 'step', 'point', 'cornice', 'flat', 'shouldered'] as const;
 export type GableIntent = typeof GABLES[number];
 /** `frieze`: a tall (1.6 m) plain attic frieze with its cornice, in the cornice colour (18th-c. fronts; oculi in it are not drawn). */
@@ -726,6 +728,11 @@ export interface FrontIntent {
    * TIMBER_DORMER apron and posts; brick/stone/trim: the opening is the whole front), byte-identical.
    */
   dormerWindow?: {light: number; apron: number; tall?: number};
+  /**
+   * Lights in every dormer window (2..8; Vogelbuurt-Noord 1918 box dormers 5-6 narrow lights, the 1921 rows 4): the window's
+   * vertical bars are spaced evenly. Absent = one bar at the middle (two lights), byte-identical.
+   */
+  dormerLights?: number;
   /** Several gables on one front: each `{from, to}` (inclusive bay axes) carries one crown of the front's gable type; eaves line between them. Not together with `crownAt`/`crownBays`. */
   crownGroups?: {from: number; to: number}[];
   /**
@@ -1409,8 +1416,12 @@ export interface LargeBuildingIntent {
   id: string; pandId: string; address: string;
   sources: IntentSource[];
   walls: LargeWallIntent[];
-  /** System for wall surfaces no group lists (default `blank`). */
-  otherWalls?: LargeSystemName;
+  /**
+   * System for wall surfaces no group lists (default `blank`). `window-grid`: blank geometry (no added triangles) whose
+   * wall material carries `windowGrid`, so the city look paints a window grid on it in the shader (rear and courtyard
+   * walls no photo shows: lane newbuild-kit-20261110, feedback 75242f30 "why no windows").
+   */
+  otherWalls?: LargeSystemName | typeof OTHER_WINDOW_GRID;
   /**
    * A crown block that overhangs the shell on the named bearings (Salt, Haarlemmerweg 940: the top six storeys
    * cantilever over the canal corner above a recessed glazed base). The crown keeps the dominant front's bay pattern
@@ -2125,6 +2136,10 @@ function historicProblems(f: FrontIntent, at: string, colour: (v: unknown, where
     if (!f.dormers) problems.push(`${at}.dormerWindow: only with dormers`);
     else if (f.roofFront === 'mansard') problems.push(`${at}.dormerWindow: not on a mansard`);
     else if (!z || typeof z !== 'object' || Object.keys(z).some(k => !['light', 'apron', 'tall'].includes(k)) || !(typeof z.light === 'number' && z.light >= 0.4 && z.light <= 2) || !(typeof z.apron === 'number' && z.apron >= 0 && z.apron <= 1.2) || (z.tall !== undefined && !(typeof z.tall === 'number' && z.tall >= 0.3 && z.tall <= 2))) problems.push(`${at}.dormerWindow: {light 0.4..2, apron 0..1.2, tall? 0.3..2}`);
+  }
+  if (f.dormerLights !== undefined) {
+    if (!f.dormers) problems.push(`${at}.dormerLights: only with dormers`);
+    else if (!Number.isInteger(f.dormerLights) || f.dormerLights < 2 || f.dormerLights > 8) problems.push(`${at}.dormerLights: integer 2..8`);
   }
   if (f.dormerSize !== undefined) {
     const z = f.dormerSize as {sill?: unknown; rise?: unknown; setback?: unknown};

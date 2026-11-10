@@ -375,12 +375,16 @@ function dressWall(c: ExtraContext, sink: ExtraSink, state: DressingState, phase
     if (raisedEntry && !(historicAssembly && comp.id === 'historic-balcony-stack') && !RAISED_ENTRY_COMPONENTS.has(comp.id)) continue;
     if (raisedEntry && ['corner-pilasters','ground-flower-boxes','flower-boxes'].includes(comp.id)) continue;
     if (raisedEntry && c.recipe?.entranceAssembly === 'raised-pilaster' && ['string-courses','floor-cornices','pale-masonry-accents'].includes(comp.id)) continue;
-    if (!as || (comp.street && !street) || (comp.group && groups.has(comp.group))) continue;
+    // A register-stated component (hoist beam, stoop, cornice...) on a canal or 19th-century house is drawn even where the dice table lists another period.
+    const stated = !as && !!c.registerForce?.includes(comp.id) && (period === 'canal' || period === 'c19') ? period : null;
+    const asStyle = as ?? stated;
+    if (!asStyle || (comp.street && !street) || (comp.group && groups.has(comp.group))) continue;
     const roll = comp.wide || WIDE.has(comp.id) ? hash01(`${c.id}:${comp.id}`) : hash01(`${c.id}:${c.wallKey}:${comp.id}`);
     const localChance = RECIPE_TRIM_KEYS[comp.id] && c.recipe?.trim?.[RECIPE_TRIM_KEYS[comp.id]];
-    let chance = (assembly && comp.id === 'glass-balconies' || historicAssembly && comp.id === 'historic-balcony-stack') ? 1 : typeof localChance === 'number' ? localChance : chanceFor(comp.p, as);
+    let chance = (assembly && comp.id === 'glass-balconies' || historicAssembly && comp.id === 'historic-balcony-stack') ? 1 : typeof localChance === 'number' ? localChance : chanceFor(comp.p, asStyle);
     if (comp.id === 'door-surround' && c.recipe?.period === 'c19' && c.recipe.trimDensity !== 'ornate') chance *= .85;
     if (comp.id === 'wall-anchors' && c.recipe && c.recipe.trimDensity !== 'ornate') chance *= .15;
+    if (c.registerForce?.includes(comp.id)) chance = 1;
     if (roll >= chance) continue;
     const before = sink.tris.length, atomic = comp.atomic ?? ATOMIC.has(comp.id);
     if (atomic) sink.begin();

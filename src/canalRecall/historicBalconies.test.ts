@@ -1,3 +1,4 @@
+import './testing/newbuildFamilyOff.js';
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
 import { bayLookFor, BAY_LAYER_COUNT, BAY_ENTRIES } from './bayLook.js';

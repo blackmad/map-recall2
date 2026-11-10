@@ -1,10 +1,11 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { BAY_LAYER_COUNT, BAY_STYLES, bayLookFor } from './bayLook.js';
-import { contemporaryAreaAt, contemporaryLookFor, insetRing, newbuildFamilyEnabled } from './contemporaryFamily.js';
-import { buildFeatureChunk, withSetbackCrown } from './threeBuildingFeatures.js';
 
-// Flag off (the default): the family never fires, the tall preset is not in the array, chunks are unchanged.
+// Flag off (the default; set explicitly before the modules load). The family never fires, the tall preset is not in the array, chunks are unchanged.
+(globalThis as { __canalRecallNewbuildFamily?: boolean }).__canalRecallNewbuildFamily = false;
+const { BAY_LAYER_COUNT, BAY_STYLES, bayLookFor } = await import('./bayLook.js');
+const { contemporaryAreaAt, contemporaryLookFor, insetRing, newbuildFamilyEnabled } = await import('./contemporaryFamily.js');
+const { buildFeatureChunk, withSetbackCrown } = await import('./threeBuildingFeatures.js');
 const HOUTHAVEN: [number, number] = [4.8775, 52.3935];
 const ids = Array.from({ length: 300 }, (_, i) => `NL.IMBAG.Pand.03631000122${String(i).padStart(5, '0')}`);
 

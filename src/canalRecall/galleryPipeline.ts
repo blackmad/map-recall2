@@ -10,6 +10,7 @@ import { decorateBuildingFeature } from './buildingTilesBrowser.js';
 import { constructionYearEnricher, decorateFacade } from './genericFacades.js';
 import { decorateRoof, exceptLandmarks } from './roofMesh.js';
 import { withMonumentGable, type MonumentGables } from './monumentGables.js';
+import { withRegisterFacts, type RegisterFactsMap } from './facade/registerRecipe.js';
 import { KIT_MODELLED_IDS, decorateKitRoof } from './landmarkKits.js';
 import { decorateFront } from './landmarkFrontData.js';
 import { decorateShopfront } from './shopfronts.js';
@@ -26,6 +27,8 @@ export const fromLocal = (x: number, y: number): Vec2 => [ORIGIN.lng + x / KX, O
 
 export type DecoratorOptions = {
   gables?: MonumentGables;
+  /** The monuments register's parsed facts by building id (monument-facts.json): gable, era, finish, elements (facade/registerRecipe.ts). Absent = the chain as before. */
+  registerFacts?: RegisterFactsMap;
   /** Resolved landmark building ids (landmark-buildings.json) and the register's listed ones. */
   landmarkIds?: ReadonlySet<string>;
   listed?: ReadonlySet<string>;
@@ -35,9 +38,10 @@ export type DecoratorOptions = {
 
 /** vector-map `_applyFeatureDecorator`'s decorator (3D looks): what it hands `setFeatureDecorator`. */
 export function gameFeatureDecorator(options: DecoratorOptions = {}): (feature: Feature) => Feature {
-  const { gables, landmarkIds = new Set<string>(), listed, afterFacade } = options;
+  const { gables, registerFacts, landmarkIds = new Set<string>(), listed, afterFacade } = options;
   const named = gables && gables.size ? (f: Feature) => withMonumentGable(f, gables) : (f: Feature) => f;
-  const decorate = (f: Feature) => decorateRoof(named((afterFacade ?? ((x: Feature) => x))(decorateFacade(f))));
+  const registered = registerFacts && registerFacts.size ? (f: Feature) => withRegisterFacts(f, registerFacts) : (f: Feature) => f;
+  const decorate = (f: Feature) => decorateRoof(named((afterFacade ?? ((x: Feature) => x))(decorateFacade(registered(f)))));
   const base = exceptLandmarks(decorate, landmarkIds, KIT_MODELLED_IDS, listed);
   return (f: Feature) => decorateShopfront(decorateFront(decorateKitRoof(base(f))));
 }

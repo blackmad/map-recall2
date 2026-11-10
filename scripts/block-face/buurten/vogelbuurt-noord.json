@@ -8,7 +8,7 @@
   "bag": "PDOK BAG OGC API v2 verblijfsobject (CC0)",
   "threeDBag": "3DBAG api.3dbag.nl (CC BY 4.0)"
  },
- "surveyedAt": "2026-11-09",
+ "surveyedAt": "2026-11-10",
  "outlineRD": [
   [
    123476,
@@ -2162,7 +2162,8 @@
     14,
     22
    ],
-   "lengthM": 31.6
+   "lengthM": 31.6,
+   "intakeError": "Seed 0363100012153864 has no frontage on Tweede Vogelstraat: frontage 41.0 m from Tweede Vogelstraat"
   },
   {
    "id": "vogel-1-1-124242",
@@ -2211,7 +2212,8 @@
     19,
     31
    ],
-   "lengthM": 33.3
+   "lengthM": 33.3,
+   "intakeError": "Seed 0363100012151858 has no frontage on Tweede Vogelstraat: frontage 30.5 m from Tweede Vogelstraat"
   },
   {
    "id": "vogel-33-33",

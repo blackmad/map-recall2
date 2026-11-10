@@ -1,0 +1,73 @@
+{
+ "street": "Korte Vogelstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched n/a (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012131550",
+   "addresses": [
+    "Korte Vogelstraat 14"
+   ],
+   "groundUnits": [
+    {
+     "address": "Korte Vogelstraat 14",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010001012287"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012123838",
+   "addresses": [
+    "Korte Vogelstraat 10"
+   ],
+   "groundUnits": [
+    {
+     "address": "Korte Vogelstraat 10",
+     "use": "woonfunctie",
+     "areaM2": 37,
+     "bagId": "0363010000714607"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012080002",
+   "addresses": [
+    "Korte Vogelstraat 8"
+   ],
+   "groundUnits": [
+    {
+     "address": "Korte Vogelstraat 8",
+     "use": "woonfunctie",
+     "areaM2": 35,
+     "bagId": "0363010000714605"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012086570",
+   "addresses": [
+    "Korte Vogelstraat 6"
+   ],
+   "groundUnits": [
+    {
+     "address": "Korte Vogelstraat 6",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010001012286"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  }
+ ]
+}

@@ -1,0 +1,393 @@
+{
+ "face": "pluvierplein-5-15",
+ "street": "Pluvierplein",
+ "library": "vogelbuurt",
+ "stripDate": "2025-09-22",
+ "seconds": 1.76,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012070701",
+   "address": "Pluvierplein 5",
+   "builtYear": 1924,
+   "widthM": 6.71,
+   "eavesM": 7.28,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#8c8f8a",
+    "wallRaw": "#7d827d",
+    "skyline": {
+     "eavesM": 13.5,
+     "eavesRow": 19,
+     "confidence": 0.95,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 7,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": "left",
+    "accentShare": 0.325,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 1.68 m at 0.61 (light 0.1): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.68,
+       "centre": 0.61,
+       "light": 0.1
+      },
+      {
+       "widthM": 0.72,
+       "centre": 0.81,
+       "light": 0.1
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.02,
+    "foliageShare": 0.06
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Opus strip verdict 2026-11-10: step-gable run pluvierplein-5-15-r1; held until the coordinator sends the correctly mirrored non-gable pands back for another Opus look",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012151759",
+   "address": "Pluvierplein 7",
+   "builtYear": 1924,
+   "widthM": 6.36,
+   "eavesM": 6.82,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#868a82",
+    "wallRaw": "#6e7c6a",
+    "skyline": {
+     "eavesM": 12.85,
+     "eavesRow": 45,
+     "confidence": 0.47,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "frontClass": "columns",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 3.35 m at 0.36 (light 0.11): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 3.35,
+       "centre": 0.36,
+       "light": 0.11
+      },
+      {
+       "widthM": 1.35,
+       "centre": 0.79,
+       "light": 0.33
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.48
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Opus strip verdict 2026-11-10: step-gable run pluvierplein-5-15-r1; held until the coordinator sends the correctly mirrored non-gable pands back for another Opus look",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012061542",
+   "address": "Pluvierplein 9",
+   "builtYear": 1924,
+   "widthM": 6.47,
+   "eavesM": 6.83,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#8c918c",
+    "wallRaw": "#6a7d66",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 559,
+     "confidence": 0.26,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 1.35 m at 0.11 (light 0.09): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.35,
+       "centre": 0.11,
+       "light": 0.09
+      },
+      {
+       "widthM": 3.38,
+       "centre": 0.72,
+       "light": 0.25
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.44
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "no photo evidence (usable photo 27 % < 50 %) and no passing same-type neighbour",
+   "likeness": {
+    "pandId": "0363100012061542",
+    "ncc": null,
+    "nccRaw": 0.181,
+    "shiftM": [
+     -0.4,
+     -0.4
+    ],
+    "usable": 0.27,
+    "abstain": "usable photo 27 % < 50 %",
+    "verdict": "NO EVIDENCE",
+    "reasons": [
+     "foliage 34 % > 25 %"
+    ],
+    "wall": {
+     "photo": "#8e938d",
+     "model": "#986655",
+     "dL": -0.1
+    },
+    "glazing": {
+     "photo": 0.28,
+     "model": 0.33
+    },
+    "columns": {
+     "photo": null,
+     "model": null
+    },
+    "iou": 0.258
+   },
+   "challengers": {
+    "vogel-1921-two-storey-dormer-row~m": null,
+    "vogel-1921-two-storey-dormer-row": null
+   }
+  },
+  {
+   "pandId": "0363100012141895",
+   "address": "Pluvierplein 11",
+   "builtYear": 1924,
+   "widthM": 6.43,
+   "eavesM": 6.83,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#949790",
+    "wallRaw": "#647960",
+    "skyline": {
+     "eavesM": 13.18,
+     "eavesRow": 32,
+     "confidence": 0.41,
+     "crown": {
+      "widthM": 0.82,
+      "riseM": 0.8,
+      "topWidthM": 0.72,
+      "centre": 0.74
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 4,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 3.02 m at 0.26 (light 0.22): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 3.02,
+       "centre": 0.26,
+       "light": 0.22
+      },
+      {
+       "widthM": 2.45,
+       "centre": 0.79,
+       "light": 0.28
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.5
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "no photo evidence (usable photo 22 % < 50 %) and no passing same-type neighbour",
+   "likeness": {
+    "pandId": "0363100012141895",
+    "ncc": null,
+    "nccRaw": -0.002,
+    "shiftM": [
+     -0.15,
+     0.1
+    ],
+    "usable": 0.22,
+    "abstain": "usable photo 22 % < 50 %",
+    "verdict": "NO EVIDENCE",
+    "reasons": [
+     "foliage 40 % > 25 %"
+    ],
+    "wall": {
+     "photo": "#949891",
+     "model": "#986655",
+     "dL": -0.118
+    },
+    "glazing": {
+     "photo": 0.19,
+     "model": 0.34
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.283
+   },
+   "challengers": {
+    "vogel-1921-two-storey-dormer-row": null,
+    "vogel-1921-two-storey-dormer-row~m": null
+   }
+  },
+  {
+   "pandId": "0363100012149277",
+   "address": "Pluvierplein 13",
+   "builtYear": 1924,
+   "widthM": 6.23,
+   "eavesM": 6.84,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#99a099",
+    "wallRaw": "#69845e",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 559,
+     "confidence": 0,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 5.72 m at 0.5 (light 0.14): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 5.72,
+       "centre": 0.5,
+       "light": 0.14
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0.83
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Opus strip verdict 2026-11-10: step-gable run pluvierplein-5-15-r2; held until the coordinator sends the correctly mirrored non-gable pands back for another Opus look",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012125723",
+   "address": "Pluvierplein 15",
+   "builtYear": 1924,
+   "widthM": 6.49,
+   "eavesM": 7.54,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#a7aca6",
+    "wallRaw": "#868d88",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 559,
+     "confidence": 0.03,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.649,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 1.18 m at 0.2 (light 0.31): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.18,
+       "centre": 0.2,
+       "light": 0.31
+      },
+      {
+       "widthM": 0.6,
+       "centre": 0.85,
+       "light": 0.03
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0.09
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Opus strip verdict 2026-11-10: step-gable run pluvierplein-5-15-r2; held until the coordinator sends the correctly mirrored non-gable pands back for another Opus look",
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

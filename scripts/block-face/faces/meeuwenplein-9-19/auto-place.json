@@ -1,0 +1,519 @@
+{
+ "face": "meeuwenplein-9-19",
+ "street": "Meeuwenplein",
+ "library": "vogelbuurt",
+ "stripDate": "2019-11-15",
+ "seconds": 7.93,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [
+  {
+   "face": "meeuwenplein-9-19-r1",
+   "pands": [
+    "0363100012074442",
+    "0363100012140709",
+    "0363100012116850"
+   ],
+   "passed": true,
+   "triangles": 2039
+  }
+ ],
+ "pands": [
+  {
+   "pandId": "0363100012074442",
+   "address": "Meeuwenplein 9",
+   "builtYear": 1923,
+   "widthM": 6.58,
+   "eavesM": 6.93,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#3a2e2a",
+    "wallRaw": "#383835",
+    "skyline": {
+     "eavesM": 7.72,
+     "eavesRow": 259,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "placed",
+   "type": "vogel-1921-two-storey-dormer-row",
+   "score": 1,
+   "placement": {
+    "type": "vogel-1921-two-storey-dormer-row",
+    "measuredPalette": {
+     "brick": "#3a2e2a",
+     "evidence": "strip 2019-11-15 span 0-263: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown flat-dormer (type default)",
+    "door reviewer pin: as drawn (Meeuwenplein 9 (2019-11-15): narrow window left, wide right (authored orientation))"
+   ],
+   "likeness": {
+    "pandId": "0363100012074442",
+    "ncc": 0.387,
+    "nccRaw": 0.387,
+    "shiftM": [
+     0.1,
+     -0.4
+    ],
+    "usable": 0.97,
+    "abstain": null,
+    "verdict": "PASS",
+    "reasons": [],
+    "wall": {
+     "photo": "#3b2e2a",
+     "model": "#594640",
+     "dL": 0.102
+    },
+    "glazing": {
+     "photo": 0.38,
+     "model": 0.34
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.624
+   },
+   "challengers": {
+    "vogel-1921-two-storey-dormer-row": 0.361,
+    "vogel-1921-two-storey-dormer-row~m": 0.031
+   }
+  },
+  {
+   "pandId": "0363100012140709",
+   "address": "Meeuwenplein 11",
+   "builtYear": 1923,
+   "widthM": 6.4,
+   "eavesM": 6.97,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#403430",
+    "wallRaw": "#3d3d38",
+    "skyline": {
+     "eavesM": 7.7,
+     "eavesRow": 260,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 1.38 m at 0.39 (light 0.31): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.38,
+       "centre": 0.39,
+       "light": 0.31
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "placed",
+   "type": "vogel-1921-two-storey-dormer-row",
+   "score": 0.84,
+   "placement": {
+    "type": "vogel-1921-two-storey-dormer-row",
+    "measuredPalette": {
+     "brick": "#403430",
+     "evidence": "strip 2019-11-15 span 263-519: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "mirror": true
+   },
+   "notes": [
+    "crown flat-dormer (type default)",
+    "door reviewer pin: mirrored (Meeuwenplein 11: wide window left, narrow right (mirrored; the doors of 11 and 13 pair at their party wall))"
+   ],
+   "likeness": {
+    "pandId": "0363100012140709",
+    "ncc": 0.367,
+    "nccRaw": 0.367,
+    "shiftM": [
+     0,
+     -0.4
+    ],
+    "usable": 0.97,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.37 mean 0.34 vs photo 0.70"
+    ],
+    "wall": {
+     "photo": "#3c3430",
+     "model": "#5d4b45",
+     "dL": 0.106
+    },
+    "glazing": {
+     "photo": 0.7,
+     "model": 0.34
+    },
+    "columns": {
+     "photo": 7,
+     "model": null
+    },
+    "iou": 0.409
+   },
+   "challengers": {
+    "vogel-1921-two-storey-dormer-row~m": 0.365,
+    "vogel-1921-two-storey-dormer-row": 0.018
+   }
+  },
+  {
+   "pandId": "0363100012116850",
+   "address": "Meeuwenplein 13",
+   "builtYear": 1923,
+   "widthM": 6.23,
+   "eavesM": 7.13,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#392e2a",
+    "wallRaw": "#3c3c3a",
+    "skyline": {
+     "eavesM": 7.75,
+     "eavesRow": 258,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 5.92,
+       "widthM": 0.9,
+       "centre": 0.24
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "placed",
+   "type": "vogel-1921-two-storey-dormer-row",
+   "score": 1,
+   "placement": {
+    "type": "vogel-1921-two-storey-dormer-row",
+    "measuredPalette": {
+     "brick": "#392e2a",
+     "evidence": "strip 2019-11-15 span 519-768: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown flat-dormer (type default)",
+    "door reviewer pin: as drawn (Meeuwenplein 13: narrow window left, wide right (authored orientation))"
+   ],
+   "likeness": {
+    "pandId": "0363100012116850",
+    "ncc": 0.417,
+    "nccRaw": 0.417,
+    "shiftM": [
+     -0.3,
+     -0.4
+    ],
+    "usable": 0.97,
+    "abstain": null,
+    "verdict": "WARN",
+    "reasons": [
+     "wall judged on chromaticity: the photo's exposure is not normalised and the wall reads +0.15 darker than the model's in shade or overcast light"
+    ],
+    "wall": {
+     "photo": "#2a2320",
+     "model": "#584741",
+     "dL": 0.155
+    },
+    "glazing": {
+     "photo": 0.39,
+     "model": 0.36
+    },
+    "columns": {
+     "photo": null,
+     "model": null
+    },
+    "iou": 0.631
+   },
+   "challengers": {
+    "vogel-1921-two-storey-dormer-row": 0.409,
+    "vogel-1921-two-storey-dormer-row~m": -0.026
+   }
+  },
+  {
+   "pandId": "0363100012074267",
+   "address": "Meeuwenplein 15",
+   "builtYear": 1923,
+   "widthM": 6.78,
+   "eavesM": 6.92,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#3d342f",
+    "wallRaw": "#353330",
+    "skyline": {
+     "eavesM": 7.75,
+     "eavesRow": 258,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.148 < 0.15 (photo vs model body; likeness.ts FAIL: wall dL +0.16)",
+   "likeness": {
+    "pandId": "0363100012074267",
+    "ncc": 0.148,
+    "nccRaw": 0.148,
+    "shiftM": [
+     -0.3,
+     -0.4
+    ],
+    "usable": 0.97,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "wall dL +0.16"
+    ],
+    "wall": {
+     "photo": "#2b231f",
+     "model": "#594c45",
+     "dL": 0.165
+    },
+    "glazing": {
+     "photo": 0.37,
+     "model": 0.34
+    },
+    "columns": {
+     "photo": null,
+     "model": null
+    },
+    "iou": 0.328
+   },
+   "challengers": {
+    "vogel-1921-two-storey-dormer-row": 0.152,
+    "vogel-1921-two-storey-dormer-row~m": 0.068
+   }
+  },
+  {
+   "pandId": "0363100012148193",
+   "address": "Meeuwenplein 17",
+   "builtYear": 1923,
+   "widthM": 6.63,
+   "eavesM": 6.95,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#2b2522",
+    "wallRaw": "#3b3b38",
+    "skyline": {
+     "eavesM": 7.75,
+     "eavesRow": 258,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.6 m at 0.56 (light 0.33): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.6,
+       "centre": 0.56,
+       "light": 0.33
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.138 < 0.15 (photo vs model body; likeness.ts FAIL: wall dL +0.15; wall family unresolved (#2b2421 is dark and neutral, brick courses not resolved): lightness and hue judged only)",
+   "likeness": {
+    "pandId": "0363100012148193",
+    "ncc": 0.138,
+    "nccRaw": 0.138,
+    "shiftM": [
+     -0.25,
+     -0.4
+    ],
+    "usable": 0.97,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "wall dL +0.15",
+     "wall family unresolved (#2b2421 is dark and neutral, brick courses not resolved): lightness and hue judged only"
+    ],
+    "wall": {
+     "photo": "#2b2421",
+     "model": "#554a44",
+     "dL": 0.151
+    },
+    "glazing": {
+     "photo": 0.24,
+     "model": 0.33
+    },
+    "columns": {
+     "photo": null,
+     "model": null
+    },
+    "iou": 0.288
+   },
+   "challengers": {
+    "vogel-1921-two-storey-dormer-row~m": 0.138,
+    "vogel-1921-two-storey-dormer-row": 0.001
+   }
+  },
+  {
+   "pandId": "0363100012138277",
+   "address": "Meeuwenplein 19",
+   "builtYear": 1923,
+   "widthM": 5.87,
+   "eavesM": 7.85,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#2e2725",
+    "wallRaw": "#36312e",
+    "skyline": {
+     "eavesM": 8.72,
+     "eavesRow": 219,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.98,
+      "riseM": 2.93,
+      "topWidthM": 0.53,
+      "centre": 0.42
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": "right",
+    "accentShare": 0.009,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": {
+    "pandId": "0363100012138277",
+    "ncc": 0.292,
+    "nccRaw": 0.292,
+    "shiftM": [
+     -0.4,
+     -0.4
+    ],
+    "usable": 0.96,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "wall dL +0.14",
+     "glazing storey band off by 0.18 mean 0.33 vs photo 0.49"
+    ],
+    "wall": {
+     "photo": "#2d2624",
+     "model": "#554844",
+     "dL": 0.141
+    },
+    "glazing": {
+     "photo": 0.49,
+     "model": 0.33
+    },
+    "columns": {
+     "photo": null,
+     "model": null
+    },
+    "iou": 0.437
+   },
+   "challengers": {
+    "vogel-1921-two-storey-dormer-row": 0.292,
+    "vogel-1921-two-storey-dormer-row~m": 0.171
+   }
+  }
+ ]
+}

@@ -4,16 +4,17 @@ import assert from 'node:assert/strict';
 // Flag on: set before the modules load (the tall preset joins BAY_STYLES at import, as in the browser and worker).
 (globalThis as { __canalRecallNewbuildFamily?: boolean }).__canalRecallNewbuildFamily = true;
 const { BAY_LAYER_COUNT, BAY_STYLES, bayLookFor } = await import('./bayLook.js');
-const { TALL_PRESET_INDEX, contemporaryLookFor } = await import('./contemporaryFamily.js');
+const { BAND_PRESET_INDEX, TALL_PRESET_INDEX, contemporaryLookFor, ownContemporaryWall } = await import('./contemporaryFamily.js');
 const { buildFeatureChunk, meshBuildingFor, withSetbackCrown } = await import('./threeBuildingFeatures.js');
 const { lightnessOfHex } = { lightnessOfHex: (hex: string) => { const [r, g, b] = [1, 3, 5].map(i => parseInt(hex.slice(i, i + 2), 16) / 255).map(v => v <= 0.04045 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4); const y = 0.2126 * r + 0.7152 * g + 0.0722 * b; return y > 0.008856 ? 116 * Math.cbrt(y) - 16 : 903.3 * y; } };
 
 const HOUTHAVEN: [number, number] = [4.8775, 52.3935], IJBURG: [number, number] = [4.99, 52.356];
 const ids = Array.from({ length: 400 }, (_, i) => `NL.IMBAG.Pand.03631000122${String(i).padStart(5, '0')}`);
 
-test('on: the tall French-balcony preset is in the array', () => {
-  assert.equal(BAY_STYLES.modern.length, 10);
+test('on: the tall French-balcony and balcony-band presets are in the array', () => {
+  assert.equal(BAY_STYLES.modern.length, 11);
   assert.equal(BAY_STYLES.modern[TALL_PRESET_INDEX].facadeAssembly, 'french-balcony');
+  assert.equal(BAY_STYLES.modern[BAND_PRESET_INDEX].facadeAssembly, 'balcony-band');
   assert.ok(BAY_LAYER_COUNT > 191);
 });
 
@@ -50,4 +51,21 @@ test('on: a marked block draws a set-back glazed top storey over a terrace', () 
   assert.equal(crown.minHeightM, body.heightM);
   assert.equal(crown.heightM, 20);
   assert.equal(buildFeatureChunk([f], 'storybook').buildingCount, 2);
+});
+
+test('on: a pand with its own measured front draws it, not the area draw (round 2, houthaven-2018 and Zeeburgereiland strips)', () => {
+  // houthaven-2018-dark: no T0 row, this lane's own sample (dark panel cladding) stands.
+  const dark = contemporaryLookFor({ id: 'NL.IMBAG.Pand.0363100012247676', year: 2018, heightM: 17.6, use: 'housing', at: HOUTHAVEN })!;
+  assert.equal(dark.wallSource, 'own');
+  assert.equal(`${dark.painted ? 'p' : 'b'}${dark.wall.slice(1)}`, ownContemporaryWall('0363100012247676'));
+  assert.ok(lightnessOfHex(dark.wall) < 45, `houthaven-2018 own wall ${dark.wall}`);
+  assert.equal(dark.style, 'tall', 'tagged tall French windows');
+  // Zeeburgereiland 2016: the T0 row (dark brick) outranks the lane sample, and the sheet shows balcony bands.
+  const z = contemporaryLookFor({ id: 'NL.IMBAG.Pand.0363100012244416', year: 2016, heightM: 19.5, use: 'housing', at: [4.96, 52.37] })!;
+  assert.equal(z.wallSource, 'own');
+  assert.equal(z.style, 'band');
+  assert.equal(z.styleIndex, BAND_PRESET_INDEX);
+  assert.ok(lightnessOfHex(z.wall) < 40);
+  // Unmeasured ids still draw from their area.
+  assert.equal(contemporaryLookFor({ id: ids[0], year: 2018, heightM: 20, use: 'housing', at: HOUTHAVEN })!.wallSource, 'area');
 });

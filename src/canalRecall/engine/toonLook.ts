@@ -8,7 +8,7 @@
 /** `?look=toon` (or `window.__canalRecallLook = 'toon'` before load). */
 export function toonLookFlag(): boolean {
   const g = globalThis as { __canalRecallLook?: string; location?: { search?: string } };
-  const asked = g.__canalRecallLook ?? new URLSearchParams(g.location?.search ?? '').get('look');
+  const asked = g.__canalRecallLook ?? (typeof URLSearchParams === 'function' ? new URLSearchParams(g.location?.search ?? '').get('look') : null);
   return asked === 'toon';
 }
 

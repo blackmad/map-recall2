@@ -67,7 +67,7 @@ export function measureStripPalette(input: StripPaletteInput): StripPalette {
   const px = (x: number, y: number): Rgb => { const i = (y * width + x) * 3; return [rgb[i], rgb[i + 1], rgb[i + 2]]; };
   // Keep 6 % off each side: party-wall downpipes and the neighbour's bleed.
   const inset = Math.round((x1 - x0) * 0.06), xa = x0 + inset, xb = x1 - inset;
-  const bodyTop = rowOf(eavesM - 1), bodyBottom = rowOf(input.bodyFromM ?? 4.4);
+  const bodyTop = rowOf(eavesM - 1), bodyBottom = rowOf(input.bodyFromM ?? (eavesM > 6 ? 4.4 : 0.9));
   const wall: Rgb[] = [], accentBand: Rgb[] = [], accentOther: Rgb[] = [];
   const bandRows: number[] = [];
   let nGlass = 0, n = 0;

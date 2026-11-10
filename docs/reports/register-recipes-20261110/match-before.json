@@ -1,0 +1,422 @@
+{
+ "withReads": false,
+ "facts": "/Users/blackmad/Code/map-recall2-worktrees/register-recipes-20261110/public/data/extracts/amsterdam/staging/monument-facts.json",
+ "ridePriorityPandsWithFacts": 5421,
+ "paths": {
+  "generic": 5135,
+  "landmark": 129,
+  "kit": 7,
+  "model": 140,
+  "noFacade": 10
+ },
+ "fields": {
+  "era": {
+   "n": 5039,
+   "match": 3247,
+   "rate": 0.644,
+   "confusion": {
+    "canal->canal": 2944,
+    "canal->c19": 931,
+    "canal->modern": 476,
+    "c19->c19": 216,
+    "canal->school": 185,
+    "c19->canal": 128,
+    "school->school": 84,
+    "c19->school": 24,
+    "c19->modern": 22,
+    "school->c19": 10,
+    "school->canal": 6,
+    "school->modern": 4
+   }
+  },
+  "era|generic": {
+   "n": 4828,
+   "match": 3132,
+   "rate": 0.649,
+   "confusion": {
+    "canal->canal": 2868,
+    "canal->c19": 903,
+    "canal->modern": 456,
+    "c19->c19": 192,
+    "canal->school": 167,
+    "c19->canal": 121,
+    "school->school": 69,
+    "c19->modern": 19,
+    "c19->school": 11,
+    "school->canal": 6,
+    "school->c19": 5,
+    "modern->c19": 3
+   }
+  },
+  "era|bagYearVsRegister": {
+   "n": 4800,
+   "match": 3265,
+   "rate": 0.68,
+   "confusion": {
+    "canal->canal": 2956,
+    "canal->c19": 827,
+    "canal->modern": 360,
+    "c19->c19": 222,
+    "canal->school": 168,
+    "c19->canal": 129,
+    "school->school": 84,
+    "c19->modern": 16,
+    "c19->school": 11,
+    "school->c19": 10,
+    "school->canal": 6,
+    "modern->c19": 3
+   }
+  },
+  "gable": {
+   "n": 4455,
+   "match": 3569,
+   "rate": 0.801,
+   "confusion": {
+    "cornice->cornice": 1589,
+    "neck->neck": 903,
+    "bell->bell": 654,
+    "plain->plain": 316,
+    "cornice->none(generic)": 142,
+    "step->step": 92,
+    "neck->none(generic)": 59,
+    "bell->none(generic)": 50,
+    "plain->none(generic)": 43,
+    "cornice->neck": 42,
+    "cornice->none(model)": 38,
+    "bell->cornice": 38
+   }
+  },
+  "gable|generic": {
+   "n": 4290,
+   "match": 3569,
+   "rate": 0.832,
+   "confusion": {
+    "cornice->cornice": 1589,
+    "neck->neck": 903,
+    "bell->bell": 654,
+    "plain->plain": 316,
+    "cornice->none(generic)": 142,
+    "step->step": 92,
+    "neck->none(generic)": 59,
+    "bell->none(generic)": 50,
+    "plain->none(generic)": 43,
+    "cornice->neck": 42,
+    "bell->cornice": 38,
+    "cornice->pitched": 36
+   }
+  },
+  "gable|generic|corniceReadsFlat": {
+   "n": 4290,
+   "match": 3731,
+   "rate": 0.87,
+   "confusion": {
+    "flat->flat": 1751,
+    "neck->neck": 903,
+    "bell->bell": 654,
+    "plain->plain": 316,
+    "step->step": 92,
+    "neck->none(generic)": 59,
+    "bell->none(generic)": 50,
+    "plain->none(generic)": 43,
+    "flat->neck": 42,
+    "bell->cornice": 38,
+    "flat->pitched": 36,
+    "flat->bell": 31
+   }
+  },
+  "finish": {
+   "n": 550,
+   "match": 256,
+   "rate": 0.465,
+   "confusion": {
+    "light->brick": 254,
+    "brick->brick": 157,
+    "light->light": 99,
+    "brick->light": 40
+   }
+  },
+  "finish|generic": {
+   "n": 480,
+   "match": 213,
+   "rate": 0.444,
+   "confusion": {
+    "light->brick": 231,
+    "brick->brick": 120,
+    "light->light": 93,
+    "brick->light": 36
+   }
+  },
+  "element:wall-anchors": {
+   "n": 56,
+   "match": 7.5,
+   "rate": 0.134,
+   "confusion": {}
+  },
+  "storeys": {
+   "n": 269,
+   "match": 126,
+   "rate": 0.468,
+   "confusion": {}
+  },
+  "storeys|exactLayers": {
+   "n": 269,
+   "match": 65,
+   "rate": 0.242,
+   "confusion": {}
+  },
+  "storeys|withinOne": {
+   "n": 269,
+   "match": 164,
+   "rate": 0.61,
+   "confusion": {}
+  },
+  "element:hoist-beam": {
+   "n": 139,
+   "match": 19.25000000000001,
+   "rate": 0.138,
+   "confusion": {}
+  },
+  "element:bay-window": {
+   "n": 207,
+   "match": 36.199999999999974,
+   "rate": 0.175,
+   "confusion": {}
+  },
+  "element:iron-balconies": {
+   "n": 206,
+   "match": 68.52000000000005,
+   "rate": 0.333,
+   "confusion": {}
+  },
+  "element:console-cornice": {
+   "n": 695,
+   "match": 125.84000000000097,
+   "rate": 0.181,
+   "confusion": {}
+  },
+  "element:kroonlijst": {
+   "n": 105,
+   "match": 18.29999999999999,
+   "rate": 0.174,
+   "confusion": {}
+  },
+  "element:shutters-3d": {
+   "n": 26,
+   "match": 1.5,
+   "rate": 0.058,
+   "confusion": {}
+  },
+  "element:corner-pilasters": {
+   "n": 195,
+   "match": 42.599999999999895,
+   "rate": 0.218,
+   "confusion": {}
+  },
+  "element:string-courses": {
+   "n": 121,
+   "match": 36.1,
+   "rate": 0.298,
+   "confusion": {}
+  },
+  "element:stoop": {
+   "n": 377,
+   "match": 101,
+   "rate": 0.268,
+   "confusion": {}
+  },
+  "element:door-surround": {
+   "n": 320,
+   "match": 131.90000000000018,
+   "rate": 0.412,
+   "confusion": {}
+  },
+  "element:gable-stone": {
+   "n": 236,
+   "match": 19.64999999999999,
+   "rate": 0.083,
+   "confusion": {}
+  },
+  "era|bagYearMissing": {
+   "n": 239,
+   "match": 0,
+   "rate": 0,
+   "confusion": {}
+  },
+  "element:basement-well": {
+   "n": 48,
+   "match": 11.5,
+   "rate": 0.24,
+   "confusion": {}
+  }
+ },
+ "elementStats": {
+  "glazingBars": {
+   "pands": 602,
+   "generic": 540,
+   "modelled": 29,
+   "typed": 5,
+   "landmark": 26
+  },
+  "sashWindows": {
+   "pands": 117,
+   "generic": 104,
+   "modelled": 6,
+   "typed": 1,
+   "landmark": 6
+  },
+  "anchors": {
+   "pands": 62,
+   "generic": 56,
+   "modelled": 3,
+   "typed": 0,
+   "landmark": 3
+  },
+  "hoistBeam": {
+   "pands": 146,
+   "generic": 139,
+   "modelled": 2,
+   "typed": 0,
+   "landmark": 4
+  },
+  "bayWindow": {
+   "pands": 244,
+   "generic": 207,
+   "modelled": 24,
+   "typed": 1,
+   "landmark": 12
+  },
+  "balcony": {
+   "pands": 249,
+   "generic": 206,
+   "modelled": 18,
+   "typed": 5,
+   "landmark": 20
+  },
+  "sculpture": {
+   "pands": 287,
+   "generic": 246,
+   "modelled": 22,
+   "typed": 1,
+   "landmark": 17
+  },
+  "stoop": {
+   "pands": 412,
+   "generic": 377,
+   "modelled": 16,
+   "typed": 1,
+   "landmark": 18
+  },
+  "corniceConsoles": {
+   "pands": 749,
+   "generic": 695,
+   "modelled": 26,
+   "typed": 1,
+   "landmark": 27
+  },
+  "dormer": {
+   "pands": 419,
+   "generic": 379,
+   "modelled": 19,
+   "typed": 1,
+   "landmark": 20
+  },
+  "pediment": {
+   "pands": 235,
+   "generic": 189,
+   "modelled": 18,
+   "typed": 1,
+   "landmark": 27
+  },
+  "pilasters": {
+   "pands": 242,
+   "generic": 195,
+   "modelled": 24,
+   "typed": 0,
+   "landmark": 23
+  },
+  "gablestone": {
+   "pands": 250,
+   "generic": 236,
+   "modelled": 9,
+   "typed": 0,
+   "landmark": 5
+  },
+  "shopfront": {
+   "pands": 460,
+   "generic": 444,
+   "modelled": 8,
+   "typed": 0,
+   "landmark": 7
+  },
+  "crownCornice": {
+   "pands": 128,
+   "generic": 105,
+   "modelled": 14,
+   "typed": 1,
+   "landmark": 8
+  },
+  "shutters": {
+   "pands": 30,
+   "generic": 26,
+   "modelled": 2,
+   "typed": 0,
+   "landmark": 1
+  },
+  "balustrade": {
+   "pands": 260,
+   "generic": 220,
+   "modelled": 26,
+   "typed": 1,
+   "landmark": 13
+  },
+  "doorSurround": {
+   "pands": 355,
+   "generic": 320,
+   "modelled": 16,
+   "typed": 1,
+   "landmark": 18
+  },
+  "claws": {
+   "pands": 224,
+   "generic": 212,
+   "modelled": 10,
+   "typed": 1,
+   "landmark": 1
+  },
+  "oeilDeBoeuf": {
+   "pands": 141,
+   "generic": 132,
+   "modelled": 6,
+   "typed": 0,
+   "landmark": 3
+  },
+  "festoons": {
+   "pands": 62,
+   "generic": 55,
+   "modelled": 4,
+   "typed": 1,
+   "landmark": 2
+  },
+  "attic": {
+   "pands": 137,
+   "generic": 127,
+   "modelled": 6,
+   "typed": 0,
+   "landmark": 4
+  },
+  "twinGable": {
+   "pands": 14,
+   "generic": 13,
+   "modelled": 1,
+   "typed": 0,
+   "landmark": 0
+  },
+  "cellarEntrance": {
+   "pands": 52,
+   "generic": 48,
+   "modelled": 2,
+   "typed": 0,
+   "landmark": 2
+  }
+ }
+}

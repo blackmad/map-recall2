@@ -1,0 +1,73 @@
+{
+ "street": "Vijfde Vogelstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched n/a (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012086556",
+   "addresses": [
+    "Vijfde Vogelstraat 15"
+   ],
+   "groundUnits": [
+    {
+     "address": "Vijfde Vogelstraat 15",
+     "use": "woonfunctie",
+     "areaM2": 37,
+     "bagId": "0363010000556841"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012140588",
+   "addresses": [
+    "Vijfde Vogelstraat 17"
+   ],
+   "groundUnits": [
+    {
+     "address": "Vijfde Vogelstraat 17",
+     "use": "woonfunctie",
+     "areaM2": 41,
+     "bagId": "0363010000556843"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012100504",
+   "addresses": [
+    "Vijfde Vogelstraat 19"
+   ],
+   "groundUnits": [
+    {
+     "address": "Vijfde Vogelstraat 19",
+     "use": "woonfunctie",
+     "areaM2": 30,
+     "bagId": "0363010000556845"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012129706",
+   "addresses": [
+    "Vijfde Vogelstraat 21"
+   ],
+   "groundUnits": [
+    {
+     "address": "Vijfde Vogelstraat 21",
+     "use": "woonfunctie",
+     "areaM2": 35,
+     "bagId": "0363010000556847"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  }
+ ]
+}

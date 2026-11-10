@@ -1,0 +1,104 @@
+{
+ "face": "vogel-2-6",
+ "image": "staging/block-face/vogel-2-6/strip.jpg",
+ "pixelsPerMetre": 40,
+ "width": 800,
+ "height": 298,
+ "groundNAP": 0.831,
+ "heightM": 7.45,
+ "frame": {
+  "midRD": [
+   123726.24341666668,
+   488871.1546666667
+  ],
+  "uRD": [
+   -0.5383783910730038,
+   -0.842703214676225
+  ],
+  "nRD": [
+   -0.842703214676225,
+   0.5383783910730038
+  ]
+ },
+ "x0M": -11.99,
+ "x1M": 8.01,
+ "date": "2017-05-15",
+ "coverage": 0.67,
+ "spans": [
+  {
+   "pandId": "0363100012129359",
+   "x0M": -11.99,
+   "x1M": -2.02,
+   "px": [
+    0,
+    399
+   ],
+   "date": "2017-05-15",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "TMX7316010203-000297_pano_0000_000861",
+     "timestamp": "2017-05-15T09:25:52.121690Z",
+     "distanceM": 5.4,
+     "obliquityDeg": 41.9,
+     "missingFraction": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012120334",
+   "x0M": -2.02,
+   "x1M": 4.01,
+   "px": [
+    399,
+    640
+   ],
+   "date": "2024-09-10",
+   "fallbackDate": true,
+   "panoramas": [
+    {
+     "panoId": "recording_2024-09-10_08-02-29_00334",
+     "timestamp": "2024-09-10T08:13:43Z",
+     "distanceM": 5,
+     "obliquityDeg": 38,
+     "missingFraction": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012083966",
+   "x0M": 4.01,
+   "x1M": 8.01,
+   "px": [
+    640,
+    800
+   ],
+   "date": "2017-05-15",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "TMX7316010203-000297_pano_0000_000863",
+     "timestamp": "2017-05-15T09:25:56.766730Z",
+     "distanceM": 5.1,
+     "obliquityDeg": 34.7,
+     "missingFraction": 0
+    }
+   ]
+  }
+ ],
+ "candidatesByDate": {
+  "2020-05-29": 0,
+  "2016-08-16": 0,
+  "2019-06-28": 0,
+  "2022-05-10": 0,
+  "2017-05-15": 1,
+  "2021-06-15": 0,
+  "2018-07-30": 0,
+  "2025-09-22": 0,
+  "2024-09-10": 0,
+  "2021-09-20": 0,
+  "2022-12-27": 0
+ },
+ "description": "Rectified orthographic elevation of the whole face on the frontage planes: x = chunk-frame metres along the face (left→right seen from the street) from x0M, y = metres above the shared ground (groundNAP) from the bottom; grey = no panorama data. Per-pand spans list the panoramas median-fused for that frontage.",
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (CC BY 4.0; faces and number plates blurred by the publisher)"
+}

@@ -1,0 +1,662 @@
+{
+ "face": "vogel-1-15",
+ "street": "Lange Vogelstraat",
+ "library": "vogelbuurt",
+ "stripDate": "2022-05-10",
+ "seconds": 4.73,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [
+  {
+   "face": "vogel-1-15-r1",
+   "pands": [
+    "0363100012141706",
+    "0363100012144274"
+   ],
+   "passed": true,
+   "triangles": 985
+  },
+  {
+   "face": "vogel-1-15-r2",
+   "pands": [
+    "0363100012114049",
+    "0363100012117598",
+    "0363100012135488"
+   ],
+   "passed": true,
+   "triangles": 1490
+  }
+ ],
+ "pands": [
+  {
+   "pandId": "0363100012141706",
+   "address": "Lange Vogelstraat 1",
+   "builtYear": 1918,
+   "widthM": 5,
+   "eavesM": 4.36,
+   "storeys3dbag": 2,
+   "bagBay": null,
+   "strip": {
+    "wall": "#b77563",
+    "wallRaw": "#443e30",
+    "skyline": {
+     "eavesM": 5.8,
+     "eavesRow": 143,
+     "confidence": 0.86,
+     "crown": {
+      "widthM": 1.23,
+      "riseM": 3.48,
+      "topWidthM": 0.65,
+      "centre": 0.33
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 5,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "one-storey front (eaves <= 6 m): no balcony",
+     "openAxes": [
+      {
+       "widthM": 1.9,
+       "centre": 0.79,
+       "light": 0.19
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.16
+   },
+   "status": "placed",
+   "type": "vogel-1918-timber-band-cottage",
+   "score": 0.77,
+   "placement": {
+    "type": "vogel-1918-timber-band-cottage"
+   },
+   "notes": [
+    "door right",
+    "crown half-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012141706",
+    "ncc": 0.293,
+    "nccRaw": 0.293,
+    "shiftM": [
+     0.1,
+     0.15
+    ],
+    "usable": 0.68,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "wall dL -0.24",
+     "glazing  mean 0.14 vs photo 0.58"
+    ],
+    "wall": {
+     "photo": "#896c4e",
+     "model": "#2c2b30",
+     "dL": -0.243
+    },
+    "glazing": {
+     "photo": 0.58,
+     "model": 0.14
+    },
+    "columns": {
+     "photo": null,
+     "model": null
+    },
+    "iou": 0.333
+   },
+   "challengers": {
+    "vogel-1918-timber-band-cottage": 0.293,
+    "vogel-1918-timber-band-cottage~m": 0.094
+   }
+  },
+  {
+   "pandId": "0363100012144274",
+   "address": "Lange Vogelstraat 3",
+   "builtYear": 1918,
+   "widthM": 5,
+   "eavesM": 4.19,
+   "storeys3dbag": 2,
+   "bagBay": null,
+   "strip": {
+    "wall": "#b87f69",
+    "wallRaw": "#554539",
+    "skyline": {
+     "eavesM": 5.6,
+     "eavesRow": 151,
+     "confidence": 0.74,
+     "crown": {
+      "widthM": 1.85,
+      "riseM": 3.78,
+      "topWidthM": 0.25,
+      "centre": 0.49
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "frontClass": "ribbon",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "one-storey front (eaves <= 6 m): no balcony",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 2.33,
+       "widthM": 4.6,
+       "centre": 0.5
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.05
+   },
+   "status": "placed",
+   "type": "vogel-1918-timber-band-cottage",
+   "score": 1,
+   "placement": {
+    "type": "vogel-1918-timber-band-cottage",
+    "mirror": true
+   },
+   "notes": [
+    "door left: mirrored",
+    "crown half-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012144274",
+    "ncc": 0.315,
+    "nccRaw": 0.315,
+    "shiftM": [
+     -0.35,
+     0.1
+    ],
+    "usable": 0.96,
+    "abstain": null,
+    "verdict": "WARN",
+    "reasons": [
+     "mask IoU 0.093 < 0.45"
+    ],
+    "wall": {
+     "photo": "#2b2a2e",
+     "model": "#2c2b30",
+     "dL": 0.006
+    },
+    "glazing": {
+     "photo": 0.11,
+     "model": 0.15
+    },
+    "columns": {
+     "photo": null,
+     "model": null
+    },
+    "iou": 0.093
+   },
+   "challengers": {
+    "vogel-1918-timber-band-cottage~m": 0.315,
+    "vogel-1918-timber-band-cottage": 0.253
+   }
+  },
+  {
+   "pandId": "0363100012128397",
+   "address": "Lange Vogelstraat 5",
+   "builtYear": 1918,
+   "widthM": 5,
+   "eavesM": 4.1,
+   "storeys3dbag": 2,
+   "bagBay": null,
+   "strip": {
+    "wall": "#2b2a2d",
+    "wallRaw": "#564439",
+    "skyline": {
+     "eavesM": 5.35,
+     "eavesRow": 161,
+     "confidence": 0.84,
+     "crown": {
+      "widthM": 1.3,
+      "riseM": 4.03,
+      "topWidthM": 0.57,
+      "centre": 0.3
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 4,
+    "frontClass": "blank",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "one-storey front (eaves <= 6 m): no balcony",
+     "openAxes": [
+      {
+       "widthM": 0.68,
+       "centre": 0.46,
+       "light": 0.28
+      },
+      {
+       "widthM": 0.8,
+       "centre": 0.91,
+       "light": 0.12
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 2.38,
+       "widthM": 4.6,
+       "centre": 0.5
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.02
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best vogel-1918-timber-band-cottage scores 0.62 < 0.7 (strip cornice 5.35 m vs the type's 4.1 m (wall-dormer skyline 6 m); strip columns 4 vs 2 bays)",
+   "best": {
+    "type": "vogel-1918-timber-band-cottage",
+    "score": 0.62,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "strip cornice 5.35 m vs the type's 4.1 m (wall-dormer skyline 6 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 2 vs 0/1/2"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 4 vs 2 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012063241",
+   "address": "Lange Vogelstraat 7",
+   "builtYear": 1918,
+   "widthM": 18.01,
+   "eavesM": 4.19,
+   "storeys3dbag": 2,
+   "bagBay": null,
+   "strip": {
+    "wall": "#4e5156",
+    "wallRaw": "#4c4f42",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 375,
+     "confidence": 0,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 13,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "one-storey front (eaves <= 6 m): no balcony",
+     "openAxes": [
+      {
+       "widthM": 2.55,
+       "centre": 0.08,
+       "light": 0.22
+      },
+      {
+       "widthM": 1,
+       "centre": 0.19,
+       "light": 0.21
+      },
+      {
+       "widthM": 0.7,
+       "centre": 0.25,
+       "light": 0.08
+      },
+      {
+       "widthM": 2.58,
+       "centre": 0.42,
+       "light": 0.16
+      },
+      {
+       "widthM": 0.97,
+       "centre": 0.53,
+       "light": 0.16
+      },
+      {
+       "widthM": 2.58,
+       "centre": 0.66,
+       "light": 0.13
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 2.45,
+       "widthM": 1.7,
+       "centre": 0.13
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.27
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "no front on the strip: sky over the roof in 0 % of columns (< 75 %): the strip shows a nearer wall, fence or tree, not the front",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012114049",
+   "address": "Lange Vogelstraat 11",
+   "builtYear": 1918,
+   "widthM": 5,
+   "eavesM": 4.16,
+   "storeys3dbag": 2,
+   "bagBay": null,
+   "strip": {
+    "wall": "#ba7e68",
+    "wallRaw": "#3d3b36",
+    "skyline": {
+     "eavesM": 5.4,
+     "eavesRow": 159,
+     "confidence": 0.9,
+     "crown": {
+      "widthM": 0.78,
+      "riseM": 3.57,
+      "topWidthM": 0.03,
+      "centre": 0.49
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "one-storey front (eaves <= 6 m): no balcony",
+     "openAxes": [
+      {
+       "widthM": 2.85,
+       "centre": 0.33,
+       "light": 0.12
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.09
+   },
+   "status": "placed",
+   "type": "vogel-1918-timber-band-cottage",
+   "score": 0.71,
+   "placement": {
+    "type": "vogel-1918-timber-band-cottage",
+    "mirror": true
+   },
+   "notes": [
+    "crown half-dormer (type default)",
+    "door reviewer pin: mirrored (Lange Vogelstraat 1 (2025-09-22): door left, window right)"
+   ],
+   "likeness": {
+    "pandId": "0363100012114049",
+    "ncc": 0.32,
+    "nccRaw": 0.32,
+    "shiftM": [
+     -0.3,
+     0.1
+    ],
+    "usable": 0.88,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "wall dL +0.17",
+     "glazing  mean 0.15 vs photo 0.03"
+    ],
+    "wall": {
+     "photo": "#474749",
+     "model": "#8e6c5a",
+     "dL": 0.173
+    },
+    "glazing": {
+     "photo": 0.03,
+     "model": 0.15
+    },
+    "columns": {
+     "photo": null,
+     "model": null
+    },
+    "iou": 0.225
+   },
+   "challengers": {
+    "vogel-1918-timber-band-cottage~m": 0.32,
+    "vogel-1918-timber-band-cottage": 0.275
+   }
+  },
+  {
+   "pandId": "0363100012117598",
+   "address": "Lange Vogelstraat 13",
+   "builtYear": 1918,
+   "widthM": 5,
+   "eavesM": 4.15,
+   "storeys3dbag": 2,
+   "bagBay": null,
+   "strip": {
+    "wall": "#454546",
+    "wallRaw": "#3b402b",
+    "skyline": {
+     "eavesM": 8.63,
+     "eavesRow": 30,
+     "confidence": 0.53,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "blank",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "one-storey front (eaves <= 6 m): no balcony",
+     "openAxes": [
+      {
+       "widthM": 2.27,
+       "centre": 0.75,
+       "light": 0.1
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.39
+   },
+   "status": "placed",
+   "type": "vogel-1918-timber-band-cottage",
+   "score": 1,
+   "placement": {
+    "type": "vogel-1918-timber-band-cottage"
+   },
+   "notes": [
+    "door right",
+    "crown half-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012117598",
+    "ncc": 0.383,
+    "nccRaw": 0.383,
+    "shiftM": [
+     0,
+     0.25
+    ],
+    "usable": 0.54,
+    "abstain": null,
+    "verdict": "NO EVIDENCE",
+    "reasons": [
+     "foliage 34 % > 25 %"
+    ],
+    "wall": {
+     "photo": "#bb806b",
+     "model": "#8e6c5a",
+     "dL": -0.122
+    },
+    "glazing": {
+     "photo": 0.81,
+     "model": 0.17
+    },
+    "columns": {
+     "photo": null,
+     "model": null
+    },
+    "iou": 0.236
+   },
+   "challengers": {
+    "vogel-1918-timber-band-cottage": 0.383,
+    "vogel-1918-timber-band-cottage~m": 0.236
+   }
+  },
+  {
+   "pandId": "0363100012135488",
+   "address": "Lange Vogelstraat 15",
+   "builtYear": 1918,
+   "widthM": 5,
+   "eavesM": 4.12,
+   "storeys3dbag": 2,
+   "bagBay": null,
+   "strip": {
+    "wall": "#624f42",
+    "wallRaw": "#564a3f",
+    "skyline": {
+     "eavesM": 6.08,
+     "eavesRow": 132,
+     "confidence": 0.59,
+     "crown": {
+      "widthM": 1.48,
+      "riseM": 3.23,
+      "topWidthM": 0.15,
+      "centre": 0.52
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "one-storey front (eaves <= 6 m): no balcony",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 2.48,
+       "widthM": 3.3,
+       "centre": 0.64
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.03
+   },
+   "status": "placed",
+   "type": "vogel-1918-timber-band-cottage",
+   "score": 1,
+   "placement": {
+    "type": "vogel-1918-timber-band-cottage",
+    "mirror": true
+   },
+   "notes": [
+    "crown half-dormer (type default)",
+    "door reviewer pin: mirrored (Lange Vogelstraat 5: door left, window right)"
+   ],
+   "likeness": {
+    "pandId": "0363100012135488",
+    "ncc": 0.232,
+    "nccRaw": 0.232,
+    "shiftM": [
+     0.4,
+     0
+    ],
+    "usable": 0.94,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "wall dL -0.27",
+     "glazing  mean 0.16 vs photo 0.82"
+    ],
+    "wall": {
+     "photo": "#886e5e",
+     "model": "#2c2b30",
+     "dL": -0.273
+    },
+    "glazing": {
+     "photo": 0.82,
+     "model": 0.16
+    },
+    "columns": {
+     "photo": null,
+     "model": null
+    },
+    "iou": 0.151
+   },
+   "challengers": {
+    "vogel-1918-timber-band-cottage~m": 0.232,
+    "vogel-1918-timber-band-cottage": 0.208
+   }
+  }
+ ]
+}

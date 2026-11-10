@@ -1,0 +1,128 @@
+{
+ "street": "Zamenhofstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched n/a (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012062060",
+   "addresses": [
+    "Zamenhofstraat 76"
+   ],
+   "groundUnits": [
+    {
+     "address": "Zamenhofstraat 76",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000877903"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012119786",
+   "addresses": [
+    "Zamenhofstraat 74"
+   ],
+   "groundUnits": [
+    {
+     "address": "Zamenhofstraat 74",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000877902"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012148706",
+   "addresses": [
+    "Zamenhofstraat 72"
+   ],
+   "groundUnits": [
+    {
+     "address": "Zamenhofstraat 72",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000877901"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012092401",
+   "addresses": [
+    "Zamenhofstraat 68",
+    "Zamenhofstraat 70"
+   ],
+   "groundUnits": [
+    {
+     "address": "Zamenhofstraat 68",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010000877899"
+    },
+    {
+     "address": "Zamenhofstraat 70",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010000877900"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012083019",
+   "addresses": [
+    "Zamenhofstraat 66"
+   ],
+   "groundUnits": [
+    {
+     "address": "Zamenhofstraat 66",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000877898"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012079189",
+   "addresses": [
+    "Zamenhofstraat 64"
+   ],
+   "groundUnits": [
+    {
+     "address": "Zamenhofstraat 64",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000877897"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012079781",
+   "addresses": [
+    "Zamenhofstraat 62"
+   ],
+   "groundUnits": [
+    {
+     "address": "Zamenhofstraat 62",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000877896"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  }
+ ]
+}

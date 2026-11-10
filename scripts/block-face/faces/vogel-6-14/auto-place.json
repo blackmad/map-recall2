@@ -1,0 +1,281 @@
+{
+ "face": "vogel-6-14",
+ "street": "Korte Vogelstraat",
+ "library": "vogelbuurt",
+ "stripDate": "2019-06-28",
+ "seconds": 0.19,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012131550",
+   "address": "Korte Vogelstraat 14",
+   "builtYear": 1918,
+   "widthM": 10.01,
+   "eavesM": 3.31,
+   "storeys3dbag": 2,
+   "bagBay": null,
+   "strip": {
+    "wall": "#624f44",
+    "wallRaw": "#5f4e43",
+    "skyline": {
+     "eavesM": 4.53,
+     "eavesRow": 120,
+     "confidence": 0.55,
+     "crown": {
+      "widthM": 2.15,
+      "riseM": 2.8,
+      "topWidthM": 0.33,
+      "centre": 0.43
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 12,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "one-storey front (eaves <= 6 m): no balcony",
+     "openAxes": [
+      {
+       "widthM": 1.93,
+       "centre": 0.21,
+       "light": 0.07
+      },
+      {
+       "widthM": 1.15,
+       "centre": 0.71,
+       "light": 0.09
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 2.17,
+       "widthM": 1.32,
+       "centre": 0.15
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "no front on the strip: sky over the roof in 70 % of columns (< 75 %): the strip shows a nearer wall, fence or tree, not the front",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012123838",
+   "address": "Korte Vogelstraat 10",
+   "builtYear": 1918,
+   "widthM": 4.1,
+   "eavesM": 3.33,
+   "storeys3dbag": 2,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6b5449",
+    "wallRaw": "#6d574c",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 301,
+     "confidence": 0,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "blank",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "one-storey front (eaves <= 6 m): no balcony",
+     "openAxes": [
+      {
+       "widthM": 0.88,
+       "centre": 0.24,
+       "light": 0.2
+      },
+      {
+       "widthM": 2.38,
+       "centre": 0.68,
+       "light": 0.15
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.02
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "no front on the strip: sky over the roof in 11 % of columns (< 75 %): the strip shows a nearer wall, fence or tree, not the front",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012080002",
+   "address": "Korte Vogelstraat 8",
+   "builtYear": 1918,
+   "widthM": 5.91,
+   "eavesM": 3.34,
+   "storeys3dbag": 2,
+   "bagBay": null,
+   "strip": {
+    "wall": "#bcaaa3",
+    "wallRaw": "#554643",
+    "skyline": {
+     "eavesM": 5.03,
+     "eavesRow": 100,
+     "confidence": 0.67,
+     "crown": {
+      "widthM": 0.72,
+      "riseM": 2.5,
+      "topWidthM": 0.4,
+      "centre": 0.62
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "ribbon",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "one-storey front (eaves <= 6 m): no balcony",
+     "openAxes": [
+      {
+       "widthM": 0.8,
+       "centre": 0.1,
+       "light": 0.38
+      },
+      {
+       "widthM": 1.52,
+       "centre": 0.53,
+       "light": 0.13
+      },
+      {
+       "widthM": 0.82,
+       "centre": 0.92,
+       "light": 0.15
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012086570",
+   "address": "Korte Vogelstraat 6",
+   "builtYear": 1918,
+   "widthM": 10.02,
+   "eavesM": 3.36,
+   "storeys3dbag": 2,
+   "bagBay": null,
+   "strip": {
+    "wall": "#876054",
+    "wallRaw": "#56483d",
+    "skyline": {
+     "eavesM": 6.42,
+     "eavesRow": 44,
+     "confidence": 0.61,
+     "crown": {
+      "widthM": 1.57,
+      "riseM": 1.05,
+      "topWidthM": 0.78,
+      "centre": 0.87
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 7,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "one-storey front (eaves <= 6 m): no balcony",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 2.48,
+       "widthM": 2.88,
+       "centre": 0.74
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.08
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best vogel-1918-cottage-2axis: frontage 10.02 m, type 3.8-4.95 m)",
+   "best": {
+    "type": "vogel-1918-cottage-2axis",
+    "score": 0,
+    "veto": [
+     "frontage 10.02 m, type 3.8-4.95 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 6.42 m vs the type's 3.2 m (wall-dormer skyline 4.55 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 2 vs 0/1/2"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.009 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 7 vs 2 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

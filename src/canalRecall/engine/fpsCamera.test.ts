@@ -70,3 +70,46 @@ test('fpsRequested reads ?cam= and the stored choice', () => {
   assert.equal(fpsRequested('', 'fps'), true);
   assert.equal(fpsRequested('', null), false);
 });
+
+// The clearance guard's poses (engine/ownWorldView.ts solveFps): the eye against a wall, and the 2026-11-10 probe at the
+// quay (4.88395, 52.37335) and Egelantiersstraat (4.8815, 52.37585), where the guard's `stuck` was right: the probe's
+// `exact` test put the eye point itself inside pand ...4217 (top 14.25 m) and ...2887 (8.95 m), the teleport spots being
+// off the road graph on the plaza that the footprint covers. Not a margin fault.
+import { eyeInsideBuilding, nearPlaneReachM } from './streetVisibility';
+import { FPS_NEAR_DIVISOR, clearBackM as clearBack } from './fpsCamera';
+
+const wallEast = (lng: number, lat: number, gapM: number, topM = 12) => {
+  const x0 = lng + gapM / kx, x1 = x0 + 10 / kx, dy = 10 / 111_320;
+  return { type: 'Feature', properties: { id: 'wall', height: topM }, geometry: { type: 'Polygon', coordinates: [[[x0, lat - dy], [x1, lat - dy], [x1, lat + dy], [x0, lat + dy], [x0, lat - dy]]] } } as never;
+};
+const reachOf = (distanceM: number) => 0.2 + nearPlaneReachM(distanceM / FPS_NEAR_DIVISOR, 72, 1440 / 900);
+
+function guard(wall: never, rider: [number, number]) {
+  const base = { rider, bearingDeg: 90, viewportHeightPx: 900 };
+  const reach = reachOf(fpsPose(base).distanceM);
+  const blockerAt = (back: number) => { const p = fpsPose({ ...base, backM: back }); return eyeInsideBuilding({ lngLat: p.eye.lngLat, altitude: p.eye.heightM }, [wall], reach); };
+  return { reach, blockerAt, back: clearBack(back => !!blockerAt(back)) };
+}
+
+test('an eye 0.25 m from a wall backs off until the near plane clears it', () => {
+  const { reach, blockerAt, back } = guard(wallEast(4.88, LAT, 0.25), [4.88, LAT]);
+  assert.ok(reach > 0.3 && reach < 0.5, `reach ${reach}`);
+  assert.ok(back != null && back > 0, `back ${back}`);
+  assert.equal(blockerAt(back!), null);
+  assert.ok(0.25 + back! >= reach - 0.25, 'the cleared eye is at least the reach (to a probe step) from the wall');
+});
+
+test('an eye 2 m from a wall does not move', () => {
+  assert.equal(guard(wallEast(4.88, LAT, 2), [4.88, LAT]).back, 0);
+});
+
+test('an eye inside a footprint (a passage, or a rider off the road) is stuck: no step back clears it', () => {
+  const inside = { type: 'Feature', properties: { id: 'passage', height: 14.25 }, geometry: { type: 'Polygon', coordinates: [[[4.8799, LAT - 0.0001], [4.8805, LAT - 0.0001], [4.8805, LAT + 0.0001], [4.8799, LAT + 0.0001], [4.8799, LAT - 0.0001]]] } } as never;
+  const { back, blockerAt } = guard(inside, [4.8802, LAT]);
+  assert.equal(back, null);
+  assert.ok(blockerAt(0));
+});
+
+test('a low footprint under the eye (a kerb-height sliver below 1.6 m - 0.75 m) does not block', () => {
+  assert.equal(guard(wallEast(4.88, LAT, 0.1, 0.5), [4.88, LAT]).back, 0);
+});
