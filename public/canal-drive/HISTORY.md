@@ -1,5 +1,11 @@
 # Canal Recall — what is built
 
+**Batch a1 round 4 (2026-11-10): labelCalm on, ribbon kit, Vogelbuurt-Noord holds, coverage 92.**
+- **labelCalm on by default.** The chase-camera ride check found landmarks being culled and streets left nameless, so the lane exempted landmarks and kept a floor of 3 names before the flip. `?labelCalm=0` turns it off.
+- **Ribbon-storey kit component** (`walls[].ribbonStoreys`): continuous glazed bands with spandrel and head panels, measured pitch and transoms. Three houses were fitted but held, because the likeness judge still misreads coloured panels as glass.
+- **Vogelbuurt-Noord holds:** the batch gate read the 2025-09-22 strips as colour-cast, but the Opus reviewer accepted them by eye. A reviewed-strip override (`blockFace/reviewedStrips.ts`) passes only that exact face and date. 27 more pands were installed this way. Kalkoenstraat 30 is pinned to #6e625e because the batch fit drew it green.
+- **Coverage map:** coverage-v1 was regenerated after the installs. It was stale at 89 and now counts 92 buurten with their own look.
+
 **Batch a1 round 3: the new-build family on by default; Landlust-Zuid rounds 3–6 (2026-11-10, session a1).**
 - **New-build family on** (lane/newbuild-kit-20261110 at 64c6fdf62, opus).
   - The round-2 flip had been reverted before push because the bay cells overflowed the byte layers: on, it was 197 cells, not 193, because every preset adds upper, ground and groundDoor cells. The procedural array is already 256 at 191.
