@@ -112,6 +112,18 @@
   "ke61-75": {
    "ref": "panorama TMX7316010203-002987_pano_0001_000121 (40 m across the Kloveniersburgwal, row view of 61-75)",
    "at": "2023-03-06"
+  },
+  "ke79-93": {
+   "ref": "panorama b_20250108_1041_Track21_Sphere_00050 (42 m across the Kloveniersburgwal, row view of 79-93)",
+   "at": "2025-01-08"
+  },
+  "ke95-107": {
+   "ref": "panorama b_20250108_1041_Track21_Sphere_00061 (44 m across the Kloveniersburgwal, row view of 95-107)",
+   "at": "2025-01-08"
+  },
+  "ke107-119": {
+   "ref": "panorama b_20250108_1041_Track21_Sphere_00068 (45 m across the Kloveniersburgwal, row view of 107-119)",
+   "at": "2025-01-08"
   }
  },
  "pands": [
@@ -1408,6 +1420,235 @@
    },
    "notes": [
     "Red brick, white cornice, two roof dormers (1895)"
+   ]
+  },
+  {
+   "pandId": "0363100012571643",
+   "label": "79",
+   "street": "Kloveniersburgwal",
+   "photo": "ke79-93",
+   "front": {
+    "gable": "cornice",
+    "cornice": "simple",
+    "dormers": 1,
+    "dormerStyle": "flat",
+    "dormerBody": "timber",
+    "storeys": 4,
+    "bays": 2,
+    "windows": "sash",
+    "windowSurround": "none"
+   },
+   "palette": {
+    "brick": "#5a4035"
+   },
+   "notes": [
+    "Two wide bays under a plain cornice and a dormer"
+   ]
+  },
+  {
+   "pandId": "0363100012171186",
+   "label": "83",
+   "street": "Kloveniersburgwal",
+   "photo": "ke79-93",
+   "front": {
+    "gable": "cornice",
+    "cornice": "simple",
+    "dormers": 1,
+    "dormerStyle": "flat",
+    "dormerBody": "timber",
+    "storeys": 4,
+    "bays": 3,
+    "windows": "sash-small-panes",
+    "windowSurround": "none"
+   },
+   "palette": {
+    "brick": "#5a3e34"
+   },
+   "notes": [
+    "1974 rebuild in old form: small-pane windows, a dormer in a black mansard"
+   ],
+   "limits": [
+    [
+     "roof",
+     "a steep black mansard face under the dormer; drawn as the 3DBAG roof"
+    ]
+   ]
+  },
+  {
+   "pandId": "0363100012171187",
+   "label": "93",
+   "street": "Kloveniersburgwal",
+   "photo": "ke79-93",
+   "front": {
+    "gable": "cornice",
+    "cornice": "simple",
+    "storeys": 4,
+    "bays": 3,
+    "windows": "sash",
+    "windowSurround": "none"
+   },
+   "palette": {
+    "brick": "#4a3530"
+   },
+   "notes": [
+    "Dark brick, plain parapet cornice"
+   ]
+  },
+  {
+   "pandId": "0363100012169338",
+   "label": "97",
+   "street": "Kloveniersburgwal",
+   "photo": "ke95-107",
+   "front": {
+    "gable": "cornice",
+    "cornice": "simple",
+    "storeys": 5,
+    "bays": 3,
+    "windows": "sash",
+    "windowSurround": "none"
+   },
+   "palette": {
+    "brick": "#4c3a32"
+   },
+   "notes": [
+    "Dark brick under a white cornice (register: cornice)"
+   ]
+  },
+  {
+   "pandId": "0363100012177826",
+   "label": "105",
+   "street": "Kloveniersburgwal",
+   "photo": "ke95-107",
+   "front": {
+    "gable": "cornice",
+    "cornice": "simple",
+    "storeys": 4,
+    "bays": 3,
+    "windows": "cross",
+    "windowSurround": "stone-lintel",
+    "bands": "speklagen",
+    "speklagen": {
+     "spacing": 10,
+     "courses": 2
+    },
+    "atticWindows": 1
+   },
+   "palette": {
+    "brick": "#6a4234",
+    "band": "#ece8de"
+   },
+   "notes": [
+    "1690 front with white block bands (blokken) round every window and an arched attic window in the crown"
+   ],
+   "limits": [
+    [
+     "window head",
+     "white block-and-band pattern round each window (alternating stone blocks in the jambs); drawn as speklagen and stone lintels"
+    ],
+    [
+     "crown",
+     "a small arched attic window in a raised centre; not drawn"
+    ]
+   ]
+  },
+  {
+   "pandId": "0363100012177858",
+   "label": "107",
+   "street": "Kloveniersburgwal",
+   "photo": "ke107-119",
+   "front": {
+    "gable": "cornice",
+    "cornice": "simple",
+    "storeys": 4,
+    "bays": 4,
+    "windows": "sash",
+    "windowSurround": "full-frame"
+   },
+   "palette": {
+    "brick": "#ddd6c6",
+    "wallMaterial": "painted-brick"
+   },
+   "notes": [
+    "Cream-painted four-bay front, plain cornice, red door"
+   ]
+  },
+  {
+   "pandId": "0363100012177857",
+   "label": "109",
+   "street": "Kloveniersburgwal",
+   "photo": "ke107-119",
+   "front": {
+    "gable": "flat",
+    "cornice": "simple",
+    "storeys": 4,
+    "bays": 3,
+    "windows": "sash",
+    "windowSurround": "full-frame"
+   },
+   "palette": {
+    "brick": "#4a3530"
+   },
+   "notes": [
+    "Dark brick, cream cornice with a raised centre attic"
+   ],
+   "limits": [
+    [
+     "crown",
+     "the centre of the cornice rises in a segmental attic with an arched light; not drawn"
+    ],
+    [
+     "roof",
+     "3DBAG roof planes read as a jagged peak over the cornice; drawn flat behind it, as the photo shows from across the canal"
+    ]
+   ]
+  },
+  {
+   "pandId": "0363100012171161",
+   "label": "113",
+   "street": "Kloveniersburgwal",
+   "photo": "ke107-119",
+   "front": {
+    "gable": "cornice",
+    "cornice": "simple",
+    "dormers": 1,
+    "dormerStyle": "flat",
+    "dormerBody": "timber",
+    "storeys": 5,
+    "bays": 3,
+    "windows": "sash",
+    "windowSurround": "full-frame"
+   },
+   "palette": {
+    "brick": "#3e302c"
+   },
+   "notes": [
+    "Very dark brick, white frames, a pointed roof dormer"
+   ],
+   "limits": [
+    [
+     "dormer",
+     "the dormer is pointed (pediment); pointed dormers fail open-edges here, drawn flat"
+    ]
+   ]
+  },
+  {
+   "pandId": "0363100012171160",
+   "label": "115",
+   "street": "Kloveniersburgwal",
+   "photo": "ke107-119",
+   "front": {
+    "gable": "cornice",
+    "cornice": "simple",
+    "storeys": 5,
+    "bays": 3,
+    "windows": "sash",
+    "windowSurround": "full-frame"
+   },
+   "palette": {
+    "brick": "#4a3530"
+   },
+   "notes": [
+    "Dark brick, plain cornice"
    ]
   }
  ],
