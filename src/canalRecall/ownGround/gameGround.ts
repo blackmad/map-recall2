@@ -473,7 +473,7 @@ export class OwnGround {
   /** When each pending build was asked for (cell load latency: request → installed). */
   private readonly requestedAt = new Map<string, number>();
   /** The last build's stats per cell key (cost per park cell: triangles per layer, build ms). */
-  private readonly cellBuilds = new Map<string, BuiltCell['stats'] & { lod: 0 | 1; detail: CellDetail; railFetch?: string }>();
+  private readonly cellBuilds = new Map<string, BuiltCell['stats'] & { lod: 0 | 1; detail: CellDetail; railFetch?: string; groundV2?: string }>();
   /** The worker store's rail manifest size (its `ready` message): main and worker each load cells.json. */
   private workerRailCells: number | null = null;
   /** Builds the main thread asked for and then threw away (install no longer wanted, a stale reply), by reason (#232). */
@@ -1003,7 +1003,7 @@ export class OwnGround {
     this.stats.cellsBuilt++;
     this.stats.buildMs.push(cell.stats.buildMs);
     this.stats.lastBuild = { key: cell.key, lod: cell.lod, detail: cell.detail, ...cell.stats };
-    this.cellBuilds.set(cell.key, { ...cell.stats, lod: cell.lod, detail: cell.detail, ...(typeof msg.railFetch === 'string' ? { railFetch: msg.railFetch } : {}) });
+    this.cellBuilds.set(cell.key, { ...cell.stats, lod: cell.lod, detail: cell.detail, ...(typeof msg.railFetch === 'string' ? { railFetch: msg.railFetch } : {}), ...(typeof msg.groundV2 === 'string' ? { groundV2: msg.groundV2 } : {}) });
     (cell as BuiltCell & { arrival?: unknown }).arrival = { at: performance.now(), ...(msg.timing && typeof msg.timing === 'object' ? msg.timing as object : {}) };
     this.installQueue.push(cell);
     this.host.repaint();
@@ -1651,7 +1651,7 @@ export class OwnGround {
   cellStats(key: string): Record<string, unknown> | null {
     const b = this.cellBuilds.get(key);
     if (!b) return null;
-    return { lod: b.lod, detail: b.detail, triangles: b.triangles, byLayer: b.byLayer, buildMs: b.buildMs, bytes: b.bytes, parks: b.parks, hasParks: this.store.parkCells.has(key), roads: b.roads ?? null, hasRoads: this.store.roadCells.has(key), flatBridges: b.bridges.flat, hasRails: this.store.railCells.has(key), railFetch: b.railFetch ?? null, rails: b.rails ?? null };
+    return { lod: b.lod, detail: b.detail, triangles: b.triangles, byLayer: b.byLayer, buildMs: b.buildMs, bytes: b.bytes, parks: b.parks, hasParks: this.store.parkCells.has(key), roads: b.roads ?? null, hasRoads: this.store.roadCells.has(key), flatBridges: b.bridges.flat, hasRails: this.store.railCells.has(key), railFetch: b.railFetch ?? null, rails: b.rails ?? null, groundV2: b.groundV2 ?? null };
   }
 
   status(): Record<string, unknown> {

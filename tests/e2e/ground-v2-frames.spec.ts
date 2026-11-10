@@ -1,0 +1,67 @@
+import { test, type Page } from '@playwright/test';
+import { mkdirSync, writeFileSync } from 'node:fs';
+import { settleWorld, useBundlesDir } from './helpers';
+import { GROUND_V2_PLACES } from '../../src/canalRecall/ownGround/groundV2Places';
+
+// Lane G2a #372: before/after frames at the ground v2 named places (groundV2Places.ts), own engine, the rider stood at
+// each place with the chase camera, then a low aerial over it. GROUND_V2_BEFORE=1 shoots without `?groundV2=1` (the
+// worker-built surface). The baked files must be served at data/extracts/amsterdam/ground-v2/ (staging copied there
+// for the run, not committed). Writes <project>-<place>-{ride,air}.png and groundV2.json (each place cell's loader
+// outcome: 'v2:<baked tris>/<dropped>' or 'fallback:<why>'). Opt-in:
+//   GROUND_V2_FRAMES=1 [GROUND_V2_BEFORE=1] [BUNDLES_DIR=dir] GROUND_V2_SHOTS_OUT=dir PW_PORT=4470 \
+//     bash /tmp/canal-pw.sh npx playwright test tests/e2e/ground-v2-frames.spec.ts --project=desktop --workers=1
+test.skip(!process.env.GROUND_V2_FRAMES, 'set GROUND_V2_FRAMES=1');
+
+const BEFORE = process.env.GROUND_V2_BEFORE === '1';
+const OUT = process.env.GROUND_V2_SHOTS_OUT || `artifacts/ground-v2/frames/${BEFORE ? 'before' : 'after'}`;
+
+async function place(page: Page, lng: number, lat: number, bearing: number): Promise<void> {
+  await page.evaluate(({ lng, lat, bearing }) => {
+    const g = (window as any).canalRecallGame, l = g.osmLoader, ppm = (0, eval)('PIXELS_PER_METER') as number;
+    const b = bearing * Math.PI / 180;
+    g.player.x = l._lastOffsetX + (lng - l._lastCenterLng) * 111320 * Math.cos(l._lastCenterLat * Math.PI / 180) * ppm;
+    g.player.y = l._lastOffsetY - (lat - l._lastCenterLat) * 111320 * ppm;
+    g.player.angle = Math.atan2(-Math.cos(b), Math.sin(b));
+    Object.assign(g.player, { speed: 0, vx: 0, vy: 0 });
+  }, { lng, lat, bearing });
+}
+
+test('ground v2: frames at the named places', async ({ page }, info) => {
+  test.setTimeout(1_500_000);
+  mkdirSync(OUT, { recursive: true });
+  await useBundlesDir(page);
+  await page.goto(`/canal-drive/?ride=free&engine=own${BEFORE ? '' : '&groundV2=1'}`);
+  await page.waitForFunction(() => { const g = (window as any).canalRecallGame; return g?.state === 4 && g.camera?.introOverview === 0 && g.vectorMap?._ownGround?.ready; }, null, { timeout: 180_000 });
+  await page.evaluate(() => { const g = (window as any).canalRecallGame; g.player.update = function () { this.speed = 0; this.vx = 0; this.vy = 0; }; });
+  const only = process.env.GROUND_V2_ONLY?.split(',');
+  const outcome: Record<string, unknown> = {};
+  for (const p of GROUND_V2_PLACES) {
+    if (only && !only.includes(p.id)) continue;
+    await place(page, p.at[0], p.at[1], p.bearing);
+    await settleWorld(page, `${p.id} ride`);
+    await page.evaluate(() => { const g = (window as any).canalRecallGame.vectorMap._ownGround; if (g?.ready) { g.residencyAt = null; g.updateResidency(); } });
+    await settleWorld(page, `${p.id} ride re-planned`);
+    await page.waitForTimeout(1500);
+    await page.screenshot({ path: `${OUT}/${info.project.name}-${p.id}-ride.png` });
+    outcome[p.id] = await page.evaluate((at) => { const g = (window as any).canalRecallGame.vectorMap._ownGround; const key = g.cellKeyAt(at); const s = key ? g.cellStats(key) : null; return { key, lod: s?.lod ?? null, detail: s?.detail ?? null, groundV2: s?.groundV2 ?? null }; }, p.at);
+  }
+  for (const p of GROUND_V2_PLACES) {
+    if (only && !only.includes(p.id)) continue;
+    await place(page, p.at[0], p.at[1], p.bearing);
+    const pose = { center: p.at, zoom: 18.6, pitch: 45, bearing: p.bearing };
+    const jump = () => page.evaluate((q) => {
+      const vm = (window as any).canalRecallGame.vectorMap, g = vm._ownGround;
+      vm.__held ??= { sync: vm.sync, aimAtWorld: vm.aimAtWorld };
+      vm.sync = () => {}; vm.aimAtWorld = () => {};
+      vm.jumpToLngLat({ center: q.center, zoom: q.zoom, pitch: q.pitch, bearing: q.bearing, elevation: g?.ready ? g.heightAt(q.center) : 0 });
+    }, pose);
+    await jump();
+    await settleWorld(page, `${p.id} air`);
+    await jump();
+    await settleWorld(page, `${p.id} air again`);
+    await page.waitForTimeout(1500);
+    await page.screenshot({ path: `${OUT}/${info.project.name}-${p.id}-air.png` });
+    await page.evaluate(() => { const vm = (window as any).canalRecallGame.vectorMap; if (vm.__held) { vm.sync = vm.__held.sync; vm.aimAtWorld = vm.__held.aimAtWorld; vm.__held = null; } });
+  }
+  writeFileSync(`${OUT}/${info.project.name}-groundV2.json`, JSON.stringify(outcome, null, 1));
+});

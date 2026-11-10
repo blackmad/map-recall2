@@ -64,8 +64,8 @@ export function partitionSources(input: CellInput, o: SourceOptions = {}): Parti
   for (const g of input.waterAround) for (const poly of g.polygons) { if (near(poly)) push(RANK.water, null, 0, 'water', `w${wi}`, poly.map(r => r.map(p => [p[0], p[1]] as Vec2))); wi++; }
 
   // Roads (roads-v1), with the worker's runtime overrides (RoadIndex: parking islands, grey fietsstraat, crossing strips).
-  const roadsCells = [input.roads, ...(input.roadsAround ?? [])];
-  const pad = 60;
+  // Deduplicated (the cell's own roads are also in roadsAround): a 5×5 bake input holds up to 25 road cells.
+  const roadsCells = [...new Set([input.roads, ...(input.roadsAround ?? [])])];
   const index = input.lod === 0 && roadsCells.some(c => c?.surfaces.length) ? new RoadIndex(roadsCells) : null;
   if (index) {
     index.parkingIslands();
@@ -140,7 +140,8 @@ export function partitionSources(input: CellInput, o: SourceOptions = {}): Parti
   }
   // OSM area fills (own-ground-osm-v1, the 3×3: an area is drawn whole by one cell today, clipped per cell here).
   const areaLayer: Record<string, GroundLayer> = { park: 'park', grass: 'park', wood: 'wood', square: 'square', paved: 'square', parking: 'parking' };
-  if (index) index.prepareFast([x0 - pad, y0 - pad, x1 + pad, y1 + pad]);
+  // Exact containment, no prepareFast raster: the 5×5 can exceed the raster's 16-bit ids, and an exact test cannot
+  // differ between two neighbours' bakes (seam determinism).
   const isCourtyard = (rings: Vec2[][]): boolean => {
     if (!index) return false;
     const d = COURTYARD_ROAD_M;
@@ -148,7 +149,7 @@ export function partitionSources(input: CellInput, o: SourceOptions = {}): Parti
       const p = pts[i], q = pts[i + 1], len = Math.hypot(q[0] - p[0], q[1] - p[1]), n = Math.max(1, Math.ceil(len / 2));
       for (let k = 0; k < n; k++) {
         const x = p[0] + (q[0] - p[0]) * k / n, y = p[1] + (q[1] - p[1]) * k / n;
-        if (index.findFast(x, y) >= 0 || index.findFast(x + d, y) >= 0 || index.findFast(x - d, y) >= 0 || index.findFast(x, y + d) >= 0 || index.findFast(x, y - d) >= 0) return false;
+        if (index.find(x, y) >= 0 || index.find(x + d, y) >= 0 || index.find(x - d, y) >= 0 || index.find(x, y + d) >= 0 || index.find(x, y - d) >= 0) return false;
       }
     }
     return true;
