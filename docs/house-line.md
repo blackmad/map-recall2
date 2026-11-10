@@ -270,7 +270,10 @@ row 6; generic route held vs on, against the spec, the recipe route and the phot
 | all three | storeys 19/19, columns 17/19 (unchanged), window shape 7/19, PASS 6 (5), wall dL vs recipe 0.127 (0.125) | +162 (+0.95 %) |
 
 Wall-colour verdicts dominate the preview's FAIL (12 of the 19 reasons are `wall dL`) and are advisory until H2e and H9.
-City-wide cost: H11_CITY_COST.
+City-wide (`odd-cells-hash.ts` over the 55 house-spec tiles, staged extract, 411,708 entries): held
+(`HOUSE_SPEC_DESIGN=0`) is byte-identical to the published extract (0 differ); on, 1,325 buildings differ (the spec'd
+block-face houses, installed ones included), at -296 wall and -5,586 extra vertices (-0.1 % and -0.8 % of those
+buildings; fewer pale-trim extras), shell unchanged. No per-cell triangle budget grows.
 
 **Not wired** (still recipe-route only), ranked by how visible in a ride frame:
 1. `eavesHeight`: the wall top is 3DBAG's (Haarlemmerdijk 18: 7.94 m against an 11.0 m measured cornice). The generic mass
