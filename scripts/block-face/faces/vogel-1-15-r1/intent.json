@@ -5,9 +5,9 @@
  "street": "Lange Vogelstraat",
  "sources": [
   {
-   "id": "strip-2022-05-10",
+   "id": "strip-2025-09-22",
    "kind": "street-panorama",
-   "capturedAt": "2022-05-10",
+   "capturedAt": "2025-09-22",
    "image": "staging/block-face/vogel-1-15-r1/strip.jpg",
    "license": "Gemeente Amsterdam panorama, CC BY 4.0"
   }
@@ -22,29 +22,9 @@
  ],
  "houses": [
   {
-   "pandId": "0363100012141706",
-   "slug": "vogel-141706",
-   "address": "Lange Vogelstraat 1",
-   "type": {
-    "type": "vogel-1918-timber-band-cottage"
-   },
-   "groundFloor": {
-    "use": "residential",
-    "bag": [
-     "woonfunctie"
-    ],
-    "photoDate": "2022-05-10",
-    "agreement": "bag-only",
-    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
-   },
-   "rhythm": {
-    "citation": "auto-place: vogel-1918-timber-band-cottage scored 0.77 on eaves 1, storeys 1, stucco 1, columns 0; strip 2022-05-10 span 0-200"
-   }
-  },
-  {
-   "pandId": "0363100012144274",
-   "slug": "vogel-144274",
-   "address": "Lange Vogelstraat 3",
+   "pandId": "0363100012114049",
+   "slug": "vogel-114049",
+   "address": "Lange Vogelstraat 11",
    "type": {
     "type": "vogel-1918-timber-band-cottage",
     "mirror": true
@@ -54,12 +34,53 @@
     "bag": [
      "woonfunctie"
     ],
-    "photoDate": "2022-05-10",
+    "photoDate": "2025-09-22",
     "agreement": "bag-only",
     "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
    },
    "rhythm": {
-    "citation": "auto-place: vogel-1918-timber-band-cottage scored 1 on eaves 1, storeys 1, stucco 1, columns 1; strip 2022-05-10 span 200-400"
+    "citation": "auto-place: vogel-1918-timber-band-cottage scored 1 on eaves 1, storeys 1, stucco -; strip 2025-09-22 span 1321-1521"
+   }
+  },
+  {
+   "pandId": "0363100012117598",
+   "slug": "vogel-117598",
+   "address": "Lange Vogelstraat 13",
+   "type": {
+    "type": "vogel-1918-timber-band-cottage"
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2025-09-22",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: vogel-1918-timber-band-cottage scored 1 on eaves 1, storeys 1, stucco -; strip 2025-09-22 span 1521-1721"
+   }
+  },
+  {
+   "pandId": "0363100012135488",
+   "slug": "vogel-135488",
+   "address": "Lange Vogelstraat 15",
+   "type": {
+    "type": "vogel-1918-timber-band-cottage",
+    "mirror": true
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2025-09-22",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: vogel-1918-timber-band-cottage scored 1 on eaves 1, storeys 1, stucco 1; strip 2025-09-22 span 1721-1921"
    }
   }
  ],

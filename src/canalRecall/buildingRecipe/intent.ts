@@ -1080,6 +1080,17 @@ export interface LargeHouseIntent {
   /** the photo skyline confirms this house's 3DBAG eaves off the row line: no row-coherence clamp */
   ownEaves?: boolean;
 }
+/** One ribbon-storey entry (`LargeWallIntent.ribbonStoreys`); proportions of the storey and the bay only, never metres. */
+export interface RibbonStoreyIntent {
+  storeys: number[];
+  bays?: number[];
+  sill: number; h: number;
+  lights: number;
+  rows?: number[];
+  spandrel?: {h: number; colour: string};
+  head?: {h: number; colour: string};
+  frame?: string;
+}
 export interface LargeWallIntent {
   /** 3DBAG LoD2.2 WallSurface indices (shell boundary index) of this wall group. */
   wallSurfaces: number[];
@@ -1355,6 +1366,17 @@ export interface LargeWallIntent {
    * under a punched grid or a blank wall (OBA IJburg's library storey, Reigersbos shops, Buitenveldert). Absent: byte-identical.
    */
   plinth?: {storeys?: number[]; bays?: number[]; lights: number; sill?: number; h?: number; pier?: number; transom?: number; factor?: number};
+  /**
+   * Ribbon storeys (kit gap "ribbon under punched", 2026-11-10): on each entry's `storeys` (0 = ground) one continuous band
+   * of glazing across the bays (or the listed `bays`) in place of the storey's windows, the frames of neighbouring bays
+   * touching as one post. Measured per storey from the photo: from `sill` to `sill + h` of the storey, `lights` lights per
+   * bay (its own mullion pitch, independent of the punched rows), horizontal glazing bars at `rows` fractions of the band
+   * height (transoms, ascending), an opaque `spandrel` panel (borstwering) filling the band's lowest `spandrel.h` in its own
+   * colour, an opaque `head` panel filling its top `head.h` (a shopfront strip's coloured fascia lights), and the band's
+   * own `frame` colour. A clerestory over a punched brick ground (Vliegtuigstraat 1952), a glazed
+   * first floor under punched office storeys, an office ribbon in a blank panel front. Absent: byte-identical.
+   */
+  ribbonStoreys?: RibbonStoreyIntent[];
   /**
    * A layered screen of pale panels over the wall on the listed `storeys` (expanded-metal mesh, perforated sheet): one panel
    * per bay, `joint` m apart (default 0.06), from `from` to `to` of the storey's height (defaults 0.15 and 0.92, leaving

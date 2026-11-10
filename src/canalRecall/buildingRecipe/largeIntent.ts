@@ -17,9 +17,10 @@ import {GROUP_WALL_MATERIALS, LARGE_HOUSE_CROWNS, OTHER_WINDOW_GRID, ROOF_MATERI
 import {LARGE_GROUNDS, LARGE_SYSTEMS, LARGE_WINDOWS} from '../blockBuilding/systems.ts';
 import {ARCH_KINDS} from '../blockBuilding/arch.ts';
 import {stoneDressingsProblems} from './stoneDressingsIntent.ts';
+import {ribbonStoreysProblems} from './ribbonStoreysIntent.ts';
 
 const COORDINATE_KEYS = /^(x|y|z|left|right|top|bottom|width|height|depth|offset|position|coordinates|ring|vertices|plane)(M)?$|M$/;
-const WALL_KEYS = ['wallSurfaces', 'street', 'mainSurface', 'system', 'storeys', 'alignWith', 'baysPerStorey', 'ground', 'windows', 'entrance', 'signage', 'garageDoors', 'garageBays', 'stringCourses', 'cornice', 'piers', 'balconies', 'blankStoreys', 'glazedStoreys', 'police', 'palette', 'arches', 'hoist', 'sills', 'frames', 'deepBars', 'nameBoards', 'crosses', 'curve', 'wallMaterial', 'tiltedBays', 'screen', 'stoneStoreys', 'brickStoreys', 'pilasters', 'lantern', 'gateways', 'hallDoors', 'windowShape', 'windowPattern', 'hand', 'hall', 'columns', 'wallSplit', 'arcade', 'glazing', 'courses', 'souterrain', 'spandrels', 'floorBands', 'groundFactor', 'shell', 'openBays', 'meshScreen', 'loggias', 'plinth', 'houses', 'dressings', 'windowGroup', 'storeyShapes', 'cladding', 'arcadePiers', 'windowBox', 'storeyFactors', 'gallery', 'mansard', 'signBoards', 'falseFront', 'sideLight', 'bayWindows', 'loggiaBands', 'groundPiers', 'boxBalconies', 'stackedBlocks', 'balconyBands', 'wallFamily'];
+const WALL_KEYS = ['wallSurfaces', 'street', 'mainSurface', 'system', 'storeys', 'alignWith', 'baysPerStorey', 'ground', 'windows', 'entrance', 'signage', 'garageDoors', 'garageBays', 'stringCourses', 'cornice', 'piers', 'balconies', 'blankStoreys', 'glazedStoreys', 'police', 'palette', 'arches', 'hoist', 'sills', 'frames', 'deepBars', 'nameBoards', 'crosses', 'curve', 'wallMaterial', 'tiltedBays', 'screen', 'stoneStoreys', 'brickStoreys', 'pilasters', 'lantern', 'gateways', 'hallDoors', 'windowShape', 'windowPattern', 'hand', 'hall', 'columns', 'wallSplit', 'arcade', 'glazing', 'courses', 'souterrain', 'spandrels', 'floorBands', 'groundFactor', 'shell', 'openBays', 'meshScreen', 'loggias', 'plinth', 'houses', 'dressings', 'windowGroup', 'storeyShapes', 'cladding', 'arcadePiers', 'windowBox', 'storeyFactors', 'gallery', 'mansard', 'signBoards', 'falseFront', 'sideLight', 'bayWindows', 'loggiaBands', 'groundPiers', 'boxBalconies', 'stackedBlocks', 'balconyBands', 'wallFamily', 'ribbonStoreys'];
 const HOUSE_KEYS = ['schemaVersion', 'kind', 'id', 'pandId', 'address', 'sources', 'walls', 'otherWalls', 'roofPlant', 'roof', 'palette', 'closedBands', 'layeredKit', 'shellRepair', 'footprint', 'groundClamp', 'budgetTriangles', 'measured', 'draftedBy', 'crown', 'notes'];
 const SIGN_TEXT = /^[A-Za-z0-9&'. -]{1,60}$/;
 
@@ -461,6 +462,7 @@ export function validateLargeIntent(input: unknown): LargeBuildingIntent {
       if (w.baysPerStorey === undefined) problems.push(`${at2} needs baysPerStorey`);
       if (w.piers) problems.push(`${at2}: not with piers (full-height piers on every bay)`);
     }
+    if (w.ribbonStoreys !== undefined) problems.push(...ribbonStoreysProblems(w, at));
     if (w.plinth !== undefined) {
       const pl = w.plinth, at2 = `${at}.plinth`;
       if (!pl || typeof pl !== 'object') problems.push(`${at2}: object {storeys, bays, lights, sill, h, pier, transom, factor}`);

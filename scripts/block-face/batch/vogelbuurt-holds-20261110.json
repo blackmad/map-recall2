@@ -1,0 +1,540 @@
+{
+ "name": "vogelbuurt-holds-20261110",
+ "buurt": "vogelbuurt-noord",
+ "library": "vogelbuurt",
+ "generatedAt": "2026-11-10T07:08:57.653Z",
+ "method": "scripts/block-face/batch.ts",
+ "totals": {
+  "faces": 18,
+  "runs": 19,
+  "installed": 12,
+  "installedPands": 27,
+  "failed": 7,
+  "byReason": {
+   "no-type": 5,
+   "strip-over-drawn-high": 1,
+   "strip-over-drawn-low": 1
+  }
+ },
+ "rows": [
+  {
+   "face": "vogel-5-15",
+   "street": "Derde Vogelstraat",
+   "ride": null,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0.887,
+    "reasons": [
+     "cold cast rb",
+     "blown"
+    ]
+   },
+   "nccMin": null,
+   "nccMedian": null,
+   "stripOverDrawn": null,
+   "wallFits": 0,
+   "droppedCorners": [],
+   "triangles": null,
+   "sheet": null,
+   "run": "vogel-5-15",
+   "pands": 5,
+   "mode": "auto-place",
+   "stripDate": "2022-12-27",
+   "status": "failed",
+   "reasons": [
+    "no-type: 0/5 placed (2x match: every type vetoed (best vogel-#-cottage-#axis: frontage # m, type #-# ; 1x run: a single placed pand between held neighbours or the face end: a block ; 1x review: review: Opus strip verdict #-#-#: a hedge hides the door and the photo)"
+   ],
+   "seconds": 0.9
+  },
+  {
+   "face": "vogel-2-16",
+   "street": "Eerste Vogelstraat",
+   "ride": null,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0.801,
+    "reasons": [
+     "blown",
+     "cold cast rb"
+    ]
+   },
+   "nccMin": null,
+   "nccMedian": null,
+   "stripOverDrawn": null,
+   "wallFits": 0,
+   "droppedCorners": [],
+   "triangles": null,
+   "sheet": null,
+   "run": "vogel-2-16",
+   "pands": 7,
+   "mode": "auto-place",
+   "stripDate": "2022-05-10",
+   "status": "failed",
+   "reasons": [
+    "no-type: 0/7 placed (2x evidence: no front on the strip: sky over the roof in # % of columns (< # %): th; 1x review: review: Opus strip verdict #-#-#: vogel-#-#-r#: mis-mirrored (pins to ; 1x review: review: Opus strip verdict #-#-#: vogel-#-#-r#: mis-mirrored (photo pu)"
+   ],
+   "seconds": 0.9
+  },
+  {
+   "face": "vogel-3-15",
+   "street": "Eerste Vogelstraat",
+   "ride": null,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 1,
+    "reasons": [
+     "cyan cast gm",
+     "blown",
+     "cold cast rb"
+    ]
+   },
+   "nccMin": 0.243,
+   "nccMedian": 0.35,
+   "stripOverDrawn": 1.047,
+   "wallFits": 2,
+   "droppedCorners": [],
+   "triangles": 629,
+   "sheet": "staging/block-face/vogel-3-15-r1/review/strip-sheet.png",
+   "stripDate": "2021-06-15",
+   "run": "vogel-3-15-r1",
+   "pands": 2,
+   "mode": "auto-place",
+   "status": "installed",
+   "reasons": [],
+   "seconds": 7.7
+  },
+  {
+   "face": "kalkoen-8-16",
+   "street": "Kalkoenstraat",
+   "ride": null,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0.394,
+    "reasons": [
+     "cold cast rb"
+    ]
+   },
+   "nccMin": 0.362,
+   "nccMedian": 0.515,
+   "stripOverDrawn": 0.955,
+   "wallFits": 1,
+   "droppedCorners": [],
+   "triangles": 1259,
+   "sheet": "staging/block-face/kalkoen-8-16-r1/review/strip-sheet.png",
+   "stripDate": "2018-07-30",
+   "run": "kalkoen-8-16-r1",
+   "pands": 2,
+   "mode": "auto-place",
+   "status": "installed",
+   "reasons": [],
+   "seconds": 13.3
+  },
+  {
+   "face": "kalkoen-8-16",
+   "street": "Kalkoenstraat",
+   "ride": null,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0.394,
+    "reasons": [
+     "cold cast rb"
+    ]
+   },
+   "nccMin": 0.447,
+   "nccMedian": 0.563,
+   "stripOverDrawn": 1.031,
+   "wallFits": 4,
+   "droppedCorners": [],
+   "triangles": 1273,
+   "sheet": "staging/block-face/kalkoen-8-16-r2/review/strip-sheet.png",
+   "stripDate": "2018-07-30",
+   "run": "kalkoen-8-16-r2",
+   "pands": 2,
+   "mode": "auto-place",
+   "status": "installed",
+   "reasons": [],
+   "seconds": 8.8
+  },
+  {
+   "face": "kalkoen-18-26",
+   "street": "Kalkoenstraat",
+   "ride": null,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0.605,
+    "reasons": [
+     "cold cast rb",
+     "blown"
+    ]
+   },
+   "nccMin": 0.16,
+   "nccMedian": 0.318,
+   "stripOverDrawn": 0.982,
+   "wallFits": 2,
+   "droppedCorners": [],
+   "triangles": 1317,
+   "sheet": "staging/block-face/kalkoen-18-26-r1/review/strip-sheet.png",
+   "stripDate": "2025-09-22",
+   "run": "kalkoen-18-26-r1",
+   "pands": 2,
+   "mode": "auto-place",
+   "status": "installed",
+   "reasons": [],
+   "seconds": 10.3
+  },
+  {
+   "face": "kalkoen-28-34",
+   "street": "Kalkoenstraat",
+   "ride": null,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0.739,
+    "reasons": [
+     "cold cast rb",
+     "blown"
+    ]
+   },
+   "nccMin": 0.261,
+   "nccMedian": 0.315,
+   "stripOverDrawn": 0.803,
+   "wallFits": 1,
+   "droppedCorners": [],
+   "triangles": 1938,
+   "sheet": "staging/block-face/kalkoen-28-34-r1/review/strip-sheet.png",
+   "stripDate": "2017-12-28",
+   "run": "kalkoen-28-34-r1",
+   "pands": 3,
+   "mode": "auto-place",
+   "status": "installed",
+   "reasons": [],
+   "seconds": 7.9
+  },
+  {
+   "face": "vogel-2-16-122155",
+   "street": "Lange Vogelstraat",
+   "ride": null,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0.52,
+    "reasons": [
+     "cold cast rb",
+     "cyan cast gm"
+    ]
+   },
+   "nccMin": 0.364,
+   "nccMedian": 0.495,
+   "stripOverDrawn": 1.002,
+   "wallFits": 3,
+   "droppedCorners": [],
+   "triangles": 1477,
+   "sheet": "staging/block-face/vogel-2-16-122155-r1/review/strip-sheet.png",
+   "stripDate": "2025-09-22",
+   "run": "vogel-2-16-122155-r1",
+   "pands": 3,
+   "mode": "auto-place",
+   "status": "installed",
+   "reasons": [],
+   "seconds": 7.2
+  },
+  {
+   "face": "vogel-1-15",
+   "street": "Lange Vogelstraat",
+   "ride": null,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0.625,
+    "reasons": [
+     "cold cast rb"
+    ]
+   },
+   "nccMin": 0.525,
+   "nccMedian": 0.813,
+   "stripOverDrawn": 1.849,
+   "wallFits": 3,
+   "droppedCorners": [],
+   "triangles": 1490,
+   "sheet": "staging/block-face/vogel-1-15-r1/review/strip-sheet.png",
+   "stripDate": "2025-09-22",
+   "run": "vogel-1-15-r1",
+   "pands": 3,
+   "mode": "auto-place",
+   "status": "failed",
+   "reasons": [
+    "strip-over-drawn-high: 1.849 > 1.25 (walls drawn darker than the photo)"
+   ],
+   "seconds": 5.2
+  },
+  {
+   "face": "pelikaan-16-22",
+   "street": "Pelikaanstraat",
+   "ride": null,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 1,
+    "reasons": [
+     "cold cast rb",
+     "blown"
+    ]
+   },
+   "nccMin": 0.32,
+   "nccMedian": 0.523,
+   "stripOverDrawn": 1.038,
+   "wallFits": 2,
+   "droppedCorners": [],
+   "triangles": 2012,
+   "sheet": "staging/block-face/pelikaan-16-22-r1/review/strip-sheet.png",
+   "stripDate": "2021-02-17",
+   "run": "pelikaan-16-22-r1",
+   "pands": 3,
+   "mode": "auto-place",
+   "status": "installed",
+   "reasons": [],
+   "seconds": 7.2
+  },
+  {
+   "face": "pelikaan-3-9",
+   "street": "Pelikaanstraat",
+   "ride": null,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 1,
+    "reasons": [
+     "cold cast rb"
+    ]
+   },
+   "nccMin": 0.182,
+   "nccMedian": 0.203,
+   "stripOverDrawn": null,
+   "wallFits": 0,
+   "droppedCorners": [],
+   "triangles": 1321,
+   "sheet": "staging/block-face/pelikaan-3-9-r1/review/strip-sheet.png",
+   "stripDate": "2025-09-22",
+   "run": "pelikaan-3-9-r1",
+   "pands": 2,
+   "mode": "auto-place",
+   "status": "installed",
+   "reasons": [],
+   "seconds": 4.8
+  },
+  {
+   "face": "vogel-2-6",
+   "street": "Vierde Vogelstraat",
+   "ride": null,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 1,
+    "reasons": [
+     "blown",
+     "cold cast rb"
+    ]
+   },
+   "nccMin": null,
+   "nccMedian": null,
+   "stripOverDrawn": null,
+   "wallFits": 0,
+   "droppedCorners": [],
+   "triangles": null,
+   "sheet": null,
+   "run": "vogel-2-6",
+   "pands": 3,
+   "mode": "auto-place",
+   "stripDate": "2017-05-15",
+   "status": "failed",
+   "reasons": [
+    "no-type: 0/3 placed (1x match: every type vetoed (best vogel-#-cottage-#axis: frontage # m, type #-# ; 1x run: a single placed pand between held neighbours or the face end: a block ; 1x review: review: Opus strip verdict #-#-#: photo reads window then door, model )"
+   ],
+   "seconds": 0.8
+  },
+  {
+   "face": "vogel-3-11",
+   "street": "Vierde Vogelstraat",
+   "ride": null,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0.667,
+    "reasons": [
+     "blown",
+     "cold cast rb"
+    ]
+   },
+   "nccMin": 0.346,
+   "nccMedian": 0.382,
+   "stripOverDrawn": 1.004,
+   "wallFits": 2,
+   "droppedCorners": [],
+   "triangles": 608,
+   "sheet": "staging/block-face/vogel-3-11-r1/review/strip-sheet.png",
+   "stripDate": "2022-05-10",
+   "run": "vogel-3-11-r1",
+   "pands": 2,
+   "mode": "auto-place",
+   "status": "installed",
+   "reasons": [],
+   "seconds": 6.7
+  },
+  {
+   "face": "vogelplantsoen-8-12",
+   "street": "Vogelplantsoen",
+   "ride": null,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 1,
+    "reasons": [
+     "cold cast rb"
+    ]
+   },
+   "nccMin": 0.278,
+   "nccMedian": 0.393,
+   "stripOverDrawn": 1.034,
+   "wallFits": 2,
+   "droppedCorners": [],
+   "triangles": 1019,
+   "sheet": "staging/block-face/vogelplantsoen-8-12-r1/review/strip-sheet.png",
+   "stripDate": "2025-09-22",
+   "run": "vogelplantsoen-8-12-r1",
+   "pands": 2,
+   "mode": "auto-place",
+   "status": "installed",
+   "reasons": [],
+   "seconds": 5.9
+  },
+  {
+   "face": "zamenhof-6-12",
+   "street": "Zamenhofstraat",
+   "ride": null,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 1,
+    "reasons": [
+     "cold cast rb"
+    ]
+   },
+   "nccMin": 0.38,
+   "nccMedian": 0.428,
+   "stripOverDrawn": 1.005,
+   "wallFits": 2,
+   "droppedCorners": [],
+   "triangles": 1016,
+   "sheet": "staging/block-face/zamenhof-6-12-r1/review/strip-sheet.png",
+   "stripDate": "2025-09-22",
+   "run": "zamenhof-6-12-r1",
+   "pands": 2,
+   "mode": "auto-place",
+   "status": "installed",
+   "reasons": [],
+   "seconds": 7.6
+  },
+  {
+   "face": "zamenhof-46-52",
+   "street": "Zamenhofstraat",
+   "ride": null,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 1,
+    "reasons": [
+     "cold cast rb"
+    ]
+   },
+   "nccMin": null,
+   "nccMedian": null,
+   "stripOverDrawn": null,
+   "wallFits": 0,
+   "droppedCorners": [],
+   "triangles": null,
+   "sheet": null,
+   "run": "zamenhof-46-52",
+   "pands": 4,
+   "mode": "auto-place",
+   "stripDate": "2025-09-22",
+   "status": "failed",
+   "reasons": [
+    "no-type: 0/4 placed (2x match: best vogel-#-timber-band-cottage scores # < # (strip cornice # m vs th; 1x review: review: Opus strip verdict #-#-#: wrong mirror; the photo door is on t; 1x run: a single placed pand between held neighbours or the face end: a block )"
+   ],
+   "seconds": 1.2
+  },
+  {
+   "face": "zamenhof-54-60",
+   "street": "Zamenhofstraat",
+   "ride": null,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 1,
+    "reasons": [
+     "blown",
+     "cold cast rb"
+    ]
+   },
+   "nccMin": 0.432,
+   "nccMedian": 0.432,
+   "stripOverDrawn": 1.016,
+   "wallFits": 1,
+   "droppedCorners": [],
+   "triangles": 1006,
+   "sheet": "staging/block-face/zamenhof-54-60-r1/review/strip-sheet.png",
+   "stripDate": "2025-09-22",
+   "run": "zamenhof-54-60-r1",
+   "pands": 2,
+   "mode": "auto-place",
+   "status": "installed",
+   "reasons": [],
+   "seconds": 9.1
+  },
+  {
+   "face": "zamenhof-78-82",
+   "street": "Zamenhofstraat",
+   "ride": null,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 1,
+    "reasons": [
+     "cold cast rb"
+    ]
+   },
+   "nccMin": null,
+   "nccMedian": null,
+   "stripOverDrawn": null,
+   "wallFits": 0,
+   "droppedCorners": [],
+   "triangles": null,
+   "sheet": null,
+   "run": "zamenhof-78-82",
+   "pands": 3,
+   "mode": "auto-place",
+   "stripDate": "2025-09-22",
+   "status": "failed",
+   "reasons": [
+    "no-type: 0/3 placed (1x run: a single placed pand between held neighbours or the face end: a block ; 1x review: review: Opus strip verdict #-#-#: a hedge hides the door (verdict); 1x review: review: Opus strip verdict #-#-#: window about # m off the photo (verd)"
+   ],
+   "seconds": 1.5
+  },
+  {
+   "face": "zamenhof-84-90",
+   "street": "Zamenhofstraat",
+   "ride": null,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 1,
+    "reasons": [
+     "cold cast rb"
+    ]
+   },
+   "nccMin": 0.35,
+   "nccMedian": 0.364,
+   "stripOverDrawn": 0.787,
+   "wallFits": 3,
+   "droppedCorners": [],
+   "triangles": 1476,
+   "sheet": "staging/block-face/zamenhof-84-90-r1/review/strip-sheet.png",
+   "stripDate": "2025-09-22",
+   "run": "zamenhof-84-90-r1",
+   "pands": 3,
+   "mode": "auto-place",
+   "status": "failed",
+   "reasons": [
+    "strip-over-drawn-low: 0.787 < 0.8 (walls drawn lighter than the photo)"
+   ],
+   "seconds": 5.4
+  }
+ ]
+}
