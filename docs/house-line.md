@@ -1518,6 +1518,31 @@ triangles.
 
 On the generic path the painted door is not raised, so the landing covers its lower part.
 
+### Front roofs on the recipe route (belt-jordaan, #366, 2026-11-10)
+
+`roof.source: front` and `roof.hip` used to work only in the block-face compile (`blockFace/compile.ts`
+`roofSourceFor`). A HouseSpec on the recipe route compiles as a single house (`compileBuilding`), so it kept the 3DBAG
+roof. On Bloemgracht 7 (0363100012173342) that drew a 3DBAG saddle triangle over the frieze, where the photo shows
+only a dormer and a low slate slope behind the cornice.
+
+`buildingRecipe/houseFrontRoof.ts` now gives a single house the same front forms as the face, before the fit. The
+form logic is `frontRoofSpecs`, moved to `blockFace/frontRoofSpecs.ts` and re-exported from `compile.ts`; the roof
+pieces come from `recipeRoofFacts`:
+
+- a saddle under a gable's crown;
+- an attic face behind a dormered or plain cornice (`roof.rise` × the top storey);
+- flat with `roof.form: 'flat'`.
+
+**When it runs:**
+
+- Opt-in: a house without `source: front` or `hip` gets back the same facts object.
+- It skips facts that a face already roofed (`facts.roofSource`), so a face pand is not roofed twice.
+- `test:fit-golden` reported all 207 house recipes identical, `block-face/roof-golden.ts` 0 violations, and
+  `houseFrontRoof.test.ts` passes.
+
+**What a lone house cannot know:** the cornice group's shared attic line, the row ridge, photo `frontRoof` hints, and
+the roof falling to a corner pand's side fronts. For those, type the pand on a block face.
+
 ## §5 The kit-gap queue
 
 Stub (lane H6): `kit-gaps.ts` aggregates `schemaLimits` by `component`; the horizon rule.

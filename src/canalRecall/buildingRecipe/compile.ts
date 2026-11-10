@@ -28,6 +28,7 @@ import {addGroundCanopies} from './groundCanopy.ts';
 import {applyOudWest} from './oudWest.ts';
 import {addStoops} from './stoopMesh.ts';
 import {applyOrielHoist} from './orielHoist.ts';
+import {houseFrontRoofFacts} from './houseFrontRoof.ts';
 
 /** `{sameAs, overrides}` recipes: deep-merge onto the named neighbour; fronts merge by index. */
 export function resolveIntent(raw: any, load: (id: string) => any, depth = 0): CanalHouseIntent {
@@ -214,6 +215,8 @@ export function compileBuilding(intent: LargeBuildingIntent, facts: BuildingFact
 export function compileBuilding(intent: CanalHouseIntent, facts: BuildingFacts): CompiledBuilding;
 export function compileBuilding(intent: BuildingIntent, facts: BuildingFacts): CompiledBuilding | CompiledLargeBuilding {
   if (intent.kind === 'large') return compileLargeBuilding(intent, facts);
+  // `roof.source: front` / `roof.hip` on a house compiled alone (houseFrontRoof.ts); unchanged facts otherwise.
+  facts = houseFrontRoofFacts(intent, facts).facts;
   const {recipe, anchorRD, report, facts: fitted} = fitIntent(intent, facts);
   const built = compileCanalHouseRecipe(recipe);
   backJogs(built.group, recipe, report);
