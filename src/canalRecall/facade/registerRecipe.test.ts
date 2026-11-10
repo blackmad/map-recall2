@@ -3,7 +3,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { decorateFacade } from '../genericFacades.ts';
 import { decorateRoof } from '../roofMesh.ts';
-import { registerFactsEnabled, registerForce, registerPatch, registerYear, withRegisterFacts, eraOfYear, type PublishedFacts } from './registerRecipe.ts';
+import { REGISTER_READS_HELD, REGISTER_READS_NONE_HELD, registerFactsEnabled, registerForce, registerPatch, registerYear, withRegisterFacts, eraOfYear, type PublishedFacts } from './registerRecipe.ts';
 
 const ring = [[4.9, 52.37], [4.90007, 52.37], [4.90007, 52.37008], [4.9, 52.37008], [4.9, 52.37]];
 const house = (props: Record<string, unknown> = {}) => ({ type: 'Feature' as const, properties: <Record<string, unknown>>{ id: 'NL.IMBAG.Pand.1', height: 14, minHeight: 0, constructionYear: 1905, appearanceStyleSource: 'citywide-identity-palette-v3-not-measured', ...props }, geometry: { type: 'Polygon', coordinates: [ring] } });
@@ -59,10 +59,11 @@ test('gable: the register crown is set where nothing else set one, and never ove
 });
 
 test('elements: the register forces wall extras on, in a stable order', () => {
-  assert.deepEqual(registerForce({ elements: [{ key: 'stoop', term: 'stoep' }, { key: 'hoistBeam', term: 'hijsbalk' }, { key: 'sculpture', term: 'beeld' }], stoneBands: true }), ['hoist-beam', 'stoop', 'string-courses']);
-  assert.deepEqual(registerPatch({ elements: [] }, house().properties), {});
-  assert.equal(registerPatch({ elements: [{ key: 'dormer', term: 'dakkapel' }] }, house().properties).roofDormer, true);
-  assert.equal(registerPatch({ elements: [{ key: 'dormer', term: 'dakkapel' }] }, house({ roofDormer: true }).properties).roofDormer, undefined);
+  const none = REGISTER_READS_NONE_HELD;
+  assert.deepEqual(registerForce({ elements: [{ key: 'stoop', term: 'stoep' }, { key: 'hoistBeam', term: 'hijsbalk' }, { key: 'sculpture', term: 'beeld' }], stoneBands: true }, none), ['hoist-beam', 'stoop', 'string-courses']);
+  assert.deepEqual(registerPatch({ elements: [] }, house().properties, none), {});
+  assert.equal(registerPatch({ elements: [{ key: 'dormer', term: 'dakkapel' }] }, house().properties, none).roofDormer, true);
+  assert.equal(registerPatch({ elements: [{ key: 'dormer', term: 'dakkapel' }] }, house({ roofDormer: true }).properties, none).roofDormer, undefined);
 });
 
 test('a register gable plans the crown through the roof decorator', () => {
@@ -95,4 +96,19 @@ test('forced extras: the register sets hoist beam, stoop and kroonlijst to certa
   }
   assert.ok(forcedHoist > diceHoist && forcedHoist >= 30, `hoist beam ${diceHoist} -> ${forcedHoist} of 40`);
   assert.ok(forcedCornice >= 30 && forcedStoop >= 25, `kroonlijst ${forcedCornice}, stoop ${forcedStoop}`);
+});
+
+test('held reads (review 2026-11-10): the default ships era, finish and gable; every forced extra and the dakkapel are held', () => {
+  const f: PublishedFacts = { gable: 'bell', facadeDate: date(1662), finish: 'plaster', stoneBands: true, elements: [{ key: 'stoop', term: 'stoep' }, { key: 'balcony', term: 'balkon' }, { key: 'bayWindow', term: 'erker' }, { key: 'shutters', term: 'luiken' }, { key: 'dormer', term: 'dakkapel' }] };
+  const p = registerPatch(f, house().properties);
+  assert.deepEqual(Object.keys(p).sort(), ['bagConstructionYear', 'constructionYear', 'monumentGable', 'registerFinish']);
+  assert.deepEqual(registerForce(f), []);
+  for (const read of ['balcony', 'bayWindow', 'shutters', 'stoop', 'hoistBeam', 'stoneBands', 'dormer'] as const) assert.ok(REGISTER_READS_HELD.has(read), read);
+  for (const read of ['era', 'finish', 'gable'] as const) assert.ok(!REGISTER_READS_HELD.has(read), read);
+  // A pand whose only facts are held reads comes back as the same object (byte-identical chain).
+  const plain = house();
+  assert.equal(withRegisterFacts(plain, facts({ elements: [{ key: 'balcony', term: 'balkon' }], stoneBands: true })), plain);
+  // Releasing a hold is one set away: the full lane read set still forces them.
+  assert.deepEqual(registerForce(f, REGISTER_READS_NONE_HELD), ['iron-balconies', 'bay-window', 'shutters-3d', 'stoop', 'string-courses'].sort());
+  assert.equal(registerPatch(f, house().properties, REGISTER_READS_NONE_HELD).roofDormer, true);
 });

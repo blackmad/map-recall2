@@ -26,3 +26,16 @@ test('golden: per-field precision and recall', () => {
   for (const k of ['date', 'type', 'gable', 'finish']) { assert.ok(pr[k].p >= 0.9 && pr[k].r >= 0.9, `${k} ${JSON.stringify(pr[k])}`); }
   for (const k of ['elements', 'style']) { assert.ok(pr[k].p >= 0.8 && pr[k].r >= 0.8, `${k} ${JSON.stringify(pr[k])}`); }
 });
+
+test('finish: a long description names plastered details on a brick front; only a plastered front counts (review 2026-11-10)', () => {
+  const pad = ' Omschrijving. Het pand telt vier bouwlagen onder een zadeldak met de nok evenwijdig aan de gracht.'.repeat(10);
+  // Keizersgracht 169116 / 101927 shapes: brick masonry with a plastered lintel or interior, read as plaster before.
+  assert.notEqual(parseRegisterFacts('1', 'Grachtenhuis gebouwd in 1617.' + pad + ' De voorgevel is opgemetseld in staand verband. De gepleisterde latei heeft een reliëf.').finish, 'plaster');
+  assert.equal(parseRegisterFacts('2', 'Pand.' + pad + ' De voorgevel is gepleisterd en witgeschilderd.').finish, 'plaster');
+  assert.equal(parseRegisterFacts('3', 'Pand.' + pad + ' Gepleisterde gevels onder een kroonlijst.').finish, 'plaster');
+  // A short entry's bare "gepleisterd" is about the front.
+  assert.equal(parseRegisterFacts('4', 'Pand met klokgevel (XVII B) gepleisterd en van ornament ontdaan XIX.').finish, 'plaster');
+  // A hardstone gable stone is not a stone front (168578, a brick Delft School office).
+  assert.equal(parseRegisterFacts('5', 'Pand met de hardstenen gevelsteen van het hofje.').finish, undefined);
+  assert.equal(parseRegisterFacts('6', 'Pand met zandstenen gevel onder rechte lijst.').finish, 'stone');
+});

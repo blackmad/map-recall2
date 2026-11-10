@@ -50,39 +50,58 @@ export const ELEMENT_COMPONENTS: Readonly<Record<string, readonly string[]>> = {
 /** Stone bands (speklagen) draw as string courses. */
 const STONE_BANDS_COMPONENT = 'string-courses';
 
-/** Wall-extra component ids the register's elements force on, in a stable order. */
-export function registerForce(f: PublishedFacts): string[] {
+/** Each read the register can make: the four property reads, the dormer flag, stone bands and one per element key. */
+export type RegisterRead = 'gable' | 'era' | 'finish' | 'dormer' | 'stoneBands' | keyof typeof ELEMENT_COMPONENTS;
+/**
+ * Reads held back from the default (review 2026-11-10, docs/reports/register-recipes-verdict-20261110.md): set by the
+ * frontal before/after strip against the city panoramas, not by the fact-match rates. A held read leaves its property
+ * (or its wall extra's dice) exactly as the chain had it without the register.
+ */
+//   ship: era (the c19 sash layout on Singel 54's XIXc front, canal sashes on Nieuwmarkt 10-12; no regression seen),
+//         finish (after the long-description fix in registerFacts.ts; a mapped wall colour still wins), gable.
+//   hold: every forced wall extra and the dakkapel. None of them showed in the ride frames where the register states
+//         them and the wall was in view (Langestraat 175320 stoep + deuromlijsting, Nieuwmarkt 20-22 speklagen), so no
+//         likeness gain is shown; balcony, bay window and shutters come ~90 % from long descriptions that cover side and
+//         rear walls and whole complexes; a dormer's roof plane is not checked from the street.
+export const REGISTER_ELEMENT_READS = Object.keys(ELEMENT_COMPONENTS) as ReadonlyArray<keyof typeof ELEMENT_COMPONENTS>;
+export const REGISTER_READS_HELD: ReadonlySet<RegisterRead> = new Set<RegisterRead>([...REGISTER_ELEMENT_READS, 'stoneBands', 'dormer']);
+/** No read held: the lane's full set (tests and a review pass that wants every read). */
+export const REGISTER_READS_NONE_HELD: ReadonlySet<RegisterRead> = new Set<RegisterRead>();
+const allowed = (read: RegisterRead, held: ReadonlySet<RegisterRead>) => !held.has(read);
+
+/** Wall-extra component ids the register's elements force on, in a stable order (held reads skipped). */
+export function registerForce(f: PublishedFacts, held: ReadonlySet<RegisterRead> = REGISTER_READS_HELD): string[] {
   const out = new Set<string>();
-  for (const e of f.elements ?? []) for (const id of ELEMENT_COMPONENTS[e.key] ?? []) out.add(id);
-  if (f.stoneBands) out.add(STONE_BANDS_COMPONENT);
+  for (const e of f.elements ?? []) if (allowed(e.key as RegisterRead, held)) for (const id of ELEMENT_COMPONENTS[e.key] ?? []) out.add(id);
+  if (f.stoneBands && allowed('stoneBands', held)) out.add(STONE_BANDS_COMPONENT);
   return [...out].sort();
 }
 
 type Props = Record<string, unknown>;
 /** The property patch the register's facts make on a feature's properties; empty when nothing applies. */
-export function registerPatch(f: PublishedFacts, p: Props): Props {
+export function registerPatch(f: PublishedFacts, p: Props, held: ReadonlySet<RegisterRead> = REGISTER_READS_HELD): Props {
   const measured = p.appearanceStyleSource !== undefined && p.appearanceStyleSource !== PRIOR_SOURCE;
   if (measured || p.kitWall || p.largeTier) return {};
   const patch: Props = {};
-  if (f.gable && (GABLE_SHAPES as readonly string[]).includes(f.gable) && p.monumentGable === undefined) patch.monumentGable = f.gable as GableShape;
+  if (allowed('gable', held) && f.gable && (GABLE_SHAPES as readonly string[]).includes(f.gable) && p.monumentGable === undefined) patch.monumentGable = f.gable as GableShape;
   const ry = registerYear(f);
-  if (ry !== null) {
+  if (ry !== null && allowed('era', held)) {
     const bag = p.constructionYear === null || p.constructionYear === undefined ? NaN : Number(p.constructionYear);
     if (!Number.isFinite(bag) || eraOfYear(ry) !== eraOfYear(bag)) { patch.constructionYear = ry; patch.bagConstructionYear = Number.isFinite(bag) ? bag : null; }
   }
-  if (f.finish) patch.registerFinish = f.finish === 'brick' || f.finish === 'ornamentalBrick' ? 'brick' : 'light';
+  if (f.finish && allowed('finish', held)) patch.registerFinish = f.finish === 'brick' || f.finish === 'ornamentalBrick' ? 'brick' : 'light';
   // A dakkapel or dakvenster the register names: the roof planner's dormer flag (3DBAG's roof parts otherwise decide).
-  if (f.elements?.some(e => e.key === 'dormer') && p.roofDormer !== true) patch.roofDormer = true;
-  const force = registerForce(f);
+  if (allowed('dormer', held) && f.elements?.some(e => e.key === 'dormer') && p.roofDormer !== true) patch.roofDormer = true;
+  const force = registerForce(f, held);
   if (force.length) patch.registerForce = force;
   return patch;
 }
 
 /** The decorator step: register facts for this feature's pand, or the same feature object when there are none. */
-export function withRegisterFacts<T extends { properties: Props }>(feature: T, facts: RegisterFactsMap): T {
+export function withRegisterFacts<T extends { properties: Props }>(feature: T, facts: RegisterFactsMap, held: ReadonlySet<RegisterRead> = REGISTER_READS_HELD): T {
   const f = facts.get(String(feature.properties.id ?? ''));
   if (!f) return feature;
-  const patch = registerPatch(f, feature.properties);
+  const patch = registerPatch(f, feature.properties, held);
   return Object.keys(patch).length ? { ...feature, properties: { ...feature.properties, ...patch } } : feature;
 }
 export const decorateWithRegisterFacts = <T extends { properties: Props }>(feature: T, f: PublishedFacts): T => withRegisterFacts(feature, new Map([[String(feature.properties.id ?? ''), f]]));

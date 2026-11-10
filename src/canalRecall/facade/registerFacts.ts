@@ -8,6 +8,8 @@
 import { classifyGableAt } from '../monumentGables.js';
 import type { GableShape } from '../roofMesh.js';
 
+/** Characters above which a register text is the long "Inleiding / Omschrijving" description, not a one-line entry. */
+export const LONG_DESCRIPTION = 800;
 export type RegisterDate = { from: number; to: number; confidence: 'exact' | 'approx' | 'period'; term: string };
 export type RegisterFinish = 'ornamentalBrick' | 'plaster' | 'stone' | 'painted' | 'brick';
 export type RegisterElement = { key: string; term: string };
@@ -157,9 +159,16 @@ export function parseRegisterFacts(sourceNr: string, text: string): RegisterFact
   const st = STYLES.filter(([, re]) => re.test(text)).map(([k]) => k);
   if (st.length) facts.style = st;
   // Finish: the wall itself, not a stone top or stone ornaments on a brick front.
+  // A long description (the "Inleiding / Omschrijving" format, review 2026-11-10) names plastered lintels, pilasters,
+  // cornices and interiors on brick fronts: there only a plastered front ("gepleisterde voorgevel", "gevel is
+  // gepleisterd") counts. A short entry's bare "gepleisterd" is about the front.
+  const plaster = text.length > LONG_DESCRIPTION
+    ? /(?:ge|be)pleisterde\s+(?:\w+\s+)?(?:voor|lijst|hals|trap|klok|tuit|punt)?gevels?\b|\b(?:voor)?gevels?\s+(?:zijn\s+|is\s+)?(?:geheel\s+)?(?:wit\s*)?(?:ge|be)pleisterd/i
+    : /(?:ge|be)pleisterd|pleisterwerk/i;
   const fin: Array<[RegisterFinish, RegExp]> = [
-    ['ornamentalBrick', /siermetselwerk/i], ['plaster', /(?:ge|be)pleisterd|pleisterwerk/i],
-    ['stone', /(?:natuur|zand|hard)stenen\s+(?:gevel|front)|gevel\s+(?:van|in|met\s+bekleding\s+van)\s+(?:natuur|zand|hard)steen/i],
+    ['ornamentalBrick', /siermetselwerk/i], ['plaster', plaster],
+    // `\b`: a "hardstenen gevelsteen" (gable stone) is not a stone front.
+    ['stone', /(?:natuur|zand|hard)stenen\s+(?:gevel|front)s?\b|\bgevel\s+(?:van|in|met\s+bekleding\s+van)\s+(?:natuur|zand|hard)steen/i],
     ['painted', /geschilderde\s+(?:gevel|voorgevel|baksteen)|gevel\s+(?:is\s+)?(?:geschilderd|gesausd)|gesausde\s+gevel/i], ['brick', /bakstenen\s+gevel|gevel\s+(?:van|in)\s+baksteen|bakstenen\s+(?:hoek)?(?:pand|huis|woonhuis|gebouw|pakhuis)|opgetrokken\s+in\s+baksteen|\bbaksteen/i],
   ];
   // Only a front the text gives one finish: plaster beside brick or stone ("ten dele zandsteen, ten dele gepleisterd") is mixed, and a fence has no front.
