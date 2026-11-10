@@ -772,6 +772,15 @@ This is the seed of lane H11 (apply the design fields in the spec route, or reti
   (`frontRoofSpecs` -> `recipeRoofFacts`) for the house, so 3DBAG keeps the footprint and an upper bound only. Typed, tested in
   `blockFace/houseFrontRoof.test.ts` (Haarlemmerdijk 6 pinned: roof top <= the 11.0 m cornice + 0.3 m where 3DBAG stands 11.8 m), and
   byte-identical when absent: `test:fit-golden` "all 207 house recipes identical" (no committed house carries either field).
+- `buildingRecipe/gates.ts`: with `facts.measuredEavesM` the `eaves-vs-3dbag` gate compares the model to the measured line, and `ridge-vs-3dbag`
+  lets the roof reach it (a cornice top over a parapet stands above 3DBAG's roof edge: Haarlemmerdijk 16, 11.6 m against a 10.4 m roof max), and a
+  front-derived roof (`roofSource`) may stand under 3DBAG's. Absent = the same gate (`fit-golden` unchanged for all 207 committed houses).
+
+**Frames and the staged world (lane belt-haarlemmer, batch 1, 2026-11-10).** `house:publish` in the lane worktree installed 8 of 9 recipe
+GLBs (131, 0363100012173479, is held: `open-edges` 3 edges / 5.2 m, independent of eaves, roof form, crown cap, windows and door) and a full
+`--shell` bake took 491 s into `artifacts/world/staging`; the "after" frames ran with `WORLD_DIR` on it, then `public/` was reverted so the
+branch carries specs only. The `[suppress]` step failed on its self-check, not on a pand of the batch: it still expects Nassaukade
+0363100012116526 to be blank and main now draws it.
 
 ## §3 Stage and publish
 
