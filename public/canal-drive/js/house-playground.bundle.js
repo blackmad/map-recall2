@@ -30,7 +30,8 @@ if (vThinM > 0.0) {
 	gl_FragColor.rgb = mix( gl_FragColor.rgb, vec3( fadeLuma ), fogFactor * ${Tt(P9*e)} );
 	gl_FragColor.rgb = mix( gl_FragColor.rgb, fogColor, fogFactor * ${Tt(E9*e)} );
 #endif`,Qk=T9(1),B5=`uniform vec3 fogColor;
-	varying float vFogDepth;
+	varying vec3 vFogEye;
+	#define vFogDepth length( vFogEye )
 	#ifdef FOG_EXP2
 		uniform float fogDensity;
 	#else
