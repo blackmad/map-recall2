@@ -25,6 +25,7 @@ import {FACES, STAGING} from './intake.ts';
 import {photoReadings} from './gable-from-photo.ts';
 import {loadSoup} from '../audit-glb-quality.ts';
 import {analyseSoup, DEFAULT_THRESHOLDS} from '../../src/canalRecall/landmarks/glbQuality.ts';
+import {compressGlb, describeInstalledGlb} from '../../src/canalRecall/glb/compressGlb.ts';
 
 const arg = (n: string) => process.argv.find(a => a.startsWith(`--${n}=`))?.slice(n.length + 3);
 const MODELS = 'public/canal-drive/models/ordinary-buildings/chunks', MANIFEST = 'public/canal-drive/ordinary-buildings-data/chunks.json';
@@ -96,7 +97,11 @@ export async function compileFace(faceId: string) {
 
 export async function installFace(faceId: string, entry: any, glbPath: string) {
   await fs.mkdir(MODELS, {recursive: true});
-  await fs.copyFile(glbPath, path.join(MODELS, `chunk-${entry.name}.glb`));
+  // Installed chunks are quantized + meshopt (the same loader path as the landmarks). The staging GLB stays plain:
+  // the compile path, its audits and gates read it. The manifest entry is re-described from the bytes written.
+  const installed = await compressGlb(new Uint8Array(await fs.readFile(glbPath)));
+  await fs.writeFile(path.join(MODELS, `chunk-${entry.name}.glb`), installed);
+  entry = describeInstalledGlb(entry, installed);
   const manifest: ChunkManifest = JSON.parse(await fs.readFile(MANIFEST, 'utf8').catch(() => '{"version":1,"chunks":[]}'));
   const mine = new Set<string>(entry.suppress);
   const replaced = manifest.chunks.filter(c => c.id === entry.id || c.suppress.some(s => mine.has(s)));
