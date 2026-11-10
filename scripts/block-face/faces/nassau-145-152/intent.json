@@ -31,98 +31,6 @@
  ],
  "houses": [
   {
-   "pandId": "0363100012116526",
-   "slug": "nassau-116526",
-   "address": "Nassaukade 151-152",
-   "design": {
-    "fronts": [
-     {
-      "id": "front",
-      "street": "Nassaukade",
-      "gable": "cornice",
-      "dormers": 2,
-      "dormerStyle": "pediment",
-      "dormerAt": [
-       {
-        "from": 0.24,
-        "to": 0.38
-       },
-       {
-        "from": 0.68,
-        "to": 0.82
-       }
-      ],
-      "storeys": 5,
-      "bays": 6,
-      "doorBay": 5,
-      "basement": "none",
-      "tallGround": true,
-      "cornice": "bracketed",
-      "windows": "t-window",
-      "windowSurround": "keystone",
-      "shopfront": {
-       "colour": "#1c1d1f",
-       "fascia": false,
-       "bays": [
-        0,
-        2
-       ],
-       "stallriser": "low",
-       "glazing": "transom",
-       "evidence": "strip.jpg 2024-11-21: black-framed bar front over the three left axes, a chalk board, no legible sign; BAG bijeenkomstfunctie, no OSM node"
-      },
-      "hoist": false
-     }
-    ],
-    "roof": {
-     "material": "slate"
-    },
-    "palette": {
-     "brick": "#564543",
-     "frame": "white-painted",
-     "door": "#1f2324",
-     "stone": "#eeeae0",
-     "cornice": "white-painted",
-     "stoneMaterial": "painted"
-    },
-    "notes": [
-     "the De Clercqstraat corner block: on this face only its 12.8 m Nassaukade front (two 3-axis halves either side of a downpipe); the chamfer and the De Clercqstraat front are on clercq-236681"
-    ]
-   },
-   "groundFloor": {
-    "use": "bar",
-    "bag": [
-     "bijeenkomstfunctie"
-    ],
-    "photoDate": "2024-11-21",
-    "agreement": "bag-only",
-    "note": "black-framed bar/café front over the left half, no legible name, no OSM node; residential door with a round fanlight on the right axis"
-   },
-   "rhythm": {
-    "bays": "6 axes in two halves of 3 either side of a downpipe",
-    "windowsPerStorey": "ground: bar front over 3 axes + 2 windows + door | 1: 6 | 2: 6 | 3: 6 | 4: 6 | dormers: 2",
-    "symmetry": "two equal halves",
-    "groundFloor": "bar front left, residential right",
-    "signage": "none legible",
-    "roofline": "bracketed white cornice (16.5 m), two pediment dormers",
-    "citation": "strip.jpg 2024-11-21 pand 1",
-    "photoRows": [
-     5,
-     6,
-     6,
-     6,
-     6,
-     2
-    ],
-    "photoGroundRows": 1,
-    "photoGables": 0,
-    "schemaLimits": [
-     "three round wreath medallions (cartouches) on the left axis of storeys 2-4 are not modelled",
-     "the hood moulding over the bar front is not modelled"
-    ]
-   }
-  },
-  {
    "pandId": "0363100012164843",
    "slug": "nassau-164843",
    "address": "Nassaukade 150",
@@ -509,14 +417,6 @@
   "identical": [],
   "partyClip": true,
   "measuredEaves": [
-   {
-    "pand": "0363100012116526",
-    "stripRow": 158,
-    "frontRoof": {
-     "pitchDeg": 72
-    },
-    "evidence": "top of the bracketed white cornice (16.5 m on the ruler crop); 3DBAG carries the mansard top (17.5 m) to the facade, re-pitched from the cornice"
-   },
    {
     "pand": "0363100012164843",
     "stripRow": 218,

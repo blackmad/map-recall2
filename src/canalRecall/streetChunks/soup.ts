@@ -9,14 +9,14 @@ import {metreBoxUvs, paneUvs} from '../../../scripts/canalhouse-recipes/export-g
 import type {CanalHouseIntent} from '../buildingRecipe/intent.ts';
 import type {Bucket, BucketMap} from './types.ts';
 
-/** Material slot of a compiled mesh (brick, roofTile, slate, bitumen, stone, frame, door, glass, accent). */
+/** Material slot of a compiled mesh (brick, roofTile, slate, bitumen, stone, frame, paint, door, glass, accent). */
 export function recipeSlotFor(intent: CanalHouseIntent) {
   const roofSlot = ['slate', 'zinc', 'bitumen', 'copper'].includes(intent.roof.material) ? 'slate' : 'roofTile';
   const wallSlot = intent.palette.wallMaterial === 'stucco' ? 'stucco' : 'brick';
   return (mesh: T.Mesh): string => {
     const surface = mesh.userData.surface as string;
     if (surface === 'roof') return (mesh.material as T.MeshStandardMaterial).color.getHSL({h: 0, s: 0, l: 0}).l > 0.36 ? 'bitumen' : roofSlot;
-    return ({wall: wallSlot, accent: 'accent', stone: 'stone', trim: 'frame', joinery: 'frame', door: 'door', shop: 'door', awning: 'door', sign: 'door', glass: 'glass'} as Record<string, string>)[surface] ?? 'brick';
+    return ({wall: wallSlot, accent: 'accent', stone: 'stone', trim: 'frame', joinery: 'frame', paint: 'paint', door: 'door', shop: 'door', awning: 'door', sign: 'door', glass: 'glass'} as Record<string, string>)[surface] ?? 'brick';
   };
 }
 

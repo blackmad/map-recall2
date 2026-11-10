@@ -30,6 +30,17 @@ import type {CanalhouseOrnament} from '../canalhouseRecipes.ts';
 import {rosetteOrnaments, rosettesInPlaceOfWindows} from './rosettes.ts';
 import {planStoop, stoopBlocks, type StoopPlan} from './stoop.ts';
 
+/** Projection of a stone-faced tower's facing (`towers[].finish: 'stone'`): two of the kit's 4.5 cm relief steps (window sheets
+ *  stand 4.5 / 9 / 13.5 cm proud, geometryAudit floatTol), past the audit's 2-8 cm near-z-fight band and its 3 cm zfight-tight. */
+/** Mansard dormers with a stone or timber front stand this far behind the frontage (two relief steps past the cornice plane). */
+const DORMER_HOST_FRONT_SETBACK_M = 0.14;
+const TOWER_FACING_DEPTH_M = 0.09;
+/** The tower lights' frame trim; the facing stops this far from each light so it never lies over the frame. */
+const TOWER_LIGHT_TRIM_M = 0.06;
+/** The raised wall profile's edge trim up each side of a tower is 8 cm wide (measured in the clercq-236681 chunk, frame
+ *  material about 6 cm proud); the facing's piers start this far in from the tower's edges so they never lie over it. */
+const TOWER_EDGE_TRIM_M = 0.1;
+
 export const ROOF_COLOURS: Record<CanalHouseIntent['roof']['material'], {steep: string; low: string; flat: string}> = {
   slate: {steep: '#3b4047', low: '#4b5056', flat: '#6a6c6c'},
   'black-tile': {steep: '#2f2e2f', low: '#3d3b3b', flat: '#666462'},
@@ -1089,9 +1100,21 @@ export function fitIntent(intent: CanalHouseIntent, surveyFacts: BuildingFacts):
       // One light centred in the tower per storey of rise (as `tower`); `lightRise`/`lightSill` size it (default 0.5 / 0.3).
       const tw = x.span[1] - x.span[0], ww = clamp(tw * 0.38, 0.45, 1.0), wh = round(upperStoreyM * (x.t.lightRise ?? 0.5)), cx = (x.span[0] + x.span[1]) / 2, sill = x.t.lightSill ?? 0.3;
       for (let m = 0; m < count; m++) for (let r = 0; eaves + (r + sill) * upperStoreyM + wh <= x.top - 0.25; r++)
-        elevation.openings.value.push({id: `${pieces.length > 1 ? front.id + '-' : ''}towers${k}-${r}${count > 1 ? `-m${m}` : ''}`, kind: 'window', leftM: round(flipX(place(m, cx - ww / 2, ww), ww)), bottomM: round(eaves + (r + sill) * upperStoreyM), widthM: round(ww), heightM: wh, trimWidthM: 0.06, ...WINDOW_BARS[front.windows === 'shop' ? 'sash' : front.windows], frameSurface: 'trim', barSurface: 'trim'});
-      if (x.t.finish === 'stone') for (let m = 0; m < count; m++)
-        towerFacings.push({id: `${pieces.length > 1 ? front.id + '-' : ''}towers${k}-facing${count > 1 ? `-m${m}` : ''}`, leftM: round(flipX(place(m, x.span[0], tw), tw) + 0.005), bottomM: round(eaves), widthM: round(tw - 0.01), heightM: round(x.top - eaves - 0.02), depthM: 0.03, surface: 'stone'});
+        elevation.openings.value.push({id: `${pieces.length > 1 ? front.id + '-' : ''}towers${k}-${r}${count > 1 ? `-m${m}` : ''}`, kind: 'window', leftM: round(flipX(place(m, cx - ww / 2, ww), ww)), bottomM: round(eaves + (r + sill) * upperStoreyM), widthM: round(ww), heightM: wh, trimWidthM: TOWER_LIGHT_TRIM_M, ...WINDOW_BARS[front.windows === 'shop' ? 'sash' : front.windows], frameSurface: 'trim', barSurface: 'trim'});
+      // Stone facing: piers either side of the lights and panels below, between and above them, never over a light, and
+      // TOWER_FACING_DEPTH_M proud of the wall (a facing a few cm off the brick z-fights at distance: glb audit zfight-tight).
+      if (x.t.finish === 'stone') {
+        const lights: [number, number][] = [];
+        const t = TOWER_LIGHT_TRIM_M;
+        for (let r = 0; eaves + (r + sill) * upperStoreyM + wh <= x.top - 0.25; r++) lights.push([eaves + (r + sill) * upperStoreyM - t, eaves + (r + sill) * upperStoreyM + wh + t]);
+        const top = x.top - 0.02, l0 = x.span[0] + TOWER_EDGE_TRIM_M, l1 = cx - ww / 2 - t, r0 = cx + ww / 2 + t, r1 = x.span[1] - TOWER_EDGE_TRIM_M;
+        const parts: [string, number, number, number, number][] = [['l', l0, l1, eaves, top], ['r', r0, r1, eaves, top]];
+        let y = eaves;
+        for (const [j, [below, above]] of lights.entries()) { parts.push([`p${j}`, l1, r0, y, below]); y = above; }
+        parts.push([`p${lights.length}`, l1, r0, y, top]);
+        for (let m = 0; m < count; m++) for (const [id, a, b, lo, hi] of parts) if (b - a > 0.02 && hi - lo > 0.02)
+          towerFacings.push({id: `${pieces.length > 1 ? front.id + '-' : ''}towers${k}-facing-${id}${count > 1 ? `-m${m}` : ''}`, leftM: round(flipX(place(m, a, b - a), b - a)), bottomM: round(lo), widthM: round(b - a), heightM: round(hi - lo), depthM: TOWER_FACING_DEPTH_M, surface: 'stone'});
+      }
     }
     if (groupCrowns) {
       // Gable lights per crown, side by side (or stacked up a neck), centred on each crown.
@@ -1162,7 +1185,10 @@ export function fitIntent(intent: CanalHouseIntent, surveyFacts: BuildingFacts):
       // stands on the roof face, its front just behind the cornice.
       const shape = (w: number) => style === 'pediment' ? {roofRiseM: round(clamp(w * 0.32, 0.4, 0.6)), frontOverhangM: 0.12} : style === 'pointed' ? {roofRiseM: round(clamp(w * 0.85, 0.8, 1.4))} : style === 'arched' ? {roofRiseM: round(clamp(w * 0.5, 0.45, 1)), frontOverhangM: 0.12, roofProfile: 'arch' as const} : style === 'box' || style === 'flat' ? {roofRiseM: 0} : {roofRiseM: 0.45};
       // A brick roof box (`box`) is low: 0.75 m over the wall top, its front 5 cm behind the facade (Kinkerstraat 109-161 strip: 0.6-0.8 m).
-      const placeOnMansard = mansard ? {setbackM: round(Math.max(0.05, maxOut + 0.03)), heightM: round(clamp(mansard.heightM - 0.25, 1.1, 1.6))} : style === 'box' ? {setbackM: 0.05, heightM: 0.75} : style === 'flat' ? {setbackM: 0.35, heightM: 1.8} : {setbackM: 0.35, heightM: 1.45};
+      // A stone or timber dormer front is host material (posts, apron, head): 5 cm behind the cornice its head stands in the
+      // cornice's plane and its glass was judged against the cornice (H7 r3, clercq-236681 installed: 2 parts, 0.51 m2).
+      const hostFrontDormer = front.dormerBody === 'timber' || front.dormerBody === 'stone';
+      const placeOnMansard = mansard ? {setbackM: round(hostFrontDormer ? Math.max(DORMER_HOST_FRONT_SETBACK_M, maxOut + DORMER_HOST_FRONT_SETBACK_M) : Math.max(0.05, maxOut + 0.03)), heightM: round(clamp(mansard.heightM - 0.25, 1.1, 1.6))} : style === 'box' ? {setbackM: 0.05, heightM: 0.75} : style === 'flat' ? {setbackM: 0.35, heightM: 1.8} : {setbackM: 0.35, heightM: 1.45};
       elevation.dormers = seen(Array.from({length: k * count}, (_, j) => { const {left, w} = span(j % k), sh = shape(w), lm = round(flipX(place(Math.floor(j / k), left, w), w)); return {id: `dormer-${j}`, leftM: lm, widthM: round(w), bottomM: round(Math.max(eaves, survey.shellTopM) + (front.dormerSize?.sill ?? 0.05)), heightM: front.dormerSize?.rise ?? placeOnMansard.heightM, depthM: 1.3, roofRiseM: sh.roofRiseM, ...('frontOverhangM' in sh ? {frontOverhangM: sh.frontOverhangM} : {}), ...('roofProfile' in sh ? {roofProfile: sh.roofProfile} : {}), setbackM: front.dormerSize?.setback ?? placeOnMansard.setbackM, trimWidthM: 0.07, verticalBars: front.dormerBody === 'zinc-band' ? [1 / 3, 2 / 3] : front.dormerParty ? [] : front.dormerLights ? Array.from({length: front.dormerLights - 1}, (_, i) => round((i + 1) / front.dormerLights!)) : [.5], ...(front.dormerBody === 'zinc-band' ? {bodyColour: ZINC_BAND.cheek, capColour: ZINC_BAND.cap, frontOverhangM: ZINC_BAND.capOverhangM} : {}), ...(front.dormerParty ? {partyEdge: lm + w / 2 > mw / 2 ? 'right' as const : 'left' as const, frontOverhangM: 0.12, fasciaColour: PARTY_DORMER_FASCIA.colour, fasciaHeightM: PARTY_DORMER_FASCIA.heightM} : {}), ...(front.dormerWindow ? {frontWall: {apronM: front.dormerWindow.apron, sideM: round(Math.max(0.1, (w - front.dormerWindow.light) / 2)), ...(front.dormerWindow.tall !== undefined ? {headM: round(Math.max(0, (front.dormerSize?.rise ?? placeOnMansard.heightM) - front.dormerWindow.apron - front.dormerWindow.tall))} : {})}} : front.dormerBody === 'timber' ? {frontWall: {apronM: TIMBER_DORMER.apronM, sideM: round(clamp(w * TIMBER_DORMER.sideShare, TIMBER_DORMER.sideMinM, TIMBER_DORMER.sideMaxM))}} : {}), wallSurface: front.dormerBody === 'zinc-band' ? 'stone' as const : front.dormerBody === 'zinc' ? 'roof' as const : style === 'box' && front.dormerBody !== 'stone' || front.dormerBody === 'brick' ? 'wall' as const : front.dormerBody === 'stone' || front.dormerBody === 'timber' ? 'stone' as const : 'trim' as const, roofSurface: 'roof' as const}; }));
     }
     // `dormerHoist`: one beam per dormer, over its frame in the pediment, from inside the dormer to `reach` in front of it.

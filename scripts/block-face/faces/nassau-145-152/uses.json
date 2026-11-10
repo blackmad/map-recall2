@@ -6,23 +6,6 @@
  },
  "pands": [
   {
-   "pandId": "0363100012116526",
-   "addresses": [
-    "Nassaukade 151",
-    "Nassaukade 152"
-   ],
-   "groundUnits": [
-    {
-     "address": "Nassaukade 152",
-     "use": "bijeenkomstfunctie",
-     "areaM2": 77,
-     "bagId": "0363010001000154"
-    }
-   ],
-   "units": 5,
-   "osm": []
-  },
-  {
    "pandId": "0363100012164843",
    "addresses": [
     "Nassaukade 150"

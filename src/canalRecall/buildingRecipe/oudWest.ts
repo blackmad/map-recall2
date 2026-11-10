@@ -101,8 +101,11 @@ export function addTimberBalconies(group: T.Group, intent: CanalHouseIntent, rec
     const trim = material(palette.trim), iron = material(palette.door);
     for (const b of f.timberBalconies) {
       const g = timberBalconyGeometry(b);
-      facade.add(meshOf(g.platform, trim, `timber-balcony/${b.id}/platform`, 'balcony', 'trim', intent.pandId));
-      facade.add(meshOf(g.guard, b.rail === 'iron' ? iron : trim, `timber-balcony/${b.id}/guard`, 'balcony', b.rail === 'iron' ? 'door' : 'trim', intent.pandId));
+      // Surface `paint` (slot paint: painted timber and iron, the frame texture cell, its own colour), not trim/door: those
+      // export as opening slots, and the glb audit judged the brackets and the 0.6 m guard returns as windows outside their
+      // wall (nassau-145-152, 18 parts; lane H7 r3, #354), as it did timber dormers (#81, dormerBody).
+      facade.add(meshOf(g.platform, trim, `timber-balcony/${b.id}/platform`, 'balcony', 'paint', intent.pandId));
+      facade.add(meshOf(g.guard, b.rail === 'iron' ? iron : trim, `timber-balcony/${b.id}/guard`, 'balcony', 'paint', intent.pandId));
       added++;
     }
   }
