@@ -14,6 +14,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { blockFaceFactsFor, mergeRecipeIntent } from '../../src/canalRecall/houseSpec/publishPlan.ts';
 import { REPO_ROOT } from './nodeDom.ts';
+import { writePreparedFaceFacts } from '../house-specs/face-facts.ts';
 
 export const HELP = `scripts/house-preview/resolved.ts: render specs as the game will draw them after house:publish.
 
@@ -75,8 +76,11 @@ for (const pand of pands) {
     fs.writeFileSync(file, JSON.stringify(mergeRecipeIntent(fs.existsSync(file) ? readJson(file) : null, generated, id), null, 1) + '\n');
     if (!fs.existsSync(path.join(HOUSES, id, 'facts.json'))) {
       // A pand on a block face starts from the face's facts (blockFaceFactsFor: the frontage chord over a BAG erker).
-      const faceFacts = blockFaceFactsFor(pand, FACE_DIRS, fs.existsSync);
-      if (faceFacts) fs.copyFileSync(faceFacts, path.join(HOUSES, id, 'facts.json'));
+      // The face's planned facts first (face-facts.ts: shared ground, measured eaves, the recipe roof read off the photo).
+      const planned = process.env.FACE_FACTS === 'raw' ? null : writePreparedFaceFacts(pand, path.join(HOUSES, id, 'facts.json'));
+      const faceFacts = planned ? null : blockFaceFactsFor(pand, FACE_DIRS, fs.existsSync);
+      if (planned) console.log(`  facts: planned by face ${planned}`);
+      else if (faceFacts) fs.copyFileSync(faceFacts, path.join(HOUSES, id, 'facts.json'));
       else {
         const street = /^(.*?)\s+\d/.exec(String(generated.address ?? ''))?.[1];
         tsx('scripts/building-recipes/facts.ts', [`--house=${id}`, `--pand=${pand}`, ...(street ? [`--street=${street}`] : []), '--no-photo']);

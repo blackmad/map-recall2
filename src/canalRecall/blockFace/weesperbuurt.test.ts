@@ -36,3 +36,19 @@ test('frontEavesFixed draws the house at the line even where the skyline reads w
   const loose = {...t, match: {...t.match!, frontEavesFixed: undefined}} as MatchableType;
   assert.deepEqual(frontEavesFor(loose, ev), {eavesM: 15.2, source: 'skyline'});
 });
+
+test('a staged face pand compiles from the face-planned facts: Sarphatistraat 169 keeps its flat front roof', async () => {
+  // scripts/house-specs/face-facts.ts: the recipe route (house:publish step 3, resolved.ts) took the face's raw facts.json, whose
+  // 3DBAG roof stood 3.9 m over the 14.3 m cornice; the face plan has roof source `front`, form flat, and the measured eaves.
+  const {preparedFaceFacts, facesListing} = await import('../../../scripts/house-specs/face-facts.ts');
+  const p = preparedFaceFacts('0363100012170677');
+  assert.ok(p, 'listed by a face intent');
+  assert.equal(p.face, 'sarphati-163-213-r1');
+  assert.deepEqual((p.facts as any).roofSource?.forms, {front0: 'flat'});
+  assert.ok(p.facts.measuredEavesM?.front0 && Math.abs(p.facts.measuredEavesM.front0 - 14.34) < 0.05);
+  const roofTop = Math.max(...p.facts.roofsRD.flatMap(r => r.vertices.map(v => v[2])));
+  assert.ok(roofTop - p.facts.heights.groundNAP < 15, `roof top ${roofTop} over ground ${p.facts.heights.groundNAP}`);
+  // A pand on no face intent: null, and the caller falls back to blockFaceFactsFor / facts.ts (unchanged).
+  assert.deepEqual(facesListing('0363100099999999'), []);
+  assert.equal(preparedFaceFacts('0363100099999999'), null);
+});

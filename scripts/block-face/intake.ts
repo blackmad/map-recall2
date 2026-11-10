@@ -157,7 +157,7 @@ export async function intake(o: {face: string; street: string; seed: string; fro
   const units = await bagUnits(min, max), osm = await overpass(o.face, [s, w, n, e]);
   const members = new Set(found.pands.map(p => p.pandId));
   // Assign over the whole face (a business near a party wall goes to the nearer pand), then keep the members.
-  const uses = assignUses(found.whole.map(p => ({pandId: p.pandId, rings: p.facts.bagFootprintRD, front: p.facts.fronts[0]})), units, osm.map(b => ({...b, rd: toRD(b.lngLat)})), o.street).filter(u => members.has(u.pandId));
+  const uses = assignUses(found.whole.map(p => ({pandId: p.pandId, rings: p.facts.bagFootprintRD, front: p.facts.fronts[0]})), units, osm.map(b => ({...b, rd: toRD(b.lngLat as [number, number])})), o.street).filter(u => members.has(u.pandId));
   await fs.writeFile(path.join(dir, 'uses.json'), JSON.stringify({street: o.street, sources: {bag: 'PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)', osm: `OpenStreetMap via Overpass, fetched ${osm[0]?.fetchedAt ?? 'n/a'} (ODbL)`}, pands: uses}, null, 1) + '\n');
   for (const u of uses) console.log(`  ${u.pandId.slice(-6)} ${u.addresses.join(', ')} | ground: ${u.groundUnits.map(g => g.use).join('+') || '-'} | osm: ${u.osm.map(b => `${b.tags.name ?? '?'} (${b.tags.shop ?? b.tags.amenity ?? b.tags.craft ?? b.tags.office ?? ''})`).join('; ') || '-'}`);
   t = lap('usesS', t);
