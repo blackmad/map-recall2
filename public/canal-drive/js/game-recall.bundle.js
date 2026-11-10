@@ -2327,6 +2327,24 @@
     return hardTier || isNotableBridge(name);
   }
 
+  // src/canalRecall/routing/bgtPlazas.ts
+  var ERF_EXCEPTIONS = [
+    {
+      id: "G0363.c73ba53f3e7a407991ccb79c82622ea5",
+      feedback: "637f346b",
+      at: [52.38597, 4.8325],
+      reason: "ASC / Sportpark SDW forecourt off Heathrowstraat: open paved forecourt and car-park approach (zebra markings, a parked car on the 2025 ortho), no fence; BGT maps it as erf of the club pand. The south-west corner, which lies on the club building roof terrace on the ortho, is cut out",
+      exclude: [52.3857, 4.831, 52.38594, 4.83222]
+    },
+    {
+      id: "G0363.9ad22f404d4b4199b03dc4ee80208d45",
+      feedback: "4f47f105",
+      at: [52.38745, 4.83346],
+      reason: "Radarweg office forecourt off Barajasweg: paved access apron with a zebra crossing joining the car park; the INNER courtyard (separate erf polygons, gravel and planting) stays blocked"
+    }
+  ];
+  var ERF_EXCEPTION_IDS = new Set(ERF_EXCEPTIONS.map((e) => e.id));
+
   // src/canalRecall/routing/roadSurface.ts
   var CELL_LIMIT = 2 ** 25;
   var cellKey = (gx, gy) => Math.abs(gx) < CELL_LIMIT && Math.abs(gy) < CELL_LIMIT ? (gx + CELL_LIMIT) * 2 ** 26 + (gy + CELL_LIMIT) : `${gx},${gy}`;
