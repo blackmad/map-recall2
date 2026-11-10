@@ -12,7 +12,7 @@
  * under /tmp/canal-pw.sh.
  *
  * `--unlit`: the preview in the legacy unlit look (default: the lit city look). `--blur=0`: measure without the shared
- * PRE_BLUR_PX (the before numbers of lane H2b); default every image, preview, render.ts and photo, is blurred by it.
+ * PRE_BLUR_PX (the before numbers of lane H2b); `--no-wall-vs-trim`: the pre-H2c wall pick (wallTrim.ts off); default every image, preview, render.ts and photo, is blurred by it.
  */
 import fs from 'node:fs';
 import path from 'node:path';
@@ -29,7 +29,7 @@ const out = path.resolve(arg('out') ?? 'artifacts/house-preview/gate');
 const PPM = 50;
 const BLUR = arg('blur') !== undefined ? Number(arg('blur')) : PRE_BLUR_PX;
 const previewFlags = (pand: string) => [pand, '--photo', ...(process.argv.includes('--unlit') ? ['--unlit'] : [])];
-const measure = (input: Parameters<typeof measureFacade>[0]) => measureFacade({ ...input, image: { ...input.image, rgb: blurRgb(input.image.rgb, input.image.width, input.image.height, BLUR) } });
+const measure = (input: Parameters<typeof measureFacade>[0]) => measureFacade({ ...input, ...(process.argv.includes('--no-wall-vs-trim') ? { wallVsTrim: false } : {}), image: { ...input.image, rgb: blurRgb(input.image.rgb, input.image.width, input.image.height, BLUR) } });
 const readJson = (p: string) => JSON.parse(fs.readFileSync(p, 'utf8'));
 
 async function rgbOf(png: Buffer, topM: number): Promise<FacadeImage> {

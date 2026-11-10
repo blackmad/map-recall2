@@ -92,7 +92,7 @@ like an installed one, then the same measurement. One command covers every route
 
 ### Output and cache
 
-- `artifacts/house-preview/<pand>/front.png`, `threeq.png` (`--threeq`), `compare.png` (`--photo`), `measure.json`
+- `artifacts/house-preview/<pand>/front.png`, `threeq.png` (`--threeq`), `photo.png` + `compare.png` (`--photo`), `measure.json`
   (wall, heights and storey lines, chunk counts, the decorated properties, overrides applied and not applied, both
   measurements, the verdict, timings).
 - Atlas cache: `artifacts/house-preview/atlas-<look>-<size>-<hash>.bin`, colour RGBA then mask RG
@@ -175,6 +175,8 @@ Flags
   --unlit             the legacy unlit look: the near-tier facade shader with its baked shade for generic chunks,
                       renderElevation in flat game colours for GLBs (default: the lit city look for generic chunks,
                       sun and sky of the ride's sunny rig, wall gain, sky tint on glazing)
+  --no-wall-vs-trim   measure the wall as before lane H2c: a pale thin band may be picked as the wall on a dark front
+                      (default: wallTrim.ts, the dark body outweighing the bands is the wall)
   --glb-lit           draw a GLB route's front through the rig's Lambert too (default: flat game colours,
                       which matched the ride frame; the Lambert drew an installed wall 0.11 L dark)
   --whole-tile        build the chunk from every building of the pand's z14 tile, exactly as the runtime groups
@@ -187,7 +189,7 @@ Flags
   --out <dir>         output directory (default artifacts/house-preview/<pand>)
   --help              this text
 
-Output: <out>/front.png, threeq.png (--threeq), compare.png (--photo), measure.json (route, timings, wall,
+Output: <out>/front.png, threeq.png (--threeq), photo.png + compare.png (--photo), measure.json (route, timings, wall,
 overrides, measurements, verdict). The sheet header names the route and the look. Render and photo are both blurred
 by PRE_BLUR_PX (1.5 px Gaussian sigma at 50 px/m) before measureFacade. Atlas cache:
 artifacts/house-preview/atlas-<look>-<size>-<painter hash>.bin (first run paints, later runs load).
