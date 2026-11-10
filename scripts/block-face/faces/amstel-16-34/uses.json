@@ -1,0 +1,275 @@
+{
+ "street": "Amstelstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T08:10:04.201Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012182755",
+   "addresses": [
+    "Amstelstraat 34"
+   ],
+   "groundUnits": [
+    {
+     "address": "Amstelstraat 34-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 140,
+     "bagId": "0363010000568168"
+    }
+   ],
+   "units": 6,
+   "osm": [
+    {
+     "type": "node",
+     "id": 1724352586,
+     "lngLat": [
+      4.8999054,
+      52.3660948
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "34",
+      "addr:postcode": "1017DA",
+      "addr:street": "Amstelstraat",
+      "amenity": "pub",
+      "brewery": "yes",
+      "check_date": "2023-04-11",
+      "description": "Formerly known as the Krokodil, this bar know attracts a slightly younger audience and is not the hang out of grey gays any more.",
+      "internet_access": "wlan",
+      "name": "Gollem",
+      "opening_hours": "Mo-Th 16:00-01:00, Fr-Sa 14:00-03:00, Su 14:00-01:00",
+      "website": "https://cafegollem.nl/",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-11-10T08:10:04.201Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012182493",
+   "addresses": [
+    "Amstelstraat 24",
+    "Amstelstraat 26",
+    "Amstelstraat 28",
+    "Amstelstraat 30",
+    "Amstelstraat 32"
+   ],
+   "groundUnits": [
+    {
+     "address": "Amstelstraat 24",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 1204,
+     "bagId": "0363010001038987"
+    },
+    {
+     "address": "Amstelstraat 26",
+     "use": "bijeenkomstfunctie,winkelfunctie",
+     "areaM2": 297,
+     "bagId": "0363010001038988"
+    },
+    {
+     "address": "Amstelstraat 28",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 81,
+     "bagId": "0363010001038989"
+    },
+    {
+     "address": "Amstelstraat 30",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 400,
+     "bagId": "0363010001038990"
+    },
+    {
+     "address": "Amstelstraat 32",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 93,
+     "bagId": "0363010001038991"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2725878853,
+     "lngLat": [
+      4.8994501,
+      52.3661082
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "24",
+      "addr:postcode": "1017DA",
+      "addr:street": "Amstelstraat",
+      "amenity": "nightclub",
+      "check_date": "2023-04-11",
+      "name": "Air",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "website": "https://www.air.nl/",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-11-10T08:10:04.201Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 3120033309,
+     "lngLat": [
+      4.8997936,
+      52.3661034
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "32-A",
+      "addr:postcode": "1017DA",
+      "addr:street": "Amstelstraat",
+      "amenity": "fast_food",
+      "capacity": "50",
+      "cuisine": "mexican",
+      "delivery": "yes",
+      "name": "Salsa shop",
+      "opening_hours": "Mo off; Tu-We 11:00-23:00; Th 11:00-01:00; Fr-Sa 11:00-03:00; Su 11:00-23:00",
+      "smoking": "no",
+      "takeaway": "yes",
+      "website": "https://salsashop.com",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-11-10T08:10:04.201Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 9271847554,
+     "lngLat": [
+      4.8995135,
+      52.3660776
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "26",
+      "addr:postcode": "1017DA",
+      "addr:street": "Amstelstraat",
+      "fee": "yes",
+      "museum": "art",
+      "name": "Our House",
+      "phone": "+31 20 820 0670",
+      "tourism": "museum",
+      "website": "https://www.our-house.com",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-11-10T08:10:04.201Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012171370",
+   "addresses": [
+    "Amstelstraat 16",
+    "Amstelstraat 18",
+    "Amstelstraat 20",
+    "Amstelstraat 22"
+   ],
+   "groundUnits": [
+    {
+     "address": "Amstelstraat 16",
+     "use": "winkelfunctie",
+     "areaM2": 96,
+     "bagId": "0363010001038983"
+    },
+    {
+     "address": "Amstelstraat 18",
+     "use": "winkelfunctie",
+     "areaM2": 1,
+     "bagId": "0363010001038984"
+    },
+    {
+     "address": "Amstelstraat 20",
+     "use": "winkelfunctie",
+     "areaM2": 1,
+     "bagId": "0363010001038985"
+    },
+    {
+     "address": "Amstelstraat 22",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 1752,
+     "bagId": "0363010001038986"
+    },
+    {
+     "address": "Amstelstraat 20",
+     "use": "winkelfunctie",
+     "areaM2": 78,
+     "bagId": "0363010003721259"
+    },
+    {
+     "address": "Amstelstraat 20",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 90,
+     "bagId": "0363010012094882"
+    },
+    {
+     "address": "Amstelstraat 16",
+     "use": "kantoorfunctie",
+     "areaM2": 123,
+     "bagId": "0363010012569412"
+    },
+    {
+     "address": "Amstelstraat 18",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 95,
+     "bagId": "0363010012569413"
+    }
+   ],
+   "units": 8,
+   "osm": [
+    {
+     "type": "node",
+     "id": 9919731672,
+     "lngLat": [
+      4.8991229,
+      52.3661163
+     ],
+     "tags": {
+      "amenity": "restaurant",
+      "name": "Ribs Factory"
+     },
+     "fetchedAt": "2026-11-10T08:10:04.201Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 10121257789,
+     "lngLat": [
+      4.8990737,
+      52.3661201
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "18",
+      "addr:postcode": "1017DA",
+      "addr:street": "Amstelstraat",
+      "amenity": "restaurant",
+      "cuisine": "asian;japanese",
+      "internet_access": "wlan",
+      "level": "0",
+      "name": "Ichisin Ramen Hokkaido",
+      "opening_hours": "We-Mo 13:00-21:30",
+      "self_service": "no",
+      "source": "BAG",
+      "source:date": "2022-10-22"
+     },
+     "fetchedAt": "2026-11-10T08:10:04.201Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

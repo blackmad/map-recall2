@@ -1,0 +1,90 @@
+{
+ "note": "Per-pand fields from the Opus strip review of keizersgracht-596-648 r1/r2 (docs/reports/gg-zuid-strip-verdict-20261110.md), measured again on the 2023-03-27 strip at 40 px/m (blockFace/reviewOverrides.ts).",
+ "reviewed": "2026-11-10",
+ "pins": [
+  {
+   "pandId": "0363100012175655",
+   "type": "belt-1700-canal-house",
+   "ground": "base-door-left",
+   "overrides": {
+    "windows": "sash-6-over-6",
+    "windowFrames": {
+     "frame": 0.12,
+     "eared": {
+      "upper": 2
+     }
+    }
+   },
+   "reason": "Keizersgracht 616A: no stoop door; three bel-etage windows and a street-level door in the left bay of the stone base (0.15-2.85 m). Sashes three lights wide, six-over-six; eared white surrounds on the top two storeys (11.7-16.9 m); sky directly over the cornice cap, so a flat roof behind it (3DBAG stands under the cornice at the facade)",
+   "roof": {
+    "form": "flat"
+   }
+  },
+  {
+   "pandId": "0363100012175654",
+   "type": "belt-1700-canal-house",
+   "ground": "base-door-left",
+   "overrides": {
+    "storeyWindows": {
+     "0": "sash-1-over-1"
+    },
+    "windowFrames": {
+     "frame": 0.12,
+     "eared": {
+      "upper": 3
+     }
+    }
+   },
+   "reason": "Keizersgracht 614: no stoop door; two bel-etage windows, the base window on the left and the street door on the right (mirrored with the house). Bel-etage sashes one-over-one (4.1-7.1 m); eared surrounds over the three upper storeys; sky directly over the cornice cap, so a flat roof behind it (3DBAG stands under the cornice at the facade)",
+   "roof": {
+    "form": "flat"
+   }
+  },
+  {
+   "pandId": "0363100012167896",
+   "type": "belt-1700-canal-house",
+   "overrides": {
+    "windows": "cross",
+    "storeyWindows": {
+     "last": "casement-transom"
+    },
+    "headLines": [
+     0.86,
+     0.95,
+     0.92,
+     0.8
+    ],
+    "windowHeights": [
+     0.75,
+     0.8,
+     0.74,
+     0.6
+    ]
+   },
+   "reason": "Keizersgracht 610: cross windows (a mullion and one transom, two by two); on the top storey one wide light under a top light; the upper heads stand about 0.6 m higher than the type's line and the glass is taller; sky directly over the cornice cap, so a flat roof behind it (3DBAG stands under the cornice at the facade)",
+   "roof": {
+    "form": "flat"
+   }
+  },
+  {
+   "pandId": "0363100012176066",
+   "type": "belt-1700-canal-house",
+   "overrides": {
+    "windows": "sash-6-over-6",
+    "headLines": [
+     0.86,
+     0.95,
+     0.92,
+     0.8
+    ],
+    "windowHeights": [
+     0.75,
+     0.8,
+     0.74,
+     0.6
+    ]
+   },
+   "reason": "Keizersgracht 608: sashes three lights wide, six-over-six; the upper heads stand about 0.6 m higher than the type's line, as on 610"
+  }
+ ]
+}

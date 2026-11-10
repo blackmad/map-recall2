@@ -1,0 +1,137 @@
+{
+ "face": "keizersgracht-596-648-r1",
+ "image": "staging/block-face/keizersgracht-596-648-r1/strip.jpg",
+ "pixelsPerMetre": 40,
+ "width": 518,
+ "height": 931,
+ "groundNAP": 0.55,
+ "heightM": 23.28,
+ "frame": {
+  "midRD": [
+   121167.5000625,
+   486337.02400000003
+  ],
+  "uRD": [
+   -0.9748250345981414,
+   0.22297119078646105
+  ],
+  "nRD": [
+   0.22297119078646105,
+   0.9748250345981414
+  ]
+ },
+ "x0M": -7.03,
+ "x1M": 5.92,
+ "date": "2023-03-27",
+ "coverage": 1,
+ "spans": [
+  {
+   "pandId": "0363100012175655",
+   "x0M": -7.03,
+   "x1M": 0.54,
+   "px": [
+    0,
+    303
+   ],
+   "date": "2023-03-27",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "TMX7316010203-003014_pano_0005_000094",
+     "timestamp": "2023-03-27T11:18:17.325740Z",
+     "distanceM": 5.5,
+     "obliquityDeg": 15.8,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-003014_pano_0005_000095",
+     "timestamp": "2023-03-27T11:18:18.270700Z",
+     "distanceM": 6.3,
+     "obliquityDeg": 33.4,
+     "missingFraction": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012175654",
+   "x0M": 0.54,
+   "x1M": 5.92,
+   "px": [
+    303,
+    518
+   ],
+   "date": "2023-03-27",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "TMX7316010203-003014_pano_0005_000093",
+     "timestamp": "2023-03-27T11:18:16.370710Z",
+     "distanceM": 5.3,
+     "obliquityDeg": 0.3,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-003014_pano_0005_000092",
+     "timestamp": "2023-03-27T11:18:15.420770Z",
+     "distanceM": 7.2,
+     "obliquityDeg": 43.2,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-003014_pano_0005_000094",
+     "timestamp": "2023-03-27T11:18:17.325740Z",
+     "distanceM": 7.2,
+     "obliquityDeg": 43.5,
+     "missingFraction": 0
+    }
+   ]
+  }
+ ],
+ "candidatesByDate": {
+  "2023-02-13": 1,
+  "2023-02-06": 2,
+  "2021-09-09": 8,
+  "2020-04-22": 2,
+  "2018-05-11": 5,
+  "2025-01-15": 7,
+  "2023-02-20": 3,
+  "2023-02-27": 13,
+  "2025-06-16": 11,
+  "2019-01-10": 8,
+  "2023-01-30": 9,
+  "2022-04-25": 9,
+  "2023-01-11": 12,
+  "2023-03-27": 13,
+  "2023-03-06": 13,
+  "2019-11-11": 8,
+  "2016-08-16": 13,
+  "2021-12-29": 9,
+  "2023-03-20": 13,
+  "2017-03-31": 13,
+  "2020-01-08": 9,
+  "2019-01-14": 13,
+  "2019-12-20": 13,
+  "2021-01-22": 13,
+  "2017-07-07": 13,
+  "2019-05-13": 0,
+  "2024-12-03": 2,
+  "2020-02-14": 1,
+  "2022-12-15": 2,
+  "2020-04-29": 0,
+  "2022-04-22": 2,
+  "2018-05-04": 2,
+  "2021-03-08": 1,
+  "2020-08-31": 1,
+  "2024-12-11": 0,
+  "2019-01-11": 0
+ },
+ "description": "Rectified orthographic elevation of the whole face on the frontage planes: x = chunk-frame metres along the face (left→right seen from the street) from x0M, y = metres above the shared ground (groundNAP) from the bottom; grey = no panorama data. Per-pand spans list the panoramas median-fused for that frontage.",
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (CC BY 4.0; faces and number plates blurred by the publisher)",
+ "croppedFrom": {
+  "face": "keizersgracht-596-648",
+  "px": [
+   740,
+   1258
+  ]
+ }
+}

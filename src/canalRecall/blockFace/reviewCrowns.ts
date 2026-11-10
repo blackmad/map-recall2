@@ -8,7 +8,7 @@
  * A pin naming a crown the placed type does not have is reported, never applied. Pure.
  */
 import type {Decision} from './autoPlace.ts';
-import type {HouseTypeIntent} from './houseType.ts';
+import type {BodyOverrides, HouseTypeIntent} from './houseType.ts';
 
 export interface CrownPin {
   /** A face id (the whole face before run splitting) or a BAG pand id; exactly one. */
@@ -103,6 +103,40 @@ export interface TypePin {
    * the skyline is lost in the trees). A face may carry several pand pins, but one pand only one.
    */
   pands?: string[];
+  /**
+   * `true` on a pand pin of ONE type: the reviewer read this pand's design off the strip, so the type is placed even when
+   * its score (eaves pitch, skyline, columns) is under the threshold; its vetoes (year, frontage, material) still hold.
+   * The canal belt's one-off fronts (Keizersgracht 242-258, 2021-01-22): canal trees defeat the skyline and a gable
+   * house's 3DBAG eaves reads inside the gable, so the scored criteria hold every gable house the strip shows plainly.
+   * Absent = the scored decision, unchanged.
+   */
+  accept?: true;
+  /** Full storeys incl. ground the reviewer counted on the strip (a pand pin; replaces the count from the 3DBAG eaves). */
+  storeys?: number;
+  /**
+   * `true` on a pand pin: the strip shows a house ground (door and windows), so the type's ground is drawn even where BAG
+   * or OSM lists a trading use (Keizersgracht 256: `bijeenkomstfunctie` behind a residential canal-house ground).
+   */
+  houseGround?: true;
+  /**
+   * A pand pin: the type's ground variant the strip shows (a key of the type's `grounds`), drawn as named. Herengracht
+   * 96 (2021-01-25 strip): the house door at street level, where the type's first ground is a souterrain and stoop.
+   * Not with a trading use (the auto shopfront) unless `houseGround`. Absent = the auto-placed ground, unchanged.
+   */
+  ground?: string;
+  /** A pand pin: the 0-based bay (as seen, after mirroring) holding the house door (Herengracht 96: the third of four). */
+  doorBay?: number;
+  /**
+   * A pand pin: body fields this pand changes over its type (`HousePlacement.overrides`), measured on the strip.
+   * Herengracht 96: a 1.4 m entablature where the type's (measured on 92-94) is 2.3 m. Validated with the house intent
+   * at compile. Absent = the type's body, unchanged.
+   */
+  overrides?: BodyOverrides;
+}
+
+/** The pin of one pand (a pand pin), if any. */
+export function pandTypePin(faceId: string, pandId: string, pins: TypePin[]): TypePin | undefined {
+  return pins.find(x => x.face === faceId && x.pands?.includes(pandId));
 }
 
 export function typePinProblems(pins: TypePin[], types: Pick<HouseTypeIntent, 'id'>[]): string[] {
@@ -114,6 +148,13 @@ export function typePinProblems(pins: TypePin[], types: Pick<HouseTypeIntent, 'i
     if (!pin.types?.length) p.push(`${at}: at least one type`);
     for (const id of pin.types ?? []) if (!types.some(t => t.id === id)) p.push(`${at}: unknown type ${id}`);
     if (pin.pands !== undefined && (!Array.isArray(pin.pands) || !pin.pands.length || pin.pands.some(id => !/^\d{16}$/.test(id)))) p.push(`${at}: pands are 16-digit BAG pand ids`);
+    if (pin.accept !== undefined && (pin.accept !== true || !pin.pands || pin.types?.length !== 1)) p.push(`${at}: accept: true needs pands and exactly one type`);
+    if (pin.houseGround !== undefined && (pin.houseGround !== true || !pin.pands)) p.push(`${at}: houseGround: true on a pand pin`);
+    if (pin.storeys !== undefined && (!Number.isInteger(pin.storeys) || pin.storeys < 1 || pin.storeys > 8 || !pin.pands)) p.push(`${at}: storeys: an integer 1..8 on a pand pin`);
+    if (pin.ground !== undefined && (typeof pin.ground !== 'string' || !pin.pands || pin.types?.length !== 1)) p.push(`${at}: ground: a ground name on a pand pin of one type`);
+    else if (pin.ground !== undefined) { const t = types.find(x => x.id === pin.types![0]) as {grounds?: Record<string, unknown>} | undefined; if (t && !(t.grounds && pin.ground in t.grounds)) p.push(`${at}: ground ${pin.ground}: not a ground of ${pin.types![0]}`); }
+    if (pin.overrides !== undefined && (!pin.overrides || typeof pin.overrides !== 'object' || Array.isArray(pin.overrides) || !Object.keys(pin.overrides).length || !pin.pands || pin.types?.length !== 1)) p.push(`${at}: overrides: body fields on a pand pin of one type`);
+    if (pin.doorBay !== undefined && (!Number.isInteger(pin.doorBay) || pin.doorBay < 0 || pin.doorBay > 12 || !pin.pands)) p.push(`${at}: doorBay: a 0-based bay on a pand pin`);
     const clash = pins.findIndex(x => x.face === pin.face && (!x.pands || !pin.pands || x.pands.some(id => pin.pands!.includes(id))));
     if (clash !== k) p.push(`${at}: face ${pin.face} pinned twice${pin.pands ? ' for one pand' : ''}`);
   });

@@ -1,0 +1,113 @@
+{
+ "street": "Keizersgracht",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T08:28:13.785Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012169386",
+   "addresses": [
+    "Keizersgracht 258A",
+    "Keizersgracht 258B",
+    "Keizersgracht 258C",
+    "Keizersgracht 258D",
+    "Keizersgracht 258E",
+    "Keizersgracht 258F",
+    "Keizersgracht 258G"
+   ],
+   "groundUnits": [
+    {
+     "address": "Keizersgracht 258A",
+     "use": "industriefunctie",
+     "areaM2": 289,
+     "bagId": "0363010001036343"
+    },
+    {
+     "address": "Keizersgracht 258B",
+     "use": "industriefunctie",
+     "areaM2": 71,
+     "bagId": "0363010001036344"
+    },
+    {
+     "address": "Keizersgracht 258C",
+     "use": "industriefunctie",
+     "areaM2": 1,
+     "bagId": "0363010001036345"
+    },
+    {
+     "address": "Keizersgracht 258D",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 1,
+     "bagId": "0363010001036346"
+    },
+    {
+     "address": "Keizersgracht 258E",
+     "use": "industriefunctie",
+     "areaM2": 80,
+     "bagId": "0363010001036347"
+    },
+    {
+     "address": "Keizersgracht 258F",
+     "use": "woonfunctie",
+     "areaM2": 156,
+     "bagId": "0363010001036348"
+    },
+    {
+     "address": "Keizersgracht 258G",
+     "use": "woonfunctie",
+     "areaM2": 120,
+     "bagId": "0363010001036349"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012169390",
+   "addresses": [
+    "Keizersgracht 256"
+   ],
+   "groundUnits": [
+    {
+     "address": "Keizersgracht 256",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 437,
+     "bagId": "0363010000700875"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012169444",
+   "addresses": [
+    "Keizersgracht 254A",
+    "Keizersgracht 254B",
+    "Keizersgracht 254C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Keizersgracht 254A",
+     "use": "woonfunctie",
+     "areaM2": 161,
+     "bagId": "0363010001040968"
+    },
+    {
+     "address": "Keizersgracht 254B",
+     "use": "woonfunctie",
+     "areaM2": 169,
+     "bagId": "0363010001040969"
+    },
+    {
+     "address": "Keizersgracht 254C",
+     "use": "woonfunctie",
+     "areaM2": 142,
+     "bagId": "0363010001040970"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  }
+ ]
+}

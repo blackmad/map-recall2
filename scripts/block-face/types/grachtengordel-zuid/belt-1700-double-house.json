@@ -1,0 +1,214 @@
+{
+ "schemaVersion": 1,
+ "kind": "house-type",
+ "id": "belt-1700-double-house",
+ "district": "grachtengordel-zuid",
+ "description": "Grachtengordel-Zuid double-width patrician houses (dubbele huizen) of 1660-1740 and their 18th-19th c. refrontings (Herengracht 468-520 in the Golden Bend, Keizersgracht 596 and 604): 10-16 m fronts of five axes, dark brown brick or painted black, a stone souterrain under a bel-etage reached by a centre stoop, white-framed sash windows diminishing up the front, a sandstone frieze cornice (often under a balustrade or a crest)",
+ "fit": {
+  "widthM": [
+   10.0,
+   16.5
+  ],
+  "storeys": [
+   3,
+   4,
+   5
+  ]
+ },
+ "match": {
+  "years": [
+   1600,
+   1900
+  ],
+  "yearSlack": 0,
+  "eavesM": [
+   14,
+   21
+  ],
+  "stucco": false,
+  "blackPaint": true,
+  "crownMatch": true,
+  "crownStrict": true,
+  "materialVeto": true,
+  "baysByWidth": [
+   {
+    "maxWidthM": 12.0,
+    "bays": 5
+   },
+   {
+    "maxWidthM": 99,
+    "bays": 5
+   }
+  ],
+  "crowns": {
+   "cornice": {
+    "none": true
+   },
+   "cornice-dormer": {
+    "riseM": [
+     0.6,
+     2.5
+    ],
+    "topWidthM": [
+     0.4,
+     4.0
+    ]
+   },
+   "cornice-crest": {
+    "riseM": [
+     1.5,
+     4.0
+    ],
+    "topWidthM": [
+     0.1,
+     1.2
+    ]
+   }
+  },
+  "note": "Herengracht 518-520 and 468-480 (2023-02/03 strips): five axes with the door on the centre axis over a double stoop; storey grid as the single canal house (souterrain 2.3-2.7 m, bel-etage 4.3-5.3 m, then 3.2-3.9 m), frieze cornice tops at 18-19.5 m. Wide fronts only (10-16.5 m), so the single canal-house type never competes.",
+  "typeGround": true
+ },
+ "body": {
+  "storeys": 4,
+  "bays": 3,
+  "storeyHeights": [
+   2.8,
+   4.2,
+   3.7,
+   3.35,
+   2.85
+  ],
+  "windows": "sash-4-over-4",
+  "windowSurround": "sill",
+  "windowHeights": [
+   0.75,
+   0.72,
+   0.66,
+   0.53
+  ],
+  "headLines": [
+   0.86,
+   0.86,
+   0.8,
+   0.7
+  ],
+  "windowShare": 0.48,
+  "cornice": "frieze",
+  "entablature": {
+   "rise": 2.4,
+   "cap": 0.5,
+   "frieze": "trim",
+   "architrave": 0.15
+  },
+  "windowFrames": {
+   "frame": 0.12
+  }
+ },
+ "crowns": {
+  "cornice": {
+   "gable": "cornice",
+   "note": "Herengracht 518 (167981), 472 (176762): frieze cornice with consoles, sky over it"
+  },
+  "cornice-dormer": {
+   "gable": "cornice",
+   "dormers": 1,
+   "dormerStyle": "pediment",
+   "dormerBody": "stone",
+   "dormerAt": [
+    {
+     "from": 0.4,
+     "to": 0.6
+    }
+   ],
+   "dormerSize": {
+    "sill": 0.1,
+    "rise": 1.6,
+    "setback": 0.35
+   },
+   "note": "a centre pediment dormer over the frieze cornice"
+  },
+  "cornice-crest": {
+   "gable": "cornice",
+   "gableOrnament": {
+    "gablet": "crest"
+   },
+   "note": "Herengracht 520 (168044): a carved crest over the centre axis of the frieze cornice (skyline rise 2.8 m, top 0.8 m); a flagpole or a statue reads the same on the skyline and is pinned to the plain cornice"
+  }
+ },
+ "grounds": {
+  "stoop-door-centre": {
+   "doorBay": 2,
+   "basement": "stoop-and-windows",
+   "souterrain": true,
+   "note": "the stoop climbs to the bel-etage door on the centre axis over a stone souterrain with barred lights",
+   "doorSurround": {
+    "pilaster": 0.22,
+    "cap": 0.3
+   },
+   "stoopRails": {
+    "rail": 0.9
+   }
+  }
+ },
+ "palettes": {
+  "dark-brick-belt": {
+   "brick": "#5c463d",
+   "frame": "white-painted",
+   "door": "#1e2422",
+   "stone": "#d9d3c2",
+   "cornice": "#ddd7c6",
+   "stoneMaterial": "painted"
+  }
+ },
+ "roof": {
+  "material": "red-tile",
+  "squareSaddle": true
+ },
+ "rhythm": {
+  "bays": "5 axes, the door on the centre axis",
+  "identicalBays": "every upper storey alike",
+  "windowsPerStorey": "souterrain: 4 barred lights | bel-etage: 4 windows + centre door | upper: 5",
+  "symmetry": "symmetric above the bel-etage",
+  "groundFloor": "centre stoop to the bel-etage door over a stone souterrain",
+  "signage": "none",
+  "roofline": "sandstone frieze cornice, sometimes a balustrade or crest over the centre",
+  "photoRows": [
+   1,
+   5,
+   5,
+   5,
+   5
+  ],
+  "photoGroundRows": 1,
+  "photoGables": 0,
+  "schemaLimits": [
+   "the centre door surround and the carved centre bay (Herengracht 520) are drawn as a plain door and windows",
+   "the stoop's iron railing and the attic balustrade are not drawn",
+   "the frieze cornice is drawn as a 2.4 m entablature (kit maximum); consoles, dentils and lettering are not drawn",
+   "one pane layout (two across, two up per sash) for every storey"
+  ]
+ },
+ "evidence": [
+  {
+   "face": "herengracht-518-532",
+   "pands": [
+    "167981",
+    "168044"
+   ],
+   "citation": "strip.jpg 2023-03-27: five axes, centre door over a double stoop, souterrain 0-2.4 m with barred lights, window rows bel-etage, two upper rows and a low top row, frieze cornice"
+  },
+  {
+   "face": "herengracht-468-480",
+   "pands": [
+    "176762"
+   ],
+   "citation": "strip.jpg 2023-02-27, 2x gridded crop: Herengracht 472, 14.9 m: souterrain 0-2.3 m, bel-etage windows 2.6-5.6 m, rows 8.0-10.4 and 11.0-13.2 m, cornice 13.9-15.0 m under a balustrade"
+  }
+ ],
+ "notes": [
+  "Eaves of these fronts are the TOP of the frieze cornice (the entablature hangs under the eaves); reviewer eaves pins with countStoreys give that line where 3DBAG reads lower",
+  "The bel-etage weight is 4.2 (measured 4.4-4.9 m on Keizersgracht 606-616): the compile gate holds every storey over the souterrain to 2.3-4.6 m, and at 18-19 m eaves a heavier weight crosses 4.6 m",
+  "2026-11-10 kit round (docs/reports/gg-zuid-strip-verdict-20261110.md): white frames 0.12 m (windowFrames), a painted door surround (0.22 m pilasters, 0.3 m cap) and 0.9 m stoop rails on the stoop ground. The strip shows the cornice 3-4 m tall, but that is the soffit stretched by rectification; 3DBAG and the frieze foot put the facade-plane entablature at about 2.4 m.",
+  "Not drawn yet: the modillion row (entablature.dentils). On Keizersgracht 616A and 610 the two end blocks of the first house of each run fail the GLB audit opening-outside check (0.03-0.05 m2 each, 18.4-18.8 m), even 0.7 m in from the party walls. Parked until the audit host wall behind the frieze is understood."
+ ]
+}

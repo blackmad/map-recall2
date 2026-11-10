@@ -1,0 +1,689 @@
+{
+ "street": "Prinsengracht",
+ "seed": "0363100012177625",
+ "members": [
+  "0363100012177625",
+  "0363100012177628",
+  "0363100012177075",
+  "0363100012177155"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "trimmed at 0363100012177625 (face continues: 177620)"
+  },
+  {
+   "side": "right",
+   "reason": "next fronting pand 0363100012171286 6.2 m on shares no party wall (cross street or gap)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012165042",
+   "reason": "frontage 35.1 m from Prinsengracht"
+  },
+  {
+   "pandId": "0363100012167553",
+   "reason": "frontage 46.9 m from Prinsengracht"
+  },
+  {
+   "pandId": "0363100012167554",
+   "reason": "frontage 46.9 m from Prinsengracht"
+  },
+  {
+   "pandId": "0363100012167558",
+   "reason": "frontage 46.9 m from Prinsengracht"
+  },
+  {
+   "pandId": "0363100012167598",
+   "reason": "sightline to Prinsengracht crosses 0363100012171286"
+  },
+  {
+   "pandId": "0363100012167599",
+   "reason": "sightline to Prinsengracht crosses 0363100012177074"
+  },
+  {
+   "pandId": "0363100012167603",
+   "reason": "sightline to Prinsengracht crosses 0363100012170890"
+  },
+  {
+   "pandId": "0363100012167604",
+   "reason": "frontage 35.8 m from Prinsengracht"
+  },
+  {
+   "pandId": "0363100012167605",
+   "reason": "frontage 32.5 m from Prinsengracht"
+  },
+  {
+   "pandId": "0363100012167606",
+   "reason": "frontage 32.5 m from Prinsengracht"
+  },
+  {
+   "pandId": "0363100012167608",
+   "reason": "sightline to Prinsengracht crosses 0363100012167611"
+  },
+  {
+   "pandId": "0363100012167612",
+   "reason": "sightline to Prinsengracht crosses 0363100012176062"
+  },
+  {
+   "pandId": "0363100012167615",
+   "reason": "frontage 45.6 m from Prinsengracht"
+  },
+  {
+   "pandId": "0363100012167616",
+   "reason": "frontage 74.8 m from Prinsengracht"
+  },
+  {
+   "pandId": "0363100012167617",
+   "reason": "frontage 40.9 m from Prinsengracht"
+  },
+  {
+   "pandId": "0363100012167618",
+   "reason": "frontage 48.6 m from Prinsengracht"
+  },
+  {
+   "pandId": "0363100012170880",
+   "reason": "frontage 33.1 m from Prinsengracht"
+  },
+  {
+   "pandId": "0363100012170881",
+   "reason": "sightline to Prinsengracht crosses 0363100012170886"
+  },
+  {
+   "pandId": "0363100012170885",
+   "reason": "frontage 63.3 m from Prinsengracht"
+  },
+  {
+   "pandId": "0363100012170886",
+   "reason": "sightline to Prinsengracht crosses 0363100012170892"
+  },
+  {
+   "pandId": "0363100012170888",
+   "reason": "frontage 39.3 m from Prinsengracht"
+  },
+  {
+   "pandId": "0363100012170890",
+   "reason": "sightline to Prinsengracht crosses 0363100012177619"
+  },
+  {
+   "pandId": "0363100012170891",
+   "reason": "sightline to Prinsengracht crosses 0363100012170890"
+  },
+  {
+   "pandId": "0363100012170892",
+   "reason": "sightline to Prinsengracht crosses 0363100012170893"
+  },
+  {
+   "pandId": "0363100012170893",
+   "reason": "sightline to Prinsengracht crosses 0363100012177159"
+  },
+  {
+   "pandId": "0363100012170895",
+   "reason": "frontage 34.9 m from Prinsengracht"
+  },
+  {
+   "pandId": "0363100012171285",
+   "reason": "sightline to Prinsengracht crosses 0363100012177077"
+  },
+  {
+   "pandId": "0363100012171428",
+   "reason": "frontage 89.4 m from Prinsengracht"
+  },
+  {
+   "pandId": "0363100012171431",
+   "reason": "frontage 88.7 m from Prinsengracht"
+  },
+  {
+   "pandId": "0363100012176081",
+   "reason": "frontage 74.8 m from Prinsengracht"
+  },
+  {
+   "pandId": "0363100012176082",
+   "reason": "frontage 74.8 m from Prinsengracht"
+  },
+  {
+   "pandId": "0363100012176083",
+   "reason": "frontage 74.9 m from Prinsengracht"
+  },
+  {
+   "pandId": "0363100012176085",
+   "reason": "frontage 52.4 m from Prinsengracht"
+  },
+  {
+   "pandId": "0363100012176147",
+   "reason": "frontage 54.7 m from Prinsengracht"
+  },
+  {
+   "pandId": "0363100012172817",
+   "reason": "frontage 41.9 m from Prinsengracht"
+  },
+  {
+   "pandId": "0363100012172820",
+   "reason": "frontage 35.2 m from Prinsengracht"
+  },
+  {
+   "pandId": "0363100012172823",
+   "reason": "frontage 33.7 m from Prinsengracht"
+  },
+  {
+   "pandId": "0363100012172916",
+   "reason": "frontage 42.9 m from Prinsengracht"
+  },
+  {
+   "pandId": "0363100012175097",
+   "reason": "frontage 30.4 m from Prinsengracht"
+  },
+  {
+   "pandId": "0363100012175898",
+   "reason": "sightline to Prinsengracht crosses 0363100012167612"
+  },
+  {
+   "pandId": "0363100012175900",
+   "reason": "sightline to Prinsengracht crosses 0363100012167612"
+  },
+  {
+   "pandId": "0363100012175909",
+   "reason": "sightline to Prinsengracht crosses 0363100012167608"
+  },
+  {
+   "pandId": "0363100012175989",
+   "reason": "frontage 36.1 m from Prinsengracht"
+  },
+  {
+   "pandId": "0363100012176064",
+   "reason": "frontage 35.1 m from Prinsengracht"
+  },
+  {
+   "pandId": "0363100012176071",
+   "reason": "frontage 85.9 m from Prinsengracht"
+  },
+  {
+   "pandId": "0363100012176072",
+   "reason": "frontage 93.0 m from Prinsengracht"
+  },
+  {
+   "pandId": "0363100012176074",
+   "reason": "frontage 74.9 m from Prinsengracht"
+  },
+  {
+   "pandId": "0363100012176075",
+   "reason": "frontage 74.9 m from Prinsengracht"
+  },
+  {
+   "pandId": "0363100012176076",
+   "reason": "frontage 74.8 m from Prinsengracht"
+  },
+  {
+   "pandId": "0363100012176077",
+   "reason": "frontage 52.2 m from Prinsengracht"
+  },
+  {
+   "pandId": "0363100012176084",
+   "reason": "frontage 50.3 m from Prinsengracht"
+  },
+  {
+   "pandId": "0363100012176148",
+   "reason": "frontage 74.9 m from Prinsengracht"
+  },
+  {
+   "pandId": "0363100012176150",
+   "reason": "frontage 110.1 m from Prinsengracht"
+  },
+  {
+   "pandId": "0363100012176158",
+   "reason": "frontage 99.9 m from Prinsengracht"
+  },
+  {
+   "pandId": "0363100012176159",
+   "reason": "frontage 51.4 m from Prinsengracht"
+  },
+  {
+   "pandId": "0363100012176160",
+   "reason": "frontage 50.7 m from Prinsengracht"
+  },
+  {
+   "pandId": "0363100012177053",
+   "reason": "frontage 38.6 m from Prinsengracht"
+  },
+  {
+   "pandId": "0363100012177074",
+   "reason": "sightline to Prinsengracht crosses 0363100012177153"
+  },
+  {
+   "pandId": "0363100012177080",
+   "reason": "frontage 30.8 m from Prinsengracht"
+  },
+  {
+   "pandId": "0363100012177081",
+   "reason": "sightline to Prinsengracht crosses 0363100012177082"
+  },
+  {
+   "pandId": "0363100012177082",
+   "reason": "sightline to Prinsengracht crosses 0363100012177083"
+  },
+  {
+   "pandId": "0363100012177083",
+   "reason": "sightline to Prinsengracht crosses 0363100012177623"
+  },
+  {
+   "pandId": "0363100012177090",
+   "reason": "frontage 48.5 m from Prinsengracht"
+  },
+  {
+   "pandId": "0363100012177091",
+   "reason": "frontage 75.7 m from Prinsengracht"
+  },
+  {
+   "pandId": "0363100012177092",
+   "reason": "frontage 75.6 m from Prinsengracht"
+  },
+  {
+   "pandId": "0363100012177093",
+   "reason": "frontage 53.8 m from Prinsengracht"
+  },
+  {
+   "pandId": "0363100012177094",
+   "reason": "frontage 59.8 m from Prinsengracht"
+  },
+  {
+   "pandId": "0363100012177095",
+   "reason": "frontage 75.9 m from Prinsengracht"
+  },
+  {
+   "pandId": "0363100012177096",
+   "reason": "frontage 76.0 m from Prinsengracht"
+  },
+  {
+   "pandId": "0363100012177097",
+   "reason": "frontage 85.9 m from Prinsengracht"
+  },
+  {
+   "pandId": "0363100012177098",
+   "reason": "frontage 76.2 m from Prinsengracht"
+  },
+  {
+   "pandId": "0363100012177099",
+   "reason": "frontage 80.4 m from Prinsengracht"
+  },
+  {
+   "pandId": "0363100012177100",
+   "reason": "frontage 84.0 m from Prinsengracht"
+  },
+  {
+   "pandId": "0363100012177101",
+   "reason": "sightline to Prinsengracht crosses 0363100012177268"
+  },
+  {
+   "pandId": "0363100012177102",
+   "reason": "frontage 48.9 m from Prinsengracht"
+  },
+  {
+   "pandId": "0363100012177103",
+   "reason": "frontage 53.0 m from Prinsengracht"
+  },
+  {
+   "pandId": "0363100012177104",
+   "reason": "frontage 53.1 m from Prinsengracht"
+  },
+  {
+   "pandId": "0363100012177105",
+   "reason": "frontage 44.6 m from Prinsengracht"
+  },
+  {
+   "pandId": "0363100012177114",
+   "reason": "frontage 30.1 m from Prinsengracht"
+  },
+  {
+   "pandId": "0363100012177118",
+   "reason": "frontage 42.0 m from Prinsengracht"
+  },
+  {
+   "pandId": "0363100012177119",
+   "reason": "frontage 41.6 m from Prinsengracht"
+  },
+  {
+   "pandId": "0363100012177120",
+   "reason": "frontage 32.8 m from Prinsengracht"
+  },
+  {
+   "pandId": "0363100012177121",
+   "reason": "frontage 41.5 m from Prinsengracht"
+  },
+  {
+   "pandId": "0363100012177133",
+   "reason": "frontage 50.2 m from Prinsengracht"
+  },
+  {
+   "pandId": "0363100012177134",
+   "reason": "frontage 51.9 m from Prinsengracht"
+  },
+  {
+   "pandId": "0363100012177135",
+   "reason": "frontage 48.8 m from Prinsengracht"
+  },
+  {
+   "pandId": "0363100012177152",
+   "reason": "sightline to Prinsengracht crosses 0363100012177624"
+  },
+  {
+   "pandId": "0363100012177153",
+   "reason": "sightline to Prinsengracht crosses 0363100012177152"
+  },
+  {
+   "pandId": "0363100012177256",
+   "reason": "frontage 39.3 m from Prinsengracht"
+  },
+  {
+   "pandId": "0363100012177257",
+   "reason": "frontage 42.9 m from Prinsengracht"
+  },
+  {
+   "pandId": "0363100012177258",
+   "reason": "frontage 41.4 m from Prinsengracht"
+  },
+  {
+   "pandId": "0363100012177259",
+   "reason": "frontage 46.2 m from Prinsengracht"
+  },
+  {
+   "pandId": "0363100012177260",
+   "reason": "frontage 50.1 m from Prinsengracht"
+  },
+  {
+   "pandId": "0363100012177261",
+   "reason": "sightline to Prinsengracht crosses 0363100012167600"
+  },
+  {
+   "pandId": "0363100012177262",
+   "reason": "frontage 34.2 m from Prinsengracht"
+  },
+  {
+   "pandId": "0363100012177263",
+   "reason": "frontage 54.7 m from Prinsengracht"
+  },
+  {
+   "pandId": "0363100012177292",
+   "reason": "frontage 37.9 m from Prinsengracht"
+  },
+  {
+   "pandId": "0363100012177293",
+   "reason": "frontage 37.9 m from Prinsengracht"
+  },
+  {
+   "pandId": "0363100012177294",
+   "reason": "frontage 38.3 m from Prinsengracht"
+  },
+  {
+   "pandId": "0363100012177295",
+   "reason": "frontage 41.8 m from Prinsengracht"
+  },
+  {
+   "pandId": "0363100012177296",
+   "reason": "frontage 42.1 m from Prinsengracht"
+  },
+  {
+   "pandId": "0363100012177365",
+   "reason": "frontage 45.3 m from Prinsengracht"
+  },
+  {
+   "pandId": "0363100012177366",
+   "reason": "frontage 46.4 m from Prinsengracht"
+  },
+  {
+   "pandId": "0363100012177367",
+   "reason": "frontage 41.0 m from Prinsengracht"
+  },
+  {
+   "pandId": "0363100012177624",
+   "reason": "sightline to Prinsengracht crosses 0363100012177620"
+  },
+  {
+   "pandId": "0363100012177627",
+   "reason": "sightline to Prinsengracht crosses 0363100012177152"
+  },
+  {
+   "pandId": "0363100012241058",
+   "reason": "frontage 74.9 m from Prinsengracht"
+  },
+  {
+   "pandId": "0363100012244350",
+   "reason": "frontage 41.2 m from Prinsengracht"
+  },
+  {
+   "pandId": "0363100012247679",
+   "reason": "sightline to Prinsengracht crosses 0363100012177155"
+  },
+  {
+   "pandId": "0363100012249791",
+   "reason": "sightline to Prinsengracht crosses 0363100012167610"
+  },
+  {
+   "pandId": "0363100100092466",
+   "reason": "frontage 43.4 m from Prinsengracht"
+  },
+  {
+   "pandId": "0363100100092472",
+   "reason": "frontage 39.3 m from Prinsengracht"
+  },
+  {
+   "pandId": "0363100012165035",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012165039",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012167600",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012167601",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012167602",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012167609",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012167611",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012167613",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012167614",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012169699",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012169700",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012169701",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012170877",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012170878",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012170879",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012170894",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012170896",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012171284",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012171364",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012172815",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012172816",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012172824",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012172825",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012176062",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012176063",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012177076",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012177077",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012177078",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012177154",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012177156",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012177157",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012177158",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012177159",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012177160",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012177264",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012177265",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012177266",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012177267",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012177268",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012177619",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012177621",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012177622",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012177623",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012185424",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012177625",
+   "alongM": 0,
+   "widthM": 3.99,
+   "eavesM": 8.72,
+   "roofMaxM": 17.74,
+   "storeys3dbag": 4,
+   "builtYear": 1660,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012177628",
+   "alongM": 4.67,
+   "widthM": 5.35,
+   "eavesM": 8.68,
+   "roofMaxM": 12.93,
+   "storeys3dbag": 4,
+   "builtYear": 1716,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012177075",
+   "alongM": 10.58,
+   "widthM": 6.48,
+   "eavesM": 8.87,
+   "roofMaxM": 13.72,
+   "storeys3dbag": 3,
+   "builtYear": 1655,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012177155",
+   "alongM": 17.49,
+   "widthM": 3.94,
+   "eavesM": 12.1,
+   "roofMaxM": 13.22,
+   "storeys3dbag": 4,
+   "builtYear": 1655,
+   "uncertainty": []
+  }
+ ]
+}

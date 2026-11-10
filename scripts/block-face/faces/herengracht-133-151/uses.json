@@ -1,0 +1,275 @@
+{
+ "street": "Herengracht",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T08:12:09.935Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012176003",
+   "addresses": [
+    "Herengracht 133"
+   ],
+   "groundUnits": [
+    {
+     "address": "Herengracht 133-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 64,
+     "bagId": "0363010003684214"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 4216488792,
+     "lngLat": [
+      4.8890435,
+      52.3755551
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "133",
+      "addr:street": "Herengracht",
+      "amenity": "cafe",
+      "name": "Amnesia"
+     },
+     "fetchedAt": "2026-11-10T08:12:09.935Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012176094",
+   "addresses": [
+    "Herengracht 135"
+   ],
+   "groundUnits": [
+    {
+     "address": "Herengracht 135",
+     "use": "logiesfunctie",
+     "areaM2": 797,
+     "bagId": "0363010011323802"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012176014",
+   "addresses": [
+    "Herengracht 139A",
+    "Herengracht 139B",
+    "Herengracht 139C",
+    "Herengracht 139D",
+    "Herengracht 139E",
+    "Herengracht 139F",
+    "Herengracht 139G"
+   ],
+   "groundUnits": [
+    {
+     "address": "Herengracht 139A",
+     "use": "woonfunctie",
+     "areaM2": 36,
+     "bagId": "0363010010953519"
+    },
+    {
+     "address": "Herengracht 139B",
+     "use": "kantoorfunctie",
+     "areaM2": 27,
+     "bagId": "0363010010953520"
+    },
+    {
+     "address": "Herengracht 139C",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010010953521"
+    },
+    {
+     "address": "Herengracht 139D",
+     "use": "woonfunctie",
+     "areaM2": 152,
+     "bagId": "0363010010953522"
+    },
+    {
+     "address": "Herengracht 139E",
+     "use": "woonfunctie",
+     "areaM2": 27,
+     "bagId": "0363010010953523"
+    },
+    {
+     "address": "Herengracht 139F",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010010953524"
+    },
+    {
+     "address": "Herengracht 139G",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010010953525"
+    }
+   ],
+   "units": 7,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2261724827,
+     "lngLat": [
+      4.8889488,
+      52.3754277
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "135-137",
+      "addr:postcode": "1015BG",
+      "addr:street": "Herengracht",
+      "designation": "3",
+      "name": "The Times",
+      "phone": "+31 20 330 6030",
+      "source": "survey",
+      "tourism": "hotel",
+      "website": "https://thetimeshotel.nl/nl/"
+     },
+     "fetchedAt": "2026-11-10T08:12:09.935Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012176013",
+   "addresses": [
+    "Herengracht 141"
+   ],
+   "groundUnits": [
+    {
+     "address": "Herengracht 141",
+     "use": "kantoorfunctie",
+     "areaM2": 1289,
+     "bagId": "0363010000664624"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 10301022239,
+     "lngLat": [
+      4.8888679,
+      52.3753258
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "141",
+      "addr:postcode": "1015BH",
+      "addr:street": "Herengracht",
+      "name": "Tuzkapan Van der Lee advocaten",
+      "office": "lawyer"
+     },
+     "fetchedAt": "2026-11-10T08:12:09.935Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012176005",
+   "addresses": [
+    "Herengracht 147A",
+    "Herengracht 147C",
+    "Herengracht 147B",
+    "Herengracht 147D",
+    "Herengracht 147E",
+    "Herengracht 147F",
+    "Herengracht 147G",
+    "Herengracht 147H"
+   ],
+   "groundUnits": [
+    {
+     "address": "Herengracht 147A",
+     "use": "woonfunctie",
+     "areaM2": 147,
+     "bagId": "0363010001021407"
+    },
+    {
+     "address": "Herengracht 147C",
+     "use": "woonfunctie",
+     "areaM2": 27,
+     "bagId": "0363010001021408"
+    },
+    {
+     "address": "Herengracht 147B",
+     "use": "woonfunctie",
+     "areaM2": 173,
+     "bagId": "0363010001021409"
+    },
+    {
+     "address": "Herengracht 147D",
+     "use": "woonfunctie",
+     "areaM2": 82,
+     "bagId": "0363010001021410"
+    },
+    {
+     "address": "Herengracht 147E",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010001021411"
+    },
+    {
+     "address": "Herengracht 147F",
+     "use": "woonfunctie",
+     "areaM2": 82,
+     "bagId": "0363010001021412"
+    },
+    {
+     "address": "Herengracht 147G",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010001021413"
+    },
+    {
+     "address": "Herengracht 147H",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010001021414"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012176004",
+   "addresses": [
+    "Herengracht 149"
+   ],
+   "groundUnits": [
+    {
+     "address": "Herengracht 149-H",
+     "use": "woonfunctie",
+     "areaM2": 78,
+     "bagId": "0363010000952779"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012176017",
+   "addresses": [
+    "Herengracht 151"
+   ],
+   "groundUnits": [
+    {
+     "address": "Herengracht 151",
+     "use": "woonfunctie",
+     "areaM2": 214,
+     "bagId": "0363010000664644"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  }
+ ]
+}

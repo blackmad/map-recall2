@@ -1,0 +1,227 @@
+{
+ "street": "Herengracht",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T08:12:53.422Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012167683",
+   "addresses": [
+    "Herengracht 155B",
+    "Herengracht 155C",
+    "Herengracht 155D",
+    "Herengracht 155E",
+    "Herengracht 155F"
+   ],
+   "groundUnits": [
+    {
+     "address": "Herengracht 155B",
+     "use": "woonfunctie",
+     "areaM2": 117,
+     "bagId": "0363010000953169"
+    },
+    {
+     "address": "Herengracht 155C",
+     "use": "woonfunctie",
+     "areaM2": 122,
+     "bagId": "0363010000953170"
+    },
+    {
+     "address": "Herengracht 155D",
+     "use": "woonfunctie",
+     "areaM2": 122,
+     "bagId": "0363010000953171"
+    },
+    {
+     "address": "Herengracht 155E",
+     "use": "woonfunctie",
+     "areaM2": 122,
+     "bagId": "0363010000953172"
+    },
+    {
+     "address": "Herengracht 155F",
+     "use": "woonfunctie",
+     "areaM2": 105,
+     "bagId": "0363010000953173"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012167681",
+   "addresses": [
+    "Herengracht 157A",
+    "Herengracht 157D",
+    "Herengracht 157E",
+    "Herengracht 157C",
+    "Herengracht 157B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Herengracht 157A",
+     "use": "woonfunctie",
+     "areaM2": 126,
+     "bagId": "0363010000595924"
+    },
+    {
+     "address": "Herengracht 157D",
+     "use": "woonfunctie",
+     "areaM2": 88,
+     "bagId": "0363010000608630"
+    },
+    {
+     "address": "Herengracht 157E",
+     "use": "woonfunctie",
+     "areaM2": 90,
+     "bagId": "0363010000608631"
+    },
+    {
+     "address": "Herengracht 157C",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000597780"
+    },
+    {
+     "address": "Herengracht 157B",
+     "use": "woonfunctie",
+     "areaM2": 87,
+     "bagId": "0363010000597781"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012167680",
+   "addresses": [
+    "Herengracht 159"
+   ],
+   "groundUnits": [
+    {
+     "address": "Herengracht 159",
+     "use": "woonfunctie",
+     "areaM2": 120,
+     "bagId": "0363010000664657"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012167679",
+   "addresses": [
+    "Herengracht 161"
+   ],
+   "groundUnits": [
+    {
+     "address": "Herengracht 161",
+     "use": "woonfunctie",
+     "areaM2": 441,
+     "bagId": "0363010000713517"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012167668",
+   "addresses": [
+    "Herengracht 163"
+   ],
+   "groundUnits": [
+    {
+     "address": "Herengracht 163-H",
+     "use": "woonfunctie",
+     "areaM2": 82,
+     "bagId": "0363010000981428"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012167660",
+   "addresses": [
+    "Herengracht 165"
+   ],
+   "groundUnits": [
+    {
+     "address": "Herengracht 165-H",
+     "use": "industriefunctie",
+     "areaM2": 78,
+     "bagId": "0363010000664664"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012176939",
+   "addresses": [
+    "Herengracht 167A",
+    "Herengracht 167B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Herengracht 167A",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010001040121"
+    },
+    {
+     "address": "Herengracht 167B",
+     "use": "woonfunctie",
+     "areaM2": 82,
+     "bagId": "0363010001040123"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012167669",
+   "addresses": [
+    "Herengracht 169"
+   ],
+   "groundUnits": [
+    {
+     "address": "Herengracht 169-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000664679"
+    }
+   ],
+   "units": 2,
+   "osm": [
+    {
+     "type": "node",
+     "id": 7736498749,
+     "lngLat": [
+      4.8883908,
+      52.3747874
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "169H",
+      "addr:postcode": "1015BJ",
+      "addr:street": "Herengracht",
+      "amenity": "fast_food",
+      "check_date": "2026-04-26",
+      "cuisine": "chips",
+      "indoor_seating": "yes",
+      "name": "Heertje Friet",
+      "outdoor_seating": "yes",
+      "phone": "+31 6 48261179",
+      "website": "https://www.heertjefriet.nl",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-11-10T08:12:53.422Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,14 @@
+{
+ "note": "Palette pins from the strips (blockFace/reviewPalettes.ts).",
+ "reviewed": "2026-11-10 (lane belt-gg-west, from the sheets)",
+ "pins": [
+  {
+   "pandId": "0363100012175699",
+   "type": "ggw-1740-frieze-cornice",
+   "palette": {
+    "brick": "#b3a084"
+   },
+   "reason": "Herengracht 94: 2021-01-25 strip in full sun reads #d7c29d and the trim-normalised wall came out orange #b8925d; the shaded pier at 3-5 m reads a buff grey-yellow, about #b3a084"
+  }
+ ]
+}

@@ -1,0 +1,236 @@
+{
+ "street": "Herengracht",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T08:23:09.542Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012172044",
+   "addresses": [
+    "Herengracht 319"
+   ],
+   "groundUnits": [
+    {
+     "address": "Herengracht 319-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 160,
+     "bagId": "0363010000664893"
+    },
+    {
+     "address": "Herengracht 319-1",
+     "use": "kantoorfunctie",
+     "areaM2": 157,
+     "bagId": "0363010000664894"
+    }
+   ],
+   "units": 2,
+   "osm": [
+    {
+     "type": "node",
+     "id": 4793824221,
+     "lngLat": [
+      4.8871878,
+      52.3699592
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "319",
+      "addr:street": "Herengracht",
+      "amenity": "bar",
+      "check_date": "2026-10-29",
+      "indoor_seating": "yes",
+      "name": "A. van Wees Proeflokaal",
+      "name:en": "A. van Wees Proeflokaal",
+      "name:fi": "A. van Wees Proeflokaal",
+      "name:nl": "A. van Wees Proeflokaal",
+      "outdoor_seating": "yes"
+     },
+     "fetchedAt": "2026-11-10T08:23:09.542Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012172043",
+   "addresses": [
+    "Herengracht 321",
+    "Herengracht 323"
+   ],
+   "groundUnits": [
+    {
+     "address": "Herengracht 321-H",
+     "use": "industriefunctie",
+     "areaM2": 143,
+     "bagId": "0363010000664895"
+    },
+    {
+     "address": "Herengracht 323-H",
+     "use": "kantoorfunctie",
+     "areaM2": 112,
+     "bagId": "0363010000664899"
+    }
+   ],
+   "units": 7,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11046830383,
+     "lngLat": [
+      4.8871932,
+      52.369908
+     ],
+     "tags": {
+      "beauty": "spa",
+      "check_date": "2026-10-29",
+      "name": "Koan Float",
+      "shop": "beauty",
+      "website": "https://www.koanfloat.nl/"
+     },
+     "fetchedAt": "2026-11-10T08:23:09.542Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012171900",
+   "addresses": [
+    "Herengracht 325B",
+    "Herengracht 325A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Herengracht 325B",
+     "use": "woonfunctie",
+     "areaM2": 98,
+     "bagId": "0363010000664905"
+    },
+    {
+     "address": "Herengracht 325A",
+     "use": "woonfunctie",
+     "areaM2": 83,
+     "bagId": "0363010000664904"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012171899",
+   "addresses": [
+    "Herengracht 327"
+   ],
+   "groundUnits": [
+    {
+     "address": "Herengracht 327",
+     "use": "woonfunctie",
+     "areaM2": 88,
+     "bagId": "0363010000664909"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012171898",
+   "addresses": [
+    "Herengracht 329"
+   ],
+   "groundUnits": [
+    {
+     "address": "Herengracht 329",
+     "use": "woonfunctie",
+     "areaM2": 254,
+     "bagId": "0363010000664911"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012171897",
+   "addresses": [
+    "Herengracht 331"
+   ],
+   "groundUnits": [
+    {
+     "address": "Herengracht 331",
+     "use": "woonfunctie",
+     "areaM2": 281,
+     "bagId": "0363010000664912"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11895867326,
+     "lngLat": [
+      4.8870331,
+      52.3696383
+     ],
+     "tags": {
+      "amenity": "charging_station",
+      "bicycle": "no",
+      "capacity": "2",
+      "operator": "Equans",
+      "operator:wikidata": "Q118687687"
+     },
+     "fetchedAt": "2026-11-10T08:23:09.542Z",
+     "match": "frontage",
+     "distanceM": 7.9
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012171896",
+   "addresses": [
+    "Herengracht 333"
+   ],
+   "groundUnits": [
+    {
+     "address": "Herengracht 333",
+     "use": "woonfunctie",
+     "areaM2": 112,
+     "bagId": "0363010000664913"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012171894",
+   "addresses": [
+    "Herengracht 335"
+   ],
+   "groundUnits": [
+    {
+     "address": "Herengracht 335-H",
+     "use": "bijeenkomstfunctie,woonfunctie",
+     "areaM2": 82,
+     "bagId": "0363010000664914"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11895884294,
+     "lngLat": [
+      4.8870267,
+      52.3694903
+     ],
+     "tags": {
+      "amenity": "vending_machine",
+      "vending": "parking_tickets"
+     },
+     "fetchedAt": "2026-11-10T08:23:09.542Z",
+     "match": "frontage",
+     "distanceM": 7.4
+    }
+   ]
+  }
+ ]
+}

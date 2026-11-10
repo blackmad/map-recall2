@@ -26,6 +26,7 @@ import {PARTY_DORMER_FASCIA, ZINC_BAND, swatch, DIMINISHING_WINDOW_HEIGHTS, DARK
 import {cleanRoof, type RoofCleanupReport} from './roofCleanup.ts';
 import {gableOrnaments} from './gableOrnament.ts';
 import {entablatureCornice} from './entablature.ts';
+import {BELT_FRONT, basementDoorOpening, doorSurroundSlabs, earedFrame, earedStoreys} from './beltFront.ts';
 import type {CanalhouseOrnament} from '../canalhouseRecipes.ts';
 import {rosetteOrnaments, rosettesInPlaceOfWindows} from './rosettes.ts';
 import {planStoop, stoopBlocks, type StoopPlan} from './stoop.ts';
@@ -67,6 +68,9 @@ const WINDOW_BARS: Record<FrontIntent['windows'], WindowBars> = {
   ladder: {horizontalBars: [.2, .4, .6, .8]},
   'sash-6-over-6': {verticalBars: [1 / 3, 2 / 3], ...SASH_RAILS},
   'sash-8-over-8': {verticalBars: [.25, .5, .75], ...SASH_RAILS},
+  'sash-4-over-4': {verticalBars: [.5], ...SASH_RAILS},
+  // Keizersgracht 614 bel-etage (2023-03-27 strip): a large undivided sliding sash, one pane over one at the meeting rail.
+  'sash-1-over-1': {horizontalBars: [.5], horizontalBarWidthsM: [.06]},
   'sash-9-over-9': {verticalBars: [1 / 3, 2 / 3], horizontalBars: [1 / 6, 1 / 3, .5, 2 / 3, 5 / 6], horizontalBarWidthsM: [.03, .03, .06, .03, .03], mullionWidthM: .03},
   'six-pane': {verticalBars: [.5], horizontalBars: [1 / 3, 2 / 3], mullionWidthM: .045},
   // T-venster: an undivided transom light over a pair of casements (the mullion stops under the transom).
@@ -427,7 +431,7 @@ function layoutFront(f: FrontIntent, width: number, heightTop: number): Layout {
       if (balcony) {
         balconies.push({storey: s, bay: b});
         const balW = Math.min(winW * 1.15, winW + 0.3 * Math.max(0, pitch - winW));
-        openings.push({id: `s${s}-b${b}`, kind: 'window', leftM: centre - balW / 2, bottomM: y + 0.04, widthM: balW, heightM: Math.min(h - 0.2, winH + sill - 0.04), trimWidthM: 0.07, ...barsFor(s, plan.axis(b)), ...segmental, frameSurface: 'trim', barSurface: 'trim'});
+        openings.push({id: `s${s}-b${b}`, kind: 'window', leftM: centre - balW / 2, bottomM: y + 0.04, widthM: balW, heightM: Math.min(h - 0.2, winH + sill - 0.04), trimWidthM: f.windowFrames?.frame ?? 0.07, ...barsFor(s, plan.axis(b)), ...segmental, frameSurface: 'trim', barSurface: 'trim'});
         continue;
       }
       if (ladder) {
@@ -443,7 +447,7 @@ function layoutFront(f: FrontIntent, width: number, heightTop: number): Layout {
       const head = axisHead ? axisHead(winW) : s > 0 || f.archedStoreys?.includes(s) || headStorey(s) ? headFor(s, winW) : {};
       // A round head needs height for its arch above the sash rail.
       const h2 = 'headRiseM' in head && head.headRiseM! > 0.3 ? Math.min(h - 0.25, Math.max(winH, head.headRiseM! / 0.42)) : winH;
-      openings.push({id: `s${s}-b${b}`, kind: 'window', leftM: centre - winW / 2, bottomM: y + Math.min(sill, h - 0.12 - h2), widthM: winW, heightM: h2, trimWidthM: 0.07, ...barsFor(s, plan.axis(b)), ...head, frameSurface: 'trim', barSurface: 'trim'});
+      openings.push({id: `s${s}-b${b}`, kind: 'window', leftM: centre - winW / 2, bottomM: y + Math.min(sill, h - 0.12 - h2), widthM: winW, heightM: h2, trimWidthM: f.windowFrames?.frame ?? 0.07, ...barsFor(s, plan.axis(b)), ...head, frameSurface: 'trim', barSurface: 'trim'});
     }
     if (school) {
       const mine = openings.filter(o => new RegExp(`^s${s}-b\\d+[ab]?$`).test(o.id));
@@ -570,6 +574,8 @@ function layoutFront(f: FrontIntent, width: number, heightTop: number): Layout {
     const count = bays[0], bp = storeyPlan(0, count);
     for (let b = 0; b < count; b++) {
       const centre = bp.centre(b), w = clamp(bp.pitch(b) * 0.5, 0.5, 1.2);
+      // `basementDoor` (beltFront.ts): the street-level entrance of a souterrain under an all-window bel-etage.
+      if (f.basementDoor === b) { openings.push(basementDoorOpening(centre, bp.pitch(b), basement)); continue; }
       // A souterrain has storey windows (the stoop runs up beside them); a low basement keeps 0.9 m clear of the stoop.
       const clear = souterrain ? 0.25 : 0.9;
       if (doorLeft !== null && centre + w / 2 > doorLeft - clear && centre - w / 2 < doorLeft + doorWidth + clear) continue;
@@ -1155,19 +1161,19 @@ export function fitIntent(intent: CanalHouseIntent, surveyFacts: BuildingFacts):
       // Attic windows inside the crown.
       const attic = front.atticWindows ?? 0, rise = crownTop - eaves;
       if (attic > 0 && rise > 1.2 && !groupCrowns) {
-        // `atticLight`: the measured light width (absent: the stock 0.5-0.9 m).
-        const w = front.atticLight ? front.atticLight.light : clamp((crownSpan ? crownW * 0.2 : mw * 0.14), 0.5, 0.9), h = clamp(rise * 0.4, 0.6, 1.4), gap = w * 0.5, total = attic * w + (attic - 1) * gap;
+        // `atticSize` (belt GG-West): span x rise (+ sill); `atticLight` (Nieuwmarkt): the measured light width and sill; absent: the stock 0.5-0.9 m.
+        const size = front.atticSize, w = size ? size.span : front.atticLight ? front.atticLight.light : front.atticWindowWidth ?? clamp((crownSpan ? crownW * 0.2 : mw * 0.14), 0.5, 0.9), h = size ? size.rise : clamp(rise * 0.4, 0.6, 1.4), gap = w * 0.5, total = attic * w + (attic - 1) * gap;
         // Gable lights follow a partial crown: on its bay axes when there is one light per bay, else centred on it.
         const onAxes = front.crownBays && front.crownBays.to - front.crownBays.from + 1 === attic ? layout.axisCentres.slice(front.crownBays.from, front.crownBays.to + 1) : null;
         const crownCentre = crownSpan ? (crownSpan[0] + crownSpan[1]) / 2 : mw / 2;
         const round = front.atticShape === 'round', od = clamp(Math.min(crownW * 0.22, rise * 0.28), 0.5, 0.95);
         const atticLeft = (k: number) => onAxes ? onAxes[k] - w / 2 : stack ? (crownSpan ? crownCentre - w / 2 : (mw - w) / 2) : crownSpan ? crownCentre - total / 2 + k * (w + gap) : (mw - total) / 2 + k * (w + gap);
         // Neck gables stack their attic lights up the neck; other crowns set them side by side.
-        const stack = front.gable === 'neck' || front.gable === 'raised-neck', hh = stack ? Math.min(h, (rise - 0.8) / attic - 0.3) : h;
+        const stack = front.gable === 'neck' || front.gable === 'raised-neck', hh = stack && !size ? Math.min(h, (rise - 0.8) / attic - 0.3) : h, sill = size?.sill ?? 0.25;
         if (round) for (let m = 0; m < count; m++) for (let k = 0; k < attic; k++) elevation.openings.value.push({id: `${pieces.length > 1 ? front.id + "-" : ""}attic-${k}${count > 1 ? `-m${m}` : ''}`, kind: 'window', head: 'oval', leftM: flipX(place(m, (onAxes ? onAxes[k] : crownCentre) - od / 2, od), od), bottomM: eaves + Math.min(rise - od - 0.3, rise * 0.3), widthM: od, heightM: od, trimWidthM: 0.06, frameSurface: 'trim', barSurface: 'trim'});
         else {
           // Side-by-side lights that would escape a narrow crown (three lights in a gable) shrink until they fit under it.
-          const planned = Array.from({length: attic}, (_, k) => ({left: atticLeft(k), width: w, bottom: eaves + (front.atticLight && !stack ? front.atticLight.sill : 0.25) + (stack ? k * (hh + 0.3) : 0), height: stack ? hh : h}));
+          const planned = Array.from({length: attic}, (_, k) => ({left: atticLeft(k), width: w, bottom: eaves + (size ? sill : front.atticLight && !stack ? front.atticLight.sill : 0.25) + (stack ? k * (hh + 0.3) : 0), height: stack ? hh : h}));
           const lights = stack || !moduleProfile ? planned : fitGableLights(moduleProfile, planned, warnings, front.id);
           for (let m = 0; m < count; m++) lights.forEach((l, k) => elevation.openings.value.push({id: `${pieces.length > 1 ? front.id + "-" : ""}attic-${k}${count > 1 ? `-m${m}` : ''}`, kind: 'window', leftM: flipX(place(m, l.left, l.width), l.width), bottomM: l.bottom, widthM: l.width, heightM: l.height, trimWidthM: 0.06, ...WINDOW_BARS[front.windows === 'shop' ? 'sash' : front.windows], frameSurface: 'trim', barSurface: 'trim'}));
         }
@@ -1217,7 +1223,8 @@ export function fitIntent(intent: CanalHouseIntent, surveyFacts: BuildingFacts):
     } else if ((front.basement === 'stoop' || front.basement === 'stoop-and-windows') && layout.doorLeft !== null && layout.groundBase > 0) {
       // The library admits one entrance per elevation: the first module's stoop.
       const dl = flipX(place(0, layout.doorLeft, layout.doorWidth), layout.doorWidth);
-      elevation.entrance = seen({leftM: round(dl - 0.15), widthM: round(layout.doorWidth + 0.3), riseM: round(layout.groundBase), runM: round(Math.min(1.4, layout.groundBase * 1.4)), approximateRiserM: 0.18, surface: 'stone'});
+      elevation.entrance = seen({leftM: round(dl - 0.15), widthM: round(layout.doorWidth + 0.3), riseM: round(layout.groundBase), runM: round(Math.min(1.4, layout.groundBase * 1.4)), approximateRiserM: 0.18, surface: 'stone',
+        ...(front.stoopRails ? {rails: {heightM: front.stoopRails.rail, widthM: BELT_FRONT.railWidthM, sides: ['left', 'right'] as ('left' | 'right')[]}} : {})});
     }
     // Stone plinth band under ground storey, or across a shopfront.
     const plinth = layout.groundBase > 0 ? layout.groundBase : 0.3;
@@ -1295,6 +1302,18 @@ export function fitIntent(intent: CanalHouseIntent, surveyFacts: BuildingFacts):
             dressings.push({id: `jamb-${side}-${oy}`, kind: 'slab', leftM: round(x), bottomM: round(o.bottomM - 0.01), widthM: 0.08, heightM: round(o.heightM + 0.02), depthM: 0.045, surface: 'stone'});
         }
       }
+    }
+    // `windowFrames.eared` and `doorSurround` (beltFront.ts): painted surrounds of the belt fronts.
+    if (front.windowFrames?.eared) {
+      const wanted = earedStoreys(front.windowFrames, front.storeys);
+      for (const o of elevation.openings.value) {
+        const m = /(?:^|-)s(\d+)-b\d+[ab]?(?:-m\d+)?$/.exec(o.id);
+        if (m && o.kind === 'window' && wanted.includes(Number(m[1]))) dressings.push(...earedFrame(o, o.id, width, front.windowFrames.eared));
+      }
+    }
+    if (front.doorSurround) {
+      const door = elevation.openings.value.find(o => o.id === 'door' || o.id === 'basement-door'), fan = elevation.openings.value.find(o => o.id === 'door-transom');
+      if (door) dressings.push(...doorSurroundSlabs(door, fan && door.id === 'door' ? fan.bottomM + fan.heightM : door.bottomM + door.heightM, width, front.doorSurround));
     }
     if (headRing?.style === 'springers' && ringSurface) {
       // Springer blocks: one at each foot of the arch, on the springing line, running outward from the arch (clipped to the front).

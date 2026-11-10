@@ -1,0 +1,138 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "keizersgracht-240-312-r2",
+ "street": "Keizersgracht",
+ "sources": [
+  {
+   "id": "strip-2021-01-22",
+   "kind": "street-panorama",
+   "capturedAt": "2021-01-22",
+   "image": "staging/block-face/keizersgracht-240-312-r2/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "auto-place (blockFace/autoPlace.ts)",
+  "passes": 1,
+  "note": "auto-placed from the grachtengordel-west library (buurt Felix Meritisbuurt); scores and holds in scripts/block-face/faces/keizersgracht-240-312/auto-place.json"
+ },
+ "types": [
+  "ggw-1700-neck-bell-gable",
+  "ggw-1740-crest-attic"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012169380",
+   "slug": "keizersgracht-169380",
+   "address": "Keizersgracht 246B",
+   "type": {
+    "type": "ggw-1740-crest-attic",
+    "measuredPalette": {
+     "brick": "#967d55",
+     "evidence": "strip 2021-01-22 span 2958-3182: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2021-01-22",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: ggw-1740-crest-attic scored 0.82 on eaves 0.5, stucco 1, columns 1; strip 2021-01-22 span 2958-3182"
+   }
+  },
+  {
+   "pandId": "0363100012169108",
+   "slug": "keizersgracht-169108",
+   "address": "Keizersgracht 244A",
+   "type": {
+    "type": "ggw-1740-crest-attic",
+    "measuredPalette": {
+     "brick": "#947b52",
+     "evidence": "strip 2021-01-22 span 3183-3408: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "mirror": true
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2021-01-22",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: ggw-1740-crest-attic scored 1 on eaves 1, stucco 1, columns 1; strip 2021-01-22 span 3183-3408"
+   }
+  },
+  {
+   "pandId": "0363100012169118",
+   "slug": "keizersgracht-169118",
+   "address": "Keizersgracht 242A",
+   "type": {
+    "type": "ggw-1700-neck-bell-gable",
+    "overrides": {
+     "storeyHeights": [
+      5.4,
+      3,
+      2.4,
+      2.3
+     ],
+     "windowHeights": [
+      0.52,
+      0.72,
+      0.69,
+      0.72
+     ],
+     "headLines": [
+      0.91,
+      0.87,
+      0.83,
+      0.85
+     ]
+    },
+    "measuredPalette": {
+     "brick": "#625c4e",
+     "evidence": "strip 2021-01-22 span 3407-3632: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "crown": "tall-neck-small-light"
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2021-01-22",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: ggw-1700-neck-bell-gable scored 1 on eaves 1, roof 1, stucco 1, columns 1; strip 2021-01-22 span 3407-3632"
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "auto-place: low attic behind the cornice; the strips show sky over the cornices of the type rows"
+  },
+  "measuredEaves": [
+   {
+    "pand": "0363100012169108",
+    "stripRow": 373,
+    "evidence": "review pin: Keizersgracht 244: the attic top of the twin Louis XIV fronts at 17.0 m (246 beside it reads 17.06 m in 3DBAG); 3DBAG's 16.17 m is a roof edge behind the attic"
+   }
+  ]
+ }
+}

@@ -1,0 +1,149 @@
+{
+ "street": "Herengracht",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T08:41:29.683Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012165078",
+   "addresses": [
+    "Herengracht 519"
+   ],
+   "groundUnits": [
+    {
+     "address": "Herengracht 519",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 2535,
+     "bagId": "0363010000665128"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 1310911706,
+     "lngLat": [
+      4.893195,
+      52.3654264
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "519-525",
+      "addr:postcode": "1017BV",
+      "addr:street": "Herengracht",
+      "check_date": "2025-03-15",
+      "contact:facebook": "https://www.facebook.com/banksmansion519",
+      "contact:instagram": "https://www.instagram.com/banksmansionamsterdam/",
+      "email": "desk@banksmansion.nl",
+      "name": "Hotel Banks Mansion",
+      "phone": "+31 20 420 0055",
+      "stars": "4",
+      "tourism": "hotel",
+      "website": "https://www.banksmansion.nl",
+      "wheelchair": "no",
+      "wikidata": "Q111410255"
+     },
+     "fetchedAt": "2026-11-10T08:41:29.683Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012179345",
+   "addresses": [
+    "Herengracht 527"
+   ],
+   "groundUnits": [
+    {
+     "address": "Herengracht 527",
+     "use": "kantoorfunctie",
+     "areaM2": 1405,
+     "bagId": "0363010000941631"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012185847",
+   "addresses": [
+    "Herengracht 529"
+   ],
+   "groundUnits": [
+    {
+     "address": "Herengracht 529",
+     "use": "woonfunctie",
+     "areaM2": 700,
+     "bagId": "0363010000946091"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012179346",
+   "addresses": [
+    "Herengracht 537"
+   ],
+   "groundUnits": [
+    {
+     "address": "Herengracht 537",
+     "use": "winkelfunctie",
+     "areaM2": 6069,
+     "bagId": "0363010000996917"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012169154",
+   "addresses": [
+    "Herengracht 539",
+    "Herengracht 541"
+   ],
+   "groundUnits": [
+    {
+     "address": "Herengracht 541",
+     "use": "kantoorfunctie",
+     "areaM2": 2370,
+     "bagId": "0363010000976236"
+    },
+    {
+     "address": "Herengracht 539",
+     "use": "kantoorfunctie",
+     "areaM2": 951,
+     "bagId": "0363010002001913"
+    }
+   ],
+   "units": 2,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2725879471,
+     "lngLat": [
+      4.8945859,
+      52.3651803
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "541",
+      "addr:postcode": "1017BW",
+      "addr:street": "Herengracht",
+      "name": "Rituals",
+      "office": "company",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "website": "https://www.rituals.com",
+      "wikidata": "Q62874140"
+     },
+     "fetchedAt": "2026-11-10T08:41:29.683Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

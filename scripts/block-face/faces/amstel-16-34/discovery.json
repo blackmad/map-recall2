@@ -1,0 +1,316 @@
+{
+ "street": "Amstelstraat",
+ "seed": "0363100012171370",
+ "members": [
+  "0363100012182755",
+  "0363100012182493",
+  "0363100012171370"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "trimmed at 0363100012182755 (face continues: 182757)"
+  },
+  {
+   "side": "right",
+   "reason": "next fronting pand 0363100012169213 48.7 m on shares no party wall (cross street or gap)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012165493",
+   "reason": "frontage 110.4 m from Amstelstraat"
+  },
+  {
+   "pandId": "0363100012171134",
+   "reason": "frontage 55.0 m from Amstelstraat"
+  },
+  {
+   "pandId": "0363100012171135",
+   "reason": "frontage 57.4 m from Amstelstraat"
+  },
+  {
+   "pandId": "0363100012171371",
+   "reason": "sightline to Amstelstraat crosses 0363100012171573"
+  },
+  {
+   "pandId": "0363100012171372",
+   "reason": "frontage 54.3 m from Amstelstraat"
+  },
+  {
+   "pandId": "0363100012171373",
+   "reason": "frontage 56.9 m from Amstelstraat"
+  },
+  {
+   "pandId": "0363100012171414",
+   "reason": "frontage 110.7 m from Amstelstraat"
+  },
+  {
+   "pandId": "0363100012171562",
+   "reason": "frontage 42.8 m from Amstelstraat"
+  },
+  {
+   "pandId": "0363100012171564",
+   "reason": "no frontage on Amstelstraat: No footprint edge faces Amstelstraat"
+  },
+  {
+   "pandId": "0363100012171565",
+   "reason": "frontage 37.1 m from Amstelstraat"
+  },
+  {
+   "pandId": "0363100012171566",
+   "reason": "frontage 39.9 m from Amstelstraat"
+  },
+  {
+   "pandId": "0363100012171567",
+   "reason": "frontage 32.4 m from Amstelstraat"
+  },
+  {
+   "pandId": "0363100012171568",
+   "reason": "frontage 34.2 m from Amstelstraat"
+  },
+  {
+   "pandId": "0363100012171569",
+   "reason": "sightline to Amstelstraat crosses 0363100012182492"
+  },
+  {
+   "pandId": "0363100012171570",
+   "reason": "frontage 30.2 m from Amstelstraat"
+  },
+  {
+   "pandId": "0363100012171571",
+   "reason": "sightline to Amstelstraat crosses 0363100012171371"
+  },
+  {
+   "pandId": "0363100012171572",
+   "reason": "frontage 46.1 m from Amstelstraat"
+  },
+  {
+   "pandId": "0363100012171574",
+   "reason": "frontage 34.0 m from Amstelstraat"
+  },
+  {
+   "pandId": "0363100012171575",
+   "reason": "frontage 34.0 m from Amstelstraat"
+  },
+  {
+   "pandId": "0363100012171576",
+   "reason": "sightline to Amstelstraat crosses 0363100012182493"
+  },
+  {
+   "pandId": "0363100012177685",
+   "reason": "frontage 56.7 m from Amstelstraat"
+  },
+  {
+   "pandId": "0363100012177687",
+   "reason": "frontage 100.0 m from Amstelstraat"
+  },
+  {
+   "pandId": "0363100012177690",
+   "reason": "frontage 37.7 m from Amstelstraat"
+  },
+  {
+   "pandId": "0363100012177691",
+   "reason": "frontage 43.3 m from Amstelstraat"
+  },
+  {
+   "pandId": "0363100012177692",
+   "reason": "sightline to Amstelstraat crosses 0363100012186290"
+  },
+  {
+   "pandId": "0363100012177693",
+   "reason": "frontage 31.8 m from Amstelstraat"
+  },
+  {
+   "pandId": "0363100012177694",
+   "reason": "frontage 61.7 m from Amstelstraat"
+  },
+  {
+   "pandId": "0363100012177696",
+   "reason": "frontage 58.3 m from Amstelstraat"
+  },
+  {
+   "pandId": "0363100012177697",
+   "reason": "frontage 59.6 m from Amstelstraat"
+  },
+  {
+   "pandId": "0363100012177698",
+   "reason": "frontage 59.8 m from Amstelstraat"
+  },
+  {
+   "pandId": "0363100012182427",
+   "reason": "frontage 97.7 m from Amstelstraat"
+  },
+  {
+   "pandId": "0363100012182429",
+   "reason": "frontage 92.5 m from Amstelstraat"
+  },
+  {
+   "pandId": "0363100012182430",
+   "reason": "frontage 91.5 m from Amstelstraat"
+  },
+  {
+   "pandId": "0363100012182431",
+   "reason": "frontage 94.0 m from Amstelstraat"
+  },
+  {
+   "pandId": "0363100012182432",
+   "reason": "frontage 42.9 m from Amstelstraat"
+  },
+  {
+   "pandId": "0363100012182492",
+   "reason": "sightline to Amstelstraat crosses 0363100012182756"
+  },
+  {
+   "pandId": "0363100012182494",
+   "reason": "frontage 51.0 m from Amstelstraat"
+  },
+  {
+   "pandId": "0363100012182495",
+   "reason": "frontage 42.8 m from Amstelstraat"
+  },
+  {
+   "pandId": "0363100012182496",
+   "reason": "sightline to Amstelstraat crosses 0363100012182497"
+  },
+  {
+   "pandId": "0363100012182497",
+   "reason": "sightline to Amstelstraat crosses 0363100012182754"
+  },
+  {
+   "pandId": "0363100012182498",
+   "reason": "sightline to Amstelstraat crosses 0363100012182497"
+  },
+  {
+   "pandId": "0363100012182499",
+   "reason": "frontage 30.1 m from Amstelstraat"
+  },
+  {
+   "pandId": "0363100012182500",
+   "reason": "frontage 38.0 m from Amstelstraat"
+  },
+  {
+   "pandId": "0363100012182501",
+   "reason": "frontage 40.8 m from Amstelstraat"
+  },
+  {
+   "pandId": "0363100012182678",
+   "reason": "no frontage on Amstelstraat: No footprint edge faces Amstelstraat"
+  },
+  {
+   "pandId": "0363100012182756",
+   "reason": "sightline to Amstelstraat crosses 0363100012182757"
+  },
+  {
+   "pandId": "0363100012182759",
+   "reason": "sightline to Amstelstraat crosses 0363100012171569"
+  },
+  {
+   "pandId": "0363100012571333",
+   "reason": "frontage 89.8 m from Amstelstraat"
+  },
+  {
+   "pandId": "0363100012571493",
+   "reason": "sightline to Amstelstraat crosses 0363100012182679"
+  },
+  {
+   "pandId": "0363100012571494",
+   "reason": "sightline to Amstelstraat crosses 0363100012571492"
+  },
+  {
+   "pandId": "0363100012571495",
+   "reason": "sightline to Amstelstraat crosses 0363100012182680"
+  },
+  {
+   "pandId": "0363100012171133",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012171563",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012171573",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012177688",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012177689",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012182502",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012182679",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012182680",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012182681",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012182682",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012182754",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012182758",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012186290",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012571492",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012182755",
+   "alongM": -49.38,
+   "widthM": 7.47,
+   "eavesM": 15.35,
+   "roofMaxM": 18.06,
+   "storeys3dbag": 5,
+   "builtYear": 1736,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012182493",
+   "alongM": -30.66,
+   "widthM": 30.11,
+   "eavesM": 13.23,
+   "roofMaxM": 16.54,
+   "storeys3dbag": 0,
+   "builtYear": 1892,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012171370",
+   "alongM": 0,
+   "widthM": 31.22,
+   "eavesM": 12.35,
+   "roofMaxM": 16.4,
+   "storeys3dbag": 0,
+   "builtYear": 2006,
+   "uncertainty": []
+  }
+ ]
+}

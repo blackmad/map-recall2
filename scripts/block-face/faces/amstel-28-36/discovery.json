@@ -1,0 +1,430 @@
+{
+ "street": "Amstel",
+ "seed": "0363100012168257",
+ "members": [
+  "0363100012180165",
+  "0363100012169281",
+  "0363100012180335",
+  "0363100012180334",
+  "0363100012168257"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "next fronting pand 0363100012169280 12.1 m on shares no party wall (cross street or gap)"
+  },
+  {
+   "side": "right",
+   "reason": "next fronting pand 0363100012180409 9.6 m on shares no party wall (cross street or gap)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012168110",
+   "reason": "sightline to Amstel crosses 0363100012180405"
+  },
+  {
+   "pandId": "0363100012168170",
+   "reason": "frontage 38.4 m from Amstel"
+  },
+  {
+   "pandId": "0363100012168182",
+   "reason": "frontage 130.1 m from Amstel"
+  },
+  {
+   "pandId": "0363100012168183",
+   "reason": "frontage 45.7 m from Amstel"
+  },
+  {
+   "pandId": "0363100012168184",
+   "reason": "frontage 128.1 m from Amstel"
+  },
+  {
+   "pandId": "0363100012168185",
+   "reason": "frontage 129.7 m from Amstel"
+  },
+  {
+   "pandId": "0363100012168186",
+   "reason": "frontage 126.6 m from Amstel"
+  },
+  {
+   "pandId": "0363100012168187",
+   "reason": "frontage 36.2 m from Amstel"
+  },
+  {
+   "pandId": "0363100012168188",
+   "reason": "frontage 56.2 m from Amstel"
+  },
+  {
+   "pandId": "0363100012168189",
+   "reason": "frontage 44.4 m from Amstel"
+  },
+  {
+   "pandId": "0363100012168190",
+   "reason": "frontage 34.6 m from Amstel"
+  },
+  {
+   "pandId": "0363100012168191",
+   "reason": "sightline to Amstel crosses 0363100012168192"
+  },
+  {
+   "pandId": "0363100012168194",
+   "reason": "frontage 108.4 m from Amstel"
+  },
+  {
+   "pandId": "0363100012168256",
+   "reason": "sightline to Amstel crosses 0363100012180407"
+  },
+  {
+   "pandId": "0363100012169158",
+   "reason": "frontage 105.0 m from Amstel"
+  },
+  {
+   "pandId": "0363100012171098",
+   "reason": "frontage 53.1 m from Amstel"
+  },
+  {
+   "pandId": "0363100012171130",
+   "reason": "frontage 47.6 m from Amstel"
+  },
+  {
+   "pandId": "0363100012178945",
+   "reason": "frontage 55.7 m from Amstel"
+  },
+  {
+   "pandId": "0363100012179384",
+   "reason": "frontage 59.2 m from Amstel"
+  },
+  {
+   "pandId": "0363100012179388",
+   "reason": "frontage 101.5 m from Amstel"
+  },
+  {
+   "pandId": "0363100012179389",
+   "reason": "frontage 102.5 m from Amstel"
+  },
+  {
+   "pandId": "0363100012179390",
+   "reason": "frontage 108.3 m from Amstel"
+  },
+  {
+   "pandId": "0363100012179391",
+   "reason": "frontage 104.1 m from Amstel"
+  },
+  {
+   "pandId": "0363100012179392",
+   "reason": "frontage 111.2 m from Amstel"
+  },
+  {
+   "pandId": "0363100012179394",
+   "reason": "frontage 101.0 m from Amstel"
+  },
+  {
+   "pandId": "0363100012179400",
+   "reason": "frontage 112.0 m from Amstel"
+  },
+  {
+   "pandId": "0363100012179459",
+   "reason": "sightline to Amstel crosses 0363100012179461"
+  },
+  {
+   "pandId": "0363100012179460",
+   "reason": "sightline to Amstel crosses 0363100012179461"
+  },
+  {
+   "pandId": "0363100012179463",
+   "reason": "sightline to Amstel crosses 0363100012179464"
+  },
+  {
+   "pandId": "0363100012179469",
+   "reason": "sightline to Amstel crosses 0363100012179465"
+  },
+  {
+   "pandId": "0363100012179470",
+   "reason": "sightline to Amstel crosses 0363100012179468"
+  },
+  {
+   "pandId": "0363100012179632",
+   "reason": "frontage 59.4 m from Amstel"
+  },
+  {
+   "pandId": "0363100012179633",
+   "reason": "frontage 85.7 m from Amstel"
+  },
+  {
+   "pandId": "0363100012179634",
+   "reason": "frontage 36.5 m from Amstel"
+  },
+  {
+   "pandId": "0363100012179805",
+   "reason": "frontage 34.1 m from Amstel"
+  },
+  {
+   "pandId": "0363100012179806",
+   "reason": "frontage 43.9 m from Amstel"
+  },
+  {
+   "pandId": "0363100012179807",
+   "reason": "frontage 38.5 m from Amstel"
+  },
+  {
+   "pandId": "0363100012179808",
+   "reason": "frontage 38.5 m from Amstel"
+  },
+  {
+   "pandId": "0363100012179809",
+   "reason": "frontage 43.6 m from Amstel"
+  },
+  {
+   "pandId": "0363100012179874",
+   "reason": "frontage 49.5 m from Amstel"
+  },
+  {
+   "pandId": "0363100012179875",
+   "reason": "frontage 44.3 m from Amstel"
+  },
+  {
+   "pandId": "0363100012179876",
+   "reason": "frontage 52.3 m from Amstel"
+  },
+  {
+   "pandId": "0363100012179877",
+   "reason": "frontage 33.6 m from Amstel"
+  },
+  {
+   "pandId": "0363100012179878",
+   "reason": "frontage 43.9 m from Amstel"
+  },
+  {
+   "pandId": "0363100012179879",
+   "reason": "frontage 52.3 m from Amstel"
+  },
+  {
+   "pandId": "0363100012179880",
+   "reason": "frontage 55.4 m from Amstel"
+  },
+  {
+   "pandId": "0363100012179881",
+   "reason": "frontage 52.0 m from Amstel"
+  },
+  {
+   "pandId": "0363100012179882",
+   "reason": "frontage 60.6 m from Amstel"
+  },
+  {
+   "pandId": "0363100012179883",
+   "reason": "frontage 69.6 m from Amstel"
+  },
+  {
+   "pandId": "0363100012179884",
+   "reason": "frontage 66.2 m from Amstel"
+  },
+  {
+   "pandId": "0363100012179885",
+   "reason": "frontage 35.3 m from Amstel"
+  },
+  {
+   "pandId": "0363100012179886",
+   "reason": "frontage 41.1 m from Amstel"
+  },
+  {
+   "pandId": "0363100012179887",
+   "reason": "frontage 81.6 m from Amstel"
+  },
+  {
+   "pandId": "0363100012179888",
+   "reason": "frontage 93.9 m from Amstel"
+  },
+  {
+   "pandId": "0363100012179889",
+   "reason": "frontage 74.1 m from Amstel"
+  },
+  {
+   "pandId": "0363100012179890",
+   "reason": "frontage 71.8 m from Amstel"
+  },
+  {
+   "pandId": "0363100012180071",
+   "reason": "frontage 82.2 m from Amstel"
+  },
+  {
+   "pandId": "0363100012180072",
+   "reason": "frontage 76.8 m from Amstel"
+  },
+  {
+   "pandId": "0363100012180073",
+   "reason": "frontage 78.9 m from Amstel"
+  },
+  {
+   "pandId": "0363100012180074",
+   "reason": "frontage 96.9 m from Amstel"
+  },
+  {
+   "pandId": "0363100012180075",
+   "reason": "frontage 105.8 m from Amstel"
+  },
+  {
+   "pandId": "0363100012180076",
+   "reason": "frontage 105.5 m from Amstel"
+  },
+  {
+   "pandId": "0363100012180077",
+   "reason": "frontage 102.1 m from Amstel"
+  },
+  {
+   "pandId": "0363100012180149",
+   "reason": "frontage 63.7 m from Amstel"
+  },
+  {
+   "pandId": "0363100012180150",
+   "reason": "frontage 109.4 m from Amstel"
+  },
+  {
+   "pandId": "0363100012180151",
+   "reason": "frontage 110.8 m from Amstel"
+  },
+  {
+   "pandId": "0363100012180152",
+   "reason": "frontage 123.5 m from Amstel"
+  },
+  {
+   "pandId": "0363100012180153",
+   "reason": "frontage 117.8 m from Amstel"
+  },
+  {
+   "pandId": "0363100012180154",
+   "reason": "frontage 117.6 m from Amstel"
+  },
+  {
+   "pandId": "0363100012180155",
+   "reason": "frontage 108.4 m from Amstel"
+  },
+  {
+   "pandId": "0363100012180156",
+   "reason": "frontage 113.9 m from Amstel"
+  },
+  {
+   "pandId": "0363100012180157",
+   "reason": "frontage 47.9 m from Amstel"
+  },
+  {
+   "pandId": "0363100012180158",
+   "reason": "frontage 52.5 m from Amstel"
+  },
+  {
+   "pandId": "0363100012180159",
+   "reason": "frontage 57.1 m from Amstel"
+  },
+  {
+   "pandId": "0363100012180160",
+   "reason": "frontage 61.2 m from Amstel"
+  },
+  {
+   "pandId": "0363100012180161",
+   "reason": "frontage 117.6 m from Amstel"
+  },
+  {
+   "pandId": "0363100012180162",
+   "reason": "frontage 99.6 m from Amstel"
+  },
+  {
+   "pandId": "0363100012180338",
+   "reason": "sightline to Amstel crosses 0363100012180337"
+  },
+  {
+   "pandId": "0363100012180339",
+   "reason": "sightline to Amstel crosses 0363100012180337"
+  },
+  {
+   "pandId": "0363100012180340",
+   "reason": "sightline to Amstel crosses 0363100012180337"
+  },
+  {
+   "pandId": "0363100012180407",
+   "reason": "sightline to Amstel crosses 0363100012180409"
+  },
+  {
+   "pandId": "0363100012180408",
+   "reason": "sightline to Amstel crosses 0363100012180407"
+  },
+  {
+   "pandId": "0363100012185996",
+   "reason": "frontage 131.2 m from Amstel"
+  },
+  {
+   "pandId": "0363100012246529",
+   "reason": "frontage 108.8 m from Amstel"
+  },
+  {
+   "pandId": "0363100012570810",
+   "reason": "sightline to Amstel crosses 0363100012180336"
+  },
+  {
+   "pandId": "0363100100092399",
+   "reason": "sightline to Amstel crosses 0363100012180336"
+  },
+  {
+   "pandId": "0363100012171099",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012180406",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012180165",
+   "alongM": -21.76,
+   "widthM": 4.73,
+   "eavesM": 9.72,
+   "roofMaxM": 13.22,
+   "storeys3dbag": 4,
+   "builtYear": 1777,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012169281",
+   "alongM": -16.56,
+   "widthM": 5.67,
+   "eavesM": 12.54,
+   "roofMaxM": 15.98,
+   "storeys3dbag": 5,
+   "builtYear": 1733,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012180335",
+   "alongM": -11.37,
+   "widthM": 4.71,
+   "eavesM": 15.36,
+   "roofMaxM": 20.07,
+   "storeys3dbag": 5,
+   "builtYear": 1905,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012180334",
+   "alongM": -6.09,
+   "widthM": 5.85,
+   "eavesM": 17.31,
+   "roofMaxM": 17.33,
+   "storeys3dbag": 5,
+   "builtYear": 1895,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012168257",
+   "alongM": 0,
+   "widthM": 6.33,
+   "eavesM": 6.13,
+   "roofMaxM": 27.51,
+   "storeys3dbag": 0,
+   "builtYear": 1934,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  }
+ ]
+}

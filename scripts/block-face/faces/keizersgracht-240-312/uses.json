@@ -1,0 +1,650 @@
+{
+ "street": "Keizersgracht",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T08:28:13.785Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012185919",
+   "addresses": [
+    "Keizersgracht 272"
+   ],
+   "groundUnits": [],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012169382",
+   "addresses": [
+    "Keizersgracht 268"
+   ],
+   "groundUnits": [
+    {
+     "address": "Keizersgracht 268",
+     "use": "kantoorfunctie",
+     "areaM2": 1459,
+     "bagId": "0363010001041799"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012169381",
+   "addresses": [
+    "Keizersgracht 264"
+   ],
+   "groundUnits": [
+    {
+     "address": "Keizersgracht 264",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 1420,
+     "bagId": "0363010000700892"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2721940856,
+     "lngLat": [
+      4.8843977,
+      52.3715637
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "264",
+      "addr:postcode": "1016EV",
+      "addr:street": "Keizersgracht",
+      "name": "Huispedia",
+      "office": "company",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "website": "https://huispedia.nl/"
+     },
+     "fetchedAt": "2026-11-10T08:28:13.785Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012169110",
+   "addresses": [
+    "Keizersgracht 262A",
+    "Keizersgracht 262B",
+    "Keizersgracht 262C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Keizersgracht 262A",
+     "use": "woonfunctie",
+     "areaM2": 173,
+     "bagId": "0363010001007262"
+    },
+    {
+     "address": "Keizersgracht 262B",
+     "use": "woonfunctie",
+     "areaM2": 75,
+     "bagId": "0363010001007263"
+    },
+    {
+     "address": "Keizersgracht 262C",
+     "use": "woonfunctie",
+     "areaM2": 118,
+     "bagId": "0363010001007264"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012169112",
+   "addresses": [
+    "Keizersgracht 260"
+   ],
+   "groundUnits": [
+    {
+     "address": "Keizersgracht 260-H",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000700878"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012169386",
+   "addresses": [
+    "Keizersgracht 258A",
+    "Keizersgracht 258B",
+    "Keizersgracht 258C",
+    "Keizersgracht 258D",
+    "Keizersgracht 258E",
+    "Keizersgracht 258F",
+    "Keizersgracht 258G"
+   ],
+   "groundUnits": [
+    {
+     "address": "Keizersgracht 258A",
+     "use": "industriefunctie",
+     "areaM2": 289,
+     "bagId": "0363010001036343"
+    },
+    {
+     "address": "Keizersgracht 258B",
+     "use": "industriefunctie",
+     "areaM2": 71,
+     "bagId": "0363010001036344"
+    },
+    {
+     "address": "Keizersgracht 258C",
+     "use": "industriefunctie",
+     "areaM2": 1,
+     "bagId": "0363010001036345"
+    },
+    {
+     "address": "Keizersgracht 258D",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 1,
+     "bagId": "0363010001036346"
+    },
+    {
+     "address": "Keizersgracht 258E",
+     "use": "industriefunctie",
+     "areaM2": 80,
+     "bagId": "0363010001036347"
+    },
+    {
+     "address": "Keizersgracht 258F",
+     "use": "woonfunctie",
+     "areaM2": 156,
+     "bagId": "0363010001036348"
+    },
+    {
+     "address": "Keizersgracht 258G",
+     "use": "woonfunctie",
+     "areaM2": 120,
+     "bagId": "0363010001036349"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012169390",
+   "addresses": [
+    "Keizersgracht 256"
+   ],
+   "groundUnits": [
+    {
+     "address": "Keizersgracht 256",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 437,
+     "bagId": "0363010000700875"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012169444",
+   "addresses": [
+    "Keizersgracht 254A",
+    "Keizersgracht 254B",
+    "Keizersgracht 254C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Keizersgracht 254A",
+     "use": "woonfunctie",
+     "areaM2": 161,
+     "bagId": "0363010001040968"
+    },
+    {
+     "address": "Keizersgracht 254B",
+     "use": "woonfunctie",
+     "areaM2": 169,
+     "bagId": "0363010001040969"
+    },
+    {
+     "address": "Keizersgracht 254C",
+     "use": "woonfunctie",
+     "areaM2": 142,
+     "bagId": "0363010001040970"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012169115",
+   "addresses": [
+    "Keizersgracht 252A",
+    "Keizersgracht 252B",
+    "Keizersgracht 252C",
+    "Keizersgracht 252D",
+    "Keizersgracht 252E",
+    "Keizersgracht 252F",
+    "Keizersgracht 252G",
+    "Keizersgracht 252H"
+   ],
+   "groundUnits": [
+    {
+     "address": "Keizersgracht 252A",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000700863"
+    },
+    {
+     "address": "Keizersgracht 252B",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000700864"
+    },
+    {
+     "address": "Keizersgracht 252C",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000700865"
+    },
+    {
+     "address": "Keizersgracht 252D",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000700866"
+    },
+    {
+     "address": "Keizersgracht 252E",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000700867"
+    },
+    {
+     "address": "Keizersgracht 252F",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000700868"
+    },
+    {
+     "address": "Keizersgracht 252G",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000700869"
+    },
+    {
+     "address": "Keizersgracht 252H",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000700870"
+    }
+   ],
+   "units": 8,
+   "osm": [
+    {
+     "type": "node",
+     "id": 4382404491,
+     "lngLat": [
+      4.8844151,
+      52.3718921
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "252",
+      "addr:postcode": "1016EV",
+      "addr:street": "Keizersgracht",
+      "alt_name": "Cliëntgestuurde Initiatieven en Projecten",
+      "amenity": "community_centre",
+      "email": "info@scipweb.nl",
+      "internet_access": "wlan",
+      "name": "SCIP",
+      "office": "yes",
+      "opening_hours": "\"Geen vaste tijden\"",
+      "operator": "De Regenboog Groep",
+      "phone": "+31 20 625 3111",
+      "website": "https://www.scipweb.nl/",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-11-10T08:28:13.785Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012169114",
+   "addresses": [
+    "Keizersgracht 250B",
+    "Keizersgracht 250C",
+    "Keizersgracht 250D",
+    "Keizersgracht 250E",
+    "Keizersgracht 250A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Keizersgracht 250B",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000990256"
+    },
+    {
+     "address": "Keizersgracht 250C",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000990257"
+    },
+    {
+     "address": "Keizersgracht 250D",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000990258"
+    },
+    {
+     "address": "Keizersgracht 250E",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000990259"
+    },
+    {
+     "address": "Keizersgracht 250A",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000700861"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012169387",
+   "addresses": [
+    "Keizersgracht 248K",
+    "Keizersgracht 248B",
+    "Keizersgracht 248C",
+    "Keizersgracht 248E",
+    "Keizersgracht 248G",
+    "Keizersgracht 248A",
+    "Keizersgracht 248F",
+    "Keizersgracht 248D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Keizersgracht 248K",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 58,
+     "bagId": "0363010011942545"
+    },
+    {
+     "address": "Keizersgracht 248B",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000700851"
+    },
+    {
+     "address": "Keizersgracht 248C",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000700852"
+    },
+    {
+     "address": "Keizersgracht 248E",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000700854"
+    },
+    {
+     "address": "Keizersgracht 248G",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010000700856"
+    },
+    {
+     "address": "Keizersgracht 248A",
+     "use": "woonfunctie",
+     "areaM2": 42,
+     "bagId": "0363010000700850"
+    },
+    {
+     "address": "Keizersgracht 248F",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000700855"
+    },
+    {
+     "address": "Keizersgracht 248D",
+     "use": "woonfunctie",
+     "areaM2": 41,
+     "bagId": "0363010000700853"
+    }
+   ],
+   "units": 8,
+   "osm": [
+    {
+     "type": "node",
+     "id": 10994536129,
+     "lngLat": [
+      4.8844658,
+      52.371997
+     ],
+     "tags": {
+      "name": "Purcy Bikes",
+      "service:bicycle:repair": "yes",
+      "service:bicycle:retail": "no",
+      "service:bicycle:sales": "no",
+      "service:bicycle:service": "yes",
+      "shop": "bicycle"
+     },
+     "fetchedAt": "2026-11-10T08:28:13.785Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012169380",
+   "addresses": [
+    "Keizersgracht 246B",
+    "Keizersgracht 246A",
+    "Keizersgracht 246C",
+    "Keizersgracht 246E",
+    "Keizersgracht 246D",
+    "Keizersgracht 246F"
+   ],
+   "groundUnits": [
+    {
+     "address": "Keizersgracht 246B",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000700843"
+    },
+    {
+     "address": "Keizersgracht 246A",
+     "use": "woonfunctie",
+     "areaM2": 167,
+     "bagId": "0363010001994690"
+    },
+    {
+     "address": "Keizersgracht 246C",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000700844"
+    },
+    {
+     "address": "Keizersgracht 246E",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000700846"
+    },
+    {
+     "address": "Keizersgracht 246D",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000700845"
+    },
+    {
+     "address": "Keizersgracht 246F",
+     "use": "woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010000700847"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012169108",
+   "addresses": [
+    "Keizersgracht 244A",
+    "Keizersgracht 244B",
+    "Keizersgracht 244C",
+    "Keizersgracht 244D",
+    "Keizersgracht 244G",
+    "Keizersgracht 244L",
+    "Keizersgracht 244E",
+    "Keizersgracht 244F",
+    "Keizersgracht 244M",
+    "Keizersgracht 244H"
+   ],
+   "groundUnits": [
+    {
+     "address": "Keizersgracht 244A",
+     "use": "woonfunctie",
+     "areaM2": 41,
+     "bagId": "0363010000700831"
+    },
+    {
+     "address": "Keizersgracht 244B",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000700832"
+    },
+    {
+     "address": "Keizersgracht 244C",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000700833"
+    },
+    {
+     "address": "Keizersgracht 244D",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000700834"
+    },
+    {
+     "address": "Keizersgracht 244G",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000700837"
+    },
+    {
+     "address": "Keizersgracht 244L",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010000700840"
+    },
+    {
+     "address": "Keizersgracht 244E",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000700835"
+    },
+    {
+     "address": "Keizersgracht 244F",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000700836"
+    },
+    {
+     "address": "Keizersgracht 244M",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000700841"
+    },
+    {
+     "address": "Keizersgracht 244H",
+     "use": "woonfunctie",
+     "areaM2": 38,
+     "bagId": "0363010000700838"
+    }
+   ],
+   "units": 10,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012169118",
+   "addresses": [
+    "Keizersgracht 242A",
+    "Keizersgracht 242B",
+    "Keizersgracht 242D",
+    "Keizersgracht 242E",
+    "Keizersgracht 242C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Keizersgracht 242A",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000946145"
+    },
+    {
+     "address": "Keizersgracht 242B",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000946146"
+    },
+    {
+     "address": "Keizersgracht 242D",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000946147"
+    },
+    {
+     "address": "Keizersgracht 242E",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010000964211"
+    },
+    {
+     "address": "Keizersgracht 242C",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010001020091"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012169117",
+   "addresses": [
+    "Keizersgracht 240A",
+    "Keizersgracht 240B",
+    "Keizersgracht 240"
+   ],
+   "groundUnits": [
+    {
+     "address": "Keizersgracht 240A",
+     "use": "gezondheidszorgfunctie",
+     "areaM2": 382,
+     "bagId": "0363010001975969"
+    },
+    {
+     "address": "Keizersgracht 240B",
+     "use": "woonfunctie",
+     "areaM2": 1,
+     "bagId": "0363010001975970"
+    },
+    {
+     "address": "Keizersgracht 240",
+     "use": "woonfunctie",
+     "areaM2": 415,
+     "bagId": "0363010012159970"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  }
+ ]
+}

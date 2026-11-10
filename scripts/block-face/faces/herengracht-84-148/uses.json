@@ -1,0 +1,766 @@
+{
+ "street": "Herengracht",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T08:08:59.907Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012169008",
+   "addresses": [
+    "Herengracht 116C",
+    "Herengracht 116E",
+    "Herengracht 116F",
+    "Herengracht 116A",
+    "Herengracht 116K",
+    "Herengracht 116G",
+    "Herengracht 116L"
+   ],
+   "groundUnits": [
+    {
+     "address": "Herengracht 116C",
+     "use": "woonfunctie",
+     "areaM2": 260,
+     "bagId": "0363010001041823"
+    },
+    {
+     "address": "Herengracht 116E",
+     "use": "woonfunctie",
+     "areaM2": 94,
+     "bagId": "0363010001041824"
+    },
+    {
+     "address": "Herengracht 116F",
+     "use": "woonfunctie",
+     "areaM2": 136,
+     "bagId": "0363010001041825"
+    },
+    {
+     "address": "Herengracht 116A",
+     "use": "woonfunctie",
+     "areaM2": 200,
+     "bagId": "0363010001041826"
+    },
+    {
+     "address": "Herengracht 116K",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010001041827"
+    },
+    {
+     "address": "Herengracht 116G",
+     "use": "woonfunctie",
+     "areaM2": 94,
+     "bagId": "0363010001041828"
+    },
+    {
+     "address": "Herengracht 116L",
+     "use": "woonfunctie",
+     "areaM2": 107,
+     "bagId": "0363010001041829"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012169009",
+   "addresses": [
+    "Herengracht 114"
+   ],
+   "groundUnits": [
+    {
+     "address": "Herengracht 114-3",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000978444"
+    },
+    {
+     "address": "Herengracht 114-H",
+     "use": "woonfunctie",
+     "areaM2": 349,
+     "bagId": "0363010003720948"
+    }
+   ],
+   "units": 11,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012169006",
+   "addresses": [
+    "Herengracht 112"
+   ],
+   "groundUnits": [
+    {
+     "address": "Herengracht 112",
+     "use": "woonfunctie",
+     "areaM2": 314,
+     "bagId": "0363010000664580"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012169007",
+   "addresses": [
+    "Herengracht 108A",
+    "Herengracht 108B",
+    "Herengracht 108C",
+    "Herengracht 108D",
+    "Herengracht 108E",
+    "Herengracht 108F",
+    "Herengracht 108G",
+    "Herengracht 108H",
+    "Herengracht 108K",
+    "Herengracht 108L",
+    "Herengracht 108M",
+    "Herengracht 108N",
+    "Herengracht 108P"
+   ],
+   "groundUnits": [
+    {
+     "address": "Herengracht 108A",
+     "use": "woonfunctie",
+     "areaM2": 130,
+     "bagId": "0363010000664557"
+    },
+    {
+     "address": "Herengracht 108B",
+     "use": "woonfunctie",
+     "areaM2": 174,
+     "bagId": "0363010000664558"
+    },
+    {
+     "address": "Herengracht 108C",
+     "use": "woonfunctie",
+     "areaM2": 81,
+     "bagId": "0363010000664559"
+    },
+    {
+     "address": "Herengracht 108D",
+     "use": "woonfunctie",
+     "areaM2": 133,
+     "bagId": "0363010000664560"
+    },
+    {
+     "address": "Herengracht 108E",
+     "use": "woonfunctie",
+     "areaM2": 115,
+     "bagId": "0363010000664561"
+    },
+    {
+     "address": "Herengracht 108F",
+     "use": "woonfunctie",
+     "areaM2": 120,
+     "bagId": "0363010000664562"
+    },
+    {
+     "address": "Herengracht 108G",
+     "use": "woonfunctie",
+     "areaM2": 146,
+     "bagId": "0363010000664563"
+    },
+    {
+     "address": "Herengracht 108H",
+     "use": "woonfunctie",
+     "areaM2": 115,
+     "bagId": "0363010000664564"
+    },
+    {
+     "address": "Herengracht 108K",
+     "use": "woonfunctie",
+     "areaM2": 120,
+     "bagId": "0363010000664565"
+    },
+    {
+     "address": "Herengracht 108L",
+     "use": "woonfunctie",
+     "areaM2": 84,
+     "bagId": "0363010000664566"
+    },
+    {
+     "address": "Herengracht 108M",
+     "use": "woonfunctie",
+     "areaM2": 115,
+     "bagId": "0363010000664567"
+    },
+    {
+     "address": "Herengracht 108N",
+     "use": "woonfunctie",
+     "areaM2": 112,
+     "bagId": "0363010000664568"
+    },
+    {
+     "address": "Herengracht 108P",
+     "use": "woonfunctie",
+     "areaM2": 91,
+     "bagId": "0363010000664569"
+    }
+   ],
+   "units": 13,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012167709",
+   "addresses": [
+    "Herengracht 106"
+   ],
+   "groundUnits": [
+    {
+     "address": "Herengracht 106",
+     "use": "woonfunctie",
+     "areaM2": 83,
+     "bagId": "0363010000664556"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012167711",
+   "addresses": [
+    "Herengracht 104",
+    "Herengracht 104C",
+    "Herengracht 104D",
+    "Herengracht 104E",
+    "Herengracht 104F",
+    "Herengracht 104G",
+    "Herengracht 104K",
+    "Herengracht 104L",
+    "Herengracht 104M",
+    "Herengracht 104N",
+    "Herengracht 104A",
+    "Herengracht 104B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Herengracht 104",
+     "use": "woonfunctie",
+     "areaM2": 64,
+     "bagId": "0363010000713513"
+    },
+    {
+     "address": "Herengracht 104C",
+     "use": "woonfunctie",
+     "areaM2": 99,
+     "bagId": "0363010001172687"
+    },
+    {
+     "address": "Herengracht 104D",
+     "use": "kantoorfunctie",
+     "areaM2": 50,
+     "bagId": "0363010001172688"
+    },
+    {
+     "address": "Herengracht 104E",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010001172689"
+    },
+    {
+     "address": "Herengracht 104F",
+     "use": "woonfunctie",
+     "areaM2": 86,
+     "bagId": "0363010012087375"
+    },
+    {
+     "address": "Herengracht 104G",
+     "use": "kantoorfunctie",
+     "areaM2": 97,
+     "bagId": "0363010012087376"
+    },
+    {
+     "address": "Herengracht 104K",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010012087377"
+    },
+    {
+     "address": "Herengracht 104L",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010012087378"
+    },
+    {
+     "address": "Herengracht 104M",
+     "use": "kantoorfunctie",
+     "areaM2": 77,
+     "bagId": "0363010012087379"
+    },
+    {
+     "address": "Herengracht 104N",
+     "use": "kantoorfunctie",
+     "areaM2": 30,
+     "bagId": "0363010012087380"
+    },
+    {
+     "address": "Herengracht 104A",
+     "use": "kantoorfunctie",
+     "areaM2": 51,
+     "bagId": "0363010001172685"
+    },
+    {
+     "address": "Herengracht 104B",
+     "use": "kantoorfunctie",
+     "areaM2": 99,
+     "bagId": "0363010001172686"
+    }
+   ],
+   "units": 12,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012167712",
+   "addresses": [
+    "Herengracht 102A",
+    "Herengracht 102B",
+    "Herengracht 102C",
+    "Herengracht 102D",
+    "Herengracht 102E",
+    "Herengracht 102F",
+    "Herengracht 102G",
+    "Herengracht 102H",
+    "Herengracht 102K",
+    "Herengracht 102L",
+    "Herengracht 102M"
+   ],
+   "groundUnits": [
+    {
+     "address": "Herengracht 102A",
+     "use": "woonfunctie",
+     "areaM2": 134,
+     "bagId": "0363010000664540"
+    },
+    {
+     "address": "Herengracht 102B",
+     "use": "woonfunctie",
+     "areaM2": 110,
+     "bagId": "0363010000664541"
+    },
+    {
+     "address": "Herengracht 102C",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000664542"
+    },
+    {
+     "address": "Herengracht 102D",
+     "use": "woonfunctie",
+     "areaM2": 134,
+     "bagId": "0363010000664543"
+    },
+    {
+     "address": "Herengracht 102E",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000664544"
+    },
+    {
+     "address": "Herengracht 102F",
+     "use": "woonfunctie",
+     "areaM2": 134,
+     "bagId": "0363010000664549"
+    },
+    {
+     "address": "Herengracht 102G",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000664550"
+    },
+    {
+     "address": "Herengracht 102H",
+     "use": "woonfunctie",
+     "areaM2": 134,
+     "bagId": "0363010000664551"
+    },
+    {
+     "address": "Herengracht 102K",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000664552"
+    },
+    {
+     "address": "Herengracht 102L",
+     "use": "woonfunctie",
+     "areaM2": 128,
+     "bagId": "0363010000664553"
+    },
+    {
+     "address": "Herengracht 102M",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000664554"
+    }
+   ],
+   "units": 11,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012167710",
+   "addresses": [
+    "Herengracht 100"
+   ],
+   "groundUnits": [],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012167713",
+   "addresses": [
+    "Herengracht 98E",
+    "Herengracht 98F",
+    "Herengracht 98G",
+    "Herengracht 98H",
+    "Herengracht 98A",
+    "Herengracht 98B",
+    "Herengracht 98C",
+    "Herengracht 98D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Herengracht 98E",
+     "use": "woonfunctie",
+     "areaM2": 128,
+     "bagId": "0363010000664531"
+    },
+    {
+     "address": "Herengracht 98F",
+     "use": "woonfunctie",
+     "areaM2": 81,
+     "bagId": "0363010000664532"
+    },
+    {
+     "address": "Herengracht 98G",
+     "use": "woonfunctie",
+     "areaM2": 220,
+     "bagId": "0363010000664533"
+    },
+    {
+     "address": "Herengracht 98H",
+     "use": "woonfunctie",
+     "areaM2": 126,
+     "bagId": "0363010000664534"
+    },
+    {
+     "address": "Herengracht 98A",
+     "use": "woonfunctie",
+     "areaM2": 178,
+     "bagId": "0363010000664527"
+    },
+    {
+     "address": "Herengracht 98B",
+     "use": "woonfunctie",
+     "areaM2": 108,
+     "bagId": "0363010000664528"
+    },
+    {
+     "address": "Herengracht 98C",
+     "use": "woonfunctie",
+     "areaM2": 118,
+     "bagId": "0363010000664529"
+    },
+    {
+     "address": "Herengracht 98D",
+     "use": "woonfunctie",
+     "areaM2": 145,
+     "bagId": "0363010000664530"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012167714",
+   "addresses": [
+    "Herengracht 96B",
+    "Herengracht 96C",
+    "Herengracht 96D",
+    "Herengracht 96E",
+    "Herengracht 96A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Herengracht 96B",
+     "use": "woonfunctie",
+     "areaM2": 164,
+     "bagId": "0363010000948222"
+    },
+    {
+     "address": "Herengracht 96C",
+     "use": "woonfunctie",
+     "areaM2": 168,
+     "bagId": "0363010000948223"
+    },
+    {
+     "address": "Herengracht 96D",
+     "use": "woonfunctie",
+     "areaM2": 144,
+     "bagId": "0363010000948224"
+    },
+    {
+     "address": "Herengracht 96E",
+     "use": "woonfunctie",
+     "areaM2": 127,
+     "bagId": "0363010000948225"
+    },
+    {
+     "address": "Herengracht 96A",
+     "use": "woonfunctie",
+     "areaM2": 284,
+     "bagId": "0363010000948220"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012175699",
+   "addresses": [
+    "Herengracht 94A",
+    "Herengracht 94B",
+    "Herengracht 94C",
+    "Herengracht 94D",
+    "Herengracht 94E",
+    "Herengracht 94F"
+   ],
+   "groundUnits": [
+    {
+     "address": "Herengracht 94A",
+     "use": "woonfunctie",
+     "areaM2": 97,
+     "bagId": "0363010000960186"
+    },
+    {
+     "address": "Herengracht 94B",
+     "use": "woonfunctie",
+     "areaM2": 98,
+     "bagId": "0363010000960187"
+    },
+    {
+     "address": "Herengracht 94C",
+     "use": "woonfunctie",
+     "areaM2": 88,
+     "bagId": "0363010000960188"
+    },
+    {
+     "address": "Herengracht 94D",
+     "use": "woonfunctie",
+     "areaM2": 83,
+     "bagId": "0363010000960189"
+    },
+    {
+     "address": "Herengracht 94E",
+     "use": "woonfunctie",
+     "areaM2": 83,
+     "bagId": "0363010000960190"
+    },
+    {
+     "address": "Herengracht 94F",
+     "use": "woonfunctie",
+     "areaM2": 90,
+     "bagId": "0363010000960192"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012175700",
+   "addresses": [
+    "Herengracht 92"
+   ],
+   "groundUnits": [],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012175701",
+   "addresses": [
+    "Herengracht 90A",
+    "Herengracht 90B",
+    "Herengracht 90C",
+    "Herengracht 90D",
+    "Herengracht 90E",
+    "Herengracht 90F"
+   ],
+   "groundUnits": [
+    {
+     "address": "Herengracht 90A",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 176,
+     "bagId": "0363010000941495"
+    },
+    {
+     "address": "Herengracht 90B",
+     "use": "woonfunctie",
+     "areaM2": 27,
+     "bagId": "0363010000941496"
+    },
+    {
+     "address": "Herengracht 90C",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000941497"
+    },
+    {
+     "address": "Herengracht 90D",
+     "use": "woonfunctie",
+     "areaM2": 28,
+     "bagId": "0363010000941498"
+    },
+    {
+     "address": "Herengracht 90E",
+     "use": "woonfunctie",
+     "areaM2": 91,
+     "bagId": "0363010000941499"
+    },
+    {
+     "address": "Herengracht 90F",
+     "use": "woonfunctie",
+     "areaM2": 90,
+     "bagId": "0363010000941500"
+    }
+   ],
+   "units": 6,
+   "osm": [
+    {
+     "type": "node",
+     "id": 1552005219,
+     "lngLat": [
+      4.8892599,
+      52.3767095
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "90",
+      "addr:postcode": "1015BS",
+      "addr:street": "Herengracht",
+      "amenity": "pub",
+      "email": "info@arendsnest.nl",
+      "internet_access": "wlan",
+      "name": "Arendsnest",
+      "note": "proeflokaal",
+      "old_name": "'t Arendsnest",
+      "opening_hours": "Mo-Th 14:00-24:00, Fr 14:00-01:00, Sa 12:00-01:00, Su 12:00-24:00",
+      "phone": "+31 20 421 2057",
+      "website": "https://www.arendsnest.nl"
+     },
+     "fetchedAt": "2026-11-10T08:08:59.907Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012169010",
+   "addresses": [
+    "Herengracht 88F",
+    "Herengracht 88A",
+    "Herengracht 88B",
+    "Herengracht 88C",
+    "Herengracht 88D",
+    "Herengracht 88E",
+    "Herengracht 88G"
+   ],
+   "groundUnits": [
+    {
+     "address": "Herengracht 88F",
+     "use": "kantoorfunctie",
+     "areaM2": 280,
+     "bagId": "0363010000866068"
+    },
+    {
+     "address": "Herengracht 88A",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 303,
+     "bagId": "0363010000866069"
+    },
+    {
+     "address": "Herengracht 88B",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000866070"
+    },
+    {
+     "address": "Herengracht 88C",
+     "use": "woonfunctie",
+     "areaM2": 120,
+     "bagId": "0363010000866071"
+    },
+    {
+     "address": "Herengracht 88D",
+     "use": "woonfunctie",
+     "areaM2": 75,
+     "bagId": "0363010000866072"
+    },
+    {
+     "address": "Herengracht 88E",
+     "use": "woonfunctie",
+     "areaM2": 153,
+     "bagId": "0363010000866097"
+    },
+    {
+     "address": "Herengracht 88G",
+     "use": "industriefunctie",
+     "areaM2": 1,
+     "bagId": "0363010011323678"
+    },
+    {
+     "address": "Herengracht 88G",
+     "use": "industriefunctie",
+     "areaM2": 15,
+     "bagId": "0363010012609365"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012175692",
+   "addresses": [
+    "Herengracht 86",
+    "Herengracht 86B",
+    "Herengracht 86A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Herengracht 86B",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010012600518"
+    },
+    {
+     "address": "Herengracht 86A",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010012600517"
+    },
+    {
+     "address": "Herengracht 86-H",
+     "use": "woonfunctie",
+     "areaM2": 78,
+     "bagId": "0363010000964302"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012175702",
+   "addresses": [
+    "Herengracht 84"
+   ],
+   "groundUnits": [
+    {
+     "address": "Herengracht 84",
+     "use": "woonfunctie",
+     "areaM2": 227,
+     "bagId": "0363010011942854"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  }
+ ]
+}

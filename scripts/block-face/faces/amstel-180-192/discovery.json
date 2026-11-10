@@ -1,0 +1,273 @@
+{
+ "street": "Amstel",
+ "seed": "0363100012182494",
+ "members": [
+  "0363100012182498",
+  "0363100012182499",
+  "0363100012182501",
+  "0363100012182500",
+  "0363100012182495",
+  "0363100012182494"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "no further pand fronts the street in the fetched area"
+  },
+  {
+   "side": "right",
+   "reason": "next fronting pand 0363100012171572 11.6 m on shares no party wall (cross street or gap)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012169213",
+   "reason": "frontage 87.8 m from Amstel"
+  },
+  {
+   "pandId": "0363100012169214",
+   "reason": "frontage 90.5 m from Amstel"
+  },
+  {
+   "pandId": "0363100012171134",
+   "reason": "sightline to Amstel crosses 0363100012177697"
+  },
+  {
+   "pandId": "0363100012171370",
+   "reason": "frontage 64.0 m from Amstel"
+  },
+  {
+   "pandId": "0363100012171371",
+   "reason": "frontage 44.0 m from Amstel"
+  },
+  {
+   "pandId": "0363100012171563",
+   "reason": "frontage 54.8 m from Amstel"
+  },
+  {
+   "pandId": "0363100012171564",
+   "reason": "frontage 47.3 m from Amstel"
+  },
+  {
+   "pandId": "0363100012171565",
+   "reason": "frontage 71.0 m from Amstel"
+  },
+  {
+   "pandId": "0363100012171567",
+   "reason": "frontage 50.6 m from Amstel"
+  },
+  {
+   "pandId": "0363100012171568",
+   "reason": "frontage 66.5 m from Amstel"
+  },
+  {
+   "pandId": "0363100012171570",
+   "reason": "sightline to Amstel crosses 0363100012171569"
+  },
+  {
+   "pandId": "0363100012171571",
+   "reason": "frontage 38.0 m from Amstel"
+  },
+  {
+   "pandId": "0363100012171573",
+   "reason": "frontage 53.7 m from Amstel"
+  },
+  {
+   "pandId": "0363100012171574",
+   "reason": "sightline to Amstel crosses 0363100012171575"
+  },
+  {
+   "pandId": "0363100012171576",
+   "reason": "frontage 32.6 m from Amstel"
+  },
+  {
+   "pandId": "0363100012177688",
+   "reason": "frontage 68.1 m from Amstel"
+  },
+  {
+   "pandId": "0363100012177689",
+   "reason": "frontage 57.2 m from Amstel"
+  },
+  {
+   "pandId": "0363100012177690",
+   "reason": "frontage 39.2 m from Amstel"
+  },
+  {
+   "pandId": "0363100012177691",
+   "reason": "sightline to Amstel crosses 0363100012177694"
+  },
+  {
+   "pandId": "0363100012177692",
+   "reason": "frontage 47.9 m from Amstel"
+  },
+  {
+   "pandId": "0363100012177693",
+   "reason": "frontage 44.8 m from Amstel"
+  },
+  {
+   "pandId": "0363100012177694",
+   "reason": "sightline to Amstel crosses 0363100012177695"
+  },
+  {
+   "pandId": "0363100012182493",
+   "reason": "frontage 33.2 m from Amstel"
+  },
+  {
+   "pandId": "0363100012182496",
+   "reason": "sightline to Amstel crosses 0363100012182501"
+  },
+  {
+   "pandId": "0363100012182679",
+   "reason": "frontage 50.1 m from Amstel"
+  },
+  {
+   "pandId": "0363100012182680",
+   "reason": "frontage 45.9 m from Amstel"
+  },
+  {
+   "pandId": "0363100012182681",
+   "reason": "frontage 33.6 m from Amstel"
+  },
+  {
+   "pandId": "0363100012182682",
+   "reason": "sightline to Amstel crosses 0363100012182502"
+  },
+  {
+   "pandId": "0363100012182754",
+   "reason": "sightline to Amstel crosses 0363100012182502"
+  },
+  {
+   "pandId": "0363100012182755",
+   "reason": "sightline to Amstel crosses 0363100012182756"
+  },
+  {
+   "pandId": "0363100012182758",
+   "reason": "sightline to Amstel crosses 0363100012182502"
+  },
+  {
+   "pandId": "0363100012571492",
+   "reason": "frontage 48.6 m from Amstel"
+  },
+  {
+   "pandId": "0363100012571493",
+   "reason": "frontage 44.4 m from Amstel"
+  },
+  {
+   "pandId": "0363100012571494",
+   "reason": "frontage 40.6 m from Amstel"
+  },
+  {
+   "pandId": "0363100012571495",
+   "reason": "frontage 35.6 m from Amstel"
+  },
+  {
+   "pandId": "0363100012171133",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012171569",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012171575",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012182492",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012182497",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012182502",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012182678",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012182756",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012182757",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012182759",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012186092",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012182498",
+   "alongM": -30.76,
+   "widthM": 14.99,
+   "eavesM": 15.9,
+   "roofMaxM": 18.97,
+   "storeys3dbag": 5,
+   "builtYear": 1730,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012182499",
+   "alongM": -20.29,
+   "widthM": 5.96,
+   "eavesM": 15.94,
+   "roofMaxM": 19.44,
+   "storeys3dbag": 5,
+   "builtYear": 1732,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012182501",
+   "alongM": -14.71,
+   "widthM": 5.2,
+   "eavesM": 6.32,
+   "roofMaxM": 14.16,
+   "storeys3dbag": 4,
+   "builtYear": 1905,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012182500",
+   "alongM": -9.61,
+   "widthM": 5.01,
+   "eavesM": 9.51,
+   "roofMaxM": 14.39,
+   "storeys3dbag": 4,
+   "builtYear": 1898,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012182495",
+   "alongM": -4.94,
+   "widthM": 4.33,
+   "eavesM": 14.6,
+   "roofMaxM": 15.08,
+   "storeys3dbag": 4,
+   "builtYear": 1877,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012182494",
+   "alongM": 0,
+   "widthM": 5.54,
+   "eavesM": 9.53,
+   "roofMaxM": 13.97,
+   "storeys3dbag": 4,
+   "builtYear": 1635,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  }
+ ]
+}

@@ -1,0 +1,271 @@
+{
+ "street": "Keizersgracht",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T08:39:54.510Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012172351",
+   "addresses": [
+    "Keizersgracht 197"
+   ],
+   "groundUnits": [
+    {
+     "address": "Keizersgracht 197-H",
+     "use": "kantoorfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000700749"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012172350",
+   "addresses": [
+    "Keizersgracht 199"
+   ],
+   "groundUnits": [
+    {
+     "address": "Keizersgracht 199-H",
+     "use": "woonfunctie",
+     "areaM2": 120,
+     "bagId": "0363010000700753"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012172312",
+   "addresses": [
+    "Keizersgracht 201"
+   ],
+   "groundUnits": [
+    {
+     "address": "Keizersgracht 201-H",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000700755"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012169305",
+   "addresses": [
+    "Keizersgracht 203",
+    "Keizersgracht 205"
+   ],
+   "groundUnits": [
+    {
+     "address": "Keizersgracht 203",
+     "use": "kantoorfunctie",
+     "areaM2": 1446,
+     "bagId": "0363010000700762"
+    },
+    {
+     "address": "Keizersgracht 205-H",
+     "use": "kantoorfunctie",
+     "areaM2": 651,
+     "bagId": "0363010001042126"
+    },
+    {
+     "address": "Keizersgracht 205-1",
+     "use": "kantoorfunctie",
+     "areaM2": 140,
+     "bagId": "0363010001042128"
+    },
+    {
+     "address": "Keizersgracht 205-2",
+     "use": "kantoorfunctie",
+     "areaM2": 167,
+     "bagId": "0363010001042129"
+    },
+    {
+     "address": "Keizersgracht 205-3",
+     "use": "kantoorfunctie",
+     "areaM2": 272,
+     "bagId": "0363010001042130"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012169306",
+   "addresses": [
+    "Keizersgracht 207A",
+    "Keizersgracht 207B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Keizersgracht 207A",
+     "use": "kantoorfunctie",
+     "areaM2": 700,
+     "bagId": "0363010001045089"
+    },
+    {
+     "address": "Keizersgracht 207B",
+     "use": "woonfunctie",
+     "areaM2": 435,
+     "bagId": "0363010001045090"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012169516",
+   "addresses": [
+    "Keizersgracht 209"
+   ],
+   "groundUnits": [
+    {
+     "address": "Keizersgracht 209",
+     "use": "kantoorfunctie",
+     "areaM2": 980,
+     "bagId": "0363010000700775"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012172352",
+   "addresses": [
+    "Keizersgracht 211"
+   ],
+   "groundUnits": [
+    {
+     "address": "Keizersgracht 211",
+     "use": "woonfunctie",
+     "areaM2": 327,
+     "bagId": "0363010003720234"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012169514",
+   "addresses": [
+    "Keizersgracht 213",
+    "Keizersgracht 213A",
+    "Keizersgracht 213B",
+    "Keizersgracht 213C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Keizersgracht 213",
+     "use": "woonfunctie",
+     "areaM2": 882,
+     "bagId": "0363010000700785"
+    },
+    {
+     "address": "Keizersgracht 213A",
+     "use": "woonfunctie",
+     "areaM2": 486,
+     "bagId": "0363010012120890"
+    },
+    {
+     "address": "Keizersgracht 213B",
+     "use": "woonfunctie",
+     "areaM2": 143,
+     "bagId": "0363010012120891"
+    },
+    {
+     "address": "Keizersgracht 213C",
+     "use": "woonfunctie",
+     "areaM2": 214,
+     "bagId": "0363010012120892"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012169513",
+   "addresses": [
+    "Keizersgracht 215"
+   ],
+   "groundUnits": [
+    {
+     "address": "Keizersgracht 215",
+     "use": "woonfunctie",
+     "areaM2": 672,
+     "bagId": "0363010001020141"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012169303",
+   "addresses": [
+    "Keizersgracht 217A",
+    "Keizersgracht 217B",
+    "Keizersgracht 217D",
+    "Keizersgracht 217E",
+    "Keizersgracht 217G",
+    "Keizersgracht 217H",
+    "Keizersgracht 217C",
+    "Keizersgracht 219"
+   ],
+   "groundUnits": [
+    {
+     "address": "Keizersgracht 217A",
+     "use": "kantoorfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000954174"
+    },
+    {
+     "address": "Keizersgracht 217B",
+     "use": "woonfunctie",
+     "areaM2": 135,
+     "bagId": "0363010000954175"
+    },
+    {
+     "address": "Keizersgracht 217D",
+     "use": "woonfunctie",
+     "areaM2": 120,
+     "bagId": "0363010000954177"
+    },
+    {
+     "address": "Keizersgracht 217E",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000954178"
+    },
+    {
+     "address": "Keizersgracht 217G",
+     "use": "woonfunctie",
+     "areaM2": 150,
+     "bagId": "0363010000954180"
+    },
+    {
+     "address": "Keizersgracht 217H",
+     "use": "woonfunctie",
+     "areaM2": 150,
+     "bagId": "0363010000954181"
+    },
+    {
+     "address": "Keizersgracht 219",
+     "use": "kantoorfunctie",
+     "areaM2": 159,
+     "bagId": "0363010000954182"
+    },
+    {
+     "address": "Keizersgracht 217C",
+     "use": "woonfunctie",
+     "areaM2": 127,
+     "bagId": "0363010003716763"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  }
+ ]
+}

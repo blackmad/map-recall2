@@ -12,21 +12,22 @@
  */
 import type {FrontIntent} from './intent.ts';
 
+/** maxHeightM 3.0 (was 2.4): the Louis XIV attic of Keizersgracht 244-246 stands 2.8 m, 14.2-17.0 m (lane belt-gg-west 2026-11-10). */
 export const ENTABLATURE = {
-  minHeightM: 0.4, maxHeightM: 2.4, minCapM: 0.15, maxCapM: 0.7, capDepthM: 0.4, maxCapDepthM: 0.8,
-  friezeDepthM: 0.04, architraveDepthM: 0.08, maxArchitraveM: 0.4, consoleWidthM: 0.18, consoleInsetM: 0.08, maxConsoles: 24,
+  minHeightM: 0.4, maxHeightM: 3.0, minCapM: 0.15, maxCapM: 0.7, capDepthM: 0.4, maxCapDepthM: 0.8,
+  friezeDepthM: 0.04, architraveDepthM: 0.08, maxArchitraveM: 0.4, consoleWidthM: 0.18, consoleInsetM: 0.08, maxConsoles: 24, maxDentils: 60, dentilInsetM: 0.7,
 } as const;
 
 export type EntablatureIntent = NonNullable<FrontIntent['entablature']>;
 type Cornice = {bottomM: number; heightM: number; depthM: number; brackets: number;
   layers: {bottomM: number; heightM: number; depthM: number; underside?: {riseM: number; insetM: number}}[];
-  accents?: {id: string; kind: 'slab'; leftM: number; bottomM: number; widthM: number; heightM: number; depthM: number; surface: 'stone'; profile: 'console'}[]};
+  accents?: {id: string; kind: 'slab'; leftM: number; bottomM: number; widthM: number; heightM: number; depthM: number; surface: 'stone'; profile?: 'console'}[]};
 
 const r = (v: number) => Math.round(v * 1000) / 1000;
 
 export function entablatureProblems(f: FrontIntent, at: string): string[] {
   const e = f.entablature as Record<string, unknown> | undefined, p: string[] = [];
-  const keys = ['rise', 'cap', 'capDepth', 'frieze', 'architrave', 'consoles'];
+  const keys = ['rise', 'cap', 'capDepth', 'frieze', 'architrave', 'consoles', 'dentils'];
   if (!e || typeof e !== 'object' || Array.isArray(e) || Object.keys(e).some(k => !keys.includes(k))) return [`${at}.entablature: {rise, cap, frieze, capDepth?, architrave?, consoles?}`];
   const num = (k: string, lo: number, hi: number, optional = false) => {
     if (optional && e[k] === undefined) return;
@@ -37,6 +38,13 @@ export function entablatureProblems(f: FrontIntent, at: string): string[] {
   num('capDepth', 0.1, ENTABLATURE.maxCapDepthM, true);
   num('architrave', 0, ENTABLATURE.maxArchitraveM, true);
   if (e.consoles !== undefined && !(Number.isInteger(e.consoles) && (e.consoles as number) >= 2 && (e.consoles as number) <= ENTABLATURE.maxConsoles)) p.push(`${at}.entablature.consoles: an integer 2..${ENTABLATURE.maxConsoles}`);
+  if (e.dentils !== undefined) {
+    const d = e.dentils as Record<string, unknown>;
+    const ok = d && typeof d === 'object' && Object.keys(d).every(k => ['pitch', 'block', 'rise'].includes(k)) && typeof d.pitch === 'number' && typeof d.block === 'number' && typeof d.rise === 'number'
+      && d.pitch >= 0.15 && d.pitch <= 1 && d.block >= 0.05 && d.block < d.pitch && d.rise >= 0.05 && d.rise <= 0.6;
+    if (!ok) p.push(`${at}.entablature.dentils: {pitch 0.15..1, block 0.05..pitch, rise 0.05..0.6} m`);
+    else if (typeof e.rise === 'number' && typeof e.cap === 'number' && e.cap + (d.rise as number) > e.rise - 0.05) p.push(`${at}.entablature.dentils: no room under the cap`);
+  }
   if (e.frieze !== 'trim' && e.frieze !== 'wall') p.push(`${at}.entablature.frieze: "trim" (a white band) or "wall" (brick between consoles)`);
   if (typeof e.rise === 'number' && typeof e.cap === 'number' && e.cap + ((e.architrave as number | undefined) ?? 0) > e.rise - 0.1) p.push(`${at}.entablature: cap + architrave leave no frieze under ${e.rise} m`);
   if (f.cornice === undefined || f.cornice === 'none') p.push(`${at}.entablature: needs a cornice (it replaces the style's band)`);
@@ -56,5 +64,14 @@ export function entablatureCornice(e: EntablatureIntent, eaves: number, width: n
   if (n >= 2 && span > 0) cornice.accents = Array.from({length: n}, (_, k) => ({id: `entablature-console-${k}`, kind: 'slab' as const,
     leftM: r(ENTABLATURE.consoleInsetM + span * k / (n - 1)), bottomM: friezeBottom, widthM: w, heightM: friezeH,
     depthM: r(capDepth * 0.8), surface: 'stone' as const, profile: 'console' as const}));
+  // `dentils` (Keizersgracht 616A, 610: the modillion row under the cap): small blocks at `pitch` hanging from the cap.
+  const dn = e.dentils;
+  if (dn) {
+    // Kept 0.35 m off the party walls: an end block over the trimmed party line reads past the wall silhouette (glb audit, Keizersgracht 616A).
+    const count = Math.min(ENTABLATURE.maxDentils, Math.floor((width - 2 * ENTABLATURE.dentilInsetM - dn.block) / dn.pitch) + 1);
+    const first = (width - (count - 1) * dn.pitch - dn.block) / 2;
+    cornice.accents = [...(cornice.accents ?? []), ...Array.from({length: count}, (_, k) => ({id: `entablature-dentil-${k}`, kind: 'slab' as const,
+      leftM: r(first + k * dn.pitch), bottomM: r(eaves - e.cap - dn.rise), widthM: dn.block, heightM: dn.rise, depthM: r(capDepth * 0.7), surface: 'stone' as const}))];
+  }
   return cornice;
 }

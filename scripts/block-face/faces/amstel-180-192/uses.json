@@ -1,0 +1,217 @@
+{
+ "street": "Amstel",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T08:39:50.980Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012182498",
+   "addresses": [
+    "Amstel 190",
+    "Amstel 192A",
+    "Amstel 192B",
+    "Amstel 192C",
+    "Amstel 192D",
+    "Amstel 192E",
+    "Amstel 192F",
+    "Amstel 192G",
+    "Amstel 192H"
+   ],
+   "groundUnits": [
+    {
+     "address": "Amstel 192A",
+     "use": "woonfunctie",
+     "areaM2": 105,
+     "bagId": "0363010000960350"
+    },
+    {
+     "address": "Amstel 192B",
+     "use": "woonfunctie",
+     "areaM2": 145,
+     "bagId": "0363010000960351"
+    },
+    {
+     "address": "Amstel 192C",
+     "use": "woonfunctie",
+     "areaM2": 105,
+     "bagId": "0363010000960354"
+    },
+    {
+     "address": "Amstel 192D",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010000960355"
+    },
+    {
+     "address": "Amstel 192E",
+     "use": "woonfunctie",
+     "areaM2": 78,
+     "bagId": "0363010000960356"
+    },
+    {
+     "address": "Amstel 192F",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000960357"
+    },
+    {
+     "address": "Amstel 192G",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010000960358"
+    },
+    {
+     "address": "Amstel 192H",
+     "use": "woonfunctie",
+     "areaM2": 250,
+     "bagId": "0363010001987448"
+    },
+    {
+     "address": "Amstel 190",
+     "use": "kantoorfunctie",
+     "areaM2": 62,
+     "bagId": "0363010000960349"
+    }
+   ],
+   "units": 9,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012182499",
+   "addresses": [
+    "Amstel 188"
+   ],
+   "groundUnits": [
+    {
+     "address": "Amstel 188-H",
+     "use": "kantoorfunctie",
+     "areaM2": 141,
+     "bagId": "0363010000566879"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012182501",
+   "addresses": [
+    "Amstel 186"
+   ],
+   "groundUnits": [
+    {
+     "address": "Amstel 186-H",
+     "use": "winkelfunctie,woonfunctie",
+     "areaM2": 77,
+     "bagId": "0363010000566876"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012182500",
+   "addresses": [
+    "Amstel 184"
+   ],
+   "groundUnits": [
+    {
+     "address": "Amstel 184-H",
+     "use": "woonfunctie",
+     "areaM2": 33,
+     "bagId": "0363010000566873"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012182495",
+   "addresses": [
+    "Amstel 182C",
+    "Amstel 182D",
+    "Amstel 182A",
+    "Amstel 182B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Amstel 182C",
+     "use": "woonfunctie",
+     "areaM2": 63,
+     "bagId": "0363010001014215"
+    },
+    {
+     "address": "Amstel 182D",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010001014216"
+    },
+    {
+     "address": "Amstel 182A",
+     "use": "woonfunctie",
+     "areaM2": 62,
+     "bagId": "0363010001014213"
+    },
+    {
+     "address": "Amstel 182B",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010001014214"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012182494",
+   "addresses": [
+    "Amstel 180"
+   ],
+   "groundUnits": [
+    {
+     "address": "Amstel 180-H",
+     "use": "winkelfunctie,woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000566868"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 1727146529,
+     "lngLat": [
+      4.8993403,
+      52.3667459
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "178",
+      "addr:postcode": "1017AE",
+      "addr:street": "Amstel",
+      "amenity": "bar",
+      "check_date": "2026-02-01",
+      "description": "Gay naturist bar and lounge with pool table for all men. Free Willie, let it all hang out! Check website for weekly program.",
+      "level": "0",
+      "lgbtq": "primary",
+      "lgbtq:cruising": "yes",
+      "lgbtq:gay": "yes",
+      "min_age": "18",
+      "name": "Free Willie",
+      "opening_hours": "Th 20:00-02:00; Fr 20:00-03:00; Sa 22:00-03:00; Su 17:00-01:00",
+      "payment:cash": "yes",
+      "payment:credit_cards": "yes",
+      "payment:debit_cards": "yes",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "website": "https://freewillie.nl",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-11-10T08:39:50.980Z",
+     "match": "frontage",
+     "distanceM": 7.5
+    }
+   ]
+  }
+ ]
+}

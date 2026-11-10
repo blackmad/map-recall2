@@ -1,0 +1,1411 @@
+{
+ "street": "Leliegracht",
+ "seed": "0363100012177016",
+ "members": [
+  "0363100012176429",
+  "0363100012176417",
+  "0363100012176419",
+  "0363100012176421",
+  "0363100012176418",
+  "0363100012176420",
+  "0363100012167650",
+  "0363100012167664",
+  "0363100012167665",
+  "0363100012167667",
+  "0363100012177011",
+  "0363100012177012",
+  "0363100012177013",
+  "0363100012177014",
+  "0363100012177015",
+  "0363100012177016"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "next fronting pand 0363100012169069 57.0 m on shares no party wall (cross street or gap)"
+  },
+  {
+   "side": "right",
+   "reason": "trimmed at 0363100012177016 (face continues: 177017)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012165019",
+   "reason": "frontage 106.6 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012165020",
+   "reason": "frontage 119.9 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012165021",
+   "reason": "frontage 67.7 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012165022",
+   "reason": "frontage 108.1 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012165023",
+   "reason": "frontage 107.9 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012165024",
+   "reason": "frontage 41.7 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012165025",
+   "reason": "frontage 51.0 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012165026",
+   "reason": "frontage 119.3 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012165027",
+   "reason": "frontage 124.9 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012165028",
+   "reason": "frontage 92.7 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012165029",
+   "reason": "frontage 107.3 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012167630",
+   "reason": "no frontage on Leliegracht: No footprint edge faces Leliegracht"
+  },
+  {
+   "pandId": "0363100012167631",
+   "reason": "frontage 95.2 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012167632",
+   "reason": "no frontage on Leliegracht: No footprint edge faces Leliegracht"
+  },
+  {
+   "pandId": "0363100012167633",
+   "reason": "no frontage on Leliegracht: No footprint edge faces Leliegracht"
+  },
+  {
+   "pandId": "0363100012167634",
+   "reason": "frontage 95.2 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012167635",
+   "reason": "no frontage on Leliegracht: No footprint edge faces Leliegracht"
+  },
+  {
+   "pandId": "0363100012167636",
+   "reason": "frontage 84.1 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012167637",
+   "reason": "frontage 91.9 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012167638",
+   "reason": "frontage 89.8 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012167639",
+   "reason": "frontage 87.9 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012167640",
+   "reason": "no frontage on Leliegracht: No footprint edge faces Leliegracht"
+  },
+  {
+   "pandId": "0363100012167644",
+   "reason": "frontage 33.4 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012167645",
+   "reason": "sightline to Leliegracht crosses 0363100012167659"
+  },
+  {
+   "pandId": "0363100012167646",
+   "reason": "frontage 40.8 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012167647",
+   "reason": "frontage 31.1 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012167648",
+   "reason": "frontage 41.4 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012167651",
+   "reason": "frontage 46.7 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012167652",
+   "reason": "frontage 52.0 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012167653",
+   "reason": "frontage 58.5 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012167654",
+   "reason": "frontage 76.7 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012167655",
+   "reason": "frontage 67.1 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012167658",
+   "reason": "frontage 67.2 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012167659",
+   "reason": "sightline to Leliegracht crosses 0363100012176313"
+  },
+  {
+   "pandId": "0363100012167660",
+   "reason": "frontage 45.7 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012167661",
+   "reason": "frontage 48.2 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012167662",
+   "reason": "frontage 53.3 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012167663",
+   "reason": "frontage 57.3 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012165429",
+   "reason": "frontage 147.3 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012167496",
+   "reason": "frontage 238.4 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012167578",
+   "reason": "frontage 194.9 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012167666",
+   "reason": "frontage 54.6 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012167668",
+   "reason": "frontage 48.9 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012167669",
+   "reason": "frontage 41.2 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012167670",
+   "reason": "frontage 84.2 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012167671",
+   "reason": "frontage 81.5 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012167672",
+   "reason": "frontage 73.2 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012167673",
+   "reason": "frontage 69.9 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012167674",
+   "reason": "frontage 66.0 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012167675",
+   "reason": "frontage 61.2 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012167676",
+   "reason": "frontage 65.4 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012167677",
+   "reason": "frontage 71.1 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012167678",
+   "reason": "frontage 76.1 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012167679",
+   "reason": "frontage 64.6 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012167680",
+   "reason": "no frontage on Leliegracht: No footprint edge faces Leliegracht"
+  },
+  {
+   "pandId": "0363100012167681",
+   "reason": "no frontage on Leliegracht: No footprint edge faces Leliegracht"
+  },
+  {
+   "pandId": "0363100012167682",
+   "reason": "frontage 125.8 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012167683",
+   "reason": "no frontage on Leliegracht: No footprint edge faces Leliegracht"
+  },
+  {
+   "pandId": "0363100012167684",
+   "reason": "frontage 77.8 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012167685",
+   "reason": "frontage 126.2 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012167686",
+   "reason": "frontage 131.2 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012167687",
+   "reason": "frontage 67.1 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012167694",
+   "reason": "frontage 144.0 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012167699",
+   "reason": "frontage 178.9 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012167700",
+   "reason": "frontage 166.6 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012167709",
+   "reason": "frontage 161.5 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012167710",
+   "reason": "frontage 186.9 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012167711",
+   "reason": "frontage 170.3 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012167712",
+   "reason": "frontage 177.8 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012167713",
+   "reason": "frontage 195.8 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012167714",
+   "reason": "frontage 203.2 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012169005",
+   "reason": "frontage 77.2 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012169006",
+   "reason": "frontage 140.3 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012169007",
+   "reason": "frontage 145.2 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012169008",
+   "reason": "frontage 127.6 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012169009",
+   "reason": "frontage 136.1 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012167966",
+   "reason": "frontage 156.1 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012167967",
+   "reason": "frontage 151.9 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012167968",
+   "reason": "frontage 158.5 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012167969",
+   "reason": "frontage 176.2 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012167970",
+   "reason": "frontage 182.6 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012168028",
+   "reason": "frontage 158.8 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012168029",
+   "reason": "frontage 167.8 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012168030",
+   "reason": "frontage 165.4 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012168031",
+   "reason": "frontage 154.5 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012168405",
+   "reason": "frontage 162.7 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012168406",
+   "reason": "frontage 189.7 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012168411",
+   "reason": "frontage 188.6 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012168543",
+   "reason": "frontage 226.8 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012169011",
+   "reason": "frontage 198.5 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012169060",
+   "reason": "frontage 73.8 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012169066",
+   "reason": "frontage 58.5 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012169067",
+   "reason": "frontage 47.0 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012169068",
+   "reason": "frontage 41.2 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012169070",
+   "reason": "frontage 32.7 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012169072",
+   "reason": "sightline to Leliegracht crosses 0363100012169069"
+  },
+  {
+   "pandId": "0363100012169073",
+   "reason": "sightline to Leliegracht crosses 0363100012169071"
+  },
+  {
+   "pandId": "0363100012169074",
+   "reason": "frontage 32.0 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012169150",
+   "reason": "frontage 77.4 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012169251",
+   "reason": "sightline to Leliegracht crosses 0363100012169071"
+  },
+  {
+   "pandId": "0363100012169265",
+   "reason": "frontage 62.2 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012169266",
+   "reason": "frontage 73.8 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012169268",
+   "reason": "frontage 51.0 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012169304",
+   "reason": "frontage 158.4 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012169305",
+   "reason": "frontage 185.5 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012169574",
+   "reason": "frontage 116.3 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012169575",
+   "reason": "frontage 108.5 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012169576",
+   "reason": "frontage 162.8 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012169577",
+   "reason": "frontage 124.2 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012169578",
+   "reason": "frontage 122.5 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012169579",
+   "reason": "frontage 117.9 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012172312",
+   "reason": "frontage 180.6 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012172350",
+   "reason": "frontage 175.8 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012172351",
+   "reason": "frontage 166.9 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012172357",
+   "reason": "frontage 122.6 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012172359",
+   "reason": "frontage 74.4 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012172362",
+   "reason": "frontage 45.1 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012172363",
+   "reason": "frontage 68.1 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012172364",
+   "reason": "frontage 62.1 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012172365",
+   "reason": "frontage 56.6 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012172426",
+   "reason": "sightline to Leliegracht crosses 0363100012172425"
+  },
+  {
+   "pandId": "0363100012172427",
+   "reason": "frontage 50.8 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012172428",
+   "reason": "frontage 37.6 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012172917",
+   "reason": "frontage 33.4 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012172918",
+   "reason": "frontage 41.7 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012169012",
+   "reason": "frontage 216.8 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012169013",
+   "reason": "frontage 219.9 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012172919",
+   "reason": "frontage 51.0 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012172921",
+   "reason": "frontage 32.7 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012172922",
+   "reason": "frontage 33.1 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012172924",
+   "reason": "sightline to Leliegracht crosses 0363100012172928"
+  },
+  {
+   "pandId": "0363100012172925",
+   "reason": "frontage 33.0 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012175699",
+   "reason": "frontage 212.1 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012175700",
+   "reason": "frontage 218.7 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012175925",
+   "reason": "frontage 78.6 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012175926",
+   "reason": "frontage 80.9 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012175927",
+   "reason": "frontage 77.1 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012175928",
+   "reason": "frontage 78.6 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012175929",
+   "reason": "frontage 74.9 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012175933",
+   "reason": "frontage 78.1 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012176002",
+   "reason": "frontage 117.2 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012176003",
+   "reason": "frontage 114.3 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012176004",
+   "reason": "no frontage on Leliegracht: No footprint edge faces Leliegracht"
+  },
+  {
+   "pandId": "0363100012176005",
+   "reason": "frontage 80.3 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012176006",
+   "reason": "frontage 113.8 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012176007",
+   "reason": "frontage 84.9 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012176008",
+   "reason": "frontage 77.2 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012176009",
+   "reason": "frontage 81.8 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012176010",
+   "reason": "frontage 90.4 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012176011",
+   "reason": "no frontage on Leliegracht: No footprint edge faces Leliegracht"
+  },
+  {
+   "pandId": "0363100012176012",
+   "reason": "no frontage on Leliegracht: No footprint edge faces Leliegracht"
+  },
+  {
+   "pandId": "0363100012176013",
+   "reason": "frontage 85.2 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012176014",
+   "reason": "frontage 100.1 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012175037",
+   "reason": "frontage 137.1 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012175038",
+   "reason": "frontage 164.4 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012175039",
+   "reason": "frontage 151.9 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012175580",
+   "reason": "frontage 190.9 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012175822",
+   "reason": "frontage 164.7 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012175823",
+   "reason": "frontage 166.8 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012175827",
+   "reason": "frontage 168.9 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012175917",
+   "reason": "frontage 184.0 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012175919",
+   "reason": "no frontage on Leliegracht: No footprint edge faces Leliegracht"
+  },
+  {
+   "pandId": "0363100012175920",
+   "reason": "frontage 142.6 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012175921",
+   "reason": "frontage 165.4 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012175922",
+   "reason": "frontage 143.8 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012175923",
+   "reason": "frontage 153.4 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012175924",
+   "reason": "frontage 159.3 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012175930",
+   "reason": "frontage 150.2 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012175931",
+   "reason": "frontage 146.6 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012175932",
+   "reason": "frontage 149.4 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012176000",
+   "reason": "frontage 150.7 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012176001",
+   "reason": "frontage 140.2 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012176016",
+   "reason": "frontage 114.0 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012176017",
+   "reason": "no frontage on Leliegracht: No footprint edge faces Leliegracht"
+  },
+  {
+   "pandId": "0363100012176091",
+   "reason": "no frontage on Leliegracht: No footprint edge faces Leliegracht"
+  },
+  {
+   "pandId": "0363100012176094",
+   "reason": "frontage 105.0 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012176095",
+   "reason": "no frontage on Leliegracht: No footprint edge faces Leliegracht"
+  },
+  {
+   "pandId": "0363100012176303",
+   "reason": "frontage 105.0 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012176304",
+   "reason": "frontage 106.0 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012176305",
+   "reason": "frontage 124.2 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012176306",
+   "reason": "frontage 128.3 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012176307",
+   "reason": "frontage 130.0 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012176308",
+   "reason": "frontage 132.1 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012176309",
+   "reason": "frontage 134.3 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012176310",
+   "reason": "frontage 121.0 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012176311",
+   "reason": "frontage 145.6 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012176313",
+   "reason": "sightline to Leliegracht crosses 0363100012176314"
+  },
+  {
+   "pandId": "0363100012176316",
+   "reason": "frontage 39.2 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012176317",
+   "reason": "frontage 39.1 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012176346",
+   "reason": "frontage 165.1 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012176347",
+   "reason": "frontage 166.2 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012176348",
+   "reason": "frontage 167.4 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012176349",
+   "reason": "frontage 168.1 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012176350",
+   "reason": "frontage 167.9 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012176351",
+   "reason": "frontage 167.4 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012176352",
+   "reason": "frontage 115.7 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012176353",
+   "reason": "frontage 96.0 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012176354",
+   "reason": "frontage 100.5 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012176355",
+   "reason": "frontage 85.0 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012176356",
+   "reason": "frontage 76.3 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012176357",
+   "reason": "frontage 58.7 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012176358",
+   "reason": "frontage 47.8 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012176361",
+   "reason": "frontage 59.5 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012176015",
+   "reason": "frontage 116.0 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012176018",
+   "reason": "frontage 163.9 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012176019",
+   "reason": "frontage 130.5 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012176086",
+   "reason": "frontage 136.3 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012176087",
+   "reason": "frontage 134.2 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012176088",
+   "reason": "frontage 132.2 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012176089",
+   "reason": "frontage 129.1 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012176090",
+   "reason": "no frontage on Leliegracht: No footprint edge faces Leliegracht"
+  },
+  {
+   "pandId": "0363100012176092",
+   "reason": "frontage 141.2 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012176093",
+   "reason": "frontage 141.8 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012176229",
+   "reason": "frontage 171.3 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012176270",
+   "reason": "frontage 146.5 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012176271",
+   "reason": "no frontage on Leliegracht: No footprint edge faces Leliegracht"
+  },
+  {
+   "pandId": "0363100012176272",
+   "reason": "frontage 215.3 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012176273",
+   "reason": "frontage 208.5 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012176274",
+   "reason": "frontage 225.4 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012176275",
+   "reason": "frontage 179.5 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012176276",
+   "reason": "frontage 193.3 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012176362",
+   "reason": "frontage 53.6 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012176363",
+   "reason": "frontage 53.5 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012176364",
+   "reason": "frontage 42.1 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012176410",
+   "reason": "frontage 67.5 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012176415",
+   "reason": "sightline to Leliegracht crosses 0363100012176429"
+  },
+  {
+   "pandId": "0363100012176422",
+   "reason": "sightline to Leliegracht crosses 0363100012176415"
+  },
+  {
+   "pandId": "0363100012176426",
+   "reason": "sightline to Leliegracht crosses 0363100012176423"
+  },
+  {
+   "pandId": "0363100012176427",
+   "reason": "sightline to Leliegracht crosses 0363100012176413"
+  },
+  {
+   "pandId": "0363100012176477",
+   "reason": "frontage 73.5 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012176478",
+   "reason": "frontage 79.3 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012176479",
+   "reason": "frontage 90.7 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012176480",
+   "reason": "frontage 102.2 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012176481",
+   "reason": "sightline to Leliegracht crosses 0363100012169069"
+  },
+  {
+   "pandId": "0363100012176482",
+   "reason": "frontage 56.8 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012176483",
+   "reason": "frontage 62.2 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012176484",
+   "reason": "frontage 67.9 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012176486",
+   "reason": "frontage 73.5 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012176487",
+   "reason": "frontage 96.7 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012176494",
+   "reason": "frontage 127.7 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012176825",
+   "reason": "frontage 38.9 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012176826",
+   "reason": "frontage 39.3 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012176827",
+   "reason": "frontage 56.8 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012176828",
+   "reason": "frontage 55.6 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012176935",
+   "reason": "frontage 59.2 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012176936",
+   "reason": "frontage 50.2 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012176937",
+   "reason": "frontage 38.8 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012176938",
+   "reason": "frontage 46.4 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012176939",
+   "reason": "frontage 43.0 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012177006",
+   "reason": "frontage 67.5 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012177007",
+   "reason": "frontage 54.8 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012177009",
+   "reason": "frontage 41.5 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012177010",
+   "reason": "sightline to Leliegracht crosses 0363100012177017"
+  },
+  {
+   "pandId": "0363100012177018",
+   "reason": "sightline to Leliegracht crosses 0363100012177010"
+  },
+  {
+   "pandId": "0363100012177019",
+   "reason": "sightline to Leliegracht crosses 0363100012177010"
+  },
+  {
+   "pandId": "0363100012177020",
+   "reason": "sightline to Leliegracht crosses 0363100012177010"
+  },
+  {
+   "pandId": "0363100012177210",
+   "reason": "frontage 33.4 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012177211",
+   "reason": "sightline to Leliegracht crosses 0363100012177011"
+  },
+  {
+   "pandId": "0363100012177212",
+   "reason": "frontage 170.3 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012177213",
+   "reason": "frontage 127.0 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012177216",
+   "reason": "frontage 127.1 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012177277",
+   "reason": "frontage 103.4 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012177278",
+   "reason": "frontage 106.5 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012177280",
+   "reason": "frontage 118.4 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012177484",
+   "reason": "frontage 135.1 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012177521",
+   "reason": "frontage 145.9 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012177522",
+   "reason": "frontage 151.0 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012177523",
+   "reason": "frontage 131.8 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012177529",
+   "reason": "frontage 176.4 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012177591",
+   "reason": "no frontage on Leliegracht: No footprint edge faces Leliegracht"
+  },
+  {
+   "pandId": "0363100012243488",
+   "reason": "frontage 58.8 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012251278",
+   "reason": "frontage 112.4 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012253346",
+   "reason": "frontage 103.5 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012570910",
+   "reason": "frontage 37.6 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012571488",
+   "reason": "sightline to Leliegracht crosses 0363100012571489"
+  },
+  {
+   "pandId": "0363100012180272",
+   "reason": "frontage 171.2 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012239631",
+   "reason": "frontage 138.6 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012253785",
+   "reason": "frontage 144.6 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012253804",
+   "reason": "frontage 203.1 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012253811",
+   "reason": "frontage 240.6 m from Leliegracht"
+  },
+  {
+   "pandId": "0363100012167641",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012167642",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012167643",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012167649",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012167656",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012167657",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012172360",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012172361",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012172424",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012172425",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012172429",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012176314",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012176411",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012176412",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012176413",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012176414",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012176416",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012176423",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012176424",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012176425",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012176428",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012571489",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 180,
+ "pands": [
+  {
+   "pandId": "0363100012176429",
+   "alongM": -88.55,
+   "widthM": 10.68,
+   "eavesM": 9.62,
+   "roofMaxM": 14.8,
+   "storeys3dbag": 4,
+   "builtYear": 1621,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012176417",
+   "alongM": -80.65,
+   "widthM": 5.13,
+   "eavesM": 9.86,
+   "roofMaxM": 14.96,
+   "storeys3dbag": 0,
+   "builtYear": 1005,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012176419",
+   "alongM": -76.8,
+   "widthM": 2.57,
+   "eavesM": 16.31,
+   "roofMaxM": 16.34,
+   "storeys3dbag": 5,
+   "builtYear": 1908,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012176421",
+   "alongM": -70.42,
+   "widthM": 6.14,
+   "eavesM": 14.04,
+   "roofMaxM": 14.27,
+   "storeys3dbag": 4,
+   "builtYear": 1775,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012176418",
+   "alongM": -61.73,
+   "widthM": 11.24,
+   "eavesM": 14.92,
+   "roofMaxM": 16.03,
+   "storeys3dbag": 5,
+   "builtYear": 1933,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012176420",
+   "alongM": -53.42,
+   "widthM": 5.38,
+   "eavesM": 13.36,
+   "roofMaxM": 16.51,
+   "storeys3dbag": 5,
+   "builtYear": 1736,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012167650",
+   "alongM": -47.93,
+   "widthM": 5.61,
+   "eavesM": 13.29,
+   "roofMaxM": 13.32,
+   "storeys3dbag": 4,
+   "builtYear": 1750,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012167664",
+   "alongM": -42.2,
+   "widthM": 5.86,
+   "eavesM": 14.64,
+   "roofMaxM": 14.86,
+   "storeys3dbag": 4,
+   "builtYear": 1732,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012167665",
+   "alongM": -36.44,
+   "widthM": 5.66,
+   "eavesM": 11.34,
+   "roofMaxM": 16.22,
+   "storeys3dbag": 0,
+   "builtYear": 1738,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012167667",
+   "alongM": -30.75,
+   "widthM": 5.71,
+   "eavesM": 9.04,
+   "roofMaxM": 13.15,
+   "storeys3dbag": 4,
+   "builtYear": 1743,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012177011",
+   "alongM": -24.99,
+   "widthM": 5.82,
+   "eavesM": 10.46,
+   "roofMaxM": 13.29,
+   "storeys3dbag": 4,
+   "builtYear": 1749,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012177012",
+   "alongM": -19.2,
+   "widthM": 5.61,
+   "eavesM": 12.22,
+   "roofMaxM": 19.14,
+   "storeys3dbag": 4,
+   "builtYear": 1735,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012177013",
+   "alongM": -13.53,
+   "widthM": 5.73,
+   "eavesM": 15.46,
+   "roofMaxM": 19.2,
+   "storeys3dbag": 0,
+   "builtYear": 2000,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012177014",
+   "alongM": -8.54,
+   "widthM": 4.25,
+   "eavesM": 12.88,
+   "roofMaxM": 16.2,
+   "storeys3dbag": 5,
+   "builtYear": 1712,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012177015",
+   "alongM": -4.27,
+   "widthM": 4.29,
+   "eavesM": 13.51,
+   "roofMaxM": 19.41,
+   "storeys3dbag": 5,
+   "builtYear": 1704,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012177016",
+   "alongM": 0,
+   "widthM": 4.25,
+   "eavesM": 14.03,
+   "roofMaxM": 14.07,
+   "storeys3dbag": 5,
+   "builtYear": 1735,
+   "uncertainty": []
+  }
+ ]
+}

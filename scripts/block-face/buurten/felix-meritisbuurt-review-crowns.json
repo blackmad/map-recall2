@@ -1,0 +1,42 @@
+{
+ "note": "Crowns pinned from the strips: canal trees reach over the cornices.",
+ "reviewed": "2026-11-10 (lane belt-gg-west)",
+ "pins": [
+  {
+   "pandId": "0363100012169390",
+   "type": "ggw-1700-neck-bell-gable",
+   "crown": "neck",
+   "reason": "Keizersgracht 256: neck gable with white claw pieces; shoulders 14.1 m, one light 14.25-15.9 m, neck to 16.9 m"
+  },
+  {
+   "pandId": "0363100012169444",
+   "type": "ggw-1740-crest-cornice",
+   "crown": "crest",
+   "reason": "Keizersgracht 254: a raised semicircular crest on the cornice, 14.0-15.3 m and about 3.5 m wide"
+  },
+  {
+   "pandId": "0363100012169114",
+   "type": "ggw-1700-neck-bell-gable",
+   "crown": "tall-neck",
+   "reason": "Keizersgracht 250: claw pieces 10.7-11.8 m, a light standing on the gable foot, the neck and cap to 15.25 m"
+  },
+  {
+   "pandId": "0363100012169118",
+   "type": "ggw-1700-neck-bell-gable",
+   "crown": "tall-neck-small-light",
+   "reason": "Keizersgracht 242: claw pieces 13.05-13.8 m, a light 13.3-14.5 m, the neck and round cap to 17.3 m"
+  },
+  {
+   "pandId": "0363100012169380",
+   "type": "ggw-1740-crest-attic",
+   "crown": "louis",
+   "reason": "Keizersgracht 246: a Louis XIV crest across the front over the white attic, C-scrolls at both ends and a raised central arch to 19.2 m"
+  },
+  {
+   "pandId": "0363100012169108",
+   "type": "ggw-1740-crest-attic",
+   "crown": "louis",
+   "reason": "Keizersgracht 244: a Louis XIV crest across the front over the white attic, C-scrolls at both ends and a raised central arch to 19.2 m"
+  }
+ ]
+}
