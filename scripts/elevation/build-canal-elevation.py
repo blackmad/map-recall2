@@ -124,6 +124,9 @@ def main() -> None:
                              'draws where AHN shows filled land (scripts/land-mask/find-filled-water.py). Absent: byte-identical output.')
     parser.add_argument('--land-patches', default=None,
                         help='JSON of hand-confirmed land patches (lng/lat ring + bufferM), e.g. scripts/land-mask/land-patches.json')
+    parser.add_argument('--keep-water-under', default=None,
+                        help='houseboats.json: boat footprints (+ --berth-m) are removed from every land fix, so moored boats stay on water')
+    parser.add_argument('--berth-m', type=float, default=4.0)
     args = parser.parse_args()
 
     water_path = os.path.join(args.source, 'terrain/amsterdam/raw/basemap-water.geojson')
@@ -164,16 +167,28 @@ def main() -> None:
     water_polys = [orient(p, 1.0) for p in polygons(water) if p.area >= MIN_WATER_AREA_M2]
     water = MultiPolygon(water_polys)
     if args.land_fixes or args.land_patches:
-        fixes = []
+        auto, hand = [], []
         if args.land_fixes:
             with open(args.land_fixes) as fh:
-                fixes += [project_geom(shape(f['geometry'])).buffer(0.3) for f in json.load(fh)['features']]
+                auto += [project_geom(shape(f['geometry'])).buffer(0.3) for f in json.load(fh)['features']]
         if args.land_patches:
             with open(args.land_patches) as fh:
-                fixes += [project_geom(shape(p['geometry']) if 'geometry' in p else Polygon(p['ring'])).buffer(p.get('bufferM', 1.0)) for p in json.load(fh)['patches']]
+                hand += [project_geom(shape(p['geometry']) if 'geometry' in p else Polygon(p['ring'])).buffer(p.get('bufferM', 1.0)) for p in json.load(fh)['patches']]
+        fixes = auto + hand
         before = sum(p.area for p in water_polys)
         # Cut only the polygons a fix touches, in place: the other rings and the cell ordering stay byte-identical.
-        cut = unary_union(fixes)
+        auto_cut, hand_cut = unary_union(auto) if auto else Polygon(), unary_union(hand) if hand else Polygon()
+        if args.keep_water_under:
+            # Moored boats stay on water (houseboat-land regression, user 2026-10-14): detected fills give up each boat's
+            # footprint plus a berth; hand-confirmed patches give up the footprint plus 1 m only.
+            with open(args.keep_water_under) as fh:
+                hulls = [project_geom(Polygon(b['ring'])) for b in json.load(fh)['boats']]
+            berth = [h.buffer(args.berth_m) for h in hulls if h.buffer(args.berth_m).intersects(auto_cut)]
+            hand_berth = [h.buffer(1.0) for h in hulls if h.buffer(1.0).intersects(hand_cut)]
+            auto_cut = auto_cut.difference(unary_union(berth)) if berth else auto_cut
+            hand_cut = hand_cut.difference(unary_union(hand_berth)) if hand_berth else hand_cut
+            print(f'land fixes: {len(berth)} berths (+{args.berth_m} m) cut out of detected fills, {len(hand_berth)} hulls (+1 m) out of patches', file=sys.stderr)
+        cut = unary_union([auto_cut, hand_cut])
         water_polys = [orient(q, 1.0) for part in water_polys for q in (polygons(part.difference(cut).simplify(SIMPLIFY_M, preserve_topology=True)) if part.intersects(cut) else [part]) if q.area >= MIN_WATER_AREA_M2]
         water = MultiPolygon(water_polys)
         print(f'land fixes: {len(fixes)} polygons cut, {(before - water.area):.0f} m2 of water removed', file=sys.stderr)

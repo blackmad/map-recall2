@@ -18,11 +18,10 @@ Pontsteiger road and is in `streets-routing` (reachability: component 0, see bel
 municipal footprint are 28-31 m (deck 23.83-52.13 m along the way) while the mask has water over 0.46-72.56 m, so about 23 m of road
 at each end ran over open water with no deck. `audit-deck-ends` saw water at 99 of 378 end probes.
 
-The Haparandadam building (BAG pand 0363100012240915, 909 m², 1966) is **entirely inside the OSM and the BGT water** (BGT: pand
-`relatieve_hoogteligging` 2, current waterdeel under it). The orthophoto shows it standing at the dam edge on a platform
-(`ortho-haparandadam.jpg`). It is one of 410 such pands, most of them genuinely floating (IJburg Waterbuurt); this one is hand-confirmed
-land, so it is a named patch (footprint + 4 m apron), not a rule. In the proto frame the building now stands on a plinth with a
-few metres of water still between it and the dam; the true extent of the platform is not resolvable from the photo (open item).
+The Haparandadam building (BAG pand 0363100012240915, 909 m², 1966) is **entirely inside the OSM and the BGT water** and is
+OSM way 96706553, tagged as a **houseboat**: a moored vessel on a platform at the dam. It really floats, so the mask is right and the
+houseboat-land regression (`ownGround.test.ts`) forbids covering it. A first attempt (a land apron under the footprint) was dropped
+for that reason; the user's "floating on water" is correct, and `check-land-mask.ts` pins that it stays on water. No change.
 
 ## Measurements (before)
 
@@ -46,9 +45,12 @@ Not found: unrouted bridges. Gevlebrug, Lübeckbrug, Karlskrona-eiland and Hapar
   the water union after simplification, per touched polygon. Without the flags the output is byte-identical to the published
   cells (verified: a flag-less run reproduces `elevation-v1` exactly except `bridges.json`, which the published tree extends with
   `--extra-profiles`).
+* `--keep-water-under houseboats.json` (+ `--berth-m 4`): houseboat footprints (+4 m berth for detected fills, +1 m for patches)
+  are removed from every cut so moored boats stay on water; checked: no detected fill touches a boat, only the dropped
+  Haparandadam apron did.
 * `scripts/land-mask/find-filled-water.py` (AHN + BGT corroboration, writes `artifacts/land-mask/staging/filled-water.geojson`),
   `land-rejects.json` (3 eyeballed false positives: two Zuidoost ponds and the Westpoort quay water; AHN interpolates over open water),
-  `land-patches.json` (the Haparandadam pand and 3 eyeballed fills with BGT share 0-0.02: Karlskrona-eiland N and E sand, the
+  `land-patches.json` (3 eyeballed fills with BGT share 0-0.02: Karlskrona-eiland N and E sand, the
   Passenger Terminal quay), `deck-extensions.json` + `extend-decks.py` (BRU2430 deck 23.83-52.13 → 0.46-73.56, patched into
   `bridges.json` textually), `diff-cells.py` (geometric per-cell diff; the builder's STRtree order shifts ring order in ~330
   cells when the polygon count changes, so only cells whose water really changed are published).
@@ -56,18 +58,17 @@ Not found: unrouted bridges. Gevlebrug, Lübeckbrug, Karlskrona-eiland and Hapar
 
 ## Result (staged vs published)
 
-* **12 cells change; 43,041 m² (4.30 ha) of water becomes land** (11 m² added, simplification noise): -2_2 Houthaven 13,706 m²,
+* **11 cells change; 41,558 m² (4.16 ha) of water becomes land** (11 m² added, simplification noise): -2_2 Houthaven 12,319 m²,
   7_-2 IJburg 10,896, 1_0 Oostenburg quay 7,761, -10_5 Westpoort 5,664, 0_0 1,787, 8_-3 853, -6_6 828, 8_-2 502, 4_0 476, -11_5 454,
-  -2_3 96, -2_1 18. Per-cell numbers in `artifacts/land-mask/diff-cells.log`.
-* Pands in mask water: 410 → 408 (the user's pand and one 1,811 m² 1912 building leave; two borderline 50 % ones enter from the
-  coarser cell geometry).
+  -2_1 18. Per-cell numbers in `artifacts/land-mask/diff-cells.log`.
+* Pands in mask water: 410 → about 407 (a 1,811 m² 1912 building leaves; the Haparandadam houseboat stays).
 * Gevlebrug deck now spans its water crossing; `audit-deck-ends` for cells -2_2/-2_3: 6 → 5 failing decks, Gevlebrug gone (water 99 → 0
   probes). Remaining there: Pilaubrug 22/378, Kolbergbrug 18, Wisbybrug 8, Windaubrug 4, Robiënnabrug 3 (all deck-top probes, not
   water).
 * Reachability (`npm run test:reachability`): unchanged component structure; three new named places (Gevlebrug, Karlskrona-eiland,
   Haparandadam) all in the Dam's component.
-* Pins: `scripts/land-mask/check-land-mask.ts` (Houthaven fill points, Gevlebrug deck vs water, Haparandadam pand); fails on the
-  unfixed extract (4 of 6 pins), passes staged.
+* Pins: `scripts/land-mask/check-land-mask.ts` (Houthaven fill points, Gevlebrug deck vs water, Haparandadam houseboat stays on
+  water); fails on the unfixed extract (4 of 6), passes staged. `npm run test:own-ground` passes with the staged cells.
 
 ## Not done / follow-ups
 
@@ -83,7 +84,7 @@ Not found: unrouted bridges. Gevlebrug, Lübeckbrug, Karlskrona-eiland and Hapar
 
 * `docs/reports/land-mask-gaps-20261109/before|after/gevlebrug-aerial.jpg`, `gevlebrug-low.jpg`: before, the bridge is a stub in a lake
   and the island floats; after, sand/land fills the basin and the deck spans the remaining pond.
-* `before|after/haparandadam-pand.jpg`: the pand on a plinth instead of bare water.
+* `before|after/haparandadam-pand.jpg`: the after frame is from the dropped apron attempt; with the final set it equals before (the boat floats).
 * Orthophoto (PDOK luchtfoto, open data) beside the mask: `ortho-gevlebrug.jpg`, `ortho-haparandadam.jpg`;
   `before-gevlebrug-mask.jpg` / `after-gevlebrug-mask.jpg` draw the mask outline (red) on it.
 * Candidate review sheets: `cand-*.jpg` (green = AHN fill polygon).
