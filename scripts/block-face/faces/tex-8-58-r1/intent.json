@@ -22,6 +22,34 @@
  ],
  "houses": [
   {
+   "pandId": "0363100012179378",
+   "slug": "tex-179378",
+   "address": "Den Texstraat 24",
+   "type": {
+    "type": "tex-1882-hood-bracket-mansard",
+    "mirror": true,
+    "measuredPalette": {
+     "brick": "#867e6d",
+     "evidence": "strip 2024-12-04 span 1519-1769: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#45474c"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2024-12-04",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: tex-1882-hood-bracket-mansard scored 1 on eaves 1, stucco 1, columns 1; strip 2024-12-04 span 1519-1769"
+   }
+  },
+  {
    "pandId": "0363100012179377",
    "slug": "tex-179377",
    "address": "Den Texstraat 22",
@@ -29,7 +57,7 @@
     "type": "tex-1882-hood-bracket-mansard",
     "mirror": true,
     "paletteOverrides": {
-     "brick": "#6e5a4a"
+     "brick": "#655444"
     }
    },
    "groundFloor": {
@@ -63,7 +91,7 @@
      "evidence": "strip 2024-12-04 span 2015-2264: trim-normalised wall (buildingRecipe/measureFacade.ts)"
     },
     "paletteOverrides": {
-     "brick": "#4a4f55"
+     "brick": "#424c51"
     }
    },
    "groundFloor": {
@@ -77,6 +105,34 @@
    },
    "rhythm": {
     "citation": "auto-place: tex-1882-hood-bracket-mansard scored 1 on eaves 1, stucco 1, columns 1; strip 2024-12-04 span 2015-2264"
+   }
+  },
+  {
+   "pandId": "0363100012179380",
+   "slug": "tex-179380",
+   "address": "Den Texstraat 18",
+   "type": {
+    "type": "tex-1882-hood-bracket-mansard",
+    "mirror": true,
+    "measuredPalette": {
+     "brick": "#483d33",
+     "evidence": "strip 2024-12-04 span 2264-2513: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#5e4a3b"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2024-12-04",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: tex-1882-hood-bracket-mansard scored 0.82 on eaves 0.5, stucco 1, columns 1; strip 2024-12-04 span 2264-2513"
    }
   }
  ],
@@ -92,6 +148,14 @@
   },
   "measuredEaves": [
    {
+    "pand": "0363100012179378",
+    "stripRow": 318,
+    "frontRoof": {
+     "topRow": 286
+    },
+    "evidence": "auto-place: strip skyline cornice 13.4 m within 1 m of the tex-1882-hood-bracket-mansard line 13.5 m; 3DBAG/PDOK eaves 14.45 m; reviewer roof pin: cornice 13.5 m, roof top 14.3 m (Den Texstraat 24 (tex strips 2024-12-04): the dormer stands on the slate behind a 13.5 m cornice, the photo shows sky above it; 3DBAG ridge is 2-3 m higher)"
+   },
+   {
     "pand": "0363100012179377",
     "stripRow": 317,
     "frontRoof": {},
@@ -102,6 +166,14 @@
     "stripRow": 322,
     "frontRoof": {},
     "evidence": "auto-place: strip skyline cornice 13.4 m within 1 m of the tex-1882-hood-bracket-mansard line 13.5 m; 3DBAG/PDOK eaves 14.39 m"
+   },
+   {
+    "pand": "0363100012179380",
+    "stripRow": 318,
+    "frontRoof": {
+     "topRow": 286
+    },
+    "evidence": "auto-place: the tex-1882-hood-bracket-mansard cornice line 13.5 m (measured on its exemplar strips; this pand's skyline unread); 3DBAG/PDOK eaves 14.42 m; reviewer roof pin: cornice 13.5 m, roof top 14.3 m (Den Texstraat 18 (tex strips 2024-12-04): the dormer stands on the slate behind a 13.5 m cornice, the photo shows sky above it; 3DBAG ridge is 2-3 m higher)"
    }
   ]
  }

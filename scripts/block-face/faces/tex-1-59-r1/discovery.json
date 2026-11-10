@@ -2,6 +2,8 @@
  "street": "Den Texstraat",
  "seed": "0363100012168127",
  "members": [
+  "0363100012179436",
+  "0363100012179435",
   "0363100012179430",
   "0363100012179429",
   "0363100012179383"
@@ -9,7 +11,7 @@
  "ends": [
   {
    "side": "left",
-   "reason": "run of tex-1-59: 179435 held (auto-place.json)"
+   "reason": "run of tex-1-59: 179437 held (auto-place.json)"
   },
   {
    "side": "right",
@@ -1252,6 +1254,26 @@
  ],
  "areaHalfSizeM": 180,
  "pands": [
+  {
+   "pandId": "0363100012179436",
+   "alongM": 30.42,
+   "widthM": 6.1,
+   "eavesM": 11.16,
+   "roofMaxM": 14.17,
+   "storeys3dbag": 4,
+   "builtYear": 1883,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012179435",
+   "alongM": 36.52,
+   "widthM": 6.1,
+   "eavesM": 14.15,
+   "roofMaxM": 16.28,
+   "storeys3dbag": 4,
+   "builtYear": 1881,
+   "uncertainty": []
+  },
   {
    "pandId": "0363100012179430",
    "alongM": 42.63,

@@ -22,6 +22,7 @@ import type {ParapetBandIntent} from './parapetBand.ts';
 import {friezeVentProblems} from './friezeVents.ts';
 import {corbelTableProblems, type CorbelTableIntent} from './corbelTable.ts';
 import {wallAnchorProblems} from './wallAnchors.ts';
+import {pierBlockProblems} from './pierBlocks.ts';
 import {entablatureProblems} from './entablature.ts';
 import {jambBlockProblems} from './jambBlocks.ts';
 import type {ArchKind} from '../blockBuilding/arch.ts';
@@ -609,6 +610,13 @@ export interface FrontIntent {
    */
   wallAnchors?: {storeys?: number[]; size?: number; over?: number};
   /**
+   * White head-line pier blocks (Den Texstraat 7-27; buildingRecipe/pierBlocks.ts): at the window-head line of each listed
+   * storey (0 = ground; default every storey with windows) one white block on every pier, alternating `long` (default 0.55 m)
+   * and `short` (0.28 m), `rise` high (0.3 m), `over` m over the heads (0.05 m), kept inside the reveals; `dentils` adds a
+   * continuous row of small blocks (`pitch`, `block`, `rise` in metres) just under the cornice over the highest head line. Absent = byte-identical.
+   */
+  pierBlocks?: {storeys?: number[]; long?: number; short?: number; rise?: number; over?: number; dentils?: {pitch: number; block: number; rise: number}};
+  /**
    * One balcony along the whole front at the floor of `storey` (Jan Evertsenstraat 139-160, over the ground storey): a
    * slab `slab` m thick (default 0.25) and `projection` m deep, its top on the storey floor, in `slabColour` (default the stone
    * colour), under a guard `guardRise` m high (default 1.0) on its nose and both returns: `iron` bars (the door colour) or a
@@ -729,7 +737,7 @@ export interface FrontIntent {
    */
   dormerWindow?: {light: number; apron: number; tall?: number};
   /**
-   * Lights in every dormer window (2..8; Vogelbuurt-Noord 1918 box dormers 5-6 narrow lights, the 1921 rows 4): the window's
+   * Lights in every dormer window (1..8, 1 = a single undivided light: Den Texstraat; Vogelbuurt-Noord 1918 box dormers 5-6 narrow lights, the 1921 rows 4): the window's
    * vertical bars are spaced evenly. Absent = one bar at the middle (two lights), byte-identical.
    */
   dormerLights?: number;
@@ -1617,6 +1625,7 @@ export function validateIntent(input: unknown): CanalHouseIntent {
       else if (h.colour === 'band' && !(f.palette?.band ?? intent.palette.band)) problems.push(`${at}.windowHoods: colour band needs palette.band`);
     }
     if (f.wallAnchors !== undefined) problems.push(...wallAnchorProblems(f, at));
+    if (f.pierBlocks !== undefined) problems.push(...pierBlockProblems(f, at));
     if (f.tilePanels !== undefined) problems.push(...tilePanelProblems(f, at));
     if (f.friezeVents !== undefined) problems.push(...friezeVentProblems(f, at));
     if (f.corbelTable !== undefined) problems.push(...corbelTableProblems(f, at, f.palette?.band ?? intent.palette.band));
@@ -2139,7 +2148,7 @@ function historicProblems(f: FrontIntent, at: string, colour: (v: unknown, where
   }
   if (f.dormerLights !== undefined) {
     if (!f.dormers) problems.push(`${at}.dormerLights: only with dormers`);
-    else if (!Number.isInteger(f.dormerLights) || f.dormerLights < 2 || f.dormerLights > 8) problems.push(`${at}.dormerLights: integer 2..8`);
+    else if (!Number.isInteger(f.dormerLights) || f.dormerLights < 1 || f.dormerLights > 8) problems.push(`${at}.dormerLights: integer 1..8`);
   }
   if (f.dormerSize !== undefined) {
     const z = f.dormerSize as {sill?: unknown; rise?: unknown; setback?: unknown};

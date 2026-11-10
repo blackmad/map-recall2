@@ -1,0 +1,33 @@
+{
+ "note": "Den Texbuurt reviewer roof pins (reviewRoofs.ts)",
+ "pins": [
+  {
+   "pandId": "0363100012179435",
+   "ridgeM": 14.3,
+   "eavesM": 13.5,
+   "reason": "Den Texstraat 9 (tex strips 2024-12-04): the dormer stands on the slate behind a 13.5 m cornice, the photo shows sky above it; 3DBAG ridge is 2-3 m higher"
+  },
+  {
+   "pandId": "0363100012179380",
+   "ridgeM": 14.3,
+   "eavesM": 13.5,
+   "reason": "Den Texstraat 18 (tex strips 2024-12-04): the dormer stands on the slate behind a 13.5 m cornice, the photo shows sky above it; 3DBAG ridge is 2-3 m higher"
+  },
+  {
+   "pandId": "0363100012179378",
+   "ridgeM": 14.3,
+   "eavesM": 13.5,
+   "reason": "Den Texstraat 24 (tex strips 2024-12-04): the dormer stands on the slate behind a 13.5 m cornice, the photo shows sky above it; 3DBAG ridge is 2-3 m higher"
+  },
+  {
+   "pandId": "0363100012179430",
+   "eavesM": 13.2,
+   "reason": "Den Texstraat 11: the cornice is continuous across 11, 13, 15 (13.1-13.2 m); the skyline read 13.54 m (Opus verdict)"
+  },
+  {
+   "pandId": "0363100012179509",
+   "eavesM": 13.7,
+   "reason": "Den Texstraat 27: the cornice is continuous across 21-27 (13.7-13.8 m); the model stood 0.4 m low at 13.31 m (Opus verdict)"
+  }
+ ]
+}

@@ -40,12 +40,9 @@
    3.4
   ],
   "windows": "t-window",
-  "windowSurround": "sill",
+  "windowSurround": "keystone",
   "windowHead": {
-   "kind": "segmental",
-   "storeys": [
-    1
-   ]
+   "kind": "flat"
   },
   "windowHeights": [
    0.52,
@@ -58,13 +55,9 @@
    0.78
   ],
   "windowShare": 0.62,
-  "windowHoods": {
-   "colour": "band"
-  },
   "bands": "painted",
   "bandLines": [
-   "sill",
-   "head"
+   "sill"
   ],
   "cornice": "simple",
   "entablature": {
@@ -81,6 +74,21 @@
    "bays": [
     1
    ]
+  },
+  "pierBlocks": {
+   "storeys": [
+    0,
+    1,
+    2
+   ],
+   "long": 0.55,
+   "short": 0.28,
+   "rise": 0.3,
+   "dentils": {
+    "pitch": 0.45,
+    "block": 0.2,
+    "rise": 0.2
+   }
   }
  },
  "crowns": {
@@ -119,12 +127,12 @@
  },
  "palettes": {
   "dark-brown-1882": {
-   "brick": "#66503f",
+   "brick": "#645341",
    "frame": "white-painted",
    "door": "#2a2a2a",
-   "stone": "#e2dfd3",
-   "cornice": "#e2dfd3",
-   "band": "#e2dfd3",
+   "stone": "#f0efe6",
+   "cornice": "#9e9a84",
+   "band": "#f0efe6",
    "stoneMaterial": "painted"
   }
  },
@@ -162,5 +170,8 @@
    ],
    "citation": "tex-1-59 strip 2024-12-04 spans 2923-3904 px: dormers 3.2 m wide, iron balconettes on the centre axis at storeys 1 and 2, otherwise the 7-15 storey lines"
   }
+ ],
+ "notes": [
+  "Opus verdict: flat heads with keystones on both upper storeys, white pier blocks and dentils; the raised-centre three-part dormer is not in the kit"
  ]
 }

@@ -1,6 +1,6 @@
 {
  "version": 1,
- "generatedAt": "2026-11-10T07:49:41.002Z",
+ "generatedAt": "2026-11-10T08:41:35.921Z",
  "chunks": [
   {
    "id": "chunk-face-bilder-080336-090492",
@@ -90018,38 +90018,42 @@
    "id": "chunk-face-tex-1-59-r1",
    "category": "street-survey",
    "name": "face-tex-1-59-r1",
-   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-tex-1-59-r1.glb?asset=192c4efbeea50c92",
-   "sha256": "192c4efbeea50c92090b8494c7d3168b20373739937c0d47b06f5ea176719f86",
-   "bytes": 123180,
-   "triangles": 4917,
-   "primitives": 9,
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-tex-1-59-r1.glb?asset=943541ca6159597c",
+   "sha256": "943541ca6159597cc6b5fe25fa877e2af9bd18f1e3bcbb92b4568694b29d513f",
+   "bytes": 192588,
+   "triangles": 8306,
+   "primitives": 8,
    "instance": {
     "anchor": [
-     4.893962123330927,
-     52.358956167511614
+     4.893872918012515,
+     52.3589613262484
     ],
-    "northOffsetDegrees": 4.9531,
+    "northOffsetDegrees": 5.2833,
     "mirror": false
    },
    "bounds": {
     "min": [
-     -9.152,
+     -15.258,
      0,
-     -13.23
+     -13.187
     ],
     "max": [
-     9.239,
-     16.14,
-     0.415
+     15.269,
+     16.288,
+     0.658
     ]
    },
-   "height": 16.14,
+   "height": 16.288,
    "suppress": [
+    "NL.IMBAG.Pand.0363100012179436",
+    "NL.IMBAG.Pand.0363100012179435",
     "NL.IMBAG.Pand.0363100012179430",
     "NL.IMBAG.Pand.0363100012179429",
     "NL.IMBAG.Pand.0363100012179383"
    ],
    "replaces": [
+    "ordinary-0363100012179436",
+    "ordinary-0363100012179435",
     "ordinary-0363100012179430",
     "ordinary-0363100012179429",
     "ordinary-0363100012179383"
@@ -90057,6 +90061,62 @@
    "footprint": {
     "type": "MultiPolygon",
     "coordinates": [
+     [
+      [
+       [
+        4.8937567,
+        52.3590837
+       ],
+       [
+        4.8937054,
+        52.3590866
+       ],
+       [
+        4.8937059,
+        52.3590894
+       ],
+       [
+        4.8936679,
+        52.3590916
+       ],
+       [
+        4.8936499,
+        52.3589741
+       ],
+       [
+        4.8937391,
+        52.3589691
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8938459,
+        52.3590785
+       ],
+       [
+        4.8937947,
+        52.3590815
+       ],
+       [
+        4.8937951,
+        52.3590843
+       ],
+       [
+        4.8937571,
+        52.3590865
+       ],
+       [
+        4.8937391,
+        52.3589691
+       ],
+       [
+        4.8938283,
+        52.358964
+       ]
+      ]
+     ],
      [
       [
        [
@@ -90145,73 +90205,200 @@
    },
    "pands": [
     {
+     "recipeId": "tex-179436",
+     "pandId": "0363100012179436",
+     "buildingId": "NL.IMBAG.Pand.0363100012179436",
+     "address": "Den Texstraat 7",
+     "frontage": {
+      "x0": -15.258,
+      "x1": -9.156,
+      "widthM": 6.102
+     },
+     "bounds": {
+      "min": [
+       -15.258,
+       0,
+       -13.187
+      ],
+      "max": [
+       -9.137,
+       15.868,
+       0.38
+      ]
+     },
+     "triangles": 1627,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 0,
+       "triangleCount": 47
+      },
+      {
+       "primitive": 1,
+       "firstTriangle": 0,
+       "triangleCount": 532
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 0,
+       "triangleCount": 40
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 0,
+       "triangleCount": 776
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 0,
+       "triangleCount": 198
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 0,
+       "triangleCount": 13
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 0,
+       "triangleCount": 9
+      }
+     ]
+    },
+    {
+     "recipeId": "tex-179435",
+     "pandId": "0363100012179435",
+     "buildingId": "NL.IMBAG.Pand.0363100012179435",
+     "address": "Den Texstraat 9",
+     "frontage": {
+      "x0": -9.156,
+      "x1": -3.051,
+      "widthM": 6.105
+     },
+     "bounds": {
+      "min": [
+       -9.157,
+       0,
+       -13.179
+      ],
+      "max": [
+       -3.033,
+       16.288,
+       0.433
+      ]
+     },
+     "triangles": 1597,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 47,
+       "triangleCount": 46
+      },
+      {
+       "primitive": 1,
+       "firstTriangle": 532,
+       "triangleCount": 508
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 40,
+       "triangleCount": 40
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 776,
+       "triangleCount": 776
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 12,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 198,
+       "triangleCount": 198
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 13,
+       "triangleCount": 8
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 9,
+       "triangleCount": 9
+      }
+     ]
+    },
+    {
      "recipeId": "tex-179430",
      "pandId": "0363100012179430",
      "buildingId": "NL.IMBAG.Pand.0363100012179430",
      "address": "Den Texstraat 11",
      "frontage": {
-      "x0": -9.152,
-      "x1": -3.048,
-      "widthM": 6.104
+      "x0": -3.051,
+      "x1": 3.056,
+      "widthM": 6.106
      },
      "bounds": {
       "min": [
-       -9.152,
+       -3.051,
        0,
-       -13.23
+       -13.169
       ],
       "max": [
-       -2.951,
-       16.14,
-       0.415
+       3.079,
+       15.988,
+       0.658
       ]
      },
-     "triangles": 1540,
+     "triangles": 1738,
      "ranges": [
       {
        "primitive": 0,
-       "firstTriangle": 0,
-       "triangleCount": 40
+       "firstTriangle": 93,
+       "triangleCount": 37
       },
       {
        "primitive": 1,
-       "firstTriangle": 0,
-       "triangleCount": 72
+       "firstTriangle": 1040,
+       "triangleCount": 450
       },
       {
        "primitive": 2,
-       "firstTriangle": 0,
-       "triangleCount": 376
-      },
-      {
-       "primitive": 3,
-       "firstTriangle": 0,
+       "firstTriangle": 80,
        "triangleCount": 40
       },
       {
-       "primitive": 4,
-       "firstTriangle": 0,
-       "triangleCount": 788
+       "primitive": 3,
+       "firstTriangle": 1552,
+       "triangleCount": 980
       },
       {
-       "primitive": 5,
-       "firstTriangle": 0,
+       "primitive": 4,
+       "firstTriangle": 24,
        "triangleCount": 12
       },
       {
+       "primitive": 5,
+       "firstTriangle": 396,
+       "triangleCount": 202
+      },
+      {
        "primitive": 6,
-       "firstTriangle": 0,
-       "triangleCount": 198
+       "firstTriangle": 21,
+       "triangleCount": 13
       },
       {
        "primitive": 7,
-       "firstTriangle": 0,
-       "triangleCount": 8
-      },
-      {
-       "primitive": 8,
-       "firstTriangle": 0,
-       "triangleCount": 6
+       "firstTriangle": 18,
+       "triangleCount": 4
       }
      ]
     },
@@ -90221,68 +90408,63 @@
      "buildingId": "NL.IMBAG.Pand.0363100012179429",
      "address": "Den Texstraat 13",
      "frontage": {
-      "x0": -3.048,
-      "x1": 3.051,
+      "x0": 3.056,
+      "x1": 9.155,
       "widthM": 6.099
      },
      "bounds": {
       "min": [
-       -3.048,
+       3.056,
        0,
-       -13.188
+       -13.161
       ],
       "max": [
-       3.145,
-       15.72,
-       0.403
+       9.175,
+       15.867,
+       0.434
       ]
      },
-     "triangles": 1743,
+     "triangles": 1604,
      "ranges": [
       {
        "primitive": 0,
-       "firstTriangle": 40,
-       "triangleCount": 27
+       "firstTriangle": 130,
+       "triangleCount": 29
       },
       {
        "primitive": 1,
-       "firstTriangle": 72,
-       "triangleCount": 72
+       "firstTriangle": 1490,
+       "triangleCount": 532
       },
       {
        "primitive": 2,
-       "firstTriangle": 376,
-       "triangleCount": 592
-      },
-      {
-       "primitive": 3,
-       "firstTriangle": 40,
+       "firstTriangle": 120,
        "triangleCount": 40
       },
       {
-       "primitive": 4,
-       "firstTriangle": 788,
-       "triangleCount": 788
+       "primitive": 3,
+       "firstTriangle": 2532,
+       "triangleCount": 776
       },
       {
-       "primitive": 5,
-       "firstTriangle": 12,
+       "primitive": 4,
+       "firstTriangle": 36,
        "triangleCount": 12
       },
       {
-       "primitive": 6,
-       "firstTriangle": 198,
+       "primitive": 5,
+       "firstTriangle": 598,
        "triangleCount": 198
       },
       {
-       "primitive": 7,
-       "firstTriangle": 8,
+       "primitive": 6,
+       "firstTriangle": 34,
        "triangleCount": 10
       },
       {
-       "primitive": 8,
-       "firstTriangle": 6,
-       "triangleCount": 4
+       "primitive": 7,
+       "firstTriangle": 22,
+       "triangleCount": 7
       }
      ]
     },
@@ -90292,67 +90474,62 @@
      "buildingId": "NL.IMBAG.Pand.0363100012179383",
      "address": "Den Texstraat 15",
      "frontage": {
-      "x0": 3.051,
-      "x1": 9.146,
-      "widthM": 6.095
+      "x0": 9.155,
+      "x1": 15.25,
+      "widthM": 6.096
      },
      "bounds": {
       "min": [
-       3.049,
+       9.155,
        0,
-       -13.142
+       -13.151
       ],
       "max": [
-       9.239,
-       15.84,
-       0.415
+       15.269,
+       15.987,
+       0.602
       ]
      },
-     "triangles": 1634,
+     "triangles": 1740,
      "ranges": [
       {
        "primitive": 0,
-       "firstTriangle": 67,
-       "triangleCount": 38
+       "firstTriangle": 159,
+       "triangleCount": 39
       },
       {
        "primitive": 1,
-       "firstTriangle": 144,
-       "triangleCount": 72
+       "firstTriangle": 2022,
+       "triangleCount": 450
       },
       {
        "primitive": 2,
-       "firstTriangle": 968,
-       "triangleCount": 472
-      },
-      {
-       "primitive": 3,
-       "firstTriangle": 80,
+       "firstTriangle": 160,
        "triangleCount": 40
       },
       {
-       "primitive": 4,
-       "firstTriangle": 1576,
-       "triangleCount": 788
+       "primitive": 3,
+       "firstTriangle": 3308,
+       "triangleCount": 980
       },
       {
-       "primitive": 5,
-       "firstTriangle": 24,
+       "primitive": 4,
+       "firstTriangle": 48,
        "triangleCount": 12
       },
       {
+       "primitive": 5,
+       "firstTriangle": 796,
+       "triangleCount": 202
+      },
+      {
        "primitive": 6,
-       "firstTriangle": 396,
-       "triangleCount": 198
+       "firstTriangle": 44,
+       "triangleCount": 13
       },
       {
        "primitive": 7,
-       "firstTriangle": 18,
-       "triangleCount": 10
-      },
-      {
-       "primitive": 8,
-       "firstTriangle": 10,
+       "firstTriangle": 29,
        "triangleCount": 4
       }
      ]
@@ -90363,11 +90540,11 @@
    "id": "chunk-face-tex-1-59-r2",
    "category": "street-survey",
    "name": "face-tex-1-59-r2",
-   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-tex-1-59-r2.glb?asset=6754494c612f72da",
-   "sha256": "6754494c612f72dafe679b2934bbba0a7a312fd978651d1e3250ca87b97110c3",
-   "bytes": 175568,
-   "triangles": 7620,
-   "primitives": 9,
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-tex-1-59-r2.glb?asset=67af9940a55a7e6c",
+   "sha256": "67af9940a55a7e6c6f91cb841ccf11a2d03bf931286c644d20361e4dbd9e2a94",
+   "bytes": 162404,
+   "triangles": 6893,
+   "primitives": 8,
    "instance": {
     "anchor": [
      4.894452678793795,
@@ -90517,7 +90694,7 @@
        0.403
       ]
      },
-     "triangles": 1887,
+     "triangles": 1731,
      "ranges": [
       {
        "primitive": 0,
@@ -90527,40 +90704,35 @@
       {
        "primitive": 1,
        "firstTriangle": 0,
-       "triangleCount": 72
+       "triangleCount": 580
       },
       {
        "primitive": 2,
        "firstTriangle": 0,
-       "triangleCount": 544
+       "triangleCount": 40
       },
       {
        "primitive": 3,
        "firstTriangle": 0,
-       "triangleCount": 40
+       "triangleCount": 680
       },
       {
        "primitive": 4,
        "firstTriangle": 0,
-       "triangleCount": 760
+       "triangleCount": 252
       },
       {
        "primitive": 5,
        "firstTriangle": 0,
-       "triangleCount": 252
+       "triangleCount": 138
       },
       {
        "primitive": 6,
        "firstTriangle": 0,
-       "triangleCount": 178
-      },
-      {
-       "primitive": 7,
-       "firstTriangle": 0,
        "triangleCount": 11
       },
       {
-       "primitive": 8,
+       "primitive": 7,
        "firstTriangle": 0,
        "triangleCount": 4
       }
@@ -90588,7 +90760,7 @@
        0.399
       ]
      },
-     "triangles": 1942,
+     "triangles": 1654,
      "ranges": [
       {
        "primitive": 0,
@@ -90597,41 +90769,36 @@
       },
       {
        "primitive": 1,
-       "firstTriangle": 72,
-       "triangleCount": 72
+       "firstTriangle": 580,
+       "triangleCount": 640
       },
       {
        "primitive": 2,
-       "firstTriangle": 544,
-       "triangleCount": 616
-      },
-      {
-       "primitive": 3,
        "firstTriangle": 40,
        "triangleCount": 40
       },
       {
+       "primitive": 3,
+       "firstTriangle": 680,
+       "triangleCount": 656
+      },
+      {
        "primitive": 4,
-       "firstTriangle": 760,
-       "triangleCount": 736
+       "firstTriangle": 252,
+       "triangleCount": 132
       },
       {
        "primitive": 5,
-       "firstTriangle": 252,
-       "triangleCount": 252
+       "firstTriangle": 138,
+       "triangleCount": 132
       },
       {
        "primitive": 6,
-       "firstTriangle": 178,
-       "triangleCount": 172
-      },
-      {
-       "primitive": 7,
        "firstTriangle": 11,
        "triangleCount": 8
       },
       {
-       "primitive": 8,
+       "primitive": 7,
        "firstTriangle": 4,
        "triangleCount": 6
       }
@@ -90659,50 +90826,45 @@
        0.401
       ]
      },
-     "triangles": 1955,
+     "triangles": 1770,
      "ranges": [
       {
        "primitive": 0,
        "firstTriangle": 66,
-       "triangleCount": 25
+       "triangleCount": 20
       },
       {
        "primitive": 1,
-       "firstTriangle": 144,
-       "triangleCount": 72
+       "firstTriangle": 1220,
+       "triangleCount": 628
       },
       {
        "primitive": 2,
-       "firstTriangle": 1160,
-       "triangleCount": 616
-      },
-      {
-       "primitive": 3,
        "firstTriangle": 80,
        "triangleCount": 40
       },
       {
-       "primitive": 4,
-       "firstTriangle": 1496,
-       "triangleCount": 760
+       "primitive": 3,
+       "firstTriangle": 1336,
+       "triangleCount": 680
       },
       {
-       "primitive": 5,
-       "firstTriangle": 504,
+       "primitive": 4,
+       "firstTriangle": 384,
        "triangleCount": 252
       },
       {
-       "primitive": 6,
-       "firstTriangle": 350,
-       "triangleCount": 178
+       "primitive": 5,
+       "firstTriangle": 270,
+       "triangleCount": 138
       },
       {
-       "primitive": 7,
+       "primitive": 6,
        "firstTriangle": 19,
        "triangleCount": 8
       },
       {
-       "primitive": 8,
+       "primitive": 7,
        "firstTriangle": 10,
        "triangleCount": 4
       }
@@ -90726,54 +90888,49 @@
       ],
       "max": [
        12.305,
-       15.91,
+       16.31,
        0.403
       ]
      },
-     "triangles": 1836,
+     "triangles": 1738,
      "ranges": [
       {
        "primitive": 0,
-       "firstTriangle": 91,
-       "triangleCount": 22
+       "firstTriangle": 86,
+       "triangleCount": 32
       },
       {
        "primitive": 1,
-       "firstTriangle": 216,
-       "triangleCount": 72
+       "firstTriangle": 1848,
+       "triangleCount": 580
       },
       {
        "primitive": 2,
-       "firstTriangle": 1776,
-       "triangleCount": 496
-      },
-      {
-       "primitive": 3,
        "firstTriangle": 120,
        "triangleCount": 40
       },
       {
-       "primitive": 4,
-       "firstTriangle": 2256,
-       "triangleCount": 760
+       "primitive": 3,
+       "firstTriangle": 2016,
+       "triangleCount": 680
       },
       {
-       "primitive": 5,
-       "firstTriangle": 756,
+       "primitive": 4,
+       "firstTriangle": 636,
        "triangleCount": 252
       },
       {
-       "primitive": 6,
-       "firstTriangle": 528,
-       "triangleCount": 178
+       "primitive": 5,
+       "firstTriangle": 408,
+       "triangleCount": 138
       },
       {
-       "primitive": 7,
+       "primitive": 6,
        "firstTriangle": 27,
        "triangleCount": 12
       },
       {
-       "primitive": 8,
+       "primitive": 7,
        "firstTriangle": 14,
        "triangleCount": 4
       }
@@ -90785,43 +90942,79 @@
    "id": "chunk-face-tex-8-58-r1",
    "category": "street-survey",
    "name": "face-tex-8-58-r1",
-   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-tex-8-58-r1.glb?asset=9b19d873774a2a92",
-   "sha256": "9b19d873774a2a92fc7774f56bb79755fcdc10218386008fa8860cdb2a755a67",
-   "bytes": 83844,
-   "triangles": 3051,
-   "primitives": 10,
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-tex-8-58-r1.glb?asset=26c59f543c39bac4",
+   "sha256": "26c59f543c39bac469287160cd447255e57e8b2d5e9a0631ba03c8c86101545c",
+   "bytes": 163564,
+   "triangles": 6728,
+   "primitives": 11,
    "instance": {
     "anchor": [
-     4.894160675591942,
-     52.35880985270439
+     4.894160660376046,
+     52.358810066099686
     ],
-    "northOffsetDegrees": 185.3598,
+    "northOffsetDegrees": 185.0971,
     "mirror": false
    },
    "bounds": {
     "min": [
-     -6.16,
+     -12.425,
      0,
-     -13.202
+     -14.706
     ],
     "max": [
-     6.201,
-     16.08,
-     0.403
+     12.474,
+     16.351,
+     0.423
     ]
    },
-   "height": 16.08,
+   "height": 16.351,
    "suppress": [
+    "NL.IMBAG.Pand.0363100012179378",
     "NL.IMBAG.Pand.0363100012179377",
-    "NL.IMBAG.Pand.0363100012179379"
+    "NL.IMBAG.Pand.0363100012179379",
+    "NL.IMBAG.Pand.0363100012179380"
    ],
    "replaces": [
+    "ordinary-0363100012179378",
     "ordinary-0363100012179377",
-    "ordinary-0363100012179379"
+    "ordinary-0363100012179379",
+    "ordinary-0363100012179380"
    ],
    "footprint": {
     "type": "MultiPolygon",
     "coordinates": [
+     [
+      [
+       [
+        4.8943424,
+        52.3588004
+       ],
+       [
+        4.8942509,
+        52.3588056
+       ],
+       [
+        4.8942326,
+        52.3586869
+       ],
+       [
+        4.8942315,
+        52.3586776
+       ],
+       [
+        4.8942425,
+        52.3586734
+       ],
+       [
+        4.8943103,
+        52.3586696
+       ],
+       [
+        4.8943228,
+        52.3586724
+       ]
+      ]
+     ],
      [
       [
        [
@@ -90861,77 +91054,158 @@
         52.3586921
        ]
       ]
+     ],
+     [
+      [
+       [
+        4.8940701,
+        52.358815
+       ],
+       [
+        4.8939793,
+        52.3588202
+       ],
+       [
+        4.8939612,
+        52.3587025
+       ],
+       [
+        4.894052,
+        52.3586973
+       ]
+      ]
      ]
     ]
    },
    "pands": [
+    {
+     "recipeId": "tex-179378",
+     "pandId": "0363100012179378",
+     "buildingId": "NL.IMBAG.Pand.0363100012179378",
+     "address": "Den Texstraat 24",
+     "frontage": {
+      "x0": -12.425,
+      "x1": -6.164,
+      "widthM": 6.261
+     },
+     "bounds": {
+      "min": [
+       -12.425,
+       0,
+       -14.706
+      ],
+      "max": [
+       -6.097,
+       16.331,
+       0.423
+      ]
+     },
+     "triangles": 1737,
+     "ranges": [
+      {
+       "primitive": 1,
+       "firstTriangle": 0,
+       "triangleCount": 57
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 0,
+       "triangleCount": 662
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 0,
+       "triangleCount": 40
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 0,
+       "triangleCount": 752
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 0,
+       "triangleCount": 192
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 0,
+       "triangleCount": 8
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 0,
+       "triangleCount": 14
+      }
+     ]
+    },
     {
      "recipeId": "tex-179377",
      "pandId": "0363100012179377",
      "buildingId": "NL.IMBAG.Pand.0363100012179377",
      "address": "Den Texstraat 22",
      "frontage": {
-      "x0": -6.16,
-      "x1": -0.019,
-      "widthM": 6.141
+      "x0": -6.164,
+      "x1": -0.022,
+      "widthM": 6.142
      },
      "bounds": {
       "min": [
-       -6.16,
+       -6.164,
        0,
-       -13.202
+       -13.252
       ],
       "max": [
-       -0.013,
-       16.08,
-       0.403
+       0.044,
+       16.351,
+       0.395
       ]
      },
-     "triangles": 1528,
+     "triangles": 1598,
      "ranges": [
-      {
-       "primitive": 1,
-       "firstTriangle": 0,
-       "triangleCount": 30
-      },
-      {
-       "primitive": 2,
-       "firstTriangle": 0,
-       "triangleCount": 72
-      },
       {
        "primitive": 3,
        "firstTriangle": 0,
-       "triangleCount": 376
+       "triangleCount": 28
       },
       {
        "primitive": 4,
-       "firstTriangle": 0,
-       "triangleCount": 40
+       "firstTriangle": 662,
+       "triangleCount": 532
       },
       {
        "primitive": 5,
-       "firstTriangle": 0,
-       "triangleCount": 788
+       "firstTriangle": 40,
+       "triangleCount": 40
       },
       {
        "primitive": 6,
-       "firstTriangle": 0,
-       "triangleCount": 12
+       "firstTriangle": 752,
+       "triangleCount": 776
       },
       {
        "primitive": 7,
-       "firstTriangle": 0,
-       "triangleCount": 198
+       "firstTriangle": 12,
+       "triangleCount": 12
       },
       {
        "primitive": 8,
-       "firstTriangle": 0,
-       "triangleCount": 8
+       "firstTriangle": 192,
+       "triangleCount": 198
       },
       {
        "primitive": 9,
-       "firstTriangle": 0,
+       "firstTriangle": 8,
+       "triangleCount": 8
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 14,
        "triangleCount": 4
       }
      ]
@@ -90942,68 +91216,129 @@
      "buildingId": "NL.IMBAG.Pand.0363100012179379",
      "address": "Den Texstraat 20",
      "frontage": {
-      "x0": -0.019,
-      "x1": 6.197,
+      "x0": -0.022,
+      "x1": 6.194,
       "widthM": 6.216
      },
      "bounds": {
       "min": [
-       -0.019,
+       -0.023,
        0,
-       -13.199
+       -13.221
       ],
       "max": [
-       6.201,
-       15.96,
-       0.403
+       6.258,
+       16.237,
+       0.402
       ]
      },
-     "triangles": 1523,
+     "triangles": 1644,
      "ranges": [
       {
        "primitive": 0,
        "firstTriangle": 0,
-       "triangleCount": 25
-      },
-      {
-       "primitive": 2,
-       "firstTriangle": 72,
-       "triangleCount": 72
-      },
-      {
-       "primitive": 3,
-       "firstTriangle": 376,
-       "triangleCount": 376
+       "triangleCount": 22
       },
       {
        "primitive": 4,
-       "firstTriangle": 40,
-       "triangleCount": 40
+       "firstTriangle": 1194,
+       "triangleCount": 580
       },
       {
        "primitive": 5,
-       "firstTriangle": 788,
-       "triangleCount": 788
+       "firstTriangle": 80,
+       "triangleCount": 40
       },
       {
        "primitive": 6,
-       "firstTriangle": 12,
-       "triangleCount": 12
+       "firstTriangle": 1528,
+       "triangleCount": 776
       },
       {
        "primitive": 7,
-       "firstTriangle": 198,
-       "triangleCount": 198
+       "firstTriangle": 24,
+       "triangleCount": 12
       },
       {
        "primitive": 8,
-       "firstTriangle": 8,
-       "triangleCount": 8
+       "firstTriangle": 390,
+       "triangleCount": 198
       },
       {
        "primitive": 9,
-       "firstTriangle": 4,
+       "firstTriangle": 16,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 18,
        "triangleCount": 4
+      }
+     ]
+    },
+    {
+     "recipeId": "tex-179380",
+     "pandId": "0363100012179380",
+     "buildingId": "NL.IMBAG.Pand.0363100012179380",
+     "address": "Den Texstraat 18",
+     "frontage": {
+      "x0": 6.194,
+      "x1": 12.408,
+      "widthM": 6.214
+     },
+     "bounds": {
+      "min": [
+       6.192,
+       0,
+       -13.191
+      ],
+      "max": [
+       12.474,
+       16.327,
+       0.423
+      ]
+     },
+     "triangles": 1749,
+     "ranges": [
+      {
+       "primitive": 2,
+       "firstTriangle": 0,
+       "triangleCount": 50
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 1774,
+       "triangleCount": 652
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 120,
+       "triangleCount": 40
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 2304,
+       "triangleCount": 776
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 36,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 588,
+       "triangleCount": 198
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 28,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 22,
+       "triangleCount": 9
       }
      ]
     }

@@ -14,7 +14,7 @@
   },
   {
    "pandId": "0363100012179430",
-   "type": "tex-1882-hood-bracket-mansard",
+   "type": "tex-1882-hood-bracket-erker",
    "side": "left",
    "reason": "Den Texstraat 11: house door on the left axis on the tex-1-59 strip 2024-12-04 (sheet tex-1-59)"
   },
@@ -26,7 +26,7 @@
   },
   {
    "pandId": "0363100012179383",
-   "type": "tex-1882-hood-bracket-mansard",
+   "type": "tex-1882-hood-bracket-erker",
    "side": "left",
    "reason": "Den Texstraat 15: house door on the left axis on the tex-1-59 strip 2024-12-04 (sheet tex-1-59)"
   },
@@ -38,7 +38,7 @@
   },
   {
    "pandId": "0363100012179511",
-   "type": "tex-1876-balcony-wide-dormer",
+   "type": "tex-1876-balcony-top-only",
    "side": "left",
    "reason": "Den Texstraat 23 (door behind a hedge, the cream leaf left of the bush): house door on the left axis on the tex-1-59 strip 2024-12-04 (sheet tex-1-59)"
   },
@@ -51,8 +51,8 @@
   {
    "pandId": "0363100012179509",
    "type": "tex-1876-balcony-wide-dormer",
-   "side": "right",
-   "reason": "Den Texstraat 27: house door on the right axis on the tex-1-59 strip 2024-12-04 (sheet tex-1-59)"
+   "side": "left",
+   "reason": "Den Texstraat 27: door on the LEFT, then two windows (Opus verdict; BAG 0363100012179509 checked against the strip span order: 21,23,25,27 = 2923-3904 px)"
   }
  ]
 }

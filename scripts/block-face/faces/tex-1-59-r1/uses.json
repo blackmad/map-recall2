@@ -6,6 +6,56 @@
  },
  "pands": [
   {
+   "pandId": "0363100012179436",
+   "addresses": [
+    "Den Texstraat 7"
+   ],
+   "groundUnits": [
+    {
+     "address": "Den Texstraat 7-H",
+     "use": "woonfunctie",
+     "areaM2": 161,
+     "bagId": "0363010000620881"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012179435",
+   "addresses": [
+    "Den Texstraat 9"
+   ],
+   "groundUnits": [
+    {
+     "address": "Den Texstraat 9-H",
+     "use": "woonfunctie",
+     "areaM2": 141,
+     "bagId": "0363010000620888"
+    }
+   ],
+   "units": 2,
+   "osm": [
+    {
+     "type": "node",
+     "id": 441909910,
+     "lngLat": [
+      4.893828,
+      52.3589917
+     ],
+     "tags": {
+      "internet_access": "wlan",
+      "name": "Kap",
+      "stars": "2",
+      "tourism": "hotel"
+     },
+     "fetchedAt": "2026-11-10T07:13:02.951Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
    "pandId": "0363100012179430",
    "addresses": [
     "Den Texstraat 11"

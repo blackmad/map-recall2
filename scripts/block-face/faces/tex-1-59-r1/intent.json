@@ -18,13 +18,14 @@
   "note": "auto-placed from the de-pijp library (buurt Den Texbuurt); scores and holds in scripts/block-face/faces/tex-1-59/auto-place.json"
  },
  "types": [
+  "tex-1882-hood-bracket-erker",
   "tex-1882-hood-bracket-mansard"
  ],
  "houses": [
   {
-   "pandId": "0363100012179430",
-   "slug": "tex-179430",
-   "address": "Den Texstraat 11",
+   "pandId": "0363100012179436",
+   "slug": "tex-179436",
+   "address": "Den Texstraat 7",
    "type": {
     "type": "tex-1882-hood-bracket-mansard"
    },
@@ -38,7 +39,53 @@
     "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
    },
    "rhythm": {
-    "citation": "auto-place: tex-1882-hood-bracket-mansard scored 1 on eaves 1, stucco -; strip 2024-12-04 span 1704-1948"
+    "citation": "auto-place: tex-1882-hood-bracket-mansard scored 1 on eaves 1, stucco -; strip 2024-12-04 span 1215-1459"
+   }
+  },
+  {
+   "pandId": "0363100012179435",
+   "slug": "tex-179435",
+   "address": "Den Texstraat 9",
+   "type": {
+    "type": "tex-1882-hood-bracket-mansard"
+   },
+   "groundFloor": {
+    "use": "residential",
+    "name": "Kap",
+    "osm": {
+     "type": "node",
+     "id": 441909910,
+     "name": "Kap"
+    },
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2024-12-04",
+    "agreement": "osm-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: tex-1882-hood-bracket-mansard scored 1 on eaves 1, stucco -; strip 2024-12-04 span 1459-1703"
+   }
+  },
+  {
+   "pandId": "0363100012179430",
+   "slug": "tex-179430",
+   "address": "Den Texstraat 11",
+   "type": {
+    "type": "tex-1882-hood-bracket-erker"
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2024-12-04",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: tex-1882-hood-bracket-erker scored 1 on eaves 1, stucco -; strip 2024-12-04 span 1704-1948"
    }
   },
   {
@@ -66,7 +113,7 @@
    "slug": "tex-179383",
    "address": "Den Texstraat 15",
    "type": {
-    "type": "tex-1882-hood-bracket-mansard"
+    "type": "tex-1882-hood-bracket-erker"
    },
    "groundFloor": {
     "use": "residential",
@@ -78,7 +125,7 @@
     "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
    },
    "rhythm": {
-    "citation": "auto-place: tex-1882-hood-bracket-mansard scored 1 on eaves 1, stucco -; strip 2024-12-04 span 2192-2436"
+    "citation": "auto-place: tex-1882-hood-bracket-erker scored 1 on eaves 1, stucco -; strip 2024-12-04 span 2192-2436"
    }
   }
  ],
@@ -94,10 +141,23 @@
   },
   "measuredEaves": [
    {
-    "pand": "0363100012179430",
+    "pand": "0363100012179436",
+    "stripRow": 276,
+    "evidence": "auto-place: strip skyline cornice 13.07 m within 1 m of the tex-1882-hood-bracket-mansard line 13.5 m; 3DBAG/PDOK eaves 11.16 m"
+   },
+   {
+    "pand": "0363100012179435",
     "stripRow": 259,
+    "frontRoof": {
+     "topRow": 227
+    },
+    "evidence": "auto-place: strip skyline cornice 13.05 m within 1 m of the tex-1882-hood-bracket-mansard line 13.5 m; 3DBAG/PDOK eaves 14.15 m; reviewer roof pin: cornice 13.5 m, roof top 14.3 m (Den Texstraat 9 (tex strips 2024-12-04): the dormer stands on the slate behind a 13.5 m cornice, the photo shows sky above it; 3DBAG ridge is 2-3 m higher)"
+   },
+   {
+    "pand": "0363100012179430",
+    "stripRow": 271,
     "frontRoof": {},
-    "evidence": "auto-place: the tex-1882-hood-bracket-mansard cornice line 13.5 m (measured on its exemplar strips; this pand's skyline unread); 3DBAG/PDOK eaves 14.36 m"
+    "evidence": "auto-place: the tex-1882-hood-bracket-erker cornice line 13.5 m (measured on its exemplar strips; this pand's skyline unread); 3DBAG/PDOK eaves 14.36 m; reviewer roof pin: cornice 13.2 m (Den Texstraat 11: the cornice is continuous across 11, 13, 15 (13.1-13.2 m); the skyline read 13.54 m (Opus verdict))"
    },
    {
     "pand": "0363100012179429",
@@ -109,7 +169,7 @@
     "pand": "0363100012179383",
     "stripRow": 271,
     "frontRoof": {},
-    "evidence": "auto-place: strip skyline cornice 13.2 m within 1 m of the tex-1882-hood-bracket-mansard line 13.5 m; 3DBAG/PDOK eaves 14.15 m"
+    "evidence": "auto-place: strip skyline cornice 13.2 m within 1 m of the tex-1882-hood-bracket-erker line 13.5 m; 3DBAG/PDOK eaves 14.15 m"
    }
   ]
  }

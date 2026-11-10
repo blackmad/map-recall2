@@ -18,6 +18,7 @@
   "note": "auto-placed from the de-pijp library (buurt Den Texbuurt); scores and holds in scripts/block-face/faces/tex-1-59/auto-place.json"
  },
  "types": [
+  "tex-1876-balcony-top-only",
   "tex-1876-balcony-wide-dormer"
  ],
  "houses": [
@@ -47,7 +48,7 @@
    "slug": "tex-179511",
    "address": "Den Texstraat 23",
    "type": {
-    "type": "tex-1876-balcony-wide-dormer"
+    "type": "tex-1876-balcony-top-only"
    },
    "groundFloor": {
     "use": "residential",
@@ -59,7 +60,7 @@
     "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
    },
    "rhythm": {
-    "citation": "auto-place: tex-1876-balcony-wide-dormer scored 1 on eaves 1, stucco -; strip 2024-12-04 span 3167-3411"
+    "citation": "auto-place: tex-1876-balcony-top-only scored 1 on eaves 1, stucco -; strip 2024-12-04 span 3167-3411"
    }
   },
   {
@@ -86,8 +87,7 @@
    "slug": "tex-179509",
    "address": "Den Texstraat 27",
    "type": {
-    "type": "tex-1876-balcony-wide-dormer",
-    "mirror": true
+    "type": "tex-1876-balcony-wide-dormer"
    },
    "groundFloor": {
     "use": "residential",
@@ -124,7 +124,7 @@
     "pand": "0363100012179511",
     "stripRow": 248,
     "frontRoof": {},
-    "evidence": "auto-place: strip skyline cornice 13.78 m within 1 m of the tex-1876-balcony-wide-dormer line 13.5 m; 3DBAG/PDOK eaves 14.4 m"
+    "evidence": "auto-place: strip skyline cornice 13.78 m within 1 m of the tex-1876-balcony-top-only line 13.5 m; 3DBAG/PDOK eaves 14.4 m"
    },
    {
     "pand": "0363100012179510",
@@ -134,9 +134,9 @@
    },
    {
     "pand": "0363100012179509",
-    "stripRow": 267,
+    "stripRow": 251,
     "frontRoof": {},
-    "evidence": "auto-place: strip skyline cornice 13.3 m within 1 m of the tex-1876-balcony-wide-dormer line 13.5 m; 3DBAG/PDOK eaves 14.38 m"
+    "evidence": "auto-place: strip skyline cornice 13.3 m within 1 m of the tex-1876-balcony-wide-dormer line 13.5 m; 3DBAG/PDOK eaves 14.38 m; reviewer roof pin: cornice 13.7 m (Den Texstraat 27: the cornice is continuous across 21-27 (13.7-13.8 m); the model stood 0.4 m low at 13.31 m (Opus verdict))"
    }
   ]
  }

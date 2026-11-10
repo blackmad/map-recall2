@@ -2,17 +2,19 @@
  "street": "Den Texstraat",
  "seed": "0363100012179441",
  "members": [
+  "0363100012179378",
   "0363100012179377",
-  "0363100012179379"
+  "0363100012179379",
+  "0363100012179380"
  ],
  "ends": [
   {
    "side": "left",
-   "reason": "run of tex-8-58: 179378 held (auto-place.json)"
+   "reason": "run of tex-8-58: 179507 held (auto-place.json)"
   },
   {
    "side": "right",
-   "reason": "run of tex-8-58: 179380 held (auto-place.json)"
+   "reason": "run of tex-8-58: 179514 held (auto-place.json)"
   }
  ],
  "rejected": [
@@ -1216,6 +1218,16 @@
  "areaHalfSizeM": 180,
  "pands": [
   {
+   "pandId": "0363100012179378",
+   "alongM": -54.92,
+   "widthM": 6.26,
+   "eavesM": 14.45,
+   "roofMaxM": 16.83,
+   "storeys3dbag": 4,
+   "builtYear": 1883,
+   "uncertainty": []
+  },
+  {
    "pandId": "0363100012179377",
    "alongM": -48.72,
    "widthM": 6.14,
@@ -1233,6 +1245,16 @@
    "roofMaxM": 14.41,
    "storeys3dbag": 0,
    "builtYear": 1884,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012179380",
+   "alongM": -36.32,
+   "widthM": 6.21,
+   "eavesM": 14.42,
+   "roofMaxM": 17.12,
+   "storeys3dbag": 5,
+   "builtYear": 1881,
    "uncertainty": []
   }
  ],
