@@ -34,7 +34,7 @@ import { isTouchPointer, START_SETTLE_GROUND_RADIUS_M, START_SETTLE_LEGACY_CAP_M
 import { CameraMap, EngineCamera, unitsPerMetre, mercatorX, mercatorY } from './cameraMap';
 import { GameCameraSolver, lngLatToWorld, worldToLngLat, type GameCamera, type LoaderFrame } from './gameCamera';
 import { clearCamera, clearanceResidents, residentIndex } from './cameraClearance';
-import { clearEye, coverAheadPoints, easePullIn, eyeInsideBuilding, nearPlaneReachM, EYE_WALL_MARGIN_M, type Eye } from './streetVisibility';
+import { clearEye, coverAheadPoints, easePullIn, eyeInsideBuilding, footprintTopM, nearPlaneReachM, EYE_WALL_MARGIN_M, type Eye } from './streetVisibility';
 import { RiderCoverTracker } from './riderCover';
 import { idleScheduler } from './idleBoxGrid';
 import { coverRouteFlag, routeAheadPoints, type LngLat as CoverLngLat } from '../coveredPassage';
@@ -67,7 +67,7 @@ import { LabelOcclusion } from './labelOcclusion';
 import { withLabelPand } from './labelPand';
 import { SpoilerSources } from './spoilerSources';
 import { groundCentre, groundViewFlag } from '../ownGround/groundResidency';
-import { clearBackM, fpsPose, fpsRequested, headBobM, stepFpsYaw, FPS_FAR_CAP_M, FPS_NEAR_DIVISOR, type FpsPose } from './fpsCamera';
+import { clearBackM, FPS_EYE_HEIGHT_M, fpsPose, fpsRequested, headBobM, stepFpsYaw, FPS_FAR_CAP_M, FPS_NEAR_DIVISOR, type FpsPose } from './fpsCamera';
 import { DEFAULT_FOV_DEG, MAX_PITCH_DEG } from '../ownMap/mapCamera';
 
 declare const CANVAS_W: number;
@@ -1324,8 +1324,11 @@ export class OwnWorldView implements WorldViewOracles {
     const elevation = surface ? (view.detached || view.introFlat > 0 ? 0 : this.riderSurfaceM) : 0;
     // First-person view (`?cam=fps`, V): the eye on the rider at 1.6 m (engine/fpsCamera.ts). It replaces the chase solve.
     const fps = this.fps && !view.detached && view.introFlat === 0 && this.riderAngle != null && (camera.viewMode === 'chase' || camera.viewMode === 'cockpit') ? this.solveFps(view, elevation) : null;
-    if (!fps && this.fpsDrawn) this.leaveFps();
+    if (!fps && this.fpsDrawn) { this.leaveFps(); W().__canalRecallFpsHidePin = false; }
     this.fpsDrawn = !!fps;
+    // The legacy canvas draws the DESTINATION pin and pill over the map; at eye level it reads as an address sign on a
+    // facade, so renderer.js skips it while this is set (racing only: the finish card shows it again).
+    W().__canalRecallFpsHidePin = !!fps && W().canalRecallGame?.state === 4;
     if (!fps && view.needsClearance && this._completeCity?.sampleFeatures) {
       const result = clearCamera(view.pitch, view.lngLat, view.subject, pitch => {
         const probe = new EngineCamera(() => this.host.viewport(), { center: view.lngLat, zoom: view.zoom, bearing: view.bearing, pitch, elevation, maxPitch: this.cameraMap.camera.maxPitch });
@@ -1429,6 +1432,7 @@ export class OwnWorldView implements WorldViewOracles {
   private fpsLensSet = false;
   private fpsSaved: { maxPitch: number; maxZoom: number } | null = null;
   /** Measurement: the last first-person pose and its clearance (specs read it). */
+  _fpsStuckInfo: unknown = null;
   _lastFps: { pose: FpsPose; backM: number; stuckId: string | null; elevation: number } | null = null;
   fpsCameraOn(): boolean { return this.fps; }
   setFpsCamera(on: boolean): void {
@@ -1476,6 +1480,7 @@ export class OwnWorldView implements WorldViewOracles {
         // The rider is inside a footprint (a covered passage): ghost it rather than lose the view.
         const f = blockerAt(0) as { properties?: Record<string, unknown>; id?: unknown } | null;
         stuckId = f ? String(f.properties?.id ?? f.id ?? '') || null : null;
+        this._fpsStuckInfo = f ? { id: stuckId, top: footprintTopM(f.properties), exact: !!eyeInsideBuilding({ lngLat: fpsPose({ ...base }).eye.lngLat, altitude: elevation + FPS_EYE_HEIGHT_M }, resident, 0), eye: fpsPose({ ...base }).eye.lngLat, elevation, reach } : null;
       }
       if (stuckId !== this.fpsStuckId) { this.fpsStuckId = stuckId; this._threeBuildings?.setGhosted?.('eye', stuckId ? [stuckId] : []); }
     }

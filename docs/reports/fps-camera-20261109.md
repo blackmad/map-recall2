@@ -88,3 +88,27 @@ Trivia cards/HUD unchanged. Phone portrait renders correctly with the stick pad 
 - Ground LOD keyed to eye (above), stuck-probe margin, destination pin at eye level.
 - game.js: no change needed (the key listener and `?cam=fps` live in the engine view). The legacy MapLibre engine
   ignores the flag.
+
+## 6. Round 2 (2026-11-10)
+
+1. **Ground triangles.** Planning the ground ring from the chase zoom and pitch (in both `sync` and `settleTick`) changed
+   nothing: own-ground triangles at the three spots were identical to the digit before and after (787 253 / 712 091 /
+   916 482 in FPS; chase 349 k / 394 k / 295 k). So the ring's radius is not the cause. The extra 0.4-0.6 M triangles are
+   the level 72 degree cone seeing the whole full-detail (LOD 0, `NEAR_M`) ring and its cells, where the top-down chase
+   view sees a small window of it (draws 67 -> 135 at the quay). Getting within 10 % would mean lowering ground LOD or
+   culling by distance for the level view, which trades away the ground detail that looks good at 1.6 m (cobbles, kerbs);
+   the change was reverted and is open as a decision (a distance-faded LOD 0 ring of ~40 m for FPS is the candidate).
+   No horizon before/after frame, since nothing changed.
+2. **`stuck` was correct.** The probe's `exact` test (reach 0) put the eye point itself inside pands ...4217 (top 14.25 m)
+   and ...2887 (8.95 m); the three teleport spots were off the road graph on a plaza the footprint covers. Not a margin
+   fault: a rider on a road is not in a footprint, and a rider in a covered passage is the intended `stuck` ghost. The
+   Magere Brug spot was within the 0.41 m reach (not inside) and the guard backed off (stuck null). Pose tests added in
+   `fpsCamera.test.ts` (0.25 m from a wall backs off clear; 2 m does not move; inside a footprint is stuck; a low
+   sliver does not block).
+3. **Destination pin.** The pin and pill are drawn by the legacy canvas (`renderer.js _drawDestination`). The engine now
+   sets `window.__canalRecallFpsHidePin` while FPS is on and racing; **INTEGRATOR PATCH** commit da27857aa makes
+   `_drawDestination` return early on it (pill rect parked off-screen so labels do not avoid it). The finish card shows it
+   again. Needs a rebuilt page only (renderer.js is plain script, no bundle).
+4. **Bridge deck.** Spec `on a bridge deck the eye is 1.6 m over the deck` rides the Torensluis (BRU0009: a measured
+   deck profile; the Magere Brug BRU0242 is a fallback footprint with no deck profile, so it cannot pin a deck height).
+   Deck height 2.32 m at its centre, quay -0.65 m; eye 1.6 m over the deck, passes.

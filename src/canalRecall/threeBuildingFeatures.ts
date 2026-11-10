@@ -31,7 +31,6 @@ import { GARDEN_ROOM_TONES } from './look/palette.js';
 import { buurtProfileAt } from './buurtProfiles/data.js';
 import { SETBACK_CLADDING_HEX, SETBACK_INSET_M, SETBACK_STOREY_M, insetRing } from './contemporaryFamily.js';
 import { profileWallBeatsMaterial, storeyScaleOf } from './buurtProfiles/profiles.js';
-import { SETBACK_CLADDING_HEX, SETBACK_INSET_M, SETBACK_STOREY_M, insetRing } from './contemporaryFamily.js';
 import { levelWallHex } from './look/paletteLevel.js';
 import { industrialKitEnabled, industrialMeshSpec, industrialWallHex } from './industrial/industrialKit.js';
 
