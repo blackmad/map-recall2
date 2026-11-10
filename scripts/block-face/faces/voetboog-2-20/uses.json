@@ -1,0 +1,274 @@
+{
+ "street": "Voetboogstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T09:16:40.566Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012176053",
+   "addresses": [
+    "Voetboogstraat 20"
+   ],
+   "groundUnits": [
+    {
+     "address": "Voetboogstraat 20-H",
+     "use": "winkelfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000855701"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012176052",
+   "addresses": [
+    "Voetboogstraat 18"
+   ],
+   "groundUnits": [
+    {
+     "address": "Voetboogstraat 18-H",
+     "use": "industriefunctie",
+     "areaM2": 84,
+     "bagId": "0363010000956481"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012175884",
+   "addresses": [
+    "Voetboogstraat 14",
+    "Voetboogstraat 16"
+   ],
+   "groundUnits": [
+    {
+     "address": "Voetboogstraat 14-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 153,
+     "bagId": "0363010000777299"
+    },
+    {
+     "address": "Voetboogstraat 16-H",
+     "use": "winkelfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000976749"
+    }
+   ],
+   "units": 6,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2724038610,
+     "lngLat": [
+      4.8906997,
+      52.3680963
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "16-H",
+      "addr:postcode": "1012XL",
+      "addr:street": "Voetboogstraat",
+      "female": "yes",
+      "male": "yes",
+      "name": "Dream Beauty",
+      "shop": "hairdresser",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-11-10T09:16:40.566Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012175883",
+   "addresses": [
+    "Voetboogstraat 10",
+    "Voetboogstraat 12"
+   ],
+   "groundUnits": [
+    {
+     "address": "Voetboogstraat 10-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 170,
+     "bagId": "0363010000855691"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2724038527,
+     "lngLat": [
+      4.8906317,
+      52.3682105
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "10-12",
+      "addr:postcode": "1012XL",
+      "addr:street": "Voetboogstraat",
+      "amenity": "restaurant",
+      "contact:facebook": "eetcafehetpakhuis",
+      "contact:instagram": "pakhuisadam",
+      "cuisine": "steak_house",
+      "name": "Eetcafé 't Pakhuis",
+      "opening_hours": "Mo-Su 13:00-22:30",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "website": "https://eetcafehetpakhuis.nl/nl/",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-11-10T09:16:40.566Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012176056",
+   "addresses": [
+    "Voetboogstraat 6",
+    "Voetboogstraat 8"
+   ],
+   "groundUnits": [
+    {
+     "address": "Voetboogstraat 6-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 144,
+     "bagId": "0363010000855681"
+    },
+    {
+     "address": "Voetboogstraat 8-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 157,
+     "bagId": "0363010000967721"
+    }
+   ],
+   "units": 8,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2724039118,
+     "lngLat": [
+      4.8905863,
+      52.3682911
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "6-H",
+      "addr:postcode": "1012XL",
+      "addr:street": "Voetboogstraat",
+      "amenity": "restaurant",
+      "name": "The Chicken Bar",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "website": "http://chickenbar.amsterdam",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-11-10T09:16:40.566Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012176129",
+   "addresses": [
+    "Voetboogstraat 4"
+   ],
+   "groundUnits": [
+    {
+     "address": "Voetboogstraat 4-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000855680"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2724038872,
+     "lngLat": [
+      4.8905842,
+      52.3683405
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "4-H",
+      "addr:postcode": "1012XL",
+      "addr:street": "Voetboogstraat",
+      "amenity": "bar",
+      "contact:instagram": "lawandorder_bar",
+      "name": "Law & Order Cocktail Bar",
+      "opening_hours": "We,Th,Su,Mo 18:00-01:00; Fr,Sa 18:00-04:00",
+      "phone": "+31 20 362 6697",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-11-10T09:16:40.566Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012176130",
+   "addresses": [
+    "Voetboogstraat 2",
+    "Voetboogstraat 2A",
+    "Voetboogstraat 2B",
+    "Voetboogstraat 2C",
+    "Voetboogstraat 2D",
+    "Voetboogstraat 2E"
+   ],
+   "groundUnits": [
+    {
+     "address": "Voetboogstraat 2",
+     "use": "woonfunctie",
+     "areaM2": 216,
+     "bagId": "0363010000855679"
+    },
+    {
+     "address": "Voetboogstraat 2A",
+     "use": "woonfunctie",
+     "areaM2": 23,
+     "bagId": "0363010003684579"
+    },
+    {
+     "address": "Voetboogstraat 2B",
+     "use": "woonfunctie",
+     "areaM2": 42,
+     "bagId": "0363010003684580"
+    },
+    {
+     "address": "Voetboogstraat 2C",
+     "use": "woonfunctie",
+     "areaM2": 42,
+     "bagId": "0363010003684581"
+    },
+    {
+     "address": "Voetboogstraat 2D",
+     "use": "woonfunctie",
+     "areaM2": 42,
+     "bagId": "0363010003684582"
+    },
+    {
+     "address": "Voetboogstraat 2E",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010003684583"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  }
+ ]
+}

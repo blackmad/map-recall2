@@ -1,0 +1,209 @@
+{
+ "street": "Spui",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T09:05:04.885Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012165109",
+   "addresses": [
+    "Spui 1",
+    "Spui 1A",
+    "Spui 1B",
+    "Spui 1C",
+    "Spui 1D",
+    "Spui 1E",
+    "Spui 3"
+   ],
+   "groundUnits": [
+    {
+     "address": "Rokin 112",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 1332,
+     "bagId": "0363010000989619"
+    },
+    {
+     "address": "Spui 1",
+     "use": "winkelfunctie",
+     "areaM2": 151,
+     "bagId": "0363010000989641"
+    },
+    {
+     "address": "Spui 1A",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 89,
+     "bagId": "0363010000989642"
+    },
+    {
+     "address": "Spui 1B",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000989643"
+    },
+    {
+     "address": "Spui 1C",
+     "use": "woonfunctie",
+     "areaM2": 81,
+     "bagId": "0363010000989644"
+    },
+    {
+     "address": "Spui 1D",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000989645"
+    },
+    {
+     "address": "Spui 1E",
+     "use": "woonfunctie",
+     "areaM2": 42,
+     "bagId": "0363010000989646"
+    },
+    {
+     "address": "Kalverstraat 145",
+     "use": "winkelfunctie",
+     "areaM2": 153,
+     "bagId": "0363010000989647"
+    },
+    {
+     "address": "Spui 3",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 221,
+     "bagId": "0363010000989648"
+    }
+   ],
+   "units": 9,
+   "osm": [
+    {
+     "type": "node",
+     "id": 1310974776,
+     "lngLat": [
+      4.8911573,
+      52.3688767
+     ],
+     "tags": {
+      "amenity": "restaurant",
+      "check_date": "2024-05-09",
+      "name": "Rancho Steakhouse",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-11-10T09:05:04.885Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 2724038584,
+     "lngLat": [
+      4.8911831,
+      52.3688151
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "145",
+      "addr:postcode": "1012XB",
+      "addr:street": "Kalverstraat",
+      "brand": "Holland & Barrett",
+      "brand:website": "https://www.hollandandbarrett.nl/",
+      "brand:wikidata": "Q5880870",
+      "brand:wikipedia": "nl:Holland & Barrett",
+      "name": "Holland & Barrett",
+      "shop": "health_food",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-11-10T09:05:04.885Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 4212657853,
+     "lngLat": [
+      4.8917465,
+      52.3689498
+     ],
+     "tags": {
+      "brand:wikidata": "Q1484081",
+      "brand:wikipedia": "en:G-Star Raw",
+      "check_date": "2025-11-15",
+      "name": "Boas Vintage",
+      "second_hand": "only",
+      "shop": "clothes",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-11-10T09:05:04.885Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 5752469056,
+     "lngLat": [
+      4.8914924,
+      52.368947
+     ],
+     "tags": {
+      "amenity": "restaurant",
+      "check_date": "2023-04-10",
+      "name": "Rancho",
+      "toilets:wheelchair": "no",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-11-10T09:05:04.885Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012175733",
+   "addresses": [
+    "Spui 5"
+   ],
+   "groundUnits": [
+    {
+     "address": "Spui 5",
+     "use": "winkelfunctie",
+     "areaM2": 112,
+     "bagId": "0363010000816856"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2724039102,
+     "lngLat": [
+      4.8911672,
+      52.3689229
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "5",
+      "addr:postcode": "1012WX",
+      "addr:street": "Spui",
+      "amenity": "cafe",
+      "brand": "Chatime",
+      "brand:en": "Chatime",
+      "brand:wikidata": "Q16829306",
+      "brand:wikipedia": "en:Chatime",
+      "brand:zh": "日出茶太",
+      "check_date": "2025-11-15",
+      "cuisine": "bubble_tea",
+      "name": "Chatime",
+      "name:en": "Chatime",
+      "name:zh": "日出茶太",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "takeaway": "yes"
+     },
+     "fetchedAt": "2026-11-10T09:05:04.885Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

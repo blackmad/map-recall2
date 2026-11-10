@@ -1,0 +1,208 @@
+{
+ "street": "Singel",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T08:57:29.583Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012168533",
+   "addresses": [
+    "Singel 437"
+   ],
+   "groundUnits": [
+    {
+     "address": "Singel 437-H",
+     "use": "winkelfunctie",
+     "areaM2": 62,
+     "bagId": "0363010003684630"
+    }
+   ],
+   "units": 2,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2724038995,
+     "lngLat": [
+      4.8901566,
+      52.3673998
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "437-H",
+      "addr:postcode": "1012WP",
+      "addr:street": "Singel",
+      "amenity": "cafe",
+      "brand": "STACH",
+      "brand:wikidata": "Q124807442",
+      "check_date": "2026-04-15",
+      "check_date:opening_hours": "2026-04-15",
+      "name": "STACH",
+      "opening_hours": "Mo-Fr 07:00-20:00; Su 09:00-20:00; Sa 08:00-20:00",
+      "phone": "+31 20 2258411",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "website": "https://stach-food.nl/",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-11-10T08:57:29.583Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012167500",
+   "addresses": [
+    "Singel 439",
+    "Singel 441",
+    "Singel 443",
+    "Singel 443A",
+    "Singel 443B",
+    "Singel 443C",
+    "Singel 443D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Singel 439",
+     "use": "winkelfunctie",
+     "areaM2": 1,
+     "bagId": "0363010003695347"
+    },
+    {
+     "address": "Singel 441-O",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 154,
+     "bagId": "0363010003695349"
+    },
+    {
+     "address": "Singel 443",
+     "use": "woonfunctie",
+     "areaM2": 125,
+     "bagId": "0363010003695350"
+    },
+    {
+     "address": "Singel 443A",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010012150119"
+    },
+    {
+     "address": "Singel 443B",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010012150120"
+    },
+    {
+     "address": "Singel 443C",
+     "use": "woonfunctie",
+     "areaM2": 87,
+     "bagId": "0363010012150121"
+    },
+    {
+     "address": "Singel 443D",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010012150122"
+    }
+   ],
+   "units": 8,
+   "osm": [
+    {
+     "type": "node",
+     "id": 4148628992,
+     "lngLat": [
+      4.8902838,
+      52.3673484
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "441",
+      "addr:street": "Singel",
+      "check_date": "2025-03-17",
+      "name": "Floris van Bommel",
+      "shop": "shoes",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-11-10T08:57:29.583Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 5865137726,
+     "lngLat": [
+      4.890333,
+      52.3673334
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "441",
+      "addr:postcode": "1012WP",
+      "addr:street": "Singel",
+      "amenity": "cafe",
+      "check_date": "2025-06-21",
+      "contact:facebook": "toastable.NL",
+      "contact:instagram": "toastable.nl",
+      "email": "koningsplein@toastable.nl",
+      "internet_access": "wlan",
+      "name": "Toastable",
+      "opening_hours": "Mo-Su 09:00-17:00",
+      "outdoor_seating": "yes",
+      "phone": "+31 20 626 2969",
+      "website": "https://toastable.nl/",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-11-10T08:57:29.583Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012175814",
+   "addresses": [
+    "Singel 445"
+   ],
+   "groundUnits": [
+    {
+     "address": "Heiligeweg 49",
+     "use": "winkelfunctie",
+     "areaM2": 628,
+     "bagId": "0363010000994566"
+    },
+    {
+     "address": "Singel 445-H",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 1,
+     "bagId": "0363010001009546"
+    }
+   ],
+   "units": 6,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2724039099,
+     "lngLat": [
+      4.8903759,
+      52.3674726
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "49",
+      "addr:postcode": "1012XP",
+      "addr:street": "Heiligeweg",
+      "name": "All Saints",
+      "shop": "clothes",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-11-10T08:57:29.583Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

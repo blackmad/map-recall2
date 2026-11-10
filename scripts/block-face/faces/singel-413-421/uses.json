@@ -1,0 +1,145 @@
+{
+ "street": "Singel",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T08:56:10.665Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012175034",
+   "addresses": [
+    "Singel 413",
+    "Singel 415"
+   ],
+   "groundUnits": [
+    {
+     "address": "Singel 415-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 57,
+     "bagId": "0363010000810330"
+    },
+    {
+     "address": "Singel 415-O",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000810331"
+    },
+    {
+     "address": "Singel 413-H",
+     "use": "winkelfunctie",
+     "areaM2": 173,
+     "bagId": "0363010003684151"
+    }
+   ],
+   "units": 9,
+   "osm": [
+    {
+     "type": "node",
+     "id": 5752552765,
+     "lngLat": [
+      4.8891134,
+      52.3681278
+     ],
+     "tags": {
+      "amenity": "pub",
+      "check_date": "2025-03-17",
+      "indoor_seating": "yes",
+      "name": "'t Lieverdje",
+      "outdoor_seating": "yes",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-11-10T08:56:10.665Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 5752552770,
+     "lngLat": [
+      4.8890753,
+      52.3681619
+     ],
+     "tags": {
+      "name": "Kilroy",
+      "office": "travel_agent"
+     },
+     "fetchedAt": "2026-11-10T08:56:10.665Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012175033",
+   "addresses": [
+    "Singel 417",
+    "Singel 419"
+   ],
+   "groundUnits": [
+    {
+     "address": "Singel 419-H",
+     "use": "winkelfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000962108"
+    },
+    {
+     "address": "Singel 417-O",
+     "use": "winkelfunctie",
+     "areaM2": 120,
+     "bagId": "0363010000810336"
+    }
+   ],
+   "units": 8,
+   "osm": [
+    {
+     "type": "node",
+     "id": 5752552766,
+     "lngLat": [
+      4.8891618,
+      52.368092
+     ],
+     "tags": {
+      "check_date": "2025-03-17",
+      "name": "Chapter One",
+      "shop": "clothes",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-11-10T08:56:10.665Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 5752552767,
+     "lngLat": [
+      4.8892046,
+      52.3680506
+     ],
+     "tags": {
+      "shop": "interior_decoration",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-11-10T08:56:10.665Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012175032",
+   "addresses": [
+    "Singel 421"
+   ],
+   "groundUnits": [
+    {
+     "address": "Singel 421",
+     "use": "onderwijsfunctie",
+     "areaM2": 14039,
+     "bagId": "0363010000810357"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  }
+ ]
+}

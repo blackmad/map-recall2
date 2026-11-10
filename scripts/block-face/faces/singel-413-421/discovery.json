@@ -1,0 +1,356 @@
+{
+ "street": "Singel",
+ "seed": "0363100012175034",
+ "members": [
+  "0363100012175034",
+  "0363100012175033",
+  "0363100012175032"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "trimmed at 0363100012175034 (face continues: 165085)"
+  },
+  {
+   "side": "right",
+   "reason": "trimmed at 0363100012175032 (face continues: 175031 168534 168484)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012175035",
+   "reason": "frontage 98.6 m from Singel"
+  },
+  {
+   "pandId": "0363100012175489",
+   "reason": "frontage 132.0 m from Singel"
+  },
+  {
+   "pandId": "0363100012175497",
+   "reason": "frontage 86.8 m from Singel"
+  },
+  {
+   "pandId": "0363100012175502",
+   "reason": "frontage 89.3 m from Singel"
+  },
+  {
+   "pandId": "0363100012175511",
+   "reason": "frontage 93.8 m from Singel"
+  },
+  {
+   "pandId": "0363100012175734",
+   "reason": "frontage 117.7 m from Singel"
+  },
+  {
+   "pandId": "0363100012167503",
+   "reason": "frontage 37.5 m from Singel"
+  },
+  {
+   "pandId": "0363100012167504",
+   "reason": "frontage 32.2 m from Singel"
+  },
+  {
+   "pandId": "0363100012167923",
+   "reason": "frontage 60.4 m from Singel"
+  },
+  {
+   "pandId": "0363100012167924",
+   "reason": "frontage 63.4 m from Singel"
+  },
+  {
+   "pandId": "0363100012167925",
+   "reason": "frontage 69.8 m from Singel"
+  },
+  {
+   "pandId": "0363100012168483",
+   "reason": "sightline to Singel crosses 0363100012168484"
+  },
+  {
+   "pandId": "0363100012168485",
+   "reason": "sightline to Singel crosses 0363100012168484"
+  },
+  {
+   "pandId": "0363100012168535",
+   "reason": "sightline to Singel crosses 0363100012168483"
+  },
+  {
+   "pandId": "0363100012168536",
+   "reason": "frontage 51.8 m from Singel"
+  },
+  {
+   "pandId": "0363100012175807",
+   "reason": "no frontage on Singel: No footprint edge faces Singel"
+  },
+  {
+   "pandId": "0363100012175813",
+   "reason": "no frontage on Singel: No footprint edge faces Singel"
+  },
+  {
+   "pandId": "0363100012175877",
+   "reason": "frontage 58.9 m from Singel"
+  },
+  {
+   "pandId": "0363100012175878",
+   "reason": "frontage 57.6 m from Singel"
+  },
+  {
+   "pandId": "0363100012175879",
+   "reason": "frontage 52.5 m from Singel"
+  },
+  {
+   "pandId": "0363100012175881",
+   "reason": "frontage 55.0 m from Singel"
+  },
+  {
+   "pandId": "0363100012175883",
+   "reason": "frontage 77.4 m from Singel"
+  },
+  {
+   "pandId": "0363100012175036",
+   "reason": "frontage 48.1 m from Singel"
+  },
+  {
+   "pandId": "0363100012175512",
+   "reason": "frontage 61.7 m from Singel"
+  },
+  {
+   "pandId": "0363100012171743",
+   "reason": "frontage 36.8 m from Singel"
+  },
+  {
+   "pandId": "0363100012171819",
+   "reason": "sightline to Singel crosses 0363100012171812"
+  },
+  {
+   "pandId": "0363100012175505",
+   "reason": "sightline to Singel crosses 0363100012171814"
+  },
+  {
+   "pandId": "0363100012175884",
+   "reason": "frontage 74.6 m from Singel"
+  },
+  {
+   "pandId": "0363100012176056",
+   "reason": "frontage 81.7 m from Singel"
+  },
+  {
+   "pandId": "0363100012176129",
+   "reason": "frontage 87.5 m from Singel"
+  },
+  {
+   "pandId": "0363100012176130",
+   "reason": "frontage 89.5 m from Singel"
+  },
+  {
+   "pandId": "0363100012176925",
+   "reason": "sightline to Singel crosses 0363100012176926"
+  },
+  {
+   "pandId": "0363100012176933",
+   "reason": "sightline to Singel crosses 0363100012177123"
+  },
+  {
+   "pandId": "0363100012176934",
+   "reason": "sightline to Singel crosses 0363100012176933"
+  },
+  {
+   "pandId": "0363100012177125",
+   "reason": "sightline to Singel crosses 0363100012177123"
+  },
+  {
+   "pandId": "0363100012177200",
+   "reason": "sightline to Singel crosses 0363100012176933"
+  },
+  {
+   "pandId": "0363100012176840",
+   "reason": "frontage 37.5 m from Singel"
+  },
+  {
+   "pandId": "0363100012176841",
+   "reason": "frontage 32.7 m from Singel"
+  },
+  {
+   "pandId": "0363100012176843",
+   "reason": "sightline to Singel crosses 0363100012176839"
+  },
+  {
+   "pandId": "0363100012176932",
+   "reason": "sightline to Singel crosses 0363100012177123"
+  },
+  {
+   "pandId": "0363100012177199",
+   "reason": "sightline to Singel crosses 0363100012177202"
+  },
+  {
+   "pandId": "0363100012177205",
+   "reason": "sightline to Singel crosses 0363100012177202"
+  },
+  {
+   "pandId": "0363100012177206",
+   "reason": "sightline to Singel crosses 0363100012177203"
+  },
+  {
+   "pandId": "0363100012177207",
+   "reason": "sightline to Singel crosses 0363100012177204"
+  },
+  {
+   "pandId": "0363100012177208",
+   "reason": "sightline to Singel crosses 0363100012177204"
+  },
+  {
+   "pandId": "0363100012177599",
+   "reason": "frontage 55.4 m from Singel"
+  },
+  {
+   "pandId": "0363100012177600",
+   "reason": "frontage 55.6 m from Singel"
+  },
+  {
+   "pandId": "0363100012177601",
+   "reason": "frontage 56.4 m from Singel"
+  },
+  {
+   "pandId": "0363100012177602",
+   "reason": "frontage 39.2 m from Singel"
+  },
+  {
+   "pandId": "0363100012167500",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012175808",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012175814",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012165080",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012171739",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012171740",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012171741",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012171748",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012171749",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012171818",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012175030",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012176926",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012177123",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012177124",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012177126",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012176301",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012176302",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012176839",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012176842",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012176844",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012176845",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012176919",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012176920",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012177380",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012177610",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012185920",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012175034",
+   "alongM": 0,
+   "widthM": 10.06,
+   "eavesM": 13.37,
+   "roofMaxM": 18.92,
+   "storeys3dbag": 5,
+   "builtYear": 1750,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012175033",
+   "alongM": 9.94,
+   "widthM": 9.82,
+   "eavesM": 12.48,
+   "roofMaxM": 18.31,
+   "storeys3dbag": 5,
+   "builtYear": 1759,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012175032",
+   "alongM": 24.21,
+   "widthM": 18.71,
+   "eavesM": 14.25,
+   "roofMaxM": 18.82,
+   "storeys3dbag": 0,
+   "builtYear": 1606,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  }
+ ]
+}
