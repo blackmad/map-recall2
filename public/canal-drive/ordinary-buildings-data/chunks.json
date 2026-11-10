@@ -1,6 +1,6 @@
 {
  "version": 1,
- "generatedAt": "2026-11-06T23:49:02.186Z",
+ "generatedAt": "2026-11-10T02:12:08.852Z",
  "chunks": [
   {
    "id": "chunk-face-bilder-080336-090492",
@@ -85038,6 +85038,2344 @@
     "bytes": 46068,
     "triangles": 1470
    }
+  },
+  {
+   "id": "chunk-face-djambi-1-29-r1",
+   "category": "street-survey",
+   "name": "face-djambi-1-29-r1",
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-djambi-1-29-r1.glb?asset=05d129c20badeec2",
+   "sha256": "05d129c20badeec272ca7c5913658cea9ef24a2295f522cc642d647331d1fd09",
+   "bytes": 757128,
+   "triangles": 11460,
+   "primitives": 30,
+   "instance": {
+    "anchor": [
+     4.93810515329118,
+     52.36515100242788
+    ],
+    "northOffsetDegrees": 89.6233,
+    "mirror": false
+   },
+   "bounds": {
+    "min": [
+     -19.814,
+     0,
+     -10.2
+    ],
+    "max": [
+     19.291,
+     15.495,
+     0.675
+    ]
+   },
+   "height": 15.495,
+   "suppress": [
+    "NL.IMBAG.Pand.0363100012131961",
+    "NL.IMBAG.Pand.0363100012100535",
+    "NL.IMBAG.Pand.0363100012110582",
+    "NL.IMBAG.Pand.0363100012099261",
+    "NL.IMBAG.Pand.0363100012129720",
+    "NL.IMBAG.Pand.0363100012077761",
+    "NL.IMBAG.Pand.0363100012072833"
+   ],
+   "replaces": [
+    "ordinary-0363100012131961",
+    "ordinary-0363100012100535",
+    "ordinary-0363100012110582",
+    "ordinary-0363100012099261",
+    "ordinary-0363100012129720",
+    "ordinary-0363100012077761",
+    "ordinary-0363100012072833"
+   ],
+   "footprint": {
+    "type": "MultiPolygon",
+    "coordinates": [
+     [
+      [
+       [
+        4.9382467,
+        52.3653297
+       ],
+       [
+        4.9380999,
+        52.3653282
+       ],
+       [
+        4.9381014,
+        52.3652742
+       ],
+       [
+        4.9382482,
+        52.3652757
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9382482,
+        52.3652757
+       ],
+       [
+        4.9381014,
+        52.3652742
+       ],
+       [
+        4.9381027,
+        52.3652248
+       ],
+       [
+        4.9382495,
+        52.3652263
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9382495,
+        52.3652263
+       ],
+       [
+        4.9381027,
+        52.3652248
+       ],
+       [
+        4.9381041,
+        52.3651754
+       ],
+       [
+        4.9382509,
+        52.3651769
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9382509,
+        52.3651769
+       ],
+       [
+        4.9381041,
+        52.3651754
+       ],
+       [
+        4.9381054,
+        52.365126
+       ],
+       [
+        4.9382522,
+        52.3651275
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9382522,
+        52.3651275
+       ],
+       [
+        4.9381054,
+        52.365126
+       ],
+       [
+        4.9381068,
+        52.3650765
+       ],
+       [
+        4.9382536,
+        52.365078
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9382536,
+        52.365078
+       ],
+       [
+        4.9381068,
+        52.3650765
+       ],
+       [
+        4.9381081,
+        52.3650271
+       ],
+       [
+        4.9382549,
+        52.3650286
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9382549,
+        52.3650286
+       ],
+       [
+        4.9381081,
+        52.3650271
+       ],
+       [
+        4.9381094,
+        52.3649777
+       ],
+       [
+        4.9382562,
+        52.3649792
+       ]
+      ]
+     ]
+    ]
+   },
+   "pands": [
+    {
+     "recipeId": "djambi-131961",
+     "pandId": "0363100012131961",
+     "buildingId": "NL.IMBAG.Pand.0363100012131961",
+     "address": "Djambistraat 9",
+     "frontage": {
+      "x0": -19.712,
+      "x1": -13.712,
+      "widthM": 6
+     },
+     "bounds": {
+      "min": [
+       -19.814,
+       0,
+       -9.87
+      ],
+      "max": [
+       -13.708,
+       15.474,
+       0.675
+      ]
+     },
+     "triangles": 1703,
+     "ranges": [
+      {
+       "primitive": 4,
+       "firstTriangle": 0,
+       "triangleCount": 30
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 0,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 0,
+       "triangleCount": 244
+      },
+      {
+       "primitive": 21,
+       "firstTriangle": 0,
+       "triangleCount": 144
+      },
+      {
+       "primitive": 22,
+       "firstTriangle": 0,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 23,
+       "firstTriangle": 0,
+       "triangleCount": 8
+      },
+      {
+       "primitive": 24,
+       "firstTriangle": 0,
+       "triangleCount": 936
+      },
+      {
+       "primitive": 25,
+       "firstTriangle": 0,
+       "triangleCount": 44
+      },
+      {
+       "primitive": 26,
+       "firstTriangle": 0,
+       "triangleCount": 240
+      },
+      {
+       "primitive": 27,
+       "firstTriangle": 0,
+       "triangleCount": 10
+      },
+      {
+       "primitive": 28,
+       "firstTriangle": 0,
+       "triangleCount": 4
+      },
+      {
+       "primitive": 29,
+       "firstTriangle": 0,
+       "triangleCount": 17
+      }
+     ]
+    },
+    {
+     "recipeId": "djambi-100535",
+     "pandId": "0363100012100535",
+     "buildingId": "NL.IMBAG.Pand.0363100012100535",
+     "address": "Djambistraat 11",
+     "frontage": {
+      "x0": -13.712,
+      "x1": -8.213,
+      "widthM": 5.499
+     },
+     "bounds": {
+      "min": [
+       -13.813,
+       0,
+       -9.925
+      ],
+      "max": [
+       -8.209,
+       15.482,
+       0.616
+      ]
+     },
+     "triangles": 1592,
+     "ranges": [
+      {
+       "primitive": 5,
+       "firstTriangle": 0,
+       "triangleCount": 30
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 0,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 0,
+       "triangleCount": 185
+      },
+      {
+       "primitive": 21,
+       "firstTriangle": 144,
+       "triangleCount": 144
+      },
+      {
+       "primitive": 22,
+       "firstTriangle": 2,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 23,
+       "firstTriangle": 8,
+       "triangleCount": 8
+      },
+      {
+       "primitive": 24,
+       "firstTriangle": 936,
+       "triangleCount": 904
+      },
+      {
+       "primitive": 25,
+       "firstTriangle": 44,
+       "triangleCount": 44
+      },
+      {
+       "primitive": 26,
+       "firstTriangle": 240,
+       "triangleCount": 232
+      },
+      {
+       "primitive": 27,
+       "firstTriangle": 10,
+       "triangleCount": 4
+      },
+      {
+       "primitive": 28,
+       "firstTriangle": 4,
+       "triangleCount": 3
+      },
+      {
+       "primitive": 29,
+       "firstTriangle": 17,
+       "triangleCount": 12
+      }
+     ]
+    },
+    {
+     "recipeId": "djambi-110582",
+     "pandId": "0363100012110582",
+     "buildingId": "NL.IMBAG.Pand.0363100012110582",
+     "address": "Djambistraat 13",
+     "frontage": {
+      "x0": -8.213,
+      "x1": -2.713,
+      "widthM": 5.5
+     },
+     "bounds": {
+      "min": [
+       -8.314,
+       0,
+       -9.982
+      ],
+      "max": [
+       -2.709,
+       15.487,
+       0.561
+      ]
+     },
+     "triangles": 1656,
+     "ranges": [
+      {
+       "primitive": 3,
+       "firstTriangle": 0,
+       "triangleCount": 30
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 0,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 0,
+       "triangleCount": 248
+      },
+      {
+       "primitive": 21,
+       "firstTriangle": 288,
+       "triangleCount": 144
+      },
+      {
+       "primitive": 22,
+       "firstTriangle": 4,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 23,
+       "firstTriangle": 16,
+       "triangleCount": 8
+      },
+      {
+       "primitive": 24,
+       "firstTriangle": 1840,
+       "triangleCount": 904
+      },
+      {
+       "primitive": 25,
+       "firstTriangle": 88,
+       "triangleCount": 44
+      },
+      {
+       "primitive": 26,
+       "firstTriangle": 472,
+       "triangleCount": 232
+      },
+      {
+       "primitive": 27,
+       "firstTriangle": 14,
+       "triangleCount": 8
+      },
+      {
+       "primitive": 28,
+       "firstTriangle": 7,
+       "triangleCount": 4
+      },
+      {
+       "primitive": 29,
+       "firstTriangle": 29,
+       "triangleCount": 8
+      }
+     ]
+    },
+    {
+     "recipeId": "djambi-099261",
+     "pandId": "0363100012099261",
+     "buildingId": "NL.IMBAG.Pand.0363100012099261",
+     "address": "Djambistraat 15",
+     "frontage": {
+      "x0": -2.713,
+      "x1": 2.786,
+      "widthM": 5.499
+     },
+     "bounds": {
+      "min": [
+       -2.814,
+       0,
+       -10.037
+      ],
+      "max": [
+       2.79,
+       15.495,
+       0.504
+      ]
+     },
+     "triangles": 1584,
+     "ranges": [
+      {
+       "primitive": 2,
+       "firstTriangle": 0,
+       "triangleCount": 30
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 0,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 0,
+       "triangleCount": 176
+      },
+      {
+       "primitive": 21,
+       "firstTriangle": 432,
+       "triangleCount": 144
+      },
+      {
+       "primitive": 22,
+       "firstTriangle": 6,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 23,
+       "firstTriangle": 24,
+       "triangleCount": 8
+      },
+      {
+       "primitive": 24,
+       "firstTriangle": 2744,
+       "triangleCount": 904
+      },
+      {
+       "primitive": 25,
+       "firstTriangle": 132,
+       "triangleCount": 44
+      },
+      {
+       "primitive": 26,
+       "firstTriangle": 704,
+       "triangleCount": 232
+      },
+      {
+       "primitive": 27,
+       "firstTriangle": 22,
+       "triangleCount": 4
+      },
+      {
+       "primitive": 28,
+       "firstTriangle": 11,
+       "triangleCount": 5
+      },
+      {
+       "primitive": 29,
+       "firstTriangle": 37,
+       "triangleCount": 11
+      }
+     ]
+    },
+    {
+     "recipeId": "djambi-129720",
+     "pandId": "0363100012129720",
+     "buildingId": "NL.IMBAG.Pand.0363100012129720",
+     "address": "Djambistraat 17",
+     "frontage": {
+      "x0": 2.786,
+      "x1": 8.285,
+      "widthM": 5.499
+     },
+     "bounds": {
+      "min": [
+       2.685,
+       0,
+       -10.091
+      ],
+      "max": [
+       8.289,
+       15.492,
+       0.45
+      ]
+     },
+     "triangles": 1591,
+     "ranges": [
+      {
+       "primitive": 11,
+       "firstTriangle": 0,
+       "triangleCount": 30
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 0,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 0,
+       "triangleCount": 184
+      },
+      {
+       "primitive": 21,
+       "firstTriangle": 576,
+       "triangleCount": 144
+      },
+      {
+       "primitive": 22,
+       "firstTriangle": 8,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 23,
+       "firstTriangle": 32,
+       "triangleCount": 8
+      },
+      {
+       "primitive": 24,
+       "firstTriangle": 3648,
+       "triangleCount": 904
+      },
+      {
+       "primitive": 25,
+       "firstTriangle": 176,
+       "triangleCount": 44
+      },
+      {
+       "primitive": 26,
+       "firstTriangle": 936,
+       "triangleCount": 232
+      },
+      {
+       "primitive": 27,
+       "firstTriangle": 26,
+       "triangleCount": 7
+      },
+      {
+       "primitive": 28,
+       "firstTriangle": 16,
+       "triangleCount": 5
+      },
+      {
+       "primitive": 29,
+       "firstTriangle": 48,
+       "triangleCount": 7
+      }
+     ]
+    },
+    {
+     "recipeId": "djambi-077761",
+     "pandId": "0363100012077761",
+     "buildingId": "NL.IMBAG.Pand.0363100012077761",
+     "address": "Djambistraat 19",
+     "frontage": {
+      "x0": 8.284,
+      "x1": 13.785,
+      "widthM": 5.501
+     },
+     "bounds": {
+      "min": [
+       8.186,
+       0,
+       -10.146
+      ],
+      "max": [
+       13.791,
+       15.449,
+       0.497
+      ]
+     },
+     "triangles": 1639,
+     "ranges": [
+      {
+       "primitive": 8,
+       "firstTriangle": 0,
+       "triangleCount": 30
+      },
+      {
+       "primitive": 12,
+       "firstTriangle": 0,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 0,
+       "triangleCount": 233
+      },
+      {
+       "primitive": 21,
+       "firstTriangle": 720,
+       "triangleCount": 144
+      },
+      {
+       "primitive": 22,
+       "firstTriangle": 10,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 23,
+       "firstTriangle": 40,
+       "triangleCount": 8
+      },
+      {
+       "primitive": 24,
+       "firstTriangle": 4552,
+       "triangleCount": 904
+      },
+      {
+       "primitive": 25,
+       "firstTriangle": 220,
+       "triangleCount": 44
+      },
+      {
+       "primitive": 26,
+       "firstTriangle": 1168,
+       "triangleCount": 232
+      },
+      {
+       "primitive": 27,
+       "firstTriangle": 33,
+       "triangleCount": 6
+      },
+      {
+       "primitive": 28,
+       "firstTriangle": 21,
+       "triangleCount": 4
+      },
+      {
+       "primitive": 29,
+       "firstTriangle": 55,
+       "triangleCount": 8
+      }
+     ]
+    },
+    {
+     "recipeId": "djambi-072833",
+     "pandId": "0363100012072833",
+     "buildingId": "NL.IMBAG.Pand.0363100012072833",
+     "address": "Djambistraat 21",
+     "frontage": {
+      "x0": 13.782,
+      "x1": 19.285,
+      "widthM": 5.503
+     },
+     "bounds": {
+      "min": [
+       13.684,
+       0,
+       -10.2
+      ],
+      "max": [
+       19.291,
+       15.43,
+       0.499
+      ]
+     },
+     "triangles": 1695,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 0,
+       "triangleCount": 30
+      },
+      {
+       "primitive": 1,
+       "firstTriangle": 0,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 0,
+       "triangleCount": 267
+      },
+      {
+       "primitive": 21,
+       "firstTriangle": 864,
+       "triangleCount": 144
+      },
+      {
+       "primitive": 22,
+       "firstTriangle": 12,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 23,
+       "firstTriangle": 48,
+       "triangleCount": 8
+      },
+      {
+       "primitive": 24,
+       "firstTriangle": 5456,
+       "triangleCount": 904
+      },
+      {
+       "primitive": 25,
+       "firstTriangle": 264,
+       "triangleCount": 44
+      },
+      {
+       "primitive": 26,
+       "firstTriangle": 1400,
+       "triangleCount": 232
+      },
+      {
+       "primitive": 27,
+       "firstTriangle": 39,
+       "triangleCount": 10
+      },
+      {
+       "primitive": 28,
+       "firstTriangle": 25,
+       "triangleCount": 6
+      },
+      {
+       "primitive": 29,
+       "firstTriangle": 63,
+       "triangleCount": 24
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "chunk-face-java-93-149-r1",
+   "category": "street-survey",
+   "name": "face-java-93-149-r1",
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-java-93-149-r1.glb?asset=13fa606a1247de73",
+   "sha256": "13fa606a1247de7384b3ed68b56bb56b3b1242f262c4aaa2098d2424036d3b72",
+   "bytes": 965204,
+   "triangles": 14364,
+   "primitives": 24,
+   "instance": {
+    "anchor": [
+     4.936342259808365,
+     52.3638603983182
+    ],
+    "northOffsetDegrees": 359.0349,
+    "mirror": false
+   },
+   "bounds": {
+    "min": [
+     -15.025,
+     0,
+     -22.681
+    ],
+    "max": [
+     15.025,
+     14.671,
+     0.646
+    ]
+   },
+   "height": 14.671,
+   "suppress": [
+    "NL.IMBAG.Pand.0363100012120527",
+    "NL.IMBAG.Pand.0363100012081977",
+    "NL.IMBAG.Pand.0363100012133860",
+    "NL.IMBAG.Pand.0363100012098497",
+    "NL.IMBAG.Pand.0363100012126147"
+   ],
+   "replaces": [
+    "ordinary-0363100012120527",
+    "ordinary-0363100012081977",
+    "ordinary-0363100012133860",
+    "ordinary-0363100012098497",
+    "ordinary-0363100012126147"
+   ],
+   "footprint": {
+    "type": "MultiPolygon",
+    "coordinates": [
+     [
+      [
+       [
+        4.9362081,
+        52.3639244
+       ],
+       [
+        4.9361668,
+        52.363924
+       ],
+       [
+        4.9361656,
+        52.3639673
+       ],
+       [
+        4.9361187,
+        52.3639668
+       ],
+       [
+        4.9361217,
+        52.3638581
+       ],
+       [
+        4.9362099,
+        52.363859
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9362926,
+        52.3640634
+       ],
+       [
+        4.9362043,
+        52.3640625
+       ],
+       [
+        4.9362099,
+        52.363859
+       ],
+       [
+        4.9362981,
+        52.3638599
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9363808,
+        52.3640643
+       ],
+       [
+        4.9362926,
+        52.3640634
+       ],
+       [
+        4.9362981,
+        52.3638599
+       ],
+       [
+        4.9363864,
+        52.3638609
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.936469,
+        52.3640652
+       ],
+       [
+        4.9363808,
+        52.3640643
+       ],
+       [
+        4.9363864,
+        52.3638609
+       ],
+       [
+        4.9364746,
+        52.3638618
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9364716,
+        52.3639704
+       ],
+       [
+        4.9364746,
+        52.3638618
+       ],
+       [
+        4.9365628,
+        52.3638627
+       ],
+       [
+        4.936561,
+        52.363928
+       ],
+       [
+        4.9365196,
+        52.3639276
+       ],
+       [
+        4.9365184,
+        52.3639709
+       ]
+      ]
+     ]
+    ]
+   },
+   "pands": [
+    {
+     "recipeId": "java-120527",
+     "pandId": "0363100012120527",
+     "buildingId": "NL.IMBAG.Pand.0363100012120527",
+     "address": "Javastraat 101",
+     "frontage": {
+      "x0": -15.025,
+      "x1": -9.014,
+      "widthM": 6.01
+     },
+     "bounds": {
+      "min": [
+       -15.025,
+       0,
+       -12.133
+      ],
+      "max": [
+       -9.014,
+       14.671,
+       0.645
+      ]
+     },
+     "triangles": 2935,
+     "ranges": [
+      {
+       "primitive": 2,
+       "firstTriangle": 0,
+       "triangleCount": 192
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 0,
+       "triangleCount": 400
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 0,
+       "triangleCount": 216
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 0,
+       "triangleCount": 156
+      },
+      {
+       "primitive": 12,
+       "firstTriangle": 0,
+       "triangleCount": 1052
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 0,
+       "triangleCount": 432
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 0,
+       "triangleCount": 228
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 21,
+       "firstTriangle": 0,
+       "triangleCount": 216
+      },
+      {
+       "primitive": 22,
+       "firstTriangle": 0,
+       "triangleCount": 10
+      },
+      {
+       "primitive": 23,
+       "firstTriangle": 0,
+       "triangleCount": 9
+      }
+     ]
+    },
+    {
+     "recipeId": "java-081977",
+     "pandId": "0363100012081977",
+     "buildingId": "NL.IMBAG.Pand.0363100012081977",
+     "address": "Javastraat 103",
+     "frontage": {
+      "x0": -9.014,
+      "x1": -3.005,
+      "widthM": 6.009
+     },
+     "bounds": {
+      "min": [
+       -9.016,
+       0,
+       -22.68
+      ],
+      "max": [
+       -3.004,
+       14.452,
+       0.645
+      ]
+     },
+     "triangles": 2823,
+     "ranges": [
+      {
+       "primitive": 4,
+       "firstTriangle": 0,
+       "triangleCount": 192
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 0,
+       "triangleCount": 398
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 216,
+       "triangleCount": 216
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 156,
+       "triangleCount": 156
+      },
+      {
+       "primitive": 12,
+       "firstTriangle": 1052,
+       "triangleCount": 980
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 432,
+       "triangleCount": 432
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 12,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 0,
+       "triangleCount": 204
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 12,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 21,
+       "firstTriangle": 216,
+       "triangleCount": 198
+      },
+      {
+       "primitive": 22,
+       "firstTriangle": 10,
+       "triangleCount": 10
+      },
+      {
+       "primitive": 23,
+       "firstTriangle": 9,
+       "triangleCount": 13
+      }
+     ]
+    },
+    {
+     "recipeId": "java-133860",
+     "pandId": "0363100012133860",
+     "buildingId": "NL.IMBAG.Pand.0363100012133860",
+     "address": "Javastraat 105",
+     "frontage": {
+      "x0": -3.005,
+      "x1": 3.004,
+      "widthM": 6.009
+     },
+     "bounds": {
+      "min": [
+       -3.005,
+       0,
+       -22.681
+      ],
+      "max": [
+       3.005,
+       14.527,
+       0.645
+      ]
+     },
+     "triangles": 2845,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 0,
+       "triangleCount": 192
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 0,
+       "triangleCount": 417
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 432,
+       "triangleCount": 216
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 312,
+       "triangleCount": 156
+      },
+      {
+       "primitive": 12,
+       "firstTriangle": 2032,
+       "triangleCount": 980
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 864,
+       "triangleCount": 432
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 24,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 0,
+       "triangleCount": 204
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 24,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 21,
+       "firstTriangle": 414,
+       "triangleCount": 198
+      },
+      {
+       "primitive": 22,
+       "firstTriangle": 20,
+       "triangleCount": 11
+      },
+      {
+       "primitive": 23,
+       "firstTriangle": 22,
+       "triangleCount": 15
+      }
+     ]
+    },
+    {
+     "recipeId": "java-098497",
+     "pandId": "0363100012098497",
+     "buildingId": "NL.IMBAG.Pand.0363100012098497",
+     "address": "Javastraat 107",
+     "frontage": {
+      "x0": 3.004,
+      "x1": 9.015,
+      "widthM": 6.01
+     },
+     "bounds": {
+      "min": [
+       3.004,
+       0,
+       -22.681
+      ],
+      "max": [
+       9.015,
+       14.522,
+       0.645
+      ]
+     },
+     "triangles": 2825,
+     "ranges": [
+      {
+       "primitive": 3,
+       "firstTriangle": 0,
+       "triangleCount": 192
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 0,
+       "triangleCount": 395
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 648,
+       "triangleCount": 216
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 468,
+       "triangleCount": 156
+      },
+      {
+       "primitive": 12,
+       "firstTriangle": 3012,
+       "triangleCount": 980
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 1296,
+       "triangleCount": 432
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 36,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 0,
+       "triangleCount": 204
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 36,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 21,
+       "firstTriangle": 612,
+       "triangleCount": 198
+      },
+      {
+       "primitive": 22,
+       "firstTriangle": 31,
+       "triangleCount": 14
+      },
+      {
+       "primitive": 23,
+       "firstTriangle": 37,
+       "triangleCount": 14
+      }
+     ]
+    },
+    {
+     "recipeId": "java-126147",
+     "pandId": "0363100012126147",
+     "buildingId": "NL.IMBAG.Pand.0363100012126147",
+     "address": "Javastraat 109",
+     "frontage": {
+      "x0": 9.015,
+      "x1": 15.025,
+      "widthM": 6.01
+     },
+     "bounds": {
+      "min": [
+       9.015,
+       0,
+       -12.131
+      ],
+      "max": [
+       15.025,
+       14.402,
+       0.646
+      ]
+     },
+     "triangles": 2936,
+     "ranges": [
+      {
+       "primitive": 1,
+       "firstTriangle": 0,
+       "triangleCount": 192
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 0,
+       "triangleCount": 400
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 864,
+       "triangleCount": 240
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 624,
+       "triangleCount": 156
+      },
+      {
+       "primitive": 12,
+       "firstTriangle": 3992,
+       "triangleCount": 1052
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 1728,
+       "triangleCount": 432
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 48,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 0,
+       "triangleCount": 204
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 48,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 21,
+       "firstTriangle": 810,
+       "triangleCount": 216
+      },
+      {
+       "primitive": 22,
+       "firstTriangle": 45,
+       "triangleCount": 10
+      },
+      {
+       "primitive": 23,
+       "firstTriangle": 51,
+       "triangleCount": 10
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "chunk-face-java-93-149-r2",
+   "category": "street-survey",
+   "name": "face-java-93-149-r2",
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-java-93-149-r2.glb?asset=77556a0624b5237e",
+   "sha256": "77556a0624b5237eb77cc97fbb2d7ad7fecc394986406f62877fc9236204535c",
+   "bytes": 587252,
+   "triangles": 8665,
+   "primitives": 18,
+   "instance": {
+    "anchor": [
+     4.936783495543559,
+     52.36386493677706
+    ],
+    "northOffsetDegrees": 359.0364,
+    "mirror": false
+   },
+   "bounds": {
+    "min": [
+     -9.025,
+     0,
+     -12.132
+    ],
+    "max": [
+     9.06,
+     14.523,
+     0.645
+    ]
+   },
+   "height": 14.523,
+   "suppress": [
+    "NL.IMBAG.Pand.0363100012150083",
+    "NL.IMBAG.Pand.0363100012103232",
+    "NL.IMBAG.Pand.0363100012141749"
+   ],
+   "replaces": [
+    "ordinary-0363100012150083",
+    "ordinary-0363100012103232",
+    "ordinary-0363100012141749"
+   ],
+   "footprint": {
+    "type": "MultiPolygon",
+    "coordinates": [
+     [
+      [
+       [
+        4.9367375,
+        52.3639298
+       ],
+       [
+        4.9366961,
+        52.3639294
+       ],
+       [
+        4.9366949,
+        52.3639727
+       ],
+       [
+        4.9366481,
+        52.3639722
+       ],
+       [
+        4.936651,
+        52.3638636
+       ],
+       [
+        4.9367393,
+        52.3638645
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9368245,
+        52.363974
+       ],
+       [
+        4.9367777,
+        52.3639736
+       ],
+       [
+        4.9367789,
+        52.3639302
+       ],
+       [
+        4.9367375,
+        52.3639298
+       ],
+       [
+        4.9367393,
+        52.3638645
+       ],
+       [
+        4.9368275,
+        52.3638654
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9369147,
+        52.3639316
+       ],
+       [
+        4.9368725,
+        52.3639312
+       ],
+       [
+        4.9368713,
+        52.3639745
+       ],
+       [
+        4.9368245,
+        52.363974
+       ],
+       [
+        4.9368275,
+        52.3638654
+       ],
+       [
+        4.9369165,
+        52.3638663
+       ]
+      ]
+     ]
+    ]
+   },
+   "pands": [
+    {
+     "recipeId": "java-150083",
+     "pandId": "0363100012150083",
+     "buildingId": "NL.IMBAG.Pand.0363100012150083",
+     "address": "Javastraat 113",
+     "frontage": {
+      "x0": -9.024,
+      "x1": -3.013,
+      "widthM": 6.011
+     },
+     "bounds": {
+      "min": [
+       -9.025,
+       0,
+       -12.132
+      ],
+      "max": [
+       -3.013,
+       14.523,
+       0.645
+      ]
+     },
+     "triangles": 2908,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 0,
+       "triangleCount": 192
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 0,
+       "triangleCount": 397
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 0,
+       "triangleCount": 216
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 0,
+       "triangleCount": 156
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 0,
+       "triangleCount": 1052
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 0,
+       "triangleCount": 432
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 0,
+       "triangleCount": 204
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 0,
+       "triangleCount": 216
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 0,
+       "triangleCount": 9
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 0,
+       "triangleCount": 10
+      }
+     ]
+    },
+    {
+     "recipeId": "java-103232",
+     "pandId": "0363100012103232",
+     "buildingId": "NL.IMBAG.Pand.0363100012103232",
+     "address": "Javastraat 115",
+     "frontage": {
+      "x0": -3.013,
+      "x1": 2.995,
+      "widthM": 6.008
+     },
+     "bounds": {
+      "min": [
+       -3.014,
+       0,
+       -12.131
+      ],
+      "max": [
+       2.996,
+       14.43,
+       0.645
+      ]
+     },
+     "triangles": 2862,
+     "ranges": [
+      {
+       "primitive": 1,
+       "firstTriangle": 0,
+       "triangleCount": 192
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 0,
+       "triangleCount": 388
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 216,
+       "triangleCount": 216
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 156,
+       "triangleCount": 156
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 1052,
+       "triangleCount": 1020
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 432,
+       "triangleCount": 432
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 12,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 12,
+       "firstTriangle": 0,
+       "triangleCount": 204
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 12,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 216,
+       "triangleCount": 208
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 9,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 10,
+       "triangleCount": 10
+      }
+     ]
+    },
+    {
+     "recipeId": "java-141749",
+     "pandId": "0363100012141749",
+     "buildingId": "NL.IMBAG.Pand.0363100012141749",
+     "address": "Javastraat 117",
+     "frontage": {
+      "x0": 2.995,
+      "x1": 9.06,
+      "widthM": 6.064
+     },
+     "bounds": {
+      "min": [
+       2.995,
+       0,
+       -12.131
+      ],
+      "max": [
+       9.06,
+       14.385,
+       0.645
+      ]
+     },
+     "triangles": 2895,
+     "ranges": [
+      {
+       "primitive": 2,
+       "firstTriangle": 0,
+       "triangleCount": 192
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 0,
+       "triangleCount": 399
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 432,
+       "triangleCount": 240
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 312,
+       "triangleCount": 156
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 2072,
+       "triangleCount": 1020
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 864,
+       "triangleCount": 432
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 24,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 0,
+       "triangleCount": 204
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 24,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 424,
+       "triangleCount": 208
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 21,
+       "triangleCount": 10
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 20,
+       "triangleCount": 10
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "chunk-face-lampong-2-20-r1",
+   "category": "street-survey",
+   "name": "face-lampong-2-20-r1",
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-lampong-2-20-r1.glb?asset=4f642af618f05b6f",
+   "sha256": "4f642af618f05b6f3bbb2f7adaa87fb461d31b308c9585493cc4df6e9ac1df0b",
+   "bytes": 454144,
+   "triangles": 6767,
+   "primitives": 11,
+   "instance": {
+    "anchor": [
+     4.937043664446501,
+     52.36490244616132
+    ],
+    "northOffsetDegrees": 178.9739,
+    "mirror": false
+   },
+   "bounds": {
+    "min": [
+     -15.27,
+     0,
+     -9.941
+    ],
+    "max": [
+     15.63,
+     15.532,
+     0.401
+    ]
+   },
+   "height": 15.532,
+   "suppress": [
+    "NL.IMBAG.Pand.0363100012140561",
+    "NL.IMBAG.Pand.0363100012150248",
+    "NL.IMBAG.Pand.0363100012085260",
+    "NL.IMBAG.Pand.0363100012064007",
+    "NL.IMBAG.Pand.0363100012112381"
+   ],
+   "replaces": [
+    "ordinary-0363100012140561",
+    "ordinary-0363100012150248",
+    "ordinary-0363100012085260",
+    "ordinary-0363100012064007",
+    "ordinary-0363100012112381"
+   ],
+   "footprint": {
+    "type": "MultiPolygon",
+    "coordinates": [
+     [
+      [
+       [
+        4.9372678,
+        52.3649049
+       ],
+       [
+        4.9371797,
+        52.3649039
+       ],
+       [
+        4.9371823,
+        52.364815
+       ],
+       [
+        4.9372704,
+        52.3648159
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9371797,
+        52.3649039
+       ],
+       [
+        4.9370917,
+        52.364903
+       ],
+       [
+        4.9370943,
+        52.364814
+       ],
+       [
+        4.9371823,
+        52.364815
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9370917,
+        52.364903
+       ],
+       [
+        4.9369992,
+        52.364902
+       ],
+       [
+        4.9370016,
+        52.3648211
+       ],
+       [
+        4.937094,
+        52.3648221
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9369992,
+        52.364902
+       ],
+       [
+        4.9369067,
+        52.364901
+       ],
+       [
+        4.9369088,
+        52.3648309
+       ],
+       [
+        4.9370012,
+        52.3648319
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9369067,
+        52.364901
+       ],
+       [
+        4.9368142,
+        52.3648999
+       ],
+       [
+        4.9368163,
+        52.3648299
+       ],
+       [
+        4.9369088,
+        52.3648309
+       ]
+      ]
+     ]
+    ]
+   },
+   "pands": [
+    {
+     "recipeId": "lampong-140561",
+     "pandId": "0363100012140561",
+     "buildingId": "NL.IMBAG.Pand.0363100012140561",
+     "address": "Lampongstraat 10",
+     "frontage": {
+      "x0": -15.269,
+      "x1": -9.27,
+      "widthM": 5.999
+     },
+     "bounds": {
+      "min": [
+       -15.27,
+       0,
+       -9.941
+      ],
+      "max": [
+       -9.27,
+       15.532,
+       0.4
+      ]
+     },
+     "triangles": 1360,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 0,
+       "triangleCount": 44
+      },
+      {
+       "primitive": 1,
+       "firstTriangle": 0,
+       "triangleCount": 96
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 0,
+       "triangleCount": 264
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 0,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 0,
+       "triangleCount": 692
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 0,
+       "triangleCount": 8
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 0,
+       "triangleCount": 216
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 0,
+       "triangleCount": 4
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 0,
+       "triangleCount": 5
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 0,
+       "triangleCount": 17
+      }
+     ]
+    },
+    {
+     "recipeId": "lampong-150248",
+     "pandId": "0363100012150248",
+     "buildingId": "NL.IMBAG.Pand.0363100012150248",
+     "address": "Lampongstraat 8",
+     "frontage": {
+      "x0": -9.27,
+      "x1": -3.27,
+      "widthM": 6
+     },
+     "bounds": {
+      "min": [
+       -9.271,
+       0,
+       -9.941
+      ],
+      "max": [
+       -3.27,
+       15.509,
+       0.4
+      ]
+     },
+     "triangles": 1354,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 44,
+       "triangleCount": 38
+      },
+      {
+       "primitive": 1,
+       "firstTriangle": 96,
+       "triangleCount": 96
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 264,
+       "triangleCount": 264
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 2,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 692,
+       "triangleCount": 692
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 8,
+       "triangleCount": 8
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 12,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 216,
+       "triangleCount": 216
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 4,
+       "triangleCount": 4
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 5,
+       "triangleCount": 3
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 17,
+       "triangleCount": 19
+      }
+     ]
+    },
+    {
+     "recipeId": "lampong-085260",
+     "pandId": "0363100012085260",
+     "buildingId": "NL.IMBAG.Pand.0363100012085260",
+     "address": "Lampongstraat 6",
+     "frontage": {
+      "x0": -3.27,
+      "x1": 3.029,
+      "widthM": 6.298
+     },
+     "bounds": {
+      "min": [
+       -3.27,
+       0,
+       -9.041
+      ],
+      "max": [
+       3.029,
+       15.284,
+       0.4
+      ]
+     },
+     "triangles": 1349,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 82,
+       "triangleCount": 35
+      },
+      {
+       "primitive": 1,
+       "firstTriangle": 192,
+       "triangleCount": 96
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 528,
+       "triangleCount": 264
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 4,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 1384,
+       "triangleCount": 692
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 16,
+       "triangleCount": 8
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 24,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 432,
+       "triangleCount": 216
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 8,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 36,
+       "triangleCount": 22
+      }
+     ]
+    },
+    {
+     "recipeId": "lampong-064007",
+     "pandId": "0363100012064007",
+     "buildingId": "NL.IMBAG.Pand.0363100012064007",
+     "address": "Lampongstraat 4",
+     "frontage": {
+      "x0": 3.029,
+      "x1": 9.33,
+      "widthM": 6.301
+     },
+     "bounds": {
+      "min": [
+       3.029,
+       0,
+       -7.84
+      ],
+      "max": [
+       9.33,
+       14.931,
+       0.401
+      ]
+     },
+     "triangles": 1346,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 117,
+       "triangleCount": 28
+      },
+      {
+       "primitive": 1,
+       "firstTriangle": 288,
+       "triangleCount": 96
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 792,
+       "triangleCount": 264
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 6,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 2076,
+       "triangleCount": 692
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 24,
+       "triangleCount": 8
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 36,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 648,
+       "triangleCount": 216
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 10,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 8,
+       "triangleCount": 6
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 58,
+       "triangleCount": 20
+      }
+     ]
+    },
+    {
+     "recipeId": "lampong-112381",
+     "pandId": "0363100012112381",
+     "buildingId": "NL.IMBAG.Pand.0363100012112381",
+     "address": "Lampongstraat 2",
+     "frontage": {
+      "x0": 9.33,
+      "x1": 15.63,
+      "widthM": 6.299
+     },
+     "bounds": {
+      "min": [
+       9.329,
+       0,
+       -7.84
+      ],
+      "max": [
+       15.63,
+       14.98,
+       0.401
+      ]
+     },
+     "triangles": 1358,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 145,
+       "triangleCount": 44
+      },
+      {
+       "primitive": 1,
+       "firstTriangle": 384,
+       "triangleCount": 96
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 1056,
+       "triangleCount": 264
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 8,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 2768,
+       "triangleCount": 692
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 32,
+       "triangleCount": 8
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 48,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 864,
+       "triangleCount": 216
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 12,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 14,
+       "triangleCount": 6
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 78,
+       "triangleCount": 16
+      }
+     ]
+    }
+   ]
   }
  ]
 }

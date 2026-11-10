@@ -40,6 +40,14 @@
     "brick": "#807c6d"
    },
    "reason": "Lampongstraat 2 (strip 2025-09-26, span 1300-1540): the panorama has a blue white-balance cast (downpipe reads #d1e6fb, a white pipe); correcting the pipe to neutral moves the brick from the raw #7c8183 to about #807c6d, a warm grey brick (strip verdict 2026-11-10)"
+  },
+  {
+   "pandId": "0363100012103232",
+   "type": "indisch-1912-java-mansard-arches",
+   "palette": {
+    "brick": "#72604f"
+   },
+   "reason": "Javastraat 115 (strip 2023-01-02): its per-pand brick #89766f rendered 28 levels light against photo #6d5d52; set to #72604f, the median of 101-109 (round-4 verdict)"
   }
  ]
 }

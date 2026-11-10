@@ -1,12 +1,12 @@
 {
  "buurt": "timorpleinbuurt-noord",
  "library": "indische-buurt",
- "generatedAt": "2026-11-10T01:59:02.371Z",
- "seconds": 7.58,
+ "generatedAt": "2026-11-10T02:11:47.638Z",
+ "seconds": 7.39,
  "totals": {
   "faces": 26,
   "pands": 266,
-  "placed": 33
+  "placed": 29
  },
  "faces": [
   {
@@ -281,7 +281,7 @@
      "triangles": 11460
     }
    ],
-   "seconds": 11.33,
+   "seconds": 11.17,
    "byType": {
     "indisch-1913-arched-pair-dormer": 7
    },
@@ -352,14 +352,12 @@
    "face": "java-93-149",
    "street": "Javastraat",
    "pands": 15,
-   "placed": 12,
-   "held": 3,
+   "placed": 8,
+   "held": 7,
    "runs": [
     {
      "face": "java-93-149-r1",
      "pands": [
-      "0363100012132949",
-      "0363100012138717",
       "0363100012120527",
       "0363100012081977",
       "0363100012133860",
@@ -367,32 +365,30 @@
       "0363100012126147"
      ],
      "passed": true,
-     "triangles": 20165
+     "triangles": 14364
     },
     {
      "face": "java-93-149-r2",
      "pands": [
       "0363100012150083",
       "0363100012103232",
-      "0363100012141749",
-      "0363100012085970",
-      "0363100012110585"
+      "0363100012141749"
      ],
      "passed": true,
-     "triangles": 14508
+     "triangles": 8665
     }
    ],
-   "seconds": 30.15,
+   "seconds": 23.1,
    "byType": {
-    "indisch-1912-java-mansard-arches": 12
+    "indisch-1912-java-mansard-arches": 8
    },
    "installed": 0,
    "holds": {
     "evidence": 0,
     "match": 2,
-    "likeness": 1,
-    "run": 0,
-    "review": 0
+    "likeness": 0,
+    "run": 1,
+    "review": 4
    }
   },
   {
@@ -427,7 +423,7 @@
      "triangles": 6767
     }
    ],
-   "seconds": 7.58,
+   "seconds": 7.39,
    "byType": {
     "indisch-1914-red-sash-pairs": 5
    },

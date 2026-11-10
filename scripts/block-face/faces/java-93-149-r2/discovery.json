@@ -4,9 +4,7 @@
  "members": [
   "0363100012150083",
   "0363100012103232",
-  "0363100012141749",
-  "0363100012085970",
-  "0363100012110585"
+  "0363100012141749"
  ],
  "ends": [
   {
@@ -15,7 +13,7 @@
   },
   {
    "side": "right",
-   "reason": "trimmed at 0363100012110585 (face continues: 083668 073510 116812 129780 083049 090058 072685 126924 131991 095988 132961 128926 083683 083102)"
+   "reason": "run of java-93-149: 085970 held (auto-place.json)"
   }
  ],
  "rejected": [
@@ -2246,26 +2244,6 @@
    "roofMaxM": 14.45,
    "storeys3dbag": 5,
    "builtYear": 1912,
-   "uncertainty": []
-  },
-  {
-   "pandId": "0363100012085970",
-   "alongM": 81.71,
-   "widthM": 5.81,
-   "eavesM": 12.39,
-   "roofMaxM": 14.84,
-   "storeys3dbag": 5,
-   "builtYear": 1913,
-   "uncertainty": []
-  },
-  {
-   "pandId": "0363100012110585",
-   "alongM": 87.52,
-   "widthM": 5.81,
-   "eavesM": 12.17,
-   "roofMaxM": 15.31,
-   "storeys3dbag": 5,
-   "builtYear": 1913,
    "uncertainty": []
   }
  ],

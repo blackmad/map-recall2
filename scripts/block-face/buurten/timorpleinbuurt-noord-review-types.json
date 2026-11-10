@@ -137,6 +137,18 @@
    "type": "indisch-1914-red-sash-pairs",
    "mirror": false,
    "reason": "Borneostraat 17: narrow pair and door on the RIGHT (round-3 verdict; the gable stands on the 17|19 wall)"
+  },
+  {
+   "pandId": "0363100012085970",
+   "type": "indisch-1912-java-mansard-arches",
+   "mirror": false,
+   "reason": "Javastraat 119: [wide window][balcony][narrow pair] in the photo (round-4 verdict)"
+  },
+  {
+   "pandId": "0363100012110585",
+   "type": "indisch-1912-java-mansard-arches",
+   "mirror": true,
+   "reason": "Javastraat 121: [narrow pair][balcony][wide window] in the photo (round-4 verdict)"
   }
  ]
 }
