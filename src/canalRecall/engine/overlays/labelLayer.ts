@@ -529,7 +529,7 @@ export class LabelLayer {
     if (this.calm) {
       this.placed = calmLabels(this.placed, {
         width: vp.width, height: vp.height,
-        depthOf: l => { const at = original.get(l.id)?.at; return at ? project(at).depth : null; },
+        distanceOf: l => { const at = original.get(l.id)?.at, t = frame.target; return at && t ? Math.hypot(at[0] - t[0], at[1] - t[1]) : null; },
         isLandmark: l => this.aerialPoiIds.has(l.id),
         isGamePoint: l => (original.get(l.id)?.priority ?? 0) >= 1e6,
       });

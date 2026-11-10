@@ -6,7 +6,8 @@
 //  - at most CALM_POI_MAX POI labels on screen, the ones nearest the corridor first (a screen-space proxy: the chase
 //    camera looks along the rider's street, so the corridor is the centre column and the lower half);
 //  - none in the top third of the frame (they sit on the far skyline);
-//  - a shop or venue name only within CALM_SHOP_M of the eye; a signature landmark (`landmark`) keeps its long reach.
+//  - a shop or venue name only within CALM_SHOP_M (ground metres) of the rider, i.e. the camera target. Not eye depth: the chase camera sits 250-350 m from its target
+//    (zoom 17.5, pitch 60), so every point is deeper than 150 m and an eye-depth rule removed every shop (the l3 zero-label run, 2026-11-10); a signature landmark (`landmark`) keeps its long reach.
 
 import type { PlacedLabel } from './labels';
 
@@ -17,8 +18,8 @@ export const CALM_TOP_SHARE = 1 / 3;
 export interface CalmLabelInput {
   width: number;
   height: number;
-  /** Eye-space distance to the label's anchor, metres; null when unknown (kept). */
-  depthOf: (label: PlacedLabel) => number | null;
+  /** Ground distance from the rider (camera target) to the label's anchor, metres; null when unknown (kept). */
+  distanceOf: (label: PlacedLabel) => number | null;
   /** Signature landmarks (reachable from far away). */
   isLandmark: (label: PlacedLabel) => boolean;
   /** The game's own point labels (the answered street, ferry landings): never thinned. */
@@ -39,8 +40,8 @@ export function calmLabels(placed: readonly PlacedLabel[], input: CalmLabelInput
   for (const l of placed) {
     if (l.kind !== 'poi' || l.x === undefined || l.y === undefined || input.isGamePoint?.(l)) { keep.add(l); continue; }
     if (l.y < input.height * CALM_TOP_SHARE) continue;
-    const depth = input.depthOf(l);
-    if (depth !== null && depth > shopM && !input.isLandmark(l)) continue;
+    const dist = input.distanceOf(l);
+    if (dist !== null && dist > shopM && !input.isLandmark(l)) continue;
     pois.push(l);
   }
   pois.sort((a, b) => corridorDistance(a.x!, a.y!, input.width, input.height) - corridorDistance(b.x!, b.y!, input.width, input.height) || (a.id < b.id ? -1 : 1));
