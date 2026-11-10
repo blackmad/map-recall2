@@ -1,11 +1,10 @@
 // Named land-mask regressions (feedback 2026-11-09, desktop Free Ride): water the mask draws over land that exists.
 //   - Gevlebrug / Karlskrona-eiland (Houthaven): the basin the OSM/BGT snapshot still shows as water is filled land
 //     (AHN dtm_05m +1.0..+1.6 m NAP, orthophoto 2025); the road must not run over open water for most of its length.
-//   - Haparandadam: BAG pand 0363100012240915 (909 m2, 1966) stood entirely in the water mask ("floating on water");
-//     it sits on a platform at the dam, so its footprint is land (scripts/land-mask/land-patches.json).
+//   - Haparandadam: BAG pand 0363100012240915 is a moored houseboat (OSM w96706553): it stays on water (no land patch).
 //
 //   npx tsx scripts/land-mask/check-land-mask.ts [--water-dir=public/data/extracts/amsterdam/elevation-v1] [--expect=fixed|unfixed]
-// Default expectation is `fixed`; `--expect=unfixed` documents the failing state of the published extract (exit 0 when they fail).
+// Default expectation is `fixed`; `--expect=unfixed` documents the failing state of the published extract (exit 0 when any pin fails).
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { cellKey, lngLatToLocal, type ElevationIndex, type WaterCell } from '../../src/canalRecall/elevation/elevationData.ts';
@@ -56,14 +55,14 @@ for (const [name, lng, lat] of [['Houthaven filled basin W (Libau-eiland)', 4.88
   }
 }
 
-// Haparandadam pand on the dam: centroid and the vertices pulled 20 % in.
+// Haparandadam pand 0363100012240915 (909 m2, 1966) is OSM way 96706553, tagged as a houseboat: a moored vessel that really floats.
+// The mask must leave it on water (houseboat-land regression, ownGround.test.ts); the user's "building floating on water" is correct.
 {
-  const ring: [number, number][] = JSON.parse(readFileSync('scripts/land-mask/land-patches.json', 'utf8')).patches.find((p: { id: string }) => p.id === 'NL.IMBAG.Pand.0363100012240915').ring;
+  const ring: [number, number][] = [[4.88044, 52.396988], [4.879924, 52.396721], [4.880112, 52.396585], [4.880628, 52.396853]];
   const cx = ring.reduce((s, p) => s + p[0], 0) / ring.length, cy = ring.reduce((s, p) => s + p[1], 0) / ring.length;
-  const samples = [[cx, cy], ...ring.map(p => [p[0] + (cx - p[0]) * 0.2, p[1] + (cy - p[1]) * 0.2])];
-  const wet = samples.filter(([x, y]) => isWater(x, y)).length;
-  console.log(`  Haparandadam pand samples over water: ${wet}/${samples.length}`);
-  expect(wet === 0, 'Haparandadam pand 0240915 stands on land, not on open water');
+  const wet = [[cx, cy], ...ring.map(p => [p[0] + (cx - p[0]) * 0.2, p[1] + (cy - p[1]) * 0.2])].filter(([x, y]) => isWater(x, y)).length;
+  console.log(`  Haparandadam pand samples over water: ${wet}/5`);
+  expect(wet === 5, 'Haparandadam pand (houseboat w96706553) stays on water');
 }
 
 if (expectFixed ? failures.length : !failures.length) { console.error(expectFixed ? `${failures.length} land-mask pin(s) failed` : 'expected the unfixed extract to fail'); process.exit(1); }

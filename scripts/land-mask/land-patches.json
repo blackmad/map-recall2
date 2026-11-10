@@ -2,34 +2,6 @@
  "about": "Hand-confirmed land patches cut out of the water mask (scripts/elevation/build-canal-elevation.py --land-patches). Each needs an id, a lng/lat ring, bufferM and the evidence. Detected fills go through find-filled-water.py instead.",
  "patches": [
   {
-   "id": "NL.IMBAG.Pand.0363100012240915",
-   "name": "Haparandadam pand (909 m2, 1966)",
-   "ring": [
-    [
-     4.88044,
-     52.396988
-    ],
-    [
-     4.879924,
-     52.396721
-    ],
-    [
-     4.880112,
-     52.396585
-    ],
-    [
-     4.880628,
-     52.396853
-    ],
-    [
-     4.88044,
-     52.396988
-    ]
-   ],
-   "bufferM": 4.0,
-   "evidence": "User 2026-11-09 'building on Haparandadam floating on water'. BAG pand lies 100 % in the OSM and BGT water mask; PDOK luchtfoto Actueel_orthoHR shows it standing at the dam's edge on a platform (docs/reports/land-mask-gaps-20261109/ortho-haparandadam.jpg). The first 1.5 m apron still read as a building on open water in the proto frame (before/after/haparandadam-pand.png at 1.5 m); 4 m reaches the dam edge, as in the photo."
-  },
-  {
    "id": "ahn-ortho-52.378091_4.916885",
    "name": "Passenger terminal quay, Oostenburg/Piet Heinkade",
    "geometry": {
