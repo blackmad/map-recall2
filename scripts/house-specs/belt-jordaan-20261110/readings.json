@@ -1,115 +1,1104 @@
 {
  "_note": "Jordaan belt builder #366. Photo = the bloemgracht-1-51 winter strip of 2023-03-13 (lane/belt-jordaan-eland-20261110 restripe, staging/block-face/bloemgracht-1-51/strip.jpg, 40 px/m, rectified on the frontage plane), read at 2x with a metre grid; wall hex = channel median of a plain-wall box on that strip. Cross-checked with the eland hand runs (bloemgrachtbuurt-hand-runs.json) where they exist. Storeys follow STOREYS_DEFINITION.",
  "0363100012168796": {
-  "address": "Bloemgracht 3", "photo": "bloemgracht-1-51 strip 2023-03-13 (span 868-1072 px)", "date": "2023-03-13", "confidence": 0.7,
+  "address": "Bloemgracht 3",
+  "photo": "bloemgracht-1-51 strip 2023-03-13 (span 868-1072 px)",
+  "date": "2023-03-13",
+  "confidence": 0.7,
   "why": "two axes behind a tree; a grey souterrain to 2.2 m with two low lights, a bel-etage (windows 2.6-5.0 m), storeys at 5.9-8.0 and 8.4-9.8 m, a plain white cornice 10.3-11.0 m, a grey tile roof; red-brown brick #634f46",
-  "front": {"gable": "cornice", "cornice": "simple", "storeys": 3, "bays": 2, "doorBay": 0, "basement": "stoop-and-windows", "souterrain": true, "storeyHeights": [2.2, 3.5, 2.6, 2.3], "windows": "sash"},
-  "roof": {"material": "black-tile"},
-  "palette": {"brick": "#634f46", "wallMaterial": "brick"},
-  "limits": [{"component": "evidence", "what": "a street tree covers the left axis; the door position is inferred (left, the bel-etage over the stoop)"}]
+  "front": {
+   "gable": "cornice",
+   "cornice": "simple",
+   "storeys": 3,
+   "bays": 2,
+   "doorBay": 0,
+   "basement": "stoop-and-windows",
+   "souterrain": true,
+   "storeyHeights": [
+    2.2,
+    3.5,
+    2.6,
+    2.3
+   ],
+   "windows": "sash"
+  },
+  "roof": {
+   "material": "black-tile"
+  },
+  "palette": {
+   "brick": "#634f46",
+   "wallMaterial": "brick"
+  },
+  "limits": [
+   {
+    "component": "evidence",
+    "what": "a street tree covers the left axis; the door position is inferred (left, the bel-etage over the stoop)"
+   }
+  ]
  },
  "0363100012173342": {
-  "address": "Bloemgracht 7", "photo": "bloemgracht-1-51 strip 2023-03-13 (span 1295-1483 px)", "date": "2023-03-13",
+  "address": "Bloemgracht 7",
+  "photo": "bloemgracht-1-51 strip 2023-03-13 (span 1295-1483 px)",
+  "date": "2023-03-13",
   "why": "two axes; a double house door on the left (2.0-5.9 m) with a two-light transom over a stoop, a tall transomed window right over a souterrain light (0.5-2.0 m); storeys at 6.0-7.9 and 8.8-10.9 m; a tall plain white entablature 11.7-13.0 m; one white dormer with a curved top and finial to ~14.7 m; painted near-black brick #484346; grey slate",
-  "front": {"gable": "cornice", "cornice": "frieze", "storeys": 3, "bays": 2, "doorBay": 0, "doorPairs": true, "basement": "stoop-and-windows", "souterrain": true, "storeyHeights": [2.0, 3.9, 2.7, 2.8], "windows": "sash", "dormers": 1, "dormerStyle": "pediment", "dormerBody": "stone", "dormerAt": [{"from": 0.3, "to": 0.7}], "dormerSize": {"sill": 0.1, "rise": 1.5, "setback": 0.35}},
-  "roof": {"material": "slate"},
-  "palette": {"brick": "#484346", "wallMaterial": "painted-brick", "door": "#1f2430"},
-  "limits": [{"component": "dormer", "what": "the dormer's top is a small curved neck with a finial, drawn as a pediment"}]
+  "front": {
+   "gable": "cornice",
+   "cornice": "frieze",
+   "storeys": 3,
+   "bays": 2,
+   "doorBay": 0,
+   "doorPairs": true,
+   "basement": "stoop-and-windows",
+   "souterrain": true,
+   "storeyHeights": [
+    2.0,
+    3.9,
+    2.7,
+    2.8
+   ],
+   "windows": "sash",
+   "dormers": 1,
+   "dormerStyle": "pediment",
+   "dormerBody": "stone",
+   "dormerAt": [
+    {
+     "from": 0.3,
+     "to": 0.7
+    }
+   ],
+   "dormerSize": {
+    "sill": 0.1,
+    "rise": 1.5,
+    "setback": 0.35
+   }
+  },
+  "roof": {
+   "material": "slate"
+  },
+  "palette": {
+   "brick": "#484346",
+   "wallMaterial": "painted-brick",
+   "door": "#1f2430"
+  },
+  "limits": [
+   {
+    "component": "dormer",
+    "what": "the dormer's top is a small curved neck with a finial, drawn as a pediment"
+   }
+  ]
  },
  "0363100012173043": {
-  "address": "Bloemgracht 9", "photo": "bloemgracht-1-51 strip 2023-03-13 (span 1483-1638 px)", "date": "2023-03-13",
+  "address": "Bloemgracht 9",
+  "photo": "bloemgracht-1-51 strip 2023-03-13 (span 1483-1638 px)",
+  "date": "2023-03-13",
   "why": "a 3.9 m front: a white timber ground front 0-4.0 m (door left, glazing right), two windows at 5.0-7.3 m, three small windows at 7.5-8.7 m, a small bell gable 9.4-12.0 m with white claw pieces, one attic light and a hoist beam; painted dark brown brick #393633",
-  "front": {"gable": "bell", "crownRise": 1.0, "atticWindows": 1, "hoist": true, "storeys": 3, "bays": [2, 2, 3], "storeyHeights": [4.2, 2.6, 2.2], "doorBay": 0, "windows": "sash",
-   "groundFront": {"kind": "pui", "bays": ["door", "window"], "bayWeights": [1, 1.6], "colour": "#ece9e0", "evidence": "strip 2023-03-13: white painted timber ground front with the door on the left"}},
-  "roof": {"material": "red-tile", "squareSaddle": true},
-  "palette": {"brick": "#393633", "wallMaterial": "painted-brick"},
-  "limits": [{"component": "gable ornament", "what": "white sandstone claw pieces beside the bell are not drawn"}]
+  "front": {
+   "gable": "bell",
+   "crownRise": 1.0,
+   "atticWindows": 1,
+   "hoist": true,
+   "storeys": 3,
+   "bays": [
+    2,
+    2,
+    3
+   ],
+   "storeyHeights": [
+    4.2,
+    2.6,
+    2.2
+   ],
+   "doorBay": 0,
+   "windows": "sash",
+   "groundFront": {
+    "kind": "pui",
+    "bays": [
+     "door",
+     "window"
+    ],
+    "bayWeights": [
+     1,
+     1.6
+    ],
+    "colour": "#ece9e0",
+    "evidence": "strip 2023-03-13: white painted timber ground front with the door on the left"
+   }
+  },
+  "roof": {
+   "material": "red-tile",
+   "squareSaddle": true
+  },
+  "palette": {
+   "brick": "#393633",
+   "wallMaterial": "painted-brick"
+  },
+  "limits": [
+   {
+    "component": "gable ornament",
+    "what": "white sandstone claw pieces beside the bell are not drawn"
+   }
+  ]
  },
  "0363100012172863": {
-  "address": "Bloemgracht 11", "photo": "bloemgracht-1-51 strip 2023-03-13 (span 1638-1788 px)", "date": "2023-03-13",
+  "address": "Bloemgracht 11",
+  "photo": "bloemgracht-1-51 strip 2023-03-13 (span 1638-1788 px)",
+  "date": "2023-03-13",
   "why": "two axes; a white timber ground front 0-4.0 m with shop-like glazing; windows at 4.9-7.3 and 7.5-9.0 m; a plain white cornice 9.5-10.2 m; one white dormer with a curved top and a carved finial 10.2-12.0 m; painted dark brown brick #4a4136",
-  "front": {"gable": "cornice", "cornice": "simple", "storeys": 3, "bays": 2, "storeyHeights": [4.3, 2.9, 2.6], "doorBay": 0, "windows": "sash",
-   "groundFront": {"kind": "pui", "bays": ["door", "window"], "bayWeights": [1, 1.4], "colour": "#ece9e0", "evidence": "strip 2023-03-13: white timber ground front"},
-   "dormers": 1, "dormerStyle": "pediment", "dormerBody": "stone", "dormerAt": [{"from": 0.3, "to": 0.7}], "dormerSize": {"sill": 0.1, "rise": 1.5, "setback": 0.35}},
-  "roof": {"material": "slate"},
-  "palette": {"brick": "#4a4136", "wallMaterial": "painted-brick"},
-  "limits": [{"component": "dormer", "what": "the dormer's curved top and carved finial, drawn as a pediment"}]
+  "front": {
+   "gable": "cornice",
+   "cornice": "simple",
+   "storeys": 3,
+   "bays": 2,
+   "storeyHeights": [
+    4.3,
+    2.9,
+    2.6
+   ],
+   "doorBay": 0,
+   "windows": "sash",
+   "groundFront": {
+    "kind": "pui",
+    "bays": [
+     "door",
+     "window"
+    ],
+    "bayWeights": [
+     1,
+     1.4
+    ],
+    "colour": "#ece9e0",
+    "evidence": "strip 2023-03-13: white timber ground front"
+   },
+   "dormers": 1,
+   "dormerStyle": "pediment",
+   "dormerBody": "stone",
+   "dormerAt": [
+    {
+     "from": 0.3,
+     "to": 0.7
+    }
+   ],
+   "dormerSize": {
+    "sill": 0.1,
+    "rise": 1.5,
+    "setback": 0.35
+   }
+  },
+  "roof": {
+   "material": "slate"
+  },
+  "palette": {
+   "brick": "#4a4136",
+   "wallMaterial": "painted-brick"
+  },
+  "limits": [
+   {
+    "component": "dormer",
+    "what": "the dormer's curved top and carved finial, drawn as a pediment"
+   }
+  ]
  },
  "0363100012172779": {
-  "address": "Bloemgracht 13", "photo": "bloemgracht-1-51 strip 2023-03-13 (span 1788-1943 px)", "date": "2023-03-13",
+  "address": "Bloemgracht 13",
+  "photo": "bloemgracht-1-51 strip 2023-03-13 (span 1788-1943 px)",
+  "date": "2023-03-13",
   "why": "a 3.9 m front: ground 0-4.2 m with the door left under a lattice fanlight and a transomed window right; two six-pane windows at 4.8-6.9 m; one window at 7.6-8.8 m between two oculi; a neck gable 9.4-12.3 m with claw pieces, a square light, a medallion and a segmental cap; red-brown brick #584b46",
-  "front": {"gable": "neck", "crownRise": 1.1, "crownCap": "segmental", "atticWindows": 1, "hoist": false, "storeys": 3, "bays": [2, 2, 1], "storeyHeights": [4.4, 2.6, 2.4], "doorBay": 0, "windows": "six-pane"},
-  "roof": {"material": "red-tile", "squareSaddle": true},
-  "palette": {"brick": "#584b46", "wallMaterial": "brick"},
-  "limits": [{"component": "window kind", "what": "two round oculi flank the top storey's window; the kit has no wall oculus"}, {"component": "gable ornament", "what": "a carved medallion in the neck and the claw pieces are not drawn"}]
+  "front": {
+   "gable": "neck",
+   "crownRise": 1.1,
+   "crownCap": "segmental",
+   "atticWindows": 1,
+   "hoist": false,
+   "storeys": 3,
+   "bays": [
+    2,
+    2,
+    1
+   ],
+   "storeyHeights": [
+    4.4,
+    2.6,
+    2.4
+   ],
+   "doorBay": 0,
+   "windows": "six-pane"
+  },
+  "roof": {
+   "material": "red-tile",
+   "squareSaddle": true
+  },
+  "palette": {
+   "brick": "#584b46",
+   "wallMaterial": "brick"
+  },
+  "limits": [
+   {
+    "component": "window kind",
+    "what": "two round oculi flank the top storey's window; the kit has no wall oculus"
+   },
+   {
+    "component": "gable ornament",
+    "what": "a carved medallion in the neck and the claw pieces are not drawn"
+   }
+  ]
  },
  "0363100012168708": {
-  "address": "Bloemgracht 15", "photo": "bloemgracht-1-51 strip 2023-03-13 (span 1943-2217 px)", "date": "2023-03-13",
+  "address": "Bloemgracht 15",
+  "photo": "bloemgracht-1-51 strip 2023-03-13 (span 1943-2217 px)",
+  "date": "2023-03-13",
   "why": "a 6.8 m front of three axes, ground and four storeys (windows 0.5-2.9, 4.3-6.1, 7.6-9.9, 10.5-12.3, 13.0-14.6 m), the double door on the right axis; small-paned sashes with white frames; wall anchors on every floor; a white inscribed frieze and cornice 15.0-16.8 m, no roof seen; red-brown brick #64544e",
-  "front": {"gable": "cornice", "cornice": "frieze", "storeys": 5, "bays": 3, "storeyHeights": [4.2, 3.2, 2.8, 2.6, 2.4], "doorBay": 2, "doorPairs": true, "windows": "sash-6-over-6", "wallAnchors": {}},
-  "roof": {"material": "bitumen"},
-  "palette": {"brick": "#64544e", "wallMaterial": "brick"},
-  "limits": [{"component": "cornice", "what": "the frieze carries a carved inscription (NVNC ... FINITVS); a gable stone sits over the first storey"}]
+  "front": {
+   "gable": "cornice",
+   "cornice": "frieze",
+   "storeys": 5,
+   "bays": 3,
+   "storeyHeights": [
+    4.2,
+    3.2,
+    2.8,
+    2.6,
+    2.4
+   ],
+   "doorBay": 2,
+   "doorPairs": true,
+   "windows": "sash-6-over-6",
+   "wallAnchors": {}
+  },
+  "roof": {
+   "material": "bitumen"
+  },
+  "palette": {
+   "brick": "#64544e",
+   "wallMaterial": "brick"
+  },
+  "limits": [
+   {
+    "component": "cornice",
+    "what": "the frieze carries a carved inscription (NVNC ... FINITVS); a gable stone sits over the first storey"
+   }
+  ]
  },
  "0363100012173045": {
-  "address": "Bloemgracht 17", "photo": "bloemgracht-1-51 strip 2023-03-13 (span 2217-2402 px)", "date": "2023-03-13",
+  "address": "Bloemgracht 17",
+  "photo": "bloemgracht-1-51 strip 2023-03-13 (span 2217-2402 px)",
+  "date": "2023-03-13",
   "why": "three axes; a white timber ground front 0-3.9 m (double door left, transomed windows); three storeys of segmental-headed sashes at 4.3-6.1, 7.2-9.0, 10.1-12.0 m; a white frieze with a small medallion and cornice 12.3-13.3 m; a white dormer with a curved top and finial 13.3-15.6 m; red-brown brick #685852",
-  "front": {"gable": "cornice", "cornice": "frieze", "storeys": 4, "bays": 3, "storeyHeights": [4.1, 2.9, 2.9, 2.6], "doorBay": 0, "windows": "sash", "windowHead": {"kind": "segmental"},
-   "groundFront": {"kind": "pui", "bays": ["door", "window", "window"], "colour": "#ece9e0", "evidence": "strip 2023-03-13: white timber ground front, the door left"},
-   "dormers": 1, "dormerStyle": "pediment", "dormerBody": "stone", "dormerAt": [{"from": 0.32, "to": 0.68}], "dormerSize": {"sill": 0.1, "rise": 1.8, "setback": 0.35}},
-  "roof": {"material": "slate"},
-  "palette": {"brick": "#685852", "wallMaterial": "brick"},
-  "limits": [{"component": "dormer", "what": "the dormer's curved top and finial, drawn as a pediment"}]
+  "front": {
+   "gable": "cornice",
+   "cornice": "frieze",
+   "storeys": 4,
+   "bays": 3,
+   "storeyHeights": [
+    4.1,
+    2.9,
+    2.9,
+    2.6
+   ],
+   "doorBay": 0,
+   "windows": "sash",
+   "windowHead": {
+    "kind": "segmental"
+   },
+   "groundFront": {
+    "kind": "pui",
+    "bays": [
+     "door",
+     "window",
+     "window"
+    ],
+    "colour": "#ece9e0",
+    "evidence": "strip 2023-03-13: white timber ground front, the door left"
+   },
+   "dormers": 1,
+   "dormerStyle": "pediment",
+   "dormerBody": "stone",
+   "dormerAt": [
+    {
+     "from": 0.32,
+     "to": 0.68
+    }
+   ],
+   "dormerSize": {
+    "sill": 0.1,
+    "rise": 1.8,
+    "setback": 0.35
+   }
+  },
+  "roof": {
+   "material": "slate"
+  },
+  "palette": {
+   "brick": "#685852",
+   "wallMaterial": "brick"
+  },
+  "limits": [
+   {
+    "component": "dormer",
+    "what": "the dormer's curved top and finial, drawn as a pediment"
+   }
+  ]
  },
  "0363100012168749": {
-  "address": "Bloemgracht 19", "photo": "bloemgracht-1-51 strip 2023-03-13 (span 2402-2633 px)", "date": "2023-03-13",
+  "address": "Bloemgracht 19",
+  "photo": "bloemgracht-1-51 strip 2023-03-13 (span 2402-2633 px)",
+  "date": "2023-03-13",
   "why": "three axes over a souterrain (lights 0.5-1.5 m, stoop); a tall bel-etage 2.2-6.6 m with the door left under a stained-glass transom; storeys at 7.0-8.9 and 9.8-11.7 m; a gable stone; a tall neck gable 13.0-17.5 m with big claw scrolls, one attic light and a scrolled cap; dark red-brown brick #5e524c",
-  "front": {"gable": "neck", "crownRise": 1.5, "crownCap": "rounded", "atticWindows": 1, "hoist": true, "storeys": 3, "bays": 3, "basement": "stoop-and-windows", "souterrain": true, "storeyHeights": [2.2, 4.4, 3.0, 3.0], "doorBay": 0, "windows": "sash-6-over-6"},
-  "roof": {"material": "red-tile", "squareSaddle": true},
-  "palette": {"brick": "#5e524c", "wallMaterial": "brick"},
-  "limits": [{"component": "gable ornament", "what": "the large white claw scrolls and the carved cap of the neck are not drawn"}]
+  "front": {
+   "gable": "neck",
+   "crownRise": 1.5,
+   "crownCap": "rounded",
+   "atticWindows": 1,
+   "hoist": true,
+   "storeys": 3,
+   "bays": 3,
+   "basement": "stoop-and-windows",
+   "souterrain": true,
+   "storeyHeights": [
+    2.2,
+    4.4,
+    3.0,
+    3.0
+   ],
+   "doorBay": 0,
+   "windows": "sash-6-over-6"
+  },
+  "roof": {
+   "material": "red-tile",
+   "squareSaddle": true
+  },
+  "palette": {
+   "brick": "#5e524c",
+   "wallMaterial": "brick"
+  },
+  "limits": [
+   {
+    "component": "gable ornament",
+    "what": "the large white claw scrolls and the carved cap of the neck are not drawn"
+   }
+  ]
  },
  "0363100012168758": {
-  "address": "Bloemgracht 21", "photo": "bloemgracht-1-51 strip 2023-03-13 (span 2633-2855 px)", "date": "2023-03-13",
+  "address": "Bloemgracht 21",
+  "photo": "bloemgracht-1-51 strip 2023-03-13 (span 2633-2855 px)",
+  "date": "2023-03-13",
   "why": "three axes; ground 0-4.0 m with a double door left and two transomed windows; storeys at 4.6-6.6 and 7.5-9.6 m; a plain white cornice 9.8-10.5 m; a red tile roof face with one white dormer (pediment cap) 10.8-12.3 m; painted near-black brick #38373a",
-  "front": {"gable": "cornice", "cornice": "simple", "storeys": 3, "bays": 3, "storeyHeights": [4.2, 3.0, 3.0], "doorBay": 0, "doorPairs": true, "windows": "sash",
-   "dormers": 1, "dormerStyle": "pediment", "dormerBody": "stone", "dormerAt": [{"from": 0.36, "to": 0.64}], "dormerSize": {"sill": 0.1, "rise": 1.4, "setback": 0.35}},
-  "roof": {"material": "red-tile"},
-  "palette": {"brick": "#38373a", "wallMaterial": "painted-brick"}
+  "front": {
+   "gable": "cornice",
+   "cornice": "simple",
+   "storeys": 3,
+   "bays": 3,
+   "storeyHeights": [
+    4.2,
+    3.0,
+    3.0
+   ],
+   "doorBay": 0,
+   "doorPairs": true,
+   "windows": "sash",
+   "dormers": 1,
+   "dormerStyle": "pediment",
+   "dormerBody": "stone",
+   "dormerAt": [
+    {
+     "from": 0.36,
+     "to": 0.64
+    }
+   ],
+   "dormerSize": {
+    "sill": 0.1,
+    "rise": 1.4,
+    "setback": 0.35
+   }
+  },
+  "roof": {
+   "material": "red-tile"
+  },
+  "palette": {
+   "brick": "#38373a",
+   "wallMaterial": "painted-brick"
+  }
  },
  "0363100012168697": {
-  "address": "Bloemgracht 35", "photo": "bloemgracht-1-51 strip 2023-03-13 (span 3538-3725 px)", "date": "2023-03-13",
+  "address": "Bloemgracht 35",
+  "photo": "bloemgracht-1-51 strip 2023-03-13 (span 3538-3725 px)",
+  "date": "2023-03-13",
   "why": "three axes; a white timber ground front 0-4.0 m of three tall openings; three storeys of 6-over-6 sashes at 5.0-6.6, 7.3-8.9, 9.6-11.0 m; a white frieze with three small attic lights 11.5-12.6 m under the cornice (~13.0 m); a tile roof with a white pedimented dormer and finial to 15.2 m; red-brown brick #66574e",
-  "front": {"gable": "cornice", "cornice": "frieze", "storeys": 4, "bays": 3, "storeyHeights": [4.4, 2.5, 2.4, 2.3], "doorBay": 0, "windows": "sash-6-over-6",
-   "groundFront": {"kind": "pui", "bays": ["door", "window", "window"], "colour": "#ece9e0", "evidence": "strip 2023-03-13: white timber ground front of three openings"},
-   "dormers": 1, "dormerStyle": "pediment", "dormerBody": "stone", "dormerAt": [{"from": 0.34, "to": 0.66}], "dormerSize": {"sill": 0.1, "rise": 1.6, "setback": 0.35}},
-  "roof": {"material": "black-tile"},
-  "palette": {"brick": "#66574e", "wallMaterial": "brick"},
-  "limits": [{"component": "cornice", "what": "three small attic lights in the white frieze are not drawn (the frieze is plain)"}]
+  "front": {
+   "gable": "cornice",
+   "cornice": "frieze",
+   "storeys": 4,
+   "bays": 3,
+   "storeyHeights": [
+    4.4,
+    2.5,
+    2.4,
+    2.3
+   ],
+   "doorBay": 0,
+   "windows": "sash-6-over-6",
+   "groundFront": {
+    "kind": "pui",
+    "bays": [
+     "door",
+     "window",
+     "window"
+    ],
+    "colour": "#ece9e0",
+    "evidence": "strip 2023-03-13: white timber ground front of three openings"
+   },
+   "dormers": 1,
+   "dormerStyle": "pediment",
+   "dormerBody": "stone",
+   "dormerAt": [
+    {
+     "from": 0.34,
+     "to": 0.66
+    }
+   ],
+   "dormerSize": {
+    "sill": 0.1,
+    "rise": 1.6,
+    "setback": 0.35
+   }
+  },
+  "roof": {
+   "material": "black-tile"
+  },
+  "palette": {
+   "brick": "#66574e",
+   "wallMaterial": "brick"
+  },
+  "limits": [
+   {
+    "component": "cornice",
+    "what": "three small attic lights in the white frieze are not drawn (the frieze is plain)"
+   }
+  ]
  },
  "0363100012168701": {
-  "address": "Bloemgracht 39", "photo": "bloemgracht-1-51 strip 2023-03-13 (span 3908-4094 px)", "date": "2023-03-13",
+  "address": "Bloemgracht 39",
+  "photo": "bloemgracht-1-51 strip 2023-03-13 (span 3908-4094 px)",
+  "date": "2023-03-13",
   "why": "a Neo-Renaissance front (c. 1890): two axes; a tall ground 0-5.5 m with a red double door right under a transom and a window left; storeys at 6.0-7.9 and 8.5-10.6 m with segmental heads under white block rings; white stone bands; a step gable 11.5-16.5 m with a round-arched light pair; red-brown brick #4d463f",
-  "front": {"gable": "step", "crownRise": 1.6, "atticWindows": 2, "storeys": 3, "bays": 2, "storeyHeights": [5.6, 2.9, 2.9], "doorBay": 1, "doorPairs": true, "windows": "sash", "bands": "storey",
-   "windowHead": {"kind": "segmental", "archRing": {"colour": "stone", "style": "blocks", "keystone": true}}},
-  "roof": {"material": "red-tile", "squareSaddle": true},
-  "palette": {"brick": "#4d463f", "wallMaterial": "brick", "door": "#8a2a26"},
-  "limits": [{"component": "gable ornament", "what": "the step gable's round-arched panels and white stone dressings on each step are not drawn"}]
+  "front": {
+   "gable": "step",
+   "crownRise": 1.6,
+   "atticWindows": 2,
+   "storeys": 3,
+   "bays": 2,
+   "storeyHeights": [
+    5.6,
+    2.9,
+    2.9
+   ],
+   "doorBay": 1,
+   "doorPairs": true,
+   "windows": "sash",
+   "bands": "storey",
+   "windowHead": {
+    "kind": "segmental",
+    "archRing": {
+     "colour": "stone",
+     "style": "blocks",
+     "keystone": true
+    }
+   }
+  },
+  "roof": {
+   "material": "red-tile",
+   "squareSaddle": true
+  },
+  "palette": {
+   "brick": "#4d463f",
+   "wallMaterial": "brick",
+   "door": "#8a2a26"
+  },
+  "limits": [
+   {
+    "component": "gable ornament",
+    "what": "the step gable's round-arched panels and white stone dressings on each step are not drawn"
+   }
+  ]
  },
  "0363100012168705": {
-  "address": "Bloemgracht 41", "photo": "bloemgracht-1-51 strip 2023-03-13 (span 4094-4286 px)", "date": "2023-03-13",
+  "address": "Bloemgracht 41",
+  "photo": "bloemgracht-1-51 strip 2023-03-13 (span 4094-4286 px)",
+  "date": "2023-03-13",
   "why": "two axes, painted black: a tall ground 0-5.6 m (a wide window left, the door right with a transom); storeys at 7.3-9.0 and 9.7-11.4 m; a top storey with one two-light window in the middle at 12.2-13.8 m; a plain white cornice ~15.3 m, flat roof; painted brick #413e3b",
-  "front": {"gable": "cornice", "cornice": "simple", "storeys": 4, "bays": [2, 2, 2, 1], "storeyHeights": [5.9, 2.6, 2.6, 2.6], "doorBay": 1, "windows": "sash"},
-  "roof": {"material": "bitumen"},
-  "palette": {"brick": "#413e3b", "wallMaterial": "painted-brick"}
+  "front": {
+   "gable": "cornice",
+   "cornice": "simple",
+   "storeys": 4,
+   "bays": [
+    2,
+    2,
+    2,
+    1
+   ],
+   "storeyHeights": [
+    5.9,
+    2.6,
+    2.6,
+    2.6
+   ],
+   "doorBay": 1,
+   "windows": "sash"
+  },
+  "roof": {
+   "material": "bitumen"
+  },
+  "palette": {
+   "brick": "#413e3b",
+   "wallMaterial": "painted-brick"
+  }
  },
  "0363100012168703": {
-  "address": "Bloemgracht 45", "photo": "bloemgracht-1-51 strip 2023-03-13 (span 4460-4642 px)", "date": "2023-03-13",
+  "address": "Bloemgracht 45",
+  "photo": "bloemgracht-1-51 strip 2023-03-13 (span 4460-4642 px)",
+  "date": "2023-03-13",
   "why": "three axes; a white timber ground front 0-4.9 m with lattice transoms (door left); 6-over-6 sashes at 6.0-7.7 and 8.4-10.1 m; a neck gable from ~10.8 m with claw pieces, one attic light at 11.4-12.4 m, a carved medallion and a rounded cap to ~14.8 m; red-brown brick #716860",
-  "front": {"gable": "neck", "crownRise": 1.4, "crownCap": "rounded", "atticWindows": 1, "hoist": false, "storeys": 3, "bays": 3, "storeyHeights": [5.0, 2.9, 2.9], "doorBay": 0, "windows": "sash-6-over-6",
-   "groundFront": {"kind": "pui", "bays": ["door", "window", "window"], "colour": "#ece9e0", "evidence": "strip 2023-03-13: white timber ground front with lattice transoms"}},
-  "roof": {"material": "red-tile", "squareSaddle": true},
-  "palette": {"brick": "#716860", "wallMaterial": "brick"},
-  "limits": [{"component": "gable ornament", "what": "the claw pieces and the carved medallion in the neck are not drawn"}]
+  "front": {
+   "gable": "neck",
+   "crownRise": 1.4,
+   "crownCap": "rounded",
+   "atticWindows": 1,
+   "hoist": false,
+   "storeys": 3,
+   "bays": 3,
+   "storeyHeights": [
+    5.0,
+    2.9,
+    2.9
+   ],
+   "doorBay": 0,
+   "windows": "sash-6-over-6",
+   "groundFront": {
+    "kind": "pui",
+    "bays": [
+     "door",
+     "window",
+     "window"
+    ],
+    "colour": "#ece9e0",
+    "evidence": "strip 2023-03-13: white timber ground front with lattice transoms"
+   }
+  },
+  "roof": {
+   "material": "red-tile",
+   "squareSaddle": true
+  },
+  "palette": {
+   "brick": "#716860",
+   "wallMaterial": "brick"
+  },
+  "limits": [
+   {
+    "component": "gable ornament",
+    "what": "the claw pieces and the carved medallion in the neck are not drawn"
+   }
+  ]
+ },
+ "0363100012174495": {
+  "address": "Bloemgracht 8",
+  "photo": "bloemgracht-4-10 strip 2023-03-13 (span 227-437 px)",
+  "date": "2023-03-13",
+  "why": "three axes; a stoop to a white painted ground storey 2.0-6.0 m (three small-paned windows, the door on the right axis); storeys at 6.3-7.9, 8.8-10.5, 11.3-13.0 m; a bell gable from ~14.0 m with white claw pieces, one attic light and a sculpted cap ornament to ~17.5 m; red-brown brick #5d544c",
+  "front": {
+   "gable": "bell",
+   "crownRise": 0.95,
+   "atticWindows": 1,
+   "hoist": false,
+   "crownFinial": true,
+   "storeys": 4,
+   "bays": 3,
+   "basement": "stoop",
+   "storeyHeights": [
+    4.3,
+    2.5,
+    2.5,
+    2.7
+   ],
+   "doorBay": 2,
+   "windows": "sash-6-over-6"
+  },
+  "roof": {
+   "material": "red-tile",
+   "squareSaddle": true
+  },
+  "palette": {
+   "brick": "#5d544c",
+   "wallMaterial": "brick"
+  },
+  "limits": [
+   {
+    "component": "ground storey",
+    "what": "a white painted (stucco) ground storey over the stoop is drawn in the wall brick (paintedStoreys z-fights, eland report; a ground front cannot stand on a stoop)"
+   },
+   {
+    "component": "gable ornament",
+    "what": "the sculpted animal on the bell's cap and the claw pieces are not drawn"
+   }
+  ]
+ },
+ "0363100012174496": {
+  "address": "Bloemgracht 6",
+  "photo": "bloemgracht-4-10 strip 2023-03-13 (span 437-656 px)",
+  "date": "2023-03-13",
+  "confidence": 0.75,
+  "why": "three axes; a white shop ground front 0-5.5 m (two wide windows, the double door right); three tall storeys of windows at 6.3-8.6, 9.0-11.3 and 11.8-14.0 m; a white cornice at ~15.2 m with a set-back attic storey and glass balcony behind it; dark red-brown brick #514944",
+  "front": {
+   "gable": "cornice",
+   "cornice": "simple",
+   "storeys": 4,
+   "bays": 3,
+   "storeyHeights": [
+    5.8,
+    3.0,
+    3.0,
+    3.1
+   ],
+   "doorBay": 2,
+   "windows": "sash",
+   "windowProportion": "tall",
+   "groundFront": {
+    "kind": "pui",
+    "bays": [
+     "window",
+     "window",
+     "door"
+    ],
+    "colour": "#ece9e0",
+    "evidence": "strip 2023-03-13: white shop front with pilasters, the door right"
+   }
+  },
+  "roof": {
+   "material": "bitumen"
+  },
+  "palette": {
+   "brick": "#514944",
+   "wallMaterial": "brick"
+  },
+  "limits": [
+   {
+    "component": "roof storey",
+    "what": "a set-back attic storey with a glass balustrade behind the cornice is not drawn"
+   }
+  ]
+ },
+ "0363100012174499": {
+  "address": "Bloemgracht 4",
+  "photo": "bloemgracht-4-10 strip 2023-03-13 (span 656-872 px)",
+  "date": "2023-03-13",
+  "confidence": 0.75,
+  "why": "three axes over a souterrain (lights 0.5-1.9 m); a bel-etage to ~6 m with the door right; storeys at 6.4-8.0, 8.6-10.4, 11.1-13.0 m; a white balustraded attic frieze 14.3-16.0 m; painted dark brown brick #45423c",
+  "front": {
+   "gable": "cornice",
+   "cornice": "frieze",
+   "storeys": 4,
+   "bays": 3,
+   "basement": "stoop-and-windows",
+   "souterrain": true,
+   "storeyHeights": [
+    2.0,
+    4.0,
+    2.4,
+    2.4,
+    3.0
+   ],
+   "doorBay": 2,
+   "windows": "sash"
+  },
+  "roof": {
+   "material": "bitumen"
+  },
+  "palette": {
+   "brick": "#45423c",
+   "wallMaterial": "painted-brick"
+  },
+  "limits": [
+   {
+    "component": "cornice",
+    "what": "a pierced balustrade over the attic frieze (with vases) is drawn as a plain frieze"
+   }
+  ]
+ },
+ "0363100012173350": {
+  "address": "Bloemgracht 32",
+  "photo": "bloemgracht-16-32 strip 2023-03-13 (span 0-154 px)",
+  "date": "2023-03-13",
+  "why": "a 3.8 m front: ground 0-4.0 m (door left under a transom, window right); two windows at 5.1-6.9 m; one window at 7.6-9.0 m; a neck gable 9.0-11.9 m with small claw pieces, one attic light and a segmental cap; red-brown brick #5b5048",
+  "front": {
+   "gable": "neck",
+   "crownRise": 1.1,
+   "crownCap": "segmental",
+   "atticWindows": 1,
+   "storeys": 3,
+   "bays": [
+    2,
+    2,
+    1
+   ],
+   "storeyHeights": [
+    4.4,
+    2.6,
+    2.0
+   ],
+   "doorBay": 0,
+   "windows": "sash"
+  },
+  "roof": {
+   "material": "red-tile",
+   "squareSaddle": true
+  },
+  "palette": {
+   "brick": "#5b5048",
+   "wallMaterial": "brick"
+  }
+ },
+ "0363100012173345": {
+  "address": "Bloemgracht 30",
+  "photo": "bloemgracht-16-32 strip 2023-03-13 (span 154-315 px)",
+  "date": "2023-03-13",
+  "why": "a 4.0 m front: ground 0-4.0 m (door left, a wide window right); two windows at 5.1-6.9 m; one wide three-light window at 7.7-9.0 m; a bell gable 9.0-12.0 m with one attic light and a small cap ornament; red-brown brick #5c4f47",
+  "front": {
+   "gable": "bell",
+   "crownRise": 1.15,
+   "atticWindows": 1,
+   "crownFinial": true,
+   "storeys": 3,
+   "bays": [
+    2,
+    2,
+    1
+   ],
+   "storeyHeights": [
+    4.4,
+    2.6,
+    2.0
+   ],
+   "doorBay": 0,
+   "windows": "sash",
+   "storeyWindows": {
+    "2": "casement-triple"
+   }
+  },
+  "roof": {
+   "material": "red-tile",
+   "squareSaddle": true
+  },
+  "palette": {
+   "brick": "#5c4f47",
+   "wallMaterial": "brick"
+  }
+ },
+ "0363100012173346": {
+  "address": "Bloemgracht 28",
+  "photo": "bloemgracht-16-32 strip 2023-03-13 (span 314-469 px)",
+  "date": "2023-03-13",
+  "why": "a 3.9 m front of two axes: ground 0-4.0 m (door left under an arched transom, window right); storeys at 4.3-6.4, 7.4-9.3 (segmental heads) and 10.2-11.9 m; a white cornice 12.0-12.6 m; a white pedimented dormer with a finial 13.0-15.0 m; red-brown brick #594c49",
+  "front": {
+   "gable": "cornice",
+   "cornice": "simple",
+   "storeys": 4,
+   "bays": 2,
+   "storeyHeights": [
+    4.2,
+    3.0,
+    2.8,
+    2.4
+   ],
+   "doorBay": 0,
+   "windows": "sash",
+   "windowHead": {
+    "kind": "segmental",
+    "storeys": [
+     1,
+     2
+    ]
+   },
+   "dormers": 1,
+   "dormerStyle": "pediment",
+   "dormerBody": "stone",
+   "dormerAt": [
+    {
+     "from": 0.28,
+     "to": 0.72
+    }
+   ],
+   "dormerSize": {
+    "sill": 0.1,
+    "rise": 1.6,
+    "setback": 0.35
+   }
+  },
+  "roof": {
+   "material": "slate"
+  },
+  "palette": {
+   "brick": "#594c49",
+   "wallMaterial": "brick"
+  }
+ },
+ "0363100012173348": {
+  "address": "Bloemgracht 26",
+  "photo": "bloemgracht-16-32 strip 2023-03-13 (span 469-615 px)",
+  "date": "2023-03-13",
+  "why": "a 3.7 m front of two axes: a glazed ground front 0-4.0 m; storeys at 4.3-6.4, 7.3-9.4 and 10.2-12.1 m with white stone bands at sill and head level; a neck gable from ~13.2 m with claw pieces, one attic light and a flat cap with a sculpted finial to ~16.3 m; red-brown brick (measured #6c6964 on a box touching the white bands; #6a5850 between them by eye)",
+  "front": {
+   "gable": "neck",
+   "crownRise": 1.1,
+   "crownCap": "flat",
+   "crownFinial": true,
+   "atticWindows": 1,
+   "storeys": 4,
+   "bays": 2,
+   "storeyHeights": [
+    4.2,
+    3.0,
+    2.9,
+    2.9
+   ],
+   "doorBay": 0,
+   "windows": "sash",
+   "bands": "both",
+   "groundFront": {
+    "kind": "pui",
+    "bays": [
+     "door",
+     "window"
+    ],
+    "colour": "#26302a",
+    "evidence": "strip 2023-03-13: dark timber glazed ground front"
+   }
+  },
+  "roof": {
+   "material": "red-tile",
+   "squareSaddle": true
+  },
+  "palette": {
+   "brick": "#6a5850",
+   "wallMaterial": "brick"
+  },
+  "limits": [
+   {
+    "component": "gable ornament",
+    "what": "the sculpted cap group and the claw pieces are not drawn"
+   }
+  ]
+ },
+ "0363100012173349": {
+  "address": "Bloemgracht 24",
+  "photo": "bloemgracht-16-32 strip 2023-03-13 (span 619-784 px)",
+  "date": "2023-03-13",
+  "why": "a 4.1 m front of two axes: ground 0-4.0 m with the door right; storeys at 4.3-6.0, 7.5-9.9 and 10.5-12.6 m with white sill bands; a white cornice with frieze vents at 13.2-13.6 m; a white pedimented dormer to ~16 m; red-brown brick #534944",
+  "front": {
+   "gable": "cornice",
+   "cornice": "simple",
+   "storeys": 4,
+   "bays": 2,
+   "storeyHeights": [
+    4.2,
+    3.1,
+    2.9,
+    2.9
+   ],
+   "doorBay": 1,
+   "windows": "sash",
+   "bands": "storey",
+   "dormers": 1,
+   "dormerStyle": "pediment",
+   "dormerBody": "stone",
+   "dormerAt": [
+    {
+     "from": 0.3,
+     "to": 0.7
+    }
+   ],
+   "dormerSize": {
+    "sill": 0.1,
+    "rise": 1.8,
+    "setback": 0.35
+   }
+  },
+  "roof": {
+   "material": "slate"
+  },
+  "palette": {
+   "brick": "#534944",
+   "wallMaterial": "brick"
+  },
+  "limits": [
+   {
+    "component": "cornice",
+    "what": "the small vents in the frieze under the cornice are not drawn"
+   }
+  ]
+ },
+ "0363100012172862": {
+  "address": "Bloemgracht 20",
+  "photo": "bloemgracht-16-32 strip 2023-03-13 (span 1013-1328 px)",
+  "date": "2023-03-13",
+  "why": "an eclectic front (c. 1880) of three axes: a white stone ground pui with pilasters 0-4.0 m; storey 1 windows 4.3-6.6 m under white pediment hoods; storey 2 windows 7.8-9.9 m under white round-arched archivolts; white banded rustication on the piers; a cornice at ~11.2 m, a slate mansard with a central white dormer (pediment and finial) to ~14 m; red-brown brick #594f46",
+  "front": {
+   "gable": "cornice",
+   "cornice": "bracketed",
+   "storeys": 3,
+   "bays": 3,
+   "storeyHeights": [
+    4.2,
+    3.4,
+    3.4
+   ],
+   "doorBay": 0,
+   "windows": "sash",
+   "windowProportion": "tall",
+   "windowSurround": "full-frame",
+   "bands": "speklagen",
+   "speklagen": {
+    "spacing": 5,
+    "courses": 2
+   },
+   "windowHead": {
+    "kind": "segmental",
+    "storeys": [
+     2
+    ],
+    "archRing": {
+     "colour": "stone",
+     "style": "solid",
+     "keystone": true
+    }
+   },
+   "groundFront": {
+    "kind": "arcade",
+    "bays": [
+     "door",
+     "window",
+     "window"
+    ],
+    "colour": "#e4dcc4",
+    "evidence": "strip 2023-03-13: white stone pilasters and beam over the ground storey"
+   },
+   "roofFront": "mansard",
+   "dormers": 1,
+   "dormerStyle": "pediment",
+   "dormerBody": "stone",
+   "dormerAt": [
+    {
+     "from": 0.38,
+     "to": 0.62
+    }
+   ]
+  },
+  "roof": {
+   "material": "slate"
+  },
+  "palette": {
+   "brick": "#594f46",
+   "wallMaterial": "brick"
+  },
+  "limits": [
+   {
+    "component": "window surround",
+    "what": "pediment hoods over the storey-1 windows are drawn as full frames"
+   },
+   {
+    "component": "wall",
+    "what": "the white bands are on the piers only (rustication), drawn as speklagen across the wall"
+   }
+  ]
+ },
+ "0363100012173044": {
+  "address": "Bloemgracht 18",
+  "photo": "bloemgracht-16-32 strip 2023-03-13 (span 1329-1521 px)",
+  "date": "2023-03-13",
+  "confidence": 0.75,
+  "why": "three axes: ground 0-4.2 m; storeys at 5.4-7.0, 7.9-9.6 (segmental heads) and 10.7-12.4 m with small iron balconettes on the middle axis; a white frieze and cornice 13.5-14.0 m; a slate mansard with a dormer to ~17 m; dark brown brick #534f4b",
+  "front": {
+   "gable": "cornice",
+   "cornice": "frieze",
+   "storeys": 4,
+   "bays": 3,
+   "storeyHeights": [
+    4.6,
+    2.9,
+    2.9,
+    2.8
+   ],
+   "doorBay": 0,
+   "windows": "sash",
+   "windowHead": {
+    "kind": "segmental",
+    "storeys": [
+     1,
+     2
+    ]
+   },
+   "roofFront": "mansard",
+   "dormers": 1,
+   "dormerStyle": "pediment",
+   "dormerBody": "stone",
+   "dormerAt": [
+    {
+     "from": 0.36,
+     "to": 0.64
+    }
+   ]
+  },
+  "roof": {
+   "material": "slate"
+  },
+  "palette": {
+   "brick": "#534f4b",
+   "wallMaterial": "brick"
+  },
+  "limits": [
+   {
+    "component": "balcony",
+    "what": "small iron balconettes on the middle axis of storeys 1-2 are not drawn"
+   }
+  ]
+ },
+ "0363100012168709": {
+  "address": "Bloemgracht 16",
+  "photo": "bloemgracht-16-32 strip 2023-03-13 (span 1521-1689 px)",
+  "date": "2023-03-13",
+  "confidence": 0.75,
+  "why": "three axes: ground 0-4.0 m with the door left and a wide segmental-arched window with a lattice fanlight; storeys at 5.0-6.9, 7.9-9.8 and 10.6-12.2 m with iron balconettes on the middle axis; a white cornice 12.4-13.0 m; a slate mansard with dormers to ~15.8 m; red-brown brick #4b403b",
+  "front": {
+   "gable": "cornice",
+   "cornice": "simple",
+   "storeys": 4,
+   "bays": 3,
+   "storeyHeights": [
+    4.4,
+    2.8,
+    2.8,
+    2.6
+   ],
+   "doorBay": 0,
+   "windows": "sash",
+   "roofFront": "mansard",
+   "dormers": 2,
+   "dormerStyle": "plain",
+   "dormerBody": "stone"
+  },
+  "roof": {
+   "material": "slate"
+  },
+  "palette": {
+   "brick": "#4b403b",
+   "wallMaterial": "brick"
+  },
+  "limits": [
+   {
+    "component": "ground storey",
+    "what": "the wide segmental-arched ground window with a lattice fanlight is drawn square"
+   },
+   {
+    "component": "balcony",
+    "what": "iron balconettes on the middle axis are not drawn"
+   }
+  ]
  }
 }

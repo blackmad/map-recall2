@@ -1,0 +1,221 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012173044",
+ "address": "Bloemgracht 18",
+ "design": {
+  "fronts": [
+   {
+    "id": "front0",
+    "basement": "none",
+    "cornice": "frieze",
+    "windows": "sash",
+    "windowSurround": "sill",
+    "hoist": false,
+    "street": "Bloemgracht",
+    "gable": "cornice",
+    "storeys": 4,
+    "bays": 3,
+    "storeyHeights": [
+     4.6,
+     2.9,
+     2.9,
+     2.8
+    ],
+    "doorBay": 0,
+    "windowHead": {
+     "kind": "segmental",
+     "storeys": [
+      1,
+      2
+     ]
+    },
+    "roofFront": "mansard",
+    "dormers": 1,
+    "dormerStyle": "pediment",
+    "dormerBody": "stone",
+    "dormerAt": [
+     {
+      "from": 0.36,
+      "to": 0.64
+     }
+    ]
+   }
+  ],
+  "roof": {
+   "material": "slate"
+  },
+  "palette": {
+   "frame": "white-painted",
+   "door": "#26302a",
+   "stone": "#ebe8df",
+   "cornice": "#ebe8df",
+   "stoneMaterial": "painted",
+   "brick": "#534f4b",
+   "wallMaterial": "brick"
+  }
+ },
+ "provenance": {
+  "fronts/0/id": {
+   "source": "author",
+   "confidence": 0.75,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 1329-1521 px): three axes: ground 0-4.2 m; storeys at 5.4-7.0, 7.9-9.6 (segmental heads) and 10.7-12.4 m with small iron balconettes on the middle axis; a white frieze and cornice 13.5-14.0 m; a slate mansard with a dormer to ~17 m; dark brown brick #534f4b",
+   "at": "2023-03-13"
+  },
+  "fronts/0/basement": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 1329-1521 px): three axes: ground 0-4.2 m; storeys at 5.4-7.0, 7.9-9.6 (segmental heads) and 10.7-12.4 m with small iron balconettes on the middle axis; a white frieze and cornice 13.5-14.0 m; a slate mansard with a dormer to ~17 m; dark brown brick #534f4b (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/cornice": {
+   "source": "author",
+   "confidence": 0.75,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 1329-1521 px): three axes: ground 0-4.2 m; storeys at 5.4-7.0, 7.9-9.6 (segmental heads) and 10.7-12.4 m with small iron balconettes on the middle axis; a white frieze and cornice 13.5-14.0 m; a slate mansard with a dormer to ~17 m; dark brown brick #534f4b",
+   "at": "2023-03-13"
+  },
+  "fronts/0/windows": {
+   "source": "author",
+   "confidence": 0.75,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 1329-1521 px): three axes: ground 0-4.2 m; storeys at 5.4-7.0, 7.9-9.6 (segmental heads) and 10.7-12.4 m with small iron balconettes on the middle axis; a white frieze and cornice 13.5-14.0 m; a slate mansard with a dormer to ~17 m; dark brown brick #534f4b",
+   "at": "2023-03-13"
+  },
+  "fronts/0/windowSurround": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 1329-1521 px): three axes: ground 0-4.2 m; storeys at 5.4-7.0, 7.9-9.6 (segmental heads) and 10.7-12.4 m with small iron balconettes on the middle axis; a white frieze and cornice 13.5-14.0 m; a slate mansard with a dormer to ~17 m; dark brown brick #534f4b (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/hoist": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 1329-1521 px): three axes: ground 0-4.2 m; storeys at 5.4-7.0, 7.9-9.6 (segmental heads) and 10.7-12.4 m with small iron balconettes on the middle axis; a white frieze and cornice 13.5-14.0 m; a slate mansard with a dormer to ~17 m; dark brown brick #534f4b (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/street": {
+   "source": "author",
+   "confidence": 0.75,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 1329-1521 px): three axes: ground 0-4.2 m; storeys at 5.4-7.0, 7.9-9.6 (segmental heads) and 10.7-12.4 m with small iron balconettes on the middle axis; a white frieze and cornice 13.5-14.0 m; a slate mansard with a dormer to ~17 m; dark brown brick #534f4b",
+   "at": "2023-03-13"
+  },
+  "fronts/0/gable": {
+   "source": "author",
+   "confidence": 0.75,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 1329-1521 px): three axes: ground 0-4.2 m; storeys at 5.4-7.0, 7.9-9.6 (segmental heads) and 10.7-12.4 m with small iron balconettes on the middle axis; a white frieze and cornice 13.5-14.0 m; a slate mansard with a dormer to ~17 m; dark brown brick #534f4b",
+   "at": "2023-03-13"
+  },
+  "fronts/0/storeys": {
+   "source": "author",
+   "confidence": 0.75,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 1329-1521 px): three axes: ground 0-4.2 m; storeys at 5.4-7.0, 7.9-9.6 (segmental heads) and 10.7-12.4 m with small iron balconettes on the middle axis; a white frieze and cornice 13.5-14.0 m; a slate mansard with a dormer to ~17 m; dark brown brick #534f4b",
+   "at": "2023-03-13"
+  },
+  "fronts/0/bays": {
+   "source": "author",
+   "confidence": 0.75,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 1329-1521 px): three axes: ground 0-4.2 m; storeys at 5.4-7.0, 7.9-9.6 (segmental heads) and 10.7-12.4 m with small iron balconettes on the middle axis; a white frieze and cornice 13.5-14.0 m; a slate mansard with a dormer to ~17 m; dark brown brick #534f4b",
+   "at": "2023-03-13"
+  },
+  "fronts/0/storeyHeights": {
+   "source": "author",
+   "confidence": 0.75,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 1329-1521 px): three axes: ground 0-4.2 m; storeys at 5.4-7.0, 7.9-9.6 (segmental heads) and 10.7-12.4 m with small iron balconettes on the middle axis; a white frieze and cornice 13.5-14.0 m; a slate mansard with a dormer to ~17 m; dark brown brick #534f4b",
+   "at": "2023-03-13"
+  },
+  "fronts/0/doorBay": {
+   "source": "author",
+   "confidence": 0.75,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 1329-1521 px): three axes: ground 0-4.2 m; storeys at 5.4-7.0, 7.9-9.6 (segmental heads) and 10.7-12.4 m with small iron balconettes on the middle axis; a white frieze and cornice 13.5-14.0 m; a slate mansard with a dormer to ~17 m; dark brown brick #534f4b",
+   "at": "2023-03-13"
+  },
+  "fronts/0/windowHead": {
+   "source": "author",
+   "confidence": 0.75,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 1329-1521 px): three axes: ground 0-4.2 m; storeys at 5.4-7.0, 7.9-9.6 (segmental heads) and 10.7-12.4 m with small iron balconettes on the middle axis; a white frieze and cornice 13.5-14.0 m; a slate mansard with a dormer to ~17 m; dark brown brick #534f4b",
+   "at": "2023-03-13"
+  },
+  "fronts/0/roofFront": {
+   "source": "author",
+   "confidence": 0.75,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 1329-1521 px): three axes: ground 0-4.2 m; storeys at 5.4-7.0, 7.9-9.6 (segmental heads) and 10.7-12.4 m with small iron balconettes on the middle axis; a white frieze and cornice 13.5-14.0 m; a slate mansard with a dormer to ~17 m; dark brown brick #534f4b",
+   "at": "2023-03-13"
+  },
+  "fronts/0/dormers": {
+   "source": "author",
+   "confidence": 0.75,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 1329-1521 px): three axes: ground 0-4.2 m; storeys at 5.4-7.0, 7.9-9.6 (segmental heads) and 10.7-12.4 m with small iron balconettes on the middle axis; a white frieze and cornice 13.5-14.0 m; a slate mansard with a dormer to ~17 m; dark brown brick #534f4b",
+   "at": "2023-03-13"
+  },
+  "fronts/0/dormerStyle": {
+   "source": "author",
+   "confidence": 0.75,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 1329-1521 px): three axes: ground 0-4.2 m; storeys at 5.4-7.0, 7.9-9.6 (segmental heads) and 10.7-12.4 m with small iron balconettes on the middle axis; a white frieze and cornice 13.5-14.0 m; a slate mansard with a dormer to ~17 m; dark brown brick #534f4b",
+   "at": "2023-03-13"
+  },
+  "fronts/0/dormerBody": {
+   "source": "author",
+   "confidence": 0.75,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 1329-1521 px): three axes: ground 0-4.2 m; storeys at 5.4-7.0, 7.9-9.6 (segmental heads) and 10.7-12.4 m with small iron balconettes on the middle axis; a white frieze and cornice 13.5-14.0 m; a slate mansard with a dormer to ~17 m; dark brown brick #534f4b",
+   "at": "2023-03-13"
+  },
+  "fronts/0/dormerAt": {
+   "source": "author",
+   "confidence": 0.75,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 1329-1521 px): three axes: ground 0-4.2 m; storeys at 5.4-7.0, 7.9-9.6 (segmental heads) and 10.7-12.4 m with small iron balconettes on the middle axis; a white frieze and cornice 13.5-14.0 m; a slate mansard with a dormer to ~17 m; dark brown brick #534f4b",
+   "at": "2023-03-13"
+  },
+  "roof/material": {
+   "source": "author",
+   "confidence": 0.75,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 1329-1521 px): three axes: ground 0-4.2 m; storeys at 5.4-7.0, 7.9-9.6 (segmental heads) and 10.7-12.4 m with small iron balconettes on the middle axis; a white frieze and cornice 13.5-14.0 m; a slate mansard with a dormer to ~17 m; dark brown brick #534f4b",
+   "at": "2023-03-13"
+  },
+  "palette/frame": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 1329-1521 px): three axes: ground 0-4.2 m; storeys at 5.4-7.0, 7.9-9.6 (segmental heads) and 10.7-12.4 m with small iron balconettes on the middle axis; a white frieze and cornice 13.5-14.0 m; a slate mansard with a dormer to ~17 m; dark brown brick #534f4b (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/door": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 1329-1521 px): three axes: ground 0-4.2 m; storeys at 5.4-7.0, 7.9-9.6 (segmental heads) and 10.7-12.4 m with small iron balconettes on the middle axis; a white frieze and cornice 13.5-14.0 m; a slate mansard with a dormer to ~17 m; dark brown brick #534f4b (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/stone": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 1329-1521 px): three axes: ground 0-4.2 m; storeys at 5.4-7.0, 7.9-9.6 (segmental heads) and 10.7-12.4 m with small iron balconettes on the middle axis; a white frieze and cornice 13.5-14.0 m; a slate mansard with a dormer to ~17 m; dark brown brick #534f4b (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/cornice": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 1329-1521 px): three axes: ground 0-4.2 m; storeys at 5.4-7.0, 7.9-9.6 (segmental heads) and 10.7-12.4 m with small iron balconettes on the middle axis; a white frieze and cornice 13.5-14.0 m; a slate mansard with a dormer to ~17 m; dark brown brick #534f4b (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/stoneMaterial": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 1329-1521 px): three axes: ground 0-4.2 m; storeys at 5.4-7.0, 7.9-9.6 (segmental heads) and 10.7-12.4 m with small iron balconettes on the middle axis; a white frieze and cornice 13.5-14.0 m; a slate mansard with a dormer to ~17 m; dark brown brick #534f4b (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/brick": {
+   "source": "author",
+   "confidence": 0.75,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 1329-1521 px): three axes: ground 0-4.2 m; storeys at 5.4-7.0, 7.9-9.6 (segmental heads) and 10.7-12.4 m with small iron balconettes on the middle axis; a white frieze and cornice 13.5-14.0 m; a slate mansard with a dormer to ~17 m; dark brown brick #534f4b",
+   "at": "2023-03-13"
+  },
+  "palette/wallMaterial": {
+   "source": "author",
+   "confidence": 0.75,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 1329-1521 px): three axes: ground 0-4.2 m; storeys at 5.4-7.0, 7.9-9.6 (segmental heads) and 10.7-12.4 m with small iron balconettes on the middle axis; a white frieze and cornice 13.5-14.0 m; a slate mansard with a dormer to ~17 m; dark brown brick #534f4b",
+   "at": "2023-03-13"
+  }
+ },
+ "schemaLimits": [
+  {
+   "component": "balcony",
+   "what": "small iron balconettes on the middle axis of storeys 1-2 are not drawn"
+  }
+ ]
+}

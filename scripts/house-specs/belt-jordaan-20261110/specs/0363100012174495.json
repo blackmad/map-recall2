@@ -1,0 +1,200 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012174495",
+ "address": "Bloemgracht 8",
+ "design": {
+  "fronts": [
+   {
+    "id": "front0",
+    "basement": "stoop",
+    "cornice": "none",
+    "windows": "sash-6-over-6",
+    "windowSurround": "sill",
+    "hoist": false,
+    "street": "Bloemgracht",
+    "gable": "bell",
+    "crownRise": 0.95,
+    "atticWindows": 1,
+    "crownFinial": true,
+    "storeys": 4,
+    "bays": 3,
+    "storeyHeights": [
+     4.3,
+     2.5,
+     2.5,
+     2.7
+    ],
+    "doorBay": 2
+   }
+  ],
+  "roof": {
+   "material": "red-tile",
+   "squareSaddle": true
+  },
+  "palette": {
+   "frame": "white-painted",
+   "door": "#26302a",
+   "stone": "#ebe8df",
+   "cornice": "#ebe8df",
+   "stoneMaterial": "painted",
+   "brick": "#5d544c",
+   "wallMaterial": "brick"
+  }
+ },
+ "provenance": {
+  "fronts/0/id": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-4-10 strip 2023-03-13 (span 227-437 px): three axes; a stoop to a white painted ground storey 2.0-6.0 m (three small-paned windows, the door on the right axis); storeys at 6.3-7.9, 8.8-10.5, 11.3-13.0 m; a bell gable from ~14.0 m with white claw pieces, one attic light and a sculpted cap ornament to ~17.5 m; red-brown brick #5d544c",
+   "at": "2023-03-13"
+  },
+  "fronts/0/basement": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-4-10 strip 2023-03-13 (span 227-437 px): three axes; a stoop to a white painted ground storey 2.0-6.0 m (three small-paned windows, the door on the right axis); storeys at 6.3-7.9, 8.8-10.5, 11.3-13.0 m; a bell gable from ~14.0 m with white claw pieces, one attic light and a sculpted cap ornament to ~17.5 m; red-brown brick #5d544c",
+   "at": "2023-03-13"
+  },
+  "fronts/0/cornice": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of bloemgracht-4-10 strip 2023-03-13 (span 227-437 px): three axes; a stoop to a white painted ground storey 2.0-6.0 m (three small-paned windows, the door on the right axis); storeys at 6.3-7.9, 8.8-10.5, 11.3-13.0 m; a bell gable from ~14.0 m with white claw pieces, one attic light and a sculpted cap ornament to ~17.5 m; red-brown brick #5d544c (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/windows": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-4-10 strip 2023-03-13 (span 227-437 px): three axes; a stoop to a white painted ground storey 2.0-6.0 m (three small-paned windows, the door on the right axis); storeys at 6.3-7.9, 8.8-10.5, 11.3-13.0 m; a bell gable from ~14.0 m with white claw pieces, one attic light and a sculpted cap ornament to ~17.5 m; red-brown brick #5d544c",
+   "at": "2023-03-13"
+  },
+  "fronts/0/windowSurround": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of bloemgracht-4-10 strip 2023-03-13 (span 227-437 px): three axes; a stoop to a white painted ground storey 2.0-6.0 m (three small-paned windows, the door on the right axis); storeys at 6.3-7.9, 8.8-10.5, 11.3-13.0 m; a bell gable from ~14.0 m with white claw pieces, one attic light and a sculpted cap ornament to ~17.5 m; red-brown brick #5d544c (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/hoist": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-4-10 strip 2023-03-13 (span 227-437 px): three axes; a stoop to a white painted ground storey 2.0-6.0 m (three small-paned windows, the door on the right axis); storeys at 6.3-7.9, 8.8-10.5, 11.3-13.0 m; a bell gable from ~14.0 m with white claw pieces, one attic light and a sculpted cap ornament to ~17.5 m; red-brown brick #5d544c",
+   "at": "2023-03-13"
+  },
+  "fronts/0/street": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-4-10 strip 2023-03-13 (span 227-437 px): three axes; a stoop to a white painted ground storey 2.0-6.0 m (three small-paned windows, the door on the right axis); storeys at 6.3-7.9, 8.8-10.5, 11.3-13.0 m; a bell gable from ~14.0 m with white claw pieces, one attic light and a sculpted cap ornament to ~17.5 m; red-brown brick #5d544c",
+   "at": "2023-03-13"
+  },
+  "fronts/0/gable": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-4-10 strip 2023-03-13 (span 227-437 px): three axes; a stoop to a white painted ground storey 2.0-6.0 m (three small-paned windows, the door on the right axis); storeys at 6.3-7.9, 8.8-10.5, 11.3-13.0 m; a bell gable from ~14.0 m with white claw pieces, one attic light and a sculpted cap ornament to ~17.5 m; red-brown brick #5d544c",
+   "at": "2023-03-13"
+  },
+  "fronts/0/crownRise": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-4-10 strip 2023-03-13 (span 227-437 px): three axes; a stoop to a white painted ground storey 2.0-6.0 m (three small-paned windows, the door on the right axis); storeys at 6.3-7.9, 8.8-10.5, 11.3-13.0 m; a bell gable from ~14.0 m with white claw pieces, one attic light and a sculpted cap ornament to ~17.5 m; red-brown brick #5d544c",
+   "at": "2023-03-13"
+  },
+  "fronts/0/atticWindows": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-4-10 strip 2023-03-13 (span 227-437 px): three axes; a stoop to a white painted ground storey 2.0-6.0 m (three small-paned windows, the door on the right axis); storeys at 6.3-7.9, 8.8-10.5, 11.3-13.0 m; a bell gable from ~14.0 m with white claw pieces, one attic light and a sculpted cap ornament to ~17.5 m; red-brown brick #5d544c",
+   "at": "2023-03-13"
+  },
+  "fronts/0/crownFinial": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-4-10 strip 2023-03-13 (span 227-437 px): three axes; a stoop to a white painted ground storey 2.0-6.0 m (three small-paned windows, the door on the right axis); storeys at 6.3-7.9, 8.8-10.5, 11.3-13.0 m; a bell gable from ~14.0 m with white claw pieces, one attic light and a sculpted cap ornament to ~17.5 m; red-brown brick #5d544c",
+   "at": "2023-03-13"
+  },
+  "fronts/0/storeys": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-4-10 strip 2023-03-13 (span 227-437 px): three axes; a stoop to a white painted ground storey 2.0-6.0 m (three small-paned windows, the door on the right axis); storeys at 6.3-7.9, 8.8-10.5, 11.3-13.0 m; a bell gable from ~14.0 m with white claw pieces, one attic light and a sculpted cap ornament to ~17.5 m; red-brown brick #5d544c",
+   "at": "2023-03-13"
+  },
+  "fronts/0/bays": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-4-10 strip 2023-03-13 (span 227-437 px): three axes; a stoop to a white painted ground storey 2.0-6.0 m (three small-paned windows, the door on the right axis); storeys at 6.3-7.9, 8.8-10.5, 11.3-13.0 m; a bell gable from ~14.0 m with white claw pieces, one attic light and a sculpted cap ornament to ~17.5 m; red-brown brick #5d544c",
+   "at": "2023-03-13"
+  },
+  "fronts/0/storeyHeights": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-4-10 strip 2023-03-13 (span 227-437 px): three axes; a stoop to a white painted ground storey 2.0-6.0 m (three small-paned windows, the door on the right axis); storeys at 6.3-7.9, 8.8-10.5, 11.3-13.0 m; a bell gable from ~14.0 m with white claw pieces, one attic light and a sculpted cap ornament to ~17.5 m; red-brown brick #5d544c",
+   "at": "2023-03-13"
+  },
+  "fronts/0/doorBay": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-4-10 strip 2023-03-13 (span 227-437 px): three axes; a stoop to a white painted ground storey 2.0-6.0 m (three small-paned windows, the door on the right axis); storeys at 6.3-7.9, 8.8-10.5, 11.3-13.0 m; a bell gable from ~14.0 m with white claw pieces, one attic light and a sculpted cap ornament to ~17.5 m; red-brown brick #5d544c",
+   "at": "2023-03-13"
+  },
+  "roof/material": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-4-10 strip 2023-03-13 (span 227-437 px): three axes; a stoop to a white painted ground storey 2.0-6.0 m (three small-paned windows, the door on the right axis); storeys at 6.3-7.9, 8.8-10.5, 11.3-13.0 m; a bell gable from ~14.0 m with white claw pieces, one attic light and a sculpted cap ornament to ~17.5 m; red-brown brick #5d544c",
+   "at": "2023-03-13"
+  },
+  "roof/squareSaddle": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-4-10 strip 2023-03-13 (span 227-437 px): three axes; a stoop to a white painted ground storey 2.0-6.0 m (three small-paned windows, the door on the right axis); storeys at 6.3-7.9, 8.8-10.5, 11.3-13.0 m; a bell gable from ~14.0 m with white claw pieces, one attic light and a sculpted cap ornament to ~17.5 m; red-brown brick #5d544c",
+   "at": "2023-03-13"
+  },
+  "palette/frame": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of bloemgracht-4-10 strip 2023-03-13 (span 227-437 px): three axes; a stoop to a white painted ground storey 2.0-6.0 m (three small-paned windows, the door on the right axis); storeys at 6.3-7.9, 8.8-10.5, 11.3-13.0 m; a bell gable from ~14.0 m with white claw pieces, one attic light and a sculpted cap ornament to ~17.5 m; red-brown brick #5d544c (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/door": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of bloemgracht-4-10 strip 2023-03-13 (span 227-437 px): three axes; a stoop to a white painted ground storey 2.0-6.0 m (three small-paned windows, the door on the right axis); storeys at 6.3-7.9, 8.8-10.5, 11.3-13.0 m; a bell gable from ~14.0 m with white claw pieces, one attic light and a sculpted cap ornament to ~17.5 m; red-brown brick #5d544c (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/stone": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of bloemgracht-4-10 strip 2023-03-13 (span 227-437 px): three axes; a stoop to a white painted ground storey 2.0-6.0 m (three small-paned windows, the door on the right axis); storeys at 6.3-7.9, 8.8-10.5, 11.3-13.0 m; a bell gable from ~14.0 m with white claw pieces, one attic light and a sculpted cap ornament to ~17.5 m; red-brown brick #5d544c (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/cornice": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of bloemgracht-4-10 strip 2023-03-13 (span 227-437 px): three axes; a stoop to a white painted ground storey 2.0-6.0 m (three small-paned windows, the door on the right axis); storeys at 6.3-7.9, 8.8-10.5, 11.3-13.0 m; a bell gable from ~14.0 m with white claw pieces, one attic light and a sculpted cap ornament to ~17.5 m; red-brown brick #5d544c (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/stoneMaterial": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of bloemgracht-4-10 strip 2023-03-13 (span 227-437 px): three axes; a stoop to a white painted ground storey 2.0-6.0 m (three small-paned windows, the door on the right axis); storeys at 6.3-7.9, 8.8-10.5, 11.3-13.0 m; a bell gable from ~14.0 m with white claw pieces, one attic light and a sculpted cap ornament to ~17.5 m; red-brown brick #5d544c (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/brick": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-4-10 strip 2023-03-13 (span 227-437 px): three axes; a stoop to a white painted ground storey 2.0-6.0 m (three small-paned windows, the door on the right axis); storeys at 6.3-7.9, 8.8-10.5, 11.3-13.0 m; a bell gable from ~14.0 m with white claw pieces, one attic light and a sculpted cap ornament to ~17.5 m; red-brown brick #5d544c",
+   "at": "2023-03-13"
+  },
+  "palette/wallMaterial": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-4-10 strip 2023-03-13 (span 227-437 px): three axes; a stoop to a white painted ground storey 2.0-6.0 m (three small-paned windows, the door on the right axis); storeys at 6.3-7.9, 8.8-10.5, 11.3-13.0 m; a bell gable from ~14.0 m with white claw pieces, one attic light and a sculpted cap ornament to ~17.5 m; red-brown brick #5d544c",
+   "at": "2023-03-13"
+  }
+ },
+ "schemaLimits": [
+  {
+   "component": "ground storey",
+   "what": "a white painted (stucco) ground storey over the stoop is drawn in the wall brick (paintedStoreys z-fights, eland report; a ground front cannot stand on a stoop)"
+  },
+  {
+   "component": "gable ornament",
+   "what": "the sculpted animal on the bell's cap and the claw pieces are not drawn"
+  }
+ ]
+}

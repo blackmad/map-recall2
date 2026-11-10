@@ -1,0 +1,225 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012173348",
+ "address": "Bloemgracht 26",
+ "design": {
+  "fronts": [
+   {
+    "id": "front0",
+    "basement": "none",
+    "cornice": "none",
+    "windows": "sash",
+    "windowSurround": "sill",
+    "hoist": false,
+    "street": "Bloemgracht",
+    "gable": "neck",
+    "crownRise": 1.1,
+    "crownCap": "flat",
+    "crownFinial": true,
+    "atticWindows": 1,
+    "storeys": 4,
+    "bays": 2,
+    "storeyHeights": [
+     4.2,
+     3,
+     2.9,
+     2.9
+    ],
+    "doorBay": 0,
+    "bands": "both",
+    "groundFront": {
+     "kind": "pui",
+     "bays": [
+      "door",
+      "window"
+     ],
+     "colour": "#26302a",
+     "evidence": "strip 2023-03-13: dark timber glazed ground front"
+    }
+   }
+  ],
+  "roof": {
+   "material": "red-tile",
+   "squareSaddle": true
+  },
+  "palette": {
+   "frame": "white-painted",
+   "door": "#26302a",
+   "stone": "#ebe8df",
+   "cornice": "#ebe8df",
+   "stoneMaterial": "painted",
+   "brick": "#6a5850",
+   "wallMaterial": "brick"
+  }
+ },
+ "provenance": {
+  "fronts/0/id": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 469-615 px): a 3.7 m front of two axes: a glazed ground front 0-4.0 m; storeys at 4.3-6.4, 7.3-9.4 and 10.2-12.1 m with white stone bands at sill and head level; a neck gable from ~13.2 m with claw pieces, one attic light and a flat cap with a sculpted finial to ~16.3 m; red-brown brick (measured #6c6964 on a box touching the white bands; #6a5850 between them by eye)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/basement": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 469-615 px): a 3.7 m front of two axes: a glazed ground front 0-4.0 m; storeys at 4.3-6.4, 7.3-9.4 and 10.2-12.1 m with white stone bands at sill and head level; a neck gable from ~13.2 m with claw pieces, one attic light and a flat cap with a sculpted finial to ~16.3 m; red-brown brick (measured #6c6964 on a box touching the white bands; #6a5850 between them by eye) (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/cornice": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 469-615 px): a 3.7 m front of two axes: a glazed ground front 0-4.0 m; storeys at 4.3-6.4, 7.3-9.4 and 10.2-12.1 m with white stone bands at sill and head level; a neck gable from ~13.2 m with claw pieces, one attic light and a flat cap with a sculpted finial to ~16.3 m; red-brown brick (measured #6c6964 on a box touching the white bands; #6a5850 between them by eye) (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/windows": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 469-615 px): a 3.7 m front of two axes: a glazed ground front 0-4.0 m; storeys at 4.3-6.4, 7.3-9.4 and 10.2-12.1 m with white stone bands at sill and head level; a neck gable from ~13.2 m with claw pieces, one attic light and a flat cap with a sculpted finial to ~16.3 m; red-brown brick (measured #6c6964 on a box touching the white bands; #6a5850 between them by eye)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/windowSurround": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 469-615 px): a 3.7 m front of two axes: a glazed ground front 0-4.0 m; storeys at 4.3-6.4, 7.3-9.4 and 10.2-12.1 m with white stone bands at sill and head level; a neck gable from ~13.2 m with claw pieces, one attic light and a flat cap with a sculpted finial to ~16.3 m; red-brown brick (measured #6c6964 on a box touching the white bands; #6a5850 between them by eye) (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/hoist": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 469-615 px): a 3.7 m front of two axes: a glazed ground front 0-4.0 m; storeys at 4.3-6.4, 7.3-9.4 and 10.2-12.1 m with white stone bands at sill and head level; a neck gable from ~13.2 m with claw pieces, one attic light and a flat cap with a sculpted finial to ~16.3 m; red-brown brick (measured #6c6964 on a box touching the white bands; #6a5850 between them by eye) (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/street": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 469-615 px): a 3.7 m front of two axes: a glazed ground front 0-4.0 m; storeys at 4.3-6.4, 7.3-9.4 and 10.2-12.1 m with white stone bands at sill and head level; a neck gable from ~13.2 m with claw pieces, one attic light and a flat cap with a sculpted finial to ~16.3 m; red-brown brick (measured #6c6964 on a box touching the white bands; #6a5850 between them by eye)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/gable": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 469-615 px): a 3.7 m front of two axes: a glazed ground front 0-4.0 m; storeys at 4.3-6.4, 7.3-9.4 and 10.2-12.1 m with white stone bands at sill and head level; a neck gable from ~13.2 m with claw pieces, one attic light and a flat cap with a sculpted finial to ~16.3 m; red-brown brick (measured #6c6964 on a box touching the white bands; #6a5850 between them by eye)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/crownRise": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 469-615 px): a 3.7 m front of two axes: a glazed ground front 0-4.0 m; storeys at 4.3-6.4, 7.3-9.4 and 10.2-12.1 m with white stone bands at sill and head level; a neck gable from ~13.2 m with claw pieces, one attic light and a flat cap with a sculpted finial to ~16.3 m; red-brown brick (measured #6c6964 on a box touching the white bands; #6a5850 between them by eye)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/crownCap": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 469-615 px): a 3.7 m front of two axes: a glazed ground front 0-4.0 m; storeys at 4.3-6.4, 7.3-9.4 and 10.2-12.1 m with white stone bands at sill and head level; a neck gable from ~13.2 m with claw pieces, one attic light and a flat cap with a sculpted finial to ~16.3 m; red-brown brick (measured #6c6964 on a box touching the white bands; #6a5850 between them by eye)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/crownFinial": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 469-615 px): a 3.7 m front of two axes: a glazed ground front 0-4.0 m; storeys at 4.3-6.4, 7.3-9.4 and 10.2-12.1 m with white stone bands at sill and head level; a neck gable from ~13.2 m with claw pieces, one attic light and a flat cap with a sculpted finial to ~16.3 m; red-brown brick (measured #6c6964 on a box touching the white bands; #6a5850 between them by eye)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/atticWindows": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 469-615 px): a 3.7 m front of two axes: a glazed ground front 0-4.0 m; storeys at 4.3-6.4, 7.3-9.4 and 10.2-12.1 m with white stone bands at sill and head level; a neck gable from ~13.2 m with claw pieces, one attic light and a flat cap with a sculpted finial to ~16.3 m; red-brown brick (measured #6c6964 on a box touching the white bands; #6a5850 between them by eye)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/storeys": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 469-615 px): a 3.7 m front of two axes: a glazed ground front 0-4.0 m; storeys at 4.3-6.4, 7.3-9.4 and 10.2-12.1 m with white stone bands at sill and head level; a neck gable from ~13.2 m with claw pieces, one attic light and a flat cap with a sculpted finial to ~16.3 m; red-brown brick (measured #6c6964 on a box touching the white bands; #6a5850 between them by eye)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/bays": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 469-615 px): a 3.7 m front of two axes: a glazed ground front 0-4.0 m; storeys at 4.3-6.4, 7.3-9.4 and 10.2-12.1 m with white stone bands at sill and head level; a neck gable from ~13.2 m with claw pieces, one attic light and a flat cap with a sculpted finial to ~16.3 m; red-brown brick (measured #6c6964 on a box touching the white bands; #6a5850 between them by eye)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/storeyHeights": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 469-615 px): a 3.7 m front of two axes: a glazed ground front 0-4.0 m; storeys at 4.3-6.4, 7.3-9.4 and 10.2-12.1 m with white stone bands at sill and head level; a neck gable from ~13.2 m with claw pieces, one attic light and a flat cap with a sculpted finial to ~16.3 m; red-brown brick (measured #6c6964 on a box touching the white bands; #6a5850 between them by eye)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/doorBay": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 469-615 px): a 3.7 m front of two axes: a glazed ground front 0-4.0 m; storeys at 4.3-6.4, 7.3-9.4 and 10.2-12.1 m with white stone bands at sill and head level; a neck gable from ~13.2 m with claw pieces, one attic light and a flat cap with a sculpted finial to ~16.3 m; red-brown brick (measured #6c6964 on a box touching the white bands; #6a5850 between them by eye)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/bands": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 469-615 px): a 3.7 m front of two axes: a glazed ground front 0-4.0 m; storeys at 4.3-6.4, 7.3-9.4 and 10.2-12.1 m with white stone bands at sill and head level; a neck gable from ~13.2 m with claw pieces, one attic light and a flat cap with a sculpted finial to ~16.3 m; red-brown brick (measured #6c6964 on a box touching the white bands; #6a5850 between them by eye)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/groundFront": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 469-615 px): a 3.7 m front of two axes: a glazed ground front 0-4.0 m; storeys at 4.3-6.4, 7.3-9.4 and 10.2-12.1 m with white stone bands at sill and head level; a neck gable from ~13.2 m with claw pieces, one attic light and a flat cap with a sculpted finial to ~16.3 m; red-brown brick (measured #6c6964 on a box touching the white bands; #6a5850 between them by eye)",
+   "at": "2023-03-13"
+  },
+  "roof/material": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 469-615 px): a 3.7 m front of two axes: a glazed ground front 0-4.0 m; storeys at 4.3-6.4, 7.3-9.4 and 10.2-12.1 m with white stone bands at sill and head level; a neck gable from ~13.2 m with claw pieces, one attic light and a flat cap with a sculpted finial to ~16.3 m; red-brown brick (measured #6c6964 on a box touching the white bands; #6a5850 between them by eye)",
+   "at": "2023-03-13"
+  },
+  "roof/squareSaddle": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 469-615 px): a 3.7 m front of two axes: a glazed ground front 0-4.0 m; storeys at 4.3-6.4, 7.3-9.4 and 10.2-12.1 m with white stone bands at sill and head level; a neck gable from ~13.2 m with claw pieces, one attic light and a flat cap with a sculpted finial to ~16.3 m; red-brown brick (measured #6c6964 on a box touching the white bands; #6a5850 between them by eye)",
+   "at": "2023-03-13"
+  },
+  "palette/frame": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 469-615 px): a 3.7 m front of two axes: a glazed ground front 0-4.0 m; storeys at 4.3-6.4, 7.3-9.4 and 10.2-12.1 m with white stone bands at sill and head level; a neck gable from ~13.2 m with claw pieces, one attic light and a flat cap with a sculpted finial to ~16.3 m; red-brown brick (measured #6c6964 on a box touching the white bands; #6a5850 between them by eye) (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/door": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 469-615 px): a 3.7 m front of two axes: a glazed ground front 0-4.0 m; storeys at 4.3-6.4, 7.3-9.4 and 10.2-12.1 m with white stone bands at sill and head level; a neck gable from ~13.2 m with claw pieces, one attic light and a flat cap with a sculpted finial to ~16.3 m; red-brown brick (measured #6c6964 on a box touching the white bands; #6a5850 between them by eye) (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/stone": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 469-615 px): a 3.7 m front of two axes: a glazed ground front 0-4.0 m; storeys at 4.3-6.4, 7.3-9.4 and 10.2-12.1 m with white stone bands at sill and head level; a neck gable from ~13.2 m with claw pieces, one attic light and a flat cap with a sculpted finial to ~16.3 m; red-brown brick (measured #6c6964 on a box touching the white bands; #6a5850 between them by eye) (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/cornice": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 469-615 px): a 3.7 m front of two axes: a glazed ground front 0-4.0 m; storeys at 4.3-6.4, 7.3-9.4 and 10.2-12.1 m with white stone bands at sill and head level; a neck gable from ~13.2 m with claw pieces, one attic light and a flat cap with a sculpted finial to ~16.3 m; red-brown brick (measured #6c6964 on a box touching the white bands; #6a5850 between them by eye) (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/stoneMaterial": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 469-615 px): a 3.7 m front of two axes: a glazed ground front 0-4.0 m; storeys at 4.3-6.4, 7.3-9.4 and 10.2-12.1 m with white stone bands at sill and head level; a neck gable from ~13.2 m with claw pieces, one attic light and a flat cap with a sculpted finial to ~16.3 m; red-brown brick (measured #6c6964 on a box touching the white bands; #6a5850 between them by eye) (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/brick": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 469-615 px): a 3.7 m front of two axes: a glazed ground front 0-4.0 m; storeys at 4.3-6.4, 7.3-9.4 and 10.2-12.1 m with white stone bands at sill and head level; a neck gable from ~13.2 m with claw pieces, one attic light and a flat cap with a sculpted finial to ~16.3 m; red-brown brick (measured #6c6964 on a box touching the white bands; #6a5850 between them by eye)",
+   "at": "2023-03-13"
+  },
+  "palette/wallMaterial": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 469-615 px): a 3.7 m front of two axes: a glazed ground front 0-4.0 m; storeys at 4.3-6.4, 7.3-9.4 and 10.2-12.1 m with white stone bands at sill and head level; a neck gable from ~13.2 m with claw pieces, one attic light and a flat cap with a sculpted finial to ~16.3 m; red-brown brick (measured #6c6964 on a box touching the white bands; #6a5850 between them by eye)",
+   "at": "2023-03-13"
+  }
+ },
+ "schemaLimits": [
+  {
+   "component": "gable ornament",
+   "what": "the sculpted cap group and the claw pieces are not drawn"
+  }
+ ]
+}
