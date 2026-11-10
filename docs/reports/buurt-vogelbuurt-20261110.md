@@ -10,9 +10,9 @@ Sheets and strips: `/Users/blackmad/Code/map-recall2-source-data/block-face-stri
 ## Designs (read off the strips, not year bands)
 | design | faces | type | pands placed |
 |---|---|---|---|
-| 1918-19 brick cottages, plain gutter (Brede, Derde, Eerste, Korte, Tweede, Vierde, Vijfde Vogelstraat) | 22 | `vogel-1918-cottage-3axis` / `-2axis` | 12 |
-| 1918-19 cottages with a dark boarded band 3.0-4.0 m and a wide cream box dormer (Zamenhofstraat, Lange Vogelstraat, Vogelplantsoen) | 13 | `vogel-1918-timber-band-cottage` | 28 |
-| 1921-28 two-storey rows: wide upper window over a ground window, narrow window over paired doors, flat dormers, pointed gable block ends (Flamingo, Kalkoen, Pelikaan, Pluvier, Meeuwenplein) | 20 | `vogel-1921-two-storey-dormer-row` | 39 |
+| 1918-19 brick cottages, plain gutter (Brede, Derde, Eerste, Korte, Tweede, Vierde, Vijfde Vogelstraat) | 22 | `vogel-1918-cottage-3axis` (7) / `-2axis` (4) | 11 |
+| 1918-19 cottages with a dark boarded band 3.0-4.0 m and a wide cream box dormer (Zamenhofstraat, Lange Vogelstraat, Vogelplantsoen) | 13 | `vogel-1918-timber-band-cottage` | 23 |
+| 1921-28 two-storey rows: wide upper window over a ground window, narrow window over paired doors, flat dormers, pointed gable block ends (Flamingo, Kalkoen, Pelikaan, Pluvier, Meeuwenplein) | 20 | `vogel-1921-two-storey-dormer-row` | 45 |
 | Meeuwenlaan 281-327, Merelstraat (14 m, four-storey blocks) | 5 | NO TYPE (not attempted) | 0 |
 
 ## Yield (252 pands run through auto-place; 20 Meeuwenlaan/Merel pands and 10 vogel-21-39 sheds not run)
