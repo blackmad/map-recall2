@@ -19,7 +19,7 @@ import { BuildingContextIndex } from '../../src/canalRecall/buildingContextIndex
 import { KIT_HIDE_IDS } from '../../src/canalRecall/landmarkKits.ts';
 import { GABLE_SHAPES } from '../../src/canalRecall/roofMesh.ts';
 import { specView } from '../../src/canalRecall/houseSpec/view.ts';
-import type { HouseSpecView } from '../../src/canalRecall/houseSpec/decorate.ts';
+import { specDesignOn, type HouseSpecView } from '../../src/canalRecall/houseSpec/decorate.ts';
 import type { HouseSpec } from '../../src/canalRecall/houseSpec/spec.ts';
 import { lngLatToRd, rdToLngLat } from '../../src/canalRecall/facade/rdNew.ts';
 import { rasterise, type RasterAtlas, type RasterImage, type RasterMesh, type LitShading, type Vec3 } from '../../src/canalRecall/houseSpec/softRaster.ts';
@@ -88,6 +88,9 @@ Flags
   --wall <edge|deg>   frame this footprint wall: an edge index of the outer ring (the audit's edge field) or the edge whose outward
                       normal bearing is nearest, e.g. 215deg. Sets the front and the 3/4 view's wall; overrides the reference's wall;
                       "face": the frontage of the block face that lists the pand (its facts.json fronts[0], the chord over an erker)
+  --set <set.json>    render every pand of a house-line set (scripts/house-specs/sets/*.json, e.g. the standing
+                      easy-houses-20261110 acceptance set) in one session, each into <out>/<pand> (default
+                      artifacts/house-preview/sets/<set name>/<pand>), other flags applied to each
   --whole-tile        build the chunk from every building of the pand's z14 tile, exactly as the runtime groups
                       it (~4 s a render); by default the chunk holds the tile's buildings within 30 m of the pand,
                       which drew the same pixels as the whole tile at Nassaukade (0363100012164843)
@@ -106,12 +109,15 @@ overrides, measurements, verdict). The sheet header names the route and the look
 by PRE_BLUR_PX (1.5 px Gaussian sigma at 50 px/m) before measureFacade. Atlas cache:
 artifacts/house-preview/atlas-<look>-<size>-<painter hash>.bin (first run paints, later runs load).
 
-Overrides: fronts[0].gable -> monumentGable, palette.wall (or palette.brick) hex -> facadeMappedColour, the bays, and
-(lane H11) storeys, storeyHeights[0], the window look (windowSurround, speklagen, windowHead, windows, windowProportion,
-palette.frame) and the shopfront through the game's own decorator (houseSpec/view.ts specView -> withHouseSpec;
-HOUSE_SPEC_DESIGN=0 holds them, =storeys,look keeps only those). Every other design field is listed under
-overrides.notApplied in measure.json (the generic path has no property for it yet). measure.json \`layout\` is the
-pand's street-run grid as the mesher laid it: drawn storeys (ground included), upper storey pitch, window columns.
+Overrides: fronts[0].gable -> monumentGable, palette.wall (or palette.brick) hex -> facadeMappedColour, the bays,
+fronts[0].basement stoop (with its stoop fields) -> specStoop, and through the game's own decorator (houseSpec/view.ts
+specView -> withHouseSpec) the storeys (lane H9, with lane H11's storeyHeights[0] and nearest-count storey fit) and,
+held until released (decorate.ts SPEC_DESIGN_HELD; in Node HOUSE_SPEC_DESIGN=1 releases all, =look only that, =0 holds
+storeys too), lane H11's window look (windowSurround, speklagen, windowHead, windows, windowProportion, palette.frame)
+and shopfront. Every other
+design field is listed under overrides.notApplied in measure.json (the generic path has no property for it yet).
+measure.json \`layout\` is the pand's street-run grid as the mesher laid it: drawn storeys (ground included), upper
+storey pitch, window columns.
 
 Not reproduced: the far and roof distance tiers, mipmaps, cast shadows (a wall in another building's shadow draws
 sunlit), fog, the analytic window SDF, the ground lift, post-processing, the GLB slot cells (an installed GLB draws
@@ -122,7 +128,7 @@ Chromium) or a ride frame.`;
 // Arguments
 // ---------------------------------------------------------------------------------------------------------------
 export type Route = 'generic' | 'spec' | 'installed' | 'recipe';
-type Args = { target?: string; spec?: string; intent?: string; wall?: string; route?: Exclude<Route, 'recipe'>; unlit: boolean; glbLit: boolean; photo: boolean; threeq: boolean; recipe: string | boolean; wholeTile: boolean; watch: boolean; look: string; ppm: number; out?: string; crops?: string; preferCrop: boolean; chunk?: string; strip?: string; help: boolean };
+type Args = { target?: string; spec?: string; intent?: string; wall?: string; route?: Exclude<Route, 'recipe'>; unlit: boolean; glbLit: boolean; photo: boolean; threeq: boolean; recipe: string | boolean; wholeTile: boolean; watch: boolean; look: string; ppm: number; out?: string; crops?: string; preferCrop: boolean; chunk?: string; strip?: string; set?: string; help: boolean };
 export function parseArgs(argv: string[]): Args {
   const a: Args = { unlit: false, glbLit: false, photo: false, threeq: false, recipe: false, wholeTile: false, watch: false, look: 'photo', ppm: 50, preferCrop: false, help: false };
   for (let i = 0; i < argv.length; i++) {
@@ -153,6 +159,7 @@ export function parseArgs(argv: string[]): Args {
       case '--prefer-crop': a.preferCrop = true; break;
       case '--chunk': a.chunk = value(); break;
       case '--strip': a.strip = value(); break;
+      case '--set': a.set = value(); break;
       default:
         if (flag.startsWith('--')) throw new Error(`unknown flag ${flag} (see --help)`);
         if (a.target) throw new Error(`two targets: ${a.target} and ${flag}`);
@@ -200,18 +207,22 @@ export function overridePatch(o: Override): { patch: Record<string, unknown>; ap
   const used = new Set<string>(['gable', 'id']);
   if (bays) { designView.bays = bays; designView.src.bays = 'author'; used.add('bays').add('axisGrid'); }
   if (view.storeys) { designView.storeys = view.storeys; designView.src.storeys = 'author'; used.add('storeys'); applied.push(`fronts[0].storeys -> specRecipe.storeys=${view.storeys}`); }
-  if (view.groundM) { designView.groundM = view.groundM; used.add('storeyHeights'); applied.push(`fronts[0].storeyHeights[0] -> specRecipe.groundM=${view.groundM}`); }
+  const held = (f: 'storeys' | 'look' | 'shop') => specDesignOn(f) ? '' : ' (held: SPEC_DESIGN_HELD)';
+  if (view.groundM) { designView.groundM = view.groundM; used.add('storeyHeights'); applied.push(`fronts[0].storeyHeights[0] -> specRecipe.groundM=${view.groundM}${held('storeys')}`); }
   if (view.look) {
     designView.look = view.look; designView.src.look = 'author';
     for (const k of ['windowSurround', 'speklagen', 'windowHead', 'windows', 'windowProportion']) if (front[k] !== undefined) used.add(k);
-    applied.push(`window look -> specRecipe.look=${JSON.stringify(view.look)}`);
+    applied.push(`window look -> specRecipe.look=${JSON.stringify(view.look)}${held('look')}`);
   }
   if (view.shop !== undefined) {
     designView.shop = view.shop; designView.src.shop = 'author'; if (view.shopHex) designView.shopHex = view.shopHex;
     if (front.shopfront !== undefined) used.add('shopfront');
-    applied.push(`ground storey -> specShop=${view.shop}${view.shopHex ? ` shopHex=${view.shopHex}` : ''}`);
+    applied.push(`ground storey -> specShop=${view.shop}${view.shopHex ? ` shopHex=${view.shopHex}` : ''}${held('shop')}`);
   }
   if (Object.keys(designView.src).length) patch.houseSpec = designView;
+  // A stoop (K-stoep #360), as the decorator writes it (houseSpec/decorate.ts specStoop): the measured fields, or {}.
+  const stooped = front.basement === 'stoop' || front.basement === 'stoop-and-windows';
+  if (stooped) { patch.specStoop = (front.stoop ?? {}) as Record<string, unknown>; applied.push(`fronts[0].basement${front.stoop ? '+stoop' : ''} -> specStoop`); used.add('basement').add('stoop'); }
   for (const k of Object.keys(front)) if (!used.has(k)) notApplied.push(`fronts[0].${k}`);
   // The wall colour: threeBuildingFeatures meshBuildingFor takes `facadeMappedColour` as the sourced wall in the photo look.
   const palette = (o.design.palette ?? {}) as Record<string, unknown>;
@@ -812,7 +823,19 @@ function report(r: PreviewResult, ms: number) {
 async function main() {
   const t0 = performance.now();
   const args = parseArgs(process.argv.slice(2));
-  if (args.help || (!args.target && !args.spec && !args.intent)) { console.log(HELP); return; }
+  if (args.help || (!args.target && !args.spec && !args.intent && !args.set)) { console.log(HELP); return; }
+  if (args.set) {
+    // A house-line set (lane H9): every pand in one session, the same flags.
+    const set = readJson(args.set) as { name: string; pands: { pandId: string }[] };
+    const root = args.out ?? path.join(ATLAS_DIR, 'sets', set.name);
+    const session = new PreviewSession(args.look);
+    for (const { pandId } of set.pands) {
+      const t1 = performance.now();
+      report(await renderPand(session, pandId, { ...args, out: path.join(root, bare(pandId)) }), performance.now() - t1);
+    }
+    console.log(`  ${set.pands.length} pands, total ${Math.round(performance.now() - t0)} ms`);
+    return;
+  }
   const overrideFile = args.spec ?? args.intent;
   const readOv = () => overrideFile ? readOverride(overrideFile, args.spec ? 'spec' : 'intent') : undefined;
   let ov = readOv();

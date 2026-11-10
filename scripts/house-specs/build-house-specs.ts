@@ -109,7 +109,8 @@ for (const f of [...handFiles.keys()].sort()) { add(validateSpec(json(handFiles.
 
 // --- 2. resolve, route, runtime view -----------------------------------------------------------------------------
 const hex = (v: unknown) => (typeof v === 'string' ? (/^#[0-9a-f]{6}$/i.test(v) ? v.toLowerCase() : SWATCHES[v]?.toLowerCase()) : undefined);
-// The runtime view (the extract's `v`): houseSpec/view.ts specView, shared with house:preview --spec.
+// The runtime view (the extract's `v`): houseSpec/view.ts specView (H9 storeys/wallFamily/flat gable, K-stoep stoop,
+// H11 design fields), shared with house:preview --spec.
 const viewOf = (spec: HouseSpec): HouseSpecView => specView(spec);
 const resolved = new Map<string, HouseSpec>();
 for (const [pand, list] of [...parts].sort(([a], [b]) => (a < b ? -1 : 1))) resolved.set(pand, withRoute(resolveSpecs(list)));
@@ -191,13 +192,17 @@ const report = {
   bySource: Object.fromEntries(SOURCES_SEEN.map(s => [s, 0])) as Record<string, number>,
   strongest: {} as Record<string, number>,
   multiSource: 0,
-  runtime: { gable: 0, year: 0, wallMaterial: 0, wallHex: 0, bays: 0, storeys: 0, look: 0, shop: 0 } as Record<string, number>,
-  // H11: generic-path pands (no installed model) that draw each design field.
-  genericDesign: { storeys: 0, look: 0, shop: 0 } as Record<string, number>,
+  runtime: { gable: 0, year: 0, wallMaterial: 0, wallHex: 0, bays: 0, storeys: 0, stoop: 0, groundM: 0, look: 0, shop: 0 } as Record<string, number>,
+  // H11: generic-path pands (no installed model) that carry each design field (drawn once SPEC_DESIGN_HELD releases it).
+  genericDesign: { groundM: 0, look: 0, shop: 0 } as Record<string, number>,
   /** Pands the generic path draws (no installed GLB/chunk hides them) whose spec carries bays or a wall colour: the
    *  houses whose look changes when the spec extract is published. */
   genericVisibleWithMesherReads: 0,
   modelledByInstall: 0,
+  /** Of genericVisibleWithMesherReads, how many carry each read (lane H9: the wall-colour rule's city-wide reach). */
+  genericVisibleBy: { wallHex: 0, bays: 0, storeys: 0 },
+  /** The generic-path pands whose wall the wall-colour rule draws (for the random review sheet). */
+  genericVisibleWallPands: [] as string[],
   ridePriority: { pands: 0, withBays: 0, withGable: 0 },
   byBuurt: {} as Record<string, { pands: number; gebied: string; ride: boolean; bays: number; gable: number }>,
 };
@@ -213,7 +218,11 @@ for (const [pand, spec] of resolved) {
   for (const k of Object.keys(report.runtime)) if ((v as any)[k] !== undefined) report.runtime[k]++;
   const installed = modelled.has(pand);
   if (installed) report.modelledByInstall++;
-  else if (at && (v.bays || v.wallHex)) report.genericVisibleWithMesherReads++;
+  else if (at && (v.bays || v.wallHex || v.storeys)) {
+    report.genericVisibleWithMesherReads++;
+    for (const k of ['wallHex', 'bays', 'storeys'] as const) if (v[k] !== undefined) report.genericVisibleBy[k]++;
+    if (v.wallHex) report.genericVisibleWallPands.push(pand);
+  }
   if (!installed && at) for (const k of Object.keys(report.genericDesign)) if ((v as any)[k] !== undefined) report.genericDesign[k]++;
   const b = at?.buurt;
   if (b) {
@@ -232,8 +241,8 @@ console.log(`  inputs: register ${counts.register}, block faces ${counts.faces} 
 console.log(`  pands with a field from: ${Object.entries(report.bySource).map(([k, n]) => `${k} ${n}`).join(', ')}; ${report.multiSource} from more than one source`);
 console.log(`  route: recipe ${report.route.recipe}, generic ${report.route.generic}`);
 console.log(`  runtime view: ${Object.entries(report.runtime).map(([k, n]) => `${k} ${n}`).join(', ')}`);
-console.log(`  generic-path pands drawing an H11 design field: ${Object.entries(report.genericDesign).map(([k, n]) => `${k} ${n}`).join(', ')}`);
-console.log(`  installed model hides ${report.modelledByInstall}; generic-path pands whose look the spec changes (bays/wall): ${report.genericVisibleWithMesherReads}`);
+console.log(`  installed model hides ${report.modelledByInstall}; generic-path pands whose look the spec changes (bays/wall/storeys): ${report.genericVisibleWithMesherReads} (wall ${report.genericVisibleBy.wallHex}, bays ${report.genericVisibleBy.bays}, storeys ${report.genericVisibleBy.storeys})`);
+console.log(`  generic-path pands carrying an H11 design field (held until released): ${Object.entries(report.genericDesign).map(([k, n]) => `${k} ${n}`).join(', ')}`);
 console.log(`  ride priority: ${report.ridePriority.pands} pands (${report.ridePriority.withGable} with a gable, ${report.ridePriority.withBays} with bays)`);
 console.log(`  top buurten: ${Object.entries(report.byBuurt).slice(0, 8).map(([k, r]) => `${k} ${r.pands}`).join(', ')}`);
 if (counts.facesInvalid.length) console.log(`  invalid faces (skipped): ${counts.facesInvalid.slice(0, 5).join(' | ')}${counts.facesInvalid.length > 5 ? ' …' : ''}`);

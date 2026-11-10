@@ -1,0 +1,25 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012175321",
+ "address": "Herengracht corner, near-black painted brick (the right half of the langestraat-175320 frame, the left of langestraat-175318)",
+ "design": {
+  "palette": {
+   "brick": "#575351",
+   "wallMaterial": "painted-brick"
+  }
+ },
+ "provenance": {
+  "palette/brick": {
+   "source": "streetlevel-measured",
+   "confidence": 0.8,
+   "ref": "panorama TMX7316010203-001544_pano_0000_000189 front-alt crop (scripts/pand-reference/run.ts), measureFacade H2c wall-vs-trim, box [0.2, 5.64, 0, 18.14]",
+   "at": "2020-01-08"
+  },
+  "palette/wallMaterial": {
+   "source": "author",
+   "confidence": 0.9,
+   "ref": "scripts/house-specs/sets/easy-houses-20261110.json (review of the pand-reference crop and the cams photo)",
+   "at": "2026-11-10"
+  }
+ }
+}

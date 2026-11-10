@@ -208,6 +208,8 @@ export interface JevJudgement {
   /** Only `confident` gables are read (the spike: confident-only 42 % coverage, otherwise too noisy). */
   gable?: { value: GableIntent; p: number; confident: boolean };
   finish?: { value: 'brick' | 'stucco' | 'painted-brick'; p: number };
+  /** A stoop (outside steps up to a raised door) is seen (K-stoep #360): a yes writes basement `stoop`; a no writes nothing. */
+  stoop?: { value: boolean; p: number };
 }
 /** Fields under this probability are dropped rather than recorded as weak evidence. */
 export const JEV_MIN_P = 0.5;
@@ -224,6 +226,7 @@ export function fromJev(j: JevJudgement): HouseSpec {
   if (j.pui) put('facts/pui', j.pui.value, j.pui.p);
   if (j.gable?.confident) put('fronts/0/gable', j.gable.value, j.gable.p);
   if (j.finish) put('palette/wallMaterial', j.finish.value, j.finish.p);
+  if (j.stoop?.value) put('fronts/0/basement', 'stoop', j.stoop.p);
   return spec;
 }
 

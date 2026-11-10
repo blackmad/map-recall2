@@ -4,7 +4,8 @@
  * the extract's `v`; house:preview --spec builds it for an override); the runtime half is decorate.ts.
  *
  * Lane H11 (#361) added the design fields the generic path can express without a GLB:
- *   storeys / groundM   fronts/0/storeys and storeyHeights[0]: the street run's storey grid (threeBuildingMesh, specStoreyScale)
+ *   storeys             fronts/0/storeys (lane H9): the drawn storey count; groundM (H11) storeyHeights[0] (specStoreyFit)
+ *   wallFamily, stoop   H9's reader wall family and K-stoep's stoop (#360)
  *   look                window surround, frame tone, head and proportion: which bay-look preset (bayLook.ts bayStyleForTraits)
  *   shop / shopHex      fronts/0/shopfront (or facts.pui): a shop ground storey or a quiet one, and the shop paint
  * A key no source stated, or only a type default stated, stays absent, so a view without them is the view before H11.
@@ -72,20 +73,27 @@ export function specView(spec: HouseSpec): HouseSpecView {
   // (crownAt/crownBays over some bays) or a flat roof form is not that, so only full-width gabled crowns reach it; the
   // register's own gable words (monument-text) pass as before. The full front stays in the record's design (`d`).
   if (front?.gable && (src['fronts/0/gable'] === 'monument-text' || plannerCrown(spec))) { v.gable = front.gable; v.src.gable = src['fronts/0/gable']; }
+  // A flat crown stated by a street source or an author (lane H9) clears a register gable (decorate.ts withHouseSpecCrown).
+  else if (front?.gable === 'flat' && ['streetlevel-measured', 'reviewed', 'author'].includes(src['fronts/0/gable'] ?? '')) { v.gable = 'flat'; v.src.gable = src['fronts/0/gable']; }
   if (spec.facts?.facadeYear) { v.year = spec.facts.facadeYear; v.src.year = src['facts/facadeYear']; }
   if (spec.design.palette?.wallMaterial) { v.wallMaterial = spec.design.palette.wallMaterial; v.src.wallMaterial = src['palette/wallMaterial']; }
   const wall = hex(spec.design.palette?.brick);
   if (wall) { v.wallHex = wall; v.src.wallHex = src['palette/brick']; }
+  if (spec.facts?.wallFamily) { v.wallFamily = spec.facts.wallFamily; v.src.wallFamily = src['facts/wallFamily']; }
   // A bay count no source measured (an auto-placed type's default, adapters.ts fromBlockFace) stays in the record but
   // does not reach the generic path: its own cell count is as good a guess, and a measured source can outrank it.
   const bays = frontBays(front), baysSrc = src[front?.axisGrid ? 'fronts/0/axisGrid' : 'fronts/0/bays'];
   if (bays && baysSrc !== 'default') { v.bays = bays; v.src.bays = baysSrc; }
-  // H11: storeys (full street storeys, the ground once; spec.ts STOREYS_DEFINITION) and the ground storey's height.
-  const storeys = Number(front?.storeys), storeysSrc = src['fronts/0/storeys'];
-  if (Number.isInteger(storeys) && storeys >= 1 && storeys <= 12 && storeysSrc && storeysSrc !== 'default') {
-    v.storeys = storeys; v.src.storeys = storeysSrc;
+  // Storeys (lane H9; full street storeys, the ground once, spec.ts STOREYS_DEFINITION): the drawn storey count follows
+  // the spec. H11: the ground storey's height beside it, when a source other than a type default states it.
+  if (Number.isInteger(front?.storeys) && front!.storeys! >= 2) {
+    v.storeys = front!.storeys; v.src.storeys = src['fronts/0/storeys'];
     const heights = front?.storeyHeights as number[] | undefined, ground = Array.isArray(heights) ? Number(heights[0]) : NaN;
     if (Number.isFinite(ground) && ground >= 2 && ground <= 7 && src['fronts/0/storeyHeights'] !== 'default') v.groundM = +ground.toFixed(2);
+  }
+  // A stoop (K-stoep #360): presence from the basement (register `stoep`, Jev, a hand read), the measured fields when stated.
+  if (front?.basement === 'stoop' || front?.basement === 'stoop-and-windows') {
+    v.stoop = (front.stoop ?? {}) as HouseSpecView['stoop']; v.src.stoop = src['fronts/0/stoop'] ?? src['fronts/0/basement'];
   }
   const look = specLook(spec, src);
   if (look) { v.look = look.look; v.src.look = look.src; }
@@ -98,7 +106,7 @@ export function specView(spec: HouseSpec): HouseSpecView {
     if (paint) v.shopHex = paint;
   } else if (spec.facts?.pui && src['facts/pui'] !== 'default') {
     v.shop = spec.facts.pui === 'shop'; v.src.shop = src['facts/pui'];
-  } else if (!shop && v.storeys && front?.windows && PHOTO_SOURCES.has(src['fronts/0/windows'] ?? '')) {
+  } else if (!shop && v.storeys && PHOTO_SOURCES.has(v.src.storeys ?? '') && front?.windows && PHOTO_SOURCES.has(src['fronts/0/windows'] ?? '')) {
     v.shop = false; v.src.shop = src['fronts/0/windows'];
   }
   return v;
