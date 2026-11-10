@@ -3,6 +3,23 @@
   "notes": [
     {
       "date": "2026-11-10",
+      "title": "A horizon instead of an edge",
+      "text": "The far city now fades into the sky haze at a fixed distance, so buildings no longer pop in and out far away; distant landmarks also stop flickering in and out.",
+      "images": [
+        {
+          "src": "ui/2026-11-09-p2-pop-in/westerkerk-air-main-vs-lane.jpg",
+          "alt": "The Westerkerk from the air, before and after: the far city now fades into haze instead of ending at an edge",
+          "caption": "Westerkerk from the air: before (left), after (right)"
+        },
+        {
+          "src": "ui/2026-11-09-p2-pop-in/rijksmuseum-air-main-vs-lane.jpg",
+          "alt": "The Rijksmuseum from the air, before and after: the skyline stays, the far edge is hazier",
+          "caption": "Rijksmuseum from the air: before (left), after (right)"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-10",
       "title": "More Dutch on Dutch cards",
       "text": "In the Dutch game, 56 more landmarks now tell their facts in Dutch, each sentence taken word for word from the Dutch Wikipedia article and linked to it. Where the Dutch article does not say the same thing, the card stays in English rather than guess.",
       "images": []
