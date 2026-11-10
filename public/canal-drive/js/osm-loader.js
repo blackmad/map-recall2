@@ -68,6 +68,15 @@ class OSMLoader {
         ? settle(fetch(new URL(`${city.extractPath}/squares.json`, window.location.href))
           .then(response => (response.ok ? response.json() : null)))
         : null;
+      // BGT paved plazas and forecourts (bgtPlazas.ts), behind `?bgtPlazas=1` until
+      // the flag's default flips. A bundle without the flag reader keeps them off.
+      const SURFACE = window.CanalRecallRoadSurface;
+      const bgtPlazasOn = travelMode === 'car' && city.id === 'amsterdam' && SURFACE
+        && typeof SURFACE.bgtPlazasEnabled === 'function' && SURFACE.bgtPlazasEnabled(window.location.search);
+      const bgtPlazasLoad = bgtPlazasOn
+        ? settle(fetch(new URL(`${city.extractPath}/${SURFACE.BGT_PLAZAS_EXTRACT}`, window.location.href))
+          .then(response => (response.ok ? response.json() : null)))
+        : null;
       const ferryLoad = travelMode === 'car' && city.id === 'amsterdam'
         ? settle(fetch(new URL(`${city.extractPath}/transit-network.json`, window.location.href))
           .then(response => {
@@ -153,6 +162,11 @@ class OSMLoader {
         const squares = await squaresLoad;
         if (squares.error) console.warn('Squares unavailable; open plazas ride as corridors only.', squares.error);
         else if (squares.value) this.plazaFeatures = squares.value;
+      }
+      if (bgtPlazasLoad) {
+        const bgt = await bgtPlazasLoad;
+        if (bgt.error) console.warn('BGT plazas unavailable; open paving rides as corridors and squares only.', bgt.error);
+        else if (bgt.value && Array.isArray(bgt.value.features)) this.plazaFeatures = [...(this.plazaFeatures || []), ...bgt.value.features];
       }
       this.ferryNetwork = null;
       if (ferryLoad) {
