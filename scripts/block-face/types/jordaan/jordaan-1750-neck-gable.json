@@ -22,7 +22,7 @@
   "yearSlack": 0,
   "eavesM": [
    7.5,
-   12.5
+   9.3
   ],
   "roof": "pitched",
   "stucco": false,
@@ -68,9 +68,9 @@
   "storeys": 3,
   "bays": 3,
   "storeyHeights": [
-   3.4,
-   2.7,
-   2.6
+   3.1,
+   2.65,
+   2.65
   ],
   "windows": "small-over-one",
   "windowSurround": "sill",
@@ -120,7 +120,8 @@
   }
  },
  "roof": {
-  "material": "red-tile"
+  "material": "red-tile",
+  "squareSaddle": true
  },
  "rhythm": {
   "bays": "2 axes under 4.6 m, else 3",

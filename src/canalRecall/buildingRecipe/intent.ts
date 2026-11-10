@@ -980,6 +980,13 @@ export interface RoofIntent {
    * brick/roof-tile overlap the GLB audit fails (Transvaalbuurt 1911 point gables, 2026-11-01). Absent = byte-identical.
    */
   rakeClear?: boolean;
+  /**
+   * `true`: the roof's depth axis is square to the frontage chord for a saddle under a gable crown too (recipeRoof.ts
+   * `RecipeRoofInput.squareSaddle`). The roof normally runs along the BAG facade normal; where that leans off the chord
+   * (0.5 degrees on Bloemstraat 174650) the ridge drifts sideways with depth (0.1 m at 12 m) and the saddle's flank climbs
+   * over the crown's concave shoulder in the front view (`roof-behind-crown`: 0.11 m over, limit 0.05). Absent = byte-identical.
+   */
+  squareSaddle?: boolean;
   evidence?: string;
 }
 
@@ -1789,8 +1796,9 @@ export function validateIntent(input: unknown): CanalHouseIntent {
     if (intent.roof.form !== 'saddle' || intent.roof.pitchDeg === undefined) problems.push('roof.hip: needs form "saddle" and a measured pitchDeg');
   }
   if (intent?.roof?.rakeClear !== undefined && intent.roof.rakeClear !== true) problems.push('roof.rakeClear: true or absent');
+  if (intent?.roof?.squareSaddle !== undefined && intent.roof.squareSaddle !== true) problems.push('roof.squareSaddle: true or absent');
   if (intent?.roof?.evidence !== undefined && typeof intent.roof.evidence !== 'string') problems.push('roof.evidence: a string (what on the photo shows the roof form)');
-  if (intent?.roof && Object.keys(intent.roof).some(k => !['material', 'source', 'form', 'pitchDeg', 'rise', 'rearPitchDeg', 'crossGables', 'hip', 'rakeClear', 'evidence'].includes(k))) problems.push(`roof: unknown field ${Object.keys(intent.roof).filter(k => !['material', 'source', 'form', 'pitchDeg', 'rise', 'rearPitchDeg', 'crossGables', 'hip', 'rakeClear', 'evidence'].includes(k)).join(', ')}`);
+  if (intent?.roof && Object.keys(intent.roof).some(k => !['material', 'source', 'form', 'pitchDeg', 'rise', 'rearPitchDeg', 'crossGables', 'hip', 'rakeClear', 'squareSaddle', 'evidence'].includes(k))) problems.push(`roof: unknown field ${Object.keys(intent.roof).filter(k => !['material', 'source', 'form', 'pitchDeg', 'rise', 'rearPitchDeg', 'crossGables', 'hip', 'rakeClear', 'squareSaddle', 'evidence'].includes(k)).join(', ')}`);
   for (const k of ['brick', 'frame', 'door'] as const) colour(intent?.palette?.[k], `palette.${k}`);
   for (const k of ['shutters', 'stone', 'band', 'cornice', 'glassBlock'] as const) if (intent?.palette?.[k] !== undefined) colour(intent.palette[k], `palette.${k}`);
   if (intent?.palette?.wallMaterial !== undefined) oneOf(intent.palette.wallMaterial, WALL_MATERIALS, 'palette.wallMaterial');

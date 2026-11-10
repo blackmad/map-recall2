@@ -129,6 +129,8 @@ export interface RecipeRoofInput {
   street: string;
   /** The attic face starts this far behind the frontage: dormers (fit.ts, 0.35 m setback) stand in front of it. */
   faceSetbackM?: number;
+  /** A saddle band's depth axis is square to the frontage chord whenever the BAG normal leans off it (`RoofIntent.squareSaddle`). Absent = byte-identical. */
+  squareSaddle?: boolean;
   /** Upper bound on the attic top (m above this pand's ground): the face's cornice group shares one attic line. */
   ridgeCapM?: number;
   /**
@@ -426,9 +428,10 @@ export function recipeRoofFacts(facts: BuildingFacts, input: RecipeRoofInput, op
   const e1 = front.endpointsRD[1], cl = Math.hypot(e1[0] - e0[0], e1[1] - e0[1]);
   const nIn = [-front.outwardNormalRD[0] / nl, -front.outwardNormalRD[1] / nl];
   const lean = dot([e1[0] - e0[0], e1[1] - e0[1]], nIn);
-  if (squareToChord === undefined && input.forms && cl > 1e-6 && lean > (input.faceSetbackM ?? 0) + o.chordDriftM) {
+  const squareSaddle = !!input.squareSaddle && Math.abs(lean) > o.chordDriftM;
+  if (squareToChord === undefined && input.forms && cl > 1e-6 && (lean > (input.faceSetbackM ?? 0) + o.chordDriftM || squareSaddle)) {
     const asIs = recipeRoofFacts(facts, input, opts, false);
-    if (!asIs.report.bands?.some(b => b.form === 'attic' && b.ridgeM - b.eavesM >= 0.05)) return asIs;
+    if (!asIs.report.bands?.some(b => (b.form === 'attic' && b.ridgeM - b.eavesM >= 0.05 && lean > (input.faceSetbackM ?? 0) + o.chordDriftM) || (squareSaddle && b.form === 'saddle'))) return asIs;
     const sq = recipeRoofFacts(facts, input, opts, true);
     sq.report.notes.push(`attic square to the frontage chord (the front normal leans ${r3(lean)} m deep along ${r3(cl)} m)`);
     return sq;

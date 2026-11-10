@@ -2786,7 +2786,7 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
 
   Spot review stays mandatory for each batch, on a 10 % sample.
 
-- **Jordaan placements blocked by compile gates (#113, 2026-11-09).** The type match is tightened (HISTORY); no Jordaan run would place because of compile-gates storey-height and roof-behind-crown (bloem-128-206, lelie-83-141, rozengracht-30-82, bloemgracht-16-32), glb-audit (bloemgracht-80-128) and strip-over-drawn. The neck-gable storey pitch 3.33 m disagrees with its fronts (2.6–2.9 m). `jordaan-1900-gable-rebuild` needs an Opus strip review before any run using it installs. Kit gaps: black paint (no near-black neutral in the city brick tint), grey render over a brick type, arched heads unmeasured by measureFacade.
+- **Jordaan placements: evidence, not gates, now (2026-11-10).** Gate defects fixed (HISTORY). Open: an evidence veto comparing measured photo rows with model rows (close crops pass the sky gate); per-storey-count weights for the cornice house (3 storeys at 8.09 m → 2.23 m top); 19th-c stepped/flat attic fronts (Bloemgracht 78) and pointed Neo-Renaissance gables (Bloemgracht 82) are not in the kit; reinstall chunk-face-bloemgracht-138-300-r1 for the new storey weights; `jordaan-1900-gable-rebuild` still needs an Opus strip review.
 
 - **Batch installer yield (#103 follow-ups, 2026-10-29).**
   1. **Type-library coverage is the bottleneck.** Of 133 failed faces, 39 are outside every type's years, 69 are vetoed after the strip and 17 score too low.
