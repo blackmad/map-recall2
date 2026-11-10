@@ -1,0 +1,113 @@
+{
+ "street": "Nicolaas Witsenstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T09:23:23.376Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012180222",
+   "addresses": [
+    "Nicolaas Witsenstraat 18"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nicolaas Witsenstraat 18-H",
+     "use": "woonfunctie",
+     "areaM2": 86,
+     "bagId": "0363010000751034"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 10862416496,
+     "lngLat": [
+      4.8961308,
+      52.3584751
+     ],
+     "tags": {
+      "amenity": "public_bookcase",
+      "public_bookcase:type": "wooden_cabinet"
+     },
+     "fetchedAt": "2026-11-10T09:23:23.376Z",
+     "match": "frontage",
+     "distanceM": 3.9
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012180225",
+   "addresses": [
+    "Nicolaas Witsenstraat 16"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nicolaas Witsenstraat 16",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000751031"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012171191",
+   "addresses": [
+    "Nicolaas Witsenstraat 14"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nicolaas Witsenstraat 14",
+     "use": "woonfunctie",
+     "areaM2": 227,
+     "bagId": "0363010000751028"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012171196",
+   "addresses": [
+    "Nicolaas Witsenstraat 12"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nicolaas Witsenstraat 12",
+     "use": "woonfunctie",
+     "areaM2": 345,
+     "bagId": "0363010001004513"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2737943851,
+     "lngLat": [
+      4.896112,
+      52.3586737
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "12",
+      "addr:postcode": "1017ZH",
+      "addr:street": "Nicolaas Witsenstraat",
+      "name": "BitStraat",
+      "office": "company",
+      "opening_hours": "09:00-20:00",
+      "smoking": "outside",
+      "source": "BAG",
+      "source:date": "2014-02-11"
+     },
+     "fetchedAt": "2026-11-10T09:23:23.376Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

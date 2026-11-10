@@ -1,0 +1,594 @@
+{
+ "street": "Westeinde",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T09:32:48.272Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012178268",
+   "addresses": [
+    "Westeinde 26"
+   ],
+   "groundUnits": [
+    {
+     "address": "Westeinde 26",
+     "use": "logiesfunctie",
+     "areaM2": 2650,
+     "bagId": "0363010000865564"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 1292872769,
+     "lngLat": [
+      4.898786,
+      52.3583545
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "26",
+      "addr:postcode": "1017ZP",
+      "addr:street": "Westeinde",
+      "air_conditioning": "yes",
+      "bar": "yes",
+      "check_date": "2026-01-16",
+      "email": "reservation@hotelnottinghill.nl",
+      "internet_access": "yes",
+      "name": "Notting Hill",
+      "phone": "+31 20 523 1035",
+      "smoking": "no",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "stars": "4s",
+      "toilets:wheelchair": "no",
+      "tourism": "hotel",
+      "website": "https://www.hotelnottinghill.nl",
+      "wheelchair": "yes",
+      "wikidata": "Q111410221"
+     },
+     "fetchedAt": "2026-11-10T09:32:48.272Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012178269",
+   "addresses": [
+    "Westeinde 24"
+   ],
+   "groundUnits": [
+    {
+     "address": "Westeinde 24",
+     "use": "kantoorfunctie",
+     "areaM2": 896,
+     "bagId": "0363010000865563"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2737952135,
+     "lngLat": [
+      4.8987421,
+      52.3585699
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "24",
+      "addr:postcode": "1017ZP",
+      "addr:street": "Westeinde",
+      "check_date": "2026-01-16",
+      "email": "info@spierenhazenberg.nl",
+      "name": "Spier & Hazenberg",
+      "office": "notary",
+      "phone": "+31 20 5317654",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "website": "https://spierenhazenberg.nl"
+     },
+     "fetchedAt": "2026-11-10T09:32:48.272Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012171714",
+   "addresses": [
+    "Westeinde 22"
+   ],
+   "groundUnits": [
+    {
+     "address": "Westeinde 22",
+     "use": "kantoorfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000865561"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012171768",
+   "addresses": [
+    "Westeinde 20A",
+    "Westeinde 20B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Westeinde 20A",
+     "use": "kantoorfunctie",
+     "areaM2": 425,
+     "bagId": "0363010003720231"
+    },
+    {
+     "address": "Westeinde 20B",
+     "use": "woonfunctie",
+     "areaM2": 105,
+     "bagId": "0363010003720232"
+    }
+   ],
+   "units": 2,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2737950745,
+     "lngLat": [
+      4.8986802,
+      52.3586902
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "20A",
+      "addr:postcode": "1017ZP",
+      "addr:street": "Westeinde",
+      "branch": "Amsterdam",
+      "check_date": "2026-01-16",
+      "email": "amsterdam@undutchables.nl",
+      "name": "Undutchables",
+      "office": "employment_agency",
+      "phone": "+31 20 6231300",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "website": "https://undutchables.nl"
+     },
+     "fetchedAt": "2026-11-10T09:32:48.272Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012178340",
+   "addresses": [
+    "Westeinde 18"
+   ],
+   "groundUnits": [
+    {
+     "address": "Westeinde 18",
+     "use": "logiesfunctie",
+     "areaM2": 284,
+     "bagId": "0363010001011462"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2737948680,
+     "lngLat": [
+      4.8986466,
+      52.3587503
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "18",
+      "addr:postcode": "1017ZP",
+      "addr:street": "Westeinde",
+      "branch": "ClinkCoco",
+      "check_date": "2026-01-16",
+      "guest_house": "hostel",
+      "internet_access": "wlan",
+      "name": "Clink",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "tourism": "hostel",
+      "website": "https://www.clinkhostels.com/clinkcoco/",
+      "wikidata": "Q111114729"
+     },
+     "fetchedAt": "2026-11-10T09:32:48.272Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012178339",
+   "addresses": [
+    "Westeinde 16"
+   ],
+   "groundUnits": [
+    {
+     "address": "Westeinde 16",
+     "use": "woonfunctie",
+     "areaM2": 181,
+     "bagId": "0363010000865558"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012178338",
+   "addresses": [
+    "Westeinde 14"
+   ],
+   "groundUnits": [
+    {
+     "address": "Westeinde 14",
+     "use": "kantoorfunctie",
+     "areaM2": 459,
+     "bagId": "0363010000865557"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2737946024,
+     "lngLat": [
+      4.8985854,
+      52.3588757
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "14",
+      "addr:postcode": "1017ZP",
+      "addr:street": "Westeinde",
+      "check_date": "2026-01-16",
+      "email": "info@moonlit.ai",
+      "name": "Moonlit",
+      "office": "company",
+      "official_name": "Moonlit Legal Technologies BV",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "website": "https://www.moonlitlegal.com"
+     },
+     "fetchedAt": "2026-11-10T09:32:48.272Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 13460867870,
+     "lngLat": [
+      4.8987257,
+      52.3588994
+     ],
+     "tags": {
+      "amenity": "vending_machine",
+      "vending": "parking_tickets"
+     },
+     "fetchedAt": "2026-11-10T09:32:48.272Z",
+     "match": "frontage",
+     "distanceM": 4.9
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012178337",
+   "addresses": [
+    "Westeinde 12",
+    "Westeinde 12D",
+    "Westeinde 12C",
+    "Westeinde 12B",
+    "Westeinde 12A",
+    "Westeinde 12E"
+   ],
+   "groundUnits": [
+    {
+     "address": "Westeinde 12",
+     "use": "kantoorfunctie",
+     "areaM2": 306,
+     "bagId": "0363010000865556"
+    },
+    {
+     "address": "Westeinde 12D",
+     "use": "woonfunctie",
+     "areaM2": 37,
+     "bagId": "0363010012610853"
+    },
+    {
+     "address": "Westeinde 12C",
+     "use": "woonfunctie",
+     "areaM2": 30,
+     "bagId": "0363010012610852"
+    },
+    {
+     "address": "Westeinde 12B",
+     "use": "woonfunctie",
+     "areaM2": 38,
+     "bagId": "0363010012610851"
+    },
+    {
+     "address": "Westeinde 12A",
+     "use": "woonfunctie",
+     "areaM2": 137,
+     "bagId": "0363010012610850"
+    },
+    {
+     "address": "Westeinde 12E",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010012610854"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012178344",
+   "addresses": [
+    "Westeinde 10"
+   ],
+   "groundUnits": [
+    {
+     "address": "Westeinde 10-H",
+     "use": "kantoorfunctie",
+     "areaM2": 180,
+     "bagId": "0363010000865554"
+    }
+   ],
+   "units": 2,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2737942873,
+     "lngLat": [
+      4.8985419,
+      52.3590019
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "10-H",
+      "addr:postcode": "1017ZN",
+      "addr:street": "Westeinde",
+      "branch": "Amsterdam Centrum",
+      "check_date": "2026-01-16",
+      "email": "amsterdam@hoekstraenvaneck.nl",
+      "name": "Hoekstra en Van Eck",
+      "office": "estate_agent",
+      "opening_hours": "Mo-Fr 09:00-17:30",
+      "phone": "+31 20 6241214",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "website": "https://hoekstraenvaneck.nl/kantoren/hoekstra-en-van-eck-amsterdam-centrum"
+     },
+     "fetchedAt": "2026-11-10T09:32:48.272Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012178341",
+   "addresses": [
+    "Westeinde 8"
+   ],
+   "groundUnits": [
+    {
+     "address": "Westeinde 8",
+     "use": "woonfunctie",
+     "areaM2": 290,
+     "bagId": "0363010000865553"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012178342",
+   "addresses": [
+    "Westeinde 6"
+   ],
+   "groundUnits": [
+    {
+     "address": "Weteringschans 138",
+     "use": "industriefunctie",
+     "areaM2": 95,
+     "bagId": "0363010001009204"
+    },
+    {
+     "address": "Westeinde 6",
+     "use": "kantoorfunctie",
+     "areaM2": 297,
+     "bagId": "0363010001045166"
+    },
+    {
+     "address": "Westeinde 6",
+     "use": "kantoorfunctie,woonfunctie",
+     "areaM2": 426,
+     "bagId": "0363010012125529"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012178343",
+   "addresses": [
+    "Westeinde 4",
+    "Westeinde 4A",
+    "Westeinde 4B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Westeinde 4",
+     "use": "winkelfunctie",
+     "areaM2": 372,
+     "bagId": "0363010000865548"
+    },
+    {
+     "address": "Westeinde 4A",
+     "use": "kantoorfunctie,winkelfunctie",
+     "areaM2": 171,
+     "bagId": "0363010012158540"
+    },
+    {
+     "address": "Westeinde 4B",
+     "use": "kantoorfunctie",
+     "areaM2": 163,
+     "bagId": "0363010012158541"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 10810885107,
+     "lngLat": [
+      4.8984834,
+      52.3591889
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "4A",
+      "addr:postcode": "1017ZN",
+      "addr:street": "Westeinde",
+      "amenity": "clinic",
+      "check_date": "2026-01-16",
+      "email": "info@ivyclinics.nl",
+      "healthcare": "clinic",
+      "healthcare:speciality": "plastic_surgery;dermatology",
+      "name": "Ivy Clinics",
+      "opening_hours": "Mo-Fr 09:00-21:00; Sa 09:00-17:00",
+      "phone": "+31 88 8007654",
+      "source": "BAG",
+      "source:date": "2023-04-14",
+      "website": "https://ivyclinics.nl/klinieken/amsterdam/"
+     },
+     "fetchedAt": "2026-11-10T09:32:48.272Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 10810885136,
+     "lngLat": [
+      4.898357,
+      52.3591691
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "4B",
+      "addr:postcode": "1017ZN",
+      "addr:street": "Westeinde",
+      "amenity": "clinic",
+      "branch": "Centrum",
+      "check_date": "2026-01-16",
+      "email": "contact@stadskliniek.nl",
+      "healthcare": "clinic",
+      "healthcare:speciality": "infectious_diseases;blood_check;community",
+      "name": "StadsKliniek",
+      "opening_hours": "Mo-Fr 08:30-17:00; Sa 09:00-17:00",
+      "phone": "+31 85 0657672",
+      "source": "BAG",
+      "source:date": "2023-04-14",
+      "website": "https://www.stadskliniek.nl/klinieken/amsterdam/"
+     },
+     "fetchedAt": "2026-11-10T09:32:48.272Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012178335",
+   "addresses": [
+    "Westeinde 2"
+   ],
+   "groundUnits": [
+    {
+     "address": "Weteringschans 140A",
+     "use": "winkelfunctie",
+     "areaM2": 336,
+     "bagId": "0363010000675327"
+    },
+    {
+     "address": "Westeinde 2",
+     "use": "kantoorfunctie",
+     "areaM2": 282,
+     "bagId": "0363010012063550"
+    }
+   ],
+   "units": 2,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2737946201,
+     "lngLat": [
+      4.8983567,
+      52.359233
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "140A",
+      "addr:postcode": "1017XV",
+      "addr:street": "Weteringschans",
+      "branch": "Centrum",
+      "check_date": "2026-01-16",
+      "email": "info@hethaartheater.nl",
+      "female": "yes",
+      "name": "Het Haartheater",
+      "opening_hours": "Mo-Tu,Th-Fr 09:30-18:00; We 09:30-21:00; Sa 09:30-17:00",
+      "operator": "Het Haartheater",
+      "phone": "+31 20 4955142",
+      "shop": "hairdresser",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "website": "https://hethaartheater.nl/onze-salons/centrum/"
+     },
+     "fetchedAt": "2026-11-10T09:32:48.272Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 13460867867,
+     "lngLat": [
+      4.8985127,
+      52.3593554
+     ],
+     "tags": {
+      "information": "guidepost",
+      "tourism": "information"
+     },
+     "fetchedAt": "2026-11-10T09:32:48.272Z",
+     "match": "frontage",
+     "distanceM": 7.2
+    },
+    {
+     "type": "node",
+     "id": 13460867869,
+     "lngLat": [
+      4.8984844,
+      52.3593606
+     ],
+     "tags": {
+      "amenity": "waste_basket",
+      "material": "metal",
+      "waste": "trash"
+     },
+     "fetchedAt": "2026-11-10T09:32:48.272Z",
+     "match": "frontage",
+     "distanceM": 7.4
+    }
+   ]
+  }
+ ]
+}

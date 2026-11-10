@@ -1,0 +1,986 @@
+{
+ "street": "Westeinde",
+ "seed": "0363100012178343",
+ "members": [
+  "0363100012178268",
+  "0363100012178269",
+  "0363100012171714",
+  "0363100012171768",
+  "0363100012178340",
+  "0363100012178339",
+  "0363100012178338",
+  "0363100012178337",
+  "0363100012178344",
+  "0363100012178341",
+  "0363100012178342",
+  "0363100012178343",
+  "0363100012178335"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "next fronting pand 0363100012203635 62.5 m on shares no party wall (cross street or gap)"
+  },
+  {
+   "side": "right",
+   "reason": "no further pand fronts the street in the fetched area"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012071654",
+   "reason": "frontage 97.2 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012098788",
+   "reason": "frontage 37.0 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012102815",
+   "reason": "frontage 92.0 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012126576",
+   "reason": "frontage 66.3 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012137448",
+   "reason": "no frontage on Westeinde: No footprint edge faces Westeinde"
+  },
+  {
+   "pandId": "0363100012152647",
+   "reason": "no frontage on Westeinde: No footprint edge faces Westeinde"
+  },
+  {
+   "pandId": "0363100012152900",
+   "reason": "frontage 148.5 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012152976",
+   "reason": "no frontage on Westeinde: No footprint edge faces Westeinde"
+  },
+  {
+   "pandId": "0363100012155317",
+   "reason": "frontage 32.0 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012155753",
+   "reason": "no frontage on Westeinde: No footprint edge faces Westeinde"
+  },
+  {
+   "pandId": "0363100012157040",
+   "reason": "no frontage on Westeinde: No footprint edge faces Westeinde"
+  },
+  {
+   "pandId": "0363100012157781",
+   "reason": "frontage 33.6 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012158460",
+   "reason": "no frontage on Westeinde: No footprint edge faces Westeinde"
+  },
+  {
+   "pandId": "0363100012159070",
+   "reason": "no frontage on Westeinde: No footprint edge faces Westeinde"
+  },
+  {
+   "pandId": "0363100012159684",
+   "reason": "frontage 35.6 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012159705",
+   "reason": "frontage 43.0 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012160689",
+   "reason": "frontage 96.8 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012162706",
+   "reason": "frontage 85.4 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012163108",
+   "reason": "frontage 103.9 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012164636",
+   "reason": "frontage 64.8 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012166163",
+   "reason": "frontage 37.0 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012169152",
+   "reason": "frontage 108.6 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012171219",
+   "reason": "frontage 84.8 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012171220",
+   "reason": "frontage 88.3 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012171221",
+   "reason": "frontage 80.1 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012171223",
+   "reason": "frontage 71.3 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012171224",
+   "reason": "frontage 112.5 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012063634",
+   "reason": "frontage 214.5 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012079385",
+   "reason": "frontage 208.5 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012155673",
+   "reason": "frontage 154.2 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012159942",
+   "reason": "frontage 189.9 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012164459",
+   "reason": "frontage 202.5 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012166579",
+   "reason": "frontage 196.0 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012166692",
+   "reason": "frontage 183.0 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012171189",
+   "reason": "frontage 206.9 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012171190",
+   "reason": "frontage 201.1 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012171191",
+   "reason": "frontage 184.0 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012171192",
+   "reason": "frontage 179.1 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012171193",
+   "reason": "frontage 171.4 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012171195",
+   "reason": "frontage 173.2 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012171196",
+   "reason": "frontage 180.9 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012171197",
+   "reason": "frontage 174.3 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012171217",
+   "reason": "frontage 185.4 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012171222",
+   "reason": "frontage 160.5 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012169078",
+   "reason": "frontage 89.7 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012169151",
+   "reason": "frontage 94.8 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012171009",
+   "reason": "frontage 112.4 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012171011",
+   "reason": "frontage 152.8 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012171718",
+   "reason": "frontage 212.9 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012171720",
+   "reason": "frontage 221.4 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012171230",
+   "reason": "no frontage on Westeinde: No footprint edge faces Westeinde"
+  },
+  {
+   "pandId": "0363100012171231",
+   "reason": "frontage 83.0 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012171232",
+   "reason": "frontage 106.4 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012171656",
+   "reason": "frontage 48.3 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012171657",
+   "reason": "frontage 48.2 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012171658",
+   "reason": "frontage 72.2 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012171716",
+   "reason": "frontage 64.0 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012177750",
+   "reason": "frontage 134.5 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012177751",
+   "reason": "frontage 128.1 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012177752",
+   "reason": "frontage 121.9 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012177753",
+   "reason": "frontage 95.6 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012177754",
+   "reason": "frontage 117.6 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012177755",
+   "reason": "frontage 116.2 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012177756",
+   "reason": "frontage 104.3 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012177757",
+   "reason": "frontage 108.7 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012177758",
+   "reason": "frontage 105.8 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012177764",
+   "reason": "frontage 110.3 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012177765",
+   "reason": "frontage 107.4 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012177768",
+   "reason": "frontage 121.2 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012177769",
+   "reason": "frontage 114.1 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012177770",
+   "reason": "frontage 99.5 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012177771",
+   "reason": "frontage 102.7 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012171225",
+   "reason": "frontage 155.3 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012171226",
+   "reason": "frontage 160.1 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012171227",
+   "reason": "frontage 164.9 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012171228",
+   "reason": "frontage 167.5 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012171233",
+   "reason": "frontage 126.8 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012171234",
+   "reason": "frontage 159.9 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012177748",
+   "reason": "frontage 154.5 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012177749",
+   "reason": "frontage 140.7 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012177759",
+   "reason": "frontage 151.0 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012177760",
+   "reason": "frontage 149.5 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012177761",
+   "reason": "frontage 145.9 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012177762",
+   "reason": "frontage 145.1 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012177763",
+   "reason": "frontage 136.3 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012177766",
+   "reason": "frontage 135.5 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012177767",
+   "reason": "frontage 128.2 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012177793",
+   "reason": "frontage 141.2 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012177794",
+   "reason": "frontage 141.7 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012177795",
+   "reason": "frontage 142.7 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012171229",
+   "reason": "no frontage on Westeinde: No footprint edge faces Westeinde"
+  },
+  {
+   "pandId": "0363100012171725",
+   "reason": "frontage 112.4 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012171726",
+   "reason": "frontage 99.0 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012171730",
+   "reason": "frontage 155.3 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012177796",
+   "reason": "frontage 134.5 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012177797",
+   "reason": "frontage 115.8 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012177802",
+   "reason": "no frontage on Westeinde: No footprint edge faces Westeinde"
+  },
+  {
+   "pandId": "0363100012177808",
+   "reason": "no frontage on Westeinde: No footprint edge faces Westeinde"
+  },
+  {
+   "pandId": "0363100012177834",
+   "reason": "no frontage on Westeinde: No footprint edge faces Westeinde"
+  },
+  {
+   "pandId": "0363100012177835",
+   "reason": "no frontage on Westeinde: No footprint edge faces Westeinde"
+  },
+  {
+   "pandId": "0363100012177836",
+   "reason": "frontage 198.9 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012177837",
+   "reason": "no frontage on Westeinde: No footprint edge faces Westeinde"
+  },
+  {
+   "pandId": "0363100012177844",
+   "reason": "frontage 181.4 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012177848",
+   "reason": "frontage 179.4 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012177849",
+   "reason": "frontage 184.7 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012177850",
+   "reason": "no frontage on Westeinde: No footprint edge faces Westeinde"
+  },
+  {
+   "pandId": "0363100012177851",
+   "reason": "no frontage on Westeinde: No footprint edge faces Westeinde"
+  },
+  {
+   "pandId": "0363100012177852",
+   "reason": "frontage 176.7 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012177803",
+   "reason": "frontage 87.7 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012177804",
+   "reason": "no frontage on Westeinde: No footprint edge faces Westeinde"
+  },
+  {
+   "pandId": "0363100012177805",
+   "reason": "no frontage on Westeinde: No footprint edge faces Westeinde"
+  },
+  {
+   "pandId": "0363100012178259",
+   "reason": "frontage 79.1 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012178260",
+   "reason": "frontage 73.4 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012178261",
+   "reason": "frontage 68.1 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012178262",
+   "reason": "frontage 63.5 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012178263",
+   "reason": "frontage 63.4 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012178264",
+   "reason": "frontage 59.3 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012178265",
+   "reason": "frontage 47.7 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012178266",
+   "reason": "frontage 37.2 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012178267",
+   "reason": "frontage 42.3 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012178336",
+   "reason": "frontage 48.2 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012178345",
+   "reason": "frontage 30.5 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012178346",
+   "reason": "frontage 46.1 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012177798",
+   "reason": "no frontage on Westeinde: No footprint edge faces Westeinde"
+  },
+  {
+   "pandId": "0363100012177799",
+   "reason": "no frontage on Westeinde: No footprint edge faces Westeinde"
+  },
+  {
+   "pandId": "0363100012177800",
+   "reason": "frontage 105.0 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012177801",
+   "reason": "frontage 111.0 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012177806",
+   "reason": "no frontage on Westeinde: No footprint edge faces Westeinde"
+  },
+  {
+   "pandId": "0363100012177807",
+   "reason": "no frontage on Westeinde: No footprint edge faces Westeinde"
+  },
+  {
+   "pandId": "0363100012177838",
+   "reason": "frontage 164.6 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012177839",
+   "reason": "frontage 159.0 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012177853",
+   "reason": "frontage 172.4 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012178347",
+   "reason": "frontage 91.4 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012178348",
+   "reason": "frontage 50.3 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012178349",
+   "reason": "frontage 65.2 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012178551",
+   "reason": "frontage 188.9 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012178555",
+   "reason": "no frontage on Westeinde: No footprint edge faces Westeinde"
+  },
+  {
+   "pandId": "0363100012179801",
+   "reason": "frontage 215.8 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012180052",
+   "reason": "frontage 198.4 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012180054",
+   "reason": "frontage 205.1 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012180057",
+   "reason": "frontage 196.6 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012180058",
+   "reason": "frontage 200.1 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012180069",
+   "reason": "frontage 205.8 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012180070",
+   "reason": "frontage 201.5 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012180250",
+   "reason": "frontage 187.6 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012180318",
+   "reason": "no frontage on Westeinde: No footprint edge faces Westeinde"
+  },
+  {
+   "pandId": "0363100012180323",
+   "reason": "no frontage on Westeinde: No footprint edge faces Westeinde"
+  },
+  {
+   "pandId": "0363100012180324",
+   "reason": "frontage 216.8 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012180325",
+   "reason": "no frontage on Westeinde: No footprint edge faces Westeinde"
+  },
+  {
+   "pandId": "0363100012180328",
+   "reason": "no frontage on Westeinde: No footprint edge faces Westeinde"
+  },
+  {
+   "pandId": "0363100012178350",
+   "reason": "frontage 58.9 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012178351",
+   "reason": "frontage 39.0 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012178352",
+   "reason": "frontage 43.0 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012178427",
+   "reason": "frontage 53.2 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012178863",
+   "reason": "frontage 114.7 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012178934",
+   "reason": "frontage 114.6 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012178937",
+   "reason": "frontage 90.2 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012178939",
+   "reason": "frontage 141.4 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012178935",
+   "reason": "frontage 158.6 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012178936",
+   "reason": "frontage 156.6 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012178938",
+   "reason": "frontage 142.0 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012178940",
+   "reason": "frontage 147.2 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012179087",
+   "reason": "frontage 197.5 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012179088",
+   "reason": "frontage 212.1 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012179089",
+   "reason": "frontage 190.3 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012179091",
+   "reason": "frontage 192.3 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012179092",
+   "reason": "frontage 187.6 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012179093",
+   "reason": "frontage 195.6 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012179103",
+   "reason": "frontage 195.1 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012179104",
+   "reason": "frontage 178.6 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012179716",
+   "reason": "frontage 171.9 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012179789",
+   "reason": "frontage 197.1 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012179797",
+   "reason": "frontage 191.8 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012180222",
+   "reason": "frontage 187.5 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012180225",
+   "reason": "frontage 185.7 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012180227",
+   "reason": "frontage 204.6 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012180228",
+   "reason": "frontage 190.6 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012185997",
+   "reason": "frontage 191.8 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012178424",
+   "reason": "frontage 81.2 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012178425",
+   "reason": "frontage 106.3 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012178426",
+   "reason": "no frontage on Westeinde: No footprint edge faces Westeinde"
+  },
+  {
+   "pandId": "0363100012178440",
+   "reason": "frontage 151.2 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012178442",
+   "reason": "frontage 151.8 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012182483",
+   "reason": "frontage 198.1 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012182486",
+   "reason": "frontage 208.6 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012190860",
+   "reason": "no frontage on Westeinde: No footprint edge faces Westeinde"
+  },
+  {
+   "pandId": "0363100012200629",
+   "reason": "no frontage on Westeinde: No footprint edge faces Westeinde"
+  },
+  {
+   "pandId": "0363100012211108",
+   "reason": "frontage 55.6 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012236195",
+   "reason": "no frontage on Westeinde: No footprint edge faces Westeinde"
+  },
+  {
+   "pandId": "0363100012236510",
+   "reason": "no frontage on Westeinde: No footprint edge faces Westeinde"
+  },
+  {
+   "pandId": "0363100012237098",
+   "reason": "frontage 74.5 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012239613",
+   "reason": "frontage 65.3 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012239614",
+   "reason": "no frontage on Westeinde: No footprint edge faces Westeinde"
+  },
+  {
+   "pandId": "0363100012253826",
+   "reason": "frontage 35.9 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012236747",
+   "reason": "frontage 178.9 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012237273",
+   "reason": "frontage 159.5 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012253071",
+   "reason": "frontage 131.8 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012238658",
+   "reason": "no frontage on Westeinde: No footprint edge faces Westeinde"
+  },
+  {
+   "pandId": "0363100012253805",
+   "reason": "frontage 150.9 m from Westeinde"
+  },
+  {
+   "pandId": "0363100012104030",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012163588",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012165684",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012236329",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 180,
+ "pands": [
+  {
+   "pandId": "0363100012178268",
+   "alongM": -86.25,
+   "widthM": 22.05,
+   "eavesM": 17.16,
+   "roofMaxM": 22.33,
+   "storeys3dbag": 0,
+   "builtYear": 1977,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012178269",
+   "alongM": -71.07,
+   "widthM": 8.31,
+   "eavesM": 13.7,
+   "roofMaxM": 15.93,
+   "storeys3dbag": 0,
+   "builtYear": 1883,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012171714",
+   "alongM": -64.03,
+   "widthM": 5.76,
+   "eavesM": 18.21,
+   "roofMaxM": 18.44,
+   "storeys3dbag": 0,
+   "builtYear": 1883,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012171768",
+   "alongM": -57.02,
+   "widthM": 8.25,
+   "eavesM": 13.7,
+   "roofMaxM": 15.97,
+   "storeys3dbag": 4,
+   "builtYear": 1883,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012178340",
+   "alongM": -50.01,
+   "widthM": 5.77,
+   "eavesM": 13.68,
+   "roofMaxM": 16.04,
+   "storeys3dbag": 0,
+   "builtYear": 1883,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012178339",
+   "alongM": -43.09,
+   "widthM": 8.08,
+   "eavesM": 17.11,
+   "roofMaxM": 19.4,
+   "storeys3dbag": 4,
+   "builtYear": 1883,
+   "uncertainty": [
+    "Frontage extended across a native jog of up to 1 m (possible partial front at the default 0.35 m).",
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012178338",
+   "alongM": -34.98,
+   "widthM": 8.16,
+   "eavesM": 16.79,
+   "roofMaxM": 19.5,
+   "storeys3dbag": 0,
+   "builtYear": 1865,
+   "uncertainty": [
+    "Frontage extended across a native jog of up to 1 m (possible partial front at the default 0.35 m).",
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012178337",
+   "alongM": -28.04,
+   "widthM": 5.81,
+   "eavesM": 13.73,
+   "roofMaxM": 16.02,
+   "storeys3dbag": 0,
+   "builtYear": 1877,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012178344",
+   "alongM": -21,
+   "widthM": 8.27,
+   "eavesM": 13.7,
+   "roofMaxM": 15.95,
+   "storeys3dbag": 4,
+   "builtYear": 1871,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012178341",
+   "alongM": -13.98,
+   "widthM": 5.78,
+   "eavesM": 13.79,
+   "roofMaxM": 15.95,
+   "storeys3dbag": 4,
+   "builtYear": 1865,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012178342",
+   "alongM": -6.98,
+   "widthM": 8.22,
+   "eavesM": 13.75,
+   "roofMaxM": 15.95,
+   "storeys3dbag": 4,
+   "builtYear": 1865,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012178343",
+   "alongM": 0,
+   "widthM": 5.74,
+   "eavesM": 13.64,
+   "roofMaxM": 15.83,
+   "storeys3dbag": 0,
+   "builtYear": 1865,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012178335",
+   "alongM": 7.11,
+   "widthM": 8.48,
+   "eavesM": 16.82,
+   "roofMaxM": 19.16,
+   "storeys3dbag": 0,
+   "builtYear": 1867,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  }
+ ]
+}

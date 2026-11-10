@@ -67,3 +67,12 @@ Rebuild covers.json, explorer-looks.json, `chunkWallExposureData.ts` (already wr
 * **Still not expressible:** Den Texstraat r2 (21-27) dormer is one white gable with a three-light window, not a three-part dormer with a raised centre under a pediment; its centre balcony spans one storey only. Den Texstraat 24 and 20 paint is the fitted dark brick, painted-brick not used. Erkers on 7 and 24 lack the balcony above. Witsen stone balustrades are a turned rail, not a solid stone balustrade.
 * Roof golden re-recorded (1 reclassed face of mine, 4 intent changes, all own faces). `test:block-face` 329/329, lint clean.
 * Integrator rebuilds: covers.json, explorer-looks.json, bundles; `chunkWallExposureData.ts` is already written.
+
+## Round 4 (Frederikspleinbuurt extension): all held, nothing installed
+
+Intaken and looked at all three; none matches a type in the library, so no pand was placed.
+
+* **Nicolaas Witsenstraat 12-18** (`witsen-even-10-20`, 180222, 180225, 171191, 171196; BAG years 1875, 1834, 1877, 1876; 10 and 20 are outside the face). The even side is not the odd side's design: two-bay fronts with round-arched window heads over brick and white banding. 18 and 14 are a brick pair (mansard, dormer), 16 is painted dark with a pointed gable and finial, 12 has a large stone erker and no photo above the plinth (panorama gap). The odd-side `witsen-1890-*` types (three-bay, flat keystone heads, balconettes) cannot express arched heads in banded brick; a new two-bay arched-brick type would serve 14 and 18 only. Held.
+* **Oosteinde 1-27** (`oosteinde-1-27`, 10 pands): scaffolding and netting on 1 and 5, heavy tree cover on the roofs, 9B/9C a wide five-bay block, 13-17 tall narrow bays with stone pilasters, 19-27 different mansard fronts. No repeat. Held.
+* **Westeinde 2-26** (`westeinde-4-26`, 13 strip spans): mixed designs of 1834-1900 (26 a modern hotel block, 22 a gable, 14/16 white-pilaster fronts), a tram and tree across 6-12. No repeat. Held.
+* Strips archived as `<face>-round4-strip.png` in the source-data folder; intake data (discovery, pands, uses, strip.json) committed, strip images stay in staging.
