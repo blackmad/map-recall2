@@ -1,5 +1,27 @@
 # Canal Recall — what is built
 
+**H9 wall rule, K-stoep stoops, H7 round 3 installed (2026-11-10, #345, #360, #354).**
+- **H9 r3 (ccd9dfad4, opus): the wall-colour rule, merged with `SPEC_WALLS_HELD = true`.**
+  - Darks keep below red brick: lift k 0.2 ramped over OKLab L 0.30–0.50, darks get 35 % of the chroma gain, pale readings keep their own chroma, and the hue pull starts at 40°.
+  - Gate: spec reading vs render wall-mode Spearman 0.885; 9/10 photo-dark below the render median.
+  - Judgement ruling "darkness wins": Kinkerstraat C 0.045 is accepted. The ≥ 0.058 floor came from the period palette, not the photo. The photo-vs-render Spearman (0.29) moves to the H10 pairs, where photo and game share a pose. 236219 is a known measurement case.
+  - Un-hold order: H10 lands → frames on Kinkerstraat 26, the easy-houses set and random24 with walls before/after → judgement read → flip.
+  - H9 storeys are live: 411 generic pands draw the street source's storey count.
+  - Merge with H5h r4: a photo reading of a flat front drops the register gable to `historicGable`. Only an `author` flat front over a register gable takes the `cornice` crown (the Raadhuisstraat arcade).
+- **K-stoep (88da5d47d, opus): typed stoops (`buildingRecipe/stoop.ts`)**, with flights, steps, landing, iron railings and the opening under the landing.
+  - Generic path: `stoopExtra.ts` on the longest door wall on the nearest road, inside the building triangle budget.
+  - 461 spec stoops, 332 drawn typed and 49 with no room; +0.02 % triangles per tile at most.
+  - Against 2023 panoramas on 5 belt houses: direction 5/5, steps ±1 5/5, black iron 5/5. `SPEC_STOOPS_HELD = false`.
+- **H7 r3 (6104ee6d0, opus): both chunks installed.**
+  - The round-2 audit failures mostly predated H7: 36 opening parts came from main's own intents. H7's own were the tight pairs.
+  - Fixes at the source: tower and rosette stone at the 9 cm relief step, one palette per house, a `paint` slot for painted timber, stone balcony returns, shell-material mansard ends, and stone/timber-fronted dormers 0.14 m back.
+  - A corner attic now hips to its other street fronts and to the chamfer between them (`recipeRoof` `sideFronts`).
+  - One owner per pand: two chunks that suppress one pand replace each other on install. Corner 116526 belongs to clercq-236681, and nassau-145-152 is 6 pands.
+  - Roof golden re-recorded (incl. `_demo-school` 116526/153066 reclassed by the hips). The shared-kit changes reach other faces only when those reinstall.
+- **H2e** is adding a dark-neutral-rival guard (Kloveniersburgwal 72 accepted as a pinned regression if net agreement rises; 182848 white-trim case pinned) before the houseLine default flip.
+- **H11** (#361) is re-merging onto this base with look and shop held.
+- `build-covers.ts` reads the published bag-tiles when `artifacts/` has been swept.
+
 **Register gables gated by today's roof; H7 round 2 code (2026-11-10, #351 r4, #354).**
 - **Register gables (H5h r4, 7f8a80296).** In the trust order for `fronts/N/gable`, photo writers (Jev, hand) come first, then the register.
   - With no photo reading, a register gable draws only when the crown rise is at least 2 m. `house:specs` bakes `crownRiseM` from bag-facts; where it is missing, a gable draws when planRoof plans a pitched roof.

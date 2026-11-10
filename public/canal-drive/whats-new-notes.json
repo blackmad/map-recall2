@@ -3,6 +3,40 @@
   "notes": [
     {
       "date": "2026-11-10",
+      "title": "Stoops on the canal houses",
+      "text": "332 canal-belt houses now have their front steps drawn the way they are built: the flight turns the right way (straight out, to one side, or a double stair), has about the right number of steps, and gets black iron railings. Checked against panoramas on five Herengracht and Keizersgracht houses: right direction and the right railing on all five, steps within one.",
+      "images": [
+        {
+          "src": "ui/2026-11-10-stoops/before-zoom-167492.jpg",
+          "alt": "A Herengracht house before: a plain slab at the door",
+          "caption": "Before."
+        },
+        {
+          "src": "ui/2026-11-10-stoops/after-zoom-167492.jpg",
+          "alt": "The same house after: a stoop with iron railings",
+          "caption": "After."
+        }
+      ]
+    },
+    {
+      "date": "2026-11-10",
+      "title": "The Nassaukade corner at De Clercqstraat",
+      "text": "Nassaukade 145–152 get their real colours: the black-painted houses are black again and the brick is red-brown. The corner house at De Clercqstraat has its two stone dormer towers and wall rosettes, carved out from the wall, and its roof now slopes down to both streets without brick wedges beside the towers.",
+      "images": [
+        {
+          "src": "ui/2026-11-10-house-line-nassaukade-r3/116526-clercq-threeq-main.jpg",
+          "alt": "The corner house before",
+          "caption": "Before."
+        },
+        {
+          "src": "ui/2026-11-10-house-line-nassaukade-r3/116526-clercq-threeq-after.jpg",
+          "alt": "The corner house after, with stone towers and rosettes",
+          "caption": "After."
+        }
+      ]
+    },
+    {
+      "date": "2026-11-10",
       "title": "Coverage page thumbnails are back",
       "text": "The own-look cards on the coverage page lost their kit renders and photos earlier today when a republish ran without its thumbnail list. They are back, now for 403 types and families instead of 141 (the newer Bellamy and Oud-West types never had one), and a republish can no longer wipe them.",
       "images": [
