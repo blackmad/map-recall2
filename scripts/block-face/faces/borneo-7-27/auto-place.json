@@ -3,7 +3,7 @@
  "street": "Borneostraat",
  "library": "indische-buurt",
  "stripDate": "2023-01-02",
- "seconds": 6.5,
+ "seconds": 2.07,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -13,17 +13,7 @@
   "widthSlackM": 0.4,
   "flatRoofRiseM": 1.5
  },
- "runs": [
-  {
-   "face": "borneo-7-27-r1",
-   "pands": [
-    "0363100012090483",
-    "0363100012108761"
-   ],
-   "passed": true,
-   "triangles": 2872
-  }
- ],
+ "runs": [],
  "pands": [
   {
    "pandId": "0363100012068360",
@@ -196,56 +186,11 @@
     "voidShare": 0,
     "foliageShare": 0.02
    },
-   "status": "placed",
-   "type": "indisch-1914-red-sash-pairs",
-   "score": 1,
-   "placement": {
-    "type": "indisch-1914-red-sash-pairs",
-    "measuredPalette": {
-     "brick": "#816b63",
-     "evidence": "strip 2023-01-02 span 708-960: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    },
-    "crown": "shared-gable",
-    "pair": "left"
-   },
-   "notes": [
-    "crown shared-gable: reviewer pin (Borneostraat 7-27 strip 2023-01-02 (verdict 2026-11-10): one pointed brick gable centred on the 15|17 party wall, Borneostraat 15 is its left half)",
-    "door reviewer pin: as drawn (Borneostraat 15: left half of the shared gable pair (pair module draws the left half unmirrored))"
-   ],
-   "likeness": {
-    "pandId": "0363100012090483",
-    "ncc": 0.31,
-    "nccRaw": 0.31,
-    "shiftM": [
-     0.2,
-     0.15
-    ],
-    "usable": 0.96,
-    "abstain": null,
-    "verdict": "FAIL",
-    "reasons": [
-     "wall dL +0.20",
-     "glazing storey band off by 0.17 mean 0.34 vs photo 0.51"
-    ],
-    "wall": {
-     "photo": "#5e4f46",
-     "model": "#957e75",
-     "dL": 0.2
-    },
-    "glazing": {
-     "photo": 0.51,
-     "model": 0.34
-    },
-    "columns": {
-     "photo": null,
-     "model": 4
-    },
-    "iou": 0.439,
-    "footOffsetM": 1.7
-   },
-   "challengers": {
-    "indisch-1914-red-sash-pairs": 0.31
-   }
+   "status": "held",
+   "stage": "review",
+   "reason": "review: the shared pointed gables stand on the 13|15 and 17|19 party walls (round-3 verdict), so each front carries the far half of a gable whose partner (13 or 19) is held; held until 13 and 19 are built. Mirror pin kept (true)",
+   "likeness": null,
+   "challengers": {}
   },
   {
    "pandId": "0363100012108761",
@@ -287,54 +232,11 @@
     "voidShare": 0,
     "foliageShare": 0.03
    },
-   "status": "placed",
-   "type": "indisch-1914-red-sash-pairs",
-   "score": 1,
-   "placement": {
-    "type": "indisch-1914-red-sash-pairs",
-    "measuredPalette": {
-     "brick": "#877164",
-     "evidence": "strip 2023-01-02 span 960-1212: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    },
-    "crown": "shared-gable",
-    "pair": "right",
-    "mirror": true
-   },
-   "notes": [
-    "crown shared-gable: reviewer pin (Borneostraat 7-27 strip 2023-01-02 (verdict 2026-11-10): one pointed brick gable centred on the 15|17 party wall, Borneostraat 17 is its right half)",
-    "door reviewer pin: mirrored (Borneostraat 17: right half of the shared gable pair (mirror of the left half))"
-   ],
-   "likeness": {
-    "pandId": "0363100012108761",
-    "ncc": 0.168,
-    "nccRaw": 0.168,
-    "shiftM": [
-     -0.4,
-     0.2
-    ],
-    "usable": 0.92,
-    "abstain": null,
-    "verdict": "PASS",
-    "reasons": [],
-    "wall": {
-     "photo": "#846e61",
-     "model": "#9a8477",
-     "dL": 0.086
-    },
-    "glazing": {
-     "photo": 0.42,
-     "model": 0.34
-    },
-    "columns": {
-     "photo": null,
-     "model": 4
-    },
-    "iou": 0.464,
-    "footOffsetM": 1.7
-   },
-   "challengers": {
-    "indisch-1914-red-sash-pairs~m": 0.168
-   }
+   "status": "held",
+   "stage": "review",
+   "reason": "review: the shared pointed gables stand on the 13|15 and 17|19 party walls (round-3 verdict), so each front carries the far half of a gable whose partner (13 or 19) is held; held until 13 and 19 are built. Mirror pin kept (false)",
+   "likeness": null,
+   "challengers": {}
   },
   {
    "pandId": "0363100012145601",
