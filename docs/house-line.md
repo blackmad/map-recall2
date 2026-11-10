@@ -18,6 +18,7 @@ describe ──► preview ──► compare ──► stage ──► publish
 | §5 The kit-gap queue | H6 | stub |
 | §6 Worked example: the timed pilot (Nieuwmarkt, Bloemgracht, Nassaukade) | H7 | landed (staged batch `pilot-20261110`) |
 | §6b The standing acceptance set (easy houses) | H9 | landed |
+| §8 Browser-free GLB passes | H12 | landed (agreement: see §8) |
 
 ## §1 The record: HouseSpec
 
@@ -1670,3 +1671,141 @@ Gate (likeness first): the user's sheet re-made with a fourth column (photo | be
 family right on every pand with a photo reading, gable right where the register or the crop shows one, storeys ±0,
 bays ±1, Kinkerstraat 244-332 not darker than ΔL −0.03 (§1 "The wall colour"). Glazing is printed for information only
 (integrator ruling, H2d #342). Until H2d's `houseLine` measureFacade profile lands, the readings are H2c's.
+
+## §8 Browser-free GLB passes (lane H12, #362)
+
+**First passes are Node; browsers are for in-game frames (`house:frames`), rides and timing.** A first look at a GLB
+(a recipe house, a block-face chunk, a large recipe, a landmark) no longer waits for a `/tmp/canal-pw.sh` slot.
+
+### What draws in Node
+
+`src/canalRecall/glbRaster/` is a pure GLB rasteriser (no DOM, no GL, no globals; byte-deterministic):
+
+- `load.ts`: `@gltf-transform/core` + the meshopt decoder (EXT_meshopt_compression, KHR_mesh_quantization), the node
+  hierarchy flattened, normals by the inverse transpose, TEXCOORD_0 (KHR_texture_transform applied), COLOR_0, base
+  colour factor and texture (decoded by sharp), emissive, alpha mode/cutoff, doubleSided, KHR_materials_unlit and the
+  material extras (three.js userData: `materialSlot`, `tint`, ...).
+- `look.ts`: the browser pages' looks as data. `recipe` is render-page.ts's default: slot-tagged materials become the
+  recipe look's unlit cell shader, built by the game's own `createRecipeLook` (`cityLook: false`) on the real three.js
+  namespace with a `@napi-rs/canvas` document passed in, so cells, tints and uv scale are the game's. `flat` is
+  `--flat`; `game` is landmark-views' Lambert (normaliseLandmarkMaterials, the glass sky tint); `gallery` the
+  GLTFLoader standard materials. The rigs (render-page's hemisphere + sun + ground, landmark-views' game and gallery
+  lights) are constants beside them.
+- `raster.ts`: houseSpec/softRaster.ts's loop (edge functions, perspective-correct attributes, z-buffer) generalised to
+  per-primitive materials and three.js cameras (render.ts `RenderView`: eye, target, vertical fov, optional ortho
+  extents). It samples the standard 4x MSAA pattern and shades once per pixel at its centre, as the browser's
+  `antialias: true` does (the regular 2x2 grid of softRaster drew mullion edges differently and moved measureFacade's
+  glazing by up to 0.5 on cw-heren-175702). Textures are mipmapped and sampled trilinearly at one level of detail per
+  triangle. The standard material's direct GGX specular (three.js BRDF_GGX) is reproduced; it is what lit the
+  Westerkerk roof (pixel |Δ| 0.45 -> 0.13 once added). BLEND draws after the opaque pass, far to near, without depth
+  writes; MASK discards below the cutoff; triangles crossing the near plane are clipped.
+- `views.ts`: one view vocabulary, the JSON landmark-views.mjs takes: `orbit` (gallery camera), `street`, `front` (the
+  orthographic elevation of a wall a -> b at N px/m, a on the left, rows from the top: the axis of
+  `scripts/pand-reference/rectify.ts rectifyWall`, so a rectified photo and the render overlay), `threeq` (render.ts
+  frontViews' 3/4). `gallerySheetViews()` is the fixed sheet: gallery card, front, top, back.
+
+### Call sites and the flag
+
+| Call site | Default now | `--browser` |
+|---|---|---|
+| `scripts/building-recipes/render.ts` `renderModels` (every importer: block-face review, auto-place, batch, draft-preview, ortho-compare, run-views, door-reveal-sheet; large.ts sheets; measure.ts, closeup.ts, measurement-sheet.ts, index-row-sheet.ts, roof-tidy-cards.ts; landmark `*-strip.ts`; mercatorplein, haparandaweg, street-chunks, street-surveys) | Node | Chromium (also `GLB_RENDER=browser`, `useBrowserRenderer()`) |
+| `render.ts` with `{city: true}` (`--city-look`, index-row-sheet.ts) | Chromium, always (Node has no city-look atlas shader) | - |
+| `scripts/landmarks/landmark-views.mjs` | Node (`scripts/glb-raster/views.ts`, no dev server) | Chromium + dev server on PORT |
+| `scripts/landmarks/review-sheet.ts` GLB tiles | Node (the page's own lights, ground, DoubleSide) | Chromium; the in-game frame stays a browser frame |
+| `scripts/house-preview/gate.ts` | Chromium (it is the Node-preview-vs-Chromium cross-check) | - |
+| `house:preview --recipe` | Node, unchanged (flat game colours: H2 calibrated them against the ride frame) | - |
+| `large.ts` likeness / `install-large.ts` likeness gate | Node already (modelElevation on the material soup); no install step launches Chromium for a check that is not a picture | - |
+
+Left in the browser, and why: `kit-sheets.ts` (renders kits from the kit code in the page, not a GLB);
+`building-types/camera-sheets.ts` and `coverage/build-look-thumbs.ts` (building-types render-page.ts: the lit
+recipe look `lit: true` under the sunny rig and its review look; the cell path is here, the lit-cell Lambert and the
+sunny rig are the next step); `big-camrender`/`big-camshot` and every `*-game*.mjs` / ride capture (in-game frames).
+
+### Commands
+
+`node --import tsx scripts/glb-raster/views.ts` (INTEGRATOR TODO: `npm run glb:views`):
+
+```
+node --import tsx scripts/glb-raster/views.ts <id | file.glb> <views.json | - | sheet> <outDir> [flags]
+
+Renders a GLB in Node (src/canalRecall/glbRaster: no browser, no dev server, no lock) from a list of views, the JSON
+scripts/landmarks/landmark-views.mjs takes: [{name, light?, w?, hgt?, kind, ...}] with kind
+  orbit  {theta, phi, zoom?}            the landmark gallery camera (vertical fov 32, fitted to the bounding sphere)
+  street {x, z, h, fov, eye?, pitch?}   camera at x/z, heading h deg from north, horizontal fov, eye height (2.5 m)
+  front  {a: [x, z], b: [x, z], ppm?, v0?, v1?, pad?}  orthographic elevation of the wall a -> b (a on the left),
+                                        ppm px/m (50), the axis of pand-reference/rectify.ts rectifyWall
+  threeq {a, b, heightM?}               render.ts frontViews' three-quarter view of that wall
+light: game (default: normaliseLandmarkMaterials' Lambert under the game's hemisphere/sun/fill, the floor) or gallery
+(the GLTFLoader standard materials under the gallery light, the sun following theta, no floor). Coordinates are the
+GLB's own (x east, y up, z south for our models).
+
+  <id>              public/canal-drive/models/<id>.glb; or a path to any .glb
+  views.json        the view list; '-' = landmark-views.mjs's defaults (gallery card, game card, three game orbits);
+                    'sheet' = the fixed sheet (gallery card, front, top, back) composed into <outDir>/sheet.png
+  --wall=ax,az,bx,bz  the sheet's front wall (else the box's south face is an orbit)
+  --look=<look>     override the dressing: game | gallery | recipe (render.ts's recipe look) | flat
+  --ss=<n>          samples per pixel side (default 2, the 4x MSAA pattern)
+  --help            this text
+
+Writes <outDir>/<name>.png per view and prints each path with its time. Not drawn: cast shadows, anisotropic
+filtering, the city-look atlas shader (use render.ts --browser or landmark-views.mjs --browser for those).
+```
+
+`node --import tsx scripts/glb-raster/agreement.ts` (INTEGRATOR TODO: `npm run glb:agreement`):
+
+```
+node --import tsx scripts/glb-raster/agreement.ts [flags]
+
+Renders the lane H12 agreement set (10 canal houses incl. the Nassaukade 506 block and Haarlemmerdijk 2-58, 5 block-face
+chunks, 5 large recipes incl. Houthavenkade 26, 5 landmarks incl. glass/leaves) in Node and in Chromium, measures each
+front elevation (measureFacade, 1.5 px blur) and judges Node against Chromium (previewVerdict, reference
+'render'). Chromium: run under /tmp/canal-pw.sh with your PW_PORT.
+
+  --out=<dir>       output directory (default artifacts/glb-raster/agreement): agreement.json, sheet-*.png, per-id PNGs
+  --only=<id,...>   these set ids only
+  --ss=<n>          Node supersampling (default: the renderer's)
+  --reuse-browser=<dir>  measure against the Chromium PNGs of an earlier run in <dir> (no browser)
+  --node-only       time the Node side only (no Chromium)
+  --browser-only    time the Chromium side only (today's path, the before numbers)
+  --help            this text
+```
+
+### Agreement (2026-11-10, 25 GLBs)
+
+Set: 8 recipe canal houses + the Nassaukade 145-152 face (the Nassaukade 506 bar) + Haarlemmerdijk 2-58 r1 (holds
+Haarlemmerdijk 6, from lane/belt-haarlemmer-20261110); 5 block-face chunks; 5 large recipes incl. Houthavenkade 26;
+5 landmarks incl. the Conservatorium (glass, BLEND) and the Lensbomen (BLEND leaves). The front elevation at up to
+50 px/m, measured with measureFacade after the 1.5 px blur, Node judged against Chromium (previewVerdict, reference
+`render`). Controls: each renderer against itself with the camera moved a quarter pixel.
+
+| Measure | Result |
+|---|---|
+| Pixel |Δ| (mean over the front, 0-255), median of 25 | 0.53 (max 0.98, clercq-236681) |
+| Wall ΔL median / hue median | 0.002 / 0.2° |
+| Verdict PASS, one frame each | 19 / 25 |
+| Verdict PASS within the renderers' quarter-pixel envelopes (some pair of {Node, Node 1/4 px} x {Chromium, Chromium 1/4 px}) | 23 / 25 |
+| Chromium PASS against itself 1/4 px over | 20 / 25 |
+| Columns equal (one frame) | 20 / 25 |
+
+The strict gate (verdicts equal on 23 of 25 single frames) is not met: 19. Every disagreement is a measureFacade
+decision on a knife edge, not a drawing difference (the renders differ by under 1/255 on average, edges only):
+
+- Chromium disagrees with itself a quarter pixel over on 5 fronts (callenburg-3-63, houthavenkade-26, entrepotdok,
+  westerkerk, conservatorium), so no renderer can score more than ~20/25 single-frame against it.
+- houthavenkade-26 (window shape none vs tall), westerkerk (wall pick flips between the stone tower and the brick
+  nave: ΔL 0.25 on the same pixels), conservatorium (window shape): Chromium's own 1/4 px control fails the same way.
+- nassau-145-152 (columns 24 vs 6) and rijksmuseum (columns 39 vs 77, period halving): Node's own 1/4 px frame flips
+  back to Chromium's reading (nassau inside the envelope).
+- clercq-236681 (window shape wide vs square: opening width 0.8 vs 0.6 m at aspect 0.62 vs 0.81, the 0.7 boundary)
+  and rijksmuseum stay outside the envelope; the crops are identical to the eye (sheet 2).
+
+Speed (the user's Mac, warm unless said): the 4-view sheet of cw-heren-175702 in 0.33-0.41 s (`views.ts ... sheet`,
+1.0 s for the whole command from a cold `node`); Chromium 1.5 s cold (launch + bundle), 0.07-0.09 s warm, plus any
+wait for a slot. A large recipe (Houthavenkade 26, `large.ts`, all wall and aerial sheets) 6.1 s in Node, 4.9 s with
+`--browser` on a free slot. Block-face `review` (bilder-081118-155417) 2.2 s Node, 4.7 s Chromium, identical review
+lines. Both completed with `PLAYWRIGHT_BROWSERS_PATH` pointing nowhere (no Chromium can start). The 25-GLB agreement:
+Node 32 s, Chromium 8 s (most of the Node time is the ortho fronts at 1800 px).
+
+Not reproduced: the city-look atlas shader, anisotropic filtering, cast shadows, environment maps. The release review
+"at gallery size from all sides" can use the Node orbit (`views.ts <id> -`) for its first look; the release decision
+itself should stay on a Chromium or in-game frame until the measureFacade knife edges above are hardened (OPEN).

@@ -136,5 +136,8 @@ The disk is shared by every lane and has hit 99 % full. Rules:
 - `house:publish` is the integrator's; lanes stop at `npm run house:stage -- <spec|pandId>`
   (validates, attaches the preview receipt, writes `artifacts/house-specs/staging/`).
   The integrator publishes the whole staged batch once (`docs/house-line.md` section 3).
+- First passes are Node; browsers are for in-game frames (`house:frames`), rides and
+  timing. `render.ts` sheets, `landmark-views.mjs` and review-sheet GLB tiles draw in
+  Node (`src/canalRecall/glbRaster`, `docs/house-line.md` §8); `--browser` keeps Chromium.
 - What the kit cannot say goes in `schemaLimits` as `{component, what}`, never
   the nearest option. `?houseSpecs=0` / `HOUSE_SPECS=0` turns the line off.
