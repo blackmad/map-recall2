@@ -15,7 +15,7 @@ import path from 'node:path';
 import zlib from 'node:zlib';
 import sharp from 'sharp';
 import { findPands, lngLatToRd, loadRoads, nearestOnSeg, neighbourhood, normId, type Footprint } from '../pand-reference/core.ts';
-import { exposedWalls, listPanos, pickWall, rankPanos, type PanoPick, type Wall } from '../pand-reference/select.ts';
+import { exposedWalls, FACADE_WINDOW, listPanos, pickWall, rankPanos, type PanoPick, type Wall } from '../pand-reference/select.ts';
 import { isLeaf } from '../../src/canalRecall/buildingRecipe/measureFacade.ts';
 import { aimPose, fpsFor, frameFor, gridConvergenceDeg, hfovDeg, wallOutline, wallPoint, CROWN_EXTRA_M, FRAME_H, FRAME_W, type FramePose, type WallQuad } from './pose.ts';
 import { cutPerspective, loadEquirect, type PanoSize, type Rgb8 } from './photo.ts';
@@ -39,6 +39,8 @@ Input (one of)
 
 Flags
   --year <yyyy>          only panoramas of that mission year
+  --min-dist <m>         nearest panorama to the wall (default 5)
+  --max-dist <m>         farthest panorama (default 35); a quay row read across the canal: --min-dist 25 --max-dist 50
   --season winter|any    winter: Nov-Mar captures first (bare trees); default any
   --query '<q>'          game query; ?engine=own&cam=fps is added. Before/after of a spec change: '?world=live&houseSpecs=0'
                          vs '?world=live' (the baked world-v1 cells carry the specs already, so houseSpecs=0 alone
@@ -86,7 +88,7 @@ Review: docs/house-line.md §7. Builders are accepted on these pairs, read by op
 `;
 
 type Entry = { id: string; key?: string; bearing?: number; at?: [number, number]; chord?: [[number, number], [number, number]] };
-type Args = { pands: Entry[]; year?: number; season: 'winter' | 'any'; query: string; label: string; out: string; panoSize: PanoSize; bearing?: number; max: number; reopenEvery: number; prepOnly: boolean; postOnly: boolean; inputName: string };
+type Args = { pands: Entry[]; year?: number; minDist: number; maxDist: number; season: 'winter' | 'any'; query: string; label: string; out: string; panoSize: PanoSize; bearing?: number; max: number; reopenEvery: number; prepOnly: boolean; postOnly: boolean; inputName: string };
 
 function arg(argv: string[], name: string): string | undefined {
   const i = argv.indexOf(`--${name}`);
@@ -114,7 +116,7 @@ async function parseArgs(argv: string[]): Promise<Args> {
   }
   const season = arg(argv, 'season') === 'winter' ? 'winter' : 'any';
   const max = Number(arg(argv, 'max') ?? Infinity);
-  return { pands: pands.slice(0, max), year: arg(argv, 'year') ? Number(arg(argv, 'year')) : undefined, season, query: arg(argv, 'query') ?? '', label, out, panoSize: (arg(argv, 'pano-size') as PanoSize) ?? 'medium', bearing, max, reopenEvery: Number(arg(argv, 'reopen-every') ?? 40), prepOnly: argv.includes('--prep-only'), postOnly: argv.includes('--post-only'), inputName };
+  return { pands: pands.slice(0, max), year: arg(argv, 'year') ? Number(arg(argv, 'year')) : undefined, minDist: Number(arg(argv, 'min-dist') ?? FACADE_WINDOW.minD), maxDist: Number(arg(argv, 'max-dist') ?? FACADE_WINDOW.maxD), season, query: arg(argv, 'query') ?? '', label, out, panoSize: (arg(argv, 'pano-size') as PanoSize) ?? 'medium', bearing, max, reopenEvery: Number(arg(argv, 'reopen-every') ?? 40), prepOnly: argv.includes('--prep-only'), postOnly: argv.includes('--post-only'), inputName };
 }
 
 // ---- what the game draws for a pand (route) -------------------------------------------------------------------------
@@ -263,9 +265,12 @@ async function prepare(entry: Entry, fp: Footprint | undefined, args: Args): Pro
   const { wall, note } = entry.chord ? wallChord(fp, entry.chord, entry.bearing) : entry.at ? wallAt(fp, near, entry.at, entry.bearing) : await pickWall(fp, near);
   if (!wall) return { pandId, key, skip: note };
   const quad: WallQuad = { a: wall.a, b: wall.b, heightM: fp.height || 10 };
-  let ranked = rankPanos(wall, await listPanos(wall.mid)).filter(c => c.surface !== 'W');
+  // --min-dist/--max-dist widen or move the window (a quay row read from across the canal: 25-50 m); the default is rankPanos' own.
+  const custom = args.minDist !== FACADE_WINDOW.minD || args.maxDist !== FACADE_WINDOW.maxD;
+  const win = custom ? { ...FACADE_WINDOW, minD: args.minDist, maxD: args.maxDist, strict: [args.minDist, args.maxDist] as [number, number] } : FACADE_WINDOW;
+  let ranked = rankPanos(wall, await listPanos(wall.mid, Math.max(35, args.maxDist)), win).filter(c => c.surface !== 'W');
   if (args.year) ranked = ranked.filter(c => c.missionYear === args.year);
-  if (!ranked.length) return { pandId, skip: args.year ? `no panorama of ${args.year} in 5-35 m` : 'no panorama in 5-35 m (obliquity <= 55)' };
+  if (!ranked.length) return { pandId, skip: args.year ? `no panorama of ${args.year} in ${win.minD}-${win.maxD} m` : `no panorama in ${win.minD}-${win.maxD} m (obliquity <= 55)` };
   const why: string[] = [note];
   // Winter first; glare and washed-out walls rejected (pre-pass over the first 3, extended to 8 while fewer than 2 pass);
   // then lowest foliage on the wall, then rank.

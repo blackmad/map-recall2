@@ -1,0 +1,895 @@
+{
+ "palette": {
+  "frame": "white",
+  "door": "#2a2624",
+  "stone": "#e9e6dd"
+ },
+ "photos": {
+  "k4-8": {
+   "ref": "panorama b_20250108_1041_Track23_Sphere_00051 (43 m across the Kloveniersburgwal, row view of 4-8)",
+   "at": "2025-01-08"
+  },
+  "k10-16": {
+   "ref": "panorama b_20250108_1041_Track23_Sphere_00047 (43 m across the Kloveniersburgwal, row view of 10-16)",
+   "at": "2025-01-08"
+  },
+  "k18-22": {
+   "ref": "panorama b_20250108_1041_Track23_Sphere_00042 (39 m across, row view of 18-22) and pand-crops/0363100012171707 (2023-02-13)",
+   "at": "2025-01-08"
+  },
+  "k26-32": {
+   "ref": "panorama b_20250108_1041_Track23_Sphere_00038 (43 m across, row view of 26-32) and pand-crops/0363100012178199 (2021-01-22)",
+   "at": "2025-01-08"
+  },
+  "k34-40": {
+   "ref": "panorama b_20250108_1041_Track23_Sphere_00033 (38 m across, row view of 34-40) and the 2021-12-27 strip crops of 34 and 40",
+   "at": "2025-01-08"
+  },
+  "k42-46": {
+   "ref": "panorama b_20250108_1041_Track23_Sphere_00028 (39 m across, row view of 42-46)",
+   "at": "2025-01-08"
+  },
+  "k52-56": {
+   "ref": "panorama b_20250108_1041_Track21_Sphere_00031 (41 m across, row view of 52-56)",
+   "at": "2025-01-08"
+  },
+  "k54-58": {
+   "ref": "panorama TMX7316010203-002973_pano_0000_000075 (41 m across, overcast, row view of 54-58) and b_20250108_1041_Track21_Sphere_00035 (row view of 58-62)",
+   "at": "2023-02-20"
+  },
+  "k58-62": {
+   "ref": "panorama b_20250108_1041_Track21_Sphere_00035 (33 m across, row view of 58-62)",
+   "at": "2025-01-08"
+  },
+  "k5-9": {
+   "ref": "panorama b_20250108_1041_Track23_Sphere_00115 (43 m across the Kloveniersburgwal, row view of 5-9)",
+   "at": "2025-01-08"
+  },
+  "k11-17": {
+   "ref": "panorama b_20250108_1041_Track23_Sphere_00118 (42 m across, row view of 11-17)",
+   "at": "2025-01-08"
+  },
+  "k19-23": {
+   "ref": "panorama b_20250108_1041_Track23_Sphere_00123 (40 m across, row view of 19-23)",
+   "at": "2025-01-08"
+  }
+ },
+ "pands": [
+  {
+   "pandId": "0363100012171710",
+   "label": "4",
+   "street": "Kloveniersburgwal",
+   "photo": "k4-8",
+   "front": {
+    "gable": "cornice",
+    "storeys": 4,
+    "bays": 2,
+    "doorBay": 0,
+    "cornice": "heavy",
+    "dormers": 1,
+    "dormerStyle": "flat",
+    "windows": "two-light",
+    "windowSurround": "sill",
+    "shopfront": {
+     "colour": "#2c3a31",
+     "fascia": true,
+     "awning": {
+      "style": "fabric-straight",
+      "colour": "#2b3d33"
+     },
+     "stallriser": "low"
+    },
+    "dormerBody": "timber"
+   },
+   "roof": {
+    "material": "black-tile"
+   },
+   "palette": {
+    "brick": "#8a5640"
+   },
+   "limits": [
+    [
+     "crown",
+     "a small pointed brick gable (dakkapel with a stone point) stands behind the white entablature; drawn as a pointed dormer"
+    ],
+    [
+     "dormer",
+     "the photo dormer is pointed; pointed dormers on this 3DBAG roof open 4-16 edges per dormer (open-edges gate), drawn flat"
+    ]
+   ]
+  },
+  {
+   "pandId": "0363100012171704",
+   "label": "6",
+   "street": "Kloveniersburgwal",
+   "photo": "k4-8",
+   "front": {
+    "gable": "neck",
+    "crownCap": "rounded",
+    "atticWindows": 1,
+    "hoist": true,
+    "storeys": 4,
+    "bays": 3,
+    "bayWidths": [
+     0.8,
+     1.15,
+     0.8
+    ],
+    "doorBay": 0,
+    "windows": "sash",
+    "windowSurround": "none",
+    "shopfront": {
+     "colour": "#3a2a26",
+     "fascia": true,
+     "awning": {
+      "style": "fabric-straight",
+      "colour": "#c4322a"
+     },
+     "stallriser": "low"
+    }
+   },
+   "palette": {
+    "brick": "#3d322e"
+   },
+   "notes": [
+    "Twin of Kloveniersburgwal 8: narrow dark brown neck gable with a white scrolled cap; the register says cornice (rce 3016/3017) but the 2025 front shows a neck gable"
+   ],
+   "limits": [
+    [
+     "gable ornament",
+     "white carved claw-pieces and scrolls beside the neck are not drawn"
+    ]
+   ]
+  },
+  {
+   "pandId": "0363100012182581",
+   "label": "8",
+   "street": "Kloveniersburgwal",
+   "photo": "k4-8",
+   "front": {
+    "gable": "neck",
+    "crownCap": "rounded",
+    "atticWindows": 1,
+    "hoist": true,
+    "storeys": 4,
+    "bays": 3,
+    "bayWidths": [
+     0.8,
+     1.15,
+     0.8
+    ],
+    "doorBay": 0,
+    "windows": "sash",
+    "windowSurround": "none",
+    "shopfront": {
+     "colour": "#3a2a26",
+     "fascia": true,
+     "awning": {
+      "style": "fabric-straight",
+      "colour": "#c4322a"
+     },
+     "stallriser": "low"
+    }
+   },
+   "palette": {
+    "brick": "#3d322e"
+   },
+   "limits": [
+    [
+     "gable ornament",
+     "white carved claw-pieces and scrolls beside the neck are not drawn"
+    ]
+   ]
+  },
+  {
+   "pandId": "0363100012182580",
+   "label": "10",
+   "street": "Kloveniersburgwal",
+   "photo": "k10-16",
+   "front": {
+    "gable": "cornice",
+    "storeys": 4,
+    "bays": 3,
+    "doorBay": 0,
+    "cornice": "simple",
+    "dormers": 1,
+    "dormerStyle": "flat",
+    "windows": "sash",
+    "windowSurround": "sill",
+    "shopfront": {
+     "colour": "#e6e2d8",
+     "fascia": false,
+     "entrance": "left",
+     "displayWindows": 1,
+     "stallriser": "low"
+    },
+    "dormerBody": "timber"
+   },
+   "palette": {
+    "brick": "#41352f"
+   }
+  },
+  {
+   "pandId": "0363100012171702",
+   "label": "14",
+   "street": "Kloveniersburgwal",
+   "photo": "k10-16",
+   "front": {
+    "gable": "cornice",
+    "storeys": 4,
+    "bays": 3,
+    "doorBay": 1,
+    "cornice": "frieze",
+    "dormers": 1,
+    "dormerStyle": "flat",
+    "windows": "sash-6-over-6",
+    "windowSurround": "sill",
+    "shopfront": {
+     "colour": "#5a2a24",
+     "fascia": true,
+     "fasciaColour": "#b8302a",
+     "awning": {
+      "style": "fabric-straight",
+      "colour": "#c0362c"
+     },
+     "stallriser": "low"
+    },
+    "dormerBody": "timber"
+   },
+   "palette": {
+    "brick": "#7a4b3a"
+   },
+   "colourRef": "red-brown brick, pand-crops/0363100012171702 (2025-01-08, sunlit) read darker for the sun cast"
+  },
+  {
+   "pandId": "0363100012171703",
+   "label": "16",
+   "street": "Kloveniersburgwal",
+   "photo": "k10-16",
+   "front": {
+    "gable": "flat",
+    "storeys": 4,
+    "bays": 3,
+    "doorBay": 2,
+    "cornice": "simple",
+    "dormers": 1,
+    "dormerStyle": "box",
+    "windows": "two-light",
+    "windowSurround": "none",
+    "shopfront": {
+     "colour": "#e8e6e0",
+     "fascia": true,
+     "fasciaColour": "#e8e6e0",
+     "awning": {
+      "style": "fabric-straight",
+      "colour": "#2f6b45"
+     },
+     "stallriser": "low"
+    },
+    "dormerBody": "timber"
+   },
+   "roof": {
+    "material": "red-tile"
+   },
+   "palette": {
+    "brick": "#76493a"
+   },
+   "notes": [
+    "1927 brick front (BAG): three axes of wide two-light windows, a red pantile roof falling to the street with one broad dormer"
+   ]
+  },
+  {
+   "pandId": "0363100012182582",
+   "label": "18",
+   "street": "Kloveniersburgwal",
+   "photo": "k18-22",
+   "front": {
+    "gable": "cornice",
+    "storeys": 3,
+    "bays": 3,
+    "doorBay": 2,
+    "cornice": "simple",
+    "tallGround": true,
+    "dormers": 1,
+    "dormerStyle": "flat",
+    "windows": "sash",
+    "windowSurround": "none",
+    "shopfront": {
+     "colour": "#ece9e2",
+     "fascia": false,
+     "displayWindows": 2,
+     "stallriser": "low"
+    },
+    "dormerBody": "timber"
+   },
+   "roof": {
+    "material": "red-tile"
+   },
+   "palette": {
+    "brick": "#3f342f"
+   }
+  },
+  {
+   "pandId": "0363100012171705",
+   "label": "20",
+   "street": "Kloveniersburgwal",
+   "photo": "k18-22",
+   "front": {
+    "gable": "cornice",
+    "storeys": 4,
+    "bays": 2,
+    "doorBay": 1,
+    "cornice": "bracketed",
+    "windows": "sash-small-panes",
+    "windowSurround": "sill",
+    "shopfront": {
+     "colour": "#e8e4da",
+     "fascia": true,
+     "fasciaColour": "#3b3a36",
+     "entrance": "right",
+     "displayWindows": 1,
+     "stallriser": "medium"
+    }
+   },
+   "palette": {
+    "brick": "#9a6a52"
+   },
+   "colourRef": "orange-red brick, strip crop 2021-01-22"
+  },
+  {
+   "pandId": "0363100012171707",
+   "label": "22-24",
+   "street": "Kloveniersburgwal",
+   "photo": "k18-22",
+   "front": {
+    "gable": "cornice",
+    "storeys": 4,
+    "bays": 5,
+    "doorBay": 3,
+    "cornice": "simple",
+    "dormers": 2,
+    "dormerStyle": "flat",
+    "windows": "sash",
+    "windowSurround": "sill",
+    "shopfront": {
+     "colour": "#e9e6df",
+     "fascia": false,
+     "glazing": "split",
+     "displayWindows": 3,
+     "stallriser": "medium"
+    },
+    "dormerBody": "timber"
+   },
+   "palette": {
+    "brick": "#3f3530"
+   },
+   "colourRef": "pand-crops/0363100012171707 (2023-02-13, overcast) pixel #3f3530"
+  },
+  {
+   "pandId": "0363100012178199",
+   "label": "32",
+   "street": "Kloveniersburgwal",
+   "photo": "k26-32",
+   "front": {
+    "gable": "cornice",
+    "storeys": 4,
+    "bays": 4,
+    "doorBay": 0,
+    "cornice": "bracketed",
+    "dormers": 2,
+    "dormerStyle": "flat",
+    "windows": "sash",
+    "windowSurround": "sill",
+    "shopfront": {
+     "colour": "#7a2e26",
+     "fascia": true,
+     "fasciaColour": "#e6e0d4",
+     "displayWindows": 1,
+     "stallriser": "low"
+    },
+    "dormerBody": "timber",
+    "storeyHeights": [
+     1.15,
+     1,
+     1,
+     1
+    ]
+   },
+   "palette": {
+    "brick": "#6a4d3e"
+   },
+   "colourRef": "pand-crops/0363100012178199 (2021-01-22, overcast) pixel #695542"
+  },
+  {
+   "pandId": "0363100012178200",
+   "label": "34",
+   "street": "Kloveniersburgwal",
+   "photo": "k34-40",
+   "front": {
+    "gable": "cornice",
+    "storeys": 4,
+    "bays": 2,
+    "doorBay": 1,
+    "cornice": "frieze",
+    "windows": "sash",
+    "windowSurround": "sill",
+    "shopfront": {
+     "colour": "#ebe8e1",
+     "fascia": false,
+     "entrance": "right",
+     "displayWindows": 1,
+     "stallriser": "medium"
+    },
+    "storeyHeights": [
+     1.15,
+     1,
+     1,
+     1
+    ]
+   },
+   "palette": {
+    "brick": "#84463a"
+   },
+   "limits": [
+    [
+     "cornice",
+     "a small arched light sits in the white attic frieze; the frieze cornice draws no light"
+    ]
+   ]
+  },
+  {
+   "pandId": "0363100012178198",
+   "label": "36",
+   "street": "Kloveniersburgwal",
+   "photo": "k34-40",
+   "front": {
+    "gable": "cornice",
+    "storeys": 4,
+    "bays": 3,
+    "doorBay": 0,
+    "cornice": "heavy",
+    "windows": "sash-small-panes",
+    "windowSurround": "none",
+    "shopfront": {
+     "colour": "#e8e5de",
+     "fascia": false,
+     "displayWindows": 2,
+     "stallriser": "low"
+    }
+   },
+   "palette": {
+    "brick": "#d6c8a8",
+    "wallMaterial": "painted-brick"
+   },
+   "notes": [
+    "Painted cream since the 2023 renovation: the 2023-02-20 crop shows dark brown brick under sheeting, the 2025-01-08 row view a cream front; the later photo wins"
+   ],
+   "limits": [
+    [
+     "cornice",
+     "the ornate cornice carries three small carved attic pieces (vases or consoles) not drawn"
+    ]
+   ]
+  },
+  {
+   "pandId": "0363100012178393",
+   "label": "38",
+   "street": "Kloveniersburgwal",
+   "photo": "k34-40",
+   "front": {
+    "gable": "bell",
+    "crownCap": "rounded",
+    "atticWindows": 1,
+    "hoist": true,
+    "storeys": 3,
+    "bays": 2,
+    "doorBay": 1,
+    "tallGround": true,
+    "windows": "sash-small-panes",
+    "windowSurround": "none",
+    "shopfront": {
+     "colour": "#ece9df",
+     "fascia": false,
+     "glazing": "transom",
+     "displayWindows": 2,
+     "stallriser": "medium"
+    }
+   },
+   "palette": {
+    "brick": "#8a4334"
+   }
+  },
+  {
+   "pandId": "0363100012178392",
+   "label": "40",
+   "street": "Kloveniersburgwal",
+   "photo": "k34-40",
+   "front": {
+    "gable": "neck",
+    "crownCap": "rounded",
+    "atticWindows": 1,
+    "hoist": true,
+    "storeys": 3,
+    "bays": 2,
+    "doorBay": 0,
+    "tallGround": true,
+    "windows": "sash-small-panes",
+    "windowSurround": "none",
+    "shopfront": {
+     "colour": "#ece9df",
+     "fascia": false,
+     "glazing": "transom",
+     "displayWindows": 2,
+     "stallriser": "medium"
+    }
+   },
+   "palette": {
+    "brick": "#302c2d",
+    "wallMaterial": "painted-brick"
+   },
+   "colourRef": "strip crop 2021-12-27 and pand-crops pixel #3b3235",
+   "notes": [
+    "Register: bell gable (rce 3032); the front shows a tall neck with white scrolled claw-pieces and a round cap"
+   ],
+   "limits": [
+    [
+     "gable ornament",
+     "white scrolled claw-pieces beside the neck are not drawn"
+    ]
+   ]
+  },
+  {
+   "pandId": "0363100012178305",
+   "label": "46",
+   "street": "Kloveniersburgwal",
+   "photo": "k42-46",
+   "front": {
+    "gable": "cornice",
+    "storeys": 3,
+    "bays": 3,
+    "doorBay": 0,
+    "cornice": "simple",
+    "dormers": 1,
+    "dormerStyle": "flat",
+    "windows": "sash",
+    "windowSurround": "none",
+    "shopfront": {
+     "colour": "#e8e4da",
+     "fascia": true,
+     "fasciaColour": "#7a3a2a",
+     "displayWindows": 2,
+     "stallriser": "low"
+    },
+    "dormerBody": "timber"
+   },
+   "roof": {
+    "material": "slate"
+   },
+   "palette": {
+    "brick": "#4a3a33"
+   },
+   "limits": [
+    [
+     "dormer",
+     "the centre dormer has a bell-shaped stone frame with scrolls (a dormer gable); drawn as an arched dormer"
+    ],
+    [
+     "dormer",
+     "the photo dormer is arched; arched dormers on this 3DBAG roof open 4-16 edges per dormer (open-edges gate), drawn flat"
+    ]
+   ]
+  },
+  {
+   "pandId": "0363100012171172",
+   "label": "52",
+   "street": "Kloveniersburgwal",
+   "photo": "k52-56",
+   "front": {
+    "gable": "bell",
+    "crownCap": "rounded",
+    "atticWindows": 1,
+    "hoist": true,
+    "storeys": 3,
+    "bays": 2,
+    "doorBay": null,
+    "tallGround": true,
+    "windows": "sash",
+    "windowSurround": "none"
+   },
+   "palette": {
+    "brick": "#e4dfd3",
+    "wallMaterial": "painted-brick"
+   },
+   "notes": [
+    "White-painted bell gable; the ground storey is boarded (2025-01-08); drawn as two tall ground windows"
+   ]
+  },
+  {
+   "pandId": "0363100012177878",
+   "label": "58",
+   "street": "Kloveniersburgwal",
+   "photo": "k54-58",
+   "front": {
+    "gable": "neck",
+    "crownCap": "rounded",
+    "atticWindows": 0,
+    "hoist": true,
+    "storeys": 5,
+    "bays": 3,
+    "bayWidths": [
+     0.75,
+     1.1,
+     0.75
+    ],
+    "windows": "sash",
+    "windowSurround": "none",
+    "doorBay": 2
+   },
+   "palette": {
+    "brick": "#4b3b33"
+   },
+   "notes": [
+    "Twin of 56: neck gables with white claw-pieces, a round cap and a carved cartouche in the neck"
+   ],
+   "limits": [
+    [
+     "gable ornament",
+     "the carved stone cartouche in the neck and the white claw-pieces are not drawn"
+    ]
+   ]
+  },
+  {
+   "pandId": "0363100012171173",
+   "label": "56",
+   "street": "Kloveniersburgwal",
+   "photo": "k54-58",
+   "front": {
+    "gable": "neck",
+    "crownCap": "rounded",
+    "atticWindows": 0,
+    "hoist": true,
+    "storeys": 5,
+    "bays": 3,
+    "bayWidths": [
+     0.75,
+     1.1,
+     0.75
+    ],
+    "windows": "sash",
+    "windowSurround": "none",
+    "doorBay": 0
+   },
+   "palette": {
+    "brick": "#4b3b33"
+   },
+   "limits": [
+    [
+     "gable ornament",
+     "the carved stone cartouche in the neck and the white claw-pieces are not drawn"
+    ]
+   ]
+  },
+  {
+   "pandId": "0363100012177877",
+   "label": "60",
+   "street": "Kloveniersburgwal",
+   "photo": "k58-62",
+   "front": {
+    "gable": "cornice",
+    "storeys": 4,
+    "bays": 2,
+    "doorBay": 0,
+    "cornice": "simple",
+    "windows": "sash",
+    "windowSurround": "sill",
+    "shopfront": {
+     "colour": "#ece9e2",
+     "fascia": false,
+     "entrance": "left",
+     "displayWindows": 2,
+     "stallriser": "low"
+    }
+   },
+   "palette": {
+    "brick": "#6b4636"
+   },
+   "notes": [
+    "Register: neck gable (rce 3040); the front today has a flat white cornice under a roof terrace"
+   ]
+  },
+  {
+   "pandId": "0363100012182584",
+   "label": "9",
+   "street": "Kloveniersburgwal",
+   "photo": "k5-9",
+   "front": {
+    "gable": "neck",
+    "crownCap": "rounded",
+    "atticWindows": 1,
+    "hoist": true,
+    "storeys": 4,
+    "bays": 3,
+    "doorBay": 0,
+    "windows": "sash",
+    "windowSurround": "none",
+    "shopfront": {
+     "colour": "#ece9e2",
+     "fascia": false,
+     "glazing": "transom",
+     "displayWindows": 2,
+     "stallriser": "medium"
+    }
+   },
+   "palette": {
+    "brick": "#3d322d"
+   }
+  },
+  {
+   "pandId": "0363100012182778",
+   "label": "11-13",
+   "street": "Kloveniersburgwal",
+   "photo": "k11-17",
+   "front": {
+    "gable": "step",
+    "crownSteps": 5,
+    "atticWindows": 1,
+    "storeys": 4,
+    "bays": 3,
+    "doorBay": 0,
+    "windows": "cross",
+    "windowSurround": "stone-lintel",
+    "bands": "speklagen",
+    "shopfront": {
+     "colour": "#2a2a2c",
+     "fascia": true,
+     "awning": {
+      "style": "fabric-straight",
+      "colour": "#2d2f33"
+     },
+     "stallriser": "low"
+    }
+   },
+   "palette": {
+    "brick": "#2e2b2c",
+    "wallMaterial": "painted-brick",
+    "band": "#ece9e0"
+   },
+   "notes": [
+    "1881 black-painted step gable with white speklagen and white blocks over the windows"
+   ],
+   "limits": [
+    [
+     "window head",
+     "white block lintels with blocks between the windows (a block-and-band pattern); drawn as stone lintels"
+    ]
+   ]
+  },
+  {
+   "pandId": "0363100012182777",
+   "label": "15",
+   "street": "Kloveniersburgwal",
+   "photo": "k11-17",
+   "front": {
+    "gable": "cornice",
+    "storeys": 4,
+    "bays": 3,
+    "doorBay": 1,
+    "cornice": "simple",
+    "windows": "sash",
+    "windowSurround": "sill",
+    "shopfront": {
+     "colour": "#ece9e2",
+     "fascia": false,
+     "displayWindows": 2,
+     "stallriser": "medium"
+    }
+   },
+   "palette": {
+    "brick": "#6a3f33"
+   }
+  },
+  {
+   "pandId": "0363100012571679",
+   "label": "17",
+   "street": "Kloveniersburgwal",
+   "photo": "k11-17",
+   "front": {
+    "gable": "neck",
+    "crownCap": "rounded",
+    "atticWindows": 1,
+    "hoist": true,
+    "storeys": 3,
+    "bays": 3,
+    "bayWidths": [
+     0.8,
+     1.1,
+     0.8
+    ],
+    "doorBay": 2,
+    "tallGround": true,
+    "windows": "sash",
+    "windowSurround": "none"
+   },
+   "palette": {
+    "brick": "#5a3d33"
+   },
+   "limits": [
+    [
+     "gable",
+     "two round oculi flank the neck's lower window and a tall neck with pilasters rises a full storey; the neck is drawn plain"
+    ]
+   ]
+  },
+  {
+   "pandId": "0363100012571680",
+   "label": "19",
+   "street": "Kloveniersburgwal",
+   "photo": "k19-23",
+   "front": {
+    "gable": "cornice",
+    "storeys": 4,
+    "bays": 3,
+    "doorBay": 2,
+    "cornice": "simple",
+    "windows": "sash",
+    "windowSurround": "sill",
+    "shopfront": {
+     "colour": "#e9e6df",
+     "fascia": false,
+     "displayWindows": 2,
+     "stallriser": "low"
+    }
+   },
+   "palette": {
+    "brick": "#6e4433"
+   }
+  },
+  {
+   "pandId": "0363100012182776",
+   "label": "21",
+   "street": "Kloveniersburgwal",
+   "photo": "k19-23",
+   "front": {
+    "gable": "point",
+    "atticWindows": 1,
+    "hoist": true,
+    "storeys": 4,
+    "bays": 3,
+    "bayWidths": [
+     0.75,
+     1.1,
+     0.75
+    ],
+    "doorBay": 0,
+    "windows": "sash",
+    "windowSurround": "none",
+    "axisHeads": {
+     "1": {
+      "kind": "round",
+      "storeys": [
+       1,
+       2,
+       3
+      ]
+     }
+    }
+   },
+   "palette": {
+    "brick": "#3e312c"
+   },
+   "limits": [
+    [
+     "gable",
+     "the point gable ends in a small round cap with a finial"
+    ]
+   ]
+  }
+ ],
+ "held": [
+  {
+   "pandId": "0363100012171629",
+   "label": "44",
+   "why": "facts eaves 5.5 m (3DBAG's low rear eaves): the recipe squashes four storeys under a 9 m roof; a HouseSpec has no eaves field (house-line.md 'Not wired' 1). Needs measuredEavesM in the house dir's facts.json"
+  }
+ ]
+}

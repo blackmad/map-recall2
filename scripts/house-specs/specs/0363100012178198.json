@@ -1,0 +1,73 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012178198",
+ "address": "Kloveniersburgwal 36",
+ "design": {
+  "fronts": [
+   {
+    "id": "front0",
+    "street": "Kloveniersburgwal",
+    "basement": "none",
+    "cornice": "heavy",
+    "doorBay": 0,
+    "windows": "sash-small-panes",
+    "hoist": false,
+    "gable": "cornice",
+    "storeys": 4,
+    "bays": 3,
+    "windowSurround": "none",
+    "shopfront": {
+     "colour": "#e8e5de",
+     "fascia": false,
+     "displayWindows": 2,
+     "stallriser": "low"
+    }
+   }
+  ],
+  "roof": {
+   "material": "black-tile"
+  },
+  "palette": {
+   "frame": "white",
+   "door": "#2a2624",
+   "stone": "#e9e6dd",
+   "brick": "#d6c8a8",
+   "wallMaterial": "painted-brick"
+  },
+  "notes": [
+   "Painted cream since the 2023 renovation: the 2023-02-20 crop shows dark brown brick under sheeting, the 2025-01-08 row view a cream front; the later photo wins"
+  ]
+ },
+ "provenance": {
+  "fronts/0": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "lane belt-burgwallen-oz-build-20261110 hand read (front: crown, storeys, axes, windows, ground storey) of panorama b_20250108_1041_Track23_Sphere_00033 (38 m across, row view of 34-40) and the 2021-12-27 strip crops of 34 and 40",
+   "at": "2025-01-08"
+  },
+  "roof": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "lane belt-burgwallen-oz-build-20261110 hand read (roof from the front) of panorama b_20250108_1041_Track23_Sphere_00033 (38 m across, row view of 34-40) and the 2021-12-27 strip crops of 34 and 40",
+   "at": "2025-01-08"
+  },
+  "palette": {
+   "source": "author",
+   "confidence": 0.7,
+   "ref": "lane belt-burgwallen-oz-build-20261110 hand read (wall and trim colours) of panorama b_20250108_1041_Track23_Sphere_00033 (38 m across, row view of 34-40) and the 2021-12-27 strip crops of 34 and 40",
+   "at": "2025-01-08"
+  },
+  "notes": {
+   "source": "author",
+   "confidence": 0.9,
+   "ref": "lane belt-burgwallen-oz-build-20261110 hand read (notes) of panorama b_20250108_1041_Track23_Sphere_00033 (38 m across, row view of 34-40) and the 2021-12-27 strip crops of 34 and 40",
+   "at": "2025-01-08"
+  }
+ },
+ "schemaLimits": [
+  {
+   "component": "cornice",
+   "what": "the ornate cornice carries three small carved attic pieces (vases or consoles) not drawn"
+  }
+ ]
+}
