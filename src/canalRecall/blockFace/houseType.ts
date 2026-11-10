@@ -46,7 +46,9 @@ export function resizePerStorey<F extends {storeyHeights?: number[]; windowHeigh
     return [a[0], ...mid.slice(0, to - 2), top];
   };
   const out = {...f};
-  if (Array.isArray(f.storeyHeights)) out.storeyHeights = fit(f.storeyHeights);
+  // A souterrain front may weight its souterrain first (one entry more than `storeys`, fit.ts `ownSouterrain`): keep that
+  // entry and resize the storeys over it (canal-belt cornice houses drawn with three or four storeys over the stoop).
+  if (Array.isArray(f.storeyHeights)) out.storeyHeights = f.storeyHeights.length === from + 1 ? [f.storeyHeights[0], ...fit(f.storeyHeights.slice(1))] : fit(f.storeyHeights);
   if (Array.isArray(f.windowHeights)) out.windowHeights = fit(f.windowHeights);
   if (Array.isArray(f.headLines)) out.headLines = fit(f.headLines);
   if (Array.isArray(f.bays)) out.bays = fit(f.bays);

@@ -1,0 +1,131 @@
+{
+ "schemaVersion": 1,
+ "kind": "house-type",
+ "id": "ggw-1760-plain-cornice",
+ "district": "grachtengordel-west",
+ "description": "Canal-belt cornice house of the 18th c. without an attic frieze (Keizersgracht 258, 248): a 5.5-9 m front of brick (dark brown or painted) or white stucco, a tall ground storey of door and windows at street level and three upper storeys of three axes of white-framed 2-over-2 sashes in broad white frames, under a plain white cornice at the eaves",
+ "fit": {
+  "widthM": [
+   5.4,
+   9.8
+  ],
+  "storeys": [
+   3,
+   4
+  ]
+ },
+ "match": {
+  "years": [
+   1600,
+   1880
+  ],
+  "yearSlack": 0,
+  "eavesM": [
+   11.5,
+   17.5
+  ],
+  "stucco": false,
+  "materialVeto": true,
+  "baysByWidth": [
+   {
+    "maxWidthM": 7.6,
+    "bays": 3
+   },
+   {
+    "maxWidthM": 99,
+    "bays": 4
+   }
+  ],
+  "crowns": {
+   "none": {
+    "none": true
+   }
+  },
+  "mirrorForDoor": "left",
+  "note": "Keizersgracht 258 (169386), 2021-01-22 strip at 40 px/m: ground openings 1.9-5.0 m, rows 6.0-8.6, 9.0-11.0, 11.5-13.0 m, white cornice 14.5-15.2 m; the type is pinned per pand from the strip (review-types)"
+ },
+ "body": {
+  "storeys": 4,
+  "bays": 3,
+  "storeyHeights": [
+   4.6,
+   3.1,
+   2.4,
+   2.4
+  ],
+  "windows": "sash",
+  "windowSurround": "full-frame",
+  "windowHeights": [
+   0.74,
+   0.83,
+   0.83,
+   0.62
+  ],
+  "headLines": [
+   0.82,
+   0.9,
+   0.9,
+   0.75
+  ],
+  "windowShare": 0.55,
+  "cornice": "simple"
+ },
+ "crowns": {
+  "none": {
+   "gable": "cornice",
+   "note": "a plain white cornice (Keizersgracht 258)"
+  }
+ },
+ "grounds": {
+  "door-left": {
+   "doorBay": 0,
+   "basement": "none",
+   "note": "the house door at street level on the left axis; a door on the right is mirrored"
+  }
+ },
+ "palettes": {
+  "dark-brown-brick": {
+   "brick": "#4a3730",
+   "frame": "white-painted",
+   "door": "#26302a",
+   "stone": "#ebe8df",
+   "cornice": "#ebe8df",
+   "stoneMaterial": "painted"
+  }
+ },
+ "roof": {
+  "material": "red-tile",
+  "source": "front",
+  "evidence": "Keizersgracht 258 (2021-01-22 strip): sky over the plain cornice from the quay; no roof face shows, so the front gives a flat top at the cornice"
+ },
+ "rhythm": {
+  "bays": "3 axes (4 over 7.6 m)",
+  "identicalBays": "every upper storey alike",
+  "windowsPerStorey": "ground: door + 2 tall windows | upper: 3",
+  "symmetry": "symmetric above the bel-etage",
+  "groundFloor": "door and tall windows at street level",
+  "signage": "none",
+  "roofline": "a plain white cornice",
+  "photoRows": [
+   1,
+   3,
+   3,
+   3
+  ],
+  "photoGroundRows": 1,
+  "photoGables": 0,
+  "schemaLimits": [
+   "the iron balconettes of the first floor are not drawn",
+   "the broad eared white frames are drawn as plain full frames"
+  ]
+ },
+ "evidence": [
+  {
+   "face": "keizersgracht-240-312",
+   "pands": [
+    "169386"
+   ],
+   "citation": "strip.jpg 2021-01-22 gridded at 2x (grid-crop.ts 1550-2051): ground openings 1.9-5.0 m, rows 6.0-8.6, 9.0-11.0, 11.5-13.0 m, cornice 14.5-15.2 m, windows 1.0-1.1 m wide in 0.12 m white frames"
+  }
+ ]
+}

@@ -663,8 +663,11 @@ export interface FrontIntent {
    * cast panel over each top-storey window axis in the frieze under the cornice, `span` x `rise` metres, its top `drop`
    * metres under the cornice foot (measured), in the stone colour; `slot` = a dark grille slot across its middle third;
    * `axes` = only those axes. Needs a cornice. Absent = byte-identical.
+   * Canal-belt attic lights (Herengracht 92-108, 18th-c. cornice fronts; buildingRecipe/friezeVents.ts): `sill` in place of
+   * `drop` stands the panel's foot `sill` metres over the entablature's foot, inside its white frieze (needs `entablature`),
+   * and `light: true` draws it as a dark glazed attic light in a thin frame of the stone colour instead of a solid panel.
    */
-  friezeVents?: {span: number; rise: number; drop: number; slot?: boolean; axes?: number[]};
+  friezeVents?: {span: number; rise: number; drop?: number; sill?: number; light?: boolean; slot?: boolean; axes?: number[]};
   /**
    * Corbel table (Duivelseiland 1899-1900 rows, Cornelis Anthoniszstraat 50-72; buildingRecipe/corbelTable.ts): a band-brick
    * course on the cornice foot (an entablature's cap foot) with `rows` rows of corbelled blocks hanging from it, half a

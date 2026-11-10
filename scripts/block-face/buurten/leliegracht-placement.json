@@ -1,0 +1,98 @@
+{
+ "buurt": "leliegracht",
+ "library": "grachtengordel-west",
+ "generatedAt": "2026-11-10T08:56:33.535Z",
+ "seconds": 31.79,
+ "totals": {
+  "faces": 4,
+  "pands": 47,
+  "placed": 3
+ },
+ "faces": [
+  {
+   "face": "herengracht-133-151",
+   "street": "Herengracht",
+   "pands": 7,
+   "placed": 0,
+   "held": 7,
+   "runs": [],
+   "seconds": 4.4,
+   "byType": {},
+   "installed": 0,
+   "holds": {
+    "evidence": 0,
+    "match": 6,
+    "likeness": 0,
+    "run": 1,
+    "review": 0
+   }
+  },
+  {
+   "face": "herengracht-150-168",
+   "street": "Herengracht",
+   "pands": 9,
+   "placed": 0,
+   "held": 9,
+   "runs": [],
+   "seconds": 7.58,
+   "byType": {},
+   "installed": 0,
+   "holds": {
+    "evidence": 5,
+    "match": 4,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "herengracht-84-148",
+   "street": "Herengracht",
+   "pands": 16,
+   "placed": 3,
+   "held": 13,
+   "runs": [
+    {
+     "face": "herengracht-84-148-r1",
+     "pands": [
+      "0363100012167714",
+      "0363100012175699",
+      "0363100012175700"
+     ],
+     "passed": false,
+     "triangles": 6289
+    }
+   ],
+   "seconds": 31.78,
+   "byType": {
+    "ggw-1740-frieze-cornice": 3
+   },
+   "installed": 0,
+   "holds": {
+    "evidence": 0,
+    "match": 6,
+    "likeness": 2,
+    "run": 1,
+    "review": 4
+   }
+  },
+  {
+   "face": "keizersgracht-92-172",
+   "street": "Keizersgracht",
+   "pands": 15,
+   "placed": 0,
+   "held": 15,
+   "runs": [],
+   "seconds": 16.86,
+   "byType": {},
+   "installed": 0,
+   "holds": {
+    "evidence": 1,
+    "match": 8,
+    "likeness": 4,
+    "run": 2,
+    "review": 0
+   }
+  }
+ ]
+}

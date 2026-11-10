@@ -1,0 +1,174 @@
+{
+ "face": "keizersgracht-240-312-r1",
+ "image": "staging/block-face/keizersgracht-240-312-r1/strip.jpg",
+ "pixelsPerMetre": 40,
+ "width": 726,
+ "height": 1053,
+ "groundNAP": 0.38,
+ "heightM": 26.32,
+ "frame": {
+  "midRD": [
+   120762.52327083332,
+   487220.0511666667
+  ],
+  "uRD": [
+   0.06645948484701278,
+   0.9977891244515895
+  ],
+  "nRD": [
+   0.9977891244515895,
+   -0.06645948484701278
+  ]
+ },
+ "x0M": -9.48,
+ "x1M": 8.67,
+ "date": "2021-01-22",
+ "coverage": 1,
+ "spans": [
+  {
+   "pandId": "0363100012169386",
+   "x0M": -9.48,
+   "x1M": -2.63,
+   "px": [
+    0,
+    274
+   ],
+   "date": "2021-01-22",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "TMX7316010203-001975_pano_0000_000196",
+     "timestamp": "2021-01-22T11:11:44.223300Z",
+     "distanceM": 23.7,
+     "obliquityDeg": 6.4,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-001975_pano_0000_000197",
+     "timestamp": "2021-01-22T11:11:49.008300Z",
+     "distanceM": 24.4,
+     "obliquityDeg": 17,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-001975_pano_0000_000195",
+     "timestamp": "2021-01-22T11:11:39.478670Z",
+     "distanceM": 26.7,
+     "obliquityDeg": 27.4,
+     "missingFraction": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012169390",
+   "x0M": -2.66,
+   "x1M": 3.02,
+   "px": [
+    273,
+    500
+   ],
+   "date": "2021-01-22",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "TMX7316010203-001975_pano_0000_000197",
+     "timestamp": "2021-01-22T11:11:49.008300Z",
+     "distanceM": 23.4,
+     "obliquityDeg": 2.3,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-001975_pano_0000_000196",
+     "timestamp": "2021-01-22T11:11:44.223300Z",
+     "distanceM": 25.2,
+     "obliquityDeg": 20.4,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-001975_pano_0000_000198",
+     "timestamp": "2021-01-22T11:11:53.813290Z",
+     "distanceM": 25.5,
+     "obliquityDeg": 24.9,
+     "missingFraction": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012169444",
+   "x0M": 3.04,
+   "x1M": 8.67,
+   "px": [
+    501,
+    726
+   ],
+   "date": "2021-01-22",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "TMX7316010203-001975_pano_0000_000198",
+     "timestamp": "2021-01-22T11:11:53.813290Z",
+     "distanceM": 23.7,
+     "obliquityDeg": 11.7,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-001975_pano_0000_000197",
+     "timestamp": "2021-01-22T11:11:49.008300Z",
+     "distanceM": 23.9,
+     "obliquityDeg": 12,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-001975_pano_0000_000196",
+     "timestamp": "2021-01-22T11:11:44.223300Z",
+     "distanceM": 27.7,
+     "obliquityDeg": 32,
+     "missingFraction": 0
+    }
+   ]
+  }
+ ],
+ "candidatesByDate": {
+  "2019-05-13": 0,
+  "2023-01-30": 1,
+  "2023-02-27": 1,
+  "2017-03-29": 7,
+  "2024-11-21": 3,
+  "2023-02-06": 0,
+  "2020-01-08": 2,
+  "2020-04-22": 3,
+  "2018-05-14": 3,
+  "2022-12-15": 0,
+  "2018-05-04": 3,
+  "2025-06-16": 3,
+  "2023-03-20": 5,
+  "2022-04-22": 4,
+  "2023-03-13": 3,
+  "2023-03-27": 3,
+  "2021-03-17": 4,
+  "2019-01-10": 11,
+  "2023-02-13": 13,
+  "2021-12-29": 10,
+  "2023-03-06": 12,
+  "2016-08-16": 13,
+  "2023-02-20": 13,
+  "2017-07-07": 15,
+  "2021-01-22": 15,
+  "2019-01-15": 0,
+  "2019-05-14": 0,
+  "2024-12-16": 0,
+  "2016-08-17": 1,
+  "2021-09-09": 0,
+  "2020-04-24": 0,
+  "2022-09-05": 1
+ },
+ "description": "Rectified orthographic elevation of the whole face on the frontage planes: x = chunk-frame metres along the face (left→right seen from the street) from x0M, y = metres above the shared ground (groundNAP) from the bottom; grey = no panorama data. Per-pand spans list the panoramas median-fused for that frontage.",
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (CC BY 4.0; faces and number plates blurred by the publisher)",
+ "croppedFrom": {
+  "face": "keizersgracht-240-312",
+  "px": [
+   1550,
+   2276
+  ]
+ }
+}

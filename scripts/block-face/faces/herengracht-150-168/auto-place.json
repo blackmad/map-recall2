@@ -1,0 +1,650 @@
+{
+ "face": "herengracht-150-168",
+ "street": "Herengracht",
+ "library": "grachtengordel-west",
+ "stripDate": "2021-03-17",
+ "seconds": 7.58,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012176410",
+   "address": "Herengracht 168",
+   "builtYear": 1638,
+   "widthM": 6.22,
+   "eavesM": 14.88,
+   "storeys3dbag": 0,
+   "bagBay": null,
+   "strip": {
+    "wall": "#91897e",
+    "wallRaw": "#827d75",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 895,
+     "confidence": 0.22,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": null,
+    "frontClass": "curtain",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.168,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 13.3,
+       "widthM": 1.15,
+       "centre": 0.35
+      },
+      {
+       "atM": 12.55,
+       "widthM": 1.23,
+       "centre": 0.35
+      },
+      {
+       "atM": 6.02,
+       "widthM": 0.95,
+       "centre": 0.9
+      },
+      {
+       "atM": 5.42,
+       "widthM": 1.15,
+       "centre": 0.88
+      },
+      {
+       "atM": 4.82,
+       "widthM": 1.18,
+       "centre": 0.88
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "no front on the strip: sky over the roof in 26 % of columns (< 75 %): the strip shows a nearer wall, fence or tree, not the front",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012176357",
+   "address": "Herengracht 166",
+   "builtYear": 1725,
+   "widthM": 8.5,
+   "eavesM": 12.76,
+   "storeys3dbag": 0,
+   "bagBay": null,
+   "strip": {
+    "wall": "#9fa29f",
+    "wallRaw": "#595757",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 895,
+     "confidence": 0,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 2,
+    "columns": 2,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.233,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 8.27,
+       "widthM": 2.4,
+       "centre": 0.85
+      }
+     ]
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0.02
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best ggw-1740-frieze-cornice scores 0.36 < 0.7 (3DBAG eaves 12.76 m = 4 storeys of 3.19 m vs the type's 4.13 m; strip columns 2 vs 4 bays)",
+   "best": {
+    "type": "ggw-1740-frieze-cornice",
+    "score": 0.36,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 12.76 m = 4 storeys of 3.19 m vs the type's 4.13 m"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.221 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 2 vs 4 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012176358",
+   "address": "Herengracht 164",
+   "builtYear": 1905,
+   "widthM": 10.91,
+   "eavesM": 15.91,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#7a746b",
+    "wallRaw": "#6e6a63",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 895,
+     "confidence": 0,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 8,
+    "frontClass": "curtain",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.048,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 3 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 15.03,
+       "widthM": 0.8,
+       "centre": 0.91
+      },
+      {
+       "atM": 14.05,
+       "widthM": 0.85,
+       "centre": 0.61
+      },
+      {
+       "atM": 12.63,
+       "widthM": 2.5,
+       "centre": 0.8
+      },
+      {
+       "atM": 12.32,
+       "widthM": 2.48,
+       "centre": 0.81
+      },
+      {
+       "atM": 11.95,
+       "widthM": 0.8,
+       "centre": 0.91
+      },
+      {
+       "atM": 11.05,
+       "widthM": 1,
+       "centre": 0.61
+      },
+      {
+       "atM": 8.65,
+       "widthM": 0.82,
+       "centre": 0.64
+      },
+      {
+       "atM": 8.13,
+       "widthM": 1.98,
+       "centre": 0.16
+      },
+      {
+       "atM": 7.82,
+       "widthM": 1.15,
+       "centre": 0.67
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "no front on the strip: sky over the roof in 0 % of columns (< 75 %): the strip shows a nearer wall, fence or tree, not the front",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012167646",
+   "address": "Herengracht 162",
+   "builtYear": 1765,
+   "widthM": 7.43,
+   "eavesM": 13.29,
+   "storeys3dbag": 0,
+   "bagBay": null,
+   "strip": {
+    "wall": "#524d53",
+    "wallRaw": "#63605c",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 895,
+     "confidence": 0.02,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "curtain",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.188,
+    "structure": {
+     "bayWidthM": 0.47,
+     "bayCentre": 0.05,
+     "balconies": false,
+     "why": "no dark open axis, 2 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 12.18,
+       "widthM": 4.15,
+       "centre": 0.3
+      },
+      {
+       "atM": 11.72,
+       "widthM": 0.93,
+       "centre": 0.83
+      },
+      {
+       "atM": 8.95,
+       "widthM": 3.02,
+       "centre": 0.22
+      },
+      {
+       "atM": 7.97,
+       "widthM": 1.98,
+       "centre": 0.59
+      }
+     ]
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0.09
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "no front on the strip: sky over the roof in 0 % of columns (< 75 %): the strip shows a nearer wall, fence or tree, not the front",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012167644",
+   "address": "Herengracht 160",
+   "builtYear": 1905,
+   "widthM": 7.48,
+   "eavesM": 17.09,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#8c8985",
+    "wallRaw": "#827f7b",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 895,
+     "confidence": 0,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 3,
+    "columns": 2,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.389,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "no front on the strip: sky over the roof in 0 % of columns (< 75 %): the strip shows a nearer wall, fence or tree, not the front",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012167645",
+   "address": "Herengracht 158A",
+   "builtYear": 1618,
+   "widthM": 8.66,
+   "eavesM": 15.67,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#554e52",
+    "wallRaw": "#595455",
+    "skyline": {
+     "eavesM": 21.57,
+     "eavesRow": 32,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 2,
+    "columns": 4,
+    "frontClass": "ribbon",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.237,
+    "structure": {
+     "bayWidthM": 0.3,
+     "bayCentre": 0.26,
+     "balconies": false,
+     "why": "no dark open axis, 2 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 12.38,
+       "widthM": 2.23,
+       "centre": 0.86
+      },
+      {
+       "atM": 7.95,
+       "widthM": 4.58,
+       "centre": 0.71
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.03
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "era guard: the strip reads ribbon windows; ggw-1740-frieze-cornice is a punched-window type",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012167659",
+   "address": "Herengracht 156",
+   "builtYear": 1618,
+   "widthM": 1.21,
+   "eavesM": 15.22,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#71635f",
+    "wallRaw": "#747165",
+    "skyline": {
+     "eavesM": 17.93,
+     "eavesRow": 178,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": null,
+    "frontClass": "curtain",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.087,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 8.47,
+       "widthM": 0.85,
+       "centre": 0.39
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.03
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best ggw-1700-neck-bell-gable: frontage 1.21 m, type 4.2-6.8 m; skyline no crown fits no crown of the type)",
+   "best": {
+    "type": "ggw-1700-neck-bell-gable",
+    "score": 0,
+    "veto": [
+     "frontage 1.21 m, type 4.2-6.8 m",
+     "skyline no crown fits no crown of the type"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 15.22 m = 5 storeys of 3.04 m vs the type's 2.75 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 4.06 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.073 (brick)"
+     },
+     {
+      "key": "crown",
+      "weight": 3,
+      "score": 0,
+      "note": "skyline no crown fits no crown of the type"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012176313",
+   "address": "Herengracht 154",
+   "builtYear": 1910,
+   "widthM": 4.41,
+   "eavesM": 14.48,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#7c7671",
+    "wallRaw": "#6c6a65",
+    "skyline": {
+     "eavesM": 21.4,
+     "eavesRow": 39,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 6,
+    "columns": null,
+    "frontClass": "ribbon",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.467,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6.67,
+       "widthM": 0.97,
+       "centre": 0.77
+      },
+      {
+       "atM": 6.15,
+       "widthM": 1.07,
+       "centre": 0.13
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "no front on the strip: sky over the roof in 8 % of columns (< 75 %): the strip shows a nearer wall, fence or tree, not the front",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012176314",
+   "address": "Herengracht 150",
+   "builtYear": 1750,
+   "widthM": 9.74,
+   "eavesM": 10.42,
+   "storeys3dbag": 4,
+   "bagBay": {
+    "fromM": 0,
+    "toM": 4.31,
+    "depthM": 0.6,
+    "centre": 0.222,
+    "lineRD": [
+     [
+      120967.25856249999,
+      487537.8475
+     ],
+     [
+      120971.1615625,
+      487543.7575
+     ]
+    ]
+   },
+   "strip": {
+    "wall": "#474347",
+    "wallRaw": "#594640",
+    "skyline": {
+     "eavesM": 17.48,
+     "eavesRow": 196,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.83,
+      "riseM": 1.7,
+      "topWidthM": 2.45,
+      "centre": 0.16
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.068,
+    "structure": {
+     "bayWidthM": 0.78,
+     "bayCentre": 0.96,
+     "balconies": true,
+     "why": "dark open axis 0.65 m at 0.12 (light 0.27): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.65,
+       "centre": 0.12,
+       "light": 0.27
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 8.1,
+       "widthM": 4.15,
+       "centre": 0.71
+      },
+      {
+       "atM": 7.8,
+       "widthM": 4.13,
+       "centre": 0.71
+      }
+     ]
+    },
+    "voidShare": 0.02,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best ggw-1700-neck-bell-gable: frontage 9.74 m, type 4.2-6.8 m)",
+   "best": {
+    "type": "ggw-1700-neck-bell-gable",
+    "score": 0,
+    "veto": [
+     "frontage 9.74 m, type 4.2-6.8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 10.42 m = 4 storeys of 2.6 m vs the type's 2.75 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 4.61 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.037 (brick)"
+     },
+     {
+      "key": "crown",
+      "weight": 3,
+      "score": 0,
+      "note": "skyline crown rise 1.7 m, top 2.45 m fits no crown of the type"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 2 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

@@ -1,0 +1,674 @@
+{
+ "street": "Leliegracht",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T08:57:34.207Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012176429",
+   "addresses": [
+    "Leliegracht 34C",
+    "Leliegracht 34D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Keizersgracht 157",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 109,
+     "bagId": "0363010000700676"
+    },
+    {
+     "address": "Leliegracht 34D",
+     "use": "woonfunctie",
+     "areaM2": 83,
+     "bagId": "0363010012101357"
+    },
+    {
+     "address": "Leliegracht 34C",
+     "use": "kantoorfunctie",
+     "areaM2": 152,
+     "bagId": "0363010012063804"
+    }
+   ],
+   "units": 6,
+   "osm": [
+    {
+     "type": "node",
+     "id": 538534998,
+     "lngLat": [
+      4.8864147,
+      52.3754007
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "157",
+      "addr:postcode": "1015CL",
+      "addr:street": "Keizersgracht",
+      "amenity": "pub",
+      "name": "Brandon",
+      "opening_hours": "Mo-Th 15:00-01:00, Fr,Sa 12:00-03:00, Su 12:00-01:00",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "wheelchair": "no",
+      "wikidata": "Q84571344",
+      "wikipedia": "nl:Café Brandon"
+     },
+     "fetchedAt": "2026-11-10T08:57:34.207Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012176417",
+   "addresses": [
+    "Leliegracht 34",
+    "Leliegracht 34A",
+    "Leliegracht 34B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Leliegracht 34-H",
+     "use": "winkelfunctie,woonfunctie",
+     "areaM2": 27,
+     "bagId": "0363010000722416"
+    },
+    {
+     "address": "Leliegracht 34A",
+     "use": "winkelfunctie",
+     "areaM2": 56,
+     "bagId": "0363010012063805"
+    },
+    {
+     "address": "Leliegracht 34B",
+     "use": "woonfunctie",
+     "areaM2": 98,
+     "bagId": "0363010012063806"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2429444887,
+     "lngLat": [
+      4.8865459,
+      52.3753539
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "34",
+      "addr:postcode": "1015DG",
+      "addr:street": "Leliegracht",
+      "amenity": "fast_food",
+      "branch": "Amsterdam Leliegracht",
+      "brand": "De Pizzabakkers",
+      "brand:website": "https://www.depizzabakkers.nl",
+      "brand:wikidata": "Q124218622",
+      "cuisine": "pizza",
+      "email": "leliegracht@depizzabakkers.nl",
+      "indoor_seating": "yes",
+      "name": "De Pizzabakkers To Go",
+      "opening_hours": "Mo-Su 12:00-22:00",
+      "outdoor_seating": "yes",
+      "phone": "+31 85 4835900",
+      "takeaway": "only",
+      "website": "https://www.depizzabakkers.nl/vestigingen/amsterdam-leliegracht/"
+     },
+     "fetchedAt": "2026-11-10T08:57:34.207Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012176419",
+   "addresses": [
+    "Leliegracht 32"
+   ],
+   "groundUnits": [
+    {
+     "address": "Leliegracht 32",
+     "use": "woonfunctie",
+     "areaM2": 140,
+     "bagId": "0363010000722415"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2721358862,
+     "lngLat": [
+      4.8866208,
+      52.3753303
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "32",
+      "addr:postcode": "1015DG",
+      "addr:street": "Leliegracht",
+      "office": "company",
+      "source": "BAG",
+      "source:date": "2014-02-11"
+     },
+     "fetchedAt": "2026-11-10T08:57:34.207Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012176421",
+   "addresses": [
+    "Leliegracht 30A",
+    "Leliegracht 30B",
+    "Leliegracht 30C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Leliegracht 30A",
+     "use": "woonfunctie",
+     "areaM2": 222,
+     "bagId": "0363010001040100"
+    },
+    {
+     "address": "Leliegracht 30B",
+     "use": "woonfunctie",
+     "areaM2": 93,
+     "bagId": "0363010001040103"
+    },
+    {
+     "address": "Leliegracht 30C",
+     "use": "woonfunctie",
+     "areaM2": 90,
+     "bagId": "0363010001040106"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012176418",
+   "addresses": [
+    "Leliegracht 26",
+    "Leliegracht 28"
+   ],
+   "groundUnits": [
+    {
+     "address": "Leliegracht 26-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 79,
+     "bagId": "0363010000722405"
+    },
+    {
+     "address": "Leliegracht 28-H",
+     "use": "bijeenkomstfunctie,woonfunctie",
+     "areaM2": 141,
+     "bagId": "0363010000722411"
+    }
+   ],
+   "units": 8,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2061794034,
+     "lngLat": [
+      4.88688,
+      52.3752896
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "26-28",
+      "addr:street": "Leliegracht",
+      "amenity": "restaurant",
+      "cuisine": "international",
+      "name": "De Luwte",
+      "source": "Observation 10DEC 2012",
+      "website": "http://restaurantdeluwte.nl"
+     },
+     "fetchedAt": "2026-11-10T08:57:34.207Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012176420",
+   "addresses": [
+    "Leliegracht 24"
+   ],
+   "groundUnits": [
+    {
+     "address": "Leliegracht 24-H",
+     "use": "winkelfunctie,woonfunctie",
+     "areaM2": 62,
+     "bagId": "0363010000722401"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 12117256773,
+     "lngLat": [
+      4.8869154,
+      52.3752415
+     ],
+     "tags": {
+      "name": "Eat Dust",
+      "opening_hours": "Tu-Fr 11:00-19:00; Sa 10:00-18:00; Su 12:00-18:00; Mo off",
+      "shop": "clothes"
+     },
+     "fetchedAt": "2026-11-10T08:57:34.207Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012167650",
+   "addresses": [
+    "Leliegracht 22"
+   ],
+   "groundUnits": [
+    {
+     "address": "Leliegracht 22-H",
+     "use": "winkelfunctie,woonfunctie",
+     "areaM2": 84,
+     "bagId": "0363010000722396"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2061794303,
+     "lngLat": [
+      4.8869963,
+      52.3752151
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "22",
+      "addr:postcode": "1015DG",
+      "addr:street": "Leliegracht",
+      "name": "Architectura & Natura",
+      "opening_hours": "Mo 12:00-18:00; Tu-Fr 10:30-18:30; Sa 10:30-18:00",
+      "phone": "+31 20 623 6186",
+      "shop": "books",
+      "website": "https://www.architectura.nl/"
+     },
+     "fetchedAt": "2026-11-10T08:57:34.207Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012167664",
+   "addresses": [
+    "Leliegracht 20A",
+    "Leliegracht 20C",
+    "Leliegracht 20B",
+    "Leliegracht 20D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Leliegracht 20A",
+     "use": "kantoorfunctie",
+     "areaM2": 270,
+     "bagId": "0363010002005683"
+    },
+    {
+     "address": "Leliegracht 20C",
+     "use": "woonfunctie",
+     "areaM2": 36,
+     "bagId": "0363010003696192"
+    },
+    {
+     "address": "Leliegracht 20B",
+     "use": "woonfunctie",
+     "areaM2": 97,
+     "bagId": "0363010003696193"
+    },
+    {
+     "address": "Leliegracht 20D",
+     "use": "woonfunctie",
+     "areaM2": 97,
+     "bagId": "0363010003696194"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012167665",
+   "addresses": [
+    "Leliegracht 18"
+   ],
+   "groundUnits": [
+    {
+     "address": "Leliegracht 18",
+     "use": "logiesfunctie",
+     "areaM2": 422,
+     "bagId": "0363010001027634"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2721355412,
+     "lngLat": [
+      4.8871471,
+      52.3751614
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "18",
+      "addr:postcode": "1015DE",
+      "addr:street": "Leliegracht",
+      "internet_access": "wlan",
+      "name": "´t Hotel",
+      "opening_hours": "Mo-Su 09:00-18:00",
+      "phone": "+31 20 422 2741",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "tourism": "hotel",
+      "website": "https://thotel.nl/"
+     },
+     "fetchedAt": "2026-11-10T08:57:34.207Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 12620469982,
+     "lngLat": [
+      4.8871242,
+      52.3751621
+     ],
+     "tags": {
+      "amenity": "cafe",
+      "name": "'t Hotel"
+     },
+     "fetchedAt": "2026-11-10T08:57:34.207Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012167667",
+   "addresses": [
+    "Leliegracht 16"
+   ],
+   "groundUnits": [
+    {
+     "address": "Leliegracht 16",
+     "use": "woonfunctie",
+     "areaM2": 150,
+     "bagId": "0363010000722378"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2721355172,
+     "lngLat": [
+      4.8872202,
+      52.375149
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "16",
+      "addr:postcode": "1015DE",
+      "addr:street": "Leliegracht",
+      "diet:vegan": "only",
+      "disused:shop": "supermarket",
+      "shop": "vacant",
+      "source": "BAG",
+      "source:date": "2014-02-11"
+     },
+     "fetchedAt": "2026-11-10T08:57:34.207Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012177011",
+   "addresses": [
+    "Leliegracht 14"
+   ],
+   "groundUnits": [
+    {
+     "address": "Leliegracht 14",
+     "use": "bijeenkomstfunctie,woonfunctie",
+     "areaM2": 221,
+     "bagId": "0363010001045059"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 12117241457,
+     "lngLat": [
+      4.8872874,
+      52.3751206
+     ],
+     "tags": {
+      "fee": "no",
+      "name": "Casa Luna",
+      "tourism": "gallery"
+     },
+     "fetchedAt": "2026-11-10T08:57:34.207Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012177012",
+   "addresses": [
+    "Leliegracht 12"
+   ],
+   "groundUnits": [
+    {
+     "address": "Leliegracht 12-H",
+     "use": "winkelfunctie",
+     "areaM2": 90,
+     "bagId": "0363010000722372"
+    }
+   ],
+   "units": 2,
+   "osm": [
+    {
+     "type": "node",
+     "id": 12117274803,
+     "lngLat": [
+      4.887359,
+      52.3750992
+     ],
+     "tags": {
+      "name": "Big Shoe",
+      "shop": "shoes"
+     },
+     "fetchedAt": "2026-11-10T08:57:34.207Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 12117277873,
+     "lngLat": [
+      4.8873773,
+      52.3750912
+     ],
+     "tags": {
+      "name": "Animal Presents",
+      "shop": "gift"
+     },
+     "fetchedAt": "2026-11-10T08:57:34.207Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012177013",
+   "addresses": [
+    "Leliegracht 10A",
+    "Leliegracht 10B",
+    "Leliegracht 10C",
+    "Leliegracht 10D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Leliegracht 10A",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 127,
+     "bagId": "0363010001001766"
+    },
+    {
+     "address": "Leliegracht 10B",
+     "use": "kantoorfunctie",
+     "areaM2": 83,
+     "bagId": "0363010001001767"
+    },
+    {
+     "address": "Leliegracht 10C",
+     "use": "woonfunctie",
+     "areaM2": 118,
+     "bagId": "0363010001001768"
+    },
+    {
+     "address": "Leliegracht 10D",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010001001769"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 12620458089,
+     "lngLat": [
+      4.8874334,
+      52.3750622
+     ],
+     "tags": {
+      "name": "Lola Leads",
+      "office": "company"
+     },
+     "fetchedAt": "2026-11-10T08:57:34.207Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012177014",
+   "addresses": [
+    "Leliegracht 8"
+   ],
+   "groundUnits": [
+    {
+     "address": "Leliegracht 8",
+     "use": "woonfunctie",
+     "areaM2": 186,
+     "bagId": "0363010001169740"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 12620448376,
+     "lngLat": [
+      4.8874923,
+      52.3750416
+     ],
+     "tags": {
+      "shop": "vacant"
+     },
+     "fetchedAt": "2026-11-10T08:57:34.207Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012177015",
+   "addresses": [
+    "Leliegracht 6"
+   ],
+   "groundUnits": [
+    {
+     "address": "Leliegracht 6-H",
+     "use": "winkelfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000722359"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 5427284621,
+     "lngLat": [
+      4.8875495,
+      52.3750195
+     ],
+     "tags": {
+      "name": "the Otherist",
+      "name:en": "the Otherist",
+      "opening_hours": "Tu-Sa 11:00-18:00",
+      "shop": "gift",
+      "website": "https://www.otherist.com/"
+     },
+     "fetchedAt": "2026-11-10T08:57:34.207Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012177016",
+   "addresses": [
+    "Leliegracht 4"
+   ],
+   "groundUnits": [
+    {
+     "address": "Leliegracht 4-H",
+     "use": "winkelfunctie",
+     "areaM2": 80,
+     "bagId": "0363010011048495"
+    }
+   ],
+   "units": 7,
+   "osm": [
+    {
+     "type": "node",
+     "id": 12117262246,
+     "lngLat": [
+      4.8876076,
+      52.3750107
+     ],
+     "tags": {
+      "name": "Cow Museum",
+      "shop": "gift"
+     },
+     "fetchedAt": "2026-11-10T08:57:34.207Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

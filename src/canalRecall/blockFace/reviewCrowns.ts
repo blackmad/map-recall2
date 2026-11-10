@@ -103,6 +103,26 @@ export interface TypePin {
    * the skyline is lost in the trees). A face may carry several pand pins, but one pand only one.
    */
   pands?: string[];
+  /**
+   * `true` on a pand pin of ONE type: the reviewer read this pand's design off the strip, so the type is placed even when
+   * its score (eaves pitch, skyline, columns) is under the threshold; its vetoes (year, frontage, material) still hold.
+   * The canal belt's one-off fronts (Keizersgracht 242-258, 2021-01-22): canal trees defeat the skyline and a gable
+   * house's 3DBAG eaves reads inside the gable, so the scored criteria hold every gable house the strip shows plainly.
+   * Absent = the scored decision, unchanged.
+   */
+  accept?: true;
+  /** Full storeys incl. ground the reviewer counted on the strip (a pand pin; replaces the count from the 3DBAG eaves). */
+  storeys?: number;
+  /**
+   * `true` on a pand pin: the strip shows a house ground (door and windows), so the type's ground is drawn even where BAG
+   * or OSM lists a trading use (Keizersgracht 256: `bijeenkomstfunctie` behind a residential canal-house ground).
+   */
+  houseGround?: true;
+}
+
+/** The pin of one pand (a pand pin), if any. */
+export function pandTypePin(faceId: string, pandId: string, pins: TypePin[]): TypePin | undefined {
+  return pins.find(x => x.face === faceId && x.pands?.includes(pandId));
 }
 
 export function typePinProblems(pins: TypePin[], types: Pick<HouseTypeIntent, 'id'>[]): string[] {
@@ -114,6 +134,9 @@ export function typePinProblems(pins: TypePin[], types: Pick<HouseTypeIntent, 'i
     if (!pin.types?.length) p.push(`${at}: at least one type`);
     for (const id of pin.types ?? []) if (!types.some(t => t.id === id)) p.push(`${at}: unknown type ${id}`);
     if (pin.pands !== undefined && (!Array.isArray(pin.pands) || !pin.pands.length || pin.pands.some(id => !/^\d{16}$/.test(id)))) p.push(`${at}: pands are 16-digit BAG pand ids`);
+    if (pin.accept !== undefined && (pin.accept !== true || !pin.pands || pin.types?.length !== 1)) p.push(`${at}: accept: true needs pands and exactly one type`);
+    if (pin.houseGround !== undefined && (pin.houseGround !== true || !pin.pands)) p.push(`${at}: houseGround: true on a pand pin`);
+    if (pin.storeys !== undefined && (!Number.isInteger(pin.storeys) || pin.storeys < 1 || pin.storeys > 8 || !pin.pands)) p.push(`${at}: storeys: an integer 1..8 on a pand pin`);
     const clash = pins.findIndex(x => x.face === pin.face && (!x.pands || !pin.pands || x.pands.some(id => pin.pands!.includes(id))));
     if (clash !== k) p.push(`${at}: face ${pin.face} pinned twice${pin.pands ? ' for one pand' : ''}`);
   });

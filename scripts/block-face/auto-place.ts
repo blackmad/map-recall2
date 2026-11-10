@@ -33,7 +33,7 @@ import {loadMaterialSoup} from '../landmarks/material-soup.ts';
 import {renderModels, closeRenderer} from '../building-recipes/render.ts';
 import {STRIP_LIKENESS, spanLikeness} from '../../src/canalRecall/blockFace/stripLikeness.ts';
 import {lowFrontFootMaxM, runFootOffset} from '../../src/canalRecall/blockFace/stripFoot.ts';
-import {applyCrownPins, applyMirrorPins, crownPinProblems, holdBrokenPairs, mirrorPinProblems, typePinProblems, typesForFace, typesForPand, type CrownPin, type MirrorPin, type TypePin} from '../../src/canalRecall/blockFace/reviewCrowns.ts';
+import {applyCrownPins, applyMirrorPins, crownPinProblems, holdBrokenPairs, mirrorPinProblems, pandTypePin, typePinProblems, typesForFace, typesForPand, type CrownPin, type MirrorPin, type TypePin} from '../../src/canalRecall/blockFace/reviewCrowns.ts';
 import {applyDoorPins, doorPinProblems, type DoorPin} from '../../src/canalRecall/blockFace/reviewDoors.ts';
 import {applyEavesPins, eavesPinProblems, type EavesPin} from '../../src/canalRecall/blockFace/reviewEaves.ts';
 import {acceptFloorFor, acceptPinProblems, applyPalettePins, palettePinProblems, type AcceptPin, type PalettePin} from '../../src/canalRecall/blockFace/reviewPalettes.ts';
@@ -371,7 +371,7 @@ if (process.argv[1]?.endsWith('block-face/auto-place.ts')) {
     const decisions: Decision[] = evs.map(ev => {
       const hold = reviewHolds.get(ev.pandId);
       if (hold) return {kind: 'held', pandId: ev.pandId, address: ev.address, stage: 'review', reason: `review: ${hold}`};
-      return decidePand(typesForPand(f.id, ev.pandId, library, typePins), ev, `${f.id.split('-')[0]}-${ev.pandId.slice(-6)}`, strip.date);
+      return decidePand(typesForPand(f.id, ev.pandId, library, typePins), ev, `${f.id.split('-')[0]}-${ev.pandId.slice(-6)}`, strip.date, pandTypePin(f.id, ev.pandId, typePins));
     });
     // Pands of a kept installed run: held here, recorded below as placed in that run.
     for (const [k, d] of decisions.entries()) { const r = frozen.find(x => x.pands.includes(d.pandId)); if (r) decisions[k] = {kind: 'held', pandId: d.pandId, address: evs[k].address, stage: 'installed', reason: `installed in chunk-face-${r.id}`}; }

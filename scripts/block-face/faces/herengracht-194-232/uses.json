@@ -1,0 +1,264 @@
+{
+ "street": "Herengracht",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T08:09:02.640Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012177479",
+   "addresses": [
+    "Herengracht 224"
+   ],
+   "groundUnits": [
+    {
+     "address": "Herengracht 224",
+     "use": "woonfunctie",
+     "areaM2": 344,
+     "bagId": "0363010000713923"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012177480",
+   "addresses": [
+    "Herengracht 222"
+   ],
+   "groundUnits": [
+    {
+     "address": "Herengracht 222",
+     "use": "woonfunctie",
+     "areaM2": 191,
+     "bagId": "0363010000983356"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012177218",
+   "addresses": [
+    "Herengracht 218",
+    "Herengracht 220"
+   ],
+   "groundUnits": [
+    {
+     "address": "Herengracht 218",
+     "use": "kantoorfunctie",
+     "areaM2": 1109,
+     "bagId": "0363010000664715"
+    },
+    {
+     "address": "Herengracht 220",
+     "use": "kantoorfunctie",
+     "areaM2": 1006,
+     "bagId": "0363010000977619"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012164992",
+   "addresses": [
+    "Herengracht 204",
+    "Herengracht 208",
+    "Herengracht 216"
+   ],
+   "groundUnits": [
+    {
+     "address": "Herengracht 216",
+     "use": "kantoorfunctie",
+     "areaM2": 861,
+     "bagId": "0363010001041621"
+    },
+    {
+     "address": "Herengracht 208",
+     "use": "kantoorfunctie",
+     "areaM2": 5149,
+     "bagId": "0363010003696147"
+    },
+    {
+     "address": "Herengracht 208-4",
+     "use": "kantoorfunctie",
+     "areaM2": 1,
+     "bagId": "0363010003696148"
+    },
+    {
+     "address": "Herengracht 208",
+     "use": "kantoorfunctie",
+     "areaM2": 5834,
+     "bagId": "0363010012151191"
+    },
+    {
+     "address": "Herengracht 204",
+     "use": "woonfunctie",
+     "areaM2": 371,
+     "bagId": "0363010000664706"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012164993",
+   "addresses": [
+    "Herengracht 196B",
+    "Herengracht 196C",
+    "Herengracht 196D",
+    "Herengracht 196E",
+    "Herengracht 196A",
+    "Herengracht 200A",
+    "Herengracht 200B",
+    "Herengracht 200C",
+    "Herengracht 200E",
+    "Herengracht 200D",
+    "Herengracht 202A",
+    "Herengracht 202B",
+    "Herengracht 202C",
+    "Herengracht 202D",
+    "Herengracht 202E"
+   ],
+   "groundUnits": [
+    {
+     "address": "Herengracht 202A",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000658170"
+    },
+    {
+     "address": "Herengracht 202B",
+     "use": "woonfunctie",
+     "areaM2": 97,
+     "bagId": "0363010000658171"
+    },
+    {
+     "address": "Herengracht 202C",
+     "use": "woonfunctie",
+     "areaM2": 130,
+     "bagId": "0363010000658172"
+    },
+    {
+     "address": "Herengracht 202D",
+     "use": "woonfunctie",
+     "areaM2": 130,
+     "bagId": "0363010000658173"
+    },
+    {
+     "address": "Herengracht 202E",
+     "use": "woonfunctie",
+     "areaM2": 98,
+     "bagId": "0363010000658174"
+    },
+    {
+     "address": "Herengracht 196B",
+     "use": "woonfunctie",
+     "areaM2": 183,
+     "bagId": "0363010000657267"
+    },
+    {
+     "address": "Herengracht 196C",
+     "use": "woonfunctie",
+     "areaM2": 144,
+     "bagId": "0363010000657268"
+    },
+    {
+     "address": "Herengracht 196D",
+     "use": "woonfunctie",
+     "areaM2": 181,
+     "bagId": "0363010000657269"
+    },
+    {
+     "address": "Herengracht 196E",
+     "use": "woonfunctie",
+     "areaM2": 198,
+     "bagId": "0363010000657270"
+    },
+    {
+     "address": "Herengracht 200A",
+     "use": "woonfunctie",
+     "areaM2": 169,
+     "bagId": "0363010000657273"
+    },
+    {
+     "address": "Herengracht 200B",
+     "use": "woonfunctie",
+     "areaM2": 100,
+     "bagId": "0363010000657274"
+    },
+    {
+     "address": "Herengracht 200C",
+     "use": "woonfunctie",
+     "areaM2": 136,
+     "bagId": "0363010000657275"
+    },
+    {
+     "address": "Herengracht 200E",
+     "use": "woonfunctie",
+     "areaM2": 118,
+     "bagId": "0363010000658019"
+    },
+    {
+     "address": "Herengracht 196A",
+     "use": "woonfunctie",
+     "areaM2": 132,
+     "bagId": "0363010000664704"
+    },
+    {
+     "address": "Herengracht 200D",
+     "use": "woonfunctie",
+     "areaM2": 165,
+     "bagId": "0363010000657306"
+    }
+   ],
+   "units": 15,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012177549",
+   "addresses": [
+    "Herengracht 194"
+   ],
+   "groundUnits": [
+    {
+     "address": "Herengracht 194-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 228,
+     "bagId": "0363010000664698"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2721938720,
+     "lngLat": [
+      4.8868157,
+      52.3732906
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "194-H",
+      "addr:postcode": "1016BS",
+      "addr:street": "Herengracht",
+      "amenity": "restaurant",
+      "check_date": "2024-01-06",
+      "name": "Il Panorama",
+      "opening_hours": "09:00-22:00",
+      "phone": "+31 20 627 9577",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "toilets:wheelchair": "no",
+      "website": "https://ilpanorama.nl/",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-11-10T08:09:02.640Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

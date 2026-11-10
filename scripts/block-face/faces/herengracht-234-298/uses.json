@@ -1,0 +1,480 @@
+{
+ "street": "Herengracht",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T08:10:12.060Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012177150",
+   "addresses": [
+    "Herengracht 258",
+    "Herengracht 260"
+   ],
+   "groundUnits": [
+    {
+     "address": "Herengracht 258",
+     "use": "kantoorfunctie",
+     "areaM2": 4108,
+     "bagId": "0363010001042580"
+    },
+    {
+     "address": "Herengracht 260",
+     "use": "kantoorfunctie",
+     "areaM2": 793,
+     "bagId": "0363010001042581"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012176861",
+   "addresses": [
+    "Herengracht 256C",
+    "Herengracht 256D",
+    "Herengracht 256E",
+    "Herengracht 256F",
+    "Herengracht 256G",
+    "Herengracht 256A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Herengracht 256C",
+     "use": "woonfunctie",
+     "areaM2": 81,
+     "bagId": "0363010000979670"
+    },
+    {
+     "address": "Herengracht 256D",
+     "use": "woonfunctie",
+     "areaM2": 105,
+     "bagId": "0363010000979671"
+    },
+    {
+     "address": "Herengracht 256E",
+     "use": "woonfunctie",
+     "areaM2": 110,
+     "bagId": "0363010000979672"
+    },
+    {
+     "address": "Herengracht 256F",
+     "use": "woonfunctie",
+     "areaM2": 81,
+     "bagId": "0363010000979673"
+    },
+    {
+     "address": "Herengracht 256G",
+     "use": "woonfunctie",
+     "areaM2": 164,
+     "bagId": "0363010000979674"
+    },
+    {
+     "address": "Herengracht 256A",
+     "use": "woonfunctie",
+     "areaM2": 105,
+     "bagId": "0363010003696150"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012177151",
+   "addresses": [
+    "Herengracht 254A",
+    "Herengracht 254B",
+    "Herengracht 254E",
+    "Herengracht 254C",
+    "Herengracht 254D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Herengracht 254A",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 354,
+     "bagId": "0363010001040869"
+    },
+    {
+     "address": "Herengracht 254B",
+     "use": "woonfunctie",
+     "areaM2": 177,
+     "bagId": "0363010001040870"
+    },
+    {
+     "address": "Herengracht 254E",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010001040873"
+    },
+    {
+     "address": "Herengracht 254C",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010001040871"
+    },
+    {
+     "address": "Herengracht 254D",
+     "use": "woonfunctie",
+     "areaM2": 143,
+     "bagId": "0363010001040872"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 6488601183,
+     "lngLat": [
+      4.8866696,
+      52.3716809
+     ],
+     "tags": {
+      "amenity": "art_gallery",
+      "name": "The Merchant House"
+     },
+     "fetchedAt": "2026-11-10T08:10:12.060Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012176863",
+   "addresses": [
+    "Herengracht 252"
+   ],
+   "groundUnits": [
+    {
+     "address": "Herengracht 252",
+     "use": "kantoorfunctie",
+     "areaM2": 1053,
+     "bagId": "0363010000664770"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012176864",
+   "addresses": [
+    "Herengracht 250"
+   ],
+   "groundUnits": [
+    {
+     "address": "Herengracht 250",
+     "use": "kantoorfunctie",
+     "areaM2": 744,
+     "bagId": "0363010000664758"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012176851",
+   "addresses": [
+    "Herengracht 248A",
+    "Herengracht 248B",
+    "Herengracht 248C",
+    "Herengracht 248D",
+    "Herengracht 248F",
+    "Herengracht 248G",
+    "Herengracht 248",
+    "Herengracht 248E"
+   ],
+   "groundUnits": [
+    {
+     "address": "Herengracht 248B",
+     "use": "woonfunctie",
+     "areaM2": 199,
+     "bagId": "0363010000664751"
+    },
+    {
+     "address": "Herengracht 248C",
+     "use": "woonfunctie",
+     "areaM2": 134,
+     "bagId": "0363010000664752"
+    },
+    {
+     "address": "Herengracht 248D",
+     "use": "woonfunctie",
+     "areaM2": 117,
+     "bagId": "0363010000664753"
+    },
+    {
+     "address": "Herengracht 248F",
+     "use": "woonfunctie",
+     "areaM2": 168,
+     "bagId": "0363010000664755"
+    },
+    {
+     "address": "Herengracht 248G",
+     "use": "woonfunctie",
+     "areaM2": 90,
+     "bagId": "0363010000664756"
+    },
+    {
+     "address": "Herengracht 248",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010012118886"
+    },
+    {
+     "address": "Herengracht 248E",
+     "use": "woonfunctie",
+     "areaM2": 128,
+     "bagId": "0363010000664754"
+    }
+   ],
+   "units": 9,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012176852",
+   "addresses": [
+    "Herengracht 244"
+   ],
+   "groundUnits": [
+    {
+     "address": "Herengracht 244-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 560,
+     "bagId": "0363010000994832"
+    },
+    {
+     "address": "Herengracht 244-1",
+     "use": "kantoorfunctie",
+     "areaM2": 141,
+     "bagId": "0363010001045091"
+    },
+    {
+     "address": "Herengracht 244-2",
+     "use": "kantoorfunctie",
+     "areaM2": 120,
+     "bagId": "0363010001045092"
+    },
+    {
+     "address": "Herengracht 244-3",
+     "use": "kantoorfunctie",
+     "areaM2": 294,
+     "bagId": "0363010001045093"
+    },
+    {
+     "address": "Herengracht 244-4",
+     "use": "kantoorfunctie",
+     "areaM2": 76,
+     "bagId": "0363010001045094"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 4144505883,
+     "lngLat": [
+      4.8865285,
+      52.3719796
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "244",
+      "addr:postcode": "1016BT",
+      "addr:street": "Herengracht",
+      "amenity": "kindergarten",
+      "email": "info@kindergarden.nl",
+      "isced:level": "0",
+      "max_age": "4",
+      "min_age": "2 months",
+      "name": "Kindergarden",
+      "operator": "Kindergarden",
+      "phone": "+31 20 423 5422",
+      "website": "https://www.kindergarden.nl",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-11-10T08:10:12.060Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012164991",
+   "addresses": [
+    "Herengracht 242",
+    "Herengracht 242A",
+    "Herengracht 242B",
+    "Herengracht 242C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Herengracht 242-H",
+     "use": "woonfunctie",
+     "areaM2": 156,
+     "bagId": "0363010000713981"
+    },
+    {
+     "address": "Herengracht 242A",
+     "use": "woonfunctie",
+     "areaM2": 196,
+     "bagId": "0363010012111856"
+    },
+    {
+     "address": "Herengracht 242B",
+     "use": "woonfunctie",
+     "areaM2": 106,
+     "bagId": "0363010012111857"
+    },
+    {
+     "address": "Herengracht 242C",
+     "use": "woonfunctie",
+     "areaM2": 149,
+     "bagId": "0363010012111858"
+    }
+   ],
+   "units": 6,
+   "osm": [
+    {
+     "type": "node",
+     "id": 6488601182,
+     "lngLat": [
+      4.8866948,
+      52.3720706
+     ],
+     "tags": {
+      "amenity": "art_gallery",
+      "name": "The Collective Studio"
+     },
+     "fetchedAt": "2026-11-10T08:10:12.060Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012177222",
+   "addresses": [
+    "Herengracht 240"
+   ],
+   "groundUnits": [
+    {
+     "address": "Herengracht 240",
+     "use": "woonfunctie",
+     "areaM2": 225,
+     "bagId": "0363010000664742"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012177223",
+   "addresses": [
+    "Herengracht 238"
+   ],
+   "groundUnits": [
+    {
+     "address": "Herengracht 238",
+     "use": "woonfunctie",
+     "areaM2": 140,
+     "bagId": "0363010000664741"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012177481",
+   "addresses": [
+    "Herengracht 236"
+   ],
+   "groundUnits": [
+    {
+     "address": "Herengracht 236",
+     "use": "woonfunctie",
+     "areaM2": 110,
+     "bagId": "0363010000956762"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012177225",
+   "addresses": [
+    "Herengracht 234"
+   ],
+   "groundUnits": [
+    {
+     "address": "Herengracht 234-H",
+     "use": "winkelfunctie",
+     "areaM2": 20,
+     "bagId": "0363010000664735"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 3642246971,
+     "lngLat": [
+      4.8866968,
+      52.3722317
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "234",
+      "addr:postcode": "1016BT",
+      "addr:street": "Herengracht",
+      "check_date": "2024-07-27",
+      "name": "Parwan",
+      "shop": "gift",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-11-10T08:10:12.060Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 4338347011,
+     "lngLat": [
+      4.8866994,
+      52.3723183
+     ],
+     "tags": {
+      "amenity": "waste_basket",
+      "check_date": "2024-08-15"
+     },
+     "fetchedAt": "2026-11-10T08:10:12.060Z",
+     "match": "frontage",
+     "distanceM": 8
+    },
+    {
+     "type": "node",
+     "id": 4596549959,
+     "lngLat": [
+      4.8866254,
+      52.3722268
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "1",
+      "addr:street": "Hartenstraat",
+      "check_date": "2024-07-27",
+      "clothes": "vintage",
+      "contact:instagram": "https://www.instagram.com/highendfashian",
+      "name": "Fashian",
+      "shop": "clothes",
+      "source": "survey",
+      "website": "https://www.fashian.nl",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-11-10T08:10:12.060Z",
+     "match": "frontage",
+     "distanceM": 7.9
+    }
+   ]
+  }
+ ]
+}

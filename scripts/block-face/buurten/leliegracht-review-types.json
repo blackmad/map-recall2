@@ -1,0 +1,62 @@
+{
+ "note": "Type and mirror pins from the strips (blockFace/reviewCrowns.ts).",
+ "reviewed": "2026-11-10 (lane belt-gg-west, from the strips)",
+ "pins": [
+  {
+   "face": "herengracht-84-148",
+   "types": [
+    "ggw-1740-frieze-cornice"
+   ],
+   "pands": [
+    "0363100012175700"
+   ],
+   "accept": true,
+   "storeys": 4,
+   "reason": "Herengracht 92: entablature with three attic lights under a carved crest, stoop door left, bel-etage and three upper rows"
+  },
+  {
+   "face": "herengracht-84-148",
+   "types": [
+    "ggw-1740-frieze-cornice"
+   ],
+   "pands": [
+    "0363100012175699"
+   ],
+   "accept": true,
+   "storeys": 4,
+   "reason": "Herengracht 94: entablature with three attic lights, stoop door right, bel-etage and three upper rows"
+  },
+  {
+   "face": "herengracht-84-148",
+   "types": [
+    "ggw-1740-frieze-cornice"
+   ],
+   "pands": [
+    "0363100012167714"
+   ],
+   "accept": true,
+   "storeys": 4,
+   "reason": "Herengracht 96: entablature with four attic lights under a pediment, four axes, bel-etage and three upper rows"
+  }
+ ],
+ "mirrors": [
+  {
+   "pandId": "0363100012175699",
+   "type": "ggw-1740-frieze-cornice",
+   "mirror": true,
+   "reason": "Herengracht 94: 2021-01-25 strip, the stoop door with its transom light on the right axis (x 91 m)"
+  },
+  {
+   "pandId": "0363100012167714",
+   "type": "ggw-1740-frieze-cornice",
+   "mirror": true,
+   "reason": "Herengracht 96: 2021-01-25 strip, the door in its white surround on the right-hand axis"
+  },
+  {
+   "pandId": "0363100012175700",
+   "type": "ggw-1740-frieze-cornice",
+   "mirror": false,
+   "reason": "Herengracht 92: 2021-01-25 strip, the stoop door on the left axis"
+  }
+ ]
+}

@@ -1,0 +1,153 @@
+{
+ "buurt": "felix-meritisbuurt",
+ "library": "grachtengordel-west",
+ "generatedAt": "2026-11-10T08:54:33.152Z",
+ "seconds": 41.08,
+ "totals": {
+  "faces": 7,
+  "pands": 72,
+  "placed": 3
+ },
+ "faces": [
+  {
+   "face": "herengracht-194-232",
+   "street": "Herengracht",
+   "pands": 6,
+   "placed": 0,
+   "held": 6,
+   "runs": [],
+   "seconds": 7.04,
+   "byType": {},
+   "installed": 0,
+   "holds": {
+    "evidence": 2,
+    "match": 3,
+    "likeness": 0,
+    "run": 1,
+    "review": 0
+   }
+  },
+  {
+   "face": "herengracht-229-243",
+   "street": "Herengracht",
+   "pands": 8,
+   "placed": 0,
+   "held": 8,
+   "runs": [],
+   "seconds": 2.48,
+   "byType": {},
+   "installed": 0,
+   "holds": {
+    "evidence": 0,
+    "match": 7,
+    "likeness": 0,
+    "run": 1,
+    "review": 0
+   }
+  },
+  {
+   "face": "herengracht-234-298",
+   "street": "Herengracht",
+   "pands": 12,
+   "placed": 0,
+   "held": 12,
+   "runs": [],
+   "seconds": 5.24,
+   "byType": {},
+   "installed": 0,
+   "holds": {
+    "evidence": 0,
+    "match": 11,
+    "likeness": 0,
+    "run": 1,
+    "review": 0
+   }
+  },
+  {
+   "face": "herengracht-245-261",
+   "street": "Herengracht",
+   "pands": 9,
+   "placed": 0,
+   "held": 9,
+   "runs": [],
+   "seconds": 4.62,
+   "byType": {},
+   "installed": 0,
+   "holds": {
+    "evidence": 0,
+    "match": 7,
+    "likeness": 0,
+    "run": 2,
+    "review": 0
+   }
+  },
+  {
+   "face": "herengracht-300-354",
+   "street": "Herengracht",
+   "pands": 14,
+   "placed": 0,
+   "held": 14,
+   "runs": [],
+   "seconds": 4.83,
+   "byType": {},
+   "installed": 0,
+   "holds": {
+    "evidence": 8,
+    "match": 6,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "herengracht-319-335",
+   "street": "Herengracht",
+   "pands": 8,
+   "placed": 0,
+   "held": 8,
+   "runs": [],
+   "seconds": 6.63,
+   "byType": {},
+   "installed": 0,
+   "holds": {
+    "evidence": 5,
+    "match": 2,
+    "likeness": 0,
+    "run": 1,
+    "review": 0
+   }
+  },
+  {
+   "face": "keizersgracht-240-312",
+   "street": "Keizersgracht",
+   "pands": 15,
+   "placed": 3,
+   "held": 12,
+   "runs": [
+    {
+     "face": "keizersgracht-240-312-r1",
+     "pands": [
+      "0363100012169386",
+      "0363100012169390",
+      "0363100012169444"
+     ],
+     "passed": true,
+     "triangles": 5140
+    }
+   ],
+   "seconds": 41.07,
+   "byType": {
+    "ggw-1760-plain-cornice": 1,
+    "ggw-1700-neck-bell-gable": 2
+   },
+   "installed": 0,
+   "holds": {
+    "evidence": 0,
+    "match": 3,
+    "likeness": 2,
+    "run": 3,
+    "review": 4
+   }
+  }
+ ]
+}

@@ -417,27 +417,33 @@ export function autoShopfront(ev: PandEvidence, use: GroundFloorUse): ShopfrontI
 }
 
 /** Decide one pand: the best type over the threshold, or a hold with the reason. */
-export function decidePand(types: MatchableType[], ev: PandEvidence, slug: string, photoDate: string): Decision {
+export function decidePand(types: MatchableType[], ev: PandEvidence, slug: string, photoDate: string, pin?: {accept?: true; storeys?: number; houseGround?: true}): Decision {
   const s = ev.strip;
   if (!s) return {kind: 'held', pandId: ev.pandId, address: ev.address, stage: 'evidence', reason: 'no strip span (no panorama covers the front)'};
   if (s.voidShare > AUTO_PLACE.maxVoid) return {kind: 'held', pandId: ev.pandId, address: ev.address, stage: 'evidence', reason: `strip ${Math.round(s.voidShare * 100)} % without panorama data`};
   if (s.frontEvidence && !s.frontEvidence.pass) return {kind: 'held', pandId: ev.pandId, address: ev.address, stage: 'evidence', reason: `no front on the strip: ${s.frontEvidence.reasons.join('; ')}`};
   const ranked = types.map(t => scoreType(t, ev)).sort((a, b) => b.score - a.score);
   const best = ranked[0], second = ranked[1];
-  if (!best || best.score < AUTO_PLACE.minScore) {
+  // A reviewer's accept pin (reviewCrowns.ts TypePin.accept) places its one type under the threshold; a veto still holds.
+  const accepted = !!pin?.accept && !!best && !best.veto.length;
+  if (!best || (best.score < AUTO_PLACE.minScore && !accepted)) {
     const why = !best ? 'no types' : best.veto.length ? `every type vetoed (best ${best.typeId}: ${best.veto.join('; ')})` : `best ${best.typeId} scores ${best.score} < ${AUTO_PLACE.minScore} (${best.criteria.filter(c => c.score !== null && c.score < 1).map(c => c.note).join('; ')})`;
     return {kind: 'held', pandId: ev.pandId, address: ev.address, stage: 'match', reason: why, best};
   }
   const t = types.find(x => x.id === best.typeId)!;
   const notes: string[] = [];
   if (second && second.score > 0 && best.score - second.score < AUTO_PLACE.margin) notes.push(`near tie with ${second.typeId} (${second.score})`);
-  const use = groundUse(ev, photoDate);
+  if (accepted && best.score < AUTO_PLACE.minScore) notes.push(`reviewer accept pin (score ${best.score})`);
+  if (pin?.storeys !== undefined) notes.push(`storeys ${pin.storeys}: reviewer pin`);
+  const listed = groundUse(ev, photoDate);
+  const use: GroundFloorUse = pin?.houseGround && !['residential', 'office', 'vacant'].includes(listed.use)
+    ? {...listed, use: 'residential', note: `${listed.note}; reviewer pin: the strip shows a house ground (listed ${listed.use})`} : listed;
   const trading = !['residential', 'office', 'vacant'].includes(use.use);
   const bays = baysFor(t, ev.widthM), bodyBays = typeof t.body.bays === 'number' ? t.body.bays : undefined;
   const placement: HousePlacement = {type: t.id};
   if (bodyBays !== undefined && bays !== bodyBays) placement.overrides = {bays};
   // Storeys from the eaves, not 3DBAG bouwlagen (it counts the attic: 5 on the 4-storey Hasebroekstraat 4-36).
-  const storeys = t.match?.frontEavesM !== undefined ? t.body.storeys : storeysFor(t, ev.eavesM);
+  const storeys = pin?.storeys ?? (t.match?.frontEavesM !== undefined ? t.body.storeys : storeysFor(t, ev.eavesM));
   if (storeys !== t.body.storeys) { placement.storeys = storeys; notes.push(`storeys ${storeys}: eaves ${ev.eavesM} m at the type's ${storeyPitch(t).toFixed(2)} m pitch`); }
   // Door side: the type's grounds are authored door-left / door-right; the measured side picks one, unread keeps the first.
   const grounds = Object.keys(t.grounds ?? {});

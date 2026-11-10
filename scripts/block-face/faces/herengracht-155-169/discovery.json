@@ -1,0 +1,488 @@
+{
+ "street": "Herengracht",
+ "seed": "0363100012167683",
+ "members": [
+  "0363100012167683",
+  "0363100012167681",
+  "0363100012167680",
+  "0363100012167679",
+  "0363100012167668",
+  "0363100012167660",
+  "0363100012176939",
+  "0363100012167669"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "next fronting pand 0363100012176017 6.1 m on shares no party wall (cross street or gap)"
+  },
+  {
+   "side": "right",
+   "reason": "next fronting pand 0363100012176316 13.6 m on shares no party wall (cross street or gap)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012167658",
+   "reason": "frontage 33.0 m from Herengracht"
+  },
+  {
+   "pandId": "0363100012167661",
+   "reason": "sightline to Herengracht crosses 0363100012167669"
+  },
+  {
+   "pandId": "0363100012167662",
+   "reason": "sightline to Herengracht crosses 0363100012176939"
+  },
+  {
+   "pandId": "0363100012167663",
+   "reason": "sightline to Herengracht crosses 0363100012167662"
+  },
+  {
+   "pandId": "0363100012167666",
+   "reason": "frontage 54.4 m from Herengracht"
+  },
+  {
+   "pandId": "0363100012167672",
+   "reason": "frontage 37.3 m from Herengracht"
+  },
+  {
+   "pandId": "0363100012167673",
+   "reason": "frontage 32.9 m from Herengracht"
+  },
+  {
+   "pandId": "0363100012167674",
+   "reason": "sightline to Herengracht crosses 0363100012167662"
+  },
+  {
+   "pandId": "0363100012167675",
+   "reason": "sightline to Herengracht crosses 0363100012167662"
+  },
+  {
+   "pandId": "0363100012167676",
+   "reason": "frontage 30.4 m from Herengracht"
+  },
+  {
+   "pandId": "0363100012167677",
+   "reason": "frontage 37.0 m from Herengracht"
+  },
+  {
+   "pandId": "0363100012167678",
+   "reason": "frontage 37.1 m from Herengracht"
+  },
+  {
+   "pandId": "0363100012167684",
+   "reason": "frontage 36.8 m from Herengracht"
+  },
+  {
+   "pandId": "0363100012167685",
+   "reason": "sightline to Herengracht crosses 0363100012167682"
+  },
+  {
+   "pandId": "0363100012167687",
+   "reason": "frontage 32.7 m from Herengracht"
+  },
+  {
+   "pandId": "0363100012169005",
+   "reason": "frontage 43.0 m from Herengracht"
+  },
+  {
+   "pandId": "0363100012169150",
+   "reason": "frontage 43.3 m from Herengracht"
+  },
+  {
+   "pandId": "0363100012175925",
+   "reason": "frontage 41.6 m from Herengracht"
+  },
+  {
+   "pandId": "0363100012175926",
+   "reason": "frontage 45.3 m from Herengracht"
+  },
+  {
+   "pandId": "0363100012175927",
+   "reason": "frontage 41.4 m from Herengracht"
+  },
+  {
+   "pandId": "0363100012165429",
+   "reason": "frontage 113.2 m from Herengracht"
+  },
+  {
+   "pandId": "0363100012167966",
+   "reason": "frontage 116.8 m from Herengracht"
+  },
+  {
+   "pandId": "0363100012167967",
+   "reason": "frontage 108.6 m from Herengracht"
+  },
+  {
+   "pandId": "0363100012167968",
+   "reason": "frontage 34.7 m from Herengracht"
+  },
+  {
+   "pandId": "0363100012167969",
+   "reason": "frontage 33.8 m from Herengracht"
+  },
+  {
+   "pandId": "0363100012167970",
+   "reason": "frontage 32.2 m from Herengracht"
+  },
+  {
+   "pandId": "0363100012168028",
+   "reason": "frontage 110.4 m from Herengracht"
+  },
+  {
+   "pandId": "0363100012168029",
+   "reason": "frontage 128.6 m from Herengracht"
+  },
+  {
+   "pandId": "0363100012168030",
+   "reason": "frontage 123.5 m from Herengracht"
+  },
+  {
+   "pandId": "0363100012168031",
+   "reason": "frontage 109.3 m from Herengracht"
+  },
+  {
+   "pandId": "0363100012168405",
+   "reason": "frontage 111.2 m from Herengracht"
+  },
+  {
+   "pandId": "0363100012168406",
+   "reason": "frontage 34.7 m from Herengracht"
+  },
+  {
+   "pandId": "0363100012175920",
+   "reason": "frontage 106.9 m from Herengracht"
+  },
+  {
+   "pandId": "0363100012175921",
+   "reason": "frontage 129.3 m from Herengracht"
+  },
+  {
+   "pandId": "0363100012175922",
+   "reason": "frontage 108.9 m from Herengracht"
+  },
+  {
+   "pandId": "0363100012175923",
+   "reason": "frontage 117.7 m from Herengracht"
+  },
+  {
+   "pandId": "0363100012175924",
+   "reason": "frontage 123.6 m from Herengracht"
+  },
+  {
+   "pandId": "0363100012175928",
+   "reason": "frontage 44.5 m from Herengracht"
+  },
+  {
+   "pandId": "0363100012175929",
+   "reason": "frontage 40.8 m from Herengracht"
+  },
+  {
+   "pandId": "0363100012175933",
+   "reason": "frontage 43.9 m from Herengracht"
+  },
+  {
+   "pandId": "0363100012176002",
+   "reason": "sightline to Herengracht crosses 0363100012176003"
+  },
+  {
+   "pandId": "0363100012176007",
+   "reason": "sightline to Herengracht crosses 0363100012167681"
+  },
+  {
+   "pandId": "0363100012176008",
+   "reason": "frontage 33.0 m from Herengracht"
+  },
+  {
+   "pandId": "0363100012176009",
+   "reason": "sightline to Herengracht crosses 0363100012167683"
+  },
+  {
+   "pandId": "0363100012176010",
+   "reason": "frontage 37.6 m from Herengracht"
+  },
+  {
+   "pandId": "0363100012176011",
+   "reason": "frontage 36.6 m from Herengracht"
+  },
+  {
+   "pandId": "0363100012176012",
+   "reason": "sightline to Herengracht crosses 0363100012176013"
+  },
+  {
+   "pandId": "0363100012176016",
+   "reason": "sightline to Herengracht crosses 0363100012176002"
+  },
+  {
+   "pandId": "0363100012176091",
+   "reason": "frontage 42.3 m from Herengracht"
+  },
+  {
+   "pandId": "0363100012176095",
+   "reason": "frontage 37.6 m from Herengracht"
+  },
+  {
+   "pandId": "0363100012176827",
+   "reason": "sightline to Herengracht crosses 0363100012176937"
+  },
+  {
+   "pandId": "0363100012176828",
+   "reason": "sightline to Herengracht crosses 0363100012176316"
+  },
+  {
+   "pandId": "0363100012176935",
+   "reason": "sightline to Herengracht crosses 0363100012176316"
+  },
+  {
+   "pandId": "0363100012175930",
+   "reason": "frontage 113.9 m from Herengracht"
+  },
+  {
+   "pandId": "0363100012175931",
+   "reason": "frontage 107.0 m from Herengracht"
+  },
+  {
+   "pandId": "0363100012175932",
+   "reason": "frontage 107.8 m from Herengracht"
+  },
+  {
+   "pandId": "0363100012176000",
+   "reason": "frontage 33.1 m from Herengracht"
+  },
+  {
+   "pandId": "0363100012176001",
+   "reason": "frontage 45.6 m from Herengracht"
+  },
+  {
+   "pandId": "0363100012176015",
+   "reason": "sightline to Herengracht crosses 0363100012176016"
+  },
+  {
+   "pandId": "0363100012176018",
+   "reason": "frontage 47.4 m from Herengracht"
+  },
+  {
+   "pandId": "0363100012176019",
+   "reason": "sightline to Herengracht crosses 0363100012167682"
+  },
+  {
+   "pandId": "0363100012176086",
+   "reason": "frontage 36.3 m from Herengracht"
+  },
+  {
+   "pandId": "0363100012176087",
+   "reason": "frontage 31.7 m from Herengracht"
+  },
+  {
+   "pandId": "0363100012176088",
+   "reason": "sightline to Herengracht crosses 0363100012167685"
+  },
+  {
+   "pandId": "0363100012176089",
+   "reason": "sightline to Herengracht crosses 0363100012167682"
+  },
+  {
+   "pandId": "0363100012176090",
+   "reason": "frontage 38.2 m from Herengracht"
+  },
+  {
+   "pandId": "0363100012176092",
+   "reason": "frontage 47.2 m from Herengracht"
+  },
+  {
+   "pandId": "0363100012176093",
+   "reason": "frontage 50.5 m from Herengracht"
+  },
+  {
+   "pandId": "0363100012176270",
+   "reason": "frontage 53.9 m from Herengracht"
+  },
+  {
+   "pandId": "0363100012176271",
+   "reason": "frontage 34.9 m from Herengracht"
+  },
+  {
+   "pandId": "0363100012177012",
+   "reason": "sightline to Herengracht crosses 0363100012177013"
+  },
+  {
+   "pandId": "0363100012177013",
+   "reason": "sightline to Herengracht crosses 0363100012177014"
+  },
+  {
+   "pandId": "0363100012177014",
+   "reason": "sightline to Herengracht crosses 0363100012177015"
+  },
+  {
+   "pandId": "0363100012177015",
+   "reason": "sightline to Herengracht crosses 0363100012177016"
+  },
+  {
+   "pandId": "0363100012177016",
+   "reason": "sightline to Herengracht crosses 0363100012177017"
+  },
+  {
+   "pandId": "0363100012239631",
+   "reason": "frontage 40.9 m from Herengracht"
+  },
+  {
+   "pandId": "0363100012253785",
+   "reason": "frontage 110.2 m from Herengracht"
+  },
+  {
+   "pandId": "0363100012167671",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012176006",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012176314",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012176938",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012177006",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012177007",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012177010",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012177017",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012177018",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012177019",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012177020",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012177210",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012177211",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012177277",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012177278",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012177280",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012570910",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012167683",
+   "alongM": 0,
+   "widthM": 6.48,
+   "eavesM": 16.22,
+   "roofMaxM": 19.99,
+   "storeys3dbag": 5,
+   "builtYear": 1760,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012167681",
+   "alongM": 6.28,
+   "widthM": 6.09,
+   "eavesM": 15.85,
+   "roofMaxM": 18.09,
+   "storeys3dbag": 5,
+   "builtYear": 1725,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012167680",
+   "alongM": 12.09,
+   "widthM": 5.53,
+   "eavesM": 11.12,
+   "roofMaxM": 15.61,
+   "storeys3dbag": 4,
+   "builtYear": 1645,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012167679",
+   "alongM": 17.84,
+   "widthM": 5.96,
+   "eavesM": 13.15,
+   "roofMaxM": 17.02,
+   "storeys3dbag": 4,
+   "builtYear": 1750,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012167668",
+   "alongM": 23.73,
+   "widthM": 5.84,
+   "eavesM": 9.2,
+   "roofMaxM": 14.75,
+   "storeys3dbag": 4,
+   "builtYear": 1650,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012167660",
+   "alongM": 29.61,
+   "widthM": 5.93,
+   "eavesM": 14.87,
+   "roofMaxM": 18.64,
+   "storeys3dbag": 5,
+   "builtYear": 1760,
+   "uncertainty": [
+    "Frontage extended across a native jog of up to 1 m (possible partial front at the default 0.35 m).",
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012176939",
+   "alongM": 35.49,
+   "widthM": 5.81,
+   "eavesM": 14.04,
+   "roofMaxM": 14.06,
+   "storeys3dbag": 5,
+   "builtYear": 1910,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012167669",
+   "alongM": 40.9,
+   "widthM": 5.02,
+   "eavesM": 14.22,
+   "roofMaxM": 14.55,
+   "storeys3dbag": 5,
+   "builtYear": 1620,
+   "uncertainty": []
+  }
+ ]
+}

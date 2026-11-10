@@ -1,0 +1,113 @@
+{
+ "street": "Herengracht",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T08:08:59.907Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012167714",
+   "addresses": [
+    "Herengracht 96B",
+    "Herengracht 96C",
+    "Herengracht 96D",
+    "Herengracht 96E",
+    "Herengracht 96A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Herengracht 96B",
+     "use": "woonfunctie",
+     "areaM2": 164,
+     "bagId": "0363010000948222"
+    },
+    {
+     "address": "Herengracht 96C",
+     "use": "woonfunctie",
+     "areaM2": 168,
+     "bagId": "0363010000948223"
+    },
+    {
+     "address": "Herengracht 96D",
+     "use": "woonfunctie",
+     "areaM2": 144,
+     "bagId": "0363010000948224"
+    },
+    {
+     "address": "Herengracht 96E",
+     "use": "woonfunctie",
+     "areaM2": 127,
+     "bagId": "0363010000948225"
+    },
+    {
+     "address": "Herengracht 96A",
+     "use": "woonfunctie",
+     "areaM2": 284,
+     "bagId": "0363010000948220"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012175699",
+   "addresses": [
+    "Herengracht 94A",
+    "Herengracht 94B",
+    "Herengracht 94C",
+    "Herengracht 94D",
+    "Herengracht 94E",
+    "Herengracht 94F"
+   ],
+   "groundUnits": [
+    {
+     "address": "Herengracht 94A",
+     "use": "woonfunctie",
+     "areaM2": 97,
+     "bagId": "0363010000960186"
+    },
+    {
+     "address": "Herengracht 94B",
+     "use": "woonfunctie",
+     "areaM2": 98,
+     "bagId": "0363010000960187"
+    },
+    {
+     "address": "Herengracht 94C",
+     "use": "woonfunctie",
+     "areaM2": 88,
+     "bagId": "0363010000960188"
+    },
+    {
+     "address": "Herengracht 94D",
+     "use": "woonfunctie",
+     "areaM2": 83,
+     "bagId": "0363010000960189"
+    },
+    {
+     "address": "Herengracht 94E",
+     "use": "woonfunctie",
+     "areaM2": 83,
+     "bagId": "0363010000960190"
+    },
+    {
+     "address": "Herengracht 94F",
+     "use": "woonfunctie",
+     "areaM2": 90,
+     "bagId": "0363010000960192"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012175700",
+   "addresses": [
+    "Herengracht 92"
+   ],
+   "groundUnits": [],
+   "units": 7,
+   "osm": []
+  }
+ ]
+}

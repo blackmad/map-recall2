@@ -1,0 +1,354 @@
+{
+ "street": "Keizersgracht",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T08:38:14.051Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012177534",
+   "addresses": [
+    "Keizersgracht 95B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Herenstraat 41",
+     "use": "winkelfunctie",
+     "areaM2": 74,
+     "bagId": "0363010000665399"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 538535002,
+     "lngLat": [
+      4.8882174,
+      52.3773425
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "41",
+      "addr:street": "Herenstraat",
+      "check_date": "2023-04-13",
+      "name": "De Ware Jacob",
+      "opening_hours": "Tu-Fr 10:30-19:00; Sa 09:30-18:00; Su 12:00-18:00",
+      "shop": "alcohol",
+      "website": "https://www.warejacob.com"
+     },
+     "fetchedAt": "2026-11-10T08:38:14.051Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 12117291020,
+     "lngLat": [
+      4.8882864,
+      52.3773157
+     ],
+     "tags": {
+      "name": "Nostalgia",
+      "shop": "antiques"
+     },
+     "fetchedAt": "2026-11-10T08:38:14.051Z",
+     "match": "frontage",
+     "distanceM": 7.9
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012177282",
+   "addresses": [
+    "Keizersgracht 97"
+   ],
+   "groundUnits": [
+    {
+     "address": "Keizersgracht 97-H",
+     "use": "kantoorfunctie",
+     "areaM2": 87,
+     "bagId": "0363010012133048"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012177281",
+   "addresses": [
+    "Keizersgracht 99"
+   ],
+   "groundUnits": [
+    {
+     "address": "Keizersgracht 99-H",
+     "use": "kantoorfunctie",
+     "areaM2": 236,
+     "bagId": "0363010003684953"
+    },
+    {
+     "address": "Keizersgracht 99-H",
+     "use": "kantoorfunctie",
+     "areaM2": 218,
+     "bagId": "0363010012133049"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012177532",
+   "addresses": [
+    "Keizersgracht 101B",
+    "Keizersgracht 101A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Keizersgracht 101B",
+     "use": "woonfunctie",
+     "areaM2": 122,
+     "bagId": "0363010001041551"
+    },
+    {
+     "address": "Keizersgracht 101A",
+     "use": "kantoorfunctie",
+     "areaM2": 516,
+     "bagId": "0363010001041550"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012177468",
+   "addresses": [
+    "Keizersgracht 105"
+   ],
+   "groundUnits": [
+    {
+     "address": "Keizersgracht 105",
+     "use": "kantoorfunctie",
+     "areaM2": 2620,
+     "bagId": "0363010000700583"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012177290",
+   "addresses": [
+    "Keizersgracht 107A",
+    "Keizersgracht 107B",
+    "Keizersgracht 107C",
+    "Keizersgracht 107D",
+    "Keizersgracht 107E",
+    "Keizersgracht 107F"
+   ],
+   "groundUnits": [
+    {
+     "address": "Keizersgracht 107A",
+     "use": "woonfunctie",
+     "areaM2": 189,
+     "bagId": "0363010001007606"
+    },
+    {
+     "address": "Keizersgracht 107B",
+     "use": "woonfunctie",
+     "areaM2": 259,
+     "bagId": "0363010001007607"
+    },
+    {
+     "address": "Keizersgracht 107C",
+     "use": "woonfunctie",
+     "areaM2": 112,
+     "bagId": "0363010001007608"
+    },
+    {
+     "address": "Keizersgracht 107D",
+     "use": "woonfunctie",
+     "areaM2": 110,
+     "bagId": "0363010001007609"
+    },
+    {
+     "address": "Keizersgracht 107E",
+     "use": "woonfunctie",
+     "areaM2": 110,
+     "bagId": "0363010001007611"
+    },
+    {
+     "address": "Keizersgracht 107F",
+     "use": "woonfunctie",
+     "areaM2": 222,
+     "bagId": "0363010001012961"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012177289",
+   "addresses": [
+    "Keizersgracht 109"
+   ],
+   "groundUnits": [
+    {
+     "address": "Keizersgracht 109",
+     "use": "woonfunctie",
+     "areaM2": 414,
+     "bagId": "0363010000700591"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012177288",
+   "addresses": [
+    "Keizersgracht 111B",
+    "Keizersgracht 111C",
+    "Keizersgracht 111D",
+    "Keizersgracht 111E",
+    "Keizersgracht 111F",
+    "Keizersgracht 111A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Keizersgracht 111B",
+     "use": "woonfunctie",
+     "areaM2": 267,
+     "bagId": "0363010000643465"
+    },
+    {
+     "address": "Keizersgracht 111C",
+     "use": "woonfunctie",
+     "areaM2": 62,
+     "bagId": "0363010000643466"
+    },
+    {
+     "address": "Keizersgracht 111D",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000643467"
+    },
+    {
+     "address": "Keizersgracht 111E",
+     "use": "woonfunctie",
+     "areaM2": 95,
+     "bagId": "0363010000643468"
+    },
+    {
+     "address": "Keizersgracht 111F",
+     "use": "woonfunctie",
+     "areaM2": 103,
+     "bagId": "0363010000643840"
+    },
+    {
+     "address": "Keizersgracht 111A",
+     "use": "woonfunctie",
+     "areaM2": 112,
+     "bagId": "0363010000642848"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012177469",
+   "addresses": [
+    "Keizersgracht 113A",
+    "Keizersgracht 113B",
+    "Keizersgracht 113C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Keizersgracht 113A",
+     "use": "woonfunctie",
+     "areaM2": 355,
+     "bagId": "0363010000951167"
+    },
+    {
+     "address": "Keizersgracht 113B",
+     "use": "woonfunctie",
+     "areaM2": 200,
+     "bagId": "0363010000951168"
+    },
+    {
+     "address": "Keizersgracht 113C",
+     "use": "woonfunctie",
+     "areaM2": 200,
+     "bagId": "0363010000951169"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012167700",
+   "addresses": [
+    "Keizersgracht 117E",
+    "Keizersgracht 117A",
+    "Keizersgracht 117B",
+    "Keizersgracht 117C",
+    "Keizersgracht 117D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Keizersgracht 117E",
+     "use": "kantoorfunctie,woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010001020096"
+    },
+    {
+     "address": "Keizersgracht 117A",
+     "use": "woonfunctie",
+     "areaM2": 215,
+     "bagId": "0363010001020097"
+    },
+    {
+     "address": "Keizersgracht 117B",
+     "use": "kantoorfunctie,woonfunctie",
+     "areaM2": 160,
+     "bagId": "0363010001020101"
+    },
+    {
+     "address": "Keizersgracht 117C",
+     "use": "kantoorfunctie,woonfunctie",
+     "areaM2": 178,
+     "bagId": "0363010001020102"
+    },
+    {
+     "address": "Keizersgracht 117D",
+     "use": "woonfunctie",
+     "areaM2": 148,
+     "bagId": "0363010001020095"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012167694",
+   "addresses": [
+    "Keizersgracht 119",
+    "Keizersgracht 121"
+   ],
+   "groundUnits": [
+    {
+     "address": "Keizersgracht 119",
+     "use": "kantoorfunctie",
+     "areaM2": 918,
+     "bagId": "0363010011951140"
+    },
+    {
+     "address": "Keizersgracht 121",
+     "use": "kantoorfunctie",
+     "areaM2": 1031,
+     "bagId": "0363010011951141"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  }
+ ]
+}

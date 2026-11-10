@@ -1,0 +1,1264 @@
+{
+ "face": "herengracht-84-148",
+ "street": "Herengracht",
+ "library": "grachtengordel-west",
+ "stripDate": "2021-01-25",
+ "seconds": 31.78,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [
+  {
+   "face": "herengracht-84-148-r1",
+   "pands": [
+    "0363100012167714",
+    "0363100012175699",
+    "0363100012175700"
+   ],
+   "passed": false,
+   "triangles": 6289
+  }
+ ],
+ "pands": [
+  {
+   "pandId": "0363100012169008",
+   "address": "Herengracht 116C",
+   "builtYear": 1738,
+   "widthM": 8.6,
+   "eavesM": 15.17,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#be9f7a",
+    "wallRaw": "#c5a783",
+    "skyline": {
+     "eavesM": 21.43,
+     "eavesRow": 158,
+     "confidence": 0.7,
+     "crown": {
+      "widthM": 1.2,
+      "riseM": 3.95,
+      "topWidthM": 0.17,
+      "centre": 0.38
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.193,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.04,
+    "foliageShare": 0.14
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Herengracht 116: a red-brick five-axis cornice front with a heavy frieze and six-pane sashes; a different design",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012169009",
+   "address": "Herengracht 114",
+   "builtYear": 1993,
+   "widthM": 5.06,
+   "eavesM": 14.55,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#9b9278",
+    "wallRaw": "#888471",
+    "skyline": {
+     "eavesM": 17.9,
+     "eavesRow": 299,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.07,
+      "riseM": 2.05,
+      "topWidthM": 0.07,
+      "centre": 0.54
+     }
+    },
+    "stucco": false,
+    "bands": 2,
+    "columns": 2,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.108,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.03,
+    "foliageShare": 0.26
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best ggw-1700-neck-bell-gable: built 1993, type 1600-1880)",
+   "best": {
+    "type": "ggw-1700-neck-bell-gable",
+    "score": 0,
+    "veto": [
+     "built 1993, type 1600-1880"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 14.55 m = 5 storeys of 2.91 m vs the type's 2.75 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 4.53 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.109 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 2 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012169006",
+   "address": "Herengracht 112",
+   "builtYear": 1870,
+   "widthM": 4.92,
+   "eavesM": 10.81,
+   "storeys3dbag": 4,
+   "bagBay": {
+    "fromM": 0,
+    "toM": 0.41,
+    "depthM": 0.35,
+    "centre": 0.042,
+    "lineRD": [
+     [
+      121053.4825625,
+      487688.7325
+     ],
+     [
+      121055.9695625,
+      487692.5065
+     ]
+    ]
+   },
+   "strip": {
+    "wall": "#b3a78a",
+    "wallRaw": "#757469",
+    "skyline": {
+     "eavesM": 14.13,
+     "eavesRow": 450,
+     "confidence": 1,
+     "crown": {
+      "widthM": 0.5,
+      "riseM": 4,
+      "topWidthM": 0.05,
+      "centre": 0.06
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "frontClass": "curtain",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.164,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0.3
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012169007",
+   "address": "Herengracht 108A",
+   "builtYear": 1740,
+   "widthM": 15.74,
+   "eavesM": 15.89,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#7e7462",
+    "wallRaw": "#847b6a",
+    "skyline": {
+     "eavesM": 15.95,
+     "eavesRow": 377,
+     "confidence": 1,
+     "crown": {
+      "widthM": 9.03,
+      "riseM": 2.78,
+      "topWidthM": 0.5,
+      "centre": 0.69
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 6,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.126,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 11.68,
+       "widthM": 1.05,
+       "centre": 0.05
+      },
+      {
+       "atM": 9.05,
+       "widthM": 0.88,
+       "centre": 0.22
+      },
+      {
+       "atM": 6.42,
+       "widthM": 0.8,
+       "centre": 0.55
+      },
+      {
+       "atM": 5.97,
+       "widthM": 0.97,
+       "centre": 0.13
+      },
+      {
+       "atM": 5.6,
+       "widthM": 0.95,
+       "centre": 0.2
+      }
+     ]
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0.15
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best ggw-1700-neck-bell-gable: frontage 15.74 m, type 4.2-6.8 m)",
+   "best": {
+    "type": "ggw-1700-neck-bell-gable",
+    "score": 0,
+    "veto": [
+     "frontage 15.74 m, type 4.2-6.8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 15.89 m = 5 storeys of 3.18 m vs the type's 2.75 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 5.55 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.104 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 6 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012167709",
+   "address": "Herengracht 106",
+   "builtYear": 1750,
+   "widthM": 5.98,
+   "eavesM": 17.81,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#786e5f",
+    "wallRaw": "#8d816f",
+    "skyline": {
+     "eavesM": 17.95,
+     "eavesRow": 297,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.2,
+      "riseM": 4.03,
+      "topWidthM": 0.23,
+      "centre": 0.71
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.234,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.12,
+    "foliageShare": 0.12
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best ggw-1700-neck-bell-gable scores 0.6 < 0.7 (3DBAG eaves 17.81 m = 5 storeys of 3.56 m vs the type's 2.75 m)",
+   "best": {
+    "type": "ggw-1700-neck-bell-gable",
+    "score": 0.6,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 17.81 m = 5 storeys of 3.56 m vs the type's 2.75 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 3.97 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.122 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012167711",
+   "address": "Herengracht 104",
+   "builtYear": 1905,
+   "widthM": 8.55,
+   "eavesM": 17.71,
+   "storeys3dbag": 0,
+   "bagBay": null,
+   "strip": {
+    "wall": "#847b6e",
+    "wallRaw": "#8b8476",
+    "skyline": {
+     "eavesM": 18.18,
+     "eavesRow": 288,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 2,
+    "columns": 4,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.201,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.02,
+    "foliageShare": 0.16
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best ggw-1700-neck-bell-gable: built 1905, type 1600-1880; frontage 8.55 m, type 4.2-6.8 m)",
+   "best": {
+    "type": "ggw-1700-neck-bell-gable",
+    "score": 0,
+    "veto": [
+     "built 1905, type 1600-1880",
+     "frontage 8.55 m, type 4.2-6.8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 17.71 m = 5 storeys of 3.54 m vs the type's 2.75 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 5.14 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.153 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 4 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012167712",
+   "address": "Herengracht 102A",
+   "builtYear": 1620,
+   "widthM": 5.1,
+   "eavesM": 16.53,
+   "storeys3dbag": 0,
+   "bagBay": {
+    "fromM": 4.57,
+    "toM": 5.07,
+    "depthM": 0.91,
+    "centre": 0.951,
+    "lineRD": [
+     [
+      121072.1984375,
+      487721.0355
+     ],
+     [
+      121074.4694375,
+      487725.0015
+     ]
+    ]
+   },
+   "strip": {
+    "wall": "#807463",
+    "wallRaw": "#8e836f",
+    "skyline": {
+     "eavesM": 18.18,
+     "eavesRow": 288,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.186,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.17
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.073 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.43 mean 0.40 vs photo 0.18; columns 3 vs photo 2)",
+   "likeness": {
+    "pandId": "0363100012167712",
+    "ncc": 0.073,
+    "nccRaw": 0.073,
+    "shiftM": [
+     -0.35,
+     0.2
+    ],
+    "usable": 0.65,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.43 mean 0.40 vs photo 0.18",
+     "columns 3 vs photo 2"
+    ],
+    "wall": {
+     "photo": "#7f7463",
+     "model": "#948775",
+     "dL": 0.076
+    },
+    "glazing": {
+     "photo": 0.18,
+     "model": 0.4
+    },
+    "columns": {
+     "photo": 2,
+     "model": 3
+    },
+    "iou": 0.162
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012167710",
+   "address": "Herengracht 100",
+   "builtYear": 1620,
+   "widthM": 8.58,
+   "eavesM": 11.53,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 0,
+    "toM": 0,
+    "depthM": 0.29,
+    "centre": 0,
+    "lineRD": [
+     [
+      121078.4585625,
+      487732.1695
+     ],
+     [
+      121080.7895625,
+      487735.8365
+     ]
+    ]
+   },
+   "strip": {
+    "wall": "#8b8370",
+    "wallRaw": "#a2987f",
+    "skyline": {
+     "eavesM": 18.23,
+     "eavesRow": 286,
+     "confidence": 0.99,
+     "crown": {
+      "widthM": 1.93,
+      "riseM": 7,
+      "topWidthM": 0.23,
+      "centre": 0.49
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 5,
+    "frontClass": "blank",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.423,
+    "structure": {
+     "bayWidthM": 0.72,
+     "bayCentre": 0.91,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6.65,
+       "widthM": 1.1,
+       "centre": 0.07
+      },
+      {
+       "atM": 6.2,
+       "widthM": 0.82,
+       "centre": 0.32
+      },
+      {
+       "atM": 5.9,
+       "widthM": 1.07,
+       "centre": 0.92
+      }
+     ]
+    },
+    "voidShare": 0.09,
+    "foliageShare": 0.28
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "no photo evidence (usable photo 37 % < 50 %) and no passing same-type neighbour",
+   "likeness": {
+    "pandId": "0363100012167710",
+    "ncc": null,
+    "nccRaw": 0.155,
+    "shiftM": [
+     -0.4,
+     0
+    ],
+    "usable": 0.37,
+    "abstain": "usable photo 37 % < 50 %",
+    "verdict": "NO EVIDENCE",
+    "reasons": [
+     "foliage 30 % > 25 %",
+     "washed out 32 % > 30 %"
+    ],
+    "wall": {
+     "photo": "#998e76",
+     "model": "#9c9484",
+     "dL": 0.033
+    },
+    "glazing": {
+     "photo": 0.22,
+     "model": 0.58
+    },
+    "columns": {
+     "photo": 4,
+     "model": 4
+    },
+    "iou": 0.218
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012167713",
+   "address": "Herengracht 98E",
+   "builtYear": 1743,
+   "widthM": 2.69,
+   "eavesM": 17.89,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#7a7971",
+    "wallRaw": "#8e8a7a",
+    "skyline": {
+     "eavesM": 17.43,
+     "eavesRow": 318,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 8,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.262,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0.3
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best ggw-1700-neck-bell-gable: frontage 2.69 m, type 4.2-6.8 m)",
+   "best": {
+    "type": "ggw-1700-neck-bell-gable",
+    "score": 0,
+    "veto": [
+     "frontage 2.69 m, type 4.2-6.8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 17.89 m = 5 storeys of 3.58 m vs the type's 2.75 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 3.77 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.228 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012167714",
+   "address": "Herengracht 96B",
+   "builtYear": 1660,
+   "widthM": 8.6,
+   "eavesM": 16.39,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#b5a785",
+    "wallRaw": "#98927e",
+    "skyline": {
+     "eavesM": 16.48,
+     "eavesRow": 356,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.23,
+      "riseM": 7.8,
+      "topWidthM": 0.07,
+      "centre": 0.08
+     }
+    },
+    "stucco": false,
+    "bands": 3,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.289,
+    "structure": {
+     "bayWidthM": 1.25,
+     "bayCentre": 0.68,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.05,
+    "foliageShare": 0.27
+   },
+   "status": "placed",
+   "type": "ggw-1740-frieze-cornice",
+   "score": 1,
+   "placement": {
+    "type": "ggw-1740-frieze-cornice",
+    "overrides": {
+     "bays": 4
+    },
+    "measuredPalette": {
+     "brick": "#b5a785",
+     "evidence": "strip 2021-01-25 span 3079-3423: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "crown": "pediment",
+    "mirror": true
+   },
+   "notes": [
+    "storeys 4: reviewer pin",
+    "crown pediment: reviewer pin (Herengracht 96: 2021-01-25 strip, a pointed pediment over the middle three axes of the entablature, 16.4 to about 17.6 m)",
+    "door reviewer pin: mirrored (Herengracht 96: 2021-01-25 strip, the door in its white surround on the right-hand axis)",
+    "no photo evidence of its own (usable photo 39 % < 50 %); placed on row evidence from 175699",
+    "no photo evidence of its own (usable photo 39 % < 50 %); placed on row evidence from 175699"
+   ],
+   "likeness": {
+    "pandId": "0363100012167714",
+    "ncc": null,
+    "nccRaw": 0.202,
+    "shiftM": [
+     0.2,
+     0.35
+    ],
+    "usable": 0.39,
+    "abstain": "usable photo 39 % < 50 %",
+    "verdict": "NO EVIDENCE",
+    "reasons": [
+     "foliage 31 % > 25 %"
+    ],
+    "wall": {
+     "photo": "#b6a887",
+     "model": "#b2a380",
+     "dL": -0.022
+    },
+    "glazing": {
+     "photo": 0.31,
+     "model": 0.54
+    },
+    "columns": {
+     "photo": 2,
+     "model": 4
+    },
+    "iou": 0.314
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012175699",
+   "address": "Herengracht 94A",
+   "builtYear": 1740,
+   "widthM": 6.61,
+   "eavesM": 16.85,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#e9cda6",
+    "wallRaw": "#c6ae8b",
+    "skyline": {
+     "eavesM": 17.95,
+     "eavesRow": 297,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.32,
+      "riseM": 4.9,
+      "topWidthM": 0.17,
+      "centre": 0.11
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.137,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 12.27,
+       "widthM": 0.95,
+       "centre": 0.24
+      },
+      {
+       "atM": 11.07,
+       "widthM": 0.95,
+       "centre": 0.89
+      },
+      {
+       "atM": 9.57,
+       "widthM": 0.97,
+       "centre": 0.52
+      }
+     ]
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0.11
+   },
+   "status": "placed",
+   "type": "ggw-1740-frieze-cornice",
+   "score": 0.82,
+   "placement": {
+    "type": "ggw-1740-frieze-cornice",
+    "measuredPalette": {
+     "brick": "#e9cda6",
+     "evidence": "strip 2021-01-25 span 3423-3687: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#b3a084"
+    },
+    "mirror": true
+   },
+   "notes": [
+    "storeys 4: reviewer pin",
+    "crown none: skyline rise 4.9 m, width 1.32 m, top 0.17 m matches no variant",
+    "palette pinned: Herengracht 94: 2021-01-25 strip in full sun reads #d7c29d and the trim-normalised wall came out orange #b8925d; the shaded pier at 3-5 m reads a buff grey-yellow, about #b3a084",
+    "door reviewer pin: mirrored (Herengracht 94: 2021-01-25 strip, the stoop door with its transom light on the right axis (x 91 m))"
+   ],
+   "likeness": {
+    "pandId": "0363100012175699",
+    "ncc": 0.297,
+    "nccRaw": 0.297,
+    "shiftM": [
+     0.3,
+     0.05
+    ],
+    "usable": 0.75,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "wall dL -0.17",
+     "glazing storey band off by 0.35 mean 0.52 vs photo 0.76"
+    ],
+    "wall": {
+     "photo": "#e4c9a5",
+     "model": "#b19e81",
+     "dL": -0.171
+    },
+    "glazing": {
+     "photo": 0.76,
+     "model": 0.52
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.596
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012175700",
+   "address": "Herengracht 92",
+   "builtYear": 1740,
+   "widthM": 6.6,
+   "eavesM": 16.57,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#847262",
+    "wallRaw": "#8e826f",
+    "skyline": {
+     "eavesM": 17.45,
+     "eavesRow": 317,
+     "confidence": 1,
+     "crown": {
+      "widthM": 0.88,
+      "riseM": 0.82,
+      "topWidthM": 0.88,
+      "centre": 0.51
+     }
+    },
+    "stucco": false,
+    "bands": 3,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.245,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 5.1,
+       "widthM": 0.93,
+       "centre": 0.56
+      }
+     ]
+    },
+    "voidShare": 0.02,
+    "foliageShare": 0.27
+   },
+   "status": "placed",
+   "type": "ggw-1740-frieze-cornice",
+   "score": 0.82,
+   "placement": {
+    "type": "ggw-1740-frieze-cornice",
+    "measuredPalette": {
+     "brick": "#847262",
+     "evidence": "strip 2021-01-25 span 3688-3952: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "crown": "crest"
+   },
+   "notes": [
+    "storeys 4: reviewer pin",
+    "crown crest: reviewer pin (Herengracht 92: 2021-01-25 strip, a carved crest over the middle of the cornice from 16.6 to 18.0 m)",
+    "door reviewer pin: as drawn (Herengracht 92: 2021-01-25 strip, the stoop door on the left axis)"
+   ],
+   "likeness": {
+    "pandId": "0363100012175700",
+    "ncc": 0.43,
+    "nccRaw": 0.43,
+    "shiftM": [
+     0.2,
+     -0.05
+    ],
+    "usable": 0.51,
+    "abstain": null,
+    "verdict": "NO EVIDENCE",
+    "reasons": [
+     "foliage 27 % > 25 %"
+    ],
+    "wall": {
+     "photo": "#817060",
+     "model": "#988574",
+     "dL": 0.084
+    },
+    "glazing": {
+     "photo": 0.38,
+     "model": 0.54
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.495
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012175701",
+   "address": "Herengracht 90A",
+   "builtYear": 1630,
+   "widthM": 5.73,
+   "eavesM": 12.89,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#b05c58",
+    "wallRaw": "#a0927e",
+    "skyline": {
+     "eavesM": 16.35,
+     "eavesRow": 361,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.9,
+      "riseM": 1.15,
+      "topWidthM": 1.45,
+      "centre": 0.59
+     }
+    },
+    "stucco": false,
+    "bands": 9,
+    "columns": 4,
+    "frontClass": "curtain",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.416,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6.13,
+       "widthM": 1.6,
+       "centre": 0.63
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.21
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Herengracht 90: a plaster cornice front with a shop pui and a low attic; the neck-gable type matched it on numbers only",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012169010",
+   "address": "Herengracht 88F",
+   "builtYear": 1880,
+   "widthM": 7.14,
+   "eavesM": 13.54,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#887460",
+    "wallRaw": "#97907b",
+    "skyline": {
+     "eavesM": 15.72,
+     "eavesRow": 386,
+     "confidence": 1,
+     "crown": {
+      "widthM": 3.42,
+      "riseM": 2.45,
+      "topWidthM": 1.18,
+      "centre": 0.53
+     }
+    },
+    "stucco": false,
+    "bands": 2,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.299,
+    "structure": {
+     "bayWidthM": 0.33,
+     "bayCentre": 0.98,
+     "balconies": true,
+     "why": "dark open axis 0.6 m at 0.39 (light 0.34): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.6,
+       "centre": 0.39,
+       "light": 0.34
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.09,
+    "foliageShare": 0.29
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Herengracht 88: a black-and-white banded front (white speklagen, block heads) under a raised neck; no type draws the banding",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012175692",
+   "address": "Herengracht 86",
+   "builtYear": 1994,
+   "widthM": 4.99,
+   "eavesM": 10.74,
+   "storeys3dbag": 4,
+   "bagBay": {
+    "fromM": 1.92,
+    "toM": 1.92,
+    "depthM": 0.26,
+    "centre": 0.385,
+    "lineRD": [
+     [
+      121103.20256250001,
+      487774.9365
+     ],
+     [
+      121104.9585625,
+      487777.4655
+     ]
+    ]
+   },
+   "strip": {
+    "wall": "#f8d79f",
+    "wallRaw": "#f6e2a6",
+    "skyline": {
+     "eavesM": 15.13,
+     "eavesRow": 410,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.23,
+      "riseM": 2.8,
+      "topWidthM": 0.03,
+      "centre": 0.63
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.213,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 4.6 m at 0.5 (light 0.25): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 4.6,
+       "centre": 0.5,
+       "light": 0.25
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.07,
+    "foliageShare": 0.23
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best ggw-1700-neck-bell-gable: built 1994, type 1600-1880)",
+   "best": {
+    "type": "ggw-1700-neck-bell-gable",
+    "score": 0,
+    "veto": [
+     "built 1994, type 1600-1880"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 10.74 m = 4 storeys of 2.69 m vs the type's 2.75 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 3.8 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.201 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012175702",
+   "address": "Herengracht 84",
+   "builtYear": 1615,
+   "widthM": 5.57,
+   "eavesM": 10.57,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#706358",
+    "wallRaw": "#877c6d",
+    "skyline": {
+     "eavesM": 15.88,
+     "eavesRow": 380,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2,
+      "riseM": 7,
+      "topWidthM": 0.03,
+      "centre": 0.41
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.242,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.06,
+    "foliageShare": 0.23
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Herengracht 84: a step gable with white speklagen (cw-heren-175702 is its bespoke refit); no step-gable type",
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

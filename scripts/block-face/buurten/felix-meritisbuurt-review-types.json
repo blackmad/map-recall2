@@ -1,0 +1,117 @@
+{
+ "note": "Type, mirror pins from the strips (blockFace/reviewCrowns.ts).",
+ "reviewed": "2026-11-10 (lane belt-gg-west, from the strips)",
+ "pins": [
+  {
+   "face": "keizersgracht-240-312",
+   "types": [
+    "ggw-1760-plain-cornice"
+   ],
+   "pands": [
+    "0363100012169386"
+   ],
+   "reason": "Keizersgracht 258: a plain white cornice over three upper rows, no attic frieze (2021-01-22 strip); ground and three upper rows",
+   "accept": true,
+   "storeys": 4
+  },
+  {
+   "face": "keizersgracht-240-312",
+   "types": [
+    "ggw-1700-neck-bell-gable"
+   ],
+   "pands": [
+    "0363100012169390"
+   ],
+   "reason": "Keizersgracht 256: a neck gable with one light and carved flanks over three upper rows (2021-01-22 strip); ground and three upper rows; the ground shows a house door and two tall windows, not a shop",
+   "accept": true,
+   "storeys": 4,
+   "houseGround": true
+  },
+  {
+   "face": "keizersgracht-240-312",
+   "types": [
+    "ggw-1700-neck-bell-gable"
+   ],
+   "pands": [
+    "0363100012169444"
+   ],
+   "reason": "Keizersgracht 254: a raised neck gable with a round cap, cream paint (2021-01-22 strip); ground and three upper rows",
+   "accept": true,
+   "storeys": 4
+  },
+  {
+   "face": "keizersgracht-240-312",
+   "types": [
+    "ggw-1700-neck-bell-gable"
+   ],
+   "pands": [
+    "0363100012169114"
+   ],
+   "reason": "Keizersgracht 250: a neck gable over three upper rows (2021-01-22 strip); ground and three upper rows",
+   "accept": true,
+   "storeys": 4
+  },
+  {
+   "face": "keizersgracht-240-312",
+   "types": [
+    "ggw-1760-plain-cornice"
+   ],
+   "pands": [
+    "0363100012169387"
+   ],
+   "reason": "Keizersgracht 248: a white stucco front under a plain cornice (2021-01-22 strip); ground and three upper rows",
+   "accept": true,
+   "storeys": 4
+  },
+  {
+   "face": "keizersgracht-240-312",
+   "types": [
+    "ggw-1740-crest-attic"
+   ],
+   "pands": [
+    "0363100012169380"
+   ],
+   "reason": "Keizersgracht 246: an attic with dark lights under a carved crest (twin of 244) (2021-01-22 strip); ground and three upper rows",
+   "accept": true,
+   "storeys": 4
+  },
+  {
+   "face": "keizersgracht-240-312",
+   "types": [
+    "ggw-1740-crest-attic"
+   ],
+   "pands": [
+    "0363100012169108"
+   ],
+   "reason": "Keizersgracht 244: an attic with dark lights under a carved crest (twin of 246) (2021-01-22 strip); ground and three upper rows",
+   "accept": true,
+   "storeys": 4
+  },
+  {
+   "face": "keizersgracht-240-312",
+   "types": [
+    "ggw-1700-neck-bell-gable"
+   ],
+   "pands": [
+    "0363100012169118"
+   ],
+   "reason": "Keizersgracht 242: a neck gable over three upper rows (2021-01-22 strip); ground and three upper rows",
+   "accept": true,
+   "storeys": 4
+  }
+ ],
+ "mirrors": [
+  {
+   "pandId": "0363100012169390",
+   "type": "ggw-1700-neck-bell-gable",
+   "mirror": true,
+   "reason": "Keizersgracht 256: the door in its white surround on the right axis"
+  },
+  {
+   "pandId": "0363100012169108",
+   "type": "ggw-1740-crest-attic",
+   "mirror": true,
+   "reason": "Keizersgracht 244: the door in its white pilaster surround on the right axis, mirroring 246"
+  }
+ ]
+}

@@ -1,0 +1,186 @@
+{
+ "schemaVersion": 1,
+ "kind": "house-type",
+ "id": "ggw-1740-frieze-cornice",
+ "district": "grachtengordel-west",
+ "description": "Canal-belt cornice house of the 18th c. (lijstgevel; Herengracht 92-108 west side): a 6-9 m front of brick (natural buff, brown, or painted dark grey-brown) over a souterrain and a stoop, a tall bel-etage and three diminishing upper storeys of three axes of white-framed 2-over-2 sashes with white sills, crowned by a deep white entablature (about 2.3 m) whose frieze holds one dark attic light per axis under a moulded cap",
+ "fit": {
+  "widthM": [
+   5.6,
+   13.0
+  ],
+  "storeys": [
+   3,
+   4
+  ]
+ },
+ "match": {
+  "years": [
+   1600,
+   1880
+  ],
+  "yearSlack": 0,
+  "eavesM": [
+   12.0,
+   18.5
+  ],
+  "stucco": false,
+  "materialVeto": true,
+  "baysByWidth": [
+   {
+    "maxWidthM": 7.6,
+    "bays": 3
+   },
+   {
+    "maxWidthM": 9.8,
+    "bays": 4
+   },
+   {
+    "maxWidthM": 99,
+    "bays": 5
+   }
+  ],
+  "crowns": {
+   "none": {
+    "none": true
+   },
+   "crest": {
+    "riseM": [
+     0.5,
+     2.2
+    ],
+    "topWidthM": [
+     0.6,
+     4.0
+    ]
+   }
+  },
+  "note": "Herengracht 92 (175700) and 94 (175699), 2021-01-25 strip at 40 px/m: eaves 16.6-16.9 m (3DBAG), entablature foot 14.2 m; Herengracht 92 carries a carved crest over the cornice to 18.0 m (crown `crest`). BAG years are 1630-1740 (the cores), the fronts are 18th-c. refacings, so the years are wide and the strip decides. No crownMatch: canal-side trees reach over every cornice on the winter strips and the skyline reads branches as crowns (Herengracht 94: rise 4.9 m); the crest variant is pinned per pand (review-crowns)",
+  "mirrorForDoor": "left"
+ },
+ "body": {
+  "storeys": 4,
+  "bays": 3,
+  "storeyHeights": [
+   2.1,
+   1.6,
+   1.39,
+   1.37
+  ],
+  "windows": "sash",
+  "windowSurround": "sill",
+  "windowHeights": [
+   0.82,
+   0.79,
+   0.68,
+   0.65
+  ],
+  "headLines": [
+   0.875,
+   0.885,
+   0.81,
+   0.81
+  ],
+  "windowShare": 0.6,
+  "cornice": "frieze",
+  "entablature": {
+   "rise": 2.3,
+   "cap": 0.6,
+   "frieze": "trim",
+   "capDepth": 0.45,
+   "architrave": 0.12
+  },
+  "friezeVents": {
+   "span": 1.1,
+   "rise": 0.45,
+   "sill": 0.65,
+   "light": true
+  }
+ },
+ "crowns": {
+  "none": {
+   "gable": "cornice",
+   "note": "entablature only (Herengracht 94, 175699)"
+  },
+  "crest": {
+   "gable": "cornice",
+   "gableOrnament": {
+    "gablet": "crest"
+   },
+   "note": "a carved crest over the middle of the cornice (Herengracht 92, 175700: 16.6-18.0 m)"
+  },
+  "pediment": {
+   "gable": "cornice",
+   "gableOrnament": {
+    "gablet": "pediment"
+   },
+   "note": "a pointed pediment standing on the middle of the cornice (Herengracht 96, 167714)"
+  }
+ },
+ "grounds": {
+  "stoop-door-left": {
+   "doorBay": 0,
+   "basement": "stoop-and-windows",
+   "souterrain": true,
+   "note": "souterrain to about 1.9 m, the house door on the bel-etage up a stoop on the left axis (Herengracht 92); a door on the right axis is mirrored (Herengracht 94). The souterrain takes the default weight 1 against the storeys' 2.1/1.6/1.39/1.37 (1.9 m of 16.6 m on Herengracht 92), so a shop ground without a souterrain keeps a valid list"
+  }
+ },
+ "palettes": {
+  "dark-painted-brick": {
+   "brick": "#55473f",
+   "frame": "white-painted",
+   "door": "#26302a",
+   "stone": "#ebe8df",
+   "cornice": "#ebe8df",
+   "stoneMaterial": "painted"
+  },
+  "buff-brick": {
+   "brick": "#a48f7a",
+   "frame": "white-painted",
+   "door": "#26302a",
+   "stone": "#ebe8df",
+   "cornice": "#ebe8df",
+   "stoneMaterial": "painted"
+  }
+ },
+ "roof": {
+  "material": "red-tile",
+  "squareSaddle": true
+ },
+ "rhythm": {
+  "bays": "3 axes (4 over 7.6 m, 5 over 9.8 m: the double-wide Herengracht fronts)",
+  "identicalBays": "every upper storey alike",
+  "windowsPerStorey": "bel-etage: door + 2 windows | upper: 3",
+  "symmetry": "symmetric above the bel-etage",
+  "groundFloor": "a stoop to the bel-etage door, souterrain lights under it",
+  "signage": "none",
+  "roofline": "a deep white entablature with one attic light per axis, sometimes a carved crest",
+  "photoRows": [
+   1,
+   3,
+   3,
+   3,
+   3
+  ],
+  "photoGroundRows": 1,
+  "photoGables": 0,
+  "schemaLimits": [
+   "the cornice consoles between the attic lights are drawn as plain entablature",
+   "the door surround (pilasters, transom light) is drawn as a plain door with the window over it",
+   "the stoop's iron railing is not drawn"
+  ]
+ },
+ "evidence": [
+  {
+   "face": "herengracht-84-148",
+   "pands": [
+    "175699",
+    "175700"
+   ],
+   "citation": "strip.jpg 2021-01-25 gridded at 2x (grid-crop.ts 3423-3953): door sills 2.0-2.3 m; bel-etage windows 2.0-5.4 m; s1 6.2-8.6; s2 9.3-11.1; s3 12.0-13.7; white entablature 14.2 m to the cap at 16.3-16.6 m with three attic lights 1.1 x 0.45 m at 14.85-15.3 m; windows 1.3 m wide, 2-over-2 sashes in white frames"
+  }
+ ],
+ "notes": [
+  "Roof: the quay camera (about 2 m up, 5-30 m off) sees no roof face over a 2.3 m entablature, so the front gives no roof form; the 3DBAG-capped attic is kept. A front hip (`hip: front`, 50 deg) drew a pyramid over the cornice on Herengracht 96 that the strip never shows (tried 2026-11-10, reverted)."
+ ]
+}

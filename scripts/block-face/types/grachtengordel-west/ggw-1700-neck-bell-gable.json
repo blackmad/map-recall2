@@ -1,0 +1,168 @@
+{
+ "schemaVersion": 1,
+ "kind": "house-type",
+ "id": "ggw-1700-neck-bell-gable",
+ "district": "grachtengordel-west",
+ "description": "Canal-belt gable houses of the late 17th-18th c. (Herengracht 251, 261; Keizersgracht and Prinsengracht narrow fronts): 4.2-6.6 m fronts of dark brown brick (often painted), a ground storey (house door or a white timber shop pui) and three or four upper storeys of two or three axes of white-framed sashes with white sills, under a neck or bell gable rising 3-4.5 m over the gable foot with one attic light and a hoist beam",
+ "fit": {
+  "widthM": [
+   4.2,
+   6.8
+  ],
+  "storeys": [
+   4,
+   5
+  ]
+ },
+ "match": {
+  "years": [
+   1600,
+   1880
+  ],
+  "yearSlack": 0,
+  "eavesM": [
+   10.5,
+   17.0
+  ],
+  "roof": "pitched",
+  "stucco": false,
+  "materialVeto": true,
+  "baysByWidth": [
+   {
+    "maxWidthM": 4.6,
+    "bays": 2
+   },
+   {
+    "maxWidthM": 99,
+    "bays": 3
+   }
+  ],
+  "crowns": {
+   "neck": {
+    "riseM": [
+     2.5,
+     6.0
+    ],
+    "topWidthM": [
+     0.9,
+     3.0
+    ]
+   },
+   "bell": {
+    "riseM": [
+     2.5,
+     6.0
+    ],
+    "topWidthM": [
+     0.2,
+     0.9
+    ]
+   }
+  },
+  "note": "Herengracht 251 (171304) and 261 (177169), 2021-01-22 strip at 40 px/m: 251 gable foot 15.6 m, bell top 20.0 m over a ground and four upper storeys; 261 gable foot 12.9 m, bell top 17.0 m, ground storey to 4.8 m. BAG years 1640-1741 (the cores); the skyline crown decides neck vs bell (crownMatch). No crownMatch: canal trees reach over the gables on the winter strips (Keizersgracht 250: skyline rise 8.2 m); the crown is pinned per pand",
+  "mirrorForDoor": "left"
+ },
+ "body": {
+  "storeys": 5,
+  "bays": 3,
+  "storeyHeights": [
+   4.6,
+   3.0,
+   2.7,
+   2.6,
+   2.3
+  ],
+  "windows": "sash",
+  "windowSurround": "sill",
+  "windowHeights": [
+   0.62,
+   0.74,
+   0.74,
+   0.72,
+   0.72
+  ],
+  "headLines": [
+   0.85,
+   0.86,
+   0.86,
+   0.84,
+   0.84
+  ],
+  "windowShare": 0.6,
+  "cornice": "none"
+ },
+ "crowns": {
+  "neck": {
+   "gable": "neck",
+   "crownRise": 1.05,
+   "atticWindows": 1,
+   "hoist": true,
+   "note": "a neck gable with one attic light and the hoist beam over it; Keizersgracht 256 (169390) on the 2021-01-22 strip: neck 3.0 m over the gable foot (crownRise 1.05 upper storeys)"
+  },
+  "bell": {
+   "gable": "bell",
+   "crownRise": 1.5,
+   "atticWindows": 1,
+   "note": "Herengracht 251 (171304): a bell gable 15.6-20.0 m with one attic light 16.7-17.8 m"
+  },
+  "low-bell": {
+   "gable": "bell",
+   "crownRise": 0.75,
+   "atticWindows": 1,
+   "note": "Keizersgracht 254 (169444), 2021-01-22 strip: a broad raised bell with a round cap only about 2 m over the gable foot"
+  }
+ },
+ "grounds": {
+  "door-left": {
+   "doorBay": 0,
+   "basement": "none",
+   "note": "house door on the left axis; a pand whose door reads on the right is mirrored (mirrorForDoor), so a two-axis front keeps a valid door bay"
+  }
+ },
+ "palettes": {
+  "dark-brick-canal": {
+   "brick": "#4e3a33",
+   "frame": "white-painted",
+   "door": "#26302a",
+   "stone": "#ebe8df",
+   "cornice": "#ebe8df",
+   "stoneMaterial": "painted"
+  }
+ },
+ "roof": {
+  "material": "red-tile",
+  "squareSaddle": true
+ },
+ "rhythm": {
+  "bays": "2 axes under 4.6 m, else 3",
+  "identicalBays": "every upper storey alike",
+  "windowsPerStorey": "ground: door + window(s) | upper: 2 or 3",
+  "symmetry": "symmetric above the ground",
+  "groundFloor": "a house door and windows, or a small shop",
+  "signage": "per shop",
+  "roofline": "neck or bell gable with one attic light and a hoist beam",
+  "photoRows": [
+   1,
+   3,
+   3,
+   3,
+   3
+  ],
+  "photoGroundRows": 1,
+  "photoGables": 1,
+  "schemaLimits": [
+   "the sandstone claw pieces and cap ornaments are drawn only where gableOrnament says so (not in this type)",
+   "the white timber shop pui of Herengracht 261 is the auto-placed shopfront"
+  ]
+ },
+ "evidence": [
+  {
+   "face": "herengracht-245-261",
+   "pands": [
+    "171304",
+    "177169"
+   ],
+   "citation": "strip.jpg 2021-01-22 gridded at 2x (grid-crop.ts 598-798, 2463-2673): 251 rows 5.5-7.8, 8.3-10.5, 10.9-13.0, 13.6-15.5 m, bell 15.6-20.0 m with an attic light 16.7-17.8 m; 261 rows 5.3-6.9, 7.2-9.0, 9.5-11.2 m, bell foot 12.9 m, top 17.0 m"
+  }
+ ]
+}
