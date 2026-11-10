@@ -50,6 +50,7 @@ for (const mode of ['boat', 'car'] as const) {
     await startFreeRide(page, mode);
     expect(await placeAt(page, WESTERMARKT)).toBe(true);
     await page.waitForTimeout(1500);
+    if (process.env.S5_SHOT) await page.screenshot({ path: `${process.env.S5_SHOT}-${info.project.name}-${label}.png` });
     const result = await page.evaluate(() => {
       const g = (window as any).canalRecallGame;
       const l = g.osmLoader;
