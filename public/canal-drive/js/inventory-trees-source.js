@@ -13,6 +13,7 @@ import {RebuildCoalescer,extrasRebuildSync} from '../../../src/canalRecall/rende
 import {treeRebuildGap} from '../../../src/canalRecall/engine/arrivalPace.ts';
 import {isAerialView} from '../../../src/canalRecall/rendererShared/aerialView.ts';
 import {TreeInstanceCache,groupOf,treesIncrementalFlag} from '../../../src/canalRecall/rendererShared/treeInstances.ts';
+import {TREE_FADE_MS,treeFadeFlag,fadeClock,diffGroup,leavingArrays,patchTreeFadeMaterial,fadeGeometry,releaseFadeGeometry} from '../../../src/canalRecall/rendererShared/treeFade.ts';
 const {THREE} = window.CanalRecallThree;
 const MIN_ZOOM = 15.5;
 const BUDGET = 12;
@@ -66,6 +67,9 @@ export class InventoryTrees {
     // twins without the culling, to tell the two halves apart in a pixel A/B.
     this.cullOn=!!this.sharedFrame&&treeCullFlag();this.cullTwinOnly=new URLSearchParams(location.search).get('treeCull')==='twin';this.culls=[];this.clipFromLocal=new THREE.Matrix4();this.cullFrustum=new THREE.Frustum();
     this.scene=new THREE.Group();
+    // `?treeFade` (lane P5 #332, rendererShared/treeFade.ts): trees a rebuild adds dissolve in, trees it drops dissolve
+    // out on a leaving mesh; kept trees are untouched. Off (`=0`, or `?popFade=0`): the one-frame swap as before.
+    this.fadeOn=!!this.sharedFrame&&treeFadeFlag();this.fadeNow={value:fadeClock()};this.leaving=[];this.fadeUntil=0;this.debugFade={rebuilds:0,entered:0,kept:0,left:0};
     this.origin=maplibregl.MercatorCoordinate.fromLngLat([4.9,52.37],0);
     this.scale=this.origin.meterInMercatorCoordinateUnits();
     this.transform=new THREE.Matrix4().makeTranslation(this.origin.x,this.origin.y,this.origin.z).scale(new THREE.Vector3(this.scale,-this.scale,this.scale));
@@ -73,7 +77,8 @@ export class InventoryTrees {
       root:this.scene,
       mercatorFromLocal:()=>this.transform.elements,
       beforeRender:ctx=>{
-        const on=this.enabled&&this.ready&&ctx.zoom>=MIN_ZOOM&&this.meshes.length>0;
+        if(this.fadeOn)this.stepFades();
+        const on=this.enabled&&this.ready&&ctx.zoom>=MIN_ZOOM&&(this.meshes.length>0||this.leaving.length>0);
         // Only the instances on screen are drawn (rendererShared/instanceCull.ts); the shadow twins keep every one.
         if(on&&this.culls.length&&!this.cullTwinOnly){this.clipFromLocal.multiplyMatrices(ctx.clipFromWorld,ctx.worldFromMercator).multiply(this.transform);for(const c of this.culls)c.update(this.clipFromLocal,this.cullFrustum);}
         return on;
@@ -85,7 +90,7 @@ export class InventoryTrees {
   remove() {
     this._unregister?.();this._unregister=null;
     this.generation++;this.enabled=false;this.ready=false;
-    this.clear();this.map.off('moveend',this.move);
+    this.clear();this.flushFades();this.map.off('moveend',this.move);
     for(const geometry of this.geometries.values())geometry.dispose();
     for(const material of this.materials.values())material.dispose();
     this.geometries.clear();this.materials.clear();
@@ -120,10 +125,10 @@ export class InventoryTrees {
   }
   clear() {
     for (const c of this.pending.values()) c.abort();
-    this.pending.clear();this.tiles.clear();this.queue=[];this.residency.invalidate();this.rebuilds.cancel();this.disposeMeshes();
+    this.pending.clear();this.tiles.clear();this.queue=[];this.residency.invalidate();this.rebuilds.cancel();this.disposeMeshes();this.flushFades();
   }
   disposeMeshes() {
-    for(const m of this.meshes){this.scene.remove(m);m.dispose?.();}
+    for(const m of this.meshes){this.scene.remove(m);m.dispose?.();if(m.geometry?.userData?.treeFadeShared)releaseFadeGeometry(m.geometry);}
     for(const c of this.culls)if(c.shadow){this.scene.remove(c.shadow);c.shadow.dispose?.();}
     this.meshes=[];this.culls=[];this.debugTrees=0;
   }
@@ -180,7 +185,7 @@ export class InventoryTrees {
   }
   rebuild() {
     if(this.incremental!=='off'&&(this.incremental==='all'||this.aerial()))return this.rebuildIncremental();
-    this.disposeMeshes();
+    this.beginFade();this.disposeMeshes();
     const b=this.residency.built(crownBounds(this.camera),this.buildKey()),groups=new Map();let trees=0,authoredTrees=0;
     const archetypes=new Set();
     const append=(key,item)=>{if(!groups.has(key))groups.set(key,[]);groups.get(key).push(item);};
@@ -204,6 +209,7 @@ export class InventoryTrees {
       });
     });
     this.debugRoses=roses;this.debugRoseTriangles=roses*20;
+    this.endFade();
     this.debugTrees=trees;this.debugAuthoredTrees=authoredTrees;this.debugTiles=this.tiles.size;this.debugArchetypes=[...archetypes];this.debugDraws=this.meshes.length;this.setTheme(this.theme);
   }
   aerial() {try{const c=this.camera.center();return isAerialView(this.camera.zoom(),this.camera.pitch(),c.lat);}catch(_){return false;}}
@@ -235,7 +241,7 @@ export class InventoryTrees {
   }
   // The incremental rebuild (`?treesIncremental=1`): the same meshes, from per-tile compiled arrays.
   rebuildIncremental() {
-    this.disposeMeshes();
+    this.beginFade();this.disposeMeshes();
     const b=this.residency.built(crownBounds(this.camera),this.buildKey());
     const sources=[...this.tiles.values(),...(this.allotmentCanopyEnabled?[allotmentCanopyTrees]:[])];
     const roseItems=[];
@@ -245,10 +251,53 @@ export class InventoryTrees {
     const z0=this.groundBase?(lng,lat)=>(this.groundBase([lng,lat])??0)-.05:null;
     const a=this.instanceCache.assemble(sources,this.allotmentCanopyEnabled?'canopy':'native',this.treeEmit,b,z0,this.groundRevision,roseItems.length?[groupOf('rose-bush',roseItems)]:[]);
     for(const g of a.groups)this.addMesh(g.key,g.count,m=>{m.instanceMatrix.array.set(g.matrices);m.instanceColor=new THREE.InstancedBufferAttribute(g.colours,3);});
-    this.assembleStats=a.stats;
+    this.assembleStats=a.stats;this.endFade();
     this.debugRoses=roseItems.length;this.debugRoseTriangles=roseItems.length*20;
     this.debugTrees=a.trees;this.debugAuthoredTrees=a.authoredTrees;this.debugTiles=this.tiles.size;this.debugArchetypes=a.archetypes;this.debugDraws=this.meshes.length;this.setTheme(this.theme);
   }
+  // Lane P5 (#332): the previous build's full arrays per group, taken before its meshes go.
+  beginFade() {
+    if(!this.fadeOn){this.fadePrev=null;return;}
+    const prev=new Map();
+    for(const m of this.meshes){
+      const c=this.culls.find(x=>x.mesh===m),full=c?.full();
+      prev.set(m.userData.groupKey,{matrices:full?full.matrices:m.instanceMatrix.array,colours:full?full.colours:(m.instanceColor?.array??null),fades:full?(full.extras.treeFade??null):(m.geometry.attributes.treeFade?.array??null),count:full?full.matrices.length/16:m.count,geometryKey:m.userData.geometryKey,material:m.material,wood:m.userData.wood});
+    }
+    this.fadePrev=prev;this.fadeLeft=new Map();this.fadeT=fadeClock();this.fadeTally={entered:0,kept:0,left:0};
+  }
+  // Give `m` its own fade attribute: new trees enter now, kept ones keep any running fade-in.
+  fadeMesh(m,key) {
+    const prev=this.fadePrev.get(key)??null,d=diffGroup(prev,m.instanceMatrix.array,m.count,this.fadeT,TREE_FADE_MS);
+    m.geometry=fadeGeometry(THREE,m.geometry,d.fades);
+    this.fadeTally.entered+=d.entered;this.fadeTally.kept+=d.kept;
+    if(prev)this.fadeLeft.set(key,d.leaving);
+  }
+  // Trees the new build dropped are drawn once more, dissolving out, then leave.
+  endFade() {
+    const prev=this.fadePrev;this.fadePrev=null;if(!prev)return;
+    const now=this.fadeT;
+    for(const [key,g] of prev){
+      const leaving=this.fadeLeft.get(key)??[...Array(g.count).keys()].filter(i=>!(g.fades&&g.fades[i]<0));
+      if(!leaving.length)continue;
+      const a=leavingArrays(g,leaving,now),shared=this.geometries.get(g.geometryKey);if(!shared)continue;
+      const m=new THREE.InstancedMesh(fadeGeometry(THREE,shared,a.fades),g.material,leaving.length);
+      m.instanceMatrix.array.set(a.matrices);if(a.colours)m.instanceColor=new THREE.InstancedBufferAttribute(a.colours,3);
+      m.frustumCulled=false;m.castShadow=false;m.receiveShadow=!!this.sharedFrame;m.userData.wood=g.wood;m.userData.leaving=true;
+      this.scene.add(m);this.leaving.push({mesh:m,end:performance.now()+TREE_FADE_MS+50});
+      this.fadeTally.left+=leaving.length;
+    }
+    const t=this.fadeTally;this.debugFade.rebuilds++;this.debugFade.entered+=t.entered;this.debugFade.kept+=t.kept;this.debugFade.left+=t.left;
+    this.lastFade={dissolved:true,entered:t.entered,left:t.left,kept:t.kept};
+    if(t.entered||t.left)this.fadeUntil=performance.now()+TREE_FADE_MS+50;
+    this.map.triggerRepaint();
+  }
+  stepFades(now=performance.now()) {
+    this.fadeNow.value=fadeClock(now);
+    if(this.leaving.length){const keep=[];for(const l of this.leaving){if(now<l.end)keep.push(l);else this.dropLeaving(l.mesh);}this.leaving=keep;}
+    if(this.leaving.length||now<this.fadeUntil)this.map.triggerRepaint();
+  }
+  dropLeaving(m){this.scene.remove(m);m.dispose?.();releaseFadeGeometry(m.geometry);}
+  flushFades(){for(const l of this.leaving??[])this.dropLeaving(l.mesh);this.leaving=[];this.fadeUntil=0;}
   // One instanced draw for group `key` of `count` instances; `fill(mesh)` writes its matrices and colours.
   addMesh(key,count,fill) {
     const wood=key==='wood',cone=key.startsWith('cone-'),rose=key.startsWith('rose-');
@@ -259,10 +308,11 @@ export class InventoryTrees {
         :rose?roseBushGeometry()
         :new THREE.IcosahedronGeometry(1,this.camera.zoom()>=18?1:0));
     const materialKey=wood?'wood':rose?'rose':'foliage';
-    if(!this.materials.has(materialKey))this.materials.set(materialKey,rose?roseBushMaterial():new THREE.MeshStandardMaterial({color:'#ffffff',roughness:.93,flatShading:true}));
+    if(!this.materials.has(materialKey)){const mat=rose?roseBushMaterial():new THREE.MeshStandardMaterial({color:'#ffffff',roughness:.93,flatShading:true});this.materials.set(materialKey,this.fadeOn?patchTreeFadeMaterial(mat,this.fadeNow,TREE_FADE_MS):mat);}
     const m=new THREE.InstancedMesh(this.geometries.get(geometryKey),this.materials.get(materialKey),count);
-    m.userData.wood=wood;
+    m.userData.wood=wood;m.userData.groupKey=key;m.userData.geometryKey=geometryKey;
     fill(m);
+    if(this.fadePrev)this.fadeMesh(m,key);
     m.instanceMatrix.needsUpdate=true;m.instanceColor.needsUpdate=true;m.frustumCulled=false;
     if(this.sharedFrame){m.castShadow=true;m.receiveShadow=true;}
     this.scene.add(m);this.meshes.push(m);
