@@ -3,7 +3,7 @@
  "street": "Jan Haringstraat",
  "library": "landlust",
  "stripDate": "2024-11-21",
- "seconds": 5.38,
+ "seconds": 7.05,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -22,7 +22,7 @@
     "0363100012071938"
    ],
    "passed": true,
-   "triangles": 3985
+   "triangles": 4347
   }
  ],
  "pands": [
@@ -260,7 +260,7 @@
      "evidence": "strip 2024-11-21 span 547-802: trim-normalised wall (buildingRecipe/measureFacade.ts)"
     },
     "paletteOverrides": {
-     "brick": "#69563d"
+     "brick": "#564632"
     }
    },
    "notes": [
@@ -270,8 +270,8 @@
    ],
    "likeness": {
     "pandId": "0363100012068528",
-    "ncc": 0.753,
-    "nccRaw": 0.753,
+    "ncc": 0.752,
+    "nccRaw": 0.752,
     "shiftM": [
      -0.2,
      -0.1
@@ -280,28 +280,28 @@
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.33 mean 0.38 vs photo 0.13",
+     "glazing storey band off by 0.35 mean 0.37 vs photo 0.13",
      "window shape none vs photo tall",
      "columns none vs photo 2"
     ],
     "wall": {
      "photo": "#6b583c",
-     "model": "#856d4d",
-     "dL": 0.084
+     "model": "#745f43",
+     "dL": 0.031
     },
     "glazing": {
      "photo": 0.13,
-     "model": 0.38
+     "model": 0.37
     },
     "columns": {
      "photo": 2,
      "model": null
     },
-    "iou": 0.396
+    "iou": 0.412
    },
    "challengers": {
-    "landlust-1934-tile-pair~m": 0.753,
-    "landlust-1934-tile-pair": 0.217
+    "landlust-1934-tile-pair~m": 0.752,
+    "landlust-1934-tile-pair": 0.225
    }
   },
   {
@@ -360,7 +360,7 @@
      "evidence": "strip 2024-11-21 span 803-1042: trim-normalised wall (buildingRecipe/measureFacade.ts)"
     },
     "paletteOverrides": {
-     "brick": "#69563d"
+     "brick": "#564632"
     }
    },
    "notes": [
@@ -370,8 +370,8 @@
    ],
    "likeness": {
     "pandId": "0363100012072687",
-    "ncc": 0.405,
-    "nccRaw": 0.405,
+    "ncc": 0.403,
+    "nccRaw": 0.403,
     "shiftM": [
      -0.4,
      -0.1
@@ -380,28 +380,28 @@
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.24 mean 0.38 vs photo 0.27",
+     "glazing storey band off by 0.24",
      "window shape none vs photo tall",
      "columns none vs photo 3"
     ],
     "wall": {
      "photo": "#7c6546",
-     "model": "#856d4d",
-     "dL": 0.031
+     "model": "#745f43",
+     "dL": -0.022
     },
     "glazing": {
      "photo": 0.27,
-     "model": 0.38
+     "model": 0.36
     },
     "columns": {
      "photo": 3,
      "model": null
     },
-    "iou": 0.321
+    "iou": 0.319
    },
    "challengers": {
-    "landlust-1934-tile-pair": 0.405,
-    "landlust-1934-tile-pair~m": 0.375
+    "landlust-1934-tile-pair": 0.403,
+    "landlust-1934-tile-pair~m": 0.371
    }
   },
   {
@@ -465,7 +465,7 @@
      "evidence": "strip 2024-11-21 span 1042-1289: trim-normalised wall (buildingRecipe/measureFacade.ts)"
     },
     "paletteOverrides": {
-     "brick": "#69563d"
+     "brick": "#564632"
     }
    },
    "notes": [
@@ -475,8 +475,8 @@
    ],
    "likeness": {
     "pandId": "0363100012071938",
-    "ncc": 0.623,
-    "nccRaw": 0.623,
+    "ncc": 0.619,
+    "nccRaw": 0.619,
     "shiftM": [
      -0.1,
      -0.05
@@ -489,22 +489,22 @@
     ],
     "wall": {
      "photo": "#746043",
-     "model": "#856d4d",
-     "dL": 0.053
+     "model": "#745f43",
+     "dL": 0
     },
     "glazing": {
      "photo": 0.37,
-     "model": 0.39
+     "model": 0.37
     },
     "columns": {
      "photo": 3,
      "model": 2
     },
-    "iou": 0.568
+    "iou": 0.554
    },
    "challengers": {
-    "landlust-1934-tile-pair": 0.623,
-    "landlust-1934-tile-pair~m": 0.257
+    "landlust-1934-tile-pair": 0.619,
+    "landlust-1934-tile-pair~m": 0.259
    }
   },
   {

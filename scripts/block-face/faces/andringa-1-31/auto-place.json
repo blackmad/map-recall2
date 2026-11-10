@@ -3,7 +3,7 @@
  "street": "Joris van Andringastraat",
  "library": "landlust",
  "stripDate": "2024-11-21",
- "seconds": 5.61,
+ "seconds": 7.77,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -20,8 +20,8 @@
     "0363100012080635",
     "0363100012069920"
    ],
-   "passed": true,
-   "triangles": 3755
+   "passed": false,
+   "triangles": 5585
   }
  ],
  "pands": [
@@ -516,7 +516,7 @@
    },
    "notes": [
     "door unread",
-    "crown parapet (type default)"
+    "crown zinc-dormers (type default)"
    ],
    "likeness": {
     "pandId": "0363100012080635",
@@ -530,7 +530,7 @@
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.17 mean 0.21 vs photo 0.32",
+     "glazing storey band off by 0.17",
      "columns 6 vs photo 8"
     ],
     "wall": {
@@ -540,13 +540,13 @@
     },
     "glazing": {
      "photo": 0.32,
-     "model": 0.21
+     "model": 0.23
     },
     "columns": {
      "photo": 8,
      "model": 3
     },
-    "iou": 0.366
+    "iou": 0.358
    },
    "challengers": {
     "landlust-1934-slot-block": 0.395,
@@ -622,7 +622,7 @@
    },
    "notes": [
     "door unread",
-    "crown parapet (type default)"
+    "crown zinc-dormers (type default)"
    ],
    "likeness": {
     "pandId": "0363100012069920",
@@ -637,10 +637,9 @@
     "verdict": "FAIL",
     "reasons": [
      "wall dL +0.21",
-     "glazing storey band off by 0.31 mean 0.21 vs photo 0.36",
-     "window shape tall vs photo square",
-     "wall family unresolved (#352818 is dark and neutral, brick courses not resolved): lightness and hue judged only",
-     "columns 6 vs photo 3"
+     "glazing storey band off by 0.30 mean 0.23 vs photo 0.35",
+     "window shape square vs photo tall",
+     "wall family unresolved (#352818 is dark and neutral, brick courses not resolved): lightness and hue judged only"
     ],
     "wall": {
      "photo": "#352818",
@@ -648,14 +647,14 @@
      "dL": 0.212
     },
     "glazing": {
-     "photo": 0.36,
-     "model": 0.21
+     "photo": 0.35,
+     "model": 0.23
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.354
+    "iou": 0.359
    },
    "challengers": {
     "landlust-1934-slot-block": 0.438,

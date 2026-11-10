@@ -32,7 +32,7 @@
      "evidence": "strip 2024-11-21 span 2259-2506: trim-normalised wall (buildingRecipe/measureFacade.ts)"
     },
     "paletteOverrides": {
-     "brick": "#6c583e"
+     "brick": "#594933"
     }
    },
    "groundFloor": {
@@ -60,7 +60,7 @@
      "evidence": "strip 2024-11-21 span 2505-2753: trim-normalised wall (buildingRecipe/measureFacade.ts)"
     },
     "paletteOverrides": {
-     "brick": "#6c583e"
+     "brick": "#594933"
     }
    },
    "groundFloor": {

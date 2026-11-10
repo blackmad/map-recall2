@@ -31,8 +31,10 @@
      "brick": "#6e492b",
      "evidence": "strip 2024-11-21 span 0-252: trim-normalised wall (buildingRecipe/measureFacade.ts)"
     },
+    "crown": "party-dormer",
+    "pair": "left",
     "paletteOverrides": {
-     "brick": "#573f2b"
+     "brick": "#2b1f16"
     }
    },
    "groundFloor": {
@@ -58,10 +60,12 @@
      "brick": "#593f28",
      "evidence": "strip 2024-11-21 span 252-500: trim-normalised wall (buildingRecipe/measureFacade.ts)"
     },
+    "crown": "party-dormer",
+    "pair": "right",
+    "mirror": true,
     "paletteOverrides": {
-     "brick": "#573f2b"
-    },
-    "mirror": true
+     "brick": "#2b1f16"
+    }
    },
    "groundFloor": {
     "use": "residential",
@@ -86,8 +90,10 @@
      "brick": "#482e19",
      "evidence": "strip 2024-11-21 span 500-748: trim-normalised wall (buildingRecipe/measureFacade.ts)"
     },
+    "crown": "party-dormer",
+    "pair": "left",
     "paletteOverrides": {
-     "brick": "#573f2b"
+     "brick": "#2b1f16"
     }
    },
    "groundFloor": {
@@ -113,10 +119,12 @@
      "brick": "#3f2817",
      "evidence": "strip 2024-11-21 span 748-996: trim-normalised wall (buildingRecipe/measureFacade.ts)"
     },
+    "crown": "party-dormer",
+    "pair": "right",
+    "mirror": true,
     "paletteOverrides": {
-     "brick": "#573f2b"
-    },
-    "mirror": true
+     "brick": "#2b1f16"
+    }
    },
    "groundFloor": {
     "use": "residential",

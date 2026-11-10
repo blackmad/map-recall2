@@ -3,7 +3,7 @@
  "street": "Willem de Zwijgerlaan",
  "library": "landlust",
  "stripDate": "2024-12-17",
- "seconds": 57.74,
+ "seconds": 32.81,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -20,16 +20,16 @@
     "0363100012109779",
     "0363100012133739"
    ],
-   "passed": true,
-   "triangles": 4828
+   "passed": false,
+   "triangles": 6375
   },
   {
    "face": "zwijgerlaan-225-279-r2",
    "pands": [
     "0363100012151482"
    ],
-   "passed": true,
-   "triangles": 2487
+   "passed": false,
+   "triangles": 3165
   }
  ],
  "pands": [
@@ -275,7 +275,7 @@
    },
    "notes": [
     "door unread",
-    "crown parapet (type default)"
+    "crown zinc-dormers (type default)"
    ],
    "likeness": {
     "pandId": "0363100012109779",
@@ -289,9 +289,9 @@
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.25 mean 0.23 vs photo 0.38",
+     "glazing storey band off by 0.25 mean 0.24 vs photo 0.38",
      "window shape tall vs photo square",
-     "columns 8 vs photo 3"
+     "columns 6 vs photo 3"
     ],
     "wall": {
      "photo": "#513b27",
@@ -300,13 +300,13 @@
     },
     "glazing": {
      "photo": 0.38,
-     "model": 0.23
+     "model": 0.24
     },
     "columns": {
      "photo": 3,
-     "model": 8
+     "model": 3
     },
-    "iou": 0.391
+    "iou": 0.387
    },
    "challengers": {
     "landlust-1935-slot-block-four": 0.351,
@@ -389,7 +389,7 @@
     "mirror": true
    },
    "notes": [
-    "crown parapet (type default)",
+    "crown zinc-dormers (type default)",
     "photo decides: landlust-1935-slot-block-four~m edge NCC 0.402 vs landlust-1935-slot-block-four 0.301"
    ],
    "likeness": {
@@ -402,10 +402,10 @@
     ],
     "usable": 0.9,
     "abstain": null,
-    "verdict": "WARN",
+    "verdict": "FAIL",
     "reasons": [
-     "columns 8 vs photo 3",
-     "mask IoU 0.35 < 0.45"
+     "glazing storey band off by 0.15",
+     "columns 6 vs photo 3"
     ],
     "wall": {
      "photo": "#4e3a27",
@@ -414,13 +414,13 @@
     },
     "glazing": {
      "photo": 0.17,
-     "model": 0.23
+     "model": 0.24
     },
     "columns": {
      "photo": 3,
-     "model": 8
+     "model": 3
     },
-    "iou": 0.35
+    "iou": 0.34
    },
    "challengers": {
     "landlust-1935-slot-block-four": 0.301,
@@ -684,7 +684,7 @@
    },
    "notes": [
     "door unread",
-    "crown parapet (type default)",
+    "crown zinc-dormers (type default)",
     "lone pand: a stair block on its own: landlust-1935-slot-block-four opts in to one-house faces from 5 m (frontage 12.81 m)"
    ],
    "likeness": {
@@ -699,7 +699,7 @@
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.16 mean 0.22 vs photo 0.10",
+     "glazing storey band off by 0.18 mean 0.23 vs photo 0.10",
      "columns 6 vs photo 8"
     ],
     "wall": {
@@ -709,13 +709,13 @@
     },
     "glazing": {
      "photo": 0.1,
-     "model": 0.22
+     "model": 0.23
     },
     "columns": {
      "photo": 8,
      "model": 3
     },
-    "iou": 0.472
+    "iou": 0.44
    },
    "challengers": {
     "landlust-1935-slot-block-four": 0.309,

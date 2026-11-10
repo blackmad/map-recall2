@@ -412,6 +412,14 @@ export interface FrontIntent {
    */
   doorPairs?: boolean;
   /**
+   * A row of identical house doors side by side across a span of the front (Landlust slot blocks 1933-1937: four doors of
+   * 0.75 m in a run about 4.7 m wide under one continuous `groundCanopy` slab). `from`..`to` are fractions of the front's
+   * width, `count` doors of `leaf` metres each, evenly spread over the span. Replaces the `doorBay` door (which stays as the
+   * anchor for the portiek reveal and the mirror); the row is symmetric about its own centre and a mirrored front reverses
+   * its fractions. Absent = byte-identical.
+   */
+  doorRow?: {from: number; to: number; count: number; leaf: number};
+  /**
    * The house door is a round-arched portiek opening (Amsterdam School, Polanenstraat 229-311, Spaarndammerdijk 247-299):
    * `span` m wide (0.8..2.6), its semicircular head's crown `apex` m over the ground storey floor (1.8..4, at least
    * span / 2 + 1.2), a dark leaf with no transom. Absent = the square door with its transom, byte-identical.
@@ -1576,6 +1584,11 @@ export function validateIntent(input: unknown): CanalHouseIntent {
       if (f.doorBay === null) problems.push(`${at}.extraDoorBays: needs a doorBay`);
       else if (!Array.isArray(f.extraDoorBays) || !f.extraDoorBays.length || f.extraDoorBays.some((b, i) => !Number.isInteger(b) || b < 0 || b > bays[0] - 1 || b === f.doorBay || f.extraDoorBays!.indexOf(b) !== i)) problems.push(`${at}.extraDoorBays: distinct ground bays 0..${bays[0] - 1}, not the doorBay`);
       if (f.shopfront || f.groundFront || f.doorArch) problems.push(`${at}.extraDoorBays: not with a shopfront, ground front or doorArch`);
+    }
+    if (f.doorRow !== undefined) {
+      const r = f.doorRow as unknown as Record<string, unknown>, n = (v: unknown, a: number, b: number) => typeof v === 'number' && v >= a && v <= b;
+      if (!r || typeof r !== 'object' || Object.keys(r).some(k => !['from', 'to', 'count', 'leaf'].includes(k)) || !n(r.from, 0, 1) || !n(r.to, 0, 1) || (r.to as number) - (r.from as number) < 0.1 || !Number.isInteger(r.count) || !n(r.count, 2, 6) || !n(r.leaf, 0.6, 1.6)) problems.push(`${at}.doorRow: {from, to (fractions of the front, span >= 0.1), count 2..6, leaf 0.6..1.6 m}`);
+      if (f.doorBay === null || f.doorArch || f.shopfront || f.groundFront || f.extraDoorBays || f.doorPairs) problems.push(`${at}.doorRow: needs a doorBay and no doorArch, shopfront, groundFront, extraDoorBays or doorPairs`);
     }
     if (f.doorPairs !== undefined && (typeof f.doorPairs !== 'boolean' || f.doorBay === null || f.doorArch)) problems.push(`${at}.doorPairs: true, with a doorBay and no doorArch`);
     if (f.doorArch !== undefined) {

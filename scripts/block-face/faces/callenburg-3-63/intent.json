@@ -30,7 +30,8 @@
     "measuredPalette": {
      "brick": "#865435",
      "evidence": "strip 2024-11-21 span 0-514: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    }
+    },
+    "crown": "parapet"
    },
    "groundFloor": {
     "use": "residential",
@@ -55,6 +56,7 @@
      "brick": "#8b5a3d",
      "evidence": "strip 2024-11-21 span 514-1028: trim-normalised wall (buildingRecipe/measureFacade.ts)"
     },
+    "crown": "parapet",
     "paletteOverrides": {
      "brick": "#7a4c2f"
     }
@@ -81,7 +83,8 @@
     "measuredPalette": {
      "brick": "#7f4f34",
      "evidence": "strip 2024-11-21 span 1028-1542: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    }
+    },
+    "crown": "parapet"
    },
    "groundFloor": {
     "use": "residential",
@@ -105,7 +108,8 @@
     "measuredPalette": {
      "brick": "#845333",
      "evidence": "strip 2024-11-21 span 1542-2056: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    }
+    },
+    "crown": "parapet"
    },
    "groundFloor": {
     "use": "residential",
@@ -130,6 +134,7 @@
      "brick": "#865439",
      "evidence": "strip 2024-11-21 span 2056-2570: trim-normalised wall (buildingRecipe/measureFacade.ts)"
     },
+    "crown": "parapet",
     "paletteOverrides": {
      "brick": "#7a4c2f"
     }
@@ -157,6 +162,7 @@
      "brick": "#98613f",
      "evidence": "strip 2024-11-21 span 2570-3084: trim-normalised wall (buildingRecipe/measureFacade.ts)"
     },
+    "crown": "parapet",
     "paletteOverrides": {
      "brick": "#7a4c2f"
     }
@@ -184,6 +190,7 @@
      "brick": "#935f3e",
      "evidence": "strip 2024-11-21 span 3084-3598: trim-normalised wall (buildingRecipe/measureFacade.ts)"
     },
+    "crown": "parapet",
     "paletteOverrides": {
      "brick": "#7a4c2f"
     }
@@ -211,6 +218,7 @@
      "brick": "#9f6946",
      "evidence": "strip 2024-11-21 span 3598-4112: trim-normalised wall (buildingRecipe/measureFacade.ts)"
     },
+    "crown": "parapet",
     "paletteOverrides": {
      "brick": "#7a4c2f"
     }

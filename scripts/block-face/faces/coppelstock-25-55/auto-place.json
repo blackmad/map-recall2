@@ -3,7 +3,7 @@
  "street": "Coppelstockstraat",
  "library": "landlust",
  "stripDate": "2024-11-21",
- "seconds": 11.56,
+ "seconds": 14.44,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -26,7 +26,7 @@
     "0363100012089839"
    ],
    "passed": true,
-   "triangles": 6532
+   "triangles": 7415
   }
  ],
  "pands": [
@@ -204,7 +204,7 @@
      "evidence": "strip 2024-11-21 span 527-782: trim-normalised wall (buildingRecipe/measureFacade.ts)"
     },
     "paletteOverrides": {
-     "brick": "#6b5a46"
+     "brick": "#5a4c3b"
     }
    },
    "notes": [
@@ -214,8 +214,8 @@
    ],
    "likeness": {
     "pandId": "0363100012149193",
-    "ncc": 0.298,
-    "nccRaw": 0.298,
+    "ncc": 0.302,
+    "nccRaw": 0.302,
     "shiftM": [
      0.35,
      0.4
@@ -224,27 +224,26 @@
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "wall dL +0.16",
-     "glazing storey band off by 0.30 mean 0.36 vs photo 0.52"
+     "glazing storey band off by 0.32 mean 0.35 vs photo 0.52"
     ],
     "wall": {
      "photo": "#5b4230",
-     "model": "#857057",
-     "dL": 0.159
+     "model": "#76644d",
+     "dL": 0.11
     },
     "glazing": {
      "photo": 0.52,
-     "model": 0.36
+     "model": 0.35
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.432
+    "iou": 0.409
    },
    "challengers": {
-    "landlust-1933-three-axis-tile": 0.298,
-    "landlust-1933-three-axis-tile~m": 0.52
+    "landlust-1933-three-axis-tile": 0.302,
+    "landlust-1933-three-axis-tile~m": 0.529
    }
   },
   {
@@ -309,7 +308,7 @@
      "evidence": "strip 2024-11-21 span 782-1026: trim-normalised wall (buildingRecipe/measureFacade.ts)"
     },
     "paletteOverrides": {
-     "brick": "#6b5a46"
+     "brick": "#5a4c3b"
     },
     "mirror": true
    },
@@ -320,22 +319,20 @@
    ],
    "likeness": {
     "pandId": "0363100012066272",
-    "ncc": 0.204,
-    "nccRaw": 0.204,
+    "ncc": 0.213,
+    "nccRaw": 0.213,
     "shiftM": [
-     -0.35,
+     -0.3,
      0.25
     ],
     "usable": 0.65,
     "abstain": null,
-    "verdict": "FAIL",
-    "reasons": [
-     "wall dL +0.12"
-    ],
+    "verdict": "PASS",
+    "reasons": [],
     "wall": {
      "photo": "#664e38",
-     "model": "#857057",
-     "dL": 0.122
+     "model": "#76644d",
+     "dL": 0.073
     },
     "glazing": {
      "photo": 0.37,
@@ -348,8 +345,8 @@
     "iou": 0.465
    },
    "challengers": {
-    "landlust-1933-three-axis-tile~m": 0.204,
-    "landlust-1933-three-axis-tile": 0.468
+    "landlust-1933-three-axis-tile~m": 0.213,
+    "landlust-1933-three-axis-tile": 0.475
    }
   },
   {
@@ -419,7 +416,7 @@
      "evidence": "strip 2024-11-21 span 1026-1270: trim-normalised wall (buildingRecipe/measureFacade.ts)"
     },
     "paletteOverrides": {
-     "brick": "#6b5a46"
+     "brick": "#5a4c3b"
     }
    },
    "notes": [
@@ -429,8 +426,8 @@
    ],
    "likeness": {
     "pandId": "0363100012104481",
-    "ncc": 0.248,
-    "nccRaw": 0.248,
+    "ncc": 0.255,
+    "nccRaw": 0.255,
     "shiftM": [
      0.3,
      0.25
@@ -443,8 +440,8 @@
     ],
     "wall": {
      "photo": "#6b523b",
-     "model": "#857057",
-     "dL": 0.106
+     "model": "#76644d",
+     "dL": 0.057
     },
     "glazing": {
      "photo": 0.22,
@@ -457,8 +454,8 @@
     "iou": 0.36
    },
    "challengers": {
-    "landlust-1933-three-axis-tile": 0.248,
-    "landlust-1933-three-axis-tile~m": 0.516
+    "landlust-1933-three-axis-tile": 0.255,
+    "landlust-1933-three-axis-tile~m": 0.523
    }
   },
   {
@@ -511,7 +508,7 @@
      "evidence": "strip 2024-11-21 span 1270-1514: trim-normalised wall (buildingRecipe/measureFacade.ts)"
     },
     "paletteOverrides": {
-     "brick": "#6b5a46"
+     "brick": "#5a4c3b"
     },
     "mirror": true
    },
@@ -522,8 +519,8 @@
    ],
    "likeness": {
     "pandId": "0363100012104480",
-    "ncc": 0.252,
-    "nccRaw": 0.252,
+    "ncc": 0.254,
+    "nccRaw": 0.254,
     "shiftM": [
      -0.3,
      0.35
@@ -536,8 +533,8 @@
     ],
     "wall": {
      "photo": "#695640",
-     "model": "#857057",
-     "dL": 0.1
+     "model": "#76644d",
+     "dL": 0.051
     },
     "glazing": {
      "photo": 0.23,
@@ -547,11 +544,11 @@
      "photo": null,
      "model": 3
     },
-    "iou": 0.446
+    "iou": 0.432
    },
    "challengers": {
-    "landlust-1933-three-axis-tile~m": 0.252,
-    "landlust-1933-three-axis-tile": 0.461
+    "landlust-1933-three-axis-tile~m": 0.254,
+    "landlust-1933-three-axis-tile": 0.466
    }
   },
   {
@@ -610,7 +607,7 @@
      "evidence": "strip 2024-11-21 span 1514-1758: trim-normalised wall (buildingRecipe/measureFacade.ts)"
     },
     "paletteOverrides": {
-     "brick": "#6b5a46"
+     "brick": "#5a4c3b"
     }
    },
    "notes": [
@@ -620,8 +617,8 @@
    ],
    "likeness": {
     "pandId": "0363100012122456",
-    "ncc": 0.226,
-    "nccRaw": 0.226,
+    "ncc": 0.234,
+    "nccRaw": 0.234,
     "shiftM": [
      0.3,
      0.35
@@ -634,8 +631,8 @@
     ],
     "wall": {
      "photo": "#6d5c45",
-     "model": "#857057",
-     "dL": 0.082
+     "model": "#76644d",
+     "dL": 0.033
     },
     "glazing": {
      "photo": 0.21,
@@ -648,8 +645,8 @@
     "iou": 0.308
    },
    "challengers": {
-    "landlust-1933-three-axis-tile": 0.226,
-    "landlust-1933-three-axis-tile~m": 0.42
+    "landlust-1933-three-axis-tile": 0.234,
+    "landlust-1933-three-axis-tile~m": 0.427
    }
   },
   {
@@ -708,7 +705,7 @@
      "evidence": "strip 2024-11-21 span 1758-2002: trim-normalised wall (buildingRecipe/measureFacade.ts)"
     },
     "paletteOverrides": {
-     "brick": "#6b5a46"
+     "brick": "#5a4c3b"
     },
     "mirror": true
    },
@@ -719,8 +716,8 @@
    ],
    "likeness": {
     "pandId": "0363100012100119",
-    "ncc": 0.156,
-    "nccRaw": 0.156,
+    "ncc": 0.153,
+    "nccRaw": 0.153,
     "shiftM": [
      -0.4,
      0.25
@@ -733,8 +730,8 @@
     ],
     "wall": {
      "photo": "#725e4a",
-     "model": "#857057",
-     "dL": 0.063
+     "model": "#76644d",
+     "dL": 0.014
     },
     "glazing": {
      "photo": 0.48,
@@ -744,11 +741,11 @@
      "photo": 3,
      "model": 3
     },
-    "iou": 0.417
+    "iou": 0.412
    },
    "challengers": {
-    "landlust-1933-three-axis-tile~m": 0.156,
-    "landlust-1933-three-axis-tile": 0.443
+    "landlust-1933-three-axis-tile~m": 0.153,
+    "landlust-1933-three-axis-tile": 0.458
    }
   },
   {
@@ -802,7 +799,7 @@
      "evidence": "strip 2024-11-21 span 2002-2246: trim-normalised wall (buildingRecipe/measureFacade.ts)"
     },
     "paletteOverrides": {
-     "brick": "#6b5a46"
+     "brick": "#5a4c3b"
     }
    },
    "notes": [
@@ -812,36 +809,36 @@
    ],
    "likeness": {
     "pandId": "0363100012089839",
-    "ncc": 0.198,
-    "nccRaw": 0.198,
+    "ncc": 0.204,
+    "nccRaw": 0.204,
     "shiftM": [
      0.3,
      0.3
     ],
     "usable": 0.63,
     "abstain": null,
-    "verdict": "FAIL",
+    "verdict": "WARN",
     "reasons": [
-     "glazing  mean 0.36 vs photo 0.26"
+     "mask IoU 0.374 < 0.45"
     ],
     "wall": {
      "photo": "#705d44",
-     "model": "#857057",
-     "dL": 0.078
+     "model": "#76644d",
+     "dL": 0.029
     },
     "glazing": {
      "photo": 0.26,
-     "model": 0.36
+     "model": 0.35
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.395
+    "iou": 0.374
    },
    "challengers": {
-    "landlust-1933-three-axis-tile": 0.198,
-    "landlust-1933-three-axis-tile~m": 0.469
+    "landlust-1933-three-axis-tile": 0.204,
+    "landlust-1933-three-axis-tile~m": 0.477
    }
   },
   {
@@ -990,7 +987,7 @@
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.34 mean 0.35 vs photo 0.51"
+     "glazing storey band off by 0.36 mean 0.35 vs photo 0.51"
     ],
     "wall": {
      "photo": "#756047",
@@ -1005,7 +1002,7 @@
      "photo": 3,
      "model": 3
     },
-    "iou": 0.495,
+    "iou": 0.486,
     "footOffsetM": 0.82
    },
    "challengers": {
@@ -1050,7 +1047,7 @@
    },
    "status": "held",
    "stage": "likeness",
-   "reason": "edge NCC 0.129 < 0.15 (photo vs model body; likeness.ts FAIL: wall dL +0.15; glazing storey band off by 0.19)",
+   "reason": "edge NCC 0.129 < 0.15 (photo vs model body; likeness.ts FAIL: wall dL +0.15; glazing storey band off by 0.19 mean 0.36 vs photo 0.25)",
    "likeness": {
     "pandId": "0363100012098196",
     "ncc": 0.129,
@@ -1064,7 +1061,7 @@
     "verdict": "FAIL",
     "reasons": [
      "wall dL +0.15",
-     "glazing storey band off by 0.19"
+     "glazing storey band off by 0.19 mean 0.36 vs photo 0.25"
     ],
     "wall": {
      "photo": "#604d3b",
@@ -1073,13 +1070,13 @@
     },
     "glazing": {
      "photo": 0.25,
-     "model": 0.35
+     "model": 0.36
     },
     "columns": {
      "photo": null,
      "model": 3
     },
-    "iou": 0.318,
+    "iou": 0.313,
     "footOffsetM": 0.82
    },
    "challengers": {

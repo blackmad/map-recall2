@@ -3,7 +3,7 @@
  "street": "Jan den Haenstraat",
  "library": "landlust",
  "stripDate": "2024-11-21",
- "seconds": 10.46,
+ "seconds": 14.73,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -19,8 +19,8 @@
    "pands": [
     "0363100012140098"
    ],
-   "passed": true,
-   "triangles": 1850
+   "passed": false,
+   "triangles": 2771
   },
   {
    "face": "haen-3-31-r2",
@@ -28,8 +28,8 @@
     "0363100012140644",
     "0363100012114763"
    ],
-   "passed": true,
-   "triangles": 3704
+   "passed": false,
+   "triangles": 5541
   }
  ],
  "pands": [
@@ -96,7 +96,7 @@
     "mirror": true
    },
    "notes": [
-    "crown parapet (type default)",
+    "crown zinc-dormers (type default)",
     "photo decides: landlust-1934-slot-block~m edge NCC 0.494 vs landlust-1934-slot-block 0.415",
     "lone pand: a stair block on its own: landlust-1934-slot-block opts in to one-house faces from 5 m (frontage 12.8 m)"
    ],
@@ -112,9 +112,9 @@
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.32 mean 0.22 vs photo 0.43",
+     "glazing storey band off by 0.34 mean 0.23 vs photo 0.43",
      "window shape tall vs photo square",
-     "columns 8 vs photo 3"
+     "columns 6 vs photo 3"
     ],
     "wall": {
      "photo": "#5f3d27",
@@ -123,13 +123,13 @@
     },
     "glazing": {
      "photo": 0.43,
-     "model": 0.22
+     "model": 0.23
     },
     "columns": {
      "photo": 3,
-     "model": 8
+     "model": 3
     },
-    "iou": 0.284
+    "iou": 0.286
    },
    "challengers": {
     "landlust-1934-slot-block": 0.415,
@@ -348,7 +348,7 @@
    },
    "notes": [
     "door unread",
-    "crown parapet (type default)"
+    "crown zinc-dormers (type default)"
    ],
    "likeness": {
     "pandId": "0363100012140644",
@@ -362,7 +362,7 @@
     "abstain": null,
     "verdict": "WARN",
     "reasons": [
-     "mask IoU 0.327 < 0.45"
+     "mask IoU 0.31 < 0.45"
     ],
     "wall": {
      "photo": "#8f5c3d",
@@ -370,14 +370,14 @@
      "dL": -0.035
     },
     "glazing": {
-     "photo": 0.19,
-     "model": 0.22
+     "photo": 0.2,
+     "model": 0.23
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.327
+    "iou": 0.31
    },
    "challengers": {
     "landlust-1934-slot-block": 0.429,
@@ -451,7 +451,7 @@
    },
    "notes": [
     "door unread",
-    "crown parapet (type default)",
+    "crown zinc-dormers (type default)",
     "palette pinned: Callenburgstraat 3-63 / Haenstraat 3-31 (Opus verdict 2026-11-10): the model read #986344-#a3704e against photo #6e4a32-#714c34 (#8f5534 against #5d412d on Haen 19); one brick for the run, 60 % of the way from the model wall to the photo median"
    ],
    "likeness": {
@@ -467,7 +467,7 @@
     "verdict": "FAIL",
     "reasons": [
      "wall dL +0.13",
-     "glazing storey band off by 0.27 mean 0.21 vs photo 0.42"
+     "glazing storey band off by 0.27 mean 0.23 vs photo 0.42"
     ],
     "wall": {
      "photo": "#6a4229",
@@ -476,13 +476,13 @@
     },
     "glazing": {
      "photo": 0.42,
-     "model": 0.21
+     "model": 0.23
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.326
+    "iou": 0.338
    },
    "challengers": {
     "landlust-1934-slot-block": 0.382,

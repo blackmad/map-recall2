@@ -3,7 +3,7 @@
  "street": "Jasper Leijnsenstraat",
  "library": "landlust",
  "stripDate": "2024-11-21",
- "seconds": 11.27,
+ "seconds": 12.55,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -25,7 +25,7 @@
     "0363100012081763"
    ],
    "passed": true,
-   "triangles": 7678
+   "triangles": 8412
   },
   {
    "face": "leijnsen-2-30-r2",
@@ -34,7 +34,7 @@
     "0363100012117865"
    ],
    "passed": true,
-   "triangles": 2568
+   "triangles": 2818
   }
  ],
  "pands": [
@@ -207,7 +207,7 @@
      "evidence": "strip 2024-11-21 span 527-776: trim-normalised wall (buildingRecipe/measureFacade.ts)"
     },
     "paletteOverrides": {
-     "brick": "#6c583e"
+     "brick": "#594933"
     }
    },
    "notes": [
@@ -217,11 +217,11 @@
    ],
    "likeness": {
     "pandId": "0363100012064868",
-    "ncc": 0.579,
-    "nccRaw": 0.579,
+    "ncc": 0.569,
+    "nccRaw": 0.569,
     "shiftM": [
      -0.1,
-     0.25
+     0.3
     ],
     "usable": 0.77,
     "abstain": null,
@@ -232,8 +232,8 @@
     ],
     "wall": {
      "photo": "#796345",
-     "model": "#886f4e",
-     "dL": 0.047
+     "model": "#776244",
+     "dL": -0.006
     },
     "glazing": {
      "photo": 0.33,
@@ -243,12 +243,12 @@
      "photo": 2,
      "model": null
     },
-    "iou": 0.579,
+    "iou": 0.585,
     "footOffsetM": 1.02
    },
    "challengers": {
-    "landlust-1934-tile-pair": 0.579,
-    "landlust-1934-tile-pair~m": -0.023
+    "landlust-1934-tile-pair": 0.569,
+    "landlust-1934-tile-pair~m": -0.019
    }
   },
   {
@@ -303,7 +303,7 @@
      "evidence": "strip 2024-11-21 span 775-1022: trim-normalised wall (buildingRecipe/measureFacade.ts)"
     },
     "paletteOverrides": {
-     "brick": "#6c583e"
+     "brick": "#594933"
     }
    },
    "notes": [
@@ -313,8 +313,8 @@
    ],
    "likeness": {
     "pandId": "0363100012074955",
-    "ncc": 0.605,
-    "nccRaw": 0.605,
+    "ncc": 0.588,
+    "nccRaw": 0.588,
     "shiftM": [
      -0.1,
      0.3
@@ -329,8 +329,8 @@
     ],
     "wall": {
      "photo": "#766246",
-     "model": "#886f4e",
-     "dL": 0.051
+     "model": "#776244",
+     "dL": -0.002
     },
     "glazing": {
      "photo": 0.27,
@@ -344,8 +344,8 @@
     "footOffsetM": 1.02
    },
    "challengers": {
-    "landlust-1934-tile-pair~m": 0.605,
-    "landlust-1934-tile-pair": -0.013
+    "landlust-1934-tile-pair~m": 0.588,
+    "landlust-1934-tile-pair": -0.005
    }
   },
   {
@@ -414,7 +414,7 @@
      "evidence": "strip 2024-11-21 span 1022-1269: trim-normalised wall (buildingRecipe/measureFacade.ts)"
     },
     "paletteOverrides": {
-     "brick": "#6c583e"
+     "brick": "#594933"
     }
    },
    "notes": [
@@ -424,8 +424,8 @@
    ],
    "likeness": {
     "pandId": "0363100012107813",
-    "ncc": 0.611,
-    "nccRaw": 0.611,
+    "ncc": 0.596,
+    "nccRaw": 0.596,
     "shiftM": [
      -0.15,
      0.3
@@ -440,8 +440,8 @@
     ],
     "wall": {
      "photo": "#746045",
-     "model": "#886f4e",
-     "dL": 0.057
+     "model": "#776244",
+     "dL": 0.004
     },
     "glazing": {
      "photo": 0.17,
@@ -455,8 +455,8 @@
     "footOffsetM": 1.02
    },
    "challengers": {
-    "landlust-1934-tile-pair": 0.611,
-    "landlust-1934-tile-pair~m": 0.059
+    "landlust-1934-tile-pair": 0.596,
+    "landlust-1934-tile-pair~m": 0.067
    }
   },
   {
@@ -505,7 +505,7 @@
      "evidence": "strip 2024-11-21 span 1270-1517: trim-normalised wall (buildingRecipe/measureFacade.ts)"
     },
     "paletteOverrides": {
-     "brick": "#6c583e"
+     "brick": "#594933"
     }
    },
    "notes": [
@@ -515,8 +515,8 @@
    ],
    "likeness": {
     "pandId": "0363100012123427",
-    "ncc": 0.552,
-    "nccRaw": 0.552,
+    "ncc": 0.541,
+    "nccRaw": 0.541,
     "shiftM": [
      -0.05,
      0.3
@@ -531,8 +531,8 @@
     ],
     "wall": {
      "photo": "#7a6546",
-     "model": "#886f4e",
-     "dL": 0.043
+     "model": "#776244",
+     "dL": -0.01
     },
     "glazing": {
      "photo": 0.2,
@@ -546,8 +546,8 @@
     "footOffsetM": 1.02
    },
    "challengers": {
-    "landlust-1934-tile-pair~m": 0.552,
-    "landlust-1934-tile-pair": -0.002
+    "landlust-1934-tile-pair~m": 0.541,
+    "landlust-1934-tile-pair": 0.004
    }
   },
   {
@@ -611,7 +611,7 @@
      "evidence": "strip 2024-11-21 span 1517-1744: trim-normalised wall (buildingRecipe/measureFacade.ts)"
     },
     "paletteOverrides": {
-     "brick": "#6c583e"
+     "brick": "#594933"
     }
    },
    "notes": [
@@ -621,8 +621,8 @@
    ],
    "likeness": {
     "pandId": "0363100012140619",
-    "ncc": 0.522,
-    "nccRaw": 0.522,
+    "ncc": 0.501,
+    "nccRaw": 0.501,
     "shiftM": [
      0.15,
      0.3
@@ -631,13 +631,13 @@
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "window shape none vs photo tall",
+     "window shape none vs photo square",
      "columns none vs photo 2"
     ],
     "wall": {
      "photo": "#766043",
-     "model": "#886f4e",
-     "dL": 0.057
+     "model": "#776244",
+     "dL": 0.004
     },
     "glazing": {
      "photo": 0.38,
@@ -647,12 +647,12 @@
      "photo": 2,
      "model": null
     },
-    "iou": 0.585,
+    "iou": 0.581,
     "footOffsetM": 1.02
    },
    "challengers": {
-    "landlust-1934-tile-pair": 0.522,
-    "landlust-1934-tile-pair~m": -0.029
+    "landlust-1934-tile-pair": 0.501,
+    "landlust-1934-tile-pair~m": -0.022
    }
   },
   {
@@ -717,7 +717,7 @@
      "evidence": "strip 2024-11-21 span 1744-2012: trim-normalised wall (buildingRecipe/measureFacade.ts)"
     },
     "paletteOverrides": {
-     "brick": "#6c583e"
+     "brick": "#594933"
     }
    },
    "notes": [
@@ -727,8 +727,8 @@
    ],
    "likeness": {
     "pandId": "0363100012081763",
-    "ncc": 0.457,
-    "nccRaw": 0.457,
+    "ncc": 0.441,
+    "nccRaw": 0.441,
     "shiftM": [
      0.25,
      0.4
@@ -737,27 +737,27 @@
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.31 mean 0.38 vs photo 0.59"
+     "glazing storey band off by 0.31 mean 0.37 vs photo 0.59"
     ],
     "wall": {
      "photo": "#7a6344",
-     "model": "#886f4e",
-     "dL": 0.047
+     "model": "#776244",
+     "dL": -0.006
     },
     "glazing": {
      "photo": 0.59,
-     "model": 0.38
+     "model": 0.37
     },
     "columns": {
      "photo": null,
      "model": null
     },
-    "iou": 0.459,
+    "iou": 0.447,
     "footOffsetM": 1.02
    },
    "challengers": {
-    "landlust-1934-tile-pair~m": 0.457,
-    "landlust-1934-tile-pair": -0.003
+    "landlust-1934-tile-pair~m": 0.441,
+    "landlust-1934-tile-pair": 0.002
    }
   },
   {
@@ -873,7 +873,7 @@
      "evidence": "strip 2024-11-21 span 2259-2506: trim-normalised wall (buildingRecipe/measureFacade.ts)"
     },
     "paletteOverrides": {
-     "brick": "#6c583e"
+     "brick": "#594933"
     }
    },
    "notes": [
@@ -883,8 +883,8 @@
    ],
    "likeness": {
     "pandId": "0363100012137482",
-    "ncc": 0.533,
-    "nccRaw": 0.533,
+    "ncc": 0.523,
+    "nccRaw": 0.523,
     "shiftM": [
      -0.05,
      -0.1
@@ -895,8 +895,8 @@
     "reasons": [],
     "wall": {
      "photo": "#735e43",
-     "model": "#886f4e",
-     "dL": 0.063
+     "model": "#776244",
+     "dL": 0.01
     },
     "glazing": {
      "photo": 0.44,
@@ -910,8 +910,8 @@
     "footOffsetM": 1.35
    },
    "challengers": {
-    "landlust-1934-tile-pair": 0.533,
-    "landlust-1934-tile-pair~m": 0.054
+    "landlust-1934-tile-pair": 0.523,
+    "landlust-1934-tile-pair~m": 0.053
    }
   },
   {
@@ -966,7 +966,7 @@
      "evidence": "strip 2024-11-21 span 2505-2753: trim-normalised wall (buildingRecipe/measureFacade.ts)"
     },
     "paletteOverrides": {
-     "brick": "#6c583e"
+     "brick": "#594933"
     }
    },
    "notes": [
@@ -976,8 +976,8 @@
    ],
    "likeness": {
     "pandId": "0363100012117865",
-    "ncc": 0.481,
-    "nccRaw": 0.481,
+    "ncc": 0.472,
+    "nccRaw": 0.472,
     "shiftM": [
      0,
      -0.05
@@ -992,8 +992,8 @@
     ],
     "wall": {
      "photo": "#816141",
-     "model": "#886f4e",
-     "dL": 0.039
+     "model": "#776244",
+     "dL": -0.014
     },
     "glazing": {
      "photo": 0.6,
@@ -1007,8 +1007,8 @@
     "footOffsetM": 1.35
    },
    "challengers": {
-    "landlust-1934-tile-pair~m": 0.481,
-    "landlust-1934-tile-pair": -0.009
+    "landlust-1934-tile-pair~m": 0.472,
+    "landlust-1934-tile-pair": -0.01
    }
   },
   {

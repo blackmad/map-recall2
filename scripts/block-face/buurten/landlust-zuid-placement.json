@@ -1,8 +1,8 @@
 {
  "buurt": "landlust-zuid",
  "library": "landlust",
- "generatedAt": "2026-11-10T03:50:42.879Z",
- "seconds": 20.87,
+ "generatedAt": "2026-11-10T04:38:46.184Z",
+ "seconds": 17.15,
  "totals": {
   "faces": 42,
   "pands": 364,
@@ -22,11 +22,11 @@
       "0363100012080635",
       "0363100012069920"
      ],
-     "passed": true,
-     "triangles": 3755
+     "passed": false,
+     "triangles": 5585
     }
    ],
-   "seconds": 5.61,
+   "seconds": 7.77,
    "byType": {
     "landlust-1934-slot-block": 2
    },
@@ -52,11 +52,11 @@
       "0363100012124713",
       "0363100012103458"
      ],
-     "passed": true,
-     "triangles": 3701
+     "passed": false,
+     "triangles": 5545
     }
    ],
-   "seconds": 5.5,
+   "seconds": 7.58,
    "byType": {
     "landlust-1934-slot-block": 2
    },
@@ -190,8 +190,8 @@
       "0363100012063379",
       "0363100012107097"
      ],
-     "passed": true,
-     "triangles": 3810
+     "passed": false,
+     "triangles": 5636
     },
     {
      "face": "callenburg-2-32-r2",
@@ -200,11 +200,11 @@
       "0363100012125512",
       "0363100012105359"
      ],
-     "passed": true,
-     "triangles": 5607
+     "passed": false,
+     "triangles": 8340
     }
    ],
-   "seconds": 10.77,
+   "seconds": 16.38,
    "byType": {
     "landlust-1934-slot-block": 5
    },
@@ -237,10 +237,10 @@
       "0363100012063567"
      ],
      "passed": true,
-     "triangles": 14685
+     "triangles": 20128
     }
    ],
-   "seconds": 27.82,
+   "seconds": 34.02,
    "byType": {
     "landlust-1934-slot-block": 8
    },
@@ -272,10 +272,10 @@
       "0363100012089839"
      ],
      "passed": true,
-     "triangles": 6532
+     "triangles": 7415
     }
    ],
-   "seconds": 11.56,
+   "seconds": 14.44,
    "byType": {
     "landlust-1933-three-axis-tile": 7
    },
@@ -354,8 +354,8 @@
      "pands": [
       "0363100012140098"
      ],
-     "passed": true,
-     "triangles": 1850
+     "passed": false,
+     "triangles": 2771
     },
     {
      "face": "haen-3-31-r2",
@@ -363,11 +363,11 @@
       "0363100012140644",
       "0363100012114763"
      ],
-     "passed": true,
-     "triangles": 3704
+     "passed": false,
+     "triangles": 5541
     }
    ],
-   "seconds": 10.46,
+   "seconds": 14.73,
    "byType": {
     "landlust-1934-slot-block": 3
    },
@@ -392,27 +392,27 @@
      "pands": [
       "0363100012107347"
      ],
-     "passed": true,
-     "triangles": 2275
+     "passed": false,
+     "triangles": 3155
     },
     {
      "face": "haen-6-62-r2",
      "pands": [
       "0363100012084532"
      ],
-     "passed": true,
-     "triangles": 2441
+     "passed": false,
+     "triangles": 3161
     },
     {
      "face": "haen-6-62-r3",
      "pands": [
       "0363100012102574"
      ],
-     "passed": true,
-     "triangles": 2400
+     "passed": false,
+     "triangles": 3125
     }
    ],
-   "seconds": 12,
+   "seconds": 15.1,
    "byType": {
     "landlust-1935-slot-block-four": 3
    },
@@ -476,10 +476,10 @@
       "0363100012071938"
      ],
      "passed": true,
-     "triangles": 3985
+     "triangles": 4347
     }
    ],
-   "seconds": 5.38,
+   "seconds": 7.05,
    "byType": {
     "landlust-1934-tile-pair": 3
    },
@@ -543,7 +543,7 @@
       "0363100012081763"
      ],
      "passed": true,
-     "triangles": 7678
+     "triangles": 8412
     },
     {
      "face": "leijnsen-2-30-r2",
@@ -552,10 +552,10 @@
       "0363100012117865"
      ],
      "passed": true,
-     "triangles": 2568
+     "triangles": 2818
     }
    ],
-   "seconds": 11.27,
+   "seconds": 12.55,
    "byType": {
     "landlust-1934-tile-pair": 8
    },
@@ -743,10 +743,10 @@
       "0363100012121629"
      ],
      "passed": true,
-     "triangles": 5100
+     "triangles": 5600
     }
    ],
-   "seconds": 5,
+   "seconds": 3.67,
    "byType": {
     "landlust-1933-erker-window": 4
    },
@@ -775,10 +775,10 @@
       "0363100012145888"
      ],
      "passed": true,
-     "triangles": 5174
+     "triangles": 5677
     }
    ],
-   "seconds": 4.88,
+   "seconds": 3.59,
    "byType": {
     "landlust-1933-erker-window": 4
    },
@@ -861,10 +861,10 @@
       "0363100012114449"
      ],
      "passed": true,
-     "triangles": 5103
+     "triangles": 5609
     }
    ],
-   "seconds": 5.99,
+   "seconds": 5.86,
    "byType": {
     "landlust-1933-erker-window": 4
    },
@@ -893,10 +893,10 @@
       "0363100012065427"
      ],
      "passed": true,
-     "triangles": 5148
+     "triangles": 5652
     }
    ],
-   "seconds": 4.98,
+   "seconds": 4.03,
    "byType": {
     "landlust-1933-erker-window": 4
    },
@@ -1087,19 +1087,19 @@
       "0363100012109779",
       "0363100012133739"
      ],
-     "passed": true,
-     "triangles": 4828
+     "passed": false,
+     "triangles": 6375
     },
     {
      "face": "zwijgerlaan-225-279-r2",
      "pands": [
       "0363100012151482"
      ],
-     "passed": true,
-     "triangles": 2487
+     "passed": false,
+     "triangles": 3165
     }
    ],
-   "seconds": 57.74,
+   "seconds": 32.81,
    "byType": {
     "landlust-1935-slot-block-four": 3
    },

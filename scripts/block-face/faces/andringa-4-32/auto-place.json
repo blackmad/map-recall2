@@ -3,7 +3,7 @@
  "street": "Joris van Andringastraat",
  "library": "landlust",
  "stripDate": "2024-11-21",
- "seconds": 5.5,
+ "seconds": 7.58,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -20,8 +20,8 @@
     "0363100012124713",
     "0363100012103458"
    ],
-   "passed": true,
-   "triangles": 3701
+   "passed": false,
+   "triangles": 5545
   }
  ],
  "pands": [
@@ -472,7 +472,7 @@
    },
    "notes": [
     "door unread",
-    "crown parapet (type default)"
+    "crown zinc-dormers (type default)"
    ],
    "likeness": {
     "pandId": "0363100012124713",
@@ -486,7 +486,7 @@
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.36 mean 0.21 vs photo 0.47",
+     "glazing storey band off by 0.37 mean 0.23 vs photo 0.47",
      "columns 6 vs photo 3"
     ],
     "wall": {
@@ -496,13 +496,13 @@
     },
     "glazing": {
      "photo": 0.47,
-     "model": 0.21
+     "model": 0.23
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.364
+    "iou": 0.368
    },
    "challengers": {
     "landlust-1934-slot-block": 0.478,
@@ -567,7 +567,7 @@
    },
    "notes": [
     "door unread",
-    "crown parapet (type default)"
+    "crown zinc-dormers (type default)"
    ],
    "likeness": {
     "pandId": "0363100012103458",
@@ -581,8 +581,8 @@
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.37 mean 0.22 vs photo 0.39",
-     "columns 8 vs photo 2"
+     "glazing storey band off by 0.34 mean 0.23 vs photo 0.38",
+     "columns 6 vs photo 2"
     ],
     "wall": {
      "photo": "#804c30",
@@ -590,14 +590,14 @@
      "dL": 0.031
     },
     "glazing": {
-     "photo": 0.39,
-     "model": 0.22
+     "photo": 0.38,
+     "model": 0.23
     },
     "columns": {
      "photo": 2,
-     "model": 8
+     "model": 3
     },
-    "iou": 0.291
+    "iou": 0.283
    },
    "challengers": {
     "landlust-1934-slot-block": 0.431,

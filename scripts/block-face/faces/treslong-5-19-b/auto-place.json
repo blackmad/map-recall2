@@ -3,7 +3,7 @@
  "street": "Bloys van Treslongstraat",
  "library": "landlust",
  "stripDate": "2024-11-21",
- "seconds": 4.98,
+ "seconds": 4.03,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -23,7 +23,7 @@
     "0363100012065427"
    ],
    "passed": true,
-   "triangles": 5148
+   "triangles": 5652
   }
  ],
  "pands": [
@@ -88,13 +88,15 @@
      "brick": "#563e2b",
      "evidence": "strip 2024-11-21 span 0-248: trim-normalised wall (buildingRecipe/measureFacade.ts)"
     },
+    "crown": "party-dormer",
+    "pair": "left",
     "paletteOverrides": {
-     "brick": "#573f2b"
+     "brick": "#2b1f16"
     }
    },
    "notes": [
-    "door right",
-    "crown gutter (type default)",
+    "crown party-dormer: reviewer pin (Treslongstraat 5-35 (round-3 strip verdict 2026-11-10): one cream box dormer for the pair 109065|113093, centred on their party wall, on the gutter line)",
+    "door reviewer pin: left half of a pair crown, as drawn",
     "palette pinned: Treslongstraat 5-59 (Opus verdict): the run is dark purple-brown, photo about #4a3626, model about #6a4c33; one brick for the run (151495 had read blue-grey #808d96 off the scaffolding)"
    ],
    "likeness": {
@@ -109,26 +111,25 @@
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.24 mean 0.40 vs photo 0.23"
+     "glazing storey band off by 0.24 mean 0.39 vs photo 0.23"
     ],
     "wall": {
      "photo": "#553f2b",
-     "model": "#77563b",
-     "dL": 0.098
+     "model": "#654934",
+     "dL": 0.049
     },
     "glazing": {
      "photo": 0.23,
-     "model": 0.4
+     "model": 0.39
     },
     "columns": {
      "photo": null,
      "model": null
     },
-    "iou": 0.473
+    "iou": 0.48
    },
    "challengers": {
-    "landlust-1933-erker-window": 0.389,
-    "landlust-1933-erker-window~m": 0.068
+    "landlust-1933-erker-window": 0.389
    }
   },
   {
@@ -197,20 +198,22 @@
      "brick": "#533823",
      "evidence": "strip 2024-11-21 span 248-500: trim-normalised wall (buildingRecipe/measureFacade.ts)"
     },
+    "crown": "party-dormer",
+    "pair": "right",
+    "mirror": true,
     "paletteOverrides": {
-     "brick": "#573f2b"
-    },
-    "mirror": true
+     "brick": "#2b1f16"
+    }
    },
    "notes": [
-    "door unread: mirrored, the opposite of 109065",
-    "crown gutter (type default)",
+    "crown party-dormer: reviewer pin (Treslongstraat 5-35 (round-3 strip verdict 2026-11-10): one cream box dormer for the pair 109065|113093, centred on their party wall, on the gutter line)",
+    "door reviewer pin: right half of a pair crown, mirrored",
     "palette pinned: Treslongstraat 5-59 (Opus verdict): the run is dark purple-brown, photo about #4a3626, model about #6a4c33; one brick for the run (151495 had read blue-grey #808d96 off the scaffolding)"
    ],
    "likeness": {
     "pandId": "0363100012113093",
-    "ncc": 0.403,
-    "nccRaw": 0.403,
+    "ncc": 0.407,
+    "nccRaw": 0.407,
     "shiftM": [
      -0.05,
      -0.4
@@ -223,8 +226,8 @@
     ],
     "wall": {
      "photo": "#533722",
-     "model": "#77563b",
-     "dL": 0.12
+     "model": "#654934",
+     "dL": 0.071
     },
     "glazing": {
      "photo": 0.27,
@@ -237,8 +240,7 @@
     "iou": 0.561
    },
    "challengers": {
-    "landlust-1933-erker-window~m": 0.403,
-    "landlust-1933-erker-window": 0.137
+    "landlust-1933-erker-window~m": 0.407
    }
   },
   {
@@ -290,19 +292,21 @@
      "brick": "#644a30",
      "evidence": "strip 2024-11-21 span 500-752: trim-normalised wall (buildingRecipe/measureFacade.ts)"
     },
+    "crown": "party-dormer",
+    "pair": "left",
     "paletteOverrides": {
-     "brick": "#573f2b"
+     "brick": "#2b1f16"
     }
    },
    "notes": [
-    "door right",
-    "crown gutter (type default)",
+    "crown party-dormer: reviewer pin (Treslongstraat 5-35 (round-3 strip verdict 2026-11-10): one cream box dormer for the pair 132461|065427, centred on their party wall, on the gutter line)",
+    "door reviewer pin: left half of a pair crown, as drawn",
     "palette pinned: Treslongstraat 5-59 (Opus verdict): the run is dark purple-brown, photo about #4a3626, model about #6a4c33; one brick for the run (151495 had read blue-grey #808d96 off the scaffolding)"
    ],
    "likeness": {
     "pandId": "0363100012132461",
-    "ncc": 0.404,
-    "nccRaw": 0.404,
+    "ncc": 0.4,
+    "nccRaw": 0.4,
     "shiftM": [
      -0.25,
      0.05
@@ -311,28 +315,27 @@
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.24 mean 0.40 vs photo 0.27",
+     "glazing storey band off by 0.24 mean 0.40 vs photo 0.28",
      "window shape none vs photo square",
      "columns none vs photo 2"
     ],
     "wall": {
      "photo": "#624730",
-     "model": "#77563b",
-     "dL": 0.063
+     "model": "#654934",
+     "dL": 0.014
     },
     "glazing": {
-     "photo": 0.27,
+     "photo": 0.28,
      "model": 0.4
     },
     "columns": {
      "photo": 2,
      "model": null
     },
-    "iou": 0.489
+    "iou": 0.49
    },
    "challengers": {
-    "landlust-1933-erker-window": 0.404,
-    "landlust-1933-erker-window~m": 0.085
+    "landlust-1933-erker-window": 0.4
    }
   },
   {
@@ -391,19 +394,21 @@
      "brick": "#6a482d",
      "evidence": "strip 2024-11-21 span 752-1004: trim-normalised wall (buildingRecipe/measureFacade.ts)"
     },
+    "crown": "party-dormer",
+    "pair": "right",
     "paletteOverrides": {
-     "brick": "#573f2b"
+     "brick": "#2b1f16"
     }
    },
    "notes": [
-    "door left: mirrored",
-    "crown gutter (type default)",
+    "crown party-dormer: reviewer pin (Treslongstraat 5-35 (round-3 strip verdict 2026-11-10): one cream box dormer for the pair 132461|065427, centred on their party wall, on the gutter line)",
+    "door reviewer pin: right half of a pair crown, mirrored",
     "palette pinned: Treslongstraat 5-59 (Opus verdict): the run is dark purple-brown, photo about #4a3626, model about #6a4c33; one brick for the run (151495 had read blue-grey #808d96 off the scaffolding)"
    ],
    "likeness": {
     "pandId": "0363100012065427",
-    "ncc": 0.51,
-    "nccRaw": 0.51,
+    "ncc": 0.515,
+    "nccRaw": 0.515,
     "shiftM": [
      0,
      0.1
@@ -416,8 +421,8 @@
     ],
     "wall": {
      "photo": "#63462f",
-     "model": "#77563b",
-     "dL": 0.063
+     "model": "#654934",
+     "dL": 0.014
     },
     "glazing": {
      "photo": 0.23,
@@ -430,8 +435,7 @@
     "iou": 0.557
    },
    "challengers": {
-    "landlust-1933-erker-window~m": 0.51,
-    "landlust-1933-erker-window": 0.077
+    "landlust-1933-erker-window~m": 0.515
    }
   }
  ]

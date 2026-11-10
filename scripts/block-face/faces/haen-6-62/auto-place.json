@@ -3,7 +3,7 @@
  "street": "Jan den Haenstraat",
  "library": "landlust",
  "stripDate": "2024-11-21",
- "seconds": 12,
+ "seconds": 15.1,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -19,24 +19,24 @@
    "pands": [
     "0363100012107347"
    ],
-   "passed": true,
-   "triangles": 2275
+   "passed": false,
+   "triangles": 3155
   },
   {
    "face": "haen-6-62-r2",
    "pands": [
     "0363100012084532"
    ],
-   "passed": true,
-   "triangles": 2441
+   "passed": false,
+   "triangles": 3161
   },
   {
    "face": "haen-6-62-r3",
    "pands": [
     "0363100012102574"
    ],
-   "passed": true,
-   "triangles": 2400
+   "passed": false,
+   "triangles": 3125
   }
  ],
  "pands": [
@@ -181,7 +181,7 @@
    },
    "notes": [
     "door unread",
-    "crown parapet (type default)",
+    "crown zinc-dormers (type default)",
     "lone pand: a stair block on its own: landlust-1935-slot-block-four opts in to one-house faces from 5 m (frontage 12.79 m)"
    ],
    "likeness": {
@@ -196,7 +196,7 @@
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.16"
+     "glazing storey band off by 0.17"
     ],
     "wall": {
      "photo": "#846043",
@@ -205,13 +205,13 @@
     },
     "glazing": {
      "photo": 0.19,
-     "model": 0.22
+     "model": 0.23
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.543
+    "iou": 0.535
    },
    "challengers": {
     "landlust-1935-slot-block-four": 0.436,
@@ -421,7 +421,7 @@
    },
    "notes": [
     "door unread",
-    "crown parapet (type default)",
+    "crown zinc-dormers (type default)",
     "palette pinned: Haenstraat 20: model #9b7255 against photo #70533a; 60 % of the way (Opus verdict)",
     "lone pand: a stair block on its own: landlust-1935-slot-block-four opts in to one-house faces from 5 m (frontage 12.82 m)"
    ],
@@ -438,7 +438,8 @@
     "verdict": "FAIL",
     "reasons": [
      "glazing storey band off by 0.21",
-     "columns 6 vs photo 8"
+     "window shape square vs photo tall",
+     "columns 3 vs photo 8"
     ],
     "wall": {
      "photo": "#8b6446",
@@ -453,7 +454,7 @@
      "photo": 8,
      "model": 3
     },
-    "iou": 0.469
+    "iou": 0.466
    },
    "challengers": {
     "landlust-1935-slot-block-four": 0.421,
@@ -609,7 +610,7 @@
    },
    "notes": [
     "door unread",
-    "crown parapet (type default)",
+    "crown zinc-dormers (type default)",
     "palette pinned: Haenstraat 12: model #a1785e against photo #77583f; 60 % of the way (Opus verdict)",
     "lone pand: a stair block on its own: landlust-1935-slot-block-four opts in to one-house faces from 5 m (frontage 12.8 m)"
    ],
@@ -625,8 +626,8 @@
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.21",
-     "columns 6 vs photo 3"
+     "glazing storey band off by 0.22",
+     "window shape square vs photo tall"
     ],
     "wall": {
      "photo": "#9b6e50",
@@ -635,13 +636,13 @@
     },
     "glazing": {
      "photo": 0.15,
-     "model": 0.22
+     "model": 0.23
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.496
+    "iou": 0.473
    },
    "challengers": {
     "landlust-1935-slot-block-four": 0.368,

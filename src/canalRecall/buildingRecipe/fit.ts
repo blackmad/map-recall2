@@ -363,6 +363,20 @@ function layoutFront(f: FrontIntent, width: number, heightTop: number): Layout {
       if (s === 0 && f.doorBay === b && !rd) {
         doorLeft = clamp(centre - doorWidth / 2, 0.05, width - doorWidth - 0.05);
         if (f.doorPairs && !f.doorArch) { openings.push(...pairedDoors('door')); continue; }
+        if (f.doorRow) {
+          // A row of `count` doors of `leaf` spread evenly over the span, each at the back of its own reveal.
+          const {from, to, count, leaf: doorW} = f.doorRow, doorH = Math.min(h * 0.78, 2.7), transomH = Math.min(0.6, h - doorH - 0.25), span = (to - from) * width, pitch = span / count;
+          const dw = round(Math.min(doorW, Math.max(0.5, pitch - 0.1)));
+          for (let k = 0; k < count; k++) {
+            const left = round(from * width + pitch * (k + 0.5) - dw / 2), id = k === 0 ? 'door' : `door-${k + 1}`;
+            const made = f.doorReveal ? doorRevealOpenings(f.doorReveal, left, y, dw, doorH, transomH)
+              : [{id: 'door', kind: 'door' as const, leftM: left, bottomM: y, widthM: dw, heightM: doorH, trimWidthM: 0.08, verticalBars: [.5], paneSurface: 'door' as const, frameSurface: 'trim' as const, barSurface: 'trim' as const},
+                ...(transomH > 0.2 ? [{id: 'door-transom', kind: 'window' as const, leftM: left, bottomM: y + doorH + 0.06, widthM: dw, heightM: transomH, trimWidthM: 0.06, frameSurface: 'trim' as const, barSurface: 'trim' as const}] : [])];
+            if (k === 0) doorLeft = left;
+            openings.push(...made.map(o => ({...o, id: o.id.replace(/^door/, id)})));
+          }
+          continue;
+        }
         if (f.doorReveal?.edge) doorLeft = centre > width / 2 ? round(width - doorWidth - 0.15) : 0.15;
         if (f.doorArch) {
           // Round-arched portiek: a semicircular head (rise = half the span) whose crown stands at `apex`, no transom.

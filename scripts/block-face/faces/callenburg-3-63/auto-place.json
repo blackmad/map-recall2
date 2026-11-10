@@ -3,7 +3,7 @@
  "street": "Gerard Callenburgstraat",
  "library": "landlust",
  "stripDate": "2024-11-21",
- "seconds": 27.82,
+ "seconds": 34.02,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -27,7 +27,7 @@
     "0363100012063567"
    ],
    "passed": true,
-   "triangles": 14685
+   "triangles": 20128
   }
  ],
  "pands": [
@@ -95,11 +95,12 @@
     "measuredPalette": {
      "brick": "#865435",
      "evidence": "strip 2024-11-21 span 0-514: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    }
+    },
+    "crown": "parapet"
    },
    "notes": [
     "door unread",
-    "crown parapet (type default)"
+    "crown parapet: reviewer pin (Callenburgstraat 3-63 (round-3 strip verdict 2026-11-10): the photo shows no zinc dormers on this row)"
    ],
    "likeness": {
     "pandId": "0363100012119108",
@@ -113,7 +114,7 @@
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.32 mean 0.22 vs photo 0.44",
+     "glazing storey band off by 0.32 mean 0.23 vs photo 0.44",
      "window shape tall vs photo square",
      "columns 6 vs photo 3"
     ],
@@ -124,13 +125,13 @@
     },
     "glazing": {
      "photo": 0.44,
-     "model": 0.22
+     "model": 0.23
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.285
+    "iou": 0.281
    },
    "challengers": {
     "landlust-1934-slot-block": 0.433,
@@ -195,13 +196,14 @@
      "brick": "#8b5a3d",
      "evidence": "strip 2024-11-21 span 514-1028: trim-normalised wall (buildingRecipe/measureFacade.ts)"
     },
+    "crown": "parapet",
     "paletteOverrides": {
      "brick": "#7a4c2f"
     }
    },
    "notes": [
     "door unread",
-    "crown parapet (type default)",
+    "crown parapet: reviewer pin (Callenburgstraat 3-63 (round-3 strip verdict 2026-11-10): the photo shows no zinc dormers on this row)",
     "palette pinned: Callenburgstraat 3-63 / Haenstraat 3-31 (Opus verdict 2026-11-10): the model read #986344-#a3704e against photo #6e4a32-#714c34 (#8f5534 against #5d412d on Haen 19); one brick for the run, 60 % of the way from the model wall to the photo median"
    ],
    "likeness": {
@@ -216,7 +218,7 @@
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.31 mean 0.22 vs photo 0.41"
+     "glazing storey band off by 0.31 mean 0.23 vs photo 0.41"
     ],
     "wall": {
      "photo": "#794a2f",
@@ -225,13 +227,13 @@
     },
     "glazing": {
      "photo": 0.41,
-     "model": 0.22
+     "model": 0.23
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.453
+    "iou": 0.446
    },
    "challengers": {
     "landlust-1934-slot-block": 0.457,
@@ -306,11 +308,12 @@
     "measuredPalette": {
      "brick": "#7f4f34",
      "evidence": "strip 2024-11-21 span 1028-1542: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    }
+    },
+    "crown": "parapet"
    },
    "notes": [
     "door unread",
-    "crown parapet (type default)"
+    "crown parapet: reviewer pin (Callenburgstraat 3-63 (round-3 strip verdict 2026-11-10): the photo shows no zinc dormers on this row)"
    ],
    "likeness": {
     "pandId": "0363100012132798",
@@ -325,7 +328,9 @@
     "verdict": "FAIL",
     "reasons": [
      "wall dL +0.12",
-     "glazing storey band off by 0.44 mean 0.21 vs photo 0.54"
+     "glazing storey band off by 0.44 mean 0.22 vs photo 0.54",
+     "window shape square vs photo tall",
+     "columns 3 vs photo 6"
     ],
     "wall": {
      "photo": "#76442b",
@@ -334,13 +339,13 @@
     },
     "glazing": {
      "photo": 0.54,
-     "model": 0.21
+     "model": 0.22
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.349
+    "iou": 0.353
    },
    "challengers": {
     "landlust-1934-slot-block": 0.444,
@@ -409,11 +414,12 @@
     "measuredPalette": {
      "brick": "#845333",
      "evidence": "strip 2024-11-21 span 1542-2056: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    }
+    },
+    "crown": "parapet"
    },
    "notes": [
     "door unread",
-    "crown parapet (type default)"
+    "crown parapet: reviewer pin (Callenburgstraat 3-63 (round-3 strip verdict 2026-11-10): the photo shows no zinc dormers on this row)"
    ],
    "likeness": {
     "pandId": "0363100012098318",
@@ -427,7 +433,7 @@
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing  mean 0.22 vs photo 0.33"
+     "glazing  mean 0.23 vs photo 0.33"
     ],
     "wall": {
      "photo": "#794c30",
@@ -436,19 +442,19 @@
     },
     "glazing": {
      "photo": 0.33,
-     "model": 0.22
+     "model": 0.23
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.342
+    "iou": 0.34
    },
    "challengers": {
     "landlust-1934-slot-block": 0.471,
     "landlust-1933-three-axis-tile": 0.245,
     "landlust-1933-three-axis-tile~m": 0.245,
-    "landlust-1934-slot-block~m": 0.468,
+    "landlust-1934-slot-block~m": 0.469,
     "landlust-1937-three-axis-four": 0.241,
     "landlust-1937-three-axis-four~m": 0.241
    }
@@ -512,13 +518,14 @@
      "brick": "#865439",
      "evidence": "strip 2024-11-21 span 2056-2570: trim-normalised wall (buildingRecipe/measureFacade.ts)"
     },
+    "crown": "parapet",
     "paletteOverrides": {
      "brick": "#7a4c2f"
     }
    },
    "notes": [
     "door unread",
-    "crown parapet (type default)",
+    "crown parapet: reviewer pin (Callenburgstraat 3-63 (round-3 strip verdict 2026-11-10): the photo shows no zinc dormers on this row)",
     "palette pinned: Callenburgstraat 3-63 / Haenstraat 3-31 (Opus verdict 2026-11-10): the model read #986344-#a3704e against photo #6e4a32-#714c34 (#8f5534 against #5d412d on Haen 19); one brick for the run, 60 % of the way from the model wall to the photo median"
    ],
    "likeness": {
@@ -533,7 +540,7 @@
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.29 mean 0.22 vs photo 0.41"
+     "glazing storey band off by 0.29 mean 0.23 vs photo 0.41"
     ],
     "wall": {
      "photo": "#875539",
@@ -542,13 +549,13 @@
     },
     "glazing": {
      "photo": 0.41,
-     "model": 0.22
+     "model": 0.23
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.443
+    "iou": 0.446
    },
    "challengers": {
     "landlust-1934-slot-block": 0.472,
@@ -618,13 +625,14 @@
      "brick": "#98613f",
      "evidence": "strip 2024-11-21 span 2570-3084: trim-normalised wall (buildingRecipe/measureFacade.ts)"
     },
+    "crown": "parapet",
     "paletteOverrides": {
      "brick": "#7a4c2f"
     }
    },
    "notes": [
     "door unread",
-    "crown parapet (type default)",
+    "crown parapet: reviewer pin (Callenburgstraat 3-63 (round-3 strip verdict 2026-11-10): the photo shows no zinc dormers on this row)",
     "palette pinned: Callenburgstraat 3-63 / Haenstraat 3-31 (Opus verdict 2026-11-10): the model read #986344-#a3704e against photo #6e4a32-#714c34 (#8f5534 against #5d412d on Haen 19); one brick for the run, 60 % of the way from the model wall to the photo median"
    ],
    "likeness": {
@@ -639,7 +647,7 @@
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.50 mean 0.22 vs photo 0.58",
+     "glazing storey band off by 0.46 mean 0.23 vs photo 0.57",
      "window shape tall vs photo square",
      "columns 6 vs photo 3"
     ],
@@ -649,14 +657,14 @@
      "dL": 0.006
     },
     "glazing": {
-     "photo": 0.58,
-     "model": 0.22
+     "photo": 0.57,
+     "model": 0.23
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.326
+    "iou": 0.321
    },
    "challengers": {
     "landlust-1934-slot-block": 0.452,
@@ -731,13 +739,14 @@
      "brick": "#935f3e",
      "evidence": "strip 2024-11-21 span 3084-3598: trim-normalised wall (buildingRecipe/measureFacade.ts)"
     },
+    "crown": "parapet",
     "paletteOverrides": {
      "brick": "#7a4c2f"
     }
    },
    "notes": [
     "door unread",
-    "crown parapet (type default)",
+    "crown parapet: reviewer pin (Callenburgstraat 3-63 (round-3 strip verdict 2026-11-10): the photo shows no zinc dormers on this row)",
     "palette pinned: Callenburgstraat 3-63 / Haenstraat 3-31 (Opus verdict 2026-11-10): the model read #986344-#a3704e against photo #6e4a32-#714c34 (#8f5534 against #5d412d on Haen 19); one brick for the run, 60 % of the way from the model wall to the photo median"
    ],
    "likeness": {
@@ -752,7 +761,7 @@
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.45 mean 0.22 vs photo 0.56"
+     "glazing storey band off by 0.43 mean 0.23 vs photo 0.56"
     ],
     "wall": {
      "photo": "#7f4d30",
@@ -761,13 +770,13 @@
     },
     "glazing": {
      "photo": 0.56,
-     "model": 0.22
+     "model": 0.23
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.341
+    "iou": 0.343
    },
    "challengers": {
     "landlust-1934-slot-block": 0.452,
@@ -853,13 +862,14 @@
      "brick": "#9f6946",
      "evidence": "strip 2024-11-21 span 3598-4112: trim-normalised wall (buildingRecipe/measureFacade.ts)"
     },
+    "crown": "parapet",
     "paletteOverrides": {
      "brick": "#7a4c2f"
     }
    },
    "notes": [
     "door unread",
-    "crown parapet (type default)",
+    "crown parapet: reviewer pin (Callenburgstraat 3-63 (round-3 strip verdict 2026-11-10): the photo shows no zinc dormers on this row)",
     "palette pinned: Callenburgstraat 3-63 / Haenstraat 3-31 (Opus verdict 2026-11-10): the model read #986344-#a3704e against photo #6e4a32-#714c34 (#8f5534 against #5d412d on Haen 19); one brick for the run, 60 % of the way from the model wall to the photo median"
    ],
    "likeness": {
@@ -874,8 +884,7 @@
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.46 mean 0.22 vs photo 0.55",
-     "columns 8 vs photo 6"
+     "glazing storey band off by 0.46 mean 0.23 vs photo 0.55"
     ],
     "wall": {
      "photo": "#7e4e34",
@@ -884,13 +893,13 @@
     },
     "glazing": {
      "photo": 0.55,
-     "model": 0.22
+     "model": 0.23
     },
     "columns": {
      "photo": 3,
-     "model": 8
+     "model": 3
     },
-    "iou": 0.361
+    "iou": 0.365
    },
    "challengers": {
     "landlust-1934-slot-block": 0.447,

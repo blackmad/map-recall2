@@ -25,7 +25,7 @@ export const CROWN_KEYS = ['gable', 'crownCap', 'crownCapSpan', 'crownCapRise', 
 /** Body fields a crown variant may also set (a gabled variant drops the cornice its cornice variant has). */
 export const CROWN_BODY_KEYS = ['cornice'] as const;
 /** The ground storey (with souterrain/stoop): a ground variant or a per-house shop sets these. */
-export const GROUND_KEYS = ['doorBay', 'doorArch', 'basement', 'souterrain', 'tallGround', 'shopfront', 'groundFront', 'shutters', 'groundCanopy', 'doorReveal', 'extraDoorBays', 'doorPairs'] as const;
+export const GROUND_KEYS = ['doorBay', 'doorArch', 'basement', 'souterrain', 'tallGround', 'shopfront', 'groundFront', 'shutters', 'groundCanopy', 'doorReveal', 'extraDoorBays', 'doorPairs', 'doorRow'] as const;
 /** Keys a type never sets: identity and frontage split come from the face/placement. */
 const PLACEMENT_KEYS = ['id', 'street', 'share'] as const;
 type CrownKey = typeof CROWN_KEYS[number];
@@ -185,6 +185,7 @@ export function mirrorFront(f: FrontIntent): FrontIntent {
     return n;
   };
   if (f.doorBay !== null && f.doorBay !== undefined) out.doorBay = bays[0] - 1 - f.doorBay;
+  if (f.doorRow) out.doorRow = {...f.doorRow, from: 1 - f.doorRow.to, to: 1 - f.doorRow.from};
   if (f.extraDoorBays) out.extraDoorBays = f.extraDoorBays.map(b => bays[0] - 1 - b).sort((p, q) => p - q);
   if (f.bayWidths) out.bayWidths = [...f.bayWidths].reverse();
   if (f.bayFill) out.bayFill = [...f.bayFill].reverse();
