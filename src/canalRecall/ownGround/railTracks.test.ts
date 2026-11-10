@@ -51,6 +51,23 @@ test('yard bed: two tracks 4.5 m apart draw one ballast surface, no sand between
   assert.ok(covered(bridges.slab, 30, 2.3), 'one deck under both bridge tracks');
 });
 
+test('cross-deck yard bed (feedback 3ddc4cbf, Hemboog viaduct): a bridge track and a level one off the bridges share one bed; 2 m apart in height they do not', () => {
+  const ways = [track(0, { bridge: true }), track(4.5)];
+  const lv = (z: number) => ({ s: [0, 60], z: [z, z] });
+  const idx = railSegIndex(ways);
+  assert.ok(Math.abs(sideGap(idx, ways, 0, [10, 0], [0, 1], [1, 0], () => true) - 4.5) < 1e-9, 'counted with crossDeck');
+  assert.equal(sideGap(idx, ways, 0, [10, 0], [0, 1], [1, 0], () => false), Infinity, 'crossDeck refuses');
+  const at = (z1: number) => railMeshes({ ways, inCell: () => true, height: () => 0, levels: new Map([[ways[0], lv(2)], [ways[1], lv(z1)]]) as never });
+  const level = at(2.2), apart = at(4);
+  for (const y of [1.9, 2.25, 2.6]) assert.ok(covered(level.ballast, 30, y), `one bed between the tracks at y=${y}`);
+  // The bridge bed's run reaches the midpoint at its top; apart, its shoulder's toe stands there on the slab.
+  const run = 2 + RAIL_SECTION.topLift, mid = 4.5 / 2 + RAIL_MERGE.overlap;
+  assert.ok(Math.abs(topAt(level.ballast, 24, mid, 0.02) - run) < 1e-6, 'the run at bed height');
+  assert.ok(topAt(apart.ballast, 24, mid, 0.02) < run - 0.2, 'a track 2 m higher keeps its own bed');
+  // Without levels (no profile) the decks stay separate, as before.
+  assert.ok(topAt(railMeshes({ ways, inCell: () => true, height: () => 0 }).ballast, 24, mid, 0.02) < RAIL_SECTION.topLift - 0.2);
+});
+
 test('bed lift: the top stands topLift over the highest land under it, not just the centreline', () => {
   // A cross slope: land rises 0.3 m per metre to the left; the left top edge's land is 0.465 m over the centre's.
   const slope = (_x: number, y: number) => Math.max(0, y) * 0.3;
