@@ -1,0 +1,98 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012171145",
+ "address": "Haarlemmerstraat 52",
+ "design": {
+  "fronts": [
+   {
+    "partyClip": true,
+    "id": "front0",
+    "street": "Haarlemmerstraat",
+    "storeys": 4,
+    "bays": 3,
+    "storeyHeights": [
+     4.4,
+     2.8,
+     2.7,
+     2.5
+    ],
+    "windows": "sash-6-over-6",
+    "windowSurround": "sill",
+    "windowHeights": [
+     0.55,
+     0.66,
+     0.66,
+     0.6
+    ],
+    "headLines": [
+     0.8,
+     0.88,
+     0.86,
+     0.84
+    ],
+    "windowShare": 0.52,
+    "cornice": "none",
+    "gable": "neck",
+    "crownRise": 1.2,
+    "atticWindows": 1,
+    "hoist": true,
+    "doorBay": 1,
+    "basement": "none"
+   }
+  ],
+  "roof": {
+   "material": "red-tile",
+   "squareSaddle": true
+  },
+  "palette": {
+   "brick": "#5e4e3f",
+   "frame": "white-painted",
+   "door": "#2a2a28",
+   "stone": "#e8e4d8",
+   "cornice": "#e8e4d8",
+   "stoneMaterial": "painted"
+  },
+  "notes": [
+   "type haarlemmerstraat-sash-gable-four: crown neck, palette haarlemmer-red-brown + measured brick #5e4e3f"
+  ]
+ },
+ "provenance": {
+  "": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "scripts/block-face/faces/haarlemmer-46-96-r1/strip.json",
+   "at": "2024-11-21"
+  },
+  "fronts/0/doorBay": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "docs/reports/haarlemmer-strip-verdict-20261110.md; strip 2024-11-21 span 3634-3818, 1 m grid: three ground bays, door in bay 1 of 0..2, wrought-iron window rails either side",
+   "at": "2024-11-21"
+  }
+ },
+ "schemaLimits": [
+  {
+   "component": "gable ornament",
+   "what": "54 (171144) and 52 (171145): sandstone scrolls on the neck gables and a three-light attic group on 54; drawn as plain necks with one attic light"
+  },
+  {
+   "component": "ground storey",
+   "what": "52 (171145): a residential ground with two tall arched windows and a portal; drawn with a door and plain windows"
+  },
+  {
+   "component": "gable ornament",
+   "what": "52 (171145): carved sandstone crown with a pedimented neck light over a bell gable; the kit draws a plain neck gable"
+  },
+  {
+   "component": "ground storey",
+   "what": "52: tall residential ground storey in stone with arched-head rails and a pilaster order; drawn as a plain tall window ground storey"
+  },
+  {
+   "component": "roof behind crown",
+   "what": "Haarlemmerstraat 52: the recipe route draws the 3DBAG roof (max 15.3 m, ridge 15.3 m) behind the neck crown; the strip shows sky behind it. roof.form 'flat' and roof.source 'front' are read by the block-face compile only, not by the canal-house recipe"
+  }
+ ],
+ "facts": {
+  "pui": "residential"
+ }
+}

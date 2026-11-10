@@ -1,0 +1,103 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012176174",
+ "address": "Haarlemmerdijk 4",
+ "design": {
+  "fronts": [
+   {
+    "partyClip": true,
+    "id": "front0",
+    "street": "Haarlemmerdijk",
+    "storeys": 3,
+    "bays": 2,
+    "storeyHeights": [
+     4.5,
+     2.9,
+     2.6
+    ],
+    "windows": "t-window",
+    "windowSurround": "sill",
+    "windowHeights": [
+     0.55,
+     0.6,
+     0.66
+    ],
+    "headLines": [
+     0.8,
+     0.91,
+     0.82
+    ],
+    "windowShare": 0.52,
+    "cornice": "none",
+    "gable": "neck",
+    "crownRise": 0.85,
+    "atticWindows": 1,
+    "doorBay": null,
+    "basement": "none",
+    "hoist": false,
+    "shopfront": {
+     "colour": "#e3dccb",
+     "fascia": true,
+     "name": "Vishandel 't Centrum",
+     "entrance": "centre",
+     "glazing": "split",
+     "stallriser": "low",
+     "evidence": "auto-place: osm-only (winkelfunctie, shop=seafood); fascia colour measured on the strip 2022-12-15 span 4743-4916; reviewer pin: Haarlemmerdijk 4 (fish shop): cream shopfront with a central door (strip-sheet review (docs/reports/haarlemmer-strip-verdict-20261110.md) and the 1 m grid at 1.8x brightness)"
+    }
+   }
+  ],
+  "roof": {
+   "material": "red-tile",
+   "squareSaddle": true
+  },
+  "palette": {
+   "brick": "#5b5550",
+   "frame": "white-painted",
+   "door": "#2a2a28",
+   "stone": "#e8e4d8",
+   "cornice": "#e8e4d8",
+   "stoneMaterial": "painted"
+  },
+  "notes": [
+   "type haarlemmer-shop-gable: crown bell-low, palette haarlemmer-red-brown + measured brick #4a3e34",
+   "type deviations: palette {\"brick\":\"#5b5550\"} (type palette haarlemmer-red-brown)"
+  ]
+ },
+ "provenance": {
+  "": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "scripts/block-face/faces/haarlemmerdijk-2-58-r2/strip.json",
+   "at": "2022-12-15"
+  },
+  "fronts/0/bays": {
+   "source": "default",
+   "confidence": 0.3,
+   "ref": "scripts/block-face/faces/haarlemmerdijk-2-58-r2/strip.json#type:haarlemmer-shop-gable",
+   "at": null
+  },
+  "fronts/0/gable": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "docs/reports/haarlemmer-strip-verdict-20261110.md; strip-sheet verdict 176174: photo has a narrower neck, about 1.9 m, with sandstone scrolls",
+   "at": "2022-12-15"
+  }
+ },
+ "schemaLimits": [
+  {
+   "component": "gable ornament",
+   "what": "4 (176174): sandstone scrolls beside a 1.9 m neck; drawn as a plain bell"
+  },
+  {
+   "component": "shopfront pilasters",
+   "what": "6 and 4: white pilasters on cream joinery; drawn as cream joinery only"
+  },
+  {
+   "component": "roof behind crown",
+   "what": "Haarlemmerdijk 4: the recipe route draws the 3DBAG roof (max 9.9 m, ridge 9.9 m) behind the neck crown; the strip shows sky behind it. roof.form 'flat' and roof.source 'front' are read by the block-face compile only, not by the canal-house recipe"
+  }
+ ],
+ "facts": {
+  "pui": "shop"
+ }
+}

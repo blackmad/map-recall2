@@ -1,0 +1,105 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012167818",
+ "address": "Haarlemmerdijk 20",
+ "design": {
+  "fronts": [
+   {
+    "partyClip": true,
+    "id": "front0",
+    "street": "Haarlemmerdijk",
+    "storeys": 3,
+    "bays": [
+     2,
+     2,
+     3
+    ],
+    "storeyHeights": [
+     4.5,
+     2.9,
+     2.6
+    ],
+    "windows": "t-window",
+    "windowSurround": "sill",
+    "windowHeights": [
+     0.55,
+     0.6,
+     0.66
+    ],
+    "headLines": [
+     0.8,
+     0.91,
+     0.82
+    ],
+    "windowShare": 0.52,
+    "cornice": "none",
+    "gable": "neck",
+    "crownRise": 1.2,
+    "atticWindows": 1,
+    "hoist": true,
+    "doorBay": null,
+    "basement": "none",
+    "shopfront": {
+     "colour": "#242122",
+     "fascia": true,
+     "name": "Studio Onrust",
+     "entrance": "centre",
+     "glazing": "split",
+     "stallriser": "low",
+     "evidence": "auto-place: osm-only (winkelfunctie, shop=clothes); fascia colour measured on the strip 2022-12-15 span 3437-3588"
+    }
+   }
+  ],
+  "roof": {
+   "material": "red-tile",
+   "squareSaddle": true
+  },
+  "palette": {
+   "brick": "#342d2c",
+   "frame": "white-painted",
+   "door": "#2a2a28",
+   "stone": "#e8e4d8",
+   "cornice": "#e8e4d8",
+   "stoneMaterial": "painted"
+  },
+  "notes": [
+   "type haarlemmer-shop-gable: crown neck, palette haarlemmer-red-brown + measured brick #342d2c",
+   "type deviations: bays [2,2,3] (type: 2)"
+  ]
+ },
+ "provenance": {
+  "": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "scripts/block-face/faces/haarlemmerdijk-2-58-r1/strip.json",
+   "at": "2022-12-15"
+  },
+  "fronts/0/bays": {
+   "source": "default",
+   "confidence": 0.3,
+   "ref": "scripts/block-face/faces/haarlemmerdijk-2-58-r1/strip.json#type:haarlemmer-shop-gable",
+   "at": null
+  }
+ },
+ "schemaLimits": [
+  {
+   "component": "gable ornament",
+   "what": "20 (167818): sandstone claw pieces and scrolls beside the neck and a carved cap; drawn as a plain neck"
+  },
+  {
+   "component": "attic window width",
+   "what": "20 (167818): the neck light is about 1.2 m wide and set low; the kit draws one narrow attic light"
+  },
+  {
+   "component": "strip registration",
+   "what": "every facade on the 2022-12-15 strip stands 0.4-0.9 m right of its BAG split; the models stand on BAG, so the sheet shows the neck of 20 off-centre"
+  },
+  {
+   "component": "roof behind crown",
+   "what": "Haarlemmerdijk 20: the recipe route draws the 3DBAG roof (max 11.6 m, ridge 11.0 m) behind the neck crown; the strip shows sky behind it. roof.form 'flat' and roof.source 'front' are read by the block-face compile only, not by the canal-house recipe"
+  }
+ ],
+ "facts": {
+  "pui": "shop"
+ }
+}

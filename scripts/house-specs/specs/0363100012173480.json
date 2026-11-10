@@ -1,0 +1,91 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012173480",
+ "address": "Haarlemmerdijk 133A",
+ "design": {
+  "fronts": [
+   {
+    "partyClip": true,
+    "id": "front0",
+    "street": "Haarlemmerdijk",
+    "storeys": 3,
+    "bays": 2,
+    "storeyHeights": [
+     4.3,
+     2.7,
+     2.6
+    ],
+    "windows": "casement-sidelights-toplight",
+    "windowSurround": "sill",
+    "windowHeights": [
+     0.55,
+     0.66,
+     0.66
+    ],
+    "headLines": [
+     0.8,
+     0.92,
+     0.84
+    ],
+    "windowShare": 0.74,
+    "cornice": "none",
+    "gable": "neck",
+    "crownRise": 1.2,
+    "atticWindows": 1,
+    "hoist": true,
+    "doorBay": null,
+    "basement": "none",
+    "shopfront": {
+     "colour": "#2f2c29",
+     "fascia": true,
+     "name": "De Kookboekhandel",
+     "entrance": "centre",
+     "glazing": "split",
+     "stallriser": "low",
+     "evidence": "auto-place: osm-only (winkelfunctie, woonfunctie, shop=books); fascia colour measured on the strip 2022-12-15 span 1463-1640"
+    }
+   }
+  ],
+  "roof": {
+   "material": "red-tile",
+   "squareSaddle": true
+  },
+  "palette": {
+   "brick": "#4d3f3b",
+   "frame": "white-painted",
+   "door": "#2a2a28",
+   "stone": "#e8e4d8",
+   "cornice": "#e8e4d8",
+   "stoneMaterial": "painted"
+  },
+  "notes": [
+   "type haarlemmer-shop-gable-wide: crown neck, palette haarlemmer-red-brown + measured brick #4f4341",
+   "type deviations: palette {\"brick\":\"#4d3f3b\"} (type palette haarlemmer-red-brown)"
+  ]
+ },
+ "provenance": {
+  "": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "scripts/block-face/faces/haarlemmerdijk-117-143-r1/strip.json",
+   "at": "2022-12-15"
+  }
+ },
+ "schemaLimits": [
+  {
+   "component": "upper-row window count",
+   "what": "133A (173480): three windows on the upper row over two wide ones; drawn as two and two"
+  },
+  {
+   "component": "strip registration",
+   "what": "the 2022-12-15 strip stands about 1.5 m right of the BAG split between 131 and 133A; a van covers the shop ground"
+  },
+  {
+   "component": "roof behind crown",
+   "what": "Haarlemmerdijk 133A: the recipe route draws the 3DBAG roof (max 11.9 m, ridge 11.7 m) behind the neck crown; the strip shows sky behind it. roof.form 'flat' and roof.source 'front' are read by the block-face compile only, not by the canal-house recipe"
+  }
+ ],
+ "facts": {
+  "pui": "shop"
+ }
+}

@@ -1,0 +1,95 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012171144",
+ "address": "Haarlemmerstraat 54",
+ "design": {
+  "fronts": [
+   {
+    "partyClip": true,
+    "id": "front0",
+    "street": "Haarlemmerstraat",
+    "storeys": 4,
+    "bays": 3,
+    "storeyHeights": [
+     4.4,
+     2.8,
+     2.7,
+     2.5
+    ],
+    "windows": "sash-6-over-6",
+    "windowSurround": "sill",
+    "windowHeights": [
+     0.55,
+     0.66,
+     0.66,
+     0.6
+    ],
+    "headLines": [
+     0.8,
+     0.88,
+     0.86,
+     0.84
+    ],
+    "windowShare": 0.52,
+    "cornice": "none",
+    "gable": "neck",
+    "crownRise": 1.2,
+    "atticWindows": 1,
+    "hoist": true,
+    "doorBay": null,
+    "basement": "none",
+    "shopfront": {
+     "colour": "#585b4d",
+     "fascia": true,
+     "name": "The Lebanese Sajeria",
+     "entrance": "centre",
+     "glazing": "split",
+     "stallriser": "low",
+     "evidence": "auto-place: osm-only (bijeenkomstfunctie, amenity=restaurant); fascia colour measured on the strip 2024-11-21 span 3442-3634"
+    }
+   }
+  ],
+  "roof": {
+   "material": "red-tile",
+   "squareSaddle": true
+  },
+  "palette": {
+   "brick": "#675b4a",
+   "frame": "white-painted",
+   "door": "#2a2a28",
+   "stone": "#e8e4d8",
+   "cornice": "#e8e4d8",
+   "stoneMaterial": "painted"
+  },
+  "notes": [
+   "type haarlemmerstraat-sash-gable-four: crown neck, mirrored, palette haarlemmer-red-brown + measured brick #675b4a"
+  ]
+ },
+ "provenance": {
+  "": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "scripts/block-face/faces/haarlemmer-46-96-r1/strip.json",
+   "at": "2024-11-21"
+  },
+  "fronts/0/bays": {
+   "source": "default",
+   "confidence": 0.3,
+   "ref": "scripts/block-face/faces/haarlemmer-46-96-r1/strip.json#type:haarlemmerstraat-sash-gable-four",
+   "at": null
+  }
+ },
+ "schemaLimits": [
+  {
+   "component": "gable ornament",
+   "what": "54 (171144) and 52 (171145): sandstone scrolls on the neck gables and a three-light attic group on 54; drawn as plain necks with one attic light"
+  },
+  {
+   "component": "roof behind crown",
+   "what": "Haarlemmerstraat 54: the recipe route draws the 3DBAG roof (max 14.6 m, ridge 14.6 m) behind the neck crown; the strip shows sky behind it. roof.form 'flat' and roof.source 'front' are read by the block-face compile only, not by the canal-house recipe"
+  }
+ ],
+ "facts": {
+  "pui": "shop"
+ }
+}
