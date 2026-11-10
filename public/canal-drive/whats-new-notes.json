@@ -3,6 +3,18 @@
   "notes": [
     {
       "date": "2026-11-10",
+      "title": "Stoops, door surrounds and string courses are back",
+      "text": "The small details on ordinary houses had been fading out of view for most camera angles: stoops, door surrounds, string courses, pilasters and flower boxes. A focal-length bug in the fade for thin geometry caused it, and it is now fixed, so these details show from street level again. Details the monument register records for a house are now placed before the random ones.",
+      "images": [
+        {
+          "src": "whats-new/2026-11-10-facade-extras.jpg",
+          "alt": "Panorama, before and after strips of canal-belt houses",
+          "caption": "Photo, before, after"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-10",
       "title": "Free Ride pins stand at their landmark",
       "text": "In Free Ride a landmark's pin now stands at the landmark itself rather than at the nearest street or canal, which by boat could be hundreds of metres away. Pins step onto the quay when the point is in the water and off a building's roof onto the street.",
       "images": []

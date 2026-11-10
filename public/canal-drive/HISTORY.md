@@ -1,5 +1,9 @@
 # Canal Recall — what is built
 
+**Facade extras visible again (2026-11-10, register-extras lane).** Since #230, `thinFade` has dithered out every thin facade extra: stoops, door surrounds, string courses, pilasters and flower boxes. The cause was `projectionMatrix.elements[5]` read as the focal length, giving 3–6% of the true value. `projectionFocal11()` now reads the y row, and `thinFade.test.ts` fails on the old code. In `facadeExtras.ts`, `registerFirst()` places register-stated parts before the random draw, so the wall budget no longer crowds them out.
+- **Frontal register strips:** each spot now gets a full load, and the detail tier asserts the aimed pand.
+- **Held:** the register read release (stoop, door surround), lane commit 8ee3806b3. It waits behind the house-line hold, with its reasons in `docs/reports/register-extras-20261110.md`.
+
 **Batch a1 round 5 (2026-11-10): first belt and inner-ring buurt installs.** Each lane's sheets were judged by Opus before merge, and the fixes were applied in the lane.
 - **Den Texbuurt 13 and Frederikspleinbuurt 7:**
   - per-pand roof pins (`reviewRoofs.ts`), now combined with the per-pand eaves pins;
