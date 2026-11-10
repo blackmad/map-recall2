@@ -43207,9 +43207,9 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012247232",
       "name": "Houthavenkade 26, Amsterdam-West (Houthavens): 2018 courtyard block of apartments on the Houthavenkade, an eight-storey canal front of orange and dark brick with glass balcony columns over a glazed ground, a set-back glazed top floor and lower brick ranges on the south and west",
-      "hash": "32bb47890f9ce9c7f99a9038fc27b4268a51b37443b08901c303938b4d170672",
-      "sha256": "73ded80d73245f4cf733155219f93a610f65d01cc8dd1dfc7f9b575defcd986b",
-      "bytes": 309088,
+      "hash": "5be4f9de3e0dcf646809fdd1d65dd8da0f342bdb6d2794240951f4e0c8d37d0b",
+      "sha256": "5be4f9de3e0dcf646809fdd1d65dd8da0f342bdb6d2794240951f4e0c8d37d0b",
+      "bytes": 899144,
       "triangles": 11984,
       "materials": 17,
       "textures": 0,
@@ -43436,20 +43436,17 @@
       },
       "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
       "limitations": [
-        "walls[1] likeness WARN (mask IoU 0.41 < 0.45).",
-        "walls[2] not confirmed by the photo (NO PHOTO); inferred: no reference panel faces this wall, kept from the measured 3DBAG facet and neighbour group",
-        "walls[3] likeness WARN (mask IoU 0.404 < 0.45).",
-        "walls[4] likeness WARN (mask IoU 0.23 < 0.45).",
+        "Facade systems are rule-fitted to the 3DBAG eaves and the counted storeys/bays, not rectified from the photographs.",
         "Simplified: the orange/dark brick split of the north front is one blended brick colour, the glass balcony columns are slabs with glass rails in every third bay, bays are fewer than the photographed 16 window columns to stay inside 12k triangles, roof terraces and the stepped dark-slate roofs are 3DBAG roof geometry. Surfaces 55, 86, 102, 421 and 425 on the south range (heights 4.4-16.8 m) and everything not listed stay blank wall, the courtyard and east wings not photographed within 35 m.",
         "Measured 2026-10-14 (measure.ts, evidence in measured.json): groups 0, 1, 3, 4 take the photo's wall and glass colour, window shape, bay count and front class; walls[0] glass #726f5d not used (not darker than the wall #917b5c by 10 L*, or tinted): kit glass kept; walls[1] glass #3f4248 not used (not darker than the wall #494341 by 10 L*, or tinted): kit glass kept; walls[3] glass #575960 not used (not darker than the wall #615b54 by 10 L*, or tinted): kit glass kept; walls[4] glass #2f557d not used (not darker than the wall #524c52 by 10 L*, or tinted): kit glass kept."
       ],
-      "reviewState": "large-recipe-likeness-inferred",
+      "reviewState": "large-recipe-gates-pass",
       "sourceUrls": [
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012247232",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-25T11:08:54.632Z",
-      "meshHash": "de5c93748dcafe3a"
+      "updatedAt": "2026-11-10T04:54:51.605Z",
+      "meshHash": "9cfee8d568f8edc6"
     },
     {
       "id": "ordinary-0363100012112128",
