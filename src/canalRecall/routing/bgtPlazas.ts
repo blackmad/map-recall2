@@ -140,8 +140,20 @@ export function isPlazaReachSurface(a: BgtSurfaceAttributes): boolean {
 /** The URL flag: `?bgtPlazas=1` turns the BGT plazas on, `?bgtPlazas=0` off. */
 export const BGT_PLAZAS_FLAG = 'bgtPlazas';
 
-/** Default off until the integrator has looked at the ride frames (docs/reports/bgt-plazas-20261110.md). */
+/** Default with no URL flag and no device known (tests, Node): off. */
 export const BGT_PLAZAS_DEFAULT = false;
+
+/**
+ * Per-device defaults (integrator 2026-11-10, user approved): desktop on after the ride frames and orthophoto
+ * sheets were reviewed (docs/reports/bgt-plazas-20261110.md); touch off until the 1.07 MB extract is split per cell.
+ */
+export const BGT_PLAZAS_DEFAULT_DESKTOP = true;
+export const BGT_PLAZAS_DEFAULT_TOUCH = false;
+
+/** The default for a device: `touch` is `matchMedia('(pointer: coarse)')`. */
+export function bgtPlazasDefault(touch: boolean): boolean {
+  return touch ? BGT_PLAZAS_DEFAULT_TOUCH : BGT_PLAZAS_DEFAULT_DESKTOP;
+}
 
 /** The published extract, relative to the city's extract path. */
 export const BGT_PLAZAS_EXTRACT = 'bgt-plazas-v1.json';

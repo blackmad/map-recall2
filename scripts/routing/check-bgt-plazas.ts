@@ -4,7 +4,7 @@
 //   npx tsx scripts/routing/check-bgt-plazas.ts
 import assert from 'node:assert/strict';
 import {
-  BGT_PLAZAS_DEFAULT, RIDEABLE_PLAZA_CLASSES, bgtPlazasEnabled, isPlazaReachSurface, isRideablePlazaSurface,
+  BGT_PLAZAS_DEFAULT, bgtPlazasDefault, RIDEABLE_PLAZA_CLASSES, bgtPlazasEnabled, isPlazaReachSurface, isRideablePlazaSurface,
   type BgtSurfaceAttributes,
 } from '../../src/canalRecall/routing/bgtPlazas.ts';
 import { buildPlazaIndex, plazaAt, type PlazaFeature } from '../../src/canalRecall/routing/pedestrianAreas.ts';
@@ -42,8 +42,11 @@ assert.ok(!isPlazaReachSurface(at({ collection: 'onbegroeidterreindeel', functie
 assert.ok(RIDEABLE_PLAZA_CLASSES.every(c => !c.fysiek.includes('erf') && !c.fysiek.includes('onverhard')), 'the exported list holds paved classes only');
 
 // The flag.
-assert.equal(BGT_PLAZAS_DEFAULT, false, 'off by default until the integrator flips it');
+assert.equal(BGT_PLAZAS_DEFAULT, false, 'off when no device is known (Node, tests)');
 assert.equal(bgtPlazasEnabled(''), BGT_PLAZAS_DEFAULT);
+assert.equal(bgtPlazasDefault(false), true, 'desktop default on (integrator 2026-11-10)');
+assert.equal(bgtPlazasDefault(true), false, 'touch default off until the extract is split per cell');
+assert.equal(bgtPlazasEnabled('?bgtPlazas=0', bgtPlazasDefault(false)), false);
 assert.equal(bgtPlazasEnabled('?bgtPlazas=1'), true);
 assert.equal(bgtPlazasEnabled('?x=2&bgtPlazas=on'), true);
 assert.equal(bgtPlazasEnabled('?bgtPlazas=0', true), false);

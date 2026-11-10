@@ -3,6 +3,15 @@
   "notes": [
     {
       "date": "2026-11-10",
+      "title": "Ride across squares",
+      "text": "On desktop you can now ride across paved squares, forecourts and wide quays, not just along the streets beside them: Waterlooplein market square, the IJ quays, office forecourts in the Zuidas, about 4,900 places and 1 km² of new ground. Lawns, private courtyards and car parks stay off limits.",
+      "where": [
+        4.900812,
+        52.36869
+      ]
+    },
+    {
+      "date": "2026-11-10",
       "title": "Grass where there is grass",
       "text": "Open ground that used to draw as grey paving now follows the city's own surface map and the 2025 aerial photo: lawns, verges and empty lots are meadow, shrubs and sand where they really are, and bare earth on building sites. About 4,000 hectares changed, mostly outside the centre; squares and forecourts stay paved.",
       "where": [

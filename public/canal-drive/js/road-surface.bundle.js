@@ -31,6 +31,7 @@ var CanalRecallRoadSurface = (() => {
     NAME_MERGE_SIZE: () => NAME_MERGE_SIZE,
     NAME_WIDTH_SLACK: () => NAME_WIDTH_SLACK,
     ROAD_GRID_CELL: () => ROAD_GRID_CELL,
+    bgtPlazasDefault: () => bgtPlazasDefault,
     bgtPlazasEnabled: () => bgtPlazasEnabled,
     buildPlazaIndex: () => buildPlazaIndex,
     buildRoadSpatialIndex: () => buildRoadSpatialIndex,
@@ -107,6 +108,11 @@ var CanalRecallRoadSurface = (() => {
   var BGT_PLAZA_MIN_AREA_M2 = 40;
   var BGT_PLAZAS_FLAG = "bgtPlazas";
   var BGT_PLAZAS_DEFAULT = false;
+  var BGT_PLAZAS_DEFAULT_DESKTOP = true;
+  var BGT_PLAZAS_DEFAULT_TOUCH = false;
+  function bgtPlazasDefault(touch) {
+    return touch ? BGT_PLAZAS_DEFAULT_TOUCH : BGT_PLAZAS_DEFAULT_DESKTOP;
+  }
   var BGT_PLAZAS_EXTRACT = "bgt-plazas-v1.json";
   function bgtPlazasEnabled(search, fallback = BGT_PLAZAS_DEFAULT) {
     const match = new RegExp(`[?&]${BGT_PLAZAS_FLAG}=([^&#]*)`).exec(search || "");

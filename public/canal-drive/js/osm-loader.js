@@ -68,11 +68,14 @@ class OSMLoader {
         ? settle(fetch(new URL(`${city.extractPath}/squares.json`, window.location.href))
           .then(response => (response.ok ? response.json() : null)))
         : null;
-      // BGT paved plazas and forecourts (bgtPlazas.ts), behind `?bgtPlazas=1` until
-      // the flag's default flips. A bundle without the flag reader keeps them off.
+      // BGT paved plazas and forecourts (bgtPlazas.ts): on for desktop, off on touch
+      // (bgtPlazasDefault); `?bgtPlazas=0|1` overrides. A stale bundle keeps them off.
       const SURFACE = window.CanalRecallRoadSurface;
       const bgtPlazasOn = travelMode === 'car' && city.id === 'amsterdam' && SURFACE
-        && typeof SURFACE.bgtPlazasEnabled === 'function' && SURFACE.bgtPlazasEnabled(window.location.search);
+        && typeof SURFACE.bgtPlazasEnabled === 'function' && SURFACE.bgtPlazasEnabled(window.location.search,
+          typeof SURFACE.bgtPlazasDefault === 'function'
+            ? SURFACE.bgtPlazasDefault(!!(window.matchMedia && window.matchMedia('(pointer: coarse)').matches))
+            : false);
       const bgtPlazasLoad = bgtPlazasOn
         ? settle(fetch(new URL(`${city.extractPath}/${SURFACE.BGT_PLAZAS_EXTRACT}`, window.location.href))
           .then(response => (response.ok ? response.json() : null)))
