@@ -1,0 +1,261 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "witsen-1-19-r1",
+ "street": "Nicolaas Witsenstraat",
+ "sources": [
+  {
+   "id": "strip-2024-12-04",
+   "kind": "street-panorama",
+   "capturedAt": "2024-12-04",
+   "image": "staging/block-face/witsen-1-19-r1/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "auto-place (blockFace/autoPlace.ts)",
+  "passes": 1,
+  "note": "auto-placed from the de-pijp library (buurt Frederikspleinbuurt); scores and holds in scripts/block-face/faces/witsen-1-19/auto-place.json"
+ },
+ "types": [
+  "witsen-1890-plain-block-mansard"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012177762",
+   "slug": "witsen-177762",
+   "address": "Nicolaas Witsenstraat 7",
+   "type": {
+    "type": "witsen-1890-plain-block-mansard",
+    "mirror": true,
+    "measuredPalette": {
+     "brick": "#695342",
+     "evidence": "strip 2024-12-04 span 721-973: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2024-12-04",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: witsen-1890-plain-block-mansard scored 1 on eaves 1, stucco 1, columns 1; strip 2024-12-04 span 721-973"
+   }
+  },
+  {
+   "pandId": "0363100012177761",
+   "slug": "witsen-177761",
+   "address": "Nicolaas Witsenstraat 9",
+   "type": {
+    "type": "witsen-1890-plain-block-mansard",
+    "measuredPalette": {
+     "brick": "#7e6552",
+     "evidence": "strip 2024-12-04 span 973-1225: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2024-12-04",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: witsen-1890-plain-block-mansard scored 1 on eaves 1, stucco 1, columns 1; strip 2024-12-04 span 973-1225"
+   }
+  },
+  {
+   "pandId": "0363100012177760",
+   "slug": "witsen-177760",
+   "address": "Nicolaas Witsenstraat 11",
+   "type": {
+    "type": "witsen-1890-plain-block-mansard",
+    "mirror": true,
+    "measuredPalette": {
+     "brick": "#4a4033",
+     "evidence": "strip 2024-12-04 span 1225-1477: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2024-12-04",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: witsen-1890-plain-block-mansard scored 1 on eaves 1, stucco 1, columns 1; strip 2024-12-04 span 1225-1477"
+   }
+  },
+  {
+   "pandId": "0363100012177759",
+   "slug": "witsen-177759",
+   "address": "Nicolaas Witsenstraat 13",
+   "type": {
+    "type": "witsen-1890-plain-block-mansard",
+    "measuredPalette": {
+     "brick": "#54483c",
+     "evidence": "strip 2024-12-04 span 1477-1729: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2024-12-04",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: witsen-1890-plain-block-mansard scored 1 on eaves 1, stucco 1, columns 1; strip 2024-12-04 span 1477-1729"
+   }
+  },
+  {
+   "pandId": "0363100012171225",
+   "slug": "witsen-171225",
+   "address": "Nicolaas Witsenstraat 15",
+   "type": {
+    "type": "witsen-1890-plain-block-mansard",
+    "mirror": true
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2024-12-04",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: witsen-1890-plain-block-mansard scored 1 on eaves 1, stucco -; strip 2024-12-04 span 1729-1974"
+   }
+  },
+  {
+   "pandId": "0363100012178936",
+   "slug": "witsen-178936",
+   "address": "Nicolaas Witsenstraat 17",
+   "type": {
+    "type": "witsen-1890-plain-block-mansard",
+    "measuredPalette": {
+     "brick": "#695143",
+     "evidence": "strip 2024-12-04 span 1974-2222: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2024-12-04",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: witsen-1890-plain-block-mansard scored 1 on eaves 1, stucco 1, columns 1; strip 2024-12-04 span 1974-2222"
+   }
+  },
+  {
+   "pandId": "0363100012178935",
+   "slug": "witsen-178935",
+   "address": "Nicolaas Witsenstraat 19B",
+   "type": {
+    "type": "witsen-1890-plain-block-mansard",
+    "measuredPalette": {
+     "brick": "#5d4739",
+     "evidence": "strip 2024-12-04 span 2222-2480: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2024-12-04",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: witsen-1890-plain-block-mansard scored 1 on eaves 1, stucco 1, columns 1; strip 2024-12-04 span 2222-2480"
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "auto-place: low attic behind the cornice; the strips show sky over the cornices of the type rows"
+  },
+  "measuredEaves": [
+   {
+    "pand": "0363100012177762",
+    "stripRow": 197,
+    "frontRoof": {
+     "topRow": 109
+    },
+    "evidence": "auto-place: the witsen-1890-plain-block-mansard cornice line 15.2 m (measured on its exemplar strips; this pand's skyline unread); 3DBAG/PDOK eaves 18.1 m; reviewer roof pin: cornice 15.2 m, roof top 17.4 m (Nicolaas Witsenstraat 7 (2024-12-04 strip): the black mansard tops out at 17.0-17.3 m, 3DBAG draws 17.7-18.1 m as a flat slab)"
+   },
+   {
+    "pand": "0363100012177761",
+    "stripRow": 197,
+    "frontRoof": {
+     "topRow": 109
+    },
+    "evidence": "auto-place: the witsen-1890-plain-block-mansard cornice line 15.2 m (measured on its exemplar strips; this pand's skyline unread); 3DBAG/PDOK eaves 17.95 m; reviewer roof pin: cornice 15.2 m, roof top 17.4 m (Nicolaas Witsenstraat 9 (2024-12-04 strip): the black mansard tops out at 17.0-17.3 m, 3DBAG draws 17.7-18.1 m as a flat slab)"
+   },
+   {
+    "pand": "0363100012177760",
+    "stripRow": 197,
+    "frontRoof": {
+     "topRow": 109
+    },
+    "evidence": "auto-place: the witsen-1890-plain-block-mansard cornice line 15.2 m (measured on its exemplar strips; this pand's skyline unread); 3DBAG/PDOK eaves 17.7 m; reviewer roof pin: cornice 15.2 m, roof top 17.4 m (Nicolaas Witsenstraat 11 (2024-12-04 strip): the black mansard tops out at 17.0-17.3 m, 3DBAG draws 17.7-18.1 m as a flat slab)"
+   },
+   {
+    "pand": "0363100012177759",
+    "stripRow": 197,
+    "frontRoof": {
+     "topRow": 109
+    },
+    "evidence": "auto-place: the witsen-1890-plain-block-mansard cornice line 15.2 m (measured on its exemplar strips; this pand's skyline unread); 3DBAG/PDOK eaves 17.95 m; reviewer roof pin: cornice 15.2 m, roof top 17.4 m (Nicolaas Witsenstraat 13 (2024-12-04 strip): the black mansard tops out at 17.0-17.3 m, 3DBAG draws 17.7-18.1 m as a flat slab)"
+   },
+   {
+    "pand": "0363100012171225",
+    "stripRow": 197,
+    "frontRoof": {
+     "topRow": 109
+    },
+    "evidence": "auto-place: the witsen-1890-plain-block-mansard cornice line 15.2 m (measured on its exemplar strips; this pand's skyline unread); 3DBAG/PDOK eaves 17.68 m; reviewer roof pin: cornice 15.2 m, roof top 17.4 m (Nicolaas Witsenstraat 15 (2024-12-04 strip): the black mansard tops out at 17.0-17.3 m, 3DBAG draws 17.7-18.1 m as a flat slab)"
+   },
+   {
+    "pand": "0363100012178936",
+    "stripRow": 197,
+    "frontRoof": {
+     "topRow": 109
+    },
+    "evidence": "auto-place: the witsen-1890-plain-block-mansard cornice line 15.2 m (measured on its exemplar strips; this pand's skyline unread); 3DBAG/PDOK eaves 17.77 m; reviewer roof pin: cornice 15.2 m, roof top 17.4 m (Nicolaas Witsenstraat 17 (2024-12-04 strip): the black mansard tops out at 17.0-17.3 m, 3DBAG draws 17.7-18.1 m as a flat slab)"
+   },
+   {
+    "pand": "0363100012178935",
+    "stripRow": 197,
+    "frontRoof": {
+     "topRow": 109
+    },
+    "evidence": "auto-place: the witsen-1890-plain-block-mansard cornice line 15.2 m (measured on its exemplar strips; this pand's skyline unread); 3DBAG/PDOK eaves 17.89 m; reviewer roof pin: cornice 15.2 m, roof top 17.4 m (Nicolaas Witsenstraat 19B (2024-12-04 strip): the black mansard tops out at 17.0-17.3 m, 3DBAG draws 17.7-18.1 m as a flat slab)"
+   }
+  ]
+ }
+}

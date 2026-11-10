@@ -5455,6 +5455,36 @@
     "hash": "81a105b8816b686a",
     "class": "recipe"
    }
+  },
+  "witsen-1-19-r1": {
+   "171225": {
+    "hash": "0913ead078ef8a05",
+    "class": "front"
+   },
+   "177759": {
+    "hash": "cdb0088b34801a7e",
+    "class": "front"
+   },
+   "177760": {
+    "hash": "b2e712995b290efe",
+    "class": "front"
+   },
+   "177761": {
+    "hash": "3b3467e719e43538",
+    "class": "front"
+   },
+   "177762": {
+    "hash": "2d9664ccc3c151ad",
+    "class": "front"
+   },
+   "178935": {
+    "hash": "f95c9a6dd318460d",
+    "class": "front"
+   },
+   "178936": {
+    "hash": "e8e0596fd15c6d2b",
+    "class": "front"
+   }
   }
  },
  "intents": {
@@ -5715,6 +5745,7 @@
   "vogel-3-15-r1": "e2cb775f31e878d4",
   "zamenhof-54-60-r1": "daf7097523219787",
   "zamenhof-6-12-r1": "b9192bc580ff7c36",
-  "zamenhof-84-90-r1": "aee52bb4ffae4f33"
+  "zamenhof-84-90-r1": "aee52bb4ffae4f33",
+  "witsen-1-19-r1": "9d92bf8a3d0a913b"
  }
 }

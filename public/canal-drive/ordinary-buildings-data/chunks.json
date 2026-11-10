@@ -1,6 +1,6 @@
 {
  "version": 1,
- "generatedAt": "2026-11-10T08:41:35.921Z",
+ "generatedAt": "2026-11-10T08:47:53.630Z",
  "chunks": [
   {
    "id": "chunk-face-bilder-080336-090492",
@@ -91339,6 +91339,712 @@
        "primitive": 10,
        "firstTriangle": 22,
        "triangleCount": 9
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "chunk-face-witsen-1-19-r1",
+   "category": "street-survey",
+   "name": "face-witsen-1-19-r1",
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-witsen-1-19-r1.glb?asset=7dfd2a88b00a56ae",
+   "sha256": "7dfd2a88b00a56ae322a4b1a6cfa31bd8321063d1b04b84436a71fa793957a25",
+   "bytes": 221496,
+   "triangles": 9330,
+   "primitives": 14,
+   "instance": {
+    "anchor": [
+     4.896378454865825,
+     52.358692433565864
+    ],
+    "northOffsetDegrees": 95.0469,
+    "mirror": false
+   },
+   "bounds": {
+    "min": [
+     -21.984,
+     0,
+     -17.024
+    ],
+    "max": [
+     22.091,
+     17.39,
+     0.458
+    ]
+   },
+   "height": 17.39,
+   "suppress": [
+    "NL.IMBAG.Pand.0363100012177762",
+    "NL.IMBAG.Pand.0363100012177761",
+    "NL.IMBAG.Pand.0363100012177760",
+    "NL.IMBAG.Pand.0363100012177759",
+    "NL.IMBAG.Pand.0363100012171225",
+    "NL.IMBAG.Pand.0363100012178936",
+    "NL.IMBAG.Pand.0363100012178935"
+   ],
+   "replaces": [
+    "ordinary-0363100012177762",
+    "ordinary-0363100012177761",
+    "ordinary-0363100012177760",
+    "ordinary-0363100012177759",
+    "ordinary-0363100012171225",
+    "ordinary-0363100012178936",
+    "ordinary-0363100012178935"
+   ],
+   "footprint": {
+    "type": "MultiPolygon",
+    "coordinates": [
+     [
+      [
+       [
+        4.8966207,
+        52.3588771
+       ],
+       [
+        4.8964077,
+        52.3588892
+       ],
+       [
+        4.8963993,
+        52.3588328
+       ],
+       [
+        4.8966459,
+        52.3588187
+       ],
+       [
+        4.8966491,
+        52.3588401
+       ],
+       [
+        4.8966154,
+        52.3588421
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8966459,
+        52.3588187
+       ],
+       [
+        4.8963993,
+        52.3588328
+       ],
+       [
+        4.896391,
+        52.3587763
+       ],
+       [
+        4.8965831,
+        52.3587654
+       ],
+       [
+        4.8965884,
+        52.3588004
+       ],
+       [
+        4.8966426,
+        52.3587973
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8966209,
+        52.3587632
+       ],
+       [
+        4.896391,
+        52.3587763
+       ],
+       [
+        4.8963822,
+        52.35872
+       ],
+       [
+        4.896594,
+        52.3587079
+       ],
+       [
+        4.8965973,
+        52.3587299
+       ],
+       [
+        4.8966157,
+        52.3587288
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8963822,
+        52.35872
+       ],
+       [
+        4.8963734,
+        52.3586636
+       ],
+       [
+        4.8966219,
+        52.3586495
+       ],
+       [
+        4.8966307,
+        52.3587058
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8965675,
+        52.3586526
+       ],
+       [
+        4.8963734,
+        52.3586636
+       ],
+       [
+        4.8963665,
+        52.3586088
+       ],
+       [
+        4.896589,
+        52.3585951
+       ],
+       [
+        4.8965943,
+        52.358624
+       ],
+       [
+        4.896562,
+        52.3586265
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.896589,
+        52.3585951
+       ],
+       [
+        4.8963653,
+        52.3586088
+       ],
+       [
+        4.8963573,
+        52.3585532
+       ],
+       [
+        4.896593,
+        52.3585384
+       ],
+       [
+        4.8965968,
+        52.3585631
+       ],
+       [
+        4.8965833,
+        52.3585642
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.896569,
+        52.3585399
+       ],
+       [
+        4.8963588,
+        52.3585532
+       ],
+       [
+        4.8963508,
+        52.3584954
+       ],
+       [
+        4.8965897,
+        52.3584817
+       ],
+       [
+        4.8965954,
+        52.3585095
+       ],
+       [
+        4.8965635,
+        52.3585118
+       ]
+      ]
+     ]
+    ]
+   },
+   "pands": [
+    {
+     "recipeId": "witsen-177762",
+     "pandId": "0363100012177762",
+     "buildingId": "NL.IMBAG.Pand.0363100012177762",
+     "address": "Nicolaas Witsenstraat 7",
+     "frontage": {
+      "x0": -21.983,
+      "x1": -15.679,
+      "widthM": 6.304
+     },
+     "bounds": {
+      "min": [
+       -21.984,
+       0,
+       -16.955
+      ],
+      "max": [
+       -15.604,
+       17.39,
+       0.359
+      ]
+     },
+     "triangles": 1347,
+     "ranges": [
+      {
+       "primitive": 5,
+       "firstTriangle": 0,
+       "triangleCount": 61
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 0,
+       "triangleCount": 192
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 0,
+       "triangleCount": 40
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 0,
+       "triangleCount": 836
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 0,
+       "triangleCount": 174
+      },
+      {
+       "primitive": 12,
+       "firstTriangle": 0,
+       "triangleCount": 21
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 0,
+       "triangleCount": 11
+      }
+     ]
+    },
+    {
+     "recipeId": "witsen-177761",
+     "pandId": "0363100012177761",
+     "buildingId": "NL.IMBAG.Pand.0363100012177761",
+     "address": "Nicolaas Witsenstraat 9",
+     "frontage": {
+      "x0": -15.679,
+      "x1": -9.374,
+      "widthM": 6.305
+     },
+     "bounds": {
+      "min": [
+       -15.68,
+       0,
+       -16.945
+      ],
+      "max": [
+       -9.315,
+       17.39,
+       0.371
+      ]
+     },
+     "triangles": 1337,
+     "ranges": [
+      {
+       "primitive": 6,
+       "firstTriangle": 0,
+       "triangleCount": 54
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 192,
+       "triangleCount": 192
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 40,
+       "triangleCount": 40
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 836,
+       "triangleCount": 836
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 12,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 174,
+       "triangleCount": 174
+      },
+      {
+       "primitive": 12,
+       "firstTriangle": 21,
+       "triangleCount": 19
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 11,
+       "triangleCount": 10
+      }
+     ]
+    },
+    {
+     "recipeId": "witsen-177760",
+     "pandId": "0363100012177760",
+     "buildingId": "NL.IMBAG.Pand.0363100012177760",
+     "address": "Nicolaas Witsenstraat 11",
+     "frontage": {
+      "x0": -9.374,
+      "x1": -3.077,
+      "widthM": 6.298
+     },
+     "bounds": {
+      "min": [
+       -9.376,
+       0,
+       -15.793
+      ],
+      "max": [
+       -3.014,
+       17.39,
+       0.414
+      ]
+     },
+     "triangles": 1314,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 0,
+       "triangleCount": 57
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 384,
+       "triangleCount": 192
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 80,
+       "triangleCount": 40
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 1672,
+       "triangleCount": 812
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 24,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 348,
+       "triangleCount": 168
+      },
+      {
+       "primitive": 12,
+       "firstTriangle": 40,
+       "triangleCount": 22
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 21,
+       "triangleCount": 11
+      }
+     ]
+    },
+    {
+     "recipeId": "witsen-177759",
+     "pandId": "0363100012177759",
+     "buildingId": "NL.IMBAG.Pand.0363100012177759",
+     "address": "Nicolaas Witsenstraat 13",
+     "frontage": {
+      "x0": -3.077,
+      "x1": 3.221,
+      "widthM": 6.298
+     },
+     "bounds": {
+      "min": [
+       -3.079,
+       0,
+       -17.024
+      ],
+      "max": [
+       3.295,
+       17.39,
+       0.458
+      ]
+     },
+     "triangles": 1270,
+     "ranges": [
+      {
+       "primitive": 1,
+       "firstTriangle": 0,
+       "triangleCount": 49
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 576,
+       "triangleCount": 192
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 120,
+       "triangleCount": 40
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 2484,
+       "triangleCount": 788
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 36,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 516,
+       "triangleCount": 162
+      },
+      {
+       "primitive": 12,
+       "firstTriangle": 62,
+       "triangleCount": 19
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 32,
+       "triangleCount": 8
+      }
+     ]
+    },
+    {
+     "recipeId": "witsen-171225",
+     "pandId": "0363100012171225",
+     "buildingId": "NL.IMBAG.Pand.0363100012171225",
+     "address": "Nicolaas Witsenstraat 15",
+     "frontage": {
+      "x0": 3.221,
+      "x1": 9.344,
+      "widthM": 6.124
+     },
+     "bounds": {
+      "min": [
+       3.221,
+       0,
+       -15.35
+      ],
+      "max": [
+       9.526,
+       17.39,
+       0.458
+      ]
+     },
+     "triangles": 1352,
+     "ranges": [
+      {
+       "primitive": 2,
+       "firstTriangle": 0,
+       "triangleCount": 37
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 768,
+       "triangleCount": 192
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 160,
+       "triangleCount": 40
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 3272,
+       "triangleCount": 860
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 48,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 678,
+       "triangleCount": 180
+      },
+      {
+       "primitive": 12,
+       "firstTriangle": 81,
+       "triangleCount": 22
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 40,
+       "triangleCount": 9
+      }
+     ]
+    },
+    {
+     "recipeId": "witsen-178936",
+     "pandId": "0363100012178936",
+     "buildingId": "NL.IMBAG.Pand.0363100012178936",
+     "address": "Nicolaas Witsenstraat 17",
+     "frontage": {
+      "x0": 9.344,
+      "x1": 15.554,
+      "widthM": 6.21
+     },
+     "bounds": {
+      "min": [
+       9.344,
+       0,
+       -16.088
+      ],
+      "max": [
+       15.783,
+       17.39,
+       0.432
+      ]
+     },
+     "triangles": 1320,
+     "ranges": [
+      {
+       "primitive": 4,
+       "firstTriangle": 0,
+       "triangleCount": 49
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 960,
+       "triangleCount": 192
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 200,
+       "triangleCount": 40
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 4132,
+       "triangleCount": 828
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 60,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 858,
+       "triangleCount": 172
+      },
+      {
+       "primitive": 12,
+       "firstTriangle": 103,
+       "triangleCount": 19
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 49,
+       "triangleCount": 8
+      }
+     ]
+    },
+    {
+     "recipeId": "witsen-178935",
+     "pandId": "0363100012178935",
+     "buildingId": "NL.IMBAG.Pand.0363100012178935",
+     "address": "Nicolaas Witsenstraat 19B",
+     "frontage": {
+      "x0": 15.554,
+      "x1": 22.004,
+      "widthM": 6.45
+     },
+     "bounds": {
+      "min": [
+       15.554,
+       0,
+       -16.541
+      ],
+      "max": [
+       22.091,
+       17.39,
+       0.42
+      ]
+     },
+     "triangles": 1390,
+     "ranges": [
+      {
+       "primitive": 3,
+       "firstTriangle": 0,
+       "triangleCount": 40
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 1152,
+       "triangleCount": 192
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 240,
+       "triangleCount": 40
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 4960,
+       "triangleCount": 892
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 72,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 1030,
+       "triangleCount": 188
+      },
+      {
+       "primitive": 12,
+       "firstTriangle": 122,
+       "triangleCount": 18
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 57,
+       "triangleCount": 8
       }
      ]
     }

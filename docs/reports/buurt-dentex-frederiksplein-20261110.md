@@ -14,12 +14,33 @@ Lane `lane/buurt-dentex-frederiksplein-20261110`, MODEL: sonnet. Sheets and stri
 2. `tex-1876-balcony-wide-dormer`: Den Texstraat 21-27, the same body plus iron balconettes on the centre axis (storeys 1-2) and a three-light dormer 2.7 m wide (`dormerLights 3`).
 Pins: `den-texbuurt-review-{types,doors,palettes,holds}.json`.
 
-## Yield (Den Texstraat 1-59 and 8-58 only: 43 pands run, 59 faces' pands incl. a 12 m double)
-* vetoed before comparison (every type vetoed on year/frontage): 11 (1A, 17A, 8A, 8B, 10, 12, 14-16, 34? held on match).
-* compared and held: 5 held by the review for a different design (3, 5, 5A, 5B, 19); 4 for roof (7 lone after 9, 9 and 24, 18 carry 3DBAG ridges 2-3 m over the photographed cornice); 30-34 and 28-30 held on match score (different 1880-90 designs).
-* **placed and installed: 9 pands** on three runs: `tex-1-59-r1` (Den Texstraat 11, 13, 15), `tex-1-59-r2` (21, 23, 25, 27), `tex-8-58-r1` (20, 22).
+## Yield, Den Texstraat 1-59 and 8-58 (31 pands run through auto-place)
+Counts are per pand, rounds 1-2 together (final state).
+* **vetoed before comparison: 7.** Every type vetoed on year or frontage: 1A, 17A (tex-1-59); 8A, 8B, 10, 12 and the 12.2 m double 14-16 (tex-8-58).
+* **compared and held: 11.**
+  * 5 on the match score (best type under 0.7: 26, 28, 30, 32, 34);
+  * 1 lone pand (30A, between held neighbours);
+  * 5 held by the review as a different design (3, 5, 5A, 5B, 19).
+* **placed and installed: 13.** Den Texstraat 7, 9, 11, 13, 15 (`tex-1-59-r1`), 21, 23, 25, 27 (`tex-1-59-r2`), 18, 20, 22, 24 (`tex-8-58-r1`).
+  Round 1 placed 9; round 2 released 7, 9, 18 and 24 with the roof pins.
 Installed with `compile.ts --install` after `auto-place --photo-eaves --photo-decides --no-gate`.
-Why `--no-gate`: the likeness gate abstains on these fronts ("usable photo 30-47 %", the cream entablature and the sky over the mansard count as void), so it either holds everything or places on neighbours' evidence. I placed by eye on every sheet instead; an Opus reviewer should judge them.
+Why `--no-gate`: the likeness gate abstains on these fronts ("usable photo 30-47 %": the cream entablature and the sky over the mansard count as void), so it either holds everything or places on neighbours' evidence. I placed by eye on every sheet; the Opus review (`dentex-strip-verdict-20261110.md`) judged them.
+
+## Round 2: Opus verdict, roof pins, Frederikspleinbuurt
+* **Kit (typed, tested, byte-identical when absent).**
+  * `pierBlocks` (`buildingRecipe/pierBlocks.ts`, `pierBlocks.test.ts`): white head-line blocks on every pier at the listed storeys, alternating long and short, kept inside the reveals; `dentils` adds a continuous row under the cornice.
+  * `dormerLights` accepts 1 (one undivided light).
+  * `reviewRoofs.ts`: `<buurt>-review-roofs.json` pins `{pandId, ridgeM | flatBehindCornice, eavesM?, reason}`, consumed by auto-place as `continuity.measuredEaves[].frontRoof.topRow`. It is consumed there rather than in compile, so no new compile path exists; `eavesM` alone is a cornice row clamp. The pandId key matches the other pin files (the brief said `pand`).
+* **Den Texstraat verdict applied.**
+  * Brick `#645341` (22 `#655444`), 20 `#424c51`, cornice and frieze `#9e9a84`, white `#f0efe6`.
+  * Narrow single-light dormer under a taller pediment on the hood types.
+  * Erker variant `tex-1882-hood-bracket-erker` for 11 and 15.
+  * Top-only balcony variant for 23, flat heads with keystones on 21-27, 27's door on the left (BAG 0363100012179509 checked against the span order), eaves clamps 11 to 13.2 m and 27 to 13.7 m.
+  * Roof pins release 9, 18, 24; 7 is back with 9.
+* **Frederikspleinbuurt: 7 pands installed.** `witsen-1890-plain-block-mansard` on Nicolaas Witsenstraat 7, 9, 11, 13, 15, 17, 19B (one dark-brown design under several BAG years, 1873-91): ground plus three storeys, flat heads with keystones, white cornice at 14-15.4 m, black mansard with a box dormer. Roof pins cap the mansard at 17.4 m (3DBAG draws a 17.7-18.1 m slab); a pin at 17.2 m failed the GLB audit with 13.7 m2 coplanar roof overlap, so the ridge sits at 17.4 m.
+  * 10 pands in `witsen-1-19`: placed 7, vetoed before comparison 1 (3: built 1930), compared and held 2 (1 lone; 3-5 held by review as a different design).
+  * Faces intaken and looked at but not typed: Pieter Pauwstraat 2-22 (stoop fronts, nine different designs), Weteringschans 120-132 (stone and Neo-Renaissance, all different), Sarphatistraat 1-13 (a 1960s block and ornamented villas). They do not match the Witsenstraat design, so nothing is extended there.
+  * Not done: Witsenstraat 12-18 opposite (4 pands, no strip yet), Westeinde, Oosteinde (mixed designs).
 
 ## Overrides and pins to review
 * Den Texstraat 20: BAG gives 267 m2 `bijeenkomstfunctie`, which auto-place drew as a shopfront; the strip shows a house door and two windows. `faces/tex-8-58/uses.json` carries `woonfunctie` with a note.
@@ -34,4 +55,6 @@ Why `--no-gate`: the likeness gate abstains on these fronts ("usable photo 30-47
 * Painted dark fronts: palette pins only.
 
 ## For the integrator
+Round 2 adds `reviewRoofs.ts`, `pierBlocks.ts` and `dormerLights 1`; `test:block-face` 329/329, `test:building-recipes` 499/499, tsc clean. Roof golden was re-recorded for the tex and witsen faces only.
+
 Rebuild covers.json, explorer-looks.json, `chunkWallExposureData.ts` (already written by `compile.ts --install`), bundles; `roof-golden.json` was re-recorded (additions only, 0 reclassed). `test:block-face` 322/322, tsc clean. tex-8-58 stripOverDrawn 0.76 (below the batch's 0.8 floor: the run is dark painted fronts under a bright mansard).
