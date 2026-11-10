@@ -1,5 +1,19 @@
 # Canal Recall — what is built
 
+**H7 r4 corner shopfront; house:frames round 2 (2026-11-10, #354, #358).**
+- **H7 r4 (c1592ee67, sonnet): the corner shopfront.** The judgement session accepted H7 r3 on the house:frames after frames. Corner 116526's ground floor (the photo's café) now draws:
+  - a pale fascia, a dark dutch awning and three display bays with transoms;
+  - a right-hand entrance and a stallriser.
+  - The chunk is reinstalled.
+  - Not yet right: the door sits in a brick gap beside the glazing, and the awning is wider than the photo's.
+  - Still not drawn: the round corner board and the small-pane transom row.
+  - `chamfer-corner` is now in the kit-gap queue: 2,167 pands, 1,148 in ride-priority gebieden, 56 % of the ride-weighted 1850–1940 share.
+- **house:frames r2 (5f1dcc5b9):**
+  - The wall-colour flag is relative to the two neighbours in the same image, firing when |ln(game/photo ratio)| > 0.35. It gives 0 of 15 false positives on the accepted H7 set and fires on 5 of the 10 readable validation walls, all of which look wrong.
+  - Glare and washed-out panoramas are rejected even in winter.
+  - Opening counts are advisory only: they match the H5h hand axes on 14 of 33.
+  - List entries take a `chord` / `at` for stepped fronts, which is how 146 is now posed from Nassaukade.
+
 **H10 `house:frames` and H11 design fields on the generic path (2026-11-10, #358, #361).**
 - **H10 (4371ef8a8, opus): `npm run house:frames`.**
   - It puts the own engine's first-person camera at a street panorama's pose and pairs the game frame with the panorama cut to the same heading, pitch and FOV.
