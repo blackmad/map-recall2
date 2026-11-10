@@ -1,0 +1,221 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012168603",
+ "address": "Rozengracht 40",
+ "design": {
+  "fronts": [
+   {
+    "id": "front0",
+    "basement": "none",
+    "cornice": "bracketed",
+    "windows": "sash",
+    "windowSurround": "sill",
+    "hoist": false,
+    "street": "Rozengracht",
+    "gable": "cornice",
+    "storeys": 4,
+    "bays": 2,
+    "storeyHeights": [
+     3.1,
+     2.9,
+     2.7,
+     2.3
+    ],
+    "doorBay": 0,
+    "groundFront": {
+     "kind": "pui",
+     "bays": [
+      "door",
+      "window"
+     ],
+     "colour": "#ece9e0",
+     "evidence": "strip 2019-01-15: white shop ground"
+    },
+    "dormers": 1,
+    "dormerStyle": "plain",
+    "dormerBody": "stone",
+    "dormerAt": [
+     {
+      "from": 0.3,
+      "to": 0.7
+     }
+    ],
+    "dormerSize": {
+     "sill": 0.1,
+     "rise": 1.1,
+     "setback": 0.35
+    }
+   }
+  ],
+  "roof": {
+   "material": "red-tile"
+  },
+  "palette": {
+   "frame": "white-painted",
+   "door": "#26302a",
+   "stone": "#ebe8df",
+   "cornice": "#ebe8df",
+   "stoneMaterial": "painted",
+   "brick": "#51443c",
+   "wallMaterial": "brick"
+  }
+ },
+ "provenance": {
+  "fronts/0/id": {
+   "source": "author",
+   "confidence": 0.75,
+   "ref": "belt-jordaan hand read of rozengracht-30-82 strip 2019-01-15 (pand span): two axes: a low white shop ground 0-3.0 m; storeys at 3.3-5.3, 6.3-8.1 and 9.0-10.4 m; a white bracketed frieze and cornice 11.1-11.9 m; a red tile roof with a dormer to ~13.2 m; red-brown brick #51443c",
+   "at": "2019-01-15"
+  },
+  "fronts/0/basement": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of rozengracht-30-82 strip 2019-01-15 (pand span): two axes: a low white shop ground 0-3.0 m; storeys at 3.3-5.3, 6.3-8.1 and 9.0-10.4 m; a white bracketed frieze and cornice 11.1-11.9 m; a red tile roof with a dormer to ~13.2 m; red-brown brick #51443c (Jordaan type default, not contradicted by the photo)",
+   "at": "2019-01-15"
+  },
+  "fronts/0/cornice": {
+   "source": "author",
+   "confidence": 0.75,
+   "ref": "belt-jordaan hand read of rozengracht-30-82 strip 2019-01-15 (pand span): two axes: a low white shop ground 0-3.0 m; storeys at 3.3-5.3, 6.3-8.1 and 9.0-10.4 m; a white bracketed frieze and cornice 11.1-11.9 m; a red tile roof with a dormer to ~13.2 m; red-brown brick #51443c",
+   "at": "2019-01-15"
+  },
+  "fronts/0/windows": {
+   "source": "author",
+   "confidence": 0.75,
+   "ref": "belt-jordaan hand read of rozengracht-30-82 strip 2019-01-15 (pand span): two axes: a low white shop ground 0-3.0 m; storeys at 3.3-5.3, 6.3-8.1 and 9.0-10.4 m; a white bracketed frieze and cornice 11.1-11.9 m; a red tile roof with a dormer to ~13.2 m; red-brown brick #51443c",
+   "at": "2019-01-15"
+  },
+  "fronts/0/windowSurround": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of rozengracht-30-82 strip 2019-01-15 (pand span): two axes: a low white shop ground 0-3.0 m; storeys at 3.3-5.3, 6.3-8.1 and 9.0-10.4 m; a white bracketed frieze and cornice 11.1-11.9 m; a red tile roof with a dormer to ~13.2 m; red-brown brick #51443c (Jordaan type default, not contradicted by the photo)",
+   "at": "2019-01-15"
+  },
+  "fronts/0/hoist": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of rozengracht-30-82 strip 2019-01-15 (pand span): two axes: a low white shop ground 0-3.0 m; storeys at 3.3-5.3, 6.3-8.1 and 9.0-10.4 m; a white bracketed frieze and cornice 11.1-11.9 m; a red tile roof with a dormer to ~13.2 m; red-brown brick #51443c (Jordaan type default, not contradicted by the photo)",
+   "at": "2019-01-15"
+  },
+  "fronts/0/street": {
+   "source": "author",
+   "confidence": 0.75,
+   "ref": "belt-jordaan hand read of rozengracht-30-82 strip 2019-01-15 (pand span): two axes: a low white shop ground 0-3.0 m; storeys at 3.3-5.3, 6.3-8.1 and 9.0-10.4 m; a white bracketed frieze and cornice 11.1-11.9 m; a red tile roof with a dormer to ~13.2 m; red-brown brick #51443c",
+   "at": "2019-01-15"
+  },
+  "fronts/0/gable": {
+   "source": "author",
+   "confidence": 0.75,
+   "ref": "belt-jordaan hand read of rozengracht-30-82 strip 2019-01-15 (pand span): two axes: a low white shop ground 0-3.0 m; storeys at 3.3-5.3, 6.3-8.1 and 9.0-10.4 m; a white bracketed frieze and cornice 11.1-11.9 m; a red tile roof with a dormer to ~13.2 m; red-brown brick #51443c",
+   "at": "2019-01-15"
+  },
+  "fronts/0/storeys": {
+   "source": "author",
+   "confidence": 0.75,
+   "ref": "belt-jordaan hand read of rozengracht-30-82 strip 2019-01-15 (pand span): two axes: a low white shop ground 0-3.0 m; storeys at 3.3-5.3, 6.3-8.1 and 9.0-10.4 m; a white bracketed frieze and cornice 11.1-11.9 m; a red tile roof with a dormer to ~13.2 m; red-brown brick #51443c",
+   "at": "2019-01-15"
+  },
+  "fronts/0/bays": {
+   "source": "author",
+   "confidence": 0.75,
+   "ref": "belt-jordaan hand read of rozengracht-30-82 strip 2019-01-15 (pand span): two axes: a low white shop ground 0-3.0 m; storeys at 3.3-5.3, 6.3-8.1 and 9.0-10.4 m; a white bracketed frieze and cornice 11.1-11.9 m; a red tile roof with a dormer to ~13.2 m; red-brown brick #51443c",
+   "at": "2019-01-15"
+  },
+  "fronts/0/storeyHeights": {
+   "source": "author",
+   "confidence": 0.75,
+   "ref": "belt-jordaan hand read of rozengracht-30-82 strip 2019-01-15 (pand span): two axes: a low white shop ground 0-3.0 m; storeys at 3.3-5.3, 6.3-8.1 and 9.0-10.4 m; a white bracketed frieze and cornice 11.1-11.9 m; a red tile roof with a dormer to ~13.2 m; red-brown brick #51443c",
+   "at": "2019-01-15"
+  },
+  "fronts/0/doorBay": {
+   "source": "author",
+   "confidence": 0.75,
+   "ref": "belt-jordaan hand read of rozengracht-30-82 strip 2019-01-15 (pand span): two axes: a low white shop ground 0-3.0 m; storeys at 3.3-5.3, 6.3-8.1 and 9.0-10.4 m; a white bracketed frieze and cornice 11.1-11.9 m; a red tile roof with a dormer to ~13.2 m; red-brown brick #51443c",
+   "at": "2019-01-15"
+  },
+  "fronts/0/groundFront": {
+   "source": "author",
+   "confidence": 0.75,
+   "ref": "belt-jordaan hand read of rozengracht-30-82 strip 2019-01-15 (pand span): two axes: a low white shop ground 0-3.0 m; storeys at 3.3-5.3, 6.3-8.1 and 9.0-10.4 m; a white bracketed frieze and cornice 11.1-11.9 m; a red tile roof with a dormer to ~13.2 m; red-brown brick #51443c",
+   "at": "2019-01-15"
+  },
+  "fronts/0/dormers": {
+   "source": "author",
+   "confidence": 0.75,
+   "ref": "belt-jordaan hand read of rozengracht-30-82 strip 2019-01-15 (pand span): two axes: a low white shop ground 0-3.0 m; storeys at 3.3-5.3, 6.3-8.1 and 9.0-10.4 m; a white bracketed frieze and cornice 11.1-11.9 m; a red tile roof with a dormer to ~13.2 m; red-brown brick #51443c",
+   "at": "2019-01-15"
+  },
+  "fronts/0/dormerStyle": {
+   "source": "author",
+   "confidence": 0.75,
+   "ref": "belt-jordaan hand read of rozengracht-30-82 strip 2019-01-15 (pand span): two axes: a low white shop ground 0-3.0 m; storeys at 3.3-5.3, 6.3-8.1 and 9.0-10.4 m; a white bracketed frieze and cornice 11.1-11.9 m; a red tile roof with a dormer to ~13.2 m; red-brown brick #51443c",
+   "at": "2019-01-15"
+  },
+  "fronts/0/dormerBody": {
+   "source": "author",
+   "confidence": 0.75,
+   "ref": "belt-jordaan hand read of rozengracht-30-82 strip 2019-01-15 (pand span): two axes: a low white shop ground 0-3.0 m; storeys at 3.3-5.3, 6.3-8.1 and 9.0-10.4 m; a white bracketed frieze and cornice 11.1-11.9 m; a red tile roof with a dormer to ~13.2 m; red-brown brick #51443c",
+   "at": "2019-01-15"
+  },
+  "fronts/0/dormerAt": {
+   "source": "author",
+   "confidence": 0.75,
+   "ref": "belt-jordaan hand read of rozengracht-30-82 strip 2019-01-15 (pand span): two axes: a low white shop ground 0-3.0 m; storeys at 3.3-5.3, 6.3-8.1 and 9.0-10.4 m; a white bracketed frieze and cornice 11.1-11.9 m; a red tile roof with a dormer to ~13.2 m; red-brown brick #51443c",
+   "at": "2019-01-15"
+  },
+  "fronts/0/dormerSize": {
+   "source": "author",
+   "confidence": 0.75,
+   "ref": "belt-jordaan hand read of rozengracht-30-82 strip 2019-01-15 (pand span): two axes: a low white shop ground 0-3.0 m; storeys at 3.3-5.3, 6.3-8.1 and 9.0-10.4 m; a white bracketed frieze and cornice 11.1-11.9 m; a red tile roof with a dormer to ~13.2 m; red-brown brick #51443c",
+   "at": "2019-01-15"
+  },
+  "roof/material": {
+   "source": "author",
+   "confidence": 0.75,
+   "ref": "belt-jordaan hand read of rozengracht-30-82 strip 2019-01-15 (pand span): two axes: a low white shop ground 0-3.0 m; storeys at 3.3-5.3, 6.3-8.1 and 9.0-10.4 m; a white bracketed frieze and cornice 11.1-11.9 m; a red tile roof with a dormer to ~13.2 m; red-brown brick #51443c",
+   "at": "2019-01-15"
+  },
+  "palette/frame": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of rozengracht-30-82 strip 2019-01-15 (pand span): two axes: a low white shop ground 0-3.0 m; storeys at 3.3-5.3, 6.3-8.1 and 9.0-10.4 m; a white bracketed frieze and cornice 11.1-11.9 m; a red tile roof with a dormer to ~13.2 m; red-brown brick #51443c (Jordaan type default, not contradicted by the photo)",
+   "at": "2019-01-15"
+  },
+  "palette/door": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of rozengracht-30-82 strip 2019-01-15 (pand span): two axes: a low white shop ground 0-3.0 m; storeys at 3.3-5.3, 6.3-8.1 and 9.0-10.4 m; a white bracketed frieze and cornice 11.1-11.9 m; a red tile roof with a dormer to ~13.2 m; red-brown brick #51443c (Jordaan type default, not contradicted by the photo)",
+   "at": "2019-01-15"
+  },
+  "palette/stone": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of rozengracht-30-82 strip 2019-01-15 (pand span): two axes: a low white shop ground 0-3.0 m; storeys at 3.3-5.3, 6.3-8.1 and 9.0-10.4 m; a white bracketed frieze and cornice 11.1-11.9 m; a red tile roof with a dormer to ~13.2 m; red-brown brick #51443c (Jordaan type default, not contradicted by the photo)",
+   "at": "2019-01-15"
+  },
+  "palette/cornice": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of rozengracht-30-82 strip 2019-01-15 (pand span): two axes: a low white shop ground 0-3.0 m; storeys at 3.3-5.3, 6.3-8.1 and 9.0-10.4 m; a white bracketed frieze and cornice 11.1-11.9 m; a red tile roof with a dormer to ~13.2 m; red-brown brick #51443c (Jordaan type default, not contradicted by the photo)",
+   "at": "2019-01-15"
+  },
+  "palette/stoneMaterial": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of rozengracht-30-82 strip 2019-01-15 (pand span): two axes: a low white shop ground 0-3.0 m; storeys at 3.3-5.3, 6.3-8.1 and 9.0-10.4 m; a white bracketed frieze and cornice 11.1-11.9 m; a red tile roof with a dormer to ~13.2 m; red-brown brick #51443c (Jordaan type default, not contradicted by the photo)",
+   "at": "2019-01-15"
+  },
+  "palette/brick": {
+   "source": "author",
+   "confidence": 0.75,
+   "ref": "belt-jordaan hand read of rozengracht-30-82 strip 2019-01-15 (pand span): two axes: a low white shop ground 0-3.0 m; storeys at 3.3-5.3, 6.3-8.1 and 9.0-10.4 m; a white bracketed frieze and cornice 11.1-11.9 m; a red tile roof with a dormer to ~13.2 m; red-brown brick #51443c",
+   "at": "2019-01-15"
+  },
+  "palette/wallMaterial": {
+   "source": "author",
+   "confidence": 0.75,
+   "ref": "belt-jordaan hand read of rozengracht-30-82 strip 2019-01-15 (pand span): two axes: a low white shop ground 0-3.0 m; storeys at 3.3-5.3, 6.3-8.1 and 9.0-10.4 m; a white bracketed frieze and cornice 11.1-11.9 m; a red tile roof with a dormer to ~13.2 m; red-brown brick #51443c",
+   "at": "2019-01-15"
+  }
+ }
+}

@@ -1,0 +1,219 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012170087",
+ "address": "Rozengracht 46",
+ "design": {
+  "fronts": [
+   {
+    "id": "front0",
+    "basement": "none",
+    "cornice": "none",
+    "windows": "sash",
+    "windowSurround": "sill",
+    "hoist": false,
+    "street": "Rozengracht",
+    "gable": "bell",
+    "crownRise": 0.8,
+    "atticWindows": 1,
+    "storeys": 4,
+    "bays": [
+     2,
+     3,
+     2,
+     2
+    ],
+    "storeyHeights": [
+     4.1,
+     2,
+     2.9,
+     2.6
+    ],
+    "doorBay": 1,
+    "paintedStoreys": {
+     "storeys": [
+      1
+     ],
+     "colour": "#ece9e0"
+    },
+    "shopfront": {
+     "colour": "#26302a",
+     "fascia": true,
+     "glazing": "transom",
+     "entrance": "right",
+     "evidence": "strip 2019-01-15: a dark shopfront with a gold fascia (Long Pura)"
+    }
+   }
+  ],
+  "roof": {
+   "material": "red-tile",
+   "squareSaddle": true
+  },
+  "palette": {
+   "frame": "white-painted",
+   "door": "#26302a",
+   "stone": "#ebe8df",
+   "cornice": "#ebe8df",
+   "stoneMaterial": "painted",
+   "brick": "#2f2c2c",
+   "wallMaterial": "painted-brick"
+  }
+ },
+ "provenance": {
+  "fronts/0/id": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of rozengracht-30-82 strip 2019-01-15 (pand span): a painted black front of two axes: a shop ground 0-4.0 m (fascia Long Pura); a white-painted storey 4.2-6.0 m with three small windows; storeys at 6.4-8.3 and 9.4-11.1 m; a bell gable 11.8-14.0 m with one attic light; painted brick (measured #302728; drawn #2f2c2c)",
+   "at": "2019-01-15"
+  },
+  "fronts/0/basement": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of rozengracht-30-82 strip 2019-01-15 (pand span): a painted black front of two axes: a shop ground 0-4.0 m (fascia Long Pura); a white-painted storey 4.2-6.0 m with three small windows; storeys at 6.4-8.3 and 9.4-11.1 m; a bell gable 11.8-14.0 m with one attic light; painted brick (measured #302728; drawn #2f2c2c) (Jordaan type default, not contradicted by the photo)",
+   "at": "2019-01-15"
+  },
+  "fronts/0/cornice": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of rozengracht-30-82 strip 2019-01-15 (pand span): a painted black front of two axes: a shop ground 0-4.0 m (fascia Long Pura); a white-painted storey 4.2-6.0 m with three small windows; storeys at 6.4-8.3 and 9.4-11.1 m; a bell gable 11.8-14.0 m with one attic light; painted brick (measured #302728; drawn #2f2c2c) (Jordaan type default, not contradicted by the photo)",
+   "at": "2019-01-15"
+  },
+  "fronts/0/windows": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of rozengracht-30-82 strip 2019-01-15 (pand span): a painted black front of two axes: a shop ground 0-4.0 m (fascia Long Pura); a white-painted storey 4.2-6.0 m with three small windows; storeys at 6.4-8.3 and 9.4-11.1 m; a bell gable 11.8-14.0 m with one attic light; painted brick (measured #302728; drawn #2f2c2c)",
+   "at": "2019-01-15"
+  },
+  "fronts/0/windowSurround": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of rozengracht-30-82 strip 2019-01-15 (pand span): a painted black front of two axes: a shop ground 0-4.0 m (fascia Long Pura); a white-painted storey 4.2-6.0 m with three small windows; storeys at 6.4-8.3 and 9.4-11.1 m; a bell gable 11.8-14.0 m with one attic light; painted brick (measured #302728; drawn #2f2c2c) (Jordaan type default, not contradicted by the photo)",
+   "at": "2019-01-15"
+  },
+  "fronts/0/hoist": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of rozengracht-30-82 strip 2019-01-15 (pand span): a painted black front of two axes: a shop ground 0-4.0 m (fascia Long Pura); a white-painted storey 4.2-6.0 m with three small windows; storeys at 6.4-8.3 and 9.4-11.1 m; a bell gable 11.8-14.0 m with one attic light; painted brick (measured #302728; drawn #2f2c2c) (Jordaan type default, not contradicted by the photo)",
+   "at": "2019-01-15"
+  },
+  "fronts/0/street": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of rozengracht-30-82 strip 2019-01-15 (pand span): a painted black front of two axes: a shop ground 0-4.0 m (fascia Long Pura); a white-painted storey 4.2-6.0 m with three small windows; storeys at 6.4-8.3 and 9.4-11.1 m; a bell gable 11.8-14.0 m with one attic light; painted brick (measured #302728; drawn #2f2c2c)",
+   "at": "2019-01-15"
+  },
+  "fronts/0/gable": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of rozengracht-30-82 strip 2019-01-15 (pand span): a painted black front of two axes: a shop ground 0-4.0 m (fascia Long Pura); a white-painted storey 4.2-6.0 m with three small windows; storeys at 6.4-8.3 and 9.4-11.1 m; a bell gable 11.8-14.0 m with one attic light; painted brick (measured #302728; drawn #2f2c2c)",
+   "at": "2019-01-15"
+  },
+  "fronts/0/crownRise": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of rozengracht-30-82 strip 2019-01-15 (pand span): a painted black front of two axes: a shop ground 0-4.0 m (fascia Long Pura); a white-painted storey 4.2-6.0 m with three small windows; storeys at 6.4-8.3 and 9.4-11.1 m; a bell gable 11.8-14.0 m with one attic light; painted brick (measured #302728; drawn #2f2c2c)",
+   "at": "2019-01-15"
+  },
+  "fronts/0/atticWindows": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of rozengracht-30-82 strip 2019-01-15 (pand span): a painted black front of two axes: a shop ground 0-4.0 m (fascia Long Pura); a white-painted storey 4.2-6.0 m with three small windows; storeys at 6.4-8.3 and 9.4-11.1 m; a bell gable 11.8-14.0 m with one attic light; painted brick (measured #302728; drawn #2f2c2c)",
+   "at": "2019-01-15"
+  },
+  "fronts/0/storeys": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of rozengracht-30-82 strip 2019-01-15 (pand span): a painted black front of two axes: a shop ground 0-4.0 m (fascia Long Pura); a white-painted storey 4.2-6.0 m with three small windows; storeys at 6.4-8.3 and 9.4-11.1 m; a bell gable 11.8-14.0 m with one attic light; painted brick (measured #302728; drawn #2f2c2c)",
+   "at": "2019-01-15"
+  },
+  "fronts/0/bays": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of rozengracht-30-82 strip 2019-01-15 (pand span): a painted black front of two axes: a shop ground 0-4.0 m (fascia Long Pura); a white-painted storey 4.2-6.0 m with three small windows; storeys at 6.4-8.3 and 9.4-11.1 m; a bell gable 11.8-14.0 m with one attic light; painted brick (measured #302728; drawn #2f2c2c)",
+   "at": "2019-01-15"
+  },
+  "fronts/0/storeyHeights": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of rozengracht-30-82 strip 2019-01-15 (pand span): a painted black front of two axes: a shop ground 0-4.0 m (fascia Long Pura); a white-painted storey 4.2-6.0 m with three small windows; storeys at 6.4-8.3 and 9.4-11.1 m; a bell gable 11.8-14.0 m with one attic light; painted brick (measured #302728; drawn #2f2c2c)",
+   "at": "2019-01-15"
+  },
+  "fronts/0/doorBay": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of rozengracht-30-82 strip 2019-01-15 (pand span): a painted black front of two axes: a shop ground 0-4.0 m (fascia Long Pura); a white-painted storey 4.2-6.0 m with three small windows; storeys at 6.4-8.3 and 9.4-11.1 m; a bell gable 11.8-14.0 m with one attic light; painted brick (measured #302728; drawn #2f2c2c)",
+   "at": "2019-01-15"
+  },
+  "fronts/0/paintedStoreys": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of rozengracht-30-82 strip 2019-01-15 (pand span): a painted black front of two axes: a shop ground 0-4.0 m (fascia Long Pura); a white-painted storey 4.2-6.0 m with three small windows; storeys at 6.4-8.3 and 9.4-11.1 m; a bell gable 11.8-14.0 m with one attic light; painted brick (measured #302728; drawn #2f2c2c)",
+   "at": "2019-01-15"
+  },
+  "fronts/0/shopfront": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of rozengracht-30-82 strip 2019-01-15 (pand span): a painted black front of two axes: a shop ground 0-4.0 m (fascia Long Pura); a white-painted storey 4.2-6.0 m with three small windows; storeys at 6.4-8.3 and 9.4-11.1 m; a bell gable 11.8-14.0 m with one attic light; painted brick (measured #302728; drawn #2f2c2c)",
+   "at": "2019-01-15"
+  },
+  "roof/material": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of rozengracht-30-82 strip 2019-01-15 (pand span): a painted black front of two axes: a shop ground 0-4.0 m (fascia Long Pura); a white-painted storey 4.2-6.0 m with three small windows; storeys at 6.4-8.3 and 9.4-11.1 m; a bell gable 11.8-14.0 m with one attic light; painted brick (measured #302728; drawn #2f2c2c)",
+   "at": "2019-01-15"
+  },
+  "roof/squareSaddle": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of rozengracht-30-82 strip 2019-01-15 (pand span): a painted black front of two axes: a shop ground 0-4.0 m (fascia Long Pura); a white-painted storey 4.2-6.0 m with three small windows; storeys at 6.4-8.3 and 9.4-11.1 m; a bell gable 11.8-14.0 m with one attic light; painted brick (measured #302728; drawn #2f2c2c)",
+   "at": "2019-01-15"
+  },
+  "palette/frame": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of rozengracht-30-82 strip 2019-01-15 (pand span): a painted black front of two axes: a shop ground 0-4.0 m (fascia Long Pura); a white-painted storey 4.2-6.0 m with three small windows; storeys at 6.4-8.3 and 9.4-11.1 m; a bell gable 11.8-14.0 m with one attic light; painted brick (measured #302728; drawn #2f2c2c) (Jordaan type default, not contradicted by the photo)",
+   "at": "2019-01-15"
+  },
+  "palette/door": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of rozengracht-30-82 strip 2019-01-15 (pand span): a painted black front of two axes: a shop ground 0-4.0 m (fascia Long Pura); a white-painted storey 4.2-6.0 m with three small windows; storeys at 6.4-8.3 and 9.4-11.1 m; a bell gable 11.8-14.0 m with one attic light; painted brick (measured #302728; drawn #2f2c2c) (Jordaan type default, not contradicted by the photo)",
+   "at": "2019-01-15"
+  },
+  "palette/stone": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of rozengracht-30-82 strip 2019-01-15 (pand span): a painted black front of two axes: a shop ground 0-4.0 m (fascia Long Pura); a white-painted storey 4.2-6.0 m with three small windows; storeys at 6.4-8.3 and 9.4-11.1 m; a bell gable 11.8-14.0 m with one attic light; painted brick (measured #302728; drawn #2f2c2c) (Jordaan type default, not contradicted by the photo)",
+   "at": "2019-01-15"
+  },
+  "palette/cornice": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of rozengracht-30-82 strip 2019-01-15 (pand span): a painted black front of two axes: a shop ground 0-4.0 m (fascia Long Pura); a white-painted storey 4.2-6.0 m with three small windows; storeys at 6.4-8.3 and 9.4-11.1 m; a bell gable 11.8-14.0 m with one attic light; painted brick (measured #302728; drawn #2f2c2c) (Jordaan type default, not contradicted by the photo)",
+   "at": "2019-01-15"
+  },
+  "palette/stoneMaterial": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of rozengracht-30-82 strip 2019-01-15 (pand span): a painted black front of two axes: a shop ground 0-4.0 m (fascia Long Pura); a white-painted storey 4.2-6.0 m with three small windows; storeys at 6.4-8.3 and 9.4-11.1 m; a bell gable 11.8-14.0 m with one attic light; painted brick (measured #302728; drawn #2f2c2c) (Jordaan type default, not contradicted by the photo)",
+   "at": "2019-01-15"
+  },
+  "palette/brick": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of rozengracht-30-82 strip 2019-01-15 (pand span): a painted black front of two axes: a shop ground 0-4.0 m (fascia Long Pura); a white-painted storey 4.2-6.0 m with three small windows; storeys at 6.4-8.3 and 9.4-11.1 m; a bell gable 11.8-14.0 m with one attic light; painted brick (measured #302728; drawn #2f2c2c)",
+   "at": "2019-01-15"
+  },
+  "palette/wallMaterial": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of rozengracht-30-82 strip 2019-01-15 (pand span): a painted black front of two axes: a shop ground 0-4.0 m (fascia Long Pura); a white-painted storey 4.2-6.0 m with three small windows; storeys at 6.4-8.3 and 9.4-11.1 m; a bell gable 11.8-14.0 m with one attic light; painted brick (measured #302728; drawn #2f2c2c)",
+   "at": "2019-01-15"
+  }
+ },
+ "schemaLimits": [
+  {
+   "component": "shop sign",
+   "what": "the fascia lettering is not drawn"
+  }
+ ]
+}

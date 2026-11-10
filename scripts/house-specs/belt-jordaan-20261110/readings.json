@@ -2094,5 +2094,648 @@
     "what": "the fascia lettering (The Boardroom) is not drawn"
    }
   ]
+ },
+ "0363100012168640": {
+  "address": "Rozengracht 30",
+  "photo": "rozengracht-30-82 strip 2019-01-15 (pand span)",
+  "date": "2019-01-15",
+  "why": "a 3.9 m front of two axes: ground 0-4.0 m (window left, door right); storeys at 4.2-6.3 and 7.1-8.9 m; a white frieze and cornice 9.9-10.7 m; a small dormer to ~12.2 m; red-brown brick #4e433c",
+  "front": {
+   "gable": "cornice",
+   "cornice": "frieze",
+   "storeys": 3,
+   "bays": 2,
+   "storeyHeights": [
+    4.1,
+    2.9,
+    2.9
+   ],
+   "doorBay": 1,
+   "windows": "sash",
+   "dormers": 1,
+   "dormerStyle": "plain",
+   "dormerBody": "stone",
+   "dormerAt": [
+    {
+     "from": 0.3,
+     "to": 0.7
+    }
+   ],
+   "dormerSize": {
+    "sill": 0.1,
+    "rise": 1.1,
+    "setback": 0.35
+   }
+  },
+  "roof": {
+   "material": "red-tile"
+  },
+  "palette": {
+   "brick": "#4e433c",
+   "wallMaterial": "brick"
+  }
+ },
+ "0363100012168639": {
+  "address": "Rozengracht 32",
+  "photo": "rozengracht-30-82 strip 2019-01-15 (pand span)",
+  "date": "2019-01-15",
+  "why": "a painted black front of three axes: a shop ground 0-4.0 m with a fascia; storeys at 3.5-5.5, 6.3-8.0 and 8.9-10.4 m with white keystone blocks over the windows; a white frieze and cornice 10.9-12.2 m; a red tile roof with a pedimented dormer 12.8-14.2 m; painted brick #333235",
+  "front": {
+   "gable": "cornice",
+   "cornice": "frieze",
+   "storeys": 4,
+   "bays": 3,
+   "storeyHeights": [
+    3.3,
+    2.6,
+    2.6,
+    2.3
+   ],
+   "doorBay": 1,
+   "windows": "sash",
+   "windowSurround": "keystone",
+   "shopfront": {
+    "colour": "#26302a",
+    "fascia": true,
+    "glazing": "transom",
+    "entrance": "centre",
+    "evidence": "strip 2019-01-15: a shopfront with a gold-lettered fascia"
+   },
+   "dormers": 1,
+   "dormerStyle": "pediment",
+   "dormerBody": "stone",
+   "dormerAt": [
+    {
+     "from": 0.32,
+     "to": 0.68
+    }
+   ],
+   "dormerSize": {
+    "sill": 0.1,
+    "rise": 1.4,
+    "setback": 0.35
+   }
+  },
+  "roof": {
+   "material": "red-tile"
+  },
+  "palette": {
+   "brick": "#333235",
+   "wallMaterial": "painted-brick"
+  },
+  "limits": [
+   {
+    "component": "shop sign",
+    "what": "the fascia lettering is not drawn"
+   }
+  ]
+ },
+ "0363100012168646": {
+  "address": "Rozengracht 34",
+  "photo": "rozengracht-30-82 strip 2019-01-15 (pand span)",
+  "date": "2019-01-15",
+  "why": "a plain c. 1900 front of three axes: a shop ground 0-4.0 m with a fascia; storeys at 4.3-6.3, 7.4-9.3, 10.4-12.3 m and a top storey with one four-light window at 13.7-14.7 m; a plain brick parapet front with cut corners to ~15.6 m; red-brown brick #65544e",
+  "front": {
+   "gable": "flat",
+   "storeys": 5,
+   "bays": [
+    3,
+    3,
+    3,
+    3,
+    1
+   ],
+   "storeyHeights": [
+    4.1,
+    3.1,
+    3.0,
+    3.1,
+    2.3
+   ],
+   "doorBay": 1,
+   "windows": "sash",
+   "storeyWindows": {
+    "4": "casement-toplight-double"
+   },
+   "shopfront": {
+    "colour": "#26302a",
+    "fascia": true,
+    "glazing": "transom",
+    "entrance": "centre",
+    "evidence": "strip 2019-01-15: a shop with a dark fascia"
+   }
+  },
+  "roof": {
+   "material": "bitumen"
+  },
+  "palette": {
+   "brick": "#65544e",
+   "wallMaterial": "brick"
+  },
+  "limits": [
+   {
+    "component": "gable",
+    "what": "the parapet front has small cut (raked) top corners"
+   }
+  ]
+ },
+ "0363100012168613": {
+  "address": "Rozengracht 36",
+  "photo": "rozengracht-30-82 strip 2019-01-15 (pand span)",
+  "date": "2019-01-15",
+  "why": "a tall neck-gable house of three axes: a shop ground 0-3.8 m; storeys at 3.9-5.7, 6.8-9.0, 10.0-11.8 and 12.7-14.0 m (a French door with a balconette in the middle of the top storey); a tall neck from ~14.7 m with white claw pieces, a balcony door in the neck and a rounded white cap with an ornament to ~18.9 m; red-brown brick #594a44",
+  "front": {
+   "gable": "neck",
+   "crownRise": 1.45,
+   "crownCap": "rounded",
+   "crownFinial": true,
+   "atticWindows": 1,
+   "hoist": true,
+   "storeys": 5,
+   "bays": 3,
+   "storeyHeights": [
+    3.8,
+    2.9,
+    3.1,
+    2.9,
+    2.4
+   ],
+   "doorBay": 1,
+   "windows": "sash",
+   "shopfront": {
+    "colour": "#26302a",
+    "fascia": true,
+    "glazing": "transom",
+    "entrance": "centre",
+    "evidence": "strip 2019-01-15: a shop with a coloured window display"
+   }
+  },
+  "roof": {
+   "material": "red-tile",
+   "squareSaddle": true
+  },
+  "palette": {
+   "brick": "#594a44",
+   "wallMaterial": "brick"
+  },
+  "limits": [
+   {
+    "component": "gable ornament",
+    "what": "the white claw pieces and the balcony door in the neck are drawn as a plain neck with one light"
+   }
+  ]
+ },
+ "0363100012168605": {
+  "address": "Rozengracht 38",
+  "photo": "rozengracht-30-82 strip 2019-01-15 (pand span)",
+  "date": "2019-01-15",
+  "why": "three axes: a shop ground 0-3.8 m between white pilasters; storeys at 3.9-5.8 (stained glass) and 6.5-7.9 m; a bell gable 8.5-12.2 m with white claw pieces and one attic light; brown brick #4b3f3a",
+  "front": {
+   "gable": "bell",
+   "crownRise": 1.4,
+   "atticWindows": 1,
+   "storeys": 3,
+   "bays": 3,
+   "storeyHeights": [
+    3.8,
+    2.4,
+    2.3
+   ],
+   "doorBay": 1,
+   "windows": "sash",
+   "groundFront": {
+    "kind": "arcade",
+    "bays": [
+     "window",
+     "door",
+     "window"
+    ],
+    "colour": "#ece9e0",
+    "evidence": "strip 2019-01-15: white pilasters and beam over a glazed shop ground"
+   }
+  },
+  "roof": {
+   "material": "red-tile",
+   "squareSaddle": true
+  },
+  "palette": {
+   "brick": "#4b3f3a",
+   "wallMaterial": "brick"
+  }
+ },
+ "0363100012168603": {
+  "address": "Rozengracht 40",
+  "photo": "rozengracht-30-82 strip 2019-01-15 (pand span)",
+  "date": "2019-01-15",
+  "why": "two axes: a low white shop ground 0-3.0 m; storeys at 3.3-5.3, 6.3-8.1 and 9.0-10.4 m; a white bracketed frieze and cornice 11.1-11.9 m; a red tile roof with a dormer to ~13.2 m; red-brown brick #51443c",
+  "front": {
+   "gable": "cornice",
+   "cornice": "bracketed",
+   "storeys": 4,
+   "bays": 2,
+   "storeyHeights": [
+    3.1,
+    2.9,
+    2.7,
+    2.3
+   ],
+   "doorBay": 0,
+   "windows": "sash",
+   "groundFront": {
+    "kind": "pui",
+    "bays": [
+     "door",
+     "window"
+    ],
+    "colour": "#ece9e0",
+    "evidence": "strip 2019-01-15: white shop ground"
+   },
+   "dormers": 1,
+   "dormerStyle": "plain",
+   "dormerBody": "stone",
+   "dormerAt": [
+    {
+     "from": 0.3,
+     "to": 0.7
+    }
+   ],
+   "dormerSize": {
+    "sill": 0.1,
+    "rise": 1.1,
+    "setback": 0.35
+   }
+  },
+  "roof": {
+   "material": "red-tile"
+  },
+  "palette": {
+   "brick": "#51443c",
+   "wallMaterial": "brick"
+  },
+  "confidence": 0.75
+ },
+ "0363100012170086": {
+  "address": "Rozengracht 42",
+  "photo": "rozengracht-30-82 strip 2019-01-15 (pand span)",
+  "date": "2019-01-15",
+  "why": "two axes: a shop ground 0-3.4 m; storeys at 3.8-5.7 (segmental heads with white keystones), 7.0-8.8 and 10.0-11.5 m; a white cornice 11.6-12.2 m; a stepped crown with a pointed top over the right axis 12.2-15.4 m and a dormer on the left; red-brown brick #5a4d47",
+  "front": {
+   "gable": "step",
+   "crownAt": {
+    "from": 0.5,
+    "to": 1
+   },
+   "crownSteps": 2,
+   "crownRise": 1.1,
+   "atticWindows": 1,
+   "storeys": 4,
+   "bays": 2,
+   "storeyHeights": [
+    3.6,
+    3.1,
+    3.0,
+    2.5
+   ],
+   "doorBay": 0,
+   "windows": "sash",
+   "windowHead": {
+    "kind": "segmental",
+    "storeys": [
+     1
+    ],
+    "archRing": {
+     "colour": "stone",
+     "style": "none",
+     "keystone": true
+    }
+   },
+   "shopfront": {
+    "colour": "#26302a",
+    "fascia": true,
+    "glazing": "transom",
+    "entrance": "centre",
+    "evidence": "strip 2019-01-15: a clinic shopfront with a fascia"
+   }
+  },
+  "roof": {
+   "material": "red-tile",
+   "squareSaddle": true
+  },
+  "palette": {
+   "brick": "#5a4d47",
+   "wallMaterial": "brick"
+  },
+  "limits": [
+   {
+    "component": "gable",
+    "what": "the stepped crown ends in a small point; a dormer stands beside it on the left (not drawn)"
+   }
+  ],
+  "confidence": 0.7
+ },
+ "0363100012170085": {
+  "address": "Rozengracht 44",
+  "photo": "rozengracht-30-82 strip 2019-01-15 (pand span)",
+  "date": "2019-01-15",
+  "why": "a painted black front of two axes: a white ground 0-5.7 m between white pilasters (door left, window right); storeys at 6.5-8.7 and 9.4-10.9 m with white frames; a white cornice 11.6-12.2 m, a small red tile roof; painted brick #444142",
+  "front": {
+   "gable": "cornice",
+   "cornice": "simple",
+   "storeys": 3,
+   "bays": 2,
+   "storeyHeights": [
+    6.0,
+    3.0,
+    2.6
+   ],
+   "doorBay": 0,
+   "windows": "sash",
+   "windowSurround": "full-frame",
+   "groundFront": {
+    "kind": "arcade",
+    "bays": [
+     "door",
+     "window"
+    ],
+    "colour": "#ece9e0",
+    "evidence": "strip 2019-01-15: white pilasters over a tall ground"
+   }
+  },
+  "roof": {
+   "material": "red-tile"
+  },
+  "palette": {
+   "brick": "#444142",
+   "wallMaterial": "painted-brick"
+  }
+ },
+ "0363100012170087": {
+  "address": "Rozengracht 46",
+  "photo": "rozengracht-30-82 strip 2019-01-15 (pand span)",
+  "date": "2019-01-15",
+  "why": "a painted black front of two axes: a shop ground 0-4.0 m (fascia Long Pura); a white-painted storey 4.2-6.0 m with three small windows; storeys at 6.4-8.3 and 9.4-11.1 m; a bell gable 11.8-14.0 m with one attic light; painted brick (measured #302728; drawn #2f2c2c)",
+  "front": {
+   "gable": "bell",
+   "crownRise": 0.8,
+   "atticWindows": 1,
+   "storeys": 4,
+   "bays": [
+    2,
+    3,
+    2,
+    2
+   ],
+   "storeyHeights": [
+    4.1,
+    2.0,
+    2.9,
+    2.6
+   ],
+   "doorBay": 1,
+   "windows": "sash",
+   "paintedStoreys": {
+    "storeys": [
+     1
+    ],
+    "colour": "#ece9e0"
+   },
+   "shopfront": {
+    "colour": "#26302a",
+    "fascia": true,
+    "glazing": "transom",
+    "entrance": "right",
+    "evidence": "strip 2019-01-15: a dark shopfront with a gold fascia (Long Pura)"
+   }
+  },
+  "roof": {
+   "material": "red-tile",
+   "squareSaddle": true
+  },
+  "palette": {
+   "brick": "#2f2c2c",
+   "wallMaterial": "painted-brick"
+  },
+  "limits": [
+   {
+    "component": "shop sign",
+    "what": "the fascia lettering is not drawn"
+   }
+  ]
+ },
+ "0363100012168604": {
+  "address": "Rozengracht 48",
+  "photo": "rozengracht-30-82 strip 2019-01-15 (pand span)",
+  "date": "2019-01-15",
+  "why": "three axes: a dark ground 0-4.8 m (door left); storeys at 5.5-7.8 and 8.7-10.4 m with white stone blocks at the window heads and sills; a plain triangular (point) gable from ~11 m with one window and a chimney at the apex (~15.6 m); dark brick #44423f (pier) / #5a514f (gable)",
+  "front": {
+   "gable": "point",
+   "crownRise": 1.6,
+   "atticWindows": 1,
+   "storeys": 3,
+   "bays": 3,
+   "storeyHeights": [
+    5.2,
+    2.9,
+    2.8
+   ],
+   "doorBay": 0,
+   "windows": "sash",
+   "windowSurround": "stone-lintel"
+  },
+  "roof": {
+   "material": "red-tile",
+   "squareSaddle": true
+  },
+  "palette": {
+   "brick": "#4e4744",
+   "wallMaterial": "brick"
+  },
+  "limits": [
+   {
+    "component": "window surround",
+    "what": "white stone blocks at the window corners (block lintels and sills) drawn as stone lintels"
+   }
+  ]
+ },
+ "0363100012170090": {
+  "address": "Rozengracht 56",
+  "photo": "rozengracht-30-82 strip 2019-01-15 (pand span)",
+  "date": "2019-01-15",
+  "why": "a 3.9 m neck-gable house of two axes: a shop ground 0-3.0 m; storeys at 3.2-5.4, 5.9-7.9, 8.7-10.7 and 11.4-12.8 m (a French door with a balconette); a neck 14.2-16.4 m with white claw pieces, a small light and a carved rounded cap; red-brown brick #584b44",
+  "front": {
+   "gable": "neck",
+   "crownRise": 0.85,
+   "crownCap": "rounded",
+   "crownFinial": true,
+   "atticWindows": 1,
+   "hoist": true,
+   "storeys": 5,
+   "bays": 2,
+   "storeyHeights": [
+    3.1,
+    2.6,
+    2.8,
+    2.7,
+    2.6
+   ],
+   "doorBay": 0,
+   "windows": "sash",
+   "shopfront": {
+    "colour": "#26302a",
+    "fascia": true,
+    "glazing": "transom",
+    "entrance": "centre",
+    "evidence": "strip 2019-01-15: a supermarket shopfront with a blue fascia"
+   }
+  },
+  "roof": {
+   "material": "red-tile",
+   "squareSaddle": true
+  },
+  "palette": {
+   "brick": "#584b44",
+   "wallMaterial": "brick"
+  }
+ },
+ "0363100012170089": {
+  "address": "Rozengracht 58",
+  "photo": "rozengracht-30-82 strip 2019-01-15 (pand span)",
+  "date": "2019-01-15",
+  "why": "a painted black front of three axes: a shop ground 0-3.2 m with a sign band to ~4.4 m; storeys at 4.8-6.6, 7.6-9.2 and 10.2-11.7 m (a French door with a balconette in the middle of the top storey); a wide white frieze and cornice 12.4-13.5 m, flat; painted brick #373231",
+  "front": {
+   "gable": "cornice",
+   "cornice": "frieze",
+   "storeys": 4,
+   "bays": 3,
+   "storeyHeights": [
+    4.4,
+    2.9,
+    2.8,
+    2.4
+   ],
+   "doorBay": 1,
+   "windows": "sash",
+   "shopfront": {
+    "colour": "#b83a6a",
+    "fascia": true,
+    "glazing": "transom",
+    "entrance": "centre",
+    "evidence": "strip 2019-01-15: a pink-fronted shop with a sign band"
+   }
+  },
+  "roof": {
+   "material": "bitumen"
+  },
+  "palette": {
+   "brick": "#373231",
+   "wallMaterial": "painted-brick"
+  },
+  "limits": [
+   {
+    "component": "shop sign",
+    "what": "the painted sign band over the shop (an inscription) is not drawn"
+   }
+  ]
+ },
+ "0363100012170088": {
+  "address": "Rozengracht 60",
+  "photo": "rozengracht-30-82 strip 2019-01-15 (pand span)",
+  "date": "2019-01-15",
+  "why": "a 4.2 m neck-gable house of two axes: a shop ground 0-3.4 m; storeys at 3.8-5.8 and 6.6-8.2 m; a neck 9.0-13.0 m with claw pieces, one attic light and a rounded cap; red-brown brick #564b44",
+  "front": {
+   "gable": "neck",
+   "crownRise": 1.55,
+   "crownCap": "rounded",
+   "atticWindows": 1,
+   "hoist": true,
+   "storeys": 3,
+   "bays": 2,
+   "storeyHeights": [
+    3.6,
+    2.7,
+    2.6
+   ],
+   "doorBay": 0,
+   "windows": "sash",
+   "shopfront": {
+    "colour": "#26302a",
+    "fascia": true,
+    "glazing": "transom",
+    "entrance": "centre",
+    "evidence": "strip 2019-01-15: a shopfront"
+   }
+  },
+  "roof": {
+   "material": "red-tile",
+   "squareSaddle": true
+  },
+  "palette": {
+   "brick": "#564b44",
+   "wallMaterial": "brick"
+  }
+ },
+ "0363100012170093": {
+  "address": "Rozengracht 62",
+  "photo": "rozengracht-30-82 strip 2019-01-15 (pand span)",
+  "date": "2019-01-15",
+  "why": "a plain 7.1 m front of three axes (c. 1920-30): a shop ground 0-3.4 m with a red fascia; storeys at 4.0-5.9, 7.2-9.2 and 10.4-12.3 m with stone sills; a flat parapet at ~13.8 m; red-brown brick #5a4f45",
+  "front": {
+   "gable": "flat",
+   "storeys": 4,
+   "bays": 3,
+   "storeyHeights": [
+    3.6,
+    3.2,
+    3.2,
+    3.4
+   ],
+   "doorBay": 1,
+   "windows": "casement-toplight",
+   "windowSurround": "sill",
+   "shopfront": {
+    "colour": "#26302a",
+    "fascia": true,
+    "glazing": "transom",
+    "entrance": "centre",
+    "evidence": "strip 2019-01-15: a shop with a red fascia board"
+   }
+  },
+  "roof": {
+   "material": "bitumen"
+  },
+  "palette": {
+   "brick": "#5a4f45",
+   "wallMaterial": "brick"
+  }
+ },
+ "0363100012170148": {
+  "address": "Rozengracht 66",
+  "photo": "rozengracht-30-82 strip 2019-01-15 (pand span)",
+  "date": "2019-01-15",
+  "why": "a 3.2 m painted black front: ground 0-3.0 m (door left); two windows at 4.0-5.9 m; one window at 6.6-7.8 m; a white cornice 8.2-8.8 m, flat; painted brick #3c393a",
+  "front": {
+   "gable": "cornice",
+   "cornice": "simple",
+   "storeys": 3,
+   "bays": [
+    2,
+    2,
+    1
+   ],
+   "storeyHeights": [
+    3.6,
+    2.6,
+    2.1
+   ],
+   "doorBay": 0,
+   "windows": "sash"
+  },
+  "roof": {
+   "material": "bitumen"
+  },
+  "palette": {
+   "brick": "#3c393a",
+   "wallMaterial": "painted-brick"
+  }
  }
 }
