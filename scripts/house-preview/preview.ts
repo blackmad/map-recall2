@@ -64,8 +64,9 @@ Output: <out>/front.png, threeq.png (--threeq), compare.png (--photo), measure.j
 measurements, verdict). Atlas cache: artifacts/house-preview/atlas-<look>-<size>-<painter hash>.bin (first run
 paints, later runs load; a painter source change repaints).
 
-Overrides (until the HouseSpec resolver of lane H1 lands): front gable -> monumentGable; every other design field is
-listed under overrides.notApplied in measure.json (the generic path has no property for it yet).
+Overrides (until the HouseSpec resolver of lane H1 lands): fronts[0].gable -> monumentGable, palette.wall (or
+palette.brick) hex -> facadeMappedColour; every other design field is listed under overrides.notApplied in
+measure.json (the generic path has no property for it yet).
 
 Not reproduced: the far and roof distance tiers, mipmaps, the lit/city-look shaders (sun, wall gain, grain),
 analytic window SDF, shadows, the ground lift, post-processing. When those matter (a lighting or tier question), fall back to
@@ -128,7 +129,12 @@ export function overridePatch(o: Override): { patch: Record<string, unknown>; ap
   if (g && (GABLE_SHAPES as readonly string[]).includes(g)) { patch.monumentGable = g; applied.push(`fronts[0].gable -> monumentGable=${g}`); }
   else if (front.gable !== undefined) notApplied.push(`fronts[0].gable (${String(front.gable)}: not a GableShape)`);
   for (const k of Object.keys(front)) if (k !== 'gable' && k !== 'id') notApplied.push(`fronts[0].${k}`);
-  for (const k of Object.keys(o.design)) if (k !== 'fronts') notApplied.push(k);
+  // The wall colour: threeBuildingFeatures meshBuildingFor takes `facadeMappedColour` as the sourced wall in the photo look.
+  const palette = (o.design.palette ?? {}) as Record<string, unknown>;
+  const wallKey = ['wall', 'brick'].find(k => typeof palette[k] === 'string' && /^#[0-9a-f]{6}$/i.test(palette[k] as string));
+  if (wallKey) { patch.facadeMappedColour = palette[wallKey]; applied.push(`palette.${wallKey} -> facadeMappedColour=${palette[wallKey]}`); }
+  for (const k of Object.keys(palette)) if (k !== wallKey) notApplied.push(`palette.${k}`);
+  for (const k of Object.keys(o.design)) if (k !== 'fronts' && k !== 'palette') notApplied.push(k);
   if ((o.design.fronts?.length ?? 0) > 1) notApplied.push(`fronts[1..${o.design.fronts!.length - 1}]`);
   return { patch, applied, notApplied };
 }

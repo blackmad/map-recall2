@@ -58,8 +58,8 @@ analytic window SDF, shadows, the ground lift and post-processing. The chunk hol
 buildings within 30 m), not the whole group tile: a building's mesh depends on its chunk-mates (alone, with the row
 only as context, the Nassaukade pand lost its window heads and balconies), and the row drew byte-identical pixels to
 `--whole-tile` there; use `--whole-tile` (~4 s a render) when in doubt. Overrides: until H1's resolver lands, only the front's
-gable reaches the generic path (`monumentGable`); every other design field is listed under
-`overrides.notApplied` in `measure.json`.
+gable (`monumentGable`) and the wall hex (`palette.wall`/`palette.brick` → `facadeMappedColour`) reach the generic
+path; every other design field is listed under `overrides.notApplied` in `measure.json`.
 
 **When to fall back to `render.ts`:** when the question is lighting, a distance tier or the city look's materials,
 render the GLB with `scripts/building-recipes/render.ts` (headless Chromium under `/tmp/canal-pw.sh`) or take a
