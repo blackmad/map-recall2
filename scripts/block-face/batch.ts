@@ -365,7 +365,7 @@ async function main() {
     const fail = (run: string, mode: Row['mode'], reasons: string[], extra: Partial<Row> = {}) => { rows.push({...base, run, pands: f.members.length, mode, stripDate: null, status: 'failed', reasons, ...extra, seconds: secs()} as Row); };
     const manifest0 = await readJson(MANIFEST);
     if (flag('intake-only') && existsSync(path.join(FACES, f.id, 'strip.json')) && existsSync(path.join(STAGING, f.id, 'strip.jpg'))) continue;
-    if (manifest0.chunks.some((c: any) => c.id === `chunk-face-${f.id}` || c.id.startsWith(`chunk-face-${f.id}-r`) || c.id === `chunk-face-${f.id}-t`)) { rows.push({...base, run: f.id, pands: f.members.length, mode: 'authored', stripDate: null, status: 'skipped', reasons: ['already-installed'], seconds: 0} as Row); await save(); continue; }
+    if (!replace.some(r => r === f.id || r.startsWith(`${f.id}-r`)) && manifest0.chunks.some((c: any) => c.id === `chunk-face-${f.id}` || c.id.startsWith(`chunk-face-${f.id}-r`) || c.id === `chunk-face-${f.id}-t`)) { rows.push({...base, run: f.id, pands: f.members.length, mode: 'authored', stripDate: null, status: 'skipped', reasons: ['already-installed'], seconds: 0} as Row); await save(); continue; }
     console.log(`\n== ${f.id} (${f.street}, ${f.members.length} pands${base.ride !== null ? `, ride ${base.ride}` : ''})`);
     // 0. A face the library cannot place (build years) is logged before any panorama fetch.
     const ownIntent = path.join(FACES, f.id, 'intent.json');

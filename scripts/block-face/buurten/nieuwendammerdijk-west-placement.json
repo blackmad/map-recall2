@@ -1,20 +1,20 @@
 {
  "buurt": "nieuwendammerdijk-west",
  "library": "nieuwendammerdijk",
- "generatedAt": "2026-11-10T07:49:15.972Z",
- "seconds": 4.66,
+ "generatedAt": "2026-11-10T08:09:16.623Z",
+ "seconds": 4.93,
  "totals": {
   "faces": 1,
   "pands": 15,
-  "placed": 6
+  "placed": 5
  },
  "faces": [
   {
    "face": "nieuwendammerdijk-135-163",
    "street": "Nieuwendammerdijk",
    "pands": 15,
-   "placed": 6,
-   "held": 9,
+   "placed": 5,
+   "held": 10,
    "runs": [
     {
      "face": "nieuwendammerdijk-135-163-r1",
@@ -23,16 +23,15 @@
       "0363100012167049",
       "0363100012167155",
       "0363100012156422",
-      "0363100012166543",
-      "0363100012162650"
+      "0363100012166543"
      ],
      "passed": true,
-     "triangles": 3066
+     "triangles": 2643
     }
    ],
-   "seconds": 4.66,
+   "seconds": 4.92,
    "byType": {
-    "nieuwendam-1935-cottage-dormer": 6
+    "nieuwendam-1935-cottage-dormer": 5
    },
    "installed": 0,
    "holds": {
@@ -40,7 +39,7 @@
     "match": 0,
     "likeness": 0,
     "run": 0,
-    "review": 9
+    "review": 10
    }
   }
  ]

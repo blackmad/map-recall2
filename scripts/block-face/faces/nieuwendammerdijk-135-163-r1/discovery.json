@@ -6,8 +6,7 @@
   "0363100012167049",
   "0363100012167155",
   "0363100012156422",
-  "0363100012166543",
-  "0363100012162650"
+  "0363100012166543"
  ],
  "ends": [
   {
@@ -16,7 +15,7 @@
   },
   {
    "side": "right",
-   "reason": "run of nieuwendammerdijk-135-163: 157616 held (auto-place.json)"
+   "reason": "run of nieuwendammerdijk-135-163: 162650 held (auto-place.json)"
   }
  ],
  "rejected": [
@@ -473,16 +472,6 @@
    "roofMaxM": 9.49,
    "storeys3dbag": 3,
    "builtYear": 1984,
-   "uncertainty": []
-  },
-  {
-   "pandId": "0363100012162650",
-   "alongM": 42.62,
-   "widthM": 4.74,
-   "eavesM": 6.99,
-   "roofMaxM": 9.5,
-   "storeys3dbag": 3,
-   "builtYear": 1905,
    "uncertainty": []
   }
  ],

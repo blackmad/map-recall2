@@ -84,22 +84,6 @@
    ],
    "units": 1,
    "osm": []
-  },
-  {
-   "pandId": "0363100012162650",
-   "addresses": [
-    "Nieuwendammerdijk 153"
-   ],
-   "groundUnits": [
-    {
-     "address": "Nieuwendammerdijk 153",
-     "use": "woonfunctie",
-     "areaM2": 129,
-     "bagId": "0363010000751716"
-    }
-   ],
-   "units": 1,
-   "osm": []
   }
  ]
 }

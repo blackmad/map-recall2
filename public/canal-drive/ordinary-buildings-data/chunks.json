@@ -1,6 +1,6 @@
 {
  "version": 1,
- "generatedAt": "2026-11-10T07:49:21.535Z",
+ "generatedAt": "2026-11-10T08:09:23.243Z",
  "chunks": [
   {
    "id": "chunk-face-bilder-080336-090492",
@@ -90018,47 +90018,45 @@
    "id": "chunk-face-nieuwendammerdijk-135-163-r1",
    "category": "street-survey",
    "name": "face-nieuwendammerdijk-135-163-r1",
-   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-nieuwendammerdijk-135-163-r1.glb?asset=161f2432e1bed689",
-   "sha256": "161f2432e1bed689c27d88a6142125b1f266b189f823f6cd81a865a7a1988d4c",
-   "bytes": 89812,
-   "triangles": 3066,
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-nieuwendammerdijk-135-163-r1.glb?asset=f8473e86da6b15ce",
+   "sha256": "f8473e86da6b15cef5f2cdea23e87ced67674d73e6c995fe472a33e1df0f3e78",
+   "bytes": 80304,
+   "triangles": 2643,
    "primitives": 10,
    "instance": {
     "anchor": [
-     4.931475095457259,
-     52.39162985661569
+     4.931440420049541,
+     52.391628165933895
     ],
-    "northOffsetDegrees": 355.2885,
+    "northOffsetDegrees": 355.2656,
     "mirror": false
    },
    "bounds": {
     "min": [
-     -14.213,
+     -11.845,
      0,
-     -11.901
+     -11.892
     ],
     "max": [
-     14.315,
-     6.33,
-     0.342
+     11.95,
+     6.31,
+     0.343
     ]
    },
-   "height": 6.33,
+   "height": 6.31,
    "suppress": [
     "NL.IMBAG.Pand.0363100012163617",
     "NL.IMBAG.Pand.0363100012167049",
     "NL.IMBAG.Pand.0363100012167155",
     "NL.IMBAG.Pand.0363100012156422",
-    "NL.IMBAG.Pand.0363100012166543",
-    "NL.IMBAG.Pand.0363100012162650"
+    "NL.IMBAG.Pand.0363100012166543"
    ],
    "replaces": [
     "ordinary-0363100012163617",
     "ordinary-0363100012167049",
     "ordinary-0363100012167155",
     "ordinary-0363100012156422",
-    "ordinary-0363100012166543",
-    "ordinary-0363100012162650"
+    "ordinary-0363100012166543"
    ],
    "footprint": {
     "type": "MultiPolygon",
@@ -90186,26 +90184,6 @@
         52.3916366
        ]
       ]
-     ],
-     [
-      [
-       [
-        4.931601,
-        52.3917431
-       ],
-       [
-        4.9316138,
-        52.3916366
-       ],
-       [
-        4.9316832,
-        52.39164
-       ],
-       [
-        4.9316704,
-        52.3917466
-       ]
-      ]
      ]
     ]
    },
@@ -90216,23 +90194,23 @@
      "buildingId": "NL.IMBAG.Pand.0363100012163617",
      "address": "Nieuwendammerdijk 143",
      "frontage": {
-      "x0": -14.209,
-      "x1": -9.472,
+      "x0": -11.841,
+      "x1": -7.104,
       "widthM": 4.737
      },
      "bounds": {
       "min": [
-       -14.213,
+       -11.845,
        0,
-       -10.494
+       -10.493
       ],
       "max": [
-       -9.378,
-       6.137,
-       0.342
+       -7.006,
+       6.127,
+       0.343
       ]
      },
-     "triangles": 568,
+     "triangles": 579,
      "ranges": [
       {
        "primitive": 0,
@@ -90242,7 +90220,7 @@
       {
        "primitive": 1,
        "firstTriangle": 0,
-       "triangleCount": 96
+       "triangleCount": 108
       },
       {
        "primitive": 2,
@@ -90272,12 +90250,12 @@
       {
        "primitive": 7,
        "firstTriangle": 0,
-       "triangleCount": 36
+       "triangleCount": 34
       },
       {
        "primitive": 8,
        "firstTriangle": 0,
-       "triangleCount": 2
+       "triangleCount": 3
       },
       {
        "primitive": 9,
@@ -90292,33 +90270,33 @@
      "buildingId": "NL.IMBAG.Pand.0363100012167049",
      "address": "Nieuwendammerdijk 145",
      "frontage": {
-      "x0": -9.472,
-      "x1": -4.737,
+      "x0": -7.104,
+      "x1": -2.369,
       "widthM": 4.735
      },
      "bounds": {
       "min": [
-       -9.475,
+       -7.107,
        0,
-       -11.81
+       -11.807
       ],
       "max": [
-       -4.662,
-       6.33,
-       0.298
+       -2.289,
+       6.31,
+       0.303
       ]
      },
-     "triangles": 524,
+     "triangles": 534,
      "ranges": [
       {
        "primitive": 0,
        "firstTriangle": 103,
-       "triangleCount": 67
+       "triangleCount": 66
       },
       {
        "primitive": 1,
-       "firstTriangle": 96,
-       "triangleCount": 96
+       "firstTriangle": 108,
+       "triangleCount": 108
       },
       {
        "primitive": 2,
@@ -90347,13 +90325,13 @@
       },
       {
        "primitive": 7,
-       "firstTriangle": 36,
-       "triangleCount": 24
+       "firstTriangle": 34,
+       "triangleCount": 22
       },
       {
        "primitive": 8,
-       "firstTriangle": 2,
-       "triangleCount": 6
+       "firstTriangle": 3,
+       "triangleCount": 7
       },
       {
        "primitive": 9,
@@ -90368,33 +90346,33 @@
      "buildingId": "NL.IMBAG.Pand.0363100012167155",
      "address": "Nieuwendammerdijk 147",
      "frontage": {
-      "x0": -4.737,
-      "x1": 0.001,
+      "x0": -2.369,
+      "x1": 2.369,
       "widthM": 4.738
      },
      "bounds": {
       "min": [
-       -4.739,
+       -2.372,
        0,
-       -11.54
+       -11.535
       ],
       "max": [
-       0.091,
-       6.33,
-       0.306
+       2.463,
+       6.31,
+       0.313
       ]
      },
-     "triangles": 504,
+     "triangles": 516,
      "ranges": [
       {
        "primitive": 0,
-       "firstTriangle": 170,
+       "firstTriangle": 169,
        "triangleCount": 50
       },
       {
        "primitive": 1,
-       "firstTriangle": 192,
-       "triangleCount": 96
+       "firstTriangle": 216,
+       "triangleCount": 108
       },
       {
        "primitive": 2,
@@ -90423,12 +90401,12 @@
       },
       {
        "primitive": 7,
-       "firstTriangle": 60,
+       "firstTriangle": 56,
        "triangleCount": 25
       },
       {
        "primitive": 8,
-       "firstTriangle": 8,
+       "firstTriangle": 10,
        "triangleCount": 3
       },
       {
@@ -90444,33 +90422,33 @@
      "buildingId": "NL.IMBAG.Pand.0363100012156422",
      "address": "Nieuwendammerdijk 149",
      "frontage": {
-      "x0": 0.001,
-      "x1": 4.737,
+      "x0": 2.369,
+      "x1": 7.105,
       "widthM": 4.736
      },
      "bounds": {
       "min": [
-       -0.001,
+       2.367,
        0,
-       -10.089
+       -10.081
       ],
       "max": [
-       4.824,
-       6.028,
-       0.316
+       7.196,
+       6.018,
+       0.324
       ]
      },
-     "triangles": 475,
+     "triangles": 487,
      "ranges": [
       {
        "primitive": 0,
-       "firstTriangle": 220,
+       "firstTriangle": 219,
        "triangleCount": 33
       },
       {
        "primitive": 1,
-       "firstTriangle": 288,
-       "triangleCount": 96
+       "firstTriangle": 324,
+       "triangleCount": 108
       },
       {
        "primitive": 2,
@@ -90499,13 +90477,13 @@
       },
       {
        "primitive": 7,
-       "firstTriangle": 85,
-       "triangleCount": 21
+       "firstTriangle": 81,
+       "triangleCount": 22
       },
       {
        "primitive": 8,
-       "firstTriangle": 11,
-       "triangleCount": 7
+       "firstTriangle": 13,
+       "triangleCount": 6
       },
       {
        "primitive": 9,
@@ -90520,33 +90498,33 @@
      "buildingId": "NL.IMBAG.Pand.0363100012166543",
      "address": "Nieuwendammerdijk 151",
      "frontage": {
-      "x0": 4.737,
-      "x1": 9.471,
+      "x0": 7.105,
+      "x1": 11.839,
       "widthM": 4.734
      },
      "bounds": {
       "min": [
-       4.642,
+       7.014,
        0,
-       -11.901
+       -11.892
       ],
       "max": [
-       9.577,
-       6.33,
-       0.325
+       11.95,
+       6.31,
+       0.336
       ]
      },
-     "triangles": 501,
+     "triangles": 527,
      "ranges": [
       {
        "primitive": 0,
-       "firstTriangle": 253,
-       "triangleCount": 46
+       "firstTriangle": 252,
+       "triangleCount": 60
       },
       {
        "primitive": 1,
-       "firstTriangle": 384,
-       "triangleCount": 96
+       "firstTriangle": 432,
+       "triangleCount": 108
       },
       {
        "primitive": 2,
@@ -90575,93 +90553,17 @@
       },
       {
        "primitive": 7,
-       "firstTriangle": 106,
+       "firstTriangle": 103,
        "triangleCount": 26
       },
       {
        "primitive": 8,
-       "firstTriangle": 18,
+       "firstTriangle": 19,
        "triangleCount": 3
       },
       {
        "primitive": 9,
        "firstTriangle": 16,
-       "triangleCount": 4
-      }
-     ]
-    },
-    {
-     "recipeId": "nieuwendammerdijk-162650",
-     "pandId": "0363100012162650",
-     "buildingId": "NL.IMBAG.Pand.0363100012162650",
-     "address": "Nieuwendammerdijk 153",
-     "frontage": {
-      "x0": 9.471,
-      "x1": 14.208,
-      "widthM": 4.737
-     },
-     "bounds": {
-      "min": [
-       9.468,
-       0,
-       -11.898
-      ],
-      "max": [
-       14.315,
-       6.33,
-       0.334
-      ]
-     },
-     "triangles": 494,
-     "ranges": [
-      {
-       "primitive": 0,
-       "firstTriangle": 299,
-       "triangleCount": 42
-      },
-      {
-       "primitive": 1,
-       "firstTriangle": 480,
-       "triangleCount": 96
-      },
-      {
-       "primitive": 2,
-       "firstTriangle": 10,
-       "triangleCount": 2
-      },
-      {
-       "primitive": 3,
-       "firstTriangle": 40,
-       "triangleCount": 8
-      },
-      {
-       "primitive": 4,
-       "firstTriangle": 1252,
-       "triangleCount": 252
-      },
-      {
-       "primitive": 5,
-       "firstTriangle": 60,
-       "triangleCount": 12
-      },
-      {
-       "primitive": 6,
-       "firstTriangle": 258,
-       "triangleCount": 52
-      },
-      {
-       "primitive": 7,
-       "firstTriangle": 132,
-       "triangleCount": 22
-      },
-      {
-       "primitive": 8,
-       "firstTriangle": 21,
-       "triangleCount": 4
-      },
-      {
-       "primitive": 9,
-       "firstTriangle": 20,
        "triangleCount": 4
       }
      ]

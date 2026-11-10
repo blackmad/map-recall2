@@ -26,7 +26,8 @@
    "slug": "nieuwendammerdijk-163617",
    "address": "Nieuwendammerdijk 143",
    "type": {
-    "type": "nieuwendam-1935-cottage-dormer"
+    "type": "nieuwendam-1935-cottage-dormer",
+    "mirror": true
    },
    "groundFloor": {
     "use": "residential",
@@ -66,7 +67,8 @@
    "slug": "nieuwendammerdijk-167155",
    "address": "Nieuwendammerdijk 147",
    "type": {
-    "type": "nieuwendam-1935-cottage-dormer"
+    "type": "nieuwendam-1935-cottage-dormer",
+    "mirror": true
    },
    "groundFloor": {
     "use": "residential",
@@ -121,26 +123,6 @@
    "rhythm": {
     "citation": "auto-place: nieuwendam-1935-cottage-dormer scored 1 on storeys 1, stucco 1; strip 2022-05-09 span 1516-1705"
    }
-  },
-  {
-   "pandId": "0363100012162650",
-   "slug": "nieuwendammerdijk-162650",
-   "address": "Nieuwendammerdijk 153",
-   "type": {
-    "type": "nieuwendam-1935-cottage-dormer"
-   },
-   "groundFloor": {
-    "use": "residential",
-    "bag": [
-     "woonfunctie"
-    ],
-    "photoDate": "2022-05-09",
-    "agreement": "bag-only",
-    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
-   },
-   "rhythm": {
-    "citation": "auto-place: nieuwendam-1935-cottage-dormer scored 1 on storeys 1, stucco 1; strip 2022-05-09 span 1705-1894"
-   }
   }
  ],
  "continuity": {
@@ -183,12 +165,6 @@
     "stripRow": 348,
     "frontRoof": {},
     "evidence": "auto-place: the nieuwendam-1935-cottage-dormer cornice line 3.25 m (measured on its exemplar strips; this pand's skyline unread); 3DBAG/PDOK eaves 6.88 m"
-   },
-   {
-    "pand": "0363100012162650",
-    "stripRow": 348,
-    "frontRoof": {},
-    "evidence": "auto-place: the nieuwendam-1935-cottage-dormer cornice line 3.25 m (measured on its exemplar strips; this pand's skyline unread); 3DBAG/PDOK eaves 6.99 m"
    }
   ]
  }

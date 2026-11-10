@@ -40,3 +40,11 @@ Face 300-308: held 308 (3 columns), 306 (matches by eye; tree and creeper make t
 * Held with reasons in `nieuwendammerdijk-west-review-holds.json` (9) and `-oost-review-holds.json` (3).
 * Surveyed with intake but not typed: 9-43 (largest, 18 pands, painted 2-storey), 12-22 / 24-32 (1980s infill), 46-58, 113-129 (c.1900, arched windows, gabled dormers, a real family of 9 with decorated gable ends), 170-182, 351-355, 387-395, 36-42, 86-90, 98-102. Intake of the other ~15 faces of 3+ pands was stopped (slow); rerun `buurt-survey.ts --intake --only=<faces>` (never --camera-height without grid-checking the floor).
 * Integrator must rebuild: `build-chunk-wall-exposure.ts --write`, covers, bake-frontages, buurt pages / explorer-looks, archive strips; `chunk-face-nieuwendammerdijk-135-163-r1.glb` is new.
+
+## Round 2: Opus verdict applied (`nieuwendammerdijk-strip-verdict-20261110.md`)
+* Installed 5 pands (143, 145, 147, 149, 151); 153 (0363100012162650, balustrade and white pilaster/lintel stonework) held in `nieuwendammerdijk-west-review-holds.json`.
+* Mirrors pinned from the photo in `nieuwendammerdijk-west-review-types.json`: 143 and 147 flipped (door and dormer right), 145 and 149 left, 151 right.
+* Dormer: white `#f0f0ec` body, posts 0.25 m, window filling the front (`dormerWindow`, `dormerBody: timber`). A trim-coloured body with no front wall fails the GLB opening-outside audit (the kinker note), so the window-in-front-wall form stays; the sheet still renders the cheeks a little greyer than the fascia (same hex, lighting), which a reviewer may wish to judge. Windows, door and ridge unchanged.
+* `batch.ts`: `--replace=<run>` now bypasses the "already-installed" skip (with `--redo`), so an installed run can be re-placed and re-installed.
+* Roof golden re-recorded for `nieuwendammerdijk-135-163-r1` only; CHANGED list: 5 pands (156422, 163617, 166543, 167049, 167155) reclassed front, one intent hash.
+* Kit gap: flat roof lights on the side opposite the dormer (pands 1, 2, 3 and 6) are not drawn.

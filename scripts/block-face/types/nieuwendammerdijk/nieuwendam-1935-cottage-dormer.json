@@ -66,7 +66,6 @@
    "gable": "cornice",
    "dormers": 1,
    "dormerStyle": "flat",
-   "dormerBody": "timber",
    "dormerLights": 2,
    "dormerSize": {
     "sill": 0.2,
@@ -79,13 +78,19 @@
     "colour": "#c4c2b6",
     "soffit": "#33302d"
    },
-   "note": "Nieuwendammerdijk 139-143 (2022-05-09): a white flat-roofed box dormer, 2 lights, about 2.5 m wide against the party wall over the door; joined with the neighbour's",
+   "note": "Nieuwendammerdijk 139-153 (2022-05-09): a flush white box dormer about 2.5 m wide, white face, cheeks and fascia, the window filling the front with 0.25 m white posts (no stone ring: palette stone is the same white #f0f0ec; a trim body with no front wall fails the opening-outside audit); against the party wall over the door; joined with the neighbour's",
    "dormerAt": [
     {
      "from": 0.03,
      "to": 0.58
     }
-   ]
+   ],
+   "dormerBody": "timber",
+   "dormerWindow": {
+    "light": 2.0,
+    "apron": 0.15,
+    "tall": 1.15
+   }
   },
   "none": {
    "gable": "cornice",
@@ -107,10 +112,10 @@
  "palettes": {
   "red-brick": {
    "brick": "#7b5846",
-   "frame": "#ece9e2",
+   "frame": "#f0f0ec",
    "door": "#232323",
-   "stone": "#f0eee8",
-   "cornice": "#efede6"
+   "stone": "#f0f0ec",
+   "cornice": "#f0f0ec"
   }
  },
  "roof": {
