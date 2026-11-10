@@ -40,7 +40,11 @@
    }
   ],
   "roof": {
-   "material": "slate"
+   "material": "slate",
+   "source": "front",
+   "form": "attic",
+   "rise": 0.5,
+   "evidence": "strip: a roof face rises behind the cornice with the dormer on it"
   },
   "palette": {
    "frame": "white-painted",
@@ -162,6 +166,30 @@
    "at": "2023-03-13"
   },
   "roof/material": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 619-784 px): a 4.1 m front of two axes: ground 0-4.0 m with the door right; storeys at 4.3-6.0, 7.5-9.9 and 10.5-12.6 m with white sill bands; a white cornice with frieze vents at 13.2-13.6 m; a white pedimented dormer to ~16 m; red-brown brick #534944",
+   "at": "2023-03-13"
+  },
+  "roof/source": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 619-784 px): a 4.1 m front of two axes: ground 0-4.0 m with the door right; storeys at 4.3-6.0, 7.5-9.9 and 10.5-12.6 m with white sill bands; a white cornice with frieze vents at 13.2-13.6 m; a white pedimented dormer to ~16 m; red-brown brick #534944",
+   "at": "2023-03-13"
+  },
+  "roof/form": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 619-784 px): a 4.1 m front of two axes: ground 0-4.0 m with the door right; storeys at 4.3-6.0, 7.5-9.9 and 10.5-12.6 m with white sill bands; a white cornice with frieze vents at 13.2-13.6 m; a white pedimented dormer to ~16 m; red-brown brick #534944",
+   "at": "2023-03-13"
+  },
+  "roof/rise": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 619-784 px): a 4.1 m front of two axes: ground 0-4.0 m with the door right; storeys at 4.3-6.0, 7.5-9.9 and 10.5-12.6 m with white sill bands; a white cornice with frieze vents at 13.2-13.6 m; a white pedimented dormer to ~16 m; red-brown brick #534944",
+   "at": "2023-03-13"
+  },
+  "roof/evidence": {
    "source": "author",
    "confidence": 0.85,
    "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 619-784 px): a 4.1 m front of two axes: ground 0-4.0 m with the door right; storeys at 4.3-6.0, 7.5-9.9 and 10.5-12.6 m with white sill bands; a white cornice with frieze vents at 13.2-13.6 m; a white pedimented dormer to ~16 m; red-brown brick #534944",

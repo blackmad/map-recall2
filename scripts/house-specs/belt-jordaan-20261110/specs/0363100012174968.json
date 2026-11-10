@@ -47,7 +47,8 @@
   ],
   "roof": {
    "material": "red-tile",
-   "squareSaddle": true
+   "squareSaddle": true,
+   "source": "front"
   },
   "palette": {
    "frame": "white-painted",
@@ -163,6 +164,12 @@
    "at": "2023-03-13"
   },
   "roof/squareSaddle": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): a white timber shopfront across the full ground 0-4.0 m (door second from left); two large windows at 4.8-6.6 m; three windows at 6.7-8.4 m, the centre one tall; a neck gable 9.5-11.8 m with small claws, one attic light and a rounded cap; brick #5b514e (eland review: neck, not bell; #6e5f5c)",
+   "at": "2023-03-13"
+  },
+  "roof/source": {
    "source": "author",
    "confidence": 0.85,
    "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): a white timber shopfront across the full ground 0-4.0 m (door second from left); two large windows at 4.8-6.6 m; three windows at 6.7-8.4 m, the centre one tall; a neck gable 9.5-11.8 m with small claws, one attic light and a rounded cap; brick #5b514e (eland review: neck, not bell; #6e5f5c)",

@@ -51,7 +51,8 @@
   ],
   "roof": {
    "material": "red-tile",
-   "squareSaddle": true
+   "squareSaddle": true,
+   "source": "front"
   },
   "palette": {
    "frame": "white-painted",
@@ -179,6 +180,12 @@
    "at": "2019-01-15"
   },
   "roof/squareSaddle": {
+   "source": "author",
+   "confidence": 0.7,
+   "ref": "belt-jordaan hand read of rozengracht-30-82 strip 2019-01-15 (pand span): two axes: a shop ground 0-3.4 m; storeys at 3.8-5.7 (segmental heads with white keystones), 7.0-8.8 and 10.0-11.5 m; a white cornice 11.6-12.2 m; a stepped crown with a pointed top over the right axis 12.2-15.4 m and a dormer on the left; red-brown brick #5a4d47",
+   "at": "2019-01-15"
+  },
+  "roof/source": {
    "source": "author",
    "confidence": 0.7,
    "ref": "belt-jordaan hand read of rozengracht-30-82 strip 2019-01-15 (pand span): two axes: a shop ground 0-3.4 m; storeys at 3.8-5.7 (segmental heads with white keystones), 7.0-8.8 and 10.0-11.5 m; a white cornice 11.6-12.2 m; a stepped crown with a pointed top over the right axis 12.2-15.4 m and a dormer on the left; red-brown brick #5a4d47",

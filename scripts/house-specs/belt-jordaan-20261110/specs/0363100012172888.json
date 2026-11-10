@@ -30,7 +30,8 @@
   ],
   "roof": {
    "material": "slate",
-   "squareSaddle": true
+   "squareSaddle": true,
+   "source": "front"
   },
   "palette": {
    "frame": "white-painted",
@@ -152,6 +153,12 @@
    "at": "2023-03-13"
   },
   "roof/squareSaddle": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): three axes: ground 0-3.4 m under a white beam; storeys at 4.0-6.0 and 7.1-9.0 m with a French door and balconette on the middle axis; a raised front with straight flanks 10.0-12.4 m under a white pediment cap with one light; red-brown brick #463834",
+   "at": "2023-03-13"
+  },
+  "roof/source": {
    "source": "author",
    "confidence": 0.85,
    "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): three axes: ground 0-3.4 m under a white beam; storeys at 4.0-6.0 and 7.1-9.0 m with a French door and balconette on the middle axis; a raised front with straight flanks 10.0-12.4 m under a white pediment cap with one light; red-brown brick #463834",

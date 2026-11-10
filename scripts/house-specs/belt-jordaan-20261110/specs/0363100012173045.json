@@ -52,7 +52,11 @@
    }
   ],
   "roof": {
-   "material": "slate"
+   "material": "slate",
+   "source": "front",
+   "form": "attic",
+   "rise": 0.5,
+   "evidence": "strip: a roof face rises behind the cornice with the dormer on it"
   },
   "palette": {
    "frame": "white-painted",
@@ -180,6 +184,30 @@
    "at": "2023-03-13"
   },
   "roof/material": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 2217-2402 px): three axes; a white timber ground front 0-3.9 m (double door left, transomed windows); three storeys of segmental-headed sashes at 4.3-6.1, 7.2-9.0, 10.1-12.0 m; a white frieze with a small medallion and cornice 12.3-13.3 m; a white dormer with a curved top and finial 13.3-15.6 m; red-brown brick #685852",
+   "at": "2023-03-13"
+  },
+  "roof/source": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 2217-2402 px): three axes; a white timber ground front 0-3.9 m (double door left, transomed windows); three storeys of segmental-headed sashes at 4.3-6.1, 7.2-9.0, 10.1-12.0 m; a white frieze with a small medallion and cornice 12.3-13.3 m; a white dormer with a curved top and finial 13.3-15.6 m; red-brown brick #685852",
+   "at": "2023-03-13"
+  },
+  "roof/form": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 2217-2402 px): three axes; a white timber ground front 0-3.9 m (double door left, transomed windows); three storeys of segmental-headed sashes at 4.3-6.1, 7.2-9.0, 10.1-12.0 m; a white frieze with a small medallion and cornice 12.3-13.3 m; a white dormer with a curved top and finial 13.3-15.6 m; red-brown brick #685852",
+   "at": "2023-03-13"
+  },
+  "roof/rise": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 2217-2402 px): three axes; a white timber ground front 0-3.9 m (double door left, transomed windows); three storeys of segmental-headed sashes at 4.3-6.1, 7.2-9.0, 10.1-12.0 m; a white frieze with a small medallion and cornice 12.3-13.3 m; a white dormer with a curved top and finial 13.3-15.6 m; red-brown brick #685852",
+   "at": "2023-03-13"
+  },
+  "roof/evidence": {
    "source": "author",
    "confidence": 0.85,
    "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 2217-2402 px): three axes; a white timber ground front 0-3.9 m (double door left, transomed windows); three storeys of segmental-headed sashes at 4.3-6.1, 7.2-9.0, 10.1-12.0 m; a white frieze with a small medallion and cornice 12.3-13.3 m; a white dormer with a curved top and finial 13.3-15.6 m; red-brown brick #685852",

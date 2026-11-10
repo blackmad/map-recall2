@@ -32,7 +32,10 @@
    }
   ],
   "roof": {
-   "material": "bitumen"
+   "material": "bitumen",
+   "source": "front",
+   "form": "flat",
+   "evidence": "strip: sky over the cornice/parapet, no roof face seen"
   },
   "palette": {
    "frame": "white-painted",
@@ -124,6 +127,24 @@
    "at": "2019-01-15"
   },
   "roof/material": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of rozengracht-30-82 strip 2019-01-15 (pand span): a painted black front of three axes: a shop ground 0-3.2 m with a sign band to ~4.4 m; storeys at 4.8-6.6, 7.6-9.2 and 10.2-11.7 m (a French door with a balconette in the middle of the top storey); a wide white frieze and cornice 12.4-13.5 m, flat; painted brick #373231",
+   "at": "2019-01-15"
+  },
+  "roof/source": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of rozengracht-30-82 strip 2019-01-15 (pand span): a painted black front of three axes: a shop ground 0-3.2 m with a sign band to ~4.4 m; storeys at 4.8-6.6, 7.6-9.2 and 10.2-11.7 m (a French door with a balconette in the middle of the top storey); a wide white frieze and cornice 12.4-13.5 m, flat; painted brick #373231",
+   "at": "2019-01-15"
+  },
+  "roof/form": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of rozengracht-30-82 strip 2019-01-15 (pand span): a painted black front of three axes: a shop ground 0-3.2 m with a sign band to ~4.4 m; storeys at 4.8-6.6, 7.6-9.2 and 10.2-11.7 m (a French door with a balconette in the middle of the top storey); a wide white frieze and cornice 12.4-13.5 m, flat; painted brick #373231",
+   "at": "2019-01-15"
+  },
+  "roof/evidence": {
    "source": "author",
    "confidence": 0.85,
    "ref": "belt-jordaan hand read of rozengracht-30-82 strip 2019-01-15 (pand span): a painted black front of three axes: a shop ground 0-3.2 m with a sign band to ~4.4 m; storeys at 4.8-6.6, 7.6-9.2 and 10.2-11.7 m (a French door with a balconette in the middle of the top storey); a wide white frieze and cornice 12.4-13.5 m, flat; painted brick #373231",

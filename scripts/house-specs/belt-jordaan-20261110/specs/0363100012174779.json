@@ -29,7 +29,8 @@
   ],
   "roof": {
    "material": "red-tile",
-   "squareSaddle": true
+   "squareSaddle": true,
+   "source": "front"
   },
   "palette": {
    "frame": "white-painted",
@@ -133,6 +134,12 @@
    "at": "2023-03-13"
   },
   "roof/squareSaddle": {
+   "source": "author",
+   "confidence": 0.7,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): a tall 6.3 m warehouse-like front of three axes: ground 0-4.4 m; storeys at 4.9-6.7, 7.7-9.2, 10.8-12.5, 13.9-15.2 m; a spout gable from ~15.5 m with one light to ~18.3 m; red-brown brick #564e4e",
+   "at": "2023-03-13"
+  },
+  "roof/source": {
    "source": "author",
    "confidence": 0.7,
    "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): a tall 6.3 m warehouse-like front of three axes: ground 0-4.4 m; storeys at 4.9-6.7, 7.7-9.2, 10.8-12.5, 13.9-15.2 m; a spout gable from ~15.5 m with one light to ~18.3 m; red-brown brick #564e4e",

@@ -42,7 +42,10 @@
    }
   ],
   "roof": {
-   "material": "bitumen"
+   "material": "bitumen",
+   "source": "front",
+   "form": "flat",
+   "evidence": "strip: sky over the cornice/parapet, no roof face seen"
   },
   "palette": {
    "frame": "white-painted",
@@ -140,6 +143,24 @@
    "at": "2019-01-15"
   },
   "roof/material": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of rozengracht-30-82 strip 2019-01-15 (pand span): a plain c. 1900 front of three axes: a shop ground 0-4.0 m with a fascia; storeys at 4.3-6.3, 7.4-9.3, 10.4-12.3 m and a top storey with one four-light window at 13.7-14.7 m; a plain brick parapet front with cut corners to ~15.6 m; red-brown brick #65544e",
+   "at": "2019-01-15"
+  },
+  "roof/source": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of rozengracht-30-82 strip 2019-01-15 (pand span): a plain c. 1900 front of three axes: a shop ground 0-4.0 m with a fascia; storeys at 4.3-6.3, 7.4-9.3, 10.4-12.3 m and a top storey with one four-light window at 13.7-14.7 m; a plain brick parapet front with cut corners to ~15.6 m; red-brown brick #65544e",
+   "at": "2019-01-15"
+  },
+  "roof/form": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of rozengracht-30-82 strip 2019-01-15 (pand span): a plain c. 1900 front of three axes: a shop ground 0-4.0 m with a fascia; storeys at 4.3-6.3, 7.4-9.3, 10.4-12.3 m and a top storey with one four-light window at 13.7-14.7 m; a plain brick parapet front with cut corners to ~15.6 m; red-brown brick #65544e",
+   "at": "2019-01-15"
+  },
+  "roof/evidence": {
    "source": "author",
    "confidence": 0.85,
    "ref": "belt-jordaan hand read of rozengracht-30-82 strip 2019-01-15 (pand span): a plain c. 1900 front of three axes: a shop ground 0-4.0 m with a fascia; storeys at 4.3-6.3, 7.4-9.3, 10.4-12.3 m and a top storey with one four-light window at 13.7-14.7 m; a plain brick parapet front with cut corners to ~15.6 m; red-brown brick #65544e",

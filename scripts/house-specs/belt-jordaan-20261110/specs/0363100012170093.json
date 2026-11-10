@@ -32,7 +32,10 @@
    }
   ],
   "roof": {
-   "material": "bitumen"
+   "material": "bitumen",
+   "source": "front",
+   "form": "flat",
+   "evidence": "strip: sky over the cornice/parapet, no roof face seen"
   },
   "palette": {
    "frame": "white-painted",
@@ -124,6 +127,24 @@
    "at": "2019-01-15"
   },
   "roof/material": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of rozengracht-30-82 strip 2019-01-15 (pand span): a plain 7.1 m front of three axes (c. 1920-30): a shop ground 0-3.4 m with a red fascia; storeys at 4.0-5.9, 7.2-9.2 and 10.4-12.3 m with stone sills; a flat parapet at ~13.8 m; red-brown brick #5a4f45",
+   "at": "2019-01-15"
+  },
+  "roof/source": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of rozengracht-30-82 strip 2019-01-15 (pand span): a plain 7.1 m front of three axes (c. 1920-30): a shop ground 0-3.4 m with a red fascia; storeys at 4.0-5.9, 7.2-9.2 and 10.4-12.3 m with stone sills; a flat parapet at ~13.8 m; red-brown brick #5a4f45",
+   "at": "2019-01-15"
+  },
+  "roof/form": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of rozengracht-30-82 strip 2019-01-15 (pand span): a plain 7.1 m front of three axes (c. 1920-30): a shop ground 0-3.4 m with a red fascia; storeys at 4.0-5.9, 7.2-9.2 and 10.4-12.3 m with stone sills; a flat parapet at ~13.8 m; red-brown brick #5a4f45",
+   "at": "2019-01-15"
+  },
+  "roof/evidence": {
    "source": "author",
    "confidence": 0.85,
    "ref": "belt-jordaan hand read of rozengracht-30-82 strip 2019-01-15 (pand span): a plain 7.1 m front of three axes (c. 1920-30): a shop ground 0-3.4 m with a red fascia; storeys at 4.0-5.9, 7.2-9.2 and 10.4-12.3 m with stone sills; a flat parapet at ~13.8 m; red-brown brick #5a4f45",

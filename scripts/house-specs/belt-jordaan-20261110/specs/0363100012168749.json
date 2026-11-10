@@ -30,7 +30,8 @@
   ],
   "roof": {
    "material": "red-tile",
-   "squareSaddle": true
+   "squareSaddle": true,
+   "source": "front"
   },
   "palette": {
    "frame": "white-painted",
@@ -146,6 +147,12 @@
    "at": "2023-03-13"
   },
   "roof/squareSaddle": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 2402-2633 px): three axes over a souterrain (lights 0.5-1.5 m, stoop); a tall bel-etage 2.2-6.6 m with the door left under a stained-glass transom; storeys at 7.0-8.9 and 9.8-11.7 m; a gable stone; a tall neck gable 13.0-17.5 m with big claw scrolls, one attic light and a scrolled cap; dark red-brown brick #5e524c",
+   "at": "2023-03-13"
+  },
+  "roof/source": {
    "source": "author",
    "confidence": 0.85,
    "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 2402-2633 px): three axes over a souterrain (lights 0.5-1.5 m, stoop); a tall bel-etage 2.2-6.6 m with the door left under a stained-glass transom; storeys at 7.0-8.9 and 9.8-11.7 m; a gable stone; a tall neck gable 13.0-17.5 m with big claw scrolls, one attic light and a scrolled cap; dark red-brown brick #5e524c",

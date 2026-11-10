@@ -49,7 +49,11 @@
    }
   ],
   "roof": {
-   "material": "black-tile"
+   "material": "black-tile",
+   "source": "front",
+   "form": "attic",
+   "rise": 0.5,
+   "evidence": "strip: a roof face rises behind the cornice with the dormer on it"
   },
   "palette": {
    "frame": "white-painted",
@@ -171,6 +175,30 @@
    "at": "2023-03-13"
   },
   "roof/material": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 3538-3725 px): three axes; a white timber ground front 0-4.0 m of three tall openings; three storeys of 6-over-6 sashes at 5.0-6.6, 7.3-8.9, 9.6-11.0 m; a white frieze with three small attic lights 11.5-12.6 m under the cornice (~13.0 m); a tile roof with a white pedimented dormer and finial to 15.2 m; red-brown brick #66574e",
+   "at": "2023-03-13"
+  },
+  "roof/source": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 3538-3725 px): three axes; a white timber ground front 0-4.0 m of three tall openings; three storeys of 6-over-6 sashes at 5.0-6.6, 7.3-8.9, 9.6-11.0 m; a white frieze with three small attic lights 11.5-12.6 m under the cornice (~13.0 m); a tile roof with a white pedimented dormer and finial to 15.2 m; red-brown brick #66574e",
+   "at": "2023-03-13"
+  },
+  "roof/form": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 3538-3725 px): three axes; a white timber ground front 0-4.0 m of three tall openings; three storeys of 6-over-6 sashes at 5.0-6.6, 7.3-8.9, 9.6-11.0 m; a white frieze with three small attic lights 11.5-12.6 m under the cornice (~13.0 m); a tile roof with a white pedimented dormer and finial to 15.2 m; red-brown brick #66574e",
+   "at": "2023-03-13"
+  },
+  "roof/rise": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 3538-3725 px): three axes; a white timber ground front 0-4.0 m of three tall openings; three storeys of 6-over-6 sashes at 5.0-6.6, 7.3-8.9, 9.6-11.0 m; a white frieze with three small attic lights 11.5-12.6 m under the cornice (~13.0 m); a tile roof with a white pedimented dormer and finial to 15.2 m; red-brown brick #66574e",
+   "at": "2023-03-13"
+  },
+  "roof/evidence": {
    "source": "author",
    "confidence": 0.85,
    "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 3538-3725 px): three axes; a white timber ground front 0-4.0 m of three tall openings; three storeys of 6-over-6 sashes at 5.0-6.6, 7.3-8.9, 9.6-11.0 m; a white frieze with three small attic lights 11.5-12.6 m under the cornice (~13.0 m); a tile roof with a white pedimented dormer and finial to 15.2 m; red-brown brick #66574e",

@@ -35,7 +35,11 @@
    }
   ],
   "roof": {
-   "material": "red-tile"
+   "material": "red-tile",
+   "source": "front",
+   "form": "attic",
+   "rise": 0.6,
+   "evidence": "strip: a roof face rises behind the cornice"
   },
   "palette": {
    "frame": "white-painted",
@@ -127,6 +131,30 @@
    "at": "2023-03-13"
   },
   "roof/material": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): three axes: a white ground 0-3.6 m with the door right; storeys at 4.1-6.1, 6.9-8.9 and 9.7-11.3 m; a white eaves cornice ~12.0-12.5 m; a red tile roof face to ~14.2 m; red-brown brick #605350 (eland review: door right, the tile roof shows)",
+   "at": "2023-03-13"
+  },
+  "roof/source": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): three axes: a white ground 0-3.6 m with the door right; storeys at 4.1-6.1, 6.9-8.9 and 9.7-11.3 m; a white eaves cornice ~12.0-12.5 m; a red tile roof face to ~14.2 m; red-brown brick #605350 (eland review: door right, the tile roof shows)",
+   "at": "2023-03-13"
+  },
+  "roof/form": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): three axes: a white ground 0-3.6 m with the door right; storeys at 4.1-6.1, 6.9-8.9 and 9.7-11.3 m; a white eaves cornice ~12.0-12.5 m; a red tile roof face to ~14.2 m; red-brown brick #605350 (eland review: door right, the tile roof shows)",
+   "at": "2023-03-13"
+  },
+  "roof/rise": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): three axes: a white ground 0-3.6 m with the door right; storeys at 4.1-6.1, 6.9-8.9 and 9.7-11.3 m; a white eaves cornice ~12.0-12.5 m; a red tile roof face to ~14.2 m; red-brown brick #605350 (eland review: door right, the tile roof shows)",
+   "at": "2023-03-13"
+  },
+  "roof/evidence": {
    "source": "author",
    "confidence": 0.85,
    "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): three axes: a white ground 0-3.6 m with the door right; storeys at 4.1-6.1, 6.9-8.9 and 9.7-11.3 m; a white eaves cornice ~12.0-12.5 m; a red tile roof face to ~14.2 m; red-brown brick #605350 (eland review: door right, the tile roof shows)",

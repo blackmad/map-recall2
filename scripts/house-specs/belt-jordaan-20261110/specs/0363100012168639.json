@@ -46,7 +46,11 @@
    }
   ],
   "roof": {
-   "material": "red-tile"
+   "material": "red-tile",
+   "source": "front",
+   "form": "attic",
+   "rise": 0.5,
+   "evidence": "strip: a roof face rises behind the cornice with the dormer on it"
   },
   "palette": {
    "frame": "white-painted",
@@ -168,6 +172,30 @@
    "at": "2019-01-15"
   },
   "roof/material": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of rozengracht-30-82 strip 2019-01-15 (pand span): a painted black front of three axes: a shop ground 0-4.0 m with a fascia; storeys at 3.5-5.5, 6.3-8.0 and 8.9-10.4 m with white keystone blocks over the windows; a white frieze and cornice 10.9-12.2 m; a red tile roof with a pedimented dormer 12.8-14.2 m; painted brick #333235",
+   "at": "2019-01-15"
+  },
+  "roof/source": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of rozengracht-30-82 strip 2019-01-15 (pand span): a painted black front of three axes: a shop ground 0-4.0 m with a fascia; storeys at 3.5-5.5, 6.3-8.0 and 8.9-10.4 m with white keystone blocks over the windows; a white frieze and cornice 10.9-12.2 m; a red tile roof with a pedimented dormer 12.8-14.2 m; painted brick #333235",
+   "at": "2019-01-15"
+  },
+  "roof/form": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of rozengracht-30-82 strip 2019-01-15 (pand span): a painted black front of three axes: a shop ground 0-4.0 m with a fascia; storeys at 3.5-5.5, 6.3-8.0 and 8.9-10.4 m with white keystone blocks over the windows; a white frieze and cornice 10.9-12.2 m; a red tile roof with a pedimented dormer 12.8-14.2 m; painted brick #333235",
+   "at": "2019-01-15"
+  },
+  "roof/rise": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of rozengracht-30-82 strip 2019-01-15 (pand span): a painted black front of three axes: a shop ground 0-4.0 m with a fascia; storeys at 3.5-5.5, 6.3-8.0 and 8.9-10.4 m with white keystone blocks over the windows; a white frieze and cornice 10.9-12.2 m; a red tile roof with a pedimented dormer 12.8-14.2 m; painted brick #333235",
+   "at": "2019-01-15"
+  },
+  "roof/evidence": {
    "source": "author",
    "confidence": 0.85,
    "ref": "belt-jordaan hand read of rozengracht-30-82 strip 2019-01-15 (pand span): a painted black front of three axes: a shop ground 0-4.0 m with a fascia; storeys at 3.5-5.5, 6.3-8.0 and 8.9-10.4 m with white keystone blocks over the windows; a white frieze and cornice 10.9-12.2 m; a red tile roof with a pedimented dormer 12.8-14.2 m; painted brick #333235",

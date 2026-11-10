@@ -25,7 +25,10 @@
    }
   ],
   "roof": {
-   "material": "bitumen"
+   "material": "bitumen",
+   "source": "front",
+   "form": "flat",
+   "evidence": "strip: sky over the cornice/parapet, no roof face seen"
   },
   "palette": {
    "frame": "white-painted",
@@ -111,6 +114,24 @@
    "at": "2023-03-13"
   },
   "roof/material": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): three axes: ground 0-4.0 m (door left, ivy); storeys at 4.6-6.7, 7.4-9.1, 9.8-11.2 m; a white frieze and cornice 11.4-12.4 m with a small lantern ornament to ~14 m and sky above (no roof shows); brick #504c4c (eland review: rows, door left and brick #5c5653 match)",
+   "at": "2023-03-13"
+  },
+  "roof/source": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): three axes: ground 0-4.0 m (door left, ivy); storeys at 4.6-6.7, 7.4-9.1, 9.8-11.2 m; a white frieze and cornice 11.4-12.4 m with a small lantern ornament to ~14 m and sky above (no roof shows); brick #504c4c (eland review: rows, door left and brick #5c5653 match)",
+   "at": "2023-03-13"
+  },
+  "roof/form": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): three axes: ground 0-4.0 m (door left, ivy); storeys at 4.6-6.7, 7.4-9.1, 9.8-11.2 m; a white frieze and cornice 11.4-12.4 m with a small lantern ornament to ~14 m and sky above (no roof shows); brick #504c4c (eland review: rows, door left and brick #5c5653 match)",
+   "at": "2023-03-13"
+  },
+  "roof/evidence": {
    "source": "author",
    "confidence": 0.85,
    "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): three axes: ground 0-4.0 m (door left, ivy); storeys at 4.6-6.7, 7.4-9.1, 9.8-11.2 m; a white frieze and cornice 11.4-12.4 m with a small lantern ornament to ~14 m and sky above (no roof shows); brick #504c4c (eland review: rows, door left and brick #5c5653 match)",

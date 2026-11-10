@@ -44,7 +44,8 @@
   ],
   "roof": {
    "material": "red-tile",
-   "squareSaddle": true
+   "squareSaddle": true,
+   "source": "front"
   },
   "palette": {
    "frame": "white-painted",
@@ -154,6 +155,12 @@
    "at": "2023-03-13"
   },
   "roof/squareSaddle": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 1483-1638 px): a 3.9 m front: a white timber ground front 0-4.0 m (door left, glazing right), two windows at 5.0-7.3 m, three small windows at 7.5-8.7 m, a small bell gable 9.4-12.0 m with white claw pieces, one attic light and a hoist beam; painted dark brown brick #393633",
+   "at": "2023-03-13"
+  },
+  "roof/source": {
    "source": "author",
    "confidence": 0.85,
    "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 1483-1638 px): a 3.9 m front: a white timber ground front 0-4.0 m (door left, glazing right), two windows at 5.0-7.3 m, three small windows at 7.5-8.7 m, a small bell gable 9.4-12.0 m with white claw pieces, one attic light and a hoist beam; painted dark brown brick #393633",

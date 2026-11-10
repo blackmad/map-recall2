@@ -28,7 +28,10 @@
    }
   ],
   "roof": {
-   "material": "bitumen"
+   "material": "bitumen",
+   "source": "front",
+   "form": "flat",
+   "evidence": "strip: sky over the cornice/parapet, no roof face seen"
   },
   "palette": {
    "frame": "white-painted",
@@ -126,6 +129,24 @@
    "at": "2023-03-13"
   },
   "roof/material": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 1943-2217 px): a 6.8 m front of three axes, ground and four storeys (windows 0.5-2.9, 4.3-6.1, 7.6-9.9, 10.5-12.3, 13.0-14.6 m), the double door on the right axis; small-paned sashes with white frames; wall anchors on every floor; a white inscribed frieze and cornice 15.0-16.8 m, no roof seen; red-brown brick #64544e",
+   "at": "2023-03-13"
+  },
+  "roof/source": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 1943-2217 px): a 6.8 m front of three axes, ground and four storeys (windows 0.5-2.9, 4.3-6.1, 7.6-9.9, 10.5-12.3, 13.0-14.6 m), the double door on the right axis; small-paned sashes with white frames; wall anchors on every floor; a white inscribed frieze and cornice 15.0-16.8 m, no roof seen; red-brown brick #64544e",
+   "at": "2023-03-13"
+  },
+  "roof/form": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 1943-2217 px): a 6.8 m front of three axes, ground and four storeys (windows 0.5-2.9, 4.3-6.1, 7.6-9.9, 10.5-12.3, 13.0-14.6 m), the double door on the right axis; small-paned sashes with white frames; wall anchors on every floor; a white inscribed frieze and cornice 15.0-16.8 m, no roof seen; red-brown brick #64544e",
+   "at": "2023-03-13"
+  },
+  "roof/evidence": {
    "source": "author",
    "confidence": 0.85,
    "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 1943-2217 px): a 6.8 m front of three axes, ground and four storeys (windows 0.5-2.9, 4.3-6.1, 7.6-9.9, 10.5-12.3, 13.0-14.6 m), the double door on the right axis; small-paned sashes with white frames; wall anchors on every floor; a white inscribed frieze and cornice 15.0-16.8 m, no roof seen; red-brown brick #64544e",

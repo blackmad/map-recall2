@@ -30,7 +30,10 @@
    }
   ],
   "roof": {
-   "material": "bitumen"
+   "material": "bitumen",
+   "source": "front",
+   "form": "flat",
+   "evidence": "strip: sky over the cornice/parapet, no roof face seen"
   },
   "palette": {
    "frame": "white-painted",
@@ -116,6 +119,24 @@
    "at": "2023-03-13"
   },
   "roof/material": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 4094-4286 px): two axes, painted black: a tall ground 0-5.6 m (a wide window left, the door right with a transom); storeys at 7.3-9.0 and 9.7-11.4 m; a top storey with one two-light window in the middle at 12.2-13.8 m; a plain white cornice ~15.3 m, flat roof; painted brick #413e3b",
+   "at": "2023-03-13"
+  },
+  "roof/source": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 4094-4286 px): two axes, painted black: a tall ground 0-5.6 m (a wide window left, the door right with a transom); storeys at 7.3-9.0 and 9.7-11.4 m; a top storey with one two-light window in the middle at 12.2-13.8 m; a plain white cornice ~15.3 m, flat roof; painted brick #413e3b",
+   "at": "2023-03-13"
+  },
+  "roof/form": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 4094-4286 px): two axes, painted black: a tall ground 0-5.6 m (a wide window left, the door right with a transom); storeys at 7.3-9.0 and 9.7-11.4 m; a top storey with one two-light window in the middle at 12.2-13.8 m; a plain white cornice ~15.3 m, flat roof; painted brick #413e3b",
+   "at": "2023-03-13"
+  },
+  "roof/evidence": {
    "source": "author",
    "confidence": 0.85,
    "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 4094-4286 px): two axes, painted black: a tall ground 0-5.6 m (a wide window left, the door right with a transom); storeys at 7.3-9.0 and 9.7-11.4 m; a top storey with one two-light window in the middle at 12.2-13.8 m; a plain white cornice ~15.3 m, flat roof; painted brick #413e3b",

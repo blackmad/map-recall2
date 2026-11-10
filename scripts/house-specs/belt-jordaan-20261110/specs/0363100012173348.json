@@ -40,7 +40,8 @@
   ],
   "roof": {
    "material": "red-tile",
-   "squareSaddle": true
+   "squareSaddle": true,
+   "source": "front"
   },
   "palette": {
    "frame": "white-painted",
@@ -168,6 +169,12 @@
    "at": "2023-03-13"
   },
   "roof/squareSaddle": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 469-615 px): a 3.7 m front of two axes: a glazed ground front 0-4.0 m; storeys at 4.3-6.4, 7.3-9.4 and 10.2-12.1 m with white stone bands at sill and head level; a neck gable from ~13.2 m with claw pieces, one attic light and a flat cap with a sculpted finial to ~16.3 m; red-brown brick (measured #6c6964 on a box touching the white bands; #6a5850 between them by eye)",
+   "at": "2023-03-13"
+  },
+  "roof/source": {
    "source": "author",
    "confidence": 0.85,
    "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 469-615 px): a 3.7 m front of two axes: a glazed ground front 0-4.0 m; storeys at 4.3-6.4, 7.3-9.4 and 10.2-12.1 m with white stone bands at sill and head level; a neck gable from ~13.2 m with claw pieces, one attic light and a flat cap with a sculpted finial to ~16.3 m; red-brown brick (measured #6c6964 on a box touching the white bands; #6a5850 between them by eye)",

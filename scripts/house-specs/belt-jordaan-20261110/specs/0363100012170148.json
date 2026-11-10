@@ -28,7 +28,10 @@
    }
   ],
   "roof": {
-   "material": "bitumen"
+   "material": "bitumen",
+   "source": "front",
+   "form": "flat",
+   "evidence": "strip: sky over the cornice/parapet, no roof face seen"
   },
   "palette": {
    "frame": "white-painted",
@@ -114,6 +117,24 @@
    "at": "2019-01-15"
   },
   "roof/material": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of rozengracht-30-82 strip 2019-01-15 (pand span): a 3.2 m painted black front: ground 0-3.0 m (door left); two windows at 4.0-5.9 m; one window at 6.6-7.8 m; a white cornice 8.2-8.8 m, flat; painted brick #3c393a",
+   "at": "2019-01-15"
+  },
+  "roof/source": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of rozengracht-30-82 strip 2019-01-15 (pand span): a 3.2 m painted black front: ground 0-3.0 m (door left); two windows at 4.0-5.9 m; one window at 6.6-7.8 m; a white cornice 8.2-8.8 m, flat; painted brick #3c393a",
+   "at": "2019-01-15"
+  },
+  "roof/form": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of rozengracht-30-82 strip 2019-01-15 (pand span): a 3.2 m painted black front: ground 0-3.0 m (door left); two windows at 4.0-5.9 m; one window at 6.6-7.8 m; a white cornice 8.2-8.8 m, flat; painted brick #3c393a",
+   "at": "2019-01-15"
+  },
+  "roof/evidence": {
    "source": "author",
    "confidence": 0.85,
    "ref": "belt-jordaan hand read of rozengracht-30-82 strip 2019-01-15 (pand span): a 3.2 m painted black front: ground 0-3.0 m (door left); two windows at 4.0-5.9 m; one window at 6.6-7.8 m; a white cornice 8.2-8.8 m, flat; painted brick #3c393a",

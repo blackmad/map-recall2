@@ -33,7 +33,10 @@
    }
   ],
   "roof": {
-   "material": "bitumen"
+   "material": "bitumen",
+   "source": "front",
+   "form": "flat",
+   "evidence": "strip: sky over the cornice/parapet, no roof face seen"
   },
   "palette": {
    "frame": "white-painted",
@@ -125,6 +128,24 @@
    "at": "2023-03-13"
   },
   "roof/material": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): two axes: a white timber ground 0-5.5 m; storeys at 6.5-8.2 and 9.5-11.0 m; a dark cornice 11.6-12.4 m, flat roof; painted dark brown brick #3f3936",
+   "at": "2023-03-13"
+  },
+  "roof/source": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): two axes: a white timber ground 0-5.5 m; storeys at 6.5-8.2 and 9.5-11.0 m; a dark cornice 11.6-12.4 m, flat roof; painted dark brown brick #3f3936",
+   "at": "2023-03-13"
+  },
+  "roof/form": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): two axes: a white timber ground 0-5.5 m; storeys at 6.5-8.2 and 9.5-11.0 m; a dark cornice 11.6-12.4 m, flat roof; painted dark brown brick #3f3936",
+   "at": "2023-03-13"
+  },
+  "roof/evidence": {
    "source": "author",
    "confidence": 0.85,
    "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): two axes: a white timber ground 0-5.5 m; storeys at 6.5-8.2 and 9.5-11.0 m; a dark cornice 11.6-12.4 m, flat roof; painted dark brown brick #3f3936",

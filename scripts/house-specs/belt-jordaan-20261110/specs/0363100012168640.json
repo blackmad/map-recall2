@@ -38,7 +38,11 @@
    }
   ],
   "roof": {
-   "material": "red-tile"
+   "material": "red-tile",
+   "source": "front",
+   "form": "attic",
+   "rise": 0.5,
+   "evidence": "strip: a roof face rises behind the cornice with the dormer on it"
   },
   "palette": {
    "frame": "white-painted",
@@ -154,6 +158,30 @@
    "at": "2019-01-15"
   },
   "roof/material": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of rozengracht-30-82 strip 2019-01-15 (pand span): a 3.9 m front of two axes: ground 0-4.0 m (window left, door right); storeys at 4.2-6.3 and 7.1-8.9 m; a white frieze and cornice 9.9-10.7 m; a small dormer to ~12.2 m; red-brown brick #4e433c",
+   "at": "2019-01-15"
+  },
+  "roof/source": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of rozengracht-30-82 strip 2019-01-15 (pand span): a 3.9 m front of two axes: ground 0-4.0 m (window left, door right); storeys at 4.2-6.3 and 7.1-8.9 m; a white frieze and cornice 9.9-10.7 m; a small dormer to ~12.2 m; red-brown brick #4e433c",
+   "at": "2019-01-15"
+  },
+  "roof/form": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of rozengracht-30-82 strip 2019-01-15 (pand span): a 3.9 m front of two axes: ground 0-4.0 m (window left, door right); storeys at 4.2-6.3 and 7.1-8.9 m; a white frieze and cornice 9.9-10.7 m; a small dormer to ~12.2 m; red-brown brick #4e433c",
+   "at": "2019-01-15"
+  },
+  "roof/rise": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of rozengracht-30-82 strip 2019-01-15 (pand span): a 3.9 m front of two axes: ground 0-4.0 m (window left, door right); storeys at 4.2-6.3 and 7.1-8.9 m; a white frieze and cornice 9.9-10.7 m; a small dormer to ~12.2 m; red-brown brick #4e433c",
+   "at": "2019-01-15"
+  },
+  "roof/evidence": {
    "source": "author",
    "confidence": 0.85,
    "ref": "belt-jordaan hand read of rozengracht-30-82 strip 2019-01-15 (pand span): a 3.9 m front of two axes: ground 0-4.0 m (window left, door right); storeys at 4.2-6.3 and 7.1-8.9 m; a white frieze and cornice 9.9-10.7 m; a small dormer to ~12.2 m; red-brown brick #4e433c",

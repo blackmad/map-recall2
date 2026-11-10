@@ -37,7 +37,8 @@
   ],
   "roof": {
    "material": "red-tile",
-   "squareSaddle": true
+   "squareSaddle": true,
+   "source": "front"
   },
   "palette": {
    "frame": "white-painted",
@@ -147,6 +148,12 @@
    "at": "2019-01-15"
   },
   "roof/squareSaddle": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of rozengracht-30-82 strip 2019-01-15 (pand span): three axes: a shop ground 0-3.8 m between white pilasters; storeys at 3.9-5.8 (stained glass) and 6.5-7.9 m; a bell gable 8.5-12.2 m with white claw pieces and one attic light; brown brick #4b3f3a",
+   "at": "2019-01-15"
+  },
+  "roof/source": {
    "source": "author",
    "confidence": 0.85,
    "ref": "belt-jordaan hand read of rozengracht-30-82 strip 2019-01-15 (pand span): three axes: a shop ground 0-3.8 m between white pilasters; storeys at 3.9-5.8 (stained glass) and 6.5-7.9 m; a bell gable 8.5-12.2 m with white claw pieces and one attic light; brown brick #4b3f3a",

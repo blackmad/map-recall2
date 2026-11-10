@@ -30,7 +30,8 @@
   ],
   "roof": {
    "material": "red-tile",
-   "squareSaddle": true
+   "squareSaddle": true,
+   "source": "front"
   },
   "palette": {
    "frame": "white-painted",
@@ -140,6 +141,12 @@
    "at": "2023-03-13"
   },
   "roof/squareSaddle": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): a low 3.8 m house, painted near-black brick (measured #272325; drawn #2f2c2c, the eland lane's floor for the darkest walls: near-black hexes drew green on the recipe route, H7): a tall ground 0-5.0 m (door left, window right, white frames); white painted bands at ~5.9 and ~7.5 m; one wide window at 6.1-7.4 m; a bell gable 7.9-11.0 m with one attic light",
+   "at": "2023-03-13"
+  },
+  "roof/source": {
    "source": "author",
    "confidence": 0.85,
    "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): a low 3.8 m house, painted near-black brick (measured #272325; drawn #2f2c2c, the eland lane's floor for the darkest walls: near-black hexes drew green on the recipe route, H7): a tall ground 0-5.0 m (door left, window right, white frames); white painted bands at ~5.9 and ~7.5 m; one wide window at 6.1-7.4 m; a bell gable 7.9-11.0 m with one attic light",

@@ -23,7 +23,11 @@
    "windows": "sash"
   },
   "roof": {
-   "material": "black-tile"
+   "material": "black-tile",
+   "source": "front",
+   "form": "attic",
+   "rise": 0.6,
+   "evidence": "strip: a roof face rises behind the cornice"
   },
   "palette": {
    "brick": "#634f46",
@@ -73,7 +77,11 @@
    }
   },
   "roof": {
-   "material": "slate"
+   "material": "slate",
+   "source": "front",
+   "form": "attic",
+   "rise": 0.5,
+   "evidence": "strip: a roof face rises behind the cornice with the dormer on it"
   },
   "palette": {
    "brick": "#484346",
@@ -126,7 +134,8 @@
   },
   "roof": {
    "material": "red-tile",
-   "squareSaddle": true
+   "squareSaddle": true,
+   "source": "front"
   },
   "palette": {
    "brick": "#393633",
@@ -185,7 +194,11 @@
    }
   },
   "roof": {
-   "material": "slate"
+   "material": "slate",
+   "source": "front",
+   "form": "attic",
+   "rise": 0.5,
+   "evidence": "strip: a roof face rises behind the cornice with the dormer on it"
   },
   "palette": {
    "brick": "#4a4136",
@@ -225,7 +238,8 @@
   },
   "roof": {
    "material": "red-tile",
-   "squareSaddle": true
+   "squareSaddle": true,
+   "source": "front"
   },
   "palette": {
    "brick": "#584b46",
@@ -265,7 +279,10 @@
    "wallAnchors": {}
   },
   "roof": {
-   "material": "bitumen"
+   "material": "bitumen",
+   "source": "front",
+   "form": "flat",
+   "evidence": "strip: sky over the cornice/parapet, no roof face seen"
   },
   "palette": {
    "brick": "#64544e",
@@ -325,7 +342,11 @@
    }
   },
   "roof": {
-   "material": "slate"
+   "material": "slate",
+   "source": "front",
+   "form": "attic",
+   "rise": 0.5,
+   "evidence": "strip: a roof face rises behind the cornice with the dormer on it"
   },
   "palette": {
    "brick": "#685852",
@@ -364,7 +385,8 @@
   },
   "roof": {
    "material": "red-tile",
-   "squareSaddle": true
+   "squareSaddle": true,
+   "source": "front"
   },
   "palette": {
    "brick": "#5e524c",
@@ -411,7 +433,11 @@
    }
   },
   "roof": {
-   "material": "red-tile"
+   "material": "red-tile",
+   "source": "front",
+   "form": "attic",
+   "rise": 0.5,
+   "evidence": "strip: a roof face rises behind the cornice with the dormer on it"
   },
   "palette": {
    "brick": "#38373a",
@@ -462,7 +488,11 @@
    }
   },
   "roof": {
-   "material": "black-tile"
+   "material": "black-tile",
+   "source": "front",
+   "form": "attic",
+   "rise": 0.5,
+   "evidence": "strip: a roof face rises behind the cornice with the dormer on it"
   },
   "palette": {
    "brick": "#66574e",
@@ -506,7 +536,8 @@
   },
   "roof": {
    "material": "red-tile",
-   "squareSaddle": true
+   "squareSaddle": true,
+   "source": "front"
   },
   "palette": {
    "brick": "#4d463f",
@@ -545,7 +576,10 @@
    "windows": "sash"
   },
   "roof": {
-   "material": "bitumen"
+   "material": "bitumen",
+   "source": "front",
+   "form": "flat",
+   "evidence": "strip: sky over the cornice/parapet, no roof face seen"
   },
   "palette": {
    "brick": "#413e3b",
@@ -585,7 +619,8 @@
   },
   "roof": {
    "material": "red-tile",
-   "squareSaddle": true
+   "squareSaddle": true,
+   "source": "front"
   },
   "palette": {
    "brick": "#716860",
@@ -623,7 +658,8 @@
   },
   "roof": {
    "material": "red-tile",
-   "squareSaddle": true
+   "squareSaddle": true,
+   "source": "front"
   },
   "palette": {
    "brick": "#5d544c",
@@ -672,7 +708,10 @@
    }
   },
   "roof": {
-   "material": "bitumen"
+   "material": "bitumen",
+   "source": "front",
+   "form": "flat",
+   "evidence": "strip: sky over the cornice/parapet, no roof face seen"
   },
   "palette": {
    "brick": "#514944",
@@ -709,7 +748,10 @@
    "windows": "sash"
   },
   "roof": {
-   "material": "bitumen"
+   "material": "bitumen",
+   "source": "front",
+   "form": "flat",
+   "evidence": "strip: sky over the cornice/parapet, no roof face seen"
   },
   "palette": {
    "brick": "#45423c",
@@ -748,7 +790,8 @@
   },
   "roof": {
    "material": "red-tile",
-   "squareSaddle": true
+   "squareSaddle": true,
+   "source": "front"
   },
   "palette": {
    "brick": "#5b5048",
@@ -784,7 +827,8 @@
   },
   "roof": {
    "material": "red-tile",
-   "squareSaddle": true
+   "squareSaddle": true,
+   "source": "front"
   },
   "palette": {
    "brick": "#5c4f47",
@@ -832,7 +876,11 @@
    }
   },
   "roof": {
-   "material": "slate"
+   "material": "slate",
+   "source": "front",
+   "form": "attic",
+   "rise": 0.5,
+   "evidence": "strip: a roof face rises behind the cornice with the dormer on it"
   },
   "palette": {
    "brick": "#594c49",
@@ -873,7 +921,8 @@
   },
   "roof": {
    "material": "red-tile",
-   "squareSaddle": true
+   "squareSaddle": true,
+   "source": "front"
   },
   "palette": {
    "brick": "#6a5850",
@@ -921,7 +970,11 @@
    }
   },
   "roof": {
-   "material": "slate"
+   "material": "slate",
+   "source": "front",
+   "form": "attic",
+   "rise": 0.5,
+   "evidence": "strip: a roof face rises behind the cornice with the dormer on it"
   },
   "palette": {
    "brick": "#534944",
@@ -1128,7 +1181,11 @@
    }
   },
   "roof": {
-   "material": "red-tile"
+   "material": "red-tile",
+   "source": "front",
+   "form": "attic",
+   "rise": 0.5,
+   "evidence": "strip: a roof face rises behind the cornice with the dormer on it"
   },
   "palette": {
    "brick": "#5d534f",
@@ -1159,7 +1216,8 @@
   },
   "roof": {
    "material": "red-tile",
-   "squareSaddle": true
+   "squareSaddle": true,
+   "source": "front"
   },
   "palette": {
    "brick": "#564e4e",
@@ -1206,7 +1264,11 @@
    }
   },
   "roof": {
-   "material": "slate"
+   "material": "slate",
+   "source": "front",
+   "form": "attic",
+   "rise": 0.5,
+   "evidence": "strip: a roof face rises behind the cornice with the dormer on it"
   },
   "palette": {
    "brick": "#342c2e",
@@ -1250,7 +1312,8 @@
   },
   "roof": {
    "material": "red-tile",
-   "squareSaddle": true
+   "squareSaddle": true,
+   "source": "front"
   },
   "palette": {
    "brick": "#4b403d",
@@ -1288,7 +1351,10 @@
    "windows": "sash"
   },
   "roof": {
-   "material": "bitumen"
+   "material": "bitumen",
+   "source": "front",
+   "form": "flat",
+   "evidence": "strip: sky over the cornice/parapet, no roof face seen"
   },
   "palette": {
    "brick": "#504c4c",
@@ -1324,7 +1390,8 @@
   },
   "roof": {
    "material": "red-tile",
-   "squareSaddle": true
+   "squareSaddle": true,
+   "source": "front"
   },
   "palette": {
    "brick": "#5c524e",
@@ -1379,7 +1446,8 @@
   },
   "roof": {
    "material": "red-tile",
-   "squareSaddle": true
+   "squareSaddle": true,
+   "source": "front"
   },
   "palette": {
    "brick": "#5b514e",
@@ -1416,7 +1484,11 @@
    }
   },
   "roof": {
-   "material": "red-tile"
+   "material": "red-tile",
+   "source": "front",
+   "form": "attic",
+   "rise": 0.6,
+   "evidence": "strip: a roof face rises behind the cornice"
   },
   "palette": {
    "brick": "#605350",
@@ -1472,7 +1544,11 @@
    }
   },
   "roof": {
-   "material": "red-tile"
+   "material": "red-tile",
+   "source": "front",
+   "form": "attic",
+   "rise": 0.5,
+   "evidence": "strip: a roof face rises behind the cornice with the dormer on it"
   },
   "palette": {
    "brick": "#4c3e3e",
@@ -1523,7 +1599,11 @@
    }
   },
   "roof": {
-   "material": "red-tile"
+   "material": "red-tile",
+   "source": "front",
+   "form": "attic",
+   "rise": 0.5,
+   "evidence": "strip: a roof face rises behind the cornice with the dormer on it"
   },
   "palette": {
    "brick": "#312e32",
@@ -1553,7 +1633,10 @@
    "windowSurround": "none"
   },
   "roof": {
-   "material": "bitumen"
+   "material": "bitumen",
+   "source": "front",
+   "form": "flat",
+   "evidence": "strip: sky over the cornice/parapet, no roof face seen"
   },
   "palette": {
    "brick": "#5e524f",
@@ -1597,7 +1680,11 @@
    }
   },
   "roof": {
-   "material": "red-tile"
+   "material": "red-tile",
+   "source": "front",
+   "form": "attic",
+   "rise": 0.5,
+   "evidence": "strip: a roof face rises behind the cornice with the dormer on it"
   },
   "palette": {
    "brick": "#302b2f",
@@ -1636,7 +1723,8 @@
   },
   "roof": {
    "material": "red-tile",
-   "squareSaddle": true
+   "squareSaddle": true,
+   "source": "front"
   },
   "palette": {
    "brick": "#2f2c2c",
@@ -1672,7 +1760,8 @@
   },
   "roof": {
    "material": "red-tile",
-   "squareSaddle": true
+   "squareSaddle": true,
+   "source": "front"
   },
   "palette": {
    "brick": "#50433e",
@@ -1722,7 +1811,11 @@
    }
   },
   "roof": {
-   "material": "red-tile"
+   "material": "red-tile",
+   "source": "front",
+   "form": "attic",
+   "rise": 0.5,
+   "evidence": "strip: a roof face rises behind the cornice with the dormer on it"
   },
   "palette": {
    "brick": "#4f4641",
@@ -1753,7 +1846,8 @@
   },
   "roof": {
    "material": "red-tile",
-   "squareSaddle": true
+   "squareSaddle": true,
+   "source": "front"
   },
   "palette": {
    "brick": "#2f2c2c",
@@ -1785,7 +1879,8 @@
   },
   "roof": {
    "material": "red-tile",
-   "squareSaddle": true
+   "squareSaddle": true,
+   "source": "front"
   },
   "palette": {
    "brick": "#56463e",
@@ -1813,7 +1908,8 @@
   },
   "roof": {
    "material": "red-tile",
-   "squareSaddle": true
+   "squareSaddle": true,
+   "source": "front"
   },
   "palette": {
    "brick": "#453b34",
@@ -1863,7 +1959,8 @@
   },
   "roof": {
    "material": "red-tile",
-   "squareSaddle": true
+   "squareSaddle": true,
+   "source": "front"
   },
   "palette": {
    "brick": "#2f2c2c",
@@ -1894,7 +1991,8 @@
   },
   "roof": {
    "material": "slate",
-   "squareSaddle": true
+   "squareSaddle": true,
+   "source": "front"
   },
   "palette": {
    "brick": "#463834",
@@ -1933,7 +2031,8 @@
   },
   "roof": {
    "material": "red-tile",
-   "squareSaddle": true
+   "squareSaddle": true,
+   "source": "front"
   },
   "palette": {
    "brick": "#2f2c2c",
@@ -1968,7 +2067,10 @@
    }
   },
   "roof": {
-   "material": "bitumen"
+   "material": "bitumen",
+   "source": "front",
+   "form": "flat",
+   "evidence": "strip: sky over the cornice/parapet, no roof face seen"
   },
   "palette": {
    "brick": "#3f3936",
@@ -2009,7 +2111,11 @@
    }
   },
   "roof": {
-   "material": "red-tile"
+   "material": "red-tile",
+   "source": "front",
+   "form": "attic",
+   "rise": 0.5,
+   "evidence": "strip: a roof face rises behind the cornice with the dormer on it"
   },
   "palette": {
    "brick": "#514440",
@@ -2082,7 +2188,8 @@
   },
   "roof": {
    "material": "red-tile",
-   "squareSaddle": true
+   "squareSaddle": true,
+   "source": "front"
   },
   "palette": {
    "brick": "#5a4e48",
@@ -2128,7 +2235,11 @@
    }
   },
   "roof": {
-   "material": "red-tile"
+   "material": "red-tile",
+   "source": "front",
+   "form": "attic",
+   "rise": 0.5,
+   "evidence": "strip: a roof face rises behind the cornice with the dormer on it"
   },
   "palette": {
    "brick": "#4e433c",
@@ -2177,7 +2288,11 @@
    }
   },
   "roof": {
-   "material": "red-tile"
+   "material": "red-tile",
+   "source": "front",
+   "form": "attic",
+   "rise": 0.5,
+   "evidence": "strip: a roof face rises behind the cornice with the dormer on it"
   },
   "palette": {
    "brick": "#333235",
@@ -2226,7 +2341,10 @@
    }
   },
   "roof": {
-   "material": "bitumen"
+   "material": "bitumen",
+   "source": "front",
+   "form": "flat",
+   "evidence": "strip: sky over the cornice/parapet, no roof face seen"
   },
   "palette": {
    "brick": "#65544e",
@@ -2272,7 +2390,8 @@
   },
   "roof": {
    "material": "red-tile",
-   "squareSaddle": true
+   "squareSaddle": true,
+   "source": "front"
   },
   "palette": {
    "brick": "#594a44",
@@ -2316,7 +2435,8 @@
   },
   "roof": {
    "material": "red-tile",
-   "squareSaddle": true
+   "squareSaddle": true,
+   "source": "front"
   },
   "palette": {
    "brick": "#4b3f3a",
@@ -2366,7 +2486,11 @@
    }
   },
   "roof": {
-   "material": "red-tile"
+   "material": "red-tile",
+   "source": "front",
+   "form": "attic",
+   "rise": 0.5,
+   "evidence": "strip: a roof face rises behind the cornice with the dormer on it"
   },
   "palette": {
    "brick": "#51443c",
@@ -2419,7 +2543,8 @@
   },
   "roof": {
    "material": "red-tile",
-   "squareSaddle": true
+   "squareSaddle": true,
+   "source": "front"
   },
   "palette": {
    "brick": "#5a4d47",
@@ -2462,7 +2587,11 @@
    }
   },
   "roof": {
-   "material": "red-tile"
+   "material": "red-tile",
+   "source": "front",
+   "form": "attic",
+   "rise": 0.6,
+   "evidence": "strip: a roof face rises behind the cornice"
   },
   "palette": {
    "brick": "#444142",
@@ -2509,7 +2638,8 @@
   },
   "roof": {
    "material": "red-tile",
-   "squareSaddle": true
+   "squareSaddle": true,
+   "source": "front"
   },
   "palette": {
    "brick": "#2f2c2c",
@@ -2544,7 +2674,8 @@
   },
   "roof": {
    "material": "red-tile",
-   "squareSaddle": true
+   "squareSaddle": true,
+   "source": "front"
   },
   "palette": {
    "brick": "#4e4744",
@@ -2590,7 +2721,8 @@
   },
   "roof": {
    "material": "red-tile",
-   "squareSaddle": true
+   "squareSaddle": true,
+   "source": "front"
   },
   "palette": {
    "brick": "#584b44",
@@ -2624,7 +2756,10 @@
    }
   },
   "roof": {
-   "material": "bitumen"
+   "material": "bitumen",
+   "source": "front",
+   "form": "flat",
+   "evidence": "strip: sky over the cornice/parapet, no roof face seen"
   },
   "palette": {
    "brick": "#373231",
@@ -2667,7 +2802,8 @@
   },
   "roof": {
    "material": "red-tile",
-   "squareSaddle": true
+   "squareSaddle": true,
+   "source": "front"
   },
   "palette": {
    "brick": "#564b44",
@@ -2701,7 +2837,10 @@
    }
   },
   "roof": {
-   "material": "bitumen"
+   "material": "bitumen",
+   "source": "front",
+   "form": "flat",
+   "evidence": "strip: sky over the cornice/parapet, no roof face seen"
   },
   "palette": {
    "brick": "#5a4f45",
@@ -2731,7 +2870,10 @@
    "windows": "sash"
   },
   "roof": {
-   "material": "bitumen"
+   "material": "bitumen",
+   "source": "front",
+   "form": "flat",
+   "evidence": "strip: sky over the cornice/parapet, no roof face seen"
   },
   "palette": {
    "brick": "#3c393a",

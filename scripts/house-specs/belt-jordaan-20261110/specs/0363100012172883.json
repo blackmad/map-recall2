@@ -27,7 +27,8 @@
   ],
   "roof": {
    "material": "red-tile",
-   "squareSaddle": true
+   "squareSaddle": true,
+   "source": "front"
   },
   "palette": {
    "frame": "white-painted",
@@ -137,6 +138,12 @@
    "at": "2023-03-13"
   },
   "roof/squareSaddle": {
+   "source": "author",
+   "confidence": 0.75,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): a low 3.9 m house: a tall ground 0-5.0 m (door left between white pilasters); two windows at 6.0-7.5 m; a neck crown with claw pieces, one attic light and a segmental cap 8.0-10.8 m; brown brick #453b34",
+   "at": "2023-03-13"
+  },
+  "roof/source": {
    "source": "author",
    "confidence": 0.75,
    "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): a low 3.9 m house: a tall ground 0-5.0 m (door left between white pilasters); two windows at 6.0-7.5 m; a neck crown with claw pieces, one attic light and a segmental cap 8.0-10.8 m; brown brick #453b34",

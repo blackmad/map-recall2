@@ -37,7 +37,8 @@
   ],
   "roof": {
    "material": "red-tile",
-   "squareSaddle": true
+   "squareSaddle": true,
+   "source": "front"
   },
   "palette": {
    "frame": "white-painted",
@@ -159,6 +160,12 @@
    "at": "2023-03-13"
   },
   "roof/squareSaddle": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): a Neo-Renaissance front: two axes; a shop ground 0-4.0 m with white pilasters and a red arched door right; storeys at 4.7-6.7, 7.8-9.7, 11.0-12.9 m under segmental relieving arches with white springer bands; a step gable 13.9-17.8 m with one light and a finial; red-brown brick #4b403d",
+   "at": "2023-03-13"
+  },
+  "roof/source": {
    "source": "author",
    "confidence": 0.85,
    "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): a Neo-Renaissance front: two axes; a shop ground 0-4.0 m with white pilasters and a red arched door right; storeys at 4.7-6.7, 7.8-9.7, 11.0-12.9 m under segmental relieving arches with white springer bands; a step gable 13.9-17.8 m with one light and a finial; red-brown brick #4b403d",

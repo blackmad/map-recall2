@@ -38,7 +38,8 @@
   ],
   "roof": {
    "material": "red-tile",
-   "squareSaddle": true
+   "squareSaddle": true,
+   "source": "front"
   },
   "palette": {
    "frame": "white-painted",
@@ -154,6 +155,12 @@
    "at": "2023-03-13"
   },
   "roof/squareSaddle": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): a 4.2 m front of three axes, painted near-black brick (measured #29262a; drawn #2f2c2c, the eland lane's floor for the darkest walls: near-black hexes drew green on the recipe route, H7): a white-framed glazed ground 0-4.0 m; storeys at 4.4-5.9 and 6.7-8.2 m; a white cornice band 8.4-9.2 m and a small neck crown with white claw pieces and a rounded cap 9.3-11.0 m with one light",
+   "at": "2023-03-13"
+  },
+  "roof/source": {
    "source": "author",
    "confidence": 0.85,
    "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): a 4.2 m front of three axes, painted near-black brick (measured #29262a; drawn #2f2c2c, the eland lane's floor for the darkest walls: near-black hexes drew green on the recipe route, H7): a white-framed glazed ground 0-4.0 m; storeys at 4.4-5.9 and 6.7-8.2 m; a white cornice band 8.4-9.2 m and a small neck crown with white claw pieces and a rounded cap 9.3-11.0 m with one light",

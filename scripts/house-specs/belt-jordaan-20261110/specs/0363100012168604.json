@@ -27,7 +27,8 @@
   ],
   "roof": {
    "material": "red-tile",
-   "squareSaddle": true
+   "squareSaddle": true,
+   "source": "front"
   },
   "palette": {
    "frame": "white-painted",
@@ -131,6 +132,12 @@
    "at": "2019-01-15"
   },
   "roof/squareSaddle": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of rozengracht-30-82 strip 2019-01-15 (pand span): three axes: a dark ground 0-4.8 m (door left); storeys at 5.5-7.8 and 8.7-10.4 m with white stone blocks at the window heads and sills; a plain triangular (point) gable from ~11 m with one window and a chimney at the apex (~15.6 m); dark brick #44423f (pier) / #5a514f (gable)",
+   "at": "2019-01-15"
+  },
+  "roof/source": {
    "source": "author",
    "confidence": 0.85,
    "ref": "belt-jordaan hand read of rozengracht-30-82 strip 2019-01-15 (pand span): three axes: a dark ground 0-4.8 m (door left); storeys at 5.5-7.8 and 8.7-10.4 m with white stone blocks at the window heads and sills; a plain triangular (point) gable from ~11 m with one window and a chimney at the apex (~15.6 m); dark brick #44423f (pier) / #5a514f (gable)",

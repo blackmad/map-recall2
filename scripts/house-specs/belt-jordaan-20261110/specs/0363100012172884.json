@@ -31,7 +31,8 @@
   ],
   "roof": {
    "material": "red-tile",
-   "squareSaddle": true
+   "squareSaddle": true,
+   "source": "front"
   },
   "palette": {
    "frame": "white-painted",
@@ -147,6 +148,12 @@
    "at": "2023-03-13"
   },
   "roof/squareSaddle": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): a low 3.7 m house: a tall ground 0-5.0 m (window left, door right); white bands at ~5.9 and ~7.5 m; one wide window at 6.1-7.4 m; a bell gable 8.0-11.1 m with one attic light and a small ornament; red-brown brick #56463e",
+   "at": "2023-03-13"
+  },
+  "roof/source": {
    "source": "author",
    "confidence": 0.85,
    "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): a low 3.7 m house: a tall ground 0-5.0 m (window left, door right); white bands at ~5.9 and ~7.5 m; one wide window at 6.1-7.4 m; a bell gable 8.0-11.1 m with one attic light and a small ornament; red-brown brick #56463e",

@@ -46,7 +46,8 @@
   ],
   "roof": {
    "material": "red-tile",
-   "squareSaddle": true
+   "squareSaddle": true,
+   "source": "front"
   },
   "palette": {
    "frame": "white-painted",
@@ -162,6 +163,12 @@
    "at": "2019-01-15"
   },
   "roof/squareSaddle": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of rozengracht-30-82 strip 2019-01-15 (pand span): a painted black front of two axes: a shop ground 0-4.0 m (fascia Long Pura); a white-painted storey 4.2-6.0 m with three small windows; storeys at 6.4-8.3 and 9.4-11.1 m; a bell gable 11.8-14.0 m with one attic light; painted brick (measured #302728; drawn #2f2c2c)",
+   "at": "2019-01-15"
+  },
+  "roof/source": {
    "source": "author",
    "confidence": 0.85,
    "ref": "belt-jordaan hand read of rozengracht-30-82 strip 2019-01-15 (pand span): a painted black front of two axes: a shop ground 0-4.0 m (fascia Long Pura); a white-painted storey 4.2-6.0 m with three small windows; storeys at 6.4-8.3 and 9.4-11.1 m; a bell gable 11.8-14.0 m with one attic light; painted brick (measured #302728; drawn #2f2c2c)",

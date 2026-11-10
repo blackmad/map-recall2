@@ -35,7 +35,8 @@
   ],
   "roof": {
    "material": "red-tile",
-   "squareSaddle": true
+   "squareSaddle": true,
+   "source": "front"
   },
   "palette": {
    "frame": "white-painted",
@@ -151,6 +152,12 @@
    "at": "2023-03-13"
   },
   "roof/squareSaddle": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 154-315 px): a 4.0 m front: ground 0-4.0 m (door left, a wide window right); two windows at 5.1-6.9 m; one wide three-light window at 7.7-9.0 m; a bell gable 9.0-12.0 m with one attic light and a small cap ornament; red-brown brick #5c4f47",
+   "at": "2023-03-13"
+  },
+  "roof/source": {
    "source": "author",
    "confidence": 0.85,
    "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 154-315 px): a 4.0 m front: ground 0-4.0 m (door left, a wide window right); two windows at 5.1-6.9 m; one wide three-light window at 7.7-9.0 m; a bell gable 9.0-12.0 m with one attic light and a small cap ornament; red-brown brick #5c4f47",

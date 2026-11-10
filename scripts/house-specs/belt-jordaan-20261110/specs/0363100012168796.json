@@ -26,7 +26,11 @@
    }
   ],
   "roof": {
-   "material": "black-tile"
+   "material": "black-tile",
+   "source": "front",
+   "form": "attic",
+   "rise": 0.6,
+   "evidence": "strip: a roof face rises behind the cornice"
   },
   "palette": {
    "frame": "white-painted",
@@ -118,6 +122,30 @@
    "at": "2023-03-13"
   },
   "roof/material": {
+   "source": "author",
+   "confidence": 0.7,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 868-1072 px): two axes behind a tree; a grey souterrain to 2.2 m with two low lights, a bel-etage (windows 2.6-5.0 m), storeys at 5.9-8.0 and 8.4-9.8 m, a plain white cornice 10.3-11.0 m, a grey tile roof; red-brown brick #634f46",
+   "at": "2023-03-13"
+  },
+  "roof/source": {
+   "source": "author",
+   "confidence": 0.7,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 868-1072 px): two axes behind a tree; a grey souterrain to 2.2 m with two low lights, a bel-etage (windows 2.6-5.0 m), storeys at 5.9-8.0 and 8.4-9.8 m, a plain white cornice 10.3-11.0 m, a grey tile roof; red-brown brick #634f46",
+   "at": "2023-03-13"
+  },
+  "roof/form": {
+   "source": "author",
+   "confidence": 0.7,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 868-1072 px): two axes behind a tree; a grey souterrain to 2.2 m with two low lights, a bel-etage (windows 2.6-5.0 m), storeys at 5.9-8.0 and 8.4-9.8 m, a plain white cornice 10.3-11.0 m, a grey tile roof; red-brown brick #634f46",
+   "at": "2023-03-13"
+  },
+  "roof/rise": {
+   "source": "author",
+   "confidence": 0.7,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 868-1072 px): two axes behind a tree; a grey souterrain to 2.2 m with two low lights, a bel-etage (windows 2.6-5.0 m), storeys at 5.9-8.0 and 8.4-9.8 m, a plain white cornice 10.3-11.0 m, a grey tile roof; red-brown brick #634f46",
+   "at": "2023-03-13"
+  },
+  "roof/evidence": {
    "source": "author",
    "confidence": 0.7,
    "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 868-1072 px): two axes behind a tree; a grey souterrain to 2.2 m with two low lights, a bel-etage (windows 2.6-5.0 m), storeys at 5.9-8.0 and 8.4-9.8 m, a plain white cornice 10.3-11.0 m, a grey tile roof; red-brown brick #634f46",

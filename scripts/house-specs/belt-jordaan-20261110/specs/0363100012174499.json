@@ -27,7 +27,10 @@
    }
   ],
   "roof": {
-   "material": "bitumen"
+   "material": "bitumen",
+   "source": "front",
+   "form": "flat",
+   "evidence": "strip: sky over the cornice/parapet, no roof face seen"
   },
   "palette": {
    "frame": "white-painted",
@@ -119,6 +122,24 @@
    "at": "2023-03-13"
   },
   "roof/material": {
+   "source": "author",
+   "confidence": 0.75,
+   "ref": "belt-jordaan hand read of bloemgracht-4-10 strip 2023-03-13 (span 656-872 px): three axes over a souterrain (lights 0.5-1.9 m); a bel-etage to ~6 m with the door right; storeys at 6.4-8.0, 8.6-10.4, 11.1-13.0 m; a white balustraded attic frieze 14.3-16.0 m; painted dark brown brick #45423c",
+   "at": "2023-03-13"
+  },
+  "roof/source": {
+   "source": "author",
+   "confidence": 0.75,
+   "ref": "belt-jordaan hand read of bloemgracht-4-10 strip 2023-03-13 (span 656-872 px): three axes over a souterrain (lights 0.5-1.9 m); a bel-etage to ~6 m with the door right; storeys at 6.4-8.0, 8.6-10.4, 11.1-13.0 m; a white balustraded attic frieze 14.3-16.0 m; painted dark brown brick #45423c",
+   "at": "2023-03-13"
+  },
+  "roof/form": {
+   "source": "author",
+   "confidence": 0.75,
+   "ref": "belt-jordaan hand read of bloemgracht-4-10 strip 2023-03-13 (span 656-872 px): three axes over a souterrain (lights 0.5-1.9 m); a bel-etage to ~6 m with the door right; storeys at 6.4-8.0, 8.6-10.4, 11.1-13.0 m; a white balustraded attic frieze 14.3-16.0 m; painted dark brown brick #45423c",
+   "at": "2023-03-13"
+  },
+  "roof/evidence": {
    "source": "author",
    "confidence": 0.75,
    "ref": "belt-jordaan hand read of bloemgracht-4-10 strip 2023-03-13 (span 656-872 px): three axes over a souterrain (lights 0.5-1.9 m); a bel-etage to ~6 m with the door right; storeys at 6.4-8.0, 8.6-10.4, 11.1-13.0 m; a white balustraded attic frieze 14.3-16.0 m; painted dark brown brick #45423c",

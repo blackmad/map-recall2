@@ -33,7 +33,11 @@
    }
   ],
   "roof": {
-   "material": "red-tile"
+   "material": "red-tile",
+   "source": "front",
+   "form": "attic",
+   "rise": 0.6,
+   "evidence": "strip: a roof face rises behind the cornice"
   },
   "palette": {
    "frame": "white-painted",
@@ -125,6 +129,30 @@
    "at": "2019-01-15"
   },
   "roof/material": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of rozengracht-30-82 strip 2019-01-15 (pand span): a painted black front of two axes: a white ground 0-5.7 m between white pilasters (door left, window right); storeys at 6.5-8.7 and 9.4-10.9 m with white frames; a white cornice 11.6-12.2 m, a small red tile roof; painted brick #444142",
+   "at": "2019-01-15"
+  },
+  "roof/source": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of rozengracht-30-82 strip 2019-01-15 (pand span): a painted black front of two axes: a white ground 0-5.7 m between white pilasters (door left, window right); storeys at 6.5-8.7 and 9.4-10.9 m with white frames; a white cornice 11.6-12.2 m, a small red tile roof; painted brick #444142",
+   "at": "2019-01-15"
+  },
+  "roof/form": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of rozengracht-30-82 strip 2019-01-15 (pand span): a painted black front of two axes: a white ground 0-5.7 m between white pilasters (door left, window right); storeys at 6.5-8.7 and 9.4-10.9 m with white frames; a white cornice 11.6-12.2 m, a small red tile roof; painted brick #444142",
+   "at": "2019-01-15"
+  },
+  "roof/rise": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of rozengracht-30-82 strip 2019-01-15 (pand span): a painted black front of two axes: a white ground 0-5.7 m between white pilasters (door left, window right); storeys at 6.5-8.7 and 9.4-10.9 m with white frames; a white cornice 11.6-12.2 m, a small red tile roof; painted brick #444142",
+   "at": "2019-01-15"
+  },
+  "roof/evidence": {
    "source": "author",
    "confidence": 0.85,
    "ref": "belt-jordaan hand read of rozengracht-30-82 strip 2019-01-15 (pand span): a painted black front of two axes: a white ground 0-5.7 m between white pilasters (door left, window right); storeys at 6.5-8.7 and 9.4-10.9 m with white frames; a white cornice 11.6-12.2 m, a small red tile roof; painted brick #444142",

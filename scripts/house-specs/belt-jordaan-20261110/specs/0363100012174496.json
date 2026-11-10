@@ -36,7 +36,10 @@
    }
   ],
   "roof": {
-   "material": "bitumen"
+   "material": "bitumen",
+   "source": "front",
+   "form": "flat",
+   "evidence": "strip: sky over the cornice/parapet, no roof face seen"
   },
   "palette": {
    "frame": "white-painted",
@@ -134,6 +137,24 @@
    "at": "2023-03-13"
   },
   "roof/material": {
+   "source": "author",
+   "confidence": 0.75,
+   "ref": "belt-jordaan hand read of bloemgracht-4-10 strip 2023-03-13 (span 437-656 px): three axes; a white shop ground front 0-5.5 m (two wide windows, the double door right); three tall storeys of windows at 6.3-8.6, 9.0-11.3 and 11.8-14.0 m; a white cornice at ~15.2 m with a set-back attic storey and glass balcony behind it; dark red-brown brick #514944",
+   "at": "2023-03-13"
+  },
+  "roof/source": {
+   "source": "author",
+   "confidence": 0.75,
+   "ref": "belt-jordaan hand read of bloemgracht-4-10 strip 2023-03-13 (span 437-656 px): three axes; a white shop ground front 0-5.5 m (two wide windows, the double door right); three tall storeys of windows at 6.3-8.6, 9.0-11.3 and 11.8-14.0 m; a white cornice at ~15.2 m with a set-back attic storey and glass balcony behind it; dark red-brown brick #514944",
+   "at": "2023-03-13"
+  },
+  "roof/form": {
+   "source": "author",
+   "confidence": 0.75,
+   "ref": "belt-jordaan hand read of bloemgracht-4-10 strip 2023-03-13 (span 437-656 px): three axes; a white shop ground front 0-5.5 m (two wide windows, the double door right); three tall storeys of windows at 6.3-8.6, 9.0-11.3 and 11.8-14.0 m; a white cornice at ~15.2 m with a set-back attic storey and glass balcony behind it; dark red-brown brick #514944",
+   "at": "2023-03-13"
+  },
+  "roof/evidence": {
    "source": "author",
    "confidence": 0.75,
    "ref": "belt-jordaan hand read of bloemgracht-4-10 strip 2023-03-13 (span 437-656 px): three axes; a white shop ground front 0-5.5 m (two wide windows, the double door right); three tall storeys of windows at 6.3-8.6, 9.0-11.3 and 11.8-14.0 m; a white cornice at ~15.2 m with a set-back attic storey and glass balcony behind it; dark red-brown brick #514944",

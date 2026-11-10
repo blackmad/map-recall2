@@ -32,7 +32,8 @@
   ],
   "roof": {
    "material": "red-tile",
-   "squareSaddle": true
+   "squareSaddle": true,
+   "source": "front"
   },
   "palette": {
    "frame": "white-painted",
@@ -142,6 +143,12 @@
    "at": "2023-03-13"
   },
   "roof/squareSaddle": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 1788-1943 px): a 3.9 m front: ground 0-4.2 m with the door left under a lattice fanlight and a transomed window right; two six-pane windows at 4.8-6.9 m; one window at 7.6-8.8 m between two oculi; a neck gable 9.4-12.3 m with claw pieces, a square light, a medallion and a segmental cap; red-brown brick #584b46",
+   "at": "2023-03-13"
+  },
+  "roof/source": {
    "source": "author",
    "confidence": 0.85,
    "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 1788-1943 px): a 3.9 m front: ground 0-4.2 m with the door left under a lattice fanlight and a transomed window right; two six-pane windows at 4.8-6.9 m; one window at 7.6-8.8 m between two oculi; a neck gable 9.4-12.3 m with claw pieces, a square light, a medallion and a segmental cap; red-brown brick #584b46",

@@ -29,7 +29,8 @@
   ],
   "roof": {
    "material": "red-tile",
-   "squareSaddle": true
+   "squareSaddle": true,
+   "source": "front"
   },
   "palette": {
    "frame": "white-painted",
@@ -145,6 +146,12 @@
    "at": "2023-03-13"
   },
   "roof/squareSaddle": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): three axes: ground 0-4.0 m with a red double door right of centre and a transomed window left; storeys at 4.9-6.8 and 7.4-8.8 m (red shutters on the centre top window); a bell gable 9.3-12.0 m with claw pieces, one attic light with a red shutter and a cap ornament; brick #5c524e (eland review #785159 on the 2024 strip)",
+   "at": "2023-03-13"
+  },
+  "roof/source": {
    "source": "author",
    "confidence": 0.85,
    "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): three axes: ground 0-4.0 m with a red double door right of centre and a transomed window left; storeys at 4.9-6.8 and 7.4-8.8 m (red shutters on the centre top window); a bell gable 9.3-12.0 m with claw pieces, one attic light with a red shutter and a cap ornament; brick #5c524e (eland review #785159 on the 2024 strip)",

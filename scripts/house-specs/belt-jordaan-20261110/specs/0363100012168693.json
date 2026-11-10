@@ -35,7 +35,8 @@
   ],
   "roof": {
    "material": "red-tile",
-   "squareSaddle": true
+   "squareSaddle": true,
+   "source": "front"
   },
   "palette": {
    "frame": "white-painted",
@@ -145,6 +146,12 @@
    "at": "2023-03-13"
   },
   "roof/squareSaddle": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): a 3.9 m front of two axes: a shop ground 0-4.3 m with a fascia (The Boardroom); storeys at 5.1-7.1, 8.2-10.1 and 11.0-12.6 m; a plain triangular (point) gable 13.7-17.9 m with one light and a chimney at the apex; red-brown brick #5a4e48",
+   "at": "2023-03-13"
+  },
+  "roof/source": {
    "source": "author",
    "confidence": 0.85,
    "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): a 3.9 m front of two axes: a shop ground 0-4.3 m with a fascia (The Boardroom); storeys at 5.1-7.1, 8.2-10.1 and 11.0-12.6 m; a plain triangular (point) gable 13.7-17.9 m with one light and a chimney at the apex; red-brown brick #5a4e48",

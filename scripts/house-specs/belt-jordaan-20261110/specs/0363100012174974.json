@@ -42,7 +42,11 @@
    }
   ],
   "roof": {
-   "material": "red-tile"
+   "material": "red-tile",
+   "source": "front",
+   "form": "attic",
+   "rise": 0.5,
+   "evidence": "strip: a roof face rises behind the cornice with the dormer on it"
   },
   "palette": {
    "frame": "white-painted",
@@ -164,6 +168,30 @@
    "at": "2023-03-13"
   },
   "roof/material": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): a 3.9 m painted black front of two axes: a glazed ground 0-3.6 m under a white beam; storeys at 4.4-6.2, 7.4-9.3, 10.2-12.0 m with segmental heads; a white cornice 12.3-12.6 m; a red tile roof with a dormer 13.1-14.7 m; painted brick #312e32",
+   "at": "2023-03-13"
+  },
+  "roof/source": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): a 3.9 m painted black front of two axes: a glazed ground 0-3.6 m under a white beam; storeys at 4.4-6.2, 7.4-9.3, 10.2-12.0 m with segmental heads; a white cornice 12.3-12.6 m; a red tile roof with a dormer 13.1-14.7 m; painted brick #312e32",
+   "at": "2023-03-13"
+  },
+  "roof/form": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): a 3.9 m painted black front of two axes: a glazed ground 0-3.6 m under a white beam; storeys at 4.4-6.2, 7.4-9.3, 10.2-12.0 m with segmental heads; a white cornice 12.3-12.6 m; a red tile roof with a dormer 13.1-14.7 m; painted brick #312e32",
+   "at": "2023-03-13"
+  },
+  "roof/rise": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): a 3.9 m painted black front of two axes: a glazed ground 0-3.6 m under a white beam; storeys at 4.4-6.2, 7.4-9.3, 10.2-12.0 m with segmental heads; a white cornice 12.3-12.6 m; a red tile roof with a dormer 13.1-14.7 m; painted brick #312e32",
+   "at": "2023-03-13"
+  },
+  "roof/evidence": {
    "source": "author",
    "confidence": 0.85,
    "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): a 3.9 m painted black front of two axes: a glazed ground 0-3.6 m under a white beam; storeys at 4.4-6.2, 7.4-9.3, 10.2-12.0 m with segmental heads; a white cornice 12.3-12.6 m; a red tile roof with a dormer 13.1-14.7 m; painted brick #312e32",

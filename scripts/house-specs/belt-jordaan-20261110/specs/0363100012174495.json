@@ -29,7 +29,8 @@
   ],
   "roof": {
    "material": "red-tile",
-   "squareSaddle": true
+   "squareSaddle": true,
+   "source": "front"
   },
   "palette": {
    "frame": "white-painted",
@@ -139,6 +140,12 @@
    "at": "2023-03-13"
   },
   "roof/squareSaddle": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-4-10 strip 2023-03-13 (span 227-437 px): three axes; a stoop to a white painted ground storey 2.0-6.0 m (three small-paned windows, the door on the right axis); storeys at 6.3-7.9, 8.8-10.5, 11.3-13.0 m; a bell gable from ~14.0 m with white claw pieces, one attic light and a sculpted cap ornament to ~17.5 m; red-brown brick #5d544c",
+   "at": "2023-03-13"
+  },
+  "roof/source": {
    "source": "author",
    "confidence": 0.85,
    "ref": "belt-jordaan hand read of bloemgracht-4-10 strip 2023-03-13 (span 227-437 px): three axes; a stoop to a white painted ground storey 2.0-6.0 m (three small-paned windows, the door on the right axis); storeys at 6.3-7.9, 8.8-10.5, 11.3-13.0 m; a bell gable from ~14.0 m with white claw pieces, one attic light and a sculpted cap ornament to ~17.5 m; red-brown brick #5d544c",

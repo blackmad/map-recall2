@@ -28,7 +28,8 @@
   ],
   "roof": {
    "material": "red-tile",
-   "squareSaddle": true
+   "squareSaddle": true,
+   "source": "front"
   },
   "palette": {
    "frame": "white-painted",
@@ -138,6 +139,12 @@
    "at": "2023-03-13"
   },
   "roof/squareSaddle": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): a 4.7 m front of two axes, painted near-black brick (measured #282627; drawn #2f2c2c, the eland lane's floor for the darkest walls: near-black hexes drew green on the recipe route, H7): ground 0-3.5 m; storeys at 3.8-5.6 and 6.5-8.2 m; a bell gable 8.8-12.0 m with one attic light and a cap ornament",
+   "at": "2023-03-13"
+  },
+  "roof/source": {
    "source": "author",
    "confidence": 0.85,
    "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): a 4.7 m front of two axes, painted near-black brick (measured #282627; drawn #2f2c2c, the eland lane's floor for the darkest walls: near-black hexes drew green on the recipe route, H7): ground 0-3.5 m; storeys at 3.8-5.6 and 6.5-8.2 m; a bell gable 8.8-12.0 m with one attic light and a cap ornament",

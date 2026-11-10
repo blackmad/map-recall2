@@ -42,7 +42,11 @@
    }
   ],
   "roof": {
-   "material": "red-tile"
+   "material": "red-tile",
+   "source": "front",
+   "form": "attic",
+   "rise": 0.5,
+   "evidence": "strip: a roof face rises behind the cornice with the dormer on it"
   },
   "palette": {
    "frame": "white-painted",
@@ -164,6 +168,30 @@
    "at": "2023-03-13"
   },
   "roof/material": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): a painted black front of two axes: ground 0-4.4 m (door left under arched lights, a window right); storeys at 5.4-7.3, 8.0-9.9, 10.8-12.8 m with segmental heads; a white cornice ~14.0 m; a tile roof with a pedimented dormer to ~16.5 m; painted brick #302b2f",
+   "at": "2023-03-13"
+  },
+  "roof/source": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): a painted black front of two axes: ground 0-4.4 m (door left under arched lights, a window right); storeys at 5.4-7.3, 8.0-9.9, 10.8-12.8 m with segmental heads; a white cornice ~14.0 m; a tile roof with a pedimented dormer to ~16.5 m; painted brick #302b2f",
+   "at": "2023-03-13"
+  },
+  "roof/form": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): a painted black front of two axes: ground 0-4.4 m (door left under arched lights, a window right); storeys at 5.4-7.3, 8.0-9.9, 10.8-12.8 m with segmental heads; a white cornice ~14.0 m; a tile roof with a pedimented dormer to ~16.5 m; painted brick #302b2f",
+   "at": "2023-03-13"
+  },
+  "roof/rise": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): a painted black front of two axes: ground 0-4.4 m (door left under arched lights, a window right); storeys at 5.4-7.3, 8.0-9.9, 10.8-12.8 m with segmental heads; a white cornice ~14.0 m; a tile roof with a pedimented dormer to ~16.5 m; painted brick #302b2f",
+   "at": "2023-03-13"
+  },
+  "roof/evidence": {
    "source": "author",
    "confidence": 0.85,
    "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): a painted black front of two axes: ground 0-4.4 m (door left under arched lights, a window right); storeys at 5.4-7.3, 8.0-9.9, 10.8-12.8 m with segmental heads; a white cornice ~14.0 m; a tile roof with a pedimented dormer to ~16.5 m; painted brick #302b2f",

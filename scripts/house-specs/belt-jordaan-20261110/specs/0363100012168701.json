@@ -37,7 +37,8 @@
   ],
   "roof": {
    "material": "red-tile",
-   "squareSaddle": true
+   "squareSaddle": true,
+   "source": "front"
   },
   "palette": {
    "frame": "white-painted",
@@ -159,6 +160,12 @@
    "at": "2023-03-13"
   },
   "roof/squareSaddle": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 3908-4094 px): a Neo-Renaissance front (c. 1890): two axes; a tall ground 0-5.5 m with a red double door right under a transom and a window left; storeys at 6.0-7.9 and 8.5-10.6 m with segmental heads under white block rings; white stone bands; a step gable 11.5-16.5 m with a round-arched light pair; red-brown brick #4d463f",
+   "at": "2023-03-13"
+  },
+  "roof/source": {
    "source": "author",
    "confidence": 0.85,
    "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 3908-4094 px): a Neo-Renaissance front (c. 1890): two axes; a tall ground 0-5.5 m with a red double door right under a transom and a window left; storeys at 6.0-7.9 and 8.5-10.6 m with segmental heads under white block rings; white stone bands; a step gable 11.5-16.5 m with a round-arched light pair; red-brown brick #4d463f",

@@ -38,7 +38,8 @@
   ],
   "roof": {
    "material": "red-tile",
-   "squareSaddle": true
+   "squareSaddle": true,
+   "source": "front"
   },
   "palette": {
    "frame": "white-painted",
@@ -160,6 +161,12 @@
    "at": "2019-01-15"
   },
   "roof/squareSaddle": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of rozengracht-30-82 strip 2019-01-15 (pand span): a 3.9 m neck-gable house of two axes: a shop ground 0-3.0 m; storeys at 3.2-5.4, 5.9-7.9, 8.7-10.7 and 11.4-12.8 m (a French door with a balconette); a neck 14.2-16.4 m with white claw pieces, a small light and a carved rounded cap; red-brown brick #584b44",
+   "at": "2019-01-15"
+  },
+  "roof/source": {
    "source": "author",
    "confidence": 0.85,
    "ref": "belt-jordaan hand read of rozengracht-30-82 strip 2019-01-15 (pand span): a 3.9 m neck-gable house of two axes: a shop ground 0-3.0 m; storeys at 3.2-5.4, 5.9-7.9, 8.7-10.7 and 11.4-12.8 m (a French door with a balconette); a neck 14.2-16.4 m with white claw pieces, a small light and a carved rounded cap; red-brown brick #584b44",

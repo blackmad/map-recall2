@@ -38,7 +38,8 @@
   ],
   "roof": {
    "material": "red-tile",
-   "squareSaddle": true
+   "squareSaddle": true,
+   "source": "front"
   },
   "palette": {
    "frame": "white-painted",
@@ -154,6 +155,12 @@
    "at": "2023-03-13"
   },
   "roof/squareSaddle": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 4460-4642 px): three axes; a white timber ground front 0-4.9 m with lattice transoms (door left); 6-over-6 sashes at 6.0-7.7 and 8.4-10.1 m; a neck gable from ~10.8 m with claw pieces, one attic light at 11.4-12.4 m, a carved medallion and a rounded cap to ~14.8 m; red-brown brick #716860",
+   "at": "2023-03-13"
+  },
+  "roof/source": {
    "source": "author",
    "confidence": 0.85,
    "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 4460-4642 px): three axes; a white timber ground front 0-4.9 m with lattice transoms (door left); 6-over-6 sashes at 6.0-7.7 and 8.4-10.1 m; a neck gable from ~10.8 m with claw pieces, one attic light at 11.4-12.4 m, a carved medallion and a rounded cap to ~14.8 m; red-brown brick #716860",

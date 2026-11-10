@@ -41,7 +41,11 @@
    }
   ],
   "roof": {
-   "material": "slate"
+   "material": "slate",
+   "source": "front",
+   "form": "attic",
+   "rise": 0.5,
+   "evidence": "strip: a roof face rises behind the cornice with the dormer on it"
   },
   "palette": {
    "frame": "white-painted",
@@ -169,6 +173,30 @@
    "at": "2023-03-13"
   },
   "roof/material": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 1295-1483 px): two axes; a double house door on the left (2.0-5.9 m) with a two-light transom over a stoop, a tall transomed window right over a souterrain light (0.5-2.0 m); storeys at 6.0-7.9 and 8.8-10.9 m; a tall plain white entablature 11.7-13.0 m; one white dormer with a curved top and finial to ~14.7 m; painted near-black brick #484346; grey slate",
+   "at": "2023-03-13"
+  },
+  "roof/source": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 1295-1483 px): two axes; a double house door on the left (2.0-5.9 m) with a two-light transom over a stoop, a tall transomed window right over a souterrain light (0.5-2.0 m); storeys at 6.0-7.9 and 8.8-10.9 m; a tall plain white entablature 11.7-13.0 m; one white dormer with a curved top and finial to ~14.7 m; painted near-black brick #484346; grey slate",
+   "at": "2023-03-13"
+  },
+  "roof/form": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 1295-1483 px): two axes; a double house door on the left (2.0-5.9 m) with a two-light transom over a stoop, a tall transomed window right over a souterrain light (0.5-2.0 m); storeys at 6.0-7.9 and 8.8-10.9 m; a tall plain white entablature 11.7-13.0 m; one white dormer with a curved top and finial to ~14.7 m; painted near-black brick #484346; grey slate",
+   "at": "2023-03-13"
+  },
+  "roof/rise": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 1295-1483 px): two axes; a double house door on the left (2.0-5.9 m) with a two-light transom over a stoop, a tall transomed window right over a souterrain light (0.5-2.0 m); storeys at 6.0-7.9 and 8.8-10.9 m; a tall plain white entablature 11.7-13.0 m; one white dormer with a curved top and finial to ~14.7 m; painted near-black brick #484346; grey slate",
+   "at": "2023-03-13"
+  },
+  "roof/evidence": {
    "source": "author",
    "confidence": 0.85,
    "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 1295-1483 px): two axes; a double house door on the left (2.0-5.9 m) with a two-light transom over a stoop, a tall transomed window right over a souterrain light (0.5-2.0 m); storeys at 6.0-7.9 and 8.8-10.9 m; a tall plain white entablature 11.7-13.0 m; one white dormer with a curved top and finial to ~14.7 m; painted near-black brick #484346; grey slate",

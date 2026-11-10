@@ -48,7 +48,11 @@
    }
   ],
   "roof": {
-   "material": "red-tile"
+   "material": "red-tile",
+   "source": "front",
+   "form": "attic",
+   "rise": 0.5,
+   "evidence": "strip: a roof face rises behind the cornice with the dormer on it"
   },
   "palette": {
    "frame": "white-painted",
@@ -170,6 +174,30 @@
    "at": "2019-01-15"
   },
   "roof/material": {
+   "source": "author",
+   "confidence": 0.75,
+   "ref": "belt-jordaan hand read of rozengracht-30-82 strip 2019-01-15 (pand span): two axes: a low white shop ground 0-3.0 m; storeys at 3.3-5.3, 6.3-8.1 and 9.0-10.4 m; a white bracketed frieze and cornice 11.1-11.9 m; a red tile roof with a dormer to ~13.2 m; red-brown brick #51443c",
+   "at": "2019-01-15"
+  },
+  "roof/source": {
+   "source": "author",
+   "confidence": 0.75,
+   "ref": "belt-jordaan hand read of rozengracht-30-82 strip 2019-01-15 (pand span): two axes: a low white shop ground 0-3.0 m; storeys at 3.3-5.3, 6.3-8.1 and 9.0-10.4 m; a white bracketed frieze and cornice 11.1-11.9 m; a red tile roof with a dormer to ~13.2 m; red-brown brick #51443c",
+   "at": "2019-01-15"
+  },
+  "roof/form": {
+   "source": "author",
+   "confidence": 0.75,
+   "ref": "belt-jordaan hand read of rozengracht-30-82 strip 2019-01-15 (pand span): two axes: a low white shop ground 0-3.0 m; storeys at 3.3-5.3, 6.3-8.1 and 9.0-10.4 m; a white bracketed frieze and cornice 11.1-11.9 m; a red tile roof with a dormer to ~13.2 m; red-brown brick #51443c",
+   "at": "2019-01-15"
+  },
+  "roof/rise": {
+   "source": "author",
+   "confidence": 0.75,
+   "ref": "belt-jordaan hand read of rozengracht-30-82 strip 2019-01-15 (pand span): two axes: a low white shop ground 0-3.0 m; storeys at 3.3-5.3, 6.3-8.1 and 9.0-10.4 m; a white bracketed frieze and cornice 11.1-11.9 m; a red tile roof with a dormer to ~13.2 m; red-brown brick #51443c",
+   "at": "2019-01-15"
+  },
+  "roof/evidence": {
    "source": "author",
    "confidence": 0.75,
    "ref": "belt-jordaan hand read of rozengracht-30-82 strip 2019-01-15 (pand span): two axes: a low white shop ground 0-3.0 m; storeys at 3.3-5.3, 6.3-8.1 and 9.0-10.4 m; a white bracketed frieze and cornice 11.1-11.9 m; a red tile roof with a dormer to ~13.2 m; red-brown brick #51443c",
