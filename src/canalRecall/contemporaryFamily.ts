@@ -48,11 +48,13 @@ export const AREA_WINDOWS: Readonly<Record<string, { tall: number; paleFrames: n
 const POOLED_WINDOWS = { tall: 0.4, paleFrames: 0.5 };
 
 type AreaWalls = { centre: [number, number]; walls: string[] };
-const SET = WALLS as unknown as { areas: Record<string, AreaWalls>; pands?: Record<string, string>; bands?: string[] };
+const SET = WALLS as unknown as { areas: Record<string, AreaWalls>; pands?: Record<string, string>; bands?: string[]; tall?: string[] };
 const AREAS = SET.areas;
-/** This lane's own panorama samples per pand (`pands`), and the pands whose fronts show balcony bands (`bands`). */
+/** This lane's own panorama samples per pand (`pands`), and the pands whose fronts show balcony bands (`bands`, scripts/newbuild/front-tags.json). */
 const SAMPLED: Readonly<Record<string, string>> = SET.pands ?? {};
 const BANDS: ReadonlySet<string> = new Set(SET.bands ?? []);
+/** Pands the panorama shows with tall French windows (`tall`, scripts/newbuild/front-tags.json). */
+const TALL: ReadonlySet<string> = new Set(SET.tall ?? []);
 const shortId = (id: string) => id.startsWith('NL.IMBAG.Pand.') ? id.slice(14) : id;
 
 /**
@@ -100,7 +102,7 @@ export function contemporaryLookFor(f: { id: string; year: number | null; height
   const code = own ?? pool[Math.floor(unitDraw(f.id, 'contemporary-wall') * pool.length)];
   const painted = code[0] === 'p', wall = `#${code.slice(1)}`;
   const windows = (area && AREA_WINDOWS[area]) || POOLED_WINDOWS;
-  const style: ContemporaryStyle = BANDS.has(shortId(f.id)) ? 'band' : painted ? 'smoothDark'
+  const style: ContemporaryStyle = BANDS.has(shortId(f.id)) ? 'band' : TALL.has(shortId(f.id)) ? 'tall' : painted ? 'smoothDark'
     : unitDraw(f.id, 'contemporary-tall') < windows.tall ? 'tall'
       : unitDraw(f.id, 'contemporary-frames') < windows.paleFrames ? 'brick' : 'brickDark';
   const setback = f.heightM >= SETBACK_MIN_HEIGHT_M && unitDraw(f.id, 'contemporary-setback') < SETBACK_SHARE;

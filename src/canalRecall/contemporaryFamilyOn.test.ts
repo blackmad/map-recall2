@@ -59,6 +59,7 @@ test('on: a pand with its own measured front draws it, not the area draw (round 
   assert.equal(dark.wallSource, 'own');
   assert.equal(`${dark.painted ? 'p' : 'b'}${dark.wall.slice(1)}`, ownContemporaryWall('0363100012247676'));
   assert.ok(lightnessOfHex(dark.wall) < 45, `houthaven-2018 own wall ${dark.wall}`);
+  assert.equal(dark.style, 'tall', 'tagged tall French windows');
   // Zeeburgereiland 2016: the T0 row (dark brick) outranks the lane sample, and the sheet shows balcony bands.
   const z = contemporaryLookFor({ id: 'NL.IMBAG.Pand.0363100012244416', year: 2016, heightM: 19.5, use: 'housing', at: [4.96, 52.37] })!;
   assert.equal(z.wallSource, 'own');
