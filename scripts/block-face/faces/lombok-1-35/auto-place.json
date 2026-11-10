@@ -1,0 +1,615 @@
+{
+ "face": "lombok-1-35",
+ "street": "Lombokstraat",
+ "library": "indische-buurt",
+ "stripDate": "2017-04-04",
+ "seconds": 2.77,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012121540",
+   "address": "Lombokstraat 1",
+   "builtYear": 1913,
+   "widthM": 13.4,
+   "eavesM": 7.12,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#463830",
+    "wallRaw": "#4d4038",
+    "skyline": {
+     "eavesM": 9.1,
+     "eavesRow": 156,
+     "confidence": 0.93,
+     "crown": {
+      "widthM": 2.83,
+      "riseM": 1.93,
+      "topWidthM": 0.75,
+      "centre": 0.85
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 1.8,
+     "bayCentre": 0.86,
+     "balconies": true,
+     "why": "dark open axis 1.95 m at 0.1 (light 0.27): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.95,
+       "centre": 0.1,
+       "light": 0.27
+      },
+      {
+       "widthM": 1.02,
+       "centre": 0.41,
+       "light": 0.43
+      },
+      {
+       "widthM": 1.05,
+       "centre": 0.55,
+       "light": 0.46
+      },
+      {
+       "widthM": 1.93,
+       "centre": 0.86,
+       "light": 0.56
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best indisch-1912-java-mansard-arches: frontage 13.4 m, type 5.6-6.4 m)",
+   "best": {
+    "type": "indisch-1912-java-mansard-arches",
+    "score": 0,
+    "veto": [
+     "frontage 13.4 m, type 5.6-6.4 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 7.12 m = 4 storeys of 1.78 m vs the type's 3.08 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 0,
+      "note": "3DBAG bouwlagen 3 vs 5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 3 vs 4 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012082066",
+   "address": "Lombokstraat 7",
+   "builtYear": 1913,
+   "widthM": 13.59,
+   "eavesM": 6.94,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#4b3e37",
+    "wallRaw": "#524842",
+    "skyline": {
+     "eavesM": 10.25,
+     "eavesRow": 110,
+     "confidence": 0.36,
+     "crown": {
+      "widthM": 0.63,
+      "riseM": 2.72,
+      "topWidthM": 0.35,
+      "centre": 0.9
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 1.75,
+     "bayCentre": 0.11,
+     "balconies": true,
+     "why": "dark open axis 1.18 m at 0.41 (light 0.3): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 2.27,
+       "centre": 0.1,
+       "light": 0.55
+      },
+      {
+       "widthM": 1.18,
+       "centre": 0.41,
+       "light": 0.3
+      },
+      {
+       "widthM": 1.13,
+       "centre": 0.55,
+       "light": 0.19
+      },
+      {
+       "widthM": 1.98,
+       "centre": 0.86,
+       "light": 0.31
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.02
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best indisch-1912-java-mansard-arches: frontage 13.59 m, type 5.6-6.4 m)",
+   "best": {
+    "type": "indisch-1912-java-mansard-arches",
+    "score": 0,
+    "veto": [
+     "frontage 13.59 m, type 5.6-6.4 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 6.94 m = 4 storeys of 1.74 m vs the type's 3.08 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 0,
+      "note": "3DBAG bouwlagen 3 vs 5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 3 vs 4 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012106433",
+   "address": "Lombokstraat 13",
+   "builtYear": 1913,
+   "widthM": 16.9,
+   "eavesM": 6.95,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6d5b4e",
+    "wallRaw": "#6b584c",
+    "skyline": {
+     "eavesM": 11.4,
+     "eavesRow": 64,
+     "confidence": 0.44,
+     "crown": {
+      "widthM": 1.35,
+      "riseM": 1.6,
+      "topWidthM": 0.78,
+      "centre": 0.23
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 9,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 1.73,
+     "bayCentre": 0.41,
+     "balconies": true,
+     "why": "dark open axis 0.9 m at 0.03 (light 0.12): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.9,
+       "centre": 0.03,
+       "light": 0.12
+      },
+      {
+       "widthM": 1.93,
+       "centre": 0.19,
+       "light": 0.15
+      },
+      {
+       "widthM": 1.9,
+       "centre": 0.41,
+       "light": 0.6
+      },
+      {
+       "widthM": 0.63,
+       "centre": 0.64,
+       "light": 0.04
+      },
+      {
+       "widthM": 1.5,
+       "centre": 0.79,
+       "light": 0.08
+      },
+      {
+       "widthM": 2.45,
+       "centre": 0.92,
+       "light": 0
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.05
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best indisch-1912-java-mansard-arches: frontage 16.9 m, type 5.6-6.4 m)",
+   "best": {
+    "type": "indisch-1912-java-mansard-arches",
+    "score": 0,
+    "veto": [
+     "frontage 16.9 m, type 5.6-6.4 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 6.95 m = 4 storeys of 1.74 m vs the type's 3.08 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 0,
+      "note": "3DBAG bouwlagen 4 vs 5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.003 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 9 vs 4 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012080471",
+   "address": "Lombokstraat 19",
+   "builtYear": 1913,
+   "widthM": 16.9,
+   "eavesM": 7.09,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#50433e",
+    "wallRaw": "#613e3a",
+    "skyline": {
+     "eavesM": 10.55,
+     "eavesRow": 98,
+     "confidence": 0.69,
+     "crown": {
+      "widthM": 2,
+      "riseM": 2.45,
+      "topWidthM": 1.05,
+      "centre": 0.93
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 12,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.034,
+    "structure": {
+     "bayWidthM": 1.3,
+     "bayCentre": 0.58,
+     "balconies": true,
+     "why": "dark open axis 1.2 m at 0.06 (light 0.01): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.2,
+       "centre": 0.06,
+       "light": 0.01
+      },
+      {
+       "widthM": 1.18,
+       "centre": 0.17,
+       "light": 0
+      },
+      {
+       "widthM": 0.6,
+       "centre": 0.23,
+       "light": 0
+      },
+      {
+       "widthM": 2.75,
+       "centre": 0.38,
+       "light": 0.28
+      },
+      {
+       "widthM": 0.82,
+       "centre": 0.5,
+       "light": 0.37
+      },
+      {
+       "widthM": 1.35,
+       "centre": 0.58,
+       "light": 0.86
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 5.57,
+       "widthM": 1.2,
+       "centre": 0.26
+      }
+     ]
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best indisch-1912-java-mansard-arches: frontage 16.9 m, type 5.6-6.4 m)",
+   "best": {
+    "type": "indisch-1912-java-mansard-arches",
+    "score": 0,
+    "veto": [
+     "frontage 16.9 m, type 5.6-6.4 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 7.09 m = 4 storeys of 1.77 m vs the type's 3.08 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 0,
+      "note": "3DBAG bouwlagen 4 vs 5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.013 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 12 vs 4 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012126729",
+   "address": "Lombokstraat 25",
+   "builtYear": 1913,
+   "widthM": 13.58,
+   "eavesM": 6.75,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#54433c",
+    "wallRaw": "#564640",
+    "skyline": {
+     "eavesM": 8.05,
+     "eavesRow": 198,
+     "confidence": 0.87,
+     "crown": {
+      "widthM": 2.77,
+      "riseM": 1.77,
+      "topWidthM": 1.18,
+      "centre": 0.87
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best indisch-1912-java-mansard-arches: frontage 13.58 m, type 5.6-6.4 m)",
+   "best": {
+    "type": "indisch-1912-java-mansard-arches",
+    "score": 0,
+    "veto": [
+     "frontage 13.58 m, type 5.6-6.4 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 6.75 m = 4 storeys of 1.69 m vs the type's 3.08 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 0,
+      "note": "3DBAG bouwlagen 3 vs 5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 3 vs 4 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012080112",
+   "address": "Lombokstraat 31",
+   "builtYear": 1913,
+   "widthM": 13.4,
+   "eavesM": 6.53,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#4b3b32",
+    "wallRaw": "#4b3c33",
+    "skyline": {
+     "eavesM": 7.53,
+     "eavesRow": 219,
+     "confidence": 0.85,
+     "crown": {
+      "widthM": 4.17,
+      "riseM": 5.47,
+      "topWidthM": 0.07,
+      "centre": 0.18
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 7,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 3.6 m at 0.46 (light 0.2): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 3.6,
+       "centre": 0.46,
+       "light": 0.2
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 5.25,
+       "widthM": 1.02,
+       "centre": 0.48
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best indisch-1912-java-mansard-arches: frontage 13.4 m, type 5.6-6.4 m)",
+   "best": {
+    "type": "indisch-1912-java-mansard-arches",
+    "score": 0,
+    "veto": [
+     "frontage 13.4 m, type 5.6-6.4 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 6.53 m = 4 storeys of 1.63 m vs the type's 3.08 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 0,
+      "note": "3DBAG bouwlagen 3 vs 5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 7 vs 4 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

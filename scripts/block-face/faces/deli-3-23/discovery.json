@@ -1,0 +1,394 @@
+{
+ "street": "Delistraat",
+ "seed": "0363100012093892",
+ "members": [
+  "0363100012093892",
+  "0363100012160942",
+  "0363100012158528",
+  "0363100012158549",
+  "0363100012160862",
+  "0363100012161587",
+  "0363100012166688",
+  "0363100012165390",
+  "0363100012156955",
+  "0363100012236382",
+  "0363100012082559"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "trimmed at 0363100012093892 (face continues: 084463)"
+  },
+  {
+   "side": "right",
+   "reason": "trimmed at 0363100012082559 (face continues: 117388 144166)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012062525",
+   "reason": "frontage 72.8 m from Delistraat"
+  },
+  {
+   "pandId": "0363100012091478",
+   "reason": "frontage 110.5 m from Delistraat"
+  },
+  {
+   "pandId": "0363100012099701",
+   "reason": "frontage 63.8 m from Delistraat"
+  },
+  {
+   "pandId": "0363100012103695",
+   "reason": "frontage 64.3 m from Delistraat"
+  },
+  {
+   "pandId": "0363100012108874",
+   "reason": "frontage 51.5 m from Delistraat"
+  },
+  {
+   "pandId": "0363100012128833",
+   "reason": "sightline to Delistraat crosses 0363100012082559"
+  },
+  {
+   "pandId": "0363100012133527",
+   "reason": "frontage 33.5 m from Delistraat"
+  },
+  {
+   "pandId": "0363100012134187",
+   "reason": "frontage 38.9 m from Delistraat"
+  },
+  {
+   "pandId": "0363100012136138",
+   "reason": "frontage 63.9 m from Delistraat"
+  },
+  {
+   "pandId": "0363100012139830",
+   "reason": "frontage 43.3 m from Delistraat"
+  },
+  {
+   "pandId": "0363100012140332",
+   "reason": "frontage 45.1 m from Delistraat"
+  },
+  {
+   "pandId": "0363100012143434",
+   "reason": "frontage 65.1 m from Delistraat"
+  },
+  {
+   "pandId": "0363100012151577",
+   "reason": "sightline to Delistraat crosses 0363100012084463"
+  },
+  {
+   "pandId": "0363100012152591",
+   "reason": "frontage 36.2 m from Delistraat"
+  },
+  {
+   "pandId": "0363100012152653",
+   "reason": "frontage 37.0 m from Delistraat"
+  },
+  {
+   "pandId": "0363100012153181",
+   "reason": "sightline to Delistraat crosses 0363100012156955"
+  },
+  {
+   "pandId": "0363100012156008",
+   "reason": "frontage 38.3 m from Delistraat"
+  },
+  {
+   "pandId": "0363100012157049",
+   "reason": "frontage 38.4 m from Delistraat"
+  },
+  {
+   "pandId": "0363100012158325",
+   "reason": "frontage 36.9 m from Delistraat"
+  },
+  {
+   "pandId": "0363100012158422",
+   "reason": "frontage 35.9 m from Delistraat"
+  },
+  {
+   "pandId": "0363100012158823",
+   "reason": "frontage 37.9 m from Delistraat"
+  },
+  {
+   "pandId": "0363100012159033",
+   "reason": "sightline to Delistraat crosses 0363100012165390"
+  },
+  {
+   "pandId": "0363100012160050",
+   "reason": "frontage 37.7 m from Delistraat"
+  },
+  {
+   "pandId": "0363100012160057",
+   "reason": "frontage 38.6 m from Delistraat"
+  },
+  {
+   "pandId": "0363100012160166",
+   "reason": "frontage 65.6 m from Delistraat"
+  },
+  {
+   "pandId": "0363100012160383",
+   "reason": "frontage 36.6 m from Delistraat"
+  },
+  {
+   "pandId": "0363100012161026",
+   "reason": "frontage 64.4 m from Delistraat"
+  },
+  {
+   "pandId": "0363100012161217",
+   "reason": "frontage 37.8 m from Delistraat"
+  },
+  {
+   "pandId": "0363100012161647",
+   "reason": "sightline to Delistraat crosses 0363100012166688"
+  },
+  {
+   "pandId": "0363100012161683",
+   "reason": "frontage 65.5 m from Delistraat"
+  },
+  {
+   "pandId": "0363100012162736",
+   "reason": "frontage 38.5 m from Delistraat"
+  },
+  {
+   "pandId": "0363100012162859",
+   "reason": "frontage 64.0 m from Delistraat"
+  },
+  {
+   "pandId": "0363100012162952",
+   "reason": "frontage 36.8 m from Delistraat"
+  },
+  {
+   "pandId": "0363100012163863",
+   "reason": "frontage 64.3 m from Delistraat"
+  },
+  {
+   "pandId": "0363100012163902",
+   "reason": "frontage 64.1 m from Delistraat"
+  },
+  {
+   "pandId": "0363100012164378",
+   "reason": "frontage 38.5 m from Delistraat"
+  },
+  {
+   "pandId": "0363100012164891",
+   "reason": "frontage 38.0 m from Delistraat"
+  },
+  {
+   "pandId": "0363100012165648",
+   "reason": "frontage 64.2 m from Delistraat"
+  },
+  {
+   "pandId": "0363100012166721",
+   "reason": "sightline to Delistraat crosses 0363100012236382"
+  },
+  {
+   "pandId": "0363100012166770",
+   "reason": "frontage 38.2 m from Delistraat"
+  },
+  {
+   "pandId": "0363100012167385",
+   "reason": "frontage 38.0 m from Delistraat"
+  },
+  {
+   "pandId": "0363100012186806",
+   "reason": "sightline to Delistraat crosses 0363100012082559"
+  },
+  {
+   "pandId": "0363100012201499",
+   "reason": "sightline to Delistraat crosses 0363100012159432"
+  },
+  {
+   "pandId": "0363100012206112",
+   "reason": "sightline to Delistraat crosses 0363100012077315"
+  },
+  {
+   "pandId": "0363100012207223",
+   "reason": "sightline to Delistraat crosses 0363100012084463"
+  },
+  {
+   "pandId": "0363100012223428",
+   "reason": "sightline to Delistraat crosses 0363100012111692"
+  },
+  {
+   "pandId": "0363100012227379",
+   "reason": "sightline to Delistraat crosses 0363100012161665"
+  },
+  {
+   "pandId": "0363100012228273",
+   "reason": "sightline to Delistraat crosses 0363100012161665"
+  },
+  {
+   "pandId": "0363100012233489",
+   "reason": "no frontage on Delistraat: No footprint edge faces Delistraat"
+  },
+  {
+   "pandId": "0363100012236009",
+   "reason": "frontage 30.6 m from Delistraat"
+  },
+  {
+   "pandId": "0363100012239390",
+   "reason": "frontage 65.4 m from Delistraat"
+  },
+  {
+   "pandId": "0363100012077315",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012111692",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012121673",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012156032",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012156701",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012156865",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012158166",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012159432",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012159581",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012161665",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012162053",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012166331",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012093892",
+   "alongM": 0,
+   "widthM": 11.5,
+   "eavesM": 14.47,
+   "roofMaxM": 14.64,
+   "storeys3dbag": 3,
+   "builtYear": 2005,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012160942",
+   "alongM": 8.35,
+   "widthM": 5.21,
+   "eavesM": 16.35,
+   "roofMaxM": 16.39,
+   "storeys3dbag": 5,
+   "builtYear": 1905,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012158528",
+   "alongM": 13.61,
+   "widthM": 5.31,
+   "eavesM": 16.29,
+   "roofMaxM": 16.37,
+   "storeys3dbag": 5,
+   "builtYear": 1905,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012158549",
+   "alongM": 18.92,
+   "widthM": 5.31,
+   "eavesM": 16.39,
+   "roofMaxM": 16.4,
+   "storeys3dbag": 5,
+   "builtYear": 1902,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012160862",
+   "alongM": 24.25,
+   "widthM": 5.34,
+   "eavesM": 16.03,
+   "roofMaxM": 16.45,
+   "storeys3dbag": 5,
+   "builtYear": 1905,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012161587",
+   "alongM": 29.59,
+   "widthM": 5.34,
+   "eavesM": 15.69,
+   "roofMaxM": 18.75,
+   "storeys3dbag": 0,
+   "builtYear": 1903,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012166688",
+   "alongM": 34.94,
+   "widthM": 5.36,
+   "eavesM": 15.83,
+   "roofMaxM": 15.85,
+   "storeys3dbag": 5,
+   "builtYear": 1903,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012165390",
+   "alongM": 40.53,
+   "widthM": 5.83,
+   "eavesM": 15.44,
+   "roofMaxM": 18.17,
+   "storeys3dbag": 0,
+   "builtYear": 1903,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012156955",
+   "alongM": 46.39,
+   "widthM": 5.88,
+   "eavesM": 12.28,
+   "roofMaxM": 15.36,
+   "storeys3dbag": 5,
+   "builtYear": 1903,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012236382",
+   "alongM": 53.94,
+   "widthM": 9.23,
+   "eavesM": 15.06,
+   "roofMaxM": 15.54,
+   "storeys3dbag": 5,
+   "builtYear": 1902,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012082559",
+   "alongM": 64.44,
+   "widthM": 11.77,
+   "eavesM": 10.96,
+   "roofMaxM": 15.47,
+   "storeys3dbag": 5,
+   "builtYear": 1902,
+   "uncertainty": []
+  }
+ ]
+}

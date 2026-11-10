@@ -1,0 +1,1247 @@
+{
+ "street": "Padangstraat",
+ "seed": "0363100012093873",
+ "members": [
+  "0363100012146653",
+  "0363100012063489",
+  "0363100012146406",
+  "0363100012129419",
+  "0363100012098659",
+  "0363100012093873"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "trimmed at 0363100012146653 (face continues: 150628)"
+  },
+  {
+   "side": "right",
+   "reason": "trimmed at 0363100012093873 (face continues: 114269)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012061834",
+   "reason": "frontage 161.9 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012062224",
+   "reason": "frontage 182.6 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012062527",
+   "reason": "frontage 78.0 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012063047",
+   "reason": "frontage 78.0 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012063476",
+   "reason": "frontage 37.9 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012063515",
+   "reason": "no frontage on Padangstraat: No footprint edge faces Padangstraat"
+  },
+  {
+   "pandId": "0363100012063800",
+   "reason": "frontage 70.6 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012064007",
+   "reason": "sightline to Padangstraat crosses 0363100012085260"
+  },
+  {
+   "pandId": "0363100012065784",
+   "reason": "frontage 53.2 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012065807",
+   "reason": "frontage 49.6 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012066054",
+   "reason": "frontage 78.0 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012066697",
+   "reason": "frontage 93.1 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012066931",
+   "reason": "sightline to Padangstraat crosses 0363100012093463"
+  },
+  {
+   "pandId": "0363100012068278",
+   "reason": "frontage 64.5 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012068360",
+   "reason": "frontage 37.0 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012068591",
+   "reason": "frontage 78.0 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012068787",
+   "reason": "frontage 123.3 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012069113",
+   "reason": "frontage 78.4 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012069682",
+   "reason": "frontage 78.0 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012069698",
+   "reason": "frontage 81.7 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012070865",
+   "reason": "frontage 139.4 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012072833",
+   "reason": "frontage 53.2 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012073042",
+   "reason": "frontage 160.9 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012074063",
+   "reason": "frontage 181.1 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012074710",
+   "reason": "frontage 41.1 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012077761",
+   "reason": "frontage 53.2 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012078026",
+   "reason": "no frontage on Padangstraat: No footprint edge faces Padangstraat"
+  },
+  {
+   "pandId": "0363100012078338",
+   "reason": "frontage 95.5 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012078465",
+   "reason": "frontage 55.2 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012079210",
+   "reason": "frontage 108.3 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012080112",
+   "reason": "frontage 32.0 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012080471",
+   "reason": "frontage 30.9 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012080763",
+   "reason": "frontage 161.2 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012080878",
+   "reason": "frontage 165.0 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012081210",
+   "reason": "frontage 175.0 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012081321",
+   "reason": "frontage 77.9 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012081365",
+   "reason": "frontage 118.7 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012081366",
+   "reason": "frontage 112.1 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012081431",
+   "reason": "frontage 101.4 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012081591",
+   "reason": "frontage 162.0 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012081898",
+   "reason": "frontage 48.8 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012082066",
+   "reason": "frontage 31.9 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012082255",
+   "reason": "frontage 33.4 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012082284",
+   "reason": "frontage 160.7 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012082517",
+   "reason": "frontage 130.6 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012083428",
+   "reason": "no frontage on Padangstraat: No footprint edge faces Padangstraat"
+  },
+  {
+   "pandId": "0363100012083822",
+   "reason": "frontage 50.3 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012083849",
+   "reason": "frontage 140.4 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012083959",
+   "reason": "no frontage on Padangstraat: No footprint edge faces Padangstraat"
+  },
+  {
+   "pandId": "0363100012084255",
+   "reason": "frontage 32.3 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012084401",
+   "reason": "frontage 82.2 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012085260",
+   "reason": "sightline to Padangstraat crosses 0363100012140561"
+  },
+  {
+   "pandId": "0363100012085781",
+   "reason": "no frontage on Padangstraat: No footprint edge faces Padangstraat"
+  },
+  {
+   "pandId": "0363100012085899",
+   "reason": "frontage 156.6 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012086183",
+   "reason": "frontage 168.3 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012087108",
+   "reason": "frontage 82.5 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012087984",
+   "reason": "frontage 87.6 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012088199",
+   "reason": "frontage 128.1 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012088701",
+   "reason": "frontage 160.7 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012089626",
+   "reason": "frontage 59.1 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012089774",
+   "reason": "frontage 94.1 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012090483",
+   "reason": "frontage 37.9 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012090617",
+   "reason": "frontage 101.5 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012092016",
+   "reason": "frontage 181.2 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012092089",
+   "reason": "frontage 78.0 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012092864",
+   "reason": "frontage 78.0 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012092896",
+   "reason": "frontage 172.4 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012093268",
+   "reason": "frontage 79.0 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012093828",
+   "reason": "frontage 124.9 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012094001",
+   "reason": "no frontage on Padangstraat: No footprint edge faces Padangstraat"
+  },
+  {
+   "pandId": "0363100012094122",
+   "reason": "frontage 53.2 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012094377",
+   "reason": "frontage 160.7 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012095414",
+   "reason": "frontage 54.9 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012096113",
+   "reason": "frontage 161.5 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012096397",
+   "reason": "frontage 171.5 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012096412",
+   "reason": "frontage 118.5 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012097230",
+   "reason": "frontage 109.6 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012097481",
+   "reason": "no frontage on Padangstraat: No footprint edge faces Padangstraat"
+  },
+  {
+   "pandId": "0363100012098028",
+   "reason": "frontage 92.9 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012098110",
+   "reason": "frontage 86.1 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012099261",
+   "reason": "frontage 53.1 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012100086",
+   "reason": "frontage 103.2 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012100331",
+   "reason": "frontage 177.2 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012100391",
+   "reason": "frontage 33.4 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012100535",
+   "reason": "frontage 53.2 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012101053",
+   "reason": "frontage 114.5 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012101257",
+   "reason": "frontage 108.7 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012102416",
+   "reason": "no frontage on Padangstraat: No footprint edge faces Padangstraat"
+  },
+  {
+   "pandId": "0363100012102480",
+   "reason": "frontage 35.6 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012102563",
+   "reason": "frontage 196.1 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012102651",
+   "reason": "frontage 109.5 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012102866",
+   "reason": "frontage 168.3 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012103586",
+   "reason": "frontage 75.2 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012103643",
+   "reason": "frontage 33.4 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012103647",
+   "reason": "frontage 127.8 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012103954",
+   "reason": "sightline to Padangstraat crosses 0363100012150628"
+  },
+  {
+   "pandId": "0363100012103977",
+   "reason": "frontage 122.0 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012104158",
+   "reason": "frontage 32.3 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012104592",
+   "reason": "frontage 53.2 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012104668",
+   "reason": "frontage 175.6 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012104978",
+   "reason": "frontage 62.0 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012106205",
+   "reason": "frontage 163.4 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012106433",
+   "reason": "frontage 30.9 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012106655",
+   "reason": "frontage 160.7 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012106911",
+   "reason": "frontage 151.4 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012107098",
+   "reason": "frontage 165.8 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012107515",
+   "reason": "frontage 166.6 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012107709",
+   "reason": "no frontage on Padangstraat: No footprint edge faces Padangstraat"
+  },
+  {
+   "pandId": "0363100012107809",
+   "reason": "frontage 77.9 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012107948",
+   "reason": "frontage 105.5 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012108617",
+   "reason": "frontage 53.2 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012108761",
+   "reason": "frontage 34.5 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012108941",
+   "reason": "frontage 160.7 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012109433",
+   "reason": "sightline to Padangstraat crosses 0363100012078026"
+  },
+  {
+   "pandId": "0363100012109843",
+   "reason": "frontage 121.7 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012110044",
+   "reason": "frontage 160.8 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012110582",
+   "reason": "frontage 53.1 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012110647",
+   "reason": "no frontage on Padangstraat: No footprint edge faces Padangstraat"
+  },
+  {
+   "pandId": "0363100012111204",
+   "reason": "frontage 77.9 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012111959",
+   "reason": "frontage 162.7 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012112314",
+   "reason": "frontage 74.1 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012112381",
+   "reason": "frontage 31.0 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012112606",
+   "reason": "no frontage on Padangstraat: No footprint edge faces Padangstraat"
+  },
+  {
+   "pandId": "0363100012112828",
+   "reason": "frontage 183.5 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012113301",
+   "reason": "frontage 80.4 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012113498",
+   "reason": "frontage 53.2 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012113540",
+   "reason": "sightline to Padangstraat crosses 0363100012078026"
+  },
+  {
+   "pandId": "0363100012113869",
+   "reason": "sightline to Padangstraat crosses 0363100012114269"
+  },
+  {
+   "pandId": "0363100012114995",
+   "reason": "frontage 77.9 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012115009",
+   "reason": "frontage 44.5 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012115019",
+   "reason": "frontage 32.3 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012115931",
+   "reason": "frontage 181.4 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012116590",
+   "reason": "frontage 34.4 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012117241",
+   "reason": "frontage 164.7 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012117530",
+   "reason": "frontage 53.8 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012117547",
+   "reason": "frontage 160.4 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012117596",
+   "reason": "frontage 43.9 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012117891",
+   "reason": "frontage 75.0 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012118700",
+   "reason": "frontage 62.3 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012119304",
+   "reason": "frontage 57.7 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012119824",
+   "reason": "frontage 115.8 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012120215",
+   "reason": "no frontage on Padangstraat: No footprint edge faces Padangstraat"
+  },
+  {
+   "pandId": "0363100012120631",
+   "reason": "frontage 134.2 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012121540",
+   "reason": "frontage 31.8 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012121776",
+   "reason": "frontage 179.9 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012122011",
+   "reason": "no frontage on Padangstraat: No footprint edge faces Padangstraat"
+  },
+  {
+   "pandId": "0363100012122027",
+   "reason": "no frontage on Padangstraat: No footprint edge faces Padangstraat"
+  },
+  {
+   "pandId": "0363100012122926",
+   "reason": "sightline to Padangstraat crosses 0363100012139392"
+  },
+  {
+   "pandId": "0363100012123386",
+   "reason": "frontage 187.3 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012123537",
+   "reason": "frontage 167.5 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012123753",
+   "reason": "frontage 160.7 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012124208",
+   "reason": "frontage 190.1 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012124226",
+   "reason": "frontage 81.0 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012124833",
+   "reason": "frontage 86.9 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012125352",
+   "reason": "no frontage on Padangstraat: No footprint edge faces Padangstraat"
+  },
+  {
+   "pandId": "0363100012125487",
+   "reason": "frontage 42.7 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012125682",
+   "reason": "frontage 34.5 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012126493",
+   "reason": "frontage 157.6 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012126729",
+   "reason": "frontage 31.9 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012126786",
+   "reason": "frontage 168.7 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012127674",
+   "reason": "frontage 115.7 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012127733",
+   "reason": "frontage 33.3 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012128109",
+   "reason": "frontage 94.6 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012128311",
+   "reason": "frontage 160.7 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012128496",
+   "reason": "no frontage on Padangstraat: No footprint edge faces Padangstraat"
+  },
+  {
+   "pandId": "0363100012129720",
+   "reason": "frontage 53.1 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012130723",
+   "reason": "frontage 80.8 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012131182",
+   "reason": "frontage 161.8 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012131587",
+   "reason": "frontage 79.5 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012131890",
+   "reason": "frontage 160.7 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012131961",
+   "reason": "frontage 53.2 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012132796",
+   "reason": "frontage 133.8 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012133565",
+   "reason": "frontage 72.3 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012133599",
+   "reason": "frontage 32.7 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012135252",
+   "reason": "frontage 210.5 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012136122",
+   "reason": "frontage 78.0 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012136784",
+   "reason": "frontage 160.8 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012139295",
+   "reason": "frontage 77.7 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012140052",
+   "reason": "no frontage on Padangstraat: No footprint edge faces Padangstraat"
+  },
+  {
+   "pandId": "0363100012140561",
+   "reason": "no frontage on Padangstraat: No footprint edge faces Padangstraat"
+  },
+  {
+   "pandId": "0363100012140728",
+   "reason": "frontage 139.8 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012142289",
+   "reason": "frontage 191.3 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012143219",
+   "reason": "frontage 173.1 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012144738",
+   "reason": "frontage 88.2 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012145071",
+   "reason": "frontage 182.6 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012145195",
+   "reason": "no frontage on Padangstraat: No footprint edge faces Padangstraat"
+  },
+  {
+   "pandId": "0363100012145454",
+   "reason": "frontage 56.7 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012145601",
+   "reason": "frontage 32.4 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012145829",
+   "reason": "frontage 163.6 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012146291",
+   "reason": "frontage 174.7 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012147120",
+   "reason": "frontage 160.7 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012147259",
+   "reason": "frontage 73.1 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012147329",
+   "reason": "frontage 160.7 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012148300",
+   "reason": "frontage 33.3 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012148852",
+   "reason": "frontage 160.8 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012148990",
+   "reason": "frontage 163.7 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012149152",
+   "reason": "frontage 170.2 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012149325",
+   "reason": "frontage 105.4 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012149516",
+   "reason": "frontage 53.2 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012150096",
+   "reason": "frontage 138.1 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012150248",
+   "reason": "no frontage on Padangstraat: No footprint edge faces Padangstraat"
+  },
+  {
+   "pandId": "0363100012150368",
+   "reason": "frontage 79.2 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012150787",
+   "reason": "frontage 116.0 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012153044",
+   "reason": "frontage 94.8 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012153727",
+   "reason": "frontage 185.8 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012153956",
+   "reason": "frontage 160.2 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012154744",
+   "reason": "frontage 41.2 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012154823",
+   "reason": "frontage 180.2 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012159049",
+   "reason": "frontage 101.4 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012183495",
+   "reason": "frontage 47.8 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012184242",
+   "reason": "frontage 81.5 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012184243",
+   "reason": "frontage 132.3 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012184280",
+   "reason": "frontage 48.2 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012187907",
+   "reason": "sightline to Padangstraat crosses 0363100012079497"
+  },
+  {
+   "pandId": "0363100012190399",
+   "reason": "sightline to Padangstraat crosses 0363100012142474"
+  },
+  {
+   "pandId": "0363100012190400",
+   "reason": "no frontage on Padangstraat: No footprint edge faces Padangstraat"
+  },
+  {
+   "pandId": "0363100012190415",
+   "reason": "frontage 94.1 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012194532",
+   "reason": "frontage 59.1 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012197922",
+   "reason": "frontage 68.0 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012200324",
+   "reason": "frontage 181.1 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012200325",
+   "reason": "frontage 177.1 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012200722",
+   "reason": "sightline to Padangstraat crosses 0363100012079497"
+  },
+  {
+   "pandId": "0363100012200723",
+   "reason": "no frontage on Padangstraat: No footprint edge faces Padangstraat"
+  },
+  {
+   "pandId": "0363100012205159",
+   "reason": "frontage 69.9 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012205383",
+   "reason": "frontage 193.2 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012205384",
+   "reason": "frontage 189.2 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012205412",
+   "reason": "frontage 96.0 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012207961",
+   "reason": "frontage 185.1 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012207962",
+   "reason": "frontage 183.4 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012209642",
+   "reason": "frontage 149.8 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012209776",
+   "reason": "frontage 81.7 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012210860",
+   "reason": "frontage 151.7 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012211423",
+   "reason": "frontage 58.6 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012212092",
+   "reason": "frontage 46.5 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012212093",
+   "reason": "no frontage on Padangstraat: No footprint edge faces Padangstraat"
+  },
+  {
+   "pandId": "0363100012213456",
+   "reason": "frontage 110.3 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012214166",
+   "reason": "sightline to Padangstraat crosses 0363100012142474"
+  },
+  {
+   "pandId": "0363100012215532",
+   "reason": "frontage 191.6 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012215533",
+   "reason": "frontage 187.5 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012215619",
+   "reason": "frontage 162.1 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012217804",
+   "reason": "frontage 53.8 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012217805",
+   "reason": "frontage 53.8 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012217942",
+   "reason": "no frontage on Padangstraat: No footprint edge faces Padangstraat"
+  },
+  {
+   "pandId": "0363100012220346",
+   "reason": "frontage 56.8 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012221702",
+   "reason": "frontage 79.8 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012222320",
+   "reason": "frontage 124.7 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012223439",
+   "reason": "frontage 108.3 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012223443",
+   "reason": "no frontage on Padangstraat: No footprint edge faces Padangstraat"
+  },
+  {
+   "pandId": "0363100012227052",
+   "reason": "frontage 179.3 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012227053",
+   "reason": "frontage 175.3 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012231207",
+   "reason": "frontage 137.4 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012232259",
+   "reason": "no frontage on Padangstraat: No footprint edge faces Padangstraat"
+  },
+  {
+   "pandId": "0363100012232364",
+   "reason": "frontage 122.7 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012232512",
+   "reason": "frontage 139.4 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012233528",
+   "reason": "no frontage on Padangstraat: No footprint edge faces Padangstraat"
+  },
+  {
+   "pandId": "0363100012234466",
+   "reason": "no frontage on Padangstraat: No footprint edge faces Padangstraat"
+  },
+  {
+   "pandId": "0363100012234467",
+   "reason": "no frontage on Padangstraat: No footprint edge faces Padangstraat"
+  },
+  {
+   "pandId": "0363100012235223",
+   "reason": "no frontage on Padangstraat: No footprint edge faces Padangstraat"
+  },
+  {
+   "pandId": "0363100012235224",
+   "reason": "no frontage on Padangstraat: No footprint edge faces Padangstraat"
+  },
+  {
+   "pandId": "0363100012236071",
+   "reason": "frontage 79.9 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012236305",
+   "reason": "frontage 144.3 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012236930",
+   "reason": "frontage 145.8 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012237183",
+   "reason": "no frontage on Padangstraat: No footprint edge faces Padangstraat"
+  },
+  {
+   "pandId": "0363100012237198",
+   "reason": "frontage 146.8 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012237325",
+   "reason": "frontage 53.7 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012237392",
+   "reason": "frontage 61.2 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012238726",
+   "reason": "frontage 70.4 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012240312",
+   "reason": "no frontage on Padangstraat: No footprint edge faces Padangstraat"
+  },
+  {
+   "pandId": "0363100012242931",
+   "reason": "frontage 174.3 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012242932",
+   "reason": "frontage 171.6 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012242933",
+   "reason": "frontage 169.1 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012242934",
+   "reason": "frontage 166.6 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012242935",
+   "reason": "frontage 164.3 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012242936",
+   "reason": "frontage 159.0 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012242937",
+   "reason": "frontage 154.6 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012242938",
+   "reason": "frontage 153.0 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012242939",
+   "reason": "frontage 151.3 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012249646",
+   "reason": "frontage 100.9 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012253816",
+   "reason": "frontage 68.3 m from Padangstraat"
+  },
+  {
+   "pandId": "0363100012062429",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012078916",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012079497",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012093463",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012095455",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012113411",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012130744",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012131518",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012139392",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012142474",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012154579",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 180,
+ "pands": [
+  {
+   "pandId": "0363100012146653",
+   "alongM": -74.4,
+   "widthM": 13.4,
+   "eavesM": 6.91,
+   "roofMaxM": 10.25,
+   "storeys3dbag": 3,
+   "builtYear": 1913,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012063489",
+   "alongM": -60.9,
+   "widthM": 13.59,
+   "eavesM": 6.94,
+   "roofMaxM": 10.25,
+   "storeys3dbag": 3,
+   "builtYear": 1913,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012146406",
+   "alongM": -45.65,
+   "widthM": 16.91,
+   "eavesM": 6.94,
+   "roofMaxM": 10.5,
+   "storeys3dbag": 3,
+   "builtYear": 1913,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012129419",
+   "alongM": -28.74,
+   "widthM": 16.91,
+   "eavesM": 7.28,
+   "roofMaxM": 10.91,
+   "storeys3dbag": 3,
+   "builtYear": 1913,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012098659",
+   "alongM": -13.49,
+   "widthM": 13.59,
+   "eavesM": 7.33,
+   "roofMaxM": 10.69,
+   "storeys3dbag": 3,
+   "builtYear": 1913,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012093873",
+   "alongM": 0,
+   "widthM": 13.4,
+   "eavesM": 7.6,
+   "roofMaxM": 10.84,
+   "storeys3dbag": 4,
+   "builtYear": 1913,
+   "uncertainty": []
+  }
+ ]
+}

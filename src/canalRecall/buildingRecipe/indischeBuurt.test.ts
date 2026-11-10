@@ -85,3 +85,53 @@ test('Gorontalostraat 31: the white top storey starts 0.44 m over its floor; wit
   assert.ok(Math.abs(lifted.bottomM - floor.bottomM - 0.44) < 0.002, `${lifted.bottomM} vs ${floor.bottomM}`);
   assert.ok(Math.abs(lifted.bottomM + lifted.heightM - (floor.bottomM + floor.heightM)) < 0.002, 'same top');
 });
+
+test('dormerWindow: Djambistraat 13 brick dormer holds a 0.85 m window on a 0.15 m apron; validation; absent = no front wall', () => {
+  const DJ = '0363100012110582', facts = factsOf('djambi-1-35', DJ);
+  const dormers = (i: CanalHouseIntent) => fitIntent(i, facts).recipe.elevations[0].dormers!.value;
+  const sized = dormers(house('indisch-1913-arched-pair-dormer', DJ, 'Djambistraat'));
+  const plain = dormers(house('indisch-1913-arched-pair-dormer', DJ, 'Djambistraat', f => { delete f.dormerWindow; }));
+  assert.equal(sized.length, 1);
+  assert.equal(sized[0].frontWall?.apronM, 0.15);
+  assert.ok(Math.abs(sized[0].frontWall!.sideM - (sized[0].widthM - 0.85) / 2) < 0.01);
+  assert.equal(plain[0].frontWall, undefined);
+  assert.equal(plain[0].widthM, sized[0].widthM);
+  const base = house('indisch-1913-arched-pair-dormer', DJ, 'Djambistraat');
+  const front = (patch: Record<string, unknown>) => () => validateIntent({...base, fronts: base.fronts.map(f => ({...f, ...patch}))} as CanalHouseIntent);
+  assert.throws(front({dormerWindow: {light: 3, apron: 0.3}}), /dormerWindow: \{light 0.4..2/);
+  assert.throws(front({dormers: 0}), /dormerWindow: only with dormers/);
+});
+
+test('dormerWindow.tall adds a head wall over the light; absent = no head wall; the 1913 dormer is 1.1 m tall', () => {
+  const DJ = '0363100012110582', facts = factsOf('djambi-1-29', DJ);
+  const dormers = (i: CanalHouseIntent) => fitIntent(i, facts).recipe.elevations[0].dormers!.value;
+  const withTall = dormers(house('indisch-1913-arched-pair-dormer', DJ, 'Djambistraat'));
+  assert.equal(withTall[0].frontWall?.apronM, 0.15);
+  assert.ok(Math.abs(withTall[0].frontWall!.headM! - (1.1 - 0.15 - 0.85)) < 0.01, `${withTall[0].frontWall?.headM}`);
+  const none = dormers(house('indisch-1913-arched-pair-dormer', DJ, 'Djambistraat', f => { const w = f.dormerWindow as Record<string, unknown>; delete w.tall; }));
+  assert.equal(none[0].frontWall?.headM, undefined);
+  const base = house('indisch-1913-arched-pair-dormer', DJ, 'Djambistraat');
+  assert.throws(() => validateIntent({...base, fronts: base.fronts.map(f => ({...f, dormerWindow: {light: 0.85, apron: 0.15, tall: 3}}))} as CanalHouseIntent), /dormerWindow/);
+});
+
+test('palette.sash colours the sash bars (joinery) apart from the frame; absent = the frame colour', () => {
+  const pand = '0363100012140561', facts = factsOf('lampong-2-20', pand);
+  const run = (i: CanalHouseIntent) => JSON.stringify(fitIntent(i, facts).recipe);
+  const red = house('indisch-1914-red-sash-pairs', pand, 'Lampongstraat');
+  const noSash = house('indisch-1914-red-sash-pairs', pand, 'Lampongstraat');
+  noSash.palette = {...noSash.palette, sash: undefined} as typeof noSash.palette;
+  assert.ok(run(red).includes('#8a2a33'.toLowerCase()) || run(red).includes('#8a2a33'.toUpperCase()), 'sash colour reaches the recipe');
+  assert.notEqual(run(red), run(noSash));
+  assert.ok(!run(noSash).includes('#8a2a33'));
+});
+
+test('doorReveal.edge hugs the party wall and takes a half-width span; without edge the span minimum is 0.9 m', () => {
+  const DJ = '0363100012110582', facts = factsOf('djambi-1-29', DJ);
+  const base = house('indisch-1913-arched-pair-dormer', DJ, 'Djambistraat');
+  const door = (i: CanalHouseIntent) => fitIntent(i, facts).recipe.elevations[0].openings!.value.filter(o => o.kind === 'door');
+  const edge = door(base);
+  const lefts = edge.map(o => o.leftM), wide = Math.max(...edge.map(o => o.leftM + o.widthM));
+  assert.ok(edge.length > 0 && (Math.min(...lefts) === 0.3 || wide > 5), `edge door at ${lefts} ${wide}`);
+  const noEdge = {...base, fronts: base.fronts.map(f => ({...f, doorReveal: {...f.doorReveal!, edge: undefined, span: 0.55}}))};
+  assert.throws(() => validateIntent(noEdge as CanalHouseIntent), /doorReveal.span: 0.9/);
+});

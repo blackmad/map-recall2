@@ -1,0 +1,1563 @@
+{
+ "face": "java-93-149",
+ "street": "Javastraat",
+ "library": "indische-buurt",
+ "stripDate": "2023-01-02",
+ "seconds": 17.95,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [
+  {
+   "face": "java-93-149-r1",
+   "pands": [
+    "0363100012132949",
+    "0363100012138717",
+    "0363100012120527",
+    "0363100012081977",
+    "0363100012133860",
+    "0363100012098497",
+    "0363100012126147"
+   ],
+   "passed": true,
+   "triangles": 20165
+  },
+  {
+   "face": "java-93-149-r2",
+   "pands": [
+    "0363100012150083",
+    "0363100012103232",
+    "0363100012141749"
+   ],
+   "installed": true
+  }
+ ],
+ "pands": [
+  {
+   "pandId": "0363100012083653",
+   "address": "Javastraat 93B",
+   "builtYear": 1988,
+   "widthM": 12.94,
+   "eavesM": 12.87,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#8a7065",
+    "wallRaw": "#6e5d50",
+    "skyline": {
+     "eavesM": 17.9,
+     "eavesRow": 67,
+     "confidence": 0.44,
+     "crown": {
+      "widthM": 1.02,
+      "riseM": 1.63,
+      "topWidthM": 0.23,
+      "centre": 0.47
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 6,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": "left",
+    "accentShare": 0.053,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 8.68,
+       "widthM": 0.9,
+       "centre": 0.41
+      },
+      {
+       "atM": 8.22,
+       "widthM": 1.02,
+       "centre": 0.36
+      },
+      {
+       "atM": 6.57,
+       "widthM": 0.82,
+       "centre": 0.6
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.02
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best indisch-1912-java-mansard-arches: built 1988, type 1910-1914; frontage 12.94 m, type 5.6-6.4 m)",
+   "best": {
+    "type": "indisch-1912-java-mansard-arches",
+    "score": 0,
+    "veto": [
+     "built 1988, type 1910-1914",
+     "frontage 12.94 m, type 5.6-6.4 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 12.87 m = 4 storeys of 3.22 m vs the type's 3.08 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.052 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 6 vs 4 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012067472",
+   "address": "Javastraat 95",
+   "builtYear": 1912,
+   "widthM": 6.17,
+   "eavesM": 12.54,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#715f59",
+    "wallRaw": "#5f5149",
+    "skyline": {
+     "eavesM": 17.38,
+     "eavesRow": 88,
+     "confidence": 0.69,
+     "crown": {
+      "widthM": 1.38,
+      "riseM": 1.8,
+      "topWidthM": 0.57,
+      "centre": 0.83
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.143,
+    "structure": {
+     "bayWidthM": 0.88,
+     "bayCentre": 0.53,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 8.88,
+       "widthM": 1.05,
+       "centre": 0.52
+      },
+      {
+       "atM": 5.95,
+       "widthM": 1,
+       "centre": 0.52
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.02
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: round 5: not in the approved set; with it in the run its neighbours 97 and 99 exceed the 3000-triangle budget (3125, 3068) and its own wall renders +0.11 light; mirror pin (false) kept",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012132949",
+   "address": "Javastraat 97",
+   "builtYear": 1912,
+   "widthM": 6.01,
+   "eavesM": 12.82,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#806c62",
+    "wallRaw": "#695b53",
+    "skyline": {
+     "eavesM": 17.38,
+     "eavesRow": 88,
+     "confidence": 0.99,
+     "crown": {
+      "widthM": 1.82,
+      "riseM": 1.8,
+      "topWidthM": 1.45,
+      "centre": 0.17
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.089,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.8 m at 0.59 (light 0.36): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.8,
+       "centre": 0.59,
+       "light": 0.36
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 8.55,
+       "widthM": 1.13,
+       "centre": 0.57
+      },
+      {
+       "atM": 5.55,
+       "widthM": 0.9,
+       "centre": 0.9
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "placed",
+   "type": "indisch-1912-java-mansard-arches",
+   "score": 0.86,
+   "placement": {
+    "type": "indisch-1912-java-mansard-arches",
+    "ground": {
+     "shopfront": {
+      "colour": "#5c4f48",
+      "fascia": true,
+      "name": "Asgül Kledingreparatie & Stomerij",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: osm-only (winkelfunctie, shop=tailor); fascia colour measured on the strip 2023-01-02 span 764-1004"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#806c62",
+     "evidence": "strip 2023-01-02 span 764-1004: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#72604f"
+    },
+    "mirror": true
+   },
+   "notes": [
+    "crown mansard-dormer (type default)",
+    "palette pinned: Javastraat 97 (strip 2023-01-02): per-pand brick rendered about 30 levels light and pinker than 101-109; set to #72604f, the median of 101-109 (round-4 verdict)",
+    "door reviewer pin: mirrored (Javastraat 93-149 strip 2023-01-02 (verdict 2026-11-10): the narrow arched pair sits LEFT of the balcony axis)"
+   ],
+   "likeness": {
+    "pandId": "0363100012132949",
+    "ncc": 0.335,
+    "nccRaw": 0.335,
+    "shiftM": [
+     0.4,
+     -0.3
+    ],
+    "usable": 0.97,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.39 mean 0.45 vs photo 0.23"
+    ],
+    "wall": {
+     "photo": "#7a675d",
+     "model": "#8b7560",
+     "dL": 0.039
+    },
+    "glazing": {
+     "photo": 0.23,
+     "model": 0.45
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.41
+   },
+   "challengers": {
+    "indisch-1912-java-mansard-arches~m": 0.335,
+    "indisch-1912-java-mansard-arches": 0.278
+   }
+  },
+  {
+   "pandId": "0363100012138717",
+   "address": "Javastraat 99",
+   "builtYear": 1912,
+   "widthM": 6.01,
+   "eavesM": 12.64,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#7e695e",
+    "wallRaw": "#645348",
+    "skyline": {
+     "eavesM": 18.1,
+     "eavesRow": 59,
+     "confidence": 0.36,
+     "crown": {
+      "widthM": 0.78,
+      "riseM": 1.42,
+      "topWidthM": 0.57,
+      "centre": 0.71
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.054,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.82 m at 0.51 (light 0.24): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.82,
+       "centre": 0.51,
+       "light": 0.24
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.03
+   },
+   "status": "placed",
+   "type": "indisch-1912-java-mansard-arches",
+   "score": 0.86,
+   "placement": {
+    "type": "indisch-1912-java-mansard-arches",
+    "ground": {
+     "shopfront": {
+      "colour": "#5f4b40",
+      "fascia": true,
+      "name": "La Fucina",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "right",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: osm-only (bijeenkomstfunctie, woonfunctie, amenity=restaurant); fascia colour measured on the strip 2023-01-02 span 1005-1245"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#7e695e",
+     "evidence": "strip 2023-01-02 span 1005-1245: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#72604f"
+    }
+   },
+   "notes": [
+    "crown mansard-dormer (type default)",
+    "palette pinned: Javastraat 99 (strip 2023-01-02): per-pand brick rendered about 30 levels light and pinker than 101-109; set to #72604f, the median of 101-109 (round-4 verdict)",
+    "door reviewer pin: as drawn (Javastraat 93-149 strip 2023-01-02 (verdict 2026-11-10): the narrow arched pair sits RIGHT of the balcony axis)"
+   ],
+   "likeness": {
+    "pandId": "0363100012138717",
+    "ncc": 0.298,
+    "nccRaw": 0.298,
+    "shiftM": [
+     0.1,
+     -0.4
+    ],
+    "usable": 0.92,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.30 mean 0.45 vs photo 0.25"
+    ],
+    "wall": {
+     "photo": "#866c5e",
+     "model": "#8b7560",
+     "dL": 0.014
+    },
+    "glazing": {
+     "photo": 0.25,
+     "model": 0.45
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.439
+   },
+   "challengers": {
+    "indisch-1912-java-mansard-arches": 0.298,
+    "indisch-1912-java-mansard-arches~m": 0.282
+   }
+  },
+  {
+   "pandId": "0363100012120527",
+   "address": "Javastraat 101",
+   "builtYear": 1912,
+   "widthM": 6.01,
+   "eavesM": 12.18,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#725b51",
+    "wallRaw": "#6e594d",
+    "skyline": {
+     "eavesM": 16.7,
+     "eavesRow": 115,
+     "confidence": 0.81,
+     "crown": {
+      "widthM": 1.6,
+      "riseM": 2.88,
+      "topWidthM": 0.63,
+      "centre": 0.25
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": "right",
+    "accentShare": 0.232,
+    "structure": {
+     "bayWidthM": 0.93,
+     "bayCentre": 0.57,
+     "balconies": true,
+     "why": "dark open axis 0.93 m at 0.57 (light 0.46): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.93,
+       "centre": 0.57,
+       "light": 0.46
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 8.8,
+       "widthM": 1.23,
+       "centre": 0.53
+      },
+      {
+       "atM": 5.95,
+       "widthM": 0.93,
+       "centre": 0.55
+      },
+      {
+       "atM": 5.5,
+       "widthM": 1.2,
+       "centre": 0.59
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.03
+   },
+   "status": "placed",
+   "type": "indisch-1912-java-mansard-arches",
+   "score": 0.86,
+   "placement": {
+    "type": "indisch-1912-java-mansard-arches",
+    "ground": {
+     "shopfront": {
+      "colour": "#6d5c51",
+      "fascia": true,
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: bag-only (winkelfunctie); fascia colour measured on the strip 2023-01-02 span 1245-1485"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#725b51",
+     "evidence": "strip 2023-01-02 span 1245-1485: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "mirror": true
+   },
+   "notes": [
+    "crown mansard-dormer (type default)",
+    "door reviewer pin: mirrored (Javastraat 93-149 strip 2023-01-02 (verdict 2026-11-10): the narrow arched pair sits LEFT of the balcony axis)"
+   ],
+   "likeness": {
+    "pandId": "0363100012120527",
+    "ncc": 0.223,
+    "nccRaw": 0.223,
+    "shiftM": [
+     0.35,
+     0.15
+    ],
+    "usable": 0.92,
+    "abstain": null,
+    "verdict": "WARN",
+    "reasons": [
+     "mask IoU 0.389 < 0.45"
+    ],
+    "wall": {
+     "photo": "#7c645c",
+     "model": "#8a6e62",
+     "dL": 0.039
+    },
+    "glazing": {
+     "photo": 0.44,
+     "model": 0.44
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.389
+   },
+   "challengers": {
+    "indisch-1912-java-mansard-arches~m": 0.223,
+    "indisch-1912-java-mansard-arches": 0.196
+   }
+  },
+  {
+   "pandId": "0363100012081977",
+   "address": "Javastraat 103",
+   "builtYear": 1912,
+   "widthM": 6.01,
+   "eavesM": 11.98,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#7a6458",
+    "wallRaw": "#746257",
+    "skyline": {
+     "eavesM": 16.68,
+     "eavesRow": 116,
+     "confidence": 0.52,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.067,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.78 m at 0.5 (light 0.35): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.78,
+       "centre": 0.5,
+       "light": 0.35
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 5.3,
+       "widthM": 0.82,
+       "centre": 0.2
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.02
+   },
+   "status": "placed",
+   "type": "indisch-1912-java-mansard-arches",
+   "score": 0.71,
+   "placement": {
+    "type": "indisch-1912-java-mansard-arches",
+    "ground": {
+     "shopfront": {
+      "colour": "#6d5e52",
+      "fascia": true,
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: bag-only (winkelfunctie); fascia colour measured on the strip 2023-01-02 span 1486-1726"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#7a6458",
+     "evidence": "strip 2023-01-02 span 1486-1726: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown mansard-dormer (type default)",
+    "door reviewer pin: as drawn (Javastraat 93-149 strip 2023-01-02 (verdict 2026-11-10): the narrow arched pair sits RIGHT of the balcony axis)"
+   ],
+   "likeness": {
+    "pandId": "0363100012081977",
+    "ncc": 0.303,
+    "nccRaw": 0.303,
+    "shiftM": [
+     0.1,
+     -0.4
+    ],
+    "usable": 0.93,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.35 mean 0.43 vs photo 0.23"
+    ],
+    "wall": {
+     "photo": "#6f5b4f",
+     "model": "#917769",
+     "dL": 0.118
+    },
+    "glazing": {
+     "photo": 0.23,
+     "model": 0.43
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.387
+   },
+   "challengers": {
+    "indisch-1912-java-mansard-arches": 0.303,
+    "indisch-1912-java-mansard-arches~m": 0.264
+   }
+  },
+  {
+   "pandId": "0363100012133860",
+   "address": "Javastraat 105",
+   "builtYear": 1912,
+   "widthM": 6.01,
+   "eavesM": 12.05,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6f5d50",
+    "wallRaw": "#66584d",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 783,
+     "confidence": 0.21,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.018,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.88 m at 0.58 (light 0.26): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.88,
+       "centre": 0.58,
+       "light": 0.26
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 8.3,
+       "widthM": 1.07,
+       "centre": 0.58
+      },
+      {
+       "atM": 5.22,
+       "widthM": 0.9,
+       "centre": 0.92
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.02
+   },
+   "status": "placed",
+   "type": "indisch-1912-java-mansard-arches",
+   "score": 0.71,
+   "placement": {
+    "type": "indisch-1912-java-mansard-arches",
+    "ground": {
+     "shopfront": {
+      "colour": "#5f4e43",
+      "fascia": true,
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: bag-only (winkelfunctie); fascia colour measured on the strip 2023-01-02 span 1726-1966"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#6f5d50",
+     "evidence": "strip 2023-01-02 span 1726-1966: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "mirror": true
+   },
+   "notes": [
+    "crown mansard-dormer (type default)",
+    "door reviewer pin: mirrored (Javastraat 93-149 strip 2023-01-02 (verdict 2026-11-10): the narrow arched pair sits LEFT of the balcony axis)"
+   ],
+   "likeness": {
+    "pandId": "0363100012133860",
+    "ncc": 0.3,
+    "nccRaw": 0.3,
+    "shiftM": [
+     0.4,
+     -0.4
+    ],
+    "usable": 0.93,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "window shape tall vs photo square"
+    ],
+    "wall": {
+     "photo": "#715e51",
+     "model": "#877162",
+     "dL": 0.076
+    },
+    "glazing": {
+     "photo": 0.47,
+     "model": 0.43
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.604
+   },
+   "challengers": {
+    "indisch-1912-java-mansard-arches~m": 0.3,
+    "indisch-1912-java-mansard-arches": 0.277
+   }
+  },
+  {
+   "pandId": "0363100012098497",
+   "address": "Javastraat 107",
+   "builtYear": 1912,
+   "widthM": 6.01,
+   "eavesM": 12.04,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#72665d",
+    "wallRaw": "#6a5c50",
+    "skyline": {
+     "eavesM": 19.18,
+     "eavesRow": 16,
+     "confidence": 0.39,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 7,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.026,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.97 m at 0.51 (light 0.31): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.97,
+       "centre": 0.51,
+       "light": 0.31
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 8.38,
+       "widthM": 1.2,
+       "centre": 0.52
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.03
+   },
+   "status": "placed",
+   "type": "indisch-1912-java-mansard-arches",
+   "score": 0.77,
+   "placement": {
+    "type": "indisch-1912-java-mansard-arches",
+    "ground": {
+     "shopfront": {
+      "colour": "#635246",
+      "fascia": true,
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: bag-only (winkelfunctie); fascia colour measured on the strip 2023-01-02 span 1966-2206"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#72665d",
+     "evidence": "strip 2023-01-02 span 1966-2206: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "door left",
+    "crown mansard-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012098497",
+    "ncc": 0.301,
+    "nccRaw": 0.301,
+    "shiftM": [
+     0.1,
+     -0.4
+    ],
+    "usable": 0.9,
+    "abstain": null,
+    "verdict": "PASS",
+    "reasons": [],
+    "wall": {
+     "photo": "#725f52",
+     "model": "#887a6f",
+     "dL": 0.1
+    },
+    "glazing": {
+     "photo": 0.39,
+     "model": 0.43
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.584
+   },
+   "challengers": {
+    "indisch-1912-java-mansard-arches": 0.301,
+    "indisch-1912-java-mansard-arches~m": 0.259
+   }
+  },
+  {
+   "pandId": "0363100012126147",
+   "address": "Javastraat 109",
+   "builtYear": 1910,
+   "widthM": 6.01,
+   "eavesM": 11.92,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#715e52",
+    "wallRaw": "#746155",
+    "skyline": {
+     "eavesM": 17.77,
+     "eavesRow": 72,
+     "confidence": 0.68,
+     "crown": {
+      "widthM": 1.98,
+      "riseM": 1.7,
+      "topWidthM": 0.4,
+      "centre": 0.5
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": "right",
+    "accentShare": 0.153,
+    "structure": {
+     "bayWidthM": 0.95,
+     "bayCentre": 0.57,
+     "balconies": true,
+     "why": "dark open axis 0.9 m at 0.57 (light 0.46): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.9,
+       "centre": 0.57,
+       "light": 0.46
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 8.55,
+       "widthM": 0.88,
+       "centre": 0.89
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.03
+   },
+   "status": "placed",
+   "type": "indisch-1912-java-mansard-arches",
+   "score": 0.86,
+   "placement": {
+    "type": "indisch-1912-java-mansard-arches",
+    "ground": {
+     "shopfront": {
+      "colour": "#68594e",
+      "fascia": true,
+      "name": "Nour",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: osm-only (bijeenkomstfunctie, amenity=restaurant); fascia colour measured on the strip 2023-01-02 span 2207-2447"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#715e52",
+     "evidence": "strip 2023-01-02 span 2207-2447: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "mirror": true
+   },
+   "notes": [
+    "crown mansard-dormer (type default)",
+    "door reviewer pin: mirrored (Javastraat 93-149 strip 2023-01-02 (verdict 2026-11-10): the narrow arched pair sits LEFT of the balcony axis)"
+   ],
+   "likeness": {
+    "pandId": "0363100012126147",
+    "ncc": 0.184,
+    "nccRaw": 0.184,
+    "shiftM": [
+     0.4,
+     0.2
+    ],
+    "usable": 0.89,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.49 mean 0.43 vs photo 0.59",
+     "columns 3 vs photo 7"
+    ],
+    "wall": {
+     "photo": "#67564e",
+     "model": "#897264",
+     "dL": 0.11
+    },
+    "glazing": {
+     "photo": 0.59,
+     "model": 0.43
+    },
+    "columns": {
+     "photo": 7,
+     "model": 3
+    },
+    "iou": 0.367
+   },
+   "challengers": {
+    "indisch-1912-java-mansard-arches~m": 0.184,
+    "indisch-1912-java-mansard-arches": 0.189
+   }
+  },
+  {
+   "pandId": "0363100012120784",
+   "address": "Javastraat 111",
+   "builtYear": 1912,
+   "widthM": 6.01,
+   "eavesM": 14.37,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6a5549",
+    "wallRaw": "#716258",
+    "skyline": {
+     "eavesM": 17.57,
+     "eavesRow": 80,
+     "confidence": 0.88,
+     "crown": {
+      "widthM": 1.98,
+      "riseM": 1.4,
+      "topWidthM": 1.4,
+      "centre": 0.28
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.254,
+    "structure": {
+     "bayWidthM": 0.88,
+     "bayCentre": 0.5,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 8.6,
+       "widthM": 1.02,
+       "centre": 0.5
+      },
+      {
+       "atM": 5.67,
+       "widthM": 0.93,
+       "centre": 0.49
+      },
+      {
+       "atM": 5.22,
+       "widthM": 1.5,
+       "centre": 0.5
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.04
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best indisch-1912-java-mansard-arches scores 0.55 < 0.7 (3DBAG eaves 14.37 m = 4 storeys of 3.59 m vs the type's 3.08 m; strip columns 3 vs 4 bays)",
+   "best": {
+    "type": "indisch-1912-java-mansard-arches",
+    "score": 0.55,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 14.37 m = 4 storeys of 3.59 m vs the type's 3.08 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.195 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 3 vs 4 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012150083",
+   "address": "Javastraat 113",
+   "builtYear": 1912,
+   "widthM": 6.01,
+   "eavesM": 12.04,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#615248",
+    "wallRaw": "#62554b",
+    "skyline": {
+     "eavesM": 13.68,
+     "eavesRow": 236,
+     "confidence": 0.38,
+     "crown": {
+      "widthM": 0.72,
+      "riseM": 5.88,
+      "topWidthM": 0.38,
+      "centre": 0.29
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.071,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 5.45,
+       "widthM": 1.3,
+       "centre": 0.58
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.04
+   },
+   "status": "placed",
+   "type": "indisch-1912-java-mansard-arches",
+   "score": 0.86,
+   "placement": {
+    "type": "indisch-1912-java-mansard-arches",
+    "ground": {
+     "shopfront": {
+      "colour": "#615349",
+      "fascia": true,
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: bag-only (bijeenkomstfunctie); fascia colour measured on the strip 2023-01-02 span 2687-2927"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#615248",
+     "evidence": "strip 2023-01-02 span 2687-2927: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "mirror": true
+   },
+   "notes": [
+    "crown mansard-dormer (type default)",
+    "photo decides: indisch-1912-java-mansard-arches~m edge NCC 0.325 vs indisch-1912-java-mansard-arches 0.252"
+   ],
+   "likeness": {
+    "pandId": "0363100012150083",
+    "ncc": 0.325,
+    "nccRaw": 0.325,
+    "shiftM": [
+     0.4,
+     -0.4
+    ],
+    "usable": 0.87,
+    "abstain": null,
+    "verdict": "PASS",
+    "reasons": [],
+    "wall": {
+     "photo": "#66564c",
+     "model": "#7a675b",
+     "dL": 0.069
+    },
+    "glazing": {
+     "photo": 0.42,
+     "model": 0.44
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.545
+   },
+   "challengers": {
+    "indisch-1912-java-mansard-arches": 0.252,
+    "indisch-1912-java-mansard-arches~m": 0.325
+   },
+   "installed": "java-93-149-r2"
+  },
+  {
+   "pandId": "0363100012103232",
+   "address": "Javastraat 115",
+   "builtYear": 1912,
+   "widthM": 6.01,
+   "eavesM": 11.95,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#846f67",
+    "wallRaw": "#6f5f54",
+    "skyline": {
+     "eavesM": 17.77,
+     "eavesRow": 72,
+     "confidence": 0.94,
+     "crown": {
+      "widthM": 1.98,
+      "riseM": 1.4,
+      "topWidthM": 1,
+      "centre": 0.24
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 7,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.202,
+    "structure": {
+     "bayWidthM": 0.93,
+     "bayCentre": 0.51,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 8.43,
+       "widthM": 1.2,
+       "centre": 0.51
+      },
+      {
+       "atM": 5.42,
+       "widthM": 1.2,
+       "centre": 0.51
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.06
+   },
+   "status": "placed",
+   "type": "indisch-1912-java-mansard-arches",
+   "score": 0.77,
+   "placement": {
+    "type": "indisch-1912-java-mansard-arches",
+    "ground": {
+     "shopfront": {
+      "colour": "#66574d",
+      "fascia": true,
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: bag-only (winkelfunctie,woonfunctie); fascia colour measured on the strip 2023-01-02 span 2928-3168"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#846f67",
+     "evidence": "strip 2023-01-02 span 2928-3168: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#72604f"
+    }
+   },
+   "notes": [
+    "door unread",
+    "crown mansard-dormer (type default)",
+    "palette pinned: Javastraat 115 (strip 2023-01-02): its per-pand brick #89766f rendered 28 levels light against photo #6d5d52; set to #72604f, the median of 101-109 (round-4 verdict)"
+   ],
+   "likeness": {
+    "pandId": "0363100012103232",
+    "ncc": 0.242,
+    "nccRaw": 0.242,
+    "shiftM": [
+     0.05,
+     -0.4
+    ],
+    "usable": 0.84,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.41 mean 0.44 vs photo 0.24"
+    ],
+    "wall": {
+     "photo": "#857164",
+     "model": "#8b7560",
+     "dL": 0.004
+    },
+    "glazing": {
+     "photo": 0.24,
+     "model": 0.44
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.402
+   },
+   "challengers": {
+    "indisch-1912-java-mansard-arches": 0.242,
+    "indisch-1912-java-mansard-arches~m": 0.228
+   },
+   "installed": "java-93-149-r2"
+  },
+  {
+   "pandId": "0363100012141749",
+   "address": "Javastraat 117",
+   "builtYear": 1912,
+   "widthM": 6.06,
+   "eavesM": 11.87,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#826e64",
+    "wallRaw": "#73655a",
+    "skyline": {
+     "eavesM": 18.77,
+     "eavesRow": 32,
+     "confidence": 0.89,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 3,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.223,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.75 m at 0.57 (light 0.38): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.75,
+       "centre": 0.57,
+       "light": 0.38
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 8.43,
+       "widthM": 1.13,
+       "centre": 0.58
+      },
+      {
+       "atM": 5.42,
+       "widthM": 1.18,
+       "centre": 0.57
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.03
+   },
+   "status": "placed",
+   "type": "indisch-1912-java-mansard-arches",
+   "score": 0.86,
+   "placement": {
+    "type": "indisch-1912-java-mansard-arches",
+    "ground": {
+     "shopfront": {
+      "colour": "#756b61",
+      "fascia": true,
+      "name": "Little Coconuts",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: osm-only (winkelfunctie, shop=toys); fascia colour measured on the strip 2023-01-02 span 3168-3411"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#826e64",
+     "evidence": "strip 2023-01-02 span 3168-3411: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "mirror": true
+   },
+   "notes": [
+    "crown mansard-dormer (type default)",
+    "door reviewer pin: mirrored (Javastraat 117: [narrow pair][balcony][wide] in the photo (round-3 verdict))"
+   ],
+   "likeness": {
+    "pandId": "0363100012141749",
+    "ncc": 0.179,
+    "nccRaw": 0.179,
+    "shiftM": [
+     0.4,
+     -0.4
+    ],
+    "usable": 0.91,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.22 mean 0.45 vs photo 0.34"
+    ],
+    "wall": {
+     "photo": "#8a766c",
+     "model": "#968176",
+     "dL": 0.043
+    },
+    "glazing": {
+     "photo": 0.34,
+     "model": 0.45
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.489
+   },
+   "challengers": {
+    "indisch-1912-java-mansard-arches~m": 0.179,
+    "indisch-1912-java-mansard-arches": 0.153
+   },
+   "installed": "java-93-149-r2"
+  },
+  {
+   "pandId": "0363100012085970",
+   "address": "Javastraat 119",
+   "builtYear": 1913,
+   "widthM": 5.81,
+   "eavesM": 12.39,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#76645b",
+    "wallRaw": "#61564a",
+    "skyline": {
+     "eavesM": 16.75,
+     "eavesRow": 113,
+     "confidence": 0.63,
+     "crown": {
+      "widthM": 1.85,
+      "riseM": 2.82,
+      "topWidthM": 0.88,
+      "centre": 0.5
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.056,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.72 m at 0.5 (light 0.33): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.72,
+       "centre": 0.5,
+       "light": 0.33
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 8.88,
+       "widthM": 1.07,
+       "centre": 0.51
+      },
+      {
+       "atM": 6.63,
+       "widthM": 1.65,
+       "centre": 0.52
+      },
+      {
+       "atM": 6.02,
+       "widthM": 0.95,
+       "centre": 0.5
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.06
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: dark brick hooded dormer, not the white pediment of the Java type: a different dormer the kit type does not draw (kit gap); mirror pinned from the photo",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012110585",
+   "address": "Javastraat 121",
+   "builtYear": 1913,
+   "widthM": 5.81,
+   "eavesM": 12.17,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#7b6760",
+    "wallRaw": "#6c5d53",
+    "skyline": {
+     "eavesM": 18.52,
+     "eavesRow": 42,
+     "confidence": 0.79,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.226,
+    "structure": {
+     "bayWidthM": 0.88,
+     "bayCentre": 0.58,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 8.88,
+       "widthM": 1.15,
+       "centre": 0.58
+      },
+      {
+       "atM": 5.8,
+       "widthM": 1.13,
+       "centre": 0.59
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.05
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: tall stepped brick dormer-gable the Java type omits (kit gap); mirror pinned from the photo",
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

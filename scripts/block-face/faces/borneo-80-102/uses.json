@@ -1,0 +1,491 @@
+{
+ "street": "Borneostraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-09T23:28:09.676Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012074432",
+   "addresses": [
+    "Borneostraat 102"
+   ],
+   "groundUnits": [
+    {
+     "address": "Borneostraat 102-H",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010001004131"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012097629",
+   "addresses": [
+    "Borneostraat 100"
+   ],
+   "groundUnits": [
+    {
+     "address": "Borneostraat 100-H",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010000592440"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012233598",
+   "addresses": [
+    "Borneostraat 98C",
+    "Borneostraat 98D",
+    "Borneostraat 98A",
+    "Borneostraat 98B",
+    "Borneostraat 98E"
+   ],
+   "groundUnits": [
+    {
+     "address": "Borneostraat 98C",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010001043486"
+    },
+    {
+     "address": "Borneostraat 98D",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010001043487"
+    },
+    {
+     "address": "Borneostraat 98A",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010001043488"
+    },
+    {
+     "address": "Borneostraat 98B",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010001043489"
+    },
+    {
+     "address": "Borneostraat 98E",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010001043490"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012097275",
+   "addresses": [
+    "Borneostraat 96A",
+    "Borneostraat 96B",
+    "Borneostraat 96C",
+    "Borneostraat 96D",
+    "Borneostraat 96E"
+   ],
+   "groundUnits": [
+    {
+     "address": "Borneostraat 96A",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010001043491"
+    },
+    {
+     "address": "Borneostraat 96B",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010001043492"
+    },
+    {
+     "address": "Borneostraat 96C",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010001043493"
+    },
+    {
+     "address": "Borneostraat 96D",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010001043494"
+    },
+    {
+     "address": "Borneostraat 96E",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010001043495"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012115806",
+   "addresses": [
+    "Borneostraat 94B",
+    "Borneostraat 94C",
+    "Borneostraat 94D",
+    "Borneostraat 94A",
+    "Borneostraat 94E"
+   ],
+   "groundUnits": [
+    {
+     "address": "Borneostraat 94B",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000592429"
+    },
+    {
+     "address": "Borneostraat 94C",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000592430"
+    },
+    {
+     "address": "Borneostraat 94D",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000592431"
+    },
+    {
+     "address": "Borneostraat 94A",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010001030056"
+    },
+    {
+     "address": "Borneostraat 94E",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010001982036"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012128027",
+   "addresses": [
+    "Borneostraat 92A",
+    "Borneostraat 92B",
+    "Borneostraat 92C",
+    "Borneostraat 92D",
+    "Borneostraat 92E"
+   ],
+   "groundUnits": [
+    {
+     "address": "Borneostraat 92A",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000592424"
+    },
+    {
+     "address": "Borneostraat 92B",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000592425"
+    },
+    {
+     "address": "Borneostraat 92C",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000592426"
+    },
+    {
+     "address": "Borneostraat 92D",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000592427"
+    },
+    {
+     "address": "Borneostraat 92E",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010001040383"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012138203",
+   "addresses": [
+    "Borneostraat 90",
+    "Borneostraat 90A",
+    "Borneostraat 90B",
+    "Borneostraat 90C",
+    "Borneostraat 90D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Borneostraat 90-H",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000592420"
+    },
+    {
+     "address": "Borneostraat 90A",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010012117656"
+    },
+    {
+     "address": "Borneostraat 90B",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010012117657"
+    },
+    {
+     "address": "Borneostraat 90C",
+     "use": "woonfunctie",
+     "areaM2": 77,
+     "bagId": "0363010012117658"
+    },
+    {
+     "address": "Borneostraat 90D",
+     "use": "kantoorfunctie,winkelfunctie",
+     "areaM2": 52,
+     "bagId": "0363010012117659"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012120215",
+   "addresses": [
+    "Borneostraat 88",
+    "Borneostraat 88A",
+    "Borneostraat 88B",
+    "Borneostraat 88C",
+    "Borneostraat 88D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Borneostraat 88-H",
+     "use": "winkelfunctie,woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010000592416"
+    },
+    {
+     "address": "Borneostraat 88A",
+     "use": "winkelfunctie",
+     "areaM2": 200,
+     "bagId": "0363010012117652"
+    },
+    {
+     "address": "Borneostraat 88B",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010012117653"
+    },
+    {
+     "address": "Borneostraat 88C",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010012117654"
+    },
+    {
+     "address": "Borneostraat 88D",
+     "use": "woonfunctie",
+     "areaM2": 74,
+     "bagId": "0363010012117655"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012130723",
+   "addresses": [
+    "Borneostraat 86",
+    "Borneostraat 86A",
+    "Borneostraat 86B",
+    "Borneostraat 86C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Borneostraat 86-H",
+     "use": "winkelfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000592412"
+    },
+    {
+     "address": "Borneostraat 86A",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010012117649"
+    },
+    {
+     "address": "Borneostraat 86B",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010012117650"
+    },
+    {
+     "address": "Borneostraat 86C",
+     "use": "woonfunctie",
+     "areaM2": 74,
+     "bagId": "0363010012117651"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012139295",
+   "addresses": [
+    "Borneostraat 84",
+    "Borneostraat 84A",
+    "Borneostraat 84B",
+    "Borneostraat 84C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Borneostraat 84-H",
+     "use": "winkelfunctie",
+     "areaM2": 320,
+     "bagId": "0363010000592408"
+    },
+    {
+     "address": "Borneostraat 84A",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010012117646"
+    },
+    {
+     "address": "Borneostraat 84B",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010012117647"
+    },
+    {
+     "address": "Borneostraat 84C",
+     "use": "woonfunctie",
+     "areaM2": 74,
+     "bagId": "0363010012117648"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012103586",
+   "addresses": [
+    "Borneostraat 82",
+    "Borneostraat 82A",
+    "Borneostraat 82B",
+    "Borneostraat 82C",
+    "Borneostraat 82D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Borneostraat 82-H",
+     "use": "winkelfunctie",
+     "areaM2": 64,
+     "bagId": "0363010001030055"
+    },
+    {
+     "address": "Borneostraat 82A",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010012117642"
+    },
+    {
+     "address": "Borneostraat 82B",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010012117643"
+    },
+    {
+     "address": "Borneostraat 82C",
+     "use": "woonfunctie",
+     "areaM2": 74,
+     "bagId": "0363010012117644"
+    },
+    {
+     "address": "Borneostraat 82D",
+     "use": "kantoorfunctie,winkelfunctie",
+     "areaM2": 52,
+     "bagId": "0363010012117645"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012133565",
+   "addresses": [
+    "Borneostraat 80",
+    "Borneostraat 80A",
+    "Borneostraat 80B",
+    "Borneostraat 80C",
+    "Borneostraat 80D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Borneostraat 80-H",
+     "use": "kantoorfunctie",
+     "areaM2": 235,
+     "bagId": "0363010001014642"
+    },
+    {
+     "address": "Borneostraat 80A",
+     "use": "kantoorfunctie,winkelfunctie",
+     "areaM2": 68,
+     "bagId": "0363010012117638"
+    },
+    {
+     "address": "Borneostraat 80B",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010012117639"
+    },
+    {
+     "address": "Borneostraat 80C",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010012117640"
+    },
+    {
+     "address": "Borneostraat 80D",
+     "use": "woonfunctie",
+     "areaM2": 78,
+     "bagId": "0363010012117641"
+    },
+    {
+     "address": "Madurastraat 102A",
+     "use": "woonfunctie",
+     "areaM2": 62,
+     "bagId": "0363010012117680"
+    },
+    {
+     "address": "Madurastraat 102B",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010012117681"
+    },
+    {
+     "address": "Madurastraat 102C",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010012117682"
+    },
+    {
+     "address": "Madurastraat 102D",
+     "use": "kantoorfunctie,winkelfunctie",
+     "areaM2": 82,
+     "bagId": "0363010012117683"
+    }
+   ],
+   "units": 15,
+   "osm": []
+  }
+ ]
+}

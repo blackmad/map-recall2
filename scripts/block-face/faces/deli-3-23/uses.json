@@ -1,0 +1,267 @@
+{
+ "street": "Delistraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-09T23:37:27.758Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012093892",
+   "addresses": [
+    "Delistraat 3"
+   ],
+   "groundUnits": [
+    {
+     "address": "Delistraat 3",
+     "use": "woonfunctie",
+     "areaM2": 129,
+     "bagId": "0363010001025874"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012160942",
+   "addresses": [
+    "Delistraat 5A",
+    "Delistraat 5B",
+    "Delistraat 5C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Delistraat 5A",
+     "use": "woonfunctie",
+     "areaM2": 106,
+     "bagId": "0363010001028465"
+    },
+    {
+     "address": "Delistraat 5B",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010001028466"
+    },
+    {
+     "address": "Delistraat 5C",
+     "use": "woonfunctie",
+     "areaM2": 108,
+     "bagId": "0363010001028468"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012158528",
+   "addresses": [
+    "Delistraat 7A",
+    "Delistraat 7B",
+    "Delistraat 7C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Delistraat 7A",
+     "use": "woonfunctie",
+     "areaM2": 107,
+     "bagId": "0363010001028470"
+    },
+    {
+     "address": "Delistraat 7B",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010001028471"
+    },
+    {
+     "address": "Delistraat 7C",
+     "use": "woonfunctie",
+     "areaM2": 112,
+     "bagId": "0363010001028472"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012158549",
+   "addresses": [
+    "Delistraat 9"
+   ],
+   "groundUnits": [
+    {
+     "address": "Delistraat 9-H",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000620561"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012160862",
+   "addresses": [
+    "Delistraat 11A",
+    "Delistraat 11B",
+    "Delistraat 11C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Delistraat 11A",
+     "use": "woonfunctie",
+     "areaM2": 102,
+     "bagId": "0363010001028473"
+    },
+    {
+     "address": "Delistraat 11B",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010001028474"
+    },
+    {
+     "address": "Delistraat 11C",
+     "use": "woonfunctie",
+     "areaM2": 106,
+     "bagId": "0363010001028475"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012161587",
+   "addresses": [
+    "Delistraat 13A",
+    "Delistraat 13B",
+    "Delistraat 13C",
+    "Delistraat 13D",
+    "Delistraat 13E"
+   ],
+   "groundUnits": [
+    {
+     "address": "Delistraat 13A",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000620579"
+    },
+    {
+     "address": "Delistraat 13B",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000620580"
+    },
+    {
+     "address": "Delistraat 13C",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000620581"
+    },
+    {
+     "address": "Delistraat 13D",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000620582"
+    },
+    {
+     "address": "Delistraat 13E",
+     "use": "woonfunctie",
+     "areaM2": 84,
+     "bagId": "0363010001019639"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012166688",
+   "addresses": [
+    "Delistraat 15"
+   ],
+   "groundUnits": [
+    {
+     "address": "Delistraat 15-H",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000620587"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012165390",
+   "addresses": [
+    "Delistraat 17"
+   ],
+   "groundUnits": [
+    {
+     "address": "Delistraat 17-H",
+     "use": "woonfunctie",
+     "areaM2": 97,
+     "bagId": "0363010000980944"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012156955",
+   "addresses": [
+    "Delistraat 19"
+   ],
+   "groundUnits": [
+    {
+     "address": "Delistraat 19-H",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000620603"
+    },
+    {
+     "address": "Delistraat 19-H",
+     "use": "woonfunctie",
+     "areaM2": 86,
+     "bagId": "0363010012122458"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012236382",
+   "addresses": [
+    "Delistraat 21"
+   ],
+   "groundUnits": [
+    {
+     "address": "Delistraat 21-H",
+     "use": "woonfunctie",
+     "areaM2": 97,
+     "bagId": "0363010000620610"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012082559",
+   "addresses": [
+    "Delistraat 23"
+   ],
+   "groundUnits": [
+    {
+     "address": "Delistraat 23-H",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010000620617"
+    },
+    {
+     "address": "Delistraat 23-4",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 1,
+     "bagId": "0363010001020290"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  }
+ ]
+}

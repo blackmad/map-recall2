@@ -85,7 +85,7 @@ export interface CanalhouseDormer {
    * behind, so the glass never passes the roof plane) and `sideM` wide each side of it; the frame, pane and bars fill the
    * rest. Absent = the whole front glazed, byte-identical.
    */
-  frontWall?:{apronM:number;sideM:number}; id: string; leftM: number; widthM: number; bottomM: number; heightM: number; depthM: number; roofRiseM: number; frontOverhangM?: number; trimWidthM?: number; verticalBars?: number[]; horizontalBars?: number[] }
+  frontWall?:{apronM:number;sideM:number;headM?:number}; id: string; leftM: number; widthM: number; bottomM: number; heightM: number; depthM: number; roofRiseM: number; frontOverhangM?: number; trimWidthM?: number; verticalBars?: number[]; horizontalBars?: number[] }
 /** `accent` is a second masonry colour (banding, relieving arches); `shop` is the shopfront joinery/fascia paint. */
 export interface CanalhouseFacadeBlock { id: string; leftM: number; bottomM: number; widthM: number; heightM: number; depthM: number; surface?: 'wall' | 'trim' | 'stone' | 'accent' | 'shop' }
 export interface CanalhouseBalcony {
@@ -105,7 +105,7 @@ export interface CanalhouseBalcony {
 export type CanalhouseDressing =
   | {id: string; kind: 'slab'; leftM: number; bottomM: number; widthM: number; heightM: number; depthM: number; surface: 'stone' | 'trim' | 'accent' | 'wall'}
   | {id: string; kind: 'awning'; style: 'straight' | 'dutch'; leftM: number; widthM: number; topM: number; dropM: number; projectM: number; valanceM: number; surface: 'awning'};
-export interface CanalhouseOrnament { id: string; profile: CanalhousePoint[]; depthM: number; fill?: 'trim' | 'wall' | 'stone' | 'accent' | 'shop'; rimWidthM?: number }
+export interface CanalhouseOrnament { id: string; profile: CanalhousePoint[]; depthM: number; fill?: 'trim' | 'wall' | 'stone' | 'accent' | 'shade' | 'shop'; rimWidthM?: number }
 /** One reusable lateral flight, including its independently observed open rail. */
 export interface CanalhouseApproach {
   topProfile:CanalhousePoint[]|null; groundM:number; backM:number; depthM:number;
@@ -176,7 +176,7 @@ export interface CanalHouseRecipe {
   shellTopM?: Measured<number>;
   /** Local east/south metres; Y is vertical in the compiled Three group. */
   footprint: Measured<CanalhousePolygon[]>;
-  palette: Measured<{ wall: string; roof: string; trim: string; glass: string; door: string; stone?: string; joinery?: string; accent?: string; shop?: string; awning?: string }>;
+  palette: Measured<{ wall: string; roof: string; trim: string; glass: string; door: string; stone?: string; joinery?: string; accent?: string; shade?: string; shop?: string; awning?: string }>;
   /** Explicit surveyed roof partition. Planes are heightM + x*slopeX + z*slopeZ. */
   roof: Measured<{ polygon: CanalhousePolygon; plane: { heightM: number; slopeX: number; slopeZ: number }; generatedFragment?:'symmetric-roof'|'roof-envelope' }[]>;
   elevations: CanalhouseElevation[]; simplifications: string[];
@@ -361,7 +361,7 @@ export function compileCanalHouseRecipe(recipe: CanalHouseRecipe): CompiledCanal
   if(!polygons.length) throw new Error('Missing surveyed footprint');
   if(Object.values(palette).some(c=>!/^#[\da-f]{6}$/i.test(c))) throw new Error('Invalid flat palette');
   const group=new T.Group(); group.name=recipe.id;
-  const materials=Object.fromEntries(Object.entries({...palette,stone:palette.stone??palette.trim,joinery:palette.joinery??palette.trim,accent:palette.accent??palette.wall,shop:palette.shop??palette.door,awning:palette.awning??palette.shop??palette.door}).map(([k,c])=>[k,new T.MeshStandardMaterial({color:c,roughness:1})])) as Record<keyof typeof palette,T.MeshStandardMaterial>;
+  const materials=Object.fromEntries(Object.entries({...palette,stone:palette.stone??palette.trim,joinery:palette.joinery??palette.trim,accent:palette.accent??palette.wall,shade:palette.shade??palette.wall,shop:palette.shop??palette.door,awning:palette.awning??palette.shop??palette.door}).map(([k,c])=>[k,new T.MeshStandardMaterial({color:c,roughness:1})])) as Record<keyof typeof palette,T.MeshStandardMaterial>;
   const facadeMaterials=new WeakMap<T.Group,typeof materials>();
   const add = (geometry:T.BufferGeometry,surface:keyof typeof palette,name:string,parent:T.Group=group) => {
     const mesh=new T.Mesh(geometry,(facadeMaterials.get(parent)??materials)[surface]); mesh.name=name; mesh.userData={component:name.split('/')[0],surface,pandId:recipe.house.pandId}; parent.add(mesh); return mesh;
@@ -501,7 +501,7 @@ export function compileCanalHouseRecipe(recipe: CanalHouseRecipe): CompiledCanal
     if(elevation.palette){
       const colors=read(elevation.palette,`${elevation.id}/palette`);
       if(Object.values(colors).some(c=>!/^#[\da-f]{6}$/i.test(c)))throw new Error('Invalid frontage palette');
-      facadeMaterials.set(facade,Object.fromEntries(Object.entries({...colors,stone:colors.stone??colors.trim,joinery:colors.joinery??colors.trim,accent:colors.accent??colors.wall,shop:colors.shop??colors.door,awning:colors.awning??colors.shop??colors.door}).map(([k,c])=>[k,new T.MeshStandardMaterial({color:c,roughness:1})])) as typeof materials);
+      facadeMaterials.set(facade,Object.fromEntries(Object.entries({...colors,stone:colors.stone??colors.trim,joinery:colors.joinery??colors.trim,accent:colors.accent??colors.wall,shade:colors.shade??colors.wall,shop:colors.shop??colors.door,awning:colors.awning??colors.shop??colors.door}).map(([k,c])=>[k,new T.MeshStandardMaterial({color:c,roughness:1})])) as typeof materials);
     }
     facade.matrix.set(ux,0,nx,a[0]+nx*outward, 0,1,0,0, uz,0,nz,a[1]+nz*outward, 0,0,0,1);facade.matrixAutoUpdate=false;group.add(facade);
     const box=(x:number,y:number,w:number,h:number,d:number,depth:number,s:keyof typeof palette,name:string)=>{
@@ -869,20 +869,21 @@ export function compileCanalHouseRecipe(recipe: CanalHouseRecipe): CompiledCanal
         box(x1-wall,d.bottomM,wall,d.heightM,d.depthM,-d.depthM/2,wallSurface,`${label}/right-wall`);
         box(x0,d.bottomM,d.widthM,d.heightM,wall,-d.depthM+wall/2,wallSurface,`${label}/back-wall`);
         // `frontWall`: the window sits in a solid front (apron under it, posts beside it); absent, the opening is the whole front.
-        let wx0=x0,wx1=x1,wy0=d.bottomM;
+        let wx0=x0,wx1=x1,wy0=d.bottomM,wTop=top;
         if(d.frontWall){
-          const {apronM,sideM}=d.frontWall;finite(apronM,sideM);
-          if(apronM<0||sideM<0||apronM+t*2+.3>d.heightM||sideM*2+t*2+.3>d.widthM)throw Error('Dormer front wall leaves no window');
-          wx0=x0+sideM;wx1=x1-sideM;wy0=d.bottomM+apronM;
+          const {apronM,sideM}=d.frontWall,headM=d.frontWall.headM??0;finite(apronM,sideM,headM);
+          if(apronM<0||sideM<0||headM<0||apronM+headM+t*2+.3>d.heightM||sideM*2+t*2+.3>d.widthM)throw Error('Dormer front wall leaves no window');
+          wx0=x0+sideM;wx1=x1-sideM;wy0=d.bottomM+apronM;wTop=top-headM;
           // Between the side walls (their front ends stay the only faces at the corners: no coplanar overlap).
           if(apronM>EPS)box(x0+wall,d.bottomM,d.widthM-2*wall,apronM,wall,-wall/2,wallSurface,`${label}/front-apron`);
-          if(sideM>wall+EPS)for(const [x,side] of [[x0+wall,'left'],[x1-sideM,'right']] as const)box(x,wy0,sideM-wall,top-wy0,wall,-wall/2,wallSurface,`${label}/front-${side}`);
+          if(sideM>wall+EPS)for(const [x,side] of [[x0+wall,'left'],[x1-sideM,'right']] as const)box(x,wy0,sideM-wall,wTop-wy0,wall,-wall/2,wallSurface,`${label}/front-${side}`);
+          if(headM>EPS)box(x0+wall,wTop,d.widthM-2*wall,headM,wall,-wall/2,wallSurface,`${label}/front-head`);
         }
-        const ww=wx1-wx0,wh=top-wy0;
+        const ww=wx1-wx0,wh=wTop-wy0;
         box(wx0,wy0,t,wh,.04,.03,'trim',`${label}/frame-left`);
         box(wx1-t,wy0,t,wh,.04,.03,'trim',`${label}/frame-right`);
         box(wx0,wy0,ww,t,.04,.03,'trim',`${label}/frame-bottom`);
-        box(wx0,top-t,ww,t,.04,.03,'trim',`${label}/frame-top`);
+        box(wx0,wTop-t,ww,t,.04,.03,'trim',`${label}/frame-top`);
         box(wx0+t,wy0+t,ww-2*t,wh-2*t,.03,.065,'glass',`${label}/pane`);
         // Bars 4.2 cm over the pane, not 3 cm: 3 cm is the audit's band that bleeds through at distance (geometryAudit
         // zTightTol); a tall two-light dormer's bar was 0.1 m2 of it (Gorontalostraat 25-45, 2026-10-17).
@@ -993,7 +994,7 @@ export function compileCanalHouseRecipe(recipe: CanalHouseRecipe): CompiledCanal
       for(const o of read(elevation.ornaments,`${elevation.id}/ornaments`)){
         positive(o.depthM);if(o.depthM>.3||!o.id.trim()||ids.has(o.id))throw new Error('Invalid facade ornament');ids.add(o.id);
         if(o.profile.length<3||Math.abs(area(o.profile))<EPS||o.profile.some(([x,y])=>!Number.isFinite(x)||!Number.isFinite(y)||x<0||x>length+EPS||y<0))throw new Error('Ornament escapes its facade');
-        if(o.fill!==undefined&&!['trim','wall','stone','accent','shop'].includes(o.fill))throw new Error('Unsupported ornament fill');
+        if(o.fill!==undefined&&!['trim','wall','stone','accent','shade','shop'].includes(o.fill))throw new Error('Unsupported ornament fill');
         if(o.fill){const s=new T.Shape(o.profile.map(([x,y])=>new T.Vector2(x,y)));const g=new T.ExtrudeGeometry(s,{depth:o.depthM,bevelEnabled:false});g.translate(0,0,.09);add(g,o.fill,`ornament/${o.id}/field`,facade);}
         if(o.rimWidthM!==undefined){positive(o.rimWidthM);for(let i=0;i<o.profile.length;i++){
           const [x,y]=o.profile[i],[xx,yy]=o.profile[(i+1)%o.profile.length],distance=Math.hypot(xx-x,yy-y);if(distance<EPS)continue;

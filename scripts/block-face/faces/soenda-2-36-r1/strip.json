@@ -1,0 +1,265 @@
+{
+ "face": "soenda-2-36-r1",
+ "image": "staging/block-face/soenda-2-36-r1/strip.jpg",
+ "pixelsPerMetre": 40,
+ "width": 1342,
+ "height": 718,
+ "groundNAP": 0.643,
+ "heightM": 17.96,
+ "frame": {
+  "midRD": [
+   124446.10587500001,
+   486438.5229166667
+  ],
+  "uRD": [
+   -0.010580497472150573,
+   0.9999440249700189
+  ],
+  "nRD": [
+   0.9999440249700189,
+   0.010580497472150573
+  ]
+ },
+ "x0M": -16.96,
+ "x1M": 16.59,
+ "date": "2019-12-18",
+ "coverage": 1,
+ "spans": [
+  {
+   "pandId": "0363100012150368",
+   "x0M": -16.96,
+   "x1M": -10.96,
+   "px": [
+    0,
+    240
+   ],
+   "date": "2019-12-18",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "TMX7316010203-001524_pano_0000_000094",
+     "timestamp": "2019-12-18T09:35:32.239760Z",
+     "distanceM": 6.8,
+     "obliquityDeg": 11.2,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-001524_pano_0000_000093",
+     "timestamp": "2019-12-18T09:35:31.454790Z",
+     "distanceM": 7.8,
+     "obliquityDeg": 30.9,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-001524_pano_0000_000095",
+     "timestamp": "2019-12-18T09:35:33.019920Z",
+     "distanceM": 9.4,
+     "obliquityDeg": 44.9,
+     "missingFraction": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012069113",
+   "x0M": -10.96,
+   "x1M": -5.46,
+   "px": [
+    240,
+    460
+   ],
+   "date": "2019-12-18",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "TMX7316010203-001524_pano_0000_000095",
+     "timestamp": "2019-12-18T09:35:33.019920Z",
+     "distanceM": 6.7,
+     "obliquityDeg": 7.7,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-001524_pano_0000_000094",
+     "timestamp": "2019-12-18T09:35:32.239760Z",
+     "distanceM": 8,
+     "obliquityDeg": 33.6,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-001524_pano_0000_000096",
+     "timestamp": "2019-12-18T09:35:33.789780Z",
+     "distanceM": 9,
+     "obliquityDeg": 43.5,
+     "missingFraction": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012062527",
+   "x0M": -5.46,
+   "x1M": 0.04,
+   "px": [
+    460,
+    680
+   ],
+   "date": "2019-12-18",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "TMX7316010203-001524_pano_0000_000096",
+     "timestamp": "2019-12-18T09:35:33.789780Z",
+     "distanceM": 6.6,
+     "obliquityDeg": 6.3,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-001524_pano_0000_000095",
+     "timestamp": "2019-12-18T09:35:33.019920Z",
+     "distanceM": 8.1,
+     "obliquityDeg": 34.6,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-001524_pano_0000_000097",
+     "timestamp": "2019-12-18T09:35:34.584680Z",
+     "distanceM": 8.8,
+     "obliquityDeg": 43.4,
+     "missingFraction": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012081321",
+   "x0M": 0.04,
+   "x1M": 5.54,
+   "px": [
+    680,
+    900
+   ],
+   "date": "2019-12-18",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "TMX7316010203-001524_pano_0000_000097",
+     "timestamp": "2019-12-18T09:35:34.584680Z",
+     "distanceM": 6.4,
+     "obliquityDeg": 4.8,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-001524_pano_0000_000096",
+     "timestamp": "2019-12-18T09:35:33.789780Z",
+     "distanceM": 8.1,
+     "obliquityDeg": 36.1,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-001524_pano_0000_000098",
+     "timestamp": "2019-12-18T09:35:35.474770Z",
+     "distanceM": 8.6,
+     "obliquityDeg": 43.4,
+     "missingFraction": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012107809",
+   "x0M": 5.54,
+   "x1M": 11.04,
+   "px": [
+    900,
+    1120
+   ],
+   "date": "2019-12-18",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "TMX7316010203-001524_pano_0000_000098",
+     "timestamp": "2019-12-18T09:35:35.474770Z",
+     "distanceM": 6.2,
+     "obliquityDeg": 3.7,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-001524_pano_0000_000097",
+     "timestamp": "2019-12-18T09:35:34.584680Z",
+     "distanceM": 8.1,
+     "obliquityDeg": 37.8,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-001524_pano_0000_000099",
+     "timestamp": "2019-12-18T09:35:36.454690Z",
+     "distanceM": 8.6,
+     "obliquityDeg": 42.7,
+     "missingFraction": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012111204",
+   "x0M": 11.04,
+   "x1M": 16.59,
+   "px": [
+    1120,
+    1342
+   ],
+   "date": "2019-12-18",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "TMX7316010203-001524_pano_0000_000099",
+     "timestamp": "2019-12-18T09:35:36.454690Z",
+     "distanceM": 6.3,
+     "obliquityDeg": 2.6,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-001524_pano_0000_000098",
+     "timestamp": "2019-12-18T09:35:35.474770Z",
+     "distanceM": 8.1,
+     "obliquityDeg": 39.4,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-001524_pano_0000_000100",
+     "timestamp": "2019-12-18T09:35:37.424690Z",
+     "distanceM": 8.5,
+     "obliquityDeg": 41.8,
+     "missingFraction": 0
+    }
+   ]
+  }
+ ],
+ "candidatesByDate": {
+  "2022-10-07": 16,
+  "2019-06-03": 15,
+  "2016-05-12": 16,
+  "2017-04-04": 15,
+  "2020-09-08": 16,
+  "2020-05-07": 16,
+  "2018-05-23": 16,
+  "2025-09-26": 16,
+  "2019-12-18": 16,
+  "2024-09-16": 16,
+  "2018-12-11": 16,
+  "2021-05-12": 16,
+  "2023-01-02": 0,
+  "2022-08-31": 0,
+  "2016-05-17": 0,
+  "2021-05-28": 0,
+  "2017-03-29": 0,
+  "2016-05-11": 0,
+  "2018-05-24": 0,
+  "2019-05-23": 0,
+  "2022-01-12": 0
+ },
+ "description": "Rectified orthographic elevation of the whole face on the frontage planes: x = chunk-frame metres along the face (left→right seen from the street) from x0M, y = metres above the shared ground (groundNAP) from the bottom; grey = no panorama data. Per-pand spans list the panoramas median-fused for that frontage.",
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (CC BY 4.0; faces and number plates blurred by the publisher)",
+ "croppedFrom": {
+  "face": "soenda-2-36",
+  "px": [
+   480,
+   1822
+  ]
+ }
+}
