@@ -22,7 +22,7 @@ import { lngLatToRd, rdToLngLat } from '../../src/canalRecall/facade/rdNew.ts';
 import { rasterise, type RasterAtlas, type RasterImage, type RasterMesh, type LitShading, type Vec3 } from '../../src/canalRecall/houseSpec/softRaster.ts';
 import { previewVerdict, storeyLines, blurRgb, PRE_BLUR_PX, type PreviewVerdict } from '../../src/canalRecall/houseSpec/previewVerdict.ts';
 import { cityLitShading } from '../../src/canalRecall/houseSpec/previewLight.ts';
-import { measureFacade, type FacadeImage, type FacadeMeasurement } from '../../src/canalRecall/buildingRecipe/measureFacade.ts';
+import { measureFacade, openingSplitFromArgs, type FacadeImage, type FacadeMeasurement } from '../../src/canalRecall/buildingRecipe/measureFacade.ts';
 import { gameColour } from '../../src/canalRecall/buildingRecipe/likeness.ts';
 import { renderElevation } from '../../src/canalRecall/landmarks/facadeCompare.ts';
 import { pickWall } from '../pand-reference/select.ts';
@@ -61,6 +61,9 @@ Flags
                       sun and sky of the ride's sunny rig, wall gain, sky tint on glazing)
   --no-wall-vs-trim   measure the wall as before lane H2c: a pale thin band may be picked as the wall on a dark front
                       (default: wallTrim.ts, the dark body outweighing the bands is the wall)
+  --no-opening-split  measure as before lane H2d: every storey of a dark front fills into one frame, the wall colour is the
+                      median of the body cluster with the most interior cells (default: each opening is its glass plus
+                      a one-cell frame, lintels and sills are trim, the wall is the median over the picked wall cluster)
   --glb-lit           draw a GLB route's front through the rig's Lambert too (default: flat game colours,
                       which matched the ride frame; the Lambert drew an installed wall 0.11 L dark)
   --whole-tile        build the chunk from every building of the pand's z14 tile, exactly as the runtime groups
@@ -103,7 +106,7 @@ export function parseArgs(argv: string[]): Args {
       case '--threeq': a.threeq = true; break;
       case '--unlit': a.unlit = true; break;
       case '--glb-lit': a.glbLit = true; break;
-      case '--no-wall-vs-trim': break; // read by measureBlurred
+      case '--no-wall-vs-trim': case '--no-opening-split': break; // read by measureBlurred
       case '--route': {
         const r = value();
         if (r !== 'generic' && r !== 'spec' && r !== 'installed') throw new Error(`--route ${r}: generic, spec or installed`);
@@ -312,7 +315,7 @@ const timer = (): Timer => { let t0 = performance.now(); const t: Record<string,
 
 /** measureFacade after the shared pre-blur (previewVerdict.ts PRE_BLUR_PX), so render and photo measure alike. */
 export function measureBlurred(image: FacadeImage, box: Parameters<typeof measureFacade>[0]['box'], lines: number[]): FacadeMeasurement {
-  return measureFacade({ image: { ...image, rgb: blurRgb(image.rgb, image.width, image.height, PRE_BLUR_PX) }, box, lines, ...(process.argv.includes('--no-wall-vs-trim') ? { wallVsTrim: false } : {}) });
+  return measureFacade({ image: { ...image, rgb: blurRgb(image.rgb, image.width, image.height, PRE_BLUR_PX) }, box, lines, ...(process.argv.includes('--no-wall-vs-trim') ? { wallVsTrim: false } : {}), ...openingSplitFromArgs(process.argv) });
 }
 
 // ---------------------------------------------------------------------------------------------------------------

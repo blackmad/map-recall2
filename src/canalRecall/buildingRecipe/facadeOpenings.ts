@@ -24,7 +24,7 @@
  * the photo cannot tell window frames from bands there. Pure: no I/O.
  */
 export const OPENING = {frameShare: 0.55, frameReachCells: 3, secondMaterialM2: 4, holeM2: 0.3, bandLenM: 2, bandMaxM: 0.5, bandTouch: 0.7,
-  stripMaxWM: 0.3, stripMinHM: 2, speckM2: 0.05, holeMaxM2: 3, stackGapM: 0.75, sideGapM: 0.25, accessoryM: 1.5, accessoryRow: 0.5, furnitureMaxWM: 4, frameEdge: 3, surroundM: 0.3, hullMaxWM: 6, hullMaxHM: 4.5, hullFill: 0.55, abstainRange: 0.1, fullRow: 0.8, rowGapCells: 2, fullRowsMax: 0.35} as const;
+  stripMaxWM: 0.3, stripMinHM: 2, speckM2: 0.05, holeMaxM2: 3, stackGapM: 0.75, sideGapM: 0.25, accessoryM: 1.5, accessoryRow: 0.5, furnitureMaxWM: 4, frameEdge: 3, surroundM: 0.3, hullMaxWM: 6, hullMaxHM: 4.5, hullFill: 0.55, abstainRange: 0.1, fullRow: 0.8, rowGapCells: 2, fullRowsMax: 0.35, groupDE: 12, coreMarginCells: 1, coreMinM2: 0.25, coreFill: 0.6, paneSolid: 0.35, coreStripM: 0.5} as const;
 
 /** Mask values: the cluster mask's wall / dark / trim plus `frame` (a light or wall-coloured part of an opening). */
 export const OMASK = {wall: 0, dark: 1, trim: 2, frame: 3, unusable: 255} as const;
@@ -46,6 +46,12 @@ export interface OpeningInput {
   floorRows?: number[];
   /** rows of the fit's storey lines only: window furniture (railings) never extends an opening across them */
   fitFloorRows?: number[];
+  /** wall clusters within `OPENING.groupDE` of each other are one material for the frame-like ring test (H2d); false = the pre-H2d per-cluster test */
+  groupFrames?: boolean;
+  /** an opening piece is its dark glass core plus a one-cell frame when the rest of it is trim (H2d); default off */
+  coreTrim?: boolean;
+  /** per cluster: share of cells with all 8 neighbours in it; a pale cluster at or over `OPENING.paneSolid` is a pane, not trim */
+  clusterSolid?: number[];
   /** per cell: the horizontal lightness step |L(i+1) - L(i-1)| (vertical edges), for frame continuation */
   edgeX?: Float32Array;
   /** the fit storey of each row (0 = ground): openings are never stacked across the ground storey's top (a shop fascia never
@@ -151,13 +157,23 @@ export function classifyOpenings(a: OpeningInput): OpeningResult {
     if (m0[k] !== OMASK.wall || label[k] < 0) continue;
     tot[label[k]]++; if (nb4(k).some(notWall0)) touch[label[k]]++;
   }
-  const ratio = touch.map((t, c) => (tot[c] ? t / tot[c] : 1));
+  // One brick in two lightnesses (a dark front's wall splits into a body cluster and a lighter one that is dithered with
+  // it and so touches every opening) is one material: its ring ratio is the group's (`groupFrames`, H2d). Without
+  // `centres`, or with `groupFrames: false`, every cluster is its own group (the pre-H2d reading).
+  const fgroup = wallSet.map((_, c) => c);
+  if (a.centres && a.groupFrames === true) for (let c = 0; c < nC; c++) for (let d = 0; d < c; d++) {
+    const x = a.centres[c], y = a.centres[d];
+    if (wallSet[c] && wallSet[d] && Math.hypot(x[0] - y[0], x[1] - y[1], x[2] - y[2]) < OPENING.groupDE) { const g = fgroup[d]; for (let e = 0; e < nC; e++) if (fgroup[e] === fgroup[c]) fgroup[e] = g; }
+  }
+  const gTouch = new Array(nC).fill(0), gTot = new Array(nC).fill(0);
+  for (let c = 0; c < nC; c++) { gTouch[fgroup[c]] += touch[c]; gTot[fgroup[c]] += tot[c]; }
+  const ratio = touch.map((t, c) => (gTot[fgroup[c]] ? gTouch[fgroup[c]] / gTot[fgroup[c]] : 1));
   const body = wallSet.map((w, c) => w && tot[c] > 0);
   const frameLike = body.map((b, c) => b && ratio[c] >= OPENING.frameShare);
   if (body.some(Boolean) && body.every((b, c) => !b || frameLike[c])) {
-    // keep the least ringed wall cluster as the body
+    // keep the least ringed wall cluster (and its group) as the body
     let best = -1; body.forEach((b, c) => { if (b && (best < 0 || ratio[c] < ratio[best])) best = c; });
-    frameLike[best] = false;
+    body.forEach((b, c) => { if (b && fgroup[c] === fgroup[best]) frameLike[c] = false; });
   }
 
   // 2. second materials: thick, large single-cluster not-wall regions enclosing openings
@@ -287,15 +303,39 @@ export function classifyOpenings(a: OpeningInput): OpeningResult {
   const openings: OpeningResult['openings'] = [];
   const isOpen = (k: number) => cand[k] > 0 && (!band[k] || amb[k] === 1);
   const {list} = components(isOpen, cols, rows);
-  const filled = new Uint8Array(N);
+  const filled = new Uint8Array(N); let coreCut = 0;
   for (const comp of list) {
     const b = bbox(comp, cols), w = (b.x1 - b.x0 + 1) * cell, h = (b.y1 - b.y0 + 1) * cell;
     const strip = w <= OPENING.stripMaxWM + 1e-9 && h >= OPENING.stripMinHM;
     if (strip || cellsM2(comp.length) < OPENING.speckM2) { for (const k of comp) out[k] = cand[k] === 2 ? OMASK.wall : OMASK.trim; continue; }
     for (const k of comp) out[k] = m0[k] === OMASK.dark ? OMASK.dark : OMASK.frame;
     const pieces = hullPieces(comp, OPENING.hullMaxHM), hull = pieces.length > 0;
+    // 4a. surround trim (`coreTrim`, H2d): an opening piece whose glass (dark cells, and pale cells of a solid cluster: a
+    //     sky-lit pane) is one rectangle well inside it, the rest of the piece being thin pale trim (a lintel, a sill, an
+    //     eared surround, white frames), is that glass plus a one-cell frame: the trim outside it is trim, not glazing
+    //     (the whole piece was one opening before: 0.86 glazing on the Nassaukade fronts where the eye says 0.25).
+    //     A ragged component (a balcony's rails make it fail `compact`) is trimmed too, when it is window-sized.
+    const cb0 = bbox(comp, cols), windowSized = (cb0.x1 - cb0.x0 + 1) * cell <= OPENING.hullMaxWM && (cb0.y1 - cb0.y0 + 1) * cell <= OPENING.hullMaxHM;
+    const trimCands = a.coreTrim ? (hull ? pieces : windowSized ? [comp] : []) : [];
+    const trimmedBoxes = new Map<number[], ReturnType<typeof bbox>>();
+    for (const piece of trimCands) {
+      const paneLike = (k: number) => m0[k] === OMASK.dark || (m0[k] === OMASK.trim && label[k] >= 0 && (a.clusterSolid?.[label[k]] ?? 0) >= OPENING.paneSolid);
+      const pset = new Set(piece), core = components(k => pset.has(k) && paneLike(k), cols, rows).list.sort((p, q) => q.length - p.length)[0];
+      if (!core) continue;
+      const pbx = bbox(piece, cols), cb = bbox(core, cols);
+      const cw = cb.x1 - cb.x0 + 1, ch = cb.y1 - cb.y0 + 1, pw = pbx.x1 - pbx.x0 + 1, ph = pbx.y1 - pbx.y0 + 1;
+      // a side is cut only when what lies beyond the glass is a strip (a lintel, a sill, an ear of the surround: <= coreStripM): a
+      // pale upper sash of a muntined window is as wide as the glass and taller than a strip, so it is never cut
+      const margin = OPENING.coreMarginCells, strip = Math.round(OPENING.coreStripM / cell);
+      const cut = (lo: number, c: number) => (c - margin - lo) >= 1 && (c - margin - lo) <= strip;
+      const cutHi = (hi: number, c: number) => (hi - (c + margin)) >= 1 && (hi - (c + margin)) <= strip;
+      const x0 = cut(pbx.x0, cb.x0) ? cb.x0 - margin : pbx.x0, x1 = cutHi(pbx.x1, cb.x1) ? cb.x1 + margin : pbx.x1, y0 = cut(pbx.y0, cb.y0) ? cb.y0 - margin : pbx.y0, y1 = cutHi(pbx.y1, cb.y1) ? cb.y1 + margin : pbx.y1;
+      if (cellsM2(core.length) < OPENING.coreMinM2 || core.length / (cw * ch) < OPENING.coreFill || (x1 - x0 + 1) * (y1 - y0 + 1) >= pw * ph) continue;
+      for (const k of piece) { const x = k % cols, y = (k - x) / cols; if (x < x0 || x > x1 || y < y0 || y > y1) { out[k] = cand[k] === 2 ? OMASK.wall : OMASK.trim; } }
+      trimmedBoxes.set(piece, {x0, x1, y0, y1}); coreCut++;
+    }
     for (const piece of pieces) {
-      const pb = bbox(piece, cols);
+      const pb = trimmedBoxes.get(piece) ?? bbox(piece, cols);
       for (let y = pb.y0; y <= pb.y1; y++) for (let x = pb.x0; x <= pb.x1; x++) {
         const k = y * cols + x; if (!usable(k) || wall2[k] || isOpening(out[k])) continue;
         out[k] = OMASK.frame; filled[k] = 1;
@@ -459,7 +499,7 @@ export function classifyOpenings(a: OpeningInput): OpeningResult {
   //    an inside of other clusters, wears a stone or rendered surround: the ring is trim, the opening is what it frames.
   //    A frame (one cell, a thin rail) stays part of the opening.
   const depthMin = Math.round(OPENING.surroundM / cell);
-  let surrounds = 0;
+  let surrounds = coreCut; // openings whose surround or lintel strip step 4a already cut count here too
   for (const comp of components(k => isOpening(out[k]), cols, rows).list) {
     if (cellsM2(comp.length) < 0.5) continue;
     const inComp = new Uint8Array(N); for (const k of comp) inComp[k] = 1;
