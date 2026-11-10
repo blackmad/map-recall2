@@ -79,7 +79,7 @@ export class HitIndex {
 }
 
 /** Layers a camera above can see a road through or instead of (vertical-only layers are left out: bollards, furniture, hedges). */
-const ALL_LAYERS: readonly GroundLayer[] = ['land', 'park', 'wood', 'square', 'parking', 'lawn', 'bed', 'shrub', 'bark', 'sand', 'parkGravel', 'parkPath', 'pond', 'garden', 'asphalt', 'klinker', 'brick', 'cycle', 'paving', 'gravel', 'kerb', 'paint', 'tram', 'water', 'quay', 'deckBody', 'deckTop', 'ballast', 'track'];
+const ALL_LAYERS: readonly GroundLayer[] = ['land', 'park', 'wood', 'square', 'parking', 'lawn', 'bed', 'shrub', 'bark', 'sand', 'parkGravel', 'parkPath', 'pond', 'garden', 'asphalt', 'klinker', 'brick', 'cycle', 'paving', 'gravel', 'kerb', 'paint', 'tram', 'water', 'quay', 'deckBody', 'deckTop', 'ballast', 'track', 'bare'];
 
 /** One probe point. */
 export interface Sample { s: number; lateral: number; x: number; y: number; top: GroundLayer | null; topZ: number; cls: TopClass; cause: GapCause | null; ride: number; /** Second visible hit is a different layer within 5 mm at the same draw rank: the GPU picks per pixel. */ tie: boolean; deck: string | null; /** The road survey under the point (roads-v1): a deck-level polygon (h ≥ 1), a ground one, or none. */ survey: 'deck' | 'ground' | null }

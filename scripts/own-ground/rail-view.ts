@@ -13,7 +13,7 @@ import { RAIL_TONES, SLEEPER_TILE_M } from '../../src/canalRecall/ownGround/rail
 import { railCells } from './probe-rails.ts';
 
 const C: Partial<Record<GroundLayer, readonly number[]>> = {
-  land: [222, 211, 190], park: [126, 170, 96], wood: [96, 140, 76], square: [214, 206, 192], parking: [150, 150, 154], garden: [140, 168, 110],
+  land: [222, 211, 190], park: [126, 170, 96], wood: [96, 140, 76], square: [214, 206, 192], parking: [150, 150, 154], garden: [140, 168, 110], bare: [190, 172, 146],
   asphalt: [86, 88, 92], klinker: [150, 104, 88], brick: [188, 176, 166], cycle: [196, 88, 80], paving: [206, 200, 190], gravel: [196, 184, 158],
   kerb: [235, 230, 220], paint: [250, 250, 250], water: [70, 130, 190], quay: [150, 140, 128], deckBody: [160, 155, 146], deckTop: [180, 172, 160],
   tram: [60, 60, 64], bollard: [120, 40, 30], lawn: [126, 176, 92], bed: [140, 118, 90], shrub: [86, 130, 70], bark: [120, 90, 70], sand: [226, 210, 166],
