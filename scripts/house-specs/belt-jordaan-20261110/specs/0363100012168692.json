@@ -1,0 +1,213 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012168692",
+ "address": "Egelantiersgracht 93-95",
+ "design": {
+  "fronts": [
+   {
+    "id": "front0",
+    "basement": "none",
+    "cornice": "simple",
+    "windows": "sash",
+    "windowSurround": "full-frame",
+    "hoist": false,
+    "street": "Egelantiersgracht",
+    "gable": "cornice",
+    "storeys": 4,
+    "bays": 4,
+    "storeyHeights": [
+     4.4,
+     2.6,
+     2.6,
+     2.6
+    ],
+    "doorBay": 2,
+    "shopfront": {
+     "colour": "#ece9e0",
+     "fascia": true,
+     "glazing": "transom",
+     "entrance": "right",
+     "evidence": "strip 2023-03-13: a white café pui with a lettered fascia on 95"
+    }
+   }
+  ],
+  "roof": {
+   "material": "red-tile",
+   "source": "front",
+   "evidence": "strip: the roof behind the crown follows the front",
+   "form": "attic",
+   "rise": 0.6
+  },
+  "palette": {
+   "frame": "white-painted",
+   "door": "#26302a",
+   "stone": "#ebe8df",
+   "cornice": "#ebe8df",
+   "stoneMaterial": "painted",
+   "brick": "#3b3734",
+   "wallMaterial": "brick"
+  }
+ },
+ "provenance": {
+  "fronts/0/id": {
+   "source": "author",
+   "confidence": 0.55,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): two houses in one pand: 93 (left) three storeys with a white cornice ~10.3 m and a dormer on a tile roof; 95 (right, the corner) four storeys at 5.0-6.5, 7.4-8.9, 9.8-11.4 m under a plain white cornice/parapet ~12.5-13.2 m, with a white café pui and fascia (0-4.3 m); white-framed windows; dark brown brick #3d3a35 / #3a3432",
+   "at": "2023-03-13"
+  },
+  "fronts/0/basement": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): two houses in one pand: 93 (left) three storeys with a white cornice ~10.3 m and a dormer on a tile roof; 95 (right, the corner) four storeys at 5.0-6.5, 7.4-8.9, 9.8-11.4 m under a plain white cornice/parapet ~12.5-13.2 m, with a white café pui and fascia (0-4.3 m); white-framed windows; dark brown brick #3d3a35 / #3a3432 (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/cornice": {
+   "source": "author",
+   "confidence": 0.55,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): two houses in one pand: 93 (left) three storeys with a white cornice ~10.3 m and a dormer on a tile roof; 95 (right, the corner) four storeys at 5.0-6.5, 7.4-8.9, 9.8-11.4 m under a plain white cornice/parapet ~12.5-13.2 m, with a white café pui and fascia (0-4.3 m); white-framed windows; dark brown brick #3d3a35 / #3a3432",
+   "at": "2023-03-13"
+  },
+  "fronts/0/windows": {
+   "source": "author",
+   "confidence": 0.55,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): two houses in one pand: 93 (left) three storeys with a white cornice ~10.3 m and a dormer on a tile roof; 95 (right, the corner) four storeys at 5.0-6.5, 7.4-8.9, 9.8-11.4 m under a plain white cornice/parapet ~12.5-13.2 m, with a white café pui and fascia (0-4.3 m); white-framed windows; dark brown brick #3d3a35 / #3a3432",
+   "at": "2023-03-13"
+  },
+  "fronts/0/windowSurround": {
+   "source": "author",
+   "confidence": 0.55,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): two houses in one pand: 93 (left) three storeys with a white cornice ~10.3 m and a dormer on a tile roof; 95 (right, the corner) four storeys at 5.0-6.5, 7.4-8.9, 9.8-11.4 m under a plain white cornice/parapet ~12.5-13.2 m, with a white café pui and fascia (0-4.3 m); white-framed windows; dark brown brick #3d3a35 / #3a3432",
+   "at": "2023-03-13"
+  },
+  "fronts/0/hoist": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): two houses in one pand: 93 (left) three storeys with a white cornice ~10.3 m and a dormer on a tile roof; 95 (right, the corner) four storeys at 5.0-6.5, 7.4-8.9, 9.8-11.4 m under a plain white cornice/parapet ~12.5-13.2 m, with a white café pui and fascia (0-4.3 m); white-framed windows; dark brown brick #3d3a35 / #3a3432 (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/street": {
+   "source": "author",
+   "confidence": 0.55,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): two houses in one pand: 93 (left) three storeys with a white cornice ~10.3 m and a dormer on a tile roof; 95 (right, the corner) four storeys at 5.0-6.5, 7.4-8.9, 9.8-11.4 m under a plain white cornice/parapet ~12.5-13.2 m, with a white café pui and fascia (0-4.3 m); white-framed windows; dark brown brick #3d3a35 / #3a3432",
+   "at": "2023-03-13"
+  },
+  "fronts/0/gable": {
+   "source": "author",
+   "confidence": 0.55,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): two houses in one pand: 93 (left) three storeys with a white cornice ~10.3 m and a dormer on a tile roof; 95 (right, the corner) four storeys at 5.0-6.5, 7.4-8.9, 9.8-11.4 m under a plain white cornice/parapet ~12.5-13.2 m, with a white café pui and fascia (0-4.3 m); white-framed windows; dark brown brick #3d3a35 / #3a3432",
+   "at": "2023-03-13"
+  },
+  "fronts/0/storeys": {
+   "source": "author",
+   "confidence": 0.55,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): two houses in one pand: 93 (left) three storeys with a white cornice ~10.3 m and a dormer on a tile roof; 95 (right, the corner) four storeys at 5.0-6.5, 7.4-8.9, 9.8-11.4 m under a plain white cornice/parapet ~12.5-13.2 m, with a white café pui and fascia (0-4.3 m); white-framed windows; dark brown brick #3d3a35 / #3a3432",
+   "at": "2023-03-13"
+  },
+  "fronts/0/bays": {
+   "source": "author",
+   "confidence": 0.55,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): two houses in one pand: 93 (left) three storeys with a white cornice ~10.3 m and a dormer on a tile roof; 95 (right, the corner) four storeys at 5.0-6.5, 7.4-8.9, 9.8-11.4 m under a plain white cornice/parapet ~12.5-13.2 m, with a white café pui and fascia (0-4.3 m); white-framed windows; dark brown brick #3d3a35 / #3a3432",
+   "at": "2023-03-13"
+  },
+  "fronts/0/storeyHeights": {
+   "source": "author",
+   "confidence": 0.55,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): two houses in one pand: 93 (left) three storeys with a white cornice ~10.3 m and a dormer on a tile roof; 95 (right, the corner) four storeys at 5.0-6.5, 7.4-8.9, 9.8-11.4 m under a plain white cornice/parapet ~12.5-13.2 m, with a white café pui and fascia (0-4.3 m); white-framed windows; dark brown brick #3d3a35 / #3a3432",
+   "at": "2023-03-13"
+  },
+  "fronts/0/doorBay": {
+   "source": "author",
+   "confidence": 0.55,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): two houses in one pand: 93 (left) three storeys with a white cornice ~10.3 m and a dormer on a tile roof; 95 (right, the corner) four storeys at 5.0-6.5, 7.4-8.9, 9.8-11.4 m under a plain white cornice/parapet ~12.5-13.2 m, with a white café pui and fascia (0-4.3 m); white-framed windows; dark brown brick #3d3a35 / #3a3432",
+   "at": "2023-03-13"
+  },
+  "fronts/0/shopfront": {
+   "source": "author",
+   "confidence": 0.55,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): two houses in one pand: 93 (left) three storeys with a white cornice ~10.3 m and a dormer on a tile roof; 95 (right, the corner) four storeys at 5.0-6.5, 7.4-8.9, 9.8-11.4 m under a plain white cornice/parapet ~12.5-13.2 m, with a white café pui and fascia (0-4.3 m); white-framed windows; dark brown brick #3d3a35 / #3a3432",
+   "at": "2023-03-13"
+  },
+  "roof/material": {
+   "source": "author",
+   "confidence": 0.55,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): two houses in one pand: 93 (left) three storeys with a white cornice ~10.3 m and a dormer on a tile roof; 95 (right, the corner) four storeys at 5.0-6.5, 7.4-8.9, 9.8-11.4 m under a plain white cornice/parapet ~12.5-13.2 m, with a white café pui and fascia (0-4.3 m); white-framed windows; dark brown brick #3d3a35 / #3a3432",
+   "at": "2023-03-13"
+  },
+  "roof/source": {
+   "source": "author",
+   "confidence": 0.55,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): two houses in one pand: 93 (left) three storeys with a white cornice ~10.3 m and a dormer on a tile roof; 95 (right, the corner) four storeys at 5.0-6.5, 7.4-8.9, 9.8-11.4 m under a plain white cornice/parapet ~12.5-13.2 m, with a white café pui and fascia (0-4.3 m); white-framed windows; dark brown brick #3d3a35 / #3a3432",
+   "at": "2023-03-13"
+  },
+  "roof/evidence": {
+   "source": "author",
+   "confidence": 0.55,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): two houses in one pand: 93 (left) three storeys with a white cornice ~10.3 m and a dormer on a tile roof; 95 (right, the corner) four storeys at 5.0-6.5, 7.4-8.9, 9.8-11.4 m under a plain white cornice/parapet ~12.5-13.2 m, with a white café pui and fascia (0-4.3 m); white-framed windows; dark brown brick #3d3a35 / #3a3432",
+   "at": "2023-03-13"
+  },
+  "roof/form": {
+   "source": "author",
+   "confidence": 0.55,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): two houses in one pand: 93 (left) three storeys with a white cornice ~10.3 m and a dormer on a tile roof; 95 (right, the corner) four storeys at 5.0-6.5, 7.4-8.9, 9.8-11.4 m under a plain white cornice/parapet ~12.5-13.2 m, with a white café pui and fascia (0-4.3 m); white-framed windows; dark brown brick #3d3a35 / #3a3432",
+   "at": "2023-03-13"
+  },
+  "roof/rise": {
+   "source": "author",
+   "confidence": 0.55,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): two houses in one pand: 93 (left) three storeys with a white cornice ~10.3 m and a dormer on a tile roof; 95 (right, the corner) four storeys at 5.0-6.5, 7.4-8.9, 9.8-11.4 m under a plain white cornice/parapet ~12.5-13.2 m, with a white café pui and fascia (0-4.3 m); white-framed windows; dark brown brick #3d3a35 / #3a3432",
+   "at": "2023-03-13"
+  },
+  "palette/frame": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): two houses in one pand: 93 (left) three storeys with a white cornice ~10.3 m and a dormer on a tile roof; 95 (right, the corner) four storeys at 5.0-6.5, 7.4-8.9, 9.8-11.4 m under a plain white cornice/parapet ~12.5-13.2 m, with a white café pui and fascia (0-4.3 m); white-framed windows; dark brown brick #3d3a35 / #3a3432 (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/door": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): two houses in one pand: 93 (left) three storeys with a white cornice ~10.3 m and a dormer on a tile roof; 95 (right, the corner) four storeys at 5.0-6.5, 7.4-8.9, 9.8-11.4 m under a plain white cornice/parapet ~12.5-13.2 m, with a white café pui and fascia (0-4.3 m); white-framed windows; dark brown brick #3d3a35 / #3a3432 (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/stone": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): two houses in one pand: 93 (left) three storeys with a white cornice ~10.3 m and a dormer on a tile roof; 95 (right, the corner) four storeys at 5.0-6.5, 7.4-8.9, 9.8-11.4 m under a plain white cornice/parapet ~12.5-13.2 m, with a white café pui and fascia (0-4.3 m); white-framed windows; dark brown brick #3d3a35 / #3a3432 (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/cornice": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): two houses in one pand: 93 (left) three storeys with a white cornice ~10.3 m and a dormer on a tile roof; 95 (right, the corner) four storeys at 5.0-6.5, 7.4-8.9, 9.8-11.4 m under a plain white cornice/parapet ~12.5-13.2 m, with a white café pui and fascia (0-4.3 m); white-framed windows; dark brown brick #3d3a35 / #3a3432 (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/stoneMaterial": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): two houses in one pand: 93 (left) three storeys with a white cornice ~10.3 m and a dormer on a tile roof; 95 (right, the corner) four storeys at 5.0-6.5, 7.4-8.9, 9.8-11.4 m under a plain white cornice/parapet ~12.5-13.2 m, with a white café pui and fascia (0-4.3 m); white-framed windows; dark brown brick #3d3a35 / #3a3432 (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/brick": {
+   "source": "author",
+   "confidence": 0.55,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): two houses in one pand: 93 (left) three storeys with a white cornice ~10.3 m and a dormer on a tile roof; 95 (right, the corner) four storeys at 5.0-6.5, 7.4-8.9, 9.8-11.4 m under a plain white cornice/parapet ~12.5-13.2 m, with a white café pui and fascia (0-4.3 m); white-framed windows; dark brown brick #3d3a35 / #3a3432",
+   "at": "2023-03-13"
+  },
+  "palette/wallMaterial": {
+   "source": "author",
+   "confidence": 0.55,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): two houses in one pand: 93 (left) three storeys with a white cornice ~10.3 m and a dormer on a tile roof; 95 (right, the corner) four storeys at 5.0-6.5, 7.4-8.9, 9.8-11.4 m under a plain white cornice/parapet ~12.5-13.2 m, with a white café pui and fascia (0-4.3 m); white-framed windows; dark brown brick #3d3a35 / #3a3432",
+   "at": "2023-03-13"
+  }
+ },
+ "schemaLimits": [
+  {
+   "component": "front",
+   "what": "93 is a storey lower with its own cornice and dormer; drawn as one front at the height of 95"
+  },
+  {
+   "component": "shop sign",
+   "what": "the fascia lettering is not drawn"
+  }
+ ]
+}

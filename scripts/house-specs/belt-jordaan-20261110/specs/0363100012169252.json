@@ -1,0 +1,235 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012169252",
+ "address": "Egelantiersgracht 3",
+ "design": {
+  "fronts": [
+   {
+    "id": "front0",
+    "basement": "none",
+    "cornice": "simple",
+    "windows": "sash",
+    "windowSurround": "keystone",
+    "hoist": false,
+    "street": "Egelantiersgracht",
+    "gable": "cornice",
+    "storeys": 5,
+    "bays": 4,
+    "storeyHeights": [
+     4.7,
+     2.5,
+     2.4,
+     2.4,
+     2.3
+    ],
+    "doorBay": 3,
+    "dormers": 1,
+    "dormerStyle": "pediment",
+    "dormerBody": "stone",
+    "shopfront": {
+     "colour": "#ece9e0",
+     "fascia": true,
+     "glazing": "transom",
+     "entrance": "right",
+     "evidence": "strip 2023-03-13: a white shop pui with a lettered fascia"
+    }
+   }
+  ],
+  "roof": {
+   "material": "slate",
+   "source": "front",
+   "evidence": "strip: the roof behind the crown follows the front",
+   "form": "attic",
+   "rise": 0.5
+  },
+  "palette": {
+   "frame": "white-painted",
+   "door": "#26302a",
+   "stone": "#ebe8df",
+   "cornice": "#ebe8df",
+   "stoneMaterial": "painted",
+   "brick": "#504442",
+   "wallMaterial": "brick"
+  }
+ },
+ "provenance": {
+  "fronts/0/id": {
+   "source": "author",
+   "confidence": 0.65,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): a wide corner front of four axes: a white shop pui 0-4.7 m with a fascia (entrance right); storeys at 5.4-6.8, 7.9-9.6, 10.0-11.6 and 12.2-13.7 m, the upper windows under white arches with keystones; a plain white cornice ~14.3 m with one pediment dormer; red-brown brick #504442",
+   "at": "2023-03-13"
+  },
+  "fronts/0/basement": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): a wide corner front of four axes: a white shop pui 0-4.7 m with a fascia (entrance right); storeys at 5.4-6.8, 7.9-9.6, 10.0-11.6 and 12.2-13.7 m, the upper windows under white arches with keystones; a plain white cornice ~14.3 m with one pediment dormer; red-brown brick #504442 (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/cornice": {
+   "source": "author",
+   "confidence": 0.65,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): a wide corner front of four axes: a white shop pui 0-4.7 m with a fascia (entrance right); storeys at 5.4-6.8, 7.9-9.6, 10.0-11.6 and 12.2-13.7 m, the upper windows under white arches with keystones; a plain white cornice ~14.3 m with one pediment dormer; red-brown brick #504442",
+   "at": "2023-03-13"
+  },
+  "fronts/0/windows": {
+   "source": "author",
+   "confidence": 0.65,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): a wide corner front of four axes: a white shop pui 0-4.7 m with a fascia (entrance right); storeys at 5.4-6.8, 7.9-9.6, 10.0-11.6 and 12.2-13.7 m, the upper windows under white arches with keystones; a plain white cornice ~14.3 m with one pediment dormer; red-brown brick #504442",
+   "at": "2023-03-13"
+  },
+  "fronts/0/windowSurround": {
+   "source": "author",
+   "confidence": 0.65,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): a wide corner front of four axes: a white shop pui 0-4.7 m with a fascia (entrance right); storeys at 5.4-6.8, 7.9-9.6, 10.0-11.6 and 12.2-13.7 m, the upper windows under white arches with keystones; a plain white cornice ~14.3 m with one pediment dormer; red-brown brick #504442",
+   "at": "2023-03-13"
+  },
+  "fronts/0/hoist": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): a wide corner front of four axes: a white shop pui 0-4.7 m with a fascia (entrance right); storeys at 5.4-6.8, 7.9-9.6, 10.0-11.6 and 12.2-13.7 m, the upper windows under white arches with keystones; a plain white cornice ~14.3 m with one pediment dormer; red-brown brick #504442 (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/street": {
+   "source": "author",
+   "confidence": 0.65,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): a wide corner front of four axes: a white shop pui 0-4.7 m with a fascia (entrance right); storeys at 5.4-6.8, 7.9-9.6, 10.0-11.6 and 12.2-13.7 m, the upper windows under white arches with keystones; a plain white cornice ~14.3 m with one pediment dormer; red-brown brick #504442",
+   "at": "2023-03-13"
+  },
+  "fronts/0/gable": {
+   "source": "author",
+   "confidence": 0.65,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): a wide corner front of four axes: a white shop pui 0-4.7 m with a fascia (entrance right); storeys at 5.4-6.8, 7.9-9.6, 10.0-11.6 and 12.2-13.7 m, the upper windows under white arches with keystones; a plain white cornice ~14.3 m with one pediment dormer; red-brown brick #504442",
+   "at": "2023-03-13"
+  },
+  "fronts/0/storeys": {
+   "source": "author",
+   "confidence": 0.65,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): a wide corner front of four axes: a white shop pui 0-4.7 m with a fascia (entrance right); storeys at 5.4-6.8, 7.9-9.6, 10.0-11.6 and 12.2-13.7 m, the upper windows under white arches with keystones; a plain white cornice ~14.3 m with one pediment dormer; red-brown brick #504442",
+   "at": "2023-03-13"
+  },
+  "fronts/0/bays": {
+   "source": "author",
+   "confidence": 0.65,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): a wide corner front of four axes: a white shop pui 0-4.7 m with a fascia (entrance right); storeys at 5.4-6.8, 7.9-9.6, 10.0-11.6 and 12.2-13.7 m, the upper windows under white arches with keystones; a plain white cornice ~14.3 m with one pediment dormer; red-brown brick #504442",
+   "at": "2023-03-13"
+  },
+  "fronts/0/storeyHeights": {
+   "source": "author",
+   "confidence": 0.65,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): a wide corner front of four axes: a white shop pui 0-4.7 m with a fascia (entrance right); storeys at 5.4-6.8, 7.9-9.6, 10.0-11.6 and 12.2-13.7 m, the upper windows under white arches with keystones; a plain white cornice ~14.3 m with one pediment dormer; red-brown brick #504442",
+   "at": "2023-03-13"
+  },
+  "fronts/0/doorBay": {
+   "source": "author",
+   "confidence": 0.65,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): a wide corner front of four axes: a white shop pui 0-4.7 m with a fascia (entrance right); storeys at 5.4-6.8, 7.9-9.6, 10.0-11.6 and 12.2-13.7 m, the upper windows under white arches with keystones; a plain white cornice ~14.3 m with one pediment dormer; red-brown brick #504442",
+   "at": "2023-03-13"
+  },
+  "fronts/0/dormers": {
+   "source": "author",
+   "confidence": 0.65,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): a wide corner front of four axes: a white shop pui 0-4.7 m with a fascia (entrance right); storeys at 5.4-6.8, 7.9-9.6, 10.0-11.6 and 12.2-13.7 m, the upper windows under white arches with keystones; a plain white cornice ~14.3 m with one pediment dormer; red-brown brick #504442",
+   "at": "2023-03-13"
+  },
+  "fronts/0/dormerStyle": {
+   "source": "author",
+   "confidence": 0.65,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): a wide corner front of four axes: a white shop pui 0-4.7 m with a fascia (entrance right); storeys at 5.4-6.8, 7.9-9.6, 10.0-11.6 and 12.2-13.7 m, the upper windows under white arches with keystones; a plain white cornice ~14.3 m with one pediment dormer; red-brown brick #504442",
+   "at": "2023-03-13"
+  },
+  "fronts/0/dormerBody": {
+   "source": "author",
+   "confidence": 0.65,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): a wide corner front of four axes: a white shop pui 0-4.7 m with a fascia (entrance right); storeys at 5.4-6.8, 7.9-9.6, 10.0-11.6 and 12.2-13.7 m, the upper windows under white arches with keystones; a plain white cornice ~14.3 m with one pediment dormer; red-brown brick #504442",
+   "at": "2023-03-13"
+  },
+  "fronts/0/shopfront": {
+   "source": "author",
+   "confidence": 0.65,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): a wide corner front of four axes: a white shop pui 0-4.7 m with a fascia (entrance right); storeys at 5.4-6.8, 7.9-9.6, 10.0-11.6 and 12.2-13.7 m, the upper windows under white arches with keystones; a plain white cornice ~14.3 m with one pediment dormer; red-brown brick #504442",
+   "at": "2023-03-13"
+  },
+  "roof/material": {
+   "source": "author",
+   "confidence": 0.65,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): a wide corner front of four axes: a white shop pui 0-4.7 m with a fascia (entrance right); storeys at 5.4-6.8, 7.9-9.6, 10.0-11.6 and 12.2-13.7 m, the upper windows under white arches with keystones; a plain white cornice ~14.3 m with one pediment dormer; red-brown brick #504442",
+   "at": "2023-03-13"
+  },
+  "roof/source": {
+   "source": "author",
+   "confidence": 0.65,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): a wide corner front of four axes: a white shop pui 0-4.7 m with a fascia (entrance right); storeys at 5.4-6.8, 7.9-9.6, 10.0-11.6 and 12.2-13.7 m, the upper windows under white arches with keystones; a plain white cornice ~14.3 m with one pediment dormer; red-brown brick #504442",
+   "at": "2023-03-13"
+  },
+  "roof/evidence": {
+   "source": "author",
+   "confidence": 0.65,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): a wide corner front of four axes: a white shop pui 0-4.7 m with a fascia (entrance right); storeys at 5.4-6.8, 7.9-9.6, 10.0-11.6 and 12.2-13.7 m, the upper windows under white arches with keystones; a plain white cornice ~14.3 m with one pediment dormer; red-brown brick #504442",
+   "at": "2023-03-13"
+  },
+  "roof/form": {
+   "source": "author",
+   "confidence": 0.65,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): a wide corner front of four axes: a white shop pui 0-4.7 m with a fascia (entrance right); storeys at 5.4-6.8, 7.9-9.6, 10.0-11.6 and 12.2-13.7 m, the upper windows under white arches with keystones; a plain white cornice ~14.3 m with one pediment dormer; red-brown brick #504442",
+   "at": "2023-03-13"
+  },
+  "roof/rise": {
+   "source": "author",
+   "confidence": 0.65,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): a wide corner front of four axes: a white shop pui 0-4.7 m with a fascia (entrance right); storeys at 5.4-6.8, 7.9-9.6, 10.0-11.6 and 12.2-13.7 m, the upper windows under white arches with keystones; a plain white cornice ~14.3 m with one pediment dormer; red-brown brick #504442",
+   "at": "2023-03-13"
+  },
+  "palette/frame": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): a wide corner front of four axes: a white shop pui 0-4.7 m with a fascia (entrance right); storeys at 5.4-6.8, 7.9-9.6, 10.0-11.6 and 12.2-13.7 m, the upper windows under white arches with keystones; a plain white cornice ~14.3 m with one pediment dormer; red-brown brick #504442 (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/door": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): a wide corner front of four axes: a white shop pui 0-4.7 m with a fascia (entrance right); storeys at 5.4-6.8, 7.9-9.6, 10.0-11.6 and 12.2-13.7 m, the upper windows under white arches with keystones; a plain white cornice ~14.3 m with one pediment dormer; red-brown brick #504442 (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/stone": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): a wide corner front of four axes: a white shop pui 0-4.7 m with a fascia (entrance right); storeys at 5.4-6.8, 7.9-9.6, 10.0-11.6 and 12.2-13.7 m, the upper windows under white arches with keystones; a plain white cornice ~14.3 m with one pediment dormer; red-brown brick #504442 (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/cornice": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): a wide corner front of four axes: a white shop pui 0-4.7 m with a fascia (entrance right); storeys at 5.4-6.8, 7.9-9.6, 10.0-11.6 and 12.2-13.7 m, the upper windows under white arches with keystones; a plain white cornice ~14.3 m with one pediment dormer; red-brown brick #504442 (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/stoneMaterial": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): a wide corner front of four axes: a white shop pui 0-4.7 m with a fascia (entrance right); storeys at 5.4-6.8, 7.9-9.6, 10.0-11.6 and 12.2-13.7 m, the upper windows under white arches with keystones; a plain white cornice ~14.3 m with one pediment dormer; red-brown brick #504442 (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/brick": {
+   "source": "author",
+   "confidence": 0.65,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): a wide corner front of four axes: a white shop pui 0-4.7 m with a fascia (entrance right); storeys at 5.4-6.8, 7.9-9.6, 10.0-11.6 and 12.2-13.7 m, the upper windows under white arches with keystones; a plain white cornice ~14.3 m with one pediment dormer; red-brown brick #504442",
+   "at": "2023-03-13"
+  },
+  "palette/wallMaterial": {
+   "source": "author",
+   "confidence": 0.65,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): a wide corner front of four axes: a white shop pui 0-4.7 m with a fascia (entrance right); storeys at 5.4-6.8, 7.9-9.6, 10.0-11.6 and 12.2-13.7 m, the upper windows under white arches with keystones; a plain white cornice ~14.3 m with one pediment dormer; red-brown brick #504442",
+   "at": "2023-03-13"
+  }
+ },
+ "schemaLimits": [
+  {
+   "component": "front",
+   "what": "the right two axes stop at a lower cornice (~11 m) with a railed roof terrace; drawn as one front at the left height"
+  },
+  {
+   "component": "shop sign",
+   "what": "the fascia lettering is not drawn"
+  }
+ ]
+}
