@@ -1,0 +1,45 @@
+{
+ "name": "plantage-c",
+ "buurt": "plantage",
+ "library": "plantage",
+ "generatedAt": "2026-11-10T08:32:48.538Z",
+ "method": "scripts/block-face/batch.ts",
+ "totals": {
+  "faces": 1,
+  "runs": 1,
+  "installed": 0,
+  "installedPands": 0,
+  "failed": 1,
+  "byReason": {
+   "glb-audit": 1
+  }
+ },
+ "rows": [
+  {
+   "face": "badlaan-1-21",
+   "street": "Plantage Badlaan",
+   "ride": null,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
+   "nccMin": 0.173,
+   "nccMedian": 0.311,
+   "stripOverDrawn": 1.206,
+   "wallFits": 5,
+   "droppedCorners": [],
+   "triangles": 12882,
+   "sheet": "staging/block-face/badlaan-1-21-r1/review/strip-sheet.png",
+   "stripDate": "2023-01-02",
+   "run": "badlaan-1-21-r1",
+   "pands": 6,
+   "mode": "auto-place",
+   "status": "failed",
+   "reasons": [
+    "glb-audit: failed (see report.json audit)"
+   ],
+   "seconds": 13.7
+  }
+ ]
+}

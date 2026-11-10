@@ -1,0 +1,156 @@
+{
+ "schemaVersion": 1,
+ "kind": "house-type",
+ "id": "plantage-1881-polychrome-two-axis",
+ "district": "plantage",
+ "description": "Plantage Badlaan 13-21 (BAG 1872-1881): 5.9 m fronts of ground and two upper storeys in dark red brick with yellow speklagen, two axes of round-arched windows with a yellow-brick cross hood, yellow string courses and a dentil frieze at 11.0-12.0 m, white painted eaves, one pediment dormer",
+ "fit": {
+  "widthM": [
+   5.4,
+   6.4
+  ],
+  "storeys": [
+   3
+  ]
+ },
+ "match": {
+  "years": [
+   1865,
+   1890
+  ],
+  "yearSlack": 0,
+  "eavesM": [
+   11.4,
+   12.6
+  ],
+  "stucco": false,
+  "baysByWidth": [
+   {
+    "maxWidthM": 99,
+    "bays": 2
+   }
+  ],
+  "note": "Badlaan 13-21: BAG storeys 4 (3DBAG counts the dormer) but the photo has ground + 2; eaves 12.0"
+ },
+ "body": {
+  "storeys": 3,
+  "bays": 2,
+  "storeyHeights": [
+   4.2,
+   3.7,
+   4.0
+  ],
+  "windows": "casement-toplight",
+  "windowSurround": "sill",
+  "windowHead": {
+   "kind": "segmental",
+   "archRing": {
+    "colour": "band",
+    "style": "solid",
+    "widthCourses": 2,
+    "keystone": true
+   }
+  },
+  "windowHeights": [
+   0.55,
+   0.55,
+   0.46
+  ],
+  "headLines": [
+   0.76,
+   0.69,
+   0.52
+  ],
+  "windowShare": 0.56,
+  "bands": "speklagen",
+  "cornice": "simple",
+  "wallAnchors": {
+   "over": 0.4
+  },
+  "speklagen": {
+   "spacing": 8,
+   "courses": 1
+  }
+ },
+ "crowns": {
+  "pediment-dormer": {
+   "gable": "cornice",
+   "dormers": 1,
+   "dormerStyle": "pediment",
+   "dormerBody": "stone",
+   "dormerAt": [
+    {
+     "from": 0.3,
+     "to": 0.7
+    }
+   ],
+   "dormerSize": {
+    "sill": 0.1,
+    "rise": 1.2,
+    "setback": 0.3
+   },
+   "note": "one white pediment dormer 1.8 m wide, 12.3-14.5 m"
+  }
+ },
+ "grounds": {
+  "door-right": {
+   "doorBay": 1,
+   "basement": "none",
+   "note": "double door at the right axis, window left"
+  },
+  "door-left": {
+   "doorBay": 0,
+   "basement": "none",
+   "note": "mirrored"
+  }
+ },
+ "palettes": {
+  "polychrome": {
+   "brick": "#7e4b3b",
+   "frame": "white-painted",
+   "door": "#2a2420",
+   "stone": "#d9cdb0",
+   "cornice": "#ebe8df",
+   "band": "#c9a560",
+   "stoneMaterial": "painted"
+  }
+ },
+ "roof": {
+  "material": "slate"
+ },
+ "rhythm": {
+  "bays": "2 round-arched axes",
+  "identicalBays": "every upper storey: 3 T-windows",
+  "windowsPerStorey": "ground: window + door | 1: 2 | 2: 2",
+  "symmetry": "symmetric above the shop",
+  "groundFloor": "residential",
+  "signage": "per shop",
+  "roofline": "white eaves, one pediment dormer",
+  "photoRows": [
+   1,
+   2,
+   2
+  ],
+  "photoGroundRows": 1,
+  "photoGables": 0,
+  "schemaLimits": [
+   "the sculpted keystone heads of 44 are plain blocks",
+   "the dormer's low side cheeks are not drawn"
+  ]
+ },
+ "evidence": [
+  {
+   "face": "badlaan-1-21",
+   "pands": [
+    "181075",
+    "181073",
+    "171260",
+    "170230"
+   ],
+   "citation": "strip.jpg gridded 40 px/m: ground window 0.9-3.2 m, string course 4.1-4.3, storey-1 windows 4.7-6.75, sill band 7.75, storey-2 8.15-10.0; yellow cross hoods 10.2-10.8; dentil 11.0; brick to 12.0 m; dormer 12.3-14.5 m"
+  }
+ ],
+ "schemaLimits": [
+  "the yellow cross hood is a plain arch ring; the speklagen are a band course every 0.5 m not the measured 0.2 m pitch"
+ ]
+}

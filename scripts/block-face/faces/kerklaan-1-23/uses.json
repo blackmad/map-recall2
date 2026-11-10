@@ -1,0 +1,253 @@
+{
+ "street": "Plantage Kerklaan",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T07:28:23.605Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012170484",
+   "addresses": [
+    "Plantage Kerklaan 1"
+   ],
+   "groundUnits": [
+    {
+     "address": "Plantage Kerklaan 1-H",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000777354"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012170485",
+   "addresses": [
+    "Plantage Kerklaan 3"
+   ],
+   "groundUnits": [
+    {
+     "address": "Plantage Kerklaan 3-H",
+     "use": "woonfunctie",
+     "areaM2": 136,
+     "bagId": "0363010000777370"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012170486",
+   "addresses": [
+    "Plantage Kerklaan 5"
+   ],
+   "groundUnits": [
+    {
+     "address": "Plantage Kerklaan 5-H",
+     "use": "woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010000777376"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012170542",
+   "addresses": [
+    "Plantage Kerklaan 7"
+   ],
+   "groundUnits": [
+    {
+     "address": "Plantage Kerklaan 7-H",
+     "use": "woonfunctie",
+     "areaM2": 74,
+     "bagId": "0363010000777385"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181318",
+   "addresses": [
+    "Plantage Kerklaan 9"
+   ],
+   "groundUnits": [
+    {
+     "address": "Plantage Kerklaan 9-H",
+     "use": "woonfunctie",
+     "areaM2": 209,
+     "bagId": "0363010001042714"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181319",
+   "addresses": [
+    "Plantage Kerklaan 11A",
+    "Plantage Kerklaan 11B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Plantage Kerklaan 11A",
+     "use": "woonfunctie",
+     "areaM2": 115,
+     "bagId": "0363010000777402"
+    },
+    {
+     "address": "Plantage Kerklaan 11B",
+     "use": "woonfunctie",
+     "areaM2": 155,
+     "bagId": "0363010000777403"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181320",
+   "addresses": [
+    "Plantage Kerklaan 13"
+   ],
+   "groundUnits": [
+    {
+     "address": "Plantage Kerklaan 13-H",
+     "use": "woonfunctie",
+     "areaM2": 110,
+     "bagId": "0363010000980439"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181315",
+   "addresses": [
+    "Plantage Kerklaan 15"
+   ],
+   "groundUnits": [
+    {
+     "address": "Plantage Kerklaan 15-H",
+     "use": "woonfunctie",
+     "areaM2": 146,
+     "bagId": "0363010000777415"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181316",
+   "addresses": [
+    "Plantage Kerklaan 17"
+   ],
+   "groundUnits": [
+    {
+     "address": "Plantage Kerklaan 17-H",
+     "use": "woonfunctie",
+     "areaM2": 110,
+     "bagId": "0363010000983600"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181311",
+   "addresses": [
+    "Plantage Kerklaan 19"
+   ],
+   "groundUnits": [
+    {
+     "address": "Plantage Kerklaan 19-H",
+     "use": "bijeenkomstfunctie,woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000777430"
+    },
+    {
+     "address": "Plantage Kerklaan 19",
+     "use": "logiesfunctie",
+     "areaM2": 352,
+     "bagId": "0363010012120902"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 8323014104,
+     "lngLat": [
+      4.9112673,
+      52.3661715
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "19",
+      "addr:postcode": "1018SZ",
+      "addr:street": "Plantage Kerklaan",
+      "check_date": "2026-10-02",
+      "internet_access": "wlan",
+      "name": "The Bee Hostel",
+      "source": "BAG",
+      "source:date": "2021-01-08",
+      "tourism": "hostel",
+      "website": "https://thebeehostel.com/"
+     },
+     "fetchedAt": "2026-11-10T07:28:23.605Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012181312",
+   "addresses": [
+    "Plantage Kerklaan 21A",
+    "Plantage Kerklaan 21C",
+    "Plantage Kerklaan 21B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Plantage Kerklaan 21A",
+     "use": "winkelfunctie",
+     "areaM2": 103,
+     "bagId": "0363010001013172"
+    },
+    {
+     "address": "Plantage Kerklaan 21C",
+     "use": "woonfunctie",
+     "areaM2": 64,
+     "bagId": "0363010001013174"
+    },
+    {
+     "address": "Plantage Kerklaan 21B",
+     "use": "woonfunctie",
+     "areaM2": 38,
+     "bagId": "0363010001013173"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012180951",
+   "addresses": [
+    "Plantage Kerklaan 23"
+   ],
+   "groundUnits": [
+    {
+     "address": "Plantage Kerklaan 23-H",
+     "use": "woonfunctie",
+     "areaM2": 123,
+     "bagId": "0363010000777442"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  }
+ ]
+}
