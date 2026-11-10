@@ -6,7 +6,8 @@ import { buurtProfileAt } from './buurtProfiles/data.js';
 
 const BUURT_PROFILES_FOR_TEST = buurtProfileAt(4.8821, 52.3768);
 
-const ids = Array.from({ length: 1000 }, (_, i) => `NL.IMBAG.Pand.03631000121${String(i).padStart(5, '0')}`);
+// 9... is no BAG gemeente code: these synthetic ids never meet a measured pand in modern-pand-walls.json (0363...121xxxxx did once the wide pass measured it).
+const ids = Array.from({ length: 1000 }, (_, i) => `NL.IMBAG.Pand.93631000121${String(i).padStart(5, '0')}`);
 const setFlag = (v: boolean | undefined) => { (globalThis as { __canalRecallModernFacades?: boolean }).__canalRecallModernFacades = v; };
 
 test('preset indices name the presets they claim', () => {

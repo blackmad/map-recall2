@@ -158,6 +158,8 @@ class Renderer {
   }
 
   _drawDestination(camera, track) {
+    // First-person camera (engine/ownWorldView.ts sets this while racing): at eye level the pin reads as an address sign.
+    if (window.__canalRecallFpsHidePin) { this.destinationPillRect = { x: -9999, y: -9999, width: 0, height: 0 }; return; }
     const ctx = this.ctx;
     const destination = camera.worldToScreen(track.finishPoint.x, track.finishPoint.y);
     // Pin and pill, in canvas px, so map labels keep clear of them.

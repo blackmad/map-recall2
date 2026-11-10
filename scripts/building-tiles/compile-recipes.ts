@@ -491,6 +491,8 @@ async function stageMeshTile(tileArg: string) {
   }
   tick('gates', s);
   const repeated = [...byHash.values()].filter(v => v.length >= 2);
+  // Ceiling for quantising widths to 5 cm (soup.nearRepeats): same structure and extents within 5 cm.
+  const nearRepeats = soup.nearRepeats(parts.filter(p => soup.isInstanceable(p.role)).map(p => ({structure: soup.structureOf(p.role, p.buckets), triangles: p.triangles})));
   const report = {
     tile: tileArg, seconds: +((performance.now() - t0) / 1000).toFixed(1), timingsMs: timings, bytes: written.bytes.length,
     triangles: {merged: written.triangles, drawn: decoded.pands.reduce((s, p) => s + p.length, 0)},
@@ -498,6 +500,7 @@ async function stageMeshTile(tileArg: string) {
     instancing: {candidateParts: [...byHash.values()].reduce((s, v) => s + v.length, 0), repeatedHashes: repeated.length, repeatedParts: repeated.reduce((s, v) => s + v.length, 0),
       instancedHashes: instancedHashes.size, instancedParts: [...instancedHashes].reduce((s, h) => s + byHash.get(h)!.length, 0),
       savedTriangles: [...instancedHashes].reduce((s, h) => s + byHash.get(h)![0].triangles * (byHash.get(h)!.length - 1), 0)},
+    nearRepeats,
     installedChunksIdentical: installedMatch,
     failed: Object.fromEntries(sources.filter(x => x.failed.length).map(x => [x.key, x.failed])),
     pands: pandReports,

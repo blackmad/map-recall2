@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { ahnHeights, appendSupplement, DECK_CLEARANCE_M, fillDecision, findBagGaps, forBuildingTiles, osmHeightGuessed, overRoadPartFeatures, quantile, supplementFeature, type RegisterPand } from './bagGaps';
+import { ahnHeights, appendSupplement, DECK_CLEARANCE_M, fillDecision, findBagGaps, forBuildingTiles, osmHeightGuessed, overRoadPartFeatures, quantile, supplementFeature, type RegisterPand, type SupplementFeature } from './bagGaps';
 import { isPandId } from './bagTiles';
 import type { Ring, TileBuilding } from './landmarks/osmUnderModels';
 
@@ -102,4 +102,12 @@ test('over-road parts: ground faces stand, faces over the road become decks, low
     ['part:NL.IMBAG.Pand.0363100012145715:1', DECK_CLEARANCE_M],
   ]);
   assert.ok(parts.every(p => !isPandId(p.properties.id)));
+});
+
+test('forBuildingTiles keeps a new pand\'s height source and drops survey-only keys', () => {
+  const f = { type: 'Feature', properties: { id: 'NL.IMBAG.Pand.0363100012999999', tier: 3, minHeight: 0, height: 9, heightSource: 'neighbour-median', bagGap: true, newPand: true, neighbours: 44, year: 2025 }, geometry: { type: 'Polygon', coordinates: [[[4.9, 52.37], [4.9001, 52.37], [4.9001, 52.3701], [4.9, 52.37]]] } } as unknown as SupplementFeature;
+  const p = forBuildingTiles(f).properties as Record<string, unknown>;
+  assert.equal(p.heightSource, 'neighbour-median');
+  assert.equal(p.newPand, undefined);
+  assert.equal(p.year, undefined);
 });

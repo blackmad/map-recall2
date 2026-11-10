@@ -676,7 +676,7 @@ function facePlanner(face: BlockFaceIntent, factsByPand: Map<string, BuildingFac
       const same = intents[i].fronts.filter(fr => fr.street === street), ff = fit.facts.fronts.find(x => x.street === street);
       const ends = same.length > 1 && ff ? splitChain(ff, (() => { const sh = same.map(fr => fr.share ?? 1 / same.length), t = sh.reduce((a, b) => a + b, 0); return sh.map(x => x / t); })()).pairs : null;
       const fronts = ends ? same.map((fr, k) => ({id: fr.id, eavesM: fit.report.fronts.find(r => r.id === fr.id)!.eavesM, endpointsRD: ends[k], ...(fr.stepBody ? {body: true} : {}), ...(fr.dormers ? {dormers: true} : {})})) : undefined;
-      return recipeRoofFacts(fit.facts, {eavesM: f0.eavesM, storeyHeightsM: f0.storeyHeightsM, street, ridgeCapM, fronts, ...(forms ? {forms, frontId: intents[i].fronts[0].id} : {}),
+      return recipeRoofFacts(fit.facts, {eavesM: f0.eavesM, storeyHeightsM: f0.storeyHeightsM, street, ridgeCapM, fronts, ...(forms ? {forms, frontId: intents[i].fronts[0].id} : {}), ...(intents[i].roof.squareSaddle ? {squareSaddle: true} : {}),
         // Dormers stand 0.35 m behind the frontage (fit.ts): the attic face starts behind them, not through them. Cross gables
         // start behind their crown walls (CROSS_GABLE_BEHIND_M): the attic face rises from the same gutter line, so the
         // outline's millimetre wander about the frontage stays flat (a steep face rising from it closed in mm slivers).

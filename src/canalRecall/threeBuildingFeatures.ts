@@ -29,7 +29,7 @@ import { SegmentGrid } from './streetFronts.js';
 import { ccwRing, designInLook, gardenRoomDesign, gardenRoomGlassHex, gardenRoomLidHex, gardenRoomRule, gardenRoomTriangles, glassEdge, mainHouse, nearestStreetPoint, partyWalls, HOUSE_REACH_M, type Neighbour, type Pt } from './gardenRooms.js';
 import { GARDEN_ROOM_TONES } from './look/palette.js';
 import { buurtProfileAt } from './buurtProfiles/data.js';
-import { profileWallBeatsMaterial } from './buurtProfiles/profiles.js';
+import { profileWallBeatsMaterial, storeyScaleOf } from './buurtProfiles/profiles.js';
 
 /** 'untextured' draws with the procedural cells' flat layer only: plain colours, real shapes (look/palette.ts). */
 export type { BuildingLook };
@@ -132,10 +132,13 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook, coarse = f
   if (cellSetOf(look) !== 'procedural') {
     const year = p.constructionYear === null || p.constructionYear === undefined || !Number.isFinite(Number(p.constructionYear)) ? null : Number(p.constructionYear);
     const at = polygons[0]?.[0]?.[0];
-    const bay = bayLookFor(id, year, Number(p.height) || heightM, look as Look, shopfrontOf(p), undefined, periodWallOf(p), at ? buurtProfileAt(at[0], at[1]) : null,
+    const profile = at ? buurtProfileAt(at[0], at[1]) : null;
+    const bay = bayLookFor(id, year, Number(p.height) || heightM, look as Look, shopfrontOf(p), undefined, periodWallOf(p), profile,
       year !== null && year >= 1945 ? { footprintM2: footprintAreaM2(feature.geometry), buildingType: typeof p.buildingType === 'string' ? p.buildingType : null } : undefined);
     profileWall = bay.profileWall; spandrelAccent = bay.modern?.accent;
     building = { id, polygons, heightM, minHeightM, style: bay.layout, wallHex: bay.wallHex, accentHex: bay.accentHex, layers: bay.layers, groundHex: bay.groundHex };
+    const storeyScale = storeyScaleOf(profile?.eras[bay.archetype], STYLE_DIMS[bay.layout].storey);
+    if (storeyScale !== 1) building.storeyScale = storeyScale;
     building.openings = bayVariantOpenings({ ...bay.variant, kind: 'upper' }, look as Look);
     plain = bay.plain; roofBase = BAY_LAYER_COUNT; layout = bay.layout; building.plainLayer = bay.plain;
     if ((FACADE_STYLES as readonly string[]).includes(String(p.facadeStyle)) && p.facadeStyle !== bay.layout) building.period = p.facadeStyle as FacadeStyle;

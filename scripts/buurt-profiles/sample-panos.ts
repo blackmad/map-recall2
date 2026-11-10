@@ -1,7 +1,11 @@
 /**
  * Panorama wall samples for the buurt profiles (derive.ts source "thumb"; GitHub #102).
  *
- *   node --import tsx scripts/buurt-profiles/sample-panos.ts [--radius-km=3.5] [--per-buurt=20] [--modern]
+ *   node --import tsx scripts/buurt-profiles/sample-panos.ts [--radius-km=3.5] [--per-buurt=20] [--modern] [--only=<codes.json>]
+ *
+ * `--only=<codes.json>` (a JSON array of buurt codes) re-samples just those buurten (use a larger --per-buurt, the
+ * candidate pool is 3x it) and keeps every earlier sample of the other buurten, so a thin buurt can be filled up to
+ * the derive minimum without moving its neighbours.
  *     -> staging/buurt-profiles/pano-samples.json (--modern: pano-samples-modern.json)
  *
  * `--modern` (GitHub #117): BAG year >= 1945, 7-45 m high, 40-5,000 m2, so the profiles carry a measured post-war era.
@@ -35,8 +39,9 @@ const inRing = (x: number, y: number, ring: number[][]) => { let inside = false;
 const kmFromDam = (lng: number, lat: number) => Math.hypot((lng - DAM[0]) * 67.9, (lat - DAM[1]) * 110.5);
 
 type P = { id: string; ring: number[][]; height: number; year: number; lng: number; lat: number; area: number };
+const ONLY = process.argv.find(a => a.startsWith('--only=')) ? new Set<string>(JSON.parse(fs.readFileSync(process.argv.find(a => a.startsWith('--only='))!.split('=')[1], 'utf8'))) : null;
 const targets = buurten.map(b => { const polys = b.geometry.type === 'Polygon' ? [b.geometry.coordinates] : b.geometry.coordinates; const ring = polys[0][0]; const c = [ring.reduce((s: number, p: number[]) => s + p[0], 0) / ring.length, ring.reduce((s: number, p: number[]) => s + p[1], 0) / ring.length]; return { code: b.properties.code, name: b.properties.naam, polys, c }; })
-  .filter(b => kmFromDam(b.c[0], b.c[1]) <= RADIUS_KM);
+  .filter(b => kmFromDam(b.c[0], b.c[1]) <= RADIUS_KM && (!ONLY || ONLY.has(b.code)));
 console.log('target buurten', targets.length);
 const byBuurt = new Map<string, P[]>();
 const root = 'public/data/extracts/amsterdam/bag-tiles/14';
@@ -58,7 +63,7 @@ for (const x of fs.readdirSync(root)) for (const f of fs.readdirSync(path.join(r
 }
 const prior: Record<string, unknown> = fs.existsSync(OUT) ? Object.fromEntries((JSON.parse(fs.readFileSync(OUT, 'utf8')).samples as any[]).map(s => [s.pand, s])) : {};
 const jobs: { code: string; p: P }[] = [];
-for (const [code, list] of byBuurt) for (const p of [...list].sort((a, b) => hash(a.id) - hash(b.id)).slice(0, PER * 2)) jobs.push({ code, p });
+for (const [code, list] of byBuurt) for (const p of [...list].sort((a, b) => hash(a.id) - hash(b.id)).slice(0, ONLY ? PER * 3 : PER * 2)) jobs.push({ code, p });
 console.log('candidate pands', jobs.length);
 
 async function sample(code: string, p: P): Promise<Record<string, unknown> | null> {
@@ -103,7 +108,7 @@ async function sample(code: string, p: P): Promise<Record<string, unknown> | nul
     brick: tone.brick, wall: tone.wall, lightTrim: tone.lightTrim, family, paleShare: +(pale / Math.max(1, valid)).toFixed(3), leafShare: +(leaf / Math.max(1, band)).toFixed(3) };
 }
 
-const results: any[] = [];
+const results: any[] = ONLY && fs.existsSync(OUT) ? (JSON.parse(fs.readFileSync(OUT, 'utf8')).samples as any[]).filter(r => !ONLY.has(r.buurt)) : [];
 const done = new Map<string, number>(), inflight = new Map<string, number>();
 let next = 0;
 async function worker() {

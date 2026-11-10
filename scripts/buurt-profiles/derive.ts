@@ -30,7 +30,7 @@ import { PERIOD_WALLS, periodForYear, type Period } from '../../src/canalRecall/
 import { fitExposure, applyExposure, median, hueMedian, hueOf, chromaOf } from '../../src/canalRecall/buurtProfiles/exposure.ts';
 import { classifyWall, cityTrimLevel } from '../../src/canalRecall/buurtProfiles/paintClass.ts';
 import { faceStripPalettes } from '../block-face/palette-from-strip.ts';
-import { validateProfileSet, type BuurtProfile, type BuurtProfileSet, type EraProfile, type WeightedHex } from '../../src/canalRecall/buurtProfiles/profiles.ts';
+import { validateProfileSet, pruneEras, type BuurtProfile, type BuurtProfileSet, type EraProfile, type WeightedHex } from '../../src/canalRecall/buurtProfiles/profiles.ts';
 
 const arg = (k: string) => process.argv.find(a => a.startsWith(`--${k}=`))?.split('=')[1];
 const WALLS = arg('walls') ?? path.join(process.env.HOME ?? '', 'Code/map-recall2-source-data/pand-reference-walls');
@@ -49,8 +49,9 @@ const BRICK_CHROMA_SHARE = 0.75;
  * than the +8 L* lift. --lift-share=1 restores the #102 city level for comparison.
  */
 const CITY_LIFT_SHARE = 0;
-const MIN_N = 12, MIN_ERA_N = 8, SWATCHES = 10, CELL_M = 40;
-const BBOX = { west: 4.80, east: 4.98, south: 4.0 + 48.32, north: 52.42 };
+const MIN_N = 12, MIN_ERA_N = 8, MIN_PRE_ERA_N = 20, SWATCHES = 10, CELL_M = 40;
+// Whole city (was 4.80-4.98 x 52.32-52.42, which dropped Nieuw-West, Zuidoost and Noord from the year mix): the mix feeds dominantEra.
+const BBOX = { west: 4.72, east: 5.06, south: 52.27, north: 52.46 };
 fs.mkdirSync(OUT, { recursive: true }); fs.mkdirSync(CACHE, { recursive: true });
 
 type Ring = number[][]; type Poly = Ring[];
@@ -74,7 +75,7 @@ const inRing = (x: number, y: number, ring: Ring) => { let inside = false; for (
 const inArea = (x: number, y: number, a: Area) => x >= a.bbox[0] && x <= a.bbox[2] && y >= a.bbox[1] && y <= a.bbox[3] && a.polys.some(p => inRing(x, y, p[0]) && !p.slice(1).some(h => inRing(x, y, h)));
 
 // BAG pands: centroid and year.
-type Pand = { lng: number; lat: number; year: number | null };
+type Pand = { lng: number; lat: number; year: number | null; eaves: number | null; height: number | null };
 const pands = new Map<string, Pand>();
 const tileRoot = 'public/data/extracts/amsterdam/bag-tiles/14';
 for (const x of fs.readdirSync(tileRoot)) for (const f of fs.readdirSync(path.join(tileRoot, x))) {
@@ -86,7 +87,7 @@ for (const x of fs.readdirSync(tileRoot)) for (const f of fs.readdirSync(path.jo
     const g = feat.geometry, ring: Ring = g?.type === 'Polygon' ? g.coordinates[0] : g?.type === 'MultiPolygon' ? g.coordinates[0][0] : null;
     if (!ring?.length) continue;
     const y = Number(feat.properties.year);
-    pands.set(id, { lng: ring.reduce((s, c) => s + c[0], 0) / ring.length, lat: ring.reduce((s, c) => s + c[1], 0) / ring.length, year: Number.isFinite(y) && y > 1200 && y < 2100 ? y : null });
+    pands.set(id, { lng: ring.reduce((s, c) => s + c[0], 0) / ring.length, lat: ring.reduce((s, c) => s + c[1], 0) / ring.length, year: Number.isFinite(y) && y > 1200 && y < 2100 ? y : null, eaves: Number(feat.properties.eaves) > 0 ? Number(feat.properties.eaves) : null, height: Number(feat.properties.height) > 0 ? Number(feat.properties.height) : null });
   }
 }
 console.log('pands', pands.size);
@@ -94,7 +95,7 @@ console.log('pands', pands.size);
 const buurten = await gebieden('wijken').then(() => gebieden('buurten')), wijken = await gebieden('wijken');
 const buurtOf = (lng: number, lat: number) => buurten.find(a => inArea(lng, lat, a)) ?? null;
 
-type Sample = { pand: string; source: 'pano' | 'thumb' | 'blockface' | 'strip'; era: Period | null; /** From the --modern pass: feeds only the modern era. */ modernPass?: true; lab?: number[]; painted?: boolean; pale?: boolean; dark?: boolean; arch?: boolean; tall?: boolean; crown?: 'cornice' | 'flat' | 'gable' | 'dormer'; shop?: boolean };
+type Sample = { pand: string; source: 'pano' | 'thumb' | 'blockface' | 'strip'; era: Period | null; /** From the --modern pass: feeds only the modern era. */ modernPass?: true; lab?: number[]; painted?: boolean; pale?: boolean; dark?: boolean; arch?: boolean; tall?: boolean; crown?: 'cornice' | 'flat' | 'gable' | 'dormer'; shop?: boolean; /** Storey height (m): 3DBAG eaves over the front's storeys (block-face houses). */ storeyM?: number };
 const samples: Sample[] = [];
 const eraOf = (p: Pand | undefined) => p?.year ? periodForYear(p.year) : null;
 
@@ -244,6 +245,10 @@ for (const face of fs.readdirSync('scripts/block-face/faces')) {
       s.tall = windows ? TALL.has(windows) : undefined;
     }
     if (frame || frameName) s.dark = frame ? frame[0] < 45 : /dark|black|brown|green|oxblood|blue/.test(frameName);
+    // Storey height: the wall height (eaves of a pitched roof, else the roof height) over the front's storey count.
+    const fr0 = h.design?.fronts?.[0], storeys = Number(fr0?.storeys ?? body?.storeys);
+    const wallM = pand.eaves ?? pand.height;
+    if (storeys >= 2 && wallM) { const sm = wallM / storeys; if (sm >= 2.4 && sm <= 4.8) s.storeyM = sm; }
     if (crown) s.crown = (crown.dormers ?? 0) > 0 ? 'dormer' : ['step', 'neck', 'point', 'bell', 'spout'].includes(crown.gable) ? 'gable' : crown.gable === 'flat' || crown.gable === 'none' ? 'flat' : 'cornice';
     samples.push(s); bfUsed++;
   }
@@ -318,13 +323,17 @@ function swatches(labs: number[][], slots = SWATCHES): WeightedHex[] {
 }
 const shareOf = (v: (boolean | undefined)[], min = 6) => { const d = v.filter(x => x !== undefined) as boolean[]; return d.length >= min ? Math.round(d.filter(Boolean).length / d.length * 100) / 100 : undefined; };
 
-function eraProfile(list: Sample[]): EraProfile | undefined {
-  if (list.length < MIN_ERA_N) return undefined;
+/** Pre-1945 eras need 20 fronts (Opus verdict 2026-11-10: a 12-front garden-village era drew 58 % paint on brick houses); modern keeps 8. */
+const ERA_MINS: Record<Period, number> = { canal: MIN_PRE_ERA_N, c19: MIN_PRE_ERA_N, school: MIN_PRE_ERA_N, modern: MIN_ERA_N };
+function eraProfile(list: Sample[], min = MIN_ERA_N): EraProfile | undefined {
+  if (list.length < min) return undefined;
   const coloured = list.filter(s => s.lab);
   const e: EraProfile = { n: list.length };
   if (coloured.length >= MIN_ERA_N) { e.walls = familySwatches(coloured); e.paintedShare = shareOf(coloured.map(s => s.painted)); }
   e.paleAccentShare = shareOf(list.map(s => s.pale)); e.darkFrameShare = shareOf(list.map(s => s.dark));
   e.archShare = shareOf(list.map(s => s.arch)); e.tallShare = shareOf(list.map(s => s.tall));
+  const storeyMs = list.map(s => s.storeyM).filter((v): v is number => v !== undefined);
+  if (storeyMs.length >= 6) e.storeyHeightM = Math.round(median(storeyMs) * 20) / 20;
   for (const k of Object.keys(e) as (keyof EraProfile)[]) if (e[k] === undefined) delete e[k];
   return Object.keys(e).length > 1 ? e : undefined;
 }
@@ -340,38 +349,105 @@ for (const p of pands.values()) {
   for (const key of [b.code, b.wijk ?? '']) { const m = yearMixOf.get(key) ?? {}; const e = periodForYear(p.year); m[e] = (m[e] ?? 0) + 1; yearMixOf.set(key, m); }
 }
 
+const droppedEras: string[] = [];
+// Share of every BAG pand in the area that the shopfronts extract marks as trading (OSM shop/amenity on the ground floor).
+const shopPands = new Set(Object.keys(JSON.parse(fs.readFileSync('public/data/extracts/amsterdam/shopfronts.json', 'utf8')).buildings).filter(k => k.startsWith('NL.IMBAG.Pand.')).map(k => k.slice(14)));
+const pandCount = new Map<string, number>(), shopCount = new Map<string, number>();
+for (const [id, p] of pands) {
+  const b = buurtOf(p.lng, p.lat); if (!b) continue;
+  for (const key of [b.code, b.wijk ?? '']) { pandCount.set(key, (pandCount.get(key) ?? 0) + 1); if (shopPands.has(id)) shopCount.set(key, (shopCount.get(key) ?? 0) + 1); }
+}
+const shopfrontShareOf = (code: string) => (pandCount.get(code) ?? 0) >= 30 ? Math.round((shopCount.get(code) ?? 0) / pandCount.get(code)! * 100) / 100 : undefined;
 function profileFor(code: string, name: string, level: 'buurt' | 'wijk', all: Sample[]): BuurtProfile | null {
   const list = all.filter(s => !s.modernPass);
-  if (list.length < MIN_N) return null;
+  if (list.length < MIN_N) {
+    // A post-war buurt (Bijlmer, Slotervaart, IJburg, ...) has no pre-1945 fronts: its measured modern fronts alone make
+    // a modern-era profile (coverage lane 2026-11-09). Buurten with enough pre-1945 fronts are unchanged.
+    const modernFronts = all.filter(s => s.era === 'modern');
+    if (modernFronts.length < MIN_N) return null;
+    const own = eraProfile(modernFronts, ERA_MINS.modern);
+    return own ? { code, name, level, n: modernFronts.length, confidence: modernFronts.length >= 60 ? 'high' : modernFronts.length >= 25 ? 'medium' : 'low', eras: { modern: own }, yearMix: yearMixOf.get(code) ?? {}, dominantEra: 'modern', ...(shopfrontShareOf(code) !== undefined ? { shopfrontShare: shopfrontShareOf(code) } : {}) } : null;
+  }
   const eras: BuurtProfile['eras'] = {};
   const older = list.filter(s => s.era && s.era !== 'modern');
   for (const era of ['canal', 'c19', 'school', 'modern'] as const) {
     // An era with too few fronts borrows the area's pre-1945 pool (walls and traits), never the modern blocks'.
-    const own = eraProfile((era === 'modern' ? all : list).filter(s => s.era === era));
-    const e = own ?? (era !== 'modern' ? eraProfile(older) : undefined);
+    const own = eraProfile((era === 'modern' ? all : list).filter(s => s.era === era), ERA_MINS[era]);
+    const e = own ?? (era !== 'modern' ? eraProfile(older, ERA_MINS[era]) : undefined);
     if (e) eras[era] = e;
   }
+  // Eras that cannot back a profile (too few fronts, undrawable walls) fall back to the wijk/city value; recorded.
+  const pruned = pruneEras(eras, ERA_MINS);
+  for (const era of pruned.dropped) droppedEras.push(`${code} ${era}`);
+  for (const era of pruned.dropped) delete eras[era];
   const crowns: Record<string, number> = {}, withCrown = list.filter(s => s.crown);
   for (const s of withCrown) crowns[s.crown!] = (crowns[s.crown!] ?? 0) + 1;
   const mix = yearMixOf.get(code) ?? {};
   const dominant = (Object.entries(mix) as [Period, number][]).sort((a, b) => b[1] - a[1])[0]?.[0];
   return {
     code, name, level, n: list.length, confidence: list.length >= 60 ? 'high' : list.length >= 25 ? 'medium' : 'low', eras, yearMix: mix,
-    ...(dominant ? { dominantEra: dominant } : {}), ...(shareOf(list.map(s => s.shop)) !== undefined ? { shopShare: shareOf(list.map(s => s.shop)) } : {}),
+    ...(dominant ? { dominantEra: dominant } : {}), ...(shopfrontShareOf(code) !== undefined ? { shopfrontShare: shopfrontShareOf(code) } : {}), ...(shareOf(list.map(s => s.shop)) !== undefined ? { shopShare: shareOf(list.map(s => s.shop)) } : {}),
     ...(withCrown.length >= 6 ? { crowns: Object.fromEntries(Object.entries(crowns).map(([k, v]) => [k, Math.round(v / withCrown.length * 100) / 100])) } : {}),
   };
 }
 const profiles: BuurtProfile[] = [], profileOfBuurt = new Map<string, number>();
 const wijkProfiles = new Map<string, number>();
+// Era-level fallback (Opus verdict 2026-11-10): a profile missing a pre-1945 era (modern-only, or a thin era) borrows it
+// from its wijk when the wijk has it (n >= 20), else from the stadsdeel pool (first letter of the gebied code). The fill
+// is marked `from` and recorded in coverage.json. Wijk profiles are filled from the stadsdeel first, so a buurt falling
+// back to a modern-only wijk still gets the area's pre-1945 walls.
+const PRE_ERAS = ['canal', 'c19', 'school'] as const;
+const stadsdeelEra = new Map<string, EraProfile | null>();
+function stadsdeelPool(letter: string, era: typeof PRE_ERAS[number]): EraProfile | null {
+  const key = `${letter}:${era}`;
+  if (!stadsdeelEra.has(key)) {
+    const pre = samples.filter(s => !s.modernPass && s.era && s.era !== 'modern' && sampleBuurt.get(s)?.code?.startsWith(letter));
+    const e = eraProfile(pre.filter(s => s.era === era), MIN_PRE_ERA_N) ?? eraProfile(pre, MIN_PRE_ERA_N);
+    stadsdeelEra.set(key, e ?? null);
+  }
+  return stadsdeelEra.get(key) ?? null;
+}
+const eraFills = new Map<string, Record<string, string>>();
+const fill = (p: BuurtProfile, wijkOf: BuurtProfile | undefined) => {
+  for (const era of PRE_ERAS) {
+    if (p.eras[era]) continue;
+    const w = wijkOf?.eras[era];
+    const src = w && w.n >= MIN_PRE_ERA_N ? { ...w, from: w.from ?? 'wijk' as const } : (() => { const d = stadsdeelPool(p.code[0], era); return d ? { ...d, from: 'stadsdeel' as const } : null; })();
+    if (!src) continue;
+    p.eras[era] = src;
+    eraFills.set(p.code, { ...(eraFills.get(p.code) ?? {}), [era]: src.from });
+  }
+};
+const wijkByCode = new Map<string, BuurtProfile>();
 for (const w of wijken) {
   const p = profileFor(w.code, w.name, 'wijk', samples.filter(s => sampleBuurt.get(s)?.wijk === w.code));
-  if (p && Object.keys(p.eras).length) { profiles.push(p); wijkProfiles.set(w.code, profiles.length); }
+  if (!p) continue;
+  fill(p, undefined);
+  if (Object.keys(p.eras).length) { profiles.push(p); wijkProfiles.set(w.code, profiles.length); wijkByCode.set(w.code, p); }
 }
 for (const b of buurten) {
   const p = profileFor(b.code, b.name, 'buurt', samples.filter(s => sampleBuurt.get(s)?.code === b.code));
+  if (p) fill(p, b.wijk ? wijkByCode.get(b.wijk) : undefined);
   if (p && Object.keys(p.eras).length) { profiles.push(p); profileOfBuurt.set(b.code, profiles.length); }
   else if (b.wijk && wijkProfiles.has(b.wijk)) profileOfBuurt.set(b.code, wijkProfiles.get(b.wijk)!);
 }
+
+// Coverage record (lane profiles-citywide): every buurt has its own profile, one filled from its wijk/stadsdeel, its wijk's, or the city default, with why.
+const buurtPands = new Map<string, number>();
+for (const p of pands.values()) { const b = buurtOf(p.lng, p.lat); if (b) buurtPands.set(b.code, (buurtPands.get(b.code) ?? 0) + 1); }
+const coverage = buurten.map(b => {
+  const own = profiles.find(p => p.level === 'buurt' && p.code === b.code);
+  const measured = !!own && Object.values(own.eras).some(e => !e!.from);
+  const mine = samples.filter(s => sampleBuurt.get(s)?.code === b.code);
+  const older = mine.filter(s => !s.modernPass).length, modern = mine.filter(s => s.era === 'modern').length;
+  const wijkP = b.wijk ? profiles.find(p => p.level === 'wijk' && p.code === b.wijk) : undefined;
+  const pandsN = buurtPands.get(b.code) ?? 0;
+  const level = own ? (measured ? 'own' : 'filled') : wijkP ? 'wijk' : 'city';
+  const why = measured ? '' : pandsN === 0 ? 'no BAG pands in the buurt (water, park, industrial land)' : `${older} pre-1945 and ${modern} post-war measured fronts of ${pandsN} pands, under the minimums (pre-1945 era ${MIN_PRE_ERA_N}, profile ${MIN_N})`;
+  return { code: b.code, name: b.name, wijk: b.wijk, level, fallback: own ? b.code : wijkP ? wijkP.code : null, fronts: older, modernFronts: modern, pands: pandsN, why, eraFills: eraFills.get(own ? b.code : wijkP ? wijkP.code : '') ?? {} };
+});
+fs.writeFileSync(path.join(OUT, 'coverage.json'), JSON.stringify(coverage, null, 1));
+console.log('coverage: own', coverage.filter(c => c.level === 'own').length, 'filled from wijk/stadsdeel only', coverage.filter(c => c.level === 'filled').length, 'wijk fallback', coverage.filter(c => c.level === 'wijk').length, 'city default', coverage.filter(c => c.level === 'city').length, 'of', coverage.length, '; eras dropped before validation', droppedEras.length, droppedEras.join(', '));
 
 // Grid: profile index per CELL_M cell over the profiled buurten.
 const profiled = buurten.filter(b => profileOfBuurt.has(b.code));

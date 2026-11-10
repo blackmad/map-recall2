@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-09",
+  "generatedAt": "2026-11-10",
   "anchors": [
     "hornweg-terminal",
     "zaanstraat-rail-yard"
@@ -9,7 +9,7 @@
       "id": "hornweg-terminal",
       "areaM2": 232537,
       "aisles": 35,
-      "boxes": 2198
+      "boxes": 1720
     }
   ],
   "sidingLines": {

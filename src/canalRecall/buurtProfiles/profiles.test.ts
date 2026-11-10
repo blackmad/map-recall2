@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { BuurtProfileIndex, pickWeighted, profileTraits, unitDraw, validateProfileSet, type BuurtProfile, type BuurtProfileSet } from './profiles.ts';
+import { BuurtProfileIndex, pruneEras, storeyScaleOf, STOREY_SCALE_ENABLED, STOREY_SCALE_MAX, STOREY_SCALE_MIN, pickWeighted, profileTraits, unitDraw, validateProfileSet, type BuurtProfile, type BuurtProfileSet } from './profiles.ts';
 import { bayLookFor } from '../bayLook.ts';
 import { PERIOD_WALLS } from '../look/palette.ts';
 import PUBLISHED from './buurt-profiles.json' with { type: 'json' };
@@ -81,4 +81,51 @@ test('a profile wall replaces a material-family prior only within its family', a
   assert.equal(profileWallBeatsMaterial('plaster', '#7a4535'), false);
   assert.equal(profileWallBeatsMaterial('concrete', '#7a4535'), false);
   assert.equal(profileWallBeatsMaterial(undefined, '#7a4535'), false);
+});
+
+test('pruneEras: drops thin and undrawable eras, leaves good profiles byte-identical', () => {
+  const good = { c19: { n: 30, walls: [['#5a3a30', 3], ['#e8e2d4', 1]] as const, tallShare: 1 } };
+  const same = pruneEras(good, 8);
+  assert.equal(JSON.stringify(same.eras), JSON.stringify(good));
+  assert.deepEqual(same.dropped, []);
+  const bad = pruneEras({ canal: { n: 3, tallShare: 1 }, school: { n: 20, walls: [['#NaNNaN', 2]] }, c19: good.c19 }, 8);
+  assert.deepEqual(Object.keys(bad.eras), ['c19']);
+  assert.deepEqual(bad.dropped.sort(), ['canal', 'school']);
+  assert.doesNotThrow(() => validateProfileSet({ ...set(), profiles: [{ ...profile, eras: bad.eras }] }));
+});
+
+test('storeyHeightM: held (scale 1 by default), validated, bounded when enabled, absent = scale 1', () => {
+  assert.equal(STOREY_SCALE_ENABLED, false);
+  assert.equal(storeyScaleOf({ n: 10, storeyHeightM: 3.6 }, 3), 1);
+  assert.equal(storeyScaleOf(undefined, 3), 1);
+  assert.equal(storeyScaleOf({ n: 10 }, 3), 1);
+  assert.ok(Math.abs(storeyScaleOf({ n: 10, storeyHeightM: 3.15 }, 3, true) - 1.05) < 1e-9);
+  assert.equal(storeyScaleOf({ n: 10, storeyHeightM: 5 }, 3, true), STOREY_SCALE_MAX);
+  assert.equal(storeyScaleOf({ n: 10, storeyHeightM: 2.2 }, 3, true), STOREY_SCALE_MIN);
+  const withKnob = (e: object, extra: object = {}) => ({ ...set(), profiles: [{ ...profile, ...extra, eras: { c19: { n: 9, ...e } } }] });
+  assert.doesNotThrow(() => validateProfileSet(withKnob({ storeyHeightM: 3.1 }, { shopfrontShare: 0.4 })));
+  assert.throws(() => validateProfileSet(withKnob({ storeyHeightM: 9 })), /storeyHeightM/);
+  assert.throws(() => validateProfileSet(withKnob({}, { shopfrontShare: 1.4 })), /shopfrontShare/);
+});
+
+test('bayLookFor: shopfrontShare 0 / 1 decides the shop draw without the extract, absent keeps the old pick', () => {
+  const base = { ...profile, shopShare: undefined };
+  const none = { ...base, shopfrontShare: 0 }, all = { ...base, shopfrontShare: 1 };
+  for (let i = 0; i < 40; i++) {
+    const hasShop = (pr: BuurtProfile) => bayLookFor(`pand${i}`, 1890, 14, 'photo', undefined, undefined, undefined, pr).layers.ground !== bayLookFor(`pand${i}`, 1890, 14, 'photo', 'quiet', undefined, undefined, pr).layers.ground;
+    assert.equal(hasShop(none), false);
+    assert.equal(hasShop(all), true);
+  }
+  for (let i = 0; i < 40; i++) assert.deepEqual(bayLookFor(`p${i}`, 1890, 14, 'photo', undefined, undefined, undefined, base), bayLookFor(`p${i}`, 1890, 14, 'photo', undefined, undefined, undefined, { ...base, shopfrontShare: undefined }));
+});
+
+test('pruneEras: per-era minimum (pre-1945 20, modern 8) and the `from` marker validates', () => {
+  const walls = [['#5a3a30', 3]] as const;
+  const r = pruneEras({ canal: { n: 12, walls }, c19: { n: 20, walls }, modern: { n: 9, walls } }, { canal: 20, c19: 20, school: 20, modern: 8 });
+  assert.deepEqual(Object.keys(r.eras).sort(), ['c19', 'modern']);
+  assert.deepEqual(r.dropped, ['canal']);
+  const withFrom = (from: unknown) => ({ ...set(), profiles: [{ ...profile, eras: { c19: { n: 30, walls, from } } }] }) as unknown as BuurtProfileSet;
+  assert.doesNotThrow(() => validateProfileSet(withFrom('wijk')));
+  assert.doesNotThrow(() => validateProfileSet(withFrom('stadsdeel')));
+  assert.throws(() => validateProfileSet(withFrom('city')), /from/);
 });
