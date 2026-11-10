@@ -3,6 +3,38 @@
   "notes": [
     {
       "date": "2026-11-10",
+      "title": "Grass where there is grass",
+      "text": "Open ground that used to draw as grey paving now follows the city's own surface map and the 2025 aerial photo: lawns, verges and empty lots are meadow, shrubs and sand where they really are, and bare earth on building sites. About 4,000 hectares changed, mostly outside the centre; squares and forecourts stay paved.",
+      "where": [
+        4.8721,
+        52.3976
+      ],
+      "images": [
+        {
+          "src": "whats-new/2026-11-10-open-ground.jpg",
+          "alt": "Moermanskkade lot: aerial photo, before as grey paving, after as meadow",
+          "caption": "Moermanskkade: aerial photo, before, after"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-10",
+      "title": "Trains cross paths on a deck",
+      "text": "Where a railway passes over a path without a bridge in the map data, the track used to dip down into the path. It now crosses on a deck with piers and railings, at the Piet Kranenbergpad under the Schiphol line and at the Arlandabrug tram approaches.",
+      "where": [
+        4.85323,
+        52.33879
+      ],
+      "images": [
+        {
+          "src": "whats-new/2026-11-10-rail-spans.jpg",
+          "alt": "Piet Kranenbergpad: before the track dips into the path, after it crosses on a railed deck",
+          "caption": "Before and after"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-10",
       "title": "Three-window houses",
       "text": "Measured window bays are back, and this time a house with three windows across draws three. Before, the generic facades could only draw an even number, so the most common canal-house rhythm came out as two or four. About 400 measured houses now match the window count in their street photos; houses without a confirmed count keep the generic rhythm.",
       "images": [
