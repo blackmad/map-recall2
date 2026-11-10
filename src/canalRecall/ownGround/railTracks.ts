@@ -467,6 +467,48 @@ export function crossingTest(segments: readonly [Vec2, Vec2][], cellM = 32): (a:
   };
 }
 
+/** A street's drawn strip: its centreline segment and half width (metres). */
+export type StreetStrip = [Vec2, Vec2, number];
+
+/** Distance (m) between two segments (0 where they cross). */
+export function segmentDistance(a: Vec2, b: Vec2, c: Vec2, d: Vec2): number {
+  const cross = (o: Vec2, p: Vec2, q: Vec2) => (p[0] - o[0]) * (q[1] - o[1]) - (p[1] - o[1]) * (q[0] - o[0]);
+  if (((cross(c, d, a) > 0) !== (cross(c, d, b) > 0)) && ((cross(a, b, c) > 0) !== (cross(a, b, d) > 0))) return 0;
+  const pt = (p: Vec2, s: Vec2, e: Vec2) => {
+    const dx = e[0] - s[0], dy = e[1] - s[1], l2 = dx * dx + dy * dy || 1e-12, t = Math.max(0, Math.min(1, ((p[0] - s[0]) * dx + (p[1] - s[1]) * dy) / l2));
+    return Math.hypot(s[0] + dx * t - p[0], s[1] + dy * t - p[1]);
+  };
+  return Math.min(pt(a, c, d), pt(b, c, d), pt(c, a, b), pt(d, a, b));
+}
+
+/**
+ * Rails on the street surface (lane rails-class 2026-11-10, feedback "road and rail looks very broken", Arlandabrug
+ * and Kimpoweg): the level-crossing test above flattens only the pieces whose own segment crosses a street's
+ * centreline. A 6 m piece ending 2 m short of a 7 m carriageway (or a tram laid along the street) kept the bed's
+ * 0.32 m topLift over the road, so the ballast stood as a mound across the asphalt: 717 such runs city-wide,
+ * 278 of them 0.2-0.4 m high over a 2-16 m crossing. A piece is "on the street" where its segment comes within the
+ * strip's half width plus `reachM` (the bed's top half width by default) of a street's centreline: the bed lies flat
+ * on the surface there, as at a level crossing.
+ */
+export function onStreetTest(strips: readonly StreetStrip[], reachM: number = RAIL_SECTION.topHalf, cellM = 32): (a: Vec2, b: Vec2) => boolean {
+  const grid = new Map<string, StreetStrip[]>();
+  const cells = (a: Vec2, b: Vec2, pad: number, f: (k: string) => void) => {
+    const gx0 = Math.floor((Math.min(a[0], b[0]) - pad) / cellM), gx1 = Math.floor((Math.max(a[0], b[0]) + pad) / cellM);
+    const gy0 = Math.floor((Math.min(a[1], b[1]) - pad) / cellM), gy1 = Math.floor((Math.max(a[1], b[1]) + pad) / cellM);
+    if ((gx1 - gx0 + 1) * (gy1 - gy0 + 1) > 400) return;
+    for (let gx = gx0; gx <= gx1; gx++) for (let gy = gy0; gy <= gy1; gy++) f(`${gx}:${gy}`);
+  };
+  for (const s of strips) cells(s[0], s[1], s[2] + reachM, k => { (grid.get(k) ?? grid.set(k, []).get(k)!).push(s); });
+  return (a, b) => {
+    let hit = false;
+    cells(a, b, 0, k => {
+      if (hit) return;
+      for (const [c, d, half] of grid.get(k) ?? []) if (segmentDistance(a, b, c, d) <= half + reachM) { hit = true; return; }
+    });
+    return hit;
+  };
+}
+
 /** Highway classes whose surface a track crosses at grade (a level crossing): carriageways and the paths beside them. */
 export const AT_GRADE_HIGHWAYS: ReadonlySet<string> = new Set(['motorway', 'trunk', 'primary', 'secondary', 'tertiary', 'unclassified', 'residential', 'living_street', 'service', 'road', 'busway', 'pedestrian', 'cycleway', 'footway', 'path', 'motorway_link', 'trunk_link', 'primary_link', 'secondary_link', 'tertiary_link']);
 
