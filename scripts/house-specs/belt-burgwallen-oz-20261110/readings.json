@@ -639,37 +639,6 @@
    ]
   },
   {
-   "pandId": "0363100012171173",
-   "label": "56",
-   "street": "Kloveniersburgwal",
-   "photo": "k54-58",
-   "front": {
-    "gable": "neck",
-    "crownCap": "rounded",
-    "atticWindows": 0,
-    "hoist": true,
-    "storeys": 5,
-    "bays": 3,
-    "bayWidths": [
-     0.75,
-     1.1,
-     0.75
-    ],
-    "windows": "sash",
-    "windowSurround": "none",
-    "doorBay": 0
-   },
-   "palette": {
-    "brick": "#4b3b33"
-   },
-   "limits": [
-    [
-     "gable ornament",
-     "the carved stone cartouche in the neck and the white claw-pieces are not drawn"
-    ]
-   ]
-  },
-  {
    "pandId": "0363100012177877",
    "label": "60",
    "street": "Kloveniersburgwal",
@@ -747,6 +716,10 @@
       "colour": "#2d2f33"
      },
      "stallriser": "low"
+    },
+    "speklagen": {
+     "spacing": 12,
+     "courses": 2
     }
    },
    "palette": {
@@ -890,6 +863,44 @@
    "pandId": "0363100012171629",
    "label": "44",
    "why": "facts eaves 5.5 m (3DBAG's low rear eaves): the recipe squashes four storeys under a 9 m roof; a HouseSpec has no eaves field (house-line.md 'Not wired' 1). Needs measuredEavesM in the house dir's facts.json"
+  },
+  {
+   "pandId": "0363100012171173",
+   "label": "56",
+   "why": "pickWall finds no street wall for the pand (row view and house:preview both fail); the reading (twin of 58) is kept here for a --wall/chord retry"
+  }
+ ],
+ "heldReadings": [
+  {
+   "pandId": "0363100012171173",
+   "label": "56",
+   "street": "Kloveniersburgwal",
+   "photo": "k54-58",
+   "front": {
+    "gable": "neck",
+    "crownCap": "rounded",
+    "atticWindows": 0,
+    "hoist": true,
+    "storeys": 5,
+    "bays": 3,
+    "bayWidths": [
+     0.75,
+     1.1,
+     0.75
+    ],
+    "windows": "sash",
+    "windowSurround": "none",
+    "doorBay": 0
+   },
+   "palette": {
+    "brick": "#4b3b33"
+   },
+   "limits": [
+    [
+     "gable ornament",
+     "the carved stone cartouche in the neck and the white claw-pieces are not drawn"
+    ]
+   ]
   }
  ]
 }

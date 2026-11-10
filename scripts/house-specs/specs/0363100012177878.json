@@ -1,0 +1,73 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012177878",
+ "address": "Kloveniersburgwal 58",
+ "design": {
+  "fronts": [
+   {
+    "id": "front0",
+    "street": "Kloveniersburgwal",
+    "basement": "none",
+    "cornice": "none",
+    "doorBay": 2,
+    "windows": "sash",
+    "hoist": true,
+    "gable": "neck",
+    "crownCap": "rounded",
+    "atticWindows": 0,
+    "storeys": 5,
+    "bays": 3,
+    "bayWidths": [
+     0.75,
+     1.1,
+     0.75
+    ],
+    "windowSurround": "none"
+   }
+  ],
+  "roof": {
+   "material": "black-tile"
+  },
+  "palette": {
+   "frame": "white",
+   "door": "#2a2624",
+   "stone": "#e9e6dd",
+   "brick": "#4b3b33"
+  },
+  "notes": [
+   "Twin of 56: neck gables with white claw-pieces, a round cap and a carved cartouche in the neck"
+  ]
+ },
+ "provenance": {
+  "fronts/0": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "lane belt-burgwallen-oz-build-20261110 hand read (front: crown, storeys, axes, windows, ground storey) of panorama TMX7316010203-002973_pano_0000_000075 (41 m across, overcast, row view of 54-58) and b_20250108_1041_Track21_Sphere_00035 (row view of 58-62)",
+   "at": "2023-02-20"
+  },
+  "roof": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "lane belt-burgwallen-oz-build-20261110 hand read (roof from the front) of panorama TMX7316010203-002973_pano_0000_000075 (41 m across, overcast, row view of 54-58) and b_20250108_1041_Track21_Sphere_00035 (row view of 58-62)",
+   "at": "2023-02-20"
+  },
+  "palette": {
+   "source": "author",
+   "confidence": 0.7,
+   "ref": "lane belt-burgwallen-oz-build-20261110 hand read (wall and trim colours) of panorama TMX7316010203-002973_pano_0000_000075 (41 m across, overcast, row view of 54-58) and b_20250108_1041_Track21_Sphere_00035 (row view of 58-62)",
+   "at": "2023-02-20"
+  },
+  "notes": {
+   "source": "author",
+   "confidence": 0.9,
+   "ref": "lane belt-burgwallen-oz-build-20261110 hand read (notes) of panorama TMX7316010203-002973_pano_0000_000075 (41 m across, overcast, row view of 54-58) and b_20250108_1041_Track21_Sphere_00035 (row view of 58-62)",
+   "at": "2023-02-20"
+  }
+ },
+ "schemaLimits": [
+  {
+   "component": "gable ornament",
+   "what": "the carved stone cartouche in the neck and the white claw-pieces are not drawn"
+  }
+ ]
+}
