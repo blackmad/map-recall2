@@ -3,6 +3,18 @@
   "notes": [
     {
       "date": "2026-11-10",
+      "title": "Landmarks no longer flicker in the distance",
+      "text": "From the air, a landmark switching between its simple and detailed model now dissolves from one to the other instead of popping, and far landmarks fade into the same haze as the city around them. Kit buildings far away cross-fade as they load too.",
+      "images": [
+        {
+          "src": "ui/2026-11-10-p3-pop-in/westerkerk-air-main-vs-lane.jpg",
+          "alt": "The Westerkerk from the air, before and after: the far landmarks now sit in the haze",
+          "caption": "Westerkerk from the air: before (left), after (right)."
+        }
+      ]
+    },
+    {
+      "date": "2026-11-10",
       "title": "Pins stay on land in Free Ride",
       "text": "A place's pin now stands on the quay, not in the canal, and tapping the water beside a pin no longer opens its card. By boat, tapping your canal still names it.",
       "where": [
@@ -65,7 +77,18 @@
       "date": "2026-11-09",
       "title": "Roofs stay on their walls",
       "text": "About 1,700 roofs hung more than a metre past their walls, some over the street. They are now cut at the walls, and listed canal houses with an irregular plan get their gable instead of a flat lid.",
-      "images": []
+      "images": [
+        {
+          "src": "ui/2026-11-10-note-shots/roofs-spui-desktop-before.jpg",
+          "alt": "Rooftops by the Spui from above, before the roof fix",
+          "caption": "Before, at the Spui."
+        },
+        {
+          "src": "ui/2026-11-10-note-shots/roofs-spui-desktop-after.jpg",
+          "alt": "The same rooftops by the Spui after the roofs were cut at their walls",
+          "caption": "After, at the Spui."
+        }
+      ]
     },
     {
       "date": "2026-11-09",

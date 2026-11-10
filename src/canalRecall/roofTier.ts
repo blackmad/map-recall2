@@ -289,7 +289,7 @@ void cellTierSample(vec3 p, float dist, out vec3 c, out vec2 m) {
 #ifdef CELL_TIER_PROBE
   cellFarTier = far;
 #endif
-#ifdef USE_FOG
+#if defined( USE_FOG ) && ! defined( DEPTH_FADE_LIMIT_ONLY )
   far = max(far, ${DEPTH_FADE_DETAIL_GLSL('dist')});
 #endif
 #ifdef CELL_TIER_PROBE

@@ -14,10 +14,10 @@ export function popFadeFlag(): boolean {
 }
 
 /**
- * `?kitFade=1`: the street-kit chunk cross-fades its rebuilds too (only under popFade). Default off: the lane's two
- * aerial runs with it ended at 763 and 1,189 MB of JS heap against 613 MB before, unexplained (integrator 2026-11-10).
+ * `?kitFade` (default on since lane P3 #328): the street-kit chunk cross-fades its rebuilds too (only under popFade).
+ * P2's heap jump was GC timing: after a forced GC the aerial desktop heap is 533–548 MB in every arm, n=3 each.
  */
-export const KIT_FADE_DEFAULT = false;
+export const KIT_FADE_DEFAULT = true;
 export function kitFadeFlag(): boolean {
   if (!popFadeFlag()) return false;
   const g = globalThis as { __canalRecallKitFade?: boolean | string; location?: { search?: string } };
