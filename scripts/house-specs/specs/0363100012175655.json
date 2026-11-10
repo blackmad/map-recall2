@@ -75,19 +75,19 @@
   "": {
    "source": "author",
    "confidence": 0.8,
-   "ref": "strip 2023-03-27 keizersgracht-596-648 (Gemeente Amsterdam panorama, CC BY 4.0); verdict docs/reports/gg-zuid-strip-verdict-20261110.md; rce:2675 (cornice, plm 1800); photo wins: entrance is a base door, not a stoop door",
+   "ref": "verdict doc: strip 2023-03-27 keizersgracht-596-648 (Gemeente Amsterdam panorama, CC BY 4.0); verdict docs/reports/gg-zuid-strip-verdict-20261110.md; rce:2675 (cornice, plm 1800); photo wins: entrance is a base door, not a stoop door",
    "at": "2026-11-10"
   },
   "fronts/0/storeys": {
    "source": "author",
    "confidence": 0.8,
-   "ref": "strip 2023-03-27 keizersgracht-596-648 (Gemeente Amsterdam panorama, CC BY 4.0): 4 full storeys above the souterrain (STOREYS_DEFINITION)",
+   "ref": "storeys: strip 2023-03-27 keizersgracht-596-648 (Gemeente Amsterdam panorama, CC BY 4.0): 4 full storeys above the souterrain (STOREYS_DEFINITION)",
    "at": "2026-11-10"
   },
   "fronts/0/bays": {
    "source": "author",
    "confidence": 0.85,
-   "ref": "docs/reports/gg-zuid-strip-verdict-20261110.md: window columns per upper storey read off the strip",
+   "ref": "bays: docs/reports/gg-zuid-strip-verdict-20261110.md: window columns per upper storey read off the strip",
    "at": "2026-11-10"
   }
  },
