@@ -1,3 +1,4 @@
+import { popFadeFlag } from './engine/popFade';
 import { BuildingContextIndex } from './buildingContextIndex.js';
 import { blendAtZoom, presenceOf, transitionOn } from './overviewTransition/blend.js';
 import { footprintTone } from './overviewTransition/basemapOverview.js';
@@ -230,6 +231,8 @@ const exceptLandmarks = <T extends { properties: Record<string, unknown>; type: 
 export { decorateRoof, exceptLandmarks, decorateKitRoof, decorateFront, decorateShopfront, setShopfronts, KIT_HIDE_IDS, withMonumentGable };
 
 const KIT_KEY = '__kit';
+/** `?popFade` (lane P2 #325): the kit chunk's rebuilds cross-fade like any other chunk's. */
+const KIT_FADE = popFadeFlag();
 /** chunkRank: an uninstalled coarse shell builds before detail up to this much nearer (metres of ahead rank). */
 const COARSE_HOLE_BONUS_M = 400;
 const CHUNK_FADE = (() => {
@@ -2081,8 +2084,12 @@ export class ThreeBuildings {
     }
   }
 
-  /** Whether chunks of `key` dissolve in and out now. */
-  private fades(key: string): boolean { return CHUNK_FADE && key !== KIT_KEY && !this.basemapHeld; }
+  /**
+   * Whether chunks of `key` dissolve in and out now. The street-kit chunk (one mesh of every installed kit, rebuilt
+   * whole as kits come and go) cross-fades too with `?popFade` (engine/popFade.ts, lane P2 #325): its rebuilds were the
+   * aerial pan's largest unfaded swap, 29 a minute beyond 1.2 km.
+   */
+  private fades(key: string): boolean { return CHUNK_FADE && (key !== KIT_KEY || KIT_FADE) && !this.basemapHeld; }
 
   /** SWAP_FADE: dissolve a leaving chunk's mesh out (removed when it has gone); false when its material cannot. */
   private fadeOut(mesh: any, ids?: ReadonlySet<string>): boolean {

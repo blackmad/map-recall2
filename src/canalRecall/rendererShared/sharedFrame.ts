@@ -409,7 +409,9 @@ export class SharedFrame {
       // `?drawLimit` (engine/drawLimit.ts, lane P2 #325): opaque haze at the draw limit, packed into fogFar. The limit
       // stays when the player's "Distance haze" is off (the gentle fade goes, the horizon stays: nothing past it draws).
       if (this.drawLimitOn) {
-        const aerial = isAerialView(view.zoom, (this.worldCamera as { pitch?: () => number }).pitch?.() ?? 0, view.center().lat);
+        let pitch = 0;
+        try { pitch = (this.worldCamera as { pitch?: () => number }).pitch?.() ?? 0; } catch { /* a camera without pitch (tests): flat */ }
+        const aerial = isAerialView(view.zoom, pitch, view.center().lat);
         const limit = drawLimitM(aerial, d);
         r = drawLimitFogRange(distanceHazeOn() ? r : { near: limit * 0.44, far: limit * 0.44 * 1.01 }, limit, aerial);
         publishDrawLimit({ from: Math.round(limit * 0.45), to: limit, aerial, eyeToCentreM: Math.round(d) });

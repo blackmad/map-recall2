@@ -112,8 +112,17 @@ const setup = await page.evaluate(workerSrc => {
   const P = window.__pb = { events: [], pending: [], results: [], captures: [], on: false, frame: 0 };
   const v = new THREE.Vector3(), v4 = new THREE.Vector4();
   // Placed after the frame's render: eye-relative metres (the shared frame's world has the eye at the origin).
+  const merc = ([lng, lat]) => [(lng + 180) / 360, (180 - (180 / Math.PI) * Math.log(Math.tan(Math.PI / 4 + lat * Math.PI / 360))) / 360];
   const place = e => {
     const o = e.obj; e.obj = null;
+    if (e.anchor) { // a model's anchor (batched landmarks draw through a BatchedMesh: their own nodes keep stale matrices)
+      const [mx, my] = merc(e.anchor); v.set(mx, my, 0).applyMatrix4(sf.worldFromMercatorM); e.d = +v.length().toFixed(1);
+      v4.set(v.x, v.y, v.z, 1).applyMatrix4(sf.camera.projectionMatrix);
+      const w = v4.w; e.onScreen = w > 0 && Math.abs(v4.x / w) < 1.05 && Math.abs(v4.y / w) < 1.05; e.px = w > 0 ? Math.round(Math.abs(20 * sf.camera.projectionMatrix.elements[5] / w) * innerHeight / 2) : 0; delete e.anchor;
+      const fog = sf.scene.fog; if (fog) { const t = Math.max(0, Math.min(1, (e.d - fog.near) / (fog.far - fog.near))); e.fogW = +(t * t * (3 - 2 * t)).toFixed(3); }
+      const lim = window.__canalRecallDrawLimitNow?.(); if (lim) { const t = Math.max(0, Math.min(1, (e.d - lim.from) / (lim.to - lim.from))); e.limitW = +(t * t * (3 - 2 * t)).toFixed(3); }
+      return;
+    }
     const geo = o?.geometry; let c = null, r = 0;
     if (geo) { if (!geo.boundingSphere) geo.computeBoundingSphere?.(); if (geo.boundingSphere) { c = geo.boundingSphere.center; r = geo.boundingSphere.radius; } }
     if (!c && o) { const box = new THREE.Box3().setFromObject(o); if (!box.isEmpty()) { const s = box.getBoundingSphere(new THREE.Sphere()); v.copy(s.center); r = s.radius; e.d = v.length(); } else return; }
@@ -124,7 +133,7 @@ const setup = await page.evaluate(workerSrc => {
     const w = v4.w, H = innerHeight;
     if (w <= 0) { e.onScreen = false; e.px = 0; }
     else {
-      const x = v4.x / w, y = v4.y / w, pr = r * sf.camera.projectionMatrix.elements[5] / w; // NDC radius
+      const x = v4.x / w, y = v4.y / w, pr = Math.abs(r * sf.camera.projectionMatrix.elements[5] / w); // NDC radius (the frame's y may be flipped)
       e.px = Math.round(pr * H / 2);
       e.onScreen = Math.abs(x) - pr < 1 && Math.abs(y) - pr < 1;
     }
@@ -132,9 +141,10 @@ const setup = await page.evaluate(workerSrc => {
     if (fog) { const t = Math.max(0, Math.min(1, (e.d - fog.near) / (fog.far - fog.near))); e.fogW = +(t * t * (3 - 2 * t)).toFixed(3); }
     const lim = window.__canalRecallDrawLimitNow?.(); if (lim) { const t = Math.max(0, Math.min(1, (e.d - lim.from) / (lim.to - lim.from))); e.limitW = +(t * t * (3 - 2 * t)).toFixed(3); }
   };
-  const log = (tier, kind, faded, obj, key) => { if (!P.on) return; const e = { t: performance.now(), f: P.frame, tier, kind, faded: !!faded, key: String(key ?? ''), obj }; P.events.push(e); P.pending.push(e); };
+  const log = (tier, kind, faded, obj, key, anchor) => { if (!P.on) return; const e = { t: performance.now(), f: P.frame, tier, kind, faded: !!faded, key: String(key ?? ''), obj, anchor }; P.events.push(e); P.pending.push(e); };
   const wrap = (obj, name, fn) => { if (!obj || typeof obj[name] !== 'function') return false; const base = obj[name]; obj[name] = function (...a) { return fn.call(this, base, a); }; return true; };
   const tb = vm._threeBuildings, bc = vm._bakedCoarse, fs = vm._farShells, sl = vm._signatureLandmarks, tr = vm._inventoryTrees, og = vm._ownGround;
+  const anchorOf = (spec, entry) => entry?.placement?.anchor || spec?.surveyed?.anchor || spec?.footprint?.centre || null;
   const tierOf = key => { const k = String(key); return k.startsWith('near:') ? 'detail' : k.startsWith('coarse') ? 'coarse' : 'chunk'; };
   const hooked = {
     chunkInstall: wrap(tb, 'install', function (base, a) { const before = this.chunks.get(a[0])?.mesh; const r = base.apply(this, a); const m = this.chunks.get(a[0])?.mesh; if (m && m !== before) log(tierOf(a[0]), before ? 'swap' : 'arrive', this.fading?.has?.(a[0]), m, a[0]); return r; }),
@@ -144,9 +154,9 @@ const setup = await page.evaluate(workerSrc => {
     farInstall: wrap(fs, 'install', function (base, a) { const r = base.apply(this, a); const res = this.residents.get(a[0].key); if (res) log('far', 'arrive', !!res.fade, res.mesh, a[0].key); return r; }),
     farDrop: wrap(fs, 'drop', function (base, a) { const res = this.residents.get(a[0]); const r = base.apply(this, a); if (res) log('far', 'leave', !!res.mesh.parent, res.mesh, a[0]); return r; }),
     farHandover: wrap(fs, 'applyHidden', function (base, a) { const res = a[0]; if (a[1]) return base.apply(this, a); const r = base.apply(this, a); if (r && !res.fade) log('far-handover', 'swap', !!res.handFade, res.mesh, res.key); return r; }),
-    landmarkAdd: wrap(sl, '_add', function (base, a) { const r = base.apply(this, a); log('landmark', 'arrive', false, a[1], a[0]?.id); return r; }),
-    landmarkDrop: wrap(sl, '_dropEntries', function (base, a) { const objs = (this._entries || []).filter(e => a[0]?.has?.(e.spec.id)).map(e => [e.spec.id, e.imported || e.root || e.group]); const r = base.apply(this, a); for (const [id, o] of objs) log('landmark', 'leave', false, o, id); return r; }),
-    landmarkLevel: wrap(sl, '_swapLevel', function (base, a) { const r = base.apply(this, a); log('landmark', 'swap', false, a[1], `${a[0]?.spec?.id}:${a[2]}`); return r; }),
+    landmarkAdd: wrap(sl, '_add', function (base, a) { const r = base.apply(this, a); log('landmark', 'arrive', false, null, a[0]?.id, anchorOf(a[0])); return r; }),
+    landmarkDrop: wrap(sl, '_dropEntries', function (base, a) { const objs = (this._entries || []).filter(e => a[0]?.has?.(e.spec.id)).map(e => [e.spec.id, anchorOf(e.spec, e)]); const r = base.apply(this, a); for (const [id, an] of objs) log('landmark', 'leave', false, null, id, an); return r; }),
+    landmarkLevel: wrap(sl, '_swapLevel', function (base, a) { const r = base.apply(this, a); log('landmark', 'swap', false, null, `${a[0]?.spec?.id}:${a[2]}`, anchorOf(a[0]?.spec, a[0])); return r; }),
     trees: wrap(tr, 'rebuild', function (base, a) { const r = base.apply(this, a); log('trees', 'rebuild', false, null, ''); return r; }),
     ground: wrap(og, 'install', function (base, a) { const before = this.resident?.get?.(a[0]?.key)?.group; const r = base.apply(this, a); const now = this.resident?.get?.(a[0]?.key)?.group; if (now && now !== before) log('ground', before ? 'swap' : 'arrive', false, now, a[0]?.key); return r; }),
   };
@@ -157,13 +167,16 @@ const setup = await page.evaluate(workerSrc => {
   const ctx = cv.getContext('2d', { willReadFrequently: true });
   const render = host._render.bind(host);
   host._render = (...a) => {
+    const t0 = performance.now();
     const r = render(...a);
+    if (P.on) (P.renderMs ||= []).push(performance.now() - t0);
     if (P.on) {
       for (const e of P.pending) { try { place(e); } catch (err) { e.err = String(err).slice(0, 80); } }
       P.pending.length = 0;
       ctx.drawImage(host.getCanvas ? host.getCanvas() : host.canvas, 0, 0, 640, 400);
       const img = ctx.getImageData(0, 0, 640, 400);
       const i = P.frame++;
+      if (i % 120 === 0) { let sum = 0; for (let q = 0; q < img.data.length; q += 4000) sum += img.data[q + 1]; (P.dbg ||= []).push([i, Math.round(sum / (img.data.length / 4000)), Math.round(g.player.x), Math.round(g.player.y), +g.camera.x?.toFixed?.(0)]); }
       P.captures.push([i, performance.now()]);
       worker.postMessage({ type: 'frame', t: performance.now(), i, rgba: img.data, keep: !!window.__pbKeep, force: null }, [img.data.buffer]);
     }
@@ -184,7 +197,13 @@ const raw = await page.evaluate(() => {
   const P = window.__pb, vm = canalRecallGame.vectorMap;
   return { events: P.events.map(({ obj, ...e }) => e), results: P.results, captures: P.captures, heapMB: performance.memory ? Math.round(performance.memory.usedJSHeapSize / 1048576) : null,
     fog: vm._sharedFrame.scene.fog ? { near: Math.round(vm._sharedFrame.scene.fog.near), far: Math.round(vm._sharedFrame.scene.fog.far) } : null,
-    limit: window.__canalRecallDrawLimitNow?.() ?? null };
+    limit: window.__canalRecallDrawLimitNow?.() ?? null, dbg: P.dbg,
+    // Frame cost: the shared frame's main-pass wall time (ms, CPU side of three's render) and the frame gaps.
+    renderMs: (() => { const q = (P.renderMs || []).slice().sort((a, b) => a - b); const at = f => q.length ? +q[Math.min(q.length - 1, Math.floor(q.length * f))].toFixed(2) : null; return { n: q.length, p50: at(0.5), p95: at(0.95), p99: at(0.99) }; })(),
+    gaps: (() => { const c = P.captures, d = []; for (let k = 1; k < c.length; k++) d.push(c[k][1] - c[k - 1][1]); d.sort((a, b) => a - b); const at = f => d.length ? +d[Math.min(d.length - 1, Math.floor(d.length * f))].toFixed(1) : null; return { p50: at(0.5), p99: at(0.99), over33: d.filter(x => x > 33).length }; })(),
+    info: (() => { const r = vm._sharedFrame?.renderer ?? vm.host?.renderer; const m = r?.info?.memory; return { geometries: m?.geometries ?? null, textures: m?.textures ?? null, calls: r?.info?.render?.calls ?? null, triangles: r?.info?.render?.triangles ?? null }; })(),
+    gl: (() => { try { const c = window.__canalPerf?.gl; const t = c?.resident?.totals?.() ?? c?.counters?.totals?.() ?? null; return t; } catch { return null; } })(),
+    stats: { far: vm._farShells?.stats?.() ?? null, baked: vm._bakedCoarse?.stats?.() ?? null, groundFar: vm._ownGround?.farRadiusM ?? null } };
 });
 const dump = framesDir ? await page.evaluate(() => window.__pb.dump.slice(0, 8).map(k => {
   const W = 640, H = 400, cv = document.createElement('canvas'); cv.width = W * 2 + 4; cv.height = H;
@@ -219,12 +238,14 @@ for (const [i] of raw.captures) {
 }
 for (const t of Object.values(tiers)) for (const c of Object.values(t)) c.diffPx = Math.round(c.diffPx);
 const secs = (raw.captures.at(-1)[1] - raw.captures[0][1]) / 1000;
-const summary = { mode, device, qs, seconds: +secs.toFixed(1), frames: raw.captures.length, fog: raw.fog, limit: raw.limit, heapMB: { start: heap0, end: raw.heapMB }, diffPxTotal: total, diffPxUnexplained: unexplained, tiers, hooked: setup.hooked, rails: setup.rails, errors };
+const summary = { renderMs: raw.renderMs, gaps: raw.gaps, info: raw.info, gl: raw.gl, stats: raw.stats, mode, device, qs, seconds: +secs.toFixed(1), frames: raw.captures.length, fog: raw.fog, limit: raw.limit, heapMB: { start: heap0, end: raw.heapMB }, diffPxTotal: total, diffPxUnexplained: unexplained, tiers, hooked: setup.hooked, rails: setup.rails, errors };
 fs.mkdirSync(path.dirname(out), { recursive: true });
 fs.writeFileSync(out, JSON.stringify({ summary, events: raw.events }, null, 1));
 if (framesDir) { fs.mkdirSync(framesDir, { recursive: true }); dump.forEach((k, j) => fs.writeFileSync(path.join(framesDir, `${mode}-${device}-${j}-f${k.i}-${k.area}px.jpg`), Buffer.from(k.jpg.split(',')[1], 'base64'))); }
 console.log(`${mode} ${device} ${qs}: ${summary.seconds}s ${summary.frames} frames; fog ${JSON.stringify(raw.fog)} limit ${JSON.stringify(raw.limit)}; diff px ${total} (unexplained ${unexplained}); heap ${heap0}->${raw.heapMB} MB`);
+console.log(`render ms ${JSON.stringify(raw.renderMs)} gaps ${JSON.stringify(raw.gaps)} info ${JSON.stringify(raw.info)} far ${JSON.stringify(raw.stats.far)} groundFar ${raw.stats.groundFar}`);
 console.log('tier          band       events onScreen faded POPS (visible) diffPx diffFrames');
 for (const [t, bands] of Object.entries(tiers)) for (const b of ['0-250', '250-600', '600-1200', '>1200', 'unplaced']) { const c = bands[b]; if (c) console.log(`${t.padEnd(13)} ${b.padEnd(10)} ${String(c.events).padStart(6)} ${String(c.onScreen).padStart(8)} ${String(c.faded).padStart(5)} ${String(c.pops).padStart(4)} (${c.popsVisible}) ${String(c.diffPx).padStart(7)} ${c.diffFrames}`); }
 if (errors.length) console.log('errors', errors.slice(0, 5));
 console.log('hooked', JSON.stringify(setup.hooked));
+console.log('dbg [frame, meanG, px, py, camx]', JSON.stringify(raw.dbg), 'sample events', JSON.stringify(raw.events.slice(0, 4)));
