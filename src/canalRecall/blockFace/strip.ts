@@ -38,6 +38,11 @@ function pickFrom(cands: (PanoChoice & {rd: RD})[], date: string, perSpan: numbe
 }
 
 /** `spanDates`: per-pand capture day overrides (scaffolding, a parked van or a closed shutter on the face's day). */
+/** The panoramas not captured on one of `days` (YYYY-MM-DD): days whose images are not published are never planned. */
+export function withoutDays(panos: PanoRecord[], days: string[]): PanoRecord[] {
+  return days.length ? panos.filter(p => !days.includes(day(p.timestamp))) : panos;
+}
+
 export function planStrip(spans: FrontSpan[], panos: PanoRecord[], options: {perSpan?: number; date?: string; spanDates?: Record<string, string>} = {}): StripPlan {
   const perSpan = options.perSpan ?? 3;
   const cands = spans.map(s => panoCandidates(s, panos));
