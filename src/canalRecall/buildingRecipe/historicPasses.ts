@@ -150,12 +150,20 @@ export function addMansards(group: T.Group, intent: CanalHouseIntent, recipe: Ca
     orientedQuad(values, L(0), R(0), R(1), L(1), new T.Vector3(0, s, h)); // steep face, out and up
     orientedQuad(values, L(1), R(1), R(2), L(2), new T.Vector3(0, 1, 0)); // flat top
     orientedQuad(values, L(2), R(2), R(3), L(3), new T.Vector3(0, 0, -1)); // back
-    orientedQuad(values, L(0), L(1), L(2), L(3), new T.Vector3(-1, 0, 0)); // party ends
-    orientedQuad(values, R(0), R(1), R(2), R(3), new T.Vector3(1, 0, 0));
     const g = new T.BufferGeometry(); g.setAttribute('position', new T.Float32BufferAttribute(values, 3)); g.computeVertexNormals();
     const m = new T.Mesh(g, material(ROOF_COLOURS[intent.roof.material].steep));
     m.name = `mansard/${f.id}`; m.userData = {component: 'mansard', surface: 'roof', pandId: intent.pandId};
     facade.add(m); added++;
+    // Party ends: the firewall, in the shell's wall material (lane H7 r3, #354). In slate they lay on the shell's own party
+    // wall wherever that rises above a lower neighbour (Nassaukade 147: 1.4 m2 of coplanar slate/brick, a glb-audit failure).
+    const ends: number[] = [];
+    orientedQuad(ends, L(0), L(1), L(2), L(3), new T.Vector3(-1, 0, 0));
+    orientedQuad(ends, R(0), R(1), R(2), R(3), new T.Vector3(1, 0, 0));
+    const ge = new T.BufferGeometry(); ge.setAttribute('position', new T.Float32BufferAttribute(ends, 3)); ge.computeVertexNormals();
+    const shell = group.getObjectByName('shell/0') as T.Mesh | undefined;
+    const e = new T.Mesh(ge, (shell?.material as T.Material) ?? material(recipe.palette.value.wall));
+    e.name = `mansard/${f.id}/ends`; e.userData = {component: 'mansard', surface: 'wall', pandId: intent.pandId};
+    facade.add(e);
   }
   return added;
 }
@@ -197,8 +205,9 @@ export function addTowers(group: T.Group, intent: CanalHouseIntent, recipe: Cana
       quad([x1, y0, z0], [x1, y0, z1], [x1, y1, z1], [x1, y1, z0]); // right, facing +x
       quad([x1, y0, z1], [x0, y0, z1], [x0, y1, z1], [x1, y1, z1]); // back, facing -z
       const body = new T.BufferGeometry(); body.setAttribute('position', new T.Float32BufferAttribute(values, 3)); body.computeVertexNormals();
-      const wall = new T.Mesh(body, (shell?.material as T.Material) ?? material(recipe.palette.value.wall));
-      wall.name = `tower/${f.id}-${i}/body`; wall.userData = {component: 'tower', surface: 'wall', pandId: intent.pandId};
+      const stone = t.finish === 'stone';
+      const wall = new T.Mesh(body, stone ? material(recipe.palette.value.stone ?? recipe.palette.value.trim) : (shell?.material as T.Material) ?? material(recipe.palette.value.wall));
+      wall.name = `tower/${f.id}-${i}/body`; wall.userData = {component: 'tower', surface: stone ? 'stone' : 'wall', pandId: intent.pandId};
       facade.add(wall);
       if (t.cap === 'merlons') { added += merlonTowerCap(facade, x0, x1, y1, z1, wall.material as T.Material, `tower/${f.id}-${i}`, intent.pandId); continue; }
       if (t.cap === 'stepped') { added += steppedTowerCap(facade, [[x0, 0.02], [x1, 0.02], [x1, z1], [x0, z1]], y1, (wall.material as T.Material), material(ROOF_COLOURS[intent.roof.material].steep), `tower/${f.id}-${i}`, intent.pandId); continue; }
@@ -209,8 +218,8 @@ export function addTowers(group: T.Group, intent: CanalHouseIntent, recipe: Cana
       if (t.cap === 'pyramid') for (let k = 0; k < 4; k++) roof.push(...c[k], ...c[(k + 1) % 4], cx, apex, cz);
       else { const up = c.map(p => [p[0], apex, p[2]]); roof.push(...up[0], ...up[1], ...up[2], ...up[0], ...up[2], ...up[3]); for (let k = 0; k < 4; k++) roof.push(...c[k], ...c[(k + 1) % 4], ...up[(k + 1) % 4], ...c[k], ...up[(k + 1) % 4], ...up[k]); }
       const cap = new T.BufferGeometry(); cap.setAttribute('position', new T.Float32BufferAttribute(roof, 3)); cap.computeVertexNormals();
-      const capMesh = new T.Mesh(cap, material(ROOF_COLOURS[intent.roof.material].steep));
-      capMesh.name = `tower/${f.id}-${i}/cap`; capMesh.userData = {component: 'tower', surface: 'roof', pandId: intent.pandId};
+      const capMesh = new T.Mesh(cap, stone ? material(recipe.palette.value.stone ?? recipe.palette.value.trim) : material(ROOF_COLOURS[intent.roof.material].steep));
+      capMesh.name = `tower/${f.id}-${i}/cap`; capMesh.userData = {component: 'tower', surface: stone ? 'stone' : 'roof', pandId: intent.pandId};
       facade.add(capMesh); added++;
     }
   }

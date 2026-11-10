@@ -10,8 +10,10 @@ import { fromBlockFace, fromRecipeIntent, fromRegisterFacts } from '../../src/ca
 import { fieldSources, resolveSpecs, strongestSource } from '../../src/canalRecall/houseSpec/resolve.ts';
 import { frontBays, specFields, validateSpec, type HouseSpec } from '../../src/canalRecall/houseSpec/spec.ts';
 import { toRecipe, withRoute } from '../../src/canalRecall/houseSpec/toRecipe.ts';
+import { specView } from '../../src/canalRecall/houseSpec/view.ts';
 import type { HouseSpecTile, HouseSpecTileRecord, HouseSpecView } from '../../src/canalRecall/houseSpec/decorate.ts';
 import { isRidePriority } from '../../src/canalRecall/ridePriority.ts';
+import { decodeDescriptor } from '../../src/canalRecall/bagTiles.ts';
 
 export const HELP = `build-house-specs: resolve every pand's HouseSpec from its sources and write the tiled extract.
 
@@ -107,31 +109,9 @@ for (const f of [...handFiles.keys()].sort()) { add(validateSpec(json(handFiles.
 
 // --- 2. resolve, route, runtime view -----------------------------------------------------------------------------
 const hex = (v: unknown) => (typeof v === 'string' ? (/^#[0-9a-f]{6}$/i.test(v) ? v.toLowerCase() : SWATCHES[v]?.toLowerCase()) : undefined);
-function viewOf(spec: HouseSpec): HouseSpecView {
-  const src = fieldSources(spec), front = spec.design.fronts?.[0];
-  const v: HouseSpecView = { src: {} };
-  // The roof planner (roofMesh planRoof) draws a monument gable as the whole roof's crown: a canal house's gabled or
-  // cornice-fronted pitched roof. A street-measured cornice/flat front (a flat-roofed 1890s block), a partial crown
-  // (crownAt/crownBays over some bays) or a flat roof form is not that, so only full-width gabled crowns reach it; the
-  // register's own gable words (monument-text) pass as before. The full front stays in the record's design (`d`).
-  if (front?.gable && (src['fronts/0/gable'] === 'monument-text' || plannerCrown(spec))) { v.gable = front.gable; v.src.gable = src['fronts/0/gable']; }
-  if (spec.facts?.facadeYear) { v.year = spec.facts.facadeYear; v.src.year = src['facts/facadeYear']; }
-  if (spec.design.palette?.wallMaterial) { v.wallMaterial = spec.design.palette.wallMaterial; v.src.wallMaterial = src['palette/wallMaterial']; }
-  const wall = hex(spec.design.palette?.brick);
-  if (wall) { v.wallHex = wall; v.src.wallHex = src['palette/brick']; }
-  // A bay count no source measured (an auto-placed type's default, adapters.ts fromBlockFace) stays in the record but
-  // does not reach the generic path: its own cell count is as good a guess, and a measured source can outrank it.
-  const bays = frontBays(front), baysSrc = src[front?.axisGrid ? 'fronts/0/axisGrid' : 'fronts/0/bays'];
-  if (bays && baysSrc !== 'default') { v.bays = bays; v.src.bays = baysSrc; }
-  return v;
-}
-const PLANNER_GABLES = new Set(['step', 'neck', 'raised-neck', 'bell', 'spout', 'point']);
-function plannerCrown(spec: HouseSpec): boolean {
-  const f = spec.design.fronts?.[0];
-  const at = f?.crownAt as { from?: number; to?: number } | undefined;
-  const full = !f?.crownBays && (!at || ((at.from ?? 0) <= 0.05 && (at.to ?? 1) >= 0.95));
-  return !!f?.gable && PLANNER_GABLES.has(f.gable) && full && spec.design.roof?.form !== 'flat';
-}
+// The runtime view (the extract's `v`): houseSpec/view.ts specView (H9 storeys/wallFamily/flat gable, K-stoep stoop,
+// H11 design fields), shared with house:preview --spec.
+const viewOf = (spec: HouseSpec): HouseSpecView => specView(spec);
 const resolved = new Map<string, HouseSpec>();
 for (const [pand, list] of [...parts].sort(([a], [b]) => (a < b ? -1 : 1))) resolved.set(pand, withRoute(resolveSpecs(list)));
 
@@ -165,6 +145,15 @@ for (const tile of tileKeys) {
   }
 }
 
+// --- 3b. 3DBAG crown rise for the register gable gate -------------------------------------------------------------
+const BAG_FACTS = path.join(ROOT, 'public/data/extracts/amsterdam/bag-facts/14');
+const bagRise = new Map<string, number>();
+if (existsSync(BAG_FACTS)) for (const x of readdirSync(BAG_FACTS)) for (const y of readdirSync(path.join(BAG_FACTS, x))) {
+  const t = JSON.parse(gunzipSync(readFileSync(path.join(BAG_FACTS, x, y))).toString('utf8'));
+  for (const [k, row] of Object.entries<number[]>(t.pands ?? {})) { const d = decodeDescriptor(row as any); if (d.eavesM !== null && d.ridgeM !== null) bagRise.set(k.slice(-16), Math.round((d.ridgeM - d.eavesM) * 10) / 10); }
+}
+function crownRise(pand: string): number | null { return bagRise.get(pand) ?? null; }
+
 // --- 4. write the staged tiles ------------------------------------------------------------------------------------
 rmSync(path.join(STAGING, '14'), { recursive: true, force: true });
 const byTile = new Map<string, HouseSpecTile>();
@@ -172,6 +161,9 @@ for (const [pand, spec] of resolved) {
   const at = where.get(pand);
   if (!at) continue;
   const record: HouseSpecTileRecord = { d: spec.design as Record<string, unknown>, s: fieldSources(spec), r: spec.route ?? 'generic', v: viewOf(spec) };
+  // The register gable gate (houseSpec/decorate.ts, H5h round 4) needs 3DBAG's crown above the eaves, which the live building
+  // tiles do not carry: the view carries ridge - eaves (bag-facts) for every pand with a gable or a historic gable.
+  if (record.v.gable || spec.facts?.historicGable) { const rise = crownRise(pand); if (rise !== null) record.v.crownRiseM = rise; }
   if (spec.facts && Object.keys(spec.facts).length) record.x = spec.facts as Record<string, unknown>;
   if (spec.schemaLimits?.length) record.l = spec.schemaLimits;
   const tile = byTile.get(at.tile) ?? { version: 1 as const, buildings: {} };
@@ -200,11 +192,17 @@ const report = {
   bySource: Object.fromEntries(SOURCES_SEEN.map(s => [s, 0])) as Record<string, number>,
   strongest: {} as Record<string, number>,
   multiSource: 0,
-  runtime: { gable: 0, year: 0, wallMaterial: 0, wallHex: 0, bays: 0 } as Record<string, number>,
+  runtime: { gable: 0, year: 0, wallMaterial: 0, wallHex: 0, bays: 0, storeys: 0, stoop: 0, groundM: 0, look: 0, shop: 0 } as Record<string, number>,
+  // H11: generic-path pands (no installed model) that carry each design field (drawn once SPEC_DESIGN_HELD releases it).
+  genericDesign: { groundM: 0, look: 0, shop: 0 } as Record<string, number>,
   /** Pands the generic path draws (no installed GLB/chunk hides them) whose spec carries bays or a wall colour: the
    *  houses whose look changes when the spec extract is published. */
   genericVisibleWithMesherReads: 0,
   modelledByInstall: 0,
+  /** Of genericVisibleWithMesherReads, how many carry each read (lane H9: the wall-colour rule's city-wide reach). */
+  genericVisibleBy: { wallHex: 0, bays: 0, storeys: 0 },
+  /** The generic-path pands whose wall the wall-colour rule draws (for the random review sheet). */
+  genericVisibleWallPands: [] as string[],
   ridePriority: { pands: 0, withBays: 0, withGable: 0 },
   byBuurt: {} as Record<string, { pands: number; gebied: string; ride: boolean; bays: number; gable: number }>,
 };
@@ -220,7 +218,12 @@ for (const [pand, spec] of resolved) {
   for (const k of Object.keys(report.runtime)) if ((v as any)[k] !== undefined) report.runtime[k]++;
   const installed = modelled.has(pand);
   if (installed) report.modelledByInstall++;
-  else if (at && (v.bays || v.wallHex)) report.genericVisibleWithMesherReads++;
+  else if (at && (v.bays || v.wallHex || v.storeys)) {
+    report.genericVisibleWithMesherReads++;
+    for (const k of ['wallHex', 'bays', 'storeys'] as const) if (v[k] !== undefined) report.genericVisibleBy[k]++;
+    if (v.wallHex) report.genericVisibleWallPands.push(pand);
+  }
+  if (!installed && at) for (const k of Object.keys(report.genericDesign)) if ((v as any)[k] !== undefined) report.genericDesign[k]++;
   const b = at?.buurt;
   if (b) {
     const row = report.byBuurt[b.code] ??= { pands: 0, gebied: b.gebied, ride: isRidePriority(b), bays: 0, gable: 0 };
@@ -238,7 +241,8 @@ console.log(`  inputs: register ${counts.register}, block faces ${counts.faces} 
 console.log(`  pands with a field from: ${Object.entries(report.bySource).map(([k, n]) => `${k} ${n}`).join(', ')}; ${report.multiSource} from more than one source`);
 console.log(`  route: recipe ${report.route.recipe}, generic ${report.route.generic}`);
 console.log(`  runtime view: ${Object.entries(report.runtime).map(([k, n]) => `${k} ${n}`).join(', ')}`);
-console.log(`  installed model hides ${report.modelledByInstall}; generic-path pands whose look the spec changes (bays/wall): ${report.genericVisibleWithMesherReads}`);
+console.log(`  installed model hides ${report.modelledByInstall}; generic-path pands whose look the spec changes (bays/wall/storeys): ${report.genericVisibleWithMesherReads} (wall ${report.genericVisibleBy.wallHex}, bays ${report.genericVisibleBy.bays}, storeys ${report.genericVisibleBy.storeys})`);
+console.log(`  generic-path pands carrying an H11 design field (held until released): ${Object.entries(report.genericDesign).map(([k, n]) => `${k} ${n}`).join(', ')}`);
 console.log(`  ride priority: ${report.ridePriority.pands} pands (${report.ridePriority.withGable} with a gable, ${report.ridePriority.withBays} with bays)`);
 console.log(`  top buurten: ${Object.entries(report.byBuurt).slice(0, 8).map(([k, r]) => `${k} ${r.pands}`).join(', ')}`);
 if (counts.facesInvalid.length) console.log(`  invalid faces (skipped): ${counts.facesInvalid.slice(0, 5).join(' | ')}${counts.facesInvalid.length > 5 ? ' …' : ''}`);

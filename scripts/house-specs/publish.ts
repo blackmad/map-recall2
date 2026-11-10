@@ -7,7 +7,7 @@ import { cpSync, existsSync, mkdirSync, openSync, closeSync, readdirSync, readFi
 import { createHash } from 'node:crypto';
 import { gunzipSync } from 'node:zlib';
 import path from 'node:path';
-import { allowIdsFor, BATCH_BUDGET_MS, cellsOfTiles, coversDelta, defaultBatchName, describeViolation, diffTiles, extraPands, mergeRecipeIntent, MIN_BLANK_WALL_M, suppressionViolations, withHold, type AuditWall, type SuppressionAudit, type TileFile } from '../../src/canalRecall/houseSpec/publishPlan.ts';
+import { allowIdsFor, BATCH_BUDGET_MS, blockFaceFactsFor, cellsOfTiles, coversDelta, defaultBatchName, describeViolation, diffTiles, extraPands, mergeRecipeIntent, MIN_BLANK_WALL_M, suppressionViolations, withHold, type AuditWall, type SuppressionAudit, type TileFile } from '../../src/canalRecall/houseSpec/publishPlan.ts';
 import { describeStaged, parseStaged, type StagedSpec } from '../../src/canalRecall/houseSpec/staged.ts';
 import { pandIdsIn } from '../../src/canalRecall/houseSpec/allow.ts';
 import { changedCoversTiles } from '../../src/canalRecall/world/tileCovers.ts';
@@ -266,8 +266,13 @@ async function main(args: string[]): Promise<number> {
       mkdirSync(path.dirname(file), { recursive: true });
       writeFileSync(file, JSON.stringify(mergeRecipeIntent(existsSync(file) ? readJson(file) : null, generated, id), null, 1) + '\n');
       if (!existsSync(path.join(HOUSES, id, 'facts.json'))) {
-        const street = /^(.*?)\s+\d/.exec(String(generated.address ?? ''))?.[1];
-        run.must('recipe', tsx('scripts/building-recipes/facts.ts', `--house=${id}`, `--pand=${pand}`, ...(street ? [`--street=${street}`] : []), '--no-photo'));
+        // A pand on a block face starts from the face's facts (blockFaceFactsFor: the frontage chord over a BAG erker).
+        const faces = path.join(ROOT, 'scripts/block-face/faces'), faceFacts = blockFaceFactsFor(pand, readdirSync(faces).sort().map(f => path.join(faces, f)), existsSync);
+        if (faceFacts) cpSync(faceFacts, path.join(HOUSES, id, 'facts.json'));
+        else {
+          const street = /^(.*?)\s+\d/.exec(String(generated.address ?? ''))?.[1];
+          run.must('recipe', tsx('scripts/building-recipes/facts.ts', `--house=${id}`, `--pand=${pand}`, ...(street ? [`--street=${street}`] : []), '--no-photo'));
+        }
       }
       ids.push(id);
     }

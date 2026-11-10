@@ -13,6 +13,7 @@ import type { FacadeStyle } from './genericFacades.js';
 import type { WallLayout } from './facadeLayout.js';
 import { ExtraSink, chanceFor, hash01, type ExtraContext, type RoofComponent, type RoofContext, type WallComponent } from './facadeExtraCore.js';
 import { continuousShopCanopy } from './shopCanopies.js';
+import { specStoopExtra } from './stoopExtra.js';
 import { ORNAMENT_COMPONENTS, paleMasonryAccents, raisedPilasterEntrance, raisedPlainEntrance, canalSideEntrance, isStreetWall, openingsOf, windowSpans } from './facadeOrnaments.js';
 
 export { ExtraSink, hash01, chanceFor } from './facadeExtraCore.js';
@@ -126,6 +127,9 @@ const STREET_FURNITURE: readonly WallComponent[] = [
     const x = c.f.len / 2; s.box(c.f, x - 0.1, x + 0.1, 0, 1.0, c.top - 0.6, c.top - 0.42, WOOD, true);
     s.slope(c.f, x - 0.35, x + 0.35, 0, 1.1, c.top - 0.05, c.top - 0.4, WOOD); } },
   { id: 'stoop', group: 'stoop', styles: ['canal'], p: 0.5, build: (c, s) => {
+    // A spec-stated stoop (K-stoep #360) draws typed: flight, landing, iron balustrades (stoopExtra.ts). Where the
+    // pavement has no room for it (or the budget), the three slabs below stand in, as before.
+    if (c.stoop && specStoopExtra(c, s)) return;
     const x = doorX(c); if (x == null || !c.groundLevel) return;
     for (let k = 0; k < 3; k++) s.box(c.f, x - 0.75, x + 0.75, 0, 1.2 - k * 0.35, c.base + k * 0.18, c.base + (k + 1) * 0.18, STONE);
     // Railings belong to the stoop: as their own component they stood on the pavement with no steps
@@ -275,7 +279,9 @@ export const ROOF_COMPONENTS: readonly RoofComponent[] = [
  * until that wall has been dressed (walls arrive in ring order, often back walls first).
  * Measured on the 40-house sample of scripts/check-facade-extras.ts; see HISTORY.md for the cost.
  */
-export const EXTRA_BUDGET = { wall: 180, sideWall: 30, building: 230, streetReserve: 160 } as const;
+/** `stoopWall`: what a spec stoop's street wall (K-stoep #360) may spend past `wall`, still inside `building`: a double
+ *  flight is 15 tread/landing boxes (120 triangles) before its iron, 188 with plain rails, 212 with bars. */
+export const EXTRA_BUDGET = { wall: 180, sideWall: 30, building: 230, streetReserve: 160, stoopWall: 60 } as const;
 
 /** Everything a wall can get: the architecture first (it is what reads from down the street), then the furniture. */
 // The budget runs out in this order, so the parts that read from down the street come first:
@@ -309,8 +315,9 @@ const definingWall = (c: ExtraContext) => isStreetWall(c) && !!(c.recipe?.shopCa
 /** Give every supported face its defining assembly before spending on optional trim. */
 export function buildingWallExtras(contexts: readonly ExtraContext[], sink: ExtraSink): void {
   const original = sink.budget, baseline = Math.min(original, EXTRA_BUDGET.building);
+  // A spec stoop's wall (K-stoep #360) dresses right after the defining walls, before the budget is spent elsewhere.
   const ordered = contexts.map((c, i) => ({ c, i, state: { used: [], groups: new Set<string>(), spent: 0 } as DressingState }))
-    .sort((a, b) => Number(definingWall(b.c)) - Number(definingWall(a.c)) || a.i - b.i);
+    .sort((a, b) => Number(definingWall(b.c)) - Number(definingWall(a.c)) || Number(!!b.c.stoop) - Number(!!a.c.stoop) || a.i - b.i);
   const definingCount = ordered.filter(({ c }) => definingWall(c)).length;
   // Small explicit caller budgets still mean small budgets. Extra capacity is for supported
   // multi-face buildings, and is never available to their optional ornaments.
@@ -348,7 +355,7 @@ function dressWall(c: ExtraContext, sink: ExtraSink, state: DressingState, phase
   const { used, groups } = state, beforeWall = sink.tris.length;
   const street = isStreetWall(c), period = c.period ?? c.style, outer = sink.budget;
   const reserve = street || streetDressed.has(sink) ? 0 : EXTRA_BUDGET.streetReserve;
-  const remaining = Math.max(0, (street ? EXTRA_BUDGET.wall : EXTRA_BUDGET.sideWall) - state.spent);
+  const remaining = Math.max(0, (street ? EXTRA_BUDGET.wall + (c.stoop ? EXTRA_BUDGET.stoopWall : 0) : EXTRA_BUDGET.sideWall) - state.spent);
   sink.budget = Math.max(sink.tris.length, Math.min(outer - reserve, sink.tris.length + remaining));
   if(phase!=='optional'&&street&&c.recipe?.shopCanopy){
     const before=sink.tris.length;

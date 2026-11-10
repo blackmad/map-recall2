@@ -27,6 +27,19 @@ import {cleanRoof, type RoofCleanupReport} from './roofCleanup.ts';
 import {gableOrnaments} from './gableOrnament.ts';
 import {entablatureCornice} from './entablature.ts';
 import type {CanalhouseOrnament} from '../canalhouseRecipes.ts';
+import {rosetteOrnaments, rosettesInPlaceOfWindows} from './rosettes.ts';
+import {planStoop, stoopBlocks, type StoopPlan} from './stoop.ts';
+
+/** Projection of a stone-faced tower's facing (`towers[].finish: 'stone'`): two of the kit's 4.5 cm relief steps (window sheets
+ *  stand 4.5 / 9 / 13.5 cm proud, geometryAudit floatTol), past the audit's 2-8 cm near-z-fight band and its 3 cm zfight-tight. */
+/** Mansard dormers with a stone or timber front stand this far behind the frontage (two relief steps past the cornice plane). */
+const DORMER_HOST_FRONT_SETBACK_M = 0.14;
+const TOWER_FACING_DEPTH_M = 0.09;
+/** The tower lights' frame trim; the facing stops this far from each light so it never lies over the frame. */
+const TOWER_LIGHT_TRIM_M = 0.06;
+/** The raised wall profile's edge trim up each side of a tower is 8 cm wide (measured in the clercq-236681 chunk, frame
+ *  material about 6 cm proud); the facing's piers start this far in from the tower's edges so they never lie over it. */
+const TOWER_EDGE_TRIM_M = 0.1;
 
 export const ROOF_COLOURS: Record<CanalHouseIntent['roof']['material'], {steep: string; low: string; flat: string}> = {
   slate: {steep: '#3b4047', low: '#4b5056', flat: '#6a6c6c'},
@@ -123,7 +136,7 @@ export interface FitReport {
     /** Towers rising over the eaves (elevation metres, the facade frame's x). A corner tower (`tower.corner`) lists its
      * plan on the owning front (recipe-local footprint metres: corner, along this front, opposite, along the partner front)
      * and `partner` on the other front, whose wall only rises. */
-    towers?: {leftM: number; widthM: number; bottomM: number; topM: number; cap: 'pyramid' | 'flat' | 'stepped' | 'merlons'; corner?: {role: 'owner' | 'partner'; plan?: CanalhousePoint[]; walls?: number[]}}[];
+    towers?: {leftM: number; widthM: number; bottomM: number; topM: number; cap: 'pyramid' | 'flat' | 'stepped' | 'merlons'; /** `towers[].finish`: a stone body and cap (addTowers) */ finish?: 'stone'; corner?: {role: 'owner' | 'partner'; plan?: CanalhousePoint[]; walls?: number[]}}[];
     /** Rigid shop canopy (facade x): slab underside `bottomM`; an end on a party wall (`partyStart`/`partyEnd`, facade-x order) runs to the party plane. */
     canopy?: {leftM: number; widthM: number; bottomM: number; projectM: number; thicknessM: number; fasciaM: number; fasciaDepthM: number; partyStart: boolean; partyEnd: boolean; colour: string; fasciaColour: string;
       /** Glass-block band over the canopy (`awning.glassBlocks`), facade x (leftM, widthM) and heights. */
@@ -148,6 +161,8 @@ export interface FitReport {
     balconyRun?: {widthM: number; floorM: number; projectM: number; slabM: number; guard: 'iron' | 'brick'; guardM: number; slabColour?: string};
     /** Timber balconies on brackets (facade x): one per storey run of neighbouring balcony bays; `floorM` = platform top. */
     timberBalconies?: {id: string; leftM: number; widthM: number; floorM: number; projectM: number; slabM: number; guardM: number; rail: 'turned' | 'iron'}[];
+    /** `stoop` (stoop.ts): one plan per module in its viewer frame, placed on the facade at x -> scale * x + offset. */
+    stoops?: {plan: StoopPlan; scale: 1 | -1; offset: number}[];
     /** Eaves from a photo measurement (block-face strip) instead of the 3DBAG profile. */ measuredEaves?: boolean}[];
   warnings: string[];
   /** Height the model may exceed the LoD2.2 roof max by: 3DBAG LoD2.2 has no dormers, so declared dormers stand above it. */
@@ -870,6 +885,9 @@ export function fitIntent(intent: CanalHouseIntent, surveyFacts: BuildingFacts):
     // A tall plain parapet (`parapet`, De Baarsjes): the full storeys end `courses` brick courses under the eaves.
     const parapetM = front.parapet && !gabled ? round(front.parapet.courses * COURSE_M) : null;
     const layout = layoutFront(front, mw, eaves - (gabled ? 0.2 : parapetM ?? corniceH + 0.15));
+    // Wall rosettes on blind axes (rosettes.ts): their windows leave the layout before anything is derived from it.
+    const rosetteCut = front.rosettes ? rosettesInPlaceOfWindows(layout.openings, front.rosettes) : null;
+    if (rosetteCut) { layout.openings = rosetteCut.openings; warnings.push(...rosetteCut.missing.map(m => `${front.id}: rosette ${m}`)); }
     // A crown on part of the front: [x0, x1] in module metres from the viewer's left (`crownAt` fractions or `crownBays` axes).
     const crownSpan: [number, number] | null = front.crownAt ? [front.crownAt.from * mw, front.crownAt.to * mw]
       : front.crownBays ? [layout.bayEdges[front.crownBays.from], layout.bayEdges[front.crownBays.to + 1]] : null;
@@ -1031,6 +1049,18 @@ export function fitIntent(intent: CanalHouseIntent, surveyFacts: BuildingFacts):
         if (moduleProfile.at(-1)![0] < mw - 0.01) moduleProfile.push([mw, eaves]);
       }
     }
+    // More towers over bays (`towers`, lane H7 round 2: the Nassaukade corner's two stone towers on the cornice): each rises
+    // like `tower` (the front wall's profile, one light, compile.ts addTowers body and cap); `finish: stone` faces it in stone.
+    const extraTowers: {span: [number, number]; top: number; t: NonNullable<FrontIntent['towers']>[number]}[] = [];
+    for (const t of front.towers ?? []) {
+      const span: [number, number] = [layout.bayEdges[t.bays.from], layout.bayEdges[t.bays.to + 1]], top = round(eaves + t.rise * upperStoreyM);
+      if ((moduleProfile && moduleProfile.some(([x, y]) => y > eaves + 1e-6 && x > span[0] - 0.05 && x < span[1] + 0.05)) || (towerSpan && span[0] < towerSpan[1] + 0.05 && span[1] > towerSpan[0] - 0.05)) { warnings.push(`${front.id}: tower over bays ${t.bays.from}-${t.bays.to} overlaps a crown or tower; skipped`); continue; }
+      const base = moduleProfile ?? [[0, eaves], [mw, eaves]] as CanalhousePoint[];
+      moduleProfile = [...base.filter(p => p[0] <= span[0] + 1e-6), [span[0], eaves], [span[0], top], [span[1], top], [span[1], eaves], ...base.filter(p => p[0] >= span[1] - 1e-6)];
+      if (moduleProfile[0][0] > 0.01) moduleProfile.unshift([0, eaves]);
+      if (moduleProfile.at(-1)![0] < mw - 0.01) moduleProfile.push([mw, eaves]);
+      extraTowers.push({span, top, t});
+    }
     const profile = moduleProfile ? Array.from({length: count}, (_, k) => moduleProfile!.map(([x, y]) => [place(k, x), y] as CanalhousePoint)).flat() : [[0, eaves], [width, eaves]] as CanalhousePoint[];
     // Stone ornament of a historic front (wings, ears, cartouche, finial on gables; a gablet/crest on a cornice front).
     if (front.gableOrnament) {
@@ -1045,6 +1075,12 @@ export function fitIntent(intent: CanalHouseIntent, surveyFacts: BuildingFacts):
       }
       if (pieces2.length) elevation.ornaments = seen([...(elevation.ornaments?.value ?? []), ...pieces2]);
     }
+    if (rosetteCut?.discs.length) {
+      const made: CanalhouseOrnament[] = [];
+      for (let m = 0; m < count; m++) for (const d of rosetteCut.discs) for (const o of rosetteOrnaments(d, `${pieces.length > 1 ? front.id + '-' : ''}${count > 1 ? `m${m}-` : ''}`))
+        made.push({...o, profile: o.profile.map(([x, y]) => [round(mirrored ? width - place(m, x) : place(m, x), 4), y] as CanalhousePoint)});
+      elevation.ornaments = seen([...(elevation.ornaments?.value ?? []), ...made]);
+    }
     if (towerSpan && front.tower?.lights === 'per-axis' && front.tower.bays) {
       // One light per spanned axis on the body's axis centres, the top-storey windows' width (a wall dormer over two axes).
       const tb = front.tower.bays, topWins = layout.openings.filter(o => o.kind === 'window' && new RegExp(`^s${front.storeys - 1}-b\\d+[ab]?$`).test(o.id));
@@ -1058,6 +1094,27 @@ export function fitIntent(intent: CanalHouseIntent, surveyFacts: BuildingFacts):
       const tw = towerSpan[1] - towerSpan[0], ww = clamp(tw * 0.38, 0.45, 1.0), wh = clamp(upperStoreyM * 0.5, 0.6, 1.6), cx = (towerSpan[0] + towerSpan[1]) / 2;
       for (let m = 0; m < count; m++) for (let r = 0; eaves + r * upperStoreyM + 0.3 * upperStoreyM + wh <= towerTop - 0.25; r++)
         elevation.openings.value.push({id: `${pieces.length > 1 ? front.id + '-' : ''}tower-${r}${count > 1 ? `-m${m}` : ''}`, kind: 'window', leftM: round(flipX(place(m, cx - ww / 2, ww), ww)), bottomM: round(eaves + r * upperStoreyM + 0.3 * upperStoreyM), widthM: round(ww), heightM: round(wh), trimWidthM: 0.06, ...WINDOW_BARS[front.windows === 'shop' ? 'sash' : front.windows], frameSurface: 'trim', barSurface: 'trim'});
+    }
+    const towerFacings: NonNullable<CanalhouseElevation['bands']>['value'] = [];
+    for (const [k, x] of extraTowers.entries()) {
+      // One light centred in the tower per storey of rise (as `tower`); `lightRise`/`lightSill` size it (default 0.5 / 0.3).
+      const tw = x.span[1] - x.span[0], ww = clamp(tw * 0.38, 0.45, 1.0), wh = round(upperStoreyM * (x.t.lightRise ?? 0.5)), cx = (x.span[0] + x.span[1]) / 2, sill = x.t.lightSill ?? 0.3;
+      for (let m = 0; m < count; m++) for (let r = 0; eaves + (r + sill) * upperStoreyM + wh <= x.top - 0.25; r++)
+        elevation.openings.value.push({id: `${pieces.length > 1 ? front.id + '-' : ''}towers${k}-${r}${count > 1 ? `-m${m}` : ''}`, kind: 'window', leftM: round(flipX(place(m, cx - ww / 2, ww), ww)), bottomM: round(eaves + (r + sill) * upperStoreyM), widthM: round(ww), heightM: wh, trimWidthM: TOWER_LIGHT_TRIM_M, ...WINDOW_BARS[front.windows === 'shop' ? 'sash' : front.windows], frameSurface: 'trim', barSurface: 'trim'});
+      // Stone facing: piers either side of the lights and panels below, between and above them, never over a light, and
+      // TOWER_FACING_DEPTH_M proud of the wall (a facing a few cm off the brick z-fights at distance: glb audit zfight-tight).
+      if (x.t.finish === 'stone') {
+        const lights: [number, number][] = [];
+        const t = TOWER_LIGHT_TRIM_M;
+        for (let r = 0; eaves + (r + sill) * upperStoreyM + wh <= x.top - 0.25; r++) lights.push([eaves + (r + sill) * upperStoreyM - t, eaves + (r + sill) * upperStoreyM + wh + t]);
+        const top = x.top - 0.02, l0 = x.span[0] + TOWER_EDGE_TRIM_M, l1 = cx - ww / 2 - t, r0 = cx + ww / 2 + t, r1 = x.span[1] - TOWER_EDGE_TRIM_M;
+        const parts: [string, number, number, number, number][] = [['l', l0, l1, eaves, top], ['r', r0, r1, eaves, top]];
+        let y = eaves;
+        for (const [j, [below, above]] of lights.entries()) { parts.push([`p${j}`, l1, r0, y, below]); y = above; }
+        parts.push([`p${lights.length}`, l1, r0, y, top]);
+        for (let m = 0; m < count; m++) for (const [id, a, b, lo, hi] of parts) if (b - a > 0.02 && hi - lo > 0.02)
+          towerFacings.push({id: `${pieces.length > 1 ? front.id + '-' : ''}towers${k}-facing-${id}${count > 1 ? `-m${m}` : ''}`, leftM: round(flipX(place(m, a, b - a), b - a)), bottomM: round(lo), widthM: round(b - a), heightM: round(hi - lo), depthM: TOWER_FACING_DEPTH_M, surface: 'stone'});
+      }
     }
     if (groupCrowns) {
       // Gable lights per crown, side by side (or stacked up a neck), centred on each crown.
@@ -1128,7 +1185,10 @@ export function fitIntent(intent: CanalHouseIntent, surveyFacts: BuildingFacts):
       // stands on the roof face, its front just behind the cornice.
       const shape = (w: number) => style === 'pediment' ? {roofRiseM: round(clamp(w * 0.32, 0.4, 0.6)), frontOverhangM: 0.12} : style === 'pointed' ? {roofRiseM: round(clamp(w * 0.85, 0.8, 1.4))} : style === 'arched' ? {roofRiseM: round(clamp(w * 0.5, 0.45, 1)), frontOverhangM: 0.12, roofProfile: 'arch' as const} : style === 'box' || style === 'flat' ? {roofRiseM: 0} : {roofRiseM: 0.45};
       // A brick roof box (`box`) is low: 0.75 m over the wall top, its front 5 cm behind the facade (Kinkerstraat 109-161 strip: 0.6-0.8 m).
-      const placeOnMansard = mansard ? {setbackM: round(Math.max(0.05, maxOut + 0.03)), heightM: round(clamp(mansard.heightM - 0.25, 1.1, 1.6))} : style === 'box' ? {setbackM: 0.05, heightM: 0.75} : style === 'flat' ? {setbackM: 0.35, heightM: 1.8} : {setbackM: 0.35, heightM: 1.45};
+      // A stone or timber dormer front is host material (posts, apron, head): 5 cm behind the cornice its head stands in the
+      // cornice's plane and its glass was judged against the cornice (H7 r3, clercq-236681 installed: 2 parts, 0.51 m2).
+      const hostFrontDormer = front.dormerBody === 'timber' || front.dormerBody === 'stone';
+      const placeOnMansard = mansard ? {setbackM: round(hostFrontDormer ? Math.max(DORMER_HOST_FRONT_SETBACK_M, maxOut + DORMER_HOST_FRONT_SETBACK_M) : Math.max(0.05, maxOut + 0.03)), heightM: round(clamp(mansard.heightM - 0.25, 1.1, 1.6))} : style === 'box' ? {setbackM: 0.05, heightM: 0.75} : style === 'flat' ? {setbackM: 0.35, heightM: 1.8} : {setbackM: 0.35, heightM: 1.45};
       elevation.dormers = seen(Array.from({length: k * count}, (_, j) => { const {left, w} = span(j % k), sh = shape(w), lm = round(flipX(place(Math.floor(j / k), left, w), w)); return {id: `dormer-${j}`, leftM: lm, widthM: round(w), bottomM: round(Math.max(eaves, survey.shellTopM) + (front.dormerSize?.sill ?? 0.05)), heightM: front.dormerSize?.rise ?? placeOnMansard.heightM, depthM: 1.3, roofRiseM: sh.roofRiseM, ...('frontOverhangM' in sh ? {frontOverhangM: sh.frontOverhangM} : {}), ...('roofProfile' in sh ? {roofProfile: sh.roofProfile} : {}), setbackM: front.dormerSize?.setback ?? placeOnMansard.setbackM, trimWidthM: 0.07, verticalBars: front.dormerBody === 'zinc-band' ? [1 / 3, 2 / 3] : front.dormerParty ? [] : front.dormerLights ? Array.from({length: front.dormerLights - 1}, (_, i) => round((i + 1) / front.dormerLights!)) : [.5], ...(front.dormerBody === 'zinc-band' ? {bodyColour: ZINC_BAND.cheek, capColour: ZINC_BAND.cap, frontOverhangM: ZINC_BAND.capOverhangM} : {}), ...(front.dormerParty ? {partyEdge: lm + w / 2 > mw / 2 ? 'right' as const : 'left' as const, frontOverhangM: 0.12, fasciaColour: PARTY_DORMER_FASCIA.colour, fasciaHeightM: PARTY_DORMER_FASCIA.heightM} : {}), ...(front.dormerWindow ? {frontWall: {apronM: front.dormerWindow.apron, sideM: round(Math.max(0.1, (w - front.dormerWindow.light) / 2)), ...(front.dormerWindow.tall !== undefined ? {headM: round(Math.max(0, (front.dormerSize?.rise ?? placeOnMansard.heightM) - front.dormerWindow.apron - front.dormerWindow.tall))} : {})}} : front.dormerBody === 'timber' ? {frontWall: {apronM: TIMBER_DORMER.apronM, sideM: round(clamp(w * TIMBER_DORMER.sideShare, TIMBER_DORMER.sideMinM, TIMBER_DORMER.sideMaxM))}} : {}), wallSurface: front.dormerBody === 'zinc-band' ? 'stone' as const : front.dormerBody === 'zinc' ? 'roof' as const : style === 'box' && front.dormerBody !== 'stone' || front.dormerBody === 'brick' ? 'wall' as const : front.dormerBody === 'stone' || front.dormerBody === 'timber' ? 'stone' as const : 'trim' as const, roofSurface: 'roof' as const}; }));
     }
     // `dormerHoist`: one beam per dormer, over its frame in the pediment, from inside the dormer to `reach` in front of it.
@@ -1137,7 +1197,24 @@ export function fitIntent(intent: CanalHouseIntent, surveyFacts: BuildingFacts):
       elevation.hoists = seen(elevation.dormers.value.map(d => ({id: `hoist-${d.id}`, centerM: round(d.leftM + d.widthM / 2), heightM: round(d.bottomM + d.heightM + 0.08), widthM: 0.14, beamHeightM: 0.16, projectionM: round(Math.max(0.05, reach - (d.setbackM ?? 0))), setbackM: round((d.setbackM ?? 0) + 0.3), endRiseM: 0.1, surface: front.dormerBody === 'stone' || front.dormerBody === 'timber' ? 'stone' as const : 'trim' as const})));
     }
     if (front.hoist) elevation.hoists = seen(Array.from({length: count}, (_, m) => ({id: count > 1 ? `hoist-m${m}` : 'hoist', centerM: flipX(place(m, crownSpan ? (crownSpan[0] + crownSpan[1]) / 2 : mw / 2), 0), heightM: round(gabled ? crownTop - 0.9 : eaves + 0.1), widthM: 0.14, beamHeightM: 0.18, projectionM: 1.1, setbackM: 0.1, surface: 'door' as const})));
-    if ((front.basement === 'stoop' || front.basement === 'stoop-and-windows') && layout.doorLeft !== null && layout.groundBase > 0) {
+    let stoops: NonNullable<FitReport['fronts'][number]['stoops']> | undefined;
+    if (front.stoop && (front.basement === 'stoop' || front.basement === 'stoop-and-windows') && layout.doorLeft !== null && layout.groundBase > 0) {
+      // `stoop` (stoop.ts, K-stoep #360): a measured stoop per module, drawn by the post-library pass (stoopMesh.ts)
+      // instead of the library's straight front flight; basement lights under its masonry leave the front.
+      const sp = planStoop(front.stoop, {doorLeftM: layout.doorLeft, doorWidthM: layout.doorWidth, sillM: layout.groundBase, frontWidthM: mw});
+      if (!sp.plan) throw Error(`${front.id}: ${sp.problems.join('; ')}`);
+      const blocked = stoopBlocks(sp.plan, layout.openings);
+      const fatal = blocked.filter(id => !id.startsWith('basement-'));
+      if (fatal.length) throw Error(`${front.id}: stoop covers ${fatal.join(', ')} below the landing`);
+      if (blocked.length) {
+        const ids = new Set(Array.from({length: count}, (_, k) => blocked.map(id => `${pieces.length > 1 ? front.id + '-' : ''}${id}${count > 1 ? `-m${k}` : ''}`)).flat());
+        elevation.openings.value = elevation.openings.value.filter(o => !ids.has(o.id));
+      }
+      stoops = Array.from({length: count}, (_, m) => {
+        const t0 = flipX(place(m, 0), 0), t1 = flipX(place(m, 1), 0);
+        return {plan: sp.plan!, scale: (t1 > t0 ? 1 : -1) as 1 | -1, offset: round(t0, 6)};
+      });
+    } else if ((front.basement === 'stoop' || front.basement === 'stoop-and-windows') && layout.doorLeft !== null && layout.groundBase > 0) {
       // The library admits one entrance per elevation: the first module's stoop.
       const dl = flipX(place(0, layout.doorLeft, layout.doorWidth), layout.doorWidth);
       elevation.entrance = seen({leftM: round(dl - 0.15), widthM: round(layout.doorWidth + 0.3), riseM: round(layout.groundBase), runM: round(Math.min(1.4, layout.groundBase * 1.4)), approximateRiserM: 0.18, surface: 'stone'});
@@ -1293,16 +1370,19 @@ export function fitIntent(intent: CanalHouseIntent, surveyFacts: BuildingFacts):
       const atStart = (side === 'leftEnd') !== mirrored;
       return [{leftM: round(flipX(viewerLeft, w)), widthM: w, bottomM, topM, party: kind === 'half' ? (atStart ? 'start' as const : 'end' as const) : null}];
     }), ...innerLisenes(front, layout, width, bodyEaves, parapetM, canopy, flipX, warnings)] : undefined;
+    // Stone facings of `towers` (finish stone), after every other band of the front.
+    if (towerFacings.length) elevation.bands = seen([...(elevation.bands?.value ?? []), ...towerFacings]);
     reports.push({id: front.id, widthM: round(width), eavesM: round(eaves), crownTopM: round(groupCrowns ? Math.max(...groupCrowns.map(g => g.top)) : crownTop), storeyHeightsM: layout.storeyHeights, mirrored, edge: [edgeIndex, endIndex], frontageDeviationM: round(deviation), frontageOutsetM: round(maxOut, 4), polygonIndex, ...(fasciaRect ? {fascia: fasciaRect} : {}), ...(signBand ? {signBand} : {}),
       ...(mansard ? {mansard} : {}), ...(towerSpan ? {towers: Array.from({length: count}, (_, m) => ({leftM: round(flipX(place(m, towerSpan![0], towerSpan![1] - towerSpan![0]), towerSpan![1] - towerSpan![0])), widthM: round(towerSpan![1] - towerSpan![0]), bottomM: round(bodyEaves), topM: towerTop, cap: cornerEnd ? corner!.cap : front.tower!.cap,
-        ...(cornerEnd ? {corner: {role: cornerEnd.role, ...(cornerEnd.role === 'owner' ? {plan: corner!.plan, walls: corner!.walls} : {})}} : {})}))} : {}), ...(measuredEaves !== undefined ? {measuredEaves: true} : {}),
+        ...(cornerEnd ? {corner: {role: cornerEnd.role, ...(cornerEnd.role === 'owner' ? {plan: corner!.plan, walls: corner!.walls} : {})}} : {})}))} : {}),
+      ...(extraTowers.length ? {towers: [...(towerSpan ? Array.from({length: count}, (_, m) => ({leftM: round(flipX(place(m, towerSpan![0], towerSpan![1] - towerSpan![0]), towerSpan![1] - towerSpan![0])), widthM: round(towerSpan![1] - towerSpan![0]), bottomM: round(bodyEaves), topM: towerTop, cap: cornerEnd ? corner!.cap : front.tower!.cap, ...(cornerEnd ? {corner: {role: cornerEnd.role, ...(cornerEnd.role === 'owner' ? {plan: corner!.plan, walls: corner!.walls} : {})}} : {})})) : []), ...extraTowers.flatMap(x => Array.from({length: count}, (_, m) => ({leftM: round(flipX(place(m, x.span[0], x.span[1] - x.span[0]), x.span[1] - x.span[0])), widthM: round(x.span[1] - x.span[0]), bottomM: round(bodyEaves), topM: x.top, cap: x.t.cap, ...(x.t.finish === 'stone' ? {finish: 'stone' as const} : {})})))]} : {}), ...(measuredEaves !== undefined ? {measuredEaves: true} : {}),
       ...(canopy ? {canopy} : {}),
       ...(lisenes ? {lisenes} : {}),
       ...(erker?.oriel ? {erker: {leftM: round(flipX(erker.leftM, erker.widthM)), widthM: erker.widthM, frontWidthM: erker.oriel.frontWidthM, depthM: erker.oriel.depthM, topM: erker.topM, cap: 'none' as const,
         oriel: {paintedStoreys: erker.oriel.paintedStoreys, ...(erker.oriel.paintFrom !== undefined ? {paintFrom: erker.oriel.paintFrom} : {}), console: erker.oriel.console, footM: erker.oriel.footM, storeys: erker.storeys, ...(erker.oriel.consoleCorbel ? {consoleCorbel: erker.oriel.consoleCorbel} : {}), ...(erker.oriel.twinLeftM !== undefined ? {twinLeftM: round(flipX(erker.oriel.twinLeftM, erker.widthM))} : {})}}}
       : erker ? {erker: erker.hoods ? {leftM: round(flipX(erker.leftM, erker.widthM)), widthM: erker.widthM, frontWidthM: erker.widthM, depthM: DE_BAARSJES.boxDepthM, topM: erker.topM, cap: 'none' as const, finish: 'painted' as const, hoods: erker.hoods}
         : {leftM: round(flipX(erker.leftM, erker.widthM)), widthM: erker.widthM, frontWidthM: round(erker.widthM - 2 * ERKER.returnM), depthM: ERKER.depthM, topM: erker.topM, cap: front.bayWindows!.cap ?? 'none', ...(front.bayWindows!.finish ? {finish: front.bayWindows!.finish} : {})}} : {}),
-      ...(timberBalconies ? {timberBalconies} : {}), ...(balconyHoods.length ? {balconyHoods} : {}), ...(front.balconyRun ? {balconyRun: balconyRunFor(front.balconyRun, layout, width)} : {})});
+      ...(timberBalconies ? {timberBalconies} : {}), ...(stoops ? {stoops} : {}), ...(balconyHoods.length ? {balconyHoods} : {}), ...(front.balconyRun ? {balconyRun: balconyRunFor(front.balconyRun, layout, width)} : {})});
   }
   // The corner tower's body stands on the lower of the two fronts' eaves, to the shared top.
   if (corner) for (const r of reports) for (const t of r.towers ?? []) if (t.corner) { t.bottomM = corner.bottomM; t.topM = corner.topM!; }

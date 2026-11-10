@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
-import { bagAllowsShop, inferBusyStretch, useClassOf, type PandUses } from './shopGate.js';
+import { bagAllowsShop, hostForPoi, inferBusyStretch, isTradeBusiness, useClassOf, type PandUses } from './shopGate.js';
 import { decorateShopfront, setShopfronts, type ShopfrontExtract } from './shopfronts.js';
 import { meshBuildingFor, type Feature } from './threeBuildingFeatures.js';
 
@@ -91,4 +91,35 @@ test('regression pands: warehouses, offices and flats lose the guessed shop, rea
 test('the shopping streets keep their shops: the extract is not emptied by the gate', () => {
   const n = Object.keys(extract.buildings).length;
   assert.ok(n > 9000 && n < 12000, `shop buildings ${n}`);
+});
+
+// Round 2 (2026-11-10): where a POI node snaps. Inside a footprint it belongs there; on the pavement it snaps 8 m to a pand
+// BAG lists as shop/horeca and only 2 m to any other.
+const square = (x0: number, y0: number, w = 10, h = 10): [number, number][] => [[x0, y0], [x0 + w, y0], [x0 + w, y0 + h], [x0, y0 + h], [x0, y0]];
+test('a pavement node snaps 8 m to a BAG shop, 2 m to a warehouse; inside always counts', () => {
+  const shed = { id: 'shed', ring: square(0, 0) }, shop = { id: 'shop', ring: square(20, 0) };
+  const table: Record<string, PandUses> = { shop: uses({ winkelfunctie: 80 }), shed: uses({ industriefunctie: 900 }) };
+  const u = (id: string) => table[id];
+  assert.deepEqual(hostForPoi([shed, shop], 5, 5, u), { id: 'shed', inside: true, distanceM: 0 }, 'inside a warehouse footprint: kept');
+  assert.equal(hostForPoi([shed], 13.5, 5, u), null, '3.5 m off a warehouse: not its shop');
+  assert.equal(hostForPoi([shed], 11.5, 5, u)?.id, 'shed', '1.5 m off a warehouse: a pavement node');
+  assert.equal(hostForPoi([shop], 14, 5, u)?.id, 'shop', '6 m off a BAG shop: its shop');
+  assert.equal(hostForPoi([shed, shop], 14.5, 5, u)?.id, 'shop', 'the BAG shop wins over the nearer-but-closer warehouse when the warehouse is out of its 2 m');
+  assert.equal(hostForPoi([shed], 13.5, 5, u, false)?.id, 'shed', 'gate off: the old 8 m');
+});
+
+test('trade businesses are workshops, not shopfronts', () => {
+  assert.equal(isTradeBusiness({ shop: 'car_repair' }), true);
+  assert.equal(isTradeBusiness({ shop: 'wholesale' }), true);
+  assert.equal(isTradeBusiness({ shop: 'bakery' }), false);
+  assert.equal(isTradeBusiness({ amenity: 'restaurant' }), false);
+});
+
+test('round 2 pins: a warehouse loses a nearby POI, a pavement-node shop keeps it, a garage is not a shopfront', () => {
+  const has = (id: string) => extract.buildings[pand(id)] !== undefined;
+  assert.equal(has('0363100012162643'), false, 'Joris van den Bergweg 109, industriefunctie 1982: POI node 3.9 m off the footprint');
+  assert.equal(has('0363100012098752'), false, 'Langsom 8, industriefunctie: Hulsebos Autoschade (shop=car_repair)');
+  assert.equal(has('0363100012172704'), false, 'Lindengracht 227, industriefunctie: De Linde (shop=car_repair)');
+  assert.equal(has('0363100012236030'), true, 'Albert Cuypstraat 271, winkelfunctie: node 5.0 m off the footprint (pavement)');
+  assert.equal(has('0363100012109960'), true, 'Beethovenstraat 42, winkelfunctie: node 5.0 m off the footprint (pavement)');
 });

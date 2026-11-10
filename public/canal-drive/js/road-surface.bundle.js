@@ -23,6 +23,7 @@ var CanalRecallRoadSurface = (() => {
   __export(roadSurface_exports, {
     ALIGNMENT_DISTANCE_SLACK: () => ALIGNMENT_DISTANCE_SLACK,
     ALIGNMENT_WIDTH_SLACK: () => ALIGNMENT_WIDTH_SLACK,
+    BGT_PLAZAS_EXTRACT: () => BGT_PLAZAS_EXTRACT,
     CORNER_FILLET_RADIUS: () => CORNER_FILLET_RADIUS,
     CURB_INNER_MARGIN: () => CURB_INNER_MARGIN,
     CURB_OUTER_MARGIN: () => CURB_OUTER_MARGIN,
@@ -30,6 +31,8 @@ var CanalRecallRoadSurface = (() => {
     NAME_MERGE_SIZE: () => NAME_MERGE_SIZE,
     NAME_WIDTH_SLACK: () => NAME_WIDTH_SLACK,
     ROAD_GRID_CELL: () => ROAD_GRID_CELL,
+    bgtPlazasDefault: () => bgtPlazasDefault,
+    bgtPlazasEnabled: () => bgtPlazasEnabled,
     buildPlazaIndex: () => buildPlazaIndex,
     buildRoadSpatialIndex: () => buildRoadSpatialIndex,
     buildRoadSpatialIndexAsync: () => buildRoadSpatialIndexAsync,
@@ -101,7 +104,27 @@ var CanalRecallRoadSurface = (() => {
     }
   ];
 
+  // src/canalRecall/routing/bgtPlazas.ts
+  var BGT_PLAZA_MIN_AREA_M2 = 40;
+  var BGT_PLAZAS_FLAG = "bgtPlazas";
+  var BGT_PLAZAS_DEFAULT = false;
+  var BGT_PLAZAS_DEFAULT_DESKTOP = true;
+  var BGT_PLAZAS_DEFAULT_TOUCH = false;
+  function bgtPlazasDefault(touch) {
+    return touch ? BGT_PLAZAS_DEFAULT_TOUCH : BGT_PLAZAS_DEFAULT_DESKTOP;
+  }
+  var BGT_PLAZAS_EXTRACT = "bgt-plazas-v1.json";
+  function bgtPlazasEnabled(search, fallback = BGT_PLAZAS_DEFAULT) {
+    const match = new RegExp(`[?&]${BGT_PLAZAS_FLAG}=([^&#]*)`).exec(search || "");
+    if (!match) return fallback;
+    const value = match[1].toLowerCase();
+    if (value === "1" || value === "true" || value === "on") return true;
+    if (value === "0" || value === "false" || value === "off") return false;
+    return fallback;
+  }
+
   // src/canalRecall/routing/pedestrianAreas.ts
+  var PLAZA_GRID_METRES = 100;
   var PLAZA_EDGE_INSET_METRES = 1.5;
   var PLAZA_MIN_AREA_M2 = 250;
   var GREEN_SQUARE_NAME = /(plantsoen|kerkhof|monument|hof)$/i;
@@ -118,6 +141,7 @@ var CanalRecallRoadSurface = (() => {
     return Math.abs(twice / 2);
   }
   function isRideablePlaza(feature, path) {
+    if (feature.source === "bgt") return isClosedRing(path) && ringAreaSquareMetres(path) >= BGT_PLAZA_MIN_AREA_M2;
     const name = (feature.name || "").trim();
     if (GREEN_SQUARES.has(name) || GREEN_SQUARE_NAME.test(name)) return false;
     return isClosedRing(path) && ringAreaSquareMetres(path) >= PLAZA_MIN_AREA_M2;
@@ -125,10 +149,11 @@ var CanalRecallRoadSurface = (() => {
   function buildPlazaIndex(features, project, worldUnitsPerMetre, links = PAVED_LINKS) {
     const plazas = [];
     for (const feature of [...features || [], ...links]) {
-      const paths = feature.paths || (feature.path ? [feature.path] : []);
-      for (const path of paths) {
+      const polygons = feature.polygons || (feature.paths || (feature.path ? [feature.path] : [])).map((path) => [path]);
+      for (const [path, ...holePaths] of polygons) {
         if (!path || !isRideablePlaza(feature, path)) continue;
         const ring = path.map(([lat, lon]) => project(lat, lon));
+        const holes = holePaths.map((hole) => hole.map(([lat, lon]) => project(lat, lon)));
         let minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
         for (const p of ring) {
           if (p.x < minX) minX = p.x;
@@ -136,10 +161,22 @@ var CanalRecallRoadSurface = (() => {
           if (p.x > maxX) maxX = p.x;
           if (p.y > maxY) maxY = p.y;
         }
-        plazas.push({ name: feature.name || "", ring, minX, minY, maxX, maxY });
+        plazas.push({ name: feature.name || "", ring, holes, minX, minY, maxX, maxY });
       }
     }
-    return { plazas, inset: PLAZA_EDGE_INSET_METRES * worldUnitsPerMetre };
+    const cellSize = PLAZA_GRID_METRES * worldUnitsPerMetre;
+    const grid = /* @__PURE__ */ new Map();
+    for (const plaza of plazas) {
+      for (let gx = Math.floor(plaza.minX / cellSize); gx <= Math.floor(plaza.maxX / cellSize); gx++) {
+        for (let gy = Math.floor(plaza.minY / cellSize); gy <= Math.floor(plaza.maxY / cellSize); gy++) {
+          const key = `${gx},${gy}`;
+          const list = grid.get(key);
+          if (list) list.push(plaza);
+          else grid.set(key, [plaza]);
+        }
+      }
+    }
+    return { plazas, inset: PLAZA_EDGE_INSET_METRES * worldUnitsPerMetre, grid, cellSize };
   }
   function insideRing(ring, x, y) {
     let inside = false;
@@ -163,9 +200,12 @@ var CanalRecallRoadSurface = (() => {
   }
   function plazaAt(index, x, y) {
     if (!index) return null;
-    for (const plaza of index.plazas) {
+    const candidates = index.grid && index.cellSize ? index.grid.get(`${Math.floor(x / index.cellSize)},${Math.floor(y / index.cellSize)}`) ?? [] : index.plazas;
+    for (const plaza of candidates) {
       if (x < plaza.minX || x > plaza.maxX || y < plaza.minY || y > plaza.maxY) continue;
-      if (insideRing(plaza.ring, x, y) && edgeDistance(plaza.ring, x, y) >= index.inset) return plaza;
+      if (!insideRing(plaza.ring, x, y) || edgeDistance(plaza.ring, x, y) < index.inset) continue;
+      if (plaza.holes.some((hole) => insideRing(hole, x, y) || edgeDistance(hole, x, y) < index.inset)) continue;
+      return plaza;
     }
     return null;
   }

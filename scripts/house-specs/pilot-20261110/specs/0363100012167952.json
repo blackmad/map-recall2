@@ -1,0 +1,26 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012167952",
+ "address": "Bloemgracht 121",
+ "design": {
+  "fronts": [
+   {
+    "bays": 3
+   }
+  ]
+ },
+ "provenance": {
+  "fronts/0/bays": {
+   "source": "author",
+   "confidence": 0.9,
+   "ref": "h7 hand read of source-data-h5 pand-crops/0363100012167952 (good tier): three axes, agrees with Jev 3 (held)",
+   "at": "2026-11-10"
+  }
+ },
+ "schemaLimits": [
+  {
+   "component": "palette",
+   "what": "near-black painted brick: no drawable finish for a dark painted front (painted-brick maps to 'light'; wall colours held)"
+  }
+ ]
+}

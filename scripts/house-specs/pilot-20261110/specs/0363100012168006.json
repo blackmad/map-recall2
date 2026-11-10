@@ -1,0 +1,44 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012168006",
+ "address": "Bloemgracht",
+ "design": {
+  "fronts": [
+   {
+    "bays": 3
+   }
+  ],
+  "palette": {
+   "brick": "#3a3739"
+  },
+  "roof": {
+   "material": "slate"
+  }
+ },
+ "provenance": {
+  "fronts/0/bays": {
+   "source": "author",
+   "confidence": 0.9,
+   "ref": "h7 hand read of source-data-h5 pand-crops/0363100012168006 (2021-03-17): three axes; the preview measured 3 vs 3 but the render draws 2 window columns plus a door column (held)",
+   "at": "2026-11-10"
+  },
+  "palette/brick": {
+   "source": "author",
+   "confidence": 0.9,
+   "ref": "h7 hand read of source-data-h5 pand-crops/0363100012168006 (2021-03-17): charcoal painted wall (houseLine photo wall #524b4f under a grey sky, darkened to the shadowed patch); the strip-measured #030403 drew GREEN on the recipe route (lightness clamp on a near-black hex)",
+   "at": "2026-11-10"
+  },
+  "roof/material": {
+   "source": "author",
+   "confidence": 0.9,
+   "ref": "h7 hand read of source-data-h5 pand-crops/0363100012168006 (2021-03-17): grey slate hipped roof on the photo; the recipe drew red pantiles",
+   "at": "2026-11-10"
+  }
+ },
+ "schemaLimits": [
+  {
+   "component": "palette",
+   "what": "black painted brick with a white cornice band: verdict PASS on a red render because both walls are unsaturated (no hue test) and dL 0.05"
+  }
+ ]
+}

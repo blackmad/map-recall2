@@ -1,0 +1,45 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012182848",
+ "address": "Nieuwmarkt row",
+ "design": {
+  "fronts": [
+   {
+    "storeys": 4
+   }
+  ],
+  "palette": {
+   "brick": "#2d2a26",
+   "wallMaterial": "brick"
+  }
+ },
+ "provenance": {
+  "fronts/0/storeys": {
+   "source": "author",
+   "confidence": 0.9,
+   "ref": "scripts/house-specs/sets/easy-houses-20261110.json (review of the pand-reference crop and the cams photo)",
+   "at": "2026-11-10"
+  },
+  "palette/brick": {
+   "source": "streetlevel-measured",
+   "confidence": 0.8,
+   "ref": "panorama TMX7316010203-002992_pano_0005_000143 front crop (scripts/pand-reference/run.ts), measureFacade H2c wall-vs-trim, box [0.2, 3, 4, 11]",
+   "at": "2023-03-13"
+  },
+  "palette/wallMaterial": {
+   "source": "author",
+   "confidence": 0.9,
+   "ref": "scripts/house-specs/sets/easy-houses-20261110.json (review of the pand-reference crop and the cams photo)",
+   "at": "2026-11-10"
+  },
+  "facts/wallFamily": {
+   "source": "reviewed",
+   "confidence": 0.75,
+   "ref": "data/house-line/hand-set-v1.json on lane/house-h5h-handset-20261110 at 1ade25980 (reader A, convention docs/house-line.md §4c) wall",
+   "at": "2026-11-10"
+  }
+ },
+ "facts": {
+  "wallFamily": "brown"
+ }
+}

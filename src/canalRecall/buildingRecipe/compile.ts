@@ -27,6 +27,7 @@ import {addPierBlocks} from './pierBlocks.ts';
 import {addEavesOverhangs} from './eavesOverhang.ts';
 import {addGroundCanopies} from './groundCanopy.ts';
 import {applyOudWest} from './oudWest.ts';
+import {addStoops} from './stoopMesh.ts';
 import {applyOrielHoist} from './orielHoist.ts';
 
 /** `{sameAs, overrides}` recipes: deep-merge onto the named neighbour; fronts merge by index. */
@@ -235,6 +236,8 @@ export function compileBuilding(intent: BuildingIntent, facts: BuildingFacts): C
   if (intent.fronts.some(f => f.groundCanopy)) addGroundCanopies(built.group, intent, recipe, report);
   // 1900 Oud-West set (opt-in): timber balconies on brackets, painted erkers, painted brick as a measured tint.
   applyOudWest(built.group, intent, recipe, report);
+  // Measured stoops (opt-in `stoop`, K-stoep #360): flights, landing, souterrain opening, iron balustrades.
+  if (report.fronts.some(f => f.stoops?.length)) addStoops(built.group, intent, recipe, report);
   // Bellamybuurt 1915 set (opt-in): painted timber oriels, their consoles, hoist caps over dormers.
   applyOrielHoist(built.group, intent, recipe, report);
   // Historic fronts (opt-in): cornice/shutter paint, mansards, towers, party-wall clipping, lean.

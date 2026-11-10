@@ -8,6 +8,7 @@
  * terra/facade-component-contract: the model selects and classifies, a
  * compiler builds geometry.
  */
+import type {RosetteIntent} from './rosettes.ts';
 import type {BoxBalconyIntent} from '../blockBuilding/boxBalcony.ts';
 import type {BalconyBandsIntent} from '../blockBuilding/balconyBands.ts';
 import type {StackedBlocksIntent} from '../blockBuilding/stackedBlocks.ts';
@@ -18,6 +19,7 @@ import {brickStripeProblems, type BrickStripeZone} from './brickStripes.ts';
 import {stairLightProblems, type StairLightIntent} from './stairLight.ts';
 import {frontLoggiaProblems, type FrontLoggiaIntent} from './frontLoggia.ts';
 import {doorRevealProblems, type DoorRevealIntent} from './doorReveal.ts';
+import {stoopProblems, type StoopIntent} from './stoop.ts';
 import type {ParapetBandIntent} from './parapetBand.ts';
 import {friezeVentProblems} from './friezeVents.ts';
 import {corbelTableProblems, type CorbelTableIntent} from './corbelTable.ts';
@@ -449,6 +451,15 @@ export interface FrontIntent {
   basement: typeof BASEMENTS[number];
   /** The basement is a souterrain: a full storey (half below the street) under a bel-etage reached by the stoop, with storey-sized windows, instead of a 0.7-1.2 m plinth. Needs a basement. */
   souterrain?: boolean;
+  /**
+   * The stoop as measured (stoop.ts, K-stoep #360): flight `front | side-left | side-right | double`, `steps`, `riseM`,
+   * `treadM`, `widthM`, `landing {depth, width}`, `material stone | brick | painted`, `rail iron | stone | none`,
+   * `railStyle plain | bars | ornate`, `under door | window | closed`, `zone` (the measured stoep zone, m from the wall),
+   * every field optional. The landing meets the door sill (steps x rise), the flight stays on the front and inside the
+   * zone, or the fit throws. Needs `basement: stoop | stoop-and-windows`. Absent = the library's straight front flight,
+   * byte-identical. Flight direction and step count come from the photo or a hand read (docs/house-line.md "Stoops").
+   */
+  stoop?: StoopIntent;
   cornice: typeof CORNICES[number];
   windows: typeof WINDOWS[number];
   /** Window kind per storey where it differs from `windows` (key = storey index from the ground, or "last"): a cross-transom ground storey under sashes, 6-over-6 sashes under 8-over-8 bel-etage ones. */
@@ -798,6 +809,21 @@ export interface FrontIntent {
      * instead of one centred light per storey of rise. With `bays` only. Absent = byte-identical.
      */
     lights?: 'per-axis'; lightRise?: number; lightSill?: number};
+  /**
+   * Wall rosettes (roundels) on blind axes (rosettes.ts, lane H7 round 2): on each entry's `storeys` (1 = first floor) the
+   * windows of the listed `bays` (axes from the viewer's left) are taken out and a round medallion (stone ring, wall-colour
+   * field, stone boss) stands at each window's centre, `diameter` m across (0.4..1.6, default 0.9). Nassaukade 151-152,
+   * the corner's Nassaukade face: three roundels up its second axis. Absent = byte-identical.
+   */
+  rosettes?: RosetteIntent[];
+  /**
+   * More towers over bays (lane H7 round 2): each entry is a `tower` over `bays` (rise, cap, and `lightRise`/`lightSill`
+   * for its one centred light per storey of rise), and `finish: "stone"` faces its front in the stone colour (a stucco
+   * aedicule) where `tower` rises in the wall brick. Towers may not overlap each other, `tower` or a crown. Nassaukade
+   * 151-152, the corner's Nassaukade face: two stone towers with flat caps on the cornice over axes 2 and 5. Absent =
+   * byte-identical.
+   */
+  towers?: {bays: {from: number; to: number}; rise: number; cap: typeof TOWER_CAPS[number]; finish?: 'stone'; lightRise?: number; lightSill?: number}[];
   /**
    * Clip street-side details (cornice, bands, sills, gable ornament) at oblique party walls so nothing crosses the party
    * plane (trapezoidal plots meet the front up to ~20 degrees off square). Block faces set it for every house with
@@ -1696,6 +1722,7 @@ export function validateIntent(input: unknown): CanalHouseIntent {
       if (f.doorBay === null || f.shopfront?.residentialDoor || f.groundFront) problems.push(`${at}.doorArch: needs a doorBay (not a shop's residential door or a ground front)`);
     }
     if (f.doorReveal !== undefined) problems.push(...doorRevealProblems(f.doorReveal, f, at));
+    if (f.stoop !== undefined) problems.push(...stoopProblems(f.stoop, f, at));
     oneOf(f.basement, BASEMENTS, `${at}.basement`);
     oneOf(f.cornice, CORNICES, `${at}.cornice`);
     oneOf(f.windows, WINDOWS, `${at}.windows`);
@@ -2244,6 +2271,27 @@ function historicProblems(f: FrontIntent, at: string, colour: (v: unknown, where
     if (t?.lights !== undefined && (t.lights !== 'per-axis' || !t.bays)) problems.push(`${at}.tower.lights: "per-axis", on a tower over bays`);
     if (t?.lightRise !== undefined && !(t.lights && t.lightRise >= 0.2 && t.lightRise <= 0.9)) problems.push(`${at}.tower.lightRise: 0.2..0.9 upper-storey heights, with lights: per-axis`);
     if (t?.lightSill !== undefined && !(t.lights && t.lightSill >= 0 && t.lightSill <= 0.6)) problems.push(`${at}.tower.lightSill: 0..0.6 upper-storey heights over the eaves, with lights: per-axis`);
+  }
+  if (f.rosettes !== undefined) {
+    if (!Array.isArray(f.rosettes) || !f.rosettes.length) problems.push(`${at}.rosettes: a non-empty list of {bays, storeys, diameter?}`);
+    else f.rosettes.forEach((r, i) => {
+      if (!r || typeof r !== 'object' || Object.keys(r).some(k => !['bays', 'storeys', 'diameter'].includes(k))) problems.push(`${at}.rosettes[${i}]: unknown field (bays, storeys, diameter)`);
+      if (!Array.isArray(r?.bays) || !r.bays.length || r.bays.some(b => !Number.isInteger(b) || b < 0 || b >= grid)) problems.push(`${at}.rosettes[${i}].bays: axes within 0..${grid - 1}`);
+      if (!Array.isArray(r?.storeys) || !r.storeys.length || r.storeys.some(s => !Number.isInteger(s) || s < 1 || s >= f.storeys)) problems.push(`${at}.rosettes[${i}].storeys: upper storeys 1..${f.storeys - 1}`);
+      if (r?.diameter !== undefined && !(typeof r.diameter === 'number' && r.diameter >= 0.4 && r.diameter <= 1.6)) problems.push(`${at}.rosettes[${i}].diameter: 0.4..1.6 m`);
+    });
+  }
+  if (f.towers !== undefined) {
+    if (!Array.isArray(f.towers) || !f.towers.length) problems.push(`${at}.towers: a non-empty list of {bays, rise, cap, finish?, lightRise?, lightSill?}`);
+    else f.towers.forEach((t, i) => {
+      if (!t || typeof t !== 'object' || Object.keys(t).some(k => !['bays', 'rise', 'cap', 'finish', 'lightRise', 'lightSill'].includes(k))) problems.push(`${at}.towers[${i}]: unknown field (bays, rise, cap, finish, lightRise, lightSill)`);
+      if (!t?.bays || !Number.isInteger(t.bays.from) || !Number.isInteger(t.bays.to) || t.bays.from < 0 || t.bays.to >= grid || t.bays.from > t.bays.to) problems.push(`${at}.towers[${i}].bays: {from, to} bay axes within 0..${grid - 1}`);
+      if (!(t?.rise >= 0.5 && t.rise <= 3)) problems.push(`${at}.towers[${i}].rise: 0.5..3 upper-storey heights above the eaves`);
+      if (!['pyramid', 'flat'].includes(t?.cap)) problems.push(`${at}.towers[${i}].cap: pyramid or flat`);
+      if (t?.finish !== undefined && t.finish !== 'stone') problems.push(`${at}.towers[${i}].finish: "stone" (or leave it out: wall brick)`);
+      if (t?.lightRise !== undefined && !(t.lightRise >= 0.2 && t.lightRise <= 0.9)) problems.push(`${at}.towers[${i}].lightRise: 0.2..0.9 upper-storey heights`);
+      if (t?.lightSill !== undefined && !(t.lightSill >= 0 && t.lightSill <= 0.6)) problems.push(`${at}.towers[${i}].lightSill: 0..0.6 upper-storey heights over the eaves`);
+    });
   }
   if (f.partyClip !== undefined && typeof f.partyClip !== 'boolean') problems.push(`${at}.partyClip must be boolean`);
   if (f.eavesHeight !== undefined && !(typeof f.eavesHeight === 'number' && f.eavesHeight >= 3 && f.eavesHeight <= 40)) problems.push(`${at}.eavesHeight: 3..40 m above the pand's ground`);
