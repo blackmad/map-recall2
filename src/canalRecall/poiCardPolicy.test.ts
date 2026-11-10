@@ -43,11 +43,11 @@ test('StreetArtIndex finds a record by the OSM id of a click POI', () => {
 });
 
 test('a building holding only label-only places gets no mapped-place card, so the building answers', () => {
-  const box = [[4.9, 52.37], [4.9005, 52.37], [4.9005, 52.3705], [4.9, 52.3705], [4.9, 52.37]];
+  const box = [[4.9, 52.37], [4.9002, 52.37], [4.9002, 52.3702], [4.9, 52.3702], [4.9, 52.37]];
   const footprint = { type: 'Polygon' as const, coordinates: [box] };
-  const only = new ClickPoiIndex({ version: 1, source: '', points: [art.slice() as ClickPoiRow, cafe] .map(r => [r[0], r[1], 4.9002, 52.3702, ...r.slice(4)] as ClickPoiRow) });
+  const only = new ClickPoiIndex({ version: 1, source: '', points: [art.slice() as ClickPoiRow, cafe] .map(r => [r[0], r[1], 4.9001, 52.3701, ...r.slice(4)] as ClickPoiRow) });
   assert.equal(only.card({ id: 'p', lngLat: [4.9, 52.37], footprint, featureTarget: null }), null);
-  const mixed = new ClickPoiIndex({ version: 1, source: '', points: [[cafe[0], cafe[1], 4.9002, 52.3702, ...cafe.slice(4)] as ClickPoiRow, [cafeAddr[0], cafeAddr[1], 4.9003, 52.3703, ...cafeAddr.slice(4)] as ClickPoiRow] });
+  const mixed = new ClickPoiIndex({ version: 1, source: '', points: [[cafe[0], cafe[1], 4.9001, 52.3701, ...cafe.slice(4)] as ClickPoiRow, [cafeAddr[0], cafeAddr[1], 4.90012, 52.37012, ...cafeAddr.slice(4)] as ClickPoiRow] });
   const card = mixed.card({ id: 'p', lngLat: [4.9, 52.37], footprint, featureTarget: null })!;
   assert.equal(card.name, 'Café Adres');
   assert.match(card.detail!, /Teststraat 1/);

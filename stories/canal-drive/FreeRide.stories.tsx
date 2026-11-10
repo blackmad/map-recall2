@@ -7,7 +7,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 // stand-in map, through the game's own drawing methods, so the layout here is
 // the layout in the ride.
 
-type Scenario = 'idle' | 'card' | 'long' | 'no-image' | 'checklist' | 'stamped' | 'stamped-long' | 'token-far' | 'at-place' | 'no-checklist';
+type Scenario = 'idle' | 'card' | 'long' | 'no-image' | 'checklist' | 'stamped' | 'stamped-long' | 'token-far' | 'at-place' | 'no-checklist' | 'building-led' | 'building-led-long';
 
 interface FreeRideStoryArgs {
   scenario: Scenario;
@@ -19,6 +19,9 @@ const PHOTO = `data:image/svg+xml,${encodeURIComponent('<svg xmlns="http://www.w
 
 const WESTERKERK = 'The Westerkerk is a Protestant church in central Amsterdam, built between 1620 and 1631 after a design by Hendrick de Keyser. Its 85-metre tower is the tallest church tower in the city, and Rembrandt was buried here in 1669.';
 const LONG_NAME = 'Rijksmuseum en Museumplein (hoofdingang aan de Museumstraat)';
+// C1 (#367): a restaurant no longer names the nine-storey slab it sits in; the building leads, the places follow.
+const SLAB_DETAIL = 'Built in 1968, in the post-war decades. About 29 m tall, some 9 storeys. Inside: Arepa Shop Amsterdam (restaurant) + 3 more.';
+const SLAB_DETAIL_LONG = 'Built in 1968, in the post-war decades. About 29 m tall, some 9 storeys. Inside: Restaurant en Cateringbedrijf De Gouden Lepel aan de Overtoom (restaurant) + 12 more.';
 const LONG_DETAIL = 'The Rijksmuseum is the national museum of the Netherlands, on the Museumplein. Pierre Cuypers designed the building, which opened in 1885; its passage under the middle is a public cycle path, the only one through a national museum.';
 
 function FreeRideFrame({ scenario, touch = false }: FreeRideStoryArgs) {
@@ -67,6 +70,9 @@ function FreeRideFrame({ scenario, touch = false }: FreeRideStoryArgs) {
         wikipediaUrl: 'https://en.wikipedia.org/wiki/Westerkerk',
         detail: long ? LONG_DETAIL : WESTERKERK, longDetail: long ? LONG_DETAIL : WESTERKERK,
       };
+      const led = scenario === 'building-led' || scenario === 'building-led-long';
+      if (led) Object.assign(landmark, { id: 'clicked-slab', name: 'Post-war flat building', type: 'building', imageUrl: '', wikipediaUrl: '',
+        detail: scenario === 'building-led' ? SLAB_DETAIL : SLAB_DETAIL_LONG, longDetail: scenario === 'building-led' ? SLAB_DETAIL : SLAB_DETAIL_LONG });
       game.landmarks = [landmark];
       const nearby = atPlace ? [
         // At the museum (#284): the plaque names its buurt and its list, whichever side of the line the kerb is.
@@ -81,7 +87,7 @@ function FreeRideFrame({ scenario, touch = false }: FreeRideStoryArgs) {
       const player = game.player;
       game._freeRideNearby = nearby.map(place => ({ ...place, distance: Math.hypot(place.x - player.x, place.y - player.y) }));
       game._freeRideOpened = new Set(scenario === 'idle' || collecting ? [] : ['westerkerk', 'anne-frank', 'bloemgrachtbrug']);
-      const open = scenario === 'card' || scenario === 'long' || scenario === 'no-image';
+      const open = scenario === 'card' || scenario === 'long' || scenario === 'no-image' || led;
       game._freeRideCollection = null;
       if (collecting) {
         // Marineterrein's list: nine places, three opened (all nine once stamped).
@@ -208,3 +214,9 @@ export const IdlePhone: Story = { args: { scenario: 'idle', touch: true }, param
 export const CardOpenPhone: Story = { args: { scenario: 'card', touch: true }, parameters: phone };
 export const LongNamesPhone: Story = { args: { scenario: 'long', touch: true }, parameters: phone };
 export const MissingImagePhone: Story = { args: { scenario: 'no-image', touch: true }, parameters: phone };
+
+// C1 (#367): the building leads and lists the places inside it.
+export const BuildingLedCard: Story = { args: { scenario: 'building-led' } };
+export const BuildingLedCardPhone: Story = { args: { scenario: 'building-led', touch: true }, parameters: phone };
+export const BuildingLedLongPlace: Story = { args: { scenario: 'building-led-long' } };
+export const BuildingLedLongPlacePhone: Story = { args: { scenario: 'building-led-long', touch: true }, parameters: phone };

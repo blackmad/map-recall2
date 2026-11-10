@@ -53,7 +53,7 @@ import { buildRouteKnowledgeIndex, routeKnowledgeFor, shouldOfferStreetKnowledge
 import { canShowDriveByCard, canShowMiniMap, canShowPostcard, canShowTeachingCard } from './teachingSurface';
 import { drawPassportStamp } from './freeRideCollectionDraw';
 import { isTransit } from './modes';
-import { BuildingFactStore, describeBuilding } from '../buildingFacts';
+import { BuildingFactStore, describeBuilding, saysNothingKnown } from '../buildingFacts';
 import { articleCard, type BuildingArticle } from '../buildingArticles';
 import { StreetArtIndex, streetArtCard, streetArtKindPhrase, type StreetArtFile } from '../streetArt';
 import { manualPoiBuildingIds, mergeManualPoiFeatures } from './manualPoiCatalog';
@@ -302,6 +302,9 @@ export class GameLandmarkRuntime {
     const place = labelRow ? { name: labelRow[1], kind: labelArt && labelArt.k !== 'artwork' ? streetArtKindPhrase(labelArt.k) : labelRow[5], address: labelRow[6] }
       : safeName && building.poi ? { name: safeName } : null;
     const facts = describeBuilding(row, building.height ?? pand?.height, safeName, place);
+    // Places that do not title this building (a restaurant in a slab) follow its own facts (C1, #367).
+    const inside = this._clickPoiInfo?.inside?.(building, name => !!spoils?.call(this.vectorMap, name)) ?? '';
+    if (inside) facts.detail = saysNothingKnown(facts.detail) ? `${inside}.` : `${facts.detail} ${inside}.`;
     // Every drawn building answers a click (user report 2026-10-10, "why does
     // this building not let me click on it?" — a post-war tower with only a
     // year and a height). From 2026-10-04 only listed monuments with an
