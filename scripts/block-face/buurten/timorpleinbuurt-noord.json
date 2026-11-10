@@ -749,7 +749,7 @@
    "lengthM": 30.4
   },
   {
-   "id": "djambi-1-35",
+   "id": "djambi-1-29",
    "street": "Djambistraat",
    "side": "odd",
    "seed": "0363100012065784",
@@ -768,20 +768,28 @@
     "0363100012108617",
     "0363100012117530",
     "0363100012095414",
-    "0363100012145454",
-    "0363100012089626",
-    "0363100012104978",
-    "0363100012122027"
+    "0363100012145454"
    ],
    "numbers": [
     1,
-    35
+    29
    ],
-   "lengthM": 108.6,
-   "dropped": [
-    "0363100012104978",
-    "0363100012122027"
-   ]
+   "lengthM": 97.7,
+   "note": "djambi-1-35 split so Djambistraat 31 (0363100012089626, a 4-5 cm micro-jog in its BAG front breaks the recipe-roof partition by 0.0009 m2 at 70 degrees) is not a neighbour of the run"
+  },
+  {
+   "id": "djambi-31-31",
+   "street": "Djambistraat",
+   "side": "odd",
+   "seed": "0363100012089626",
+   "members": [
+    "0363100012089626"
+   ],
+   "numbers": [
+    31,
+    31
+   ],
+   "lengthM": 6.0
   },
   {
    "id": "javaplein-2-14",

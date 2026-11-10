@@ -145,7 +145,7 @@ The year band is not the design (Transvaalbuurt lesson 8). Gridded 1 m crops (`s
 
 | design | faces | pands | status |
 |---|---|---|---|
-| Djambistraat 1-35 / Soendastraat 2-36 (1913): 4 storeys + attic, 3 axes, arched pair over paired doors, brick pointed dormer | djambi-1-35, soenda-2-36 | 16 + 16 (23 placed) | type `indisch-1913-arched-pair-dormer` |
+| Djambistraat 1-35 / Soendastraat 2-36 (1913): 4 storeys + attic, 3 axes, arched pair over paired doors, brick pointed dormer | djambi-1-29 (was djambi-1-35), soenda-2-36 | 15 + 16 (23 placed) | type `indisch-1913-arched-pair-dormer` |
 | Lampongstraat 2-20 / Borneostraat 7-27 / Djambistraat 38-46 (1914): 4 axes in pairs, cream frames, red sashes, double door, flat dormer | lampong-2-20, borneo-7-27, djambi-38-46 | 8 + 9 + 4 (14 placed) | type `indisch-1914-red-sash-pairs` |
 | Javastraat 95-121 (1912-13): arched windows, balcony door, black mansard, shops | java-93-149 | 15 (9 placed) | type `indisch-1912-java-mansard-arches` |
 | Padangstraat 1-35 / 2-36, Lombokstraat 1-35, Djambistraat 2-36 (1913): three-storey woningwet rows, pointed brick gables alternating with low fronts and dormers, 14-15 m BAG pands holding 2-3 fronts | padang-1-35, padang-2-36, lombok-1-35, djambi-2-36 | 6 + 6 + 6 + 6 | NO TYPE (needs `modules` with per-module crowns; see below) |
@@ -225,11 +225,14 @@ dormer holding a 0.85 m window on a 0.15 m apron instead of a full-width glass f
 
 ## 7. Open problems for the integrator
 
-* `recipeRoof.test.ts` fails for `djambi-1-35-r1` on pand 0363100012089626 (Djambistraat 31, held for likeness; it is a
-  neighbour in the run dir): roof 59.82016 vs footprint 59.81927 m2 at 70 degrees (1.5e-5 relative, tolerance 1e-6).
-  Every other run dir of this lane passes. I did not loosen the test and did not commit `djambi-1-35-r1`; the strip
-  sheet is archived. Djambi 5-27 (12 pands) need either a fix to the footprint partition for that pand or the run split
-  to exclude it.
+* Fixed (2026-11-10): `recipeRoof.test.ts` failed for the run dir of `djambi-1-35` on pand 0363100012089626 (Djambistraat 31,
+  held for likeness; present as a neighbour): the roof surfaces over-cover its footprint by 0.00088 m2 at 70 degrees
+  (59.82016 vs 59.81927; 1e-4 at 30/45, 2e-7 at 60). Its BAG front has a 4-5 cm micro-jog
+  ((124411.548,486413.332)-(124411.591,486413.360)-(124411.562,486413.745)) that makes overlapping slivers of 0.0005-0.0012 m2
+  in the partition (`survey-recipe.ts`). Not fixed at source; instead the face was split: `djambi-1-29` (Djambi 1-29,
+  intaken by `intake.ts --from/--to`) replaces `djambi-1-35` in the buurt faces, and Djambistraat 31 stands as the
+  single-pand face `djambi-31-31` (not placed). Same 12 pands placed (5-27); the type pin moved to `djambi-1-29`.
+  Any other run that holds this pand as a neighbour will hit the same partition error.
 * The Lampong/Borneo pands 7/12/14/16/18/20 (double fronts 11-12 m) are vetoed on frontage; they hold two fronts and need
   `modules` placement.
 * `buurten/timorpleinbuurt-noord.json` was re-written by the survey with intake (same pands; `dropped`/`intakeError` keys

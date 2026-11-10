@@ -1,9 +1,9 @@
 {
- "face": "djambi-1-35",
+ "face": "djambi-1-29",
  "street": "Djambistraat",
  "library": "indische-buurt",
  "stripDate": "2019-12-18",
- "seconds": 21.93,
+ "seconds": 29.1,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -15,7 +15,7 @@
  },
  "runs": [
   {
-   "face": "djambi-1-35-r1",
+   "face": "djambi-1-29-r1",
    "pands": [
     "0363100012149516",
     "0363100012104592",
@@ -179,11 +179,11 @@
    },
    "status": "held",
    "stage": "likeness",
-   "reason": "edge NCC 0.062 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.24 mean 0.32 vs photo 0.52)",
+   "reason": "edge NCC 0.053 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.24 mean 0.32 vs photo 0.52)",
    "likeness": {
     "pandId": "0363100012113498",
-    "ncc": 0.062,
-    "nccRaw": 0.062,
+    "ncc": 0.053,
+    "nccRaw": 0.053,
     "shiftM": [
      0.4,
      0.4
@@ -207,11 +207,11 @@
      "photo": null,
      "model": 3
     },
-    "iou": 0.229
+    "iou": 0.243
    },
    "challengers": {
-    "indisch-1913-arched-pair-dormer~m": 0.062,
-    "indisch-1913-arched-pair-dormer": 0.226
+    "indisch-1913-arched-pair-dormer~m": 0.053,
+    "indisch-1913-arched-pair-dormer": 0.227
    }
   },
   {
@@ -313,8 +313,8 @@
     "iou": 0.523
    },
    "challengers": {
-    "indisch-1913-arched-pair-dormer": 0.278,
-    "indisch-1913-arched-pair-dormer~m": 0.335
+    "indisch-1913-arched-pair-dormer": 0.285,
+    "indisch-1913-arched-pair-dormer~m": 0.344
    }
   },
   {
@@ -402,8 +402,8 @@
     "iou": 0.418
    },
    "challengers": {
-    "indisch-1913-arched-pair-dormer~m": 0.235,
-    "indisch-1913-arched-pair-dormer": 0.345
+    "indisch-1913-arched-pair-dormer~m": 0.223,
+    "indisch-1913-arched-pair-dormer": 0.346
    }
   },
   {
@@ -488,8 +488,8 @@
     "iou": 0.574
    },
    "challengers": {
-    "indisch-1913-arched-pair-dormer": 0.515,
-    "indisch-1913-arched-pair-dormer~m": 0.29
+    "indisch-1913-arched-pair-dormer": 0.513,
+    "indisch-1913-arched-pair-dormer~m": 0.277
    }
   },
   {
@@ -575,8 +575,8 @@
     "iou": 0.635
    },
    "challengers": {
-    "indisch-1913-arched-pair-dormer~m": 0.553,
-    "indisch-1913-arched-pair-dormer": 0.084
+    "indisch-1913-arched-pair-dormer~m": 0.552,
+    "indisch-1913-arched-pair-dormer": 0.088
    }
   },
   {
@@ -661,8 +661,8 @@
     "iou": 0.665
    },
    "challengers": {
-    "indisch-1913-arched-pair-dormer": 0.543,
-    "indisch-1913-arched-pair-dormer~m": 0.46
+    "indisch-1913-arched-pair-dormer": 0.528,
+    "indisch-1913-arched-pair-dormer~m": 0.455
    }
   },
   {
@@ -748,8 +748,8 @@
     "iou": 0.628
    },
    "challengers": {
-    "indisch-1913-arched-pair-dormer~m": 0.538,
-    "indisch-1913-arched-pair-dormer": 0.085
+    "indisch-1913-arched-pair-dormer~m": 0.536,
+    "indisch-1913-arched-pair-dormer": 0.094
    }
   },
   {
@@ -834,8 +834,8 @@
     "iou": 0.677
    },
    "challengers": {
-    "indisch-1913-arched-pair-dormer": 0.511,
-    "indisch-1913-arched-pair-dormer~m": 0.241
+    "indisch-1913-arched-pair-dormer": 0.507,
+    "indisch-1913-arched-pair-dormer~m": 0.242
    }
   },
   {
@@ -921,8 +921,8 @@
     "iou": 0.589
    },
    "challengers": {
-    "indisch-1913-arched-pair-dormer~m": 0.534,
-    "indisch-1913-arched-pair-dormer": 0.257
+    "indisch-1913-arched-pair-dormer~m": 0.531,
+    "indisch-1913-arched-pair-dormer": 0.271
    }
   },
   {
@@ -1007,8 +1007,8 @@
     "iou": 0.635
    },
    "challengers": {
-    "indisch-1913-arched-pair-dormer": 0.451,
-    "indisch-1913-arched-pair-dormer~m": 0.084
+    "indisch-1913-arched-pair-dormer": 0.448,
+    "indisch-1913-arched-pair-dormer~m": 0.087
    }
   },
   {
@@ -1094,8 +1094,8 @@
     "iou": 0.631
    },
    "challengers": {
-    "indisch-1913-arched-pair-dormer~m": 0.526,
-    "indisch-1913-arched-pair-dormer": 0.415
+    "indisch-1913-arched-pair-dormer~m": 0.525,
+    "indisch-1913-arched-pair-dormer": 0.429
    }
   },
   {
@@ -1182,8 +1182,8 @@
     "iou": 0.458
    },
    "challengers": {
-    "indisch-1913-arched-pair-dormer": 0.304,
-    "indisch-1913-arched-pair-dormer~m": 0.032
+    "indisch-1913-arched-pair-dormer": 0.302,
+    "indisch-1913-arched-pair-dormer~m": 0.044
    }
   },
   {
@@ -1271,8 +1271,8 @@
     "iou": 0.441
    },
    "challengers": {
-    "indisch-1913-arched-pair-dormer~m": 0.245,
-    "indisch-1913-arched-pair-dormer": 0.329
+    "indisch-1913-arched-pair-dormer~m": 0.244,
+    "indisch-1913-arched-pair-dormer": 0.326
    }
   },
   {
@@ -1338,11 +1338,11 @@
    },
    "status": "held",
    "stage": "likeness",
-   "reason": "edge NCC 0.034 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.24 mean 0.33 vs photo 0.52; columns 3 vs photo 7)",
+   "reason": "edge NCC 0.029 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.25 mean 0.33 vs photo 0.52; columns 3 vs photo 7)",
    "likeness": {
     "pandId": "0363100012145454",
-    "ncc": 0.034,
-    "nccRaw": 0.034,
+    "ncc": 0.029,
+    "nccRaw": 0.029,
     "shiftM": [
      -0.35,
      -0.4
@@ -1351,13 +1351,13 @@
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.24 mean 0.33 vs photo 0.52",
+     "glazing storey band off by 0.25 mean 0.33 vs photo 0.52",
      "columns 3 vs photo 7"
     ],
     "wall": {
-     "photo": "#7a625d",
+     "photo": "#7a635e",
      "model": "#91766e",
-     "dL": 0.078
+     "dL": 0.076
     },
     "glazing": {
      "photo": 0.52,
@@ -1367,104 +1367,11 @@
      "photo": 7,
      "model": 3
     },
-    "iou": 0.303
+    "iou": 0.3
    },
    "challengers": {
-    "indisch-1913-arched-pair-dormer": 0.034,
+    "indisch-1913-arched-pair-dormer": 0.029,
     "indisch-1913-arched-pair-dormer~m": 0.048
-   }
-  },
-  {
-   "pandId": "0363100012089626",
-   "address": "Djambistraat 31",
-   "builtYear": 1913,
-   "widthM": 6,
-   "eavesM": 12.78,
-   "storeys3dbag": 5,
-   "bagBay": {
-    "fromM": 0,
-    "toM": 0.18,
-    "depthM": 0.31,
-    "centre": 0.015,
-    "lineRD": [
-     [
-      124411.80112500001,
-      486414.294
-     ],
-     [
-      124411.59212500001,
-      486409.2
-     ]
-    ]
-   },
-   "strip": {
-    "wall": "#83655b",
-    "wallRaw": "#594944",
-    "skyline": {
-     "eavesM": 14.72,
-     "eavesRow": 142,
-     "confidence": 0.85,
-     "crown": {
-      "widthM": 1.02,
-      "riseM": 1.67,
-      "topWidthM": 0.33,
-      "centre": 0.09
-     }
-    },
-    "stucco": false,
-    "bands": 0,
-    "columns": 3,
-    "frontClass": "punched",
-    "doorSide": "left",
-    "accentSide": "right",
-    "accentShare": 0.023,
-    "structure": {
-     "bayWidthM": 0,
-     "bayCentre": null,
-     "balconies": false,
-     "why": "no dark open axis, 0 wide slab(s)",
-     "openAxes": [],
-     "slabs": []
-    },
-    "voidShare": 0,
-    "foliageShare": 0
-   },
-   "status": "held",
-   "stage": "likeness",
-   "reason": "edge NCC -0.046 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.43 mean 0.32 vs photo 0.67; wall judged on chromaticity: the photo's exposure is not normalised and the wall reads +0.20 darker than the model's in shade or overcast light)",
-   "likeness": {
-    "pandId": "0363100012089626",
-    "ncc": -0.046,
-    "nccRaw": -0.046,
-    "shiftM": [
-     0.2,
-     -0.4
-    ],
-    "usable": 0.99,
-    "abstain": null,
-    "verdict": "FAIL",
-    "reasons": [
-     "glazing storey band off by 0.43 mean 0.32 vs photo 0.67",
-     "wall judged on chromaticity: the photo's exposure is not normalised and the wall reads +0.20 darker than the model's in shade or overcast light"
-    ],
-    "wall": {
-     "photo": "#5b4842",
-     "model": "#99776c",
-     "dL": 0.204
-    },
-    "glazing": {
-     "photo": 0.67,
-     "model": 0.32
-    },
-    "columns": {
-     "photo": null,
-     "model": 3
-    },
-    "iou": 0.333
-   },
-   "challengers": {
-    "indisch-1913-arched-pair-dormer~m": -0.046,
-    "indisch-1913-arched-pair-dormer": 0.082
    }
   }
  ]

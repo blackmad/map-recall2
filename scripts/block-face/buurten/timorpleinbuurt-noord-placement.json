@@ -1,11 +1,11 @@
 {
  "buurt": "timorpleinbuurt-noord",
  "library": "indische-buurt",
- "generatedAt": "2026-11-10T00:57:48.911Z",
- "seconds": 5.22,
+ "generatedAt": "2026-11-10T01:10:52.461Z",
+ "seconds": 29.11,
  "totals": {
   "faces": 26,
-  "pands": 267,
+  "pands": 266,
   "placed": 46
  },
  "faces": [
@@ -277,14 +277,14 @@
    }
   },
   {
-   "face": "djambi-1-35",
+   "face": "djambi-1-29",
    "street": "Djambistraat",
-   "pands": 16,
+   "pands": 15,
    "placed": 12,
-   "held": 4,
+   "held": 3,
    "runs": [
     {
-     "face": "djambi-1-35-r1",
+     "face": "djambi-1-29-r1",
      "pands": [
       "0363100012149516",
       "0363100012104592",
@@ -303,7 +303,7 @@
      "triangles": 18279
     }
    ],
-   "seconds": 21.93,
+   "seconds": 29.1,
    "byType": {
     "indisch-1913-arched-pair-dormer": 12
    },
@@ -311,7 +311,7 @@
    "holds": {
     "evidence": 0,
     "match": 1,
-    "likeness": 3,
+    "likeness": 2,
     "run": 0,
     "review": 0
    }

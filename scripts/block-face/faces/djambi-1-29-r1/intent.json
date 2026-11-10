@@ -1,0 +1,330 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "djambi-1-29-r1",
+ "street": "Djambistraat",
+ "sources": [
+  {
+   "id": "strip-2019-12-18",
+   "kind": "street-panorama",
+   "capturedAt": "2019-12-18",
+   "image": "staging/block-face/djambi-1-29-r1/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "auto-place (blockFace/autoPlace.ts)",
+  "passes": 1,
+  "note": "auto-placed from the indische-buurt library (buurt Timorpleinbuurt-Noord); scores and holds in scripts/block-face/faces/djambi-1-29/auto-place.json"
+ },
+ "types": [
+  "indisch-1913-arched-pair-dormer"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012149516",
+   "slug": "djambi-149516",
+   "address": "Djambistraat 5",
+   "type": {
+    "type": "indisch-1913-arched-pair-dormer",
+    "measuredPalette": {
+     "brick": "#614d46",
+     "evidence": "strip 2019-12-18 span 618-833: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2019-12-18",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: indisch-1913-arched-pair-dormer scored 1 on eaves 1, storeys 1, roof 1, stucco 1; strip 2019-12-18 span 618-833"
+   }
+  },
+  {
+   "pandId": "0363100012104592",
+   "slug": "djambi-104592",
+   "address": "Djambistraat 7",
+   "type": {
+    "type": "indisch-1913-arched-pair-dormer",
+    "mirror": true,
+    "measuredPalette": {
+     "brick": "#55433c",
+     "evidence": "strip 2019-12-18 span 833-1073: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2019-12-18",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: indisch-1913-arched-pair-dormer scored 1 on eaves 1, storeys 1, roof 1, stucco 1; strip 2019-12-18 span 833-1073"
+   }
+  },
+  {
+   "pandId": "0363100012131961",
+   "slug": "djambi-131961",
+   "address": "Djambistraat 9",
+   "type": {
+    "type": "indisch-1913-arched-pair-dormer",
+    "measuredPalette": {
+     "brick": "#5b4942",
+     "evidence": "strip 2019-12-18 span 1073-1313: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2019-12-18",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: indisch-1913-arched-pair-dormer scored 1 on eaves 1, storeys 1, roof 1, stucco 1, columns 1; strip 2019-12-18 span 1073-1313"
+   }
+  },
+  {
+   "pandId": "0363100012100535",
+   "slug": "djambi-100535",
+   "address": "Djambistraat 11",
+   "type": {
+    "type": "indisch-1913-arched-pair-dormer",
+    "measuredPalette": {
+     "brick": "#5b4943",
+     "evidence": "strip 2019-12-18 span 1313-1533: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "mirror": true
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2019-12-18",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: indisch-1913-arched-pair-dormer scored 1 on eaves 1, storeys 1, roof 1, stucco 1, columns 1; strip 2019-12-18 span 1313-1533"
+   }
+  },
+  {
+   "pandId": "0363100012110582",
+   "slug": "djambi-110582",
+   "address": "Djambistraat 13",
+   "type": {
+    "type": "indisch-1913-arched-pair-dormer",
+    "measuredPalette": {
+     "brick": "#5a4842",
+     "evidence": "strip 2019-12-18 span 1533-1753: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2019-12-18",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: indisch-1913-arched-pair-dormer scored 1 on eaves 1, storeys 1, roof 1, stucco 1, columns 1; strip 2019-12-18 span 1533-1753"
+   }
+  },
+  {
+   "pandId": "0363100012099261",
+   "slug": "djambi-099261",
+   "address": "Djambistraat 15",
+   "type": {
+    "type": "indisch-1913-arched-pair-dormer",
+    "measuredPalette": {
+     "brick": "#594840",
+     "evidence": "strip 2019-12-18 span 1753-1973: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "mirror": true
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2019-12-18",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: indisch-1913-arched-pair-dormer scored 1 on eaves 1, storeys 1, roof 1, stucco 1, columns 1; strip 2019-12-18 span 1753-1973"
+   }
+  },
+  {
+   "pandId": "0363100012129720",
+   "slug": "djambi-129720",
+   "address": "Djambistraat 17",
+   "type": {
+    "type": "indisch-1913-arched-pair-dormer",
+    "measuredPalette": {
+     "brick": "#5d4c45",
+     "evidence": "strip 2019-12-18 span 1973-2193: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2019-12-18",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: indisch-1913-arched-pair-dormer scored 1 on eaves 1, storeys 1, roof 1, stucco 1, columns 1; strip 2019-12-18 span 1973-2193"
+   }
+  },
+  {
+   "pandId": "0363100012077761",
+   "slug": "djambi-077761",
+   "address": "Djambistraat 19",
+   "type": {
+    "type": "indisch-1913-arched-pair-dormer",
+    "mirror": true,
+    "measuredPalette": {
+     "brick": "#5c4b45",
+     "evidence": "strip 2019-12-18 span 2193-2413: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2019-12-18",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: indisch-1913-arched-pair-dormer scored 1 on eaves 1, storeys 1, roof 1, stucco 1, columns 1; strip 2019-12-18 span 2193-2413"
+   }
+  },
+  {
+   "pandId": "0363100012072833",
+   "slug": "djambi-072833",
+   "address": "Djambistraat 21",
+   "type": {
+    "type": "indisch-1913-arched-pair-dormer",
+    "measuredPalette": {
+     "brick": "#56453d",
+     "evidence": "strip 2019-12-18 span 2413-2633: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2019-12-18",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: indisch-1913-arched-pair-dormer scored 1 on eaves 1, storeys 1, roof 1, stucco 1, columns 1; strip 2019-12-18 span 2413-2633"
+   }
+  },
+  {
+   "pandId": "0363100012108617",
+   "slug": "djambi-108617",
+   "address": "Djambistraat 23",
+   "type": {
+    "type": "indisch-1913-arched-pair-dormer",
+    "mirror": true,
+    "measuredPalette": {
+     "brick": "#65524b",
+     "evidence": "strip 2019-12-18 span 2633-2853: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2019-12-18",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: indisch-1913-arched-pair-dormer scored 1 on eaves 1, storeys 1, roof 1, stucco 1, columns 1; strip 2019-12-18 span 2633-2853"
+   }
+  },
+  {
+   "pandId": "0363100012117530",
+   "slug": "djambi-117530",
+   "address": "Djambistraat 25",
+   "type": {
+    "type": "indisch-1913-arched-pair-dormer",
+    "measuredPalette": {
+     "brick": "#614e47",
+     "evidence": "strip 2019-12-18 span 2869-3073: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2019-12-18",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: indisch-1913-arched-pair-dormer scored 0.88 on eaves 1, storeys 1, roof 1, stucco 1, columns 0.4; strip 2019-12-18 span 2869-3073"
+   }
+  },
+  {
+   "pandId": "0363100012095414",
+   "slug": "djambi-095414",
+   "address": "Djambistraat 27",
+   "type": {
+    "type": "indisch-1913-arched-pair-dormer",
+    "mirror": true,
+    "measuredPalette": {
+     "brick": "#65514b",
+     "evidence": "strip 2019-12-18 span 3073-3313: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2019-12-18",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: indisch-1913-arched-pair-dormer scored 1 on eaves 1, storeys 1, roof 1, stucco 1, columns 1; strip 2019-12-18 span 3073-3313"
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "auto-place: low attic behind the cornice; the strips show sky over the cornices of the type rows"
+  }
+ }
+}

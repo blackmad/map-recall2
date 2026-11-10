@@ -3,13 +3,6 @@
  "reviewed": "2026-11-10",
  "pins": [
   {
-   "face": "djambi-1-35",
-   "types": [
-    "indisch-1913-arched-pair-dormer"
-   ],
-   "reason": "Djambistraat 1-35 / Soendastraat 2-36 (2019-12-18 and 2020 strips, gridded): the arched pair over the paired doors and one brick dormer per front; the Javastraat mansard and the Lampong red-sash types match them on year, storeys and eaves alone"
-  },
-  {
    "face": "soenda-2-36",
    "types": [
     "indisch-1913-arched-pair-dormer"
@@ -57,6 +50,13 @@
     "indisch-1914-red-sash-pairs"
    ],
    "reason": "Lampongstraat 2-20 / Borneostraat 7-27 (2025-09-26, 2023-01-02 strips, gridded): four cream-framed axes in pairs, double white door, flat dormer; mirror pairs about the party wall"
+  },
+  {
+   "face": "djambi-1-29",
+   "types": [
+    "indisch-1913-arched-pair-dormer"
+   ],
+   "reason": "Djambistraat 1-35 / Soendastraat 2-36 (2019-12-18 and 2020 strips, gridded): the arched pair over the paired doors and one brick dormer per front; the Javastraat mansard and the Lampong red-sash types match them on year, storeys and eaves alone"
   }
  ]
 }
