@@ -1,7 +1,7 @@
 // Rail class probe (lane rails-class 2026-11-10): city-wide, per built cell with railway tracks, three defect classes at
 // the rail/road/ground joins (user feedback 2026-11-09, Westpoort and Sloterdijk). Junction seams: probe-road-seams.ts.
 //
-//   npx tsx scripts/own-ground/probe-rails-class.ts [--lod=0|1] [--roads=0] [--cells=a,b] [--at=lng,lat,halfM] [--json=out.json]
+//   npx tsx scripts/own-ground/probe-rails-class.ts [--lod=0|1] [--roads=0] [--cells=a,b] [--at=lng,lat,halfM] [--json=out.json] [--onStreet=0] [--spans=0 (no deck spans over streets, railSpans.ts)]
 //
 //   crossing  rail-in-road: samples every 2 m along a track where a road surface lies at the bed (within HEIGHT_M
 //             vertically; non-bridge tracks): the step between the bed top and the road top there. A crossing is a run of such samples;
@@ -138,7 +138,7 @@ export function scanCell(cell: BuiltCell, rails: readonly Way[], cuts: readonly 
 async function main(): Promise<void> {
   const arg = (n: string) => process.argv.find(a => a.startsWith(`--${n}=`))?.slice(n.length + 3);
   const lod = arg('lod') === '1' ? 1 : 0;
-  const store = new GroundStore(readExtract, { roads: arg('roads') !== '0', ...(arg('onStreet') === '0' ? { railOnStreet: false } : {}) });
+  const store = new GroundStore(readExtract, { roads: arg('roads') !== '0', ...(arg('onStreet') === '0' ? { railOnStreet: false } : {}), ...(arg('spans') === '0' ? { railSpans: false } : {}) });
   await store.init();
   let keys = [...store.railCells].filter(k => store.covers(k)).sort();
   const cellsArg = arg('cells');
@@ -150,11 +150,14 @@ async function main(): Promise<void> {
     keys = [...set].filter(k => store.covers(k));
   }
   const all: Finding[] = [];
+  const spans: { cell: string; lngLat: [number, number]; clear: number; length: number }[] = [];
   let n = 0;
   for (const k of keys) {
     const input = await store.cellInput(k, lod);
     if (!input.rails?.length) continue;
-    all.push(...scanCell(buildCell(input), input.rails as never, input.cuts ?? []));
+    const built = buildCell(input);
+    all.push(...scanCell(built, input.rails as never, input.cuts ?? []));
+    for (const sp of built.stats.rails?.spanList ?? []) spans.push({ cell: k, lngLat: fromLocal(sp.at[0], sp.at[1]).map(v => +v.toFixed(5)) as [number, number], clear: sp.clear, length: sp.length });
     if (++n % 10 === 0) console.error(`${n}/${keys.length} cells`);
   }
   for (const f of all) f.lngLat = fromLocal(f.at[0], f.at[1]).map(v => +v.toFixed(5)) as [number, number];
@@ -163,6 +166,13 @@ async function main(): Promise<void> {
     const xs = all.filter(f => f.cls === cls).sort((p, q) => Math.abs(q.value) - Math.abs(p.value));
     summary[cls] = { count: xs.length, worst: xs.slice(0, 20) };
   }
+  // Class b as the brief counts it (lane rails-classb): height runs with the road at least 1 m under the bed.
+  const under = all.filter(f => f.cls === 'height' && f.detail.startsWith('road-under-rail')), metres = (xs: Finding[]) => xs.reduce((m, f) => m + 2 * Number(f.detail.split(' ')[1]), 0);
+  const deep = under.filter(f => f.value <= -1);
+  summary.classB = { runs: under.length, metres: metres(under), deepRuns: deep.length, deepMetres: metres(deep) };
+  const crossings = all.filter(f => f.cls === 'crossing' && Math.abs(f.value) > 0.2);
+  summary.classA = { runs: crossings.length, metres: crossings.reduce((m, f) => m + 2 * Number(f.detail.split(' ')[0]), 0) };
+  summary.spans = { count: spans.length, metres: +spans.reduce((m, s) => m + s.length, 0).toFixed(1), list: spans.sort((p, q) => q.length - p.length) };
   const out = arg('json');
   if (out) writeFileSync(out, JSON.stringify({ summary, all }, null, 1));
   console.log(JSON.stringify(summary, null, 1));
