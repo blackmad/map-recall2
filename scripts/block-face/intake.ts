@@ -27,7 +27,7 @@ import {chunkFrame} from '../../src/canalRecall/streetChunks/compileChunk.ts';
 import {discoverBlockFace} from '../../src/canalRecall/blockFace/discover.ts';
 import {chordOverBay, chordOverFrontBump, frontBump} from '../../src/canalRecall/blockFace/bayOutline.ts';
 import {sharedTerrain} from '../lib/terrainField.ts';
-import {medianFuse, planStrip, type FrontSpan, type PanoRecord} from '../../src/canalRecall/blockFace/strip.ts';
+import {medianFuse, planStrip, withoutDays, type FrontSpan, type PanoRecord} from '../../src/canalRecall/blockFace/strip.ts';
 import {assignUses, type OsmBusiness, type BagUnit} from '../../src/canalRecall/blockFace/uses.ts';
 import {cachedJson} from '../pand-reference/core.ts';
 import {threeDBagBbox, threeDBagDataset, threeDBagItem} from './three-d-bag-source.ts';
@@ -87,6 +87,21 @@ async function bagUnits(min: RD, max: RD): Promise<BagUnit[]> {
     url = json.links?.find((l: any) => l.rel === 'next')?.href ?? null;
   }
   return out;
+}
+
+const dayPublished = new Map<string, Promise<boolean>>();
+/** Capture days of `panos` whose first panorama image answers 404 (probed once per day and process, HEAD on the medium image). */
+async function unpublishedDays(panos: PanoRecord[]): Promise<string[]> {
+  const first = new Map<string, any>();
+  for (const p of panos) if (!first.has(p.timestamp.slice(0, 10))) first.set(p.timestamp.slice(0, 10), p.record);
+  const out: string[] = [];
+  for (const [d, rec] of first) {
+    const href = rec?._links?.equirectangular_medium?.href ?? rec?._links?.equirectangular_full?.href;
+    if (!href) continue;
+    if (!dayPublished.has(d)) dayPublished.set(d, fetch(href, {method: 'HEAD'}).then(r => r.status !== 404, () => true));
+    if (!(await dayPublished.get(d))) out.push(d);
+  }
+  return out.sort();
 }
 
 export async function intake(o: {face: string; street: string; seed: string; from?: string; to?: string; date?: string; spanDates?: Record<string, string>; ppm?: number; strip?: boolean; bayOutline?: string[]; cameraHeight?: number}) {
@@ -157,7 +172,12 @@ export async function intake(o: {face: string; street: string; seed: string; fro
   const ppm = o.ppm ?? 40;
   const midAll: RD = [frame.midRD[0], frame.midRD[1]];
   const raw = await listPanos({x: midAll[0], y: midAll[1]}, Math.max(45, (Math.max(...spans.map(s => xOf(s.b))) - Math.min(...spans.map(s => xOf(s.a)))) / 2 + 30));
-  const panos: PanoRecord[] = raw.map((p: any) => ({panoId: p.pano_id, timestamp: p.timestamp, rd: toRD([p.geometry.coordinates[0], p.geometry.coordinates[1]]), record: p}));
+  const listed: PanoRecord[] = raw.map((p: any) => ({panoId: p.pano_id, timestamp: p.timestamp, rd: toRD([p.geometry.coordinates[0], p.geometry.coordinates[1]]), record: p}));
+  // Capture days whose images are not published (2023-04-03/11/17 in the centre: the API lists them, the image host
+  // answers 404) would otherwise win the date ranking and leave a strip of placeholder grey with coverage 1.
+  const unpublished = await unpublishedDays(listed);
+  if (unpublished.length) console.log(`  panorama days listed but not published (image 404), skipped: ${unpublished.join(', ')}`);
+  const panos = withoutDays(listed, unpublished);
   const plan = planStrip(spans, panos, {date: o.date, spanDates: o.spanDates});
   const x0 = Math.min(...spans.map(s => xOf(s.a))), x1 = Math.max(...spans.map(s => xOf(s.b)));
   const W = Math.round((x1 - x0) * ppm), H = Math.round(topM * ppm);
