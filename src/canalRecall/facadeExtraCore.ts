@@ -6,6 +6,7 @@ import type { ArchitecturalRecipe } from './streetAppearance.js';
 import type { FacadeStyle } from './genericFacades.js';
 import type { WallLayout } from './facadeLayout.js';
 import type { Openings } from './facadeOpenings.js';
+import type { StoopIntent } from './buildingRecipe/stoop.ts';
 
 export type V3 = [number, number, number];
 export type FlatTri = { p: V3[]; hex: string; n: V3; texture?: 'glass-block'; uv?: [number, number][]; /** The primitive that drew it (look/thinFade.ts owner classes); absent for wall quads, slopes and profiles. */ prim?: 'box' | 'strip' };
@@ -37,6 +38,10 @@ export type ExtraContext = {
   shopfront?: boolean;
   /** Wall-extra component ids the monuments register states for this pand: their dice are set to certain (registerRecipe.ts). */
   registerForce?: readonly string[];
+  /** The house spec's stoop (decorate.ts `specStoop`, buildingRecipe/stoop.ts): the 'stoop' component draws it typed. */
+  stoop?: StoopIntent;
+  /** Pavement depth in front of this wall for the stoop (wall to street centreline less half a carriageway), metres. */
+  stoopReachM?: number;
 };
 export type RoofContext = { id: string; style: FacadeStyle; rect: { cx: number; cy: number; ux: number; uy: number; len: number; wid: number }; z: number; wallHex: string };
 
@@ -125,6 +130,13 @@ export class ExtraSink {
       tri.texture='glass-block';
       tri.uv=tri.p.map(([x,y,z])=>[((x-f.x0)*f.ux+(y-f.y0)*f.uy+startM)/cellM,(z-bottomM)/cellM]);
     }
+    return true;
+  }
+  /** A free quad in world coordinates (a raking stair rail), wound to face `n`: two triangles. */
+  quad(a: V3, b: V3, c: V3, d: V3, n: V3, hex: string): boolean {
+    if (this.mark?.failed || !this.fits(2)) return false;
+    this.boxes++;
+    this.face([a, b, c, d], n, hex);
     return true;
   }
   /** A sloped quad (a hood or a canopy): from (a0..a1, o0, zWall) at the wall to (o1, zOut) outside. */

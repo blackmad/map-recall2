@@ -107,8 +107,8 @@ by PRE_BLUR_PX (1.5 px Gaussian sigma at 50 px/m) before measureFacade. Atlas ca
 artifacts/house-preview/atlas-<look>-<size>-<painter hash>.bin (first run paints, later runs load).
 
 Overrides (until the HouseSpec resolver of lane H1 lands): fronts[0].gable -> monumentGable, palette.wall (or
-palette.brick) hex -> facadeMappedColour; every other design field is listed under overrides.notApplied in
-measure.json (the generic path has no property for it yet).
+palette.brick) hex -> facadeMappedColour, fronts[0].basement stoop (with its stoop fields) -> specStoop; every other
+design field is listed under overrides.notApplied in measure.json (the generic path has no property for it yet).
 
 Not reproduced: the far and roof distance tiers, mipmaps, cast shadows (a wall in another building's shadow draws
 sunlit), fog, the analytic window SDF, the ground lift, post-processing, the GLB slot cells (an installed GLB draws
@@ -190,7 +190,10 @@ export function overridePatch(o: Override): { patch: Record<string, unknown>; ap
   // mesher fits the street run to them (whole cells, or half-cell axis units for an odd count, H1c #350).
   const bays = Number.isInteger(front.axisGrid) ? front.axisGrid as number : Number.isInteger(front.bays) ? front.bays as number : undefined;
   if (bays && bays > 0) { patch.specRecipe = { bays }; applied.push(`fronts[0].${Number.isInteger(front.axisGrid) ? 'axisGrid' : 'bays'} -> specRecipe.bays=${bays}`); }
-  for (const k of Object.keys(front)) if (k !== 'gable' && k !== 'id' && !(bays && (k === 'bays' || k === 'axisGrid'))) notApplied.push(`fronts[0].${k}`);
+  // A stoop (K-stoep #360), as the decorator writes it (houseSpec/decorate.ts specStoop): the measured fields, or {}.
+  const stooped = front.basement === 'stoop' || front.basement === 'stoop-and-windows';
+  if (stooped) { patch.specStoop = (front.stoop ?? {}) as Record<string, unknown>; applied.push(`fronts[0].basement${front.stoop ? '+stoop' : ''} -> specStoop`); }
+  for (const k of Object.keys(front)) if (k !== 'gable' && k !== 'id' && !(bays && (k === 'bays' || k === 'axisGrid')) && !(stooped && (k === 'basement' || k === 'stoop'))) notApplied.push(`fronts[0].${k}`);
   // The wall colour: threeBuildingFeatures meshBuildingFor takes `facadeMappedColour` as the sourced wall in the photo look.
   const palette = (o.design.palette ?? {}) as Record<string, unknown>;
   const wallKey = ['wall', 'brick'].find(k => typeof palette[k] === 'string' && /^#[0-9a-f]{6}$/i.test(palette[k] as string));

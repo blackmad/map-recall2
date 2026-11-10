@@ -14,6 +14,7 @@
 import type { GableShape } from '../roofMesh.js';
 import { roofPlanForFeature } from '../roofMesh.js';
 import type { ArchitecturalRecipe } from '../streetAppearance.js';
+import type { StoopIntent } from '../buildingRecipe/stoop.ts';
 import { eraOfYear } from '../facade/registerRecipe.js';
 import { SOURCE_STRENGTH } from '../facade/evidence.js';
 import { specWallDisplay, specWallSource, specWallsOn, type WallFamily } from './wallColour.js';
@@ -39,8 +40,11 @@ export interface HouseSpecView {
   storeys?: number;
   /** facts.wallFamily: a reader's colour family for the wall (H5h hand set), the truth a pixel reading is checked against. */
   wallFamily?: WallFamily;
+  /** The street front has a stoop (basement `stoop*`): its measured fields (buildingRecipe/stoop.ts), `{}` when only
+   *  its presence is known (register `stoep`, Jev). K-stoep #360. */
+  stoop?: StoopIntent;
   /** Winning source per key above. */
-  src: Partial<Record<'gable' | 'year' | 'wallMaterial' | 'wallHex' | 'bays' | 'storeys' | 'wallFamily', string>>;
+  src: Partial<Record<'gable' | 'year' | 'wallMaterial' | 'wallHex' | 'bays' | 'storeys' | 'wallFamily' | 'stoop', string>>;
 }
 
 /** What the spec adds to the generic mesher: an ArchitecturalRecipe subset plus the bay count. */
@@ -95,6 +99,13 @@ const pandNumber = (id: unknown) => String(id ?? '').replace(/^NL\.IMBAG\.Pand\.
  */
 export const SPEC_BAYS_HELD = false;
 
+/**
+ * Released with K-stoep (#360): a spec stoop reaches the generic path as `specStoop` (stoopExtra.ts draws it). The
+ * published extract carries no `stoop` until build-house-specs.ts reruns, so the world is byte-identical until then.
+ * Roll back by holding it (a world-v1 recompile carries it).
+ */
+export const SPEC_STOOPS_HELD = false;
+
 /** The property patch a spec view makes before decorateFacade; empty when nothing changes. */
 export function houseSpecPatch(view: HouseSpecView, p: Props): Props {
   const patch: Props = {};
@@ -114,6 +125,7 @@ export function houseSpecPatch(view: HouseSpecView, p: Props): Props {
     const finish = view.wallMaterial === 'brick' || measuredPaint ? 'brick' : 'light';
     if (p.registerFinish !== finish) patch.registerFinish = finish;
   }
+  if (!SPEC_STOOPS_HELD && view.stoop && typeof view.stoop === 'object' && !Array.isArray(view.stoop)) patch.specStoop = view.stoop;
   const recipe: SpecRecipe = {};
   if (!SPEC_BAYS_HELD && view.bays && view.bays > 0 && view.src?.bays !== 'default') recipe.bays = view.bays;
   // The measured wall, through the wall-colour rule (lifted lightness, measured hue); `?specWalls=0` keeps the period colour.

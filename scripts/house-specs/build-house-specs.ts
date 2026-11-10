@@ -129,6 +129,10 @@ function viewOf(spec: HouseSpec): HouseSpecView {
   if (bays && baysSrc !== 'default') { v.bays = bays; v.src.bays = baysSrc; }
   // Storeys (lane H9): the drawn storey count follows the photo when a street source states it (not the register).
   if (Number.isInteger(front?.storeys) && front!.storeys! >= 2) { v.storeys = front!.storeys; v.src.storeys = src['fronts/0/storeys']; }
+  // A stoop (K-stoep #360): presence from the basement (register `stoep`, Jev, a hand read), the measured fields when stated.
+  if (front?.basement === 'stoop' || front?.basement === 'stoop-and-windows') {
+    v.stoop = (front.stoop ?? {}) as HouseSpecView['stoop']; v.src.stoop = src['fronts/0/stoop'] ?? src['fronts/0/basement'];
+  }
   return v;
 }
 const PLANNER_GABLES = new Set(['step', 'neck', 'raised-neck', 'bell', 'spout', 'point']);
@@ -218,7 +222,7 @@ const report = {
   bySource: Object.fromEntries(SOURCES_SEEN.map(s => [s, 0])) as Record<string, number>,
   strongest: {} as Record<string, number>,
   multiSource: 0,
-  runtime: { gable: 0, year: 0, wallMaterial: 0, wallHex: 0, bays: 0, storeys: 0 } as Record<string, number>,
+  runtime: { gable: 0, year: 0, wallMaterial: 0, wallHex: 0, bays: 0, storeys: 0, stoop: 0 } as Record<string, number>,
   /** Pands the generic path draws (no installed GLB/chunk hides them) whose spec carries bays or a wall colour: the
    *  houses whose look changes when the spec extract is published. */
   genericVisibleWithMesherReads: 0,

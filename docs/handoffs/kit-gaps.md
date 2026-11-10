@@ -149,3 +149,19 @@ Full triage (`triage.ts --limit=0`, 317 candidates, 928 crops): buildable 21, ki
 | Tower triangle budget 12k (#125, needs-david): held with both street fronts PASS | 1 | - | 123762 Anadolubank (13.1k) |
 
 No-evidence (84 rows still at `crops`) is mostly photo quality, not the kit: foliage 20, washed out 19, a single judgeable street wall 10, no crop 7, obliquity 6. The two most visible are 098925 (Kramatweg, washed out 33 %) and 186093 (Plantage Lepellaan, crop 2021 predates the 2022 building); a second panorama capture would unlock them.
+
+## Stoops (K-stoep #360, 2026-11-10): `stoop` closed
+
+The kit could not draw a canal-house stoop: there was no side or double flight, no iron railing and nothing under the
+landing. The library entrance was plain front steps, and the streamed path had three pale slabs. Now closed:
+`buildingRecipe/stoop.ts` has typed flights (front, side-left, side-right, double), black iron rails (plain, bars,
+ornate) and a souterrain door, window or closed panel. It works on the recipe, face and generic paths (docs/house-line.md
+"Stoops").
+
+| Still cannot say | Example |
+|---|---|
+| Curved or winged flights | Herengracht 0363100012167958 |
+| A stair inside a portal recess | Nassaukade 150, 0363100012164843 |
+| Cast-iron scroll newels and urns | Herengracht 167958, 167492 |
+| A souterrain shopfront under the landing | (none in the validation set) |
+| Per-pand BGT pavement depth for `zone` | all generic stoops |
