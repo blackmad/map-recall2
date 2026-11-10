@@ -36,7 +36,7 @@ import { buildOwnLook, lookItems, readOwnLookSources } from './ownLook';
 import { addFeatures, emptyIndex, resolveSuppressed } from '../../src/canalRecall/bagPandIndex';
 import { fullPandId } from '../../src/canalRecall/bagTiles';
 import { KITS, kitIds } from '../../src/canalRecall/landmarkKits';
-import { lookBin, noLook } from '../../src/canalRecall/coverage/ownLook';
+import { lookBin, lookPublishPlan, noLook } from '../../src/canalRecall/coverage/ownLook';
 import {
   TIERS, TIER_IDS, aggregate, emptyContent, hasContent, CONTENT_KINDS, bboxOf, buurtLocator, claim, polygonsOf, rankForGenerators, simplifyRing,
   type Buurt, type BuurtMeta, type PandRecord, type Ring, type TierId,
@@ -288,11 +288,15 @@ const contentsJson = JSON.stringify({ version: 1, generatedAt: file.generatedAt,
 const write = (dir: string) => {
   fs.mkdirSync(dir, { recursive: true });
   if (dir !== STAGING) {
-    // Thumbnails are versioned with the extract: replace the folder so dropped examples do not linger.
+    // Thumbnails are versioned with the extract: replace the folder so dropped examples do not linger, but only with a
+    // complete set (#359: a republish without look.json once deleted every published thumbnail).
     const lookDir = path.join(dir, 'look');
-    fs.rmSync(lookDir, { recursive: true, force: true });
-    fs.mkdirSync(lookDir, { recursive: true });
-    for (const f of new Set(look.files)) fs.copyFileSync(path.join(STAGING, 'look', f), path.join(lookDir, f));
+    const plan = lookPublishPlan({ manifestPresent: fs.existsSync(path.join(STAGING, 'look.json')), published: fs.existsSync(lookDir) ? fs.readdirSync(lookDir).filter(f => f.endsWith('.jpg')) : [], next: look.files, allowShrink: process.argv.includes('--allow-shrink') });
+    if (plan.replace) {
+      fs.rmSync(lookDir, { recursive: true, force: true });
+      fs.mkdirSync(lookDir, { recursive: true });
+      for (const f of new Set(look.files)) fs.copyFileSync(path.join(STAGING, 'look', f), path.join(lookDir, f));
+    } else console.warn(`WARNING: ${plan.reason}`);
   }
   fs.writeFileSync(path.join(dir, 'buurten.json'), json);
   fs.writeFileSync(path.join(dir, 'buurten.json.gz'), zlib.gzipSync(json, { level: 9 }));
