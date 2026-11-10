@@ -15,6 +15,18 @@
     },
     {
       "date": "2026-11-10",
+      "title": "Fewer made-up shops",
+      "text": "Shopfronts used to be guessed on streets with many businesses, so warehouses, offices and houses beside a row of shops got a shop window too. Now a building gets a shopfront only when a shop is mapped on it or the city's building register lists it as a shop, café or restaurant. Around 5,400 guessed shops are gone, including canal warehouses such as Brouwersgracht 222, while Kalverstraat and Haarlemmerdijk keep theirs.",
+      "images": [
+        {
+          "src": "whats-new/2026-11-10-storefront-gate.jpg",
+          "alt": "Brouwersgracht warehouse before and after: the green shop strip on the ground floor is gone",
+          "caption": "Before, after"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-10",
       "title": "Houses keep their measured window bays",
       "text": "Ordinary houses we have measured from the street, a block face or the monument register now draw their real number of window bays instead of the generic texture's default rhythm. About 400 houses change.",
       "images": [

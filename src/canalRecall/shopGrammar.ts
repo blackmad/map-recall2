@@ -48,11 +48,11 @@ export function derivePalette(hexes: readonly string[]): Array<{ cls: PaintClass
   }).sort((a, b) => b.n - a.n);
 }
 
-/** Class medians of the 299 measured hospitality ground-floor walls, weighted by count (n in comments). */
+/** Class medians of the 298 measured (299 until the 2026-11-10 shopfronts refresh) hospitality ground-floor walls, weighted by count (n in comments). */
 export const SHOP_GROUND_PAINTS: ReadonlyArray<{ hex: string; weight: number }> = [
   { hex: '#ece6e0', weight: 105 }, // pale (cream, white)
   { hex: '#7a4a38', weight: 74 },  // warm (brown, terracotta, warm dark)
-  { hex: '#2a2a2c', weight: 63 },  // black / near-black
+  { hex: '#2a2a2c', weight: 62 },  // black / near-black
   { hex: '#3a3c3c', weight: 29 },  // charcoal
   { hex: '#8a8a86', weight: 17 },  // mid grey
   { hex: '#3a4f7a', weight: 11 },  // cool (navy, slate)
