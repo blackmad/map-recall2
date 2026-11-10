@@ -15,7 +15,7 @@ the crop a city-scale, resumable step.
 
 ```
 npm run house:crops -- --buurt <code> [--pand <id>] [--resume] [--dry-run] [--rate-ms 500]
-                       [--archive <dir>] [--limit <n>] [--restart] [--report]
+                       [--archive <dir>] [--limit <n>] [--years <n>] [--restart] [--rejudge] [--report]
 ```
 
 `npm run house:crops -- --help` prints the same text (the `HELP` constant in `scripts/house-crops/crops.ts`).
@@ -23,7 +23,9 @@ npm run house:crops -- --buurt <code> [--pand <id>] [--resume] [--dry-run] [--ra
 | Flag | Meaning |
 |---|---|
 | `--buurt <key>` | required. CBS buurt by 4-letter code (`AB07`), CBS code (`BU0363AB07`) or name (`Bloemgrachtbuurt`), from `public/data/extracts/amsterdam/coverage-v1/buurten.json`. Pands are the BAG pands whose footprint centroid lies inside the outline. |
-| `--pand <id>` | one pand only (16-digit BAG id, with or without `NL.IMBAG.Pand.`); it must lie in the buurt. |
+| `--pand <id,id>` | only these pands (16-digit BAG ids, with or without `NL.IMBAG.Pand.`); they must lie in the buurt. |
+| `--years <n>` | best of up to n mission years per pand, default 6; `--years 1` is the single-year baseline. |
+| `--rejudge` | recompute `usable`/`reasons` for every manifest entry from its stored flags (no network); after a THRESHOLDS-only change. A change to what a crop *is* bumps `RULES_VERSION` (manifest.ts) and needs `--restart`; `--resume` refuses an older manifest. |
 | `--resume` | continue from the manifest: pands with status `ok`, `no-wall`, `no-pano` are skipped, `error` is retried. A kill between the archive write and the manifest write is healed from the archived `front.json`. Without `--resume` an existing manifest stops the run. |
 | `--restart` | throw the manifest away and start over (cached API responses are still reused, so this repeats no requests). |
 | `--dry-run` | no network, no writes: walls found, how many take the strip route, panorama-list cells, estimated requests and minutes. |
@@ -40,12 +42,13 @@ Set `PAND_REFERENCE_CACHE=/Users/blackmad/Code/map-recall2/.cache/pand-reference
 1. **Wall.** `scripts/pand-reference/select.ts pickWall`: the longest exposed (not party-wall) BAG edge whose normal faces the
    nearest road or quay.
 2. **Panoramas.** One panorama list per 30 m cell (radius 57 m, one request set shared by every pand in the cell), then
-   `rankPanos`: camera 5-35 m from the wall (8-25 m preferred), obliquity <= 55 degrees, standoff > 2 m, straightest view first, newer breaks near-ties.
+   `rankPanos`: camera 5-35 m from the wall (8-25 m preferred), obliquity <= 55 degrees, standoff > 2 m. Each candidate is ray-checked: a camera ray to the wall centre that crosses another BAG footprint is `blocked` (alley and neighbour views).
+   One representative per mission year (up to `--years`, 2016-2025) is ranked: clear ray and <= 35 degrees first, then leaf-off months (Nov-Apr), then newer years.
 3. **Route.** Normal: `rectifyWall` onto the BAG wall at 50 px/m. Strip fallback (`planStrip`, `block-face/intake.ts` method): the
    wall is under 4 m, or the best view is over 35 degrees oblique (a mid-row pand on a narrow street, camera beside the wall). The
    pand's block face (collinear neighbouring walls, `groupFaces`) is planned on one capture day, up to 3 panoramas >= 2.5 m apart are
    median-fused at 40 px/m over the pand's span plus 1 m each side, and the pand's span is cut out (`spanPixels`, `cutSpan`).
-4. **Second try.** A crop that breaks a cap gets one more attempt from a panorama of another capture day (leaf-off months and straight views preferred); the one with the smaller total excess is kept.
+4. **Best of N years.** The years are rectified in that order and the first crop that passes every check wins, so extra panoramas are fetched only for fronts that need them; if none passes, the crop with the fewest broken caps is kept. `front.json` records `chosenYear`, `candidates` (year, panorama, verdict, reasons) and `missionYearsAvailable`. A cross-year median that masks occluders was not built (optional in the brief): on the labels the failures are bare trees and wrong walls, which a median over years does not fix, and it would risk blending colour across years.
 5. **Flags and archive** as below.
 
 ### Flags and `usable`
@@ -54,22 +57,38 @@ All thresholds live in the `THRESHOLDS` constant of `scripts/house-crops/flags.t
 
 | Flag | Measures | Cap |
 |---|---|---|
-| `voidShare` | share of pixels not sampled from the panorama (behind the camera, off the image), rows 10-90 % of the crop | <= 0.35 (as `auto-place.ts`) |
-| `foliage` | leaf-coloured share, `isLeaf` (`pand-reference/rectify.ts foliageFraction`) | <= 0.30 (as `auto-place.ts`) |
-| `washedOut` | bright, colourless mid-wall share: sheeting, overexposure, fog (`washedOutFraction`) | <= 0.50 (white-painted fronts reach 0.3) |
-| `occluderShare` | largest connected dark (luma < 50) blob in the lower third as a share of that third. **A proxy** for a parked van or scaffold, not a detector: dark shopfront glass trips it, pale vans and bare tree trunks do not | <= 0.35 |
-| `obliquity` | angle between wall normal and wall-to-camera ray, degrees | <= 55 |
+| `voidShare` | share of pixels not sampled from the panorama, rows 10-90 % of the crop | <= 0.35 (as `auto-place.ts`) |
+| `foliage` | leaf-coloured share after a1's white balance (`src/canalRecall/blockFace/stripWhiteBalance.ts`, copied unchanged; it removes the green-cast false positives). `foliagePlain` is the unbalanced share | <= 0.30 (as `auto-place.ts`) |
+| `washedOut` | bright, colourless mid-wall share: sheeting, overexposure, fog | <= 0.50 |
+| `occluderShare` | largest connected dark blob in the lower third. **A proxy** for a parked van or scaffold: dark shopfront glass trips it, pale vans and bare trunks do not | <= 0.35 |
+| `obliquity` | angle between wall normal and wall-to-camera ray | <= 35 usable; 35-55 is a fallback: made and archived, not usable |
 | `cameraDistance` | camera to wall centre, metres | 5-35 |
-| `missing` | share of invalid pixels over the whole crop (informational, not a gate) | - |
+| `rayBlocked` | the camera ray to the wall centre crosses another BAG footprint | must be false |
+| `wallWidthM` | BAG wall length | >= 3.5 m (slivers) |
+| `heightCover` | valid rows counted up from the ground, share of crop height | >= 0.85 (never fired on AB07) |
+| `edgeDensity` | share of mid-crop pixels with a luma gradient > 20 (blank wall) | >= 0.04 |
+| `seamStep` | largest mean-luma step between adjacent bands | recorded, **not a gate** (no separation on the labels) |
+| `missing` | share of invalid pixels over the whole crop | informational |
 
-Known blind spots, found in the pilot: bare winter branches over a front are not foliage; a white van is not dark; a dark shop
-window can read as an occluder. Judge the contact sheet, not the flags: in the AB07 pilot sheet several `usable` crops are plainly poor (very narrow side walls
-a few metres wide that show a doorway or a window only, walls seen down an alley, strip-route crops with fusion seams or sky
-where the wall is short). A width/area floor and an in-wall check on the panorama's view are the next flags to add.
+Known blind spots: the flags do not see bare winter trees in front of a front (the largest group of "marginal" crops), a white van,
+or a window close-up of a tall wall. **`usable` is a flag verdict, not a quality verdict**; the label evaluation below measures how far apart they are.
 
-Pilot (Bloemgrachtbuurt AB07, 662 pands, 2026-11-10): 659 walls, 651 crops, 462 usable (70.1 % of pands with a wall); rejected
-occluder 76 / foliage 81 / washed-out 32 (primary); 7 no panorama, 1 error, 3 no exposed wall; 955 API requests, 1.66 GB,
-0 x 429, 29 min wall time. The strip route recovers less than the wall route (114/234 vs 348/417 usable).
+### Hand labels and evaluation
+
+`scripts/house-crops/label-sheet.ts` draws blind numbered sheets (no flags), a judge calls each crop good / marginal / bad into
+`scripts/house-crops/labels/<code>.json` (with the panorama ids, so a label counts only while the crop is unchanged), and
+`scripts/house-crops/evaluate.ts --buurt <code> [--sweep]` prints, per flag, precision and recall as a defect detector and the precision/recall of `usable` for `good`. good = a full, straight front, ground floor to roof, no heavy occlusion; marginal = mostly good but flawed (tree, truck, cut top); bad = wrong wall, close-up, blank, oblique, smeared. Marginal counts as not good.
+
+AB07 labels (150 crops: the 48 on the first sheet plus 102 random; labelled blind by a Claude judging session, not a human, so the user should spot-check `artifacts/house-crops/label/AB07-*.png`):
+good 64, marginal 43, bad 43; true good rate 42.7 % (95 % CI 35-51). `usable` flagged 106 (70.7 % of the labelled set), **precision for good 50.9 %, recall 84.4 %**. Per flag as a defect detector: blocked 20 fired / 95 % real defects, blank 5 / 100 %, narrow 6 / 83 %, oblique 25 / 68 % (but it threw 8 good fronts away: narrow Jordaan streets only have oblique panoramas), seam 17 / 47 % (worse than the base rate, so removed as a gate), foliage / washed-out / occluder / void / distance / short fired on none of the labelled set after the changes.
+Raising the obliquity cap from 35 to 55 lifts recall from 0.84 to 0.97 at the same precision (0.49 vs 0.51); the cap is kept at 35 as briefed, the number is here for the integrator to decide.
+**Gate not met**: precision for good 0.51 (< 0.9) and a human-good share of about 43 % (< 70 %). The remaining gap is bare trees (the largest marginal group), alley/side walls that are not blocked by a footprint, and window close-ups; none has a cheap flag.
+
+### Multi-year (best of N) against one year
+
+Same 150 pands, same rules: flag-usable one year 80 / 150 vs best of N 106 / 150; buurt-wide 45.8 % vs 63.9 % of pands with a wall. **True good rate one year 43.3 % vs best of N 42.7 %** (42 of the 150 crops differ; I labelled both): best of N satisfies the flags more often but does not produce better-looking fronts, because what fails is trees and wrong walls, not the capture year. Cost: 89 min, 1,719 requests, 3.8 GB for N <= 6 (2.9 crops tried per pand on average) against 29 min, 955 requests, 1.7 GB for one year plus a second try. The shared panorama cache holds the downloads (49 GB total at the end of the pilot; the disk was at 4.6 GB free).
+
+Pilot (Bloemgrachtbuurt AB07, 662 pands, final run 2026-11-10): 659 walls, 652 crops, 421 flag-usable (63.9 % of pands with a wall); rejected (primary) oblique 135, blocked 71, narrow 12, occluder 9, blank 3, foliage 1; 7 no panorama, 3 no exposed wall; 0 x 429. The strip route: 64/88 flag-usable.
 
 ### Archive and manifest
 

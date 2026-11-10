@@ -78,14 +78,13 @@ test('a cross street gap, a setback and the far side of the street split faces',
   assert.ok(sameFace(wall('a', 0, 5), wall('b', 6, 14)));
 });
 
-test('H4b caps: ray, width, height cover, blank wall, strip-only seam', () => {
+test('H4b caps: ray, width, height cover, blank wall', () => {
   assert.deepEqual(usability({ ...ok, rayBlocked: true }).reasons, ['blocked']);
   assert.deepEqual(usability({ ...ok, wallWidthM: 3.4 }).reasons, ['narrow']);
   assert.ok(usability({ ...ok, wallWidthM: 3.5 }).usable);
   assert.deepEqual(usability({ ...ok, heightCover: 0.84 }).reasons, ['short']);
   assert.deepEqual(usability({ ...ok, edgeDensity: 0.03 }).reasons, ['blank']);
-  assert.ok(usability({ ...ok, seamStep: 99 }).usable, 'seam only gates the strip route');
-  assert.deepEqual(usability({ ...ok, seamStep: 31, strip: true }).reasons, ['seam']);
+  assert.ok(usability({ ...ok, seamStep: 99, strip: true }).usable, 'seamStep is recorded, not a gate (no separation on the labels)');
 });
 
 const sq = (x: number, y: number, s = 10) => [{ x, y }, { x: x + s, y }, { x: x + s, y: y + s }, { x, y: y + s }, { x, y }];

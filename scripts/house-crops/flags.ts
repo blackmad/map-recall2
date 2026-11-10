@@ -24,8 +24,6 @@ export const THRESHOLDS = {
   minHeightCover: 0.85,
   /** H4b: share of mid-crop pixels with a luma gradient over EDGE_GRADIENT; below it the crop is a blank wall (calibrated on labels, see evaluate.ts) */
   minEdgeDensity: 0.04,
-  /** H4b, strip route only: largest mean-luma step between adjacent columns or rows (a fusion seam); calibrated on labels */
-  maxSeamStep: 30,
   /** a wall under this falls back to planStrip (a narrow front is a few hundred pixels wide and a single parked car covers it) */
   narrowWallM: 4,
 } as const;
@@ -56,7 +54,7 @@ export function usability(f: CropFlags, t: typeof THRESHOLDS = THRESHOLDS): Usab
   if (f.wallWidthM < t.minWallM) reasons.push('narrow');
   if (f.heightCover < t.minHeightCover) reasons.push('short');
   if (f.edgeDensity < t.minEdgeDensity) reasons.push('blank');
-  if (f.strip && f.seamStep > t.maxSeamStep) reasons.push('seam');
+  // seamStep is recorded but not a gate: on the AB07 labels a luma step does not separate good from bad strip crops (evaluate.ts)
   return { usable: reasons.length === 0, reasons };
 }
 

@@ -24,7 +24,8 @@ export const HELP = `house:crops - rectified, quality-flagged facade crops for o
                          [--archive <dir>] [--limit <n>] [--years <n>] [--restart] [--report] [--help]
 
   --buurt <key>     CBS buurt: 4-letter code (AB07), CBS code (BU0363AB07) or name (Bloemgrachtbuurt). Required.
-  --pand <id>       process only this pand (16-digit BAG id, with or without NL.IMBAG.Pand.); it must lie in the buurt.
+  --pand <id,id>   process only these pands (16-digit BAG ids, with or without NL.IMBAG.Pand.); they must lie in the buurt.
+  --rejudge         recompute usable/reasons for every manifest entry from its stored flags (no network); use after a THRESHOLDS-only change.
   --resume          continue from scripts/house-crops/manifests/<code>.json: pands with status ok / no-wall / no-pano are
                     skipped, status error is retried. Without --resume an existing manifest stops the run (see --restart).
   --restart         discard the existing manifest and start over (cached API responses are still reused, so this repeats no requests).
@@ -46,7 +47,7 @@ Flags: foliage, washedOut, missing, voidShare, occluderShare (a dark-blob PROXY 
 usable = voidShare <= ${THRESHOLDS.voidShare}, foliage <= ${THRESHOLDS.foliage}, washedOut <= ${THRESHOLDS.washedOut}, occluderShare <= ${THRESHOLDS.occluderShare},
 obliquity <= ${THRESHOLDS.obliquityDeg} deg (35-${THRESHOLDS.fallbackObliquityDeg} is a fallback: made, not usable), camera ${THRESHOLDS.cameraDistanceM[0]}-${THRESHOLDS.cameraDistanceM[1]} m,
 ray to the wall not through another footprint, wall >= ${THRESHOLDS.minWallM} m, height cover >= ${THRESHOLDS.minHeightCover}, edge density >= ${THRESHOLDS.minEdgeDensity},
-strip seam step <= ${THRESHOLDS.maxSeamStep} (scripts/house-crops/flags.ts THRESHOLDS). Foliage is measured after a1's white balance (stripWhiteBalance.ts).
+(scripts/house-crops/flags.ts THRESHOLDS; seamStep is recorded, not gated). Foliage is measured after a1's white balance (stripWhiteBalance.ts).
 A manifest of an older rules version cannot be --resumed: use --restart (cached responses, no repeated requests).
 Panorama API: one request start per --rate-ms, exponential backoff on 429/5xx (Retry-After honoured), identifying User-Agent.
 Panorama bytes are cached in PAND_REFERENCE_CACHE (default .cache/pand-reference; point it at the shared cache).`;
@@ -202,15 +203,25 @@ async function main() {
   const buurt: Buurt = await loadBuurt(key);
   if (has('report')) { const { report } = await import('./report.ts'); await report(buurt.code, arg('archive') ?? process.env.HOUSE_CROPS_ARCHIVE); return; }
   options.maxYears = Number(arg('years') ?? options.maxYears);
-  const rateMs = Number(arg('rate-ms') ?? 500), dry = has('dry-run');
   const archiveRoot = arg('archive') ?? process.env.HOUSE_CROPS_ARCHIVE;
+  if (has('rejudge')) {
+    const m = await readManifest(buurt.code); if (!m) throw new Error('no manifest');
+    for (const [id, e] of Object.entries(m.pands)) if (e.status === 'ok') {
+      const u = usability(e.flags!); e.usable = u.usable; e.reasons = u.reasons;
+      const fj = path.join(archiveRoot ?? '', 'pand-crops', id, 'front.json');
+      const j = archiveRoot ? await fs.readFile(fj, 'utf8').then(JSON.parse).catch(() => null) : null;
+      if (j) { j.usable = u.usable; j.rejectedBecause = u.reasons; j.thresholds = THRESHOLDS; await fs.writeFile(fj, JSON.stringify(j, null, 1) + '\n'); }
+    }
+    m.thresholds = THRESHOLDS; await writeManifest(m); console.log('rejudged'); const { report } = await import('./report.ts'); await report(buurt.code, archiveRoot); return;
+  }
+  const rateMs = Number(arg('rate-ms') ?? 500), dry = has('dry-run');
   if (!archiveRoot && !dry) { console.error('--archive <source-data checkout> (or env HOUSE_CROPS_ARCHIVE) is required unless --dry-run'); process.exit(2); }
   http.minGapMs = rateMs; http.maxAttempts = 6; http.userAgent = USER_AGENT;
 
   let pands = await pandsInBuurt(buurt);
   console.log(`${buurt.code} ${buurt.name} (${buurt.gebied}): ${pands.length} BAG pands in the buurt`);
-  const want = arg('pand') && `NL.IMBAG.Pand.${idOf(arg('pand')!)}`;
-  if (want && !pands.some(p => p.id === want)) throw new Error(`${want} is not in ${buurt.code}`);
+  const want = arg('pand') ? new Set(arg('pand')!.split(',').map(x => `NL.IMBAG.Pand.${idOf(x)}`)) : null;
+  for (const w of want ?? []) if (!pands.some(p => p.id === w)) throw new Error(`${w} is not in ${buurt.code}`);
 
   // Walls first (no network): the street-facing wall of every pand, then block faces for the strip route.
   const walls = new Map<string, Wall>(), noWall = new Map<string, string>();
@@ -241,7 +252,7 @@ async function main() {
   const limit = Number(arg('limit') ?? Infinity);
 
   // Work in spatial order so consecutive pands share panoramas (the decoded-panorama LRU holds two).
-  const order = pands.filter(fp => !want || fp.id === want).sort((a, b) => { const p = centroid(a.ring), q = centroid(b.ring); return Math.floor(p.x / 90) - Math.floor(q.x / 90) || p.y - q.y; });
+  const order = pands.filter(fp => !want || want.has(fp.id)).sort((a, b) => { const p = centroid(a.ring), q = centroid(b.ring); return Math.floor(p.x / 90) - Math.floor(q.x / 90) || p.y - q.y; });
   for (const fp of order) {
     const id = idOf(fp.id);
     if (stop || session.pands >= limit) break;

@@ -28,7 +28,7 @@ export function evaluate(m: Manifest, labels: Record<string, Label>) {
     `usable flag: ${usable.length} flagged usable (${pct(usable.length / n)}), precision for good ${pct(tp / Math.max(1, usable.length))} (${tp}/${usable.length}), recall ${pct(tp / Math.max(1, good))} (${tp}/${good})`, '',
     '| reject reason | fired | of which bad/marginal (precision as a defect detector) | bad/marginal caught (recall) | good thrown away |', '|---|---|---|---|---|'];
   const notGood = n - good;
-  for (const reason of ['void', 'foliage', 'washed-out', 'occluder', 'oblique', 'distance', 'blocked', 'narrow', 'short', 'blank', 'seam']) {
+  for (const reason of ['void', 'foliage', 'washed-out', 'occluder', 'oblique', 'distance', 'blocked', 'narrow', 'short', 'blank']) {
     const fired = rows.filter(r => r.reasons.includes(reason)), bad = fired.filter(r => !r.good).length;
     out.push(`| ${reason} | ${fired.length} | ${bad} (${pct(bad / Math.max(1, fired.length))}) | ${bad}/${notGood} (${pct(bad / Math.max(1, notGood))}) | ${fired.length - bad} |`);
   }
