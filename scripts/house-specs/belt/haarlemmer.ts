@@ -24,6 +24,22 @@ type Amend = {
 const EAVES_PINS = ['west', 'oost'].flatMap(b => JSON.parse(readFileSync(`scripts/block-face/buurten/haarlemmerbuurt-${b}-review-eaves.json`, 'utf8')).pins as {pandId: string; eavesM: number; reason: string}[]);
 
 export const AMEND: Record<string, Amend> = {
+  // Haarlemmerdijk 16/18/20: the 2022-12-15 strip is under-exposed (wall medians #30-#34), the 2020-01-10 capture is not. Measured, not tuned.
+  '0363100012167818': {
+    fields: {'palette/brick': '#4e4641'},
+    evidence: 'winter re-capture 2020-01-10 (well exposed; the 2022-12-15 strip is under-exposed): palette-from-strip wall #4e4641, reproduce with intake.ts --face=zz-wint-dijk --street=Haarlemmerdijk --seed=0363100012167817 --from=0363100012167818 --to=0363100012167816 --date=2020-01-10',
+    at: '2020-01-10',
+  },
+  '0363100012167817': {
+    fields: {'palette/brick': '#463e3a'},
+    evidence: 'winter re-capture 2020-01-10 (well exposed; the 2022-12-15 strip is under-exposed): palette-from-strip wall #463e3a, reproduce with intake.ts --face=zz-wint-dijk --street=Haarlemmerdijk --seed=0363100012167817 --from=0363100012167818 --to=0363100012167816 --date=2020-01-10',
+    at: '2020-01-10',
+  },
+  '0363100012167816': {
+    fields: {'palette/brick': '#473936'},
+    evidence: 'winter re-capture 2020-01-10 (well exposed; the 2022-12-15 strip is under-exposed): palette-from-strip wall #473936, reproduce with intake.ts --face=zz-wint-dijk --street=Haarlemmerdijk --seed=0363100012167817 --from=0363100012167818 --to=0363100012167816 --date=2020-01-10',
+    at: '2020-01-10',
+  },
   // Haarlemmerstraat 52: the photo's ground storey is three stone-framed bays with the door in the middle (type default: door left).
   '0363100012171145': {
     fields: {'fronts/0/doorBay': 1},

@@ -56,7 +56,7 @@
    "squareSaddle": true
   },
   "palette": {
-   "brick": "#342d2c",
+   "brick": "#4e4641",
    "frame": "white-painted",
    "door": "#2a2a28",
    "stone": "#e8e4d8",
@@ -80,6 +80,12 @@
    "confidence": 0.3,
    "ref": "scripts/block-face/faces/haarlemmerdijk-2-58-r1/strip.json#type:haarlemmer-shop-gable",
    "at": null
+  },
+  "palette/brick": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "docs/reports/haarlemmer-strip-verdict-20261110.md; winter re-capture 2020-01-10 (well exposed; the 2022-12-15 strip is under-exposed): palette-from-strip wall #4e4641, reproduce with intake.ts --face=zz-wint-dijk --street=Haarlemmerdijk --seed=0363100012167817 --from=0363100012167818 --to=0363100012167816 --date=2020-01-10",
+   "at": "2020-01-10"
   },
   "fronts/0/eavesHeight": {
    "source": "author",

@@ -56,7 +56,7 @@
    "evidence": "Haarlemmerdijk 6 (176172) and 18 (167817), 2022-12-15 strips and the strip-sheet review 2026-11-10: sky directly over the frieze and its crown, no roof face; 3DBAG p95 11.21 m over a 10.9 m cornice on 6 and 9.69 m under an 11.4 m cornice on 18, so the roof behind is near flat. The front-hipped red saddle of haarlemmer-shop-cornice drew a red face over the frieze that the review rejected"
   },
   "palette": {
-   "brick": "#4c403a",
+   "brick": "#463e3a",
    "frame": "white-painted",
    "door": "#2a2a28",
    "stone": "#e8e4d8",
@@ -80,6 +80,12 @@
    "confidence": 0.3,
    "ref": "scripts/block-face/faces/haarlemmerdijk-2-58-r1/strip.json#type:haarlemmer-shop-cornice-frieze",
    "at": null
+  },
+  "palette/brick": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "docs/reports/haarlemmer-strip-verdict-20261110.md; winter re-capture 2020-01-10 (well exposed; the 2022-12-15 strip is under-exposed): palette-from-strip wall #463e3a, reproduce with intake.ts --face=zz-wint-dijk --street=Haarlemmerdijk --seed=0363100012167817 --from=0363100012167818 --to=0363100012167816 --date=2020-01-10",
+   "at": "2020-01-10"
   },
   "fronts/0/eavesHeight": {
    "source": "author",
