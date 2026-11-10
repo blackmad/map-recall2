@@ -2962,16 +2962,21 @@
       "suppressOsmIds": [
         "w1038324509",
         "w1038324510",
-        "w1038324511"
+        "w1038324511",
+        "w57864184",
+        "NL.IMBAG.Pand.0363100012149391",
+        "w274024358",
+        "NL.IMBAG.Pand.0363100012187517",
+        "NL.IMBAG.Pand.0363100012187451"
       ],
       "footprint": {
         "centre": [
-          4.8905845781125485,
-          52.39274079370824
+          4.890711,
+          52.3924554
         ],
         "headingDegrees": 164.76785231590262,
-        "lengthMetres": 65.91515774263391,
-        "widthMetres": 40.43657598726371
+        "lengthMetres": 131,
+        "widthMetres": 40.4
       },
       "groundAltitudeMetres": 0,
       "facingOffsetDegrees": 90,
@@ -2981,7 +2986,7 @@
         "sourceUrl": "https://www.mvrdv.com/projects/163/silodam",
         "licence": "CC BY 4.0",
         "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
-        "modifications": "Original texture-free low-poly reconstruction rebuilt from MVRDV primary exterior photographs and the supplied SketchUp thumbnail as visual references only. No imported SketchUp/Warehouse geometry or photo textures. Native mapped parent and three building parts retain the ten-storey 20m-deep housing, 29m flat roof, open piles, and separate mapped 3–7m projecting office/public balcony. Four distinct facade neighbourhoods include continuous red gallery strips, yellow-framed double-height glass, corrugated silver cladding, large white-framed lower panes, and orange-base cladding represented by the shared warm-gold project palette. Exact current BAG/OSM identities suppress only this building; neighboring historic silos remain."
+        "modifications": "Original texture-free low-poly reconstruction rebuilt from MVRDV primary exterior photographs and the supplied SketchUp thumbnail as visual references only. No imported SketchUp/Warehouse geometry or photo textures. Native mapped parent and three building parts retain the ten-storey 20m-deep housing, 29m flat roof, open piles, and separate mapped 3–7m projecting office/public balcony. Four distinct facade neighbourhoods include continuous red gallery strips, yellow-framed double-height glass, corrugated silver cladding, large white-framed lower panes, and orange-base cladding. 2026-11-10: extended over the two southern BAG panden 0363100012187517 (OSM w274024358, on blue raked piers) and 0363100012187451 (the land end with the orange container base), so the whole 131 m slab is modelled; facade bands of both long sides from Wikimedia Commons photographs (CC BY 2.0, CC BY-SA 3.0, CC0). Exact current BAG/OSM identities suppress only this building; neighboring historic silos remain."
       },
       "spatialSuppression": false,
       "surveyed": {
@@ -2991,15 +2996,23 @@
         ],
         "northOffsetDegrees": 74.76785231590262
       },
+      "materialOverrides": {
+        "gold": "#d8c35a",
+        "ochre": "#d4702a",
+        "pink": "#8fb3d4",
+        "brick": "#7b5c45",
+        "red": "#9c3f30",
+        "blue": "#2f4f9e"
+      },
       "buildingCategory": "landmark",
       "bounds": {
         "min": [
-          -33.35499954223633,
-          0,
+          -33.55500030517578,
+          -0.03834298998117447,
           -20.514999389648438
         ],
         "max": [
-          33.224998474121094,
+          98.48500061035156,
           29.329999923706055,
           20.604999542236328
         ]
@@ -3015,25 +3028,25 @@
         "scale": 1
       },
       "extent": {
-        "widthMetres": 66.57999801635742,
-        "heightMetres": 29.329999923706055,
+        "widthMetres": 132.04000091552734,
+        "heightMetres": 29.36834291368723,
         "depthMetres": 41.119998931884766,
-        "depthCoverage": 1.0169011081659416
+        "depthCoverage": 1.017821755739722
       },
-      "triangles": 17290,
-      "bytes": 213524,
+      "triangles": 23076,
+      "bytes": 270304,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "59a513770337b2cb",
+        "sourceHash": "d2c86d728effc252",
         "buildVersion": 2,
-        "bytes": 56584,
-        "triangles": 2941
+        "bytes": 68880,
+        "triangles": 3680
       },
       "lod2": {
-        "sourceHash": "59a513770337b2cb",
+        "sourceHash": "d2c86d728effc252",
         "buildVersion": 6,
-        "bytes": 13592,
-        "triangles": 697
+        "bytes": 19872,
+        "triangles": 1282
       }
     },
     "embassy-free-mind": {
@@ -12395,7 +12408,10 @@
       "name": "Amsterdam Sloterdijk Station",
       "landmarkId": "osm_building_268460687",
       "modelUrl": "./models/sloterdijk-station.glb",
-      "suppressOsmIds": [],
+      "suppressOsmIds": [
+        "w640102320",
+        "w640102319"
+      ],
       "footprint": {
         "centre": [
           4.838214466204455,
@@ -12422,19 +12438,26 @@
         "sourceUrl": "https://arcam.nl/architectuur-gids/station-sloterdijk/",
         "licence": "CC BY 4.0",
         "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
-        "modifications": "Original glass hall, open white table trusses and raised deck; open circulation below retained. Separate platform canopies, Orlyplein public space and adjacent hotel not suppressed."
+        "modifications": "Original texture-free reconstruction (rebuilt 2026-11-10): both glazed vaults over the north-south viaducts with blue ribs, grey belly, red band and lettering; the glass hall under the white space-frame table on lattice towers with tree feet; the glazed wedge concourse; the Regenboogpad with its two round lift towers; short low-level platform canopies. Plan from the PDOK 2023 orthophoto, heights from 3DBAG, look from Wikimedia Commons and Gemeente Amsterdam panoramas. Orlyplein, the bus station and the adjacent hotel not suppressed."
+      },
+      "materialOverrides": {
+        "stone": "#eeede8",
+        "blue": "#2c6ccf",
+        "greyBrick": "#9a9fa6",
+        "pink": "#8b5bb3",
+        "glass": "#6f8fa3"
       },
       "buildingCategory": "landmark",
       "bounds": {
         "min": [
-          -54.25473403930664,
-          0,
-          -39.46535873413086
+          -58.599998474121094,
+          -0.004999997094273567,
+          -90.55000305175781
         ],
         "max": [
-          54.21906661987305,
-          23.671756744384766,
-          39.48074722290039
+          120,
+          24.200000762939453,
+          67.55000305175781
         ]
       },
       "placement": {
@@ -12448,25 +12471,25 @@
         "scale": 1
       },
       "extent": {
-        "widthMetres": 108.47380065917969,
-        "heightMetres": 23.671756744384766,
-        "depthMetres": 78.94610595703125,
-        "depthCoverage": 0.9937745667788933
+        "widthMetres": 178.5999984741211,
+        "heightMetres": 24.205000760033727,
+        "depthMetres": 158.10000610351562,
+        "depthCoverage": 1.9901648494072213
       },
-      "triangles": 11768,
-      "bytes": 123816,
+      "triangles": 38876,
+      "bytes": 458320,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "3a518469067cf2cd",
+        "sourceHash": "0d07839d951e7eb0",
         "buildVersion": 2,
-        "bytes": 38672,
-        "triangles": 1812
+        "bytes": 92964,
+        "triangles": 4899
       },
       "lod2": {
-        "sourceHash": "3a518469067cf2cd",
+        "sourceHash": "0d07839d951e7eb0",
         "buildVersion": 6,
-        "bytes": 14920,
-        "triangles": 756
+        "bytes": 22944,
+        "triangles": 1062
       }
     },
     "hnk-sloterdijk": {

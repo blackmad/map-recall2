@@ -1,5 +1,23 @@
 # Canal Recall — what is built
 
+**Feedback F: Silodam whole, Station Sloterdijk modelled (2026-11-10, lane/landmarks-silodam-sloterdijk-20261110 at c0ae615f0, opus).**
+- **Silodam** ("half of silodam seems unfinished?", 95ff35e3). The MVRDV slab is three BAG panden, ~131 m long. The `silodam` model covered only the northern pand. The southern half (OSM w274024358 / BAG 0363100012187517 on piers, and 187451 at the land end) was never suppressed and drew as plain 3DBAG boxes. The builder now covers the whole slab:
+  - IJ face from the Commons long elevation 15224999649: four sections, an orange container base, blue raked V-piers and a glazed public storey;
+  - new south dam sections;
+  - all five ids suppressed;
+  - 23,076 tris.
+- **Station Sloterdijk** ("needs to be modeled", f04680eb). New `sloterdijk-station-builder.ts`, plan measured on the PDOK 2023 orthophoto at 8 px/m, heights from 3DBAG roof planes, 38,876 tris (under the 40k/500 KB budget). It has:
+  - the two blue-ribbed glazed vaults over the viaducts, with lettering and the NS logo;
+  - the glass hall grounded on Orlyplein (it had floated at 8.25 m);
+  - the white space-frame table on lattice towers;
+  - the glazed wedge concourse and red stair/lift portals;
+  - the Regenboogpad rainbow footbridge with its lift towers;
+  - low island canopies.
+
+  OSM vault roofs w640102319/320 are suppressed.
+
+audit:glb: sloterdijk-station PASS. silodam fails only see-through (open piers) and detached panels, both already present in the old model. Unmodelled: the bus/tram level canopies, the bike pavilions, Silodam's per-flat colour mix, the perforated rib holes. The integrator added four OSM part ids (w278381373/734/789, w278380029) to the re-placed Javastraat 97-109 chunk's suppress list (`check:osm-under-models`).
+
 **Feedback D: an industrial kit for tanks, silos, sheds and works, on by default (2026-11-10, lane/industrial-kit-20261110 at eb72e0b19, opus).** User items e6f5deb7, b95fff1c and 76bc26ce: tanks had windows, and sheds had shopfronts and windowed brick. `industrial/industrialClass.ts` classifies pands from OSM tags, BAG gebruiksdoel (fetched in RD stripes past PDOK's 50k cap), 3DBAG year/height and landuse into tank, silo, shed, works (a shed with an office front) or office. Over 349,801 buildings: shed 5,553 (10.1 M m²), tank 914, works 424, office 351, silo 6. Before the kit:
 - 774 of 913 tanks drew windowed walls;
 - 5,530 of 5,541 sheds had windows and 248 had shopfronts.

@@ -1,0 +1,438 @@
+{
+ "schemaVersion": 1,
+ "id": "sloterdijk-station",
+ "pand": "0363100012120833",
+ "brief": "scripts/landmarks/sloterdijk-station-brief.md",
+ "signature": [
+  "vaults",
+  "table",
+  "belly",
+  "rainbow-path",
+  "hall-front",
+  "wedge"
+ ],
+ "walls": [
+  {
+   "tag": "w01-346",
+   "bearing": 346,
+   "lengthM": 50.4,
+   "centre": [
+    4.8386178,
+    52.3891728
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-07-01_09-03-48_03168",
+   "capturedAt": "2025-07-01",
+   "checked": true,
+   "items": [
+    {
+     "id": "vaults",
+     "kind": "canopy",
+     "where": "two long glazed vaults over the north-south viaducts, blue perforated ribs every ~3 m, white crown lattice",
+     "approxSizeM": [
+      24,
+      157
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-07-01_09-03-48_03168",
+     "how": "vault(): elliptical glass section, blue rib beams every 3.2 m, crown lattice"
+    },
+    {
+     "id": "belly",
+     "kind": "other",
+     "where": "grey rounded belly fascia under each vault with a red band at the eaves",
+     "approxSizeM": [
+      3,
+      157
+     ],
+     "plan": "modelled",
+     "seenIn": "commons:Station_Amsterdam_Sloterdijk_2011.jpg",
+     "how": "extruded belly profile, red band, white eaves strip"
+    },
+    {
+     "id": "columns",
+     "kind": "colonnade",
+     "where": "round grey concrete columns under the viaducts",
+     "approxSizeM": [
+      1.7,
+      8
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-07-01_09-03-48_03168",
+     "how": "two rows of r 0.85 m columns about 14 m apart"
+    },
+    {
+     "id": "kiosk",
+     "kind": "other",
+     "where": "small yellow platform kiosk on the low platforms",
+     "approxSizeM": [
+      4,
+      3
+     ],
+     "plan": "skipped",
+     "seenIn": "recording_2025-07-01_09-03-48_03168",
+     "skip": {
+      "reason": "too-small",
+      "note": "about 4 m, inside the low platforms"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w02-193",
+   "bearing": 193,
+   "lengthM": 50.4,
+   "centre": [
+    4.8386231,
+    52.388894
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000907_pano_0011_000270",
+   "capturedAt": "2018-08-09",
+   "checked": true,
+   "items": [
+    {
+     "id": "bus-canopy",
+     "kind": "canopy",
+     "where": "bus/tram stop canopies south of the station",
+     "approxSizeM": [
+      8,
+      3
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-000907_pano_0011_000270",
+     "skip": {
+      "reason": "not-visible",
+      "note": "outside the station pand south of the vaults; tram/bus level left to the street layer"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w03-270",
+   "bearing": 270,
+   "lengthM": 33.7,
+   "centre": [
+    4.8374475,
+    52.3890244
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-07-01_09-03-48_02912",
+   "capturedAt": "2025-07-01",
+   "checked": true,
+   "items": [
+    {
+     "id": "hall-front",
+     "kind": "window-shape",
+     "where": "glass hall front to Orlyplein in a 3.3 m mullion grid",
+     "approxSizeM": [
+      33,
+      11
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-07-01_09-03-48_02912",
+     "how": "hall glass planes with frame mullions and transoms"
+    },
+    {
+     "id": "hall-lettering",
+     "kind": "lettering",
+     "where": "\"Amsterdam Sloterdijk\" and the NS logo over the entrance",
+     "approxSizeM": [
+      14,
+      1.7
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2025-07-01_09-03-48_02912",
+     "how": "pixel lettering in capitals + NS logo panel"
+    },
+    {
+     "id": "hall-clock",
+     "kind": "clock",
+     "where": "round station clock over the doors",
+     "approxSizeM": [
+      1.5,
+      1.5
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2025-07-01_09-03-48_02912",
+     "how": "white disc"
+    },
+    {
+     "id": "table",
+     "kind": "other",
+     "where": "the white space-frame table: box trusses on four lattice towers over the hall",
+     "approxSizeM": [
+      66,
+      52
+     ],
+     "plan": "modelled",
+     "seenIn": "commons:Station_Sloterdijk.JPG",
+     "how": "boxTruss() x4, lattice towers 3.6 m square"
+    }
+   ]
+  },
+  {
+   "tag": "w04-89",
+   "bearing": 89,
+   "lengthM": 32.9,
+   "centre": [
+    4.838269,
+    52.3887966
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000907_pano_0011_000268",
+   "capturedAt": "2018-08-09",
+   "checked": true,
+   "items": [
+    {
+     "id": "stair-canopy",
+     "kind": "canopy",
+     "where": "pitched canopy over the stairs and escalators up to the vaults",
+     "approxSizeM": [
+      10,
+      4
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-000907_pano_0011_000268",
+     "how": "red portal frames by the wedge mark the stair/lift shafts"
+    },
+    {
+     "id": "wedge",
+     "kind": "canopy",
+     "where": "glazed wedge concourse joining the two vaults over the low tracks",
+     "approxSizeM": [
+      31,
+      35
+     ],
+     "plan": "modelled",
+     "seenIn": "pdok:luchtfotorgb Actueel_orthoHR 2023",
+     "how": "trapezoid deck, glass walls and sloping glass roof"
+    }
+   ]
+  },
+  {
+   "tag": "w05-90",
+   "bearing": 90,
+   "lengthM": 25.7,
+   "centre": [
+    4.8382569,
+    52.3892325
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-07-01_09-03-48_03168",
+   "capturedAt": "2025-07-01",
+   "checked": true,
+   "items": [
+    {
+     "id": "rainbow-path",
+     "kind": "other",
+     "where": "Regenboogpad: rainbow-painted footbridge curving along the east vault",
+     "approxSizeM": [
+      6,
+      110
+     ],
+     "plan": "modelled",
+     "seenIn": "commons:Rainbow_crossing,_Amsterdam.jpg",
+     "how": "24 deck segments on a Catmull-Rom arc, six colour stripes, rails, columns"
+    },
+    {
+     "id": "lift-towers",
+     "kind": "tower",
+     "where": "two round glazed lift towers at the ends of the rainbow path",
+     "approxSizeM": [
+      8,
+      11
+     ],
+     "plan": "modelled",
+     "seenIn": "pdok:luchtfotorgb Actueel_orthoHR 2023",
+     "how": "glass cylinders r 4 m with flat domed glass roofs and posts"
+    },
+    {
+     "id": "east-lettering",
+     "kind": "lettering",
+     "where": "\"Amsterdam Sloterdijk\" and NS logo on the east vault belly",
+     "approxSizeM": [
+      20,
+      1.2
+     ],
+     "plan": "simplified",
+     "seenIn": "commons:Amsterdam_Sloterdijk_Station_in_2019.01.jpg",
+     "how": "pixel capitals on the belly + NS logo"
+    }
+   ]
+  },
+  {
+   "tag": "w06-180",
+   "bearing": 180,
+   "lengthM": 18.7,
+   "centre": [
+    4.8375496,
+    52.3886437
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000906_pano_0003_002862",
+   "capturedAt": "2018-08-08",
+   "checked": true,
+   "items": [
+    {
+     "id": "tree-foot",
+     "kind": "sculpture",
+     "where": "tree columns: one white column branching into four struts under each table tower",
+     "approxSizeM": [
+      4,
+      4.4
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000906_pano_0003_002862",
+     "how": "central column on a round plinth, four branch struts"
+    }
+   ]
+  },
+  {
+   "tag": "w07-270",
+   "bearing": 270,
+   "lengthM": 10.7,
+   "centre": [
+    4.8375067,
+    52.3892785
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2024-09-09_08-42-32_04286",
+   "capturedAt": "2024-09-09",
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w08-0",
+   "bearing": 0,
+   "lengthM": 6.6,
+   "centre": [
+    4.8374921,
+    52.3887482
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316060226-000456_pano_0005_000795",
+   "capturedAt": "2019-11-04",
+   "checked": true,
+   "items": [
+    {
+     "id": "bike-pavilions",
+     "kind": "other",
+     "where": "low blue-framed glazed bike-parking pavilions on Orlyplein",
+     "approxSizeM": [
+      10,
+      3
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316060226-000456_pano_0005_000795",
+     "skip": {
+      "reason": "not-visible",
+      "note": "separate pavilions outside the station pand"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w09-270",
+   "bearing": 270,
+   "lengthM": 5.9,
+   "centre": [
+    4.8374117,
+    52.3886693
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002081_pano_0000_002729",
+   "capturedAt": "2021-04-08",
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w10-226",
+   "bearing": 226,
+   "lengthM": 5.7,
+   "centre": [
+    4.83748,
+    52.3888548
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-07-01_09-03-48_02918",
+   "capturedAt": "2025-07-01",
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w11-314",
+   "bearing": 314,
+   "lengthM": 5.7,
+   "centre": [
+    4.8374735,
+    52.3891942
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316060226-000456_pano_0005_000781",
+   "capturedAt": "2019-11-04",
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w12-270",
+   "bearing": 270,
+   "lengthM": 5.2,
+   "centre": [
+    4.8375403,
+    52.3887719
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316060226-000456_pano_0005_000793",
+   "capturedAt": "2019-11-04",
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "low-level",
+   "bearing": 90,
+   "lengthM": 140,
+   "evidence": "photo",
+   "panoId": "pdok:luchtfotorgb Actueel_orthoHR 2023",
+   "capturedAt": null,
+   "checked": true,
+   "note": "Platforms 3-8 east-west at grade (OSM 90083155 etc.), seen in the orthophoto.",
+   "items": [
+    {
+     "id": "low-canopies",
+     "kind": "canopy",
+     "where": "island platform canopies on the low east-west tracks either side of the station",
+     "approxSizeM": [
+      6.4,
+      62
+     ],
+     "plan": "simplified",
+     "seenIn": "pdok:luchtfotorgb Actueel_orthoHR 2023",
+     "how": "flat slate canopies on posts at 3.9 m over the three islands"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "PDOK luchtfoto RGB Actueel_orthoHR",
+   "url": "https://service.pdok.nl/hwh/luchtfotorgb/wms/v1_0",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "Station Amsterdam Sloterdijk 2011 / Sloterdijk Amsterdam in 2015 / Amsterdam Sloterdijk Station in 2019.01-05",
+   "url": "https://commons.wikimedia.org/wiki/Category:Station_Amsterdam_Sloterdijk",
+   "licence": "CC BY-SA 4.0"
+  },
+  {
+   "name": "Station-amsterdam-sloterdijk.jpg, Station Sloterdijk.JPG",
+   "url": "https://commons.wikimedia.org/wiki/Category:Station_Amsterdam_Sloterdijk",
+   "licence": "CC BY-SA 3.0"
+  },
+  {
+   "name": "3DBAG pand 0363100012120833",
+   "url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012120833",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

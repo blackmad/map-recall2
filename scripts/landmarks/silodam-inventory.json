@@ -1,0 +1,336 @@
+{
+ "schemaVersion": 1,
+ "id": "silodam",
+ "pand": "0363100012149391",
+ "brief": "scripts/landmarks/silodam-brief.md",
+ "signature": [
+  "e-colour-sections",
+  "s-orange-base",
+  "w-yellow-glass",
+  "e-orange-band"
+ ],
+ "walls": [
+  {
+   "tag": "w01-75",
+   "bearing": 75,
+   "lengthM": 33.1,
+   "centre": [
+    4.8905248,
+    52.3928831
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [
+    {
+     "id": "e-colour-sections",
+     "kind": "other",
+     "where": "whole IJ elevation: four ~33 m neighbourhoods (yellow-topped grey land end, yellow-framed glass over blue piers, white with blue and orange bands, timber-topped north end)",
+     "approxSizeM": [
+      131,
+      29
+     ],
+     "plan": "modelled",
+     "seenIn": "commons:Silodam_Amsterdam_(15224999649).jpg",
+     "how": "east.patch() bands per pand in silodam-builder.ts, colours from materialOverrides"
+    },
+    {
+     "id": "e-orange-band",
+     "kind": "window-shape",
+     "where": "continuous orange spandrel band with a window ribbon at the 4th-5th storey across the middle two neighbourhoods",
+     "approxSizeM": [
+      65,
+      3
+     ],
+     "plan": "modelled",
+     "seenIn": "commons:Silodam_Amsterdam_(15224999649).jpg",
+     "how": "patch mode 'band' in ochre"
+    },
+    {
+     "id": "e-public-wing",
+     "kind": "window-shape",
+     "where": "low glazed public storey on white columns under the northern half",
+     "approxSizeM": [
+      33,
+      4
+     ],
+     "plan": "modelled",
+     "seenIn": "commons:Silodam_Amsterdam_(15224999649).jpg",
+     "how": "publicWing glass shell + office strip + frame posts"
+    }
+   ],
+   "note": "East (IJ) face of the northern pand; no panorama reaches the water side, seen in the Commons long elevation from the IJ."
+  },
+  {
+   "tag": "w02-255",
+   "bearing": 255,
+   "lengthM": 33,
+   "centre": [
+    4.890242,
+    52.3928363
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [
+    {
+     "id": "w-yellow-glass",
+     "kind": "window-shape",
+     "where": "double-height glazing in yellow frames on the dam side",
+     "approxSizeM": [
+      16,
+      8
+     ],
+     "plan": "modelled",
+     "seenIn": "commons:Amsterdam_-_Silodam_(30300083435).jpg",
+     "how": "west.patch gold 'tall'"
+    },
+    {
+     "id": "w-red-galleries",
+     "kind": "balcony-ironwork",
+     "where": "oxide-red gallery storeys with continuous rails",
+     "approxSizeM": [
+      16,
+      7
+     ],
+     "plan": "modelled",
+     "seenIn": "commons:Amsterdam_-_Silodam_(29669346453).jpg",
+     "how": "patch mode 'gallery'"
+    },
+    {
+     "id": "w-blue-section",
+     "kind": "other",
+     "where": "pale-blue clad section over an oxide-red balcony storey and weathered timber base",
+     "approxSizeM": [
+      16,
+      27
+     ],
+     "plan": "modelled",
+     "seenIn": "commons:Amsterdam_-_Silodam_(30300084485).jpg",
+     "how": "pink/red/brick patches 16.4..32.7"
+    }
+   ]
+  },
+  {
+   "tag": "w03-75",
+   "bearing": 75,
+   "lengthM": 32.7,
+   "centre": [
+    4.8909347,
+    52.3926441
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [
+    {
+     "id": "e-blue-squares",
+     "kind": "window-shape",
+     "where": "glass storeys with blue square panels near the top of the north end",
+     "approxSizeM": [
+      16,
+      4
+     ],
+     "plan": "simplified",
+     "seenIn": "commons:Silodam_Amsterdam_(15224999649).jpg",
+     "how": "pink (overridden pale blue) grid patch with dark frames"
+    }
+   ],
+   "note": "Second half of the northern pand on the IJ; same source as w01."
+  },
+  {
+   "tag": "w04-254",
+   "bearing": 254,
+   "lengthM": 20.4,
+   "centre": [
+    4.8903888,
+    52.3924961
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002855_pano_0003_000067",
+   "capturedAt": "2022-12-14",
+   "checked": true,
+   "items": [
+    {
+     "id": "w-stairs",
+     "kind": "other",
+     "where": "public stairs and railings up to the deck at the dam side",
+     "approxSizeM": [
+      10,
+      3
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-002855_pano_0003_000067",
+     "skip": {
+      "reason": "not-visible",
+      "note": "outside the BAG pand; the stairs belong to the quay, drawn by the ground"
+     }
+    }
+   ],
+   "note": "The panorama aimed at this wall shows the curved block across the dam, not the Silodam; dam-side photos come from Commons instead."
+  },
+  {
+   "tag": "w05-345",
+   "bearing": 345,
+   "lengthM": 20,
+   "centre": [
+    4.8907303,
+    52.3927628
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "Internal party line with the middle pand since the model spans all three panden."
+  },
+  {
+   "tag": "w06-165",
+   "bearing": 165,
+   "lengthM": 20,
+   "centre": [
+    4.8908549,
+    52.3924788
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [
+    {
+     "id": "s-orange-base",
+     "kind": "other",
+     "where": "orange corrugated container base storey with two dark windows",
+     "approxSizeM": [
+      20,
+      3.2
+     ],
+     "plan": "modelled",
+     "seenIn": "commons:Mvrdv_silodam.jpg",
+     "how": "ochre 'metal' patch + two dark windows"
+    },
+    {
+     "id": "s-stack",
+     "kind": "window-shape",
+     "where": "stack of grey, green-blue glass grid, white and timber bands under a yellow top storey",
+     "approxSizeM": [
+      20,
+      26
+     ],
+     "plan": "modelled",
+     "seenIn": "commons:Amsterdam_-_Silodam_(29669318103).jpg",
+     "how": "end elevation at x 98.15"
+    }
+   ],
+   "note": "South (land) end of the whole slab, now at x = 98 m (BAG 0363100012187451)."
+  },
+  {
+   "tag": "w07-345",
+   "bearing": 345,
+   "lengthM": 19.9,
+   "centre": [
+    4.8903202,
+    52.3930032
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [
+    {
+     "id": "n-end",
+     "kind": "window-shape",
+     "where": "north end over the IJ: white grid storeys, tall glazing, red gallery on top",
+     "approxSizeM": [
+      20,
+      27
+     ],
+     "plan": "simplified",
+     "seenIn": "commons:Silodam_Amsterdam_(15224999649).jpg",
+     "how": "end elevation at x -32.85 on white piles"
+    }
+   ]
+  },
+  {
+   "tag": "w08-255",
+   "bearing": 255,
+   "lengthM": 11,
+   "centre": [
+    4.8903304,
+    52.3926327
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7315080123-000292_pano_0000_001135",
+   "capturedAt": "2016-06-15",
+   "checked": true,
+   "items": [
+    {
+     "id": "w-timber",
+     "kind": "other",
+     "where": "weathered brown timber cladding storeys over white columns",
+     "approxSizeM": [
+      11,
+      6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7315080123-000292_pano_0000_001135",
+     "how": "brick (timber brown) 'pair' patch"
+    }
+   ]
+  },
+  {
+   "tag": "piers",
+   "bearing": 75,
+   "lengthM": 32,
+   "evidence": "photo",
+   "panoId": "commons:2016.10_-_Amsterdam_..._(30153585085).png",
+   "capturedAt": null,
+   "checked": true,
+   "note": "Under the middle pand (BAG 0363100012187517, OSM w274024358 min_height 6).",
+   "items": [
+    {
+     "id": "blue-piers",
+     "kind": "colonnade",
+     "where": "raked blue steel tube piers in V pairs under concrete pier caps, standing in the IJ",
+     "approxSizeM": [
+      32,
+      6
+     ],
+     "plan": "modelled",
+     "seenIn": "commons:2016.10_-_Amsterdam_..._(30153585085).png",
+     "how": "tube() V pairs every 5.4 m, two rows"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Silodam Amsterdam (15224999649)",
+   "url": "https://commons.wikimedia.org/wiki/File:Silodam_Amsterdam_(15224999649).jpg",
+   "licence": "CC BY 2.0"
+  },
+  {
+   "name": "Mvrdv silodam.jpg",
+   "url": "https://commons.wikimedia.org/wiki/File:Mvrdv_silodam.jpg",
+   "licence": "CC BY-SA 3.0"
+  },
+  {
+   "name": "Amsterdam - Silodam (29669318103, 29669346453, 29669349363, 30214297661, 30300083435, 30300084485, 30300085505)",
+   "url": "https://commons.wikimedia.org/wiki/Category:Silodam_(MVRDV)",
+   "licence": "CC BY 2.0"
+  },
+  {
+   "name": "Fons Heijnsbroek, pillars in the IJ (30153585085)",
+   "url": "https://commons.wikimedia.org/wiki/Category:Silodam_(MVRDV)",
+   "licence": "CC0"
+  },
+  {
+   "name": "3DBAG panden 0363100012149391, 0363100012187517, 0363100012187451",
+   "url": "https://api.3dbag.nl/collections/pand/items?bbox=121080,489440,121320,489660",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

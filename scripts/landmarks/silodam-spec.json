@@ -8,16 +8,19 @@
     "NL.IMBAG.Pand.0363100012149391",
     "w1038324509",
     "w1038324510",
-    "w1038324511"
+    "w1038324511",
+    "w274024358",
+    "NL.IMBAG.Pand.0363100012187517",
+    "NL.IMBAG.Pand.0363100012187451"
   ],
   "footprint": {
     "centre": [
-      4.8905845781125485,
-      52.39274079370824
+      4.890711,
+      52.3924554
     ],
     "headingDegrees": 164.76785231590262,
-    "lengthMetres": 65.91515774263391,
-    "widthMetres": 40.43657598726371
+    "lengthMetres": 131.0,
+    "widthMetres": 40.4
   },
   "groundAltitudeMetres": 0,
   "facingOffsetDegrees": 90,
@@ -36,5 +39,13 @@
       52.39274079370824
     ],
     "northOffsetDegrees": 74.76785231590262
+  },
+  "materialOverrides": {
+    "gold": "#d8c35a",
+    "ochre": "#d4702a",
+    "pink": "#8fb3d4",
+    "brick": "#7b5c45",
+    "red": "#9c3f30",
+    "blue": "#2f4f9e"
   }
 }

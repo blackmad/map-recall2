@@ -4296,16 +4296,21 @@
   "suppressOsmIds": [
    "w1038324509",
    "w1038324510",
-   "w1038324511"
+   "w1038324511",
+   "w57864184",
+   "NL.IMBAG.Pand.0363100012149391",
+   "w274024358",
+   "NL.IMBAG.Pand.0363100012187517",
+   "NL.IMBAG.Pand.0363100012187451"
   ],
   "footprint": {
    "centre": [
-    4.8905845781125485,
-    52.39274079370824
+    4.890711,
+    52.3924554
    ],
    "headingDegrees": 164.76785231590262,
-   "lengthMetres": 65.91515774263391,
-   "widthMetres": 40.43657598726371
+   "lengthMetres": 131.0,
+   "widthMetres": 40.4
   },
   "groundAltitudeMetres": 0,
   "facingOffsetDegrees": 90,
@@ -4315,7 +4320,7 @@
    "sourceUrl": "https://www.mvrdv.com/projects/163/silodam",
    "licence": "CC BY 4.0",
    "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
-   "modifications": "Original texture-free low-poly reconstruction rebuilt from MVRDV primary exterior photographs and the supplied SketchUp thumbnail as visual references only. No imported SketchUp/Warehouse geometry or photo textures. Native mapped parent and three building parts retain the ten-storey 20m-deep housing, 29m flat roof, open piles, and separate mapped 3–7m projecting office/public balcony. Four distinct facade neighbourhoods include continuous red gallery strips, yellow-framed double-height glass, corrugated silver cladding, large white-framed lower panes, and orange-base cladding represented by the shared warm-gold project palette. Exact current BAG/OSM identities suppress only this building; neighboring historic silos remain."
+   "modifications": "Original texture-free low-poly reconstruction rebuilt from MVRDV primary exterior photographs and the supplied SketchUp thumbnail as visual references only. No imported SketchUp/Warehouse geometry or photo textures. Native mapped parent and three building parts retain the ten-storey 20m-deep housing, 29m flat roof, open piles, and separate mapped 3–7m projecting office/public balcony. Four distinct facade neighbourhoods include continuous red gallery strips, yellow-framed double-height glass, corrugated silver cladding, large white-framed lower panes, and orange-base cladding. 2026-11-10: extended over the two southern BAG panden 0363100012187517 (OSM w274024358, on blue raked piers) and 0363100012187451 (the land end with the orange container base), so the whole 131 m slab is modelled; facade bands of both long sides from Wikimedia Commons photographs (CC BY 2.0, CC BY-SA 3.0, CC0). Exact current BAG/OSM identities suppress only this building; neighboring historic silos remain."
   },
   "spatialSuppression": false,
   "surveyed": {
@@ -4324,6 +4329,14 @@
     52.39274079370824
    ],
    "northOffsetDegrees": 74.76785231590262
+  },
+  "materialOverrides": {
+   "gold": "#d8c35a",
+   "ochre": "#d4702a",
+   "pink": "#8fb3d4",
+   "brick": "#7b5c45",
+   "red": "#9c3f30",
+   "blue": "#2f4f9e"
   }
  },
  {
@@ -5175,7 +5188,10 @@
   "name": "Amsterdam Sloterdijk Station",
   "landmarkId": "osm_building_268460687",
   "modelUrl": "./models/sloterdijk-station.glb",
-  "suppressOsmIds": [],
+  "suppressOsmIds": [
+   "w640102320",
+   "w640102319"
+  ],
   "footprint": {
    "centre": [
     4.838214466204455,
@@ -5202,7 +5218,14 @@
    "sourceUrl": "https://arcam.nl/architectuur-gids/station-sloterdijk/",
    "licence": "CC BY 4.0",
    "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
-   "modifications": "Original glass hall, open white table trusses and raised deck; open circulation below retained. Separate platform canopies, Orlyplein public space and adjacent hotel not suppressed."
+   "modifications": "Original texture-free reconstruction (rebuilt 2026-11-10): both glazed vaults over the north-south viaducts with blue ribs, grey belly, red band and lettering; the glass hall under the white space-frame table on lattice towers with tree feet; the glazed wedge concourse; the Regenboogpad with its two round lift towers; short low-level platform canopies. Plan from the PDOK 2023 orthophoto, heights from 3DBAG, look from Wikimedia Commons and Gemeente Amsterdam panoramas. Orlyplein, the bus station and the adjacent hotel not suppressed."
+  },
+  "materialOverrides": {
+   "stone": "#eeede8",
+   "blue": "#2c6ccf",
+   "greyBrick": "#9a9fa6",
+   "pink": "#8b5bb3",
+   "glass": "#6f8fa3"
   }
  },
  {
