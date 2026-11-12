@@ -129,6 +129,8 @@ export const RECORD_SPAN_PAD_M = 0;
 /** A track within this of a rail deck's axis runs on the deck, degrees. */
 export const AXIS_TOL_DEG = 30;
 /** A cut with at least this share of its stations inside a `cuts: 'none'` zone goes whole. */
+/** Scene z = NAP − 1.37 (groundStore.ts WATER_Z: canal −0.40 NAP); records carry NAP heights. */
+export const SCENE_NAP_M = 1.37;
 export const CUT_DROP_SHARE = 0.5;
 
 export function gameDefaults(kind: CrossingKind): { cuts: 'keep' | 'none'; portals: 'keep' | 'listed' | 'none' } {
@@ -209,9 +211,12 @@ export interface CrossingIndex {
   /**
    * The spans of one track: inferred spans whose trigger lies in a zone go, and a rail-over-road record's rail decks
    * the track runs through become spans (s along the track's points, `clear` from the record's heights or the
-   * inferred span it replaces). `points` is the track's polyline in the local frame.
+   * inferred span it replaces). `points` is the track's polyline in the local frame. `levelAt(s)` (the track's bed,
+   * scene z) keeps a track at street level under the deck from becoming a span: a station counts as on the deck only
+   * when its level is nearer the record's deck top than its street (the Kimpoweg tram under the Sloterdijk metro
+   * viaduct, user report #13).
    */
-  spans(points: readonly Vec2[], inferred: readonly RailSpan[], bridge: boolean): RailSpan[];
+  spans(points: readonly Vec2[], inferred: readonly RailSpan[], bridge: boolean, levelAt?: (s: number) => number): RailSpan[];
   /** The cuts with the records applied (zones with `cuts: 'none'` cut out, portals filtered). Stats in `stats`. */
   cuts(cuts: readonly Cut[], stats?: CrossingCutStats): Cut[];
 }
@@ -235,7 +240,7 @@ export function crossingIndex(records: readonly CrossingRecord[], project: (p: L
   return {
     size: placed.length,
     at(x, y) { return find(x, y)?.r ?? null; },
-    spans(points, inferred, bridge) {
+    spans(points, inferred, bridge, levelAt) {
       if (!placed.length || points.length < 2) return inferred.slice();
       const kept = inferred.filter(sp => !find(sp.at[0], sp.at[1]));
       if (bridge) return kept;
@@ -259,6 +264,9 @@ export function crossingIndex(records: readonly CrossingRecord[], project: (p: L
       const made: RailSpan[] = [];
       for (const p of placed) {
         if (!p.railDecks.length) continue;
+        // Track level vs the record's deck: above the midway between street and deck top (NAP, scene z + SCENE_NAP_M).
+        const h0 = p.r.heights, mid = h0.deckTop !== undefined && h0.streetUnder !== undefined ? (h0.deckTop + h0.streetUnder) / 2 : null;
+        const onDeckLevel = (s: number) => !levelAt || mid === null || levelAt(s) + SCENE_NAP_M > mid;
         let run: [number, number] | null = null;
         const close = () => {
           if (!run) return;
@@ -269,7 +277,7 @@ export function crossingIndex(records: readonly CrossingRecord[], project: (p: L
         };
         for (let s = 0; s <= total + 1e-9; s += 1) {
           const q = at(Math.min(s, total));
-          const inside = q[0] >= p.box[0] && q[0] <= p.box[2] && q[1] >= p.box[1] && q[1] <= p.box[3] && p.railDecks.some(d => insideRing(d.ring, q[0], q[1]) && alongAxis(headingAt(Math.min(s, total)), d.axis));
+          const inside = q[0] >= p.box[0] && q[0] <= p.box[2] && q[1] >= p.box[1] && q[1] <= p.box[3] && p.railDecks.some(d => insideRing(d.ring, q[0], q[1]) && alongAxis(headingAt(Math.min(s, total)), d.axis)) && onDeckLevel(Math.min(s, total));
           if (inside) run = run ? [run[0], Math.min(s, total)] : [Math.min(s, total), Math.min(s, total)];
           else close();
         }

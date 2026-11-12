@@ -89,6 +89,17 @@ test('spans: a rail-over-road record replaces the inferred span with its rail de
   assert.match(validateRecord(record({ plan: { decks: [{ ring: box(-15, -6, 15, 6), carries: 'rail' }] } })).join(), /axisDeg/);
 });
 
+test('spans: a track at street level under a rail deck gets no span (Kimpoweg tram under the Sloterdijk metro viaduct, #13)', () => {
+  const idx = crossingIndex([record()], project);
+  const track: Vec2[] = [[-60, 0], [60, 0]];
+  // record(): street 0.5, deck top 6.1 NAP; midway 3.3 NAP = scene 1.93. A bed at scene -0.9 (0.47 NAP) is the street's.
+  assert.deepEqual(idx.spans(track, [], false, () => -0.9), []);
+  // A bed at the deck (scene 4.7 = 6.07 NAP) is on it.
+  assert.equal(idx.spans(track, [], false, () => 4.7).length, 1);
+  // No level given: the deck alone decides (as before).
+  assert.equal(idx.spans(track, [], false).length, 1);
+});
+
 test('spans: a level record drops the inferred span and makes none', () => {
   const idx = crossingIndex([record({ kind: 'level', plan: { decks: [] } })], project);
   assert.deepEqual(idx.spans([[-60, 0], [60, 0]], [{ s0: 20, s1: 93, clear: 0.4, at: [0, 0] }], false), []);

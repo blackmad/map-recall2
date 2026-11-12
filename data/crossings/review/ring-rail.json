@@ -12,8 +12,148 @@
     "haarlemmerweg-carrascoplein-under-arlandaweg-carrascoplein-4175-2118",
     "carrascoplein-under-deck-4232-1979"
    ],
-   "verdict": "confirmed",
-   "notes": "Ortho: Station Sloterdijk's rail viaduct and its road deck over the Carrascoplein; panorama 02628 is under the deck (soffit, piers, shopfronts)."
+   "verdict": "corrected",
+   "notes": "Ortho: Station Sloterdijk's rail viaduct and its road deck over the Carrascoplein; panorama 02628 is under the deck (soffit, piers, shopfronts). Round 2 (2026-11-12): the BGT metro deck cluster runs 850 m along the Sloterdijk viaduct (52.3845-52.3922) and took in the Kimpoweg, where panorama recording_2025-07-01_09-03-48_02081 shows the tram at street level among the viaduct's columns (user report #13, kimpoweg-rails). The decks and zone are cut to the Carrascoplein (52.3870-52.3905); the Kimpoweg tram is out of the record, and the register no longer makes a span for a track whose bed lies nearer the street than the deck top.",
+   "decks": [
+    {
+     "ring": [
+      [
+       4.8377035,
+       52.3876359
+      ],
+      [
+       4.8377095,
+       52.3875675
+      ],
+      [
+       4.8381095,
+       52.3875565
+      ],
+      [
+       4.8382333,
+       52.3871414
+      ],
+      [
+       4.8382849,
+       52.387
+      ],
+      [
+       4.8395967,
+       52.387
+      ],
+      [
+       4.8394045,
+       52.3905
+      ],
+      [
+       4.8379547,
+       52.3905
+      ],
+      [
+       4.8379291,
+       52.3903459
+      ],
+      [
+       4.8378925,
+       52.3898697
+      ],
+      [
+       4.8379094,
+       52.388876
+      ],
+      [
+       4.8379271,
+       52.3885552
+      ],
+      [
+       4.8379588,
+       52.3882661
+      ],
+      [
+       4.8380793,
+       52.387673
+      ]
+     ],
+     "carries": "metro",
+     "axisDeg": 176.9,
+     "bgt": [
+      "G0363.35d494460296484ab1b998c433e5c5c6",
+      "G0363.9f45132ddc0b4714b37acd84db067eb7",
+      "L0004.d8f7d8f88f4a4996bf5bf2d87062a53d",
+      "L0002.d281be45e643494bacb22f0a497773bc",
+      "L0002.ce69240b77974cd1a177cb8d017c5c1a",
+      "L0004.49202018f4b94db8b72da32cf74c1aa5",
+      "L0004.59c6ab5c2e344be9b622e8b3fb48ef9e",
+      "G0363.daee0b4bc13c463eb1b9d6857c6bf2dc",
+      "L0004.2f90d459f568459599677ac4bcf80961",
+      "L0004.3fa11f26bcdd42a0a489ceefa3dd7839",
+      "L0004.6b5808daed62468eb853ffcf1c811736",
+      "L0004.7a1d12f78222438d8c69933a42eb33b9",
+      "L0004.b669faadcfb240d5a50eab225b9c8bf6",
+      "L0004.1de8856b51424392a716691525ee9e00",
+      "L0004.57ed870129634f7393d875a1fab5cff0",
+      "L0004.a6c0225dee0549618f3ac1ad9beac1c8"
+     ]
+    },
+    {
+     "ring": [
+      [
+       4.8376801,
+       52.3880739
+      ],
+      [
+       4.8377018,
+       52.3877376
+      ],
+      [
+       4.837726,
+       52.3877367
+      ],
+      [
+       4.8377586,
+       52.3877475
+      ],
+      [
+       4.8377843,
+       52.387783
+      ],
+      [
+       4.8377775,
+       52.3880328
+      ],
+      [
+       4.8377406,
+       52.3880668
+      ],
+      [
+       4.8377058,
+       52.3880757
+      ]
+     ],
+     "carries": "road",
+     "bgt": [
+      "G0363.52f931e73900401d9b6863ee4a7a11cb"
+     ]
+    }
+   ],
+   "zone": [
+    [
+     4.8374,
+     52.3868
+    ],
+    [
+     4.84,
+     52.3868
+    ],
+    [
+     4.84,
+     52.3907
+    ],
+    [
+     4.8374,
+     52.3907
+    ]
+   ]
   },
   {
    "id": "sloterdijk-radarweg-orlyplein-over-rail",

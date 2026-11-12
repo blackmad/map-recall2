@@ -614,7 +614,7 @@ export function buildCell(input: CellInput): BuiltCell {
       const level = profile.levels.get(w);
       if (w.bridge || !level) continue;
       const inferred = underpassSpans(w, s => railLevelAt(level, s), spanStreets, onLand, measured, input.railSpanHeadroom);
-      const found = register ? register.spans(w.points, inferred, w.bridge) : inferred;
+      const found = register ? register.spans(w.points, inferred, w.bridge, s => railLevelAt(level, s)) : inferred;
       if (found.length) spans.set(w, found);
     }
     const promoted = new Set([...spans.keys()].map(railWayKey));
