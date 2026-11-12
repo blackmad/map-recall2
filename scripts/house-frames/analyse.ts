@@ -282,3 +282,66 @@ export function flagsFor(picks: PickRead, game: HalfMeasure, photo: HalfMeasure,
   }
   return f;
 }
+
+// ---- wall colour in OKLab, and before/after on the target wall (lane wall-colour-truth, 2026-11-12) -------------------
+const srgbLin = (c: number) => { const v = c / 255; return v <= 0.04045 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4; };
+/** OKLab (Ottosson) of an 8-bit sRGB pixel. */
+export function rgbOklab(r8: number, g8: number, b8: number): [number, number, number] {
+  const r = srgbLin(r8), g = srgbLin(g8), b = srgbLin(b8);
+  const l = Math.cbrt(0.4122214708 * r + 0.5363325363 * g + 0.0514459929 * b), m = Math.cbrt(0.2119034982 * r + 0.6806995451 * g + 0.1073969566 * b), s = Math.cbrt(0.0883024619 * r + 0.2817188376 * g + 0.6299787005 * b);
+  return [0.2104542553 * l + 0.793617785 * m - 0.0040720468 * s, 1.9779984951 * l - 2.428592205 * m + 0.4505937099 * s, 0.0259040371 * l + 0.7827717662 * m - 0.808675766 * s];
+}
+export type WallLab = { L: number; C: number; h: number; hex: string; n: number };
+/**
+ * The pand's wall colour in one half, OKLab: the pixels `wallBandL` reads (COLOUR_BAND_M on the wall plane, inner 80 %,
+ * leaves and sky-like pixels dropped), trimmed to the 30-70 % lightness quantiles (glass and shadow below, white frames
+ * and glints above), then averaged in OKLab. L 0..1, C chroma, h hue in degrees; null under 40 pixels.
+ */
+export function wallLab(img: Rgb8, frame: CameraFrame, pose: FramePose, wall: WallQuad): WallLab | null {
+  const len = Math.hypot(wall.b.x - wall.a.x, wall.b.y - wall.a.y), topM = wall.heightM, v0 = Math.min(COLOUR_BAND_M[0], topM * 0.3), v1 = Math.min(COLOUR_BAND_M[1], topM * 0.85);
+  if (v1 <= v0 || len < 1) return null;
+  const px: Array<[number, number, number, number, number, number]> = [];
+  for (let i = 0; i < 24; i++) for (let j = 0; j < 16; j++) {
+    const s = wallPoint(frame, pose, wall, len * (0.1 + 0.8 * (i + 0.5) / 24), v0 + (v1 - v0) * (j + 0.5) / 16);
+    if (s.depth <= 0 || s.x < 0 || s.y < 0 || s.x >= img.width || s.y >= img.height) continue;
+    const o = (Math.floor(s.y) * img.width + Math.floor(s.x)) * 3, r = img.data[o], g = img.data[o + 1], b = img.data[o + 2];
+    if (isLeaf(r, g, b)) continue;
+    const y = 0.299 * r + 0.587 * g + 0.114 * b;
+    if (y > 120 && (b > r + 8 || y > 205)) continue;
+    px.push([...rgbOklab(r, g, b), r, g, b]);
+  }
+  if (px.length < 40) return null;
+  px.sort((a, b) => a[0] - b[0]);
+  const part = px.slice(Math.floor(px.length * 0.3), Math.ceil(px.length * 0.7)), n = part.length;
+  const mean = (k: number) => part.reduce((s, p) => s + p[k], 0) / n;
+  const L = mean(0), a = mean(1), bb = mean(2), hex = '#' + [3, 4, 5].map(k => Math.round(mean(k)).toString(16).padStart(2, '0')).join('');
+  return { L: +L.toFixed(3), C: +Math.hypot(a, bb).toFixed(3), h: +(((Math.atan2(bb, a) * 180) / Math.PI + 360) % 360).toFixed(0), hex, n: px.length };
+}
+
+/** OKLab distance over which a target-wall pixel counts as changed between two game frames (about 2 JND). */
+export const WALL_CHANGE_DE = 0.02;
+/** Under this share of changed target-wall pixels a before/after is "the same" (render noise on an unchanged wall is 0-0.5 %). */
+export const WALL_SAME_PCT = 2;
+export type WallChange = { pct: number; meanDE: number; n: number; same: boolean };
+/**
+ * Before/after on the target wall: the share of pixels on the projected wall (a 48 x 32 grid over 5-95 % of its length,
+ * 0.3 m to 97 % of its height) whose OKLab distance between the two frames exceeds WALL_CHANGE_DE, and the mean
+ * distance. `same` when under WALL_SAME_PCT: the flag compared did not reach this wall's pixels (a baked world, a flag
+ * the worker never sees, a guard that holds the pand) and the pair proves nothing.
+ */
+export function wallChange(before: Rgb8, after: Rgb8, frame: CameraFrame, pose: FramePose, wall: WallQuad): WallChange | null {
+  if (before.width !== after.width || before.height !== after.height) return null;
+  const len = Math.hypot(wall.b.x - wall.a.x, wall.b.y - wall.a.y);
+  let n = 0, changed = 0, sum = 0;
+  for (let i = 0; i < 48; i++) for (let j = 0; j < 32; j++) {
+    const s = wallPoint(frame, pose, wall, len * (0.05 + 0.9 * (i + 0.5) / 48), 0.3 + (wall.heightM * 0.97 - 0.3) * (j + 0.5) / 32);
+    if (s.depth <= 0 || s.x < 0 || s.y < 0 || s.x >= after.width || s.y >= after.height) continue;
+    const o = (Math.floor(s.y) * after.width + Math.floor(s.x)) * 3;
+    const p = rgbOklab(before.data[o], before.data[o + 1], before.data[o + 2]), q = rgbOklab(after.data[o], after.data[o + 1], after.data[o + 2]);
+    const d = Math.hypot(p[0] - q[0], p[1] - q[1], p[2] - q[2]);
+    n++; sum += d; if (d > WALL_CHANGE_DE) changed++;
+  }
+  if (!n) return null;
+  const pct = +(100 * changed / n).toFixed(1);
+  return { pct, meanDE: +(sum / n).toFixed(4), n, same: pct < WALL_SAME_PCT };
+}

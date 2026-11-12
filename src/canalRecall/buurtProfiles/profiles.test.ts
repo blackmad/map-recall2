@@ -1,3 +1,4 @@
+import { brickLiftV2ProfileWall } from '../look/brickLift.ts';
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { BuurtProfileIndex, pruneEras, storeyScaleOf, STOREY_SCALE_ENABLED, STOREY_SCALE_MAX, STOREY_SCALE_MIN, pickWeighted, profileTraits, unitDraw, validateProfileSet, type BuurtProfile, type BuurtProfileSet } from './profiles.ts';
@@ -52,7 +53,9 @@ test('bayLookFor: a profile picks its measured walls and matching presets, photo
     const other = bayLookFor(`pand${i}`, 1890, 14, 'storybook', 'quiet', undefined, undefined, profile);
     assert.deepEqual(other, bayLookFor(`pand${i}`, 1890, 14, 'storybook', 'quiet'));
   }
-  assert.deepEqual([...walls].sort(), ['#5a3a30', '#e8e2d4']);
+  // brickLift is off by default since 2026-11-12 (v1 draws the raw pair); under v2 a profile's dark brick takes the linear-light gain, its pale render does not.
+  assert.deepEqual([...walls].sort(), ['#5a3a30', '#e8e2d4'].sort());
+  assert.equal(brickLiftV2ProfileWall('#e8e2d4'), '#e8e2d4');
   // An era without a profile keeps the city's period walls.
   assert.ok(PERIOD_WALLS.photo.modern!.includes(bayLookFor('m1', 1970, 15, 'photo', 'quiet', undefined, undefined, profile).wallHex));
   // No year: the buurt's dominant era.

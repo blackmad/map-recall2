@@ -1,0 +1,100 @@
+{
+ "version": 1,
+ "note": "Facade benchmark v1 groups (lane F4, #379, 2026-11-12). select.ts turns them into pands; benchmark-v1.json holds the pands and their hand labels.",
+ "groups": [
+  {
+   "id": "keizersgracht",
+   "kind": "canal belt",
+   "street": "Keizersgracht",
+   "from": 100,
+   "to": 180,
+   "parity": "even",
+   "why": "a Grachtengordel-West stretch of ordinary canal houses, one side"
+  },
+  {
+   "id": "herengracht",
+   "kind": "canal belt",
+   "street": "Herengracht",
+   "from": 101,
+   "to": 151,
+   "parity": "odd",
+   "why": "a Herengracht stretch beside the Keizersgracht one: ordinary canal houses, one side"
+  },
+  {
+   "id": "jordaan-corner",
+   "kind": "Jordaan corner block",
+   "streets": [
+    "Egelantiersstraat",
+    "Tweede Egelantiersdwarsstraat"
+   ],
+   "at": "Tweede Egelantiersdwarsstraat 2",
+   "radiusM": 40,
+   "why": "the corner of Egelantiersstraat and the cross street: the corner pand and its flanks on both streets"
+  },
+  {
+   "id": "egelantiers-dw2",
+   "kind": "Jordaan cross street",
+   "street": "Tweede Egelantiersdwarsstraat",
+   "from": 1,
+   "to": 60,
+   "parity": "both",
+   "why": "a Jordaan cross street, both sides"
+  },
+  {
+   "id": "tuindwars-2",
+   "kind": "Jordaan cross street",
+   "street": "Tweede Tuindwarsstraat",
+   "from": 1,
+   "to": 60,
+   "parity": "both",
+   "why": "a second Jordaan cross street (shops and houses, both sides): the Egelantiers one is short"
+  },
+  {
+   "id": "nieuwmarkt",
+   "kind": "square",
+   "street": "Nieuwmarkt",
+   "from": 1,
+   "to": 60,
+   "parity": "both",
+   "why": "Nieuwmarkt, every front on the square"
+  },
+  {
+   "id": "haarlemmerdijk",
+   "kind": "shopfronts",
+   "street": "Haarlemmerdijk",
+   "from": 2,
+   "to": 60,
+   "parity": "even",
+   "why": "Haarlemmerdijk shopfronts, one side"
+  },
+  {
+   "id": "haarlemmerstraat",
+   "kind": "shopfronts",
+   "street": "Haarlemmerstraat",
+   "from": 60,
+   "to": 110,
+   "parity": "even",
+   "why": "Haarlemmerstraat shopfronts, one side"
+  },
+  {
+   "id": "kinkerstraat",
+   "kind": "Oud-West 1875-1910 row",
+   "street": "Kinkerstraat",
+   "from": 150,
+   "to": 260,
+   "parity": "even",
+   "minYear": 1870,
+   "maxYear": 1915,
+   "why": "an Oud-West Kinkerstraat row of 1875-1910 fronts"
+  },
+  {
+   "id": "nassaukade-506",
+   "kind": "kit standard",
+   "street": "Nassaukade",
+   "from": 145,
+   "to": 152,
+   "parity": "both",
+   "why": "the row seen from berth Nassaukade 506 (face nassau-145-152): the user's kit standard"
+  }
+ ]
+}

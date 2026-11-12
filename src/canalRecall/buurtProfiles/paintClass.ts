@@ -61,6 +61,15 @@ export function paintedWall(rgb: Rgb): boolean {
   return L >= PAINT.coolMinL && h > PAINT.coolHue[0] && h < PAINT.coolHue[1] && C < PAINT.coolC;
 }
 
+/**
+ * A dark neutral wall with no real light trim to judge it by is brick in shade or under an overcast cast, never paint (lane #373,
+ * 2026-11-12). `trimGain` falls back to the city white point (gain up to 1.45) when the thumbnail shows no trim clearly lighter than
+ * the wall; that lift took raw #555554 and #646768 (Lootsbuurt 064962, 141920: red-brown brick in the photo) to L* >= 62 and C* < 14,
+ * so they entered the profile as painted grey and drew as the grey pool entries (#8d8d90, #787878, #7b7c7d ...). A wall that is
+ * dark AND neutral in the raw reading and has only the city white point behind it stays brick. A real trim (`via: 'trim'`) still
+ * decides: a black painted front beside white frames is paint.
+ */
+export const DARK_NEUTRAL_RAW = { maxL: 55, maxC: 10 } as const;
 /** One photo wall: painted or not on the normalised colour, and the colour its swatch should carry. */
 export function classifyWall(wall: Rgb, trim: Rgb | null | undefined, cityTrim: number): { painted: boolean; normalised: number[]; gain: number; via: 'trim' | 'city' } {
   const t = trimGain(wall, trim, cityTrim), via = t.via;
@@ -68,5 +77,6 @@ export function classifyWall(wall: Rgb, trim: Rgb | null | undefined, cityTrim: 
   // reading, measureFacade.ts selfTrimWall): sunlit white render is not pushed to clipped 255.
   const gain = t.gain > 1 ? Math.min(t.gain, Math.max(1, TRIM_REF / Math.max(1, meanY(wall)))) : t.gain;
   const normalised = scaleRgb(wall, gain);
-  return { painted: paintedWall(normalised), normalised, gain, via };
+  const raw = lchOf(wall), darkNeutral = via === 'city' && raw.L < DARK_NEUTRAL_RAW.maxL && raw.C < DARK_NEUTRAL_RAW.maxC;
+  return { painted: !darkNeutral && paintedWall(normalised), normalised, gain, via };
 }

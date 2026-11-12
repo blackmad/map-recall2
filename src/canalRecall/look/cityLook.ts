@@ -47,6 +47,7 @@ import { HIGH_ANISOTROPY, pageTextureParams } from './texturePolicy.ts';
 import { FACADE_TIER_GLSL, FACADE_TIER_OFF, ROOF_LAYERS_OFF, ROOF_TIER_GLSL, cellTapsUniform, facadeTierAnisoUniform, roofTierUniform } from '../roofTier.ts';
 import { BAKED_SHADE_GLSL } from '../rendererShared/lightRig.ts';
 import { sceneLookFrom, sceneSlotHex, type SceneLook } from './sunny.ts';
+import { brickLiftV2Tint } from './brickLift.ts';
 import { photoMatchedWallTint, type WallExposure } from './chunkWallExposure.ts';
 import { accentGlsl, packMask } from './maskPacking.ts';
 import { CELL_DEBUG_GLSL, WINDOW_SDF_GLSL, windowSdfBandUniforms, type CellDebug } from './windowSdf.ts';
@@ -292,12 +293,15 @@ const isRedRoof = (h: number, s: number) => (h < 45 || h > 340) && s >= 0.2;
  * with the legacy recipe look) with the review corrections above. Flag off
  * never calls this.
  */
-export function cityLookTint(slot: MaterialSlot, hex: string, source?: TintSource | null, look: SceneLook = sceneLookFrom(), white?: string | null): string {
+export function cityLookTint(slot: MaterialSlot, hex: string, source?: TintSource | null, look: SceneLook = sceneLookFrom(), white?: string | null, brickLift = false): string {
   // Sunny look: a measured wall is first brought from its crop's white point to a sunlit white (look/sunny.ts);
   // painted stone and glass keep their own rules.
   if (isMeasuredTint(slot, source)) return cityTint(slot, sceneSlotHex(slot, hex, source, look, white), source);
   const rgb = hexToRgb(hex), [h, s, l] = rgbToHsl(rgb);
   if (slot === 'slate' && isRedRoof(h, s)) return cityTint('roofTile', hex);
+  // brickLift v2 (look/brickLift.ts), asked for by the generic building tiles only (writeTile.ts appendBuckets; recipes and landmarks keep
+  // their authored-against lift): a dark brick lifts by a small offset and may draw dark; pale, white and buff fall through.
+  if ((slot === 'brick' || slot === 'accent') && brickLift) { const lifted = brickLiftV2Tint(hex); if (lifted) return lifted; }
   if ((slot === 'brick' || slot === 'accent') && s < GREY_BRICK_BELOW_S) return rgbToHex(hslToRgb([h, s, Math.min(CITY_BRICK_LIGHTNESS[1], Math.max(CITY_BRICK_LIGHTNESS[0], 0.12 + l * 0.9))]));
   if (slot === 'slate' && l > SLATE_KEEP_FROM_L) return rgbToHex(hslToRgb([h, Math.min(s, 0.12), Math.min(0.72, l / SLATE_CELL_MEAN)]));
   // Dark authored slate takes the city's default measured slate, the darkest one below DARK_SLATE_BELOW_L, never the
@@ -318,8 +322,8 @@ export function cityLookTint(slot: MaterialSlot, hex: string, source?: TintSourc
  * the chunks they stand beside (building-look.spec "share one brick", #76). Re-levelling the city look against the
  * sunny frame must lift chunks and slots together.
  */
-export function slotTintBytes(slot: MaterialSlot, hex: string, source?: TintSource | null, look: SceneLook = sceneLookFrom(), white?: string | null, exposure?: WallExposure | null): [number, number, number, number] {
-  const tint = cityLookTint(slot, hex, source, look, white);
+export function slotTintBytes(slot: MaterialSlot, hex: string, source?: TintSource | null, look: SceneLook = sceneLookFrom(), white?: string | null, exposure?: WallExposure | null, brickLift = false): [number, number, number, number] {
+  const tint = cityLookTint(slot, hex, source, look, white, brickLift);
   // Since the re-level (2026-10-30) the city look's chunks take the sunny wall exposure (litFacadeWallGain), so an
   // unrecorded GLB's brick takes it too, as in the default look (#73): `photoMatchedWallTint` with no exposure record.
   const [r, g, b] = hexToRgb(photoMatchedWallTint(slot, tint, exposure ?? null, source, look));

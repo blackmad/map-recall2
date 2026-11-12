@@ -22,6 +22,7 @@ import {EXTMeshGPUInstancing, KHRMeshQuantization, EXTMeshoptCompression, KHRMat
 import {clearNodeTransform, dequantize, flatten, join, prune, quantize, reorder, uninstance} from '@gltf-transform/functions';
 import {MeshoptEncoder, MeshoptDecoder} from 'meshoptimizer';
 import {slotLayerOf, slotTintBytes} from '../look/cityLook.ts';
+import {brickLiftOn} from '../look/brickLift.ts';
 import {inferMaterialSlot, isMaterialSlot, linearToSrgbHex} from '../look/materialSlotInference.ts';
 import type {MaterialSlot} from '../look/palette.ts';
 import {metreBoxUvs} from '../../../scripts/canalhouse-recipes/export-glb.ts';
@@ -83,7 +84,7 @@ function appendBuckets(prim: CityPrim, b: BucketMap): number {
   prim.beginPand();
   const before = prim.triangles;
   for (const x of b.values()) {
-    const slot = (isMaterialSlot(x.slot) ? x.slot : 'brick') as MaterialSlot, layer = slotLayerOf(slot), tint = slotTintBytes(slot, x.tint);
+    const slot = (isMaterialSlot(x.slot) ? x.slot : 'brick') as MaterialSlot, layer = slotLayerOf(slot), tint = slotTintBytes(slot, x.tint, undefined, undefined, undefined, undefined, brickLiftOn());
     for (let v = 0; v < x.positions.length / 3; v++) prim.indices.push(prim.vertex(x.positions.slice(v * 3, v * 3 + 3), x.normals.slice(v * 3, v * 3 + 3), prim.withUv ? x.uvs.slice(v * 2, v * 2 + 2) : null, layer, tint));
   }
   return prim.triangles - before;
