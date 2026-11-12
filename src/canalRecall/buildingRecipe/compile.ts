@@ -215,7 +215,7 @@ export function compileBuilding(intent: LargeBuildingIntent, facts: BuildingFact
 export function compileBuilding(intent: CanalHouseIntent, facts: BuildingFacts): CompiledBuilding;
 export function compileBuilding(intent: BuildingIntent, facts: BuildingFacts): CompiledBuilding | CompiledLargeBuilding {
   if (intent.kind === 'large') return compileLargeBuilding(intent, facts);
-  // `roof.source: front` / `roof.hip` on a house compiled alone (houseFrontRoof.ts); unchanged facts otherwise.
+  // Measured eaves and `roof.source: front` / `roof.hip` / `roof.form` on a house compiled alone (houseFrontRoof.ts); the same facts otherwise.
   facts = houseFrontRoofFacts(intent, facts).facts;
   const {recipe, anchorRD, report, facts: fitted} = fitIntent(intent, facts);
   const built = compileCanalHouseRecipe(recipe);

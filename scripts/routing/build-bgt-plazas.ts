@@ -13,11 +13,11 @@
 // extract to public/data/extracts/amsterdam/bgt-plazas-v1.json.
 import { copyFileSync, existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { gunzipSync } from 'node:zlib';
-import type { Polygon } from 'polygon-clipping';
+import polygonClipping, { type Polygon } from 'polygon-clipping';
 import {
   BGT_PLAZA_CORRIDOR_SLACK_METRES, BGT_PLAZA_CUT_METRES, BGT_PLAZA_MIN_AREA_M2, BGT_PLAZA_REACH_METRES,
   BGT_PLAZA_MIN_OPENED_M2, BGT_PLAZA_MIN_WIDTH_METRES, BGT_VOETPAD_CANDIDATE_DEPTH_METRES, PLAZA_CUTTING_SCHEIDING, isPlazaReachSurface,
-  isRideablePlazaSurface,
+  isRideablePlazaSurface, erfExceptionFeedback, erfExceptionFor,
   type BgtPlazaCollection, type BgtPlazaExtract, type BgtPlazaFeature,
 } from '../../src/canalRecall/routing/bgtPlazas.ts';
 import { isMotorOnlyHighway } from '../../src/canalRecall/routing/bikeAccess.ts';
@@ -33,7 +33,8 @@ const SOURCE_DATA = process.env.MAP_RECALL_SOURCE_DATA || '/Users/blackmad/Code/
 const WEGDEEL_DIR = process.env.BGT_WEGDEEL_DIR || `${SOURCE_DATA}/datasets/bgt-roads-20261016/cells`;
 const ONBEGROEID_DIR = process.env.BGT_ONBEGROEID_DIR || 'artifacts/own-ground/raw/bgt-roads/onbegroeidterreindeel';
 const SCHEIDING_DIR = process.env.BGT_SCHEIDING_DIR || 'artifacts/own-ground/raw/bgt-roads/scheiding';
-const STAGING = 'public/data/extracts/amsterdam/staging/bgt-plazas-v1';
+const ERF_EXCEPTIONS_FILE = 'scripts/routing/bgt-erf-exceptions.json';
+const STAGING = `public/data/extracts/amsterdam/staging/bgt-plazas-v1${process.argv.includes('--exceptions-only') ? '-exceptions' : ''}`;
 const PUBLISHED = 'public/data/extracts/amsterdam/bgt-plazas-v1.json';
 
 /** Playable half-widths in px at 3 px/m (public/canal-drive/js/constants.js ROAD_WIDTHS). */
@@ -51,6 +52,8 @@ interface Source {
   polygons: Polygon[];
   box: Box;
   area: number;
+  /** A reviewed erf exception (bgtPlazas.ts ERF_EXCEPTIONS): the polygon is the reviewed area, so the 8 m opening skips it. */
+  exception?: string;
 }
 
 const classKey = (s: Pick<Source, 'collection' | 'functie' | 'fv'>) => s.collection === 'wegdeel' ? `wegdeel/${s.functie}/${s.fv}` : `onbegroeid/${s.fv}`;
@@ -100,6 +103,19 @@ function loadSources(): { plaza: Source[]; reach: Source[]; census: Map<string, 
   };
   for (const cell of readCells<any>(WEGDEEL_DIR)) for (const f of cell.features) take('wegdeel', f);
   for (const cell of readCells<any>(ONBEGROEID_DIR)) for (const f of cell.features) take('onbegroeidterreindeel', { ...f, functie: '' });
+  // Reviewed erf exceptions: the only erf that joins, each as a plaza source (fetch-bgt-erf-exceptions.ts).
+  for (const f of JSON.parse(readFileSync(ERF_EXCEPTIONS_FILE, 'utf8')).features as Array<{ id: string; fv: string; h: number; status: string | null; eind: string | null; g: [number, number][][][] }>) {
+    const feedback = erfExceptionFeedback(f.id);
+    if (!feedback) throw new Error(`${f.id} is in ${ERF_EXCEPTIONS_FILE} but not in ERF_EXCEPTIONS`);
+    if (f.fv !== 'erf' || f.h !== 0 || f.eind || (f.status && f.status !== 'bestaand')) throw new Error(`${f.id}: not a current ground-level erf polygon`);
+    let polygons: Polygon[] = f.g.map(poly => poly.map(ring => ring.map(([lon, lat]) => toMetres(lon, lat))));
+    const exclude = erfExceptionFor(f.id)?.exclude;
+    if (exclude) {
+      const [x0, y0] = toMetres(exclude[1], exclude[0]), [x1, y1] = toMetres(exclude[3], exclude[2]);
+      polygons = polygonClipping.difference(polygons, [[[x0, y0], [x1, y0], [x1, y1], [x0, y1], [x0, y0]]]) as Polygon[];
+    }
+    plaza.push({ id: f.id, collection: 'onbegroeidterreindeel', functie: '', fv: 'erf', polygons, box: boxOf(polygons.flat()), area: polygons.reduce((t, p) => t + polygonArea(p), 0), exception: feedback });
+  }
   return { plaza, reach, census };
 }
 
@@ -199,6 +215,7 @@ export interface PieceReport {
   classes: Record<string, number>; nearestCorridor: number;
   /** m² of the piece the bike can reach only through it: ≥ the inset inside, beyond every corridor's guard reach, outside every square. */
   opened: number;
+  exception?: string;
   inCentrum: boolean;
 }
 
@@ -236,7 +253,10 @@ async function main() {
   const bboxArg = process.argv.includes('--bbox') ? process.argv[process.argv.indexOf('--bbox') + 1].split(',').map(Number) : null;
   if (bboxArg && publish) throw new Error('--bbox and --publish do not mix');
   const only = bboxArg ? (() => { const [x0, y0] = toMetres(bboxArg[1], bboxArg[0]), [x1, y1] = toMetres(bboxArg[3], bboxArg[2]); return { minX: x0, minY: y0, maxX: x1, maxY: y1 }; })() : null;
-  const groups = cluster(only ? plaza.filter(s => boxesTouch(s.box, only)) : plaza).sort((a, b) => b.length - a.length);
+  // --exceptions-only builds just the reviewed erf exceptions and merges them into the published extract (replacing
+  // earlier exception features), so adding one needs seconds, not the 13-minute full build.
+  const exceptionsOnly = process.argv.includes('--exceptions-only');
+  const groups = cluster(exceptionsOnly ? plaza.filter(s => s.exception) : only ? plaza.filter(s => boxesTouch(s.box, only)) : plaza).sort((a, b) => b.length - a.length);
   console.log(`clusters: ${groups.length}; largest ${groups.slice(0, 5).map(g => g.length).join(', ')} polygons`);
   if (process.argv.includes('--clusters-only')) return;
   const pieces: Array<{ polygons: Polygon[]; report: PieceReport }> = [];
@@ -265,7 +285,7 @@ async function main() {
     const fromCore = distanceFrom(r, core);
     const trimmed = new Uint8Array(r.size);
     for (let k = 0; k < r.size; k++) {
-      if (!source[k]) continue;
+      if (!source[k] || group[source[k] - 1].exception) continue;
       if (fromCore[k] <= half + cell / 2) continue;
       source[k] = 0;
       trimmed[k] = 1;
@@ -322,6 +342,7 @@ async function main() {
       const ids: string[] = [];
       for (const [n, area] of classCells[l]) { const key = classKey(group[n]); classes[key] = (classes[key] ?? 0) + area; ids.push(group[n].id); }
       ids.sort();
+      const exception = [...classCells[l].keys()].map(n => group[n].exception).find(Boolean);
       const pbox = boxOf(polygons.map(p => p[0]));
       if (!corridorReach[l]) {
         for (const c of corridorGrid.near(pbox, 30)) {
@@ -340,6 +361,7 @@ async function main() {
           classes: Object.fromEntries(Object.entries(classes).map(([k, v]) => [k, Math.round(v)])),
           nearestCorridor: Math.round(nearestCorridor[l] * 10) / 10,
           opened: Math.round(opened[l]),
+          exception,
           inCentrum: insidePolygon(centrum, ...toMetres(clon, clat)),
         },
       });
@@ -351,14 +373,19 @@ async function main() {
   const toFeature = ({ polygons, report }: { polygons: Polygon[]; report: PieceReport }): BgtPlazaFeature => ({
     id: report.id, name: report.name, source: 'bgt' as const,
     polygons: polygons.map(polygon => polygon.map(ring => simplifyRing(ring, 0.35).map(([x, y]) => { const [lon, lat] = toLonLat(x, y); return [round6(lat), round6(lon)] as [number, number]; }))),
-    plazaArea: report.plazaArea, classes: report.classes,
+    plazaArea: report.plazaArea, classes: report.classes, ...(report.exception ? { exception: report.exception } : {}),
   });
   const shipped = (p: PieceReport) => p.connected && p.opened >= BGT_PLAZA_MIN_OPENED_M2;
-  const features = pieces.filter(p => shipped(p.report)).map(toFeature);
+  let features = pieces.filter(p => shipped(p.report)).map(toFeature);
+  if (exceptionsOnly) {
+    const base = JSON.parse(readFileSync(PUBLISHED, 'utf8')) as BgtPlazaExtract;
+    features = [...base.features.filter(f => !f.exception), ...features];
+    for (const e of pieces) console.log(`exception ${e.report.exception}: ${e.report.id} plaza ${e.report.plazaArea} m², opened ${e.report.opened} m², connected ${e.report.connected}`);
+  }
   const extract: BgtPlazaExtract = {
     version: 1,
     source: 'BGT wegdeel 2026-10-16 + onbegroeidterreindeel/scheiding 2026-11-10 (Kadaster, CC0 1.0, PDOK OGC API); routing roads-v2',
-    rule: 'src/canalRecall/routing/bgtPlazas.ts RIDEABLE_PLAZA_CLASSES',
+    rule: 'src/canalRecall/routing/bgtPlazas.ts RIDEABLE_PLAZA_CLASSES + ERF_EXCEPTIONS',
     features,
   };
   mkdirSync(STAGING, { recursive: true });

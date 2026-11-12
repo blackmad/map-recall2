@@ -1,0 +1,965 @@
+{
+ "face": "haarlemmerdijk-66-120",
+ "street": "Haarlemmerdijk",
+ "library": "haarlemmerbuurt",
+ "stripDate": "2022-12-15",
+ "seconds": 8.23,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012176569",
+   "address": "Haarlemmerdijk 120A",
+   "builtYear": 2000,
+   "widthM": 3.99,
+   "eavesM": 12,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": null,
+    "wallRaw": "#5d5149",
+    "skyline": {
+     "eavesM": 13.38,
+     "eavesRow": 182,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 4,
+    "frontClass": "curtain",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.007,
+    "structure": {
+     "bayWidthM": 0.88,
+     "bayCentre": 0.59,
+     "balconies": true,
+     "why": "dark open axis 0.78 m at 0.29 (light 0.07): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.78,
+       "centre": 0.29,
+       "light": 0.07
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 5.77,
+       "widthM": 1.18,
+       "centre": 0.56
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: post-1990 infill (BAG 2000)",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012176570",
+   "address": "Haarlemmerdijk 118A",
+   "builtYear": 1814,
+   "widthM": 3.96,
+   "eavesM": 9.89,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#504036",
+    "wallRaw": "#594f4b",
+    "skyline": {
+     "eavesM": 11.47,
+     "eavesRow": 258,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.25,
+      "riseM": 2.47,
+      "topWidthM": 0.13,
+      "centre": 0.77
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "curtain",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.002,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.6 m at 0.16 (light 0.16): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.6,
+       "centre": 0.16,
+       "light": 0.16
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 7.5,
+       "widthM": 0.95,
+       "centre": 0.36
+      },
+      {
+       "atM": 5.1,
+       "widthM": 1.4,
+       "centre": 0.26
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Haarlemmerdijk 118: strip seam, not read",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012176577",
+   "address": "Haarlemmerdijk 116B",
+   "builtYear": 1997,
+   "widthM": 4.31,
+   "eavesM": 11.08,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 2.15,
+    "toM": 4.28,
+    "depthM": 0.56,
+    "centre": 0.751,
+    "lineRD": [
+     [
+      120893.42850000001,
+      488495.7195
+     ],
+     [
+      120895.3475,
+      488494.5645
+     ]
+    ]
+   },
+   "strip": {
+    "wall": "#56493b",
+    "wallRaw": "#65584f",
+    "skyline": {
+     "eavesM": 13.15,
+     "eavesRow": 191,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.75,
+      "riseM": 3.6,
+      "topWidthM": 0.28,
+      "centre": 0.65
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 5,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.012,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.03
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: post-1990 infill",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012176696",
+   "address": "Haarlemmerdijk 110A",
+   "builtYear": 1996,
+   "widthM": 13.75,
+   "eavesM": 12.84,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#3b3736",
+    "wallRaw": "#4e4642",
+    "skyline": {
+     "eavesM": 14.47,
+     "eavesRow": 138,
+     "confidence": 1,
+     "crown": {
+      "widthM": 5.38,
+      "riseM": 1.75,
+      "topWidthM": 4.67,
+      "centre": 0.61
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 9,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.001,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 2 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 8.72,
+       "widthM": 1.3,
+       "centre": 0.68
+      },
+      {
+       "atM": 8.43,
+       "widthM": 1.3,
+       "centre": 0.68
+      },
+      {
+       "atM": 7.3,
+       "widthM": 1.18,
+       "centre": 0.27
+      },
+      {
+       "atM": 6.63,
+       "widthM": 0.97,
+       "centre": 0.36
+      },
+      {
+       "atM": 4.97,
+       "widthM": 1.45,
+       "centre": 0.7
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.02
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: post-1990 infill, 13.7 m wide",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012176698",
+   "address": "Haarlemmerdijk 108A",
+   "builtYear": 1905,
+   "widthM": 2.15,
+   "eavesM": 8.82,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#35322f",
+    "wallRaw": "#544b41",
+    "skyline": {
+     "eavesM": 12.57,
+     "eavesRow": 214,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.2,
+      "riseM": 2.23,
+      "topWidthM": 1.07,
+      "centre": 0.3
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.02
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Haarlemmerdijk 108: 2 m sliver beside the strip seam",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012176655",
+   "address": "Haarlemmerdijk 104A",
+   "builtYear": 1996,
+   "widthM": 10.04,
+   "eavesM": 12.1,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#5a5653",
+    "wallRaw": "#534946",
+    "skyline": {
+     "eavesM": 14.15,
+     "eavesRow": 151,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.7,
+      "riseM": 0.78,
+      "topWidthM": 1.7,
+      "centre": 0.68
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 8,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.012,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.68 m at 0.67 (light 0.24): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.68,
+       "centre": 0.67,
+       "light": 0.24
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 8.65,
+       "widthM": 1,
+       "centre": 0.48
+      },
+      {
+       "atM": 7.15,
+       "widthM": 0.85,
+       "centre": 0.24
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: post-1990 infill",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012176568",
+   "address": "Haarlemmerdijk 98",
+   "builtYear": 1900,
+   "widthM": 11.41,
+   "eavesM": 10.32,
+   "storeys3dbag": 4,
+   "bagBay": {
+    "fromM": 5.49,
+    "toM": 11.38,
+    "depthM": 0.76,
+    "centre": 0.741,
+    "lineRD": [
+     [
+      120917.0395,
+      488473.6925
+     ],
+     [
+      120921.77350000001,
+      488469.9725
+     ]
+    ]
+   },
+   "strip": {
+    "wall": "#4b4138",
+    "wallRaw": "#5a4d42",
+    "skyline": {
+     "eavesM": 13.85,
+     "eavesRow": 163,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.27,
+      "riseM": 3.65,
+      "topWidthM": 0.1,
+      "centre": 0.89
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 6,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.014,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.02
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: 11.4 m wide six-axis front (Haarlemmerdijk 98), wider than the shop types",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012176580",
+   "address": "Haarlemmerdijk 96",
+   "builtYear": 1806,
+   "widthM": 5.61,
+   "eavesM": 13,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#403c39",
+    "wallRaw": "#685c50",
+    "skyline": {
+     "eavesM": 13.6,
+     "eavesRow": 173,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.08,
+      "riseM": 3.53,
+      "topWidthM": 0.15,
+      "centre": 0.71
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 6,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.054,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 9.77,
+       "widthM": 0.85,
+       "centre": 0.69
+      },
+      {
+       "atM": 9.25,
+       "widthM": 0.93,
+       "centre": 0.53
+      },
+      {
+       "atM": 6.32,
+       "widthM": 0.85,
+       "centre": 0.44
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.02
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Haarlemmerdijk 96: ornate front with iron balconies on every storey",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012176697",
+   "address": "Haarlemmerdijk 94",
+   "builtYear": 1905,
+   "widthM": 4.44,
+   "eavesM": 15.7,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#4e4744",
+    "wallRaw": "#65564d",
+    "skyline": {
+     "eavesM": 16.43,
+     "eavesRow": 60,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "curtain",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.062,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6.77,
+       "widthM": 0.82,
+       "centre": 0.38
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.02
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Haarlemmerdijk 94: ornate balconied front, 16 m",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012167793",
+   "address": "Haarlemmerdijk 90A",
+   "builtYear": 1997,
+   "widthM": 8.75,
+   "eavesM": 12.25,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#59524d",
+    "wallRaw": "#5f4b43",
+    "skyline": {
+     "eavesM": 13.5,
+     "eavesRow": 177,
+     "confidence": 1,
+     "crown": {
+      "widthM": 3.55,
+      "riseM": 3.23,
+      "topWidthM": 0.3,
+      "centre": 0.78
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.042,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 1.4 m at 0.31 (light 0.18): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.4,
+       "centre": 0.31,
+       "light": 0.18
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 9.18,
+       "widthM": 1.88,
+       "centre": 0.3
+      },
+      {
+       "atM": 6.25,
+       "widthM": 2.02,
+       "centre": 0.32
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.02
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: post-1990 infill",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012167812",
+   "address": "Haarlemmerdijk 80",
+   "builtYear": 1900,
+   "widthM": 10.11,
+   "eavesM": 10.43,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#a39379",
+    "wallRaw": "#898171",
+    "skyline": {
+     "eavesM": 10.32,
+     "eavesRow": 304,
+     "confidence": 1,
+     "crown": {
+      "widthM": 3.52,
+      "riseM": 6.4,
+      "topWidthM": 0.28,
+      "centre": 0.81
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 4,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.054,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 8.3,
+       "widthM": 0.85,
+       "centre": 0.33
+      },
+      {
+       "atM": 6.8,
+       "widthM": 0.9,
+       "centre": 0.82
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.03
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Haarlemmerdijk 80: modern flat-roofed front with ribbon glazing",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012167807",
+   "address": "Haarlemmerdijk 74",
+   "builtYear": 1900,
+   "widthM": 8.47,
+   "eavesM": 11.85,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#808380",
+    "wallRaw": "#6b6860",
+    "skyline": {
+     "eavesM": 12.5,
+     "eavesRow": 217,
+     "confidence": 1,
+     "crown": {
+      "widthM": 3.7,
+      "riseM": 5.18,
+      "topWidthM": 0.15,
+      "centre": 0.76
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.053,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.8 m at 0.65 (light 0): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.8,
+       "centre": 0.65,
+       "light": 0
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 7.57,
+       "widthM": 1.5,
+       "centre": 0.38
+      },
+      {
+       "atM": 5.1,
+       "widthM": 1.35,
+       "centre": 0.38
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Haarlemmerdijk 74: wide early-20th-c. front with large windows, not this type",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012177675",
+   "address": "Haarlemmerdijk 70",
+   "builtYear": 1882,
+   "widthM": 4.32,
+   "eavesM": 10,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#41312a",
+    "wallRaw": "#3d3431",
+    "skyline": {
+     "eavesM": 11.85,
+     "eavesRow": 243,
+     "confidence": 1,
+     "crown": {
+      "widthM": 0.8,
+      "riseM": 0.8,
+      "topWidthM": 0.8,
+      "centre": 0.1
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0.33,
+     "bayCentre": 0.04,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: front in deep shadow on the 2022-12-15 strip: the wall reads #000000, edge NCC 0.038",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012177671",
+   "address": "Haarlemmerdijk 68",
+   "builtYear": 1828,
+   "widthM": 4.47,
+   "eavesM": 10,
+   "storeys3dbag": 4,
+   "bagBay": {
+    "fromM": 2.2,
+    "toM": 4.41,
+    "depthM": 0.74,
+    "centre": 0.749,
+    "lineRD": [
+     [
+      120968.4625,
+      488426.0715
+     ],
+     [
+      120971.8345,
+      488423.8515
+     ]
+    ]
+   },
+   "strip": {
+    "wall": "#4b3e33",
+    "wallRaw": "#433c34",
+    "skyline": {
+     "eavesM": 10.63,
+     "eavesRow": 292,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.73,
+      "riseM": 1.85,
+      "topWidthM": 0.8,
+      "centre": 0.79
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "curtain",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.95 m at 0.57 (light 0.25): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.95,
+       "centre": 0.57,
+       "light": 0.25
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": {
+    "pandId": "0363100012177671",
+    "ncc": 0.13,
+    "nccRaw": 0.13,
+    "shiftM": [
+     0.05,
+     0.4
+    ],
+    "usable": 0.98,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "wall dL +0.34",
+     "glazing storey band off by 0.67 mean 0.45 vs photo 1.00",
+     "wall family unresolved (#000000 is dark and neutral, brick courses not resolved): lightness and hue judged only"
+    ],
+    "wall": {
+     "photo": "#000000",
+     "model": "#685647",
+     "dL": 0.343
+    },
+    "glazing": {
+     "photo": 1,
+     "model": 0.45
+    },
+    "columns": {
+     "photo": null,
+     "model": 2
+    },
+    "iou": 0.483
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012177670",
+   "address": "Haarlemmerdijk 66",
+   "builtYear": 1780,
+   "widthM": 4.51,
+   "eavesM": 13.3,
+   "storeys3dbag": 4,
+   "bagBay": {
+    "fromM": 2.46,
+    "toM": 4.46,
+    "depthM": 0.71,
+    "centre": 0.776,
+    "lineRD": [
+     [
+      120971.7395,
+      488423.0335
+     ],
+     [
+      120973.8085,
+      488421.60949999996
+     ]
+    ]
+   },
+   "strip": {
+    "wall": "#d4d7da",
+    "wallRaw": "#5a5049",
+    "skyline": {
+     "eavesM": 12.22,
+     "eavesRow": 228,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.7,
+      "riseM": 3.85,
+      "topWidthM": 0.2,
+      "centre": 0.67
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "curtain",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.027,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.083 < 0.15 (photo vs model body; likeness.ts FAIL: wall dL +0.35; glazing  mean 0.43 vs photo 0.32; window shape square vs photo tall; columns 2 vs photo 4)",
+   "likeness": {
+    "pandId": "0363100012177670",
+    "ncc": 0.083,
+    "nccRaw": 0.083,
+    "shiftM": [
+     -0.3,
+     -0.2
+    ],
+    "usable": 0.97,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "wall dL +0.35",
+     "glazing  mean 0.43 vs photo 0.32",
+     "window shape square vs photo tall",
+     "columns 2 vs photo 4"
+    ],
+    "wall": {
+     "photo": "#4a3d35",
+     "model": "#9199a1",
+     "dL": 0.351
+    },
+    "glazing": {
+     "photo": 0.32,
+     "model": 0.43
+    },
+    "columns": {
+     "photo": 4,
+     "model": 2
+    },
+    "iou": 0.289
+   },
+   "challengers": {}
+  }
+ ]
+}

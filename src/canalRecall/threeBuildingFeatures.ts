@@ -12,7 +12,7 @@ import { sourceVisualRoof } from './sourceVisualRoof.js';
 import { BAY_LAYER_COUNT, BAY_STYLES, FATIH_MASONRY_LAYER, bayLayer, bayLookFor } from './bayLook.js';
 import { paletteFor } from './bayTextures.js';
 import { SPEC_SHOP_KIND } from './houseSpec/decorate.js';
-import { BARE_WALL_HEX, DEFAULT_FACADE_WALL_HEX, DEFAULT_SHOP_SIGN_HEX, FLAT_ROOF_GREYS, LOOK_VARIANTS, ROOF_SLOT_TONES, cellSetOf, hexToRgb, lookHex, roofTone, type BuildingLook } from './look/palette.js';
+import { PERIOD_WALLS, BARE_WALL_HEX, DEFAULT_FACADE_WALL_HEX, DEFAULT_SHOP_SIGN_HEX, FLAT_ROOF_GREYS, LOOK_VARIANTS, ROOF_SLOT_TONES, cellSetOf, hexToRgb, lookHex, roofTone, type BuildingLook } from './look/palette.js';
 import { decodeFurniture, MIN_CONFIDENCE, roofSlotHex } from './roofs/roofSlots.js';
 import { FLAT_LID_EXPOSURE, flatRoofPriorHex, flatRoofToneEnabled, lowConfidenceReading, mappedTowardPrior, roofStampConfident, scaleHex } from './roofs/flatRoofTone.js';
 import { BOX_MIN_M2, LIP_MIN_M2, flatRoofSurfaceEnabled, flatRoofSurfaceLayer } from './roofs/flatRoofSurface.js';
@@ -34,7 +34,10 @@ import { buurtProfileAt } from './buurtProfiles/data.js';
 import { SETBACK_CLADDING_HEX, SETBACK_INSET_M, SETBACK_STOREY_M, insetRing } from './contemporaryFamily.js';
 import { profileWallBeatsMaterial, storeyScaleOf } from './buurtProfiles/profiles.js';
 import { levelWallHex } from './look/paletteLevel.js';
+import { heldBrickWall } from './houseSpec/wallColour.js';
+import { hashSeed } from './wallBays.js';
 import { industrialKitEnabled, industrialMeshSpec, industrialWallHex } from './industrial/industrialKit.js';
+import { applyGlazing, glazingOf } from './glassParts.js';
 
 /** 'untextured' draws with the procedural cells' flat layer only: plain colours, real shapes (look/palette.ts). */
 export type { BuildingLook };
@@ -140,7 +143,7 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook, coarse = f
   if (!polygons.length || !Number.isFinite(heightM)) return null;
   const id = String(p.id ?? '');
   let building: MeshBuilding;
-  let plain: number, roofBase: number, layout: FacadeStyle, profileWall: string | undefined, spandrelAccent: string | undefined, quietGround: number | undefined;
+  let archetype: string | undefined, plain: number, roofBase: number, layout: FacadeStyle, profileWall: string | undefined, spandrelAccent: string | undefined, quietGround: number | undefined;
   if (cellSetOf(look) !== 'procedural') {
     const year = p.constructionYear === null || p.constructionYear === undefined || !Number.isFinite(Number(p.constructionYear)) ? null : Number(p.constructionYear);
     const at = polygons[0]?.[0]?.[0];
@@ -148,7 +151,7 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook, coarse = f
     const bay = bayLookFor(id, year, Number(p.height) || heightM, look as Look, shopfrontOf(p) ?? 'quiet', undefined, periodWallOf(p), profile,
       year !== null && year >= 1945 ? { footprintM2: footprintAreaM2(feature.geometry), buildingType: typeof p.buildingType === 'string' ? p.buildingType : null, at: at ? [at[0], at[1]] as const : undefined } : undefined,
       specRecipeOf(p)?.look ? { ...specRecipeOf(p)!.look, bays: specRecipeOf(p)!.bays } : undefined);
-    profileWall = bay.profileWall; spandrelAccent = bay.modern?.accent;
+    archetype = bay.archetype; profileWall = bay.profileWall; spandrelAccent = bay.modern?.accent;
     building = { id, polygons, heightM, minHeightM, style: bay.layout, wallHex: bay.wallHex, accentHex: bay.accentHex, layers: bay.layers, groundHex: bay.groundHex };
     const storeyScale = storeyScaleOf(profile?.eras[bay.archetype], STYLE_DIMS[bay.layout].storey);
     if (storeyScale !== 1) building.storeyScale = storeyScale;
@@ -177,6 +180,8 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook, coarse = f
     const sourced = [specRecipe?.wallHex, p.facadeMappedColour, p.sideColourSource === 'measured-accepted' ? p.sideColour : undefined, materialPrior].find(v => typeof v === 'string' && /^#[0-9a-f]{6}$/i.test(v));
     if (sourced) building.wallHex = String(sourced);
     sourcedWall = sourced ? String(sourced) : undefined;
+    // A wall the pale-warm guard held keeps its period colour, in a brick family (wallColour.ts heldBrickWall, H9g).
+    if (specRecipe?.heldBrick && p.sideColourSource !== 'measured-accepted' && archetype) building.wallHex = heldBrickWall(building.wallHex, PERIOD_WALLS.photo[archetype as keyof typeof PERIOD_WALLS.photo], hashSeed(id) >>> 7);
   }
   const front = shopfrontOf(p);
   building.shopfront = front ? front !== 'quiet' : false;
@@ -275,6 +280,9 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook, coarse = f
   // The city-wide palette level (look/paletteLevel.ts, `?paletteLevel=0` for the before): generic photo-look walls only; a
   // landmark kit, a large recipe and a bare shed keep their authored colour.
   if (look === 'photo' && !p.kitWall && !p.kitWallHex && !p.largeTier && !building.bare) building.wallHex = levelWallHex(building.wallHex);
+  // An OSM glass or mirror part (skybridge, oriel, atrium; glassParts.ts) is a curtain wall, not a blue slab. Absent tag = as before.
+  const glazing = glazingOf(p);
+  if (glazing && !p.kitWall && !p.gardenShed && !p.frontCarrier && !(industrial && industrial !== 'office')) applyGlazing(building, glazing, look, p.colour);
   return building;
 }
 

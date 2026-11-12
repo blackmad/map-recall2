@@ -1,0 +1,1383 @@
+{
+ "face": "haarlemmerdijk-126-188",
+ "street": "Haarlemmerdijk",
+ "library": "haarlemmerbuurt",
+ "stripDate": "2024-12-11",
+ "seconds": 4.67,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012172757",
+   "address": "Haarlemmerdijk 186",
+   "builtYear": 1893,
+   "widthM": 3.89,
+   "eavesM": 14.77,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#625346",
+    "wallRaw": "#685f4e",
+    "skyline": {
+     "eavesM": 15.53,
+     "eavesRow": 229,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 10,
+    "columns": 2,
+    "frontClass": "columns",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.351,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "balcony slabs stacked at 12.97 m (1.5 m wide), 10.88 m (1.43 m wide), 8.18 m (1.38 m wide), 5.4 m (3.58 m wide)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 12.97,
+       "widthM": 1.5,
+       "centre": 0.74
+      },
+      {
+       "atM": 10.88,
+       "widthM": 1.43,
+       "centre": 0.76
+      },
+      {
+       "atM": 8.18,
+       "widthM": 1.38,
+       "centre": 0.77
+      },
+      {
+       "atM": 5.4,
+       "widthM": 3.58,
+       "centre": 0.5
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.17
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Haarlemmerdijk 186: five storeys under a heavy cornice at 15.2 m, taller than the four-storey type",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012172756",
+   "address": "Haarlemmerdijk 184",
+   "builtYear": 1886,
+   "widthM": 4.15,
+   "eavesM": 13.32,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 0.6,
+    "toM": 0.6,
+    "depthM": 0.29,
+    "centre": 0.145
+   },
+   "strip": {
+    "wall": "#634739",
+    "wallRaw": "#664e3f",
+    "skyline": {
+     "eavesM": 14.8,
+     "eavesRow": 258,
+     "confidence": 1,
+     "crown": {
+      "widthM": 0.88,
+      "riseM": 1.17,
+      "topWidthM": 0.38,
+      "centre": 0.5
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 2,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.15,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.11
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Haarlemmerdijk 184: four-storey cornice house that fits, but a run of one beside held 186 and 182",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012172755",
+   "address": "Haarlemmerdijk 182",
+   "builtYear": 1910,
+   "widthM": 4.31,
+   "eavesM": 11.64,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 0,
+    "toM": 1.96,
+    "depthM": 0.77,
+    "centre": 0.231,
+    "lineRD": [
+     [
+      120785.4695,
+      488597.1775
+     ],
+     [
+      120786.9145,
+      488595.1665
+     ]
+    ]
+   },
+   "strip": {
+    "wall": "#b6bfc6",
+    "wallRaw": "#5a5144",
+    "skyline": {
+     "eavesM": 13.25,
+     "eavesRow": 320,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.3,
+      "riseM": 2.07,
+      "topWidthM": 0.78,
+      "centre": 0.47
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.362,
+    "structure": {
+     "bayWidthM": 0.63,
+     "bayCentre": 0.21,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 9.52,
+       "widthM": 1.63,
+       "centre": 0.24
+      },
+      {
+       "atM": 6.67,
+       "widthM": 0.85,
+       "centre": 0.35
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.22
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Haarlemmerdijk 182: neck gable over three upper rows that fits the four-storey gable type, but a run of one beside held 184 and 180",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012172754",
+   "address": "Haarlemmerdijk 180",
+   "builtYear": 1936,
+   "widthM": 4.16,
+   "eavesM": 15.79,
+   "storeys3dbag": 0,
+   "bagBay": {
+    "fromM": 0.51,
+    "toM": 0.51,
+    "depthM": 0.46,
+    "centre": 0.122
+   },
+   "strip": {
+    "wall": "#453a30",
+    "wallRaw": "#4d463c",
+    "skyline": {
+     "eavesM": 18.3,
+     "eavesRow": 118,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2,
+      "riseM": 2.35,
+      "topWidthM": 1.02,
+      "centre": 0.44
+     }
+    },
+    "stucco": false,
+    "bands": 5,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.38,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 4.77,
+       "widthM": 0.97,
+       "centre": 0.22
+      }
+     ]
+    },
+    "voidShare": 0.07,
+    "foliageShare": 0.13
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Haarlemmerdijk 180: tall glazed front with a point gable to 20 m",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012172847",
+   "address": "Haarlemmerdijk 178A",
+   "builtYear": 1808,
+   "widthM": 4.26,
+   "eavesM": 12.59,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 0.42,
+    "toM": 0.42,
+    "depthM": 0.26,
+    "centre": 0.098
+   },
+   "strip": {
+    "wall": "#6d5749",
+    "wallRaw": "#6d6153",
+    "skyline": {
+     "eavesM": 13.8,
+     "eavesRow": 298,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.1,
+      "riseM": 0.67,
+      "topWidthM": 0.93,
+      "centre": 0.41
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 2,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.207,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 9.6,
+       "widthM": 0.85,
+       "centre": 0.62
+      },
+      {
+       "atM": 6.82,
+       "widthM": 3,
+       "centre": 0.46
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.16
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Haarlemmerdijk 178: balconies over a two-storey erker",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012173014",
+   "address": "Haarlemmerdijk 176",
+   "builtYear": 1942,
+   "widthM": 5.59,
+   "eavesM": 15.61,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6f5343",
+    "wallRaw": "#796251",
+    "skyline": {
+     "eavesM": 16.63,
+     "eavesRow": 185,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 7,
+    "columns": 3,
+    "frontClass": "ribbon",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.228,
+    "structure": {
+     "bayWidthM": 1.2,
+     "bayCentre": 0.48,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6.97,
+       "widthM": 0.85,
+       "centre": 0.84
+      }
+     ]
+    },
+    "voidShare": 0.02,
+    "foliageShare": 0.09
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Haarlemmerdijk 176: wide five-storey front with round attic lights",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012172848",
+   "address": "Haarlemmerdijk 174",
+   "builtYear": 1889,
+   "widthM": 3.88,
+   "eavesM": 10.66,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#836f5f",
+    "wallRaw": "#5d5244",
+    "skyline": {
+     "eavesM": 11.68,
+     "eavesRow": 383,
+     "confidence": 1,
+     "crown": {
+      "widthM": 0.75,
+      "riseM": 3.2,
+      "topWidthM": 0.2,
+      "centre": 0.1
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.116,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.75 m at 0.76 (light 0.25): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.75,
+       "centre": 0.76,
+       "light": 0.25
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.23
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Haarlemmerdijk 174: not read at full size",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012172845",
+   "address": "Haarlemmerdijk 172",
+   "builtYear": 1861,
+   "widthM": 3.96,
+   "eavesM": 12.95,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 0,
+    "toM": 0,
+    "depthM": 0.27,
+    "centre": 0,
+    "lineRD": [
+     [
+      120801.1205,
+      488582.1895
+     ],
+     [
+      120802.8505,
+      488580.3135
+     ]
+    ]
+   },
+   "strip": {
+    "wall": "#a29d8b",
+    "wallRaw": "#726253",
+    "skyline": {
+     "eavesM": 14.32,
+     "eavesRow": 277,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.57,
+      "riseM": 1.75,
+      "topWidthM": 1.48,
+      "centre": 0.46
+     }
+    },
+    "stucco": false,
+    "bands": 4,
+    "columns": 2,
+    "frontClass": "curtain",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.13,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 10.85,
+       "widthM": 0.97,
+       "centre": 0.27
+      },
+      {
+       "atM": 7.92,
+       "widthM": 1.05,
+       "centre": 0.27
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.11
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Haarlemmerdijk 172: ornate stepped front with white bands",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012172660",
+   "address": "Haarlemmerdijk 164",
+   "builtYear": 1983,
+   "widthM": 28.52,
+   "eavesM": 8.27,
+   "storeys3dbag": 4,
+   "bagBay": {
+    "fromM": 0,
+    "toM": 15.49,
+    "depthM": 1.21,
+    "centre": 0.272,
+    "lineRD": [
+     [
+      120814.5535,
+      488570.11449999997
+     ],
+     [
+      120823.5355,
+      488560.9605
+     ]
+    ]
+   },
+   "strip": {
+    "wall": "#514034",
+    "wallRaw": "#635d4d",
+    "skyline": {
+     "eavesM": 10.35,
+     "eavesRow": 436,
+     "confidence": 1,
+     "crown": {
+      "widthM": 11.93,
+      "riseM": 1.72,
+      "topWidthM": 7.3,
+      "centre": 0.77
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 14,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.38,
+    "structure": {
+     "bayWidthM": 1.65,
+     "bayCentre": 0.12,
+     "balconies": true,
+     "why": "dark open axis 1.68 m at 0.31 (light 0.12): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.05,
+       "centre": 0.13,
+       "light": 0.78
+      },
+      {
+       "widthM": 1.68,
+       "centre": 0.31,
+       "light": 0.12
+      },
+      {
+       "widthM": 0.78,
+       "centre": 0.72,
+       "light": 0
+      },
+      {
+       "widthM": 0.78,
+       "centre": 0.81,
+       "light": 0
+      },
+      {
+       "widthM": 0.82,
+       "centre": 0.88,
+       "light": 0
+      },
+      {
+       "widthM": 0.75,
+       "centre": 0.96,
+       "light": 0
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.26
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Haarlemmerdijk 164: post-war wide block",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012172946",
+   "address": "Haarlemmerdijk 158",
+   "builtYear": 2010,
+   "widthM": 3.92,
+   "eavesM": 11.53,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#b0b6b7",
+    "wallRaw": "#584e40",
+    "skyline": {
+     "eavesM": 11.28,
+     "eavesRow": 399,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.57,
+      "riseM": 1.97,
+      "topWidthM": 0.25,
+      "centre": 0.67
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.228,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.93 m at 0.49 (light 0.41): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.93,
+       "centre": 0.49,
+       "light": 0.41
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 10.22,
+       "widthM": 1.2,
+       "centre": 0.27
+      },
+      {
+       "atM": 9.18,
+       "widthM": 1.6,
+       "centre": 0.43
+      },
+      {
+       "atM": 6.55,
+       "widthM": 0.95,
+       "centre": 0.35
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.12
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Haarlemmerdijk 158: cornice house with a dormer that fits, but a run of one between 164 and 156",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012172945",
+   "address": "Haarlemmerdijk 156",
+   "builtYear": 1918,
+   "widthM": 4.4,
+   "eavesM": 10.98,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#2f1c0a",
+    "wallRaw": "#4e4336",
+    "skyline": {
+     "eavesM": 12.53,
+     "eavesRow": 349,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "frontClass": "columns",
+    "doorSide": "right",
+    "accentSide": "right",
+    "accentShare": 0.116,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.11
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Haarlemmerdijk 156: cornice under a tall attic box to 12.4 m",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012171354",
+   "address": "Haarlemmerdijk 152",
+   "builtYear": 1881,
+   "widthM": 8.14,
+   "eavesM": 8.61,
+   "storeys3dbag": 4,
+   "bagBay": {
+    "fromM": 0,
+    "toM": 4.7,
+    "depthM": 0.49,
+    "centre": 0.289,
+    "lineRD": [
+     [
+      120831.9434375,
+      488553.7715
+     ],
+     [
+      120835.66143749999,
+      488549.5625
+     ]
+    ]
+   },
+   "strip": {
+    "wall": "#5a4938",
+    "wallRaw": "#675e47",
+    "skyline": {
+     "eavesM": 10.88,
+     "eavesRow": 415,
+     "confidence": 1,
+     "crown": {
+      "widthM": 3.15,
+      "riseM": 1.47,
+      "topWidthM": 0.7,
+      "centre": 0.79
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 5,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.194,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 1.07 m at 0.15 (light 0.24): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.07,
+       "centre": 0.15,
+       "light": 0.24
+      },
+      {
+       "widthM": 1,
+       "centre": 0.69,
+       "light": 0.28
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 6.88,
+       "widthM": 1.55,
+       "centre": 0.12
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.18
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Haarlemmerdijk 152: 8.1 m pand drawn as two fronts (a cornice house and a Jugendstil gable)",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012171351",
+   "address": "Haarlemmerdijk 148A",
+   "builtYear": 1997,
+   "widthM": 7.61,
+   "eavesM": 12.42,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#895846",
+    "wallRaw": "#846658",
+    "skyline": {
+     "eavesM": 13.15,
+     "eavesRow": 324,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.98,
+      "riseM": 1.3,
+      "topWidthM": 1.2,
+      "centre": 0.39
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.285,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.6 m at 0.13 (light 0.34): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.6,
+       "centre": 0.13,
+       "light": 0.34
+      },
+      {
+       "widthM": 2.58,
+       "centre": 0.82,
+       "light": 0.35
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 8.9,
+       "widthM": 0.8,
+       "centre": 0.89
+      },
+      {
+       "atM": 6.35,
+       "widthM": 1.63,
+       "centre": 0.16
+      }
+     ]
+    },
+    "voidShare": 0.05,
+    "foliageShare": 0.12
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Haarlemmerdijk 148: painted front with iron balconies",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012169538",
+   "address": "Haarlemmerdijk 146",
+   "builtYear": 1839,
+   "widthM": 4.22,
+   "eavesM": 12.72,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 3.47,
+    "toM": 4.21,
+    "depthM": 0.31,
+    "centre": 0.911,
+    "lineRD": [
+     [
+      120841.2494375,
+      488544.39149999997
+     ],
+     [
+      120843.97543749999,
+      488542.2165
+     ]
+    ]
+   },
+   "strip": {
+    "wall": "#453c27",
+    "wallRaw": "#7d6e55",
+    "skyline": {
+     "eavesM": 12.45,
+     "eavesRow": 352,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.63,
+      "riseM": 1.68,
+      "topWidthM": 0.78,
+      "centre": 0.5
+     }
+    },
+    "stucco": false,
+    "bands": 2,
+    "columns": 2,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.32,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 10.95,
+       "widthM": 1.57,
+       "centre": 0.76
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.15
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Haarlemmerdijk 146: ornate stucco ornament on every storey",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012171358",
+   "address": "Haarlemmerdijk 144",
+   "builtYear": 1910,
+   "widthM": 4.34,
+   "eavesM": 11.2,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6e584b",
+    "wallRaw": "#79675a",
+    "skyline": {
+     "eavesM": 14.22,
+     "eavesRow": 281,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.325,
+    "structure": {
+     "bayWidthM": 0.85,
+     "bayCentre": 0.31,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.04,
+    "foliageShare": 0.07
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012171357",
+   "address": "Haarlemmerdijk 142",
+   "builtYear": 1799,
+   "widthM": 4.15,
+   "eavesM": 12.3,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#857167",
+    "wallRaw": "#927e6e",
+    "skyline": {
+     "eavesM": 13.25,
+     "eavesRow": 320,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.38,
+      "riseM": 2.7,
+      "topWidthM": 0.72,
+      "centre": 0.57
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.615,
+    "structure": {
+     "bayWidthM": 1.23,
+     "bayCentre": 0.52,
+     "balconies": true,
+     "why": "bay-less open axis 0.97 m at 0.51 (light 0.67): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.97,
+       "centre": 0.51,
+       "light": 0.67
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.4,
+    "foliageShare": 0.06
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "strip 40 % without panorama data",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012176636",
+   "address": "Haarlemmerdijk 140",
+   "builtYear": 1963,
+   "widthM": 4.58,
+   "eavesM": 12.75,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#654c41",
+    "wallRaw": "#906d53",
+    "skyline": {
+     "eavesM": 12.78,
+     "eavesRow": 339,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.42,
+      "riseM": 2.07,
+      "topWidthM": 0.05,
+      "centre": 0.29
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.289,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "bay-less open axis 1.02 m at 0.48 (light 0.52): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.02,
+       "centre": 0.48,
+       "light": 0.52
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.08,
+    "foliageShare": 0.08
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Haarlemmerdijk 140: Jugendstil copper bay windows",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012171359",
+   "address": "Haarlemmerdijk 138",
+   "builtYear": 1750,
+   "widthM": 4.26,
+   "eavesM": 10.66,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#b9aa95",
+    "wallRaw": "#c0bab0",
+    "skyline": {
+     "eavesM": 11.65,
+     "eavesRow": 384,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.18,
+      "riseM": 2.03,
+      "topWidthM": 0.53,
+      "centre": 0.54
+     }
+    },
+    "stucco": true,
+    "bands": 8,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.534,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.02,
+    "foliageShare": 0.11
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Haarlemmerdijk 138: ornate stucco bands and frieze the kit cannot draw",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012176637",
+   "address": "Haarlemmerdijk 136",
+   "builtYear": 1831,
+   "widthM": 4.25,
+   "eavesM": 12.85,
+   "storeys3dbag": 0,
+   "bagBay": null,
+   "strip": {
+    "wall": "#dbd5d5",
+    "wallRaw": "#8c7362",
+    "skyline": {
+     "eavesM": 12.93,
+     "eavesRow": 333,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.2,
+      "riseM": 2.97,
+      "topWidthM": 0.3,
+      "centre": 0.47
+     }
+    },
+    "stucco": false,
+    "bands": 9,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.327,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 8.95,
+       "widthM": 1.02,
+       "centre": 0.68
+      },
+      {
+       "atM": 6.63,
+       "widthM": 2.2,
+       "centre": 0.71
+      }
+     ]
+    },
+    "voidShare": 0.08,
+    "foliageShare": 0.17
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Haarlemmerdijk 136: ornate front",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012176633",
+   "address": "Haarlemmerdijk 132A",
+   "builtYear": 1893,
+   "widthM": 8.68,
+   "eavesM": 9.96,
+   "storeys3dbag": 4,
+   "bagBay": {
+    "fromM": 8.09,
+    "toM": 8.65,
+    "depthM": 0.69,
+    "centre": 0.968,
+    "lineRD": [
+     [
+      120860.07949999999,
+      488526.88300000003
+     ],
+     [
+      120865.0665,
+      488522.913
+     ]
+    ]
+   },
+   "strip": {
+    "wall": "#806456",
+    "wallRaw": "#826f63",
+    "skyline": {
+     "eavesM": 10.88,
+     "eavesRow": 415,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.73,
+      "riseM": 0.8,
+      "topWidthM": 2.73,
+      "centre": 0.83
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 2,
+    "frontClass": "ribbon",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.24,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 8.68,
+       "widthM": 2.9,
+       "centre": 0.25
+      },
+      {
+       "atM": 6.13,
+       "widthM": 2.13,
+       "centre": 0.33
+      }
+     ]
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0.1
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Haarlemmerdijk 132: 8.7 m pand of two fronts (a modern bay and a cornice house)",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012176571",
+   "address": "Haarlemmerdijk 130C",
+   "builtYear": 1829,
+   "widthM": 3.45,
+   "eavesM": 11,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#51524a",
+    "wallRaw": "#5f625f",
+    "skyline": {
+     "eavesM": 11.63,
+     "eavesRow": 385,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1,
+      "riseM": 1.63,
+      "topWidthM": 0.38,
+      "centre": 0.42
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.227,
+    "structure": {
+     "bayWidthM": 1.07,
+     "bayCentre": 0.17,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 9.27,
+       "widthM": 1.38,
+       "centre": 0.68
+      },
+      {
+       "atM": 6.88,
+       "widthM": 1.02,
+       "centre": 0.69
+      }
+     ]
+    },
+    "voidShare": 0.05,
+    "foliageShare": 0.07
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Haarlemmerdijk 130: dark painted cornice house that fits, but a run of one beside the held Jugendstil 128",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012176572",
+   "address": "Haarlemmerdijk 128",
+   "builtYear": 1905,
+   "widthM": 3.88,
+   "eavesM": 15.07,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#b1997d",
+    "wallRaw": "#978c76",
+    "skyline": {
+     "eavesM": 15,
+     "eavesRow": 250,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.4,
+      "riseM": 2.27,
+      "topWidthM": 0.23,
+      "centre": 0.8
+     }
+    },
+    "stucco": false,
+    "bands": 7,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.417,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.11,
+    "foliageShare": 0.14
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Haarlemmerdijk 128: yellow-brick Jugendstil tower front",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012176573",
+   "address": "Haarlemmerdijk 126A",
+   "builtYear": 1905,
+   "widthM": 3.73,
+   "eavesM": 10.55,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#aca38e",
+    "wallRaw": "#716456",
+    "skyline": {
+     "eavesM": 11.45,
+     "eavesRow": 392,
+     "confidence": 1,
+     "crown": {
+      "widthM": 0.65,
+      "riseM": 1.25,
+      "topWidthM": 0.42,
+      "centre": 0.47
+     }
+    },
+    "stucco": false,
+    "bands": 2,
+    "columns": 2,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.208,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6.72,
+       "widthM": 1.48,
+       "centre": 0.74
+      }
+     ]
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0.11
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Haarlemmerdijk 126: cornice house at the face end beside held 128",
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

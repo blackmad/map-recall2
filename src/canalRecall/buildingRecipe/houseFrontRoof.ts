@@ -1,6 +1,8 @@
 /**
- * The front roof for a canal house compiled on its own (2026-11-10, belt-jordaan #366): `roof.source: front` and
- * `roof.hip` (RoofIntent) were only honoured by the block-face compile (blockFace/compile.ts `roofSourceFor`), so a
+ * The front roof for a canal house compiled on its own. Two lanes wrote it in parallel and this is the merge (2026-11-12,
+ * lane recipe-front-roof): belt-jordaan #366 (`roof.source: front`, `roof.hip`; Bloemgracht 7) and belt-haarlemmer #356
+ * (`roof.form`, `FrontIntent.eavesHeight` -> `facts.measuredEavesM`; Haarlemmerdijk 6, 176172, was
+ * blockFace/houseFrontRoof.ts). `roof.source: front`, `roof.hip` and a forced `roof.form` were only honoured by the block-face compile (blockFace/compile.ts `roofSourceFor`), so a
  * HouseSpec on the recipe route that said "only a dormer and a low slate slope behind the cornice" still drew the
  * 3DBAG saddle over the frieze (Bloemgracht 7, 0363100012173342). This replaces the 3DBAG roof with the forms the
  * front implies (blockFace/frontRoofSpecs.ts, blockFace/recipeRoof.ts), as the face does, before the fit.
@@ -20,11 +22,20 @@ import type {CanalHouseIntent} from './intent.ts';
 import {crossGablesOf, frontRoofSpecs, type FrontRoofHint} from '../blockFace/frontRoofSpecs.ts';
 import {CROSS_GABLE_BEHIND_M, recipeRoofFacts, type RecipeRoofReport} from '../blockFace/recipeRoof.ts';
 
-/** True when the single-house compile should roof this house from its front. */
+/** Whether the intent asks for a front-derived roof: `roof.source: front`, a front hip or a forced `roof.form`; never `3dbag`. */
+export const wantsFrontRoof = (intent: CanalHouseIntent): boolean =>
+  intent.roof.source !== '3dbag' && (intent.roof.source === 'front' || !!intent.roof.hip || intent.roof.form !== undefined);
+
+/** True when the single-house compile should roof this house from its front (facts a block face roofed already: no). */
 export function wantsHouseFrontRoof(intent: CanalHouseIntent, facts: BuildingFacts): boolean {
-  if (facts.roofSource) return false;
-  if (intent.roof.source === '3dbag') return false;
-  return intent.roof.source === 'front' || !!intent.roof.hip;
+  return !facts.roofSource && wantsFrontRoof(intent);
+}
+
+/** `FrontIntent.eavesHeight` -> `facts.measuredEavesM[front.id]` where the facts carry none; no front states one = the same facts. */
+export function withMeasuredEaves(intent: CanalHouseIntent, facts: BuildingFacts): BuildingFacts {
+  const own = intent.fronts.filter(f => f.eavesHeight !== undefined && facts.measuredEavesM?.[f.id] === undefined);
+  if (!own.length) return facts;
+  return {...facts, measuredEavesM: {...(facts.measuredEavesM ?? {}), ...Object.fromEntries(own.map(f => [f.id, f.eavesHeight!]))}};
 }
 
 /** A gap this long between a corner pand's street fronts is a chamfer the roof falls to as well (sideFronts). */
@@ -79,8 +90,14 @@ export function pandRoofFacts(intent: CanalHouseIntent, f: BuildingFacts, kind: 
 }
 
 
-/** The facts with the front roof in `roofsRD` (or the same object when the house does not ask for one). */
+/**
+ * The facts a lone house compiles from (`compileBuilding`): its measured eaves (`withMeasuredEaves`), then the front roof
+ * in `roofsRD` when it asks for one. Neither = the same object (byte-identical).
+ */
 export function houseFrontRoofFacts(intent: CanalHouseIntent, facts: BuildingFacts): {facts: BuildingFacts; report?: RecipeRoofReport} {
-  if (!wantsHouseFrontRoof(intent, facts)) return {facts};
-  return pandRoofFacts(intent, facts, 'front');
+  const measured = withMeasuredEaves(intent, facts);
+  if (!wantsHouseFrontRoof(intent, measured)) return {facts: measured};
+  return pandRoofFacts(intent, measured, 'front');
 }
+
+export const withFrontRoof = (intent: CanalHouseIntent, facts: BuildingFacts): BuildingFacts => houseFrontRoofFacts(intent, facts).facts;

@@ -124,21 +124,29 @@ export function evaluateGates(tris: Tri[], facts: BuildingFacts, fit: FitReport,
   const roofY = tris.filter(t => t.surface === 'roof').flatMap(t => [t.a[1], t.b[1], t.c[1]]);
   const roofMax = Math.max(...roofY);
   const cleanup = fit.roofCleanup;
-  const rs = facts.roofSource, allowance = fit.roofAllowanceM ?? 0;
+  // One ridge gate for both lone-house front-roof lanes (belt-jordaan #366, belt-haarlemmer #356; merged 2026-11-12):
+  // - A photo-measured eaves line (FrontIntent.eavesHeight, facts.measuredEavesM) can stand above 3DBAG's roof max (the
+  //   cornice top over a parapet or frieze, where LoD2.2 reads the roof edge behind it): it lifts the upper bound.
+  // - A roof generated from the front (`facts.roofSource.kind === 'front'`: houseFrontRoof.ts, blockFace/recipeRoof.ts) is
+  //   bounded as the face compile bounds it ('height-vs-3dbag'): under the crown line + 0.3 m (dormers +1.9 m), never under
+  //   the front eaves; 3DBAG (or the measured line) is an upper bound only. A recipe roof (`kind: 'recipe'`) stays under
+  //   LoD2.2 max + 0.5 m. Absent roofSource and measuredEavesM: unchanged.
+  const allowance = fit.roofAllowanceM ?? 0, rs = facts.roofSource;
+  const measuredTop = Math.max(0, ...Object.values(facts.measuredEavesM ?? {}));
+  const upperRoofM = Math.max(facts.heights.roofMaxM, measuredTop);
   if (rs) {
-    // A roof that follows the front (houseFrontRoof.ts, blockFace/recipeRoof.ts) is bounded the way the face compile
-    // bounds it (blockFace/compile.ts 'height-vs-3dbag'): under the crown line + 0.3 m (dormers +1.9 m) and not under
-    // the front eaves; a recipe roof under LoD2.2 max + 0.5 m. 3DBAG is an upper bound only. Absent roofSource: unchanged.
-    const eaves = fit.fronts[0].eavesM, line = Math.max(rs.crownTopM ?? -Infinity, ...fit.fronts.map(f => f.crownTopM));
-    const pass = rs.kind === 'front' ? roofMax <= line + 0.3 + allowance && roofMax >= eaves - 0.05 : roofMax - rs.surveyRoofMaxM <= 0.5 + allowance && roofMax >= eaves - 0.05;
-    g('ridge-vs-3dbag', pass, {modelM: +roofMax.toFixed(2), crownTopM: +line.toFixed(2), threeDBagM: +rs.surveyRoofMaxM.toFixed(2), roof: rs.kind}, rs.kind === 'front' ? 'front roof: max <= the crown line + 0.3 m (dormers +1.9 m) and >= the front eaves; 3DBAG is an upper bound only' : 'recipe roof: max <= LoD2.2 roof max + 0.5 m (dormers +1.9 m) and >= the front eaves');
+    const eaves = fit.fronts[0].eavesM, line = Math.max(rs.crownTopM ?? -Infinity, measuredTop, ...fit.fronts.map(f => f.crownTopM));
+    const surveyM = Math.max(rs.surveyRoofMaxM, measuredTop);
+    const pass = roofMax >= eaves - 0.05 && (rs.kind === 'front' ? roofMax <= Math.min(line, surveyM) + 0.3 + allowance : roofMax - surveyM <= 0.5 + allowance);
+    g('ridge-vs-3dbag', pass, {modelM: +roofMax.toFixed(2), crownTopM: +line.toFixed(2), threeDBagM: +rs.surveyRoofMaxM.toFixed(2), ...(measuredTop ? {measuredEavesM: +measuredTop.toFixed(2)} : {}), roof: rs.kind}, rs.kind === 'front' ? 'front roof: max <= the crown line (or measured eaves) + 0.3 m (dormers +1.9 m), never over 3DBAG / the measured line + 0.3 m, and >= the front eaves' : 'recipe roof: max <= LoD2.2 roof max (or measured eaves) + 0.5 m (dormers +1.9 m) and >= the front eaves');
   } else
-  g('ridge-vs-3dbag', roofMax - facts.heights.roofMaxM <= 0.3 + (fit.roofAllowanceM ?? 0) && facts.heights.roofMaxM - roofMax <= 0.3, {modelM: +roofMax.toFixed(2), threeDBagM: +facts.heights.roofMaxM.toFixed(2), ...(cleanup ? {surveyM: cleanup.surveyRoofMaxM, cleanup: cleanup.actions.map(a => `${a.kind} ${a.fromTopM}->${a.toTopM} m`)} : {})}, '|Δ| <= 0.30 m (roof max vs LoD2.2 roof max after roofCleanup.ts artefact removal); declared dormers may stand 1.9 m above it (LoD2.2 has none)');
+  g('ridge-vs-3dbag', roofMax - upperRoofM <= 0.3 + allowance && facts.heights.roofMaxM - roofMax <= 0.3, {modelM: +roofMax.toFixed(2), threeDBagM: +facts.heights.roofMaxM.toFixed(2), ...(measuredTop ? {measuredEavesM: +measuredTop.toFixed(2)} : {}), ...(cleanup ? {surveyM: cleanup.surveyRoofMaxM, cleanup: cleanup.actions.map(a => `${a.kind} ${a.fromTopM}->${a.toTopM} m`)} : {})}, '|Δ| <= 0.30 m (roof max vs LoD2.2 roof max after roofCleanup.ts artefact removal; a measured eaves line may lift the upper bound); declared dormers may stand 1.9 m above it (LoD2.2 has none)');
   // Clean-up removes artefacts, never the roof: at most a quarter of the surveyed roof area may be clamped.
   if (cleanup) g('roof-cleanup', cleanup.removedAreaM2 <= cleanup.roofAreaM2 * 0.25, {removedM2: cleanup.removedAreaM2, roofM2: cleanup.roofAreaM2, actions: cleanup.actions.length}, 'clamped artefact area <= 25% of the LoD2.2 roof');
   for (const f of fit.fronts) {
     const ff = facts.fronts.find(x => Math.abs(x.widthM - f.widthM) < 0.05) ?? facts.fronts[0];
-    g(`eaves-vs-3dbag/${f.id}`, Math.abs(f.eavesM - ff.eavesM) <= 0.3 || fit.fronts.length > 1, {modelM: f.eavesM, threeDBagM: +ff.eavesM.toFixed(2)}, '|Δ| <= 0.30 m');
+    const photoEaves = facts.measuredEavesM?.[f.id];
+    g(`eaves-vs-3dbag/${f.id}`, Math.abs(f.eavesM - (photoEaves ?? ff.eavesM)) <= 0.3 || fit.fronts.length > 1, {modelM: f.eavesM, threeDBagM: +ff.eavesM.toFixed(2)}, '|Δ| <= 0.30 m');
     const uppers = f.storeyHeightsM.slice(f.storeyHeightsM[0] < 1.5 ? 2 : 1);
     const ok = uppers.every(h => h >= 2.3 && h <= 4.6);
     g(`storey-height/${f.id}`, ok, f.storeyHeightsM, 'upper storeys 2.3–4.6 m (intent storey count vs 3DBAG eaves)');

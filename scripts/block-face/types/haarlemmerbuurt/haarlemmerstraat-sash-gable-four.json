@@ -1,0 +1,177 @@
+{
+ "schemaVersion": 1,
+ "kind": "house-type",
+ "id": "haarlemmerstraat-sash-gable-four",
+ "district": "haarlemmerbuurt",
+ "description": "Haarlemmerstraat gable shop houses of four storeys: 3.8-6.2 m fronts of red-brown or painted brick, a shop ground storey to about 4.4-4.9 m and three upper storeys of 2.5-2.9 m with white-framed windows, under a neck, bell or point gable whose foot stands at 11.5-12.5 m; the upper windows are white small-pane sashes (6-over-6), usually three axes on a 4.6-4.8 m front",
+ "fit": {
+  "widthM": [
+   3.6,
+   6.2
+  ],
+  "storeys": [
+   4
+  ]
+ },
+ "match": {
+  "years": [
+   1600,
+   1995
+  ],
+  "yearSlack": 0,
+  "eavesM": [
+   12.4,
+   15.0
+  ],
+  "stucco": false,
+  "crownMatch": false,
+  "crownStrict": false,
+  "materialVeto": true,
+  "baysByWidth": [
+   {
+    "maxWidthM": 4.2,
+    "bays": 2
+   },
+   {
+    "maxWidthM": 99,
+    "bays": 3
+   }
+  ],
+  "crowns": {
+   "neck": {
+    "riseM": [
+     1.8,
+     4.5
+    ],
+    "topWidthM": [
+     0.9,
+     2.4
+    ]
+   },
+   "bell": {
+    "riseM": [
+     1.8,
+     4.5
+    ],
+    "topWidthM": [
+     0.25,
+     0.9
+    ]
+   },
+   "point": {
+    "riseM": [
+     1.8,
+     4.5
+    ],
+    "topWidthM": [
+     0,
+     0.25
+    ]
+   }
+  },
+  "note": "Haarlemmerstraat 46-54 (2024-11-21 strip, 1 m grid): the same storey grammar as the Haarlemmerdijk shop houses with small-pane sashes; two or three axes on one width, so reviewer bays pins (reviewBays.ts) count them. Haarlemmerdijk 182 (2024-12-11, 1 m grid): rows 4.4-6.4 / 7.3-9.2 / 10.0-11.25 m, neck gable 11.8-14.6 m with scrolls; Haarlemmerdijk 8 (2022-12-15): rows 4.7-6.6 / 7.3-9.2 / 10.1-11.6 m under a point gable from 12.0 m. A separate type picked by reviewer type pins (the storey count is not readable from the eaves over a tall shop ground). Years 1600-1995: BAG dates restored fronts by their rebuild (Haarlemmerstraat 48B: 1984 behind an 18th-c. bell gable); every placement here is a reviewer type pin. eavesM [12.4, 15.0] sets the storey pitch from the measured fronts (54 and 52: gable feet 13.0 and 14.5 m over four storeys (3.25-3.6 m pitch)); one storey count per type, picked by reviewer type pins",
+  "mirrorForDoor": "left"
+ },
+ "body": {
+  "storeys": 4,
+  "bays": 3,
+  "storeyHeights": [
+   4.4,
+   2.8,
+   2.7,
+   2.5
+  ],
+  "windows": "sash-6-over-6",
+  "windowSurround": "sill",
+  "windowHeights": [
+   0.55,
+   0.66,
+   0.66,
+   0.6
+  ],
+  "headLines": [
+   0.8,
+   0.88,
+   0.86,
+   0.84
+  ],
+  "windowShare": 0.52,
+  "cornice": "none"
+ },
+ "crowns": {
+  "neck": {
+   "gable": "neck",
+   "crownRise": 1.2,
+   "atticWindows": 1,
+   "hoist": true,
+   "note": "Haarlemmerdijk 20 (167818): neck 10.2-12.9 m, 1.55 m wide, one attic light 10.4-11.6 m, scrolls not drawn"
+  },
+  "bell": {
+   "gable": "bell",
+   "crownRise": 1.2,
+   "atticWindows": 1,
+   "note": "Haarlemmerdijk 4 (176174): a bell/neck top about 10.3-12.8 m with one attic light"
+  },
+  "point": {
+   "gable": "point",
+   "crownRise": 1.6,
+   "atticWindows": 2,
+   "note": "Haarlemmerdijk 8 (176101): a plain brick point gable 10.4-14.3 m over the full front with two attic lights"
+  }
+ },
+ "grounds": {
+  "door-left": {
+   "doorBay": 0,
+   "basement": "none",
+   "note": "residential ground: house door on the left axis; shops come per pand from BAG/OSM (autoShopfront)"
+  }
+ },
+ "palettes": {
+  "haarlemmer-red-brown": {
+   "brick": "#6e4a3c",
+   "frame": "white-painted",
+   "door": "#2a2a28",
+   "stone": "#e8e4d8",
+   "cornice": "#e8e4d8",
+   "stoneMaterial": "painted"
+  }
+ },
+ "roof": {
+  "material": "red-tile",
+  "squareSaddle": true
+ },
+ "rhythm": {
+  "bays": "2 axes under 5.2 m, else 3",
+  "identicalBays": "every upper storey alike",
+  "windowsPerStorey": "ground: a shop (BAG/OSM) or a house door and window | upper: 2 or 3",
+  "symmetry": "symmetric above the ground",
+  "groundFloor": "a tall shop ground 4.4-4.9 m to the fascia top on the dijk and straat",
+  "signage": "per shop",
+  "roofline": "neck, bell or point gable with one or two attic lights",
+  "photoRows": [
+   1,
+   2,
+   2,
+   2
+  ],
+  "photoGroundRows": 1,
+  "photoGables": 1,
+  "schemaLimits": [
+   "the sandstone scrolls (klauwstukken) beside the neck are not drawn",
+   "the gable cap ornaments are not drawn"
+  ]
+ },
+ "evidence": [
+  {
+   "face": "haarlemmer-46-96",
+   "pands": [
+    "171144",
+    "171145",
+    "171148",
+    "171141",
+    "171140"
+   ],
+   "citation": "strip.jpg 2024-11-21, 1 m grid (grid-crop.ts 3300-4375): 54 neck gable from 13.0 m over three sash rows; 52 neck gable from 14.5 m over three rows and a 4.8 m shop portal; 50 cornice 10.4 m; 48B bell gable 8.6-10.8 m; 46 cornice 12.0 m with a dormer"
+  }
+ ]
+}

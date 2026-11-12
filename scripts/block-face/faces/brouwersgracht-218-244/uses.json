@@ -1,0 +1,556 @@
+{
+ "street": "Brouwersgracht",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T08:10:43.580Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012176452",
+   "addresses": [
+    "Brouwersgracht 244A",
+    "Brouwersgracht 244B",
+    "Brouwersgracht 244C",
+    "Brouwersgracht 244D",
+    "Brouwersgracht 244E",
+    "Brouwersgracht 244F",
+    "Brouwersgracht 244G",
+    "Brouwersgracht 244H",
+    "Brouwersgracht 244K",
+    "Brouwersgracht 244L",
+    "Brouwersgracht 244M"
+   ],
+   "groundUnits": [
+    {
+     "address": "Brouwersgracht 244A",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010000597269"
+    },
+    {
+     "address": "Brouwersgracht 244B",
+     "use": "woonfunctie",
+     "areaM2": 85,
+     "bagId": "0363010000597270"
+    },
+    {
+     "address": "Brouwersgracht 244C",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010000597271"
+    },
+    {
+     "address": "Brouwersgracht 244D",
+     "use": "woonfunctie",
+     "areaM2": 102,
+     "bagId": "0363010000597272"
+    },
+    {
+     "address": "Brouwersgracht 244E",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010000597273"
+    },
+    {
+     "address": "Brouwersgracht 244F",
+     "use": "woonfunctie",
+     "areaM2": 102,
+     "bagId": "0363010000597274"
+    },
+    {
+     "address": "Brouwersgracht 244G",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010000597275"
+    },
+    {
+     "address": "Brouwersgracht 244H",
+     "use": "woonfunctie",
+     "areaM2": 102,
+     "bagId": "0363010000597276"
+    },
+    {
+     "address": "Brouwersgracht 244K",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010000597277"
+    },
+    {
+     "address": "Brouwersgracht 244L",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000597278"
+    },
+    {
+     "address": "Brouwersgracht 244M",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010000597279"
+    }
+   ],
+   "units": 11,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11763413526,
+     "lngLat": [
+      4.8856491,
+      52.382376
+     ],
+     "tags": {
+      "check_date": "2026-04-24",
+      "name": "Neew",
+      "office": "company"
+     },
+     "fetchedAt": "2026-11-10T08:10:43.580Z",
+     "match": "frontage",
+     "distanceM": 7.6
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012176449",
+   "addresses": [
+    "Brouwersgracht 240",
+    "Brouwersgracht 242"
+   ],
+   "groundUnits": [
+    {
+     "address": "Brouwersgracht 240-H",
+     "use": "kantoorfunctie",
+     "areaM2": 36,
+     "bagId": "0363010000995598"
+    },
+    {
+     "address": "Brouwersgracht 242-H",
+     "use": "industriefunctie",
+     "areaM2": 41,
+     "bagId": "0363010000995609"
+    },
+    {
+     "address": "Brouwersgracht 242-H",
+     "use": "industriefunctie",
+     "areaM2": 126,
+     "bagId": "0363010012577590"
+    },
+    {
+     "address": "Vinkenstraat 83H",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 83,
+     "bagId": "0363010012577591"
+    }
+   ],
+   "units": 23,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012176448",
+   "addresses": [
+    "Brouwersgracht 238"
+   ],
+   "groundUnits": [
+    {
+     "address": "Brouwersgracht 238-H",
+     "use": "industriefunctie",
+     "areaM2": 50,
+     "bagId": "0363010011048512"
+    },
+    {
+     "address": "Brouwersgracht 238-4A",
+     "use": "industriefunctie",
+     "areaM2": 180,
+     "bagId": "0363010011048516"
+    },
+    {
+     "address": "Vinkenstraat 79-H",
+     "use": "kantoorfunctie",
+     "areaM2": 50,
+     "bagId": "0363010011048517"
+    },
+    {
+     "address": "Vinkenstraat 79-1",
+     "use": "kantoorfunctie",
+     "areaM2": 90,
+     "bagId": "0363010011048518"
+    },
+    {
+     "address": "Vinkenstraat 79-3",
+     "use": "kantoorfunctie",
+     "areaM2": 90,
+     "bagId": "0363010011048520"
+    }
+   ],
+   "units": 9,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11982866309,
+     "lngLat": [
+      4.8859494,
+      52.3822038
+     ],
+     "tags": {
+      "name": "Gallery238",
+      "tourism": "gallery"
+     },
+     "fetchedAt": "2026-11-10T08:10:43.580Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012176503",
+   "addresses": [
+    "Brouwersgracht 236A",
+    "Brouwersgracht 236B",
+    "Brouwersgracht 236C",
+    "Brouwersgracht 236D",
+    "Brouwersgracht 236E"
+   ],
+   "groundUnits": [
+    {
+     "address": "Brouwersgracht 236A",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000597262"
+    },
+    {
+     "address": "Brouwersgracht 236B",
+     "use": "woonfunctie",
+     "areaM2": 91,
+     "bagId": "0363010000597263"
+    },
+    {
+     "address": "Brouwersgracht 236C",
+     "use": "woonfunctie",
+     "areaM2": 90,
+     "bagId": "0363010000597264"
+    },
+    {
+     "address": "Brouwersgracht 236D",
+     "use": "woonfunctie",
+     "areaM2": 95,
+     "bagId": "0363010000597265"
+    },
+    {
+     "address": "Brouwersgracht 236E",
+     "use": "woonfunctie",
+     "areaM2": 114,
+     "bagId": "0363010000597266"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012176564",
+   "addresses": [
+    "Brouwersgracht 226A",
+    "Brouwersgracht 226B",
+    "Brouwersgracht 228A",
+    "Brouwersgracht 228B",
+    "Brouwersgracht 230A",
+    "Brouwersgracht 230B",
+    "Brouwersgracht 230C",
+    "Brouwersgracht 230D",
+    "Brouwersgracht 230E",
+    "Brouwersgracht 230F",
+    "Brouwersgracht 230G",
+    "Brouwersgracht 230H",
+    "Brouwersgracht 230K",
+    "Brouwersgracht 232M",
+    "Brouwersgracht 232B",
+    "Brouwersgracht 232C",
+    "Brouwersgracht 232D",
+    "Brouwersgracht 232E",
+    "Brouwersgracht 232F",
+    "Brouwersgracht 232G",
+    "Brouwersgracht 232H",
+    "Brouwersgracht 232K",
+    "Brouwersgracht 232L",
+    "Brouwersgracht 234A",
+    "Brouwersgracht 234B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Brouwersgracht 230A",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 1,
+     "bagId": "0363010011259045"
+    },
+    {
+     "address": "Brouwersgracht 232M",
+     "use": "woonfunctie",
+     "areaM2": 213,
+     "bagId": "0363010011259046"
+    },
+    {
+     "address": "Brouwersgracht 226A",
+     "use": "kantoorfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000597234"
+    },
+    {
+     "address": "Brouwersgracht 226B",
+     "use": "kantoorfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000597235"
+    },
+    {
+     "address": "Brouwersgracht 228A",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000597236"
+    },
+    {
+     "address": "Brouwersgracht 228B",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000597237"
+    },
+    {
+     "address": "Brouwersgracht 230B",
+     "use": "woonfunctie",
+     "areaM2": 91,
+     "bagId": "0363010000597239"
+    },
+    {
+     "address": "Brouwersgracht 230C",
+     "use": "woonfunctie",
+     "areaM2": 84,
+     "bagId": "0363010000597240"
+    },
+    {
+     "address": "Brouwersgracht 230D",
+     "use": "woonfunctie",
+     "areaM2": 40,
+     "bagId": "0363010000597241"
+    },
+    {
+     "address": "Brouwersgracht 230E",
+     "use": "woonfunctie",
+     "areaM2": 93,
+     "bagId": "0363010000597242"
+    },
+    {
+     "address": "Brouwersgracht 230F",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010000597243"
+    },
+    {
+     "address": "Brouwersgracht 230G",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010000597244"
+    },
+    {
+     "address": "Brouwersgracht 230H",
+     "use": "woonfunctie",
+     "areaM2": 81,
+     "bagId": "0363010000597245"
+    },
+    {
+     "address": "Brouwersgracht 230K",
+     "use": "woonfunctie",
+     "areaM2": 93,
+     "bagId": "0363010000597246"
+    },
+    {
+     "address": "Brouwersgracht 232B",
+     "use": "woonfunctie",
+     "areaM2": 111,
+     "bagId": "0363010000597248"
+    },
+    {
+     "address": "Brouwersgracht 232C",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000597249"
+    },
+    {
+     "address": "Brouwersgracht 232D",
+     "use": "woonfunctie",
+     "areaM2": 81,
+     "bagId": "0363010000597250"
+    },
+    {
+     "address": "Brouwersgracht 232E",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000597251"
+    },
+    {
+     "address": "Brouwersgracht 232F",
+     "use": "woonfunctie",
+     "areaM2": 106,
+     "bagId": "0363010000597252"
+    },
+    {
+     "address": "Brouwersgracht 232G",
+     "use": "woonfunctie",
+     "areaM2": 73,
+     "bagId": "0363010000597253"
+    },
+    {
+     "address": "Brouwersgracht 232H",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000597254"
+    },
+    {
+     "address": "Brouwersgracht 232K",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000597255"
+    },
+    {
+     "address": "Brouwersgracht 232L",
+     "use": "woonfunctie",
+     "areaM2": 63,
+     "bagId": "0363010000597256"
+    },
+    {
+     "address": "Brouwersgracht 234A",
+     "use": "winkelfunctie",
+     "areaM2": 57,
+     "bagId": "0363010000597260"
+    },
+    {
+     "address": "Brouwersgracht 234B",
+     "use": "kantoorfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000597261"
+    }
+   ],
+   "units": 25,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2721297333,
+     "lngLat": [
+      4.8860697,
+      52.3821313
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "234B",
+      "addr:postcode": "1013HE",
+      "addr:street": "Brouwersgracht",
+      "amenity": "dentist",
+      "branch": "Amsterdam Brouwersgracht",
+      "brand": "Dental Clinics",
+      "brand:website": "https://www.dentalclinics.nl",
+      "brand:wikidata": "Q138845077",
+      "email": "amsterdam@dentalclinics.nl",
+      "healthcare": "dentist",
+      "name": "Dental Clinics",
+      "old_name": "Tandartsen Praktijk Amsterdam",
+      "phone": "+31 20 3983131",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "website": "https://www.dentalclinics.nl/tandarts/amsterdam-brouwersgracht/",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-11-10T08:10:43.580Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 11288436567,
+     "lngLat": [
+      4.8861369,
+      52.3821533
+     ],
+     "tags": {
+      "name": "HairPlay",
+      "shop": "hairdresser",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-11-10T08:10:43.580Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012165072",
+   "addresses": [
+    "Brouwersgracht 224"
+   ],
+   "groundUnits": [
+    {
+     "address": "Brouwersgracht 224-H",
+     "use": "industriefunctie",
+     "areaM2": 246,
+     "bagId": "0363010000981006"
+    }
+   ],
+   "units": 2,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11982861881,
+     "lngLat": [
+      4.8863742,
+      52.3819653
+     ],
+     "tags": {
+      "name": "Treat Yourself",
+      "shop": "beauty"
+     },
+     "fetchedAt": "2026-11-10T08:10:43.580Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012167781",
+   "addresses": [
+    "Brouwersgracht 220",
+    "Brouwersgracht 222"
+   ],
+   "groundUnits": [
+    {
+     "address": "Brouwersgracht 222-H",
+     "use": "industriefunctie",
+     "areaM2": 67,
+     "bagId": "0363010000597230"
+    },
+    {
+     "address": "Brouwersgracht 222-1",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000989142"
+    },
+    {
+     "address": "Brouwersgracht 220",
+     "use": "woonfunctie",
+     "areaM2": 140,
+     "bagId": "0363010000953427"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012167778",
+   "addresses": [
+    "Brouwersgracht 218"
+   ],
+   "groundUnits": [
+    {
+     "address": "Brouwersgracht 218",
+     "use": "woonfunctie",
+     "areaM2": 148,
+     "bagId": "0363010000597228"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  }
+ ]
+}

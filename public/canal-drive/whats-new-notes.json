@@ -2,6 +2,73 @@
   "note": "Visible changes to the ride, newest first. One entry per shipped fix the player can see; models themselves are listed by the feed. Fields: date (YYYY-MM-DD, the day it reached main), title, text, where [lng, lat] optional, images optional: [{src, alt, caption?}] where src is a path in github.com/blackmad/map-recall2-screenshots (whats-new/YYYY-MM-DD-slug.jpg, before/after pairs welcome) or a full https URL. Link a screenshot whenever the change can be seen; keep the pictures out of this repository.",
   "notes": [
     {
+      "date": "2026-11-12",
+      "title": "Amsterdam's green krul urinals",
+      "text": "The ride now has the city's cast-iron krul urinals (plaskrullen): 38 of them at the 37 spots on the city's public-toilet map, mostly along the canals in Centrum. The model is a spiral iron sheet on four posts, raised half a metre off a tiled pad and perforated in its upper half. Its plan comes from the city's own drawing, and its heights and colour were measured from street panoramas. See it on the Street furniture page.",
+      "images": [
+        {
+          "src": "ui/2026-11-12-krul-urinals/photo-vs-model-amstelveld.jpg",
+          "alt": "Amstelveld krul: panorama, model, and in the ride",
+          "caption": "Panorama, model, ride"
+        },
+        {
+          "src": "ui/2026-11-12-krul-urinals/gallery-card-desktop.jpg",
+          "alt": "Street furniture gallery card for the krul urinal",
+          "caption": "Gallery card"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-12",
+      "title": "The plan for the whole city, and an up-to-date In progress list",
+      "text": "A new Plan tab on this page (whats-new.html#plan) lays out, in order, how we will get all of Amsterdam's buildings looking right: the principles, then each step with its priority and whether it is in progress, next, ongoing or later. The In progress list below now shows the work actually under way, linked to its GitHub issue, instead of the old landmark queue.",
+      "images": [
+        {
+          "src": "ui/2026-11-12-coverage-plan/plan-desktop.jpg",
+          "alt": "The Plan tab on What's New: intro, principles and numbered phases with priority and status chips",
+          "caption": "Plan, desktop"
+        },
+        {
+          "src": "ui/2026-11-12-coverage-plan/plan-phone.jpg",
+          "alt": "The Plan tab on a phone, tabs in a three-column grid",
+          "caption": "Plan, phone"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-10",
+      "title": "House walls take their photo colour (corrected 12 November)",
+      "text": "About 425 ordinary houses with a measured reading from street panoramas now draw that wall colour: on Kinkerstraat and Da Costakade the orange and grey fronts became the dark brown the photos show. Correction: the before/after pictures first shown here were the same frame twice (the comparison tool ran on an out-of-date build) and the house in them is one the pale-colour guard keeps on its period brick, so it could never change. The pictures below are re-taken: photo, before, after. Houses without a measured reading still draw the old period palette, which is too orange and too grey; darker measured brick for those is the next change.",
+      "images": [
+        {
+          "src": "ui/2026-11-12-wall-colour-truth/0363100012157926-photo-A-B-C.jpg",
+          "alt": "Da Costakade: photo, the game before (orange), with measured walls (dark brown), and with the darker brick lift",
+          "caption": "Da Costakade: photo, before, after"
+        },
+        {
+          "src": "ui/2026-11-12-wall-colour-truth/0363100012154359-photo-A-B-C.jpg",
+          "alt": "Kinkerstraat: photo, the game before (orange and grey), and with measured dark brown walls",
+          "caption": "Kinkerstraat: photo, before, after"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-10",
+      "title": "Tram tracks stay in view",
+      "text": "Riding along a tram line, the far end of the track used to disappear under the ground and the edge crept along with you. The tracks now draw all the way to the next crossing. Also: a road bridge over the Sloterdijk rail trench is whole again, a pale wedge on the Hemboog viaduct is gone, and a false rail bridge at the Piet Kranenbergpad is back to a level crossing.",
+      "where": [
+        4.841442,
+        52.386195
+      ],
+      "images": [
+        {
+          "src": "whats-new/2026-11-10-tram-tracks.jpg",
+          "alt": "Six frames riding forward along the Kimpoweg tram: before, the far track vanishes; after, it shows to the crossing",
+          "caption": "Before (top) and after (bottom)"
+        }
+      ]
+    },
+    {
       "date": "2026-11-10",
       "title": "Stoops on the canal houses",
       "text": "332 canal-belt houses now have their front steps drawn the way they are built: the flight turns the right way (straight out, to one side, or a double stair), has about the right number of steps, and gets black iron railings. Checked against panoramas on five Herengracht and Keizersgracht houses: right direction and the right railing on all five, steps within one.",

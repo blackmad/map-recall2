@@ -9,6 +9,10 @@
 //   - BGT (Basisregistratie Grootschalige Topografie), Kadaster via PDOK, CC0 1.0:
 //       https://api.pdok.nl/lv/bgt/ogc/v1/collections/{paal,bak,straatmeubilair}/items
 //     fetched per 1 km own-ground cell (the city box), paged by `next` links like scripts/own-ground/fetch-bgt.ts.
+//   - Public toilets and urinals: Gemeente Amsterdam Maps Data "Openbare toiletten" (one GeoJSON, WGS84; `SELECTIE`
+//     KRUL / URILIFT / OVERIG / TOEGANG / OPENBAAR / PARKEER). Licence: the Maps Data Gebruiksvoorwaarden
+//     (https://maps.amsterdam.nl/open_geodata/terms.php): use and reuse for any lawful purpose, commercial included;
+//     attribution appreciated, not required; a redistributed copy must say the original is free from the Gemeente.
 // Cache: artifacts/street-furniture/raw/ (not committed). build.ts reads it and writes the staging extract.
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { gzipSync } from 'node:zlib';
@@ -19,6 +23,8 @@ export const AMS = 'https://api.data.amsterdam.nl/v1/huishoudelijkafval';
 export const CONTAINER_FIELDS = 'id,fractieOmschrijving,geometrie,locatieId,clusterId,typeId,status,verwijderdDp,datumPlaatsing,containerKleur';
 export const BGT = 'https://api.pdok.nl/lv/bgt/ogc/v1/collections';
 export const BGT_COLLECTIONS = ['paal', 'bak', 'straatmeubilair'] as const;
+export const TOILETS_URL = 'https://maps.amsterdam.nl/open_geodata/geojson_lnglat.php?KAARTLAAG=OPENBARE_TOILETTEN&THEMA=openbare_toiletten';
+export const TOILETS_FILE = `${RAW}/amsterdam/openbare-toiletten.json.gz`;
 
 async function getJson(url: string): Promise<any> {
   for (let attempt = 0; ; attempt++) {
@@ -70,6 +76,8 @@ async function main(): Promise<void> {
   const t0 = Date.now();
   console.log(`containers: ${await amsterdamList('container', CONTAINER_FIELDS)} rows`);
   console.log(`containertypes: ${await amsterdamList('containertype', null)} rows`);
+  if (!existsSync(TOILETS_FILE)) writeFileSync(TOILETS_FILE, gzipSync(JSON.stringify(await getJson(TOILETS_URL))));
+  console.log(`openbare toiletten: ${JSON.parse((await import('node:zlib')).gunzipSync(readFileSync(TOILETS_FILE)).toString()).features.length} rows`);
   const index = elevationIndex();
   const manifest = JSON.parse(readFileSync('public/data/extracts/amsterdam/own-ground-osm-v1/cells.json', 'utf8')) as { cells: string[] };
   const jobs: { collection: string; file: string; bbox: [number, number, number, number] }[] = [];

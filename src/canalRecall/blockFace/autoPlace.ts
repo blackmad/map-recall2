@@ -183,7 +183,20 @@ export interface TypeMatchRule {
    * misread than a house. Absent = a run of one is held, byte-identical (Bellamy and every other library).
    */
   lonePand?: {minWidthM: number};
+  /**
+   * Window columns the strip reads per axis, [min, max]. A wide multi-light window (a centre light between side lights
+   * under a top light, Haarlemmerdijk 129-133A) reads its mullions as two to four columns, so two axes read 5-7
+   * (`measureFacade` columns): within `bays` x this range the columns criterion scores 1. Absent = one column per axis,
+   * byte-identical.
+   */
+  columnsPerBay?: [number, number];
   note?: string;
+}
+
+/** The columns criterion: strip window columns against the type's bays (`match.columnsPerBay` for multi-light windows). */
+export function columnsCriterion(cols: number, want: number, perBay?: [number, number]): Criterion {
+  if (perBay && cols >= want * perBay[0] && cols <= want * perBay[1]) return {key: 'columns', weight: W.columns, score: 1, note: `strip columns ${cols} vs ${want} bays of ${perBay.join('-')} lights`};
+  return {key: 'columns', weight: W.columns, score: cols === want ? 1 : Math.abs(cols - want) === 1 ? 0.4 : 0, note: `strip columns ${cols} vs ${want} bays`};
 }
 
 /** `match.frontage` of a portiek type (TypeMatchRule.frontage). */
@@ -385,7 +398,7 @@ export function scoreType(t: MatchableType, ev: PandEvidence): TypeScore {
   }
   if (m.materialVeto && usable) veto.push(...materialVetoes(m, stripWallMaterial({stucco: s!.palette.stucco, wall: s!.wall})));
   const want = baysFor(t, ev.widthM);
-  if (usable && s!.columns !== null) criteria.push({key: 'columns', weight: W.columns, score: s!.columns === want ? 1 : Math.abs(s!.columns - want) === 1 ? 0.4 : 0, note: `strip columns ${s!.columns} vs ${want} bays`});
+  if (usable && s!.columns !== null) criteria.push(columnsCriterion(s!.columns, want, m.columnsPerBay));
   const scored = criteria.filter(c => c.score !== null), wsum = scored.reduce((a, c) => a + c.weight, 0);
   const score = veto.length ? 0 : wsum ? scored.reduce((a, c) => a + c.weight * c.score!, 0) / wsum : 0;
   return {typeId: t.id, score: r2(score), veto, criteria};

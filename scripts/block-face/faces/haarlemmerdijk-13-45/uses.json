@@ -1,0 +1,551 @@
+{
+ "street": "Haarlemmerdijk",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T08:33:43.535Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012167796",
+   "addresses": [
+    "Haarlemmerdijk 13",
+    "Haarlemmerdijk 15",
+    "Haarlemmerdijk 17",
+    "Haarlemmerdijk 19"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerdijk 13-H",
+     "use": "winkelfunctie",
+     "areaM2": 178,
+     "bagId": "0363010000655910"
+    },
+    {
+     "address": "Haarlemmerdijk 17-H",
+     "use": "winkelfunctie",
+     "areaM2": 160,
+     "bagId": "0363010000956760"
+    },
+    {
+     "address": "Haarlemmerdijk 19",
+     "use": "winkelfunctie,woonfunctie",
+     "areaM2": 247,
+     "bagId": "0363010000956761"
+    }
+   ],
+   "units": 12,
+   "osm": [
+    {
+     "type": "node",
+     "id": 1222424119,
+     "lngLat": [
+      4.8885556,
+      52.3818093
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "19",
+      "addr:postcode": "1013JZ",
+      "addr:street": "Haarlemmerdijk",
+      "check_date": "2024-08-26",
+      "craft": "key_cutter",
+      "email": "amsterdam@desleutelkoning.nl",
+      "name": "De Sleutelkoning",
+      "opening_hours": "Mo-Fr 09:00-18:00; Sa 10:00-18:00",
+      "phone": "+31 20 6222630",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "website": "https://desleutelkoning.nl/amsterdam/",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-11-10T08:33:43.535Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 2721295406,
+     "lngLat": [
+      4.8885993,
+      52.3817909
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "17-H",
+      "addr:postcode": "1013JZ",
+      "addr:street": "Haarlemmerdijk",
+      "check_date": "2026-04-24",
+      "female": "yes",
+      "male": "yes",
+      "name": "Kinki",
+      "shop": "hairdresser",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-11-10T08:33:43.535Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012177504",
+   "addresses": [
+    "Haarlemmerdijk 21"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerdijk 21",
+     "use": "winkelfunctie",
+     "areaM2": 109,
+     "bagId": "0363010000700233"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 1222424106,
+     "lngLat": [
+      4.8884607,
+      52.3818552
+     ],
+     "tags": {
+      "clothes": "underwear",
+      "name": "Evenstars Lingerie",
+      "shop": "clothes",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-11-10T08:33:43.535Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012177501",
+   "addresses": [
+    "Haarlemmerdijk 23E",
+    "Haarlemmerdijk 23A",
+    "Haarlemmerdijk 23C",
+    "Haarlemmerdijk 23D",
+    "Haarlemmerdijk 23B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerdijk 23E",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010000702957"
+    },
+    {
+     "address": "Haarlemmerdijk 23A",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000701456"
+    },
+    {
+     "address": "Haarlemmerdijk 23C",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000702677"
+    },
+    {
+     "address": "Haarlemmerdijk 23D",
+     "use": "woonfunctie",
+     "areaM2": 33,
+     "bagId": "0363010000702703"
+    },
+    {
+     "address": "Haarlemmerdijk 23B",
+     "use": "woonfunctie",
+     "areaM2": 63,
+     "bagId": "0363010000701457"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012177502",
+   "addresses": [
+    "Haarlemmerdijk 25B",
+    "Haarlemmerdijk 25A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerdijk 25B",
+     "use": "winkelfunctie",
+     "areaM2": 40,
+     "bagId": "0363010000701398"
+    },
+    {
+     "address": "Haarlemmerdijk 25A",
+     "use": "winkelfunctie",
+     "areaM2": 40,
+     "bagId": "0363010000700234"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012177503",
+   "addresses": [
+    "Haarlemmerdijk 27"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerdijk 27",
+     "use": "woonfunctie",
+     "areaM2": 59,
+     "bagId": "0363010000701399"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 1222424108,
+     "lngLat": [
+      4.8883395,
+      52.3819157
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "25a",
+      "addr:postcode": "1013KA",
+      "addr:street": "Haarlemmerdijk",
+      "description": "Chocolaterie, icecream shop, patisserie",
+      "name": "Jordino",
+      "opening_hours": "Mo 13:00-18:30; Tu-Sa 10:00-18:30",
+      "shop": "chocolate",
+      "website": "https://www.jordino.nl",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-11-10T08:33:43.535Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012167795",
+   "addresses": [
+    "Haarlemmerdijk 29"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerdijk 29",
+     "use": "winkelfunctie,woonfunctie",
+     "areaM2": 81,
+     "bagId": "0363010000655941"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 1222424092,
+     "lngLat": [
+      4.8882995,
+      52.381935
+     ],
+     "tags": {
+      "check_date": "2026-04-24",
+      "name": "Hoenson Vrijetijdskleding",
+      "shop": "clothes",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-11-10T08:33:43.535Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012167794",
+   "addresses": [
+    "Haarlemmerdijk 31"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerdijk 31-H",
+     "use": "winkelfunctie",
+     "areaM2": 122,
+     "bagId": "0363010000655945"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012253819",
+   "addresses": [
+    "Haarlemmerdijk 33"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerdijk 33",
+     "use": "winkelfunctie",
+     "areaM2": 40,
+     "bagId": "0363010000946664"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 1222424069,
+     "lngLat": [
+      4.8882036,
+      52.3819858
+     ],
+     "tags": {
+      "name": "Gems by Shy",
+      "shop": "jewelry",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-11-10T08:33:43.535Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012167805",
+   "addresses": [
+    "Haarlemmerdijk 35A",
+    "Haarlemmerdijk 35B",
+    "Haarlemmerdijk 35D",
+    "Haarlemmerdijk 35C",
+    "Haarlemmerdijk 35E"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerdijk 35A",
+     "use": "woonfunctie",
+     "areaM2": 59,
+     "bagId": "0363010000572314"
+    },
+    {
+     "address": "Haarlemmerdijk 35B",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010000642540"
+    },
+    {
+     "address": "Haarlemmerdijk 35D",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010000756604"
+    },
+    {
+     "address": "Haarlemmerdijk 35C",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000753748"
+    },
+    {
+     "address": "Haarlemmerdijk 35E",
+     "use": "woonfunctie",
+     "areaM2": 62,
+     "bagId": "0363010000785108"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012253818",
+   "addresses": [
+    "Haarlemmerdijk 37"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerdijk 37",
+     "use": "winkelfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000860169"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 1222424050,
+     "lngLat": [
+      4.8881013,
+      52.3820469
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "37",
+      "addr:street": "Haarlemmerdijk",
+      "amenity": "cafe",
+      "check_date": "2024-08-18",
+      "contact:instagram": "https://www.instagram.com/mister_nata/",
+      "cuisine": "coffee_shop",
+      "description": "Portuguese Custard Tarts (Pastel de Nata)",
+      "name": "Mr. Nata",
+      "opening_hours": "Mo-Fr 08:00-18:00; Sa-Su 09:00-18:00",
+      "outdoor_seating": "no",
+      "website": "https://misternata.com",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-11-10T08:33:43.535Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012167804",
+   "addresses": [
+    "Haarlemmerdijk 39"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerdijk 39",
+     "use": "woonfunctie",
+     "areaM2": 297,
+     "bagId": "0363010000655968"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 1222424055,
+     "lngLat": [
+      4.8880697,
+      52.382072
+     ],
+     "tags": {
+      "name": "L'Origine",
+      "opening_hours": "Mo-Fr 11:00-19:00; Sa,Su 13:30-18:00",
+      "shop": "clothes",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-11-10T08:33:43.535Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012177663",
+   "addresses": [
+    "Haarlemmerdijk 41"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerdijk 41",
+     "use": "woonfunctie",
+     "areaM2": 84,
+     "bagId": "0363010003716788"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 1222423995,
+     "lngLat": [
+      4.8880297,
+      52.3820881
+     ],
+     "tags": {
+      "name": "Sabbatical",
+      "shop": "clothes",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-11-10T08:33:43.535Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012176277",
+   "addresses": [
+    "Haarlemmerdijk 43"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerdijk 43-H",
+     "use": "winkelfunctie",
+     "areaM2": 86,
+     "bagId": "0363010000655973"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11428788629,
+     "lngLat": [
+      4.8879936,
+      52.3821216
+     ],
+     "tags": {
+      "name": "Following Lucy",
+      "shop": "clothes",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-11-10T08:33:43.535Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012177659",
+   "addresses": [
+    "Haarlemmerdijk 45",
+    "Haarlemmerdijk 45A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerdijk 45",
+     "use": "winkelfunctie,woonfunctie",
+     "areaM2": 99,
+     "bagId": "0363010000655981"
+    },
+    {
+     "address": "Haarlemmerdijk 45A",
+     "use": "woonfunctie",
+     "areaM2": 94,
+     "bagId": "0363010001034698"
+    }
+   ],
+   "units": 2,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11428828404,
+     "lngLat": [
+      4.8879502,
+      52.3821594
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "45",
+      "addr:postcode": "1013KB",
+      "addr:street": "Haarlemmerdijk",
+      "contact:facebook": "https://www.facebook.com/hetzonnetjeinamsterdam/",
+      "name": "'t Zonnetje",
+      "phone": "+31 20 623 0058",
+      "shop": "tea",
+      "website": "http://www.koffietheeenkruiden.nl",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-11-10T08:33:43.535Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

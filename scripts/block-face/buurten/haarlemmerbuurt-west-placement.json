@@ -1,0 +1,140 @@
+{
+ "buurt": "haarlemmerbuurt-west",
+ "library": "haarlemmerbuurt",
+ "generatedAt": "2026-11-10T09:45:38.336Z",
+ "seconds": 5.32,
+ "totals": {
+  "faces": 5,
+  "pands": 88,
+  "placed": 7
+ },
+ "faces": [
+  {
+   "face": "haarlemmerdijk-117-143",
+   "street": "Haarlemmerdijk",
+   "pands": 14,
+   "placed": 2,
+   "held": 12,
+   "runs": [
+    {
+     "face": "haarlemmerdijk-117-143-r1",
+     "pands": [
+      "0363100012173479",
+      "0363100012173480"
+     ],
+     "passed": true,
+     "triangles": 2263
+    }
+   ],
+   "seconds": 11.51,
+   "byType": {
+    "haarlemmer-shop-cornice-wide": 1,
+    "haarlemmer-shop-gable-wide": 1
+   },
+   "installed": 0,
+   "holds": {
+    "evidence": 0,
+    "match": 0,
+    "likeness": 0,
+    "run": 0,
+    "review": 12
+   }
+  },
+  {
+   "face": "haarlemmerdijk-126-188",
+   "street": "Haarlemmerdijk",
+   "pands": 23,
+   "placed": 0,
+   "held": 23,
+   "runs": [],
+   "seconds": 4.67,
+   "byType": {},
+   "installed": 0,
+   "holds": {
+    "evidence": 1,
+    "match": 0,
+    "likeness": 0,
+    "run": 1,
+    "review": 21
+   }
+  },
+  {
+   "face": "haarlemmerdijk-13-45",
+   "street": "Haarlemmerdijk",
+   "pands": 14,
+   "placed": 0,
+   "held": 14,
+   "runs": [],
+   "seconds": 5.31,
+   "byType": {},
+   "installed": 0,
+   "holds": {
+    "evidence": 0,
+    "match": 0,
+    "likeness": 2,
+    "run": 0,
+    "review": 12
+   }
+  },
+  {
+   "face": "haarlemmerdijk-2-58",
+   "street": "Haarlemmerdijk",
+   "pands": 22,
+   "placed": 5,
+   "held": 17,
+   "runs": [
+    {
+     "face": "haarlemmerdijk-2-58-r1",
+     "pands": [
+      "0363100012167818",
+      "0363100012167817",
+      "0363100012167816"
+     ],
+     "passed": true,
+     "triangles": 2736
+    },
+    {
+     "face": "haarlemmerdijk-2-58-r2",
+     "pands": [
+      "0363100012176172",
+      "0363100012176174"
+     ],
+     "passed": true,
+     "triangles": 1993
+    }
+   ],
+   "seconds": 19.11,
+   "byType": {
+    "haarlemmer-shop-gable": 2,
+    "haarlemmer-shop-cornice-frieze": 2,
+    "haarlemmer-shop-cornice": 1
+   },
+   "installed": 0,
+   "holds": {
+    "evidence": 0,
+    "match": 3,
+    "likeness": 0,
+    "run": 2,
+    "review": 12
+   }
+  },
+  {
+   "face": "haarlemmerdijk-66-120",
+   "street": "Haarlemmerdijk",
+   "pands": 15,
+   "placed": 0,
+   "held": 15,
+   "runs": [],
+   "seconds": 8.23,
+   "byType": {},
+   "installed": 0,
+   "holds": {
+    "evidence": 0,
+    "match": 0,
+    "likeness": 1,
+    "run": 1,
+    "review": 13
+   }
+  }
+ ]
+}

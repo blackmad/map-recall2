@@ -107553,7 +107553,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "2643153a1d410f2f",
+    "buildVersion": 4,
+    "bytes": 39624,
+    "triangles": 1468
+   }
   },
   {
    "id": "chunk-face-clercq-236681",
@@ -108502,7 +108508,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "169cb93eadced4bd",
+    "buildVersion": 4,
+    "bytes": 44728,
+    "triangles": 1474
+   }
   }
  ]
 }

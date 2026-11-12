@@ -34,6 +34,7 @@ import path from 'node:path';
 import { gzipSync } from 'node:zlib';
 import { ringCentroid, type Ring } from '../src/canalRecall/buildingLadder.js';
 import { tileFor, tileKey } from '../src/canalRecall/slippyTiles.js';
+import { glazingOf } from '../src/canalRecall/glazedMaterial.js';
 
 const flag = (name: string): string | undefined =>
   process.argv.find(value => value.startsWith(`--${name}=`))?.slice(name.length + 3);
@@ -83,6 +84,10 @@ const renderProperties = (properties: Record<string, unknown>): Record<string, u
   for (const key of ['colour', 'roofColour', 'roofShape'] as const) {
     if (properties[key] !== null && properties[key] !== undefined && properties[key] !== '') rendered[key] = properties[key];
   }
+  // A glazed part's own OSM material (glass, mirror): the mesh draws it as a curtain wall (src/canalRecall/glassParts.ts).
+  // Other materials stay off the wire; their colour prior already rides in `colour`.
+  const glazing = glazingOf(properties);
+  if (glazing) rendered.material = glazing;
   // Keep OSM's semantic labels for a later source-backed landmark renderer.
   // They are deliberately not style instructions here: tag absence stays
   // absent, and a church or museum tag does not establish appearance data.

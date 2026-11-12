@@ -236,6 +236,36 @@ easy-houses set's colour families are in §6.
   `engine/ownWorldView.ts`, through the `CanalRecallThreeBuildings` globals (`houseSpecEnricher`, `withHouseSpec`,
   `withHouseSpecCrown`, `houseSpecsEnabled`). World-v1 cells carry the bake; `?houseSpecs=0` only affects `?world=live`.
 
+### Held walls fall back to brick, and re-measured hand-authored bricks (lane H9g, #345)
+
+* **The re-measure.** Kinkerstraat 33-47 (`kinker-31-49`) was hand-authored at #856c57, #91735c, #c9a080, #c9a080 (41, 43, 45, 47) and
+  #d0ab8d (49) in the #98 pass ("sunlit red brick ... through the city tint"). Those were read on the right half of the 2024-12-11
+  strip, which is stitched from a brighter exposure: `wall-fit.ts` on that strip returns #772d1b, #9a765d, #b79175, #b59075, #b59376
+  for 41-49 and #413b2d, #453022 for 33, 35, a gradient that is the stitch, not the row. The street-level panorama of the row
+  (overcast, one uniform dark brown with white frames) fitted per pand with `fitWallColour` gives 37 #453b34, 39 #42352f, 41 #443530,
+  43 #41322b, 45 #42352e, 47 #423934, 49 #47403a (corner, mixed with its speklagen). 37 and 39 had no override and drew the type's
+  orange-red. The intent note records the source. A strip is only a wall vote when its exposure is uniform over the face:
+  compare the strip's left and right halves before trusting a gradient. Other faces named `red-brown-sunlit` carry a family palette
+  name, not an authored hex, and their bricks are measured (kinker-56-84, kinker-206-242); kinker-49-63 57 and 59 still draw the
+  name (strip votes #745945, #7f624c).
+* **The fallback.** A pand the pale-warm guard holds keeps its period colour, and the colour the mesher resolved (buurt profile,
+  period-wall enricher, material prior) was a slate grey for Kinkerstraat 154359. `heldBrickWall(fallback, palette, pick)`
+  (`wallColour.ts`): a held pand that is not stated light (`heldTakesBrick`: wallMaterial brick, or no material and register finish
+  not light) whose fallback is not a brick family (`brick-dark/red/brown`) takes a brick-family entry of `PERIOD_WALLS.photo[archetype]`,
+  picked by the id hash. `decorate.ts` marks it `specRecipe.heldBrick`; `threeBuildingFeatures.ts` applies it after the sourced-wall
+  step (a `measured-accepted` side colour is left alone). A fallback already brick, a drawn wall and every pand without the flag are
+  byte-identical. `npx tsx scripts/house-specs/held-wall-audit.ts` counts it on the game chain: 91 held pands (the published
+  extract, installed models and kits excluded), 30 drew a neutral wall (2 with a stated brick finish, 28 with none), 0 after.
+* **Held count, 57 vs 91.** One population, two answers: both count the same 419 generic-path pands that carry a spec wall (1,364 views
+  with a wall hex, 945 hidden by an installed model, none excluded as measured/kit/large). H9f's "57 of 419" ran the rule with
+  `brick: true` for a pand whose material and register finish are both unstated (305 of the 308 held-by-hex pands, 391 of the 419):
+  `specWallSource` then swaps a reading lighter than its family's tone for the family tone, which is darker, so fewer drawn colours are
+  pale-warm. The game does not assume brick there (`decorate.ts specWallColour`: `brick = view.wallMaterial ? ... : registerFinish === 'brick'`,
+  false when unstated), so the pixel reading is lifted as it stands and 91 are held. Re-running the audit with `brick: true` gives exactly 57.
+  **The true number is 91 pands** (pands, not walls: one view per pand, no duplicates; the published extract, not staging). Treat 57 as the count
+  under a "brick unless stated" assumption the game does not make; whether the game should make it is a ruling for the judgement session
+  (it would hold 34 fewer pands and draw their trim-misread family tone instead of the period colour).
+
 ### What `bays` means (H1b, #349)
 
 `bays` is the number of **columns of window openings per facade** on the storeys above the ground floor (`frontBays`:
@@ -734,6 +764,61 @@ sunlit), fog, the analytic window SDF, the ground lift, post-processing, the GLB
 its game colours flat). When those matter, use scripts/building-recipes/render.ts (its sheets draw the slot cells
 in Node since lane H12, docs/house-line.md §8; --browser for headless Chromium) or a ride frame.
 ```
+
+### Belt specs, the recipe route, and what the spec route ignores (lane belt-haarlemmer, #356)
+
+**Route for belt houses.** Belt builders stage specs for the recipe route: `route: 'recipe'` in the spec (`withRoute`; a spec
+whose design is a complete canal-house intent), preview with `house:preview <pand> --recipe --photo`, stage, and the
+integrator's `house:publish` compiles and installs one GLB per house (batches of about 20 GLBs). The Haarlemmerbuurt lane's nine
+houses (`scripts/house-specs/belt/haarlemmer.ts`; `--help`) are nine recipe GLBs. `belt/recipe-dir.ts` writes the scratch
+`houses/spec-<pand>/` directories the preview needs (publish step 3 makes them for real; `--clean` removes them).
+
+**The spec route is not a likeness check.** `house:preview --spec` applies two fields only (`fronts[0].gable` ->
+`monumentGable`, `palette.brick` -> `facadeMappedColour`); everything else lands in `overrides.notApplied` of `measure.json` and the
+generic path draws its own cream curtain-wall front. Judge a belt house on the recipe route. Fields the spec route ignores, ranked by
+how visible they are in a ride frame (house where it bit; "all 9" = every Haarlemmerbuurt house):
+
+| # | Field path | Bites on | Visible as |
+|---|---|---|---|
+| 1 | `fronts[0].storeys`, `storeyHeights`, `eavesHeight` | all 9 (H4 `eavesHeight` 9.8 m vs 3DBAG rear roof 7-8 m) | facade height, storey count |
+| 2 | `fronts[0].shopfront` (colour, fascia, entrance, glazing, stallriser) | 8 (all but Hstraat 52) | the ground storey: dark/cream shop paint, door side |
+| 3 | `roof.form`, `roof.source`, `roof.hip`, `roof.pitchDeg`, `roof.material` | H6, H16, H18, H131 (form/source/hip) | a hip or saddle over a cornice where the strip shows sky |
+| 4 | `fronts[0].bays` | all 9 (H20 `[2,2,3]`) | window columns |
+| 5 | `fronts[0].windows`, `windowSurround`, `windowHeights`, `headLines`, `windowShare` | all 9 | window kind, white surrounds, head lines |
+| 6 | `palette.frame`, `stone`, `cornice`, `stoneMaterial` | all 9 | white frames, cornice band, painted stone |
+| 7 | `fronts[0].cornice`, `crownCap`, `crownCapSpan`, `crownCapRise`, `crownRise`, `atticWindows` | H6, H18, H131 (cap); H4, H20, H54, H52, H133A (attic light) | cornice depth, crown piece, gable neck light |
+| 8 | `fronts[0].doorBay`, `basement` | H52 (doorBay 1), all 9 | door position, souterrain |
+| 9 | `fronts[0].hoist`, `partyClip`, `street`; `palette.door`; `notes`; `roof.squareSaddle` | all 9 (`squareSaddle` H4, H20, H52, H54, H133A) | hoist beam, party-wall clipping, door colour |
+
+This is the seed of lane H11 (apply the design fields in the spec route, or retire the route for belt work).
+
+**Kit components added (belt-haarlemmer).**
+- `FrontIntent.eavesHeight` (metres above the pand's ground; named without the `M` suffix like `crownRise`, the intent contract scan
+  rejects `*M` keys): a photo-measured eaves line, applied by `buildingRecipe/houseFrontRoof.ts` `withMeasuredEaves` as
+  `facts.measuredEavesM[front.id]` when the facts carry none. Absent = the same facts object. Without it a cornice or gable front
+  reads 3DBAG's 10th-percentile roof edge, the rear roof (Haarlemmerdijk 6: 8.9 m against an 11.0 m cornice). Block faces already
+  carried this as `continuity.measuredEaves`; a lone house had no way to say it.
+- `roof.form` and `roof.source: 'front'` on a canal-house intent compiled alone: `withFrontRoof` runs the block faces' front roof
+  (`frontRoofSpecs` -> `recipeRoofFacts`) for the house, so 3DBAG keeps the footprint and an upper bound only. Typed, tested in
+  `blockFace/houseFrontRoof.test.ts` (module now `buildingRecipe/houseFrontRoof.ts`; Haarlemmerdijk 6 pinned: roof top <= the 11.0 m cornice + 0.3 m where 3DBAG stands 11.8 m), and
+  byte-identical when absent: `test:fit-golden` "all 207 house recipes identical" (no committed house carries either field).
+- `buildingRecipe/gates.ts`: with `facts.measuredEavesM` the `eaves-vs-3dbag` gate compares the model to the measured line, and `ridge-vs-3dbag`
+  lets the roof reach it (a cornice top over a parapet stands above 3DBAG's roof edge: Haarlemmerdijk 16, 11.6 m against a 10.4 m roof max), and a
+  front-derived roof (`roofSource`) may stand under 3DBAG's. Absent = the same gate (`fit-golden` unchanged for all 207 committed houses).
+- **One lone-house front roof (merged 2026-11-12, lane recipe-front-roof).** belt-jordaan (#366) wrote the same thing in parallel
+  (`roof.source: front`, `roof.hip`; Bloemgracht 7). Both now live in `buildingRecipe/houseFrontRoof.ts`: `wantsFrontRoof` = `source:
+  front`, a front `hip` or a forced `form` (never `3dbag`); `houseFrontRoofFacts`/`withFrontRoof` apply `withMeasuredEaves`, then
+  `pandRoofFacts`, the block face's own per-pand roof builder (moved out of `blockFace/compile.ts`), so a lone house also gets cross
+  gables and the roof falling to a corner's side fronts. `ridge-vs-3dbag` is one gate: measured eaves lift the upper bound; a
+  `roofSource.kind: front` roof stays under the crown line (or measured eaves) + 0.3 m and under 3DBAG / the measured line + 0.3 m,
+  never under the front eaves; a `recipe` roof under LoD2.2 max + 0.5 m. FH pin: Frederik Hendrikstraat 142 (0363100012152966, rise
+  0.25, pitch 45) tops out at 14.27 m, 3DBAG 17.16 m (`houseFrontRoofFH.test.ts`).
+
+**Frames and the staged world (lane belt-haarlemmer, batch 1, 2026-11-10).** `house:publish` in the lane worktree installed 8 of 9 recipe
+GLBs (131, 0363100012173479, is held: `open-edges` 3 edges / 5.2 m, independent of eaves, roof form, crown cap, windows and door) and a full
+`--shell` bake took 491 s into `artifacts/world/staging`; the "after" frames ran with `WORLD_DIR` on it, then `public/` was reverted so the
+branch carries specs only. The `[suppress]` step failed on its self-check, not on a pand of the batch: it still expects Nassaukade
+0363100012116526 to be blank and main now draws it.
 
 ## §3 Stage and publish
 
@@ -1820,7 +1905,28 @@ npm run house:frames -- --face nassau-145-152 --season winter --label after
 npm run house:frames -- --list scripts/house-frames/validation.json --out artifacts/house-frames/validation
 npm run house:frames -- --buurt AB07 --max 60 --prep-only        # pick, pose and cut only (no browser)
 npm run house:frames -- --list my.json --out <dir> --post-only    # redo checks, pairs and sheets
+npm run house:frames -- --lists a.json:<outA>,b.json:<outB>       # several lists, one browser session (below)
+npm run house:frames -- --list my.json --out <dir> --reuse-photos --query '?world=live'  # after-run: game frames only
 ```
+
+Run it unwrapped with your `PW_PORT`: the tool takes its own `/tmp/canal-pw.sh` slot for the browser part only
+(docs/browser-queue.md).
+
+**Batched runs (`--lists`, lane Q1 #378).** One browser session (one queue slot, one Playwright start, one dev-server
+boot) for several lanes' lists: each list is picked, posed and cut into its own out dir, every pose goes into one job
+(`<first out>/batch-job.json`, list after list), the page re-opens at each list (carried-over page state moved water
+shadows and a POI label on 3-8 % of the pixels when it did not), and each out dir gets the same `photo.jpg`,
+`game.png`, `pose.json`, `pair.jpg`, sheets and `summary.json` a separate `--list` run writes. Measured on two
+lists (Nieuwmarkt 4 pands + Bloemgracht 3) against two separate runs: see the Q1 hand-back on #378. **F4's critic
+uses `--lists` from day one**, and so should the integrator's before/after frames for a round of builder lanes: one
+batch per label, not one run per lane.
+
+**`--reuse-photos`.** Every run caches its pick, pose and photo cut (`HOUSE_FRAMES_CACHE`, default the main checkout's
+`.cache/house-frames`: `prep/<entry hash>.json`, `photos/<pose hash>.jpg`). The keys include the entry, `--bearing`,
+`--year`, `--season`, `--pano-size` and a hash of `frames.ts`, `pose.ts`, `photo.ts` and `pand-reference/select.ts`.
+With the flag, a cached entry skips the panorama listing, the glare/foliage pre-pass and the cut; only the game frame
+is rendered (the route line is recomputed, it depends on `--query`). Use it for the after-run of a before/after pair
+and for critic re-runs. A run without the flag recomputes everything and refreshes the cache.
 
 **Belt pose rule (2026-11-10).** Take winter captures first, then the squarest view under 30°. Use 45° or more only as a
 second view. Two options support this, and neither changes the default pick:

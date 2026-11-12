@@ -1,0 +1,194 @@
+{
+ "street": "Herenmarkt",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T09:05:49.128Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012179842",
+   "addresses": [
+    "Herenmarkt 20"
+   ],
+   "groundUnits": [
+    {
+     "address": "Herenmarkt 20-H",
+     "use": "woonfunctie",
+     "areaM2": 95,
+     "bagId": "0363010000665278"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012179847",
+   "addresses": [
+    "Herenmarkt 18"
+   ],
+   "groundUnits": [
+    {
+     "address": "Herenmarkt 18-H",
+     "use": "woonfunctie",
+     "areaM2": 128,
+     "bagId": "0363010000665272"
+    },
+    {
+     "address": "Herenmarkt 18-O",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 128,
+     "bagId": "0363010000665273"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012179848",
+   "addresses": [
+    "Herenmarkt 16"
+   ],
+   "groundUnits": [
+    {
+     "address": "Herenmarkt 16-H",
+     "use": "woonfunctie",
+     "areaM2": 136,
+     "bagId": "0363010000665268"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012179849",
+   "addresses": [
+    "Herenmarkt 14C",
+    "Herenmarkt 14B",
+    "Herenmarkt 14A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Herenmarkt 14C",
+     "use": "woonfunctie",
+     "areaM2": 145,
+     "bagId": "0363010000665267"
+    },
+    {
+     "address": "Herenmarkt 14B",
+     "use": "woonfunctie",
+     "areaM2": 100,
+     "bagId": "0363010001020120"
+    },
+    {
+     "address": "Herenmarkt 14A",
+     "use": "woonfunctie",
+     "areaM2": 229,
+     "bagId": "0363010001020119"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012179845",
+   "addresses": [
+    "Herenmarkt 10",
+    "Herenmarkt 12A",
+    "Herenmarkt 12B",
+    "Herenmarkt 12C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Herenmarkt 10",
+     "use": "woonfunctie",
+     "areaM2": 362,
+     "bagId": "0363010011323173"
+    },
+    {
+     "address": "Herenmarkt 12A",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 95,
+     "bagId": "0363010011323174"
+    },
+    {
+     "address": "Herenmarkt 12B",
+     "use": "kantoorfunctie",
+     "areaM2": 182,
+     "bagId": "0363010011323175"
+    },
+    {
+     "address": "Herenmarkt 12C",
+     "use": "woonfunctie",
+     "areaM2": 181,
+     "bagId": "0363010011323176"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012179846",
+   "addresses": [
+    "Herenmarkt 8"
+   ],
+   "groundUnits": [
+    {
+     "address": "Herenmarkt 8",
+     "use": "woonfunctie",
+     "areaM2": 346,
+     "bagId": "0363010000784580"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012168416",
+   "addresses": [
+    "Herenmarkt 6"
+   ],
+   "groundUnits": [
+    {
+     "address": "Herenmarkt 6-H",
+     "use": "woonfunctie",
+     "areaM2": 168,
+     "bagId": "0363010000665245"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012168420",
+   "addresses": [
+    "Herenmarkt 4"
+   ],
+   "groundUnits": [
+    {
+     "address": "Herenmarkt 4-H",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010000665239"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012168424",
+   "addresses": [
+    "Herenmarkt 2"
+   ],
+   "groundUnits": [
+    {
+     "address": "Herenmarkt 2",
+     "use": "woonfunctie",
+     "areaM2": 166,
+     "bagId": "0363010000665234"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  }
+ ]
+}
