@@ -77,19 +77,25 @@ export const POOL_DRAW = {
   k: 24,
   /** The lattice cell (about one canal-house width), m. */
   cellM: 7,
-  /** The central share of the weighted distribution drawn from: 0 = the weighted median, 1 = the whole distribution. */
-  band: 1,
+  /**
+   * The central share of the weighted distribution drawn from: 0 = the weighted median, 1 = the whole distribution. On the
+   * 114 W1 pairs, 0.5: mean dE 0.104 (W1 0.097), row lightness spread 0.83 of the photos' (W1 0.70); 1: 0.128 and 1.16.
+   */
+  band: 0.5,
   /** Two readings of one colour this close are one building's split pands, m. */
   sameBuildingM: 40,
-  /** A painted draw needs at least this weighted share of painted candidates around it. */
-  paintedShare: 0,
 };
 /** Tests and tuning only (scripts/house-frames/wall-predict.ts): override POOL_DRAW. */
 export function tunePoolDraw(over: Partial<typeof POOL_DRAW>) { Object.assign(POOL_DRAW, over); }
 /** A measured wall this light is painted render or stucco (the brick readings top out at L 0.58). */
 export const PAINTED_L = 0.62;
-export const WALL_VARIETY_DEFAULT_ON = true;
-/** `?wallVariety=` value: '0' off, '1' on, a fraction (0.5) on with that POOL_DRAW.band; absent: the default. */
+/**
+ * Off by default: neither band met lane W2's gate on the 114 pairs (mean dE no worse than W1's 0.097, under 1 in 10 pairs
+ * worse by 0.02). The pairs were picked where the game drew pale over dark brick, so a draw true to the neighbourhood's
+ * spread scores worse on them by construction; the integrator decides (docs/house-line.md §12).
+ */
+export const WALL_VARIETY_DEFAULT_ON = false;
+/** `?wallVariety=` value: '0' off; a band in (0, 1] on with that POOL_DRAW.band (1 = the whole distribution); absent: the default. */
 const varietyValue = (search?: string | null, env?: string | null) => (search ? /[?&]wallVariety=([\d.]+)/.exec(search)?.[1] : undefined) ?? env ?? undefined;
 export function wallVarietyEnabled(search?: string | null, env?: string | null): boolean {
   const v = varietyValue(search, env);
@@ -100,7 +106,7 @@ export function wallVarietyOn(): boolean {
   if (varietyCached !== undefined) return varietyCached;
   const g = globalThis as { location?: { search?: string }; process?: { env?: Record<string, string | undefined> } };
   const v = varietyValue(g.location?.search ?? null, g.process?.env?.WALL_VARIETY ?? null), n = Number(v);
-  if (v !== undefined && n > 0 && n < 1) POOL_DRAW.band = n;
+  if (v !== undefined && n > 0 && n <= 1) POOL_DRAW.band = n;
   return (varietyCached = wallVarietyEnabled(g.location?.search ?? null, g.process?.env?.WALL_VARIETY ?? null));
 }
 /** Tests only: forget the cached variety flag. */
@@ -164,14 +170,13 @@ export class MeasuredWallPool {
     const d0 = distinct[0].d, scale = POOL_DRAW.kernelM + d0;
     const sorted = distinct.map(p => ({ p, w: Math.exp(-(p.d - d0) / scale), h: hue(p.hex) })).sort((a, b) => a.p.L - b.p.L || a.h - b.h || a.p.hex.localeCompare(b.p.hex));
     const total = sorted.reduce((s, c) => s + c.w, 0);
-    const paintedShare = sorted.reduce((s, c) => s + (c.p.painted ? c.w : 0), 0) / total;
     const x = lng * this.kx, y = lat * M_PER_DEG_LAT;
     const u0 = frac(Math.floor(x / POOL_DRAW.cellM) * 0.6180339887 + Math.floor(y / POOL_DRAW.cellM) * 0.7548776662 + ((seed >>> 0) % 1024) / 1024 * 0.05);
     wallVarietyOn(); // a `?wallVariety=0.5` band is applied on the first read
     const u = 0.5 + (u0 - 0.5) * POOL_DRAW.band;
     let acc = 0, pick = sorted[sorted.length - 1].p;
     for (const c of sorted) { acc += c.w / total; if (u < acc) { pick = c.p; break; } }
-    return { hex: pick.hex, painted: pick.painted && paintedShare >= POOL_DRAW.paintedShare };
+    return { hex: pick.hex, painted: pick.painted };
   }
 }
 

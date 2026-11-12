@@ -109,14 +109,18 @@ const block = () => {
   return { points: hexes.map((h, i) => [486000 + (i % 4) * 15, 5236600 + Math.floor(i / 4) * 9, h, 1, h.startsWith('#e') ? 1 : 0] as const) };
 };
 
-test('the variety flag: on by default; ?wallVariety=0 or WALL_VARIETY=0 turns it off', () => {
-  assert.equal(wallVarietyEnabled(null, null), true);
+test('the variety flag: off by default; ?wallVariety=0.5 (a band) or 1 turns it on, 0 off', () => {
+  assert.equal(wallVarietyEnabled(null, null), false);
+  assert.equal(wallVarietyEnabled('?wallVariety=0.5', null), true);
+  assert.equal(wallVarietyEnabled('?wallVariety=1', null), true);
   assert.equal(wallVarietyEnabled('?wallVariety=0', null), false);
   assert.equal(wallVarietyEnabled(null, '0'), false);
 });
 
-test('the draw: a row of unmeasured pands keeps its darks, reds and pales in about the measured proportions', () => {
-  const pool = new MeasuredWallPool(block());
+test('the draw (band 1): a row of unmeasured pands keeps its darks, reds and pales in about the measured proportions', () => {
+  const pool = new MeasuredWallPool(block()), band = POOL_DRAW.band;
+  POOL_DRAW.band = 1;
+  try {
   const draws = Array.from({ length: 24 }, (_, i) => pool.drawFor(4.86015 + i * 0.0001, 52.36606, 'c19', i * 7919)!);
   const kinds = { brown: 0, red: 0, painted: 0 };
   for (const d of draws) { assert.ok(d); if (d.painted) kinds.painted++; else if (['#8a4a38', '#94503c', '#7f4434'].includes(d.hex)) kinds.red++; else kinds.brown++; }
@@ -124,6 +128,7 @@ test('the draw: a row of unmeasured pands keeps its darks, reds and pales in abo
   for (let i = 0; i + 3 < draws.length; i++) assert.ok(new Set(draws.slice(i, i + 4).map(d => d.hex)).size >= 2, 'four neighbours in a row are not one colour');
   // Painted is the wall's own mark: a white draw is painted, a brick draw is not.
   for (const d of draws) assert.equal(d.painted, d.hex.startsWith('#e'));
+  } finally { POOL_DRAW.band = band; }
 });
 
 test('the draw: a split building (one reading on many pands) counts once', () => {
