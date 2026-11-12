@@ -145,12 +145,18 @@ test('a type starting with a vowel takes "an" (page check 2026-11-08: "A industr
   assert.equal(describeBuilding([0, BUILDING_TYPES.indexOf('office'), 0], null, 'Kantoor').detail, 'An office building.');
 });
 
-test('an address leads the register line; an address alone still says what else is unknown', () => {
-  assert.equal(describeBuilding([1900, -1, 0], null, '', null, 'Address: Herengracht 12.').detail,
-    'Address: Herengracht 12. Built in 1900, in the early twentieth century.');
-  assert.equal(describeBuilding(null, null, '', null, 'Address: Herengracht 12.').detail,
-    `Address: Herengracht 12. ${NOTHING_KNOWN.anonymous}`);
-  assert.equal(describeBuilding(null, null, '', null, '').detail, NOTHING_KNOWN.anonymous, 'no address, no change');
+test('an address titles a card with no name; a named card carries it in the body', () => {
+  assert.deepEqual(describeBuilding([1665, -1, 0], null, '', null, 'Herengracht 12'),
+    { name: 'Herengracht 12', detail: 'Built in 1665, in the Dutch Golden Age.' });
+  assert.deepEqual(describeBuilding(null, null, '', null, 'Herengracht 12'), { name: 'Herengracht 12', detail: NOTHING_KNOWN.anonymous });
+  // Places and names still title as before; the address follows in the body.
+  assert.deepEqual(describeBuilding([1900, -1, 0], null, 'De Zon', null, 'Herengracht 12'),
+    { name: 'De Zon', detail: 'Address: Herengracht 12. Built in 1900, in the early twentieth century.' });
+  assert.deepEqual(describeBuilding([1965, -1, 0], null, '', { name: 'Het Salon', kind: 'a salon' }, 'Condensatorweg 54'),
+    { name: 'Het Salon', detail: 'A salon. Address: Condensatorweg 54. Built in 1965, in the post-war decades.' });
+  // Withheld (empty): the title is the year again.
+  assert.equal(describeBuilding([1665, -1, 0], null, '', null, '').name, 'Built 1665');
+  assert.equal(describeBuilding(null, null, '', null, '').detail, NOTHING_KNOWN.anonymous);
 });
 
 test('the store reads the address tile beside the fact tile', async () => {

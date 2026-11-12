@@ -55,3 +55,16 @@ for (const r of arts) {
   if (best === 0) inside++; if (best <= 6) near++;
 }
 console.log(`artwork nodes ${arts.length}: inside a pand ${inside}; within 6 m of a pand (a label tap attaches that building) ${near}; free-standing ${arts.length - near}`);
+
+// C1 (#367): how many place-holding pands does a place still title, and how many now lead with the building?
+{
+  const { titlePlace } = await import('../src/canalRecall/placeTitle');
+  let titled = 0, led = 0, slabs = 0;
+  for (const h of holders) {
+    const places = h.places.filter(r => !isLabelOnly(r));
+    if (!places.length) continue;
+    const t = titlePlace({ places, footprint: h.geometry, heightMetres: undefined });
+    if (t) titled++; else { led++; if (places.length >= 3) slabs++; }
+  }
+  console.log(`C1 title rule (height unknown): place titles ${titled}, building leads ${led} (of which ${slabs} hold 3+ places)`);
+}

@@ -53,8 +53,8 @@ import { buildRouteKnowledgeIndex, routeKnowledgeFor, shouldOfferStreetKnowledge
 import { canShowDriveByCard, canShowMiniMap, canShowPostcard, canShowTeachingCard } from './teachingSurface';
 import { drawPassportStamp } from './freeRideCollectionDraw';
 import { isTransit } from './modes';
-import { BuildingFactStore, describeBuilding } from '../buildingFacts';
-import { addressSentence, streetShown } from '../pandAddress';
+import { BuildingFactStore, describeBuilding, saysNothingKnown } from '../buildingFacts';
+import { addressText, streetShown } from '../pandAddress';
 import { articleCard, type BuildingArticle } from '../buildingArticles';
 import { StreetArtIndex, streetArtCard, streetArtKindPhrase, type StreetArtFile } from '../streetArt';
 import { manualPoiBuildingIds, mergeManualPoiFeatures } from './manualPoiCatalog';
@@ -258,8 +258,14 @@ export class GameLandmarkRuntime {
     const spoils = (this.vectorMap as { _spoils?: (name: string) => boolean })._spoils;
     // Quiz rule: a mapped place's street is withheld like the pand's own while a question is open (pandAddress.ts).
     const streets = streetShown(this);
-    const mapped = this._clickPoiInfo?.card(building, streets);
+    let mapped = this._clickPoiInfo?.card(building, streets);
     if (mapped) {
+      // The place titles the card; the pand's BAG address follows in its body (never twice, never while withheld).
+      const bag = addressText(typeof this._buildingFacts?.address === 'function' ? this._buildingFacts.address(factsIdOf(building)) : null, this);
+      if (bag && !(mapped.detail ?? '').includes(bag)) {
+        mapped = { ...mapped, detail: `${mapped.detail ?? ''} Address: ${bag}.`,
+          longDetail: mapped.longDetail ? `${mapped.longDetail}\n\nAddress: ${bag}.` : mapped.longDetail };
+      }
       // The article tile may still be in flight: the POI card gains the lede on arrival.
       if (!article) this._requestBuildingFacts(building);
       return article ? this._poiCardWithArticle(mapped, article) : mapped;
@@ -305,9 +311,13 @@ export class GameLandmarkRuntime {
     const place = labelRow ? { name: labelRow[1], kind: labelArt && labelArt.k !== 'artwork' ? streetArtKindPhrase(labelArt.k) : labelRow[5], address: streets ? labelRow[6] : '' }
       : safeName && building.poi ? { name: safeName } : null;
     // The BAG address of the pand (pand-addresses-v1), screened for the quiz: Free Ride says it, a quiz mode keeps the
-    // street back while a question is open (pandAddress.ts addressSentence).
+    // street back while a question is open (pandAddress.ts addressText).
     const pandAddress = typeof this._buildingFacts?.address === 'function' ? this._buildingFacts.address(factsIdOf(building)) : null;
-    const facts = describeBuilding(row, building.height ?? pand?.height, safeName, place, addressSentence(pandAddress, this));
+    const address = addressText(pandAddress, this);
+    const facts = describeBuilding(row, building.height ?? pand?.height, safeName, place, address);
+    // Places that do not title this building (a restaurant in a slab) follow its own facts (C1, #367).
+    const inside = this._clickPoiInfo?.inside?.(building, name => !!spoils?.call(this.vectorMap, name)) ?? '';
+    if (inside) facts.detail = saysNothingKnown(facts.detail) ? `${inside}.` : `${facts.detail} ${inside}.`;
     // Every drawn building answers a click (user report 2026-10-10, "why does
     // this building not let me click on it?" — a post-war tower with only a
     // year and a height). From 2026-10-04 only listed monuments with an

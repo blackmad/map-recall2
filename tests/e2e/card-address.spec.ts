@@ -37,8 +37,8 @@ async function cardUnder(page: Page, state: { freeRide: boolean; quizPromptName?
 test('Free Ride says the address; a quiz says it only between questions', async ({ page }) => {
   await boot(page);
   const free = await cardUnder(page, { freeRide: true });
-  expect(free).toContain(`Address: ${STREET} 502–504 / Leliegracht 2.`);
-  expect(await cardUnder(page, { freeRide: false })).toContain(`Address: ${STREET} 502–504 / Leliegracht 2.`);
+  expect(free).toContain(`${STREET} 502–504 / Leliegracht 2`); // the title of a nameless house, the body of a named one (this one is a monument)
+  expect(await cardUnder(page, { freeRide: false })).toContain(`${STREET} 502–504 / Leliegracht 2`);
   // Even in Free Ride a stale question name would be harmless: Free Ride has no questions.
   expect(await cardUnder(page, { freeRide: true, quizPromptName: STREET })).toContain(STREET);
 });
@@ -55,7 +55,7 @@ test('no question state lets the street reach a card before the answer', async (
     const card = await cardUnder(page, state);
     expect(card, JSON.stringify(state)).not.toContain(STREET);
     expect(card, JSON.stringify(state)).not.toContain('Leliegracht');
-    expect(card, JSON.stringify(state)).toContain('shown after you answer');
+    expect(card, JSON.stringify(state)).not.toMatch(/answer/i); // no notice that an address is being held back
   }
   // After the answer the address returns.
   expect(await cardUnder(page, { freeRide: false, quizPromptName: '' })).toContain(STREET);

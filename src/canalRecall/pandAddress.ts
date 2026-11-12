@@ -2,7 +2,7 @@
 //
 // `pand-addresses-v1` is cut from PDOK's open BAG (verblijfsobject hoofdadres, keyed by pand) into the same z14 tiles as
 // `building-facts`. A pand's address is a few `[street, numbers]` groups; the card shows them as "Anthony Fokkerweg 55–65".
-// The street part is the one thing a quiz may be asking for, so `addressSentence` withholds it by rule (see `streetShown`).
+// The street part is the one thing a quiz may be asking for, so `addressText` withholds it by rule (see `streetShown`).
 
 /** One street a pand stands on and the compact house-number text for it ("55–65", "12A–12C", "2, 4"). */
 export type PandAddressPart = [street: string, numbers: string];
@@ -80,14 +80,18 @@ export function streetShown(game: QuizState | null | undefined, street = ''): bo
   return !street || !hidden.includes(norm(street));
 }
 
-export const ADDRESS_HIDDEN_TEXT = 'The address is shown after you answer.';
+/** Streets a card names before "+n more": the phone's driving corridor stays clear. */
+export const CARD_ADDRESS_STREETS = 2;
 
-/** The sentence a card carries: the full address, the hidden notice, or nothing when the building has no address. */
-export function addressSentence(address: PandAddress | null | undefined, game?: QuizState | null): string {
+/**
+ * The address a card says, "Herengracht 12" or "A 1 / B 2 +1 more", or '' when the building has none or a street is
+ * withheld. Withheld means omitted, not announced: a notice that an address is coming reads as a hint.
+ */
+export function addressText(address: PandAddress | null | undefined, game?: QuizState | null): string {
   if (!address?.length) return '';
-  const shown = address.filter(([street]) => streetShown(game, street));
-  if (shown.length < address.length) return ADDRESS_HIDDEN_TEXT;
-  return `Address: ${address.map(([street, numbers]) => `${street} ${numbers}`).join(' / ')}.`;
+  if (address.some(([street]) => !streetShown(game, street))) return '';
+  const shown = address.slice(0, CARD_ADDRESS_STREETS).map(([street, numbers]) => `${street} ${numbers}`).join(' / ');
+  return address.length > CARD_ADDRESS_STREETS ? `${shown} +${address.length - CARD_ADDRESS_STREETS} more` : shown;
 }
 
 /** Remove a mapped place's " at <street number>" from a card text while streets are withheld. */

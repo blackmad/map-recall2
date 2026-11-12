@@ -2,7 +2,7 @@ import { useCallback, useEffect, useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { PERF_HUD_ID, PERF_HUD_NARROW_STYLE, PERF_HUD_STYLE, perfHudLine } from '../../src/canalRecall/engine/perfHud';
 import { describeBuilding } from '../../src/canalRecall/buildingFacts';
-import { addressSentence, type PandAddress } from '../../src/canalRecall/pandAddress';
+import { addressText, type PandAddress } from '../../src/canalRecall/pandAddress';
 import { landmarkLede, splitDetail } from '../../src/canalRecall/game/landmarkData';
 
 type Scenario = 'default' | 'bike-home' | 'bike-here' | 'transit' | 'advanced' | 'advanced-cartoon' | 'advanced-questions-off' | 'advanced-haze-off' | 'advanced-perf-hud' | 'hud' | 'neighborhood' | 'neighborhood-fallback'
@@ -438,11 +438,9 @@ function CanalDriveFrame({ scenario = 'default', perfHud = false }: { scenario?:
               const address: PandAddress | null = variant === '-multi' ? [['Herengracht', '12'], ['Leliegracht', '2']]
                 : variant === '-long' ? [['Burgemeester Tellegenstraat Noord-Oostzijde', '1A–1C'], ['Sint Willibrordusstraat', '110, 112'], ['Professor Tulpplein', '3']]
                 : variant === '-missing' ? null : [['Herengracht', '502–504']];
-              return {
-                id: 'clicked-NL.IMBAG.Pand.0363100012169999', type: 'building',
-                // The game's own rule: Free Ride says the street, a quiz keeps it back while a question is open.
-                ...describeBuilding([1665, -1, 2], 13, '', null, addressSentence(address, variant === '-hidden' ? { freeRide: false, quizPromptName: 'Herengracht' } : { freeRide: true })),
-              };
+              const facts = describeBuilding([1665, -1, 2], 13, '', null, addressText(address, variant === '-hidden' ? { freeRide: false, quizPromptName: 'Herengracht' } : { freeRide: true }));
+              // The game's own rule: Free Ride says the street (as the title); a quiz keeps it back while a question is open.
+              return { id: 'clicked-NL.IMBAG.Pand.0363100012169999', type: 'building', ...facts };
             })()
             : scenario.startsWith('landmark-card-building-label-pand')
             ? {

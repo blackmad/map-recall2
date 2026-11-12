@@ -185,7 +185,8 @@ export function describeBuilding(
   heightMetres: number | null | undefined,
   name = '',
   place: PlaceOnBuilding | null = null,
-  /** The pand's BAG address sentence, already screened for the quiz (`pandAddress.ts addressSentence`); empty when none. */
+  /** The pand's BAG address text ("Herengracht 12"), already screened for the quiz (`pandAddress.ts addressText`); empty when
+   *  none or withheld. It titles a card that has no name of its own and otherwise leads the body as "Address: ...". */
   address = '',
 ): { name: string; detail: string } {
   const storeys = storeysFor(heightMetres);
@@ -196,11 +197,11 @@ export function describeBuilding(
   const year = plausibleYear(monumentYear) ? monumentYear : row && plausibleYear(row[0]) ? row[0] : null;
   const years = plausibleYear(monumentYear) ? monument!.y! : year ? String(year) : '';
   const shownName = name || monument?.n || place?.name || '';
-  const title = shownName || (year ? `Built ${year}` : type ? capitalise(type) : 'No building details');
+  const title = shownName || address || (year ? `Built ${year}` : type ? capitalise(type) : 'No building details');
   const parts: string[] = [];
   const placeText = placeSentence(place, title);
   if (placeText) parts.push(placeText);
-  if (address) parts.push(address);
+  if (address && shownName) parts.push(`Address: ${address}.`);
   const known = parts.length;
   const designed = monument?.a ? `, designed by ${monument.a}` : '';
   if (year) {
@@ -222,7 +223,7 @@ export function describeBuilding(
   // A named building with nothing else known says so without denying its name.
   const nothing = shownName ? (place?.name ? NOTHING_KNOWN.place : NOTHING_KNOWN.named) : NOTHING_KNOWN.anonymous;
   // An address alone is not a description: the nothing-known line still follows it.
-  if (address && parts.length === known) parts.push(nothing);
+  if (address && shownName && parts.length === known) parts.push(nothing);
   return { name: title, detail: parts.join(' ') || nothing };
 }
 

@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { ADDRESS_HIDDEN_TEXT, addressSentence, compactNumbers, pandAddressOf, streetShown, withoutStreetClause } from './pandAddress';
+import { addressText, compactNumbers, pandAddressOf, streetShown, withoutStreetClause } from './pandAddress';
 
 test('house numbers compact to a lone number, a pair, or a span', () => {
   assert.equal(compactNumbers([{ n: 12 }]), '12');
@@ -22,22 +22,26 @@ test('a pand on two streets lists both, most numbers first, capped at three', ()
 const ADDRESS = [['Anthony Fokkerweg', '55–65'], ['Leliegracht', '2']] as [string, string][];
 
 test('Free Ride says the whole address', () => {
-  assert.equal(addressSentence(ADDRESS, { freeRide: true, quizPromptName: 'Leliegracht' }), 'Address: Anthony Fokkerweg 55–65 / Leliegracht 2.');
-  assert.equal(addressSentence(ADDRESS, { freeRide: true }), 'Address: Anthony Fokkerweg 55–65 / Leliegracht 2.');
+  assert.equal(addressText(ADDRESS, { freeRide: true, quizPromptName: 'Leliegracht' }), 'Anthony Fokkerweg 55–65 / Leliegracht 2');
+  assert.equal(addressText(ADDRESS, { freeRide: true }), 'Anthony Fokkerweg 55–65 / Leliegracht 2');
 });
 
-test('a quiz mode withholds every street while any question is open, and says them between questions', () => {
+test('a quiz mode omits the address while any question is open, and says it between questions', () => {
   for (const open of [{ quizPromptName: 'Herengracht' }, { quizCandidateName: 'Herengracht' }, { _silentPass: { name: 'Herengracht' } }]) {
-    assert.equal(addressSentence(ADDRESS, { freeRide: false, ...open }), ADDRESS_HIDDEN_TEXT, JSON.stringify(open));
-    assert(!addressSentence(ADDRESS, { freeRide: false, ...open }).includes('Anthony'));
+    assert.equal(addressText(ADDRESS, { freeRide: false, ...open }), '', JSON.stringify(open));
   }
-  assert.equal(addressSentence(ADDRESS, { freeRide: false }), 'Address: Anthony Fokkerweg 55–65 / Leliegracht 2.');
+  assert.equal(addressText(ADDRESS, { freeRide: false }), 'Anthony Fokkerweg 55–65 / Leliegracht 2');
   assert.equal(streetShown({ freeRide: false, quizPromptName: '' }, 'X'), true);
 });
 
+test('long addresses name two streets, then count the rest', () => {
+  assert.equal(addressText([['Burgemeester Tellegenstraat Noord-Oostzijde', '1A–1C'], ['Sint Willibrordusstraat', '110, 112'], ['Professor Tulpplein', '3']], { freeRide: true }),
+    'Burgemeester Tellegenstraat Noord-Oostzijde 1A–1C / Sint Willibrordusstraat 110, 112 +1 more');
+});
+
 test('no address, no sentence; a mapped place loses its street clause when withheld', () => {
-  assert.equal(addressSentence(undefined, {}), '');
-  assert.equal(addressSentence([], {}), '');
+  assert.equal(addressText(undefined, {}), '');
+  assert.equal(addressText([], {}), '');
   assert.equal(withoutStreetClause('A Sikh gurdwara at Schakelstraat 21.', 'Schakelstraat 21'), 'A Sikh gurdwara.');
   assert.equal(withoutStreetClause('A café.', ''), 'A café.');
 });
