@@ -147,7 +147,7 @@ export function countStats(): Record<string, Stat> {
     streetFurniture: {
       count: furniture.instances,
       models: furniture.models.length,
-      note: 'Street furniture placed in the ride from the open registers (underground-container tops, lamp posts, abris, advertising columns, bike hoops), one instance per object; `models` is how many furniture models draw them.',
+      note: 'Street furniture placed in the ride from the open registers (underground-container tops, lamp posts, abris, advertising columns, bike hoops, krul urinals), one instance per object; `models` is how many furniture models draw them.',
       sources: ['public/canal-drive/street-furniture/catalogue.json', `${EXTRACT}/street-furniture/index.json`],
     },
     zooAnimals: {

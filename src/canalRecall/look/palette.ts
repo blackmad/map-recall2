@@ -506,6 +506,14 @@ export const STREET_FURNITURE_TONES = {
   // Above-ground Engels box (189468, Nassaukade / Da Costakade, 2026-11-07): graphite body, galvanised corner posts.
   containerBgBody: '#4e5153',
   containerBgPost: '#868b8c',
+  // Amsterdamse krul (plaskrul), 2026-11-12: the sheet's luminance from panoramas and Commons photos (raw #1f2d35 to
+  // #2c3d48 under a blue morning cast), its hue the "donkergroen" the city paints it (nlwiki Plaskrul; the 2022
+  // Corsgenbrug Commons photo reads teal-green in daylight). The perforated upper half reads lighter (see-through).
+  krulSheet: '#2c4542',
+  krulLattice: '#4a605b',
+  krulStone: '#8e8b83',
+  krulTile: '#c9c3b2',
+  krulBrick: '#8a4f3e',
 } as const;
 
 /** OSM `building:material` → display hue. A material family suggests a hue, never a measured wall colour. */

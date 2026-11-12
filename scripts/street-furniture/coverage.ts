@@ -13,7 +13,7 @@ const arg = (n: string, d: string) => process.argv.find(a => a.startsWith(`--${n
 /** The ride's centre (Dam, Westerkerk/Prinsengracht, Leidseplein, Pijp): these tiles must exist and stay light. */
 export const CENTRE_SPOTS: Record<string, [number, number]> = { Dam: [4.8926, 52.3731], Prinsengracht: [4.8840, 52.3740], Leidseplein: [4.8820, 52.3640], Pijp: [4.8930, 52.3560], Noordermarkt: [4.8872, 52.3796] };
 /** Floors per kind (half of the 2026-11-01 pull) and the centre tile byte cap. */
-export const FLOORS: Record<string, number> = { container: 6500, lamp: 60000, abri: 550, 'ad-column': 120, 'bike-rack': 50 };
+export const FLOORS: Record<string, number> = { container: 6500, lamp: 60000, abri: 550, 'ad-column': 120, 'bike-rack': 50, urinal: 15 };
 export const CENTRE_TILE_MAX_BYTES = 64 * 1024;
 
 function main(): void {
