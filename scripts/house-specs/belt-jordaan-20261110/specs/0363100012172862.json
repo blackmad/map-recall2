@@ -1,0 +1,268 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012172862",
+ "address": "Bloemgracht 20",
+ "design": {
+  "fronts": [
+   {
+    "id": "front0",
+    "basement": "none",
+    "cornice": "bracketed",
+    "windows": "sash",
+    "windowSurround": "full-frame",
+    "hoist": false,
+    "street": "Bloemgracht",
+    "gable": "cornice",
+    "storeys": 3,
+    "bays": 3,
+    "storeyHeights": [
+     4.2,
+     3.4,
+     3.4
+    ],
+    "doorBay": 0,
+    "windowProportion": "tall",
+    "bands": "speklagen",
+    "speklagen": {
+     "spacing": 5,
+     "courses": 2
+    },
+    "windowHead": {
+     "kind": "segmental",
+     "storeys": [
+      2
+     ],
+     "archRing": {
+      "colour": "stone",
+      "style": "solid",
+      "keystone": true
+     }
+    },
+    "groundFront": {
+     "kind": "arcade",
+     "bays": [
+      "door",
+      "window",
+      "window"
+     ],
+     "colour": "#e4dcc4",
+     "evidence": "strip 2023-03-13: white stone pilasters and beam over the ground storey"
+    },
+    "roofFront": "mansard",
+    "dormers": 1,
+    "dormerStyle": "pediment",
+    "dormerBody": "stone",
+    "dormerAt": [
+     {
+      "from": 0.38,
+      "to": 0.62
+     }
+    ]
+   }
+  ],
+  "roof": {
+   "material": "slate"
+  },
+  "palette": {
+   "frame": "white-painted",
+   "door": "#26302a",
+   "stone": "#ebe8df",
+   "cornice": "#ebe8df",
+   "stoneMaterial": "painted",
+   "brick": "#594f46",
+   "wallMaterial": "brick"
+  }
+ },
+ "provenance": {
+  "fronts/0/id": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 1013-1328 px): an eclectic front (c. 1880) of three axes: a white stone ground pui with pilasters 0-4.0 m; storey 1 windows 4.3-6.6 m under white pediment hoods; storey 2 windows 7.8-9.9 m under white round-arched archivolts; white banded rustication on the piers; a cornice at ~11.2 m, a slate mansard with a central white dormer (pediment and finial) to ~14 m; red-brown brick #594f46",
+   "at": "2023-03-13"
+  },
+  "fronts/0/basement": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 1013-1328 px): an eclectic front (c. 1880) of three axes: a white stone ground pui with pilasters 0-4.0 m; storey 1 windows 4.3-6.6 m under white pediment hoods; storey 2 windows 7.8-9.9 m under white round-arched archivolts; white banded rustication on the piers; a cornice at ~11.2 m, a slate mansard with a central white dormer (pediment and finial) to ~14 m; red-brown brick #594f46 (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/cornice": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 1013-1328 px): an eclectic front (c. 1880) of three axes: a white stone ground pui with pilasters 0-4.0 m; storey 1 windows 4.3-6.6 m under white pediment hoods; storey 2 windows 7.8-9.9 m under white round-arched archivolts; white banded rustication on the piers; a cornice at ~11.2 m, a slate mansard with a central white dormer (pediment and finial) to ~14 m; red-brown brick #594f46",
+   "at": "2023-03-13"
+  },
+  "fronts/0/windows": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 1013-1328 px): an eclectic front (c. 1880) of three axes: a white stone ground pui with pilasters 0-4.0 m; storey 1 windows 4.3-6.6 m under white pediment hoods; storey 2 windows 7.8-9.9 m under white round-arched archivolts; white banded rustication on the piers; a cornice at ~11.2 m, a slate mansard with a central white dormer (pediment and finial) to ~14 m; red-brown brick #594f46",
+   "at": "2023-03-13"
+  },
+  "fronts/0/windowSurround": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 1013-1328 px): an eclectic front (c. 1880) of three axes: a white stone ground pui with pilasters 0-4.0 m; storey 1 windows 4.3-6.6 m under white pediment hoods; storey 2 windows 7.8-9.9 m under white round-arched archivolts; white banded rustication on the piers; a cornice at ~11.2 m, a slate mansard with a central white dormer (pediment and finial) to ~14 m; red-brown brick #594f46",
+   "at": "2023-03-13"
+  },
+  "fronts/0/hoist": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 1013-1328 px): an eclectic front (c. 1880) of three axes: a white stone ground pui with pilasters 0-4.0 m; storey 1 windows 4.3-6.6 m under white pediment hoods; storey 2 windows 7.8-9.9 m under white round-arched archivolts; white banded rustication on the piers; a cornice at ~11.2 m, a slate mansard with a central white dormer (pediment and finial) to ~14 m; red-brown brick #594f46 (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/street": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 1013-1328 px): an eclectic front (c. 1880) of three axes: a white stone ground pui with pilasters 0-4.0 m; storey 1 windows 4.3-6.6 m under white pediment hoods; storey 2 windows 7.8-9.9 m under white round-arched archivolts; white banded rustication on the piers; a cornice at ~11.2 m, a slate mansard with a central white dormer (pediment and finial) to ~14 m; red-brown brick #594f46",
+   "at": "2023-03-13"
+  },
+  "fronts/0/gable": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 1013-1328 px): an eclectic front (c. 1880) of three axes: a white stone ground pui with pilasters 0-4.0 m; storey 1 windows 4.3-6.6 m under white pediment hoods; storey 2 windows 7.8-9.9 m under white round-arched archivolts; white banded rustication on the piers; a cornice at ~11.2 m, a slate mansard with a central white dormer (pediment and finial) to ~14 m; red-brown brick #594f46",
+   "at": "2023-03-13"
+  },
+  "fronts/0/storeys": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 1013-1328 px): an eclectic front (c. 1880) of three axes: a white stone ground pui with pilasters 0-4.0 m; storey 1 windows 4.3-6.6 m under white pediment hoods; storey 2 windows 7.8-9.9 m under white round-arched archivolts; white banded rustication on the piers; a cornice at ~11.2 m, a slate mansard with a central white dormer (pediment and finial) to ~14 m; red-brown brick #594f46",
+   "at": "2023-03-13"
+  },
+  "fronts/0/bays": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 1013-1328 px): an eclectic front (c. 1880) of three axes: a white stone ground pui with pilasters 0-4.0 m; storey 1 windows 4.3-6.6 m under white pediment hoods; storey 2 windows 7.8-9.9 m under white round-arched archivolts; white banded rustication on the piers; a cornice at ~11.2 m, a slate mansard with a central white dormer (pediment and finial) to ~14 m; red-brown brick #594f46",
+   "at": "2023-03-13"
+  },
+  "fronts/0/storeyHeights": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 1013-1328 px): an eclectic front (c. 1880) of three axes: a white stone ground pui with pilasters 0-4.0 m; storey 1 windows 4.3-6.6 m under white pediment hoods; storey 2 windows 7.8-9.9 m under white round-arched archivolts; white banded rustication on the piers; a cornice at ~11.2 m, a slate mansard with a central white dormer (pediment and finial) to ~14 m; red-brown brick #594f46",
+   "at": "2023-03-13"
+  },
+  "fronts/0/doorBay": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 1013-1328 px): an eclectic front (c. 1880) of three axes: a white stone ground pui with pilasters 0-4.0 m; storey 1 windows 4.3-6.6 m under white pediment hoods; storey 2 windows 7.8-9.9 m under white round-arched archivolts; white banded rustication on the piers; a cornice at ~11.2 m, a slate mansard with a central white dormer (pediment and finial) to ~14 m; red-brown brick #594f46",
+   "at": "2023-03-13"
+  },
+  "fronts/0/windowProportion": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 1013-1328 px): an eclectic front (c. 1880) of three axes: a white stone ground pui with pilasters 0-4.0 m; storey 1 windows 4.3-6.6 m under white pediment hoods; storey 2 windows 7.8-9.9 m under white round-arched archivolts; white banded rustication on the piers; a cornice at ~11.2 m, a slate mansard with a central white dormer (pediment and finial) to ~14 m; red-brown brick #594f46",
+   "at": "2023-03-13"
+  },
+  "fronts/0/bands": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 1013-1328 px): an eclectic front (c. 1880) of three axes: a white stone ground pui with pilasters 0-4.0 m; storey 1 windows 4.3-6.6 m under white pediment hoods; storey 2 windows 7.8-9.9 m under white round-arched archivolts; white banded rustication on the piers; a cornice at ~11.2 m, a slate mansard with a central white dormer (pediment and finial) to ~14 m; red-brown brick #594f46",
+   "at": "2023-03-13"
+  },
+  "fronts/0/speklagen": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 1013-1328 px): an eclectic front (c. 1880) of three axes: a white stone ground pui with pilasters 0-4.0 m; storey 1 windows 4.3-6.6 m under white pediment hoods; storey 2 windows 7.8-9.9 m under white round-arched archivolts; white banded rustication on the piers; a cornice at ~11.2 m, a slate mansard with a central white dormer (pediment and finial) to ~14 m; red-brown brick #594f46",
+   "at": "2023-03-13"
+  },
+  "fronts/0/windowHead": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 1013-1328 px): an eclectic front (c. 1880) of three axes: a white stone ground pui with pilasters 0-4.0 m; storey 1 windows 4.3-6.6 m under white pediment hoods; storey 2 windows 7.8-9.9 m under white round-arched archivolts; white banded rustication on the piers; a cornice at ~11.2 m, a slate mansard with a central white dormer (pediment and finial) to ~14 m; red-brown brick #594f46",
+   "at": "2023-03-13"
+  },
+  "fronts/0/groundFront": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 1013-1328 px): an eclectic front (c. 1880) of three axes: a white stone ground pui with pilasters 0-4.0 m; storey 1 windows 4.3-6.6 m under white pediment hoods; storey 2 windows 7.8-9.9 m under white round-arched archivolts; white banded rustication on the piers; a cornice at ~11.2 m, a slate mansard with a central white dormer (pediment and finial) to ~14 m; red-brown brick #594f46",
+   "at": "2023-03-13"
+  },
+  "fronts/0/roofFront": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 1013-1328 px): an eclectic front (c. 1880) of three axes: a white stone ground pui with pilasters 0-4.0 m; storey 1 windows 4.3-6.6 m under white pediment hoods; storey 2 windows 7.8-9.9 m under white round-arched archivolts; white banded rustication on the piers; a cornice at ~11.2 m, a slate mansard with a central white dormer (pediment and finial) to ~14 m; red-brown brick #594f46",
+   "at": "2023-03-13"
+  },
+  "fronts/0/dormers": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 1013-1328 px): an eclectic front (c. 1880) of three axes: a white stone ground pui with pilasters 0-4.0 m; storey 1 windows 4.3-6.6 m under white pediment hoods; storey 2 windows 7.8-9.9 m under white round-arched archivolts; white banded rustication on the piers; a cornice at ~11.2 m, a slate mansard with a central white dormer (pediment and finial) to ~14 m; red-brown brick #594f46",
+   "at": "2023-03-13"
+  },
+  "fronts/0/dormerStyle": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 1013-1328 px): an eclectic front (c. 1880) of three axes: a white stone ground pui with pilasters 0-4.0 m; storey 1 windows 4.3-6.6 m under white pediment hoods; storey 2 windows 7.8-9.9 m under white round-arched archivolts; white banded rustication on the piers; a cornice at ~11.2 m, a slate mansard with a central white dormer (pediment and finial) to ~14 m; red-brown brick #594f46",
+   "at": "2023-03-13"
+  },
+  "fronts/0/dormerBody": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 1013-1328 px): an eclectic front (c. 1880) of three axes: a white stone ground pui with pilasters 0-4.0 m; storey 1 windows 4.3-6.6 m under white pediment hoods; storey 2 windows 7.8-9.9 m under white round-arched archivolts; white banded rustication on the piers; a cornice at ~11.2 m, a slate mansard with a central white dormer (pediment and finial) to ~14 m; red-brown brick #594f46",
+   "at": "2023-03-13"
+  },
+  "fronts/0/dormerAt": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 1013-1328 px): an eclectic front (c. 1880) of three axes: a white stone ground pui with pilasters 0-4.0 m; storey 1 windows 4.3-6.6 m under white pediment hoods; storey 2 windows 7.8-9.9 m under white round-arched archivolts; white banded rustication on the piers; a cornice at ~11.2 m, a slate mansard with a central white dormer (pediment and finial) to ~14 m; red-brown brick #594f46",
+   "at": "2023-03-13"
+  },
+  "roof/material": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 1013-1328 px): an eclectic front (c. 1880) of three axes: a white stone ground pui with pilasters 0-4.0 m; storey 1 windows 4.3-6.6 m under white pediment hoods; storey 2 windows 7.8-9.9 m under white round-arched archivolts; white banded rustication on the piers; a cornice at ~11.2 m, a slate mansard with a central white dormer (pediment and finial) to ~14 m; red-brown brick #594f46",
+   "at": "2023-03-13"
+  },
+  "palette/frame": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 1013-1328 px): an eclectic front (c. 1880) of three axes: a white stone ground pui with pilasters 0-4.0 m; storey 1 windows 4.3-6.6 m under white pediment hoods; storey 2 windows 7.8-9.9 m under white round-arched archivolts; white banded rustication on the piers; a cornice at ~11.2 m, a slate mansard with a central white dormer (pediment and finial) to ~14 m; red-brown brick #594f46 (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/door": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 1013-1328 px): an eclectic front (c. 1880) of three axes: a white stone ground pui with pilasters 0-4.0 m; storey 1 windows 4.3-6.6 m under white pediment hoods; storey 2 windows 7.8-9.9 m under white round-arched archivolts; white banded rustication on the piers; a cornice at ~11.2 m, a slate mansard with a central white dormer (pediment and finial) to ~14 m; red-brown brick #594f46 (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/stone": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 1013-1328 px): an eclectic front (c. 1880) of three axes: a white stone ground pui with pilasters 0-4.0 m; storey 1 windows 4.3-6.6 m under white pediment hoods; storey 2 windows 7.8-9.9 m under white round-arched archivolts; white banded rustication on the piers; a cornice at ~11.2 m, a slate mansard with a central white dormer (pediment and finial) to ~14 m; red-brown brick #594f46 (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/cornice": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 1013-1328 px): an eclectic front (c. 1880) of three axes: a white stone ground pui with pilasters 0-4.0 m; storey 1 windows 4.3-6.6 m under white pediment hoods; storey 2 windows 7.8-9.9 m under white round-arched archivolts; white banded rustication on the piers; a cornice at ~11.2 m, a slate mansard with a central white dormer (pediment and finial) to ~14 m; red-brown brick #594f46 (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/stoneMaterial": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 1013-1328 px): an eclectic front (c. 1880) of three axes: a white stone ground pui with pilasters 0-4.0 m; storey 1 windows 4.3-6.6 m under white pediment hoods; storey 2 windows 7.8-9.9 m under white round-arched archivolts; white banded rustication on the piers; a cornice at ~11.2 m, a slate mansard with a central white dormer (pediment and finial) to ~14 m; red-brown brick #594f46 (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/brick": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 1013-1328 px): an eclectic front (c. 1880) of three axes: a white stone ground pui with pilasters 0-4.0 m; storey 1 windows 4.3-6.6 m under white pediment hoods; storey 2 windows 7.8-9.9 m under white round-arched archivolts; white banded rustication on the piers; a cornice at ~11.2 m, a slate mansard with a central white dormer (pediment and finial) to ~14 m; red-brown brick #594f46",
+   "at": "2023-03-13"
+  },
+  "palette/wallMaterial": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 1013-1328 px): an eclectic front (c. 1880) of three axes: a white stone ground pui with pilasters 0-4.0 m; storey 1 windows 4.3-6.6 m under white pediment hoods; storey 2 windows 7.8-9.9 m under white round-arched archivolts; white banded rustication on the piers; a cornice at ~11.2 m, a slate mansard with a central white dormer (pediment and finial) to ~14 m; red-brown brick #594f46",
+   "at": "2023-03-13"
+  }
+ },
+ "schemaLimits": [
+  {
+   "component": "window surround",
+   "what": "pediment hoods over the storey-1 windows are drawn as full frames"
+  },
+  {
+   "component": "wall",
+   "what": "the white bands are on the piers only (rustication), drawn as speklagen across the wall"
+  }
+ ]
+}

@@ -1,0 +1,200 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012168709",
+ "address": "Bloemgracht 16",
+ "design": {
+  "fronts": [
+   {
+    "id": "front0",
+    "basement": "none",
+    "cornice": "simple",
+    "windows": "sash",
+    "windowSurround": "sill",
+    "hoist": false,
+    "street": "Bloemgracht",
+    "gable": "cornice",
+    "storeys": 4,
+    "bays": 3,
+    "storeyHeights": [
+     4.4,
+     2.8,
+     2.8,
+     2.6
+    ],
+    "doorBay": 0,
+    "roofFront": "mansard",
+    "dormers": 2,
+    "dormerStyle": "plain",
+    "dormerBody": "stone"
+   }
+  ],
+  "roof": {
+   "material": "slate"
+  },
+  "palette": {
+   "frame": "white-painted",
+   "door": "#26302a",
+   "stone": "#ebe8df",
+   "cornice": "#ebe8df",
+   "stoneMaterial": "painted",
+   "brick": "#4b403b",
+   "wallMaterial": "brick"
+  }
+ },
+ "provenance": {
+  "fronts/0/id": {
+   "source": "author",
+   "confidence": 0.75,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 1521-1689 px): three axes: ground 0-4.0 m with the door left and a wide segmental-arched window with a lattice fanlight; storeys at 5.0-6.9, 7.9-9.8 and 10.6-12.2 m with iron balconettes on the middle axis; a white cornice 12.4-13.0 m; a slate mansard with dormers to ~15.8 m; red-brown brick #4b403b",
+   "at": "2023-03-13"
+  },
+  "fronts/0/basement": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 1521-1689 px): three axes: ground 0-4.0 m with the door left and a wide segmental-arched window with a lattice fanlight; storeys at 5.0-6.9, 7.9-9.8 and 10.6-12.2 m with iron balconettes on the middle axis; a white cornice 12.4-13.0 m; a slate mansard with dormers to ~15.8 m; red-brown brick #4b403b (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/cornice": {
+   "source": "author",
+   "confidence": 0.75,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 1521-1689 px): three axes: ground 0-4.0 m with the door left and a wide segmental-arched window with a lattice fanlight; storeys at 5.0-6.9, 7.9-9.8 and 10.6-12.2 m with iron balconettes on the middle axis; a white cornice 12.4-13.0 m; a slate mansard with dormers to ~15.8 m; red-brown brick #4b403b",
+   "at": "2023-03-13"
+  },
+  "fronts/0/windows": {
+   "source": "author",
+   "confidence": 0.75,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 1521-1689 px): three axes: ground 0-4.0 m with the door left and a wide segmental-arched window with a lattice fanlight; storeys at 5.0-6.9, 7.9-9.8 and 10.6-12.2 m with iron balconettes on the middle axis; a white cornice 12.4-13.0 m; a slate mansard with dormers to ~15.8 m; red-brown brick #4b403b",
+   "at": "2023-03-13"
+  },
+  "fronts/0/windowSurround": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 1521-1689 px): three axes: ground 0-4.0 m with the door left and a wide segmental-arched window with a lattice fanlight; storeys at 5.0-6.9, 7.9-9.8 and 10.6-12.2 m with iron balconettes on the middle axis; a white cornice 12.4-13.0 m; a slate mansard with dormers to ~15.8 m; red-brown brick #4b403b (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/hoist": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 1521-1689 px): three axes: ground 0-4.0 m with the door left and a wide segmental-arched window with a lattice fanlight; storeys at 5.0-6.9, 7.9-9.8 and 10.6-12.2 m with iron balconettes on the middle axis; a white cornice 12.4-13.0 m; a slate mansard with dormers to ~15.8 m; red-brown brick #4b403b (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/street": {
+   "source": "author",
+   "confidence": 0.75,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 1521-1689 px): three axes: ground 0-4.0 m with the door left and a wide segmental-arched window with a lattice fanlight; storeys at 5.0-6.9, 7.9-9.8 and 10.6-12.2 m with iron balconettes on the middle axis; a white cornice 12.4-13.0 m; a slate mansard with dormers to ~15.8 m; red-brown brick #4b403b",
+   "at": "2023-03-13"
+  },
+  "fronts/0/gable": {
+   "source": "author",
+   "confidence": 0.75,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 1521-1689 px): three axes: ground 0-4.0 m with the door left and a wide segmental-arched window with a lattice fanlight; storeys at 5.0-6.9, 7.9-9.8 and 10.6-12.2 m with iron balconettes on the middle axis; a white cornice 12.4-13.0 m; a slate mansard with dormers to ~15.8 m; red-brown brick #4b403b",
+   "at": "2023-03-13"
+  },
+  "fronts/0/storeys": {
+   "source": "author",
+   "confidence": 0.75,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 1521-1689 px): three axes: ground 0-4.0 m with the door left and a wide segmental-arched window with a lattice fanlight; storeys at 5.0-6.9, 7.9-9.8 and 10.6-12.2 m with iron balconettes on the middle axis; a white cornice 12.4-13.0 m; a slate mansard with dormers to ~15.8 m; red-brown brick #4b403b",
+   "at": "2023-03-13"
+  },
+  "fronts/0/bays": {
+   "source": "author",
+   "confidence": 0.75,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 1521-1689 px): three axes: ground 0-4.0 m with the door left and a wide segmental-arched window with a lattice fanlight; storeys at 5.0-6.9, 7.9-9.8 and 10.6-12.2 m with iron balconettes on the middle axis; a white cornice 12.4-13.0 m; a slate mansard with dormers to ~15.8 m; red-brown brick #4b403b",
+   "at": "2023-03-13"
+  },
+  "fronts/0/storeyHeights": {
+   "source": "author",
+   "confidence": 0.75,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 1521-1689 px): three axes: ground 0-4.0 m with the door left and a wide segmental-arched window with a lattice fanlight; storeys at 5.0-6.9, 7.9-9.8 and 10.6-12.2 m with iron balconettes on the middle axis; a white cornice 12.4-13.0 m; a slate mansard with dormers to ~15.8 m; red-brown brick #4b403b",
+   "at": "2023-03-13"
+  },
+  "fronts/0/doorBay": {
+   "source": "author",
+   "confidence": 0.75,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 1521-1689 px): three axes: ground 0-4.0 m with the door left and a wide segmental-arched window with a lattice fanlight; storeys at 5.0-6.9, 7.9-9.8 and 10.6-12.2 m with iron balconettes on the middle axis; a white cornice 12.4-13.0 m; a slate mansard with dormers to ~15.8 m; red-brown brick #4b403b",
+   "at": "2023-03-13"
+  },
+  "fronts/0/roofFront": {
+   "source": "author",
+   "confidence": 0.75,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 1521-1689 px): three axes: ground 0-4.0 m with the door left and a wide segmental-arched window with a lattice fanlight; storeys at 5.0-6.9, 7.9-9.8 and 10.6-12.2 m with iron balconettes on the middle axis; a white cornice 12.4-13.0 m; a slate mansard with dormers to ~15.8 m; red-brown brick #4b403b",
+   "at": "2023-03-13"
+  },
+  "fronts/0/dormers": {
+   "source": "author",
+   "confidence": 0.75,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 1521-1689 px): three axes: ground 0-4.0 m with the door left and a wide segmental-arched window with a lattice fanlight; storeys at 5.0-6.9, 7.9-9.8 and 10.6-12.2 m with iron balconettes on the middle axis; a white cornice 12.4-13.0 m; a slate mansard with dormers to ~15.8 m; red-brown brick #4b403b",
+   "at": "2023-03-13"
+  },
+  "fronts/0/dormerStyle": {
+   "source": "author",
+   "confidence": 0.75,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 1521-1689 px): three axes: ground 0-4.0 m with the door left and a wide segmental-arched window with a lattice fanlight; storeys at 5.0-6.9, 7.9-9.8 and 10.6-12.2 m with iron balconettes on the middle axis; a white cornice 12.4-13.0 m; a slate mansard with dormers to ~15.8 m; red-brown brick #4b403b",
+   "at": "2023-03-13"
+  },
+  "fronts/0/dormerBody": {
+   "source": "author",
+   "confidence": 0.75,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 1521-1689 px): three axes: ground 0-4.0 m with the door left and a wide segmental-arched window with a lattice fanlight; storeys at 5.0-6.9, 7.9-9.8 and 10.6-12.2 m with iron balconettes on the middle axis; a white cornice 12.4-13.0 m; a slate mansard with dormers to ~15.8 m; red-brown brick #4b403b",
+   "at": "2023-03-13"
+  },
+  "roof/material": {
+   "source": "author",
+   "confidence": 0.75,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 1521-1689 px): three axes: ground 0-4.0 m with the door left and a wide segmental-arched window with a lattice fanlight; storeys at 5.0-6.9, 7.9-9.8 and 10.6-12.2 m with iron balconettes on the middle axis; a white cornice 12.4-13.0 m; a slate mansard with dormers to ~15.8 m; red-brown brick #4b403b",
+   "at": "2023-03-13"
+  },
+  "palette/frame": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 1521-1689 px): three axes: ground 0-4.0 m with the door left and a wide segmental-arched window with a lattice fanlight; storeys at 5.0-6.9, 7.9-9.8 and 10.6-12.2 m with iron balconettes on the middle axis; a white cornice 12.4-13.0 m; a slate mansard with dormers to ~15.8 m; red-brown brick #4b403b (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/door": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 1521-1689 px): three axes: ground 0-4.0 m with the door left and a wide segmental-arched window with a lattice fanlight; storeys at 5.0-6.9, 7.9-9.8 and 10.6-12.2 m with iron balconettes on the middle axis; a white cornice 12.4-13.0 m; a slate mansard with dormers to ~15.8 m; red-brown brick #4b403b (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/stone": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 1521-1689 px): three axes: ground 0-4.0 m with the door left and a wide segmental-arched window with a lattice fanlight; storeys at 5.0-6.9, 7.9-9.8 and 10.6-12.2 m with iron balconettes on the middle axis; a white cornice 12.4-13.0 m; a slate mansard with dormers to ~15.8 m; red-brown brick #4b403b (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/cornice": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 1521-1689 px): three axes: ground 0-4.0 m with the door left and a wide segmental-arched window with a lattice fanlight; storeys at 5.0-6.9, 7.9-9.8 and 10.6-12.2 m with iron balconettes on the middle axis; a white cornice 12.4-13.0 m; a slate mansard with dormers to ~15.8 m; red-brown brick #4b403b (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/stoneMaterial": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 1521-1689 px): three axes: ground 0-4.0 m with the door left and a wide segmental-arched window with a lattice fanlight; storeys at 5.0-6.9, 7.9-9.8 and 10.6-12.2 m with iron balconettes on the middle axis; a white cornice 12.4-13.0 m; a slate mansard with dormers to ~15.8 m; red-brown brick #4b403b (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/brick": {
+   "source": "author",
+   "confidence": 0.75,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 1521-1689 px): three axes: ground 0-4.0 m with the door left and a wide segmental-arched window with a lattice fanlight; storeys at 5.0-6.9, 7.9-9.8 and 10.6-12.2 m with iron balconettes on the middle axis; a white cornice 12.4-13.0 m; a slate mansard with dormers to ~15.8 m; red-brown brick #4b403b",
+   "at": "2023-03-13"
+  },
+  "palette/wallMaterial": {
+   "source": "author",
+   "confidence": 0.75,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 1521-1689 px): three axes: ground 0-4.0 m with the door left and a wide segmental-arched window with a lattice fanlight; storeys at 5.0-6.9, 7.9-9.8 and 10.6-12.2 m with iron balconettes on the middle axis; a white cornice 12.4-13.0 m; a slate mansard with dormers to ~15.8 m; red-brown brick #4b403b",
+   "at": "2023-03-13"
+  }
+ },
+ "schemaLimits": [
+  {
+   "component": "ground storey",
+   "what": "the wide segmental-arched ground window with a lattice fanlight is drawn square"
+  },
+  {
+   "component": "balcony",
+   "what": "iron balconettes on the middle axis are not drawn"
+  }
+ ]
+}

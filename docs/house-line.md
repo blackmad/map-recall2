@@ -795,17 +795,25 @@ This is the seed of lane H11 (apply the design fields in the spec route, or reti
 
 **Kit components added (belt-haarlemmer).**
 - `FrontIntent.eavesHeight` (metres above the pand's ground; named without the `M` suffix like `crownRise`, the intent contract scan
-  rejects `*M` keys): a photo-measured eaves line, applied by `blockFace/houseFrontRoof.ts` `withMeasuredEaves` as
+  rejects `*M` keys): a photo-measured eaves line, applied by `buildingRecipe/houseFrontRoof.ts` `withMeasuredEaves` as
   `facts.measuredEavesM[front.id]` when the facts carry none. Absent = the same facts object. Without it a cornice or gable front
   reads 3DBAG's 10th-percentile roof edge, the rear roof (Haarlemmerdijk 6: 8.9 m against an 11.0 m cornice). Block faces already
   carried this as `continuity.measuredEaves`; a lone house had no way to say it.
 - `roof.form` and `roof.source: 'front'` on a canal-house intent compiled alone: `withFrontRoof` runs the block faces' front roof
   (`frontRoofSpecs` -> `recipeRoofFacts`) for the house, so 3DBAG keeps the footprint and an upper bound only. Typed, tested in
-  `blockFace/houseFrontRoof.test.ts` (Haarlemmerdijk 6 pinned: roof top <= the 11.0 m cornice + 0.3 m where 3DBAG stands 11.8 m), and
+  `blockFace/houseFrontRoof.test.ts` (module now `buildingRecipe/houseFrontRoof.ts`; Haarlemmerdijk 6 pinned: roof top <= the 11.0 m cornice + 0.3 m where 3DBAG stands 11.8 m), and
   byte-identical when absent: `test:fit-golden` "all 207 house recipes identical" (no committed house carries either field).
 - `buildingRecipe/gates.ts`: with `facts.measuredEavesM` the `eaves-vs-3dbag` gate compares the model to the measured line, and `ridge-vs-3dbag`
   lets the roof reach it (a cornice top over a parapet stands above 3DBAG's roof edge: Haarlemmerdijk 16, 11.6 m against a 10.4 m roof max), and a
   front-derived roof (`roofSource`) may stand under 3DBAG's. Absent = the same gate (`fit-golden` unchanged for all 207 committed houses).
+- **One lone-house front roof (merged 2026-11-12, lane recipe-front-roof).** belt-jordaan (#366) wrote the same thing in parallel
+  (`roof.source: front`, `roof.hip`; Bloemgracht 7). Both now live in `buildingRecipe/houseFrontRoof.ts`: `wantsFrontRoof` = `source:
+  front`, a front `hip` or a forced `form` (never `3dbag`); `houseFrontRoofFacts`/`withFrontRoof` apply `withMeasuredEaves`, then
+  `pandRoofFacts`, the block face's own per-pand roof builder (moved out of `blockFace/compile.ts`), so a lone house also gets cross
+  gables and the roof falling to a corner's side fronts. `ridge-vs-3dbag` is one gate: measured eaves lift the upper bound; a
+  `roofSource.kind: front` roof stays under the crown line (or measured eaves) + 0.3 m and under 3DBAG / the measured line + 0.3 m,
+  never under the front eaves; a `recipe` roof under LoD2.2 max + 0.5 m. FH pin: Frederik Hendrikstraat 142 (0363100012152966, rise
+  0.25, pitch 45) tops out at 14.27 m, 3DBAG 17.16 m (`houseFrontRoofFH.test.ts`).
 
 **Frames and the staged world (lane belt-haarlemmer, batch 1, 2026-11-10).** `house:publish` in the lane worktree installed 8 of 9 recipe
 GLBs (131, 0363100012173479, is held: `open-edges` 3 edges / 5.2 m, independent of eaves, roof form, crown cap, windows and door) and a full
@@ -1596,6 +1604,41 @@ triangles.
 
 On the generic path the painted door is not raised, so the landing covers its lower part.
 
+### Front roofs on the recipe route (belt-jordaan, #366, 2026-11-10)
+
+`roof.source: front` and `roof.hip` used to work only in the block-face compile (`blockFace/compile.ts`
+`roofSourceFor`). A HouseSpec on the recipe route compiles as a single house (`compileBuilding`), so it kept the 3DBAG
+roof. On Bloemgracht 7 (0363100012173342) that drew a 3DBAG saddle triangle over the frieze, where the photo shows
+only a dormer and a low slate slope behind the cornice.
+
+`buildingRecipe/houseFrontRoof.ts` now gives a single house the same front forms as the face, before the fit. The
+form logic is `frontRoofSpecs`, moved to `blockFace/frontRoofSpecs.ts` and re-exported from `compile.ts`; the roof
+pieces come from `recipeRoofFacts`:
+
+- a saddle under a gable's crown;
+- an attic face behind a dormered or plain cornice (`roof.rise` × the top storey);
+- flat with `roof.form: 'flat'`.
+
+**When it runs:**
+
+- Opt-in: a house without `source: front` or `hip` gets back the same facts object.
+- It skips facts that a face already roofed (`facts.roofSource`), so a face pand is not roofed twice.
+- `test:fit-golden` reported all 207 house recipes identical, `block-face/roof-golden.ts` 0 violations, and
+  `houseFrontRoof.test.ts` passes.
+
+**Gate (2026-11-12).** The single-house `ridge-vs-3dbag` gate (`buildingRecipe/gates.ts`) now bounds a roofed house
+(`facts.roofSource`) the way the face's `height-vs-3dbag` does: under the crown line + 0.3 m (dormers +1.9 m) and not
+under the front eaves. Before this, 16 of the 24 Bloemgracht batch-1 houses failed because their front roofs stood
+0.4–3.5 m under the 3DBAG ridge, which is what the front roof is for. Houses without `roofSource` are unchanged
+(fit-golden: all identical).
+
+**Open: dormer top.** A pediment or plain dormer in front of an attic face leaves a ~1 m square open at its top
+(4 edges, 3.6–4.5 m): `open-edges` on 12 of 24 Bloemgracht houses. It also happens without the front roof (3DBAG roof),
+and disappears without the dormer.
+
+**What a lone house cannot know:** the cornice group's shared attic line, the row ridge, photo `frontRoof` hints, and
+the roof falling to a corner pand's side fronts. For those, type the pand on a block face.
+
 ## §5 The kit-gap queue
 
 Stub (lane H6): `kit-gaps.ts` aggregates `schemaLimits` by `component`; the horizon rule.
@@ -1907,6 +1950,16 @@ worker, whose `location.search` is its own script URL: a flag it reads must be i
 withWorkerFlags`; `brickLift` was not, so `?brickLift=v1` changed nothing on the generic houses), and the pand's guard
 (`game.json drawn.heldBrick`). `scripts/house-frames/trace-wall.ts <ids>` prints the Node side of the same path
 (spec reading, decorated wall, mesher wall) under `SPEC_WALLS` / `BRICK_LIFT`.
+
+**Belt pose rule (2026-11-10).** Take winter captures first, then the squarest view under 30°. Use 45° or more only as a
+second view. Two options support this, and neither changes the default pick:
+
+- `--prefer-obliquity 30`: within a season, captures that see the wall within that many degrees of square come first,
+  squarest first. This happens before the foliage order.
+- `notPanos`: a `--list` entry can carry `"notPanos": ["<panoId>"]`, which skips those captures. Use it to re-pick a
+  pose flagged `otherBuilding`.
+
+Example: `--season winter --prefer-obliquity 30`.
 
 Output per pand (or per `key` of a `--list` entry): `<out>/<key>/{photo.jpg, game.png, pair.jpg, pose.json}`; per six pairs
 `<out>/contact-N.jpg` (left: the panorama cut, right: the game, cyan: the BAG wall outline, a three-line caption); and

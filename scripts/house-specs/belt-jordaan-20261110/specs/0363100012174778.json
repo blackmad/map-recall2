@@ -1,0 +1,222 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012174778",
+ "address": "Egelantiersgracht 9",
+ "design": {
+  "fronts": [
+   {
+    "id": "front0",
+    "basement": "none",
+    "cornice": "none",
+    "windows": "sash",
+    "windowSurround": "sill",
+    "hoist": false,
+    "street": "Egelantiersgracht",
+    "gable": "neck",
+    "crownRise": 1.2,
+    "crownCap": "rounded",
+    "atticWindows": 1,
+    "storeys": 5,
+    "bays": 1,
+    "storeyHeights": [
+     4.6,
+     2.4,
+     2.4,
+     2.4,
+     2.5
+    ],
+    "doorBay": 0,
+    "bands": "storey"
+   }
+  ],
+  "roof": {
+   "material": "red-tile",
+   "source": "front",
+   "evidence": "strip: the roof behind the crown follows the front",
+   "squareSaddle": true
+  },
+  "palette": {
+   "frame": "white-painted",
+   "door": "#26302a",
+   "stone": "#ebe8df",
+   "cornice": "#ebe8df",
+   "stoneMaterial": "painted",
+   "brick": "#645956",
+   "wallMaterial": "brick"
+  }
+ },
+ "provenance": {
+  "fronts/0/id": {
+   "source": "author",
+   "confidence": 0.55,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): a very narrow one-axis front (~2 m) with white ornamented lintels: windows at ~3.0-4.3, 5.4-6.8, 7.2-8.4, 9.4-10.6 and 12.3-13.8 m; a neck gable 14.3-~17.5 m (blurred in the strip); brown brick #645956",
+   "at": "2023-03-13"
+  },
+  "fronts/0/basement": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): a very narrow one-axis front (~2 m) with white ornamented lintels: windows at ~3.0-4.3, 5.4-6.8, 7.2-8.4, 9.4-10.6 and 12.3-13.8 m; a neck gable 14.3-~17.5 m (blurred in the strip); brown brick #645956 (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/cornice": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): a very narrow one-axis front (~2 m) with white ornamented lintels: windows at ~3.0-4.3, 5.4-6.8, 7.2-8.4, 9.4-10.6 and 12.3-13.8 m; a neck gable 14.3-~17.5 m (blurred in the strip); brown brick #645956 (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/windows": {
+   "source": "author",
+   "confidence": 0.55,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): a very narrow one-axis front (~2 m) with white ornamented lintels: windows at ~3.0-4.3, 5.4-6.8, 7.2-8.4, 9.4-10.6 and 12.3-13.8 m; a neck gable 14.3-~17.5 m (blurred in the strip); brown brick #645956",
+   "at": "2023-03-13"
+  },
+  "fronts/0/windowSurround": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): a very narrow one-axis front (~2 m) with white ornamented lintels: windows at ~3.0-4.3, 5.4-6.8, 7.2-8.4, 9.4-10.6 and 12.3-13.8 m; a neck gable 14.3-~17.5 m (blurred in the strip); brown brick #645956 (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/hoist": {
+   "source": "author",
+   "confidence": 0.55,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): a very narrow one-axis front (~2 m) with white ornamented lintels: windows at ~3.0-4.3, 5.4-6.8, 7.2-8.4, 9.4-10.6 and 12.3-13.8 m; a neck gable 14.3-~17.5 m (blurred in the strip); brown brick #645956",
+   "at": "2023-03-13"
+  },
+  "fronts/0/street": {
+   "source": "author",
+   "confidence": 0.55,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): a very narrow one-axis front (~2 m) with white ornamented lintels: windows at ~3.0-4.3, 5.4-6.8, 7.2-8.4, 9.4-10.6 and 12.3-13.8 m; a neck gable 14.3-~17.5 m (blurred in the strip); brown brick #645956",
+   "at": "2023-03-13"
+  },
+  "fronts/0/gable": {
+   "source": "author",
+   "confidence": 0.55,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): a very narrow one-axis front (~2 m) with white ornamented lintels: windows at ~3.0-4.3, 5.4-6.8, 7.2-8.4, 9.4-10.6 and 12.3-13.8 m; a neck gable 14.3-~17.5 m (blurred in the strip); brown brick #645956",
+   "at": "2023-03-13"
+  },
+  "fronts/0/crownRise": {
+   "source": "author",
+   "confidence": 0.55,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): a very narrow one-axis front (~2 m) with white ornamented lintels: windows at ~3.0-4.3, 5.4-6.8, 7.2-8.4, 9.4-10.6 and 12.3-13.8 m; a neck gable 14.3-~17.5 m (blurred in the strip); brown brick #645956",
+   "at": "2023-03-13"
+  },
+  "fronts/0/crownCap": {
+   "source": "author",
+   "confidence": 0.55,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): a very narrow one-axis front (~2 m) with white ornamented lintels: windows at ~3.0-4.3, 5.4-6.8, 7.2-8.4, 9.4-10.6 and 12.3-13.8 m; a neck gable 14.3-~17.5 m (blurred in the strip); brown brick #645956",
+   "at": "2023-03-13"
+  },
+  "fronts/0/atticWindows": {
+   "source": "author",
+   "confidence": 0.55,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): a very narrow one-axis front (~2 m) with white ornamented lintels: windows at ~3.0-4.3, 5.4-6.8, 7.2-8.4, 9.4-10.6 and 12.3-13.8 m; a neck gable 14.3-~17.5 m (blurred in the strip); brown brick #645956",
+   "at": "2023-03-13"
+  },
+  "fronts/0/storeys": {
+   "source": "author",
+   "confidence": 0.55,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): a very narrow one-axis front (~2 m) with white ornamented lintels: windows at ~3.0-4.3, 5.4-6.8, 7.2-8.4, 9.4-10.6 and 12.3-13.8 m; a neck gable 14.3-~17.5 m (blurred in the strip); brown brick #645956",
+   "at": "2023-03-13"
+  },
+  "fronts/0/bays": {
+   "source": "author",
+   "confidence": 0.55,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): a very narrow one-axis front (~2 m) with white ornamented lintels: windows at ~3.0-4.3, 5.4-6.8, 7.2-8.4, 9.4-10.6 and 12.3-13.8 m; a neck gable 14.3-~17.5 m (blurred in the strip); brown brick #645956",
+   "at": "2023-03-13"
+  },
+  "fronts/0/storeyHeights": {
+   "source": "author",
+   "confidence": 0.55,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): a very narrow one-axis front (~2 m) with white ornamented lintels: windows at ~3.0-4.3, 5.4-6.8, 7.2-8.4, 9.4-10.6 and 12.3-13.8 m; a neck gable 14.3-~17.5 m (blurred in the strip); brown brick #645956",
+   "at": "2023-03-13"
+  },
+  "fronts/0/doorBay": {
+   "source": "author",
+   "confidence": 0.55,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): a very narrow one-axis front (~2 m) with white ornamented lintels: windows at ~3.0-4.3, 5.4-6.8, 7.2-8.4, 9.4-10.6 and 12.3-13.8 m; a neck gable 14.3-~17.5 m (blurred in the strip); brown brick #645956",
+   "at": "2023-03-13"
+  },
+  "fronts/0/bands": {
+   "source": "author",
+   "confidence": 0.55,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): a very narrow one-axis front (~2 m) with white ornamented lintels: windows at ~3.0-4.3, 5.4-6.8, 7.2-8.4, 9.4-10.6 and 12.3-13.8 m; a neck gable 14.3-~17.5 m (blurred in the strip); brown brick #645956",
+   "at": "2023-03-13"
+  },
+  "roof/material": {
+   "source": "author",
+   "confidence": 0.55,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): a very narrow one-axis front (~2 m) with white ornamented lintels: windows at ~3.0-4.3, 5.4-6.8, 7.2-8.4, 9.4-10.6 and 12.3-13.8 m; a neck gable 14.3-~17.5 m (blurred in the strip); brown brick #645956",
+   "at": "2023-03-13"
+  },
+  "roof/source": {
+   "source": "author",
+   "confidence": 0.55,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): a very narrow one-axis front (~2 m) with white ornamented lintels: windows at ~3.0-4.3, 5.4-6.8, 7.2-8.4, 9.4-10.6 and 12.3-13.8 m; a neck gable 14.3-~17.5 m (blurred in the strip); brown brick #645956",
+   "at": "2023-03-13"
+  },
+  "roof/evidence": {
+   "source": "author",
+   "confidence": 0.55,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): a very narrow one-axis front (~2 m) with white ornamented lintels: windows at ~3.0-4.3, 5.4-6.8, 7.2-8.4, 9.4-10.6 and 12.3-13.8 m; a neck gable 14.3-~17.5 m (blurred in the strip); brown brick #645956",
+   "at": "2023-03-13"
+  },
+  "roof/squareSaddle": {
+   "source": "author",
+   "confidence": 0.55,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): a very narrow one-axis front (~2 m) with white ornamented lintels: windows at ~3.0-4.3, 5.4-6.8, 7.2-8.4, 9.4-10.6 and 12.3-13.8 m; a neck gable 14.3-~17.5 m (blurred in the strip); brown brick #645956",
+   "at": "2023-03-13"
+  },
+  "palette/frame": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): a very narrow one-axis front (~2 m) with white ornamented lintels: windows at ~3.0-4.3, 5.4-6.8, 7.2-8.4, 9.4-10.6 and 12.3-13.8 m; a neck gable 14.3-~17.5 m (blurred in the strip); brown brick #645956 (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/door": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): a very narrow one-axis front (~2 m) with white ornamented lintels: windows at ~3.0-4.3, 5.4-6.8, 7.2-8.4, 9.4-10.6 and 12.3-13.8 m; a neck gable 14.3-~17.5 m (blurred in the strip); brown brick #645956 (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/stone": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): a very narrow one-axis front (~2 m) with white ornamented lintels: windows at ~3.0-4.3, 5.4-6.8, 7.2-8.4, 9.4-10.6 and 12.3-13.8 m; a neck gable 14.3-~17.5 m (blurred in the strip); brown brick #645956 (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/cornice": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): a very narrow one-axis front (~2 m) with white ornamented lintels: windows at ~3.0-4.3, 5.4-6.8, 7.2-8.4, 9.4-10.6 and 12.3-13.8 m; a neck gable 14.3-~17.5 m (blurred in the strip); brown brick #645956 (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/stoneMaterial": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): a very narrow one-axis front (~2 m) with white ornamented lintels: windows at ~3.0-4.3, 5.4-6.8, 7.2-8.4, 9.4-10.6 and 12.3-13.8 m; a neck gable 14.3-~17.5 m (blurred in the strip); brown brick #645956 (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/brick": {
+   "source": "author",
+   "confidence": 0.55,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): a very narrow one-axis front (~2 m) with white ornamented lintels: windows at ~3.0-4.3, 5.4-6.8, 7.2-8.4, 9.4-10.6 and 12.3-13.8 m; a neck gable 14.3-~17.5 m (blurred in the strip); brown brick #645956",
+   "at": "2023-03-13"
+  },
+  "palette/wallMaterial": {
+   "source": "author",
+   "confidence": 0.55,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): a very narrow one-axis front (~2 m) with white ornamented lintels: windows at ~3.0-4.3, 5.4-6.8, 7.2-8.4, 9.4-10.6 and 12.3-13.8 m; a neck gable 14.3-~17.5 m (blurred in the strip); brown brick #645956",
+   "at": "2023-03-13"
+  }
+ },
+ "schemaLimits": [
+  {
+   "component": "crown",
+   "what": "the neck gable is smeared in the strip; cap and finial are guessed"
+  },
+  {
+   "component": "ornament",
+   "what": "the carved white lintel panels are drawn as plain bands"
+  }
+ ]
+}

@@ -1,0 +1,209 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012173345",
+ "address": "Bloemgracht 30",
+ "design": {
+  "fronts": [
+   {
+    "id": "front0",
+    "basement": "none",
+    "cornice": "none",
+    "windows": "sash",
+    "windowSurround": "sill",
+    "hoist": false,
+    "street": "Bloemgracht",
+    "gable": "bell",
+    "crownRise": 1.15,
+    "atticWindows": 1,
+    "crownFinial": true,
+    "storeys": 3,
+    "bays": [
+     2,
+     2,
+     1
+    ],
+    "storeyHeights": [
+     4.4,
+     2.6,
+     2
+    ],
+    "doorBay": 0,
+    "storeyWindows": {
+     "2": "casement-triple"
+    }
+   }
+  ],
+  "roof": {
+   "material": "red-tile",
+   "squareSaddle": true,
+   "source": "front"
+  },
+  "palette": {
+   "frame": "white-painted",
+   "door": "#26302a",
+   "stone": "#ebe8df",
+   "cornice": "#ebe8df",
+   "stoneMaterial": "painted",
+   "brick": "#5c4f47",
+   "wallMaterial": "brick"
+  }
+ },
+ "provenance": {
+  "fronts/0/id": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 154-315 px): a 4.0 m front: ground 0-4.0 m (door left, a wide window right); two windows at 5.1-6.9 m; one wide three-light window at 7.7-9.0 m; a bell gable 9.0-12.0 m with one attic light and a small cap ornament; red-brown brick #5c4f47",
+   "at": "2023-03-13"
+  },
+  "fronts/0/basement": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 154-315 px): a 4.0 m front: ground 0-4.0 m (door left, a wide window right); two windows at 5.1-6.9 m; one wide three-light window at 7.7-9.0 m; a bell gable 9.0-12.0 m with one attic light and a small cap ornament; red-brown brick #5c4f47 (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/cornice": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 154-315 px): a 4.0 m front: ground 0-4.0 m (door left, a wide window right); two windows at 5.1-6.9 m; one wide three-light window at 7.7-9.0 m; a bell gable 9.0-12.0 m with one attic light and a small cap ornament; red-brown brick #5c4f47 (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/windows": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 154-315 px): a 4.0 m front: ground 0-4.0 m (door left, a wide window right); two windows at 5.1-6.9 m; one wide three-light window at 7.7-9.0 m; a bell gable 9.0-12.0 m with one attic light and a small cap ornament; red-brown brick #5c4f47",
+   "at": "2023-03-13"
+  },
+  "fronts/0/windowSurround": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 154-315 px): a 4.0 m front: ground 0-4.0 m (door left, a wide window right); two windows at 5.1-6.9 m; one wide three-light window at 7.7-9.0 m; a bell gable 9.0-12.0 m with one attic light and a small cap ornament; red-brown brick #5c4f47 (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/hoist": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 154-315 px): a 4.0 m front: ground 0-4.0 m (door left, a wide window right); two windows at 5.1-6.9 m; one wide three-light window at 7.7-9.0 m; a bell gable 9.0-12.0 m with one attic light and a small cap ornament; red-brown brick #5c4f47 (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/street": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 154-315 px): a 4.0 m front: ground 0-4.0 m (door left, a wide window right); two windows at 5.1-6.9 m; one wide three-light window at 7.7-9.0 m; a bell gable 9.0-12.0 m with one attic light and a small cap ornament; red-brown brick #5c4f47",
+   "at": "2023-03-13"
+  },
+  "fronts/0/gable": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 154-315 px): a 4.0 m front: ground 0-4.0 m (door left, a wide window right); two windows at 5.1-6.9 m; one wide three-light window at 7.7-9.0 m; a bell gable 9.0-12.0 m with one attic light and a small cap ornament; red-brown brick #5c4f47",
+   "at": "2023-03-13"
+  },
+  "fronts/0/crownRise": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 154-315 px): a 4.0 m front: ground 0-4.0 m (door left, a wide window right); two windows at 5.1-6.9 m; one wide three-light window at 7.7-9.0 m; a bell gable 9.0-12.0 m with one attic light and a small cap ornament; red-brown brick #5c4f47",
+   "at": "2023-03-13"
+  },
+  "fronts/0/atticWindows": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 154-315 px): a 4.0 m front: ground 0-4.0 m (door left, a wide window right); two windows at 5.1-6.9 m; one wide three-light window at 7.7-9.0 m; a bell gable 9.0-12.0 m with one attic light and a small cap ornament; red-brown brick #5c4f47",
+   "at": "2023-03-13"
+  },
+  "fronts/0/crownFinial": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 154-315 px): a 4.0 m front: ground 0-4.0 m (door left, a wide window right); two windows at 5.1-6.9 m; one wide three-light window at 7.7-9.0 m; a bell gable 9.0-12.0 m with one attic light and a small cap ornament; red-brown brick #5c4f47",
+   "at": "2023-03-13"
+  },
+  "fronts/0/storeys": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 154-315 px): a 4.0 m front: ground 0-4.0 m (door left, a wide window right); two windows at 5.1-6.9 m; one wide three-light window at 7.7-9.0 m; a bell gable 9.0-12.0 m with one attic light and a small cap ornament; red-brown brick #5c4f47",
+   "at": "2023-03-13"
+  },
+  "fronts/0/bays": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 154-315 px): a 4.0 m front: ground 0-4.0 m (door left, a wide window right); two windows at 5.1-6.9 m; one wide three-light window at 7.7-9.0 m; a bell gable 9.0-12.0 m with one attic light and a small cap ornament; red-brown brick #5c4f47",
+   "at": "2023-03-13"
+  },
+  "fronts/0/storeyHeights": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 154-315 px): a 4.0 m front: ground 0-4.0 m (door left, a wide window right); two windows at 5.1-6.9 m; one wide three-light window at 7.7-9.0 m; a bell gable 9.0-12.0 m with one attic light and a small cap ornament; red-brown brick #5c4f47",
+   "at": "2023-03-13"
+  },
+  "fronts/0/doorBay": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 154-315 px): a 4.0 m front: ground 0-4.0 m (door left, a wide window right); two windows at 5.1-6.9 m; one wide three-light window at 7.7-9.0 m; a bell gable 9.0-12.0 m with one attic light and a small cap ornament; red-brown brick #5c4f47",
+   "at": "2023-03-13"
+  },
+  "fronts/0/storeyWindows": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 154-315 px): a 4.0 m front: ground 0-4.0 m (door left, a wide window right); two windows at 5.1-6.9 m; one wide three-light window at 7.7-9.0 m; a bell gable 9.0-12.0 m with one attic light and a small cap ornament; red-brown brick #5c4f47",
+   "at": "2023-03-13"
+  },
+  "roof/material": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 154-315 px): a 4.0 m front: ground 0-4.0 m (door left, a wide window right); two windows at 5.1-6.9 m; one wide three-light window at 7.7-9.0 m; a bell gable 9.0-12.0 m with one attic light and a small cap ornament; red-brown brick #5c4f47",
+   "at": "2023-03-13"
+  },
+  "roof/squareSaddle": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 154-315 px): a 4.0 m front: ground 0-4.0 m (door left, a wide window right); two windows at 5.1-6.9 m; one wide three-light window at 7.7-9.0 m; a bell gable 9.0-12.0 m with one attic light and a small cap ornament; red-brown brick #5c4f47",
+   "at": "2023-03-13"
+  },
+  "roof/source": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 154-315 px): a 4.0 m front: ground 0-4.0 m (door left, a wide window right); two windows at 5.1-6.9 m; one wide three-light window at 7.7-9.0 m; a bell gable 9.0-12.0 m with one attic light and a small cap ornament; red-brown brick #5c4f47",
+   "at": "2023-03-13"
+  },
+  "palette/frame": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 154-315 px): a 4.0 m front: ground 0-4.0 m (door left, a wide window right); two windows at 5.1-6.9 m; one wide three-light window at 7.7-9.0 m; a bell gable 9.0-12.0 m with one attic light and a small cap ornament; red-brown brick #5c4f47 (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/door": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 154-315 px): a 4.0 m front: ground 0-4.0 m (door left, a wide window right); two windows at 5.1-6.9 m; one wide three-light window at 7.7-9.0 m; a bell gable 9.0-12.0 m with one attic light and a small cap ornament; red-brown brick #5c4f47 (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/stone": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 154-315 px): a 4.0 m front: ground 0-4.0 m (door left, a wide window right); two windows at 5.1-6.9 m; one wide three-light window at 7.7-9.0 m; a bell gable 9.0-12.0 m with one attic light and a small cap ornament; red-brown brick #5c4f47 (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/cornice": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 154-315 px): a 4.0 m front: ground 0-4.0 m (door left, a wide window right); two windows at 5.1-6.9 m; one wide three-light window at 7.7-9.0 m; a bell gable 9.0-12.0 m with one attic light and a small cap ornament; red-brown brick #5c4f47 (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/stoneMaterial": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 154-315 px): a 4.0 m front: ground 0-4.0 m (door left, a wide window right); two windows at 5.1-6.9 m; one wide three-light window at 7.7-9.0 m; a bell gable 9.0-12.0 m with one attic light and a small cap ornament; red-brown brick #5c4f47 (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/brick": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 154-315 px): a 4.0 m front: ground 0-4.0 m (door left, a wide window right); two windows at 5.1-6.9 m; one wide three-light window at 7.7-9.0 m; a bell gable 9.0-12.0 m with one attic light and a small cap ornament; red-brown brick #5c4f47",
+   "at": "2023-03-13"
+  },
+  "palette/wallMaterial": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 154-315 px): a 4.0 m front: ground 0-4.0 m (door left, a wide window right); two windows at 5.1-6.9 m; one wide three-light window at 7.7-9.0 m; a bell gable 9.0-12.0 m with one attic light and a small cap ornament; red-brown brick #5c4f47",
+   "at": "2023-03-13"
+  }
+ }
+}

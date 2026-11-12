@@ -1,0 +1,197 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012174779",
+ "address": "Egelantiersgracht 7",
+ "design": {
+  "fronts": [
+   {
+    "id": "front0",
+    "basement": "none",
+    "cornice": "none",
+    "windows": "sash-6-over-6",
+    "windowSurround": "sill",
+    "hoist": true,
+    "street": "Egelantiersgracht",
+    "gable": "spout",
+    "crownRise": 0.9,
+    "atticWindows": 1,
+    "storeys": 5,
+    "bays": 3,
+    "storeyHeights": [
+     4.6,
+     3,
+     3,
+     2.9,
+     2.4
+    ],
+    "doorBay": 1
+   }
+  ],
+  "roof": {
+   "material": "red-tile",
+   "squareSaddle": true,
+   "source": "front"
+  },
+  "palette": {
+   "frame": "white-painted",
+   "door": "#26302a",
+   "stone": "#ebe8df",
+   "cornice": "#ebe8df",
+   "stoneMaterial": "painted",
+   "brick": "#564e4e",
+   "wallMaterial": "brick"
+  }
+ },
+ "provenance": {
+  "fronts/0/id": {
+   "source": "author",
+   "confidence": 0.7,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): a tall 6.3 m warehouse-like front of three axes: ground 0-4.4 m; storeys at 4.9-6.7, 7.7-9.2, 10.8-12.5, 13.9-15.2 m; a spout gable from ~15.5 m with one light to ~18.3 m; red-brown brick #564e4e",
+   "at": "2023-03-13"
+  },
+  "fronts/0/basement": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): a tall 6.3 m warehouse-like front of three axes: ground 0-4.4 m; storeys at 4.9-6.7, 7.7-9.2, 10.8-12.5, 13.9-15.2 m; a spout gable from ~15.5 m with one light to ~18.3 m; red-brown brick #564e4e (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/cornice": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): a tall 6.3 m warehouse-like front of three axes: ground 0-4.4 m; storeys at 4.9-6.7, 7.7-9.2, 10.8-12.5, 13.9-15.2 m; a spout gable from ~15.5 m with one light to ~18.3 m; red-brown brick #564e4e (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/windows": {
+   "source": "author",
+   "confidence": 0.7,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): a tall 6.3 m warehouse-like front of three axes: ground 0-4.4 m; storeys at 4.9-6.7, 7.7-9.2, 10.8-12.5, 13.9-15.2 m; a spout gable from ~15.5 m with one light to ~18.3 m; red-brown brick #564e4e",
+   "at": "2023-03-13"
+  },
+  "fronts/0/windowSurround": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): a tall 6.3 m warehouse-like front of three axes: ground 0-4.4 m; storeys at 4.9-6.7, 7.7-9.2, 10.8-12.5, 13.9-15.2 m; a spout gable from ~15.5 m with one light to ~18.3 m; red-brown brick #564e4e (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/hoist": {
+   "source": "author",
+   "confidence": 0.7,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): a tall 6.3 m warehouse-like front of three axes: ground 0-4.4 m; storeys at 4.9-6.7, 7.7-9.2, 10.8-12.5, 13.9-15.2 m; a spout gable from ~15.5 m with one light to ~18.3 m; red-brown brick #564e4e",
+   "at": "2023-03-13"
+  },
+  "fronts/0/street": {
+   "source": "author",
+   "confidence": 0.7,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): a tall 6.3 m warehouse-like front of three axes: ground 0-4.4 m; storeys at 4.9-6.7, 7.7-9.2, 10.8-12.5, 13.9-15.2 m; a spout gable from ~15.5 m with one light to ~18.3 m; red-brown brick #564e4e",
+   "at": "2023-03-13"
+  },
+  "fronts/0/gable": {
+   "source": "author",
+   "confidence": 0.7,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): a tall 6.3 m warehouse-like front of three axes: ground 0-4.4 m; storeys at 4.9-6.7, 7.7-9.2, 10.8-12.5, 13.9-15.2 m; a spout gable from ~15.5 m with one light to ~18.3 m; red-brown brick #564e4e",
+   "at": "2023-03-13"
+  },
+  "fronts/0/crownRise": {
+   "source": "author",
+   "confidence": 0.7,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): a tall 6.3 m warehouse-like front of three axes: ground 0-4.4 m; storeys at 4.9-6.7, 7.7-9.2, 10.8-12.5, 13.9-15.2 m; a spout gable from ~15.5 m with one light to ~18.3 m; red-brown brick #564e4e",
+   "at": "2023-03-13"
+  },
+  "fronts/0/atticWindows": {
+   "source": "author",
+   "confidence": 0.7,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): a tall 6.3 m warehouse-like front of three axes: ground 0-4.4 m; storeys at 4.9-6.7, 7.7-9.2, 10.8-12.5, 13.9-15.2 m; a spout gable from ~15.5 m with one light to ~18.3 m; red-brown brick #564e4e",
+   "at": "2023-03-13"
+  },
+  "fronts/0/storeys": {
+   "source": "author",
+   "confidence": 0.7,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): a tall 6.3 m warehouse-like front of three axes: ground 0-4.4 m; storeys at 4.9-6.7, 7.7-9.2, 10.8-12.5, 13.9-15.2 m; a spout gable from ~15.5 m with one light to ~18.3 m; red-brown brick #564e4e",
+   "at": "2023-03-13"
+  },
+  "fronts/0/bays": {
+   "source": "author",
+   "confidence": 0.7,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): a tall 6.3 m warehouse-like front of three axes: ground 0-4.4 m; storeys at 4.9-6.7, 7.7-9.2, 10.8-12.5, 13.9-15.2 m; a spout gable from ~15.5 m with one light to ~18.3 m; red-brown brick #564e4e",
+   "at": "2023-03-13"
+  },
+  "fronts/0/storeyHeights": {
+   "source": "author",
+   "confidence": 0.7,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): a tall 6.3 m warehouse-like front of three axes: ground 0-4.4 m; storeys at 4.9-6.7, 7.7-9.2, 10.8-12.5, 13.9-15.2 m; a spout gable from ~15.5 m with one light to ~18.3 m; red-brown brick #564e4e",
+   "at": "2023-03-13"
+  },
+  "fronts/0/doorBay": {
+   "source": "author",
+   "confidence": 0.7,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): a tall 6.3 m warehouse-like front of three axes: ground 0-4.4 m; storeys at 4.9-6.7, 7.7-9.2, 10.8-12.5, 13.9-15.2 m; a spout gable from ~15.5 m with one light to ~18.3 m; red-brown brick #564e4e",
+   "at": "2023-03-13"
+  },
+  "roof/material": {
+   "source": "author",
+   "confidence": 0.7,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): a tall 6.3 m warehouse-like front of three axes: ground 0-4.4 m; storeys at 4.9-6.7, 7.7-9.2, 10.8-12.5, 13.9-15.2 m; a spout gable from ~15.5 m with one light to ~18.3 m; red-brown brick #564e4e",
+   "at": "2023-03-13"
+  },
+  "roof/squareSaddle": {
+   "source": "author",
+   "confidence": 0.7,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): a tall 6.3 m warehouse-like front of three axes: ground 0-4.4 m; storeys at 4.9-6.7, 7.7-9.2, 10.8-12.5, 13.9-15.2 m; a spout gable from ~15.5 m with one light to ~18.3 m; red-brown brick #564e4e",
+   "at": "2023-03-13"
+  },
+  "roof/source": {
+   "source": "author",
+   "confidence": 0.7,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): a tall 6.3 m warehouse-like front of three axes: ground 0-4.4 m; storeys at 4.9-6.7, 7.7-9.2, 10.8-12.5, 13.9-15.2 m; a spout gable from ~15.5 m with one light to ~18.3 m; red-brown brick #564e4e",
+   "at": "2023-03-13"
+  },
+  "palette/frame": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): a tall 6.3 m warehouse-like front of three axes: ground 0-4.4 m; storeys at 4.9-6.7, 7.7-9.2, 10.8-12.5, 13.9-15.2 m; a spout gable from ~15.5 m with one light to ~18.3 m; red-brown brick #564e4e (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/door": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): a tall 6.3 m warehouse-like front of three axes: ground 0-4.4 m; storeys at 4.9-6.7, 7.7-9.2, 10.8-12.5, 13.9-15.2 m; a spout gable from ~15.5 m with one light to ~18.3 m; red-brown brick #564e4e (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/stone": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): a tall 6.3 m warehouse-like front of three axes: ground 0-4.4 m; storeys at 4.9-6.7, 7.7-9.2, 10.8-12.5, 13.9-15.2 m; a spout gable from ~15.5 m with one light to ~18.3 m; red-brown brick #564e4e (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/cornice": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): a tall 6.3 m warehouse-like front of three axes: ground 0-4.4 m; storeys at 4.9-6.7, 7.7-9.2, 10.8-12.5, 13.9-15.2 m; a spout gable from ~15.5 m with one light to ~18.3 m; red-brown brick #564e4e (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/stoneMaterial": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): a tall 6.3 m warehouse-like front of three axes: ground 0-4.4 m; storeys at 4.9-6.7, 7.7-9.2, 10.8-12.5, 13.9-15.2 m; a spout gable from ~15.5 m with one light to ~18.3 m; red-brown brick #564e4e (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/brick": {
+   "source": "author",
+   "confidence": 0.7,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): a tall 6.3 m warehouse-like front of three axes: ground 0-4.4 m; storeys at 4.9-6.7, 7.7-9.2, 10.8-12.5, 13.9-15.2 m; a spout gable from ~15.5 m with one light to ~18.3 m; red-brown brick #564e4e",
+   "at": "2023-03-13"
+  },
+  "palette/wallMaterial": {
+   "source": "author",
+   "confidence": 0.7,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (span pand span px): a tall 6.3 m warehouse-like front of three axes: ground 0-4.4 m; storeys at 4.9-6.7, 7.7-9.2, 10.8-12.5, 13.9-15.2 m; a spout gable from ~15.5 m with one light to ~18.3 m; red-brown brick #564e4e",
+   "at": "2023-03-13"
+  }
+ },
+ "schemaLimits": [
+  {
+   "component": "evidence",
+   "what": "lens flare over the gable top in the 2023-03-13 strip; the crown is read from its flanks"
+  }
+ ]
+}

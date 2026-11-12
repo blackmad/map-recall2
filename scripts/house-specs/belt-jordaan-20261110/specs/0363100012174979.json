@@ -1,0 +1,228 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012174979",
+ "address": "Egelantiersgracht 35-39",
+ "design": {
+  "fronts": [
+   {
+    "id": "front0",
+    "basement": "none",
+    "cornice": "frieze",
+    "windows": "sash",
+    "windowSurround": "full-frame",
+    "hoist": false,
+    "street": "Egelantiersgracht",
+    "gable": "cornice",
+    "storeys": 3,
+    "bays": 6,
+    "storeyHeights": [
+     4.4,
+     2.9,
+     2.8
+    ],
+    "doorBay": 3,
+    "dormers": 1,
+    "dormerStyle": "pediment",
+    "dormerBody": "stone",
+    "dormerAt": [
+     {
+      "from": 0.15,
+      "to": 0.4
+     }
+    ]
+   }
+  ],
+  "roof": {
+   "material": "slate",
+   "source": "front",
+   "evidence": "strip: the roof behind the crown follows the front",
+   "form": "attic",
+   "rise": 0.5
+  },
+  "palette": {
+   "frame": "white-painted",
+   "door": "#26302a",
+   "stone": "#ebe8df",
+   "cornice": "#ebe8df",
+   "stoneMaterial": "painted",
+   "brick": "#474340",
+   "wallMaterial": "brick"
+  }
+ },
+ "provenance": {
+  "fronts/0/id": {
+   "source": "author",
+   "confidence": 0.65,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): a 9.4 m double front of six white-framed axes: a ground of large lights 0.5-4.0 m (doors between); storeys at 5.1-6.5 and 7.5-8.9 m; a white frieze cornice ~10.0-10.4 m; a pediment dormer over the left three axes on a grey slate face; dark brown brick #494541 / #43413f",
+   "at": "2023-03-13"
+  },
+  "fronts/0/basement": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): a 9.4 m double front of six white-framed axes: a ground of large lights 0.5-4.0 m (doors between); storeys at 5.1-6.5 and 7.5-8.9 m; a white frieze cornice ~10.0-10.4 m; a pediment dormer over the left three axes on a grey slate face; dark brown brick #494541 / #43413f (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/cornice": {
+   "source": "author",
+   "confidence": 0.65,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): a 9.4 m double front of six white-framed axes: a ground of large lights 0.5-4.0 m (doors between); storeys at 5.1-6.5 and 7.5-8.9 m; a white frieze cornice ~10.0-10.4 m; a pediment dormer over the left three axes on a grey slate face; dark brown brick #494541 / #43413f",
+   "at": "2023-03-13"
+  },
+  "fronts/0/windows": {
+   "source": "author",
+   "confidence": 0.65,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): a 9.4 m double front of six white-framed axes: a ground of large lights 0.5-4.0 m (doors between); storeys at 5.1-6.5 and 7.5-8.9 m; a white frieze cornice ~10.0-10.4 m; a pediment dormer over the left three axes on a grey slate face; dark brown brick #494541 / #43413f",
+   "at": "2023-03-13"
+  },
+  "fronts/0/windowSurround": {
+   "source": "author",
+   "confidence": 0.65,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): a 9.4 m double front of six white-framed axes: a ground of large lights 0.5-4.0 m (doors between); storeys at 5.1-6.5 and 7.5-8.9 m; a white frieze cornice ~10.0-10.4 m; a pediment dormer over the left three axes on a grey slate face; dark brown brick #494541 / #43413f",
+   "at": "2023-03-13"
+  },
+  "fronts/0/hoist": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): a 9.4 m double front of six white-framed axes: a ground of large lights 0.5-4.0 m (doors between); storeys at 5.1-6.5 and 7.5-8.9 m; a white frieze cornice ~10.0-10.4 m; a pediment dormer over the left three axes on a grey slate face; dark brown brick #494541 / #43413f (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/street": {
+   "source": "author",
+   "confidence": 0.65,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): a 9.4 m double front of six white-framed axes: a ground of large lights 0.5-4.0 m (doors between); storeys at 5.1-6.5 and 7.5-8.9 m; a white frieze cornice ~10.0-10.4 m; a pediment dormer over the left three axes on a grey slate face; dark brown brick #494541 / #43413f",
+   "at": "2023-03-13"
+  },
+  "fronts/0/gable": {
+   "source": "author",
+   "confidence": 0.65,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): a 9.4 m double front of six white-framed axes: a ground of large lights 0.5-4.0 m (doors between); storeys at 5.1-6.5 and 7.5-8.9 m; a white frieze cornice ~10.0-10.4 m; a pediment dormer over the left three axes on a grey slate face; dark brown brick #494541 / #43413f",
+   "at": "2023-03-13"
+  },
+  "fronts/0/storeys": {
+   "source": "author",
+   "confidence": 0.65,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): a 9.4 m double front of six white-framed axes: a ground of large lights 0.5-4.0 m (doors between); storeys at 5.1-6.5 and 7.5-8.9 m; a white frieze cornice ~10.0-10.4 m; a pediment dormer over the left three axes on a grey slate face; dark brown brick #494541 / #43413f",
+   "at": "2023-03-13"
+  },
+  "fronts/0/bays": {
+   "source": "author",
+   "confidence": 0.65,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): a 9.4 m double front of six white-framed axes: a ground of large lights 0.5-4.0 m (doors between); storeys at 5.1-6.5 and 7.5-8.9 m; a white frieze cornice ~10.0-10.4 m; a pediment dormer over the left three axes on a grey slate face; dark brown brick #494541 / #43413f",
+   "at": "2023-03-13"
+  },
+  "fronts/0/storeyHeights": {
+   "source": "author",
+   "confidence": 0.65,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): a 9.4 m double front of six white-framed axes: a ground of large lights 0.5-4.0 m (doors between); storeys at 5.1-6.5 and 7.5-8.9 m; a white frieze cornice ~10.0-10.4 m; a pediment dormer over the left three axes on a grey slate face; dark brown brick #494541 / #43413f",
+   "at": "2023-03-13"
+  },
+  "fronts/0/doorBay": {
+   "source": "author",
+   "confidence": 0.65,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): a 9.4 m double front of six white-framed axes: a ground of large lights 0.5-4.0 m (doors between); storeys at 5.1-6.5 and 7.5-8.9 m; a white frieze cornice ~10.0-10.4 m; a pediment dormer over the left three axes on a grey slate face; dark brown brick #494541 / #43413f",
+   "at": "2023-03-13"
+  },
+  "fronts/0/dormers": {
+   "source": "author",
+   "confidence": 0.65,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): a 9.4 m double front of six white-framed axes: a ground of large lights 0.5-4.0 m (doors between); storeys at 5.1-6.5 and 7.5-8.9 m; a white frieze cornice ~10.0-10.4 m; a pediment dormer over the left three axes on a grey slate face; dark brown brick #494541 / #43413f",
+   "at": "2023-03-13"
+  },
+  "fronts/0/dormerStyle": {
+   "source": "author",
+   "confidence": 0.65,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): a 9.4 m double front of six white-framed axes: a ground of large lights 0.5-4.0 m (doors between); storeys at 5.1-6.5 and 7.5-8.9 m; a white frieze cornice ~10.0-10.4 m; a pediment dormer over the left three axes on a grey slate face; dark brown brick #494541 / #43413f",
+   "at": "2023-03-13"
+  },
+  "fronts/0/dormerBody": {
+   "source": "author",
+   "confidence": 0.65,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): a 9.4 m double front of six white-framed axes: a ground of large lights 0.5-4.0 m (doors between); storeys at 5.1-6.5 and 7.5-8.9 m; a white frieze cornice ~10.0-10.4 m; a pediment dormer over the left three axes on a grey slate face; dark brown brick #494541 / #43413f",
+   "at": "2023-03-13"
+  },
+  "fronts/0/dormerAt": {
+   "source": "author",
+   "confidence": 0.65,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): a 9.4 m double front of six white-framed axes: a ground of large lights 0.5-4.0 m (doors between); storeys at 5.1-6.5 and 7.5-8.9 m; a white frieze cornice ~10.0-10.4 m; a pediment dormer over the left three axes on a grey slate face; dark brown brick #494541 / #43413f",
+   "at": "2023-03-13"
+  },
+  "roof/material": {
+   "source": "author",
+   "confidence": 0.65,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): a 9.4 m double front of six white-framed axes: a ground of large lights 0.5-4.0 m (doors between); storeys at 5.1-6.5 and 7.5-8.9 m; a white frieze cornice ~10.0-10.4 m; a pediment dormer over the left three axes on a grey slate face; dark brown brick #494541 / #43413f",
+   "at": "2023-03-13"
+  },
+  "roof/source": {
+   "source": "author",
+   "confidence": 0.65,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): a 9.4 m double front of six white-framed axes: a ground of large lights 0.5-4.0 m (doors between); storeys at 5.1-6.5 and 7.5-8.9 m; a white frieze cornice ~10.0-10.4 m; a pediment dormer over the left three axes on a grey slate face; dark brown brick #494541 / #43413f",
+   "at": "2023-03-13"
+  },
+  "roof/evidence": {
+   "source": "author",
+   "confidence": 0.65,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): a 9.4 m double front of six white-framed axes: a ground of large lights 0.5-4.0 m (doors between); storeys at 5.1-6.5 and 7.5-8.9 m; a white frieze cornice ~10.0-10.4 m; a pediment dormer over the left three axes on a grey slate face; dark brown brick #494541 / #43413f",
+   "at": "2023-03-13"
+  },
+  "roof/form": {
+   "source": "author",
+   "confidence": 0.65,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): a 9.4 m double front of six white-framed axes: a ground of large lights 0.5-4.0 m (doors between); storeys at 5.1-6.5 and 7.5-8.9 m; a white frieze cornice ~10.0-10.4 m; a pediment dormer over the left three axes on a grey slate face; dark brown brick #494541 / #43413f",
+   "at": "2023-03-13"
+  },
+  "roof/rise": {
+   "source": "author",
+   "confidence": 0.65,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): a 9.4 m double front of six white-framed axes: a ground of large lights 0.5-4.0 m (doors between); storeys at 5.1-6.5 and 7.5-8.9 m; a white frieze cornice ~10.0-10.4 m; a pediment dormer over the left three axes on a grey slate face; dark brown brick #494541 / #43413f",
+   "at": "2023-03-13"
+  },
+  "palette/frame": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): a 9.4 m double front of six white-framed axes: a ground of large lights 0.5-4.0 m (doors between); storeys at 5.1-6.5 and 7.5-8.9 m; a white frieze cornice ~10.0-10.4 m; a pediment dormer over the left three axes on a grey slate face; dark brown brick #494541 / #43413f (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/door": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): a 9.4 m double front of six white-framed axes: a ground of large lights 0.5-4.0 m (doors between); storeys at 5.1-6.5 and 7.5-8.9 m; a white frieze cornice ~10.0-10.4 m; a pediment dormer over the left three axes on a grey slate face; dark brown brick #494541 / #43413f (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/stone": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): a 9.4 m double front of six white-framed axes: a ground of large lights 0.5-4.0 m (doors between); storeys at 5.1-6.5 and 7.5-8.9 m; a white frieze cornice ~10.0-10.4 m; a pediment dormer over the left three axes on a grey slate face; dark brown brick #494541 / #43413f (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/cornice": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): a 9.4 m double front of six white-framed axes: a ground of large lights 0.5-4.0 m (doors between); storeys at 5.1-6.5 and 7.5-8.9 m; a white frieze cornice ~10.0-10.4 m; a pediment dormer over the left three axes on a grey slate face; dark brown brick #494541 / #43413f (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/stoneMaterial": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): a 9.4 m double front of six white-framed axes: a ground of large lights 0.5-4.0 m (doors between); storeys at 5.1-6.5 and 7.5-8.9 m; a white frieze cornice ~10.0-10.4 m; a pediment dormer over the left three axes on a grey slate face; dark brown brick #494541 / #43413f (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/brick": {
+   "source": "author",
+   "confidence": 0.65,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): a 9.4 m double front of six white-framed axes: a ground of large lights 0.5-4.0 m (doors between); storeys at 5.1-6.5 and 7.5-8.9 m; a white frieze cornice ~10.0-10.4 m; a pediment dormer over the left three axes on a grey slate face; dark brown brick #494541 / #43413f",
+   "at": "2023-03-13"
+  },
+  "palette/wallMaterial": {
+   "source": "author",
+   "confidence": 0.65,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): a 9.4 m double front of six white-framed axes: a ground of large lights 0.5-4.0 m (doors between); storeys at 5.1-6.5 and 7.5-8.9 m; a white frieze cornice ~10.0-10.4 m; a pediment dormer over the left three axes on a grey slate face; dark brown brick #494541 / #43413f",
+   "at": "2023-03-13"
+  }
+ },
+ "schemaLimits": [
+  {
+   "component": "front",
+   "what": "two houses behind one cornice (35 and 37-39) drawn as one six-axis front"
+  }
+ ]
+}
