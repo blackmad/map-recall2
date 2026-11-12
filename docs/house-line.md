@@ -1540,6 +1540,16 @@ pieces come from `recipeRoofFacts`:
 - `test:fit-golden` reported all 207 house recipes identical, `block-face/roof-golden.ts` 0 violations, and
   `houseFrontRoof.test.ts` passes.
 
+**Gate (2026-11-12).** The single-house `ridge-vs-3dbag` gate (`buildingRecipe/gates.ts`) now bounds a roofed house
+(`facts.roofSource`) the way the face's `height-vs-3dbag` does: under the crown line + 0.3 m (dormers +1.9 m) and not
+under the front eaves. Before this, 16 of the 24 Bloemgracht batch-1 houses failed because their front roofs stood
+0.4–3.5 m under the 3DBAG ridge, which is what the front roof is for. Houses without `roofSource` are unchanged
+(fit-golden: all identical).
+
+**Open: dormer top.** A pediment or plain dormer in front of an attic face leaves a ~1 m square open at its top
+(4 edges, 3.6–4.5 m): `open-edges` on 12 of 24 Bloemgracht houses. It also happens without the front roof (3DBAG roof),
+and disappears without the dormer.
+
 **What a lone house cannot know:** the cornice group's shared attic line, the row ridge, photo `frontRoof` hints, and
 the roof falling to a corner pand's side fronts. For those, type the pand on a block face.
 
