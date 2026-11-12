@@ -91,3 +91,97 @@ test('flag on: an unmeasured c19 pand among measured walls draws one of them, as
       bayLookFor('NL.IMBAG.Pand.x-test', 1900, 14, 'storybook', 'quiet', undefined, undefined, null).wallHex, 'photo look only');
   });
 });
+
+// Lane W2: the variety draw and painted fronts.
+import { POOL_DRAW, measuredPoolDraw, resetWallVarietyFlag, wallVarietyEnabled } from './measuredWallPool.ts';
+import { BAY_ENTRIES, BAY_LAYER_COUNT, FATIH_MASONRY_LAYER, PAINTED_BASE_STYLE, bayVariant, paintedLayers } from '../bayLook.ts';
+import { PROCEDURAL_RECIPE_LAYER_OFFSET } from '../streetFacadeRendering.ts';
+
+const withVariety = <T>(v: string | undefined, f: () => T): T => {
+  const prev = process.env.WALL_VARIETY;
+  if (v === undefined) delete process.env.WALL_VARIETY; else process.env.WALL_VARIETY = v;
+  resetWallVarietyFlag();
+  try { return f(); } finally { if (prev === undefined) delete process.env.WALL_VARIETY; else process.env.WALL_VARIETY = prev; resetWallVarietyFlag(); }
+};
+// A block of measured walls on a 10 m grid: 6 brown, 3 red, 3 painted white (painted mark 1).
+const block = () => {
+  const hexes = ['#4b3b32', '#47403a', '#423934', '#5a4436', '#503c30', '#4d4038', '#8a4a38', '#94503c', '#7f4434', '#e8e2d6', '#ece6da', '#e4ddd0'];
+  return { points: hexes.map((h, i) => [486000 + (i % 4) * 15, 5236600 + Math.floor(i / 4) * 9, h, 1, h.startsWith('#e') ? 1 : 0] as const) };
+};
+
+test('the variety flag: on by default; ?wallVariety=0 or WALL_VARIETY=0 turns it off', () => {
+  assert.equal(wallVarietyEnabled(null, null), true);
+  assert.equal(wallVarietyEnabled('?wallVariety=0', null), false);
+  assert.equal(wallVarietyEnabled(null, '0'), false);
+});
+
+test('the draw: a row of unmeasured pands keeps its darks, reds and pales in about the measured proportions', () => {
+  const pool = new MeasuredWallPool(block());
+  const draws = Array.from({ length: 24 }, (_, i) => pool.drawFor(4.86015 + i * 0.0001, 52.36606, 'c19', i * 7919)!);
+  const kinds = { brown: 0, red: 0, painted: 0 };
+  for (const d of draws) { assert.ok(d); if (d.painted) kinds.painted++; else if (['#8a4a38', '#94503c', '#7f4434'].includes(d.hex)) kinds.red++; else kinds.brown++; }
+  assert.ok(kinds.brown >= 6 && kinds.red >= 3 && kinds.painted >= 3, JSON.stringify(kinds));
+  for (let i = 0; i + 3 < draws.length; i++) assert.ok(new Set(draws.slice(i, i + 4).map(d => d.hex)).size >= 2, 'four neighbours in a row are not one colour');
+  // Painted is the wall's own mark: a white draw is painted, a brick draw is not.
+  for (const d of draws) assert.equal(d.painted, d.hex.startsWith('#e'));
+});
+
+test('the draw: a split building (one reading on many pands) counts once', () => {
+  const t = block();
+  const split = Array.from({ length: 30 }, (_, i) => [486000 + i, 5236590, '#a89172', 1, 1] as const);
+  const pool = new MeasuredWallPool({ points: [...t.points, ...split] });
+  const n = Array.from({ length: 40 }, (_, i) => pool.drawFor(4.86015 + i * 0.0001, 52.36606, 'c19', i)!).filter(d => d.hex === '#a89172').length;
+  assert.ok(n <= 10, `the split building drew ${n} of 40`);
+});
+
+test('the band: 0 draws the weighted median only; ?wallVariety=0 is the W1 pick, never painted', () => {
+  const pool = new MeasuredWallPool(block()), band = POOL_DRAW.band;
+  try {
+    POOL_DRAW.band = 0;
+    // One place, any id: the weighted median (the 5 % id jitter is scaled away by the band).
+    const picks = new Set(Array.from({ length: 16 }, (_, i) => pool.drawFor(4.86035, 52.36606, 'c19', i * 7919)!.hex));
+    assert.equal(picks.size, 1, [...picks].join());
+  } finally { POOL_DRAW.band = band; }
+  withVariety('0', () => {
+    for (let i = 0; i < 16; i++) {
+      const d = measuredPoolDraw(4.8823 + i * 1e-4, 52.3768, 'c19', i);
+      if (d) { assert.equal(d.painted, false); assert.equal(d.hex, measuredPoolWall(4.8823 + i * 1e-4, 52.3768, 'c19', i)); }
+    }
+  });
+});
+
+test('painted cells: smooth canal and c19 cells after the masonry cell, inside the byte layer budget', () => {
+  assert.ok(PROCEDURAL_RECIPE_LAYER_OFFSET + BAY_LAYER_COUNT + 1 <= 256, 'the procedural array fits byte layers');
+  for (const arch of ['canal', 'c19'] as const) {
+    const l = paintedLayers(arch)!;
+    for (const layer of Object.values(l)) {
+      assert.ok(layer > FATIH_MASONRY_LAYER, 'appended: no earlier layer moves');
+      const e = BAY_ENTRIES[layer];
+      assert.equal(e.style, PAINTED_BASE_STYLE[arch]);
+      assert.equal(bayVariant(e).wallMaterial, 'smooth');
+    }
+  }
+  assert.equal(paintedLayers('school'), null);
+  assert.equal(paintedLayers('modern'), null);
+});
+
+test('bayLookFor: a painted draw takes the painted cells; variety off draws brick cells as W1', () => {
+  const pool = new MeasuredWallPool(TABLE as never);
+  // Find a published point whose draw is painted near a measured painted wall.
+  const pts = (TABLE as unknown as { points: (readonly [number, number, string, number, number])[] }).points.filter(p => p[4] === 1 && p[3] === 1);
+  let found = false;
+  for (const p of pts.slice(0, 40)) for (let s = 0; s < 40 && !found; s++) {
+    const lng = p[0] / 1e5 + 0.00005, lat = p[1] / 1e5;
+    const d = pool.drawFor(lng, lat, 'c19', s);
+    if (!d?.painted) continue;
+    const id = `w2-${s}`;
+    const look = withFlag('1', () => withVariety('1', () => bayLookFor(id, 1890, 14, 'photo', 'quiet', undefined, undefined, null, undefined, undefined, [lng, lat])));
+    if (look.archetype !== 'c19' || !look.painted) continue;
+    const l = paintedLayers('c19')!;
+    assert.equal(look.layers.upper, l.upper); assert.equal(look.plain, l.plain); assert.equal(look.quietGround, l.ground);
+    const off = withFlag('1', () => withVariety('0', () => bayLookFor(id, 1890, 14, 'photo', 'quiet', undefined, undefined, null, undefined, undefined, [lng, lat])));
+    assert.ok(!off.painted && off.layers.upper !== l.upper);
+    found = true;
+  }
+  assert.ok(found, 'a painted draw exists in the published table');
+});

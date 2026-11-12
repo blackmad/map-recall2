@@ -7,7 +7,7 @@
 import { SHOP_KINDS, archetypeFor, paletteFor, type Archetype, type BayKind, type BayVariant, type Look, type ShopKind } from './bayTextures.js';
 import { GROUND_PAINTS, PERIOD_WALLS, lookHex } from './look/palette.js';
 import { brickLiftOn, brickLiftV2ProfileWall, periodWallList } from './look/brickLift.js';
-import { measuredPoolWall } from './look/measuredWallPool.js';
+import { measuredPoolDraw } from './look/measuredWallPool.js';
 import { hashSeed } from './wallBays.js';
 import type { ArchitecturalRecipe } from './streetAppearance.js';
 import type { FacadeStyle } from './genericFacades.js';
@@ -91,7 +91,7 @@ export const BAY_STYLES: Record<Archetype, readonly BayStyle[]> = {
 };
 const ARCHETYPES = Object.keys(BAY_STYLES) as Archetype[];
 
-type Entry = { archetype: Archetype; style: number; kind: (typeof BAY_KINDS)[number]; layer: number; restrainedShop?: boolean; originalMasonry?: boolean };
+type Entry = { archetype: Archetype; style: number; kind: (typeof BAY_KINDS)[number]; layer: number; restrainedShop?: boolean; originalMasonry?: boolean; smooth?: boolean };
 /**
  * A restrained shopfront (bayTextures.ts `quietShopAt`) reads its kind twice: the bar's fascia ink and the valance of
  * the mapped cafe/restaurant kinds. Every other kind paints the same pixels, colour and mask, in every look (pinned by
@@ -131,11 +131,34 @@ for (const archetype of ARCHETYPES) for (const kind of SHOP_KINDS) {
 // from an absent construction year. This cell contains original generated pixels.
 export const FATIH_MASONRY_LAYER = entries.length;
 entries.push({ archetype: 'school', style: 0, kind: 'plain', originalMasonry: true });
+/**
+ * Painted fronts (lane W2, 2026-11-12): smooth render cells for an unmeasured canal or c19 pand whose measured-pool draw is
+ * a painted wall (look/measuredWallPool.ts; white, cream or pale-grey stucco). The kit drew every pre-1945 bay in brick, so
+ * a painted front could only be a pale tint on brick courses, which reads as dirty brick. One preset per archetype (plain
+ * transom sashes, no trim) in smooth wall: upper, ground, door and plain, appended after the masonry cell so no earlier
+ * layer moves. The procedural array has 10 spare byte layers with newbuildFamily on (64 + 181 + 1 = 246 of 256); these take 8. The school
+ * archetype has no painted cell (no room): its pale draws stay a tint on brick.
+ */
+export const PAINTED_BASE_STYLE: Partial<Record<Archetype, number>> = { canal: 1, c19: 1 };
+const PAINTED_KINDS = ['upper', 'ground', 'groundDoor', 'plain'] as const;
+const paintedLayerIndex = new Map<string, number>();
+// Only with the shared restrained shop cells (newbuildFamily, default on), which free 16 layers: `?newbuildFamily=0` keeps 191
+// bay cells and exactly 256 procedural layers, so it has no painted cells (a painted draw stays a tint on brick).
+if (sharedRestrainedShops) for (const archetype of ['canal', 'c19'] as const) for (const kind of PAINTED_KINDS) {
+  paintedLayerIndex.set(`${archetype}|${kind}`, entries.length);
+  entries.push({ archetype, style: PAINTED_BASE_STYLE[archetype]!, kind, smooth: true });
+}
+/** The painted (smooth render) cells of an archetype, or null when the kit has none for it. */
+export function paintedLayers(archetype: Archetype): Record<(typeof PAINTED_KINDS)[number], number> | null {
+  if (PAINTED_BASE_STYLE[archetype] === undefined || !paintedLayerIndex.size) return null;
+  return Object.fromEntries(PAINTED_KINDS.map(k => [k, paintedLayerIndex.get(`${archetype}|${k}`)!])) as Record<(typeof PAINTED_KINDS)[number], number>;
+}
 export const BAY_ENTRIES: readonly Entry[] = entries.map((e, layer) => ({ ...e, layer }));
 export const BAY_LAYER_COUNT = BAY_ENTRIES.length;
 
 export const bayVariant = (e: Entry): BayVariant => {
   const v = { archetype: e.archetype, kind: e.kind, ...BAY_STYLES[e.archetype][e.style] };
+  if (e.smooth) return { ...v, wallMaterial: 'smooth' };
   if (isShopKind(e.kind)) return { ...v, trimDensity: e.restrainedShop ? 'restrained' : undefined };
   return v;
 };
@@ -237,7 +260,11 @@ export function bayLookFor(id: string, year: number | null, heightM: number, loo
   const era = vocab || contemporary ? undefined : buurt?.eras[archetype], drawn = era ? profileTraits(id, era) : null;
   const stated = !recipe && !vocab && !contemporary && spec && (spec.pale !== undefined || spec.dark !== undefined || spec.arch !== undefined || spec.tall !== undefined);
   const traits = stated ? { wall: drawn?.wall ?? null, pale: spec!.pale ?? drawn?.pale ?? null, dark: spec!.dark ?? drawn?.dark ?? null, arch: spec!.arch ?? drawn?.arch ?? null, tall: spec!.tall ?? drawn?.tall ?? null } : drawn;
-  const h = hashSeed(id), style = contemporary ? contemporary.styleIndex : vocab ? vocab.styleIndex : traits && (traits.pale !== null || traits.dark !== null || traits.arch !== null || traits.tall !== null) ? bayStyleForTraits(id, archetype, traits, stated ? spec!.bays : undefined) : bayStyleForRecipe(id, archetype, recipe);
+  // The measured wall pool (lane W1) and its variety draw (lane W2): a painted draw takes the painted preset's smooth cells.
+  const h = hashSeed(id);
+  const draw = at && look === 'photo' && !recipe && !vocab && !contemporary ? measuredPoolDraw(at[0], at[1], archetype, h >>> 7) : null;
+  const painted = draw?.painted ? paintedLayers(archetype) : null;
+  const style = painted ? PAINTED_BASE_STYLE[archetype]! : contemporary ? contemporary.styleIndex : vocab ? vocab.styleIndex : traits && (traits.pale !== null || traits.dark !== null || traits.arch !== null || traits.tall !== null) ? bayStyleForTraits(id, archetype, traits, stated ? spec!.bays : undefined) : bayStyleForRecipe(id, archetype, recipe);
   // Without the extract: a third of buildings (or the buurt's measured share), picking among the original four shopfronts.
   const shop = (recipe?.facadeAssembly || recipe?.entranceAssembly || recipe?.openingGroup) && !shopfront ? false : shopfront ? shopfront !== 'quiet'
     : (buurt?.shopfrontShare ?? buurt?.shopShare) !== undefined ? unitDraw(id, 'shop') < (buurt!.shopfrontShare ?? buurt!.shopShare!) : (h >>> 13) % 3 === 0;
@@ -246,7 +273,7 @@ export function bayLookFor(id: string, year: number | null, heightM: number, loo
   const walls = periodWallList(look, archetype, PERIOD_WALLS[look][archetype]);
   if (walls) palette.wall = walls[(hashSeed(id) >>> 7) % walls.length];
   if (traits?.wall) palette.wall = brickLiftOn() && look === 'photo' ? brickLiftV2ProfileWall(traits.wall) : traits.wall;
-  const poolWall = at && look === 'photo' && !recipe && !vocab && !contemporary ? measuredPoolWall(at[0], at[1], archetype, h >>> 7) : null;
+  const poolWall = draw?.hex ?? null;
   if (poolWall) palette.wall = poolWall;
   if (vocab) { palette.wall = vocab.wall; if (vocab.accent) palette.accent = vocab.accent; }
   if (contemporary) palette.wall = lookHex(contemporary.wall, look);
@@ -257,7 +284,10 @@ export function bayLookFor(id: string, year: number | null, heightM: number, loo
   return {
     archetype, style, ...(vocab ? { modern: vocab } : {}), ...(contemporary ? { contemporary } : {}), variant: { archetype, ...BAY_STYLES[archetype][style] }, ...((poolWall ?? traits?.wall) && !periodWall && !recipe?.wallHex ? { profileWall: (poolWall ?? traits!.wall)! } : {}), layout: ARCHETYPE_LAYOUT[archetype], wallHex: palette.wall, accentHex: recipe?.openingGroup ? lookHex(recipe.frameHex ?? '#f1ede2', look) : palette.accent,
     groundHex: recipe?.groundWallHex ? lookHex(recipe.groundWallHex, look) : shop ? (shopfront && shopfront !== 'quiet' && shopGrammarEnabled() ? shopGroundHex(id, look) : paints[(h >>> 21) % paints.length]) : undefined,
-    layers: { upper: bayLayer(archetype, style, 'upper'), ground: bayLayer(archetype, style, shop && !recipe?.openingGroup && !(recipe?.facadeAssembly === 'stacked-open-balcony' && (shopKind === 'shopWindow' || shopKind === 'groundShop')) ? shopKind : 'ground', !!recipe && recipe.trimDensity !== 'ornate'), door: bayLayer(archetype, style, 'groundDoor') },
-    plain: bayLayer(archetype, style, 'plain'),
+    layers: painted
+      ? { upper: painted.upper, ground: shop ? bayLayer(archetype, style, shopKind) : painted.ground, door: painted.groundDoor }
+      : { upper: bayLayer(archetype, style, 'upper'), ground: bayLayer(archetype, style, shop && !recipe?.openingGroup && !(recipe?.facadeAssembly === 'stacked-open-balcony' && (shopKind === 'shopWindow' || shopKind === 'groundShop')) ? shopKind : 'ground', !!recipe && recipe.trimDensity !== 'ornate'), door: bayLayer(archetype, style, 'groundDoor') },
+    plain: painted ? painted.plain : bayLayer(archetype, style, 'plain'),
+    ...(painted ? { painted: true as const, quietGround: painted.ground } : {}),
   };
 }

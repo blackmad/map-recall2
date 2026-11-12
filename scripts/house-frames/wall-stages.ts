@@ -23,7 +23,7 @@ import { PreviewSession } from '../house-preview/preview.ts';
 import { asPolygons, meshBuildingFor } from '../../src/canalRecall/threeBuildingFeatures.ts';
 import { bayLookFor } from '../../src/canalRecall/bayLook.ts';
 import { buurtProfileAt } from '../../src/canalRecall/buurtProfiles/data.ts';
-import { measuredPoolWall } from '../../src/canalRecall/look/measuredWallPool.ts';
+import { measuredPoolDraw, wallVarietyOn } from '../../src/canalRecall/look/measuredWallPool.ts';
 import { hashSeed } from '../../src/canalRecall/wallBays.ts';
 import { frameFor } from './pose.ts';
 import { rgbOklab, wallLab, type WallLab } from './analyse.ts';
@@ -69,7 +69,7 @@ for (const prep of prepared) {
   const ph = fromWall(wallLab(photo, frame, prep.pose, prep.wall)), px = fromWall(wallLab(game, frame, prep.pose, prep.wall));
   const g = fs.existsSync(path.join(kdir, 'game.json')) ? JSON.parse(fs.readFileSync(path.join(kdir, 'game.json'), 'utf8')) : {};
   const model = String(prep.route ?? '').startsWith('installed') ;
-  let at: number[] | null = null, reading: string | null = null, decorated: string | null = null, source: string | null = null, sourceKind = '', mesher: string | null = null, held = false, archetype = '', year: number | null = null, material: string | null = null, finish: string | null = null, specSrc: string | null = null;
+  let painted = false, at: number[] | null = null, reading: string | null = null, decorated: string | null = null, source: string | null = null, sourceKind = '', mesher: string | null = null, held = false, archetype = '', year: number | null = null, material: string | null = null, finish: string | null = null, specSrc: string | null = null;
   try {
     const tile = session.tileOf(prep.pandId), trows = await session.rows(tile);
     const row = trows.find((r: any) => String(r.raw.properties?.id ?? '').endsWith(prep.pandId));
@@ -84,10 +84,12 @@ for (const prep of prepared) {
       at = ring.length ? [ring.reduce((s, q) => s + q[0], 0) / ring.length, ring.reduce((s, q) => s + q[1], 0) / ring.length] : null;
       const first = ring[0];
       const profile = first ? buurtProfileAt(first[0], first[1]) : null;
-      const bay = bayLookFor(String(p.id), year, Number(p.height) || 10, 'photo', 'quiet', undefined, undefined, profile, undefined, undefined, first ? [first[0], first[1]] : undefined);
-      archetype = bay.archetype; source = bay.wallHex;
-      const pool = first ? measuredPoolWall(first[0], first[1], bay.archetype, hashSeed(String(p.id)) >>> 7) : null;
-      sourceKind = pool && pool === bay.wallHex ? 'pool' : bay.profileWall ? 'profile' : 'period';
+      // The pool's point, as meshBuildingFor's poolPointOf: the ring's vertex mean with the variety draw on, else the first vertex.
+      const pt = first ? (wallVarietyOn() && at ? at as [number, number] : [first[0], first[1]] as [number, number]) : undefined;
+      const bay = bayLookFor(String(p.id), year, Number(p.height) || 10, 'photo', 'quiet', undefined, undefined, profile, undefined, undefined, pt);
+      archetype = bay.archetype; source = bay.wallHex; painted = !!bay.painted;
+      const pool = pt ? measuredPoolDraw(pt[0], pt[1], bay.archetype, hashSeed(String(p.id)) >>> 7) : null;
+      sourceKind = pool && pool.hex === bay.wallHex ? 'pool' : bay.profileWall ? 'profile' : 'period';
       const b = meshBuildingFor(row.styled as any, 'photo');
       mesher = b?.wallHex ?? null;
     }
@@ -95,7 +97,7 @@ for (const prep of prepared) {
   const cls = model ? 'model' : decorated ? 'spec' : held ? 'held' : sourceKind || 'unknown';
   const L = { photo: ph, pixel: px, reading: reading ? hexLab(reading) : null, source: source ? hexLab(source) : null, decorated: decorated ? hexLab(decorated) : source ? hexLab(source) : null, mesher: mesher ? hexLab(mesher) : null };
   rows.push({
-    key: prep.key, pandId: prep.pandId, street: prep.street, at, route: prep.route, cls, archetype, year, material, finish, specSrc, sourceKind,
+    key: prep.key, pandId: prep.pandId, street: prep.street, at, painted, route: prep.route, cls, archetype, year, material, finish, specSrc, sourceKind,
     hex: { photo: ph?.hex ?? null, reading, source, decorated, mesher, pixel: px?.hex ?? null }, drawn: g.drawn ?? null,
     lab: L,
     stage: {
