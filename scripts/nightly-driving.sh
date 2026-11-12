@@ -46,8 +46,8 @@ for step in $steps; do
       KEYBOARD_RIDE_ALL=1 KEYBOARD_RIDE_BASEMAP="${KEYBOARD_RIDE_BASEMAP:-0}" \
         run_step keyboard npx playwright test tests/e2e/keyboard-ride.spec.ts --project=desktop ;;
     harness)
-      # Deterministic (seeded pairs): a retry only doubles the ~10 min a project takes on a hosted runner.
-      HARNESS_TIMEOUT_MS="${HARNESS_TIMEOUT_MS:-1500000}" run_step harness npx playwright test tests/e2e/driving-harness.spec.ts --retries=0 ;;
+      # Deterministic (seeded pairs): a retry only doubles the time. ~3 min a project locally; a hosted runner is slower.
+      HARNESS_TIMEOUT_MS="${HARNESS_TIMEOUT_MS:-900000}" run_step harness npx playwright test tests/e2e/driving-harness.spec.ts --retries=0 ;;
     bridges)
       BRIDGE_SWEEP_ALL=1 BRIDGE_SWEEP_OUT="${out}/bridge-sweep-report.json" \
         run_step bridges npx playwright test tests/e2e/bridge-sweep.spec.ts --project=desktop ;;
