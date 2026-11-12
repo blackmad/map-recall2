@@ -151,7 +151,7 @@ Before: default world (generic). After: the runs installed locally (uncommitted)
     type red. A measured per-house tint would need a summer strip.
 - Sarphatistraat 173 (170733) still frames the wrong building, even with bearing 341. The panorama picker chooses a
   Valckenierstraat pano 22.9 m away (otherBuilding 0363100012570341). It needs an `at` point on Sarphatistraat in the
-  `--list` entry. The weesper-after sheet shows its chunk front correctly from the canal side.
+  `--list` entry.
 - Never wrap `frames.ts` in `/tmp/canal-pw.sh`; it takes its own slot. On 2026-11-12 nested wrappers from several
   lanes held all three slots for over 30 minutes.
 - Contact sheets: `block-face-strips/{weesperbuurt,plantage}-20261110/house-frames/`.
