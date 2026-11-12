@@ -5,7 +5,13 @@ const {InventoryTrees}=await import('../public/canal-drive/js/inventory-trees-so
 const oldSource=execFileSync('git',['show','108ccf65:public/canal-drive/js/inventory-trees-source.js'],{encoding:'utf8'}).replace("'../da-costa-block/tree-typology.js'",JSON.stringify(pathToFileURL(process.cwd()+'/public/canal-drive/da-costa-block/tree-typology.js').href));
 const OldTrees=(await import('data:text/javascript;base64,'+Buffer.from(oldSource).toString('base64'))).InventoryTrees;
 // Exact selectors may gain independently tested botanical references; orientation must never alter model construction.
-const modelConstruction=source=>source.slice(source.indexOf('export function normalizedTreeName'));
+// Lane T-shape #371 adds the flagged `?treeShape=1` hook (measured silhouettes from panoramas, a separate typed module);
+// with no shaper registered or the flag off the construction is the pinned one, so the hook is folded back out here.
+const unhooked=source=>source.replace(/\/\/ `\?treeShape=1`[^\n]*\n[^\n]*\nlet shaper=null;\nexport function setTreeShaper\(value\)\{shaper=value\|\|null;\}\n\n/,'')
+  .replace("  const shape=!managed&&shaper?.active()?shaper:null;\n  const archetype=management||(shape?shape.archetype(species,rule?.[1]||'rounded'):rule?.[1]||'rounded');","  const archetype=management||rule?.[1]||'rounded';")
+  .replace('  const out={version:TREE_TYPOLOGY_VERSION,','  return {version:TREE_TYPOLOGY_VERSION,')
+  .replace('\n  return shape?shape.reshape(out,species,tree.heightClass,r,heightClassKnown&&validHeight):out;','');
+const modelConstruction=source=>unhooked(source).slice(source.indexOf('export function normalizedTreeName'));
 assert.equal(modelConstruction(fs.readFileSync('public/canal-drive/da-costa-block/tree-typology.js','utf8')),modelConstruction(execFileSync('git',['show','108ccf65:public/canal-drive/da-costa-block/tree-typology.js'],{encoding:'utf8'})),'authored models and palettes unchanged by orientation');
 const map={addLayer(){},on(){},off(){},triggerRepaint(){},getZoom:()=>17,getBounds:()=>({getWest:()=>4.8999,getEast:()=>4.9001,getSouth:()=>52.3699,getNorth:()=>52.3701})},projection={MercatorCoordinate:{fromLngLat:([x,y])=>({x,y,z:0,meterInMercatorCoordinateUnits:()=>1})}};
 let corrected=0,palmsUnchanged=0;
