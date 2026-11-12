@@ -31,6 +31,7 @@ import { cutBox, type Cut } from './tunnels.js';
 import type { RailSpan } from './railSpans.js';
 import NAMED from '../../../data/crossings/named.json';
 import RING_RAIL from '../../../data/crossings/ring-rail.json';
+import A10 from '../../../data/crossings/a10.json';
 
 export type LngLat = [number, number];
 
@@ -178,7 +179,7 @@ export function validateFile(f: CrossingFile): string[] {
 }
 
 /** Every register file the game reads (reviewed records only take effect: `crossingIndex`). */
-export const CROSSING_FILES: readonly CrossingFile[] = [NAMED as CrossingFile, RING_RAIL as CrossingFile];
+export const CROSSING_FILES: readonly CrossingFile[] = [NAMED as CrossingFile, RING_RAIL as CrossingFile, A10 as CrossingFile];
 export const CROSSINGS: readonly CrossingRecord[] = CROSSING_FILES.flatMap(f => f.records);
 
 /** Two line headings (0..180) within AXIS_TOL_DEG. */

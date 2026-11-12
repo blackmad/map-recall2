@@ -133,11 +133,13 @@ async function crossingRegressions(): Promise<void> {
     const after = await crossingState(store, r), before = await crossingState(noCrossings, r);
     const say = (s: CrossingState) => `spans on deck ${s.spansOnDeck}, spans off deck ${s.spansOffDeck}, cut stations ${s.cutStations}, dark mouths ${s.mouths} (unlisted ${s.unlistedMouths})`;
     console.log(`     ${r.id} before: ${say(before)}`);
+    // A record's `game` override (cuts / portals 'keep') lets the inferred cuts or mouths stand; the rest still holds.
+    const cutsOk = r.game?.cuts === 'keep' || after.cutStations === 0, mouthsOk = r.game?.portals === 'keep' || after.mouths === 0;
     let ok: boolean;
-    if (r.kind === 'rail-over-road') ok = after.spansOffDeck === 0 && after.cutStations === 0 && after.mouths === 0;
-    else if (r.kind === 'level' || r.kind === 'none') ok = after.spansOnDeck + after.spansOffDeck === 0 && after.cutStations === 0 && after.mouths === 0;
-    else if (r.kind === 'road-under') ok = after.unlistedMouths === 0;
-    else ok = after.cutStations === 0 && after.mouths === 0;
+    if (r.kind === 'rail-over-road') ok = after.spansOffDeck === 0 && cutsOk && mouthsOk;
+    else if (r.kind === 'level' || r.kind === 'none') ok = after.spansOnDeck + after.spansOffDeck === 0 && cutsOk && mouthsOk;
+    else if (r.kind === 'road-under') ok = r.game?.portals === 'keep' || after.unlistedMouths === 0;
+    else ok = cutsOk && mouthsOk;
     check(ok, `crossing ${r.id} (${r.kind}): ${say(after)} — ${r.label}`);
   }
 }

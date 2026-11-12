@@ -83,3 +83,16 @@ places are not repeated). `data/crossings/review/ring-rail.json` keeps the 11 re
 at Sloterdijk, and two Zuidasdok structures under construction. The game infers no span, cut or mouth inside any
 ring-rail zone, before or after, so these records change nothing at runtime; they are G1's cap input. Every reviewed
 record, in every area, is pinned by `check-ground-cells.ts --crossings`.
+
+## A10 (2026-11-12)
+
+`data/crossings/a10.json`: 11 reviewed records from 54 drafts. 22 of the drafts lay inside named or ring-rail zones;
+17 groups were rejected, with reasons kept in the review file. The records cover the A10's decks at Sloterdijk and the
+Coen junction, the Henk Sneevlietweg junction, the Vlaardingenlaan west slip, the Amstel bridge, the Kabelweg, the
+Bos en Lommerweg, the Wiltzanghlaan, the Solitudolaan path, and the Kruislaan under the Gooilijn.
+Only one of them changes the runtime: `kruislaan-under-gooilijn`. The Gooilijn tracks there are not OSM bridge ways,
+so the deck becomes their rail span (2 spans, clearance from the estimated soffit). The Kruislaan's real sunken slot
+stays (`game: { cuts: 'keep', portals: 'keep' }`). The pins honour a record's `game` override.
+
+Not drafted, still OPEN: metro station Noord over the bus station (Nieuwe Leeuwarderweg). Also two inferred cuts
+with no BGT structure near 4.9399, 52.3991 (ramp 378320520, slot 605321440).
