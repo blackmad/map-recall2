@@ -6,7 +6,7 @@ import { existsSync, readFileSync } from 'node:fs';
 import { deflateSync, gunzipSync, inflateSync } from 'node:zlib';
 import { readGeoTiff, undoFloatPredictor } from './geotiff';
 import { applyLocalToRd, capLargeHoles, coarsenTile, dropSpecks, decodeTile, dilateMask, downsample, encodeTile, extendTile, findPits, readGroundTile, upsampleTile, fitLocalToRd, GroundField, NODATA, PIT_DEFAULTS, pullPushFill, type GroundIndex, type LocalToRd } from './heightField';
-import { DECK_BLEND_M, DECK_MAX_GRADE, GroundSurface, clampDeckGrade, riderPose, type Vec2 } from './surface';
+import { DECK_BLEND_M, DECK_MAX_GRADE, GroundSurface, SEGMENT_INDEX_MIN, clampDeckGrade, nearestSegment, riderPose, type Vec2 } from './surface';
 import type { RailWay } from './railTracks';
 import { cutIntervals, disc, drapeTriangles, edgeWall, emptyMesh, endCap, gridHeight, merge, reliefGrid, ribbon, vertex, type MeshArrays } from './drape';
 import { bandCoverage, deckStreetTop, DE_CLERCQSTRAAT, KNOWN_SPOT_M, RAIL_ON_BAND_M, shoreSamples, spotDistanceM } from './roadRegressions';
@@ -2592,4 +2592,26 @@ test('groundReachFlag: a query without the key keeps the default; 0 and a distan
     g.location = { search: '?groundReach=220' }; assert.equal(groundReachFlag(), 220);
     g.location = { search: '?groundReach=x' }; assert.equal(groundReachFlag(), REACH_M);
   } finally { g.location = saved; }
+});
+
+test('deck locate: the segment grid answers exactly what the linear scan does (cell -5_2: a 4,660-point profile, 61 s builds)', () => {
+  // A long wiggly profile that doubles back on itself (equal distances to several segments: the lowest index wins).
+  const n = 3000, x = new Float64Array(n), y = new Float64Array(n);
+  for (let i = 0; i < n; i++) { const t = i / 40; x[i] = t * 3 + Math.sin(t) * 20; y[i] = Math.cos(t * 0.7) * 35 + (i > 1500 ? 0.5 : 0); }
+  x[2000] = x[1999]; y[2000] = y[1999]; // a zero-length segment
+  const p = { id: 'long', name: '', family: 'way-deck', x, y, s: new Float64Array(n), h: new Float64Array(n), halfWidth: new Float64Array(n), water: [0, 0], deck: [0, 1], bbox: [0, 0, 0, 0] } as unknown as Parameters<typeof nearestSegment>[0];
+  const linear = (qx: number, qy: number): [number, number, number] => {
+    let best = Infinity, bi = 0, bt = 0;
+    for (let i = 0; i + 1 < n; i++) { const ax = x[i], ay = y[i], dx = x[i + 1] - ax, dy = y[i + 1] - ay, len2 = dx * dx + dy * dy || 1e-9; const t = Math.max(0, Math.min(1, ((qx - ax) * dx + (qy - ay) * dy) / len2)); const ex = ax + dx * t - qx, ey = ay + dy * t - qy, d2 = ex * ex + ey * ey; if (d2 < best) { best = d2; bi = i; bt = t; } }
+    return [bi, bt, best];
+  };
+  assert.ok(n > SEGMENT_INDEX_MIN);
+  let s = 12345;
+  for (let k = 0; k < 4000; k++) {
+    s = (s * 1103515245 + 12345) >>> 0; const qx = -60 + (s / 4294967296) * (x[n - 1] + 120);
+    s = (s * 1103515245 + 12345) >>> 0; const qy = -90 + (s / 4294967296) * 180;
+    assert.deepEqual(nearestSegment(p, qx, qy), linear(qx, qy), `${qx},${qy}`);
+  }
+  // On a vertex shared by two segments, and far outside the grid.
+  for (const [qx, qy] of [[x[700], y[700]], [x[0] - 500, y[0] + 400], [x[n - 1] + 900, -800]]) assert.deepEqual(nearestSegment(p, qx, qy), linear(qx, qy));
 });

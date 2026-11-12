@@ -68,6 +68,57 @@ export function clampDeckGrade(s: Float64Array, h: Float64Array, deck: readonly 
 
 const smoothstep = (t: number) => (t <= 0 ? 0 : t >= 1 ? 1 : t * t * (3 - 2 * t));
 
+/**
+ * The profile segment nearest a point: the lowest index among the segments at the least squared distance (exactly the
+ * linear scan's answer). A profile longer than SEGMENT_INDEX_MIN points gets a grid of its segments, built on first use:
+ * cell -5_2's 4,660-point deck profile made every height query near it scan 4,659 segments, 42 s of the cell's 61 s
+ * build in Node, and the Radarweg place's ground never settled within 90 s (lane G2a round 2, 2026-11-12).
+ */
+export const SEGMENT_INDEX_MIN = 64;
+const SEGMENT_CELL_M = 16;
+interface SegmentGrid { x0: number; y0: number; nx: number; ny: number; cells: Map<number, number[]> }
+const segmentGrids = new WeakMap<DeckProfile, SegmentGrid>();
+function segmentGrid(p: DeckProfile): SegmentGrid {
+  let g = segmentGrids.get(p);
+  if (g) return g;
+  const n = p.x.length; let x0 = Infinity, y0 = Infinity, x1 = -Infinity, y1 = -Infinity;
+  for (let i = 0; i < n; i++) { x0 = Math.min(x0, p.x[i]); y0 = Math.min(y0, p.y[i]); x1 = Math.max(x1, p.x[i]); y1 = Math.max(y1, p.y[i]); }
+  const nx = Math.max(1, Math.ceil((x1 - x0) / SEGMENT_CELL_M) + 1), ny = Math.max(1, Math.ceil((y1 - y0) / SEGMENT_CELL_M) + 1), cells = new Map<number, number[]>();
+  for (let i = 0; i + 1 < n; i++) {
+    const i0 = Math.floor((Math.min(p.x[i], p.x[i + 1]) - x0) / SEGMENT_CELL_M), i1 = Math.floor((Math.max(p.x[i], p.x[i + 1]) - x0) / SEGMENT_CELL_M);
+    const j0 = Math.floor((Math.min(p.y[i], p.y[i + 1]) - y0) / SEGMENT_CELL_M), j1 = Math.floor((Math.max(p.y[i], p.y[i + 1]) - y0) / SEGMENT_CELL_M);
+    for (let j = j0; j <= j1; j++) for (let k = i0; k <= i1; k++) { const key = j * nx + k; const l = cells.get(key); if (l) l.push(i); else cells.set(key, [i]); }
+  }
+  g = { x0, y0, nx, ny, cells }; segmentGrids.set(p, g);
+  return g;
+}
+/** [segment index, t on it, squared distance]. */
+export function nearestSegment(p: DeckProfile, x: number, y: number): [number, number, number] {
+  const n = p.x.length;
+  let best = Infinity, bi = 0, bt = 0;
+  const test = (i: number) => {
+    const ax = p.x[i], ay = p.y[i], dx = p.x[i + 1] - ax, dy = p.y[i + 1] - ay, len2 = dx * dx + dy * dy || 1e-9;
+    const t = Math.max(0, Math.min(1, ((x - ax) * dx + (y - ay) * dy) / len2));
+    const ex = ax + dx * t - x, ey = ay + dy * t - y, d2 = ex * ex + ey * ey;
+    if (d2 < best || (d2 === best && i < bi)) { best = d2; bi = i; bt = t; }
+  };
+  if (n < SEGMENT_INDEX_MIN) { for (let i = 0; i + 1 < n; i++) test(i); return [bi, bt, best]; }
+  const g = segmentGrid(p), ci = Math.floor((x - g.x0) / SEGMENT_CELL_M), cj = Math.floor((y - g.y0) / SEGMENT_CELL_M);
+  // Rings of cells outward: a segment in ring r is at least (r - 1) cells away, so stop once that exceeds the best.
+  const maxR = Math.max(g.nx, g.ny) + Math.max(Math.abs(ci), Math.abs(cj)) + 1;
+  for (let r = 0; r <= maxR; r++) {
+    if (r >= 1 && ((r - 1) * SEGMENT_CELL_M) ** 2 > best) break;
+    for (let j = Math.max(0, cj - r); j <= Math.min(g.ny - 1, cj + r); j++) {
+      const edge = j === cj - r || j === cj + r, step = edge ? 1 : 2 * r || 1;
+      for (let k = ci - r; k <= ci + r; k += step) {
+        if (k < 0 || k >= g.nx) continue;
+        const l = g.cells.get(j * g.nx + k); if (l) for (const i of l) test(i);
+      }
+    }
+  }
+  return [bi, bt, best];
+}
+
 export class GroundSurface {
   readonly decks: DeckSurface[] = [];
   /** Decks by BUCKET_M square, keyed bucketKey(bx, by) (a number: the template-string key allocated on every lookup). */
@@ -197,12 +248,7 @@ export class GroundSurface {
     }
     const deck: DeckSurface = { profile, z, ends, span, ease };
     this.decks.push(deck);
-    const [x0, y0, x1, y1] = profile.bbox, pad = DECK_BLEND_M;
-    for (let bx = Math.floor((x0 - pad) / BUCKET_M); bx <= Math.floor((x1 + pad) / BUCKET_M); bx++)
-      for (let by = Math.floor((y0 - pad) / BUCKET_M); by <= Math.floor((y1 + pad) / BUCKET_M); by++) {
-        const k = bucketKey(bx, by);
-        (this.buckets.get(k) ?? this.buckets.set(k, []).get(k)!).push(deck);
-      }
+    this.indexDeck(deck);
     return deck;
   }
 
@@ -213,12 +259,33 @@ export class GroundSurface {
   widenDeck(deck: DeckSurface, edges: { left: Float64Array; right: Float64Array }, bbox: [number, number, number, number]): void {
     deck.profile.edges = edges;
     deck.profile.bbox = bbox;
-    const [x0, y0, x1, y1] = bbox, pad = DECK_BLEND_M;
-    for (let bx = Math.floor((x0 - pad) / BUCKET_M); bx <= Math.floor((x1 + pad) / BUCKET_M); bx++)
-      for (let by = Math.floor((y0 - pad) / BUCKET_M); by <= Math.floor((y1 + pad) / BUCKET_M); by++) {
-        const k = bucketKey(bx, by), list = this.buckets.get(k) ?? this.buckets.set(k, []).get(k)!;
-        if (!list.includes(deck)) list.push(deck);
-      }
+    this.indexDeck(deck);
+  }
+
+  /**
+   * Register a deck in the BUCKET_M squares within its reach of the centreline: the widest half-width (riding edges
+   * included) + DECK_BLEND_M. height and deckWeight give a deck no weight beyond that lateral distance, so this is exact;
+   * registering the whole bbox (until round 2 of G2a #372) put a 2.3 km A10 way-deck in ~1,500 squares it never
+   * reaches, and every point there paid a nearest-segment search (cell -5_2 took 61 s to build and never settled).
+   */
+  private indexDeck(deck: DeckSurface): void {
+    const p = deck.profile, n = p.x.length;
+    let hw = 0;
+    for (let i = 0; i < n; i++) hw = Math.max(hw, p.halfWidth[i], p.edges ? p.edges.left[i] : 0, p.edges ? p.edges.right[i] : 0);
+    const R = hw + DECK_BLEND_M + 0.5, half = BUCKET_M / 2, reach = R + half * Math.SQRT2;
+    const seg = (cx: number, cy: number, i: number) => {
+      const ax = p.x[i], ay = p.y[i], dx = p.x[i + 1] - ax, dy = p.y[i + 1] - ay, len2 = dx * dx + dy * dy || 1e-9;
+      const t = Math.max(0, Math.min(1, ((cx - ax) * dx + (cy - ay) * dy) / len2));
+      return Math.hypot(ax + dx * t - cx, ay + dy * t - cy);
+    };
+    const put = (k: number) => { const list = this.buckets.get(k) ?? this.buckets.set(k, []).get(k)!; if (!list.includes(deck)) list.push(deck); };
+    for (let i = 0; i + 1 < Math.max(2, n); i++) {
+      const j = Math.min(n - 1, i + 1);
+      const bx0 = Math.floor((Math.min(p.x[i], p.x[j]) - R) / BUCKET_M), bx1 = Math.floor((Math.max(p.x[i], p.x[j]) + R) / BUCKET_M);
+      const by0 = Math.floor((Math.min(p.y[i], p.y[j]) - R) / BUCKET_M), by1 = Math.floor((Math.max(p.y[i], p.y[j]) + R) / BUCKET_M);
+      for (let bx = bx0; bx <= bx1; bx++) for (let by = by0; by <= by1; by++)
+        if (n < 2 || seg((bx + 0.5) * BUCKET_M, (by + 0.5) * BUCKET_M, Math.min(i, n - 2)) <= reach) put(bucketKey(bx, by));
+    }
   }
 
   /** 0 at either deck end → 1 once past that end's ease. */
@@ -247,13 +314,7 @@ export class GroundSurface {
   /** Where (x, y) sits relative to a deck: station index/fraction, lateral distance, deck z there. */
   static locate(deck: DeckSurface, x: number, y: number): { d: number; z: number; halfWidth: number; s: number; lateral: number } {
     const p = deck.profile, n = p.x.length;
-    let best = Infinity, bi = 0, bt = 0;
-    for (let i = 0; i + 1 < n; i++) {
-      const ax = p.x[i], ay = p.y[i], dx = p.x[i + 1] - ax, dy = p.y[i + 1] - ay, len2 = dx * dx + dy * dy || 1e-9;
-      const t = Math.max(0, Math.min(1, ((x - ax) * dx + (y - ay) * dy) / len2));
-      const ex = ax + dx * t - x, ey = ay + dy * t - y, d2 = ex * ex + ey * ey;
-      if (d2 < best) { best = d2; bi = i; bt = t; }
-    }
+    const [bi, bt, best] = nearestSegment(p, x, y);
     const lerp = (arr: Float64Array) => arr[bi] + (arr[Math.min(n - 1, bi + 1)] - arr[bi]) * bt;
     const s = lerp(p.s);
     // DeckProfile.edges (bridgeGaps): the half-width on the point's side of the road line.
