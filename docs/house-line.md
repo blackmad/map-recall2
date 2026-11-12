@@ -2052,7 +2052,7 @@ Node 32 s, Chromium 8 s (most of the Node time is the ortho fronts at 1800 px).
 Not reproduced: the city-look atlas shader, anisotropic filtering, cast shadows, environment maps. The release review
 "at gallery size from all sides" can use the Node orbit (`views.ts <id> -`) for its first look; the release decision
 itself should stay on a Chromium or in-game frame until the measureFacade knife edges above are hardened (OPEN).
-## §7 Oud-West period-palette measurement (lane #373, 2026-11-10)
+## §9 Oud-West period-palette measurement (lane #373, 2026-11-10)
 
 Question: whole 1875-1910 rows that panoramas show as dark purple-brown brick draw bright orange-red. Tool:
 `scripts/house-specs/oudwest-palette.ts` (`select`, `measure`) and `oudwest-palette-report.ts` (`report`, `pairs`), Node only, staging in
