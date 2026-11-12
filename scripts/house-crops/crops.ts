@@ -13,6 +13,7 @@ import { lensFor } from '../da-costa-block/neighbourhood-core.ts';
 import { AMSTERDAM_WORLD_ALIGNED, rectifyFacade } from '../../src/canalRecall/facade/rectify.ts';
 import { medianFuse, planStrip, type FrontSpan, type PanoRecord } from '../../src/canalRecall/blockFace/strip.ts';
 import { lngLatToRd } from '../../src/canalRecall/facade/rdNew.ts';
+import { defaultPick } from './f3/rank.ts';
 import { bearingOf, secondBearings, isLeafOff } from './f3/bearings.ts';
 import { loadBuurt, pandsInBuurt, centroid, type Buurt } from './buurt.ts';
 import { RULES_VERSION, manifestPath, type Entry, type Manifest, type Session } from './manifest.ts';
@@ -204,7 +205,9 @@ export async function processPand(fp: Footprint, wall: Wall, face: WallRef[], ar
   // F3 cut mode: the gate already chose a candidate on its thumbnail; rectify only that panorama (the one full-size fetch of the pand).
   const prior = options.cutFrom ? await fs.readFile(path.join(archiveRoot, 'pand-crops', idOf(fp.id), 'front.json'), 'utf8').then(JSON.parse).catch(() => null) : null;
   if (options.cutFrom) {
-    const g = options.cutFrom[idOf(fp.id)], file = g?.chosen ?? g?.best, cand = (prior?.candidates as Tried[] | undefined)?.find(t => t.file === file);
+    const g = options.cutFrom[idOf(fp.id)], file = g?.chosen ?? g?.best, cands = (prior?.candidates as Tried[] | undefined) ?? [];
+    // no candidate passed the hard flags (a narrow wall, a blocked ray): cut today's default pick anyway, as the pipeline always did, so the pand still has a (flagged) crop
+    const cand = cands.find(t => t.file === file) ?? defaultPick(cands.filter(t => t.flags));
     const pick = cand && ranked.find(c => c.panoId === cand.panoId);
     if (!pick) return { status: 'no-pano', note: 'no gate pick to cut (no thumbnail candidate passed the hard flags)' };
     years = [pick];

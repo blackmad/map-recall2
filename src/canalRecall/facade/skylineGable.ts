@@ -55,7 +55,7 @@ export function classifySkyline(c: RgbCrop): SkylineRead {
   const lo = Math.min(...prof), hi = Math.max(...prof), range = hi - lo, n = prof.length, features: Record<string, number> = {skyShare, range, widthM: n / c.ppm};
   // a front that reaches the crop's top edge has its crown cut off: no reading
   if (top.some((v, x) => v !== null && x >= trim && x < W - trim && v * c.ppm >= c.height - 3)) return {cls: null, why: 'crown cut by the crop', rangeM: range, features};
-  if (range < 0.7) return {cls: 'cornice', why: 'flat top', rangeM: range, features};
+  if (range < 1.5) return {cls: 'cornice', why: 'flat top', rangeM: range, features};
   const norm = Array.from({length: N}, (_, i) => { const a = Math.floor(i / N * n), b = Math.max(a + 1, Math.floor((i + 1) / N * n)); return (median(prof.slice(a, b)) - lo) / range; });
   if (norm.filter(v => v > 0.85).length >= N * 0.7) return {cls: 'cornice', why: 'broad top', rangeM: range, features};
   let best: GableClass | null = null, bd = Infinity; const dist: Record<string, number> = {};

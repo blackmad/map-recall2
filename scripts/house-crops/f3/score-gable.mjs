@@ -4,7 +4,9 @@ import fs from 'node:fs';
 import sharp from 'sharp';
 import { classifySkyline } from '../../../src/canalRecall/facade/skylineGable.ts';
 
-const ARCH = process.env.HOUSE_CROPS_ARCHIVE ?? '/Users/blackmad/Code/map-recall2-source-data-h5h';
+const argv = n => { const i = process.argv.indexOf(`--${n}`); return i >= 0 ? process.argv[i + 1] : undefined; };
+const ARCH = argv('archive') ?? process.env.HOUSE_CROPS_ARCHIVE ?? '/Users/blackmad/Code/map-recall2-source-data-h5h';
+const FRESH = !!argv('archive'); // --archive <dir>: score the crops a new run made (e.g. with --headroom) for the pands it holds, instead of the H5h crops
 const MAP = { cornice: 'cornice', flat: 'cornice', point: 'plain', plain: 'plain', step: 'step', neck: 'neck', bell: 'bell', spout: 'neck' };
 const items = [];
 for (const p of JSON.parse(fs.readFileSync('data/house-line/hand-set-v1.json', 'utf8')).pands) {
@@ -13,6 +15,7 @@ for (const p of JSON.parse(fs.readFileSync('data/house-line/hand-set-v1.json', '
   items.push({ set: 'hand-set-v1', id: p.pandId, file: f, truth: MAP[g], ppm: JSON.parse(fs.readFileSync(`${ARCH}/pand-crops/${p.pandId}/front.json`, 'utf8')).crop.pixelsPerMetre });
 }
 for (const j of JSON.parse(fs.readFileSync('/Users/blackmad/Code/map-recall2/.cache/jev-facades/set.json', 'utf8'))) {
+  if (FRESH) { const g = j.truth?.gable, f = `${ARCH}/pand-crops/${j.pandId}/front.jpg`; if (g && MAP[g] && fs.existsSync(f) && !items.some(i => i.id === j.pandId)) items.push({ set: 'j1', id: j.pandId, file: f, truth: MAP[g], ppm: JSON.parse(fs.readFileSync(`${ARCH}/pand-crops/${j.pandId}/front.json`, 'utf8')).crop.pixelsPerMetre }); continue; }
   const g = j.truth?.gable; if (!g || !MAP[g] || !fs.existsSync(j.image) || items.some(i => i.id === j.pandId)) continue;
   items.push({ set: 'j1', id: j.pandId, file: j.image, truth: MAP[g], ppm: j.widthPx / j.wallWidthM, register: j.registerGable ?? null });
 }
