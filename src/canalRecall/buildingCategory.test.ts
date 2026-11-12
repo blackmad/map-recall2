@@ -10,7 +10,7 @@ import {MANUAL_LANDMARKS, MANUAL_ORDINARY_BUILDINGS} from './landmarks/manualMod
 import {ORDINARY_BUILDINGS, ORDINARY_CATEGORY_BUILDINGS, SHADOWED_BY_LANDMARK, STREET_SURVEY_HOUSES} from './landmarks/ordinaryModels.ts';
 import {GAME_BUILDING_MODELS} from './landmarks/browser.ts';
 import {chunkSpecFor} from './landmarks/ordinaryChunks.ts';
-import {FURNITURE_TRI_CAP} from './streetFurniture/models.ts';
+import {triCapOf} from './streetFurniture/models.ts';
 import {mergeManualPoiFeatures, manualPoiModelIds} from './game/manualPoiCatalog.ts';
 
 const DATA = 'public/canal-drive/ordinary-buildings-data';
@@ -88,8 +88,8 @@ test('street furniture is its own category: drawn and catalogued, never a landma
     assert.equal(m.category, 'street-furniture', m.id);
     assert.ok(fs.existsSync(`public/canal-drive/${m.modelUrl.replace(/^\.\//, '')}`), m.modelUrl);
     // The per-model cap lives with the models (160 since the 2026-11-07 container re-shape: corner strips, doors,
-    // crosses and pictogram the user's photos show; rest 150, glass 140, paper 133). One source, so the two cannot drift.
-    assert.ok(m.triangles > 0 && m.triangles <= FURNITURE_TRI_CAP, `${m.id}: ${m.triangles}`);
+    // crosses and pictogram the user's photos show; rest 150, glass 140, paper 133); per-model exceptions in FURNITURE_TRI_CAPS (the krul's curves, 1,500). One source, so the two cannot drift.
+    assert.ok(m.triangles > 0 && m.triangles <= triCapOf(m.id), `${m.id}: ${m.triangles} > cap ${triCapOf(m.id)}`);
   }
   // No furniture model is in the game's building draw list, the landmark list or the POI catalogue.
   for (const m of GAME_BUILDING_MODELS) assert.ok(!ids.has(m.id), m.id);
