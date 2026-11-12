@@ -1,5 +1,5 @@
 // The held walls of the house-spec extract and what they draw (lane H9g, #345).
-//   npx tsx scripts/house-specs/held-wall-audit.ts [--dir=house-specs] [--json]
+//   npx tsx scripts/house-specs/held-wall-audit.ts [--dir=house-specs] [--json]   (BRICK_LIFT=v2: an unstated material counts as brick)
 // A pand is held when the pale-warm guard (wallColour.ts paleWarmHeld, via decorate.ts specWallColour) refuses its measured
 // wall; it then keeps the period colour (bayLook.ts), measured here on the game chain with the photo look. Prints the held
 // count, how many draw a grey/neutral wall, and the held brick pands that do (heldBrickWall must make that zero).
@@ -8,7 +8,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { EXTRACT, ROOT, gameChain, loadTile, readJson } from '../world/pipeline.ts';
 import { meshBuildingFor } from '../../src/canalRecall/threeBuildingFeatures.ts';
-import { specWallColour, type HouseSpecView } from '../../src/canalRecall/houseSpec/decorate.ts';
+import { specWallColour, specWallIsBrick, type HouseSpecView } from '../../src/canalRecall/houseSpec/decorate.ts';
 import { wallColourFamily } from '../../src/canalRecall/houseSpec/wallColour.ts';
 
 const dir = process.argv.find(a => a.startsWith('--dir='))?.slice(6) ?? 'house-specs';
@@ -28,7 +28,7 @@ for (const tile of tiles.sort()) {
     const m = meshBuildingFor(r.styled as never, 'photo' as never);
     if (!m) continue;
     const finish = String(p.registerFinish ?? ''), material = String(view.wallMaterial ?? '');
-    rows.push({ id: String(p.id), wall: m.wallHex, family: wallColourFamily(m.wallHex), material, finish, brick: material === 'brick' || (!material && finish === 'brick') });
+    rows.push({ id: String(p.id), wall: m.wallHex, family: wallColourFamily(m.wallHex), material, finish, brick: specWallIsBrick(view, p) });
   }
 }
 const grey = rows.filter(r => r.family.startsWith('neutral')), greyBrick = grey.filter(r => r.brick);
