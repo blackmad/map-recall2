@@ -23,10 +23,12 @@ export const WALL_EXTRA_M = 1.5; // above the tile height: gables, parapets, roo
 
 type Decoded = { width: number; height: number; data: Uint8Array };
 const lru: Array<{ id: string; img: Decoded }> = [];
+/** F3: `loadPano.prefer = 'equirectangular_medium'` reads the 4000 px panorama (0.8 MB, about 40 px/m at 15 m) instead of the 8000 px one (2.8 MB). */
+export const panoSize: { prefer: 'equirectangular_full' | 'equirectangular_medium' } = { prefer: 'equirectangular_full' };
 export async function loadPano(pick: PanoPick): Promise<{ img: Decoded; resolution: string } | null> {
   const hit = lru.find(e => e.id === pick.panoId);
   if (hit) return { img: hit.img, resolution: 'cached' };
-  for (const key of ['equirectangular_full', 'equirectangular_medium']) {
+  for (const key of panoSize.prefer === 'equirectangular_medium' ? ['equirectangular_medium', 'equirectangular_full'] : ['equirectangular_full', 'equirectangular_medium']) {
     const href = pick.record._links?.[key]?.href;
     if (!href) continue;
     try {
@@ -69,7 +71,9 @@ export function washedOutFraction(rgba: Uint8ClampedArray | Uint8Array, width: n
 export const DEFAULT_MAX_WALL_HEIGHT_M = 32;
 export const BASE_MAX_PIXELS = 1_800_000;
 /** Height (m) a crop covers: the tile height + WALL_EXTRA_M (at least 4 m), capped at `maxHeightM`. */
-export function wallHeight(tileHeightM: number, maxHeightM = DEFAULT_MAX_WALL_HEIGHT_M) { return Math.min(Math.max(tileHeightM, 4) + WALL_EXTRA_M, maxHeightM); }
+/** F3 crown headroom: the crop is `factor` x the 3DBAG height (+ WALL_EXTRA_M), so the gable above the eaves is in the picture (the height is the eaves/roof-plane height and cut a third of the crowns). 1 = the old crop. */
+export const headroom = { factor: 1 };
+export function wallHeight(tileHeightM: number, maxHeightM = DEFAULT_MAX_WALL_HEIGHT_M) { return Math.min(Math.max(tileHeightM, 4) * headroom.factor + WALL_EXTRA_M, maxHeightM); }
 /** Pixel budget of a crop `heightM` tall: BASE_MAX_PIXELS up to the default cap, then in proportion to the height. */
 export function maxPixelsFor(heightM: number) { return Math.round(BASE_MAX_PIXELS * Math.max(1, heightM / DEFAULT_MAX_WALL_HEIGHT_M)); }
 
@@ -96,7 +100,7 @@ export function rectifyWall(pano: Decoded, pick: PanoPick, wall: Wall, tileHeigh
 }
 
 /** Aimed perspective view from the chosen panorama at the wall centre, via the public thumbnail endpoint. */
-export async function aimedThumbnail(pick: PanoPick, wall: Wall, tileHeightM: number, maxHeightM = DEFAULT_MAX_WALL_HEIGHT_M): Promise<{ jpeg: Buffer; url: string; fovDeg: number; headingDeg: number } | null> {
+export async function aimedThumbnail(pick: PanoPick, wall: Wall, tileHeightM: number, maxHeightM = DEFAULT_MAX_WALL_HEIGHT_M, width = 1000): Promise<{ jpeg: Buffer; url: string; fovDeg: number; headingDeg: number } | null> {
   const [lngC, latC] = rdToLngLat(wall.mid);
   const cam = pick.record.geometry.coordinates;
   const dx = (lngC - cam[0]) * 111320 * Math.cos(latC * Math.PI / 180), dy = (latC - cam[1]) * 110540;
@@ -104,10 +108,10 @@ export async function aimedThumbnail(pick: PanoPick, wall: Wall, tileHeightM: nu
   const need = Math.max(wall.len / 2 + 1.5, h / 2 + 1);
   const fov = Math.round(Math.min(100, Math.max(40, 2 * Math.atan(need / d) * 180 / Math.PI)));
   const pitch = Math.round(Math.atan((h / 2 - 2.4) / d) * 180 / Math.PI);
-  const url = `https://api.data.amsterdam.nl/panorama/thumbnail/${pick.panoId}/?width=1000&aspect=1&fov=${fov}&heading=${Math.round(heading)}&pitch=${pitch}`;
+  const url = `https://api.data.amsterdam.nl/panorama/thumbnail/${pick.panoId}/?width=${width}&aspect=1&fov=${fov}&heading=${Math.round(heading)}&pitch=${pitch}`;
   try {
     const bytes = await cachedBytes(url, '.jpg');
-    const out = await sharp(bytes).resize({ width: 1000, height: 1000, fit: 'inside', withoutEnlargement: true }).jpeg({ quality: 80 }).toBuffer();
+    const out = await sharp(bytes).resize({ width, height: width, fit: 'inside', withoutEnlargement: true }).jpeg({ quality: 80 }).toBuffer();
     return { jpeg: out, url, fovDeg: fov, headingDeg: Math.round(heading) };
   } catch { return null; }
 }

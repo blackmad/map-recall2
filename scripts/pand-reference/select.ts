@@ -12,7 +12,8 @@ export type Selection = {
   pandId: string; footprint: Footprint; wall: Wall | null; wallNote: string; primary: PanoPick | null; alt: PanoPick | null; candidates: number; otherWalls?: Wall[];
 };
 
-export const options: { preferBearingDeg?: number } = {};
+/** `facingFirst` (F3, #381): among the walls on the nearest road (6 m buckets) the one whose outward normal points most squarely at the road wins, the longest only breaks ties (a long side wall or a rear wall no longer beats the front). */
+export const options: { preferBearingDeg?: number; facingFirst?: boolean } = {};
 const ccw = (ring: Rd[]) => { let a = 0; for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) a += ring[j].x * ring[i].y - ring[i].x * ring[j].y; return a > 0 ? ring : [...ring].reverse(); };
 
 export function exposedWalls(fp: Footprint, others: Footprint[]): Wall[] {
@@ -76,7 +77,7 @@ export async function pickWall(fp: Footprint, others: Footprint[]): Promise<{ wa
       const near = facing.filter(w => { const b = (Math.atan2(w.nx, w.ny) * 180 / Math.PI + 360) % 360, dd = Math.abs(((b - options.preferBearingDeg! + 540) % 360) - 180); return dd < 50; });
       if (near.length) cands = near;
     }
-    cands.sort((p, q) => Math.floor(p.roadDistM / 6) - Math.floor(q.roadDistM / 6) || q.len - p.len);
+    cands.sort((p, q) => Math.floor(p.roadDistM / 6) - Math.floor(q.roadDistM / 6) || (options.facingFirst ? Math.round(q.facing * 10) - Math.round(p.facing * 10) : 0) || q.len - p.len);
     const pool = [cands[0]];
     return { wall: pool.sort((p, q) => p.roadDistM - q.roadDistM)[0], note: 'longest wall on the nearest road' + (options.preferBearingDeg !== undefined ? ` (preferred bearing ${options.preferBearingDeg})` : ''), others: walls };
   }

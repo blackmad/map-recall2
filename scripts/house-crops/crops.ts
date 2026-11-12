@@ -8,7 +8,7 @@ import jpeg from 'jpeg-js';
 import sharp from 'sharp';
 import { http, neighbourhood, CACHE_DIR, panoTracker, purgeFiles, type Footprint } from '../pand-reference/core.ts';
 import { listPanos, pickWall, rankPanos, options as selectOptions, type PanoPick, type Wall } from '../pand-reference/select.ts';
-import { loadPano, rectifyWall, wallHeight } from '../pand-reference/rectify.ts';
+import { loadPano, rectifyWall, wallHeight, aimedThumbnail, panoSize, headroom } from '../pand-reference/rectify.ts';
 import { lensFor } from '../da-costa-block/neighbourhood-core.ts';
 import { AMSTERDAM_WORLD_ALIGNED, rectifyFacade } from '../../src/canalRecall/facade/rectify.ts';
 import { medianFuse, planStrip, type FrontSpan, type PanoRecord } from '../../src/canalRecall/blockFace/strip.ts';
@@ -22,7 +22,7 @@ import { DISK_FLOOR_BYTES, diskGate, THRESHOLDS, usability, penalty, rayBlocked,
 export const HELP = `house:crops - rectified, quality-flagged facade crops for one buurt (house line station 4a)
 
   npm run house:crops -- --buurt <code|cbs|name> [--pand <id>] [--resume] [--dry-run] [--rate-ms 500]
-                         [--archive <dir>] [--limit <n>] [--years <n>] [--all-years] [--offline] [--keep-panoramas] [--bearings] [--restart] [--report] [--prefer-bearing <deg>] [--help]
+                         [--archive <dir>] [--limit <n>] [--years <n>] [--all-years] [--offline] [--keep-panoramas] [--bearings] [--thumbs [--thumb-px 500]] [--cut-from <gate.json>] [--medium-pano] [--headroom 1.3] [--facing-first] [--restart] [--report] [--prefer-bearing <deg>] [--help]
 
   --buurt <key>     CBS buurt: 4-letter code (AB07), CBS code (BU0363AB07) or name (Bloemgrachtbuurt). Required.
   --pand <id,id>   process only these pands (16-digit BAG ids, with or without NL.IMBAG.Pand.); they must lie in the buurt.
@@ -39,6 +39,11 @@ export const HELP = `house:crops - rectified, quality-flagged facade crops for o
   --all-years       judge-picker mode: try every year, archive each crop as <pand>/years/<year>.jpg (pick.ts then judges and chooses).
   --keep-panoramas  keep the source panoramas in the cache; by default a finished run purges the panoramas it touched (the crops and their panorama ids are archived).
   --bearings        F3 (#381): also try, per mission year, a second panorama seen from another side of the wall normal (>= 10 deg apart, clear ray, leaf-off first); with --all-years they are archived as years/<year>-b.jpg. The default pick ignores them.
+  --thumbs          F3 thumbnail phase: only the aimed thumbnail of each candidate panorama (about 35 KB each) is fetched; archives thumbs/*.jpg and front.json candidates, no front.jpg. Use with --all-years --bearings --years N.
+  --cut-from <f>    F3 cut phase: <f> is f3/gate.ts's gate-*.json; rectifies only the gate's pick per pand (the one panorama fetch), keeping the thumbnail candidates in front.json as thumbCandidates.
+  --medium-pano     read the 4000 px panorama (0.8 MB, about 40 px/m at 15 m) instead of the 8000 px one (2.8 MB).
+  --headroom <f>    F3: crop height = f x the 3DBAG height + 1.5 m (1.3 puts the crown in the picture; default 1, the old crop).
+  --facing-first    F3: among the walls on the nearest road, the one facing it most squarely wins (the longest only breaks ties).
   --offline         a panorama or list that is not in the cache is skipped, never downloaded (re-rectification costs no requests).
   --limit <n>       stop after n pands (smoke runs); the manifest stays resumable.
   --report          print the coverage table and write the contact sheet (artifacts/house-crops/<code>-sheet.png), no crops.
@@ -93,8 +98,8 @@ type Made = { jpeg: Buffer; width: number; height: number; ppm: number; flags: C
 
 const r3 = (v: number) => round(v, 3);
 /** All flags of one crop from its decoded pixels plus the pick's geometry. */
-function flagsFor(rgba: Uint8ClampedArray | Uint8Array, alpha: Uint8Array, width: number, height: number, pick: { distM: number; obliquityDeg: number }, o: { blocked: boolean; wallWidthM: number; strip: boolean }): CropFlags {
-  const m = measureCrop(rgba, alpha, width, height, o.strip ? 40 : 50);
+function flagsFor(rgba: Uint8ClampedArray | Uint8Array, alpha: Uint8Array, width: number, height: number, pick: { distM: number; obliquityDeg: number }, o: { blocked: boolean; wallWidthM: number; strip: boolean; ppm?: number }): CropFlags {
+  const m = measureCrop(rgba, alpha, width, height, o.ppm ?? (o.strip ? 40 : 50));
   return { foliage: r3(m.foliage), foliagePlain: r3(m.foliagePlain), wbApplied: m.wbApplied, washedOut: r3(m.washedOut), missing: r3(m.missing), voidShare: r3(m.voidShare), occluderShare: r3(m.occluderShare), maskedShare: r3(m.maskedShare), trunkShare: r3(m.trunkShare), vehicleShare: r3(m.vehicleShare),
     obliquity: round(pick.obliquityDeg, 1), cameraDistance: round(pick.distM, 1), rayBlocked: o.blocked, wallWidthM: round(o.wallWidthM, 2), heightCover: r3(m.heightCover), edgeDensity: r3(m.edgeDensity), seamStep: round(m.seamStep, 1), strip: o.strip };
 }
@@ -156,8 +161,35 @@ export function yearCandidates(ranked: PanoPick[], tier: (c: PanoPick) => number
 }
 
 /** allYears (H4c --all-years): keep going after a usable crop and archive every year's crop as years/<year>.jpg for the judge picker; offline: a year whose panorama is not in the cache is skipped, not fetched. */
-export const options = { maxYears: 6, allYears: false, offline: false, bearings: false };
+export const options = { maxYears: 6, allYears: false, offline: false, bearings: false, thumbs: false, thumbPx: 500, cutFrom: null as Record<string, { chosen: string | null; best: string | null }> | null };
 type Tried = { second?: boolean; bearingDeg?: number; leafOff?: boolean; year: number; panoId: string; date: string; usable: boolean; reasons: string[]; method: 'wall' | 'strip'; obliquity: number; foliage: number; flags?: CropFlags; file?: string };
+
+
+const secondsOf = (ranked: PanoPick[], years: PanoPick[], wall: Wall, tier: (c: PanoPick) => number): PanoPick[] => (options.bearings ? secondBearings(ranked, years, c => bearingOf(c, wall), tier) : []);
+
+/**
+ * F3 thumbnail phase: for every candidate panorama (best years + second bearings) fetch only the aimed perspective thumbnail (public
+ * endpoint, ~35 KB at 500 px against 0.8-2.8 MB for the panorama), measure the same flags on it, archive it as thumbs/<year>[-b].jpg and
+ * write front.json (candidates, no front.jpg). The gate (f3/gate.ts) ranks them; `--cut-from <gate.json>` then rectifies the one pick.
+ */
+async function thumbPand(fp: Footprint, wall: Wall, years: PanoPick[], seconds: PanoPick[], isBlocked: (rec: any) => boolean, ranked: PanoPick[], archiveRoot: string): Promise<Entry> {
+  const id = idOf(fp.id), dir = path.join(archiveRoot, 'pand-crops', id), td = path.join(dir, 'thumbs'), tried: any[] = [];
+  await fs.mkdir(td, { recursive: true });
+  for (const pick of [...years, ...seconds]) {
+    const isSecond = !years.includes(pick), t = await aimedThumbnail(pick, wall, fp.height, undefined, options.thumbPx).catch(() => null);
+    if (!t) continue;
+    const d = jpeg.decode(t.jpeg, { useTArray: true }), alpha = new Uint8Array(d.width * d.height).fill(255);
+    const ppm = d.width / (2 * Math.max(pick.distM, 4) * Math.tan(t.fovDeg / 2 * Math.PI / 180));
+    const flags = flagsFor(d.data, alpha, d.width, d.height, pick, { blocked: isBlocked(pick.record), wallWidthM: wall.len, strip: false, ppm });
+    const u = usability(flags), file = `thumbs/${pick.missionYear}${isSecond ? '-b' : ''}.jpg`;
+    await fs.writeFile(path.join(dir, file), t.jpeg);
+    tried.push({ year: pick.missionYear, panoId: pick.panoId, panoIds: [pick.panoId], date: pick.timestamp.slice(0, 10), usable: u.usable, reasons: u.reasons, method: 'wall', obliquity: flags.obliquity, foliage: flags.foliage, flags, file, second: isSecond, bearingDeg: +bearingOf(pick, wall).toFixed(1), leafOff: isLeafOff(pick.timestamp), thumb: { fovDeg: t.fovDeg, headingDeg: t.headingDeg, px: d.width, ppm: +ppm.toFixed(1) } });
+  }
+  if (!tried.length) return { status: 'error', note: 'no thumbnail could be fetched' };
+  const first = tried[0];
+  await fs.writeFile(path.join(dir, 'front.json'), JSON.stringify({ pandId: fp.id, thumbOnly: true, wall: { a: [round(wall.a.x, 2), round(wall.a.y, 2)], b: [round(wall.b.x, 2), round(wall.b.y, 2)], lenM: round(wall.len, 2), normal: [round(wall.nx, 3), round(wall.ny, 3)], roadDistM: round(wall.roadDistM, 1), crs: 'EPSG:28992' }, candidates: tried, missionYearsAvailable: [...new Set(ranked.map(c => c.missionYear))].sort(), attribution: ATTRIBUTION, createdAt: new Date().toISOString() }, null, 1) + '\n');
+  return { status: 'ok', method: 'wall', usable: first.usable, reasons: first.reasons, flags: first.flags, archive: `pand-crops/${id}`, panoIds: [first.panoId], date: first.date, attempts: tried.length, yearsTried: tried.length };
+}
 
 export async function processPand(fp: Footprint, wall: Wall, face: WallRef[], archiveRoot: string): Promise<Entry> {
   const panos = await panosNear(wall.mid);
@@ -168,13 +200,22 @@ export async function processPand(fp: Footprint, wall: Wall, face: WallRef[], ar
   const tier = (c: PanoPick) => (isBlocked(c.record) ? 2 : 0) + (c.obliquityDeg > THRESHOLDS.straightDeg ? 1 : 0);
   const ranked = rankPanos(wall, panos);
   if (!ranked.length) return { status: 'no-pano', note: `no panorama 5-35 m from the wall within ${THRESHOLDS.fallbackObliquityDeg} deg (${panos.length} listed)` };
-  const years = yearCandidates(ranked, tier, options.maxYears);
+  let years = yearCandidates(ranked, tier, options.maxYears);
+  // F3 cut mode: the gate already chose a candidate on its thumbnail; rectify only that panorama (the one full-size fetch of the pand).
+  const prior = options.cutFrom ? await fs.readFile(path.join(archiveRoot, 'pand-crops', idOf(fp.id), 'front.json'), 'utf8').then(JSON.parse).catch(() => null) : null;
+  if (options.cutFrom) {
+    const g = options.cutFrom[idOf(fp.id)], file = g?.chosen ?? g?.best, cand = (prior?.candidates as Tried[] | undefined)?.find(t => t.file === file);
+    const pick = cand && ranked.find(c => c.panoId === cand.panoId);
+    if (!pick) return { status: 'no-pano', note: 'no gate pick to cut (no thumbnail candidate passed the hard flags)' };
+    years = [pick];
+  }
   let best: Made | null = null, attempts = 0, bestYear = 0;
   const tried: Tried[] = [];
   const better = (a: Made, b: Made) => { const ra = usability(a.flags).reasons.length, rb = usability(b.flags).reasons.length; return ra < rb || (ra === rb && penalty(a.flags) < penalty(b.flags)); };
   // Try the years in preference order and stop at the first crop that passes every check: extra panoramas are fetched only for fronts that need them.
+  if (options.thumbs) return thumbPand(fp, wall, years, secondsOf(ranked, years, wall, tier), isBlocked, ranked, archiveRoot);
   // F3: with --bearings every year's representative is followed by the best other panorama of that year seen from another side of the wall normal (after all defaults, so the default order is unchanged).
-  const seconds = options.bearings ? secondBearings(ranked, years, c => bearingOf(c, wall), tier) : [];
+  const seconds = options.bearings && !options.cutFrom ? secondBearings(ranked, years, c => bearingOf(c, wall), tier) : [];
   const secondIds = new Set(seconds.map(c => c.panoId));
   for (const pick of [...years, ...seconds]) {
     const isSecond = secondIds.has(pick.panoId) && !years.includes(pick);
@@ -210,6 +251,11 @@ export async function processPand(fp: Footprint, wall: Wall, face: WallRef[], ar
     crop: { width: best.width, height: best.height, pixelsPerMetre: best.ppm, wallWidthM: best.wallWidthM, wallHeightM: best.wallHeightM, groundNapM: best.baseZ, groundSource: best.groundSource, tileHeightM: round(fp.height, 1) },
     flags: best.flags, usable: u.usable, rejectedBecause: u.reasons, thresholds: THRESHOLDS, attempts, attribution: ATTRIBUTION, createdAt: new Date().toISOString(),
   }, null, 1) + '\n');
+  if (prior) { // keep the thumbnail candidates and say how the cut was chosen
+    const fj = JSON.parse(await fs.readFile(path.join(dir, 'front.json'), 'utf8'));
+    fj.thumbCandidates = prior.candidates; fj.f3 = { mode: 'thumb-gate-cut', gateFile: options.cutFrom?.[id]?.chosen ?? options.cutFrom?.[id]?.best ?? null, passedGate: !!options.cutFrom?.[id]?.chosen, panoSize: panoSize.prefer };
+    await fs.writeFile(path.join(dir, 'front.json'), JSON.stringify(fj, null, 1) + '\n');
+  }
   return { status: 'ok', method: best.method, usable: u.usable, reasons: u.reasons, flags: best.flags, archive: rel, panoIds: best.picks.map(p => p.panoId), date, ppm: best.ppm, widthM: best.wallWidthM, attempts, chosenYear: bestYear, yearsTried: tried.length };
 }
 
@@ -228,7 +274,11 @@ async function main() {
   if (has('report')) { const { report } = await import('./report.ts'); await report(buurt.code, arg('archive') ?? process.env.HOUSE_CROPS_ARCHIVE); return; }
   options.maxYears = Number(arg('years') ?? options.maxYears);
   if (arg('prefer-bearing') !== undefined) selectOptions.preferBearingDeg = Number(arg('prefer-bearing'));
-  options.allYears = has('all-years'); options.bearings = has('bearings'); options.offline = has('offline'); http.offline = options.offline;
+  options.allYears = has('all-years'); options.bearings = has('bearings'); options.thumbs = has('thumbs'); if (arg('thumb-px')) options.thumbPx = Number(arg('thumb-px'));
+  if (arg('headroom')) headroom.factor = Number(arg('headroom'));
+  if (has('facing-first')) selectOptions.facingFirst = true;
+  if (has('medium-pano')) panoSize.prefer = 'equirectangular_medium';
+  if (arg('cut-from')) options.cutFrom = JSON.parse(await fs.readFile(arg('cut-from')!, 'utf8')); options.offline = has('offline'); http.offline = options.offline;
   const archiveRoot = arg('archive') ?? process.env.HOUSE_CROPS_ARCHIVE;
   if (has('rejudge')) {
     const m = await readManifest(buurt.code); if (!m) throw new Error('no manifest');
@@ -312,6 +362,7 @@ async function main() {
   snap(); await writeManifest(manifest);
   // Disk rule: the crops and their panorama ids are the keepers; this run's source panoramas are purged once the buurt is rectified (not when stopped early: they are still needed to resume).
   if (panoTracker.touched && !stop && order.every(fp => manifest.pands[idOf(fp.id)])) { const r = await purgeFiles(panoTracker.touched); console.log(`purged ${r.files} source panoramas (${(r.bytes / 1024 ** 3).toFixed(2)} GB) from ${CACHE_DIR}; --keep-panoramas keeps them`); }
+  if (options.thumbs) return; // no front.jpg yet: the contact sheet needs the cut phase
   const { report } = await import('./report.ts');
   await report(buurt.code, root);
 }
