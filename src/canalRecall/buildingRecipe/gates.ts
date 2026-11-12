@@ -124,12 +124,17 @@ export function evaluateGates(tris: Tri[], facts: BuildingFacts, fit: FitReport,
   const roofY = tris.filter(t => t.surface === 'roof').flatMap(t => [t.a[1], t.b[1], t.c[1]]);
   const roofMax = Math.max(...roofY);
   const cleanup = fit.roofCleanup;
-  g('ridge-vs-3dbag', roofMax - facts.heights.roofMaxM <= 0.3 + (fit.roofAllowanceM ?? 0) && facts.heights.roofMaxM - roofMax <= 0.3, {modelM: +roofMax.toFixed(2), threeDBagM: +facts.heights.roofMaxM.toFixed(2), ...(cleanup ? {surveyM: cleanup.surveyRoofMaxM, cleanup: cleanup.actions.map(a => `${a.kind} ${a.fromTopM}->${a.toTopM} m`)} : {})}, '|Δ| <= 0.30 m (roof max vs LoD2.2 roof max after roofCleanup.ts artefact removal); declared dormers may stand 1.9 m above it (LoD2.2 has none)');
+  // A photo-measured eaves line (FrontIntent.eavesHeight, facts.measuredEavesM) can stand above 3DBAG's roof max: the cornice
+  // top over a parapet or frieze, where LoD2.2 reads the roof edge behind it. The roof may rise to the measured line, and a roof generated from the front (`roofSource`) may stand under 3DBAG's (an upper bound there, as on block faces); absent = as before.
+  const measuredTop = Math.max(0, ...Object.values(facts.measuredEavesM ?? {}));
+  const upperRoofM = Math.max(facts.heights.roofMaxM, measuredTop);
+  g('ridge-vs-3dbag', roofMax - upperRoofM <= 0.3 + (fit.roofAllowanceM ?? 0) && (!!facts.roofSource || facts.heights.roofMaxM - roofMax <= 0.3), {modelM: +roofMax.toFixed(2), threeDBagM: +facts.heights.roofMaxM.toFixed(2), ...(cleanup ? {surveyM: cleanup.surveyRoofMaxM, cleanup: cleanup.actions.map(a => `${a.kind} ${a.fromTopM}->${a.toTopM} m`)} : {})}, '|Δ| <= 0.30 m (roof max vs LoD2.2 roof max after roofCleanup.ts artefact removal); declared dormers may stand 1.9 m above it (LoD2.2 has none)');
   // Clean-up removes artefacts, never the roof: at most a quarter of the surveyed roof area may be clamped.
   if (cleanup) g('roof-cleanup', cleanup.removedAreaM2 <= cleanup.roofAreaM2 * 0.25, {removedM2: cleanup.removedAreaM2, roofM2: cleanup.roofAreaM2, actions: cleanup.actions.length}, 'clamped artefact area <= 25% of the LoD2.2 roof');
   for (const f of fit.fronts) {
     const ff = facts.fronts.find(x => Math.abs(x.widthM - f.widthM) < 0.05) ?? facts.fronts[0];
-    g(`eaves-vs-3dbag/${f.id}`, Math.abs(f.eavesM - ff.eavesM) <= 0.3 || fit.fronts.length > 1, {modelM: f.eavesM, threeDBagM: +ff.eavesM.toFixed(2)}, '|Δ| <= 0.30 m');
+    const photoEaves = facts.measuredEavesM?.[f.id];
+    g(`eaves-vs-3dbag/${f.id}`, Math.abs(f.eavesM - (photoEaves ?? ff.eavesM)) <= 0.3 || fit.fronts.length > 1, {modelM: f.eavesM, threeDBagM: +ff.eavesM.toFixed(2)}, '|Δ| <= 0.30 m');
     const uppers = f.storeyHeightsM.slice(f.storeyHeightsM[0] < 1.5 ? 2 : 1);
     const ok = uppers.every(h => h >= 2.3 && h <= 4.6);
     g(`storey-height/${f.id}`, ok, f.storeyHeightsM, 'upper storeys 2.3–4.6 m (intent storey count vs 3DBAG eaves)');

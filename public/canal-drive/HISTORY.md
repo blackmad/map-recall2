@@ -1,5 +1,21 @@
 # Canal Recall — what is built
 
+**Spec walls released with a pale-warm guard; Kinkerstraat re-measured; held pands draw brick (2026-11-10, #345: H9f r2 165c6f544, H9g 68ef6a33d + cae4f8756).**
+- **H9f r2 (the flip):** `SPEC_WALLS_HELD = false`; `holds.test.ts` changed in the same commit.
+  - `paleWarmHeld` (wallColour.ts) judges the drawn colour: OKLab L > 0.60 with hue 35–70° on a brick or unknown wall keeps the period colour. Stucco/light finishes and reader families white/grey/buff pass.
+  - A darkness-inversion rule (drawn L more than 0.12 above the reading) is a safety net that adds 0 pands today. The black floor is exempt.
+  - Accepted by the judgement session on house:frames pairs (ui/2026-11-10-house-frames-walls-guard/).
+- **Held count: 91 of 419**, not the 57 the lane first reported. Both counts use the same 419 generic-path pands with a spec wall on the published extract. The 57 assumed brick when material is unstated; the game does not (brick is false when unstated).
+  - Judgement ruling: keep 91. An unstated pale-warm reading has no evidence either way. Revisit only if the Oud-West palette lane (#373) shows unstated pands are overwhelmingly brick in the photos.
+- **H9g:** kinker-31-49's light hexes (#c9a080 etc.) came from the overexposed right half of the 2024-12-11 strip.
+  - Re-fitted per pand from the row's overcast panorama: one dark brown, #41322b–#47403a.
+  - Held pands that are not stated light now take a brick entry from `PERIOD_WALLS.photo[archetype]` (`heldBrickWall`), never slate grey: 30 of 91 were grey before, 0 after.
+  - `house:preview` measures wall dL against the recorded re-fit source (`wallRefit.ts`) when a face intent has one. 154359 went from FAIL (dL −0.18 against the strip) to PASS (+0.098).
+- **kinker-31-49 chunk not installed.** It was never installed before, and its compile fails the GLB audit:
+  - 16 hole loops off the party planes;
+  - an `opening-outside` glass part.
+  - The lane had reported the audit as passing. It is sent back to fix the emitter, and its hand-back must carry report.json with `passed: true`.
+
 **H12 browser-free GLB first passes (2026-11-10, #362, 2d519f298, opus).**
 - `src/canalRecall/glbRaster/` is a Node GLB rasteriser on softRaster, with gltf-transform, meshopt and the lit look, and one view vocabulary.
 - render.ts, landmark-views and review-sheet now default to it; `--browser` keeps Chromium. house-preview/gate.ts stays on Chromium.

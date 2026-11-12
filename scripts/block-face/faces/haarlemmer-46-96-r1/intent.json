@@ -1,0 +1,125 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "haarlemmer-46-96-r1",
+ "street": "Haarlemmerstraat",
+ "sources": [
+  {
+   "id": "strip-2024-11-21",
+   "kind": "street-panorama",
+   "capturedAt": "2024-11-21",
+   "image": "staging/block-face/haarlemmer-46-96-r1/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "auto-place (blockFace/autoPlace.ts)",
+  "passes": 1,
+  "note": "auto-placed from the haarlemmerbuurt library (buurt Haarlemmerbuurt-Oost); scores and holds in scripts/block-face/faces/haarlemmer-46-96/auto-place.json"
+ },
+ "types": [
+  "haarlemmerstraat-sash-gable-four"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012171144",
+   "slug": "haarlemmer-171144",
+   "address": "Haarlemmerstraat 54",
+   "type": {
+    "type": "haarlemmerstraat-sash-gable-four",
+    "ground": {
+     "shopfront": {
+      "colour": "#585b4d",
+      "fascia": true,
+      "name": "The Lebanese Sajeria",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "evidence": "auto-place: osm-only (bijeenkomstfunctie, amenity=restaurant); fascia colour measured on the strip 2024-11-21 span 3442-3634"
+     }
+    },
+    "mirror": true,
+    "measuredPalette": {
+     "brick": "#675b4a",
+     "evidence": "strip 2024-11-21 span 3442-3634: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "restaurant",
+    "name": "The Lebanese Sajeria",
+    "category": "amenity=restaurant",
+    "osm": {
+     "type": "node",
+     "id": 11841190625,
+     "name": "The Lebanese Sajeria"
+    },
+    "bag": [
+     "bijeenkomstfunctie"
+    ],
+    "photoDate": "2024-11-21",
+    "agreement": "osm-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: haarlemmerstraat-sash-gable-four scored 1 on eaves 1, stucco 1; strip 2024-11-21 span 3442-3634"
+   }
+  },
+  {
+   "pandId": "0363100012171145",
+   "slug": "haarlemmer-171145",
+   "address": "Haarlemmerstraat 52",
+   "type": {
+    "type": "haarlemmerstraat-sash-gable-four",
+    "measuredPalette": {
+     "brick": "#5e4e3f",
+     "evidence": "strip 2024-11-21 span 3634-3818: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2024-11-21",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: haarlemmerstraat-sash-gable-four scored 1 on eaves 1, stucco 1, columns 1; strip 2024-11-21 span 3634-3818"
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "auto-place: low attic behind the cornice; the strips show sky over the cornices of the type rows"
+  },
+  "measuredEaves": [
+   {
+    "pand": "0363100012171144",
+    "stripRow": 300,
+    "evidence": "review pin: Haarlemmerstraat 54: front eaves/gable foot on the 1 m grid"
+   },
+   {
+    "pand": "0363100012171145",
+    "stripRow": 240,
+    "evidence": "review pin: Haarlemmerstraat 52: front eaves/gable foot on the 1 m grid"
+   }
+  ]
+ },
+ "schemaLimits": [
+  {
+   "component": "gable ornament",
+   "what": "54 (171144) and 52 (171145): sandstone scrolls on the neck gables and a three-light attic group on 54; drawn as plain necks with one attic light"
+  },
+  {
+   "component": "ground storey",
+   "what": "52 (171145): a residential ground with two tall arched windows and a portal; drawn with a door and plain windows"
+  }
+ ]
+}

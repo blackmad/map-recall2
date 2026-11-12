@@ -1,0 +1,130 @@
+{
+ "face": "haarlemmerdijk-2-58-r2",
+ "image": "staging/block-face/haarlemmerdijk-2-58-r2/strip.jpg",
+ "pixelsPerMetre": 40,
+ "width": 342,
+ "height": 793,
+ "groundNAP": 2.258,
+ "heightM": 19.83,
+ "frame": {
+  "midRD": [
+   121079.54450000002,
+   488322.9585
+  ],
+  "uRD": [
+   0.7283381866572497,
+   -0.6852178382506027
+  ],
+  "nRD": [
+   -0.6852178382506027,
+   -0.7283381866572497
+  ]
+ },
+ "x0M": -4.26,
+ "x1M": 4.29,
+ "date": "2022-12-15",
+ "coverage": 1,
+ "spans": [
+  {
+   "pandId": "0363100012176172",
+   "x0M": -4.26,
+   "x1M": -0.04,
+   "px": [
+    0,
+    169
+   ],
+   "date": "2022-12-15",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "TMX7316010203-002859_pano_0000_000088",
+     "timestamp": "2022-12-15T08:29:24.886800Z",
+     "distanceM": 6,
+     "obliquityDeg": 20,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-002859_pano_0000_000089",
+     "timestamp": "2022-12-15T08:29:25.876760Z",
+     "distanceM": 6.3,
+     "obliquityDeg": 28.7,
+     "missingFraction": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012176174",
+   "x0M": -0.04,
+   "x1M": 4.29,
+   "px": [
+    169,
+    342
+   ],
+   "date": "2022-12-15",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "TMX7316010203-002859_pano_0000_000089",
+     "timestamp": "2022-12-15T08:29:25.876760Z",
+     "distanceM": 5.7,
+     "obliquityDeg": 13.6,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-002859_pano_0000_000090",
+     "timestamp": "2022-12-15T08:29:26.856750Z",
+     "distanceM": 6.8,
+     "obliquityDeg": 34.6,
+     "missingFraction": 0
+    }
+   ]
+  }
+ ],
+ "candidatesByDate": {
+  "2025-07-03": 2,
+  "2020-01-10": 15,
+  "2018-05-03": 17,
+  "2019-05-13": 18,
+  "2024-12-11": 21,
+  "2021-12-30": 22,
+  "2016-11-22": 22,
+  "2019-01-15": 22,
+  "2021-03-11": 19,
+  "2022-06-22": 22,
+  "2022-12-15": 22,
+  "2020-04-24": 22,
+  "2017-03-27": 19,
+  "2020-08-31": 22,
+  "2022-04-22": 1,
+  "2024-12-16": 0,
+  "2016-06-09": 0,
+  "2023-02-20": 2,
+  "2023-01-11": 1,
+  "2023-02-06": 1,
+  "2023-02-13": 1,
+  "2023-03-27": 1,
+  "2023-03-06": 1,
+  "2023-02-27": 1,
+  "2023-03-20": 1,
+  "2018-05-02": 0,
+  "2024-11-21": 1,
+  "2023-01-30": 1,
+  "2021-09-15": 1,
+  "2025-06-17": 0,
+  "2023-01-16": 1,
+  "2021-01-22": 0,
+  "2017-03-13": 0,
+  "2025-06-16": 0,
+  "2019-01-10": 0,
+  "2019-05-14": 0
+ },
+ "description": "Rectified orthographic elevation of the whole face on the frontage planes: x = chunk-frame metres along the face (left→right seen from the street) from x0M, y = metres above the shared ground (groundNAP) from the bottom; grey = no panorama data. Per-pand spans list the panoramas median-fused for that frontage.",
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (CC BY 4.0; faces and number plates blurred by the publisher)",
+ "croppedFrom": {
+  "face": "haarlemmerdijk-2-58",
+  "px": [
+   4574,
+   4916
+  ]
+ }
+}

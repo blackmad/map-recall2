@@ -1,0 +1,679 @@
+{
+ "street": "Brouwersgracht",
+ "seed": "0363100012179488",
+ "members": [
+  "0363100012179425",
+  "0363100012179426",
+  "0363100012179427",
+  "0363100012179428",
+  "0363100012179479",
+  "0363100012179480",
+  "0363100012179488"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "next fronting pand 0363100012179424 5.9 m on shares no party wall (cross street or gap)"
+  },
+  {
+   "side": "right",
+   "reason": "next fronting pand 0363100012179483 23.3 m on shares no party wall (cross street or gap)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012165098",
+   "reason": "frontage 70.2 m from Brouwersgracht"
+  },
+  {
+   "pandId": "0363100012165099",
+   "reason": "frontage 108.5 m from Brouwersgracht"
+  },
+  {
+   "pandId": "0363100012169275",
+   "reason": "frontage 55.6 m from Brouwersgracht"
+  },
+  {
+   "pandId": "0363100012169276",
+   "reason": "frontage 57.8 m from Brouwersgracht"
+  },
+  {
+   "pandId": "0363100012171071",
+   "reason": "frontage 71.0 m from Brouwersgracht"
+  },
+  {
+   "pandId": "0363100012171072",
+   "reason": "frontage 67.4 m from Brouwersgracht"
+  },
+  {
+   "pandId": "0363100012171073",
+   "reason": "frontage 66.7 m from Brouwersgracht"
+  },
+  {
+   "pandId": "0363100012171074",
+   "reason": "frontage 48.4 m from Brouwersgracht"
+  },
+  {
+   "pandId": "0363100012171075",
+   "reason": "frontage 43.7 m from Brouwersgracht"
+  },
+  {
+   "pandId": "0363100012171080",
+   "reason": "frontage 55.4 m from Brouwersgracht"
+  },
+  {
+   "pandId": "0363100012171081",
+   "reason": "frontage 43.2 m from Brouwersgracht"
+  },
+  {
+   "pandId": "0363100012171103",
+   "reason": "frontage 54.0 m from Brouwersgracht"
+  },
+  {
+   "pandId": "0363100012171104",
+   "reason": "sightline to Brouwersgracht crosses 0363100012171102"
+  },
+  {
+   "pandId": "0363100012171106",
+   "reason": "frontage 51.7 m from Brouwersgracht"
+  },
+  {
+   "pandId": "0363100012171107",
+   "reason": "sightline to Brouwersgracht crosses 0363100012179480"
+  },
+  {
+   "pandId": "0363100012171108",
+   "reason": "sightline to Brouwersgracht crosses 0363100012179423"
+  },
+  {
+   "pandId": "0363100012171111",
+   "reason": "frontage 39.7 m from Brouwersgracht"
+  },
+  {
+   "pandId": "0363100012171113",
+   "reason": "sightline to Brouwersgracht crosses 0363100012171102"
+  },
+  {
+   "pandId": "0363100012171114",
+   "reason": "sightline to Brouwersgracht crosses 0363100012179428"
+  },
+  {
+   "pandId": "0363100012171115",
+   "reason": "sightline to Brouwersgracht crosses 0363100012179426"
+  },
+  {
+   "pandId": "0363100012171116",
+   "reason": "sightline to Brouwersgracht crosses 0363100012179427"
+  },
+  {
+   "pandId": "0363100012171117",
+   "reason": "frontage 38.8 m from Brouwersgracht"
+  },
+  {
+   "pandId": "0363100012171118",
+   "reason": "frontage 102.3 m from Brouwersgracht"
+  },
+  {
+   "pandId": "0363100012171119",
+   "reason": "frontage 50.0 m from Brouwersgracht"
+  },
+  {
+   "pandId": "0363100012171120",
+   "reason": "frontage 98.1 m from Brouwersgracht"
+  },
+  {
+   "pandId": "0363100012171137",
+   "reason": "frontage 47.9 m from Brouwersgracht"
+  },
+  {
+   "pandId": "0363100012171138",
+   "reason": "frontage 58.4 m from Brouwersgracht"
+  },
+  {
+   "pandId": "0363100012171139",
+   "reason": "frontage 55.7 m from Brouwersgracht"
+  },
+  {
+   "pandId": "0363100012175335",
+   "reason": "frontage 73.2 m from Brouwersgracht"
+  },
+  {
+   "pandId": "0363100012175336",
+   "reason": "frontage 72.3 m from Brouwersgracht"
+  },
+  {
+   "pandId": "0363100012175361",
+   "reason": "frontage 83.2 m from Brouwersgracht"
+  },
+  {
+   "pandId": "0363100012175365",
+   "reason": "sightline to Brouwersgracht crosses 0363100012175371"
+  },
+  {
+   "pandId": "0363100012175366",
+   "reason": "sightline to Brouwersgracht crosses 0363100012175365"
+  },
+  {
+   "pandId": "0363100012175367",
+   "reason": "sightline to Brouwersgracht crosses 0363100012175365"
+  },
+  {
+   "pandId": "0363100012175369",
+   "reason": "sightline to Brouwersgracht crosses 0363100012175368"
+  },
+  {
+   "pandId": "0363100012175370",
+   "reason": "sightline to Brouwersgracht crosses 0363100012175368"
+  },
+  {
+   "pandId": "0363100012175373",
+   "reason": "frontage 38.3 m from Brouwersgracht"
+  },
+  {
+   "pandId": "0363100012175374",
+   "reason": "frontage 32.8 m from Brouwersgracht"
+  },
+  {
+   "pandId": "0363100012175399",
+   "reason": "frontage 35.1 m from Brouwersgracht"
+  },
+  {
+   "pandId": "0363100012175400",
+   "reason": "sightline to Brouwersgracht crosses 0363100012175375"
+  },
+  {
+   "pandId": "0363100012175401",
+   "reason": "sightline to Brouwersgracht crosses 0363100012175375"
+  },
+  {
+   "pandId": "0363100012175410",
+   "reason": "sightline to Brouwersgracht crosses 0363100012175393"
+  },
+  {
+   "pandId": "0363100012175413",
+   "reason": "frontage 64.1 m from Brouwersgracht"
+  },
+  {
+   "pandId": "0363100012175434",
+   "reason": "frontage 43.6 m from Brouwersgracht"
+  },
+  {
+   "pandId": "0363100012175435",
+   "reason": "frontage 47.3 m from Brouwersgracht"
+  },
+  {
+   "pandId": "0363100012175436",
+   "reason": "frontage 37.8 m from Brouwersgracht"
+  },
+  {
+   "pandId": "0363100012175437",
+   "reason": "frontage 50.8 m from Brouwersgracht"
+  },
+  {
+   "pandId": "0363100012175439",
+   "reason": "frontage 54.9 m from Brouwersgracht"
+  },
+  {
+   "pandId": "0363100012175447",
+   "reason": "sightline to Brouwersgracht crosses 0363100012175438"
+  },
+  {
+   "pandId": "0363100012175448",
+   "reason": "sightline to Brouwersgracht crosses 0363100012175438"
+  },
+  {
+   "pandId": "0363100012178167",
+   "reason": "frontage 59.3 m from Brouwersgracht"
+  },
+  {
+   "pandId": "0363100012178169",
+   "reason": "frontage 64.9 m from Brouwersgracht"
+  },
+  {
+   "pandId": "0363100012178170",
+   "reason": "frontage 70.8 m from Brouwersgracht"
+  },
+  {
+   "pandId": "0363100012178173",
+   "reason": "frontage 53.0 m from Brouwersgracht"
+  },
+  {
+   "pandId": "0363100012178174",
+   "reason": "frontage 56.4 m from Brouwersgracht"
+  },
+  {
+   "pandId": "0363100012178175",
+   "reason": "frontage 66.7 m from Brouwersgracht"
+  },
+  {
+   "pandId": "0363100012178176",
+   "reason": "frontage 78.1 m from Brouwersgracht"
+  },
+  {
+   "pandId": "0363100012179063",
+   "reason": "frontage 116.6 m from Brouwersgracht"
+  },
+  {
+   "pandId": "0363100012179076",
+   "reason": "no frontage on Brouwersgracht: No footprint edge faces Brouwersgracht"
+  },
+  {
+   "pandId": "0363100012179077",
+   "reason": "no frontage on Brouwersgracht: No footprint edge faces Brouwersgracht"
+  },
+  {
+   "pandId": "0363100012179078",
+   "reason": "no frontage on Brouwersgracht: No footprint edge faces Brouwersgracht"
+  },
+  {
+   "pandId": "0363100012179079",
+   "reason": "frontage 70.8 m from Brouwersgracht"
+  },
+  {
+   "pandId": "0363100012179080",
+   "reason": "no frontage on Brouwersgracht: No footprint edge faces Brouwersgracht"
+  },
+  {
+   "pandId": "0363100012179081",
+   "reason": "no frontage on Brouwersgracht: No footprint edge faces Brouwersgracht"
+  },
+  {
+   "pandId": "0363100012179082",
+   "reason": "no frontage on Brouwersgracht: No footprint edge faces Brouwersgracht"
+  },
+  {
+   "pandId": "0363100012179142",
+   "reason": "sightline to Brouwersgracht crosses 0363100012171076"
+  },
+  {
+   "pandId": "0363100012179144",
+   "reason": "frontage 67.0 m from Brouwersgracht"
+  },
+  {
+   "pandId": "0363100012179406",
+   "reason": "frontage 56.9 m from Brouwersgracht"
+  },
+  {
+   "pandId": "0363100012179409",
+   "reason": "no frontage on Brouwersgracht: No footprint edge faces Brouwersgracht"
+  },
+  {
+   "pandId": "0363100012179411",
+   "reason": "no frontage on Brouwersgracht: No footprint edge faces Brouwersgracht"
+  },
+  {
+   "pandId": "0363100012179413",
+   "reason": "no frontage on Brouwersgracht: No footprint edge faces Brouwersgracht"
+  },
+  {
+   "pandId": "0363100012179414",
+   "reason": "no frontage on Brouwersgracht: No footprint edge faces Brouwersgracht"
+  },
+  {
+   "pandId": "0363100012179415",
+   "reason": "frontage 65.3 m from Brouwersgracht"
+  },
+  {
+   "pandId": "0363100012179422",
+   "reason": "sightline to Brouwersgracht crosses 0363100012179423"
+  },
+  {
+   "pandId": "0363100012179423",
+   "reason": "sightline to Brouwersgracht crosses 0363100012179481"
+  },
+  {
+   "pandId": "0363100012179481",
+   "reason": "sightline to Brouwersgracht crosses 0363100012179482"
+  },
+  {
+   "pandId": "0363100012179482",
+   "reason": "sightline to Brouwersgracht crosses 0363100012179488"
+  },
+  {
+   "pandId": "0363100012179485",
+   "reason": "sightline to Brouwersgracht crosses 0363100012171101"
+  },
+  {
+   "pandId": "0363100012179487",
+   "reason": "frontage 46.3 m from Brouwersgracht"
+  },
+  {
+   "pandId": "0363100012179490",
+   "reason": "frontage 48.8 m from Brouwersgracht"
+  },
+  {
+   "pandId": "0363100012179491",
+   "reason": "frontage 59.1 m from Brouwersgracht"
+  },
+  {
+   "pandId": "0363100012179492",
+   "reason": "frontage 62.4 m from Brouwersgracht"
+  },
+  {
+   "pandId": "0363100012179493",
+   "reason": "frontage 69.4 m from Brouwersgracht"
+  },
+  {
+   "pandId": "0363100012179494",
+   "reason": "frontage 72.9 m from Brouwersgracht"
+  },
+  {
+   "pandId": "0363100012179495",
+   "reason": "frontage 74.9 m from Brouwersgracht"
+  },
+  {
+   "pandId": "0363100012179499",
+   "reason": "frontage 44.5 m from Brouwersgracht"
+  },
+  {
+   "pandId": "0363100012179500",
+   "reason": "frontage 48.0 m from Brouwersgracht"
+  },
+  {
+   "pandId": "0363100012179501",
+   "reason": "frontage 51.3 m from Brouwersgracht"
+  },
+  {
+   "pandId": "0363100012179549",
+   "reason": "frontage 55.7 m from Brouwersgracht"
+  },
+  {
+   "pandId": "0363100012179550",
+   "reason": "frontage 44.0 m from Brouwersgracht"
+  },
+  {
+   "pandId": "0363100012179551",
+   "reason": "frontage 76.2 m from Brouwersgracht"
+  },
+  {
+   "pandId": "0363100012179552",
+   "reason": "frontage 73.6 m from Brouwersgracht"
+  },
+  {
+   "pandId": "0363100012179553",
+   "reason": "frontage 72.4 m from Brouwersgracht"
+  },
+  {
+   "pandId": "0363100012179555",
+   "reason": "frontage 66.3 m from Brouwersgracht"
+  },
+  {
+   "pandId": "0363100012179556",
+   "reason": "frontage 64.7 m from Brouwersgracht"
+  },
+  {
+   "pandId": "0363100012179557",
+   "reason": "frontage 41.2 m from Brouwersgracht"
+  },
+  {
+   "pandId": "0363100012179558",
+   "reason": "sightline to Brouwersgracht crosses 0363100012171076"
+  },
+  {
+   "pandId": "0363100012179559",
+   "reason": "frontage 37.7 m from Brouwersgracht"
+  },
+  {
+   "pandId": "0363100012179560",
+   "reason": "frontage 33.2 m from Brouwersgracht"
+  },
+  {
+   "pandId": "0363100012179561",
+   "reason": "frontage 47.2 m from Brouwersgracht"
+  },
+  {
+   "pandId": "0363100012179578",
+   "reason": "frontage 59.4 m from Brouwersgracht"
+  },
+  {
+   "pandId": "0363100012179580",
+   "reason": "sightline to Brouwersgracht crosses 0363100012171077"
+  },
+  {
+   "pandId": "0363100012179602",
+   "reason": "no frontage on Brouwersgracht: No footprint edge faces Brouwersgracht"
+  },
+  {
+   "pandId": "0363100012179603",
+   "reason": "frontage 60.5 m from Brouwersgracht"
+  },
+  {
+   "pandId": "0363100012179604",
+   "reason": "frontage 57.1 m from Brouwersgracht"
+  },
+  {
+   "pandId": "0363100012179605",
+   "reason": "frontage 82.2 m from Brouwersgracht"
+  },
+  {
+   "pandId": "0363100012179606",
+   "reason": "frontage 67.6 m from Brouwersgracht"
+  },
+  {
+   "pandId": "0363100012179607",
+   "reason": "frontage 64.0 m from Brouwersgracht"
+  },
+  {
+   "pandId": "0363100012179608",
+   "reason": "frontage 69.0 m from Brouwersgracht"
+  },
+  {
+   "pandId": "0363100012179609",
+   "reason": "frontage 74.0 m from Brouwersgracht"
+  },
+  {
+   "pandId": "0363100012179610",
+   "reason": "frontage 78.9 m from Brouwersgracht"
+  },
+  {
+   "pandId": "0363100012179611",
+   "reason": "frontage 90.8 m from Brouwersgracht"
+  },
+  {
+   "pandId": "0363100012179612",
+   "reason": "frontage 77.7 m from Brouwersgracht"
+  },
+  {
+   "pandId": "0363100012179613",
+   "reason": "frontage 82.9 m from Brouwersgracht"
+  },
+  {
+   "pandId": "0363100012179619",
+   "reason": "no frontage on Brouwersgracht: No footprint edge faces Brouwersgracht"
+  },
+  {
+   "pandId": "0363100012179620",
+   "reason": "no frontage on Brouwersgracht: No footprint edge faces Brouwersgracht"
+  },
+  {
+   "pandId": "0363100012179641",
+   "reason": "sightline to Brouwersgracht crosses 0363100012171105"
+  },
+  {
+   "pandId": "0363100012179642",
+   "reason": "sightline to Brouwersgracht crosses 0363100012171105"
+  },
+  {
+   "pandId": "0363100012179643",
+   "reason": "sightline to Brouwersgracht crosses 0363100012171105"
+  },
+  {
+   "pandId": "0363100012179644",
+   "reason": "sightline to Brouwersgracht crosses 0363100012171077"
+  },
+  {
+   "pandId": "0363100012179645",
+   "reason": "frontage 43.0 m from Brouwersgracht"
+  },
+  {
+   "pandId": "0363100012179646",
+   "reason": "frontage 47.2 m from Brouwersgracht"
+  },
+  {
+   "pandId": "0363100012179647",
+   "reason": "frontage 50.3 m from Brouwersgracht"
+  },
+  {
+   "pandId": "0363100012179648",
+   "reason": "frontage 58.3 m from Brouwersgracht"
+  },
+  {
+   "pandId": "0363100012179649",
+   "reason": "sightline to Brouwersgracht crosses 0363100012175438"
+  },
+  {
+   "pandId": "0363100012179650",
+   "reason": "frontage 32.0 m from Brouwersgracht"
+  },
+  {
+   "pandId": "0363100012179651",
+   "reason": "frontage 36.6 m from Brouwersgracht"
+  },
+  {
+   "pandId": "0363100012179652",
+   "reason": "frontage 40.8 m from Brouwersgracht"
+  },
+  {
+   "pandId": "0363100012179653",
+   "reason": "frontage 57.0 m from Brouwersgracht"
+  },
+  {
+   "pandId": "0363100012180377",
+   "reason": "frontage 110.1 m from Brouwersgracht"
+  },
+  {
+   "pandId": "0363100012253820",
+   "reason": "frontage 50.3 m from Brouwersgracht"
+  },
+  {
+   "pandId": "0363100012571599",
+   "reason": "frontage 52.5 m from Brouwersgracht"
+  },
+  {
+   "pandId": "0363100012171078",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012171079",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012171101",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012171110",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012175368",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012175371",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012175372",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012175375",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012175376",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012175393",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012175394",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012179425",
+   "alongM": -35.96,
+   "widthM": 5.01,
+   "eavesM": 5.97,
+   "roofMaxM": 9.2,
+   "storeys3dbag": 3,
+   "builtYear": 1722,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012179426",
+   "alongM": -30.69,
+   "widthM": 5.21,
+   "eavesM": 13.31,
+   "roofMaxM": 15.8,
+   "storeys3dbag": 5,
+   "builtYear": 2000,
+   "uncertainty": [
+    "Frontage extended across a native jog of up to 1 m (possible partial front at the default 0.35 m).",
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012179427",
+   "alongM": -25.35,
+   "widthM": 5.58,
+   "eavesM": 13.99,
+   "roofMaxM": 18.12,
+   "storeys3dbag": 0,
+   "builtYear": 1930,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012179428",
+   "alongM": -19.86,
+   "widthM": 5.41,
+   "eavesM": 14.48,
+   "roofMaxM": 14.91,
+   "storeys3dbag": 4,
+   "builtYear": 1728,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012179479",
+   "alongM": -14.18,
+   "widthM": 5.95,
+   "eavesM": 14.24,
+   "roofMaxM": 17.53,
+   "storeys3dbag": 5,
+   "builtYear": 1832,
+   "uncertainty": [
+    "Frontage extended across a native jog of up to 1 m (possible partial front at the default 0.35 m).",
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012179480",
+   "alongM": -8.5,
+   "widthM": 5.41,
+   "eavesM": 13.37,
+   "roofMaxM": 17.31,
+   "storeys3dbag": 5,
+   "builtYear": 1799,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012179488",
+   "alongM": 0,
+   "widthM": 11.59,
+   "eavesM": 12.62,
+   "roofMaxM": 19.21,
+   "storeys3dbag": 0,
+   "builtYear": 1990,
+   "uncertainty": [
+    "Frontage extended across a native jog of up to 1 m (possible partial front at the default 0.35 m).",
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  }
+ ]
+}

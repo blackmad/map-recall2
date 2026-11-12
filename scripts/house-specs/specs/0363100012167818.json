@@ -1,0 +1,115 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012167818",
+ "address": "Haarlemmerdijk 20",
+ "design": {
+  "fronts": [
+   {
+    "partyClip": true,
+    "id": "front0",
+    "street": "Haarlemmerdijk",
+    "storeys": 3,
+    "bays": [
+     2,
+     2,
+     3
+    ],
+    "storeyHeights": [
+     4.5,
+     2.9,
+     2.6
+    ],
+    "windows": "t-window",
+    "windowSurround": "sill",
+    "windowHeights": [
+     0.55,
+     0.6,
+     0.66
+    ],
+    "headLines": [
+     0.8,
+     0.91,
+     0.82
+    ],
+    "windowShare": 0.52,
+    "cornice": "none",
+    "gable": "neck",
+    "crownRise": 1.2,
+    "atticWindows": 1,
+    "hoist": true,
+    "doorBay": null,
+    "basement": "none",
+    "shopfront": {
+     "colour": "#242122",
+     "fascia": true,
+     "name": "Studio Onrust",
+     "entrance": "centre",
+     "glazing": "split",
+     "stallriser": "low",
+     "evidence": "auto-place: osm-only (winkelfunctie, shop=clothes); fascia colour measured on the strip 2022-12-15 span 3437-3588"
+    },
+    "eavesHeight": 10.2
+   }
+  ],
+  "roof": {
+   "material": "red-tile",
+   "squareSaddle": true
+  },
+  "palette": {
+   "brick": "#4e4641",
+   "frame": "white-painted",
+   "door": "#2a2a28",
+   "stone": "#e8e4d8",
+   "cornice": "#e8e4d8",
+   "stoneMaterial": "painted"
+  },
+  "notes": [
+   "type haarlemmer-shop-gable: crown neck, palette haarlemmer-red-brown + measured brick #342d2c",
+   "type deviations: bays [2,2,3] (type: 2)"
+  ]
+ },
+ "provenance": {
+  "": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "scripts/block-face/faces/haarlemmerdijk-2-58-r1/strip.json",
+   "at": "2022-12-15"
+  },
+  "fronts/0/bays": {
+   "source": "default",
+   "confidence": 0.3,
+   "ref": "scripts/block-face/faces/haarlemmerdijk-2-58-r1/strip.json#type:haarlemmer-shop-gable",
+   "at": null
+  },
+  "palette/brick": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "docs/reports/haarlemmer-strip-verdict-20261110.md; winter re-capture 2020-01-10 (well exposed; the 2022-12-15 strip is under-exposed): palette-from-strip wall #4e4641, reproduce with intake.ts --face=zz-wint-dijk --street=Haarlemmerdijk --seed=0363100012167817 --from=0363100012167818 --to=0363100012167816 --date=2020-01-10",
+   "at": "2020-01-10"
+  },
+  "fronts/0/eavesHeight": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/buurten/haarlemmerbuurt-*-review-eaves.json: Haarlemmerdijk 20: gable foot (scroll tops) at 10.2 m, 2022-12-15",
+   "at": "2022-12-15"
+  }
+ },
+ "schemaLimits": [
+  {
+   "component": "gable ornament",
+   "what": "20 (167818): sandstone claw pieces and scrolls beside the neck and a carved cap; drawn as a plain neck"
+  },
+  {
+   "component": "attic window width",
+   "what": "20 (167818): the neck light is about 1.2 m wide and set low; the kit draws one narrow attic light"
+  },
+  {
+   "component": "strip registration",
+   "what": "every facade on the 2022-12-15 strip stands 0.4-0.9 m right of its BAG split; the models stand on BAG, so the sheet shows the neck of 20 off-centre"
+  }
+ ],
+ "facts": {
+  "pui": "shop"
+ },
+ "route": "recipe"
+}

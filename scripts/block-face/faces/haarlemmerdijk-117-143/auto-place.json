@@ -1,0 +1,916 @@
+{
+ "face": "haarlemmerdijk-117-143",
+ "street": "Haarlemmerdijk",
+ "library": "haarlemmerbuurt",
+ "stripDate": "2022-12-15",
+ "seconds": 11.51,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [
+  {
+   "face": "haarlemmerdijk-117-143-r1",
+   "pands": [
+    "0363100012173479",
+    "0363100012173480"
+   ],
+   "passed": true,
+   "triangles": 2263
+  }
+ ],
+ "pands": [
+  {
+   "pandId": "0363100012176652",
+   "address": "Haarlemmerdijk 117",
+   "builtYear": 1986,
+   "widthM": 4.55,
+   "eavesM": 9.93,
+   "storeys3dbag": 0,
+   "bagBay": null,
+   "strip": {
+    "wall": "#49403c",
+    "wallRaw": "#443e3b",
+    "skyline": {
+     "eavesM": 17.8,
+     "eavesRow": 96,
+     "confidence": 0.39,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.013,
+    "structure": {
+     "bayWidthM": 0.47,
+     "bayCentre": 0.83,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 5.88,
+       "widthM": 0.9,
+       "centre": 0.89
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Haarlemmerdijk 117: flat-roofed front to 10 m at the face end, beside held 119A",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012165102",
+   "address": "Haarlemmerdijk 119A",
+   "builtYear": 1899,
+   "widthM": 4.67,
+   "eavesM": 6.47,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#352c29",
+    "wallRaw": "#39322f",
+    "skyline": {
+     "eavesM": 15.43,
+     "eavesRow": 191,
+     "confidence": 0.36,
+     "crown": {
+      "widthM": 0.57,
+      "riseM": 1.57,
+      "topWidthM": 0.38,
+      "centre": 0.22
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.65 m at 0.08 (light 0.3): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.65,
+       "centre": 0.08,
+       "light": 0.3
+      },
+      {
+       "widthM": 1.02,
+       "centre": 0.47,
+       "light": 0.32
+      },
+      {
+       "widthM": 0.88,
+       "centre": 0.9,
+       "light": 0.23
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Haarlemmerdijk 119A: two-storey house with a bell gable 6.6-9.5 m: the shop types start at three storeys (kit gap: low bell-gable cottages)",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012165074",
+   "address": "Haarlemmerdijk 121A",
+   "builtYear": 1899,
+   "widthM": 3.77,
+   "eavesM": 6.75,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": null,
+    "wallRaw": "#383432",
+    "skyline": {
+     "eavesM": 15.8,
+     "eavesRow": 176,
+     "confidence": 0.69,
+     "crown": {
+      "widthM": 1.25,
+      "riseM": 4.4,
+      "topWidthM": 0.2,
+      "centre": 0.56
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "curtain",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Haarlemmerdijk 121A: twin of 119A, two storeys under a bell gable: same kit gap",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012165073",
+   "address": "Haarlemmerdijk 123",
+   "builtYear": 1750,
+   "widthM": 5.5,
+   "eavesM": 12.91,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#4a4844",
+    "wallRaw": "#4c4c4a",
+    "skyline": {
+     "eavesM": 15.8,
+     "eavesRow": 176,
+     "confidence": 0.42,
+     "crown": {
+      "widthM": 0.78,
+      "riseM": 4.4,
+      "topWidthM": 0.6,
+      "centre": 0.72
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": null,
+    "frontClass": "curtain",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.15,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.05,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Haarlemmerdijk 123: cornice house with a chimney dormer that fits the cornice type, but a run of one between held 121A and 125",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012171347",
+   "address": "Haarlemmerdijk 125",
+   "builtYear": 1750,
+   "widthM": 5.02,
+   "eavesM": 13.9,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#312d30",
+    "wallRaw": "#4f4f4d",
+    "skyline": {
+     "eavesM": 17.4,
+     "eavesRow": 112,
+     "confidence": 0.42,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.009,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "balcony slabs stacked at 9.85 m (3.13 m wide), 7.07 m (3.35 m wide)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 12.63,
+       "widthM": 1.73,
+       "centre": 0.24
+      },
+      {
+       "atM": 9.85,
+       "widthM": 3.13,
+       "centre": 0.39
+      },
+      {
+       "atM": 8.2,
+       "widthM": 1.02,
+       "centre": 0.89
+      },
+      {
+       "atM": 7.07,
+       "widthM": 3.35,
+       "centre": 0.36
+      },
+      {
+       "atM": 6.02,
+       "widthM": 1,
+       "centre": 0.89
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Haarlemmerdijk 125: eclectic tower front to 16.5 m with a crenellated cornice and a spire dormer: a one-off",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012171346",
+   "address": "Haarlemmerdijk 127",
+   "builtYear": 1942,
+   "widthM": 4.36,
+   "eavesM": 9.3,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#453325",
+    "wallRaw": "#535449",
+    "skyline": {
+     "eavesM": 11.8,
+     "eavesRow": 336,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.92,
+      "riseM": 6.5,
+      "topWidthM": 0.1,
+      "centre": 0.63
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "curtain",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 1.02,
+     "bayCentre": 0.87,
+     "balconies": true,
+     "why": "dark open axis 0.7 m at 0.09 (light 0.1): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.7,
+       "centre": 0.09,
+       "light": 0.1
+      },
+      {
+       "widthM": 1.02,
+       "centre": 0.38,
+       "light": 0.16
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 5.4,
+       "widthM": 1.4,
+       "centre": 0.38
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.05
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Haarlemmerdijk 127: wide front with horizontal balcony bands and a flat roof: not a shop-house type",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012173469",
+   "address": "Haarlemmerdijk 129",
+   "builtYear": 1897,
+   "widthM": 3.36,
+   "eavesM": 11.34,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#3d3730",
+    "wallRaw": "#515047",
+    "skyline": {
+     "eavesM": 11.5,
+     "eavesRow": 348,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.2,
+      "riseM": 3.9,
+      "topWidthM": 0.03,
+      "centre": 0.81
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "frontClass": "columns",
+    "doorSide": "right",
+    "accentSide": "left",
+    "accentShare": 0.005,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 9.1,
+       "widthM": 0.95,
+       "centre": 0.47
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.04
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Haarlemmerdijk 129: a beige band front with one ribbon window per storey, the design of 127 beside it rather than a shop house (3.36 m)",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012173479",
+   "address": "Haarlemmerdijk 131",
+   "builtYear": 1848,
+   "widthM": 5.36,
+   "eavesM": 9.9,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#635a50",
+    "wallRaw": "#3f3b3a",
+    "skyline": {
+     "eavesM": 14.95,
+     "eavesRow": 210,
+     "confidence": 0.49,
+     "crown": {
+      "widthM": 0.75,
+      "riseM": 4.95,
+      "topWidthM": 0.15,
+      "centre": 0.92
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 7,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.004,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6.22,
+       "widthM": 3.2,
+       "centre": 0.37
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "placed",
+   "type": "haarlemmer-shop-cornice-wide",
+   "score": 1,
+   "placement": {
+    "type": "haarlemmer-shop-cornice-wide",
+    "ground": {
+     "shopfront": {
+      "colour": "#423d38",
+      "fascia": true,
+      "name": "Tutto Bene!",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: osm-only (winkelfunctie, shop=clothes); fascia colour measured on the strip 2022-12-15 span 1249-1463"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#635a50",
+     "evidence": "strip 2022-12-15 span 1249-1463: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#4c4743"
+    }
+   },
+   "notes": [
+    "door unread",
+    "crown crowned: reviewer pin (Haarlemmerdijk 131: dark brick, two wide three-light windows under top lights per storey, rows 4.8-6.3 and 6.6-8.4 m over the shop, white cornice 9.3-9.9 m with a pediment dormer to 11.5 m)",
+    "palette pinned: Haarlemmerdijk 131: strip wall median of mid-luma warm pixels 5-9.5 m, lifted x1.2",
+    "bays 2: reviewer pin (Haarlemmerdijk 131: 2 window axes on the upper storeys)"
+   ],
+   "likeness": {
+    "pandId": "0363100012173479",
+    "ncc": 0.174,
+    "nccRaw": 0.174,
+    "shiftM": [
+     0,
+     0.25
+    ],
+    "usable": 0.99,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.48 mean 0.54 vs photo 0.29"
+    ],
+    "wall": {
+     "photo": "#564e47",
+     "model": "#655e59",
+     "dL": 0.065
+    },
+    "glazing": {
+     "photo": 0.29,
+     "model": 0.54
+    },
+    "columns": {
+     "photo": null,
+     "model": 2
+    },
+    "iou": 0.289,
+    "footOffsetM": 2.33
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012173480",
+   "address": "Haarlemmerdijk 133A",
+   "builtYear": 1858,
+   "widthM": 4.42,
+   "eavesM": 9.2,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#4f4341",
+    "wallRaw": "#3f3835",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 808,
+     "confidence": 0.25,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 5,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "placed",
+   "type": "haarlemmer-shop-gable-wide",
+   "score": 1,
+   "placement": {
+    "type": "haarlemmer-shop-gable-wide",
+    "ground": {
+     "shopfront": {
+      "colour": "#2f2c29",
+      "fascia": true,
+      "name": "De Kookboekhandel",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "evidence": "auto-place: osm-only (winkelfunctie, woonfunctie, shop=books); fascia colour measured on the strip 2022-12-15 span 1463-1640"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#4f4341",
+     "evidence": "strip 2022-12-15 span 1463-1640: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#4d3f3b"
+    }
+   },
+   "notes": [
+    "door unread",
+    "crown neck: reviewer pin (Haarlemmerdijk 133A: red-brown brick neck gable 9.2-11.6 m with one attic light, two wide three-light windows per storey on rows 5.0-6.6 and 6.9-8.2 m over the shop)",
+    "palette pinned: Haarlemmerdijk 133A: strip wall median of mid-luma warm pixels 5-9.5 m, lifted x1.2",
+    "bays 2: reviewer pin (Haarlemmerdijk 133A: 2 window axes on the upper storeys)",
+    "edge NCC 0.14 passed on the reviewer floor 0.12"
+   ],
+   "likeness": {
+    "pandId": "0363100012173480",
+    "ncc": 0.14,
+    "nccRaw": 0.14,
+    "shiftM": [
+     -0.35,
+     -0.4
+    ],
+    "usable": 0.98,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "wall dL +0.16",
+     "glazing storey band off by 0.37 mean 0.54 vs photo 0.32"
+    ],
+    "wall": {
+     "photo": "#38302d",
+     "model": "#685550",
+     "dL": 0.163
+    },
+    "glazing": {
+     "photo": 0.32,
+     "model": 0.54
+    },
+    "columns": {
+     "photo": null,
+     "model": 2
+    },
+    "iou": 0.355,
+    "footOffsetM": 2.33
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012173482",
+   "address": "Haarlemmerdijk 135A",
+   "builtYear": 1918,
+   "widthM": 6.18,
+   "eavesM": 13.8,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#373538",
+    "wallRaw": "#50504d",
+    "skyline": {
+     "eavesM": 16.6,
+     "eavesRow": 144,
+     "confidence": 0.37,
+     "crown": {
+      "widthM": 0.5,
+      "riseM": 3.6,
+      "topWidthM": 0.15,
+      "centre": 0.16
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.001,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "balcony slabs stacked at 11.47 m (1.7 m wide), 6.75 m (1.57 m wide)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 12.15,
+       "widthM": 1.05,
+       "centre": 0.91
+      },
+      {
+       "atM": 11.47,
+       "widthM": 1.7,
+       "centre": 0.57
+      },
+      {
+       "atM": 9.97,
+       "widthM": 1.05,
+       "centre": 0.91
+      },
+      {
+       "atM": 9.38,
+       "widthM": 1,
+       "centre": 0.31
+      },
+      {
+       "atM": 7.57,
+       "widthM": 0.88,
+       "centre": 0.89
+      },
+      {
+       "atM": 6.75,
+       "widthM": 1.57,
+       "centre": 0.58
+      },
+      {
+       "atM": 6.15,
+       "widthM": 0.88,
+       "centre": 0.22
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Haarlemmerdijk 135A: five-storey dark front (four upper rows) with a cornice at 13.3 m: no five-storey type in the kit",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012173481",
+   "address": "Haarlemmerdijk 137",
+   "builtYear": 1955,
+   "widthM": 5.74,
+   "eavesM": 14.19,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#262423",
+    "wallRaw": "#464645",
+    "skyline": {
+     "eavesM": 14.95,
+     "eavesRow": 210,
+     "confidence": 0.85,
+     "crown": {
+      "widthM": 1.3,
+      "riseM": 1.85,
+      "topWidthM": 0.2,
+      "centre": 0.88
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "curtain",
+    "doorSide": "right",
+    "accentSide": "right",
+    "accentShare": 0.007,
+    "structure": {
+     "bayWidthM": 0.6,
+     "bayCentre": 0.25,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 12.32,
+       "widthM": 1.2,
+       "centre": 0.67
+      },
+      {
+       "atM": 10,
+       "widthM": 1.32,
+       "centre": 0.62
+      },
+      {
+       "atM": 6.85,
+       "widthM": 1.02,
+       "centre": 0.9
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Haarlemmerdijk 137: tall point gable fits haarlemmer-shop-gable-four, but a run of one between held 135A and 139A",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012173484",
+   "address": "Haarlemmerdijk 139A",
+   "builtYear": 1997,
+   "widthM": 5.67,
+   "eavesM": 13.67,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#312e2e",
+    "wallRaw": "#444445",
+    "skyline": {
+     "eavesM": 14.6,
+     "eavesRow": 224,
+     "confidence": 0.44,
+     "crown": {
+      "widthM": 0.97,
+      "riseM": 4.8,
+      "topWidthM": 0.07,
+      "centre": 0.56
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 4,
+    "frontClass": "columns",
+    "doorSide": "right",
+    "accentSide": "right",
+    "accentShare": 0.005,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6.55,
+       "widthM": 0.8,
+       "centre": 0.08
+      },
+      {
+       "atM": 4.75,
+       "widthM": 1.5,
+       "centre": 0.66
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Haarlemmerdijk 139A: built 1997",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012173483",
+   "address": "Haarlemmerdijk 141",
+   "builtYear": 1846,
+   "widthM": 5.78,
+   "eavesM": 11.09,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#312d2c",
+    "wallRaw": "#3c3635",
+    "skyline": {
+     "eavesM": 15.8,
+     "eavesRow": 176,
+     "confidence": 0.46,
+     "crown": {
+      "widthM": 0.97,
+      "riseM": 3.2,
+      "topWidthM": 0.17,
+      "centre": 0.43
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 7,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.006,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Haarlemmerdijk 141: cornice house with a lantern dormer that fits, but a run of one between held 139A and 143",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012169539",
+   "address": "Haarlemmerdijk 143",
+   "builtYear": 1930,
+   "widthM": 5.8,
+   "eavesM": 10.75,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#40302c",
+    "wallRaw": "#463a36",
+    "skyline": {
+     "eavesM": 15.4,
+     "eavesRow": 192,
+     "confidence": 0.52,
+     "crown": {
+      "widthM": 1.05,
+      "riseM": 4.6,
+      "topWidthM": 0.35,
+      "centre": 0.38
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 7,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": "right",
+    "accentShare": 0.071,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Haarlemmerdijk 143: two storeys under a wide bell gable with a storey-high gable window and white bands: the shop types start at three storeys",
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

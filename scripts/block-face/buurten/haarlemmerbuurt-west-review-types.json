@@ -1,0 +1,156 @@
+{
+ "note": "Per-pand type pins from the lane's gridded read of the strips (grid-crop.ts, 1 m grid). The Opus strip review confirms or amends.",
+ "reviewed": "2026-11-10",
+ "pins": [
+  {
+   "face": "haarlemmerdijk-2-58",
+   "types": [
+    "haarlemmer-shop-gable"
+   ],
+   "pands": [
+    "0363100012167818",
+    "0363100012176101",
+    "0363100012176174"
+   ],
+   "reason": "Haarlemmerdijk 20 (neck), 8 (point), 4 (bell): a gable over the front on the 2022-12-15 strip"
+  },
+  {
+   "face": "haarlemmerdijk-2-58",
+   "types": [
+    "haarlemmer-shop-cornice"
+   ],
+   "pands": [
+    "0363100012167816",
+    "0363100012176102"
+   ],
+   "reason": "Haarlemmerdijk 16 and 10: a flat white cornice; the skyline read ghost gables of the neighbours"
+  },
+  {
+   "face": "haarlemmerdijk-66-120",
+   "types": [
+    "haarlemmer-shop-gable"
+   ],
+   "pands": [
+    "0363100012177671"
+   ],
+   "reason": "Haarlemmerdijk 68: neck gable, foot 10.0 m, top 12.4 m, scrolls; rows 4.8-6.3 and 7.2-9.05 m over a 4.3 m shop"
+  },
+  {
+   "face": "haarlemmerdijk-66-120",
+   "types": [
+    "haarlemmer-shop-cornice"
+   ],
+   "pands": [
+    "0363100012177675",
+    "0363100012177670"
+   ],
+   "reason": "Haarlemmerdijk 70: narrow brick front, two window rows 4.9-6.3 and 7.8-9.3 m over the shop, flat cornice at 10.0 m; Haarlemmerdijk 66: brick cornice house, three window rows over the shop and a white bracketed cornice at 13.3 m"
+  },
+  {
+   "face": "haarlemmerdijk-126-188",
+   "types": [
+    "haarlemmer-shop-gable"
+   ],
+   "pands": [
+    "0363100012171358"
+   ],
+   "reason": "Haarlemmerdijk 144: brick front, two axes, rows 5.9-7.75 and 8.75-10.75 m over a 4.9 m shop, a broad neck gable from 11.2 m with a large attic window 11.4-13.1 m, top 14.5 m"
+  },
+  {
+   "face": "haarlemmerdijk-126-188",
+   "types": [
+    "haarlemmer-shop-cornice-four"
+   ],
+   "pands": [
+    "0363100012171357"
+   ],
+   "reason": "Haarlemmerdijk 142: brick cornice house, three axes, rows 4.1-6.0 / 6.9-8.75 / 9.6-11.5 m over a 4.0 m shop, white cornice to 12.3 m and a tall lantern dormer to 15 m"
+  },
+  {
+   "face": "haarlemmerdijk-117-143",
+   "types": [
+    "haarlemmer-shop-cornice-wide"
+   ],
+   "pands": [
+    "0363100012173479"
+   ],
+   "reason": "Haarlemmerdijk 131: dark brick, two wide three-light windows under top lights per storey, rows 4.8-6.3 and 6.6-8.4 m over the shop, white cornice 9.3-9.9 m with a pediment dormer to 11.5 m"
+  },
+  {
+   "face": "haarlemmerdijk-117-143",
+   "types": [
+    "haarlemmer-shop-gable-wide"
+   ],
+   "pands": [
+    "0363100012173480"
+   ],
+   "reason": "Haarlemmerdijk 133A: red-brown brick neck gable 9.2-11.6 m with one attic light, two wide three-light windows per storey on rows 5.0-6.6 and 6.9-8.2 m over the shop"
+  },
+  {
+   "face": "haarlemmerdijk-2-58",
+   "types": [
+    "haarlemmer-shop-cornice-frieze"
+   ],
+   "pands": [
+    "0363100012167817",
+    "0363100012176172"
+   ],
+   "reason": "Haarlemmerdijk 6 and 18: brick under a deep cream attic frieze with a small crowned piece, no roof face (strip-sheet review 2026-11-10, 1 m grid at 1.8x)"
+  },
+  {
+   "face": "haarlemmerdijk-13-45",
+   "types": [
+    "haarlemmer-shop-gable"
+   ],
+   "pands": [
+    "0363100012177501"
+   ],
+   "reason": "Haarlemmerdijk 23E: bell gable 9.9-11.9 m with one attic light, rows 4.75-6.9 and 7.4-9.0 m over the shop, three axes"
+  },
+  {
+   "face": "haarlemmerdijk-13-45",
+   "types": [
+    "haarlemmer-shop-cornice-four"
+   ],
+   "pands": [
+    "0363100012177504"
+   ],
+   "reason": "Haarlemmerdijk 21: 18th-c. cornice house, three axes, rows 4.0-6.0 / 6.75-8.6 / 9.4-10.75 m with segmental heads over a 3.7 m shop, white dentil cornice 11.6-12.4 m"
+  }
+ ],
+ "bays": [
+  {
+   "pandId": "0363100012173479",
+   "type": "haarlemmer-shop-cornice-wide",
+   "bays": 2,
+   "reason": "Haarlemmerdijk 131: 2 window axes on the upper storeys"
+  },
+  {
+   "pandId": "0363100012173480",
+   "type": "haarlemmer-shop-gable-wide",
+   "bays": 2,
+   "reason": "Haarlemmerdijk 133A: 2 window axes on the upper storeys"
+  },
+  {
+   "pandId": "0363100012167818",
+   "type": "haarlemmer-shop-gable",
+   "bays": [
+    2,
+    2,
+    3
+   ],
+   "reason": "Haarlemmerdijk 20: two windows on the first upper row, a group of three under the gable (strip-sheet review (docs/reports/haarlemmer-strip-verdict-20261110.md) and the 1 m grid at 1.8x brightness)"
+  },
+  {
+   "pandId": "0363100012167816",
+   "type": "haarlemmer-shop-cornice",
+   "bays": 2,
+   "headLines": [
+    0.8,
+    0.76,
+    0.82
+   ],
+   "reason": "Haarlemmerdijk 16: two axes; the first upper row stands 0.5 m lower than the type's (strip-sheet review (docs/reports/haarlemmer-strip-verdict-20261110.md) and the 1 m grid at 1.8x brightness)"
+  }
+ ]
+}

@@ -1,0 +1,36 @@
+{
+ "note": "Lane review pins from the 1 m-grid strip read (grid-crop.ts); the Opus strip review confirms or amends.",
+ "reviewed": "2026-11-10",
+ "pins": [
+  {
+   "pandId": "0363100012171144",
+   "type": "haarlemmerstraat-sash-gable-four",
+   "crown": "neck",
+   "reason": "Haarlemmerstraat 54: neck gable from 13.0 m (scrolls 13.0-13.3), top 15.6 m, one attic light; three sash rows 4.6-6.4 / 7.6-9.4 / 10.6-12.2 m over a 4.2 m shop"
+  },
+  {
+   "pandId": "0363100012171145",
+   "type": "haarlemmerstraat-sash-gable-four",
+   "crown": "neck",
+   "reason": "Haarlemmerstraat 52: tall neck gable from 14.5 m to 18.8 m with an attic light; three sash rows 5.6-7.6 / 8.5-10.55 / 11.5-13.1 m over a 4.8 m shop portal"
+  },
+  {
+   "pandId": "0363100012171148",
+   "type": "haarlemmerstraat-sash-cornice",
+   "crown": "none",
+   "reason": "Haarlemmerstraat 50: cornice house, two sash rows 4.25-6.0 and 7.2-8.8 m over a 3.4 m shop, white cornice at 10.0-10.4 m"
+  },
+  {
+   "pandId": "0363100012171141",
+   "type": "haarlemmerstraat-sash-gable",
+   "crown": "bell",
+   "reason": "Haarlemmerstraat 48B: low bell gable 8.6-10.8 m with scrolls and one attic light, rows 3.9-5.8 and 6.25-7.9 m"
+  },
+  {
+   "pandId": "0363100012171140",
+   "type": "haarlemmerstraat-sash-cornice-four",
+   "crown": "dormer",
+   "reason": "Haarlemmerstraat 46: cornice house of four storeys, rows 3.25-5.0 / 5.75-7.5 / 8.4-10.1 m, cornice 11.0-12.2 m and a dormer to 13.2 m"
+  }
+ ]
+}

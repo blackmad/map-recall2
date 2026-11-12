@@ -5,8 +5,8 @@ import assert from 'node:assert/strict';
 import { SPEC_BAYS_HELD, SPEC_DESIGN_HELD, SPEC_STOOPS_HELD, SPEC_WALLS_HELD } from './decorate.ts';
 
 test('spec holds: the released and held state of each field', () => {
-  // flipped only by the H9 un-hold commit after the frame read
-  assert.equal(SPEC_WALLS_HELD, true);
+  // flipped by the H9 un-hold commit after the frame read 2026-11-10
+  assert.equal(SPEC_WALLS_HELD, false);
   // released by H1c (#350) 2026-11-10; flipped only by a rollback commit
   assert.equal(SPEC_BAYS_HELD, false);
   // released by K-stoep (#360) 2026-11-10; flipped only by a rollback commit

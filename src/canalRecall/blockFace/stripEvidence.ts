@@ -81,17 +81,17 @@ function bodyRows(height: number, ppm: number, eavesM: number): [number, number]
 }
 
 /** Shares of placeholder grey and foliage in the body band of a span (6 % inset each side), and its median luma. */
-export function bodyShares(rgb: Uint8Array, width: number, height: number, px: [number, number], ppm: number, eavesM: number): {foliage: number; placeholder: number; luma: number} {
+export function bodyShares(rgb: Uint8Array, width: number, height: number, px: [number, number], ppm: number, eavesM: number, leaf: (r: number, g: number, b: number) => boolean = isLeaf): {foliage: number; placeholder: number; luma: number} {
   const inset = Math.round((px[1] - px[0]) * 0.06), [y0, y1] = bodyRows(height, ppm, eavesM);
-  let n = 0, v = 0, leaf = 0; const ls: number[] = [];
+  let n = 0, v = 0, leaves = 0; const ls: number[] = [];
   for (let y = y0; y < y1; y++) for (let x = px[0] + inset; x < px[1] - inset; x++) {
     const i = (y * width + x) * 3, p: [number, number, number] = [rgb[i], rgb[i + 1], rgb[i + 2]];
     n++; if (classifyPixel(p) === 'void') { v++; continue; }
-    if (isLeaf(p[0], p[1], p[2])) leaf++;
+    if (leaf(p[0], p[1], p[2])) leaves++;
     ls.push(luma(rgb, i));
   }
   ls.sort((a, b) => a - b);
-  return {foliage: n ? r2(leaf / n) : 0, placeholder: n ? r2(v / n) : 1, luma: ls.length ? ls[ls.length >> 1] : 100};
+  return {foliage: n ? r2(leaves / n) : 0, placeholder: n ? r2(v / n) : 1, luma: ls.length ? ls[ls.length >> 1] : 100};
 }
 
 /** The band over the roof (roofM + 0.7 m .. strip top): open-sky pixel share, share of columns that see sky, band height. */
@@ -111,11 +111,13 @@ export function bandOverRoof(rgb: Uint8Array, width: number, height: number, px:
   return {open: n ? r2(open / n) : 0, skyCols: cols ? r2(skyCols / cols) : 0, aboveM: r2(Math.max(0, y1) / ppm)};
 }
 
-export function measureSpanEvidence(a: {rgb: Uint8Array; width: number; height: number; px: [number, number]; pixelsPerMetre: number; eavesM: number; roofM: number; panoramas?: PanoramaUse[]}): SpanEvidence {
+export function measureSpanEvidence(a: {rgb: Uint8Array; width: number; height: number; px: [number, number]; pixelsPerMetre: number; eavesM: number; roofM: number; panoramas?: PanoramaUse[];
+  /** The foliage test (stripWhiteBalance.ts balancedLeaf); absent = isLeaf. */
+  leaf?: (r: number, g: number, b: number) => boolean}): SpanEvidence {
   const ppm = a.pixelsPerMetre;
   const sk = measureSkyline({rgb: a.rgb, width: a.width, height: a.height, x0: a.px[0], x1: a.px[1], pixelsPerMetre: ppm});
   const near = a.panoramas?.length ? a.panoramas.reduce((p, q) => (q.distanceM < p.distanceM ? q : p)) : null;
-  const body = bodyShares(a.rgb, a.width, a.height, a.px, ppm, a.eavesM);
+  const body = bodyShares(a.rgb, a.width, a.height, a.px, ppm, a.eavesM, a.leaf);
   const band = bandOverRoof(a.rgb, a.width, a.height, a.px, ppm, a.roofM, body.luma);
   const skyEavesM = sk && sk.eavesM > 0 ? sk.eavesM : 0;
   return {...band, sky: sk?.confidence ?? 0, reach: skyEavesM && a.eavesM > 0 ? r2(skyEavesM / a.eavesM) : 0,

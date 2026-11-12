@@ -1,0 +1,254 @@
+{
+ "street": "Brouwersgracht",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T08:12:53.503Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012179425",
+   "addresses": [
+    "Brouwersgracht 20"
+   ],
+   "groundUnits": [
+    {
+     "address": "Brouwersgracht 20",
+     "use": "woonfunctie",
+     "areaM2": 149,
+     "bagId": "0363010000596762"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012179426",
+   "addresses": [
+    "Brouwersgracht 18"
+   ],
+   "groundUnits": [
+    {
+     "address": "Brouwersgracht 18-H",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000596755"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012179427",
+   "addresses": [
+    "Brouwersgracht 14"
+   ],
+   "groundUnits": [
+    {
+     "address": "Brouwersgracht 14-H",
+     "use": "kantoorfunctie",
+     "areaM2": 93,
+     "bagId": "0363010000596744"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012179428",
+   "addresses": [
+    "Brouwersgracht 8"
+   ],
+   "groundUnits": [
+    {
+     "address": "Brouwersgracht 8-H",
+     "use": "woonfunctie",
+     "areaM2": 250,
+     "bagId": "0363010012157232"
+    },
+    {
+     "address": "Brouwersgracht 8-O",
+     "use": "industriefunctie",
+     "areaM2": 84,
+     "bagId": "0363010000596730"
+    },
+    {
+     "address": "Brouwersgracht 8-H",
+     "use": "woonfunctie",
+     "areaM2": 121,
+     "bagId": "0363010011872243"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11001972007,
+     "lngLat": [
+      4.8934649,
+      52.3790325
+     ],
+     "tags": {
+      "access": "yes",
+      "amenity": "bicycle_parking",
+      "bicycle_parking": "stands",
+      "capacity": "6",
+      "covered": "no"
+     },
+     "fetchedAt": "2026-11-10T08:12:53.503Z",
+     "match": "frontage",
+     "distanceM": 5.3
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012179479",
+   "addresses": [
+    "Brouwersgracht 6"
+   ],
+   "groundUnits": [
+    {
+     "address": "Brouwersgracht 6-O",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000944678"
+    },
+    {
+     "address": "Brouwersgracht 6-H",
+     "use": "woonfunctie",
+     "areaM2": 115,
+     "bagId": "0363010000958008"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11001972007,
+     "lngLat": [
+      4.8934649,
+      52.3790325
+     ],
+     "tags": {
+      "access": "yes",
+      "amenity": "bicycle_parking",
+      "bicycle_parking": "stands",
+      "capacity": "6",
+      "covered": "no"
+     },
+     "fetchedAt": "2026-11-10T08:12:53.503Z",
+     "match": "frontage",
+     "distanceM": 5.3
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012179480",
+   "addresses": [
+    "Brouwersgracht 4"
+   ],
+   "groundUnits": [
+    {
+     "address": "Brouwersgracht 4-H",
+     "use": "winkelfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000596710"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012179488",
+   "addresses": [
+    "Brouwersgracht 2A",
+    "Brouwersgracht 2B",
+    "Brouwersgracht 2C",
+    "Brouwersgracht 2D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Brouwersgracht 2A",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000596705"
+    },
+    {
+     "address": "Brouwersgracht 2B",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000596706"
+    },
+    {
+     "address": "Brouwersgracht 2C",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000596707"
+    },
+    {
+     "address": "Brouwersgracht 2D",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010000596708"
+    },
+    {
+     "address": "Singel 14-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 118,
+     "bagId": "0363010001018893"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2399748068,
+     "lngLat": [
+      4.8937968,
+      52.3790237
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "14",
+      "addr:postcode": "1013GA",
+      "addr:street": "Singel",
+      "check_date": "2025-03-14",
+      "name": "The Store",
+      "note": "Dutch coffeeshop",
+      "shop": "cannabis"
+     },
+     "fetchedAt": "2026-11-10T08:12:53.503Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 2721575560,
+     "lngLat": [
+      4.8938367,
+      52.3790679
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "12-H",
+      "addr:postcode": "1013GA",
+      "addr:street": "Singel",
+      "brand": "The Bulldog",
+      "brand:wikidata": "Q2466162",
+      "brand:wikipedia": "nl:The Bulldog",
+      "check_date": "2025-03-14",
+      "name": "The Bulldog Rock Shop",
+      "opening_hours": "07:00-01:00",
+      "shop": "cannabis",
+      "smoking": "dedicated",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "website": "https://thebulldog.com/locations/coffeeshops/the-bulldog-rockshop/"
+     },
+     "fetchedAt": "2026-11-10T08:12:53.503Z",
+     "match": "frontage",
+     "distanceM": 6.8
+    }
+   ]
+  }
+ ]
+}

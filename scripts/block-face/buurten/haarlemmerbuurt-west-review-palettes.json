@@ -1,0 +1,63 @@
+{
+ "note": "Reviewer palette pins (reviewPalettes.ts) measured by the lane on the dark 2022-12-15 Haarlemmerdijk strip (scratchpad wall.mjs: median of mid-luma warm pixels between 5 and 9.5 m).",
+ "pins": [
+  {
+   "pandId": "0363100012167817",
+   "type": "haarlemmer-shop-cornice-frieze",
+   "palette": {
+    "brick": "#4c403a"
+   },
+   "reason": "Haarlemmerdijk 18: dark grey-brown brick, raw strip median #3c3734 (2022-12-15, 5-9.5 m band, mid-luma warm pixels) lifted x1.25; the measured-brick lift turned it plum (#59495a)"
+  },
+  {
+   "pandId": "0363100012176102",
+   "type": "haarlemmer-shop-cornice",
+   "palette": {
+    "brick": "#8e8774",
+    "wallMaterial": "stucco"
+   },
+   "reason": "Haarlemmerdijk 10: a painted plaster front, raw median #767060 lifted x1.2"
+  },
+  {
+   "pandId": "0363100012176101",
+   "type": "haarlemmer-shop-gable",
+   "palette": {
+    "brick": "#6a6b65",
+    "wallMaterial": "stucco"
+   },
+   "reason": "Haarlemmerdijk 8: grey painted plaster point gable, raw median #585954 lifted x1.2"
+  },
+  {
+   "pandId": "0363100012176172",
+   "type": "haarlemmer-shop-cornice-frieze",
+   "palette": {
+    "brick": "#4e4a44"
+   },
+   "reason": "Haarlemmerdijk 6: dark brick, raw median #413e39 lifted x1.2"
+  },
+  {
+   "pandId": "0363100012176174",
+   "type": "haarlemmer-shop-gable",
+   "palette": {
+    "brick": "#5b5550"
+   },
+   "reason": "Haarlemmerdijk 4: dark brick, raw median #4c4743 lifted x1.2"
+  },
+  {
+   "pandId": "0363100012173479",
+   "type": "haarlemmer-shop-cornice-wide",
+   "palette": {
+    "brick": "#4c4743"
+   },
+   "reason": "Haarlemmerdijk 131: strip wall median of mid-luma warm pixels 5-9.5 m, lifted x1.2"
+  },
+  {
+   "pandId": "0363100012173480",
+   "type": "haarlemmer-shop-gable-wide",
+   "palette": {
+    "brick": "#4d3f3b"
+   },
+   "reason": "Haarlemmerdijk 133A: strip wall median of mid-luma warm pixels 5-9.5 m, lifted x1.2"
+  }
+ ]
+}

@@ -1,0 +1,778 @@
+{
+ "face": "haarlemmerdijk-13-45",
+ "street": "Haarlemmerdijk",
+ "library": "haarlemmerbuurt",
+ "stripDate": "2022-12-15",
+ "seconds": 5.31,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012167796",
+   "address": "Haarlemmerdijk 13",
+   "builtYear": 1905,
+   "widthM": 17.16,
+   "eavesM": 11.48,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#383634",
+    "wallRaw": "#4a4745",
+    "skyline": {
+     "eavesM": 10.65,
+     "eavesRow": 364,
+     "confidence": 0.7,
+     "crown": {
+      "widthM": 2.85,
+      "riseM": 9.1,
+      "topWidthM": 0.65,
+      "centre": 0.12
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.003,
+    "structure": {
+     "bayWidthM": 1.93,
+     "bayCentre": 0.16,
+     "balconies": false,
+     "why": "no dark open axis, 2 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 7.35,
+       "widthM": 1.52,
+       "centre": 0.42
+      },
+      {
+       "atM": 6.67,
+       "widthM": 3.2,
+       "centre": 0.82
+      },
+      {
+       "atM": 4.88,
+       "widthM": 1.18,
+       "centre": 0.41
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: scaffolded and wrapped (2024-12-11)",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012177504",
+   "address": "Haarlemmerdijk 21",
+   "builtYear": 1905,
+   "widthM": 5.83,
+   "eavesM": 12.4,
+   "storeys3dbag": 0,
+   "bagBay": null,
+   "strip": {
+    "wall": "#453e3b",
+    "wallRaw": "#46403c",
+    "skyline": {
+     "eavesM": 12.5,
+     "eavesRow": 290,
+     "confidence": 0.56,
+     "crown": {
+      "widthM": 0.55,
+      "riseM": 7.25,
+      "topWidthM": 0.45,
+      "centre": 0.4
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.099 < 0.15 (photo vs model body; likeness.ts FAIL: wall dL +0.15; glazing storey band off by 0.17; window shape tall vs photo square; wall family unresolved (#362f2b is dark and neutral, brick courses not resolved): lightness and hue judged only)",
+   "likeness": {
+    "pandId": "0363100012177504",
+    "ncc": 0.099,
+    "nccRaw": 0.099,
+    "shiftM": [
+     -0.4,
+     -0.4
+    ],
+    "usable": 0.98,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "wall dL +0.15",
+     "glazing storey band off by 0.17",
+     "window shape tall vs photo square",
+     "wall family unresolved (#362f2b is dark and neutral, brick courses not resolved): lightness and hue judged only"
+    ],
+    "wall": {
+     "photo": "#362f2b",
+     "model": "#5f5551",
+     "dL": 0.155
+    },
+    "glazing": {
+     "photo": 0.52,
+     "model": 0.44
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.501,
+    "footOffsetM": 1.88
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012177501",
+   "address": "Haarlemmerdijk 23E",
+   "builtYear": 1725,
+   "widthM": 5.51,
+   "eavesM": 9.9,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": null,
+    "wallRaw": "#423d39",
+    "skyline": {
+     "eavesM": 9.07,
+     "eavesRow": 427,
+     "confidence": 0.63,
+     "crown": {
+      "widthM": 1.45,
+      "riseM": 3.03,
+      "topWidthM": 0.1,
+      "centre": 0.51
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 6,
+    "frontClass": "curtain",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 7.35,
+       "widthM": 1.02,
+       "centre": 0.76
+      },
+      {
+       "atM": 4.8,
+       "widthM": 1.05,
+       "centre": 0.1
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.116 < 0.15 (photo vs model body; likeness.ts FAIL: wall dL +0.25; glazing storey band off by 0.70 mean 0.30 vs photo 1.00; wall family unresolved (#302728 is dark and neutral, brick courses not resolved): lightness and hue judged only)",
+   "likeness": {
+    "pandId": "0363100012177501",
+    "ncc": 0.116,
+    "nccRaw": 0.116,
+    "shiftM": [
+     0.3,
+     -0.4
+    ],
+    "usable": 0.97,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "wall dL +0.25",
+     "glazing storey band off by 0.70 mean 0.30 vs photo 1.00",
+     "wall family unresolved (#302728 is dark and neutral, brick courses not resolved): lightness and hue judged only"
+    ],
+    "wall": {
+     "photo": "#302728",
+     "model": "#8b5d4c",
+     "dL": 0.251
+    },
+    "glazing": {
+     "photo": 1,
+     "model": 0.3
+    },
+    "columns": {
+     "photo": null,
+     "model": 3
+    },
+    "iou": 0.333,
+    "footOffsetM": 1.88
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012177502",
+   "address": "Haarlemmerdijk 25B",
+   "builtYear": 1905,
+   "widthM": 3.89,
+   "eavesM": 4.53,
+   "storeys3dbag": 0,
+   "bagBay": null,
+   "strip": {
+    "wall": "#323231",
+    "wallRaw": "#383636",
+    "skyline": {
+     "eavesM": 10.55,
+     "eavesRow": 368,
+     "confidence": 0.79,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 5,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "one-storey front (eaves <= 6 m): no balcony",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Haarlemmerdijk 25: a small two-storey house with a bell gable at 6.3-8.4 m: not the shop types",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012177503",
+   "address": "Haarlemmerdijk 27",
+   "builtYear": 1905,
+   "widthM": 3.79,
+   "eavesM": 11.96,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#413c39",
+    "wallRaw": "#484643",
+    "skyline": {
+     "eavesM": 10.95,
+     "eavesRow": 352,
+     "confidence": 0.61,
+     "crown": {
+      "widthM": 1.43,
+      "riseM": 8.6,
+      "topWidthM": 0.53,
+      "centre": 0.2
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.018,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6.22,
+       "widthM": 2.25,
+       "centre": 0.32
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Haarlemmerdijk 27: cornice house with a lantern dormer that fits the cornice type, but a run of one between held 25 and 29",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012167795",
+   "address": "Haarlemmerdijk 29",
+   "builtYear": 1874,
+   "widthM": 3.85,
+   "eavesM": 9.94,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#403833",
+    "wallRaw": "#4e4d49",
+    "skyline": {
+     "eavesM": 18.15,
+     "eavesRow": 64,
+     "confidence": 0.81,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 4,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.144,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6.2,
+       "widthM": 1.13,
+       "centre": 0.51
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Haarlemmerdijk 29: low front with a balustrade at 7.3-8.2 m and a set-back dormer",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012167794",
+   "address": "Haarlemmerdijk 31",
+   "builtYear": 1880,
+   "widthM": 4.16,
+   "eavesM": 11.48,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#473c3a",
+    "wallRaw": "#473f3e",
+    "skyline": {
+     "eavesM": 17.2,
+     "eavesRow": 102,
+     "confidence": 0.54,
+     "crown": {
+      "widthM": 0.65,
+      "riseM": 2.55,
+      "topWidthM": 0.42,
+      "centre": 0.09
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 5,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.014,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Haarlemmerdijk 31: brick point gable, shoulders 10.0 m, apex 12.6 m, rows 5.1-6.9 and 7.9-9.4 m; compared and held: its point gable compiles with 0.9 m2 of brick gable and roof tile coplanar at the facade (geometry-regression over the 0.5 m2 allowance), with the run or alone",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012253819",
+   "address": "Haarlemmerdijk 33",
+   "builtYear": 1905,
+   "widthM": 4.12,
+   "eavesM": 13.12,
+   "storeys3dbag": 0,
+   "bagBay": null,
+   "strip": {
+    "wall": null,
+    "wallRaw": "#4e4c4a",
+    "skyline": {
+     "eavesM": 16.95,
+     "eavesRow": 112,
+     "confidence": 0.53,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "curtain",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.069,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 2 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 8.55,
+       "widthM": 2.55,
+       "centre": 0.48
+      },
+      {
+       "atM": 6.6,
+       "widthM": 2.5,
+       "centre": 0.48
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Haarlemmerdijk 33: painted dark brick, three axes, rows 4.6-6.6 / 7.3-8.9 / 9.6-11.0 m, a tall white frieze and cornice 11.7-13.1 m with sky directly over it; compared and held: with the frieze type and a flat roof the run 33-35A compiles (no roof-under-crown overshoot), but the sheet is not the photo: 33 is drawn with two axes and two upper rows where the strip has three and three (the frieze type has no four-storey body), and 35A at NCC 0.11 with its strip span about 1 m off the BAG split",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012167805",
+   "address": "Haarlemmerdijk 35A",
+   "builtYear": 1750,
+   "widthM": 4.02,
+   "eavesM": 10.32,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#443634",
+    "wallRaw": "#473937",
+    "skyline": {
+     "eavesM": 15.95,
+     "eavesRow": 152,
+     "confidence": 0.64,
+     "crown": {
+      "widthM": 0.55,
+      "riseM": 3.6,
+      "topWidthM": 0.2,
+      "centre": 0.3
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0.42,
+     "bayCentre": 0.94,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 8.6,
+       "widthM": 0.8,
+       "centre": 0.56
+      },
+      {
+       "atM": 6.42,
+       "widthM": 1.05,
+       "centre": 0.62
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Haarlemmerdijk 35A: red brick, two axes, rows 4.5-6.5 and 7.0-9.0 m, a deep white cornice 10.0-11.25 m with a small crowned piece to 11.8 m; compared and held: with the frieze type and a flat roof the run 33-35A compiles (no roof-under-crown overshoot), but the sheet is not the photo: 33 is drawn with two axes and two upper rows where the strip has three and three (the frieze type has no four-storey body), and 35A at NCC 0.11 with its strip span about 1 m off the BAG split",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012253818",
+   "address": "Haarlemmerdijk 37",
+   "builtYear": 1905,
+   "widthM": 4.12,
+   "eavesM": 16.56,
+   "storeys3dbag": 0,
+   "bagBay": null,
+   "strip": {
+    "wall": "#262423",
+    "wallRaw": "#6b6a63",
+    "skyline": {
+     "eavesM": 16.35,
+     "eavesRow": 136,
+     "confidence": 0.94,
+     "crown": {
+      "widthM": 0.88,
+      "riseM": 1.82,
+      "topWidthM": 0.6,
+      "centre": 0.12
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": null,
+    "frontClass": "curtain",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.178,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.05,
+    "foliageShare": 0.02
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Haarlemmerdijk 37: modern balconied front to 15 m",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012167804",
+   "address": "Haarlemmerdijk 39",
+   "builtYear": 1896,
+   "widthM": 4.07,
+   "eavesM": 10.93,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": null,
+    "wallRaw": "#615b54",
+    "skyline": {
+     "eavesM": 16,
+     "eavesRow": 150,
+     "confidence": 0.76,
+     "crown": {
+      "widthM": 0.97,
+      "riseM": 3.38,
+      "topWidthM": 0.2,
+      "centre": 0.4
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "frontClass": "curtain",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.002,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6.72,
+       "widthM": 1.77,
+       "centre": 0.61
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.02
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Haarlemmerdijk 39: white Jugendstil front with a tower dormer",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012177663",
+   "address": "Haarlemmerdijk 41",
+   "builtYear": 1867,
+   "widthM": 3.97,
+   "eavesM": 11.94,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#2d2d2f",
+    "wallRaw": "#55504b",
+    "skyline": {
+     "eavesM": 16.95,
+     "eavesRow": 112,
+     "confidence": 0.76,
+     "crown": {
+      "widthM": 0.97,
+      "riseM": 2.4,
+      "topWidthM": 0.2,
+      "centre": 0.17
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": "right",
+    "accentShare": 0.014,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Haarlemmerdijk 41: dark cornice house with a pediment dormer that fits the type, but a run of one between held 39 and 43",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012176277",
+   "address": "Haarlemmerdijk 43",
+   "builtYear": 1827,
+   "widthM": 4.05,
+   "eavesM": 14.81,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#302c2a",
+    "wallRaw": "#584f49",
+    "skyline": {
+     "eavesM": 16.05,
+     "eavesRow": 148,
+     "confidence": 0.69,
+     "crown": {
+      "widthM": 1.13,
+      "riseM": 3.7,
+      "topWidthM": 0.1,
+      "centre": 0.46
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.086,
+    "structure": {
+     "bayWidthM": 0.3,
+     "bayCentre": 0.96,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Haarlemmerdijk 43: orange-glazed Jugendstil front to 15 m",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012177659",
+   "address": "Haarlemmerdijk 45",
+   "builtYear": 1750,
+   "widthM": 5.66,
+   "eavesM": 8.89,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#272423",
+    "wallRaw": "#393735",
+    "skyline": {
+     "eavesM": 9.75,
+     "eavesRow": 400,
+     "confidence": 0.64,
+     "crown": {
+      "widthM": 1.63,
+      "riseM": 9.6,
+      "topWidthM": 0.47,
+      "centre": 0.42
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Haarlemmerdijk 45: ornate bell gable that fits, but a run of one beside held 43 at the face end",
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

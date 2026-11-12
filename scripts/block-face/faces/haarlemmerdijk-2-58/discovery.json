@@ -1,0 +1,1757 @@
+{
+ "street": "Haarlemmerdijk",
+ "seed": "0363100012176175",
+ "members": [
+  "0363100012177585",
+  "0363100012177584",
+  "0363100012177590",
+  "0363100012176280",
+  "0363100012176278",
+  "0363100012176279",
+  "0363100012177674",
+  "0363100012177657",
+  "0363100012167801",
+  "0363100012167821",
+  "0363100012167820",
+  "0363100012167819",
+  "0363100012167818",
+  "0363100012167817",
+  "0363100012167816",
+  "0363100012176104",
+  "0363100012176103",
+  "0363100012176102",
+  "0363100012176101",
+  "0363100012176172",
+  "0363100012176174",
+  "0363100012176175"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "trimmed at 0363100012177585 (face continues: 176284)"
+  },
+  {
+   "side": "right",
+   "reason": "no further pand fronts the street in the fetched area"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012165072",
+   "reason": "frontage 69.0 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012165206",
+   "reason": "sightline to Haarlemmerdijk crosses 0363100012167817"
+  },
+  {
+   "pandId": "0363100012167746",
+   "reason": "frontage 217.1 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012167747",
+   "reason": "frontage 212.9 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012167748",
+   "reason": "frontage 221.6 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012167749",
+   "reason": "frontage 233.4 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012167750",
+   "reason": "frontage 214.9 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012167751",
+   "reason": "frontage 143.5 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012167752",
+   "reason": "frontage 191.0 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012167753",
+   "reason": "frontage 143.9 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012167754",
+   "reason": "frontage 208.3 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012167755",
+   "reason": "frontage 157.5 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012167756",
+   "reason": "frontage 200.0 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012167757",
+   "reason": "frontage 161.1 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012167760",
+   "reason": "frontage 198.0 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012167761",
+   "reason": "frontage 196.4 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012167762",
+   "reason": "frontage 189.0 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012167763",
+   "reason": "frontage 184.7 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012167764",
+   "reason": "frontage 180.3 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012167765",
+   "reason": "frontage 175.8 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012167766",
+   "reason": "frontage 82.8 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012167767",
+   "reason": "frontage 143.1 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012167768",
+   "reason": "frontage 157.9 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012167769",
+   "reason": "frontage 185.5 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012167770",
+   "reason": "frontage 64.0 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012167771",
+   "reason": "frontage 51.3 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012167772",
+   "reason": "frontage 51.5 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012165103",
+   "reason": "frontage 32.2 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012165104",
+   "reason": "frontage 38.2 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012165203",
+   "reason": "frontage 41.3 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012165205",
+   "reason": "frontage 39.2 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012165209",
+   "reason": "frontage 61.6 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012165210",
+   "reason": "frontage 171.1 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012167529",
+   "reason": "frontage 82.2 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012167530",
+   "reason": "frontage 59.0 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012167531",
+   "reason": "no frontage on Haarlemmerdijk: No footprint edge faces Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012167532",
+   "reason": "frontage 149.6 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012167533",
+   "reason": "frontage 132.8 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012167534",
+   "reason": "frontage 118.6 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012167535",
+   "reason": "frontage 227.4 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012167537",
+   "reason": "frontage 208.9 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012167538",
+   "reason": "frontage 193.1 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012167539",
+   "reason": "frontage 166.7 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012167540",
+   "reason": "frontage 101.8 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012167541",
+   "reason": "frontage 58.1 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012167542",
+   "reason": "frontage 52.2 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012167543",
+   "reason": "frontage 55.4 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012167545",
+   "reason": "frontage 62.2 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012167580",
+   "reason": "frontage 65.9 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012167773",
+   "reason": "frontage 57.6 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012167774",
+   "reason": "frontage 72.5 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012167775",
+   "reason": "frontage 164.8 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012167777",
+   "reason": "frontage 51.2 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012167778",
+   "reason": "frontage 86.2 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012167779",
+   "reason": "frontage 77.3 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012167780",
+   "reason": "frontage 70.5 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012167781",
+   "reason": "frontage 78.1 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012167782",
+   "reason": "frontage 82.6 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012167783",
+   "reason": "frontage 69.4 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012167784",
+   "reason": "frontage 64.3 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012167788",
+   "reason": "frontage 38.3 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012167789",
+   "reason": "frontage 34.2 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012167790",
+   "reason": "frontage 52.4 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012167797",
+   "reason": "frontage 70.7 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012167798",
+   "reason": "frontage 36.1 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012167803",
+   "reason": "frontage 34.0 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012167806",
+   "reason": "frontage 52.5 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012167815",
+   "reason": "sightline to Haarlemmerdijk crosses 0363100012176103"
+  },
+  {
+   "pandId": "0363100012167799",
+   "reason": "frontage 31.9 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012167800",
+   "reason": "frontage 35.0 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012167802",
+   "reason": "sightline to Haarlemmerdijk crosses 0363100012177657"
+  },
+  {
+   "pandId": "0363100012167809",
+   "reason": "sightline to Haarlemmerdijk crosses 0363100012167810"
+  },
+  {
+   "pandId": "0363100012167810",
+   "reason": "sightline to Haarlemmerdijk crosses 0363100012176283"
+  },
+  {
+   "pandId": "0363100012167811",
+   "reason": "frontage 45.1 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012167813",
+   "reason": "frontage 32.2 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012167814",
+   "reason": "frontage 32.1 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012168269",
+   "reason": "frontage 154.4 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012168270",
+   "reason": "frontage 173.6 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012175050",
+   "reason": "sightline to Haarlemmerdijk crosses 0363100012167820"
+  },
+  {
+   "pandId": "0363100012175052",
+   "reason": "sightline to Haarlemmerdijk crosses 0363100012167820"
+  },
+  {
+   "pandId": "0363100012176096",
+   "reason": "no frontage on Haarlemmerdijk: No footprint edge faces Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012176124",
+   "reason": "frontage 97.2 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012176173",
+   "reason": "sightline to Haarlemmerdijk crosses 0363100012176174"
+  },
+  {
+   "pandId": "0363100012175054",
+   "reason": "frontage 135.2 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012175051",
+   "reason": "frontage 50.7 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012175053",
+   "reason": "frontage 45.1 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012176177",
+   "reason": "frontage 44.9 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012168271",
+   "reason": "frontage 83.2 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012168272",
+   "reason": "frontage 148.3 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012168273",
+   "reason": "frontage 144.9 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012168274",
+   "reason": "frontage 52.8 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012168416",
+   "reason": "frontage 205.4 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012168417",
+   "reason": "frontage 184.9 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012168418",
+   "reason": "frontage 164.0 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012168419",
+   "reason": "frontage 167.5 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012168420",
+   "reason": "frontage 208.4 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012168421",
+   "reason": "frontage 182.5 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012168422",
+   "reason": "frontage 180.2 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012168423",
+   "reason": "frontage 169.0 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012168424",
+   "reason": "frontage 211.4 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012168425",
+   "reason": "frontage 200.5 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012168426",
+   "reason": "frontage 204.6 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012168427",
+   "reason": "frontage 187.3 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012168428",
+   "reason": "frontage 180.6 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012168429",
+   "reason": "frontage 98.4 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012168430",
+   "reason": "frontage 147.0 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012168486",
+   "reason": "frontage 96.8 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012169278",
+   "reason": "frontage 46.6 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012175142",
+   "reason": "frontage 209.6 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012175143",
+   "reason": "frontage 204.0 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012175144",
+   "reason": "frontage 199.0 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012175210",
+   "reason": "frontage 183.5 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012176097",
+   "reason": "frontage 90.7 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012176098",
+   "reason": "frontage 114.1 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012176099",
+   "reason": "frontage 32.8 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012176100",
+   "reason": "frontage 47.4 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012176105",
+   "reason": "frontage 45.4 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012176125",
+   "reason": "frontage 77.2 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012176176",
+   "reason": "frontage 36.4 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012176178",
+   "reason": "sightline to Haarlemmerdijk crosses 0363100012167818"
+  },
+  {
+   "pandId": "0363100012176179",
+   "reason": "frontage 44.8 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012176195",
+   "reason": "frontage 91.3 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012176196",
+   "reason": "frontage 86.6 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012176202",
+   "reason": "frontage 100.1 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012176205",
+   "reason": "no frontage on Haarlemmerdijk: No footprint edge faces Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012176281",
+   "reason": "frontage 37.8 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012176366",
+   "reason": "frontage 224.2 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012176367",
+   "reason": "frontage 168.9 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012176368",
+   "reason": "frontage 143.8 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012176371",
+   "reason": "frontage 177.0 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012176372",
+   "reason": "frontage 209.4 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012176373",
+   "reason": "frontage 200.6 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012176374",
+   "reason": "frontage 174.7 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012176378",
+   "reason": "frontage 89.1 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012176379",
+   "reason": "frontage 158.3 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012176380",
+   "reason": "frontage 144.0 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012176381",
+   "reason": "frontage 143.7 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012176382",
+   "reason": "frontage 143.8 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012176383",
+   "reason": "frontage 143.6 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012176384",
+   "reason": "frontage 142.4 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012176385",
+   "reason": "frontage 162.1 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012176430",
+   "reason": "frontage 143.4 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012176435",
+   "reason": "frontage 81.4 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012176436",
+   "reason": "frontage 79.4 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012176285",
+   "reason": "frontage 44.8 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012176294",
+   "reason": "frontage 56.4 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012176295",
+   "reason": "frontage 56.5 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012176296",
+   "reason": "frontage 31.8 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012176297",
+   "reason": "frontage 31.8 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012176298",
+   "reason": "frontage 32.9 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012176299",
+   "reason": "frontage 38.3 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012176300",
+   "reason": "frontage 58.1 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012176180",
+   "reason": "frontage 50.5 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012176181",
+   "reason": "frontage 54.8 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012176182",
+   "reason": "frontage 59.2 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012176183",
+   "reason": "frontage 63.5 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012176194",
+   "reason": "frontage 82.3 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012176197",
+   "reason": "no frontage on Haarlemmerdijk: No footprint edge faces Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012176198",
+   "reason": "frontage 77.8 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012176199",
+   "reason": "no frontage on Haarlemmerdijk: No footprint edge faces Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012176200",
+   "reason": "no frontage on Haarlemmerdijk: No footprint edge faces Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012176201",
+   "reason": "no frontage on Haarlemmerdijk: No footprint edge faces Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012176203",
+   "reason": "frontage 137.3 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012176204",
+   "reason": "frontage 112.8 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012176440",
+   "reason": "frontage 82.5 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012176444",
+   "reason": "frontage 144.1 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012176453",
+   "reason": "frontage 66.0 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012176496",
+   "reason": "frontage 58.9 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012176497",
+   "reason": "frontage 51.7 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012176498",
+   "reason": "frontage 51.6 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012176499",
+   "reason": "frontage 51.7 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012176500",
+   "reason": "frontage 51.6 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012176504",
+   "reason": "frontage 74.1 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012176505",
+   "reason": "frontage 70.1 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012176506",
+   "reason": "frontage 78.3 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012176507",
+   "reason": "frontage 60.5 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012176519",
+   "reason": "frontage 51.8 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012176564",
+   "reason": "frontage 65.9 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012176943",
+   "reason": "frontage 230.8 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012176945",
+   "reason": "frontage 244.7 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012176946",
+   "reason": "frontage 238.3 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012177305",
+   "reason": "frontage 161.5 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012177306",
+   "reason": "frontage 175.4 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012177307",
+   "reason": "frontage 172.5 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012177308",
+   "reason": "frontage 170.7 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012177309",
+   "reason": "frontage 167.3 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012177312",
+   "reason": "frontage 186.2 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012177313",
+   "reason": "frontage 157.1 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012177419",
+   "reason": "frontage 168.7 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012177422",
+   "reason": "frontage 143.3 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012176447",
+   "reason": "sightline to Haarlemmerdijk crosses 0363100012167808"
+  },
+  {
+   "pandId": "0363100012176450",
+   "reason": "frontage 51.5 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012176451",
+   "reason": "frontage 51.3 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012176501",
+   "reason": "frontage 33.7 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012176502",
+   "reason": "sightline to Haarlemmerdijk crosses 0363100012167808"
+  },
+  {
+   "pandId": "0363100012176508",
+   "reason": "sightline to Haarlemmerdijk crosses 0363100012167792"
+  },
+  {
+   "pandId": "0363100012176509",
+   "reason": "sightline to Haarlemmerdijk crosses 0363100012167785"
+  },
+  {
+   "pandId": "0363100012176518",
+   "reason": "sightline to Haarlemmerdijk crosses 0363100012167808"
+  },
+  {
+   "pandId": "0363100012176565",
+   "reason": "frontage 31.9 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012176566",
+   "reason": "frontage 30.9 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012176567",
+   "reason": "frontage 31.1 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012176576",
+   "reason": "sightline to Haarlemmerdijk crosses 0363100012176568"
+  },
+  {
+   "pandId": "0363100012176582",
+   "reason": "sightline to Haarlemmerdijk crosses 0363100012176568"
+  },
+  {
+   "pandId": "0363100012176583",
+   "reason": "sightline to Haarlemmerdijk crosses 0363100012176568"
+  },
+  {
+   "pandId": "0363100012176649",
+   "reason": "frontage 38.3 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012176700",
+   "reason": "frontage 38.5 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012177423",
+   "reason": "no frontage on Haarlemmerdijk: No footprint edge faces Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012177424",
+   "reason": "no frontage on Haarlemmerdijk: No footprint edge faces Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012177425",
+   "reason": "frontage 156.4 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012177426",
+   "reason": "frontage 142.7 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012177427",
+   "reason": "frontage 142.8 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012177428",
+   "reason": "frontage 154.2 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012177429",
+   "reason": "frontage 151.3 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012177485",
+   "reason": "frontage 176.3 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012177486",
+   "reason": "no frontage on Haarlemmerdijk: No footprint edge faces Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012177487",
+   "reason": "frontage 173.5 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012177488",
+   "reason": "frontage 183.5 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012177489",
+   "reason": "frontage 143.0 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012177490",
+   "reason": "frontage 142.8 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012177491",
+   "reason": "frontage 164.7 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012177492",
+   "reason": "frontage 158.7 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012177493",
+   "reason": "frontage 170.2 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012177494",
+   "reason": "frontage 85.3 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012177495",
+   "reason": "frontage 81.6 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012177496",
+   "reason": "frontage 79.8 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012177497",
+   "reason": "frontage 149.5 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012177498",
+   "reason": "frontage 51.8 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012177499",
+   "reason": "frontage 67.4 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012177500",
+   "reason": "frontage 70.3 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012177505",
+   "reason": "frontage 53.6 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012177506",
+   "reason": "frontage 53.8 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012177507",
+   "reason": "frontage 53.6 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012177508",
+   "reason": "frontage 53.4 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012177555",
+   "reason": "frontage 197.8 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012177568",
+   "reason": "frontage 53.2 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012177569",
+   "reason": "frontage 53.4 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012177570",
+   "reason": "frontage 70.5 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012177571",
+   "reason": "frontage 71.0 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012177572",
+   "reason": "frontage 53.2 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012177573",
+   "reason": "frontage 34.0 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012177574",
+   "reason": "frontage 30.3 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012177575",
+   "reason": "frontage 34.5 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012177576",
+   "reason": "frontage 70.6 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012177577",
+   "reason": "frontage 52.8 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012177578",
+   "reason": "frontage 53.1 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012177579",
+   "reason": "frontage 52.3 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012177580",
+   "reason": "sightline to Haarlemmerdijk crosses 0363100012167795"
+  },
+  {
+   "pandId": "0363100012177581",
+   "reason": "frontage 35.4 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012177582",
+   "reason": "frontage 31.0 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012177632",
+   "reason": "frontage 219.7 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012177633",
+   "reason": "frontage 196.5 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012177634",
+   "reason": "frontage 214.3 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012177636",
+   "reason": "frontage 164.8 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012177637",
+   "reason": "frontage 158.8 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012177652",
+   "reason": "frontage 33.6 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012177654",
+   "reason": "frontage 35.7 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012177655",
+   "reason": "sightline to Haarlemmerdijk crosses 0363100012176282"
+  },
+  {
+   "pandId": "0363100012177656",
+   "reason": "frontage 33.7 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012177660",
+   "reason": "frontage 36.7 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012177661",
+   "reason": "frontage 33.8 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012177662",
+   "reason": "sightline to Haarlemmerdijk crosses 0363100012177583"
+  },
+  {
+   "pandId": "0363100012177672",
+   "reason": "sightline to Haarlemmerdijk crosses 0363100012176282"
+  },
+  {
+   "pandId": "0363100012177673",
+   "reason": "sightline to Haarlemmerdijk crosses 0363100012176282"
+  },
+  {
+   "pandId": "0363100012177589",
+   "reason": "sightline to Haarlemmerdijk crosses 0363100012176283"
+  },
+  {
+   "pandId": "0363100012177653",
+   "reason": "sightline to Haarlemmerdijk crosses 0363100012176283"
+  },
+  {
+   "pandId": "0363100012177664",
+   "reason": "sightline to Haarlemmerdijk crosses 0363100012177668"
+  },
+  {
+   "pandId": "0363100012177665",
+   "reason": "sightline to Haarlemmerdijk crosses 0363100012176284"
+  },
+  {
+   "pandId": "0363100012177666",
+   "reason": "frontage 38.7 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012177667",
+   "reason": "sightline to Haarlemmerdijk crosses 0363100012177586"
+  },
+  {
+   "pandId": "0363100012177668",
+   "reason": "sightline to Haarlemmerdijk crosses 0363100012177586"
+  },
+  {
+   "pandId": "0363100012179656",
+   "reason": "frontage 160.1 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012179657",
+   "reason": "frontage 162.9 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012179658",
+   "reason": "frontage 172.4 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012179659",
+   "reason": "frontage 146.0 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012179660",
+   "reason": "frontage 156.1 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012179661",
+   "reason": "frontage 145.2 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012179662",
+   "reason": "frontage 144.0 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012179663",
+   "reason": "frontage 166.6 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012179723",
+   "reason": "frontage 166.0 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012179724",
+   "reason": "frontage 143.7 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012179725",
+   "reason": "frontage 148.0 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012179726",
+   "reason": "frontage 152.4 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012179727",
+   "reason": "frontage 144.6 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012179728",
+   "reason": "frontage 139.1 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012179729",
+   "reason": "frontage 149.9 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012179730",
+   "reason": "frontage 133.2 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012238903",
+   "reason": "frontage 70.0 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012179731",
+   "reason": "frontage 115.4 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012179732",
+   "reason": "frontage 123.1 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012179733",
+   "reason": "frontage 136.9 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012179734",
+   "reason": "frontage 118.8 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012179735",
+   "reason": "frontage 129.9 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012179736",
+   "reason": "frontage 106.7 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012179737",
+   "reason": "frontage 151.5 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012179738",
+   "reason": "frontage 118.0 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012179846",
+   "reason": "frontage 202.4 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012179917",
+   "reason": "frontage 187.9 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012179936",
+   "reason": "frontage 166.9 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012180006",
+   "reason": "frontage 166.4 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012180007",
+   "reason": "frontage 140.4 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012180008",
+   "reason": "frontage 145.6 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012180009",
+   "reason": "frontage 174.5 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012180010",
+   "reason": "frontage 178.0 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012180011",
+   "reason": "frontage 176.1 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012180012",
+   "reason": "frontage 172.7 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012180013",
+   "reason": "frontage 180.0 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012180014",
+   "reason": "frontage 184.5 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012180015",
+   "reason": "frontage 189.2 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012180016",
+   "reason": "frontage 194.9 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012180017",
+   "reason": "frontage 177.1 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012180018",
+   "reason": "frontage 102.8 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012180019",
+   "reason": "frontage 115.1 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012180020",
+   "reason": "frontage 106.6 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012180021",
+   "reason": "frontage 110.6 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012180022",
+   "reason": "frontage 119.7 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012180023",
+   "reason": "frontage 128.3 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012180024",
+   "reason": "frontage 154.8 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012180025",
+   "reason": "frontage 157.5 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012180026",
+   "reason": "frontage 149.5 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012180027",
+   "reason": "frontage 133.5 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012180028",
+   "reason": "frontage 137.4 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012180104",
+   "reason": "frontage 141.0 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012180105",
+   "reason": "frontage 159.6 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012180106",
+   "reason": "frontage 161.5 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012180345",
+   "reason": "frontage 72.5 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012180346",
+   "reason": "frontage 68.4 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012180347",
+   "reason": "frontage 61.4 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012180348",
+   "reason": "no frontage on Haarlemmerdijk: No footprint edge faces Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012180349",
+   "reason": "no frontage on Haarlemmerdijk: No footprint edge faces Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012185505",
+   "reason": "frontage 165.7 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012252743",
+   "reason": "frontage 190.3 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012253746",
+   "reason": "frontage 30.9 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012253921",
+   "reason": "frontage 91.3 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012253922",
+   "reason": "no frontage on Haarlemmerdijk: No footprint edge faces Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012253923",
+   "reason": "no frontage on Haarlemmerdijk: No footprint edge faces Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012571508",
+   "reason": "frontage 153.0 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012571509",
+   "reason": "frontage 167.8 m from Haarlemmerdijk"
+  },
+  {
+   "pandId": "0363100012165204",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012165105",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012167794",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012167795",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012167796",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012167804",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012167805",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012167785",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012167786",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012167787",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012167792",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012167808",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012176277",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012176282",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012176283",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012176515",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012176699",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012177501",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012177502",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012177503",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012177504",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012177583",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012177587",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012177588",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012177658",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012177659",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012177663",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012177669",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012253818",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012253819",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012253730",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 180,
+ "pands": [
+  {
+   "pandId": "0363100012177585",
+   "alongM": -120.55,
+   "widthM": 9.57,
+   "eavesM": 9.19,
+   "roofMaxM": 14.39,
+   "storeys3dbag": 4,
+   "builtYear": 1775,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012177584",
+   "alongM": -112.98,
+   "widthM": 5.58,
+   "eavesM": 9.09,
+   "roofMaxM": 12.83,
+   "storeys3dbag": 4,
+   "builtYear": 1750,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012177590",
+   "alongM": -107.29,
+   "widthM": 5.81,
+   "eavesM": 11.14,
+   "roofMaxM": 11.25,
+   "storeys3dbag": 4,
+   "builtYear": 1907,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012176280",
+   "alongM": -101.57,
+   "widthM": 5.64,
+   "eavesM": 10.09,
+   "roofMaxM": 12.93,
+   "storeys3dbag": 4,
+   "builtYear": 1765,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012176278",
+   "alongM": -95.95,
+   "widthM": 5.6,
+   "eavesM": 13.65,
+   "roofMaxM": 15.4,
+   "storeys3dbag": 0,
+   "builtYear": 1785,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012176279",
+   "alongM": -90.28,
+   "widthM": 5.76,
+   "eavesM": 14.84,
+   "roofMaxM": 14.96,
+   "storeys3dbag": 5,
+   "builtYear": 1865,
+   "uncertainty": [
+    "Frontage extended across a native jog of up to 1 m (possible partial front at the default 0.35 m).",
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012177674",
+   "alongM": -84.54,
+   "widthM": 5.76,
+   "eavesM": 13.5,
+   "roofMaxM": 17.29,
+   "storeys3dbag": 5,
+   "builtYear": 1905,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012177657",
+   "alongM": -75.26,
+   "widthM": 2.85,
+   "eavesM": 10.39,
+   "roofMaxM": 13.7,
+   "storeys3dbag": 4,
+   "builtYear": 1997,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012167801",
+   "alongM": -66.23,
+   "widthM": 15.21,
+   "eavesM": 11.67,
+   "roofMaxM": 14.55,
+   "storeys3dbag": 5,
+   "builtYear": 1984,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012167821",
+   "alongM": -56.47,
+   "widthM": 4.33,
+   "eavesM": 15.22,
+   "roofMaxM": 17.83,
+   "storeys3dbag": 5,
+   "builtYear": 1865,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012167820",
+   "alongM": -49.18,
+   "widthM": 3.56,
+   "eavesM": 10.32,
+   "roofMaxM": 10.55,
+   "storeys3dbag": 4,
+   "builtYear": 1837,
+   "uncertainty": [
+    "Possible partial selected frontage: a near-parallel outward facade lies beyond a rejected native jog of at most 1m. Inspect sources and explicitly review a bounded jog-limit override."
+   ]
+  },
+  {
+   "pandId": "0363100012167819",
+   "alongM": -43.3,
+   "widthM": 7.74,
+   "eavesM": 11.48,
+   "roofMaxM": 13.01,
+   "storeys3dbag": 4,
+   "builtYear": 1805,
+   "uncertainty": [
+    "Frontage extended across a native jog of up to 1 m (possible partial front at the default 0.35 m).",
+    "Other ground polygons were not joined; disconnected or separately surveyed frontage may remain.",
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012167818",
+   "alongM": -37.55,
+   "widthM": 3.77,
+   "eavesM": 8.35,
+   "roofMaxM": 11.58,
+   "storeys3dbag": 3,
+   "builtYear": 1750,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012167817",
+   "alongM": -33.73,
+   "widthM": 3.88,
+   "eavesM": 9.29,
+   "roofMaxM": 11.69,
+   "storeys3dbag": 3,
+   "builtYear": 1905,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012167816",
+   "alongM": -29.84,
+   "widthM": 3.9,
+   "eavesM": 10.29,
+   "roofMaxM": 10.39,
+   "storeys3dbag": 3,
+   "builtYear": 1840,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012176104",
+   "alongM": -25.89,
+   "widthM": 4.02,
+   "eavesM": 13.2,
+   "roofMaxM": 13.35,
+   "storeys3dbag": 5,
+   "builtYear": 1905,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012176103",
+   "alongM": -21.72,
+   "widthM": 4.31,
+   "eavesM": 9.72,
+   "roofMaxM": 12.12,
+   "storeys3dbag": 4,
+   "builtYear": 1831,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012176102",
+   "alongM": -17.49,
+   "widthM": 4.16,
+   "eavesM": 9.03,
+   "roofMaxM": 10.2,
+   "storeys3dbag": 4,
+   "builtYear": 1828,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012176101",
+   "alongM": -13.22,
+   "widthM": 4.39,
+   "eavesM": 9.29,
+   "roofMaxM": 12.63,
+   "storeys3dbag": 4,
+   "builtYear": 1824,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012176172",
+   "alongM": -8.91,
+   "widthM": 4.23,
+   "eavesM": 8.9,
+   "roofMaxM": 11.84,
+   "storeys3dbag": 4,
+   "builtYear": 1850,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012176174",
+   "alongM": -4.63,
+   "widthM": 4.33,
+   "eavesM": 7.11,
+   "roofMaxM": 9.87,
+   "storeys3dbag": 0,
+   "builtYear": 1841,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012176175",
+   "alongM": 0,
+   "widthM": 4.94,
+   "eavesM": 7.1,
+   "roofMaxM": 10.25,
+   "storeys3dbag": 4,
+   "builtYear": 1729,
+   "uncertainty": [
+    "Frontage extended across a native jog of up to 1 m (possible partial front at the default 0.35 m).",
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  }
+ ]
+}

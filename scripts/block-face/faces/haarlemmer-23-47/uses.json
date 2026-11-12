@@ -1,0 +1,520 @@
+{
+ "street": "Haarlemmerstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T08:59:29.351Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012171115",
+   "addresses": [
+    "Haarlemmerstraat 23A",
+    "Haarlemmerstraat 23B",
+    "Haarlemmerstraat 25"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerstraat 23A",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010001006440"
+    },
+    {
+     "address": "Haarlemmerstraat 23B",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010001006441"
+    },
+    {
+     "address": "Haarlemmerstraat 25",
+     "use": "winkelfunctie",
+     "areaM2": 191,
+     "bagId": "0363010001006442"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 1223236797,
+     "lngLat": [
+      4.8937259,
+      52.3794045
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "11",
+      "addr:street": "Haarlemmerstraat",
+      "amenity": "restaurant",
+      "check_date": "2023-04-25",
+      "cuisine": "indian",
+      "name": "Rangoli",
+      "website": "https://www.rangoli.nl/"
+     },
+     "fetchedAt": "2026-11-10T08:59:29.351Z",
+     "match": "frontage",
+     "distanceM": 5.5
+    },
+    {
+     "type": "node",
+     "id": 1223236844,
+     "lngLat": [
+      4.8936255,
+      52.3794433
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "25",
+      "addr:street": "Haarlemmerstraat",
+      "name": "It's a present",
+      "shop": "gift"
+     },
+     "fetchedAt": "2026-11-10T08:59:29.351Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 11001959503,
+     "lngLat": [
+      4.893652,
+      52.3794929
+     ],
+     "tags": {
+      "amenity": "bicycle_parking",
+      "bicycle_parking": "stands",
+      "capacity": "14",
+      "covered": "no"
+     },
+     "fetchedAt": "2026-11-10T08:59:29.351Z",
+     "match": "frontage",
+     "distanceM": 2.2
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012179560",
+   "addresses": [
+    "Haarlemmerstraat 27A",
+    "Haarlemmerstraat 27B",
+    "Haarlemmerstraat 27C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerstraat 27A",
+     "use": "winkelfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000947459"
+    },
+    {
+     "address": "Haarlemmerstraat 27B",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010000947460"
+    },
+    {
+     "address": "Haarlemmerstraat 27C",
+     "use": "woonfunctie",
+     "areaM2": 86,
+     "bagId": "0363010000947461"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 1223236850,
+     "lngLat": [
+      4.8935484,
+      52.3794796
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "27",
+      "addr:street": "Haarlemmerstraat",
+      "check_date": "2023-04-25",
+      "name": "Daskas",
+      "shop": "gift",
+      "website": "https://www.daskas.nl/"
+     },
+     "fetchedAt": "2026-11-10T08:59:29.351Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 11001959503,
+     "lngLat": [
+      4.893652,
+      52.3794929
+     ],
+     "tags": {
+      "amenity": "bicycle_parking",
+      "bicycle_parking": "stands",
+      "capacity": "14",
+      "covered": "no"
+     },
+     "fetchedAt": "2026-11-10T08:59:29.351Z",
+     "match": "frontage",
+     "distanceM": 2.2
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012179557",
+   "addresses": [
+    "Haarlemmerstraat 29",
+    "Haarlemmerstraat 31D",
+    "Haarlemmerstraat 31B",
+    "Haarlemmerstraat 31A",
+    "Haarlemmerstraat 31C",
+    "Haarlemmerstraat 33B",
+    "Haarlemmerstraat 33C",
+    "Haarlemmerstraat 33A",
+    "Haarlemmerstraat 33D",
+    "Haarlemmerstraat 35A",
+    "Haarlemmerstraat 35B",
+    "Haarlemmerstraat 35C",
+    "Haarlemmerstraat 35D",
+    "Haarlemmerstraat 37A",
+    "Haarlemmerstraat 37B",
+    "Haarlemmerstraat 37C",
+    "Haarlemmerstraat 37D",
+    "Haarlemmerstraat 39A",
+    "Haarlemmerstraat 39B",
+    "Haarlemmerstraat 39C",
+    "Haarlemmerstraat 41",
+    "Haarlemmerstraat 41A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerstraat 33B",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000946789"
+    },
+    {
+     "address": "Haarlemmerstraat 33C",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000946790"
+    },
+    {
+     "address": "Haarlemmerstraat 35A",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000946830"
+    },
+    {
+     "address": "Haarlemmerstraat 35B",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000946832"
+    },
+    {
+     "address": "Haarlemmerstraat 35C",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000946834"
+    },
+    {
+     "address": "Haarlemmerstraat 35D",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000946836"
+    },
+    {
+     "address": "Haarlemmerstraat 37A",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000946838"
+    },
+    {
+     "address": "Haarlemmerstraat 37B",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000946840"
+    },
+    {
+     "address": "Haarlemmerstraat 37C",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000946842"
+    },
+    {
+     "address": "Haarlemmerstraat 37D",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000946843"
+    },
+    {
+     "address": "Haarlemmerstraat 39A",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000946845"
+    },
+    {
+     "address": "Haarlemmerstraat 39B",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000946847"
+    },
+    {
+     "address": "Haarlemmerstraat 39C",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000946848"
+    },
+    {
+     "address": "Haarlemmerstraat 29",
+     "use": "winkelfunctie",
+     "areaM2": 76,
+     "bagId": "0363010000947494"
+    },
+    {
+     "address": "Haarlemmerstraat 41",
+     "use": "winkelfunctie",
+     "areaM2": 290,
+     "bagId": "0363010000995665"
+    },
+    {
+     "address": "Haarlemmerstraat 41",
+     "use": "winkelfunctie",
+     "areaM2": 226,
+     "bagId": "0363010012156263"
+    },
+    {
+     "address": "Haarlemmerstraat 41A",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010012156264"
+    },
+    {
+     "address": "Haarlemmerstraat 31D",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000597920"
+    },
+    {
+     "address": "Haarlemmerstraat 33A",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000597921"
+    },
+    {
+     "address": "Haarlemmerstraat 31B",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000597969"
+    },
+    {
+     "address": "Haarlemmerstraat 31A",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010000946653"
+    },
+    {
+     "address": "Haarlemmerstraat 31C",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000597886"
+    },
+    {
+     "address": "Haarlemmerstraat 33D",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000946791"
+    }
+   ],
+   "units": 23,
+   "osm": [
+    {
+     "type": "node",
+     "id": 1223236771,
+     "lngLat": [
+      4.893461,
+      52.3795223
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "29",
+      "addr:postcode": "1013EJ",
+      "addr:street": "Haarlemmerstraat",
+      "name": "Rumors",
+      "opening_hours": "Sa-We 11:00-19:00; Th,Fr 11:00-21:00",
+      "shop": "clothes",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-11-10T08:59:29.351Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012179550",
+   "addresses": [
+    "Haarlemmerstraat 43"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerstraat 43",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000656932"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 1223236763,
+     "lngLat": [
+      4.8932944,
+      52.3796361
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "43",
+      "addr:postcode": "1013EJ",
+      "addr:street": "Haarlemmerstraat",
+      "name": "Vintage Island",
+      "second_hand": "only",
+      "shop": "clothes",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-11-10T08:59:29.351Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012179501",
+   "addresses": [
+    "Haarlemmerstraat 45",
+    "Haarlemmerstraat 45A",
+    "Haarlemmerstraat 45B",
+    "Haarlemmerstraat 45C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerstraat 45",
+     "use": "winkelfunctie",
+     "areaM2": 135,
+     "bagId": "0363010000656936"
+    },
+    {
+     "address": "Haarlemmerstraat 45",
+     "use": "winkelfunctie",
+     "areaM2": 92,
+     "bagId": "0363010012143270"
+    },
+    {
+     "address": "Haarlemmerstraat 45A",
+     "use": "woonfunctie",
+     "areaM2": 39,
+     "bagId": "0363010012143271"
+    },
+    {
+     "address": "Haarlemmerstraat 45B",
+     "use": "woonfunctie",
+     "areaM2": 39,
+     "bagId": "0363010012143272"
+    },
+    {
+     "address": "Haarlemmerstraat 45C",
+     "use": "woonfunctie",
+     "areaM2": 129,
+     "bagId": "0363010012143273"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 1223236870,
+     "lngLat": [
+      4.8932648,
+      52.379663
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "45",
+      "addr:postcode": "1013EJ",
+      "addr:street": "Haarlemmerstraat",
+      "name": "Haarlemmer electronica",
+      "note": "ja, dit heet echt De Haarlemeer",
+      "shop": "mobile_phone",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-11-10T08:59:29.351Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012179549",
+   "addresses": [
+    "Haarlemmerstraat 47"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerstraat 47-H",
+     "use": "winkelfunctie",
+     "areaM2": 42,
+     "bagId": "0363010000941531"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 1223236794,
+     "lngLat": [
+      4.8931984,
+      52.3796886
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "47",
+      "addr:street": "Haarlemmerstraat",
+      "amenity": "restaurant",
+      "check_date": "2026-04-24",
+      "cuisine": "indian",
+      "indoor_seating": "yes",
+      "name": "Namaskar",
+      "outdoor_seating": "no",
+      "website": "http://www.namaskaramsterdam.nl/",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-11-10T08:59:29.351Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 11001959504,
+     "lngLat": [
+      4.8932629,
+      52.3797406
+     ],
+     "tags": {
+      "amenity": "bicycle_parking",
+      "bicycle_parking": "stands",
+      "capacity": "10",
+      "covered": "no"
+     },
+     "fetchedAt": "2026-11-10T08:59:29.351Z",
+     "match": "frontage",
+     "distanceM": 3.7
+    }
+   ]
+  }
+ ]
+}

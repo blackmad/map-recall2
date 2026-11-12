@@ -1,0 +1,355 @@
+{
+ "street": "Haarlemmerstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T08:58:09.082Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012179422",
+   "addresses": [
+    "Haarlemmerstraat 1"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerstraat 1",
+     "use": "winkelfunctie",
+     "areaM2": 78,
+     "bagId": "0363010000953043"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2721574823,
+     "lngLat": [
+      4.8940116,
+      52.3792358
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "1",
+      "addr:postcode": "1013EH",
+      "addr:street": "Haarlemmerstraat",
+      "check_date": "2025-09-26",
+      "check_date:opening_hours": "2025-09-26",
+      "name": "Zilch",
+      "opening_hours": "Mo-Sa 10:00-18:00; Su 12:00-18:00",
+      "shop": "clothes",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "website": "https://www.zilch.nl/",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-11-10T08:58:09.082Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 11001959502,
+     "lngLat": [
+      4.8940373,
+      52.3792814
+     ],
+     "tags": {
+      "access": "yes",
+      "amenity": "bicycle_parking",
+      "bicycle_parking": "stands",
+      "capacity": "30",
+      "covered": "no"
+     },
+     "fetchedAt": "2026-11-10T08:58:09.082Z",
+     "match": "frontage",
+     "distanceM": 2.5
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012171108",
+   "addresses": [
+    "Haarlemmerstraat 3E",
+    "Haarlemmerstraat 3B",
+    "Haarlemmerstraat 3D",
+    "Haarlemmerstraat 3F",
+    "Haarlemmerstraat 3G",
+    "Haarlemmerstraat 3A",
+    "Haarlemmerstraat 3C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerstraat 3E",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000953038"
+    },
+    {
+     "address": "Haarlemmerstraat 3B",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000953039"
+    },
+    {
+     "address": "Haarlemmerstraat 3D",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000953040"
+    },
+    {
+     "address": "Haarlemmerstraat 3F",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000953041"
+    },
+    {
+     "address": "Haarlemmerstraat 3G",
+     "use": "winkelfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000953042"
+    },
+    {
+     "address": "Haarlemmerstraat 3A",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000953036"
+    },
+    {
+     "address": "Haarlemmerstraat 3C",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000953037"
+    }
+   ],
+   "units": 7,
+   "osm": [
+    {
+     "type": "node",
+     "id": 1223236896,
+     "lngLat": [
+      4.8939593,
+      52.379256
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "3",
+      "addr:street": "Haarlemmerstraat",
+      "check_date": "2023-04-25",
+      "name": "Zilch Outlet",
+      "shop": "clothes",
+      "source": "BAG",
+      "source:date": "2020-08-31",
+      "website": "https://www.zilch.nl/"
+     },
+     "fetchedAt": "2026-11-10T08:58:09.082Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012171107",
+   "addresses": [
+    "Haarlemmerstraat 5"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerstraat 5-H",
+     "use": "winkelfunctie",
+     "areaM2": 96,
+     "bagId": "0363010000656873"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2721579215,
+     "lngLat": [
+      4.8938782,
+      52.3793082
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "5-H",
+      "addr:postcode": "1013EH",
+      "addr:street": "Haarlemmerstraat",
+      "check_date": "2023-04-25",
+      "name": "Daily Fresh",
+      "shop": "supermarket",
+      "source": "BAG",
+      "source:date": "2014-02-11"
+     },
+     "fetchedAt": "2026-11-10T08:58:09.082Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012171114",
+   "addresses": [
+    "Haarlemmerstraat 7",
+    "Haarlemmerstraat 9"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerstraat 7-H",
+     "use": "winkelfunctie",
+     "areaM2": 180,
+     "bagId": "0363010001020940"
+    },
+    {
+     "address": "Haarlemmerstraat 9-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 209,
+     "bagId": "0363010001020941"
+    }
+   ],
+   "units": 8,
+   "osm": [
+    {
+     "type": "node",
+     "id": 1223236858,
+     "lngLat": [
+      4.8937715,
+      52.3793782
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "9",
+      "addr:postcode": "1013EH",
+      "addr:street": "Haarlemmerstraat",
+      "amenity": "restaurant",
+      "cuisine": "french",
+      "name": "Bistrot Neuf",
+      "opening_hours": "Mo-Th 16:00-24:00; Fr-Su 12:00-24:00",
+      "phone": "+31 20 400 3210",
+      "website": "https://www.bistrotneuf.nl/",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-11-10T08:58:09.082Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 2721580821,
+     "lngLat": [
+      4.893826,
+      52.3793416
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "7-H",
+      "addr:postcode": "1013EH",
+      "addr:street": "Haarlemmerstraat",
+      "check_date": "2023-04-25",
+      "name": "Chabrol Wines",
+      "shop": "wine",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "website": "http://www.chabrolwines.com"
+     },
+     "fetchedAt": "2026-11-10T08:58:09.082Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012171116",
+   "addresses": [
+    "Haarlemmerstraat 11",
+    "Haarlemmerstraat 13",
+    "Haarlemmerstraat 15",
+    "Haarlemmerstraat 17"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerstraat 11-H",
+     "use": "bijeenkomstfunctie,woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010000656881"
+    },
+    {
+     "address": "Haarlemmerstraat 11",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 151,
+     "bagId": "0363010011211159"
+    },
+    {
+     "address": "Haarlemmerstraat 17",
+     "use": "woonfunctie",
+     "areaM2": 103,
+     "bagId": "0363010011211161"
+    },
+    {
+     "address": "Haarlemmerstraat 15",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010012136320"
+    }
+   ],
+   "units": 7,
+   "osm": [
+    {
+     "type": "node",
+     "id": 1223236797,
+     "lngLat": [
+      4.8937259,
+      52.3794045
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "11",
+      "addr:street": "Haarlemmerstraat",
+      "amenity": "restaurant",
+      "check_date": "2023-04-25",
+      "cuisine": "indian",
+      "name": "Rangoli",
+      "website": "https://www.rangoli.nl/"
+     },
+     "fetchedAt": "2026-11-10T08:58:09.082Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 1223236844,
+     "lngLat": [
+      4.8936255,
+      52.3794433
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "25",
+      "addr:street": "Haarlemmerstraat",
+      "name": "It's a present",
+      "shop": "gift"
+     },
+     "fetchedAt": "2026-11-10T08:58:09.082Z",
+     "match": "frontage",
+     "distanceM": 5.2
+    },
+    {
+     "type": "node",
+     "id": 11001959503,
+     "lngLat": [
+      4.893652,
+      52.3794929
+     ],
+     "tags": {
+      "amenity": "bicycle_parking",
+      "bicycle_parking": "stands",
+      "capacity": "14",
+      "covered": "no"
+     },
+     "fetchedAt": "2026-11-10T08:58:09.082Z",
+     "match": "frontage",
+     "distanceM": 7.2
+    }
+   ]
+  }
+ ]
+}
