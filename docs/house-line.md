@@ -2052,3 +2052,15 @@ Node 32 s, Chromium 8 s (most of the Node time is the ortho fronts at 1800 px).
 Not reproduced: the city-look atlas shader, anisotropic filtering, cast shadows, environment maps. The release review
 "at gallery size from all sides" can use the Node orbit (`views.ts <id> -`) for its first look; the release decision
 itself should stay on a Chromium or in-game frame until the measureFacade knife edges above are hardened (OPEN).
+
+## §4d F3 measurement (lane F3, #381, 2026-11-12)
+
+Scripts under `scripts/house-crops/f3/`; the reader rulings are in `docs/reviews/gemini-vs-jev-20261112.md` (J3, branch lane/jev-j3-gemini-20261112).
+
+**Crop pipeline.** `house:crops --all-years --bearings --years 3` archives, per pand, the best 3 mission years (clear view, leaf-off, newer) and per year a second panorama seen from another side of the wall normal (`years/<year>-b.jpg`, `f3/bearings.ts`); each crop's flags now carry `maskedShare`, `trunkShare`, `vehicleShare` (`f3/occlusion.ts`: leaf colour, narrow dark columns darker than their surroundings, the dark lower-third blob; recorded, not a gate). `f3/rank.ts` ranks hard-passing candidates by pixel score; `f3/gate.ts` is the crop gate (Jev v2 quality >= 0.5 and Gemini trunk, branches, van all "no"; no address to either backend; keys from the login env only; results cached beside the crop as `<crop>.gate.json`); `f3/finalize.ts` copies the pick to `front.jpg` (the old crop stays `front.default.jpg`) and records `f3` in `front.json`; `f3/compare.ts` + `f3/label-sheets.ts` make the blind before/after sheets.
+
+**Good-crop share, 200-pand random Centrum sample** (187 crops; 8 no wall, 5 no panorama; blind Claude labels, rubric of §4a): today's rule 31.0 % (CI 24-38), pixel rank 31.0 %, gated 35.8 % (CI 29-43). Gate-pass crops are 53 % good (59/111), gate-fail 8/76. A third of the crops are bad (wrong wall, oblique, close-up): wall choice, which no candidate ranking reaches. AB07's 45 % does not transfer to Centrum.
+
+**measureFacade stability.** `scripts/glb-raster/stability.ts` (Node renderer, the 25 H12 GLBs, quarter-pixel nudge along the wall / vertical / diagonal): one call 16, 20, 20 of 25 pass; `measureFacadeStable` (`buildingRecipe/stableMeasure.ts`, 3 x 3 sub-pixel ensemble, vote medoid, median window aspect) is opt-in and leaves `measureFacade` byte-identical. Not met (target 24/25), Chromium not measured, mullion-as-column fix not done.
+
+**Detectors** (`facade/whiteAccents.ts`, `facade/skylineGable.ts`; scorers `score-accents.mjs`, `score-gable.mjs`; hand set = J2 labels on 48 AB07 crops, gable truth = H5h hand set + J1): white bands 6 TP / 6 FP / 6 FN, accuracy 0.75 = baseline (positive-only signal, not storable); white surrounds recall 0-8 %, fails; skyline gable reads 16 of 103 fronts, 31 % right, fails (crop height is the 3DBAG height, so the crown is cut on a third of fronts). None is wired into `house:describe`.
