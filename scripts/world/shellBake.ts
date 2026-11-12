@@ -22,7 +22,9 @@ import { isMotorOnlyHighway, motorOnlyNames } from '../../src/canalRecall/routin
 import { wallTopHeightM } from '../../src/canalRecall/threeBuildingMesh.js';
 import { validateStreetAppearanceCatalog, type StreetAppearanceProfile } from '../../src/canalRecall/streetAppearance.js';
 import { KIT_HIDE_IDS } from '../../src/canalRecall/landmarkKits.js';
-import { chunkMetres, farPrisms, quantisePrisms, shellFromChunk, shellOrigin, simplifyRing, SHL1_SIMPLIFY_M, type FarPrism, type ShellChunk, type ShellMesh } from '../../src/canalRecall/world/shellMesh.js';
+import { chunkMetres, farPrisms, quantisePrisms, recordShellFromChunk, shellFromChunk, shellOrigin, simplifyRing, NO_BID, SHL1_SIMPLIFY_M, type FarPrism, type RecordShellChunk, type RecordShellMesh, type ShellChunk, type ShellMesh } from '../../src/canalRecall/world/shellMesh.js';
+import { FACADE_RECORD_BYTES, FACADE_RECORD_VERSION, packFacadeRecordFor, type FacadeRecordInput, type FacadeSpecInput } from '../../src/canalRecall/look/facadeRecord.js';
+import type { FacadeRecordSet } from '../../src/canalRecall/world/facadeStreams.js';
 
 export const SHELL_LOOK: BuildingLook = 'photo';
 
@@ -188,4 +190,88 @@ export function bakeFar(shel: ShellMesh, features: readonly Feature[], origin: r
   const out: FarPrism[] = [];
   polys.forEach((poly, n) => { const pr = perBuilding[owner[n]]; if (pr) out.push({ ...pr, rings: poly, tile: groups[owner[n]] ?? groupTile(features[owner[n]]) }); });
   return quantisePrisms(out);
+}
+
+// --- F1 record shells (#380, docs/plans/facade-f1-design-20261112.md §1.4, §2.2) -------------------------------------
+// The same group-tile bake with the mesher's record mode (threeBuildingMesh ChunkOptions.facadeRecord): one quad per wall
+// plane, wall metres, record index and wall kind per vertex. Written to world-v1/facade/<key>.bin (SHEL level 3 + FREC +
+// CROW) beside the legacy shells/, which this path never touches.
+
+/** The resolved spec of every pand in a house-specs extract (`<extract>/<dir>/14/x/y.json.gz`): d, x, s. */
+export function loadHouseSpecTable(extract: string, dir: string): Map<string, FacadeSpecInput> {
+  const out = new Map<string, FacadeSpecInput>(), base = path.join(extract, dir, '14');
+  if (!fs.existsSync(base)) return out;
+  for (const x of fs.readdirSync(base)) for (const y of fs.readdirSync(path.join(base, x))) {
+    const tile = JSON.parse(zlib.gunzipSync(fs.readFileSync(path.join(base, x, y))).toString('utf8')) as { buildings: Record<string, { d: Record<string, unknown>; x?: Record<string, unknown>; s: Record<string, string> }> };
+    for (const [id, r] of Object.entries(tile.buildings ?? {})) out.set(id, { d: r.d, ...(r.x ? { x: r.x } : {}), s: r.s });
+  }
+  return out;
+}
+
+/** A record-mode chunk's share for one cell: geometry plus one record input per range (`inputs[k]` for `ranges[k]`). */
+export type RecordPart = RecordShellChunk & { inputs: FacadeRecordInput[] };
+
+export function bakeGroupRecordChunk(source: readonly Feature[], context: readonly Feature[], root: string, specFor?: (id: string) => FacadeSpecInput | undefined): RecordPart {
+  const c = buildFeatureChunk(source as Feature[], SHELL_LOOK, 'coarse', shellStreets(root, source), shellProfiles(root), context as Feature[], [], new Map(), { shellRoofs: true, facadeRecord: true, ...(specFor ? { specFor } : {}) });
+  if (!c.record) throw Error('record bake: the mesher returned no record arrays');
+  return { positions: c.positions, indices: c.indices, ranges: c.ranges, walls: c.record.walls, recs: c.record.recs, wallKinds: c.record.wallKinds, inputs: c.record.inputs };
+}
+
+/** The ranges of a record chunk whose building `keep` accepts, re-indexed; `recs` follow their range's new index. */
+export function subsetRecordChunk(chunk: RecordPart, keep: (id: string) => boolean): RecordPart {
+  const n = chunk.recs.length, map = new Int32Array(n).fill(-1), recMap = new Int32Array(chunk.ranges.length).fill(-1);
+  const ranges: { id: string; start: number; count: number }[] = [], inputs: FacadeRecordInput[] = [];
+  let count = 0;
+  chunk.ranges.forEach((r, k) => {
+    if (!keep(r.id)) return;
+    recMap[k] = ranges.length; ranges.push({ id: r.id, start: count, count: r.count }); inputs.push(chunk.inputs[k]);
+    for (let v = r.start; v < r.start + r.count; v++) map[v] = count++;
+  });
+  const idx: number[] = [];
+  for (let t = 0; t < chunk.indices.length; t += 3) {
+    const a = map[chunk.indices[t]], b = map[chunk.indices[t + 1]], c = map[chunk.indices[t + 2]];
+    if (a >= 0 && b >= 0 && c >= 0) idx.push(a, b, c);
+  }
+  const positions = new Float32Array(count * 3), walls = new Float32Array(count * 3), recs = new Uint16Array(count), wallKinds = new Uint8Array(count);
+  for (let v = 0; v < n; v++) {
+    const k = map[v]; if (k < 0) continue;
+    positions.set(chunk.positions.subarray(v * 3, v * 3 + 3), k * 3); walls.set(chunk.walls.subarray(v * 3, v * 3 + 3), k * 3);
+    recs[k] = recMap[chunk.recs[v]]; wallKinds[k] = chunk.wallKinds[v];
+  }
+  return { positions, walls, recs, wallKinds, indices: Uint32Array.from(idx), ranges, inputs };
+}
+
+export function mergeRecordChunks(parts: readonly RecordPart[]): RecordPart {
+  if (parts.length === 1) return parts[0];
+  const vn = parts.reduce((s, p) => s + p.recs.length, 0), tn = parts.reduce((s, p) => s + p.indices.length, 0);
+  const positions = new Float32Array(vn * 3), walls = new Float32Array(vn * 3), recs = new Uint16Array(vn), wallKinds = new Uint8Array(vn), indices = new Uint32Array(tn);
+  const ranges: { id: string; start: number; count: number }[] = [], inputs: FacadeRecordInput[] = [];
+  let v = 0, t = 0;
+  for (const p of parts) {
+    const m = p.recs.length, r0 = ranges.length;
+    positions.set(p.positions, v * 3); walls.set(p.walls, v * 3); wallKinds.set(p.wallKinds, v);
+    for (let k = 0; k < m; k++) recs[v + k] = p.recs[k] + r0;
+    for (let k = 0; k < p.indices.length; k++) indices[t + k] = p.indices[k] + v;
+    for (const r of p.ranges) ranges.push({ id: r.id, start: r.start + v, count: r.count });
+    inputs.push(...p.inputs);
+    v += m; t += p.indices.length;
+  }
+  return { positions, walls, recs, wallKinds, indices, ranges, inputs };
+}
+
+/**
+ * A cell's record shell: the level 3 mesh with `rec` = the building's bid (FOOT order) and one 64-byte record per cell
+ * building (zero for a building with no geometry). Extra street fronts are not yet split into their own records (S3).
+ */
+export function bakeCellRecordShell(i: number, j: number, features: readonly Feature[], parts: readonly RecordPart[]): { rshel: RecordShellMesh; records: FacadeRecordSet } | null {
+  const bid = new Map<string, number>();
+  features.forEach((f, k) => bid.set(String(f.properties.id), k));
+  if (!parts.length) return null;
+  const chunk = mergeRecordChunks(parts);
+  if (!chunk.indices.length) return null;
+  const recBid = chunk.ranges.map(r => bid.get(r.id) ?? NO_BID);
+  const rshel = recordShellFromChunk(chunk, shellOrigin(i, j), id => bid.get(id) ?? -1, r => recBid[r] === NO_BID ? 0 : recBid[r]);
+  const bytes = new Uint8Array(features.length * FACADE_RECORD_BYTES);
+  chunk.ranges.forEach((r, k) => { const b = recBid[k]; if (b !== NO_BID) bytes.set(packFacadeRecordFor(chunk.inputs[k]), b * FACADE_RECORD_BYTES); });
+  return { rshel, records: { version: FACADE_RECORD_VERSION, count: features.length, bytes } };
 }

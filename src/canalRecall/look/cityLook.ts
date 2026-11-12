@@ -51,6 +51,8 @@ import { brickLiftV2Tint } from './brickLift.ts';
 import { photoMatchedWallTint, type WallExposure } from './chunkWallExposure.ts';
 import { accentGlsl, packMask } from './maskPacking.ts';
 import { CELL_DEBUG_GLSL, WINDOW_SDF_GLSL, windowSdfBandUniforms, type CellDebug } from './windowSdf.ts';
+import { FACADE_RECORD_GLSL, FACADE_RECORD_VERTEX_BODY, FACADE_RECORD_VERTEX_DECLS } from './facadeShader.ts';
+import { WALL_UV_UNIT_M } from '../world/shellMesh.ts';
 
 // ---------------------------------------------------------------------------
 // Flag
@@ -411,9 +413,17 @@ export type CityVariant = {
   aniso?: boolean;
   /** Facade chunks: the footprint prefilter of the cell sample (roofTier.ts CELL_TAPS, `?cellTaps=1`, lane R4-D #246). */
   taps?: boolean;
+  /**
+   * F1 (#380, `?shaderFacades=1`): a record mesh (SHEL level 3 / a record-mode chunk) drawn by the parametric facade
+   * shader (look/facadeShader.ts) from the per-pand record texture. Lit chunk variants only; absent, every program is
+   * the text it was before F1.
+   */
+  records?: boolean;
 };
 
-export const variantKey = (v: CityVariant) => `${v.lit ? 'lit' : 'unlit'}|${v.kind}|${v.kind === 'slot' ? v.uv ?? 'uv' : '-'}|${v.highlight ? 'hl' : v.dim ? 'dim' : '-'}|${v.side ?? 0}${v.noFade ? '|nofade' : ''}${v.swap ? '|swap' : ''}${v.cellDebug ? `|dbg-${v.cellDebug}` : ''}${v.windows ? '|wsdf2' : ''}${v.lodBias ? '|lodb' : ''}${v.aniso ? '|aniso' : ''}${v.taps ? '|taps' : ''}`;
+export const variantKey = (v: CityVariant) => `${v.lit ? 'lit' : 'unlit'}|${v.kind}|${v.kind === 'slot' ? v.uv ?? 'uv' : '-'}|${v.highlight ? 'hl' : v.dim ? 'dim' : '-'}|${v.side ?? 0}${v.noFade ? '|nofade' : ''}${v.swap ? '|swap' : ''}${v.cellDebug ? `|dbg-${v.cellDebug}` : ''}${v.windows ? '|wsdf2' : ''}${v.lodBias ? '|lodb' : ''}${v.aniso ? '|aniso' : ''}${v.taps ? '|taps' : ''}${recordsOn(v) ? '|frec' : ''}`;
+/** The record variant applies to lit facade chunks only (the unlit path has no derivative shade yet). */
+export const recordsOn = (v: CityVariant): boolean => !!v.records && v.lit && v.kind === 'chunk';
 
 /** Shader defines for a variant (also what the program cache key is built from). */
 export function variantDefines(v: CityVariant): Record<string, string> {
@@ -425,6 +435,7 @@ export function variantDefines(v: CityVariant): Record<string, string> {
   if (v.lodBias && v.kind === 'chunk') d.CELL_LOD_BIAS = '';
   if (v.aniso && v.kind === 'chunk') d.CELL_TIER_ANISO = '';
   if (v.taps && v.kind === 'chunk') d.CELL_TAPS = '';
+  if (recordsOn(v)) d.CITY_FACADE_RECORD = '';
   if (v.lit) {
     // Lit (the shared frame's look): box UVs and the highlight/dim state are per-material uniforms (cityVariantUniforms),
     // so the uv/box and plain/highlight/dim variants of a kind share one program (#129 P4 registry).
@@ -443,7 +454,7 @@ export function cityVariantUniforms(v: CityVariant): { cityForce: { value: numbe
 }
 
 /** The program key of a variant: lit variants differ only in uniforms beyond their kind; side is a material parameter. */
-export const cityProgramKey = (v: CityVariant) => (v.lit ? `city-look-v4|lit|${v.kind}${v.swap ? '|swap' : ''}${v.cellDebug ? `|dbg-${v.cellDebug}` : ''}${v.windows ? '|wsdf2' : ''}${v.lodBias ? '|lodb' : ''}${v.aniso ? '|aniso' : ''}${v.taps ? '|taps' : ''}` : `city-look-v3|${variantKey({ ...v, side: 0 })}`);
+export const cityProgramKey = (v: CityVariant) => (v.lit ? `city-look-v4|lit|${v.kind}${v.swap ? '|swap' : ''}${v.cellDebug ? `|dbg-${v.cellDebug}` : ''}${v.windows ? '|wsdf2' : ''}${v.lodBias ? '|lodb' : ''}${v.aniso ? '|aniso' : ''}${v.taps ? '|taps' : ''}${recordsOn(v) ? '|frec' : ''}` : `city-look-v3|${variantKey({ ...v, side: 0 })}`);
 
 const HIGHLIGHT_SRGB = 'vec3(1.0, 0.824, 0.122)';
 const HIGHLIGHT_LINEAR = 'vec3(1.0, 0.637, 0.0137)';
@@ -675,6 +686,48 @@ ${FRAGMENT_CELL}
 #endif
 }`;
 
+// --- F1 record variant (CITY_FACADE_RECORD) -----------------------------------------------------------------------
+// A record mesh has no layer/tint/accent/uv: its look is the pand's record (look/facadeShader.ts). The rest of the
+// chunk pipeline is kept: hidden/highlight/dim/ghost, the swap complement, the depth and city fades, the wall gain.
+const RECORD_VERTEX_DECLS = /* glsl */ `
+attribute float hidden;
+flat varying float vHighlight;
+varying float vFacDist;
+#ifdef CITY_VARIANT_UNIFORMS
+uniform float cityForce;
+uniform float cityBoxUv;
+#endif
+${SWAP_VERTEX_DECLS}
+${HIGHLIGHT_GLSL}
+${FACADE_RECORD_VERTEX_DECLS}`;
+const RECORD_VERTEX_BODY = /* glsl */ `
+${SWAP_VERTEX_BODY}
+vHighlight = hlState(hidden);
+#ifdef CITY_VARIANT_UNIFORMS
+if (cityForce > 0.5) vHighlight = cityForce;
+#endif
+${FACADE_RECORD_VERTEX_BODY}`;
+const RECORD_FRAGMENT_DECLS = /* glsl */ `
+uniform float bands;
+uniform float flatColour;
+uniform float cityFade;
+uniform float wallGain;
+${FACADE_RECORD_GLSL}
+flat varying float vHighlight;
+varying float vFacDist;
+#ifdef CITY_SWAP
+flat varying float vCityUnder;
+#endif
+${HIGHLIGHT_GRAIN_GLSL}
+${HIGHLIGHT_GLSL}`;
+const RECORD_FRAGMENT_CELL = /* glsl */ `
+vec3 cityC; vec2 cityM;
+cityC = facadeRecordColour(cityM);
+float cityG = cityGrain(cityC);`;
+/** The record variant's own uniforms: the shared record texture, this mesh's first row, the S6 knobs, the wall unit. */
+export type FacadeRecordUniforms = { facadeRecords: { value: any }; recBase: { value: number }; facadeKnobs: { value: number[] }; wallUnit: { value: number } };
+export const createFacadeRecordUniforms = (texture: any = null): FacadeRecordUniforms => ({ facadeRecords: { value: texture }, recBase: { value: 0 }, facadeKnobs: { value: [1, 1, 1, 0] }, wallUnit: { value: WALL_UV_UNIT_M } });
+
 /** The uniforms every city-look material reads (shared objects: rebinding one updates every material using it). */
 export type CityLookUniforms = {
   cells: { value: any };
@@ -759,34 +812,39 @@ export function createCityLookMaterial(THREE: any, variant: CityVariant, uniform
   const defines = variantDefines(variant);
   const side = variant.side ?? THREE.FrontSide;
   let material: any;
+  let recordUniforms: FacadeRecordUniforms | undefined;
   if (!variant.lit) {
     material = new THREE.ShaderMaterial({ uniforms, defines, vertexShader: UNLIT_VERTEX, fragmentShader: UNLIT_FRAGMENT, side });
   } else {
     material = new THREE.MeshLambertMaterial({ side, flatShading: variant.kind === 'chunk' });
     material.defines = { ...(material.defines ?? {}), ...defines };
-    const own = cityVariantUniforms(variant);
+    const records = recordsOn(variant);
+    const own = records ? { ...cityVariantUniforms(variant), ...createFacadeRecordUniforms() } : cityVariantUniforms(variant);
+    if (records) recordUniforms = own as unknown as FacadeRecordUniforms;
+    const vDecls = records ? RECORD_VERTEX_DECLS : VERTEX_DECLS, vBody = records ? RECORD_VERTEX_BODY : VERTEX_BODY;
+    const fDecls = records ? RECORD_FRAGMENT_DECLS : FRAGMENT_DECLS, fCell = records ? RECORD_FRAGMENT_CELL : FRAGMENT_CELL;
     material.onBeforeCompile = (shader: any) => {
       for (const key of Object.keys(uniforms) as (keyof CityLookUniforms)[]) shader.uniforms[key] = uniforms[key];
       Object.assign(shader.uniforms, own);
       shader.vertexShader = shader.vertexShader
-        .replace('#include <common>', `#include <common>${VERTEX_DECLS}`)
-        .replace('#include <begin_vertex>', `#include <begin_vertex>${VERTEX_BODY}`)
+        .replace('#include <common>', `#include <common>${vDecls}`)
+        .replace('#include <begin_vertex>', `#include <begin_vertex>${vBody}`)
         .replace('#include <project_vertex>', `#include <project_vertex>${VERTEX_HIDE}`);
       shader.fragmentShader = shader.fragmentShader
-        .replace('#include <common>', `#include <common>${FRAGMENT_DECLS}
+        .replace('#include <common>', `#include <common>${fDecls}
 float cityLuma;`)
         .replace('#include <dithering_fragment>', `#include <dithering_fragment>
 #ifdef CELL_DEBUG_RHO
 gl_FragColor = vec4(cellDebugColour(vLayer), 1.0);
 #endif`)
         .replace('#include <clipping_planes_fragment>', `#include <clipping_planes_fragment>${FRAGMENT_FADE}`)
-        .replace('#include <map_fragment>', `${FRAGMENT_CELL}
+        .replace('#include <map_fragment>', `${fCell}
 #ifdef CITY_SLOT
 cityC *= vSlot.z;
 #else
 cityC *= mix(1.0, wallGain * ${glslFloat(CITY_LIT_LEVEL)}, cityM.r);
 #endif
-if (flatColour > 0.5) cityC = vTint;
+if (flatColour > 0.5) cityC = ${records ? 'fr_wall()' : 'vTint'};
 cityLuma = dot(cityC, vec3(0.299, 0.587, 0.114));
 diffuseColor.rgb *= HL_PAINT(vHighlight) ? ${HIGHLIGHT_LINEAR} * ${glslFloat(HIGHLIGHT_ALBEDO)} * pow(flatColour > 0.5 ? 1.0 : cityG, 2.2) : pow(hlDesat(cityC, vHighlight), vec3(2.2));`)
         .replace('#include <emissivemap_fragment>', `#include <emissivemap_fragment>
@@ -806,6 +864,7 @@ else totalEmissiveRadiance += ${SKY_TINT} * (1.0 - smoothstep(0.06, 0.2, cityLum
   material.defaultAttributeValues = { ...DEFAULT_ATTRIBUTES };
   material.name = `city-look/${variantKey(variant)}`;
   material.userData = { cityLook: true, cityVariant: { ...variant }, [CITY_LOOK_SHARED]: true };
+  if (recordUniforms) material.userData.facadeRecordUniforms = recordUniforms;
   // Lane P3 (#328): fog off, or with the draw limit's landmark haze the limit's ramp only (look/depthFade.ts optOutFog).
   if (variant.noFade) optOutFog(material);
   // Thin-element fade and the owner view (look/thinFade.ts, lane R3-A #230; `?thinFade=0`): facade chunks only.

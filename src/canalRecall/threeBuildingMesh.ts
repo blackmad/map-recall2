@@ -1,5 +1,6 @@
 import {envelopeFootprintFingerprint} from './surveyedBuildingEnvelope.js';
 import type { StoopIntent } from './buildingRecipe/stoop.ts';
+import { GENERIC_WINDOWS_PER_BAY, genericBayWindow, type FacadeGenericLayout } from './look/facadeRecord.js';
 import { GENERIC_STOOP } from './stoopExtra.js';
 import { BAKED_LID_SHADE, bakedFaceShade, bakedWallShade } from './rendererShared/lightRig.js';
 import type {SurveyedMeshBinding,SurveyedMeshWallEdge} from './surveyedEnvelopeMeshBinding.js';
@@ -23,7 +24,7 @@ import { applyHostWallOpenings, type ChunkHostOpeningConfig } from './hostWallOp
 import { sharedWallCuts, subtractWallCuts, subtractConvex, polygonArea, type Point2, NEAR_COPLANAR_M } from './coplanarSurfaces.js';
 import { recipeBayOpenings, type Openings } from './facadeOpenings.js';
 import { streetWallBuilding, frontageLayoutScale, axisUnitPlan, AXIS_UNIT_U, PROCEDURAL_RECIPE_LAYER_OFFSET, type StreetFacadeContext } from './streetFacadeRendering.js';
-import { BAY_LAYER_COUNT, bayLookFor } from './bayLook.js';
+import { BAY_ENTRIES, BAY_LAYER_COUNT, bayLookFor, bayVariant } from './bayLook.js';
 import type { ArchitecturalRecipe } from './streetAppearance.js';
 import { streetCrown, type StreetCrownFront, type StreetCrownTri } from './streetCrown.js';
 import { CELL_VARIANTS, CELL_LAYER_COUNT, STYLE_DIMS, cellLayer } from './facadeCells.js';
@@ -43,6 +44,7 @@ import { fitRect, roofTrianglesForOutline, type RoofDims, type RoofPlan, type Ro
 import { measuredRoofFurniture } from './roofs/roofFurniture.js';
 import { BOX_H_M, BOX_HEX, BOX_L_M, BOX_W_M, FLAT_SURFACE_BUDGET, LIP_H_M, parapetLipTris, roofBoxTris, stairCorePoint } from './roofs/flatRoofSurface.js';
 import type { FurnitureItem } from './roofs/roofSlots.js';
+import type { FacadeRecordInput, FacadeSpecInput } from './look/facadeRecord.js';
 /** Door walls this much further from the street than the nearest still count as on the nearest road (stoop wall choice). */
 const STOOP_ROAD_SLACK_M = 4;
 
@@ -158,7 +160,23 @@ export type Chunk = {
    * `frontage` relief and `extras`. Display-only; the buffers are the same with or without it.
    */
   kinds?: Record<string, number>;
+  /**
+   * F1 record mode (`ChunkOptions.facadeRecord`, issue #380): per vertex the wall metres (u along the run from its left
+   * end seen from outside, v above the pand's wall base, the run's length), the record index (the building's range
+   * index in this chunk) and the wall kind (world/shellMesh.ts WALL_KINDS), plus each building's record input in range
+   * order. The legacy look arrays (uvs, layers, tints, accents, thin) are zero in a record chunk.
+   */
+  record?: { walls: Float32Array; recs: Uint16Array; wallKinds: Uint8Array; inputs: FacadeRecordInput[] };
 };
+
+/**
+ * `facadeRecord` (F1, #380; docs/plans/facade-f1-design-20261112.md §2): walls mode only. One quad per visible wall plane
+ * from the wall base to its top in wall metres, no cornice/trim/frontage strips (the record draws them), roofs and lids
+ * kept as kind 7, gable plates and dormer faces as the crown field (kind 6). `specFor` hands the packer a pand's resolved
+ * spec (the extract's d/x/s). Absent, buildChunk is byte-identical to before F1.
+ */
+export type ChunkOptions = { facadeRecord?: boolean; specFor?: (id: string) => FacadeSpecInput | undefined };
+const REC_KIND = { front: 0, side: 1, rear: 2, party: 3, strip: 4, chamfer: 5, crown: 6, roof: 7 } as const;
 
 const M_PER_DEG_LAT = 110_540;
 const mPerDegLng = (lat: number) => 111_320 * Math.cos(lat * Math.PI / 180);
@@ -426,7 +444,8 @@ function sourceWallCutGroups(b:MeshBuilding,edges:readonly Edge[]){
  * `mode: 'extras'` builds only the facade extras (facadeExtras.ts) of these buildings: they are a
  * separate, near-camera chunk, too many triangles to draw across the whole resident city.
  */
-export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, mode: 'walls' | 'extras' | 'shell' = 'walls', streets?: Float32Array, context: readonly MeshBuilding[] = [], hostOpenings: readonly ChunkHostOpeningConfig[] = []): Chunk {
+export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, mode: 'walls' | 'extras' | 'shell' = 'walls', streets?: Float32Array, context: readonly MeshBuilding[] = [], hostOpenings: readonly ChunkHostOpeningConfig[] = [], options: ChunkOptions = {}): Chunk {
+  const recordMode = !!options.facadeRecord && mode === 'walls';
   type Prepared = { b: MeshBuilding; edges: Edge[]; top: number };
   const prepared: Prepared[] = [];
   const rings: Edge[][][] = [];
@@ -507,8 +526,8 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
   // air (U1 with ?thinFade=0 showed it; with it, not), so it owns the roof class and no thin size. The 0.25 m lip stays
   // trim: drawn solid it doubled swap-zfight's still alias (s1 383 -> 732, s3 5750 -> 9656) and its excess.
   const flatSurfaceTris = new WeakSet<object>();
-  type Quad = { kind: string; accent: [number, number, number]; e: Edge; u0: number; u1: number; v1: number; v0?: number; z1Left?:number;z1Right?:number;v1Left?:number;v1Right?:number;layer: number; z0: number; z1: number; tint: [number, number, number, number]; along0: number; along1: number };
-  const quadsByBuilding: Array<{ b: MeshBuilding; quads: Quad[]; walls: number; roof: StreetCrownTri[]; lid: LidMesh | null; sign: SignTri[]; extraTris: number }> = [];
+  type Quad = { /** F1 record mode: wall kind and the run's length (m). */ wk?: number; runLen?: number; kind: string; accent: [number, number, number]; e: Edge; u0: number; u1: number; v1: number; v0?: number; z1Left?:number;z1Right?:number;v1Left?:number;v1Right?:number;layer: number; z0: number; z1: number; tint: [number, number, number, number]; along0: number; along1: number };
+  const quadsByBuilding: Array<{ b: MeshBuilding; quads: Quad[]; walls: number; roof: StreetCrownTri[]; lid: LidMesh | null; sign: SignTri[]; extraTris: number; recInput?: FacadeRecordInput }> = [];
   type SurfaceCandidate = { entry: number; areaM2: number; coarse: boolean; furniture: SignTri[]; lip: StreetCrownTri[]; box: StreetCrownTri[]; boxAt: [number, number, number] | null };
   const surfaceCandidates: SurfaceCandidate[] = [];
   let lipWalls: { grid: SegmentGrid; segs: number[]; owners: number[]; bs: MeshBuilding[] } | null = null;
@@ -555,6 +574,9 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
     const streetCorner = !!streetGrid && streetEdges.some((a, i) => streetEdges.slice(i + 1).some(c => a.nx * c.nx + a.ny * c.ny < .5));
     const fallbackBuilding = b.streetAppearance ? { ...b, streetAppearance: { ...b.streetAppearance, streetCorner } } : b;
     const crownFronts: StreetCrownFront[] = [];
+    let recFrontM = 0;
+    /** F1: the generic layout of the longest street run (the record's priors copy it: storeys, heights, windows, door). */
+    let recGeneric: FacadeGenericLayout | undefined;
     for (const run of wallRuns(rings[bi], e => hiddenByNeighbour(e, fallbackBuilding))) {
       const first = run[0].e;
       const sourceSegments=run.flatMap(({e})=>sourceEdgeFor(fallbackBuilding,e)?.segments??[]);
@@ -595,6 +617,26 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
       const paintTint = b === fallbackBuilding ? groundPaint : b.groundHex && b.layers ? parseHex(b.groundHex) : null;
       // A parapet band (large tier) only where the wall is tall enough to keep a storey under it.
       const parapet = b.parapetM && !b.bare && top - b.parapetM - base >= 5 ? b.parapetM : 0, facadeTop = top - parapet;
+      if (recordMode) {
+        // F1: one quad per wall plane, base to top, u in metres along the run (bays carry on round a kink), v from the base.
+        const runLen = run.reduce((sum, r) => sum + r.e.len, 0), street = run.some(({ e }) => doorAllowed.has(e));
+        if (street && runLen > recFrontM) {
+          const g = b.bare ? null : layoutRun(b.style, run.map(r => r.e.len), facadeTop - base, hash01(`${b.id}:${edgeKey(first.x0, first.y0)}`), base < 0.5, runScale, run.map(r => doorAllowed.has(r.e)));
+          const per = GENERIC_WINDOWS_PER_BAY[b.style] ?? 1;
+          recGeneric = g ? { storeys: g.storeys, groundM: g.groundM, storeyM: g.storeyM, windows: g.bays * per, doorWindow: g.doorBays.length && !(b.shopfront && g.bays < 3) && !b.plainWalls ? g.doorBays[0] * per : null, variant,
+            // The photo look's bay preset (bayLook.ts) is what the legacy path paints: its head, stone, sash bars and frame.
+            ...(b.layers && b.layers.upper < BAY_LAYER_COUNT && BAY_ENTRIES[b.layers.upper]?.kind === 'upper' ? { bay: genericBayWindow(bayVariant(BAY_ENTRIES[b.layers.upper]), b.openings?.upper) } : {}) } : undefined;
+        }
+        if (street) recFrontM = Math.max(recFrontM, runLen);
+        let s = 0;
+        for (const { e } of run) {
+          walls++;
+          const wk = e.hole ? REC_KIND.rear : doorAllowed.has(e) ? REC_KIND.front : streetEdges.some(f => f.nx * e.nx + f.ny * e.ny < -0.5) ? REC_KIND.rear : street ? REC_KIND.front : e.len < 2.4 && streetEdges.length ? REC_KIND.chamfer : REC_KIND.side;
+          if (top > base + 0.01) quads.push({ kind: 'record-wall', wk, runLen, e, u0: s, u1: s + e.len, v0: 0, v1: top - base, layer: 0, accent, z0: base, z1: top, tint: [0, 0, 0, 0], along0: 0, along1: 1 });
+          s += e.len;
+        }
+        continue;
+      }
       if (shell) {
         // Touch devices, away from the rider (CANAL-RECALL-7): one quad per wall from the base to the top, in
         // the wall's own window cell, plus the flat lid below. Same mass, height, tint and skyline as the
@@ -807,9 +849,22 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
       surfaceCandidates.push(candidate);
     }
     if (mode === 'extras') { quads.length = 0; visibleQuads.length = 0; roof = []; }
+    let recInput: FacadeRecordInput | undefined;
+    if (recordMode) {
+      // A piece a lower neighbour cut from below is the exposed strip above it (kind 4, blank brick); trim, decals and the
+      // projecting cornice leave the mesh (the record draws bands and cornices); frontage, signs and the industrial kit's
+      // boxes have no colour without the legacy tint, so they leave too (the design doc's §2.1 count).
+      for (const q of visibleQuads) if (q.z0 > base + 0.05 && q.wk !== REC_KIND.front) q.wk = REC_KIND.strip;
+      roof = roof.filter(t => !corniceTris.has(t) && (t.part !== 'trim' && t.part !== 'decal' || surveyedRoofTris.has(t) || flatSurfaceTris.has(t)));
+      sign.length = 0; extraTris = 0;
+      recInput = { id: b.id, style: b.style, wallHex: b.wallHex, ...(b.specRecipe?.wallHex ? { wallLifted: true } : {}), ...(b.accentHex ? { accentHex: b.accentHex } : {}),
+        ...(b.groundHex ? { groundHex: b.groundHex } : {}), ...(b.shop || b.shopfront ? { shop: true } : {}), ...(b.roof?.roofHex ?? b.lid?.hex ? { roofHex: b.roof?.roofHex ?? b.lid?.hex } : {}),
+        ...(b.lid ? { lid: true } : {}), heightM: buildingTop, minHeightM: base, ...(b.specRecipe?.look ? { look: b.specRecipe.look } : {}),
+        ...(recFrontM > 0 ? { frontLengthM: recFrontM } : {}), ...(recGeneric ? { generic: recGeneric } : {}), ...(options.specFor?.(b.id) ? { spec: options.specFor(b.id) } : {}) };
+    }
     signTotal += sign.length;
     extrasTotal += extraTris;
-    quadsByBuilding.push({ b, quads: visibleQuads, walls, roof, lid, sign, extraTris });
+    quadsByBuilding.push({ b, quads: visibleQuads, walls, roof, lid, sign, extraTris, ...(recInput ? { recInput } : {}) });
     quadTotal += visibleQuads.length; wallTotal += walls; roofTotal += roof.length;
     if (lid) { lidVerts += lid.xy.length / 2; lidIndices += lid.index.length; }
   }
@@ -825,6 +880,8 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
     // (coplanar box tops, coplanar-surfaces audit w1193944788/w896771286, integrator 2026-11-08). The larger roof keeps it.
     const boxesPlaced: [number, number, number][] = [];
     for (const kind of ['furniture', 'box', 'lip'] as const) for (const c of byArea) {
+      // F1 record mode: furniture (flat colour) and the 0.25 m lip (trim) have no record look; the box is a roof piece.
+      if (recordMode && kind !== 'box') continue;
       const tris = c[kind];
       if (!tris.length) continue;
       if (kind === 'box' && c.boxAt) {
@@ -888,13 +945,20 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
   const thin = new Uint8Array(vertexCount * 2);
   const indices = new Uint32Array(quadTotal * 6 + roofTotal * 3 + lidIndices + signTotal * 3);
   const ranges: VertexRange[] = [];
+  const recWalls = recordMode ? new Float32Array(vertexCount * 3) : null, recRecs = recordMode ? new Uint16Array(vertexCount) : null, recKinds = recordMode ? new Uint8Array(vertexCount) : null;
+  const recInputs: FacadeRecordInput[] = [];
+  /** Record mode: one vertex's wall metres, record and kind. */
+  const recPut = (at: number, u: number, vv: number, len: number, rec: number, kind: number) => { recWalls![at * 3] = u; recWalls![at * 3 + 1] = vv; recWalls![at * 3 + 2] = len; recRecs![at] = rec; recKinds![at] = kind; };
   /** Triangles per content kind (diagnostics only; not a rendering input). */
   const kinds: Record<string, number> = {};
   const addKind = (kind: string, tris: number) => { if (tris) kinds[kind] = (kinds[kind] ?? 0) + tris; };
   let v = 0, q = 0, ti = quadTotal * 6;
-  for (const { b, quads, roof, lid, sign, extraTris } of quadsByBuilding) {
+  for (const { b, quads, roof, lid, sign, extraTris, recInput } of quadsByBuilding) {
     if (!quads.length && !roof.length && !lid && !sign.length) continue;
-    const start = v;
+    const start = v, recIndex = ranges.length;
+    if (recordMode) recInputs.push(recInput!);
+    // Crown-field u is measured from the building's first footprint vertex (wall metres stay inside Int16 x 0.02 m).
+    const anchor = recordMode && b.polygons[0]?.[0]?.[0] ? [(b.polygons[0][0][0][0] - origin.lng) * kxLocal, (b.polygons[0][0][0][1] - origin.lat) * M_PER_DEG_LAT] : [0, 0];
     for (const quad of quads) {
       addKind(quad.kind, 2);
       const { e } = quad;
@@ -911,6 +975,7 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
         tints[v * 4] = quad.tint[0]; tints[v * 4 + 1] = quad.tint[1]; tints[v * 4 + 2] = quad.tint[2]; tints[v * 4 + 3] = quad.tint[3];
         accents[v * 4] = quad.accent[0]; accents[v * 4 + 1] = quad.accent[1]; accents[v * 4 + 2] = quad.accent[2]; accents[v * 4 + 3] = 255;
         thin[v * 2 + 1] = shell ? THIN_CLASS.shell : THIN_CLASS.wall;
+        if (recordMode) recPut(v, u, vv, quad.runLen ?? e.len, recIndex, quad.wk ?? REC_KIND.side);
         v++;
       }
       const i = v - 4;
@@ -932,6 +997,8 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
         const thinSize = thinClass === THIN_CLASS.cornice || thinClass === THIN_CLASS.trim ? thinCm(t.p[0], t.p[1], t.p[2]) : 0;
         for (let k = 0; k < 3; k++) {
           thin[v * 2] = thinSize; thin[v * 2 + 1] = thinClass;
+          // Record mode: a gable plate or dormer face is the crown field (wall metres: u along its face, v above the base).
+          if (recordMode) { if (wall && Math.hypot(t.n[0], t.n[1]) > 0.5) { const h = Math.hypot(t.n[0], t.n[1]); recPut(v, ((t.p[k][0] - anchor[0]) * -t.n[1] + (t.p[k][1] - anchor[1]) * t.n[0]) / h, t.p[k][2] - b.minHeightM, 0, recIndex, REC_KIND.crown); } else recPut(v, 0, 0, 0, recIndex, REC_KIND.roof); }
           positions[v * 3] = t.p[k][0]; positions[v * 3 + 1] = t.p[k][1]; positions[v * 3 + 2] = t.p[k][2];
           uvs[v * 2] = t.uv[k][0]; uvs[v * 2 + 1] = t.uv[k][1];
           layers[v] = layer;
@@ -952,6 +1019,7 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
         tints[v * 4] = lr; tints[v * 4 + 1] = lg; tints[v * 4 + 2] = lb; tints[v * 4 + 3] = LID_SHADE * 255;
         accents[v * 4] = accents[v * 4 + 1] = accents[v * 4 + 2] = accents[v * 4 + 3] = 255;
         thin[v * 2 + 1] = shell ? THIN_CLASS.shell : THIN_CLASS.lid;
+        if (recordMode) recPut(v, 0, 0, 0, recIndex, REC_KIND.roof);
         v++;
       }
       for (const k of lid.index) indices[ti++] = base + k;
@@ -984,6 +1052,8 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
   // Lane R5-E diagnostics: flat roofs whose surface piece the chunk budget admitted / dropped (buildings, not triangles).
   if (surfaceCandidates.length) for (const [k, n] of Object.entries(surfaceStats)) if (n) kinds[`flat-${k}`] = n;
   const chunk = { positions, uvs, layers, tints, accents, thin, indices, ranges, vertexCount, quadCount: quadTotal + Math.ceil(roofTotal / 2), wallCount: wallTotal, buildingCount: ranges.length, kinds };
+  // Record mode skips the host wall openings (kit doors cut into a wall): the record path has no cut-out yet.
+  if (recordMode) return { ...chunk, record: { walls: recWalls!, recs: recRecs!, wallKinds: recKinds!, inputs: recInputs } };
   return mode === 'walls' ? applyHostWallOpenings(chunk, origin, hostOpenings) : chunk;
 }
 

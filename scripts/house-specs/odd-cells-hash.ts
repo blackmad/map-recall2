@@ -9,12 +9,15 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { createHash } from 'node:crypto';
 import { EXTRACT, ROOT, gameChain, loadTile, type Feature } from '../world/pipeline.ts';
-import { shellProfiles, shellStreets } from '../world/shellBake.ts';
+import { loadHouseSpecTable, shellProfiles, shellStreets } from '../world/shellBake.ts';
+import { packFacadeRecordFor } from '../../src/canalRecall/look/facadeRecord.ts';
 import { buildFeatureChunk } from '../../src/canalRecall/threeBuildingFeatures.ts';
 import { BuildingContextIndex } from '../../src/canalRecall/buildingContextIndex.ts';
 
-export const HELP = `odd-cells-hash [--dir=house-specs] [--force-bays] [--out <file>] | --diff <a.json> <b.json>
-  per-building mesh hashes (photo look; walls, extras, shell) over the house-spec tiles; --diff lists the buildings that differ`;
+export const HELP = `odd-cells-hash [--dir=house-specs] [--force-bays] [--records[=nospec]] [--out <file>] | --diff <a.json> <b.json>
+  per-building mesh hashes (photo look; walls, extras, shell) over the house-spec tiles; --diff lists the buildings that differ
+  --records adds the F1 record mode (coarse, shell roofs): positions, wall metres, record index, wall kind and the packed
+  64-byte record per building; =nospec packs every record without its spec (the prior alone), to show which pands a spec reaches`;
 const args = process.argv.slice(2);
 if (args.includes('--help')) { console.log(HELP); process.exit(0); }
 if (args[0] === '--diff') {
@@ -29,6 +32,8 @@ if (args[0] === '--diff') {
 }
 const dir = args.find(a => a.startsWith('--dir='))?.slice(6) ?? 'house-specs';
 const force = args.includes('--force-bays');
+const recordsArg = args.find(a => a === '--records' || a.startsWith('--records='));
+const records = !!recordsArg, recordSpecs = recordsArg !== '--records=nospec';
 const outAt = args.indexOf('--out');
 process.env.HOUSE_SPECS = '1'; process.env.HOUSE_SPECS_DIR = dir;
 const chain = gameChain();
@@ -41,7 +46,8 @@ const boxOf = (f: Feature): [number, number, number, number] => {
 };
 const hashes: Record<string, string> = {};
 const vertices: Record<string, number> = {};
-const totals = { walls: 0, extras: 0, shell: 0 };
+const totals = { walls: 0, extras: 0, shell: 0, record: 0 };
+const specTable = records && recordSpecs ? loadHouseSpecTable(EXTRACT, dir) : null;
 let forced = 0;
 for (const tile of tiles.sort()) {
   const rows = await loadTile(tile, chain);
@@ -55,14 +61,18 @@ for (const tile of tiles.sort()) {
   const inChunk = new Set(features);
   const context = ctx.neighbors(features as never, (f: Feature) => inChunk.has(f));
   const streets = shellStreets(ROOT, features as never), profiles = shellProfiles(ROOT);
-  for (const mode of ['walls', 'extras', 'shell'] as const) {
-    const c = buildFeatureChunk(features as never, 'photo', mode, streets, profiles, context as never);
-    for (const r of c.ranges) {
+  for (const mode of ['walls', 'extras', 'shell', ...(records ? ['record'] as const : [])] as const) {
+    const c = mode === 'record'
+      ? buildFeatureChunk(features as never, 'photo', 'coarse', streets, profiles, context as never, [], new Map(), { shellRoofs: true, facadeRecord: true, ...(specTable ? { specFor: (id: string) => specTable.get(id) } : {}) })
+      : buildFeatureChunk(features as never, 'photo', mode, streets, profiles, context as never);
+    for (const [ri, r] of c.ranges.entries()) {
       const h = createHash('sha256');
-      for (const [arr, k] of [[c.positions, 3], [c.uvs, 2], [c.layers, 1], [c.tints, 4], [c.accents, 4]] as const) {
+      const arrays = mode === 'record' ? [[c.positions, 3], [c.record!.walls, 3], [c.record!.recs, 1], [c.record!.wallKinds, 1]] as const : [[c.positions, 3], [c.uvs, 2], [c.layers, 1], [c.tints, 4], [c.accents, 4]] as const;
+      for (const [arr, k] of arrays) {
         const view = (arr as Float32Array | Uint8Array).subarray(r.start * k, (r.start + r.count) * k);
         h.update(Buffer.from(view.buffer, view.byteOffset, view.byteLength));
       }
+      if (mode === 'record') h.update(packFacadeRecordFor(c.record!.inputs[ri]));
       const key = `${mode}:${r.id}`;
       vertices[key] = (vertices[key] ?? 0) + r.count; totals[mode] += r.count;
       hashes[key] = createHash('sha256').update((hashes[key] ?? '') + h.digest('hex')).digest('hex').slice(0, 16);
@@ -70,6 +80,6 @@ for (const tile of tiles.sort()) {
   }
 }
 const all = createHash('sha256').update(Object.keys(hashes).sort().map(k => `${k}=${hashes[k]}`).join('\n')).digest('hex').slice(0, 16);
-const meta = { dir, force, forced, tiles: tiles.length, entries: Object.keys(hashes).length, all, oddAxisCells: process.env.ODD_AXIS_CELLS ?? 'default', specDesign: process.env.HOUSE_SPEC_DESIGN ?? 'default', vertices: totals };
+const meta = { dir, force, forced, records: recordsArg ?? null, tiles: tiles.length, entries: Object.keys(hashes).length, all, oddAxisCells: process.env.ODD_AXIS_CELLS ?? 'default', specDesign: process.env.HOUSE_SPEC_DESIGN ?? 'default', vertices: totals };
 console.log(JSON.stringify(meta));
 if (outAt >= 0) fs.writeFileSync(args[outAt + 1], JSON.stringify({ meta, hashes, vertices }));

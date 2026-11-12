@@ -23,12 +23,21 @@
  * sampling and a perspective camera.
  */
 
+import { facadePixel } from '../look/facadeTwin.js';
+import type { FacadeRecord } from '../look/facadeRecord.js';
 export type Vec3 = readonly [number, number, number];
 
 export type RasterMesh = {
   positions: Float32Array; uvs: Float32Array; layers: Uint8Array;
   tints: Uint8Array; accents: Uint8Array; indices: Uint32Array;
+  /**
+   * F1 (#380, `--shader-facades`): the record path. Per vertex the wall metres (u, v, run length), the record index
+   * (RASTER_NO_RECORD: drawn from the atlas as before) and the wall kind; a triangle whose last vertex has a record is
+   * coloured by the record shader's CPU twin (look/facadeTwin.ts facadePixel), lit as the record variant is.
+   */
+  record?: { walls: Float32Array; recs: Uint16Array; wallKinds: Uint8Array; records: readonly FacadeRecord[] };
 };
+export const RASTER_NO_RECORD = 0xffff;
 export type RasterAtlas = { colour: Uint8Array; mask: Uint8Array; size: number; total: number };
 
 /**
@@ -167,6 +176,15 @@ export function rasterise(mesh: RasterMesh, atlas: RasterAtlas, view: RasterView
     const y0 = Math.max(0, Math.floor(Math.min(ay, by, cy))), y1 = Math.min(H - 1, Math.ceil(Math.max(ay, by, cy)));
     if (x0 > x1 || y0 > y1) continue;
     const layer = Math.min(L[c], total - 1); // GL's provoking vertex for `flat` varyings is the last one
+    const RC = mesh.record, recIx = RC ? RC.recs[c] : RASTER_NO_RECORD, rec = recIx !== RASTER_NO_RECORD ? RC!.records[recIx] : undefined;
+    const RW = RC?.walls, kindC = RC ? RC.wallKinds[c] : 0;
+    /** Perspective-correct wall metres at sample (sx, sy) of this triangle. */
+    const wallAt = (sx: number, sy: number, out: number[]) => {
+      const w0 = ((bx - sx) * (cy - sy) - (cx - sx) * (by - sy)) / area, w1 = ((cx - sx) * (ay - sy) - (ax - sx) * (cy - sy)) / area, w2 = 1 - w0 - w1;
+      const p0 = w0 / Wc[a], p1 = w1 / Wc[b], p2 = w2 / Wc[c], inv = 1 / (p0 + p1 + p2);
+      for (let k = 0; k < 3; k++) out[k] = (p0 * RW![a * 3 + k] + p1 * RW![b * 3 + k] + p2 * RW![c * 3 + k]) * inv;
+    };
+    const wq = [0, 0, 0], wx = [0, 0, 0], wy = [0, 0, 0];
     const ia = 1 / Wc[a], ib = 1 / Wc[b], ic = 1 / Wc[c];
     for (let py = y0; py <= y1; py++) for (let qx = x0; qx <= x1; qx++) {
       const sx = qx + 0.5, sy = py + 0.5;
@@ -180,12 +198,19 @@ export function rasterise(mesh: RasterMesh, atlas: RasterAtlas, view: RasterView
       // Perspective-correct weights (ortho: w = 1, so these are the screen weights).
       const p0 = w0 * ia, p1 = w1 * ib, p2 = w2 * ic, inv = 1 / (p0 + p1 + p2), q0 = p0 * inv, q1 = p1 * inv, q2 = p2 * inv;
       const u = q0 * U[a * 2] + q1 * U[b * 2] + q2 * U[c * 2], v = q0 * U[a * 2 + 1] + q1 * U[b * 2 + 1] + q2 * U[c * 2 + 1];
-      sample(layer, u, v);
+      if (rec) {
+        // The record shader's twin; fwidth = |d/dx| + |d/dy| of the wall metres over one sample.
+        const sx1 = qx + 0.5, sy1 = py + 0.5;
+        wallAt(sx1, sy1, wq); wallAt(sx1 + 1, sy1, wx); wallAt(sx1, sy1 + 1, wy);
+        const fwu = Math.abs(wx[0] - wq[0]) + Math.abs(wy[0] - wq[0]), fwv = Math.abs(wx[1] - wq[1]) + Math.abs(wy[1] - wq[1]);
+        const t = facadePixel(rec, [wq[0], wq[1], wq[2]], kindC, [fwu, fwv]);
+        s[0] = t.rgb[0]; s[1] = t.rgb[1]; s[2] = t.rgb[2]; s[3] = t.m[0]; s[4] = t.m[1];
+      } else sample(layer, u, v);
       const mr = s[3], mg = s[4];
       const shade = lit ? 1 : (q0 * T[a * 4 + 3] + q1 * T[b * 4 + 3] + q2 * T[c * 4 + 3]) / 255;
       for (let k = 0; k < 3; k++) {
-        const tint = (q0 * T[a * 4 + k] + q1 * T[b * 4 + k] + q2 * T[c * 4 + k]) / 255;
-        const accent = (q0 * A[a * 4 + k] + q1 * A[b * 4 + k] + q2 * A[c * 4 + k]) / 255;
+        const tint = rec ? 1 : (q0 * T[a * 4 + k] + q1 * T[b * 4 + k] + q2 * T[c * 4 + k]) / 255;
+        const accent = rec ? 1 : (q0 * A[a * 4 + k] + q1 * A[b * 4 + k] + q2 * A[c * 4 + k]) / 255;
         col[i * 3 + k] = s[k] * (1 + (tint - 1) * mr) * (1 + (accent - 1) * mg) * shade;
       }
       if (lit) {

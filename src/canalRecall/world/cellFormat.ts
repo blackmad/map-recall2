@@ -44,7 +44,8 @@
  * indices, tags and leftover bytes all throw.
  */
 
-import { decodeShel, decodeShl1, encodeShel, encodeShl1, type FarPrism, type ShellMesh } from './shellMesh.js';
+import { SHEL_RECORD_LEVEL, decodeShel, decodeShel3, decodeShl1, encodeShel, encodeShel3, encodeShl1, shelLevel, type FarPrism, type RecordShellMesh, type ShellMesh } from './shellMesh.js';
+import { decodeCrow, decodeFrec, encodeCrow, encodeFrec, type CrownEntry, type FacadeRecordSet } from './facadeStreams.js';
 
 export const WORLD_FORMAT_VERSION = 6;
 // v6 (2026-11-06, lane R2-B #229): v5 plus two optional trailing streams, SHEL (the baked coarse shell of the cell's
@@ -76,11 +77,12 @@ export const COORD_SCALE = 1e7;
 export const MAX_BUILDINGS = 200_000;
 const MAX_COUNT = 10_000_000;
 const MAX_VARINT_BYTES = 8; // 2^56 > Number.MAX_SAFE_INTEGER
-export const STREAM_TAGS = ['STRS', 'FOOT', 'ATTR', 'STYL', 'ROOF', 'GRP ', 'HIDE', 'SHEL', 'SHL1'] as const;
+// FREC and CROW (F1, #380): the facade records and crown instances of a record shell file (world/facadeStreams.ts).
+export const STREAM_TAGS = ['STRS', 'FOOT', 'ATTR', 'STYL', 'ROOF', 'GRP ', 'HIDE', 'SHEL', 'SHL1', 'FREC', 'CROW'] as const;
 export type StreamTag = typeof STREAM_TAGS[number];
 /** The building streams (every version), and the optional shell streams v6 may append, in this order. */
 export const BUILDING_TAGS: readonly StreamTag[] = STREAM_TAGS.slice(0, 7);
-export const SHELL_TAGS: readonly StreamTag[] = ['SHEL', 'SHL1'];
+export const SHELL_TAGS: readonly StreamTag[] = ['SHEL', 'SHL1', 'FREC', 'CROW'];
 
 export type Geometry = { type: 'Polygon'; coordinates: number[][][] } | { type: 'MultiPolygon'; coordinates: number[][][][] };
 export type Props = Record<string, unknown>;
@@ -106,7 +108,9 @@ export type CellBuilding = {
  *  v6 shell streams (absent unless the cell carries them). */
 export type Cell = { i: number; j: number; buildings: CellBuilding[]; hide: HideEntry[]; debug?: boolean; shel?: ShellMesh; far?: FarPrism[] };
 /** A v6 shell file (FLAG_SHELLS): the baked shells of a cell, no buildings. */
-export type ShellCell = { i: number; j: number; shel?: ShellMesh; far?: FarPrism[] };
+export type ShellCell = { i: number; j: number; shel?: ShellMesh; far?: FarPrism[];
+  /** A record shell file (F1, `world-v1/facade/`): SHEL level 3, its records and crowns. Never with `shel`. */
+  rshel?: RecordShellMesh; records?: FacadeRecordSet; crowns?: CrownEntry[] };
 
 // --- bytes -----------------------------------------------------------------
 
@@ -867,10 +871,14 @@ export function encodeCell(cell: Cell, version: number = WORLD_FORMAT_VERSION, g
   return { ...container(cell.i, cell.j, version, (debug ? FLAG_DEBUG : 0) | (globals ? FLAG_GLOBAL : 0), payloads, globals), strings: s.list };
 }
 
-function shellPayloads(c: { shel?: ShellMesh; far?: FarPrism[] }): [StreamTag, Uint8Array][] {
+function shellPayloads(c: { shel?: ShellMesh; far?: FarPrism[]; rshel?: RecordShellMesh; records?: FacadeRecordSet; crowns?: CrownEntry[] }): [StreamTag, Uint8Array][] {
   const out: [StreamTag, Uint8Array][] = [];
+  if (c.shel && c.rshel) throw Error('a shell file carries one SHEL: legacy or record (level 3), not both');
   if (c.shel) out.push(['SHEL', encodeShel(c.shel)]);
+  else if (c.rshel) out.push(['SHEL', encodeShel3(c.rshel)]);
   if (c.far) out.push(['SHL1', encodeShl1(c.far)]);
+  if (c.records) out.push(['FREC', encodeFrec(c.records)]);
+  if (c.crowns) out.push(['CROW', encodeCrow(c.crowns)]);
   return out;
 }
 function container(i: number, j: number, version: number, flags: number, payloads: [StreamTag, Uint8Array][], globals?: GlobalStrings): Omit<EncodedCell, 'strings'> {
@@ -909,7 +917,12 @@ export function decodeShellCell(bytes: Uint8Array, what = 'world shell'): ShellC
   const out: ShellCell = { i, j };
   const subs = table.map(([tag, len]) => [tag, new Reader(r.take(len), `${what} ${tag}`)] as const);
   r.end();
-  for (const [tag, sub] of subs) { if (tag === 'SHEL') out.shel = decodeShel(sub); else out.far = decodeShl1(sub); }
+  for (const [tag, sub] of subs) {
+    if (tag === 'SHEL') { if (shelLevel(sub.buf) === SHEL_RECORD_LEVEL) out.rshel = decodeShel3(sub); else out.shel = decodeShel(sub); }
+    else if (tag === 'SHL1') out.far = decodeShl1(sub);
+    else if (tag === 'FREC') out.records = decodeFrec(sub);
+    else out.crowns = decodeCrow(sub);
+  }
   return out;
 }
 

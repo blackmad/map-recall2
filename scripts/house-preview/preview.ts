@@ -10,8 +10,9 @@ import path from 'node:path';
 import zlib from 'node:zlib';
 import { execFileSync } from 'node:child_process';
 import sharp from 'sharp';
-import { gameChain, loadTile, EXTRACT, type Chain, type Feature, type Row } from '../world/pipeline.ts';
-import { shellProfiles, shellStreets } from '../world/shellBake.ts';
+import { gameChain, loadTile, EXTRACT, houseSpecsDir, type Chain, type Feature, type Row } from '../world/pipeline.ts';
+import { loadHouseSpecTable, shellProfiles, shellStreets } from '../world/shellBake.ts';
+import { facadeRecordFor, type FacadeRecordInput, type FacadeSpecInput } from '../../src/canalRecall/look/facadeRecord.ts';
 import { buildFeatureChunk, asPolygons } from '../../src/canalRecall/threeBuildingFeatures.ts';
 import { wallTopHeightM, layoutProbe, type Chunk } from '../../src/canalRecall/threeBuildingMesh.ts';
 import { chunkMetres } from '../../src/canalRecall/world/shellMesh.ts';
@@ -22,7 +23,7 @@ import { specView } from '../../src/canalRecall/houseSpec/view.ts';
 import { specDesignOn, type HouseSpecView } from '../../src/canalRecall/houseSpec/decorate.ts';
 import type { HouseSpec } from '../../src/canalRecall/houseSpec/spec.ts';
 import { lngLatToRd, rdToLngLat } from '../../src/canalRecall/facade/rdNew.ts';
-import { rasterise, type RasterAtlas, type RasterImage, type RasterMesh, type LitShading, type Vec3 } from '../../src/canalRecall/houseSpec/softRaster.ts';
+import { RASTER_NO_RECORD, rasterise, type RasterAtlas, type RasterImage, type RasterMesh, type LitShading, type Vec3 } from '../../src/canalRecall/houseSpec/softRaster.ts';
 import { wallRefitOf, withWallRefit } from '../../src/canalRecall/houseSpec/wallRefit.ts';
 import { previewVerdict, storeyLines, blurRgb, PRE_BLUR_PX, type PreviewVerdict } from '../../src/canalRecall/houseSpec/previewVerdict.ts';
 import { cityLitShading } from '../../src/canalRecall/houseSpec/previewLight.ts';
@@ -74,6 +75,8 @@ Flags
                       the median ground height of the drawn buildings
   --recipe [<id>]     the recipe route: compile scripts/building-recipes/houses/<id> (default: the house whose
                       intent names this pand) with the recipe compiler and render its GLB
+  --shader-facades    F1 (#380): the generic walls drawn by the record shader's CPU twin (look/facadeTwin.ts), as
+                      ?shaderFacades=1 draws them; also env SHADER_FACADES=1
   --unlit             the legacy unlit look: the near-tier facade shader with its baked shade for generic chunks,
                       renderElevation in flat game colours for GLBs (default: the lit city look for generic chunks,
                       sun and sky of the ride's sunny rig, wall gain, sky tint on glazing)
@@ -129,7 +132,7 @@ in Node since lane H12, docs/house-line.md §8; --browser for headless Chromium)
 // Arguments
 // ---------------------------------------------------------------------------------------------------------------
 export type Route = 'generic' | 'spec' | 'installed' | 'recipe';
-type Args = { target?: string; spec?: string; intent?: string; wall?: string; route?: Exclude<Route, 'recipe'>; unlit: boolean; glbLit: boolean; photo: boolean; threeq: boolean; recipe: string | boolean; wholeTile: boolean; watch: boolean; look: string; ppm: number; out?: string; crops?: string; preferCrop: boolean; chunk?: string; strip?: string; set?: string; help: boolean };
+type Args = { target?: string; spec?: string; intent?: string; wall?: string; route?: Exclude<Route, 'recipe'>; unlit: boolean; /** F1: generic chunks on the record shader's CPU twin. */ shaderFacades?: boolean; glbLit: boolean; photo: boolean; threeq: boolean; recipe: string | boolean; wholeTile: boolean; watch: boolean; look: string; ppm: number; out?: string; crops?: string; preferCrop: boolean; chunk?: string; strip?: string; set?: string; help: boolean };
 export function parseArgs(argv: string[]): Args {
   const a: Args = { unlit: false, glbLit: false, photo: false, threeq: false, recipe: false, wholeTile: false, watch: false, look: 'photo', ppm: 50, preferCrop: false, help: false };
   for (let i = 0; i < argv.length; i++) {
@@ -140,6 +143,7 @@ export function parseArgs(argv: string[]): Args {
       case '--photo': a.photo = true; break;
       case '--threeq': a.threeq = true; break;
       case '--unlit': a.unlit = true; break;
+      case '--shader-facades': a.shaderFacades = true; break;
       case '--glb-lit': a.glbLit = true; break;
       case '--no-wall-vs-trim': case '--no-opening-split': case '--opening-split': break; // read by measureBlurred
       case '--route': {
@@ -338,9 +342,24 @@ function wallFrame(w: FrontWall) {
 // ---------------------------------------------------------------------------------------------------------------
 // Rendering
 // ---------------------------------------------------------------------------------------------------------------
-function concatChunks(parts: (RasterMesh & { ranges: Chunk['ranges'] })[]): RasterMesh & { ranges: { id: string; start: number; count: number }[] } {
+/** The resolved spec table the world compiler hands the record packer (HOUSE_SPECS_DIR), read once. */
+let specTable: Map<string, FacadeSpecInput> | null = null;
+const previewSpecFor = () => { specTable ??= loadHouseSpecTable(EXTRACT, houseSpecsDir()); const t = specTable; return (id: string) => t.get(id); };
+type RecordPart = { record?: { walls: Float32Array; recs: Uint16Array; wallKinds: Uint8Array; inputs: FacadeRecordInput[] } };
+function concatChunks(parts: (RasterMesh & RecordPart & { ranges: Chunk['ranges'] })[]): RasterMesh & { ranges: { id: string; start: number; count: number }[] } {
   const vn = parts.reduce((s, p) => s + p.layers.length, 0), tn = parts.reduce((s, p) => s + p.indices.length, 0);
-  const out = { positions: new Float32Array(vn * 3), uvs: new Float32Array(vn * 2), layers: new Uint8Array(vn), tints: new Uint8Array(vn * 4), accents: new Uint8Array(vn * 4), indices: new Uint32Array(tn), ranges: [] as { id: string; start: number; count: number }[] };
+  const out: RasterMesh & { ranges: { id: string; start: number; count: number }[] } = { positions: new Float32Array(vn * 3), uvs: new Float32Array(vn * 2), layers: new Uint8Array(vn), tints: new Uint8Array(vn * 4), accents: new Uint8Array(vn * 4), indices: new Uint32Array(tn), ranges: [] as { id: string; start: number; count: number }[] };
+  // F1: record parts keep their record arrays (record indices offset past the earlier parts' records).
+  if (parts.some(p => p.record)) {
+    const records = parts.flatMap(p => p.record?.inputs.map(facadeRecordFor) ?? []);
+    const rc = { walls: new Float32Array(vn * 3), recs: new Uint16Array(vn).fill(RASTER_NO_RECORD), wallKinds: new Uint8Array(vn), records };
+    let rv = 0, rr = 0;
+    for (const p of parts) {
+      if (p.record) { rc.walls.set(p.record.walls, rv * 3); rc.wallKinds.set(p.record.wallKinds, rv); for (let k = 0; k < p.layers.length; k++) rc.recs[rv + k] = p.record.recs[k] + rr; rr += p.record.inputs.length; }
+      rv += p.layers.length;
+    }
+    out.record = rc;
+  }
   let v = 0, t = 0;
   for (const p of parts) {
     out.positions.set(p.positions, v * 3); out.uvs.set(p.uvs, v * 2); out.layers.set(p.layers, v); out.tints.set(p.tints, v * 4); out.accents.set(p.accents, v * 4);
@@ -647,7 +666,8 @@ export async function renderGeneric(session: PreviewSession, pandId: string, arg
   const runs: { storeys: number; groundM: number; storeyM: number; bays: number; street: boolean; lengthM: number; base: number }[] = [];
   layoutProbe.sink = (id, r) => { if (id === own.properties.id) runs.push(r); };
   let walls: ReturnType<typeof buildFeatureChunk>;
-  try { walls = buildFeatureChunk(features as never, look, 'walls', streets, profiles, context as never); } finally { layoutProbe.sink = undefined; }
+  const records = args.shaderFacades || process.env.SHADER_FACADES === '1';
+  try { walls = buildFeatureChunk(features as never, look, 'walls', streets, profiles, context as never, [], new Map(), records ? { facadeRecord: true, specFor: previewSpecFor() } : {}); } finally { layoutProbe.sink = undefined; }
   const streetRun = runs.filter(r => r.street && r.base < 0.5).sort((a, b) => b.lengthM - a.lengthM)[0];
   const drawn = streetRun ? { storeys: streetRun.storeys + 1, upperStoreys: streetRun.storeys, groundM: +streetRun.groundM.toFixed(2), storeyM: +streetRun.storeyM.toFixed(2), columns: streetRun.bays, runM: +streetRun.lengthM.toFixed(2) } : null;
   const extras = buildFeatureChunk(features as never, look, 'extras', streets, profiles, context as never);

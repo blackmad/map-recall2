@@ -97,3 +97,45 @@ test('#257: a shell roof is cut at the walls where the detail roof is, never han
     assert.ok(hang <= 0.05, `${mode}: nothing above the ground floor stands ${hang.toFixed(2)} m outside the footprint`);
   }
 });
+
+// F1 record mode (#380, docs/plans/facade-f1-design-20261112.md §2): one quad per visible wall plane, wall metres from
+// the pand's base, a record per building, roofs as kind 7; absent, the chunk is byte-identical.
+test('F1 record mode: off is byte-identical; on gives one quad per wall plane in wall metres, fronts on the street', () => {
+  const all = [...houses, flatBlock];
+  const before = buildFeatureChunk(all, 'photo', 'coarse', streets, [], [], [], new Map(), { shellRoofs: true });
+  assert.deepEqual(buildFeatureChunk(all, 'photo', 'coarse', streets, [], [], [], new Map(), { shellRoofs: true, facadeRecord: false }), before);
+  assert.equal(before.record, undefined);
+  const rec = buildFeatureChunk(all, 'photo', 'coarse', streets, [], [], [], new Map(), { shellRoofs: true, facadeRecord: true });
+  const r = rec.record!;
+  assert.ok(r, 'record arrays');
+  assert.equal(r.inputs.length, rec.ranges.length);
+  assert.deepEqual(r.inputs.map(x => x.id), rec.ranges.map(x => x.id));
+  // Walls: quads only (4 vertices each, base 0 to the wall top), v = z above the base, u in metres along the run.
+  const slab = rec.ranges.find(x => x.id === 'bag:slab')!, k = rec.ranges.indexOf(slab);
+  let wallVerts = 0, fronts = 0, roofs = 0;
+  for (let v = slab.start; v < slab.start + slab.count; v++) {
+    assert.equal(r.recs[v], k, 'every vertex draws from its building record');
+    const kind = r.wallKinds[v];
+    if (kind === 7) { roofs++; continue; }
+    wallVerts++;
+    if (kind === 0) fronts++;
+    assert.ok(Math.abs(r.walls[v * 3 + 1] - rec.positions[v * 3 + 2]) < 1e-4, 'v is the height above the base');
+    assert.ok(r.walls[v * 3] >= -1e-6 && r.walls[v * 3] <= r.walls[v * 3 + 2] + 1e-6, 'u inside the run');
+  }
+  assert.equal(wallVerts, 4 * 4, 'the slab: four walls, one quad each (legacy draws ground, door and upper pieces)');
+  assert.equal(fronts, 4, 'one street front (y = 5 faces the street at y = 0)');
+  assert.ok(roofs >= 3, 'the lid as kind 7');
+  // The legacy coarse slab spends more wall vertices than the record one.
+  const legacySlab = before.ranges.find(x => x.id === 'bag:slab')!;
+  assert.ok(legacySlab.count > slab.count, `${legacySlab.count} legacy vs ${slab.count} record vertices`);
+  // The packer gets the mesher's wall colour and heights.
+  assert.equal(r.inputs[k].heightM, 26.8); assert.equal(r.inputs[k].style, 'modern');
+});
+
+test('F1 record mode: specFor reaches the record input of its pand only', () => {
+  const spec = { d: { fronts: [{ storeys: 5 }] }, s: { 'fronts/0/storeys': 'author' } };
+  const rec = buildFeatureChunk([...houses, flatBlock], 'photo', 'coarse', streets, [], [], [], new Map(), { shellRoofs: true, facadeRecord: true, specFor: id => id === 'bag:b' ? spec : undefined });
+  const ids = rec.ranges.map(x => x.id);
+  assert.deepEqual(rec.record!.inputs[ids.indexOf('bag:b')].spec, spec);
+  assert.equal(rec.record!.inputs[ids.indexOf('bag:a')].spec, undefined);
+});

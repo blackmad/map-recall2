@@ -714,6 +714,8 @@ Flags
                       the median ground height of the drawn buildings
   --recipe [<id>]     the recipe route: compile scripts/building-recipes/houses/<id> (default: the house whose
                       intent names this pand) with the recipe compiler and render its GLB
+  --shader-facades    F1 (#380): the generic walls drawn by the record shader's CPU twin (look/facadeTwin.ts), as
+                      ?shaderFacades=1 draws them; also env SHADER_FACADES=1
   --unlit             the legacy unlit look: the near-tier facade shader with its baked shade for generic chunks,
                       renderElevation in flat game colours for GLBs (default: the lit city look for generic chunks,
                       sun and sky of the ride's sunny rig, wall gain, sky tint on glazing)

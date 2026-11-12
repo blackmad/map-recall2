@@ -13,17 +13,23 @@
  */
 import { decodeCell, decodeGlobalStrings, decodeShellCell, cellGlobalRef, GLOBAL_STRINGS_FILE, inflateCell, type GlobalStrings, rawFeature, styledFeature, WORLD_FORMAT_VERSIONS, type Cell, type Props, type Geometry } from './cellFormat.js';
 import { farCellArrays, type FarCellArrays } from './shellMesh.js';
-import { bakedCellArrays, type BakedCellArrays } from './bakedCellArrays.js';
+import { bakedCellArrays, bakedRecordArrays, type BakedCellArrays, type BakedRecordArrays } from './bakedCellArrays.js';
+import { frecCurrent, type CrownEntry, type FacadeRecordSet } from './facadeStreams.js';
+import { FACADE_RECORD_VERSION } from '../look/facadeRecord.js';
 import { CellQueue, affinity, rankCells } from '../engine/worldStreamer.js';
 import { poolWorkerUrl, sharedWorkerPool, type WorkerPool } from '../engine/workerPool.js';
 import type { LngLat } from '../streamingLookAhead.js';
 
 /** `shells` and a cell's `far` / `shell` (gzip bytes of far/<key>.bin, shells/<key>.bin): a `world:compile --shell` index (format-6 shell files, lane R2-B #229). */
-export type WorldIndex = { version: 1; format: number; compiler: string; tileCells: Record<string, string[]>; cells: Record<string, { gzBytes: number; buildings: number; sha256: string; far?: number; shell?: number }>; shells?: { format: number; look: string; shel: boolean; far: boolean; /** world/shellLayers.ts shellLayerHash() of the compile (lane R4-A #243); absent: shells predate the check. */ layers?: string } };
+export type WorldIndex = { version: 1; format: number; compiler: string; tileCells: Record<string, string[]>; cells: Record<string, { gzBytes: number; buildings: number; sha256: string; far?: number; shell?: number; /** F1: the record shell's gzip bytes (`world:compile --facade-records`). */ facade?: number }>; shells?: { format: number; look: string; shel: boolean; far: boolean; records?: boolean; recordVersion?: number; /** world/shellLayers.ts shellLayerHash() of the compile (lane R4-A #243); absent: shells predate the check. */ layers?: string } };
 /** A far cell decoded and extruded (world/shellMesh.ts farCellArrays), with the bytes fetched. */
 export type FarCell = FarCellArrays & { key: string; gzBytes: number };
 /** A baked coarse cell (SHEL, lane R4-A #243) decoded in the worker: per-building contiguous ranges named by building id. */
 export type ShellCellData = BakedCellArrays & { key: string; gzBytes: number };
+/** A record shell (F1, `world-v1/facade/<key>.bin`): the level 3 mesh as uploaded, the cell's facade records and crowns. */
+export type RecordShellCellData = BakedRecordArrays & { key: string; gzBytes: number; records: FacadeRecordSet; crowns: CrownEntry[] };
+/** The record shell directory beside `shells/` (written by `world:compile --facade-records`). */
+export const FACADE_SHELL_DIR = 'facade';
 export type WorldFeature = { type: 'Feature'; properties: Props; geometry: Geometry };
 export type WorldTile = { features: WorldFeature[]; styled: Map<WorldFeature, WorldFeature> };
 
@@ -124,6 +130,28 @@ export class WorldCellReader {
     const cell = await (this.cells.get(key) ?? this.cellUncached(key, signal));
     return { key, gzBytes: bytes.length, ...bakedCellArrays(decoded.shel, cell.buildings.map(b => b.id), !exact, compact) };
   }
+  /**
+   * `<shellBase>/facade/<key>.bin` (F1 #380): SHEL level 3 + FREC + CROW, regrouped per building like `shell`. Throws on a
+   * missing file or a record version this build does not read: the caller then draws the legacy shell (design §2.2).
+   */
+  async recordShell(key: string, shellBase: string, signal?: AbortSignal, exact = false): Promise<RecordShellCellData> {
+    const response = await this.fetcher(`${shellBase.replace(/\/$/, '')}/${FACADE_SHELL_DIR}/${key}.bin`, { signal });
+    if (!response.ok) throw Error(`world record shell ${key}: HTTP ${response.status}`);
+    const bytes = new Uint8Array(await response.arrayBuffer());
+    const decoded = decodeShellCell(await inflateCell(bytes), `world record shell ${key}`);
+    if (!decoded.rshel || !decoded.records) throw Error(`world record shell ${key}: no SHEL level 3 or FREC stream`);
+    if (!frecCurrent(decoded.records)) throw Error(`world record shell ${key}: record version ${decoded.records.version}`);
+    const cell = await (this.cells.get(key) ?? this.cellUncached(key, signal));
+    return { key, gzBytes: bytes.length, ...bakedRecordArrays(decoded.rshel, cell.buildings.map(b => b.id), !exact), records: decoded.records, crowns: decoded.crowns ?? [] };
+  }
+  /** The record shell, or (missing file, stale record version) the legacy shell; an abort still rejects. */
+  async recordOrShell(key: string, shellBase: string, signal?: AbortSignal, exact = false, compact = false): Promise<ShellCellData | RecordShellCellData> {
+    try { return await this.recordShell(key, shellBase, signal, exact); } catch (error) {
+      if (signal?.aborted || (error as { name?: string })?.name === 'AbortError') throw error;
+      console.warn(`${error instanceof Error ? error.message : error}; legacy shell`);
+      return this.shell(key, shellBase, signal, exact, compact);
+    }
+  }
   private async cellUncached(key: string, signal?: AbortSignal): Promise<Cell> {
     const response = await this.fetcher(`${this.baseUrl.replace(/\/$/, '')}/world-v1/cells/${key}.bin`, { signal });
     if (!response.ok) throw Error(`world cell ${key}: HTTP ${response.status}`);
@@ -176,18 +204,22 @@ type FarRequest = { kind: 'world-far'; id: number; baseUrl: string; cell: string
 /** A baked coarse cell (lane R4-A #243): SHEL fetched from `shellBase`, decoded and regrouped in the worker, its buffers transferred. */
 /** `exact`: positions in Float32 metres at the SHEL's own unit (a cell the detail tier swaps over), else Int16 decimetres. */
 /** `compact` (lane R4-I #253): the smaller GPU layout (bakedCellArrays `compact`); absent under `?bakedBytes=0`. */
-type ShellRequest = { kind: 'world-shell'; id: number; baseUrl: string; shellBase: string; cell: string; exact?: boolean; compact?: boolean };
+/** `records` (F1 #380, `?shaderFacades=1`): the record shell (`facade/<cell>.bin`), the legacy shell when that fails. */
+type ShellRequest = { kind: 'world-shell'; id: number; baseUrl: string; shellBase: string; cell: string; exact?: boolean; compact?: boolean; records?: boolean };
 export type WorldRequest = CellRequest | AbortRequest | EvictRequest | FarRequest | ShellRequest;
 /** A batch of one cell's share of a tile. Runtime cells: `styled[i]` null (the feature is its own styled copy). */
 type Batch = { kind: 'world-batch'; id: number; ordinals: number[]; raw: WorldFeature[]; styled: (Props | null)[] };
 type Done = { kind: 'world-done'; id: number; count: number; decodeMs: Record<string, number>; inflateMs: Record<string, number> };
 type Failed = { kind: 'world-error'; id: number; message: string };
 type FarDone = { kind: 'world-far'; id: number; far: FarCell };
-type ShellDone = { kind: 'world-shell'; id: number; shell: ShellCellData };
+type ShellDone = { kind: 'world-shell'; id: number; shell: ShellCellData | RecordShellCellData };
 export type WorldReply = Batch | Done | Failed | FarDone | ShellDone;
 const REQUEST_KINDS = new Set(['world-cell', 'world-abort', 'world-evict', 'world-far', 'world-shell']);
 /** The buffers a shell reply transfers. */
-export const shellTransfer = (s: ShellCellData): ArrayBuffer[] => [s.positions.buffer, s.uvs.buffer, s.layers.buffer, s.tints.buffer, s.accents.buffer, s.indices.buffer, ...(s.thin ? [s.thin.buffer] : [])] as ArrayBuffer[];
+export const shellTransfer = (s: ShellCellData | RecordShellCellData): ArrayBuffer[] => ('walls' in s
+  ? [s.positions.buffer, s.walls.buffer, s.recs.buffer, s.wallKinds.buffer, s.indices.buffer, s.records.bytes.buffer]
+  : [s.positions.buffer, s.uvs.buffer, s.layers.buffer, s.tints.buffer, s.accents.buffer, s.indices.buffer, ...(s.thin ? [s.thin.buffer] : [])]) as ArrayBuffer[];
+export const isRecordShell = (s: ShellCellData | RecordShellCellData): s is RecordShellCellData => 'walls' in s;
 export const isWorldRequest = (data: unknown): data is WorldRequest => !!data && typeof data === 'object' && REQUEST_KINDS.has(String((data as { kind?: unknown }).kind));
 export const isWorldReply = (data: unknown): data is WorldReply => !!data && typeof data === 'object' && typeof (data as { kind?: unknown }).kind === 'string' && String((data as { kind: string }).kind).startsWith('world-');
 
@@ -203,12 +235,13 @@ export class WorldCellWorkerHost {
     if (request.kind === 'world-shell') { void this.answerShell(request); return; }
     void this.answer(request);
   }
-  private async answerShell({ id, baseUrl, shellBase, cell, exact, compact }: ShellRequest): Promise<void> {
+  private async answerShell({ id, baseUrl, shellBase, cell, exact, compact, records }: ShellRequest): Promise<void> {
     const controller = new AbortController();
     this.aborts.set(id, controller);
     try {
       this.reader ??= new WorldCellReader(baseUrl);
-      const shell = await this.reader.shell(cell, shellBase, controller.signal, exact, compact);
+      const reader = this.reader;
+      const shell = records ? await reader.recordOrShell(cell, shellBase, controller.signal, exact, compact) : await reader.shell(cell, shellBase, controller.signal, exact, compact);
       if (controller.signal.aborted) return;
       this.post({ kind: 'world-shell', id, shell }, shellTransfer(shell));
     } catch (error) {
@@ -286,7 +319,7 @@ export class WorldCellClient {
   private nextId = 1;
   private readonly pending = new Map<number, Pending>();
   private readonly pendingFar = new Map<number, { resolve: (f: FarCell) => void; reject: (e: Error) => void }>();
-  private readonly pendingShell = new Map<number, { resolve: (s: ShellCellData) => void; reject: (e: Error) => void }>();
+  private readonly pendingShell = new Map<number, { resolve: (s: ShellCellData | RecordShellCellData) => void; reject: (e: Error) => void }>();
   /** The one cell queue (engine/worldStreamer.ts): cells the planned tiles need, read ahead in rank order. */
   readonly queue: CellQueue;
   /** Per cell, ms (diagnostics: the `?world=v1` decode table), from whichever thread decoded it. */
@@ -469,12 +502,12 @@ export class WorldCellClient {
    * base) decoded and regrouped per building in the cell's affinity worker (whose cache usually holds the cell for its
    * building ids), transferred; on the main thread without a pool. Rejects with an AbortError when `signal` aborts first.
    */
-  shell(cell: string, signal?: AbortSignal, shellBase?: string, exact = false, compact = false): Promise<ShellCellData> {
+  shell(cell: string, signal?: AbortSignal, shellBase?: string, exact = false, compact = false, records = false): Promise<ShellCellData | RecordShellCellData> {
     const base = shellBase ?? `${this.absoluteBase().replace(/\/$/, '')}/world-v1`;
     const w = this.pool ? affinity(cell, this.pool.size) : -1;
-    if (!this.pool || !this.pool.alive(w)) return this.reader.shell(cell, base, signal, exact, compact);
+    if (!this.pool || !this.pool.alive(w)) return records ? this.reader.recordOrShell(cell, base, signal, exact, compact) : this.reader.shell(cell, base, signal, exact, compact);
     const id = this.nextId++, pool = this.pool;
-    return new Promise<ShellCellData>((resolve, reject) => {
+    return new Promise<ShellCellData | RecordShellCellData>((resolve, reject) => {
       if (signal?.aborted) { reject(new DOMException('aborted', 'AbortError')); return; }
       this.pendingShell.set(id, { resolve, reject });
       signal?.addEventListener('abort', () => {
@@ -482,10 +515,16 @@ export class WorldCellClient {
         pool.post(w, { kind: 'world-abort', id } satisfies WorldRequest);
         reject(new DOMException('aborted', 'AbortError'));
       }, { once: true });
-      pool.post(w, { kind: 'world-shell', id, baseUrl: this.absoluteBase(), shellBase: base, cell, ...(exact ? { exact } : {}), ...(compact ? { compact } : {}) } satisfies WorldRequest);
+      pool.post(w, { kind: 'world-shell', id, baseUrl: this.absoluteBase(), shellBase: base, cell, ...(exact ? { exact } : {}), ...(compact ? { compact } : {}), ...(records ? { records } : {}) } satisfies WorldRequest);
     });
   }
   /** Cells with a baked coarse shell (index `shell`: gzip bytes); empty for an index compiled without `--shell`. */
+  /** Cells with a record shell of the record version this build reads (F1 #380); empty without `--facade-records`. */
+  recordCells(): Set<string> {
+    const s = this.index.shells;
+    if (!s?.records || s.recordVersion !== FACADE_RECORD_VERSION) return new Set();
+    return new Set(Object.entries(this.index.cells).filter(([, c]) => typeof c.facade === 'number' && c.facade > 0).map(([k]) => k));
+  }
   shellCells(): Map<string, number> {
     const out = new Map<string, number>();
     for (const [k, c] of Object.entries(this.index.cells)) if (typeof c.shell === 'number' && c.shell > 0) out.set(k, c.shell);
