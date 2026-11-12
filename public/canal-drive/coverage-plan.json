@@ -15,9 +15,9 @@
       "status": "in-progress",
       "text": "The shared browser queue jammed twice on 12 November and the public site has not deployed since 10 November because the CI check takes longer than its time limit. Fix both first so finished work actually reaches the game.",
       "items": [
-        "Browser queue: crash-safe slots, fair order, lane pushes without a browser",
-        "CI: split the main check into parallel jobs",
-        "Batched photo/game comparison runs"
+        "Browser queue: crash-safe slots, fair order, lane pushes without a browser (done 12 November)",
+        "CI: split the main check into parallel jobs (done 12 November; first green deploy pending)",
+        "Batched photo/game comparison runs (done 12 November)"
       ]
     },
     {
@@ -38,7 +38,7 @@
       "status": "in-progress",
       "text": "Each wall becomes one flat surface with a per-building record: wall colour, storey heights, window columns and shapes, door, ground floor, white bands and frames, cornice. A shader draws the front from that record. This lets every measured fact change pixels and uses less GPU memory than today's per-window geometry. Gables and rooflines stay real geometry.",
       "items": [
-        "Design (now)",
+        "Design (done 12 November: a 64-byte record per building, about half the geometry memory)",
         "Build behind a switch, desktop first",
         "Gate: the benchmark score moves, memory under budget"
       ]
@@ -90,19 +90,14 @@
   ],
   "inProgress": [
     {
-      "name": "Browser queue fixes",
-      "issue": 378,
-      "label": "Being built"
-    },
-    {
       "name": "Facade benchmark and blind critic",
       "issue": 379,
       "label": "Being built"
     },
     {
-      "name": "Shader facade design",
+      "name": "Shader facade build (design finished 12 November)",
       "issue": 380,
-      "label": "Being designed"
+      "label": "Next"
     },
     {
       "name": "Centrum facade measurement",
