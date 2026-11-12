@@ -387,7 +387,8 @@ function codeHash(): string {
   }
   return codeHashMemo;
 }
-const prepKey = (e: Entry, args: Args) => hashOf({ e: { id: e.id, key: e.key, bearing: e.bearing, at: e.at, chord: e.chord }, bearing: args.bearing, year: args.year, season: args.season, size: args.panoSize, code: codeHash() });
+// notPanos, --prefer-obliquity and --max-dist change the pick, so they key the cache too (absent = undefined, dropped by JSON: the same keys as before).
+const prepKey = (e: Entry, args: Args) => hashOf({ e: { id: e.id, key: e.key, bearing: e.bearing, at: e.at, chord: e.chord, notPanos: e.notPanos, maxDistM: e.maxDistM }, bearing: args.bearing, year: args.year, season: args.season, size: args.panoSize, preferObliquityDeg: args.preferObliquityDeg, maxDistM: args.maxDistM, code: codeHash() });
 /** A cached Prepared for the entry with its photo copied into <out>/<key>, or null. */
 function cachedPrep(e: Entry, args: Args): Prepared | null {
   const f = path.join(cacheDir('prep'), `${prepKey(e, args)}.json`);
