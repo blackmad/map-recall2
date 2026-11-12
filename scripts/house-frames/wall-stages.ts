@@ -4,7 +4,8 @@
  *
  *   photo    house:frames wallLab on photo.jpg (the panorama cut, 30-70 % lightness band of the wall)
  *   reading  the spec extract's photo reading (houseSpec.wallHex), spec pands only
- *   source   what the period path would draw without a reading: the buurt profile's era wall, or PERIOD_WALLS' hash pick
+ *   source   what the period path draws without a reading: the measured wall pool (look/measuredWallPool.ts, `pool`), the
+ *            buurt profile's era wall (`profile`), or the period list's hash pick (`period`)
  *   decorated  decorate.ts specRecipe.wallHex (spec pands) or the source (period pands)
  *   mesher   meshBuildingFor(...).wallHex, the vertex tint before jitter
  *   pixel    house:frames wallLab on game.png
@@ -22,6 +23,8 @@ import { PreviewSession } from '../house-preview/preview.ts';
 import { asPolygons, meshBuildingFor } from '../../src/canalRecall/threeBuildingFeatures.ts';
 import { bayLookFor } from '../../src/canalRecall/bayLook.ts';
 import { buurtProfileAt } from '../../src/canalRecall/buurtProfiles/data.ts';
+import { measuredPoolWall } from '../../src/canalRecall/look/measuredWallPool.ts';
+import { hashSeed } from '../../src/canalRecall/wallBays.ts';
 import { frameFor } from './pose.ts';
 import { rgbOklab, wallLab, type WallLab } from './analyse.ts';
 import type { Rgb8 } from './photo.ts';
@@ -81,8 +84,10 @@ for (const prep of prepared) {
       at = ring.length ? [ring.reduce((s, q) => s + q[0], 0) / ring.length, ring.reduce((s, q) => s + q[1], 0) / ring.length] : null;
       const first = ring[0];
       const profile = first ? buurtProfileAt(first[0], first[1]) : null;
-      const bay = bayLookFor(String(p.id), year, Number(p.height) || 10, 'photo', 'quiet', undefined, undefined, profile);
-      archetype = bay.archetype; source = bay.wallHex; sourceKind = bay.profileWall ? 'profile' : 'period';
+      const bay = bayLookFor(String(p.id), year, Number(p.height) || 10, 'photo', 'quiet', undefined, undefined, profile, undefined, undefined, first ? [first[0], first[1]] : undefined);
+      archetype = bay.archetype; source = bay.wallHex;
+      const pool = first ? measuredPoolWall(first[0], first[1], bay.archetype, hashSeed(String(p.id)) >>> 7) : null;
+      sourceKind = pool && pool === bay.wallHex ? 'pool' : bay.profileWall ? 'profile' : 'period';
       const b = meshBuildingFor(row.styled as any, 'photo');
       mesher = b?.wallHex ?? null;
     }
