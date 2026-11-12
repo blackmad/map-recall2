@@ -14,8 +14,8 @@ import fs from 'node:fs';
 import path from 'node:path';
 import zlib from 'node:zlib';
 import sharp from 'sharp';
-import { findPands, lngLatToRd, loadRoads, nearestOnSeg, neighbourhood, normId, type Footprint } from '../pand-reference/core.ts';
-import { exposedWalls, listPanos, pickWall, rankPanos, type PanoPick, type Wall } from '../pand-reference/select.ts';
+import { findPands, lngLatToRd, loadRoads, nearestOnSeg, neighbourhood, normId, pointInRing, type Footprint } from '../pand-reference/core.ts';
+import { exposedWalls, FACADE_WINDOW, listPanos, pickWall, rankPanos, type PanoPick, type Wall } from '../pand-reference/select.ts';
 import { isLeaf } from '../../src/canalRecall/buildingRecipe/measureFacade.ts';
 import { aimPose, fpsFor, frameFor, gridConvergenceDeg, hfovDeg, wallOutline, wallPoint, CROWN_EXTRA_M, FRAME_H, FRAME_W, type FramePose, type WallQuad } from './pose.ts';
 import { cutPerspective, loadEquirect, type PanoSize, type Rgb8 } from './photo.ts';
@@ -34,12 +34,19 @@ Input (one of)
   --list <file.json>     ["id", ...] or [{"pandId": "id", "bearing": 90, "at": [lng, lat], "key": "name"}, ...]
                          (bearing: prefer the wall facing it; at: the wall nearest this point, facing within 40 deg
                          of bearing; key: the output folder, for several walls of one pand;
+                         notPanos: ["panoId", ...] skips those captures (re-pick a pose flagged otherBuilding);
+                         maxDistM: this entry's --max-dist (a canal front from the far quay, a narrow street at 35 m);
                          chord: [[lng, lat], [lng, lat]], the wall's two end points, for a front stepped in edges under 3 m
                          that the exposed-wall rule drops: Nassaukade 146, 0363100012160704)
 
 Flags
   --year <yyyy>          only panoramas of that mission year
   --season winter|any    winter: Nov-Mar captures first (bare trees); default any
+  --prefer-obliquity <deg>  after the season, captures whose pose fits the whole wall (not clipped), then those that see
+                         the wall within <deg> of square, squarest first (the belt rule: winter, then under 30 deg; 45 deg
+                         and more only as a second view); default off
+  --max-dist <m>         panoramas up to <m> from the wall (default 35); 60 reaches across a canal, with --prefer-obliquity
+                         a capture that fits the whole wall wins over a nearer clipped one
   --query '<q>'          game query; ?engine=own&cam=fps is added. Before/after of a spec change: '?world=live&houseSpecs=0'
                          vs '?world=live' (the baked world-v1 cells carry the specs already, so houseSpecs=0 alone
                          changes nothing), or a staged world through WORLD_DIR / BUNDLES_DIR (tests/e2e/helpers.ts)
@@ -85,8 +92,8 @@ Checks (pose.json)
 Review: docs/house-line.md §7. Builders are accepted on these pairs, read by opus or a human.
 `;
 
-type Entry = { id: string; key?: string; bearing?: number; at?: [number, number]; chord?: [[number, number], [number, number]] };
-type Args = { pands: Entry[]; year?: number; season: 'winter' | 'any'; query: string; label: string; out: string; panoSize: PanoSize; bearing?: number; max: number; reopenEvery: number; prepOnly: boolean; postOnly: boolean; inputName: string };
+type Entry = { id: string; key?: string; bearing?: number; at?: [number, number]; chord?: [[number, number], [number, number]]; notPanos?: string[]; maxDistM?: number };
+type Args = { pands: Entry[]; year?: number; season: 'winter' | 'any'; query: string; label: string; out: string; panoSize: PanoSize; bearing?: number; preferObliquityDeg?: number; maxDistM?: number; max: number; reopenEvery: number; prepOnly: boolean; postOnly: boolean; inputName: string };
 
 function arg(argv: string[], name: string): string | undefined {
   const i = argv.indexOf(`--${name}`);
@@ -110,11 +117,11 @@ async function parseArgs(argv: string[]): Promise<Args> {
     pands = (await pandsInBuurt(b)).map(f => ({ id: bare(f.id) })); inputName = `buurt ${b.code} ${b.name}`;
   } else if (arg(argv, 'list')) {
     const list = JSON.parse(fs.readFileSync(arg(argv, 'list')!, 'utf8'));
-    pands = list.map((e: any) => typeof e === 'string' ? { id: bare(e) } : { id: bare(String(e.pandId ?? e.id)), key: e.key, bearing: e.bearing, at: e.at, chord: e.chord }); inputName = `list ${path.basename(arg(argv, 'list')!)}`;
+    pands = list.map((e: any) => typeof e === 'string' ? { id: bare(e) } : { id: bare(String(e.pandId ?? e.id)), key: e.key, bearing: e.bearing, at: e.at, chord: e.chord, notPanos: e.notPanos, maxDistM: e.maxDistM }); inputName = `list ${path.basename(arg(argv, 'list')!)}`;
   }
   const season = arg(argv, 'season') === 'winter' ? 'winter' : 'any';
   const max = Number(arg(argv, 'max') ?? Infinity);
-  return { pands: pands.slice(0, max), year: arg(argv, 'year') ? Number(arg(argv, 'year')) : undefined, season, query: arg(argv, 'query') ?? '', label, out, panoSize: (arg(argv, 'pano-size') as PanoSize) ?? 'medium', bearing, max, reopenEvery: Number(arg(argv, 'reopen-every') ?? 40), prepOnly: argv.includes('--prep-only'), postOnly: argv.includes('--post-only'), inputName };
+  return { pands: pands.slice(0, max), year: arg(argv, 'year') ? Number(arg(argv, 'year')) : undefined, season, ...(arg(argv, 'prefer-obliquity') !== undefined ? { preferObliquityDeg: Number(arg(argv, 'prefer-obliquity')) } : {}), ...(arg(argv, 'max-dist') !== undefined ? { maxDistM: Number(arg(argv, 'max-dist')) } : {}), query: arg(argv, 'query') ?? '', label, out, panoSize: (arg(argv, 'pano-size') as PanoSize) ?? 'medium', bearing, max, reopenEvery: Number(arg(argv, 'reopen-every') ?? 40), prepOnly: argv.includes('--prep-only'), postOnly: argv.includes('--post-only'), inputName };
 }
 
 // ---- what the game draws for a pand (route) -------------------------------------------------------------------------
@@ -260,17 +267,52 @@ async function prepare(entry: Entry, fp: Footprint | undefined, args: Args): Pro
   options.preferBearingDeg = entry.bearing ?? args.bearing;
   const centre = { x: fp.ring.reduce((s, p) => s + p.x, 0) / fp.ring.length, y: fp.ring.reduce((s, p) => s + p.y, 0) / fp.ring.length };
   const near = await neighbourhood(centre);
-  const { wall, note } = entry.chord ? wallChord(fp, entry.chord, entry.bearing) : entry.at ? wallAt(fp, near, entry.at, entry.bearing) : await pickWall(fp, near);
+  const picked = entry.chord ? wallChord(fp, entry.chord, entry.bearing) : entry.at ? wallAt(fp, near, entry.at, entry.bearing) : await pickWall(fp, near);
+  const wall = picked.wall; let note = picked.note;
   if (!wall) return { pandId, key, skip: note };
   const quad: WallQuad = { a: wall.a, b: wall.b, heightM: fp.height || 10 };
-  let ranked = rankPanos(wall, await listPanos(wall.mid)).filter(c => c.surface !== 'W');
+  // --max-dist widens the 35 m window (the far quay of a canal: Keizersgracht fronts fit there, not from the 5 m near quay).
+  const maxD = entry.maxDistM ?? args.maxDistM ?? FACADE_WINDOW.maxD;
+  let ranked = rankPanos(wall, await listPanos(wall.mid, maxD), { ...FACADE_WINDOW, maxD }).filter(c => c.surface !== 'W');
   if (args.year) ranked = ranked.filter(c => c.missionYear === args.year);
+  if (entry.notPanos?.length) ranked = ranked.filter(c => !entry.notPanos!.includes(c.panoId));
+  // --prefer-obliquity / --max-dist reach squarer, farther captures, and in a narrow street those stand on the next street
+  // with houses between them and the wall (lane F4, #379: 36 of 37 Jordaan poses). With either flag, a capture whose
+  // sight line to the wall (to its middle and both quarter points, 1 m up) crosses another footprint is dropped.
+  if (args.preferObliquityDeg !== undefined || maxD !== FACADE_WINDOW.maxD) {
+    const before = ranked.length, boxes = near.filter(o => o.id !== fp.id).map(o => ({ o, x0: Math.min(...o.ring.map(q => q.x)), x1: Math.max(...o.ring.map(q => q.x)), y0: Math.min(...o.ring.map(q => q.y)), y1: Math.max(...o.ring.map(q => q.y)) }));
+    const blocked = (c: PanoPick) => {
+      const cam = lngLatToRd([c.record.geometry.coordinates[0], c.record.geometry.coordinates[1]]);
+      let hits = 0;
+      for (const t of [0.25, 0.5, 0.75]) {
+        const w = { x: wall.a.x + (wall.b.x - wall.a.x) * t + wall.nx * 0.6, y: wall.a.y + (wall.b.y - wall.a.y) * t + wall.ny * 0.6 };
+        const len = Math.hypot(w.x - cam.x, w.y - cam.y), n = Math.ceil(len / 0.75);
+        for (let i = 1; i < n; i++) {
+          const q = { x: cam.x + (w.x - cam.x) * i / n, y: cam.y + (w.y - cam.y) * i / n };
+          if (boxes.some(b => q.x >= b.x0 && q.x <= b.x1 && q.y >= b.y0 && q.y <= b.y1 && pointInRing(q, b.o.ring))) { hits++; break; }
+        }
+      }
+      return hits >= 2;
+    };
+    ranked = ranked.filter(c => !blocked(c));
+    if (ranked.length < before) note += `; ${before - ranked.length} capture(s) without a line of sight dropped`;
+  }
   if (!ranked.length) return { pandId, skip: args.year ? `no panorama of ${args.year} in 5-35 m` : 'no panorama in 5-35 m (obliquity <= 55)' };
   const why: string[] = [note];
   // Winter first; glare and washed-out walls rejected (pre-pass over the first 3, extended to 8 while fewer than 2 pass);
   // then lowest foliage on the wall, then rank.
   const seasonKey = (c: PanoPick) => args.season === 'winter' && !WINTER.has(monthOf(c.timestamp)) ? 1 : 0;
-  const order = ranked.map((c, i) => ({ c, i })).sort((a, b) => seasonKey(a.c) - seasonKey(b.c) || a.i - b.i);
+  // --prefer-obliquity: inside a season, the captures within the limit first, squarest first (absent = rank order).
+  const lim = args.preferObliquityDeg, oblKey = (c: PanoPick) => lim === undefined ? 0 : c.obliquityDeg <= lim ? c.obliquityDeg : 1000 + c.obliquityDeg;
+  // ... and with it, captures whose pose fits the whole wall (no 'clipped top'/'sides') before the squarest: the squarest
+  // capture of a tall canal house is often 5 m in front of it, where 120 deg cannot hold the crown (lane F4, #379).
+  const clipMemo = new Map<PanoPick, number>();
+  const clipKey = (c: PanoPick) => {
+    if (lim === undefined) return 0;
+    if (!clipMemo.has(c)) { const pub = Number(c.record.geometry.coordinates[2]); clipMemo.set(c, aimPose({ lngLat: [c.record.geometry.coordinates[0], c.record.geometry.coordinates[1]], cameraNap: pub > 0 ? pub - 43.5 : null }, quad).clipped.length ? 1 : 0); }
+    return clipMemo.get(c)!;
+  };
+  const order = ranked.map((c, i) => ({ c, i })).sort((a, b) => seasonKey(a.c) - seasonKey(b.c) || clipKey(a.c) - clipKey(b.c) || oblKey(a.c) - oblKey(b.c) || a.i - b.i);
   const pool: { c: PanoPick; i: number; q: PanoQuality; reject?: string }[] = [];
   const judge = () => {
     const minWash = Math.min(...pool.map(p => p.q.washed ?? 1));
@@ -284,7 +326,7 @@ async function prepare(entry: Entry, fp: Footprint | undefined, args: Args): Pro
   }
   judge();
   const rejected = pool.filter(p => p.reject), live = pool.filter(p => !p.reject).length ? pool.filter(p => !p.reject) : [...pool].sort((a, b) => (a.q.glare ?? 0) - (b.q.glare ?? 0));
-  live.sort((a, b) => Math.round((a.q.leaf ?? 1) * 10) - Math.round((b.q.leaf ?? 1) * 10) || seasonKey(a.c) - seasonKey(b.c) || a.i - b.i);
+  live.sort((a, b) => (lim === undefined ? 0 : seasonKey(a.c) - seasonKey(b.c) || clipKey(a.c) - clipKey(b.c) || Number(a.c.obliquityDeg > lim) - Number(b.c.obliquityDeg > lim)) || Math.round((a.q.leaf ?? 1) * 10) - Math.round((b.q.leaf ?? 1) * 10) || seasonKey(a.c) - seasonKey(b.c) || oblKey(a.c) - oblKey(b.c) || a.i - b.i);
   const chosen = live[0], pick = chosen.c, foliage: number | null = chosen.q.leaf;
   why.push(`panorama ${pick.panoId}: rank ${chosen.i + 1} of ${ranked.length}${args.season === 'winter' ? `, ${WINTER.has(monthOf(pick.timestamp)) ? 'winter' : 'no winter capture'}` : ''}, foliage ${foliage == null ? '?' : (foliage * 100).toFixed(0) + '%'}, glare ${chosen.q.glare == null ? '?' : (chosen.q.glare * 100).toFixed(0) + '%'} (pre-pass over ${pool.length}${rejected.length ? `; rejected ${rejected.map(p => `${p.c.timestamp.slice(0, 10)} ${p.reject}`).join(', ')}` : ''}${chosen.reject ? '; every candidate rejected, least glare kept' : ''})`);
   const ll: [number, number] = [pick.record.geometry.coordinates[0], pick.record.geometry.coordinates[1]];
@@ -325,7 +367,7 @@ async function readRgb(file: string): Promise<Rgb8> {
 }
 
 /** The crop both halves share: the outline (with the crown allowance) plus 30 % context, square where the frame allows. */
-function cropBox(pose: FramePose, wall: WallQuad): { left: number; top: number; width: number; height: number } {
+export function cropBox(pose: FramePose, wall: WallQuad): { left: number; top: number; width: number; height: number } {
   const f = frameFor(pose), pts = [...wallOutline(f, pose, wall), ...wallOutline(f, pose, { ...wall, heightM: wall.heightM + CROWN_EXTRA_M })].filter(Boolean) as Array<{ x: number; y: number }>;
   if (!pts.length) return { left: 0, top: 0, width: pose.width, height: pose.height };
   let x0 = Math.min(...pts.map(p => p.x)), x1 = Math.max(...pts.map(p => p.x)), y0 = Math.min(...pts.map(p => p.y)), y1 = Math.max(...pts.map(p => p.y));
@@ -336,7 +378,7 @@ function cropBox(pose: FramePose, wall: WallQuad): { left: number; top: number; 
   return { left: Math.round(left), top: Math.round(top), width: Math.round(w), height: Math.round(h) };
 }
 
-function outlineSvg(pose: FramePose, wall: WallQuad): string {
+export function outlineSvg(pose: FramePose, wall: WallQuad): string {
   const f = frameFor(pose), o = wallOutline(f, pose, wall);
   if (o.some(p => !p)) return `<svg width="${pose.width}" height="${pose.height}" xmlns="http://www.w3.org/2000/svg"></svg>`;
   const pts = o.map(p => `${p!.x.toFixed(1)},${p!.y.toFixed(1)}`).join(' ');
