@@ -1,0 +1,4104 @@
+{
+ "v": 2,
+ "date": "2026-11-12",
+ "lane": "W3",
+ "what": "unbiased wall-colour benchmark: random generic-path pre-1945 pands without a photo reading in the ride-priority gebieden (canal belt x2), winter capture within 30 deg, otherBuilding re-picked once; no selection on the game's colour",
+ "select": "scripts/house-line/benchmark/select-v2.ts --n 360 --seed 20261112",
+ "posed": 316,
+ "within30": 229,
+ "framed": 170,
+ "otherBuildingDropped": 21,
+ "n": 146,
+ "palePhotos": 6,
+ "source": "Amsterdam street-level panoramas (data.amsterdam.nl, CC BY 4.0), BAG",
+ "pands": [
+  {
+   "pandId": "0363100012176415",
+   "gebied": "Centrum-West",
+   "buurt": "AC02",
+   "archetype": "c19",
+   "year": 1897,
+   "heightM": 17.56,
+   "at": [
+    4.88658975,
+    52.375435499999995
+   ],
+   "street": "Keizersgracht",
+   "pick": {
+    "panoId": "TMX7316010203-003013_pano_0006_000373",
+    "timestamp": "2023-03-27T10:08:19.876190Z",
+    "distM": 45.11972670866537,
+    "obliquityDeg": 0.2289869064875629,
+    "url": "https://t1.data.amsterdam.nl/panorama/2023/03/27/TMX7316010203-003013/pano_0006_000373/equirectangular/panorama_4000.jpg"
+   },
+   "photoLab": {
+    "L": 0.373,
+    "C": 0.008,
+    "h": 80,
+    "hex": "#43403c",
+    "n": 371
+   },
+   "repicked": false
+  },
+  {
+   "pandId": "0363100012063082",
+   "gebied": "De Pijp, Rivierenbuurt",
+   "buurt": "KK03",
+   "archetype": "school",
+   "year": 1934,
+   "heightM": 17.27,
+   "at": [
+    4.897444181818182,
+    52.342941909090904
+   ],
+   "street": "Rooseveltlaan",
+   "pick": {
+    "panoId": "TMX7316010203-002914_pano_0001_000071",
+    "timestamp": "2023-01-03T11:21:27.735320Z",
+    "distM": 36.242301185031025,
+    "obliquityDeg": 0.38026739906941415,
+    "url": "https://t1.data.amsterdam.nl/panorama/2023/01/03/TMX7316010203-002914/pano_0001_000071/equirectangular/panorama_4000.jpg"
+   },
+   "photoLab": {
+    "L": 0.328,
+    "C": 0.019,
+    "h": 53,
+    "hex": "#3d322c",
+    "n": 383
+   },
+   "repicked": false
+  },
+  {
+   "pandId": "0363100012176425",
+   "gebied": "Centrum-West",
+   "buurt": "AC02",
+   "archetype": "canal",
+   "year": 1751,
+   "heightM": 14.68,
+   "at": [
+    4.8868758,
+    52.374863600000005
+   ],
+   "street": "Leliegracht",
+   "pick": {
+    "panoId": "TMX7316010203-002950_pano_0000_000051",
+    "timestamp": "2023-01-30T09:24:45.843930Z",
+    "distM": 25.004203645826813,
+    "obliquityDeg": 0.6837813711174332,
+    "url": "https://t1.data.amsterdam.nl/panorama/2023/01/30/TMX7316010203-002950/pano_0000_000051/equirectangular/panorama_4000.jpg"
+   },
+   "photoLab": {
+    "L": 0.152,
+    "C": 0.008,
+    "h": 35,
+    "hex": "#0f0b0a",
+    "n": 384
+   },
+   "repicked": false
+  },
+  {
+   "pandId": "0363100012152795",
+   "gebied": "Oud-Oost",
+   "buurt": "MC04",
+   "archetype": "c19",
+   "year": 1896,
+   "heightM": 17.01,
+   "at": [
+    4.919781538461539,
+    52.358495692307685
+   ],
+   "street": "Oosterpark",
+   "pick": {
+    "panoId": "TMX7316010203-002468_pano_0001_000999",
+    "timestamp": "2022-03-23T07:20:22.184510Z",
+    "distM": 48.38271063529623,
+    "obliquityDeg": 3.1957891256163813,
+    "url": "https://t1.data.amsterdam.nl/panorama/2022/03/23/TMX7316010203-002468/pano_0001_000999/equirectangular/panorama_4000.jpg"
+   },
+   "photoLab": {
+    "L": 0.457,
+    "C": 0.047,
+    "h": 88,
+    "hex": "#625638",
+    "n": 383
+   },
+   "repicked": false
+  },
+  {
+   "pandId": "0363100012162547",
+   "gebied": "De Pijp, Rivierenbuurt",
+   "buurt": "KE04",
+   "archetype": "c19",
+   "year": 1885,
+   "heightM": 12.97,
+   "at": [
+    4.8964328,
+    52.35563880000001
+   ],
+   "street": "Govert Flinckstraat",
+   "pick": {
+    "panoId": "TMX7316010203-002470_pano_0001_000221",
+    "timestamp": "2022-03-23T09:59:11.431110Z",
+    "distM": 5.534662502152407,
+    "obliquityDeg": 3.1362362711197336,
+    "url": "https://t1.data.amsterdam.nl/panorama/2022/03/23/TMX7316010203-002470/pano_0001_000221/equirectangular/panorama_4000.jpg"
+   },
+   "photoLab": {
+    "L": 0.469,
+    "C": 0.015,
+    "h": 266,
+    "hex": "#575b63",
+    "n": 243
+   },
+   "repicked": false
+  },
+  {
+   "pandId": "0363100012178052",
+   "gebied": "Centrum-West",
+   "buurt": "AE01",
+   "archetype": "canal",
+   "year": 1785,
+   "heightM": 13.99,
+   "at": [
+    4.899532857142858,
+    52.376551
+   ],
+   "street": "Prins Hendrikkade",
+   "pick": {
+    "panoId": "TMX7316010203-001054_pano_0000_000228",
+    "timestamp": "2019-01-15T08:45:39.573880Z",
+    "distM": 41.0775140171691,
+    "obliquityDeg": 0.11468484930792917,
+    "url": "https://t1.data.amsterdam.nl/panorama/2019/01/15/TMX7316010203-001054/pano_0000_000228/equirectangular/panorama_4000.jpg"
+   },
+   "photoLab": {
+    "L": 0.313,
+    "C": 0.013,
+    "h": 83,
+    "hex": "#34312a",
+    "n": 376
+   },
+   "repicked": false
+  },
+  {
+   "pandId": "0363100012162557",
+   "gebied": "De Pijp, Rivierenbuurt",
+   "buurt": "KE05",
+   "archetype": "c19",
+   "year": 1880,
+   "heightM": 14.87,
+   "at": [
+    4.903981142857142,
+    52.35633428571428
+   ],
+   "street": "Tweede Jan van der Heijdenstraat",
+   "pick": {
+    "panoId": "TMX7316010203-002440_pano_0007_000011",
+    "timestamp": "2022-01-26T09:11:55.737380Z",
+    "distM": 6.345407374404007,
+    "obliquityDeg": 13.30472637086599,
+    "url": "https://t1.data.amsterdam.nl/panorama/2022/01/26/TMX7316010203-002440/pano_0007_000011/equirectangular/panorama_4000.jpg"
+   },
+   "photoLab": {
+    "L": 0.4,
+    "C": 0.01,
+    "h": 61,
+    "hex": "#4c4742",
+    "n": 361
+   },
+   "repicked": false
+  },
+  {
+   "pandId": "0363100012112213",
+   "gebied": "Oud-West, De Baarsjes",
+   "buurt": "ER01",
+   "archetype": "school",
+   "year": 1926,
+   "heightM": 14.94,
+   "at": [
+    4.852926999999999,
+    52.36147800000001
+   ],
+   "street": "Hoofdweg",
+   "pick": {
+    "panoId": "TMX7316010203-001502_pano_0001_003772",
+    "timestamp": "2019-12-09T12:20:01.542600Z",
+    "distM": 25.57813649916863,
+    "obliquityDeg": 0.7360460117572843,
+    "url": "https://t1.data.amsterdam.nl/panorama/2019/12/09/TMX7316010203-001502/pano_0001_003772/equirectangular/panorama_4000.jpg"
+   },
+   "photoLab": {
+    "L": 0.376,
+    "C": 0.021,
+    "h": 49,
+    "hex": "#4b3e38",
+    "n": 377
+   },
+   "repicked": false
+  },
+  {
+   "pandId": "0363100012169114",
+   "gebied": "Centrum-West",
+   "buurt": "AC03",
+   "archetype": "canal",
+   "year": 1700,
+   "heightM": 11.88,
+   "at": [
+    4.8843278,
+    52.37195499999999
+   ],
+   "street": "Keizersgracht",
+   "pick": {
+    "panoId": "TMX7316010203-001054_pano_0000_001575",
+    "timestamp": "2019-01-15T09:21:52.234910Z",
+    "distM": 44.34150279593215,
+    "obliquityDeg": 0.717964209658975,
+    "url": "https://t1.data.amsterdam.nl/panorama/2019/01/15/TMX7316010203-001054/pano_0000_001575/equirectangular/panorama_4000.jpg"
+   },
+   "photoLab": {
+    "L": 0.388,
+    "C": 0.018,
+    "h": 79,
+    "hex": "#4a443a",
+    "n": 334
+   },
+   "repicked": false
+  },
+  {
+   "pandId": "0363100012169178",
+   "gebied": "Centrum-West",
+   "buurt": "AC03",
+   "archetype": "canal",
+   "year": 1744,
+   "heightM": 11.42,
+   "at": [
+    4.8838688333333335,
+    52.37385866666667
+   ],
+   "street": "Westermarkt",
+   "pick": {
+    "panoId": "TMX7316010203-001549_pano_0000_000790",
+    "timestamp": "2020-01-10T10:15:26.953090Z",
+    "distM": 22.10106587339431,
+    "obliquityDeg": 0.9120056233372392,
+    "url": "https://t1.data.amsterdam.nl/panorama/2019/13/10/TMX7316010203-001549/pano_0000_000790/equirectangular/panorama_4000.jpg"
+   },
+   "photoLab": {
+    "L": 0.325,
+    "C": 0.015,
+    "h": 51,
+    "hex": "#3a322d",
+    "n": 368
+   },
+   "repicked": false
+  },
+  {
+   "pandId": "0363100012171253",
+   "gebied": "Centrum-West",
+   "buurt": "AE03",
+   "archetype": "canal",
+   "year": 1650,
+   "heightM": 17.73,
+   "at": [
+    4.8975463999999995,
+    52.37177506666668
+   ],
+   "street": "Oudezijds Achterburgwal",
+   "pick": {
+    "panoId": "TMX7316010203-001547_pano_0000_000269",
+    "timestamp": "2020-01-10T08:32:38.384690Z",
+    "distM": 17.926791337075,
+    "obliquityDeg": 3.995200749835697,
+    "url": "https://t1.data.amsterdam.nl/panorama/2019/13/10/TMX7316010203-001547/pano_0000_000269/equirectangular/panorama_4000.jpg"
+   },
+   "photoLab": {
+    "L": 0.307,
+    "C": 0.011,
+    "h": 45,
+    "hex": "#352e2b",
+    "n": 384
+   },
+   "repicked": false
+  },
+  {
+   "pandId": "0363100012152725",
+   "gebied": "De Pijp, Rivierenbuurt",
+   "buurt": "KE03",
+   "archetype": "c19",
+   "year": 1883,
+   "heightM": 14.74,
+   "at": [
+    4.889145285714286,
+    52.35491428571429
+   ],
+   "street": "Albert Cuypstraat",
+   "pick": {
+    "panoId": "TMX7316010203-001063_pano_0000_000395",
+    "timestamp": "2019-01-18T07:38:47.350310Z",
+    "distM": 10.32699007784043,
+    "obliquityDeg": 0.09512393397280852,
+    "url": "https://t1.data.amsterdam.nl/panorama/2019/01/18/TMX7316010203-001063/pano_0000_000395/equirectangular/panorama_4000.jpg"
+   },
+   "photoLab": {
+    "L": 0.397,
+    "C": 0.022,
+    "h": 66,
+    "hex": "#4f443a",
+    "n": 373
+   },
+   "repicked": false
+  },
+  {
+   "pandId": "0363100012181865",
+   "gebied": "Centrum-Oost",
+   "buurt": "AF09",
+   "archetype": "school",
+   "year": 1938,
+   "heightM": 15.34,
+   "at": [
+    4.905740947368423,
+    52.367543999999995
+   ],
+   "street": "Muiderstraat",
+   "pick": {
+    "panoId": "TMX7316010203-000221_pano_0000_000672",
+    "timestamp": "2017-03-23T10:25:52.114210Z",
+    "distM": 31.09913542609823,
+    "obliquityDeg": 0.9859974848809634,
+    "url": "https://t1.data.amsterdam.nl/panorama/2017/03/23/TMX7316010203-000221/pano_0000_000672/equirectangular/panorama_4000.jpg"
+   },
+   "photoLab": {
+    "L": 0.332,
+    "C": 0.009,
+    "h": 38,
+    "hex": "#3a3433",
+    "n": 381
+   },
+   "repicked": false
+  },
+  {
+   "pandId": "0363100012160990",
+   "gebied": "Oud-Oost",
+   "buurt": "ME01",
+   "archetype": "c19",
+   "year": 1905,
+   "heightM": 17.7,
+   "at": [
+    4.924261444444444,
+    52.364312222222225
+   ],
+   "street": "Mauritskade",
+   "pick": {
+    "panoId": "TMX7316010203-001051_pano_0001_001984",
+    "timestamp": "2019-01-14T08:45:33.893410Z",
+    "distM": 20.383973389754072,
+    "obliquityDeg": 1.673627686163085,
+    "url": "https://t1.data.amsterdam.nl/panorama/2019/01/14/TMX7316010203-001051/pano_0001_001984/equirectangular/panorama_4000.jpg"
+   },
+   "photoLab": {
+    "L": 0.301,
+    "C": 0.004,
+    "h": 238,
+    "hex": "#2c2e30",
+    "n": 380
+   },
+   "repicked": false
+  },
+  {
+   "pandId": "0363100012081944",
+   "gebied": "Oud-West, De Baarsjes",
+   "buurt": "EL02",
+   "archetype": "school",
+   "year": 1934,
+   "heightM": 15.88,
+   "at": [
+    4.86207,
+    52.374537399999994
+   ],
+   "street": "Reinier Claeszenstraat",
+   "pick": {
+    "panoId": "TMX7316010203-002850_pano_0012_000274",
+    "timestamp": "2022-12-12T12:16:34.521960Z",
+    "distM": 59.878729482760164,
+    "obliquityDeg": 19.40234698147952,
+    "url": "https://t1.data.amsterdam.nl/panorama/2022/12/12/TMX7316010203-002850/pano_0012_000274/equirectangular/panorama_4000.jpg"
+   },
+   "photoLab": {
+    "L": 0.429,
+    "C": 0.038,
+    "h": 77,
+    "hex": "#5b4d38",
+    "n": 367
+   },
+   "repicked": false
+  },
+  {
+   "pandId": "0363100012160186",
+   "gebied": "Oud-Zuid",
+   "buurt": "KD03",
+   "archetype": "c19",
+   "year": 1900,
+   "heightM": 14.33,
+   "at": [
+    4.8762922,
+    52.356696
+   ],
+   "street": "Van Breestraat",
+   "pick": {
+    "panoId": "TMX7316010203-001601_pano_0005_000170",
+    "timestamp": "2020-01-29T12:01:59.815830Z",
+    "distM": 10.604696177214763,
+    "obliquityDeg": 12.24614071583995,
+    "url": "https://t1.data.amsterdam.nl/panorama/2020/01/29/TMX7316010203-001601/pano_0005_000170/equirectangular/panorama_4000.jpg"
+   },
+   "photoLab": {
+    "L": 0.442,
+    "C": 0.021,
+    "h": 60,
+    "hex": "#5c5148",
+    "n": 375
+   },
+   "repicked": false
+  },
+  {
+   "pandId": "0363100012170504",
+   "gebied": "Centrum-Oost",
+   "buurt": "AJ02",
+   "archetype": "canal",
+   "year": 1854,
+   "heightM": 14.33,
+   "at": [
+    4.909331571428572,
+    52.36691385714285
+   ],
+   "street": "Plantage Parklaan",
+   "pick": {
+    "panoId": "TMX7316010203-002047_pano_0000_000881",
+    "timestamp": "2021-03-18T09:50:18.465180Z",
+    "distM": 51.76583604195399,
+    "obliquityDeg": 29.255621132276552,
+    "url": "https://t1.data.amsterdam.nl/panorama/2021/03/18/TMX7316010203-002047/pano_0000_000881/equirectangular/panorama_4000.jpg"
+   },
+   "photoLab": {
+    "L": 0.387,
+    "C": 0.032,
+    "h": 90,
+    "hex": "#4b4431",
+    "n": 350
+   },
+   "repicked": true
+  },
+  {
+   "pandId": "0363100012175044",
+   "gebied": "Centrum-West",
+   "buurt": "AC01",
+   "archetype": "canal",
+   "year": 1701,
+   "heightM": 10.76,
+   "at": [
+    4.8888894444444455,
+    52.377332777777774
+   ],
+   "street": "Herenstraat",
+   "pick": {
+    "panoId": "TMX7316010203-002961_pano_0022_000004",
+    "timestamp": "2023-02-06T11:51:42.342190Z",
+    "distM": 5.652346067865414,
+    "obliquityDeg": 5.5670503374998805,
+    "url": "https://t1.data.amsterdam.nl/panorama/2023/02/06/TMX7316010203-002961/pano_0022_000004/equirectangular/panorama_4000.jpg"
+   },
+   "photoLab": {
+    "L": 0.406,
+    "C": 0.009,
+    "h": 48,
+    "hex": "#4e4845",
+    "n": 329
+   },
+   "repicked": false
+  },
+  {
+   "pandId": "0363100012179527",
+   "gebied": "Centrum-West",
+   "buurt": "AE04",
+   "archetype": "canal",
+   "year": 1710,
+   "heightM": 11.97,
+   "at": [
+    4.894185,
+    52.37013628571429
+   ],
+   "street": "Oudezijds Voorburgwal",
+   "pick": {
+    "panoId": "TMX7316010203-001547_pano_0000_001178",
+    "timestamp": "2020-01-10T08:54:31.858620Z",
+    "distM": 34.03549625572127,
+    "obliquityDeg": 1.4626389315383062,
+    "url": "https://t1.data.amsterdam.nl/panorama/2019/13/10/TMX7316010203-001547/pano_0000_001178/equirectangular/panorama_4000.jpg"
+   },
+   "photoLab": {
+    "L": 0.516,
+    "C": 0.015,
+    "h": 81,
+    "hex": "#6c675e",
+    "n": 370
+   },
+   "repicked": false
+  },
+  {
+   "pandId": "0363100012146221",
+   "gebied": "Oud-Zuid",
+   "buurt": "KD03",
+   "archetype": "school",
+   "year": 1918,
+   "heightM": 15.34,
+   "at": [
+    4.8768768,
+    52.355180999999995
+   ],
+   "street": "De Lairessestraat",
+   "pick": {
+    "panoId": "TMX7316010203-001063_pano_0002_000199",
+    "timestamp": "2019-01-18T08:19:19.251730Z",
+    "distM": 11.603527573615873,
+    "obliquityDeg": 5.767574100573704,
+    "url": "https://t1.data.amsterdam.nl/panorama/2019/01/18/TMX7316010203-001063/pano_0002_000199/equirectangular/panorama_4000.jpg"
+   },
+   "photoLab": {
+    "L": 0.359,
+    "C": 0.027,
+    "h": 51,
+    "hex": "#493930",
+    "n": 384
+   },
+   "repicked": false
+  },
+  {
+   "pandId": "0363100012168454",
+   "gebied": "Centrum-Oost",
+   "buurt": "AG05",
+   "archetype": "canal",
+   "year": 1680,
+   "heightM": 11.94,
+   "at": [
+    4.8940414444444444,
+    52.362152333333334
+   ],
+   "street": "Prinsengracht",
+   "pick": {
+    "panoId": "TMX7316010203-001048_pano_0000_001537",
+    "timestamp": "2019-01-11T08:28:08.053220Z",
+    "distM": 40.65147221901246,
+    "obliquityDeg": 0.0860928624596487,
+    "url": "https://t1.data.amsterdam.nl/panorama/2019/01/11/TMX7316010203-001048/pano_0000_001537/equirectangular/panorama_4000.jpg"
+   },
+   "photoLab": {
+    "L": 0.345,
+    "C": 0.01,
+    "h": 37,
+    "hex": "#3e3836",
+    "n": 373
+   },
+   "repicked": false
+  },
+  {
+   "pandId": "0363100012175184",
+   "gebied": "Centrum-West",
+   "buurt": "AD04",
+   "archetype": "canal",
+   "year": 1695,
+   "heightM": 11.08,
+   "at": [
+    4.891953666666666,
+    52.37647516666667
+   ],
+   "street": "Singel",
+   "pick": {
+    "panoId": "TMX7316010203-002988_pano_0022_000611",
+    "timestamp": "2023-03-06T09:14:03.890860Z",
+    "distM": 46.03976062333814,
+    "obliquityDeg": 0.1667837798576487,
+    "url": "https://t1.data.amsterdam.nl/panorama/2023/03/06/TMX7316010203-002988/pano_0022_000611/equirectangular/panorama_4000.jpg"
+   },
+   "photoLab": {
+    "L": 0.507,
+    "C": 0.006,
+    "h": 61,
+    "hex": "#686562",
+    "n": 381
+   },
+   "repicked": false
+  },
+  {
+   "pandId": "0363100012176792",
+   "gebied": "Centrum-West",
+   "buurt": "AB02",
+   "archetype": "canal",
+   "year": 1648,
+   "heightM": 9.66,
+   "at": [
+    4.883829888888888,
+    52.38229822222222
+   ],
+   "street": "Palmgracht",
+   "pick": {
+    "panoId": "TMX7316010203-002990_pano_0013_000270",
+    "timestamp": "2023-03-06T11:29:50.599800Z",
+    "distM": 22.28734156522712,
+    "obliquityDeg": 0.6114508127371098,
+    "url": "https://t1.data.amsterdam.nl/panorama/2023/03/06/TMX7316010203-002990/pano_0013_000270/equirectangular/panorama_4000.jpg"
+   },
+   "photoLab": {
+    "L": 0.393,
+    "C": 0.023,
+    "h": 51,
+    "hex": "#51423a",
+    "n": 368
+   },
+   "repicked": false
+  },
+  {
+   "pandId": "0363100012175196",
+   "gebied": "Centrum-West",
+   "buurt": "AD04",
+   "archetype": "canal",
+   "year": 1650,
+   "heightM": 10.74,
+   "at": [
+    4.8922981666666665,
+    52.37624816666667
+   ],
+   "street": "Spuistraat",
+   "pick": {
+    "panoId": "TMX7316010203-001047_pano_0000_003573",
+    "timestamp": "2019-01-10T12:26:34.148480Z",
+    "distM": 10.72303317719552,
+    "obliquityDeg": 0.8085727285877709,
+    "url": "https://t1.data.amsterdam.nl/panorama/2019/01/10/TMX7316010203-001047/pano_0000_003573/equirectangular/panorama_4000.jpg"
+   },
+   "photoLab": {
+    "L": 0.388,
+    "C": 0.013,
+    "h": 34,
+    "hex": "#4b4240",
+    "n": 374
+   },
+   "repicked": false
+  },
+  {
+   "pandId": "0363100012169050",
+   "gebied": "Centrum-Oost",
+   "buurt": "AG01",
+   "archetype": "c19",
+   "year": 1900,
+   "heightM": 14.93,
+   "at": [
+    4.8843152,
+    52.365966
+   ],
+   "street": "Kerkstraat",
+   "pick": {
+    "panoId": "TMX7316010203-002937_pano_0007_000021",
+    "timestamp": "2023-01-16T10:12:57.961910Z",
+    "distM": 7.2155952110586234,
+    "obliquityDeg": 6.430289049298374,
+    "url": "https://t1.data.amsterdam.nl/panorama/2023/01/16/TMX7316010203-002937/pano_0007_000021/equirectangular/panorama_4000.jpg"
+   },
+   "photoLab": {
+    "L": 0.317,
+    "C": 0.014,
+    "h": 45,
+    "hex": "#38302d",
+    "n": 383
+   },
+   "repicked": false
+  },
+  {
+   "pandId": "0363100012111421",
+   "gebied": "Oud-Zuid",
+   "buurt": "KA04",
+   "archetype": "school",
+   "year": 1935,
+   "heightM": 16.31,
+   "at": [
+    4.846940999999999,
+    52.3476218
+   ],
+   "street": "Aalsmeerweg",
+   "pick": {
+    "panoId": "TMX7316010203-001039_pano_0001_000452",
+    "timestamp": "2019-01-07T08:48:48.295260Z",
+    "distM": 13.643422475340762,
+    "obliquityDeg": 3.4579521958500057,
+    "url": "https://t1.data.amsterdam.nl/panorama/2019/01/07/TMX7316010203-001039/pano_0001_000452/equirectangular/panorama_4000.jpg"
+   },
+   "photoLab": {
+    "L": 0.312,
+    "C": 0.018,
+    "h": 43,
+    "hex": "#392e29",
+    "n": 383
+   },
+   "repicked": false
+  },
+  {
+   "pandId": "0363100012145394",
+   "gebied": "De Pijp, Rivierenbuurt",
+   "buurt": "KK02",
+   "archetype": "school",
+   "year": 1935,
+   "heightM": 17.22,
+   "at": [
+    4.893799333333333,
+    52.341074555555565
+   ],
+   "street": "President Kennedylaan",
+   "pick": {
+    "panoId": "TMX7316010203-002473_pano_0001_000393",
+    "timestamp": "2022-03-23T12:31:30.039810Z",
+    "distM": 39.093921977735775,
+    "obliquityDeg": 1.1647882938236636,
+    "url": "https://t1.data.amsterdam.nl/panorama/2022/03/23/TMX7316010203-002473/pano_0001_000393/equirectangular/panorama_4000.jpg"
+   },
+   "photoLab": {
+    "L": 0.827,
+    "C": 0.103,
+    "h": 77,
+    "hex": "#ecbe77",
+    "n": 161
+   },
+   "repicked": false
+  },
+  {
+   "pandId": "0363100012112109",
+   "gebied": "Oud-Zuid",
+   "buurt": "KB02",
+   "archetype": "c19",
+   "year": 1913,
+   "heightM": 17.08,
+   "at": [
+    4.85229175,
+    52.349151
+   ],
+   "street": "Vlietstraat",
+   "pick": {
+    "panoId": "TMX7316010203-002464_pano_0000_000043",
+    "timestamp": "2022-03-22T09:30:05.445740Z",
+    "distM": 5.417105936175615,
+    "obliquityDeg": 29.204412977037848,
+    "url": "https://t1.data.amsterdam.nl/panorama/2022/03/22/TMX7316010203-002464/pano_0000_000043/equirectangular/panorama_4000.jpg"
+   },
+   "photoLab": {
+    "L": 0.698,
+    "C": 0.043,
+    "h": 56,
+    "hex": "#b39784",
+    "n": 209
+   },
+   "repicked": true
+  },
+  {
+   "pandId": "0363100012148284",
+   "gebied": "De Pijp, Rivierenbuurt",
+   "buurt": "KF03",
+   "archetype": "school",
+   "year": 1929,
+   "heightM": 15.53,
+   "at": [
+    4.899876000000001,
+    52.35327099999999
+   ],
+   "street": "Kuipersstraat",
+   "pick": {
+    "panoId": "TMX7316010203-002469_pano_0000_002538",
+    "timestamp": "2022-03-23T08:18:36.032200Z",
+    "distM": 5.659971070457043,
+    "obliquityDeg": 10.613645718423074,
+    "url": "https://t1.data.amsterdam.nl/panorama/2022/03/23/TMX7316010203-002469/pano_0000_002538/equirectangular/panorama_4000.jpg"
+   },
+   "photoLab": {
+    "L": 0.479,
+    "C": 0.02,
+    "h": 39,
+    "hex": "#685a55",
+    "n": 235
+   },
+   "repicked": false
+  },
+  {
+   "pandId": "0363100012182403",
+   "gebied": "Centrum-Oost",
+   "buurt": "AF05",
+   "archetype": "c19",
+   "year": 1905,
+   "heightM": 16.35,
+   "at": [
+    4.901334714285714,
+    52.37313857142857
+   ],
+   "street": "Geldersekade",
+   "pick": {
+    "panoId": "TMX7316010203-002356_pano_0003_000073",
+    "timestamp": "2021-12-27T11:48:19.524400Z",
+    "distM": 51.720967782852085,
+    "obliquityDeg": 0.1364074027034037,
+    "url": "https://t1.data.amsterdam.nl/panorama/2021/12/27/TMX7316010203-002356/pano_0003_000073/equirectangular/panorama_4000.jpg"
+   },
+   "photoLab": {
+    "L": 0.4,
+    "C": 0.013,
+    "h": 61,
+    "hex": "#4d4640",
+    "n": 383
+   },
+   "repicked": false
+  },
+  {
+   "pandId": "0363100012171891",
+   "gebied": "Centrum-West",
+   "buurt": "AC03",
+   "archetype": "canal",
+   "year": 1637,
+   "heightM": 15.16,
+   "at": [
+    4.8871905,
+    52.369023874999996
+   ],
+   "street": "Herengracht",
+   "pick": {
+    "panoId": "TMX7316010203-001530_pano_0003_000791",
+    "timestamp": "2019-12-20T09:13:52.081140Z",
+    "distM": 39.79120668334533,
+    "obliquityDeg": 0.006210132713538343,
+    "url": "https://t1.data.amsterdam.nl/panorama/2019/12/20/TMX7316010203-001530/pano_0003_000791/equirectangular/panorama_4000.jpg"
+   },
+   "photoLab": {
+    "L": 0.254,
+    "C": 0.011,
+    "h": 55,
+    "hex": "#27211e",
+    "n": 383
+   },
+   "repicked": false
+  },
+  {
+   "pandId": "0363100012139746",
+   "gebied": "Oud-West, De Baarsjes",
+   "buurt": "EP02",
+   "archetype": "school",
+   "year": 1915,
+   "heightM": 15.19,
+   "at": [
+    4.866791571428572,
+    52.36745085714285
+   ],
+   "street": "Ten Katestraat",
+   "pick": {
+    "panoId": "TMX7316010203-001041_pano_0002_004286",
+    "timestamp": "2019-01-09T10:30:51.617980Z",
+    "distM": 43.30810545491158,
+    "obliquityDeg": 22.10881793339697,
+    "url": "https://t1.data.amsterdam.nl/panorama/2019/01/09/TMX7316010203-001041/pano_0002_004286/equirectangular/panorama_4000.jpg"
+   },
+   "photoLab": {
+    "L": 0.529,
+    "C": 0.023,
+    "h": 58,
+    "hex": "#76685f",
+    "n": 358
+   },
+   "repicked": false
+  },
+  {
+   "pandId": "0363100012167634",
+   "gebied": "Centrum-West",
+   "buurt": "AC02",
+   "archetype": "canal",
+   "year": 1618,
+   "heightM": 14.64,
+   "at": [
+    4.887880062499999,
+    52.373809875
+   ],
+   "street": "Herengracht",
+   "pick": {
+    "panoId": "TMX7316010203-002990_pano_0002_000016",
+    "timestamp": "2023-03-06T10:41:17.339780Z",
+    "distM": 41.592961027214315,
+    "obliquityDeg": 0.10526303063057782,
+    "url": "https://t1.data.amsterdam.nl/panorama/2023/03/06/TMX7316010203-002990/pano_0002_000016/equirectangular/panorama_4000.jpg"
+   },
+   "photoLab": {
+    "L": 0.384,
+    "C": 0.025,
+    "h": 52,
+    "hex": "#4e4037",
+    "n": 373
+   },
+   "repicked": false
+  },
+  {
+   "pandId": "0363100012167642",
+   "gebied": "Centrum-West",
+   "buurt": "AC02",
+   "archetype": "canal",
+   "year": 1758,
+   "heightM": 15.36,
+   "at": [
+    4.887112454545454,
+    52.37471345454544
+   ],
+   "street": "Leliegracht",
+   "pick": {
+    "panoId": "TMX7316010203-002045_pano_0001_002791",
+    "timestamp": "2021-03-17T12:40:15.621050Z",
+    "distM": 26.124828473578493,
+    "obliquityDeg": 0.8003445447061855,
+    "url": "https://t1.data.amsterdam.nl/panorama/2021/03/17/TMX7316010203-002045/pano_0001_002791/equirectangular/panorama_4000.jpg"
+   },
+   "photoLab": {
+    "L": 0.391,
+    "C": 0.008,
+    "h": 41,
+    "hex": "#494442",
+    "n": 380
+   },
+   "repicked": false
+  },
+  {
+   "pandId": "0363100012125260",
+   "gebied": "Oud-West, De Baarsjes",
+   "buurt": "EP01",
+   "archetype": "c19",
+   "year": 1904,
+   "heightM": 15.39,
+   "at": [
+    4.8670097142857145,
+    52.369235
+   ],
+   "street": "Agatha Dekenstraat",
+   "pick": {
+    "panoId": "TMX7316010203-001041_pano_0002_004534",
+    "timestamp": "2019-01-09T10:35:04.760660Z",
+    "distM": 6.284138648890731,
+    "obliquityDeg": 21.972729081987886,
+    "url": "https://t1.data.amsterdam.nl/panorama/2019/01/09/TMX7316010203-001041/pano_0002_004534/equirectangular/panorama_4000.jpg"
+   },
+   "photoLab": {
+    "L": 0.541,
+    "C": 0.023,
+    "h": 46,
+    "hex": "#7b6b64",
+    "n": 300
+   },
+   "repicked": false
+  },
+  {
+   "pandId": "0363100012163751",
+   "gebied": "De Pijp, Rivierenbuurt",
+   "buurt": "KF02",
+   "archetype": "c19",
+   "year": 1901,
+   "heightM": 15.43,
+   "at": [
+    4.893458799999999,
+    52.3522744
+   ],
+   "street": "Van Ostadestraat",
+   "pick": {
+    "panoId": "TMX7316010203-001063_pano_0001_000026",
+    "timestamp": "2019-01-18T07:59:14.793500Z",
+    "distM": 6.03899848522052,
+    "obliquityDeg": 4.221914614579723,
+    "url": "https://t1.data.amsterdam.nl/panorama/2019/01/18/TMX7316010203-001063/pano_0001_000026/equirectangular/panorama_4000.jpg"
+   },
+   "photoLab": {
+    "L": 0.344,
+    "C": 0.005,
+    "h": 76,
+    "hex": "#3a3936",
+    "n": 341
+   },
+   "repicked": false
+  },
+  {
+   "pandId": "0363100012177991",
+   "gebied": "Centrum-West",
+   "buurt": "AE03",
+   "archetype": "school",
+   "year": 1937,
+   "heightM": 9.33,
+   "at": [
+    4.9001322,
+    52.374255399999996
+   ],
+   "street": "Oudezijds Achterburgwal",
+   "pick": {
+    "panoId": "b_20250114_1026_Track06_Sphere_00008",
+    "timestamp": "2025-01-14T10:00:26Z",
+    "distM": 17.777972493851973,
+    "obliquityDeg": 1.4185815956295929,
+    "url": "https://t1.data.amsterdam.nl/panorama/2024/kempkes/Job_20250114_1026_Track06_Sphere_00008/equirectangular/panorama_4000.jpg"
+   },
+   "photoLab": {
+    "L": 0.381,
+    "C": 0.04,
+    "h": 59,
+    "hex": "#533e2d",
+    "n": 361
+   },
+   "repicked": false
+  },
+  {
+   "pandId": "0363100012172022",
+   "gebied": "Centrum-West",
+   "buurt": "AE02",
+   "archetype": "c19",
+   "year": 1875,
+   "heightM": 18.85,
+   "at": [
+    4.897157222222223,
+    52.375053888888885
+   ],
+   "street": "Beursstraat",
+   "pick": {
+    "panoId": "TMX7316010203-001055_pano_0000_000811",
+    "timestamp": "2019-01-15T11:44:19.633100Z",
+    "distM": 6.011725091698979,
+    "obliquityDeg": 1.3888179866481951,
+    "url": "https://t1.data.amsterdam.nl/panorama/2019/01/15/TMX7316010203-001055/pano_0000_000811/equirectangular/panorama_4000.jpg"
+   },
+   "photoLab": {
+    "L": 0.342,
+    "C": 0.011,
+    "h": 45,
+    "hex": "#3e3734",
+    "n": 318
+   },
+   "repicked": false
+  },
+  {
+   "pandId": "0363100012170413",
+   "gebied": "Centrum-Oost",
+   "buurt": "AJ03",
+   "archetype": "school",
+   "year": 1922,
+   "heightM": 13.85,
+   "at": [
+    4.91086425,
+    52.36117633333333
+   ],
+   "street": "Spinozastraat",
+   "pick": {
+    "panoId": "TMX7316010203-000191_pano_0001_001161",
+    "timestamp": "2016-11-24T10:40:02.845370Z",
+    "distM": 58.215754681773234,
+    "obliquityDeg": 2.1806195616044195,
+    "url": "https://t1.data.amsterdam.nl/panorama/2016/11/24/TMX7316010203-000191/pano_0001_001161/equirectangular/panorama_4000.jpg"
+   },
+   "photoLab": {
+    "L": 0.52,
+    "C": 0.059,
+    "h": 73,
+    "hex": "#7e6442",
+    "n": 384
+   },
+   "repicked": false
+  },
+  {
+   "pandId": "0363100012168505",
+   "gebied": "Centrum-West",
+   "buurt": "AB04",
+   "archetype": "c19",
+   "year": 1876,
+   "heightM": 12.23,
+   "at": [
+    4.8769606,
+    52.3746862
+   ],
+   "street": "Marnixstraat",
+   "pick": {
+    "panoId": "TMX7316010203-002446_pano_0005_000019",
+    "timestamp": "2022-01-27T09:57:32.083190Z",
+    "distM": 12.893770983914738,
+    "obliquityDeg": 0.11853754988487342,
+    "url": "https://t1.data.amsterdam.nl/panorama/2022/01/27/TMX7316010203-002446/pano_0005_000019/equirectangular/panorama_4000.jpg"
+   },
+   "photoLab": {
+    "L": 0.324,
+    "C": 0.014,
+    "h": 40,
+    "hex": "#3a322f",
+    "n": 377
+   },
+   "repicked": false
+  },
+  {
+   "pandId": "0363100012171954",
+   "gebied": "Centrum-West",
+   "buurt": "AD05",
+   "archetype": "canal",
+   "year": 1764,
+   "heightM": 16.41,
+   "at": [
+    4.89581238095238,
+    52.375619428571426
+   ],
+   "street": "Damrak",
+   "pick": {
+    "panoId": "TMX7316010203-001054_pano_0000_000520",
+    "timestamp": "2019-01-15T08:53:41.114720Z",
+    "distM": 12.275683801773889,
+    "obliquityDeg": 0.555294649877895,
+    "url": "https://t1.data.amsterdam.nl/panorama/2019/01/15/TMX7316010203-001054/pano_0000_000520/equirectangular/panorama_4000.jpg"
+   },
+   "photoLab": {
+    "L": 0.33,
+    "C": 0.012,
+    "h": 67,
+    "hex": "#3a342f",
+    "n": 382
+   },
+   "repicked": false
+  },
+  {
+   "pandId": "0363100012065056",
+   "gebied": "De Pijp, Rivierenbuurt",
+   "buurt": "KM01",
+   "archetype": "school",
+   "year": 1922,
+   "heightM": 14.35,
+   "at": [
+    4.9077525714285715,
+    52.34630628571428
+   ],
+   "street": "Vrijheidslaan",
+   "pick": {
+    "panoId": "TMX7316010203-002473_pano_0000_000755",
+    "timestamp": "2022-03-23T12:16:58.609390Z",
+    "distM": 52.278166785789324,
+    "obliquityDeg": 0.009912498020648558,
+    "url": "https://t1.data.amsterdam.nl/panorama/2022/03/23/TMX7316010203-002473/pano_0000_000755/equirectangular/panorama_4000.jpg"
+   },
+   "photoLab": {
+    "L": 0.395,
+    "C": 0.002,
+    "h": 281,
+    "hex": "#464647",
+    "n": 382
+   },
+   "repicked": false
+  },
+  {
+   "pandId": "0363100012171914",
+   "gebied": "Centrum-West",
+   "buurt": "AE01",
+   "archetype": "c19",
+   "year": 1875,
+   "heightM": 14.54,
+   "at": [
+    4.901823666666666,
+    52.37606933333333
+   ],
+   "street": "Geldersekade",
+   "pick": {
+    "panoId": "TMX7316010203-002863_pano_0001_000100",
+    "timestamp": "2022-12-15T10:09:40.539420Z",
+    "distM": 42.00640344287706,
+    "obliquityDeg": 0.1457362038980527,
+    "url": "https://t1.data.amsterdam.nl/panorama/2022/12/15/TMX7316010203-002863/pano_0001_000100/equirectangular/panorama_4000.jpg"
+   },
+   "photoLab": {
+    "L": 0.42,
+    "C": 0.029,
+    "h": 68,
+    "hex": "#584a3c",
+    "n": 380
+   },
+   "repicked": false
+  },
+  {
+   "pandId": "0363100012171926",
+   "gebied": "Centrum-West",
+   "buurt": "AE01",
+   "archetype": "school",
+   "year": 1919,
+   "heightM": 20.97,
+   "at": [
+    4.90168957142857,
+    52.37665485714287
+   ],
+   "street": "Prins Hendrikkade",
+   "pick": {
+    "panoId": "TMX7316010203-000227_pano_0000_000923",
+    "timestamp": "2017-03-29T08:58:31.525480Z",
+    "distM": 17.132544225307537,
+    "obliquityDeg": 1.2656281817150357,
+    "url": "https://t1.data.amsterdam.nl/panorama/2017/03/29/TMX7316010203-000227/pano_0000_000923/equirectangular/panorama_4000.jpg"
+   },
+   "photoLab": {
+    "L": 0.322,
+    "C": 0.017,
+    "h": 46,
+    "hex": "#3b312c",
+    "n": 381
+   },
+   "repicked": false
+  },
+  {
+   "pandId": "0363100012571633",
+   "gebied": "Centrum-Oost",
+   "buurt": "AF05",
+   "archetype": "canal",
+   "year": 1737,
+   "heightM": 15.9,
+   "at": [
+    4.902451428571429,
+    52.370910571428574
+   ],
+   "street": "Oudeschans",
+   "pick": {
+    "panoId": "TMX7316010203-002974_pano_0007_000030",
+    "timestamp": "2023-02-20T08:08:00.814080Z",
+    "distM": 6.046922844928634,
+    "obliquityDeg": 1.106100944415892,
+    "url": "https://t1.data.amsterdam.nl/panorama/2023/02/20/TMX7316010203-002974/pano_0007_000030/equirectangular/panorama_4000.jpg"
+   },
+   "photoLab": {
+    "L": 0.267,
+    "C": 0.004,
+    "h": 69,
+    "hex": "#272524",
+    "n": 336
+   },
+   "repicked": false
+  },
+  {
+   "pandId": "0363100012174594",
+   "gebied": "Centrum-West",
+   "buurt": "AB05",
+   "archetype": "c19",
+   "year": 1864,
+   "heightM": 11.89,
+   "at": [
+    4.882974142857143,
+    52.378141428571425
+   ],
+   "street": "Westerstraat",
+   "pick": {
+    "panoId": "TMX7316010203-002938_pano_0006_000009",
+    "timestamp": "2023-01-16T10:51:58.624420Z",
+    "distM": 20.77985445300514,
+    "obliquityDeg": 4.332293960165302,
+    "url": "https://t1.data.amsterdam.nl/panorama/2023/01/16/TMX7316010203-002938/pano_0006_000009/equirectangular/panorama_4000.jpg"
+   },
+   "photoLab": {
+    "L": 0.429,
+    "C": 0.009,
+    "h": 67,
+    "hex": "#534f4b",
+    "n": 383
+   },
+   "repicked": false
+  },
+  {
+   "pandId": "0363100012174586",
+   "gebied": "Centrum-Oost",
+   "buurt": "AG01",
+   "archetype": "canal",
+   "year": 1685,
+   "heightM": 12.16,
+   "at": [
+    4.883678625,
+    52.366243
+   ],
+   "street": "Leidsegracht",
+   "pick": {
+    "panoId": "TMX7316010203-002951_pano_0014_000125",
+    "timestamp": "2023-01-30T11:14:18.107930Z",
+    "distM": 29.73771885865822,
+    "obliquityDeg": 0.383634797317428,
+    "url": "https://t1.data.amsterdam.nl/panorama/2023/01/30/TMX7316010203-002951/pano_0014_000125/equirectangular/panorama_4000.jpg"
+   },
+   "photoLab": {
+    "L": 0.507,
+    "C": 0.003,
+    "h": 311,
+    "hex": "#666567",
+    "n": 345
+   },
+   "repicked": false
+  },
+  {
+   "pandId": "0363100012099607",
+   "gebied": "Oud-West, De Baarsjes",
+   "buurt": "EN03",
+   "archetype": "school",
+   "year": 1924,
+   "heightM": 14.57,
+   "at": [
+    4.858580999999999,
+    52.365076599999995
+   ],
+   "street": "Admiralengracht",
+   "pick": {
+    "panoId": "TMX7316010203-001502_pano_0001_004452",
+    "timestamp": "2019-12-09T12:30:23.257430Z",
+    "distM": 53.45221679986141,
+    "obliquityDeg": 1.3025858257651568,
+    "url": "https://t1.data.amsterdam.nl/panorama/2019/12/09/TMX7316010203-001502/pano_0001_004452/equirectangular/panorama_4000.jpg"
+   },
+   "photoLab": {
+    "L": 0.369,
+    "C": 0.02,
+    "h": 52,
+    "hex": "#483d36",
+    "n": 381
+   },
+   "repicked": false
+  },
+  {
+   "pandId": "0363100012140522",
+   "gebied": "Oud-Zuid",
+   "buurt": "KH03",
+   "archetype": "school",
+   "year": 1925,
+   "heightM": 11.89,
+   "at": [
+    4.860450999999999,
+    52.34750019999999
+   ],
+   "street": "Sportstraat",
+   "pick": {
+    "panoId": "TMX7316010203-002460_pano_0003_000929",
+    "timestamp": "2022-03-21T13:06:15.973100Z",
+    "distM": 7.841220455940976,
+    "obliquityDeg": 13.058099483363016,
+    "url": "https://t1.data.amsterdam.nl/panorama/2022/03/21/TMX7316010203-002460/pano_0003_000929/equirectangular/panorama_4000.jpg"
+   },
+   "photoLab": {
+    "L": 0.377,
+    "C": 0.015,
+    "h": 57,
+    "hex": "#48403a",
+    "n": 363
+   },
+   "repicked": false
+  },
+  {
+   "pandId": "0363100012128985",
+   "gebied": "Oud-Zuid",
+   "buurt": "KJ05",
+   "archetype": "school",
+   "year": 1939,
+   "heightM": 9.68,
+   "at": [
+    4.8792005000000005,
+    52.349823833333346
+   ],
+   "street": "Corellistraat",
+   "pick": {
+    "panoId": "TMX7316010203-001036_pano_0002_000187",
+    "timestamp": "2019-01-04T08:52:10.163030Z",
+    "distM": 29.20087994957935,
+    "obliquityDeg": 0.6237816567350398,
+    "url": "https://t1.data.amsterdam.nl/panorama/2019/01/04/TMX7316010203-001036/pano_0002_000187/equirectangular/panorama_4000.jpg"
+   },
+   "photoLab": {
+    "L": 0.382,
+    "C": 0.008,
+    "h": 30,
+    "hex": "#474140",
+    "n": 382
+   },
+   "repicked": false
+  },
+  {
+   "pandId": "0363100012153774",
+   "gebied": "Westerpark",
+   "buurt": "EH04",
+   "archetype": "c19",
+   "year": 1904,
+   "heightM": 17.75,
+   "at": [
+    4.877751125,
+    52.383204
+   ],
+   "street": "De Wittenkade",
+   "pick": {
+    "panoId": "TMX7316010203-002054_pano_0000_002476",
+    "timestamp": "2021-03-22T09:45:26.568800Z",
+    "distM": 41.92075449942893,
+    "obliquityDeg": 2.9279442835291687,
+    "url": "https://t1.data.amsterdam.nl/panorama/2021/03/22/TMX7316010203-002054/pano_0000_002476/equirectangular/panorama_4000.jpg"
+   },
+   "photoLab": {
+    "L": 0.427,
+    "C": 0.02,
+    "h": 81,
+    "hex": "#554e43",
+    "n": 363
+   },
+   "repicked": false
+  },
+  {
+   "pandId": "0363100012172664",
+   "gebied": "Centrum-West",
+   "buurt": "AB03",
+   "archetype": "canal",
+   "year": 1762,
+   "heightM": 11.19,
+   "at": [
+    4.8851654,
+    52.3791896
+   ],
+   "street": "Boomstraat",
+   "pick": {
+    "panoId": "TMX7316010203-002043_pano_0000_001043",
+    "timestamp": "2021-03-17T09:02:19.584640Z",
+    "distM": 5.693734511542096,
+    "obliquityDeg": 23.691537829162943,
+    "url": "https://t1.data.amsterdam.nl/panorama/2021/03/17/TMX7316010203-002043/pano_0000_001043/equirectangular/panorama_4000.jpg"
+   },
+   "photoLab": {
+    "L": 0.484,
+    "C": 0.012,
+    "h": 45,
+    "hex": "#655d59",
+    "n": 332
+   },
+   "repicked": false
+  },
+  {
+   "pandId": "0363100012170345",
+   "gebied": "Centrum-Oost",
+   "buurt": "AK03",
+   "archetype": "canal",
+   "year": 1662,
+   "heightM": 20.08,
+   "at": [
+    4.91784305,
+    52.37036806000001
+   ],
+   "street": "Wittenburgergracht",
+   "pick": {
+    "panoId": "TMX7316010203-002049_pano_0000_000222",
+    "timestamp": "2021-03-19T08:16:57.209040Z",
+    "distM": 20.23892271283004,
+    "obliquityDeg": 2.1116415390839642,
+    "url": "https://t1.data.amsterdam.nl/panorama/2021/03/19/TMX7316010203-002049/pano_0000_000222/equirectangular/panorama_4000.jpg"
+   },
+   "photoLab": {
+    "L": 0.373,
+    "C": 0.019,
+    "h": 63,
+    "hex": "#483e36",
+    "n": 377
+   },
+   "repicked": false
+  },
+  {
+   "pandId": "0363100012170335",
+   "gebied": "Centrum-Oost",
+   "buurt": "AK07",
+   "archetype": "canal",
+   "year": 1777,
+   "heightM": 11.63,
+   "at": [
+    4.917682888888888,
+    52.36866055555556
+   ],
+   "street": "Hoogte Kadijk",
+   "pick": {
+    "panoId": "TMX7316010203-002047_pano_0000_002545",
+    "timestamp": "2021-03-18T10:34:17.587230Z",
+    "distM": 24.791200330801438,
+    "obliquityDeg": 19.58334292643091,
+    "url": "https://t1.data.amsterdam.nl/panorama/2021/03/18/TMX7316010203-002047/pano_0000_002545/equirectangular/panorama_4000.jpg"
+   },
+   "photoLab": {
+    "L": 0.406,
+    "C": 0.017,
+    "h": 67,
+    "hex": "#504840",
+    "n": 376
+   },
+   "repicked": false
+  },
+  {
+   "pandId": "0363100012089828",
+   "gebied": "Oud-West, De Baarsjes",
+   "buurt": "EN03",
+   "archetype": "school",
+   "year": 1924,
+   "heightM": 14.88,
+   "at": [
+    4.8589174,
+    52.36769979999999
+   ],
+   "street": "Witte de Withstraat",
+   "pick": {
+    "panoId": "b_20241211_0838_Track67_Sphere_00199",
+    "timestamp": "2024-12-11T12:30:02Z",
+    "distM": 11.549152074103256,
+    "obliquityDeg": 3.513860039797365,
+    "url": "https://t1.data.amsterdam.nl/panorama/2024/kempkes/Job_20241211_0838_Track67_Sphere_00199/equirectangular/panorama_4000.jpg"
+   },
+   "photoLab": {
+    "L": 0.404,
+    "C": 0.044,
+    "h": 69,
+    "hex": "#59452f",
+    "n": 276
+   },
+   "repicked": false
+  },
+  {
+   "pandId": "0363100012176414",
+   "gebied": "Centrum-West",
+   "buurt": "AC02",
+   "archetype": "canal",
+   "year": 1743,
+   "heightM": 13.95,
+   "at": [
+    4.886398666666667,
+    52.37497188888889
+   ],
+   "street": "Leliegracht",
+   "pick": {
+    "panoId": "TMX7316010203-002950_pano_0000_000058",
+    "timestamp": "2023-01-30T09:24:50.608890Z",
+    "distM": 24.83750801702867,
+    "obliquityDeg": 0.29279027572909383,
+    "url": "https://t1.data.amsterdam.nl/panorama/2023/01/30/TMX7316010203-002950/pano_0000_000058/equirectangular/panorama_4000.jpg"
+   },
+   "photoLab": {
+    "L": 0.345,
+    "C": 0.016,
+    "h": 65,
+    "hex": "#3f3830",
+    "n": 378
+   },
+   "repicked": false
+  },
+  {
+   "pandId": "0363100012094842",
+   "gebied": "De Pijp, Rivierenbuurt",
+   "buurt": "KG02",
+   "archetype": "school",
+   "year": 1923,
+   "heightM": 15.94,
+   "at": [
+    4.901297,
+    52.35069420000001
+   ],
+   "street": "Talmastraat",
+   "pick": {
+    "panoId": "TMX7316010203-002470_pano_0003_001035",
+    "timestamp": "2022-03-23T10:50:30.612910Z",
+    "distM": 8.082123278746,
+    "obliquityDeg": 0.7545440615259523,
+    "url": "https://t1.data.amsterdam.nl/panorama/2022/03/23/TMX7316010203-002470/pano_0003_001035/equirectangular/panorama_4000.jpg"
+   },
+   "photoLab": {
+    "L": 0.441,
+    "C": 0.037,
+    "h": 42,
+    "hex": "#654c43",
+    "n": 380
+   },
+   "repicked": false
+  },
+  {
+   "pandId": "0363100012171298",
+   "gebied": "Centrum-West",
+   "buurt": "AD06",
+   "archetype": "canal",
+   "year": 1790,
+   "heightM": 20.25,
+   "at": [
+    4.888655181818183,
+    52.37087927272727
+   ],
+   "street": "Singel",
+   "pick": {
+    "panoId": "TMX7316010203-002362_pano_0000_000072",
+    "timestamp": "2021-12-29T10:26:20.984100Z",
+    "distM": 44.922664209687994,
+    "obliquityDeg": 0.0632284561029396,
+    "url": "https://t1.data.amsterdam.nl/panorama/2021/12/29/TMX7316010203-002362/pano_0000_000072/equirectangular/panorama_4000.jpg"
+   },
+   "photoLab": {
+    "L": 0.411,
+    "C": 0.014,
+    "h": 64,
+    "hex": "#514943",
+    "n": 382
+   },
+   "repicked": false
+  },
+  {
+   "pandId": "0363100012161540",
+   "gebied": "De Pijp, Rivierenbuurt",
+   "buurt": "KG03",
+   "archetype": "c19",
+   "year": 1891,
+   "heightM": 14.12,
+   "at": [
+    4.907675428571429,
+    52.35217657142857
+   ],
+   "street": "Lutmastraat",
+   "pick": {
+    "panoId": "TMX7316010203-002469_pano_0000_003858",
+    "timestamp": "2022-03-23T08:47:04.969250Z",
+    "distM": 5.22815293941463,
+    "obliquityDeg": 10.608905076667336,
+    "url": "https://t1.data.amsterdam.nl/panorama/2022/03/23/TMX7316010203-002469/pano_0000_003858/equirectangular/panorama_4000.jpg"
+   },
+   "photoLab": {
+    "L": 0.491,
+    "C": 0.025,
+    "h": 61,
+    "hex": "#6b5e53",
+    "n": 237
+   },
+   "repicked": false
+  },
+  {
+   "pandId": "0363100012078323",
+   "gebied": "Oud-Zuid",
+   "buurt": "KC02",
+   "archetype": "c19",
+   "year": 1913,
+   "heightM": 14.7,
+   "at": [
+    4.8580372,
+    52.352083400000005
+   ],
+   "street": "Koninginneweg",
+   "pick": {
+    "panoId": "TMX7316010203-001061_pano_0001_002575",
+    "timestamp": "2019-01-17T12:24:43.972120Z",
+    "distM": 14.159301409551766,
+    "obliquityDeg": 29.398271698980686,
+    "url": "https://t1.data.amsterdam.nl/panorama/2019/01/17/TMX7316010203-001061/pano_0001_002575/equirectangular/panorama_4000.jpg"
+   },
+   "photoLab": {
+    "L": 0.438,
+    "C": 0.037,
+    "h": 51,
+    "hex": "#634c3f",
+    "n": 380
+   },
+   "repicked": true
+  },
+  {
+   "pandId": "0363100012171218",
+   "gebied": "Centrum-Oost",
+   "buurt": "AH07",
+   "archetype": "c19",
+   "year": 1877,
+   "heightM": 16.65,
+   "at": [
+    4.895505857142857,
+    52.359544571428565
+   ],
+   "street": "Weteringschans",
+   "pick": {
+    "panoId": "TMX7316010203-002364_pano_0004_000092",
+    "timestamp": "2021-12-29T11:57:41.833180Z",
+    "distM": 12.995061422836468,
+    "obliquityDeg": 0.37245822714427457,
+    "url": "https://t1.data.amsterdam.nl/panorama/2021/12/29/TMX7316010203-002364/pano_0004_000092/equirectangular/panorama_4000.jpg"
+   },
+   "photoLab": {
+    "L": 0.348,
+    "C": 0.011,
+    "h": 72,
+    "hex": "#3e3934",
+    "n": 382
+   },
+   "repicked": false
+  },
+  {
+   "pandId": "0363100012169115",
+   "gebied": "Centrum-West",
+   "buurt": "AC03",
+   "archetype": "canal",
+   "year": 1698,
+   "heightM": 13.3,
+   "at": [
+    4.884269000000001,
+    52.37190857142856
+   ],
+   "street": "Keizersgracht",
+   "pick": {
+    "panoId": "TMX7316010203-002985_pano_0010_000189",
+    "timestamp": "2023-02-27T11:14:18.611950Z",
+    "distM": 42.862462066209915,
+    "obliquityDeg": 0.2888093315147151,
+    "url": "https://t1.data.amsterdam.nl/panorama/2023/02/27/TMX7316010203-002985/pano_0010_000189/equirectangular/panorama_4000.jpg"
+   },
+   "photoLab": {
+    "L": 0.624,
+    "C": 0.061,
+    "h": 75,
+    "hex": "#9d825d",
+    "n": 322
+   },
+   "repicked": false
+  },
+  {
+   "pandId": "0363100012161508",
+   "gebied": "Oud-Zuid",
+   "buurt": "KD04",
+   "archetype": "c19",
+   "year": 1883,
+   "heightM": 16.41,
+   "at": [
+    4.883681142857142,
+    52.36090214285714
+   ],
+   "street": "Pieter Cornelisz. Hooftstraat",
+   "pick": {
+    "panoId": "TMX7316010203-002411_pano_0014_000017",
+    "timestamp": "2022-01-11T10:32:51.591860Z",
+    "distM": 6.803913005504744,
+    "obliquityDeg": 2.7739459007130263,
+    "url": "https://t1.data.amsterdam.nl/panorama/2022/01/11/TMX7316010203-002411/pano_0014_000017/equirectangular/panorama_4000.jpg"
+   },
+   "photoLab": {
+    "L": 0.39,
+    "C": 0.002,
+    "h": 0,
+    "hex": "#464445",
+    "n": 376
+   },
+   "repicked": false
+  },
+  {
+   "pandId": "0363100012169101",
+   "gebied": "Centrum-Oost",
+   "buurt": "AG01",
+   "archetype": "c19",
+   "year": 1905,
+   "heightM": 15.34,
+   "at": [
+    4.8845676,
+    52.365747
+   ],
+   "street": "Kerkstraat",
+   "pick": {
+    "panoId": "TMX7316010203-002937_pano_0007_000016",
+    "timestamp": "2023-01-16T10:12:53.811940Z",
+    "distM": 7.248325449852586,
+    "obliquityDeg": 16.34183166862056,
+    "url": "https://t1.data.amsterdam.nl/panorama/2023/01/16/TMX7316010203-002937/pano_0007_000016/equirectangular/panorama_4000.jpg"
+   },
+   "photoLab": {
+    "L": 0.371,
+    "C": 0.017,
+    "h": 63,
+    "hex": "#473e37",
+    "n": 374
+   },
+   "repicked": false
+  },
+  {
+   "pandId": "0363100012169179",
+   "gebied": "Centrum-West",
+   "buurt": "AC03",
+   "archetype": "canal",
+   "year": 1772,
+   "heightM": 14.82,
+   "at": [
+    4.8838042,
+    52.3738508
+   ],
+   "street": "Westermarkt",
+   "pick": {
+    "panoId": "TMX7316010203-002361_pano_0005_000014",
+    "timestamp": "2021-12-29T10:02:43.753210Z",
+    "distM": 24.102858879348943,
+    "obliquityDeg": 1.1354617970111347,
+    "url": "https://t1.data.amsterdam.nl/panorama/2021/12/29/TMX7316010203-002361/pano_0005_000014/equirectangular/panorama_4000.jpg"
+   },
+   "photoLab": {
+    "L": 0.569,
+    "C": 0.013,
+    "h": 103,
+    "hex": "#79786f",
+    "n": 377
+   },
+   "repicked": false
+  },
+  {
+   "pandId": "0363100012088444",
+   "gebied": "De Pijp, Rivierenbuurt",
+   "buurt": "KK03",
+   "archetype": "school",
+   "year": 1928,
+   "heightM": 15.38,
+   "at": [
+    4.8953050000000005,
+    52.34600366666667
+   ],
+   "street": "Maasstraat",
+   "pick": {
+    "panoId": "TMX7316010203-001534_pano_0001_001774",
+    "timestamp": "2020-01-06T12:16:04.203130Z",
+    "distM": 13.58820716176099,
+    "obliquityDeg": 0.8789566226764338,
+    "url": "https://t1.data.amsterdam.nl/panorama/2019/13/06/TMX7316010203-001534/pano_0001_001774/equirectangular/panorama_4000.jpg"
+   },
+   "photoLab": {
+    "L": 0.408,
+    "C": 0.013,
+    "h": 52,
+    "hex": "#504844",
+    "n": 367
+   },
+   "repicked": false
+  },
+  {
+   "pandId": "0363100012181862",
+   "gebied": "Centrum-Oost",
+   "buurt": "AF09",
+   "archetype": "canal",
+   "year": 1765,
+   "heightM": 13.03,
+   "at": [
+    4.905889714285713,
+    52.36745557142857
+   ],
+   "street": "Muiderstraat",
+   "pick": {
+    "panoId": "TMX7316010203-002933_pano_0011_000091",
+    "timestamp": "2023-01-13T10:32:11.300430Z",
+    "distM": 31.17233470163345,
+    "obliquityDeg": 2.206590279646501,
+    "url": "https://t1.data.amsterdam.nl/panorama/2023/01/13/TMX7316010203-002933/pano_0011_000091/equirectangular/panorama_4000.jpg"
+   },
+   "photoLab": {
+    "L": 0.34,
+    "C": 0.001,
+    "h": 182,
+    "hex": "#373838",
+    "n": 383
+   },
+   "repicked": false
+  },
+  {
+   "pandId": "0363100012102464",
+   "gebied": "Oud-Zuid",
+   "buurt": "KD10",
+   "archetype": "school",
+   "year": 1921,
+   "heightM": 11.82,
+   "at": [
+    4.8832242,
+    52.35175400000001
+   ],
+   "street": "Gerard Terborgstraat",
+   "pick": {
+    "panoId": "TMX7316010203-002457_pano_0000_001910",
+    "timestamp": "2022-03-21T09:58:54.103920Z",
+    "distM": 6.24041784535547,
+    "obliquityDeg": 13.37559769491127,
+    "url": "https://t1.data.amsterdam.nl/panorama/2022/03/21/TMX7316010203-002457/pano_0000_001910/equirectangular/panorama_4000.jpg"
+   },
+   "photoLab": {
+    "L": 0.436,
+    "C": 0.029,
+    "h": 49,
+    "hex": "#5f4d44",
+    "n": 360
+   },
+   "repicked": false
+  },
+  {
+   "pandId": "0363100012147869",
+   "gebied": "De Pijp, Rivierenbuurt",
+   "buurt": "KK04",
+   "archetype": "school",
+   "year": 1932,
+   "heightM": 18.11,
+   "at": [
+    4.903594272727273,
+    52.345166636363636
+   ],
+   "street": "Victorieplein",
+   "pick": {
+    "panoId": "TMX7316010203-002477_pano_0002_000187",
+    "timestamp": "2022-03-24T10:36:08.459520Z",
+    "distM": 31.12116382944989,
+    "obliquityDeg": 0.00399790866835507,
+    "url": "https://t1.data.amsterdam.nl/panorama/2022/03/24/TMX7316010203-002477/pano_0002_000187/equirectangular/panorama_4000.jpg"
+   },
+   "photoLab": {
+    "L": 0.406,
+    "C": 0.019,
+    "h": 62,
+    "hex": "#51473f",
+    "n": 384
+   },
+   "repicked": false
+  },
+  {
+   "pandId": "0363100012181540",
+   "gebied": "Centrum-Oost",
+   "buurt": "AK07",
+   "archetype": "c19",
+   "year": 1905,
+   "heightM": 16.68,
+   "at": [
+    4.9147012000000005,
+    52.36871860000001
+   ],
+   "street": "Entrepotdok",
+   "pick": {
+    "panoId": "TMX7316010203-001536_pano_0000_001839",
+    "timestamp": "2020-01-07T08:59:17.271010Z",
+    "distM": 6.067566404675018,
+    "obliquityDeg": 9.275668081054398,
+    "url": "https://t1.data.amsterdam.nl/panorama/2019/13/07/TMX7316010203-001536/pano_0000_001839/equirectangular/panorama_4000.jpg"
+   },
+   "photoLab": {
+    "L": 0.461,
+    "C": 0.025,
+    "h": 58,
+    "hex": "#63554b",
+    "n": 329
+   },
+   "repicked": false
+  },
+  {
+   "pandId": "0363100012091912",
+   "gebied": "Oud-West, De Baarsjes",
+   "buurt": "EU01",
+   "archetype": "c19",
+   "year": 1893,
+   "heightM": 15.5,
+   "at": [
+    4.867917416666667,
+    52.36171058333333
+   ],
+   "street": "Eerste Helmersstraat",
+   "pick": {
+    "panoId": "TMX7316010203-002921_pano_0009_000055",
+    "timestamp": "2023-01-10T10:12:27.203290Z",
+    "distM": 6.557270565563873,
+    "obliquityDeg": 3.50369445281465,
+    "url": "https://t1.data.amsterdam.nl/panorama/2023/01/10/TMX7316010203-002921/pano_0009_000055/equirectangular/panorama_4000.jpg"
+   },
+   "photoLab": {
+    "L": 0.399,
+    "C": 0.007,
+    "h": 64,
+    "hex": "#4a4744",
+    "n": 369
+   },
+   "repicked": false
+  },
+  {
+   "pandId": "0363100012175043",
+   "gebied": "Centrum-West",
+   "buurt": "AC01",
+   "archetype": "canal",
+   "year": 1767,
+   "heightM": 13.23,
+   "at": [
+    4.888942888888889,
+    52.37730688888889
+   ],
+   "street": "Herenstraat",
+   "pick": {
+    "panoId": "TMX7316010203-002961_pano_0022_000003",
+    "timestamp": "2023-02-06T11:51:41.627210Z",
+    "distM": 5.610968497328492,
+    "obliquityDeg": 9.051730312963835,
+    "url": "https://t1.data.amsterdam.nl/panorama/2023/02/06/TMX7316010203-002961/pano_0022_000003/equirectangular/panorama_4000.jpg"
+   },
+   "photoLab": {
+    "L": 0.41,
+    "C": 0.007,
+    "h": 63,
+    "hex": "#4d4a46",
+    "n": 311
+   },
+   "repicked": false
+  },
+  {
+   "pandId": "0363100012179528",
+   "gebied": "Centrum-West",
+   "buurt": "AE04",
+   "archetype": "canal",
+   "year": 1749,
+   "heightM": 15.99,
+   "at": [
+    4.894045199999999,
+    52.3695422
+   ],
+   "street": "Oudezijds Voorburgwal",
+   "pick": {
+    "panoId": "TMX7316010203-001547_pano_0000_001165",
+    "timestamp": "2020-01-10T08:54:22.083660Z",
+    "distM": 33.25619031689825,
+    "obliquityDeg": 0.9708204675215819,
+    "url": "https://t1.data.amsterdam.nl/panorama/2019/13/10/TMX7316010203-001547/pano_0000_001165/equirectangular/panorama_4000.jpg"
+   },
+   "photoLab": {
+    "L": 0.348,
+    "C": 0.022,
+    "h": 56,
+    "hex": "#43372f",
+    "n": 379
+   },
+   "repicked": false
+  },
+  {
+   "pandId": "0363100012168455",
+   "gebied": "Centrum-Oost",
+   "buurt": "AG05",
+   "archetype": "canal",
+   "year": 1680,
+   "heightM": 11.67,
+   "at": [
+    4.894109538461539,
+    52.36218384615385
+   ],
+   "street": "Prinsengracht",
+   "pick": {
+    "panoId": "TMX7316010203-000998_pano_0003_000259",
+    "timestamp": "2018-11-21T11:29:08.390470Z",
+    "distM": 41.519464561956745,
+    "obliquityDeg": 0.3284260498016324,
+    "url": "https://t1.data.amsterdam.nl/panorama/2018/11/21/TMX7316010203-000998/pano_0003_000259/equirectangular/panorama_4000.jpg"
+   },
+   "photoLab": {
+    "L": 0.626,
+    "C": 0.052,
+    "h": 68,
+    "hex": "#9d8366",
+    "n": 326
+   },
+   "repicked": false
+  },
+  {
+   "pandId": "0363100012168441",
+   "gebied": "Centrum-West",
+   "buurt": "AB07",
+   "archetype": "c19",
+   "year": 1914,
+   "heightM": 13.65,
+   "at": [
+    4.877574285714287,
+    52.37286128571429
+   ],
+   "street": "Rozengracht",
+   "pick": {
+    "panoId": "TMX7316010203-002044_pano_0000_000612",
+    "timestamp": "2021-03-17T10:41:30.497260Z",
+    "distM": 17.663538087605843,
+    "obliquityDeg": 2.249259576991523,
+    "url": "https://t1.data.amsterdam.nl/panorama/2021/03/17/TMX7316010203-002044/pano_0000_000612/equirectangular/panorama_4000.jpg"
+   },
+   "photoLab": {
+    "L": 0.363,
+    "C": 0.007,
+    "h": 18,
+    "hex": "#423d3d",
+    "n": 383
+   },
+   "repicked": false
+  },
+  {
+   "pandId": "0363100012176793",
+   "gebied": "Centrum-West",
+   "buurt": "AB02",
+   "archetype": "canal",
+   "year": 1648,
+   "heightM": 9.59,
+   "at": [
+    4.8839168,
+    52.382296999999994
+   ],
+   "street": "Palmgracht",
+   "pick": {
+    "panoId": "TMX7316010203-001054_pano_0000_002946",
+    "timestamp": "2019-01-15T09:50:43.299630Z",
+    "distM": 23.402834816282375,
+    "obliquityDeg": 3.661626387802915,
+    "url": "https://t1.data.amsterdam.nl/panorama/2019/01/15/TMX7316010203-001054/pano_0000_002946/equirectangular/panorama_4000.jpg"
+   },
+   "photoLab": {
+    "L": 0.262,
+    "C": 0.012,
+    "h": 39,
+    "hex": "#2a2320",
+    "n": 379
+   },
+   "repicked": false
+  },
+  {
+   "pandId": "0363100012100343",
+   "gebied": "Westerpark",
+   "buurt": "EH01",
+   "archetype": "c19",
+   "year": 1911,
+   "heightM": 14.64,
+   "at": [
+    4.871971714285714,
+    52.38265642857142
+   ],
+   "street": "Van Hogendorpstraat",
+   "pick": {
+    "panoId": "TMX7316010203-002054_pano_0000_003511",
+    "timestamp": "2021-03-22T10:14:15.438930Z",
+    "distM": 5.7029214421697105,
+    "obliquityDeg": 3.1854194294162665,
+    "url": "https://t1.data.amsterdam.nl/panorama/2021/03/22/TMX7316010203-002054/pano_0000_003511/equirectangular/panorama_4000.jpg"
+   },
+   "photoLab": {
+    "L": 0.448,
+    "C": 0.021,
+    "h": 34,
+    "hex": "#60514d",
+    "n": 272
+   },
+   "repicked": false
+  },
+  {
+   "pandId": "0363100012156270",
+   "gebied": "Oud-Zuid",
+   "buurt": "KC02",
+   "archetype": "c19",
+   "year": 1907,
+   "heightM": 16.55,
+   "at": [
+    4.863928857142858,
+    52.35446100000001
+   ],
+   "street": "Prins Hendriklaan",
+   "pick": {
+    "panoId": "TMX7316010203-002942_pano_0007_000252",
+    "timestamp": "2023-01-20T10:13:50.064180Z",
+    "distM": 16.87154152065987,
+    "obliquityDeg": 4.799046869765127,
+    "url": "https://t1.data.amsterdam.nl/panorama/2023/01/20/TMX7316010203-002942/pano_0007_000252/equirectangular/panorama_4000.jpg"
+   },
+   "photoLab": {
+    "L": 0.466,
+    "C": 0.012,
+    "h": 57,
+    "hex": "#5f5854",
+    "n": 383
+   },
+   "repicked": false
+  },
+  {
+   "pandId": "0363100012169053",
+   "gebied": "Centrum-Oost",
+   "buurt": "AG01",
+   "archetype": "canal",
+   "year": 1675,
+   "heightM": 15.13,
+   "at": [
+    4.8843132222222225,
+    52.366429777777775
+   ],
+   "street": "Leidsegracht",
+   "pick": {
+    "panoId": "TMX7316010203-002865_pano_0014_000007",
+    "timestamp": "2022-12-15T12:11:44.326150Z",
+    "distM": 28.798349351926074,
+    "obliquityDeg": 0.45906070939577737,
+    "url": "https://t1.data.amsterdam.nl/panorama/2022/12/15/TMX7316010203-002865/pano_0014_000007/equirectangular/panorama_4000.jpg"
+   },
+   "photoLab": {
+    "L": 0.48,
+    "C": 0.011,
+    "h": 102,
+    "hex": "#5e5e56",
+    "n": 348
+   },
+   "repicked": false
+  },
+  {
+   "pandId": "0363100012168431",
+   "gebied": "Centrum-West",
+   "buurt": "AB07",
+   "archetype": "c19",
+   "year": 1884,
+   "heightM": 15.93,
+   "at": [
+    4.8768986,
+    52.37264699999999
+   ],
+   "street": "Rozengracht",
+   "pick": {
+    "panoId": "TMX7316010203-001054_pano_0000_005220",
+    "timestamp": "2019-01-15T10:34:39.971630Z",
+    "distM": 20.311504170045875,
+    "obliquityDeg": 0.7551886486711612,
+    "url": "https://t1.data.amsterdam.nl/panorama/2019/01/15/TMX7316010203-001054/pano_0000_005220/equirectangular/panorama_4000.jpg"
+   },
+   "photoLab": {
+    "L": 0.52,
+    "C": 0.01,
+    "h": 84,
+    "hex": "#6c6963",
+    "n": 374
+   },
+   "repicked": false
+  },
+  {
+   "pandId": "0363100012180049",
+   "gebied": "Centrum-Oost",
+   "buurt": "AG05",
+   "archetype": "canal",
+   "year": 1686,
+   "heightM": 14.89,
+   "at": [
+    4.8955234,
+    52.3637066
+   ],
+   "street": "Keizersgracht",
+   "pick": {
+    "panoId": "TMX7316010203-002956_pano_0002_000098",
+    "timestamp": "2023-02-06T08:36:59.329460Z",
+    "distM": 45.43771214121565,
+    "obliquityDeg": 0.29446752439608065,
+    "url": "https://t1.data.amsterdam.nl/panorama/2023/02/06/TMX7316010203-002956/pano_0002_000098/equirectangular/panorama_4000.jpg"
+   },
+   "photoLab": {
+    "L": 0.427,
+    "C": 0.025,
+    "h": 73,
+    "hex": "#584d40",
+    "n": 377
+   },
+   "repicked": false
+  },
+  {
+   "pandId": "0363100012067541",
+   "gebied": "Oud-West, De Baarsjes",
+   "buurt": "EN04",
+   "archetype": "school",
+   "year": 1928,
+   "heightM": 15.6,
+   "at": [
+    4.859643615384616,
+    52.36605753846153
+   ],
+   "street": "Van Brakelstraat",
+   "pick": {
+    "panoId": "TMX7316010203-002063_pano_0000_003171",
+    "timestamp": "2021-03-26T10:26:06.410480Z",
+    "distM": 11.430946872815868,
+    "obliquityDeg": 1.0609417932369671,
+    "url": "https://t1.data.amsterdam.nl/panorama/2021/03/26/TMX7316010203-002063/pano_0000_003171/equirectangular/panorama_4000.jpg"
+   },
+   "photoLab": {
+    "L": 0.414,
+    "C": 0.016,
+    "h": 26,
+    "hex": "#544847",
+    "n": 349
+   },
+   "repicked": false
+  },
+  {
+   "pandId": "0363100012182402",
+   "gebied": "Centrum-Oost",
+   "buurt": "AF05",
+   "archetype": "c19",
+   "year": null,
+   "heightM": 15.41,
+   "at": [
+    4.9015067142857145,
+    52.37308171428572
+   ],
+   "street": "Recht Boomssloot",
+   "pick": {
+    "panoId": "TMX7316010203-002949_pano_0000_000208",
+    "timestamp": "2023-01-30T09:07:59.642800Z",
+    "distM": 19.655726077345868,
+    "obliquityDeg": 0.1458322203552784,
+    "url": "https://t1.data.amsterdam.nl/panorama/2023/01/30/TMX7316010203-002949/pano_0000_000208/equirectangular/panorama_4000.jpg"
+   },
+   "photoLab": {
+    "L": 0.324,
+    "C": 0.016,
+    "h": 41,
+    "hex": "#3b312d",
+    "n": 384
+   },
+   "repicked": false
+  },
+  {
+   "pandId": "0363100012132730",
+   "gebied": "Oud-Zuid",
+   "buurt": "KH05",
+   "archetype": "school",
+   "year": 1930,
+   "heightM": 15.82,
+   "at": [
+    4.8625776,
+    52.344415000000005
+   ],
+   "street": "Van Tuyll van Serooskerkenweg",
+   "pick": {
+    "panoId": "TMX7316010203-002475_pano_0000_001202",
+    "timestamp": "2022-03-24T08:33:16.098590Z",
+    "distM": 31.128744641292645,
+    "obliquityDeg": 6.527476206669437,
+    "url": "https://t1.data.amsterdam.nl/panorama/2022/03/24/TMX7316010203-002475/pano_0000_001202/equirectangular/panorama_4000.jpg"
+   },
+   "photoLab": {
+    "L": 0.419,
+    "C": 0.012,
+    "h": 52,
+    "hex": "#534b47",
+    "n": 381
+   },
+   "repicked": true
+  },
+  {
+   "pandId": "0363100012127704",
+   "gebied": "De Pijp, Rivierenbuurt",
+   "buurt": "KG03",
+   "archetype": "school",
+   "year": 1922,
+   "heightM": 14.01,
+   "at": [
+    4.9078610000000005,
+    52.35089883333333
+   ],
+   "street": "Saffierstraat",
+   "pick": {
+    "panoId": "TMX7316010203-002469_pano_0000_004553",
+    "timestamp": "2022-03-23T09:00:20.713490Z",
+    "distM": 59.4013542339835,
+    "obliquityDeg": 17.208284713268007,
+    "url": "https://t1.data.amsterdam.nl/panorama/2022/03/23/TMX7316010203-002469/pano_0000_004553/equirectangular/panorama_4000.jpg"
+   },
+   "photoLab": {
+    "L": 0.558,
+    "C": 0.066,
+    "h": 61,
+    "hex": "#906b4b",
+    "n": 317
+   },
+   "repicked": false
+  },
+  {
+   "pandId": "0363100012165515",
+   "gebied": "Oud-Oost",
+   "buurt": "ME02",
+   "archetype": "c19",
+   "year": 1902,
+   "heightM": 16.43,
+   "at": [
+    4.9264208,
+    52.359805200000004
+   ],
+   "street": "Domselaerstraat",
+   "pick": {
+    "panoId": "TMX7316010203-002906_pano_0001_000002",
+    "timestamp": "2023-01-02T08:34:42.803400Z",
+    "distM": 7.496233834714453,
+    "obliquityDeg": 0.10754728962006019,
+    "url": "https://t1.data.amsterdam.nl/panorama/2023/01/02/TMX7316010203-002906/pano_0001_000002/equirectangular/panorama_4000.jpg"
+   },
+   "photoLab": {
+    "L": 0.344,
+    "C": 0.014,
+    "h": 46,
+    "hex": "#3f3733",
+    "n": 384
+   },
+   "repicked": false
+  },
+  {
+   "pandId": "0363100012244723",
+   "gebied": "Oud-West, De Baarsjes",
+   "buurt": "EV01",
+   "archetype": "c19",
+   "year": null,
+   "heightM": 15.76,
+   "at": [
+    4.869756199999999,
+    52.360922200000005
+   ],
+   "street": "Anna van den Vondelstraat",
+   "pick": {
+    "panoId": "TMX7316010203-001040_pano_0000_000238",
+    "timestamp": "2019-01-07T10:44:57.873160Z",
+    "distM": 6.008293768610789,
+    "obliquityDeg": 3.33269798023911,
+    "url": "https://t1.data.amsterdam.nl/panorama/2019/01/07/TMX7316010203-001040/pano_0000_000238/equirectangular/panorama_4000.jpg"
+   },
+   "photoLab": {
+    "L": 0.379,
+    "C": 0.019,
+    "h": 50,
+    "hex": "#4b3f39",
+    "n": 336
+   },
+   "repicked": false
+  },
+  {
+   "pandId": "0363100012175159",
+   "gebied": "Centrum-Oost",
+   "buurt": "AG05",
+   "archetype": "canal",
+   "year": 1755,
+   "heightM": 19.14,
+   "at": [
+    4.892763,
+    52.363495071428574
+   ],
+   "street": "Keizersgracht",
+   "pick": {
+    "panoId": "TMX7316010203-002925_pano_0006_000061",
+    "timestamp": "2023-01-11T11:54:20.430040Z",
+    "distM": 43.7815129889248,
+    "obliquityDeg": 0.0918828849626039,
+    "url": "https://t1.data.amsterdam.nl/panorama/2022/12/31/TMX7316010203-002925/pano_0006_000061/equirectangular/panorama_4000.jpg"
+   },
+   "photoLab": {
+    "L": 0.392,
+    "C": 0.007,
+    "h": 61,
+    "hex": "#484542",
+    "n": 376
+   },
+   "repicked": false
+  },
+  {
+   "pandId": "0363100012115163",
+   "gebied": "Westerpark",
+   "buurt": "EH06",
+   "archetype": "school",
+   "year": 1917,
+   "heightM": 14.45,
+   "at": [
+    4.8695718,
+    52.379909
+   ],
+   "street": "Schaepmanstraat",
+   "pick": {
+    "panoId": "TMX7316010203-001529_pano_0002_000247",
+    "timestamp": "2019-12-20T08:03:59.614500Z",
+    "distM": 10.898311977140827,
+    "obliquityDeg": 1.4662507824006479,
+    "url": "https://t1.data.amsterdam.nl/panorama/2019/12/20/TMX7316010203-001529/pano_0002_000247/equirectangular/panorama_4000.jpg"
+   },
+   "photoLab": {
+    "L": 0.327,
+    "C": 0.014,
+    "h": 41,
+    "hex": "#3b322f",
+    "n": 377
+   },
+   "repicked": false
+  },
+  {
+   "pandId": "0363100012171892",
+   "gebied": "Centrum-West",
+   "buurt": "AC03",
+   "archetype": "c19",
+   "year": 1910,
+   "heightM": 15.84,
+   "at": [
+    4.8872046,
+    52.369074999999995
+   ],
+   "street": "Herengracht",
+   "pick": {
+    "panoId": "TMX7316010203-002961_pano_0026_000131",
+    "timestamp": "2023-02-06T12:03:56.171080Z",
+    "distM": 39.915935765564484,
+    "obliquityDeg": 0.302572045380829,
+    "url": "https://t1.data.amsterdam.nl/panorama/2023/02/06/TMX7316010203-002961/pano_0026_000131/equirectangular/panorama_4000.jpg"
+   },
+   "photoLab": {
+    "L": 0.514,
+    "C": 0.038,
+    "h": 70,
+    "hex": "#76644f",
+    "n": 348
+   },
+   "repicked": false
+  },
+  {
+   "pandId": "0363100012167643",
+   "gebied": "Centrum-West",
+   "buurt": "AC02",
+   "archetype": "canal",
+   "year": 1750,
+   "heightM": 16.49,
+   "at": [
+    4.887039485714285,
+    52.374729614285705
+   ],
+   "street": "Leliegracht",
+   "pick": {
+    "panoId": "TMX7316010203-002045_pano_0001_002792",
+    "timestamp": "2021-03-17T12:40:16.351040Z",
+    "distM": 26.3135080962207,
+    "obliquityDeg": 1.19168812701738,
+    "url": "https://t1.data.amsterdam.nl/panorama/2021/03/17/TMX7316010203-002045/pano_0001_002792/equirectangular/panorama_4000.jpg"
+   },
+   "photoLab": {
+    "L": 0.438,
+    "C": 0.008,
+    "h": 50,
+    "hex": "#56514e",
+    "n": 373
+   },
+   "repicked": false
+  },
+  {
+   "pandId": "0363100012065992",
+   "gebied": "Oud-West, De Baarsjes",
+   "buurt": "ET01",
+   "archetype": "c19",
+   "year": 1912,
+   "heightM": 15.76,
+   "at": [
+    4.858844,
+    52.359221857142856
+   ],
+   "street": "J.J. Cremerplein",
+   "pick": {
+    "panoId": "TMX7316010203-001041_pano_0002_003424",
+    "timestamp": "2019-01-09T10:14:53.066680Z",
+    "distM": 58.82117506932825,
+    "obliquityDeg": 14.922558044060498,
+    "url": "https://t1.data.amsterdam.nl/panorama/2019/01/09/TMX7316010203-001041/pano_0002_003424/equirectangular/panorama_4000.jpg"
+   },
+   "photoLab": {
+    "L": 0.425,
+    "C": 0.008,
+    "h": 66,
+    "hex": "#514e4a",
+    "n": 376
+   },
+   "repicked": false
+  },
+  {
+   "pandId": "0363100012236576",
+   "gebied": "Oud-Oost",
+   "buurt": "MC04",
+   "archetype": "c19",
+   "year": 1897,
+   "heightM": 13.97,
+   "at": [
+    4.918881571428571,
+    52.35820271428572
+   ],
+   "street": "Oosterpark",
+   "pick": {
+    "panoId": "TMX7316010203-001527_pano_0000_000759",
+    "timestamp": "2019-12-19T08:16:35.223130Z",
+    "distM": 10.400325994633594,
+    "obliquityDeg": 0.8177969517234188,
+    "url": "https://t1.data.amsterdam.nl/panorama/2019/12/19/TMX7316010203-001527/pano_0000_000759/equirectangular/panorama_4000.jpg"
+   },
+   "photoLab": {
+    "L": 0.298,
+    "C": 0.017,
+    "h": 47,
+    "hex": "#342b26",
+    "n": 383
+   },
+   "repicked": false
+  },
+  {
+   "pandId": "0363100012160081",
+   "gebied": "Oud-Oost",
+   "buurt": "MC04",
+   "archetype": "c19",
+   "year": 1889,
+   "heightM": 13.76,
+   "at": [
+    4.9236274,
+    52.3591282
+   ],
+   "street": "Tweede Oosterparkstraat",
+   "pick": {
+    "panoId": "TMX7316010203-002907_pano_0008_000094",
+    "timestamp": "2023-01-02T09:34:36.302690Z",
+    "distM": 13.01698442413748,
+    "obliquityDeg": 1.5620002305363598,
+    "url": "https://t1.data.amsterdam.nl/panorama/2023/01/02/TMX7316010203-002907/pano_0008_000094/equirectangular/panorama_4000.jpg"
+   },
+   "photoLab": {
+    "L": 0.4,
+    "C": 0.015,
+    "h": 62,
+    "hex": "#4e4640",
+    "n": 372
+   },
+   "repicked": false
+  },
+  {
+   "pandId": "0363100012144881",
+   "gebied": "De Pijp, Rivierenbuurt",
+   "buurt": "KK01",
+   "archetype": "school",
+   "year": 1929,
+   "heightM": 16.04,
+   "at": [
+    4.89069890909091,
+    52.34598372727272
+   ],
+   "street": "Scheldestraat",
+   "pick": {
+    "panoId": "TMX7316010203-001036_pano_0000_001782",
+    "timestamp": "2019-01-04T08:40:14.009900Z",
+    "distM": 17.984288918759432,
+    "obliquityDeg": 1.5708682028451446,
+    "url": "https://t1.data.amsterdam.nl/panorama/2019/01/04/TMX7316010203-001036/pano_0000_001782/equirectangular/panorama_4000.jpg"
+   },
+   "photoLab": {
+    "L": 0.358,
+    "C": 0.005,
+    "h": 36,
+    "hex": "#3f3c3b",
+    "n": 368
+   },
+   "repicked": false
+  },
+  {
+   "pandId": "0363100012094102",
+   "gebied": "Oud-Zuid",
+   "buurt": "KJ05",
+   "archetype": "school",
+   "year": 1930,
+   "heightM": 13.26,
+   "at": [
+    4.877742100000001,
+    52.34710829999999
+   ],
+   "street": "Stadionweg",
+   "pick": {
+    "panoId": "TMX7316010203-001036_pano_0002_000427",
+    "timestamp": "2019-01-04T08:56:46.915540Z",
+    "distM": 18.124476861238158,
+    "obliquityDeg": 0.32579110239835646,
+    "url": "https://t1.data.amsterdam.nl/panorama/2019/01/04/TMX7316010203-001036/pano_0002_000427/equirectangular/panorama_4000.jpg"
+   },
+   "photoLab": {
+    "L": 0.32,
+    "C": 0.012,
+    "h": 37,
+    "hex": "#38312e",
+    "n": 380
+   },
+   "repicked": false
+  },
+  {
+   "pandId": "0363100012177990",
+   "gebied": "Centrum-West",
+   "buurt": "AE03",
+   "archetype": "canal",
+   "year": 1615,
+   "heightM": 16.33,
+   "at": [
+    4.899373428571429,
+    52.37419042857143
+   ],
+   "street": "Oudezijds Achterburgwal",
+   "pick": {
+    "panoId": "TMX7316010203-002357_pano_0003_000119",
+    "timestamp": "2021-12-27T12:15:08.014940Z",
+    "distM": 17.43165118034366,
+    "obliquityDeg": 4.4284746371795505,
+    "url": "https://t1.data.amsterdam.nl/panorama/2021/12/27/TMX7316010203-002357/pano_0003_000119/equirectangular/panorama_4000.jpg"
+   },
+   "photoLab": {
+    "L": 0.474,
+    "C": 0.008,
+    "h": 104,
+    "hex": "#5d5c57",
+    "n": 375
+   },
+   "repicked": false
+  },
+  {
+   "pandId": "0363100012106632",
+   "gebied": "Oud-West, De Baarsjes",
+   "buurt": "ET01",
+   "archetype": "c19",
+   "year": 1910,
+   "heightM": 15.95,
+   "at": [
+    4.862335333333333,
+    52.36095611111111
+   ],
+   "street": "Brederodestraat",
+   "pick": {
+    "panoId": "TMX7316010203-002060_pano_0000_002602",
+    "timestamp": "2021-03-25T11:08:54.780030Z",
+    "distM": 6.464742968946121,
+    "obliquityDeg": 5.91664808000666,
+    "url": "https://t1.data.amsterdam.nl/panorama/2021/03/25/TMX7316010203-002060/pano_0000_002602/equirectangular/panorama_4000.jpg"
+   },
+   "photoLab": {
+    "L": 0.411,
+    "C": 0.021,
+    "h": 54,
+    "hex": "#544840",
+    "n": 357
+   },
+   "repicked": false
+  },
+  {
+   "pandId": "0363100012144831",
+   "gebied": "De Pijp, Rivierenbuurt",
+   "buurt": "KM01",
+   "archetype": "school",
+   "year": 1929,
+   "heightM": 14.81,
+   "at": [
+    4.9115476000000005,
+    52.344714599999996
+   ],
+   "street": "Kromme-Mijdrechtstraat",
+   "pick": {
+    "panoId": "TMX7316010203-002474_pano_0001_001389",
+    "timestamp": "2022-03-24T07:35:54.021870Z",
+    "distM": 8.173172059036157,
+    "obliquityDeg": 18.492612429589393,
+    "url": "https://t1.data.amsterdam.nl/panorama/2022/03/24/TMX7316010203-002474/pano_0001_001389/equirectangular/panorama_4000.jpg"
+   },
+   "photoLab": {
+    "L": 0.406,
+    "C": 0.024,
+    "h": 52,
+    "hex": "#54463d",
+    "n": 352
+   },
+   "repicked": false
+  },
+  {
+   "pandId": "0363100012177602",
+   "gebied": "Centrum-Oost",
+   "buurt": "AG01",
+   "archetype": "canal",
+   "year": 1720,
+   "heightM": 20.12,
+   "at": [
+    4.88820255172414,
+    52.36721079310346
+   ],
+   "street": "Herengracht",
+   "pick": {
+    "panoId": "TMX7316010203-002951_pano_0016_000181",
+    "timestamp": "2023-01-30T11:26:36.911640Z",
+    "distM": 41.93266711621593,
+    "obliquityDeg": 0.9546815489252531,
+    "url": "https://t1.data.amsterdam.nl/panorama/2023/01/30/TMX7316010203-002951/pano_0016_000181/equirectangular/panorama_4000.jpg"
+   },
+   "photoLab": {
+    "L": 0.604,
+    "C": 0.043,
+    "h": 73,
+    "hex": "#927e65",
+    "n": 322
+   },
+   "repicked": false
+  },
+  {
+   "pandId": "0363100012129548",
+   "gebied": "Oud-West, De Baarsjes",
+   "buurt": "EL03",
+   "archetype": "school",
+   "year": 1934,
+   "heightM": 14.92,
+   "at": [
+    4.8643406,
+    52.3733842
+   ],
+   "street": "Geuzenstraat",
+   "pick": {
+    "panoId": "TMX7316010203-002850_pano_0012_000568",
+    "timestamp": "2022-12-12T12:24:07.102520Z",
+    "distM": 12.02146787170298,
+    "obliquityDeg": 0.6830030295155227,
+    "url": "https://t1.data.amsterdam.nl/panorama/2022/12/12/TMX7316010203-002850/pano_0012_000568/equirectangular/panorama_4000.jpg"
+   },
+   "photoLab": {
+    "L": 0.43,
+    "C": 0.02,
+    "h": 75,
+    "hex": "#564e44",
+    "n": 368
+   },
+   "repicked": false
+  },
+  {
+   "pandId": "0363100012085290",
+   "gebied": "Oud-West, De Baarsjes",
+   "buurt": "EQ01",
+   "archetype": "c19",
+   "year": 1905,
+   "heightM": 16.27,
+   "at": [
+    4.87254588888889,
+    52.370482
+   ],
+   "street": "Allard Piersonstraat",
+   "pick": {
+    "panoId": "TMX7316010203-002059_pano_0000_001559",
+    "timestamp": "2021-03-24T12:55:10.612690Z",
+    "distM": 6.384347950094409,
+    "obliquityDeg": 2.775128423147496,
+    "url": "https://t1.data.amsterdam.nl/panorama/2021/03/24/TMX7316010203-002059/pano_0000_001559/equirectangular/panorama_4000.jpg"
+   },
+   "photoLab": {
+    "L": 0.448,
+    "C": 0.019,
+    "h": 66,
+    "hex": "#5c534a",
+    "n": 312
+   },
+   "repicked": false
+  },
+  {
+   "pandId": "0363100012180102",
+   "gebied": "Centrum-Oost",
+   "buurt": "AH03",
+   "archetype": "canal",
+   "year": 1840,
+   "heightM": 15.71,
+   "at": [
+    4.892911285714286,
+    52.36027442857143
+   ],
+   "street": "",
+   "pick": {
+    "panoId": "TMX7316010203-002040_pano_0001_001461",
+    "timestamp": "2021-03-15T09:10:55.056580Z",
+    "distM": 5.429804294467909,
+    "obliquityDeg": 9.217986671404061,
+    "url": "https://t1.data.amsterdam.nl/panorama/2021/03/15/TMX7316010203-002040/pano_0001_001461/equirectangular/panorama_4000.jpg"
+   },
+   "photoLab": {
+    "L": 0.517,
+    "C": 0.013,
+    "h": 28,
+    "hex": "#6f6564",
+    "n": 278
+   },
+   "repicked": false
+  },
+  {
+   "pandId": "0363100012168506",
+   "gebied": "Centrum-West",
+   "buurt": "AB04",
+   "archetype": "c19",
+   "year": 1882,
+   "heightM": 15.63,
+   "at": [
+    4.877534600000001,
+    52.375595399999995
+   ],
+   "street": "Westerkade",
+   "pick": {
+    "panoId": "TMX7316010203-002968_pano_0000_000233",
+    "timestamp": "2023-02-13T09:59:52.995040Z",
+    "distM": 23.75982603920752,
+    "obliquityDeg": 0.0383399743246955,
+    "url": "https://t1.data.amsterdam.nl/panorama/2023/02/13/TMX7316010203-002968/pano_0000_000233/equirectangular/panorama_4000.jpg"
+   },
+   "photoLab": {
+    "L": 0.442,
+    "C": 0.022,
+    "h": 65,
+    "hex": "#5c5146",
+    "n": 375
+   },
+   "repicked": false
+  },
+  {
+   "pandId": "0363100012090573",
+   "gebied": "Oud-Zuid",
+   "buurt": "KJ06",
+   "archetype": "school",
+   "year": 1928,
+   "heightM": 9.76,
+   "at": [
+    4.883111363636363,
+    52.347857727272725
+   ],
+   "street": "Apollolaan",
+   "pick": {
+    "panoId": "b_20241105_1055_Track34_Sphere_00021",
+    "timestamp": "2024-11-05T11:36:27Z",
+    "distM": 48.42912416131418,
+    "obliquityDeg": 1.4665148188191057,
+    "url": "https://t1.data.amsterdam.nl/panorama/2024/kempkes/Job_20241105_1055_Track34_Sphere_00021/equirectangular/panorama_4000.jpg"
+   },
+   "photoLab": {
+    "L": 0.317,
+    "C": 0.01,
+    "h": 86,
+    "hex": "#34322c",
+    "n": 377
+   },
+   "repicked": false
+  },
+  {
+   "pandId": "0363100012144143",
+   "gebied": "Oud-West, De Baarsjes",
+   "buurt": "EM04",
+   "archetype": "school",
+   "year": 1925,
+   "heightM": 14.4,
+   "at": [
+    4.854816888888889,
+    52.36543766666667
+   ],
+   "street": "Columbusplein",
+   "pick": {
+    "panoId": "TMX7316010203-000994_pano_0000_002284",
+    "timestamp": "2018-11-19T13:20:55.965740Z",
+    "distM": 59.93945923315184,
+    "obliquityDeg": 1.3738856434652529,
+    "url": "https://t1.data.amsterdam.nl/panorama/2018/11/19/TMX7316010203-000994/pano_0000_002284/equirectangular/panorama_4000.jpg"
+   },
+   "photoLab": {
+    "L": 0.402,
+    "C": 0.025,
+    "h": 65,
+    "hex": "#52463a",
+    "n": 357
+   },
+   "repicked": false
+  },
+  {
+   "pandId": "0363100012171917",
+   "gebied": "Centrum-Oost",
+   "buurt": "AF02",
+   "archetype": "canal",
+   "year": 1782,
+   "heightM": 15.06,
+   "at": [
+    4.902603399999999,
+    52.3757038
+   ],
+   "street": "Geldersekade",
+   "pick": {
+    "panoId": "TMX7316010203-002981_pano_0005_000058",
+    "timestamp": "2023-02-27T07:57:32.365280Z",
+    "distM": 46.24346782188045,
+    "obliquityDeg": 0.07050993241035926,
+    "url": "https://t1.data.amsterdam.nl/panorama/2023/02/27/TMX7316010203-002981/pano_0005_000058/equirectangular/panorama_4000.jpg"
+   },
+   "photoLab": {
+    "L": 0.399,
+    "C": 0.015,
+    "h": 74,
+    "hex": "#4c463f",
+    "n": 369
+   },
+   "repicked": false
+  },
+  {
+   "pandId": "0363100012171927",
+   "gebied": "Centrum-Oost",
+   "buurt": "AH04",
+   "archetype": "canal",
+   "year": 1791,
+   "heightM": 13.27,
+   "at": [
+    4.900565285714285,
+    52.361648
+   ],
+   "street": "Utrechtsedwarsstraat",
+   "pick": {
+    "panoId": "TMX7316010203-002364_pano_0004_000577",
+    "timestamp": "2021-12-29T12:05:53.673950Z",
+    "distM": 5.813630084987477,
+    "obliquityDeg": 12.585520736342355,
+    "url": "https://t1.data.amsterdam.nl/panorama/2021/12/29/TMX7316010203-002364/pano_0004_000577/equirectangular/panorama_4000.jpg"
+   },
+   "photoLab": {
+    "L": 0.344,
+    "C": 0.009,
+    "h": 58,
+    "hex": "#3d3834",
+    "n": 359
+   },
+   "repicked": false
+  },
+  {
+   "pandId": "0363100012171937",
+   "gebied": "Centrum-Oost",
+   "buurt": "AG06",
+   "archetype": "canal",
+   "year": 1737,
+   "heightM": 10.22,
+   "at": [
+    4.8990238,
+    52.3630666
+   ],
+   "street": "Kerkstraat",
+   "pick": {
+    "panoId": "TMX7316010203-002364_pano_0002_000246",
+    "timestamp": "2021-12-29T11:38:00.323110Z",
+    "distM": 5.278277131287839,
+    "obliquityDeg": 27.358640421733824,
+    "url": "https://t1.data.amsterdam.nl/panorama/2021/12/29/TMX7316010203-002364/pano_0002_000246/equirectangular/panorama_4000.jpg"
+   },
+   "photoLab": {
+    "L": 0.341,
+    "C": 0.017,
+    "h": 66,
+    "hex": "#3e372f",
+    "n": 381
+   },
+   "repicked": false
+  },
+  {
+   "pandId": "0363100012571658",
+   "gebied": "Centrum-Oost",
+   "buurt": "AF02",
+   "archetype": "c19",
+   "year": null,
+   "heightM": 13.53,
+   "at": [
+    4.9029161666666665,
+    52.37589400000001
+   ],
+   "street": "Prins Hendrikkade",
+   "pick": {
+    "panoId": "TMX7316010203-001548_pano_0000_000214",
+    "timestamp": "2020-01-10T09:22:47.809330Z",
+    "distM": 25.385593349408897,
+    "obliquityDeg": 0.24815934168097764,
+    "url": "https://t1.data.amsterdam.nl/panorama/2019/13/10/TMX7316010203-001548/pano_0000_000214/equirectangular/panorama_4000.jpg"
+   },
+   "photoLab": {
+    "L": 0.539,
+    "C": 0.01,
+    "h": 88,
+    "hex": "#716e68",
+    "n": 374
+   },
+   "repicked": false
+  },
+  {
+   "pandId": "0363100012171987",
+   "gebied": "Centrum-Oost",
+   "buurt": "AH03",
+   "archetype": "school",
+   "year": 1929,
+   "heightM": 15.64,
+   "at": [
+    4.889470333333334,
+    52.36133933333334
+   ],
+   "street": "Tweede Weteringdwarsstraat",
+   "pick": {
+    "panoId": "TMX7316010203-002937_pano_0004_000200",
+    "timestamp": "2023-01-16T10:01:41.758410Z",
+    "distM": 5.941396665689587,
+    "obliquityDeg": 12.174900950213516,
+    "url": "https://t1.data.amsterdam.nl/panorama/2023/01/16/TMX7316010203-002937/pano_0004_000200/equirectangular/panorama_4000.jpg"
+   },
+   "photoLab": {
+    "L": 0.329,
+    "C": 0.01,
+    "h": 59,
+    "hex": "#393430",
+    "n": 337
+   },
+   "repicked": false
+  },
+  {
+   "pandId": "0363100012137389",
+   "gebied": "Oud-Oost",
+   "buurt": "ME03",
+   "archetype": "school",
+   "year": 1931,
+   "heightM": 17.59,
+   "at": [
+    4.9278312,
+    52.356452000000004
+   ],
+   "street": "Linnaeusstraat",
+   "pick": {
+    "panoId": "TMX7316010203-001527_pano_0000_003016",
+    "timestamp": "2019-12-19T08:55:24.839660Z",
+    "distM": 22.68338026114488,
+    "obliquityDeg": 0.3904467933166032,
+    "url": "https://t1.data.amsterdam.nl/panorama/2019/12/19/TMX7316010203-001527/pano_0000_003016/equirectangular/panorama_4000.jpg"
+   },
+   "photoLab": {
+    "L": 0.395,
+    "C": 0.028,
+    "h": 48,
+    "hex": "#534239",
+    "n": 357
+   },
+   "repicked": false
+  },
+  {
+   "pandId": "0363100012148911",
+   "gebied": "Oud-West, De Baarsjes",
+   "buurt": "EL01",
+   "archetype": "c19",
+   "year": 1913,
+   "heightM": 13.66,
+   "at": [
+    4.8586968,
+    52.37162820000001
+   ],
+   "street": "Jan Evertsenstraat",
+   "pick": {
+    "panoId": "TMX7316010203-001041_pano_0002_002095",
+    "timestamp": "2019-01-09T09:44:35.758070Z",
+    "distM": 59.166844564678264,
+    "obliquityDeg": 1.632899947262046,
+    "url": "https://t1.data.amsterdam.nl/panorama/2019/01/09/TMX7316010203-001041/pano_0002_002095/equirectangular/panorama_4000.jpg"
+   },
+   "photoLab": {
+    "L": 0.614,
+    "C": 0.045,
+    "h": 65,
+    "hex": "#987f68",
+    "n": 301
+   },
+   "repicked": false
+  },
+  {
+   "pandId": "0363100012168278",
+   "gebied": "Centrum-Oost",
+   "buurt": "AH03",
+   "archetype": "school",
+   "year": 1929,
+   "heightM": 13.48,
+   "at": [
+    4.889684624999999,
+    52.361288625
+   ],
+   "street": "Tweede Weteringdwarsstraat",
+   "pick": {
+    "panoId": "TMX7316010203-002937_pano_0004_000203",
+    "timestamp": "2023-01-16T10:01:43.963340Z",
+    "distM": 6.144115779871144,
+    "obliquityDeg": 13.238347058981802,
+    "url": "https://t1.data.amsterdam.nl/panorama/2023/01/16/TMX7316010203-002937/pano_0004_000203/equirectangular/panorama_4000.jpg"
+   },
+   "photoLab": {
+    "L": 0.376,
+    "C": 0.012,
+    "h": 57,
+    "hex": "#46403b",
+    "n": 356
+   },
+   "repicked": false
+  },
+  {
+   "pandId": "0363100012176417",
+   "gebied": "Centrum-West",
+   "buurt": "AC02",
+   "archetype": "canal",
+   "year": 1750,
+   "heightM": 13.63,
+   "at": [
+    4.8865929999999995,
+    52.3753692
+   ],
+   "street": "Leliegracht",
+   "pick": {
+    "panoId": "TMX7316010203-002976_pano_0005_000142",
+    "timestamp": "2023-02-20T09:26:34.602820Z",
+    "distM": 27.886568833135858,
+    "obliquityDeg": 0.6471453844664918,
+    "url": "https://t1.data.amsterdam.nl/panorama/2023/02/20/TMX7316010203-002976/pano_0005_000142/equirectangular/panorama_4000.jpg"
+   },
+   "photoLab": {
+    "L": 0.35,
+    "C": 0.019,
+    "h": 53,
+    "hex": "#433831",
+    "n": 377
+   },
+   "repicked": false
+  },
+  {
+   "pandId": "0363100012176427",
+   "gebied": "Centrum-West",
+   "buurt": "AC02",
+   "archetype": "c19",
+   "year": 1904,
+   "heightM": 19.12,
+   "at": [
+    4.886125299999999,
+    52.37497103571428
+   ],
+   "street": "Keizersgracht",
+   "pick": {
+    "panoId": "TMX7316010203-002045_pano_0001_002824",
+    "timestamp": "2021-03-17T12:40:46.515860Z",
+    "distM": 43.70269167674143,
+    "obliquityDeg": 0.2955195312117763,
+    "url": "https://t1.data.amsterdam.nl/panorama/2021/03/17/TMX7316010203-002045/pano_0001_002824/equirectangular/panorama_4000.jpg"
+   },
+   "photoLab": {
+    "L": 0.427,
+    "C": 0.025,
+    "h": 43,
+    "hex": "#5b4b44",
+    "n": 380
+   },
+   "repicked": false
+  },
+  {
+   "pandId": "0363100012158330",
+   "gebied": "Oud-Oost",
+   "buurt": "MB01",
+   "archetype": "c19",
+   "year": 1890,
+   "heightM": 15.92,
+   "at": [
+    4.908835799999999,
+    52.357330000000005
+   ],
+   "street": "Ruyschstraat",
+   "pick": {
+    "panoId": "TMX7316010203-001009_pano_0005_000186",
+    "timestamp": "2018-12-12T09:48:39.293010Z",
+    "distM": 13.429370853641293,
+    "obliquityDeg": 1.6347649030932518,
+    "url": "https://t1.data.amsterdam.nl/panorama/2018/12/12/TMX7316010203-001009/pano_0005_000186/equirectangular/panorama_4000.jpg"
+   },
+   "photoLab": {
+    "L": 0.518,
+    "C": 0.024,
+    "h": 61,
+    "hex": "#73655b",
+    "n": 355
+   },
+   "repicked": false
+  },
+  {
+   "pandId": "0363100012152796",
+   "gebied": "Oud-Zuid",
+   "buurt": "KD03",
+   "archetype": "c19",
+   "year": 1887,
+   "heightM": 16.6,
+   "at": [
+    4.876393,
+    52.3573915
+   ],
+   "street": "Willemsparkweg",
+   "pick": {
+    "panoId": "TMX7316010203-002463_pano_0003_000299",
+    "timestamp": "2022-03-22T08:28:05.382870Z",
+    "distM": 12.004998727604821,
+    "obliquityDeg": 2.6674385054401224,
+    "url": "https://t1.data.amsterdam.nl/panorama/2022/03/22/TMX7316010203-002463/pano_0003_000299/equirectangular/panorama_4000.jpg"
+   },
+   "photoLab": {
+    "L": 0.478,
+    "C": 0.023,
+    "h": 46,
+    "hex": "#685952",
+    "n": 335
+   },
+   "repicked": false
+  },
+  {
+   "pandId": "0363100012152780",
+   "gebied": "Oud-West, De Baarsjes",
+   "buurt": "EU03",
+   "archetype": "c19",
+   "year": 1896,
+   "heightM": 14,
+   "at": [
+    4.8750644,
+    52.36451960000001
+   ],
+   "street": "Derde Helmersstraat",
+   "pick": {
+    "panoId": "TMX7316010203-002059_pano_0000_003001",
+    "timestamp": "2021-03-24T13:29:58.562520Z",
+    "distM": 10.988332123657148,
+    "obliquityDeg": 28.684265696093938,
+    "url": "https://t1.data.amsterdam.nl/panorama/2021/03/24/TMX7316010203-002059/pano_0000_003001/equirectangular/panorama_4000.jpg"
+   },
+   "photoLab": {
+    "L": 0.35,
+    "C": 0.004,
+    "h": 18,
+    "hex": "#3d3a3a",
+    "n": 362
+   },
+   "repicked": false
+  },
+  {
+   "pandId": "0363100012162556",
+   "gebied": "De Pijp, Rivierenbuurt",
+   "buurt": "KF01",
+   "archetype": "c19",
+   "year": 1897,
+   "heightM": 16.28,
+   "at": [
+    4.888914833333334,
+    52.35228733333332
+   ],
+   "street": "Ceintuurbaan",
+   "pick": {
+    "panoId": "TMX7316010203-002410_pano_0003_000584",
+    "timestamp": "2022-01-11T08:51:21.871240Z",
+    "distM": 19.184047869425374,
+    "obliquityDeg": 3.6387032011217233,
+    "url": "https://t1.data.amsterdam.nl/panorama/2022/01/11/TMX7316010203-002410/pano_0003_000584/equirectangular/panorama_4000.jpg"
+   },
+   "photoLab": {
+    "L": 0.333,
+    "C": 0.011,
+    "h": 272,
+    "hex": "#34363c",
+    "n": 384
+   },
+   "repicked": false
+  },
+  {
+   "pandId": "0363100012135386",
+   "gebied": "Oud-Zuid",
+   "buurt": "KD04",
+   "archetype": "c19",
+   "year": 1912,
+   "heightM": 12.94,
+   "at": [
+    4.882174000000001,
+    52.35982148
+   ],
+   "street": "",
+   "pick": {
+    "panoId": "TMX7316010203-001060_pano_0003_000012",
+    "timestamp": "2019-01-17T10:03:30.273190Z",
+    "distM": 41.05824022306441,
+    "obliquityDeg": 15.734651938201363,
+    "url": "https://t1.data.amsterdam.nl/panorama/2019/01/17/TMX7316010203-001060/pano_0003_000012/equirectangular/panorama_4000.jpg"
+   },
+   "photoLab": {
+    "L": 0.322,
+    "C": 0.015,
+    "h": 55,
+    "hex": "#3a322c",
+    "n": 384
+   },
+   "repicked": true
+  },
+  {
+   "pandId": "0363100012171219",
+   "gebied": "Centrum-Oost",
+   "buurt": "AH08",
+   "archetype": "c19",
+   "year": 1870,
+   "heightM": 14.8,
+   "at": [
+    4.8976234,
+    52.3582622
+   ],
+   "street": "Nicolaas Witsenkade",
+   "pick": {
+    "panoId": "TMX7316010203-001533_pano_0000_000096",
+    "timestamp": "2020-01-06T09:15:16.681440Z",
+    "distM": 59.39853203395268,
+    "obliquityDeg": 1.288645654583085,
+    "url": "https://t1.data.amsterdam.nl/panorama/2019/13/06/TMX7316010203-001533/pano_0000_000096/equirectangular/panorama_4000.jpg"
+   },
+   "photoLab": {
+    "L": 0.477,
+    "C": 0.012,
+    "h": 90,
+    "hex": "#5f5d55",
+    "n": 377
+   },
+   "repicked": false
+  },
+  {
+   "pandId": "0363100012158378",
+   "gebied": "Oud-Zuid",
+   "buurt": "KD03",
+   "archetype": "c19",
+   "year": 1900,
+   "heightM": 14.8,
+   "at": [
+    4.876952714285714,
+    52.357192
+   ],
+   "street": "Van Breestraat",
+   "pick": {
+    "panoId": "TMX7316010203-001601_pano_0005_000149",
+    "timestamp": "2020-01-29T12:00:49.071510Z",
+    "distM": 47.4422711867448,
+    "obliquityDeg": 15.907641802798594,
+    "url": "https://t1.data.amsterdam.nl/panorama/2020/01/29/TMX7316010203-001601/pano_0005_000149/equirectangular/panorama_4000.jpg"
+   },
+   "photoLab": {
+    "L": 0.536,
+    "C": 0.014,
+    "h": 74,
+    "hex": "#736d65",
+    "n": 376
+   },
+   "repicked": false
+  },
+  {
+   "pandId": "0363100012177751",
+   "gebied": "Centrum-Oost",
+   "buurt": "AH08",
+   "archetype": "c19",
+   "year": 1897,
+   "heightM": 19.82,
+   "at": [
+    4.896986714285715,
+    52.35832799999999
+   ],
+   "street": "Nicolaas Witsenkade",
+   "pick": {
+    "panoId": "TMX7316010203-001533_pano_0000_000105",
+    "timestamp": "2020-01-06T09:15:20.656440Z",
+    "distM": 59.41953777474965,
+    "obliquityDeg": 0.22606725174309814,
+    "url": "https://t1.data.amsterdam.nl/panorama/2019/13/06/TMX7316010203-001533/pano_0000_000105/equirectangular/panorama_4000.jpg"
+   },
+   "photoLab": {
+    "L": 0.343,
+    "C": 0.008,
+    "h": 73,
+    "hex": "#3b3834",
+    "n": 372
+   },
+   "repicked": false
+  },
+  {
+   "pandId": "0363100012169100",
+   "gebied": "Centrum-West",
+   "buurt": "AC04",
+   "archetype": "canal",
+   "year": 1680,
+   "heightM": 13.94,
+   "at": [
+    4.8843051428571425,
+    52.366902
+   ],
+   "street": "Leidsegracht",
+   "pick": {
+    "panoId": "TMX7316010203-002976_pano_0007_000175",
+    "timestamp": "2023-02-20T09:40:57.370430Z",
+    "distM": 28.464724463587157,
+    "obliquityDeg": 0.00430494101015297,
+    "url": "https://t1.data.amsterdam.nl/panorama/2023/02/20/TMX7316010203-002976/pano_0007_000175/equirectangular/panorama_4000.jpg"
+   },
+   "photoLab": {
+    "L": 0.411,
+    "C": 0.015,
+    "h": 38,
+    "hex": "#524845",
+    "n": 383
+   },
+   "repicked": false
+  },
+  {
+   "pandId": "0363100012169176",
+   "gebied": "Centrum-West",
+   "buurt": "AC03",
+   "archetype": "canal",
+   "year": 1764,
+   "heightM": 14.58,
+   "at": [
+    4.884108666666667,
+    52.373847000000005
+   ],
+   "street": "Westermarkt",
+   "pick": {
+    "panoId": "TMX7316010203-001549_pano_0000_000787",
+    "timestamp": "2020-01-10T10:15:25.338130Z",
+    "distM": 22.19257733471167,
+    "obliquityDeg": 0.4090807787106374,
+    "url": "https://t1.data.amsterdam.nl/panorama/2019/13/10/TMX7316010203-001549/pano_0000_000787/equirectangular/panorama_4000.jpg"
+   },
+   "photoLab": {
+    "L": 0.426,
+    "C": 0.016,
+    "h": 76,
+    "hex": "#544e45",
+    "n": 365
+   },
+   "repicked": false
+  },
+  {
+   "pandId": "0363100012152724",
+   "gebied": "Oud-West, De Baarsjes",
+   "buurt": "EQ01",
+   "archetype": "c19",
+   "year": 1905,
+   "heightM": 15.27,
+   "at": [
+    4.8721777692307695,
+    52.37218869230769
+   ],
+   "street": "Da Costakade",
+   "pick": {
+    "panoId": "TMX7316010203-002369_pano_0005_000176",
+    "timestamp": "2021-12-30T12:42:02.017410Z",
+    "distM": 42.441105045088506,
+    "obliquityDeg": 0.3027062509716303,
+    "url": "https://t1.data.amsterdam.nl/panorama/2021/12/30/TMX7316010203-002369/pano_0005_000176/equirectangular/panorama_4000.jpg"
+   },
+   "photoLab": {
+    "L": 0.383,
+    "C": 0.019,
+    "h": 56,
+    "hex": "#4b413a",
+    "n": 382
+   },
+   "repicked": false
+  },
+  {
+   "pandId": "0363100012181863",
+   "gebied": "Centrum-Oost",
+   "buurt": "AF09",
+   "archetype": "canal",
+   "year": 1803,
+   "heightM": 13.72,
+   "at": [
+    4.905971714285713,
+    52.36745671428571
+   ],
+   "street": "Muiderstraat",
+   "pick": {
+    "panoId": "TMX7316010203-000190_pano_0000_001769",
+    "timestamp": "2016-11-24T09:59:36.902170Z",
+    "distM": 11.452863860413501,
+    "obliquityDeg": 2.7239454912118246,
+    "url": "https://t1.data.amsterdam.nl/panorama/2016/11/24/TMX7316010203-000190/pano_0000_001769/equirectangular/panorama_4000.jpg"
+   },
+   "photoLab": {
+    "L": 0.385,
+    "C": 0.021,
+    "h": 69,
+    "hex": "#4b4238",
+    "n": 366
+   },
+   "repicked": false
+  },
+  {
+   "pandId": "0363100012170594",
+   "gebied": "Centrum-Oost",
+   "buurt": "AK04",
+   "archetype": "c19",
+   "year": 1874,
+   "heightM": 16.79,
+   "at": [
+    4.924238777777777,
+    52.370387111111114
+   ],
+   "street": "Nieuwe Oostenburgerdwarsstraat",
+   "pick": {
+    "panoId": "TMX7316010203-002049_pano_0000_000371",
+    "timestamp": "2021-03-19T08:20:20.117320Z",
+    "distM": 5.623469607598727,
+    "obliquityDeg": 10.45122201291699,
+    "url": "https://t1.data.amsterdam.nl/panorama/2021/03/19/TMX7316010203-002049/pano_0000_000371/equirectangular/panorama_4000.jpg"
+   },
+   "photoLab": {
+    "L": 0.685,
+    "C": 0.041,
+    "h": 73,
+    "hex": "#aa967e",
+    "n": 313
+   },
+   "repicked": false
+  },
+  {
+   "pandId": "0363100012162536",
+   "gebied": "Oud-Oost",
+   "buurt": "MC03",
+   "archetype": "c19",
+   "year": 1906,
+   "heightM": 16.96,
+   "at": [
+    4.915500285714286,
+    52.35533028571428
+   ],
+   "street": "Vrolikstraat",
+   "pick": {
+    "panoId": "TMX7316010203-000239_pano_0002_001534",
+    "timestamp": "2017-03-31T10:15:35.581100Z",
+    "distM": 51.96698670276172,
+    "obliquityDeg": 12.591807053955453,
+    "url": "https://t1.data.amsterdam.nl/panorama/2017/03/31/TMX7316010203-000239/pano_0002_001534/equirectangular/panorama_4000.jpg"
+   },
+   "photoLab": {
+    "L": 0.408,
+    "C": 0.011,
+    "h": 41,
+    "hex": "#504845",
+    "n": 383
+   },
+   "repicked": false
+  },
+  {
+   "pandId": "0363100012135326",
+   "gebied": "Oud-Zuid",
+   "buurt": "KD10",
+   "archetype": "school",
+   "year": 1923,
+   "heightM": 9.98,
+   "at": [
+    4.882609166666667,
+    52.35135066666666
+   ],
+   "street": "Harmoniehof",
+   "pick": {
+    "panoId": "TMX7316010203-002457_pano_0000_002142",
+    "timestamp": "2022-03-21T10:02:41.592190Z",
+    "distM": 6.785920074139142,
+    "obliquityDeg": 3.3180117736298573,
+    "url": "https://t1.data.amsterdam.nl/panorama/2022/03/21/TMX7316010203-002457/pano_0000_002142/equirectangular/panorama_4000.jpg"
+   },
+   "photoLab": {
+    "L": 0.706,
+    "C": 0.09,
+    "h": 67,
+    "hex": "#c69561",
+    "n": 189
+   },
+   "repicked": false
+  },
+  {
+   "pandId": "0363100012160197",
+   "gebied": "De Pijp, Rivierenbuurt",
+   "buurt": "KF03",
+   "archetype": "c19",
+   "year": 1901,
+   "heightM": 15.35,
+   "at": [
+    4.895033272727273,
+    52.35252354545455
+   ],
+   "street": "Tweede Van der Helststraat",
+   "pick": {
+    "panoId": "TMX7316010203-001045_pano_0000_002732",
+    "timestamp": "2019-01-09T13:11:32.024420Z",
+    "distM": 49.503277425803745,
+    "obliquityDeg": 3.1086315095759884,
+    "url": "https://t1.data.amsterdam.nl/panorama/2019/01/09/TMX7316010203-001045/pano_0000_002732/equirectangular/panorama_4000.jpg"
+   },
+   "photoLab": {
+    "L": 0.438,
+    "C": 0.018,
+    "h": 77,
+    "hex": "#585147",
+    "n": 366
+   },
+   "repicked": false
+  },
+  {
+   "pandId": "0363100012181543",
+   "gebied": "Centrum-Oost",
+   "buurt": "AK07",
+   "archetype": "c19",
+   "year": 1900,
+   "heightM": 14.38,
+   "at": [
+    4.9147944,
+    52.3687096
+   ],
+   "street": "Entrepotdok",
+   "pick": {
+    "panoId": "TMX7316010203-002047_pano_0000_003129",
+    "timestamp": "2021-03-18T10:48:00.595120Z",
+    "distM": 6.088131045857996,
+    "obliquityDeg": 11.541735194538044,
+    "url": "https://t1.data.amsterdam.nl/panorama/2021/03/18/TMX7316010203-002047/pano_0000_003129/equirectangular/panorama_4000.jpg"
+   },
+   "photoLab": {
+    "L": 0.428,
+    "C": 0.022,
+    "h": 47,
+    "hex": "#5a4c45",
+    "n": 343
+   },
+   "repicked": false
+  },
+  {
+   "pandId": "0363100012173302",
+   "gebied": "Centrum-West",
+   "buurt": "AA05",
+   "archetype": "canal",
+   "year": 1859,
+   "heightM": 12.18,
+   "at": [
+    4.885356833333333,
+    52.382621333333326
+   ],
+   "street": "Brouwersgracht",
+   "pick": {
+    "panoId": "TMX7316010203-002043_pano_0000_000143",
+    "timestamp": "2021-03-17T08:39:57.616760Z",
+    "distM": 41.84374126558555,
+    "obliquityDeg": 0.3527530664715182,
+    "url": "https://t1.data.amsterdam.nl/panorama/2021/03/17/TMX7316010203-002043/pano_0000_000143/equirectangular/panorama_4000.jpg"
+   },
+   "photoLab": {
+    "L": 0.427,
+    "C": 0.019,
+    "h": 68,
+    "hex": "#564d44",
+    "n": 363
+   },
+   "repicked": false
+  },
+  {
+   "pandId": "0363100012170506",
+   "gebied": "Centrum-Oost",
+   "buurt": "AF03",
+   "archetype": "canal",
+   "year": 1748,
+   "heightM": 16.7,
+   "at": [
+    4.906144,
+    52.372829285714275
+   ],
+   "street": "Binnenkant",
+   "pick": {
+    "panoId": "TMX7316010203-002964_pano_0001_000074",
+    "timestamp": "2023-02-13T07:58:55.993120Z",
+    "distM": 58.286354619772965,
+    "obliquityDeg": 26.726659247252833,
+    "url": "https://t1.data.amsterdam.nl/panorama/2023/02/13/TMX7316010203-002964/pano_0001_000074/equirectangular/panorama_4000.jpg"
+   },
+   "photoLab": {
+    "L": 0.355,
+    "C": 0.011,
+    "h": 84,
+    "hex": "#3f3b35",
+    "n": 378
+   },
+   "repicked": false
+  },
+  {
+   "pandId": "0363100012179529",
+   "gebied": "Centrum-West",
+   "buurt": "AE04",
+   "archetype": "canal",
+   "year": 1655,
+   "heightM": 16.98,
+   "at": [
+    4.89406025,
+    52.369819375
+   ],
+   "street": "Oudezijds Voorburgwal",
+   "pick": {
+    "panoId": "TMX7316010203-001050_pano_0001_000270",
+    "timestamp": "2019-01-11T11:55:42.606050Z",
+    "distM": 34.10428032453135,
+    "obliquityDeg": 1.5451699813776065,
+    "url": "https://t1.data.amsterdam.nl/panorama/2019/01/11/TMX7316010203-001050/pano_0001_000270/equirectangular/panorama_4000.jpg"
+   },
+   "photoLab": {
+    "L": 0.335,
+    "C": 0.01,
+    "h": 56,
+    "hex": "#3b3632",
+    "n": 384
+   },
+   "repicked": false
+  },
+  {
+   "pandId": "0363100012179545",
+   "gebied": "Centrum-West",
+   "buurt": "AE04",
+   "archetype": "canal",
+   "year": 1758,
+   "heightM": 14.77,
+   "at": [
+    4.894071538461538,
+    52.37003161538462
+   ],
+   "street": "Oudezijds Voorburgwal",
+   "pick": {
+    "panoId": "TMX7316010203-001050_pano_0001_000149",
+    "timestamp": "2019-01-11T11:52:52.637510Z",
+    "distM": 33.66484305186047,
+    "obliquityDeg": 0.8014512100486472,
+    "url": "https://t1.data.amsterdam.nl/panorama/2019/01/11/TMX7316010203-001050/pano_0001_000149/equirectangular/panorama_4000.jpg"
+   },
+   "photoLab": {
+    "L": 0.383,
+    "C": 0.013,
+    "h": 55,
+    "hex": "#49413d",
+    "n": 379
+   },
+   "repicked": false
+  },
+  {
+   "pandId": "0363100012168440",
+   "gebied": "Centrum-West",
+   "buurt": "AB07",
+   "archetype": "c19",
+   "year": 1914,
+   "heightM": 7.28,
+   "at": [
+    4.877484699999999,
+    52.3729269
+   ],
+   "street": "Rozengracht",
+   "pick": {
+    "panoId": "TMX7316010203-002044_pano_0000_000611",
+    "timestamp": "2021-03-17T10:41:29.947270Z",
+    "distM": 17.7186976924785,
+    "obliquityDeg": 2.193078396700993,
+    "url": "https://t1.data.amsterdam.nl/panorama/2021/03/17/TMX7316010203-002044/pano_0000_000611/equirectangular/panorama_4000.jpg"
+   },
+   "photoLab": {
+    "L": 0.321,
+    "C": 0.025,
+    "h": 36,
+    "hex": "#3e2f2a",
+    "n": 383
+   },
+   "repicked": false
+  },
+  {
+   "pandId": "0363100012062644",
+   "gebied": "Westerpark",
+   "buurt": "EH06",
+   "archetype": "school",
+   "year": 1935,
+   "heightM": 16.27,
+   "at": [
+    4.8700581666666665,
+    52.37698566666666
+   ],
+   "street": "Visseringstraat",
+   "pick": {
+    "panoId": "TMX7316010203-002054_pano_0000_001460",
+    "timestamp": "2021-03-22T09:18:59.472390Z",
+    "distM": 6.558935881134677,
+    "obliquityDeg": 7.242858014084483,
+    "url": "https://t1.data.amsterdam.nl/panorama/2021/03/22/TMX7316010203-002054/pano_0000_001460/equirectangular/panorama_4000.jpg"
+   },
+   "photoLab": {
+    "L": 0.494,
+    "C": 0.028,
+    "h": 55,
+    "hex": "#6e5e53",
+    "n": 342
+   },
+   "repicked": false
+  },
+  {
+   "pandId": "0363100012169052",
+   "gebied": "Centrum-Oost",
+   "buurt": "AG01",
+   "archetype": "canal",
+   "year": 1750,
+   "heightM": 11.81,
+   "at": [
+    4.884213166666666,
+    52.36641375
+   ],
+   "street": "Leidsegracht",
+   "pick": {
+    "panoId": "TMX7316010203-002994_pano_0002_000399",
+    "timestamp": "2023-03-13T08:39:40.419000Z",
+    "distM": 29.97432327341434,
+    "obliquityDeg": 0.10674833678147566,
+    "url": "https://t1.data.amsterdam.nl/panorama/2023/03/13/TMX7316010203-002994/pano_0002_000399/equirectangular/panorama_4000.jpg"
+   },
+   "photoLab": {
+    "L": 0.31,
+    "C": 0.015,
+    "h": 80,
+    "hex": "#343028",
+    "n": 361
+   },
+   "repicked": false
+  },
+  {
+   "pandId": "0363100012168432",
+   "gebied": "Centrum-West",
+   "buurt": "AB06",
+   "archetype": "c19",
+   "year": 1881,
+   "heightM": 15.17,
+   "at": [
+    4.875733799999999,
+    52.3729098
+   ],
+   "street": "Marnixstraat",
+   "pick": {
+    "panoId": "TMX7316010203-001540_pano_0000_000176",
+    "timestamp": "2020-01-07T12:42:12.912310Z",
+    "distM": 13.801532614211583,
+    "obliquityDeg": 4.024226881017596,
+    "url": "https://t1.data.amsterdam.nl/panorama/2019/13/07/TMX7316010203-001540/pano_0000_000176/equirectangular/panorama_4000.jpg"
+   },
+   "photoLab": {
+    "L": 0.469,
+    "C": 0.015,
+    "h": 27,
+    "hex": "#625756",
+    "n": 332
+   },
+   "repicked": false
+  },
+  {
+   "pandId": "0363100012180048",
+   "gebied": "Centrum-Oost",
+   "buurt": "AG05",
+   "archetype": "canal",
+   "year": 1700,
+   "heightM": 14.81,
+   "at": [
+    4.895599285714285,
+    52.36382714285713
+   ],
+   "street": "Reguliersgracht",
+   "pick": {
+    "panoId": "TMX7316010203-000998_pano_0004_000665",
+    "timestamp": "2018-11-21T11:48:07.144920Z",
+    "distM": 28.67572599379216,
+    "obliquityDeg": 0.3458806251279937,
+    "url": "https://t1.data.amsterdam.nl/panorama/2018/11/21/TMX7316010203-000998/pano_0004_000665/equirectangular/panorama_4000.jpg"
+   },
+   "photoLab": {
+    "L": 0.425,
+    "C": 0.006,
+    "h": 53,
+    "hex": "#514d4b",
+    "n": 368
+   },
+   "repicked": false
+  },
+  {
+   "pandId": "0363100012236605",
+   "gebied": "Oud-West, De Baarsjes",
+   "buurt": "EQ01",
+   "archetype": "c19",
+   "year": 1902,
+   "heightM": 16.81,
+   "at": [
+    4.870829080000001,
+    52.3705966
+   ],
+   "street": "Bilderdijkstraat",
+   "pick": {
+    "panoId": "TMX7316010203-002373_pano_0010_000004",
+    "timestamp": "2021-12-31T10:15:57.185350Z",
+    "distM": 19.347864717313517,
+    "obliquityDeg": 0.22447514246110825,
+    "url": "https://t1.data.amsterdam.nl/panorama/2021/12/31/TMX7316010203-002373/pano_0010_000004/equirectangular/panorama_4000.jpg"
+   },
+   "photoLab": {
+    "L": 0.349,
+    "C": 0.017,
+    "h": 49,
+    "hex": "#423833",
+    "n": 384
+   },
+   "repicked": false
+  },
+  {
+   "pandId": "0363100012077369",
+   "gebied": "Oud-West, De Baarsjes",
+   "buurt": "EK02",
+   "archetype": "school",
+   "year": 1927,
+   "heightM": 15.4,
+   "at": [
+    4.8498698000000005,
+    52.3702756
+   ],
+   "street": "Hoofdweg",
+   "pick": {
+    "panoId": "TMX7316010203-002064_pano_0000_000451",
+    "timestamp": "2021-03-26T11:35:23.105870Z",
+    "distM": 21.20782090645123,
+    "obliquityDeg": 4.143419772434303,
+    "url": "https://t1.data.amsterdam.nl/panorama/2021/03/26/TMX7316010203-002064/pano_0000_000451/equirectangular/panorama_4000.jpg"
+   },
+   "photoLab": {
+    "L": 0.408,
+    "C": 0.024,
+    "h": 8,
+    "hex": "#564547",
+    "n": 332
+   },
+   "repicked": false
+  },
+  {
+   "pandId": "0363100012182405",
+   "gebied": "Centrum-Oost",
+   "buurt": "AF05",
+   "archetype": "c19",
+   "year": null,
+   "heightM": 15.34,
+   "at": [
+    4.901450625,
+    52.37311
+   ],
+   "street": "Recht Boomssloot",
+   "pick": {
+    "panoId": "TMX7316010203-003001_pano_0000_000075",
+    "timestamp": "2023-03-20T07:50:48.845340Z",
+    "distM": 18.998026556144126,
+    "obliquityDeg": 0.028091638769187823,
+    "url": "https://t1.data.amsterdam.nl/panorama/2023/03/20/TMX7316010203-003001/pano_0000_000075/equirectangular/panorama_4000.jpg"
+   },
+   "photoLab": {
+    "L": 0.313,
+    "C": 0.013,
+    "h": 55,
+    "hex": "#372f2b",
+    "n": 384
+   },
+   "repicked": false
+  },
+  {
+   "pandId": "0363100012175158",
+   "gebied": "Centrum-Oost",
+   "buurt": "AG05",
+   "archetype": "canal",
+   "year": 1683,
+   "heightM": 9.69,
+   "at": [
+    4.8925094,
+    52.363412000000004
+   ],
+   "street": "Vijzelstraat",
+   "pick": {
+    "panoId": "TMX7316010203-001530_pano_0002_000251",
+    "timestamp": "2019-12-20T08:55:55.974910Z",
+    "distM": 12.442262039757537,
+    "obliquityDeg": 1.789399726928433,
+    "url": "https://t1.data.amsterdam.nl/panorama/2019/12/20/TMX7316010203-001530/pano_0002_000251/equirectangular/panorama_4000.jpg"
+   },
+   "photoLab": {
+    "L": 0.259,
+    "C": 0.009,
+    "h": 47,
+    "hex": "#272320",
+    "n": 384
+   },
+   "repicked": false
+  }
+ ]
+}
