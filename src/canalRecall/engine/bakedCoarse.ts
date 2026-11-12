@@ -616,10 +616,10 @@ export class BakedCoarse {
   /** Cells installed with a dissolve in (aerial-pan's coarse rebuild-wave count, against the runtime coarse fades). */
   private fadeIns = 0;
 
-  stats(): { enabled: boolean; wanted: number; cells: number; drawn: number; fading: number; fadeIns: number; covered: number; triangles: number; gpuMB: number; fetchedMB: number; uploadedMB: number; pending: number; failed: number; liftPending: number; cpuMB: number; released: number; releases: number } {
+  stats(): { enabled: boolean; wanted: number; cells: number; /** F1: cells drawn from records. */ records: number; drawn: number; fading: number; fadeIns: number; covered: number; triangles: number; gpuMB: number; fetchedMB: number; uploadedMB: number; pending: number; failed: number; liftPending: number; cpuMB: number; released: number; releases: number } {
     let triangles = 0, bytes = 0, drawn = 0, liftPending = 0, cpu = 0, fading = 0;
     for (const r of this.residents.values()) { triangles += r.triangles; bytes += r.bytes; if (r.drawn) drawn++; if (r.fade) fading++; if (r.lift) { liftPending += r.lift.pending.length; cpu += r.lift.positions.byteLength; } }
-    return { enabled: this.enabled, wanted: this.wanted.size, cells: this.residents.size, drawn, fading, fadeIns: this.fadeIns, covered: this.covered.size, triangles, gpuMB: +(bytes / 1048576).toFixed(1), fetchedMB: +(this.fetchedBytes / 1048576).toFixed(2), uploadedMB: +(this.uploads / 1048576).toFixed(1), pending: this.inflight.size + this.queue.length + this.ready.length, failed: this.failed.size, liftPending, cpuMB: +(cpu / 1048576).toFixed(1), released: this.released.size, releases: this.releases };
+    return { enabled: this.enabled, wanted: this.wanted.size, cells: this.residents.size, records: [...this.residents.values()].filter(r => r.own).length, drawn, fading, fadeIns: this.fadeIns, covered: this.covered.size, triangles, gpuMB: +(bytes / 1048576).toFixed(1), fetchedMB: +(this.fetchedBytes / 1048576).toFixed(2), uploadedMB: +(this.uploads / 1048576).toFixed(1), pending: this.inflight.size + this.queue.length + this.ready.length, failed: this.failed.size, liftPending, cpuMB: +(cpu / 1048576).toFixed(1), released: this.released.size, releases: this.releases };
   }
 
   dispose(): void { this.clear(); }
