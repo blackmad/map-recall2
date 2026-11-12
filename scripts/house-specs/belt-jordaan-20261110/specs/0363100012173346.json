@@ -1,0 +1,234 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012173346",
+ "address": "Bloemgracht 28",
+ "design": {
+  "fronts": [
+   {
+    "id": "front0",
+    "basement": "none",
+    "cornice": "simple",
+    "windows": "sash",
+    "windowSurround": "sill",
+    "hoist": false,
+    "street": "Bloemgracht",
+    "gable": "cornice",
+    "storeys": 4,
+    "bays": 2,
+    "storeyHeights": [
+     4.2,
+     3,
+     2.8,
+     2.4
+    ],
+    "doorBay": 0,
+    "dormers": 1,
+    "dormerStyle": "pediment",
+    "dormerBody": "stone",
+    "dormerAt": [
+     {
+      "from": 0.28,
+      "to": 0.72
+     }
+    ],
+    "dormerSize": {
+     "sill": 0.1,
+     "rise": 1.6,
+     "setback": 0.35
+    }
+   }
+  ],
+  "roof": {
+   "material": "slate",
+   "source": "front",
+   "form": "attic",
+   "rise": 0.5,
+   "evidence": "strip: a roof face rises behind the cornice with the dormer on it"
+  },
+  "palette": {
+   "frame": "white-painted",
+   "door": "#26302a",
+   "stone": "#ebe8df",
+   "cornice": "#ebe8df",
+   "stoneMaterial": "painted",
+   "brick": "#483f39",
+   "wallMaterial": "brick"
+  }
+ },
+ "provenance": {
+  "fronts/0/id": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 314-469 px): a 3.9 m front of two axes: ground 0-4.0 m (door left under an arched transom, window right); storeys at 4.3-6.4, 7.4-9.3 (segmental heads) and 10.2-11.9 m; a white cornice 12.0-12.6 m; a white pedimented dormer with a finial 13.0-15.0 m; red-brown brick #594c49 [preview calibration: brick #594c49 drew #70605f against the photo #5b4f4a; set #483f39] [preview: the photo heads are square; segmental heads removed]",
+   "at": "2023-03-13"
+  },
+  "fronts/0/basement": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 314-469 px): a 3.9 m front of two axes: ground 0-4.0 m (door left under an arched transom, window right); storeys at 4.3-6.4, 7.4-9.3 (segmental heads) and 10.2-11.9 m; a white cornice 12.0-12.6 m; a white pedimented dormer with a finial 13.0-15.0 m; red-brown brick #594c49 [preview calibration: brick #594c49 drew #70605f against the photo #5b4f4a; set #483f39] [preview: the photo heads are square; segmental heads removed] (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/cornice": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 314-469 px): a 3.9 m front of two axes: ground 0-4.0 m (door left under an arched transom, window right); storeys at 4.3-6.4, 7.4-9.3 (segmental heads) and 10.2-11.9 m; a white cornice 12.0-12.6 m; a white pedimented dormer with a finial 13.0-15.0 m; red-brown brick #594c49 [preview calibration: brick #594c49 drew #70605f against the photo #5b4f4a; set #483f39] [preview: the photo heads are square; segmental heads removed]",
+   "at": "2023-03-13"
+  },
+  "fronts/0/windows": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 314-469 px): a 3.9 m front of two axes: ground 0-4.0 m (door left under an arched transom, window right); storeys at 4.3-6.4, 7.4-9.3 (segmental heads) and 10.2-11.9 m; a white cornice 12.0-12.6 m; a white pedimented dormer with a finial 13.0-15.0 m; red-brown brick #594c49 [preview calibration: brick #594c49 drew #70605f against the photo #5b4f4a; set #483f39] [preview: the photo heads are square; segmental heads removed]",
+   "at": "2023-03-13"
+  },
+  "fronts/0/windowSurround": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 314-469 px): a 3.9 m front of two axes: ground 0-4.0 m (door left under an arched transom, window right); storeys at 4.3-6.4, 7.4-9.3 (segmental heads) and 10.2-11.9 m; a white cornice 12.0-12.6 m; a white pedimented dormer with a finial 13.0-15.0 m; red-brown brick #594c49 [preview calibration: brick #594c49 drew #70605f against the photo #5b4f4a; set #483f39] [preview: the photo heads are square; segmental heads removed] (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/hoist": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 314-469 px): a 3.9 m front of two axes: ground 0-4.0 m (door left under an arched transom, window right); storeys at 4.3-6.4, 7.4-9.3 (segmental heads) and 10.2-11.9 m; a white cornice 12.0-12.6 m; a white pedimented dormer with a finial 13.0-15.0 m; red-brown brick #594c49 [preview calibration: brick #594c49 drew #70605f against the photo #5b4f4a; set #483f39] [preview: the photo heads are square; segmental heads removed] (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/street": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 314-469 px): a 3.9 m front of two axes: ground 0-4.0 m (door left under an arched transom, window right); storeys at 4.3-6.4, 7.4-9.3 (segmental heads) and 10.2-11.9 m; a white cornice 12.0-12.6 m; a white pedimented dormer with a finial 13.0-15.0 m; red-brown brick #594c49 [preview calibration: brick #594c49 drew #70605f against the photo #5b4f4a; set #483f39] [preview: the photo heads are square; segmental heads removed]",
+   "at": "2023-03-13"
+  },
+  "fronts/0/gable": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 314-469 px): a 3.9 m front of two axes: ground 0-4.0 m (door left under an arched transom, window right); storeys at 4.3-6.4, 7.4-9.3 (segmental heads) and 10.2-11.9 m; a white cornice 12.0-12.6 m; a white pedimented dormer with a finial 13.0-15.0 m; red-brown brick #594c49 [preview calibration: brick #594c49 drew #70605f against the photo #5b4f4a; set #483f39] [preview: the photo heads are square; segmental heads removed]",
+   "at": "2023-03-13"
+  },
+  "fronts/0/storeys": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 314-469 px): a 3.9 m front of two axes: ground 0-4.0 m (door left under an arched transom, window right); storeys at 4.3-6.4, 7.4-9.3 (segmental heads) and 10.2-11.9 m; a white cornice 12.0-12.6 m; a white pedimented dormer with a finial 13.0-15.0 m; red-brown brick #594c49 [preview calibration: brick #594c49 drew #70605f against the photo #5b4f4a; set #483f39] [preview: the photo heads are square; segmental heads removed]",
+   "at": "2023-03-13"
+  },
+  "fronts/0/bays": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 314-469 px): a 3.9 m front of two axes: ground 0-4.0 m (door left under an arched transom, window right); storeys at 4.3-6.4, 7.4-9.3 (segmental heads) and 10.2-11.9 m; a white cornice 12.0-12.6 m; a white pedimented dormer with a finial 13.0-15.0 m; red-brown brick #594c49 [preview calibration: brick #594c49 drew #70605f against the photo #5b4f4a; set #483f39] [preview: the photo heads are square; segmental heads removed]",
+   "at": "2023-03-13"
+  },
+  "fronts/0/storeyHeights": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 314-469 px): a 3.9 m front of two axes: ground 0-4.0 m (door left under an arched transom, window right); storeys at 4.3-6.4, 7.4-9.3 (segmental heads) and 10.2-11.9 m; a white cornice 12.0-12.6 m; a white pedimented dormer with a finial 13.0-15.0 m; red-brown brick #594c49 [preview calibration: brick #594c49 drew #70605f against the photo #5b4f4a; set #483f39] [preview: the photo heads are square; segmental heads removed]",
+   "at": "2023-03-13"
+  },
+  "fronts/0/doorBay": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 314-469 px): a 3.9 m front of two axes: ground 0-4.0 m (door left under an arched transom, window right); storeys at 4.3-6.4, 7.4-9.3 (segmental heads) and 10.2-11.9 m; a white cornice 12.0-12.6 m; a white pedimented dormer with a finial 13.0-15.0 m; red-brown brick #594c49 [preview calibration: brick #594c49 drew #70605f against the photo #5b4f4a; set #483f39] [preview: the photo heads are square; segmental heads removed]",
+   "at": "2023-03-13"
+  },
+  "fronts/0/dormers": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 314-469 px): a 3.9 m front of two axes: ground 0-4.0 m (door left under an arched transom, window right); storeys at 4.3-6.4, 7.4-9.3 (segmental heads) and 10.2-11.9 m; a white cornice 12.0-12.6 m; a white pedimented dormer with a finial 13.0-15.0 m; red-brown brick #594c49 [preview calibration: brick #594c49 drew #70605f against the photo #5b4f4a; set #483f39] [preview: the photo heads are square; segmental heads removed]",
+   "at": "2023-03-13"
+  },
+  "fronts/0/dormerStyle": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 314-469 px): a 3.9 m front of two axes: ground 0-4.0 m (door left under an arched transom, window right); storeys at 4.3-6.4, 7.4-9.3 (segmental heads) and 10.2-11.9 m; a white cornice 12.0-12.6 m; a white pedimented dormer with a finial 13.0-15.0 m; red-brown brick #594c49 [preview calibration: brick #594c49 drew #70605f against the photo #5b4f4a; set #483f39] [preview: the photo heads are square; segmental heads removed]",
+   "at": "2023-03-13"
+  },
+  "fronts/0/dormerBody": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 314-469 px): a 3.9 m front of two axes: ground 0-4.0 m (door left under an arched transom, window right); storeys at 4.3-6.4, 7.4-9.3 (segmental heads) and 10.2-11.9 m; a white cornice 12.0-12.6 m; a white pedimented dormer with a finial 13.0-15.0 m; red-brown brick #594c49 [preview calibration: brick #594c49 drew #70605f against the photo #5b4f4a; set #483f39] [preview: the photo heads are square; segmental heads removed]",
+   "at": "2023-03-13"
+  },
+  "fronts/0/dormerAt": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 314-469 px): a 3.9 m front of two axes: ground 0-4.0 m (door left under an arched transom, window right); storeys at 4.3-6.4, 7.4-9.3 (segmental heads) and 10.2-11.9 m; a white cornice 12.0-12.6 m; a white pedimented dormer with a finial 13.0-15.0 m; red-brown brick #594c49 [preview calibration: brick #594c49 drew #70605f against the photo #5b4f4a; set #483f39] [preview: the photo heads are square; segmental heads removed]",
+   "at": "2023-03-13"
+  },
+  "fronts/0/dormerSize": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 314-469 px): a 3.9 m front of two axes: ground 0-4.0 m (door left under an arched transom, window right); storeys at 4.3-6.4, 7.4-9.3 (segmental heads) and 10.2-11.9 m; a white cornice 12.0-12.6 m; a white pedimented dormer with a finial 13.0-15.0 m; red-brown brick #594c49 [preview calibration: brick #594c49 drew #70605f against the photo #5b4f4a; set #483f39] [preview: the photo heads are square; segmental heads removed]",
+   "at": "2023-03-13"
+  },
+  "roof/material": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 314-469 px): a 3.9 m front of two axes: ground 0-4.0 m (door left under an arched transom, window right); storeys at 4.3-6.4, 7.4-9.3 (segmental heads) and 10.2-11.9 m; a white cornice 12.0-12.6 m; a white pedimented dormer with a finial 13.0-15.0 m; red-brown brick #594c49 [preview calibration: brick #594c49 drew #70605f against the photo #5b4f4a; set #483f39] [preview: the photo heads are square; segmental heads removed]",
+   "at": "2023-03-13"
+  },
+  "roof/source": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 314-469 px): a 3.9 m front of two axes: ground 0-4.0 m (door left under an arched transom, window right); storeys at 4.3-6.4, 7.4-9.3 (segmental heads) and 10.2-11.9 m; a white cornice 12.0-12.6 m; a white pedimented dormer with a finial 13.0-15.0 m; red-brown brick #594c49 [preview calibration: brick #594c49 drew #70605f against the photo #5b4f4a; set #483f39] [preview: the photo heads are square; segmental heads removed]",
+   "at": "2023-03-13"
+  },
+  "roof/form": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 314-469 px): a 3.9 m front of two axes: ground 0-4.0 m (door left under an arched transom, window right); storeys at 4.3-6.4, 7.4-9.3 (segmental heads) and 10.2-11.9 m; a white cornice 12.0-12.6 m; a white pedimented dormer with a finial 13.0-15.0 m; red-brown brick #594c49 [preview calibration: brick #594c49 drew #70605f against the photo #5b4f4a; set #483f39] [preview: the photo heads are square; segmental heads removed]",
+   "at": "2023-03-13"
+  },
+  "roof/rise": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 314-469 px): a 3.9 m front of two axes: ground 0-4.0 m (door left under an arched transom, window right); storeys at 4.3-6.4, 7.4-9.3 (segmental heads) and 10.2-11.9 m; a white cornice 12.0-12.6 m; a white pedimented dormer with a finial 13.0-15.0 m; red-brown brick #594c49 [preview calibration: brick #594c49 drew #70605f against the photo #5b4f4a; set #483f39] [preview: the photo heads are square; segmental heads removed]",
+   "at": "2023-03-13"
+  },
+  "roof/evidence": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 314-469 px): a 3.9 m front of two axes: ground 0-4.0 m (door left under an arched transom, window right); storeys at 4.3-6.4, 7.4-9.3 (segmental heads) and 10.2-11.9 m; a white cornice 12.0-12.6 m; a white pedimented dormer with a finial 13.0-15.0 m; red-brown brick #594c49 [preview calibration: brick #594c49 drew #70605f against the photo #5b4f4a; set #483f39] [preview: the photo heads are square; segmental heads removed]",
+   "at": "2023-03-13"
+  },
+  "palette/frame": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 314-469 px): a 3.9 m front of two axes: ground 0-4.0 m (door left under an arched transom, window right); storeys at 4.3-6.4, 7.4-9.3 (segmental heads) and 10.2-11.9 m; a white cornice 12.0-12.6 m; a white pedimented dormer with a finial 13.0-15.0 m; red-brown brick #594c49 [preview calibration: brick #594c49 drew #70605f against the photo #5b4f4a; set #483f39] [preview: the photo heads are square; segmental heads removed] (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/door": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 314-469 px): a 3.9 m front of two axes: ground 0-4.0 m (door left under an arched transom, window right); storeys at 4.3-6.4, 7.4-9.3 (segmental heads) and 10.2-11.9 m; a white cornice 12.0-12.6 m; a white pedimented dormer with a finial 13.0-15.0 m; red-brown brick #594c49 [preview calibration: brick #594c49 drew #70605f against the photo #5b4f4a; set #483f39] [preview: the photo heads are square; segmental heads removed] (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/stone": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 314-469 px): a 3.9 m front of two axes: ground 0-4.0 m (door left under an arched transom, window right); storeys at 4.3-6.4, 7.4-9.3 (segmental heads) and 10.2-11.9 m; a white cornice 12.0-12.6 m; a white pedimented dormer with a finial 13.0-15.0 m; red-brown brick #594c49 [preview calibration: brick #594c49 drew #70605f against the photo #5b4f4a; set #483f39] [preview: the photo heads are square; segmental heads removed] (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/cornice": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 314-469 px): a 3.9 m front of two axes: ground 0-4.0 m (door left under an arched transom, window right); storeys at 4.3-6.4, 7.4-9.3 (segmental heads) and 10.2-11.9 m; a white cornice 12.0-12.6 m; a white pedimented dormer with a finial 13.0-15.0 m; red-brown brick #594c49 [preview calibration: brick #594c49 drew #70605f against the photo #5b4f4a; set #483f39] [preview: the photo heads are square; segmental heads removed] (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/stoneMaterial": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 314-469 px): a 3.9 m front of two axes: ground 0-4.0 m (door left under an arched transom, window right); storeys at 4.3-6.4, 7.4-9.3 (segmental heads) and 10.2-11.9 m; a white cornice 12.0-12.6 m; a white pedimented dormer with a finial 13.0-15.0 m; red-brown brick #594c49 [preview calibration: brick #594c49 drew #70605f against the photo #5b4f4a; set #483f39] [preview: the photo heads are square; segmental heads removed] (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/brick": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 314-469 px): a 3.9 m front of two axes: ground 0-4.0 m (door left under an arched transom, window right); storeys at 4.3-6.4, 7.4-9.3 (segmental heads) and 10.2-11.9 m; a white cornice 12.0-12.6 m; a white pedimented dormer with a finial 13.0-15.0 m; red-brown brick #594c49 [preview calibration: brick #594c49 drew #70605f against the photo #5b4f4a; set #483f39] [preview: the photo heads are square; segmental heads removed]",
+   "at": "2023-03-13"
+  },
+  "palette/wallMaterial": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-16-32 strip 2023-03-13 (span 314-469 px): a 3.9 m front of two axes: ground 0-4.0 m (door left under an arched transom, window right); storeys at 4.3-6.4, 7.4-9.3 (segmental heads) and 10.2-11.9 m; a white cornice 12.0-12.6 m; a white pedimented dormer with a finial 13.0-15.0 m; red-brown brick #594c49 [preview calibration: brick #594c49 drew #70605f against the photo #5b4f4a; set #483f39] [preview: the photo heads are square; segmental heads removed]",
+   "at": "2023-03-13"
+  }
+ }
+}

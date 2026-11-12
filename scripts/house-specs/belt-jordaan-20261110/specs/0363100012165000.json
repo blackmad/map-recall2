@@ -1,0 +1,187 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012165000",
+ "address": "Egelantiersgracht 43",
+ "design": {
+  "fronts": [
+   {
+    "id": "front0",
+    "basement": "none",
+    "cornice": "none",
+    "windows": "sash",
+    "windowSurround": "sill",
+    "hoist": false,
+    "street": "Egelantiersgracht",
+    "gable": "flat",
+    "storeys": 2,
+    "bays": 2,
+    "storeyHeights": [
+     3.8,
+     2.6
+    ],
+    "doorBay": 0
+   }
+  ],
+  "roof": {
+   "material": "bitumen",
+   "source": "front",
+   "evidence": "strip: the roof behind the crown follows the front",
+   "form": "flat"
+  },
+  "palette": {
+   "frame": "white-painted",
+   "door": "#26302a",
+   "stone": "#ebe8df",
+   "cornice": "#ebe8df",
+   "stoneMaterial": "painted",
+   "brick": "#2f2c2c",
+   "wallMaterial": "painted-brick"
+  }
+ },
+ "provenance": {
+  "fronts/0/id": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): a low 5.4 m corner building: a ground 0-3.6 m with dark lattice lights; two windows at 4.3-5.6 m; a white coping ~6.3-6.6 m with a planted roof terrace behind a railing; wall painted near black (#252024, floored to #2f2c2c: H7 found near-black hexes drawing green)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/basement": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): a low 5.4 m corner building: a ground 0-3.6 m with dark lattice lights; two windows at 4.3-5.6 m; a white coping ~6.3-6.6 m with a planted roof terrace behind a railing; wall painted near black (#252024, floored to #2f2c2c: H7 found near-black hexes drawing green) (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/cornice": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): a low 5.4 m corner building: a ground 0-3.6 m with dark lattice lights; two windows at 4.3-5.6 m; a white coping ~6.3-6.6 m with a planted roof terrace behind a railing; wall painted near black (#252024, floored to #2f2c2c: H7 found near-black hexes drawing green) (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/windows": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): a low 5.4 m corner building: a ground 0-3.6 m with dark lattice lights; two windows at 4.3-5.6 m; a white coping ~6.3-6.6 m with a planted roof terrace behind a railing; wall painted near black (#252024, floored to #2f2c2c: H7 found near-black hexes drawing green)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/windowSurround": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): a low 5.4 m corner building: a ground 0-3.6 m with dark lattice lights; two windows at 4.3-5.6 m; a white coping ~6.3-6.6 m with a planted roof terrace behind a railing; wall painted near black (#252024, floored to #2f2c2c: H7 found near-black hexes drawing green) (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/hoist": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): a low 5.4 m corner building: a ground 0-3.6 m with dark lattice lights; two windows at 4.3-5.6 m; a white coping ~6.3-6.6 m with a planted roof terrace behind a railing; wall painted near black (#252024, floored to #2f2c2c: H7 found near-black hexes drawing green) (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/street": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): a low 5.4 m corner building: a ground 0-3.6 m with dark lattice lights; two windows at 4.3-5.6 m; a white coping ~6.3-6.6 m with a planted roof terrace behind a railing; wall painted near black (#252024, floored to #2f2c2c: H7 found near-black hexes drawing green)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/gable": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): a low 5.4 m corner building: a ground 0-3.6 m with dark lattice lights; two windows at 4.3-5.6 m; a white coping ~6.3-6.6 m with a planted roof terrace behind a railing; wall painted near black (#252024, floored to #2f2c2c: H7 found near-black hexes drawing green)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/storeys": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): a low 5.4 m corner building: a ground 0-3.6 m with dark lattice lights; two windows at 4.3-5.6 m; a white coping ~6.3-6.6 m with a planted roof terrace behind a railing; wall painted near black (#252024, floored to #2f2c2c: H7 found near-black hexes drawing green)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/bays": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): a low 5.4 m corner building: a ground 0-3.6 m with dark lattice lights; two windows at 4.3-5.6 m; a white coping ~6.3-6.6 m with a planted roof terrace behind a railing; wall painted near black (#252024, floored to #2f2c2c: H7 found near-black hexes drawing green)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/storeyHeights": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): a low 5.4 m corner building: a ground 0-3.6 m with dark lattice lights; two windows at 4.3-5.6 m; a white coping ~6.3-6.6 m with a planted roof terrace behind a railing; wall painted near black (#252024, floored to #2f2c2c: H7 found near-black hexes drawing green)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/doorBay": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): a low 5.4 m corner building: a ground 0-3.6 m with dark lattice lights; two windows at 4.3-5.6 m; a white coping ~6.3-6.6 m with a planted roof terrace behind a railing; wall painted near black (#252024, floored to #2f2c2c: H7 found near-black hexes drawing green)",
+   "at": "2023-03-13"
+  },
+  "roof/material": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): a low 5.4 m corner building: a ground 0-3.6 m with dark lattice lights; two windows at 4.3-5.6 m; a white coping ~6.3-6.6 m with a planted roof terrace behind a railing; wall painted near black (#252024, floored to #2f2c2c: H7 found near-black hexes drawing green)",
+   "at": "2023-03-13"
+  },
+  "roof/source": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): a low 5.4 m corner building: a ground 0-3.6 m with dark lattice lights; two windows at 4.3-5.6 m; a white coping ~6.3-6.6 m with a planted roof terrace behind a railing; wall painted near black (#252024, floored to #2f2c2c: H7 found near-black hexes drawing green)",
+   "at": "2023-03-13"
+  },
+  "roof/evidence": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): a low 5.4 m corner building: a ground 0-3.6 m with dark lattice lights; two windows at 4.3-5.6 m; a white coping ~6.3-6.6 m with a planted roof terrace behind a railing; wall painted near black (#252024, floored to #2f2c2c: H7 found near-black hexes drawing green)",
+   "at": "2023-03-13"
+  },
+  "roof/form": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): a low 5.4 m corner building: a ground 0-3.6 m with dark lattice lights; two windows at 4.3-5.6 m; a white coping ~6.3-6.6 m with a planted roof terrace behind a railing; wall painted near black (#252024, floored to #2f2c2c: H7 found near-black hexes drawing green)",
+   "at": "2023-03-13"
+  },
+  "palette/frame": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): a low 5.4 m corner building: a ground 0-3.6 m with dark lattice lights; two windows at 4.3-5.6 m; a white coping ~6.3-6.6 m with a planted roof terrace behind a railing; wall painted near black (#252024, floored to #2f2c2c: H7 found near-black hexes drawing green) (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/door": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): a low 5.4 m corner building: a ground 0-3.6 m with dark lattice lights; two windows at 4.3-5.6 m; a white coping ~6.3-6.6 m with a planted roof terrace behind a railing; wall painted near black (#252024, floored to #2f2c2c: H7 found near-black hexes drawing green) (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/stone": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): a low 5.4 m corner building: a ground 0-3.6 m with dark lattice lights; two windows at 4.3-5.6 m; a white coping ~6.3-6.6 m with a planted roof terrace behind a railing; wall painted near black (#252024, floored to #2f2c2c: H7 found near-black hexes drawing green) (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/cornice": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): a low 5.4 m corner building: a ground 0-3.6 m with dark lattice lights; two windows at 4.3-5.6 m; a white coping ~6.3-6.6 m with a planted roof terrace behind a railing; wall painted near black (#252024, floored to #2f2c2c: H7 found near-black hexes drawing green) (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/stoneMaterial": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): a low 5.4 m corner building: a ground 0-3.6 m with dark lattice lights; two windows at 4.3-5.6 m; a white coping ~6.3-6.6 m with a planted roof terrace behind a railing; wall painted near black (#252024, floored to #2f2c2c: H7 found near-black hexes drawing green) (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/brick": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): a low 5.4 m corner building: a ground 0-3.6 m with dark lattice lights; two windows at 4.3-5.6 m; a white coping ~6.3-6.6 m with a planted roof terrace behind a railing; wall painted near black (#252024, floored to #2f2c2c: H7 found near-black hexes drawing green)",
+   "at": "2023-03-13"
+  },
+  "palette/wallMaterial": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): a low 5.4 m corner building: a ground 0-3.6 m with dark lattice lights; two windows at 4.3-5.6 m; a white coping ~6.3-6.6 m with a planted roof terrace behind a railing; wall painted near black (#252024, floored to #2f2c2c: H7 found near-black hexes drawing green)",
+   "at": "2023-03-13"
+  }
+ },
+ "schemaLimits": [
+  {
+   "component": "roof",
+   "what": "the roof terrace railing and planting are not drawn"
+  }
+ ]
+}

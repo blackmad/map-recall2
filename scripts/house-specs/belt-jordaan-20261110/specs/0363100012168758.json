@@ -1,0 +1,240 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012168758",
+ "address": "Bloemgracht 21",
+ "design": {
+  "fronts": [
+   {
+    "id": "front0",
+    "basement": "none",
+    "cornice": "simple",
+    "windows": "sash",
+    "windowSurround": "sill",
+    "hoist": false,
+    "street": "Bloemgracht",
+    "gable": "cornice",
+    "storeys": 3,
+    "bays": 3,
+    "storeyHeights": [
+     4.2,
+     3,
+     3
+    ],
+    "doorBay": 0,
+    "doorPairs": true,
+    "dormers": 1,
+    "dormerStyle": "pediment",
+    "dormerBody": "stone",
+    "dormerAt": [
+     {
+      "from": 0.36,
+      "to": 0.64
+     }
+    ],
+    "dormerSize": {
+     "sill": 0.1,
+     "rise": 1.4,
+     "setback": 0.35
+    }
+   }
+  ],
+  "roof": {
+   "material": "red-tile",
+   "source": "front",
+   "form": "attic",
+   "rise": 0.5,
+   "evidence": "strip: a roof face rises behind the cornice with the dormer on it"
+  },
+  "palette": {
+   "frame": "white-painted",
+   "door": "#26302a",
+   "stone": "#ebe8df",
+   "cornice": "#ebe8df",
+   "stoneMaterial": "painted",
+   "brick": "#38373a",
+   "wallMaterial": "painted-brick"
+  }
+ },
+ "provenance": {
+  "fronts/0/id": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 2633-2855 px): three axes; ground 0-4.0 m with a double door left and two transomed windows; storeys at 4.6-6.6 and 7.5-9.6 m; a plain white cornice 9.8-10.5 m; a red tile roof face with one white dormer (pediment cap) 10.8-12.3 m; painted near-black brick #38373a",
+   "at": "2023-03-13"
+  },
+  "fronts/0/basement": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 2633-2855 px): three axes; ground 0-4.0 m with a double door left and two transomed windows; storeys at 4.6-6.6 and 7.5-9.6 m; a plain white cornice 9.8-10.5 m; a red tile roof face with one white dormer (pediment cap) 10.8-12.3 m; painted near-black brick #38373a (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/cornice": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 2633-2855 px): three axes; ground 0-4.0 m with a double door left and two transomed windows; storeys at 4.6-6.6 and 7.5-9.6 m; a plain white cornice 9.8-10.5 m; a red tile roof face with one white dormer (pediment cap) 10.8-12.3 m; painted near-black brick #38373a",
+   "at": "2023-03-13"
+  },
+  "fronts/0/windows": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 2633-2855 px): three axes; ground 0-4.0 m with a double door left and two transomed windows; storeys at 4.6-6.6 and 7.5-9.6 m; a plain white cornice 9.8-10.5 m; a red tile roof face with one white dormer (pediment cap) 10.8-12.3 m; painted near-black brick #38373a",
+   "at": "2023-03-13"
+  },
+  "fronts/0/windowSurround": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 2633-2855 px): three axes; ground 0-4.0 m with a double door left and two transomed windows; storeys at 4.6-6.6 and 7.5-9.6 m; a plain white cornice 9.8-10.5 m; a red tile roof face with one white dormer (pediment cap) 10.8-12.3 m; painted near-black brick #38373a (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/hoist": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 2633-2855 px): three axes; ground 0-4.0 m with a double door left and two transomed windows; storeys at 4.6-6.6 and 7.5-9.6 m; a plain white cornice 9.8-10.5 m; a red tile roof face with one white dormer (pediment cap) 10.8-12.3 m; painted near-black brick #38373a (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/street": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 2633-2855 px): three axes; ground 0-4.0 m with a double door left and two transomed windows; storeys at 4.6-6.6 and 7.5-9.6 m; a plain white cornice 9.8-10.5 m; a red tile roof face with one white dormer (pediment cap) 10.8-12.3 m; painted near-black brick #38373a",
+   "at": "2023-03-13"
+  },
+  "fronts/0/gable": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 2633-2855 px): three axes; ground 0-4.0 m with a double door left and two transomed windows; storeys at 4.6-6.6 and 7.5-9.6 m; a plain white cornice 9.8-10.5 m; a red tile roof face with one white dormer (pediment cap) 10.8-12.3 m; painted near-black brick #38373a",
+   "at": "2023-03-13"
+  },
+  "fronts/0/storeys": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 2633-2855 px): three axes; ground 0-4.0 m with a double door left and two transomed windows; storeys at 4.6-6.6 and 7.5-9.6 m; a plain white cornice 9.8-10.5 m; a red tile roof face with one white dormer (pediment cap) 10.8-12.3 m; painted near-black brick #38373a",
+   "at": "2023-03-13"
+  },
+  "fronts/0/bays": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 2633-2855 px): three axes; ground 0-4.0 m with a double door left and two transomed windows; storeys at 4.6-6.6 and 7.5-9.6 m; a plain white cornice 9.8-10.5 m; a red tile roof face with one white dormer (pediment cap) 10.8-12.3 m; painted near-black brick #38373a",
+   "at": "2023-03-13"
+  },
+  "fronts/0/storeyHeights": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 2633-2855 px): three axes; ground 0-4.0 m with a double door left and two transomed windows; storeys at 4.6-6.6 and 7.5-9.6 m; a plain white cornice 9.8-10.5 m; a red tile roof face with one white dormer (pediment cap) 10.8-12.3 m; painted near-black brick #38373a",
+   "at": "2023-03-13"
+  },
+  "fronts/0/doorBay": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 2633-2855 px): three axes; ground 0-4.0 m with a double door left and two transomed windows; storeys at 4.6-6.6 and 7.5-9.6 m; a plain white cornice 9.8-10.5 m; a red tile roof face with one white dormer (pediment cap) 10.8-12.3 m; painted near-black brick #38373a",
+   "at": "2023-03-13"
+  },
+  "fronts/0/doorPairs": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 2633-2855 px): three axes; ground 0-4.0 m with a double door left and two transomed windows; storeys at 4.6-6.6 and 7.5-9.6 m; a plain white cornice 9.8-10.5 m; a red tile roof face with one white dormer (pediment cap) 10.8-12.3 m; painted near-black brick #38373a",
+   "at": "2023-03-13"
+  },
+  "fronts/0/dormers": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 2633-2855 px): three axes; ground 0-4.0 m with a double door left and two transomed windows; storeys at 4.6-6.6 and 7.5-9.6 m; a plain white cornice 9.8-10.5 m; a red tile roof face with one white dormer (pediment cap) 10.8-12.3 m; painted near-black brick #38373a",
+   "at": "2023-03-13"
+  },
+  "fronts/0/dormerStyle": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 2633-2855 px): three axes; ground 0-4.0 m with a double door left and two transomed windows; storeys at 4.6-6.6 and 7.5-9.6 m; a plain white cornice 9.8-10.5 m; a red tile roof face with one white dormer (pediment cap) 10.8-12.3 m; painted near-black brick #38373a",
+   "at": "2023-03-13"
+  },
+  "fronts/0/dormerBody": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 2633-2855 px): three axes; ground 0-4.0 m with a double door left and two transomed windows; storeys at 4.6-6.6 and 7.5-9.6 m; a plain white cornice 9.8-10.5 m; a red tile roof face with one white dormer (pediment cap) 10.8-12.3 m; painted near-black brick #38373a",
+   "at": "2023-03-13"
+  },
+  "fronts/0/dormerAt": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 2633-2855 px): three axes; ground 0-4.0 m with a double door left and two transomed windows; storeys at 4.6-6.6 and 7.5-9.6 m; a plain white cornice 9.8-10.5 m; a red tile roof face with one white dormer (pediment cap) 10.8-12.3 m; painted near-black brick #38373a",
+   "at": "2023-03-13"
+  },
+  "fronts/0/dormerSize": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 2633-2855 px): three axes; ground 0-4.0 m with a double door left and two transomed windows; storeys at 4.6-6.6 and 7.5-9.6 m; a plain white cornice 9.8-10.5 m; a red tile roof face with one white dormer (pediment cap) 10.8-12.3 m; painted near-black brick #38373a",
+   "at": "2023-03-13"
+  },
+  "roof/material": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 2633-2855 px): three axes; ground 0-4.0 m with a double door left and two transomed windows; storeys at 4.6-6.6 and 7.5-9.6 m; a plain white cornice 9.8-10.5 m; a red tile roof face with one white dormer (pediment cap) 10.8-12.3 m; painted near-black brick #38373a",
+   "at": "2023-03-13"
+  },
+  "roof/source": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 2633-2855 px): three axes; ground 0-4.0 m with a double door left and two transomed windows; storeys at 4.6-6.6 and 7.5-9.6 m; a plain white cornice 9.8-10.5 m; a red tile roof face with one white dormer (pediment cap) 10.8-12.3 m; painted near-black brick #38373a",
+   "at": "2023-03-13"
+  },
+  "roof/form": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 2633-2855 px): three axes; ground 0-4.0 m with a double door left and two transomed windows; storeys at 4.6-6.6 and 7.5-9.6 m; a plain white cornice 9.8-10.5 m; a red tile roof face with one white dormer (pediment cap) 10.8-12.3 m; painted near-black brick #38373a",
+   "at": "2023-03-13"
+  },
+  "roof/rise": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 2633-2855 px): three axes; ground 0-4.0 m with a double door left and two transomed windows; storeys at 4.6-6.6 and 7.5-9.6 m; a plain white cornice 9.8-10.5 m; a red tile roof face with one white dormer (pediment cap) 10.8-12.3 m; painted near-black brick #38373a",
+   "at": "2023-03-13"
+  },
+  "roof/evidence": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 2633-2855 px): three axes; ground 0-4.0 m with a double door left and two transomed windows; storeys at 4.6-6.6 and 7.5-9.6 m; a plain white cornice 9.8-10.5 m; a red tile roof face with one white dormer (pediment cap) 10.8-12.3 m; painted near-black brick #38373a",
+   "at": "2023-03-13"
+  },
+  "palette/frame": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 2633-2855 px): three axes; ground 0-4.0 m with a double door left and two transomed windows; storeys at 4.6-6.6 and 7.5-9.6 m; a plain white cornice 9.8-10.5 m; a red tile roof face with one white dormer (pediment cap) 10.8-12.3 m; painted near-black brick #38373a (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/door": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 2633-2855 px): three axes; ground 0-4.0 m with a double door left and two transomed windows; storeys at 4.6-6.6 and 7.5-9.6 m; a plain white cornice 9.8-10.5 m; a red tile roof face with one white dormer (pediment cap) 10.8-12.3 m; painted near-black brick #38373a (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/stone": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 2633-2855 px): three axes; ground 0-4.0 m with a double door left and two transomed windows; storeys at 4.6-6.6 and 7.5-9.6 m; a plain white cornice 9.8-10.5 m; a red tile roof face with one white dormer (pediment cap) 10.8-12.3 m; painted near-black brick #38373a (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/cornice": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 2633-2855 px): three axes; ground 0-4.0 m with a double door left and two transomed windows; storeys at 4.6-6.6 and 7.5-9.6 m; a plain white cornice 9.8-10.5 m; a red tile roof face with one white dormer (pediment cap) 10.8-12.3 m; painted near-black brick #38373a (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/stoneMaterial": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 2633-2855 px): three axes; ground 0-4.0 m with a double door left and two transomed windows; storeys at 4.6-6.6 and 7.5-9.6 m; a plain white cornice 9.8-10.5 m; a red tile roof face with one white dormer (pediment cap) 10.8-12.3 m; painted near-black brick #38373a (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/brick": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 2633-2855 px): three axes; ground 0-4.0 m with a double door left and two transomed windows; storeys at 4.6-6.6 and 7.5-9.6 m; a plain white cornice 9.8-10.5 m; a red tile roof face with one white dormer (pediment cap) 10.8-12.3 m; painted near-black brick #38373a",
+   "at": "2023-03-13"
+  },
+  "palette/wallMaterial": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 2633-2855 px): three axes; ground 0-4.0 m with a double door left and two transomed windows; storeys at 4.6-6.6 and 7.5-9.6 m; a plain white cornice 9.8-10.5 m; a red tile roof face with one white dormer (pediment cap) 10.8-12.3 m; painted near-black brick #38373a",
+   "at": "2023-03-13"
+  }
+ }
+}

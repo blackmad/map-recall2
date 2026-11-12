@@ -1,0 +1,190 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012174977",
+ "address": "Egelantiersgracht 25",
+ "design": {
+  "fronts": [
+   {
+    "id": "front0",
+    "basement": "none",
+    "cornice": "simple",
+    "windows": "sash",
+    "windowSurround": "sill",
+    "hoist": false,
+    "street": "Egelantiersgracht",
+    "gable": "cornice",
+    "storeys": 4,
+    "bays": 3,
+    "storeyHeights": [
+     4.2,
+     2.3,
+     2.2,
+     2.5
+    ],
+    "doorBay": 0
+   }
+  ],
+  "roof": {
+   "material": "red-tile",
+   "source": "front",
+   "evidence": "strip: the roof behind the crown follows the front",
+   "form": "attic",
+   "rise": 0.6
+  },
+  "palette": {
+   "frame": "white-painted",
+   "door": "#26302a",
+   "stone": "#ebe8df",
+   "cornice": "#ebe8df",
+   "stoneMaterial": "painted",
+   "brick": "#484343",
+   "wallMaterial": "brick"
+  }
+ },
+ "provenance": {
+  "fronts/0/id": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): a 4.7 m front of three axes behind a tree: ground lights 2.4-3.6 m; storeys at 5.6-6.8, 7.6-8.8 and 9.4-10.4 m; a plain cornice ~11.2 m with nothing seen behind it; dark grey-brown brick #484343",
+   "at": "2023-03-13"
+  },
+  "fronts/0/basement": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): a 4.7 m front of three axes behind a tree: ground lights 2.4-3.6 m; storeys at 5.6-6.8, 7.6-8.8 and 9.4-10.4 m; a plain cornice ~11.2 m with nothing seen behind it; dark grey-brown brick #484343 (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/cornice": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): a 4.7 m front of three axes behind a tree: ground lights 2.4-3.6 m; storeys at 5.6-6.8, 7.6-8.8 and 9.4-10.4 m; a plain cornice ~11.2 m with nothing seen behind it; dark grey-brown brick #484343",
+   "at": "2023-03-13"
+  },
+  "fronts/0/windows": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): a 4.7 m front of three axes behind a tree: ground lights 2.4-3.6 m; storeys at 5.6-6.8, 7.6-8.8 and 9.4-10.4 m; a plain cornice ~11.2 m with nothing seen behind it; dark grey-brown brick #484343",
+   "at": "2023-03-13"
+  },
+  "fronts/0/windowSurround": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): a 4.7 m front of three axes behind a tree: ground lights 2.4-3.6 m; storeys at 5.6-6.8, 7.6-8.8 and 9.4-10.4 m; a plain cornice ~11.2 m with nothing seen behind it; dark grey-brown brick #484343 (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/hoist": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): a 4.7 m front of three axes behind a tree: ground lights 2.4-3.6 m; storeys at 5.6-6.8, 7.6-8.8 and 9.4-10.4 m; a plain cornice ~11.2 m with nothing seen behind it; dark grey-brown brick #484343 (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/street": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): a 4.7 m front of three axes behind a tree: ground lights 2.4-3.6 m; storeys at 5.6-6.8, 7.6-8.8 and 9.4-10.4 m; a plain cornice ~11.2 m with nothing seen behind it; dark grey-brown brick #484343",
+   "at": "2023-03-13"
+  },
+  "fronts/0/gable": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): a 4.7 m front of three axes behind a tree: ground lights 2.4-3.6 m; storeys at 5.6-6.8, 7.6-8.8 and 9.4-10.4 m; a plain cornice ~11.2 m with nothing seen behind it; dark grey-brown brick #484343",
+   "at": "2023-03-13"
+  },
+  "fronts/0/storeys": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): a 4.7 m front of three axes behind a tree: ground lights 2.4-3.6 m; storeys at 5.6-6.8, 7.6-8.8 and 9.4-10.4 m; a plain cornice ~11.2 m with nothing seen behind it; dark grey-brown brick #484343",
+   "at": "2023-03-13"
+  },
+  "fronts/0/bays": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): a 4.7 m front of three axes behind a tree: ground lights 2.4-3.6 m; storeys at 5.6-6.8, 7.6-8.8 and 9.4-10.4 m; a plain cornice ~11.2 m with nothing seen behind it; dark grey-brown brick #484343",
+   "at": "2023-03-13"
+  },
+  "fronts/0/storeyHeights": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): a 4.7 m front of three axes behind a tree: ground lights 2.4-3.6 m; storeys at 5.6-6.8, 7.6-8.8 and 9.4-10.4 m; a plain cornice ~11.2 m with nothing seen behind it; dark grey-brown brick #484343",
+   "at": "2023-03-13"
+  },
+  "fronts/0/doorBay": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): a 4.7 m front of three axes behind a tree: ground lights 2.4-3.6 m; storeys at 5.6-6.8, 7.6-8.8 and 9.4-10.4 m; a plain cornice ~11.2 m with nothing seen behind it; dark grey-brown brick #484343",
+   "at": "2023-03-13"
+  },
+  "roof/material": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): a 4.7 m front of three axes behind a tree: ground lights 2.4-3.6 m; storeys at 5.6-6.8, 7.6-8.8 and 9.4-10.4 m; a plain cornice ~11.2 m with nothing seen behind it; dark grey-brown brick #484343",
+   "at": "2023-03-13"
+  },
+  "roof/source": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): a 4.7 m front of three axes behind a tree: ground lights 2.4-3.6 m; storeys at 5.6-6.8, 7.6-8.8 and 9.4-10.4 m; a plain cornice ~11.2 m with nothing seen behind it; dark grey-brown brick #484343",
+   "at": "2023-03-13"
+  },
+  "roof/evidence": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): a 4.7 m front of three axes behind a tree: ground lights 2.4-3.6 m; storeys at 5.6-6.8, 7.6-8.8 and 9.4-10.4 m; a plain cornice ~11.2 m with nothing seen behind it; dark grey-brown brick #484343",
+   "at": "2023-03-13"
+  },
+  "roof/form": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): a 4.7 m front of three axes behind a tree: ground lights 2.4-3.6 m; storeys at 5.6-6.8, 7.6-8.8 and 9.4-10.4 m; a plain cornice ~11.2 m with nothing seen behind it; dark grey-brown brick #484343",
+   "at": "2023-03-13"
+  },
+  "roof/rise": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): a 4.7 m front of three axes behind a tree: ground lights 2.4-3.6 m; storeys at 5.6-6.8, 7.6-8.8 and 9.4-10.4 m; a plain cornice ~11.2 m with nothing seen behind it; dark grey-brown brick #484343",
+   "at": "2023-03-13"
+  },
+  "palette/frame": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): a 4.7 m front of three axes behind a tree: ground lights 2.4-3.6 m; storeys at 5.6-6.8, 7.6-8.8 and 9.4-10.4 m; a plain cornice ~11.2 m with nothing seen behind it; dark grey-brown brick #484343 (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/door": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): a 4.7 m front of three axes behind a tree: ground lights 2.4-3.6 m; storeys at 5.6-6.8, 7.6-8.8 and 9.4-10.4 m; a plain cornice ~11.2 m with nothing seen behind it; dark grey-brown brick #484343 (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/stone": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): a 4.7 m front of three axes behind a tree: ground lights 2.4-3.6 m; storeys at 5.6-6.8, 7.6-8.8 and 9.4-10.4 m; a plain cornice ~11.2 m with nothing seen behind it; dark grey-brown brick #484343 (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/cornice": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): a 4.7 m front of three axes behind a tree: ground lights 2.4-3.6 m; storeys at 5.6-6.8, 7.6-8.8 and 9.4-10.4 m; a plain cornice ~11.2 m with nothing seen behind it; dark grey-brown brick #484343 (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/stoneMaterial": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): a 4.7 m front of three axes behind a tree: ground lights 2.4-3.6 m; storeys at 5.6-6.8, 7.6-8.8 and 9.4-10.4 m; a plain cornice ~11.2 m with nothing seen behind it; dark grey-brown brick #484343 (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/brick": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): a 4.7 m front of three axes behind a tree: ground lights 2.4-3.6 m; storeys at 5.6-6.8, 7.6-8.8 and 9.4-10.4 m; a plain cornice ~11.2 m with nothing seen behind it; dark grey-brown brick #484343",
+   "at": "2023-03-13"
+  },
+  "palette/wallMaterial": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): a 4.7 m front of three axes behind a tree: ground lights 2.4-3.6 m; storeys at 5.6-6.8, 7.6-8.8 and 9.4-10.4 m; a plain cornice ~11.2 m with nothing seen behind it; dark grey-brown brick #484343",
+   "at": "2023-03-13"
+  }
+ }
+}

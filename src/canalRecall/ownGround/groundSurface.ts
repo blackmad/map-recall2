@@ -98,6 +98,8 @@ export function groundSurface(collection: BgtCollection, p: BgtGroundProps, vegS
 // ------------------------------------------------------------------ the open-ground-v1 extract
 
 export const OPEN_GROUND_EXTRACT = 'open-ground-v1';
+/** open-ground-v1 cut free of the roads-v1 ground polygons (scripts/own-ground/clip-open-ground.ts, lane G1 item A); read when published, `?openGroundClip=0` reads v1. */
+export const OPEN_GROUND_CLIPPED_EXTRACT = 'open-ground-v2';
 /** Published budget for the whole extract (build-open-ground.ts enforces it). */
 export const OPEN_GROUND_TOTAL_BUDGET_GZ = 12 * 1024 * 1024;
 

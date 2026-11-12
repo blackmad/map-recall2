@@ -1,0 +1,209 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012168693",
+ "address": "Egelantiersgracht 91",
+ "design": {
+  "fronts": [
+   {
+    "id": "front0",
+    "basement": "none",
+    "cornice": "none",
+    "windows": "sash",
+    "windowSurround": "sill",
+    "hoist": false,
+    "street": "Egelantiersgracht",
+    "gable": "point",
+    "crownRise": 1.45,
+    "atticWindows": 1,
+    "storeys": 4,
+    "bays": 2,
+    "storeyHeights": [
+     4.6,
+     3,
+     2.8,
+     2.6
+    ],
+    "doorBay": 1,
+    "shopfront": {
+     "colour": "#26302a",
+     "fascia": true,
+     "glazing": "transom",
+     "entrance": "right",
+     "evidence": "strip 2023-03-13: a dark shopfront with a fascia board"
+    }
+   }
+  ],
+  "roof": {
+   "material": "red-tile",
+   "squareSaddle": true,
+   "source": "front"
+  },
+  "palette": {
+   "frame": "white-painted",
+   "door": "#26302a",
+   "stone": "#ebe8df",
+   "cornice": "#ebe8df",
+   "stoneMaterial": "painted",
+   "brick": "#5a4e48",
+   "wallMaterial": "brick"
+  }
+ },
+ "provenance": {
+  "fronts/0/id": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): a 3.9 m front of two axes: a shop ground 0-4.3 m with a fascia (The Boardroom); storeys at 5.1-7.1, 8.2-10.1 and 11.0-12.6 m; a plain triangular (point) gable 13.7-17.9 m with one light and a chimney at the apex; red-brown brick #5a4e48",
+   "at": "2023-03-13"
+  },
+  "fronts/0/basement": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): a 3.9 m front of two axes: a shop ground 0-4.3 m with a fascia (The Boardroom); storeys at 5.1-7.1, 8.2-10.1 and 11.0-12.6 m; a plain triangular (point) gable 13.7-17.9 m with one light and a chimney at the apex; red-brown brick #5a4e48 (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/cornice": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): a 3.9 m front of two axes: a shop ground 0-4.3 m with a fascia (The Boardroom); storeys at 5.1-7.1, 8.2-10.1 and 11.0-12.6 m; a plain triangular (point) gable 13.7-17.9 m with one light and a chimney at the apex; red-brown brick #5a4e48 (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/windows": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): a 3.9 m front of two axes: a shop ground 0-4.3 m with a fascia (The Boardroom); storeys at 5.1-7.1, 8.2-10.1 and 11.0-12.6 m; a plain triangular (point) gable 13.7-17.9 m with one light and a chimney at the apex; red-brown brick #5a4e48",
+   "at": "2023-03-13"
+  },
+  "fronts/0/windowSurround": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): a 3.9 m front of two axes: a shop ground 0-4.3 m with a fascia (The Boardroom); storeys at 5.1-7.1, 8.2-10.1 and 11.0-12.6 m; a plain triangular (point) gable 13.7-17.9 m with one light and a chimney at the apex; red-brown brick #5a4e48 (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/hoist": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): a 3.9 m front of two axes: a shop ground 0-4.3 m with a fascia (The Boardroom); storeys at 5.1-7.1, 8.2-10.1 and 11.0-12.6 m; a plain triangular (point) gable 13.7-17.9 m with one light and a chimney at the apex; red-brown brick #5a4e48 (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/street": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): a 3.9 m front of two axes: a shop ground 0-4.3 m with a fascia (The Boardroom); storeys at 5.1-7.1, 8.2-10.1 and 11.0-12.6 m; a plain triangular (point) gable 13.7-17.9 m with one light and a chimney at the apex; red-brown brick #5a4e48",
+   "at": "2023-03-13"
+  },
+  "fronts/0/gable": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): a 3.9 m front of two axes: a shop ground 0-4.3 m with a fascia (The Boardroom); storeys at 5.1-7.1, 8.2-10.1 and 11.0-12.6 m; a plain triangular (point) gable 13.7-17.9 m with one light and a chimney at the apex; red-brown brick #5a4e48",
+   "at": "2023-03-13"
+  },
+  "fronts/0/crownRise": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): a 3.9 m front of two axes: a shop ground 0-4.3 m with a fascia (The Boardroom); storeys at 5.1-7.1, 8.2-10.1 and 11.0-12.6 m; a plain triangular (point) gable 13.7-17.9 m with one light and a chimney at the apex; red-brown brick #5a4e48",
+   "at": "2023-03-13"
+  },
+  "fronts/0/atticWindows": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): a 3.9 m front of two axes: a shop ground 0-4.3 m with a fascia (The Boardroom); storeys at 5.1-7.1, 8.2-10.1 and 11.0-12.6 m; a plain triangular (point) gable 13.7-17.9 m with one light and a chimney at the apex; red-brown brick #5a4e48",
+   "at": "2023-03-13"
+  },
+  "fronts/0/storeys": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): a 3.9 m front of two axes: a shop ground 0-4.3 m with a fascia (The Boardroom); storeys at 5.1-7.1, 8.2-10.1 and 11.0-12.6 m; a plain triangular (point) gable 13.7-17.9 m with one light and a chimney at the apex; red-brown brick #5a4e48",
+   "at": "2023-03-13"
+  },
+  "fronts/0/bays": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): a 3.9 m front of two axes: a shop ground 0-4.3 m with a fascia (The Boardroom); storeys at 5.1-7.1, 8.2-10.1 and 11.0-12.6 m; a plain triangular (point) gable 13.7-17.9 m with one light and a chimney at the apex; red-brown brick #5a4e48",
+   "at": "2023-03-13"
+  },
+  "fronts/0/storeyHeights": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): a 3.9 m front of two axes: a shop ground 0-4.3 m with a fascia (The Boardroom); storeys at 5.1-7.1, 8.2-10.1 and 11.0-12.6 m; a plain triangular (point) gable 13.7-17.9 m with one light and a chimney at the apex; red-brown brick #5a4e48",
+   "at": "2023-03-13"
+  },
+  "fronts/0/doorBay": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): a 3.9 m front of two axes: a shop ground 0-4.3 m with a fascia (The Boardroom); storeys at 5.1-7.1, 8.2-10.1 and 11.0-12.6 m; a plain triangular (point) gable 13.7-17.9 m with one light and a chimney at the apex; red-brown brick #5a4e48",
+   "at": "2023-03-13"
+  },
+  "fronts/0/shopfront": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): a 3.9 m front of two axes: a shop ground 0-4.3 m with a fascia (The Boardroom); storeys at 5.1-7.1, 8.2-10.1 and 11.0-12.6 m; a plain triangular (point) gable 13.7-17.9 m with one light and a chimney at the apex; red-brown brick #5a4e48",
+   "at": "2023-03-13"
+  },
+  "roof/material": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): a 3.9 m front of two axes: a shop ground 0-4.3 m with a fascia (The Boardroom); storeys at 5.1-7.1, 8.2-10.1 and 11.0-12.6 m; a plain triangular (point) gable 13.7-17.9 m with one light and a chimney at the apex; red-brown brick #5a4e48",
+   "at": "2023-03-13"
+  },
+  "roof/squareSaddle": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): a 3.9 m front of two axes: a shop ground 0-4.3 m with a fascia (The Boardroom); storeys at 5.1-7.1, 8.2-10.1 and 11.0-12.6 m; a plain triangular (point) gable 13.7-17.9 m with one light and a chimney at the apex; red-brown brick #5a4e48",
+   "at": "2023-03-13"
+  },
+  "roof/source": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): a 3.9 m front of two axes: a shop ground 0-4.3 m with a fascia (The Boardroom); storeys at 5.1-7.1, 8.2-10.1 and 11.0-12.6 m; a plain triangular (point) gable 13.7-17.9 m with one light and a chimney at the apex; red-brown brick #5a4e48",
+   "at": "2023-03-13"
+  },
+  "palette/frame": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): a 3.9 m front of two axes: a shop ground 0-4.3 m with a fascia (The Boardroom); storeys at 5.1-7.1, 8.2-10.1 and 11.0-12.6 m; a plain triangular (point) gable 13.7-17.9 m with one light and a chimney at the apex; red-brown brick #5a4e48 (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/door": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): a 3.9 m front of two axes: a shop ground 0-4.3 m with a fascia (The Boardroom); storeys at 5.1-7.1, 8.2-10.1 and 11.0-12.6 m; a plain triangular (point) gable 13.7-17.9 m with one light and a chimney at the apex; red-brown brick #5a4e48 (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/stone": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): a 3.9 m front of two axes: a shop ground 0-4.3 m with a fascia (The Boardroom); storeys at 5.1-7.1, 8.2-10.1 and 11.0-12.6 m; a plain triangular (point) gable 13.7-17.9 m with one light and a chimney at the apex; red-brown brick #5a4e48 (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/cornice": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): a 3.9 m front of two axes: a shop ground 0-4.3 m with a fascia (The Boardroom); storeys at 5.1-7.1, 8.2-10.1 and 11.0-12.6 m; a plain triangular (point) gable 13.7-17.9 m with one light and a chimney at the apex; red-brown brick #5a4e48 (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/stoneMaterial": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): a 3.9 m front of two axes: a shop ground 0-4.3 m with a fascia (The Boardroom); storeys at 5.1-7.1, 8.2-10.1 and 11.0-12.6 m; a plain triangular (point) gable 13.7-17.9 m with one light and a chimney at the apex; red-brown brick #5a4e48 (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/brick": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): a 3.9 m front of two axes: a shop ground 0-4.3 m with a fascia (The Boardroom); storeys at 5.1-7.1, 8.2-10.1 and 11.0-12.6 m; a plain triangular (point) gable 13.7-17.9 m with one light and a chimney at the apex; red-brown brick #5a4e48",
+   "at": "2023-03-13"
+  },
+  "palette/wallMaterial": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): a 3.9 m front of two axes: a shop ground 0-4.3 m with a fascia (The Boardroom); storeys at 5.1-7.1, 8.2-10.1 and 11.0-12.6 m; a plain triangular (point) gable 13.7-17.9 m with one light and a chimney at the apex; red-brown brick #5a4e48",
+   "at": "2023-03-13"
+  }
+ },
+ "schemaLimits": [
+  {
+   "component": "shop sign",
+   "what": "the fascia lettering (The Boardroom) is not drawn"
+  }
+ ]
+}

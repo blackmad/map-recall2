@@ -1,0 +1,209 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012172693",
+ "address": "Egelantiersgracht 57",
+ "design": {
+  "fronts": [
+   {
+    "id": "front0",
+    "basement": "none",
+    "cornice": "none",
+    "windows": "casement-pair",
+    "windowSurround": "sill",
+    "hoist": false,
+    "street": "Egelantiersgracht",
+    "gable": "flat",
+    "storeys": 4,
+    "bays": 2,
+    "storeyHeights": [
+     4.6,
+     2.6,
+     2.6,
+     2.6
+    ],
+    "doorBay": 1,
+    "groundFront": {
+     "kind": "wall",
+     "colour": "#8f9294",
+     "evidence": "strip 2023-03-13: grey panelled ground storey",
+     "bays": [
+      "window",
+      "door",
+      "window"
+     ]
+    }
+   }
+  ],
+  "roof": {
+   "material": "bitumen",
+   "source": "front",
+   "evidence": "strip: the roof behind the crown follows the front",
+   "form": "flat"
+  },
+  "palette": {
+   "frame": "white-painted",
+   "door": "#26302a",
+   "stone": "#ebe8df",
+   "cornice": "#ebe8df",
+   "stoneMaterial": "painted",
+   "brick": "#4c4543",
+   "wallMaterial": "brick"
+  }
+ },
+ "provenance": {
+  "fronts/0/id": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): a post-war 8.9 m front: a grey clad ground 0-4.5 m with the door centre; three storeys of wide steel windows (4.9-6.4, 7.6-9.0, 10.2-11.6 m) in a red-brown brick frame #4c4543; a white set-back top storey 12.4-15.0 m behind a roof terrace railing",
+   "at": "2023-03-13"
+  },
+  "fronts/0/basement": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): a post-war 8.9 m front: a grey clad ground 0-4.5 m with the door centre; three storeys of wide steel windows (4.9-6.4, 7.6-9.0, 10.2-11.6 m) in a red-brown brick frame #4c4543; a white set-back top storey 12.4-15.0 m behind a roof terrace railing (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/cornice": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): a post-war 8.9 m front: a grey clad ground 0-4.5 m with the door centre; three storeys of wide steel windows (4.9-6.4, 7.6-9.0, 10.2-11.6 m) in a red-brown brick frame #4c4543; a white set-back top storey 12.4-15.0 m behind a roof terrace railing (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/windows": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): a post-war 8.9 m front: a grey clad ground 0-4.5 m with the door centre; three storeys of wide steel windows (4.9-6.4, 7.6-9.0, 10.2-11.6 m) in a red-brown brick frame #4c4543; a white set-back top storey 12.4-15.0 m behind a roof terrace railing",
+   "at": "2023-03-13"
+  },
+  "fronts/0/windowSurround": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): a post-war 8.9 m front: a grey clad ground 0-4.5 m with the door centre; three storeys of wide steel windows (4.9-6.4, 7.6-9.0, 10.2-11.6 m) in a red-brown brick frame #4c4543; a white set-back top storey 12.4-15.0 m behind a roof terrace railing (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/hoist": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): a post-war 8.9 m front: a grey clad ground 0-4.5 m with the door centre; three storeys of wide steel windows (4.9-6.4, 7.6-9.0, 10.2-11.6 m) in a red-brown brick frame #4c4543; a white set-back top storey 12.4-15.0 m behind a roof terrace railing (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/street": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): a post-war 8.9 m front: a grey clad ground 0-4.5 m with the door centre; three storeys of wide steel windows (4.9-6.4, 7.6-9.0, 10.2-11.6 m) in a red-brown brick frame #4c4543; a white set-back top storey 12.4-15.0 m behind a roof terrace railing",
+   "at": "2023-03-13"
+  },
+  "fronts/0/gable": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): a post-war 8.9 m front: a grey clad ground 0-4.5 m with the door centre; three storeys of wide steel windows (4.9-6.4, 7.6-9.0, 10.2-11.6 m) in a red-brown brick frame #4c4543; a white set-back top storey 12.4-15.0 m behind a roof terrace railing",
+   "at": "2023-03-13"
+  },
+  "fronts/0/storeys": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): a post-war 8.9 m front: a grey clad ground 0-4.5 m with the door centre; three storeys of wide steel windows (4.9-6.4, 7.6-9.0, 10.2-11.6 m) in a red-brown brick frame #4c4543; a white set-back top storey 12.4-15.0 m behind a roof terrace railing",
+   "at": "2023-03-13"
+  },
+  "fronts/0/bays": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): a post-war 8.9 m front: a grey clad ground 0-4.5 m with the door centre; three storeys of wide steel windows (4.9-6.4, 7.6-9.0, 10.2-11.6 m) in a red-brown brick frame #4c4543; a white set-back top storey 12.4-15.0 m behind a roof terrace railing",
+   "at": "2023-03-13"
+  },
+  "fronts/0/storeyHeights": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): a post-war 8.9 m front: a grey clad ground 0-4.5 m with the door centre; three storeys of wide steel windows (4.9-6.4, 7.6-9.0, 10.2-11.6 m) in a red-brown brick frame #4c4543; a white set-back top storey 12.4-15.0 m behind a roof terrace railing",
+   "at": "2023-03-13"
+  },
+  "fronts/0/doorBay": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): a post-war 8.9 m front: a grey clad ground 0-4.5 m with the door centre; three storeys of wide steel windows (4.9-6.4, 7.6-9.0, 10.2-11.6 m) in a red-brown brick frame #4c4543; a white set-back top storey 12.4-15.0 m behind a roof terrace railing",
+   "at": "2023-03-13"
+  },
+  "fronts/0/groundFront": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): a post-war 8.9 m front: a grey clad ground 0-4.5 m with the door centre; three storeys of wide steel windows (4.9-6.4, 7.6-9.0, 10.2-11.6 m) in a red-brown brick frame #4c4543; a white set-back top storey 12.4-15.0 m behind a roof terrace railing",
+   "at": "2023-03-13"
+  },
+  "roof/material": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): a post-war 8.9 m front: a grey clad ground 0-4.5 m with the door centre; three storeys of wide steel windows (4.9-6.4, 7.6-9.0, 10.2-11.6 m) in a red-brown brick frame #4c4543; a white set-back top storey 12.4-15.0 m behind a roof terrace railing",
+   "at": "2023-03-13"
+  },
+  "roof/source": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): a post-war 8.9 m front: a grey clad ground 0-4.5 m with the door centre; three storeys of wide steel windows (4.9-6.4, 7.6-9.0, 10.2-11.6 m) in a red-brown brick frame #4c4543; a white set-back top storey 12.4-15.0 m behind a roof terrace railing",
+   "at": "2023-03-13"
+  },
+  "roof/evidence": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): a post-war 8.9 m front: a grey clad ground 0-4.5 m with the door centre; three storeys of wide steel windows (4.9-6.4, 7.6-9.0, 10.2-11.6 m) in a red-brown brick frame #4c4543; a white set-back top storey 12.4-15.0 m behind a roof terrace railing",
+   "at": "2023-03-13"
+  },
+  "roof/form": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): a post-war 8.9 m front: a grey clad ground 0-4.5 m with the door centre; three storeys of wide steel windows (4.9-6.4, 7.6-9.0, 10.2-11.6 m) in a red-brown brick frame #4c4543; a white set-back top storey 12.4-15.0 m behind a roof terrace railing",
+   "at": "2023-03-13"
+  },
+  "palette/frame": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): a post-war 8.9 m front: a grey clad ground 0-4.5 m with the door centre; three storeys of wide steel windows (4.9-6.4, 7.6-9.0, 10.2-11.6 m) in a red-brown brick frame #4c4543; a white set-back top storey 12.4-15.0 m behind a roof terrace railing (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/door": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): a post-war 8.9 m front: a grey clad ground 0-4.5 m with the door centre; three storeys of wide steel windows (4.9-6.4, 7.6-9.0, 10.2-11.6 m) in a red-brown brick frame #4c4543; a white set-back top storey 12.4-15.0 m behind a roof terrace railing (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/stone": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): a post-war 8.9 m front: a grey clad ground 0-4.5 m with the door centre; three storeys of wide steel windows (4.9-6.4, 7.6-9.0, 10.2-11.6 m) in a red-brown brick frame #4c4543; a white set-back top storey 12.4-15.0 m behind a roof terrace railing (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/cornice": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): a post-war 8.9 m front: a grey clad ground 0-4.5 m with the door centre; three storeys of wide steel windows (4.9-6.4, 7.6-9.0, 10.2-11.6 m) in a red-brown brick frame #4c4543; a white set-back top storey 12.4-15.0 m behind a roof terrace railing (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/stoneMaterial": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): a post-war 8.9 m front: a grey clad ground 0-4.5 m with the door centre; three storeys of wide steel windows (4.9-6.4, 7.6-9.0, 10.2-11.6 m) in a red-brown brick frame #4c4543; a white set-back top storey 12.4-15.0 m behind a roof terrace railing (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/brick": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): a post-war 8.9 m front: a grey clad ground 0-4.5 m with the door centre; three storeys of wide steel windows (4.9-6.4, 7.6-9.0, 10.2-11.6 m) in a red-brown brick frame #4c4543; a white set-back top storey 12.4-15.0 m behind a roof terrace railing",
+   "at": "2023-03-13"
+  },
+  "palette/wallMaterial": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): a post-war 8.9 m front: a grey clad ground 0-4.5 m with the door centre; three storeys of wide steel windows (4.9-6.4, 7.6-9.0, 10.2-11.6 m) in a red-brown brick frame #4c4543; a white set-back top storey 12.4-15.0 m behind a roof terrace railing",
+   "at": "2023-03-13"
+  }
+ },
+ "schemaLimits": [
+  {
+   "component": "storey",
+   "what": "the white set-back top storey and the roof terrace railing are not drawn"
+  },
+  {
+   "component": "windows",
+   "what": "the wide horizontal steel windows are drawn as casement pairs"
+  }
+ ]
+}

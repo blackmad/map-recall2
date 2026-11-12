@@ -3,6 +3,40 @@
   "notes": [
     {
       "date": "2026-11-12",
+      "title": "The krul urinal is round now",
+      "text": "The green Amsterdamse krul urinals were blocky, and their stone drain stuck out through the iron wall. They're now a smooth curved sheet on round posts, with the raised rib, the darker lattice band at the top, a shallow round cap with a finial, and the round drain pedestal tucked inside the curl under the raised edge.",
+      "images": [
+        {
+          "src": "ui/2026-11-12-krul-curves/gallery-before-after.jpg",
+          "alt": "Krul urinal from four sides, before (faceted, square stone through the sheet) and after (curved, pedestal inside)",
+          "caption": "Before and after, four sides"
+        },
+        {
+          "src": "ui/2026-11-12-krul-curves/amstelveld-krul-photo-vs-ride.jpg",
+          "alt": "Amstelveld krul: panorama, old model and new model in the ride",
+          "caption": "Amstelveld: photo, before, after"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-12",
+      "title": "Smoother ground around the ring roads and tunnels",
+      "text": "Out by the A10 ring the ground holds together better. It no longer floats over ditches and hollows, the Overschiestraat underpass is one clean cutting instead of three overlapping ones, and stray tunnel mouths on garage ramps are gone.",
+      "images": [
+        {
+          "src": "ui/2026-11-12-ground-g1/overschiestraat.jpg",
+          "alt": "Overschiestraat underpass: aerial photo, before and after",
+          "caption": "Overschiestraat: photo, before, after"
+        },
+        {
+          "src": "ui/2026-11-12-ground-g1/schinkel-jachthavenweg.jpg",
+          "alt": "Schinkel bank at the Jachthavenweg: aerial photo, before and after",
+          "caption": "Schinkel bank: photo, before, after"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-12",
       "title": "Amsterdam's green krul urinals",
       "text": "The ride now has the city's cast-iron krul urinals (plaskrullen): 38 of them at the 37 spots on the city's public-toilet map, mostly along the canals in Centrum. The model is a spiral iron sheet on four posts, raised half a metre off a tiled pad and perforated in its upper half. Its plan comes from the city's own drawing, and its heights and colour were measured from street panoramas. See it on the Street furniture page.",
       "images": [

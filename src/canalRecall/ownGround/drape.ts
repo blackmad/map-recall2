@@ -304,3 +304,90 @@ export function merge(meshes: readonly MeshArrays[]): MeshArrays {
   }
   return out;
 }
+
+/**
+ * Float bound on the land grid (lane G1 item D, issue #376). The 5 m land grid's surface floats over the relief in
+ * every hollow narrower than a quad (a ditch, a dike's foot, a path's dip), and every natural layer drapes on that
+ * surface (gridHeight), so the lawns, parks and open ground floated with it: G0's audit measured 26,292 m2 of float at
+ * the named places, a third of their shard area. A quad whose surface stands more than `tol` over the relief at any of
+ * its five half-step nodes (edge midpoints, centre) is split into four half-step quads on the relief; a quad beside a
+ * split one takes the shared edge's midpoint and is fanned from its centre (relief), so the mesh stays watertight. The
+ * split is a pure function of the quad's position (cells agree at their seams). Where no quad within one step splits,
+ * the mesh and the surface are the grid's own, byte for byte.
+ */
+export interface FloatBoundGrid { height: HeightFn; mesh: (x0: number, y0: number, x1: number, y1: number, keep?: (x: number, y: number) => boolean) => MeshArrays; splits: () => number }
+export function floatBoundGrid(height: HeightFn, step: number, tol: number): FloatBoundGrid {
+  const h2 = step / 2;
+  const node = new Map<number, number>();
+  /** Height at half-step node (I, J) (global, in half steps). */
+  const at2 = (I: number, J: number): number => {
+    const k = I * 2_097_152 + J;
+    let z = node.get(k);
+    if (z === undefined) { z = height(I * h2, J * h2); node.set(k, z); }
+    return z;
+  };
+  const coarse = (i: number, j: number, u: number, v: number): number => {
+    const za = at2(2 * i, 2 * j), zb = at2(2 * i + 2, 2 * j), zc = at2(2 * i + 2, 2 * j + 2), zd = at2(2 * i, 2 * j + 2);
+    return u >= v ? za + u * (zb - za) + v * (zc - zb) : za + v * (zd - za) + u * (zc - zd);
+  };
+  const splitMemo = new Map<number, boolean>();
+  let nSplit = 0;
+  const split = (i: number, j: number): boolean => {
+    const k = i * 1_048_576 + j;
+    let s = splitMemo.get(k);
+    if (s === undefined) {
+      s = coarse(i, j, 0.5, 0) - at2(2 * i + 1, 2 * j) > tol || coarse(i, j, 1, 0.5) - at2(2 * i + 2, 2 * j + 1) > tol || coarse(i, j, 0.5, 1) - at2(2 * i + 1, 2 * j + 2) > tol || coarse(i, j, 0, 0.5) - at2(2 * i, 2 * j + 1) > tol || coarse(i, j, 0.5, 0.5) - at2(2 * i + 1, 2 * j + 1) > tol;
+      splitMemo.set(k, s);
+      if (s) nSplit++;
+    }
+    return s;
+  };
+  /** The quad's triangles as half-step node triples [I, J] (null: the plain a-b-c, a-c-d quad). */
+  const tris = (i: number, j: number): [number, number][][] | null => {
+    const I = 2 * i, J = 2 * j;
+    if (split(i, j)) {
+      const out: [number, number][][] = [];
+      for (const [di, dj] of [[0, 0], [1, 0], [0, 1], [1, 1]]) { const a: [number, number] = [I + di, J + dj], b: [number, number] = [I + di + 1, J + dj], c: [number, number] = [I + di + 1, J + dj + 1], d: [number, number] = [I + di, J + dj + 1]; out.push([a, b, c], [a, c, d]); }
+      return out;
+    }
+    const s = split(i, j - 1), e = split(i + 1, j), n = split(i, j + 1), w = split(i - 1, j);
+    if (!s && !e && !n && !w) return null;
+    // Transition: the ring a, (s), b, (e), c, (n), d, (w), fanned from the centre.
+    const ring: [number, number][] = [[I, J]];
+    if (s) ring.push([I + 1, J]);
+    ring.push([I + 2, J]);
+    if (e) ring.push([I + 2, J + 1]);
+    ring.push([I + 2, J + 2]);
+    if (n) ring.push([I + 1, J + 2]);
+    ring.push([I, J + 2]);
+    if (w) ring.push([I, J + 1]);
+    const c: [number, number] = [I + 1, J + 1];
+    return ring.map((p, k) => [c, p, ring[(k + 1) % ring.length]]);
+  };
+  const h = (x: number, y: number): number => {
+    const fi = x / step, fj = y / step, i = Math.floor(fi), j = Math.floor(fj), u = fi - i, v = fj - j;
+    const t = tris(i, j);
+    if (!t) return coarse(i, j, u, v);
+    const X = x / h2, Y = y / h2;
+    for (const [a, b, c] of t) {
+      const det = (b[1] - c[1]) * (a[0] - c[0]) + (c[0] - b[0]) * (a[1] - c[1]);
+      const l1 = ((b[1] - c[1]) * (X - c[0]) + (c[0] - b[0]) * (Y - c[1])) / det, l2 = ((c[1] - a[1]) * (X - c[0]) + (a[0] - c[0]) * (Y - c[1])) / det, l3 = 1 - l1 - l2;
+      if (l1 >= -1e-9 && l2 >= -1e-9 && l3 >= -1e-9) return l1 * at2(a[0], a[1]) + l2 * at2(b[0], b[1]) + l3 * at2(c[0], c[1]);
+    }
+    return coarse(i, j, u, v);
+  };
+  const mesh = (x0: number, y0: number, x1: number, y1: number, keep: (x: number, y: number) => boolean = () => true): MeshArrays => {
+    const m = emptyMesh();
+    const nx = Math.ceil((x1 - x0) / step), ny = Math.ceil((y1 - y0) / step), i0 = Math.round(x0 / step), j0 = Math.round(y0 / step);
+    const index = new Map<number, number>();
+    const vid = (I: number, J: number) => { const k = I * 2_097_152 + J; let r = index.get(k); if (r === undefined) { r = vertex(m, I * h2, J * h2, at2(I, J)); index.set(k, r); } return r; };
+    for (let j = 0; j < ny; j++) for (let i = 0; i < nx; i++) {
+      if (!keep(x0 + (i + 0.5) * step, y0 + (j + 0.5) * step)) continue;
+      const gi = i0 + i, gj = j0 + j, t = tris(gi, gj);
+      if (!t) { const a = vid(2 * gi, 2 * gj), b = vid(2 * gi + 2, 2 * gj), c = vid(2 * gi + 2, 2 * gj + 2), d = vid(2 * gi, 2 * gj + 2); m.indices.push(a, b, c, a, c, d); continue; }
+      for (const [a, b, c] of t) m.indices.push(vid(a[0], a[1]), vid(b[0], b[1]), vid(c[0], c[1]));
+    }
+    return m;
+  };
+  return { height: h, mesh, splits: () => nSplit };
+}

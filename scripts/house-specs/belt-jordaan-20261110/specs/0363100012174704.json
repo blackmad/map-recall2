@@ -1,0 +1,212 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012174704",
+ "address": "Egelantiersgracht 15",
+ "design": {
+  "fronts": [
+   {
+    "id": "front0",
+    "basement": "stoop-and-windows",
+    "cornice": "none",
+    "windows": "sash",
+    "windowSurround": "full-frame",
+    "hoist": false,
+    "street": "Egelantiersgracht",
+    "gable": "bell",
+    "crownRise": 1.3,
+    "crownCap": "rounded",
+    "atticWindows": 1,
+    "crownFinial": false,
+    "storeys": 5,
+    "bays": 3,
+    "storeyHeights": [
+     3,
+     2.5,
+     2.5,
+     2.3,
+     2.4
+    ],
+    "doorBay": 0
+   }
+  ],
+  "roof": {
+   "material": "red-tile",
+   "source": "front",
+   "evidence": "strip: the roof behind the crown follows the front",
+   "squareSaddle": true
+  },
+  "palette": {
+   "frame": "white-painted",
+   "door": "#26302a",
+   "stone": "#ebe8df",
+   "cornice": "#ebe8df",
+   "stoneMaterial": "painted",
+   "brick": "#3f3734",
+   "wallMaterial": "brick"
+  }
+ },
+ "provenance": {
+  "fronts/0/id": {
+   "source": "author",
+   "confidence": 0.65,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): three axes over a white stoop basement 0-2.6 m; a tall ground storey with a transomed window and stained-glass lights 2.9-4.6 m; white-framed sashes at 5.6-7.0, 7.9-9.2 and 10.0-11.4, 12.4-13.8 m; a tall bell gable 14.4-17.6 m with a rounded cap and one attic light; dark brown brick #3f3734",
+   "at": "2023-03-13"
+  },
+  "fronts/0/basement": {
+   "source": "author",
+   "confidence": 0.65,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): three axes over a white stoop basement 0-2.6 m; a tall ground storey with a transomed window and stained-glass lights 2.9-4.6 m; white-framed sashes at 5.6-7.0, 7.9-9.2 and 10.0-11.4, 12.4-13.8 m; a tall bell gable 14.4-17.6 m with a rounded cap and one attic light; dark brown brick #3f3734",
+   "at": "2023-03-13"
+  },
+  "fronts/0/cornice": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): three axes over a white stoop basement 0-2.6 m; a tall ground storey with a transomed window and stained-glass lights 2.9-4.6 m; white-framed sashes at 5.6-7.0, 7.9-9.2 and 10.0-11.4, 12.4-13.8 m; a tall bell gable 14.4-17.6 m with a rounded cap and one attic light; dark brown brick #3f3734 (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/windows": {
+   "source": "author",
+   "confidence": 0.65,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): three axes over a white stoop basement 0-2.6 m; a tall ground storey with a transomed window and stained-glass lights 2.9-4.6 m; white-framed sashes at 5.6-7.0, 7.9-9.2 and 10.0-11.4, 12.4-13.8 m; a tall bell gable 14.4-17.6 m with a rounded cap and one attic light; dark brown brick #3f3734",
+   "at": "2023-03-13"
+  },
+  "fronts/0/windowSurround": {
+   "source": "author",
+   "confidence": 0.65,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): three axes over a white stoop basement 0-2.6 m; a tall ground storey with a transomed window and stained-glass lights 2.9-4.6 m; white-framed sashes at 5.6-7.0, 7.9-9.2 and 10.0-11.4, 12.4-13.8 m; a tall bell gable 14.4-17.6 m with a rounded cap and one attic light; dark brown brick #3f3734",
+   "at": "2023-03-13"
+  },
+  "fronts/0/hoist": {
+   "source": "author",
+   "confidence": 0.65,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): three axes over a white stoop basement 0-2.6 m; a tall ground storey with a transomed window and stained-glass lights 2.9-4.6 m; white-framed sashes at 5.6-7.0, 7.9-9.2 and 10.0-11.4, 12.4-13.8 m; a tall bell gable 14.4-17.6 m with a rounded cap and one attic light; dark brown brick #3f3734",
+   "at": "2023-03-13"
+  },
+  "fronts/0/street": {
+   "source": "author",
+   "confidence": 0.65,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): three axes over a white stoop basement 0-2.6 m; a tall ground storey with a transomed window and stained-glass lights 2.9-4.6 m; white-framed sashes at 5.6-7.0, 7.9-9.2 and 10.0-11.4, 12.4-13.8 m; a tall bell gable 14.4-17.6 m with a rounded cap and one attic light; dark brown brick #3f3734",
+   "at": "2023-03-13"
+  },
+  "fronts/0/gable": {
+   "source": "author",
+   "confidence": 0.65,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): three axes over a white stoop basement 0-2.6 m; a tall ground storey with a transomed window and stained-glass lights 2.9-4.6 m; white-framed sashes at 5.6-7.0, 7.9-9.2 and 10.0-11.4, 12.4-13.8 m; a tall bell gable 14.4-17.6 m with a rounded cap and one attic light; dark brown brick #3f3734",
+   "at": "2023-03-13"
+  },
+  "fronts/0/crownRise": {
+   "source": "author",
+   "confidence": 0.65,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): three axes over a white stoop basement 0-2.6 m; a tall ground storey with a transomed window and stained-glass lights 2.9-4.6 m; white-framed sashes at 5.6-7.0, 7.9-9.2 and 10.0-11.4, 12.4-13.8 m; a tall bell gable 14.4-17.6 m with a rounded cap and one attic light; dark brown brick #3f3734",
+   "at": "2023-03-13"
+  },
+  "fronts/0/crownCap": {
+   "source": "author",
+   "confidence": 0.65,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): three axes over a white stoop basement 0-2.6 m; a tall ground storey with a transomed window and stained-glass lights 2.9-4.6 m; white-framed sashes at 5.6-7.0, 7.9-9.2 and 10.0-11.4, 12.4-13.8 m; a tall bell gable 14.4-17.6 m with a rounded cap and one attic light; dark brown brick #3f3734",
+   "at": "2023-03-13"
+  },
+  "fronts/0/atticWindows": {
+   "source": "author",
+   "confidence": 0.65,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): three axes over a white stoop basement 0-2.6 m; a tall ground storey with a transomed window and stained-glass lights 2.9-4.6 m; white-framed sashes at 5.6-7.0, 7.9-9.2 and 10.0-11.4, 12.4-13.8 m; a tall bell gable 14.4-17.6 m with a rounded cap and one attic light; dark brown brick #3f3734",
+   "at": "2023-03-13"
+  },
+  "fronts/0/crownFinial": {
+   "source": "author",
+   "confidence": 0.65,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): three axes over a white stoop basement 0-2.6 m; a tall ground storey with a transomed window and stained-glass lights 2.9-4.6 m; white-framed sashes at 5.6-7.0, 7.9-9.2 and 10.0-11.4, 12.4-13.8 m; a tall bell gable 14.4-17.6 m with a rounded cap and one attic light; dark brown brick #3f3734",
+   "at": "2023-03-13"
+  },
+  "fronts/0/storeys": {
+   "source": "author",
+   "confidence": 0.65,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): three axes over a white stoop basement 0-2.6 m; a tall ground storey with a transomed window and stained-glass lights 2.9-4.6 m; white-framed sashes at 5.6-7.0, 7.9-9.2 and 10.0-11.4, 12.4-13.8 m; a tall bell gable 14.4-17.6 m with a rounded cap and one attic light; dark brown brick #3f3734",
+   "at": "2023-03-13"
+  },
+  "fronts/0/bays": {
+   "source": "author",
+   "confidence": 0.65,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): three axes over a white stoop basement 0-2.6 m; a tall ground storey with a transomed window and stained-glass lights 2.9-4.6 m; white-framed sashes at 5.6-7.0, 7.9-9.2 and 10.0-11.4, 12.4-13.8 m; a tall bell gable 14.4-17.6 m with a rounded cap and one attic light; dark brown brick #3f3734",
+   "at": "2023-03-13"
+  },
+  "fronts/0/storeyHeights": {
+   "source": "author",
+   "confidence": 0.65,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): three axes over a white stoop basement 0-2.6 m; a tall ground storey with a transomed window and stained-glass lights 2.9-4.6 m; white-framed sashes at 5.6-7.0, 7.9-9.2 and 10.0-11.4, 12.4-13.8 m; a tall bell gable 14.4-17.6 m with a rounded cap and one attic light; dark brown brick #3f3734",
+   "at": "2023-03-13"
+  },
+  "fronts/0/doorBay": {
+   "source": "author",
+   "confidence": 0.65,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): three axes over a white stoop basement 0-2.6 m; a tall ground storey with a transomed window and stained-glass lights 2.9-4.6 m; white-framed sashes at 5.6-7.0, 7.9-9.2 and 10.0-11.4, 12.4-13.8 m; a tall bell gable 14.4-17.6 m with a rounded cap and one attic light; dark brown brick #3f3734",
+   "at": "2023-03-13"
+  },
+  "roof/material": {
+   "source": "author",
+   "confidence": 0.65,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): three axes over a white stoop basement 0-2.6 m; a tall ground storey with a transomed window and stained-glass lights 2.9-4.6 m; white-framed sashes at 5.6-7.0, 7.9-9.2 and 10.0-11.4, 12.4-13.8 m; a tall bell gable 14.4-17.6 m with a rounded cap and one attic light; dark brown brick #3f3734",
+   "at": "2023-03-13"
+  },
+  "roof/source": {
+   "source": "author",
+   "confidence": 0.65,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): three axes over a white stoop basement 0-2.6 m; a tall ground storey with a transomed window and stained-glass lights 2.9-4.6 m; white-framed sashes at 5.6-7.0, 7.9-9.2 and 10.0-11.4, 12.4-13.8 m; a tall bell gable 14.4-17.6 m with a rounded cap and one attic light; dark brown brick #3f3734",
+   "at": "2023-03-13"
+  },
+  "roof/evidence": {
+   "source": "author",
+   "confidence": 0.65,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): three axes over a white stoop basement 0-2.6 m; a tall ground storey with a transomed window and stained-glass lights 2.9-4.6 m; white-framed sashes at 5.6-7.0, 7.9-9.2 and 10.0-11.4, 12.4-13.8 m; a tall bell gable 14.4-17.6 m with a rounded cap and one attic light; dark brown brick #3f3734",
+   "at": "2023-03-13"
+  },
+  "roof/squareSaddle": {
+   "source": "author",
+   "confidence": 0.65,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): three axes over a white stoop basement 0-2.6 m; a tall ground storey with a transomed window and stained-glass lights 2.9-4.6 m; white-framed sashes at 5.6-7.0, 7.9-9.2 and 10.0-11.4, 12.4-13.8 m; a tall bell gable 14.4-17.6 m with a rounded cap and one attic light; dark brown brick #3f3734",
+   "at": "2023-03-13"
+  },
+  "palette/frame": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): three axes over a white stoop basement 0-2.6 m; a tall ground storey with a transomed window and stained-glass lights 2.9-4.6 m; white-framed sashes at 5.6-7.0, 7.9-9.2 and 10.0-11.4, 12.4-13.8 m; a tall bell gable 14.4-17.6 m with a rounded cap and one attic light; dark brown brick #3f3734 (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/door": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): three axes over a white stoop basement 0-2.6 m; a tall ground storey with a transomed window and stained-glass lights 2.9-4.6 m; white-framed sashes at 5.6-7.0, 7.9-9.2 and 10.0-11.4, 12.4-13.8 m; a tall bell gable 14.4-17.6 m with a rounded cap and one attic light; dark brown brick #3f3734 (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/stone": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): three axes over a white stoop basement 0-2.6 m; a tall ground storey with a transomed window and stained-glass lights 2.9-4.6 m; white-framed sashes at 5.6-7.0, 7.9-9.2 and 10.0-11.4, 12.4-13.8 m; a tall bell gable 14.4-17.6 m with a rounded cap and one attic light; dark brown brick #3f3734 (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/cornice": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): three axes over a white stoop basement 0-2.6 m; a tall ground storey with a transomed window and stained-glass lights 2.9-4.6 m; white-framed sashes at 5.6-7.0, 7.9-9.2 and 10.0-11.4, 12.4-13.8 m; a tall bell gable 14.4-17.6 m with a rounded cap and one attic light; dark brown brick #3f3734 (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/stoneMaterial": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): three axes over a white stoop basement 0-2.6 m; a tall ground storey with a transomed window and stained-glass lights 2.9-4.6 m; white-framed sashes at 5.6-7.0, 7.9-9.2 and 10.0-11.4, 12.4-13.8 m; a tall bell gable 14.4-17.6 m with a rounded cap and one attic light; dark brown brick #3f3734 (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/brick": {
+   "source": "author",
+   "confidence": 0.65,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): three axes over a white stoop basement 0-2.6 m; a tall ground storey with a transomed window and stained-glass lights 2.9-4.6 m; white-framed sashes at 5.6-7.0, 7.9-9.2 and 10.0-11.4, 12.4-13.8 m; a tall bell gable 14.4-17.6 m with a rounded cap and one attic light; dark brown brick #3f3734",
+   "at": "2023-03-13"
+  },
+  "palette/wallMaterial": {
+   "source": "author",
+   "confidence": 0.65,
+   "ref": "belt-jordaan hand read of egelantiersgracht-3-43 strip 2023-03-13 (pand span): three axes over a white stoop basement 0-2.6 m; a tall ground storey with a transomed window and stained-glass lights 2.9-4.6 m; white-framed sashes at 5.6-7.0, 7.9-9.2 and 10.0-11.4, 12.4-13.8 m; a tall bell gable 14.4-17.6 m with a rounded cap and one attic light; dark brown brick #3f3734",
+   "at": "2023-03-13"
+  }
+ }
+}

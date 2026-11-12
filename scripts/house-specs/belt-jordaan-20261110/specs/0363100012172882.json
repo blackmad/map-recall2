@@ -1,0 +1,210 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012172882",
+ "address": "Egelantiersgracht 67",
+ "design": {
+  "fronts": [
+   {
+    "id": "front0",
+    "basement": "none",
+    "cornice": "none",
+    "windows": "sash",
+    "windowSurround": "full-frame",
+    "hoist": false,
+    "street": "Egelantiersgracht",
+    "gable": "neck",
+    "crownRise": 1.3,
+    "crownCap": "rounded",
+    "atticWindows": 1,
+    "storeys": 4,
+    "bays": 2,
+    "storeyHeights": [
+     4.5,
+     2.4,
+     2.6,
+     2.6
+    ],
+    "doorBay": 0
+   }
+  ],
+  "roof": {
+   "material": "red-tile",
+   "source": "front",
+   "evidence": "strip: the roof behind the crown follows the front",
+   "squareSaddle": true
+  },
+  "palette": {
+   "frame": "white-painted",
+   "door": "#26302a",
+   "stone": "#ebe8df",
+   "cornice": "#ebe8df",
+   "stoneMaterial": "painted",
+   "brick": "#443c39",
+   "wallMaterial": "brick"
+  }
+ },
+ "provenance": {
+  "fronts/0/id": {
+   "source": "author",
+   "confidence": 0.55,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span, behind a tree): a 4.5 m front of two axes behind a tree: a dark-painted ground 0-4.4 m with white-framed door and lights; white-framed windows at 4.6-6.4, 8.0-9.4 and 10.2-11.8 m; a neck crown 14.2-~15.7 m (blurred by branches); brown brick #443c39",
+   "at": "2023-03-13"
+  },
+  "fronts/0/basement": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span, behind a tree): a 4.5 m front of two axes behind a tree: a dark-painted ground 0-4.4 m with white-framed door and lights; white-framed windows at 4.6-6.4, 8.0-9.4 and 10.2-11.8 m; a neck crown 14.2-~15.7 m (blurred by branches); brown brick #443c39 (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/cornice": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span, behind a tree): a 4.5 m front of two axes behind a tree: a dark-painted ground 0-4.4 m with white-framed door and lights; white-framed windows at 4.6-6.4, 8.0-9.4 and 10.2-11.8 m; a neck crown 14.2-~15.7 m (blurred by branches); brown brick #443c39 (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/windows": {
+   "source": "author",
+   "confidence": 0.55,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span, behind a tree): a 4.5 m front of two axes behind a tree: a dark-painted ground 0-4.4 m with white-framed door and lights; white-framed windows at 4.6-6.4, 8.0-9.4 and 10.2-11.8 m; a neck crown 14.2-~15.7 m (blurred by branches); brown brick #443c39",
+   "at": "2023-03-13"
+  },
+  "fronts/0/windowSurround": {
+   "source": "author",
+   "confidence": 0.55,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span, behind a tree): a 4.5 m front of two axes behind a tree: a dark-painted ground 0-4.4 m with white-framed door and lights; white-framed windows at 4.6-6.4, 8.0-9.4 and 10.2-11.8 m; a neck crown 14.2-~15.7 m (blurred by branches); brown brick #443c39",
+   "at": "2023-03-13"
+  },
+  "fronts/0/hoist": {
+   "source": "author",
+   "confidence": 0.55,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span, behind a tree): a 4.5 m front of two axes behind a tree: a dark-painted ground 0-4.4 m with white-framed door and lights; white-framed windows at 4.6-6.4, 8.0-9.4 and 10.2-11.8 m; a neck crown 14.2-~15.7 m (blurred by branches); brown brick #443c39",
+   "at": "2023-03-13"
+  },
+  "fronts/0/street": {
+   "source": "author",
+   "confidence": 0.55,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span, behind a tree): a 4.5 m front of two axes behind a tree: a dark-painted ground 0-4.4 m with white-framed door and lights; white-framed windows at 4.6-6.4, 8.0-9.4 and 10.2-11.8 m; a neck crown 14.2-~15.7 m (blurred by branches); brown brick #443c39",
+   "at": "2023-03-13"
+  },
+  "fronts/0/gable": {
+   "source": "author",
+   "confidence": 0.55,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span, behind a tree): a 4.5 m front of two axes behind a tree: a dark-painted ground 0-4.4 m with white-framed door and lights; white-framed windows at 4.6-6.4, 8.0-9.4 and 10.2-11.8 m; a neck crown 14.2-~15.7 m (blurred by branches); brown brick #443c39",
+   "at": "2023-03-13"
+  },
+  "fronts/0/crownRise": {
+   "source": "author",
+   "confidence": 0.55,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span, behind a tree): a 4.5 m front of two axes behind a tree: a dark-painted ground 0-4.4 m with white-framed door and lights; white-framed windows at 4.6-6.4, 8.0-9.4 and 10.2-11.8 m; a neck crown 14.2-~15.7 m (blurred by branches); brown brick #443c39",
+   "at": "2023-03-13"
+  },
+  "fronts/0/crownCap": {
+   "source": "author",
+   "confidence": 0.55,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span, behind a tree): a 4.5 m front of two axes behind a tree: a dark-painted ground 0-4.4 m with white-framed door and lights; white-framed windows at 4.6-6.4, 8.0-9.4 and 10.2-11.8 m; a neck crown 14.2-~15.7 m (blurred by branches); brown brick #443c39",
+   "at": "2023-03-13"
+  },
+  "fronts/0/atticWindows": {
+   "source": "author",
+   "confidence": 0.55,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span, behind a tree): a 4.5 m front of two axes behind a tree: a dark-painted ground 0-4.4 m with white-framed door and lights; white-framed windows at 4.6-6.4, 8.0-9.4 and 10.2-11.8 m; a neck crown 14.2-~15.7 m (blurred by branches); brown brick #443c39",
+   "at": "2023-03-13"
+  },
+  "fronts/0/storeys": {
+   "source": "author",
+   "confidence": 0.55,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span, behind a tree): a 4.5 m front of two axes behind a tree: a dark-painted ground 0-4.4 m with white-framed door and lights; white-framed windows at 4.6-6.4, 8.0-9.4 and 10.2-11.8 m; a neck crown 14.2-~15.7 m (blurred by branches); brown brick #443c39",
+   "at": "2023-03-13"
+  },
+  "fronts/0/bays": {
+   "source": "author",
+   "confidence": 0.55,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span, behind a tree): a 4.5 m front of two axes behind a tree: a dark-painted ground 0-4.4 m with white-framed door and lights; white-framed windows at 4.6-6.4, 8.0-9.4 and 10.2-11.8 m; a neck crown 14.2-~15.7 m (blurred by branches); brown brick #443c39",
+   "at": "2023-03-13"
+  },
+  "fronts/0/storeyHeights": {
+   "source": "author",
+   "confidence": 0.55,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span, behind a tree): a 4.5 m front of two axes behind a tree: a dark-painted ground 0-4.4 m with white-framed door and lights; white-framed windows at 4.6-6.4, 8.0-9.4 and 10.2-11.8 m; a neck crown 14.2-~15.7 m (blurred by branches); brown brick #443c39",
+   "at": "2023-03-13"
+  },
+  "fronts/0/doorBay": {
+   "source": "author",
+   "confidence": 0.55,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span, behind a tree): a 4.5 m front of two axes behind a tree: a dark-painted ground 0-4.4 m with white-framed door and lights; white-framed windows at 4.6-6.4, 8.0-9.4 and 10.2-11.8 m; a neck crown 14.2-~15.7 m (blurred by branches); brown brick #443c39",
+   "at": "2023-03-13"
+  },
+  "roof/material": {
+   "source": "author",
+   "confidence": 0.55,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span, behind a tree): a 4.5 m front of two axes behind a tree: a dark-painted ground 0-4.4 m with white-framed door and lights; white-framed windows at 4.6-6.4, 8.0-9.4 and 10.2-11.8 m; a neck crown 14.2-~15.7 m (blurred by branches); brown brick #443c39",
+   "at": "2023-03-13"
+  },
+  "roof/source": {
+   "source": "author",
+   "confidence": 0.55,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span, behind a tree): a 4.5 m front of two axes behind a tree: a dark-painted ground 0-4.4 m with white-framed door and lights; white-framed windows at 4.6-6.4, 8.0-9.4 and 10.2-11.8 m; a neck crown 14.2-~15.7 m (blurred by branches); brown brick #443c39",
+   "at": "2023-03-13"
+  },
+  "roof/evidence": {
+   "source": "author",
+   "confidence": 0.55,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span, behind a tree): a 4.5 m front of two axes behind a tree: a dark-painted ground 0-4.4 m with white-framed door and lights; white-framed windows at 4.6-6.4, 8.0-9.4 and 10.2-11.8 m; a neck crown 14.2-~15.7 m (blurred by branches); brown brick #443c39",
+   "at": "2023-03-13"
+  },
+  "roof/squareSaddle": {
+   "source": "author",
+   "confidence": 0.55,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span, behind a tree): a 4.5 m front of two axes behind a tree: a dark-painted ground 0-4.4 m with white-framed door and lights; white-framed windows at 4.6-6.4, 8.0-9.4 and 10.2-11.8 m; a neck crown 14.2-~15.7 m (blurred by branches); brown brick #443c39",
+   "at": "2023-03-13"
+  },
+  "palette/frame": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span, behind a tree): a 4.5 m front of two axes behind a tree: a dark-painted ground 0-4.4 m with white-framed door and lights; white-framed windows at 4.6-6.4, 8.0-9.4 and 10.2-11.8 m; a neck crown 14.2-~15.7 m (blurred by branches); brown brick #443c39 (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/door": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span, behind a tree): a 4.5 m front of two axes behind a tree: a dark-painted ground 0-4.4 m with white-framed door and lights; white-framed windows at 4.6-6.4, 8.0-9.4 and 10.2-11.8 m; a neck crown 14.2-~15.7 m (blurred by branches); brown brick #443c39 (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/stone": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span, behind a tree): a 4.5 m front of two axes behind a tree: a dark-painted ground 0-4.4 m with white-framed door and lights; white-framed windows at 4.6-6.4, 8.0-9.4 and 10.2-11.8 m; a neck crown 14.2-~15.7 m (blurred by branches); brown brick #443c39 (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/cornice": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span, behind a tree): a 4.5 m front of two axes behind a tree: a dark-painted ground 0-4.4 m with white-framed door and lights; white-framed windows at 4.6-6.4, 8.0-9.4 and 10.2-11.8 m; a neck crown 14.2-~15.7 m (blurred by branches); brown brick #443c39 (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/stoneMaterial": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span, behind a tree): a 4.5 m front of two axes behind a tree: a dark-painted ground 0-4.4 m with white-framed door and lights; white-framed windows at 4.6-6.4, 8.0-9.4 and 10.2-11.8 m; a neck crown 14.2-~15.7 m (blurred by branches); brown brick #443c39 (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/brick": {
+   "source": "author",
+   "confidence": 0.55,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span, behind a tree): a 4.5 m front of two axes behind a tree: a dark-painted ground 0-4.4 m with white-framed door and lights; white-framed windows at 4.6-6.4, 8.0-9.4 and 10.2-11.8 m; a neck crown 14.2-~15.7 m (blurred by branches); brown brick #443c39",
+   "at": "2023-03-13"
+  },
+  "palette/wallMaterial": {
+   "source": "author",
+   "confidence": 0.55,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span, behind a tree): a 4.5 m front of two axes behind a tree: a dark-painted ground 0-4.4 m with white-framed door and lights; white-framed windows at 4.6-6.4, 8.0-9.4 and 10.2-11.8 m; a neck crown 14.2-~15.7 m (blurred by branches); brown brick #443c39",
+   "at": "2023-03-13"
+  }
+ },
+ "schemaLimits": [
+  {
+   "component": "crown",
+   "what": "the crown is hidden by branches; neck form and cap are guessed"
+  }
+ ]
+}

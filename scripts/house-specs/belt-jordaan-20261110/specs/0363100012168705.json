@@ -1,0 +1,188 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012168705",
+ "address": "Bloemgracht 41",
+ "design": {
+  "fronts": [
+   {
+    "id": "front0",
+    "basement": "none",
+    "cornice": "simple",
+    "windows": "sash",
+    "windowSurround": "sill",
+    "hoist": false,
+    "street": "Bloemgracht",
+    "gable": "cornice",
+    "storeys": 4,
+    "bays": [
+     2,
+     2,
+     2,
+     1
+    ],
+    "storeyHeights": [
+     5.9,
+     2.6,
+     2.6,
+     2.6
+    ],
+    "doorBay": 1
+   }
+  ],
+  "roof": {
+   "material": "bitumen",
+   "source": "front",
+   "form": "flat",
+   "evidence": "strip: sky over the cornice/parapet, no roof face seen"
+  },
+  "palette": {
+   "frame": "white-painted",
+   "door": "#26302a",
+   "stone": "#ebe8df",
+   "cornice": "#ebe8df",
+   "stoneMaterial": "painted",
+   "brick": "#413e3b",
+   "wallMaterial": "painted-brick"
+  }
+ },
+ "provenance": {
+  "fronts/0/id": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 4094-4286 px): two axes, painted black: a tall ground 0-5.6 m (a wide window left, the door right with a transom); storeys at 7.3-9.0 and 9.7-11.4 m; a top storey with one two-light window in the middle at 12.2-13.8 m; a plain white cornice ~15.3 m, flat roof; painted brick #413e3b",
+   "at": "2023-03-13"
+  },
+  "fronts/0/basement": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 4094-4286 px): two axes, painted black: a tall ground 0-5.6 m (a wide window left, the door right with a transom); storeys at 7.3-9.0 and 9.7-11.4 m; a top storey with one two-light window in the middle at 12.2-13.8 m; a plain white cornice ~15.3 m, flat roof; painted brick #413e3b (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/cornice": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 4094-4286 px): two axes, painted black: a tall ground 0-5.6 m (a wide window left, the door right with a transom); storeys at 7.3-9.0 and 9.7-11.4 m; a top storey with one two-light window in the middle at 12.2-13.8 m; a plain white cornice ~15.3 m, flat roof; painted brick #413e3b",
+   "at": "2023-03-13"
+  },
+  "fronts/0/windows": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 4094-4286 px): two axes, painted black: a tall ground 0-5.6 m (a wide window left, the door right with a transom); storeys at 7.3-9.0 and 9.7-11.4 m; a top storey with one two-light window in the middle at 12.2-13.8 m; a plain white cornice ~15.3 m, flat roof; painted brick #413e3b",
+   "at": "2023-03-13"
+  },
+  "fronts/0/windowSurround": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 4094-4286 px): two axes, painted black: a tall ground 0-5.6 m (a wide window left, the door right with a transom); storeys at 7.3-9.0 and 9.7-11.4 m; a top storey with one two-light window in the middle at 12.2-13.8 m; a plain white cornice ~15.3 m, flat roof; painted brick #413e3b (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/hoist": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 4094-4286 px): two axes, painted black: a tall ground 0-5.6 m (a wide window left, the door right with a transom); storeys at 7.3-9.0 and 9.7-11.4 m; a top storey with one two-light window in the middle at 12.2-13.8 m; a plain white cornice ~15.3 m, flat roof; painted brick #413e3b (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/street": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 4094-4286 px): two axes, painted black: a tall ground 0-5.6 m (a wide window left, the door right with a transom); storeys at 7.3-9.0 and 9.7-11.4 m; a top storey with one two-light window in the middle at 12.2-13.8 m; a plain white cornice ~15.3 m, flat roof; painted brick #413e3b",
+   "at": "2023-03-13"
+  },
+  "fronts/0/gable": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 4094-4286 px): two axes, painted black: a tall ground 0-5.6 m (a wide window left, the door right with a transom); storeys at 7.3-9.0 and 9.7-11.4 m; a top storey with one two-light window in the middle at 12.2-13.8 m; a plain white cornice ~15.3 m, flat roof; painted brick #413e3b",
+   "at": "2023-03-13"
+  },
+  "fronts/0/storeys": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 4094-4286 px): two axes, painted black: a tall ground 0-5.6 m (a wide window left, the door right with a transom); storeys at 7.3-9.0 and 9.7-11.4 m; a top storey with one two-light window in the middle at 12.2-13.8 m; a plain white cornice ~15.3 m, flat roof; painted brick #413e3b",
+   "at": "2023-03-13"
+  },
+  "fronts/0/bays": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 4094-4286 px): two axes, painted black: a tall ground 0-5.6 m (a wide window left, the door right with a transom); storeys at 7.3-9.0 and 9.7-11.4 m; a top storey with one two-light window in the middle at 12.2-13.8 m; a plain white cornice ~15.3 m, flat roof; painted brick #413e3b",
+   "at": "2023-03-13"
+  },
+  "fronts/0/storeyHeights": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 4094-4286 px): two axes, painted black: a tall ground 0-5.6 m (a wide window left, the door right with a transom); storeys at 7.3-9.0 and 9.7-11.4 m; a top storey with one two-light window in the middle at 12.2-13.8 m; a plain white cornice ~15.3 m, flat roof; painted brick #413e3b",
+   "at": "2023-03-13"
+  },
+  "fronts/0/doorBay": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 4094-4286 px): two axes, painted black: a tall ground 0-5.6 m (a wide window left, the door right with a transom); storeys at 7.3-9.0 and 9.7-11.4 m; a top storey with one two-light window in the middle at 12.2-13.8 m; a plain white cornice ~15.3 m, flat roof; painted brick #413e3b",
+   "at": "2023-03-13"
+  },
+  "roof/material": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 4094-4286 px): two axes, painted black: a tall ground 0-5.6 m (a wide window left, the door right with a transom); storeys at 7.3-9.0 and 9.7-11.4 m; a top storey with one two-light window in the middle at 12.2-13.8 m; a plain white cornice ~15.3 m, flat roof; painted brick #413e3b",
+   "at": "2023-03-13"
+  },
+  "roof/source": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 4094-4286 px): two axes, painted black: a tall ground 0-5.6 m (a wide window left, the door right with a transom); storeys at 7.3-9.0 and 9.7-11.4 m; a top storey with one two-light window in the middle at 12.2-13.8 m; a plain white cornice ~15.3 m, flat roof; painted brick #413e3b",
+   "at": "2023-03-13"
+  },
+  "roof/form": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 4094-4286 px): two axes, painted black: a tall ground 0-5.6 m (a wide window left, the door right with a transom); storeys at 7.3-9.0 and 9.7-11.4 m; a top storey with one two-light window in the middle at 12.2-13.8 m; a plain white cornice ~15.3 m, flat roof; painted brick #413e3b",
+   "at": "2023-03-13"
+  },
+  "roof/evidence": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 4094-4286 px): two axes, painted black: a tall ground 0-5.6 m (a wide window left, the door right with a transom); storeys at 7.3-9.0 and 9.7-11.4 m; a top storey with one two-light window in the middle at 12.2-13.8 m; a plain white cornice ~15.3 m, flat roof; painted brick #413e3b",
+   "at": "2023-03-13"
+  },
+  "palette/frame": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 4094-4286 px): two axes, painted black: a tall ground 0-5.6 m (a wide window left, the door right with a transom); storeys at 7.3-9.0 and 9.7-11.4 m; a top storey with one two-light window in the middle at 12.2-13.8 m; a plain white cornice ~15.3 m, flat roof; painted brick #413e3b (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/door": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 4094-4286 px): two axes, painted black: a tall ground 0-5.6 m (a wide window left, the door right with a transom); storeys at 7.3-9.0 and 9.7-11.4 m; a top storey with one two-light window in the middle at 12.2-13.8 m; a plain white cornice ~15.3 m, flat roof; painted brick #413e3b (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/stone": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 4094-4286 px): two axes, painted black: a tall ground 0-5.6 m (a wide window left, the door right with a transom); storeys at 7.3-9.0 and 9.7-11.4 m; a top storey with one two-light window in the middle at 12.2-13.8 m; a plain white cornice ~15.3 m, flat roof; painted brick #413e3b (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/cornice": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 4094-4286 px): two axes, painted black: a tall ground 0-5.6 m (a wide window left, the door right with a transom); storeys at 7.3-9.0 and 9.7-11.4 m; a top storey with one two-light window in the middle at 12.2-13.8 m; a plain white cornice ~15.3 m, flat roof; painted brick #413e3b (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/stoneMaterial": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 4094-4286 px): two axes, painted black: a tall ground 0-5.6 m (a wide window left, the door right with a transom); storeys at 7.3-9.0 and 9.7-11.4 m; a top storey with one two-light window in the middle at 12.2-13.8 m; a plain white cornice ~15.3 m, flat roof; painted brick #413e3b (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/brick": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 4094-4286 px): two axes, painted black: a tall ground 0-5.6 m (a wide window left, the door right with a transom); storeys at 7.3-9.0 and 9.7-11.4 m; a top storey with one two-light window in the middle at 12.2-13.8 m; a plain white cornice ~15.3 m, flat roof; painted brick #413e3b",
+   "at": "2023-03-13"
+  },
+  "palette/wallMaterial": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 4094-4286 px): two axes, painted black: a tall ground 0-5.6 m (a wide window left, the door right with a transom); storeys at 7.3-9.0 and 9.7-11.4 m; a top storey with one two-light window in the middle at 12.2-13.8 m; a plain white cornice ~15.3 m, flat roof; painted brick #413e3b",
+   "at": "2023-03-13"
+  }
+ }
+}

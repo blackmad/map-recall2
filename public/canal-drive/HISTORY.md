@@ -1,5 +1,23 @@
 # Canal Recall — what is built
 
+**Ground G1 fixes and the G3 crossing register; one front-roof module (2026-11-12, round 121).**
+- **G1 (#376, 49243cd85):** ground shard area −18.7 % and float −53 % at G0's named places. Changes:
+  - the land grid's float bound (`drape.ts floatBoundGrid`);
+  - the roads-v1 min-area gate for compact triangles only (`?roadStrips=0`);
+  - portal sanity: a tunnel mouth needs a tunnel way ahead and both sides bounded, and parallel tunnel ways share one slot (`?portalSanity=0`), so Overschiestraat is one slot, not three;
+  - the open-ground clip reader (`?openGroundClip=0`); open-ground-v2 is not published, so this reads v1 until it is.
+
+  Pins: `check:ground-spots` (15, in check:canal), `groundFixes.test.ts`, `tests/e2e/ground-g1.spec.ts`. The 60 % shard gate moves to G2.
+- **G3 (326f224df):** `data/crossings/*.json`, typed in `ownGround/crossings.ts`. Reviewed records replace inferred cuts, portals and rail spans in their zones. **Merged OFF by default (`?crossings=1`):** the gate's check-rail-street found the Sloterdijk-Carrascoplein record's zone (south to 52.3845) reaching the Kimpoweg tram (52.3860–52.3866) and adding a deck span there, the user-reported #13 'weird uncovering effect on rails'; the lane narrows the zone and the register is turned on after that. Four tunnel-approach records are reviewed. Piet Kranenbergpad is a level crossing beside the museum tram (panorama: crossing signs), not a span, and the Anthony Fokkerweg mouth 30 m past the tunnel end is gone. Scripts: `crossings:draft`, `crossings:review`, `crossings:compose`.
+- **Merge note:** both lanes extend the GroundStore and worker option lists that the rails feedback also extended (`railDecks`, `railRamps`, `railSpanHeadroom`); the lists are unioned.
+- **Krul urinal as curves (3d0132909, user: "can you model this as curves?" / "the urinal part is a block sticking through the wall"):**
+  - 152 → 1,386 triangles (cap 1,500 for this model only), 48 segments on the spiral, smooth normals; still one instanced draw (7 at both spots).
+  - The square stone reached 0.46 m from the centre of a 0.43 m loop. It is now a round pedestal 0.07 m inside the sheet, pinned by a test.
+  - Added: the rib at 1.27 m, a dark lattice band 1.42–1.98 m (vertex colour, not see-through), the roof cap with finial on all 38 (the panoramas show it on only some), and round posts.
+- **Bridge-gap pins after G1:** G1's `roadStrips` (default on) lowers the without-the-fix gap at three pins (Nieuwe Leeuwarderweg 7042467 to 339.5 m², Ringweg-Zuid 7381715 to 113.4, Langbroekdreef to 172.5). Their `pinMin` is lowered to 300/100/150. Ringweg's margin over its with-fix value (74.9) is now small.
+- **geometryAudit's 200k-triangle budget measures CPU time.** Wall time failed the gate twice at load 70–110.
+- **Recipe front roof (3db19e7f3):** three versions of the lone-house front roof (Jordaan #366, Haarlemmer #356 on main, and the lane's shared `pandRoofFacts`) are now one `buildingRecipe/houseFrontRoof.ts` and one `ridge-vs-3dbag` gate. 3DBAG is only an upper bound for a front-sourced roof. Lone Haarlemmer houses now get cross gables and corner side-front hips. fit-golden: 207 identical; no installed render changes. The lane's house:frames cache-key fix (notPanos, --prefer-obliquity, now also --max-dist) was lost in the integrator's merge and restored (c19068764).
+
 **Wall colour truth; brickLift v2 stays off; facade benchmark round 0; tree silhouettes flag-off (2026-11-12, round 120).**
 - **Why the 2026-11-10 walls note showed identical pairs** (lane/wall-colour-truth-20261112, 660106102): its sheets were taken on bundles built before `SPEC_WALLS_HELD` flipped (ae430fc27 vs 0dd628d39 at 21:37, bundles rebuilt only in cfeb2c7a0 at 23:03), so both halves drew the period colour; and the note's pand 172620 is held by the pale-warm guard, so it can never change with that flag. On the published world the ~425 generic pands with a spec reading do draw it (baked into world-v1); pands without one draw the period palette (the orange terracotta and slate grey the user saw). The note is corrected with re-taken photo/before/after triples.
 - **Worker flags:** `meshBuildingFor` runs in the pool worker, whose `location.search` is its own script URL, so `?brickLift` and `?specWalls` never reached it; `engine/workerPool.ts withWorkerFlags` now forwards both (test).

@@ -28,10 +28,14 @@ import type {CanalHouseIntent} from '../buildingRecipe/intent.ts';
 import {addInferredRear, type RearReport} from './rear.ts';
 import {planInstancing, type FitSize, type InstancingPlan} from './instancing.ts';
 import {applyPhotoCrowns, facePhotoPatches, type PhotoCrownPatch, type PhotoGable} from './gableFromStrip.ts';
-import {CROSS_GABLE_BEHIND_M, RAKE_CLEAR_M, recipeRoofFacts, saddleUnderProfile, type CrossGable, type FrontRoofSpec, type RecipeRoofReport} from './recipeRoof.ts';
+import type {RecipeRoofReport} from './recipeRoof.ts';
 import {clampRoofVertices, findRows, rowClampFor, rowLines, ROW_COHERENCE, type RowClamp, type RowMember} from './rowCoherence.ts';
 import {roofHeightAt} from '../buildingRecipe/facts.ts';
 import type {CanalhousePoint} from '../canalhouseRecipes.ts';
+import {CURVED_GABLES, type FrontRoofHint} from './frontRoofSpecs.ts';
+import {pandRoofFacts} from '../buildingRecipe/houseFrontRoof.ts';
+export {SADDLE_FULL_FRONT_DROP_M, crossGablesOf, frontRoofSpecs, type FrontRoofHint} from './frontRoofSpecs.ts';
+export {pandRoofFacts, type PandRoofOptions} from '../buildingRecipe/houseFrontRoof.ts';
 
 export interface FaceGate { pand: string; id: string; pass: boolean; value: unknown; limit: string }
 export interface Interference {
@@ -181,77 +185,7 @@ export function roofSourceFor(intent: CanalHouseIntent, facts: BuildingFacts, fa
   return measuredCrown ? 'front' : faceRule;
 }
 
-export interface FrontRoofHint { topM?: number; pitchDeg?: number }
 
-/**
- * The form of every street front band of a `front` pand (blockFace/recipeRoof.ts `FrontRoofSpec`): a saddle under a
- * gable's crown outline (`saddleUnderProfile`; an attic face when the saddle's side eaves would drop over a metre under
- * the cornice), an attic face behind dormers or a `frontRoof` hint (the hint's top row and pitch, no 3DBAG p95 cap),
- * and the 3DBAG-bounded attic for the rest; that one goes flat by itself when 3DBAG stands under a metre over the
- * eaves (a measured cornice says where the cornice is, not that nothing rises behind it: De Clercqstraat's parapets
- * hide 1.5 m of roof). A row ridge caps every attic band. `roof.form` on the house forces one form for all its bands;
- * `flat` is the only way to a flat band.
- */
-export function frontRoofSpecs(intent: CanalHouseIntent, fit: {recipe: {elevations: {id: string; crown?: {value: {profile: CanalhousePoint[]}}}[]}; report: {fronts: {id: string; widthM: number; eavesM: number; storeyHeightsM?: number[]}[]}}, facts: BuildingFacts, opts: {hints?: Record<string, FrontRoofHint>; rowRidgeM?: number; crossGables?: Record<string, CrossGable[]>} = {}): Record<string, FrontRoofSpec> {
-  const street = intent.fronts[0].street, forced = intent.roof.form, pitchOpt = intent.roof.pitchDeg, out: Record<string, FrontRoofSpec> = {};
-  for (const fr of intent.fronts) {
-    if (fr.street !== street) continue;
-    const rf = fit.report.fronts.find(x => x.id === fr.id), el = fit.recipe.elevations.find(x => x.id === fr.id);
-    if (!rf) continue;
-    const gabled = !['cornice', 'flat'].includes(fr.gable), hint = opts.hints?.[fr.id], profile = el?.crown?.value.profile;
-    let note: string | undefined;
-    if (forced === 'saddle' || (!forced && gabled)) {
-      if (intent.roof.hip === 'front' && !gabled && pitchOpt !== undefined) {
-        // A saddle ridged front to back behind a cornice, hipped down to the eaves behind it (RoofIntent.hip): the ridge
-        // from the pitch over half the front, capped (a flat top) by a hint's top or the row ridge; recipeRoof caps it by
-        // the 3DBAG max as well.
-        const capH = Math.min(hint?.topM ?? Infinity, opts.rowRidgeM !== undefined ? opts.rowRidgeM + ROW_COHERENCE.ridgeCapAboveM : Infinity);
-        out[fr.id] = {form: 'saddle', hip: 'front', ridgeM: cm(rf.eavesM + Math.tan(pitchOpt * Math.PI / 180) * rf.widthM / 2), pitchDeg: pitchOpt, sideEavesM: rf.eavesM, ...(Number.isFinite(capH) ? {capM: cm(capH)} : {})};
-        continue;
-      }
-      // A neck or bell crown over the whole front stands in front of the whole roof, so the saddle's sides may meet the party walls
-      // under the cornice: concave neck/bell flanks hug the eaves line and only rise at the neck (2026-10-16), and a
-      // saddle under them drops its sides 1-2.5 m. A crown on part of the front, and a step/spout/point crown, keep the 1 m limit.
-      const fullFront = CURVED_GABLES.has(fr.gable) && !fr.crownAt && !fr.crownBays && !fr.crownGroups;
-      const s = profile ? saddleUnderProfile(profile, rf.widthM, rf.eavesM, {...(pitchOpt !== undefined ? {pitchDeg: pitchOpt} : {}), ...(fullFront ? {maxDropM: SADDLE_FULL_FRONT_DROP_M} : {}), ...(intent.roof.rakeClear ? {clearM: RAKE_CLEAR_M} : {})}) : null;
-      if (s) { out[fr.id] = {form: 'saddle', ridgeM: s.ridgeM, pitchDeg: s.pitchDeg, sideEavesM: s.sideEavesM, lineM: cm(Math.max(...profile!.map(p => p[1])))}; continue; }
-      note = profile ? `saddle under the ${fr.gable} crown would drop its side eaves over ${fullFront ? SADDLE_FULL_FRONT_DROP_M + ' m' : 'a metre'} under the cornice (a crown on part of the front); attic face instead` : `no crown outline on the ${fr.gable} front; attic face instead`;
-    }
-    if (forced === 'flat') { out[fr.id] = {form: 'flat', lineM: rf.eavesM, ...(note ? {note} : {})}; continue; }
-    const capM = Math.min(hint?.topM ?? Infinity, opts.rowRidgeM !== undefined ? opts.rowRidgeM + ROW_COHERENCE.ridgeCapAboveM : Infinity);
-    const cross = opts.crossGables?.[fr.id];
-    out[fr.id] = {form: 'attic', ...(hint?.pitchDeg !== undefined ? {pitchDeg: hint.pitchDeg} : pitchOpt !== undefined ? {pitchDeg: pitchOpt} : {}), ...(Number.isFinite(capM) ? {capM: cm(capM)} : {}), surveyCap: !hint, ...(note ? {note} : {}),
-      ...(intent.roof.rise !== undefined ? {riseM: cm(intent.roof.rise * (rf.storeyHeightsM?.at(-1) ?? 3))} : {}), ...(intent.roof.rearPitchDeg !== undefined ? {rearPitchDeg: intent.roof.rearPitchDeg} : {}), ...(cross?.length ? {crossGables: cross} : {})};
-  }
-  return out;
-}
-
-/**
- * The pointed crowns of a house's street fronts as cross roofs (`RoofIntent.crossGables`): every crown vertex standing
- * over half a metre above the eaves with a straight rake down to the eaves on each side (a `point` crown on part of the
- * front: `crownBays`, `crownAt`, `crownGroups`), its feet and apex placed on the facade chord in RD. Empty without the flag.
- */
-export function crossGablesOf(intent: CanalHouseIntent, fit: {recipe: {elevations: {id: string; polygonIndex: number; edgeIndex: number; endEdgeIndex?: number; crown?: {value: {profile: CanalhousePoint[]}}; bodyEavesM?: {value: number}}[]; footprint: {value: {outer: CanalhousePoint[]}[]}; house: {eavesHeightM: {value: number}}}; anchorRD: [number, number]}): Record<string, CrossGable[]> {
-  const out: Record<string, CrossGable[]> = {};
-  if (!intent.roof.crossGables) return out;
-  const street = intent.fronts[0].street;
-  for (const el of fit.recipe.elevations) {
-    const fr = intent.fronts.find(f => f.id === el.id);
-    if (!fr || fr.street !== street || !el.crown) continue;
-    const ring = fit.recipe.footprint.value[el.polygonIndex].outer, a = ring[el.edgeIndex], b = ring[el.endEdgeIndex ?? (el.edgeIndex + 1) % ring.length];
-    const len = Math.hypot(b[0] - a[0], b[1] - a[1]), u = [(b[0] - a[0]) / len, (b[1] - a[1]) / len];
-    // Local frame (x, z) -> RD: z runs against RD y (roofAboveCrown).
-    const rd = (x: number) => [fit.anchorRD[0] + a[0] + u[0] * x, fit.anchorRD[1] - (a[1] + u[1] * x)];
-    const eaves = el.bodyEavesM?.value ?? fit.recipe.house.eavesHeightM.value, pr = el.crown.value.profile, gs: CrossGable[] = [];
-    for (let i = 1; i + 1 < pr.length; i++) {
-      const [l, c, r] = [pr[i - 1], pr[i], pr[i + 1]];
-      if (c[1] < eaves + 0.5 || l[1] > eaves + 0.05 || r[1] > eaves + 0.05 || c[0] - l[0] < 0.2 || r[0] - c[0] < 0.2) continue;
-      gs.push({leftRD: rd(l[0]), apexRD: rd(c[0]), rightRD: rd(r[0]), leftM: l[1], apexM: c[1], rightM: r[1]});
-    }
-    if (gs.length) out[el.id] = gs;
-  }
-  return out;
-}
 
 /** Highest crown outline value at x (vertical risers take their upper end). */
 function profileAt(profile: CanalhousePoint[], x: number): number {
@@ -288,17 +222,8 @@ export function roofAboveCrown(intent: CanalHouseIntent, fit: {recipe: {elevatio
   return worst;
 }
 
-/** How far a saddle's sides may drop under the cornice behind a crown that spans the whole front (m). */
-export const SADDLE_FULL_FRONT_DROP_M = 3;
 /** `roofAboveCrownFrontView` tolerance (m): the roof pieces follow the footprint, whose rear corners are a few cm off square. */
 export const FRONT_VIEW_TOL_M = 0.1;
-/**
- * Gables with curved flanks (`crownShoulder`) whose crown hides the roof behind it: the front view over the whole plot
- * stays under the outline, and the saddle may drop its sides `SADDLE_FULL_FRONT_DROP_M` under the cornice. Step, spout
- * and point crowns are not held yet: the front view finds bilder-081118-155417 156287/155418 with their attic faces
- * 2.3 m over the lower treads (the attic fallback of a saddle that would drop over a metre), a separate change.
- */
-const CURVED_GABLES = new Set(['neck', 'raised-neck', 'bell']);
 
 /**
  * How far the roof stands above the crown outline in a FRONT VIEW (m; negative = under): every roof surface of the pand,
@@ -664,41 +589,12 @@ function facePlanner(face: BlockFaceIntent, factsByPand: Map<string, BuildingFac
    * Roofs per pand: `survey` keeps 3DBAG; `recipe` and `front` fit once on the 3DBAG facts for the front eaves and
    * storeys, then replace the roof (blockFace/recipeRoof.ts); `front` bands take the form the street front implies.
    */
-  /** A gap this long between a corner pand's street fronts is a chamfer the roof falls to as well (sideFronts). */
-  const CHAMFER_MIN_M = 0.3, CHAMFER_MAX_M = 6;
   const withRoofs = (plan: FaceGroundPlan): FaceGroundPlan => {
     const sources = plan.facts.map((f, i) => roofSourceFor(intents[i], f, roofSource, keepSurvey));
     if (sources.every(s => s === 'survey')) return plan;
     const make = (i: number, ridgeCapM?: number) => {
-      const f = plan.facts[i], fit = fitIntent(intents[i], f), f0 = fit.report.fronts[0];
-      const pitch = face.continuity.roof?.pitchDeg, street = intents[i].fronts[0].street;
-      const cross = crossGablesOf(intents[i], fit);
-      const forms = sources[i] === 'front' ? frontRoofSpecs(intents[i], fit, f, {hints: hintsFor(i, f), rowRidgeM: f.rowClamp?.ridgeM?.to, ...(Object.keys(cross).length ? {crossGables: cross} : {})}) : undefined;
-      // Several fronts on the street (two houses in one pand, tower bays): each keeps its eaves (fit's own split).
-      const same = intents[i].fronts.filter(fr => fr.street === street), ff = fit.facts.fronts.find(x => x.street === street);
-      const ends = same.length > 1 && ff ? splitChain(ff, (() => { const sh = same.map(fr => fr.share ?? 1 / same.length), t = sh.reduce((a, b) => a + b, 0); return sh.map(x => x / t); })()).pairs : null;
-      const fronts = ends ? same.map((fr, k) => ({id: fr.id, eavesM: fit.report.fronts.find(r => r.id === fr.id)!.eavesM, endpointsRD: ends[k], ...(fr.stepBody ? {body: true} : {}), ...(fr.dormers ? {dormers: true} : {})})) : undefined;
-      // A corner pand's fronts on other streets: the roof falls to them too (recipeRoof `sideFronts`).
-      const sideFronts = intents[i].fronts.filter(fr => fr.street && fr.street !== street).flatMap(fr => {
-        const sf = fit.facts.fronts.find(x => x.street === fr.street), rf = fit.report.fronts.find(r => r.id === fr.id);
-        if (!sf || !rf) return [];
-        const side = {id: fr.id, eavesM: rf.eavesM, endpointsRD: sf.endpointsRD, outwardNormalRD: sf.outwardNormalRD};
-        // A chamfered corner (Nassaukade 152: 2.3 m of footprint between the two fronts) falls too, at the lower eaves:
-        // without it the two hips met over the chamfer and its closure rose as a 2 m brick gable at the corner.
-        const pairs = ff ? ff.endpointsRD.flatMap(p => sf.endpointsRD.map(q => [p, q])) : [];
-        const [p, q] = pairs.sort((x, y) => Math.hypot(x[0][0] - x[1][0], x[0][1] - x[1][1]) - Math.hypot(y[0][0] - y[1][0], y[0][1] - y[1][1]))[0] ?? [];
-        const gap = p && q ? Math.hypot(q[0] - p[0], q[1] - p[1]) : 0;
-        if (!ff || gap < CHAMFER_MIN_M || gap > CHAMFER_MAX_M) return [side];
-        const sum = [ff.outwardNormalRD[0] + sf.outwardNormalRD[0], ff.outwardNormalRD[1] + sf.outwardNormalRD[1]];
-        let n = [-(q[1] - p[1]) / gap, (q[0] - p[0]) / gap];
-        if (n[0] * sum[0] + n[1] * sum[1] < 0) n = [-n[0], -n[1]];
-        return [side, {id: `${fr.id}-chamfer`, eavesM: Math.min(rf.eavesM, f0.eavesM), endpointsRD: [p, q], outwardNormalRD: n}];
-      });
-      return recipeRoofFacts(fit.facts, {eavesM: f0.eavesM, storeyHeightsM: f0.storeyHeightsM, street, ridgeCapM, fronts, ...(forms ? {forms, frontId: intents[i].fronts[0].id} : {}), ...(intents[i].roof.squareSaddle ? {squareSaddle: true} : {}), ...(sideFronts.length ? {sideFronts} : {}),
-        // Dormers stand 0.35 m behind the frontage (fit.ts): the attic face starts behind them, not through them. Cross gables
-        // start behind their crown walls (CROSS_GABLE_BEHIND_M): the attic face rises from the same gutter line, so the
-        // outline's millimetre wander about the frontage stays flat (a steep face rising from it closed in mm slivers).
-        faceSetbackM: intents[i].fronts.some(fr => fr.street === intents[i].fronts[0].street && fr.dormers && fr.roofFront !== 'mansard') ? 0.4 : Object.keys(cross).length ? CROSS_GABLE_BEHIND_M : 0}, pitch ? {frontPitchDeg: pitch} : {});
+      const f = plan.facts[i];
+      return pandRoofFacts(intents[i], f, sources[i] as 'recipe' | 'front', {hints: hintsFor(i, f), rowRidgeM: f.rowClamp?.ridgeM?.to, ridgeCapM, frontPitchDeg: face.continuity.roof?.pitchDeg});
     };
     let made = plan.facts.map((f, i) => sources[i] === 'survey' ? null : make(i));
     // One attic line per cornice group (the photo reads them as one roof): the lowest member's top, in NAP.

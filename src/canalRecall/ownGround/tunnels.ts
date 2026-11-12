@@ -186,7 +186,18 @@ export interface CutPortal {
 }
 
 /** Planner options. `portalEnds` (#269, default off here; the stores turn it on, `?portalEnds=0` off): a mouth's top is the street's plateau within COVER_LID_MAX_M and its lid runs on to it. */
-export interface PlanOptions { portalEnds?: boolean; /** #270 (default off here; the stores turn it on, `?rampGaps=0` off): scanWay bridges a long same-side wall gap where the bank carries on (bridgeBankGaps). */ rampGaps?: boolean }
+export interface PlanOptions { portalEnds?: boolean; /** #270 (default off here; the stores turn it on, `?rampGaps=0` off): scanWay bridges a long same-side wall gap where the bank carries on (bridgeBankGaps). */ rampGaps?: boolean; /** Lane G1 (#376; default off here, the stores turn it on, `?portalSanity=0` off): portal sanity (PORTAL_SANITY): a dark mouth only with a tunnel way ahead and both sides bounded, motor ramps bounded on both sides, parallel tunnel ways one slot, the slot floor the median of its samples. */ portalSanity?: boolean }
+
+/**
+ * Portal sanity (lane G1 of the Ground v2 plan, issue #376). G0's audit found closed mouths with no tunnel way within
+ * 25 m ahead (cells 2_3, -3_4, -4_-4: a motor ramp's end under a crossing street, the Jachthavenweg ramp), an A10 strip
+ * beside the rail embankment read as a cut, and Overschiestraat's three tunnel ways (road, cycleway, footway, 6 m
+ * apart) each drew a slot with walls, lintels and a floor. A closed mouth needs a tunnel-tagged way within
+ * MOUTH_TUNNEL_M ahead and a wall, merged gap or median on both sides within MOUTH_WALL_STATIONS of it; parallel tunnel
+ * runs within SLOT_PARALLEL_M are one slot; a slot's portal level is the median of its four samples, not the lowest (a
+ * ditch beside the portal pulled the floor down).
+ */
+export const PORTAL_SANITY = { mouthTunnelM: 25, mouthWallStations: 2, slotParallelM: 10 } as const;
 
 /** The farthest a mouth's lid runs on past it (a covered span's smear in the DTM), metres. */
 export const COVER_LID_MAX_M = 20;
@@ -372,7 +383,8 @@ export function scanWay(way: CutWay, ground: HeightFn, others: readonly CutWay[]
     // floor) for at least BOTH_SIDES_MIN of its run: a path at the foot of a rail embankment or a dike has its "wall" on
     // one side and open land on the other (Westerpark, 2026-10-30).
     const both = idx.filter(k => sides[k][0] && sides[k][1]).length / idx.length;
-    if (st.s[j] - st.s[i] >= MIN_RUN_M && deepest >= MIN_RUN_DEPTH_M && (motor || both >= BOTH_SIDES_MIN)) runs.push([i, j]);
+    // Portal sanity (lane G1): a motor ramp too, or an A10 strip at the foot of the rail embankment is a cut (one bank, open land).
+    if (st.s[j] - st.s[i] >= MIN_RUN_M && deepest >= MIN_RUN_DEPTH_M && ((motor && !opts?.bothSides) || both >= BOTH_SIDES_MIN)) runs.push([i, j]);
     i = j + 1;
   }
   // A kept run carries on past its ends while a side still rises TAPER_RISE_M (the ramp's shallow start, where the
@@ -397,7 +409,7 @@ export function scanWay(way: CutWay, ground: HeightFn, others: readonly CutWay[]
 }
 
 /** scanWay options. `rampGaps` (#270, default off here; the stores turn it on, `?rampGaps=0` off): bridgeBankGaps. `trace`: the stations' side scans before (`scanned`) and after (`filled`) the gap fills (probes). */
-export interface ScanWayOptions { rampGaps?: boolean; trace?: (stage: 'scanned' | 'filled', st: { p: Vec2[]; s: number[] }, floor: readonly number[], sides: readonly [SideScan | null, SideScan | null][]) => void }
+export interface ScanWayOptions { rampGaps?: boolean; /** Portal sanity (lane G1): motor ramps too must be bounded on both sides for BOTH_SIDES_MIN of their run. */ bothSides?: boolean; trace?: (stage: 'scanned' | 'filled', st: { p: Vec2[]; s: number[] }, floor: readonly number[], sides: readonly [SideScan | null, SideScan | null][]) => void }
 
 /** A same-side wall gap longer than GAP_STATIONS is re-scanned up to this many stations (60 m; #270's gap is 24). */
 export const BANK_GAP_STATIONS = 30;
@@ -620,7 +632,7 @@ const lengthOf = (pts: readonly Vec2[]) => pts.reduce((a, p, i) => (i ? a + Math
  * A slot through a rideable tunnel run (both ends portals, at most SLOT_MAX_M): the floor is the line between the
  * relief just outside its two portals, and it opens where the relief over the run rises SLOT_MIN_EXCESS_M over it.
  */
-export function slotCut(run: { ways: CutWay[]; points: Vec2[]; ends: [boolean, boolean] }, ground: HeightFn): Cut | null {
+export function slotCut(run: { ways: CutWay[]; points: Vec2[]; ends: [boolean, boolean] }, ground: HeightFn, sanity?: { cover: readonly { ways: CutWay[]; points: Vec2[] }[]; median: boolean }): Cut | null {
   if (!run.ends[0] || !run.ends[1] || !run.ways.every(w => rideableTags(w.tags))) return null;
   const L = lengthOf(run.points);
   if (L > SLOT_MAX_M || L < 4) return null;
@@ -630,13 +642,15 @@ export function slotCut(run: { ways: CutWay[]; points: Vec2[]; ends: [boolean, b
   const a: Vec2 = [p0[0] + (p0[0] - p1[0]) / l0 * SLOT_EXT_M, p0[1] + (p0[1] - p1[1]) / l0 * SLOT_EXT_M], b: Vec2 = [q0[0] + (q0[0] - q1[0]) / l1 * SLOT_EXT_M, q0[1] + (q0[1] - q1[1]) / l1 * SLOT_EXT_M];
   const st = stationsAlong([a, ...run.points, b], STATION_M), n = st.p.length, Lx = st.s[n - 1];
   // Portal levels: the lowest relief at the portal and 3, 6, 9 m outside it, along the run's axis.
-  const level = (p: Vec2, d: Vec2) => Math.min(...[0, 3, 6, 9].map(m => ground(p[0] + d[0] * m, p[1] + d[1] * m)));
+  const level = (p: Vec2, d: Vec2) => { const z = [0, 3, 6, 9].map(m => ground(p[0] + d[0] * m, p[1] + d[1] * m)); return sanity?.median ? lowerMedian(z) : Math.min(...z); };
   const za = level(p0, [(p0[0] - p1[0]) / l0, (p0[1] - p1[1]) / l0]), zb = level(q0, [(q0[0] - q1[0]) / l1, (q0[1] - q1[1]) / l1]);
   const floor = st.s.map(s => za + (zb - za) * Math.max(0, Math.min(1, (s - SLOT_EXT_M) / (L || 1))));
   void Lx;
   const excess = Math.max(...st.p.map((p, i) => ground(p[0], p[1]) - floor[i]));
   if (excess < SLOT_MIN_EXCESS_M) return null;
-  const half = Math.max(SLOT_MIN_HALF_M, Math.max(...run.ways.map(w => w.half)) + SLOT_MARGIN_M);
+  // Portal sanity: the parallel runs merged into this slot lie inside it (their farthest point off the axis plus their half).
+  const coverHalf = sanity?.cover.length ? Math.max(...sanity.cover.map(o => Math.max(...o.points.map(q => polylineDistance(run.points, q[0], q[1]))) + Math.max(...o.ways.map(w => w.half)))) : 0;
+  const half = Math.max(SLOT_MIN_HALF_M, Math.max(...run.ways.map(w => w.half)) + SLOT_MARGIN_M, coverHalf + SLOT_MARGIN_M);
   const sides: [SideScan | null, SideScan | null][] = st.p.map((p, i) => {
     const nx = -st.t[i][1], ny = st.t[i][0];
     const side = (sg: number): SideScan => {
@@ -658,6 +672,59 @@ export function slotCut(run: { ways: CutWay[]; points: Vec2[]; ends: [boolean, b
     if (top - floor[at] >= SLOT_PORTAL_MIN_M) cut.portals.push({ at, dir: d, top, open: true });
   }
   return cut;
+}
+
+/** The lower median of a few samples (two middle values: the lower), so one ditch sample does not set the level. */
+const lowerMedian = (v: number[]): number => { const s = v.filter(x => x === x).sort((a, b) => a - b); return s.length ? s[(s.length - 1) >> 1] : NaN; };
+
+type Run = ReturnType<typeof tunnelRuns>[number];
+/**
+ * Portal sanity: tunnel runs side by side (Overschiestraat's road, cycleway and footway, 6 m apart) grouped: a run joins
+ * the widest run's group when every one of its points lies within PORTAL_SANITY.slotParallelM of that run and its
+ * length agrees within half. Each group draws one slot.
+ */
+export function parallelRuns(runs: readonly Run[]): { run: Run; others: Run[] }[] {
+  const order = runs.map((r, i) => ({ r, i, half: Math.max(...r.ways.map(w => w.half)), len: lengthOf(r.points) })).sort((a, b) => b.half - a.half || b.len - a.len || a.i - b.i);
+  const taken = new Set<number>(), out: { run: Run; others: Run[] }[] = [];
+  for (const a of order) {
+    if (taken.has(a.i)) continue;
+    taken.add(a.i);
+    const others: Run[] = [];
+    for (const b of order) {
+      if (taken.has(b.i) || !a.len || Math.abs(b.len - a.len) > a.len / 2 || rideableTags(a.r.ways[0].tags) !== rideableTags(b.r.ways[0].tags)) continue;
+      if (b.r.points.every(q => polylineDistance(a.r.points, q[0], q[1]) <= PORTAL_SANITY.slotParallelM)) { taken.add(b.i); others.push(b.r); }
+    }
+    out.push({ run: a.r, others });
+  }
+  // The input order (a slot's id and the plan's yields stay as before where nothing merged).
+  return out.sort((x, y) => runs.indexOf(x.run) - runs.indexOf(y.run));
+}
+
+/**
+ * Portal sanity: a closed portal (a dark mouth under a headwall) stays only where a tunnel-tagged way lies within
+ * PORTAL_SANITY.mouthTunnelM ahead of it and both sides of the strip are bounded near it (a wall, a merged gap or a
+ * median within mouthWallStations). Otherwise the mouth goes and the strip's end stays open. Returns the mouths dropped.
+ */
+export function saneMouths(cuts: Cut[], ways: readonly CutWay[]): number {
+  const tunnels = ways.filter(w => w.tunnel);
+  let dropped = 0;
+  for (const c of cuts) {
+    const keep = c.portals.filter(p => {
+      if (p.open) return true;
+      const ahead = tunnels.some(w => {
+        for (let m = 0; m <= PORTAL_SANITY.mouthTunnelM; m += 1) if (polylineDistance(w.points, c.x[p.at] + p.dir[0] * m, c.y[p.at] + p.dir[1] * m) < Math.max(2, w.half)) return true;
+        return false;
+      });
+      const bounded = (sg: 1 | -1) => {
+        const wall = sg > 0 ? c.wallL : c.wallR, gap = sg > 0 ? c.gapL : c.gapR, med = sg > 0 ? c.medL : c.medR;
+        for (let k = Math.max(0, p.at - PORTAL_SANITY.mouthWallStations); k <= Math.min(c.x.length - 1, p.at + PORTAL_SANITY.mouthWallStations); k++) if (wall[k] || gap?.[k] || med?.[k]) return true;
+        return false;
+      };
+      return ahead && bounded(1) && bounded(-1);
+    });
+    if (keep.length !== c.portals.length) { dropped += c.portals.length - keep.length; c.portals = keep; c.bbox = cutBox(c); }
+  }
+  return dropped;
 }
 
 /**
@@ -699,7 +766,7 @@ export function* planCutsSteps(ways: readonly CutWay[], ground: HeightFn, within
       // longest louvred open stretch, Piet Hein east).
       const own = w.tunnel ? portals.filter(p => p.tunnel.id === w.id) : [];
       const reach = w.tunnel ? (q: Vec2) => own.some(p => (q[0] - p.at[0]) ** 2 + (q[1] - p.at[1]) ** 2 <= TUNNEL_SCAN_M * TUNNEL_SCAN_M) : motorAt(w) ? nearPortal : nearPortalRide;
-      const scanned = scanWay(w, ground, ways, motorAt(w) || (w.tunnel && portals.some(p => p.tunnel.id === w.id && p.motor)), box, reach, opts?.rampGaps ? { rampGaps: true } : undefined);
+      const scanned = scanWay(w, ground, ways, motorAt(w) || (w.tunnel && portals.some(p => p.tunnel.id === w.id && p.motor)), box, reach, opts?.rampGaps || opts?.portalSanity ? { ...(opts?.rampGaps ? { rampGaps: true } : {}), ...(opts?.portalSanity ? { bothSides: true } : {}) } : undefined);
       // On a tunnel way only the part the DTM sees open (a louvred roof) continues a ramp: a run that starts at one of
       // its portals, on the floor of the open road just outside (within TUNNEL_FLOOR_TOL_M). Elsewhere the DTM over a
       // tunnel is the ground over it (a quay, a plaza, NEMO's stairs), and stays.
@@ -770,15 +837,17 @@ export function* planCutsSteps(ways: readonly CutWay[], ground: HeightFn, within
   }
   cuts.length = 0;
   cuts.push(...pieces.map(p => p.cut).filter(c => c.s[c.s.length - 1] >= 4));
-  // Slots.
-  for (const run of tunnelRuns(ways)) {
-    if (run.ways.some(w => skip.has(-w.id)) || !run.points.some(within)) continue;
-    const slot = slotCut(run, ground);
-    for (const w of run.ways) skip.add(-w.id);
+  // Slots. Portal sanity: parallel runs within SLOT_PARALLEL_M are one slot, on the widest run's axis.
+  const runs = tunnelRuns(ways), groups = opts?.portalSanity ? parallelRuns(runs) : runs.map(r => ({ run: r, others: [] as typeof runs }));
+  for (const { run, others } of groups) {
+    if ([run, ...others].some(r => r.ways.some(w => skip.has(-w.id))) || ![run, ...others].some(r => r.points.some(within))) continue;
+    const slot = slotCut(run, ground, opts?.portalSanity ? { cover: others, median: true } : undefined);
+    for (const r of [run, ...others]) for (const w of r.ways) skip.add(-w.id);
     if (slot) cuts.push(slot);
     yield;
   }
   mergeNeighbours(cuts, ground);
+  if (opts?.portalSanity) saneMouths(cuts, ways);
   return cuts;
 }
 

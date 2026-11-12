@@ -26,14 +26,18 @@ function viewBox(camera) {
   return {west:Math.max(b.getWest(),c.lng-dx),east:Math.min(b.getEast(),c.lng+dx),south:Math.max(b.getSouth(),c.lat-dy),north:Math.min(b.getNorth(),c.lat+dy)};
 }
 
-/** One material for every kind: vertex colours, and magenta (1,0,1) faces take the instance colour (fraction lid, poster). */
-export function furnitureMaterial() {
+/**
+ * One material for every kind: vertex colours, and magenta (1,0,1) faces take the instance colour (fraction lid, poster).
+ * `smooth`: the same material without flat shading, for kinds whose model carries smooth normals (the krul's curved
+ * sheet, 2026-11-12); still one instanced draw per kind.
+ */
+export function furnitureMaterial(smooth=false) {
   // polygonOffset ahead of the ground layers (paving -3/-6, paint -4/-8, tram -5/-10 in ownGround OFFSET): without it
   // the pulled-forward paving hid the container plates and the lowest ~0.25 m of every piece (TODO P1 (a), 2026-11-07).
-  const material=new THREE.MeshStandardMaterial({color:'#ffffff',roughness:.82,metalness:0,flatShading:true,vertexColors:true,polygonOffset:true,polygonOffsetFactor:-6,polygonOffsetUnits:-12});
+  const material=new THREE.MeshStandardMaterial({color:'#ffffff',roughness:.82,metalness:0,flatShading:!smooth,vertexColors:true,polygonOffset:true,polygonOffsetFactor:-6,polygonOffsetUnits:-12});
   material.onBeforeCompile=shader=>{shader.vertexShader=shader.vertexShader.replace('#include <color_vertex>',
     '#include <color_vertex>\n#ifdef USE_INSTANCING_COLOR\n float sfSlot = step(0.98, color.r) * step(color.g, 0.02) * step(0.98, color.b);\n vColor.rgb = mix(color.rgb, instanceColor.rgb, sfSlot);\n#endif');};
-  material.customProgramCacheKey=()=>'canal-street-furniture';
+  material.customProgramCacheKey=()=>smooth?'canal-street-furniture-smooth':'canal-street-furniture';
   return material;
 }
 
@@ -41,8 +45,9 @@ export function furnitureGeometry(id) {
   const m=rideModel(id),g=new THREE.BufferGeometry();
   g.setAttribute('position',new THREE.BufferAttribute(m.positions,3));
   g.setAttribute('color',new THREE.BufferAttribute(m.colours,3));
-  g.computeVertexNormals();g.computeBoundingSphere();
-  g.userData.triangles=m.triangles;
+  if(m.normals)g.setAttribute('normal',new THREE.BufferAttribute(m.normals,3));else g.computeVertexNormals();
+  g.computeBoundingSphere();
+  g.userData.triangles=m.triangles;g.userData.smooth=!!m.normals;
   return g;
 }
 
@@ -55,7 +60,7 @@ export class StreetFurniture {
     // One rebuild per burst of tile arrivals / ground re-bases, after a frame (lane E6 #219, rendererShared/rebuildCoalescer.ts;
     // `?extrasRebuild=sync` rebuilds at once).
     this.rebuilds=new RebuildCoalescer(()=>{if(this.enabled&&this.ready)this.rebuild();},undefined,extrasRebuildSync());
-    this.geometries=new Map();this.material=null;
+    this.geometries=new Map();this.material=null;this.smoothMaterial=null;
     this.sharedFrame=options.sharedFrame||null;
     this.scene=new THREE.Group();this.scene.name='street-furniture';
     this.origin=maplibregl.MercatorCoordinate.fromLngLat([4.9,52.37],0);
@@ -81,7 +86,7 @@ export class StreetFurniture {
   remove() {
     this._unregister?.();this._unregister=null;this.generation++;this.ready=false;
     this.clear();this.map.off('moveend',this.move);
-    for(const g of this.geometries.values())g.dispose();this.geometries.clear();this.material?.dispose();this.material=null;
+    for(const g of this.geometries.values())g.dispose();this.geometries.clear();this.material?.dispose();this.material=null;this.smoothMaterial?.dispose();this.smoothMaterial=null;
   }
   async load(root) {
     const generation=++this.generation;
@@ -150,12 +155,12 @@ export class StreetFurniture {
       if(i.lng<b.west||i.lng>b.east||i.lat<b.south||i.lat>b.north)continue;
       (groups.get(i.model)??groups.set(i.model,[]).get(i.model)).push(i);
     }
-    this.material??=furnitureMaterial();
+    this.material??=furnitureMaterial();this.smoothMaterial??=furnitureMaterial(true);
     const m4=new THREE.Matrix4(),q=new THREE.Quaternion(),z=new THREE.Vector3(0,0,1),pos=new THREE.Vector3(),scl=new THREE.Vector3(),white=new THREE.Color(1,1,1),col=new THREE.Color();
     let instances=0;const byModel={};
     for(const [id,items] of groups){
       if(!this.geometries.has(id))this.geometries.set(id,furnitureGeometry(id));
-      const mesh=new THREE.InstancedMesh(this.geometries.get(id),this.material,items.length);
+      const geometry=this.geometries.get(id),mesh=new THREE.InstancedMesh(geometry,geometry.userData.smooth?this.smoothMaterial:this.material,items.length);
       mesh.name=`street-furniture/${id}`;
       items.forEach((v,j)=>{
         const p=this.maplibregl.MercatorCoordinate.fromLngLat([v.lng,v.lat],0);

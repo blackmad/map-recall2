@@ -11,7 +11,7 @@ import type {BuildingFacts} from '../buildingRecipe/facts.ts';
 import {fitIntent} from '../buildingRecipe/fit.ts';
 import type {CanalHouseIntent} from '../buildingRecipe/intent.ts';
 import {toRecipe} from '../houseSpec/toRecipe.ts';
-import {withFrontRoof, wantsFrontRoof} from './houseFrontRoof.ts';
+import {withFrontRoof, wantsFrontRoof} from '../buildingRecipe/houseFrontRoof.ts';
 
 const PAND = '0363100012176172';
 const read = <T>(p: string) => JSON.parse(fs.readFileSync(p, 'utf8')) as T;
