@@ -1885,6 +1885,25 @@ With the flag, a cached entry skips the panorama listing, the glare/foliage pre-
 is rendered (the route line is recomputed, it depends on `--query`). Use it for the after-run of a before/after pair
 and for critic re-runs. A run without the flag recomputes everything and refreshes the cache.
 
+**`--before <dir>`: a before/after must prove it changed the wall (lane wall-colour-truth, 2026-11-12).** The
+2026-11-10 "House walls take their photo colour" pairs showed before == after on every pand: both runs used
+`?world=live`, but the committed bundles of that evening were built from `SPEC_WALLS_HELD = true` (ae430fc27, 21:23;
+the flip to false at 21:37 reached the bundles only at 23:03), so `?specWalls=0` and the default drew the same period
+colour; and the pand on the note (Egelantiersgracht 172620) is held by the pale-warm guard, so it cannot change with the
+spec flag at all. With `--before <dir>` (an earlier run of the same list) each pose's `pose.json` gets `compare`: the
+share of target-wall pixels changed (OKLab distance > 0.02 on a 48 x 32 grid over the projected wall), the mean
+distance, the wall's OKLab L/C/hue in the photo, before and after (`analyse.ts wallLab`: the colour band, 30-70 %
+lightness quantiles), and what the page decorated the pand with in each run (`game.json drawn`: the page query,
+`specRecipe.wallHex`, `heldBrick`, the spec reading). `<key>/triple.jpg` sets photo | before | after side by side at
+gallery size. Under 2 % changed (`WALL_SAME_PCT`; render noise on an unchanged wall measured 0 %) the pair is flagged
+`sameAsBefore` and printed as a WARNING: the flag compared did not reach the pixels. Check, in order: the bundles (built
+from the source you think you are testing?), the world (baked world-v1 cells ignore runtime decorate flags such as
+`?houseSpecs=0` and `?specWalls=0`; use `?world=live`), the mesh worker's flags (`meshBuildingFor` runs in the pool
+worker, whose `location.search` is its own script URL: a flag it reads must be in `engine/workerPool.ts
+withWorkerFlags`; `brickLift` was not, so `?brickLift=v1` changed nothing on the generic houses), and the pand's guard
+(`game.json drawn.heldBrick`). `scripts/house-frames/trace-wall.ts <ids>` prints the Node side of the same path
+(spec reading, decorated wall, mesher wall) under `SPEC_WALLS` / `BRICK_LIFT`.
+
 Output per pand (or per `key` of a `--list` entry): `<out>/<key>/{photo.jpg, game.png, pair.jpg, pose.json}`; per six pairs
 `<out>/contact-N.jpg` (left: the panorama cut, right: the game, cyan: the BAG wall outline, a three-line caption); and
 `<out>/summary.json` (alignment distribution, flags, throughput). `--help` prints the command's `HELP`
@@ -2150,3 +2169,36 @@ Node 32 s, Chromium 8 s (most of the Node time is the ortho fronts at 1800 px).
 Not reproduced: the city-look atlas shader, anisotropic filtering, cast shadows, environment maps. The release review
 "at gallery size from all sides" can use the Node orbit (`views.ts <id> -`) for its first look; the release decision
 itself should stay on a Chromium or in-game frame until the measureFacade knife edges above are hardened (OPEN).
+## §9 Oud-West period-palette measurement and brickLift v2 (lane #373, 2026-11-10 / 2026-11-12)
+
+Question: whole 1875-1910 rows that panoramas show as dark purple-brown brick drew bright orange-red. Tools: `scripts/house-specs/oudwest-palette.ts`
+(`select`, `measure`), `oudwest-palette-report.ts` (`report`, `pairs`) and `oudwest-profile-trace.ts`; Node only, staging in `staging/oudwest-palette/`.
+Wall = `measureStripWallFit` on a 50 px/m rectified winter panorama (obliquity under 30 deg; windows, trim, foliage masked, wallFit's white balance);
+drawn = `bayLookFor` (with `buurtProfileAt`) -> `cityLookTint` -> `photoMatchedWallTint`, the runtime functions, run once with `BRICK_LIFT=v1` and once
+with the default. 59 plain-brick c19 pands of the Oud-West / De Baarsjes gebied (Nov-Mar captures; 096181 a relaxed pick, 160809 washed out).
+
+**Finding.** Measured mean L* 30.3 (C* 10.8); drawn under v1 54.5 (C* 27.0); dL mean +24.3, median +25.1, p10 +8.5, p90 +37.3. All 59 draw from a buurt
+profile wall, not the bare period palette. The profile pools hold bright and grey entries (pool mean L* 48); `cityWallTint` (0.12 + 0.9 l, floor 0.3) adds ~4 L*
+and cannot draw darker than ~L* 37 (measured walls sit at 21-35).
+
+**brickLift v2 (default on since 2026-11-12; the user: "go for correctness, we can lighten it later").** `?brickLift=v1` (BRICK_LIFT=v1 in Node) restores the
+old lift byte-for-byte. `src/canalRecall/look/brickLift.ts`: (1) a dark brick (HSL l under 0.62, light buff excepted) lifts by `l' = clamp(l + 0.05, 0.14, 0.6)`,
+hue kept, grey stays grey; (2) a buurt profile's dark brick wall takes a 0.4 linear-light gain first; (3) `C19_WALLS_V2` replaces the c19 period brick entries
+(`#564543 #564543 #654a34 #594940 #594b40 | #d3b184 #e2d5ba #e2d5ba #d9c5a4 | #764e2e`, buff / cream / stucco entries unchanged); (4) a pand with no stated
+material and no register finish counts as brick for the trim-misread rule (`decorate.ts specWallIsBrick`; 83 % of the unstated c19 pands read brick:
+58 brick, 1 pale render, 11 grey, 19 unmeasurable). Scope: only the generic building tiles ask for it (`writeTile.ts appendBuckets` passes `brickLift`);
+recipe, landmark and GLB brick tints never move. Pinned by `look/brickLift.test.ts`: stucco, white and buff (#e2d5ba #d9c5a4 #d3b184 #f2f2ee #e4ddcd #d8d8d2 #c9b79a)
+draw byte-identically on every slot. Result on the 59 pands: dL mean +8.4, median +6.0, p10 -8.5, p90 +31.1 (the tail is pale greige profile walls, left alone);
+mean chroma 21.0. Held pale-warm walls (`held-wall-audit.ts`, SPEC_WALLS=1): v1 84 held, v2 51 held, all brick, no grey brick.
+Caveat: H9 spec walls on the generic path take the v2 lift too (up to ~4 L* darker at mid lightness). The baked world-v1 cells keep the old tints until a recompile.
+
+**Where the grey and pale pool entries come from** (`oudwest-profile-trace.ts`, thumbnail-only so approximate). Grey entries (#8d8d90, #787878, #818181, #757574,
+#7b7c7d, #9a9896) are dark brick under an overcast cast: raw #555554 / #646768 with no real trim take the city white-point gain, normalise to L* >= 62 and were
+called painted. Fixed at the source: `paintClass.ts DARK_NEUTRAL_RAW` (raw L* < 55, C* < 10, trim via the city white point: brick); 170 of 1,049 painted thumbnail
+walls city-wide flip. Cream entries (#e2d8d4, #dfd9d7, #ece8e1, #eae8e7) come from raw L* 87+ thumbnails: real render. The orange top brick slice (#c07f61, #ab7252,
+#a97863) is sunlit brick whose wall median includes the pale speklagen, then the profile's brick chroma calibration. `buurt-profiles.json` is NOT republished: re-run
+`scripts/buurt-profiles/derive.ts` after the v2 palette lands (its calibration reference is the median of `PERIOD_WALLS.photo` bricks).
+
+**Frames not yet run** (house:frames on 12 pands and the Kinkerstraat / Bellamystraat / JP Heijestraat / Helmersbuurt street frames, v1 vs v2): the tile worker is
+loaded by URL, so a page query never reaches it; compare two scratch bundle builds (`BUNDLES_DIR`, three-buildings + worker) with the default constant flipped.
+Pairs of the measurement: screenshots repo `ui/2026-11-10-oudwest-palette/`.

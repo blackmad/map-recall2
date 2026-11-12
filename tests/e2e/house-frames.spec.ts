@@ -23,6 +23,8 @@ import { openRoute, settleWorld } from './helpers';
 
 type JobPose = {
   key: string;
+  /** the target pand (bare BAG id): its styled feature's wall inputs go into game.json `drawn` */
+  pandId?: string;
   /** this pose's out dir (a batch job); else the job's */
   out?: string;
   lngLat: [number, number];
@@ -116,7 +118,20 @@ test('house frames', async ({ page }) => {
             }),
           };
         }, pose.picks);
-        writeFileSync(join(dir, 'game.json'), JSON.stringify({ key: pose.key, settle, picks, opened, ms: { open: tOpen - ts, settle: tSettled - tOpen, total: Date.now() - ts } }, null, 1));
+        // What the page decorated the target pand with (the wall inputs the mesher reads) and the query it ran with, so a
+        // before/after whose flag never reached the decorator is visible in game.json, not only in the pixels.
+        const drawn = await page.evaluate((pandId) => {
+          const vm = (window as any).canalRecallGame.vectorMap, city = vm._completeCity;
+          const out: Record<string, unknown> = { search: location.search, worldCells: !!city?.usingWorldCells };
+          if (!pandId || !city?.featuresById) return out;
+          const f = city.featuresById([`NL.IMBAG.Pand.${pandId}`, pandId])[0];
+          if (!f) return { ...out, found: false };
+          const p = f.properties ?? {};
+          return { ...out, found: true, constructionYear: p.constructionYear ?? null, facadeStyle: p.facadeStyle ?? null, registerFinish: p.registerFinish ?? null,
+            specReading: p.houseSpec?.wallHex ?? null, specRecipeWall: p.specRecipe?.wallHex ?? null, heldBrick: !!p.specRecipe?.heldBrick,
+            facadeMappedColour: p.facadeMappedColour ?? null, sideColour: p.sideColour ?? null, sideColourSource: p.sideColourSource ?? null, periodWallHex: p.periodWallHex ?? null };
+        }, pose.pandId ?? null).catch(e => ({ error: String(e).slice(0, 200) }));
+        writeFileSync(join(dir, 'game.json'), JSON.stringify({ key: pose.key, settle, picks, drawn, opened, ms: { open: tOpen - ts, settle: tSettled - tOpen, total: Date.now() - ts } }, null, 1));
         timings.push({ key: pose.key, out: pose.out ?? job.out, open: tOpen - ts, settle: tSettled - tOpen, total: Date.now() - ts });
         sinceOpen++;
         break;

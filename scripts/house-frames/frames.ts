@@ -21,6 +21,7 @@ import { exposedWalls, listPanos, pickWall, rankPanos, type PanoPick, type Wall 
 import { isLeaf } from '../../src/canalRecall/buildingRecipe/measureFacade.ts';
 import { aimPose, fpsFor, frameFor, gridConvergenceDeg, hfovDeg, wallOutline, wallPoint, CROWN_EXTRA_M, FRAME_H, FRAME_W, type FramePose, type WallQuad } from './pose.ts';
 import { cutPerspective, loadEquirect, type PanoSize, type Rgb8 } from './photo.ts';
+import { wallChange, wallLab, WALL_SAME_PCT } from './analyse.ts';
 import { bare, edgeOffsets, flagsFor, measureHalf, openingsNote, pickSamples, relativeColour, readPicks, skyline, skylineMedian, type EdgeRead, type Hit, type PickSample } from './analyse.ts';
 
 export const HELP = `npm run house:frames -- <input> [flags]
@@ -51,6 +52,13 @@ Flags
   --bearing <deg>        prefer the wall facing this bearing (+-50 deg) for every pand
   --max <n>              at most n pands (after the input order)
   --reopen-every <n>     re-open the game page after n poses (default 40; it also re-opens after a crash)
+  --before <dir>         a before/after: compare each game frame with <dir>/<key>/game.png (an earlier run of the same
+                         list) on the target wall. pose.json gets compare {pct of target-wall pixels changed (OKLab
+                         distance > 0.02), meanDE, wall OKLab L/C/hue before, after and photo, what the page decorated
+                         the pand with in each run}; <out>/<key>/triple.jpg sets photo | before | after side by side;
+                         a pair under 2 % changed is flagged sameAsBefore and printed as a WARNING: the flag compared
+                         did not reach the pixels (a baked world, a flag the mesh worker never sees, a guard holding the
+                         pand), and the pair proves nothing. With --lists, each list's before is <dir>/<basename of out>.
   --prep-only            pick, pose and cut, write <out>/job.json, no browser
   --post-only            redo the checks, pairs and sheets from <out> (after a browser run)
   --lists <a.json:outA,b.json:outB>
@@ -99,7 +107,7 @@ Review: docs/house-line.md §7. Builders are accepted on these pairs, read by op
 `;
 
 type Entry = { id: string; key?: string; bearing?: number; at?: [number, number]; chord?: [[number, number], [number, number]] };
-type Args = { pands: Entry[]; year?: number; season: 'winter' | 'any'; query: string; label: string; out: string; panoSize: PanoSize; bearing?: number; max: number; reopenEvery: number; prepOnly: boolean; postOnly: boolean; reusePhotos: boolean; inputName: string };
+type Args = { pands: Entry[]; year?: number; season: 'winter' | 'any'; query: string; label: string; out: string; panoSize: PanoSize; bearing?: number; max: number; reopenEvery: number; prepOnly: boolean; postOnly: boolean; reusePhotos: boolean; before?: string; inputName: string };
 
 function arg(argv: string[], name: string): string | undefined {
   const i = argv.indexOf(`--${name}`);
@@ -127,7 +135,7 @@ async function parseArgs(argv: string[]): Promise<Args> {
   }
   const season = arg(argv, 'season') === 'winter' ? 'winter' : 'any';
   const max = Number(arg(argv, 'max') ?? Infinity);
-  return { pands: pands.slice(0, max), year: arg(argv, 'year') ? Number(arg(argv, 'year')) : undefined, season, query: arg(argv, 'query') ?? '', label, out, panoSize: (arg(argv, 'pano-size') as PanoSize) ?? 'medium', bearing, max, reopenEvery: Number(arg(argv, 'reopen-every') ?? 40), prepOnly: argv.includes('--prep-only'), postOnly: argv.includes('--post-only'), reusePhotos: argv.includes('--reuse-photos'), inputName };
+  return { pands: pands.slice(0, max), year: arg(argv, 'year') ? Number(arg(argv, 'year')) : undefined, season, query: arg(argv, 'query') ?? '', label, out, panoSize: (arg(argv, 'pano-size') as PanoSize) ?? 'medium', bearing, max, reopenEvery: Number(arg(argv, 'reopen-every') ?? 40), prepOnly: argv.includes('--prep-only'), postOnly: argv.includes('--post-only'), reusePhotos: argv.includes('--reuse-photos'), before: arg(argv, 'before') ? path.resolve(arg(argv, 'before')!) : undefined, inputName };
 }
 
 // ---- what the game draws for a pand (route) -------------------------------------------------------------------------
@@ -371,6 +379,12 @@ function spatialOrder<T extends { pose: FramePose }>(items: T[]): T[] {
 
 // ---- pairs and sheets -----------------------------------------------------------------------------------------------
 const esc = (s: string) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+/** A frame at the pose's size (a game.png taken at another viewport is resized, as post() does for the game half). */
+async function readSized(file: string, width: number, height: number): Promise<Rgb8> {
+  const { data, info } = await sharp(file).removeAlpha().resize(width, height, { fit: 'fill' }).raw().toBuffer({ resolveWithObject: true });
+  return { width: info.width, height: info.height, data: new Uint8Array(data) };
+}
+
 async function readRgb(file: string): Promise<Rgb8> {
   const { data, info } = await sharp(file).removeAlpha().raw().toBuffer({ resolveWithObject: true });
   return { width: info.width, height: info.height, data: new Uint8Array(data.buffer, data.byteOffset, data.byteLength) };
@@ -423,6 +437,24 @@ async function pairImage(dir: string, r: any, halfPx: number, fontPx: number): P
     .composite([{ input: ph, left: 0, top: 0 }, { input: gm, left: halfPx + 6, top: 0 }, { input: Buffer.from(labels), left: 0, top: 0 }, { input: Buffer.from(svg), left: 0, top: halfPx }]).jpeg({ quality: 82 }).toBuffer();
 }
 
+const labText = (l: any) => l ? `L ${l.L.toFixed(2)} C ${l.C.toFixed(3)} h ${l.h}°` : '?';
+/** photo | before | after at gallery size (3 x 520 px, <= 1600 px wide), the wall outline on each, the change on the caption. */
+async function tripleImage(dir: string, beforeDir: string, r: any, halfPx = 520, fontPx = 14): Promise<Buffer> {
+  const pose: FramePose = r.pose, wall: WallQuad = r.wall, c = r.compare;
+  const [ph, bf, af] = await Promise.all([half(path.join(dir, 'photo.jpg'), pose, wall, halfPx), half(path.join(beforeDir, 'game.png'), pose, wall, halfPx), half(path.join(dir, 'game.png'), pose, wall, halfPx)]);
+  const W = halfPx * 3 + 12, d = (k: 'before' | 'after') => { const x = c.drawn?.[k]; return x ? (x.specRecipeWall ? `spec ${x.specRecipeWall}` : x.heldBrick ? 'held brick' : 'period') : '?'; };
+  const lines = [
+    `${r.key !== r.pandId ? r.key + ' ' : ''}${r.pandId}  ${r.street || '?'}  |  target wall ${c.pct}% of pixels changed (mean OKLab dE ${c.meanDE})${c.same ? '  SAME: the flag did not reach the pixels' : ''}`,
+    `wall OKLab  photo ${labText(c.lab.photo)}  |  before ${labText(c.lab.before)} (${d('before')})  |  after ${labText(c.lab.after)} (${d('after')})`,
+  ];
+  const capH = Math.round(fontPx * 1.45 * lines.length + fontPx * 0.8);
+  const svg = `<svg width="${W}" height="${capH}" xmlns="http://www.w3.org/2000/svg"><rect width="100%" height="100%" fill="#111"/>${lines.map((l, i) => `<text x="8" y="${Math.round(fontPx * 1.2 + i * fontPx * 1.45)}" font-family="Helvetica, Arial, sans-serif" font-size="${fontPx}" fill="${i === 0 && c.same ? '#ffb347' : '#eee'}">${esc(l)}</text>`).join('')}</svg>`;
+  const label = (t: string, x: number) => `<text x="${x}" y="${fontPx + 6}" font-family="Helvetica, Arial, sans-serif" font-size="${fontPx}" fill="#fff" stroke="#000" stroke-width="0.6">${esc(t)}</text>`;
+  const labels = `<svg width="${W}" height="${halfPx}" xmlns="http://www.w3.org/2000/svg">${label('panorama', 8)}${label(`before ${path.basename(path.dirname(beforeDir))}`, halfPx + 14)}${label(`after ${r.label}`, 2 * halfPx + 20)}</svg>`;
+  return sharp({ create: { width: W, height: halfPx + capH, channels: 3, background: '#111' } })
+    .composite([{ input: ph, left: 0, top: 0 }, { input: bf, left: halfPx + 6, top: 0 }, { input: af, left: 2 * halfPx + 12, top: 0 }, { input: Buffer.from(labels), left: 0, top: 0 }, { input: Buffer.from(svg), left: 0, top: halfPx }]).jpeg({ quality: 80 }).toBuffer();
+}
+
 async function contactSheets(out: string, results: any[], title: string): Promise<string[]> {
   const files: string[] = [], per = 6, cols = 2, halfPx = 390, fontPx = 11; // 1596 px wide: the screenshots repo takes <= 1600 px, <= 400 kB
   for (let s = 0; s * per < results.length; s++) {
@@ -463,16 +495,33 @@ async function post(prep: Prepared, args: Args, job: any): Promise<any> {
   const flags = flagsFor(picks, measure.game, measure.photo, { crownM: prep.wall.heightM, game: skyOff.game.medianM, photo: skyOff.photo.medianM, above: cols.size }, colour);
   const advisory = { openings: openingsNote(measure.game, measure.photo, flags.missing) };
   const fpsUsed = g.picks?.fps ?? null;
-  const r = { pandId: prep.pandId, key: prep.key, street: prep.street, label: args.label, query: job.query, route: prep.route, why: prep.why, wall: prep.wall, wallLenM: prep.wallLenM, pick: prep.pick, pose: prep.pose, hfovDeg: prep.hfovDeg, fps: fpsFor(prep.pose), fpsUsed, foliage: prep.foliage, candidates: prep.candidates, edges, skyline: { ...sky, offset: skyOff }, picks, measure, colour, flags, advisory, settle: g.settle, ms: g.ms };
+  // The pand's wall colour (OKLab) in each half, and with --before the same wall in the earlier run's frame.
+  const lab = { photo: wallLab(photo, frame, prep.pose, prep.wall), game: wallLab(game, frame, prep.pose, prep.wall) };
+  let compare: Record<string, unknown> | null = null;
+  if (args.before) {
+    const beforePng = path.join(args.before, prep.key, 'game.png'), beforeJson = path.join(args.before, prep.key, 'game.json');
+    if (!fs.existsSync(beforePng)) compare = { before: args.before, error: 'no before frame' };
+    else {
+      const before = await readSized(beforePng, prep.pose.width, prep.pose.height), change = wallChange(before, game, frame, prep.pose, prep.wall);
+      compare = { before: args.before, ...(change ?? { error: 'wall off frame' }), lab: { photo: lab.photo, before: wallLab(before, frame, prep.pose, prep.wall), after: lab.game },
+        drawn: { before: fs.existsSync(beforeJson) ? JSON.parse(fs.readFileSync(beforeJson, 'utf8')).drawn ?? null : null, after: g.drawn ?? null } };
+      if (change?.same) {
+        (flags as Record<string, unknown>).sameAsBefore = `target wall ${change.pct}% changed vs ${path.basename(args.before)} (< ${WALL_SAME_PCT}%): the compared flag did not reach these pixels`;
+        console.warn(`WARNING ${prep.pandId} ${prep.key}: before == after on the target wall (${change.pct}% of its pixels changed, mean OKLab dE ${change.meanDE}); this pair proves nothing`);
+      }
+    }
+  }
+  const r = { pandId: prep.pandId, key: prep.key, street: prep.street, label: args.label, query: job.query, route: prep.route, why: prep.why, wall: prep.wall, wallLenM: prep.wallLenM, pick: prep.pick, pose: prep.pose, hfovDeg: prep.hfovDeg, fps: fpsFor(prep.pose), fpsUsed, foliage: prep.foliage, candidates: prep.candidates, edges, skyline: { ...sky, offset: skyOff }, picks, measure, colour, lab, ...(compare ? { compare } : {}), drawn: g.drawn ?? null, flags, advisory, settle: g.settle, ms: g.ms };
   fs.writeFileSync(path.join(dir, 'pose.json'), JSON.stringify(r, null, 1));
   fs.writeFileSync(path.join(dir, 'pair.jpg'), await pairImage(dir, r, 720, 15));
+  if (compare && !compare.error) fs.writeFileSync(path.join(dir, 'triple.jpg'), await tripleImage(dir, path.join(args.before!, prep.key), r));
   return r;
 }
 
 function quantile(xs: number[], q: number) { const s = [...xs].sort((a, b) => a - b); return s.length ? s[Math.min(s.length - 1, Math.floor(q * s.length))] : NaN; }
 
-type Job = { out: string; query: string; width: number; height: number; reopenEvery: number; settleMs: number; poses: Array<{ key: string; out?: string; lngLat: [number, number]; headingDeg: number; fps: Record<string, unknown>; picks: Array<[number, number]> }> };
-const jobFor = (args: Args, prepared: Prepared[]): Job => ({ out: args.out, query: args.query, width: FRAME_W, height: FRAME_H, reopenEvery: args.reopenEvery, settleMs: 1200, poses: prepared.map(p => ({ key: p.key, out: args.out, lngLat: p.pose.lngLat, headingDeg: p.pose.headingDeg, fps: fpsFor(p.pose) as Record<string, unknown>, picks: p.samples.map(s => [s.x, s.y] as [number, number]) })) });
+type Job = { out: string; query: string; width: number; height: number; reopenEvery: number; settleMs: number; poses: Array<{ key: string; pandId?: string; out?: string; lngLat: [number, number]; headingDeg: number; fps: Record<string, unknown>; picks: Array<[number, number]> }> };
+const jobFor = (args: Args, prepared: Prepared[]): Job => ({ out: args.out, query: args.query, width: FRAME_W, height: FRAME_H, reopenEvery: args.reopenEvery, settleMs: 1200, poses: prepared.map(p => ({ key: p.key, pandId: p.pandId, out: args.out, lngLat: p.pose.lngLat, headingDeg: p.pose.headingDeg, fps: fpsFor(p.pose) as Record<string, unknown>, picks: p.samples.map(s => [s.x, s.y] as [number, number]) })) });
 
 /** Pick, pose and cut every entry of one input; writes <out>/prepared.json and <out>/job.json. */
 async function prepareAll(args: Args): Promise<{ prepared: Prepared[]; skipped: Skipped[] }> {
@@ -521,14 +570,17 @@ async function postAll(args: Args, prepared: Prepared[], skipped: Skipped[]): Pr
   const summary = {
     input: args.inputName, label: args.label, query: args.query, pands: args.pands.length, prepared: prepared.length, skipped, framed: ok.length,
     alignment: { photoEdges: photoEdges.length, medianPct: +quantile(photoEdges, 0.5).toFixed(2), p90Pct: +quantile(photoEdges, 0.9).toFixed(2), over3: ok.flatMap(r => r.edges.photo.filter((e: EdgeRead) => e.found && e.side !== 'crown' && Math.abs(e.offsetPct) > 3).map((e: EdgeRead) => `${r.pandId} ${e.side} ${e.offsetPct}%`)), gameEdges: gameEdges.length, gameMedianPct: +quantile(gameEdges, 0.5).toFixed(2) },
-    flags: Object.fromEntries(['missing', 'otherBuilding', 'roofOffset', 'wallColour'].map(k => [k, ok.filter(r => r.flags[k]).map(r => r.pandId)])),
+    flags: Object.fromEntries(['missing', 'otherBuilding', 'roofOffset', 'wallColour', 'sameAsBefore'].map(k => [k, ok.filter(r => r.flags[k]).map(r => r.pandId)])),
     advisory: { possibleBlankWall: ok.filter(r => r.advisory?.openings).map(r => r.pandId) },
     colourScores: ok.map(r => [r.pandId, r.colour?.score ?? null]),
+    ...(args.before ? { compare: { before: args.before, pairs: ok.filter(r => r.compare && !r.compare.error).length, same: ok.filter(r => r.compare?.same).map(r => r.key), changedPct: ok.map(r => [r.key, r.compare?.pct ?? null]) } } : {}),
     throughput: timings ? { poses: timings.poses, wallS: +(timings.wallMs / 1000).toFixed(1), pairsPerMin: +(timings.poses / (timings.wallMs / 60000)).toFixed(2), opened: timings.opened, settleMedianS: +(quantile(timings.timings.map((t: any) => t.settle), 0.5) / 1000).toFixed(1), ...(timings.batch ? { batch: timings.batch } : {}) } : null,
     sheets,
   };
   fs.writeFileSync(path.join(args.out, 'summary.json'), JSON.stringify(summary, null, 1));
   console.log(JSON.stringify({ ...summary, skipped: skipped.length }, null, 1));
+  const same = (summary as any).compare?.same as string[] | undefined;
+  if (same?.length) console.warn(`WARNING: ${same.length} of ${(summary as any).compare.pairs} before/after pairs are the same on the target wall (${same.join(', ')}): the compared flag did not reach their pixels. Check the world (baked cells ignore runtime flags), the mesh worker's flags (engine/workerPool.ts withWorkerFlags) and the pand's guard before reading these pairs as a result.`);
 }
 
 /** `--lists a.json:outA,b.json:outB`: one argv per list (`--list a.json --out outA` plus the shared flags). */
@@ -569,6 +621,7 @@ async function batch(argv: string[]) {
   const runs: Array<{ args: Args; prepared: Prepared[]; skipped: Skipped[] }> = [];
   for (const one of splitLists(argv)) {
     const args = await parseArgs(one);
+    if (args.before) args.before = path.join(args.before, path.basename(args.out));
     console.log(`== ${args.inputName} -> ${args.out}`);
     if (args.postOnly) { const p = JSON.parse(fs.readFileSync(path.join(args.out, 'prepared.json'), 'utf8')); runs.push({ args, ...p }); continue; }
     if (!args.pands.length) { console.error(`${args.inputName}: no pands`); process.exit(2); }

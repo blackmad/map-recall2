@@ -43,3 +43,15 @@ test('gain is clamped and the city level is a median', () => {
   assert.equal(cityTrimLevel([[100, 100, 100], null, [200, 200, 200], [150, 150, 150]]), 150);
   assert.equal(cityTrimLevel([]), TRIM_REF);
 });
+
+test('dark neutral thumbnails with no real trim stay brick (lane #373: Lootsbuurt 064962 #555554 and 141920 #646768 were called painted grey)', async () => {
+  const { classifyWall, DARK_NEUTRAL_RAW } = await import('./paintClass.ts');
+  assert.equal(DARK_NEUTRAL_RAW.maxL, 55);
+  for (const wall of [[85, 85, 84], [100, 103, 104]]) {
+    assert.equal(classifyWall(wall, [124, 138, 138], 160).via, 'city', 'the trim is not clearly lighter than the wall');
+    assert.equal(classifyWall(wall, [124, 138, 138], 160).painted, false, `${wall}`);
+  }
+  // real trim still decides: a dark wall beside white frames is paint; a cream front stays paint
+  assert.equal(classifyWall([60, 62, 58], [235, 238, 232], 160).via, 'trim');
+  assert.equal(classifyWall([199, 182, 170], null, 160).painted, true);
+});

@@ -35,6 +35,7 @@ import { SETBACK_CLADDING_HEX, SETBACK_INSET_M, SETBACK_STOREY_M, insetRing } fr
 import { profileWallBeatsMaterial, storeyScaleOf } from './buurtProfiles/profiles.js';
 import { levelWallHex } from './look/paletteLevel.js';
 import { heldBrickWall } from './houseSpec/wallColour.js';
+import { periodWallList } from './look/brickLift.js';
 import { hashSeed } from './wallBays.js';
 import { industrialKitEnabled, industrialMeshSpec, industrialWallHex } from './industrial/industrialKit.js';
 import { applyGlazing, glazingOf } from './glassParts.js';
@@ -181,7 +182,7 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook, coarse = f
     if (sourced) building.wallHex = String(sourced);
     sourcedWall = sourced ? String(sourced) : undefined;
     // A wall the pale-warm guard held keeps its period colour, in a brick family (wallColour.ts heldBrickWall, H9g).
-    if (specRecipe?.heldBrick && p.sideColourSource !== 'measured-accepted' && archetype) building.wallHex = heldBrickWall(building.wallHex, PERIOD_WALLS.photo[archetype as keyof typeof PERIOD_WALLS.photo], hashSeed(id) >>> 7);
+    if (specRecipe?.heldBrick && p.sideColourSource !== 'measured-accepted' && archetype) building.wallHex = heldBrickWall(building.wallHex, periodWallList('photo', archetype, PERIOD_WALLS.photo[archetype as keyof typeof PERIOD_WALLS.photo]), hashSeed(id) >>> 7);
   }
   const front = shopfrontOf(p);
   building.shopfront = front ? front !== 'quiet' : false;
