@@ -1,0 +1,82 @@
+{
+ "schemaVersion": 1,
+ "kind": "canal-house",
+ "id": "spec-0363100012152966",
+ "pandId": "0363100012152966",
+ "address": "Frederik Hendrikstraat 142",
+ "sources": [
+  {
+   "id": "scripts-block-face-faces-hendrik-134-154-r2-strip-json",
+   "kind": "street-panorama",
+   "capturedAt": "2022-04-29"
+  }
+ ],
+ "fronts": [
+  {
+   "basement": "none",
+   "bays": 3,
+   "cornice": "heavy",
+   "doorBay": 0,
+   "doorPairs": true,
+   "dormerAt": [
+    {
+     "from": 0.38,
+     "to": 0.62
+    }
+   ],
+   "dormerBody": "timber",
+   "dormerSize": {
+    "sill": 0.05,
+    "rise": 1.25,
+    "setback": 0.15
+   },
+   "dormerStyle": "pediment",
+   "dormers": 1,
+   "gable": "cornice",
+   "hoist": false,
+   "id": "front0",
+   "pairTransom": true,
+   "partyClip": true,
+   "storeyHeights": [
+    3.34,
+    2.95,
+    2.95,
+    2.9
+   ],
+   "storeys": 4,
+   "street": "Frederik Hendrikstraat",
+   "wallAnchors": {
+    "over": 0.35
+   },
+   "wideGround": {
+    "from": 1,
+    "to": 2
+   },
+   "windowHeights": [
+    0.62,
+    0.66,
+    0.66,
+    0.64
+   ],
+   "windowSurround": "none",
+   "windows": "t-window"
+  }
+ ],
+ "roof": {
+  "evidence": "strips 2021-03/2022-04: over the cornice only the dormers and gables stand against the sky; dark slate band behind (hendrik-134-154)",
+  "material": "slate",
+  "pitchDeg": 45,
+  "rise": 0.25,
+  "source": "front"
+ },
+ "palette": {
+  "brick": "#756457",
+  "cornice": "#e0dccd",
+  "door": "#a52a22",
+  "frame": "#e8e6dc",
+  "stone": "#e6e2d4"
+ },
+ "notes": [
+  "type fh-1887-plain-anchor-pediment: crown pediment-dormer, palette red-brown + measured brick #756457"
+ ]
+}

@@ -66,3 +66,30 @@ export function frontRoofSpecs(intent: CanalHouseIntent, fit: {recipe: {elevatio
   }
   return out;
 }
+
+/**
+ * The pointed crowns of a house's street fronts as cross roofs (`RoofIntent.crossGables`): every crown vertex standing
+ * over half a metre above the eaves with a straight rake down to the eaves on each side (a `point` crown on part of the
+ * front: `crownBays`, `crownAt`, `crownGroups`), its feet and apex placed on the facade chord in RD. Empty without the flag.
+ */
+export function crossGablesOf(intent: CanalHouseIntent, fit: {recipe: {elevations: {id: string; polygonIndex: number; edgeIndex: number; endEdgeIndex?: number; crown?: {value: {profile: CanalhousePoint[]}}; bodyEavesM?: {value: number}}[]; footprint: {value: {outer: CanalhousePoint[]}[]}; house: {eavesHeightM: {value: number}}}; anchorRD: [number, number]}): Record<string, CrossGable[]> {
+  const out: Record<string, CrossGable[]> = {};
+  if (!intent.roof.crossGables) return out;
+  const street = intent.fronts[0].street;
+  for (const el of fit.recipe.elevations) {
+    const fr = intent.fronts.find(f => f.id === el.id);
+    if (!fr || fr.street !== street || !el.crown) continue;
+    const ring = fit.recipe.footprint.value[el.polygonIndex].outer, a = ring[el.edgeIndex], b = ring[el.endEdgeIndex ?? (el.edgeIndex + 1) % ring.length];
+    const len = Math.hypot(b[0] - a[0], b[1] - a[1]), u = [(b[0] - a[0]) / len, (b[1] - a[1]) / len];
+    // Local frame (x, z) -> RD: z runs against RD y (roofAboveCrown).
+    const rd = (x: number) => [fit.anchorRD[0] + a[0] + u[0] * x, fit.anchorRD[1] - (a[1] + u[1] * x)];
+    const eaves = el.bodyEavesM?.value ?? fit.recipe.house.eavesHeightM.value, pr = el.crown.value.profile, gs: CrossGable[] = [];
+    for (let i = 1; i + 1 < pr.length; i++) {
+      const [l, c, r] = [pr[i - 1], pr[i], pr[i + 1]];
+      if (c[1] < eaves + 0.5 || l[1] > eaves + 0.05 || r[1] > eaves + 0.05 || c[0] - l[0] < 0.2 || r[0] - c[0] < 0.2) continue;
+      gs.push({leftRD: rd(l[0]), apexRD: rd(c[0]), rightRD: rd(r[0]), leftM: l[1], apexM: c[1], rightM: r[1]});
+    }
+    if (gs.length) out[el.id] = gs;
+  }
+  return out;
+}
