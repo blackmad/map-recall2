@@ -17,7 +17,7 @@ import type { ArchitecturalRecipe } from '../streetAppearance.js';
 import type { StoopIntent } from '../buildingRecipe/stoop.ts';
 import { eraOfYear } from '../facade/registerRecipe.js';
 import { SOURCE_STRENGTH } from '../facade/evidence.js';
-import { specWallDisplay, specWallSource, specWallsOn, type WallFamily } from './wallColour.js';
+import { specWallDisplay, specWallSource, specWallsOn, type WallFamily, specWallsForcedOn } from './wallColour.js';
 
 /** Rank on the evidence ladder (spec.ts specStrength without the intent schema import): `author` = `reviewed`. */
 const rank = (s: string | undefined) => (SOURCE_STRENGTH as readonly string[]).indexOf(s === 'author' ? 'reviewed' : s ?? '');
@@ -107,9 +107,10 @@ const excluded = (p: Props) => (p.appearanceStyleSource !== undefined && p.appea
  * Was held (2026-11-10, H1 frames): a strip-measured wall colour is the overcast panorama reading and drew Kinkerstraat
  * 244-332 darker than the generic palette, against the user's brighter-palette priority (2026-10-16). Released by lane
  * H9 (2026-11-10) through the wall-colour rule (wallColour.ts specWallDisplay: measured hue and chroma, one lightness
- * lift), behind `?specWalls=0` / SPEC_WALLS=0. `false` = the rule is live.
+ * lift), behind `?specWalls=0` / SPEC_WALLS=0. `false` = the rule is live. Held again 2026-11-10 by the judgement
+ * ruling on H9 r3 until the house:frames before/after read; `?specWalls=1` / SPEC_WALLS=1 draws it while held.
  */
-export const SPEC_WALLS_HELD = false;
+export const SPEC_WALLS_HELD = true;
 /**
  * Per-pand wall holds (the judgement session's ruling on #345: a pand whose drawn wall is still the wrong family after the
  * trim-misread rule keeps its period colour). Bare pand numbers (the NL.IMBAG.Pand. suffix). Empty = no pand held.
@@ -177,7 +178,7 @@ export function houseSpecPatch(view: HouseSpecView, p: Props): Props {
   // The measured wall, through the wall-colour rule (lifted lightness, measured hue); `?specWalls=0` keeps the period colour.
   // A reading lighter than its family's usual tone on a brick front, or against a reader's family, is a trim misread and
   // draws the family tone (wallColour.ts specWallSource).
-  if (!SPEC_WALLS_HELD && specWallsOn() && view.wallHex && /^#[0-9a-f]{6}$/i.test(view.wallHex) && !SPEC_WALL_HOLD.has(pandNumber(p.id))) {
+  if ((SPEC_WALLS_HELD ? specWallsForcedOn() : specWallsOn()) && view.wallHex && /^#[0-9a-f]{6}$/i.test(view.wallHex) && !SPEC_WALL_HOLD.has(pandNumber(p.id))) {
     const brick = view.wallMaterial ? view.wallMaterial === 'brick' : p.registerFinish === 'brick';
     const src = specWallSource(view.wallHex.toLowerCase(), { family: view.wallFamily ?? null, brick });
     recipe.wallHex = specWallDisplay(src.hex, { fromPixel: src.fromPixel });
