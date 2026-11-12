@@ -1885,6 +1885,25 @@ With the flag, a cached entry skips the panorama listing, the glare/foliage pre-
 is rendered (the route line is recomputed, it depends on `--query`). Use it for the after-run of a before/after pair
 and for critic re-runs. A run without the flag recomputes everything and refreshes the cache.
 
+**`--before <dir>`: a before/after must prove it changed the wall (lane wall-colour-truth, 2026-11-12).** The
+2026-11-10 "House walls take their photo colour" pairs showed before == after on every pand: both runs used
+`?world=live`, but the committed bundles of that evening were built from `SPEC_WALLS_HELD = true` (ae430fc27, 21:23;
+the flip to false at 21:37 reached the bundles only at 23:03), so `?specWalls=0` and the default drew the same period
+colour; and the pand on the note (Egelantiersgracht 172620) is held by the pale-warm guard, so it cannot change with the
+spec flag at all. With `--before <dir>` (an earlier run of the same list) each pose's `pose.json` gets `compare`: the
+share of target-wall pixels changed (OKLab distance > 0.02 on a 48 x 32 grid over the projected wall), the mean
+distance, the wall's OKLab L/C/hue in the photo, before and after (`analyse.ts wallLab`: the colour band, 30-70 %
+lightness quantiles), and what the page decorated the pand with in each run (`game.json drawn`: the page query,
+`specRecipe.wallHex`, `heldBrick`, the spec reading). `<key>/triple.jpg` sets photo | before | after side by side at
+gallery size. Under 2 % changed (`WALL_SAME_PCT`; render noise on an unchanged wall measured 0 %) the pair is flagged
+`sameAsBefore` and printed as a WARNING: the flag compared did not reach the pixels. Check, in order: the bundles (built
+from the source you think you are testing?), the world (baked world-v1 cells ignore runtime decorate flags such as
+`?houseSpecs=0` and `?specWalls=0`; use `?world=live`), the mesh worker's flags (`meshBuildingFor` runs in the pool
+worker, whose `location.search` is its own script URL: a flag it reads must be in `engine/workerPool.ts
+withWorkerFlags`; `brickLift` was not, so `?brickLift=v1` changed nothing on the generic houses), and the pand's guard
+(`game.json drawn.heldBrick`). `scripts/house-frames/trace-wall.ts <ids>` prints the Node side of the same path
+(spec reading, decorated wall, mesher wall) under `SPEC_WALLS` / `BRICK_LIFT`.
+
 Output per pand (or per `key` of a `--list` entry): `<out>/<key>/{photo.jpg, game.png, pair.jpg, pose.json}`; per six pairs
 `<out>/contact-N.jpg` (left: the panorama cut, right: the game, cyan: the BAG wall outline, a three-line caption); and
 `<out>/summary.json` (alignment distribution, flags, throughput). `--help` prints the command's `HELP`
