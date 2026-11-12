@@ -29,10 +29,10 @@
 import type { Vec2 } from './surface.js';
 import { cutBox, type Cut } from './tunnels.js';
 import type { RailSpan } from './railSpans.js';
-import NAMED from '../../../data/crossings/named.json';
-import RING_RAIL from '../../../data/crossings/ring-rail.json';
-import A10 from '../../../data/crossings/a10.json';
-import TUNNELS from '../../../data/crossings/tunnels.json';
+// The runtime reads only the compact extract (`runtimeOf`, written by `scripts/crossings/compose.ts --runtime`): the
+// authored files carry piers, evidence and binds (6.5 MB for the ring railway) the game never reads. The authored
+// files are in crossingFiles.ts, for the scripts and tests.
+import RUNTIME from '../../../data/crossings/runtime.json';
 
 export type LngLat = [number, number];
 
@@ -181,10 +181,64 @@ export function validateFile(f: CrossingFile): string[] {
   return e;
 }
 
-/** Every register file the game reads (reviewed records only take effect: `crossingIndex`). */
-// JSON imports widen tuples to number[]; validateFile (crossings.test.ts) checks the shape.
-export const CROSSING_FILES: readonly CrossingFile[] = [NAMED, RING_RAIL, A10, TUNNELS] as unknown as CrossingFile[];
-export const CROSSINGS: readonly CrossingRecord[] = CROSSING_FILES.flatMap(f => f.records);
+/**
+ * What the runtime reads of a record (`crossingIndex`, `floorCaps`): a CrossingRecord without its label, piers,
+ * walls, tunnels, binds, evidence and disagreements. A CrossingRecord is one. The tunnel polygons (93 KB of the
+ * 118 KB extract) are left out: nothing at runtime reads them; G2's offline bake reads the authored files.
+ */
+export interface CrossingRuntime {
+  id: string;
+  kind: CrossingKind;
+  at: LngLat;
+  zone: LngLat[];
+  plan: {
+    decks: Pick<CrossingDeck, 'ring' | 'carries' | 'axisDeg'>[];
+    abutments?: { line?: LngLat[]; ring?: LngLat[] }[];
+    portals?: CrossingPortal[];
+  };
+  heights: CrossingRecord['heights'];
+  game?: CrossingRecord['game'];
+  reviewed: CrossingRecord['reviewed'] | true;
+}
+export interface CrossingRuntimeFile { version: 1; records: CrossingRuntime[] }
+
+/** Runtime coordinates: 6 decimals of a degree (≤ 0.11 m). Heights: centimetres. */
+const rd = (v: number) => Math.round(v * 1e6) / 1e6, rh = (v: number) => Math.round(v * 100) / 100;
+const rp = (p: LngLat): LngLat => [rd(p[0]), rd(p[1])];
+const rr = (ring: readonly LngLat[]): LngLat[] => {
+  const out: LngLat[] = [];
+  for (const p of ring) { const q = rp(p), l = out[out.length - 1]; if (!l || l[0] !== q[0] || l[1] !== q[1]) out.push(q); }
+  return out;
+};
+/** The compact runtime extract of the authored records: reviewed ones only, the fields the game reads, rounded. */
+export function runtimeOf(records: readonly CrossingRecord[]): CrossingRuntimeFile {
+  return {
+    version: 1,
+    records: records.filter(r => r.reviewed).map(r => {
+      const h = r.heights, pl = r.plan;
+      const heights: CrossingRecord['heights'] = {
+        ...(h.streetUnder !== undefined ? { streetUnder: rh(h.streetUnder) } : {}),
+        ...(h.soffit !== undefined ? { soffit: rh(h.soffit) } : {}),
+        ...(h.soffitEstimated ? { soffitEstimated: true } : {}),
+        ...(h.deckTop !== undefined ? { deckTop: rh(h.deckTop) } : {}),
+        ...(h.gradeSides?.length ? { gradeSides: h.gradeSides.map(g => ({ at: rp(g.at), z: rh(g.z) })) } : {}),
+      };
+      return {
+        id: r.id, kind: r.kind, at: rp(r.at), zone: rr(r.zone),
+        plan: {
+          decks: pl.decks.map(d => ({ ring: rr(d.ring), carries: d.carries, ...(d.axisDeg !== undefined ? { axisDeg: d.axisDeg } : {}) })),
+          ...(pl.abutments?.length ? { abutments: pl.abutments.map(a => ({ ...(a.line ? { line: rr(a.line) } : {}), ...(a.ring ? { ring: rr(a.ring) } : {}) })) } : {}),
+          ...(pl.portals?.length ? { portals: pl.portals.map(p => ({ at: rp(p.at), headingDeg: p.headingDeg, ...(p.open ? { open: true } : {}) })) } : {}),
+        },
+        heights, ...(r.game ? { game: r.game } : {}), reviewed: true as const,
+      };
+    }),
+  };
+}
+
+/** The records the game reads (data/crossings/runtime.json; reviewed records only take effect: `crossingIndex`). */
+// JSON imports widen tuples to number[]; crossings.test.ts checks the extract equals runtimeOf(the authored files).
+export const CROSSINGS: readonly CrossingRuntime[] = (RUNTIME as unknown as CrossingRuntimeFile).records;
 
 /** Two line headings (0..180) within AXIS_TOL_DEG. */
 const alongAxis = (a: number, b: number) => { const d = Math.abs(a - b) % 180; return Math.min(d, 180 - d) <= AXIS_TOL_DEG; };
@@ -201,13 +255,13 @@ export function insideRing(ring: readonly Vec2[], x: number, y: number): boolean
 
 const RAIL_CARRIES: ReadonlySet<Carries> = new Set(['rail', 'metro', 'tram']);
 
-interface Placed { r: CrossingRecord; zone: Vec2[]; box: [number, number, number, number]; railDecks: { ring: Vec2[]; axis: number }[]; portals: Vec2[]; game: { cuts: 'keep' | 'none'; portals: 'keep' | 'listed' | 'none' } }
+interface Placed { r: CrossingRuntime; zone: Vec2[]; box: [number, number, number, number]; railDecks: { ring: Vec2[]; axis: number }[]; portals: Vec2[]; game: { cuts: 'keep' | 'none'; portals: 'keep' | 'listed' | 'none' } }
 
 export interface CrossingIndex {
   /** Records placed (reviewed ones; `drafts` adds the rest, for diagnostics). */
   readonly size: number;
   /** The record whose zone holds (x, y), local frame. */
-  at(x: number, y: number): CrossingRecord | null;
+  at(x: number, y: number): CrossingRuntime | null;
   /**
    * The spans of one track: inferred spans whose trigger lies in a zone go, and a rail-over-road record's rail decks
    * the track runs through become spans (s along the track's points, `clear` from the record's heights or the
@@ -226,7 +280,7 @@ export interface CrossingCutStats { dropped: number; sliced: number; portalsDrop
  * Place the records in the local frame (`project`). Only reviewed records act unless `drafts` (a draft is a guess like
  * the inference it would replace). An empty index changes nothing: `spans` and `cuts` return their input.
  */
-export function crossingIndex(records: readonly CrossingRecord[], project: (p: LngLat) => Vec2, opts: { drafts?: boolean } = {}): CrossingIndex {
+export function crossingIndex(records: readonly CrossingRuntime[], project: (p: LngLat) => Vec2, opts: { drafts?: boolean } = {}): CrossingIndex {
   const placed: Placed[] = records.filter(r => opts.drafts || r.reviewed).map(r => {
     const zone = r.zone.map(project), xs = zone.map(p => p[0]), ys = zone.map(p => p[1]);
     return {
@@ -344,7 +398,7 @@ function slice(c: Cut, i: number, j: number): Cut {
  * The floor caps a record implies (G1 item 1 reads these): each deck polygon over land with the street level under it.
  * Planar rings in `project`'s frame, NAP levels. Records without a measured street level give none.
  */
-export function floorCaps(records: readonly CrossingRecord[], project: (p: LngLat) => Vec2): { id: string; rings: Vec2[][]; streetNAP: number }[] {
+export function floorCaps(records: readonly CrossingRuntime[], project: (p: LngLat) => Vec2): { id: string; rings: Vec2[][]; streetNAP: number }[] {
   return records.filter(r => r.reviewed && r.heights.streetUnder !== undefined && r.plan.decks.length && r.kind !== 'level' && r.kind !== 'none')
     .map(r => ({ id: r.id, rings: r.plan.decks.map(d => d.ring.map(project)), streetNAP: r.heights.streetUnder! }));
 }

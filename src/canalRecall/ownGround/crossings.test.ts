@@ -2,8 +2,9 @@
 // a record (spans, cuts, portals), byte-identical where no record lies.
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { CROSSING_FILES, CROSSINGS, crossingIndex, floorCaps, gameDefaults, validateFile, validateRecord, type CrossingRecord, type LngLat } from './crossings';
+import { CROSSINGS, crossingIndex, runtimeOf, floorCaps, gameDefaults, validateFile, validateRecord, type CrossingRecord, type LngLat } from './crossings';
 import type { Cut } from './tunnels';
+import { AUTHORED, CROSSING_FILES } from './crossingFiles';
 import type { Vec2 } from './surface';
 
 // A flat local frame: 1e-5 degrees = 1 m both ways around (4.85, 52.34).
@@ -42,7 +43,14 @@ test('register files: every record validates, ids are unique across files', () =
     assert.deepEqual(validateFile(f), [], f.area);
     for (const r of f.records) { assert.ok(!ids.has(r.id), `duplicate ${r.id}`); ids.add(r.id); }
   }
-  assert.equal(CROSSINGS.length, ids.size);
+  assert.equal(AUTHORED.length, ids.size);
+});
+
+test('the runtime extract is runtimeOf(the authored files) (regenerate: npx tsx scripts/crossings/compose.ts --runtime)', () => {
+  assert.deepEqual(CROSSINGS, runtimeOf(AUTHORED).records);
+  // Only what the game reads: no evidence, binds, piers or labels.
+  for (const r of CROSSINGS) for (const k of ['evidence', 'binds', 'label', 'disagreements']) assert.ok(!(k in r), `${r.id}.${k}`);
+  for (const r of CROSSINGS) assert.ok(!('piers' in r.plan) && !('walls' in r.plan) && !('tunnels' in r.plan), r.id);
 });
 
 test('validateRecord catches what a hand edit breaks', () => {
