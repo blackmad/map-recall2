@@ -1,5 +1,13 @@
 # Canal Recall — what is built
 
+**H12 browser-free GLB first passes (2026-11-10, #362, 2d519f298, opus).**
+- `src/canalRecall/glbRaster/` is a Node GLB rasteriser on softRaster, with gltf-transform, meshopt and the lit look, and one view vocabulary.
+- render.ts, landmark-views and review-sheet now default to it; `--browser` keeps Chromium. house-preview/gate.ts stays on Chromium.
+- Speed: a 4-view sheet takes 0.33–0.41 s, Houthavenkade 26 6.1 s, and block-face review 2.2 s against 4.7 s in Chromium. Output is byte-identical across runs.
+- **The gate is the raster metrics** (judgement ruling): median wall dL 0.002, hue 0.2°, columns 20/25.
+  - Verdict agreement (19/25 strict) is advisory: Chromium agrees with itself on only 20/25 under a quarter-pixel nudge, so measureFacade is the noise.
+  - Release stays on house:frames pairs. `test:glb-raster` joins check:canal.
+
 **Spec holds pinned (2026-11-10, integrator).**
 - **What happened:** H9 r1 (cd6129a19) set `SPEC_WALLS_HELD = false`, and the H9 merge carried it into the local batch, so the earlier "merged with walls held" was wrong in local commits 312f0e92a..046e3ef0d. Nothing was pushed with walls released; origin/main kept `true`.
 - **The fix:**
