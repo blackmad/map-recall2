@@ -1,0 +1,6 @@
+{
+  "id": "raadhuisstraat-galerij",
+  "note": "Audit thresholds for the Raadhuisstraat gallery GLB (scripts/audit-glb-quality.ts reads <id>-spec.json); the builder's data is raadhuisstraat-galerij-footprints.json.",
+  "belowGroundMetres": -0.55,
+  "belowGroundEvidence": "The model's y = 0 is the mean 3DBAG ground (1.397 m NAP) of thirteen pands along a 120 m front; the Raadhuisstraat pavement falls about 0.33 m from the Keizersgracht end to nr 43-45 (3DBAG ground per pand, AHN4 DTM), so the walls, piers and shopfront plinths start at y = -0.5 instead of hanging over the low end."
+}

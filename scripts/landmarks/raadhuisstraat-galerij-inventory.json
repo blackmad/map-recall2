@@ -1,0 +1,2098 @@
+{
+ "schemaVersion": 1,
+ "id": "raadhuisstraat-galerij",
+ "pand": "0363100012176348",
+ "brief": "scripts/landmarks/raadhuisstraat-galerij-brief.md",
+ "signature": [
+  "gallery-glass-roof",
+  "c09-gate",
+  "c00-tower",
+  "c04-gable",
+  "c02-loggia",
+  "c03-balustrade",
+  "c09-risalit-gable",
+  "gallery-end-east",
+  "c04-oriel",
+  "hg-utrecht-lettering"
+ ],
+ "walls": [
+  {
+   "tag": "c00",
+   "bearing": 19,
+   "lengthM": 7.53,
+   "centre": [
+    4.885441,
+    52.3738327
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001540_pano_0000_000978",
+   "capturedAt": "2020-01-07",
+   "checked": true,
+   "note": "strip chord c00 (corner55); crop artifacts/landmark-briefs/raadhuisstraat-galerij/strip/c00.jpg",
+   "items": [
+    {
+     "id": "c00-tower",
+     "kind": "tower",
+     "where": "round corner tower over the Keizersgracht corner",
+     "approxSizeM": [
+      3.3,
+      12.0
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001540_pano_0000_000978",
+     "how": "tower(): corbelled ten-sided brick turret r=1.65 m from 15.2 to 20.8 m with four windows above the attic line, stone cornice, four round-headed dormers, flared slate spire to 27.2 m (3DBAG), weather vane"
+    },
+    {
+     "id": "c00-loggia",
+     "kind": "colonnade",
+     "where": "attic storey",
+     "approxSizeM": [
+      4.6,
+      2.0
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001540_pano_0000_000978",
+     "how": "three-arch loggia as on the L houses, beside the turret"
+    },
+    {
+     "id": "c00-entresol-window",
+     "kind": "window-shape",
+     "where": "entresol, over the shop",
+     "approxSizeM": [
+      4.4,
+      2.3
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001540_pano_0000_000978",
+     "how": "wide framed window under a segmental red arch"
+    },
+    {
+     "id": "c00-hotel-sign",
+     "kind": "sign",
+     "where": "vertical hotel sign on the corner",
+     "approxSizeM": [
+      0.6,
+      6.0
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-001540_pano_0000_000978",
+     "skip": {
+      "reason": "temporary",
+      "note": "hotel signage; the map label names the place"
+     }
+    },
+    {
+     "id": "c00-corner-shield",
+     "kind": "crest",
+     "where": "rounded corner over the entresol balcony",
+     "approxSizeM": [
+      0.9,
+      1.0
+     ],
+     "plan": "simplified",
+     "seenIn": "Commons: Amsterdam Raadhuisstraat bij Nadia Hotel 01.jpg (CC0)",
+     "how": "stone shield panel; the initials are not drawn"
+    },
+    {
+     "id": "c00-round-balcony",
+     "kind": "balcony-ironwork",
+     "where": "rounded corner, entresol",
+     "approxSizeM": [
+      2.0,
+      1.0
+     ],
+     "plan": "simplified",
+     "seenIn": "Commons: Amsterdam Raadhuisstraat bij Nadia Hotel 01.jpg (CC0)",
+     "how": "stone slab and iron rail on the cut corner frame"
+    }
+   ]
+  },
+  {
+   "tag": "c01",
+   "bearing": 31,
+   "lengthM": 6.11,
+   "centre": [
+    4.8855321,
+    52.3738074
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-16_03-46-32_01474",
+   "capturedAt": "2025-06-16",
+   "checked": true,
+   "note": "strip chord c01 (serre); crop artifacts/landmark-briefs/raadhuisstraat-galerij/strip/c01.jpg",
+   "items": [
+    {
+     "id": "c01-gallery-bay",
+     "kind": "colonnade",
+     "where": "ground floor and entresol, over the pavement",
+     "approxSizeM": [
+      6.11,
+      7.6
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-16_03-46-32_01474",
+     "how": "gallery(): stone pier on every party wall (plinth, deep core, two engaged shafts, cube capital), segmental iron arch with wrought-iron spandrel, glass lean-to roof and frieze swept along the curve"
+    },
+    {
+     "id": "c01-balcony-rail",
+     "kind": "balcony-ironwork",
+     "where": "first floor, on the gallery deck",
+     "approxSizeM": [
+      6.11,
+      1.1
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2025-06-16_03-46-32_01474",
+     "how": "top and bottom rails swept along the curve with balusters every 0.45 m; the Jugendstil scrollwork is not drawn"
+    },
+    {
+     "id": "c01-shopfront",
+     "kind": "window-shape",
+     "where": "ground floor, inside the gallery",
+     "approxSizeM": [
+      5.41,
+      4.0
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2025-06-16_03-46-32_01474",
+     "how": "bronze-tone shopfront frame in three lights, each light on its own chord of the curve, door over a stone step, stone plinth; entresol windows as three framed lights; the Jugendstil-carved surrounds are not drawn"
+    },
+    {
+     "id": "c01-first-floor",
+     "kind": "window-shape",
+     "where": "first floor",
+     "approxSizeM": [
+      5.11,
+      2.5
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-16_03-46-32_01474",
+     "how": "three French windows with round heads, white frames, red brick arches with white stone key and springer blocks (window())"
+    },
+    {
+     "id": "c01-serre",
+     "kind": "window-shape",
+     "where": "attic: later timber serre",
+     "approxSizeM": [
+      5.11,
+      1.9
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-16_03-46-32_01474",
+     "how": "white timber box set back on the parapet with six glazed lights (five on nr 23-27, the west light blind beside the party wall)"
+    },
+    {
+     "id": "gallery-end-west",
+     "kind": "gable-stone",
+     "where": "west short end of the gallery (53/55)",
+     "approxSizeM": [
+      3.5,
+      9.6
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2025-06-16_03-46-32_01474",
+     "how": "end wall with an arched passage, stone arch ring, memorial stone with two gilded lines (the text is not drawn), shield and a dragon (beast())"
+    }
+   ]
+  },
+  {
+   "tag": "c02",
+   "bearing": 38,
+   "lengthM": 6.09,
+   "centre": [
+    4.885606,
+    52.3737765
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002795_pano_0000_000563",
+   "capturedAt": "2022-09-05",
+   "checked": true,
+   "note": "strip chord c02 (L); crop artifacts/landmark-briefs/raadhuisstraat-galerij/strip/c02.jpg",
+   "items": [
+    {
+     "id": "c02-gallery-bay",
+     "kind": "colonnade",
+     "where": "ground floor and entresol, over the pavement",
+     "approxSizeM": [
+      6.09,
+      7.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002795_pano_0000_000563",
+     "how": "gallery(): stone pier on every party wall (plinth, deep core, two engaged shafts, cube capital), segmental iron arch with wrought-iron spandrel, glass lean-to roof and frieze swept along the curve"
+    },
+    {
+     "id": "c02-balcony-rail",
+     "kind": "balcony-ironwork",
+     "where": "first floor, on the gallery deck",
+     "approxSizeM": [
+      6.09,
+      1.1
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002795_pano_0000_000563",
+     "how": "top and bottom rails swept along the curve with balusters every 0.45 m; the Jugendstil scrollwork is not drawn"
+    },
+    {
+     "id": "c02-shopfront",
+     "kind": "window-shape",
+     "where": "ground floor, inside the gallery",
+     "approxSizeM": [
+      5.39,
+      4.0
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002795_pano_0000_000563",
+     "how": "bronze-tone shopfront frame in three lights, each light on its own chord of the curve, door over a stone step, stone plinth; entresol windows as three framed lights; the Jugendstil-carved surrounds are not drawn"
+    },
+    {
+     "id": "c02-first-floor",
+     "kind": "window-shape",
+     "where": "first floor",
+     "approxSizeM": [
+      5.09,
+      2.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002795_pano_0000_000563",
+     "how": "three French windows with round heads, white frames, red brick arches with white stone key and springer blocks (window())"
+    },
+    {
+     "id": "c02-loggia",
+     "kind": "colonnade",
+     "where": "attic storey",
+     "approxSizeM": [
+      4.6,
+      2.0
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002795_pano_0000_000563",
+     "how": "three round arches (dark recess) in red rings rising from a stone balustrade on four stone columns, cornice swept along the curve; narrower on the 4.5 m house"
+    },
+    {
+     "id": "c02-brick-bay",
+     "kind": "window-shape",
+     "where": "second floor, centre",
+     "approxSizeM": [
+      3.4,
+      3.2
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002795_pano_0000_000563",
+     "how": "brickBay(): brick bay on a stone corbel with three framed windows"
+    },
+    {
+     "id": "c02-beast",
+     "kind": "sculpture",
+     "where": "on the pilaster top at the house edge",
+     "approxSizeM": [
+      0.6,
+      1.0
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002795_pano_0000_000563",
+     "how": "beast(): crossed stone silhouettes of a seated griffin"
+    }
+   ]
+  },
+  {
+   "tag": "c03",
+   "bearing": 44,
+   "lengthM": 6.04,
+   "centre": [
+    4.8856736,
+    52.373741
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002862_pano_0001_000137",
+   "capturedAt": "2022-12-15",
+   "checked": true,
+   "note": "strip chord c03 (B); crop artifacts/landmark-briefs/raadhuisstraat-galerij/strip/c03.jpg",
+   "items": [
+    {
+     "id": "c03-gallery-bay",
+     "kind": "colonnade",
+     "where": "ground floor and entresol, over the pavement",
+     "approxSizeM": [
+      6.04,
+      7.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002862_pano_0001_000137",
+     "how": "gallery(): stone pier on every party wall (plinth, deep core, two engaged shafts, cube capital), segmental iron arch with wrought-iron spandrel, glass lean-to roof and frieze swept along the curve"
+    },
+    {
+     "id": "c03-balcony-rail",
+     "kind": "balcony-ironwork",
+     "where": "first floor, on the gallery deck",
+     "approxSizeM": [
+      6.04,
+      1.1
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002862_pano_0001_000137",
+     "how": "top and bottom rails swept along the curve with balusters every 0.45 m; the Jugendstil scrollwork is not drawn"
+    },
+    {
+     "id": "c03-shopfront",
+     "kind": "window-shape",
+     "where": "ground floor, inside the gallery",
+     "approxSizeM": [
+      5.34,
+      4.0
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002862_pano_0001_000137",
+     "how": "bronze-tone shopfront frame in three lights, each light on its own chord of the curve, door over a stone step, stone plinth; entresol windows as three framed lights; the Jugendstil-carved surrounds are not drawn"
+    },
+    {
+     "id": "c03-first-floor",
+     "kind": "window-shape",
+     "where": "first floor",
+     "approxSizeM": [
+      5.04,
+      2.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002862_pano_0001_000137",
+     "how": "three French windows with round heads, white frames, red brick arches with white stone key and springer blocks (window())"
+    },
+    {
+     "id": "c03-balustrade",
+     "kind": "other",
+     "where": "attic: low brick balustrade with arched openings",
+     "approxSizeM": [
+      6.04,
+      1.3
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002862_pano_0001_000137",
+     "how": "five dark arched openings and a stone coping swept along the curve"
+    },
+    {
+     "id": "c03-t-windows",
+     "kind": "window-shape",
+     "where": "second floor",
+     "approxSizeM": [
+      5.04,
+      2.7
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002862_pano_0001_000137",
+     "how": "three T-windows with transoms under red relieving arches"
+    },
+    {
+     "id": "c03-beast",
+     "kind": "sculpture",
+     "where": "on the pilaster top at the house edge",
+     "approxSizeM": [
+      0.6,
+      1.0
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002862_pano_0001_000137",
+     "how": "beast(): crossed stone silhouettes of a seated griffin"
+    }
+   ]
+  },
+  {
+   "tag": "c04",
+   "bearing": 43,
+   "lengthM": 6.1,
+   "centre": [
+    4.8857391,
+    52.373704
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002538_pano_0000_001800",
+   "capturedAt": "2022-04-22",
+   "checked": true,
+   "note": "strip chord c04 (G); crop artifacts/landmark-briefs/raadhuisstraat-galerij/strip/c04.jpg",
+   "items": [
+    {
+     "id": "c04-gallery-bay",
+     "kind": "colonnade",
+     "where": "ground floor and entresol, over the pavement",
+     "approxSizeM": [
+      6.1,
+      7.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002538_pano_0000_001800",
+     "how": "gallery(): stone pier on every party wall (plinth, deep core, two engaged shafts, cube capital), segmental iron arch with wrought-iron spandrel, glass lean-to roof and frieze swept along the curve"
+    },
+    {
+     "id": "c04-balcony-rail",
+     "kind": "balcony-ironwork",
+     "where": "first floor, on the gallery deck",
+     "approxSizeM": [
+      6.1,
+      1.1
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002538_pano_0000_001800",
+     "how": "top and bottom rails swept along the curve with balusters every 0.45 m; the Jugendstil scrollwork is not drawn"
+    },
+    {
+     "id": "c04-shopfront",
+     "kind": "window-shape",
+     "where": "ground floor, inside the gallery",
+     "approxSizeM": [
+      5.3999999999999995,
+      4.0
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002538_pano_0000_001800",
+     "how": "bronze-tone shopfront frame in three lights, each light on its own chord of the curve, door over a stone step, stone plinth; entresol windows as three framed lights; the Jugendstil-carved surrounds are not drawn"
+    },
+    {
+     "id": "c04-first-floor",
+     "kind": "window-shape",
+     "where": "first floor",
+     "approxSizeM": [
+      5.1,
+      2.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002538_pano_0000_001800",
+     "how": "three French windows with round heads, white frames, red brick arches with white stone key and springer blocks (window())"
+    },
+    {
+     "id": "c04-gable",
+     "kind": "other",
+     "where": "pointed gable over the attic, corner piers",
+     "approxSizeM": [
+      6.1,
+      3.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002538_pano_0000_001800",
+     "how": "gable ribbon to the apex with stone rake copings, corner piers, cross roof (insteekkap) back into the mansard"
+    },
+    {
+     "id": "c04-gable-window",
+     "kind": "window-shape",
+     "where": "in the gable",
+     "approxSizeM": [
+      2.3,
+      2.0
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002538_pano_0000_001800",
+     "how": "five lights in an arched stone niche"
+    },
+    {
+     "id": "c04-oriel",
+     "kind": "window-shape",
+     "where": "second floor, centre",
+     "approxSizeM": [
+      2.4,
+      2.8
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002538_pano_0000_001800",
+     "how": "timberOriel(): white three-sided timber oriel on two stone consoles, glazed front and cheeks"
+    },
+    {
+     "id": "c04-finial-beast",
+     "kind": "sculpture",
+     "where": "on the gable apex",
+     "approxSizeM": [
+      0.6,
+      1.0
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002538_pano_0000_001800",
+     "how": "beast(): crossed stone silhouettes"
+    }
+   ]
+  },
+  {
+   "tag": "c05",
+   "bearing": 44,
+   "lengthM": 6.03,
+   "centre": [
+    4.8858044,
+    52.3736669
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002795_pano_0000_000559",
+   "capturedAt": "2022-09-05",
+   "checked": true,
+   "note": "strip chord c05 (L); crop artifacts/landmark-briefs/raadhuisstraat-galerij/strip/c05.jpg",
+   "items": [
+    {
+     "id": "c05-gallery-bay",
+     "kind": "colonnade",
+     "where": "ground floor and entresol, over the pavement",
+     "approxSizeM": [
+      6.03,
+      7.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002795_pano_0000_000559",
+     "how": "gallery(): stone pier on every party wall (plinth, deep core, two engaged shafts, cube capital), segmental iron arch with wrought-iron spandrel, glass lean-to roof and frieze swept along the curve"
+    },
+    {
+     "id": "c05-balcony-rail",
+     "kind": "balcony-ironwork",
+     "where": "first floor, on the gallery deck",
+     "approxSizeM": [
+      6.03,
+      1.1
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002795_pano_0000_000559",
+     "how": "top and bottom rails swept along the curve with balusters every 0.45 m; the Jugendstil scrollwork is not drawn"
+    },
+    {
+     "id": "c05-shopfront",
+     "kind": "window-shape",
+     "where": "ground floor, inside the gallery",
+     "approxSizeM": [
+      5.33,
+      4.0
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002795_pano_0000_000559",
+     "how": "bronze-tone shopfront frame in three lights, each light on its own chord of the curve, door over a stone step, stone plinth; entresol windows as three framed lights; the Jugendstil-carved surrounds are not drawn"
+    },
+    {
+     "id": "c05-first-floor",
+     "kind": "window-shape",
+     "where": "first floor",
+     "approxSizeM": [
+      5.03,
+      2.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002795_pano_0000_000559",
+     "how": "three French windows with round heads, white frames, red brick arches with white stone key and springer blocks (window())"
+    },
+    {
+     "id": "c05-loggia",
+     "kind": "colonnade",
+     "where": "attic storey",
+     "approxSizeM": [
+      4.6,
+      2.0
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002795_pano_0000_000559",
+     "how": "three round arches (dark recess) in red rings rising from a stone balustrade on four stone columns, cornice swept along the curve; narrower on the 4.5 m house"
+    },
+    {
+     "id": "c05-brick-bay",
+     "kind": "window-shape",
+     "where": "second floor, centre",
+     "approxSizeM": [
+      3.4,
+      3.2
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002795_pano_0000_000559",
+     "how": "brickBay(): brick bay on a stone corbel with three framed windows"
+    },
+    {
+     "id": "c05-beast",
+     "kind": "sculpture",
+     "where": "on the pilaster top at the house edge",
+     "approxSizeM": [
+      0.6,
+      1.0
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002795_pano_0000_000559",
+     "how": "beast(): crossed stone silhouettes of a seated griffin"
+    }
+   ]
+  },
+  {
+   "tag": "c06",
+   "bearing": 43,
+   "lengthM": 6.09,
+   "centre": [
+    4.8858695,
+    52.3736299
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-16_03-46-32_01467",
+   "capturedAt": "2025-06-16",
+   "checked": true,
+   "note": "strip chord c06 (G); crop artifacts/landmark-briefs/raadhuisstraat-galerij/strip/c06.jpg",
+   "items": [
+    {
+     "id": "c06-gallery-bay",
+     "kind": "colonnade",
+     "where": "ground floor and entresol, over the pavement",
+     "approxSizeM": [
+      6.09,
+      7.6
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-16_03-46-32_01467",
+     "how": "gallery(): stone pier on every party wall (plinth, deep core, two engaged shafts, cube capital), segmental iron arch with wrought-iron spandrel, glass lean-to roof and frieze swept along the curve"
+    },
+    {
+     "id": "c06-balcony-rail",
+     "kind": "balcony-ironwork",
+     "where": "first floor, on the gallery deck",
+     "approxSizeM": [
+      6.09,
+      1.1
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2025-06-16_03-46-32_01467",
+     "how": "top and bottom rails swept along the curve with balusters every 0.45 m; the Jugendstil scrollwork is not drawn"
+    },
+    {
+     "id": "c06-shopfront",
+     "kind": "window-shape",
+     "where": "ground floor, inside the gallery",
+     "approxSizeM": [
+      5.39,
+      4.0
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2025-06-16_03-46-32_01467",
+     "how": "bronze-tone shopfront frame in three lights, each light on its own chord of the curve, door over a stone step, stone plinth; entresol windows as three framed lights; the Jugendstil-carved surrounds are not drawn"
+    },
+    {
+     "id": "c06-first-floor",
+     "kind": "window-shape",
+     "where": "first floor",
+     "approxSizeM": [
+      5.09,
+      2.5
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-16_03-46-32_01467",
+     "how": "three French windows with round heads, white frames, red brick arches with white stone key and springer blocks (window())"
+    },
+    {
+     "id": "c06-gable",
+     "kind": "other",
+     "where": "pointed gable over the attic, corner piers",
+     "approxSizeM": [
+      6.09,
+      3.5
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-16_03-46-32_01467",
+     "how": "gable ribbon to the apex with stone rake copings, corner piers, cross roof (insteekkap) back into the mansard"
+    },
+    {
+     "id": "c06-gable-window",
+     "kind": "window-shape",
+     "where": "in the gable",
+     "approxSizeM": [
+      2.3,
+      2.0
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2025-06-16_03-46-32_01467",
+     "how": "five lights in an arched stone niche"
+    },
+    {
+     "id": "c06-oriel",
+     "kind": "window-shape",
+     "where": "second floor, centre",
+     "approxSizeM": [
+      2.4,
+      2.8
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-16_03-46-32_01467",
+     "how": "timberOriel(): white three-sided timber oriel on two stone consoles, glazed front and cheeks"
+    },
+    {
+     "id": "c06-finial-beast",
+     "kind": "sculpture",
+     "where": "on the gable apex",
+     "approxSizeM": [
+      0.6,
+      1.0
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2025-06-16_03-46-32_01467",
+     "how": "beast(): crossed stone silhouettes"
+    }
+   ]
+  },
+  {
+   "tag": "c07",
+   "bearing": 43,
+   "lengthM": 6.03,
+   "centre": [
+    4.8859348,
+    52.3735929
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001178_pano_0001_000679",
+   "capturedAt": "2019-05-13",
+   "checked": true,
+   "note": "strip chord c07 (B); crop artifacts/landmark-briefs/raadhuisstraat-galerij/strip/c07.jpg",
+   "items": [
+    {
+     "id": "c07-gallery-bay",
+     "kind": "colonnade",
+     "where": "ground floor and entresol, over the pavement",
+     "approxSizeM": [
+      6.03,
+      7.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001178_pano_0001_000679",
+     "how": "gallery(): stone pier on every party wall (plinth, deep core, two engaged shafts, cube capital), segmental iron arch with wrought-iron spandrel, glass lean-to roof and frieze swept along the curve"
+    },
+    {
+     "id": "c07-balcony-rail",
+     "kind": "balcony-ironwork",
+     "where": "first floor, on the gallery deck",
+     "approxSizeM": [
+      6.03,
+      1.1
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001178_pano_0001_000679",
+     "how": "top and bottom rails swept along the curve with balusters every 0.45 m; the Jugendstil scrollwork is not drawn"
+    },
+    {
+     "id": "c07-shopfront",
+     "kind": "window-shape",
+     "where": "ground floor, inside the gallery",
+     "approxSizeM": [
+      5.33,
+      4.0
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001178_pano_0001_000679",
+     "how": "bronze-tone shopfront frame in three lights, each light on its own chord of the curve, door over a stone step, stone plinth; entresol windows as three framed lights; the Jugendstil-carved surrounds are not drawn"
+    },
+    {
+     "id": "c07-first-floor",
+     "kind": "window-shape",
+     "where": "first floor",
+     "approxSizeM": [
+      5.03,
+      2.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001178_pano_0001_000679",
+     "how": "three French windows with round heads, white frames, red brick arches with white stone key and springer blocks (window())"
+    },
+    {
+     "id": "c07-balustrade",
+     "kind": "other",
+     "where": "attic: low brick balustrade with arched openings",
+     "approxSizeM": [
+      6.03,
+      1.3
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001178_pano_0001_000679",
+     "how": "five dark arched openings and a stone coping swept along the curve"
+    },
+    {
+     "id": "c07-t-windows",
+     "kind": "window-shape",
+     "where": "second floor",
+     "approxSizeM": [
+      5.03,
+      2.7
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001178_pano_0001_000679",
+     "how": "three T-windows with transoms under red relieving arches"
+    },
+    {
+     "id": "c07-beast",
+     "kind": "sculpture",
+     "where": "on the pilaster top at the house edge",
+     "approxSizeM": [
+      0.6,
+      1.0
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001178_pano_0001_000679",
+     "how": "beast(): crossed stone silhouettes of a seated griffin"
+    }
+   ]
+  },
+  {
+   "tag": "c08",
+   "bearing": 43,
+   "lengthM": 6.07,
+   "centre": [
+    4.886,
+    52.373556
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002045_pano_0001_003055",
+   "capturedAt": "2021-03-17",
+   "checked": true,
+   "note": "strip chord c08 (L); crop artifacts/landmark-briefs/raadhuisstraat-galerij/strip/c08.jpg",
+   "items": [
+    {
+     "id": "c08-gallery-bay",
+     "kind": "colonnade",
+     "where": "ground floor and entresol, over the pavement",
+     "approxSizeM": [
+      6.07,
+      7.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002045_pano_0001_003055",
+     "how": "gallery(): stone pier on every party wall (plinth, deep core, two engaged shafts, cube capital), segmental iron arch with wrought-iron spandrel, glass lean-to roof and frieze swept along the curve"
+    },
+    {
+     "id": "c08-balcony-rail",
+     "kind": "balcony-ironwork",
+     "where": "first floor, on the gallery deck",
+     "approxSizeM": [
+      6.07,
+      1.1
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002045_pano_0001_003055",
+     "how": "top and bottom rails swept along the curve with balusters every 0.45 m; the Jugendstil scrollwork is not drawn"
+    },
+    {
+     "id": "c08-shopfront",
+     "kind": "window-shape",
+     "where": "ground floor, inside the gallery",
+     "approxSizeM": [
+      5.37,
+      4.0
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002045_pano_0001_003055",
+     "how": "bronze-tone shopfront frame in three lights, each light on its own chord of the curve, door over a stone step, stone plinth; entresol windows as three framed lights; the Jugendstil-carved surrounds are not drawn"
+    },
+    {
+     "id": "c08-first-floor",
+     "kind": "window-shape",
+     "where": "first floor",
+     "approxSizeM": [
+      5.07,
+      2.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002045_pano_0001_003055",
+     "how": "three French windows with round heads, white frames, red brick arches with white stone key and springer blocks (window())"
+    },
+    {
+     "id": "c08-loggia",
+     "kind": "colonnade",
+     "where": "attic storey",
+     "approxSizeM": [
+      4.6,
+      2.0
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002045_pano_0001_003055",
+     "how": "three round arches (dark recess) in red rings rising from a stone balustrade on four stone columns, cornice swept along the curve; narrower on the 4.5 m house"
+    },
+    {
+     "id": "c08-brick-bay",
+     "kind": "window-shape",
+     "where": "second floor, centre",
+     "approxSizeM": [
+      3.4,
+      3.2
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002045_pano_0001_003055",
+     "how": "brickBay(): brick bay on a stone corbel with three framed windows"
+    },
+    {
+     "id": "c08-beast",
+     "kind": "sculpture",
+     "where": "on the pilaster top at the house edge",
+     "approxSizeM": [
+      0.6,
+      1.0
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002045_pano_0001_003055",
+     "how": "beast(): crossed stone silhouettes of a seated griffin"
+    }
+   ]
+  },
+  {
+   "tag": "c09",
+   "bearing": 40,
+   "lengthM": 7.9,
+   "centre": [
+    4.8860773,
+    52.3735147
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002538_pano_0000_001794",
+   "capturedAt": "2022-04-22",
+   "checked": true,
+   "note": "strip chord c09 (centre); crop artifacts/landmark-briefs/raadhuisstraat-galerij/strip/c09.jpg",
+   "items": [
+    {
+     "id": "c09-gate",
+     "kind": "colonnade",
+     "where": "centre bay over the pavement",
+     "approxSizeM": [
+      7.9,
+      8.8
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002538_pano_0000_001794",
+     "how": "centreGate(): stone block with a 4.8 m arched passage, arch ring, side walls, openwork loggia of five openings on six small columns"
+    },
+    {
+     "id": "c09-balcony",
+     "kind": "balcony-ironwork",
+     "where": "on the gate, first floor",
+     "approxSizeM": [
+      7.9,
+      1.2
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002538_pano_0000_001794",
+     "how": "stone deck and balustrade (balusters at 0.42 m) swept along the curve"
+    },
+    {
+     "id": "c09-risalit-gable",
+     "kind": "other",
+     "where": "centre: stone-dressed risalit to the 23.2 m gable with its own saddle roof",
+     "approxSizeM": [
+      7.9,
+      14.4
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002538_pano_0000_001794",
+     "how": "ribbon 1 m proud of the BAG line, stone corner piers and bands, saddle roof back into the main roof"
+    },
+    {
+     "id": "c09-arched-niche",
+     "kind": "window-shape",
+     "where": "gable: great arched loggia niche over a small arcade",
+     "approxSizeM": [
+      4.8,
+      4.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002538_pano_0000_001794",
+     "how": "dark arch with a stone ring and balustrade, seven small arches under it"
+    },
+    {
+     "id": "c09-beasts",
+     "kind": "sculpture",
+     "where": "gable apex and the corner pier tops",
+     "approxSizeM": [
+      0.8,
+      1.3
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002538_pano_0000_001794",
+     "how": "beast() at the apex and on both corner piers"
+    }
+   ]
+  },
+  {
+   "tag": "c10",
+   "bearing": 36,
+   "lengthM": 5.97,
+   "centre": [
+    4.8861576,
+    52.3734764
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002795_pano_0000_000553",
+   "capturedAt": "2022-09-05",
+   "checked": true,
+   "note": "strip chord c10 (L); crop artifacts/landmark-briefs/raadhuisstraat-galerij/strip/c10.jpg",
+   "items": [
+    {
+     "id": "c10-gallery-bay",
+     "kind": "colonnade",
+     "where": "ground floor and entresol, over the pavement",
+     "approxSizeM": [
+      5.97,
+      7.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002795_pano_0000_000553",
+     "how": "gallery(): stone pier on every party wall (plinth, deep core, two engaged shafts, cube capital), segmental iron arch with wrought-iron spandrel, glass lean-to roof and frieze swept along the curve"
+    },
+    {
+     "id": "c10-balcony-rail",
+     "kind": "balcony-ironwork",
+     "where": "first floor, on the gallery deck",
+     "approxSizeM": [
+      5.97,
+      1.1
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002795_pano_0000_000553",
+     "how": "top and bottom rails swept along the curve with balusters every 0.45 m; the Jugendstil scrollwork is not drawn"
+    },
+    {
+     "id": "c10-shopfront",
+     "kind": "window-shape",
+     "where": "ground floor, inside the gallery",
+     "approxSizeM": [
+      5.27,
+      4.0
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002795_pano_0000_000553",
+     "how": "bronze-tone shopfront frame in three lights, each light on its own chord of the curve, door over a stone step, stone plinth; entresol windows as three framed lights; the Jugendstil-carved surrounds are not drawn"
+    },
+    {
+     "id": "c10-first-floor",
+     "kind": "window-shape",
+     "where": "first floor",
+     "approxSizeM": [
+      4.97,
+      2.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002795_pano_0000_000553",
+     "how": "three French windows with round heads, white frames, red brick arches with white stone key and springer blocks (window())"
+    },
+    {
+     "id": "c10-loggia",
+     "kind": "colonnade",
+     "where": "attic storey",
+     "approxSizeM": [
+      4.6,
+      2.0
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002795_pano_0000_000553",
+     "how": "three round arches (dark recess) in red rings rising from a stone balustrade on four stone columns, cornice swept along the curve; narrower on the 4.5 m house"
+    },
+    {
+     "id": "c10-brick-bay",
+     "kind": "window-shape",
+     "where": "second floor, centre",
+     "approxSizeM": [
+      3.4,
+      3.2
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002795_pano_0000_000553",
+     "how": "brickBay(): brick bay on a stone corbel with three framed windows"
+    },
+    {
+     "id": "c10-beast",
+     "kind": "sculpture",
+     "where": "on the pilaster top at the house edge",
+     "approxSizeM": [
+      0.6,
+      1.0
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002795_pano_0000_000553",
+     "how": "beast(): crossed stone silhouettes of a seated griffin"
+    }
+   ]
+  },
+  {
+   "tag": "c11",
+   "bearing": 32,
+   "lengthM": 6.07,
+   "centre": [
+    4.8862312,
+    52.3734464
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002795_pano_0000_000552",
+   "capturedAt": "2022-09-05",
+   "checked": true,
+   "note": "strip chord c11 (B); crop artifacts/landmark-briefs/raadhuisstraat-galerij/strip/c11.jpg",
+   "items": [
+    {
+     "id": "c11-gallery-bay",
+     "kind": "colonnade",
+     "where": "ground floor and entresol, over the pavement",
+     "approxSizeM": [
+      6.07,
+      7.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002795_pano_0000_000552",
+     "how": "gallery(): stone pier on every party wall (plinth, deep core, two engaged shafts, cube capital), segmental iron arch with wrought-iron spandrel, glass lean-to roof and frieze swept along the curve"
+    },
+    {
+     "id": "c11-balcony-rail",
+     "kind": "balcony-ironwork",
+     "where": "first floor, on the gallery deck",
+     "approxSizeM": [
+      6.07,
+      1.1
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002795_pano_0000_000552",
+     "how": "top and bottom rails swept along the curve with balusters every 0.45 m; the Jugendstil scrollwork is not drawn"
+    },
+    {
+     "id": "c11-shopfront",
+     "kind": "window-shape",
+     "where": "ground floor, inside the gallery",
+     "approxSizeM": [
+      5.37,
+      4.0
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002795_pano_0000_000552",
+     "how": "bronze-tone shopfront frame in three lights, each light on its own chord of the curve, door over a stone step, stone plinth; entresol windows as three framed lights; the Jugendstil-carved surrounds are not drawn"
+    },
+    {
+     "id": "c11-first-floor",
+     "kind": "window-shape",
+     "where": "first floor",
+     "approxSizeM": [
+      5.07,
+      2.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002795_pano_0000_000552",
+     "how": "three French windows with round heads, white frames, red brick arches with white stone key and springer blocks (window())"
+    },
+    {
+     "id": "c11-balustrade",
+     "kind": "other",
+     "where": "attic: low brick balustrade with arched openings",
+     "approxSizeM": [
+      6.07,
+      1.3
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002795_pano_0000_000552",
+     "how": "five dark arched openings and a stone coping swept along the curve"
+    },
+    {
+     "id": "c11-t-windows",
+     "kind": "window-shape",
+     "where": "second floor",
+     "approxSizeM": [
+      5.07,
+      2.7
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002795_pano_0000_000552",
+     "how": "three T-windows with transoms under red relieving arches"
+    },
+    {
+     "id": "c11-beast",
+     "kind": "sculpture",
+     "where": "on the pilaster top at the house edge",
+     "approxSizeM": [
+      0.6,
+      1.0
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002795_pano_0000_000552",
+     "how": "beast(): crossed stone silhouettes of a seated griffin"
+    }
+   ]
+  },
+  {
+   "tag": "c12",
+   "bearing": 28,
+   "lengthM": 6.04,
+   "centre": [
+    4.8863085,
+    52.3734195
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002862_pano_0001_000148",
+   "capturedAt": "2022-12-15",
+   "checked": true,
+   "note": "strip chord c12 (G); crop artifacts/landmark-briefs/raadhuisstraat-galerij/strip/c12.jpg",
+   "items": [
+    {
+     "id": "c12-gallery-bay",
+     "kind": "colonnade",
+     "where": "ground floor and entresol, over the pavement",
+     "approxSizeM": [
+      6.04,
+      7.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002862_pano_0001_000148",
+     "how": "gallery(): stone pier on every party wall (plinth, deep core, two engaged shafts, cube capital), segmental iron arch with wrought-iron spandrel, glass lean-to roof and frieze swept along the curve"
+    },
+    {
+     "id": "c12-balcony-rail",
+     "kind": "balcony-ironwork",
+     "where": "first floor, on the gallery deck",
+     "approxSizeM": [
+      6.04,
+      1.1
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002862_pano_0001_000148",
+     "how": "top and bottom rails swept along the curve with balusters every 0.45 m; the Jugendstil scrollwork is not drawn"
+    },
+    {
+     "id": "c12-shopfront",
+     "kind": "window-shape",
+     "where": "ground floor, inside the gallery",
+     "approxSizeM": [
+      5.34,
+      4.0
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002862_pano_0001_000148",
+     "how": "bronze-tone shopfront frame in three lights, each light on its own chord of the curve, door over a stone step, stone plinth; entresol windows as three framed lights; the Jugendstil-carved surrounds are not drawn"
+    },
+    {
+     "id": "c12-first-floor",
+     "kind": "window-shape",
+     "where": "first floor",
+     "approxSizeM": [
+      5.04,
+      2.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002862_pano_0001_000148",
+     "how": "three French windows with round heads, white frames, red brick arches with white stone key and springer blocks (window())"
+    },
+    {
+     "id": "c12-gable",
+     "kind": "other",
+     "where": "pointed gable over the attic, corner piers",
+     "approxSizeM": [
+      6.04,
+      3.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002862_pano_0001_000148",
+     "how": "gable ribbon to the apex with stone rake copings, corner piers, cross roof (insteekkap) back into the mansard"
+    },
+    {
+     "id": "c12-gable-window",
+     "kind": "window-shape",
+     "where": "in the gable",
+     "approxSizeM": [
+      2.3,
+      2.0
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002862_pano_0001_000148",
+     "how": "five lights in an arched stone niche"
+    },
+    {
+     "id": "c12-oriel",
+     "kind": "window-shape",
+     "where": "second floor, centre",
+     "approxSizeM": [
+      2.4,
+      2.8
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002862_pano_0001_000148",
+     "how": "timberOriel(): white three-sided timber oriel on two stone consoles, glazed front and cheeks"
+    },
+    {
+     "id": "c12-finial-beast",
+     "kind": "sculpture",
+     "where": "on the gable apex",
+     "approxSizeM": [
+      0.6,
+      1.0
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002862_pano_0001_000148",
+     "how": "beast(): crossed stone silhouettes"
+    }
+   ]
+  },
+  {
+   "tag": "c13",
+   "bearing": 25,
+   "lengthM": 6.08,
+   "centre": [
+    4.8863885,
+    52.3733956
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002862_pano_0001_000149",
+   "capturedAt": "2022-12-15",
+   "checked": true,
+   "note": "strip chord c13 (L); crop artifacts/landmark-briefs/raadhuisstraat-galerij/strip/c13.jpg",
+   "items": [
+    {
+     "id": "c13-gallery-bay",
+     "kind": "colonnade",
+     "where": "ground floor and entresol, over the pavement",
+     "approxSizeM": [
+      6.08,
+      7.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002862_pano_0001_000149",
+     "how": "gallery(): stone pier on every party wall (plinth, deep core, two engaged shafts, cube capital), segmental iron arch with wrought-iron spandrel, glass lean-to roof and frieze swept along the curve"
+    },
+    {
+     "id": "c13-balcony-rail",
+     "kind": "balcony-ironwork",
+     "where": "first floor, on the gallery deck",
+     "approxSizeM": [
+      6.08,
+      1.1
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002862_pano_0001_000149",
+     "how": "top and bottom rails swept along the curve with balusters every 0.45 m; the Jugendstil scrollwork is not drawn"
+    },
+    {
+     "id": "c13-shopfront",
+     "kind": "window-shape",
+     "where": "ground floor, inside the gallery",
+     "approxSizeM": [
+      5.38,
+      4.0
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002862_pano_0001_000149",
+     "how": "bronze-tone shopfront frame in three lights, each light on its own chord of the curve, door over a stone step, stone plinth; entresol windows as three framed lights; the Jugendstil-carved surrounds are not drawn"
+    },
+    {
+     "id": "c13-first-floor",
+     "kind": "window-shape",
+     "where": "first floor",
+     "approxSizeM": [
+      5.08,
+      2.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002862_pano_0001_000149",
+     "how": "three French windows with round heads, white frames, red brick arches with white stone key and springer blocks (window())"
+    },
+    {
+     "id": "c13-loggia",
+     "kind": "colonnade",
+     "where": "attic storey",
+     "approxSizeM": [
+      4.6,
+      2.0
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002862_pano_0001_000149",
+     "how": "three round arches (dark recess) in red rings rising from a stone balustrade on four stone columns, cornice swept along the curve; narrower on the 4.5 m house"
+    },
+    {
+     "id": "c13-brick-bay",
+     "kind": "window-shape",
+     "where": "second floor, centre",
+     "approxSizeM": [
+      3.4,
+      3.2
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002862_pano_0001_000149",
+     "how": "brickBay(): brick bay on a stone corbel with three framed windows"
+    },
+    {
+     "id": "c13-beast",
+     "kind": "sculpture",
+     "where": "on the pilaster top at the house edge",
+     "approxSizeM": [
+      0.6,
+      1.0
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002862_pano_0001_000149",
+     "how": "beast(): crossed stone silhouettes of a seated griffin"
+    }
+   ]
+  },
+  {
+   "tag": "c14",
+   "bearing": 20,
+   "lengthM": 6.15,
+   "centre": [
+    4.8864716,
+    52.3733748
+   ],
+   "evidence": "photo",
+   "panoId": "b_20241216_0911_Track30_Sphere_00032",
+   "capturedAt": "2024-12-16",
+   "checked": true,
+   "note": "strip chord c14 (G); crop artifacts/landmark-briefs/raadhuisstraat-galerij/strip/c14.jpg",
+   "items": [
+    {
+     "id": "c14-gallery-bay",
+     "kind": "colonnade",
+     "where": "ground floor and entresol, over the pavement",
+     "approxSizeM": [
+      6.15,
+      7.6
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20241216_0911_Track30_Sphere_00032",
+     "how": "gallery(): stone pier on every party wall (plinth, deep core, two engaged shafts, cube capital), segmental iron arch with wrought-iron spandrel, glass lean-to roof and frieze swept along the curve"
+    },
+    {
+     "id": "c14-balcony-rail",
+     "kind": "balcony-ironwork",
+     "where": "first floor, on the gallery deck",
+     "approxSizeM": [
+      6.15,
+      1.1
+     ],
+     "plan": "simplified",
+     "seenIn": "b_20241216_0911_Track30_Sphere_00032",
+     "how": "top and bottom rails swept along the curve with balusters every 0.45 m; the Jugendstil scrollwork is not drawn"
+    },
+    {
+     "id": "c14-shopfront",
+     "kind": "window-shape",
+     "where": "ground floor, inside the gallery",
+     "approxSizeM": [
+      5.45,
+      4.0
+     ],
+     "plan": "simplified",
+     "seenIn": "b_20241216_0911_Track30_Sphere_00032",
+     "how": "bronze-tone shopfront frame in three lights, each light on its own chord of the curve, door over a stone step, stone plinth; entresol windows as three framed lights; the Jugendstil-carved surrounds are not drawn"
+    },
+    {
+     "id": "c14-first-floor",
+     "kind": "window-shape",
+     "where": "first floor",
+     "approxSizeM": [
+      5.15,
+      2.5
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20241216_0911_Track30_Sphere_00032",
+     "how": "three French windows with round heads, white frames, red brick arches with white stone key and springer blocks (window())"
+    },
+    {
+     "id": "c14-gable",
+     "kind": "other",
+     "where": "pointed gable over the attic, corner piers",
+     "approxSizeM": [
+      6.15,
+      3.5
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20241216_0911_Track30_Sphere_00032",
+     "how": "gable ribbon to the apex with stone rake copings, corner piers, cross roof (insteekkap) back into the mansard"
+    },
+    {
+     "id": "c14-gable-window",
+     "kind": "window-shape",
+     "where": "in the gable",
+     "approxSizeM": [
+      2.3,
+      2.0
+     ],
+     "plan": "simplified",
+     "seenIn": "b_20241216_0911_Track30_Sphere_00032",
+     "how": "five lights in an arched stone niche"
+    },
+    {
+     "id": "c14-oriel",
+     "kind": "window-shape",
+     "where": "second floor, centre",
+     "approxSizeM": [
+      2.4,
+      2.8
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20241216_0911_Track30_Sphere_00032",
+     "how": "timberOriel(): white three-sided timber oriel on two stone consoles, glazed front and cheeks"
+    },
+    {
+     "id": "c14-finial-beast",
+     "kind": "sculpture",
+     "where": "on the gable apex",
+     "approxSizeM": [
+      0.6,
+      1.0
+     ],
+     "plan": "simplified",
+     "seenIn": "b_20241216_0911_Track30_Sphere_00032",
+     "how": "beast(): crossed stone silhouettes"
+    }
+   ]
+  },
+  {
+   "tag": "c15",
+   "bearing": 17,
+   "lengthM": 5.95,
+   "centre": [
+    4.8865561,
+    52.373358
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001540_pano_0000_000889",
+   "capturedAt": "2020-01-07",
+   "checked": true,
+   "note": "strip chord c15 (B); crop artifacts/landmark-briefs/raadhuisstraat-galerij/strip/c15.jpg",
+   "items": [
+    {
+     "id": "c15-gallery-bay",
+     "kind": "colonnade",
+     "where": "ground floor and entresol, over the pavement",
+     "approxSizeM": [
+      5.95,
+      7.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001540_pano_0000_000889",
+     "how": "gallery(): stone pier on every party wall (plinth, deep core, two engaged shafts, cube capital), segmental iron arch with wrought-iron spandrel, glass lean-to roof and frieze swept along the curve"
+    },
+    {
+     "id": "c15-balcony-rail",
+     "kind": "balcony-ironwork",
+     "where": "first floor, on the gallery deck",
+     "approxSizeM": [
+      5.95,
+      1.1
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001540_pano_0000_000889",
+     "how": "top and bottom rails swept along the curve with balusters every 0.45 m; the Jugendstil scrollwork is not drawn"
+    },
+    {
+     "id": "c15-shopfront",
+     "kind": "window-shape",
+     "where": "ground floor, inside the gallery",
+     "approxSizeM": [
+      5.25,
+      4.0
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001540_pano_0000_000889",
+     "how": "bronze-tone shopfront frame in three lights, each light on its own chord of the curve, door over a stone step, stone plinth; entresol windows as three framed lights; the Jugendstil-carved surrounds are not drawn"
+    },
+    {
+     "id": "c15-first-floor",
+     "kind": "window-shape",
+     "where": "first floor",
+     "approxSizeM": [
+      4.95,
+      2.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001540_pano_0000_000889",
+     "how": "three French windows with round heads, white frames, red brick arches with white stone key and springer blocks (window())"
+    },
+    {
+     "id": "c15-balustrade",
+     "kind": "other",
+     "where": "attic: low brick balustrade with arched openings",
+     "approxSizeM": [
+      5.95,
+      1.3
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001540_pano_0000_000889",
+     "how": "five dark arched openings and a stone coping swept along the curve"
+    },
+    {
+     "id": "c15-t-windows",
+     "kind": "window-shape",
+     "where": "second floor",
+     "approxSizeM": [
+      4.95,
+      2.7
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001540_pano_0000_000889",
+     "how": "three T-windows with transoms under red relieving arches"
+    },
+    {
+     "id": "c15-beast",
+     "kind": "sculpture",
+     "where": "on the pilaster top at the house edge",
+     "approxSizeM": [
+      0.6,
+      1.0
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001540_pano_0000_000889",
+     "how": "beast(): crossed stone silhouettes of a seated griffin"
+    }
+   ]
+  },
+  {
+   "tag": "c16",
+   "bearing": 16,
+   "lengthM": 4.53,
+   "centre": [
+    4.8866302,
+    52.3733451
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001540_pano_0000_000890",
+   "capturedAt": "2020-01-07",
+   "checked": true,
+   "note": "strip chord c16 (L); crop artifacts/landmark-briefs/raadhuisstraat-galerij/strip/c16.jpg",
+   "items": [
+    {
+     "id": "c16-gallery-bay",
+     "kind": "colonnade",
+     "where": "ground floor and entresol, over the pavement",
+     "approxSizeM": [
+      4.53,
+      7.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001540_pano_0000_000890",
+     "how": "gallery(): stone pier on every party wall (plinth, deep core, two engaged shafts, cube capital), segmental iron arch with wrought-iron spandrel, glass lean-to roof and frieze swept along the curve"
+    },
+    {
+     "id": "c16-balcony-rail",
+     "kind": "balcony-ironwork",
+     "where": "first floor, on the gallery deck",
+     "approxSizeM": [
+      4.53,
+      1.1
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001540_pano_0000_000890",
+     "how": "top and bottom rails swept along the curve with balusters every 0.45 m; the Jugendstil scrollwork is not drawn"
+    },
+    {
+     "id": "c16-shopfront",
+     "kind": "window-shape",
+     "where": "ground floor, inside the gallery",
+     "approxSizeM": [
+      3.83,
+      4.0
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001540_pano_0000_000890",
+     "how": "bronze-tone shopfront frame in three lights, each light on its own chord of the curve, door over a stone step, stone plinth; entresol windows as three framed lights; the Jugendstil-carved surrounds are not drawn"
+    },
+    {
+     "id": "c16-first-floor",
+     "kind": "window-shape",
+     "where": "first floor",
+     "approxSizeM": [
+      3.5300000000000002,
+      2.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001540_pano_0000_000890",
+     "how": "three French windows with round heads, white frames, red brick arches with white stone key and springer blocks (window())"
+    },
+    {
+     "id": "c16-loggia",
+     "kind": "colonnade",
+     "where": "attic storey",
+     "approxSizeM": [
+      4.6,
+      2.0
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001540_pano_0000_000890",
+     "how": "three round arches (dark recess) in red rings rising from a stone balustrade on four stone columns, cornice swept along the curve; narrower on the 4.5 m house"
+    },
+    {
+     "id": "c16-brick-bay",
+     "kind": "window-shape",
+     "where": "second floor, centre",
+     "approxSizeM": [
+      3.4,
+      3.2
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001540_pano_0000_000890",
+     "how": "brickBay(): brick bay on a stone corbel with three framed windows"
+    },
+    {
+     "id": "c16-beast",
+     "kind": "sculpture",
+     "where": "on the pilaster top at the house edge",
+     "approxSizeM": [
+      0.6,
+      1.0
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001540_pano_0000_000890",
+     "how": "beast(): crossed stone silhouettes of a seated griffin"
+    }
+   ]
+  },
+  {
+   "tag": "c17",
+   "bearing": 15,
+   "lengthM": 4.83,
+   "centre": [
+    4.8866828,
+    52.3733364
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002795_pano_0000_000436",
+   "capturedAt": "2022-09-05",
+   "checked": true,
+   "note": "strip chord c17 (serre21); crop artifacts/landmark-briefs/raadhuisstraat-galerij/strip/c17.jpg",
+   "items": [
+    {
+     "id": "c17-gallery-bay",
+     "kind": "colonnade",
+     "where": "ground floor and entresol, over the pavement",
+     "approxSizeM": [
+      4.83,
+      7.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002795_pano_0000_000436",
+     "how": "gallery(): stone pier on every party wall (plinth, deep core, two engaged shafts, cube capital), segmental iron arch with wrought-iron spandrel, glass lean-to roof and frieze swept along the curve"
+    },
+    {
+     "id": "c17-balcony-rail",
+     "kind": "balcony-ironwork",
+     "where": "first floor, on the gallery deck",
+     "approxSizeM": [
+      4.83,
+      1.1
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002795_pano_0000_000436",
+     "how": "top and bottom rails swept along the curve with balusters every 0.45 m; the Jugendstil scrollwork is not drawn"
+    },
+    {
+     "id": "c17-shopfront",
+     "kind": "window-shape",
+     "where": "ground floor, inside the gallery",
+     "approxSizeM": [
+      4.13,
+      4.0
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002795_pano_0000_000436",
+     "how": "bronze-tone shopfront frame in three lights, each light on its own chord of the curve, door over a stone step, stone plinth; entresol windows as three framed lights; the Jugendstil-carved surrounds are not drawn"
+    },
+    {
+     "id": "c17-first-floor",
+     "kind": "window-shape",
+     "where": "first floor",
+     "approxSizeM": [
+      3.83,
+      2.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002795_pano_0000_000436",
+     "how": "three French windows with round heads, white frames, red brick arches with white stone key and springer blocks (window())"
+    },
+    {
+     "id": "c17-serre",
+     "kind": "window-shape",
+     "where": "attic: later timber serre",
+     "approxSizeM": [
+      3.83,
+      1.9
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002795_pano_0000_000436",
+     "how": "white timber box set back on the parapet with six glazed lights (five on nr 23-27, the west light blind beside the party wall)"
+    },
+    {
+     "id": "c17-hotel-lettering",
+     "kind": "sign",
+     "where": "second floor, hotel name in metal letters",
+     "approxSizeM": [
+      3.0,
+      0.4
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-002795_pano_0000_000436",
+     "skip": {
+      "reason": "temporary",
+      "note": "hotel signage; the map label names the place"
+     }
+    },
+    {
+     "id": "gallery-end-east",
+     "kind": "gable-stone",
+     "where": "east short end of the gallery (21/23): memorial stone \"UTRECHT ... 1898\" with gilded inscription, dragon and shield over the arched passage",
+     "approxSizeM": [
+      3.5,
+      9.6
+     ],
+     "plan": "simplified",
+     "seenIn": "Commons: Detail galerij gedenksteen 1898 - Amsterdam - 20020324 - RCE.jpg (CC BY-SA 4.0)",
+     "how": "end wall with an arched passage, stone arch ring, memorial stone with two gilded lines (the text is not drawn), shield and a dragon (beast())"
+    },
+    {
+     "id": "gallery-glass-roof",
+     "kind": "canopy",
+     "where": "whole gallery: glass lean-to roof",
+     "approxSizeM": [
+      106,
+      2.0
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002795_pano_0000_000436",
+     "how": "canopyGlass sheet swept along the curve from under the deck edge (7.2 m) to the street line (6.2 m, AHN4)"
+    }
+   ]
+  },
+  {
+   "tag": "c18",
+   "bearing": 5,
+   "lengthM": 3.92,
+   "centre": [
+    4.8867389,
+    52.3733314
+   ],
+   "evidence": "photo",
+   "panoId": "b_20241216_0911_Track31_Sphere_00056",
+   "capturedAt": "2024-12-16",
+   "checked": true,
+   "note": "strip chord c18 (gable21); crop artifacts/landmark-briefs/raadhuisstraat-galerij/strip/c18.jpg",
+   "items": [
+    {
+     "id": "c18-gable",
+     "kind": "other",
+     "where": "pointed gable over the attic, corner piers",
+     "approxSizeM": [
+      3.92,
+      3.5
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20241216_0911_Track31_Sphere_00056",
+     "how": "gable ribbon to the apex with stone rake copings, corner piers, cross roof (insteekkap) back into the mansard"
+    },
+    {
+     "id": "c18-gable-window",
+     "kind": "window-shape",
+     "where": "in the gable",
+     "approxSizeM": [
+      2.3,
+      2.0
+     ],
+     "plan": "simplified",
+     "seenIn": "b_20241216_0911_Track31_Sphere_00056",
+     "how": "five lights in an arched stone niche"
+    },
+    {
+     "id": "c18-oriel",
+     "kind": "window-shape",
+     "where": "second floor, centre",
+     "approxSizeM": [
+      2.4,
+      2.8
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20241216_0911_Track31_Sphere_00056",
+     "how": "timberOriel(): white three-sided timber oriel on two stone consoles, glazed front and cheeks"
+    },
+    {
+     "id": "c18-finial-beast",
+     "kind": "sculpture",
+     "where": "on the gable apex",
+     "approxSizeM": [
+      0.6,
+      1.0
+     ],
+     "plan": "simplified",
+     "seenIn": "b_20241216_0911_Track31_Sphere_00056",
+     "how": "beast(): crossed stone silhouettes"
+    },
+    {
+     "id": "c18-cut-corner-beasts",
+     "kind": "sculpture",
+     "where": "cut corner Raadhuisstraat/Herengracht, first floor: two winged beasts with a shield",
+     "approxSizeM": [
+      1.2,
+      1.4
+     ],
+     "plan": "simplified",
+     "seenIn": "Commons: Raadhuisstraat 21, Amsterdam foto 1.jpg (public domain)",
+     "how": "stone pier, beast() and a stone shield on the cut-corner frame"
+    },
+    {
+     "id": "c18-entresol-arch",
+     "kind": "window-shape",
+     "where": "entresol: big arched window",
+     "approxSizeM": [
+      2.6,
+      2.4
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20241216_0911_Track31_Sphere_00056",
+     "how": "framed arched window in a red arch ring"
+    }
+   ]
+  },
+  {
+   "tag": "keizersgracht",
+   "bearing": 273,
+   "lengthM": 34.5,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000355_pano_0000_000937",
+   "capturedAt": "2017-07-07",
+   "checked": true,
+   "note": "Keizersgracht fronts of 55, 197, 199, 201 (brief crops rh-169304 w01-273, rh-172351 w01-274, rh-172350 w01-273, rh-172312 w02-273)",
+   "items": [
+    {
+     "id": "kg-windows",
+     "kind": "window-shape",
+     "where": "all storeys",
+     "approxSizeM": [
+      34,
+      14
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-000355_pano_0000_000937",
+     "how": "round- and flat-headed framed windows per register row counts (197: 2 entresol, 4 round, 4 square; 201: arched ground window, 3+3 round, five-light top)"
+    },
+    {
+     "id": "kg-55-gable-cock",
+     "kind": "sculpture",
+     "where": "55: Keizersgracht gable, carved cock to its right",
+     "approxSizeM": [
+      0.8,
+      1.1
+     ],
+     "plan": "simplified",
+     "seenIn": "Commons: Immeuble 55 Raadhuisstraat - Amsterdam (NL32) - 2024-11-25 - 2.jpg (CC BY-SA 4.0)",
+     "how": "gable with stone copings; cock as an extruded stone silhouette"
+    },
+    {
+     "id": "kg-201-plaque",
+     "kind": "lettering",
+     "where": "201: painted plaque with the name, over the first floor",
+     "approxSizeM": [
+      3.6,
+      0.7
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001975_pano_0000_000217",
+     "how": "white panel with a red band; the painted words are not drawn"
+    },
+    {
+     "id": "kg-199-gable",
+     "kind": "other",
+     "where": "199: gable over three window axes",
+     "approxSizeM": [
+      6.0,
+      3.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001975_pano_0000_000218",
+     "how": "triangular brick gable, stone copings, arched light"
+    },
+    {
+     "id": "kg-oriels",
+     "kind": "window-shape",
+     "where": "55 and 199: white timber oriels on the second floor",
+     "approxSizeM": [
+      1.6,
+      2.0
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-000355_pano_0000_000937",
+     "skip": {
+      "reason": "too-small",
+      "note": "canal-side oriels read as windows across the canal at ride distance; the street-side oriels are modelled"
+     }
+    },
+    {
+     "id": "kg-balconies",
+     "kind": "balcony-ironwork",
+     "where": "197, 199, 201: small iron balconies",
+     "approxSizeM": [
+      1.5,
+      1.0
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-000355_pano_0000_000937",
+     "skip": {
+      "reason": "too-small",
+      "note": "small balconies, under 1.5 m wide, behind canal trees"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "herengracht",
+   "bearing": 93,
+   "lengthM": 8.46,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002990_pano_0002_000031",
+   "capturedAt": "2023-03-06",
+   "checked": true,
+   "note": "Herengracht front of 21 (Herengracht 194); strip crop herengracht.jpg and Commons Raadhuisstraat 21 foto 1",
+   "items": [
+    {
+     "id": "hg-utrecht-lettering",
+     "kind": "lettering",
+     "where": "over the big entresol window: UTRECHT in stone letters",
+     "approxSizeM": [
+      3.0,
+      0.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002990_pano_0002_000031",
+     "how": "letters() raised stone capitals"
+    },
+    {
+     "id": "hg-entresol-arch",
+     "kind": "window-shape",
+     "where": "entresol: big arched window",
+     "approxSizeM": [
+      3.0,
+      4.2
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002990_pano_0002_000031",
+     "how": "framed arched window in a red arch ring"
+    },
+    {
+     "id": "hg-gable",
+     "kind": "other",
+     "where": "Herengracht gable with small arched openings",
+     "approxSizeM": [
+      8.0,
+      2.2
+     ],
+     "plan": "simplified",
+     "seenIn": "Commons: Raadhuisstraat 21, Amsterdam foto 1.jpg (public domain)",
+     "how": "brick gable with stone copings and three small dark arches"
+    },
+    {
+     "id": "hg-windows",
+     "kind": "window-shape",
+     "where": "upper storeys",
+     "approxSizeM": [
+      7,
+      5
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002990_pano_0002_000031",
+     "how": "round- and flat-headed framed windows"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas (strip chords c00-c18, canal fronts)",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "RCE monument register 46505",
+   "url": "https://monumentenregister.cultureelerfgoed.nl/monumenten/46505",
+   "licence": "CC0"
+  },
+  {
+   "name": "Wikimedia Commons: Category:Raadhuisstraat 21, Amsterdam",
+   "url": "https://commons.wikimedia.org/wiki/Category:Raadhuisstraat_21,_Amsterdam",
+   "licence": "per file (CC0, PD, CC BY-SA 4.0)"
+  },
+  {
+   "name": "AHN4 DSM 0.5 m sections across the gallery",
+   "url": "https://service.pdok.nl/rws/ahn/wcs/v1_0",
+   "licence": "CC0"
+  }
+ ]
+}
