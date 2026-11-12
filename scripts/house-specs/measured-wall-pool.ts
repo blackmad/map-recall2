@@ -5,7 +5,8 @@
 //     -> <out>/measured-wall-pool.json (the runtime table), <out>/report.json (counts, per-archetype quantiles)
 //     --publish copies the table to src/canalRecall/look/measured-wall-pool.json (then rebuild the bundles and world-v1).
 // Sources: the house-spec extract's photo readings (streetlevel-measured panoramas, Gemeente Amsterdam CC BY 4.0) on the
-// game chain with the photo look; a held reading (the pale-warm guard) and a post-1945 pand do not enter. A pand an installed
+// game chain with the photo look; a held reading (the pale-warm guard), a reading drawn as its family's tone (trim misread)
+// and a post-1945 pand do not enter. A pand an installed
 // model hides enters: its reading is of the real front, and its neighbours are what the pool serves.
 import '../world/useBrowserMath.js';
 import fs from 'node:fs';
@@ -14,6 +15,8 @@ import { EXTRACT, ROOT, gameChain, loadTile, readJson } from '../world/pipeline.
 import { asPolygons } from '../../src/canalRecall/threeBuildingFeatures.ts';
 import { archetypeFor } from '../../src/canalRecall/bayTextures.ts';
 import { rgbToOklab, POOL_ARCHETYPES, type PoolArchetype } from '../../src/canalRecall/look/measuredWallPool.ts';
+import { specWallIsBrick, type HouseSpecView } from '../../src/canalRecall/houseSpec/decorate.ts';
+import { specWallSource } from '../../src/canalRecall/houseSpec/wallColour.ts';
 
 const arg = (k: string) => process.argv.find(a => a.startsWith(`--${k}=`))?.split('=')[1];
 const OUT = path.resolve(arg('out') ?? 'staging/measured-wall-pool');
@@ -24,7 +27,7 @@ for (const x of fs.readdirSync(base)) for (const y of fs.readdirSync(path.join(b
 const covers = readJson(path.join(ROOT, 'public/canal-drive/models/covers.json'));
 const hidden = new Set<string>([...Object.values<any>(covers.models).flatMap(m => m.p ?? []), ...covers.buildingTypes].map(String));
 const points: [number, number, string, number][] = [];
-const skipped = { held: 0, hidden: 0, noDecorated: 0, modern: 0 }; // hidden: counted, not skipped
+const skipped = { held: 0, hidden: 0, noDecorated: 0, modern: 0, familyTone: 0 }; // hidden: counted, not skipped
 for (const tile of tiles.sort()) {
   for (const r of await loadTile(tile, chain)) {
     const view = r.raw.properties.houseSpec as { wallHex?: string } | undefined, p = r.styled.properties as Record<string, any>;
@@ -34,6 +37,10 @@ for (const tile of tiles.sort()) {
     if (p.specRecipe?.heldBrick) { skipped.held++; continue; }
     const wall = p.specRecipe?.wallHex;
     if (typeof wall !== 'string') { skipped.noDecorated++; continue; }
+    // A reading the trim-misread rule replaced by its family's tone (wallColour.ts specWallSource) is a family judgement, not
+    // a measured colour: 16 pands drew the red tone #a35042 alone, and spread to neighbours it drew orange terracotta.
+    const v = view as HouseSpecView;
+    if (!specWallSource(v.wallHex!.toLowerCase(), { family: v.wallFamily ?? null, brick: specWallIsBrick(v, p) }).fromPixel) { skipped.familyTone++; continue; }
     const year = p.constructionYear == null || !Number.isFinite(Number(p.constructionYear)) ? null : Number(p.constructionYear);
     const arch = archetypeFor(String(p.id), year, Number(p.height) || 10) as PoolArchetype | 'modern';
     if (arch === 'modern') { skipped.modern++; continue; }

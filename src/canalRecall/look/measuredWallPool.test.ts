@@ -31,7 +31,7 @@ test('too few measured neighbours: null (the pand keeps its profile or period co
   assert.equal(pool.wallFor(4.861, 52.366, 'modern', 7), null, 'post-1945 is not pooled');
 });
 
-test('the pick comes from the central lightness band of the nearest k, never a painted outlier', () => {
+test('the pick comes from the walls nearest the pool median, never a painted outlier', () => {
   const browns = ['#4b3b32', '#47403a', '#423934', '#5a4436', '#503c30', '#4d4038', '#55453b', '#4a3a31', '#584236', '#46382f'];
   const pool = new MeasuredWallPool({ points: row([...browns, '#f0ece4', '#1c1c1c']) });
   const picks = new Set<string>();

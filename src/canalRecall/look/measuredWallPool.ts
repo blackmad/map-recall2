@@ -12,8 +12,10 @@
  *  - The 1,364 photo readings of the house-spec extract draw (decorate.ts specWallColour) within dL -0.01 of the same
  *    winter frames on average, and the critic named wall colour on 0 of the 13 spec-wall pairs.
  * So an unmeasured pand takes one of its nearest measured neighbours' drawn walls: the same archetype within
- * POOL.radiusM (else any pre-1945 archetype), the POOL.k nearest, the central band of their OKLab lightness (a painted
- * white or black front among brown brick is not copied onto its unmeasured neighbours), picked by the pand's id hash.
+ * POOL.radiusM (else any pre-1945 archetype), the POOL.k nearest, then the POOL.central of those nearest the pool's median
+ * colour (per OKLab axis; a painted white or black front, or an orange outlier, among brown brick is not copied onto its
+ * unmeasured neighbours), picked by the pand's id hash. The median-nearest pick was chosen over a 35-65 % lightness band
+ * on the house:frames pairs: the band drew orange-red outliers (#783721, #803e27) beside low-chroma brown photos.
  * Fewer than POOL.minN neighbours: null, and the pand keeps its profile/period colour.
  *
  * The table (`measured-wall-pool.json`) is written by scripts/house-specs/measured-wall-pool.ts --publish.
@@ -31,8 +33,8 @@ export const POOL = {
   k: 12,
   /** At least this many candidates, or no pool. */
   minN: 6,
-  /** The central band of the pool's OKLab lightness the pick comes from (quantiles). */
-  band: [0.35, 0.65] as const,
+  /** The pick comes from this many pool walls nearest the pool's median colour (per OKLab axis). */
+  central: 3,
 } as const;
 
 export const rgbToOklab = (hex: string) => hexToOklab(hex);
@@ -52,7 +54,7 @@ export function wallPoolOn(): boolean {
 /** Tests only: forget the cached flag. */
 export const resetWallPoolFlag = () => { cached = undefined; };
 
-type Point = { x: number; y: number; hex: string; arch: number; L: number };
+type Point = { x: number; y: number; hex: string; arch: number };
 type Table = { points: readonly (readonly [number, number, string, number])[] };
 const M_PER_DEG_LAT = 111_320;
 const CELL_M = 300;
@@ -64,7 +66,7 @@ export class MeasuredWallPool {
   constructor(table: Table, lat0 = 52.37) {
     this.kx = M_PER_DEG_LAT * Math.cos((lat0 * Math.PI) / 180);
     for (const [lngE5, latE5, hex, arch] of table.points) {
-      const p: Point = { x: (lngE5 / 1e5) * this.kx, y: (latE5 / 1e5) * M_PER_DEG_LAT, hex, arch, L: hexToOklab(hex)[0] };
+      const p: Point = { x: (lngE5 / 1e5) * this.kx, y: (latE5 / 1e5) * M_PER_DEG_LAT, hex, arch };
       const key = `${Math.floor(p.x / CELL_M)},${Math.floor(p.y / CELL_M)}`;
       const c = this.cells.get(key);
       if (c) c.push(p); else this.cells.set(key, [p]);
@@ -90,10 +92,11 @@ export class MeasuredWallPool {
     const same = all.filter(p => p.arch === arch);
     const cands = (same.length >= POOL.minN ? same : all).slice(0, POOL.k);
     if (cands.length < POOL.minN) return null;
-    const byL = [...cands].sort((a, b) => a.L - b.L || a.hex.localeCompare(b.hex));
-    const lo = Math.floor(byL.length * POOL.band[0]), hi = Math.max(lo + 1, Math.ceil(byL.length * POOL.band[1]));
-    const band = byL.slice(lo, hi);
-    return band[(seed >>> 0) % band.length].hex;
+    const labs = cands.map(p => ({ hex: p.hex, v: hexToOklab(p.hex) }));
+    const med = [0, 1, 2].map(i => labs.map(x => x.v[i]).sort((a, b) => a - b)[Math.floor(labs.length / 2)]);
+    const dist = (v: number[]) => Math.hypot(v[0] - med[0], v[1] - med[1], v[2] - med[2]);
+    const central = [...labs].sort((a, b) => dist(a.v) - dist(b.v) || a.hex.localeCompare(b.hex)).slice(0, POOL.central);
+    return central[(seed >>> 0) % central.length].hex;
   }
 }
 
