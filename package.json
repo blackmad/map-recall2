@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "test:canal-elevation": "node --import tsx --test src/canalRecall/elevation/elevation.test.ts",
-    "test:house-spec": "node --import tsx --test src/canalRecall/houseSpec/spec.test.ts src/canalRecall/houseSpec/wallColour.test.ts src/canalRecall/houseSpec/wallRefit.test.ts src/canalRecall/houseSpec/holds.test.ts scripts/house-frames/pose.test.ts src/canalRecall/houseSpec/adapters.test.ts src/canalRecall/houseSpec/decorate.test.ts src/canalRecall/houseSpec/extractStamp.test.ts src/canalRecall/houseSpec/previewVerdict.test.ts src/canalRecall/houseSpec/softRaster.test.ts scripts/house-preview/help.test.ts scripts/house-preview/nodeDom.test.ts scripts/house-preview/wallSelect.test.ts scripts/house-crops/flags.test.ts src/canalRecall/houseSpec/writers/writers.test.ts scripts/house-specs/describe.test.ts src/canalRecall/houseSpec/handSet.test.ts src/canalRecall/axisUnits.test.ts",
+    "test:house-spec": "node --import tsx --test src/canalRecall/houseSpec/spec.test.ts src/canalRecall/houseSpec/wallColour.test.ts src/canalRecall/houseSpec/wallRefit.test.ts src/canalRecall/houseSpec/holds.test.ts src/canalRecall/houseSpec/critic/critic.test.ts scripts/house-frames/pose.test.ts src/canalRecall/houseSpec/adapters.test.ts src/canalRecall/houseSpec/decorate.test.ts src/canalRecall/houseSpec/extractStamp.test.ts src/canalRecall/houseSpec/previewVerdict.test.ts src/canalRecall/houseSpec/softRaster.test.ts scripts/house-preview/help.test.ts scripts/house-preview/nodeDom.test.ts scripts/house-preview/wallSelect.test.ts scripts/house-crops/flags.test.ts src/canalRecall/houseSpec/writers/writers.test.ts scripts/house-specs/describe.test.ts src/canalRecall/houseSpec/handSet.test.ts src/canalRecall/axisUnits.test.ts",
     "glb:views": "node --import tsx scripts/glb-raster/views.ts",
     "glb:agreement": "node --import tsx scripts/glb-raster/agreement.ts",
     "test:glb-raster": "node --import tsx --test src/canalRecall/glbRaster/glbRaster.test.ts scripts/glb-raster/help.test.ts",
@@ -233,7 +233,7 @@
     "test:look": "node --import tsx --test src/canalRecall/look/*.test.ts src/canalRecall/rendererShared/*.test.ts",
     "check:bridge-gaps": "tsx scripts/roads/check-bridge-gaps.ts",
     "check:rail-street": "tsx scripts/own-ground/check-rail-street.ts",
-    "test:trees": "node --import tsx scripts/check-palm-tree-allocation.mjs && node --import tsx scripts/check-tree-crown-orientation.mjs",
+    "test:trees": "node --import tsx --test src/canalRecall/trees/treeShape.test.ts && node --import tsx scripts/check-palm-tree-allocation.mjs && node --import tsx scripts/check-tree-crown-orientation.mjs",
     "check:free-ride": "S2_GATE=1 S5_GATE=1 npx playwright test tests/e2e/free-ride-water-taps.spec.ts tests/e2e/free-ride-pin-snap.spec.ts --project=desktop --project=iphone --workers=1 --reporter=line",
     "check:canal": "npm run -s check:canal:core && npm run -s check:canal:rail && npm run -s check:canal:rest",
     "check:canal:core": "tsx scripts/check-canal.ts",
@@ -623,7 +623,9 @@
     "build:devlog-page": "esbuild src/canalRecall/devlog/page.ts --bundle --format=iife --outfile=public/canal-drive/js/devlog.bundle.js --minify",
     "check:devlog": "node --import tsx scripts/build-devlog.ts --check && node --import tsx --test src/canalRecall/devlog/devlog.test.ts",
     "test:browser-queue": "bash scripts/browser-queue/test.sh",
-    "install:browser-queue": "bash scripts/browser-queue/install.sh"
+    "install:browser-queue": "bash scripts/browser-queue/install.sh",
+    "house:critic": "node --import tsx scripts/house-line/critic.ts",
+    "house:kit-gaps": "node --import tsx scripts/house-line/kit-gaps.ts"
   },
   "dependencies": {
     "@google/genai": "^2.4.0",

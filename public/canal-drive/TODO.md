@@ -15,6 +15,17 @@ here. Their design notes stay in `BUILDING_*.md`, `FACADE_*.md`, `LOD.md`, and
 
 ---
 
+## Facade programme (P0, user-directed 2026-11-12) — plan `docs/plans/facade-programme-20261112.md`, public view `whats-new.html#plan`
+
+- **Wall colour (next lane, top of the F4 gap queue: 87 of 193 pairs).** The period palette draws orange terracotta and slate grey where photos show dark brown brick; spec walls draw ~0.10 L darker than the photo band; three brick fronts draw as pale render; brickLift v2 is not the fix (5 of 11 closer). Score on the F4 benchmark (`house:critic`) with `house:frames --before` diffs.
+- **F1 shader facades (#380):** design 346e6e21a; build S1–S4a on lane/facade-f1-build-20261112 (Dam chase GPU 130 → 59 MB, flag off byte-identical); S4b runtime chunks and S5–S10 in progress.
+- **F3 measurement (#381):** good-crop share 31–36 % on a 200-pand Centrum sample (not 45 %); the thumbnail gate does not work, the gate runs on the cut crop; bands/surrounds/gable detectors do not pass. Centrum run under way buurt by buurt with a 25 GB disk floor.
+- **F4 benchmark (#379):** round 0 done (fooled-rate 0 of 193). Round 1 with the shop-group mask lowered and 17 otherBuilding poses re-picked.
+- **J4 (#382):** blocked on ANTHROPIC_API_KEY (needs-david #383).
+- **Recipe front roof:** rebasing onto main's gate (6b8b78492); then the 124 staged belt specs with `source: front` change render on publish.
+- **Staged belt batches waiting on the wall-colour question:** GG-West 45 (80d2c8d8a), Haarlemmerdijk 23 (720ed521c), Nieuwmarkt 46 (85b9e3712, re-read dark brown), Burgwallen-OZ 66 (f4072b80e; hold Kloveniersburgwal 16), Jordaan 24 (b1f6914b5), Frederik Hendrik 26 (1a2575147). All need `--allow-extra 0363100012116526`.
+- **Ground:** G1 −18.7 % shard (49243cd85) and G3 crossings register (326f224df) to merge; G2a round 2 (bytes to budget, Radarweg via G3).
+
 ## Own-look buurten in the canal belt (P0, user 2026-11-10)
 
 The user: "we need to focus on buurts in the canal belt and just outside". Belt and inner-ring lanes run in parallel, and Opus reviews every sheet before merge.

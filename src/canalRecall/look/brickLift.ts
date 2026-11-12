@@ -1,5 +1,5 @@
 /**
- * `brickLift=v2`: the dark-brick lift (lane #373, 2026-11-12; docs/house-line.md §9). ON BY DEFAULT since 2026-11-12 (the user:
+ * `brickLift=v2`: the dark-brick lift (lane #373, 2026-11-12; docs/house-line.md §9). off by default (it was on briefly on 2026-11-12; the user:
  * "go for correctness, we can lighten it later"); `?brickLift=v1` (BRICK_LIFT=v1 in Node) is the escape hatch and draws the old
  * lift byte-for-byte: every function the runtime calls returns the v1 value when the flag says v1.
  *
@@ -37,7 +37,10 @@ export const BRICK_LIFT_V2 = {
 /** `PERIOD_WALLS.photo.c19` under v2: the red-brown brick entries drawn at the measured quantiles; buff, cream and stucco entries unchanged. */
 export const C19_WALLS_V2: readonly string[] = ['#564543', '#564543', '#654a34', '#594940', '#594b40', '#d3b184', '#e2d5ba', '#e2d5ba', '#d9c5a4', '#764e2e'];
 
-export const BRICK_LIFT_DEFAULT_ON = true;
+// OFF by default again (integrator, 2026-11-12): the wall-colour-truth frames (lane/wall-colour-truth-20261112,
+// screenshots ui/2026-11-12-wall-colour-truth/) show v2 closer to the photo on only 5 of 11 walls (mean dE 0.124 -> 0.118),
+// turning brown brick near-black grey (159937) or redder (160049). `?brickLift=v2` keeps it reachable for the next lane.
+export const BRICK_LIFT_DEFAULT_ON = false;
 export function brickLiftEnabled(search?: string | null, env?: string | null): boolean {
   const q = search ? /[?&]brickLift=(\w+)/.exec(search)?.[1] : undefined, v = q ?? env;
   return v === 'v1' ? false : v === 'v2' ? true : BRICK_LIFT_DEFAULT_ON;
