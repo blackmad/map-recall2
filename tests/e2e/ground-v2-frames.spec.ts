@@ -1,5 +1,5 @@
 import { test, type Page } from '@playwright/test';
-import { mkdirSync, writeFileSync } from 'node:fs';
+import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { settleWorld, useBundlesDir } from './helpers';
 import { GROUND_V2_PLACES } from '../../src/canalRecall/ownGround/groundV2Places';
 
@@ -10,9 +10,16 @@ import { GROUND_V2_PLACES } from '../../src/canalRecall/ownGround/groundV2Places
 // outcome: 'v2:<baked tris>/<dropped>' or 'fallback:<why>'). Opt-in:
 //   GROUND_V2_FRAMES=1 [GROUND_V2_BEFORE=1] [BUNDLES_DIR=dir] GROUND_V2_SHOTS_OUT=dir PW_PORT=4470 \
 //     bash /tmp/canal-pw.sh npx playwright test tests/e2e/ground-v2-frames.spec.ts --project=desktop --workers=1
+// GROUND_V2_STRIPS=<audit --places --json file>: each place's thin strip slivers (stripAt: x, y, layer, height mm)
+// projected in the ride frame, their on-screen width in px (the larger of the height laid east and north), so the
+// hand-back can say whether a remaining strip can be seen at ride height.
 test.skip(!process.env.GROUND_V2_FRAMES, 'set GROUND_V2_FRAMES=1');
 
 const BEFORE = process.env.GROUND_V2_BEFORE === '1';
+// groundStore.ts fromLocal, copied: importing groundStore pulls the crossing register's JSON, which Playwright's loader refuses.
+const KX = 111_320 * Math.cos(52.37 * Math.PI / 180), KY = 110_540;
+const fromLocal = (x: number, y: number): [number, number] => [4.9 + x / KX, 52.37 + y / KY];
+const STRIPS: { id: string; stripAt?: [number, number, string, number][] }[] = process.env.GROUND_V2_STRIPS ? JSON.parse(readFileSync(process.env.GROUND_V2_STRIPS, 'utf8')) : [];
 const OUT = process.env.GROUND_V2_SHOTS_OUT || `artifacts/ground-v2/frames/${BEFORE ? 'before' : 'after'}`;
 
 /** Why the ground has not settled: its pending cells (key → state), the install queue, the resident count. */
@@ -57,6 +64,15 @@ test('ground v2: frames at the named places', async ({ page }, info) => {
     await page.waitForTimeout(1500);
     await page.screenshot({ path: `${OUT}/${info.project.name}-${p.id}-ride.png` });
     outcome[p.id] = await page.evaluate((at) => { const g = (window as any).canalRecallGame.vectorMap._ownGround; const key = g.cellKeyAt(at); const s = key ? g.cellStats(key) : null; return { key, lod: s?.lod ?? null, detail: s?.detail ?? null, groundV2: s?.groundV2 ?? null }; }, p.at);
+    const strips = STRIPS.find(q => q.id === p.id)?.stripAt ?? [];
+    if (strips.length) {
+      const probes = strips.map(([x, y, layer, hMm]) => ({ layer, hMm, at: fromLocal(x, y), east: fromLocal(x + hMm / 1000, y), north: fromLocal(x, y + hMm / 1000) }));
+      (outcome[p.id] as Record<string, unknown>).strips = await page.evaluate((qs) => {
+        const vm = (window as any).canalRecallGame.vectorMap, cam = vm.camera, W = innerWidth, H = innerHeight;
+        const px = (a: [number, number]) => { const q = cam.project(a); return [q.x, q.y]; };
+        return qs.map(q => { const a = px(q.at), e = px(q.east), n = px(q.north); const on = a[0] >= 0 && a[0] <= W && a[1] >= 0 && a[1] <= H; return { layer: q.layer, hMm: q.hMm, onScreen: on, widthPx: +Math.max(Math.hypot(e[0] - a[0], e[1] - a[1]), Math.hypot(n[0] - a[0], n[1] - a[1])).toFixed(2) }; });
+      }, probes);
+    }
   }
   for (const p of GROUND_V2_PLACES) {
     if (only && !only.includes(p.id)) continue;

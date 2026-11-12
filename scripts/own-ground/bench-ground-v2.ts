@@ -10,6 +10,9 @@ import { join } from 'node:path';
 import { MeshoptDecoder } from 'meshoptimizer';
 import { decodeGrd2, grd2TileMeshes, tileMeshBytes } from '../../src/canalRecall/ownGround/groundV2Format.ts';
 import { buildPoseIndex, poseHeight, poseIndexBytes } from '../../src/canalRecall/ownGround/groundV2Pose.ts';
+const HELP = `npx tsx scripts/own-ground/bench-ground-v2.ts [--dir=artifacts/ground-v2/staging] [--cells=a,b] [--lod=0]
+Per cell: gunzip, decode, tile meshes, pose index build and query, poseMB, gpuMB (tiled), gpuFlatMB; then p50 / p95.`;
+if (process.argv.includes('--help')) { console.log(HELP); process.exit(0); }
 const args = process.argv.slice(2), opt = (n: string) => args.find(a => a.startsWith(`--${n}=`))?.slice(n.length + 3);
 const dir = opt('dir') ?? 'artifacts/ground-v2/staging', lod = Number(opt('lod') ?? 0), suffix = `.lod${lod}.bin.gz`;
 const keys = opt('cells')?.split(',') ?? readdirSync(dir).filter(f => f.endsWith(suffix)).map(f => f.slice(0, -suffix.length)).sort();

@@ -1,4 +1,6 @@
 // Ground v2 typed check (lane G2a #372): the pinned seam pair, the frame header, and bake determinism.
+import { CROSSINGS } from '../../src/canalRecall/ownGround/crossings.ts';
+import { cappedRelief, floorCapsNear } from '../../src/canalRecall/ownGround/groundV2Caps.ts';
 import '../world/useBrowserMath.js'; // first: the browser's Math.cos/sin, as the bake and the runtime use
 import { existsSync, readFileSync } from 'node:fs';
 import { gunzipSync } from 'node:zlib';
@@ -70,7 +72,7 @@ for (const { a: A, b: B, why } of PAIRS) {
 }
 for (const k of KEYS) {
   const input = await store.cellInput(k, 0);
-  const a = auditCell({ cell: cells.get(k)!, relief: input.surface.relief, water: waterTest(input.waterAround.flatMap(g => g.polygons), false), levelZ: V2_LEVEL_Z, step: 1 });
+  const a = auditCell({ cell: cells.get(k)!, relief: cappedRelief(input.surface.relief, floorCapsNear(CROSSINGS, input.project, input.surface.datumNAP, input.rect, 2)), water: waterTest(input.waterAround.flatMap(g => g.polygons), false), levelZ: V2_LEVEL_Z, step: 1 });
   console.log(`${k}: tri ${a.triangles}, crack ${a.crackM2} m², overlap ${a.overlapM2} m² (z-fight ${a.zFightM2}, poke ${a.pokeM2}), float p99.9 ${a.floatP999Mm} mm`);
   if (a.crackM2) fails.push(`${k}: ${a.crackM2} m² cracks at ${JSON.stringify(a.crackAt.slice(0, 3))}`);
   if (a.overlapM2) fails.push(`${k}: ${a.overlapM2} m² overlap`);
