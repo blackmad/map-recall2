@@ -2102,7 +2102,7 @@ itself should stay on a Chromium or in-game frame until the measureFacade knife 
 
 ### Belt batch 2: Haarlemmerdijk shop-houses the reviewers held (#356)
 
-`scripts/house-specs/belt/haarlemmer-b2.ts` writes the specs. Base = `fromBlockFace` of auto-placed runs (`scripts/block-face/faces/*-b2r<k>/`), made by
+`scripts/house-specs/belt/haarlemmer-b2.ts` writes the specs. Base = `fromBlockFace` of auto-placed runs (`scripts/house-specs/belt/b2-runs/*-b2r<k>/intent.json`: copied out of `scripts/block-face/faces/`, because build-house-specs turns every face dir into spec records), made by
 `auto-place.ts --buurt=haarlemmerbuurt-west-b2 --district=haarlemmerbuurt --only=<faces> --no-compile --photo-decides` on a copy of the west review files whose
 `-review-holds.json` keeps only the hard holds (infill, scaffolds, strip seams, shadow; copies are not committed, `haarlemmerbuurt-west-b2-placement.json` is).
 Auto-placement is a type match, not a likeness: of 34 pands that placed, 20 were held after reading the `house:preview --recipe --photo` compare sheets (ornate,

@@ -1,5 +1,5 @@
 // Haarlemmerbuurt belt lane (#356), batch 2: HouseSpecs for the shop-houses the lane's reviewers held on Haarlemmerdijk.
-// Base = fromBlockFace of the auto-placed b2 runs (scripts/block-face/faces/*-b2r<k>/intent.json, written by
+// Base = fromBlockFace of the auto-placed b2 runs (scripts/house-specs/belt/b2-runs/<face>-b2r<k>/intent.json, copied out of scripts/block-face/faces because build-house-specs scans every face dir, written by
 // auto-place.ts --buurt=haarlemmerbuurt-west-b2 with the review holds reduced to the hard ones: infill, scaffolds, strip seams,
 // shadow). Where a reviewer held a pand for a reason the kit cannot draw, the reason travels as a schema limit.
 // Writes scripts/house-specs/specs/<pandId>.json. Run: node --import tsx scripts/house-specs/belt/haarlemmer-b2.ts [--help]
@@ -10,7 +10,7 @@ import { setSpecField, specProblems, type SpecLimit } from '../../../src/canalRe
 import { EAVES_PINS, roofBehindCrown } from './haarlemmer.ts';
 
 const NINE = new Set(['0363100012167818', '0363100012167817', '0363100012167816', '0363100012176172', '0363100012176174', '0363100012171144', '0363100012171145', '0363100012173479', '0363100012173480']);
-const PLACEMENT = 'scripts/block-face/buurten/haarlemmerbuurt-west-b2-placement.json';
+const PLACEMENT = 'scripts/house-specs/belt/b2-runs/placement.json';
 const REVIEW = 'scripts/block-face/buurten/haarlemmerbuurt-west-review-holds.json';
 /** house:preview --recipe --photo failed the wall (dL or hue: "miss") on these with the type/auto-place brick (e.g. 182 drew #b6bfc6 blue-grey against a #50473b photo); the pand's own
  *  raw strip wall reading (auto-place.json strip.wallRaw) replaces it, the way the nine of batch 1 took their winter walls. Measured, not tuned. */
@@ -117,7 +117,7 @@ export function batch2Pands(): { pandId: string; face: string }[] {
 }
 
 export function build(pandId: string, faceId: string) {
-  const face = JSON.parse(readFileSync(`scripts/block-face/faces/${faceId}/intent.json`, 'utf8'));
+  const face = JSON.parse(readFileSync(`scripts/house-specs/belt/b2-runs/${faceId}/intent.json`, 'utf8'));
   const spec = fromBlockFace(face, pandId)!;
   if (WALL_FROM_STRIP.has(pandId)) {
     const parent = faceId.replace(/-b2r\d+$/, '');
@@ -152,7 +152,7 @@ Pands = the runs of ${PLACEMENT} (minus the nine of batch 1); base = fromBlockFa
 if (process.argv.includes('--help')) { console.log(HELP); process.exit(0); }
 if (import.meta.url === `file://${process.argv[1]}`) {
   for (const { pandId, face } of batch2Pands()) {
-    if (!existsSync(`scripts/block-face/faces/${face}/intent.json`)) { console.error(pandId, 'missing', face); process.exitCode = 1; continue; }
+    if (!existsSync(`scripts/house-specs/belt/b2-runs/${face}/intent.json`)) { console.error(pandId, 'missing', face); process.exitCode = 1; continue; }
     const spec = withRoute(build(pandId, face));
     if (process.argv.includes('--list')) { console.log(pandId, spec.address, face); continue; }
     const problems = specProblems(spec);
