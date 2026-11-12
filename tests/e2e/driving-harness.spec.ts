@@ -151,7 +151,13 @@ function installHarness(): void {
     let wedges = 0;
     const player = game.player;
     player.handleInput = () => {};
-    (player as unknown as { _streetButtons: unknown })._streetButtons = null;
+    // handleInput clears the touch schemes' levers every frame; stubbed, whatever the last real frame left stays.
+    // A hosted runner draws ~1 frame/s, so the iPhone page's last frame could still be street following (the
+    // default before openRoute's patch lands): its heading target overrode the autopilot for every drive.
+    Object.assign(player, {
+      controlMode: 'relative', _streetButtons: null, _streetCommand: null, _headingTarget: null, _cruiseFraction: null,
+      _stickBraking: false, _stickHardSteer: false, _pivot: 0, _turnAroundArmed: false,
+    });
     // Recall questions stop the vehicle dead by design; this harness is about
     // whether the network can be driven, so they are silenced for the run.
     game._updateCanalQuiz = () => {};
