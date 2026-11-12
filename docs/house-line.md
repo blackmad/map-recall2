@@ -1785,7 +1785,28 @@ npm run house:frames -- --face nassau-145-152 --season winter --label after
 npm run house:frames -- --list scripts/house-frames/validation.json --out artifacts/house-frames/validation
 npm run house:frames -- --buurt AB07 --max 60 --prep-only        # pick, pose and cut only (no browser)
 npm run house:frames -- --list my.json --out <dir> --post-only    # redo checks, pairs and sheets
+npm run house:frames -- --lists a.json:<outA>,b.json:<outB>       # several lists, one browser session (below)
+npm run house:frames -- --list my.json --out <dir> --reuse-photos --query '?world=live'  # after-run: game frames only
 ```
+
+Run it unwrapped with your `PW_PORT`: the tool takes its own `/tmp/canal-pw.sh` slot for the browser part only
+(docs/browser-queue.md).
+
+**Batched runs (`--lists`, lane Q1 #378).** One browser session (one queue slot, one Playwright start, one dev-server
+boot) for several lanes' lists: each list is picked, posed and cut into its own out dir, every pose goes into one job
+(`<first out>/batch-job.json`, list after list), the page re-opens at each list (carried-over page state moved water
+shadows and a POI label on 3-8 % of the pixels when it did not), and each out dir gets the same `photo.jpg`,
+`game.png`, `pose.json`, `pair.jpg`, sheets and `summary.json` a separate `--list` run writes. Measured on two
+lists (Nieuwmarkt 4 pands + Bloemgracht 3) against two separate runs: see the Q1 hand-back on #378. **F4's critic
+uses `--lists` from day one**, and so should the integrator's before/after frames for a round of builder lanes: one
+batch per label, not one run per lane.
+
+**`--reuse-photos`.** Every run caches its pick, pose and photo cut (`HOUSE_FRAMES_CACHE`, default the main checkout's
+`.cache/house-frames`: `prep/<entry hash>.json`, `photos/<pose hash>.jpg`). The keys include the entry, `--bearing`,
+`--year`, `--season`, `--pano-size` and a hash of `frames.ts`, `pose.ts`, `photo.ts` and `pand-reference/select.ts`.
+With the flag, a cached entry skips the panorama listing, the glare/foliage pre-pass and the cut; only the game frame
+is rendered (the route line is recomputed, it depends on `--query`). Use it for the after-run of a before/after pair
+and for critic re-runs. A run without the flag recomputes everything and refreshes the cache.
 
 Output per pand (or per `key` of a `--list` entry): `<out>/<key>/{photo.jpg, game.png, pair.jpg, pose.json}`; per six pairs
 `<out>/contact-N.jpg` (left: the panorama cut, right: the game, cyan: the BAG wall outline, a three-line caption); and
