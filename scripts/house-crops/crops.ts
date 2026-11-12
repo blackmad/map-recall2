@@ -13,6 +13,7 @@ import { lensFor } from '../da-costa-block/neighbourhood-core.ts';
 import { AMSTERDAM_WORLD_ALIGNED, rectifyFacade } from '../../src/canalRecall/facade/rectify.ts';
 import { medianFuse, planStrip, type FrontSpan, type PanoRecord } from '../../src/canalRecall/blockFace/strip.ts';
 import { lngLatToRd } from '../../src/canalRecall/facade/rdNew.ts';
+import { bearingOf, secondBearings, isLeafOff } from './f3/bearings.ts';
 import { loadBuurt, pandsInBuurt, centroid, type Buurt } from './buurt.ts';
 import { RULES_VERSION, manifestPath, type Entry, type Manifest, type Session } from './manifest.ts';
 import { measureCrop } from './measure.ts';
@@ -21,7 +22,7 @@ import { DISK_FLOOR_BYTES, diskGate, THRESHOLDS, usability, penalty, rayBlocked,
 export const HELP = `house:crops - rectified, quality-flagged facade crops for one buurt (house line station 4a)
 
   npm run house:crops -- --buurt <code|cbs|name> [--pand <id>] [--resume] [--dry-run] [--rate-ms 500]
-                         [--archive <dir>] [--limit <n>] [--years <n>] [--all-years] [--offline] [--keep-panoramas] [--restart] [--report] [--prefer-bearing <deg>] [--help]
+                         [--archive <dir>] [--limit <n>] [--years <n>] [--all-years] [--offline] [--keep-panoramas] [--bearings] [--restart] [--report] [--prefer-bearing <deg>] [--help]
 
   --buurt <key>     CBS buurt: 4-letter code (AB07), CBS code (BU0363AB07) or name (Bloemgrachtbuurt). Required.
   --pand <id,id>   process only these pands (16-digit BAG ids, with or without NL.IMBAG.Pand.); they must lie in the buurt.
@@ -37,6 +38,7 @@ export const HELP = `house:crops - rectified, quality-flagged facade crops for o
                     the first crop that passes every check wins; otherwise the best-scoring one is kept. --years 1 is the single-year baseline.
   --all-years       judge-picker mode: try every year, archive each crop as <pand>/years/<year>.jpg (pick.ts then judges and chooses).
   --keep-panoramas  keep the source panoramas in the cache; by default a finished run purges the panoramas it touched (the crops and their panorama ids are archived).
+  --bearings        F3 (#381): also try, per mission year, a second panorama seen from another side of the wall normal (>= 10 deg apart, clear ray, leaf-off first); with --all-years they are archived as years/<year>-b.jpg. The default pick ignores them.
   --offline         a panorama or list that is not in the cache is skipped, never downloaded (re-rectification costs no requests).
   --limit <n>       stop after n pands (smoke runs); the manifest stays resumable.
   --report          print the coverage table and write the contact sheet (artifacts/house-crops/<code>-sheet.png), no crops.
@@ -92,8 +94,8 @@ type Made = { jpeg: Buffer; width: number; height: number; ppm: number; flags: C
 const r3 = (v: number) => round(v, 3);
 /** All flags of one crop from its decoded pixels plus the pick's geometry. */
 function flagsFor(rgba: Uint8ClampedArray | Uint8Array, alpha: Uint8Array, width: number, height: number, pick: { distM: number; obliquityDeg: number }, o: { blocked: boolean; wallWidthM: number; strip: boolean }): CropFlags {
-  const m = measureCrop(rgba, alpha, width, height);
-  return { foliage: r3(m.foliage), foliagePlain: r3(m.foliagePlain), wbApplied: m.wbApplied, washedOut: r3(m.washedOut), missing: r3(m.missing), voidShare: r3(m.voidShare), occluderShare: r3(m.occluderShare),
+  const m = measureCrop(rgba, alpha, width, height, o.strip ? 40 : 50);
+  return { foliage: r3(m.foliage), foliagePlain: r3(m.foliagePlain), wbApplied: m.wbApplied, washedOut: r3(m.washedOut), missing: r3(m.missing), voidShare: r3(m.voidShare), occluderShare: r3(m.occluderShare), maskedShare: r3(m.maskedShare), trunkShare: r3(m.trunkShare), vehicleShare: r3(m.vehicleShare),
     obliquity: round(pick.obliquityDeg, 1), cameraDistance: round(pick.distM, 1), rayBlocked: o.blocked, wallWidthM: round(o.wallWidthM, 2), heightCover: r3(m.heightCover), edgeDensity: r3(m.edgeDensity), seamStep: round(m.seamStep, 1), strip: o.strip };
 }
 
@@ -154,10 +156,10 @@ export function yearCandidates(ranked: PanoPick[], tier: (c: PanoPick) => number
 }
 
 /** allYears (H4c --all-years): keep going after a usable crop and archive every year's crop as years/<year>.jpg for the judge picker; offline: a year whose panorama is not in the cache is skipped, not fetched. */
-export const options = { maxYears: 6, allYears: false, offline: false };
-type Tried = { year: number; panoId: string; date: string; usable: boolean; reasons: string[]; method: 'wall' | 'strip'; obliquity: number; foliage: number; flags?: CropFlags; file?: string };
+export const options = { maxYears: 6, allYears: false, offline: false, bearings: false };
+type Tried = { second?: boolean; bearingDeg?: number; leafOff?: boolean; year: number; panoId: string; date: string; usable: boolean; reasons: string[]; method: 'wall' | 'strip'; obliquity: number; foliage: number; flags?: CropFlags; file?: string };
 
-async function processPand(fp: Footprint, wall: Wall, face: WallRef[], archiveRoot: string): Promise<Entry> {
+export async function processPand(fp: Footprint, wall: Wall, face: WallRef[], archiveRoot: string): Promise<Entry> {
   const panos = await panosNear(wall.mid);
   const others = (await neighbourhood(centroid(fp.ring))).filter(o => o.id !== fp.id).map(o => o.ring);
   const camRd = (rec: any) => lngLatToRd([rec.geometry.coordinates[0], rec.geometry.coordinates[1]]);
@@ -171,8 +173,13 @@ async function processPand(fp: Footprint, wall: Wall, face: WallRef[], archiveRo
   const tried: Tried[] = [];
   const better = (a: Made, b: Made) => { const ra = usability(a.flags).reasons.length, rb = usability(b.flags).reasons.length; return ra < rb || (ra === rb && penalty(a.flags) < penalty(b.flags)); };
   // Try the years in preference order and stop at the first crop that passes every check: extra panoramas are fetched only for fronts that need them.
-  for (const pick of years) {
+  // F3: with --bearings every year's representative is followed by the best other panorama of that year seen from another side of the wall normal (after all defaults, so the default order is unchanged).
+  const seconds = options.bearings ? secondBearings(ranked, years, c => bearingOf(c, wall), tier) : [];
+  const secondIds = new Set(seconds.map(c => c.panoId));
+  for (const pick of [...years, ...seconds]) {
+    const isSecond = secondIds.has(pick.panoId) && !years.includes(pick);
     const strip = needsStrip(wall, pick);
+    if (isSecond && strip) continue; // the strip route fuses the year's panoramas whatever the pick: a second bearing would repeat the crop
     const yearPanos = panos.filter(p => Number(p.mission_year ?? String(p.timestamp).slice(0, 4)) === pick.missionYear);
     let made: Made | 'no-pano' | null;
     try {
@@ -182,15 +189,15 @@ async function processPand(fp: Footprint, wall: Wall, face: WallRef[], archiveRo
     attempts++;
     if (!made) continue;
     const u = usability(made.flags);
-    const t: Tried = { year: pick.missionYear, panoId: made.picks[0].panoId, date: made.picks[0].timestamp.slice(0, 10), usable: u.usable, reasons: u.reasons, method: made.method, obliquity: made.flags.obliquity, foliage: made.flags.foliage };
+    const t: Tried = { year: pick.missionYear, panoId: made.picks[0].panoId, date: made.picks[0].timestamp.slice(0, 10), usable: u.usable, reasons: u.reasons, method: made.method, obliquity: made.flags.obliquity, foliage: made.flags.foliage, ...(options.bearings ? { second: isSecond, bearingDeg: +bearingOf(pick, wall).toFixed(1), leafOff: isLeafOff(pick.timestamp) } : {}) };
     if (options.allYears) {
       const yd = path.join(archiveRoot, 'pand-crops', idOf(fp.id), 'years'); await fs.mkdir(yd, { recursive: true });
-      t.file = `years/${pick.missionYear}.jpg`; t.flags = made.flags; await fs.writeFile(path.join(yd, `${pick.missionYear}.jpg`), made.jpeg);
+      const fname = `${pick.missionYear}${isSecond ? '-b' : ''}.jpg`; t.file = `years/${fname}`; t.flags = made.flags; await fs.writeFile(path.join(yd, fname), made.jpeg);
       (t as any).panoIds = made.picks.map(p => p.panoId);
     }
     tried.push(t);
-    if (!best || better(made, best)) { best = made; bestYear = pick.missionYear; }
-    if (u.usable && !options.allYears) break;
+    if (!isSecond && (!best || better(made, best))) { best = made; bestYear = pick.missionYear; }
+    if (u.usable && !options.allYears && !isSecond) break;
   }
   if (!best) return { status: 'error', note: 'no panorama could be decoded or rectified', attempts, yearsTried: attempts };
   const u = usability(best.flags), id = idOf(fp.id), rel = `pand-crops/${id}`, dir = path.join(archiveRoot, rel);
@@ -221,7 +228,7 @@ async function main() {
   if (has('report')) { const { report } = await import('./report.ts'); await report(buurt.code, arg('archive') ?? process.env.HOUSE_CROPS_ARCHIVE); return; }
   options.maxYears = Number(arg('years') ?? options.maxYears);
   if (arg('prefer-bearing') !== undefined) selectOptions.preferBearingDeg = Number(arg('prefer-bearing'));
-  options.allYears = has('all-years'); options.offline = has('offline'); http.offline = options.offline;
+  options.allYears = has('all-years'); options.bearings = has('bearings'); options.offline = has('offline'); http.offline = options.offline;
   const archiveRoot = arg('archive') ?? process.env.HOUSE_CROPS_ARCHIVE;
   if (has('rejudge')) {
     const m = await readManifest(buurt.code); if (!m) throw new Error('no manifest');

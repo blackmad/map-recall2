@@ -2,6 +2,7 @@
 import { balancedLeaf, measureWhiteBalance } from '../../src/canalRecall/blockFace/stripWhiteBalance.ts';
 import { isLeaf } from '../../src/canalRecall/buildingRecipe/measureFacade.ts';
 import { voidShare, occluderShare } from './flags.ts';
+import { occlusionMask } from './f3/occlusion.ts';
 
 export const EDGE_GRADIENT = 20;
 /** A channel at or above this counts as clipped. 255 exactly, minus one level for the JPEG round trip (the archived crops are q80 JPEGs, the live measurement reads the raw pixels; both use 254 so they agree). */
@@ -67,16 +68,18 @@ export function foliageShare(rgba: Uint8ClampedArray | Uint8Array, alpha: Uint8A
   return n ? bad / n : 0;
 }
 
-export function measureCrop(rgba: Uint8ClampedArray | Uint8Array, alpha: Uint8Array, width: number, height: number) {
+export function measureCrop(rgba: Uint8ClampedArray | Uint8Array, alpha: Uint8Array, width: number, height: number, ppm = 50) {
   // white-balance reference from the valid pixels only, on a 1/3 grid (the module keeps every pixel in a JS array); invalid ones become placeholder grey, which it skips
   const sw = Math.floor(width / 3), sh = Math.floor(height / 3), rgb = new Uint8Array(sw * sh * 3);
   for (let y = 0; y < sh; y++) for (let x = 0; x < sw; x++) { const p = (y * 3) * width + x * 3, o = (y * sw + x) * 3, v = alpha[p] === 255; rgb[o] = v ? rgba[p * 4] : 128; rgb[o + 1] = v ? rgba[p * 4 + 1] : 128; rgb[o + 2] = v ? rgba[p * 4 + 2] : 128; }
   const wb = measureWhiteBalance(rgb, sw, sh, [[0, sw]]);
   const washedOut = clippedShare(rgba, alpha, width, height);
+  const occ = occlusionMask(rgba, alpha, width, height, balancedLeaf(wb), ppm);
   let miss = 0; for (let p = 0; p < alpha.length; p++) if (alpha[p] !== 255) miss++;
   return {
     foliage: foliageShare(rgba, alpha, width, height, balancedLeaf(wb)), foliagePlain: foliageShare(rgba, alpha, width, height, isLeaf), wbApplied: wb.applied,
     washedOut, missing: alpha.length ? miss / alpha.length : 1, voidShare: voidShare(alpha, width, height), occluderShare: occluderShare(rgba, alpha, width, height),
+    maskedShare: occ.maskedShare, trunkShare: occ.trunkShare, vehicleShare: occ.vehicleShare,
     heightCover: heightCover(alpha, width, height), edgeDensity: edgeDensity(rgba, alpha, width, height), seamStep: seamStep(rgba, alpha, width, height),
   };
 }

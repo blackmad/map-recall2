@@ -37,6 +37,8 @@ export type CropFlags = {
   obliquity: number; cameraDistance: number;
   /** the camera ray to the wall centre crosses another BAG footprint (alley / neighbour case) */
   rayBlocked: boolean;
+  /** F3 (#381): share of body pixels hidden by leaves, bare trunks/poles and the van blob (f3/occlusion.ts); recorded, not a gate. Absent on crops made before F3. */
+  maskedShare?: number; trunkShare?: number; vehicleShare?: number;
   wallWidthM: number; heightCover: number; edgeDensity: number; seamStep: number;
   /** the crop came from the planStrip route (the seam check applies) */
   strip: boolean;
