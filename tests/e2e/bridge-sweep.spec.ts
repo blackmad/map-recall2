@@ -143,6 +143,13 @@ test('the bike crosses every bridge in both directions without wedging', async (
     player.handleInput = () => {};
     game._updateCanalQuiz = () => {};
     game._updateBridgeQuiz = () => {};
+    // So are the landmark questions (G3, 2026-11-08), and an open question no longer holds the bike: one asked
+    // by the real loop before the drives began ("Which building is this?" at the start, near the Portuguese
+    // Synagogue) froze `_updateRacing` for every drive. Locally the full sweep read 58 of 2,912 arrived and
+    // 19,978 wedges (2026-11-12); on the hosted runner none had opened yet.
+    const quiet = game as unknown as { _tryLandmarkQuestion: () => boolean; _quizFreezesRide: () => boolean };
+    quiet._tryLandmarkQuestion = () => false;
+    quiet._quizFreezesRide = () => false;
     let tried: any = null;
     if (onlyIds.length) {
       const update = player.update.bind(player);

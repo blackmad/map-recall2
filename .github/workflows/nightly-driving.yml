@@ -8,6 +8,13 @@ on:
   schedule:
     - cron: '30 2 * * *'
   workflow_dispatch:
+    inputs:
+      steps:
+        description: 'Steps to run (keyboard harness bridges)'
+        default: 'keyboard harness bridges'
+      keyboard_grep:
+        description: 'KEYBOARD_RIDE_GREP: only the keyboard rides whose name matches'
+        default: ''
 
 permissions:
   contents: read
@@ -32,6 +39,8 @@ jobs:
       - run: bash scripts/nightly-driving.sh
         env:
           PW_PORT: '4173'
+          NIGHTLY_STEPS: ${{ inputs.steps || 'keyboard harness bridges' }}
+          KEYBOARD_RIDE_GREP: ${{ inputs.keyboard_grep }}
       - uses: actions/upload-artifact@v4
         if: always()
         with:

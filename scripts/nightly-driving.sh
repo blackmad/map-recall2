@@ -2,7 +2,8 @@
 # Long driving sweeps, meant to run nightly (GitHub Actions:
 # .github/workflows/nightly-driving.yml) or by hand before a release:
 #
-#   1. keyboard rides over every reported spot (real key presses, quiz on)
+#   1. keyboard rides over every reported spot (real key presses, quiz on;
+#      no GL basemap unless KEYBOARD_RIDE_BASEMAP=1, see keyboard-ride.spec.ts)
 #   2. the driving harness, desktop and iPhone
 #   3. the full bridge sweep (every bridge way, both directions)
 #
@@ -28,7 +29,8 @@ run_step() {
   local started ended code
   started="$(date +%s)"
   echo "== ${name}: $*" >&2
-  PLAYWRIGHT_JSON_OUTPUT_NAME="${out}/${name}.json" "$@" --reporter=line,json >"${out}/${name}.log" 2>&1
+  # Each step keeps its own traces: one shared test-results/ was wiped by the next step's run.
+  PLAYWRIGHT_JSON_OUTPUT_NAME="${out}/${name}.json" "$@" --output="test-results/nightly-${name}" --reporter=line,json >"${out}/${name}.log" 2>&1
   code=$?
   ended="$(date +%s)"
   [ "$code" -ne 0 ] && status=1
@@ -39,9 +41,13 @@ run_step() {
 for step in $steps; do
   case "$step" in
     keyboard)
-      KEYBOARD_RIDE_ALL=1 run_step keyboard npx playwright test tests/e2e/keyboard-ride.spec.ts --project=desktop ;;
+      # Without the GL basemap: hosted runners render GL in software at ~1 fps, and the game's 50 ms dt clamp then
+      # ran every ride out of time (all 25 failed nightly through 2026-11-12). Each ride checks the frame rate first.
+      KEYBOARD_RIDE_ALL=1 KEYBOARD_RIDE_BASEMAP="${KEYBOARD_RIDE_BASEMAP:-0}" \
+        run_step keyboard npx playwright test tests/e2e/keyboard-ride.spec.ts --project=desktop ;;
     harness)
-      run_step harness npx playwright test tests/e2e/driving-harness.spec.ts ;;
+      # Deterministic (seeded pairs): a retry only doubles the time. ~3 min a project locally; a hosted runner is slower.
+      HARNESS_TIMEOUT_MS="${HARNESS_TIMEOUT_MS:-900000}" run_step harness npx playwright test tests/e2e/driving-harness.spec.ts --retries=0 ;;
     bridges)
       BRIDGE_SWEEP_ALL=1 BRIDGE_SWEEP_OUT="${out}/bridge-sweep-report.json" \
         run_step bridges npx playwright test tests/e2e/bridge-sweep.spec.ts --project=desktop ;;
