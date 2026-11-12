@@ -1,0 +1,68 @@
+{
+ "area": "tunnels",
+ "description": "The IJ and Piet Hein tunnel approaches: the BGT tunnel structures (G2 input); the game keeps its inferred cuts and mouths here.",
+ "reviewer": "lane G3 (claude-opus-5-5)",
+ "on": "2026-11-12",
+ "records": [
+  {
+   "id": "ijtunnel-north-approach",
+   "label": "IJtunnel north approach (Kraaienplein)",
+   "kind": "road-under",
+   "drafts": [
+    "rail-under-kraaienplein-ij-tunnel-842-1729"
+   ],
+   "verdict": "confirmed",
+   "notes": "BGT tunneldeel along the Noord approach with OSM tunnel ways; the game's ramp cuts follow it. Panorama 00603: beside the approach wall. Cuts and mouths kept as inferred (game keep) until G2 places the portal from this record.",
+   "game": {
+    "cuts": "keep",
+    "portals": "keep"
+   }
+  },
+  {
+   "id": "ijtunnel-south-prins-hendrikkade",
+   "label": "IJtunnel south approach at the Prins Hendrikkade",
+   "kind": "road-under",
+   "drafts": [
+    "ij-tunnel-under-prins-hendrikkade-748-181"
+   ],
+   "verdict": "confirmed",
+   "notes": "BGT tunneldeel under the Prins Hendrikkade junction where the IJtunnel ramps surface; the game's ramp cuts and their mouths sit on it. Panorama 00202: the junction at street level. Kept as inferred (game keep).",
+   "game": {
+    "cuts": "keep",
+    "portals": "keep"
+   }
+  },
+  {
+   "id": "ijtunnel-south-oosterdok",
+   "label": "IJtunnel under the Oosterdok and the Piet Heinkade",
+   "kind": "road-under",
+   "drafts": [
+    "ij-tunnel-under-bruno-van-moerkerkenpassage-piet-heinkad-823-607"
+   ],
+   "verdict": "confirmed",
+   "notes": "BGT tunneldeel parts under the water and the Piet Heinkade (Bruno van Moerkerkenpassage). Panorama 00176: inside the tunnel (emergency exit signs). Kept as inferred (game keep).",
+   "game": {
+    "cuts": "keep",
+    "portals": "keep"
+   }
+  },
+  {
+   "id": "piet-heintunnel-panamakade",
+   "label": "Piet Heintunnel under the water by the Panamakade and the C. van Eesterenlaan",
+   "kind": "road-under",
+   "drafts": [
+    "rail-under-c-van-eesterenlaan-panamakade-2961-300"
+   ],
+   "verdict": "confirmed",
+   "notes": "BGT tunneldeel parts under the water between the Panamakade and the C. van Eesterenlaan, with the OSM tunnel ways. Panorama 00939: the water above it. Kept as inferred (game keep).",
+   "game": {
+    "cuts": "keep",
+    "portals": "keep"
+   }
+  }
+ ],
+ "rejected": {
+  "rail-under-piet-heinkade-2205-394": "tunnel part under the rail yard by the Piet Heinkade; panorama at street level, structure unclear",
+  "other 21 drafts": "decks (Prins Hendrikkade, Johan van Hasseltweg, Gooilijn at the Czaar Peterstraat) are not tunnel approaches; left for a later area pass"
+ }
+}

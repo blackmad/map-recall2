@@ -1,0 +1,188 @@
+{
+ "area": "ring-rail",
+ "description": "The ring railway Sloterdijk – Lelylaan – Zuid – RAI: the streets under it and the decks over it (the named places are in named.json).",
+ "reviewer": "lane G3 (claude-opus-5-5)",
+ "on": "2026-11-10",
+ "records": [
+  {
+   "id": "sloterdijk-carrascoplein",
+   "label": "Carrascoplein under the Sloterdijk railway and its road deck",
+   "kind": "rail-over-road",
+   "drafts": [
+    "haarlemmerweg-carrascoplein-under-arlandaweg-carrascoplein-4175-2118",
+    "carrascoplein-under-deck-4232-1979"
+   ],
+   "verdict": "confirmed",
+   "notes": "Ortho: Station Sloterdijk's rail viaduct and its road deck over the Carrascoplein; panorama 02628 is under the deck (soffit, piers, shopfronts)."
+  },
+  {
+   "id": "sloterdijk-radarweg-orlyplein-over-rail",
+   "label": "Radarweg and Orlyplein decks over the railway at Sloterdijk",
+   "kind": "road-over-rail",
+   "drafts": [
+    "rail-under-radarweg-4327-2114",
+    "rail-under-orlyplein-4256-2129"
+   ],
+   "verdict": "confirmed",
+   "notes": "Ortho: the Radarweg and Orlyplein road decks cross the station tracks west of Sloterdijk; panorama 02888 shows the station hall and the deck edge. Kind road-over-rail."
+  },
+  {
+   "id": "dirk-deutekompad-ring-rail",
+   "label": "Dirk Deutekompad under the western ring railway",
+   "kind": "rail-over-road",
+   "drafts": [
+    "dirk-deutekompad-under-westelijke-ringspoorbaan-4324-707",
+    "dirk-deutekompad-under-westelijke-ringspoorbaan-4310-703",
+    "dirk-deutekompad-under-rail-4297-700"
+   ],
+   "verdict": "confirmed",
+   "notes": "Ortho: three rail decks over the Dirk Deutekompad and the water beside it; panoramas 000186 and 000390 are under the decks (piers, soffit, water)."
+  },
+  {
+   "id": "jan-van-galenstraat-ring-rail",
+   "label": "Jan van Galenstraat under the western ring railway",
+   "kind": "rail-over-road",
+   "drafts": [
+    "jan-van-galenstraat-under-westelijke-ringspoorbaan-4401-349",
+    "jan-van-galenstraat-under-rail-4390-343",
+    "jan-van-galenstraat-under-rail-4379-344"
+   ],
+   "verdict": "confirmed",
+   "notes": "Ortho: three rail decks over the Jan van Galenstraat and its tram; panorama 00227 is under them (pier, soffit)."
+  },
+  {
+   "id": "jan-evertsenstraat-ring-rail",
+   "label": "Jan Evertsenstraat under the western ring railway",
+   "kind": "rail-over-road",
+   "drafts": [
+    "jan-evertsenstraat-under-westelijke-ringspoorbaan-4467-21",
+    "jan-evertsenstraat-under-rail-4455-18"
+   ],
+   "verdict": "confirmed",
+   "notes": "Ortho: two rail decks over the Jan Evertsenstraat; panorama 01826 is under them (piers, soffit, stair). The draft's third deck (4431-3) is a footbridge over the water and is left out."
+  },
+  {
+   "id": "robert-fruinlaan-ring-rail",
+   "label": "Robert Fruinlaan under the western ring railway",
+   "kind": "rail-over-road",
+   "drafts": [
+    "robert-fruinlaan-under-westelijke-ringspoorbaan-4506-658",
+    "robert-fruinlaan-under-rail-4494-654",
+    "robert-fruinlaan-under-rail-4483-658"
+   ],
+   "verdict": "confirmed",
+   "notes": "Ortho: three rail decks over the Robert Fruinlaan; panorama 00491 is under them (pier, soffit)."
+  },
+  {
+   "id": "hemsterhuisstraat-ring-rail",
+   "label": "Hemsterhuisstraat under the western ring railway",
+   "kind": "rail-over-road",
+   "drafts": [
+    "hemsterhuisstraat-under-westelijke-ringspoorbaan-4503-801",
+    "hemsterhuisstraat-under-rail-4492-801",
+    "hemsterhuisstraat-under-rail-4480-800"
+   ],
+   "verdict": "confirmed",
+   "notes": "Ortho: three rail decks over the Hemsterhuisstraat; panorama 00981 is under them (painted abutments, soffit)."
+  },
+  {
+   "id": "cornelis-lelyplein-ring-rail",
+   "label": "Cornelis Lelyplein / Cornelis Lelylaan under the western ring railway (Station Lelylaan)",
+   "kind": "rail-over-road",
+   "drafts": [
+    "cornelis-lelyplein-cornelis-lelylaan-under-westelijke-ringspoorbaan-4466-1335"
+   ],
+   "verdict": "confirmed",
+   "notes": "Ortho: Station Lelylaan on its rail viaduct over the Cornelis Lelylaan and the Lelyplein paths; panorama 00756 is in the station hall under the deck."
+  },
+  {
+   "id": "plesmanlaan-ring-rail",
+   "label": "Plesmanlaan / Heemstedestraat under the western ring railway",
+   "kind": "rail-over-road",
+   "drafts": [
+    "plesmanlaan-under-westelijke-ringspoorbaan-4481-2023",
+    "heemstedestraat-plesmanlaan-under-rail-4463-2018"
+   ],
+   "verdict": "confirmed",
+   "notes": "Ortho: two rail decks over the Plesmanlaan and the water north of it; panorama 00947 is under them by the water. The draft's low deck east of the tracks (4431-2045, top -0.37) is the Plesmanlaan's own bridge over the water and is left out."
+  },
+  {
+   "id": "ringweg-west-fly-over",
+   "label": "Ringweg-West under the Ringweg-West slip deck (Nieuwe Meer junction)",
+   "kind": "road-over-road",
+   "drafts": [
+    "ringweg-west-under-ringweg-west-4005-3238"
+   ],
+   "verdict": "confirmed",
+   "notes": "Ortho: the A10 slip deck curving over the Ringweg-West carriageway at the Nieuwe Meer junction; panorama 003535 is on the deck (parapet)."
+  },
+  {
+   "id": "parnassusweg-ring-decks",
+   "label": "Parnassusweg under the A10 and the southern ring railway",
+   "kind": "rail-over-road",
+   "drafts": [
+    "parnassusweg-under-ringweg-zuid-2128-3402",
+    "parnassusweg-under-rail-2121-3421",
+    "parnassusweg-under-ringweg-zuid-2122-3500",
+    "parnassusweg-under-rail-2132-3447",
+    "parnassusweg-under-zuidelijke-ringspoorbaan-2130-3470"
+   ],
+   "verdict": "confirmed",
+   "notes": "Ortho: the two A10 carriageway decks and the rail decks of Station Zuid over the Parnassusweg; panorama 00800 is under them at the tracks' foot."
+  },
+  {
+   "id": "minervapassage-zuid",
+   "label": "Minervapassage under the A10 and the railway at Station Zuid",
+   "kind": "road-under",
+   "drafts": [
+    "minervapassage-under-ringweg-zuid-zuidelijke-ringspoorbaan-1806-3419"
+   ],
+   "verdict": "confirmed",
+   "notes": "BGT tunneldeel under the tracks and the A10 at Station Zuid (the Minervapassage); panorama 08104 is on the A10 above it. No portals listed: the passage opens into the station, so no dark mouth is drawn."
+  },
+  {
+   "id": "beethovenstraat-ring-decks",
+   "label": "Beethovenstraat under the A10, the southern ring railway and the Noord-Zuidlijn",
+   "kind": "rail-over-road",
+   "drafts": [
+    "beethovenstraat-under-ringweg-zuid-1579-3470",
+    "beethovenstraat-under-zuidelijke-ringspoorbaan-1574-3417",
+    "beethovenstraat-under-zuidelijke-ringspoorbaan-1583-3436",
+    "beethovenstraat-under-zuidelijke-ringspoorbaan-1578-3447",
+    "beethovenstraat-under-rail-1581-3409",
+    "beethovenstraat-under-rail-1585-3382",
+    "beethovenstraat-under-noord-zuidlijn-1586-3394"
+   ],
+   "verdict": "confirmed",
+   "notes": "Ortho: the A10 decks and the rail and Noord-Zuidlijn decks of Station Zuid over the Beethovenstraat; panoramas 00077 and 01538 are under them (piers, soffit)."
+  },
+  {
+   "id": "europaboulevard-ring-decks",
+   "label": "Europaboulevard under the A10 and the southern ring railway (Station RAI)",
+   "kind": "rail-over-road",
+   "drafts": [
+    "europaboulevard-under-ringweg-zuid-657-3714",
+    "europaboulevard-under-zuidelijke-ringspoorbaan-642-3694",
+    "station-rai-europaboulevard-under-zuidelijke-ringspoorbaan-628-3677",
+    "station-rai-europaboulevard-under-rail-618-3665",
+    "europaboulevard-under-rail-601-3664",
+    "europaboulevard-under-ringweg-zuid-582-3630"
+   ],
+   "verdict": "confirmed",
+   "notes": "Ortho: the A10 decks and Station RAI's rail decks over the Europaboulevard; panorama 00091 is under them (round piers, soffit)."
+  }
+ ],
+ "rejected": {
+  "sloterdijk-haarlemmerweg-arlandaweg": "the BGT deck covers the whole crop; panorama 00159 shows a ditch at grade, no deck over the Haarlemmerweg here",
+  "burgemeester-roellstraat-rail": "a tram bridge over the water; panoramas show the tram at grade",
+  "alhambralaan-deck": "footbridge over water",
+  "path-4583-396": "footbridge over water (panorama 00539)",
+  "path-4449-904": "footbridge over water",
+  "pieter-calandlaan-path": "footbridge over water; the street is at grade (panorama 00196)",
+  "henk-sneevlietweg-decks": "small decks over ditches; panorama 00581 shows flat ground",
+  "rail-deck-765-3501": "deck end of a ramp by the A10 near RAI; no panorama under it, evidence unclear",
+  "rail-843-3483": "BGT tunnel structure in the Zuidasdok works beside the A10; under construction",
+  "europaboulevard-groene-zoom": "small decks over water and a tram deck at grade level by the junction; panorama 00352 shows a flat junction",
+  "gaasterlandpad-deck": "footbridge over water (panoramas 000245, 000267)"
+ }
+}
