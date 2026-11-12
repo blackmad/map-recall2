@@ -7,6 +7,7 @@ import { GAME_FRAME_SCALE, GAME_ORIGIN, type Rect } from './groundStore';
 import { encodeGrd2, frameOf, GRID_Q, octEncode, type Grd2Content } from './groundV2Format';
 import { applyGroundV2 } from './groundV2Loader';
 import { buildPoseIndex, poseHeight, poseIndexBytes } from './groundV2Pose';
+import { sourceCode } from './sourceTrace';
 
 const frame = frameOf(GAME_ORIGIN, GAME_FRAME_SCALE);
 const rect: Rect = [0, 0, 100, 100];
@@ -49,4 +50,16 @@ test('pose index: the drawn height under a point, NaN off the surface', () => {
   assert.ok(Math.abs(poseHeight(p, 10, 50) - 1.6) < 1e-6);
   assert.ok(Number.isNaN(poseHeight(p, -1, 50)));
   assert.ok(poseIndexBytes(p) > positions.byteLength);
+});
+
+test('loader keeps covered worker triangles the bake does not own (traced OSM bands), drops owned ones', async () => {
+  await MeshoptDecoder.ready;
+  const cell = built();
+  // Two land quads under the baked surface: the first from an OSM street band, the second the land grid.
+  cell.layers.land = { ...quad(10, 10, 20, 20, 1), indices: Uint32Array.from([0, 1, 2, 0, 2, 3]) };
+  (cell as BuiltCell & { sources: Record<string, Uint8Array> }).sources = { land: Uint8Array.from([sourceCode('band'), sourceCode('land')]) };
+  const r = applyGroundV2(cell, encodeGrd2(baked(), MeshoptEncoder), MeshoptDecoder, frame, rect);
+  assert.equal(r.used, true); assert.equal(r.kept, 1);
+  assert.equal(r.cell.layers.land!.indices.length, 3, 'the band triangle stays');
+  assert.equal((r.cell as { sources?: unknown }).sources, undefined, 'sources are not shipped to the main thread');
 });

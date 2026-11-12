@@ -11,15 +11,22 @@
 
 import type { BuiltCell, GroundLayer, PackedMesh } from './groundCell.js';
 import type { Rect } from './groundStore.js';
+import { sourceOfCode, type GroundSource } from './sourceTrace.js';
 import { decodeGrd2, frameMismatch, grd2Layers, readGrd2Header, unitX, unitY, type GroundFrame, type MeshoptDecoderLike } from './groundV2Format.js';
 
 /** Layers the baked surface owns in phase 1 (the partition's materials plus the kerb band and faces). */
 export const V2_SURFACE_LAYERS: ReadonlySet<GroundLayer> = new Set<GroundLayer>(['land', 'park', 'wood', 'square', 'parking', 'lawn', 'bed', 'shrub', 'bark', 'sand', 'parkGravel', 'parkPath', 'pond', 'asphalt', 'klinker', 'brick', 'cycle', 'paving', 'gravel', 'garden', 'bare', 'kerb']);
+/**
+ * Worker triangle sources the bake owns (sourceTrace.ts). With the cell's sources traced, a covered worker triangle
+ * is dropped only when it came from one of these; OSM street bands, junction fills, lane ribbons, paint, rails, water,
+ * quays and decks stay (the partition reads no OSM ways in phase 1).
+ */
+export const V2_OWNED_SOURCES: ReadonlySet<GroundSource> = new Set<GroundSource>(['land', 'osmArea', 'park', 'bgtCarriage', 'bgtParking', 'bgtFoot', 'bgtPedestrian', 'bgtCycle', 'bgtDriveway', 'bgtIsland', 'bgtBerm', 'bgtVerge', 'bgtSquare', 'fietsstraat', 'bgtKerb', 'pocket']);
 /** A worker surface triangle within this height of the baked surface under it is replaced by it (decks stand higher). */
 export const V2_REPLACE_DZ_M = 0.6;
 const RES_M = 1;
 
-export interface GroundV2Result { cell: BuiltCell; used: boolean; reason?: string; dropped?: number; triangles?: number }
+export interface GroundV2Result { cell: BuiltCell; used: boolean; reason?: string; dropped?: number; /** Covered worker triangles kept for their source (bands, fills, paint). */ kept?: number; triangles?: number }
 
 /** Swap a worker-built cell's surface for the baked one; `bytes` gunzipped. */
 export function applyGroundV2(built: BuiltCell, bytes: Uint8Array, decoder: MeshoptDecoderLike, frame: GroundFrame, rect: Rect): GroundV2Result {
@@ -61,14 +68,20 @@ export function applyGroundV2(built: BuiltCell, bytes: Uint8Array, decoder: Mesh
     return zt === zt && z < zt + V2_REPLACE_DZ_M;
   };
   const layers: BuiltCell['layers'] = {};
-  let dropped = 0;
+  let dropped = 0, kept = 0;
   for (const [name, m] of Object.entries(built.layers) as [GroundLayer, PackedMesh][]) {
     if (!m) continue;
     if (!V2_SURFACE_LAYERS.has(name)) { layers[name] = m; continue; }
     const p = m.positions, keep: number[] = [];
+    // Traced sources, when they line up with the packed mesh (tunnel clipping can re-split triangles after tracing).
+    const src = built.sources?.[name], traced = !!src && src.length === m.indices.length / 3;
     for (let t = 0; t < m.indices.length; t += 3) {
       const a = m.indices[t] * 3, b = m.indices[t + 1] * 3, c = m.indices[t + 2] * 3;
-      if (covered((p[a] + p[b] + p[c]) / 3, (p[a + 1] + p[b + 1] + p[c + 1]) / 3, (p[a + 2] + p[b + 2] + p[c + 2]) / 3)) { dropped++; continue; }
+      if (covered((p[a] + p[b] + p[c]) / 3, (p[a + 1] + p[b + 1] + p[c + 1]) / 3, (p[a + 2] + p[b + 2] + p[c + 2]) / 3)) {
+        const from = traced ? sourceOfCode(src![t / 3]) : null;
+        if (!traced || (from !== null && V2_OWNED_SOURCES.has(from))) { dropped++; continue; }
+        kept++;
+      }
       keep.push(m.indices[t], m.indices[t + 1], m.indices[t + 2]);
     }
     if (keep.length) layers[name] = { ...m, indices: Uint32Array.from(keep) };
@@ -93,5 +106,6 @@ export function applyGroundV2(built: BuiltCell, bytes: Uint8Array, decoder: Mesh
       layers[name] = { positions: cat(prev.positions, mesh.positions), normals: cat(prev.normals, mesh.normals), uvs: cat(prev.uvs, mesh.uvs), indices: ind, ...(colors ? { colors } : {}) };
     } else layers[name] = name === 'kerb' ? { ...mesh, colors: new Float32Array(pos.length).fill(1) } : mesh;
   }
-  return { cell: { ...built, layers }, used: true, dropped, triangles };
+  const { sources: _sources, ...rest } = built;
+  return { cell: { ...rest, layers }, used: true, dropped, kept, triangles };
 }

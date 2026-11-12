@@ -20,7 +20,12 @@ import { crossingStripPoints, SURVEY_MARKINGS } from './surveyMarkings.js';
 import { prepareWays, resolvePriorSidewalks, LIFT } from './streets.js';
 
 /** Precedence ranks (design table). Rail bed (5) stays an overlay in phase 1. */
-export const RANK = { water: 0, carriage: 1, cycle: 2, kerb: 3, foot: 4, rail: 5, parking: 6, courtyard: 7, park: 8, open: 9, osm: 10, land: 11 } as const;
+/**
+ * Precedence (lower wins). parkFoot sits under the BGT footways: the worker lifts roads-v1 polygons (0.03 m) over
+ * parks-v1 paths (0.024 m), and at the same rank the park path's lower layer id won (892 m² of footway turned park
+ * path within 80 m of Piet Kranenbergpad, first frames).
+ */
+export const RANK = { water: 0, carriage: 1, cycle: 2, kerb: 3, foot: 4, parkFoot: 4.5, rail: 5, parking: 6, courtyard: 7, park: 8, open: 9, osm: 10, land: 11 } as const;
 
 /** Level lifts over the relief: 0 the carriageway (LIFT.carriageway, where paint and rails are laid), 1 the sidewalk top. */
 export const V2_LEVEL_Z: readonly number[] = [LIFT.carriageway, SIDEWALK_TOP];
@@ -115,14 +120,14 @@ export function partitionSources(input: CellInput, o: SourceOptions = {}): Parti
     }
   }
 
-  // Parks (parks-v1): cycle → rank 2, path / paving → rank 4 at the carriageway level (park paths have no kerb), the rest rank 8.
+  // Parks (parks-v1): cycle → rank 2, path / paving → parkFoot (under the BGT footways) at the carriageway level (park paths have no kerb), the rest rank 8.
   const parkCells = [input.parks, ...(input.parksAround ?? [])].filter((c, i, a) => !!c && a.indexOf(c) === i);
   let pi = 0;
   for (const c of parkCells) for (const s of c!.surfaces) {
     const rings = s.r.map(decodeLine); const id = `p${pi++}`;
     if (!near(rings)) continue;
     const layer = SURFACE_LAYER[s.k] as GroundLayer;
-    const rank = s.k === 'cycle' ? RANK.cycle : s.k === 'path' || s.k === 'paving' ? RANK.foot : RANK.park;
+    const rank = s.k === 'cycle' ? RANK.cycle : s.k === 'path' || s.k === 'paving' ? RANK.parkFoot : RANK.park;
     push(rank, layer, 0, 'park', id, rings);
   }
   // Courtyards (courtyards-v1): their grass is the muted garden, as buildCell draws it.

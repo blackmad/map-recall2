@@ -28,7 +28,8 @@ import { applyGroundV2 } from './groundV2Loader.js';
 import { frameOf } from './groundV2Format.js';
 import { WorkerTrace, phaseSplit, type PhaseEvent } from './workerTrace.js';
 import { ShareHost, shareClient, type ShareRequest, type SharePort } from './groundShare.js';
-import { buildCell, cellTransferables, type CellDetail } from './groundCell.js';
+import { buildCell, cellTransferables, type BuiltCell, type CellDetail } from './groundCell.js';
+import { setSourceTracing } from './sourceTrace.js';
 import { buildFarBlock, farColours, farTransferables, type FarColours } from './farRing.js';
 import { groundPalette, isRoadLookId, type GroundLook } from './groundLook.js';
 import { setKerbShadowRoadLook } from './roadSurfaces.js';
@@ -125,14 +126,19 @@ async function pump(s: GroundStore): Promise<void> {
           const t0 = performance.now(), queued = queue.size;
           const input = await s.cellInput(job.key, job.lod, job.detail);
           const t1 = performance.now();
-          let built = buildCell(input);
-          // Ground v2 A/B: the baked surface replaces the worker's where a file is listed and its frame matches.
+          // Ground v2 A/B: the baked surface replaces the worker's where a file is listed and its frame matches. The cell
+          // is built with source tracing so the loader keeps what the bake does not own (OSM street bands, junction
+          // fills, ribbons, paint): the first frames lost the OSM-only park paths at Piet Kranenbergpad.
+          const v2Cell = !!(v2Keys?.has(job.key) && v2Fetch && job.lod === 0 && (job.detail ?? detail) === 'full');
+          if (v2Cell) setSourceTracing(true);
+          let built: BuiltCell;
+          try { built = buildCell(input); } finally { if (v2Cell) setSourceTracing(false); }
           let v2: string | undefined;
-          if (v2Keys?.has(job.key) && v2Fetch && job.lod === 0 && (job.detail ?? detail) === 'full') {
+          if (v2Cell && v2Fetch) {
             try {
               await MeshoptDecoder.ready;
               const r = applyGroundV2(built, await v2Fetch(`ground-v2/${job.key}.lod0.bin.gz`), MeshoptDecoder, v2Frame, s.cellRect(job.key));
-              built = r.cell; v2 = r.used ? `v2:${r.triangles}/${r.dropped}` : `fallback:${r.reason}`;
+              built = r.cell; v2 = r.used ? `v2:${r.triangles}/${r.dropped}/${r.kept ?? 0}` : `fallback:${r.reason}`;
             } catch (error) { v2 = `fallback:${String((error as Error)?.message ?? error)}`; }
           }
           const cell = compact ? compactCell(built) : built;
