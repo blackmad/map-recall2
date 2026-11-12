@@ -1,5 +1,7 @@
 // brickLift v2 (look/brickLift.ts, default on; ?brickLift=v1 is byte-identical to the old lift), stucco / white / buff pinned, dark brick lower and in hue.
 import test from 'node:test';
+// These pins are the brickLift lists; the measured wall pool (measuredWallPool.ts, default on) outranks them, so it is off here.
+process.env.WALL_POOL = '0';
 import assert from 'node:assert/strict';
 import { BRICK_LIFT_DEFAULT_ON, C19_WALLS_V2, brickLiftEnabled, brickLiftOn, brickLiftV2ProfileWall, brickLiftV2Tint, isDarkBrick, periodWallList, resetBrickLiftFlag } from './brickLift.ts';
 import { cityLookTint } from './cityLook.ts';

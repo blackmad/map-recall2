@@ -20,6 +20,7 @@
  */
 import { hexToRgb, hslToRgb, rgbToHex, rgbToHsl } from './palette.js';
 import { scaleLinear } from './sunny.js';
+import { measuredPeriodList } from './measuredWallPool.js';
 
 export const BRICK_LIFT_V2 = {
   /** HSL lightness offset, floor and ceiling of a lifted brick wall (today: 0.12 + 0.9 l, floor 0.3, ceiling 0.6). */
@@ -71,7 +72,10 @@ export function brickLiftV2Tint(hex: string): string | null {
 export function brickLiftV2ProfileWall(hex: string): string {
   return isDarkBrick(hex) ? scaleLinear(hex, BRICK_LIFT_V2.profileGain) : hex;
 }
-/** The period wall list the runtime picks from: C19_WALLS_V2 for the photo look's c19 archetype under v2, else `base`. */
+/** The period wall list the runtime picks from: the measured list under `?wallPool` (default on), C19_WALLS_V2 for the photo look's c19 archetype under v2, else `base`. */
 export function periodWallList<T extends readonly string[] | null>(look: string, archetype: string, base: T): T | readonly string[] {
+  // The measured wall pool's period list (look/measuredWallPool.ts, lane W1, `?wallPool=0`) outranks both.
+  const measured = look === 'photo' ? measuredPeriodList(archetype) : null;
+  if (measured) return measured;
   return brickLiftOn() && look === 'photo' && archetype === 'c19' ? C19_WALLS_V2 : base;
 }

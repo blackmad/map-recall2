@@ -785,10 +785,27 @@ for (const c of [0.64, 1.4]) {
   const red = (hex: string) => { const n = parseInt(hex.slice(1), 16); return (n >> 16) - (n & 255); };
   const walls = (year: number) => Array.from({ length: 400 }, (_, i) => bayLookFor(`w${i}`, year, 12, 'photo').wallHex);
   const mean = (xs: number[]) => xs.reduce((a, b) => a + b, 0) / xs.length;
+  // The authored palette (PERIOD_WALLS.photo) holds these rules with the measured wall pool off (lane W1, 2026-11-12).
+  const { resetWallPoolFlag, measuredPeriodList } = await import('../src/canalRecall/look/measuredWallPool.ts');
+  const prevPool = process.env.WALL_POOL;
+  process.env.WALL_POOL = '0'; resetWallPoolFlag();
   const canal = walls(1680), c19 = walls(1895), modern = walls(1965);
-  assert.ok(mean(canal.map(lum)) + 15 < mean(c19.map(lum)), 'canal houses darker than 19th-century rows');
+  assert.ok(mean(canal.map(lum)) + 15 < mean(c19.map(lum)), 'canal houses darker than 19th-century rows (authored palette)');
   assert.ok(canal.filter(h => lum(h) < 60).length > 40, 'some canal houses painted near-black or dark green');
-  assert.ok(mean(modern.map(red)) < mean(c19.map(red)) - 30, 'post-war blocks buff and grey, not red brick');
+  assert.ok(mean(modern.map(red)) < mean(c19.map(red)) - 30, 'post-war blocks buff and grey, not red brick (authored palette)');
+  // With the pool on (default), the pre-1945 period lists are the deciles of the measured photo walls. The measurement
+  // does not hold "canal darker than c19": the 58 canal-archetype readings average lum 103 against c19's 96 (a cream
+  // painted front among dark brick). It holds the dark canal fronts, and no orange terracotta or slate grey.
+  process.env.WALL_POOL = '1'; resetWallPoolFlag();
+  const mCanal = walls(1680), mC19 = walls(1895);
+  for (const [arch, ws] of [['canal', mCanal], ['c19', mC19]] as const) {
+    const list = measuredPeriodList(arch);
+    assert.ok(list && ws.every(h => list.includes(h)), `${arch}: period walls drawn from the measured deciles`);
+    assert.ok(!ws.some(h => ['#b05a40', '#bd6a45', '#3e4a40', '#5d605a'].includes(h)), `${arch}: no authored terracotta or slate`);
+  }
+  assert.ok(mCanal.filter(h => lum(h) < 60).length > 40, 'measured canal list keeps near-black fronts');
+  if (prevPool === undefined) delete process.env.WALL_POOL; else process.env.WALL_POOL = prevPool;
+  resetWallPoolFlag();
 }
 {
   // Places of worship (2026-10-03, "temples mosques and churches"; user, on a church in house
