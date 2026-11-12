@@ -40,7 +40,7 @@ The user's top priority is the number of buurten with their own look on the expl
 4. Install the runs that look right. Hold the rest with a reason.
 5. Write the strip sheets into `/Users/blackmad/Code/map-recall2-source-data/block-face-strips/<buurt>-20261110/`. The integrator commits that repo.
 6. Run `npm run test:block-face` and `npm run lint`.
-7. Commit, then push your branch: `CANAL_PW_EXCLUSIVE=1 bash /tmp/canal-pw.sh /usr/bin/git push origin <branch>`.
+7. Commit, then push your branch: `/usr/bin/git push origin <branch>` (unwrapped: since 2026-11-12 the pre-push hook runs only lint for a lane branch; the browser smoke runs on pushes to `main`, docs/browser-queue.md).
 8. Write `docs/reports/buurt-<slug>-20261110.md`: census, types, placed/held/vetoed counts (split as vetoed-before-comparison / compared-and-held / placed), kit additions, and what the kit cannot say.
 
 If one family is done and the buurt still has a large uncovered family, start the next family in the same lane.

@@ -2,7 +2,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { aimPose, frameFor, fpsFor, gamePlayer, gridConvergenceDeg, hfovDeg, projectRd, rayFor, toPanoDirection, wallOutline, PANO_EYE_HEIGHT_M, type WallQuad } from './pose.ts';
-import { HELP } from './frames.ts';
+import { HELP, splitLists } from './frames.ts';
 
 const close = (a: number, b: number, eps: number, what: string) => assert.ok(Math.abs(a - b) <= eps, `${what}: ${a} vs ${b} (+-${eps})`);
 const LOADER = { _lastCenterLng: 4.8952, _lastCenterLat: 52.3702, _lastOffsetX: 1000, _lastOffsetY: 2000 };
@@ -100,4 +100,15 @@ test('pinned 116526 (H7 r4 frames, h7r4-116526): lighter than its neighbour in t
   assert.equal(flagsFor(picks, m, m, roof, noise).wallColour, null);
   const none = { ...c116526, photo: { ...c116526.photo, rel: null }, game: { ...c116526.game, rel: null }, used: 0, ref: 'no ref' as const, score: null };
   assert.equal(flagsFor(picks, m, m, roof, none).wallColour, null);
+});
+
+test('--lists splits into one argv per list, the shared flags kept and --out/--list dropped (lane Q1, #378)', () => {
+  const runs = splitLists(['--lists', 'a.json:out/A,dir:x/b.json:out/B', '--query', '?world=live', '--out', 'ignored', '--reuse-photos', '--season=winter']);
+  assert.deepEqual(runs, [
+    ['--list', 'a.json', '--out', 'out/A', '--query', '?world=live', '--reuse-photos', '--season=winter'],
+    ['--list', 'dir:x/b.json', '--out', 'out/B', '--query', '?world=live', '--reuse-photos', '--season=winter'],
+  ]);
+  assert.throws(() => splitLists(['--lists', 'a.json']), /want <list.json>:<out dir>/);
+  assert.match(HELP, /--lists/);
+  assert.match(HELP, /--reuse-photos/);
 });

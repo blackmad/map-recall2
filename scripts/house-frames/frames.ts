@@ -10,7 +10,9 @@
  */
 import './env.ts';
 import { spawnSync } from 'node:child_process';
+import crypto from 'node:crypto';
 import fs from 'node:fs';
+import os from 'node:os';
 import path from 'node:path';
 import zlib from 'node:zlib';
 import sharp from 'sharp';
@@ -51,6 +53,16 @@ Flags
   --reopen-every <n>     re-open the game page after n poses (default 40; it also re-opens after a crash)
   --prep-only            pick, pose and cut, write <out>/job.json, no browser
   --post-only            redo the checks, pairs and sheets from <out> (after a browser run)
+  --lists <a.json:outA,b.json:outB>
+                         batch: several --list files in one browser session (one queue slot, one page, one dev
+                         server); each list's pairs, sheets and summary go to its own out dir, exactly as a separate
+                         --list run would write them (the page re-opens at each list, so frames match a separate
+                         run). The batch job is <first out>/batch-job.json. Other flags apply
+                         to every list; --out is ignored
+  --reuse-photos         take the pick, pose and photo cut from the cache when this entry was framed before with the
+                         same flags and the same frames/pose/photo code (a before/after re-run renders only game
+                         frames). Every run writes the cache: HOUSE_FRAMES_CACHE, default the main checkout's
+                         .cache/house-frames (prep/<entry hash>.json, photos/<pose hash>.jpg)
   --help
 
 Per pand: <out>/<pand>/{photo.jpg, game.png, pair.jpg, pose.json}; per 6 pairs: <out>/contact-N.jpg; <out>/summary.json.
@@ -63,7 +75,8 @@ stands at the panorama's position at its eye height (2.44 m over the ground, len
 looks 5-30 deg down (the game camera cannot look up: MAX_PITCH_DEG 85) and opens its vertical FOV (45-120 deg) until the
 wall and 1.5 m above it fit; a wall too tall for 120 deg is listed as clipped.
 
-Browser: tests/e2e/house-frames.spec.ts through /tmp/canal-pw.sh on PW_PORT (default: .worktree-port). One page: open
+Browser: tests/e2e/house-frames.spec.ts through /tmp/canal-pw.sh (CANAL_PW overrides) on PW_PORT (default:
+.worktree-port); never wrap house:frames in canal-pw.sh yourself (it takes its own slot). One page: open
 the route once; per pose teleport, hand the engine the pose (the view's solveFps is replaced on the live instance; no
 src/ change), settleWorld, hide the HUD, screenshot, pick the wall's surfaces (inspectBuilding).
 
@@ -86,7 +99,7 @@ Review: docs/house-line.md §7. Builders are accepted on these pairs, read by op
 `;
 
 type Entry = { id: string; key?: string; bearing?: number; at?: [number, number]; chord?: [[number, number], [number, number]] };
-type Args = { pands: Entry[]; year?: number; season: 'winter' | 'any'; query: string; label: string; out: string; panoSize: PanoSize; bearing?: number; max: number; reopenEvery: number; prepOnly: boolean; postOnly: boolean; inputName: string };
+type Args = { pands: Entry[]; year?: number; season: 'winter' | 'any'; query: string; label: string; out: string; panoSize: PanoSize; bearing?: number; max: number; reopenEvery: number; prepOnly: boolean; postOnly: boolean; reusePhotos: boolean; inputName: string };
 
 function arg(argv: string[], name: string): string | undefined {
   const i = argv.indexOf(`--${name}`);
@@ -114,7 +127,7 @@ async function parseArgs(argv: string[]): Promise<Args> {
   }
   const season = arg(argv, 'season') === 'winter' ? 'winter' : 'any';
   const max = Number(arg(argv, 'max') ?? Infinity);
-  return { pands: pands.slice(0, max), year: arg(argv, 'year') ? Number(arg(argv, 'year')) : undefined, season, query: arg(argv, 'query') ?? '', label, out, panoSize: (arg(argv, 'pano-size') as PanoSize) ?? 'medium', bearing, max, reopenEvery: Number(arg(argv, 'reopen-every') ?? 40), prepOnly: argv.includes('--prep-only'), postOnly: argv.includes('--post-only'), inputName };
+  return { pands: pands.slice(0, max), year: arg(argv, 'year') ? Number(arg(argv, 'year')) : undefined, season, query: arg(argv, 'query') ?? '', label, out, panoSize: (arg(argv, 'pano-size') as PanoSize) ?? 'medium', bearing, max, reopenEvery: Number(arg(argv, 'reopen-every') ?? 40), prepOnly: argv.includes('--prep-only'), postOnly: argv.includes('--post-only'), reusePhotos: argv.includes('--reuse-photos'), inputName };
 }
 
 // ---- what the game draws for a pand (route) -------------------------------------------------------------------------
@@ -291,17 +304,56 @@ async function prepare(entry: Entry, fp: Footprint | undefined, args: Args): Pro
   const published = Number(pick.record.geometry.coordinates[2]);
   const pose = aimPose({ lngLat: ll, cameraNap: published > 0 ? published - 43.5 : null }, quad);
   const frame = frameFor(pose);
-  const img = await loadEquirect(pick.record, args.panoSize);
-  if (!img) return { pandId, skip: `panorama ${pick.panoId} did not load` };
-  const cut = cutPerspective(img, frame, gridConvergenceDeg(ll));
   const dir = path.join(args.out, key);
   fs.mkdirSync(dir, { recursive: true });
-  await sharp(Buffer.from(cut.data), { raw: { width: cut.width, height: cut.height, channels: 3 } }).jpeg({ quality: 85 }).toFile(path.join(dir, 'photo.jpg'));
+  const photoFile = path.join(cacheDir('photos'), `${hashOf({ pano: pick.record._links?.equirectangular_medium?.href ?? pick.panoId, size: args.panoSize, pose, code: codeHash() })}.jpg`);
+  if (args.reusePhotos && fs.existsSync(photoFile)) fs.copyFileSync(photoFile, path.join(dir, 'photo.jpg'));
+  else {
+    const img = await loadEquirect(pick.record, args.panoSize);
+    if (!img) return { pandId, skip: `panorama ${pick.panoId} did not load` };
+    const cut = cutPerspective(img, frame, gridConvergenceDeg(ll));
+    await sharp(Buffer.from(cut.data), { raw: { width: cut.width, height: cut.height, channels: 3 } }).jpeg({ quality: 85 }).toFile(path.join(dir, 'photo.jpg'));
+    fs.copyFileSync(path.join(dir, 'photo.jpg'), photoFile);
+  }
   const { record, ...rest } = pick;
   return {
     pandId, key, street: await streetName(wall), wall: quad, wallLenM: +wall.len.toFixed(2), pick: { ...rest, url: record._links?.equirectangular_medium?.href ?? '' }, pose, hfovDeg: +hfovDeg(pose).toFixed(1),
     samples: pickSamples(frame, pose, quad), foliage, candidates: ranked.length, route: routeOf(pandId, ll, args.query), why,
   };
+}
+
+// ---- cache (--reuse-photos) ----------------------------------------------------------------------------------------
+// prep/<entry hash>.json: a Prepared record (route recomputed per run: it depends on --query); photos/<pose hash>.jpg: the
+// cut. Both keys include a hash of this tool's own pose/photo/pick code, so a change there misses the cache.
+const CACHE = process.env.HOUSE_FRAMES_CACHE ?? path.join(os.homedir(), 'Code/map-recall2/.cache/house-frames');
+function cacheDir(sub: string): string { const d = path.join(CACHE, sub); fs.mkdirSync(d, { recursive: true }); return d; }
+const hashOf = (v: unknown) => crypto.createHash('sha1').update(JSON.stringify(v)).digest('hex').slice(0, 20);
+let codeHashMemo = '';
+function codeHash(): string {
+  if (!codeHashMemo) {
+    const h = crypto.createHash('sha1'), here = path.dirname(new URL(import.meta.url).pathname);
+    for (const f of ['frames.ts', 'pose.ts', 'photo.ts', '../pand-reference/select.ts']) h.update(fs.readFileSync(path.join(here, f)));
+    codeHashMemo = h.digest('hex').slice(0, 12);
+  }
+  return codeHashMemo;
+}
+const prepKey = (e: Entry, args: Args) => hashOf({ e: { id: e.id, key: e.key, bearing: e.bearing, at: e.at, chord: e.chord }, bearing: args.bearing, year: args.year, season: args.season, size: args.panoSize, code: codeHash() });
+/** A cached Prepared for the entry with its photo copied into <out>/<key>, or null. */
+function cachedPrep(e: Entry, args: Args): Prepared | null {
+  const f = path.join(cacheDir('prep'), `${prepKey(e, args)}.json`);
+  if (!fs.existsSync(f)) return null;
+  const c = JSON.parse(fs.readFileSync(f, 'utf8')) as Prepared & { photo: string };
+  if (!fs.existsSync(c.photo)) return null;
+  const dir = path.join(args.out, c.key);
+  fs.mkdirSync(dir, { recursive: true });
+  fs.copyFileSync(c.photo, path.join(dir, 'photo.jpg'));
+  const { photo: _photo, ...prep } = c;
+  return { ...prep, route: routeOf(prep.pandId, prep.pose.lngLat, args.query), why: [...prep.why.filter(w => !w.startsWith('reused')), 'reused the cached pick, pose and photo cut (--reuse-photos)'] };
+}
+function storePrep(e: Entry, args: Args, prep: Prepared) {
+  const photo = path.join(cacheDir('photos'), `${hashOf({ pano: prep.pick.url || prep.pick.panoId, size: args.panoSize, pose: prep.pose, code: codeHash() })}.jpg`);
+  if (!fs.existsSync(photo)) fs.copyFileSync(path.join(args.out, prep.key, 'photo.jpg'), photo);
+  fs.writeFileSync(path.join(cacheDir('prep'), `${prepKey(e, args)}.json`), JSON.stringify({ ...prep, photo }));
 }
 
 /** Greedy nearest-neighbour order, so the page streams neighbouring tiles from one pose to the next. */
@@ -419,37 +471,46 @@ async function post(prep: Prepared, args: Args, job: any): Promise<any> {
 
 function quantile(xs: number[], q: number) { const s = [...xs].sort((a, b) => a - b); return s.length ? s[Math.min(s.length - 1, Math.floor(q * s.length))] : NaN; }
 
-export async function main(argv = process.argv.slice(2)) {
-  if (argv.includes('--help') || !argv.length) { console.log(HELP); return; }
-  const args = await parseArgs(argv);
-  fs.mkdirSync(args.out, { recursive: true });
-  const jobFile = path.join(args.out, 'job.json'), prepFile = path.join(args.out, 'prepared.json');
-  let prepared: Prepared[] = [], skipped: Skipped[] = [];
+type Job = { out: string; query: string; width: number; height: number; reopenEvery: number; settleMs: number; poses: Array<{ key: string; out?: string; lngLat: [number, number]; headingDeg: number; fps: Record<string, unknown>; picks: Array<[number, number]> }> };
+const jobFor = (args: Args, prepared: Prepared[]): Job => ({ out: args.out, query: args.query, width: FRAME_W, height: FRAME_H, reopenEvery: args.reopenEvery, settleMs: 1200, poses: prepared.map(p => ({ key: p.key, out: args.out, lngLat: p.pose.lngLat, headingDeg: p.pose.headingDeg, fps: fpsFor(p.pose) as Record<string, unknown>, picks: p.samples.map(s => [s.x, s.y] as [number, number]) })) });
+
+/** Pick, pose and cut every entry of one input; writes <out>/prepared.json and <out>/job.json. */
+async function prepareAll(args: Args): Promise<{ prepared: Prepared[]; skipped: Skipped[] }> {
+  const prepared: Prepared[] = [], skipped: Skipped[] = [];
   const t0 = Date.now();
-  if (args.postOnly) ({ prepared, skipped } = JSON.parse(fs.readFileSync(prepFile, 'utf8')));
-  else {
-    if (!args.pands.length) { console.error('no pands: give --pands, --face, --buurt or --list\n\n' + HELP); process.exit(2); }
-    await loadRoads();
-    const found = await findPands(args.pands.map(p => p.id));
-    for (const e of args.pands) {
-      try {
-        const r = await prepare(e, found.get(normId(e.id)), args);
-        if ('skip' in r) { skipped.push(r); console.log(`${e.id}: skipped (${r.skip})`); }
-        else { prepared.push(r); console.log(`${e.id}: ${r.street} pano ${r.pick.timestamp.slice(0, 10)} ${r.pick.distM.toFixed(1)} m, heading ${r.pose.headingDeg.toFixed(0)}, look-down ${r.pose.lookDownDeg.toFixed(1)}, vfov ${r.pose.vfovDeg}${r.pose.clipped.length ? ` (clipped ${r.pose.clipped})` : ''}, ${r.route}`); }
-      } catch (err) { skipped.push({ pandId: e.id, skip: `error: ${(err as Error).message}` }); console.log(`${e.id}: error ${(err as Error).message}`); }
-    }
-    prepared = spatialOrder(prepared);
-    fs.writeFileSync(prepFile, JSON.stringify({ prepared, skipped }, null, 1));
-    const job = { out: args.out, query: args.query, width: FRAME_W, height: FRAME_H, reopenEvery: args.reopenEvery, settleMs: 1200, poses: prepared.map(p => ({ key: p.key, lngLat: p.pose.lngLat, headingDeg: p.pose.headingDeg, fps: fpsFor(p.pose), picks: p.samples.map(s => [s.x, s.y]) })) };
-    fs.writeFileSync(jobFile, JSON.stringify(job));
-    console.log(`prepared ${prepared.length}, skipped ${skipped.length} in ${((Date.now() - t0) / 1000).toFixed(0)} s; job ${jobFile}`);
-    if (args.prepOnly || !prepared.length) return;
-    const port = process.env.PW_PORT ?? (fs.existsSync('.worktree-port') ? fs.readFileSync('.worktree-port', 'utf8').trim() : '');
-    if (!port) { console.error('set PW_PORT (a private port): Playwright reuses whatever server holds its port'); process.exit(2); }
-    const res = spawnSync('/tmp/canal-pw.sh', ['npx', 'playwright', 'test', 'tests/e2e/house-frames.spec.ts', '--project=desktop', '--reporter=line'], { stdio: 'inherit', env: { ...process.env, PW_PORT: port, HOUSE_FRAMES_JOB: path.resolve(jobFile) } });
-    if (res.status !== 0) console.error(`browser run exited ${res.status}; posting whatever frames exist`);
+  fs.mkdirSync(args.out, { recursive: true });
+  const hits = new Map<Entry, Prepared>();
+  if (args.reusePhotos) for (const e of args.pands) { const c = cachedPrep(e, args); if (c) hits.set(e, c); }
+  const misses = args.pands.filter(e => !hits.has(e));
+  if (misses.length) await loadRoads();
+  const found = misses.length ? await findPands(misses.map(p => p.id)) : new Map();
+  for (const e of args.pands) {
+    const hit = hits.get(e);
+    if (hit) { prepared.push(hit); console.log(`${e.id}: cached pick, pose and photo (${hit.street} pano ${hit.pick.timestamp.slice(0, 10)}), ${hit.route}`); continue; }
+    try {
+      const r = await prepare(e, found.get(normId(e.id)), args);
+      if ('skip' in r) { skipped.push(r); console.log(`${e.id}: skipped (${r.skip})`); }
+      else { prepared.push(r); storePrep(e, args, r); console.log(`${e.id}: ${r.street} pano ${r.pick.timestamp.slice(0, 10)} ${r.pick.distM.toFixed(1)} m, heading ${r.pose.headingDeg.toFixed(0)}, look-down ${r.pose.lookDownDeg.toFixed(1)}, vfov ${r.pose.vfovDeg}${r.pose.clipped.length ? ` (clipped ${r.pose.clipped})` : ''}, ${r.route}`); }
+    } catch (err) { skipped.push({ pandId: e.id, skip: `error: ${(err as Error).message}` }); console.log(`${e.id}: error ${(err as Error).message}`); }
   }
-  const job = JSON.parse(fs.readFileSync(jobFile, 'utf8'));
+  const ordered = spatialOrder(prepared);
+  fs.writeFileSync(path.join(args.out, 'prepared.json'), JSON.stringify({ prepared: ordered, skipped }, null, 1));
+  fs.writeFileSync(path.join(args.out, 'job.json'), JSON.stringify(jobFor(args, ordered)));
+  console.log(`prepared ${ordered.length}, skipped ${skipped.length} in ${((Date.now() - t0) / 1000).toFixed(0)} s${hits.size ? ` (${hits.size} from the cache)` : ''}; job ${path.join(args.out, 'job.json')}`);
+  return { prepared: ordered, skipped };
+}
+
+/** One browser session for a job file, in a queue slot (the canal-pw.sh nesting guard keeps a wrapped caller in its slot). */
+function runBrowser(jobFile: string): void {
+  const port = process.env.PW_PORT ?? (fs.existsSync('.worktree-port') ? fs.readFileSync('.worktree-port', 'utf8').trim() : '');
+  if (!port) { console.error('set PW_PORT (a private port): Playwright reuses whatever server holds its port'); process.exit(2); }
+  const res = spawnSync(process.env.CANAL_PW ?? '/tmp/canal-pw.sh', ['npx', 'playwright', 'test', 'tests/e2e/house-frames.spec.ts', '--project=desktop', '--reporter=line'], { stdio: 'inherit', env: { ...process.env, PW_PORT: port, HOUSE_FRAMES_JOB: path.resolve(jobFile) } });
+  if (res.status !== 0) console.error(`browser run exited ${res.status}; posting whatever frames exist`);
+}
+
+/** Checks, pairs, sheets and summary for one input's out dir (after its frames exist). */
+async function postAll(args: Args, prepared: Prepared[], skipped: Skipped[]): Promise<void> {
+  const job = JSON.parse(fs.readFileSync(path.join(args.out, 'job.json'), 'utf8'));
   const results: any[] = [];
   for (const p of prepared) { const r = await post(p, args, job); results.push(r); if (r.error) console.log(`${p.pandId}: ${r.error}`); }
   const ok = results.filter(r => !r.error);
@@ -463,11 +524,70 @@ export async function main(argv = process.argv.slice(2)) {
     flags: Object.fromEntries(['missing', 'otherBuilding', 'roofOffset', 'wallColour'].map(k => [k, ok.filter(r => r.flags[k]).map(r => r.pandId)])),
     advisory: { possibleBlankWall: ok.filter(r => r.advisory?.openings).map(r => r.pandId) },
     colourScores: ok.map(r => [r.pandId, r.colour?.score ?? null]),
-    throughput: timings ? { poses: timings.poses, wallS: +(timings.wallMs / 1000).toFixed(1), pairsPerMin: +(timings.poses / (timings.wallMs / 60000)).toFixed(2), opened: timings.opened, settleMedianS: +(quantile(timings.timings.map((t: any) => t.settle), 0.5) / 1000).toFixed(1) } : null,
+    throughput: timings ? { poses: timings.poses, wallS: +(timings.wallMs / 1000).toFixed(1), pairsPerMin: +(timings.poses / (timings.wallMs / 60000)).toFixed(2), opened: timings.opened, settleMedianS: +(quantile(timings.timings.map((t: any) => t.settle), 0.5) / 1000).toFixed(1), ...(timings.batch ? { batch: timings.batch } : {}) } : null,
     sheets,
   };
   fs.writeFileSync(path.join(args.out, 'summary.json'), JSON.stringify(summary, null, 1));
   console.log(JSON.stringify({ ...summary, skipped: skipped.length }, null, 1));
+}
+
+/** `--lists a.json:outA,b.json:outB`: one argv per list (`--list a.json --out outA` plus the shared flags). */
+export function splitLists(argv: string[]): string[][] {
+  const spec = arg(argv, 'lists')!;
+  const shared: string[] = [];
+  for (let i = 0; i < argv.length; i++) {
+    const a = argv[i];
+    if (a === '--lists' || a === '--out' || a === '--list') { i++; continue; }
+    if (a.startsWith('--lists=') || a.startsWith('--out=') || a.startsWith('--list=')) continue;
+    shared.push(a);
+  }
+  return spec.split(',').filter(Boolean).map(pair => {
+    const i = pair.lastIndexOf(':');
+    if (i <= 0 || i === pair.length - 1) throw new Error(`--lists entry "${pair}": want <list.json>:<out dir>`);
+    return ['--list', pair.slice(0, i), '--out', pair.slice(i + 1), ...shared];
+  });
+}
+
+export async function main(argv = process.argv.slice(2)) {
+  if (argv.includes('--help') || !argv.length) { console.log(HELP); return; }
+  if (arg(argv, 'lists')) return batch(argv);
+  const args = await parseArgs(argv);
+  fs.mkdirSync(args.out, { recursive: true });
+  let prepared: Prepared[] = [], skipped: Skipped[] = [];
+  if (args.postOnly) ({ prepared, skipped } = JSON.parse(fs.readFileSync(path.join(args.out, 'prepared.json'), 'utf8')));
+  else {
+    if (!args.pands.length) { console.error('no pands: give --pands, --face, --buurt or --list\n\n' + HELP); process.exit(2); }
+    ({ prepared, skipped } = await prepareAll(args));
+    if (args.prepOnly || !prepared.length) return;
+    runBrowser(path.join(args.out, 'job.json'));
+  }
+  await postAll(args, prepared, skipped);
+}
+
+/** Several lists, one browser session: every pose in one job, list after list, each written to its list's out. */
+async function batch(argv: string[]) {
+  const runs: Array<{ args: Args; prepared: Prepared[]; skipped: Skipped[] }> = [];
+  for (const one of splitLists(argv)) {
+    const args = await parseArgs(one);
+    console.log(`== ${args.inputName} -> ${args.out}`);
+    if (args.postOnly) { const p = JSON.parse(fs.readFileSync(path.join(args.out, 'prepared.json'), 'utf8')); runs.push({ args, ...p }); continue; }
+    if (!args.pands.length) { console.error(`${args.inputName}: no pands`); process.exit(2); }
+    runs.push({ args, ...(await prepareAll(args)) });
+  }
+  const first = runs[0].args;
+  if (!first.postOnly && !first.prepOnly) {
+    // List by list, each in its own spatial order: the spec re-opens the page where the out dir changes, so a list's
+    // frames start from a fresh page exactly as in a separate run (interleaving lists would re-open at every switch).
+    const poses = runs.flatMap(r => jobFor(r.args, r.prepared).poses);
+    if (poses.length) {
+      const jobFile = path.join(first.out, 'batch-job.json');
+      fs.writeFileSync(jobFile, JSON.stringify({ ...jobFor(first, []), poses }));
+      console.log(`batch: ${poses.length} poses from ${runs.length} lists in one browser session; job ${jobFile}`);
+      runBrowser(jobFile);
+    }
+  }
+  if (first.prepOnly) return;
+  for (const r of runs) { console.log(`== post ${r.args.inputName} -> ${r.args.out}`); await postAll(r.args, r.prepared, r.skipped); }
 }
 
 if (process.argv[1] && path.resolve(process.argv[1]).endsWith(path.join('scripts', 'house-frames', 'frames.ts'))) {
