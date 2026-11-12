@@ -140,3 +140,14 @@ Balcony `bays` in a face override are type coordinates (mirrored houses flip the
 
 ### Frames (house:frames, H10)
 Before: default world (generic). After: the runs installed locally (uncommitted) and `?world=live`. See the hand-back for folders.
+
+### Frames still owed (2026-11-12)
+
+- `weesper-after` holds the Polaklaan 18-26 frames from before the palette fix (2d305ece6), so they show tan brick that
+  the installed chunks no longer draw. Sarphatistraat 173 (170733) picked the Valckenierstraat rear wall
+  (otherBuilding). Re-take both with `--season winter --query '?world=live' --label after`, 173 with bearing 341
+  (`--list` entry `{"pandId":"0363100012170733","bearing":341}`), after a local `compile.ts --install` of the five runs.
+- These re-takes did not run on 2026-11-12. All three `/tmp/canal-pw.sh` slots were held by outer wrappers whose
+  inner `house:frames` or spec run was queued for a slot of its own. `frames.ts` takes its own slot, so never wrap it
+  in `canal-pw.sh`.
+- Contact sheets were copied to `block-face-strips/{weesperbuurt,plantage}-20261110/house-frames/`.
