@@ -67,7 +67,7 @@ for (const spot of SPOTS) {
       const debug = await page.evaluate(() => { const d = (window as any).__canalStreetFurniture?.debug; return d ? { ...d } : null; });
       console.log(JSON.stringify({ spot: spot.name, variant, project: info.project.name, debug }));
       if (variant === 'after') {
-        expect(debug.draws, 'instanced furniture draws').toBeLessThanOrEqual(6);
+        expect(debug.draws, 'instanced furniture draws').toBeLessThanOrEqual(7); // 7 since the krul urinal (2026-11-12): one instanced draw per furniture type in view, Amstelveld has seven.
         expect(debug.triangles, 'furniture triangles on screen').toBeLessThanOrEqual(40_000);
       } else expect(debug, '?furniture=0 builds no layer').toBeNull();
       mkdirSync(OUT, { recursive: true });

@@ -15,15 +15,6 @@ here. Their design notes stay in `BUILDING_*.md`, `FACADE_*.md`, `LOD.md`, and
 
 ---
 
-## Browser queue fixes (P0, approved 2026-11-12, lane Q1 #378)
-
-The queue stalled twice on 2026-11-12 (13:59 nesting deadlock; 14:02 three ownerless slots); 19 jobs waited at 14:26. Brief `docs/handoffs/lane-browser-queue-20261112.md`. Runs ahead of the facade programme's F4 critic, which would add to the queue.
-- Crash-safe slots in `/tmp/canal-pw.sh`: reclaim a dead holder's slot, expire after a measured maximum hold, first-come-first-served order (the "FIFO queue" item below), tracked copy plus installer in the repo.
-- Pre-push hook runs the e2e smoke only for pushes to `main`; lane-branch pushes take no browser slot.
-- `house:frames` runs several lanes' lists in one browser session, with cached photo cuts.
-
-- **CI speed (P1):** `check:rail-street` takes ~17 min on the GitHub runner and ~40 min locally under load; find what it rebuilds and narrow it to its pinned cells. `test:own-ground` (582 s) and `test:building-recipes` (245 s) are next. Confirm the first green split CI run and Pages deploy.
-
 ## Own-look buurten in the canal belt (P0, user 2026-11-10)
 
 The user: "we need to focus on buurts in the canal belt and just outside". Belt and inner-ring lanes run in parallel, and Opus reviews every sheet before merge.
@@ -196,8 +187,7 @@ sheet's IN GAME column and the gallery card work again in lane worktrees
 a POI or destination for De Roos, a blind counter on
 `de-roos-elevations.json`, a "free-standing glazing" class in audit:glb so
 serres and timber screens are not fitted to the ochre and green slots to
-dodge the opening count, and a FIFO queue for `/tmp/canal-pw.sh` (two shared slots since 2026-11-01, exclusive mode for timings; one job
-waited 3 h behind 25 others today; the lock is not fair).
+dodge the opening count, and and nothing else (the FIFO queue landed with Q1 #378, 2026-11-12).
 
 **City look, after the flip (2026-10-30, #137 = A, HISTORY "City look on by
 default"):** measure iPhone perf with the slot array at 128² (desktop was

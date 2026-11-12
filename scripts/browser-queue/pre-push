@@ -1,0 +1,22 @@
+#!/bin/sh
+# Canal Recall pre-push hook (tracked source: scripts/browser-queue/pre-push; installed into the common dir's
+# hooks/ by scripts/browser-queue/install.sh; docs/browser-queue.md).
+#
+# Every push: npm run lint. A push that updates or deletes refs/heads/main also runs the e2e smoke (blank-boot
+# regressions), inside a browser-queue slot: the hook wraps the smoke in /tmp/canal-pw.sh itself, so a caller that
+# already wrapped the push runs it in the outer slot (nesting guard) and an unwrapped push takes a slot only for the
+# smoke. Lane-branch pushes take no slot. PW_PORT defaults to the worktree's .worktree-port.
+# 2026-11-12 lane Q1 (#378): before, every push (lane branches and deletes included) ran the smoke.
+main=0
+while read -r lref lsha rref rsha; do
+  [ "$rref" = refs/heads/main ] && main=1
+done
+npm run lint || exit 1
+if [ "$main" != 1 ]; then
+  echo "pre-push: no push to main; lint only (the e2e smoke runs on pushes to main)"
+  exit 0
+fi
+if [ -z "${PW_PORT:-}" ] && [ -f .worktree-port ]; then PW_PORT=$(cat .worktree-port); export PW_PORT; fi
+W=${CANAL_PW:-/tmp/canal-pw.sh}
+if [ -x "$W" ]; then "$W" npm run test:e2e:smoke || exit 1
+else npm run test:e2e:smoke || exit 1; fi

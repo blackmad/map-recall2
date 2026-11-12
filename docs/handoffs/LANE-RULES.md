@@ -35,6 +35,10 @@ write the question in your report instead; the integrator answers it.
   directory or a `git diff` list), `--workers=1`, and re-run a representative
   subset, not every touched file. A 638-test run on 2026-10-30 held the lock
   for two hours with six lanes queued behind it.
+- Push lane branches unwrapped (`/usr/bin/git push origin <branch>`): the
+  pre-push hook runs the e2e smoke only for pushes to `main` and takes its own
+  slot for it. Never wrap `house:frames`; it takes its own slot.
+  `/tmp/canal-pw.sh --status` shows who holds what (docs/browser-queue.md).
 
 ## The queue is the handoff
 

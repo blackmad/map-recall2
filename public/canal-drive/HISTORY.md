@@ -1,5 +1,10 @@
 # Canal Recall — what is built
 
+**Browser queue Q1 (#378), What's New Plan tab, krul urinals (2026-11-12).**
+- **Q1:** `/tmp/canal-pw.sh` is now tracked in `scripts/browser-queue/` (install with `npm run install:browser-queue`, tests `npm run test:browser-queue`). Slots are first-come-first-served via tickets; a dead holder's slot is reclaimed on the next 2 s poll, a pid-less slot after 30 s, and any hold expires at 7200 s (measured longest legitimate job: check:canal 71 min under load). Events go to `/tmp/canal-pw.events.log`; `--status` shows holders. The pre-push hook runs the e2e smoke only for pushes to main and wraps it itself; lane-branch pushes are lint-only and take no slot. `house:frames --lists a.json:outA,b.json:outB` runs several lanes' lists in one browser session (119 s vs 223 s for two runs, same pairs within run-to-run noise) and `--reuse-photos` skips photo prep. Docs: `docs/browser-queue.md`.
+- **Plan tab:** `whats-new.html#plan` renders `coverage-plan.json` (the ordered coverage plan); the In progress list reads its `inProgress` instead of the stale `poi-work-queue.json`. The integrator keeps that file current.
+- **Krul urinals:** 38 `urinal-krul` instances (152 triangles) from the city's Openbare toiletten map (SELECTIE=KRUL, 37 points; Westermarkt is a pair). Street-furniture shots budget raised from 6 to 7 draws (one instanced draw per furniture type in view). Roof caps, orientation and the two concrete Van der Mey krullen are not expressed.
+
 **CI split into three parallel check:canal jobs; tree-crown check no longer needs a local-only commit (2026-11-12).**
 - Canal CI's single check:canal job passed its 45-minute limit from 2026-11-10 midday: check:rail-street alone takes ~17 min on the runner, and test:own-ground / test:building-recipes grew 50–80 % with the ground and house-line work. Every main run was cancelled, so Pages did not deploy after a332381a9 (2026-11-10 08:39 UTC).
 - `check:canal` is now `check:canal:core` (check-canal.ts) && `check:canal:rail` (bridge-gaps, rail-street) && `check:canal:rest`; CI runs the three as a matrix. Local behaviour is unchanged.

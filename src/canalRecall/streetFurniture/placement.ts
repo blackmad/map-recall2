@@ -14,6 +14,8 @@ export type FurnitureInstance = { model: FurnitureModelId; id: string; lng: numb
 
 /** Hoops per BGT rack point and their spacing along the kerb. */
 export const HOOPS_PER_RACK = 5, HOOP_SPACING_M = 0.9;
+/** Two krullen at one register point stand this far apart, centre to centre (the pad is 2.1 m long). */
+export const URINAL_PAIR_M = 2.4;
 const RAD = Math.PI / 180;
 
 export function hash01(s: string): number {
@@ -124,6 +126,15 @@ export function instancesOf(r: FurnitureRecord): FurnitureInstance[] {
       return [{ model: 'lamp-pole', id: r.id, lng: r.lng, lat: r.lat, yaw: -frontBearing(r, false) * RAD, scale: lampHeight(r.road) / DIMENSIONS.pole.height, slotHex: null }];
     case 'abri': return [{ model: 'abri', id: r.id, lng: r.lng, lat: r.lat, yaw: -frontBearing(r, false) * RAD, scale: 1, slotHex: posterHex(r.id) }];
     case 'ad-column': return [{ model: 'ad-column', id: r.id, lng: r.lng, lat: r.lat, yaw: hash01(r.id) * 2 * Math.PI, scale: 1, slotHex: posterHex(r.id) }];
+    case 'urinal': {
+      // Entry away from the street (toward the quay or the square: a prior, the register has no orientation); a second
+      // krul at the same point ("twee krullen") stands URINAL_PAIR_M along the kerb.
+      const front = frontBearing(r, true), yaw = -front * RAD, along = (front + 90) * RAD, n = r.count ?? 1;
+      return Array.from({ length: n }, (_, k) => {
+        const o = (k - (n - 1) / 2) * URINAL_PAIR_M;
+        return { model: 'urinal-krul' as const, id: n > 1 ? `${r.id}#${k}` : r.id, lng: r.lng + o * Math.sin(along) / KX(r.lat), lat: r.lat + o * Math.cos(along) / KY, yaw, scale: 1, slotHex: null };
+      });
+    }
     case 'bin': return [{ model: 'bin', id: r.id, lng: r.lng, lat: r.lat, yaw: -frontBearing(r, false) * RAD, scale: 1, slotHex: null }];
     case 'bike-rack': {
       const front = frontBearing(r, false), yaw = -front * RAD, along = (front + 90) * RAD; // +x bearing

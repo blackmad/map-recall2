@@ -3,8 +3,8 @@
  "category": "street-furniture",
  "generator": "scripts/street-furniture/export-models.ts",
  "extract": "public/data/extracts/amsterdam/street-furniture",
- "extractRetrievedAt": "2026-11-07T19:13:24.888Z",
- "instances": 135987,
+ "extractRetrievedAt": "2026-11-12T14:29:29.678Z",
+ "instances": 136037,
  "models": [
   {
    "id": "container",
@@ -15,7 +15,7 @@
    "modelUrl": "./models/street-furniture/container.glb",
    "triangles": 150,
    "glbBytes": 17100,
-   "instances": 3122,
+   "instances": 3120,
    "source": "Gemeente Amsterdam huishoudelijkafval register (active, UNDERGROUND) + BGT bak/afvalbak; the Amsterdam Standaard column (#212)",
    "measured": [
     "column 1.19 m (1.16-1.22 m, four panoramas)",
@@ -76,7 +76,7 @@
    "modelUrl": "./models/street-furniture/container-bg.glb",
    "triangles": 154,
    "glbBytes": 17544,
-   "instances": 895,
+   "instances": 896,
    "source": "Gemeente Amsterdam huishoudelijkafval register: containertype \"3,5m3 KHC … BG 2100*1470*1778 (Engels)\" and \"… BG\" (2026-11-07)",
    "measured": [
     "2.10 x 1.47 x 1.78 m from the register type name",
@@ -122,7 +122,7 @@
    "modelUrl": "./models/street-furniture/container-papier.glb",
    "triangles": 133,
    "glbBytes": 15288,
-   "instances": 2665,
+   "instances": 2664,
    "source": "Gemeente Amsterdam huishoudelijkafval register: fractieOmschrijving Papier (#212)",
    "measured": [
     "the same column: wide dark slot on the slope under the blue band, light flap below",
@@ -149,7 +149,7 @@
    "modelUrl": "./models/street-furniture/lamp-lantern.glb",
    "triangles": 74,
    "glbBytes": 8876,
-   "instances": 6311,
+   "instances": 6322,
    "source": "BGT paal/lichtmast; style by stadsdeel Centrum and road class (a prior)",
    "measured": [
     "4.09 m to the finial",
@@ -178,7 +178,7 @@
    "modelUrl": "./models/street-furniture/lamp-pole.glb",
    "triangles": 92,
    "glbBytes": 10836,
-   "instances": 113616,
+   "instances": 113617,
    "source": "BGT paal/lichtmast",
    "measured": [
     "7.6 m to the curl on a residential Pijp street",
@@ -255,7 +255,7 @@
    "modelUrl": "./models/street-furniture/abri.glb",
    "triangles": 86,
    "glbBytes": 10160,
-   "instances": 1133,
+   "instances": 1135,
    "source": "BGT straatmeubilair/abri",
    "measured": [
     "2.47 m high",
@@ -301,6 +301,40 @@
     "distanceM": 6.63,
     "recordId": "bgt-G0363.36dae26f0b4143d19e2e55b0b92045b3",
     "thumbnail": "https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-06-16_03-46-32_00582/?heading=6&width=600&aspect=1.25&horizon=0.4",
+    "licence": "Gemeente Amsterdam panoramas, CC BY 4.0"
+   }
+  },
+  {
+   "id": "urinal-krul",
+   "name": "Amsterdamse krul (urinal)",
+   "kind": "urinal",
+   "category": "street-furniture",
+   "subtypes": "krul (the city's Amsterdamse krul rows; a \"twee krullen\" point places two)",
+   "modelUrl": "./models/street-furniture/urinal-krul.glb",
+   "triangles": 152,
+   "glbBytes": 17308,
+   "instances": 38,
+   "source": "Gemeente Amsterdam Maps Data openbare toiletten, SELECTIE KRUL (free reuse under the Maps Data terms)",
+   "measured": [
+    "sheet 0.50-2.03 m: bottom 0.45 / 0.57 m and top 1.94 / 2.22 m on two panoramas (Amstelveld 7.3 m, Singel by the Bloemenmarkt 6.48 m), half a metre off the floor as nlwiki says",
+    "1.02-1.13 m across in side view",
+    "plan from the city drawing \"Plattegrond van een ijzeren urinoir boven bestaande riolen\" (Commons, public domain): a 0.42 m loop round the stand, then a 0.74-0.85 m arc screening the entry, four posts",
+    "upper half perforated, lower half plain",
+    "end posts 0.22 m proud with a knob (Commons, 2022 Krul bij Corsgenbrug, CC BY-SA 4.0)",
+    "pad 0.10-0.19 m, brick edge, tiled floor; natural-stone plate inside"
+   ],
+   "prior": [
+    "dark green #2c4542: the luminance of the panoramas and photos, the hue the city's donkergroen (the panoramas read blue at dawn)",
+    "entry turned away from the street",
+    "no dakje (roof cap): 1 of 13 panoramas has one and no field says which",
+    "the two Van der Mey concrete krullen drawn as iron ones"
+   ],
+   "photo": {
+    "panoId": "recording_2025-06-19_03-28-47_02005",
+    "heading": 336,
+    "distanceM": 7.3,
+    "recordId": "toilet-30",
+    "thumbnail": "https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-06-19_03-28-47_02005/?heading=336&width=600&aspect=1.25&horizon=0.4",
     "licence": "Gemeente Amsterdam panoramas, CC BY 4.0"
    }
   }
