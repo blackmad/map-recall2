@@ -2280,3 +2280,75 @@ installed models, 13 spec recipes. Four fresh Opus critics, about 50 pairs each.
 
 Archive: source-data `experiments/facade-benchmark/round-0/` (frames, critic pairs and key, labels, queue). Sheets:
 map-recall2-screenshots `ui/2026-11-12-facade-benchmark/round-0/`.
+
+## §11 Wall colour per stage, and the measured wall pool (lane W1, 2026-11-12)
+
+The user (2026-11-12): "every house is the wrong color". Ruling: correctness first, measured dark brick ships even if the
+city reads darker.
+
+### Where the error arises: `scripts/house-frames/wall-stages.ts`
+
+```sh
+node --import tsx scripts/house-frames/wall-stages.ts <house:frames out> [--keys a,b] [--json f] [--md f]
+```
+
+Per pand of a frames run, OKLab at every stage of the generic path against the photo half of the same pose
+(`analyse.ts wallLab`): photo; the spec reading (`houseSpec.wallHex`); the source the period path draws without one (the
+buurt profile's era wall, or `PERIOD_WALLS`' hash pick); decorated (`specRecipe.wallHex`, else the source); mesher
+(`meshBuildingFor` wallHex); pixel (wallLab on `game.png`). Classes: `spec` (a drawn reading), `held` (the pale-warm
+guard), `profile`, `period`, `model` (an installed chunk/landmark: no Node-side stage).
+
+F4 round 0 (193 pands, default world, main 659f8fc72), stage table with the pool off (`WALL_POOL=0`), means:
+
+| class | stage | n | dL | dC | dh (median) | dE |
+|---|---|---|---|---|---|---|
+| spec | reading vs photo | 12 | -0.010 | +0.010 | +14 | 0.112 |
+| spec | decorated vs reading | 12 | +0.040 | +0.028 | -4 | 0.080 |
+| spec | mesher vs decorated | 12 | 0 | 0 | 0 | 0 |
+| spec | pixel vs mesher | 12 | -0.006 | -0.010 | +3 | 0.043 |
+| spec | **pixel vs photo** | 12 | +0.024 | +0.027 | +11 | **0.067** |
+| profile | source vs photo | 152 | **+0.137** | +0.027 | -26 | **0.210** |
+| profile | mesher vs decorated | 153 | +0.004 | 0 | 0 | 0.012 |
+| profile | pixel vs mesher | 153 | -0.080 | -0.015 | +1 | 0.116 |
+| profile | **pixel vs photo** | 152 | +0.061 | +0.012 | -11 | **0.134** |
+| held | reading vs photo | 4 | +0.174 | +0.018 | +9 | 0.176 |
+| held | mesher vs decorated (heldBrickWall) | 4 | -0.100 | +0.022 | 0 | 0.102 |
+| held | pixel vs photo | 4 | -0.068 | +0.026 | -9 | 0.144 |
+| model | pixel vs photo | 23 | +0.030 | +0.016 | +18 | 0.077 |
+
+Read:
+- **The error is the source, on pands without a reading.** 152 of the 193 drew a buurt-profile swatch, none the bare
+  period palette. Their drawn wall is uncorrelated with the photo (Pearson r on OKLab L: photo vs mesher 0.000, photo vs
+  pixel 0.07); photo walls sit at L 0.42 ± 0.09, C 0.016, the profile swatches at L 0.55 ± 0.20 (whites #e1dbd3,
+  #e3e0e1, slate greys #7c7c7d, #696a6d, terracotta #bc7f5e). All 87 critic wall-colour pairs are profile or installed
+  pands; the critic named wall colour on **0 of the 13** spec-wall pairs.
+- **The spec walls are not 0.10 L darker than the photo**: pixel vs photo dL +0.024 (n 12). The 0.10 figure was pixel
+  vs mesher on the wall-colour-truth set, whose 11 non-spec walls were pale profile swatches: the render compresses
+  lightness (pixel L = 0.43 x mesher L + 0.24 over 169 walls; +0.03 at mesher L 0.3-0.4, -0.06 at 0.5-0.6, -0.34 at
+  0.9+), so a white swatch draws mid grey and a dark brick draws as itself. **No lift change**: on a dark measured wall
+  the lift is near identity; a lighter lift would only hide the source error.
+- **Brick drawn as render** (wall-colour-truth's three, 165826, 157089, 233628; also 167816): not a material flag. The
+  wall cell is brick; the profile picked a painted swatch (#e1dad4, #dfd9d7, #ece8e1, #e2e9ec), and a near-white tint on
+  the brick cell reads as render. Fixed at the source below (#896558, #7c502d, #a35a30, #575351).
+- The profile pools cannot be re-derived here: `derive.ts` reads 558 archived panorama walls but the panorama thumbnails
+  it was published from are not archived (`panorama thumbnails used 0`; 104 of 466 profiles would survive). §9's
+  `paintClass` fix is still unpublished for that reason.
+
+### The measured wall pool (`look/measuredWallPool.ts`, flag `?wallPool=0`, `WALL_POOL=0`, default on)
+
+- **Table:** `scripts/house-specs/measured-wall-pool.ts --publish` writes `look/measured-wall-pool.json`: 1,020 spec'd
+  pre-1945 pands whose reading draws (the decorated colour, `decorate.ts specWallColour`), with centroid and archetype.
+  Excluded: 301 held readings and 43 post-1945 pands. A pand an installed model hides enters (945): its reading is of
+  the real front.
+- **Unmeasured pand** (`bayLook.ts bayLookFor`, `at`): photo look, no recipe/modern vocabulary, archetype canal, c19 or
+  school. Candidates are the measured walls within 600 m of the same archetype (any pre-1945 archetype when fewer than
+  6). It takes the 12 nearest, keeps the 35-65 % band of their OKLab L, and picks by id hash. The pick replaces the profile
+  swatch and outranks a material prior as a profile wall does (`profileWall`). With fewer than 6 candidates the profile
+  stands.
+- **Period palette** (`brickLift.ts periodWallList` → `measuredPeriodList`): the city-wide L deciles of each archetype's
+  measured walls replace `PERIOD_WALLS.photo` (and brickLift v2's c19 list) for pands with no profile and no neighbours,
+  and for `heldBrickWall`'s brick fallback. canal (n 58) #363839 .. #f0d5ac, c19 (n 541) #3c3731 .. #8b8e8c, school
+  (n 421) #383838 .. #897b76; no #b05a40/#bd6a45 terracotta, no #3e4a40/#5d605a slate.
+- **Reach:** both the live path and the baked world-v1 path (the worker forwards `wallPool`, `engine/workerPool.ts`);
+  the integrator rebuilds world-v1. F1's `?shaderFacades=1` draws record walls at 1.0 x wallHex, so it gets the change.
+- **Off is byte-identical** (`measuredWallPool.test.ts`: bayLookFor with and without a location under `WALL_POOL=0`).

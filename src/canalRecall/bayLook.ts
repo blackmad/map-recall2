@@ -7,6 +7,7 @@
 import { SHOP_KINDS, archetypeFor, paletteFor, type Archetype, type BayKind, type BayVariant, type Look, type ShopKind } from './bayTextures.js';
 import { GROUND_PAINTS, PERIOD_WALLS, lookHex } from './look/palette.js';
 import { brickLiftOn, brickLiftV2ProfileWall, periodWallList } from './look/brickLift.js';
+import { measuredPoolWall } from './look/measuredWallPool.js';
 import { hashSeed } from './wallBays.js';
 import type { ArchitecturalRecipe } from './streetAppearance.js';
 import type { FacadeStyle } from './genericFacades.js';
@@ -221,7 +222,12 @@ export function bayStyleForTraits(id: string, archetype: Archetype, traits: Prof
  * profile's draw for it and the preset is picked by bayStyleForTraits among the plain presets, as a profile's would be. Never
  * over a recipe or the modern vocabularies; absent (or no trait stated) = every pick as before.
  */
-export function bayLookFor(id: string, year: number | null, heightM: number, look: Look, shopfront?: ShopKind | 'quiet', recipe?: ArchitecturalRecipe, periodWall?: string, profile?: BuurtProfile | null, modern?: Pick<ModernFacts, 'footprintM2' | 'buildingType'> & { at?: readonly [number, number] }, spec?: { pale?: boolean; dark?: boolean; arch?: boolean; tall?: boolean; bays?: number }) {
+/**
+ * `at` (lng, lat): where the building stands, for the measured wall pool (look/measuredWallPool.ts, lane W1, `?wallPool=0`):
+ * photo look, no recipe or modern vocabulary, a pre-1945 archetype with enough measured neighbours: their wall replaces
+ * the profile's and the period palette's swatch (and outranks a material prior as a profile wall does). Absent = as before.
+ */
+export function bayLookFor(id: string, year: number | null, heightM: number, look: Look, shopfront?: ShopKind | 'quiet', recipe?: ArchitecturalRecipe, periodWall?: string, profile?: BuurtProfile | null, modern?: Pick<ModernFacts, 'footprintM2' | 'buildingType'> & { at?: readonly [number, number] }, spec?: { pale?: boolean; dark?: boolean; arch?: boolean; tall?: boolean; bays?: number }, at?: readonly [number, number]) {
   const buurt = !recipe && look === 'photo' && profile ? profile : null;
   const archetype: Archetype = recipe?.facadeAssembly === 'stacked-iron-balcony' ? 'c19' : recipe ? (recipe.family === 'masonry' ? (recipe.period === 'c19' || recipe.period === 'school' ? recipe.period : 'canal') : 'modern')
     : year === null && buurt?.dominantEra && heightM < 28 ? buurt.dominantEra : archetypeFor(id, year, heightM);
@@ -240,6 +246,8 @@ export function bayLookFor(id: string, year: number | null, heightM: number, loo
   const walls = periodWallList(look, archetype, PERIOD_WALLS[look][archetype]);
   if (walls) palette.wall = walls[(hashSeed(id) >>> 7) % walls.length];
   if (traits?.wall) palette.wall = brickLiftOn() && look === 'photo' ? brickLiftV2ProfileWall(traits.wall) : traits.wall;
+  const poolWall = at && look === 'photo' && !recipe && !vocab && !contemporary ? measuredPoolWall(at[0], at[1], archetype, h >>> 7) : null;
+  if (poolWall) palette.wall = poolWall;
   if (vocab) { palette.wall = vocab.wall; if (vocab.accent) palette.accent = vocab.accent; }
   if (contemporary) palette.wall = lookHex(contemporary.wall, look);
   if (periodWall && look === 'photo') palette.wall = periodWall;
@@ -247,7 +255,7 @@ export function bayLookFor(id: string, year: number | null, heightM: number, loo
   // A shop's ground floor is painted, and the paint is its own colour, not the brick's.
   const paints = GROUND_PAINTS[look];
   return {
-    archetype, style, ...(vocab ? { modern: vocab } : {}), ...(contemporary ? { contemporary } : {}), variant: { archetype, ...BAY_STYLES[archetype][style] }, ...(traits?.wall && !periodWall && !recipe?.wallHex ? { profileWall: traits.wall } : {}), layout: ARCHETYPE_LAYOUT[archetype], wallHex: palette.wall, accentHex: recipe?.openingGroup ? lookHex(recipe.frameHex ?? '#f1ede2', look) : palette.accent,
+    archetype, style, ...(vocab ? { modern: vocab } : {}), ...(contemporary ? { contemporary } : {}), variant: { archetype, ...BAY_STYLES[archetype][style] }, ...((poolWall ?? traits?.wall) && !periodWall && !recipe?.wallHex ? { profileWall: (poolWall ?? traits!.wall)! } : {}), layout: ARCHETYPE_LAYOUT[archetype], wallHex: palette.wall, accentHex: recipe?.openingGroup ? lookHex(recipe.frameHex ?? '#f1ede2', look) : palette.accent,
     groundHex: recipe?.groundWallHex ? lookHex(recipe.groundWallHex, look) : shop ? (shopfront && shopfront !== 'quiet' && shopGrammarEnabled() ? shopGroundHex(id, look) : paints[(h >>> 21) % paints.length]) : undefined,
     layers: { upper: bayLayer(archetype, style, 'upper'), ground: bayLayer(archetype, style, shop && !recipe?.openingGroup && !(recipe?.facadeAssembly === 'stacked-open-balcony' && (shopKind === 'shopWindow' || shopKind === 'groundShop')) ? shopKind : 'ground', !!recipe && recipe.trimDensity !== 'ornate'), door: bayLayer(archetype, style, 'groundDoor') },
     plain: bayLayer(archetype, style, 'plain'),

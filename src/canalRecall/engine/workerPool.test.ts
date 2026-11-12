@@ -39,6 +39,8 @@ test('pool: worker URL next to any bundle, with the building A/B flags', () => {
   // brickLift and specWalls are read where meshBuildingFor runs (the worker): `?brickLift=v1` must reach it.
   assert.equal(withWorkerFlags('w.js?v=2', '?brickLift=v1&specWalls=0&world=live'), 'w.js?v=2&brickLift=v1&specWalls=0');
   assert.equal(withWorkerFlags('w.js', '?a=1&paletteLevel=0'), 'w.js?paletteLevel=0');
+  // The measured wall pool (look/measuredWallPool.ts) is read in bayLookFor, in the worker: `?wallPool=0` must reach it.
+  assert.equal(withWorkerFlags('w.js', '?world=live&wallPool=0'), 'w.js?wallPool=0');
   assert.equal(withWorkerFlags('w.js', '?look=toon&toonFronts=candy&roofFamily=1&treeCalm=1&labelCalm=1'), 'w.js?look=toon&toonFronts=candy&roofFamily=1&treeCalm=1');
 });
 
