@@ -47,6 +47,8 @@
   .seg{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;background:var(--card)}
   .seg button{font:inherit;font-size:13px;border:0;background:none;color:var(--mut);padding:6px 14px;cursor:pointer;min-height:36px}
   .seg button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+  @media (max-width:560px){.seg{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-radius:14px;width:100%}.seg button{padding:6px 4px;white-space:nowrap}}
+  [hidden]{display:none!important}
   .search{flex:1 1 180px;min-width:0}
   .search input{width:100%;font:inherit;font-size:16px;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:999px;padding:6px 14px;min-height:38px}
   .search input:focus-visible,.seg button:focus-visible,.more:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
@@ -92,6 +94,29 @@
   .wip h3{margin:0 0 4px;font-size:14.5px;line-height:1.3;overflow-wrap:anywhere}
   .wip .st{display:inline-block;font-size:11px;font-weight:600;color:var(--wip);border:1px solid currentColor;border-radius:999px;padding:0 8px;margin-bottom:6px}
   .wip p{margin:0;font-size:12.5px;color:var(--mut);display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+  .wip h3 a{color:inherit;text-decoration-color:var(--line)}
+  .wip h3 a:hover{text-decoration-color:currentColor}
+  .wip .iss{font-weight:400;color:var(--mut);font-size:12.5px;white-space:nowrap}
+  .updated{font-size:12.5px;color:var(--mut);margin:-8px 0 14px}
+  #plan-sec h2.sec{margin-top:32px}
+  .principles{margin:0 0 22px;padding:12px 14px 12px 32px;background:var(--card);border:1px solid var(--line);border-radius:12px;max-width:80ch;display:grid;gap:4px}
+  .principles li::marker{color:var(--accent)}
+  .phases{list-style:none;margin:0;padding:0;display:grid;gap:10px;counter-reset:ph}
+  .phase{display:grid;grid-template-columns:2.2em 1fr;gap:4px 12px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 14px;box-shadow:var(--shadow);min-width:0}
+  .phase.later,.phase.ongoing{box-shadow:none}
+  .phase .num{font:700 24px/1.1 Georgia,serif;color:var(--mut);font-variant-numeric:tabular-nums;grid-row:span 3}
+  .phase.in-progress .num{color:var(--accent)}
+  .phase-head{display:flex;flex-wrap:wrap;align-items:center;gap:6px 8px;min-width:0}
+  .phase-head h3{margin:0;font-size:16px;line-height:1.3;overflow-wrap:anywhere;flex:1 1 220px}
+  .pri,.pst{display:inline-block;font-size:11px;font-weight:700;border-radius:999px;padding:1px 8px;white-space:nowrap}
+  .pri{background:var(--chip);color:var(--ink)}
+  .pri.P0{background:var(--accent);color:var(--accent-ink)}
+  .pst{font-weight:600;border:1px solid currentColor;color:var(--mut)}
+  .pst.in-progress{color:var(--wip)}
+  .pst.next{color:var(--ok)}
+  .phase p{margin:0;color:var(--mut);font-size:14px;max-width:80ch}
+  .phase ul{margin:2px 0 0;padding-left:18px;font-size:13.5px;display:grid;gap:2px}
+  @media (max-width:560px){.phase{grid-template-columns:1fr}.phase .num{grid-row:auto;font-size:18px}}
   footer{padding:40px 0 56px;color:var(--mut);font-size:12.5px}
   noscript{display:block;padding:20px 0}
   @media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
@@ -135,12 +160,20 @@
       <button type="button" data-kind="ordinary" aria-pressed="false">Ordinary</button>
       <button type="button" data-kind="street-survey" aria-pressed="false">Kit rows</button>
       <button type="button" data-kind="street-furniture" aria-pressed="false">Street furniture</button>
+      <button type="button" data-kind="plan" aria-pressed="false">Plan</button>
     </div>
     <label class="search"><input id="q" type="search" placeholder="Search by name" aria-label="Search by name" autocomplete="off"></label>
     <span class="count" id="count" role="status"></span>
   </div>
 </div>
 <main class="wrap">
+  <section id="plan-sec" hidden aria-labelledby="plan-title">
+    <h2 class="sec" id="plan-title">The plan for the whole city</h2>
+    <p class="updated" id="plan-updated"></p>
+    <p class="sec-note" id="plan-intro"></p>
+    <ul class="principles" id="plan-principles" aria-label="Principles"></ul>
+    <ol class="phases" id="plan-phases" aria-label="Phases in order"></ol>
+  </section>
   <section id="changes-sec" hidden>
     <h2 class="sec" id="changes-title">Changes you can see</h2>
     <p class="sec-note">Fixes and improvements to the ride itself, not single models: roads, roofs, the ferry, how the city is drawn. Newest first.</p>
@@ -150,7 +183,7 @@
   <button type="button" class="more" id="more" hidden>Show older</button>
 
   <h2 class="sec" id="wip-title">In progress</h2>
-  <p class="sec-note">Not finished. These are drafts waiting on review, or buildings being worked on right now, so they are not in the game yet.</p>
+  <p class="sec-note">Not finished yet: work being designed or built right now, and finished work waiting on review before it reaches the game. <span id="wip-updated"></span></p>
   <div class="wip-grid" id="wip"></div>
 </main>
 <footer class="wrap">
@@ -364,6 +397,9 @@ function render() {
   cards.clear(); queue.length = 0;
   const feed = $('#feed'); feed.textContent = '';
   syncChanges();
+  const plan = state.kind === 'plan';
+  $('#plan-sec').hidden = !plan; $('.search').hidden = plan;
+  if (plan) { $('#more').hidden = true; $('#count').textContent = state.plan ? `${state.plan.phases.length} phases` : ''; renderWip(); return; }
   const list = filtered();
   $('#count').textContent = `${fmt(list.length)} model${list.length === 1 ? '' : 's'}`;
   if (!list.length) { feed.innerHTML = '<p class="empty">No models match.</p>'; $('#more').hidden = true; renderWip(); return; }
@@ -396,27 +432,59 @@ function render() {
 }
 
 function renderWip() {
-  const q = state.q.trim().toLowerCase();
+  const q = state.kind === 'plan' ? '' : state.q.trim().toLowerCase();
   const list = state.tasks.filter(t => !q || t.name.toLowerCase().includes(q));
   const box = $('#wip'); box.textContent = '';
   $('#wip-title').hidden = $('#wip-title + .sec-note').hidden = !state.tasks.length;
   if (!list.length) { box.innerHTML = '<p class="empty">Nothing in progress matches.</p>'; return; }
   for (const t of list) {
     const d = document.createElement('div'); d.className = 'wip';
-    d.innerHTML = '<h3></h3><span class="st"></span><p></p>';
-    d.querySelector('h3').textContent = t.name;
+    d.innerHTML = '<h3></h3><span class="st"></span>';
+    const h = d.querySelector('h3');
+    if (t.issue) {
+      const a = document.createElement('a'); a.href = `${ISSUES}${t.issue}`; a.target = '_blank'; a.rel = 'noopener';
+      a.textContent = t.name; const n = document.createElement('span'); n.className = 'iss'; n.textContent = ` #${t.issue}`;
+      a.append(n); h.append(a);
+    } else h.textContent = t.name;
     d.querySelector('.st').textContent = t.label;
-    d.querySelector('p').textContent = t.next || '';
     box.append(d);
   }
 }
 
 // ---------- data
-function wipLabel(status) {
-  if (/draft/.test(status)) return 'Draft, awaiting review';
-  if (/review-pending|unaccepted|awaiting/.test(status)) return 'Awaiting review';
-  if (/in-progress/.test(status)) return 'Being built';
-  return status.replace(/-/g, ' ');
+// The coverage plan and the In progress list are hand-written by the integrator
+// (public/canal-drive/coverage-plan.json); the old poi-work-queue.json was the
+// stale landmark queue.
+const ISSUES = 'https://github.com/blackmad/map-recall2/issues/';
+const PLAN_STATUS = { 'in-progress': 'In progress', next: 'Next', ongoing: 'Ongoing', later: 'Later' };
+const longDate = iso => { const [y, m, d] = String(iso).split('-').map(Number); return y && m && d ? new Date(y, m - 1, d).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' }) : String(iso); };
+function renderPlan(p) {
+  state.plan = p;
+  const up = p.updated ? `Updated ${longDate(p.updated)}` : '';
+  $('#plan-updated').textContent = up; $('#wip-updated').textContent = up ? `${up}.` : '';
+  $('#plan-intro').textContent = p.intro || '';
+  const pr = $('#plan-principles'); pr.replaceChildren(...(p.principles || []).map(t => { const li = document.createElement('li'); li.textContent = t; return li; }));
+  pr.hidden = !pr.children.length;
+  const ol = $('#plan-phases'); ol.replaceChildren();
+  for (const ph of [...(p.phases || [])].sort((a, b) => a.order - b.order)) {
+    const li = document.createElement('li'); li.className = `phase ${ph.status || ''}`; li.dataset.order = ph.order;
+    li.innerHTML = '<span class="num" aria-hidden="true"></span><div class="phase-head"><h3></h3><span class="pri"></span><span class="pst"></span></div><p></p>';
+    li.querySelector('.num').textContent = ph.order;
+    li.querySelector('h3').textContent = ph.title;
+    const pri = li.querySelector('.pri'); pri.textContent = ph.priority; pri.classList.add(ph.priority); pri.title = `Priority ${ph.priority}`;
+    const st = li.querySelector('.pst'); st.textContent = PLAN_STATUS[ph.status] || ph.status; if (ph.status) st.classList.add(ph.status);
+    li.querySelector('p').textContent = ph.text || '';
+    if (ph.items && ph.items.length) {
+      const ul = document.createElement('ul');
+      for (const t of ph.items) { const i = document.createElement('li'); i.textContent = t; ul.append(i); }
+      li.append(ul);
+    }
+    ol.append(li);
+  }
+  state.tasks = (p.inProgress || []).map(t => ({ name: t.name, label: t.label || 'In progress', issue: t.issue || null }));
+  $('#foot').textContent = `${fmt(state.tasks.length)} items in progress.`;
+  if (state.kind === 'plan') $('#count').textContent = `${(p.phases || []).length} phases`;
+  renderWip();
 }
 // Ride-wide changes are not models, so only the All tab shows them.
 function syncChanges() { const sec = $('#changes-sec'); sec.hidden = !Number(sec.dataset.notes) || state.kind !== 'all'; }
@@ -459,10 +527,11 @@ function renderChanges(notes) {
 }
 async function init() {
   fetchJson('./whats-new-notes.json').then(j => renderChanges(j.notes)).catch(() => {});
-  const [dates, firstAddedJson, sig, ord, queueJson, chunkJson, furnitureJson] = await Promise.all([
+  const planReady = fetchJson('./coverage-plan.json').then(renderPlan).catch(err => { window.whatsNew.errors.push({ error: `coverage-plan: ${err}` }); });
+  const [dates, firstAddedJson, sig, ord, chunkJson, furnitureJson] = await Promise.all([
     fetchJson('./models/model-dates.json'), fetchJson('./models/model-first-added.json').catch(() => ({ models: {} })),
     fetchJson('./models/signature-landmarks.json'),
-    fetchJson('./ordinary-buildings-data/catalogue.json'), fetchJson('./poi-work-queue.json').catch(() => ({ tasks: [] })),
+    fetchJson('./ordinary-buildings-data/catalogue.json'),
     fetchJson('./ordinary-buildings-data/chunks.json').catch(() => ({ chunks: [] })),
     fetchJson('./street-furniture/catalogue.json').catch(() => ({ models: [] })),
   ]);
@@ -522,11 +591,6 @@ async function init() {
   items.sort((a, b) => (b.date ? b.date.getTime() : -Infinity) - (a.date ? a.date.getTime() : -Infinity) || a.name.localeCompare(b.name));
   state.items = items;
 
-  const WIP = /draft|review-pending|unaccepted|awaiting|in-progress|generated/;
-  state.tasks = (queueJson.tasks || []).filter(t => WIP.test(t.status || '') && !/^verified|^hosted|^complete/.test(t.status))
-    .map(t => ({ name: t.task || t.id, label: wipLabel(t.status), next: t.nextAction, high: t.priority === 'high' }))
-    .sort((a, b) => Number(b.high) - Number(a.high));
-
   const landmarks = items.filter(i => i.kind === 'landmark').length;
   const week = items.filter(i => i.date && i.date.getTime() >= Date.now() - 7 * 864e5).length;
   const set = (k, v) => { $(`[data-k="${k}"]`).textContent = v; };
@@ -540,16 +604,28 @@ async function init() {
   const midnight = new Date(); midnight.setHours(0, 0, 0, 0);
   const today = items.filter(i => i.date && i.date >= midnight).length;
   $('#weekNote').textContent = today ? `new this week \u00b7 ${fmt(today)} today` : 'new this week';
-  $('#foot').textContent = `${fmt(state.tasks.length)} items in progress.`;
+  await planReady;
   render();
   window.whatsNew.ready = true;
 }
 
-for (const b of document.querySelectorAll('.seg button')) b.addEventListener('click', () => {
-  state.kind = b.dataset.kind; state.shown = PAGE_CARDS;
-  document.querySelectorAll('.seg button').forEach(x => x.setAttribute('aria-pressed', String(x === b)));
+function setKind(kind) {
+  state.kind = kind; state.shown = PAGE_CARDS;
+  document.querySelectorAll('.seg button').forEach(x => x.setAttribute('aria-pressed', String(x.dataset.kind === kind)));
   render();
+}
+for (const b of document.querySelectorAll('.seg button')) b.addEventListener('click', () => {
+  // whats-new.html#plan deep-links the plan; the other tabs drop the hash.
+  const want = b.dataset.kind === 'plan' ? '#plan' : '';
+  if (location.hash !== want) history.replaceState(null, '', want || location.pathname + location.search);
+  setKind(b.dataset.kind);
 });
+addEventListener('hashchange', () => setKind(location.hash === '#plan' ? 'plan' : 'all'));
+if (location.hash === '#plan') {
+  state.kind = 'plan';
+  document.querySelectorAll('.seg button').forEach(x => x.setAttribute('aria-pressed', String(x.dataset.kind === 'plan')));
+  $('#plan-sec').hidden = false; $('.search').hidden = true;
+}
 let qTimer = 0;
 $('#q').addEventListener('input', e => { clearTimeout(qTimer); qTimer = setTimeout(() => { state.q = e.target.value; state.shown = PAGE_CARDS; render(); }, 150); });
 $('#more').addEventListener('click', () => { state.shown += PAGE_CARDS; render(); });
