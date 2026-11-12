@@ -221,3 +221,13 @@ test('S6b: an unstated front copies the photo look\'s bay preset (head, stone, s
   assert.equal(WINDOW_HEADS[stated.windowHead], 'segmental');
   assert.equal(WINDOWS[stated.windowKind], 'sash');
 });
+
+test('S6d wall material prior: the register finish at Src 1, else unset; the spec palette wins', async () => {
+  const { recordWallMaterial } = await import('../threeBuildingMesh.ts');
+  assert.deepEqual(recordWallMaterial({ registerFinish: 'light' }), { wallMaterial: 'stucco', wallMaterialSrc: 1 });
+  assert.deepEqual(recordWallMaterial({ registerFinish: 'brick' }), { wallMaterial: 'brick', wallMaterialSrc: 1 });
+  assert.deepEqual(recordWallMaterial({}), {});
+  const base = { id: 'mat', style: 'c19' as const, wallHex: '#8a6145', heightM: 12, minHeightM: 0 };
+  assert.equal(FACADE_WALL_MATERIALS[facadeRecordFor({ ...base, wallMaterial: 'stucco', wallMaterialSrc: 1 }).wallMaterial], 'stucco');
+  assert.equal(FACADE_WALL_MATERIALS[facadeRecordFor({ ...base, wallMaterial: 'stucco', spec: { d: { palette: { wallMaterial: 'brick' } } } }).wallMaterial], 'brick');
+});

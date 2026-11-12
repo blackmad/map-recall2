@@ -71,6 +71,8 @@ export type MeshBuilding = {
   /** The house spec's stoop (threeBuildingFeatures from `specStoop`): facadeExtras draws it typed on the street wall. */
   stoop?: StoopIntent;
   wallHex: string;
+  /** The register's (or a spec's) finish, threeBuildingFeatures from `registerFinish`: the record's wall material prior (F1). */
+  registerFinish?: 'light' | 'brick';
   /** A bay look's own layers and accent colour; absent means the procedural cells. */
   layers?: { upper: number; ground: number; door: number };
   accentHex?: string;
@@ -176,6 +178,17 @@ export type Chunk = {
  * spec (the extract's d/x/s). Absent, buildChunk is byte-identical to before F1.
  */
 export type ChunkOptions = { facadeRecord?: boolean; specFor?: (id: string) => FacadeSpecInput | undefined };
+/**
+ * F1 S6d: the record's wall finish when the spec states none (the spec's palette.wallMaterial still wins in the packer):
+ * the register's finish (registerRecipe.ts: plaster/stone/painted read 'light', brick 'brick') at Src 1, else unset (brick).
+ * The period family was measured and left out: on F4's photo-labelled pands the bay preset's smooth modern wall said
+ * render on 7, right on 1, while 6 were brick. The register said render or brick on 3 and was right on 3.
+ */
+export function recordWallMaterial(b: Pick<MeshBuilding, 'registerFinish'>): { wallMaterial?: string; wallMaterialSrc?: 1 } {
+  if (b.registerFinish === 'light') return { wallMaterial: 'stucco', wallMaterialSrc: 1 };
+  if (b.registerFinish === 'brick') return { wallMaterial: 'brick', wallMaterialSrc: 1 };
+  return {};
+}
 const REC_KIND = { front: 0, side: 1, rear: 2, party: 3, strip: 4, chamfer: 5, crown: 6, roof: 7 } as const;
 
 const M_PER_DEG_LAT = 110_540;
@@ -543,6 +556,8 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
     const wallRGB = parseHex(b.wallHex), wallAccent = parseHex(b.accentHex ?? '#ffffff');
     const groundPaint = b.groundHex && b.layers ? parseHex(b.groundHex) : null;
     const variant = Math.floor(hash01(`${b.id}:look`) * CELL_VARIANTS);
+    /** F1: the photo look's bay preset this pand paints (record mode reads its windows as priors). */
+    const bayPreset = recordMode && b.layers && b.layers.upper < BAY_LAYER_COUNT && BAY_ENTRIES[b.layers.upper]?.kind === 'upper' ? bayVariant(BAY_ENTRIES[b.layers.upper]) : null;
     // No two neighbours share a rhythm: bay width, storey and ground-floor height vary per building.
     const scale = b.layoutScale ?? { bay: 0.88 + hash01(`${b.id}:bay`) * 0.3, storey: (b.storeyScale ?? 1) * (0.93 + hash01(`${b.id}:storey`) * 0.16), ground: 0.92 + hash01(`${b.id}:ground`) * 0.2 };
     const jitter = 0.9 + hash01(`${b.id}:tone`) * 0.2;
@@ -622,7 +637,6 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
         const runLen = run.reduce((sum, r) => sum + r.e.len, 0), street = run.some(({ e }) => doorAllowed.has(e));
         if (street && runLen > recFrontM) {
           const g = b.bare ? null : layoutRun(b.style, run.map(r => r.e.len), facadeTop - base, hash01(`${b.id}:${edgeKey(first.x0, first.y0)}`), base < 0.5, runScale, run.map(r => doorAllowed.has(r.e)));
-          const bayPreset = b.layers && b.layers.upper < BAY_LAYER_COUNT && BAY_ENTRIES[b.layers.upper]?.kind === 'upper' ? bayVariant(BAY_ENTRIES[b.layers.upper]) : null;
           // One cell per layout bay (cellU 1): the photo look's preset paints its own window count in it (S6c: F4 round 1 read
           // one wide window where the game drew two, "window kind" 14 -> 25).
           const per = bayPreset && b.openings?.upper.axes.length ? b.openings.upper.axes.length : GENERIC_WINDOWS_PER_BAY[b.style] ?? 1;
@@ -865,7 +879,7 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
       recInput = { id: b.id, style: b.style, wallHex: b.wallHex, ...(b.specRecipe?.wallHex ? { wallLifted: true } : {}), ...(b.accentHex ? { accentHex: b.accentHex } : {}),
         ...(b.groundHex ? { groundHex: b.groundHex } : {}), ...(b.shop || b.shopfront ? { shop: true } : {}), ...(b.roof?.roofHex ?? b.lid?.hex ? { roofHex: b.roof?.roofHex ?? b.lid?.hex } : {}),
         ...(b.lid ? { lid: true } : {}), heightM: buildingTop, minHeightM: base, ...(b.specRecipe?.look ? { look: b.specRecipe.look } : {}),
-        ...(recFrontM > 0 ? { frontLengthM: recFrontM } : {}), ...(recGeneric ? { generic: recGeneric } : {}), ...(options.specFor?.(b.id) ? { spec: options.specFor(b.id) } : {}) };
+        ...(recFrontM > 0 ? { frontLengthM: recFrontM } : {}), ...(recGeneric ? { generic: recGeneric } : {}), ...recordWallMaterial(b), ...(options.specFor?.(b.id) ? { spec: options.specFor(b.id) } : {}) };
     }
     signTotal += sign.length;
     extrasTotal += extraTris;

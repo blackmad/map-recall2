@@ -107,3 +107,15 @@ test('S6c brick patches: the wall keeps a brick texture at the benchmark distanc
   assert.ok(texture(27) > 0.09 && texture(27) < 0.14, `27 px/m (the median pose; the coursing alone gives 0): ${texture(27)}`);
   assert.ok(texture(50) > 0.12 && texture(50) < 0.17, `50 px/m: ${texture(50)}`);
 });
+
+test('S6d pale walls: brick contrast falls to FR_PALE_K on a white wall, unchanged on mid brick', () => {
+  const spread = (wall: [number, number, number]) => {
+    const r = rec({ windowShare: 0, baysUpper: 1, baysGround: 1, storeys: 1, wallHcm: 2000, wall });
+    let lo = 9, hi = 0;
+    for (let y = 3; y < 5; y += 0.013) { const c = px(r, 1.1, y, 3, 30, 0.03).rgb; const l = (c[0] + c[1] + c[2]) / 3 / ((wall[0] + wall[1] + wall[2]) / 765); lo = Math.min(lo, l); hi = Math.max(hi, l); }
+    return hi - lo;
+  };
+  const mid = spread([120, 70, 50]), white = spread([235, 232, 222]);
+  assert.ok(mid > 0.1, `mid brick keeps its patches: ${mid}`);
+  assert.ok(white < mid * 0.6 && white > 0, `white brick is calmer: ${white} vs ${mid}`);
+});

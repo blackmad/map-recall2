@@ -171,6 +171,7 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook, coarse = f
   // measured on a street photo. Absent unless the spec extract stamped the pand (`?houseSpecs=0` = absent).
   const specRecipe = specRecipeOf(p);
   if (specRecipe) building.specRecipe = specRecipe;
+  if (p.registerFinish === 'light' || p.registerFinish === 'brick') building.registerFinish = p.registerFinish;
   // A spec'd shopfront's measured paint (H11) on the shop's ground storey, in the look's palette.
   if (specRecipe?.shopHex && building.groundHex && shopfrontOf(p) !== 'quiet' && cellSetOf(look) !== 'procedural') building.groundHex = lookHex(specRecipe.shopHex, look as Look);
   // A sourced hex color survives PHOTO decoration; material-only hues remain explicitly display priors.
