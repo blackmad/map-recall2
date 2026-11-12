@@ -19,7 +19,8 @@ jobs:
   check-canal:
     name: check:canal (${{ matrix.part }})
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    # rail ran 41.5 min of 45 on the first split run (2026-11-12)
+    timeout-minutes: 60
     strategy:
       fail-fast: false
       matrix:
