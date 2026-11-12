@@ -43,14 +43,14 @@ export function frBrick(w: readonly [number, number], fw: readonly [number, numb
   let amp = material < 0.5 ? FR_COURSING[0] : material > 1.5 && material < 2.5 ? FR_COURSING[2] : 0;
   if (amp <= 0) return 1;
   const prow = Math.floor(w[1] / FR_MOTTLE_V), pcol = Math.floor((w[0] + mod(prow, 2) * 0.5 * FR_MOTTLE_U) / FR_MOTTLE_U);
-  const patch = 1 + amp * contrast * FR_MOTTLE * (frHash(prow * 7 + 3, pcol * 3 + 11) - 0.5) * (1 - smooth(0.3 * FR_MOTTLE_V, 0.5 * FR_MOTTLE_V, Math.max(fw[0], fw[1])));
+  const brickPatch = 1 + amp * contrast * FR_MOTTLE * (frHash(prow * 7 + 3, pcol * 3 + 11) - 0.5) * (1 - smooth(0.3 * FR_MOTTLE_V, 0.5 * FR_MOTTLE_V, Math.max(fw[0], fw[1])));
   amp *= contrast * (1 - smooth(0.25 * FR_COURSE, 0.6 * FR_COURSE, Math.max(fw[0], fw[1])));
-  if (amp <= 0) return patch;
+  if (amp <= 0) return brickPatch;
   const row = Math.floor(w[1] / FR_COURSE), yy = w[1] - row * FR_COURSE;
   const x = w[0] + mod(row, 2) * 0.5 * FR_BRICK, col = Math.floor(x / FR_BRICK), xx = x - col * FR_BRICK;
   const joint = Math.max(1 - frCover(yy, FR_JOINT, FR_COURSE, fw[1]), 1 - frCover(xx, FR_JOINT, FR_BRICK, fw[0]));
   const tone = 1 + (frHash(row, col) - 0.5) * FR_TONE;
-  return patch * (1 + amp * ((tone + (FR_MORTAR - tone) * joint) / FR_PATTERN_MEAN - 1));
+  return brickPatch * (1 + amp * ((tone + (FR_MORTAR - tone) * joint) / FR_PATTERN_MEAN - 1));
 }
 export function frSpek(r: FacadeRecord, y: number, fw: readonly [number, number]): number {
   const s = r.spekSpacing, n = r.spekCourses;

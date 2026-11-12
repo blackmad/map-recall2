@@ -521,15 +521,15 @@ float frBrick(vec2 w, vec2 fw, float material, float contrast) {
   float amp = material < 0.5 ? ${Fe(Zh[0])} : (material > 1.5 && material < 2.5 ? ${Fe(Zh[2])} : 0.0);
   if (amp <= 0.0) return 1.0;
   float prow = floor(w.y / ${Fe(yl)}), pcol = floor((w.x + mod(prow, 2.0) * ${Fe(.5*Jh)}) / ${Fe(Jh)});
-  float patch = 1.0 + amp * contrast * ${Fe(Gk)} * (frHash(vec2(prow * 7.0 + 3.0, pcol * 3.0 + 11.0)) - 0.5)
+  float brickPatch = 1.0 + amp * contrast * ${Fe(Gk)} * (frHash(vec2(prow * 7.0 + 3.0, pcol * 3.0 + 11.0)) - 0.5)
     * (1.0 - smoothstep(${Fe(.3*yl)}, ${Fe(.5*yl)}, max(fw.x, fw.y)));
   amp *= contrast * (1.0 - smoothstep(${Fe(.25*Br)}, ${Fe(.6*Br)}, max(fw.x, fw.y)));
-  if (amp <= 0.0) return patch;
+  if (amp <= 0.0) return brickPatch;
   float row = floor(w.y / ${Fe(Br)}), yy = w.y - row * ${Fe(Br)};
   float x = w.x + mod(row, 2.0) * ${Fe(.5*T0)}, col = floor(x / ${Fe(T0)}), xx = x - col * ${Fe(T0)};
   float joint = max(1.0 - frCover(yy, ${Fe(F0)}, ${Fe(Br)}, fw.y), 1.0 - frCover(xx, ${Fe(F0)}, ${Fe(T0)}, fw.x));
   float tone = 1.0 + (frHash(vec2(row, col)) - 0.5) * ${Fe(Hk)};
-  return patch * (1.0 + amp * (mix(tone, ${Fe(e7)}, joint) / ${Fe(Dk)} - 1.0));
+  return brickPatch * (1.0 + amp * (mix(tone, ${Fe(e7)}, joint) / ${Fe(Dk)} - 1.0));
 }
 // Speklagen: spekCourses stone courses every spekSpacing + spekCourses courses, averaged when under a pixel.
 float frSpek(float y, vec2 fw) {

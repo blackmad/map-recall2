@@ -124,15 +124,15 @@ float frBrick(vec2 w, vec2 fw, float material, float contrast) {
   float amp = material < 0.5 ? ${f1(FR_COURSING[0])} : (material > 1.5 && material < 2.5 ? ${f1(FR_COURSING[2])} : 0.0);
   if (amp <= 0.0) return 1.0;
   float prow = floor(w.y / ${f1(FR_MOTTLE_V)}), pcol = floor((w.x + mod(prow, 2.0) * ${f1(0.5 * FR_MOTTLE_U)}) / ${f1(FR_MOTTLE_U)});
-  float patch = 1.0 + amp * contrast * ${f1(FR_MOTTLE)} * (frHash(vec2(prow * 7.0 + 3.0, pcol * 3.0 + 11.0)) - 0.5)
+  float brickPatch = 1.0 + amp * contrast * ${f1(FR_MOTTLE)} * (frHash(vec2(prow * 7.0 + 3.0, pcol * 3.0 + 11.0)) - 0.5)
     * (1.0 - smoothstep(${f1(0.3 * FR_MOTTLE_V)}, ${f1(0.5 * FR_MOTTLE_V)}, max(fw.x, fw.y)));
   amp *= contrast * (1.0 - smoothstep(${f1(0.25 * FR_COURSE)}, ${f1(0.6 * FR_COURSE)}, max(fw.x, fw.y)));
-  if (amp <= 0.0) return patch;
+  if (amp <= 0.0) return brickPatch;
   float row = floor(w.y / ${f1(FR_COURSE)}), yy = w.y - row * ${f1(FR_COURSE)};
   float x = w.x + mod(row, 2.0) * ${f1(0.5 * FR_BRICK)}, col = floor(x / ${f1(FR_BRICK)}), xx = x - col * ${f1(FR_BRICK)};
   float joint = max(1.0 - frCover(yy, ${f1(FR_JOINT)}, ${f1(FR_COURSE)}, fw.y), 1.0 - frCover(xx, ${f1(FR_JOINT)}, ${f1(FR_BRICK)}, fw.x));
   float tone = 1.0 + (frHash(vec2(row, col)) - 0.5) * ${f1(FR_TONE)};
-  return patch * (1.0 + amp * (mix(tone, ${f1(FR_MORTAR)}, joint) / ${f1(FR_PATTERN_MEAN)} - 1.0));
+  return brickPatch * (1.0 + amp * (mix(tone, ${f1(FR_MORTAR)}, joint) / ${f1(FR_PATTERN_MEAN)} - 1.0));
 }
 // Speklagen: spekCourses stone courses every spekSpacing + spekCourses courses, averaged when under a pixel.
 float frSpek(float y, vec2 fw) {
