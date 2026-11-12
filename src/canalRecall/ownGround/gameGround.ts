@@ -34,6 +34,7 @@
 // supplies the camera; `GroundHost` is the thin adapter the page implements
 // (repaint, hiding the basemap's own ground). THREE is injected.
 
+import { groundFixFlags, groundFixOptions } from './groundFixes.js';
 import { clampToDrawLimit, currentDrawLimit } from '../engine/drawLimit';
 import { HIGH_ANISOTROPY, pageTextureParams } from '../look/texturePolicy.js';
 import { farRailDrapeFlag, farRailFlag, installRailStripes, railMinPxFlag, railStripesFlag } from './railStripes.js';
@@ -546,14 +547,14 @@ export class OwnGround {
   async load(root: string): Promise<void> {
     this.dispose(false);
     this.startup.loadAt ??= performance.now();
-    this.store = new GroundStore(httpFetchBytes(root), { parks: this.opts.parks, rails: this.opts.rails, roads: this.opts.roads, reliefTile: this.reliefLoader(root), prepareOnly: true, ...(groundPlanShareFlag() ? {} : { planShare: false }), ...(groundDeterministicFlag() ? {} : { deterministic: false }), ...(this.railRetryOn ? {} : { railRetry: false }), ...(bridgeGapsFlag() ? {} : { bridgeGaps: false }), ...(dryWayDecksFlag() ? { dryWayDecks: true } : {}), ...(railDecksFlag() ? {} : { railDecks: false }), ...(railSpansFlag() ? {} : { railSpans: false }), ...(roadSliversFlag() ? {} : { roadSlivers: false }), ...(portalEndsFlag() ? {} : { portalEnds: false }), ...(rampGapsFlag() ? {} : { rampGaps: false }) });
+    this.store = new GroundStore(httpFetchBytes(root), { parks: this.opts.parks, rails: this.opts.rails, roads: this.opts.roads, reliefTile: this.reliefLoader(root), prepareOnly: true, ...(groundPlanShareFlag() ? {} : { planShare: false }), ...(groundDeterministicFlag() ? {} : { deterministic: false }), ...(this.railRetryOn ? {} : { railRetry: false }), ...(bridgeGapsFlag() ? {} : { bridgeGaps: false }), ...(dryWayDecksFlag() ? { dryWayDecks: true } : {}), ...(railDecksFlag() ? {} : { railDecks: false }), ...(railSpansFlag() ? {} : { railSpans: false }), ...(roadSliversFlag() ? {} : { roadSlivers: false }), ...(portalEndsFlag() ? {} : { portalEnds: false }), ...(rampGapsFlag() ? {} : { rampGaps: false }), ...groundFixOptions(groundFixFlags()) });
     this.ready = false;
     if (!/\/amsterdam\/?$/.test(root)) return;
     await this.store.init();
     this.startup.storeReadyAt ??= performance.now();
     try {
       const count = groundWorkersFlag(this.opts.workers || defaultGroundWorkers(this.opts.detail));
-      const init = { type: 'init', root, planShare: groundPlanShareFlag(), deterministic: groundDeterministicFlag(), parks: this.opts.parks, rails: this.opts.rails, railRetry: this.railRetryOn, ...(this.railRetryOn && this.opts.rails ? { railManifest: [...this.store.railCells] } : {}), farRails: farRailFlag(), farRailDrape: farRailDrapeFlag(), roads: this.opts.roads, bridgeGaps: bridgeGapsFlag(), dryWayDecks: dryWayDecksFlag(), bridgeCarry: bridgeCarryFlag(), redDedupe: redDedupeFlag(), portalClip: portalClipFlag(), portalEnds: portalEndsFlag(), rampGaps: rampGapsFlag(), roadSlivers: roadSliversFlag(), openGround: openGroundFlag(), railSpans: railSpansFlag(), railDecks: railDecksFlag(), groundLook: this.opts.groundLook, compact: compactFlag(), detail: this.opts.detail, roadLook: roadLookFlag(), tiles: this.opts.tiles, nearTiles: this.opts.nearTiles, tileMin: TILE_MIN_TRIANGLES };
+      const init = { type: 'init', root, planShare: groundPlanShareFlag(), deterministic: groundDeterministicFlag(), parks: this.opts.parks, rails: this.opts.rails, railRetry: this.railRetryOn, ...(this.railRetryOn && this.opts.rails ? { railManifest: [...this.store.railCells] } : {}), farRails: farRailFlag(), farRailDrape: farRailDrapeFlag(), roads: this.opts.roads, bridgeGaps: bridgeGapsFlag(), dryWayDecks: dryWayDecksFlag(), bridgeCarry: bridgeCarryFlag(), redDedupe: redDedupeFlag(), portalClip: portalClipFlag(), portalEnds: portalEndsFlag(), rampGaps: rampGapsFlag(), groundFixes: groundFixFlags(), roadSlivers: roadSliversFlag(), openGround: openGroundFlag(), railSpans: railSpansFlag(), railDecks: railDecksFlag(), groundLook: this.opts.groundLook, compact: compactFlag(), detail: this.opts.detail, roadLook: roadLookFlag(), tiles: this.opts.tiles, nearTiles: this.opts.nearTiles, tileMin: TILE_MIN_TRIANGLES };
       // One fetch + gunzip per file for every worker (groundShare.ts): a channel per worker to one more instance of the bundle.
       const channels = count > 1 && groundShareFlag() ? Array.from({ length: count }, () => new MessageChannel()) : [];
       if (channels.length) {

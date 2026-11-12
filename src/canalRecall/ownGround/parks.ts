@@ -283,11 +283,18 @@ export function playgroundKit(rings: readonly (readonly Vec2[])[], ok: (x: numbe
  * cell both are planes, so the deepest sag is at a node) is split further,
  * down to `minEdge`; only crests pay the extra triangles.
  */
-export function drapeBisect(m: MeshArrays, coords: ArrayLike<number>, tris: ArrayLike<number>, height: HeightFn, lift: number, maxEdge: number, clearanceM?: number, minEdge = 1, landStep = 5): void {
+export interface DrapeBound {
+  /** Split while the plane stands more than this over `height` + lift at a node, metres (lane G1 item D: the float bound, the sag test's mirror). */
+  floatM: number;
+  /** The land's node spacing under the float bound (drape.ts floatBoundGrid: half the land step). */
+  nodeStep: number;
+}
+export function drapeBisect(m: MeshArrays, coords: ArrayLike<number>, tris: ArrayLike<number>, height: HeightFn, lift: number, maxEdge: number, clearanceM?: number, minEdge = 1, landStep = 5, bound?: DrapeBound): void {
   const max2 = maxEdge * maxEdge, min2 = Math.min(minEdge, maxEdge) ** 2;
   const stack: number[] = [];
+  if (bound) landStep = bound.nodeStep;
   const sags = (x1: number, y1: number, x2: number, y2: number, x3: number, y3: number): boolean => {
-    if (clearanceM === undefined) return false;
+    if (clearanceM === undefined && !bound) return false;
     const z1 = height(x1, y1), z2 = height(x2, y2), z3 = height(x3, y3);
     const d = (y2 - y3) * (x1 - x3) + (x3 - x2) * (y1 - y3);
     if (Math.abs(d) < 1e-12) return false;
@@ -295,7 +302,8 @@ export function drapeBisect(m: MeshArrays, coords: ArrayLike<number>, tris: Arra
     const v = (px: number, py: number) => ((y3 - y1) * (px - x3) + (x1 - x3) * (py - y3)) / d;
     const plane = (px: number, py: number) => { const a = u(px, py), b = v(px, py); return a * z1 + b * z2 + (1 - a - b) * z3 + lift; };
     const minX = Math.min(x1, x2, x3), maxX = Math.max(x1, x2, x3), minY = Math.min(y1, y2, y3), maxY = Math.max(y1, y2, y3);
-    const below = (px: number, py: number) => plane(px, py) < height(px, py) - clearanceM;
+    // Lane G1 item D: with a bound, a plane floating more than bound.floatM over the land (lift included) splits too.
+    const below = bound ? (px: number, py: number) => { const z = plane(px, py), g = height(px, py); return (clearanceM !== undefined && z < g - clearanceM) || z > g + lift + bound.floatM; } : (px: number, py: number) => plane(px, py) < height(px, py) - clearanceM!;
     for (let gx = Math.ceil(minX / landStep) * landStep; gx <= maxX; gx += landStep) for (let gy = Math.ceil(minY / landStep) * landStep; gy <= maxY; gy += landStep) {
       if (!below(gx, gy)) continue;
       const a = u(gx, gy), b = v(gx, gy);
@@ -316,7 +324,7 @@ export function drapeBisect(m: MeshArrays, coords: ArrayLike<number>, tris: Arra
     }
     // A crease can also cross an edge between nodes; the centroid catches the rest (and smooth, deck-blended ground).
     const cx = (x1 + x2 + x3) / 3, cy = (y1 + y2 + y3) / 3;
-    return plane(cx, cy) < height(cx, cy) - clearanceM;
+    return below(cx, cy);
   };
   for (let t = 0; t < tris.length; t += 3) {
     const ax = coords[tris[t] * 2], ay = coords[tris[t] * 2 + 1], bx = coords[tris[t + 1] * 2], by = coords[tris[t + 1] * 2 + 1], cx = coords[tris[t + 2] * 2], cy = coords[tris[t + 2] * 2 + 1];
@@ -545,7 +553,7 @@ function playPiece(m: MeshArrays, k: ParkPointKind, p: Vec2, a: number, z: numbe
  * `touch` (a `touch` detail cell, CANAL-RECALL-7) drape the surfaces as `lod` 1
  * does and drop the same objects while keeping the cell's LOD 0 semantics.
  */
-export function buildParks(cell: ParksCell, height: HeightFn, lod: 0 | 1, isWater: (x: number, y: number) => boolean = () => false, touch = false): { layers: Partial<Record<ParkLayer | SharedLayer, MeshArrays>>; stats: ParkBuildStats } {
+export function buildParks(cell: ParksCell, height: HeightFn, lod: 0 | 1, isWater: (x: number, y: number) => boolean = () => false, touch = false, bound?: DrapeBound): { layers: Partial<Record<ParkLayer | SharedLayer, MeshArrays>>; stats: ParkBuildStats } {
   const layers: Partial<Record<ParkLayer | SharedLayer, MeshArrays>> = {};
   const fine = lod === 0 && !touch;
   const get = (l: ParkLayer | SharedLayer, colours = false) => (layers[l] ??= emptyMesh(colours));
@@ -560,7 +568,7 @@ export function buildParks(cell: ParksCell, height: HeightFn, lod: 0 | 1, isWate
       const at = interiorPoint(rings);
       if (at && isWater(at[0], at[1])) { stats.pondsInWater++; continue; }
     }
-    drapeBisect(get(SURFACE_LAYER[s.k]), flat, tris, height, PARK_LIFT[s.k], fine ? 8 : 20, fine ? CLEARANCE_M : CLEARANCE_FAR_M, fine ? 1 : 2, fine ? 5 : 10);
+    drapeBisect(get(SURFACE_LAYER[s.k]), flat, tris, height, PARK_LIFT[s.k], fine ? 8 : 20, fine ? CLEARANCE_M : CLEARANCE_FAR_M, fine ? 1 : 2, fine ? 5 : 10, bound);
     stats.surfaces++;
   }
   const hedge = get('hedge', true);
