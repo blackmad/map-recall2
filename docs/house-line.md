@@ -19,7 +19,7 @@ describe ──► preview ──► compare ──► stage ──► publish
 | §6 Worked example: the timed pilot (Nieuwmarkt, Bloemgracht, Nassaukade) | H7 | landed (staged batch `pilot-20261110`) |
 | §6b The standing acceptance set (easy houses) | H9 | landed |
 | §7 Review in the game (`house:frames`) | H10 | landed |
-| §8 Browser-free GLB passes | H12 | landed (agreement: see §8) |
+| §8 Browser-free GLB passes | H12 | landed (gate: raster metrics; verdicts advisory, judgement ruling 2026-11-10) |
 
 ## §1 The record: HouseSpec
 
@@ -1914,7 +1914,6 @@ Flags on the 35 (before, first rules): blankWall 1 (116526), missing 2, otherBui
 - **Nassaukade 146 (160704)** from the Nassaukade side: `--list` entry `{"bearing": 96, "at": [4.87384, 52.37225]}`. Its
   front is drawn as a bay (edges of 2.7, 1.1 and 1.7 m), which `exposedWalls` drops, so `wallAt` now takes the chord of the
   facing edges (6.3 m). The 2021-03-24 panorama 8.2 m off; picks on chunk-face-nassau-145-152, no flags, colour score -0.10.
-
 
 ## §8 Browser-free GLB passes (lane H12, #362)
 

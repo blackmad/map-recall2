@@ -51,6 +51,13 @@ export function specWallsOn(): boolean {
   const g = globalThis as { location?: { search?: string }; process?: { env?: Record<string, string | undefined> } };
   return (cached = specWallsEnabled(g.location?.search ?? null, g.process?.env?.SPEC_WALLS ?? null));
 }
+/** An explicit opt-in (`?specWalls=1`, SPEC_WALLS=1) that draws the rule while SPEC_WALLS_HELD holds it: the before/after
+ *  frame read and the rule's own tests. Read with the same cache as specWallsOn. */
+export function specWallsForcedOn(): boolean {
+  const g = globalThis as { location?: { search?: string }; process?: { env?: Record<string, string | undefined> } };
+  const q = g.location?.search ? /[?&]specWalls=([01])\b/.exec(g.location.search)?.[1] : undefined;
+  return (q ?? g.process?.env?.SPEC_WALLS) === '1';
+}
 /** Tests only: forget the cached flag. */
 export const resetSpecWallsFlag = () => { cached = undefined; };
 
