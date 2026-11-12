@@ -1,0 +1,138 @@
+{
+  "updated": "2026-11-12",
+  "intro": "How we are going to get the whole city's buildings looking right, in order. About 177,000 of Amsterdam's 193,000 buildings are still drawn from a generic recipe; Centrum has 16,300 buildings and 423 modelled. Hand-modelling every house does not scale, so the plan moves from one model per building to one renderer that draws any front from measured facts.",
+  "principles": [
+    "Correct before pretty: measured dark brick ships even if the city reads darker.",
+    "Where people ride first: the canal belt and the ring just outside it, then the rest of the city.",
+    "One fix should improve thousands of houses, not one.",
+    "Judged against the street photo at the same viewpoint, not against our own tests."
+  ],
+  "phases": [
+    {
+      "order": 1,
+      "priority": "P0",
+      "title": "Unblock the pipeline",
+      "status": "in-progress",
+      "text": "The shared browser queue jammed twice on 12 November and the public site has not deployed since 10 November because the CI check takes longer than its time limit. Fix both first so finished work actually reaches the game.",
+      "items": [
+        "Browser queue: crash-safe slots, fair order, lane pushes without a browser",
+        "CI: split the main check into parallel jobs",
+        "Batched photo/game comparison runs"
+      ]
+    },
+    {
+      "order": 2,
+      "priority": "P0",
+      "title": "A benchmark and a blind critic",
+      "status": "in-progress",
+      "text": "About 200 houses on a few blocks (Herengracht/Keizersgracht, a Jordaan street and corner, Nieuwmarkt, Haarlemmerdijk shopfronts, an Oud-West row, Nassaukade) are photographed and drawn from the same viewpoint. A fresh reviewer who has never seen our specs picks which half is the game and names the single biggest difference. The most common difference is the next thing to build.",
+      "items": [
+        "Round 0: today's generic drawing",
+        "A ranked list of gaps that becomes the work queue"
+      ]
+    },
+    {
+      "order": 3,
+      "priority": "P0",
+      "title": "Facades drawn from facts (shader facades)",
+      "status": "in-progress",
+      "text": "Each wall becomes one flat surface with a per-building record: wall colour, storey heights, window columns and shapes, door, ground floor, white bands and frames, cornice. A shader draws the front from that record. This lets every measured fact change pixels and uses less GPU memory than today's per-window geometry. Gables and rooflines stay real geometry.",
+      "items": [
+        "Design (now)",
+        "Build behind a switch, desktop first",
+        "Gate: the benchmark score moves, memory under budget"
+      ]
+    },
+    {
+      "order": 4,
+      "priority": "P1",
+      "title": "Measure the whole city from street photos",
+      "status": "in-progress",
+      "text": "Read each building's front from open street panoramas: storeys, windows, colour, door, shop. Centrum first (16,000 buildings), then the ride ring, then the city. Photo readers are checked against hand labels; a fact is stored only when the evidence passes.",
+      "items": [
+        "Better crops: winter photos, two angles, trees masked",
+        "Readers chosen per field by a measured bake-off",
+        "Centrum run, then ring, then city"
+      ]
+    },
+    {
+      "order": 5,
+      "priority": "P1",
+      "title": "Ground floors and shopfronts",
+      "status": "next",
+      "text": "The street-level storey becomes its own band: shop windows, fascia and colour, entrance, awnings, basements under stoops. Where shops are comes from the national building register (BAG) and OpenStreetMap.",
+      "items": []
+    },
+    {
+      "order": 6,
+      "priority": "P1",
+      "title": "Finish the canal-belt houses already in flight",
+      "status": "in-progress",
+      "text": "Builder lanes in the Haarlemmerbuurt, Grachtengordel, Jordaan, Nieuwmarkt, Burgwallen and Frederik Hendrikbuurt have about 270 houses modelled and waiting to publish. They land after review against the photo, then those lanes stop: the facade renderer replaces per-house modelling for ordinary fronts.",
+      "items": []
+    },
+    {
+      "order": 7,
+      "priority": "P2",
+      "title": "Landmarks, repeated types and street furniture keep going",
+      "status": "ongoing",
+      "text": "Hand-built models stay right for landmarks and for building types repeated across post-war estates. These lanes continue alongside.",
+      "items": []
+    },
+    {
+      "order": 8,
+      "priority": "P3",
+      "title": "Later",
+      "status": "later",
+      "text": "Golden hour and night looks, and lit or furnished windows by day and night.",
+      "items": []
+    }
+  ],
+  "inProgress": [
+    {
+      "name": "Browser queue fixes",
+      "issue": 378,
+      "label": "Being built"
+    },
+    {
+      "name": "Facade benchmark and blind critic",
+      "issue": 379,
+      "label": "Being built"
+    },
+    {
+      "name": "Shader facade design",
+      "issue": 380,
+      "label": "Being designed"
+    },
+    {
+      "name": "Centrum facade measurement",
+      "issue": 381,
+      "label": "Being built"
+    },
+    {
+      "name": "Measured front roofs for single houses",
+      "issue": null,
+      "label": "Ready to merge"
+    },
+    {
+      "name": "Darker measured brick in Oud-West and the 19th-century ring",
+      "issue": 373,
+      "label": "Ready to merge"
+    },
+    {
+      "name": "Canal-belt houses: Grachtengordel-West (45), Haarlemmerdijk (23), Nieuwmarkt (47), Burgwallen (66), Jordaan (24), Frederik Hendrikbuurt (26)",
+      "issue": null,
+      "label": "Awaiting review"
+    },
+    {
+      "name": "Ground: crossings register, ground fixes, ground v2 bake",
+      "issue": 374,
+      "label": "Awaiting review"
+    },
+    {
+      "name": "Tree shapes measured from photos",
+      "issue": 371,
+      "label": "Ready to merge (switched off)"
+    }
+  ]
+}
