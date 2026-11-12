@@ -1,3 +1,4 @@
+import type {FacadeSpecInput} from './look/facadeRecord.js';
 /** Diagnostic-only transport. All source plans and callbacks are created locally,
  * after the structured-clone boundary; no runtime source admission is implied. */
 import {adaptSurveyedBuildingEnvelope,type SurveyedBuildingEnvelope,type EnvelopeFootprint} from './surveyedBuildingEnvelope.js';
@@ -26,7 +27,7 @@ export function diagnosticEnvelopeTransport(input:unknown):EnvelopeTransport|und
   return {revision:json,envelopes:JSON.parse(json)};
  }catch{return;}
 }
-export type EnvelopeBuildOptions={look:BuildingLook;mode?:'walls'|'extras'|'coarse'|'shell';streets?:Float32Array;profiles?:readonly StreetAppearanceProfile[];contextFeatures?:readonly Feature[];hostOpenings?:readonly ChunkHostOpeningConfig[];surveyedEnvelopeData?:readonly SurveyedBuildingEnvelope[];/** Coarse/touch shells carry their low-poly planned roof (threeBuildingFeatures.ts shellRoofPlan). */shellRoofs?:boolean};
+export type EnvelopeBuildOptions={look:BuildingLook;mode?:'walls'|'extras'|'coarse'|'shell';streets?:Float32Array;profiles?:readonly StreetAppearanceProfile[];contextFeatures?:readonly Feature[];hostOpenings?:readonly ChunkHostOpeningConfig[];surveyedEnvelopeData?:readonly SurveyedBuildingEnvelope[];/** Coarse/touch shells carry their low-poly planned roof (threeBuildingFeatures.ts shellRoofPlan). */shellRoofs?:boolean;/** F1 (#380): the mesher's record mode and the pands' resolved specs (look/facadeSpecTiles.ts). */facadeRecord?:boolean;specFor?:(id:string)=>FacadeSpecInput|undefined};
 /** Called inside the worker, or inline after worker failure. Native inputs are
  * authoritative; rejected sources never acquire roof ownership. */
 export function buildTransportedEnvelopeChunk(features:readonly Feature[],options:EnvelopeBuildOptions,now?:string){
@@ -42,7 +43,7 @@ export function buildTransportedEnvelopeChunk(features:readonly Feature[],option
       &&bound.nativeMetadata.constructionYear===Number(f.properties.constructionYear))bindings.set(id,bound);}
   }catch{/* malformed diagnostics retain stock geometry */}
  }
- const chunk=buildFeatureChunk(features,options.look,options.mode??'walls',options.streets,options.profiles,options.contextFeatures,options.hostOpenings,bindings,options.shellRoofs?{shellRoofs:true}:{});
+ const chunk=buildFeatureChunk(features,options.look,options.mode??'walls',options.streets,options.profiles,options.contextFeatures,options.hostOpenings,bindings,{...(options.shellRoofs?{shellRoofs:true}:{}),...(options.facadeRecord?{facadeRecord:true}:{}),...(options.specFor?{specFor:options.specFor}:{})});
  const sourceIds=new Set(features.map(f=>String(f.properties.id??'')));
  const boundParentIds=options.mode==='extras'?[]:[...bindings.keys()].filter(id=>sourceIds.has(id)&&chunk.ranges.some(r=>r.id===id&&r.count>0));
  return {chunk,boundParentIds};

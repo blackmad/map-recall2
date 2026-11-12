@@ -31,7 +31,9 @@ async function frames(page: Page, on: boolean) {
     const state = await page.evaluate(() => {
       const vm = (window as any).canalRecallGame.vectorMap;
       const r = vm.renderer ?? vm._renderer ?? null;
-      return { baked: vm._bakedCoarse?.stats?.() ?? null, shaderFacades: vm.shaderFacades ?? null, bakedOff: vm.bakedCoarseOff ?? null, programs: r?.info?.programs?.length ?? null };
+      const tb = vm._threeBuildings, chunks = tb ? [...tb.chunks.entries()] : [];
+      const near = chunks.filter(([k, c]: any) => String(k).startsWith('near:') && c.mesh);
+      return { nearChunks: near.length, nearRecords: near.filter(([, c]: any) => c.mesh.userData?.recordKey).length, baked: vm._bakedCoarse?.stats?.() ?? null, shaderFacades: vm.shaderFacades ?? null, bakedOff: vm.bakedCoarseOff ?? null, programs: r?.info?.programs?.length ?? null };
     });
     const url: string = await page.evaluate(() => (window as any).canalRecallGame.vectorMap.captureFrame().then((c: HTMLCanvasElement | null) => c?.toDataURL('image/png') ?? ''));
     writeFileSync(`${OUT}/${pose.name}-${on ? 'on' : 'off'}.png`, Buffer.from(url.split(',')[1], 'base64'));
@@ -58,4 +60,8 @@ test('shader facades: the record cells draw at the Dam with no GL error', async 
     expect(s.baked.drawn, 'every resident cell drawn').toBe(s.baked.cells);
   }
   for (const s of Object.values(off.out) as { baked: { records: number } }[]) expect(s.baked.records, 'flag off draws no record cell').toBe(0);
+  const chase = on.out['dam-chase'] as { nearChunks: number; nearRecords: number };
+  expect(chase.nearChunks, 'near chunks at the chase pose').toBeGreaterThan(0);
+  expect(chase.nearRecords, 'every near chunk built in record mode').toBe(chase.nearChunks);
+  expect((off.out['dam-chase'] as { nearRecords: number }).nearRecords, 'flag off: no record chunk').toBe(0);
 });

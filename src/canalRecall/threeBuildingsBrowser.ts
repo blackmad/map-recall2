@@ -61,6 +61,7 @@ import { shellLayerHash } from './world/shellLayers.js';
 import type { BakedEntry } from './engine/bakedCoarse.js';
 import { SLOT_LAYER_COUNT, cityLookEnabled, createCityLookMaterial, createCityUniforms, getCityLook, loadCityBrick, paintSlotLayers } from './look/cityLook.js';
 import { FacadeRecordTexture } from './look/facadeRecordTexture.js';
+import { shaderFacadesEnabled } from './look/facadeShader.js';
 import type { FacadeRecordSet } from './world/facadeStreams.js';
 import { boundingSphereOf } from './geometryBounds.js';
 import { cutMesh, disposeTiles, growTileSpheres } from './rendererShared/tiledGeometry.js';
@@ -297,6 +298,13 @@ function fadeClone(source: any, value: number, under?: { value: number }): any |
   clone.customProgramCacheKey = () => source.customProgramCacheKey();
   if (source.defaultAttributeValues) clone.defaultAttributeValues = source.defaultAttributeValues;
   return clone;
+}
+/** A record-mode chunk as the worker sends it (threeBuildingsWorker.ts): its record arrays and packed records. */
+type RecordChunk = Chunk & { record?: { walls: Float32Array; recs: Uint16Array; wallKinds: Uint8Array; records: FacadeRecordSet } };
+/** The house-specs extract the worker reads for record chunks (absolute: the worker resolves against its own URL). */
+function houseSpecsBase(): string {
+  const extract = (globalThis as { __canalRecallExtractPath?: string }).__canalRecallExtractPath ?? '../data/extracts/amsterdam';
+  try { return new URL(`${extract.replace(/\/$/, '')}/house-specs`, location.href).href; } catch { return `${extract}/house-specs`; }
 }
 /** A record material of one mesh: the shared record program, its own record texture binding, `recBase` row and `wallUnit`. */
 function facadeRecordClone(source: any, texture: any, row: number, wallUnit: number): any {
@@ -1166,6 +1174,12 @@ export class ThreeBuildings {
    * clone with its own `recBase` row and `wallUnit` (the program is shared; a clone is one material switch a mesh).
    */
   private facadeRecords: FacadeRecordTexture | null = null;
+  private recordSerial = 0;
+  /** Detail (`walls`) chunks are built in record mode: `?shaderFacades=1` and the lit city-look chunk material. */
+  private recordChunks(): boolean {
+    const v = this.material?.userData?.cityVariant;
+    return !!v?.lit && v.kind === 'chunk' && shaderFacadesEnabled(this.detail === 'touch');
+  }
   private recordShared: { source: any; material: any } | null = null;
   private recordMaterialFor(key: string, records: FacadeRecordSet, wallUnit: number): any | null {
     const THREE = this.THREE, base = this.material, variant = base?.userData?.cityVariant;
@@ -1711,7 +1725,9 @@ export class ThreeBuildings {
       const options = { surveyedEnvelopeData: this.surveyedEnvelopeTransport.envelopes, surveyedEnvelopeRevision: this.surveyedEnvelopeTransport.revision, look: this.look, streets: this.streetsFor(source), profiles: this.appearanceProfiles, contextFeatures: this.contextGroups.get(key) ?? this.contextFor(source), appearanceRevision: this.appearanceRevision, hostOpenings: this.openingsFor(key, source), hostOpeningRevision: this.openingRevision(key, source) };
       this.inflightOptions.set(key, options);
       this.busy.set(w, key);
-      pool.post(w, { key, gen, ...options, features: source, mode: this.modeFor(key), ...(SHELL_ROOFS ? { shellRoofs: true } : {}),
+      const mode = this.modeFor(key), special = key === KIT_KEY || key.startsWith(BOAT_PREFIX);
+      pool.post(w, { key, gen, ...options, features: source, mode, ...(SHELL_ROOFS ? { shellRoofs: true } : {}),
+        ...(mode === 'walls' && !special && this.recordChunks() ? { facadeRecord: { specBase: houseSpecsBase() } } : {}),
         special: key === KIT_KEY ? 'kits' : key.startsWith(BOAT_PREFIX) ? 'boats' : undefined,
         boats: key.startsWith(BOAT_PREFIX) ? this.boatTiles.get(key.slice(BOAT_PREFIX.length)) ?? [] : undefined,
         layers: this.kitLayers(), tiles: this.facadeTiles, tileMin: FACADE_TILE_MIN_TRIANGLES });
@@ -1989,14 +2005,24 @@ export class ThreeBuildings {
     }
     const positionAttribute = new THREE.BufferAttribute(chunk.positions, 3);
     geometry.setAttribute('position', lift?.pending.size ? positionAttribute : release(positionAttribute));
-    geometry.setAttribute('uv', release(new THREE.BufferAttribute(chunk.uvs, 2)));
-    geometry.setAttribute('layer', release(new THREE.BufferAttribute(chunk.layers, 1, false)));
-    geometry.setAttribute('tint', release(new THREE.BufferAttribute(chunk.tints, 4, true)));
-    geometry.setAttribute('accent', release(new THREE.BufferAttribute(chunk.accents, 4, true)));
+    // F1 (#380): a record chunk draws from its records (wall metres, record index, wall kind) on its own material clone.
+    const record = (chunk as RecordChunk).record;
+    const recordKey = record ? `${key}#${++this.recordSerial}` : '';
+    const recordMaterial = record ? this.recordMaterialFor(recordKey, record.records, 1) : null;
+    if (record && recordMaterial) {
+      geometry.setAttribute('wall', release(new THREE.BufferAttribute(record.walls, 3, false)));
+      geometry.setAttribute('rec', release(new THREE.BufferAttribute(record.recs, 1, false)));
+      geometry.setAttribute('wallKind', release(new THREE.BufferAttribute(record.wallKinds, 1, false)));
+    } else {
+      geometry.setAttribute('uv', release(new THREE.BufferAttribute(chunk.uvs, 2)));
+      geometry.setAttribute('layer', release(new THREE.BufferAttribute(chunk.layers, 1, false)));
+      geometry.setAttribute('tint', release(new THREE.BufferAttribute(chunk.tints, 4, true)));
+      geometry.setAttribute('accent', release(new THREE.BufferAttribute(chunk.accents, 4, true)));
+    }
     geometry.setAttribute('hidden', new THREE.BufferAttribute(new Uint8Array(chunk.vertexCount), 1, false));
     // Thin-element fade and owner class (look/thinFade.ts, lane R3-A #230): only when it matches this chunk's vertices
     // (a host-opening rebuild re-lays the arrays without it).
-    if (chunk.thin && chunk.thin.length === chunk.vertexCount * 2) geometry.setAttribute('thin', release(new THREE.BufferAttribute(chunk.thin, 2, false)));
+    if (!recordMaterial && chunk.thin && chunk.thin.length === chunk.vertexCount * 2) geometry.setAttribute('thin', release(new THREE.BufferAttribute(chunk.thin, 2, false)));
     // SWAP_COMPLEMENT: the shells' per-building swap slot (kept on the CPU like `hidden`), marked for swaps under way.
     if (this.complement && key.startsWith(COARSE_PREFIX)) {
       const slots = new Uint8Array(chunk.vertexCount), ranges = new Map(chunk.ranges.map(r => [r.id, { start: r.start, count: r.count }]));
@@ -2009,7 +2035,8 @@ export class ThreeBuildings {
     // whole map flashes once per new chunk, so measure while the array exists.
     const sphere = boundingSphereOf(chunk.positions);
     geometry.boundingSphere = new THREE.Sphere(new THREE.Vector3(...sphere.center), sphere.radius);
-    const mesh = new THREE.Mesh(geometry, this.material);
+    const mesh = new THREE.Mesh(geometry, recordMaterial ?? this.material);
+    if (recordMaterial) mesh.userData.recordKey = recordKey; else if (record) this.facadeRecords?.free(recordKey);
     // Culled tiles over the same buffers (FACADE_TILES), measured while the CPU arrays still exist; a building stays in one tile.
     // A worker-built chunk brings its tiles' partition (x/y only); the heights are read here, after the ground lift.
     const planned = plannedTiles.get(chunk);
@@ -2155,7 +2182,12 @@ export class ThreeBuildings {
     this.disposeMesh(out.mesh);
   }
 
-  private disposeMesh(mesh: any): void { this.scene?.remove(mesh); disposeTiles(mesh); mesh.geometry.dispose(); }
+  private disposeMesh(mesh: any): void {
+    this.scene?.remove(mesh); disposeTiles(mesh); mesh.geometry.dispose();
+    // F1: a record chunk's rows and material clone go with it.
+    const rk = mesh.userData?.recordKey;
+    if (rk) { this.facadeRecords?.free(rk); mesh.userData.recordKey = undefined; if (mesh.material?.userData?.facadeRecordUniforms) mesh.material.dispose?.(); }
+  }
 
   /** Advance the arriving chunks' dissolve under the overview's own fade `global`; nothing runs when none fade. */
   private tickFades(global: number): void {
