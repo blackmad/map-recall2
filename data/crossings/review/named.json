@@ -1,0 +1,565 @@
+{
+ "area": "named",
+ "description": "The plan's eight named places (docs/handoffs/ground-v2-plan-20261110.md, user shots on build 93440cb, 2026-11-10), each reviewed against the PDOK orthophoto and a city panorama.",
+ "reviewer": "lane G3 (claude-opus-5-5)",
+ "on": "2026-11-10",
+ "records": [
+  {
+   "id": "piet-kranenbergpad-ring-decks",
+   "label": "Piet Kranenbergpad under the A10 Ringweg-Zuid, metro 50/51 and the ring railway decks",
+   "kind": "rail-over-road",
+   "drafts": [
+    "rail-under-rail-3164-3522",
+    "rail-under-zuidelijke-ringspoorbaan-3161-3534",
+    "rail-under-zuidelijke-ringspoorbaan-3157-3554",
+    "rail-under-ringweg-zuid-3146-3592"
+   ],
+   "at": [
+    4.8534,
+    52.3381
+   ],
+   "verdict": "confirmed",
+   "notes": "Ortho: four BGT rail decks (Schiphol line + metro 50/51) cross the red Piet Kranenbergpad and the museum tram east-west. Panorama 001054 (under the decks) shows the path and the museum tram at grade between concrete walls, decks overhead. The inferred 73 m span at 4.853229,52.338787 was the at-grade museum tram (railSpans); the ring tracks are OSM bridge ways, so no record span is made either."
+  },
+  {
+   "id": "piet-kranenbergpad-a10-south-abutment",
+   "label": "Piet Kranenbergpad: the A10 Ringweg-Zuid (north carriageway) deck over the path and the museum tram, and its embankment ends (the judgement session's 'Radarweg south abutment')",
+   "kind": "road-over-road",
+   "drafts": [
+    "rail-under-ringweg-zuid-3172-3483"
+   ],
+   "at": [
+    4.85333,
+    52.33849
+   ],
+   "decks": [
+    {
+     "ring": [
+      [
+       4.8531154,
+       52.3385662
+      ],
+      [
+       4.8531622,
+       52.3385693
+      ],
+      [
+       4.8532184,
+       52.3384042
+      ],
+      [
+       4.8531603,
+       52.3384007
+      ],
+      [
+       4.8531611,
+       52.3383971
+      ],
+      [
+       4.8535552,
+       52.3384192
+      ],
+      [
+       4.8535549,
+       52.3384242
+      ],
+      [
+       4.8534976,
+       52.3384208
+      ],
+      [
+       4.8534393,
+       52.3385856
+      ],
+      [
+       4.8534961,
+       52.3385885
+      ],
+      [
+       4.8534954,
+       52.3385929
+      ],
+      [
+       4.8531019,
+       52.3385697
+      ],
+      [
+       4.8531027,
+       52.3385654
+      ]
+     ],
+     "carries": "motorway",
+     "bgt": [
+      "L0002.50cacd6f4a634349b39a11f7b0358827"
+     ]
+    }
+   ],
+   "abutments": [
+    {
+     "line": [
+      [
+       4.8535646,
+       52.3384195
+      ],
+      [
+       4.8535134,
+       52.3384167
+      ],
+      [
+       4.8534972,
+       52.3384158
+      ]
+     ],
+     "bgt": "L0004.0986945ab32a4abd9360502a9d47fdd0"
+    },
+    {
+     "line": [
+      [
+       4.8531982,
+       52.338398
+      ],
+      [
+       4.853141,
+       52.3383946
+      ],
+      [
+       4.8531254,
+       52.3383937
+      ],
+      [
+       4.853113,
+       52.338393
+      ]
+     ],
+     "bgt": "L0004.b1b9ff2a7af6478697811b47562b80de"
+    },
+    {
+     "ring": [
+      [
+       4.853102,
+       52.3385649
+      ],
+      [
+       4.8531155,
+       52.3385658
+      ],
+      [
+       4.8531617,
+       52.3385687
+      ],
+      [
+       4.8531627,
+       52.3385657
+      ],
+      [
+       4.8531653,
+       52.3385581
+      ],
+      [
+       4.8531756,
+       52.3385277
+      ],
+      [
+       4.8531862,
+       52.3384966
+      ],
+      [
+       4.853197,
+       52.3384648
+      ],
+      [
+       4.8532069,
+       52.3384358
+      ],
+      [
+       4.8532159,
+       52.3384093
+      ],
+      [
+       4.8532169,
+       52.3384063
+      ],
+      [
+       4.8532265,
+       52.3384069
+      ],
+      [
+       4.853167,
+       52.338574
+      ],
+      [
+       4.8531186,
+       52.3385712
+      ],
+      [
+       4.8531011,
+       52.3385701
+      ]
+     ],
+     "bgt": "L0002.5647f912520c48569313416b9708fc28"
+    },
+    {
+     "ring": [
+      [
+       4.853496,
+       52.3385934
+      ],
+      [
+       4.8534298,
+       52.3385895
+      ],
+      [
+       4.8534907,
+       52.3384151
+      ],
+      [
+       4.8534919,
+       52.3384152
+      ],
+      [
+       4.8534918,
+       52.3384154
+      ],
+      [
+       4.8534893,
+       52.3384225
+      ],
+      [
+       4.8534948,
+       52.3384228
+      ],
+      [
+       4.8534976,
+       52.338423
+      ],
+      [
+       4.8534967,
+       52.3384256
+      ],
+      [
+       4.8534872,
+       52.3384525
+      ],
+      [
+       4.8534769,
+       52.3384816
+      ],
+      [
+       4.8534655,
+       52.3385137
+      ],
+      [
+       4.8534545,
+       52.3385447
+      ],
+      [
+       4.8534437,
+       52.3385751
+      ],
+      [
+       4.8534402,
+       52.3385852
+      ],
+      [
+       4.8534968,
+       52.3385881
+      ]
+     ],
+     "bgt": "L0002.7a42d1fbf45746c1baef095a72792289"
+    }
+   ],
+   "verdict": "confirmed",
+   "notes": "Radarweg south abutment of the A10 (Ringweg-Zuid) deck at the Kranenbergpad: BGT motorway deck L0002.50cacd… plus the two muur lines and two h0 abutment rings. AHN DTM is NaN under the deck (the saddle G1's caps fill); grade 7.11 W / 6.88 E on the embankment, 3.34 south of the deck, path under at 0.62. Sheet panorama is on the A10; the underside is panorama TMX7316010203-002459_pano_0003_001054. a1's after frame (desktop-kranenberg-0-after) keeps shards at these deck/embankment ends.",
+   "heights": {
+    "streetUnder": 0.62,
+    "deckTop": 7.07,
+    "soffit": 5.57,
+    "soffitEstimated": true,
+    "gradeSides": [
+     {
+      "at": [
+       4.853,
+       52.33848
+      ],
+      "z": 7.11
+     },
+     {
+      "at": [
+       4.85365,
+       52.33852
+      ],
+      "z": 6.88
+     }
+    ]
+   },
+   "sources": [
+    "a1 after frame map-recall2-screenshots-a1/roads/2026-11-10-rails-feedback/desktop-kranenberg-0-after.jpg",
+    "panorama TMX7316010203-002459_pano_0003_001054 (underside)"
+   ]
+  },
+  {
+   "id": "piet-kranenbergpad-museum-tram",
+   "label": "Piet Kranenbergpad: the museum tram (Spoorlijn Aalsmeer - Amsterdam Willemspark) at the path's level beside it, north of the A10",
+   "kind": "level",
+   "drafts": [],
+   "at": [
+    4.85323,
+    52.33879
+   ],
+   "zone": [
+    [
+     4.85305,
+     52.33842
+    ],
+    [
+     4.85341,
+     52.33842
+    ],
+    [
+     4.85341,
+     52.33916
+    ],
+    [
+     4.85305,
+     52.33916
+    ]
+   ],
+   "binds": {
+    "over": [],
+    "under": [
+     505939744
+    ],
+    "bgt": []
+   },
+   "sources": [
+    "OSM way 505939744 railway (historic, Electrische Museumtramlijn Amsterdam) \"Spoorlijn Aalsmeer - Amsterdam Willemspark\", no bridge, no layer",
+    "Game inference before the register: railSpans.ts drew a 73.2 m span (clear 1.51 m) at 4.853229,52.338787 (lane rails-classb dde179c8b; user shot on 93440cb27)"
+   ],
+   "verdict": "corrected",
+   "notes": "Museum tram (EMA, OSM 505939744) runs at grade beside the path under the ring decks: panorama 001066 shows a St Andrew's cross where a path crosses it, 001063 the tram beside the path. Level: no rail span (coordinator: Kranenbergpad is a level crossing, no rail span)."
+  },
+  {
+   "id": "amstelveenseweg-ring-decks",
+   "label": "Amstelveenseweg under the A10 Ringweg-Zuid, metro 50/51 and the ring railway decks",
+   "kind": "rail-over-road",
+   "drafts": [
+    "amstelveenseweg-under-ringweg-zuid-2891-3459",
+    "amstelveenseweg-under-rail-2882-3494",
+    "amstelveenseweg-under-zuidelijke-ringspoorbaan-2881-3510",
+    "amstelveenseweg-under-zuidelijke-ringspoorbaan-2880-3528",
+    "amstelveenseweg-under-ringweg-zuid-2881-3567"
+   ],
+   "at": [
+    4.8576,
+    52.3382
+   ],
+   "verdict": "confirmed",
+   "notes": "Ortho: the ring railway decks (magenta) and the two A10 carriageway decks (cyan) cross the Amstelveenseweg and its tram north-south at Station Zuid-west side. Both panoramas are under the decks: concrete piers and soffit over the road. The inference made no span or cut here; the record is for G1's caps."
+  },
+  {
+   "id": "schinkel-jaagpad-ring-decks",
+   "label": "Schinkel west bank (Jaagpad, by the Jachthavenweg) under the A10, metro 50/51 and ring railway bridges",
+   "kind": "rail-over-road",
+   "drafts": [
+    "jaagpad-under-ringweg-zuid-3601-3531",
+    "jaagpad-under-rail-3598-3554",
+    "jaagpad-under-zuidelijke-ringspoorbaan-3596-3572"
+   ],
+   "at": [
+    4.84707,
+    52.33785
+   ],
+   "verdict": "confirmed",
+   "notes": "Ortho: two rail decks and the A10 deck over the Schinkel and its towpath (green, north-south on the west bank). Panoramas are from the decks (catenary, parapet), confirming deck level; street level from AHN on the bank. No inferred span or cut."
+  },
+  {
+   "id": "overschiestraat-underpass",
+   "label": "Overschiestraat under the A10 Ringweg-West (a covered underpass, road, cycle track and footway)",
+   "kind": "road-under",
+   "drafts": [
+    "overschiestraat-under-ringweg-west-4004-2948"
+   ],
+   "at": [
+    4.8410938,
+    52.3433354
+   ],
+   "portals": [
+    {
+     "at": [
+      4.84046,
+      52.34334
+     ],
+     "headingDeg": 90
+    },
+    {
+     "at": [
+      4.84153,
+      52.34334
+     ],
+     "headingDeg": 270
+    }
+   ],
+   "verdict": "corrected",
+   "notes": "Overschiestraat and cycleway pass under the A10 in a covered underpass: panorama 01030 is inside it (lit soffit, patterned wall). The inference made two slots (ways 7381205, 93467504) with no mouths; the record lists the west and east mouths at the A10 embankment edges.",
+   "heights": {
+    "streetUnder": 0.48,
+    "deckTop": 4.94,
+    "soffit": 3.84,
+    "soffitEstimated": true,
+    "gradeSides": [
+     {
+      "at": [
+       4.8404,
+       52.34334
+      ],
+      "z": 0.45
+     },
+     {
+      "at": [
+       4.8416,
+       52.34334
+      ],
+      "z": 0.5
+     }
+    ]
+   }
+  },
+  {
+   "id": "sportparklaan-no-crossing",
+   "label": "Sportparklaan beside the A10 (sports fields; no crossing)",
+   "kind": "none",
+   "drafts": [],
+   "at": [
+    4.8394,
+    52.342
+   ],
+   "zone": [
+    [
+     4.8384,
+     52.3399
+    ],
+    [
+     4.8402,
+     52.3399
+    ],
+    [
+     4.8402,
+     52.3426
+    ],
+    [
+     4.8384,
+     52.3426
+    ]
+   ],
+   "binds": {
+    "over": [],
+    "under": [
+     443374613,
+     443374621,
+     144377965
+    ],
+    "bgt": []
+   },
+   "sources": [
+    "OSM ways 443374613, 443374621, 144377965 Sportparklaan (unclassified/service), no bridge or tunnel; BGT: no overbruggingsdeel or tunneldeel within the zone (crossings:draft --area named)"
+   ],
+   "verdict": "confirmed",
+   "notes": "Sports fields, a works yard and the cycle path at grade beside the A10; panorama 00739 shows flat ground and a gate. No crossing: any inferred cut or span here is false."
+  },
+  {
+   "id": "anthony-fokkerweg-a10-tunnel",
+   "label": "Anthony Fokkerweg: the A10 Ringweg-Zuid link tunnel under the ring railway and metro (De Nieuwe Meer)",
+   "kind": "road-under",
+   "drafts": [
+    "ringweg-zuid-under-ringweg-zuid-zuidelijke-ringspoorbaan-3895-3575"
+   ],
+   "at": [
+    4.8426871,
+    52.3376597
+   ],
+   "portals": [
+    {
+     "at": [
+      4.841916,
+      52.338178
+     ],
+     "headingDeg": 129.5
+    },
+    {
+     "at": [
+      4.843523,
+      52.337362
+     ],
+     "headingDeg": 309.5
+    }
+   ],
+   "verdict": "corrected",
+   "notes": "BGT tunneldeel L0002.7c770e0… carries the A10 link under the ring railway; panorama 001469 is inside the dark tunnel looking at the lit mouth. Two mouths listed at the tunnel ends; the inferred third mouth at 4.843938,52.337268, 30 m outside the structure, is dropped. The zone reaches 30 m east of the structure (zoneExtra) to take in that false mouth.",
+   "zoneExtra": [
+    [
+     4.8436,
+     52.3371
+    ],
+    [
+     4.8444,
+     52.3371
+    ],
+    [
+     4.8444,
+     52.3375
+    ],
+    [
+     4.8436,
+     52.3375
+    ]
+   ]
+  },
+  {
+   "id": "vlaardingenlaan-a10-underpass",
+   "label": "Vlaardingenlaan under the A10 Ringweg-West, east to the Naaldwijkstraat junction (flat)",
+   "kind": "road-over-road",
+   "drafts": [
+    "vlaardingenlaan-under-ringweg-west-4010-2552",
+    "vlaardingenlaan-under-ringweg-west-3976-2555"
+   ],
+   "at": [
+    4.84125,
+    52.3469
+   ],
+   "zoneExtra": [
+    [
+     4.8418,
+     52.3466
+    ],
+    [
+     4.8426,
+     52.3466
+    ],
+    [
+     4.8426,
+     52.3472
+    ],
+    [
+     4.8418,
+     52.3472
+    ]
+   ],
+   "verdict": "confirmed",
+   "notes": "Vlaardingenlaan passes under the A10 decks (cyan) and the slip-road deck; panorama 01272 under the deck shows the road, red cycle lane, piers and the embankment wall. No inferred span or cut; the record is for G1's caps."
+  },
+  {
+   "id": "delflandlaan-under-cornelis-lelylaan",
+   "label": "Delflandlaan under the Cornelis Lelylaan and its tram",
+   "kind": "rail-over-road",
+   "drafts": [
+    "delflandlaan-under-cornelis-lelylaan-4034-1331"
+   ],
+   "at": [
+    4.8406409,
+    52.3579608
+   ],
+   "verdict": "confirmed",
+   "notes": "Delflandlaan passes under the Cornelis Lelylaan viaduct (road and tram 1/17, east-west); panorama 00320 is in the lit underpass. The deck is recorded as a tram deck so the tram along it gets a span. No inferred span or cut here."
+  }
+ ]
+}

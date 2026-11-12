@@ -46,6 +46,7 @@ import { AT_GRADE_HIGHWAYS, crossingTest, onStreetTest, platformMeshes, railMesh
 import { levelAt as railLevelAt, PLATFORM_EDGE_M, platformTest, PROFILE_PAD_M, railLevels, railWayKey } from './railProfile.js';
 import { streetHalfWidth, underTest } from './railBridge.js';
 import { underpassSpans, type RailSpan } from './railSpans.js';
+import { CROSSINGS, crossingIndex } from './crossings.js';
 import type { PhotoEvidence } from './photoEvidence.js';
 import { buildSurveyMarkings, crossingStripPoints, SURVEY_MARKINGS, type SurveyMarkingStats } from './surveyMarkings.js';
 import type { DeckSurface, GroundSurface, Vec2 } from './surface.js';
@@ -179,6 +180,8 @@ export interface CellInput {
   /** The deck spans' headroom, metres (railSpans.ts SPAN_HEADROOM_M; measuring only: 1.0 is lane rails-classb's rule). */
   railSpanHeadroom?: number;
   railSpans?: boolean;
+  /** The crossing register applies (crossings.ts, lane G3; the store sets it when on and non-empty): rail spans in a record's zone come from the record. */
+  crossings?: boolean;
   /** OSM way ids the neighbourhood's road polygons cover (roadCells coverWays): no bands for them. */
   coverWays?: readonly number[];
   /** What the orthophoto backs of the tag-driven paint (photoEvidence.ts): lane ribbons, centre dashes, grey fietsstraat sections. */
@@ -618,10 +621,13 @@ export function buildCell(input: CellInput): BuiltCell {
     // Untagged viaducts (railSpans.ts): a track off the bridges is a deck where a street passes under its bed.
     const spans = new Map<RailWay, RailSpan[]>();
     const spanStreets = profile && input.railSpans !== false ? ways.filter(w => w.tags.highway && !isBridgeWay(w) && !(w.tags.tunnel && w.tags.tunnel !== 'no')).map(w => ({ points: w.points, half: streetHalfWidth(w.section.bands), ...(w.tags.embedded_rails ? { embedded: true } : {}) })) : [];
+    // The crossing register (crossings.ts): a record's zone takes its spans from the record, not the inference.
+    const register = input.crossings ? crossingIndex(CROSSINGS, input.project) : null;
     if (profile && input.railSpans !== false) for (const w of input.rails) {
       const level = profile.levels.get(w);
       if (w.bridge || !level) continue;
-      const found = underpassSpans(w, s => railLevelAt(level, s), spanStreets, onLand, measured, input.railSpanHeadroom);
+      const inferred = underpassSpans(w, s => railLevelAt(level, s), spanStreets, onLand, measured, input.railSpanHeadroom);
+      const found = register ? register.spans(w.points, inferred, w.bridge) : inferred;
       if (found.length) spans.set(w, found);
     }
     const promoted = new Set([...spans.keys()].map(railWayKey));

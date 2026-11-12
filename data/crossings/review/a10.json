@@ -1,0 +1,147 @@
+{
+ "area": "a10",
+ "description": "The A10 ring: decks over and under it outside the named places and the ring railway.",
+ "reviewer": "lane G3 (claude-opus-5-5)",
+ "on": "2026-11-12",
+ "records": [
+  {
+   "id": "bos-en-lommerweg-ring-rail",
+   "label": "Bos en Lommerweg under the western ring railway (Station De Vlugtlaan side)",
+   "kind": "rail-over-road",
+   "drafts": [
+    "bos-en-lommerweg-under-rail-4228-977",
+    "bos-en-lommerweg-under-rail-4215-982"
+   ],
+   "verdict": "confirmed",
+   "notes": "Ortho: two rail decks over the Bos en Lommerweg and its tram. Panorama: under the deck (soffit, piers, station stairs)."
+  },
+  {
+   "id": "wiltzanghlaan-ring-rail",
+   "label": "Wiltzanghlaan under the western ring railway",
+   "kind": "rail-over-road",
+   "drafts": [
+    "wiltzanghlaan-under-rail-4137-1324"
+   ],
+   "verdict": "confirmed",
+   "notes": "Ortho: one rail deck over the Wiltzanghlaan. Panorama: under the deck (round piers, soffit)."
+  },
+  {
+   "id": "henk-sneevlietweg-a10-junction",
+   "label": "Henk Sneevlietweg viaducts over the A10 Ringweg-West, the Overschiestraat and the Naaldwijkstraat",
+   "kind": "road-over-road",
+   "drafts": [
+    "overschiestraat-under-henk-sneevlietweg-4110-2664",
+    "overschiestraat-under-henk-sneevlietweg-4110-2693",
+    "ringweg-west-under-henk-sneevlietweg-4010-2656",
+    "ringweg-west-under-henk-sneevlietweg-4010-2702",
+    "naaldwijkstraat-under-henk-sneevlietweg-3938-2696"
+   ],
+   "verdict": "confirmed",
+   "notes": "Ortho: the Henk Sneevlietweg crosses the A10 and the roads beside it on five decks at the Ringweg-West junction. Panorama 00144: the viaduct seen from beside the A10, deck and parapet over the carriageway."
+  },
+  {
+   "id": "vlaardingenlaan-a10-west-slip",
+   "label": "Vlaardingenlaan under the A10 west slip-road deck",
+   "kind": "road-over-road",
+   "drafts": [
+    "vlaardingenlaan-under-ringweg-west-4044-2549"
+   ],
+   "verdict": "confirmed",
+   "notes": "Ortho: the slip-road deck west of the A10 over the Vlaardingenlaan, beside the named record's decks. Panorama: under the deck (abutment wall, cycle lane)."
+  },
+  {
+   "id": "a10-coen-junction-over-rail",
+   "label": "A10 Ringweg-West deck over the Hemboog railway north of Sloterdijk",
+   "kind": "road-over-rail",
+   "drafts": [
+    "ringweg-west-under-ringweg-west-3784-2784"
+   ],
+   "verdict": "confirmed",
+   "notes": "Ortho: the A10 deck crossing the railway (green) north of Sloterdijk. Panorama: on the deck (parapet, noise screen)."
+  },
+  {
+   "id": "a10-basisweg",
+   "label": "Basisweg under the A10 Ringweg-West",
+   "kind": "road-over-road",
+   "drafts": [
+    "basisweg-under-ringweg-west-3790-2403"
+   ],
+   "verdict": "confirmed",
+   "notes": "Ortho: the A10 deck over the Basisweg roundabout. Panoramas: under the deck (columns, soffit) and beside it."
+  },
+  {
+   "id": "a10-changiweg-over-rail",
+   "label": "A10 Ringweg-West over the railway and the Changiweg at Sloterdijk",
+   "kind": "road-over-rail",
+   "drafts": [
+    "hatostraat-changiweg-under-ringweg-west-3787-2130"
+   ],
+   "verdict": "confirmed",
+   "notes": "Ortho: the A10 deck over the railway and the Changiweg south of the Basisweg. Panorama: on the deck (noise screen)."
+  },
+  {
+   "id": "kabelweg-ring-rail",
+   "label": "Kabelweg under the railway north of Sloterdijk",
+   "kind": "rail-over-road",
+   "drafts": [
+    "kabelweg-under-rail-3606-2785",
+    "kabelweg-under-westelijke-ringspoorbaan-3607-2809"
+   ],
+   "verdict": "confirmed",
+   "notes": "Ortho: two rail decks over the Kabelweg, which dips under them (street -1.9 to -2.55). Panorama 02254: inside the underpass (curved retaining wall, lights)."
+  },
+  {
+   "id": "a10-amstel-bridge-amsteldijk",
+   "label": "A10 bridge over the Amstel and the Amsteldijk / Joan Muyskenweg",
+   "kind": "road-over-road",
+   "drafts": [
+    "joan-muyskenweg-amsteldijk-under-nieuwe-utrechtseweg-651-3467"
+   ],
+   "verdict": "confirmed",
+   "notes": "Ortho: the A10 bridge over the Amstel with the Amsteldijk and Joan Muyskenweg under its east end. Panorama: on the deck (parapet, river)."
+  },
+  {
+   "id": "solitudolaan-rail",
+   "label": "Path from the Solitudolaan under the railway at Duivendrecht",
+   "kind": "rail-over-road",
+   "drafts": [
+    "solitudolaan-under-rail-1356-3133"
+   ],
+   "verdict": "confirmed",
+   "notes": "Ortho: one rail deck over a cycle path. Panorama: inside the underpass (lit, graffiti, daylight at the far end)."
+  },
+  {
+   "id": "kruislaan-under-gooilijn",
+   "label": "Kruislaan under the Gooilijn at Science Park",
+   "kind": "rail-over-road",
+   "drafts": [
+    "kruislaan-under-gooilijn-3302-1898"
+   ],
+   "verdict": "confirmed",
+   "notes": "Ortho: the Gooilijn deck over the Kruislaan, which runs sunken under it (street -3.89). Panorama: in the tiled underpass. The game's slot cuts there are real, so this record keeps the cuts and the mouths (game override).",
+   "game": {
+    "cuts": "keep",
+    "portals": "keep"
+   }
+  }
+ ],
+ "rejected": {
+  "naritaweg-4334-1682": "same oversized Sloterdijk BGT deck as in ring-rail (rejected there)",
+  "jan-tooropstraat-4252-7": "tram bridge over water",
+  "na-regen-komt-zonneschijn-4180-1539": "footbridge over water",
+  "fornebukade-3950-1676": "footbridge over water",
+  "contactweg-3027-3063": "low deck (top 0.62) at a ramp over the railway by the Isolatorweg; evidence unclear",
+  "rail-738-3720": "ramp edge by RAI; panorama shows flat ground",
+  "bongerdbrug-429-4007": "bridge over water",
+  "korte-ouderkerkerbrug-852-3456": "bridge over water",
+  "deck-1271-3625": "footbridge",
+  "deck-1291-3773": "footbridge",
+  "atochabrug-2245-3380": "footbridge over water",
+  "deck-2246-2882": "footbridge in a park",
+  "deck-2619-2593": "footbridge",
+  "teslastraat-2815-2453": "footbridge over water",
+  "termini-2216-3558": "metro station Noord over the bus station; too complex for a draft (see OPEN in the issue)",
+  "insulindeweg-3935-375": "A10 bridge over the Amsterdam-Rijnkanaal: water under it",
+  "rail-1425-3318": "BGT tunneldeel of the Spaklerweg metro station passage; a station entrance, no road under"
+ }
+}
