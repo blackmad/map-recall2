@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { gapIdOf, GAP_TERMS } from './vocabulary.ts';
 import { gameSides, presentationOrder } from './shuffle.ts';
 import { flatForTwoRounds, parseAnswers, scoreRound, type KeyEntry } from './score.ts';
-import { bandLine, dilate, maskPair, MASK_GREY, SKY_FLAT, type Rgb8 } from './mask.ts';
+import { bandLine, denseOnly, dilate, maskPair, MASK_GREY, SKY_FLAT, type Rgb8 } from './mask.ts';
 
 test('every vocabulary term parses back to itself; free text does not', () => {
   for (const t of GAP_TERMS) assert.equal(gapIdOf(t.text), t.id);
@@ -70,13 +70,17 @@ test('mask: street band and leaf union grey on both halves, each sky flat on its
   // a: sky in row 0, brick below, a leaf at (1,1). b: sky rows 0-1 in column 3 only, brick elsewhere.
   const a = mk((x, y) => y === 0 ? [180, 200, 230] : x === 1 && y === 1 ? [60, 140, 40] : [100, 50, 40]);
   const b = mk((x, y) => x === 3 && y <= 1 ? [180, 200, 230] : [100, 50, 40]);
-  maskPair(a, b, { bandY: bandLine(W, [{ x: 0, y: 3 }, { x: 3, y: 3 }]), leafDilate: 0 });
+  maskPair(a, b, { bandY: bandLine(W, [{ x: 0, y: 3 }, { x: 3, y: 3 }]), leafDilate: 0, leafDensityR: 0, leafDensityMin: 0 });
   const px = (img: Rgb8, x: number, y: number) => [...img.data.slice((y * W + x) * 3, (y * W + x) * 3 + 3)];
   assert.deepEqual(px(a, 0, 3), MASK_GREY); assert.deepEqual(px(b, 0, 3), MASK_GREY); // band
   assert.deepEqual(px(a, 1, 1), MASK_GREY); assert.deepEqual(px(b, 1, 1), MASK_GREY); // leaf union
   assert.deepEqual(px(a, 0, 0), SKY_FLAT); assert.deepEqual(px(b, 0, 0), [100, 50, 40]); // sky is per half
   assert.deepEqual(px(b, 3, 1), SKY_FLAT);
   assert.deepEqual([...dilate(new Uint8Array([0, 0, 1, 0, 0]), 5, 1, 1)], [0, 1, 1, 1, 0]);
+  // a lone speck goes, a dense block stays
+  const m = new Uint8Array(100); m[11] = 1; for (let y = 5; y < 10; y++) for (let x = 5; x < 10; x++) m[y * 10 + x] = 1;
+  const d = denseOnly(m, 10, 10, 1, 0.45);
+  assert.equal(d[11], 0); assert.equal(d[77], 1);
 });
 
 import { labelProblems } from './labels.ts';

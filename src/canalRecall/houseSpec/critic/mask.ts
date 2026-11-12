@@ -24,6 +24,9 @@ export interface MaskOptions {
   /** y (px) of the street-band line at each x, or null for no band. Pixels with y >= bandY[x] are masked. */
   bandY: Float32Array | null;
   leafDilate?: number;
+  /** Leaf specks are dropped unless this share of the (2r+1)^2 window around them is leaf too (defaults 6 px, 0.45). */
+  leafDensityR?: number;
+  leafDensityMin?: number;
   /** Sky flood: max RGB distance from the column's first pixel, and min brightness (max channel). */
   skyTol?: number;
   skyMinBright?: number;
@@ -51,6 +54,26 @@ export function leafMask(img: Rgb8): Uint8Array {
   const m = new Uint8Array(img.width * img.height);
   for (let i = 0, o = 0; i < m.length; i++, o += 3) if (isLeaf(img.data[o], img.data[o + 1], img.data[o + 2])) m[i] = 1;
   return m;
+}
+
+/**
+ * Keep only pixels whose (2r+1)^2 window is at least `min` set: a tree crown is dense, while the leaf rule's false hits
+ * (teal window glass in the game, mossy brick, a green sign) are specks and thin lines (round-0 dry run, 2026-11-12).
+ */
+export function denseOnly(m: Uint8Array, width: number, height: number, r: number, min: number): Uint8Array {
+  const I = new Uint32Array((width + 1) * (height + 1));
+  for (let y = 0; y < height; y++) {
+    let row = 0;
+    for (let x = 0; x < width; x++) { row += m[y * width + x]; I[(y + 1) * (width + 1) + x + 1] = I[y * (width + 1) + x + 1] + row; }
+  }
+  const out = new Uint8Array(m.length);
+  for (let y = 0; y < height; y++) for (let x = 0; x < width; x++) {
+    if (!m[y * width + x]) continue;
+    const x0 = Math.max(0, x - r), x1 = Math.min(width, x + r + 1), y0 = Math.max(0, y - r), y1 = Math.min(height, y + r + 1);
+    const sum = I[y1 * (width + 1) + x1] - I[y0 * (width + 1) + x1] - I[y1 * (width + 1) + x0] + I[y0 * (width + 1) + x0];
+    if (sum >= min * (x1 - x0) * (y1 - y0)) out[y * width + x] = 1;
+  }
+  return out;
 }
 
 /** Square dilation by r px (separable max). */
@@ -101,7 +124,7 @@ export function maskPair(a: Rgb8, b: Rgb8, opts: MaskOptions): MaskStats {
   const W = a.width, H = a.height, n = W * H;
   const la = leafMask(a), lb = leafMask(b), leafU = new Uint8Array(n);
   for (let i = 0; i < n; i++) leafU[i] = la[i] | lb[i];
-  const leaf = dilate(leafU, W, H, opts.leafDilate ?? 3);
+  const leaf = dilate(denseOnly(leafU, W, H, opts.leafDensityR ?? 6, opts.leafDensityMin ?? 0.45), W, H, opts.leafDilate ?? 3);
   const sa = skyMask(a, opts.skyTol, opts.skyMinBright, opts.skyStopY ?? null), sb = skyMask(b, opts.skyTol, opts.skyMinBright, opts.skyStopY ?? null);
   let band = 0, leafN = 0, skyA = 0, skyB = 0;
   const paint = (img: Rgb8, i: number, c: [number, number, number]) => { img.data[i * 3] = c[0]; img.data[i * 3 + 1] = c[1]; img.data[i * 3 + 2] = c[2]; };

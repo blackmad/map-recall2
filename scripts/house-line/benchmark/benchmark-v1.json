@@ -2683,7 +2683,48 @@
    "groundUses": [
     "woonfunctie"
    ],
-   "key": "0363100012167682"
+   "key": "0363100012167682",
+   "readable": true,
+   "labels": {
+    "storeys": 2,
+    "columns": [
+     2,
+     2
+    ],
+    "windowKind": "casement",
+    "windowHead": "flat",
+    "paneLayout": "multi-pane",
+    "whiteAccents": {
+     "bands": false,
+     "surrounds": true,
+     "keystones": false,
+     "quoins": false,
+     "whiteFrames": true
+    },
+    "doorBay": "unknown",
+    "doorReveal": "unknown",
+    "shopfront": false,
+    "shopfrontForm": "none",
+    "crown": "pitched-eaves",
+    "cornice": "timber",
+    "roof": "dormer",
+    "finish": "brick",
+    "wallTone": {
+     "family": "dark-brown",
+     "darkness": "mid"
+    },
+    "oneFront": true,
+    "confidence": "med"
+   },
+   "notes": "Small house left of Amnesia; outline also spans neighbour 133. Gambrel-like tiled roof, dormer; door out of view.",
+   "reader": "R1 (Claude Opus 5.5, 2026-11-12)",
+   "photo": {
+    "panoId": "TMX7316010203-002961_pano_0008_000176",
+    "date": "2023-02-06",
+    "distM": 18.3,
+    "obliquityDeg": 29.4,
+    "ref": "source-data://experiments/facade-benchmark/round-0/0363100012167682/photo.jpg"
+   }
   },
   {
    "pandId": "0363100012176003",
@@ -2700,7 +2741,50 @@
    "groundUses": [
     "bijeenkomstfunctie"
    ],
-   "key": "0363100012176003"
+   "key": "0363100012176003",
+   "readable": true,
+   "labels": {
+    "storeys": 4,
+    "columns": [
+     3,
+     2,
+     2,
+     2
+    ],
+    "windowKind": "casement",
+    "windowHead": "flat",
+    "paneLayout": "top-light",
+    "whiteAccents": {
+     "bands": false,
+     "surrounds": false,
+     "keystones": false,
+     "quoins": false,
+     "whiteFrames": true
+    },
+    "doorBay": "unknown",
+    "doorReveal": "unknown",
+    "shopfront": true,
+    "shopfrontForm": "display-windows",
+    "crown": "flat",
+    "cornice": "parapet",
+    "roof": "not-visible",
+    "finish": "brick",
+    "wallTone": {
+     "family": "dark-brown",
+     "darkness": "mid"
+    },
+    "oneFront": false,
+    "confidence": "med"
+   },
+   "notes": "Amnesia coffeeshop corner block; read side face, 2 bays per storey, flat parapet top.",
+   "reader": "R1 (Claude Opus 5.5, 2026-11-12)",
+   "photo": {
+    "panoId": "TMX7316010203-001053_pano_0000_003070",
+    "date": "2019-01-14",
+    "distM": 17.6,
+    "obliquityDeg": 46.5,
+    "ref": "source-data://experiments/facade-benchmark/round-0/0363100012176003/photo.jpg"
+   }
   },
   {
    "pandId": "0363100012176094",
@@ -3092,7 +3176,18 @@
    "groundUses": [
     "woonfunctie"
    ],
-   "key": "0363100012168853"
+   "key": "0363100012168853",
+   "readable": false,
+   "labels": null,
+   "notes": "Outline shows a blank brick side wall over a corner shop; the street front is not visible.",
+   "reader": "R1 (Claude Opus 5.5, 2026-11-12)",
+   "photo": {
+    "panoId": "TMX7316010203-001541_pano_0002_000129",
+    "date": "2020-01-08",
+    "distM": 12.7,
+    "obliquityDeg": 32.6,
+    "ref": "source-data://experiments/facade-benchmark/round-0/0363100012168853/photo.jpg"
+   }
   },
   {
    "pandId": "0363100012168815",
@@ -3109,7 +3204,50 @@
    "groundUses": [
     "woonfunctie"
    ],
-   "key": "0363100012168815"
+   "key": "0363100012168815",
+   "readable": true,
+   "labels": {
+    "storeys": 4,
+    "columns": [
+     2,
+     1,
+     1,
+     1
+    ],
+    "windowKind": "casement",
+    "windowHead": "flat",
+    "paneLayout": "multi-pane",
+    "whiteAccents": {
+     "bands": false,
+     "surrounds": false,
+     "keystones": false,
+     "quoins": false,
+     "whiteFrames": true
+    },
+    "doorBay": "right",
+    "doorReveal": "inset",
+    "shopfront": false,
+    "shopfrontForm": "none",
+    "crown": "unknown",
+    "cornice": "unknown",
+    "roof": "unknown",
+    "finish": "brick",
+    "wallTone": {
+     "family": "dark-brown",
+     "darkness": "mid"
+    },
+    "oneFront": true,
+    "confidence": "low"
+   },
+   "notes": "Very oblique, top cut off; storeys is a low-confidence estimate.",
+   "reader": "R1 (Claude Opus 5.5, 2026-11-12)",
+   "photo": {
+    "panoId": "TMX7316010203-001054_pano_0000_004078",
+    "date": "2019-01-15",
+    "distM": 5.3,
+    "obliquityDeg": 48.6,
+    "ref": "source-data://experiments/facade-benchmark/round-0/0363100012168815/photo.jpg"
+   }
   },
   {
    "pandId": "0363100012172954",
@@ -3128,7 +3266,50 @@
    "groundUses": [
     "woonfunctie"
    ],
-   "key": "0363100012172954"
+   "key": "0363100012172954",
+   "readable": true,
+   "labels": {
+    "storeys": 4,
+    "columns": [
+     2,
+     2,
+     2,
+     2
+    ],
+    "windowKind": "large-pane",
+    "windowHead": "flat",
+    "paneLayout": "single",
+    "whiteAccents": {
+     "bands": false,
+     "surrounds": false,
+     "keystones": false,
+     "quoins": false,
+     "whiteFrames": true
+    },
+    "doorBay": "unknown",
+    "doorReveal": "unknown",
+    "shopfront": false,
+    "shopfrontForm": "none",
+    "crown": "unknown",
+    "cornice": "unknown",
+    "roof": "unknown",
+    "finish": "mixed",
+    "wallTone": {
+     "family": "white-cream",
+     "darkness": "light"
+    },
+    "oneFront": true,
+    "confidence": "low"
+   },
+   "notes": "1983 infill, render above brick ground storey; top cut off; Juliet balcony railings.",
+   "reader": "R1 (Claude Opus 5.5, 2026-11-12)",
+   "photo": {
+    "panoId": "TMX7316010203-002549_pano_0000_004160",
+    "date": "2022-04-29",
+    "distM": 5.5,
+    "obliquityDeg": 48.4,
+    "ref": "source-data://experiments/facade-benchmark/round-0/0363100012172954/photo.jpg"
+   }
   },
   {
    "pandId": "0363100012172953",
@@ -3152,7 +3333,49 @@
     "bijeenkomstfunctie",
     "woonfunctie"
    ],
-   "key": "0363100012172953"
+   "key": "0363100012172953",
+   "readable": true,
+   "labels": {
+    "storeys": 3,
+    "columns": [
+     5,
+     3,
+     3
+    ],
+    "windowKind": "casement",
+    "windowHead": "flat",
+    "paneLayout": "top-light",
+    "whiteAccents": {
+     "bands": false,
+     "surrounds": false,
+     "keystones": false,
+     "quoins": false,
+     "whiteFrames": true
+    },
+    "doorBay": "unknown",
+    "doorReveal": "unknown",
+    "shopfront": true,
+    "shopfrontForm": "display-windows",
+    "crown": "cornice",
+    "cornice": "timber",
+    "roof": "dormer",
+    "finish": "brick",
+    "wallTone": {
+     "family": "dark-brown",
+     "darkness": "dark"
+    },
+    "oneFront": false,
+    "confidence": "low"
+   },
+   "notes": "Corner building, café ground; round oculi on the side face; dormers on roof.",
+   "reader": "R1 (Claude Opus 5.5, 2026-11-12)",
+   "photo": {
+    "panoId": "TMX7316010203-002938_pano_0004_000035",
+    "date": "2023-01-16",
+    "distM": 12.8,
+    "obliquityDeg": 49.3,
+    "ref": "source-data://experiments/facade-benchmark/round-0/0363100012172953/photo.jpg"
+   }
   },
   {
    "pandId": "0363100012172901",
@@ -3174,7 +3397,50 @@
     "woonfunctie",
     "bijeenkomstfunctie"
    ],
-   "key": "0363100012172901"
+   "key": "0363100012172901",
+   "readable": true,
+   "labels": {
+    "storeys": 4,
+    "columns": [
+     1,
+     1,
+     1,
+     1
+    ],
+    "windowKind": "casement",
+    "windowHead": "segmental",
+    "paneLayout": "single",
+    "whiteAccents": {
+     "bands": false,
+     "surrounds": false,
+     "keystones": false,
+     "quoins": false,
+     "whiteFrames": true
+    },
+    "doorBay": "unknown",
+    "doorReveal": "unknown",
+    "shopfront": false,
+    "shopfrontForm": "none",
+    "crown": "unknown",
+    "cornice": "unknown",
+    "roof": "unknown",
+    "finish": "brick",
+    "wallTone": {
+     "family": "red-brown",
+     "darkness": "mid"
+    },
+    "oneFront": true,
+    "confidence": "low"
+   },
+   "notes": "Top cut off. French window with railing and grey shutters; arched leaves in ground window.",
+   "reader": "R1 (Claude Opus 5.5, 2026-11-12)",
+   "photo": {
+    "panoId": "TMX7316010203-002549_pano_0000_003123",
+    "date": "2022-04-29",
+    "distM": 6.6,
+    "obliquityDeg": 49.6,
+    "ref": "source-data://experiments/facade-benchmark/round-0/0363100012172901/photo.jpg"
+   }
   },
   {
    "pandId": "0363100012172952",
@@ -3215,7 +3481,48 @@
    "groundUses": [
     "overige gebruiksfunctie"
    ],
-   "key": "0363100012172588"
+   "key": "0363100012172588",
+   "readable": true,
+   "labels": {
+    "storeys": 2,
+    "columns": [
+     4,
+     2
+    ],
+    "windowKind": "casement",
+    "windowHead": "flat",
+    "paneLayout": "two-pane",
+    "whiteAccents": {
+     "bands": false,
+     "surrounds": false,
+     "keystones": false,
+     "quoins": false,
+     "whiteFrames": false
+    },
+    "doorBay": "centre",
+    "doorReveal": "flush",
+    "shopfront": true,
+    "shopfrontForm": "display-windows",
+    "crown": "cornice",
+    "cornice": "timber",
+    "roof": "dormer",
+    "finish": "render",
+    "wallTone": {
+     "family": "white-cream",
+     "darkness": "light"
+    },
+    "oneFront": true,
+    "confidence": "med"
+   },
+   "notes": "White rendered house, tiled roof with two dormers; coffee shop window right.",
+   "reader": "R1 (Claude Opus 5.5, 2026-11-12)",
+   "photo": {
+    "panoId": "TMX7316010203-001541_pano_0002_000121",
+    "date": "2020-01-08",
+    "distM": 12.6,
+    "obliquityDeg": 45,
+    "ref": "source-data://experiments/facade-benchmark/round-0/0363100012172588/photo.jpg"
+   }
   },
   {
    "pandId": "0363100012172586",
@@ -3235,7 +3542,18 @@
     "winkelfunctie",
     "bijeenkomstfunctie"
    ],
-   "key": "0363100012172586"
+   "key": "0363100012172586",
+   "readable": false,
+   "labels": null,
+   "notes": "Rain on the lens smears the whole outlined front; openings cannot be counted.",
+   "reader": "R1 (Claude Opus 5.5, 2026-11-12)",
+   "photo": {
+    "panoId": "TMX7316010203-002938_pano_0004_000062",
+    "date": "2023-01-16",
+    "distM": 12.9,
+    "obliquityDeg": 45,
+    "ref": "source-data://experiments/facade-benchmark/round-0/0363100012172586/photo.jpg"
+   }
   },
   {
    "pandId": "0363100012172587",
@@ -3252,7 +3570,49 @@
    "groundUses": [
     "winkelfunctie"
    ],
-   "key": "0363100012172587"
+   "key": "0363100012172587",
+   "readable": true,
+   "labels": {
+    "storeys": 3,
+    "columns": [
+     3,
+     3,
+     3
+    ],
+    "windowKind": "T-window",
+    "windowHead": "segmental",
+    "paneLayout": "top-light",
+    "whiteAccents": {
+     "bands": false,
+     "surrounds": false,
+     "keystones": false,
+     "quoins": false,
+     "whiteFrames": true
+    },
+    "doorBay": "centre",
+    "doorReveal": "flush",
+    "shopfront": true,
+    "shopfrontForm": "display-windows",
+    "crown": "cornice",
+    "cornice": "timber",
+    "roof": "dormer",
+    "finish": "brick",
+    "wallTone": {
+     "family": "dark-brown",
+     "darkness": "mid"
+    },
+    "oneFront": true,
+    "confidence": "high"
+   },
+   "notes": "Shuttered shop ground; arched-head T-windows; white cornice band with dormer above.",
+   "reader": "R1 (Claude Opus 5.5, 2026-11-12)",
+   "photo": {
+    "panoId": "TMX7316010203-002043_pano_0000_001998",
+    "date": "2021-03-17",
+    "distM": 14.3,
+    "obliquityDeg": 53.6,
+    "ref": "source-data://experiments/facade-benchmark/round-0/0363100012172587/photo.jpg"
+   }
   },
   {
    "pandId": "0363100012172592",
@@ -3275,7 +3635,50 @@
     "woonfunctie",
     "winkelfunctie"
    ],
-   "key": "0363100012172592"
+   "key": "0363100012172592",
+   "readable": true,
+   "labels": {
+    "storeys": 4,
+    "columns": [
+     2,
+     3,
+     3,
+     3
+    ],
+    "windowKind": "T-window",
+    "windowHead": "flat",
+    "paneLayout": "top-light",
+    "whiteAccents": {
+     "bands": false,
+     "surrounds": false,
+     "keystones": false,
+     "quoins": false,
+     "whiteFrames": true
+    },
+    "doorBay": "left",
+    "doorReveal": "inset",
+    "shopfront": true,
+    "shopfrontForm": "display-windows",
+    "crown": "unknown",
+    "cornice": "unknown",
+    "roof": "unknown",
+    "finish": "brick",
+    "wallTone": {
+     "family": "red-brown",
+     "darkness": "mid"
+    },
+    "oneFront": true,
+    "confidence": "low"
+   },
+   "notes": "Top cut off; 5A-C suggests three upper floors.",
+   "reader": "R1 (Claude Opus 5.5, 2026-11-12)",
+   "photo": {
+    "panoId": "TMX7316010203-001541_pano_0002_000125",
+    "date": "2020-01-08",
+    "distM": 5.2,
+    "obliquityDeg": 46.6,
+    "ref": "source-data://experiments/facade-benchmark/round-0/0363100012172592/photo.jpg"
+   }
   },
   {
    "pandId": "0363100012172590",
@@ -3292,7 +3695,50 @@
    "groundUses": [
     "bijeenkomstfunctie"
    ],
-   "key": "0363100012172590"
+   "key": "0363100012172590",
+   "readable": true,
+   "labels": {
+    "storeys": 4,
+    "columns": [
+     2,
+     2,
+     2,
+     2
+    ],
+    "windowKind": "casement",
+    "windowHead": "flat",
+    "paneLayout": "multi-pane",
+    "whiteAccents": {
+     "bands": false,
+     "surrounds": false,
+     "keystones": false,
+     "quoins": false,
+     "whiteFrames": true
+    },
+    "doorBay": "unknown",
+    "doorReveal": "unknown",
+    "shopfront": true,
+    "shopfrontForm": "display-windows",
+    "crown": "unknown",
+    "cornice": "unknown",
+    "roof": "unknown",
+    "finish": "brick",
+    "wallTone": {
+     "family": "dark-brown",
+     "darkness": "dark"
+    },
+    "oneFront": true,
+    "confidence": "low"
+   },
+   "notes": "Truck hides ground storey, top cut off; ground read through awning.",
+   "reader": "R1 (Claude Opus 5.5, 2026-11-12)",
+   "photo": {
+    "panoId": "TMX7316010203-002938_pano_0004_000040",
+    "date": "2023-01-16",
+    "distM": 5.6,
+    "obliquityDeg": 41.1,
+    "ref": "source-data://experiments/facade-benchmark/round-0/0363100012172590/photo.jpg"
+   }
   },
   {
    "pandId": "0363100012172591",
@@ -3309,7 +3755,18 @@
    "groundUses": [
     "winkelfunctie"
    ],
-   "key": "0363100012172591"
+   "key": "0363100012172591",
+   "readable": false,
+   "labels": null,
+   "notes": "A truck covers the whole outlined front.",
+   "reader": "R1 (Claude Opus 5.5, 2026-11-12)",
+   "photo": {
+    "panoId": "TMX7316010203-002938_pano_0004_000039",
+    "date": "2023-01-16",
+    "distM": 6,
+    "obliquityDeg": 44.9,
+    "ref": "source-data://experiments/facade-benchmark/round-0/0363100012172591/photo.jpg"
+   }
   },
   {
    "pandId": "0363100012172584",
@@ -3326,7 +3783,50 @@
    "groundUses": [
     "bijeenkomstfunctie"
    ],
-   "key": "0363100012172584"
+   "key": "0363100012172584",
+   "readable": true,
+   "labels": {
+    "storeys": 4,
+    "columns": [
+     2,
+     2,
+     2,
+     2
+    ],
+    "windowKind": "T-window",
+    "windowHead": "flat",
+    "paneLayout": "top-light",
+    "whiteAccents": {
+     "bands": false,
+     "surrounds": false,
+     "keystones": false,
+     "quoins": false,
+     "whiteFrames": true
+    },
+    "doorBay": "left",
+    "doorReveal": "inset",
+    "shopfront": true,
+    "shopfrontForm": "display-windows",
+    "crown": "unknown",
+    "cornice": "unknown",
+    "roof": "unknown",
+    "finish": "brick",
+    "wallTone": {
+     "family": "red-brown",
+     "darkness": "mid"
+    },
+    "oneFront": true,
+    "confidence": "low"
+   },
+   "notes": "Blue painted shopfront; top cut off.",
+   "reader": "R1 (Claude Opus 5.5, 2026-11-12)",
+   "photo": {
+    "panoId": "TMX7316010203-001541_pano_0002_000126",
+    "date": "2020-01-08",
+    "distM": 5.1,
+    "obliquityDeg": 45.6,
+    "ref": "source-data://experiments/facade-benchmark/round-0/0363100012172584/photo.jpg"
+   }
   },
   {
    "pandId": "0363100012172897",
@@ -3343,7 +3843,49 @@
    "groundUses": [
     "woonfunctie"
    ],
-   "key": "0363100012172897"
+   "key": "0363100012172897",
+   "readable": true,
+   "labels": {
+    "storeys": 3,
+    "columns": [
+     2,
+     2,
+     3
+    ],
+    "windowKind": "mixed",
+    "windowHead": "mixed",
+    "paneLayout": "mixed",
+    "whiteAccents": {
+     "bands": true,
+     "surrounds": true,
+     "keystones": false,
+     "quoins": false,
+     "whiteFrames": true
+    },
+    "doorBay": "unknown",
+    "doorReveal": "unknown",
+    "shopfront": true,
+    "shopfrontForm": "unknown",
+    "crown": "other",
+    "cornice": "unknown",
+    "roof": "not-visible",
+    "finish": "brick",
+    "wallTone": {
+     "family": "orange-red",
+     "darkness": "mid"
+    },
+    "oneFront": true,
+    "confidence": "low"
+   },
+   "notes": "Van hides ground; white bands and arch rings; round-arched gable window; balcony.",
+   "reader": "R1 (Claude Opus 5.5, 2026-11-12)",
+   "photo": {
+    "panoId": "TMX7316010203-002043_pano_0000_003336",
+    "date": "2021-03-17",
+    "distM": 5.9,
+    "obliquityDeg": 47.7,
+    "ref": "source-data://experiments/facade-benchmark/round-0/0363100012172897/photo.jpg"
+   }
   },
   {
    "pandId": "0363100012172872",
@@ -3360,7 +3902,50 @@
    "groundUses": [
     "woonfunctie"
    ],
-   "key": "0363100012172872"
+   "key": "0363100012172872",
+   "readable": true,
+   "labels": {
+    "storeys": 4,
+    "columns": [
+     3,
+     3,
+     3,
+     3
+    ],
+    "windowKind": "casement",
+    "windowHead": "segmental",
+    "paneLayout": "single",
+    "whiteAccents": {
+     "bands": false,
+     "surrounds": true,
+     "keystones": false,
+     "quoins": false,
+     "whiteFrames": true
+    },
+    "doorBay": "several",
+    "doorReveal": "inset",
+    "shopfront": true,
+    "shopfrontForm": "closed",
+    "crown": "unknown",
+    "cornice": "unknown",
+    "roof": "unknown",
+    "finish": "brick",
+    "wallTone": {
+     "family": "yellow-buff",
+     "darkness": "light"
+    },
+    "oneFront": true,
+    "confidence": "low"
+   },
+   "notes": "Buff brick, glazed-brick checker pilasters, boarded shop; iron balconies; top cut.",
+   "reader": "R1 (Claude Opus 5.5, 2026-11-12)",
+   "photo": {
+    "panoId": "TMX7316010203-002043_pano_0000_003335",
+    "date": "2021-03-17",
+    "distM": 5.7,
+    "obliquityDeg": 43.9,
+    "ref": "source-data://experiments/facade-benchmark/round-0/0363100012172872/photo.jpg"
+   }
   },
   {
    "pandId": "0363100012172874",
@@ -3379,7 +3964,49 @@
    "groundUses": [
     "winkelfunctie"
    ],
-   "key": "0363100012172874"
+   "key": "0363100012172874",
+   "readable": true,
+   "labels": {
+    "storeys": 3,
+    "columns": [
+     3,
+     1,
+     1
+    ],
+    "windowKind": "casement",
+    "windowHead": "flat",
+    "paneLayout": "multi-pane",
+    "whiteAccents": {
+     "bands": true,
+     "surrounds": false,
+     "keystones": false,
+     "quoins": false,
+     "whiteFrames": true
+    },
+    "doorBay": "right",
+    "doorReveal": "flush",
+    "shopfront": true,
+    "shopfrontForm": "display-windows",
+    "crown": "cornice",
+    "cornice": "stone",
+    "roof": "dormer",
+    "finish": "brick",
+    "wallTone": {
+     "family": "dark-brown",
+     "darkness": "mid"
+    },
+    "oneFront": false,
+    "confidence": "low"
+   },
+   "notes": "Corner building; white timber shopfront with oculus; white band under cornice; dormer.",
+   "reader": "R1 (Claude Opus 5.5, 2026-11-12)",
+   "photo": {
+    "panoId": "TMX7316010203-002043_pano_0000_003331",
+    "date": "2021-03-17",
+    "distM": 13.2,
+    "obliquityDeg": 41.5,
+    "ref": "source-data://experiments/facade-benchmark/round-0/0363100012172874/photo.jpg"
+   }
   },
   {
    "pandId": "0363100012172875",
@@ -3396,7 +4023,50 @@
    "groundUses": [
     "winkelfunctie"
    ],
-   "key": "0363100012172875"
+   "key": "0363100012172875",
+   "readable": true,
+   "labels": {
+    "storeys": 4,
+    "columns": [
+     3,
+     1,
+     1,
+     1
+    ],
+    "windowKind": "casement",
+    "windowHead": "flat",
+    "paneLayout": "two-pane",
+    "whiteAccents": {
+     "bands": false,
+     "surrounds": false,
+     "keystones": false,
+     "quoins": false,
+     "whiteFrames": true
+    },
+    "doorBay": "unknown",
+    "doorReveal": "unknown",
+    "shopfront": true,
+    "shopfrontForm": "display-windows",
+    "crown": "cornice",
+    "cornice": "timber",
+    "roof": "not-visible",
+    "finish": "brick",
+    "wallTone": {
+     "family": "dark-brown",
+     "darkness": "mid"
+    },
+    "oneFront": false,
+    "confidence": "low"
+   },
+   "notes": "Side face of corner block, left part hidden by foreground building.",
+   "reader": "R1 (Claude Opus 5.5, 2026-11-12)",
+   "photo": {
+    "panoId": "TMX7316010203-002043_pano_0000_002335",
+    "date": "2021-03-17",
+    "distM": 13,
+    "obliquityDeg": 42.3,
+    "ref": "source-data://experiments/facade-benchmark/round-0/0363100012172875/photo.jpg"
+   }
   },
   {
    "pandId": "0363100012168844",
@@ -3413,7 +4083,18 @@
    "groundUses": [
     "woonfunctie"
    ],
-   "key": "0363100012168844"
+   "key": "0363100012168844",
+   "readable": false,
+   "labels": null,
+   "notes": "Rain smear on lens blurs the outlined front; columns cannot be counted.",
+   "reader": "R1 (Claude Opus 5.5, 2026-11-12)",
+   "photo": {
+    "panoId": "TMX7316010203-002938_pano_0004_000035",
+    "date": "2023-01-16",
+    "distM": 14.2,
+    "obliquityDeg": 53.8,
+    "ref": "source-data://experiments/facade-benchmark/round-0/0363100012168844/photo.jpg"
+   }
   },
   {
    "pandId": "0363100012168838",
@@ -3436,7 +4117,18 @@
     "winkelfunctie",
     "woonfunctie"
    ],
-   "key": "0363100012168838"
+   "key": "0363100012168838",
+   "readable": false,
+   "labels": null,
+   "notes": "Outline sits on the front numbered 20, not 18; identity ambiguous at this obliquity.",
+   "reader": "R1 (Claude Opus 5.5, 2026-11-12)",
+   "photo": {
+    "panoId": "TMX7316010203-001054_pano_0000_004146",
+    "date": "2019-01-15",
+    "distM": 5.3,
+    "obliquityDeg": 48.7,
+    "ref": "source-data://experiments/facade-benchmark/round-0/0363100012168838/photo.jpg"
+   }
   },
   {
    "pandId": "0363100012172609",
@@ -3455,7 +4147,50 @@
    "groundUses": [
     "woonfunctie"
    ],
-   "key": "0363100012172609"
+   "key": "0363100012172609",
+   "readable": true,
+   "labels": {
+    "storeys": 4,
+    "columns": [
+     3,
+     3,
+     3,
+     3
+    ],
+    "windowKind": "sash",
+    "windowHead": "flat",
+    "paneLayout": "multi-pane",
+    "whiteAccents": {
+     "bands": false,
+     "surrounds": false,
+     "keystones": false,
+     "quoins": false,
+     "whiteFrames": true
+    },
+    "doorBay": "right",
+    "doorReveal": "inset",
+    "shopfront": true,
+    "shopfrontForm": "display-windows",
+    "crown": "unknown",
+    "cornice": "unknown",
+    "roof": "unknown",
+    "finish": "brick",
+    "wallTone": {
+     "family": "dark-brown",
+     "darkness": "dark"
+    },
+    "oneFront": true,
+    "confidence": "low"
+   },
+   "notes": "Top cut off; 22A-C suggests three upper floors; old timber shopfront.",
+   "reader": "R1 (Claude Opus 5.5, 2026-11-12)",
+   "photo": {
+    "panoId": "TMX7316010203-001054_pano_0000_004147",
+    "date": "2019-01-15",
+    "distM": 5.1,
+    "obliquityDeg": 44,
+    "ref": "source-data://experiments/facade-benchmark/round-0/0363100012172609/photo.jpg"
+   }
   },
   {
    "pandId": "0363100012172621",
@@ -3475,7 +4210,50 @@
     "bijeenkomstfunctie",
     "woonfunctie"
    ],
-   "key": "0363100012172621"
+   "key": "0363100012172621",
+   "readable": true,
+   "labels": {
+    "storeys": 4,
+    "columns": [
+     2,
+     3,
+     3,
+     3
+    ],
+    "windowKind": "sash",
+    "windowHead": "flat",
+    "paneLayout": "two-pane",
+    "whiteAccents": {
+     "bands": false,
+     "surrounds": false,
+     "keystones": false,
+     "quoins": false,
+     "whiteFrames": true
+    },
+    "doorBay": "left",
+    "doorReveal": "inset",
+    "shopfront": true,
+    "shopfrontForm": "display-windows",
+    "crown": "unknown",
+    "cornice": "unknown",
+    "roof": "unknown",
+    "finish": "brick",
+    "wallTone": {
+     "family": "red-brown",
+     "darkness": "mid"
+    },
+    "oneFront": true,
+    "confidence": "low"
+   },
+   "notes": "Top cut off; awninged shop right, house door left.",
+   "reader": "R1 (Claude Opus 5.5, 2026-11-12)",
+   "photo": {
+    "panoId": "TMX7316010203-001054_pano_0000_004148",
+    "date": "2019-01-15",
+    "distM": 5.5,
+    "obliquityDeg": 49.6,
+    "ref": "source-data://experiments/facade-benchmark/round-0/0363100012172621/photo.jpg"
+   }
   },
   {
    "pandId": "0363100012172622",
@@ -3495,7 +4273,50 @@
     "woonfunctie",
     "winkelfunctie"
    ],
-   "key": "0363100012172622"
+   "key": "0363100012172622",
+   "readable": true,
+   "labels": {
+    "storeys": 4,
+    "columns": [
+     4,
+     2,
+     2,
+     2
+    ],
+    "windowKind": "casement",
+    "windowHead": "flat",
+    "paneLayout": "single",
+    "whiteAccents": {
+     "bands": false,
+     "surrounds": false,
+     "keystones": false,
+     "quoins": false,
+     "whiteFrames": true
+    },
+    "doorBay": "unknown",
+    "doorReveal": "unknown",
+    "shopfront": true,
+    "shopfrontForm": "display-windows",
+    "crown": "unknown",
+    "cornice": "unknown",
+    "roof": "unknown",
+    "finish": "brick",
+    "wallTone": {
+     "family": "dark-brown",
+     "darkness": "mid"
+    },
+    "oneFront": true,
+    "confidence": "low"
+   },
+   "notes": "Two addresses, one front; café ground; roller shutters, balconettes; top cut.",
+   "reader": "R1 (Claude Opus 5.5, 2026-11-12)",
+   "photo": {
+    "panoId": "TMX7316010203-001054_pano_0000_004149",
+    "date": "2019-01-15",
+    "distM": 5.8,
+    "obliquityDeg": 48.9,
+    "ref": "source-data://experiments/facade-benchmark/round-0/0363100012172622/photo.jpg"
+   }
   },
   {
    "pandId": "0363100012172617",
@@ -3572,7 +4393,50 @@
    "groundUses": [
     "winkelfunctie"
    ],
-   "key": "0363100012172894"
+   "key": "0363100012172894",
+   "readable": true,
+   "labels": {
+    "storeys": 4,
+    "columns": [
+     3,
+     2,
+     2,
+     2
+    ],
+    "windowKind": "T-window",
+    "windowHead": "flat",
+    "paneLayout": "top-light",
+    "whiteAccents": {
+     "bands": false,
+     "surrounds": false,
+     "keystones": false,
+     "quoins": false,
+     "whiteFrames": true
+    },
+    "doorBay": "right",
+    "doorReveal": "flush",
+    "shopfront": true,
+    "shopfrontForm": "display-windows",
+    "crown": "cornice",
+    "cornice": "timber",
+    "roof": "not-visible",
+    "finish": "brick",
+    "wallTone": {
+     "family": "dark-brown",
+     "darkness": "mid"
+    },
+    "oneFront": false,
+    "confidence": "med"
+   },
+   "notes": "Corner building, corner shop with curved fascia; white cornice.",
+   "reader": "R1 (Claude Opus 5.5, 2026-11-12)",
+   "photo": {
+    "panoId": "TMX7316010203-001054_pano_0000_003800",
+    "date": "2019-01-15",
+    "distM": 12.9,
+    "obliquityDeg": 36.9,
+    "ref": "source-data://experiments/facade-benchmark/round-0/0363100012172894/photo.jpg"
+   }
   },
   {
    "pandId": "0363100012172876",
@@ -3589,7 +4453,49 @@
    "groundUses": [
     "winkelfunctie"
    ],
-   "key": "0363100012172876"
+   "key": "0363100012172876",
+   "readable": true,
+   "labels": {
+    "storeys": 3,
+    "columns": [
+     3,
+     3,
+     3
+    ],
+    "windowKind": "T-window",
+    "windowHead": "flat",
+    "paneLayout": "top-light",
+    "whiteAccents": {
+     "bands": true,
+     "surrounds": true,
+     "keystones": true,
+     "quoins": false,
+     "whiteFrames": true
+    },
+    "doorBay": "unknown",
+    "doorReveal": "unknown",
+    "shopfront": true,
+    "shopfrontForm": "display-windows",
+    "crown": "mansard",
+    "cornice": "timber",
+    "roof": "mansard",
+    "finish": "brick",
+    "wallTone": {
+     "family": "orange-red",
+     "darkness": "mid"
+    },
+    "oneFront": false,
+    "confidence": "med"
+   },
+   "notes": "Ornate corner: white bands, balustraded balconies, red shutters, mansard with dormer.",
+   "reader": "R1 (Claude Opus 5.5, 2026-11-12)",
+   "photo": {
+    "panoId": "TMX7316010203-001054_pano_0000_003792",
+    "date": "2019-01-15",
+    "distM": 11.3,
+    "obliquityDeg": 26.1,
+    "ref": "source-data://experiments/facade-benchmark/round-0/0363100012172876/photo.jpg"
+   }
   },
   {
    "pandId": "0363100012172865",
@@ -3608,7 +4514,50 @@
     "winkelfunctie",
     "woonfunctie"
    ],
-   "key": "0363100012172865"
+   "key": "0363100012172865",
+   "readable": true,
+   "labels": {
+    "storeys": 4,
+    "columns": [
+     2,
+     2,
+     2,
+     2
+    ],
+    "windowKind": "T-window",
+    "windowHead": "flat",
+    "paneLayout": "top-light",
+    "whiteAccents": {
+     "bands": true,
+     "surrounds": false,
+     "keystones": false,
+     "quoins": false,
+     "whiteFrames": true
+    },
+    "doorBay": "right",
+    "doorReveal": "flush",
+    "shopfront": true,
+    "shopfrontForm": "display-windows",
+    "crown": "cornice",
+    "cornice": "timber",
+    "roof": "dormer",
+    "finish": "painted-brick",
+    "wallTone": {
+     "family": "grey",
+     "darkness": "dark"
+    },
+    "oneFront": true,
+    "confidence": "med"
+   },
+   "notes": "Painted dark grey front with white sill bands; raised attic with dormer.",
+   "reader": "R1 (Claude Opus 5.5, 2026-11-12)",
+   "photo": {
+    "panoId": "TMX7316010203-001054_pano_0000_003902",
+    "date": "2019-01-15",
+    "distM": 15.1,
+    "obliquityDeg": 54.7,
+    "ref": "source-data://experiments/facade-benchmark/round-0/0363100012172865/photo.jpg"
+   }
   },
   {
    "pandId": "0363100012172676",
@@ -3625,7 +4574,49 @@
    "groundUses": [
     "winkelfunctie"
    ],
-   "key": "0363100012172676"
+   "key": "0363100012172676",
+   "readable": true,
+   "labels": {
+    "storeys": 3,
+    "columns": [
+     4,
+     3,
+     3
+    ],
+    "windowKind": "sash",
+    "windowHead": "flat",
+    "paneLayout": "multi-pane",
+    "whiteAccents": {
+     "bands": false,
+     "surrounds": false,
+     "keystones": false,
+     "quoins": false,
+     "whiteFrames": true
+    },
+    "doorBay": "several",
+    "doorReveal": "inset",
+    "shopfront": true,
+    "shopfrontForm": "display-windows",
+    "crown": "cornice",
+    "cornice": "timber",
+    "roof": "not-visible",
+    "finish": "brick",
+    "wallTone": {
+     "family": "dark-brown",
+     "darkness": "mid"
+    },
+    "oneFront": true,
+    "confidence": "med"
+   },
+   "notes": "Gallery ground; cornice line visible over second row.",
+   "reader": "R1 (Claude Opus 5.5, 2026-11-12)",
+   "photo": {
+    "panoId": "TMX7316010203-001541_pano_0002_000113",
+    "date": "2020-01-08",
+    "distM": 5.2,
+    "obliquityDeg": 48.7,
+    "ref": "source-data://experiments/facade-benchmark/round-0/0363100012172676/photo.jpg"
+   }
   },
   {
    "pandId": "0363100012172671",
@@ -3642,7 +4633,49 @@
    "groundUses": [
     "winkelfunctie"
    ],
-   "key": "0363100012172671"
+   "key": "0363100012172671",
+   "readable": true,
+   "labels": {
+    "storeys": 3,
+    "columns": [
+     2,
+     2,
+     2
+    ],
+    "windowKind": "casement",
+    "windowHead": "flat",
+    "paneLayout": "two-pane",
+    "whiteAccents": {
+     "bands": false,
+     "surrounds": false,
+     "keystones": false,
+     "quoins": false,
+     "whiteFrames": true
+    },
+    "doorBay": "right",
+    "doorReveal": "inset",
+    "shopfront": true,
+    "shopfrontForm": "display-windows",
+    "crown": "cornice",
+    "cornice": "timber",
+    "roof": "not-visible",
+    "finish": "brick",
+    "wallTone": {
+     "family": "red-brown",
+     "darkness": "mid"
+    },
+    "oneFront": true,
+    "confidence": "low"
+   },
+   "notes": "55 deg oblique; bakery front; cornice line over second row.",
+   "reader": "R1 (Claude Opus 5.5, 2026-11-12)",
+   "photo": {
+    "panoId": "b_20241216_0911_Track33_Sphere_00024",
+    "date": "2024-12-16",
+    "distM": 5.5,
+    "obliquityDeg": 54.7,
+    "ref": "source-data://experiments/facade-benchmark/round-0/0363100012172671/photo.jpg"
+   }
   },
   {
    "pandId": "0363100012172674",
@@ -3662,7 +4695,49 @@
     "woonfunctie",
     "overige gebruiksfunctie"
    ],
-   "key": "0363100012172674"
+   "key": "0363100012172674",
+   "readable": true,
+   "labels": {
+    "storeys": 3,
+    "columns": [
+     4,
+     2,
+     2
+    ],
+    "windowKind": "T-window",
+    "windowHead": "flat",
+    "paneLayout": "top-light",
+    "whiteAccents": {
+     "bands": false,
+     "surrounds": false,
+     "keystones": false,
+     "quoins": false,
+     "whiteFrames": true
+    },
+    "doorBay": "several",
+    "doorReveal": "inset",
+    "shopfront": true,
+    "shopfrontForm": "display-windows",
+    "crown": "neck",
+    "cornice": "none",
+    "roof": "not-visible",
+    "finish": "brick",
+    "wallTone": {
+     "family": "red-brown",
+     "darkness": "mid"
+    },
+    "oneFront": true,
+    "confidence": "low"
+   },
+   "notes": "Curved gable shoulder visible top right; shop ground.",
+   "reader": "R1 (Claude Opus 5.5, 2026-11-12)",
+   "photo": {
+    "panoId": "TMX7316010203-002043_pano_0000_002322",
+    "date": "2021-03-17",
+    "distM": 5.6,
+    "obliquityDeg": 50,
+    "ref": "source-data://experiments/facade-benchmark/round-0/0363100012172674/photo.jpg"
+   }
   },
   {
    "pandId": "0363100012172670",
@@ -3682,7 +4757,18 @@
     "winkelfunctie",
     "bijeenkomstfunctie"
    ],
-   "key": "0363100012172670"
+   "key": "0363100012172670",
+   "readable": false,
+   "labels": null,
+   "notes": "Scaffold and netting cover the outlined front.",
+   "reader": "R1 (Claude Opus 5.5, 2026-11-12)",
+   "photo": {
+    "panoId": "TMX7316010203-002043_pano_0000_003347",
+    "date": "2021-03-17",
+    "distM": 6.1,
+    "obliquityDeg": 47.8,
+    "ref": "source-data://experiments/facade-benchmark/round-0/0363100012172670/photo.jpg"
+   }
   },
   {
    "pandId": "0363100012172673",
@@ -3702,7 +4788,49 @@
     "winkelfunctie",
     "woonfunctie"
    ],
-   "key": "0363100012172673"
+   "key": "0363100012172673",
+   "readable": true,
+   "labels": {
+    "storeys": 3,
+    "columns": [
+     3,
+     3,
+     3
+    ],
+    "windowKind": "T-window",
+    "windowHead": "flat",
+    "paneLayout": "top-light",
+    "whiteAccents": {
+     "bands": false,
+     "surrounds": false,
+     "keystones": false,
+     "quoins": false,
+     "whiteFrames": true
+    },
+    "doorBay": "centre",
+    "doorReveal": "inset",
+    "shopfront": true,
+    "shopfrontForm": "display-windows",
+    "crown": "cornice",
+    "cornice": "timber",
+    "roof": "not-visible",
+    "finish": "brick",
+    "wallTone": {
+     "family": "red-brown",
+     "darkness": "mid"
+    },
+    "oneFront": true,
+    "confidence": "med"
+   },
+   "notes": "White cornice over second row; café ground with centre door.",
+   "reader": "R1 (Claude Opus 5.5, 2026-11-12)",
+   "photo": {
+    "panoId": "TMX7316010203-002043_pano_0000_002323",
+    "date": "2021-03-17",
+    "distM": 5.3,
+    "obliquityDeg": 41.8,
+    "ref": "source-data://experiments/facade-benchmark/round-0/0363100012172673/photo.jpg"
+   }
   },
   {
    "pandId": "0363100012172672",
@@ -3723,7 +4851,50 @@
     "bijeenkomstfunctie",
     "woonfunctie"
    ],
-   "key": "0363100012172672"
+   "key": "0363100012172672",
+   "readable": true,
+   "labels": {
+    "storeys": 4,
+    "columns": [
+     4,
+     3,
+     3,
+     3
+    ],
+    "windowKind": "T-window",
+    "windowHead": "flat",
+    "paneLayout": "top-light",
+    "whiteAccents": {
+     "bands": false,
+     "surrounds": false,
+     "keystones": false,
+     "quoins": false,
+     "whiteFrames": true
+    },
+    "doorBay": "right",
+    "doorReveal": "flush",
+    "shopfront": true,
+    "shopfrontForm": "display-windows",
+    "crown": "unknown",
+    "cornice": "unknown",
+    "roof": "not-visible",
+    "finish": "brick",
+    "wallTone": {
+     "family": "dark-brown",
+     "darkness": "mid"
+    },
+    "oneFront": true,
+    "confidence": "low"
+   },
+   "notes": "Top cut: storeys estimated; 3 upper bays; shop + separate house door right",
+   "reader": "R2 (Claude Opus 5.5, 2026-11-12)",
+   "photo": {
+    "panoId": "TMX7316010203-000703_pano_0000_006340",
+    "date": "2018-05-02",
+    "distM": 6.1,
+    "obliquityDeg": 53.5,
+    "ref": "source-data://experiments/facade-benchmark/round-0/0363100012172672/photo.jpg"
+   }
   },
   {
    "pandId": "0363100012172668",
@@ -3740,7 +4911,50 @@
    "groundUses": [
     "overige gebruiksfunctie"
    ],
-   "key": "0363100012172668"
+   "key": "0363100012172668",
+   "readable": true,
+   "labels": {
+    "storeys": 4,
+    "columns": [
+     3,
+     3,
+     3,
+     3
+    ],
+    "windowKind": "T-window",
+    "windowHead": "flat",
+    "paneLayout": "top-light",
+    "whiteAccents": {
+     "bands": false,
+     "surrounds": false,
+     "keystones": false,
+     "quoins": false,
+     "whiteFrames": true
+    },
+    "doorBay": "left",
+    "doorReveal": "flush",
+    "shopfront": true,
+    "shopfrontForm": "display-windows",
+    "crown": "unknown",
+    "cornice": "unknown",
+    "roof": "not-visible",
+    "finish": "brick",
+    "wallTone": {
+     "family": "dark-brown",
+     "darkness": "dark"
+    },
+    "oneFront": true,
+    "confidence": "low"
+   },
+   "notes": "1986 infill; top cut, storeys estimated; outline matches front",
+   "reader": "R2 (Claude Opus 5.5, 2026-11-12)",
+   "photo": {
+    "panoId": "TMX7316010203-001541_pano_0002_000118",
+    "date": "2020-01-08",
+    "distM": 5.3,
+    "obliquityDeg": 51.4,
+    "ref": "source-data://experiments/facade-benchmark/round-0/0363100012172668/photo.jpg"
+   }
   },
   {
    "pandId": "0363100012172898",
@@ -3757,7 +4971,18 @@
    "groundUses": [
     "bijeenkomstfunctie"
    ],
-   "key": "0363100012172898"
+   "key": "0363100012172898",
+   "readable": false,
+   "labels": null,
+   "notes": "Ground storey hidden by a delivery van and top storeys cut off",
+   "reader": "R2 (Claude Opus 5.5, 2026-11-12)",
+   "photo": {
+    "panoId": "TMX7316010203-002043_pano_0000_002324",
+    "date": "2021-03-17",
+    "distM": 5.6,
+    "obliquityDeg": 44,
+    "ref": "source-data://experiments/facade-benchmark/round-0/0363100012172898/photo.jpg"
+   }
   },
   {
    "pandId": "0363100012172667",
@@ -3777,7 +5002,50 @@
     "bijeenkomstfunctie",
     "woonfunctie"
    ],
-   "key": "0363100012172667"
+   "key": "0363100012172667",
+   "readable": true,
+   "labels": {
+    "storeys": 4,
+    "columns": [
+     3,
+     4,
+     4,
+     4
+    ],
+    "windowKind": "sash",
+    "windowHead": "flat",
+    "paneLayout": "two-pane",
+    "whiteAccents": {
+     "bands": false,
+     "surrounds": false,
+     "keystones": false,
+     "quoins": false,
+     "whiteFrames": true
+    },
+    "doorBay": "right",
+    "doorReveal": "flush",
+    "shopfront": true,
+    "shopfrontForm": "display-windows",
+    "crown": "cornice",
+    "cornice": "timber",
+    "roof": "not-visible",
+    "finish": "painted-brick",
+    "wallTone": {
+     "family": "near-black",
+     "darkness": "dark"
+    },
+    "oneFront": true,
+    "confidence": "med"
+   },
+   "notes": "Black-painted brick, two addresses one front; white cornice; wall anchors",
+   "reader": "R2 (Claude Opus 5.5, 2026-11-12)",
+   "photo": {
+    "panoId": "TMX7316010203-002043_pano_0000_002326",
+    "date": "2021-03-17",
+    "distM": 7.7,
+    "obliquityDeg": 53.8,
+    "ref": "source-data://experiments/facade-benchmark/round-0/0363100012172667/photo.jpg"
+   }
   },
   {
    "pandId": "0363100012172878",
@@ -3796,7 +5064,50 @@
     "winkelfunctie",
     "kantoorfunctie"
    ],
-   "key": "0363100012172878"
+   "key": "0363100012172878",
+   "readable": true,
+   "labels": {
+    "storeys": 4,
+    "columns": [
+     4,
+     6,
+     6,
+     6
+    ],
+    "windowKind": "T-window",
+    "windowHead": "flat",
+    "paneLayout": "top-light",
+    "whiteAccents": {
+     "bands": false,
+     "surrounds": false,
+     "keystones": false,
+     "quoins": false,
+     "whiteFrames": true
+    },
+    "doorBay": "unknown",
+    "doorReveal": "unknown",
+    "shopfront": true,
+    "shopfrontForm": "display-windows",
+    "crown": "other",
+    "cornice": "none",
+    "roof": "not-visible",
+    "finish": "brick",
+    "wallTone": {
+     "family": "red-brown",
+     "darkness": "dark"
+    },
+    "oneFront": false,
+    "confidence": "low"
+   },
+   "notes": "Corner building, rain on lens distorts; ornate gable with pinnacles",
+   "reader": "R2 (Claude Opus 5.5, 2026-11-12)",
+   "photo": {
+    "panoId": "TMX7316010203-002938_pano_0004_000062",
+    "date": "2023-01-16",
+    "distM": 12.6,
+    "obliquityDeg": 42.6,
+    "ref": "source-data://experiments/facade-benchmark/round-0/0363100012172878/photo.jpg"
+   }
   },
   {
    "pandId": "0363100012172879",
@@ -3820,7 +5131,49 @@
     "woonfunctie",
     "bijeenkomstfunctie"
    ],
-   "key": "0363100012172879"
+   "key": "0363100012172879",
+   "readable": true,
+   "labels": {
+    "storeys": 3,
+    "columns": [
+     3,
+     2,
+     2
+    ],
+    "windowKind": "large-pane",
+    "windowHead": "flat",
+    "paneLayout": "top-light",
+    "whiteAccents": {
+     "bands": false,
+     "surrounds": false,
+     "keystones": false,
+     "quoins": false,
+     "whiteFrames": true
+    },
+    "doorBay": "unknown",
+    "doorReveal": "unknown",
+    "shopfront": true,
+    "shopfrontForm": "display-windows",
+    "crown": "flat",
+    "cornice": "parapet",
+    "roof": "not-visible",
+    "finish": "render",
+    "wallTone": {
+     "family": "grey",
+     "darkness": "mid"
+    },
+    "oneFront": false,
+    "confidence": "med"
+   },
+   "notes": "Modern rendered corner block; recessed balconies on right bay; roof terrace",
+   "reader": "R2 (Claude Opus 5.5, 2026-11-12)",
+   "photo": {
+    "panoId": "TMX7316010203-001054_pano_0000_004136",
+    "date": "2019-01-15",
+    "distM": 11.4,
+    "obliquityDeg": 44.4,
+    "ref": "source-data://experiments/facade-benchmark/round-0/0363100012172879/photo.jpg"
+   }
   },
   {
    "pandId": "0363100012182299",
@@ -3837,7 +5190,18 @@
    "groundUses": [
     "bijeenkomstfunctie"
    ],
-   "key": "0363100012182299"
+   "key": "0363100012182299",
+   "readable": false,
+   "labels": null,
+   "notes": "Very oblique, top cut; outline spans two narrow fronts, cannot tell which",
+   "reader": "R2 (Claude Opus 5.5, 2026-11-12)",
+   "photo": {
+    "panoId": "TMX7316010203-000492_pano_0000_000627",
+    "date": "2017-11-17",
+    "distM": 5.7,
+    "obliquityDeg": 53.4,
+    "ref": "source-data://experiments/facade-benchmark/round-0/0363100012182299/photo.jpg"
+   }
   },
   {
    "pandId": "0363100012171858",
@@ -3854,7 +5218,18 @@
    "groundUses": [
     "bijeenkomstfunctie"
    ],
-   "key": "0363100012171858"
+   "key": "0363100012171858",
+   "readable": false,
+   "labels": null,
+   "notes": "Rain on lens and neon sign over front; outline on corner side face",
+   "reader": "R2 (Claude Opus 5.5, 2026-11-12)",
+   "photo": {
+    "panoId": "TMX7316010203-002356_pano_0003_000083",
+    "date": "2021-12-27",
+    "distM": 6.7,
+    "obliquityDeg": 46.8,
+    "ref": "source-data://experiments/facade-benchmark/round-0/0363100012171858/photo.jpg"
+   }
   },
   {
    "pandId": "0363100012182296",
@@ -4384,7 +5759,18 @@
    "groundUses": [
     "winkelfunctie"
    ],
-   "key": "0363100012182848"
+   "key": "0363100012182848",
+   "readable": false,
+   "labels": null,
+   "notes": "Front hidden behind lamp poles and sign; gable front seen edge-on",
+   "reader": "R2 (Claude Opus 5.5, 2026-11-12)",
+   "photo": {
+    "panoId": "TMX7316010203-002031_pano_0000_000034",
+    "date": "2021-03-08",
+    "distM": 22.4,
+    "obliquityDeg": 33.1,
+    "ref": "source-data://experiments/facade-benchmark/round-0/0363100012182848/photo.jpg"
+   }
   },
   {
    "pandId": "0363100012182847",
@@ -4405,7 +5791,18 @@
     "woonfunctie",
     "bijeenkomstfunctie"
    ],
-   "key": "0363100012182847"
+   "key": "0363100012182847",
+   "readable": false,
+   "labels": null,
+   "notes": "Outline on a near-blank side wall; real front edge-on behind a pole",
+   "reader": "R2 (Claude Opus 5.5, 2026-11-12)",
+   "photo": {
+    "panoId": "TMX7316010203-001055_pano_0000_001223",
+    "date": "2019-01-15",
+    "distM": 22.9,
+    "obliquityDeg": 51,
+    "ref": "source-data://experiments/facade-benchmark/round-0/0363100012182847/photo.jpg"
+   }
   },
   {
    "pandId": "0363100012181808",
@@ -4488,7 +5885,50 @@
    "groundUses": [
     "winkelfunctie"
    ],
-   "key": "0363100012182858"
+   "key": "0363100012182858",
+   "readable": true,
+   "labels": {
+    "storeys": 4,
+    "columns": [
+     3,
+     2,
+     2,
+     2
+    ],
+    "windowKind": "T-window",
+    "windowHead": "flat",
+    "paneLayout": "top-light",
+    "whiteAccents": {
+     "bands": false,
+     "surrounds": false,
+     "keystones": false,
+     "quoins": false,
+     "whiteFrames": true
+    },
+    "doorBay": "several",
+    "doorReveal": "inset",
+    "shopfront": false,
+    "shopfrontForm": "none",
+    "crown": "unknown",
+    "cornice": "unknown",
+    "roof": "not-visible",
+    "finish": "brick",
+    "wallTone": {
+     "family": "dark-brown",
+     "darkness": "mid"
+    },
+    "oneFront": true,
+    "confidence": "low"
+   },
+   "notes": "Top cut: storeys estimated; former shop frame with two doors",
+   "reader": "R2 (Claude Opus 5.5, 2026-11-12)",
+   "photo": {
+    "panoId": "TMX7316010203-002356_pano_0005_000167",
+    "date": "2021-12-27",
+    "distM": 5.5,
+    "obliquityDeg": 46.6,
+    "ref": "source-data://experiments/facade-benchmark/round-0/0363100012182858/photo.jpg"
+   }
   },
   {
    "pandId": "0363100012182857",
@@ -4627,7 +6067,18 @@
    "groundUses": [
     "bijeenkomstfunctie"
    ],
-   "key": "0363100012181804"
+   "key": "0363100012181804",
+   "readable": false,
+   "labels": null,
+   "notes": "Outline on oval-window side wall; lower front blocked by truck and lift",
+   "reader": "R2 (Claude Opus 5.5, 2026-11-12)",
+   "photo": {
+    "panoId": "TMX7316010203-002962_pano_0000_000117",
+    "date": "2023-02-13",
+    "distM": 34.9,
+    "obliquityDeg": 39.2,
+    "ref": "source-data://experiments/facade-benchmark/round-0/0363100012181804/photo.jpg"
+   }
   },
   {
    "pandId": "0363100012182855",
@@ -4704,7 +6155,50 @@
    "groundUses": [
     "winkelfunctie"
    ],
-   "key": "0363100012182587"
+   "key": "0363100012182587",
+   "readable": true,
+   "labels": {
+    "storeys": 4,
+    "columns": [
+     5,
+     6,
+     6,
+     6
+    ],
+    "windowKind": "sash",
+    "windowHead": "segmental",
+    "paneLayout": "multi-pane",
+    "whiteAccents": {
+     "bands": false,
+     "surrounds": false,
+     "keystones": false,
+     "quoins": false,
+     "whiteFrames": true
+    },
+    "doorBay": "several",
+    "doorReveal": "portiek",
+    "shopfront": true,
+    "shopfrontForm": "display-windows",
+    "crown": "unknown",
+    "cornice": "unknown",
+    "roof": "not-visible",
+    "finish": "brick",
+    "wallTone": {
+     "family": "dark-brown",
+     "darkness": "mid"
+    },
+    "oneFront": false,
+    "confidence": "low"
+   },
+   "notes": "Two fronts: 4-bay warehouse plus 2-bay stone-plinth corner; top cut",
+   "reader": "R2 (Claude Opus 5.5, 2026-11-12)",
+   "photo": {
+    "panoId": "TMX7316010203-000492_pano_0000_000141",
+    "date": "2017-11-17",
+    "distM": 5,
+    "obliquityDeg": 1.1,
+    "ref": "source-data://experiments/facade-benchmark/round-0/0363100012182587/photo.jpg"
+   }
   },
   {
    "pandId": "0363100012182854",
@@ -5026,7 +6520,18 @@
    "groundUses": [
     "winkelfunctie"
    ],
-   "key": "0363100012182844"
+   "key": "0363100012182844",
+   "readable": false,
+   "labels": null,
+   "notes": "Corner house; outline ambiguous between stepped narrow face and 3-bay street face",
+   "reader": "R2 (Claude Opus 5.5, 2026-11-12)",
+   "photo": {
+    "panoId": "TMX7316010203-002930_pano_0002_000029",
+    "date": "2023-01-13",
+    "distM": 14.3,
+    "obliquityDeg": 41,
+    "ref": "source-data://experiments/facade-benchmark/round-0/0363100012182844/photo.jpg"
+   }
   },
   {
    "pandId": "0363100012176175",
@@ -5043,7 +6548,49 @@
    "groundUses": [
     "winkelfunctie"
    ],
-   "key": "0363100012176175"
+   "key": "0363100012176175",
+   "readable": true,
+   "labels": {
+    "storeys": 3,
+    "columns": [
+     2,
+     2,
+     2
+    ],
+    "windowKind": "sash",
+    "windowHead": "flat",
+    "paneLayout": "two-pane",
+    "whiteAccents": {
+     "bands": false,
+     "surrounds": false,
+     "keystones": false,
+     "quoins": false,
+     "whiteFrames": true
+    },
+    "doorBay": "unknown",
+    "doorReveal": "unknown",
+    "shopfront": true,
+    "shopfrontForm": "display-windows",
+    "crown": "neck",
+    "cornice": "none",
+    "roof": "not-visible",
+    "finish": "painted-brick",
+    "wallTone": {
+     "family": "near-black",
+     "darkness": "dark"
+    },
+    "oneFront": true,
+    "confidence": "med"
+   },
+   "notes": "Black-painted narrow front, neck gable with white claw scrolls; person blurs ground",
+   "reader": "R2 (Claude Opus 5.5, 2026-11-12)",
+   "photo": {
+    "panoId": "TMX7316010203-002978_pano_0001_000541",
+    "date": "2023-02-20",
+    "distM": 30.4,
+    "obliquityDeg": 25.4,
+    "ref": "source-data://experiments/facade-benchmark/round-0/0363100012176175/photo.jpg"
+   }
   },
   {
    "pandId": "0363100012176174",
@@ -5060,7 +6607,49 @@
    "groundUses": [
     "winkelfunctie"
    ],
-   "key": "0363100012176174"
+   "key": "0363100012176174",
+   "readable": true,
+   "labels": {
+    "storeys": 3,
+    "columns": [
+     2,
+     2,
+     2
+    ],
+    "windowKind": "T-window",
+    "windowHead": "flat",
+    "paneLayout": "top-light",
+    "whiteAccents": {
+     "bands": false,
+     "surrounds": false,
+     "keystones": false,
+     "quoins": false,
+     "whiteFrames": true
+    },
+    "doorBay": "left",
+    "doorReveal": "flush",
+    "shopfront": true,
+    "shopfrontForm": "display-windows",
+    "crown": "neck",
+    "cornice": "none",
+    "roof": "not-visible",
+    "finish": "brick",
+    "wallTone": {
+     "family": "red-brown",
+     "darkness": "mid"
+    },
+    "oneFront": true,
+    "confidence": "med"
+   },
+   "notes": "Neck gable with scroll ornaments; attic window in neck",
+   "reader": "R2 (Claude Opus 5.5, 2026-11-12)",
+   "photo": {
+    "panoId": "TMX7316010203-002859_pano_0000_000090",
+    "date": "2022-12-15",
+    "distM": 7.2,
+    "obliquityDeg": 34.6,
+    "ref": "source-data://experiments/facade-benchmark/round-0/0363100012176174/photo.jpg"
+   }
   },
   {
    "pandId": "0363100012176172",
@@ -5077,7 +6666,49 @@
    "groundUses": [
     "bijeenkomstfunctie"
    ],
-   "key": "0363100012176172"
+   "key": "0363100012176172",
+   "readable": true,
+   "labels": {
+    "storeys": 3,
+    "columns": [
+     2,
+     2,
+     2
+    ],
+    "windowKind": "sash",
+    "windowHead": "flat",
+    "paneLayout": "two-pane",
+    "whiteAccents": {
+     "bands": false,
+     "surrounds": false,
+     "keystones": false,
+     "quoins": false,
+     "whiteFrames": true
+    },
+    "doorBay": "right",
+    "doorReveal": "inset",
+    "shopfront": true,
+    "shopfrontForm": "display-windows",
+    "crown": "cornice",
+    "cornice": "timber",
+    "roof": "dormer",
+    "finish": "brick",
+    "wallTone": {
+     "family": "red-brown",
+     "darkness": "mid"
+    },
+    "oneFront": true,
+    "confidence": "med"
+   },
+   "notes": "Outline offset left onto Subway pand; read next front by order; dormer with hoist beam",
+   "reader": "R2 (Claude Opus 5.5, 2026-11-12)",
+   "photo": {
+    "panoId": "TMX7316010203-002859_pano_0000_000087",
+    "date": "2022-12-15",
+    "distM": 9.3,
+    "obliquityDeg": 49.6,
+    "ref": "source-data://experiments/facade-benchmark/round-0/0363100012176172/photo.jpg"
+   }
   },
   {
    "pandId": "0363100012176101",
@@ -5094,7 +6725,50 @@
    "groundUses": [
     "winkelfunctie"
    ],
-   "key": "0363100012176101"
+   "key": "0363100012176101",
+   "readable": true,
+   "labels": {
+    "storeys": 4,
+    "columns": [
+     3,
+     2,
+     2,
+     2
+    ],
+    "windowKind": "large-pane",
+    "windowHead": "flat",
+    "paneLayout": "top-light",
+    "whiteAccents": {
+     "bands": false,
+     "surrounds": false,
+     "keystones": false,
+     "quoins": false,
+     "whiteFrames": false
+    },
+    "doorBay": "left",
+    "doorReveal": "flush",
+    "shopfront": true,
+    "shopfrontForm": "display-windows",
+    "crown": "point",
+    "cornice": "none",
+    "roof": "not-visible",
+    "finish": "render",
+    "wallTone": {
+     "family": "grey",
+     "darkness": "light"
+    },
+    "oneFront": true,
+    "confidence": "med"
+   },
+   "notes": "Subway pand; plain pointed gable with hoist beam; grey painted",
+   "reader": "R2 (Claude Opus 5.5, 2026-11-12)",
+   "photo": {
+    "panoId": "TMX7316010203-002859_pano_0000_000086",
+    "date": "2022-12-15",
+    "distM": 9.8,
+    "obliquityDeg": 52.1,
+    "ref": "source-data://experiments/facade-benchmark/round-0/0363100012176101/photo.jpg"
+   }
   },
   {
    "pandId": "0363100012176102",
@@ -6045,7 +7719,49 @@
    "groundUses": [
     "woonfunctie"
    ],
-   "key": "0363100012177584"
+   "key": "0363100012177584",
+   "readable": true,
+   "labels": {
+    "storeys": 3,
+    "columns": [
+     2,
+     3,
+     3
+    ],
+    "windowKind": "sash",
+    "windowHead": "flat",
+    "paneLayout": "two-pane",
+    "whiteAccents": {
+     "bands": false,
+     "surrounds": false,
+     "keystones": false,
+     "quoins": false,
+     "whiteFrames": true
+    },
+    "doorBay": "right",
+    "doorReveal": "flush",
+    "shopfront": true,
+    "shopfrontForm": "display-windows",
+    "crown": "neck",
+    "cornice": "none",
+    "roof": "not-visible",
+    "finish": "brick",
+    "wallTone": {
+     "family": "dark-brown",
+     "darkness": "mid"
+    },
+    "oneFront": true,
+    "confidence": "med"
+   },
+   "notes": "Neck gable with white sandstone claw pieces; awning hides part of ground",
+   "reader": "R2 (Claude Opus 5.5, 2026-11-12)",
+   "photo": {
+    "panoId": "TMX7316010203-000188_pano_0000_003121",
+    "date": "2016-11-22",
+    "distM": 10.4,
+    "obliquityDeg": 54.8,
+    "ref": "source-data://experiments/facade-benchmark/round-0/0363100012177584/photo.jpg"
+   }
   },
   {
    "pandId": "0363100012177585",
@@ -6066,7 +7782,18 @@
     "woonfunctie",
     "winkelfunctie"
    ],
-   "key": "0363100012177585"
+   "key": "0363100012177585",
+   "readable": false,
+   "labels": null,
+   "notes": "Camera 2 m from a white wall; lamp and timber frame hide the front",
+   "reader": "R2 (Claude Opus 5.5, 2026-11-12)",
+   "photo": {
+    "panoId": "TMX7316010203-002938_pano_0011_000087",
+    "date": "2023-01-16",
+    "distM": 23.9,
+    "obliquityDeg": 51.5,
+    "ref": "source-data://experiments/facade-benchmark/round-0/0363100012177585/photo.jpg"
+   }
   },
   {
    "pandId": "0363100012175206",
@@ -6204,7 +7931,18 @@
    "groundUses": [
     "winkelfunctie"
    ],
-   "key": "0363100012175205"
+   "key": "0363100012175205",
+   "readable": false,
+   "labels": null,
+   "notes": "Tree, rain smear and passing van hide the front",
+   "reader": "R2 (Claude Opus 5.5, 2026-11-12)",
+   "photo": {
+    "panoId": "TMX7316010203-002936_pano_0005_000131",
+    "date": "2023-01-16",
+    "distM": 27.1,
+    "obliquityDeg": 29.8,
+    "ref": "source-data://experiments/facade-benchmark/round-0/0363100012175205/photo.jpg"
+   }
   },
   {
    "pandId": "0363100012175139",
@@ -6223,7 +7961,49 @@
     "winkelfunctie",
     "woonfunctie"
    ],
-   "key": "0363100012175139"
+   "key": "0363100012175139",
+   "readable": true,
+   "labels": {
+    "storeys": 3,
+    "columns": [
+     2,
+     2,
+     1
+    ],
+    "windowKind": "sash",
+    "windowHead": "flat",
+    "paneLayout": "unknown",
+    "whiteAccents": {
+     "bands": false,
+     "surrounds": false,
+     "keystones": false,
+     "quoins": false,
+     "whiteFrames": true
+    },
+    "doorBay": "right",
+    "doorReveal": "unknown",
+    "shopfront": true,
+    "shopfrontForm": "display-windows",
+    "crown": "unknown",
+    "cornice": "unknown",
+    "roof": "not-visible",
+    "finish": "brick",
+    "wallTone": {
+     "family": "red-brown",
+     "darkness": "dark"
+    },
+    "oneFront": true,
+    "confidence": "low"
+   },
+   "notes": "Tree branches over upper storeys; crown hidden; paired window as one opening",
+   "reader": "R2 (Claude Opus 5.5, 2026-11-12)",
+   "photo": {
+    "panoId": "TMX7316010203-002037_pano_0001_000488",
+    "date": "2021-03-11",
+    "distM": 26.9,
+    "obliquityDeg": 45.7,
+    "ref": "source-data://experiments/facade-benchmark/round-0/0363100012175139/photo.jpg"
+   }
   },
   {
    "pandId": "0363100012175140",
@@ -6242,7 +8022,49 @@
    "groundUses": [
     "winkelfunctie"
    ],
-   "key": "0363100012175140"
+   "key": "0363100012175140",
+   "readable": true,
+   "labels": {
+    "storeys": 3,
+    "columns": [
+     3,
+     5,
+     5
+    ],
+    "windowKind": "sash",
+    "windowHead": "flat",
+    "paneLayout": "multi-pane",
+    "whiteAccents": {
+     "bands": false,
+     "surrounds": false,
+     "keystones": false,
+     "quoins": false,
+     "whiteFrames": true
+    },
+    "doorBay": "centre",
+    "doorReveal": "inset",
+    "shopfront": true,
+    "shopfrontForm": "display-windows",
+    "crown": "cornice",
+    "cornice": "timber",
+    "roof": "not-visible",
+    "finish": "painted-brick",
+    "wallTone": {
+     "family": "grey",
+     "darkness": "dark"
+    },
+    "oneFront": true,
+    "confidence": "high"
+   },
+   "notes": "Symmetric 5-bay front, two addresses; white cornice; ornate shopfront pilasters",
+   "reader": "R2 (Claude Opus 5.5, 2026-11-12)",
+   "photo": {
+    "panoId": "TMX7316010203-001549_pano_0000_000203",
+    "date": "2020-01-10",
+    "distM": 5.7,
+    "obliquityDeg": 7.2,
+    "ref": "source-data://experiments/facade-benchmark/round-0/0363100012175140/photo.jpg"
+   }
   },
   {
    "pandId": "0363100012175141",
@@ -6596,7 +8418,49 @@
    "groundUses": [
     "winkelfunctie"
    ],
-   "key": "0363100012168428"
+   "key": "0363100012168428",
+   "readable": true,
+   "labels": {
+    "storeys": 3,
+    "columns": [
+     2,
+     3,
+     3
+    ],
+    "windowKind": "sash",
+    "windowHead": "flat",
+    "paneLayout": "two-pane",
+    "whiteAccents": {
+     "bands": false,
+     "surrounds": false,
+     "keystones": false,
+     "quoins": false,
+     "whiteFrames": true
+    },
+    "doorBay": "left",
+    "doorReveal": "inset",
+    "shopfront": true,
+    "shopfrontForm": "display-windows",
+    "crown": "cornice",
+    "cornice": "timber",
+    "roof": "dormer",
+    "finish": "brick",
+    "wallTone": {
+     "family": "red-brown",
+     "darkness": "mid"
+    },
+    "oneFront": true,
+    "confidence": "med"
+   },
+   "notes": "Bracketed cornice with raised central attic and hoist beam; relieving arch",
+   "reader": "R2 (Claude Opus 5.5, 2026-11-12)",
+   "photo": {
+    "panoId": "TMX7316010203-002859_pano_0000_000130",
+    "date": "2022-12-15",
+    "distM": 9.3,
+    "obliquityDeg": 49.8,
+    "ref": "source-data://experiments/facade-benchmark/round-0/0363100012168428/photo.jpg"
+   }
   },
   {
    "pandId": "0363100012180017",
@@ -6613,7 +8477,18 @@
    "groundUses": [
     "winkelfunctie"
    ],
-   "key": "0363100012180017"
+   "key": "0363100012180017",
+   "readable": false,
+   "labels": null,
+   "notes": "Scaffolding and road signs cover the front",
+   "reader": "R2 (Claude Opus 5.5, 2026-11-12)",
+   "photo": {
+    "panoId": "TMX7316010203-002936_pano_0010_000020",
+    "date": "2023-01-16",
+    "distM": 25.6,
+    "obliquityDeg": 51.5,
+    "ref": "source-data://experiments/facade-benchmark/round-0/0363100012180017/photo.jpg"
+   }
   },
   {
    "pandId": "0363100012179658",
@@ -6630,7 +8505,18 @@
    "groundUses": [
     "winkelfunctie"
    ],
-   "key": "0363100012179658"
+   "key": "0363100012179658",
+   "readable": false,
+   "labels": null,
+   "notes": "Front wrapped in scaffold sheeting",
+   "reader": "R2 (Claude Opus 5.5, 2026-11-12)",
+   "photo": {
+    "panoId": "TMX7316010203-001054_pano_0000_002391",
+    "date": "2019-01-15",
+    "distM": 26.2,
+    "obliquityDeg": 37.6,
+    "ref": "source-data://experiments/facade-benchmark/round-0/0363100012179658/photo.jpg"
+   }
   },
   {
    "pandId": "0363100012180006",
@@ -6647,7 +8533,18 @@
    "groundUses": [
     "winkelfunctie,woonfunctie"
    ],
-   "key": "0363100012180006"
+   "key": "0363100012180006",
+   "readable": false,
+   "labels": null,
+   "notes": "Outline falls on No. 98 corner and side street; No. 96 front cut off",
+   "reader": "R2 (Claude Opus 5.5, 2026-11-12)",
+   "photo": {
+    "panoId": "TMX7316010203-002037_pano_0001_000381",
+    "date": "2021-03-11",
+    "distM": 20.8,
+    "obliquityDeg": 29,
+    "ref": "source-data://experiments/facade-benchmark/round-0/0363100012180006/photo.jpg"
+   }
   },
   {
    "pandId": "0363100012179726",
@@ -6666,7 +8563,50 @@
     "bijeenkomstfunctie",
     "woonfunctie"
    ],
-   "key": "0363100012179726"
+   "key": "0363100012179726",
+   "readable": true,
+   "labels": {
+    "storeys": 4,
+    "columns": [
+     2,
+     2,
+     2,
+     2
+    ],
+    "windowKind": "T-window",
+    "windowHead": "flat",
+    "paneLayout": "top-light",
+    "whiteAccents": {
+     "bands": false,
+     "surrounds": true,
+     "keystones": false,
+     "quoins": false,
+     "whiteFrames": true
+    },
+    "doorBay": "left",
+    "doorReveal": "inset",
+    "shopfront": true,
+    "shopfrontForm": "display-windows",
+    "crown": "unknown",
+    "cornice": "unknown",
+    "roof": "not-visible",
+    "finish": "brick",
+    "wallTone": {
+     "family": "dark-brown",
+     "darkness": "dark"
+    },
+    "oneFront": true,
+    "confidence": "low"
+   },
+   "notes": "Corner shop, red awning; top cut, storeys estimated; stone arch dressings at ground",
+   "reader": "R2 (Claude Opus 5.5, 2026-11-12)",
+   "photo": {
+    "panoId": "TMX7316010203-000188_pano_0000_001251",
+    "date": "2016-11-22",
+    "distM": 20.9,
+    "obliquityDeg": 33.4,
+    "ref": "source-data://experiments/facade-benchmark/round-0/0363100012179726/photo.jpg"
+   }
   },
   {
    "pandId": "0363100012179725",
@@ -6683,7 +8623,50 @@
    "groundUses": [
     "winkelfunctie"
    ],
-   "key": "0363100012179725"
+   "key": "0363100012179725",
+   "readable": true,
+   "labels": {
+    "storeys": 4,
+    "columns": [
+     3,
+     3,
+     3,
+     3
+    ],
+    "windowKind": "sash",
+    "windowHead": "flat",
+    "paneLayout": "mixed",
+    "whiteAccents": {
+     "bands": false,
+     "surrounds": false,
+     "keystones": false,
+     "quoins": false,
+     "whiteFrames": true
+    },
+    "doorBay": "left",
+    "doorReveal": "flush",
+    "shopfront": true,
+    "shopfrontForm": "display-windows",
+    "crown": "cornice",
+    "cornice": "timber",
+    "roof": "dormer",
+    "finish": "brick",
+    "wallTone": {
+     "family": "red-brown",
+     "darkness": "mid"
+    },
+    "oneFront": true,
+    "confidence": "med"
+   },
+   "notes": "Plain cornice with dormer; narrow 3-bay front",
+   "reader": "R2 (Claude Opus 5.5, 2026-11-12)",
+   "photo": {
+    "panoId": "TMX7316010203-001054_pano_0000_002125",
+    "date": "2019-01-15",
+    "distM": 21.2,
+    "obliquityDeg": 44.6,
+    "ref": "source-data://experiments/facade-benchmark/round-0/0363100012179725/photo.jpg"
+   }
   },
   {
    "pandId": "0363100012179724",
@@ -6700,7 +8683,18 @@
    "groundUses": [
     "bijeenkomstfunctie"
    ],
-   "key": "0363100012179724"
+   "key": "0363100012179724",
+   "readable": false,
+   "labels": null,
+   "notes": "Front wrapped in scaffold and netting",
+   "reader": "R2 (Claude Opus 5.5, 2026-11-12)",
+   "photo": {
+    "panoId": "TMX7316010203-001549_pano_0000_000187",
+    "date": "2020-01-10",
+    "distM": 10.8,
+    "obliquityDeg": 50,
+    "ref": "source-data://experiments/facade-benchmark/round-0/0363100012179724/photo.jpg"
+   }
   },
   {
    "pandId": "0363100012179733",
@@ -6717,7 +8711,50 @@
    "groundUses": [
     "winkelfunctie"
    ],
-   "key": "0363100012179733"
+   "key": "0363100012179733",
+   "readable": true,
+   "labels": {
+    "storeys": 4,
+    "columns": [
+     4,
+     3,
+     3,
+     3
+    ],
+    "windowKind": "mixed",
+    "windowHead": "flat",
+    "paneLayout": "top-light",
+    "whiteAccents": {
+     "bands": true,
+     "surrounds": false,
+     "keystones": false,
+     "quoins": false,
+     "whiteFrames": true
+    },
+    "doorBay": "right",
+    "doorReveal": "flush",
+    "shopfront": true,
+    "shopfrontForm": "full-glass",
+    "crown": "unknown",
+    "cornice": "unknown",
+    "roof": "not-visible",
+    "finish": "render",
+    "wallTone": {
+     "family": "grey",
+     "darkness": "mid"
+    },
+    "oneFront": true,
+    "confidence": "low"
+   },
+   "notes": "Rendered lower front, white band; tripartite windows; top cut, storeys estimated",
+   "reader": "R2 (Claude Opus 5.5, 2026-11-12)",
+   "photo": {
+    "panoId": "TMX7316010203-001549_pano_0000_000184",
+    "date": "2020-01-10",
+    "distM": 5.6,
+    "obliquityDeg": 6.8,
+    "ref": "source-data://experiments/facade-benchmark/round-0/0363100012179733/photo.jpg"
+   }
   },
   {
    "pandId": "0363100012179735",

@@ -42,10 +42,10 @@ async function maskedHalves(dir: string, p: Prepared, bandM: number): Promise<{ 
   const { pose, wall } = p, box = cropBox(pose, wall), f = frameFor(pose), s = HALF / Math.max(box.width, box.height);
   const ox = (HALF - box.width * s) / 2, oy = (HALF - box.height * s) / 2; // fit 'contain' offsets
   const toHalf = (q: { x: number; y: number }) => ({ x: (q.x - box.left) * s + ox, y: (q.y - box.top) * s + oy });
-  const len = Math.hypot(wall.b.x - wall.a.x, wall.b.y - wall.a.y), along = (v: number) => Array.from({ length: 9 }, (_, i) => wallPoint(f, pose, wall, len * i / 8, v)).filter(q => q.depth > 0).map(toHalf);
+  const len = Math.hypot(wall.b.x - wall.a.x, wall.b.y - wall.a.y), along = (v: number) => Array.from({ length: 41 }, (_, i) => wallPoint(f, pose, wall, len * (-2 + 5 * i / 40), v)).filter(q => q.depth > 0.5).map(toHalf); // the wall's line, two wall lengths past each end: the row's neighbours share its foot
   const halfOf = async (file: string) => {
     const base = await sharp(file).resize(pose.width, pose.height, { fit: 'fill' }).png().toBuffer();
-    const { data, info } = await sharp(base).extract(box).resize(HALF, HALF, { fit: 'contain', background: '#808080' }).removeAlpha().raw().toBuffer({ resolveWithObject: true });
+    const { data, info } = await sharp(base).extract(box).resize(HALF, HALF, { fit: 'contain', background: '#1d1d1d' }).removeAlpha().raw().toBuffer({ resolveWithObject: true });
     return { width: info.width, height: info.height, data: new Uint8Array(data) } as Rgb8;
   };
   const photo = await halfOf(path.join(dir, 'photo.jpg')), game = await halfOf(path.join(dir, 'game.png'));
