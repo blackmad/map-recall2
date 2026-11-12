@@ -55,6 +55,14 @@ export interface SurfaceBakeInput {
   height: (x: number, y: number) => number;
   /** Lift over the relief per level, metres. */
   levelZ: readonly number[];
+  /**
+   * Floor caps (groundV2Caps.ts, round 2): rings inside which the ground is min(z, relief). Their rings are constraint
+   * edges; with steps the capped triangles are their own levels and a step strip stands on the ring where the relief
+   * outside is higher (the abutment wall). `height` is then the capped relief and `relief` the bare one. Absent or
+   * empty: byte-identical to the bake without.
+   */
+  caps?: readonly { ring: readonly Vec2[]; z: number }[];
+  relief?: (x: number, y: number) => number;
 }
 
 export interface SurfaceBakeOptions {
@@ -81,6 +89,13 @@ export interface SurfaceBakeOptions {
   /** Rounds after the relief rounds that only split slivers. */
   sliverRounds: number;
   /**
+   * A connected region of one flat class (land, park, garden, open ground, OSM fill, courtyard) thinner than this
+   * (mean width 2·area / perimeter, metres) is a precedence remnant between two sources that nearly touch: it takes
+   * the class it shares the longest boundary with (0: kept). Round 2: 378 of 420 sampled "strip" slivers at the nine
+   * places were land, the rest group, in gaps a few cm wide between BGT polygons (a thin grey line on the ground).
+   */
+  remnantM: number;
+  /**
    * Relief refinement samples each triangle on a barycentric lattice this fine (metres; 0: the centroid only) and
    * inserts its worst point. The audit samples the drawn surface every 0.5 m: 84 % of the first bake's float over 5 cm
    * lay inside triangles of 16 m² and more whose centroid was within tolerance (-4_-3, 2026-11-12).
@@ -91,8 +106,12 @@ export interface SurfaceBakeOptions {
 /** The audit's sliver: aspect (longest edge / height, l² / 2A) over SLIVER_ASPECT with area over SLIVER_M2. */
 export const SLIVER_ASPECT = 20, SLIVER_M2 = 0.05;
 
-export const LOD0_OPTIONS: SurfaceBakeOptions = { tolRoadM: 0.05, tolFlatM: 0.05, minSquareM: 2, maxSquareM: 32, edgeMinM: 1, seamGridM: 2, refineRounds: 3, simplifyM: 0, steps: true, steinerClearM: 0.3, maxEdgeM: 64, sliverRounds: 6, refineLatticeM: 0 };
-export const LOD1_OPTIONS: SurfaceBakeOptions = { tolRoadM: 0.15, tolFlatM: 0.15, minSquareM: 4, maxSquareM: 64, edgeMinM: 2, seamGridM: 8, refineRounds: 1, simplifyM: 0.5, steps: false, steinerClearM: 0.6, maxEdgeM: 32, sliverRounds: 2, refineLatticeM: 0 };
+// Round 2 (#372): no sliver rounds (they doubled the triangles and left the float: -4_-3 1.19 MB / 321k against 0.65 MB /
+// 153k), the relief lattice at 0.5 m over 8 rounds with the edge split, remnants under 0.25 m absorbed, tolerance 4 cm
+// (the audit's 5 cm bar less the u16 quantisation and the sample offset). Savings: docs/ground-v2.md "Round 2".
+export const LOD0_OPTIONS: SurfaceBakeOptions = { tolRoadM: 0.04, tolFlatM: 0.04, minSquareM: 2, maxSquareM: 32, edgeMinM: 1, seamGridM: 2, refineRounds: 8, simplifyM: 0, steps: true, steinerClearM: 0.3, maxEdgeM: 64, sliverRounds: 0, refineLatticeM: 0.5, remnantM: 0.25 };
+// Round 2: LOD 1 draws from 1 km out; 25 cm relief and no sliver rounds took -4_-3 from 444 to 250 kB.
+export const LOD1_OPTIONS: SurfaceBakeOptions = { tolRoadM: 0.25, tolFlatM: 0.25, minSquareM: 4, maxSquareM: 64, edgeMinM: 2, seamGridM: 8, refineRounds: 1, simplifyM: 0.5, steps: false, steinerClearM: 0.6, maxEdgeM: 32, sliverRounds: 0, refineLatticeM: 0, remnantM: 0 };
 
 /** A vertex this close to an edge's interior (u16 units, ~7.6 mm) splits it. */
 export const NODE_TOL_U = 0.5;
@@ -111,7 +130,7 @@ export interface BakedSurface {
 export interface SurfaceBakeStats {
   ms: Record<string, number>;
   pieces: number; partitionVertices: number; /** Seam vertices moved to a canonical stop. */ seamSnapped: number; /** Seam-edge triangles given the sources' class at the edge (seamClassifier). */ seamReclassed: number; edges: number; nodeSplits: number; crossSplits: number; seamGridPoints: number; densified: number; simplifiedAway: number;
-  steiner: number; steinerDropped: number; refineAdded: number; /** Sliver splits made, and slivers left in the last round looked at. */ sliverSplits: number; slivers: number; points: number;
+  steiner: number; steinerDropped: number; refineAdded: number; /** Thin flat-class remnants absorbed (opt.remnantM) and their triangles. */ remnants: number; remnantTris: number; /** Triangles on a floor cap (input.caps). */ capTris: number; /** Sliver splits made, and slivers left in the last round looked at. */ sliverSplits: number; slivers: number; points: number;
   triangles: number; stepTriangles: number; vertices: number;
   failedEdges: { a: [number, number]; b: [number, number] }[];
   /** Triangles no piece claims after the neighbour fill (a crack in the partition), the ones filled, and the ones two pieces claim. */
@@ -202,10 +221,10 @@ function safeDifference(mine: MultiPolygon, taken: MultiPolygon, errors: string[
 
 // ------------------------------------------------------------------ the arrangement
 
-export interface Arrangement { pieces: { group: number; poly: MultiPolygon }[]; errors: string[]; rectMm: Rect; /** Canonical seam stops per side (mm along it): where an input ring crosses or touches the side. */ stops: Set<number>[]; /** ms per group: union, difference, taken. */ timing: Record<string, [number, number, number]> }
+export interface Arrangement { pieces: { group: number; poly: MultiPolygon }[]; /** Floor caps clipped to the rect (mm). */ capPieces: { cap: number; poly: MultiPolygon }[]; errors: string[]; rectMm: Rect; /** Canonical seam stops per side (mm along it): where an input ring crosses or touches the side. */ stops: Set<number>[]; /** ms per group: union, difference, taken. */ timing: Record<string, [number, number, number]> }
 
 /** Steps 1–2: precedence clip in integer mm. */
-export function arrange(input: Pick<SurfaceBakeInput, 'rect' | 'groups' | 'features' | 'restGroup'>): Arrangement {
+export function arrange(input: Pick<SurfaceBakeInput, 'rect' | 'groups' | 'features' | 'restGroup' | 'caps'>): Arrangement {
   const rectMm = input.rect.map(v => Math.round(v * 1000)) as Rect;
   const rectRing: Ring = [[rectMm[0], rectMm[1]], [rectMm[2], rectMm[1]], [rectMm[2], rectMm[3]], [rectMm[0], rectMm[3]], [rectMm[0], rectMm[1]]];
   const errors: string[] = [];
@@ -257,7 +276,12 @@ export function arrange(input: Pick<SurfaceBakeInput, 'rect' | 'groups' | 'featu
     } } }
     timing[input.groups[g].name] = [Math.round(tu - tg), Math.round(td - tu), Math.round(now() - td)];
   }
-  return { pieces, errors, rectMm, timing, stops };
+  const capPieces: Arrangement['capPieces'] = [];
+  (input.caps ?? []).forEach((c, cap) => {
+    const r = ringMm(c.ring as Vec2[]); if (!r) return;
+    try { const poly = polygonClipping.intersection([splitAtLines(r, rectMm, stops)], [rectRing]); if (poly.length) capPieces.push({ cap, poly }); } catch (e) { errors.push(`cap ${cap} ∩ rect: ${String(e).slice(0, 80)}`); }
+  });
+  return { pieces, capPieces, errors, rectMm, timing, stops };
 }
 
 // ------------------------------------------------------------------ the bake
@@ -343,6 +367,15 @@ export function bakeSurface(input: SurfaceBakeInput, opt: SurfaceBakeOptions): B
   const partitionVertices = P.length / 2;
   let E: [number, number][] = [];
   { const seen = new Set<number>(); for (const { ring } of pieceRings) for (let i = 0; i < ring.length; i++) { const a = ring[i], b = ring[(i + 1) % ring.length]; if (a === b) continue; const k = a < b ? a * 4194304 + b : b * 4194304 + a; if (!seen.has(k)) { seen.add(k); E.push([a, b]); } } }
+  // Floor cap rings: constraint edges only (they claim no class), noded with the rest below.
+  for (const { poly } of arr.capPieces) for (const p of poly) for (const r of p) {
+    const ids: number[] = [];
+    for (const q of r) { const [x, y] = seamSnap(q[0], q[1]); const i = at(uOf(x), vOf(y)); if (ids[ids.length - 1] !== i) ids.push(i); }
+    while (ids.length > 1 && ids[0] === ids[ids.length - 1]) ids.pop();
+    if (ids.length < 3) continue;
+    const seen = new Set(E.map(([a, b]) => (a < b ? a * 4194304 + b : b * 4194304 + a)));
+    for (let i = 0; i < ids.length; i++) { const a = ids[i], b = ids[(i + 1) % ids.length]; const k = a < b ? a * 4194304 + b : b * 4194304 + a; if (a !== b && !seen.has(k)) { seen.add(k); E.push([a, b]); } }
+  }
   const edges0 = E.length;
   // Seam grid: global multiples of seamGridM along each side (both neighbours compute the same integers).
   let seamGridPoints = 0;
@@ -419,6 +452,27 @@ export function bakeSurface(input: SurfaceBakeInput, opt: SurfaceBakeOptions): B
   // Relief at a grid point (cached): exactly what the decoder's position samples.
   const zc = new Map<number, number>();
   const hAt = (u: number, v: number): number => { const k = u * 65536 + v; let z = zc.get(k); if (z === undefined) { z = input.height(gx(u), gy(v)); if (z !== z) z = 0; zc.set(k, z); } return z; };
+  // Floor caps: the cap a point lies in (-1 none); a triangle's from its centroid (the rings are constraints, so a
+  // triangle lies wholly on one side). Vertex heights by side: the bare relief outside, min(cap, relief) inside, so a
+  // vertex on the ring has one height per side (the step strip between them is the abutment wall).
+  const caps = input.caps ?? [], hasCaps = caps.length > 0, bare = input.relief ?? input.height;
+  const capBox = caps.map(c => { let a = Infinity, b = Infinity, cc = -Infinity, d = -Infinity; for (const [x, y] of c.ring) { a = Math.min(a, x); b = Math.min(b, y); cc = Math.max(cc, x); d = Math.max(d, y); } return [a, b, cc, d]; });
+  const capAt = (x: number, y: number): number => {
+    for (let i = 0; i < caps.length; i++) {
+      const [a, b, c, d] = capBox[i]; if (x < a || x > c || y < b || y > d) continue;
+      let inside = false; const r = caps[i].ring;
+      for (let p = 0, q = r.length - 1; p < r.length; q = p++) { const [xi, yi] = r[p], [xj, yj] = r[q]; if ((yi > y) !== (yj > y) && x < ((xj - xi) * (y - yi)) / (yj - yi) + xi) inside = !inside; }
+      if (inside) return i;
+    }
+    return -1;
+  };
+  const zb = new Map<number, number>();
+  const hBare = (u: number, v: number): number => { if (!hasCaps) return hAt(u, v); const k = u * 65536 + v; let z = zb.get(k); if (z === undefined) { z = bare(gx(u), gy(v)); if (z !== z) z = 0; zb.set(k, z); } return z; };
+  /** A vertex's height on the side of cap `c` (-1: outside every cap). */
+  const hSide = (u: number, v: number, c: number): number => (!hasCaps ? hAt(u, v) : c < 0 ? hBare(u, v) : Math.min(caps[c].z, hBare(u, v)));
+  /** The reference surface at a point on the side of cap `c`. */
+  const refSide = (x: number, y: number, c: number): number => (!hasCaps ? input.height(x, y) : c < 0 ? bare(x, y) : Math.min(caps[c].z, bare(x, y)));
+  const capOfTri3 = (a: number, b: number, c: number): number => (hasCaps ? capAt(gx((P[2 * a] + P[2 * b] + P[2 * c]) / 3), gy((P[2 * a + 1] + P[2 * b + 1] + P[2 * c + 1]) / 3)) : -1);
 
   // ---- LOD 1: simplify every arc between junctions once (both sides of a shared arc keep matching).
   let simplifiedAway = 0;
@@ -586,7 +640,7 @@ export function bakeSurface(input: SurfaceBakeInput, opt: SurfaceBakeOptions): B
   // Slivers (aspect > SLIVER_ASPECT, area > SLIVER_M2: the audit's definition, with a margin): the longest edge is split
   // at its midpoint, a constraint edge by splitting the constraint (never a seam edge: the seams come from the grid).
   const sliverArea = SLIVER_M2 * 0.8 / (mPerU * mPerV);
-  let sliverSplits = 0, slivers = 0;
+  let sliverSplits = 0, slivers = 0, edgeSplits = 0;
   for (let round = 0; ; round++) {
     cdt();
     if (round >= opt.refineRounds + opt.sliverRounds) break;
@@ -632,29 +686,66 @@ export function bakeSurface(input: SurfaceBakeInput, opt: SurfaceBakeOptions): B
         }
       }
       if (!relief) continue;
-      const za = hAt(P[2 * a], P[2 * a + 1]), zb = hAt(P[2 * b], P[2 * b + 1]), zc = hAt(P[2 * c], P[2 * c + 1]);
+      const side = capOfTri3(a, b, c);
+      const za = hSide(P[2 * a], P[2 * a + 1], side), zb = hSide(P[2 * b], P[2 * b + 1], side), zc = hSide(P[2 * c], P[2 * c + 1], side);
       let cu = (P[2 * a] + P[2 * b] + P[2 * c]) / 3, cv = (P[2 * a + 1] + P[2 * b + 1] + P[2 * c + 1]) / 3;
-      let e = Math.abs(input.height(gx(cu), gy(cv)) - (za + zb + zc) / 3);
+      let e = Math.abs(refSide(gx(cu), gy(cv), side) - (za + zb + zc) / 3);
+      // Lattice points over tolerance, worst first (a blocked worst point falls back to the next one clear of the constraints).
+      const over: [number, number, number][] = [];
       if (opt.refineLatticeM > 0) {
         // The worst point of a barycentric lattice (interior points only: the vertices are exact, an edge point is
         // shared with the neighbour, which samples it too).
         const L = Math.max(Math.hypot(P[2 * b] - P[2 * a], P[2 * b + 1] - P[2 * a + 1]), Math.hypot(P[2 * c] - P[2 * b], P[2 * c + 1] - P[2 * b + 1]), Math.hypot(P[2 * a] - P[2 * c], P[2 * a + 1] - P[2 * c + 1])) * mPerU;
-        const n = Math.min(16, Math.ceil(L / opt.refineLatticeM));
+        // Up to 48 steps a side: a 60 m sliver along the A10 (-3_-4) hid its 7 cm peak between 16 steps of 3.75 m.
+        const n = Math.min(48, Math.ceil(L / opt.refineLatticeM)), tol = tolOf(g);
         for (let i = 1; i < n; i++) for (let j = 1; i + j < n; j++) {
           const wa = i / n, wb = j / n, wc = 1 - wa - wb;
           const pu = wa * P[2 * a] + wb * P[2 * b] + wc * P[2 * c], pv = wa * P[2 * a + 1] + wb * P[2 * b + 1] + wc * P[2 * c + 1];
-          const ei = Math.abs(input.height(gx(pu), gy(pv)) - (wa * za + wb * zb + wc * zc));
+          const ei = Math.abs(refSide(gx(pu), gy(pv), side) - (wa * za + wb * zb + wc * zc));
+          if (ei > tol) over.push([ei, pu, pv]);
           if (ei > e) { e = ei; cu = pu; cv = pv; }
         }
+        over.sort((p, q) => q[0] - p[0] || p[1] - q[1] || p[2] - q[2]);
       }
       const ru = Math.round(cu), rv = Math.round(cv);
       if (!(e > tolOf(g))) continue;
-      if (ru <= 0 || ru >= Q || rv <= 0 || rv >= Q || id.has(ru * 65536 + rv) || nearEdge(ru, rv, 0.1 * uPerM)) continue;
-      adds.push(ru, rv);
+      if (ru <= 0 || ru >= Q || rv <= 0 || rv >= Q || id.has(ru * 65536 + rv)) continue;
+      if (!nearEdge(ru, rv, 0.1 * uPerM)) { adds.push(ru, rv); continue; }
+      if (opt.refineLatticeM <= 0) continue;
+      // The worst point lies against a constraint (a material boundary): split the triangle's nearest constraint edge
+      // at the point's projection on it (never a seam edge: the seams come from the grid). Round 2: 75 % of the float
+      // left after the lattice lay within 15 cm of a boundary (-4_-3).
+      const splitOwnEdge = (): boolean => {
+        let best = -1, bd = Infinity, bx = 0, by = 0, bp = 0, bq = 0;
+        for (const [x1, x2] of [[a, b], [b, c], [c, a]]) {
+          const ei = eIndex.get(ekey(x1, x2)); if (ei === undefined || (onSide(x1) & onSide(x2)) !== 0 || split.has(ekey(x1, x2))) continue;
+          const ax = P[2 * x1], ay = P[2 * x1 + 1], dx = P[2 * x2] - ax, dy = P[2 * x2 + 1] - ay, L2 = dx * dx + dy * dy;
+          const tt = ((cu - ax) * dx + (cv - ay) * dy) / L2; if (tt <= 0 || tt >= 1) continue;
+          const px = ax + tt * dx, py = ay + tt * dy, d = Math.hypot(px - cu, py - cv);
+          if (d < bd) { bd = d; best = ei; bx = px; by = py; bp = x1; bq = x2; }
+        }
+        if (best < 0) return false;
+        const sx = Math.round(bx), sy = Math.round(by);
+        // Off the edge's ends by a few cm, and on the edge within the noding tolerance after rounding.
+        const ax = P[2 * bp], ay = P[2 * bp + 1], qx = P[2 * bq], qy = P[2 * bq + 1];
+        if (Math.hypot(sx - ax, sy - ay) * mPerU < 0.05 || Math.hypot(sx - qx, sy - qy) * mPerU < 0.05 || id.has(sx * 65536 + sy)) return false;
+        if (Math.abs((qx - ax) * (sy - ay) - (qy - ay) * (sx - ax)) / Math.hypot(qx - ax, qy - ay) > NODE_TOL_U) return false;
+        split.add(ekey(bp, bq)); const m = at(sx, sy); const [e0, e1] = E[best]; E[best] = [e0, m]; E.push([m, e1]); edgeSplits++;
+        return true;
+      };
+      if (splitOwnEdge()) continue;
+      // Else the next worst lattice point clear of the constraints (a 2 m Steiner square beside a park edge, -5_-4: its
+      // worst point lay within 10 cm of a boundary the triangle does not own, so neither an insert nor a split applied).
+      for (const [, pu, pv] of over.slice(0, 24)) {
+        const qu = Math.round(pu), qv = Math.round(pv);
+        if (qu <= 0 || qu >= Q || qv <= 0 || qv >= Q || id.has(qu * 65536 + qv) || nearEdge(qu, qv, 0.1 * uPerM)) continue;
+        adds.push(qu, qv); break;
+      }
     }
     if (!adds.length && !split.size) break;
     for (let i = 0; i < adds.length; i += 2) at(adds[i], adds[i + 1]);
     if (relief) refineAdded += adds.length / 2;
+    if (relief) { refineAdded += edgeSplits; edgeSplits = 0; }
     if (split.size) indexEdges();
   }
   lap('cdt');
@@ -674,6 +765,34 @@ export function bakeSurface(input: SurfaceBakeInput, opt: SurfaceBakeOptions): B
     if (sg >= 0 && cur !== sg) { triGroup[k] = sg; seamReclassed++; }
     break;
   }
+  // Thin flat-class remnants (opt.remnantM): components over the triangle adjacency, never across a seam edge.
+  let remnants = 0, remnantTris = 0;
+  if (opt.remnantM > 0) {
+    const he = del.halfedges, comp = new Int32Array(T).fill(-1);
+    const len = (p: number, q: number) => Math.hypot((P[2 * q] - P[2 * p]) * mPerU, (P[2 * q + 1] - P[2 * p + 1]) * mPerV);
+    const triArea = (k: number) => { const a = T3[3 * k], b = T3[3 * k + 1], c = T3[3 * k + 2]; return Math.abs((P[2 * b] - P[2 * a]) * (P[2 * c + 1] - P[2 * a + 1]) - (P[2 * c] - P[2 * a]) * (P[2 * b + 1] - P[2 * a + 1])) / 2 * mPerU * mPerV; };
+    for (let k0 = 0; k0 < T; k0++) {
+      const g0 = groupOf(k0);
+      if (comp[k0] >= 0 || g0 < 0 || isHole(g0) || !input.groups[g0].flat) continue;
+      const members = [k0]; comp[k0] = k0;
+      let area = 0, perim = 0, seam = false; const shared = new Map<number, number>();
+      for (let m = 0; m < members.length; m++) {
+        const k = members[m]; area += triArea(k);
+        for (let j = 0; j < 3; j++) {
+          const e = 3 * k + j, a = T3[e], b = T3[3 * k + (j + 1) % 3], o = he[e];
+          if ((onSide(a) & onSide(b)) !== 0) seam = true;
+          const n = o < 0 ? -1 : Math.floor(o / 3), gn = n < 0 ? -1 : groupOf(n);
+          if (n >= 0 && gn === g0) { if (comp[n] < 0) { comp[n] = k0; members.push(n); } continue; }
+          const l = len(a, b); perim += l;
+          if (gn >= 0 && !isHole(gn)) shared.set(gn, (shared.get(gn) ?? 0) + l);
+        }
+      }
+      if (seam || !perim || (2 * area) / perim >= opt.remnantM || !shared.size) continue;
+      let best = -1, bl = -1; for (const [g, l] of [...shared].sort((p, q) => p[0] - q[0])) if (l > bl) { bl = l; best = g; }
+      for (const k of members) triGroup[k] = best;
+      remnants++; remnantTris += members.length;
+    }
+  }
   let unclassified = 0, ambiguous = 0, unclassifiedM2 = 0;
   const triM2 = new Array(G).fill(0);
   const keep: number[] = [];
@@ -689,7 +808,8 @@ export function bakeSurface(input: SurfaceBakeInput, opt: SurfaceBakeOptions): B
     if (isHole(g)) continue;
     keep.push(k);
     const cu = (P[2 * a] + P[2 * b] + P[2 * c]) / 3, cv = (P[2 * a + 1] + P[2 * b + 1] + P[2 * c + 1]) / 3;
-    const e = Math.abs(input.height(gx(cu), gy(cv)) - (hAt(P[2 * a], P[2 * a + 1]) + hAt(P[2 * b], P[2 * b + 1]) + hAt(P[2 * c], P[2 * c + 1])) / 3);
+    const side = capOfTri3(a, b, c);
+    const e = Math.abs(refSide(gx(cu), gy(cv), side) - (hSide(P[2 * a], P[2 * a + 1], side) + hSide(P[2 * b], P[2 * b + 1], side) + hSide(P[2 * c], P[2 * c + 1], side)) / 3);
     if (e === e) { errs.push(e * 1000); if (e > 0.05) { over5 += ar; if (e > 0.5) worst.push({ x: gx(cu), y: gy(cv), errMm: Math.round(e * 1000) }); } }
   }
   errs.sort((p, q) => p - q);
@@ -698,9 +818,12 @@ export function bakeSurface(input: SurfaceBakeInput, opt: SurfaceBakeOptions): B
 
   // ---- 8. levels, steps, heights, normals.
   const nV0 = P.length / 2;
-  const levelOfTri = (k: number) => (opt.steps ? input.groups[groupOf(k)].level : 0);
+  // With caps and steps, a capped triangle sits on level + 2 (its own vertex copies, z on the cap's side).
+  const capOfTri = (k: number) => capOfTri3(T3[3 * k], T3[3 * k + 1], T3[3 * k + 2]);
+  const levelOfTri = (k: number) => (opt.steps ? input.groups[groupOf(k)].level + (hasCaps && capOfTri(k) >= 0 ? 2 : 0) : 0);
+  let capTris = 0;
   // Copies: vertex × level → new id, in order of first use by the kept triangles (deterministic).
-  const copy = new Map<number, number>(); const outU: number[] = [], outV: number[] = [], outL: number[] = [];
+  const copy = new Map<number, number>(); const outU: number[] = [], outV: number[] = [], outL: number[] = [], outCap: number[] = [];
   // A seam vertex keeps only the levels of the seam edges beside it (the class along the side is the same in both
   // neighbours); a triangle touching it at a corner from another level takes the nearest of those, so both cells hold
   // the same copies there.
@@ -715,7 +838,7 @@ export function bakeSurface(input: SurfaceBakeInput, opt: SurfaceBakeOptions): B
     const a = T3[3 * k + j], b = T3[3 * k + (j + 1) % 3];
     if ((onSide(a) & onSide(b)) === 0) continue;
     const sg = seamGroupAt(gx((P[2 * a] + P[2 * b]) / 2), gy((P[2 * a + 1] + P[2 * b + 1]) / 2));
-    const L = sg >= 0 && !isHole(sg) ? input.groups[sg].level : levelOfTri(k);
+    const L = sg >= 0 && !isHole(sg) ? input.groups[sg].level + (hasCaps && capAt(gx((P[2 * a] + P[2 * b]) / 2), gy((P[2 * a + 1] + P[2 * b + 1]) / 2)) >= 0 ? 2 : 0) : levelOfTri(k);
     seamEdgeLevel.set(3 * k + j, L);
     const bit = 1 << L;
     seamLevels.set(a, (seamLevels.get(a) ?? 0) | bit); seamLevels.set(b, (seamLevels.get(b) ?? 0) | bit);
@@ -724,7 +847,7 @@ export function bakeSurface(input: SurfaceBakeInput, opt: SurfaceBakeOptions): B
     let lev = lev0;
     const m = seamLevels.get(i);
     if (m !== undefined && !(m & (1 << lev))) { let best = -1; for (let l = 0; l < 8; l++) if (m & (1 << l) && (best < 0 || Math.abs(l - lev0) < Math.abs(best - lev0))) best = l; lev = best; }
-    const k = i * 8 + lev; let n = copy.get(k); if (n === undefined) { n = outU.length; copy.set(k, n); outU.push(P[2 * i]); outV.push(P[2 * i + 1]); outL.push(lev); } return n; };
+    const k = i * 8 + lev; let n = copy.get(k); if (n === undefined) { n = outU.length; copy.set(k, n); outU.push(P[2 * i]); outV.push(P[2 * i + 1]); outL.push(lev); outCap.push(-1); } return n; };
   const tris = new Uint32Array(keep.length * 3), triG = new Uint16Array(keep.length);
   const keptAt = new Int32Array(T).fill(-1);
   keep.forEach((k, n) => {
@@ -732,10 +855,14 @@ export function bakeSurface(input: SurfaceBakeInput, opt: SurfaceBakeOptions): B
     for (let j = 0; j < 3; j++) {
       // A vertex of a seam edge sits at that edge's level (the edge leaving it first, then the one arriving).
       const L = seamEdgeLevel.get(3 * k + j) ?? seamEdgeLevel.get(3 * k + (j + 2) % 3) ?? lev;
-      tris[3 * n + j] = vid(T3[3 * k + j], L);
+      const id = tris[3 * n + j] = vid(T3[3 * k + j], L);
+      if (L >= 2) outCap[id] = capOfTri(k);
     }
+    if (lev >= 2) capTris++;
     triG[n] = groupOf(k);
   });
+  // A copy's height: on its cap's side (outCap), else the bare relief (the capped relief when there are no caps), plus its lift.
+  const zOfCopy = (i: number): number => (outCap[i] >= 0 ? Math.min(caps[outCap[i]].z, hBare(outU[i], outV[i])) : hasCaps ? hBare(outU[i], outV[i]) : hAt(outU[i], outV[i])) + input.levelZ[outL[i] & 1];
   // Strips: for each interior edge whose two kept triangles sit at different levels, a quad from the low copies up to the high.
   const stepIdx: number[] = []; const stepLayer: GroundLayer[] = [];
   if (opt.steps) {
@@ -746,12 +873,18 @@ export function bakeSurface(input: SurfaceBakeInput, opt: SurfaceBakeOptions): B
       const l1 = levelOfTri(k1), l2 = levelOfTri(k2); if (l1 === l2) continue;
       // Halfedge e runs a → b with triangle k1 on its left (delaunator triangles are counter-clockwise).
       const a = T3[e], b = T3[e % 3 === 2 ? e - 2 : e + 1];
-      const [hiK, loK, hiL, loL] = l1 > l2 ? [k1, k2, l1, l2] : [k2, k1, l2, l1];
-      const a0 = vid(a, loL), b0 = vid(b, loL), a1 = vid(a, hiL), b1 = vid(b, hiL);
+      let [hiK, loK, hiL, loL] = l1 > l2 ? [k1, k2, l1, l2] : [k2, k1, l2, l1];
+      let a0 = vid(a, loL), b0 = vid(b, loL), a1 = vid(a, hiL), b1 = vid(b, hiL);
       if (a0 === a1 && b0 === b1) continue;
+      if ((l1 >= 2) !== (l2 >= 2)) {
+        // A cap's ring: the wall stands where the relief outside is higher (the abutment); none where the cap is not below it.
+        const d = zOfCopy(a1) + zOfCopy(b1) - zOfCopy(a0) - zOfCopy(b0);
+        if (Math.max(Math.abs(zOfCopy(a1) - zOfCopy(a0)), Math.abs(zOfCopy(b1) - zOfCopy(b0))) < 0.01) continue;
+        if (d < 0) { [hiK, loK, hiL, loL] = [loK, hiK, loL, hiL]; [a0, b0, a1, b1] = [a1, b1, a0, b0]; }
+      }
       // Face the low side: k2 (right of a→b) low → the face's front looks right of a→b.
       const hiLayer = input.groups[groupOf(hiK)].layer!, loLayer = input.groups[groupOf(loK)].layer!;
-      const layer: GroundLayer = hiLayer === 'kerb' || loLayer === 'kerb' ? 'kerb' : hiLayer;
+      const layer: GroundLayer = (hiL >= 2) !== (loL >= 2) ? 'quay' : hiLayer === 'kerb' || loLayer === 'kerb' ? 'kerb' : hiLayer;
       // The face looks at the low side: its normal points from the edge toward the low triangle's centroid.
       const lc = [0, 1, 2].map(j => T3[3 * loK + j]);
       const dx = (P[2 * lc[0]] + P[2 * lc[1]] + P[2 * lc[2]]) / 3 - (P[2 * a] + P[2 * b]) / 2, dy = (P[2 * lc[0] + 1] + P[2 * lc[1] + 1] + P[2 * lc[2] + 1]) / 3 - (P[2 * a + 1] + P[2 * b + 1]) / 2;
@@ -766,8 +899,10 @@ export function bakeSurface(input: SurfaceBakeInput, opt: SurfaceBakeOptions): B
   const D = 1; // metres: the gradient's central difference
   for (let i = 0; i < V; i++) {
     const x = gx(outU[i]), y = gy(outV[i]);
-    zMm[i] = Math.round((hAt(outU[i], outV[i]) + input.levelZ[outL[i]]) * 1000);
-    let dzx = (input.height(x + D, y) - input.height(x - D, y)) / (2 * D), dzy = (input.height(x, y + D) - input.height(x, y - D)) / (2 * D);
+    zMm[i] = Math.round(zOfCopy(i) * 1000);
+    // A capped copy below the relief lies on the flat cap; any other the relief's gradient (the bare one beside a cap).
+    const hn = hasCaps ? bare : input.height, flatCap = outCap[i] >= 0 && caps[outCap[i]].z < hBare(outU[i], outV[i]);
+    let dzx = flatCap ? 0 : (hn(x + D, y) - hn(x - D, y)) / (2 * D), dzy = flatCap ? 0 : (hn(x, y + D) - hn(x, y - D)) / (2 * D);
     if (dzx !== dzx) dzx = 0; if (dzy !== dzy) dzy = 0;
     const l = Math.hypot(dzx, dzy, 1); const [p, q] = octEncode(-dzx / l, -dzy / l, 1 / l); oct[2 * i] = p; oct[2 * i + 1] = q;
   }
@@ -776,11 +911,11 @@ export function bakeSurface(input: SurfaceBakeInput, opt: SurfaceBakeOptions): B
   const failedEdges = [...failed].sort((p, q) => p - q).map(ei => ({ a: [gx(P[2 * E[ei][0]]), gy(P[2 * E[ei][0] + 1])] as [number, number], b: [gx(P[2 * E[ei][1]]), gy(P[2 * E[ei][1] + 1])] as [number, number] }));
   return {
     key: input.key, rect,
-    u: Uint16Array.from(outU), v: Uint16Array.from(outV), zMm, oct, level: Uint8Array.from(outL),
+    u: Uint16Array.from(outU), v: Uint16Array.from(outV), zMm, oct, level: Uint8Array.from(outL, l => l & 1),
     tris, triGroup: triG, steps: Uint32Array.from(stepIdx), stepLayer,
     stats: {
       ms, pieces: arr.pieces.length, partitionVertices, seamSnapped, seamReclassed, edges: E.length, nodeSplits: nodeSplits + nodeSplits2, crossSplits, seamGridPoints, densified, simplifiedAway,
-      steiner, steinerDropped, refineAdded, sliverSplits, slivers, points: nV0, triangles: keep.length, stepTriangles: stepIdx.length / 3, vertices: V,
+      steiner, steinerDropped, refineAdded, remnants, remnantTris, capTris, sliverSplits, slivers, points: nV0, triangles: keep.length, stepTriangles: stepIdx.length / 3, vertices: V,
       failedEdges, unclassified, filled, ambiguous, unclassifiedM2: +unclassifiedM2.toFixed(2),
       pieceM2: pieceM2.map(a => +a.toFixed(2)), triM2: triM2.map(a => +a.toFixed(2)), rectM2: +rectM2.toFixed(2),
       closureM2: +(triM2.reduce((s, a) => s + a, 0) + unclassifiedM2 - rectM2).toFixed(2),

@@ -8,10 +8,12 @@ import { bakeSurface, type BakedSurface, type SurfaceBakeOptions } from '../../s
 import { partitionSources, type PartitionSources } from '../../src/canalRecall/ownGround/groundV2Sources.ts';
 import { encodeGrd2, frameOf, tileOfUnits, type Grd2Content, type Grd2Group, GRID_Q } from '../../src/canalRecall/ownGround/groundV2Format.ts';
 import { GROUND_LAYERS, type GroundLayer } from '../../src/canalRecall/ownGround/groundCell.ts';
+import { CROSSINGS } from '../../src/canalRecall/ownGround/crossings.ts';
+import { cappedRelief, floorCapsNear, type FloorCap } from '../../src/canalRecall/ownGround/groundV2Caps.ts';
 
 export const frame = frameOf(GAME_ORIGIN, GAME_FRAME_SCALE);
 /** The bake's own sources: a change rebakes every cell (--changed) and its neighbours. */
-export const CODE = ['src/canalRecall/ownGround/groundPartition.ts', 'src/canalRecall/ownGround/groundV2Sources.ts', 'src/canalRecall/ownGround/groundV2Format.ts', 'scripts/own-ground/groundV2BakeCell.ts'];
+export const CODE = ['src/canalRecall/ownGround/groundPartition.ts', 'src/canalRecall/ownGround/groundV2Sources.ts', 'src/canalRecall/ownGround/groundV2Format.ts', 'scripts/own-ground/groundV2BakeCell.ts', 'src/canalRecall/ownGround/groundV2Caps.ts'];
 export function codeDigest(opt: SurfaceBakeOptions): Uint8Array {
   const h = createHash('sha256'); for (const f of CODE) h.update(readFileSync(f)); h.update(JSON.stringify(opt)); return h.digest().subarray(0, 16);
 }
@@ -79,25 +81,28 @@ export async function widenedInput(store: GroundStore, key: string) {
     openGroundAround: [...(input.openGroundAround ?? []), ...open], osmAround: [...input.osmAround, ...osm.filter((o): o is NonNullable<typeof o> => !!o)], waterAround: [...input.waterAround, ...water.filter((w): w is NonNullable<typeof w> => !!w)] };
 }
 
-export interface BakedCellFile { key: string; lod: 0 | 1; baked: BakedSurface; src: PartitionSources; inputsHash: Uint8Array; fileGz: Buffer; rawGz: number; meshoptGz: number; inputMs: number; bakeMs: number }
+export interface BakedCellFile { key: string; lod: 0 | 1; caps: FloorCap[]; baked: BakedSurface; src: PartitionSources; inputsHash: Uint8Array; fileGz: Buffer; rawGz: number; meshoptGz: number; inputMs: number; bakeMs: number }
 
 /** Bake one cell to its gzipped GRD2 file, measuring the byte variants (raw u16 + gzip, meshopt without and with the reorder). */
-export async function bakeCellFile(store: GroundStore, key: string, lod: 0 | 1, opt: SurfaceBakeOptions, o: { kerbBand: boolean; codeHash: Uint8Array; skipIfInputs?: (hash: Uint8Array) => boolean }): Promise<BakedCellFile | null> {
+export async function bakeCellFile(store: GroundStore, key: string, lod: 0 | 1, opt: SurfaceBakeOptions, o: { kerbBand: boolean; codeHash: Uint8Array; skipIfInputs?: (hash: Uint8Array) => boolean; /** Floor caps from the crossing register (groundV2Caps.ts); default on, false: the round-1 relief. */ caps?: boolean }): Promise<BakedCellFile | null> {
   await MeshoptEncoder.ready;
   const t0 = performance.now();
   const input = await widenedInput(store, key);
   const src = partitionSources(input, { kerbBand: o.kerbBand && lod === 0, levels: lod === 0 });
+  // Caps reaching into the cell (the 2 m seam grid's vertices on a neighbour's cap must agree: pad by one grid step).
+  const caps = o.caps === false ? [] : floorCapsNear(CROSSINGS, input.project, input.surface.datumNAP, input.rect, 2);
+  const relief = cappedRelief(input.surface.relief, caps);
   const inHash = createHash('sha256'); inHash.update(JSON.stringify([src.groups, src.features.map(f => [f.group, f.id, f.rings])]));
-  { const [x0, y0, x1, y1] = input.rect; const zs: number[] = []; for (let x = x0; x <= x1; x += 16) for (let y = y0; y <= y1; y += 16) zs.push(Math.round(input.surface.relief(x, y) * 1000)); inHash.update(Int32Array.from(zs)); }
+  { const [x0, y0, x1, y1] = input.rect; const zs: number[] = []; for (let x = x0; x <= x1; x += 16) for (let y = y0; y <= y1; y += 16) zs.push(Math.round(relief(x, y) * 1000)); inHash.update(Int32Array.from(zs)); inHash.update(JSON.stringify(caps)); }
   const inputsHash = inHash.digest().subarray(0, 16);
   if (o.skipIfInputs?.(inputsHash)) return null;
   const t1 = performance.now();
-  const baked = bakeSurface({ key, rect: input.rect, groups: src.groups, features: src.features, restGroup: src.restGroup, height: input.surface.relief, levelZ: src.levelZ }, opt);
+  const baked = bakeSurface({ key, rect: input.rect, groups: src.groups, features: src.features, restGroup: src.restGroup, height: relief, levelZ: src.levelZ, ...(caps.length ? { relief: input.surface.relief, caps: caps.map(c => ({ ring: c.ring, z: c.z })) } : {}) }, opt);
   const t2 = performance.now();
   const layers = src.groups.map(g => g.layer ?? 'water');
   const plain = toContent(baked, layers, lod, false), re = toContent(baked, layers, lod, true, o.codeHash);
   const rawGz = gzipSync(encodeGrd2(plain), { level: 9 }).length;
   const meshoptGz = gzipSync(encodeGrd2(plain, MeshoptEncoder), { level: 9 }).length;
   const fileGz = gzipSync(encodeGrd2({ ...re, inputsHash }, MeshoptEncoder), { level: 9 });
-  return { key, lod, baked, src, inputsHash, fileGz, rawGz, meshoptGz, inputMs: Math.round(t1 - t0), bakeMs: Math.round(t2 - t1) };
+  return { key, lod, caps, baked, src, inputsHash, fileGz, rawGz, meshoptGz, inputMs: Math.round(t1 - t0), bakeMs: Math.round(t2 - t1) };
 }

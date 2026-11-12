@@ -31,7 +31,17 @@ const HEADER_BYTES = 168, GROUP_BYTES = 12;
 export interface GroundFrame { originLng: number; originLat: number; kx: number; ky: number; transform: number }
 
 /** A draw range: triangles [first, first + count) of the index stream, one layer, one 3×3 tile. */
-export interface Grd2Group { layer: GroundLayer; /** 0 surface, 1 step strip (kerb face, wall). */ kind: 0 | 1; tile: number; first: number; count: number }
+export interface Grd2Group {
+  layer: GroundLayer;
+  /**
+   * 0 surface, 1 step strip (kerb face, wall), 2 floor cap: surface under a reviewed crossing's deck (crossings.ts,
+   * lane G3) held at the street level the record measured, not the relief's saddle (round 2). Readers that know only
+   * 0 and 1 draw a cap as surface.
+   */
+  kind: 0 | 1; tile: number; first: number; count: number;
+}
+/** Surface groups: what the rider stands on (kind 0; step strips are kind 1). */
+export const isSurfaceGroup = (g: Pick<Grd2Group, 'kind'>): boolean => g.kind !== 1;
 
 export interface Grd2Header {
   version: number; flags: number; cx: number; cy: number; lod: 0 | 1; levels: number;
@@ -222,3 +232,39 @@ export function grd2Layers(dec: Grd2Decoded): Grd2Layers {
   }
   return { positions, normals, layers };
 }
+
+/** One 3×3 tile of a decoded cell as GPU arrays: its own vertices (Float32 xyz, Int8 normals), u16 indices when they fit. */
+export interface Grd2TileMesh { tile: number; positions: Float32Array; normals: Int8Array; indices: Uint16Array | Uint32Array; groups: Grd2Group[] }
+
+/**
+ * The GPU layout G2b uploads (design "The cell format": Float32 positions, the materials reading uv = position.xy,
+ * Int8 normals, u16 or u32 indices): one mesh per 3×3 tile (the groups' `tile`), each over the vertices it uses, so its
+ * indices are u16 (a tile holds about a ninth of the cell's vertices; u32 only past 65,535). Groups are renumbered
+ * into the tile's index stream. A vertex used by two tiles is in both.
+ */
+export function grd2TileMeshes(dec: Grd2Decoded): Grd2TileMesh[] {
+  const { rect } = dec.header, out: Grd2TileMesh[] = [];
+  const byTile = new Map<number, Grd2Group[]>();
+  for (const g of dec.groups) { const l = byTile.get(g.tile); if (l) l.push(g); else byTile.set(g.tile, [g]); }
+  for (const tile of [...byTile.keys()].sort((a, b) => a - b)) {
+    const gs = byTile.get(tile)!, map = new Map<number, number>(), order: number[] = [];
+    let n = 0; for (const g of gs) n += g.count;
+    const idx = new Uint32Array(n * 3), groups: Grd2Group[] = [];
+    let o = 0;
+    for (const g of gs) {
+      groups.push({ ...g, first: o / 3 });
+      for (let k = g.first * 3; k < (g.first + g.count) * 3; k++) { const v = dec.indices[k]; let m = map.get(v); if (m === undefined) { m = order.length; map.set(v, m); order.push(v); } idx[o++] = m; }
+    }
+    const V = order.length, positions = new Float32Array(V * 3), normals = new Int8Array(V * 3);
+    order.forEach((i, m) => {
+      positions[3 * m] = unitX(rect, dec.u[i]); positions[3 * m + 1] = unitY(rect, dec.v[i]); positions[3 * m + 2] = dec.zMm[i] / 1000;
+      const nn = octDecode(dec.oct[2 * i], dec.oct[2 * i + 1]);
+      normals[3 * m] = Math.round(nn[0] * 127); normals[3 * m + 1] = Math.round(nn[1] * 127); normals[3 * m + 2] = Math.round(nn[2] * 127);
+    });
+    out.push({ tile, positions, normals, indices: V <= 65536 ? Uint16Array.from(idx) : idx, groups });
+  }
+  return out;
+}
+
+/** GPU bytes of a tile layout (vertex buffers + index buffers). */
+export const tileMeshBytes = (tiles: readonly Grd2TileMesh[]): number => tiles.reduce((s, t) => s + t.positions.byteLength + t.normals.byteLength + t.indices.byteLength, 0);

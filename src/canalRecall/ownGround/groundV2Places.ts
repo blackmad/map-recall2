@@ -1,7 +1,8 @@
 // Ground v2 named places (lane G2a #372): G0's nine named ground-defect places (groundRegressions.ts GROUND_SPOTS on
 // lane/ground-g0-20261110 at 5223a6cca, positions on the named OSM way, 150 m windows), copied here until G0 reaches
 // main; then this list should re-export from it. G2a's acceptance bar (coordinator, 2026-11-12): every place at zero
-// sliver, poke-through, z-fight and crack inside its window, and before/after frames beside the orthophoto.
+// sliver, poke-through, z-fight and crack inside its window, and before/after frames beside the orthophoto. Round 2
+// adds a tenth, the A10 deck over the Piet Kranenbergpad from G3's crossing register.
 
 /** `bearing`: the ride frame's heading, degrees clockwise from north (along the way named). */
 export interface GroundV2Place { id: string; label: string; at: [number, number]; cell: string; bearing: number }
@@ -19,6 +20,9 @@ export const GROUND_V2_PLACES: readonly GroundV2Place[] = [
   { id: 'vlaardingenlaan-naaldwijkstraat', label: 'Vlaardingenlaan / Naaldwijkstraat (flat ground)', at: [4.84598, 52.34685], cell: '-4_-3', bearing: 90 },
   { id: 'lelylaan-delflandlaan', label: 'Delflandlaan by Cornelis Lelylaan', at: [4.84085, 52.35716], cell: '-5_-2', bearing: 90 },
   { id: 'radarweg-south-abutment', label: 'Radarweg bridge over the Sloterdijk yard, south abutment', at: [4.83455, 52.38484], cell: '-5_1', bearing: 0 },
+  // Round 2: G3's register names this deck the judgement session's "Radarweg south abutment" (crossings named.json
+  // piet-kranenbergpad-a10-south-abutment; G0's pin above is the Sloterdijk canal bridge, 5 km north). Both are kept.
+  { id: 'kranenbergpad-a10-abutment', label: 'Piet Kranenbergpad under the A10 north carriageway: deck and abutments (G3 register)', at: [4.8533, 52.33825], cell: '-4_-4', bearing: 0 },
 ];
 
 /** The seam pin (typed check): a G0 cell and its east neighbour. */

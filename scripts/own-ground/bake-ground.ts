@@ -26,9 +26,13 @@ Bakes ground v2 cells (GRD2, gzip) into a staging directory and writes a report.
                      mitigation 0.075 saved 4 % and put 200-400 m² per place window over the 5 cm float gate)
   --tol-road=M       Steiner tolerance on road classes, metres (default 0.05)
   --no-kerb          no kerb band (rank 3)
+  --no-caps          no floor caps (groundV2Caps.ts: the relief under a reviewed register deck lowered to its street level)
   --sliver-rounds=N  rounds splitting a sliver's longest edge (aspect > 20, area > 0.05 m²)
   --refine-rounds=N  relief refinement rounds
   --refine-lattice=M relief refinement samples each triangle on a lattice this fine (metres; 0: the centroid only)
+  --simplify=M       Douglas–Peucker on every arc between junctions, metres (LOD 1)
+  --min-square=M     the relief quadtree's smallest square, metres
+  --remnant=M        absorb flat-class regions thinner than this (mean width, metres) into their longest neighbour
   --out=DIR          staging dir (default artifacts/ground-v2/staging; a variant: artifacts/ground-v2/variants/<name>)
   --changed          skip cells whose meta inputs and code hashes match
   --shard=i/n        bake every nth cell starting at i (run n processes for parallelism)
@@ -50,7 +54,7 @@ await store.init();
 
 const lod = (Number(opt('lod') ?? 0) === 1 ? 1 : 0) as 0 | 1;
 const base: SurfaceBakeOptions = lod === 0 ? LOD0_OPTIONS : LOD1_OPTIONS;
-const bakeOpt: SurfaceBakeOptions = { ...base, tolFlatM: Number(opt('tol-flat') ?? base.tolFlatM), tolRoadM: Number(opt('tol-road') ?? base.tolRoadM), sliverRounds: Number(opt('sliver-rounds') ?? base.sliverRounds), refineRounds: Number(opt('refine-rounds') ?? base.refineRounds), refineLatticeM: Number(opt('refine-lattice') ?? base.refineLatticeM) };
+const bakeOpt: SurfaceBakeOptions = { ...base, tolFlatM: Number(opt('tol-flat') ?? base.tolFlatM), tolRoadM: Number(opt('tol-road') ?? base.tolRoadM), sliverRounds: Number(opt('sliver-rounds') ?? base.sliverRounds), refineRounds: Number(opt('refine-rounds') ?? base.refineRounds), refineLatticeM: Number(opt('refine-lattice') ?? base.refineLatticeM), simplifyM: Number(opt('simplify') ?? base.simplifyM), minSquareM: Number(opt('min-square') ?? base.minSquareM), remnantM: Number(opt('remnant') ?? base.remnantM) };
 const out = opt('out') ?? 'artifacts/ground-v2/staging';
 const write = !flag('no-write');
 
@@ -107,7 +111,7 @@ for (const key of keys) {
   const t0 = performance.now();
   const metaPath = join(out, 'meta', `${key}.lod${lod}.json`);
   const prev = flag('changed') && existsSync(metaPath) ? JSON.parse(readFileSync(metaPath, 'utf8')) as { inputsHash: string; codeHash: string } : null;
-  const r = await bakeCellFile(store, key, lod, bakeOpt, { kerbBand: !flag('no-kerb'), codeHash, skipIfInputs: h => !!prev && prev.inputsHash === Buffer.from(h).toString('hex') && prev.codeHash === Buffer.from(codeHash).toString('hex') });
+  const r = await bakeCellFile(store, key, lod, bakeOpt, { kerbBand: !flag('no-kerb'), caps: !flag('no-caps'), codeHash, skipIfInputs: h => !!prev && prev.inputsHash === Buffer.from(h).toString('hex') && prev.codeHash === Buffer.from(codeHash).toString('hex') });
   if (!r) { console.error(`${key}: unchanged`); continue; }
   const { baked, src, inputsHash, fileGz } = r;
   if (write) {
@@ -127,7 +131,7 @@ if (rows.length) {
   const sorted = (f: (r: any) => number) => rows.map(f).sort((a, b) => a - b);
   const p = (a: number[], q: number) => a[Math.min(a.length - 1, Math.floor(a.length * q))];
   const by = sorted(r => r.bytes.meshoptReorderGz), ms = sorted(r => r.ms);
-  const summary = { lod, cells: rows.length, options: bakeOpt, kerbBand: !flag('no-kerb') && lod === 0,
+  const summary = { lod, cells: rows.length, options: bakeOpt, caps: !flag('no-caps'), kerbBand: !flag('no-kerb') && lod === 0,
     totalBytes: { rawGz: sum(r => r.bytes.rawGz), meshoptGz: sum(r => r.bytes.meshoptGz), meshoptReorderGz: sum(r => r.bytes.meshoptReorderGz) },
     perCell: { p50: p(by, 0.5), p95: p(by, 0.95), max: by[by.length - 1] }, bakeMs: { p50: p(ms, 0.5), p95: p(ms, 0.95), max: ms[ms.length - 1] } };
   console.log(JSON.stringify(summary));

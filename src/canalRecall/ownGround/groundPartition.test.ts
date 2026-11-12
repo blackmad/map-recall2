@@ -88,3 +88,28 @@ test('LOD 1: simplified arcs, no steps, still closed and seam-equal', () => {
   const side = (s: typeof a, u: number) => [...s.u.keys()].filter(i => s.u[i] === u).map(i => `${s.v[i]}:${s.zMm[i]}`).sort();
   assert.deepEqual(side(a, GRID_Q), side(b, 0));
 });
+
+test('floor caps: the cap ring is a constraint, its triangles sit at min(cap, relief), a wall stands where the relief outside is higher, both seams agree', () => {
+  // An embankment 3 m high over x 120..180 (the deck's abutments), a deck 20 m wide over y 30..60 straddling the seam
+  // at x = 100 and the embankment's west foot. The street under the deck is at 0.
+  const bank = (x: number, y: number) => (x > 130 ? 3 : x > 120 ? (x - 120) * 0.3 : 0) + 0.002 * y;
+  const ring: Vec2[] = box(90, 30, 150, 60), z = 0;
+  const capped = (x: number, y: number) => (x > 90 && x < 150 && y > 30 && y < 60 ? Math.min(z, bank(x, y)) : bank(x, y));
+  const inp = (key: string, rect: Rect, caps: boolean): SurfaceBakeInput => ({ key, rect, groups, features: [], restGroup: 4, height: caps ? capped : bank, levelZ: [0.03, 0.14], ...(caps ? { relief: bank, caps: [{ ring, z }] } : {}) });
+  const a = bakeSurface(inp('0_0', A, true), LOD0_OPTIONS), b = bakeSurface(inp('1_0', B, true), LOD0_OPTIONS);
+  assert.ok(b.stats.capTris > 0);
+  assert.equal(b.stats.failedEdges.length, 0);
+  // Inside the ring every vertex is at the cap (+ the land lift); the wall: step triangles on the ring at x = 150 and
+  // where the bank rises (x > 120), none at the west end (x = 90) where the relief is not above the cap.
+  const zIn: number[] = [];
+  for (let i = 0; i < b.u.length; i++) { const x = 100 + (b.u[i] / GRID_Q) * 100, y = (b.v[i] / GRID_Q) * 100; if (x > 91 && x < 149 && y > 31 && y < 59) zIn.push(b.zMm[i]); }
+  assert.ok(zIn.length > 0 && zIn.every(v => v === 30), `inside ${[...new Set(zIn)].slice(0, 5)}`);
+  assert.ok(b.steps.length > 0);
+  // Seams: the two cells' vertices on x = 100 match (positions and heights).
+  const seam = (s: typeof a, u: number) => { const o: string[] = []; for (let i = 0; i < s.u.length; i++) if (s.u[i] === u) o.push(`${s.v[i]}:${s.zMm[i]}`); return [...new Set(o)].sort(); };
+  assert.deepEqual(seam(a, GRID_Q), seam(b, 0));
+  // No caps: the bake is the one without the option.
+  const plain = bakeSurface(inp('1_0', B, false), LOD0_OPTIONS), none = bakeSurface({ ...inp('1_0', B, false), caps: [] }, LOD0_OPTIONS);
+  assert.deepEqual([...none.zMm], [...plain.zMm]);
+  assert.deepEqual([...none.tris], [...plain.tris]);
+});
