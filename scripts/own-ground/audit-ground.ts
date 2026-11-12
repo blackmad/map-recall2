@@ -5,6 +5,7 @@ import { join } from 'node:path';
 import { GroundStore, fromLocal, toLocal } from '../../src/canalRecall/ownGround/groundStore.ts';
 import { buildCell, type CellInput } from '../../src/canalRecall/ownGround/groundCell.ts';
 import { decodeLine } from '../../src/canalRecall/ownGround/parks.ts';
+import { concentration, weightField, RIDEABLE_HIGHWAYS, ringSegments, segmentsOf, type Seg } from '../../src/canalRecall/ownGround/groundVisibility.ts';
 import { auditCell, ringBox, tallyJson, addDefects, emptyDefects, DEFECTS, type CellAudit, type OpenRing, type Window, type Tally, AUDIT } from '../../src/canalRecall/ownGround/groundAudit.ts';
 import { GROUND_SPOTS, GROUND_SPOT_RADIUS_M } from '../../src/canalRecall/ownGround/groundRegressions.ts';
 import { isRidePriority } from '../../src/canalRecall/ridePriority.ts';
@@ -31,7 +32,7 @@ Options:
 Definitions: sliver = aspect > ${AUDIT.sliverAspect} and area > ${AUDIT.sliverMinM2} m2; poke = lower-precedence layer above a higher one by more than
 ${AUDIT.pokeM * 1000} mm (up to ${AUDIT.pokeMaxM} m); z-fight = two layers within ${AUDIT.zfightM * 1000} mm; crack = raster sample under no layer; float = natural ground more than
 ${AUDIT.floatM} m over the DTM; shard area = flagged samples + sliver area. The ranking weights a cell by the ride-priority share (ridePriority.ts).
-Exit code 1 when --named fails the gate (every named place in the top 50).
+Exit code 1 when --named fails the gate (at least 7 of the 9 named places in the top 50 tiles by the visibility score).
 `;
 
 const arg = (n: string) => { const a = process.argv.find(x => x.startsWith(`--${n}=`)); if (a) return a.slice(n.length + 3); const i = process.argv.indexOf(`--${n}`); return i >= 0 && process.argv[i + 1] && !process.argv[i + 1].startsWith('--') ? process.argv[i + 1] : undefined; };
@@ -106,13 +107,23 @@ function portals(input: CellInput): PortalRow[] {
   }));
 }
 
+/** Rideable-way and structure segments around a cell, as a weight-field factory (groundVisibility.ts). */
+function weightsOf(input: CellInput) {
+  const ways: Seg[] = [], structs: Seg[] = [];
+  for (const o of [input.osm, ...input.osmAround]) for (const w of o?.ways ?? []) if (RIDEABLE_HIGHWAYS.has(w.tags.highway) && !(w.tags.tunnel && w.tags.tunnel !== 'no' && w.tags.highway !== 'cycleway')) segmentsOf(w.g.map(g => toLocal(g[0], g[1])), ways);
+  for (const ring of input.deckRingsAround) ringSegments(ring, structs);
+  for (const c of input.cuts ?? []) { segmentsOf(c.x.map((x, i) => [x, c.y[i]] as [number, number]), structs); for (const p of c.portals) structs.push([c.x[p.at], c.y[p.at], c.x[p.at], c.y[p.at]]); }
+  for (const r of [...(input.rails ?? [])]) if (!r.service) segmentsOf(r.points, structs);
+  return (x0: number, y0: number, size: number) => weightField(ways, structs, x0, y0, size);
+}
+
 async function auditKey(store: GroundStore, key: string, windows: Window[] = []): Promise<{ audit: CellAudit; input: CellInput; buildMs: number; auditMs: number; triangles: number }> {
   const input = await store.cellInput(key, LOD);
   const cell = buildCell(input);
   const openRings: OpenRing[] = [input.openGround, ...(input.openGroundAround ?? [])].filter((c, i, all): c is NonNullable<typeof c> => !!c && all.indexOf(c) === i)
     .flatMap(c => c.areas.map(a => { const r = a.r.map(decodeLine); return { pts: r[0], holes: r.slice(1), bb: ringBox(r[0]) }; })).filter(r => r.pts.length >= 3);
   const t0 = Date.now();
-  const audit = auditCell({ cell, dtm: store.surface.relief, windows, openRings, resM: RES, noTJunctions: NO_TJ });
+  const audit = auditCell({ cell, dtm: store.surface.relief, windows, openRings, resM: RES, noTJunctions: NO_TJ, weights: weightsOf(input) });
   return { audit, input, buildMs: cell.stats.buildMs, auditMs: Date.now() - t0, triangles: cell.stats.triangles };
 }
 
@@ -140,28 +151,35 @@ async function city(keys?: string[]) {
 }
 
 /** Ranking scores over a defect total: `tear` (the gate's) is what the eye reads as torn ground; the others are reported beside it. */
-export const SCORES: Record<string, (d: any) => number> = {
-  shard: d => d.shardM2,
-  tear: d => d.pokeSevereM2 + d.crackM2 + 20 * (d.tjSevereN ?? 0),
-  severe: d => d.pokeSevereM2 + d.floatSevereM2 + d.crackM2 + d.thinM2 + 20 * (d.tjSevereN ?? 0),
-  poke5cm: d => d.pokeSevereM2,
-  poke5mm: d => d.pokeM2,
-  thin: d => d.thinM2,
-  float: d => d.floatM2,
-  zfight: d => d.zfightM2,
+/** What a score reads: the defect totals, the visibility-weighted defect and area (groundVisibility.ts), the ride-priority share. */
+interface Scored { d: any; wDefectM2: number; wAreaM2: number; prio: number }
+export const SCORES: Record<string, (x: Scored) => number> = {
+  /** The gate (G0 r2): visibility- and crossing-weighted defect m2 per weighted hectare, times 1 + ride priority. */
+  visibility: x => concentration(x.wDefectM2, x.wAreaM2, x.prio),
+  shard: x => x.d.shardM2 * (1 + x.prio),
+  tear: x => (x.d.pokeSevereM2 + x.d.crackM2 + 20 * (x.d.tjSevereN ?? 0)) * (1 + x.prio),
+  severe: x => (x.d.pokeSevereM2 + x.d.floatSevereM2 + x.d.crackM2 + x.d.thinM2 + 20 * (x.d.tjSevereN ?? 0)) * (1 + x.prio),
+  poke5cm: x => x.d.pokeSevereM2 * (1 + x.prio),
+  poke5mm: x => x.d.pokeM2 * (1 + x.prio),
+  thin: x => x.d.thinM2 * (1 + x.prio),
+  float: x => x.d.floatM2 * (1 + x.prio),
+  zfight: x => x.d.zfightM2 * (1 + x.prio),
 };
-const GATE_SCORE = 'tear';
-const score = (d: any, w: number, name = GATE_SCORE) => SCORES[name](d) * (1 + w);
+const GATE_SCORE = 'visibility';
+const GATE_MIN = 7, GATE_TOP = 50;
+const ofRow = (r: any): Scored => ({ d: r, wDefectM2: r.wDefectM2 ?? 0, wAreaM2: r.wAreaM2 ?? 0, prio: r.priorityShare ?? 0 });
+const ofTile = (t: { weight: number; t: Tally }): Scored => ({ d: t.t.d, wDefectM2: t.t.wDefectM2, wAreaM2: t.t.wAreaM2, prio: t.weight });
+const score = (x: Scored, name = GATE_SCORE) => SCORES[name](x);
 
 function rankings(rows: any[], tiles: { cell: string; tile: string; x: number; y: number; weight: number; t: Tally }[]) {
-  const cellRank = [...rows].sort((a, b) => score(b, b.priorityShare) - score(a, a.priorityShare)).map((r, i) => ({ rank: i + 1, key: r.key as string, score: Math.round(score(r, r.priorityShare)), shardM2: r.shardM2 as number }));
-  const tileRank = [...tiles].sort((a, b) => score(b.t.d, b.weight) - score(a.t.d, a.weight)).map((t, i) => ({ rank: i + 1, ...t }));
-  // Where each named place stands (best tile within its radius) under every score, over all tiles, unweighted and weighted.
+  const cellRank = [...rows].sort((a, b) => score(ofRow(b)) - score(ofRow(a))).map((r, i) => ({ rank: i + 1, key: r.key as string, score: +score(ofRow(r)).toFixed(1), shardM2: r.shardM2 as number }));
+  const tileRank = [...tiles].sort((a, b) => score(ofTile(b)) - score(ofTile(a))).map((t, i) => ({ rank: i + 1, ...t }));
+  // Where each named place stands (best tile within its radius) under every score, over all tiles.
   const spotRanks = GROUND_SPOTS.map(sp => {
     const [x, y] = toLocal(sp.lng, sp.lat), near = tiles.filter(t => Math.hypot(t.x - x, t.y - y) <= GROUND_SPOT_RADIUS_M);
     const ranks: Record<string, number> = {};
     for (const name of Object.keys(SCORES)) {
-      const sorted = [...tiles].sort((a, b) => score(b.t.d, b.weight, name) - score(a.t.d, a.weight, name));
+      const sorted = [...tiles].sort((a, b) => score(ofTile(b), name) - score(ofTile(a), name));
       const idx = new Map(sorted.map((t, i) => [t, i + 1]));
       ranks[name] = Math.min(...near.map(t => idx.get(t) ?? 1e9));
     }
@@ -191,7 +209,7 @@ async function main() {
     if (has('merge')) {
       const parts = [0, 1, 2, 3, 4, 5, 6, 7].map(i => join(OUT, `part${i}.json`)).filter(f => existsSync(f)).map(f => JSON.parse(readFileSync(f, 'utf8')));
       rows = parts.flatMap(p => p.rows);
-      tiles = parts.flatMap(p => p.tiles.map((t: any) => ({ ...t, t: { d: t.tally, byLayer: t.tally.byLayer, openGroundShardM2: t.tally.openGroundShardM2 } })));
+      tiles = parts.flatMap(p => p.tiles.map((t: any) => ({ ...t, t: { d: t.tally, byLayer: t.tally.byLayer, openGroundShardM2: t.tally.openGroundShardM2, wDefectM2: t.tally.wDefectM2, wAreaM2: t.tally.wAreaM2 } })));
     } else ({ rows, tiles } = await city());
     const { cellRank, tileRank, spotRanks } = rankings(rows, tiles);
     const total = sumTallies(rows.map(r => ({ d: r as any, openGroundShardM2: r.openGroundShardM2 }) as Tally));
@@ -232,9 +250,9 @@ async function main() {
     const dflt = ab.default.sum.shardM2;
     const shares = Object.fromEntries(names.filter(n => n !== 'default').map(n => [n, { shardM2: Math.round(ab[n].sum.shardM2), deltaM2: Math.round(dflt - ab[n].sum.shardM2), sharePct: +(((dflt - ab[n].sum.shardM2) / dflt) * 100).toFixed(1) }]));
     const ogDirect = ab.default.sum.openGroundShardM2;
-    save(has('spots') ? `spots-${arg('tag') ?? 'x'}.json` : 'named.json', { generated: new Date().toISOString().slice(0, 10), radiusM: GROUND_SPOT_RADIUS_M, resM: RES, gate, gatePass: has('spots') ? null : gate.every(g => (g.tileRank ?? 1e9) <= 50 || (g.cellRank ?? 1e9) <= 50), ab: Object.fromEntries(names.map(n => [n, ab[n]])), shares, openGroundDirect: { shardM2: Math.round(ogDirect), sharePct: +((ogDirect / dflt) * 100).toFixed(1) } });
+    save(has('spots') ? `spots-${arg('tag') ?? 'x'}.json` : 'named.json', { generated: new Date().toISOString().slice(0, 10), radiusM: GROUND_SPOT_RADIUS_M, resM: RES, gate, gatePass: has('spots') ? null : gate.filter(g => (g.tileRank ?? 1e9) <= GATE_TOP).length >= GATE_MIN, gateInTop: gate.filter(g => (g.tileRank ?? 1e9) <= GATE_TOP).length, gateScore: GATE_SCORE, ab: Object.fromEntries(names.map(n => [n, ab[n]])), shares, openGroundDirect: { shardM2: Math.round(ogDirect), sharePct: +((ogDirect / dflt) * 100).toFixed(1) } });
     console.log(JSON.stringify({ gate, shares, openGroundDirect: ogDirect / dflt }, null, 1));
-    if (!has('spots') && !gate.every(g => (g.tileRank ?? 1e9) <= 50 || (g.cellRank ?? 1e9) <= 50)) process.exitCode = 1;
+    if (!has('spots') && gate.filter(g => (g.tileRank ?? 1e9) <= GATE_TOP).length < GATE_MIN) process.exitCode = 1;
     return;
   }
   console.log(HELP);

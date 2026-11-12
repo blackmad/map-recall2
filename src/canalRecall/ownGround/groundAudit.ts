@@ -16,6 +16,7 @@
 //   shard area  flagged raster samples (poke ∪ zfight ∪ crack ∪ float); plain slivers are reported, not summed
 
 import type { BuiltCell, GroundLayer } from './groundCell.js';
+import type { WeightField } from './groundVisibility.js';
 
 export type Vec2 = [number, number];
 
@@ -58,13 +59,17 @@ export interface Tally {
   byLayer: Record<string, Record<Defect, number>>;
   /** Shard area (flagged samples + slivers) inside an open-ground-v1 polygon. */
   openGroundShardM2: number;
+  /** Visibility-weighted (groundVisibility.ts) shard m2 and the weighted area of the same samples, m2. */
+  wDefectM2: number;
+  wAreaM2: number;
 }
-const emptyTally = (): Tally => ({ d: emptyDefects(), byLayer: {}, openGroundShardM2: 0 });
-function bump(t: Tally, kind: Defect, layer: string, m2: number, inOpen: boolean): void {
+const emptyTally = (): Tally => ({ d: emptyDefects(), byLayer: {}, openGroundShardM2: 0, wDefectM2: 0, wAreaM2: 0 });
+function bump(t: Tally, kind: Defect, layer: string, m2: number, inOpen: boolean, w = 1): void {
   const row = (t.byLayer[layer] ??= { sliver: 0, thin: 0, poke: 0, zfight: 0, crack: 0, float: 0, void: 0, pokeS: 0, floatS: 0 });
   row[kind] += m2;
   if (kind === 'sliver') t.d.sliverM2 += m2; else if (kind === 'thin') t.d.thinM2 += m2; else if (kind === 'poke') t.d.pokeM2 += m2; else if (kind === 'zfight') t.d.zfightM2 += m2; else if (kind === 'crack') t.d.crackM2 += m2; else if (kind === 'void') t.d.voidM2 += m2; else if (kind === 'pokeS') t.d.pokeSevereM2 += m2; else if (kind === 'floatS') t.d.floatSevereM2 += m2; else t.d.floatM2 += m2;
   if (kind !== 'sliver' && kind !== 'void' && kind !== 'pokeS' && kind !== 'floatS') t.d.shardM2 += m2;
+  if (kind !== 'sliver' && kind !== 'void' && kind !== 'pokeS' && kind !== 'floatS') t.wDefectM2 += m2 * w;
   if (inOpen && kind !== 'sliver' && kind !== 'void' && kind !== 'pokeS' && kind !== 'floatS') t.openGroundShardM2 += m2;
 }
 
@@ -88,6 +93,8 @@ export interface AuditInput {
   resM?: number;
   /** Skip the T-junction pass (it is the slowest). */
   noTJunctions?: boolean;
+  /** Weight field per tile (vis × cross); absent: every sample weighs 1. */
+  weights?: (x0: number, y0: number, sizeM: number) => WeightField;
 }
 
 const inRing = (x: number, y: number, ring: readonly Vec2[]): boolean => {
@@ -131,9 +138,16 @@ export function auditCell(input: AuditInput): CellAudit {
     for (const w of windows) if ((x - w.x) ** 2 + (y - w.y) ** 2 <= w.r * w.r) out.push(win[w.id]);
     return out;
   };
+  const fields = new Map<string, WeightField>();
+  const fieldAt = (x: number, y: number): WeightField | null => {
+    if (!input.weights) return null;
+    const i = Math.floor((x - rx0) / tileM), j = Math.floor((y - ry0) / tileM), k = `${i}_${j}`;
+    let f = fields.get(k); if (!f) fields.set(k, f = input.weights(rx0 + i * tileM, ry0 + j * tileM, tileM));
+    return f;
+  };
   const record = (kind: Defect, layer: string, x: number, y: number, m2: number) => {
-    const open = openRings.length > 0 && inOpenRing(x, y, openRings);
-    for (const t of tallies(x, y)) bump(t, kind, layer, m2, open);
+    const open = openRings.length > 0 && inOpenRing(x, y, openRings), w = fieldAt(x, y)?.at(x, y) ?? 1;
+    for (const t of tallies(x, y)) bump(t, kind, layer, m2, open, w);
   };
 
   // Slivers: every surface triangle.
@@ -206,6 +220,8 @@ export function auditCell(input: AuditInput): CellAudit {
     });
     if (!any) continue;
     const present: number[] = [];
+    const tk = `${ti}_${tj}`;
+    let curTile = tiles.get(tk); if (!curTile) tiles.set(tk, curTile = emptyTally());
     // Cracks are holes at most CRACK_MAX_M wide (bounded by covered samples along a row or a column); wider voids are no ground to draw.
     const cov = new Uint8Array(nn);
     for (let o = 0; o < nn; o++) for (let li = 0; li < rasterLayers.length; li++) if (buf_ok(bufs[li][o])) { cov[o] = 1; break; }
@@ -227,6 +243,9 @@ export function auditCell(input: AuditInput): CellAudit {
         const px = ox + (k + 0.5) * res;
         if (px < rx0 || px >= rx1) continue;
         const o = j * n + k;
+        const wf = fieldAt(px, py), ws = (wf?.at(px, py) ?? 1) * sample;
+        curTile.wAreaM2 += ws; total.wAreaM2 += ws;
+        for (const w of windows) if ((px - w.x) ** 2 + (py - w.y) ** 2 <= w.r * w.r) win[w.id].wAreaM2 += ws;
         present.length = 0;
         let covered = false, raised = false;
         for (let li = 0; li < rasterLayers.length; li++) {
@@ -314,5 +333,5 @@ export function tallyJson(t: Tally): unknown {
   const d = t.d;
   const byLayer: Record<string, Record<string, number>> = {};
   for (const [l, row] of Object.entries(t.byLayer)) { const o: Record<string, number> = {}; for (const k of DEFECTS) if (row[k]) o[k] = r(row[k]); if (Object.keys(o).length) byLayer[l] = o; }
-  return { sliverN: d.sliverN, sliverM2: r(d.sliverM2), thinM2: r(d.thinM2), pokeM2: r(d.pokeM2), zfightM2: r(d.zfightM2), crackM2: r(d.crackM2), floatM2: r(d.floatM2), voidM2: r(d.voidM2), pokeSevereM2: r(d.pokeSevereM2), floatSevereM2: r(d.floatSevereM2), tjN: d.tjN, tjSevereN: d.tjSevereN, shardM2: r(d.shardM2), openGroundShardM2: r(t.openGroundShardM2), byLayer };
+  return { sliverN: d.sliverN, sliverM2: r(d.sliverM2), thinM2: r(d.thinM2), pokeM2: r(d.pokeM2), zfightM2: r(d.zfightM2), crackM2: r(d.crackM2), floatM2: r(d.floatM2), voidM2: r(d.voidM2), pokeSevereM2: r(d.pokeSevereM2), floatSevereM2: r(d.floatSevereM2), tjN: d.tjN, tjSevereN: d.tjSevereN, shardM2: r(d.shardM2), openGroundShardM2: r(t.openGroundShardM2), wDefectM2: r(t.wDefectM2), wAreaM2: r(t.wAreaM2), byLayer };
 }
