@@ -17,6 +17,7 @@ import type { ArchitecturalRecipe } from '../streetAppearance.js';
 import type { StoopIntent } from '../buildingRecipe/stoop.ts';
 import { eraOfYear } from '../facade/registerRecipe.js';
 import { SOURCE_STRENGTH } from '../facade/evidence.js';
+import { brickLiftOn } from '../look/brickLift.js';
 import { heldTakesBrick, hexToOklab, paleWarmHeld, specWallDisplay, specWallSource, specWallsOn, type WallFamily, specWallsForcedOn } from './wallColour.js';
 
 /** Rank on the evidence ladder (spec.ts specStrength without the intent schema import): `author` = `reviewed`. */
@@ -160,9 +161,19 @@ export const SPEC_SHOP_KIND = 'shopWindow' as const;
  * The wall colour a spec view draws, or null when it keeps the period colour: the trim-misread rule and the lift, then the
  * pale-warm guard on the drawn colour (wallColour.ts paleWarmHeld; render/light finishes and light reader families pass).
  */
+/**
+ * Whether a spec view's wall counts as brick for the trim-misread rule: its stated material, else the register's finish.
+ * Under brickLift v2 (the default; `?brickLift=v1` restores the old rule) a pand that states neither (no spec material, no register finish) counts as brick: 83 % of the
+ * unstated c19 1875-1910 pands of Oud-West / De Baarsjes read brick in the photos (docs/house-line.md §9). Under v1: unchanged.
+ */
+export function specWallIsBrick(view: Pick<HouseSpecView, 'wallMaterial'>, p: Props): boolean {
+  if (view.wallMaterial) return view.wallMaterial === 'brick';
+  if (p.registerFinish === 'brick') return true;
+  return brickLiftOn() && (p.registerFinish === undefined || p.registerFinish === null || p.registerFinish === '');
+}
 export function specWallColour(view: HouseSpecView, p: Props): string | null {
   if (!view.wallHex || !/^#[0-9a-f]{6}$/i.test(view.wallHex)) return null;
-  const reading = view.wallHex.toLowerCase(), brick = view.wallMaterial ? view.wallMaterial === 'brick' : p.registerFinish === 'brick';
+  const reading = view.wallHex.toLowerCase(), brick = specWallIsBrick(view, p);
   const src = specWallSource(reading, { family: view.wallFamily ?? null, brick });
   const drawn = specWallDisplay(src.hex, { fromPixel: src.fromPixel });
   const held = paleWarmHeld(drawn, { family: view.wallFamily ?? null, render: view.wallMaterial === 'stucco' || p.registerFinish === 'light', readingL: hexToOklab(reading)[0] });

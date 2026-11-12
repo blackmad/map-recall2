@@ -6,6 +6,7 @@
 
 import { SHOP_KINDS, archetypeFor, paletteFor, type Archetype, type BayKind, type BayVariant, type Look, type ShopKind } from './bayTextures.js';
 import { GROUND_PAINTS, PERIOD_WALLS, lookHex } from './look/palette.js';
+import { brickLiftOn, brickLiftV2ProfileWall, periodWallList } from './look/brickLift.js';
 import { hashSeed } from './wallBays.js';
 import type { ArchitecturalRecipe } from './streetAppearance.js';
 import type { FacadeStyle } from './genericFacades.js';
@@ -236,9 +237,9 @@ export function bayLookFor(id: string, year: number | null, heightM: number, loo
     : (buurt?.shopfrontShare ?? buurt?.shopShare) !== undefined ? unitDraw(id, 'shop') < (buurt!.shopfrontShare ?? buurt!.shopShare!) : (h >>> 13) % 3 === 0;
   const shopKind = shopfront && shopfront !== 'quiet' ? shopfront : SHOP_KINDS[(h >>> 17) % 4];
   const palette = paletteFor(id, archetype, look);
-  const walls = PERIOD_WALLS[look][archetype];
+  const walls = periodWallList(look, archetype, PERIOD_WALLS[look][archetype]);
   if (walls) palette.wall = walls[(hashSeed(id) >>> 7) % walls.length];
-  if (traits?.wall) palette.wall = traits.wall;
+  if (traits?.wall) palette.wall = brickLiftOn() && look === 'photo' ? brickLiftV2ProfileWall(traits.wall) : traits.wall;
   if (vocab) { palette.wall = vocab.wall; if (vocab.accent) palette.accent = vocab.accent; }
   if (contemporary) palette.wall = lookHex(contemporary.wall, look);
   if (periodWall && look === 'photo') palette.wall = periodWall;

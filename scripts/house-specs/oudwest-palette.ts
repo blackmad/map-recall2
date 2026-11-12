@@ -27,6 +27,7 @@ import { measureStripWallFit } from '../../src/canalRecall/blockFace/stripPalett
 import { labHueChroma, rgbToLab } from '../../src/canalRecall/look/brickTone.ts';
 import { bayLookFor } from '../../src/canalRecall/bayLook.ts';
 import { buurtProfileAt } from '../../src/canalRecall/buurtProfiles/data.ts';
+import { brickLiftOn } from '../../src/canalRecall/look/brickLift.ts';
 import { cityLookTint } from '../../src/canalRecall/look/cityLook.ts';
 import { photoMatchedWallTint } from '../../src/canalRecall/look/chunkWallExposure.ts';
 import { PERIOD_WALLS, hexToRgb, rgbToHex, rgbToHsl, hslToRgb } from '../../src/canalRecall/look/palette.ts';
@@ -43,16 +44,16 @@ function mulberry32(seed: number) { return () => { seed |= 0; seed = (seed + 0x6
 
 // ---- the drawn colour: the runtime's own functions ------------------------------------------------------------
 
-export interface Drawn { archetype: string; periodHex: string; profileHex: string | null; wallHex: string; tint: string; drawn: string }
-/** What the game draws for a generic pand (no recipe, kit or measured wall): the period palette pick, or the buurt profile's wall, then the city look's tint and the sunny exposure gain. */
-export function drawnToday(pandId: string, year: number, heightM: number, lng: number, lat: number, wallOf?: (hex: string, archetype: string) => string, drawFn?: (wall: string) => string): Drawn {
+export interface Drawn { archetype: string; periodHex: string; periodDrawn: string; profileHex: string | null; wallHex: string; tint: string; drawn: string }
+/** What the game draws for a generic pand under the flag state of the process (BRICK_LIFT=v2: the v2 lift; else today) (no recipe, kit or measured wall): the period palette pick, or the buurt profile's wall, then the city look's tint and the sunny exposure gain. */
+export function drawnToday(pandId: string, year: number, heightM: number, lng: number, lat: number): Drawn {
   const id = pandId.startsWith('NL.IMBAG.Pand.') ? pandId : `NL.IMBAG.Pand.${pandId}`;
   const profile = buurtProfileAt(lng, lat);
   const plain = bayLookFor(id, year, heightM, 'photo', 'quiet', undefined, undefined, null);
   const withProfile = bayLookFor(id, year, heightM, 'photo', 'quiet', undefined, undefined, profile);
-  const wall = wallOf ? wallOf(withProfile.wallHex, withProfile.archetype) : withProfile.wallHex;
-  const tint = cityLookTint('brick', wall);
-  return { archetype: withProfile.archetype, periodHex: plain.wallHex, profileHex: withProfile.profileWall ?? null, wallHex: wall, tint, drawn: drawFn ? drawFn(wall) : photoMatchedWallTint('brick', tint, null, null) };
+  const wall = withProfile.wallHex;
+  const tint = cityLookTint('brick', wall, undefined, undefined, undefined, brickLiftOn());
+  return { archetype: withProfile.archetype, periodHex: plain.wallHex, periodDrawn: photoMatchedWallTint('brick', cityLookTint('brick', plain.wallHex, undefined, undefined, undefined, brickLiftOn()), null, null), profileHex: withProfile.profileWall ?? null, wallHex: wall, tint, drawn: photoMatchedWallTint('brick', tint, null, null) };
 }
 
 export const lch = (hex: string) => { const { L, chroma, hue } = labHueChroma(hexToRgb(hex)); return { L, C: chroma, h: hue }; };
