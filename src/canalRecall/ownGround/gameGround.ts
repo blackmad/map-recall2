@@ -255,11 +255,11 @@ function portalClipFlag(): boolean {
   if (typeof g.__canalRecallPortalClip === 'boolean') return g.__canalRecallPortalClip;
   return !/[?&]portalClip=(0|false|off)\b/.test(g.location?.search ?? '');
 }
-/** The crossing register (crossings.ts, lane G3): reviewed records replace inferred cuts, portals and rail spans in their zones. OFF by default since 2026-11-12 (integrator): the Sloterdijk-Carrascoplein zone reaches the Kimpoweg tram and adds a deck span there (check-rail-street kimpoweg-rails, user report #13); `?crossings=1` or `window.__canalRecallCrossings = true` turns it on; off restores the inference. */
+/** The crossing register (crossings.ts, lane G3): reviewed records replace inferred cuts, portals and rail spans in their zones. Default ON since G3 round 2 (2026-11-12): the Carrascoplein zone is cut to the square and a level guard keeps a street-level track under a deck from becoming a span, so the Kimpoweg tram pin (check-rail-street kimpoweg-rails, user report #13) passes with it on; `?crossings=0` or `window.__canalRecallCrossings = false` restores the inference. */
 export function crossingsFlag(): boolean {
   const g = globalThis as { __canalRecallCrossings?: boolean; location?: { search?: string } };
   if (typeof g.__canalRecallCrossings === 'boolean') return g.__canalRecallCrossings;
-  return /[?&]crossings=(1|true|on)\b/.test(g.location?.search ?? '');
+  return !/[?&]crossings=(0|false|off)\b/.test(g.location?.search ?? '');
 }
 /** The portal clip across a tunnel mouth's end line and along the walls up to it (tunnels.ts PortalClipOptions.ends, #269): on by default; `?portalEnds=0` or `window.__canalRecallPortalEnds = false` restores R5-C2's clip. */
 function portalEndsFlag(): boolean {
@@ -553,7 +553,7 @@ export class OwnGround {
   async load(root: string): Promise<void> {
     this.dispose(false);
     this.startup.loadAt ??= performance.now();
-    this.store = new GroundStore(httpFetchBytes(root), { parks: this.opts.parks, rails: this.opts.rails, roads: this.opts.roads, reliefTile: this.reliefLoader(root), prepareOnly: true, ...(groundPlanShareFlag() ? {} : { planShare: false }), ...(groundDeterministicFlag() ? {} : { deterministic: false }), ...(this.railRetryOn ? {} : { railRetry: false }), ...(bridgeGapsFlag() ? {} : { bridgeGaps: false }), ...(dryWayDecksFlag() ? { dryWayDecks: true } : {}), ...(railDecksFlag() ? {} : { railDecks: false }), ...(railSpansFlag() ? {} : { railSpans: false }), ...(roadSliversFlag() ? {} : { roadSlivers: false }), ...(portalEndsFlag() ? {} : { portalEnds: false }), ...(rampGapsFlag() ? {} : { rampGaps: false }), ...groundFixOptions(groundFixFlags()), ...(crossingsFlag() ? { crossings: true } : {}) });
+    this.store = new GroundStore(httpFetchBytes(root), { parks: this.opts.parks, rails: this.opts.rails, roads: this.opts.roads, reliefTile: this.reliefLoader(root), prepareOnly: true, ...(groundPlanShareFlag() ? {} : { planShare: false }), ...(groundDeterministicFlag() ? {} : { deterministic: false }), ...(this.railRetryOn ? {} : { railRetry: false }), ...(bridgeGapsFlag() ? {} : { bridgeGaps: false }), ...(dryWayDecksFlag() ? { dryWayDecks: true } : {}), ...(railDecksFlag() ? {} : { railDecks: false }), ...(railSpansFlag() ? {} : { railSpans: false }), ...(roadSliversFlag() ? {} : { roadSlivers: false }), ...(portalEndsFlag() ? {} : { portalEnds: false }), ...(rampGapsFlag() ? {} : { rampGaps: false }), ...groundFixOptions(groundFixFlags()), ...(crossingsFlag() ? {} : { crossings: false }) });
     this.ready = false;
     if (!/\/amsterdam\/?$/.test(root)) return;
     await this.store.init();

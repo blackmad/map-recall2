@@ -1,5 +1,16 @@
 # Canal Recall — what is built
 
+**Crossing register on, nightly driving harness fixed (2026-11-12, round 123).**
+- **G3 round 2 (a57e96a76).** The round-1 register was merged off for two reasons:
+  - **Size.** It imported 6.5 MB of authored crossings JSON (2.8 MB of it piers), so own-ground-game gzip went from 91 to 546 KB.
+  - **Kimpoweg.** The Sloterdijk-Carrascoplein zone reached the Kimpoweg tram, which runs at street level between the metro viaduct's columns, and turned it into a deck span (user report #13).
+- **The fixes:**
+  - The runtime now reads `data/crossings/runtime.json` (8 KB gzip). The authored files load only in scripts and tests (`crossingFiles.ts`). Bundles: game 102 KB and worker 161 KB gzip.
+  - The zone is cut to the square (lat 52.3868–52.3907).
+  - `crossingIndex.spans(…, levelAt)` refuses a span over a track at street level.
+- **Default is now on:** `?crossings=0` or `window.__canalRecallCrossings = false` restores the inference. Measured on before switching: kimpoweg-rails, sloterdijk-rail-bridge, zuid-path-underpass, bridge-gaps, tunnels and ground-spots.
+- **Nightly driving (cbd1f3db3).** The drives stub the ferry's water test (`isWater`). Near a pier it ran MapLibre `queryRenderedFeatures` about 100 ms per call, many times a frame: 84 % of the profile, and the answer depended on which tiles were drawn. The 120 pairs now finish in about 3 min with the same outcomes. Whether the same hitch hits players at piers is measured in TODO.
+
 **Wall colour W1, Winkelgalerij Raadhuisstraat, F1 S6b (2026-11-12, round 122).**
 - **W1 (e307e7479; `docs/house-line.md` §11):**
   - **Where the error was.** A per-stage measurement (`scripts/house-frames/wall-stages.ts`) put it at the source. Unmeasured pands drew buurt-profile swatches with no correlation to their photos (r 0.000, dE 0.21). Spec walls were within dL +0.02 of the photo; the "0.10 darker" was a reading error on 4 pands.

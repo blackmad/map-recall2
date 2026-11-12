@@ -3,6 +3,22 @@
   "notes": [
     {
       "date": "2026-11-12",
+      "title": "Tunnels, underpasses and rail bridges from a checked list",
+      "text": "Where roads dip under the ring, the A10 and the railways, the ground used to be shaped by guesswork from map data, which sometimes left a ramp in the wrong place or a deck over a tram that runs at street level. A hand-checked list of crossings, each compared with the aerial photo and a street panorama, now decides where the road goes under, where a deck spans it and where the tunnel mouth opens. It covers the IJtunnel, Piet Heintunnel, the ring roads and the railway underpasses.",
+      "where": [
+        4.9045,
+        52.3825
+      ],
+      "images": [
+        {
+          "src": "ui/2026-11-10-crossings/ijtunnel-north-approach.jpg",
+          "alt": "Review sheet for the IJtunnel north approach: aerial photo with the drawn crossing, beside a street panorama",
+          "caption": "How each crossing was checked: IJtunnel north approach"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-12",
       "title": "House walls take their colour from measured neighbours",
       "text": "Houses we haven't measured from a photo used to draw a guessed colour: white, slate grey or orange terracotta, which had nothing to do with the real street. They now borrow the measured wall colour of nearby houses from the same period, and measured walls keep their real, muted colour instead of being pushed toward orange-red. The city reads darker and browner, closer to the photos: on 114 photo comparisons the wall colour error fell by a third. Rows can look too uniform where nothing nearby has been measured; more variety is being tested next.",
       "images": [
