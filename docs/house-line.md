@@ -1761,10 +1761,14 @@ What the row taught:
 - **Recipe route by a full design.** A spec is recipe route when `toRecipe` validates it: every front needs `id`, `street`,
   `gable`, `storeys`, `bays`, `doorBay`, `basement`, `cornice`, `windows`, `hoist`, plus `roof.material` and a palette, and one
   dated receipt. `make-specs.py` writes an `author` receipt per field path dated by the photo's capture day.
-- **Wall colour under a low sun.** The 2025-01-08 captures (11:30, low winter sun) read every brick front orange and light. The
-  lane's correction (`wallcast.py`: hue -9 degrees, saturation x0.88, HSL lightness x0.80) was calibrated on Nieuwmarkt 38,
-  whose corrected colour passed the preview (dL -0.09) and matches the overcast 2023-02-20 panorama; overcast captures
-  (row 2) take a 10 % lift only. The preview's photo wall is sometimes the dark glass (182848): then the row's colour.
+- **Wall colour: the leaf-off vote, not a cast correction.** The 2025-01-08 captures (11:30, low winter sun) read every
+  brick front orange and light. A first correction calibrated on one house (`wallcast.py`, now retired) turned the whole
+  row orange-terracotta against dark-brown overcast photos, and the relative wall flag missed it because the neighbours
+  moved with it (ruling 2026-11-12: correctness first, no single-house calibration). The colour now comes from
+  `wall-vote.ts`: `house:crops --all-years --archive <scratch>` crops every capture year of the pand, and
+  `stripPalette.measureStripWallFit` + `wallFit.combineWallFits` vote one fit per November-March capture (the sunlit
+  2025-01-08 capture only when nothing else exists), body band under the 3DBAG eaves. Stucco and light painted fronts keep
+  their reading: the fit masks light walls as trim. Look at the after frames as a row, not only at the flags.
 - **`--wall`.** `house:preview` takes `pickWall`'s nearest-road wall unless told; on the square that is a side wall and the
   crop is then not found (`no house:crops crop`). Pass `--wall <bearing>deg`; a pand whose crop wall still does not match
   (171854 needed 113deg) prints no verdict and `house:stage` refuses it without `compare.png`.

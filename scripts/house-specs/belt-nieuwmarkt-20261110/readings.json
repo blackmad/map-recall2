@@ -3,7 +3,7 @@
  "0363100012182850": {
   "address": "Nieuwmarkt 38",
   "photo": "pand-crops/0363100012182850/front.jpg (pano b_20250108_1041_Track24_Sphere_00004, 2025-01-08)",
-  "date": "2025-01-08",
+  "date": "2023-02-20",
   "design": {
    "fronts": [
     {
@@ -48,7 +48,7 @@
     "evidence": "red pantile roof behind the cornice on the crop; 3DBAG LoD2.2 form kept"
    },
    "palette": {
-    "brick": "#b06a45",
+    "brick": "#54453b",
     "frame": "white",
     "door": "#2c3a33",
     "stone": "white",
@@ -63,7 +63,7 @@
    "fronts/0/cornice": "a tall plain white frieze (about 1.5 m) under the cornice",
    "fronts/0/windows": "white frames, dark sashes with a mullion and a transom: cross windows",
    "fronts/0/storeyHeights": "ground storey 4.5 m with its transom row (the install gate holds the top storey >= 2.3 m under the 3DBAG eaves)",
-   "palette/brick": "bare orange-red brick; the crop (warm low sun) reads #cc9867, drawn a step darker for the cast"
+   "palette/brick": "leaf-off wall vote over 2023-02-20, 2021-03-08, 2020-01-10, 2019-01-14 (wallFit, 4 captures)"
   },
   "limits": [
    {
@@ -75,7 +75,7 @@
  "0363100012171851": {
   "address": "Nieuwmarkt 6",
   "photo": "pand-crops/0363100012171851/front.jpg (pano b_20250108_1041_Track23, 2025-01-08)",
-  "date": "2025-01-08",
+  "date": "2021-03-08",
   "design": {
    "fronts": [
     {
@@ -123,7 +123,7 @@
     "evidence": "gable front: the roof follows the crown (house:crops crop)"
    },
    "palette": {
-    "brick": "#9a5a3e",
+    "brick": "#574c41",
     "frame": "white",
     "door": "#2c3a33",
     "stone": "#e6e2d8",
@@ -136,7 +136,7 @@
    "fronts/0/storeys": "shop storey and one window storey under the gable foot (STOREYS_DEFINITION)",
    "fronts/0/atticWindows": "two windows in the gable over one top light",
    "fronts/0/windowHead": "brick relieving arches over the first-storey and gable windows",
-   "palette/brick": "bare orange-red brick; crop reading #b18453 partly in shade, drawn as the row"
+   "palette/brick": "leaf-off wall vote over 2021-03-08, 2020-01-10, 2019-01-14 (wallFit, 3 captures)"
   },
   "limits": [
    {
@@ -203,7 +203,7 @@
  "0363100012182849": {
   "address": "Nieuwmarkt 12",
   "photo": "pand-crops/0363100012182849/front.jpg (pano None, 2025-01-08)",
-  "date": "2025-01-08",
+  "date": "2021-03-08",
   "design": {
    "fronts": [
     {
@@ -233,7 +233,7 @@
     }
    ],
    "palette": {
-    "brick": "#a15b3c",
+    "brick": "#7f6f5c",
     "frame": "white",
     "door": "#2c3a33",
     "stone": "#e6e2d8",
@@ -244,7 +244,7 @@
   "why": {
    "fronts/0/gable": "white bracketed cornice with a raised centre dormer under a rounded cap (register 3851/3852 cornice)",
    "fronts/0/windows": "two casements under a top light, white frames (cross: the casement-toplight bars do not fit the short lights)",
-   "palette/brick": "orange brick, crop reading #c7854e cast-corrected"
+   "palette/brick": "leaf-off wall vote over 2021-03-08, 2020-01-10, 2019-01-14 (wallFit, 3 captures)"
   },
   "limits": [
    {
@@ -268,7 +268,7 @@
  "0363100012182848": {
   "address": "Nieuwmarkt 14",
   "photo": "pand-crops/0363100012182848/front.jpg (pano None, 2025-01-08)",
-  "date": "2025-01-08",
+  "date": "2021-03-08",
   "design": {
    "fronts": [
     {
@@ -314,7 +314,7 @@
     "evidence": "gable front: the roof follows the crown (house:crops crop)"
    },
    "palette": {
-    "brick": "#9c5a3b",
+    "brick": "#675a47",
     "frame": "white",
     "door": "#2c3a33",
     "stone": "#e6e2d8",
@@ -325,7 +325,7 @@
    "fronts/0/gable": "bell gable with white scroll pieces (confirms register 3853, 1662)",
    "fronts/0/windows": "small-paned sashes, white frames",
    "fronts/0/hoist": "hoist beam over the gable light",
-   "palette/brick": "orange brick as the row (the preview read the dark glass as wall here)",
+   "palette/brick": "leaf-off wall vote over 2021-03-08, 2020-01-10, 2019-01-14 (wallFit, 3 captures)",
    "fronts/0/storeyHeights": "ground storey 5.5 m with its entresol, uppers 2.6 m"
   },
   "limits": [
@@ -342,7 +342,7 @@
  "0363100012182847": {
   "address": "Nieuwmarkt 16",
   "photo": "pand-crops/0363100012182847/front.jpg (pano None, 2025-01-08)",
-  "date": "2025-01-08",
+  "date": "2021-12-27",
   "design": {
    "fronts": [
     {
@@ -382,7 +382,7 @@
     "evidence": "gable front: the roof follows the crown (house:crops crop)"
    },
    "palette": {
-    "brick": "#ac643d",
+    "brick": "#443e3a",
     "frame": "white",
     "door": "#2c3a33",
     "stone": "#e6e2d8",
@@ -393,7 +393,7 @@
    "fronts/0/gable": "neck gable with white claw pieces and a hoist beam (confirms register 3854)",
    "fronts/0/bays": "three axes on both window storeys, one light in the neck",
    "fronts/0/windows": "cross windows, white frames",
-   "palette/brick": "orange brick, crop reading #cd9257 cast-corrected",
+   "palette/brick": "leaf-off wall vote over 2021-12-27, 2020-01-10, 2019-01-15 (wallFit, 3 captures)",
    "fronts/0/crownShoulderRise": "the claw pieces end near the eaves: the neck stands almost from the foot"
   },
   "limits": [
@@ -406,7 +406,7 @@
  "0363100012182858": {
   "address": "Nieuwmarkt 18",
   "photo": "pand-crops/0363100012182858/front.jpg (pano None, 2025-01-08)",
-  "date": "2025-01-08",
+  "date": "2023-03-13",
   "design": {
    "fronts": [
     {
@@ -447,7 +447,7 @@
     "evidence": "gable front: the roof follows the crown (house:crops crop)"
    },
    "palette": {
-    "brick": "#93573d",
+    "brick": "#443a33",
     "frame": "white",
     "door": "#2c3a33",
     "stone": "#e6e2d8",
@@ -458,7 +458,7 @@
    "fronts/0/gable": "broad bell gable with convex flanks and white scroll feet; the register says plain (3855), the photo wins",
    "fronts/0/atticWindows": "one hoist door with green shutters in the bell",
    "fronts/0/windows": "small-paned sashes, white frames",
-   "palette/brick": "orange-red brick, crop reading #bd7c47 cast-corrected"
+   "palette/brick": "leaf-off wall vote over 2023-03-13, 2021-12-27, 2020-01-10, 2019-01-15 (wallFit, 4 captures)"
   },
   "limits": [
    {
@@ -470,7 +470,7 @@
  "0363100012182857": {
   "address": "Nieuwmarkt 20-22",
   "photo": "pand-crops/0363100012182857/front.jpg (pano None, 2025-01-08)",
-  "date": "2025-01-08",
+  "date": "2021-12-27",
   "design": {
    "fronts": [
     {
@@ -529,7 +529,7 @@
     "evidence": "gable front: the roof follows the crown (house:crops crop)"
    },
    "palette": {
-    "brick": "#8c4a3a",
+    "brick": "#463830",
     "frame": "white",
     "door": "#2c3a33",
     "stone": "#ece6cf",
@@ -541,7 +541,7 @@
    "fronts/0/bays": "five axes on the first storey",
    "fronts/0/bands": "white speklagen through the whole front and gables",
    "fronts/0/windowHead": "white block arches (five blocks) over every window",
-   "palette/brick": "red brick between cream-white bands",
+   "palette/brick": "leaf-off wall vote over 2021-12-27, 2020-01-10, 2019-01-15 (wallFit, 3 captures)",
    "fronts/0/crownGroups": "two step gables over axes 0-1 and 3-4 (gable feet at 0-0.39 and 0.53-0.98 of the front on the crop); the valley between them over axis 2"
   },
   "limits": [
@@ -558,7 +558,7 @@
  "0363100012182856": {
   "address": "Nieuwmarkt 24",
   "photo": "pand-crops/0363100012182856/front.jpg (pano None, 2025-01-08)",
-  "date": "2025-01-08",
+  "date": "2021-03-08",
   "design": {
    "fronts": [
     {
@@ -607,7 +607,7 @@
     "evidence": "no roof shows over the cornice on the crop; the 3DBAG roof drew a pyramid over it"
    },
    "palette": {
-    "brick": "#9f5e3d",
+    "brick": "#554943",
     "frame": "white",
     "door": "#2c3a33",
     "stone": "#e6e2d8",
@@ -620,7 +620,7 @@
    "fronts/0/storeys": "cafe storey and three window storeys",
    "fronts/0/windows": "tall windows with a top light over a pair: T-windows",
    "fronts/0/storeyHeights": "storeys 4.5, 3.6, 3.1, 2.5 m on the crop",
-   "palette/brick": "red-brown brick, crop reading #c5884e cast-corrected",
+   "palette/brick": "leaf-off wall vote over 2021-03-08, 2020-01-10, 2019-01-15 (wallFit, 3 captures)",
    "fronts/0/cornice": "deep white entablature (frieze under a cornice on consoles): drawn as the frieze cornice"
   },
   "limits": [
@@ -633,7 +633,7 @@
  "0363100012182855": {
   "address": "Nieuwmarkt 26",
   "photo": "pand-crops/0363100012182855/front.jpg (pano None, 2025-01-08)",
-  "date": "2025-01-08",
+  "date": "2021-03-08",
   "design": {
    "fronts": [
     {
@@ -671,7 +671,7 @@
     "evidence": "no roof shows over the cornice on the crop; the 3DBAG roof drew a pyramid over it"
    },
    "palette": {
-    "brick": "#a2573a",
+    "brick": "#5c4b43",
     "frame": "white",
     "door": "#2c3a33",
     "stone": "#e6e2d8",
@@ -682,7 +682,7 @@
   "why": {
    "fronts/0/gable": "plain white cornice with a raised centre block",
    "fronts/0/bays": "two axes, one centred light in the top storey",
-   "palette/brick": "red brick, crop reading #d6894e cast-corrected and taken a step toward the row",
+   "palette/brick": "leaf-off wall vote over 2021-03-08, 2020-01-10, 2019-01-15 (wallFit, 3 captures)",
    "fronts/0/cornice": "deep white entablature (frieze under a cornice on consoles): drawn as the frieze cornice",
    "fronts/0/storeys": "three storeys under the cornice: the 3DBAG eaves (9.45 m) leave no room for the small top-storey light as a storey"
   },
@@ -696,7 +696,7 @@
  "0363100012182854": {
   "address": "Nieuwmarkt 28",
   "photo": "pand-crops/0363100012182854/front.jpg (pano None, 2025-01-08)",
-  "date": "2025-01-08",
+  "date": "2021-03-08",
   "design": {
    "fronts": [
     {
@@ -730,7 +730,7 @@
     "evidence": "no roof shows over the cornice on the crop; the 3DBAG roof drew a pyramid over it"
    },
    "palette": {
-    "brick": "#835640",
+    "brick": "#50473f",
     "frame": "white",
     "door": "#2c3a33",
     "stone": "#e6e2d8",
@@ -741,7 +741,7 @@
   "why": {
    "fronts/0/gable": "deep white cornice on consoles (register 3857/3858: consoles, XIXd)",
    "fronts/0/windows": "T-windows with stained-glass top lights on the first storey",
-   "palette/brick": "brown brick, crop reading #aa784a cast-corrected",
+   "palette/brick": "leaf-off wall vote over 2021-03-08, 2020-01-10, 2019-01-15 (wallFit, 3 captures)",
    "fronts/0/cornice": "deep white entablature (frieze under a cornice on consoles): drawn as the frieze cornice"
   },
   "limits": [
@@ -758,7 +758,7 @@
  "0363100012182853": {
   "address": "Nieuwmarkt 30",
   "photo": "pand-crops/0363100012182853/front.jpg (strip route, 40 px/m, 2025-01-08)",
-  "date": "2025-01-08",
+  "date": "2021-12-27",
   "design": {
    "fronts": [
     {
@@ -798,7 +798,7 @@
     "evidence": "gable front: the roof follows the crown (house:crops crop)"
    },
    "palette": {
-    "brick": "#9b573c",
+    "brick": "#53433d",
     "frame": "white",
     "door": "#2c3a33",
     "stone": "#e6e2d8",
@@ -807,7 +807,7 @@
   },
   "why": {
    "fronts/0/gable": "narrow neck gable with a pointed top (strip crop, top cut; 2021-03-08 panorama)",
-   "palette/brick": "red-brown brick, strip reading #c37f4a cast-corrected",
+   "palette/brick": "leaf-off wall vote over 2021-12-27, 2020-01-10, 2019-01-15 (wallFit, 3 captures)",
    "fronts/0/crownRise": "the neck rises about one storey over the eaves (2021-03-08 panorama)"
   },
   "limits": []
@@ -815,7 +815,7 @@
  "0363100012182852": {
   "address": "Nieuwmarkt 32-34",
   "photo": "pand-crops/0363100012182852/front.jpg (pano None, 2025-01-08)",
-  "date": "2025-01-08",
+  "date": "2021-03-08",
   "design": {
    "fronts": [
     {
@@ -882,7 +882,7 @@
     "evidence": "gable front: the roof follows the crown (house:crops crop)"
    },
    "palette": {
-    "brick": "#a65e3a",
+    "brick": "#564940",
     "frame": "white",
     "door": "#2c3a33",
     "stone": "#e6e2d8",
@@ -892,7 +892,7 @@
   "why": {
    "fronts/0/gable": "left house: neck gable with white scrolls; the register says cornice (3859/3860), the photo shows two necks",
    "fronts/1/gable": "right house: neck gable under a pointed cap, white scroll feet",
-   "palette/brick": "red-brown brick, crop reading #cb8a4e cast-corrected"
+   "palette/brick": "leaf-off wall vote over 2021-03-08, 2020-01-10, 2019-01-15 (wallFit, 3 captures)"
   },
   "limits": [
    {
@@ -908,7 +908,7 @@
  "0363100012182851": {
   "address": "Nieuwmarkt 36",
   "photo": "pand-crops/0363100012182851/front.jpg (pano None, 2025-01-08)",
-  "date": "2025-01-08",
+  "date": "2023-03-20",
   "design": {
    "fronts": [
     {
@@ -950,7 +950,7 @@
     "evidence": "gable front: the roof follows the crown (house:crops crop)"
    },
    "palette": {
-    "brick": "#8a6450",
+    "brick": "#564d44",
     "frame": "white",
     "door": "#2c3a33",
     "stone": "#e6e2d8",
@@ -961,7 +961,7 @@
    "fronts/0/gable": "neck gable with white carved claw pieces (register 3861: neck, gebeeldhouwd)",
    "fronts/0/bays": "two axes on the first and second storeys, three on the top storey",
    "fronts/0/windows": "small-paned 6-over-6 sashes, white frames",
-   "palette/brick": "pale brown brick, crop reading #a18264 cast-corrected and lifted to the 2025-07-03 panorama"
+   "palette/brick": "leaf-off wall vote over 2023-03-20, 2021-03-08, 2020-01-10, 2019-01-14 (wallFit, 4 captures)"
   },
   "limits": [
    {
@@ -1550,12 +1550,17 @@
    "address": "Geldersekade 123",
    "why": "crop blocked by a traffic-light gantry and sign (2022-04-26): the front cannot be read",
    "batch": 3
+  },
+  "0363100012171479": {
+   "address": "Geldersekade 117",
+   "batch": 3,
+   "why": "crop (2025-01-08) and the winter frame panoramas (2021-03-08) of the same BAG wall show different fronts; reading unconfirmed"
   }
  },
  "0363100012165690": {
   "address": "Geldersekade 60-62",
   "photo": "pand-crops/0363100012165690/front.jpg (2025-01-08)",
-  "date": "2025-01-08",
+  "date": "2023-03-27",
   "batch": 3,
   "design": {
    "fronts": [
@@ -1585,7 +1590,7 @@
     "material": "black-tile"
    },
    "palette": {
-    "brick": "#543623",
+    "brick": "#674332",
     "frame": "white",
     "door": "#2c3a33",
     "stone": "#e6e2d8",
@@ -1596,7 +1601,7 @@
    "fronts/0/gable": "deep overhanging eaves on brackets over a flat brick front (c. 1920)",
    "fronts/0/bays": "six lights a storey in two groups of three",
    "fronts/0/windows": "white casements with a toplight",
-   "palette/brick": "crop reading #4c3120, lift 10 %"
+   "palette/brick": "leaf-off wall vote over 2021-01-25, 2023-03-27 (wallFit, 2 captures)"
   },
   "limits": [
    {
@@ -2587,7 +2592,7 @@
  "0363100012171919": {
   "address": "Geldersekade 57",
   "photo": "pand-crops/0363100012171919/front.jpg (2025-01-08)",
-  "date": "2025-01-08",
+  "date": "2023-02-13",
   "batch": 3,
   "design": {
    "fronts": [
@@ -2625,7 +2630,7 @@
     "material": "black-tile"
    },
    "palette": {
-    "brick": "#3a302c",
+    "brick": "#3d3b37",
     "frame": "white",
     "door": "#2c3a33",
     "stone": "#e6e2d8",
@@ -2636,7 +2641,8 @@
   "why": {
    "fronts/0/gable": "white frieze cornice with three oval attic lights",
    "fronts/0/windows": "tall cross windows in white frames",
-   "fronts/0/storeys": "3 storeys under the 3DBAG eaves"
+   "fronts/0/storeys": "3 storeys under the 3DBAG eaves",
+   "palette/brick": "leaf-off wall vote over 2023-02-13, 2021-01-25, 2019-01-15, 2017-03-27 (wallFit, 4 captures)"
   },
   "limits": [
    {
@@ -2652,7 +2658,7 @@
  "0363100012171921": {
   "address": "Geldersekade 59",
   "photo": "pand-crops/0363100012171921/front.jpg (2025-01-08)",
-  "date": "2025-01-08",
+  "date": "2021-03-08",
   "batch": 3,
   "design": {
    "fronts": [
@@ -2693,7 +2699,7 @@
     "material": "black-tile"
    },
    "palette": {
-    "brick": "#3e3029",
+    "brick": "#3c3531",
     "frame": "white",
     "door": "#2c3a33",
     "stone": "#e6e2d8",
@@ -2703,7 +2709,8 @@
   },
   "why": {
    "fronts/0/gable": "white bracketed cornice and a carved dormer",
-   "fronts/0/windowHead": "segmental heads with white keystones"
+   "fronts/0/windowHead": "segmental heads with white keystones",
+   "palette/brick": "leaf-off wall vote over 2021-03-08, 2019-01-15, 2017-03-27 (wallFit, 3 captures)"
   },
   "limits": [
    {
@@ -2764,7 +2771,7 @@
  "0363100012182248": {
   "address": "Geldersekade 65",
   "photo": "pand-crops/0363100012182248/front.jpg (2025-01-08)",
-  "date": "2025-01-08",
+  "date": "2021-01-25",
   "batch": 3,
   "design": {
    "fronts": [
@@ -2792,7 +2799,7 @@
     "evidence": "neck gable"
    },
    "palette": {
-    "brick": "#45403c",
+    "brick": "#444544",
     "frame": "white",
     "door": "#2c3a33",
     "stone": "#e6e2d8",
@@ -2801,7 +2808,8 @@
   },
   "why": {
    "fronts/0/gable": "neck gable with carved white claw pieces",
-   "fronts/0/crownCap": "pediment over the neck"
+   "fronts/0/crownCap": "pediment over the neck",
+   "palette/brick": "leaf-off wall vote over 2021-01-25, 2019-01-15, 2017-03-27 (wallFit, 3 captures)"
   },
   "limits": [
    {
@@ -2813,7 +2821,7 @@
  "0363100012171696": {
   "address": "Geldersekade 85",
   "photo": "pand-crops/0363100012171696/front.jpg (2025-01-08)",
-  "date": "2025-01-08",
+  "date": "2022-12-15",
   "batch": 3,
   "design": {
    "fronts": [
@@ -2849,7 +2857,7 @@
     "evidence": "point gable"
    },
    "palette": {
-    "brick": "#444338",
+    "brick": "#424244",
     "frame": "white",
     "door": "#2c3a33",
     "stone": "#e6e2d8",
@@ -2860,7 +2868,7 @@
    "fronts/0/gable": "plain point (warehouse) gable with white verges",
    "fronts/0/windows": "wide gridded windows over the two upper storeys",
    "fronts/0/atticWindows": "one small hoist hatch in the gable",
-   "palette/brick": "crop reading #3e3d33, lift 10 %"
+   "palette/brick": "leaf-off wall vote over 2022-12-15, 2021-03-08, 2019-01-15 (wallFit, 3 captures)"
   },
   "limits": []
  },
@@ -3033,7 +3041,7 @@
  "0363100012182473": {
   "address": "Geldersekade 107",
   "photo": "pand-crops/0363100012182473/front.jpg (2025-01-08)",
-  "date": "2025-01-08",
+  "date": "2023-02-13",
   "batch": 3,
   "design": {
    "fronts": [
@@ -3057,7 +3065,7 @@
     "material": "red-tile"
    },
    "palette": {
-    "brick": "#9a7a50",
+    "brick": "#393531",
     "frame": "#e6e2d8",
     "door": "#2c3a33",
     "stone": "#e6e2d8",
@@ -3066,7 +3074,7 @@
   },
   "why": {
    "fronts/0/gable": "plain eaves under a red pantile roof",
-   "palette/brick": "yellow-brown brick",
+   "palette/brick": "leaf-off wall vote over 2023-02-13, 2021-12-27, 2020-01-10, 2019-01-14 (wallFit, 4 captures)",
    "roof/material": "red pantiles"
   },
   "limits": []
@@ -3128,7 +3136,7 @@
  "0363100012182403": {
   "address": "Geldersekade 111",
   "photo": "pand-crops/0363100012182403/front.jpg (2025-01-08)",
-  "date": "2025-01-08",
+  "date": "2023-01-30",
   "batch": 3,
   "design": {
    "fronts": [
@@ -3173,7 +3181,7 @@
     "material": "black-tile"
    },
    "palette": {
-    "brick": "#4a3834",
+    "brick": "#6b5b54",
     "frame": "white",
     "door": "#2c3a33",
     "stone": "#e6e2d8",
@@ -3185,81 +3193,12 @@
    "fronts/0/bands": "white stone bands at sill and head",
    "fronts/0/windowHead": "segmental heads with white keystones",
    "fronts/0/gable": "white bracketed cornice with a dormer",
-   "palette/brick": "crop reading #5f493f, wallcast (2025-01-08 low sun)"
+   "palette/brick": "leaf-off wall vote over 2023-01-30, 2021-03-08, 2020-01-10, 2019-01-14 (wallFit, 4 captures)"
   },
   "limits": [
    {
     "component": "dormer",
     "what": "1 dormer(s) with a pediment head over the cornice: dropped, a pediment dormer leaves 3.8 m of open edge in the install gate"
-   }
-  ]
- },
- "0363100012171479": {
-  "address": "Geldersekade 117",
-  "photo": "pand-crops/0363100012171479/front.jpg (2025-01-08)",
-  "date": "2025-01-08",
-  "batch": 3,
-  "design": {
-   "fronts": [
-    {
-     "id": "front0",
-     "street": "Geldersekade",
-     "basement": "none",
-     "hoist": false,
-     "gable": "cornice",
-     "cornice": "simple",
-     "storeys": 4,
-     "bays": 3,
-     "doorBay": 0,
-     "tallGround": true,
-     "windows": "casement-toplight",
-     "bayWindows": {
-      "bay": 1,
-      "storeys": [
-       1
-      ],
-      "cap": "flat"
-     },
-     "balconies": {
-      "storeys": [
-       2
-      ],
-      "bays": [
-       1
-      ]
-     },
-     "shopfront": {
-      "colour": "#e6e2d8",
-      "fascia": true,
-      "entrance": "left",
-      "stallriser": "low",
-      "displayWindows": 1,
-      "evidence": "white restaurant front with red Chinese lettering, 2025-01-08"
-     },
-     "windowShare": 0.62,
-     "windowHeights": "diminishing"
-    }
-   ],
-   "roof": {
-    "material": "black-tile"
-   },
-   "palette": {
-    "brick": "#574844",
-    "frame": "white",
-    "door": "#2c3a33",
-    "stone": "#e6e2d8",
-    "wallMaterial": "brick"
-   }
-  },
-  "why": {
-   "fronts/0/bayWindows": "a white timber bay on the first storey, middle axis",
-   "fronts/0/balconies": "a white balcony on top of it",
-   "palette/brick": "crop reading #6f5d53, wallcast (2025-01-08 low sun)"
-  },
-  "limits": [
-   {
-    "component": "crown",
-    "what": "a round-arched balcony door in the parapet over the middle axis"
    }
   ]
  }

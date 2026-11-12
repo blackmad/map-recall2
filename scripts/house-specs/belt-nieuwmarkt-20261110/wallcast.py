@@ -1,4 +1,7 @@
-"""The cast correction this lane applies to a house:crops wall reading taken in the 2025-01-08 low winter sun (warm cast):
+"""RETIRED 2026-11-12 (integrator ruling, correctness first): it turned the Nieuwmarkt row orange-terracotta against
+dark-brown overcast photos. Wall colours now come from wall-vote.ts (leaf-off wallFit vote). Kept for the record only.
+
+The cast correction this lane applies to a house:crops wall reading taken in the 2025-01-08 low winter sun (warm cast):
 hue 9 degrees back toward red, saturation x0.88, lightness x0.80 (HSL). Calibrated on Nieuwmarkt 38 (182850), whose
 corrected colour #b06a45 passed the preview against the crop (dL -0.09) and matches the overcast 2023-02-20 panorama."""
 import colorsys, sys

@@ -218,3 +218,25 @@ f['storeys'] = 4; f['storeyHeights'] = [1.15, 1.0, 1.0, 1.0]; f.pop('windowHeigh
 R['0363100012182309']['design'].pop('roof')
 lim('182309', 'roof', 'recipe route held: the 3DBAG eaves (6.8 m) leave under 2.3 m a storey for the three upper storeys on the crop; staged as a generic spec')
 json.dump(R, open(P, 'w'), indent=1, ensure_ascii=False)
+# ---- pass 5 (ruling 2026-11-12): 171479 held: the 2025-01-08 crop (a white restaurant front with a first-storey bay) and
+# both winter frame panoramas of the same BAG wall (2021-03-08, 2022) show different fronts; until one is confirmed the
+# reading cannot be trusted.
+if '0363100012171479' in R:
+    v = R.pop('0363100012171479')
+    R.setdefault('_held', {})['0363100012171479'] = {'address': v['address'], 'batch': 3,
+        'why': 'crop (2025-01-08) and the winter frame panoramas (2021-03-08) of the same BAG wall show different fronts; reading unconfirmed'}
+json.dump(R, open(P, 'w'), indent=1, ensure_ascii=False)
+# ---- wall colours (ruling 2026-11-12, correctness first): the leaf-off vote replaces the low-sun correction ----
+# wall-vote.ts: wallFit over every November-March capture year of the pand (the 2025-01-08 sunlit capture votes only when
+# nothing else exists), one vote per capture, no single-house calibration. Stucco/painted fronts keep their reading (the
+# wall fit masks light walls as trim).
+VP = os.path.join(here, 'wall-votes.json')
+if os.path.exists(VP):
+    for p, v in json.load(open(VP)).items():
+        r = R.get(p)
+        if not (isinstance(r, dict) and 'design' in r and v.get('hex')): continue
+        if r['design']['palette'].get('wallMaterial', 'brick') != 'brick': continue
+        r['design']['palette']['brick'] = v['hex']
+        r['why']['palette/brick'] = 'leaf-off wall vote over ' + ', '.join(x['date'] for x in v['votes']) + f" (wallFit, {len(v['votes'])} captures)"
+        r['date'] = max(x['date'] for x in v['votes'])
+    json.dump(R, open(P, 'w'), indent=1, ensure_ascii=False)

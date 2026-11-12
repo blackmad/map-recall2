@@ -87,7 +87,7 @@
  {
   "pandId": "0363100012171858",
   "key": "geldersekade-132-171858",
-  "bearing": 267
+  "bearing": 180
  },
  {
   "pandId": "0363100012171919",
@@ -127,7 +127,7 @@
  {
   "pandId": "0363100012171697",
   "key": "geldersekade-93-171697",
-  "bearing": 214
+  "bearing": 286
  },
  {
   "pandId": "0363100012182473",
@@ -142,11 +142,6 @@
  {
   "pandId": "0363100012182403",
   "key": "geldersekade-111-182403",
-  "bearing": 286
- },
- {
-  "pandId": "0363100012171479",
-  "key": "geldersekade-117-171479",
   "bearing": 286
  }
 ]

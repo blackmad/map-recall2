@@ -46,7 +46,7 @@
    "evidence": "red pantile roof behind the cornice on the crop; 3DBAG LoD2.2 form kept"
   },
   "palette": {
-   "brick": "#b06a45",
+   "brick": "#54453b",
    "frame": "white",
    "door": "#2c3a33",
    "stone": "white",
@@ -59,145 +59,145 @@
    "source": "author",
    "confidence": 0.85,
    "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182850/front.jpg (pano b_20250108_1041_Track24_Sphere_00004, 2025-01-08)",
-   "at": "2025-01-08"
+   "at": "2023-02-20"
   },
   "fronts/0/street": {
    "source": "author",
    "confidence": 0.85,
    "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182850/front.jpg (pano b_20250108_1041_Track24_Sphere_00004, 2025-01-08)",
-   "at": "2025-01-08"
+   "at": "2023-02-20"
   },
   "fronts/0/gable": {
    "source": "author",
    "confidence": 0.85,
    "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182850/front.jpg (pano b_20250108_1041_Track24_Sphere_00004, 2025-01-08): straight white cornice front (register 3862: lijstgevel eind XVIII-begin XIX)",
-   "at": "2025-01-08"
+   "at": "2023-02-20"
   },
   "fronts/0/storeys": {
    "source": "author",
    "confidence": 0.85,
    "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182850/front.jpg (pano b_20250108_1041_Track24_Sphere_00004, 2025-01-08): ground pui plus three window storeys (STOREYS_DEFINITION)",
-   "at": "2025-01-08"
+   "at": "2023-02-20"
   },
   "fronts/0/bays": {
    "source": "author",
    "confidence": 0.85,
    "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182850/front.jpg (pano b_20250108_1041_Track24_Sphere_00004, 2025-01-08): three window axes on every upper storey",
-   "at": "2025-01-08"
+   "at": "2023-02-20"
   },
   "fronts/0/doorBay": {
    "source": "author",
    "confidence": 0.85,
    "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182850/front.jpg (pano b_20250108_1041_Track24_Sphere_00004, 2025-01-08)",
-   "at": "2025-01-08"
+   "at": "2023-02-20"
   },
   "fronts/0/tallGround": {
    "source": "author",
    "confidence": 0.85,
    "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182850/front.jpg (pano b_20250108_1041_Track24_Sphere_00004, 2025-01-08)",
-   "at": "2025-01-08"
+   "at": "2023-02-20"
   },
   "fronts/0/basement": {
    "source": "author",
    "confidence": 0.85,
    "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182850/front.jpg (pano b_20250108_1041_Track24_Sphere_00004, 2025-01-08)",
-   "at": "2025-01-08"
+   "at": "2023-02-20"
   },
   "fronts/0/cornice": {
    "source": "author",
    "confidence": 0.85,
    "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182850/front.jpg (pano b_20250108_1041_Track24_Sphere_00004, 2025-01-08): a tall plain white frieze (about 1.5 m) under the cornice",
-   "at": "2025-01-08"
+   "at": "2023-02-20"
   },
   "fronts/0/hoist": {
    "source": "author",
    "confidence": 0.85,
    "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182850/front.jpg (pano b_20250108_1041_Track24_Sphere_00004, 2025-01-08)",
-   "at": "2025-01-08"
+   "at": "2023-02-20"
   },
   "fronts/0/windows": {
    "source": "author",
    "confidence": 0.85,
    "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182850/front.jpg (pano b_20250108_1041_Track24_Sphere_00004, 2025-01-08): white frames, dark sashes with a mullion and a transom: cross windows",
-   "at": "2025-01-08"
+   "at": "2023-02-20"
   },
   "fronts/0/windowSurround": {
    "source": "author",
    "confidence": 0.85,
    "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182850/front.jpg (pano b_20250108_1041_Track24_Sphere_00004, 2025-01-08)",
-   "at": "2025-01-08"
+   "at": "2023-02-20"
   },
   "fronts/0/storeyHeights": {
    "source": "author",
    "confidence": 0.85,
    "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182850/front.jpg (pano b_20250108_1041_Track24_Sphere_00004, 2025-01-08): ground storey 4.5 m with its transom row (the install gate holds the top storey >= 2.3 m under the 3DBAG eaves)",
-   "at": "2025-01-08"
+   "at": "2023-02-20"
   },
   "fronts/0/shopfront": {
    "source": "author",
    "confidence": 0.85,
    "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182850/front.jpg (pano b_20250108_1041_Track24_Sphere_00004, 2025-01-08)",
-   "at": "2025-01-08"
+   "at": "2023-02-20"
   },
   "fronts/0/windowShare": {
    "source": "author",
    "confidence": 0.85,
    "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182850/front.jpg (pano b_20250108_1041_Track24_Sphere_00004, 2025-01-08)",
-   "at": "2025-01-08"
+   "at": "2023-02-20"
   },
   "fronts/0/windowHeights": {
    "source": "author",
    "confidence": 0.85,
    "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182850/front.jpg (pano b_20250108_1041_Track24_Sphere_00004, 2025-01-08)",
-   "at": "2025-01-08"
+   "at": "2023-02-20"
   },
   "roof/material": {
    "source": "author",
    "confidence": 0.85,
    "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182850/front.jpg (pano b_20250108_1041_Track24_Sphere_00004, 2025-01-08)",
-   "at": "2025-01-08"
+   "at": "2023-02-20"
   },
   "roof/evidence": {
    "source": "author",
    "confidence": 0.85,
    "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182850/front.jpg (pano b_20250108_1041_Track24_Sphere_00004, 2025-01-08)",
-   "at": "2025-01-08"
+   "at": "2023-02-20"
   },
   "palette/brick": {
    "source": "author",
    "confidence": 0.85,
-   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182850/front.jpg (pano b_20250108_1041_Track24_Sphere_00004, 2025-01-08): bare orange-red brick; the crop (warm low sun) reads #cc9867, drawn a step darker for the cast",
-   "at": "2025-01-08"
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182850/front.jpg (pano b_20250108_1041_Track24_Sphere_00004, 2025-01-08): leaf-off wall vote over 2023-02-20, 2021-03-08, 2020-01-10, 2019-01-14 (wallFit, 4 captures)",
+   "at": "2023-02-20"
   },
   "palette/frame": {
    "source": "author",
    "confidence": 0.85,
    "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182850/front.jpg (pano b_20250108_1041_Track24_Sphere_00004, 2025-01-08)",
-   "at": "2025-01-08"
+   "at": "2023-02-20"
   },
   "palette/door": {
    "source": "author",
    "confidence": 0.85,
    "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182850/front.jpg (pano b_20250108_1041_Track24_Sphere_00004, 2025-01-08)",
-   "at": "2025-01-08"
+   "at": "2023-02-20"
   },
   "palette/stone": {
    "source": "author",
    "confidence": 0.85,
    "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182850/front.jpg (pano b_20250108_1041_Track24_Sphere_00004, 2025-01-08)",
-   "at": "2025-01-08"
+   "at": "2023-02-20"
   },
   "palette/cornice": {
    "source": "author",
    "confidence": 0.85,
    "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182850/front.jpg (pano b_20250108_1041_Track24_Sphere_00004, 2025-01-08)",
-   "at": "2025-01-08"
+   "at": "2023-02-20"
   },
   "palette/wallMaterial": {
    "source": "author",
    "confidence": 0.85,
    "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182850/front.jpg (pano b_20250108_1041_Track24_Sphere_00004, 2025-01-08)",
-   "at": "2025-01-08"
+   "at": "2023-02-20"
   }
  },
  "schemaLimits": [
