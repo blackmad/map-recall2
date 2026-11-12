@@ -1,5 +1,11 @@
 # Canal Recall — what is built
 
+**CI split into three parallel check:canal jobs; tree-crown check no longer needs a local-only commit (2026-11-12).**
+- Canal CI's single check:canal job passed its 45-minute limit from 2026-11-10 midday: check:rail-street alone takes ~17 min on the runner, and test:own-ground / test:building-recipes grew 50–80 % with the ground and house-line work. Every main run was cancelled, so Pages did not deploy after a332381a9 (2026-11-10 08:39 UTC).
+- `check:canal` is now `check:canal:core` (check-canal.ts) && `check:canal:rail` (bridge-gaps, rail-street) && `check:canal:rest`; CI runs the three as a matrix. Local behaviour is unchanged.
+- The runs that did finish failed in test:trees: `check-tree-crown-orientation.mjs` read its baseline with `git show 108ccf65`, a commit that exists only in local clones since the 2026-10-22 history rewrite. The two baseline files are vendored under `scripts/fixtures/tree-crown-orientation/`.
+- Follow-up: why check:rail-street takes 17+ min (TODO P1).
+
 **Spec walls released with a pale-warm guard; Kinkerstraat re-measured; held pands draw brick (2026-11-10, #345: H9f r2 165c6f544, H9g 68ef6a33d + cae4f8756).**
 - **H9f r2 (the flip):** `SPEC_WALLS_HELD = false`; `holds.test.ts` changed in the same commit.
   - `paleWarmHeld` (wallColour.ts) judges the drawn colour: OKLab L > 0.60 with hue 35–70° on a brick or unknown wall keeps the period colour. Stucco/light finishes and reader families white/grey/buff pass.

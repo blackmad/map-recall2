@@ -22,6 +22,8 @@ The queue stalled twice on 2026-11-12 (13:59 nesting deadlock; 14:02 three owner
 - Pre-push hook runs the e2e smoke only for pushes to `main`; lane-branch pushes take no browser slot.
 - `house:frames` runs several lanes' lists in one browser session, with cached photo cuts.
 
+- **CI speed (P1):** `check:rail-street` takes ~17 min on the GitHub runner and ~40 min locally under load; find what it rebuilds and narrow it to its pinned cells. `test:own-ground` (582 s) and `test:building-recipes` (245 s) are next. Confirm the first green split CI run and Pages deploy.
+
 ## Own-look buurten in the canal belt (P0, user 2026-11-10)
 
 The user: "we need to focus on buurts in the canal belt and just outside". Belt and inner-ring lanes run in parallel, and Opus reviews every sheet before merge.
