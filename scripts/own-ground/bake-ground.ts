@@ -27,6 +27,8 @@ Bakes ground v2 cells (GRD2, gzip) into a staging directory and writes a report.
   --tol-road=M       Steiner tolerance on road classes, metres (default 0.05)
   --no-kerb          no kerb band (rank 3)
   --sliver-rounds=N  rounds splitting a sliver's longest edge (aspect > 20, area > 0.05 m²)
+  --refine-rounds=N  relief refinement rounds
+  --refine-lattice=M relief refinement samples each triangle on a lattice this fine (metres; 0: the centroid only)
   --out=DIR          staging dir (default artifacts/ground-v2/staging; a variant: artifacts/ground-v2/variants/<name>)
   --changed          skip cells whose meta inputs and code hashes match
   --shard=i/n        bake every nth cell starting at i (run n processes for parallelism)
@@ -48,7 +50,7 @@ await store.init();
 
 const lod = (Number(opt('lod') ?? 0) === 1 ? 1 : 0) as 0 | 1;
 const base: SurfaceBakeOptions = lod === 0 ? LOD0_OPTIONS : LOD1_OPTIONS;
-const bakeOpt: SurfaceBakeOptions = { ...base, tolFlatM: Number(opt('tol-flat') ?? base.tolFlatM), tolRoadM: Number(opt('tol-road') ?? base.tolRoadM), sliverRounds: Number(opt('sliver-rounds') ?? base.sliverRounds) };
+const bakeOpt: SurfaceBakeOptions = { ...base, tolFlatM: Number(opt('tol-flat') ?? base.tolFlatM), tolRoadM: Number(opt('tol-road') ?? base.tolRoadM), sliverRounds: Number(opt('sliver-rounds') ?? base.sliverRounds), refineRounds: Number(opt('refine-rounds') ?? base.refineRounds), refineLatticeM: Number(opt('refine-lattice') ?? base.refineLatticeM) };
 const out = opt('out') ?? 'artifacts/ground-v2/staging';
 const write = !flag('no-write');
 

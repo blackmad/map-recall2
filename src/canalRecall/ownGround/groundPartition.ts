@@ -80,13 +80,19 @@ export interface SurfaceBakeOptions {
   maxEdgeM: number;
   /** Rounds after the relief rounds that only split slivers. */
   sliverRounds: number;
+  /**
+   * Relief refinement samples each triangle on a barycentric lattice this fine (metres; 0: the centroid only) and
+   * inserts its worst point. The audit samples the drawn surface every 0.5 m: 84 % of the first bake's float over 5 cm
+   * lay inside triangles of 16 m² and more whose centroid was within tolerance (-4_-3, 2026-11-12).
+   */
+  refineLatticeM: number;
 }
 
 /** The audit's sliver: aspect (longest edge / height, l² / 2A) over SLIVER_ASPECT with area over SLIVER_M2. */
 export const SLIVER_ASPECT = 20, SLIVER_M2 = 0.05;
 
-export const LOD0_OPTIONS: SurfaceBakeOptions = { tolRoadM: 0.05, tolFlatM: 0.05, minSquareM: 2, maxSquareM: 32, edgeMinM: 1, seamGridM: 2, refineRounds: 3, simplifyM: 0, steps: true, steinerClearM: 0.3, maxEdgeM: 64, sliverRounds: 6 };
-export const LOD1_OPTIONS: SurfaceBakeOptions = { tolRoadM: 0.15, tolFlatM: 0.15, minSquareM: 4, maxSquareM: 64, edgeMinM: 2, seamGridM: 8, refineRounds: 1, simplifyM: 0.5, steps: false, steinerClearM: 0.6, maxEdgeM: 32, sliverRounds: 2 };
+export const LOD0_OPTIONS: SurfaceBakeOptions = { tolRoadM: 0.05, tolFlatM: 0.05, minSquareM: 2, maxSquareM: 32, edgeMinM: 1, seamGridM: 2, refineRounds: 3, simplifyM: 0, steps: true, steinerClearM: 0.3, maxEdgeM: 64, sliverRounds: 6, refineLatticeM: 0 };
+export const LOD1_OPTIONS: SurfaceBakeOptions = { tolRoadM: 0.15, tolFlatM: 0.15, minSquareM: 4, maxSquareM: 64, edgeMinM: 2, seamGridM: 8, refineRounds: 1, simplifyM: 0.5, steps: false, steinerClearM: 0.6, maxEdgeM: 32, sliverRounds: 2, refineLatticeM: 0 };
 
 /** A vertex this close to an edge's interior (u16 units, ~7.6 mm) splits it. */
 export const NODE_TOL_U = 0.5;
@@ -626,9 +632,22 @@ export function bakeSurface(input: SurfaceBakeInput, opt: SurfaceBakeOptions): B
         }
       }
       if (!relief) continue;
-      const cu = (P[2 * a] + P[2 * b] + P[2 * c]) / 3, cv = (P[2 * a + 1] + P[2 * b + 1] + P[2 * c + 1]) / 3;
+      const za = hAt(P[2 * a], P[2 * a + 1]), zb = hAt(P[2 * b], P[2 * b + 1]), zc = hAt(P[2 * c], P[2 * c + 1]);
+      let cu = (P[2 * a] + P[2 * b] + P[2 * c]) / 3, cv = (P[2 * a + 1] + P[2 * b + 1] + P[2 * c + 1]) / 3;
+      let e = Math.abs(input.height(gx(cu), gy(cv)) - (za + zb + zc) / 3);
+      if (opt.refineLatticeM > 0) {
+        // The worst point of a barycentric lattice (interior points only: the vertices are exact, an edge point is
+        // shared with the neighbour, which samples it too).
+        const L = Math.max(Math.hypot(P[2 * b] - P[2 * a], P[2 * b + 1] - P[2 * a + 1]), Math.hypot(P[2 * c] - P[2 * b], P[2 * c + 1] - P[2 * b + 1]), Math.hypot(P[2 * a] - P[2 * c], P[2 * a + 1] - P[2 * c + 1])) * mPerU;
+        const n = Math.min(16, Math.ceil(L / opt.refineLatticeM));
+        for (let i = 1; i < n; i++) for (let j = 1; i + j < n; j++) {
+          const wa = i / n, wb = j / n, wc = 1 - wa - wb;
+          const pu = wa * P[2 * a] + wb * P[2 * b] + wc * P[2 * c], pv = wa * P[2 * a + 1] + wb * P[2 * b + 1] + wc * P[2 * c + 1];
+          const ei = Math.abs(input.height(gx(pu), gy(pv)) - (wa * za + wb * zb + wc * zc));
+          if (ei > e) { e = ei; cu = pu; cv = pv; }
+        }
+      }
       const ru = Math.round(cu), rv = Math.round(cv);
-      const e = Math.abs(input.height(gx(cu), gy(cv)) - (hAt(P[2 * a], P[2 * a + 1]) + hAt(P[2 * b], P[2 * b + 1]) + hAt(P[2 * c], P[2 * c + 1])) / 3);
       if (!(e > tolOf(g))) continue;
       if (ru <= 0 || ru >= Q || rv <= 0 || rv >= Q || id.has(ru * 65536 + rv) || nearEdge(ru, rv, 0.1 * uPerM)) continue;
       adds.push(ru, rv);

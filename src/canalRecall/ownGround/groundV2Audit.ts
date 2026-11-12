@@ -1,11 +1,17 @@
 // Ground v2 audit (lane G2a #372): the plan's G0 measures read on baked GRD2 cells, plus the seam comparison.
 // Design docs/handoffs/ground-v2-design-20261110.md, "Gates". Pure: decoded cells in, numbers out.
 //
-//   sliver       surface triangle with aspect > 20 and area > 0.05 m²
+//   sliver       surface triangle with aspect > 20 and area > 0.05 m² (G0's definition), split by what is beside it:
+//                internal: the same layer at the same level across all three edges (a triangulation detail: shared
+//                vertices and world-space uv = position.xy draw it like any other triangulation of the region);
+//                edge: the same layer and level across at least one of its two long edges (the material continues);
+//                strip: neither long edge has the same layer and level beside it (the material is this triangle wide)
 //   overlap      plan area where two surface triangles cover the same point (a partition has none):
 //                z-fight when their heights there are within ±5 mm (and layers differ), poke-through when apart by more
 //   crack        plan area no surface triangle covers, off the water
-//   float        surface height minus (relief + the level's lift), sampled; p99.9, max, area over 5 cm and over 10 cm
+//   float        surface height minus (relief + the level's lift), sampled; p99.9, max, area over 5 cm and over 10 cm,
+//                off the step lines: a sample within stepLineM of a step strip's plan line (a kerb or wall the mesh draws
+//                as a vertical face, where 2 m AHN smears the same step over a metre) is counted apart (floatStep*)
 //   seams        every seam vertex (u or v at the edge, z, normal) identical to the neighbour's, per baked pair
 
 import type { Rect } from './groundStore.js';
@@ -22,15 +28,25 @@ export interface AuditInput {
   step?: number;
   /** Only this disc (game frame, metres): a named place's window. Triangles count by centroid, samples by position. */
   window?: { x: number; y: number; r: number };
+  /** Float samples this close to a step strip's plan line are the step's, not the surface's (default STEP_LINE_M). */
+  stepLineM?: number;
 }
+
+/** The float gate's step-line band, metres: half the 2 m AHN cell the relief is read from (a step smears over it). */
+export const STEP_LINE_M = 1;
 
 export interface CellAudit {
   slivers: number; sliverM2: number; sliversByLayer: Record<string, number>;
+  /** Slivers by what is beside them (see the header): internal + edge + strip = slivers. */
+  sliversInternal: number; sliversEdge: number; sliversStrip: number; stripAt: [number, number, string][];
   overlapM2: number; zFightM2: number; pokeM2: number;
   crackM2: number; crackAt: [number, number][];
   /** Uncovered within 5 cm of the water: the shoreline on the 15 mm grid. */
   shoreM2: number;
+  /** Off the step lines (the gate). */
   floatP999Mm: number; floatMaxMm: number; floatOver5cmM2: number; floatOver10cmM2: number;
+  /** Within stepLineM of a step line: reported, not gated. */
+  floatStepOver5cmM2: number; floatStepMaxMm: number;
   /** Where the float exceeds 10 cm (first few, game frame). */
   floatAt: [number, number, number][];
   triangles: number; stepTriangles: number;
@@ -47,6 +63,15 @@ export function auditCell(a: AuditInput): CellAudit {
   const X = new Float64Array(cell.u.length), Y = new Float64Array(cell.u.length);
   for (let i = 0; i < cell.u.length; i++) { X[i] = unitX(rect, cell.u[i]); Y[i] = unitY(rect, cell.v[i]); }
   let slivers = 0, sliverM2 = 0, triangles = 0, stepTriangles = 0; const sliversByLayer: Record<string, number> = {};
+  // Plan adjacency of the surface triangles: edge (by vertex ids, so another level's copy is not "beside") → triangles.
+  const edgeTris = new Map<number, number[]>(), layerOfTri = new Map<number, string>();
+  const ek = (p: number, q: number) => (p < q ? p * 4294967296 + q : q * 4294967296 + p);
+  for (const g of cell.groups) if (g.kind === 0) for (let t = g.first; t < g.first + g.count; t++) {
+    layerOfTri.set(t, g.layer);
+    for (let j = 0; j < 3; j++) { const k = ek(cell.indices[3 * t + j], cell.indices[3 * t + (j + 1) % 3]); const l = edgeTris.get(k); if (l) l.push(t); else edgeTris.set(k, [t]); }
+  }
+  const sameBeside = (t: number, p: number, q: number) => (edgeTris.get(ek(p, q)) ?? []).some(o => o !== t && layerOfTri.get(o) === layerOfTri.get(t));
+  let sliversInternal = 0, sliversEdge = 0, sliversStrip = 0; const stripAt: [number, number, string][] = [];
   for (const g of cell.groups) {
     if (g.kind === 1) { stepTriangles += g.count; continue; }
     for (let t = g.first; t < g.first + g.count; t++) {
@@ -56,7 +81,13 @@ export function auditCell(a: AuditInput): CellAudit {
       const inside = inWin((ax + bx + cx) / 3, (ay + by + cy) / 3);
       if (inside) triangles++;
       const l = Math.max(Math.hypot(bx - ax, by - ay), Math.hypot(cx - bx, cy - by), Math.hypot(ax - cx, ay - cy));
-      if (inside && area > 0.05 && (l * l) / (2 * area) > 20) { slivers++; sliverM2 += area; sliversByLayer[g.layer] = (sliversByLayer[g.layer] ?? 0) + 1; }
+      if (inside && area > 0.05 && (l * l) / (2 * area) > 20) {
+        slivers++; sliverM2 += area; sliversByLayer[g.layer] = (sliversByLayer[g.layer] ?? 0) + 1;
+        const e = [[i0, i1], [i1, i2], [i2, i0]].map(([p, q]) => ({ p, q, l: Math.hypot(X[q] - X[p], Y[q] - Y[p]), same: sameBeside(t, p, q) })).sort((m, n) => n.l - m.l);
+        if (e.every(x => x.same)) sliversInternal++;
+        else if (e[0].same || e[1].same) sliversEdge++;
+        else { sliversStrip++; if (stripAt.length < 50) stripAt.push([+((ax + bx + cx) / 3).toFixed(2), +((ay + by + cy) / 3).toFixed(2), g.layer]); }
+      }
       if (d === 0) continue;
       const za = cell.zMm[i0] / 1000, zb = cell.zMm[i1] / 1000, zc = cell.zMm[i2] / 1000;
       const gx0 = Math.max(0, Math.floor((Math.min(ax, bx, cx) - rect[0] - ox) / step)), gx1 = Math.min(nx - 1, Math.ceil((Math.max(ax, bx, cx) - rect[0] - ox) / step));
@@ -73,6 +104,23 @@ export function auditCell(a: AuditInput): CellAudit {
       }
     }
   }
+  // Step lines: each step triangle's plan footprint is a segment (its vertices project onto two points).
+  const stepM = a.stepLineM ?? STEP_LINE_M, nearStep = new Uint8Array(nx * ny);
+  for (const g of cell.groups) {
+    if (g.kind !== 1) continue;
+    for (let t = g.first; t < g.first + g.count; t++) {
+      const ids = [cell.indices[3 * t], cell.indices[3 * t + 1], cell.indices[3 * t + 2]];
+      let p = ids[0], q = ids[1]; if (X[p] === X[q] && Y[p] === Y[q]) q = ids[2];
+      const px0 = X[p], py0 = Y[p], dx = X[q] - px0, dy = Y[q] - py0, L2 = dx * dx + dy * dy || 1;
+      const i0 = Math.max(0, Math.floor((Math.min(px0, px0 + dx) - stepM - rect[0] - ox) / step)), i1 = Math.min(nx - 1, Math.ceil((Math.max(px0, px0 + dx) + stepM - rect[0] - ox) / step));
+      const j0 = Math.max(0, Math.floor((Math.min(py0, py0 + dy) - stepM - rect[1] - oy) / step)), j1 = Math.min(ny - 1, Math.ceil((Math.max(py0, py0 + dy) + stepM - rect[1] - oy) / step));
+      for (let j = j0; j <= j1; j++) for (let i = i0; i <= i1; i++) {
+        const sx = rect[0] + ox + i * step - px0, sy = rect[1] + oy + j * step - py0, tt = Math.max(0, Math.min(1, (sx * dx + sy * dy) / L2));
+        if ((sx - tt * dx) ** 2 + (sy - tt * dy) ** 2 <= stepM * stepM) nearStep[j * nx + i] = 1;
+      }
+    }
+  }
+  let fs5 = 0, fsMax = 0;
   const cellA = step * step;
   let overlapM2 = 0, zFightM2 = 0, pokeM2 = 0, crackM2 = 0, shoreM2 = 0, f5 = 0, f10 = 0; const crackAt: [number, number][] = [], floatAt: [number, number, number][] = [];
   const floats: number[] = [];
@@ -91,15 +139,17 @@ export function auditCell(a: AuditInput): CellAudit {
     const dz = zAt[k] - r;
     // The level: the lift nearest the drawn height over the relief.
     let lift = a.levelZ[0]; for (const L of a.levelZ) if (Math.abs(dz - L) < Math.abs(dz - lift)) lift = L;
-    const f = Math.abs(dz - lift); floats.push(f);
+    const f = Math.abs(dz - lift);
+    if (nearStep[k]) { if (f > 0.05) fs5 += cellA; if (f > fsMax) fsMax = f; continue; }
+    floats.push(f);
     if (f > 0.05) f5 += cellA;
     if (f > 0.10) { f10 += cellA; if (floatAt.length < 20) floatAt.push([+px.toFixed(1), +py.toFixed(1), Math.round(f * 1000)]); }
   }
   floats.sort((p, q) => p - q);
   return {
-    slivers, sliverM2: +sliverM2.toFixed(2), sliversByLayer, overlapM2, zFightM2, pokeM2, crackM2, shoreM2, crackAt,
+    slivers, sliverM2: +sliverM2.toFixed(2), sliversByLayer, sliversInternal, sliversEdge, sliversStrip, stripAt, overlapM2, zFightM2, pokeM2, crackM2, shoreM2, crackAt,
     floatP999Mm: floats.length ? Math.round(floats[Math.floor(floats.length * 0.999)] * 1000) : 0, floatMaxMm: floats.length ? Math.round(floats[floats.length - 1] * 1000) : 0,
-    floatOver5cmM2: f5, floatOver10cmM2: f10, floatAt, triangles, stepTriangles,
+    floatOver5cmM2: f5, floatOver10cmM2: f10, floatAt, floatStepOver5cmM2: fs5, floatStepMaxMm: Math.round(fsMax * 1000), triangles, stepTriangles,
   };
 }
 
