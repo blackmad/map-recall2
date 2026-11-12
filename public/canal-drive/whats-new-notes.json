@@ -3,6 +3,40 @@
   "notes": [
     {
       "date": "2026-11-12",
+      "title": "House walls take their colour from measured neighbours",
+      "text": "Houses we haven't measured from a photo used to draw a guessed colour: white, slate grey or orange terracotta, which had nothing to do with the real street. They now borrow the measured wall colour of nearby houses from the same period, and measured walls keep their real, muted colour instead of being pushed toward orange-red. The city reads darker and browner, closer to the photos: on 114 photo comparisons the wall colour error fell by a third. Rows can look too uniform where nothing nearby has been measured; more variety is being tested next.",
+      "images": [
+        {
+          "src": "ui/2026-11-12-wall-colour/triples/0363100012182856.jpg",
+          "alt": "Nieuwmarkt: photo, before (pale) and after (dark brown)",
+          "caption": "Nieuwmarkt: photo, before, after"
+        },
+        {
+          "src": "ui/2026-11-12-wall-colour/triples/0363100012233628.jpg",
+          "alt": "A brick front drawn as pale render before and as brick after, next to its photo",
+          "caption": "Photo, before, after"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-12",
+      "title": "The curved Winkelgalerij on the Raadhuisstraat",
+      "text": "The long curved building on the Raadhuisstraat is now individually modelled: A.L. van Gendt's 1898 shopping gallery for the insurer Utrecht, its glass-roofed arcade bending with the street, the centre gate, the turret over the Keizersgracht corner and UTRECHT on the Herengracht corner.",
+      "images": [
+        {
+          "src": "ui/2026-11-12-raadhuisstraat/photo-vs-model.jpg",
+          "alt": "Photos of the Winkelgalerij beside the model",
+          "caption": "Photos and model"
+        },
+        {
+          "src": "ui/2026-11-12-raadhuisstraat/ingame-street-desktop.jpg",
+          "alt": "The gallery in the ride",
+          "caption": "In the ride"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-12",
       "title": "The krul urinal is round now",
       "text": "The green Amsterdamse krul urinals were blocky, and their stone drain stuck out through the iron wall. They're now a smooth curved sheet on round posts, with the raised rib, the darker lattice band at the top, a shallow round cap with a finial, and the round drain pedestal tucked inside the curl under the raised edge.",
       "images": [

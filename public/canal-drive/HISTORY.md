@@ -1,5 +1,26 @@
 # Canal Recall — what is built
 
+**Wall colour W1, Winkelgalerij Raadhuisstraat, F1 S6b (2026-11-12, round 122).**
+- **W1 (e307e7479; `docs/house-line.md` §11):**
+  - **Where the error was.** A per-stage measurement (`scripts/house-frames/wall-stages.ts`) put it at the source. Unmeasured pands drew buurt-profile swatches with no correlation to their photos (r 0.000, dE 0.21). Spec walls were within dL +0.02 of the photo; the "0.10 darker" was a reading error on 4 pands.
+  - **The fix:**
+    - a measured wall pool from 1,051 spec readings (`look/measuredWallPool.ts`, `?wallPool=0`);
+    - period deciles replacing PERIOD_WALLS (no terracotta, no slate);
+    - spec walls keeping their measured chroma (`?wallChroma=0`).
+
+    The look lift is unchanged.
+  - **Result on 114 pairs:** mean dE 0.151 → 0.097; critic wall gaps 87 → 36. 15 pairs worse by more than 0.02 fails the 1-in-10 rule. Accepted by the integrator on the frames: the losses are mostly a lucky old swatch, and the real cost is uniform rows.
+  - **Baked world:** confirmed the change reaches it (`house:frames --before`, default world): 182856 L 0.74 → 0.45 (photo 0.32), 233628 0.76 → 0.45 (0.46).
+  - **W2 variety** (7fdf6ca60, `?wallVariety`, flag off, merges next round): 0.104 at band 0.5, 0.128 at band 1. The 114 pairs are biased toward dark photos, so W3 builds an unbiased random benchmark before any default changes.
+- **Winkelgalerij Raadhuisstraat** (0ff8dcebf, Rijksmonument 46505, A.L. van Gendt 1898 for the Levensverzekering-Maatschappij "Utrecht"):
+  - One landmark over 13 pands, 34,482 triangles.
+  - New typed kit component `landmarks/curvedFront.ts`: profiles swept along a Catmull-Rom curve through the BAG junctions, because straight slabs kinked at every house.
+  - Simplified: sculpture as silhouettes, ironwork as rails, the gallery's per-bay glass canopies as one sheet.
+  - Requested by the user ("this curved building should probably get landmark build"). It was in no queue: the factory takes only buildings of 2,500 m² or 35 m.
+- **F1 S6b** (b05071f93, `?shaderFacades=1`, off): window kinds and panes, reveals, shop and cornice bands, and priors copied from the generic layout; record wall at 1.0 × wallHex.
+  - F4 round 1 with the flag on: wall colour 87 → 51, but brick vs render 11 → 32 and window kind 14 → 25. S6c fixes those before S7.
+- **cellFormat's TextEncoder is created lazily:** F1 imported `WALL_UV_UNIT_M` via shellMesh into cityLook, which pulled the cell format into signature-placement, and the structure gate (bare Node) failed on `new TextEncoder` at module load.
+
 **Ground G1 fixes and the G3 crossing register; one front-roof module (2026-11-12, round 121).**
 - **G1 (#376, 49243cd85):** ground shard area −18.7 % and float −53 % at G0's named places. Changes:
   - the land grid's float bound (`drape.ts floatBoundGrid`);

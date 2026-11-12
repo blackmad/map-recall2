@@ -17,7 +17,12 @@ here. Their design notes stay in `BUILDING_*.md`, `FACADE_*.md`, `LOD.md`, and
 
 ## Facade programme (P0, user-directed 2026-11-12) — plan `docs/plans/facade-programme-20261112.md`, public view `whats-new.html#plan`
 
-- **Wall colour (lane W1 running, brief `docs/handoffs/lane-wall-colour-20261112.md`; top of the F4 gap queue: 87 of 193 pairs).** The period palette draws orange terracotta and slate grey where photos show dark brown brick; spec walls draw ~0.10 L darker than the photo band; three brick fronts draw as pale render; brickLift v2 is not the fix (5 of 11 closer). The lane splits the error per stage (reading, decorate, mesher, look lift) before fixing; scored on the F4 benchmark with `house:frames --before` triples.
+- **Wall colour:** W1 merged (round 122; mean dE 0.151 → 0.097, critic wall gaps 87 → 36). Open:
+  - W3 builds an unbiased random benchmark (~150 pairs, ride-weighted) and scores W1 against W2 variety bands 0.5 and 1 (`?wallVariety`) before any default changes.
+  - The wall metric may count white shopfronts (172671).
+  - Painted fronts and reds are lost in unmeasured rows.
+  - Per-pand evidence: more readings, the register finish city-wide.
+  - Render compression of lightness (pixel L ≈ 0.43 × mesher L + 0.24).
 - **F1 shader facades (#380):** design 346e6e21a; S1–S4a (Dam chase GPU 130 → 59 MB, flag off byte-identical), S4b runtime chunks 994c7d2ee, S5 CPU twin 8d265a9a2, S6a surface 07201ff1e (Dam baked tier 65.7 MB on vs 141–169 off). Ruling: record wall at 1.0 × wallHex (correctness first), atlas parity reported, not gated. Next S6b (window kinds, reveals, ground/cornice bands, generic-layout priors), S7 crowns, F4 round 1 with the flag on; records published to world-v1 only after S9's gates.
 - **F3 measurement (#381):** good-crop share 31–36 % on a 200-pand Centrum sample (not 45 %); the thumbnail gate does not work, the gate runs on the cut crop; bands/surrounds/gable detectors do not pass. Centrum run under way buurt by buurt with a 25 GB disk floor (lane handed back 2026-11-12 with its supervisor still running: 1 of 69 buurten done, AF01 20 pands → 10 specs staged, 13 of 19 crops fail Jev so ~3 MB fetched per pand; ~50 h at current machine load; progress on #381 every 10 buurten; stop with a `STOP` file in the session scratchpad `f3/centrum-work/`; code e6c5991da, evidence on source-data `lane/facade-f3-measure-20261112`). Staged specs are not published; the integrator publishes per buurt after reading frames.
 - **F4 benchmark (#379):** round 0 done (fooled-rate 0 of 193). Round 1 with the shop-group mask lowered and 17 otherBuilding poses re-picked.

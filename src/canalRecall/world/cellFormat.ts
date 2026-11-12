@@ -207,8 +207,12 @@ export function chooseGlobalStrings(cellLists: Iterable<readonly string[]>, minC
   for (const list of cellLists) for (const s of new Set(list)) cells.set(s, (cells.get(s) ?? 0) + 1);
   return [...cells].filter(([, n]) => n >= minCells).sort((a, b) => b[1] - a[1] || (a[0] < b[0] ? -1 : a[0] > b[0] ? 1 : 0)).map(([s]) => s);
 }
-const encoder = new TextEncoder();
-const decoder = new TextDecoder('utf-8', { fatal: true });
+// Created on first use, not at module load: ride bundles that only need a constant from the world modules (cityLook
+// imports WALL_UV_UNIT_M via shellMesh) are evaluated in a bare Node context by test:canal-game-structure, which has no
+// TextEncoder (integrator 2026-11-12, F1 S4a pulled this module into signature-placement).
+let encoderInst: TextEncoder | undefined, decoderInst: TextDecoder | undefined;
+const encoder = { encode: (s: string) => (encoderInst ??= new TextEncoder()).encode(s) };
+const decoder = { decode: (b: Uint8Array) => (decoderInst ??= new TextDecoder('utf-8', { fatal: true })).decode(b) };
 function writeStrings(table: StringTable): Uint8Array {
   const w = new Writer(); w.uvar(table.list.length);
   for (const s of table.list) { const b = encoder.encode(s); w.uvar(b.length); w.bytes(b); }
