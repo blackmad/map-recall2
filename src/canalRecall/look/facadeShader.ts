@@ -17,6 +17,7 @@
 import { FACADE_FIELDS, FACADE_RECORDS_PER_ROW, FACADE_WINDOW_PITCH_M } from './facadeRecord.ts';
 import { FACADE_STYLES } from '../genericFacades.ts';
 import { GLASS_STOPS } from './windowSdf.ts';
+import { BRICK_CELL_MEAN } from './palette.ts';
 
 export const SHADER_FACADES_PARAM = 'shaderFacades';
 export const SHADER_FACADES_DESKTOP_DEFAULT = false;
@@ -49,6 +50,68 @@ function fieldAccessors(): string {
 
 /** Window pitch per FACADE_STYLES index (the record's `style`), for walls no source counts (baysUpper 0). */
 const PITCH_GLSL = `float frPitch(float style) { ${FACADE_STYLES.map((s, i) => `if (style < ${f1(i + 0.5)}) return ${f1(FACADE_WINDOW_PITCH_M[s])};`).join(' ')} return 2.0; }`;
+
+/** The wall's mean against its colour: the atlas brick cell's mean (palette.ts BRICK_CELL_MEAN), so the record wall and
+ *  the atlas wall of one wallHex read the same at a distance (design §6.5, lookParity). */
+export const FACADE_WALL_MEAN = BRICK_CELL_MEAN;
+/** Brick coursing (S6): a Dutch waalformaat course (50 mm brick + 12.5 mm joint) and a 220 mm stretcher. */
+export const FR_COURSE = 0.0625, FR_BRICK = 0.22, FR_JOINT = 0.012, FR_MORTAR = 1.35, FR_TONE = 0.14;
+const JOINT_SHARE = FR_JOINT / FR_COURSE + FR_JOINT / FR_BRICK - (FR_JOINT / FR_COURSE) * (FR_JOINT / FR_BRICK);
+/** Mean of the coursing before normalising: joints at FR_MORTAR, bricks at 1 (their hash tone averages 1). */
+export const FR_PATTERN_MEAN = JOINT_SHARE * FR_MORTAR + (1 - JOINT_SHARE);
+/** Coursing amplitude by FACADE_WALL_MATERIALS index: brick full, painted brick faint, the rest smooth. */
+export const FR_COURSING = [1, 0, 0.35, 0, 0, 0, 0] as const;
+
+const SURFACE_GLSL = /* glsl */ `
+float frHash(vec2 p) { return fract(sin(dot(p, vec2(12.9898, 78.233))) * 43758.5453); }
+// Brick coursing, mean 1 over the wall; it fades to its mean as a course falls under about two pixels.
+float frBrick(vec2 w, vec2 fw, float material, float contrast) {
+  float amp = material < 0.5 ? ${f1(FR_COURSING[0])} : (material > 1.5 && material < 2.5 ? ${f1(FR_COURSING[2])} : 0.0);
+  amp *= contrast * (1.0 - smoothstep(${f1(0.25 * FR_COURSE)}, ${f1(0.6 * FR_COURSE)}, max(fw.x, fw.y)));
+  if (amp <= 0.0) return 1.0;
+  float row = floor(w.y / ${f1(FR_COURSE)}), yy = w.y - row * ${f1(FR_COURSE)};
+  float x = w.x + mod(row, 2.0) * ${f1(0.5 * FR_BRICK)}, col = floor(x / ${f1(FR_BRICK)}), xx = x - col * ${f1(FR_BRICK)};
+  float joint = max(1.0 - frCover(yy, ${f1(FR_JOINT)}, ${f1(FR_COURSE)}, fw.y), 1.0 - frCover(xx, ${f1(FR_JOINT)}, ${f1(FR_BRICK)}, fw.x));
+  float tone = 1.0 + (frHash(vec2(row, col)) - 0.5) * ${f1(FR_TONE)};
+  return 1.0 + amp * (mix(tone, ${f1(FR_MORTAR)}, joint) / ${f1(FR_PATTERN_MEAN)} - 1.0);
+}
+// Speklagen: spekCourses stone courses every spekSpacing + spekCourses courses, averaged when under a pixel.
+float frSpek(float y, vec2 fw) {
+  float s = fr_spekSpacing(), n = fr_spekCourses();
+  if (s < 0.5 || n < 0.5) return 0.0;
+  float per = (s + n) * ${f1(FR_COURSE)}, h = n * ${f1(FR_COURSE)};
+  return mix(frCover(mod(y, per), 0.0, h, fw.y), h / per, smoothstep(0.5 * per, per, fw.y));
+}
+// Band lines of a storey: bandLines (sill 1, transom 2, head 4) when stated, else by the band kind.
+float frBandLines(float sv, float sh, float y0, float y1, float storey, vec2 fw) {
+  float b = fr_bands();
+  if (b < 0.5 || (b > 4.5 && b < 5.5)) return 0.0;
+  float l = fr_bandLines();
+  bool sill = l > 0.5 ? mod(l, 2.0) > 0.5 : (b < 1.5 || (b > 2.5 && b < 4.5) || b > 5.5);
+  bool transom = l > 0.5 && mod(floor(l / 2.0), 2.0) > 0.5;
+  bool head = l > 0.5 ? l > 3.5 : (b > 1.5 && b < 4.5);
+  float hs = fr_bandSillCm() * 0.01, hh = fr_bandHeadCm() * 0.01, c = 0.0;
+  if (sill && storey > 0.5) c = max(c, frCover(sv, y0 - hs, y0, fw.y));
+  if (head) c = max(c, frCover(sv, y1, y1 + hh, fw.y));
+  if (transom) { float t = y0 + (y1 - y0) * fr_bandTransomAt() / 255.0; c = max(c, frCover(sv, t - 0.04, t + 0.04, fw.y)); }
+  return c;
+}
+// The window's stone (WINDOW_SURROUNDS: 1 stone-lintel, 2 full-frame, 3 keystone, 4 sill, 5 eared-keystone; sills, keystone).
+float frSurround(vec2 p, vec2 fw, float x0, float x1, float y0, float y1, float head, float rise) {
+  float s = fr_surround(), c = 0.0;
+  if (s > 0.5 && s < 1.5) c = max(c, frCover(p.x, x0 - 0.08, x1 + 0.08, fw.x) * frCover(p.y, y1, y1 + 0.16, fw.y));
+  if ((s > 1.5 && s < 2.5) || s > 4.5) c = max(c, frOpening(p, fw, x0 - 0.09, x1 + 0.09, y0 - 0.09, y1 + 0.09, head, rise) - frOpening(p, fw, x0, x1, y0, y1, head, rise));
+  if (fr_sills() > 0.5 || (s > 3.5 && s < 4.5)) c = max(c, frCover(p.x, x0 - 0.06, x1 + 0.06, fw.x) * frCover(p.y, y0 - 0.08, y0, fw.y));
+  if (fr_keystone() > 0.5 || (s > 2.5 && s < 3.5) || s > 4.5) { float xc = 0.5 * (x0 + x1); c = max(c, frCover(p.x, xc - 0.09, xc + 0.09, fw.x) * frCover(p.y, y1 - 0.02, y1 + 0.2, fw.y)); }
+  return c;
+}
+// Quoins: stones 0.25 m high at both ends of a front, alternately 0.45 and 0.3 m deep into the wall.
+float frQuoin(vec2 w, float len, vec2 fw) {
+  float k = floor(w.y / 0.25), d = mod(k, 2.0) < 0.5 ? 0.45 : 0.3;
+  float joint = frCover(w.y - k * 0.25, 0.015, 0.25, fw.y);
+  return max(frCover(w.x, 0.0, d, fw.x), frCover(w.x, len - d, len, fw.x)) * joint;
+}
+`;
 
 /** Vertex declarations and body of the record variant (replace the chunk's layer/tint/accent/uv attributes). */
 export const FACADE_RECORD_VERTEX_DECLS = /* glsl */ `
@@ -104,15 +167,20 @@ float frOpening(vec2 p, vec2 fw, float x0, float x1, float y0, float y1, float h
 vec3 frGlass(float g) {
   return g < 0.55 ? mix(${hexV3(GLASS_STOPS[0])}, ${hexV3(GLASS_STOPS[1])}, g / 0.55) : mix(${hexV3(GLASS_STOPS[1])}, ${hexV3(GLASS_STOPS[2])}, (g - 0.55) / 0.45);
 }
+${SURFACE_GLSL}
 vec3 facadeRecordColour(out vec2 m) {
   frFetch(vRec);
-  vec3 wallC = fr_wall();
-  m = vec2(1.0, 0.0);
-  float kind = vWallKind - 8.0 * step(7.5, vWallKind);
-  if (kind > 6.5) { m = vec2(0.0); return fr_roof(); }
-  if (kind > 2.5 && kind < 5.5 || kind > 5.5) return wallC;      // party wall, exposed strip, chamfer, crown field: blank
   vec2 w = vWall.xy;
   vec2 fw = max(fwidth(w), vec2(1e-4));
+  float kind = vWallKind - 8.0 * step(7.5, vWallKind);
+  m = vec2(1.0, 0.0);
+  if (kind > 6.5) { m = vec2(0.0); return fr_roof(); }
+  // The wall: the record colour at the atlas wall's mean (lookParity), brick coursing around it, speklagen over it.
+  vec3 wallC = fr_wall() * ${f1(FACADE_WALL_MEAN)} * frBrick(w, fw, fr_wallMaterial(), facadeKnobs.x);
+  float spek = frSpek(w.y, fw);
+  vec3 bandC = fr_band();
+  wallC = mix(wallC, bandC, spek); m.r = 1.0 - spek;
+  if (kind > 2.5 && kind < 5.5 || kind > 5.5) return wallC;      // party wall, exposed strip, chamfer, crown field: blank
   float plinth = fr_plinthDm() * 0.1, groundH = max(fr_groundDm() * 0.1, 0.5), upperH = max(fr_upperDm() * 0.1, 0.5);
   float atticH = fr_atticDm() * 0.1, storeys = max(fr_storeys(), 1.0);
   float v = w.y - plinth;
@@ -126,9 +194,12 @@ vec3 facadeRecordColour(out vec2 m) {
   if (storey > storeys - 0.5) return wallC;
   bool front = kind < 0.5;
   float len = max(vWall.z, 1e-3), pitch = frPitch(fr_style());
-  float bays = front ? (storey < 0.5 ? fr_baysGround() : (storey > storeys - 1.5 && fr_baysAttic() > 0.0 ? fr_baysAttic() : fr_baysUpper())) : 0.0;
+  float bays = front ? (storey < 0.5 ? fr_baysGround() : (atticH > 0.0 && storey > storeys - 1.5 && fr_baysAttic() > 0.0 ? fr_baysAttic() : fr_baysUpper())) : 0.0;
   if (bays < 0.5) bays = max(1.0, floor(len / pitch + 0.5));
   float bw = len / bays, bay = floor(w.x / bw), bx = w.x - bay * bw;
+  vec3 accentC = fr_accent();
+  // Quoins: alternating stones at both ends of a front (stated only).
+  if (front && fr_quoins() > 0.5) { float q = frQuoin(w, len, fw); wallC = mix(wallC, accentC, q); m.r *= 1.0 - q; }
   // The door: a front's ground storey, in doorBay (254: the bay nearest the centre; 255 none).
   float doorBay = fr_doorBay(), door = doorBay > 253.5 && doorBay < 254.5 ? floor((bays - 1.0) * 0.5) : doorBay;
   vec2 p = vec2(bx, sv);
@@ -138,22 +209,27 @@ vec3 facadeRecordColour(out vec2 m) {
     float dw = min(1.2, bw * 0.7), x0 = 0.5 * (bw - dw), dh = min(sh * 0.85, 2.6);
     float o = frOpening(p, fw, x0, x0 + dw, 0.0, dh, 0.0, 0.0), leaf = frOpening(p, fw, x0 + 0.06, x0 + dw - 0.06, 0.0, dh - 0.06, 0.0, 0.0);
     vec3 c = mix(wallC, frame, o); c = mix(c, fr_door(), leaf);
-    m = vec2(1.0 - o, 0.0);
+    m = vec2(m.r * (1.0 - o), 0.0);
     return c;
   }
   // One window per bay, centred: width share x bay, height winH x storey, its top under the storey's head line.
   float ww = clamp(share, 0.15, 0.9) * bw, wh = clamp(winH, 0.2, 0.92) * sh;
   float x0 = 0.5 * (bw - ww), y0 = max(0.25, (sh - wh) * 0.55), y1 = min(sh - 0.1, y0 + wh);
-  float head = fr_windowHead(), rise = head > 0.5 && head < 1.5 ? min(0.18 * ww, 0.35) : 0.0;
+  float head = fr_windowHead(), rise = head > 0.5 && head < 1.5 ? min(0.1 * ww, 0.15) : 0.0;
   if (head > 1.5 && head < 2.5) y1 = max(y1, y0 + 0.5 * ww + 0.2);
-  float outer = frOpening(p, fw, x0, x0 + ww, y0, y1, head > 2.5 ? 0.0 : head, rise);
+  float hd = head > 2.5 ? 0.0 : head;
+  // Storey bands at the sill / head lines, then the window's own stone: lintel, frame, sill, keystone.
+  float bnd = frBandLines(sv, sh, y0, y1, storey, fw);
+  float acc = max(bnd, frSurround(p, fw, x0, x0 + ww, y0, y1, hd, rise));
+  wallC = mix(wallC, bnd > 0.0 ? bandC : accentC, acc); m.r *= 1.0 - acc;
+  float outer = frOpening(p, fw, x0, x0 + ww, y0, y1, hd, rise);
   if (outer <= 0.0) return wallC;
   float fr = min(0.07, 0.12 * ww);
-  float pane = frOpening(p, fw, x0 + fr, x0 + ww - fr, y0 + fr, y1 - fr, head > 2.5 ? 0.0 : head, rise);
+  float pane = frOpening(p, fw, x0 + fr, x0 + ww - fr, y0 + fr, y1 - fr, hd, rise);
   float g = clamp((y1 - p.y) / max(y1 - y0, 1e-3), 0.0, 1.0);
   vec3 c = mix(wallC, frame, outer);
   c = mix(c, frGlass(g), pane);
-  m = vec2(1.0 - outer, 0.0);
+  m = vec2(m.r * (1.0 - outer), 0.0);
   return c;
 }
 `;
