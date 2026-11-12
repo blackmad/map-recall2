@@ -365,7 +365,7 @@ async function main() {
   snap(); await writeManifest(manifest);
   // Disk rule: the crops and their panorama ids are the keepers; this run's source panoramas are purged once the buurt is rectified (not when stopped early: they are still needed to resume).
   if (panoTracker.touched && !stop && order.every(fp => manifest.pands[idOf(fp.id)])) { const r = await purgeFiles(panoTracker.touched); console.log(`purged ${r.files} source panoramas (${(r.bytes / 1024 ** 3).toFixed(2)} GB) from ${CACHE_DIR}; --keep-panoramas keeps them`); }
-  if (options.thumbs) return; // no front.jpg yet: the contact sheet needs the cut phase
+  if (options.thumbs || options.cutFrom) return; // thumbs: no front.jpg yet; cut: a partial set (the contact sheet is not part of the F3 run)
   const { report } = await import('./report.ts');
   await report(buurt.code, root);
 }

@@ -20,7 +20,9 @@ export const ENDPOINT = 'https://api.typesafe.ai/v1/systemone', MODEL = 'jev-1.1
 export const USD_PER_TOKEN = 0.042 / 1e6;
 /** Prompt versions: v1 is the H4c prompt; v2 is the H5 step 0b recall pass (dark painted brick and narrow canal fronts are normal, sky glare is ignored, single-building-ness is asked apart from obstruction). Each version keeps its own store. */
 export type PromptVersion = 'v1' | 'v2';
-export const judgePath = (code: string, prompt: PromptVersion = 'v1') => path.resolve('scripts/house-crops/judge', prompt === 'v1' ? `${code}.json` : `${code}.${prompt}.json`);
+/** `HOUSE_CROPS_JUDGE_DIR` redirects the judge stores and picks (F3 runs write their gate scores there, never over the committed ones). */
+export const judgeDir = () => path.resolve(process.env.HOUSE_CROPS_JUDGE_DIR ?? 'scripts/house-crops/judge');
+export const judgePath = (code: string, prompt: PromptVersion = 'v1') => path.resolve(judgeDir(), prompt === 'v1' ? `${code}.json` : `${code}.${prompt}.json`);
 
 export type JudgeRecord = { panoIds: string[]; score: number; occluded: number; closeUp: number; tokens: number; model: string; at: string };
 

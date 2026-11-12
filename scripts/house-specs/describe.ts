@@ -14,7 +14,7 @@ import { Budget, JEV, askJev, cropHash, costOf, jevSpec, parseResponse, type Jev
 import { mergeWriters, type Disagreement, type WriterPart } from '../../src/canalRecall/houseSpec/writers/merge.ts';
 import { specFields, type HouseSpec } from '../../src/canalRecall/houseSpec/spec.ts';
 import { JUDGE_GOOD } from '../house-crops/flags.ts';
-import { judgeSize, judgePath, quality as judgeQuality, type JudgeRecord } from '../house-crops/judge.ts';
+import { judgeSize, judgePath, judgeDir, quality as judgeQuality, type JudgeRecord } from '../house-crops/judge.ts';
 import { loadBuurt, pandsInBuurt } from '../house-crops/buurt.ts';
 import { manifestPath, type Manifest } from '../house-crops/manifest.ts';
 import { usability, type CropFlags } from '../house-crops/flags.ts';
@@ -142,7 +142,7 @@ async function main() {
   const manifestFile = code ? manifestPath(code) : null;
   const manifest: Manifest = manifestFile && fs.existsSync(manifestFile) ? json(manifestFile) : { version: 1, pands: {} } as unknown as Manifest;
   const judge: Record<string, JudgeRecord> = code ? rd(judgePath(code, 'v1'), {}) : {};
-  const picks = new Map<string, any>((rd<any>(code ? path.resolve('scripts/house-crops/judge', `${code}-picks.json`) : '', { picks: [] }).picks as any[]).map(p => [p.pandId, p]));
+  const picks = new Map<string, any>((rd<any>(code ? path.resolve(judgeDir(), `${code}-picks.json`) : '', { picks: [] }).picks as any[]).map(p => [p.pandId, p]));
   const register = registerFactsFromExtract(json(path.join(EXTRACT, 'monument-facts.json')));
   const bag = want('bag') || want('pixel') ? loadBag() : new Map<string, DecodedDescriptor>();
 

@@ -37,7 +37,8 @@ export function gateVerdict(r: GateRecord): { pass: boolean | null; reasons: str
 
 const sleep = (ms: number) => new Promise(r => setTimeout(r, ms));
 const win: { t: number; tokens: number }[] = []; let avgTok = 1100, gate = Promise.resolve();
-const TPM = 40000, RPM = 150;
+// the free tier is 50k tokens / 200 requests a minute for the whole key: F3_GEMINI_TPM / F3_GEMINI_RPM give each of several workers its share
+const TPM = Number(process.env.F3_GEMINI_TPM ?? 40000), RPM = Number(process.env.F3_GEMINI_RPM ?? 150);
 async function throttle() { const mine = gate.then(async () => { for (;;) { const now = Date.now(); while (win.length && now - win[0].t > 60000) win.shift(); if (win.reduce((a, x) => a + x.tokens, 0) + avgTok <= TPM && win.length < RPM) { win.push({ t: now, tokens: avgTok }); return win[win.length - 1]; } await sleep(Math.max(250, 60000 - (now - win[0].t) + 50)); } }); gate = mine.catch(() => {}); return mine; }
 
 export async function askGemini(key: string, jpg: Buffer): Promise<{ status: number; body: any }> {
