@@ -19,3 +19,13 @@ export const GROUND_V2_PLACES: readonly GroundV2Place[] = [
 
 /** The seam pin (typed check): a G0 cell and its east neighbour. */
 export const GROUND_V2_SEAM_PIN = { a: '-4_-3', b: '-3_-3' } as const;
+
+/**
+ * Seam pairs that differed in the first priority bake (2026-11-10), pinned in check-ground-v2.ts beside the seam pin:
+ * a kerb band ending 2 cm into -4_-2 (seam vertices on different levels, 110 mm apart) and a pond ending 9 mm past
+ * -2_0 | -1_0 (a seam vertex only one cell held). Fixed by seamClassifier in groundPartition.ts.
+ */
+export const GROUND_V2_SEAM_REGRESSIONS: readonly { a: string; b: string; why: string }[] = [
+  { a: '-4_-3', b: '-4_-2', why: 'kerb band ending 2 cm past the seam: seam levels differed' },
+  { a: '-2_0', b: '-1_0', why: 'pond ending 9 mm past the seam: a seam vertex in one cell only' },
+];

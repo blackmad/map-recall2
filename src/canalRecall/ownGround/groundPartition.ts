@@ -104,7 +104,7 @@ export interface BakedSurface {
 
 export interface SurfaceBakeStats {
   ms: Record<string, number>;
-  pieces: number; partitionVertices: number; /** Seam vertices moved to a canonical stop. */ seamSnapped: number; edges: number; nodeSplits: number; crossSplits: number; seamGridPoints: number; densified: number; simplifiedAway: number;
+  pieces: number; partitionVertices: number; /** Seam vertices moved to a canonical stop. */ seamSnapped: number; /** Seam-edge triangles given the sources' class at the edge (seamClassifier). */ seamReclassed: number; edges: number; nodeSplits: number; crossSplits: number; seamGridPoints: number; densified: number; simplifiedAway: number;
   steiner: number; steinerDropped: number; refineAdded: number; /** Sliver splits made, and slivers left in the last round looked at. */ sliverSplits: number; slivers: number; points: number;
   triangles: number; stepTriangles: number; vertices: number;
   failedEdges: { a: [number, number]; b: [number, number] }[];
@@ -256,6 +256,38 @@ export function arrange(input: Pick<SurfaceBakeInput, 'rect' | 'groups' | 'featu
 
 // ------------------------------------------------------------------ the bake
 
+/**
+ * The precedence class at a point from the sources alone (first group in order whose feature holds the point, even-odd
+ * per feature; else the rest group): what both neighbours agree on along their shared side. Features are prefiltered
+ * to those within 1 m of a side line. Coordinates in metres, compared in integer mm as the arrangement does.
+ */
+export function seamClassifier(input: SurfaceBakeInput): (x: number, y: number) => number {
+  const [x0, y0, x1, y1] = input.rect.map(v => Math.round(v * 1000));
+  const near: { g: number; rings: number[][][] }[] = [];
+  for (const f of input.features) {
+    if (!f.rings.length || f.group === input.restGroup) continue;
+    let a = Infinity, b = Infinity, c = -Infinity, d = -Infinity;
+    for (const [x, y] of f.rings[0]) { const X = Math.round(x * 1000), Y = Math.round(y * 1000); if (X < a) a = X; if (X > c) c = X; if (Y < b) b = Y; if (Y > d) d = Y; }
+    if (c < x0 - 1000 || a > x1 + 1000 || d < y0 - 1000 || b > y1 + 1000) continue;
+    const touches = (lo: number, hi: number, line: number) => lo <= line + 1000 && hi >= line - 1000;
+    if (!(touches(a, c, x0) || touches(a, c, x1) || touches(b, d, y0) || touches(b, d, y1))) continue;
+    near.push({ g: f.group, rings: f.rings.map(r => r.map(([x, y]) => [Math.round(x * 1000), Math.round(y * 1000)])) });
+  }
+  near.sort((p, q) => p.g - q.g);
+  return (x: number, y: number) => {
+    const X = x * 1000, Y = y * 1000;
+    for (const { g, rings } of near) {
+      let inside = false;
+      for (const r of rings) for (let i = 0, j = r.length - 1; i < r.length; j = i++) {
+        const [xi, yi] = r[i], [xj, yj] = r[j];
+        if ((yi > Y) !== (yj > Y) && X < xj + (Y - yj) * (xi - xj) / (yi - yj)) inside = !inside;
+      }
+      if (inside) return g;
+    }
+    return input.restGroup;
+  };
+}
+
 /** Steps 3–8 (and 1–2 through `arrange`). */
 export function bakeSurface(input: SurfaceBakeInput, opt: SurfaceBakeOptions): BakedSurface {
   const ms: Record<string, number> = {};
@@ -360,7 +392,9 @@ export function bakeSurface(input: SurfaceBakeInput, opt: SurfaceBakeOptions): B
       const o1 = orient(ax, ay, bx, by, cx, cy), o2 = orient(ax, ay, bx, by, dx, dy), o3 = orient(cx, cy, dx, dy, ax, ay), o4 = orient(cx, cy, dx, dy, bx, by);
       if (o1 === 0 || o2 === 0 || o3 === 0 || o4 === 0 || o1 === o2 || o3 === o4) continue;
       const den = (bx - ax) * (dy - cy) - (by - ay) * (dx - cx), t1 = ((cx - ax) * (dy - cy) - (cy - ay) * (dx - cx)) / den, t2 = ((cx - ax) * (by - ay) - (cy - ay) * (bx - ax)) / den;
-      const m = at(Math.round(ax + t1 * (bx - ax)), Math.round(ay + t1 * (by - ay)));
+      // Clamped off the sides: a crossing a few mm inside must not round onto a side, where it would be a seam vertex
+      // only this cell holds (the seams take only canonical stops and the global grid; first priority bake, -2_0 | -1_0).
+      const m = at(Math.min(Q - 1, Math.max(1, Math.round(ax + t1 * (bx - ax)))), Math.min(Q - 1, Math.max(1, Math.round(ay + t1 * (by - ay)))));
       if (m !== a && m !== b) (cuts.get(e1) ?? cuts.set(e1, []).get(e1)!).push([t1, m]);
       if (m !== c && m !== d) (cuts.get(e2) ?? cuts.set(e2, []).get(e2)!).push([t2, m]);
       n++;
@@ -595,6 +629,19 @@ export function bakeSurface(input: SurfaceBakeInput, opt: SurfaceBakeOptions): B
 
   // ---- 7. classify, drop holes, measure.
   const T3 = del.triangles, T = T3.length / 3;
+  // A triangle on a seam edge takes the class the sources give at the edge's midpoint (seamClassifier): a feature
+  // ending a few mm or cm past the seam leaves a one-quantum sliver whose triangles can classify as the class (or the
+  // water hole) beside it in one neighbour only, so the two cells disagreed on the seam's vertices and levels.
+  const seamGroupAt = seamClassifier(input);
+  let seamReclassed = 0;
+  for (let k = 0; k < T; k++) for (let j = 0; j < 3; j++) {
+    const a = T3[3 * k + j], b = T3[3 * k + (j + 1) % 3];
+    if ((onSide(a) & onSide(b)) === 0) continue;
+    const sg = seamGroupAt(gx((P[2 * a] + P[2 * b]) / 2), gy((P[2 * a + 1] + P[2 * b + 1]) / 2));
+    const cur = triGroup[k] < -1 ? -2 - triGroup[k] : triGroup[k];
+    if (sg >= 0 && cur !== sg) { triGroup[k] = sg; seamReclassed++; }
+    break;
+  }
   let unclassified = 0, ambiguous = 0, unclassifiedM2 = 0;
   const triM2 = new Array(G).fill(0);
   const keep: number[] = [];
@@ -625,11 +672,20 @@ export function bakeSurface(input: SurfaceBakeInput, opt: SurfaceBakeOptions): B
   // A seam vertex keeps only the levels of the seam edges beside it (the class along the side is the same in both
   // neighbours); a triangle touching it at a corner from another level takes the nearest of those, so both cells hold
   // the same copies there.
+  // The seam edge's level is read from the sources at the edge's midpoint (seamGroupAt), not from the triangle beside
+  // it: a feature ending a few cm past the seam leaves a one-quantum sliver in the neighbour whose triangles can classify
+  // as the class under it, which put the two cells' seam vertices on different levels (110 mm apart; 34 of 76 pairs
+  // of the first priority bake). The midpoint lies on no input boundary (every crossing of a side is a stop).
   const seamLevels = new Map<number, number>(); // vertex → bitmask of levels
+  // Triangle k's seam edge j (vertices j, j + 1) → its canonical level: the triangle puts those two vertices there.
+  const seamEdgeLevel = new Map<number, number>();
   if (opt.steps) for (const k of keep) for (let j = 0; j < 3; j++) {
     const a = T3[3 * k + j], b = T3[3 * k + (j + 1) % 3];
     if ((onSide(a) & onSide(b)) === 0) continue;
-    const bit = 1 << levelOfTri(k);
+    const sg = seamGroupAt(gx((P[2 * a] + P[2 * b]) / 2), gy((P[2 * a + 1] + P[2 * b + 1]) / 2));
+    const L = sg >= 0 && !isHole(sg) ? input.groups[sg].level : levelOfTri(k);
+    seamEdgeLevel.set(3 * k + j, L);
+    const bit = 1 << L;
     seamLevels.set(a, (seamLevels.get(a) ?? 0) | bit); seamLevels.set(b, (seamLevels.get(b) ?? 0) | bit);
   }
   const vid = (i: number, lev0: number) => {
@@ -639,7 +695,15 @@ export function bakeSurface(input: SurfaceBakeInput, opt: SurfaceBakeOptions): B
     const k = i * 8 + lev; let n = copy.get(k); if (n === undefined) { n = outU.length; copy.set(k, n); outU.push(P[2 * i]); outV.push(P[2 * i + 1]); outL.push(lev); } return n; };
   const tris = new Uint32Array(keep.length * 3), triG = new Uint16Array(keep.length);
   const keptAt = new Int32Array(T).fill(-1);
-  keep.forEach((k, n) => { keptAt[k] = n; const lev = levelOfTri(k); for (let j = 0; j < 3; j++) tris[3 * n + j] = vid(T3[3 * k + j], lev); triG[n] = groupOf(k); });
+  keep.forEach((k, n) => {
+    keptAt[k] = n; const lev = levelOfTri(k);
+    for (let j = 0; j < 3; j++) {
+      // A vertex of a seam edge sits at that edge's level (the edge leaving it first, then the one arriving).
+      const L = seamEdgeLevel.get(3 * k + j) ?? seamEdgeLevel.get(3 * k + (j + 2) % 3) ?? lev;
+      tris[3 * n + j] = vid(T3[3 * k + j], L);
+    }
+    triG[n] = groupOf(k);
+  });
   // Strips: for each interior edge whose two kept triangles sit at different levels, a quad from the low copies up to the high.
   const stepIdx: number[] = []; const stepLayer: GroundLayer[] = [];
   if (opt.steps) {
@@ -683,7 +747,7 @@ export function bakeSurface(input: SurfaceBakeInput, opt: SurfaceBakeOptions): B
     u: Uint16Array.from(outU), v: Uint16Array.from(outV), zMm, oct, level: Uint8Array.from(outL),
     tris, triGroup: triG, steps: Uint32Array.from(stepIdx), stepLayer,
     stats: {
-      ms, pieces: arr.pieces.length, partitionVertices, seamSnapped, edges: E.length, nodeSplits: nodeSplits + nodeSplits2, crossSplits, seamGridPoints, densified, simplifiedAway,
+      ms, pieces: arr.pieces.length, partitionVertices, seamSnapped, seamReclassed, edges: E.length, nodeSplits: nodeSplits + nodeSplits2, crossSplits, seamGridPoints, densified, simplifiedAway,
       steiner, steinerDropped, refineAdded, sliverSplits, slivers, points: nV0, triangles: keep.length, stepTriangles: stepIdx.length / 3, vertices: V,
       failedEdges, unclassified, filled, ambiguous, unclassifiedM2: +unclassifiedM2.toFixed(2),
       pieceM2: pieceM2.map(a => +a.toFixed(2)), triM2: triM2.map(a => +a.toFixed(2)), rectM2: +rectM2.toFixed(2),
