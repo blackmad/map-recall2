@@ -311,8 +311,8 @@
    "category": "street-furniture",
    "subtypes": "krul (the city's Amsterdamse krul rows; a \"twee krullen\" point places two)",
    "modelUrl": "./models/street-furniture/urinal-krul.glb",
-   "triangles": 152,
-   "glbBytes": 17308,
+   "triangles": 1386,
+   "glbBytes": 150584,
    "instances": 38,
    "source": "Gemeente Amsterdam Maps Data openbare toiletten, SELECTIE KRUL (free reuse under the Maps Data terms)",
    "measured": [
@@ -321,12 +321,14 @@
     "plan from the city drawing \"Plattegrond van een ijzeren urinoir boven bestaande riolen\" (Commons, public domain): a 0.42 m loop round the stand, then a 0.74-0.85 m arc screening the entry, four posts",
     "upper half perforated, lower half plain",
     "end posts 0.22 m proud with a knob (Commons, 2022 Krul bij Corsgenbrug, CC BY-SA 4.0)",
-    "pad 0.10-0.19 m, brick edge, tiled floor; natural-stone plate inside"
+    "pad 0.10-0.19 m, tiled floor",
+    "smooth curved sheet (2026-11-12): raised rib at 1.27 m, lattice band 1.42-1.98 m, shallow round cap with a finial, round drain pedestal 0.45 m across inside the loop, grey stone kerb (proportions from a photo of a krul on a canal quay)"
    ],
    "prior": [
     "dark green #2c4542: the luminance of the panoramas and photos, the hue the city's donkergroen (the panoramas read blue at dawn)",
     "entry turned away from the street",
-    "no dakje (roof cap): 1 of 13 panoramas has one and no field says which",
+    "the dakje (roof cap) on every krul: 1 of 13 panoramas has one and no field says which",
+    "the lattice drawn as a darker band (no see-through in the shared vertex-colour material)",
     "the two Van der Mey concrete krullen drawn as iron ones"
    ],
    "photo": {
