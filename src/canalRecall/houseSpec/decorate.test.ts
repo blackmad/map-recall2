@@ -7,6 +7,7 @@ import { CROWN_RISE_M, crownInGeometry, houseSpecEnricher, houseSpecPatch, house
 import { gameFeatureDecorator } from '../galleryPipeline.ts';
 import { frontageLayoutScale, specCellCount, specStoreyScale } from '../streetFacadeRendering.ts';
 import { layoutWall } from '../facadeLayout.ts';
+import { resetBrickLiftFlag } from '../look/brickLift.ts';
 import { FAMILY_TONE, resetSpecWallsFlag, specWallDisplay, specWallSource } from './wallColour.ts';
 import { STYLE_DIMS } from '../facadeCells.ts';
 
@@ -272,7 +273,16 @@ test('trim misread: a reader family and a brick finish turn a pale reading into 
   assert.equal((houseSpecPatch(view, { id: 'NL.IMBAG.Pand.0363100012182857' }).specRecipe as { wallHex?: string } | undefined)?.wallHex, specWallDisplay(FAMILY_TONE.red, { fromPixel: false }));
   // The register's brick finish stands in for a spec material.
   assert.equal((houseSpecPatch({ wallHex: '#e8dccb', src: {} }, { registerFinish: 'brick' }).specRecipe as { wallHex?: string } | undefined)?.wallHex, specWallDisplay(specWallSource('#e8dccb', { brick: true }).hex, { fromPixel: false }));
-  assert.equal((houseSpecPatch({ wallHex: '#e8dccb', src: {} }, {}).specRecipe as { wallHex?: string } | undefined)?.wallHex, specWallDisplay('#e8dccb'), 'no finish, no family: the pixel');
+  // No material and no register finish: brickLift v2 counts it as brick (a pale reading is trim, the family tone is drawn); v1 draws the pixel.
+  const unstated = () => (houseSpecPatch({ wallHex: '#e8dccb', src: {} }, {}).specRecipe as { wallHex?: string } | undefined)?.wallHex;
+  // brickLift is off by default since 2026-11-12 (integrator): both states are pinned explicitly.
+  const prevLift = process.env.BRICK_LIFT;
+  try {
+    process.env.BRICK_LIFT = 'v2'; resetBrickLiftFlag();
+    assert.equal(unstated(), specWallDisplay(specWallSource('#e8dccb', { brick: true }).hex, { fromPixel: false }), 'no finish, no family, v2: brick, the family tone');
+    process.env.BRICK_LIFT = 'v1'; resetBrickLiftFlag();
+    assert.equal(unstated(), specWallDisplay('#e8dccb'), 'no finish, no family, v1: the pixel');
+  } finally { if (prevLift === undefined) delete process.env.BRICK_LIFT; else process.env.BRICK_LIFT = prevLift; resetBrickLiftFlag(); }
   assert.equal(SPEC_WALL_HOLD.size, 0, 'no pand wall held (182857 draws red-brown after the rule)');
 });
 

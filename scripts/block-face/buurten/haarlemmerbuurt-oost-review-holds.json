@@ -1,0 +1,111 @@
+{
+ "note": "Lane review pins from the 1 m-grid strip read (grid-crop.ts); the Opus strip review confirms or amends.",
+ "reviewed": "2026-11-10",
+ "holds": [
+  {
+   "pandId": "0363100012168428",
+   "address": "Haarlemmerstraat 86",
+   "reason": "Haarlemmerstraat 86: small three-storey house with a tower-like dormer"
+  },
+  {
+   "pandId": "0363100012168427",
+   "address": "Haarlemmerstraat 84",
+   "reason": "Haarlemmerstraat 84: neck gable that fits, but a run of one between held 86 and 82"
+  },
+  {
+   "pandId": "0363100012167538",
+   "address": "Haarlemmerstraat 82",
+   "reason": "Haarlemmerstraat 82: arched heads and iron balconies on four rows"
+  },
+  {
+   "pandId": "0363100012175144",
+   "address": "Haarlemmerstraat 80",
+   "reason": "Haarlemmerstraat 80: scaffolded and netted (2024-11-21)"
+  },
+  {
+   "pandId": "0363100012175143",
+   "address": "Haarlemmerstraat 78B",
+   "reason": "Haarlemmerstraat 78: grey stucco front with balconies"
+  },
+  {
+   "pandId": "0363100012175142",
+   "address": "Haarlemmerstraat 74A",
+   "reason": "Haarlemmerstraat 74: an 11.5 m pand of two fronts"
+  },
+  {
+   "pandId": "0363100012175141",
+   "address": "Haarlemmerstraat 72",
+   "reason": "Haarlemmerstraat 72: not read at full size"
+  },
+  {
+   "pandId": "0363100012175140",
+   "address": "Haarlemmerstraat 68",
+   "reason": "Haarlemmerstraat 68: 7.5 m painted front of five axes with two dormers"
+  },
+  {
+   "pandId": "0363100012175139",
+   "address": "Haarlemmerstraat 66B",
+   "reason": "Haarlemmerstraat 66: neck gable, a run of one beside held 68 and 64"
+  },
+  {
+   "pandId": "0363100012175205",
+   "address": "Haarlemmerstraat 64",
+   "reason": "Haarlemmerstraat 64: five storeys with an ornate top"
+  },
+  {
+   "pandId": "0363100012175204",
+   "address": "Haarlemmerstraat 62",
+   "reason": "Haarlemmerstraat 62: five-storey painted front to 16.5 m"
+  },
+  {
+   "pandId": "0363100012175206",
+   "address": "Haarlemmerstraat 60",
+   "reason": "Haarlemmerstraat 60: yellow brick with arched heads and tile panels"
+  },
+  {
+   "pandId": "0363100012175207",
+   "address": "Haarlemmerstraat 58",
+   "reason": "Haarlemmerstraat 58: raised attic frieze 12.3-15.1 m"
+  },
+  {
+   "pandId": "0363100012175208",
+   "address": "Haarlemmerstraat 56A",
+   "reason": "Haarlemmerstraat 56: scaffolded"
+  },
+  {
+   "pandId": "0363100012179425",
+   "address": "Brouwersgracht 20",
+   "reason": "Brouwersgracht 20: low two-storey bell-gable house at the face end (kit gap: low bell-gable cottages)"
+  },
+  {
+   "pandId": "0363100012179426",
+   "address": "Brouwersgracht 18",
+   "reason": "Brouwersgracht 18: built 2000, a neo-traditional raised-neck front"
+  },
+  {
+   "pandId": "0363100012179427",
+   "address": "Brouwersgracht 14",
+   "reason": "Brouwersgracht 14: tall point gable over four storeys with a warehouse-style ground floor: no four-storey residential canal type in the haarlemmerbuurt library"
+  },
+  {
+   "pandId": "0363100012179428",
+   "address": "Brouwersgracht 8",
+   "reason": "Brouwersgracht 8: five-storey canal house with a white cornice and a spire dormer: no five-storey type in the kit"
+  },
+  {
+   "pandId": "0363100012179479",
+   "address": "Brouwersgracht 6",
+   "reason": "Brouwersgracht 6: five storeys, the front hidden behind a tree on the 2024-12-03 strip"
+  },
+  {
+   "pandId": "0363100012179480",
+   "address": "Brouwersgracht 4",
+   "reason": "Brouwersgracht 4: five storeys with a stucco top storey, half hidden by a tree"
+  },
+  {
+   "pandId": "0363100012179488",
+   "address": "Brouwersgracht 2A",
+   "reason": "Brouwersgracht 2A-2B: built 1990, an 11.6 m wide hipped-roof block"
+  }
+ ]
+}

@@ -13,10 +13,18 @@ concurrency:
   cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 jobs:
+  # check:canal runs as three parallel jobs (2026-11-12): run serially it passed 45 min on the runner, every main
+  # run was cancelled and Pages stopped deploying from 2026-11-10. check:rail-street alone takes ~17 min there.
+  # Locally `npm run check:canal` still runs the same chain (core && rail && rest).
   check-canal:
-    name: check:canal
+    name: check:canal (${{ matrix.part }})
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    # rail ran 41.5 min of 45 on the first split run (2026-11-12)
+    timeout-minutes: 60
+    strategy:
+      fail-fast: false
+      matrix:
+        part: [core, rail, rest]
     steps:
       # The landmark-inventory gate dates each model by the commit that first added its GLB, so check:canal needs the
       # history (commits and trees only: blob:none keeps it small). A shallow clone dated every model "today".
@@ -29,9 +37,9 @@ jobs:
           node-version: 24
           cache: npm
       - run: npm ci
-      # check:canal now includes focused Playwright specs (building-look), so the job needs a browser too (2026-10-29).
+      # check:canal includes focused Playwright specs (building-look), so the jobs need a browser too (2026-10-29).
       - run: npx playwright install --with-deps chromium
-      - run: npm run check:canal
+      - run: npm run check:canal:${{ matrix.part }}
 
   e2e-smoke:
     name: e2e smoke (boot)

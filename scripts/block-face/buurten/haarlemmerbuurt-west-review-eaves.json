@@ -1,0 +1,85 @@
+{
+ "note": "Reviewer eaves pins (reviewEaves.ts) from the lane's 1 m grid on the strips; 3DBAG eaves on the dijk read the rear roofs (7.1-10.3 m for fronts whose gable foot or cornice stands at 9.8-12 m).",
+ "pins": [
+  {
+   "pandId": "0363100012167818",
+   "eavesM": 10.2,
+   "reason": "Haarlemmerdijk 20: gable foot (scroll tops) at 10.2 m, 2022-12-15"
+  },
+  {
+   "pandId": "0363100012167817",
+   "eavesM": 11.4,
+   "reason": "Haarlemmerdijk 18: the cornice top over the cream attic frieze at 11.4 m (strip-sheet review (docs/reports/haarlemmer-strip-verdict-20261110.md) and the 1 m grid at 1.8x brightness)"
+  },
+  {
+   "pandId": "0363100012167816",
+   "eavesM": 11.6,
+   "reason": "Haarlemmerdijk 16: cornice top 11.6 m"
+  },
+  {
+   "pandId": "0363100012176102",
+   "eavesM": 10.7,
+   "reason": "Haarlemmerdijk 10: cornice 10.7 m"
+  },
+  {
+   "pandId": "0363100012176101",
+   "eavesM": 12.0,
+   "reason": "Haarlemmerdijk 8: point gable shoulders 12.0 m over three window rows"
+  },
+  {
+   "pandId": "0363100012176172",
+   "eavesM": 11.0,
+   "reason": "Haarlemmerdijk 6: the cornice top over the cream band at 11.0 m (strip-sheet review (docs/reports/haarlemmer-strip-verdict-20261110.md) and the 1 m grid at 1.8x brightness)"
+  },
+  {
+   "pandId": "0363100012176174",
+   "eavesM": 9.8,
+   "reason": "Haarlemmerdijk 4: gable foot 9.8 m"
+  },
+  {
+   "pandId": "0363100012177675",
+   "eavesM": 10.0,
+   "reason": "Haarlemmerdijk 70: front eaves/gable foot on the 1 m grid"
+  },
+  {
+   "pandId": "0363100012177671",
+   "eavesM": 10.0,
+   "reason": "Haarlemmerdijk 68: front eaves/gable foot on the 1 m grid"
+  },
+  {
+   "pandId": "0363100012177670",
+   "eavesM": 13.3,
+   "reason": "Haarlemmerdijk 66: front eaves/gable foot on the 1 m grid"
+  },
+  {
+   "pandId": "0363100012171358",
+   "eavesM": 11.2,
+   "reason": "Haarlemmerdijk 144: front eaves/gable foot on the 1 m grid"
+  },
+  {
+   "pandId": "0363100012171357",
+   "eavesM": 12.3,
+   "reason": "Haarlemmerdijk 142: front eaves/gable foot on the 1 m grid"
+  },
+  {
+   "pandId": "0363100012173479",
+   "eavesM": 9.9,
+   "reason": "Haarlemmerdijk 131: front eaves/gable foot on the 1 m grid"
+  },
+  {
+   "pandId": "0363100012173480",
+   "eavesM": 9.2,
+   "reason": "Haarlemmerdijk 133A: front eaves/gable foot on the 1 m grid"
+  },
+  {
+   "pandId": "0363100012177504",
+   "eavesM": 12.4,
+   "reason": "Haarlemmerdijk 21: front eaves/gable foot on the 1 m grid"
+  },
+  {
+   "pandId": "0363100012177501",
+   "eavesM": 9.9,
+   "reason": "Haarlemmerdijk 23E: front eaves/gable foot on the 1 m grid"
+  }
+ ]
+}

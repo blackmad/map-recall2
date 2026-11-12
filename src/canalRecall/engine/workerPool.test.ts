@@ -36,6 +36,8 @@ test('pool: worker URL next to any bundle, with the building A/B flags', () => {
   assert.equal(poolWorkerUrl('https://x/canal-drive/js/game.js'), '');
   assert.equal(withWorkerFlags('w.js', '?modernFacades=1&world=v1'), 'w.js?modernFacades=1');
   assert.equal(withWorkerFlags('w.js?v=2', '?buurtProfiles=0'), 'w.js?v=2&buurtProfiles=0');
+  // brickLift and specWalls are read where meshBuildingFor runs (the worker): `?brickLift=v1` must reach it.
+  assert.equal(withWorkerFlags('w.js?v=2', '?brickLift=v1&specWalls=0&world=live'), 'w.js?v=2&brickLift=v1&specWalls=0');
   assert.equal(withWorkerFlags('w.js', '?a=1&paletteLevel=0'), 'w.js?paletteLevel=0');
   assert.equal(withWorkerFlags('w.js', '?look=toon&toonFronts=candy&roofFamily=1&treeCalm=1&labelCalm=1'), 'w.js?look=toon&toonFronts=candy&roofFamily=1&treeCalm=1');
 });

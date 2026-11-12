@@ -43,3 +43,33 @@ The implementation keeps three shared low-poly sphere instances per tree and reu
 Metrics: `.cache/da-costa-neighbourhood/tree-render-metrics.json`. Screenshots: `trees-{desktop,mobile}-{canal,sterk}-{legacy,inventory}.png` in the same cache directory. No paid inference was used.
 
 Next useful improvements would be checking a handful of tree crowns against street photos, and using actual canopy/height measurements if available. A species prior alone should not be promoted into a surveyed crown, or used to infer an unrecorded pruning regime.
+
+## Measured silhouettes, `?treeShape=1` (lane T-shape #371, 2026-11-10)
+
+The "next useful improvement" above, done. The user's Piet Kranenbergpad frame showed a wall of 27 m poplars as fat
+cylinders on 8-12 m bare trunks. Measured against photos, every archetype drew crowns about half as wide as the real
+ones and lifted them on a crown base that was a fixed share of height (12.4 m for a 27 m Robusta; the photos give 3-5 m).
+
+- **Survey** (`npx tsx scripts/trees/tree-silhouette-survey.ts --help`): the 30 commonest species of the
+  ride-priority gebieden plus the species of the 940 rows of trees >= 15 m. Crown top, base, widest run and outline
+  from aimed summer Gemeente Amsterdam panoramas (foliage mask on the trunk plane, `src/canalRecall/trees/silhouetteMeasure.ts`),
+  and a leaf-on crown width from the PDOK 2024 summer orthophoto masked by AHN4 canopy height. Report:
+  `docs/reports/trees-silhouette-20261110/survey.json` (+ `survey-pyramidal.json`, the poplar/willow/alder check).
+  Review overlays and the species sheet: `scripts/trees/tree-silhouette-overlays.ts --sheet` (photo, game before in
+  red, after in cyan).
+- **Priors** (`scripts/trees/tree-shape-priors.ts --write` → `src/canalRecall/trees/treeShapeMeasured.ts`, generated):
+  width/height per species (panorama median, n >= 3; else ortho × the panorama/ortho ratio), per archetype (median of
+  its species), crown base by inventory height class (3.3 m under 6 m, 3.8, 4.8, then 5.6 m from 12 m up: street
+  clearance, not a share of height) with a per-species factor, and archetype corrections where the photos contradict
+  the nursery prior (Populus canadensis 'Robusta' and plain canadensis: pyramidal/rounded → airy-oval).
+- **Shaper** (`src/canalRecall/trees/treeShape.ts`): rescales the archetype's three lobes to the measured width, base
+  and top; seeded per-tree jitter of height inside the class range, width (±12 %), crown base (±0.5 m), lobe size,
+  placement and (off-axis archetypes only) a small lean. Lobe count and draw groups are unchanged; on-axis archetypes
+  get no lateral jitter, so the fork count is unchanged except where an archetype is corrected (Robusta/canadensis
+  gain the airy-oval's two forks: 4,287 trees city-wide). Registered by `inventory-trees-source.js` through
+  `setTreeShaper`, so this file stays plain JS for the raw da-costa demo. Off (the default), the typology is
+  byte-identical (`src/canalRecall/trees/treeShape.test.ts`).
+
+Width/height within ±20 % of the photo: 7 → 30 of the top 30 species (by construction for measured species; the
+independent ortho check goes 3 → 15 of 30). Crown base within ±20 %: 9 → 24 of 30. Leaf state and autumn are out of
+scope; outline classes from pixels are noisy (the survey reports votes, not a verdict).

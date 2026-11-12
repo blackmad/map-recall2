@@ -3,15 +3,15 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { DIMENSIONS, FURNITURE_MODELS, FURNITURE_MODEL_IDS, FURNITURE_TRI_CAP, isSlot, lampHeight, linearOf, SLOT } from './models.ts';
-import { CONTAINER_DRUM_SHARE, HOOPS_PER_RACK, containerModelId, containerYaw, instancesOf } from './placement.ts';
-import { BGT_KIND, containerSubtype, lampStyle, polygonTest, tileKeyOf } from './extract.ts';
+import { CONTAINER_DRUM_SHARE, HOOPS_PER_RACK, URINAL_PAIR_M, containerModelId, containerYaw, instancesOf } from './placement.ts';
+import { BGT_KIND, URINAL_SUBTYPE, containerSubtype, lampStyle, polygonTest, tileKeyOf, urinalCount } from './extract.ts';
 import { StreetIndex } from './streetIndex.ts';
 import type { FurnitureRecord } from './extract.ts';
 
 /** Triangle counts per model: a change here is a deliberate geometry change (update with the reason). */
 // container 114 -> 150 (2026-11-07: full width, corner strips, door, pictogram, crosses); 52 -> 114 (#212): the hexagonal hood, the recess between cheeks with the rest drum (glass: round hole 104,
 // paper: slot and flap 102), lip, top sticker, two-disc mushroom.
-const TRIANGLES: Record<string, number> = { container: 150, 'container-rest': 136, 'container-bg': 154, 'container-glas': 140, 'container-papier': 133, 'lamp-lantern': 74, 'lamp-pole': 92, bin: 94, 'bike-rack': 40, abri: 86, 'ad-column': 90 };
+const TRIANGLES: Record<string, number> = { container: 150, 'container-rest': 136, 'container-bg': 154, 'container-glas': 140, 'container-papier': 133, 'lamp-lantern': 74, 'lamp-pole': 92, bin: 94, 'bike-rack': 40, abri: 86, 'ad-column': 90, 'urinal-krul': 152 };
 
 test('every model stays within the per-kind triangle cap and its recorded count', () => {
   for (const id of FURNITURE_MODEL_IDS) {
@@ -38,7 +38,7 @@ test('slot faces (instance colour) exist exactly where the ride paints one: the 
   for (const id of ['container', 'container-rest', 'container-glas', 'container-papier'] as const) assert.equal(slots(id), 14, `${id}: fraction band (2) and the lift shaft (12)`);
   assert.equal(slots('ad-column'), 20);
   assert.equal(slots('abri'), 2);
-  for (const id of ['lamp-lantern', 'lamp-pole', 'bin', 'bike-rack'] as const) assert.equal(slots(id), 0, id);
+  for (const id of ['lamp-lantern', 'lamp-pole', 'bin', 'bike-rack', 'urinal-krul'] as const) assert.equal(slots(id), 0, id);
   assert.deepEqual(linearOf(SLOT), [1, 0, 1]);
 });
 
@@ -149,4 +149,27 @@ test('furniture stands on the pavement planes, not under them (user 2026-11-07: 
   assert.ok(RIDE_BASE_LIFT_M - RIDE_PLATE_SKIRT_M < ROAD_LIFT.parking, 'the skirt reaches below a parking-strip plane');
   for (const id of ['container', 'container-rest', 'container-glas', 'container-papier'] as const) assert.equal(rideModel(id).triangles, FURNITURE_MODELS[id]().triangles + 8, id);
   assert.equal(rideModel('lamp-pole').triangles, FURNITURE_MODELS['lamp-pole']().triangles);
+});
+
+test('krul urinal: sheet half a metre off the floor to 2.03 m, end posts 0.22 m proud, footprint inside its pad', () => {
+  const m = FURNITURE_MODELS['urinal-krul'](), D = DIMENSIONS.krul;
+  assert.ok(Math.abs(m.heightM - (D.sheetTop + D.knob)) < 1e-6, `${m.heightM}`);
+  for (let i = 0; i < m.positions.length; i += 3) {
+    assert.ok(Math.abs(m.positions[i]) <= D.padX + 1e-6 && Math.abs(m.positions[i + 1]) <= D.padY + 1e-6, `vertex ${i / 3} outside the pad`);
+  }
+  // Only the krul has a model; the Urilift and the other urinals stay skipped types.
+  assert.deepEqual(Object.keys(URINAL_SUBTYPE), ['KRUL']);
+});
+
+test('krul urinal placement: entry away from the street; "twee krullen" places two along the kerb', () => {
+  assert.equal(urinalCount('Westermarkt Prinsengracht - twee krullen'), 2);
+  assert.equal(urinalCount('Singel tov Bloemenmarkt'), 1);
+  const one = instancesOf(rec({ kind: 'urinal', subtype: 'krul', facing: 0, heading: 90 }));
+  assert.equal(one.length, 1); assert.equal(one[0].model, 'urinal-krul');
+  // Street to the north: the entry (+y) faces south, yaw = -180 deg.
+  assert.ok(Math.abs(Math.cos(one[0].yaw) - -1) < 1e-9);
+  const two = instancesOf(rec({ kind: 'urinal', subtype: 'krul', facing: 0, heading: 90, count: 2 }));
+  assert.equal(two.length, 2);
+  const dx = (two[1].lng - two[0].lng) * 111320 * Math.cos(52.37 * Math.PI / 180), dy = (two[1].lat - two[0].lat) * 110540;
+  assert.ok(Math.abs(Math.hypot(dx, dy) - URINAL_PAIR_M) < 0.01 && Math.abs(dy) < 0.01, `${dx} ${dy}`);
 });

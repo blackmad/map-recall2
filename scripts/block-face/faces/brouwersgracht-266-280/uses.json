@@ -1,0 +1,344 @@
+{
+ "street": "Brouwersgracht",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T08:19:05.428Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012173478",
+   "addresses": [
+    "Brouwersgracht 280"
+   ],
+   "groundUnits": [
+    {
+     "address": "Baanbrugsteeg 11-H",
+     "use": "industriefunctie",
+     "areaM2": 64,
+     "bagId": "0363010000573831"
+    },
+    {
+     "address": "Brouwersgracht 280-H",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010012128969"
+    }
+   ],
+   "units": 10,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11763412216,
+     "lngLat": [
+      4.8841004,
+      52.3832335
+     ],
+     "tags": {
+      "name": "Formocha",
+      "shop": "tea"
+     },
+     "fetchedAt": "2026-11-10T08:19:05.428Z",
+     "match": "frontage",
+     "distanceM": 6.5
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012172657",
+   "addresses": [
+    "Brouwersgracht 278A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Brouwersgracht 278A-H",
+     "use": "kantoorfunctie",
+     "areaM2": 194,
+     "bagId": "0363010000597313"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012172651",
+   "addresses": [
+    "Brouwersgracht 278"
+   ],
+   "groundUnits": [
+    {
+     "address": "Brouwersgracht 278-H",
+     "use": "woonfunctie",
+     "areaM2": 414,
+     "bagId": "0363010001994418"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012173474",
+   "addresses": [
+    "Brouwersgracht 276"
+   ],
+   "groundUnits": [
+    {
+     "address": "Brouwersgracht 276",
+     "use": "kantoorfunctie",
+     "areaM2": 790,
+     "bagId": "0363010000597311"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11763368556,
+     "lngLat": [
+      4.8845695,
+      52.3829924
+     ],
+     "tags": {
+      "check_date": "2026-04-24",
+      "name": "Mondriaan Fonds",
+      "office": "foundation"
+     },
+     "fetchedAt": "2026-11-10T08:19:05.428Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012169521",
+   "addresses": [
+    "Brouwersgracht 272A",
+    "Brouwersgracht 272C",
+    "Brouwersgracht 272E",
+    "Brouwersgracht 272G",
+    "Brouwersgracht 272K",
+    "Brouwersgracht 272P",
+    "Brouwersgracht 272B",
+    "Brouwersgracht 272D",
+    "Brouwersgracht 272F",
+    "Brouwersgracht 272H",
+    "Brouwersgracht 272L",
+    "Brouwersgracht 272M",
+    "Brouwersgracht 272N",
+    "Brouwersgracht 272R",
+    "Brouwersgracht 272S",
+    "Brouwersgracht 272T",
+    "Brouwersgracht 274"
+   ],
+   "groundUnits": [
+    {
+     "address": "Brouwersgracht 272A",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000940228"
+    },
+    {
+     "address": "Brouwersgracht 272C",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000940229"
+    },
+    {
+     "address": "Brouwersgracht 272E",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000940230"
+    },
+    {
+     "address": "Brouwersgracht 272G",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000940231"
+    },
+    {
+     "address": "Brouwersgracht 272K",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000940232"
+    },
+    {
+     "address": "Brouwersgracht 272P",
+     "use": "woonfunctie",
+     "areaM2": 41,
+     "bagId": "0363010000940233"
+    },
+    {
+     "address": "Brouwersgracht 274",
+     "use": "kantoorfunctie",
+     "areaM2": 238,
+     "bagId": "0363010000978379"
+    },
+    {
+     "address": "Brouwersgracht 272B",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000983073"
+    },
+    {
+     "address": "Brouwersgracht 272D",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000983074"
+    },
+    {
+     "address": "Brouwersgracht 272F",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000983076"
+    },
+    {
+     "address": "Brouwersgracht 272H",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000983078"
+    },
+    {
+     "address": "Brouwersgracht 272L",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000983080"
+    },
+    {
+     "address": "Brouwersgracht 272M",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000983081"
+    },
+    {
+     "address": "Brouwersgracht 272N",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000983082"
+    },
+    {
+     "address": "Brouwersgracht 272R",
+     "use": "woonfunctie",
+     "areaM2": 41,
+     "bagId": "0363010000983084"
+    },
+    {
+     "address": "Brouwersgracht 272S",
+     "use": "woonfunctie",
+     "areaM2": 41,
+     "bagId": "0363010000983085"
+    },
+    {
+     "address": "Brouwersgracht 272T",
+     "use": "woonfunctie",
+     "areaM2": 41,
+     "bagId": "0363010000983087"
+    }
+   ],
+   "units": 17,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012169520",
+   "addresses": [
+    "Brouwersgracht 270A",
+    "Brouwersgracht 270B",
+    "Brouwersgracht 270C",
+    "Brouwersgracht 270D",
+    "Brouwersgracht 270E",
+    "Brouwersgracht 270F"
+   ],
+   "groundUnits": [
+    {
+     "address": "Brouwersgracht 270A",
+     "use": "kantoorfunctie",
+     "areaM2": 95,
+     "bagId": "0363010000758114"
+    },
+    {
+     "address": "Brouwersgracht 270B",
+     "use": "woonfunctie",
+     "areaM2": 85,
+     "bagId": "0363010000758115"
+    },
+    {
+     "address": "Brouwersgracht 270C",
+     "use": "woonfunctie",
+     "areaM2": 85,
+     "bagId": "0363010000758116"
+    },
+    {
+     "address": "Brouwersgracht 270D",
+     "use": "woonfunctie",
+     "areaM2": 85,
+     "bagId": "0363010000758117"
+    },
+    {
+     "address": "Brouwersgracht 270E",
+     "use": "woonfunctie",
+     "areaM2": 85,
+     "bagId": "0363010000758118"
+    },
+    {
+     "address": "Brouwersgracht 270F",
+     "use": "woonfunctie",
+     "areaM2": 78,
+     "bagId": "0363010000758119"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012169525",
+   "addresses": [
+    "Brouwersgracht 268",
+    "Brouwersgracht 268C",
+    "Brouwersgracht 268A",
+    "Brouwersgracht 268D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Brouwersgracht 268",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 404,
+     "bagId": "0363010000597308"
+    },
+    {
+     "address": "Brouwersgracht 268C",
+     "use": "woonfunctie",
+     "areaM2": 109,
+     "bagId": "0363010012088803"
+    },
+    {
+     "address": "Brouwersgracht 268A",
+     "use": "woonfunctie",
+     "areaM2": 279,
+     "bagId": "0363010012088804"
+    },
+    {
+     "address": "Brouwersgracht 268D",
+     "use": "woonfunctie",
+     "areaM2": 141,
+     "bagId": "0363010012088805"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012169326",
+   "addresses": [
+    "Brouwersgracht 266"
+   ],
+   "groundUnits": [
+    {
+     "address": "Brouwersgracht 266",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 394,
+     "bagId": "0363010000597035"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  }
+ ]
+}

@@ -10,15 +10,18 @@
  */
 import './env.ts';
 import { spawnSync } from 'node:child_process';
+import crypto from 'node:crypto';
 import fs from 'node:fs';
+import os from 'node:os';
 import path from 'node:path';
 import zlib from 'node:zlib';
 import sharp from 'sharp';
-import { findPands, lngLatToRd, loadRoads, nearestOnSeg, neighbourhood, normId, type Footprint } from '../pand-reference/core.ts';
-import { exposedWalls, listPanos, pickWall, rankPanos, type PanoPick, type Wall } from '../pand-reference/select.ts';
+import { findPands, lngLatToRd, loadRoads, nearestOnSeg, neighbourhood, normId, pointInRing, type Footprint } from '../pand-reference/core.ts';
+import { exposedWalls, FACADE_WINDOW, listPanos, pickWall, rankPanos, type PanoPick, type Wall } from '../pand-reference/select.ts';
 import { isLeaf } from '../../src/canalRecall/buildingRecipe/measureFacade.ts';
 import { aimPose, fpsFor, frameFor, gridConvergenceDeg, hfovDeg, wallOutline, wallPoint, CROWN_EXTRA_M, FRAME_H, FRAME_W, type FramePose, type WallQuad } from './pose.ts';
 import { cutPerspective, loadEquirect, type PanoSize, type Rgb8 } from './photo.ts';
+import { wallChange, wallLab, WALL_SAME_PCT } from './analyse.ts';
 import { bare, edgeOffsets, flagsFor, measureHalf, openingsNote, pickSamples, relativeColour, readPicks, skyline, skylineMedian, type EdgeRead, type Hit, type PickSample } from './analyse.ts';
 
 export const HELP = `npm run house:frames -- <input> [flags]
@@ -34,12 +37,19 @@ Input (one of)
   --list <file.json>     ["id", ...] or [{"pandId": "id", "bearing": 90, "at": [lng, lat], "key": "name"}, ...]
                          (bearing: prefer the wall facing it; at: the wall nearest this point, facing within 40 deg
                          of bearing; key: the output folder, for several walls of one pand;
+                         notPanos: ["panoId", ...] skips those captures (re-pick a pose flagged otherBuilding);
+                         maxDistM: this entry's --max-dist (a canal front from the far quay, a narrow street at 35 m);
                          chord: [[lng, lat], [lng, lat]], the wall's two end points, for a front stepped in edges under 3 m
                          that the exposed-wall rule drops: Nassaukade 146, 0363100012160704)
 
 Flags
   --year <yyyy>          only panoramas of that mission year
   --season winter|any    winter: Nov-Mar captures first (bare trees); default any
+  --prefer-obliquity <deg>  after the season, captures whose pose fits the whole wall (not clipped), then those that see
+                         the wall within <deg> of square, squarest first (the belt rule: winter, then under 30 deg; 45 deg
+                         and more only as a second view); default off
+  --max-dist <m>         panoramas up to <m> from the wall (default 35); 60 reaches across a canal, with --prefer-obliquity
+                         a capture that fits the whole wall wins over a nearer clipped one
   --query '<q>'          game query; ?engine=own&cam=fps is added. Before/after of a spec change: '?world=live&houseSpecs=0'
                          vs '?world=live' (the baked world-v1 cells carry the specs already, so houseSpecs=0 alone
                          changes nothing), or a staged world through WORLD_DIR / BUNDLES_DIR (tests/e2e/helpers.ts)
@@ -49,8 +59,25 @@ Flags
   --bearing <deg>        prefer the wall facing this bearing (+-50 deg) for every pand
   --max <n>              at most n pands (after the input order)
   --reopen-every <n>     re-open the game page after n poses (default 40; it also re-opens after a crash)
+  --before <dir>         a before/after: compare each game frame with <dir>/<key>/game.png (an earlier run of the same
+                         list) on the target wall. pose.json gets compare {pct of target-wall pixels changed (OKLab
+                         distance > 0.02), meanDE, wall OKLab L/C/hue before, after and photo, what the page decorated
+                         the pand with in each run}; <out>/<key>/triple.jpg sets photo | before | after side by side;
+                         a pair under 2 % changed is flagged sameAsBefore and printed as a WARNING: the flag compared
+                         did not reach the pixels (a baked world, a flag the mesh worker never sees, a guard holding the
+                         pand), and the pair proves nothing. With --lists, each list's before is <dir>/<basename of out>.
   --prep-only            pick, pose and cut, write <out>/job.json, no browser
   --post-only            redo the checks, pairs and sheets from <out> (after a browser run)
+  --lists <a.json:outA,b.json:outB>
+                         batch: several --list files in one browser session (one queue slot, one page, one dev
+                         server); each list's pairs, sheets and summary go to its own out dir, exactly as a separate
+                         --list run would write them (the page re-opens at each list, so frames match a separate
+                         run). The batch job is <first out>/batch-job.json. Other flags apply
+                         to every list; --out is ignored
+  --reuse-photos         take the pick, pose and photo cut from the cache when this entry was framed before with the
+                         same flags and the same frames/pose/photo code (a before/after re-run renders only game
+                         frames). Every run writes the cache: HOUSE_FRAMES_CACHE, default the main checkout's
+                         .cache/house-frames (prep/<entry hash>.json, photos/<pose hash>.jpg)
   --help
 
 Per pand: <out>/<pand>/{photo.jpg, game.png, pair.jpg, pose.json}; per 6 pairs: <out>/contact-N.jpg; <out>/summary.json.
@@ -63,7 +90,8 @@ stands at the panorama's position at its eye height (2.44 m over the ground, len
 looks 5-30 deg down (the game camera cannot look up: MAX_PITCH_DEG 85) and opens its vertical FOV (45-120 deg) until the
 wall and 1.5 m above it fit; a wall too tall for 120 deg is listed as clipped.
 
-Browser: tests/e2e/house-frames.spec.ts through /tmp/canal-pw.sh on PW_PORT (default: .worktree-port). One page: open
+Browser: tests/e2e/house-frames.spec.ts through /tmp/canal-pw.sh (CANAL_PW overrides) on PW_PORT (default:
+.worktree-port); never wrap house:frames in canal-pw.sh yourself (it takes its own slot). One page: open
 the route once; per pose teleport, hand the engine the pose (the view's solveFps is replaced on the live instance; no
 src/ change), settleWorld, hide the HUD, screenshot, pick the wall's surfaces (inspectBuilding).
 
@@ -85,8 +113,8 @@ Checks (pose.json)
 Review: docs/house-line.md §7. Builders are accepted on these pairs, read by opus or a human.
 `;
 
-type Entry = { id: string; key?: string; bearing?: number; at?: [number, number]; chord?: [[number, number], [number, number]] };
-type Args = { pands: Entry[]; year?: number; season: 'winter' | 'any'; query: string; label: string; out: string; panoSize: PanoSize; bearing?: number; max: number; reopenEvery: number; prepOnly: boolean; postOnly: boolean; inputName: string };
+type Entry = { id: string; key?: string; bearing?: number; at?: [number, number]; chord?: [[number, number], [number, number]]; notPanos?: string[]; maxDistM?: number };
+type Args = { pands: Entry[]; year?: number; season: 'winter' | 'any'; query: string; label: string; out: string; panoSize: PanoSize; bearing?: number; preferObliquityDeg?: number; maxDistM?: number; max: number; reopenEvery: number; prepOnly: boolean; postOnly: boolean; reusePhotos: boolean; before?: string; inputName: string };
 
 function arg(argv: string[], name: string): string | undefined {
   const i = argv.indexOf(`--${name}`);
@@ -110,11 +138,11 @@ async function parseArgs(argv: string[]): Promise<Args> {
     pands = (await pandsInBuurt(b)).map(f => ({ id: bare(f.id) })); inputName = `buurt ${b.code} ${b.name}`;
   } else if (arg(argv, 'list')) {
     const list = JSON.parse(fs.readFileSync(arg(argv, 'list')!, 'utf8'));
-    pands = list.map((e: any) => typeof e === 'string' ? { id: bare(e) } : { id: bare(String(e.pandId ?? e.id)), key: e.key, bearing: e.bearing, at: e.at, chord: e.chord }); inputName = `list ${path.basename(arg(argv, 'list')!)}`;
+    pands = list.map((e: any) => typeof e === 'string' ? { id: bare(e) } : { id: bare(String(e.pandId ?? e.id)), key: e.key, bearing: e.bearing, at: e.at, chord: e.chord, notPanos: e.notPanos, maxDistM: e.maxDistM }); inputName = `list ${path.basename(arg(argv, 'list')!)}`;
   }
   const season = arg(argv, 'season') === 'winter' ? 'winter' : 'any';
   const max = Number(arg(argv, 'max') ?? Infinity);
-  return { pands: pands.slice(0, max), year: arg(argv, 'year') ? Number(arg(argv, 'year')) : undefined, season, query: arg(argv, 'query') ?? '', label, out, panoSize: (arg(argv, 'pano-size') as PanoSize) ?? 'medium', bearing, max, reopenEvery: Number(arg(argv, 'reopen-every') ?? 40), prepOnly: argv.includes('--prep-only'), postOnly: argv.includes('--post-only'), inputName };
+  return { pands: pands.slice(0, max), year: arg(argv, 'year') ? Number(arg(argv, 'year')) : undefined, season, ...(arg(argv, 'prefer-obliquity') !== undefined ? { preferObliquityDeg: Number(arg(argv, 'prefer-obliquity')) } : {}), ...(arg(argv, 'max-dist') !== undefined ? { maxDistM: Number(arg(argv, 'max-dist')) } : {}), query: arg(argv, 'query') ?? '', label, out, panoSize: (arg(argv, 'pano-size') as PanoSize) ?? 'medium', bearing, max, reopenEvery: Number(arg(argv, 'reopen-every') ?? 40), prepOnly: argv.includes('--prep-only'), postOnly: argv.includes('--post-only'), reusePhotos: argv.includes('--reuse-photos'), before: arg(argv, 'before') ? path.resolve(arg(argv, 'before')!) : undefined, inputName };
 }
 
 // ---- what the game draws for a pand (route) -------------------------------------------------------------------------
@@ -260,17 +288,52 @@ async function prepare(entry: Entry, fp: Footprint | undefined, args: Args): Pro
   options.preferBearingDeg = entry.bearing ?? args.bearing;
   const centre = { x: fp.ring.reduce((s, p) => s + p.x, 0) / fp.ring.length, y: fp.ring.reduce((s, p) => s + p.y, 0) / fp.ring.length };
   const near = await neighbourhood(centre);
-  const { wall, note } = entry.chord ? wallChord(fp, entry.chord, entry.bearing) : entry.at ? wallAt(fp, near, entry.at, entry.bearing) : await pickWall(fp, near);
+  const picked = entry.chord ? wallChord(fp, entry.chord, entry.bearing) : entry.at ? wallAt(fp, near, entry.at, entry.bearing) : await pickWall(fp, near);
+  const wall = picked.wall; let note = picked.note;
   if (!wall) return { pandId, key, skip: note };
   const quad: WallQuad = { a: wall.a, b: wall.b, heightM: fp.height || 10 };
-  let ranked = rankPanos(wall, await listPanos(wall.mid)).filter(c => c.surface !== 'W');
+  // --max-dist widens the 35 m window (the far quay of a canal: Keizersgracht fronts fit there, not from the 5 m near quay).
+  const maxD = entry.maxDistM ?? args.maxDistM ?? FACADE_WINDOW.maxD;
+  let ranked = rankPanos(wall, await listPanos(wall.mid, maxD), { ...FACADE_WINDOW, maxD }).filter(c => c.surface !== 'W');
   if (args.year) ranked = ranked.filter(c => c.missionYear === args.year);
+  if (entry.notPanos?.length) ranked = ranked.filter(c => !entry.notPanos!.includes(c.panoId));
+  // --prefer-obliquity / --max-dist reach squarer, farther captures, and in a narrow street those stand on the next street
+  // with houses between them and the wall (lane F4, #379: 36 of 37 Jordaan poses). With either flag, a capture whose
+  // sight line to the wall (to its middle and both quarter points, 1 m up) crosses another footprint is dropped.
+  if (args.preferObliquityDeg !== undefined || maxD !== FACADE_WINDOW.maxD) {
+    const before = ranked.length, boxes = near.filter(o => o.id !== fp.id).map(o => ({ o, x0: Math.min(...o.ring.map(q => q.x)), x1: Math.max(...o.ring.map(q => q.x)), y0: Math.min(...o.ring.map(q => q.y)), y1: Math.max(...o.ring.map(q => q.y)) }));
+    const blocked = (c: PanoPick) => {
+      const cam = lngLatToRd([c.record.geometry.coordinates[0], c.record.geometry.coordinates[1]]);
+      let hits = 0;
+      for (const t of [0.25, 0.5, 0.75]) {
+        const w = { x: wall.a.x + (wall.b.x - wall.a.x) * t + wall.nx * 0.6, y: wall.a.y + (wall.b.y - wall.a.y) * t + wall.ny * 0.6 };
+        const len = Math.hypot(w.x - cam.x, w.y - cam.y), n = Math.ceil(len / 0.75);
+        for (let i = 1; i < n; i++) {
+          const q = { x: cam.x + (w.x - cam.x) * i / n, y: cam.y + (w.y - cam.y) * i / n };
+          if (boxes.some(b => q.x >= b.x0 && q.x <= b.x1 && q.y >= b.y0 && q.y <= b.y1 && pointInRing(q, b.o.ring))) { hits++; break; }
+        }
+      }
+      return hits >= 2;
+    };
+    ranked = ranked.filter(c => !blocked(c));
+    if (ranked.length < before) note += `; ${before - ranked.length} capture(s) without a line of sight dropped`;
+  }
   if (!ranked.length) return { pandId, skip: args.year ? `no panorama of ${args.year} in 5-35 m` : 'no panorama in 5-35 m (obliquity <= 55)' };
   const why: string[] = [note];
   // Winter first; glare and washed-out walls rejected (pre-pass over the first 3, extended to 8 while fewer than 2 pass);
   // then lowest foliage on the wall, then rank.
   const seasonKey = (c: PanoPick) => args.season === 'winter' && !WINTER.has(monthOf(c.timestamp)) ? 1 : 0;
-  const order = ranked.map((c, i) => ({ c, i })).sort((a, b) => seasonKey(a.c) - seasonKey(b.c) || a.i - b.i);
+  // --prefer-obliquity: inside a season, the captures within the limit first, squarest first (absent = rank order).
+  const lim = args.preferObliquityDeg, oblKey = (c: PanoPick) => lim === undefined ? 0 : c.obliquityDeg <= lim ? c.obliquityDeg : 1000 + c.obliquityDeg;
+  // ... and with it, captures whose pose fits the whole wall (no 'clipped top'/'sides') before the squarest: the squarest
+  // capture of a tall canal house is often 5 m in front of it, where 120 deg cannot hold the crown (lane F4, #379).
+  const clipMemo = new Map<PanoPick, number>();
+  const clipKey = (c: PanoPick) => {
+    if (lim === undefined) return 0;
+    if (!clipMemo.has(c)) { const pub = Number(c.record.geometry.coordinates[2]); clipMemo.set(c, aimPose({ lngLat: [c.record.geometry.coordinates[0], c.record.geometry.coordinates[1]], cameraNap: pub > 0 ? pub - 43.5 : null }, quad).clipped.length ? 1 : 0); }
+    return clipMemo.get(c)!;
+  };
+  const order = ranked.map((c, i) => ({ c, i })).sort((a, b) => seasonKey(a.c) - seasonKey(b.c) || clipKey(a.c) - clipKey(b.c) || oblKey(a.c) - oblKey(b.c) || a.i - b.i);
   const pool: { c: PanoPick; i: number; q: PanoQuality; reject?: string }[] = [];
   const judge = () => {
     const minWash = Math.min(...pool.map(p => p.q.washed ?? 1));
@@ -284,24 +347,63 @@ async function prepare(entry: Entry, fp: Footprint | undefined, args: Args): Pro
   }
   judge();
   const rejected = pool.filter(p => p.reject), live = pool.filter(p => !p.reject).length ? pool.filter(p => !p.reject) : [...pool].sort((a, b) => (a.q.glare ?? 0) - (b.q.glare ?? 0));
-  live.sort((a, b) => Math.round((a.q.leaf ?? 1) * 10) - Math.round((b.q.leaf ?? 1) * 10) || seasonKey(a.c) - seasonKey(b.c) || a.i - b.i);
+  live.sort((a, b) => (lim === undefined ? 0 : seasonKey(a.c) - seasonKey(b.c) || clipKey(a.c) - clipKey(b.c) || Number(a.c.obliquityDeg > lim) - Number(b.c.obliquityDeg > lim)) || Math.round((a.q.leaf ?? 1) * 10) - Math.round((b.q.leaf ?? 1) * 10) || seasonKey(a.c) - seasonKey(b.c) || oblKey(a.c) - oblKey(b.c) || a.i - b.i);
   const chosen = live[0], pick = chosen.c, foliage: number | null = chosen.q.leaf;
   why.push(`panorama ${pick.panoId}: rank ${chosen.i + 1} of ${ranked.length}${args.season === 'winter' ? `, ${WINTER.has(monthOf(pick.timestamp)) ? 'winter' : 'no winter capture'}` : ''}, foliage ${foliage == null ? '?' : (foliage * 100).toFixed(0) + '%'}, glare ${chosen.q.glare == null ? '?' : (chosen.q.glare * 100).toFixed(0) + '%'} (pre-pass over ${pool.length}${rejected.length ? `; rejected ${rejected.map(p => `${p.c.timestamp.slice(0, 10)} ${p.reject}`).join(', ')}` : ''}${chosen.reject ? '; every candidate rejected, least glare kept' : ''})`);
   const ll: [number, number] = [pick.record.geometry.coordinates[0], pick.record.geometry.coordinates[1]];
   const published = Number(pick.record.geometry.coordinates[2]);
   const pose = aimPose({ lngLat: ll, cameraNap: published > 0 ? published - 43.5 : null }, quad);
   const frame = frameFor(pose);
-  const img = await loadEquirect(pick.record, args.panoSize);
-  if (!img) return { pandId, skip: `panorama ${pick.panoId} did not load` };
-  const cut = cutPerspective(img, frame, gridConvergenceDeg(ll));
   const dir = path.join(args.out, key);
   fs.mkdirSync(dir, { recursive: true });
-  await sharp(Buffer.from(cut.data), { raw: { width: cut.width, height: cut.height, channels: 3 } }).jpeg({ quality: 85 }).toFile(path.join(dir, 'photo.jpg'));
+  const photoFile = path.join(cacheDir('photos'), `${hashOf({ pano: pick.record._links?.equirectangular_medium?.href ?? pick.panoId, size: args.panoSize, pose, code: codeHash() })}.jpg`);
+  if (args.reusePhotos && fs.existsSync(photoFile)) fs.copyFileSync(photoFile, path.join(dir, 'photo.jpg'));
+  else {
+    const img = await loadEquirect(pick.record, args.panoSize);
+    if (!img) return { pandId, skip: `panorama ${pick.panoId} did not load` };
+    const cut = cutPerspective(img, frame, gridConvergenceDeg(ll));
+    await sharp(Buffer.from(cut.data), { raw: { width: cut.width, height: cut.height, channels: 3 } }).jpeg({ quality: 85 }).toFile(path.join(dir, 'photo.jpg'));
+    fs.copyFileSync(path.join(dir, 'photo.jpg'), photoFile);
+  }
   const { record, ...rest } = pick;
   return {
     pandId, key, street: await streetName(wall), wall: quad, wallLenM: +wall.len.toFixed(2), pick: { ...rest, url: record._links?.equirectangular_medium?.href ?? '' }, pose, hfovDeg: +hfovDeg(pose).toFixed(1),
     samples: pickSamples(frame, pose, quad), foliage, candidates: ranked.length, route: routeOf(pandId, ll, args.query), why,
   };
+}
+
+// ---- cache (--reuse-photos) ----------------------------------------------------------------------------------------
+// prep/<entry hash>.json: a Prepared record (route recomputed per run: it depends on --query); photos/<pose hash>.jpg: the
+// cut. Both keys include a hash of this tool's own pose/photo/pick code, so a change there misses the cache.
+const CACHE = process.env.HOUSE_FRAMES_CACHE ?? path.join(os.homedir(), 'Code/map-recall2/.cache/house-frames');
+function cacheDir(sub: string): string { const d = path.join(CACHE, sub); fs.mkdirSync(d, { recursive: true }); return d; }
+const hashOf = (v: unknown) => crypto.createHash('sha1').update(JSON.stringify(v)).digest('hex').slice(0, 20);
+let codeHashMemo = '';
+function codeHash(): string {
+  if (!codeHashMemo) {
+    const h = crypto.createHash('sha1'), here = path.dirname(new URL(import.meta.url).pathname);
+    for (const f of ['frames.ts', 'pose.ts', 'photo.ts', '../pand-reference/select.ts']) h.update(fs.readFileSync(path.join(here, f)));
+    codeHashMemo = h.digest('hex').slice(0, 12);
+  }
+  return codeHashMemo;
+}
+const prepKey = (e: Entry, args: Args) => hashOf({ e: { id: e.id, key: e.key, bearing: e.bearing, at: e.at, chord: e.chord }, bearing: args.bearing, year: args.year, season: args.season, size: args.panoSize, code: codeHash() });
+/** A cached Prepared for the entry with its photo copied into <out>/<key>, or null. */
+function cachedPrep(e: Entry, args: Args): Prepared | null {
+  const f = path.join(cacheDir('prep'), `${prepKey(e, args)}.json`);
+  if (!fs.existsSync(f)) return null;
+  const c = JSON.parse(fs.readFileSync(f, 'utf8')) as Prepared & { photo: string };
+  if (!fs.existsSync(c.photo)) return null;
+  const dir = path.join(args.out, c.key);
+  fs.mkdirSync(dir, { recursive: true });
+  fs.copyFileSync(c.photo, path.join(dir, 'photo.jpg'));
+  const { photo: _photo, ...prep } = c;
+  return { ...prep, route: routeOf(prep.pandId, prep.pose.lngLat, args.query), why: [...prep.why.filter(w => !w.startsWith('reused')), 'reused the cached pick, pose and photo cut (--reuse-photos)'] };
+}
+function storePrep(e: Entry, args: Args, prep: Prepared) {
+  const photo = path.join(cacheDir('photos'), `${hashOf({ pano: prep.pick.url || prep.pick.panoId, size: args.panoSize, pose: prep.pose, code: codeHash() })}.jpg`);
+  if (!fs.existsSync(photo)) fs.copyFileSync(path.join(args.out, prep.key, 'photo.jpg'), photo);
+  fs.writeFileSync(path.join(cacheDir('prep'), `${prepKey(e, args)}.json`), JSON.stringify({ ...prep, photo }));
 }
 
 /** Greedy nearest-neighbour order, so the page streams neighbouring tiles from one pose to the next. */
@@ -319,13 +421,19 @@ function spatialOrder<T extends { pose: FramePose }>(items: T[]): T[] {
 
 // ---- pairs and sheets -----------------------------------------------------------------------------------------------
 const esc = (s: string) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+/** A frame at the pose's size (a game.png taken at another viewport is resized, as post() does for the game half). */
+async function readSized(file: string, width: number, height: number): Promise<Rgb8> {
+  const { data, info } = await sharp(file).removeAlpha().resize(width, height, { fit: 'fill' }).raw().toBuffer({ resolveWithObject: true });
+  return { width: info.width, height: info.height, data: new Uint8Array(data) };
+}
+
 async function readRgb(file: string): Promise<Rgb8> {
   const { data, info } = await sharp(file).removeAlpha().raw().toBuffer({ resolveWithObject: true });
   return { width: info.width, height: info.height, data: new Uint8Array(data.buffer, data.byteOffset, data.byteLength) };
 }
 
 /** The crop both halves share: the outline (with the crown allowance) plus 30 % context, square where the frame allows. */
-function cropBox(pose: FramePose, wall: WallQuad): { left: number; top: number; width: number; height: number } {
+export function cropBox(pose: FramePose, wall: WallQuad): { left: number; top: number; width: number; height: number } {
   const f = frameFor(pose), pts = [...wallOutline(f, pose, wall), ...wallOutline(f, pose, { ...wall, heightM: wall.heightM + CROWN_EXTRA_M })].filter(Boolean) as Array<{ x: number; y: number }>;
   if (!pts.length) return { left: 0, top: 0, width: pose.width, height: pose.height };
   let x0 = Math.min(...pts.map(p => p.x)), x1 = Math.max(...pts.map(p => p.x)), y0 = Math.min(...pts.map(p => p.y)), y1 = Math.max(...pts.map(p => p.y));
@@ -336,7 +444,7 @@ function cropBox(pose: FramePose, wall: WallQuad): { left: number; top: number; 
   return { left: Math.round(left), top: Math.round(top), width: Math.round(w), height: Math.round(h) };
 }
 
-function outlineSvg(pose: FramePose, wall: WallQuad): string {
+export function outlineSvg(pose: FramePose, wall: WallQuad): string {
   const f = frameFor(pose), o = wallOutline(f, pose, wall);
   if (o.some(p => !p)) return `<svg width="${pose.width}" height="${pose.height}" xmlns="http://www.w3.org/2000/svg"></svg>`;
   const pts = o.map(p => `${p!.x.toFixed(1)},${p!.y.toFixed(1)}`).join(' ');
@@ -369,6 +477,24 @@ async function pairImage(dir: string, r: any, halfPx: number, fontPx: number): P
   const labels = `<svg width="${W}" height="${halfPx}" xmlns="http://www.w3.org/2000/svg"><text x="8" y="${fontPx + 6}" font-family="Helvetica, Arial, sans-serif" font-size="${fontPx}" fill="#fff" stroke="#000" stroke-width="0.6">panorama</text><text x="${halfPx + 14}" y="${fontPx + 6}" font-family="Helvetica, Arial, sans-serif" font-size="${fontPx}" fill="#fff" stroke="#000" stroke-width="0.6">game</text></svg>`;
   return sharp({ create: { width: W, height: halfPx + capH, channels: 3, background: '#111' } })
     .composite([{ input: ph, left: 0, top: 0 }, { input: gm, left: halfPx + 6, top: 0 }, { input: Buffer.from(labels), left: 0, top: 0 }, { input: Buffer.from(svg), left: 0, top: halfPx }]).jpeg({ quality: 82 }).toBuffer();
+}
+
+const labText = (l: any) => l ? `L ${l.L.toFixed(2)} C ${l.C.toFixed(3)} h ${l.h}°` : '?';
+/** photo | before | after at gallery size (3 x 520 px, <= 1600 px wide), the wall outline on each, the change on the caption. */
+async function tripleImage(dir: string, beforeDir: string, r: any, halfPx = 520, fontPx = 14): Promise<Buffer> {
+  const pose: FramePose = r.pose, wall: WallQuad = r.wall, c = r.compare;
+  const [ph, bf, af] = await Promise.all([half(path.join(dir, 'photo.jpg'), pose, wall, halfPx), half(path.join(beforeDir, 'game.png'), pose, wall, halfPx), half(path.join(dir, 'game.png'), pose, wall, halfPx)]);
+  const W = halfPx * 3 + 12, d = (k: 'before' | 'after') => { const x = c.drawn?.[k]; return x ? (x.specRecipeWall ? `spec ${x.specRecipeWall}` : x.heldBrick ? 'held brick' : 'period') : '?'; };
+  const lines = [
+    `${r.key !== r.pandId ? r.key + ' ' : ''}${r.pandId}  ${r.street || '?'}  |  target wall ${c.pct}% of pixels changed (mean OKLab dE ${c.meanDE})${c.same ? '  SAME: the flag did not reach the pixels' : ''}`,
+    `wall OKLab  photo ${labText(c.lab.photo)}  |  before ${labText(c.lab.before)} (${d('before')})  |  after ${labText(c.lab.after)} (${d('after')})`,
+  ];
+  const capH = Math.round(fontPx * 1.45 * lines.length + fontPx * 0.8);
+  const svg = `<svg width="${W}" height="${capH}" xmlns="http://www.w3.org/2000/svg"><rect width="100%" height="100%" fill="#111"/>${lines.map((l, i) => `<text x="8" y="${Math.round(fontPx * 1.2 + i * fontPx * 1.45)}" font-family="Helvetica, Arial, sans-serif" font-size="${fontPx}" fill="${i === 0 && c.same ? '#ffb347' : '#eee'}">${esc(l)}</text>`).join('')}</svg>`;
+  const label = (t: string, x: number) => `<text x="${x}" y="${fontPx + 6}" font-family="Helvetica, Arial, sans-serif" font-size="${fontPx}" fill="#fff" stroke="#000" stroke-width="0.6">${esc(t)}</text>`;
+  const labels = `<svg width="${W}" height="${halfPx}" xmlns="http://www.w3.org/2000/svg">${label('panorama', 8)}${label(`before ${path.basename(path.dirname(beforeDir))}`, halfPx + 14)}${label(`after ${r.label}`, 2 * halfPx + 20)}</svg>`;
+  return sharp({ create: { width: W, height: halfPx + capH, channels: 3, background: '#111' } })
+    .composite([{ input: ph, left: 0, top: 0 }, { input: bf, left: halfPx + 6, top: 0 }, { input: af, left: 2 * halfPx + 12, top: 0 }, { input: Buffer.from(labels), left: 0, top: 0 }, { input: Buffer.from(svg), left: 0, top: halfPx }]).jpeg({ quality: 80 }).toBuffer();
 }
 
 async function contactSheets(out: string, results: any[], title: string): Promise<string[]> {
@@ -411,45 +537,71 @@ async function post(prep: Prepared, args: Args, job: any): Promise<any> {
   const flags = flagsFor(picks, measure.game, measure.photo, { crownM: prep.wall.heightM, game: skyOff.game.medianM, photo: skyOff.photo.medianM, above: cols.size }, colour);
   const advisory = { openings: openingsNote(measure.game, measure.photo, flags.missing) };
   const fpsUsed = g.picks?.fps ?? null;
-  const r = { pandId: prep.pandId, key: prep.key, street: prep.street, label: args.label, query: job.query, route: prep.route, why: prep.why, wall: prep.wall, wallLenM: prep.wallLenM, pick: prep.pick, pose: prep.pose, hfovDeg: prep.hfovDeg, fps: fpsFor(prep.pose), fpsUsed, foliage: prep.foliage, candidates: prep.candidates, edges, skyline: { ...sky, offset: skyOff }, picks, measure, colour, flags, advisory, settle: g.settle, ms: g.ms };
+  // The pand's wall colour (OKLab) in each half, and with --before the same wall in the earlier run's frame.
+  const lab = { photo: wallLab(photo, frame, prep.pose, prep.wall), game: wallLab(game, frame, prep.pose, prep.wall) };
+  let compare: Record<string, unknown> | null = null;
+  if (args.before) {
+    const beforePng = path.join(args.before, prep.key, 'game.png'), beforeJson = path.join(args.before, prep.key, 'game.json');
+    if (!fs.existsSync(beforePng)) compare = { before: args.before, error: 'no before frame' };
+    else {
+      const before = await readSized(beforePng, prep.pose.width, prep.pose.height), change = wallChange(before, game, frame, prep.pose, prep.wall);
+      compare = { before: args.before, ...(change ?? { error: 'wall off frame' }), lab: { photo: lab.photo, before: wallLab(before, frame, prep.pose, prep.wall), after: lab.game },
+        drawn: { before: fs.existsSync(beforeJson) ? JSON.parse(fs.readFileSync(beforeJson, 'utf8')).drawn ?? null : null, after: g.drawn ?? null } };
+      if (change?.same) {
+        (flags as Record<string, unknown>).sameAsBefore = `target wall ${change.pct}% changed vs ${path.basename(args.before)} (< ${WALL_SAME_PCT}%): the compared flag did not reach these pixels`;
+        console.warn(`WARNING ${prep.pandId} ${prep.key}: before == after on the target wall (${change.pct}% of its pixels changed, mean OKLab dE ${change.meanDE}); this pair proves nothing`);
+      }
+    }
+  }
+  const r = { pandId: prep.pandId, key: prep.key, street: prep.street, label: args.label, query: job.query, route: prep.route, why: prep.why, wall: prep.wall, wallLenM: prep.wallLenM, pick: prep.pick, pose: prep.pose, hfovDeg: prep.hfovDeg, fps: fpsFor(prep.pose), fpsUsed, foliage: prep.foliage, candidates: prep.candidates, edges, skyline: { ...sky, offset: skyOff }, picks, measure, colour, lab, ...(compare ? { compare } : {}), drawn: g.drawn ?? null, flags, advisory, settle: g.settle, ms: g.ms };
   fs.writeFileSync(path.join(dir, 'pose.json'), JSON.stringify(r, null, 1));
   fs.writeFileSync(path.join(dir, 'pair.jpg'), await pairImage(dir, r, 720, 15));
+  if (compare && !compare.error) fs.writeFileSync(path.join(dir, 'triple.jpg'), await tripleImage(dir, path.join(args.before!, prep.key), r));
   return r;
 }
 
 function quantile(xs: number[], q: number) { const s = [...xs].sort((a, b) => a - b); return s.length ? s[Math.min(s.length - 1, Math.floor(q * s.length))] : NaN; }
 
-export async function main(argv = process.argv.slice(2)) {
-  if (argv.includes('--help') || !argv.length) { console.log(HELP); return; }
-  const args = await parseArgs(argv);
-  fs.mkdirSync(args.out, { recursive: true });
-  const jobFile = path.join(args.out, 'job.json'), prepFile = path.join(args.out, 'prepared.json');
-  let prepared: Prepared[] = [], skipped: Skipped[] = [];
+type Job = { out: string; query: string; width: number; height: number; reopenEvery: number; settleMs: number; poses: Array<{ key: string; pandId?: string; out?: string; lngLat: [number, number]; headingDeg: number; fps: Record<string, unknown>; picks: Array<[number, number]> }> };
+const jobFor = (args: Args, prepared: Prepared[]): Job => ({ out: args.out, query: args.query, width: FRAME_W, height: FRAME_H, reopenEvery: args.reopenEvery, settleMs: 1200, poses: prepared.map(p => ({ key: p.key, pandId: p.pandId, out: args.out, lngLat: p.pose.lngLat, headingDeg: p.pose.headingDeg, fps: fpsFor(p.pose) as Record<string, unknown>, picks: p.samples.map(s => [s.x, s.y] as [number, number]) })) });
+
+/** Pick, pose and cut every entry of one input; writes <out>/prepared.json and <out>/job.json. */
+async function prepareAll(args: Args): Promise<{ prepared: Prepared[]; skipped: Skipped[] }> {
+  const prepared: Prepared[] = [], skipped: Skipped[] = [];
   const t0 = Date.now();
-  if (args.postOnly) ({ prepared, skipped } = JSON.parse(fs.readFileSync(prepFile, 'utf8')));
-  else {
-    if (!args.pands.length) { console.error('no pands: give --pands, --face, --buurt or --list\n\n' + HELP); process.exit(2); }
-    await loadRoads();
-    const found = await findPands(args.pands.map(p => p.id));
-    for (const e of args.pands) {
-      try {
-        const r = await prepare(e, found.get(normId(e.id)), args);
-        if ('skip' in r) { skipped.push(r); console.log(`${e.id}: skipped (${r.skip})`); }
-        else { prepared.push(r); console.log(`${e.id}: ${r.street} pano ${r.pick.timestamp.slice(0, 10)} ${r.pick.distM.toFixed(1)} m, heading ${r.pose.headingDeg.toFixed(0)}, look-down ${r.pose.lookDownDeg.toFixed(1)}, vfov ${r.pose.vfovDeg}${r.pose.clipped.length ? ` (clipped ${r.pose.clipped})` : ''}, ${r.route}`); }
-      } catch (err) { skipped.push({ pandId: e.id, skip: `error: ${(err as Error).message}` }); console.log(`${e.id}: error ${(err as Error).message}`); }
-    }
-    prepared = spatialOrder(prepared);
-    fs.writeFileSync(prepFile, JSON.stringify({ prepared, skipped }, null, 1));
-    const job = { out: args.out, query: args.query, width: FRAME_W, height: FRAME_H, reopenEvery: args.reopenEvery, settleMs: 1200, poses: prepared.map(p => ({ key: p.key, lngLat: p.pose.lngLat, headingDeg: p.pose.headingDeg, fps: fpsFor(p.pose), picks: p.samples.map(s => [s.x, s.y]) })) };
-    fs.writeFileSync(jobFile, JSON.stringify(job));
-    console.log(`prepared ${prepared.length}, skipped ${skipped.length} in ${((Date.now() - t0) / 1000).toFixed(0)} s; job ${jobFile}`);
-    if (args.prepOnly || !prepared.length) return;
-    const port = process.env.PW_PORT ?? (fs.existsSync('.worktree-port') ? fs.readFileSync('.worktree-port', 'utf8').trim() : '');
-    if (!port) { console.error('set PW_PORT (a private port): Playwright reuses whatever server holds its port'); process.exit(2); }
-    const res = spawnSync('/tmp/canal-pw.sh', ['npx', 'playwright', 'test', 'tests/e2e/house-frames.spec.ts', '--project=desktop', '--reporter=line'], { stdio: 'inherit', env: { ...process.env, PW_PORT: port, HOUSE_FRAMES_JOB: path.resolve(jobFile) } });
-    if (res.status !== 0) console.error(`browser run exited ${res.status}; posting whatever frames exist`);
+  fs.mkdirSync(args.out, { recursive: true });
+  const hits = new Map<Entry, Prepared>();
+  if (args.reusePhotos) for (const e of args.pands) { const c = cachedPrep(e, args); if (c) hits.set(e, c); }
+  const misses = args.pands.filter(e => !hits.has(e));
+  if (misses.length) await loadRoads();
+  const found = misses.length ? await findPands(misses.map(p => p.id)) : new Map();
+  for (const e of args.pands) {
+    const hit = hits.get(e);
+    if (hit) { prepared.push(hit); console.log(`${e.id}: cached pick, pose and photo (${hit.street} pano ${hit.pick.timestamp.slice(0, 10)}), ${hit.route}`); continue; }
+    try {
+      const r = await prepare(e, found.get(normId(e.id)), args);
+      if ('skip' in r) { skipped.push(r); console.log(`${e.id}: skipped (${r.skip})`); }
+      else { prepared.push(r); storePrep(e, args, r); console.log(`${e.id}: ${r.street} pano ${r.pick.timestamp.slice(0, 10)} ${r.pick.distM.toFixed(1)} m, heading ${r.pose.headingDeg.toFixed(0)}, look-down ${r.pose.lookDownDeg.toFixed(1)}, vfov ${r.pose.vfovDeg}${r.pose.clipped.length ? ` (clipped ${r.pose.clipped})` : ''}, ${r.route}`); }
+    } catch (err) { skipped.push({ pandId: e.id, skip: `error: ${(err as Error).message}` }); console.log(`${e.id}: error ${(err as Error).message}`); }
   }
-  const job = JSON.parse(fs.readFileSync(jobFile, 'utf8'));
+  const ordered = spatialOrder(prepared);
+  fs.writeFileSync(path.join(args.out, 'prepared.json'), JSON.stringify({ prepared: ordered, skipped }, null, 1));
+  fs.writeFileSync(path.join(args.out, 'job.json'), JSON.stringify(jobFor(args, ordered)));
+  console.log(`prepared ${ordered.length}, skipped ${skipped.length} in ${((Date.now() - t0) / 1000).toFixed(0)} s${hits.size ? ` (${hits.size} from the cache)` : ''}; job ${path.join(args.out, 'job.json')}`);
+  return { prepared: ordered, skipped };
+}
+
+/** One browser session for a job file, in a queue slot (the canal-pw.sh nesting guard keeps a wrapped caller in its slot). */
+function runBrowser(jobFile: string): void {
+  const port = process.env.PW_PORT ?? (fs.existsSync('.worktree-port') ? fs.readFileSync('.worktree-port', 'utf8').trim() : '');
+  if (!port) { console.error('set PW_PORT (a private port): Playwright reuses whatever server holds its port'); process.exit(2); }
+  const res = spawnSync(process.env.CANAL_PW ?? '/tmp/canal-pw.sh', ['npx', 'playwright', 'test', 'tests/e2e/house-frames.spec.ts', '--project=desktop', '--reporter=line'], { stdio: 'inherit', env: { ...process.env, PW_PORT: port, HOUSE_FRAMES_JOB: path.resolve(jobFile) } });
+  if (res.status !== 0) console.error(`browser run exited ${res.status}; posting whatever frames exist`);
+}
+
+/** Checks, pairs, sheets and summary for one input's out dir (after its frames exist). */
+async function postAll(args: Args, prepared: Prepared[], skipped: Skipped[]): Promise<void> {
+  const job = JSON.parse(fs.readFileSync(path.join(args.out, 'job.json'), 'utf8'));
   const results: any[] = [];
   for (const p of prepared) { const r = await post(p, args, job); results.push(r); if (r.error) console.log(`${p.pandId}: ${r.error}`); }
   const ok = results.filter(r => !r.error);
@@ -460,14 +612,77 @@ export async function main(argv = process.argv.slice(2)) {
   const summary = {
     input: args.inputName, label: args.label, query: args.query, pands: args.pands.length, prepared: prepared.length, skipped, framed: ok.length,
     alignment: { photoEdges: photoEdges.length, medianPct: +quantile(photoEdges, 0.5).toFixed(2), p90Pct: +quantile(photoEdges, 0.9).toFixed(2), over3: ok.flatMap(r => r.edges.photo.filter((e: EdgeRead) => e.found && e.side !== 'crown' && Math.abs(e.offsetPct) > 3).map((e: EdgeRead) => `${r.pandId} ${e.side} ${e.offsetPct}%`)), gameEdges: gameEdges.length, gameMedianPct: +quantile(gameEdges, 0.5).toFixed(2) },
-    flags: Object.fromEntries(['missing', 'otherBuilding', 'roofOffset', 'wallColour'].map(k => [k, ok.filter(r => r.flags[k]).map(r => r.pandId)])),
+    flags: Object.fromEntries(['missing', 'otherBuilding', 'roofOffset', 'wallColour', 'sameAsBefore'].map(k => [k, ok.filter(r => r.flags[k]).map(r => r.pandId)])),
     advisory: { possibleBlankWall: ok.filter(r => r.advisory?.openings).map(r => r.pandId) },
     colourScores: ok.map(r => [r.pandId, r.colour?.score ?? null]),
-    throughput: timings ? { poses: timings.poses, wallS: +(timings.wallMs / 1000).toFixed(1), pairsPerMin: +(timings.poses / (timings.wallMs / 60000)).toFixed(2), opened: timings.opened, settleMedianS: +(quantile(timings.timings.map((t: any) => t.settle), 0.5) / 1000).toFixed(1) } : null,
+    ...(args.before ? { compare: { before: args.before, pairs: ok.filter(r => r.compare && !r.compare.error).length, same: ok.filter(r => r.compare?.same).map(r => r.key), changedPct: ok.map(r => [r.key, r.compare?.pct ?? null]) } } : {}),
+    throughput: timings ? { poses: timings.poses, wallS: +(timings.wallMs / 1000).toFixed(1), pairsPerMin: +(timings.poses / (timings.wallMs / 60000)).toFixed(2), opened: timings.opened, settleMedianS: +(quantile(timings.timings.map((t: any) => t.settle), 0.5) / 1000).toFixed(1), ...(timings.batch ? { batch: timings.batch } : {}) } : null,
     sheets,
   };
   fs.writeFileSync(path.join(args.out, 'summary.json'), JSON.stringify(summary, null, 1));
   console.log(JSON.stringify({ ...summary, skipped: skipped.length }, null, 1));
+  const same = (summary as any).compare?.same as string[] | undefined;
+  if (same?.length) console.warn(`WARNING: ${same.length} of ${(summary as any).compare.pairs} before/after pairs are the same on the target wall (${same.join(', ')}): the compared flag did not reach their pixels. Check the world (baked cells ignore runtime flags), the mesh worker's flags (engine/workerPool.ts withWorkerFlags) and the pand's guard before reading these pairs as a result.`);
+}
+
+/** `--lists a.json:outA,b.json:outB`: one argv per list (`--list a.json --out outA` plus the shared flags). */
+export function splitLists(argv: string[]): string[][] {
+  const spec = arg(argv, 'lists')!;
+  const shared: string[] = [];
+  for (let i = 0; i < argv.length; i++) {
+    const a = argv[i];
+    if (a === '--lists' || a === '--out' || a === '--list') { i++; continue; }
+    if (a.startsWith('--lists=') || a.startsWith('--out=') || a.startsWith('--list=')) continue;
+    shared.push(a);
+  }
+  return spec.split(',').filter(Boolean).map(pair => {
+    const i = pair.lastIndexOf(':');
+    if (i <= 0 || i === pair.length - 1) throw new Error(`--lists entry "${pair}": want <list.json>:<out dir>`);
+    return ['--list', pair.slice(0, i), '--out', pair.slice(i + 1), ...shared];
+  });
+}
+
+export async function main(argv = process.argv.slice(2)) {
+  if (argv.includes('--help') || !argv.length) { console.log(HELP); return; }
+  if (arg(argv, 'lists')) return batch(argv);
+  const args = await parseArgs(argv);
+  fs.mkdirSync(args.out, { recursive: true });
+  let prepared: Prepared[] = [], skipped: Skipped[] = [];
+  if (args.postOnly) ({ prepared, skipped } = JSON.parse(fs.readFileSync(path.join(args.out, 'prepared.json'), 'utf8')));
+  else {
+    if (!args.pands.length) { console.error('no pands: give --pands, --face, --buurt or --list\n\n' + HELP); process.exit(2); }
+    ({ prepared, skipped } = await prepareAll(args));
+    if (args.prepOnly || !prepared.length) return;
+    runBrowser(path.join(args.out, 'job.json'));
+  }
+  await postAll(args, prepared, skipped);
+}
+
+/** Several lists, one browser session: every pose in one job, list after list, each written to its list's out. */
+async function batch(argv: string[]) {
+  const runs: Array<{ args: Args; prepared: Prepared[]; skipped: Skipped[] }> = [];
+  for (const one of splitLists(argv)) {
+    const args = await parseArgs(one);
+    if (args.before) args.before = path.join(args.before, path.basename(args.out));
+    console.log(`== ${args.inputName} -> ${args.out}`);
+    if (args.postOnly) { const p = JSON.parse(fs.readFileSync(path.join(args.out, 'prepared.json'), 'utf8')); runs.push({ args, ...p }); continue; }
+    if (!args.pands.length) { console.error(`${args.inputName}: no pands`); process.exit(2); }
+    runs.push({ args, ...(await prepareAll(args)) });
+  }
+  const first = runs[0].args;
+  if (!first.postOnly && !first.prepOnly) {
+    // List by list, each in its own spatial order: the spec re-opens the page where the out dir changes, so a list's
+    // frames start from a fresh page exactly as in a separate run (interleaving lists would re-open at every switch).
+    const poses = runs.flatMap(r => jobFor(r.args, r.prepared).poses);
+    if (poses.length) {
+      const jobFile = path.join(first.out, 'batch-job.json');
+      fs.writeFileSync(jobFile, JSON.stringify({ ...jobFor(first, []), poses }));
+      console.log(`batch: ${poses.length} poses from ${runs.length} lists in one browser session; job ${jobFile}`);
+      runBrowser(jobFile);
+    }
+  }
+  if (first.prepOnly) return;
+  for (const r of runs) { console.log(`== post ${r.args.inputName} -> ${r.args.out}`); await postAll(r.args, r.prepared, r.skipped); }
 }
 
 if (process.argv[1] && path.resolve(process.argv[1]).endsWith(path.join('scripts', 'house-frames', 'frames.ts'))) {

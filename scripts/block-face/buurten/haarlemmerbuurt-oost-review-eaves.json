@@ -1,0 +1,31 @@
+{
+ "note": "Lane review pins from the 1 m-grid strip read (grid-crop.ts); the Opus strip review confirms or amends.",
+ "reviewed": "2026-11-10",
+ "pins": [
+  {
+   "pandId": "0363100012171144",
+   "eavesM": 13.0,
+   "reason": "Haarlemmerstraat 54: front eaves/gable foot on the 1 m grid"
+  },
+  {
+   "pandId": "0363100012171145",
+   "eavesM": 14.5,
+   "reason": "Haarlemmerstraat 52: front eaves/gable foot on the 1 m grid"
+  },
+  {
+   "pandId": "0363100012171148",
+   "eavesM": 10.4,
+   "reason": "Haarlemmerstraat 50: front eaves/gable foot on the 1 m grid"
+  },
+  {
+   "pandId": "0363100012171141",
+   "eavesM": 8.6,
+   "reason": "Haarlemmerstraat 48B: front eaves/gable foot on the 1 m grid"
+  },
+  {
+   "pandId": "0363100012171140",
+   "eavesM": 12.0,
+   "reason": "Haarlemmerstraat 46: front eaves/gable foot on the 1 m grid"
+  }
+ ]
+}

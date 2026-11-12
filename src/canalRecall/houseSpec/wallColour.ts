@@ -177,3 +177,51 @@ export function wallColourFamily(hex: string): WallColourFamily {
   if (L < FAMILY.darkL) return 'brick-dark';
   return h < FAMILY.redHue ? 'brick-red' : 'brick-brown';
 }
+
+/**
+ * The pale-warm guard (lane H9f, the judgement session's rulings on the house:frames wall read, 2026-11-10, round 2).
+ * Kinkerstraat 154359 and its row drew peach, orange and salmon where the photo is one uniform dark-brown brick row; the
+ * relative flag cannot see it because the whole row shifted together. It judges the DRAWN colour (the reading after the
+ * trim-misread rule and the lift, decorate.ts specWallColour), because a pale or a lifted reading is what draws peach:
+ *  1. hold when the drawn colour has OKLab L over `PALE_WARM.minL` and hue inside `PALE_WARM.hue` (peach, salmon, orange);
+ *  2. hold when the drawn L is more than `PALE_WARM.inversion` above the measured reading's L (a darkness inversion:
+ *     orange for dark brown outside the hue band). The black floor (`SPEC_WALL_LIFT.minL`) is the design, not an inversion,
+ *     so the reading is compared at no less than that floor.
+ * A held pand keeps its period colour, as SPEC_WALL_HOLD does per pand. Both apply to brick or unknown walls only: a
+ * stucco or light finish (register) or a reader's white, grey or buff family passes. Two agreeing capture dates would pass
+ * a reading too; the spec view carries one date per pand (provenance `at` is the latest of the sources), so that
+ * exception is not available and the family alone decides (`agreeingDates` is accepted for when the view carries it).
+ */
+export const PALE_WARM = { minL: 0.6, hue: [35, 70], inversion: 0.12 } as const;
+const LIGHT_FAMILIES: readonly WallFamily[] = ['white', 'grey', 'buff'];
+/** Rule 1 alone: a colour that reads peach, salmon or orange (pale and warm). */
+export function paleWarmReading(hex: string): boolean {
+  const [L, a, b] = hexToOklab(hex);
+  const h = ((Math.atan2(b, a) * 180) / Math.PI + 360) % 360;
+  return L > PALE_WARM.minL && h >= PALE_WARM.hue[0] && h <= PALE_WARM.hue[1];
+}
+/** True when the guard holds this drawn colour (`readingL`: the measured reading's OKLab L, for the inversion rule). */
+export function paleWarmHeld(drawnHex: string, ctx: { family?: WallFamily | null; render?: boolean; agreeingDates?: number; readingL?: number }): boolean {
+  if (ctx.render || (ctx.family && LIGHT_FAMILIES.includes(ctx.family)) || (ctx.agreeingDates ?? 1) >= 2) return false;
+  if (paleWarmReading(drawnHex)) return true;
+  return ctx.readingL !== undefined && hexToOklab(drawnHex)[0] - Math.max(ctx.readingL, SPEC_WALL_LIFT.minL) > PALE_WARM.inversion;
+}
+
+/**
+ * The held-wall fallback is family-aware (lane H9g, #345). A pand the pale-warm guard holds keeps its period colour, and on
+ * Kinkerstraat 154359 and its row the period colour the mesher resolves is a slate grey: the
+ * buurt profile, the period-wall enricher or the material prior, none of which knows the pand is brick. A held pand that is
+ * not stated light (stucco, painted, register light) is brick by the guard's own scope, so a grey (or a pale peach) fallback
+ * is swapped for a dark, red or brown entry of the period palette, picked by `pick` (a hash of the pand id, the same one
+ * the palette pick uses, so the choice is stable). A fallback already in a brick family stays.
+ */
+const HELD_BRICK_FAMILIES: readonly WallColourFamily[] = ['brick-dark', 'brick-red', 'brick-brown'];
+export function heldBrickWall(fallbackHex: string, palette: readonly string[] | null | undefined, pick: number): string {
+  if (HELD_BRICK_FAMILIES.includes(wallColourFamily(fallbackHex))) return fallbackHex;
+  const bricks = (palette ?? []).filter(h => HELD_BRICK_FAMILIES.includes(wallColourFamily(h)));
+  return bricks.length ? bricks[Math.abs(Math.trunc(pick)) % bricks.length] : fallbackHex;
+}
+/** A held pand takes the brick fallback unless its finish is stated light (stucco, painted, register light). */
+export function heldTakesBrick(ctx: { wallMaterial?: string; registerFinish?: string }): boolean {
+  return ctx.wallMaterial ? ctx.wallMaterial === 'brick' : ctx.registerFinish !== 'light';
+}

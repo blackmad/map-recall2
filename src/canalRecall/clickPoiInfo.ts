@@ -1,5 +1,6 @@
 /** Mapped information for the actual building selected by the mesh picker. */
 import { isLabelOnly, poiChipEnglish, poiChipKey } from './poiCardPolicy';
+import { insideLine, titlePlace } from './placeTitle';
 import { language, t } from '../i18n/index.ts';
 import type { BuildingHit, GeoJsonFeature, LandmarkNotice } from './game/worldTypes';
 
@@ -105,21 +106,30 @@ export class ClickPoiIndex {
     return best;
   }
 
+  /** "Inside: X (restaurant) + n more" for a building whose places do not title it; '' otherwise. */
+  inside(building: BuildingHit, hide?: (name: string) => boolean): string {
+    if (!building.footprint) return '';
+    const places = this.contained(building.footprint).filter(row => !isLabelOnly(row));
+    if (!places.length || titlePlace({ places, buildingName: building.name, footprint: building.footprint, heightMetres: building.height })) return '';
+    return insideLine(places, hide);
+  }
+
   card(building: BuildingHit): LandmarkNotice | null {
     if (!building.footprint) return null;
     // A place with nothing beyond its kind ("X is mapped as an artwork") is a label, not a card: the building answers.
     const places = this.contained(building.footprint).filter(row => !isLabelOnly(row));
     if (!places.length) return null;
-    // A mapped mall describes the physical complex; its tenant shops belong
-    // in the remaining information rather than naming the entire building.
-    const title = places.findIndex(row => row[1] === building.name || row[5] === 'a mall');
-    if (title > 0) places.unshift(...places.splice(title, 1));
+    // A place titles the building only when it is the building (C1, #367):
+    // by name, by building-scale kind (a mall), or because the building is
+    // small. Otherwise the building card leads and `insideLine` lists them.
+    const first = titlePlace({ places, buildingName: building.name, footprint: building.footprint, heightMetres: building.height });
+    if (!first) return null;
+    places.unshift(...places.splice(places.indexOf(first), 1));
     const summaries = places.slice(0, 8).map(row => `${row[1]} is mapped as ${row[5] || row[4]}${row[6] ? ` at ${row[6]}` : ''}.`
       + (row[8] ? ` ${row[8]}` : ''));
     const paragraphs = summaries.map((summary, i) => summary
       + (validPoiWebsite(places[i][7]) ? `\nWebsite: ${validPoiWebsite(places[i][7])}` : '')
       + `\nMap source: ${osmUrl(places[i][0])}`);
-    const first = places[0];
     return {
       id: `clicked-poi-${building.id}`, name: places.length > 1 ? `${first[1]} + ${places.length - 1} mapped places` : first[1],
       type: first[4], typeLabel: poiChipLabel(first), detail: `${first[1]} is mapped as ${first[5] || first[4]}${first[6] ? ` at ${first[6]}` : ''}.`,

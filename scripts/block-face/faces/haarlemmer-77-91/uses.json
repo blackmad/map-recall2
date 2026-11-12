@@ -1,0 +1,341 @@
+{
+ "street": "Haarlemmerstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T09:03:18.970Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012167537",
+   "addresses": [
+    "Haarlemmerstraat 77"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerstraat 77-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 49,
+     "bagId": "0363010001039735"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 558302963,
+     "lngLat": [
+      4.8915534,
+      52.3802931
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "77",
+      "addr:street": "Haarlemmerstraat",
+      "amenity": "pub",
+      "check_date": "2026-04-24",
+      "indoor_seating": "yes",
+      "name": "Harlem",
+      "outdoor_seating": "yes",
+      "toilets:wheelchair": "no",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-11-10T09:03:18.970Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012168426",
+   "addresses": [
+    "Haarlemmerstraat 79A",
+    "Haarlemmerstraat 79B",
+    "Haarlemmerstraat 79C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerstraat 79A",
+     "use": "winkelfunctie",
+     "areaM2": 78,
+     "bagId": "0363010000984924"
+    },
+    {
+     "address": "Haarlemmerstraat 79C",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010012127786"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 1223236843,
+     "lngLat": [
+      4.8914837,
+      52.3803114
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "79",
+      "addr:street": "Haarlemmerstraat",
+      "amenity": "restaurant",
+      "check_date": "2025-06-08",
+      "contact:facebook": "https://www.instagram.com/iltramezzinoamsterdam/",
+      "contact:instagram": "https://www.instagram.com/iltramezzinoamsterdam/",
+      "cuisine": "italian",
+      "name": "Il Tramezzino",
+      "opening_hours": "Mo,We-Su 09:00-18:00",
+      "website": "https://iltramezzinoamsterdam.nl/",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-11-10T09:03:18.970Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012168425",
+   "addresses": [
+    "Haarlemmerstraat 81"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerstraat 81-H",
+     "use": "winkelfunctie",
+     "areaM2": 131,
+     "bagId": "0363010000657021"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 1223236770,
+     "lngLat": [
+      4.891414,
+      52.3803297
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "81",
+      "addr:street": "Haarlemmerstraat",
+      "check_date": "2026-04-24",
+      "name": "Radio Foto Janssen",
+      "opening_hours": "Tu-Sa 11:00-17:00",
+      "shop": "camera",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-11-10T09:03:18.970Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012180016",
+   "addresses": [
+    "Haarlemmerstraat 83"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerstraat 83-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 88,
+     "bagId": "0363010000657024"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 1223236878,
+     "lngLat": [
+      4.8913443,
+      52.380348
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "83",
+      "addr:street": "Haarlemmerstraat",
+      "amenity": "restaurant",
+      "check_date": "2026-04-24",
+      "cuisine": "steak",
+      "indoor_seating": "yes",
+      "name": "San Pedro",
+      "outdoor_seating": "no",
+      "website": "https://www.sanpedro.nl/",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-11-10T09:03:18.970Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012180015",
+   "addresses": [
+    "Haarlemmerstraat 85"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerstraat 85-H",
+     "use": "winkelfunctie,woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000657032"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 1223236816,
+     "lngLat": [
+      4.8912747,
+      52.3803663
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "85",
+      "addr:street": "Haarlemmerstraat",
+      "hairdresser": "barber",
+      "name": "Menspire",
+      "shop": "hairdresser",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-11-10T09:03:18.970Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012180014",
+   "addresses": [
+    "Haarlemmerstraat 87"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerstraat 87-H",
+     "use": "winkelfunctie",
+     "areaM2": 75,
+     "bagId": "0363010000657038"
+    }
+   ],
+   "units": 6,
+   "osm": [
+    {
+     "type": "node",
+     "id": 1223236895,
+     "lngLat": [
+      4.891205,
+      52.3803846
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "87",
+      "addr:street": "Haarlemmerstraat",
+      "amenity": "restaurant",
+      "check_date": "2024-07-27",
+      "contact:facebook": "https://www.facebook.com/soupenzo",
+      "contact:instagram": "https://www.instagram.com/soupenzo/",
+      "cuisine": "soup;salad",
+      "indoor_seating": "yes",
+      "name": "Soup En Zo",
+      "opening_hours": "Mo-Fr 11:00-20:00; Sa 11:00-19:00; Su 12:00-19:00",
+      "outdoor_seating": "yes",
+      "website": "https://soupenzo.nl",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-11-10T09:03:18.970Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012180013",
+   "addresses": [
+    "Haarlemmerstraat 89"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerstraat 89-H",
+     "use": "woonfunctie",
+     "areaM2": 62,
+     "bagId": "0363010000657041"
+    }
+   ],
+   "units": 2,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2721581647,
+     "lngLat": [
+      4.891133,
+      52.3804078
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "89-H",
+      "addr:postcode": "1013EL",
+      "addr:street": "Haarlemmerstraat",
+      "check_date": "2024-07-27",
+      "name": "Less & More",
+      "shop": "jewelry",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-11-10T09:03:18.970Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012180012",
+   "addresses": [
+    "Haarlemmerstraat 91"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerstraat 91-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 77,
+     "bagId": "0363010000657043"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 558302964,
+     "lngLat": [
+      4.8910498,
+      52.3804361
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "91-H",
+      "addr:postcode": "1013EL",
+      "addr:street": "Haarlemmerstraat",
+      "amenity": "pub",
+      "check_date": "2024-07-27",
+      "indoor_seating": "yes",
+      "name": "De Blauwe Druif",
+      "outdoor_seating": "yes",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-11-10T09:03:18.970Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

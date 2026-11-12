@@ -428,3 +428,53 @@ export function narrowDryDeck(p: DeckProfile, core = DRY_CORE_HALF_M): void {
 export const DRY_WAY_DECK = 'dry-way-deck';
 /** A way deck of either kind (over water, or dry). */
 export const isWayDeckFamily = (f: string): boolean => f === 'way-deck' || f === DRY_WAY_DECK;
+
+/**
+ * Does a bridge way cross a railway track at grade under it (lane rails-uncover 2026-11-10, feedback bd03c59a "this all
+ * looks very broken height / rails": the Radarweg bridge over the rail trench west of Sloterdijk, OSM 489140283 and
+ * its three neighbours, drew no deck, so the street ran down the trench walls to the tracks and tore). Bridgeing a
+ * track is what the bridge is for, so such a way gets the dry way deck (bridgeGaps step 3) even while step 3 is off for
+ * the rest of the city (the bus station slivers, the IJtunnel trench). `tracks`: the non-bridge rail ways' polylines.
+ * A way along a track (an angle under RAIL_CROSS_MIN_DEG) is not crossing it.
+ */
+export const RAIL_CROSS_MIN_DEG = 20;
+export function crossesTrack(points: readonly Vec2[], tracks: readonly (readonly Vec2[])[]): boolean {
+  const minSin = Math.sin(RAIL_CROSS_MIN_DEG * Math.PI / 180);
+  let bx0 = Infinity, by0 = Infinity, bx1 = -Infinity, by1 = -Infinity;
+  for (const [x, y] of points) { bx0 = Math.min(bx0, x); by0 = Math.min(by0, y); bx1 = Math.max(bx1, x); by1 = Math.max(by1, y); }
+  for (const t of tracks) for (let j = 0; j + 1 < t.length; j++) {
+    const [cx, cy] = t[j], [dx, dy] = t[j + 1];
+    if (Math.max(cx, dx) < bx0 || Math.min(cx, dx) > bx1 || Math.max(cy, dy) < by0 || Math.min(cy, dy) > by1) continue;
+    for (let i = 0; i + 1 < points.length; i++) {
+      const [ax, ay] = points[i], [ex, ey] = points[i + 1];
+      const ux = ex - ax, uy = ey - ay, vx = dx - cx, vy = dy - cy, den = ux * vy - uy * vx;
+      const lu = Math.hypot(ux, uy), lv = Math.hypot(vx, vy);
+      if (!lu || !lv || Math.abs(den) < minSin * lu * lv) continue;
+      const s = ((cx - ax) * vy - (cy - ay) * vx) / den, r = ((cx - ax) * uy - (cy - ay) * ux) / den;
+      if (s >= 0 && s <= 1 && r >= 0 && r <= 1) return true;
+    }
+  }
+  return false;
+}
+
+/**
+ * A rail deck's span runs on over the relief's holes at its ends (lane rails-uncover): the elevation model is
+ * interpolated under the Radarweg abutments, 0.8-1.7 m under the road for a few metres past the survey's deck polygon,
+ * so the street dipped into a pothole at each end of the bridge. From each span end outward, while the ground lies more
+ * than RAIL_DECK_HOLE_M under the chord the deck lies on (the profile's first to last station), the span takes the
+ * station. Mutates `p.deck`; returns the metres added.
+ */
+export const RAIL_DECK_HOLE_M = 0.3;
+export function runOverEndHoles(p: DeckProfile, ground: (x: number, y: number) => number): number {
+  const n = p.s.length - 1, len = p.s[n] - p.s[0];
+  if (!(len > 0)) return 0;
+  const z0 = ground(p.x[0], p.y[0]), z1 = ground(p.x[n], p.y[n]), chord = (i: number) => z0 + (z1 - z0) * (p.s[i] - p.s[0]) / len;
+  const low = (i: number) => ground(p.x[i], p.y[i]) < chord(i) - RAIL_DECK_HOLE_M;
+  const before = p.deck[1] - p.deck[0];
+  let i0 = p.s.findIndex(s => s >= p.deck[0]);
+  while (i0 > 1 && low(i0 - 1)) i0--;
+  let i1 = n - [...p.s].reverse().findIndex(s => s <= p.deck[1]);
+  while (i1 < n - 1 && low(i1 + 1)) i1++;
+  p.deck = [Math.min(p.deck[0], p.s[i0]), Math.max(p.deck[1], p.s[i1])];
+  return p.deck[1] - p.deck[0] - before;
+}

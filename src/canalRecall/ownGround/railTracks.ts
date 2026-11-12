@@ -28,7 +28,7 @@
 
 import earcut from 'earcut';
 import { emptyMesh, vertex, vertexNormals, type MeshArrays } from './drape.js';
-import { levelAt, type WayLevel } from './railProfile.js';
+import { levelAt, RAIL_GRADE, type WayLevel } from './railProfile.js';
 import { inSpan, type RailSpan } from './railSpans.js';
 import { railBridgeMesh, type RailBridgeStats, type RailDeckStation, type UnderKind } from './railBridge.js';
 import type { HeightFn, Vec2 } from './surface.js';
@@ -123,6 +123,8 @@ export const isRailCell = (c: unknown): c is RailCell => !!c && typeof c === 'ob
 /** Cross-section (metres): half the bed's top, the shoulder's toe, the top over the ground, the rails. */
 // serviceDrop 0 (issue #145): the 3 cm step under the yard tracks drew dark ridges across Centraal's throat.
 export const RAIL_SECTION = { topHalf: 1.55, toeHalf: 2.3, topLift: 0.32, serviceDrop: 0, toeLift: 0.03, gauge: 1.435, railWidth: 0.14, railHeight: 0.16, flatLift: 0.05, slabDepth: 1.1, slabHalf: 2.45 } as const;
+/** A level crossing's ramp reaches at most this far along the track each side, metres (railMeshes `ramps`). */
+export const CROSSING_RAMP_MAX_M = 60;
 /** Max piece length along a track (metres): fine and far builds. Fine 6 (was 12, issue #145): a 12 m chord sagged under the 5 m land grid on the embankment crowns and the land drew over the bed (4.2 % of the Oostertoegang bed samples, 0.6 % at 6 m). */
 export const RAIL_STEP_M = { fine: 6, far: 24 } as const;
 /** rail-v1 as it shipped (build 04e3c88): 12 m fine pieces, the bed on the centreline's relief (`legacy`, the regressions' pre-fix build). */
@@ -151,7 +153,14 @@ export function railStripes(): [number, number][] {
   return [c - g, c + g].map(u => [u - RAIL_STRIPE.half, u + RAIL_STRIPE.half] as [number, number]);
 }
 /** Colours (sRGB): the bridge slab's concrete sides and soffit. */
-export const RAIL_COLOURS = { slab: [0.6, 0.59, 0.56] as [number, number, number], soffit: [0.46, 0.46, 0.44] as [number, number, number] };
+/**
+ * Vertex colours (linear) of the slab: its sides, its soffit, and the deck top under the beds' toes. The deck top is
+ * the ballast's tone (RAIL_TONES.ballast as the vertex colour reads it), not the slab's concrete (lane rails-uncover 2026-11-10,
+ * feedback 3ddc4cbf "minor surface issues in rail bridge", the Hemboog viaduct by the Sloterdijkerweg 4.8509,52.3892):
+ * in the V where two beds part at a switch, and along the 0.15 m past each toe, the concrete read as pale wedges and
+ * stripes on the ballast; on a real viaduct the ballast covers the deck from parapet to parapet.
+ */
+export const RAIL_COLOURS = { slab: [0.6, 0.59, 0.56] as [number, number, number], soffit: [0.46, 0.46, 0.44] as [number, number, number], deckTop: [0.494, 0.459, 0.416] as [number, number, number] };
 
 /**
  * Yard beds (issue #145, Oostertoegang / Dijksgracht: separate beds with beige sand and water between them read as
@@ -160,19 +169,19 @@ export const RAIL_COLOURS = { slab: [0.6, 0.59, 0.56] as [number, number, number
  * to the midpoint (plus `overlap`) and that side has no shoulder: adjacent tracks share one bed, one shoulder pair
  * for the group. Real yard and main-line centres are 4.0-6.5 m; separate corridors are 10 m+ apart.
  */
-export const RAIL_MERGE = { maxM: 7, maxDeg: 25, overlap: 0.05 } as const;
+export const RAIL_MERGE = { maxM: 7, maxDeg: 25, overlap: 0.05, /** A bridge track and one off the bridges share a bed where their levels differ by at most this (sideGap crossDeck). */ levelM: 0.5 } as const;
 
 /** Segments of every way, bucketed for the side-gap ray test. */
-export interface RailSegIndex { grid: Map<string, { way: number; a: Vec2; b: Vec2 }[]>; cellM: number }
+export interface RailSegIndex { grid: Map<string, { way: number; a: Vec2; b: Vec2; /** Metres along the way to `a`. */ s: number }[]>; cellM: number }
 export function railSegIndex(ways: readonly RailWay[], cellM = 16): RailSegIndex {
-  const grid = new Map<string, { way: number; a: Vec2; b: Vec2 }[]>();
+  const grid = new Map<string, { way: number; a: Vec2; b: Vec2; s: number }[]>();
   ways.forEach((w, way) => {
-    for (let i = 0; i + 1 < w.points.length; i++) {
+    for (let i = 0, s = 0; i + 1 < w.points.length; s += Math.hypot(w.points[i + 1][0] - w.points[i][0], w.points[i + 1][1] - w.points[i][1]), i++) {
       const a = w.points[i], b = w.points[i + 1];
       const gx0 = Math.floor(Math.min(a[0], b[0]) / cellM), gx1 = Math.floor(Math.max(a[0], b[0]) / cellM);
       const gy0 = Math.floor(Math.min(a[1], b[1]) / cellM), gy1 = Math.floor(Math.max(a[1], b[1]) / cellM);
       if ((gx1 - gx0 + 1) * (gy1 - gy0 + 1) > 400) continue;
-      for (let gx = gx0; gx <= gx1; gx++) for (let gy = gy0; gy <= gy1; gy++) { const k = `${gx}:${gy}`; (grid.get(k) ?? grid.set(k, []).get(k)!).push({ way, a, b }); }
+      for (let gx = gx0; gx <= gx1; gx++) for (let gy = gy0; gy <= gy1; gy++) { const k = `${gx}:${gy}`; (grid.get(k) ?? grid.set(k, []).get(k)!).push({ way, a, b, s }); }
     }
   });
   return { grid, cellM };
@@ -180,16 +189,21 @@ export function railSegIndex(ways: readonly RailWay[], cellM = 16): RailSegIndex
 
 /**
  * Distance (m) from `p` along the unit direction `dir` to the nearest segment of another way of the same deck that
- * runs within RAIL_MERGE.maxDeg of `tangent`; Infinity when none lies within RAIL_MERGE.maxM.
+ * runs within RAIL_MERGE.maxDeg of `tangent`; Infinity when none lies within RAIL_MERGE.maxM. With `crossDeck`, a way
+ * of the other deck (a bridge track beside one off the bridges) counts too where crossDeck(way, metres along it at the
+ * hit) says the two beds stand level there (lane rails-uncover 2026-11-10, feedback 3ddc4cbf: on the Hemboog viaduct by
+ * the Sloterdijkerweg a bridge track and a track off the bridges run 4-6 m apart on one deck, and the V between their
+ * separate beds showed the bridge deck's pale top as a wedge on the ballast).
  */
-export function sideGap(index: RailSegIndex, ways: readonly RailWay[], self: number, p: Vec2, dir: Vec2, tangent: Vec2): number {
+export function sideGap(index: RailSegIndex, ways: readonly RailWay[], self: number, p: Vec2, dir: Vec2, tangent: Vec2, crossDeck?: (way: number, s: number) => boolean): number {
   const max = RAIL_MERGE.maxM, cos = Math.cos(RAIL_MERGE.maxDeg * Math.PI / 180), c = index.cellM;
   const q: Vec2 = [p[0] + dir[0] * max, p[1] + dir[1] * max];
   const gx0 = Math.floor(Math.min(p[0], q[0]) / c), gx1 = Math.floor(Math.max(p[0], q[0]) / c);
   const gy0 = Math.floor(Math.min(p[1], q[1]) / c), gy1 = Math.floor(Math.max(p[1], q[1]) / c);
   let best = Infinity;
   for (let gx = gx0; gx <= gx1; gx++) for (let gy = gy0; gy <= gy1; gy++) for (const s of index.grid.get(`${gx}:${gy}`) ?? []) {
-    if (s.way === self || ways[s.way].bridge !== ways[self].bridge) continue;
+    const cross = ways[s.way].bridge !== ways[self].bridge;
+    if (s.way === self || (cross && !crossDeck)) continue;
     const ex = s.b[0] - s.a[0], ey = s.b[1] - s.a[1], el = Math.hypot(ex, ey);
     if (el < 1e-6 || Math.abs((ex * tangent[0] + ey * tangent[1]) / el) < cos) continue;
     // p + t·dir = a + u·e
@@ -197,7 +211,7 @@ export function sideGap(index: RailSegIndex, ways: readonly RailWay[], self: num
     if (Math.abs(den) < 1e-9) continue;
     const wx = s.a[0] - p[0], wy = s.a[1] - p[1];
     const t = (wx * ey - wy * ex) / den, u = (wx * dir[1] - wy * dir[0]) / den;
-    if (t > 0.01 && t < best && u >= 0 && u <= 1) best = t;
+    if (t > 0.01 && t < best && u >= 0 && u <= 1 && (!cross || crossDeck!(s.way, s.s + u * el))) best = t;
   }
   return best <= max ? best : Infinity;
 }
@@ -228,6 +242,8 @@ export interface RailBuildInput {
   floor?: boolean;
   /** rail-v1 as it shipped in build 04e3c88 (12 m pieces, bed on the centreline's relief, bridges on their ends' line): the regressions' pre-fix build only. */
   legacy?: boolean;
+  /** Level crossings ramp the bed down at the track's grade (CROSSING_RAMP_MAX_M), not in one piece (default true; false: the V of lane rails-classb's before). */
+  ramps?: boolean;
   /** Points whose floor is measured (a tunnel cut's box): no floor raise there (the trench's sides are not under the bed). */
   measured?: (x: number, y: number) => boolean;
   /** Points on a platform (railProfile.ts platformTest): AHN's ground there is the platform's top, not land under the bed. */
@@ -321,6 +337,24 @@ export function railMeshes(input: RailBuildInput): RailMeshes {
     const flat = pts.map(() => false);
     if (!way.bridge && input.atGrade) for (let i = 0; i + 1 < n; i++) if (!(onSpan && onSpan[i] && onSpan[i + 1]) && (own[i] || (i > 0 && own[i - 1]) || (i + 2 < n && own[i + 1])) && input.atGrade(pts[i], pts[i + 1])) flat[i] = flat[i + 1] = true;
     if (onSpan) for (let i = 0; i < n; i++) if (onSpan[i]) flat[i] = false;
+    // Crossing ramps (lane rails-uncover 2026-11-10): a level crossing pulls the bed onto the street (`flat`); the pieces
+    // either side come down to it at the track's grade (RAIL_GRADE) instead of in one 6 m piece, which drew a V up to
+    // 1.6 m deep where the profile lifted the bed (the Piet Kranenbergpad siding, the Arlandabrug footway). Every
+    // crossing of the way counts, owned here or not, so neighbouring cells ramp alike. Only lowers; the floor rule below
+    // still keeps the bed over the land along it.
+    if (!way.bridge && input.atGrade && input.ramps !== false && !input.legacy) {
+      const src: number[] = [];
+      for (let i = 0; i + 1 < n; i++) if (!(onSpan && onSpan[i] && onSpan[i + 1]) && input.atGrade(pts[i], pts[i + 1])) src.push(i, i + 1);
+      if (src.length) {
+        const g = RAIL_GRADE[way.kind];
+        for (let i = 0; i < n; i++) {
+          if (flat[i] || (onSpan && onSpan[i])) continue;
+          let cap = Infinity;
+          for (const j of src) { const d = Math.abs(along[i] - along[j]); if (d <= CROSSING_RAMP_MAX_M) cap = Math.min(cap, ground[j] + g * d); }
+          if (cap < z[i]) z[i] = Math.max(ground[i], cap);
+        }
+      }
+    }
     // Never under the ground: each piece's chord (centre and both top edges) stays over the land sampled along it,
     // both its stations raised by the piece's worst deficit; each toe over the highest land along its edge.
     const needed = (i: number) => (i > 0 && own[i - 1]) || (i < n - 1 && own[i]);
@@ -355,7 +389,9 @@ export function railMeshes(input: RailBuildInput): RailMeshes {
     const reach = (i: number, side: 1 | -1): number | null => {
       if (flat[i]) return null;
       const [nx, ny] = normals[i], j = Math.min(i, n - 2), tx = pts[j + 1][0] - pts[j][0], ty = pts[j + 1][1] - pts[j][1], tl = Math.hypot(tx, ty) || 1;
-      return yardReach(sideGap(segs, input.ways, wi, pts[i], [nx * side, ny * side], [tx / tl, ty / tl]));
+      // Across decks only on the profile's levels (both ways have one; the legacy build keeps its separate beds).
+      const crossDeck = level && !input.legacy ? (other: number, s: number) => { const l = input.levels!.get(input.ways[other]); return !!l && Math.abs(levelAt(l, s) - z[i]) <= RAIL_MERGE.levelM; } : undefined;
+      return yardReach(sideGap(segs, input.ways, wi, pts[i], [nx * side, ny * side], [tx / tl, ty / tl], crossDeck));
     };
     // Per station: the bed's five vertices (toe, top edge, top edge, toe) and the rails.
     const bedReach: [number | null, number | null][] = [];
@@ -405,7 +441,7 @@ export function railMeshes(input: RailBuildInput): RailMeshes {
           v(slab, sr[0], sr[1], st, 0, vv, RAIL_COLOURS.slab), v(slab, sr[0], sr[1], sb, 0, vv, RAIL_COLOURS.slab),
           v(slab, sl[0], sl[1], sb, 0, vv, RAIL_COLOURS.soffit), v(slab, sr[0], sr[1], sb, 0, vv, RAIL_COLOURS.soffit),
           // A deck top on the slab under the bed's toes (the bed's shoulders end on it).
-          v(slab, sl[0], sl[1], st + 0.01, 0, vv, RAIL_COLOURS.slab), v(slab, sr[0], sr[1], st + 0.01, 0, vv, RAIL_COLOURS.slab),
+          v(slab, sl[0], sl[1], st + 0.01, 0, vv, RAIL_COLOURS.deckTop), v(slab, sr[0], sr[1], st + 0.01, 0, vv, RAIL_COLOURS.deckTop),
         ]);
       } else slabIdx.push([]);
     }

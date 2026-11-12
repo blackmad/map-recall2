@@ -218,6 +218,18 @@ function dryWayDecksFlag(): boolean {
   if (typeof g.__canalRecallDryWayDecks === 'boolean') return g.__canalRecallDryWayDecks;
   return /[?&]dryWayDecks=(1|true|on)\b/.test(g.location?.search ?? '');
 }
+/** Deck spans where a street passes under a track off the bridges (railSpans.ts, lane rails-classb): on by default; `?railSpans=0` or `window.__canalRecallRailSpans = false` builds without them (the A/B at the Piet Kranenbergpad). */
+export function railSpansFlag(): boolean {
+  const g = globalThis as { __canalRecallRailSpans?: boolean; location?: { search?: string } };
+  if (typeof g.__canalRecallRailSpans === 'boolean') return g.__canalRecallRailSpans;
+  return !/[?&]railSpans=(0|false|off)\b/.test(g.location?.search ?? '');
+}
+/** Dry way decks for the bridge ways over a railway track (wayDecks.ts crossesTrack, lane rails-uncover): on by default; `?railDecks=0` or `window.__canalRecallRailDecks = false` is the before (the Radarweg bridge drew no deck). */
+export function railDecksFlag(): boolean {
+  const g = globalThis as { __canalRecallRailDecks?: boolean; location?: { search?: string } };
+  if (typeof g.__canalRecallRailDecks === 'boolean') return g.__canalRecallRailDecks;
+  return !/[?&]railDecks=(0|false|off)\b/.test(g.location?.search ?? '');
+}
 /** BGT open ground (open-ground-v1, groundSurface.ts; lane open-ground-look 2026-11-10): on by default; `?openGround=0` or `window.__canalRecallOpenGround = false` draws it as the land again (the before). */
 export function openGroundFlag(): boolean {
   const g = globalThis as { __canalRecallOpenGround?: boolean; location?: { search?: string } };
@@ -389,6 +401,21 @@ const UNGAINED = new Set(['hedge', 'furniture', 'bollard', 'tram', 'track']);
 const OFFSET: Partial<Record<GroundLayer, number>> = { deckTop: 1, park: 1, wood: 1, square: 1, parking: 1, ...PARK_RANK, klinker: 2, brick: 2, asphalt: 2, gravel: 3, cycle: 3, paving: 3, paint: 4, tram: 5 };
 /** redDedupe (lane R5-C1, issue #262): the red on its own plane, two offset steps over the asphalt (paint and rails above it); `?redDedupe=0` keeps OFFSET. */
 export const RED_OFFSET: Partial<Record<GroundLayer, number>> = { ...OFFSET, cycle: 4, paint: 5, tram: 6 };
+/**
+ * The railway bed and its rails take the offset of the highest surface they lie on (lane rails-uncover 2026-11-10,
+ * feedback 0664edc9 "weird uncovering effect on rails", Kimpoweg tram reservation 4.8408,52.3861). The bed stands
+ * 0.3 m over a gravel reservation, but gravel and paving carry polygonOffsetFactor -3 and the bed none: the factor
+ * scales with each triangle's depth slope, which grows with distance at a riding tilt, so from some tens of metres the
+ * gravel's pull beat the bed's 0.3 m and the gravel drew over the ballast and the rails in a saw-toothed edge (the
+ * land grid's triangles) that travelled with the rider. With the same offset as the surface under it, plain depth
+ * decides, near and far alike. `?railOffset=0` (or `window.__canalRecallRailOffset = false`) is the before.
+ */
+export const RAIL_OFFSET: Partial<Record<GroundLayer, number>> = { ballast: 3, track: 3 };
+export function railOffsetFlag(): boolean {
+  const g = globalThis as { __canalRecallRailOffset?: boolean; location?: { search?: string } };
+  if (typeof g.__canalRecallRailOffset === 'boolean') return g.__canalRecallRailOffset;
+  return !/[?&]railOffset=(0|false|off)\b/.test(g.location?.search ?? '');
+}
 
 /** three's `onUpload` callback (`this` is the attribute): drop the CPU copy. */
 function releaseArray(this: { array: unknown }): void { this.array = null; }
@@ -525,14 +552,14 @@ export class OwnGround {
   async load(root: string): Promise<void> {
     this.dispose(false);
     this.startup.loadAt ??= performance.now();
-    this.store = new GroundStore(httpFetchBytes(root), { parks: this.opts.parks, rails: this.opts.rails, roads: this.opts.roads, reliefTile: this.reliefLoader(root), prepareOnly: true, ...(groundPlanShareFlag() ? {} : { planShare: false }), ...(groundDeterministicFlag() ? {} : { deterministic: false }), ...(this.railRetryOn ? {} : { railRetry: false }), ...(bridgeGapsFlag() ? {} : { bridgeGaps: false }), ...(dryWayDecksFlag() ? { dryWayDecks: true } : {}), ...(roadSliversFlag() ? {} : { roadSlivers: false }), ...(portalEndsFlag() ? {} : { portalEnds: false }), ...(rampGapsFlag() ? {} : { rampGaps: false }), ...(crossingsFlag() ? {} : { crossings: false }) });
+    this.store = new GroundStore(httpFetchBytes(root), { parks: this.opts.parks, rails: this.opts.rails, roads: this.opts.roads, reliefTile: this.reliefLoader(root), prepareOnly: true, ...(groundPlanShareFlag() ? {} : { planShare: false }), ...(groundDeterministicFlag() ? {} : { deterministic: false }), ...(this.railRetryOn ? {} : { railRetry: false }), ...(bridgeGapsFlag() ? {} : { bridgeGaps: false }), ...(dryWayDecksFlag() ? { dryWayDecks: true } : {}), ...(railDecksFlag() ? {} : { railDecks: false }), ...(railSpansFlag() ? {} : { railSpans: false }), ...(roadSliversFlag() ? {} : { roadSlivers: false }), ...(portalEndsFlag() ? {} : { portalEnds: false }), ...(rampGapsFlag() ? {} : { rampGaps: false }), ...(crossingsFlag() ? {} : { crossings: false }) });
     this.ready = false;
     if (!/\/amsterdam\/?$/.test(root)) return;
     await this.store.init();
     this.startup.storeReadyAt ??= performance.now();
     try {
       const count = groundWorkersFlag(this.opts.workers || defaultGroundWorkers(this.opts.detail));
-      const init = { type: 'init', root, planShare: groundPlanShareFlag(), deterministic: groundDeterministicFlag(), parks: this.opts.parks, rails: this.opts.rails, railRetry: this.railRetryOn, ...(this.railRetryOn && this.opts.rails ? { railManifest: [...this.store.railCells] } : {}), farRails: farRailFlag(), farRailDrape: farRailDrapeFlag(), roads: this.opts.roads, bridgeGaps: bridgeGapsFlag(), dryWayDecks: dryWayDecksFlag(), bridgeCarry: bridgeCarryFlag(), redDedupe: redDedupeFlag(), portalClip: portalClipFlag(), portalEnds: portalEndsFlag(), rampGaps: rampGapsFlag(), crossings: crossingsFlag(), roadSlivers: roadSliversFlag(), openGround: openGroundFlag(), groundLook: this.opts.groundLook, compact: compactFlag(), detail: this.opts.detail, roadLook: roadLookFlag(), tiles: this.opts.tiles, nearTiles: this.opts.nearTiles, tileMin: TILE_MIN_TRIANGLES };
+      const init = { type: 'init', root, planShare: groundPlanShareFlag(), deterministic: groundDeterministicFlag(), parks: this.opts.parks, rails: this.opts.rails, railRetry: this.railRetryOn, ...(this.railRetryOn && this.opts.rails ? { railManifest: [...this.store.railCells] } : {}), farRails: farRailFlag(), farRailDrape: farRailDrapeFlag(), roads: this.opts.roads, bridgeGaps: bridgeGapsFlag(), dryWayDecks: dryWayDecksFlag(), bridgeCarry: bridgeCarryFlag(), redDedupe: redDedupeFlag(), portalClip: portalClipFlag(), portalEnds: portalEndsFlag(), rampGaps: rampGapsFlag(), crossings: crossingsFlag(), roadSlivers: roadSliversFlag(), openGround: openGroundFlag(), railSpans: railSpansFlag(), railDecks: railDecksFlag(), groundLook: this.opts.groundLook, compact: compactFlag(), detail: this.opts.detail, roadLook: roadLookFlag(), tiles: this.opts.tiles, nearTiles: this.opts.nearTiles, tileMin: TILE_MIN_TRIANGLES };
       // One fetch + gunzip per file for every worker (groundShare.ts): a channel per worker to one more instance of the bundle.
       const channels = count > 1 && groundShareFlag() ? Array.from({ length: count }, () => new MessageChannel()) : [];
       if (channels.length) {
@@ -1151,7 +1178,7 @@ export class OwnGround {
       // keeps its random stream.
       bare: std({ map: this.canvasTexture(256, 4, (g, s) => { noise(g, s, G.bare.base, 26, 2); dabs(g, s, G.bare.grit, 220, 1, 3); }), roughness: 1 }),
     };
-    for (const [layer, k] of Object.entries(redDedupeFlag() ? RED_OFFSET : OFFSET)) Object.assign(M[layer], { polygonOffset: true, polygonOffsetFactor: -k!, polygonOffsetUnits: -2 * k! });
+    for (const [layer, k] of Object.entries({ ...(redDedupeFlag() ? RED_OFFSET : OFFSET), ...(railOffsetFlag() ? RAIL_OFFSET : {}) })) Object.assign(M[layer], { polygonOffset: true, polygonOffsetFactor: -k!, polygonOffsetUnits: -2 * k! });
     // Level sunlit ground draws its palette luminance (groundLight.ts); objects standing on it keep the rig's light as the buildings do.
     for (const [layer, m] of Object.entries(M)) if (!UNGAINED.has(layer)) m.color.multiplyScalar(FLAT_GROUND_GAIN);
     // The overview → city blend: every ground material (not the draped overlays below) is present early and takes its
@@ -1631,7 +1658,7 @@ export class OwnGround {
             const i = Math.floor((x! - uniforms.x0) / uniforms.res), j = Math.floor((y! - uniforms.y0) / uniforms.res);
             if (i >= 0 && j >= 0 && i < mask.width && j < mask.height) cut = mask.data[(j * mask.width + i) * 2 + (channel === 'r' ? 0 : 1)] < 128;
           }
-          hits.push({ layer, z, cut, rank: OFFSET[layer] ?? 0 });
+          hits.push({ layer, z, cut, rank: OFFSET[layer] ?? RAIL_OFFSET[layer] ?? 0 });
         }
       });
     }

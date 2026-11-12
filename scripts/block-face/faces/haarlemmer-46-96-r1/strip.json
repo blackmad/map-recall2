@@ -1,0 +1,116 @@
+{
+ "face": "haarlemmer-46-96-r1",
+ "image": "staging/block-face/haarlemmer-46-96-r1/strip.jpg",
+ "pixelsPerMetre": 40,
+ "width": 376,
+ "height": 820,
+ "groundNAP": 2.337,
+ "heightM": 20.5,
+ "frame": {
+  "midRD": [
+   121319.96118750001,
+   488148.527
+  ],
+  "uRD": [
+   0.9191590847494973,
+   -0.3938865025898529
+  ],
+  "nRD": [
+   -0.3938865025898529,
+   -0.9191590847494973
+  ]
+ },
+ "x0M": -4.74,
+ "x1M": 4.66,
+ "date": "2024-11-21",
+ "coverage": 1,
+ "spans": [
+  {
+   "pandId": "0363100012171144",
+   "x0M": -4.74,
+   "x1M": 0.06,
+   "px": [
+    0,
+    192
+   ],
+   "date": "2024-11-21",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "b_20241121_1354_Track01_Sphere_00376",
+     "timestamp": "2024-11-21T13:12:54Z",
+     "distanceM": 5.9,
+     "obliquityDeg": 21.9,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "b_20241121_1354_Track01_Sphere_00377",
+     "timestamp": "2024-11-21T13:12:55Z",
+     "distanceM": 6.3,
+     "obliquityDeg": 27.9,
+     "missingFraction": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012171145",
+   "x0M": 0.06,
+   "x1M": 4.66,
+   "px": [
+    192,
+    376
+   ],
+   "date": "2024-11-21",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "b_20241121_1354_Track01_Sphere_00377",
+     "timestamp": "2024-11-21T13:12:55Z",
+     "distanceM": 5.8,
+     "obliquityDeg": 18,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "b_20241121_1354_Track01_Sphere_00378",
+     "timestamp": "2024-11-21T13:12:56Z",
+     "distanceM": 6.6,
+     "obliquityDeg": 32.3,
+     "missingFraction": 0
+    }
+   ]
+  }
+ ],
+ "candidatesByDate": {
+  "2020-04-24": 9,
+  "2019-01-15": 15,
+  "2017-03-27": 12,
+  "2021-03-11": 18,
+  "2018-05-03": 13,
+  "2022-04-21": 11,
+  "2021-12-29": 14,
+  "2025-06-16": 16,
+  "2022-06-22": 16,
+  "2024-11-21": 19,
+  "2016-11-22": 17,
+  "2020-01-10": 19,
+  "2021-09-15": 17,
+  "2022-12-15": 19,
+  "2019-05-13": 19,
+  "2023-01-16": 10,
+  "2024-12-11": 10,
+  "2019-05-16": 5,
+  "2018-05-02": 0,
+  "2022-10-07": 0,
+  "2020-04-22": 0,
+  "2020-08-31": 0
+ },
+ "description": "Rectified orthographic elevation of the whole face on the frontage planes: x = chunk-frame metres along the face (left→right seen from the street) from x0M, y = metres above the shared ground (groundNAP) from the bottom; grey = no panorama data. Per-pand spans list the panoramas median-fused for that frontage.",
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (CC BY 4.0; faces and number plates blurred by the publisher)",
+ "croppedFrom": {
+  "face": "haarlemmer-46-96",
+  "px": [
+   3442,
+   3818
+  ]
+ }
+}

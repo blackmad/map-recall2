@@ -8,7 +8,7 @@
 // such a track is a deck span where a street passes under it:
 //
 //   trigger  a street centreline (at grade: not a bridge, not a tunnel) crosses the track, and the street on both sides
-//            of the bed, just outside the deck's footprint, lies at least SPAN_CLEAR_M under the bed's floor (the
+//            of the bed, just outside the deck's footprint, lies at least SPAN_HEADROOM_M (was SPAN_CLEAR_M) under the bed's floor (the
 //            median of ROAD_SAMPLES samples per side, so one AHN outlier neither makes nor breaks a span), and the
 //            street does not climb towards the track on either side (ROAD_CLIMB_M: a path up an embankment to a level
 //            crossing on a dike drops away from the bed too, but it rises to meet it).
@@ -35,6 +35,14 @@ export interface RailSpan { s0: number; s1: number; clear: number; at: Vec2 }
 
 /** The street lies at least this far under the bed's floor on both sides to start a span, metres. */
 export const SPAN_CLEAR_M = 1.0;
+/**
+ * A span is a deck a rider passes under: the bed's floor at least this far over the street (the slab's 1.1 m plus a
+ * cyclist's 2.5 m), metres (lane rails-uncover 2026-11-10, user report on build 93440cb27 at the Piet Kranenbergpad,
+ * 4.85323,52.33879: "worse", torn ground under a 73 m deck whose soffit stood 0.2-0.5 m over the path). Under that the
+ * clearance is the profile's grade, not a viaduct (the Kranenbergpad siding runs at the path's level beside it, PDOK
+ * orthophoto): the track meets the street at a level crossing (railTracks.ts crossing ramps) instead.
+ */
+export const SPAN_HEADROOM_M = 3.6;
 /** The span continues while the land across the bed lies this far under the floor, metres. */
 export const SPAN_LAND_M = 0.5;
 /** The span reaches at most this far past the street's strip on each side, metres. */
@@ -86,7 +94,7 @@ function pointAt(pts: readonly Vec2[], cum: readonly number[], s: number): { p: 
  * The deck spans of one track off the bridges: where a street passes under its bed (see the header). `floor(s)` is the
  * bed's floor at distance s (railProfile.ts levelAt); `land` the riding surface the street and the land drape on.
  */
-export function underpassSpans(track: SpanTrack, floor: (s: number) => number, streets: readonly SpanStreet[], land: HeightFn, measured?: (x: number, y: number) => boolean): RailSpan[] {
+export function underpassSpans(track: SpanTrack, floor: (s: number) => number, streets: readonly SpanStreet[], land: HeightFn, measured?: (x: number, y: number) => boolean, headroom = SPAN_HEADROOM_M): RailSpan[] {
   if (track.bridge || track.points.length < 2) return [];
   const pts = track.points, cum = [0];
   for (let i = 1; i < pts.length; i++) cum.push(cum[i - 1] + Math.hypot(pts[i][0] - pts[i - 1][0], pts[i][1] - pts[i - 1][1]));
@@ -126,7 +134,7 @@ export function underpassSpans(track: SpanTrack, floor: (s: number) => number, s
       const side = (dir: 1 | -1) => ROAD_SAMPLES.map(o => land(x[0] + ux * dir * (reach + o), x[1] + uy * dir * (reach + o)));
       const sides = [side(1), side(-1)];
       const road = Math.max(...sides.map(median));
-      if (bed - road < SPAN_CLEAR_M) continue;
+      if (bed - road < Math.max(SPAN_CLEAR_M, headroom)) continue;
       // Climbing towards the track: inner samples above the outer ones.
       if (sides.some(v => median(v.slice(0, 2)) - median(v.slice(-2)) > ROAD_CLIMB_M)) continue;
       if (insideStrip(st, sx, 40) > (2 * (st.half + BED_TOP_HALF_M)) / sin + ALONG_EXTRA_M) continue;

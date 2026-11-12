@@ -1,0 +1,147 @@
+{
+ "schemaVersion": 1,
+ "kind": "house-type",
+ "id": "haarlemmer-shop-cornice-wide",
+ "district": "haarlemmerbuurt",
+ "description": "Haarlemmerdijk 19th-c. shop houses with WIDE multi-light windows under a white cornice: two axes, each a wide window of a centre light between narrow side lights under a top light, over a tall shop ground; 3.2-7 m fronts, eaves 8.8-10.6 m (Haarlemmerdijk 131, 133A)",
+ "fit": {
+  "widthM": [
+   3.2,
+   7.0
+  ],
+  "storeys": [
+   3
+  ]
+ },
+ "match": {
+  "years": [
+   1600,
+   1945
+  ],
+  "yearSlack": 0,
+  "eavesM": [
+   8.8,
+   10.6
+  ],
+  "stucco": false,
+  "crownMatch": false,
+  "crownStrict": false,
+  "materialVeto": true,
+  "baysByWidth": [
+   {
+    "maxWidthM": 99,
+    "bays": 2
+   }
+  ],
+  "crowns": {
+   "none": {
+    "none": true
+   },
+   "dormer": {
+    "riseM": [
+     0.6,
+     1.8
+    ],
+    "topWidthM": [
+     0.4,
+     3.0
+    ]
+   }
+  },
+  "note": "Haarlemmerdijk 117-143 (2022-12-15 strip, 1 m grid): 131 rows 4.8-6.3 / 6.6-8.4 m under a cornice 9.3-9.9 m; 133A rows 5.0-6.6 / 6.9-8.2 m under a neck gable from 9.2 m. Each axis is one wide window of three lights under a top light, which measureFacade reads as 2-4 columns (5-7 over the front): columnsPerBay [2, 4]. Two axes whatever the width. crownMatch/crownStrict off as the rest of the library: reviewer crown pins decide",
+  "mirrorForDoor": "left",
+  "columnsPerBay": [
+   2,
+   4
+  ]
+ },
+ "body": {
+  "storeys": 3,
+  "bays": 2,
+  "storeyHeights": [
+   4.3,
+   2.7,
+   2.6
+  ],
+  "windows": "casement-sidelights-toplight",
+  "windowSurround": "sill",
+  "windowHeights": [
+   0.55,
+   0.66,
+   0.66
+  ],
+  "headLines": [
+   0.8,
+   0.92,
+   0.84
+  ],
+  "windowShare": 0.74,
+  "cornice": "simple"
+ },
+ "crowns": {
+  "crowned": {
+   "gable": "cornice",
+   "crownCap": "pediment",
+   "crownCapSpan": "narrow",
+   "crownRise": 0.55,
+   "note": "a white cornice with a small ornamented crown piece over the middle (Haarlemmerdijk 131, 173479: cornice 9.3-9.9 m, crown to 11.5 m)"
+  },
+  "none": {
+   "gable": "cornice",
+   "note": "cornice only"
+  }
+ },
+ "grounds": {
+  "door-left": {
+   "doorBay": 0,
+   "basement": "none",
+   "note": "residential ground: house door on the left axis; shops come per pand from BAG/OSM (autoShopfront)"
+  }
+ },
+ "palettes": {
+  "haarlemmer-red-brown": {
+   "brick": "#6e4a3c",
+   "frame": "white-painted",
+   "door": "#2a2a28",
+   "stone": "#e8e4d8",
+   "cornice": "#e8e4d8",
+   "stoneMaterial": "painted"
+  }
+ },
+ "roof": {
+  "material": "bitumen",
+  "source": "front",
+  "form": "flat",
+  "evidence": "Haarlemmerdijk 131 (2022-12-15 strip): sky directly over the cornice and its crown piece; 3DBAG p95 9.91 m over a 9.6 m cornice, a near-flat roof. A front-hipped red saddle drew a roof face the strip never shows (the strip-sheet review of Haarlemmerdijk 6 rejected the same)"
+ },
+ "rhythm": {
+  "bays": "2 axes",
+  "identicalBays": "every upper storey alike",
+  "windowsPerStorey": "ground: a shop | upper: 2 wide three-light windows under top lights",
+  "symmetry": "symmetric above the ground",
+  "groundFloor": "a tall shop ground 4.4-4.9 m to the fascia top on the dijk and straat",
+  "signage": "per shop",
+  "roofline": "a plain white cornice, sometimes one dormer",
+  "photoRows": [
+   1,
+   2,
+   2
+  ],
+  "photoGroundRows": 1,
+  "photoGables": 1,
+  "schemaLimits": [
+   "the cornice frieze and consoles are a plain slab",
+   "the side lights are drawn as glazing bars of one opening, not separate frames"
+  ]
+ },
+ "evidence": [
+  {
+   "face": "haarlemmerdijk-117-143",
+   "pands": [
+    "173479",
+    "173480"
+   ],
+   "citation": "strip.jpg 2022-12-15, 1 m grid: two wide three-light windows per storey with top lights, rows 4.8-6.3 / 6.6-8.4 m (131), 5.0-6.6 / 6.9-8.2 m (133A)"
+  }
+ ]
+}

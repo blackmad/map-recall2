@@ -1,0 +1,228 @@
+{
+ "street": "Haarlemmerstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T08:34:31.554Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012171153",
+   "addresses": [
+    "Haarlemmerstraat 42"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerstraat 42-H",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 43,
+     "bagId": "0363010000656930"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2721578710,
+     "lngLat": [
+      4.8929559,
+      52.3800306
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "42-H",
+      "addr:postcode": "1013ES",
+      "addr:street": "Haarlemmerstraat",
+      "amenity": "fast_food",
+      "cuisine": "mediterranean",
+      "name": "Maoz Falafel",
+      "self_service": "partially",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "website": "https://maozfalafel.eu"
+     },
+     "fetchedAt": "2026-11-10T08:34:31.554Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 11001972006,
+     "lngLat": [
+      4.8928643,
+      52.3799732
+     ],
+     "tags": {
+      "access": "yes",
+      "amenity": "bicycle_parking",
+      "bicycle_parking": "stands",
+      "capacity": "4",
+      "covered": "no"
+     },
+     "fetchedAt": "2026-11-10T08:34:31.554Z",
+     "match": "frontage",
+     "distanceM": 7.6
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012171154",
+   "addresses": [
+    "Haarlemmerstraat 40"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerstraat 40-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 92,
+     "bagId": "0363010000656923"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012178172",
+   "addresses": [
+    "Haarlemmerstraat 38",
+    "Haarlemmerstraat 38A",
+    "Haarlemmerstraat 38B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerstraat 38",
+     "use": "winkelfunctie,woonfunctie",
+     "areaM2": 114,
+     "bagId": "0363010000656922"
+    },
+    {
+     "address": "Haarlemmerstraat 38A",
+     "use": "winkelfunctie",
+     "areaM2": 114,
+     "bagId": "0363010012107146"
+    },
+    {
+     "address": "Haarlemmerstraat 38B",
+     "use": "woonfunctie",
+     "areaM2": 130,
+     "bagId": "0363010012107147"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012178177",
+   "addresses": [
+    "Haarlemmerstraat 36A",
+    "Haarlemmerstraat 36B",
+    "Haarlemmerstraat 36C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerstraat 36A",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000656919"
+    },
+    {
+     "address": "Haarlemmerstraat 36B",
+     "use": "woonfunctie",
+     "areaM2": 89,
+     "bagId": "0363010000656920"
+    },
+    {
+     "address": "Haarlemmerstraat 36C",
+     "use": "winkelfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000656921"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2721577881,
+     "lngLat": [
+      4.8930853,
+      52.3799498
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "36A",
+      "addr:postcode": "1013ES",
+      "addr:street": "Haarlemmerstraat",
+      "email": "info@brandmission.nl",
+      "fair_trade": "yes",
+      "name": "BrandMission",
+      "opening_hours": "Mo 12:00-18:00; Tu-Sa 10:00-18:00; Su 13:00-17:00; PH off; easter +39 days 13:00-17:00; easter +50 days 13:00-17:00",
+      "organic": "yes",
+      "phone": "+31 20 770 87 61",
+      "shop": "clothes",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "website": "https://www.brandmission.nl/",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-11-10T08:34:31.554Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 11001972005,
+     "lngLat": [
+      4.8930225,
+      52.3798785
+     ],
+     "tags": {
+      "access": "yes",
+      "amenity": "bicycle_parking",
+      "bicycle_parking": "stands",
+      "capacity": "4",
+      "covered": "no"
+     },
+     "fetchedAt": "2026-11-10T08:34:31.554Z",
+     "match": "frontage",
+     "distanceM": 7.8
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012179143",
+   "addresses": [
+    "Haarlemmerstraat 34"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerstraat 34-H",
+     "use": "bijeenkomstfunctie,woonfunctie",
+     "areaM2": 84,
+     "bagId": "0363010000656916"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 3939447657,
+     "lngLat": [
+      4.8932089,
+      52.3799464
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "34",
+      "addr:postcode": "1013ES",
+      "addr:street": "Haarlemmerstraat",
+      "name": "Miss B by la Grotte",
+      "shop": "cannabis",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-11-10T08:34:31.554Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

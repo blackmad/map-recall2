@@ -1,5 +1,57 @@
 # Canal Recall — what is built
 
+**Wall colour truth; brickLift v2 stays off; facade benchmark round 0; tree silhouettes flag-off (2026-11-12, round 120).**
+- **Why the 2026-11-10 walls note showed identical pairs** (lane/wall-colour-truth-20261112, 660106102): its sheets were taken on bundles built before `SPEC_WALLS_HELD` flipped (ae430fc27 vs 0dd628d39 at 21:37, bundles rebuilt only in cfeb2c7a0 at 23:03), so both halves drew the period colour; and the note's pand 172620 is held by the pale-warm guard, so it can never change with that flag. On the published world the ~425 generic pands with a spec reading do draw it (baked into world-v1); pands without one draw the period palette (the orange terracotta and slate grey the user saw). The note is corrected with re-taken photo/before/after triples.
+- **Worker flags:** `meshBuildingFor` runs in the pool worker, whose `location.search` is its own script URL, so `?brickLift` and `?specWalls` never reached it; `engine/workerPool.ts withWorkerFlags` now forwards both (test).
+- **house:frames `--before <dir>`:** per pair the % of target-wall pixels changed (OKLab dE > 0.02 on a 48×32 grid), photo/before/after wall L/C/h, `triple.jpg`, and a `sameAsBefore` WARNING under 2 %. `trace-wall.ts` prints the Node side of the colour path.
+- **brickLift v2 is off by default** (`?brickLift=v2` to see it). Measured on 11 walls it halves the excess chroma but brings only 5 of 11 closer to the photo (mean dE 0.124 → 0.118) and turns some brown brick near-black grey (159937) or redder (160049). Spec walls draw about 0.10 L darker than the photo; three brick fronts draw as pale render. Wall colour is the F4 critic's #1 gap.
+- **F4 round 0** (lane/facade-f4-benchmark-20261112, c6d68d5a8; `house:critic`, `house:kit-gaps`, docs/house-line.md §10): 199-pand benchmark in 10 groups, 193 posed, 158 readable; four fresh Opus critics picked the game half 193 of 193 (fooled-rate 0). Gap queue: wall colour/tone 87 pairs, crown/gable 24, window columns 15, brick vs render 11, window kind 14, white surrounds/bands 12, roof/dormer 9, storeys 7. The below-1.5 m mask hid shopfronts; round 1 lowers it on shop groups. Archive: source-data `experiments/facade-benchmark/round-0/`.
+- **Tree silhouettes** (#371, f3e62458d): measured crown width/base per species behind `?treeShape=1`, default off, typology byte-identical off. Before flipping: the wider, lower crowns partly hide the rider in the Robusta park frame.
+
+**Browser queue Q1 (#378), What's New Plan tab, krul urinals (2026-11-12).**
+- **Q1:** `/tmp/canal-pw.sh` is now tracked in `scripts/browser-queue/` (install with `npm run install:browser-queue`, tests `npm run test:browser-queue`). Slots are first-come-first-served via tickets; a dead holder's slot is reclaimed on the next 2 s poll, a pid-less slot after 30 s, and any hold expires at 7200 s (measured longest legitimate job: check:canal 71 min under load). Events go to `/tmp/canal-pw.events.log`; `--status` shows holders. The pre-push hook runs the e2e smoke only for pushes to main and wraps it itself; lane-branch pushes are lint-only and take no slot. `house:frames --lists a.json:outA,b.json:outB` runs several lanes' lists in one browser session (119 s vs 223 s for two runs, same pairs within run-to-run noise) and `--reuse-photos` skips photo prep. Docs: `docs/browser-queue.md`.
+- **Plan tab:** `whats-new.html#plan` renders `coverage-plan.json` (the ordered coverage plan); the In progress list reads its `inProgress` instead of the stale `poi-work-queue.json`. The integrator keeps that file current.
+- **Krul urinals:** 38 `urinal-krul` instances (152 triangles) from the city's Openbare toiletten map (SELECTIE=KRUL, 37 points; Westermarkt is a pair). Street-furniture shots budget raised from 6 to 7 draws (one instanced draw per furniture type in view). Roof caps, orientation and the two concrete Van der Mey krullen are not expressed.
+
+**CI split into three parallel check:canal jobs; tree-crown check no longer needs a local-only commit (2026-11-12).**
+- Canal CI's single check:canal job passed its 45-minute limit from 2026-11-10 midday: check:rail-street alone takes ~17 min on the runner, and test:own-ground / test:building-recipes grew 50–80 % with the ground and house-line work. Every main run was cancelled, so Pages did not deploy after a332381a9 (2026-11-10 08:39 UTC).
+- `check:canal` is now `check:canal:core` (check-canal.ts) && `check:canal:rail` (bridge-gaps, rail-street) && `check:canal:rest`; CI runs the three as a matrix. Local behaviour is unchanged.
+- The runs that did finish failed in test:trees: `check-tree-crown-orientation.mjs` read its baseline with `git show 108ccf65`, a commit that exists only in local clones since the 2026-10-22 history rewrite. The two baseline files are vendored under `scripts/fixtures/tree-crown-orientation/`.
+- Follow-up: why check:rail-street takes 17+ min (TODO P1).
+
+**Spec walls released with a pale-warm guard; Kinkerstraat re-measured; held pands draw brick (2026-11-10, #345: H9f r2 165c6f544, H9g 68ef6a33d + cae4f8756).**
+- **H9f r2 (the flip):** `SPEC_WALLS_HELD = false`; `holds.test.ts` changed in the same commit.
+  - `paleWarmHeld` (wallColour.ts) judges the drawn colour: OKLab L > 0.60 with hue 35–70° on a brick or unknown wall keeps the period colour. Stucco/light finishes and reader families white/grey/buff pass.
+  - A darkness-inversion rule (drawn L more than 0.12 above the reading) is a safety net that adds 0 pands today. The black floor is exempt.
+  - Accepted by the judgement session on house:frames pairs (ui/2026-11-10-house-frames-walls-guard/).
+- **Held count: 91 of 419**, not the 57 the lane first reported. Both counts use the same 419 generic-path pands with a spec wall on the published extract. The 57 assumed brick when material is unstated; the game does not (brick is false when unstated).
+  - Judgement ruling: keep 91. An unstated pale-warm reading has no evidence either way. Revisit only if the Oud-West palette lane (#373) shows unstated pands are overwhelmingly brick in the photos.
+- **H9g:** kinker-31-49's light hexes (#c9a080 etc.) came from the overexposed right half of the 2024-12-11 strip.
+  - Re-fitted per pand from the row's overcast panorama: one dark brown, #41322b–#47403a.
+  - Held pands that are not stated light now take a brick entry from `PERIOD_WALLS.photo[archetype]` (`heldBrickWall`), never slate grey: 30 of 91 were grey before, 0 after.
+  - `house:preview` measures wall dL against the recorded re-fit source (`wallRefit.ts`) when a face intent has one. 154359 went from FAIL (dL −0.18 against the strip) to PASS (+0.098).
+- **kinker-31-49 chunk not installed.** It was never installed before, and its compile fails the GLB audit:
+  - 16 hole loops off the party planes;
+  - an `opening-outside` glass part.
+  - The lane had reported the audit as passing. It is sent back to fix the emitter, and its hand-back must carry report.json with `passed: true`.
+
+**Rail feedback fixed; the false Kranenbergpad span removed (2026-11-10, a1 lane, `docs/reports/rails-feedback-20261110.md`).**
+- **0664edc9 'weird uncovering effect on rails' (Kimpoweg):** the gravel and paving under the tram had polygonOffset −3 and the ballast/track none; the offset grows with distance at a riding tilt, so far ground drew over the tracks and the boundary travelled with the rider. `RAIL_OFFSET` gives ballast and track offset 3 (`?railOffset=0`). Evidence is a 6-step forward frame sequence (CPU pins cannot see draw order).
+- **3ddc4cbf (Hemboog viaduct):** a bridge and a non-bridge track 4–6 m apart at one level left the pale deck showing as a wedge; `sideGap` `crossDeck` shares one bed within 0.5 m (pin `hemboog-viaduct-bed`).
+- **bd03c59a (Radarweg):** OSM bridge ways over the Sloterdijk rail trench had no deck because dry way decks are off; `railDecks` (default on, `?railDecks=0`) decks only bridge ways that cross rail tracks (47 new decks; pin `radarweg-rail-bridge`, 108 m of track under a deck).
+- **Kranenbergpad got worse in 93440cb27:** the class-b span there was false: the siding runs at the path's level on the PDOK ortho, lifted only by the grade towards the ring embankment. A span now needs 3.6 m headroom (1.1 m slab + 2.5 m); level crossings ramp at the rail grade instead of a 6 m V. All three class-b spans are removed (none was real); `?railSpans=0` exists for A/B. Frans de Wollantstraat ratchet 242 → 246 (the ramps). Embankment feet, portals and cutting slopes there are owned by the terrain-shard plan.
+
+**Erf exceptions and glazed parts (2026-11-10, a1 lanes).**
+- **Two rideable erf exceptions** (`docs/reports/erf-exceptions-20261110.md`): erf stays out of the plaza rule city-wide; `ERF_EXCEPTIONS` in `routing/bgtPlazas.ts` is a closed, reviewed list of two: the ASC SDW forecourt (feedback 637f346b, 1,062 m² newly rideable, roof-terrace corner cut) and the Radarweg office apron (4f47f105, 91 m²; the inner courtyard stays blocked). Geometry fetched from PDOK into `scripts/routing/bgt-erf-exceptions.json`; ratchets flipped to passing pins in `test:canal-car`; `test:bgt-plazas` keeps the list closed.
+- **Glazed parts** (`docs/reports/glass-parts-20261110.md`, feedback fc427560): building tiles dropped `building:material`, so the IJdok oriel and skybridge drew as opaque blue boxes. `glazedMaterial.ts` reads glass/mirror tags, `stamp-glass-material.ts` stamps 143 features in 15 z14 tiles, and `glassParts.ts applyGlazing` gives every storey the existing curtain-wall cell (same program, opaque, byte-identical without the tag; pinned in `test:glass-parts`, now in `check:canal`).
+**H12 browser-free GLB first passes (2026-11-10, #362, 2d519f298, opus).**
+- `src/canalRecall/glbRaster/` is a Node GLB rasteriser on softRaster, with gltf-transform, meshopt and the lit look, and one view vocabulary.
+- render.ts, landmark-views and review-sheet now default to it; `--browser` keeps Chromium. house-preview/gate.ts stays on Chromium.
+- Speed: a 4-view sheet takes 0.33–0.41 s, Houthavenkade 26 6.1 s, and block-face review 2.2 s against 4.7 s in Chromium. Output is byte-identical across runs.
+- **The gate is the raster metrics** (judgement ruling): median wall dL 0.002, hue 0.2°, columns 20/25.
+  - Verdict agreement (19/25 strict) is advisory: Chromium agrees with itself on only 20/25 under a quarter-pixel nudge, so measureFacade is the noise.
+  - Release stays on house:frames pairs. `test:glb-raster` joins check:canal.
+
 **Spec holds pinned (2026-11-10, integrator).**
 - **What happened:** H9 r1 (cd6129a19) set `SPEC_WALLS_HELD = false`, and the H9 merge carried it into the local batch, so the earlier "merged with walls held" was wrong in local commits 312f0e92a..046e3ef0d. Nothing was pushed with walls released; origin/main kept `true`.
 - **The fix:**

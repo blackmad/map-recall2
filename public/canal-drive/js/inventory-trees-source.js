@@ -1,4 +1,7 @@
-import {treeTypology} from '../da-costa-block/tree-typology.js';
+import {treeTypology,setTreeShaper} from '../da-costa-block/tree-typology.js';
+// `?treeShape=1` (lane T-shape #371): measured crown silhouettes with per-tree jitter; off, the typology is unchanged.
+import {treeShaper} from '../../../src/canalRecall/trees/treeShape.ts';
+setTreeShaper(treeShaper);
 import {allotmentCanopyTrees,scopeAllotmentCrown} from './allotment-canopy.js';
 import {ViewResidency} from '../../../src/canalRecall/viewResidency.ts';
 import {foliageDisplayHex} from '../../../src/canalRecall/look/palette.ts';

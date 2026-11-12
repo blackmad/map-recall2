@@ -1,0 +1,385 @@
+{
+ "street": "Haarlemmerdijk",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T08:40:55.750Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012171352",
+   "addresses": [
+    "Haarlemmerdijk 149"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerdijk 149",
+     "use": "winkelfunctie",
+     "areaM2": 309,
+     "bagId": "0363010000955237"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2721294650,
+     "lngLat": [
+      4.8849047,
+      52.383843
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "149",
+      "addr:postcode": "1013KH",
+      "addr:street": "Haarlemmerdijk",
+      "amenity": "pharmacy",
+      "dispensing": "yes",
+      "drive_through": "no",
+      "healthcare": "pharmacy",
+      "name": "Medicijnman Apotheek Mouw & Kruysse",
+      "opening_hours": "Mo-Fr 08:30-12:30, Mo-Fr 13:15-17:30",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "website": "https://www.apotheek.nl/apothekers/apotheek-mouw-kruysse",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-11-10T08:40:55.750Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012173015",
+   "addresses": [
+    "Haarlemmerdijk 151",
+    "Haarlemmerdijk 151A",
+    "Haarlemmerdijk 151B",
+    "Haarlemmerdijk 151C",
+    "Haarlemmerdijk 153",
+    "Haarlemmerdijk 155A",
+    "Haarlemmerdijk 155B",
+    "Haarlemmerdijk 155C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerdijk 151",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000656198"
+    },
+    {
+     "address": "Haarlemmerdijk 151A",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010012108116"
+    },
+    {
+     "address": "Haarlemmerdijk 151B",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010012108117"
+    },
+    {
+     "address": "Haarlemmerdijk 151C",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010012108118"
+    },
+    {
+     "address": "Haarlemmerdijk 153",
+     "use": "winkelfunctie",
+     "areaM2": 233,
+     "bagId": "0363010012108119"
+    },
+    {
+     "address": "Haarlemmerdijk 155A",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010012108120"
+    },
+    {
+     "address": "Haarlemmerdijk 155B",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010012108121"
+    },
+    {
+     "address": "Haarlemmerdijk 155C",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010012108122"
+    }
+   ],
+   "units": 8,
+   "osm": [
+    {
+     "type": "node",
+     "id": 1223057230,
+     "lngLat": [
+      4.8848272,
+      52.3838986
+     ],
+     "tags": {
+      "name": "Number Nine",
+      "opening_hours": "Tu-Sa 10:00-18:00; Su,Mo 12:00-18:00",
+      "shop": "clothes",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-11-10T08:40:55.750Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012172950",
+   "addresses": [
+    "Haarlemmerdijk 157",
+    "Haarlemmerdijk 159C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerdijk 157",
+     "use": "winkelfunctie",
+     "areaM2": 37,
+     "bagId": "0363010012165455"
+    },
+    {
+     "address": "Haarlemmerdijk 159C",
+     "use": "woonfunctie",
+     "areaM2": 74,
+     "bagId": "0363010012571226"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012172951",
+   "addresses": [
+    "Haarlemmerdijk 159B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerdijk 159B",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010012571225"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012171348",
+   "addresses": [
+    "Haarlemmerdijk 161"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerdijk 161",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 944,
+     "bagId": "0363010012165456"
+    },
+    {
+     "address": "Haarlemmerdijk 161",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 2189,
+     "bagId": "0363010001172760"
+    }
+   ],
+   "units": 2,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2721294926,
+     "lngLat": [
+      4.8846118,
+      52.384009
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "161",
+      "addr:postcode": "1013KH",
+      "addr:street": "Haarlemmerdijk",
+      "amenity": "cinema",
+      "name": "The Movies",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "website": "https://www.themovies.nl",
+      "wheelchair": "no",
+      "wikidata": "Q1864855",
+      "wikipedia": "nl:The Movies (Amsterdam)"
+     },
+     "fetchedAt": "2026-11-10T08:40:55.750Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012172832",
+   "addresses": [
+    "Haarlemmerdijk 163",
+    "Haarlemmerdijk 163B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerdijk 163",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 68,
+     "bagId": "0363010012171882"
+    },
+    {
+     "address": "Haarlemmerdijk 163B",
+     "use": "woonfunctie",
+     "areaM2": 94,
+     "bagId": "0363010012171883"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012172834",
+   "addresses": [
+    "Haarlemmerdijk 169"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerdijk 169-H",
+     "use": "winkelfunctie,woonfunctie",
+     "areaM2": 35,
+     "bagId": "0363010000656217"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11416834348,
+     "lngLat": [
+      4.8844834,
+      52.3840879
+     ],
+     "tags": {
+      "name": "by Sarune",
+      "opening_hours": "Tu-Sa 10:00-21:00; Su,Mo 12:00-21:00",
+      "shop": "beauty"
+     },
+     "fetchedAt": "2026-11-10T08:40:55.750Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012172949",
+   "addresses": [
+    "Haarlemmerdijk 171"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerdijk 171-H",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010001172372"
+    }
+   ],
+   "units": 6,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11416824788,
+     "lngLat": [
+      4.8844382,
+      52.3841147
+     ],
+     "tags": {
+      "name": "(IM)MATERIAL",
+      "opening_hours": "Mo-Sa 12:00-18:00; Su 12:00-17:00",
+      "second_hand": "only",
+      "shop": "clothes",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-11-10T08:40:55.750Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012172948",
+   "addresses": [
+    "Haarlemmerdijk 173",
+    "Haarlemmerdijk 175A",
+    "Haarlemmerdijk 175B",
+    "Haarlemmerdijk 175C",
+    "Haarlemmerdijk 175D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerdijk 173",
+     "use": "kantoorfunctie",
+     "areaM2": 150,
+     "bagId": "0363010001016320"
+    },
+    {
+     "address": "Haarlemmerdijk 175A",
+     "use": "woonfunctie",
+     "areaM2": 64,
+     "bagId": "0363010001016322"
+    },
+    {
+     "address": "Haarlemmerdijk 175B",
+     "use": "woonfunctie",
+     "areaM2": 77,
+     "bagId": "0363010001016323"
+    },
+    {
+     "address": "Haarlemmerdijk 175C",
+     "use": "woonfunctie",
+     "areaM2": 77,
+     "bagId": "0363010001016324"
+    },
+    {
+     "address": "Haarlemmerdijk 175D",
+     "use": "woonfunctie",
+     "areaM2": 64,
+     "bagId": "0363010001016325"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 1222424087,
+     "lngLat": [
+      4.8843701,
+      52.3841295
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "173",
+      "addr:postcode": "1013KH",
+      "addr:street": "Haarlemmerdijk",
+      "email": "info@schaakengo.nl",
+      "name": "Schaak- en Go-winkel Het Paard",
+      "note": "chess, go, backgammon",
+      "opening_hours": "Mo 13:00-18:00; Tu,We 10:00-18:00; Th,Fr 10:00-18:00; Sa 10:00-18:00; Su 12:00-17:00",
+      "phone": "+31 20 624 1171",
+      "ref:vatin": "NL006271935B01",
+      "shop": "games",
+      "website": "https://www.schaakengo.nl",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-11-10T08:40:55.750Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

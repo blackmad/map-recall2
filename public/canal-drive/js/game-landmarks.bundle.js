@@ -2027,6 +2027,296 @@
     return (phrase || CATEGORY_CHIP[row[4]] || "place").toUpperCase();
   }
 
+  // src/canalRecall/placeKind.ts
+  function withArticle(phrase) {
+    const text = phrase.trim();
+    if (!text || /^(a|an|the)\s/i.test(text)) return text;
+    return `${/^[aeiou]/i.test(text) ? "an" : "a"} ${text}`;
+  }
+
+  // src/canalRecall/buildingFacts.ts
+  var BUILDING_TYPES = [
+    "warehouse",
+    "church",
+    "chapel",
+    "cathedral",
+    "mosque",
+    "synagogue",
+    "temple",
+    "school",
+    "university",
+    "hospital",
+    "train_station",
+    "industrial",
+    "office",
+    "retail",
+    "commercial",
+    "hotel",
+    "windmill",
+    "houseboat",
+    "civic",
+    "government",
+    "public",
+    "kindergarten",
+    "college",
+    "museum",
+    "theatre"
+  ];
+  var TYPE_LABELS = {
+    warehouse: "warehouse",
+    church: "church",
+    chapel: "chapel",
+    cathedral: "cathedral",
+    mosque: "mosque",
+    synagogue: "synagogue",
+    temple: "temple",
+    school: "school",
+    university: "university building",
+    hospital: "hospital",
+    train_station: "station building",
+    industrial: "industrial building",
+    office: "office building",
+    retail: "shop building",
+    commercial: "commercial building",
+    hotel: "hotel",
+    windmill: "windmill",
+    houseboat: "houseboat",
+    civic: "civic building",
+    government: "government building",
+    public: "public building",
+    kindergarten: "nursery school",
+    college: "college",
+    museum: "museum building",
+    theatre: "theatre"
+  };
+  var MONUMENT_FUNCTIONS = [
+    ["wonen", "housing"],
+    ["onderwijs en wetenschap", "education and science"],
+    ["religie", "worship"],
+    ["verkeer en vervoer", "transport"],
+    ["zorg en welzijn", "care and welfare"],
+    ["bestuur en recht", "government and justice"],
+    ["horeca, sport en recreatie", "hospitality, sport and recreation"],
+    ["landbouw en bosbouw", "farming"],
+    ["nutsvoorziening", "a public utility"],
+    ["industrie en ambacht", "industry and crafts"],
+    ["kunst en cultuur", "the arts"],
+    ["waterstaat", "water management"],
+    ["oorlog en defensie", "defence"],
+    ["begraven", "burial"],
+    ["herdenken", "remembrance"],
+    ["landgoederen en buitenplaatsen", "a country estate"]
+  ];
+  var BUILDING_FACT_ZOOM = 14;
+  var shortBuildingId = (id) => id.replace(/^NL\.IMBAG\.Pand\./, "P");
+  function plausibleYear(year, now = (/* @__PURE__ */ new Date()).getFullYear()) {
+    return Number.isInteger(year) && year >= 1200 && year <= now + 2;
+  }
+  function periodOf(year) {
+    if (year < 1588) return "before the Dutch Golden Age";
+    if (year <= 1672) return "in the Dutch Golden Age";
+    if (year < 1700) return "in the late seventeenth century";
+    if (year < 1800) return "in the eighteenth century";
+    if (year < 1860) return "in the early nineteenth century";
+    if (year < 1900) return "in the late nineteenth century";
+    if (year < 1940) return "in the early twentieth century";
+    if (year < 1946) return "during the Second World War";
+    if (year < 1975) return "in the post-war decades";
+    if (year < 2e3) return "in the late twentieth century";
+    return "this century";
+  }
+  var HERITAGE_LABELS = {
+    0: "",
+    1: "Part of a World Heritage site.",
+    2: "A national monument (rijksmonument).",
+    3: "A municipal monument."
+  };
+  function storeysFor(heightMetres) {
+    if (!heightMetres || !(heightMetres > 2.5)) return null;
+    return Math.max(1, Math.round(heightMetres / 3.2));
+  }
+  var NOTHING_KNOWN = {
+    anonymous: "This building has no name or date in the map data.",
+    named: "The map data has no date for this building.",
+    place: "A mapped place; the map data has no date for its building."
+  };
+  var NOTHING_KNOWN_SET = new Set(Object.values(NOTHING_KNOWN));
+  var saysNothingKnown = (detail) => NOTHING_KNOWN_SET.has(detail);
+  var sameName = (a, b) => !!a && a.normalize("NFC").toLocaleLowerCase("nl").trim() === b.normalize("NFC").toLocaleLowerCase("nl").trim();
+  function placeSentence(place, title) {
+    if (!place?.name) return "";
+    const kind = (place.kind || "").trim(), at = place.address ? ` at ${place.address}` : "";
+    if (sameName(place.name, title)) return kind ? `${capitalise(kind)}${at}.` : at ? `A mapped place${at}.` : "";
+    return `${place.name} is ${kind || "a mapped place"}${at}.`;
+  }
+  function describeBuilding(row, heightMetres, name = "", place = null) {
+    const storeys = storeysFor(heightMetres);
+    const type = row && row[1] >= 0 ? TYPE_LABELS[BUILDING_TYPES[row[1]]] : "";
+    const monument = row && row.length > 3 ? row[3] : null;
+    const monumentYear = monument?.y ? Number(monument.y.slice(0, 4)) : NaN;
+    const year = plausibleYear(monumentYear) ? monumentYear : row && plausibleYear(row[0]) ? row[0] : null;
+    const years = plausibleYear(monumentYear) ? monument.y : year ? String(year) : "";
+    const shownName = name || monument?.n || place?.name || "";
+    const title = shownName || (year ? `Built ${year}` : type ? capitalise(type) : "No building details");
+    const parts = [];
+    const placeText = placeSentence(place, title);
+    if (placeText) parts.push(placeText);
+    const designed = monument?.a ? `, designed by ${monument.a}` : "";
+    if (year) {
+      parts.push(type ? `${capitalise(withArticle(type))}, built in ${years}, ${periodOf(year)}${designed}.` : `Built in ${years}, ${periodOf(year)}${designed}.`);
+    } else if (designed) {
+      parts.push(`Designed by ${monument.a}.`);
+    } else if (type && shownName && !placeText) {
+      parts.push(`${capitalise(withArticle(type))}.`);
+    }
+    const heritage = row ? HERITAGE_LABELS[row[2]] : "";
+    const purpose = monument?.f != null && MONUMENT_FUNCTIONS[monument.f] && monument.f > 0 ? `Originally built for ${MONUMENT_FUNCTIONS[monument.f][1]}.` : "";
+    if (heritage) parts.push(heritage);
+    if (purpose) parts.push(purpose);
+    if (storeys) parts.push(`About ${Math.round(heightMetres)} m tall, ${storeys === 1 ? "one storey" : `some ${storeys} storeys`}.`);
+    const nothing = shownName ? place?.name ? NOTHING_KNOWN.place : NOTHING_KNOWN.named : NOTHING_KNOWN.anonymous;
+    return { name: title, detail: parts.join(" ") || nothing };
+  }
+  var capitalise = (text) => text.charAt(0).toUpperCase() + text.slice(1);
+  function factTileOf(lng, lat) {
+    const n = 2 ** BUILDING_FACT_ZOOM;
+    return {
+      x: Math.floor((lng + 180) / 360 * n),
+      y: Math.floor((1 - Math.asinh(Math.tan(lat * Math.PI / 180)) / Math.PI) / 2 * n)
+    };
+  }
+  var BuildingFactStore = class {
+    constructor(base, fetchImpl = (...args) => fetch(...args)) {
+      this.base = base;
+      this.fetchImpl = fetchImpl;
+    }
+    rows = /* @__PURE__ */ new Map();
+    articles = /* @__PURE__ */ new Map();
+    requested = /* @__PURE__ */ new Set();
+    articleTiles = null;
+    lastCentre = "";
+    /** Set by the first card need; until then `prefetchAround` only remembers where the rider is. */
+    engaged = false;
+    riderAt = null;
+    setBase(base) {
+      if (base === this.base) return;
+      this.base = base;
+      this.rows.clear();
+      this.articles.clear();
+      this.requested.clear();
+      this.loads.clear();
+      this.articleTiles = null;
+      this.lastCentre = "";
+      this.engaged = false;
+      this.riderAt = null;
+    }
+    /** Load the tile under a point and its eight neighbours once a card has
+     *  asked for facts. Cheap when unchanged; free before the first card. */
+    prefetchAround(lng, lat) {
+      this.riderAt = [lng, lat];
+      if (!this.engaged) return;
+      const { x, y } = factTileOf(lng, lat);
+      const centre = `${x}/${y}`;
+      if (centre === this.lastCentre) return;
+      this.lastCentre = centre;
+      for (let dx = -1; dx <= 1; dx++) for (let dy = -1; dy <= 1; dy++) void this.load(x + dx, y + dy);
+    }
+    lookup(id) {
+      return id == null ? null : this.rows.get(shortBuildingId(String(id))) ?? null;
+    }
+    /** The Wikipedia article about this building, when its tile carries one. */
+    article(id) {
+      return id == null ? null : this.articles.get(shortBuildingId(String(id))) ?? null;
+    }
+    /** The tile under a point, for a click outside the prefetched 3×3 or before
+     *  it has arrived. Resolves when that tile's rows are in (or known absent). */
+    ensureAt(lng, lat) {
+      const { x, y } = factTileOf(lng, lat);
+      const pending = this.load(x, y);
+      if (!this.engaged) {
+        this.engaged = true;
+        if (this.riderAt) this.prefetchAround(this.riderAt[0], this.riderAt[1]);
+      }
+      return pending;
+    }
+    loads = /* @__PURE__ */ new Map();
+    load(x, y) {
+      const key = `${x}/${y}`;
+      let pending = this.loads.get(key);
+      if (!pending) this.loads.set(key, pending = this.fetchTile(key));
+      return pending;
+    }
+    async fetchTile(key) {
+      if (this.requested.has(key)) return;
+      this.requested.add(key);
+      await Promise.all([this.fetchFacts(key), this.fetchArticles(key)]);
+    }
+    async fetchFacts(key) {
+      const tile = await this.fetchJson(`building-facts/${BUILDING_FACT_ZOOM}/${key}.json.gz`);
+      for (const [id, row] of Object.entries(tile?.buildings || {})) this.rows.set(id, row);
+    }
+    /** Article tiles exist only where an article is; the index says where, so
+     *  the other ~1,000 tiles cost no request. */
+    async fetchArticles(key) {
+      this.articleTiles ??= this.fetchJson(`building-articles/${BUILDING_FACT_ZOOM}/index.json`).then((index) => new Set(index?.tiles || []));
+      if (!(await this.articleTiles).has(key)) return;
+      const tile = await this.fetchJson(`building-articles/${BUILDING_FACT_ZOOM}/${key}.json.gz`);
+      for (const [id, article] of Object.entries(tile?.buildings || {})) this.articles.set(id, article);
+    }
+    async fetchJson(file) {
+      try {
+        const response = await this.fetchImpl(`${this.base.replace(/\/$/, "")}/${file}`);
+        if (!response.ok) return null;
+        const bytes = new Uint8Array(await response.arrayBuffer());
+        const gzipped = bytes.length >= 2 && bytes[0] === 31 && bytes[1] === 139;
+        const text = gzipped && typeof DecompressionStream !== "undefined" ? await new Response(new Blob([bytes]).stream().pipeThrough(new DecompressionStream("gzip"))).text() : new TextDecoder().decode(bytes);
+        return JSON.parse(text);
+      } catch {
+        return null;
+      }
+    }
+  };
+
+  // src/canalRecall/placeTitle.ts
+  var SMALL_FOOTPRINT_M2 = 400;
+  var SMALL_MAX_STOREYS = 4;
+  var SMALL_MAX_PLACES = 2;
+  var BUILDING_SCALE_KIND = /\b(mall|shopping (centre|center)|school|college|university|hotel|hostel|museum|church|cathedral|chapel|mosque|synagogue|temple|station|library|theatre|theater|cinema|hospital)\b/i;
+  var isBuildingScaleKind = (row) => BUILDING_SCALE_KIND.test(row[5] || "");
+  var norm = (name) => (name || "").normalize("NFC").toLocaleLowerCase("nl").trim();
+  function footprintAreaM2(geometry) {
+    const polygons = geometry.type === "Polygon" ? [geometry.coordinates] : geometry.coordinates;
+    const ring = (r) => {
+      if (r.length < 3) return 0;
+      const lat0 = r[0][1] * Math.PI / 180, mx = 111320 * Math.cos(lat0), my = 110540;
+      let s = 0;
+      for (let i = 0, j = r.length - 1; i < r.length; j = i++) {
+        s += r[j][0] * mx * (r[i][1] * my) - r[i][0] * mx * (r[j][1] * my);
+      }
+      return Math.abs(s) / 2;
+    };
+    return polygons.reduce((sum, rings) => sum + rings.reduce((a, r, i) => a + (i ? -ring(r) : ring(r)), 0), 0);
+  }
+  function titlePlace(input) {
+    const { places } = input;
+    if (!places.length) return null;
+    const byName = input.buildingName ? places.find((r) => norm(r[1]) === norm(input.buildingName)) : void 0;
+    if (byName) return byName;
+    const scale = places.find(isBuildingScaleKind);
+    if (scale) return scale;
+    const storeys = storeysFor(input.heightMetres);
+    const small = !!input.footprint && footprintAreaM2(input.footprint) < SMALL_FOOTPRINT_M2 && (storeys == null || storeys <= SMALL_MAX_STOREYS) && places.length <= SMALL_MAX_PLACES;
+    return small ? places[0] : null;
+  }
+  var bare = (kind) => kind.replace(/^(a|an)\s+/i, "");
+  function insideLine(places, hide = () => false) {
+    const shown = places.filter((r) => r[1] && !hide(r[1]));
+    if (!shown.length) return "";
+    const first = shown[0], kind = bare(first[5] || "");
+    const more = shown.length - 1;
+    return `Inside: ${first[1]}${kind ? ` (${kind})` : ""}${more > 0 ? ` + ${more} more` : ""}`;
+  }
+
   // src/canalRecall/clickPoiInfo.ts
   function validPoiWebsite(value) {
     if (typeof value !== "string" || !value.trim()) return "";
@@ -2113,17 +2403,24 @@
       }
       return best;
     }
+    /** "Inside: X (restaurant) + n more" for a building whose places do not title it; '' otherwise. */
+    inside(building, hide) {
+      if (!building.footprint) return "";
+      const places = this.contained(building.footprint).filter((row) => !isLabelOnly(row));
+      if (!places.length || titlePlace({ places, buildingName: building.name, footprint: building.footprint, heightMetres: building.height })) return "";
+      return insideLine(places, hide);
+    }
     card(building) {
       if (!building.footprint) return null;
       const places = this.contained(building.footprint).filter((row) => !isLabelOnly(row));
       if (!places.length) return null;
-      const title = places.findIndex((row) => row[1] === building.name || row[5] === "a mall");
-      if (title > 0) places.unshift(...places.splice(title, 1));
+      const first = titlePlace({ places, buildingName: building.name, footprint: building.footprint, heightMetres: building.height });
+      if (!first) return null;
+      places.unshift(...places.splice(places.indexOf(first), 1));
       const summaries = places.slice(0, 8).map((row) => `${row[1]} is mapped as ${row[5] || row[4]}${row[6] ? ` at ${row[6]}` : ""}.` + (row[8] ? ` ${row[8]}` : ""));
       const paragraphs = summaries.map((summary, i) => summary + (validPoiWebsite(places[i][7]) ? `
 Website: ${validPoiWebsite(places[i][7])}` : "") + `
 Map source: ${osmUrl(places[i][0])}`);
-      const first = places[0];
       return {
         id: `clicked-poi-${building.id}`,
         name: places.length > 1 ? `${first[1]} + ${places.length - 1} mapped places` : first[1],
@@ -2440,11 +2737,11 @@ Map source: ${osmUrl(places[i][0])}`);
     const noun = `${kind ? `${/^[aeiou]/i.test(kind) ? "an" : "a"} ${kind} ` : "a "}bridge`;
     const carries = fact.carries ? ` for ${fact.carries}` : "";
     const dated = fact.year ? `, dated ${fact.year} in the city's bridge register` : "";
-    const lead = fact.nr != null ? `Bridge ${fact.nr}: ${noun}` : capitalise(noun);
+    const lead = fact.nr != null ? `Bridge ${fact.nr}: ${noun}` : capitalise2(noun);
     if (!kind && !carries && !dated && fact.nr == null) return "";
     return `${lead}${carries}${dated}.`;
   }
-  var capitalise = (text) => text.charAt(0).toUpperCase() + text.slice(1);
+  var capitalise2 = (text) => text.charAt(0).toUpperCase() + text.slice(1);
 
   // src/canalRecall/bridgeLedeRepair.ts
   var NOT_A_SENTENCE_END = /(?:^|[\s(])(?:[A-Z][a-z]?|[A-Z]\.[A-Z]|Mr|Dr|Ir|St|Prof|ca|nr|no|[A-Z][a-z]*s?z)\.$/;
@@ -2851,256 +3148,6 @@ Map source: ${osmUrl(places[i][0])}`);
   function isTransit(mode) {
     return mode === "transit";
   }
-
-  // src/canalRecall/placeKind.ts
-  function withArticle(phrase) {
-    const text = phrase.trim();
-    if (!text || /^(a|an|the)\s/i.test(text)) return text;
-    return `${/^[aeiou]/i.test(text) ? "an" : "a"} ${text}`;
-  }
-
-  // src/canalRecall/buildingFacts.ts
-  var BUILDING_TYPES = [
-    "warehouse",
-    "church",
-    "chapel",
-    "cathedral",
-    "mosque",
-    "synagogue",
-    "temple",
-    "school",
-    "university",
-    "hospital",
-    "train_station",
-    "industrial",
-    "office",
-    "retail",
-    "commercial",
-    "hotel",
-    "windmill",
-    "houseboat",
-    "civic",
-    "government",
-    "public",
-    "kindergarten",
-    "college",
-    "museum",
-    "theatre"
-  ];
-  var TYPE_LABELS = {
-    warehouse: "warehouse",
-    church: "church",
-    chapel: "chapel",
-    cathedral: "cathedral",
-    mosque: "mosque",
-    synagogue: "synagogue",
-    temple: "temple",
-    school: "school",
-    university: "university building",
-    hospital: "hospital",
-    train_station: "station building",
-    industrial: "industrial building",
-    office: "office building",
-    retail: "shop building",
-    commercial: "commercial building",
-    hotel: "hotel",
-    windmill: "windmill",
-    houseboat: "houseboat",
-    civic: "civic building",
-    government: "government building",
-    public: "public building",
-    kindergarten: "nursery school",
-    college: "college",
-    museum: "museum building",
-    theatre: "theatre"
-  };
-  var MONUMENT_FUNCTIONS = [
-    ["wonen", "housing"],
-    ["onderwijs en wetenschap", "education and science"],
-    ["religie", "worship"],
-    ["verkeer en vervoer", "transport"],
-    ["zorg en welzijn", "care and welfare"],
-    ["bestuur en recht", "government and justice"],
-    ["horeca, sport en recreatie", "hospitality, sport and recreation"],
-    ["landbouw en bosbouw", "farming"],
-    ["nutsvoorziening", "a public utility"],
-    ["industrie en ambacht", "industry and crafts"],
-    ["kunst en cultuur", "the arts"],
-    ["waterstaat", "water management"],
-    ["oorlog en defensie", "defence"],
-    ["begraven", "burial"],
-    ["herdenken", "remembrance"],
-    ["landgoederen en buitenplaatsen", "a country estate"]
-  ];
-  var BUILDING_FACT_ZOOM = 14;
-  var shortBuildingId = (id) => id.replace(/^NL\.IMBAG\.Pand\./, "P");
-  function plausibleYear(year, now = (/* @__PURE__ */ new Date()).getFullYear()) {
-    return Number.isInteger(year) && year >= 1200 && year <= now + 2;
-  }
-  function periodOf(year) {
-    if (year < 1588) return "before the Dutch Golden Age";
-    if (year <= 1672) return "in the Dutch Golden Age";
-    if (year < 1700) return "in the late seventeenth century";
-    if (year < 1800) return "in the eighteenth century";
-    if (year < 1860) return "in the early nineteenth century";
-    if (year < 1900) return "in the late nineteenth century";
-    if (year < 1940) return "in the early twentieth century";
-    if (year < 1946) return "during the Second World War";
-    if (year < 1975) return "in the post-war decades";
-    if (year < 2e3) return "in the late twentieth century";
-    return "this century";
-  }
-  var HERITAGE_LABELS = {
-    0: "",
-    1: "Part of a World Heritage site.",
-    2: "A national monument (rijksmonument).",
-    3: "A municipal monument."
-  };
-  function storeysFor(heightMetres) {
-    if (!heightMetres || !(heightMetres > 2.5)) return null;
-    return Math.max(1, Math.round(heightMetres / 3.2));
-  }
-  var NOTHING_KNOWN = {
-    anonymous: "This building has no name or date in the map data.",
-    named: "The map data has no date for this building.",
-    place: "A mapped place; the map data has no date for its building."
-  };
-  var NOTHING_KNOWN_SET = new Set(Object.values(NOTHING_KNOWN));
-  var saysNothingKnown = (detail) => NOTHING_KNOWN_SET.has(detail);
-  var sameName = (a, b) => !!a && a.normalize("NFC").toLocaleLowerCase("nl").trim() === b.normalize("NFC").toLocaleLowerCase("nl").trim();
-  function placeSentence(place, title) {
-    if (!place?.name) return "";
-    const kind = (place.kind || "").trim(), at = place.address ? ` at ${place.address}` : "";
-    if (sameName(place.name, title)) return kind ? `${capitalise2(kind)}${at}.` : at ? `A mapped place${at}.` : "";
-    return `${place.name} is ${kind || "a mapped place"}${at}.`;
-  }
-  function describeBuilding(row, heightMetres, name = "", place = null) {
-    const storeys = storeysFor(heightMetres);
-    const type = row && row[1] >= 0 ? TYPE_LABELS[BUILDING_TYPES[row[1]]] : "";
-    const monument = row && row.length > 3 ? row[3] : null;
-    const monumentYear = monument?.y ? Number(monument.y.slice(0, 4)) : NaN;
-    const year = plausibleYear(monumentYear) ? monumentYear : row && plausibleYear(row[0]) ? row[0] : null;
-    const years = plausibleYear(monumentYear) ? monument.y : year ? String(year) : "";
-    const shownName = name || monument?.n || place?.name || "";
-    const title = shownName || (year ? `Built ${year}` : type ? capitalise2(type) : "No building details");
-    const parts = [];
-    const placeText = placeSentence(place, title);
-    if (placeText) parts.push(placeText);
-    const designed = monument?.a ? `, designed by ${monument.a}` : "";
-    if (year) {
-      parts.push(type ? `${capitalise2(withArticle(type))}, built in ${years}, ${periodOf(year)}${designed}.` : `Built in ${years}, ${periodOf(year)}${designed}.`);
-    } else if (designed) {
-      parts.push(`Designed by ${monument.a}.`);
-    } else if (type && shownName && !placeText) {
-      parts.push(`${capitalise2(withArticle(type))}.`);
-    }
-    const heritage = row ? HERITAGE_LABELS[row[2]] : "";
-    const purpose = monument?.f != null && MONUMENT_FUNCTIONS[monument.f] && monument.f > 0 ? `Originally built for ${MONUMENT_FUNCTIONS[monument.f][1]}.` : "";
-    if (heritage) parts.push(heritage);
-    if (purpose) parts.push(purpose);
-    if (storeys) parts.push(`About ${Math.round(heightMetres)} m tall, ${storeys === 1 ? "one storey" : `some ${storeys} storeys`}.`);
-    const nothing = shownName ? place?.name ? NOTHING_KNOWN.place : NOTHING_KNOWN.named : NOTHING_KNOWN.anonymous;
-    return { name: title, detail: parts.join(" ") || nothing };
-  }
-  var capitalise2 = (text) => text.charAt(0).toUpperCase() + text.slice(1);
-  function factTileOf(lng, lat) {
-    const n = 2 ** BUILDING_FACT_ZOOM;
-    return {
-      x: Math.floor((lng + 180) / 360 * n),
-      y: Math.floor((1 - Math.asinh(Math.tan(lat * Math.PI / 180)) / Math.PI) / 2 * n)
-    };
-  }
-  var BuildingFactStore = class {
-    constructor(base, fetchImpl = (...args) => fetch(...args)) {
-      this.base = base;
-      this.fetchImpl = fetchImpl;
-    }
-    rows = /* @__PURE__ */ new Map();
-    articles = /* @__PURE__ */ new Map();
-    requested = /* @__PURE__ */ new Set();
-    articleTiles = null;
-    lastCentre = "";
-    /** Set by the first card need; until then `prefetchAround` only remembers where the rider is. */
-    engaged = false;
-    riderAt = null;
-    setBase(base) {
-      if (base === this.base) return;
-      this.base = base;
-      this.rows.clear();
-      this.articles.clear();
-      this.requested.clear();
-      this.loads.clear();
-      this.articleTiles = null;
-      this.lastCentre = "";
-      this.engaged = false;
-      this.riderAt = null;
-    }
-    /** Load the tile under a point and its eight neighbours once a card has
-     *  asked for facts. Cheap when unchanged; free before the first card. */
-    prefetchAround(lng, lat) {
-      this.riderAt = [lng, lat];
-      if (!this.engaged) return;
-      const { x, y } = factTileOf(lng, lat);
-      const centre = `${x}/${y}`;
-      if (centre === this.lastCentre) return;
-      this.lastCentre = centre;
-      for (let dx = -1; dx <= 1; dx++) for (let dy = -1; dy <= 1; dy++) void this.load(x + dx, y + dy);
-    }
-    lookup(id) {
-      return id == null ? null : this.rows.get(shortBuildingId(String(id))) ?? null;
-    }
-    /** The Wikipedia article about this building, when its tile carries one. */
-    article(id) {
-      return id == null ? null : this.articles.get(shortBuildingId(String(id))) ?? null;
-    }
-    /** The tile under a point, for a click outside the prefetched 3×3 or before
-     *  it has arrived. Resolves when that tile's rows are in (or known absent). */
-    ensureAt(lng, lat) {
-      const { x, y } = factTileOf(lng, lat);
-      const pending = this.load(x, y);
-      if (!this.engaged) {
-        this.engaged = true;
-        if (this.riderAt) this.prefetchAround(this.riderAt[0], this.riderAt[1]);
-      }
-      return pending;
-    }
-    loads = /* @__PURE__ */ new Map();
-    load(x, y) {
-      const key = `${x}/${y}`;
-      let pending = this.loads.get(key);
-      if (!pending) this.loads.set(key, pending = this.fetchTile(key));
-      return pending;
-    }
-    async fetchTile(key) {
-      if (this.requested.has(key)) return;
-      this.requested.add(key);
-      await Promise.all([this.fetchFacts(key), this.fetchArticles(key)]);
-    }
-    async fetchFacts(key) {
-      const tile = await this.fetchJson(`building-facts/${BUILDING_FACT_ZOOM}/${key}.json.gz`);
-      for (const [id, row] of Object.entries(tile?.buildings || {})) this.rows.set(id, row);
-    }
-    /** Article tiles exist only where an article is; the index says where, so
-     *  the other ~1,000 tiles cost no request. */
-    async fetchArticles(key) {
-      this.articleTiles ??= this.fetchJson(`building-articles/${BUILDING_FACT_ZOOM}/index.json`).then((index) => new Set(index?.tiles || []));
-      if (!(await this.articleTiles).has(key)) return;
-      const tile = await this.fetchJson(`building-articles/${BUILDING_FACT_ZOOM}/${key}.json.gz`);
-      for (const [id, article] of Object.entries(tile?.buildings || {})) this.articles.set(id, article);
-    }
-    async fetchJson(file) {
-      try {
-        const response = await this.fetchImpl(`${this.base.replace(/\/$/, "")}/${file}`);
-        if (!response.ok) return null;
-        const bytes = new Uint8Array(await response.arrayBuffer());
-        const gzipped = bytes.length >= 2 && bytes[0] === 31 && bytes[1] === 139;
-        const text = gzipped && typeof DecompressionStream !== "undefined" ? await new Response(new Blob([bytes]).stream().pipeThrough(new DecompressionStream("gzip"))).text() : new TextDecoder().decode(bytes);
-        return JSON.parse(text);
-      } catch {
-        return null;
-      }
-    }
-  };
 
   // src/canalRecall/buildingArticles.ts
   function registerLineUnderArticle(factDetail) {
@@ -7631,6 +7678,8 @@ ${register}` : detail,
       const labelArt = labelRow && labelRow[4] === "art" ? this._streetArt?.byId(labelRow[0]) : null;
       const place = labelRow ? { name: labelRow[1], kind: labelArt && labelArt.k !== "artwork" ? streetArtKindPhrase(labelArt.k) : labelRow[5], address: labelRow[6] } : safeName && building.poi ? { name: safeName } : null;
       const facts = describeBuilding(row, building.height ?? pand?.height, safeName, place);
+      const inside = this._clickPoiInfo?.inside?.(building, (name) => !!spoils?.call(this.vectorMap, name)) ?? "";
+      if (inside) facts.detail = saysNothingKnown(facts.detail) ? `${inside}.` : `${facts.detail} ${inside}.`;
       if (!row || !article) this._requestBuildingFacts(building);
       const id = `clicked-${building.id || building.lngLat.join("-")}`;
       const featureTarget = building.featureTarget ?? pand?.featureTarget ?? null;

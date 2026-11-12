@@ -1,0 +1,161 @@
+{
+ "schemaVersion": 1,
+ "kind": "house-type",
+ "id": "haarlemmerstraat-sash-cornice",
+ "district": "haarlemmerbuurt",
+ "description": "Haarlemmerstraat narrow cornice shop houses (lijstgevels of the 18th-19th c.): 3.8-7.6 m fronts of red-brown brick, a tall shop ground storey to about 4.7 m and two or three upper storeys of white-framed T-windows, under a plain white cornice at 10-13.5 m, sometimes one small dormer over the middle; the upper windows are white small-pane sashes (6-over-6), usually three axes on a 4.6-4.8 m front",
+ "fit": {
+  "widthM": [
+   3.8,
+   7.6
+  ],
+  "storeys": [
+   3
+  ]
+ },
+ "match": {
+  "years": [
+   1600,
+   1995
+  ],
+  "yearSlack": 0,
+  "eavesM": [
+   9.6,
+   11.2
+  ],
+  "stucco": false,
+  "crownMatch": false,
+  "crownStrict": false,
+  "materialVeto": true,
+  "baysByWidth": [
+   {
+    "maxWidthM": 4.2,
+    "bays": 2
+   },
+   {
+    "maxWidthM": 99,
+    "bays": 3
+   }
+  ],
+  "crowns": {
+   "none": {
+    "none": true
+   },
+   "dormer": {
+    "riseM": [
+     0.6,
+     1.8
+    ],
+    "topWidthM": [
+     0.4,
+     3.0
+    ]
+   }
+  },
+  "note": "Haarlemmerstraat 46-54 (2024-11-21 strip, 1 m grid): the same storey grammar as the Haarlemmerdijk shop houses with small-pane sashes; two or three axes on one width, so reviewer bays pins (reviewBays.ts) count them. Haarlemmerdijk 6-18 (2022-12-15 strip): fascia top 4.7 m, rows 5.7-7.6 / 8.2-9.7 m, white cornice 10.0-11.8 m; a front with a dormer reads rise 1.0-1.5 m. Dormer rise capped at 1.8 m where the gable house's crowns start. crownStrict off: on the narrow dijk the fused strip carries ghost gables of the neighbours (2022-12-15), so the skyline crown is a score, and reviewer crown pins decide. crownMatch off and eavesM [9.6, 12.0] (a 3.6 m pitch: three storeys at 9.8-11.6 m, four at 12.4-14.4 m, the tall shop ground counted in): every placed pand on these faces carries a reviewer type and crown pin, and eaves pins from the 1 m grid. Years 1600-1995: BAG dates restored fronts by their rebuild (Haarlemmerstraat 48B: 1984 behind an 18th-c. bell gable); every placement here is a reviewer type pin. eavesM [9.6, 11.2] sets the storey pitch from the measured fronts (50: cornice 10.4 m over three storeys (3.5 m pitch)); one storey count per type, picked by reviewer type pins",
+  "mirrorForDoor": "left"
+ },
+ "body": {
+  "storeys": 3,
+  "bays": 3,
+  "storeyHeights": [
+   4.5,
+   2.9,
+   2.6
+  ],
+  "windows": "sash-6-over-6",
+  "windowSurround": "sill",
+  "windowHeights": [
+   0.55,
+   0.6,
+   0.66
+  ],
+  "headLines": [
+   0.8,
+   0.91,
+   0.82
+  ],
+  "windowShare": 0.52,
+  "cornice": "simple"
+ },
+ "crowns": {
+  "none": {
+   "gable": "cornice",
+   "note": "cornice only (Haarlemmerdijk 10, 176102; 16, 167816)"
+  },
+  "dormer": {
+   "gable": "cornice",
+   "dormers": 1,
+   "dormerStyle": "pediment",
+   "dormerBody": "stone",
+   "dormerAt": [
+    {
+     "from": 0.3,
+     "to": 0.7
+    }
+   ],
+   "dormerSize": {
+    "sill": 0.1,
+    "rise": 1.3,
+    "setback": 0.35
+   },
+   "note": "Haarlemmerdijk 6 (176172), 18 (167817): one white dormer over the middle"
+  }
+ },
+ "grounds": {
+  "door-left": {
+   "doorBay": 0,
+   "basement": "none",
+   "note": "residential ground: house door on the left axis; shops come per pand from BAG/OSM (autoShopfront)"
+  }
+ },
+ "palettes": {
+  "haarlemmer-red-brown": {
+   "brick": "#6e4a3c",
+   "frame": "white-painted",
+   "door": "#2a2a28",
+   "stone": "#e8e4d8",
+   "cornice": "#e8e4d8",
+   "stoneMaterial": "painted"
+  }
+ },
+ "roof": {
+  "material": "red-tile",
+  "form": "saddle",
+  "hip": "front",
+  "pitchDeg": 35,
+  "evidence": "Haarlemmerdijk 6, 33, 35A (2022-12-15 strips): sky stands directly over the cornice and the dormer, no roof face over the cornice; the 3DBAG front attic at 30 deg drew a red band the strips never show. Canal-house saddles run front to back (hip front); pitch 35 deg keeps the hipped face over the cornice to about 1.4 m on a 4-5 m front (50 deg drew a 2.7 m red triangle the strips never show)"
+ },
+ "rhythm": {
+  "bays": "2 axes under 5.2 m, else 3",
+  "identicalBays": "every upper storey alike",
+  "windowsPerStorey": "ground: a shop (BAG/OSM) or a house door and window | upper: 2 or 3",
+  "symmetry": "symmetric above the ground",
+  "groundFloor": "a tall shop ground 4.4-4.9 m to the fascia top on the dijk and straat",
+  "signage": "per shop",
+  "roofline": "a plain white cornice, sometimes one dormer",
+  "photoRows": [
+   1,
+   2,
+   2
+  ],
+  "photoGroundRows": 1,
+  "photoGables": 1,
+  "schemaLimits": [
+   "the cornice frieze and consoles are a plain slab"
+  ]
+ },
+ "evidence": [
+  {
+   "face": "haarlemmer-46-96",
+   "pands": [
+    "171144",
+    "171145",
+    "171148",
+    "171141",
+    "171140"
+   ],
+   "citation": "strip.jpg 2024-11-21, 1 m grid (grid-crop.ts 3300-4375): 54 neck gable from 13.0 m over three sash rows; 52 neck gable from 14.5 m over three rows and a 4.8 m shop portal; 50 cornice 10.4 m; 48B bell gable 8.6-10.8 m; 46 cornice 12.0 m with a dormer"
+  }
+ ]
+}
