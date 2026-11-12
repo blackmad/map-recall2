@@ -21,7 +21,7 @@
     {
       "date": "2026-11-12",
       "title": "Smoother ground around the ring roads and tunnels",
-      "text": "Out by the A10 ring the ground holds together better. It no longer floats over ditches and hollows, the Overschiestraat underpass is one clean cutting instead of three overlapping ones, and stray tunnel mouths on garage ramps are gone. Where the map data guessed wrong about a crossing, we now keep a reviewed record of it, checked against aerial photos and street panoramas. For example, the bike path at the Piet Kranenbergpad no longer dips under a rail bridge that isn't there: it crosses the museum tram line at street level, as the photos show.",
+      "text": "Out by the A10 ring the ground holds together better. It no longer floats over ditches and hollows, the Overschiestraat underpass is one clean cutting instead of three overlapping ones, and stray tunnel mouths on garage ramps are gone.",
       "images": [
         {
           "src": "ui/2026-11-12-ground-g1/overschiestraat.jpg",
@@ -32,11 +32,6 @@
           "src": "ui/2026-11-12-ground-g1/schinkel-jachthavenweg.jpg",
           "alt": "Schinkel bank at the Jachthavenweg: aerial photo, before and after",
           "caption": "Schinkel bank: photo, before, after"
-        },
-        {
-          "src": "ui/2026-11-10-crossings/piet-kranenbergpad-museum-tram.jpg",
-          "alt": "Piet Kranenbergpad: aerial photo and panoramas showing a level crossing",
-          "caption": "Piet Kranenbergpad: a level crossing, not a bridge"
         }
       ]
     },
