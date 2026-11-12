@@ -1,0 +1,187 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012171858",
+ "address": "Geldersekade 132 / Nieuwmarkt 2",
+ "design": {
+  "fronts": [
+   {
+    "id": "front0",
+    "street": "Geldersekade",
+    "basement": "none",
+    "hoist": false,
+    "gable": "cornice",
+    "cornice": "bracketed",
+    "storeys": 5,
+    "bays": 2,
+    "doorBay": 0,
+    "tallGround": true,
+    "windows": "casement-toplight",
+    "bands": "painted",
+    "bandLines": [
+     "sill",
+     "head"
+    ],
+    "shopfront": {
+     "colour": "#2b2b2b",
+     "fascia": true,
+     "entrance": "left",
+     "stallriser": "low",
+     "displayWindows": 2,
+     "evidence": "cafe Zon with a dark front, 2016-06-09"
+    },
+    "windowShare": 0.62,
+    "windowHeights": "diminishing"
+   }
+  ],
+  "roof": {
+   "material": "black-tile"
+  },
+  "palette": {
+   "brick": "#e2ddd0",
+   "frame": "#e6e2d8",
+   "door": "#2c3a33",
+   "stone": "#e6e2d8",
+   "wallMaterial": "stucco"
+  }
+ },
+ "provenance": {
+  "fronts/0/id": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012171858/front.jpg (2016-06-09)",
+   "at": "2016-06-09"
+  },
+  "fronts/0/street": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012171858/front.jpg (2016-06-09)",
+   "at": "2016-06-09"
+  },
+  "fronts/0/basement": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012171858/front.jpg (2016-06-09)",
+   "at": "2016-06-09"
+  },
+  "fronts/0/hoist": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012171858/front.jpg (2016-06-09)",
+   "at": "2016-06-09"
+  },
+  "fronts/0/gable": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012171858/front.jpg (2016-06-09)",
+   "at": "2016-06-09"
+  },
+  "fronts/0/cornice": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012171858/front.jpg (2016-06-09)",
+   "at": "2016-06-09"
+  },
+  "fronts/0/storeys": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012171858/front.jpg (2016-06-09)",
+   "at": "2016-06-09"
+  },
+  "fronts/0/bays": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012171858/front.jpg (2016-06-09)",
+   "at": "2016-06-09"
+  },
+  "fronts/0/doorBay": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012171858/front.jpg (2016-06-09)",
+   "at": "2016-06-09"
+  },
+  "fronts/0/tallGround": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012171858/front.jpg (2016-06-09)",
+   "at": "2016-06-09"
+  },
+  "fronts/0/windows": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012171858/front.jpg (2016-06-09)",
+   "at": "2016-06-09"
+  },
+  "fronts/0/bands": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012171858/front.jpg (2016-06-09): moulded string courses",
+   "at": "2016-06-09"
+  },
+  "fronts/0/bandLines": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012171858/front.jpg (2016-06-09)",
+   "at": "2016-06-09"
+  },
+  "fronts/0/shopfront": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012171858/front.jpg (2016-06-09)",
+   "at": "2016-06-09"
+  },
+  "fronts/0/windowShare": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012171858/front.jpg (2016-06-09)",
+   "at": "2016-06-09"
+  },
+  "fronts/0/windowHeights": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012171858/front.jpg (2016-06-09)",
+   "at": "2016-06-09"
+  },
+  "roof/material": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012171858/front.jpg (2016-06-09)",
+   "at": "2016-06-09"
+  },
+  "palette/brick": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012171858/front.jpg (2016-06-09)",
+   "at": "2016-06-09"
+  },
+  "palette/frame": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012171858/front.jpg (2016-06-09)",
+   "at": "2016-06-09"
+  },
+  "palette/door": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012171858/front.jpg (2016-06-09)",
+   "at": "2016-06-09"
+  },
+  "palette/stone": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012171858/front.jpg (2016-06-09)",
+   "at": "2016-06-09"
+  },
+  "palette/wallMaterial": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012171858/front.jpg (2016-06-09): white stucco front with moulded window surrounds (c. 1890)",
+   "at": "2016-06-09"
+  }
+ },
+ "schemaLimits": [
+  {
+   "component": "window surround",
+   "what": "pedimented stucco surrounds and pilasters round the windows"
+  }
+ ]
+}

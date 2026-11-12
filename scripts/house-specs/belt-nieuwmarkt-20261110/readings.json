@@ -1515,6 +1515,1752 @@
      }
     ]
    }
+  },
+  "0363100012182369": {
+   "address": "Geldersekade 70",
+   "why": "strip crop (2017-07-06) narrow, foliage and a van over the lower storeys: no reading",
+   "batch": 3
+  },
+  "0363100012182365": {
+   "address": "Geldersekade 72",
+   "why": "strip crop (2017-07-06) narrow and washed out, a van over the ground storey: no reading",
+   "batch": 3
+  },
+  "0363100012172008": {
+   "address": "Geldersekade 126",
+   "why": "crop 43 deg oblique behind a tree and vans (2022-04-26): neither the gable nor the storey count can be read",
+   "batch": 3
+  },
+  "0363100012181773": {
+   "address": "Geldersekade 67",
+   "why": "a late-20th-century office block (ribbon windows, flat roof, yellow brick plinth): not a canal-house front; the kit has no ribbon-glazed office front",
+   "batch": 3
+  },
+  "0363100012182249": {
+   "address": "Geldersekade 75",
+   "why": "a modern glazed office (curtain wall); crop blocked and 51 deg oblique",
+   "batch": 3
+  },
+  "0363100012171490": {
+   "address": "Geldersekade 95",
+   "why": "crop 50 deg oblique and half blocked by the nearer corner building: the front cannot be read",
+   "batch": 3
+  },
+  "0363100012181807": {
+   "address": "Geldersekade 123",
+   "why": "crop blocked by a traffic-light gantry and sign (2022-04-26): the front cannot be read",
+   "batch": 3
   }
+ },
+ "0363100012165690": {
+  "address": "Geldersekade 60-62",
+  "photo": "pand-crops/0363100012165690/front.jpg (2025-01-08)",
+  "date": "2025-01-08",
+  "batch": 3,
+  "design": {
+   "fronts": [
+    {
+     "id": "front0",
+     "street": "Geldersekade",
+     "basement": "none",
+     "hoist": false,
+     "gable": "cornice",
+     "cornice": "bracketed",
+     "storeys": 4,
+     "bays": 6,
+     "doorBay": 2,
+     "tallGround": false,
+     "windows": "casement-toplight",
+     "storeyHeights": [
+      1.1,
+      1.0,
+      1.0,
+      1.0
+     ],
+     "windowShare": 0.62,
+     "windowHeights": "diminishing"
+    }
+   ],
+   "roof": {
+    "material": "black-tile"
+   },
+   "palette": {
+    "brick": "#543623",
+    "frame": "white",
+    "door": "#2c3a33",
+    "stone": "#e6e2d8",
+    "wallMaterial": "brick"
+   }
+  },
+  "why": {
+   "fronts/0/gable": "deep overhanging eaves on brackets over a flat brick front (c. 1920)",
+   "fronts/0/bays": "six lights a storey in two groups of three",
+   "fronts/0/windows": "white casements with a toplight",
+   "palette/brick": "crop reading #4c3120, lift 10 %"
+  },
+  "limits": [
+   {
+    "component": "ground storey",
+    "what": "two dark timber double doors with toplights at either end and a single door in the middle"
+   },
+   {
+    "component": "dormer",
+    "what": "2 dormer(s) with a pediment head over the cornice: dropped, a pediment dormer leaves 3.8 m of open edge in the install gate"
+   }
+  ]
+ },
+ "0363100012182371": {
+  "address": "Geldersekade 64",
+  "photo": "pand-crops/0363100012182371/front.jpg (2021-01-25)",
+  "date": "2021-01-25",
+  "batch": 3,
+  "design": {
+   "fronts": [
+    {
+     "id": "front0",
+     "street": "Geldersekade",
+     "basement": "none",
+     "hoist": false,
+     "gable": "cornice",
+     "cornice": "simple",
+     "storeys": 4,
+     "bays": 2,
+     "doorBay": 0,
+     "tallGround": true,
+     "windows": "casement-toplight",
+     "windowHead": {
+      "kind": "segmental",
+      "archRing": {
+       "colour": "stone",
+       "style": "none",
+       "keystone": true
+      }
+     },
+     "bands": "painted",
+     "bandLines": [
+      "sill"
+     ],
+     "shopfront": {
+      "colour": "#2b2b2b",
+      "fascia": false,
+      "glazing": "transom",
+      "entrance": "left",
+      "stallriser": "low",
+      "displayWindows": 1,
+      "evidence": "dark timber pui with a wide window and a transom row, 2021-01-25"
+     },
+     "windowShare": 0.62,
+     "windowHeights": "diminishing"
+    }
+   ],
+   "roof": {
+    "material": "black-tile"
+   },
+   "palette": {
+    "brick": "#4a3a30",
+    "frame": "white",
+    "door": "#2c3a33",
+    "stone": "#e6e2d8",
+    "wallMaterial": "brick"
+   }
+  },
+  "why": {
+   "fronts/0/windowHead": "segmental heads with a white keystone block over each window",
+   "fronts/0/bands": "white sill band over the ground storey"
+  },
+  "limits": []
+ },
+ "0363100012182372": {
+  "address": "Geldersekade 66",
+  "photo": "pand-crops/0363100012182372/front.jpg (2023-03-27)",
+  "date": "2023-03-27",
+  "batch": 3,
+  "design": {
+   "fronts": [
+    {
+     "id": "front0",
+     "street": "Geldersekade",
+     "basement": "none",
+     "hoist": false,
+     "gable": "cornice",
+     "cornice": "simple",
+     "storeys": 4,
+     "bays": 2,
+     "doorBay": 1,
+     "tallGround": true,
+     "windows": "casement-toplight",
+     "balconies": {
+      "storeys": [
+       1
+      ],
+      "bays": [
+       0
+      ]
+     },
+     "shopfront": {
+      "colour": "#8a1f1f",
+      "fascia": true,
+      "entrance": "right",
+      "stallriser": "low",
+      "displayWindows": 1,
+      "evidence": "red painted pui with red curtains and a red door, 2023-03-27"
+     },
+     "windowShare": 0.62,
+     "storeyHeights": [
+      1.3,
+      1.0,
+      1.0,
+      1.0
+     ]
+    }
+   ],
+   "roof": {
+    "material": "black-tile"
+   },
+   "palette": {
+    "brick": "#e8e4da",
+    "frame": "#9a2a22",
+    "door": "#2c3a33",
+    "stone": "#e6e2d8",
+    "wallMaterial": "painted-brick"
+   }
+  },
+  "why": {
+   "fronts/0/windows": "red-framed windows in a white painted front",
+   "fronts/0/balconies": "a small white balcony on the first storey left",
+   "palette/wallMaterial": "white painted front",
+   "fronts/0/storeyHeights": "uniform upper storeys under the 3DBAG eaves"
+  },
+  "limits": []
+ },
+ "0363100012182370": {
+  "address": "Geldersekade 68",
+  "photo": "pand-crops/0363100012182370/front.jpg (2023-03-27)",
+  "date": "2023-03-27",
+  "batch": 3,
+  "design": {
+   "fronts": [
+    {
+     "id": "front0",
+     "street": "Geldersekade",
+     "basement": "none",
+     "hoist": false,
+     "gable": "cornice",
+     "cornice": "simple",
+     "storeys": 3,
+     "bays": 2,
+     "doorBay": 1,
+     "tallGround": true,
+     "windows": "casement-toplight",
+     "shopfront": {
+      "colour": "#e6e2d8",
+      "fascia": false,
+      "glazing": "transom",
+      "entrance": "right",
+      "stallriser": "low",
+      "displayWindows": 1,
+      "evidence": "white timber pui with a tall window, 2023-03-27"
+     },
+     "windowShare": 0.62,
+     "windowHeights": "diminishing"
+    }
+   ],
+   "roof": {
+    "material": "black-tile"
+   },
+   "palette": {
+    "brick": "#504e48",
+    "frame": "white",
+    "door": "#2c3a33",
+    "stone": "#e6e2d8",
+    "wallMaterial": "brick"
+   }
+  },
+  "why": {
+   "fronts/0/bays": "two wide windows a storey (narrow strip crop: low confidence)",
+   "palette/brick": "crop reading #494741, lift 10 %",
+   "fronts/0/storeys": "3 storeys under the 3DBAG eaves"
+  },
+  "limits": [
+   {
+    "component": "storeys",
+    "what": "4 storeys read on the crop; 3 fit the 3DBAG eaves at >= 2.3 m a storey (crop read across the canal, top storey unsure)"
+   }
+  ]
+ },
+ "0363100012182364": {
+  "address": "Geldersekade 74",
+  "photo": "pand-crops/0363100012182364/front.jpg (2021-01-25)",
+  "date": "2021-01-25",
+  "batch": 3,
+  "design": {
+   "fronts": [
+    {
+     "id": "front0",
+     "street": "Geldersekade",
+     "basement": "none",
+     "hoist": false,
+     "gable": "cornice",
+     "cornice": "simple",
+     "storeys": 3,
+     "bays": 2,
+     "doorBay": 0,
+     "tallGround": true,
+     "windows": "casement-toplight",
+     "shopfront": {
+      "colour": "#e6e2d8",
+      "fascia": false,
+      "glazing": "transom",
+      "entrance": "left",
+      "stallriser": "low",
+      "displayWindows": 1,
+      "evidence": "white timber pui with a gridded window, 2021-01-25"
+     },
+     "windowShare": 0.62,
+     "windowHeights": "diminishing"
+    }
+   ],
+   "roof": {
+    "material": "black-tile"
+   },
+   "palette": {
+    "brick": "#4a3b33",
+    "frame": "white",
+    "door": "#2c3a33",
+    "stone": "#e6e2d8",
+    "wallMaterial": "brick"
+   }
+  },
+  "why": {
+   "fronts/0/storeys": "3 storeys under the 3DBAG eaves"
+  },
+  "limits": [
+   {
+    "component": "storeys",
+    "what": "5 storeys read on the crop; 3 fit the 3DBAG eaves at >= 2.3 m a storey (crop read across the canal, top storey unsure)"
+   }
+  ]
+ },
+ "0363100012182379": {
+  "address": "Geldersekade 78",
+  "photo": "pand-crops/0363100012182379/front.jpg (2021-01-25)",
+  "date": "2021-01-25",
+  "batch": 3,
+  "design": {
+   "fronts": [
+    {
+     "id": "front0",
+     "street": "Geldersekade",
+     "basement": "none",
+     "hoist": false,
+     "gable": "cornice",
+     "cornice": "simple",
+     "storeys": 4,
+     "bays": 3,
+     "doorBay": 2,
+     "tallGround": true,
+     "windows": "casement-toplight",
+     "shopfront": {
+      "colour": "#e6e2d8",
+      "fascia": false,
+      "glazing": "transom",
+      "entrance": "right",
+      "stallriser": "low",
+      "displayWindows": 2,
+      "evidence": "white pui with a lamp bracket, 2021-01-25"
+     },
+     "windowShare": 0.62,
+     "windowHeights": "diminishing"
+    }
+   ],
+   "roof": {
+    "material": "black-tile"
+   },
+   "palette": {
+    "brick": "#5a4436",
+    "frame": "white",
+    "door": "#2c3a33",
+    "stone": "#e6e2d8",
+    "wallMaterial": "brick"
+   }
+  },
+  "why": {
+   "fronts/0/bays": "three axes, the middle window wider",
+   "fronts/0/storeys": "4 storeys under the 3DBAG eaves"
+  },
+  "limits": [
+   {
+    "component": "window",
+    "what": "the middle axis windows are wider than the outer ones"
+   },
+   {
+    "component": "storeys",
+    "what": "5 storeys read on the crop; 4 fit the 3DBAG eaves at >= 2.3 m a storey (crop read across the canal, top storey unsure)"
+   }
+  ]
+ },
+ "0363100012182375": {
+  "address": "Geldersekade 80",
+  "photo": "pand-crops/0363100012182375/front.jpg (2021-01-25)",
+  "date": "2021-01-25",
+  "batch": 3,
+  "design": {
+   "fronts": [
+    {
+     "id": "front0",
+     "street": "Geldersekade",
+     "basement": "none",
+     "hoist": false,
+     "gable": "cornice",
+     "cornice": "heavy",
+     "storeys": 3,
+     "bays": 4,
+     "doorBay": 2,
+     "tallGround": false,
+     "windows": "sash-small-panes",
+     "storeyHeights": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "windowShare": 0.62,
+     "windowHeights": "diminishing"
+    }
+   ],
+   "roof": {
+    "material": "black-tile"
+   },
+   "palette": {
+    "brick": "#3f3530",
+    "frame": "white",
+    "door": "#2c3a33",
+    "stone": "#e6e2d8",
+    "wallMaterial": "brick",
+    "cornice": "#e6e2d8"
+   }
+  },
+  "why": {
+   "fronts/0/gable": "white entablature with an attic balustrade (18th-c. front)",
+   "fronts/0/windows": "tall small-pane sashes, four axes",
+   "fronts/0/storeys": "raised ground storey and two upper storeys"
+  },
+  "limits": [
+   {
+    "component": "crown",
+    "what": "the white attic balustrade with balusters over the cornice"
+   },
+   {
+    "component": "door",
+    "what": "a carved white door surround in the second axis"
+   }
+  ]
+ },
+ "0363100012170938": {
+  "address": "Geldersekade 90",
+  "photo": "pand-crops/0363100012170938/front.jpg (2023-03-20)",
+  "date": "2023-03-20",
+  "batch": 3,
+  "design": {
+   "fronts": [
+    {
+     "id": "front0",
+     "street": "Geldersekade",
+     "basement": "none",
+     "hoist": false,
+     "gable": "cornice",
+     "cornice": "simple",
+     "storeys": 5,
+     "bays": 6,
+     "doorBay": 2,
+     "tallGround": false,
+     "windows": "casement-toplight",
+     "windowShare": 0.62,
+     "windowHeights": "diminishing"
+    }
+   ],
+   "roof": {
+    "material": "black-tile"
+   },
+   "palette": {
+    "brick": "#463e3a",
+    "frame": "white",
+    "door": "#2c3a33",
+    "stone": "#e6e2d8",
+    "wallMaterial": "brick"
+   }
+  },
+  "why": {
+   "fronts/0/bays": "six axes across the double front",
+   "palette/brick": "crop reading #403835, lift 10 %"
+  },
+  "limits": [
+   {
+    "component": "stoop",
+    "what": "a stone stoop with iron rails to the raised door, and a round-arched door in the right half"
+   },
+   {
+    "component": "window head",
+    "what": "brick relieving arches over the windows (dropped: 3049 triangles > 3000 with them)"
+   }
+  ]
+ },
+ "0363100012171324": {
+  "address": "Geldersekade 94",
+  "photo": "pand-crops/0363100012171324/front.jpg (2023-03-20)",
+  "date": "2023-03-20",
+  "batch": 3,
+  "design": {
+   "fronts": [
+    {
+     "id": "front0",
+     "street": "Geldersekade",
+     "basement": "none",
+     "hoist": false,
+     "gable": "cornice",
+     "cornice": "simple",
+     "storeys": 6,
+     "bays": 2,
+     "doorBay": 1,
+     "tallGround": true,
+     "windows": "casement-toplight",
+     "windowHead": {
+      "kind": "relieving",
+      "archRing": {
+       "colour": "wall",
+       "style": "solid"
+      }
+     },
+     "shopfront": {
+      "colour": "#2b2b2b",
+      "fascia": false,
+      "glazing": "transom",
+      "entrance": "right",
+      "stallriser": "low",
+      "displayWindows": 1,
+      "evidence": "dark gallery window and a black door up two steps, 2023-03-20"
+     },
+     "windowShare": 0.62,
+     "windowHeights": "diminishing"
+    }
+   ],
+   "roof": {
+    "material": "black-tile"
+   },
+   "palette": {
+    "brick": "#49423f",
+    "frame": "white",
+    "door": "#2c3a33",
+    "stone": "#e6e2d8",
+    "wallMaterial": "brick"
+   }
+  },
+  "why": {
+   "fronts/0/windowHead": "brick relieving arches with stone blocks over the windows",
+   "fronts/0/storeys": "tall narrow front of six storeys",
+   "palette/brick": "crop reading #423c39, lift 10 %"
+  },
+  "limits": []
+ },
+ "0363100012182472": {
+  "address": "Geldersekade 98",
+  "photo": "pand-crops/0363100012182472/front.jpg (2021-01-25)",
+  "date": "2021-01-25",
+  "batch": 3,
+  "design": {
+   "fronts": [
+    {
+     "id": "front0",
+     "street": "Geldersekade",
+     "basement": "none",
+     "hoist": false,
+     "gable": "cornice",
+     "cornice": "bracketed",
+     "storeys": 4,
+     "bays": 3,
+     "doorBay": 0,
+     "tallGround": true,
+     "windows": "casement-toplight",
+     "windowHead": {
+      "kind": "segmental",
+      "archRing": {
+       "colour": "stone",
+       "style": "none",
+       "keystone": true
+      }
+     },
+     "windowShare": 0.62,
+     "storeyHeights": [
+      1.15,
+      1.0,
+      1.0,
+      1.0
+     ]
+    }
+   ],
+   "roof": {
+    "material": "black-tile"
+   },
+   "palette": {
+    "brick": "#7a4a3a",
+    "frame": "white",
+    "door": "#2c3a33",
+    "stone": "#e6e2d8",
+    "wallMaterial": "brick",
+    "cornice": "#e4dcc4"
+   }
+  },
+  "why": {
+   "fronts/0/gable": "cream bracketed cornice with a dormer",
+   "fronts/0/windowHead": "segmental heads with white keystones"
+  },
+  "limits": [
+   {
+    "component": "dormer",
+    "what": "1 dormer(s) with a pediment head over the cornice: dropped, a pediment dormer leaves 3.8 m of open edge in the install gate"
+   },
+   {
+    "component": "window",
+    "what": "round-arched ground-storey windows (windowHead and archedStoreys cannot be combined on one front)"
+   },
+   {
+    "component": "storeys",
+    "what": "5 storeys read on the crop; 4 fit the 3DBAG eaves (9.7 m) at >= 2.3 m a storey"
+   }
+  ]
+ },
+ "0363100012182304": {
+  "address": "Geldersekade 104",
+  "photo": "pand-crops/0363100012182304/front.jpg (2021-01-25)",
+  "date": "2021-01-25",
+  "batch": 3,
+  "design": {
+   "fronts": [
+    {
+     "id": "front0",
+     "street": "Geldersekade",
+     "basement": "none",
+     "hoist": false,
+     "gable": "cornice",
+     "cornice": "bracketed",
+     "storeys": 5,
+     "bays": 3,
+     "doorBay": 0,
+     "tallGround": true,
+     "windows": "casement-toplight",
+     "shopfront": {
+      "colour": "#2b2b2b",
+      "fascia": true,
+      "entrance": "left",
+      "stallriser": "low",
+      "displayWindows": 2,
+      "evidence": "shop with a yellow fascia sign, 2021-01-25"
+     },
+     "windowShare": 0.62,
+     "windowHeights": "diminishing"
+    }
+   ],
+   "roof": {
+    "material": "black-tile"
+   },
+   "palette": {
+    "brick": "#7a3a2c",
+    "frame": "white",
+    "door": "#2c3a33",
+    "stone": "#e6e2d8",
+    "wallMaterial": "brick",
+    "cornice": "#e4dcc4"
+   }
+  },
+  "why": {
+   "fronts/0/gable": "cream cornice and a dormer",
+   "palette/brick": "red brick"
+  },
+  "limits": [
+   {
+    "component": "shopfront sign",
+    "what": "the yellow sign board over the shop (signs leave open edges in install)"
+   },
+   {
+    "component": "dormer",
+    "what": "1 dormer(s) with a pediment head over the cornice: dropped, a pediment dormer leaves 3.8 m of open edge in the install gate"
+   }
+  ]
+ },
+ "0363100012182400": {
+  "address": "Geldersekade 108",
+  "photo": "pand-crops/0363100012182400/front.jpg (2021-01-25)",
+  "date": "2021-01-25",
+  "batch": 3,
+  "design": {
+   "fronts": [
+    {
+     "id": "front0",
+     "street": "Geldersekade",
+     "basement": "none",
+     "hoist": false,
+     "gable": "cornice",
+     "cornice": "simple",
+     "storeys": 5,
+     "bays": 2,
+     "doorBay": 1,
+     "tallGround": true,
+     "windows": "casement-toplight",
+     "shopfront": {
+      "colour": "#e6e2d8",
+      "fascia": false,
+      "glazing": "transom",
+      "entrance": "right",
+      "stallriser": "low",
+      "displayWindows": 1,
+      "evidence": "white pui, 2021-01-25"
+     },
+     "windowShare": 0.62,
+     "windowHeights": "diminishing"
+    }
+   ],
+   "roof": {
+    "material": "black-tile"
+   },
+   "palette": {
+    "brick": "#4a3a32",
+    "frame": "white",
+    "door": "#2c3a33",
+    "stone": "#e6e2d8",
+    "wallMaterial": "brick"
+   }
+  },
+  "why": {
+   "fronts/0/bays": "two white-framed windows a storey"
+  },
+  "limits": []
+ },
+ "0363100012182399": {
+  "address": "Geldersekade 110",
+  "photo": "pand-crops/0363100012182399/front.jpg (2021-01-25)",
+  "date": "2021-01-25",
+  "batch": 3,
+  "design": {
+   "fronts": [
+    {
+     "id": "front0",
+     "street": "Geldersekade",
+     "basement": "none",
+     "hoist": false,
+     "gable": "neck",
+     "cornice": "none",
+     "storeys": 2,
+     "bays": 3,
+     "doorBay": 1,
+     "tallGround": true,
+     "windows": "casement-toplight",
+     "atticWindows": 1,
+     "shopfront": {
+      "colour": "#3a3a36",
+      "fascia": false,
+      "glazing": "transom",
+      "entrance": "centre",
+      "stallriser": "low",
+      "displayWindows": 2,
+      "evidence": "dark pui, 2021-01-25"
+     },
+     "windowShare": 0.62,
+     "windowHeights": "diminishing"
+    }
+   ],
+   "roof": {
+    "material": "black-tile",
+    "source": "front",
+    "evidence": "neck gable"
+   },
+   "palette": {
+    "brick": "#2f2a28",
+    "frame": "white",
+    "door": "#2c3a33",
+    "stone": "#e6e2d8",
+    "wallMaterial": "painted-brick"
+   }
+  },
+  "why": {
+   "fronts/0/gable": "neck gable with white trim, painted dark",
+   "fronts/0/atticWindows": "a triple light in the neck",
+   "fronts/0/storeys": "2 storeys under the 3DBAG eaves"
+  },
+  "limits": [
+   {
+    "component": "gable light",
+    "what": "the neck holds a wide three-part window"
+   },
+   {
+    "component": "storeys",
+    "what": "3 storeys read on the crop; 2 fit the 3DBAG eaves at >= 2.3 m a storey (crop read across the canal, top storey unsure)"
+   }
+  ]
+ },
+ "0363100012182309": {
+  "address": "Geldersekade 112",
+  "photo": "pand-crops/0363100012182309/front.jpg (2021-01-25)",
+  "date": "2021-01-25",
+  "batch": 3,
+  "design": {
+   "fronts": [
+    {
+     "id": "front0",
+     "street": "Geldersekade",
+     "basement": "none",
+     "hoist": false,
+     "gable": "cornice",
+     "cornice": "simple",
+     "storeys": 3,
+     "bays": 2,
+     "doorBay": 1,
+     "tallGround": true,
+     "windows": "casement-toplight",
+     "shopfront": {
+      "colour": "#2b2b2b",
+      "fascia": false,
+      "glazing": "transom",
+      "entrance": "right",
+      "stallriser": "low",
+      "displayWindows": 1,
+      "evidence": "dark gridded pui, 2021-01-25"
+     },
+     "windowShare": 0.62,
+     "windowHeights": "diminishing"
+    }
+   ],
+   "palette": {
+    "brick": "#e6e2da",
+    "frame": "white",
+    "door": "#2c3a33",
+    "stone": "#e6e2d8",
+    "wallMaterial": "painted-brick"
+   }
+  },
+  "why": {
+   "palette/wallMaterial": "white painted front",
+   "fronts/0/bays": "two windows a storey, a four-light window at the top",
+   "fronts/0/storeys": "3 storeys under the 3DBAG eaves"
+  },
+  "limits": [
+   {
+    "component": "storeys",
+    "what": "4 storeys read on the crop; 3 fit the 3DBAG eaves at >= 2.3 m a storey (crop read across the canal, top storey unsure)"
+   },
+   {
+    "component": "roof",
+    "what": "recipe route held: the 3DBAG eaves (6.8 m) leave under 2.3 m a storey for the three upper storeys on the crop; staged as a generic spec"
+   }
+  ]
+ },
+ "0363100012182308": {
+  "address": "Geldersekade 114",
+  "photo": "pand-crops/0363100012182308/front.jpg (2021-01-25)",
+  "date": "2021-01-25",
+  "batch": 3,
+  "design": {
+   "fronts": [
+    {
+     "id": "front0",
+     "street": "Geldersekade",
+     "basement": "none",
+     "hoist": false,
+     "gable": "bell",
+     "cornice": "none",
+     "storeys": 3,
+     "bays": 3,
+     "doorBay": 1,
+     "tallGround": true,
+     "windows": "cross",
+     "atticWindows": 1,
+     "shopfront": {
+      "colour": "#2b2b2b",
+      "fascia": false,
+      "glazing": "transom",
+      "entrance": "centre",
+      "stallriser": "low",
+      "displayWindows": 2,
+      "evidence": "dark pui, 2021-01-25"
+     },
+     "windowShare": 0.62,
+     "windowHeights": "diminishing"
+    }
+   ],
+   "roof": {
+    "material": "black-tile",
+    "source": "front",
+    "evidence": "bell gable"
+   },
+   "palette": {
+    "brick": "#7a2a22",
+    "frame": "white",
+    "door": "#2c3a33",
+    "stone": "#e6e2d8",
+    "wallMaterial": "painted-brick"
+   }
+  },
+  "why": {
+   "fronts/0/gable": "bell gable over a front painted ox-blood red",
+   "fronts/0/windows": "cross windows in white frames"
+  },
+  "limits": [
+   {
+    "component": "gevelsteen",
+    "what": "a carved stone tablet between the first-storey windows"
+   }
+  ]
+ },
+ "0363100012170933": {
+  "address": "Geldersekade 118",
+  "photo": "pand-crops/0363100012170933/front.jpg (2021-01-25)",
+  "date": "2021-01-25",
+  "batch": 3,
+  "design": {
+   "fronts": [
+    {
+     "id": "front0",
+     "street": "Geldersekade",
+     "basement": "none",
+     "hoist": false,
+     "gable": "cornice",
+     "cornice": "simple",
+     "storeys": 3,
+     "bays": 2,
+     "doorBay": 1,
+     "tallGround": true,
+     "windows": "casement-toplight",
+     "bayWindows": {
+      "bays": {
+       "from": 0,
+       "to": 1
+      },
+      "storeys": [
+       1,
+       2
+      ],
+      "cap": "flat"
+     },
+     "shopfront": {
+      "colour": "#e6e2d8",
+      "fascia": false,
+      "glazing": "transom",
+      "entrance": "centre",
+      "stallriser": "low",
+      "displayWindows": 2,
+      "evidence": "white pui, 2021-01-25"
+     },
+     "windowShare": 0.62,
+     "windowHeights": "diminishing"
+    }
+   ],
+   "roof": {
+    "material": "black-tile"
+   },
+   "palette": {
+    "brick": "#4a3b33",
+    "frame": "white",
+    "door": "#2c3a33",
+    "stone": "#e6e2d8",
+    "wallMaterial": "brick"
+   }
+  },
+  "why": {
+   "fronts/0/bayWindows": "a three-sided brick bay over the first and second storeys",
+   "fronts/0/storeys": "3 storeys under the 3DBAG eaves"
+  },
+  "limits": [
+   {
+    "component": "storeys",
+    "what": "4 storeys read on the crop; 3 fit the 3DBAG eaves at >= 2.3 m a storey (crop read across the canal, top storey unsure)"
+   }
+  ]
+ },
+ "0363100012170932": {
+  "address": "Geldersekade 120",
+  "photo": "pand-crops/0363100012170932/front.jpg (2021-01-25)",
+  "date": "2021-01-25",
+  "batch": 3,
+  "design": {
+   "fronts": [
+    {
+     "id": "front0",
+     "street": "Geldersekade",
+     "basement": "none",
+     "hoist": false,
+     "gable": "cornice",
+     "cornice": "simple",
+     "storeys": 4,
+     "bays": 2,
+     "doorBay": 1,
+     "tallGround": true,
+     "windows": "casement-toplight",
+     "shopfront": {
+      "colour": "#e6e2d8",
+      "fascia": true,
+      "entrance": "centre",
+      "stallriser": "low",
+      "displayWindows": 2,
+      "evidence": "white snack-bar front with red lettering (Grill House), 2021-01-25"
+     },
+     "windowShare": 0.62,
+     "windowHeights": "diminishing"
+    }
+   ],
+   "roof": {
+    "material": "black-tile"
+   },
+   "palette": {
+    "brick": "#43362f",
+    "frame": "white",
+    "door": "#2c3a33",
+    "stone": "#e6e2d8",
+    "wallMaterial": "brick"
+   }
+  },
+  "why": {
+   "fronts/0/bays": "two windows a storey, white frames"
+  },
+  "limits": [
+   {
+    "component": "shopfront",
+    "what": "diamond-pattern stallriser panels and the red lettering"
+   }
+  ]
+ },
+ "0363100012171858": {
+  "address": "Geldersekade 132 / Nieuwmarkt 2",
+  "photo": "pand-crops/0363100012171858/front.jpg (2016-06-09)",
+  "date": "2016-06-09",
+  "batch": 3,
+  "design": {
+   "fronts": [
+    {
+     "id": "front0",
+     "street": "Geldersekade",
+     "basement": "none",
+     "hoist": false,
+     "gable": "cornice",
+     "cornice": "bracketed",
+     "storeys": 5,
+     "bays": 2,
+     "doorBay": 0,
+     "tallGround": true,
+     "windows": "casement-toplight",
+     "bands": "painted",
+     "bandLines": [
+      "sill",
+      "head"
+     ],
+     "shopfront": {
+      "colour": "#2b2b2b",
+      "fascia": true,
+      "entrance": "left",
+      "stallriser": "low",
+      "displayWindows": 2,
+      "evidence": "cafe Zon with a dark front, 2016-06-09"
+     },
+     "windowShare": 0.62,
+     "windowHeights": "diminishing"
+    }
+   ],
+   "roof": {
+    "material": "black-tile"
+   },
+   "palette": {
+    "brick": "#e2ddd0",
+    "frame": "#e6e2d8",
+    "door": "#2c3a33",
+    "stone": "#e6e2d8",
+    "wallMaterial": "stucco"
+   }
+  },
+  "why": {
+   "palette/wallMaterial": "white stucco front with moulded window surrounds (c. 1890)",
+   "fronts/0/bands": "moulded string courses"
+  },
+  "limits": [
+   {
+    "component": "window surround",
+    "what": "pedimented stucco surrounds and pilasters round the windows"
+   }
+  ]
+ },
+ "0363100012171919": {
+  "address": "Geldersekade 57",
+  "photo": "pand-crops/0363100012171919/front.jpg (2025-01-08)",
+  "date": "2025-01-08",
+  "batch": 3,
+  "design": {
+   "fronts": [
+    {
+     "id": "front0",
+     "street": "Geldersekade",
+     "basement": "none",
+     "hoist": false,
+     "gable": "cornice",
+     "cornice": "frieze",
+     "storeys": 3,
+     "bays": 3,
+     "doorBay": 0,
+     "tallGround": true,
+     "windows": "cross",
+     "atticWindows": 3,
+     "shopfront": {
+      "colour": "#e6e2d8",
+      "fascia": false,
+      "glazing": "transom",
+      "entrance": "left",
+      "stallriser": "medium",
+      "displayWindows": 2,
+      "evidence": "white ground storey with an oak door up two steps, 2025-01-08"
+     },
+     "windowShare": 0.62,
+     "storeyHeights": [
+      1.3,
+      1.0,
+      1.0
+     ]
+    }
+   ],
+   "roof": {
+    "material": "black-tile"
+   },
+   "palette": {
+    "brick": "#3a302c",
+    "frame": "white",
+    "door": "#2c3a33",
+    "stone": "#e6e2d8",
+    "wallMaterial": "brick",
+    "cornice": "#e6e2d8"
+   }
+  },
+  "why": {
+   "fronts/0/gable": "white frieze cornice with three oval attic lights",
+   "fronts/0/windows": "tall cross windows in white frames",
+   "fronts/0/storeys": "3 storeys under the 3DBAG eaves"
+  },
+  "limits": [
+   {
+    "component": "frieze",
+    "what": "the three oculi in the frieze are oval with white surrounds"
+   },
+   {
+    "component": "storeys",
+    "what": "4 storeys read on the crop; 3 fit the 3DBAG eaves at >= 2.3 m a storey (crop read across the canal, top storey unsure)"
+   }
+  ]
+ },
+ "0363100012171921": {
+  "address": "Geldersekade 59",
+  "photo": "pand-crops/0363100012171921/front.jpg (2025-01-08)",
+  "date": "2025-01-08",
+  "batch": 3,
+  "design": {
+   "fronts": [
+    {
+     "id": "front0",
+     "street": "Geldersekade",
+     "basement": "none",
+     "hoist": false,
+     "gable": "cornice",
+     "cornice": "bracketed",
+     "storeys": 4,
+     "bays": 2,
+     "doorBay": 1,
+     "tallGround": true,
+     "windows": "casement-toplight",
+     "windowHead": {
+      "kind": "segmental",
+      "archRing": {
+       "colour": "stone",
+       "style": "none",
+       "keystone": true
+      }
+     },
+     "shopfront": {
+      "colour": "#e6e2d8",
+      "fascia": false,
+      "glazing": "transom",
+      "entrance": "right",
+      "stallriser": "medium",
+      "displayWindows": 1,
+      "evidence": "white pui, 2025-01-08"
+     },
+     "windowShare": 0.62,
+     "windowHeights": "diminishing"
+    }
+   ],
+   "roof": {
+    "material": "black-tile"
+   },
+   "palette": {
+    "brick": "#3e3029",
+    "frame": "white",
+    "door": "#2c3a33",
+    "stone": "#e6e2d8",
+    "wallMaterial": "brick",
+    "cornice": "#e6e2d8"
+   }
+  },
+  "why": {
+   "fronts/0/gable": "white bracketed cornice and a carved dormer",
+   "fronts/0/windowHead": "segmental heads with white keystones"
+  },
+  "limits": [
+   {
+    "component": "dormer",
+    "what": "1 dormer(s) with a pediment head over the cornice: dropped, a pediment dormer leaves 3.8 m of open edge in the install gate"
+   }
+  ]
+ },
+ "0363100012171915": {
+  "address": "Geldersekade 61",
+  "photo": "pand-crops/0363100012171915/front.jpg (2019-01-15)",
+  "date": "2019-01-15",
+  "batch": 3,
+  "design": {
+   "fronts": [
+    {
+     "id": "front0",
+     "street": "Geldersekade",
+     "basement": "none",
+     "hoist": false,
+     "gable": "cornice",
+     "cornice": "simple",
+     "storeys": 3,
+     "bays": 3,
+     "doorBay": 0,
+     "tallGround": false,
+     "windows": "casement-toplight",
+     "windowShare": 0.62,
+     "windowHeights": "diminishing"
+    }
+   ],
+   "roof": {
+    "material": "black-tile"
+   },
+   "palette": {
+    "brick": "#4e433b",
+    "frame": "white",
+    "door": "#2c3a33",
+    "stone": "#e6e2d8",
+    "wallMaterial": "brick"
+   }
+  },
+  "why": {
+   "fronts/0/storeys": "3 storeys under the 3DBAG eaves",
+   "palette/brick": "plum-brown brick; crop reading #473d36, lift 10 %"
+  },
+  "limits": [
+   {
+    "component": "door",
+    "what": "a round-arched door with a fanlight at the left, up a stone stoop"
+   },
+   {
+    "component": "storeys",
+    "what": "5 storeys read on the crop; 3 fit the 3DBAG eaves at >= 2.3 m a storey (crop read across the canal, top storey unsure)"
+   }
+  ]
+ },
+ "0363100012182248": {
+  "address": "Geldersekade 65",
+  "photo": "pand-crops/0363100012182248/front.jpg (2025-01-08)",
+  "date": "2025-01-08",
+  "batch": 3,
+  "design": {
+   "fronts": [
+    {
+     "id": "front0",
+     "street": "Geldersekade",
+     "basement": "none",
+     "hoist": false,
+     "gable": "neck",
+     "cornice": "none",
+     "storeys": 4,
+     "bays": 3,
+     "doorBay": 0,
+     "tallGround": true,
+     "windows": "casement-toplight",
+     "atticWindows": 1,
+     "crownCap": "pediment",
+     "windowShare": 0.62,
+     "windowHeights": "diminishing"
+    }
+   ],
+   "roof": {
+    "material": "black-tile",
+    "source": "front",
+    "evidence": "neck gable"
+   },
+   "palette": {
+    "brick": "#45403c",
+    "frame": "white",
+    "door": "#2c3a33",
+    "stone": "#e6e2d8",
+    "wallMaterial": "brick"
+   }
+  },
+  "why": {
+   "fronts/0/gable": "neck gable with carved white claw pieces",
+   "fronts/0/crownCap": "pediment over the neck"
+  },
+  "limits": [
+   {
+    "component": "gable",
+    "what": "two oval oculi with white frames in the gable shoulders and carved claw pieces"
+   }
+  ]
+ },
+ "0363100012171696": {
+  "address": "Geldersekade 85",
+  "photo": "pand-crops/0363100012171696/front.jpg (2025-01-08)",
+  "date": "2025-01-08",
+  "batch": 3,
+  "design": {
+   "fronts": [
+    {
+     "id": "front0",
+     "street": "Geldersekade",
+     "basement": "none",
+     "hoist": false,
+     "gable": "point",
+     "cornice": "none",
+     "storeys": 3,
+     "bays": 3,
+     "doorBay": 0,
+     "tallGround": true,
+     "windows": "casement-gridded-toplight",
+     "atticWindows": 1,
+     "shopfront": {
+      "colour": "#e6e2d8",
+      "fascia": false,
+      "glazing": "transom",
+      "entrance": "left",
+      "stallriser": "medium",
+      "displayWindows": 2,
+      "evidence": "white gridded warehouse ground storey with a black door, 2025-01-08"
+     },
+     "windowShare": 0.62,
+     "windowHeights": "diminishing"
+    }
+   ],
+   "roof": {
+    "material": "black-tile",
+    "source": "front",
+    "evidence": "point gable"
+   },
+   "palette": {
+    "brick": "#444338",
+    "frame": "white",
+    "door": "#2c3a33",
+    "stone": "#e6e2d8",
+    "wallMaterial": "brick"
+   }
+  },
+  "why": {
+   "fronts/0/gable": "plain point (warehouse) gable with white verges",
+   "fronts/0/windows": "wide gridded windows over the two upper storeys",
+   "fronts/0/atticWindows": "one small hoist hatch in the gable",
+   "palette/brick": "crop reading #3e3d33, lift 10 %"
+  },
+  "limits": []
+ },
+ "0363100012171491": {
+  "address": "Geldersekade 89",
+  "photo": "pand-crops/0363100012171491/front.jpg (2022-04-26)",
+  "date": "2022-04-26",
+  "batch": 3,
+  "design": {
+   "fronts": [
+    {
+     "id": "front0",
+     "street": "Geldersekade",
+     "basement": "none",
+     "hoist": false,
+     "gable": "bell",
+     "cornice": "none",
+     "storeys": 4,
+     "bays": 3,
+     "doorBay": 0,
+     "tallGround": true,
+     "windows": "casement-toplight",
+     "atticWindows": 1,
+     "shopfront": {
+      "colour": "#b02020",
+      "fascia": false,
+      "glazing": "transom",
+      "entrance": "left",
+      "stallriser": "low",
+      "displayWindows": 1,
+      "evidence": "red pui and door, 2022-04-26"
+     },
+     "windowShare": 0.62,
+     "windowHeights": "diminishing"
+    }
+   ],
+   "roof": {
+    "material": "black-tile",
+    "source": "front",
+    "evidence": "bell gable"
+   },
+   "palette": {
+    "brick": "#302123",
+    "frame": "#a8281e",
+    "door": "#2c3a33",
+    "stone": "#e6e2d8",
+    "wallMaterial": "brick"
+   }
+  },
+  "why": {
+   "fronts/0/gable": "tall bell gable with a white cap",
+   "fronts/0/windows": "red-framed windows",
+   "palette/frame": "red frames",
+   "palette/brick": "crop reading #2c1e20, lift 10 %"
+  },
+  "limits": []
+ },
+ "0363100012171761": {
+  "address": "Geldersekade 91",
+  "photo": "pand-crops/0363100012171761/front.jpg (2025-01-08)",
+  "date": "2025-01-08",
+  "batch": 3,
+  "design": {
+   "fronts": [
+    {
+     "id": "front0",
+     "street": "Geldersekade",
+     "basement": "none",
+     "hoist": false,
+     "gable": "cornice",
+     "cornice": "bracketed",
+     "storeys": 5,
+     "bays": 3,
+     "doorBay": 1,
+     "tallGround": true,
+     "windows": "casement-toplight",
+     "bands": "painted",
+     "bandLines": [
+      "sill"
+     ],
+     "shopfront": {
+      "colour": "#2b2b2b",
+      "fascia": true,
+      "entrance": "centre",
+      "stallriser": "low",
+      "displayWindows": 2,
+      "evidence": "bike-rental shop with a gold sign, 2025-01-08"
+     },
+     "windowShare": 0.62,
+     "storeyHeights": [
+      1.3,
+      1.0,
+      1.0,
+      1.0,
+      1.0
+     ]
+    }
+   ],
+   "roof": {
+    "material": "black-tile"
+   },
+   "palette": {
+    "brick": "#ddd6c4",
+    "frame": "#e6e2d8",
+    "door": "#2c3a33",
+    "stone": "#e6e2d8",
+    "wallMaterial": "stucco"
+   }
+  },
+  "why": {
+   "palette/wallMaterial": "cream stucco front with a moulded frieze",
+   "fronts/0/gable": "cornice and a dormer with a pediment",
+   "fronts/0/storeyHeights": "uniform upper storeys under the 3DBAG eaves"
+  },
+  "limits": [
+   {
+    "component": "dormer",
+    "what": "1 dormer(s) with a pediment head over the cornice: dropped, a pediment dormer leaves 3.8 m of open edge in the install gate"
+   }
+  ]
+ },
+ "0363100012171697": {
+  "address": "Geldersekade 93",
+  "photo": "pand-crops/0363100012171697/front.jpg (2022-04-26)",
+  "date": "2022-04-26",
+  "batch": 3,
+  "design": {
+   "fronts": [
+    {
+     "id": "front0",
+     "street": "Geldersekade",
+     "basement": "none",
+     "hoist": false,
+     "gable": "cornice",
+     "cornice": "simple",
+     "storeys": 4,
+     "bays": 5,
+     "doorBay": 4,
+     "tallGround": true,
+     "windows": "casement-toplight",
+     "shopfront": {
+      "colour": "#7a1c1c",
+      "fascia": true,
+      "entrance": "right",
+      "stallriser": "low",
+      "displayWindows": 3,
+      "evidence": "restaurant with a red awning, 2022-04-26"
+     },
+     "windowShare": 0.62,
+     "windowHeights": "diminishing"
+    }
+   ],
+   "roof": {
+    "material": "black-tile"
+   },
+   "palette": {
+    "brick": "#7d665f",
+    "frame": "white",
+    "door": "#2c3a33",
+    "stone": "#e6e2d8",
+    "wallMaterial": "brick"
+   }
+  },
+  "why": {
+   "fronts/0/bays": "five white-framed windows a storey (distant crop, 22 deg)",
+   "palette/brick": "crop reading #725d56, lift 10 %"
+  },
+  "limits": []
+ },
+ "0363100012182473": {
+  "address": "Geldersekade 107",
+  "photo": "pand-crops/0363100012182473/front.jpg (2025-01-08)",
+  "date": "2025-01-08",
+  "batch": 3,
+  "design": {
+   "fronts": [
+    {
+     "id": "front0",
+     "street": "Geldersekade",
+     "basement": "none",
+     "hoist": false,
+     "gable": "cornice",
+     "cornice": "none",
+     "storeys": 4,
+     "bays": 3,
+     "doorBay": 1,
+     "tallGround": true,
+     "windows": "sash-small-panes",
+     "windowShare": 0.62,
+     "windowHeights": "diminishing"
+    }
+   ],
+   "roof": {
+    "material": "red-tile"
+   },
+   "palette": {
+    "brick": "#9a7a50",
+    "frame": "#e6e2d8",
+    "door": "#2c3a33",
+    "stone": "#e6e2d8",
+    "wallMaterial": "brick"
+   }
+  },
+  "why": {
+   "fronts/0/gable": "plain eaves under a red pantile roof",
+   "palette/brick": "yellow-brown brick",
+   "roof/material": "red pantiles"
+  },
+  "limits": []
+ },
+ "0363100012182401": {
+  "address": "Geldersekade 109",
+  "photo": "pand-crops/0363100012182401/front.jpg (2020-04-21)",
+  "date": "2020-04-21",
+  "batch": 3,
+  "design": {
+   "fronts": [
+    {
+     "id": "front0",
+     "street": "Geldersekade",
+     "basement": "none",
+     "hoist": false,
+     "gable": "cornice",
+     "cornice": "simple",
+     "storeys": 5,
+     "bays": 4,
+     "doorBay": 3,
+     "tallGround": true,
+     "windows": "casement-toplight",
+     "bands": "speklagen",
+     "speklagen": {
+      "spacing": 10,
+      "courses": 1
+     },
+     "shopfront": {
+      "colour": "#e6e2d8",
+      "fascia": false,
+      "glazing": "transom",
+      "entrance": "right",
+      "stallriser": "medium",
+      "displayWindows": 2,
+      "evidence": "white shop window at the right, 2020-04-21"
+     },
+     "windowShare": 0.62,
+     "windowHeights": "diminishing"
+    }
+   ],
+   "roof": {
+    "material": "black-tile"
+   },
+   "palette": {
+    "brick": "#6a3a2e",
+    "frame": "white",
+    "door": "#2c3a33",
+    "stone": "#e6e2d8",
+    "wallMaterial": "brick"
+   }
+  },
+  "why": {
+   "fronts/0/bands": "light stone bands across the brick (c. 1880)",
+   "fronts/0/bays": "four axes"
+  },
+  "limits": []
+ },
+ "0363100012182403": {
+  "address": "Geldersekade 111",
+  "photo": "pand-crops/0363100012182403/front.jpg (2025-01-08)",
+  "date": "2025-01-08",
+  "batch": 3,
+  "design": {
+   "fronts": [
+    {
+     "id": "front0",
+     "street": "Geldersekade",
+     "basement": "none",
+     "hoist": false,
+     "gable": "cornice",
+     "cornice": "bracketed",
+     "storeys": 5,
+     "bays": 3,
+     "doorBay": 0,
+     "tallGround": true,
+     "windows": "casement-toplight",
+     "windowHead": {
+      "kind": "segmental",
+      "archRing": {
+       "colour": "stone",
+       "style": "none",
+       "keystone": true
+      }
+     },
+     "bands": "painted",
+     "bandLines": [
+      "sill",
+      "head"
+     ],
+     "shopfront": {
+      "colour": "#2b2b2b",
+      "fascia": true,
+      "entrance": "left",
+      "stallriser": "low",
+      "displayWindows": 2,
+      "evidence": "dark shop with a red sign, 2025-01-08"
+     },
+     "windowShare": 0.62,
+     "windowHeights": "diminishing"
+    }
+   ],
+   "roof": {
+    "material": "black-tile"
+   },
+   "palette": {
+    "brick": "#4a3834",
+    "frame": "white",
+    "door": "#2c3a33",
+    "stone": "#e6e2d8",
+    "wallMaterial": "brick",
+    "cornice": "#e6e2d8"
+   }
+  },
+  "why": {
+   "fronts/0/bands": "white stone bands at sill and head",
+   "fronts/0/windowHead": "segmental heads with white keystones",
+   "fronts/0/gable": "white bracketed cornice with a dormer",
+   "palette/brick": "crop reading #5f493f, wallcast (2025-01-08 low sun)"
+  },
+  "limits": [
+   {
+    "component": "dormer",
+    "what": "1 dormer(s) with a pediment head over the cornice: dropped, a pediment dormer leaves 3.8 m of open edge in the install gate"
+   }
+  ]
+ },
+ "0363100012171479": {
+  "address": "Geldersekade 117",
+  "photo": "pand-crops/0363100012171479/front.jpg (2025-01-08)",
+  "date": "2025-01-08",
+  "batch": 3,
+  "design": {
+   "fronts": [
+    {
+     "id": "front0",
+     "street": "Geldersekade",
+     "basement": "none",
+     "hoist": false,
+     "gable": "cornice",
+     "cornice": "simple",
+     "storeys": 4,
+     "bays": 3,
+     "doorBay": 0,
+     "tallGround": true,
+     "windows": "casement-toplight",
+     "bayWindows": {
+      "bay": 1,
+      "storeys": [
+       1
+      ],
+      "cap": "flat"
+     },
+     "balconies": {
+      "storeys": [
+       2
+      ],
+      "bays": [
+       1
+      ]
+     },
+     "shopfront": {
+      "colour": "#e6e2d8",
+      "fascia": true,
+      "entrance": "left",
+      "stallriser": "low",
+      "displayWindows": 1,
+      "evidence": "white restaurant front with red Chinese lettering, 2025-01-08"
+     },
+     "windowShare": 0.62,
+     "windowHeights": "diminishing"
+    }
+   ],
+   "roof": {
+    "material": "black-tile"
+   },
+   "palette": {
+    "brick": "#574844",
+    "frame": "white",
+    "door": "#2c3a33",
+    "stone": "#e6e2d8",
+    "wallMaterial": "brick"
+   }
+  },
+  "why": {
+   "fronts/0/bayWindows": "a white timber bay on the first storey, middle axis",
+   "fronts/0/balconies": "a white balcony on top of it",
+   "palette/brick": "crop reading #6f5d53, wallcast (2025-01-08 low sun)"
+  },
+  "limits": [
+   {
+    "component": "crown",
+    "what": "a round-arched balcony door in the parapet over the middle axis"
+   }
+  ]
  }
 }
