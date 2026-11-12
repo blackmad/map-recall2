@@ -196,6 +196,22 @@
   "zd77": {
    "ref": "house:crops crop pand-crops/0363100012182374 (map-recall2-source-data, wall route, captured 2016-06-09)",
    "at": "2016-06-09"
+  },
+  "oza38-46": {
+   "ref": "panorama b_20250114_1026_Track06_Sphere_00157 (25 m across the Oudezijds Achterburgwal, row view of 38-46)",
+   "at": "2025-01-14"
+  },
+  "oza52-60": {
+   "ref": "panorama b_20250114_1026_Track06_Sphere_00148 (22 m across the Oudezijds Achterburgwal, row view of 52-60)",
+   "at": "2025-01-14"
+  },
+  "oza66-76": {
+   "ref": "panorama b_20250114_1026_Track06_Sphere_00136 (21 m across the Oudezijds Achterburgwal, row view of 66-76)",
+   "at": "2025-01-14"
+  },
+  "oza76-86": {
+   "ref": "panorama b_20250114_1026_Track06_Sphere_00128 (20 m across the Oudezijds Achterburgwal, row view of 76-86)",
+   "at": "2025-01-14"
   }
  },
  "pands": [
@@ -2234,6 +2250,278 @@
      "the white dormers carry stone pediments; drawn flat timber"
     ]
    ]
+  },
+  {
+   "pandId": "0363100012177979",
+   "label": "38",
+   "street": "Oudezijds Achterburgwal",
+   "photo": "oza38-46",
+   "front": {
+    "gable": "neck",
+    "crownCap": "rounded",
+    "atticWindows": 1,
+    "hoist": true,
+    "windows": "sash",
+    "windowSurround": "full-frame",
+    "storeys": 4,
+    "bays": 3,
+    "shopfront": {
+     "colour": "#e8e4da",
+     "fascia": false,
+     "displayWindows": 3,
+     "stallriser": "low"
+    },
+    "storeyHeights": [
+     1.1,
+     1,
+     1,
+     1
+    ]
+   },
+   "palette": {
+    "brick": "#2e2a2a",
+    "wallMaterial": "painted-brick"
+   },
+   "notes": [
+    "Black-painted neck gable with white claws; red-light windows on the ground storey"
+   ]
+  },
+  {
+   "pandId": "0363100012177978",
+   "label": "40",
+   "street": "Oudezijds Achterburgwal",
+   "photo": "oza38-46",
+   "front": {
+    "gable": "cornice",
+    "cornice": "simple",
+    "windows": "sash",
+    "windowSurround": "full-frame",
+    "storeys": 4,
+    "bays": 3,
+    "shopfront": {
+     "colour": "#e8e4da",
+     "fascia": false,
+     "displayWindows": 3,
+     "stallriser": "low"
+    }
+   },
+   "palette": {
+    "brick": "#6a4a3c"
+   },
+   "notes": [
+    "Brown brick, three wide bays; the crown is cut by the frame"
+   ]
+  },
+  {
+   "pandId": "0363100012177977",
+   "label": "42",
+   "street": "Oudezijds Achterburgwal",
+   "photo": "oza38-46",
+   "front": {
+    "gable": "cornice",
+    "cornice": "simple",
+    "windows": "sash",
+    "windowSurround": "full-frame",
+    "storeys": 4,
+    "bays": 3,
+    "shopfront": {
+     "colour": "#e8e4da",
+     "fascia": false,
+     "displayWindows": 2,
+     "stallriser": "low"
+    }
+   },
+   "palette": {
+    "brick": "#5a4a40"
+   },
+   "notes": [
+    "Grey-brown brick between 40 and 44; outline offset, read by order along the quay"
+   ]
+  },
+  {
+   "pandId": "0363100012177984",
+   "label": "44",
+   "street": "Oudezijds Achterburgwal",
+   "photo": "oza38-46",
+   "front": {
+    "gable": "cornice",
+    "cornice": "simple",
+    "windows": "sash",
+    "windowSurround": "full-frame",
+    "storeys": 4,
+    "bays": 3,
+    "dormers": 1,
+    "dormerStyle": "flat",
+    "dormerBody": "timber",
+    "shopfront": {
+     "colour": "#e8e4da",
+     "fascia": false,
+     "displayWindows": 4,
+     "stallriser": "low"
+    }
+   },
+   "palette": {
+    "brick": "#7a4a38"
+   },
+   "notes": [
+    "Red-brown brick, plain cornice, a centre dormer with a hoist"
+   ]
+  },
+  {
+   "pandId": "0363100012178295",
+   "label": "66",
+   "street": "Oudezijds Achterburgwal",
+   "photo": "oza66-76",
+   "front": {
+    "gable": "cornice",
+    "cornice": "simple",
+    "windows": "sash",
+    "windowSurround": "full-frame",
+    "storeys": 4,
+    "bays": 3,
+    "shopfront": {
+     "colour": "#e8e4da",
+     "fascia": false,
+     "displayWindows": 2,
+     "stallriser": "low",
+     "entrance": "centre"
+    }
+   },
+   "palette": {
+    "brick": "#6a4a3c"
+   },
+   "notes": [
+    "Brick front with a white centre door surround and plain cornice"
+   ]
+  },
+  {
+   "pandId": "0363100012178293",
+   "label": "72",
+   "street": "Oudezijds Achterburgwal",
+   "photo": "oza66-76",
+   "front": {
+    "gable": "neck",
+    "crownCap": "pediment",
+    "atticWindows": 1,
+    "hoist": true,
+    "windows": "sash",
+    "windowSurround": "full-frame",
+    "storeys": 4,
+    "bays": 2,
+    "windowHead": {
+     "kind": "segmental"
+    },
+    "shopfront": {
+     "colour": "#e8e4da",
+     "fascia": false,
+     "displayWindows": 2,
+     "stallriser": "low"
+    }
+   },
+   "palette": {
+    "brick": "#9a5a40"
+   },
+   "notes": [
+    "1899 orange-red brick, segmental white-framed heads, a narrow crown with a pediment"
+   ]
+  },
+  {
+   "pandId": "0363100012179005",
+   "label": "74",
+   "street": "Oudezijds Achterburgwal",
+   "photo": "oza66-76",
+   "front": {
+    "gable": "bell",
+    "crownCap": "rounded",
+    "atticWindows": 1,
+    "hoist": true,
+    "windows": "sash",
+    "windowSurround": "full-frame",
+    "storeys": 3,
+    "bays": 3,
+    "shopfront": {
+     "colour": "#e8e4da",
+     "fascia": false,
+     "displayWindows": 3,
+     "stallriser": "low"
+    }
+   },
+   "palette": {
+    "brick": "#6a4a3a"
+   },
+   "notes": [
+    "Bell gable with scrolls; red-light ground storey"
+   ]
+  },
+  {
+   "pandId": "0363100012178396",
+   "label": "76",
+   "street": "Oudezijds Achterburgwal",
+   "photo": "oza66-76",
+   "front": {
+    "gable": "bell",
+    "crownCap": "segmental",
+    "atticWindows": 1,
+    "hoist": true,
+    "windows": "sash",
+    "windowSurround": "full-frame",
+    "storeys": 3,
+    "bays": 3,
+    "shopfront": {
+     "colour": "#2a2626",
+     "fascia": true,
+     "displayWindows": 2,
+     "stallriser": "low",
+     "fasciaColour": "#a12a24"
+    }
+   },
+   "palette": {
+    "brick": "#6e5040"
+   },
+   "notes": [
+    "Bell gable with a carved crown and a cartouche over the attic window"
+   ],
+   "limits": [
+    [
+     "crown",
+     "a carved cartouche and segmental cap; drawn as a segmental cap"
+    ]
+   ]
+  },
+  {
+   "pandId": "0363100012178302",
+   "label": "82",
+   "street": "Oudezijds Achterburgwal",
+   "photo": "oza76-86",
+   "front": {
+    "gable": "cornice",
+    "cornice": "simple",
+    "windows": "sash",
+    "windowSurround": "full-frame",
+    "storeys": 5,
+    "bays": 3,
+    "dormers": 1,
+    "dormerStyle": "flat",
+    "dormerBody": "timber",
+    "shopfront": {
+     "colour": "#e8e4da",
+     "fascia": false,
+     "displayWindows": 2,
+     "stallriser": "low"
+    }
+   },
+   "palette": {
+    "brick": "#5a3a30"
+   },
+   "notes": [
+    "Dark brick, plain cornice with a raised pedimented attic"
+   ],
+   "limits": [
+    [
+     "dormer",
+     "the raised attic carries a pediment; drawn flat"
+    ]
+   ]
   }
  ],
  "held": [
@@ -2261,6 +2549,11 @@
    "pandId": "0363100012178049",
    "label": "Zeedijk 4",
    "why": "3DBAG eaves 11.5 m under five photo storeys: uppers 2.29 m < the 2.3 m storey-height floor; a HouseSpec has no eaves field"
+  },
+  {
+   "pandId": "0363100012177956",
+   "label": "Oudezijds Achterburgwal 56",
+   "why": "3DBAG eaves under four photo storeys under a frieze: uppers 2.0-2.2 m < the 2.3 m floor; a HouseSpec has no eaves field"
   }
  ],
  "heldReadings": [
@@ -2397,6 +2690,40 @@
    },
    "notes": [
     "White heavy cornice over five storeys"
+   ]
+  },
+  {
+   "pandId": "0363100012177956",
+   "label": "56",
+   "street": "Oudezijds Achterburgwal",
+   "photo": "oza52-60",
+   "front": {
+    "gable": "cornice",
+    "cornice": "frieze",
+    "windows": "sash",
+    "windowSurround": "full-frame",
+    "storeys": 4,
+    "bays": 2,
+    "shopfront": {
+     "colour": "#2a2626",
+     "fascia": false,
+     "displayWindows": 2,
+     "stallriser": "low"
+    }
+   },
+   "palette": {
+    "brick": "#2e2a2a",
+    "wallMaterial": "painted-brick",
+    "cornice": "#e6e1d6"
+   },
+   "notes": [
+    "Black-painted front under a cream frieze with oculi"
+   ],
+   "limits": [
+    [
+     "cornice",
+     "the frieze carries painted oculi and a scroll; drawn plain"
+    ]
    ]
   }
  ]

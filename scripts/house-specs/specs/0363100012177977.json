@@ -1,0 +1,66 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012177977",
+ "address": "Oudezijds Achterburgwal 42",
+ "design": {
+  "fronts": [
+   {
+    "id": "front0",
+    "street": "Oudezijds Achterburgwal",
+    "basement": "none",
+    "cornice": "simple",
+    "doorBay": 0,
+    "windows": "sash",
+    "hoist": false,
+    "gable": "cornice",
+    "windowSurround": "full-frame",
+    "storeys": 4,
+    "bays": 3,
+    "shopfront": {
+     "colour": "#e8e4da",
+     "fascia": false,
+     "displayWindows": 2,
+     "stallriser": "low"
+    }
+   }
+  ],
+  "roof": {
+   "material": "black-tile"
+  },
+  "palette": {
+   "frame": "white",
+   "door": "#2a2624",
+   "stone": "#e9e6dd",
+   "brick": "#5a4a40"
+  },
+  "notes": [
+   "Grey-brown brick between 40 and 44; outline offset, read by order along the quay"
+  ]
+ },
+ "provenance": {
+  "fronts/0": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "lane belt-burgwallen-oz-build-20261110 hand read (front: crown, storeys, axes, windows, ground storey) of panorama b_20250114_1026_Track06_Sphere_00157 (25 m across the Oudezijds Achterburgwal, row view of 38-46)",
+   "at": "2025-01-14"
+  },
+  "roof": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "lane belt-burgwallen-oz-build-20261110 hand read (roof from the front) of panorama b_20250114_1026_Track06_Sphere_00157 (25 m across the Oudezijds Achterburgwal, row view of 38-46)",
+   "at": "2025-01-14"
+  },
+  "palette": {
+   "source": "author",
+   "confidence": 0.7,
+   "ref": "lane belt-burgwallen-oz-build-20261110 hand read (wall and trim colours) of panorama b_20250114_1026_Track06_Sphere_00157 (25 m across the Oudezijds Achterburgwal, row view of 38-46)",
+   "at": "2025-01-14"
+  },
+  "notes": {
+   "source": "author",
+   "confidence": 0.9,
+   "ref": "lane belt-burgwallen-oz-build-20261110 hand read (notes) of panorama b_20250114_1026_Track06_Sphere_00157 (25 m across the Oudezijds Achterburgwal, row view of 38-46)",
+   "at": "2025-01-14"
+  }
+ }
+}
