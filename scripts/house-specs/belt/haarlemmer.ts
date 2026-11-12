@@ -21,7 +21,7 @@ type Amend = {
   limits?: SpecLimit[];
 };
 /** Reviewer eaves pins of the lane (scripts/block-face/buurten/haarlemmerbuurt-{west,oost}-review-eaves.json), m above the pand's ground. */
-const EAVES_PINS = ['west', 'oost'].flatMap(b => JSON.parse(readFileSync(`scripts/block-face/buurten/haarlemmerbuurt-${b}-review-eaves.json`, 'utf8')).pins as {pandId: string; eavesM: number; reason: string}[]);
+export const EAVES_PINS = ['west', 'oost'].flatMap(b => JSON.parse(readFileSync(`scripts/block-face/buurten/haarlemmerbuurt-${b}-review-eaves.json`, 'utf8')).pins as {pandId: string; eavesM: number; reason: string}[]);
 
 export const AMEND: Record<string, Amend> = {
   // Haarlemmerdijk 133A: the 2020-01-10 pose (house:frames, 5 deg obliquity) reads the shoulders at 9.9-10.1 m and a dark-brick bell crown to
@@ -71,7 +71,7 @@ export const AMEND: Record<string, Amend> = {
 };
 
 /** A gabled front's 3DBAG saddle stands behind the crown in the recipe route; the strips show sky behind the crowns (roofs from the front). */
-function roofBehindCrown(pandId: string, spec: HouseSpec): SpecLimit | null {
+export function roofBehindCrown(pandId: string, spec: HouseSpec): SpecLimit | null {
   const f = spec.design.fronts?.[0] as {gable?: string} | undefined;
   if (!f?.gable || (f.gable === 'cornice' && pandId !== '0363100012176172')) return null; // the other cornice fronts draw flat behind the crown
   return {component: 'roof behind crown', what: `${spec.address}: the recipe route draws the 3DBAG roof behind the ${f.gable} crown unless roof.source is 'front' (houseFrontRoof.ts); the strip shows sky behind it`};

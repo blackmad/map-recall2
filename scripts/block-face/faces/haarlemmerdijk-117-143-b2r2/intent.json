@@ -1,0 +1,129 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "haarlemmerdijk-117-143-r2",
+ "street": "Haarlemmerdijk",
+ "sources": [
+  {
+   "id": "strip-2022-12-15",
+   "kind": "street-panorama",
+   "capturedAt": "2022-12-15",
+   "image": "staging/block-face/haarlemmerdijk-117-143-r2/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "auto-place (blockFace/autoPlace.ts)",
+  "passes": 1,
+  "note": "auto-placed from the haarlemmerbuurt library (buurt Haarlemmerbuurt-West); scores and holds in scripts/block-face/faces/haarlemmerdijk-117-143/auto-place.json"
+ },
+ "types": [
+  "haarlemmer-shop-cornice-wide"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012173483",
+   "slug": "haarlemmerdijk-173483",
+   "address": "Haarlemmerdijk 141",
+   "type": {
+    "type": "haarlemmer-shop-cornice-wide",
+    "ground": {
+     "shopfront": {
+      "colour": "#35302a",
+      "fascia": true,
+      "name": "COCO",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: osm-only (winkelfunctie, shop=tobacco); fascia colour measured on the strip 2022-12-15 span 2343-2574"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#312d2c",
+     "evidence": "strip 2022-12-15 span 2343-2574: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "name": "COCO",
+    "category": "shop=tobacco",
+    "osm": {
+     "type": "node",
+     "id": 1223057228,
+     "name": "COCO"
+    },
+    "bag": [
+     "winkelfunctie"
+    ],
+    "photoDate": "2022-12-15",
+    "agreement": "osm-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: haarlemmer-shop-cornice-wide scored 0.82 on eaves 0.5, stucco 1, columns 1; strip 2022-12-15 span 2343-2574"
+   }
+  },
+  {
+   "pandId": "0363100012169539",
+   "slug": "haarlemmerdijk-169539",
+   "address": "Haarlemmerdijk 143",
+   "type": {
+    "type": "haarlemmer-shop-cornice-wide",
+    "ground": {
+     "shopfront": {
+      "colour": "#2a2624",
+      "fascia": true,
+      "name": "Jutka & Riska",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "right",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: osm-only (winkelfunctie,woonfunctie, shop=clothes); fascia colour measured on the strip 2022-12-15 span 2575-2806"
+     }
+    },
+    "mirror": true,
+    "measuredPalette": {
+     "brick": "#40302c",
+     "evidence": "strip 2022-12-15 span 2575-2806: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "name": "Jutka & Riska",
+    "category": "shop=clothes",
+    "osm": {
+     "type": "node",
+     "id": 1223057254,
+     "name": "Jutka & Riska"
+    },
+    "bag": [
+     "winkelfunctie,woonfunctie"
+    ],
+    "photoDate": "2022-12-15",
+    "agreement": "osm-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: haarlemmer-shop-cornice-wide scored 0.82 on eaves 0.5, stucco 1, columns 1; strip 2022-12-15 span 2575-2806"
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "auto-place: low attic behind the cornice; the strips show sky over the cornices of the type rows"
+  }
+ }
+}

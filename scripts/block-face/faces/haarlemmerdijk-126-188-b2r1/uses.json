@@ -1,0 +1,322 @@
+{
+ "street": "Haarlemmerdijk",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T08:28:40.436Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012172757",
+   "addresses": [
+    "Haarlemmerdijk 186",
+    "Haarlemmerdijk 186C",
+    "Haarlemmerdijk 186D",
+    "Haarlemmerdijk 186A",
+    "Haarlemmerdijk 186B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerdijk 186-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 120,
+     "bagId": "0363010000656245"
+    },
+    {
+     "address": "Haarlemmerdijk 186C",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010012149399"
+    },
+    {
+     "address": "Haarlemmerdijk 186D",
+     "use": "woonfunctie",
+     "areaM2": 100,
+     "bagId": "0363010012149400"
+    },
+    {
+     "address": "Nieuwe Houttuinen 111",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010012149401"
+    },
+    {
+     "address": "Haarlemmerdijk 186A",
+     "use": "winkelfunctie",
+     "areaM2": 83,
+     "bagId": "0363010012149397"
+    },
+    {
+     "address": "Haarlemmerdijk 186B",
+     "use": "kantoorfunctie",
+     "areaM2": 21,
+     "bagId": "0363010012149398"
+    }
+   ],
+   "units": 7,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11416848325,
+     "lngLat": [
+      4.8846014,
+      52.3842309
+     ],
+     "tags": {
+      "female": "yes",
+      "male": "yes",
+      "name": "Gibson Hair",
+      "shop": "hairdresser",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-11-10T08:28:40.436Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012172756",
+   "addresses": [
+    "Haarlemmerdijk 184"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerdijk 184-H",
+     "use": "winkelfunctie",
+     "areaM2": 103,
+     "bagId": "0363010000656241"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 1222424035,
+     "lngLat": [
+      4.8846193,
+      52.3841998
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "184-H",
+      "addr:postcode": "1013JK",
+      "addr:street": "Haarlemmerdijk",
+      "diet:vegetarian": "yes",
+      "name": "Bakkerij Mediterrane",
+      "opening_hours": "Mo-Su 07:30-18:00",
+      "panoramax": "27c9db19-18b2-4c98-ba8e-17ab031c2013",
+      "phone": "+31 20 6203550",
+      "shop": "bakery",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-11-10T08:28:40.436Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012172755",
+   "addresses": [
+    "Haarlemmerdijk 182"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerdijk 182-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 131,
+     "bagId": "0363010010914709"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 1222424121,
+     "lngLat": [
+      4.8846838,
+      52.3841782
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "182-H",
+      "addr:postcode": "1013JK",
+      "addr:street": "Haarlemmerdijk",
+      "amenity": "cafe",
+      "contact:instagram": "https://www.instagram.com/lova.ams",
+      "cuisine": "breakfast;brunch",
+      "indoor_seating": "yes",
+      "name": "Lova",
+      "opening_hours": "Mo-Su 09:30-16:00",
+      "outdoor_seating": "yes",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "website": "https://www.lova.cafe",
+      "website:menu": "http://www.lova.cafe/brunch",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-11-10T08:28:40.436Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012172754",
+   "addresses": [
+    "Haarlemmerdijk 180"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerdijk 180-H",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 98,
+     "bagId": "0363010000656235"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 1222424073,
+     "lngLat": [
+      4.8847441,
+      52.3841708
+     ],
+     "tags": {
+      "beauty": "nails",
+      "name": "Amsterdam nail art studio",
+      "shop": "beauty",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-11-10T08:28:40.436Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012172847",
+   "addresses": [
+    "Haarlemmerdijk 178A",
+    "Haarlemmerdijk 178B",
+    "Haarlemmerdijk 178C",
+    "Haarlemmerdijk 178D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerdijk 178A",
+     "use": "winkelfunctie",
+     "areaM2": 23,
+     "bagId": "0363010001002078"
+    },
+    {
+     "address": "Nieuwe Houttuinen 101",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010001994080"
+    },
+    {
+     "address": "Haarlemmerdijk 178B",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000989155"
+    },
+    {
+     "address": "Haarlemmerdijk 178C",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000989156"
+    },
+    {
+     "address": "Haarlemmerdijk 178D",
+     "use": "woonfunctie",
+     "areaM2": 90,
+     "bagId": "0363010000989157"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 1222424045,
+     "lngLat": [
+      4.8847919,
+      52.3841504
+     ],
+     "tags": {
+      "check_date": "2026-04-24",
+      "name": "Tech Plus",
+      "shop": "electronics",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-11-10T08:28:40.436Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012173014",
+   "addresses": [
+    "Haarlemmerdijk 176"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerdijk 176-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 179,
+     "bagId": "0363010000656230"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 1222424026,
+     "lngLat": [
+      4.8848361,
+      52.3841202
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "176",
+      "addr:postcode": "1013HL",
+      "addr:street": "Haarlemmerdijk",
+      "amenity": "restaurant",
+      "cuisine": "pizza",
+      "name": "Toscana",
+      "not:brand:wikidata": "Q92555442",
+      "opening_hours": "Mo-Th 16:00-23:00; Fr-Su 12:00-23:00",
+      "outdoor_seating": "yes",
+      "phone": "+31 20 334 6293",
+      "smoking": "outside",
+      "website": "https://www.restaurant-toscana.nl/",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-11-10T08:28:40.436Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 1222424082,
+     "lngLat": [
+      4.8848633,
+      52.3841003
+     ],
+     "tags": {
+      "name": "Ristorante Pizzeria Toscana",
+      "shop": "clothes",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-11-10T08:28:40.436Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

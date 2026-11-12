@@ -1,0 +1,180 @@
+{
+ "street": "Haarlemmerdijk",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T08:24:35.136Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012177584",
+   "addresses": [
+    "Haarlemmerdijk 54"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerdijk 54-H",
+     "use": "woonfunctie",
+     "areaM2": 105,
+     "bagId": "0363010000656006"
+    }
+   ],
+   "units": 2,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2721299387,
+     "lngLat": [
+      4.8878764,
+      52.3823796
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "54-H",
+      "addr:postcode": "1013JE",
+      "addr:street": "Haarlemmerdijk",
+      "fee": "no",
+      "name": "Hooffzaak",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "tourism": "gallery",
+      "website": "http://www.hooffzaak.nl",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-11-10T08:24:35.136Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012177590",
+   "addresses": [
+    "Haarlemmerdijk 52"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerdijk 52",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 88,
+     "bagId": "0363010012080135"
+    },
+    {
+     "address": "Jacob Oliepad 19",
+     "use": "woonfunctie",
+     "areaM2": 157,
+     "bagId": "0363010012080150"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 1222424119,
+     "lngLat": [
+      4.8885556,
+      52.3818093
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "19",
+      "addr:postcode": "1013JZ",
+      "addr:street": "Haarlemmerdijk",
+      "check_date": "2024-08-26",
+      "craft": "key_cutter",
+      "email": "amsterdam@desleutelkoning.nl",
+      "name": "De Sleutelkoning",
+      "opening_hours": "Mo-Fr 09:00-18:00; Sa 10:00-18:00",
+      "phone": "+31 20 6222630",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "website": "https://desleutelkoning.nl/amsterdam/",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-11-10T08:24:35.136Z",
+     "match": "address",
+     "distanceM": 69.8
+    },
+    {
+     "type": "node",
+     "id": 1223057305,
+     "lngLat": [
+      4.8879403,
+      52.3823474
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "52",
+      "addr:postcode": "1013JE",
+      "addr:street": "Haarlemmerdijk",
+      "amenity": "pub",
+      "food": "yes",
+      "name": "Rosereijn",
+      "outdoor_seating": "yes",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "website": "https://www.rosereijn.nl",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-11-10T08:24:35.136Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012176280",
+   "addresses": [
+    "Haarlemmerdijk 50",
+    "Haarlemmerdijk 50A",
+    "Haarlemmerdijk 50B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerdijk 50",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 194,
+     "bagId": "0363010000655997"
+    },
+    {
+     "address": "Haarlemmerdijk 50A",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 114,
+     "bagId": "0363010012120950"
+    },
+    {
+     "address": "Haarlemmerdijk 50B",
+     "use": "woonfunctie",
+     "areaM2": 153,
+     "bagId": "0363010012120951"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 9039983458,
+     "lngLat": [
+      4.8879982,
+      52.3823122
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "50",
+      "addr:postcode": "1013JE",
+      "addr:street": "Haarlemmerdijk",
+      "amenity": "restaurant",
+      "cuisine": "salad",
+      "name": "SLA",
+      "opening_hours": "Mo-Su 11:30-20:30; PH off",
+      "phone": "+31 20 223 7461",
+      "website": "https://ilovesla.com",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-11-10T08:24:35.136Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

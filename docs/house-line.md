@@ -2099,3 +2099,13 @@ Node 32 s, Chromium 8 s (most of the Node time is the ortho fronts at 1800 px).
 Not reproduced: the city-look atlas shader, anisotropic filtering, cast shadows, environment maps. The release review
 "at gallery size from all sides" can use the Node orbit (`views.ts <id> -`) for its first look; the release decision
 itself should stay on a Chromium or in-game frame until the measureFacade knife edges above are hardened (OPEN).
+
+### Belt batch 2: Haarlemmerdijk shop-houses the reviewers held (#356)
+
+`scripts/house-specs/belt/haarlemmer-b2.ts` writes the specs. Base = `fromBlockFace` of auto-placed runs (`scripts/block-face/faces/*-b2r<k>/`), made by
+`auto-place.ts --buurt=haarlemmerbuurt-west-b2 --district=haarlemmerbuurt --only=<faces> --no-compile --photo-decides` on a copy of the west review files whose
+`-review-holds.json` keeps only the hard holds (infill, scaffolds, strip seams, shadow; copies are not committed, `haarlemmerbuurt-west-b2-placement.json` is).
+Auto-placement is a type match, not a likeness: of 34 pands that placed, 20 were held after reading the `house:preview --recipe --photo` compare sheets (ornate,
+tower, erker, ribbon, five-storey fronts drawn as a plain cornice house; the list with reasons is `HELD` in the generator) and 14 were staged. Gables the
+reviewers read (31 point, 182 neck, 143 bell, 50 neck) are authored; ten walls where the white-balanced strip wall overshot (182 drew #b6bfc6 against a #50473b
+photo) use the raw strip median. The wall dL "miss" left on a few pands is the under-exposed 2022/2024 strips (advisory).

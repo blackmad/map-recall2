@@ -1,0 +1,88 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012172756",
+ "address": "Haarlemmerdijk 184",
+ "design": {
+  "fronts": [
+   {
+    "partyClip": true,
+    "id": "front0",
+    "street": "Haarlemmerdijk",
+    "storeys": 4,
+    "bays": 2,
+    "storeyHeights": [
+     4.5,
+     2.9,
+     2.9,
+     2.6
+    ],
+    "windows": "t-window",
+    "windowSurround": "sill",
+    "windowHeights": [
+     0.55,
+     0.6,
+     0.6,
+     0.66
+    ],
+    "headLines": [
+     0.8,
+     0.91,
+     0.91,
+     0.82
+    ],
+    "windowShare": 0.52,
+    "cornice": "simple",
+    "gable": "cornice",
+    "doorBay": null,
+    "basement": "none",
+    "hoist": false,
+    "shopfront": {
+     "colour": "#a7a69b",
+     "fascia": true,
+     "name": "Bakkerij Mediterrane",
+     "entrance": "centre",
+     "glazing": "split",
+     "stallriser": "low",
+     "evidence": "auto-place: osm-only (winkelfunctie, shop=bakery); fascia colour measured on the strip 2024-12-11 span 155-321"
+    }
+   }
+  ],
+  "roof": {
+   "material": "red-tile",
+   "form": "saddle",
+   "hip": "front",
+   "pitchDeg": 35,
+   "evidence": "Haarlemmerdijk 6, 33, 35A (2022-12-15 strips): sky stands directly over the cornice and the dormer, no roof face over the cornice; the 3DBAG front attic at 30 deg drew a red band the strips never show. Canal-house saddles run front to back (hip front); pitch 35 deg keeps the hipped face over the cornice to about 1.4 m on a 4-5 m front (50 deg drew a 2.7 m red triangle the strips never show)"
+  },
+  "palette": {
+   "brick": "#634739",
+   "frame": "white-painted",
+   "door": "#2a2a28",
+   "stone": "#e8e4d8",
+   "cornice": "#e8e4d8",
+   "stoneMaterial": "painted"
+  },
+  "notes": [
+   "type haarlemmer-shop-cornice: crown none, palette haarlemmer-red-brown + measured brick #634739",
+   "type deviations: storeys 4 (type: 3)"
+  ]
+ },
+ "provenance": {
+  "": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "scripts/block-face/faces/haarlemmerdijk-126-188-r1/strip.json",
+   "at": "2024-12-11"
+  }
+ },
+ "facts": {
+  "pui": "shop"
+ },
+ "schemaLimits": [
+  {
+   "component": "reviewer hold (batch 1 review)",
+   "what": "Haarlemmerdijk 184: Haarlemmerdijk 184: four-storey cornice house that fits, but a run of one beside held 186 and 182"
+  }
+ ],
+ "route": "recipe"
+}

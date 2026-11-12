@@ -1,0 +1,306 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "haarlemmerdijk-126-188-r1",
+ "street": "Haarlemmerdijk",
+ "sources": [
+  {
+   "id": "strip-2024-12-11",
+   "kind": "street-panorama",
+   "capturedAt": "2024-12-11",
+   "image": "staging/block-face/haarlemmerdijk-126-188-r1/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "auto-place (blockFace/autoPlace.ts)",
+  "passes": 1,
+  "note": "auto-placed from the haarlemmerbuurt library (buurt Haarlemmerbuurt-West); scores and holds in scripts/block-face/faces/haarlemmerdijk-126-188/auto-place.json"
+ },
+ "types": [
+  "haarlemmer-shop-cornice-frieze",
+  "haarlemmer-shop-cornice",
+  "haarlemmer-shop-gable-four"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012172757",
+   "slug": "haarlemmerdijk-172757",
+   "address": "Haarlemmerdijk 186",
+   "type": {
+    "type": "haarlemmer-shop-cornice-frieze",
+    "storeys": 4,
+    "ground": {
+     "shopfront": {
+      "colour": "#867f68",
+      "fascia": true,
+      "name": "Gibson Hair",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "evidence": "auto-place: osm-only (bijeenkomstfunctie, woonfunctie, winkelfunctie, kantoorfunctie, shop=hairdresser); fascia colour measured on the strip 2024-12-11 span 0-155"
+     }
+    },
+    "mirror": true,
+    "measuredPalette": {
+     "brick": "#625346",
+     "evidence": "strip 2024-12-11 span 0-155: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "name": "Gibson Hair",
+    "category": "shop=hairdresser",
+    "osm": {
+     "type": "node",
+     "id": 11416848325,
+     "name": "Gibson Hair"
+    },
+    "bag": [
+     "bijeenkomstfunctie",
+     "woonfunctie",
+     "winkelfunctie",
+     "kantoorfunctie"
+    ],
+    "photoDate": "2024-12-11",
+    "agreement": "osm-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: haarlemmer-shop-cornice-frieze scored 1 on eaves 1, stucco 1, columns 1; strip 2024-12-11 span 0-155"
+   }
+  },
+  {
+   "pandId": "0363100012172756",
+   "slug": "haarlemmerdijk-172756",
+   "address": "Haarlemmerdijk 184",
+   "type": {
+    "type": "haarlemmer-shop-cornice",
+    "storeys": 4,
+    "ground": {
+     "shopfront": {
+      "colour": "#a7a69b",
+      "fascia": true,
+      "name": "Bakkerij Mediterrane",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "evidence": "auto-place: osm-only (winkelfunctie, shop=bakery); fascia colour measured on the strip 2024-12-11 span 155-321"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#634739",
+     "evidence": "strip 2024-12-11 span 155-321: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "name": "Bakkerij Mediterrane",
+    "category": "shop=bakery",
+    "osm": {
+     "type": "node",
+     "id": 1222424035,
+     "name": "Bakkerij Mediterrane"
+    },
+    "bag": [
+     "winkelfunctie"
+    ],
+    "photoDate": "2024-12-11",
+    "agreement": "osm-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: haarlemmer-shop-cornice scored 1 on eaves 1, stucco 1, columns 1; strip 2024-12-11 span 155-321"
+   }
+  },
+  {
+   "pandId": "0363100012172755",
+   "slug": "haarlemmerdijk-172755",
+   "address": "Haarlemmerdijk 182",
+   "type": {
+    "type": "haarlemmer-shop-cornice-frieze",
+    "ground": {
+     "shopfront": {
+      "colour": "#3e362a",
+      "fascia": true,
+      "name": "Lova",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "evidence": "auto-place: osm-only (bijeenkomstfunctie, amenity=cafe); fascia colour measured on the strip 2024-12-11 span 321-493"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#b6bfc6",
+     "evidence": "strip 2024-12-11 span 321-493: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "cafe",
+    "name": "Lova",
+    "category": "amenity=cafe",
+    "osm": {
+     "type": "node",
+     "id": 1222424121,
+     "name": "Lova"
+    },
+    "bag": [
+     "bijeenkomstfunctie"
+    ],
+    "photoDate": "2024-12-11",
+    "agreement": "osm-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: haarlemmer-shop-cornice-frieze scored 1 on eaves 1, stucco 1, columns 1; strip 2024-12-11 span 321-493"
+   }
+  },
+  {
+   "pandId": "0363100012172754",
+   "slug": "haarlemmerdijk-172754",
+   "address": "Haarlemmerdijk 180",
+   "type": {
+    "type": "haarlemmer-shop-cornice-frieze",
+    "storeys": 4,
+    "ground": {
+     "shopfront": {
+      "colour": "#51442c",
+      "fascia": true,
+      "name": "Amsterdam nail art studio",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "evidence": "auto-place: osm-only (overige gebruiksfunctie, shop=beauty); fascia colour measured on the strip 2024-12-11 span 493-658"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#453a30",
+     "evidence": "strip 2024-12-11 span 493-658: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "name": "Amsterdam nail art studio",
+    "category": "shop=beauty",
+    "osm": {
+     "type": "node",
+     "id": 1222424073,
+     "name": "Amsterdam nail art studio"
+    },
+    "bag": [
+     "overige gebruiksfunctie"
+    ],
+    "photoDate": "2024-12-11",
+    "agreement": "osm-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: haarlemmer-shop-cornice-frieze scored 1 on eaves 1, stucco 1; strip 2024-12-11 span 493-658"
+   }
+  },
+  {
+   "pandId": "0363100012172847",
+   "slug": "haarlemmerdijk-172847",
+   "address": "Haarlemmerdijk 178A",
+   "type": {
+    "type": "haarlemmer-shop-gable-four",
+    "ground": {
+     "shopfront": {
+      "colour": "#b2b2a5",
+      "fascia": true,
+      "name": "Tech Plus",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "evidence": "auto-place: osm-only (winkelfunctie, woonfunctie, shop=electronics); fascia colour measured on the strip 2024-12-11 span 658-828"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#6d5749",
+     "evidence": "strip 2024-12-11 span 658-828: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "name": "Tech Plus",
+    "category": "shop=electronics",
+    "osm": {
+     "type": "node",
+     "id": 1222424045,
+     "name": "Tech Plus"
+    },
+    "bag": [
+     "winkelfunctie",
+     "woonfunctie"
+    ],
+    "photoDate": "2024-12-11",
+    "agreement": "osm-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: haarlemmer-shop-gable-four scored 1 on eaves 1, stucco 1, columns 1; strip 2024-12-11 span 658-828"
+   }
+  },
+  {
+   "pandId": "0363100012173014",
+   "slug": "haarlemmerdijk-173014",
+   "address": "Haarlemmerdijk 176",
+   "type": {
+    "type": "haarlemmer-shop-cornice-frieze",
+    "overrides": {
+     "bays": 3
+    },
+    "storeys": 4,
+    "ground": {
+     "shopfront": {
+      "colour": "#5d4a36",
+      "fascia": true,
+      "name": "Toscana",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: osm-only (bijeenkomstfunctie, amenity=restaurant); fascia colour measured on the strip 2024-12-11 span 828-1051"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#6f5343",
+     "evidence": "strip 2024-12-11 span 828-1051: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "restaurant",
+    "name": "Toscana",
+    "category": "amenity=restaurant",
+    "osm": {
+     "type": "node",
+     "id": 1222424026,
+     "name": "Toscana"
+    },
+    "bag": [
+     "bijeenkomstfunctie"
+    ],
+    "photoDate": "2024-12-11",
+    "agreement": "osm-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: haarlemmer-shop-cornice-frieze scored 1 on eaves 1, stucco 1, columns 1; strip 2024-12-11 span 828-1051"
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "auto-place: low attic behind the cornice; the strips show sky over the cornices of the type rows"
+  }
+ }
+}

@@ -1,0 +1,90 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012173483",
+ "address": "Haarlemmerdijk 141",
+ "design": {
+  "fronts": [
+   {
+    "partyClip": true,
+    "id": "front0",
+    "street": "Haarlemmerdijk",
+    "storeys": 3,
+    "bays": 2,
+    "storeyHeights": [
+     4.3,
+     2.7,
+     2.6
+    ],
+    "windows": "casement-sidelights-toplight",
+    "windowSurround": "sill",
+    "windowHeights": [
+     0.55,
+     0.66,
+     0.66
+    ],
+    "headLines": [
+     0.8,
+     0.92,
+     0.84
+    ],
+    "windowShare": 0.74,
+    "cornice": "simple",
+    "gable": "cornice",
+    "crownCap": "pediment",
+    "crownCapSpan": "narrow",
+    "crownRise": 0.55,
+    "doorBay": null,
+    "basement": "none",
+    "hoist": false,
+    "shopfront": {
+     "colour": "#35302a",
+     "fascia": true,
+     "name": "COCO",
+     "entrance": "centre",
+     "glazing": "split",
+     "stallriser": "low",
+     "residentialDoor": {
+      "side": "left",
+      "colour": "#2a2a2a"
+     },
+     "evidence": "auto-place: osm-only (winkelfunctie, shop=tobacco); fascia colour measured on the strip 2022-12-15 span 2343-2574"
+    }
+   }
+  ],
+  "roof": {
+   "material": "bitumen",
+   "source": "front",
+   "form": "flat",
+   "evidence": "Haarlemmerdijk 131 (2022-12-15 strip): sky directly over the cornice and its crown piece; 3DBAG p95 9.91 m over a 9.6 m cornice, a near-flat roof. A front-hipped red saddle drew a roof face the strip never shows (the strip-sheet review of Haarlemmerdijk 6 rejected the same)"
+  },
+  "palette": {
+   "brick": "#312d2c",
+   "frame": "white-painted",
+   "door": "#2a2a28",
+   "stone": "#e8e4d8",
+   "cornice": "#e8e4d8",
+   "stoneMaterial": "painted"
+  },
+  "notes": [
+   "type haarlemmer-shop-cornice-wide: crown crowned, palette haarlemmer-red-brown + measured brick #312d2c"
+  ]
+ },
+ "provenance": {
+  "": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "scripts/block-face/faces/haarlemmerdijk-117-143-r2/strip.json",
+   "at": "2022-12-15"
+  }
+ },
+ "facts": {
+  "pui": "shop"
+ },
+ "schemaLimits": [
+  {
+   "component": "reviewer hold (batch 1 review)",
+   "what": "Haarlemmerdijk 141: Haarlemmerdijk 141: cornice house with a lantern dormer that fits, but a run of one between held 139A and 143"
+  }
+ ],
+ "route": "recipe"
+}

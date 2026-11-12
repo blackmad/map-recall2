@@ -1,0 +1,83 @@
+{
+ "street": "Haarlemmerdijk",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T08:28:40.436Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012169538",
+   "addresses": [
+    "Haarlemmerdijk 146"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerdijk 146-H",
+     "use": "winkelfunctie,woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000965226"
+    }
+   ],
+   "units": 2,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11416871844,
+     "lngLat": [
+      4.8855257,
+      52.3837024
+     ],
+     "tags": {
+      "name": "Reborn by Ammalia",
+      "shop": "hairdresser",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-11-10T08:28:40.436Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012171358",
+   "addresses": [
+    "Haarlemmerdijk 144"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerdijk 144",
+     "use": "winkelfunctie,woonfunctie",
+     "areaM2": 106,
+     "bagId": "0363010000656185"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 13112452347,
+     "lngLat": [
+      4.8855776,
+      52.3836698
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "144",
+      "addr:postcode": "1013JJ",
+      "addr:street": "Haarlemmerdijk",
+      "check_date": "2025-09-01",
+      "contact:email": "info@2ndculture.nl",
+      "name": "2nd Culture",
+      "opening_hours": "Mo-Su 11:30-18:30",
+      "shop": "clothes",
+      "website": "https://2ndculture.nl/",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-11-10T08:28:40.436Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

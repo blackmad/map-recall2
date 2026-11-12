@@ -1,0 +1,97 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012167794",
+ "address": "Haarlemmerdijk 31",
+ "design": {
+  "fronts": [
+   {
+    "partyClip": true,
+    "id": "front0",
+    "street": "Haarlemmerdijk",
+    "storeys": 4,
+    "bays": 3,
+    "storeyHeights": [
+     4,
+     2.8,
+     2.7,
+     2.6
+    ],
+    "windows": "t-window",
+    "windowSurround": "sill",
+    "windowHeights": [
+     0.55,
+     0.68,
+     0.66,
+     0.6
+    ],
+    "headLines": [
+     0.8,
+     0.88,
+     0.86,
+     0.84
+    ],
+    "windowShare": 0.52,
+    "cornice": "simple",
+    "gable": "point",
+    "doorBay": null,
+    "basement": "none",
+    "hoist": false,
+    "shopfront": {
+     "colour": "#312d2c",
+     "fascia": true,
+     "entrance": "centre",
+     "glazing": "split",
+     "stallriser": "low",
+     "evidence": "auto-place: bag-only (winkelfunctie); fascia colour measured on the strip 2022-12-15 span 1600-1766"
+    }
+   }
+  ],
+  "roof": {
+   "material": "red-tile",
+   "form": "saddle",
+   "hip": "front",
+   "pitchDeg": 35,
+   "evidence": "Haarlemmerdijk 6, 33, 35A (2022-12-15 strips): sky stands directly over the cornice and the dormer, no roof face over the cornice; the 3DBAG front attic at 30 deg drew a red band the strips never show. Canal-house saddles run front to back (hip front); pitch 35 deg keeps the hipped face over the cornice to about 1.4 m on a 4-5 m front (50 deg drew a 2.7 m red triangle the strips never show)"
+  },
+  "palette": {
+   "brick": "#473c3a",
+   "frame": "white-painted",
+   "door": "#2a2a28",
+   "stone": "#e8e4d8",
+   "cornice": "#e8e4d8",
+   "stoneMaterial": "painted"
+  },
+  "notes": [
+   "type haarlemmer-shop-cornice-four: crown none, palette haarlemmer-red-brown + measured brick #473c3a",
+   "type deviations: bays 3 (type: 2)"
+  ]
+ },
+ "provenance": {
+  "": {
+   "source": "streetlevel-measured",
+   "confidence": 0.6,
+   "ref": "scripts/block-face/faces/haarlemmerdijk-13-45-r1/strip.json",
+   "at": "2022-12-15"
+  },
+  "fronts/0/gable": {
+   "source": "author",
+   "confidence": 0.8,
+   "ref": "scripts/block-face/buurten/haarlemmerbuurt-west-review-holds.json: Haarlemmerdijk 31: brick point gable, shoulders 10.0 m, apex 12.6 m (west review holds)",
+   "at": "2022-12-15"
+  }
+ },
+ "facts": {
+  "pui": "shop"
+ },
+ "schemaLimits": [
+  {
+   "component": "reviewer hold (batch 1 review)",
+   "what": "Haarlemmerdijk 31: Haarlemmerdijk 31: brick point gable, shoulders 10.0 m, apex 12.6 m, rows 5.1-6.9 and 7.9-9.4 m; compared and held: its point gable compiles with 0.9 m2 of brick gable and roof tile coplanar at the facade (geometry-regression over the 0.5 m2 allowance), with the run or alone"
+  },
+  {
+   "component": "roof behind crown",
+   "what": "Haarlemmerdijk 31: the recipe route draws the 3DBAG roof behind the point crown unless roof.source is 'front' (houseFrontRoof.ts); the strip shows sky behind it"
+  }
+ ],
+ "route": "recipe"
+}

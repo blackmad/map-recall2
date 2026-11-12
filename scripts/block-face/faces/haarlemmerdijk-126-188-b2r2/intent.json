@@ -1,0 +1,131 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "haarlemmerdijk-126-188-r2",
+ "street": "Haarlemmerdijk",
+ "sources": [
+  {
+   "id": "strip-2024-12-11",
+   "kind": "street-panorama",
+   "capturedAt": "2024-12-11",
+   "image": "staging/block-face/haarlemmerdijk-126-188-r2/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "auto-place (blockFace/autoPlace.ts)",
+  "passes": 1,
+  "note": "auto-placed from the haarlemmerbuurt library (buurt Haarlemmerbuurt-West); scores and holds in scripts/block-face/faces/haarlemmerdijk-126-188/auto-place.json"
+ },
+ "types": [
+  "haarlemmer-shop-gable-four",
+  "haarlemmer-shop-gable"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012169538",
+   "slug": "haarlemmerdijk-169538",
+   "address": "Haarlemmerdijk 146",
+   "type": {
+    "type": "haarlemmer-shop-gable-four",
+    "ground": {
+     "shopfront": {
+      "colour": "#343018",
+      "fascia": true,
+      "name": "Reborn by Ammalia",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "evidence": "auto-place: osm-only (winkelfunctie,woonfunctie, shop=hairdresser); fascia colour measured on the strip 2024-12-11 span 3467-3636"
+     }
+    },
+    "mirror": true,
+    "measuredPalette": {
+     "brick": "#453c27",
+     "evidence": "strip 2024-12-11 span 3467-3636: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "name": "Reborn by Ammalia",
+    "category": "shop=hairdresser",
+    "osm": {
+     "type": "node",
+     "id": 11416871844,
+     "name": "Reborn by Ammalia"
+    },
+    "bag": [
+     "winkelfunctie,woonfunctie"
+    ],
+    "photoDate": "2024-12-11",
+    "agreement": "osm-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: haarlemmer-shop-gable-four scored 1 on eaves 1, stucco 1, columns 1; strip 2024-12-11 span 3467-3636"
+   }
+  },
+  {
+   "pandId": "0363100012171358",
+   "slug": "haarlemmerdijk-171358",
+   "address": "Haarlemmerdijk 144",
+   "type": {
+    "type": "haarlemmer-shop-gable",
+    "storeys": 4,
+    "ground": {
+     "shopfront": {
+      "colour": "#694f2e",
+      "fascia": true,
+      "name": "2nd Culture",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "evidence": "auto-place: osm-only (winkelfunctie,woonfunctie, shop=clothes); fascia colour measured on the strip 2024-12-11 span 3636-3810"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#756055",
+     "evidence": "strip 2024-12-11 span 3636-3810: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "name": "2nd Culture",
+    "category": "shop=clothes",
+    "osm": {
+     "type": "node",
+     "id": 13112452347,
+     "name": "2nd Culture"
+    },
+    "bag": [
+     "winkelfunctie,woonfunctie"
+    ],
+    "photoDate": "2024-12-11",
+    "agreement": "osm-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: haarlemmer-shop-gable scored 1 on eaves 1, stucco 1; strip 2024-12-11 span 3636-3810"
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "auto-place: low attic behind the cornice; the strips show sky over the cornices of the type rows"
+  },
+  "measuredEaves": [
+   {
+    "pand": "0363100012171358",
+    "stripRow": 402,
+    "frontRoof": {},
+    "evidence": "review pin: Haarlemmerdijk 144: front eaves/gable foot on the 1 m grid"
+   }
+  ]
+ }
+}

@@ -1,0 +1,187 @@
+{
+ "buurt": "haarlemmerbuurt-west-b2",
+ "library": "haarlemmerbuurt",
+ "generatedAt": "2026-11-12T12:40:56.819Z",
+ "seconds": 17.65,
+ "totals": {
+  "faces": 4,
+  "pands": 73,
+  "placed": 37
+ },
+ "faces": [
+  {
+   "face": "haarlemmerdijk-117-143",
+   "street": "Haarlemmerdijk",
+   "pands": 14,
+   "placed": 10,
+   "held": 4,
+   "runs": [
+    {
+     "face": "haarlemmerdijk-117-143-r1",
+     "pands": [
+      "0363100012165073",
+      "0363100012171347",
+      "0363100012171346",
+      "0363100012173469",
+      "0363100012173479",
+      "0363100012173480",
+      "0363100012173482",
+      "0363100012173481"
+     ]
+    },
+    {
+     "face": "haarlemmerdijk-117-143-r2",
+     "pands": [
+      "0363100012173483",
+      "0363100012169539"
+     ]
+    }
+   ],
+   "seconds": 2.44,
+   "byType": {
+    "haarlemmer-shop-cornice-four": 3,
+    "haarlemmerstraat-sash-gable": 1,
+    "haarlemmer-shop-gable": 1,
+    "haarlemmer-shop-cornice-wide": 3,
+    "haarlemmer-shop-gable-wide": 1,
+    "haarlemmerstraat-sash-gable-four": 1
+   },
+   "installed": 0,
+   "holds": {
+    "evidence": 0,
+    "match": 2,
+    "likeness": 0,
+    "run": 1,
+    "review": 1
+   }
+  },
+  {
+   "face": "haarlemmerdijk-126-188",
+   "street": "Haarlemmerdijk",
+   "pands": 23,
+   "placed": 11,
+   "held": 12,
+   "runs": [
+    {
+     "face": "haarlemmerdijk-126-188-r1",
+     "pands": [
+      "0363100012172757",
+      "0363100012172756",
+      "0363100012172755",
+      "0363100012172754",
+      "0363100012172847",
+      "0363100012173014"
+     ]
+    },
+    {
+     "face": "haarlemmerdijk-126-188-r2",
+     "pands": [
+      "0363100012169538",
+      "0363100012171358"
+     ]
+    },
+    {
+     "face": "haarlemmerdijk-126-188-r3",
+     "pands": [
+      "0363100012176571",
+      "0363100012176572",
+      "0363100012176573"
+     ]
+    }
+   ],
+   "seconds": 6.34,
+   "byType": {
+    "haarlemmer-shop-cornice-frieze": 7,
+    "haarlemmer-shop-cornice": 1,
+    "haarlemmer-shop-gable-four": 2,
+    "haarlemmer-shop-gable": 1
+   },
+   "installed": 0,
+   "holds": {
+    "evidence": 1,
+    "match": 6,
+    "likeness": 0,
+    "run": 4,
+    "review": 1
+   }
+  },
+  {
+   "face": "haarlemmerdijk-13-45",
+   "street": "Haarlemmerdijk",
+   "pands": 14,
+   "placed": 10,
+   "held": 4,
+   "runs": [
+    {
+     "face": "haarlemmerdijk-13-45-r1",
+     "pands": [
+      "0363100012177503",
+      "0363100012167795",
+      "0363100012167794",
+      "0363100012253819",
+      "0363100012167805",
+      "0363100012253818",
+      "0363100012167804",
+      "0363100012177663",
+      "0363100012176277",
+      "0363100012177659"
+     ]
+    }
+   ],
+   "seconds": 2.9,
+   "byType": {
+    "haarlemmer-shop-cornice-four": 3,
+    "haarlemmer-shop-cornice-wide": 1,
+    "haarlemmer-shop-cornice-frieze": 5,
+    "haarlemmerstraat-sash-gable": 1
+   },
+   "installed": 0,
+   "holds": {
+    "evidence": 0,
+    "match": 2,
+    "likeness": 0,
+    "run": 1,
+    "review": 1
+   }
+  },
+  {
+   "face": "haarlemmerdijk-2-58",
+   "street": "Haarlemmerdijk",
+   "pands": 22,
+   "placed": 6,
+   "held": 16,
+   "runs": [
+    {
+     "face": "haarlemmerdijk-2-58-r1",
+     "pands": [
+      "0363100012177584",
+      "0363100012177590",
+      "0363100012176280"
+     ]
+    },
+    {
+     "face": "haarlemmerdijk-2-58-r2",
+     "pands": [
+      "0363100012167816",
+      "0363100012176104",
+      "0363100012176103"
+     ]
+    }
+   ],
+   "seconds": 5.96,
+   "byType": {
+    "haarlemmer-shop-cornice-wide": 4,
+    "haarlemmer-shop-cornice": 1,
+    "haarlemmer-shop-cornice-four": 1
+   },
+   "installed": 0,
+   "holds": {
+    "evidence": 0,
+    "match": 8,
+    "likeness": 0,
+    "run": 3,
+    "review": 5
+   }
+  }
+ ]
+}

@@ -1,0 +1,107 @@
+{
+ "street": "Haarlemmerdijk",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T08:24:35.136Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012167816",
+   "addresses": [
+    "Haarlemmerdijk 16"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerdijk 16-H",
+     "use": "bijeenkomstfunctie,woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010000655918"
+    }
+   ],
+   "units": 2,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2721294910,
+     "lngLat": [
+      4.8887657,
+      52.3818704
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "16-H",
+      "addr:postcode": "1013JC",
+      "addr:street": "Haarlemmerdijk",
+      "amenity": "restaurant",
+      "cuisine": "argentinian",
+      "name": "La Brasa",
+      "opening_hours": "Su 16:00-22:00; Mo, We, Th, Fr, Sa 15:00-22:00",
+      "phone": "+31 20 625 4438",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "website": "https://www.labrasa.nl"
+     },
+     "fetchedAt": "2026-11-10T08:24:35.136Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012176104",
+   "addresses": [
+    "Haarlemmerdijk 14"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerdijk 14-H",
+     "use": "winkelfunctie",
+     "areaM2": 131,
+     "bagId": "0363010000655912"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012176103",
+   "addresses": [
+    "Haarlemmerdijk 12"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerdijk 12-H",
+     "use": "winkelfunctie",
+     "areaM2": 38,
+     "bagId": "0363010000655907"
+    }
+   ],
+   "units": 2,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2721294450,
+     "lngLat": [
+      4.8888468,
+      52.3818214
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "12-H",
+      "addr:postcode": "1013JC",
+      "addr:street": "Haarlemmerdijk",
+      "beauty": "nails",
+      "name": "Star Hollywood Nails",
+      "shop": "beauty",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-11-10T08:24:35.136Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

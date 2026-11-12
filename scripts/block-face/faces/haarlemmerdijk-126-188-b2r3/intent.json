@@ -1,0 +1,165 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "haarlemmerdijk-126-188-r3",
+ "street": "Haarlemmerdijk",
+ "sources": [
+  {
+   "id": "strip-2024-12-11",
+   "kind": "street-panorama",
+   "capturedAt": "2024-12-11",
+   "image": "staging/block-face/haarlemmerdijk-126-188-r3/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "auto-place (blockFace/autoPlace.ts)",
+  "passes": 1,
+  "note": "auto-placed from the haarlemmerbuurt library (buurt Haarlemmerbuurt-West); scores and holds in scripts/block-face/faces/haarlemmerdijk-126-188/auto-place.json"
+ },
+ "types": [
+  "haarlemmer-shop-cornice-frieze"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012176571",
+   "slug": "haarlemmerdijk-176571",
+   "address": "Haarlemmerdijk 130C",
+   "type": {
+    "type": "haarlemmer-shop-cornice-frieze",
+    "ground": {
+     "shopfront": {
+      "colour": "#908773",
+      "fascia": true,
+      "name": "house of tattoos",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "evidence": "auto-place: osm-only (winkelfunctie, woonfunctie, shop=tattoo); fascia colour measured on the strip 2024-12-11 span 4856-4994"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#51524a",
+     "evidence": "strip 2024-12-11 span 4856-4994: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "name": "house of tattoos",
+    "category": "shop=tattoo",
+    "osm": {
+     "type": "node",
+     "id": 11416872033,
+     "name": "house of tattoos"
+    },
+    "bag": [
+     "winkelfunctie",
+     "woonfunctie"
+    ],
+    "photoDate": "2024-12-11",
+    "agreement": "osm-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: haarlemmer-shop-cornice-frieze scored 1 on eaves 1, stucco 1; strip 2024-12-11 span 4856-4994"
+   }
+  },
+  {
+   "pandId": "0363100012176572",
+   "slug": "haarlemmerdijk-176572",
+   "address": "Haarlemmerdijk 128",
+   "type": {
+    "type": "haarlemmer-shop-cornice-frieze",
+    "storeys": 4,
+    "ground": {
+     "shopfront": {
+      "colour": "#a39983",
+      "fascia": true,
+      "name": "De Pizzabakkers",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "evidence": "auto-place: osm-only (bijeenkomstfunctie,woonfunctie, amenity=restaurant); fascia colour measured on the strip 2024-12-11 span 4994-5149"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#b1997d",
+     "evidence": "strip 2024-12-11 span 4994-5149: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "restaurant",
+    "name": "De Pizzabakkers",
+    "category": "amenity=restaurant",
+    "osm": {
+     "type": "node",
+     "id": 2721294507,
+     "name": "De Pizzabakkers"
+    },
+    "bag": [
+     "bijeenkomstfunctie,woonfunctie"
+    ],
+    "photoDate": "2024-12-11",
+    "agreement": "osm-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: haarlemmer-shop-cornice-frieze scored 1 on eaves 1, stucco 1; strip 2024-12-11 span 4994-5149"
+   }
+  },
+  {
+   "pandId": "0363100012176573",
+   "slug": "haarlemmerdijk-176573",
+   "address": "Haarlemmerdijk 126A",
+   "type": {
+    "type": "haarlemmer-shop-cornice-frieze",
+    "ground": {
+     "shopfront": {
+      "colour": "#9a9b84",
+      "fascia": true,
+      "name": "koad",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "evidence": "auto-place: osm-only (woonfunctie, winkelfunctie, shop=hairdresser); fascia colour measured on the strip 2024-12-11 span 5149-5298"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#aca38e",
+     "evidence": "strip 2024-12-11 span 5149-5298: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "name": "koad",
+    "category": "shop=hairdresser",
+    "osm": {
+     "type": "node",
+     "id": 11416828339,
+     "name": "koad"
+    },
+    "bag": [
+     "woonfunctie",
+     "winkelfunctie"
+    ],
+    "photoDate": "2024-12-11",
+    "agreement": "osm-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: haarlemmer-shop-cornice-frieze scored 1 on eaves 1, stucco 1, columns 1; strip 2024-12-11 span 5149-5298"
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "auto-place: low attic behind the cornice; the strips show sky over the cornices of the type rows"
+  }
+ }
+}

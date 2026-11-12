@@ -1,0 +1,335 @@
+{
+ "street": "Haarlemmerdijk",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T08:39:01.023Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012165073",
+   "addresses": [
+    "Haarlemmerdijk 123"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerdijk 123-H",
+     "use": "winkelfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000656138"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11415110606,
+     "lngLat": [
+      4.8856956,
+      52.3834167
+     ],
+     "tags": {
+      "check_date": "2026-04-24",
+      "name": "Typique",
+      "shop": "copyshop",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-11-10T08:39:01.023Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012171347",
+   "addresses": [
+    "Haarlemmerdijk 125"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerdijk 125-H",
+     "use": "winkelfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000656142"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11415075555,
+     "lngLat": [
+      4.8856396,
+      52.3834416
+     ],
+     "tags": {
+      "addr:housenumber": "125",
+      "addr:postcode": "1013KE",
+      "addr:street": "Haarlemmerdijk",
+      "contact:instagram": "scarpetta.amsterdam",
+      "email": "ciao@scarpetta.co",
+      "name": "Scarpetta - Pasta Takeaway & Delivery",
+      "opening_hours": "Sa 12:00-21:30; Su, We-Fr 12:00-21:00; Mo 17:30-21:00",
+      "shop": "pasta",
+      "website": "https://www.scarpetta.co/",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-11-10T08:39:01.023Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012171346",
+   "addresses": [
+    "Haarlemmerdijk 127"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerdijk 127",
+     "use": "woonfunctie",
+     "areaM2": 158,
+     "bagId": "0363010011944095"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2721294501,
+     "lngLat": [
+      4.8855846,
+      52.3834684
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "127",
+      "addr:postcode": "1013KE",
+      "addr:street": "Haarlemmerdijk",
+      "contact:facebook": "alshamdelights.nl",
+      "contact:instagram": "shamdelights.nl",
+      "email": "info@shamdelights.com",
+      "name": "Sham Delights",
+      "opening_hours": "Mo-Su 07:00-20:00",
+      "phone": "+31 6 1227 4902",
+      "shop": "pastry",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "website": "https://shamdelights.nl/",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-11-10T08:39:01.023Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012173469",
+   "addresses": [
+    "Haarlemmerdijk 129"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerdijk 129-H",
+     "use": "winkelfunctie",
+     "areaM2": 34,
+     "bagId": "0363010000656153"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11415060817,
+     "lngLat": [
+      4.8855474,
+      52.3834967
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "129",
+      "addr:postcode": "1013KE",
+      "addr:street": "Haarlemmerdijk",
+      "name": "Design & Wijn",
+      "shop": "wine",
+      "website": "https://www.designenwijn.com",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-11-10T08:39:01.023Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012173479",
+   "addresses": [
+    "Haarlemmerdijk 131"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerdijk 131-H",
+     "use": "winkelfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000656160"
+    }
+   ],
+   "units": 2,
+   "osm": [
+    {
+     "type": "node",
+     "id": 1223057274,
+     "lngLat": [
+      4.8855037,
+      52.3835263
+     ],
+     "tags": {
+      "name": "Tutto Bene!",
+      "opening_hours": "Mo-Su 12:00-18:00",
+      "shop": "clothes",
+      "speciality": "Turkey",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-11-10T08:39:01.023Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012173480",
+   "addresses": [
+    "Haarlemmerdijk 133A",
+    "Haarlemmerdijk 133B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerdijk 133A",
+     "use": "winkelfunctie",
+     "areaM2": 98,
+     "bagId": "0363010001013320"
+    },
+    {
+     "address": "Haarlemmerdijk 133B",
+     "use": "woonfunctie",
+     "areaM2": 89,
+     "bagId": "0363010001013321"
+    }
+   ],
+   "units": 2,
+   "osm": [
+    {
+     "type": "node",
+     "id": 1223057271,
+     "lngLat": [
+      4.8854493,
+      52.383553
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "133",
+      "addr:postcode": "1013KG",
+      "addr:street": "Haarlemmerdijk",
+      "books": "cooking",
+      "check_date": "2026-10-06",
+      "check_date:opening_hours": "2026-10-06",
+      "email": "info@kookboekhandel.com",
+      "name": "De Kookboekhandel",
+      "opening_hours": "Tu-Fr 10:00-18:00; Sa 10:00-17:00",
+      "phone": "+31 20 622 4768",
+      "shop": "books",
+      "website": "https://kookboekhandel.com",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-11-10T08:39:01.023Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012173482",
+   "addresses": [
+    "Haarlemmerdijk 135A",
+    "Haarlemmerdijk 135B",
+    "Haarlemmerdijk 135C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerdijk 135A",
+     "use": "woonfunctie",
+     "areaM2": 62,
+     "bagId": "0363010001013175"
+    },
+    {
+     "address": "Haarlemmerdijk 135B",
+     "use": "woonfunctie",
+     "areaM2": 132,
+     "bagId": "0363010001013176"
+    },
+    {
+     "address": "Haarlemmerdijk 135C",
+     "use": "winkelfunctie,woonfunctie",
+     "areaM2": 216,
+     "bagId": "0363010001013177"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11415062445,
+     "lngLat": [
+      4.8853873,
+      52.3835855
+     ],
+     "tags": {
+      "amenity": "restaurant",
+      "indoor_seating": "yes",
+      "name": "Toko Bayu",
+      "opening_hours": "Tu-Sa 12:00-20:00",
+      "outdoor_seating": "no",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-11-10T08:39:01.023Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012173481",
+   "addresses": [
+    "Haarlemmerdijk 137"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerdijk 137",
+     "use": "woonfunctie",
+     "areaM2": 500,
+     "bagId": "0363010000656170"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11416864202,
+     "lngLat": [
+      4.8853241,
+      52.3836267
+     ],
+     "tags": {
+      "name": "gimme gimme vintage",
+      "second_hand": "only",
+      "shop": "clothes"
+     },
+     "fetchedAt": "2026-11-10T08:39:01.023Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

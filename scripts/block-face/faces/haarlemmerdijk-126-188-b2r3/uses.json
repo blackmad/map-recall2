@@ -1,0 +1,149 @@
+{
+ "street": "Haarlemmerdijk",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T08:28:40.436Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012176571",
+   "addresses": [
+    "Haarlemmerdijk 130C",
+    "Haarlemmerdijk 130A",
+    "Haarlemmerdijk 130B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerdijk 130C",
+     "use": "winkelfunctie",
+     "areaM2": 48,
+     "bagId": "0363010001012526"
+    },
+    {
+     "address": "Haarlemmerdijk 130A",
+     "use": "woonfunctie",
+     "areaM2": 34,
+     "bagId": "0363010001012527"
+    },
+    {
+     "address": "Haarlemmerdijk 130B",
+     "use": "woonfunctie",
+     "areaM2": 34,
+     "bagId": "0363010001012528"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11416872033,
+     "lngLat": [
+      4.8858993,
+      52.3834898
+     ],
+     "tags": {
+      "name": "house of tattoos",
+      "shop": "tattoo",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-11-10T08:28:40.436Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012176572",
+   "addresses": [
+    "Haarlemmerdijk 128"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerdijk 128-H",
+     "use": "bijeenkomstfunctie,woonfunctie",
+     "areaM2": 63,
+     "bagId": "0363010000656149"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2721294507,
+     "lngLat": [
+      4.8859329,
+      52.3834647
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "128-H",
+      "addr:postcode": "1013JJ",
+      "addr:street": "Haarlemmerdijk",
+      "amenity": "restaurant",
+      "branch": "Amsterdam Haarlemmerdijk",
+      "brand": "De Pizzabakkers",
+      "brand:website": "https://www.depizzabakkers.nl",
+      "brand:wikidata": "Q124218622",
+      "cuisine": "pizza",
+      "email": "haarlemmerdijk@depizzabakkers.nl",
+      "indoor_seating": "yes",
+      "name": "De Pizzabakkers",
+      "opening_hours": "Mo-Fr,Su 17:00-22:00; Sa 12:00-22:00",
+      "outdoor_seating": "no",
+      "phone": "+31 20 4274144",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "takeaway": "yes",
+      "website": "https://www.depizzabakkers.nl/vestigingen/amsterdam-haarlemmerdijk/",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-11-10T08:28:40.436Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012176573",
+   "addresses": [
+    "Haarlemmerdijk 126A",
+    "Haarlemmerdijk 126B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerdijk 126A",
+     "use": "woonfunctie",
+     "areaM2": 85,
+     "bagId": "0363010000656146"
+    },
+    {
+     "address": "Haarlemmerdijk 126B",
+     "use": "winkelfunctie",
+     "areaM2": 42,
+     "bagId": "0363010000656147"
+    }
+   ],
+   "units": 2,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11416828339,
+     "lngLat": [
+      4.8859745,
+      52.3834455
+     ],
+     "tags": {
+      "hairdresser": "barber",
+      "name": "koad",
+      "opening_hours": "Mo-Th 09:00-18:30; Fr 10:00-19:30; Sa 09:00-17:00",
+      "shop": "hairdresser",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-11-10T08:28:40.436Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}
