@@ -20,6 +20,22 @@
     },
     {
       "date": "2026-11-10",
+      "title": "Tram tracks stay in view",
+      "text": "Riding along a tram line, the far end of the track used to disappear under the ground and the edge crept along with you. The tracks now draw all the way to the next crossing. Also: a road bridge over the Sloterdijk rail trench is whole again, a pale wedge on the Hemboog viaduct is gone, and a false rail bridge at the Piet Kranenbergpad is back to a level crossing.",
+      "where": [
+        4.841442,
+        52.386195
+      ],
+      "images": [
+        {
+          "src": "whats-new/2026-11-10-tram-tracks.jpg",
+          "alt": "Six frames riding forward along the Kimpoweg tram: before, the far track vanishes; after, it shows to the crossing",
+          "caption": "Before (top) and after (bottom)"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-10",
       "title": "Stoops on the canal houses",
       "text": "332 canal-belt houses now have their front steps drawn the way they are built: the flight turns the right way (straight out, to one side, or a double stair), has about the right number of steps, and gets black iron railings. Checked against panoramas on five Herengracht and Keizersgracht houses: right direction and the right railing on all five, steps within one.",
       "images": [

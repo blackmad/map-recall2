@@ -569,7 +569,7 @@ const deepestPoint = (polygon: Array<Array<[number, number]>>): [number, number]
   // courtyard off Barajasweg): the bike stands on the corridor edge and open paving lies beside it. OSM has no rideable way
   // there (only unmarked paving_stones footways w1444682609, w1425820505-7: foot access, not bicycle=yes) and no pedestrian
   // area, so this stays off-road BY DESIGN until a paved link or a look that tells rideable paving from walking space
-  // lands. The pin keeps the gap measured: flip these to rideable when it does.
+  // lands. The pin keeps the gap measured (the BGT plaza exceptions below ride them with the flag on).
   for (const [label, at] of [['ASC SDW forecourt (637f346b)', [52.385970, 4.832498]], ['Radarweg office courtyard (4f47f105)', [52.387448, 4.833459]]] as const) {
     const world = plazaWorld(at);
     const w = world.toWorld(at[0], at[1]);
@@ -580,15 +580,31 @@ const deepestPoint = (polygon: Array<Array<[number, number]>>): [number, number]
       if (world.blocked(probe.x, probe.y, world.plazas)) beyond++;
     }
     assert.ok(beyond >= 8, `${label}: open paving within 12 m is off every corridor (${beyond}/24 directions blocked)`);
-    // BGT plazas (lane bgt-plazas-20261110) leave both blocked by rule: the forecourt and the courtyard are BGT
-    // onbegroeidterreindeel `erf`, terrain belonging to the pand (the club's and the office's own ground), not public
-    // paving. Flip only if a later rule admits such erf (docs/reports/bgt-plazas-20261110.md, needs a user ruling).
+    // The BGT plazas leave erf blocked by rule (docs/reports/bgt-plazas-20261110.md); these two polygons are named,
+    // reviewed exceptions (ERF_EXCEPTIONS, docs/reports/erf-exceptions-20261110.md): the forecourt and the office
+    // apron are open paving on the ortho. With the BGT plazas on, the paving beside the reported position rides.
     let beyondBgt = 0;
     for (let angle = 0; angle < 360; angle += 15) {
       const probe = world.toWorld(at[0] + Math.sin(angle * Math.PI / 180) * 12 / 111_320, at[1] + Math.cos(angle * Math.PI / 180) * 12 / (111_320 * Math.cos(at[0] * Math.PI / 180)));
       if (world.blocked(probe.x, probe.y, world.bgt)) beyondBgt++;
     }
-    assert.ok(beyondBgt >= 8, `${label}: with the BGT plazas the erf around it stays blocked (${beyondBgt}/24 directions)`);
+    console.log(`  erf exception ${label}: ${beyondBgt}/24 blocked at 12 m with the BGT plazas (${beyond}/24 without)`);
+  }
+  // Pinned points on the exception paving: blocked without the BGT plazas, ride with them, and are reached from the
+  // reported corridor position: the ASC forecourt west of it, the Radarweg apron at the dead end of the service road
+  // (about 90 m² opened there; the apron's west leg was already corridor).
+  for (const [label, from, to, reachMax] of [
+    ['ASC SDW forecourt (637f346b)', [52.385970, 4.832498], [52.385988, 4.832281], 40],
+    ['Radarweg office apron (4f47f105)', [52.387448, 4.833459], [52.387450, 4.833547], 40],
+  ] as const) {
+    const world = plazaWorld(to as [number, number]);
+    const w = world.toWorld(to[0], to[1]);
+    assert.ok(world.blocked(w.x, w.y, world.plazas), `${label}: the exception paving is off-road without the BGT plazas`);
+    assert.equal(world.blocked(w.x, w.y, world.bgt), false, `${label}: the exception paving rides with the BGT plazas`);
+    assert.ok(plazaAt(world.bgt, w.x, w.y), `${label}: the point is inside a BGT plaza piece`);
+    const steps = world.reachable(from as [number, number], to as [number, number], world.bgt);
+    assert.ok(steps !== null && steps < reachMax, `${label}: reached from the reported position over the exception paving (${steps} m flood path)`);
+    assert.equal(world.reachable(from as [number, number], to as [number, number], world.plazas), null, `${label}: not reachable without the BGT plazas`);
   }
   // BGT paved plazas (lane bgt-plazas-20261110; bgtPlazas.ts, flag `?bgtPlazas=1`, extract bgt-plazas-v1.json): BGT
   // pedestrian paving at least 8 m across (voetgangersgebied, plein, woonerf, voetpad) that a corridor reaches.
@@ -628,7 +644,7 @@ const deepestPoint = (polygon: Array<Array<[number, number]>>): [number, number]
     const w = world.toWorld(...at);
     assert.equal(world.blocked(w.x, w.y, world.bgt), false, `${feature.id} (${feature.plazaArea} m²): its deepest point ${at.map(v => v.toFixed(6)).join(',')} rides`);
   }
-  bgtSummary = `; BGT plazas: ${bgtPlazas.length} pieces, Waterlooplein reached in ${wlRide.steps} m, lawns and an erf courtyard blocked`;
+  bgtSummary = `; BGT plazas: ${bgtPlazas.length} pieces, Waterlooplein reached in ${wlRide.steps} m, lawns and the Radarweg inner courtyard blocked, 2 reviewed erf exceptions ride`;
   // Negatives: closed rings that stay blocked. Frederiksplein is a park
   // (lawn around the fountain); the Piet Heinkade ring (routing_4258 path 6,
   // 10,159 m², the largest closed street ring in the centre) loops around a

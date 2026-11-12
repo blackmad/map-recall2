@@ -4,7 +4,7 @@
 //   npx tsx scripts/routing/check-bgt-plazas.ts
 import assert from 'node:assert/strict';
 import {
-  BGT_PLAZAS_DEFAULT, bgtPlazasDefault, RIDEABLE_PLAZA_CLASSES, bgtPlazasEnabled, isPlazaReachSurface, isRideablePlazaSurface,
+  BGT_PLAZAS_DEFAULT, ERF_EXCEPTIONS, erfExceptionFeedback, bgtPlazasDefault, RIDEABLE_PLAZA_CLASSES, bgtPlazasEnabled, isPlazaReachSurface, isRideablePlazaSurface,
   type BgtSurfaceAttributes,
 } from '../../src/canalRecall/routing/bgtPlazas.ts';
 import { buildPlazaIndex, plazaAt, type PlazaFeature } from '../../src/canalRecall/routing/pedestrianAreas.ts';
@@ -13,6 +13,8 @@ import {
   simplifyRing, strips, toLonLat, toMetres, traceLabel,
 } from './bgtPlazaGeometry.ts';
 import polygonClipping from 'polygon-clipping';
+import { readFileSync } from 'node:fs';
+import type { BgtPlazaExtract } from '../../src/canalRecall/routing/bgtPlazas.ts';
 
 const at = (over: Partial<BgtSurfaceAttributes>): BgtSurfaceAttributes => ({
   collection: 'wegdeel', functie: 'voetgangersgebied', fv: 'open verharding', h: 0, status: 'bestaand', eind: null, ...over,
@@ -119,4 +121,19 @@ assert.equal(buildPlazaIndex([small], project, 3, []).plazas.length, 0, 'a 25 mÂ
 const legacy = buildPlazaIndex([{ name: 'Test square', path: [ll(0, 0), ll(40, 0), ll(40, 40), ll(0, 40), ll(0, 0)] }], project, 3, []);
 assert.equal(legacy.plazas[0].holes.length, 0, 'a squares.json ring has no holes');
 
-console.log('bgt plazas: rule, flag, geometry and plaza index ok');
+// Reviewed erf exceptions: erf stays out of the rule, the list is closed and each entry carries a reason and a feedback id.
+assert.equal(ERF_EXCEPTIONS.length, 2, 'two reviewed erf exceptions (637f346b, 4f47f105): add one only with an ortho review');
+for (const e of ERF_EXCEPTIONS) {
+  assert.ok(e.reason.length > 40 && /^[0-9a-f]{8}$/.test(e.feedback) && e.id.startsWith('G0363.'), `${e.id}: id, feedback and reason`);
+  assert.equal(erfExceptionFeedback(e.id), e.feedback);
+}
+assert.equal(erfExceptionFeedback('G0363.00000000000000000000000000000000'), null, 'any other erf polygon is not an exception');
+const geometry = JSON.parse(readFileSync(new URL('./bgt-erf-exceptions.json', import.meta.url), 'utf8')) as { features: Array<{ id: string; fv: string }> };
+assert.deepEqual(geometry.features.map(f => f.id).sort(), ERF_EXCEPTIONS.map(e => e.id).sort(), 'the fetched geometry matches the list');
+assert.ok(geometry.features.every(f => f.fv === 'erf'));
+const published = (JSON.parse(readFileSync(new URL('../../public/data/extracts/amsterdam/bgt-plazas-v1.json', import.meta.url), 'utf8')) as BgtPlazaExtract).features;
+const exceptionPieces = published.filter(f => f.exception);
+assert.deepEqual([...new Set(exceptionPieces.map(f => f.exception))].sort(), ERF_EXCEPTIONS.map(e => e.feedback).sort(), 'the published extract carries exactly the exception pieces');
+assert.ok(published.filter(f => f.classes['onbegroeid/erf']).every(f => f.exception), 'no erf piece outside the exceptions');
+
+console.log('bgt plazas: rule, flag, geometry, plaza index and erf exceptions ok');

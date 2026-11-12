@@ -37,6 +37,7 @@ import { levelWallHex } from './look/paletteLevel.js';
 import { heldBrickWall } from './houseSpec/wallColour.js';
 import { hashSeed } from './wallBays.js';
 import { industrialKitEnabled, industrialMeshSpec, industrialWallHex } from './industrial/industrialKit.js';
+import { applyGlazing, glazingOf } from './glassParts.js';
 
 /** 'untextured' draws with the procedural cells' flat layer only: plain colours, real shapes (look/palette.ts). */
 export type { BuildingLook };
@@ -279,6 +280,9 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook, coarse = f
   // The city-wide palette level (look/paletteLevel.ts, `?paletteLevel=0` for the before): generic photo-look walls only; a
   // landmark kit, a large recipe and a bare shed keep their authored colour.
   if (look === 'photo' && !p.kitWall && !p.kitWallHex && !p.largeTier && !building.bare) building.wallHex = levelWallHex(building.wallHex);
+  // An OSM glass or mirror part (skybridge, oriel, atrium; glassParts.ts) is a curtain wall, not a blue slab. Absent tag = as before.
+  const glazing = glazingOf(p);
+  if (glazing && !p.kitWall && !p.gardenShed && !p.frontCarrier && !(industrial && industrial !== 'office')) applyGlazing(building, glazing, look, p.colour);
   return building;
 }
 
