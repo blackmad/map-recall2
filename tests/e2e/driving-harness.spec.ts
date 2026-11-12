@@ -372,7 +372,10 @@ function installHarness(): void {
 
 test('driving harness: planned routes can actually be driven', async ({ page }) => {
   // HARNESS_TIMEOUT_MS: a loaded machine (other worktrees running) needs longer.
-  test.setTimeout(Number(process.env.HARNESS_TIMEOUT_MS || 300_000));
+  // 120 drives take ~190 s on an idle M-series Mac and ~300 s on a hosted runner, three quarters of it the
+  // autopilot's own line-of-sight probes (getNearestRoad every 10 px); 300 s timed out on every nightly run
+  // from 2026-10-14 to 11-12 with the report already printed (desktop) or a few drives short (iPhone).
+  test.setTimeout(Number(process.env.HARNESS_TIMEOUT_MS || 600_000));
   await openCarRoute(page);
   await page.evaluate(installHarness);
   // HARNESS_PAIRS='[[[lat,lng],[lat,lng]],…]' re-drives failures from an
