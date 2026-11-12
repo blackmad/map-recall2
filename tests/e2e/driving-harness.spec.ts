@@ -74,7 +74,11 @@ async function openCarRoute(page: Page): Promise<void> {
   // The route the game picks decides where the world origin lands, which
   // changes how geometry rounds into routing-graph cells. Seed the generator
   // so every run of the harness drives the same city.
-  await openRoute(page, { travelMode: 'car', viewMode: 'north', playerTimeoutMs: 60_000 });
+  // The autopilot sets throttle and steer directly, the relative scheme's levers. Phones default to 'street'
+  // (follow the street), whose update overrides heading and never reverses, so on the iPhone project 11 of 12
+  // drives ran the full 200 simulated seconds and the 120 never finished inside any timeout (nightly 2026-10-14 …
+  // 11-12; measured 2026-11-12).
+  await openRoute(page, { travelMode: 'car', viewMode: 'north', playerTimeoutMs: 60_000, controlMode: 'relative' });
 }
 
 // Installed in the page so drives run at simulation speed rather than in real
@@ -147,6 +151,7 @@ function installHarness(): void {
     let wedges = 0;
     const player = game.player;
     player.handleInput = () => {};
+    (player as unknown as { _streetButtons: unknown })._streetButtons = null;
     // Recall questions stop the vehicle dead by design; this harness is about
     // whether the network can be driven, so they are silenced for the run.
     game._updateCanalQuiz = () => {};
@@ -372,10 +377,10 @@ function installHarness(): void {
 
 test('driving harness: planned routes can actually be driven', async ({ page }) => {
   // HARNESS_TIMEOUT_MS: a loaded machine (other worktrees running) needs longer.
-  // 120 drives take ~190 s on an idle M-series Mac and ~300 s on a hosted runner, three quarters of it the
-  // autopilot's own line-of-sight probes (getNearestRoad every 10 px); 300 s timed out on every nightly run
-  // from 2026-10-14 to 11-12 with the report already printed (desktop) or a few drives short (iPhone).
-  test.setTimeout(Number(process.env.HARNESS_TIMEOUT_MS || 600_000));
+  // 120 drives took 10.2 min on a hosted runner (2026-11-12, beside the iPhone project), three quarters of it the
+  // autopilot's own line-of-sight probes (getNearestRoad every 10 px). The old 300 s timed out on every nightly run
+  // from 2026-10-14 to 11-12, the desktop one with its report already printed.
+  test.setTimeout(Number(process.env.HARNESS_TIMEOUT_MS || 1_200_000));
   await openCarRoute(page);
   await page.evaluate(installHarness);
   // HARNESS_PAIRS='[[[lat,lng],[lat,lng]],…]' re-drives failures from an
