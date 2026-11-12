@@ -85,7 +85,7 @@ export interface SurfaceBakeOptions {
 /** The audit's sliver: aspect (longest edge / height, l² / 2A) over SLIVER_ASPECT with area over SLIVER_M2. */
 export const SLIVER_ASPECT = 20, SLIVER_M2 = 0.05;
 
-export const LOD0_OPTIONS: SurfaceBakeOptions = { tolRoadM: 0.05, tolFlatM: 0.05, minSquareM: 2, maxSquareM: 32, edgeMinM: 1, seamGridM: 2, refineRounds: 3, simplifyM: 0, steps: true, steinerClearM: 0.3, maxEdgeM: 64, sliverRounds: 0 };
+export const LOD0_OPTIONS: SurfaceBakeOptions = { tolRoadM: 0.05, tolFlatM: 0.05, minSquareM: 2, maxSquareM: 32, edgeMinM: 1, seamGridM: 2, refineRounds: 3, simplifyM: 0, steps: true, steinerClearM: 0.3, maxEdgeM: 64, sliverRounds: 6 };
 export const LOD1_OPTIONS: SurfaceBakeOptions = { tolRoadM: 0.15, tolFlatM: 0.15, minSquareM: 4, maxSquareM: 64, edgeMinM: 2, seamGridM: 8, refineRounds: 1, simplifyM: 0.5, steps: false, steinerClearM: 0.6, maxEdgeM: 32, sliverRounds: 2 };
 
 /** A vertex this close to an edge's interior (u16 units, ~7.6 mm) splits it. */
@@ -608,6 +608,19 @@ export function bakeSurface(input: SurfaceBakeInput, opt: SurfaceBakeOptions): B
               const ei = eIndex.get(k2);
               if (ei !== undefined) { const m = at(mx, my); E[ei] = [p, m]; E.push([m, q]); sliverSplits++; }
               else if (!nearEdge(mx, my, 0.02 * uPerM)) { adds.push(mx, my); sliverSplits++; }
+              else {
+                // The midpoint encroaches on a constraint (a sliver along a boundary, h of a few cm): split the
+                // sliver's own longest constraint edge instead (Ruppert), never a seam edge.
+                let best = -1, bestL = 0, bp = 0, bq = 0;
+                for (const [x1, x2] of [[a, b], [b, c], [c, a]]) {
+                  const e2 = eIndex.get(ekey(x1, x2)); if (e2 === undefined || (onSide(x1) & onSide(x2)) !== 0 || split.has(ekey(x1, x2))) continue;
+                  const l2 = (P[2 * x2] - P[2 * x1]) ** 2 + (P[2 * x2 + 1] - P[2 * x1 + 1]) ** 2; if (l2 > bestL) { best = e2; bestL = l2; bp = x1; bq = x2; }
+                }
+                if (best >= 0 && bestL > 4) {
+                  const nx = Math.round((P[2 * bp] + P[2 * bq]) / 2), ny = Math.round((P[2 * bp + 1] + P[2 * bq + 1]) / 2);
+                  if (!id.has(nx * 65536 + ny)) { split.add(ekey(bp, bq)); const m = at(nx, ny); const [e0, e1] = E[best]; E[best] = [e0, m]; E.push([m, e1]); sliverSplits++; }
+                }
+              }
             }
           }
         }

@@ -9,7 +9,7 @@ import { join } from 'node:path';
 import { GroundStore, toLocal } from '../../src/canalRecall/ownGround/groundStore.ts';
 import { LOD0_OPTIONS, LOD1_OPTIONS, type SurfaceBakeOptions } from '../../src/canalRecall/ownGround/groundPartition.ts';
 import { bakeCellFile, codeDigest, frame } from './groundV2BakeCell.ts';
-import { GROUND_V2_PLACES, GROUND_V2_SEAM_PIN } from '../../src/canalRecall/ownGround/groundV2Places.ts';
+import { GROUND_V2_PLACES, GROUND_V2_PLACE_RADIUS_M, GROUND_V2_SEAM_PIN } from '../../src/canalRecall/ownGround/groundV2Places.ts';
 import { RIDE_PRIORITY_GEBIEDEN } from '../../src/canalRecall/ridePriority.ts';
 
 const HELP = `npm run ground:bake -- [options]     (npx tsx scripts/own-ground/bake-ground.ts)
@@ -22,9 +22,11 @@ Bakes ground v2 cells (GRD2, gzip) into a staging directory and writes a report.
   --set=all          every cell the ground draws (do not: the judgement ruled bake-by-priority; for projections only)
   --sample=N         with --set=all, every Nth cell only (byte projections)
   --lod=0|1          level of detail (default 0)
-  --tol-flat=M       Steiner tolerance on flat land classes, metres (default 0.075; ruling 3's mitigation; 0.05 = none)
+  --tol-flat=M       Steiner tolerance on flat land classes, metres (default LOD 0 0.05, LOD 1 0.15; ruling 3's
+                     mitigation 0.075 saved 4 % and put 200-400 m² per place window over the 5 cm float gate)
   --tol-road=M       Steiner tolerance on road classes, metres (default 0.05)
   --no-kerb          no kerb band (rank 3)
+  --sliver-rounds=N  rounds splitting a sliver's longest edge (aspect > 20, area > 0.05 m²)
   --out=DIR          staging dir (default artifacts/ground-v2/staging; a variant: artifacts/ground-v2/variants/<name>)
   --changed          skip cells whose meta inputs and code hashes match
   --shard=i/n        bake every nth cell starting at i (run n processes for parallelism)
@@ -46,7 +48,7 @@ await store.init();
 
 const lod = (Number(opt('lod') ?? 0) === 1 ? 1 : 0) as 0 | 1;
 const base: SurfaceBakeOptions = lod === 0 ? LOD0_OPTIONS : LOD1_OPTIONS;
-const bakeOpt: SurfaceBakeOptions = { ...base, tolFlatM: Number(opt('tol-flat') ?? (lod === 0 ? 0.075 : base.tolFlatM)), tolRoadM: Number(opt('tol-road') ?? base.tolRoadM) };
+const bakeOpt: SurfaceBakeOptions = { ...base, tolFlatM: Number(opt('tol-flat') ?? base.tolFlatM), tolRoadM: Number(opt('tol-road') ?? base.tolRoadM), sliverRounds: Number(opt('sliver-rounds') ?? base.sliverRounds) };
 const out = opt('out') ?? 'artifacts/ground-v2/staging';
 const write = !flag('no-write');
 
@@ -66,7 +68,8 @@ function priorityCells(): string[] {
       for (const [x, y] of local[0]) keys.add(store.cellAt(x, y));
     }
   }
-  for (const p of GROUND_V2_PLACES) { const [x, y] = toLocal(p.at[0], p.at[1]); keys.add(store.cellAt(x, y)); }
+  // Every cell a named place's audit window touches.
+  for (const p of GROUND_V2_PLACES) { const [x, y] = toLocal(p.at[0], p.at[1]), r = GROUND_V2_PLACE_RADIUS_M; for (const [dx, dy] of [[0, 0], [-r, -r], [r, -r], [-r, r], [r, r]]) keys.add(store.cellAt(x + dx, y + dy)); }
   keys.add(GROUND_V2_SEAM_PIN.a); keys.add(GROUND_V2_SEAM_PIN.b);
   return [...keys].filter(k => store.covers(k)).sort();
 }

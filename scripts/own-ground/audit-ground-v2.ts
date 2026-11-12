@@ -9,13 +9,15 @@ import { GroundStore, toLocal, waterTest } from '../../src/canalRecall/ownGround
 import { decodeGrd2 } from '../../src/canalRecall/ownGround/groundV2Format.ts';
 import { auditCell, compareSeam, seamPairs } from '../../src/canalRecall/ownGround/groundV2Audit.ts';
 import { V2_LEVEL_Z } from '../../src/canalRecall/ownGround/groundV2Sources.ts';
-import { GROUND_V2_PLACES } from '../../src/canalRecall/ownGround/groundV2Places.ts';
+import { GROUND_V2_PLACES, GROUND_V2_PLACE_RADIUS_M } from '../../src/canalRecall/ownGround/groundV2Places.ts';
 
-const HELP = `npx tsx scripts/own-ground/audit-ground-v2.ts [--dir=artifacts/ground-v2/staging] [--lod=0] [--cells=a,b] [--seams-only] [--json=path]
+const HELP = `npx tsx scripts/own-ground/audit-ground-v2.ts [--dir=artifacts/ground-v2/staging] [--lod=0] [--cells=a,b] [--seams-only] [--places] [--json=path]
 Audits baked ground v2 cells: slivers (aspect > 20, > 0.05 m²), overlaps (z-fight within ±5 mm, poke-through beyond),
 cracks (uncovered plan area off the water), float over the relief (p99.9, max, m² over 5 and 10 cm), and the seams of
 every baked neighbour pair (every seam vertex's position, height and normal identical). Exit 1 on a crack, overlap,
-sliver or seam difference.`;
+sliver or seam difference.
+  --places   the acceptance bar instead: each named place's ${GROUND_V2_PLACE_RADIUS_M} m window (groundV2Places.ts, G0's nine), summed
+             over the baked cells it touches; exit 1 unless every window has zero sliver, overlap (poke, z-fight) and crack.`;
 const args = process.argv.slice(2);
 if (args.includes('--help')) { console.log(HELP); process.exit(0); }
 const opt = (n: string) => args.find(a => a.startsWith(`--${n}=`))?.slice(n.length + 3);
@@ -31,6 +33,30 @@ const store = new GroundStore(async p => { const b = readFileSync(join(ROOT, p))
 await store.init();
 const placeCells = new Map<string, string[]>();
 for (const p of GROUND_V2_PLACES) { const [x, y] = toLocal(p.at[0], p.at[1]); const k = store.cellAt(x, y); placeCells.set(k, [...(placeCells.get(k) ?? []), p.id]); }
+
+if (args.includes('--places')) {
+  const out: Record<string, unknown>[] = []; let fail = 0;
+  for (const p of GROUND_V2_PLACES) {
+    const [x, y] = toLocal(p.at[0], p.at[1]), r = GROUND_V2_PLACE_RADIUS_M;
+    const cells = [...new Set([[-r, -r], [r, -r], [-r, r], [r, r], [0, 0]].map(([dx, dy]) => store.cellAt(x + dx, y + dy)))].filter(k => store.covers(k)).sort();
+    const missing = cells.filter(k => !existsSync(join(dir, `${k}${suffix}`)));
+    const sum = { slivers: 0, sliverM2: 0, sliversByLayer: {} as Record<string, number>, overlapM2: 0, zFightM2: 0, pokeM2: 0, crackM2: 0, shoreM2: 0, floatOver5cmM2: 0, floatOver10cmM2: 0, floatMaxMm: 0, triangles: 0 };
+    for (const k of cells.filter(k => !missing.includes(k))) {
+      const input = await store.cellInput(k, 0), wet = waterTest(input.waterAround.flatMap(g => g.polygons), false);
+      const a = auditCell({ cell: load(k), relief: input.surface.relief, water: wet, levelZ: lod === 0 ? V2_LEVEL_Z : [V2_LEVEL_Z[0]], window: { x, y, r } });
+      for (const f of ['slivers', 'sliverM2', 'overlapM2', 'zFightM2', 'pokeM2', 'crackM2', 'shoreM2', 'floatOver5cmM2', 'floatOver10cmM2', 'triangles'] as const) sum[f] += a[f];
+      sum.floatMaxMm = Math.max(sum.floatMaxMm, a.floatMaxMm);
+      for (const [l, n] of Object.entries(a.sliversByLayer)) sum.sliversByLayer[l] = (sum.sliversByLayer[l] ?? 0) + n;
+    }
+    const ok = !missing.length && !sum.slivers && !sum.overlapM2 && !sum.crackM2;
+    if (!ok) fail++;
+    out.push({ id: p.id, cells, missing, ok, ...sum });
+    console.log([p.id.padEnd(32), ok ? 'PASS' : 'FAIL', `cells ${cells.join(',')}${missing.length ? ` (missing ${missing.join(',')})` : ''}`, `tri ${sum.triangles}`, `sliver ${sum.slivers} (${sum.sliverM2.toFixed(1)} m²) ${JSON.stringify(sum.sliversByLayer)}`, `poke ${sum.pokeM2.toFixed(2)} zf ${sum.zFightM2.toFixed(2)} m²`, `crack ${sum.crackM2.toFixed(2)} m² (shore ${sum.shoreM2.toFixed(1)})`, `float >5cm ${sum.floatOver5cmM2.toFixed(0)} >10cm ${sum.floatOver10cmM2.toFixed(0)} m², max ${sum.floatMaxMm} mm`].join(' | '));
+  }
+  writeFileSync(opt('json') ?? join(dir, `places-lod${lod}.json`), JSON.stringify(out, null, 1));
+  console.log(JSON.stringify({ places: out.length, failing: fail }));
+  process.exit(fail ? 1 : 0);
+}
 
 const rows: Record<string, unknown>[] = [];
 let bad = 0;

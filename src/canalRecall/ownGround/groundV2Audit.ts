@@ -20,6 +20,8 @@ export interface AuditInput {
   levelZ: readonly number[];
   /** Sample spacing, metres (default 0.5). */
   step?: number;
+  /** Only this disc (game frame, metres): a named place's window. Triangles count by centroid, samples by position. */
+  window?: { x: number; y: number; r: number };
 }
 
 export interface CellAudit {
@@ -36,7 +38,8 @@ export interface CellAudit {
 
 /** Sample the cell's surface triangles on a grid offset off any round coordinate (no sample sits on a shared edge). */
 export function auditCell(a: AuditInput): CellAudit {
-  const { cell } = a, rect = cell.header.rect, step = a.step ?? 0.5;
+  const { cell } = a, rect = cell.header.rect, step = a.step ?? 0.5, w = a.window;
+  const inWin = (x: number, y: number) => !w || (x - w.x) ** 2 + (y - w.y) ** 2 <= w.r * w.r;
   const nx = Math.ceil((rect[2] - rect[0]) / step), ny = Math.ceil((rect[3] - rect[1]) / step);
   const cover = new Uint8Array(nx * ny), zAt = new Float32Array(nx * ny), layerAt = new Uint8Array(nx * ny);
   const over = new Uint8Array(nx * ny); // 1 z-fight, 2 poke
@@ -47,12 +50,13 @@ export function auditCell(a: AuditInput): CellAudit {
   for (const g of cell.groups) {
     if (g.kind === 1) { stepTriangles += g.count; continue; }
     for (let t = g.first; t < g.first + g.count; t++) {
-      triangles++;
       const i0 = cell.indices[3 * t], i1 = cell.indices[3 * t + 1], i2 = cell.indices[3 * t + 2];
       const ax = X[i0], ay = Y[i0], bx = X[i1], by = Y[i1], cx = X[i2], cy = Y[i2];
       const d = (bx - ax) * (cy - ay) - (cx - ax) * (by - ay), area = Math.abs(d) / 2;
+      const inside = inWin((ax + bx + cx) / 3, (ay + by + cy) / 3);
+      if (inside) triangles++;
       const l = Math.max(Math.hypot(bx - ax, by - ay), Math.hypot(cx - bx, cy - by), Math.hypot(ax - cx, ay - cy));
-      if (area > 0.05 && (l * l) / (2 * area) > 20) { slivers++; sliverM2 += area; sliversByLayer[g.layer] = (sliversByLayer[g.layer] ?? 0) + 1; }
+      if (inside && area > 0.05 && (l * l) / (2 * area) > 20) { slivers++; sliverM2 += area; sliversByLayer[g.layer] = (sliversByLayer[g.layer] ?? 0) + 1; }
       if (d === 0) continue;
       const za = cell.zMm[i0] / 1000, zb = cell.zMm[i1] / 1000, zc = cell.zMm[i2] / 1000;
       const gx0 = Math.max(0, Math.floor((Math.min(ax, bx, cx) - rect[0] - ox) / step)), gx1 = Math.min(nx - 1, Math.ceil((Math.max(ax, bx, cx) - rect[0] - ox) / step));
@@ -74,7 +78,7 @@ export function auditCell(a: AuditInput): CellAudit {
   const floats: number[] = [];
   for (let j = 0; j < ny; j++) for (let i = 0; i < nx; i++) {
     const k = j * nx + i, px = rect[0] + ox + i * step, py = rect[1] + oy + j * step;
-    if (px >= rect[2] || py >= rect[3]) continue;
+    if (px >= rect[2] || py >= rect[3] || !inWin(px, py)) continue;
     if (!cover[k]) {
       if (a.water(px, py)) continue;
       // Within 5 cm of the water: the shore moved by the 15 mm grid (the hole's edge), not a crack.

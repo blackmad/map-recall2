@@ -33,7 +33,7 @@ const ROOT = 'public/data/extracts/amsterdam';
 const dirs = [opt('dir'), `${ROOT}/ground-v2`, 'artifacts/ground-v2/staging'].filter((d): d is string => !!d);
 const KEYS = [...new Set(PAIRS.flatMap(p => [p.a, p.b]))].sort();
 const dir = dirs.find(d => KEYS.every(k => existsSync(join(d, `${k}.lod0.bin.gz`))));
-const bakeOpt: SurfaceBakeOptions = { ...LOD0_OPTIONS, tolFlatM: 0.075 };
+const bakeOpt: SurfaceBakeOptions = LOD0_OPTIONS;
 await MeshoptDecoder.ready;
 const store = new GroundStore(async p => { const b = readFileSync(join(ROOT, p)); return new Uint8Array(b[0] === 0x1f && b[1] === 0x8b ? gunzipSync(b) : b); }, { parks: true, roads: true, rails: true, deterministic: true });
 await store.init();

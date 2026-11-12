@@ -1,20 +1,24 @@
-// Ground v2 named places (lane G2a #372): the eight places of the user's 2026-11-10 shots (plan
-// docs/handoffs/ground-v2-plan-20261110.md, "Context"), pinned for the bake's priority set, the v2 audit, the seam pin
-// and the before/after ride frames. G0 (`groundRegressions.ts`, not landed when G2a ran) owns the canonical list; when it
-// lands, this file should re-export from it.
+// Ground v2 named places (lane G2a #372): G0's nine named ground-defect places (groundRegressions.ts GROUND_SPOTS on
+// lane/ground-g0-20261110 at 5223a6cca, positions on the named OSM way, 150 m windows), copied here until G0 reaches
+// main; then this list should re-export from it. G2a's acceptance bar (coordinator, 2026-11-12): every place at zero
+// sliver, poke-through, z-fight and crack inside its window, and before/after frames beside the orthophoto.
 
-/** `bearing`: the ride frame's heading, degrees clockwise from north (along the street or path under review). */
-export interface GroundV2Place { id: string; label: string; at: [number, number]; bearing: number }
+/** `bearing`: the ride frame's heading, degrees clockwise from north (along the way named). */
+export interface GroundV2Place { id: string; label: string; at: [number, number]; cell: string; bearing: number }
+
+/** Radius of a place's audit window, metres (G0 GROUND_SPOT_RADIUS_M). */
+export const GROUND_V2_PLACE_RADIUS_M = 150;
 
 export const GROUND_V2_PLACES: readonly GroundV2Place[] = [
-  { id: 'kranenbergpad', label: 'Piet Kranenbergpad, under the ring and Schiphol rail decks', at: [4.8521, 52.3412], bearing: 90 },
-  { id: 'amstelveenseweg-viaduct', label: 'Amstelveenseweg viaduct', at: [4.8575, 52.3422], bearing: 0 },
-  { id: 'schinkel-jachthavenweg', label: 'Schinkel bank by Jachthavenweg', at: [4.8537, 52.3367], bearing: 0 },
-  { id: 'overschiestraat', label: 'Overschiestraat underpass', at: [4.8410, 52.34335], bearing: 90 },
-  { id: 'sportparklaan', label: 'Sportparklaan', at: [4.8395, 52.3437], bearing: 90 },
-  { id: 'anthony-fokkerweg', label: 'Anthony Fokkerweg by the A10 strip', at: [4.8419, 52.3430], bearing: 90 },
-  { id: 'vlaardingenlaan', label: 'Vlaardingenlaan / Naaldwijkstraat (flat ground)', at: [4.8410, 52.3468], bearing: 90 },
-  { id: 'cornelis-lelylaan', label: 'Cornelis Lelylaan / Delflandlaan', at: [4.8408, 52.3577], bearing: 90 },
+  { id: 'piet-kranenbergpad', label: 'Piet Kranenbergpad, under the ring and Schiphol rail decks', at: [4.85089, 52.34442], cell: '-4_-3', bearing: 90 },
+  { id: 'amstelveenseweg-viaduct', label: 'Amstelveenseweg viaduct', at: [4.85748, 52.3421], cell: '-3_-4', bearing: 0 },
+  { id: 'schinkel-jachthavenweg', label: 'Schinkel bank by Jachthavenweg', at: [4.85369, 52.33664], cell: '-4_-4', bearing: 0 },
+  { id: 'overschiestraat', label: 'Overschiestraat underpass', at: [4.841, 52.34335], cell: '-4_-3', bearing: 90 },
+  { id: 'sportparklaan', label: 'Sportparklaan', at: [4.83954, 52.34395], cell: '-5_-3', bearing: 90 },
+  { id: 'anthony-fokkerweg', label: 'Anthony Fokkerweg by the A10 cut', at: [4.84208, 52.3451], cell: '-4_-3', bearing: 90 },
+  { id: 'vlaardingenlaan-naaldwijkstraat', label: 'Vlaardingenlaan / Naaldwijkstraat (flat ground)', at: [4.84598, 52.34685], cell: '-4_-3', bearing: 90 },
+  { id: 'lelylaan-delflandlaan', label: 'Delflandlaan by Cornelis Lelylaan', at: [4.84085, 52.35716], cell: '-5_-2', bearing: 90 },
+  { id: 'radarweg-south-abutment', label: 'Radarweg bridge over the Sloterdijk yard, south abutment', at: [4.83455, 52.38484], cell: '-5_1', bearing: 0 },
 ];
 
 /** The seam pin (typed check): a G0 cell and its east neighbour. */
