@@ -30,8 +30,8 @@
  */
 import { STREET_FURNITURE_TONES as T, hexToRgb } from '../look/palette.js';
 
-export type FurnitureModelId = 'container' | 'container-rest' | 'container-bg' | 'container-glas' | 'container-papier' | 'lamp-lantern' | 'lamp-pole' | 'bin' | 'bike-rack' | 'abri' | 'ad-column';
-export const FURNITURE_MODEL_IDS: readonly FurnitureModelId[] = ['container', 'container-rest', 'container-bg', 'container-glas', 'container-papier', 'lamp-lantern', 'lamp-pole', 'bin', 'bike-rack', 'abri', 'ad-column'];
+export type FurnitureModelId = 'container' | 'container-rest' | 'container-bg' | 'container-glas' | 'container-papier' | 'lamp-lantern' | 'lamp-pole' | 'bin' | 'bike-rack' | 'abri' | 'ad-column' | 'urinal-krul';
+export const FURNITURE_MODEL_IDS: readonly FurnitureModelId[] = ['container', 'container-rest', 'container-bg', 'container-glas', 'container-papier', 'lamp-lantern', 'lamp-pole', 'bin', 'bike-rack', 'abri', 'ad-column', 'urinal-krul'];
 /** Per-model triangle cap (the brief's budget). */
 export const FURNITURE_TRI_CAP = 160;
 /** Faces in this colour take the instance colour. */
@@ -55,6 +55,7 @@ export const DIMENSIONS = {
   bin: { height: 1.05, width: 0.50, depth: 0.42, corner: 0.13, hoodH: 0.24, rimH: 0.05, mouthSet: 0.11, dome: 0.03 },
   hoop: { height: 0.75, width: 0.70, tube: 0.05 },
   column: { radius: 0.92, baseR: 0.98, baseH: 0.30, bodyH: 3.40, corniceR: 1.0, corniceH: 0.22, roofH: 0.72, finialH: 0.16 },
+  krul: { sheetBottom: 0.50, seam: 1.27, sheetTop: 2.03, loopR: 0.43, arcR: 0.74, arcFlare: 0.115, post: 0.05, knob: 0.22, padH: 0.10, padX: 1.05, padY: 0.80, stone: 0.36, stoneH: 0.60 },
 } as const;
 
 /** Lamp-pole height by the road it lights (prior; the hooked pole measured 7.6 m on a residential Pijp street). */
@@ -410,6 +411,58 @@ export function columnModel(): FurnitureMesh {
 }
 
 /**
+ * The Amsterdamse krul (plaskrul, 2026-11-12): one iron sheet bent into a spiral on four posts, its bottom half a metre
+ * off the floor, the upper half perforated, painted dark green; a tiled floor on a brick-edged pad and a natural-stone
+ * plate with the gutter inside (nlwiki Plaskrul). Plan from the city's drawing "Plattegrond van een ijzeren urinoir
+ * boven bestaande riolen" (Commons, public domain, scale 1:10): a small loop r 0.42 m round the stand, then a wide arc
+ * (r 0.74 m at the end, flaring to 0.85 m where it leaves the loop) that screens the entry; posts at both ends and two
+ * on the arc. Heights measured on panoramas (scripts/street-furniture/measure.ts): Amstelveld
+ * recording_2025-06-19_03-28-47_02005 at 7.3 m (camera 2.51 m, normalised to 2.20 m): sheet 0.45-1.94 m, 1.02 m
+ * across; Singel by the Bloemenmarkt recording_2025-06-19_03-28-47_01544 at 6.48 m: sheet 0.57-2.22 m over its pad,
+ * 1.13 m across, pad 0.19 m. The end posts stand 0.22 m proud with a knob (Commons 2022 Corsgenbrug photo).
+ * The dakje (roof cap) that some krullen carry is left off: 1 of 13 panoramas shows one and no register field says which.
+ * Front (+y) is the entry, between the two end posts.
+ */
+export function krulModel(): FurnitureMesh {
+  const D = DIMENSIONS.krul, b = new Builder(), RAD = Math.PI / 180;
+  // Drawing coordinates (u right, v up, metres, origin the inner end post) → model: rotated half a turn about the
+  // footprint centre, so the entry (the drawing's -v side) faces +y.
+  const cu = -0.04, cv = 0.16, M = (u: number, v: number): [number, number] => [-(u - cu), -(v - cv)];
+  const plan: [number, number][] = [];
+  // The small loop round the stand (centre (-0.43, 0.05)), clockwise from the inner end post, 5 facets of 42 deg.
+  const a0 = Math.atan2(-0.05, 0.43) / RAD, sweep = 211.5;
+  for (let k = 0; k <= 5; k++) { const a = (a0 - sweep * k / 5) * RAD; plan.push(M(-0.43 + D.loopR * Math.cos(a), 0.05 + D.loopR * Math.sin(a))); }
+  // The wide arc (centre (0, -0.05)) from where it leaves the loop over the top to the outer end post, 5 facets.
+  const b0 = 154.3, b1 = 3.9;
+  for (let k = 1; k <= 5; k++) {
+    const t = b0 + (b1 - b0) * k / 5, r = D.arcR + D.arcFlare * Math.max(0, (t - 90) / (b0 - 90));
+    plan.push(M(r * Math.cos(t * RAD), -0.05 + r * Math.sin(t * RAD)));
+  }
+  // The join at the end of the loop is shared: replace the arc's start (k = 0) by the loop's end, already in `plan`.
+  // Sheet: lower half plain, upper half perforated, both faces (thin plate).
+  for (let i = 0; i + 1 < plan.length; i++) {
+    const [x0, y0] = plan[i], [x1, y1] = plan[i + 1];
+    b.quad2([x0, y0, D.sheetBottom], [x1, y1, D.sheetBottom], [x1, y1, D.seam], [x0, y0, D.seam], T.krulSheet);
+    b.quad2([x0, y0, D.seam], [x1, y1, D.seam], [x1, y1, D.sheetTop], [x0, y0, D.sheetTop], T.krulLattice);
+  }
+  // Four posts: both sheet ends (standing proud with a knob) and two on the arc (drawing (-0.6, 0.49), (0.22, 0.67)).
+  const ends = [plan[0], plan[plan.length - 1]], mids = [M(-0.6, 0.49), M(0.22, 0.67)];
+  for (const [x, y] of ends) {
+    b.tube([x, y, D.padH], [x, y, D.sheetTop + D.knob - 0.06], D.post, T.krulSheet);
+    b.prism(x, y, D.sheetTop + D.knob - 0.06, D.sheetTop + D.knob, 0.045, 0, 4, T.krulSheet, false);
+  }
+  for (const [x, y] of mids) b.tube([x, y, D.padH], [x, y, D.sheetTop], D.post, T.krulSheet);
+  // The natural-stone plate inside the loop, where the stand is (drawing (-0.55, -0.12)).
+  const [sx, sy] = M(-0.55, -0.12), h = D.stone / 2;
+  b.box(sx - h, sy - h, D.padH, sx + h, sy + h, D.stoneH, T.krulStone);
+  // Pad: an octagon round the footprint, tiled top, brick sides.
+  const oct = Array.from({ length: 8 }, (_, k): [number, number] => { const a = (k + 0.5) * Math.PI / 4; return [D.padX * Math.cos(a) / Math.cos(Math.PI / 8), D.padY * Math.sin(a) / Math.cos(Math.PI / 8)]; });
+  for (let k = 0; k < 8; k++) { const [x0, y0] = oct[k], [x1, y1] = oct[(k + 1) % 8]; b.quad([x0, y0, 0], [x1, y1, 0], [x1, y1, D.padH], [x0, y0, D.padH], T.krulBrick); }
+  for (let k = 1; k < 7; k++) b.tri([...oct[0], D.padH], [...oct[k], D.padH], [...oct[k + 1], D.padH], T.krulTile);
+  return b.done('urinal-krul');
+}
+
+/**
  * The ride's base lift over the bare relief (user 2026-11-07, "still sunk a bit?"): the pavement planes are drawn at
  * roadSurfaces SIDEWALK_TOP (LIFT.raisedBase 0.03 + kerb 0.11 = 0.14 m) and drape up to DRAPE_TOL float 0.03 m over
  * hollows, so furniture placed on the relief lost its plate and lowest 0.14-0.17 m under the paving. 0.15 m puts the
@@ -432,5 +485,5 @@ export function rideModel(id: FurnitureModelId): FurnitureMesh {
 }
 
 export const FURNITURE_MODELS: Readonly<Record<FurnitureModelId, () => FurnitureMesh>> = {
-  container: () => containerModel('container'), 'container-rest': () => containerModel('container-rest'), 'container-bg': containerBgModel, 'container-glas': () => containerModel('container-glas'), 'container-papier': () => containerModel('container-papier'), 'lamp-lantern': lanternModel, 'lamp-pole': poleModel, bin: binModel, 'bike-rack': hoopModel, abri: abriModel, 'ad-column': columnModel,
+  container: () => containerModel('container'), 'container-rest': () => containerModel('container-rest'), 'container-bg': containerBgModel, 'container-glas': () => containerModel('container-glas'), 'container-papier': () => containerModel('container-papier'), 'urinal-krul': krulModel, 'lamp-lantern': lanternModel, 'lamp-pole': poleModel, bin: binModel, 'bike-rack': hoopModel, abri: abriModel, 'ad-column': columnModel,
 };

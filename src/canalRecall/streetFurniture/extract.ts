@@ -7,7 +7,7 @@ export const FURNITURE_ZOOM = 15;
 /** The city box: the own-ground manifest's bounds (own-ground-osm-v1/cells.json bbox: every 1 km cell the routing passes). */
 export const CITY_BOX = [4.708732, 52.271185, 5.105981, 52.432882] as const;
 
-export const FURNITURE_KINDS = ['container', 'lamp', 'bin', 'bike-rack', 'abri', 'ad-column'] as const;
+export const FURNITURE_KINDS = ['container', 'lamp', 'bin', 'bike-rack', 'abri', 'ad-column', 'urinal'] as const;
 export type FurnitureKind = typeof FURNITURE_KINDS[number];
 
 export type FurnitureRecord = {
@@ -21,7 +21,20 @@ export type FurnitureRecord = {
   cluster?: string; fraction?: string | null; volume?: number | null;
   /** Containers: 'above' for the register's above-ground (BG) boxes; absent for underground column tops. */
   form?: 'above';
+  /** Urinals: how many stand at the point when the register says so ("twee krullen"); absent means one. */
+  count?: number;
 };
+
+/**
+ * Gemeente Amsterdam "Openbare toiletten" (maps.amsterdam.nl open geodata): SELECTIE → urinal subtype. Only the
+ * Amsterdamse krul (the green cast-iron plaskrul) has a model; the retractable Urilift (sunk by day), the "overig"
+ * urinals and the toilet buildings are counted as skipped.
+ */
+export const URINAL_SUBTYPE: Readonly<Record<string, string>> = { KRUL: 'krul' };
+/** "Westermarkt Prinsengracht - twee krullen": the register's description names the number standing at one point. */
+export function urinalCount(description: unknown): number {
+  return /\btwee krullen\b/i.test(String(description ?? '')) ? 2 : 1;
+}
 
 /** BGT collection → plus_type → kind. Everything else is counted as skipped (kunstobject stays a bespoke landmark). */
 export const BGT_KIND: Readonly<Record<string, Readonly<Record<string, FurnitureKind>>>> = {
