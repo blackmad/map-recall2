@@ -37,18 +37,18 @@
     },
     {
       "date": "2026-11-10",
-      "title": "House walls take their photo colour",
-      "text": "About 330 ordinary houses now draw the wall colour measured from street panoramas instead of a guess from their age. Where the photo reading looks too pale and warm to trust, the house keeps a period brick colour rather than a light peach, and the houses held back that way now always draw brick, never slate grey (30 of them were grey). Kinkerstraat 31 to 49 was re-measured from an overcast panorama after the old reading turned out to come from an overexposed photo; its row model follows in a later round.",
+      "title": "House walls take their photo colour (corrected 12 November)",
+      "text": "About 425 ordinary houses with a measured reading from street panoramas now draw that wall colour: on Kinkerstraat and Da Costakade the orange and grey fronts became the dark brown the photos show. Correction: the before/after pictures first shown here were the same frame twice (the comparison tool ran on an out-of-date build) and the house in them is one the pale-colour guard keeps on its period brick, so it could never change. The pictures below are re-taken: photo, before, after. Houses without a measured reading still draw the old period palette, which is too orange and too grey; darker measured brick for those is the next change.",
       "images": [
         {
-          "src": "ui/2026-11-10-house-frames-walls-guard/0363100012172620-before-r2.jpg",
-          "alt": "Egelantiersgracht in the game beside its panorama, before",
-          "caption": "Before."
+          "src": "ui/2026-11-12-wall-colour-truth/0363100012157926-photo-A-B-C.jpg",
+          "alt": "Da Costakade: photo, the game before (orange), with measured walls (dark brown), and with the darker brick lift",
+          "caption": "Da Costakade: photo, before, after"
         },
         {
-          "src": "ui/2026-11-10-house-frames-walls-guard/0363100012172620-after-r2.jpg",
-          "alt": "The same Egelantiersgracht row after: brown brick walls beside the panorama",
-          "caption": "After."
+          "src": "ui/2026-11-12-wall-colour-truth/0363100012154359-photo-A-B-C.jpg",
+          "alt": "Kinkerstraat: photo, the game before (orange and grey), and with measured dark brown walls",
+          "caption": "Kinkerstraat: photo, before, after"
         }
       ]
     },
