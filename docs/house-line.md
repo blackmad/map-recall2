@@ -1947,6 +1947,11 @@ What the Kloveniersburgwal batches met (kit gaps, `schemaLimits` on the specs):
   and it is held. `measuredEavesM` lives only in a recipe house dir's `facts.json`.
 - **Through and corner pands** (12, 28 to another street; 30's corner tower) are skipped: a recipe front on one street
   leaves the other street's wall to the suppression guard.
+- **After frames on `?world=live` need the placement bundle.** `src/canalRecall/landmarks/ordinaryModels.ts` imports
+  `ordinary-buildings-data/catalogue.json` at build time, so a local `install.ts` + covers rebuild is not drawn until
+  `npm run build:canal-signature-landmarks` rebuilds `js/signature-placement.bundle.js` (do not commit it). Without it the
+  caption reads `installed ordinary-<pand> (picked generic)` and the after half equals the before half (measured on
+  Kloveniersburgwal batch 1: 15 of 15 pairs identical).
 - **56 (171173)**: `pickWall` finds no street wall, so neither the row view nor `house:preview` frames it; held.
 
 ## §8 Browser-free GLB passes (lane H12, #362)
