@@ -3,7 +3,7 @@
  "kind": "house-type",
  "id": "fh-1887-dentil-pediment",
  "district": "frederik-hendrikbuurt",
- "description": "Frederik Hendrikbuurt 1885-1890 four-storey front (Houweningenstraat, Van Reigersbergenstraat, Frederik Hendrikstraat 134-154): red-brown brick, 3 axes on ~4.7 m, tall two-light windows with white frames under white dentil lintels, white sill bands, white cornice with consoles, ground storey with a pair of red doors beside a wide window; crowns: one white pediment dormer over the centre axis, sometimes a pointed brick gable with one attic light. Drafted by typeDraft.ts from 57 pands, authored from the strips.",
+ "description": "Frederik Hendrikbuurt 1885-1890 four-storey front (Houweningenstraat, Van Reigersbergenstraat, Frederik Hendrikstraat 134-154): red-brown brick, 3 axes on ~4.7 m, tall two-light windows with white frames under flat arches of five white blocks (tall/short alternating, windowSurround jack-blocks; round 2 drew small dentil teeth), a white band through the piers at the transom line, black iron anchors on the piers, white cornice with consoles, ground storey with a pair of red doors beside a wide window; crowns: one white pediment dormer over the centre axis, sometimes a pointed brick gable with one attic light. Drafted by typeDraft.ts from 57 pands, authored from the strips.",
  "fit": {
   "widthM": [
    4.3,
@@ -53,12 +53,16 @@
   ],
   "bands": "painted",
   "bandLines": [
-   "head"
+   "transom"
   ],
   "bandHeights": {
    "head": 0.08
   },
-  "windowSurround": "dentil-lintel"
+  "windowSurround": "jack-blocks",
+  "wallAnchors": {
+   "over": 0.35,
+   "colour": "#1e1e1e"
+  }
  },
  "crowns": {
   "pediment-dormer": {
@@ -71,13 +75,13 @@
      "to": 0.62
     }
    ],
-   "dormerBody": "stone",
+   "dormerBody": "timber",
    "dormerSize": {
     "sill": 0.05,
     "rise": 1.25,
-    "setback": 0.3
+    "setback": 0.15
    },
-   "note": "houweningen-1-31 and hendrik-134-154: one white pediment dormer with a finial over the centre of nearly every pand"
+   "note": "houweningen-1-31 and hendrik-134-154: one white pediment dormer with a finial over the centre of nearly every pand; dormerBody timber (painted white, as the clercq types): with stone the dormer glass had no host wall (houweningen-2-38-r1 opening-outside, 4 dormers, 4.4 m2)"
   },
   "point-gable": {
    "gable": "point",
@@ -207,8 +211,9 @@
   }
  ],
  "schemaLimits": [
-  "iron wall anchors and brick roundels",
-  "arched ground heads on some pands (see fh-1887-arched-gable)"
+  "brick roundels",
+  "the blocks fan slightly outward at the ends of each flat arch; drawn upright",
+  "the door pair carries blocks over its transom in the photo; doors take none"
  ],
  "grounds": {
   "door-left": {

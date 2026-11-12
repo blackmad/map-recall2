@@ -117,8 +117,11 @@ export const ROOF_MATERIALS = ['slate', 'black-tile', 'red-tile', 'bitumen', 'zi
  * `sill`: a projecting stone sill alone (no lintel), the commonest 18th/19th-c. canal-belt dressing.
  * `eared-keystone` (Nassaukade 145-150): a painted stucco head over each window, the head band running 0.12 m past both
  * jambs, with raised ear blocks at both ends and keystone blocks between them (one per ~0.45 m of window width).
+ * `jack-blocks` (Frederik Hendrikbuurt 1885-90 dentil pairs, Van Houweningenstraat 9-11, 19-21): a flat arch of five white
+ * blocks standing on each window head, tall and short alternating (0.50 / 0.32 m, 0.17 m wide, tall at both ends and the
+ * centre), spread 0.12 m past both jambs, brick between and no lintel slab; with the stone sill. `JACK_BLOCKS` in fit.ts.
  */
-export const WINDOW_SURROUNDS = ['none', 'stone-lintel', 'full-frame', 'keystone', 'sill', 'eared-keystone', 'dentil-lintel'] as const;
+export const WINDOW_SURROUNDS = ['none', 'stone-lintel', 'full-frame', 'keystone', 'sill', 'eared-keystone', 'dentil-lintel', 'jack-blocks'] as const;
 /**
  * `consoles`: a painted sill slab under each surround-storey window, carried on two small console blocks. A separate key
  * from `windowSurround` so it combines with a head surround (`eared-keystone`); a sill alone is the canal-windows lane's
@@ -667,9 +670,10 @@ export interface FrontIntent {
   /**
    * Iron wall anchors (De Pijp 1882-1893 rows; buildingRecipe/wallAnchors.ts): a dark cross `size` m tall (default 0.36)
    * on every pier and end pier, `over` m (default 0.35) over the window heads of the listed upper `storeys` (default
-   * every storey above the ground). Absent = byte-identical.
+   * every storey above the ground). `colour`: the iron's own hex where the doors are not black (Frederik Hendrikbuurt
+   * 1887: red doors, black anchors); default the door colour. Absent = byte-identical.
    */
-  wallAnchors?: {storeys?: number[]; size?: number; over?: number};
+  wallAnchors?: {storeys?: number[]; size?: number; over?: number; colour?: string};
   /**
    * White head-line pier blocks (Den Texstraat 7-27; buildingRecipe/pierBlocks.ts): at the window-head line of each listed
    * storey (0 = ground; default every storey with windows) one white block on every pier, alternating `long` (default 0.55 m)

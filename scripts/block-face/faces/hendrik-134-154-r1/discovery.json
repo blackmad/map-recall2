@@ -3,7 +3,9 @@
  "seed": "0363100012152931",
  "members": [
   "0363100012158151",
-  "0363100012157111"
+  "0363100012157111",
+  "0363100012164721",
+  "0363100012167163"
  ],
  "ends": [
   {
@@ -12,7 +14,7 @@
   },
   {
    "side": "right",
-   "reason": "run of hendrik-134-154: 164721 held (auto-place.json)"
+   "reason": "run of hendrik-134-154: 158916 held (auto-place.json)"
   }
  ],
  "rejected": [
@@ -643,6 +645,26 @@
    "widthM": 4.7,
    "eavesM": 13.49,
    "roofMaxM": 17.4,
+   "storeys3dbag": 5,
+   "builtYear": 1887,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012164721",
+   "alongM": -32.92,
+   "widthM": 4.7,
+   "eavesM": 13.5,
+   "roofMaxM": 17.24,
+   "storeys3dbag": 5,
+   "builtYear": 1887,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012167163",
+   "alongM": -28.22,
+   "widthM": 4.7,
+   "eavesM": 13.52,
+   "roofMaxM": 17.55,
    "storeys3dbag": 5,
    "builtYear": 1887,
    "uncertainty": []

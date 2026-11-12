@@ -62,7 +62,8 @@
    "kind": "relieving",
    "storeys": [
     1,
-    2
+    2,
+    3
    ],
    "archRing": {
     "colour": "stone",
@@ -71,7 +72,8 @@
    }
   },
   "wallAnchors": {
-   "over": 0.35
+   "over": 0.35,
+   "colour": "#1e1e1e"
   }
  },
  "crowns": {
@@ -112,7 +114,7 @@
    3
   ],
   "photoGroundRows": 1,
-  "citation": "strips houweningen-1-31 2021-02-22, hendrik-134-154 2022-04-29; iron wall anchors on every pier read on houweningen-1-31 15 and 31",
+  "citation": "strips houweningen-1-31 2021-02-22, hendrik-134-154 2022-04-29; iron wall anchors on every pier read on houweningen-1-31 15 and 31; arch rings on storeys 1-3 (the top storey passes the audit once the gable crown has no cornice)",
   "signage": "none above the ground; per-door numbers",
   "identicalBays": "upper storeys: equal axes, no balconies"
  },
@@ -201,7 +203,6 @@
  ],
  "schemaLimits": [
   "arched ground heads on some pands (see fh-1887-arched-gable)",
-  "the top storey's arch rings are not drawn (they reach the cornice and fail the opening-outside audit); storeys 1 and 2 carry them",
   "round-arched ground heads with white blocks over the door pair and the wide window"
  ],
  "grounds": {

@@ -6053,50 +6053,6 @@
     "hash": "27d3f05f7a536ad3",
     "class": "front"
    }
-  },
-  "hendrik-134-154-r1": {
-   "157111": {
-    "hash": "4a7480795064ac05",
-    "class": "front"
-   },
-   "158151": {
-    "hash": "8a9e53f905fbdff0",
-    "class": "front"
-   }
-  },
-  "hendrik-134-154-r2": {
-   "160880": {
-    "hash": "76ae10d6e546dbe7",
-    "class": "front"
-   },
-   "164007": {
-    "hash": "d05d859b5d34e9eb",
-    "class": "front"
-   }
-  },
-  "houweningen-1-31-r2": {
-   "157672": {
-    "hash": "d8aa47bd8e4a4305",
-    "class": "front"
-   },
-   "158949": {
-    "hash": "bbd6401c9f445b6f",
-    "class": "front"
-   }
-  },
-  "houweningen-1-31-r3": {
-   "156727": {
-    "hash": "9ef567bb92a6b612",
-    "class": "front"
-   },
-   "157692": {
-    "hash": "54196bd3a34d1174",
-    "class": "front"
-   },
-   "167046": {
-    "hash": "f3a0f47bf639ea2d",
-    "class": "front"
-   }
   }
  },
  "intents": {
@@ -6392,10 +6348,6 @@
   "vogel-1-15-r1": "d29efa3178ca8a71",
   "zamenhof-84-90-r1": "aee52bb4ffae4f33",
   "zwijgerlaan-225-279-r1": "2d092c41808ff45b",
-  "zwijgerlaan-225-279-r2": "b7b8061a8fd305c6",
-  "hendrik-134-154-r1": "6119e5b1cec6bbb3",
-  "hendrik-134-154-r2": "a75afdd3ee25cb67",
-  "houweningen-1-31-r2": "fae5ff9b146cbe71",
-  "houweningen-1-31-r3": "26d4a32f878a42c0"
+  "zwijgerlaan-225-279-r2": "b7b8061a8fd305c6"
  }
 }

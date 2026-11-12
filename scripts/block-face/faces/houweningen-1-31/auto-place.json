@@ -3,7 +3,7 @@
  "street": "Van Houweningenstraat",
  "library": "frederik-hendrikbuurt",
  "stripDate": "2021-02-22",
- "seconds": 60.96,
+ "seconds": 41.35,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -17,38 +17,14 @@
   {
    "face": "houweningen-1-31-r1",
    "pands": [
-    "0363100012160230",
-    "0363100012157843"
-   ],
-   "passed": false,
-   "triangles": 3773
-  },
-  {
-   "face": "houweningen-1-31-r4",
-   "pands": [
+    "0363100012165332",
+    "0363100012162863",
     "0363100012156794",
     "0363100012159954",
     "0363100012165776"
    ],
    "passed": true,
-   "triangles": 4821
-  },
-  {
-   "face": "houweningen-1-31-r2",
-   "pands": [
-    "0363100012158949",
-    "0363100012157672"
-   ],
-   "installed": true
-  },
-  {
-   "face": "houweningen-1-31-r3",
-   "pands": [
-    "0363100012156727",
-    "0363100012167046",
-    "0363100012157692"
-   ],
-   "installed": true
+   "triangles": 9776
   }
  ],
  "pands": [
@@ -293,48 +269,10 @@
     "voidShare": 0,
     "foliageShare": 0.04
    },
-   "status": "placed",
-   "type": "fh-1887-dentil-pediment",
-   "score": 1,
-   "placement": {
-    "type": "fh-1887-dentil-pediment",
-    "measuredPalette": {
-     "brick": "#6e5b51",
-     "evidence": "strip 2021-02-22 span 762-950: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    }
-   },
-   "notes": [
-    "crown pediment-dormer (type default)"
-   ],
-   "likeness": {
-    "pandId": "0363100012160230",
-    "ncc": 0.25,
-    "nccRaw": 0.25,
-    "shiftM": [
-     -0.3,
-     0.4
-    ],
-    "usable": 0.88,
-    "abstain": null,
-    "verdict": "FAIL",
-    "reasons": [
-     "glazing storey band off by 0.25 mean 0.38 vs photo 0.26"
-    ],
-    "wall": {
-     "photo": "#6d5b51",
-     "model": "#866f63",
-     "dL": 0.084
-    },
-    "glazing": {
-     "photo": 0.26,
-     "model": 0.38
-    },
-    "columns": {
-     "photo": 3,
-     "model": 3
-    },
-    "iou": 0.307
-   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: run houweningen-1-31-r1 (160230 + 157843) fails the GLB audit: opening-outside 1 part 0.144 m2, the white cornice frame of 160230 (x -4.7..0, 13.0-13.8 m, 0.41 m proud) past its wall silhouette at the run end beside the held double-width 154093; held until the cornice end is trimmed at a run end",
+   "likeness": null,
    "challengers": {}
   },
   {
@@ -383,46 +321,10 @@
     "voidShare": 0.01,
     "foliageShare": 0.03
    },
-   "status": "placed",
-   "type": "fh-1887-plain-anchor-pediment",
-   "score": 1,
-   "placement": {
-    "type": "fh-1887-plain-anchor-pediment",
-    "measuredPalette": {
-     "brick": "#6a584c",
-     "evidence": "strip 2021-02-22 span 950-1138: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    }
-   },
-   "notes": [
-    "crown pediment-dormer (type default)"
-   ],
-   "likeness": {
-    "pandId": "0363100012157843",
-    "ncc": 0.34,
-    "nccRaw": 0.34,
-    "shiftM": [
-     -0.3,
-     0.4
-    ],
-    "usable": 0.89,
-    "abstain": null,
-    "verdict": "PASS",
-    "reasons": [],
-    "wall": {
-     "photo": "#6d5b50",
-     "model": "#836d5e",
-     "dL": 0.071
-    },
-    "glazing": {
-     "photo": 0.35,
-     "model": 0.4
-    },
-    "columns": {
-     "photo": 3,
-     "model": 3
-    },
-    "iou": 0.558
-   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: run houweningen-1-31-r1 (160230 + 157843) fails the GLB audit: opening-outside 1 part 0.144 m2, the white cornice frame of 160230 (x -4.7..0, 13.0-13.8 m, 0.41 m proud) past its wall silhouette at the run end beside the held double-width 154093; held until the cornice end is trimmed at a run end",
+   "likeness": null,
    "challengers": {}
   },
   {
@@ -480,7 +382,7 @@
    "storeys3dbag": 5,
    "bagBay": null,
    "strip": {
-    "wall": "#77655a",
+    "wall": "#746358",
     "wallRaw": "#7c6a5f",
     "skyline": {
      "eavesM": 14.13,
@@ -496,7 +398,7 @@
     "stucco": false,
     "bands": 6,
     "columns": 3,
-    "frontClass": "curtain",
+    "frontClass": "columns",
     "doorSide": null,
     "accentSide": null,
     "accentShare": 0.398,
@@ -523,54 +425,39 @@
     "voidShare": 0.01,
     "foliageShare": 0.04
    },
-   "status": "placed",
-   "type": "fh-1887-dentil-pediment",
-   "score": 1,
-   "placement": {
-    "type": "fh-1887-dentil-pediment",
-    "measuredPalette": {
-     "brick": "#77655a",
-     "evidence": "strip 2021-02-22 span 1327-1514: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    },
-    "mirror": true
-   },
-   "notes": [
-    "crown pediment-dormer (type default)",
-    "door reviewer pin: mirrored (red door pair right of centre on the strip (red-pixel centroid of the ground band, x/width > 0.5; Reigersbergenstraat (cast strip) by the alternation anchored on the measured 164833))"
-   ],
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.147 < 0.15 (photo vs model body; likeness.ts WARN: mask IoU 0.411 < 0.45)",
    "likeness": {
     "pandId": "0363100012158949",
-    "ncc": 0.284,
-    "nccRaw": 0.284,
+    "ncc": 0.147,
+    "nccRaw": 0.147,
     "shiftM": [
      -0.3,
-     0.4
+     -0.35
     ],
-    "usable": 0.86,
+    "usable": 0.87,
     "abstain": null,
-    "verdict": "FAIL",
+    "verdict": "WARN",
     "reasons": [
-     "glazing storey band off by 0.19"
+     "mask IoU 0.411 < 0.45"
     ],
     "wall": {
-     "photo": "#6e5c52",
-     "model": "#8e786b",
-     "dL": 0.112
+     "photo": "#6f5c53",
+     "model": "#8b776a",
+     "dL": 0.1
     },
     "glazing": {
      "photo": 0.34,
-     "model": 0.39
+     "model": 0.4
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.426
+    "iou": 0.411
    },
-   "challengers": {
-    "fh-1887-dentil-pediment~m": 0.291
-   },
-   "installed": "houweningen-1-31-r2"
+   "challengers": {}
   },
   {
    "pandId": "0363100012157672",
@@ -612,23 +499,13 @@
     "voidShare": 0.01,
     "foliageShare": 0.02
    },
-   "status": "placed",
-   "type": "fh-1887-dentil-pediment",
-   "score": 1,
-   "placement": {
-    "type": "fh-1887-dentil-pediment",
-    "measuredPalette": {
-     "brick": "#6b584d",
-     "evidence": "strip 2021-02-22 span 1515-1704: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    }
-   },
-   "notes": [
-    "crown pediment-dormer (type default)"
-   ],
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
    "likeness": {
     "pandId": "0363100012157672",
-    "ncc": 0.347,
-    "nccRaw": 0.347,
+    "ncc": 0.346,
+    "nccRaw": 0.346,
     "shiftM": [
      -0.25,
      0.4
@@ -638,24 +515,21 @@
     "verdict": "PASS",
     "reasons": [],
     "wall": {
-     "photo": "#6f5b50",
+     "photo": "#725d53",
      "model": "#846c5f",
-     "dL": 0.071
+     "dL": 0.059
     },
     "glazing": {
-     "photo": 0.33,
-     "model": 0.39
+     "photo": 0.35,
+     "model": 0.4
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.554
+    "iou": 0.535
    },
-   "challengers": {
-    "fh-1887-dentil-pediment": 0.355
-   },
-   "installed": "houweningen-1-31-r2"
+   "challengers": {}
   },
   {
    "pandId": "0363100012158307",
@@ -704,9 +578,35 @@
     "foliageShare": 0.01
    },
    "status": "held",
-   "stage": "run",
-   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
-   "likeness": null,
+   "stage": "likeness",
+   "reason": "edge NCC 0.103 < 0.15 (photo vs model body; likeness.ts PASS)",
+   "likeness": {
+    "pandId": "0363100012158307",
+    "ncc": 0.103,
+    "nccRaw": 0.103,
+    "shiftM": [
+     -0.25,
+     -0.05
+    ],
+    "usable": 0.97,
+    "abstain": null,
+    "verdict": "PASS",
+    "reasons": [],
+    "wall": {
+     "photo": "#705d53",
+     "model": "#806b5d",
+     "dL": 0.051
+    },
+    "glazing": {
+     "photo": 0.39,
+     "model": 0.35
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.486
+   },
    "challengers": {}
   },
   {
@@ -755,52 +655,39 @@
     "voidShare": 0,
     "foliageShare": 0.02
    },
-   "status": "placed",
-   "type": "fh-1887-dentil-pediment",
-   "score": 1,
-   "placement": {
-    "type": "fh-1887-dentil-pediment",
-    "measuredPalette": {
-     "brick": "#705e53",
-     "evidence": "strip 2021-02-22 span 1892-2080: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    }
-   },
-   "notes": [
-    "crown pediment-dormer (type default)"
-   ],
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
    "likeness": {
     "pandId": "0363100012156727",
-    "ncc": 0.352,
-    "nccRaw": 0.352,
+    "ncc": 0.378,
+    "nccRaw": 0.378,
     "shiftM": [
-     -0.3,
-     0.4
+     -0.25,
+     0.3
     ],
     "usable": 0.95,
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.25 mean 0.38 vs photo 0.49"
+     "glazing storey band off by 0.25"
     ],
     "wall": {
-     "photo": "#6f5e53",
+     "photo": "#716056",
      "model": "#887265",
-     "dL": 0.084
+     "dL": 0.075
     },
     "glazing": {
      "photo": 0.49,
-     "model": 0.38
+     "model": 0.4
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.509
+    "iou": 0.508
    },
-   "challengers": {
-    "fh-1887-dentil-pediment": 0.373
-   },
-   "installed": "houweningen-1-31-r3"
+   "challengers": {}
   },
   {
    "pandId": "0363100012167046",
@@ -842,27 +729,15 @@
     "voidShare": 0,
     "foliageShare": 0.04
    },
-   "status": "placed",
-   "type": "fh-1887-dentil-pediment",
-   "score": 1,
-   "placement": {
-    "type": "fh-1887-dentil-pediment",
-    "measuredPalette": {
-     "brick": "#715d52",
-     "evidence": "strip 2021-02-22 span 2080-2268: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    },
-    "mirror": true
-   },
-   "notes": [
-    "crown pediment-dormer (type default)",
-    "door reviewer pin: mirrored (red door pair right of centre on the strip (red-pixel centroid of the ground band, x/width > 0.5; Reigersbergenstraat (cast strip) by the alternation anchored on the measured 164833))"
-   ],
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.146 < 0.15 (photo vs model body; likeness.ts PASS)",
    "likeness": {
     "pandId": "0363100012167046",
-    "ncc": 0.309,
-    "nccRaw": 0.309,
+    "ncc": 0.146,
+    "nccRaw": 0.146,
     "shiftM": [
-     -0.3,
+     -0.25,
      0.4
     ],
     "usable": 0.91,
@@ -870,24 +745,21 @@
     "verdict": "PASS",
     "reasons": [],
     "wall": {
-     "photo": "#6e5b4f",
+     "photo": "#6d5b4f",
      "model": "#897164",
-     "dL": 0.094
+     "dL": 0.096
     },
     "glazing": {
-     "photo": 0.34,
+     "photo": 0.39,
      "model": 0.39
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.517
+    "iou": 0.485
    },
-   "challengers": {
-    "fh-1887-dentil-pediment~m": 0.307
-   },
-   "installed": "houweningen-1-31-r3"
+   "challengers": {}
   },
   {
    "pandId": "0363100012157692",
@@ -929,52 +801,39 @@
     "voidShare": 0,
     "foliageShare": 0.03
    },
-   "status": "placed",
-   "type": "fh-1887-dentil-pediment",
-   "score": 1,
-   "placement": {
-    "type": "fh-1887-dentil-pediment",
-    "measuredPalette": {
-     "brick": "#6f5c53",
-     "evidence": "strip 2021-02-22 span 2268-2456: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    }
-   },
-   "notes": [
-    "crown pediment-dormer (type default)"
-   ],
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.127 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.32)",
    "likeness": {
     "pandId": "0363100012157692",
-    "ncc": 0.278,
-    "nccRaw": 0.278,
+    "ncc": 0.127,
+    "nccRaw": 0.127,
     "shiftM": [
-     -0.3,
-     0.4
+     -0.25,
+     -0.4
     ],
-    "usable": 0.9,
+    "usable": 0.91,
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.18"
+     "glazing storey band off by 0.32"
     ],
     "wall": {
-     "photo": "#6e5c52",
+     "photo": "#6c5b51",
      "model": "#877065",
-     "dL": 0.086
+     "dL": 0.092
     },
     "glazing": {
-     "photo": 0.33,
-     "model": 0.39
+     "photo": 0.4,
+     "model": 0.37
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.431
+    "iou": 0.426
    },
-   "challengers": {
-    "fh-1887-dentil-pediment": 0.273
-   },
-   "installed": "houweningen-1-31-r3"
+   "challengers": {}
   },
   {
    "pandId": "0363100012166596",
@@ -1062,22 +921,32 @@
     "voidShare": 0,
     "foliageShare": 0.03
    },
-   "status": "held",
-   "stage": "likeness",
-   "reason": "edge NCC 0.122 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.17)",
+   "status": "placed",
+   "type": "fh-1887-dentil-pediment",
+   "score": 1,
+   "placement": {
+    "type": "fh-1887-dentil-pediment",
+    "measuredPalette": {
+     "brick": "#725c4d",
+     "evidence": "strip 2021-02-22 span 2644-2832: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown pediment-dormer (type default)"
+   ],
    "likeness": {
     "pandId": "0363100012165332",
-    "ncc": 0.122,
-    "nccRaw": 0.122,
+    "ncc": 0.174,
+    "nccRaw": 0.174,
     "shiftM": [
-     -0.3,
-     -0.4
+     -0.35,
+     0.4
     ],
     "usable": 0.92,
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.17"
+     "glazing storey band off by 0.18"
     ],
     "wall": {
      "photo": "#705b4c",
@@ -1092,7 +961,7 @@
      "photo": 3,
      "model": 3
     },
-    "iou": 0.393,
+    "iou": 0.389,
     "footOffsetM": 1.1
    },
    "challengers": {}
@@ -1137,16 +1006,28 @@
     "voidShare": 0,
     "foliageShare": 0.03
    },
-   "status": "held",
-   "stage": "likeness",
-   "reason": "edge NCC 0.122 < 0.15 (photo vs model body; likeness.ts PASS)",
+   "status": "placed",
+   "type": "fh-1887-dentil-pediment",
+   "score": 0.86,
+   "placement": {
+    "type": "fh-1887-dentil-pediment",
+    "measuredPalette": {
+     "brick": "#6a5343",
+     "evidence": "strip 2021-02-22 span 2832-3020: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "mirror": true
+   },
+   "notes": [
+    "crown pediment-dormer (type default)",
+    "door reviewer pin: mirrored (red door pair right of centre on the strip (red-pixel centroid of the ground band, x/width > 0.5; Reigersbergenstraat (cast strip) by the alternation anchored on the measured 164833))"
+   ],
    "likeness": {
     "pandId": "0363100012162863",
-    "ncc": 0.122,
-    "nccRaw": 0.122,
+    "ncc": 0.172,
+    "nccRaw": 0.172,
     "shiftM": [
      -0.3,
-     0.1
+     0.35
     ],
     "usable": 0.91,
     "abstain": null,
@@ -1165,7 +1046,7 @@
      "photo": 3,
      "model": 3
     },
-    "iou": 0.465,
+    "iou": 0.46,
     "footOffsetM": 1.1
    },
    "challengers": {}
@@ -1225,33 +1106,33 @@
    ],
    "likeness": {
     "pandId": "0363100012156794",
-    "ncc": 0.214,
-    "nccRaw": 0.214,
+    "ncc": 0.211,
+    "nccRaw": 0.211,
     "shiftM": [
-     -0.35,
+     -0.4,
      0.4
     ],
-    "usable": 0.92,
+    "usable": 0.9,
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
      "wall hue -18 deg",
-     "glazing storey band off by 0.39 mean 0.40 vs photo 0.65"
+     "glazing storey band off by 0.34 mean 0.40 vs photo 0.58"
     ],
     "wall": {
-     "photo": "#968d81",
+     "photo": "#948b7f",
      "model": "#91766c",
-     "dL": -0.051
+     "dL": -0.043
     },
     "glazing": {
-     "photo": 0.65,
+     "photo": 0.58,
      "model": 0.4
     },
     "columns": {
      "photo": null,
      "model": 3
     },
-    "iou": 0.422,
+    "iou": 0.429,
     "footOffsetM": 1.1
    },
    "challengers": {}
@@ -1313,32 +1194,32 @@
    ],
    "likeness": {
     "pandId": "0363100012159954",
-    "ncc": 0.173,
-    "nccRaw": 0.173,
+    "ncc": 0.164,
+    "nccRaw": 0.164,
     "shiftM": [
      -0.4,
      0.4
     ],
-    "usable": 0.92,
+    "usable": 0.93,
     "abstain": null,
     "verdict": "WARN",
     "reasons": [
-     "mask IoU 0.332 < 0.45"
+     "mask IoU 0.365 < 0.45"
     ],
     "wall": {
-     "photo": "#756056",
+     "photo": "#756057",
      "model": "#8d7368",
-     "dL": 0.082
+     "dL": 0.08
     },
     "glazing": {
-     "photo": 0.25,
+     "photo": 0.27,
      "model": 0.35
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.332,
+    "iou": 0.365,
     "footOffsetM": 1.1
    },
    "challengers": {}
@@ -1404,26 +1285,26 @@
      -0.4,
      -0.1
     ],
-    "usable": 0.93,
+    "usable": 0.94,
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing  mean 0.40 vs photo 0.28"
+     "glazing  mean 0.40 vs photo 0.29"
     ],
     "wall": {
-     "photo": "#715f56",
+     "photo": "#715e55",
      "model": "#90776c",
-     "dL": 0.104
+     "dL": 0.106
     },
     "glazing": {
-     "photo": 0.28,
+     "photo": 0.29,
      "model": 0.4
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.446,
+    "iou": 0.449,
     "footOffsetM": 1.1
    },
    "challengers": {}

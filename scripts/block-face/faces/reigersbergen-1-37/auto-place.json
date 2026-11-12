@@ -3,7 +3,7 @@
  "street": "Van Reigersbergenstraat",
  "library": "frederik-hendrikbuurt",
  "stripDate": "2022-10-07",
- "seconds": 246.82,
+ "seconds": 72.99,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -23,11 +23,10 @@
     "0363100012156059",
     "0363100012153678",
     "0363100012152999",
-    "0363100012163303",
-    "0363100012163395"
+    "0363100012163303"
    ],
    "passed": true,
-   "triangles": 15426
+   "triangles": 13566
   },
   {
    "face": "reigersbergen-1-37-r2",
@@ -36,7 +35,16 @@
     "0363100012153212"
    ],
    "passed": true,
-   "triangles": 3333
+   "triangles": 3585
+  },
+  {
+   "face": "reigersbergen-1-37-r3",
+   "pands": [
+    "0363100012153758",
+    "0363100012164833"
+   ],
+   "passed": true,
+   "triangles": 3828
   }
  ],
  "pands": [
@@ -109,8 +117,8 @@
    ],
    "likeness": {
     "pandId": "0363100012161489",
-    "ncc": 0.511,
-    "nccRaw": 0.511,
+    "ncc": 0.495,
+    "nccRaw": 0.495,
     "shiftM": [
      0.4,
      -0.4
@@ -197,11 +205,11 @@
    ],
    "likeness": {
     "pandId": "0363100012156678",
-    "ncc": 0.186,
-    "nccRaw": 0.186,
+    "ncc": 0.198,
+    "nccRaw": 0.198,
     "shiftM": [
      0.4,
-     0.2
+     0.25
     ],
     "usable": 0.98,
     "abstain": null,
@@ -285,8 +293,8 @@
    ],
    "likeness": {
     "pandId": "0363100012155831",
-    "ncc": 0.484,
-    "nccRaw": 0.484,
+    "ncc": 0.473,
+    "nccRaw": 0.473,
     "shiftM": [
      0.4,
      -0.4
@@ -381,8 +389,8 @@
    ],
    "likeness": {
     "pandId": "0363100012156059",
-    "ncc": 0.25,
-    "nccRaw": 0.25,
+    "ncc": 0.242,
+    "nccRaw": 0.242,
     "shiftM": [
      0.4,
      -0.4
@@ -391,7 +399,7 @@
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.38"
+     "glazing storey band off by 0.37"
     ],
     "wall": {
      "photo": "#76665b",
@@ -399,14 +407,14 @@
      "dL": 0.043
     },
     "glazing": {
-     "photo": 0.38,
+     "photo": 0.37,
      "model": 0.38
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.386
+    "iou": 0.383
    },
    "challengers": {}
   },
@@ -469,17 +477,17 @@
    ],
    "likeness": {
     "pandId": "0363100012153678",
-    "ncc": 0.317,
-    "nccRaw": 0.317,
+    "ncc": 0.33,
+    "nccRaw": 0.33,
     "shiftM": [
      0.4,
-     -0.4
+     -0.35
     ],
-    "usable": 0.95,
+    "usable": 0.96,
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.29 mean 0.39 vs photo 0.50"
+     "glazing storey band off by 0.28 mean 0.39 vs photo 0.50"
     ],
     "wall": {
      "photo": "#756359",
@@ -494,7 +502,7 @@
      "photo": 3,
      "model": 3
     },
-    "iou": 0.479
+    "iou": 0.477
    },
    "challengers": {}
   },
@@ -549,16 +557,18 @@
     },
     "paletteOverrides": {
      "brick": "#72584a"
-    }
+    },
+    "mirror": true
    },
    "notes": [
     "crown pediment-dormer (type default)",
-    "palette pinned: Reigersbergenstraat strip 2024-09-11 (blue-cast on the right third; the 2025-06-18 strip was rejected for a cold cast): one red-brown row tone, as on the 2021-02-22 Houweningenstraat strips of the same design"
+    "palette pinned: Reigersbergenstraat strip 2024-09-11 (blue-cast on the right third; the 2025-06-18 strip was rejected for a cold cast): one red-brown row tone, as on the 2021-02-22 Houweningenstraat strips of the same design",
+    "door reviewer pin: mirrored (red door pair right of centre (red centroid of the ground band, 2024-09-11 strip))"
    ],
    "likeness": {
     "pandId": "0363100012152999",
-    "ncc": 0.473,
-    "nccRaw": 0.473,
+    "ncc": 0.457,
+    "nccRaw": 0.457,
     "shiftM": [
      0.35,
      -0.4
@@ -580,7 +590,7 @@
      "photo": 3,
      "model": 3
     },
-    "iou": 0.519
+    "iou": 0.531
    },
    "challengers": {}
   },
@@ -643,32 +653,32 @@
    ],
    "likeness": {
     "pandId": "0363100012163303",
-    "ncc": 0.38,
-    "nccRaw": 0.38,
+    "ncc": 0.379,
+    "nccRaw": 0.379,
     "shiftM": [
      0.4,
-     -0.4
+     -0.35
     ],
     "usable": 0.96,
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.17"
+     "glazing storey band off by 0.41 mean 0.38 vs photo 0.52"
     ],
     "wall": {
-     "photo": "#6e5f55",
+     "photo": "#726157",
      "model": "#8c6c5b",
-     "dL": 0.071
+     "dL": 0.059
     },
     "glazing": {
-     "photo": 0.35,
+     "photo": 0.52,
      "model": 0.38
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.475
+    "iou": 0.438
    },
    "challengers": {}
   },
@@ -712,55 +722,10 @@
     "voidShare": 0,
     "foliageShare": 0.01
    },
-   "status": "placed",
-   "type": "fh-1887-dentil-pediment",
-   "score": 1,
-   "placement": {
-    "type": "fh-1887-dentil-pediment",
-    "measuredPalette": {
-     "brick": "#9d9593",
-     "evidence": "strip 2022-10-07 span 1321-1513: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    },
-    "paletteOverrides": {
-     "brick": "#72584a"
-    },
-    "mirror": true
-   },
-   "notes": [
-    "crown pediment-dormer (type default)",
-    "palette pinned: Reigersbergenstraat strip 2024-09-11 (blue-cast on the right third; the 2025-06-18 strip was rejected for a cold cast): one red-brown row tone, as on the 2021-02-22 Houweningenstraat strips of the same design",
-    "door reviewer pin: mirrored (red door pair right of centre (red centroid of the ground band, 2024-09-11 strip))"
-   ],
-   "likeness": {
-    "pandId": "0363100012163395",
-    "ncc": 0.299,
-    "nccRaw": 0.299,
-    "shiftM": [
-     0.2,
-     -0.4
-    ],
-    "usable": 0.97,
-    "abstain": null,
-    "verdict": "FAIL",
-    "reasons": [
-     "glazing storey band off by 0.20 mean 0.39 vs photo 0.19",
-     "window shape tall vs photo square"
-    ],
-    "wall": {
-     "photo": "#66584e",
-     "model": "#8c6c5b",
-     "dL": 0.1
-    },
-    "glazing": {
-     "photo": 0.19,
-     "model": 0.39
-    },
-    "columns": {
-     "photo": 3,
-     "model": 3
-    },
-    "iou": 0.268
-   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: no evidence: the 2022-10-07 strip is ghosted over this span (two captures overlaid, every window doubled); the 2024-09-11 and 2025-06-18 strips failed the cast gate in round 2",
+   "likeness": null,
    "challengers": {}
   },
   {
@@ -811,35 +776,36 @@
    },
    "status": "held",
    "stage": "likeness",
-   "reason": "edge NCC 0.148 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.22)",
+   "reason": "edge NCC 0.131 < 0.15 (photo vs model body; likeness.ts WARN: mask IoU 0.339 < 0.45)",
    "likeness": {
     "pandId": "0363100012157676",
-    "ncc": 0.148,
-    "nccRaw": 0.148,
+    "ncc": 0.131,
+    "nccRaw": 0.131,
     "shiftM": [
      0.15,
-     0.2
+     -0.2
     ],
-    "usable": 0.97,
+    "usable": 0.96,
     "abstain": null,
-    "verdict": "FAIL",
+    "verdict": "WARN",
     "reasons": [
-     "glazing storey band off by 0.22"
+     "mask IoU 0.339 < 0.45"
     ],
     "wall": {
-     "photo": "#715e55",
+     "photo": "#6f5d53",
      "model": "#8c6c5b",
-     "dL": 0.065
+     "dL": 0.073
     },
     "glazing": {
-     "photo": 0.38,
+     "photo": 0.32,
      "model": 0.4
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.332
+    "iou": 0.339,
+    "footOffsetM": 0.93
    },
    "challengers": {}
   },
@@ -910,8 +876,8 @@
    ],
    "likeness": {
     "pandId": "0363100012155474",
-    "ncc": 0.212,
-    "nccRaw": 0.212,
+    "ncc": 0.202,
+    "nccRaw": 0.202,
     "shiftM": [
      0.2,
      -0.1
@@ -999,8 +965,8 @@
    ],
    "likeness": {
     "pandId": "0363100012153212",
-    "ncc": 0.605,
-    "nccRaw": 0.605,
+    "ncc": 0.597,
+    "nccRaw": 0.597,
     "shiftM": [
      0.25,
      0.4
@@ -1115,13 +1081,27 @@
     "voidShare": 0,
     "foliageShare": 0.01
    },
-   "status": "held",
-   "stage": "likeness",
-   "reason": "edge NCC 0.139 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.67 mean 0.39 vs photo 0.99; wall judged on chromaticity: the photo's exposure is not normalised and the wall reads +0.21 darker than the model's in shade or overcast light)",
+   "status": "placed",
+   "type": "fh-1887-dentil-pediment",
+   "score": 1,
+   "placement": {
+    "type": "fh-1887-dentil-pediment",
+    "measuredPalette": {
+     "brick": "#53453a",
+     "evidence": "strip 2022-10-07 span 2266-2454: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#72584a"
+    }
+   },
+   "notes": [
+    "crown pediment-dormer (type default)",
+    "palette pinned: Reigersbergenstraat strip 2024-09-11 (blue-cast on the right third; the 2025-06-18 strip was rejected for a cold cast): one red-brown row tone, as on the 2021-02-22 Houweningenstraat strips of the same design"
+   ],
    "likeness": {
     "pandId": "0363100012153758",
-    "ncc": 0.139,
-    "nccRaw": 0.139,
+    "ncc": 0.171,
+    "nccRaw": 0.171,
     "shiftM": [
      0.3,
      -0.4
@@ -1130,7 +1110,7 @@
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.67 mean 0.39 vs photo 0.99",
+     "glazing storey band off by 0.67 mean 0.40 vs photo 0.99",
      "wall judged on chromaticity: the photo's exposure is not normalised and the wall reads +0.21 darker than the model's in shade or overcast light"
     ],
     "wall": {
@@ -1140,13 +1120,13 @@
     },
     "glazing": {
      "photo": 0.99,
-     "model": 0.39
+     "model": 0.4
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.409
+    "iou": 0.413
    },
    "challengers": {}
   },
@@ -1201,13 +1181,29 @@
     "voidShare": 0,
     "foliageShare": 0.01
    },
-   "status": "held",
-   "stage": "run",
-   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "status": "placed",
+   "type": "fh-1887-plain-anchor-pediment",
+   "score": 1,
+   "placement": {
+    "type": "fh-1887-plain-anchor-pediment",
+    "measuredPalette": {
+     "brick": "#695a50",
+     "evidence": "strip 2022-10-07 span 2455-2644: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#72584a"
+    },
+    "mirror": true
+   },
+   "notes": [
+    "crown pediment-dormer (type default)",
+    "palette pinned: Reigersbergenstraat strip 2024-09-11 (blue-cast on the right third; the 2025-06-18 strip was rejected for a cold cast): one red-brown row tone, as on the 2021-02-22 Houweningenstraat strips of the same design",
+    "door reviewer pin: mirrored (red door pair right of centre (red centroid of the ground band, 2024-09-11 strip))"
+   ],
    "likeness": {
     "pandId": "0363100012164833",
-    "ncc": 0.174,
-    "nccRaw": 0.174,
+    "ncc": 0.153,
+    "nccRaw": 0.153,
     "shiftM": [
      0.35,
      0.15
@@ -1216,22 +1212,23 @@
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.65 mean 0.39 vs photo 0.73"
+     "wall dL +0.12",
+     "glazing storey band off by 0.68 mean 0.39 vs photo 1.00"
     ],
     "wall": {
-     "photo": "#68584e",
+     "photo": "#635345",
      "model": "#8c6c5b",
-     "dL": 0.096
+     "dL": 0.124
     },
     "glazing": {
-     "photo": 0.73,
+     "photo": 1,
      "model": 0.39
     },
     "columns": {
-     "photo": 3,
+     "photo": null,
      "model": 3
     },
-    "iou": 0.369
+    "iou": 0.408
    },
    "challengers": {}
   },
@@ -1277,20 +1274,20 @@
    },
    "status": "held",
    "stage": "likeness",
-   "reason": "edge NCC 0.13 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.15)",
+   "reason": "edge NCC 0.124 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.16)",
    "likeness": {
     "pandId": "0363100012156927",
-    "ncc": 0.13,
-    "nccRaw": 0.13,
+    "ncc": 0.124,
+    "nccRaw": 0.124,
     "shiftM": [
-     -0.15,
-     0.05
+     0.4,
+     -0.4
     ],
-    "usable": 0.96,
+    "usable": 0.95,
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.15"
+     "glazing storey band off by 0.16"
     ],
     "wall": {
      "photo": "#625349",
@@ -1298,14 +1295,14 @@
      "dL": 0.118
     },
     "glazing": {
-     "photo": 0.34,
+     "photo": 0.32,
      "model": 0.41
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.22
+    "iou": 0.222
    },
    "challengers": {}
   },
@@ -1351,21 +1348,21 @@
    },
    "status": "held",
    "stage": "likeness",
-   "reason": "edge NCC 0.106 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.16; wall judged on chromaticity: the photo's exposure is not normalised and the wall reads +0.12 darker than the model's in shade or overcast light)",
+   "reason": "edge NCC 0.145 < 0.15 (photo vs model body; likeness.ts WARN: wall judged on chromaticity: the photo's exposure is not normalised and the wall reads +0.12 darker than the model's in shade or overcast light; mask IoU 0.293 < 0.45)",
    "likeness": {
     "pandId": "0363100012153810",
-    "ncc": 0.106,
-    "nccRaw": 0.106,
+    "ncc": 0.145,
+    "nccRaw": 0.145,
     "shiftM": [
-     -0.4,
-     -0.05
+     0.4,
+     -0.4
     ],
     "usable": 0.95,
     "abstain": null,
-    "verdict": "FAIL",
+    "verdict": "WARN",
     "reasons": [
-     "glazing storey band off by 0.16",
-     "wall judged on chromaticity: the photo's exposure is not normalised and the wall reads +0.12 darker than the model's in shade or overcast light"
+     "wall judged on chromaticity: the photo's exposure is not normalised and the wall reads +0.12 darker than the model's in shade or overcast light",
+     "mask IoU 0.293 < 0.45"
     ],
     "wall": {
      "photo": "#625247",
@@ -1373,14 +1370,14 @@
      "dL": 0.122
     },
     "glazing": {
-     "photo": 0.38,
-     "model": 0.39
+     "photo": 0.37,
+     "model": 0.4
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.291
+    "iou": 0.293
    },
    "challengers": {}
   },
@@ -1437,11 +1434,11 @@
    },
    "status": "held",
    "stage": "likeness",
-   "reason": "edge NCC 0.125 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.34)",
+   "reason": "edge NCC 0.121 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.34)",
    "likeness": {
     "pandId": "0363100012162778",
-    "ncc": 0.125,
-    "nccRaw": 0.125,
+    "ncc": 0.121,
+    "nccRaw": 0.121,
     "shiftM": [
      0.4,
      -0.3
@@ -1610,8 +1607,8 @@
    "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
    "likeness": {
     "pandId": "0363100012160664",
-    "ncc": 0.17,
-    "nccRaw": 0.17,
+    "ncc": 0.166,
+    "nccRaw": 0.166,
     "shiftM": [
      0.3,
      0.15

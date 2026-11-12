@@ -18,19 +18,20 @@
   "note": "auto-placed from the frederik-hendrikbuurt library (buurt Frederik Hendrikbuurt-Zuidoost); scores and holds in scripts/block-face/faces/houweningen-1-31/auto-place.json"
  },
  "types": [
+  "fh-1887-arched-gable",
   "fh-1887-dentil-pediment",
   "fh-1887-plain-anchor-pediment"
  ],
  "houses": [
   {
-   "pandId": "0363100012160230",
-   "slug": "houweningen-160230",
-   "address": "Van Houweningenstraat 5",
+   "pandId": "0363100012165332",
+   "slug": "houweningen-165332",
+   "address": "Van Houweningenstraat 25",
    "type": {
     "type": "fh-1887-dentil-pediment",
     "measuredPalette": {
-     "brick": "#6e5b51",
-     "evidence": "strip 2021-02-22 span 762-950: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+     "brick": "#725c4d",
+     "evidence": "strip 2021-02-22 span 2644-2832: trim-normalised wall (buildingRecipe/measureFacade.ts)"
     }
    },
    "groundFloor": {
@@ -43,18 +44,43 @@
     "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
    },
    "rhythm": {
-    "citation": "auto-place: fh-1887-dentil-pediment scored 1 on eaves 1, roof 1, stucco 1, columns 1; strip 2021-02-22 span 762-950"
+    "citation": "auto-place: fh-1887-dentil-pediment scored 1 on eaves 1, roof 1, stucco 1, columns 1; strip 2021-02-22 span 2644-2832"
    }
   },
   {
-   "pandId": "0363100012157843",
-   "slug": "houweningen-157843",
-   "address": "Van Houweningenstraat 7",
+   "pandId": "0363100012162863",
+   "slug": "houweningen-162863",
+   "address": "Van Houweningenstraat 27",
+   "type": {
+    "type": "fh-1887-dentil-pediment",
+    "measuredPalette": {
+     "brick": "#6a5343",
+     "evidence": "strip 2021-02-22 span 2832-3020: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "mirror": true
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2021-02-22",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: fh-1887-dentil-pediment scored 0.86 on eaves 1, roof 1, stucco 1, columns 0.4; strip 2021-02-22 span 2832-3020"
+   }
+  },
+  {
+   "pandId": "0363100012156794",
+   "slug": "houweningen-156794",
+   "address": "Van Houweningenstraat 29",
    "type": {
     "type": "fh-1887-plain-anchor-pediment",
     "measuredPalette": {
-     "brick": "#6a584c",
-     "evidence": "strip 2021-02-22 span 950-1138: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+     "brick": "#7a635b",
+     "evidence": "strip 2021-02-22 span 3020-3208: trim-normalised wall (buildingRecipe/measureFacade.ts)"
     }
    },
    "groundFloor": {
@@ -67,7 +93,56 @@
     "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
    },
    "rhythm": {
-    "citation": "auto-place: fh-1887-plain-anchor-pediment scored 1 on eaves 1, roof 1, stucco 1; strip 2021-02-22 span 950-1138"
+    "citation": "auto-place: fh-1887-plain-anchor-pediment scored 1 on eaves 1, roof 1, stucco 1; strip 2021-02-22 span 3020-3208"
+   }
+  },
+  {
+   "pandId": "0363100012159954",
+   "slug": "houweningen-159954",
+   "address": "Van Houweningenstraat 31",
+   "type": {
+    "type": "fh-1887-arched-gable",
+    "measuredPalette": {
+     "brick": "#766057",
+     "evidence": "strip 2021-02-22 span 3208-3396: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "mirror": true
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2021-02-22",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: fh-1887-arched-gable scored 1 on eaves 1, roof 1, stucco 1, columns 1; strip 2021-02-22 span 3208-3396"
+   }
+  },
+  {
+   "pandId": "0363100012165776",
+   "slug": "houweningen-165776",
+   "address": "Van Houweningenstraat 31A",
+   "type": {
+    "type": "fh-1887-plain-anchor-pediment",
+    "measuredPalette": {
+     "brick": "#79645b",
+     "evidence": "strip 2021-02-22 span 3396-3608: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2021-02-22",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: fh-1887-plain-anchor-pediment scored 1 on eaves 1, roof 1, stucco 1; strip 2021-02-22 span 3396-3608"
    }
   }
  ],

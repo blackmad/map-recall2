@@ -1,0 +1,88 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "huygens-102-118-r1",
+ "street": "Eerste Constantijn Huygensstraat",
+ "sources": [
+  {
+   "id": "strip-2024-12-11",
+   "kind": "street-panorama",
+   "capturedAt": "2024-12-11",
+   "image": "staging/block-face/huygens-102-118-r1/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "auto-place (blockFace/autoPlace.ts)",
+  "passes": 1,
+  "note": "auto-placed from the vondelpark library (buurt Vondelparkbuurt-Oost); scores and holds in scripts/block-face/faces/huygens-102-118/auto-place.json"
+ },
+ "types": [
+  "huygens-1873-balcony-pediment-mansard"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012160719",
+   "slug": "huygens-160719",
+   "address": "Eerste Constantijn Huygensstraat 116",
+   "type": {
+    "type": "huygens-1873-balcony-pediment-mansard",
+    "measuredPalette": {
+     "brick": "#866649",
+     "evidence": "strip 2024-12-11 span 413-677: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "door": "#a3302a"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2024-12-11",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: huygens-1873-balcony-pediment-mansard scored 1 on eaves 1, stucco 1, columns 1; strip 2024-12-11 span 413-677"
+   }
+  },
+  {
+   "pandId": "0363100012163854",
+   "slug": "huygens-163854",
+   "address": "Eerste Constantijn Huygensstraat 114",
+   "type": {
+    "type": "huygens-1873-balcony-pediment-mansard",
+    "mirror": true,
+    "measuredPalette": {
+     "brick": "#937355",
+     "evidence": "strip 2024-12-11 span 677-937: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2024-12-11",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: huygens-1873-balcony-pediment-mansard scored 0.73 on eaves 1, stucco 1, columns 0; strip 2024-12-11 span 677-937"
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "auto-place: low attic behind the cornice; the strips show sky over the cornices of the type rows"
+  }
+ }
+}

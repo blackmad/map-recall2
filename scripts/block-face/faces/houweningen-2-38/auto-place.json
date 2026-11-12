@@ -3,7 +3,7 @@
  "street": "Van Houweningenstraat",
  "library": "frederik-hendrikbuurt",
  "stripDate": "2021-02-22",
- "seconds": 166.25,
+ "seconds": 53.83,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -34,8 +34,8 @@
     "0363100012163222",
     "0363100012162506"
    ],
-   "passed": false,
-   "triangles": 31601
+   "passed": true,
+   "triangles": 31925
   }
  ],
  "pands": [
@@ -87,15 +87,17 @@
     "measuredPalette": {
      "brick": "#735d4e",
      "evidence": "strip 2021-02-22 span 0-184: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    }
+    },
+    "mirror": true
    },
    "notes": [
-    "crown pediment-dormer (type default)"
+    "crown pediment-dormer (type default)",
+    "door reviewer pin: mirrored (red door pair right of centre on the strip (red-pixel centroid of the ground band, x/width > 0.5; Reigersbergenstraat (cast strip) by the alternation anchored on the measured 164833))"
    ],
    "likeness": {
     "pandId": "0363100012161605",
-    "ncc": 0.492,
-    "nccRaw": 0.492,
+    "ncc": 0.484,
+    "nccRaw": 0.484,
     "shiftM": [
      0.25,
      0.4
@@ -119,7 +121,7 @@
      "photo": 3,
      "model": 3
     },
-    "iou": 0.502
+    "iou": 0.501
    },
    "challengers": {}
   },
@@ -178,8 +180,8 @@
    ],
    "likeness": {
     "pandId": "0363100012156521",
-    "ncc": 0.215,
-    "nccRaw": 0.215,
+    "ncc": 0.204,
+    "nccRaw": 0.204,
     "shiftM": [
      0.25,
      0.4
@@ -255,15 +257,17 @@
     "measuredPalette": {
      "brick": "#6e5a49",
      "evidence": "strip 2021-02-22 span 379-567: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    }
+    },
+    "mirror": true
    },
    "notes": [
-    "crown pediment-dormer (type default)"
+    "crown pediment-dormer (type default)",
+    "door reviewer pin: mirrored (red door pair right of centre on the strip (red-pixel centroid of the ground band, x/width > 0.5; Reigersbergenstraat (cast strip) by the alternation anchored on the measured 164833))"
    ],
    "likeness": {
     "pandId": "0363100012153807",
-    "ncc": 0.648,
-    "nccRaw": 0.648,
+    "ncc": 0.642,
+    "nccRaw": 0.642,
     "shiftM": [
      0.2,
      0.4
@@ -279,13 +283,13 @@
     },
     "glazing": {
      "photo": 0.3,
-     "model": 0.39
+     "model": 0.4
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.628
+    "iou": 0.629
    },
    "challengers": {}
   },
@@ -339,13 +343,13 @@
    ],
    "likeness": {
     "pandId": "0363100012158366",
-    "ncc": 0.387,
-    "nccRaw": 0.387,
+    "ncc": 0.346,
+    "nccRaw": 0.346,
     "shiftM": [
-     0.3,
-     0.3
+     0.25,
+     0.4
     ],
-    "usable": 0.92,
+    "usable": 0.91,
     "abstain": null,
     "verdict": "PASS",
     "reasons": [],
@@ -362,7 +366,7 @@
      "photo": 3,
      "model": 3
     },
-    "iou": 0.617
+    "iou": 0.608
    },
    "challengers": {}
   },
@@ -418,11 +422,11 @@
    ],
    "likeness": {
     "pandId": "0363100012162380",
-    "ncc": 0.392,
-    "nccRaw": 0.392,
+    "ncc": 0.373,
+    "nccRaw": 0.373,
     "shiftM": [
      0.25,
-     0.3
+     0.4
     ],
     "usable": 0.93,
     "abstain": null,
@@ -441,7 +445,7 @@
      "photo": 3,
      "model": 3
     },
-    "iou": 0.57
+    "iou": 0.566
    },
    "challengers": {}
   },
@@ -500,8 +504,8 @@
    ],
    "likeness": {
     "pandId": "0363100012163315",
-    "ncc": 0.65,
-    "nccRaw": 0.65,
+    "ncc": 0.641,
+    "nccRaw": 0.641,
     "shiftM": [
      0.15,
      0.4
@@ -584,13 +588,13 @@
    ],
    "likeness": {
     "pandId": "0363100012159933",
-    "ncc": 0.362,
-    "nccRaw": 0.362,
+    "ncc": 0.288,
+    "nccRaw": 0.288,
     "shiftM": [
      0.3,
-     0.35
+     0.4
     ],
-    "usable": 0.92,
+    "usable": 0.91,
     "abstain": null,
     "verdict": "PASS",
     "reasons": [],
@@ -601,13 +605,13 @@
     },
     "glazing": {
      "photo": 0.34,
-     "model": 0.37
+     "model": 0.38
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.513
+    "iou": 0.51
    },
    "challengers": {}
   },
@@ -666,8 +670,8 @@
    ],
    "likeness": {
     "pandId": "0363100012167020",
-    "ncc": 0.39,
-    "nccRaw": 0.39,
+    "ncc": 0.329,
+    "nccRaw": 0.329,
     "shiftM": [
      0.25,
      0.4
@@ -676,7 +680,7 @@
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing  mean 0.39 vs photo 0.28"
+     "glazing  mean 0.40 vs photo 0.28"
     ],
     "wall": {
      "photo": "#9a8c7c",
@@ -685,7 +689,7 @@
     },
     "glazing": {
      "photo": 0.28,
-     "model": 0.39
+     "model": 0.4
     },
     "columns": {
      "photo": 3,
@@ -738,15 +742,17 @@
     "measuredPalette": {
      "brick": "#796454",
      "evidence": "strip 2021-02-22 span 1507-1695: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    }
+    },
+    "mirror": true
    },
    "notes": [
-    "crown pediment-dormer (type default)"
+    "crown pediment-dormer (type default)",
+    "door reviewer pin: mirrored (red door pair right of centre on the strip (red-pixel centroid of the ground band, x/width > 0.5; Reigersbergenstraat (cast strip) by the alternation anchored on the measured 164833))"
    ],
    "likeness": {
     "pandId": "0363100012156096",
-    "ncc": 0.526,
-    "nccRaw": 0.526,
+    "ncc": 0.52,
+    "nccRaw": 0.52,
     "shiftM": [
      0.2,
      0.4
@@ -770,7 +776,7 @@
      "photo": 3,
      "model": 3
     },
-    "iou": 0.604
+    "iou": 0.593
    },
    "challengers": {}
   },
@@ -835,8 +841,8 @@
    ],
    "likeness": {
     "pandId": "0363100012159242",
-    "ncc": 0.191,
-    "nccRaw": 0.191,
+    "ncc": 0.181,
+    "nccRaw": 0.181,
     "shiftM": [
      0.15,
      0.4
@@ -915,15 +921,17 @@
     "measuredPalette": {
      "brick": "#766455",
      "evidence": "strip 2021-02-22 span 1883-2071: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    }
+    },
+    "mirror": true
    },
    "notes": [
-    "crown pediment-dormer (type default)"
+    "crown pediment-dormer (type default)",
+    "door reviewer pin: mirrored (red door pair right of centre on the strip (red-pixel centroid of the ground band, x/width > 0.5; Reigersbergenstraat (cast strip) by the alternation anchored on the measured 164833))"
    ],
    "likeness": {
     "pandId": "0363100012163814",
-    "ncc": 0.55,
-    "nccRaw": 0.55,
+    "ncc": 0.539,
+    "nccRaw": 0.539,
     "shiftM": [
      0.25,
      0.35
@@ -945,7 +953,7 @@
      "photo": 3,
      "model": 3
     },
-    "iou": 0.585
+    "iou": 0.599
    },
    "challengers": {}
   },
@@ -1004,8 +1012,8 @@
    ],
    "likeness": {
     "pandId": "0363100012167267",
-    "ncc": 0.393,
-    "nccRaw": 0.393,
+    "ncc": 0.235,
+    "nccRaw": 0.235,
     "shiftM": [
      0.25,
      0.4
@@ -1015,7 +1023,7 @@
     "verdict": "FAIL",
     "reasons": [
      "wall dL +0.13",
-     "glazing storey band off by 0.62 mean 0.39 vs photo 0.73"
+     "glazing storey band off by 0.61 mean 0.40 vs photo 0.73"
     ],
     "wall": {
      "photo": "#665547",
@@ -1024,13 +1032,13 @@
     },
     "glazing": {
      "photo": 0.73,
-     "model": 0.39
+     "model": 0.4
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.495
+    "iou": 0.493
    },
    "challengers": {}
   },
@@ -1091,8 +1099,8 @@
    ],
    "likeness": {
     "pandId": "0363100012165393",
-    "ncc": 0.362,
-    "nccRaw": 0.362,
+    "ncc": 0.221,
+    "nccRaw": 0.221,
     "shiftM": [
      0.2,
      0.4
@@ -1101,7 +1109,7 @@
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.21"
+     "glazing storey band off by 0.20"
     ],
     "wall": {
      "photo": "#756355",
@@ -1110,13 +1118,13 @@
     },
     "glazing": {
      "photo": 0.44,
-     "model": 0.38
+     "model": 0.39
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.524
+    "iou": 0.517
    },
    "challengers": {}
   },
@@ -1170,8 +1178,8 @@
    ],
    "likeness": {
     "pandId": "0363100012159135",
-    "ncc": 0.511,
-    "nccRaw": 0.511,
+    "ncc": 0.504,
+    "nccRaw": 0.504,
     "shiftM": [
      0.15,
      0.4
@@ -1252,8 +1260,8 @@
    ],
    "likeness": {
     "pandId": "0363100012163222",
-    "ncc": 0.382,
-    "nccRaw": 0.382,
+    "ncc": 0.222,
+    "nccRaw": 0.222,
     "shiftM": [
      0.15,
      0.4
@@ -1269,13 +1277,13 @@
     },
     "glazing": {
      "photo": 0.32,
-     "model": 0.39
+     "model": 0.4
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.516
+    "iou": 0.511
    },
    "challengers": {}
   },
@@ -1334,8 +1342,8 @@
    ],
    "likeness": {
     "pandId": "0363100012162506",
-    "ncc": 0.351,
-    "nccRaw": 0.351,
+    "ncc": 0.168,
+    "nccRaw": 0.168,
     "shiftM": [
      0.15,
      0.4
@@ -1344,7 +1352,7 @@
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.48 mean 0.39 vs photo 0.64"
+     "glazing storey band off by 0.47 mean 0.40 vs photo 0.64"
     ],
     "wall": {
      "photo": "#6d5f54",
@@ -1353,7 +1361,7 @@
     },
     "glazing": {
      "photo": 0.64,
-     "model": 0.39
+     "model": 0.4
     },
     "columns": {
      "photo": 3,

@@ -38,3 +38,45 @@ The marginal holds (NCC 0.144-0.146) were not rescued by weakening the gate.
 
 ## Integrator notes
 Rebuild: `npx tsx scripts/look/build-chunk-wall-exposure.ts --write`, covers, bake-frontages, buurt pages, explorer-looks; commit the source-data repo. `roof-golden.json` re-recorded (4 new runs only). `npm run test:block-face` 322/322, `npm run lint` clean.
+
+## Round 3 (2026-11-12): house line instead of chunk installs
+The round-2 chunk installs (hendrik-134-154 r1/r2, houweningen-1-31 r2/r3) are reverted to main (`chunks.json`, four GLBs,
+`roof-golden.json`); the house line carries these pands now.
+
+* Types: `fh-1887-dentil-pediment` reworked (jack blocks, transom band, black anchors, timber pediment dormer, point-gable
+  rise 1.15), new `fh-1887-plain-anchor-pediment` (the same body without dressings), `fh-1887-arched-gable` (rise 1.15,
+  arched heads on storeys 1-3). Every pand of the four ZO faces is pinned to one of them off the strips (review-types), and
+  the 32 mirror pins are retyped.
+* Huygensstraat 102-118 (Vondelparkbuurt-Oost): new `huygens-1873-balcony-pediment-mansard` (2 storeys + stoop basement,
+  bracketed entablature, timber balcony, pediment dormer on a 70 degree slate front). Auto-place placed 160719 and 163854.
+* Auto-place round 3c: 40 FH pands plus 2 Huygens in 9 runs, every run compiles and passes the GLB audit.
+  `scripts/house-specs/face-specs.ts --faces=<runs> --out=<dir>` turns them into `fromBlockFace` specs (42).
+* Receipts (`house-preview/resolved.ts --photo --threeq`): 31 PASS, 7 FAIL (wall a little light, dL -0.06 to -0.19, or
+  hue), 2 NO EVIDENCE (Huygens); 2 with no photo (156678, 161489: no strip lists them).
+
+### Staged 26 / held 16 (plus the earlier holds)
+Staged (`artifacts/house-specs/staging/`): 152966 152999 153758 153807 155474 155831 156059 156096 156521 156794 157111
+158366 159135 159242 159933 159954 160880 162863 163222 163303 164007 164833 165332 165393 165508 167163.
+
+Held:
+* recipe-route roof artefacts (12): 153212 153678 158151 161605 162380 162506 163315 163814 164721 165776 167020 167267.
+  The recipe route draws the 3DBAG LoD2.2 roof: skewed tops and hip partition triangles in the elevation.
+* Huygens 160719, 163854: the same roof route draws brown partition patches in the mansard; no photo verdict.
+* no photo receipt: 156678, 161489.
+
+### Systematic miss (escalated)
+Every spec carries `roof: {source: "front", rise: 0.25, pitchDeg: 45, evidence}` read off the strips, but only the
+block-face compile (`compile.ts roofSourceFor` / `recipeRoof.ts frontRoofSpecs`) honours `source: front`; the single-house
+recipe route (`toRecipe` -> `scripts/building-recipes/houses` -> install) keeps the 3DBAG roof. Even the 26 staged
+pands show about one storey of slate over the cornice where the strips show only the dormer and a low roof behind it.
+Fix that once in the recipe route and the 12 roof holds become stageable.
+
+### Kit additions
+* `windowSurround: "jack-blocks"` (fit.ts `JACK_BLOCKS`): five white blocks, tall/short, 0.12 m past the jambs, a sill.
+* `wallAnchors.colour`: anchors in their own colour (black), not the door colour.
+
+### Kit still cannot say
+* the jack blocks fan as voussoirs (they stand upright); no blocks over the doors; roundels between windows;
+* arched ground-storey heads on the gable pands;
+* Huygens: round anchor plates, a solid stone balustrade, a fanlight under a segmental head;
+* the street-visible roof behind a dormered cornice on the recipe route (above).

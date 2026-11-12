@@ -1,8 +1,8 @@
 {
  "buurt": "frederik-hendrikbuurt-zuidoost",
  "library": "frederik-hendrikbuurt",
- "generatedAt": "2026-11-10T20:52:38.534Z",
- "seconds": 558.02,
+ "generatedAt": "2026-11-12T12:30:31.343Z",
+ "seconds": 210.36,
  "totals": {
   "faces": 4,
   "pands": 67,
@@ -13,36 +13,43 @@
    "face": "hendrik-134-154",
    "street": "Frederik Hendrikstraat",
    "pands": 12,
-   "placed": 4,
-   "held": 8,
+   "placed": 8,
+   "held": 4,
    "runs": [
     {
      "face": "hendrik-134-154-r1",
      "pands": [
       "0363100012158151",
-      "0363100012157111"
+      "0363100012157111",
+      "0363100012164721",
+      "0363100012167163"
      ],
-     "installed": true
+     "passed": true,
+     "triangles": 7539
     },
     {
      "face": "hendrik-134-154-r2",
      "pands": [
+      "0363100012152966",
+      "0363100012165508",
       "0363100012160880",
       "0363100012164007"
      ],
-     "installed": true
+     "passed": true,
+     "triangles": 7550
     }
    ],
-   "seconds": 83.93,
+   "seconds": 42.17,
    "byType": {
+    "fh-1887-plain-anchor-pediment": 4,
     "fh-1887-dentil-pediment": 4
    },
-   "installed": 4,
+   "installed": 0,
    "holds": {
     "evidence": 0,
     "match": 0,
     "likeness": 4,
-    "run": 4,
+    "run": 0,
     "review": 0
    }
   },
@@ -50,59 +57,35 @@
    "face": "houweningen-1-31",
    "street": "Van Houweningenstraat",
    "pands": 17,
-   "placed": 10,
-   "held": 7,
+   "placed": 5,
+   "held": 12,
    "runs": [
     {
      "face": "houweningen-1-31-r1",
      "pands": [
-      "0363100012160230",
-      "0363100012157843"
-     ],
-     "passed": false,
-     "triangles": 3773
-    },
-    {
-     "face": "houweningen-1-31-r4",
-     "pands": [
+      "0363100012165332",
+      "0363100012162863",
       "0363100012156794",
       "0363100012159954",
       "0363100012165776"
      ],
      "passed": true,
-     "triangles": 4821
-    },
-    {
-     "face": "houweningen-1-31-r2",
-     "pands": [
-      "0363100012158949",
-      "0363100012157672"
-     ],
-     "installed": true
-    },
-    {
-     "face": "houweningen-1-31-r3",
-     "pands": [
-      "0363100012156727",
-      "0363100012167046",
-      "0363100012157692"
-     ],
-     "installed": true
+     "triangles": 9776
     }
    ],
-   "seconds": 60.96,
+   "seconds": 41.35,
    "byType": {
-    "fh-1887-dentil-pediment": 6,
-    "fh-1887-plain-anchor-pediment": 3,
+    "fh-1887-dentil-pediment": 2,
+    "fh-1887-plain-anchor-pediment": 2,
     "fh-1887-arched-gable": 1
    },
-   "installed": 5,
+   "installed": 0,
    "holds": {
     "evidence": 0,
     "match": 4,
-    "likeness": 2,
-    "run": 1,
-    "review": 0
+    "likeness": 4,
+    "run": 2,
+    "review": 2
    }
   },
   {
@@ -132,11 +115,11 @@
       "0363100012163222",
       "0363100012162506"
      ],
-     "passed": false,
-     "triangles": 31601
+     "passed": true,
+     "triangles": 31925
     }
    ],
-   "seconds": 166.25,
+   "seconds": 53.83,
    "byType": {
     "fh-1887-plain-anchor-pediment": 6,
     "fh-1887-arched-gable": 2,
@@ -155,8 +138,8 @@
    "face": "reigersbergen-1-37",
    "street": "Van Reigersbergenstraat",
    "pands": 19,
-   "placed": 10,
-   "held": 9,
+   "placed": 11,
+   "held": 8,
    "runs": [
     {
      "face": "reigersbergen-1-37-r1",
@@ -167,11 +150,10 @@
       "0363100012156059",
       "0363100012153678",
       "0363100012152999",
-      "0363100012163303",
-      "0363100012163395"
+      "0363100012163303"
      ],
      "passed": true,
-     "triangles": 15426
+     "triangles": 13566
     },
     {
      "face": "reigersbergen-1-37-r2",
@@ -180,12 +162,21 @@
       "0363100012153212"
      ],
      "passed": true,
-     "triangles": 3333
+     "triangles": 3585
+    },
+    {
+     "face": "reigersbergen-1-37-r3",
+     "pands": [
+      "0363100012153758",
+      "0363100012164833"
+     ],
+     "passed": true,
+     "triangles": 3828
     }
    ],
-   "seconds": 246.82,
+   "seconds": 72.99,
    "byType": {
-    "fh-1887-plain-anchor-pediment": 4,
+    "fh-1887-plain-anchor-pediment": 5,
     "fh-1887-arched-gable": 2,
     "fh-1887-dentil-pediment": 4
    },
@@ -193,9 +184,9 @@
    "holds": {
     "evidence": 0,
     "match": 0,
-    "likeness": 6,
-    "run": 2,
-    "review": 1
+    "likeness": 5,
+    "run": 1,
+    "review": 2
    }
   }
  ]

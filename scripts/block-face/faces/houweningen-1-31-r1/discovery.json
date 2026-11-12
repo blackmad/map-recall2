@@ -2,17 +2,20 @@
  "street": "Van Houweningenstraat",
  "seed": "0363100012159613",
  "members": [
-  "0363100012160230",
-  "0363100012157843"
+  "0363100012165332",
+  "0363100012162863",
+  "0363100012156794",
+  "0363100012159954",
+  "0363100012165776"
  ],
  "ends": [
   {
    "side": "left",
-   "reason": "run of houweningen-1-31: 154093 held (auto-place.json)"
+   "reason": "run of houweningen-1-31: 166596 held (auto-place.json)"
   },
   {
    "side": "right",
-   "reason": "run of houweningen-1-31: 165392 held (auto-place.json)"
+   "reason": "next fronting pand 0363100012117381 31.3 m on shares no party wall (cross street or gap)"
   }
  ],
  "rejected": [
@@ -668,21 +671,51 @@
  "areaHalfSizeM": 90,
  "pands": [
   {
-   "pandId": "0363100012160230",
-   "alongM": 16.23,
+   "pandId": "0363100012165332",
+   "alongM": 63.27,
    "widthM": 4.7,
-   "eavesM": 13.78,
-   "roofMaxM": 17.22,
+   "eavesM": 13.82,
+   "roofMaxM": 16.9,
    "storeys3dbag": 5,
    "builtYear": 1887,
    "uncertainty": []
   },
   {
-   "pandId": "0363100012157843",
-   "alongM": 20.93,
-   "widthM": 4.69,
-   "eavesM": 13.7,
-   "roofMaxM": 17.24,
+   "pandId": "0363100012162863",
+   "alongM": 67.97,
+   "widthM": 4.7,
+   "eavesM": 13.81,
+   "roofMaxM": 17.34,
+   "storeys3dbag": 5,
+   "builtYear": 1887,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012156794",
+   "alongM": 72.68,
+   "widthM": 4.7,
+   "eavesM": 13.76,
+   "roofMaxM": 17.28,
+   "storeys3dbag": 5,
+   "builtYear": 1887,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012159954",
+   "alongM": 77.37,
+   "widthM": 4.7,
+   "eavesM": 13.95,
+   "roofMaxM": 17.03,
+   "storeys3dbag": 5,
+   "builtYear": 1887,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012165776",
+   "alongM": 82.37,
+   "widthM": 5.3,
+   "eavesM": 13.64,
+   "roofMaxM": 17.43,
    "storeys3dbag": 5,
    "builtYear": 1887,
    "uncertainty": []

@@ -66,3 +66,15 @@ test('dentil lintel: teeth stand on every window lintel; the plain stone-lintel 
   assert.ok((withD.match(/dentil-/g) ?? []).length >= 9 * 2, 'teeth on every window');
   assert.equal((without.match(/dentil-/g) ?? []).length, 0);
 });
+
+test('jack blocks: five white blocks per window head, tall/short alternating, 0.12 m past the jambs, a sill and no lintel slab', () => {
+  const ds = (surround: string) => fitRecipe(house(f => { f.windowSurround = surround; })).dressings?.value ?? [];
+  const d = ds('jack-blocks'), win = fitRecipe(house(f => { f.windowSurround = 'jack-blocks'; })).openings.value.find(o => o.id === 's1-b1')!;
+  const blocks = d.filter((x): x is Extract<typeof x, {kind: 'slab'}> => x.kind === 'slab' && x.id.startsWith('jack-') && x.id.endsWith('-s1-b1'));
+  assert.equal(blocks.length, 5);
+  assert.deepEqual(blocks.map(b => b.heightM), [0.5, 0.32, 0.5, 0.32, 0.5]);
+  assert.ok(Math.abs(blocks[0].leftM - (win.leftM - 0.12)) < 0.011 && Math.abs(blocks[4].leftM + blocks[4].widthM - (win.leftM + win.widthM + 0.12)) < 0.011);
+  assert.ok(blocks.every(b => Math.abs(b.bottomM - (win.bottomM + win.heightM + 0.02)) < 0.011));
+  assert.ok(d.some(x => x.id === 'sill-s1-b1') && !d.some(x => x.id.startsWith('lintel-')));
+  assert.equal(JSON.stringify(ds('dentil-lintel')).match(/jack-/g), null, 'absent = none');
+});

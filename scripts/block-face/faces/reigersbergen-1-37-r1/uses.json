@@ -131,22 +131,6 @@
    ],
    "units": 4,
    "osm": []
-  },
-  {
-   "pandId": "0363100012163395",
-   "addresses": [
-    "Van Reigersbergenstraat 15"
-   ],
-   "groundUnits": [
-    {
-     "address": "Van Reigersbergenstraat 15-H",
-     "use": "woonfunctie",
-     "areaM2": 38,
-     "bagId": "0363010000845819"
-    }
-   ],
-   "units": 4,
-   "osm": []
   }
  ]
 }

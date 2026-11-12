@@ -41,6 +41,8 @@ const TOWER_LIGHT_TRIM_M = 0.06;
  *  material about 6 cm proud); the facing's piers start this far in from the tower's edges so they never lie over it. */
 const TOWER_EDGE_TRIM_M = 0.1;
 
+/** `windowSurround: 'jack-blocks'`: Van Houweningenstraat 19 at 40 px/m (2021-02-22): five blocks per head, about 0.17 m wide with as much brick between, 0.5 m and 0.32 m tall, 0.12 m past each jamb (read on the review sheet beside the model). */
+export const JACK_BLOCKS = {count: 5, widthM: 0.17, tallM: 0.5, shortM: 0.32, pastM: 0.12, depthM: 0.045} as const;
 export const ROOF_COLOURS: Record<CanalHouseIntent['roof']['material'], {steep: string; low: string; flat: string}> = {
   slate: {steep: '#3b4047', low: '#4b5056', flat: '#6a6c6c'},
   'black-tile': {steep: '#2f2e2f', low: '#3d3b3b', flat: '#666462'},
@@ -1295,6 +1297,11 @@ export function fitIntent(intent: CanalHouseIntent, surveyFacts: BuildingFacts):
         const top = o.bottomM + o.heightM, ox = 0.07, oy = o.id;
         if (front.windowSurround === 'eared-keystone') { dressings.push(...earedHead(o, oy, width)); continue; }
         if (front.windowSurround === 'sill') {
+          dressings.push({id: `sill-${oy}`, kind: 'slab', leftM: round(o.leftM - ox - 0.05), bottomM: round(o.bottomM - 0.07), widthM: round(o.widthM + 2 * ox + 0.1), heightM: 0.08, depthM: 0.07, surface: 'stone'});
+        } else if (front.windowSurround === 'jack-blocks') {
+          // A flat arch of white blocks on the head, tall and short alternating, brick between (Frederik Hendrikbuurt 1885-90).
+          const {count, widthM, tallM, shortM, pastM, depthM} = JACK_BLOCKS, span = o.widthM + 2 * pastM, x0 = o.leftM - pastM, step = (span - widthM) / (count - 1);
+          for (let k = 0; k < count; k++) dressings.push({id: `jack-${k}-${oy}`, kind: 'slab', leftM: round(x0 + step * k), bottomM: round(top + 0.02), widthM, heightM: k % 2 ? shortM : tallM, depthM, surface: 'stone'});
           dressings.push({id: `sill-${oy}`, kind: 'slab', leftM: round(o.leftM - ox - 0.05), bottomM: round(o.bottomM - 0.07), widthM: round(o.widthM + 2 * ox + 0.1), heightM: 0.08, depthM: 0.07, surface: 'stone'});
         } else if (front.windowSurround === 'keystone') {
           const kw = clamp(o.widthM * 0.2, 0.15, 0.26);

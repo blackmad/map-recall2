@@ -18,7 +18,8 @@
   "note": "auto-placed from the frederik-hendrikbuurt library (buurt Frederik Hendrikbuurt-Zuidoost); scores and holds in scripts/block-face/faces/hendrik-134-154/auto-place.json"
  },
  "types": [
-  "fh-1887-dentil-pediment"
+  "fh-1887-dentil-pediment",
+  "fh-1887-plain-anchor-pediment"
  ],
  "houses": [
   {
@@ -26,7 +27,7 @@
    "slug": "hendrik-158151",
    "address": "Frederik Hendrikstraat 152",
    "type": {
-    "type": "fh-1887-dentil-pediment",
+    "type": "fh-1887-plain-anchor-pediment",
     "measuredPalette": {
      "brick": "#766257",
      "evidence": "strip 2022-04-29 span 388-576: trim-normalised wall (buildingRecipe/measureFacade.ts)"
@@ -43,21 +44,7 @@
     "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
    },
    "rhythm": {
-    "bays": "3 window axes",
-    "windowsPerStorey": "ground: pair of doors + wide window | 1: 3 | 2: 3 | 3: 3",
-    "symmetry": "symmetric above the ground",
-    "groundFloor": "paired red doors, wide window",
-    "roofline": "white cornice, centre pediment dormer, occasional pointed gable",
-    "photoRows": [
-     1,
-     3,
-     3,
-     3
-    ],
-    "photoGroundRows": 1,
-    "citation": "auto-place: fh-1887-dentil-pediment scored 1 on eaves 1, roof 1, stucco 1, columns 1; strip 2022-04-29 span 388-576",
-    "signage": "none above the ground; per-door numbers",
-    "identicalBays": "upper storeys: equal axes, no balconies"
+    "citation": "auto-place: fh-1887-plain-anchor-pediment scored 1 on eaves 1, roof 1, stucco 1, columns 1; strip 2022-04-29 span 388-576"
    }
   },
   {
@@ -70,9 +57,6 @@
     "measuredPalette": {
      "brick": "#716053",
      "evidence": "strip 2022-04-29 span 576-764: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    },
-    "paletteOverrides": {
-     "brick": "#4b4137"
     }
    },
    "groundFloor": {
@@ -85,21 +69,56 @@
     "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
    },
    "rhythm": {
-    "bays": "3 window axes",
-    "windowsPerStorey": "ground: pair of doors + wide window | 1: 3 | 2: 3 | 3: 3",
-    "symmetry": "symmetric above the ground",
-    "groundFloor": "paired red doors, wide window",
-    "roofline": "white cornice, centre pediment dormer, occasional pointed gable",
-    "photoRows": [
-     1,
-     3,
-     3,
-     3
+    "citation": "auto-place: fh-1887-dentil-pediment scored 1 on eaves 1, roof 1, stucco 1, columns 1; strip 2022-04-29 span 576-764"
+   }
+  },
+  {
+   "pandId": "0363100012164721",
+   "slug": "hendrik-164721",
+   "address": "Frederik Hendrikstraat 148",
+   "type": {
+    "type": "fh-1887-dentil-pediment",
+    "measuredPalette": {
+     "brick": "#786258",
+     "evidence": "strip 2022-04-29 span 764-952: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "mirror": true
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
     ],
-    "photoGroundRows": 1,
-    "citation": "auto-place: fh-1887-dentil-pediment scored 1 on eaves 1, roof 1, stucco 1, columns 1; strip 2022-04-29 span 576-764",
-    "signage": "none above the ground; per-door numbers",
-    "identicalBays": "upper storeys: equal axes, no balconies"
+    "photoDate": "2022-04-29",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: fh-1887-dentil-pediment scored 1 on eaves 1, roof 1, stucco 1, columns 1; strip 2022-04-29 span 764-952"
+   }
+  },
+  {
+   "pandId": "0363100012167163",
+   "slug": "hendrik-167163",
+   "address": "Frederik Hendrikstraat 146",
+   "type": {
+    "type": "fh-1887-plain-anchor-pediment",
+    "measuredPalette": {
+     "brick": "#776358",
+     "evidence": "strip 2022-04-29 span 952-1140: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2022-04-29",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: fh-1887-plain-anchor-pediment scored 1 on eaves 1, roof 1, stucco 1, columns 1; strip 2022-04-29 span 952-1140"
    }
   }
  ],

@@ -32,7 +32,8 @@
     "measuredPalette": {
      "brick": "#735d4e",
      "evidence": "strip 2021-02-22 span 0-184: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    }
+    },
+    "mirror": true
    },
    "groundFloor": {
     "use": "residential",
@@ -80,7 +81,8 @@
     "measuredPalette": {
      "brick": "#6e5a49",
      "evidence": "strip 2021-02-22 span 379-567: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    }
+    },
+    "mirror": true
    },
    "groundFloor": {
     "use": "residential",
@@ -226,7 +228,8 @@
     "measuredPalette": {
      "brick": "#796454",
      "evidence": "strip 2021-02-22 span 1507-1695: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    }
+    },
+    "mirror": true
    },
    "groundFloor": {
     "use": "residential",
@@ -274,7 +277,8 @@
     "measuredPalette": {
      "brick": "#766455",
      "evidence": "strip 2021-02-22 span 1883-2071: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    }
+    },
+    "mirror": true
    },
    "groundFloor": {
     "use": "residential",

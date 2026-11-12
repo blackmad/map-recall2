@@ -53,7 +53,8 @@
   ],
   "windowSurround": "none",
   "wallAnchors": {
-   "over": 0.35
+   "over": 0.35,
+   "colour": "#1e1e1e"
   }
  },
  "crowns": {
@@ -67,13 +68,13 @@
      "to": 0.62
     }
    ],
-   "dormerBody": "stone",
+   "dormerBody": "timber",
    "dormerSize": {
     "sill": 0.05,
     "rise": 1.25,
-    "setback": 0.3
+    "setback": 0.15
    },
-   "note": "houweningen-1-31 and hendrik-134-154: one white pediment dormer with a finial over the centre of nearly every pand"
+   "note": "houweningen-1-31 and hendrik-134-154: one white pediment dormer with a finial over the centre of nearly every pand; dormerBody timber (painted white, as the clercq types): with stone the dormer glass had no host wall (houweningen-2-38-r1 opening-outside, 4 dormers, 4.4 m2)"
   },
   "none": {
    "gable": "cornice",
