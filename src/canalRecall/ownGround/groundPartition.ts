@@ -101,6 +101,11 @@ export interface SurfaceBakeOptions {
    * lay inside triangles of 16 m² and more whose centroid was within tolerance (-4_-3, 2026-11-12).
    */
   refineLatticeM: number;
+  /**
+   * At least this many lattice steps a side however small the triangle (0: L / refineLatticeM only). Round 2: a 2 m
+   * Steiner square's triangle on -5_-4 sampled at 6 steps hid a 58 mm crease of the bilinear relief between them.
+   */
+  refineLatticeMinSteps?: number;
 }
 
 /** The audit's sliver: aspect (longest edge / height, l² / 2A) over SLIVER_ASPECT with area over SLIVER_M2. */
@@ -109,7 +114,7 @@ export const SLIVER_ASPECT = 20, SLIVER_M2 = 0.05;
 // Round 2 (#372): no sliver rounds (they doubled the triangles and left the float: -4_-3 1.19 MB / 321k against 0.65 MB /
 // 153k), the relief lattice at 0.5 m over 8 rounds with the edge split, remnants under 0.25 m absorbed, tolerance 4 cm
 // (the audit's 5 cm bar less the u16 quantisation and the sample offset). Savings: docs/ground-v2.md "Round 2".
-export const LOD0_OPTIONS: SurfaceBakeOptions = { tolRoadM: 0.04, tolFlatM: 0.04, minSquareM: 2, maxSquareM: 32, edgeMinM: 1, seamGridM: 2, refineRounds: 8, simplifyM: 0, steps: true, steinerClearM: 0.3, maxEdgeM: 64, sliverRounds: 0, refineLatticeM: 0.5, remnantM: 0.25 };
+export const LOD0_OPTIONS: SurfaceBakeOptions = { tolRoadM: 0.04, tolFlatM: 0.04, minSquareM: 2, maxSquareM: 32, edgeMinM: 1, seamGridM: 2, refineRounds: 8, simplifyM: 0, steps: true, steinerClearM: 0.3, maxEdgeM: 64, sliverRounds: 0, refineLatticeM: 0.5, refineLatticeMinSteps: 10, remnantM: 0.25 };
 // Round 2: LOD 1 draws from 1 km out; 25 cm relief and no sliver rounds took -4_-3 from 444 to 250 kB.
 export const LOD1_OPTIONS: SurfaceBakeOptions = { tolRoadM: 0.25, tolFlatM: 0.25, minSquareM: 4, maxSquareM: 64, edgeMinM: 2, seamGridM: 8, refineRounds: 1, simplifyM: 0.5, steps: false, steinerClearM: 0.6, maxEdgeM: 32, sliverRounds: 0, refineLatticeM: 0, remnantM: 0 };
 
@@ -697,7 +702,7 @@ export function bakeSurface(input: SurfaceBakeInput, opt: SurfaceBakeOptions): B
         // shared with the neighbour, which samples it too).
         const L = Math.max(Math.hypot(P[2 * b] - P[2 * a], P[2 * b + 1] - P[2 * a + 1]), Math.hypot(P[2 * c] - P[2 * b], P[2 * c + 1] - P[2 * b + 1]), Math.hypot(P[2 * a] - P[2 * c], P[2 * a + 1] - P[2 * c + 1])) * mPerU;
         // Up to 48 steps a side: a 60 m sliver along the A10 (-3_-4) hid its 7 cm peak between 16 steps of 3.75 m.
-        const n = Math.min(48, Math.ceil(L / opt.refineLatticeM)), tol = tolOf(g);
+        const n = Math.min(48, Math.max(opt.refineLatticeMinSteps ?? 0, Math.ceil(L / opt.refineLatticeM))), tol = tolOf(g);
         for (let i = 1; i < n; i++) for (let j = 1; i + j < n; j++) {
           const wa = i / n, wb = j / n, wc = 1 - wa - wb;
           const pu = wa * P[2 * a] + wb * P[2 * b] + wc * P[2 * c], pv = wa * P[2 * a + 1] + wb * P[2 * b + 1] + wc * P[2 * c + 1];

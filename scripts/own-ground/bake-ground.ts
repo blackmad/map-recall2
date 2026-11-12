@@ -30,6 +30,7 @@ Bakes ground v2 cells (GRD2, gzip) into a staging directory and writes a report.
   --sliver-rounds=N  rounds splitting a sliver's longest edge (aspect > 20, area > 0.05 m²)
   --refine-rounds=N  relief refinement rounds
   --refine-lattice=M relief refinement samples each triangle on a lattice this fine (metres; 0: the centroid only)
+  --lattice-min=N    at least N lattice steps a side, however small the triangle
   --simplify=M       Douglas–Peucker on every arc between junctions, metres (LOD 1)
   --min-square=M     the relief quadtree's smallest square, metres
   --remnant=M        absorb flat-class regions thinner than this (mean width, metres) into their longest neighbour
@@ -54,7 +55,7 @@ await store.init();
 
 const lod = (Number(opt('lod') ?? 0) === 1 ? 1 : 0) as 0 | 1;
 const base: SurfaceBakeOptions = lod === 0 ? LOD0_OPTIONS : LOD1_OPTIONS;
-const bakeOpt: SurfaceBakeOptions = { ...base, tolFlatM: Number(opt('tol-flat') ?? base.tolFlatM), tolRoadM: Number(opt('tol-road') ?? base.tolRoadM), sliverRounds: Number(opt('sliver-rounds') ?? base.sliverRounds), refineRounds: Number(opt('refine-rounds') ?? base.refineRounds), refineLatticeM: Number(opt('refine-lattice') ?? base.refineLatticeM), simplifyM: Number(opt('simplify') ?? base.simplifyM), minSquareM: Number(opt('min-square') ?? base.minSquareM), remnantM: Number(opt('remnant') ?? base.remnantM) };
+const bakeOpt: SurfaceBakeOptions = { ...base, tolFlatM: Number(opt('tol-flat') ?? base.tolFlatM), tolRoadM: Number(opt('tol-road') ?? base.tolRoadM), sliverRounds: Number(opt('sliver-rounds') ?? base.sliverRounds), refineRounds: Number(opt('refine-rounds') ?? base.refineRounds), refineLatticeM: Number(opt('refine-lattice') ?? base.refineLatticeM), simplifyM: Number(opt('simplify') ?? base.simplifyM), minSquareM: Number(opt('min-square') ?? base.minSquareM), remnantM: Number(opt('remnant') ?? base.remnantM), ...(opt('lattice-min') !== undefined || base.refineLatticeMinSteps !== undefined ? { refineLatticeMinSteps: Number(opt('lattice-min') ?? base.refineLatticeMinSteps) } : {}) };
 const out = opt('out') ?? 'artifacts/ground-v2/staging';
 const write = !flag('no-write');
 
