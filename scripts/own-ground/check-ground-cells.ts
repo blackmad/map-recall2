@@ -115,7 +115,7 @@ async function reliefRegressions(): Promise<void> {
 }
 
 /**
- * The crossing register (crossings.ts, lane G3): at every reviewed named-place record, the game draws what the record
+ * The crossing register (crossings.ts, lane G3): at every reviewed record (named places, ring railway, ...), the game draws what the record
  * says and the inference before the register (`crossings: false`) did not. Per kind:
  *   rail-over-road  no rail span in the zone off the record's rail decks, no cut station, no dark mouth (a track on a
  *                   deck is an OSM bridge way or gets the deck as its span; the ring tracks are bridges, so none is required)
@@ -129,7 +129,7 @@ async function crossingRegressions(): Promise<void> {
   await noCrossings.init();
   const named = CROSSINGS.filter(r => r.area === 'named');
   check(named.length >= 8 && named.every(r => r.reviewed), `crossings: ${named.length} named-place records, ${named.filter(r => r.reviewed).length} reviewed (≥ 8, all reviewed)`);
-  for (const r of named) {
+  for (const r of CROSSINGS.filter(x => x.reviewed)) {
     const after = await crossingState(store, r), before = await crossingState(noCrossings, r);
     const say = (s: CrossingState) => `spans on deck ${s.spansOnDeck}, spans off deck ${s.spansOffDeck}, cut stations ${s.cutStations}, dark mouths ${s.mouths} (unlisted ${s.unlistedMouths})`;
     console.log(`     ${r.id} before: ${say(before)}`);

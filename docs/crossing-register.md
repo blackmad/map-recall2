@@ -74,3 +74,12 @@ The other records (ring decks at the Kranenbergpad, Amstelveenseweg and Schinkel
 Kranenbergpad, the Radarweg end; Overschiestraat; Vlaardingenlaan; Delflandlaan; Sportparklaan) change nothing at
 runtime yet: they are G1's deck-cap and G2's constraint input (`floorCaps`, `crossingConstraints`). Overschiestraat's
 listed mouths are not drawn: the register filters mouths and cannot add them; that is G2's `Covered` constraint.
+
+## Ring railway (2026-11-12)
+
+`data/crossings/ring-rail.json`: 14 reviewed records from 66 drafts (Sloterdijk – Lelylaan – Zuid – RAI; the named
+places are not repeated). `data/crossings/review/ring-rail.json` keeps the 11 rejected groups with the reason
+(`rejected`): mostly footbridges over water the drafter took for crossings, one BGT deck that covers a whole block
+at Sloterdijk, and two Zuidasdok structures under construction. The game infers no span, cut or mouth inside any
+ring-rail zone, before or after, so these records change nothing at runtime; they are G1's cap input. Every reviewed
+record, in every area, is pinned by `check-ground-cells.ts --crossings`.
