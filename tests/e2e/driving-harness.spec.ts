@@ -170,7 +170,17 @@ function installHarness(): void {
     quiet._tryLandmarkQuestion = () => false;
     quiet._quizFreezesRide = () => false;
 
+    // A heartbeat every 10 drives (the spec prints it): a run that hits its timeout says how far it got and where
+    // the time went, instead of nothing (nightly 2026-11-12: the iPhone project timed out silently at 25 min on a
+    // hosted runner while the same 120 drives took 6.5 min there in a probe).
+    const started = performance.now();
+    let draws = 0, steps = 0, beat = 0;
     for (let run = 0; run < runs; run++) {
+      draws++;
+      if (run >= beat + 10 || draws % 5000 === 0) {
+        beat = Math.max(beat, run);
+        console.log(`harness: ${run}/${runs} drives, ${draws} pairs drawn, ${steps} steps, ${((performance.now() - started) / 1000).toFixed(0)} s`);
+      }
       const tracing = !!pairs;
       const from = pairs ? toXY(pairs[run][0]) : largest[Math.floor(random() * largest.length)];
       const to = pairs ? toXY(pairs[run][1]) : largest[Math.floor(random() * largest.length)];
@@ -312,6 +322,7 @@ function installHarness(): void {
         game.track.clearFrameCache();
         const before = { x: player.x, y: player.y };
         game._updateRacing(STEP);
+        steps++;
         elapsed += STEP;
         if (tracing && Math.round(elapsed / STEP) % 8 === 0) {
           const road = game.track.getNearestRoad(player.x, player.y);
@@ -394,6 +405,7 @@ test('driving harness: planned routes can actually be driven', async ({ page }) 
   // autopilot's own line-of-sight probes (getNearestRoad every 10 px). The old 300 s timed out on every nightly run
   // from 2026-10-14 to 11-12, the desktop one with its report already printed.
   test.setTimeout(Number(process.env.HARNESS_TIMEOUT_MS || 1_200_000));
+  page.on('console', message => { if (message.text().startsWith('harness: ')) console.log(message.text()); });
   await openCarRoute(page);
   await page.evaluate(installHarness);
   // HARNESS_PAIRS='[[[lat,lng],[lat,lng]],…]' re-drives failures from an
