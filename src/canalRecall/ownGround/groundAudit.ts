@@ -58,6 +58,8 @@ export interface Tally {
   byLayer: Record<string, Record<Defect, number>>;
   /** Shard area (flagged samples + slivers) inside an open-ground-v1 polygon. */
   openGroundShardM2: number;
+  /** With AuditInput.pairs (lane G1): m² per "kind:lower<higher" layer pair (poke, zfight), which pair fights. */
+  pairs?: Record<string, number>;
 }
 const emptyTally = (): Tally => ({ d: emptyDefects(), byLayer: {}, openGroundShardM2: 0 });
 function bump(t: Tally, kind: Defect, layer: string, m2: number, inOpen: boolean): void {
@@ -88,6 +90,8 @@ export interface AuditInput {
   resM?: number;
   /** Skip the T-junction pass (it is the slowest). */
   noTJunctions?: boolean;
+  /** Tally poke and z-fight per layer pair (Tally.pairs; diagnostics, lane G1). */
+  pairs?: boolean;
 }
 
 const inRing = (x: number, y: number, ring: readonly Vec2[]): boolean => {
@@ -135,6 +139,7 @@ export function auditCell(input: AuditInput): CellAudit {
     const open = openRings.length > 0 && inOpenRing(x, y, openRings);
     for (const t of tallies(x, y)) bump(t, kind, layer, m2, open);
   };
+  const pair = (key: string, x: number, y: number, m2: number) => { if (input.pairs) for (const t of tallies(x, y)) { const p = (t.pairs ??= {}); p[key] = (p[key] ?? 0) + m2; } };
 
   // Slivers: every surface triangle.
   let triangles = 0;
@@ -237,11 +242,11 @@ export function auditCell(input: AuditInput): CellAudit {
         let flagged = false;
         for (let a = 0; a < present.length; a++) for (let b = a + 1; b < present.length; b++) {
           const la = rasterLayers[present[a]], lb = rasterLayers[present[b]], za = bufs[present[a]][o], zb = bufs[present[b]][o];
-          if (Math.abs(za - zb) <= AUDIT.zfightM) { record('zfight', la.rank <= lb.rank ? la.layer : lb.layer, px, py, sample); flagged = true; continue; }
+          if (Math.abs(za - zb) <= AUDIT.zfightM) { record('zfight', la.rank <= lb.rank ? la.layer : lb.layer, px, py, sample); pair(la.rank <= lb.rank ? `zfight:${la.layer}<${lb.layer}` : `zfight:${lb.layer}<${la.layer}`, px, py, sample); flagged = true; continue; }
           if (la.rank === lb.rank) continue;
           const [lo, hi, zlo, zhi] = la.rank < lb.rank ? [la, lb, za, zb] : [lb, la, zb, za];
           const up = zlo - zhi;
-          if (up > AUDIT.pokeM && up <= AUDIT.pokeMaxM) { record('poke', lo.layer, px, py, sample); if (up > 0.05) record('pokeS', lo.layer, px, py, sample); flagged = true; void hi; }
+          if (up > AUDIT.pokeM && up <= AUDIT.pokeMaxM) { record('poke', lo.layer, px, py, sample); pair(`poke:${lo.layer}<${hi.layer}`, px, py, sample); if (up > 0.05) record('pokeS', lo.layer, px, py, sample); flagged = true; }
         }
         if (!flagged && !raised) {
           // Float: the natural layer on top more than 0.10 m over the DTM.
@@ -314,5 +319,5 @@ export function tallyJson(t: Tally): unknown {
   const d = t.d;
   const byLayer: Record<string, Record<string, number>> = {};
   for (const [l, row] of Object.entries(t.byLayer)) { const o: Record<string, number> = {}; for (const k of DEFECTS) if (row[k]) o[k] = r(row[k]); if (Object.keys(o).length) byLayer[l] = o; }
-  return { sliverN: d.sliverN, sliverM2: r(d.sliverM2), thinM2: r(d.thinM2), pokeM2: r(d.pokeM2), zfightM2: r(d.zfightM2), crackM2: r(d.crackM2), floatM2: r(d.floatM2), voidM2: r(d.voidM2), pokeSevereM2: r(d.pokeSevereM2), floatSevereM2: r(d.floatSevereM2), tjN: d.tjN, tjSevereN: d.tjSevereN, shardM2: r(d.shardM2), openGroundShardM2: r(t.openGroundShardM2), byLayer };
+  return { sliverN: d.sliverN, sliverM2: r(d.sliverM2), thinM2: r(d.thinM2), pokeM2: r(d.pokeM2), zfightM2: r(d.zfightM2), crackM2: r(d.crackM2), floatM2: r(d.floatM2), voidM2: r(d.voidM2), pokeSevereM2: r(d.pokeSevereM2), floatSevereM2: r(d.floatSevereM2), tjN: d.tjN, tjSevereN: d.tjSevereN, shardM2: r(d.shardM2), openGroundShardM2: r(t.openGroundShardM2), byLayer, ...(t.pairs ? { pairs: Object.fromEntries(Object.entries(t.pairs).sort((a, b) => b[1] - a[1]).map(([k, v]) => [k, r(v)])) } : {}) };
 }

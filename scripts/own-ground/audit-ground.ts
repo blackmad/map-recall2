@@ -27,6 +27,9 @@ Options:
   --spots          the A/B alone on the named places' cells (no ranking gate; no baseline needed); --variants=a,b picks variants, --tag=x names the file spots-x.json
   --no-ab          with --named: skip the layer A/B
   --lod 0|1        cell level (default 0, the near build)
+  --pairs          also tally poke and z-fight per layer pair (which two layers fight; lane G1)
+  --map a=b        read extract path a from b under the root (a staged extract: --map open-ground-v2=staging/open-ground-v2)
+  --opts <json>    store options merged into every variant, e.g. --opts '{"openGroundClip":false}' (a G1 fix's before)
 
 Definitions: sliver = aspect > ${AUDIT.sliverAspect} and area > ${AUDIT.sliverMinM2} m2; poke = lower-precedence layer above a higher one by more than
 ${AUDIT.pokeM * 1000} mm (up to ${AUDIT.pokeMaxM} m); z-fight = two layers within ${AUDIT.zfightM * 1000} mm; crack = raster sample under no layer; float = natural ground more than
@@ -40,8 +43,13 @@ if (has('help') || has('h') || process.argv.length <= 2) { console.log(HELP); pr
 
 const ROOT = 'public/data/extracts/amsterdam';
 const OUT = arg('out') ?? 'artifacts/ground-audit';
-const RES = Number(arg('res') ?? AUDIT.resM), LOD = (Number(arg('lod') ?? 0) as 0 | 1), NO_TJ = has('no-tj');
+const RES = Number(arg('res') ?? AUDIT.resM), LOD = (Number(arg('lod') ?? 0) as 0 | 1), NO_TJ = has('no-tj'), PAIRS = has('pairs');
+/** `--opts '{"k":v}'`: store options merged into every variant (lane G1: a fix's flag on or off for the whole run). */
+const EXTRA = arg('opts') ? JSON.parse(arg('opts')!) as Record<string, unknown> : {};
+/** `--map from=to[,from=to]`: extract paths read from elsewhere under the root (a staged extract: --map open-ground-v2=staging/open-ground-v2). */
+const MAP = (arg('map') ?? '').split(',').filter(Boolean).map(m => m.split('=') as [string, string]);
 const read = async (path: string) => {
+  for (const [from, to] of MAP) if (path.startsWith(`${from}/`)) { path = to + path.slice(from.length); break; }
   const file = join(ROOT, path);
   if (!existsSync(file)) throw new Error(`${path}: missing`);
   const bytes = readFileSync(file);
@@ -66,7 +74,7 @@ export const VARIANTS: Record<string, Record<string, unknown>> = {
 };
 
 async function openStore(variant: string): Promise<GroundStore> {
-  const s = new GroundStore(read, { ...BASE, ...VARIANTS[variant] } as never);
+  const s = new GroundStore(read, { ...BASE, ...EXTRA, ...VARIANTS[variant] } as never);
   await s.init();
   return s;
 }
@@ -112,7 +120,7 @@ async function auditKey(store: GroundStore, key: string, windows: Window[] = [])
   const openRings: OpenRing[] = [input.openGround, ...(input.openGroundAround ?? [])].filter((c, i, all): c is NonNullable<typeof c> => !!c && all.indexOf(c) === i)
     .flatMap(c => c.areas.map(a => { const r = a.r.map(decodeLine); return { pts: r[0], holes: r.slice(1), bb: ringBox(r[0]) }; })).filter(r => r.pts.length >= 3);
   const t0 = Date.now();
-  const audit = auditCell({ cell, dtm: store.surface.relief, windows, openRings, resM: RES, noTJunctions: NO_TJ });
+  const audit = auditCell({ cell, dtm: store.surface.relief, windows, openRings, resM: RES, noTJunctions: NO_TJ, pairs: PAIRS });
   return { audit, input, buildMs: cell.stats.buildMs, auditMs: Date.now() - t0, triangles: cell.stats.triangles };
 }
 
@@ -229,9 +237,10 @@ async function main() {
       ab[v] = { perSpot, sum: { ...s.d, openGroundShardM2: s.openGroundShardM2 } };
       console.log(`== ${v}: ${fmt({ ...s, byLayer: {} } as Tally)}`);
     }
-    const dflt = ab.default.sum.shardM2;
-    const shares = Object.fromEntries(names.filter(n => n !== 'default').map(n => [n, { shardM2: Math.round(ab[n].sum.shardM2), deltaM2: Math.round(dflt - ab[n].sum.shardM2), sharePct: +(((dflt - ab[n].sum.shardM2) / dflt) * 100).toFixed(1) }]));
-    const ogDirect = ab.default.sum.openGroundShardM2;
+    // Shares against `default` when it ran (--variants without it: the first variant is the reference).
+    const ref = ab.default ?? ab[names[0]], dflt = ref.sum.shardM2;
+    const shares = Object.fromEntries(names.filter(n => ab[n] !== ref).map(n => [n, { shardM2: Math.round(ab[n].sum.shardM2), deltaM2: Math.round(dflt - ab[n].sum.shardM2), sharePct: +(((dflt - ab[n].sum.shardM2) / dflt) * 100).toFixed(1) }]));
+    const ogDirect = ref.sum.openGroundShardM2;
     save(has('spots') ? `spots-${arg('tag') ?? 'x'}.json` : 'named.json', { generated: new Date().toISOString().slice(0, 10), radiusM: GROUND_SPOT_RADIUS_M, resM: RES, gate, gatePass: has('spots') ? null : gate.every(g => (g.tileRank ?? 1e9) <= 50 || (g.cellRank ?? 1e9) <= 50), ab: Object.fromEntries(names.map(n => [n, ab[n]])), shares, openGroundDirect: { shardM2: Math.round(ogDirect), sharePct: +((ogDirect / dflt) * 100).toFixed(1) } });
     console.log(JSON.stringify({ gate, shares, openGroundDirect: ogDirect / dflt }, null, 1));
     if (!has('spots') && !gate.every(g => (g.tileRank ?? 1e9) <= 50 || (g.cellRank ?? 1e9) <= 50)) process.exitCode = 1;
