@@ -105,6 +105,11 @@ const GABLES: Record<string, { gable: string; evidence: string }> = {
   '0363100012169539': { gable: 'bell', evidence: 'Haarlemmerdijk 143: wide bell gable over two storeys (west review holds)' },
   '0363100012176280': { gable: 'neck', evidence: 'Haarlemmerdijk 50: east-end three axes under a neck gable (west review holds)' },
 };
+/** Eaves the reviewers read off the strip where no eaves pin exists and 3DBAG's low eaves would squash the upper storeys (recipe gate storey-height). */
+const EAVES: Record<string, { m: number; evidence: string }> = {
+  '0363100012177659': { m: 9.75, evidence: 'Haarlemmerdijk 45: strip skyline eaves 9.75 m (haarlemmerdijk-13-45 auto-place.json strip.skyline.eavesM, confidence 0.64) against 3DBAG 8.89 m' },
+  '0363100012167805': { m: 11.6, evidence: 'Haarlemmerdijk 35A: red brick, two axes, rows 4.5-6.5 and 7.0-9.0 m, a deep white cornice from 10.0 m (west review holds); the frieze cornice is 1.6 m, so the eaves line is 11.6 m' },
+};
 const b2Name = (run: string) => run.replace(/-r(\d+)$/, '-b2r$1');
 
 export const b2Holds = () => [...HELD.entries()];
@@ -132,7 +137,7 @@ export function build(pandId: string, faceId: string) {
   if (g) { setSpecField(spec, 'fronts/0/gable', g.gable); spec.provenance['fronts/0/gable'] = { source: 'author', confidence: 0.8, ref: `scripts/block-face/buurten/haarlemmerbuurt-west-review-holds.json: ${g.evidence}`, at: spec.provenance['']?.at ?? null }; }
   const held = (JSON.parse(readFileSync(REVIEW, 'utf8')).holds as { pandId: string; reason: string }[]).find(h => h.pandId === pandId);
   if (held) spec.schemaLimits = [...(spec.schemaLimits ?? []), { component: 'reviewer hold (batch 1 review)', what: `${spec.address}: ${held.reason}` }];
-  const pin = EAVES_PINS.find(p => p.pandId === pandId);
+  const pin = EAVES_PINS.find(p => p.pandId === pandId) ?? (EAVES[pandId] ? { eavesM: EAVES[pandId].m, reason: EAVES[pandId].evidence } : undefined);
   if (pin) {
     setSpecField(spec, 'fronts/0/eavesHeight', pin.eavesM);
     spec.provenance['fronts/0/eavesHeight'] = { source: 'author', confidence: 0.85, ref: `scripts/block-face/buurten/haarlemmerbuurt-*-review-eaves.json: ${pin.reason}`, at: spec.provenance['']?.at ?? null };

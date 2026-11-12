@@ -47,7 +47,8 @@
       "colour": "#2a2a2a"
      },
      "evidence": "auto-place: osm-only (winkelfunctie,woonfunctie, woonfunctie, shop=tea); fascia colour measured on the strip 2022-12-15 span 2741-2967"
-    }
+    },
+    "eavesHeight": 9.75
    }
   ],
   "roof": {
@@ -83,6 +84,12 @@
    "source": "streetlevel-measured",
    "confidence": 0.6,
    "ref": "scripts/block-face/faces/haarlemmerdijk-13-45/auto-place.json strip.wallRaw (raw strip median; the white-balanced strip.wall overshoots on these: 182 reads #b6bfc6 against a #5a5144 raw and a #50473b photo)",
+   "at": "2022-12-15"
+  },
+  "fronts/0/eavesHeight": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/buurten/haarlemmerbuurt-*-review-eaves.json: Haarlemmerdijk 45: strip skyline eaves 9.75 m (haarlemmerdijk-13-45 auto-place.json strip.skyline.eavesM, confidence 0.64) against 3DBAG 8.89 m",
    "at": "2022-12-15"
   }
  },

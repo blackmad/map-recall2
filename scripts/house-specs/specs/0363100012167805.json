@@ -36,7 +36,8 @@
     "crownRise": 0.4,
     "doorBay": 1,
     "basement": "none",
-    "hoist": false
+    "hoist": false,
+    "eavesHeight": 11.6
    }
   ],
   "roof": {
@@ -69,6 +70,12 @@
    "confidence": 0.3,
    "ref": "scripts/block-face/faces/haarlemmerdijk-13-45-r1/strip.json#type:haarlemmer-shop-cornice-frieze",
    "at": null
+  },
+  "fronts/0/eavesHeight": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/buurten/haarlemmerbuurt-*-review-eaves.json: Haarlemmerdijk 35A: red brick, two axes, rows 4.5-6.5 and 7.0-9.0 m, a deep white cornice from 10.0 m (west review holds); the frieze cornice is 1.6 m, so the eaves line is 11.6 m",
+   "at": "2022-12-15"
   }
  },
  "facts": {
