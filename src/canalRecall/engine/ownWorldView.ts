@@ -70,6 +70,8 @@ import { SpoilerSources } from './spoilerSources';
 import { groundCentre, groundViewFlag } from '../ownGround/groundResidency';
 import { clearBackM, FPS_EYE_HEIGHT_M, fpsPose, fpsRequested, headBobM, stepFpsYaw, FPS_FAR_CAP_M, FPS_NEAR_DIVISOR, type FpsPose } from './fpsCamera';
 import { DEFAULT_FOV_DEG, MAX_PITCH_DEG } from '../ownMap/mapCamera';
+import { shaderFacadesEnabled } from '../look/facadeShader';
+import type { FacadeRecordSet } from '../world/facadeStreams';
 
 declare const CANVAS_W: number;
 declare const CANVAS_H: number;
@@ -189,6 +191,8 @@ export class OwnWorldView implements WorldViewOracles {
   private bakedCoarseOn = bakedCoarseEnabled(coarse());
   /** Why the baked tier is off (diagnostics): flag, no-shel, layer-table, look. */
   bakedCoarseOff: string | null = null;
+  /** F1 (#380): the record path's state (`?shaderFacades=1`): `records N cells`, `no-records` (index without them), `off`. */
+  shaderFacades = 'off';
   /** `?groundView=0`: the own ground follows the rider also while the camera is panned off it (groundResidency.ts). */
   private readonly groundView = groundViewFlag();
   /** Landmark models, trees, detailed buildings, pyramidal roofs, ARTIS (cityExtras.ts). */
@@ -772,17 +776,21 @@ export class OwnWorldView implements WorldViewOracles {
       if (shells.look !== 'photo') { this.bakedCoarseOn = false; this.bakedCoarseOff = `look ${shells.look}`; return; }
       let base: string | undefined;
       try { const asked = new URLSearchParams(W().location?.search ?? '').get('worldShells'); if (asked) base = new URL(asked, W().location.href).href; } catch { /* no override */ }
+      const records = shaderFacadesEnabled(coarse()) && world.recordCells ? world.recordCells() : new Set<string>();
+      this.shaderFacades = records.size ? `records ${records.size} cells` : shaderFacadesEnabled(coarse()) ? 'no-records' : 'off';
       const baked: BakedCoarse = new BakedCoarse({
         THREE: host.THREE,
         scene: () => tb.bakedCoarseHost()?.scene ?? null,
         material: () => tb.bakedCoarseHost()?.material ?? null,
-        fadeMaterial: (v: number) => tb.bakedCoarseHost()?.fadeMaterial(v) ?? null,
+        fadeMaterial: (v: number, source?: any) => tb.bakedCoarseHost()?.fadeMaterial(v, source) ?? null,
+        // F1 (#380): `?shaderFacades=1` draws the cells compiled with records (world:compile --facade-records) from them.
+        ...(records.size ? { recordMaterial: (key: string, set: FacadeRecordSet, wallUnit: number) => tb.bakedCoarseHost()?.recordMaterial(key, set, wallUnit) ?? null, freeRecords: (key: string) => tb.bakedCoarseHost()?.freeRecords(key) } : {}),
         attach: entry => tb.bakedCoarseHost()?.attach(entry),
         detach: entry => tb.bakedCoarseHost()?.detach(entry),
         swapSlots: () => !!tb.bakedCoarseHost()?.swapSlots(),
         // Lane R4-K (#255): not where a near detail chunk draws inside the cell (its far part stays hidden there).
         farReady: (key: string) => !!this._farShells?.ready?.(key) && !tb.farShellHost?.()?.nearInCell?.(key),
-        fetchShell: (key: string, signal: AbortSignal, exact?: boolean, compact?: boolean) => world.shell(key, signal, base, exact, compact),
+        fetchShell: (key: string, signal: AbortSignal, exact?: boolean, compact?: boolean) => world.shell(key, signal, base, exact, compact, records.has(key)),
         available: () => available,
         coverageChanged: () => tb.bakedCoarseHost()?.regroup(),
         groundBase: (id: string) => tb.bakedCoarseHost()?.groundBase(id),

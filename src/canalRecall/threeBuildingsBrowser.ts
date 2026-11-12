@@ -60,6 +60,8 @@ import { buildingCell } from './world/cellGrid.js';
 import { shellLayerHash } from './world/shellLayers.js';
 import type { BakedEntry } from './engine/bakedCoarse.js';
 import { SLOT_LAYER_COUNT, cityLookEnabled, createCityLookMaterial, createCityUniforms, getCityLook, loadCityBrick, paintSlotLayers } from './look/cityLook.js';
+import { FacadeRecordTexture } from './look/facadeRecordTexture.js';
+import type { FacadeRecordSet } from './world/facadeStreams.js';
 import { boundingSphereOf } from './geometryBounds.js';
 import { cutMesh, disposeTiles, growTileSpheres } from './rendererShared/tiledGeometry.js';
 import { finishTiles, type PlannedTile } from './ownGround/cellTiles.js';
@@ -296,6 +298,18 @@ function fadeClone(source: any, value: number, under?: { value: number }): any |
   if (source.defaultAttributeValues) clone.defaultAttributeValues = source.defaultAttributeValues;
   return clone;
 }
+/** A record material of one mesh: the shared record program, its own record texture binding, `recBase` row and `wallUnit`. */
+function facadeRecordClone(source: any, texture: any, row: number, wallUnit: number): any {
+  const own = { facadeRecords: { value: texture }, recBase: { value: row }, wallUnit: { value: wallUnit } };
+  const clone = source.clone();
+  if (source.defines) clone.defines = source.defines;
+  clone.uniforms = { ...source.uniforms, ...own };
+  clone.onBeforeCompile = (shader: any, renderer: any) => { source.onBeforeCompile(shader, renderer); Object.assign(shader.uniforms, own); };
+  clone.customProgramCacheKey = () => source.customProgramCacheKey();
+  if (source.defaultAttributeValues) clone.defaultAttributeValues = source.defaultAttributeValues;
+  clone.userData = { ...source.userData, facadeRecordUniforms: { ...source.userData.facadeRecordUniforms, ...own } };
+  return clone;
+}
 /** What the far tier reads off the facade layer (ThreeBuildings.farShellHost). `cell`: the far cell asking (a drawn baked coarse cell hides it). */
 export type FarShellHostView = { THREE: any; scene: any; material: any; look: string; fadeMaterial(value: number): any | null; coarseDrawn(tile: string, cell?: string): boolean; /** A drawn `near:` detail chunk lies in this world cell (lane R4-K: such a cell is not released to the far tier). */ nearInCell(cell: string): boolean };
 /**
@@ -305,7 +319,7 @@ export type FarShellHostView = { THREE: any; scene: any; material: any; look: st
  */
 export interface BakedCoarseGate { plan(cells: ReadonlySet<string>): void; covers(cell: string): boolean; drawn(cell: string): boolean; /** Covered, not drawn, release on (BakedCoarse.holdsFar, lane R4-K). */ holdsFar?(cell: string): boolean; /** The GL context was lost: the meshes' CPU arrays are gone, fetch again. */ contextLost?(): void }
 /** What the baked coarse tier reads off the facade layer (ThreeBuildings.bakedCoarseHost). */
-export type BakedCoarseHostView = { THREE: any; scene: any; material: any; look: string; layerHash: string; fadeMaterial(value: number): any | null; swapSlots(): boolean; attach(entry: BakedEntry & { applied?: Map<string, number> }): void; detach(entry: BakedEntry): void; groundBase(id: string): number | null | undefined; regroup(): void; setGate(gate: BakedCoarseGate | null): void; /** Per drawn frame (the dissolves), from the render, not the game's sync. */ setFrame(fn: (() => void) | null): void };
+export type BakedCoarseHostView = { THREE: any; scene: any; material: any; look: string; layerHash: string; fadeMaterial(value: number, source?: any): any | null; /** F1 (#380): a cell's record material (BakedCoarseHost.recordMaterial). */ recordMaterial(key: string, records: FacadeRecordSet, wallUnit: number): any | null; freeRecords(key: string): void; swapSlots(): boolean; attach(entry: BakedEntry & { applied?: Map<string, number> }): void; detach(entry: BakedEntry): void; groundBase(id: string): number | null | undefined; regroup(): void; setGate(gate: BakedCoarseGate | null): void; /** Per drawn frame (the dissolves), from the render, not the game's sync. */ setFrame(fn: (() => void) | null): void };
 const BOAT_PREFIX = 'boats:';
 /** What setFeatures groups a feature by, memoised per feature object (ThreeBuildings.groupOf). */
 interface FeatureGroupInfo { geometry: unknown; id: string; kit: boolean; tile: string | null; coarse: string | null; near: string; nearKey: string; extrasKey: string; /** world-v1 cell (first vertex), for the baked coarse gate. */ cell: string | null }
@@ -1121,7 +1135,9 @@ export class ThreeBuildings {
     const material = this.material;
     return {
       THREE: this.THREE, scene: this.scene, material, look: this.look, layerHash: shellLayerHash(),
-      fadeMaterial: (value: number) => fadeClone(material, value),
+      fadeMaterial: (value: number, source?: any) => fadeClone(source ?? material, value),
+      recordMaterial: (key: string, records: FacadeRecordSet, wallUnit: number) => this.recordMaterialFor(key, records, wallUnit),
+      freeRecords: (key: string) => this.facadeRecords?.free(key),
       swapSlots: () => this.complement,
       attach: entry => {
         this.bakedEntries.set(entry.key, entry);
@@ -1143,6 +1159,22 @@ export class ThreeBuildings {
       setGate: gate => { if (gate === this.bakedGate) return; this.bakedGate = gate; this.setFeatures(this.lastFeatures); },
       setFrame: fn => { this.bakedFrame = fn; },
     };
+  }
+  /**
+   * F1 (#380, `?shaderFacades=1`): the record path. One record program per chunk material (the lit chunk variant plus
+   * CITY_FACADE_RECORD, the chunk material's shared uniforms), one city-wide record texture, and per record mesh a
+   * clone with its own `recBase` row and `wallUnit` (the program is shared; a clone is one material switch a mesh).
+   */
+  private facadeRecords: FacadeRecordTexture | null = null;
+  private recordShared: { source: any; material: any } | null = null;
+  private recordMaterialFor(key: string, records: FacadeRecordSet, wallUnit: number): any | null {
+    const THREE = this.THREE, base = this.material, variant = base?.userData?.cityVariant;
+    if (!THREE || !variant?.lit || variant.kind !== 'chunk') return null;
+    let shared = this.recordShared;
+    if (!shared || shared.source !== base) { shared?.material.dispose?.(); shared = this.recordShared = { source: base, material: createCityLookMaterial(THREE, { ...variant, records: true }, base.uniforms) }; }
+    this.facadeRecords ??= new FacadeRecordTexture(THREE);
+    const row = this.facadeRecords.alloc(key, records);
+    return row == null ? null : facadeRecordClone(shared.material, this.facadeRecords.texture, row, wallUnit);
   }
   /** The baked tier's per-frame step (its dissolves), run with this layer's own fades in prepareFrame. */
   private bakedFrame: (() => void) | null = null;
