@@ -65,10 +65,12 @@ export function toContent(b: BakedSurface, groupsLayer: readonly GroundLayer[], 
  * The cell's input with the 5×5 neighbourhood's surface sources (cellInput carries the 3×3): a polygon or kerb run
  * owned by a cell two away can still cross a seam, and both neighbours must see it (seam determinism).
  */
+/** Neighbour rings loaded around the cell: 2 = the 5×5 (GROUND_V2_WIDEN=3 for the 7×7; 7×7 changed no seam measured). */
+export const WIDEN = Number(process.env.GROUND_V2_WIDEN ?? 2);
 export async function widenedInput(store: GroundStore, key: string) {
   const input = await store.cellInput(key, 0);
   const [cx, cy] = key.split('_').map(Number), ring: string[] = [];
-  for (let dx = -2; dx <= 2; dx++) for (let dy = -2; dy <= 2; dy++) if (Math.max(Math.abs(dx), Math.abs(dy)) === 2) ring.push(`${cx + dx}_${cy + dy}`);
+  for (let dx = -WIDEN; dx <= WIDEN; dx++) for (let dy = -WIDEN; dy <= WIDEN; dy++) if (Math.max(Math.abs(dx), Math.abs(dy)) >= 2) ring.push(`${cx + dx}_${cy + dy}`);
   const [roads, parks, yards, open, osm, water] = await Promise.all([
     Promise.all(ring.map(k => store.roadCell(k))), Promise.all(ring.map(k => store.parkCell(k))), Promise.all(ring.map(k => store.courtyardCell(k))),
     Promise.all(ring.map(k => store.openGroundCell(k))), Promise.all(ring.map(k => store.osmCell(k))), Promise.all(ring.map(k => store.waterCell(k))),

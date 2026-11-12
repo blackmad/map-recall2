@@ -105,9 +105,27 @@ export function auditCell(a: AuditInput): CellAudit {
 
 export interface SeamResult { a: string; b: string; side: 'east' | 'north'; vertices: number; equal: number; firstDiff?: string }
 
-/** Compare A's east (or north) seam with B's west (or south): the sorted (along, z, normal) lists must be identical. */
+/**
+ * The vertices on a side's seam edges: a surface triangle edge lying along the side (both ends on it). A vertex that
+ * only touches the side at a triangle's corner, where both cells are water along the side, carries no shared edge:
+ * the neighbour may rightly not hold it (first audit, -4_0 | -3_0 at a canal edge 3 cm off the 2 m seam grid).
+ */
+export function seamEdgeVertices(c: Grd2Decoded, s: number): number[] {
+  const on = (i: number) => (s === 0 ? c.u[i] === 0 : s === 1 ? c.u[i] === GRID_Q : s === 2 ? c.v[i] === 0 : c.v[i] === GRID_Q);
+  const out = new Set<number>();
+  for (const g of c.groups) {
+    if (g.kind !== 0) continue;
+    for (let t = g.first; t < g.first + g.count; t++) for (let j = 0; j < 3; j++) {
+      const p = c.indices[3 * t + j], q = c.indices[3 * t + (j + 1) % 3];
+      if (on(p) && on(q)) { out.add(p); out.add(q); }
+    }
+  }
+  return [...out];
+}
+
+/** Compare A's east (or north) seam edges with B's west (or south): the sorted (along, z, normal) lists must be identical. */
 export function compareSeam(a: Grd2Decoded, b: Grd2Decoded, side: 'east' | 'north', keys: [string, string]): SeamResult {
-  const list = (c: Grd2Decoded, s: number, along: 'u' | 'v') => [...c.seams[s]].map(i => `${c[along][i]}:${c.zMm[i]}:${c.oct[2 * i]},${c.oct[2 * i + 1]}`).sort();
+  const list = (c: Grd2Decoded, s: number, along: 'u' | 'v') => seamEdgeVertices(c, s).map(i => `${c[along][i]}:${c.zMm[i]}:${c.oct[2 * i]},${c.oct[2 * i + 1]}`).sort();
   const la = side === 'east' ? list(a, 1, 'v') : list(a, 3, 'u'), lb = side === 'east' ? list(b, 0, 'v') : list(b, 2, 'u');
   let equal = 0, firstDiff: string | undefined; const sb = new Set(lb);
   for (const x of la) { if (sb.has(x)) equal++; else if (!firstDiff) firstDiff = `${keys[0]} has ${x}`; }

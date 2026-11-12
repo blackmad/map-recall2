@@ -90,7 +90,9 @@ export function partitionSources(input: CellInput, o: SourceOptions = {}): Parti
     if (o.kerbBand !== false && levels) {
       const seen = new Set<string>(); let ki = 0;
       for (const c of roadsCells) if (c) for (const e of c.kerbs) {
-        const line = decodeRoadLine(e); const sig = `${line[0]}|${line[line.length - 1]}|${line.length}`;
+        // Deduplicated by the whole line: two road cells can store one run with the same ends and point count but other
+        // interior points, and a first-seen pick kept each cell's own version (seams differed, first audit -1_-2 | -1_-1).
+        const line = decodeRoadLine(e); const sig = line.join(';');
         if (seen.has(sig)) continue; seen.add(sig);
         // One band polygon per run: the line offset KERB_LINE_M either side (mitred, the mitre capped at 2×), so the
         // union sees one simple ring per run instead of a quad per segment (polygon-clipping failed on those overlaps).
