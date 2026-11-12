@@ -622,10 +622,13 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
         const runLen = run.reduce((sum, r) => sum + r.e.len, 0), street = run.some(({ e }) => doorAllowed.has(e));
         if (street && runLen > recFrontM) {
           const g = b.bare ? null : layoutRun(b.style, run.map(r => r.e.len), facadeTop - base, hash01(`${b.id}:${edgeKey(first.x0, first.y0)}`), base < 0.5, runScale, run.map(r => doorAllowed.has(r.e)));
-          const per = GENERIC_WINDOWS_PER_BAY[b.style] ?? 1;
+          const bayPreset = b.layers && b.layers.upper < BAY_LAYER_COUNT && BAY_ENTRIES[b.layers.upper]?.kind === 'upper' ? bayVariant(BAY_ENTRIES[b.layers.upper]) : null;
+          // One cell per layout bay (cellU 1): the photo look's preset paints its own window count in it (S6c: F4 round 1 read
+          // one wide window where the game drew two, "window kind" 14 -> 25).
+          const per = bayPreset && b.openings?.upper.axes.length ? b.openings.upper.axes.length : GENERIC_WINDOWS_PER_BAY[b.style] ?? 1;
           recGeneric = g ? { storeys: g.storeys, groundM: g.groundM, storeyM: g.storeyM, windows: g.bays * per, doorWindow: g.doorBays.length && !(b.shopfront && g.bays < 3) && !b.plainWalls ? g.doorBays[0] * per : null, variant,
             // The photo look's bay preset (bayLook.ts) is what the legacy path paints: its head, stone, sash bars and frame.
-            ...(b.layers && b.layers.upper < BAY_LAYER_COUNT && BAY_ENTRIES[b.layers.upper]?.kind === 'upper' ? { bay: genericBayWindow(bayVariant(BAY_ENTRIES[b.layers.upper]), b.openings?.upper) } : {}) } : undefined;
+            ...(bayPreset ? { bay: genericBayWindow(bayPreset, b.openings?.upper) } : {}) } : undefined;
         }
         if (street) recFrontM = Math.max(recFrontM, runLen);
         let s = 0;
@@ -855,7 +858,9 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
       // projecting cornice leave the mesh (the record draws bands and cornices); frontage, signs and the industrial kit's
       // boxes have no colour without the legacy tint, so they leave too (the design doc's §2.1 count).
       for (const q of visibleQuads) if (q.z0 > base + 0.05 && q.wk !== REC_KIND.front) q.wk = REC_KIND.strip;
-      roof = roof.filter(t => !corniceTris.has(t) && (t.part !== 'trim' && t.part !== 'decal' || surveyedRoofTris.has(t) || flatSurfaceTris.has(t)));
+      // A decal on a gable plate (its attic window's glass and frame) stays as the crown field: the plate is cut round it, so
+      // without it the gable shows the sky (Marnixstraat 124-138, S6c). S7's crown instances draw the attic lights.
+      roof = roof.filter(t => !corniceTris.has(t) && (t.part !== 'trim' && t.part !== 'decal' || (t.part === 'decal' && Math.hypot(t.n[0], t.n[1]) > 0.5) || surveyedRoofTris.has(t) || flatSurfaceTris.has(t)));
       sign.length = 0; extraTris = 0;
       recInput = { id: b.id, style: b.style, wallHex: b.wallHex, ...(b.specRecipe?.wallHex ? { wallLifted: true } : {}), ...(b.accentHex ? { accentHex: b.accentHex } : {}),
         ...(b.groundHex ? { groundHex: b.groundHex } : {}), ...(b.shop || b.shopfront ? { shop: true } : {}), ...(b.roof?.roofHex ?? b.lid?.hex ? { roofHex: b.roof?.roofHex ?? b.lid?.hex } : {}),
@@ -998,7 +1003,7 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
         for (let k = 0; k < 3; k++) {
           thin[v * 2] = thinSize; thin[v * 2 + 1] = thinClass;
           // Record mode: a gable plate or dormer face is the crown field (wall metres: u along its face, v above the base).
-          if (recordMode) { if (wall && Math.hypot(t.n[0], t.n[1]) > 0.5) { const h = Math.hypot(t.n[0], t.n[1]); recPut(v, ((t.p[k][0] - anchor[0]) * -t.n[1] + (t.p[k][1] - anchor[1]) * t.n[0]) / h, t.p[k][2] - b.minHeightM, 0, recIndex, REC_KIND.crown); } else recPut(v, 0, 0, 0, recIndex, REC_KIND.roof); }
+          if (recordMode) { if ((wall || t.part === 'decal') && Math.hypot(t.n[0], t.n[1]) > 0.5) { const h = Math.hypot(t.n[0], t.n[1]); recPut(v, ((t.p[k][0] - anchor[0]) * -t.n[1] + (t.p[k][1] - anchor[1]) * t.n[0]) / h, t.p[k][2] - b.minHeightM, 0, recIndex, REC_KIND.crown); } else recPut(v, 0, 0, 0, recIndex, REC_KIND.roof); }
           positions[v * 3] = t.p[k][0]; positions[v * 3 + 1] = t.p[k][1]; positions[v * 3 + 2] = t.p[k][2];
           uvs[v * 2] = t.uv[k][0]; uvs[v * 2 + 1] = t.uv[k][1];
           layers[v] = layer;

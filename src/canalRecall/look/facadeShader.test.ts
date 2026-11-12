@@ -4,7 +4,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import * as THREE from 'three';
 import { FACADE_FIELDS, FACADE_RECORD_BYTES, emptyFacadeRecord, packFacadeRecord, unpackFacadeRecord, type FacadeRecord } from './facadeRecord.ts';
-import { FACADE_RECORD_GLSL, shaderFacadesEnabled } from './facadeShader.ts';
+import { FACADE_RECORD_GLSL, FACADE_RECORD_VERTEX_BODY, FACADE_RECORD_VERTEX_DECLS, shaderFacadesEnabled } from './facadeShader.ts';
 import { FACADE_TEXTURE_WIDTH, FacadeRecordTexture, firstFitRows } from './facadeRecordTexture.ts';
 import { cityProgramKey, createCityLookMaterial, createCityUniforms, variantDefines, variantKey, type CityVariant } from './cityLook.ts';
 
@@ -96,4 +96,14 @@ test('the record variant is a lit-chunk program of its own; every other program 
   const m = createCityLookMaterial(THREE, rec, uniforms);
   assert.ok(m.userData.facadeRecordUniforms.recBase, 'the per-mesh recBase uniform is reachable');
   assert.equal(emptyFacadeRecord().storeys, 0);
+});
+
+test('the record GLSL declares no GLSL ES 3.00 reserved word (S6c shipped `float patch` and the program did not link)', () => {
+  // GLSL ES 3.00 §3.8 reserved keywords that a TypeScript-minded name can hit; any of them fails compilation on WebGL2.
+  const reserved = ['patch', 'sample', 'input', 'output', 'filter', 'common', 'partition', 'active', 'superp', 'resource', 'class', 'union',
+    'enum', 'typedef', 'template', 'this', 'goto', 'inline', 'noinline', 'public', 'static', 'extern', 'external', 'interface', 'long', 'short',
+    'double', 'half', 'fixed', 'unsigned', 'cast', 'namespace', 'using', 'sizeof', 'asm', 'volatile', 'subroutine', 'buffer', 'shared', 'coherent', 'restrict', 'readonly', 'writeonly', 'atomic_uint', 'noperspective', 'precise'];
+  const src = [FACADE_RECORD_GLSL, FACADE_RECORD_VERTEX_DECLS, FACADE_RECORD_VERTEX_BODY].join('\n').replace(/\/\/[^\n]*/g, '').replace(/\/\*[\s\S]*?\*\//g, '');
+  const hits = reserved.filter(w => new RegExp(`\\b${w}\\b`).test(src));
+  assert.deepEqual(hits, []);
 });

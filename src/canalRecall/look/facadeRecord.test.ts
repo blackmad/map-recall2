@@ -205,7 +205,7 @@ test('multi-front pands get one record per front; packing is deterministic', () 
 test('S6b: an unstated front copies the photo look\'s bay preset (head, stone, sash bars, frame, opening size); stated fields win', () => {
   // bayLook.ts c19 preset 82: a stone arch over a rect transom window, pale jamb blocks; bayVariantOpenings: 2 x 0.275 of the bay, 0.70 tall.
   const bay = genericBayWindow({ archetype: 'c19', shape: 'rect', lintel: 'arch', sash: 'transom', paleAccents: true }, { axes: [0.25, 0.75], width: 0.275, sill: 0.147, head: 0.847 });
-  assert.deepEqual({ ...bay, share: +bay.share!.toFixed(2), height: +bay.height!.toFixed(2) }, { head: 'flat', surround: 'full-frame', sills: true, kind: 'casement-toplight', dark: false, share: 0.55, height: 0.7 });
+  assert.deepEqual({ ...bay, share: +bay.share!.toFixed(2), height: +bay.height!.toFixed(2) }, { head: 'flat', surround: 'full-frame', sills: true, kind: 't-window', dark: false, share: 0.55, height: 0.7 });
   assert.equal(genericBayWindow({ archetype: 'modern', shape: 'rect', lintel: 'none', sash: 'plain', frameTone: 'dark' }).surround, 'none');
   assert.equal(genericBayWindow({ archetype: 'canal', shape: 'segmental', lintel: 'none', sash: 'paired-transom' }).head, 'segmental');
   const generic = { storeys: 3, groundM: 3.5, storeyM: 3.1, windows: 3, doorWindow: 2, variant: 1, bay };
@@ -213,7 +213,7 @@ test('S6b: an unstated front copies the photo look\'s bay preset (head, stone, s
   const r = facadeRecordFor(base);
   assert.equal(WINDOW_HEADS[r.windowHead], 'flat');
   assert.equal(WINDOW_SURROUNDS[r.surround], 'full-frame');
-  assert.equal(WINDOWS[r.windowKind], 'casement-toplight');
+  assert.equal(WINDOWS[r.windowKind], 't-window');
   assert.equal(r.windowShare, Math.round(0.55 * 255));
   assert.equal(r.bands, 0, 'the bay looks paint no storey band');
   assert.equal(r.doorBay, 2);

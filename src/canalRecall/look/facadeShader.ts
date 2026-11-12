@@ -66,6 +66,17 @@ const JOINT_SHARE = FR_JOINT / FR_COURSE + FR_JOINT / FR_BRICK - (FR_JOINT / FR_
 export const FR_PATTERN_MEAN = JOINT_SHARE * FR_MORTAR + (1 - JOINT_SHARE);
 /** Coursing amplitude by FACADE_WALL_MATERIALS index: brick full, painted brick faint, the rest smooth. */
 export const FR_COURSING = [1, 0, 0.35, 0, 0, 0, 0] as const;
+/**
+ * Brick patches (S6c): a tone per brick length x two courses (0.22 x 0.125 m, offset every patch row), FR_MOTTLE deep, fading
+ * between 0.3 and 0.5 of a patch row per pixel. The coursing fades out under about two pixels a course (ppm < 27, the
+ * benchmark median), and then the wall reads as render: F4 round 1 named "brick vs render" on 32 pairs (11 in round 0).
+ * Measured with scripts/house-frames/brick-texture.ts (detail std over the mean, 0.25 m running mean removed), the photos'
+ * medians are 0.066 under 25 px/m, 0.131 at 25-40, 0.147 at 40-60 and 0.157 above. Round 1's frames read 0.064, 0.078,
+ * 0.110 and 0.100. With the frame's other detail (base about 0.065-0.078, in quadrature), the patches must supply about
+ * 0.10 at 30 px/m and 0.13 at 50. The twin with FR_MOTTLE 0.6 gives 0.066 / 0.112 / 0.116 / 0.146 / 0.161 at
+ * 20 / 27 / 35 / 50 / 70 px/m.
+ */
+export const FR_MOTTLE = 0.6, FR_MOTTLE_V = 0.125, FR_MOTTLE_U = 0.22;
 
 /**
  * Glazing per window kind (intent.ts WINDOWS order): lower part cols x rows, toplight cols x rows, toplight share of the
@@ -107,16 +118,21 @@ float frReveal(vec2 p, vec2 fw, float x0, float y1, float depth) {
   return max(frCover(p.x, x0, x0 + depth, fw.x), frCover(p.y, y1 - depth, y1, fw.y)) * ${f1(FR_REVEAL_SHADE)};
 }
 float frHash(vec2 p) { return fract(sin(dot(p, vec2(12.9898, 78.233))) * 43758.5453); }
-// Brick coursing, mean 1 over the wall; it fades to its mean as a course falls under about two pixels.
+// Brick coursing, mean 1 over the wall; it fades to its mean as a course falls under about two pixels. Brick patches
+// (two bricks x two courses) carry the brick's texture further out (FR_MOTTLE, S6c).
 float frBrick(vec2 w, vec2 fw, float material, float contrast) {
   float amp = material < 0.5 ? ${f1(FR_COURSING[0])} : (material > 1.5 && material < 2.5 ? ${f1(FR_COURSING[2])} : 0.0);
-  amp *= contrast * (1.0 - smoothstep(${f1(0.25 * FR_COURSE)}, ${f1(0.6 * FR_COURSE)}, max(fw.x, fw.y)));
   if (amp <= 0.0) return 1.0;
+  float prow = floor(w.y / ${f1(FR_MOTTLE_V)}), pcol = floor((w.x + mod(prow, 2.0) * ${f1(0.5 * FR_MOTTLE_U)}) / ${f1(FR_MOTTLE_U)});
+  float brickPatch = 1.0 + amp * contrast * ${f1(FR_MOTTLE)} * (frHash(vec2(prow * 7.0 + 3.0, pcol * 3.0 + 11.0)) - 0.5)
+    * (1.0 - smoothstep(${f1(0.3 * FR_MOTTLE_V)}, ${f1(0.5 * FR_MOTTLE_V)}, max(fw.x, fw.y)));
+  amp *= contrast * (1.0 - smoothstep(${f1(0.25 * FR_COURSE)}, ${f1(0.6 * FR_COURSE)}, max(fw.x, fw.y)));
+  if (amp <= 0.0) return brickPatch;
   float row = floor(w.y / ${f1(FR_COURSE)}), yy = w.y - row * ${f1(FR_COURSE)};
   float x = w.x + mod(row, 2.0) * ${f1(0.5 * FR_BRICK)}, col = floor(x / ${f1(FR_BRICK)}), xx = x - col * ${f1(FR_BRICK)};
   float joint = max(1.0 - frCover(yy, ${f1(FR_JOINT)}, ${f1(FR_COURSE)}, fw.y), 1.0 - frCover(xx, ${f1(FR_JOINT)}, ${f1(FR_BRICK)}, fw.x));
   float tone = 1.0 + (frHash(vec2(row, col)) - 0.5) * ${f1(FR_TONE)};
-  return 1.0 + amp * (mix(tone, ${f1(FR_MORTAR)}, joint) / ${f1(FR_PATTERN_MEAN)} - 1.0);
+  return brickPatch * (1.0 + amp * (mix(tone, ${f1(FR_MORTAR)}, joint) / ${f1(FR_PATTERN_MEAN)} - 1.0));
 }
 // Speklagen: spekCourses stone courses every spekSpacing + spekCourses courses, averaged when under a pixel.
 float frSpek(float y, vec2 fw) {
