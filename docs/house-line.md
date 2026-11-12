@@ -2185,3 +2185,25 @@ wall outline is drawn on both. The fooled-rate is the share of answered pairs wh
 (0.5 = cannot tell them apart). Stop rule: flat (|change| < 0.03) for two rounds, restart with a fresh critic (new seed,
 new chunking) before reading more into the curve. Archive every round's photo/game pairs to the source-data repo
 (`experiments/facade-benchmark/round-N/`): J3 could not re-run likeness because its render sources had been pruned.
+
+### Round 0 (2026-11-12, baseline before F1)
+
+Main at 659f8fc72 plus this lane's pose rule; default world; 193 of 199 pands posed (6 have no capture with a line of
+sight in 5-35 m, one is not in the building tiles), 193 framed in one run (12.2 min, 15.8 pairs/min); 157 generic, 23
+installed models, 13 spec recipes. Four fresh Opus critics, about 50 pairs each.
+
+- **Fooled-rate 0 of 193 (0.0 %).** The critic named the game every time (high 82, med 65, low 46): today's render is
+  told apart at a glance, so the curve has room. Rate per group and the full histogram: `artifacts/critic/round-0/`.
+- **The queue** (severity sum): wall colour/tone 87 pairs (153), crown/gable type 24 (55), window columns 15 (30),
+  brick vs render 11 (25), window kind 14 (21), white surrounds/bands 12 (18), roof/dormer 9 (16), storey count 7 (15),
+  wrong building 3, pane layout 2, blank wall 1, shopfront form 1; none 7. Wall colour leads on every group.
+- **Shopfronts are under-read**: the 1.5 m street band hides stallrisers, doors and most of the display glass, so
+  "shopfront present" was never named although 105 of 158 readable pands have one. Round 1 should drop the band to
+  ~0.9 m on the shop groups (or mask vehicles only) before reading the F2 gap.
+- Labels: 158 of 193 readable (canal fronts from the far quay read best; Nassaukade 506 is 2 of 7, branches in front
+  of the 2020 winter captures; narrow streets are 40-55 deg oblique).
+- Frames flags: otherBuilding 17 (re-pick with `notPanos` next round), roofOffset 46, wallColour 70; photo edge
+  alignment median 2.2 % (p90 5.1 %).
+
+Archive: source-data `experiments/facade-benchmark/round-0/` (frames, critic pairs and key, labels, queue). Sheets:
+map-recall2-screenshots `ui/2026-11-12-facade-benchmark/round-0/`.
