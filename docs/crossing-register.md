@@ -96,3 +96,12 @@ stays (`game: { cuts: 'keep', portals: 'keep' }`). The pins honour a record's `g
 
 Not drafted, still OPEN: metro station Noord over the bus station (Nieuwe Leeuwarderweg). Also two inferred cuts
 with no BGT structure near 4.9399, 52.3991 (ramp 378320520, slot 605321440).
+
+## Tunnel approaches (2026-11-12)
+
+`data/crossings/tunnels.json`: 4 reviewed `road-under` records with BGT tunnel structures: the IJtunnel north
+approach, the IJtunnel south at the Prins Hendrikkade, the IJtunnel under the Oosterdok, and the Piet Heintunnel by
+the Panamakade. Each keeps the game's inferred cuts and mouths (`game: { cuts: 'keep', portals: 'keep' }`). The
+inferred mouths there could not be matched to a portal by eye with confidence, so the records are G2's input for
+placing portals, not a runtime change. The other 21 drafts in that area are decks, left for a later pass.
+Inferred cuts with no BGT structure (`cut-no-structure` in the draft reports) remain to be checked.
