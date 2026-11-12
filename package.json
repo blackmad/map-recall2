@@ -621,7 +621,9 @@
     "check:designs-page": "node --import tsx scripts/build-designs-images.ts --check && node --import tsx scripts/build-designs-page.ts --check && node --import tsx --test src/canalRecall/designsPage/data.test.ts",
     "build:devlog": "node --import tsx scripts/build-devlog.ts",
     "build:devlog-page": "esbuild src/canalRecall/devlog/page.ts --bundle --format=iife --outfile=public/canal-drive/js/devlog.bundle.js --minify",
-    "check:devlog": "node --import tsx scripts/build-devlog.ts --check && node --import tsx --test src/canalRecall/devlog/devlog.test.ts"
+    "check:devlog": "node --import tsx scripts/build-devlog.ts --check && node --import tsx --test src/canalRecall/devlog/devlog.test.ts",
+    "test:browser-queue": "bash scripts/browser-queue/test.sh",
+    "install:browser-queue": "bash scripts/browser-queue/install.sh"
   },
   "dependencies": {
     "@google/genai": "^2.4.0",

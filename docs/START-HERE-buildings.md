@@ -41,9 +41,12 @@ npm run dev                          # tsx server.ts on PORT (default 3000)
   has a lock wrapper at `/tmp/canal-pw.sh`; if it exists, run Playwright and
   `review:sheet` through it (`bash /tmp/canal-pw.sh <command>`).
   Wrap each capture or sheet separately, never a batch script that loops over
-  several: the wrapper holds one of two machine-wide slots for the whole
+  several: the wrapper holds one of three machine-wide slots for the whole
   command, and a 50-minute batch starves every other lane and the
-  integrator's gate (2026-11-07).
+  integrator's gate (2026-11-07). The queue is first come, first served.
+  Never wrap `house:frames`, because it takes its own slot; batch lists with
+  `--lists`. Push your lane branch unwrapped: the pre-push hook runs the
+  browser smoke only on pushes to `main` (docs/browser-queue.md).
 - If `git` misbehaves in your agent's shell on the maintainer's Mac, use
   `/usr/bin/git`. That's a local wrapper issue, not a repo rule.
 - Raw API responses are cached under `.cache/` (untracked). Review output goes

@@ -2,6 +2,40 @@
   "note": "Visible changes to the ride, newest first. One entry per shipped fix the player can see; models themselves are listed by the feed. Fields: date (YYYY-MM-DD, the day it reached main), title, text, where [lng, lat] optional, images optional: [{src, alt, caption?}] where src is a path in github.com/blackmad/map-recall2-screenshots (whats-new/YYYY-MM-DD-slug.jpg, before/after pairs welcome) or a full https URL. Link a screenshot whenever the change can be seen; keep the pictures out of this repository.",
   "notes": [
     {
+      "date": "2026-11-12",
+      "title": "Amsterdam's green krul urinals",
+      "text": "The ride now has the city's cast-iron krul urinals (plaskrullen): 38 of them at the 37 spots on the city's public-toilet map, mostly along the canals in Centrum. The model is a spiral iron sheet on four posts, raised half a metre off a tiled pad and perforated in its upper half. Its plan comes from the city's own drawing, and its heights and colour were measured from street panoramas. See it on the Street furniture page.",
+      "images": [
+        {
+          "src": "ui/2026-11-12-krul-urinals/photo-vs-model-amstelveld.jpg",
+          "alt": "Amstelveld krul: panorama, model, and in the ride",
+          "caption": "Panorama, model, ride"
+        },
+        {
+          "src": "ui/2026-11-12-krul-urinals/gallery-card-desktop.jpg",
+          "alt": "Street furniture gallery card for the krul urinal",
+          "caption": "Gallery card"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-12",
+      "title": "The plan for the whole city, and an up-to-date In progress list",
+      "text": "A new Plan tab on this page (whats-new.html#plan) lays out, in order, how we will get all of Amsterdam's buildings looking right: the principles, then each step with its priority and whether it is in progress, next, ongoing or later. The In progress list below now shows the work actually under way, linked to its GitHub issue, instead of the old landmark queue.",
+      "images": [
+        {
+          "src": "ui/2026-11-12-coverage-plan/plan-desktop.jpg",
+          "alt": "The Plan tab on What's New: intro, principles and numbered phases with priority and status chips",
+          "caption": "Plan, desktop"
+        },
+        {
+          "src": "ui/2026-11-12-coverage-plan/plan-phone.jpg",
+          "alt": "The Plan tab on a phone, tabs in a three-column grid",
+          "caption": "Plan, phone"
+        }
+      ]
+    },
+    {
       "date": "2026-11-10",
       "title": "House walls take their photo colour",
       "text": "About 330 ordinary houses now draw the wall colour measured from street panoramas instead of a guess from their age. Where the photo reading looks too pale and warm to trust, the house keeps a period brick colour rather than a light peach, and the houses held back that way now always draw brick, never slate grey (30 of them were grey). Kinkerstraat 31 to 49 was re-measured from an overcast panorama after the old reading turned out to come from an overexposed photo; its row model follows in a later round.",

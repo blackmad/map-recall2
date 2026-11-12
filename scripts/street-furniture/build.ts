@@ -5,13 +5,14 @@
 //
 // One record per object: id, kind, subtype, lng/lat (7 dp), heading (kerb axis, compass degrees 0-180, from the
 // nearest street centreline), facing (compass bearing from the object to that street), road (its OSM highway class),
-// cluster (containers: the municipal clusterId), fraction (containers), volume (containers, m3).
+// cluster (containers: the municipal clusterId), fraction (containers), volume (containers, m3), count (urinals: two
+// krullen at one register point).
 // The sources carry no orientation; heading/facing are derived from streets-routing.json and are a documented prior.
 import { existsSync, mkdirSync, readdirSync, readFileSync, rmSync, cpSync, statSync, writeFileSync } from 'node:fs';
 import { gunzipSync, gzipSync } from 'node:zlib';
 import proj4 from 'proj4';
-import { AMS, BGT, CONTAINER_FIELDS, RAW } from './fetch.ts';
-import { CITY_BOX, FURNITURE_ZOOM, tileKeyOf, type FurnitureRecord, BGT_KIND, containerSubtype, insideBox } from '../../src/canalRecall/streetFurniture/extract.ts';
+import { AMS, BGT, CONTAINER_FIELDS, RAW, TOILETS_FILE, TOILETS_URL } from './fetch.ts';
+import { CITY_BOX, FURNITURE_ZOOM, tileKeyOf, type FurnitureRecord, BGT_KIND, URINAL_SUBTYPE, containerSubtype, insideBox, urinalCount } from '../../src/canalRecall/streetFurniture/extract.ts';
 import { CARRIAGEWAY_HIGHWAYS, StreetIndex, type StreetLine } from '../../src/canalRecall/streetFurniture/streetIndex.ts';
 
 export const STAGING = 'artifacts/street-furniture/staging';
@@ -96,6 +97,20 @@ export function buildRecords(): { records: FurnitureRecord[]; rejected: Record<s
       out.push(r);
     }
   }
+  // Urinals: the city's public-toilet map. Only the krul has a model; the rest are counted as skipped types.
+  for (const f of gz(TOILETS_FILE).features as any[]) {
+    const p = f.properties ?? {}, subtype = URINAL_SUBTYPE[p.SELECTIE ?? ''];
+    if (!subtype) { skippedTypes[`toiletten/${p.SELECTIE ?? 'null'}`] = (skippedTypes[`toiletten/${p.SELECTIE ?? 'null'}`] ?? 0) + 1; continue; }
+    const [lng, lat] = (f.geometry?.coordinates ?? [0, 0]).map(r7);
+    // Two krul rows carry (0, 0); their descriptions and photos repeat located rows (IMG_8813 Nieuwe Keizersgracht,
+    // Nieuwe Achtergracht / Roetersstraat).
+    if (f.geometry?.type !== 'Point' || (!lng && !lat)) { reject('urinal: no geometry (0, 0)'); continue; }
+    if (!insideBox(lng, lat)) { reject('urinal: outside the city box'); continue; }
+    const r: FurnitureRecord = { id: `toilet-${f.id}`, kind: 'urinal', subtype, lng, lat };
+    const n = urinalCount(p.Omschrijving);
+    if (n > 1) r.count = n;
+    orient(r); out.push(r);
+  }
   // Lamp subtype from the street it lights (documented prior, lamps.ts lampStyle).
   return { records: out, rejected, skippedTypes };
 }
@@ -119,14 +134,15 @@ async function main(): Promise<void> {
   for (const r of records) { const k = counts[r.kind] ??= {}; k[r.subtype] = (k[r.subtype] ?? 0) + 1; }
   const index = {
     version: 1, zoom: FURNITURE_ZOOM,
-    source: 'Gemeente Amsterdam huishoudelijkafval (underground containers) and BGT via PDOK (paal, bak, straatmeubilair)',
+    source: 'Gemeente Amsterdam huishoudelijkafval (underground containers), BGT via PDOK (paal, bak, straatmeubilair) and Gemeente Amsterdam Maps Data openbare toiletten (krul urinals)',
     sourceUrl: 'https://api.data.amsterdam.nl/v1/docs/datasets/huishoudelijkafval.html',
     sources: {
       containers: { apiUrl: `${AMS}/container/?_format=json&_pageSize=5000&_fields=${CONTAINER_FIELDS}`, typesUrl: `${AMS}/containertype/?_format=json&_pageSize=5000`, licence: 'Openbaar, tenzij anders aangegeven / behoudens uitzonderingen', owner: 'Gemeente Amsterdam, Directie Afval en Grondstoffen' },
       bgt: { apiUrl: `${BGT}/{paal,bak,straatmeubilair}/items?f=json&limit=1000&bbox=<1 km own-ground cell>`, licence: 'CC0 1.0', owner: 'Kadaster / bronhouders, Basisregistratie Grootschalige Topografie' },
+      urinals: { apiUrl: TOILETS_URL, licence: 'Gemeente Amsterdam Maps Data Gebruiksvoorwaarden (https://maps.amsterdam.nl/open_geodata/terms.php): any lawful use, commercial included; the original dataset is freely available from the Gemeente under those terms', owner: 'Gemeente Amsterdam', use: 'SELECTIE KRUL (Amsterdamse krul) only; Urilift, overig urinoir and toilet buildings are skipped types' },
       streets: { file: 'public/data/extracts/amsterdam/streets-routing.json', use: 'heading/facing/road: the nearest street centreline within 30 m (a prior; the registers carry no orientation)' },
     },
-    licence: 'Containers: openbaar, tenzij anders aangegeven; BGT: CC0 1.0',
+    licence: 'Containers: openbaar, tenzij anders aangegeven; BGT: CC0 1.0; urinals: Maps Data Gebruiksvoorwaarden (free reuse)',
     retrievedAt: new Date(Math.max(...readdirSync(`${RAW}/amsterdam/container`).map(f => statSync(`${RAW}/amsterdam/container/${f}`).mtimeMs))).toISOString(),
     cityBox: CITY_BOX,
     headingMeaning: 'heading = kerb axis (compass degrees, 0-180) of the nearest street centreline, or a container cluster\'s own principal axis; facing = compass bearing from the object to that street. Absent when no street lies within 30 m.',
