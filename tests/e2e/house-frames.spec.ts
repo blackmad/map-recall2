@@ -17,8 +17,8 @@
  * engine/fpsCamera.ts) with one that returns the job's pose. Nothing in src/ changes and no global is added to the game.
  */
 import { test, type Page } from '@playwright/test';
-import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
-import { join } from 'node:path';
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
+import { join, resolve } from 'node:path';
 import { openRoute, settleWorld } from './helpers';
 
 type JobPose = {
@@ -77,6 +77,13 @@ test('house frames', async ({ page }) => {
   const job: Job = JSON.parse(readFileSync(JOB!, 'utf8'));
   test.setTimeout(240_000 + job.poses.length * 90_000);
   await page.setViewportSize({ width: job.width, height: job.height });
+  // BUNDLES_DIR=<dir> serves *.bundle.js from a scratch build (lane W1, as scripts/perf-frozen-frames.mjs): a before/after
+  // of a source change without touching the committed bundles. On the context, so the building worker's script is routed too.
+  const bundles = process.env.BUNDLES_DIR ? resolve(process.env.BUNDLES_DIR) : '';
+  if (bundles) await page.context().route(/\/canal-drive\/js\/([\w-]+\.bundle\.js)(\?.*)?$/, route => {
+    const file = join(bundles, /\/([\w-]+\.bundle\.js)/.exec(route.request().url())![1]);
+    return existsSync(file) ? route.fulfill({ path: file, contentType: 'application/javascript' }) : route.continue();
+  });
   let opened = 0, sinceOpen = Infinity, lastOut = '';
   const timings: Array<Record<string, number | string>> = [];
   const t0 = Date.now();
