@@ -1,0 +1,35 @@
+{
+ "family": "head_B",
+ "set": "B",
+ "note": "A rectified street-panorama crop of one Amsterdam house front; the house in question fills the image.",
+ "questions": {
+  "upper_head": {
+   "type": "choice",
+   "instructions": "What is the shape of the top of most windows on the upper storeys of the house front in `facade` (the head of the window opening, where the brick or stone sits above the glass)?",
+   "criteria": {
+    "flat": "Flat heads: the window opening is rectangular with a straight horizontal lintel or flat brick arch above it.",
+    "segmental": "Segmental heads: the window opening is topped by a shallow curved arch (a flattened arc, much wider than it is tall), often drawn as a brick arc above a rectangular window.",
+    "round": "Round-arched heads: the window opening is topped by a semicircular arch.",
+    "pointed": "Pointed (gothic) heads: the window opening is topped by a pointed arch."
+   }
+  },
+  "top_storey_head": {
+   "type": "choice",
+   "instructions": "What is the shape of the top of the windows on the TOP storey of the house front in `facade` (ignore the gable or attic window above it)?",
+   "criteria": {
+    "flat": "Flat or rectangular heads.",
+    "segmental": "Shallow curved segmental arches.",
+    "round": "Semicircular arches.",
+    "pointed": "Pointed arches."
+   }
+  },
+  "arch_present": {
+   "type": "noul",
+   "instructions": "Does any window or door opening in the upper storeys of the house front in `facade` have a curved arch on top (segmental, round or pointed)?",
+   "criteria": {
+    "true": "At least one curved arch above an upper-storey opening.",
+    "false": "All upper-storey openings have flat rectangular heads."
+   }
+  }
+ }
+}

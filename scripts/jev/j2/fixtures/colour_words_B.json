@@ -1,0 +1,22 @@
+{
+ "family": "colour_words_B",
+ "set": "B",
+ "note": "A rectified street-panorama crop of one Amsterdam house front. The photo may have shadow, glare or a colour cast from the camera.",
+ "fixedImages": {},
+ "questions": {
+  "wall_colour": {
+   "type": "choice",
+   "instructions": "Which swatch is closest to the true colour of the main wall of the house front in `facade` above the ground floor (the colour the wall would have in neutral daylight)? Ignore shadows, bright glare and any colour cast from the camera; judge the paint or brick itself, and ignore white window frames, trim and the sky.",
+   "criteria": {
+    "near_black_painted": "Near-black, charcoal or very dark grey painted wall.",
+    "dark_brown_brick": "Dark brown or purple-brown brick.",
+    "red_brown_brick": "Classic red-brown brick.",
+    "orange_brick": "Bright orange or orange-red brick.",
+    "pale_salmon_brick": "Pale salmon, pinkish or light brown-grey brick.",
+    "tan_yellow_brick": "Tan, buff or yellow brick.",
+    "white_plaster": "White or cream plaster or painted white wall.",
+    "grey_stone": "Mid grey stone, concrete or grey brick."
+   }
+  }
+ }
+}

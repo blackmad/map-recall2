@@ -4,7 +4,8 @@
  */
 import fs from 'node:fs/promises';
 import path from 'node:path';
-import {CACHE} from './lib.mjs';
+import {CACHE, arg} from './lib.mjs';
+const R1 = arg('r1', 'r1'), R2 = arg('r2', 'r2'), OUT = arg('out', 'scores.json'); // J3: --r1=g-img-medium --r2=g-img-medium --out=scores-g-img.json scores a Gemini run
 import {A, B} from './labels.mjs';
 const sets = JSON.parse(await fs.readFile(path.join(CACHE, 'sets.json'), 'utf8'));
 const J1 = JSON.parse(await fs.readFile('/Users/blackmad/Code/map-recall2/.cache/jev-facades/set.json', 'utf8'));
@@ -34,7 +35,7 @@ const pick = a => {
 const load = async (fam, run) => { const d = path.join(CACHE, 'runs', fam, run); const o = {}; try { for (const f of await fs.readdir(d)) { const j = JSON.parse(await fs.readFile(path.join(d, f), 'utf8')); if (j.status === 200) o[j.id] = j; } } catch {} return o; };
 const out = [];
 for (const [fam, qs] of Object.entries(truth)) {
-  const r1 = await load(fam, 'r1'), r2 = await load(fam, 'r2'), tokens = Object.values(r1).reduce((a, x) => a + x.tokens, 0) / Math.max(1, Object.keys(r1).length);
+  const r1 = await load(fam, R1), r2 = await load(fam, R2), tokens = Object.values(r1).reduce((a, x) => a + x.tokens, 0) / Math.max(1, Object.keys(r1).length);
   for (const [q, tf] of Object.entries(qs)) {
     const rows = [];
     for (const id of Object.keys(r1)) { const t = tf(id), a = pick(r1[id].response.answers[q]), b = pick(r2[id]?.response.answers[q]); if (t != null && a && b) rows.push({id, t, a, b}); }
@@ -44,9 +45,9 @@ for (const [fam, qs] of Object.entries(truth)) {
     const conf = rows.filter(r => r.a.c === r.b.c && Math.min(r.a.p, r.b.p) >= 0.8), cacc = conf.length ? conf.filter(r => r.a.c === r.t).length / conf.length : null;
     const pos = rows.filter(r => r.t === 'true'), tp = pos.filter(r => r.a.c === 'true').length, fp = rows.filter(r => r.t === 'false' && r.a.c === 'true').length;
     const wrong = rows.filter(r => r.a.c !== r.t && r.b.c !== r.t).sort((x, y) => y.a.p - x.a.p).slice(0, 10).map(r => ({id: r.id, truth: r.t, jev: r.a.c, p: +r.a.p.toFixed(2)}));
-    out.push({family: fam, question: q, n, acc1: +acc('a').toFixed(3), acc2: +acc('b').toFixed(3), baseline: +base.toFixed(3), agree: +(rows.filter(r => r.a.c === r.b.c).length / n).toFixed(3), hedged: +(rows.filter(r => r.a.hedge).length / n).toFixed(3), confAcc: cacc == null ? null : +cacc.toFixed(3), confCov: +(conf.length / n).toFixed(3), positives: pos.length, tp, fp, tokens: Math.round(tokens), worst: wrong, counts: cnt});
+    out.push({family: fam, question: q, n, acc1: +acc('a').toFixed(3), acc2: +acc('b').toFixed(3), baseline: +base.toFixed(3), agree: +(rows.filter(r => r.a.c === r.b.c).length / n).toFixed(3), hedged: +(rows.filter(r => r.a.hedge).length / n).toFixed(3), confAcc: cacc == null ? null : +cacc.toFixed(3), confCov: +(conf.length / n).toFixed(3), wrongConf: (() => { const w = rows.filter(r => r.a.c !== r.t); return w.length ? +(w.reduce((a, r) => a + r.a.p, 0) / w.length).toFixed(3) : null; })(), nWrong: rows.filter(r => r.a.c !== r.t).length, positives: pos.length, tp, fp, tokens: Math.round(tokens), worst: wrong, counts: cnt});
   }
 }
-await fs.writeFile(path.join(CACHE, 'scores.json'), JSON.stringify(out, null, 1));
+await fs.writeFile(path.join(CACHE, OUT), JSON.stringify(out, null, 1));
 console.log('family/question | n | acc1/acc2 | base | agree | hedged | conf-acc@cov | pos TP FP');
 for (const o of out) console.log(`${o.family}/${o.question} | ${o.n} | ${o.acc1}/${o.acc2} | ${o.baseline} | ${o.agree} | ${o.hedged} | ${o.confAcc}@${o.confCov} | ${o.positives} ${o.tp} ${o.fp}`);

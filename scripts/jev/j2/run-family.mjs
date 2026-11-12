@@ -8,6 +8,12 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import sharp from 'sharp';
 import {CACHE, arg, askJev, pool, prepImage} from './lib.mjs';
+import {askGemini} from './gemini.mjs';
+import {addressFor} from './context.mjs';
+// J3: --backend=jev|gemini (default jev), --variant=img|addr (gemini; addr adds one BAG address+buurt line), --resolution=medium|high, --run=<name>
+const BACKEND = arg('backend', 'jev'), VARIANT = arg('variant', 'img'), RES = arg('resolution', 'medium');
+const H5 = '/Users/blackmad/Code/map-recall2-source-data-h5h/pand-crops';
+let addrCache = {}; try { addrCache = JSON.parse(await fs.readFile(path.join(CACHE, 'address.json'), 'utf8')); } catch {}
 
 const name = arg('fixture'), RUN = arg('run', 'r1'), LIMIT = +arg('limit', '1e9'), CONC = +arg('conc', '4');
 const fx = JSON.parse(await fs.readFile(new URL(`./fixtures/${name}.json`, import.meta.url), 'utf8'));
@@ -15,11 +21,27 @@ const sets = JSON.parse(await fs.readFile(path.join(CACHE, 'sets.json'), 'utf8')
 const J1 = '/Users/blackmad/Code/map-recall2/.cache/jev-facades';
 
 async function items() {
-  if (fx.set === 'J1') { const s = JSON.parse(await fs.readFile(path.join(J1, 'set.json'), 'utf8')); return s.map(c => ({id: c.pandId, file: path.join(J1, c.crop.file)})); }
-  if (fx.set === 'triples') return JSON.parse(await fs.readFile(path.join(CACHE, 'triples.json'), 'utf8')).map(t => ({id: t.id, images: t.files}));
-  if (fx.set === 'pairs') return JSON.parse(await fs.readFile(path.join(CACHE, 'pairs.json'), 'utf8')).map(p => ({id: p.id, file: p.a, file2: p.b}));
+  if (fx.set === 'J1') { const s = JSON.parse(await fs.readFile(path.join(J1, 'set.json'), 'utf8')); return s.map(c => ({id: c.pandId, pand: c.pandId, file: path.join(J1, c.crop.file)})); }
+  if (fx.set === 'triples') { // J3: the J2 render cache is gone; rebuild each triple from its archived sources where they still exist, else skip it
+    const out = [];
+    for (const t of JSON.parse(await fs.readFile(path.join(CACHE, 'triples.json'), 'utf8'))) {
+      const srcs = {photo: t.photoSrc, ...t.srcFiles}, files = {};
+      for (const [k, f] of Object.entries(srcs)) { files[k] = await fs.access(f).then(() => prepImage(f, path.join(CACHE, 'triples', `${t.id}-${k}.jpg`)), () => null); }
+      if (Object.values(files).every(Boolean)) out.push({id: t.id, pand: t.pand, images: files});
+    }
+    return out;
+  }
+  if (fx.set === 'pairs') { // J3: rebuild the per-year crops from the h5h archive (same file names as J2)
+    const out = [];
+    for (const p of JSON.parse(await fs.readFile(path.join(CACHE, 'pairs.json'), 'utf8'))) {
+      const src = f => path.join(H5, path.basename(f).slice(0, 16), 'years', path.basename(f).slice(17));
+      const mk = async f => { const o = path.join(CACHE, 'years', path.basename(f)); return fs.access(o).then(() => o, () => prepImage(src(f), o)); };
+      out.push({id: p.id, pand: p.pand, file: await mk(p.a), file2: await mk(p.b)});
+    }
+    return out;
+  }
   const ids = fx.set.split('').flatMap(k => sets[k]);
-  return ids.map(p => ({id: p, file: path.join(CACHE, 'img', `${p}.jpg`)}));
+  return ids.map(p => ({id: p, pand: p, file: path.join(CACHE, 'img', `${p}.jpg`)}));
 }
 const fixed = {};
 for (const [part, v] of Object.entries(fx.fixedImages ?? {})) {
@@ -30,7 +52,7 @@ for (const [part, v] of Object.entries(fx.fixedImages ?? {})) {
     fixed[part] = out;
   } else fixed[part] = path.resolve(v);
 }
-const outDir = path.join(CACHE, 'runs', fx.family, RUN);
+const outDir = path.join(CACHE, 'runs', fx.family, RUN); // jev runs r1/r2 (archived); gemini runs e.g. g-img-medium, g-addr-medium
 await fs.mkdir(outDir, {recursive: true});
 let list = (await items()).slice(0, LIMIT), done = 0;
 if (fx.cropTop) { // crown-only crops of the top share of each crop, re-prepared to Jev's size rules
@@ -46,11 +68,14 @@ if (fx.cropTop) { // crown-only crops of the top share of each crop, re-prepared
 await pool(list, CONC, async it => {
   const images = it.images ? {...it.images, ...fixed} : {facade: it.file, ...fixed};
   if (it.file2) images.facade2 = it.file2;
-  const r = await askJev({images, questions: fx.questions, note: fx.note, family: `${fx.family}`});
+  let r;
+  if (BACKEND === 'gemini') {
+    const context = VARIANT === 'addr' && it.pand ? await addressFor(it.pand, addrCache) : undefined;
+    r = await askGemini({images, questions: fx.questions, note: fx.note, family: fx.family, context, resolution: RES, variant: VARIANT});
+  } else r = await askJev({images, questions: fx.questions, note: fx.note, family: `${fx.family}`});
   await fs.writeFile(path.join(outDir, `${it.id}.json`), JSON.stringify({id: it.id, run: RUN, status: r.status, latencyMs: r.latencyMs, tokens: r.tokens, request: r.request, response: r.body}, null, 1));
   done++;
   if (r.status !== 200) console.log(it.id, r.status, JSON.stringify(r.body).slice(0, 200));
 });
-const {readLedger} = await import('./lib.mjs');
-const l = await readLedger();
-console.log(`${fx.family}/${RUN}: ${done} calls; family spend $${l.families[fx.family]?.usd}; total $${l.total}`);
+if (BACKEND === 'gemini') { const {readGLedger} = await import('./gemini.mjs'); const g = await readGLedger(); console.log(`${fx.family}/${RUN}: ${done} calls; gemini list-price total $${g.total}`); }
+else { const {readLedger} = await import('./lib.mjs'); const l = await readLedger(); console.log(`${fx.family}/${RUN}: ${done} calls; family spend $${l.families[fx.family]?.usd}; total $${l.total}`); }
