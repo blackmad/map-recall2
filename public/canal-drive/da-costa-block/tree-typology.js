@@ -126,13 +126,19 @@ const rules=[
 export function normalizedTreeName(value){return String(value||'').toLowerCase().replace(/[’‘`]/g,"'").replace(/×/g,' ').replace(/\bx\s+/g,'').replace(/\s+/g,' ').trim();}
 function numberSeed(id){let n=2166136261;for(const c of String(id??''))n=Math.imul(n^c.charCodeAt(0),16777619);return(n>>>0)/4294967296;}
 
+// `?treeShape=1` (lane T-shape #371, src/canalRecall/trees/treeShape.ts): a bundled caller registers the measured
+// silhouette shaper; this file stays plain JS for the raw da-costa demo page. No shaper, or the flag off: unchanged.
+let shaper=null;
+export function setTreeShaper(value){shaper=value||null;}
+
 export function treeTypology(tree){
   const type=String(tree.type||'').trim().toLowerCase();
   if(type==='stobbe')return null;
   const species=normalizedTreeName(tree.species),rule=rules.find(([pattern])=>pattern.test(species));
   const management={'gekandelaberde boom':'candelabra-pruned','knotboom':'pollarded','leiboom':'trained-flat'}[type];
   const managed=!!management;
-  const archetype=management||rule?.[1]||'rounded';
+  const shape=!managed&&shaper?.active()?shaper:null;
+  const archetype=management||(shape?shape.archetype(species,rule?.[1]||'rounded'):rule?.[1]||'rounded');
   const validHeight=Number.isFinite(tree.height)&&tree.height>0&&tree.height<=60;
   // Do not substitute a species' potential adult height for this inventory record.
   const height=validHeight?tree.height:9;
@@ -164,11 +170,12 @@ export function treeTypology(tree){
   const foliagePrior=managed?null:foliagePriors[species];
   const foliage=foliagePrior?.colour||(archetype==='conical-evergreen'||/^(?:pinus|taxus)\b/.test(species)?'#496955':species.startsWith('salix')?'#88a06c':species.startsWith('betula')?'#91ad6e':species.startsWith('fagus')?'#587b51':species.startsWith('quercus')?'#648357':species.startsWith('robinia')?'#94a965':species.startsWith('tilia')?'#789655':'#78945a');
   const bark=species==='betula nigra'&&!managed?'#805b46':species.startsWith('betula')?'#d8d9c5':species.startsWith('platanus')?'#aaa68a':species==='prunus avium'?'#8a5544':species==='corylus colurna'||species.startsWith('fagus')?'#8a8b80':species.startsWith('metasequoia')?'#935d47':'#665741';
-  return {version:TREE_TYPOLOGY_VERSION,id:tree.id,position:[...tree.position],height,archetype,lobes,
+  const out={version:TREE_TYPOLOGY_VERSION,id:tree.id,position:[...tree.position],height,archetype,lobes,
     trunkHeight:h*(managed?.78:archetype==='fan-palm'?.90:.60),trunkWidth:Math.min(.52,Math.max(.14,h*.023)),
     foliage,bark,crownGeometry:archetype.startsWith('conical-')?'cone':'faceted',rotation:numberSeed(tree.id)*Math.PI*2,
     provenance:{position:tree.source==='osm'?'explicit OSM tree node':'municipal inventory',height:heightSource,heightClass:tree.heightClass??null,
       ...(foliagePrior?{foliageReference:foliagePrior.reference}:{}),crownBasis:managed?'explicit-inventory-management':rule?.[2]||'authored-fallback',reference:managed?null:rule?.[3]||null,
       species:tree.species??null,type:tree.type??null,measuredCrown:false,
       note:'Shape, width, clearance and summer foliage are authored priors. Not freely growing does not imply pollarding; age, pruning and actual crown extent are unverified.'}};
+  return shape?shape.reshape(out,species,tree.heightClass,r,heightClassKnown&&validHeight):out;
 }

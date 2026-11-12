@@ -166,6 +166,14 @@ const SPOTS: Spot[] = [
   { name: 'easy-houses-vijzelstraat-167483', centre: [4.8944025, 52.3633550], standDeg: 69, standM: 12, view: 'cockpit' },
   { name: 'easy-houses-vijzelstraat-171023', centre: [4.8955615, 52.3631980], standDeg: 313, standM: 14, view: 'cockpit' },
   { name: 'easy-houses-vijzelstraat-171023-b', centre: [4.8955615, 52.3631980], standDeg: 71, standM: 14, view: 'cockpit' },
+  // Lane T-shape (#371): the user's 2026-11-10 Piet Kranenbergpad frame (a wall of 'Italica' poplars across the canal),
+  // a Robusta row and a plane-lined canal quay, each without and with ?treeShape=1 (measured silhouettes).
+  { name: 'trees-kranenbergpad', centre: [4.8532, 52.3392], standDeg: 0, standM: 0, faceDeg: 350 },
+  { name: 'trees-kranenbergpad-shape', centre: [4.8532, 52.3392], standDeg: 0, standM: 0, faceDeg: 350, query: '?treeShape=1' },
+  { name: 'trees-robusta-row', centre: [4.8470, 52.3428], standDeg: 120, standM: 45 },
+  { name: 'trees-robusta-row-shape', centre: [4.8470, 52.3428], standDeg: 120, standM: 45, query: '?treeShape=1' },
+  { name: 'trees-keizersgracht', centre: [4.8862, 52.3672], standDeg: 135, standM: 30 },
+  { name: 'trees-keizersgracht-shape', centre: [4.8862, 52.3672], standDeg: 135, standM: 30, query: '?treeShape=1' },
 ];
 // DEMO_DPR=2: desktop shots at device pixel ratio 2 (house line frames).
 if (process.env.DEMO_DPR) test.use({ deviceScaleFactor: Number(process.env.DEMO_DPR) });
