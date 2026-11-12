@@ -411,6 +411,211 @@ export function shellFromChunk(chunk: ShellChunk, origin: readonly [number, numb
   return { positions, uvs, layers, tints, accents, bids, indices, thin };
 }
 
+// --- SHEL level 3: the facade-record layout (F1 S2, #380; docs/plans/facade-f1-design-20261112.md §2.2) -------------
+
+/** Wall-metre unit of level 3's `wall` attribute (u along, v up from the pand's wall base, the wall's length). */
+export const WALL_UV_UNIT_M = 0.02;
+/** `wallKind` codes (bits 0-2; bit 3 mirrored). 6 is a crown face (S7), 7 a roof or lid. */
+export const WALL_KINDS = { front: 0, side: 1, rear: 2, party: 3, strip: 4, chamfer: 5, crown: 6, roof: 7 } as const;
+export const WALL_KIND_MIRRORED = 8;
+export const SHEL_RECORD_LEVEL = 3;
+
+/**
+ * A SHEL level 3 mesh: the look leaves the vertex for the per-pand facade record (look/facadeRecord.ts). Each vertex
+ * keeps its position, its wall metres (u, v, len; roofs 0, 0, 0), the record it draws from and how (`wallKind`), and
+ * its building. Written only by `world:compile --facade-records`, into its own file beside the legacy shell.
+ */
+export type RecordShellMesh = {
+  positions: Float32Array;
+  /** Per vertex u, v, len in metres (multiples of WALL_UV_UNIT_M). */
+  walls: Float32Array;
+  /** Per vertex the record index (the cell's FOOT order for the first front, extra fronts after the pands). */
+  recs: Uint16Array;
+  wallKinds: Uint8Array;
+  bids: Uint16Array;
+  indices: Uint32Array;
+};
+
+const SHEL3_STREAMS = ['kind', 'index', 'dup', 'xyCode', 'dx', 'dy', 'quadZ', 'quadH', 'quadU', 'quadDu', 'quadV', 'quadDv', 'z', 'u', 'v', 'recSame', 'rec', 'wallKind', 'wallLen', 'bids'] as const;
+type Shel3Stream = (typeof SHEL3_STREAMS)[number];
+
+function shel3Ints(m: RecordShellMesh) {
+  const n = m.recs.length, X = new Int32Array(n), Y = new Int32Array(n), Z = new Int32Array(n), U = new Int32Array(n), V = new Int32Array(n), L = new Int32Array(n);
+  for (let k = 0; k < n; k++) {
+    X[k] = q(m.positions[k * 3], SHEL_UNIT_M); Y[k] = q(m.positions[k * 3 + 1], SHEL_UNIT_M); Z[k] = q(m.positions[k * 3 + 2], SHEL_UNIT_M);
+    U[k] = q(m.walls[k * 3], WALL_UV_UNIT_M); V[k] = q(m.walls[k * 3 + 1], WALL_UV_UNIT_M); L[k] = q(m.walls[k * 3 + 2], WALL_UV_UNIT_M);
+  }
+  return { X, Y, Z, U, V, L };
+}
+
+/** Encode a SHEL level 3 payload. Vertices in first-use order (`recordShellFromChunk`). Same primitive code as level 1/2. */
+export function encodeShel3(mesh: RecordShellMesh): Uint8Array {
+  const m = mesh, n = m.recs.length, I = m.indices, { X, Y, Z, U, V, L } = shel3Ints(m);
+  const w = Object.fromEntries(SHEL3_STREAMS.map(k => [k, new Writer()])) as Record<Shel3Stream, Writer>;
+  const recent = new RecentXY();
+  let px = 0, py = 0;
+  const xy = (x: number, y: number) => {
+    const hit = recent.find(x, y);
+    if (hit >= 0) { w.xyCode.uvar(hit + 1); recent.front(hit); return; }
+    w.xyCode.uvar(0); w.dx.zvar(x - px); w.dy.zvar(y - py); px = x; py = y; recent.push(x, y);
+  };
+  const same = (a: number, b: number) => m.recs[a] === m.recs[b] && m.wallKinds[a] === m.wallKinds[b] && L[a] === L[b];
+  let last = -1, lastRec = 0, lastLen = 0;
+  const record = (k: number) => {
+    const s = last >= 0 && same(k, last);
+    w.recSame.byte(s ? 1 : 0);
+    if (!s) { w.rec.zvar(m.recs[k] - lastRec); lastRec = m.recs[k]; w.wallKind.byte(m.wallKinds[k]); w.wallLen.zvar(L[k] - lastLen); lastLen = L[k]; }
+    last = k;
+  };
+  let qz = 0, qu = 0, qv = 0, gz = 0, gu = 0, gv = 0, hw = 0, t = 0;
+  while (t < I.length) {
+    const k = hw;
+    if (t + 6 <= I.length && k + 3 < n && I[t] === k && I[t + 1] === k + 1 && I[t + 2] === k + 2 && I[t + 3] === k && I[t + 4] === k + 2 && I[t + 5] === k + 3
+      && X[k + 2] === X[k + 1] && Y[k + 2] === Y[k + 1] && X[k + 3] === X[k] && Y[k + 3] === Y[k] && Z[k + 1] === Z[k] && Z[k + 2] === Z[k + 3]
+      && U[k + 2] === U[k + 1] && U[k + 3] === U[k] && V[k + 1] === V[k] && V[k + 3] === V[k + 2]
+      && same(k, k + 1) && same(k, k + 2) && same(k, k + 3)) {
+      w.kind.byte(1);
+      xy(X[k], Y[k]); xy(X[k + 1], Y[k + 1]);
+      w.quadZ.zvar(Z[k] - qz); qz = Z[k]; w.quadH.zvar(Z[k + 2] - Z[k]);
+      w.quadU.zvar(U[k] - qu); qu = U[k]; w.quadDu.zvar(U[k + 1] - U[k]);
+      w.quadV.zvar(V[k] - qv); qv = V[k]; w.quadDv.zvar(V[k + 2] - V[k]);
+      record(k);
+      hw += 4; t += 6; continue;
+    }
+    w.kind.byte(0);
+    for (let c = 0; c < 3; c++) {
+      const i = I[t + c];
+      if (i > hw || i >= n) throw Error(`shell index ${i} skips ahead of ${hw}`);
+      w.index.uvar(hw - i);
+      if (i !== hw) continue;
+      hw++;
+      let ref = 0;
+      for (let b = 1; b <= DUP_WINDOW && i - b >= 0; b++) { const j = i - b; if (X[j] === X[i] && Y[j] === Y[i] && Z[j] === Z[i] && U[j] === U[i] && V[j] === V[i] && same(i, j)) { ref = b; break; } }
+      w.dup.byte(ref);
+      if (ref) continue;
+      xy(X[i], Y[i]);
+      w.z.zvar(Z[i] - gz); gz = Z[i]; w.u.zvar(U[i] - gu); gu = U[i]; w.v.zvar(V[i] - gv); gv = V[i];
+      record(i);
+    }
+    t += 3;
+  }
+  if (hw !== n) throw Error(`shell indices use ${hw} of ${n} vertices`);
+  const runs: [number, number][] = [];
+  for (let k = 0; k < n; k++) { const b = m.bids[k]; if (runs.length && runs[runs.length - 1][0] === b) runs[runs.length - 1][1]++; else runs.push([b, 1]); }
+  w.bids.uvar(runs.length); let prev = 0;
+  for (const [b, c] of runs) { w.bids.zvar(b - prev); w.bids.uvar(c); prev = b; }
+  const out = new Writer(), streams = SHEL3_STREAMS.map(k => w[k].done());
+  out.byte(SHEL_RECORD_LEVEL); out.uvar(n); out.uvar(I.length); out.uvar(streams.length);
+  for (const b of streams) out.uvar(b.length);
+  for (const b of streams) out.bytes(b);
+  return out.done();
+}
+
+/** Decode a SHEL level 3 payload (the level byte included). */
+export function decodeShel3(r: Reader): RecordShellMesh {
+  const level = r.byte();
+  if (level !== SHEL_RECORD_LEVEL) r.fail(`SHEL level ${level}, expected ${SHEL_RECORD_LEVEL}`);
+  const n = r.count(MAX_VERTICES, 'shell vertices'), ni = r.count(MAX_VERTICES * 3, 'shell indices');
+  if (ni % 3) r.fail(`${ni} shell indices`);
+  const count = r.count(64, 'SHEL streams');
+  if (count !== SHEL3_STREAMS.length) r.fail(`${count} SHEL streams, expected ${SHEL3_STREAMS.length}`);
+  const lengths: number[] = []; for (let k = 0; k < count; k++) lengths.push(r.count(r.buf.length, 'SHEL stream length'));
+  const s = Object.fromEntries(SHEL3_STREAMS.map((k, i) => [k, new Reader(r.take(lengths[i]), `${r.what} SHEL ${k}`)])) as Record<Shel3Stream, Reader>;
+  r.end();
+  const positions = new Float32Array(n * 3), walls = new Float32Array(n * 3), recs = new Uint16Array(n), wallKinds = new Uint8Array(n), bids = new Uint16Array(n), indices = new Uint32Array(ni);
+  const recent = new RecentXY();
+  let px = 0, py = 0;
+  const xy = (): [number, number] => {
+    const c = s.xyCode.uvar();
+    if (c > 0) { if (c > recent.size) s.xyCode.fail(`xy back-reference ${c} of ${recent.size}`); const at = recent.at(c - 1); recent.front(c - 1); return at; }
+    px += s.dx.zvar(); py += s.dy.zvar(); recent.push(px, py); return [px, py];
+  };
+  let rec = 0, kind = 0, len = 0, seen = false;
+  const record = (): [number, number, number] => {
+    const same = s.recSame.byte();
+    if (same > 1) s.recSame.fail(`flag ${same}`);
+    if (!same) { rec += s.rec.zvar(); if (rec < 0 || rec > 65535) s.rec.fail(`record ${rec}`); kind = s.wallKind.byte(); len += s.wallLen.zvar(); seen = true; }
+    else if (!seen) s.recSame.fail('no record yet');
+    return [rec, kind, len];
+  };
+  const ix = new Int32Array(n * 8);
+  const put = (k: number, x: number, y: number, z: number, u: number, v: number, [rc, kd, l]: [number, number, number]) => {
+    positions[k * 3] = x * SHEL_UNIT_M; positions[k * 3 + 1] = y * SHEL_UNIT_M; positions[k * 3 + 2] = z * SHEL_UNIT_M;
+    walls[k * 3] = u * WALL_UV_UNIT_M; walls[k * 3 + 1] = v * WALL_UV_UNIT_M; walls[k * 3 + 2] = l * WALL_UV_UNIT_M;
+    recs[k] = rc; wallKinds[k] = kd;
+    ix.set([x, y, z, u, v, rc, kd, l], k * 8);
+  };
+  let qz = 0, qu = 0, qv = 0, gz = 0, gu = 0, gv = 0, hw = 0, t = 0;
+  while (t < ni) {
+    const kd = s.kind.byte();
+    if (kd === 1) {
+      const k = hw;
+      if (k + 3 >= n || t + 6 > ni) s.kind.fail(`quad at vertex ${k} of ${n}`);
+      const [x0, y0] = xy(), [x1, y1] = xy();
+      qz += s.quadZ.zvar(); const h = s.quadH.zvar(); qu += s.quadU.zvar(); const du = s.quadDu.zvar(); qv += s.quadV.zvar(); const dv = s.quadDv.zvar();
+      const rc = record();
+      put(k, x0, y0, qz, qu, qv, rc); put(k + 1, x1, y1, qz, qu + du, qv, rc); put(k + 2, x1, y1, qz + h, qu + du, qv + dv, rc); put(k + 3, x0, y0, qz + h, qu, qv + dv, rc);
+      indices.set([k, k + 1, k + 2, k, k + 2, k + 3], t);
+      hw += 4; t += 6; continue;
+    }
+    if (kd !== 0) s.kind.fail(`primitive kind ${kd}`);
+    for (let c = 0; c < 3; c++) {
+      const d = s.index.uvar(); if (d > hw) s.index.fail(`index code ${d} above ${hw}`);
+      const i = hw - d; if (i >= n) s.index.fail(`index ${i} >= ${n}`);
+      indices[t + c] = i;
+      if (d !== 0) continue;
+      hw++;
+      const ref = s.dup.byte();
+      if (ref) {
+        if (ref > DUP_WINDOW || ref > i) s.dup.fail(`back-reference ${ref} at ${i}`);
+        const j = (i - ref) * 8;
+        put(i, ix[j], ix[j + 1], ix[j + 2], ix[j + 3], ix[j + 4], [ix[j + 5], ix[j + 6], ix[j + 7]]);
+        continue;
+      }
+      const [x, y] = xy();
+      gz += s.z.zvar(); gu += s.u.zvar(); gv += s.v.zvar();
+      put(i, x, y, gz, gu, gv, record());
+    }
+    t += 3;
+  }
+  if (hw !== n) s.kind.fail(`shell indices use ${hw} of ${n} vertices`);
+  const runs = s.bids.count(n, 'bid runs');
+  let at = 0, b = 0;
+  for (let k = 0; k < runs; k++) { b += s.bids.zvar(); const c = s.bids.count(n - at, 'bid run'); if (b < 0 || b > 65535) s.bids.fail(`bid ${b}`); bids.fill(b, at, at + c); at += c; }
+  if (at !== n) s.bids.fail(`bid runs cover ${at} of ${n} vertices`);
+  for (const k of SHEL3_STREAMS) s[k].end();
+  return { positions, walls, recs, wallKinds, bids, indices };
+}
+
+/** The level byte of a SHEL payload, without consuming it. */
+export const shelLevel = (payload: Uint8Array): number => payload[0];
+
+/** A record-mode chunk (threeBuildingMesh `facadeRecord: true`): the fields a level 3 shell is baked from. */
+export type RecordShellChunk = { positions: Float32Array; walls: Float32Array; recs: Uint16Array; wallKinds: Uint8Array; indices: Uint32Array; ranges: readonly { id: string; start: number; count: number }[] };
+
+/**
+ * A record-mode chunk as a level 3 mesh: positions moved to the cell origin, vertices in first-use order, every value
+ * quantised as the encoder will (so `decodeShel3(encodeShel3(m))` is `m`). `recOf` maps a chunk-local record index to the
+ * cell's (the compiler's FOOT order); absent, the chunk's own index stands.
+ */
+export function recordShellFromChunk(chunk: RecordShellChunk, origin: readonly [number, number], bidOf: (id: string) => number, recOf: (rec: number) => number = r => r): RecordShellMesh {
+  const vertexBid = new Int32Array(chunk.recs.length).fill(-1);
+  for (const r of chunk.ranges) { const b = bidOf(r.id); vertexBid.fill(b >= 0 && b < NO_BID ? b : NO_BID, r.start, r.start + r.count); }
+  const { order, indices } = firstUseOrder(chunk.indices, chunk.recs.length), n = order.length;
+  const positions = new Float32Array(n * 3), walls = new Float32Array(n * 3), recs = new Uint16Array(n), wallKinds = new Uint8Array(n), bids = new Uint16Array(n);
+  for (let k = 0; k < n; k++) {
+    const o = order[k];
+    positions[k * 3] = q(chunk.positions[o * 3] - origin[0], SHEL_UNIT_M) * SHEL_UNIT_M;
+    positions[k * 3 + 1] = q(chunk.positions[o * 3 + 1] - origin[1], SHEL_UNIT_M) * SHEL_UNIT_M;
+    positions[k * 3 + 2] = q(chunk.positions[o * 3 + 2], SHEL_UNIT_M) * SHEL_UNIT_M;
+    for (let c = 0; c < 3; c++) walls[k * 3 + c] = q(chunk.walls[o * 3 + c], WALL_UV_UNIT_M) * WALL_UV_UNIT_M;
+    recs[k] = recOf(chunk.recs[o]); wallKinds[k] = chunk.wallKinds[o];
+    if (vertexBid[o] < 0) throw Error(`shell vertex ${o} belongs to no building range`);
+    bids[k] = vertexBid[o];
+  }
+  return { positions, walls, recs, wallKinds, bids, indices };
+}
+
 // --- SHL1: far prisms ------------------------------------------------------------------------------------------
 
 /** Douglas–Peucker on a closed ring (open list of points); keeps at least a triangle. */

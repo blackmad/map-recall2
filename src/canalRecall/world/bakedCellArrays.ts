@@ -5,7 +5,7 @@
  * and swap-marks a building by filling its range, exactly as threeBuildingsBrowser applyHidden does for a coarse chunk.
  * Pure: the world worker runs it after decodeShel.
  */
-import { NO_BID, type ShellMesh } from './shellMesh.js';
+import { NO_BID, WALL_UV_UNIT_M, type RecordShellMesh, type ShellMesh } from './shellMesh.js';
 
 /**
  * The GPU grid of a quantised cell, metres: Int16 steps of a decimetre (±3,276 m from the cell origin). A cell drawn
@@ -65,6 +65,46 @@ export function bakedCellArrays(shel: ShellMesh, ids: readonly string[], quantis
   const ranges: BakedRange[] = order.map((b, r) => ({ id: b === NO_BID ? '' : ids[b] ?? '', start: starts[r], count: counts[r] }));
   const q = quantised ? toGrid(positions) : null;
   return { positions: q ?? positions, positionUnit: q ? BAKED_GRID_M : 1, uvs, layers, tints, accents, indices, ranges, triangles: shel.indices.length / 3, accentSize: as, ...(thin ? { thin } : {}) };
+}
+
+/**
+ * A record shell (SHEL level 3, F1 #380) as the baked tier uploads it: the 18-byte vertex of the design doc §2.2 —
+ * position (Int16 x3 on BAKED_GRID_M, or Float32 when `quantised` is false), wall u/v/len (Int16 x3 in WALL_UV_UNIT_M),
+ * record (Uint16), wallKind (Uint8); the layer adds hidden and swapSlot. Regrouped per building like bakedCellArrays.
+ */
+export type BakedRecordArrays = {
+  positions: Float32Array | Int16Array; positionUnit: number; walls: Int16Array; wallUnit: number; recs: Uint16Array; wallKinds: Uint8Array;
+  indices: Uint16Array | Uint32Array; ranges: BakedRange[]; triangles: number;
+};
+export function bakedRecordArrays(shel: RecordShellMesh, ids: readonly string[], quantised = false): BakedRecordArrays {
+  const n = shel.recs.length;
+  const rank = new Map<number, number>(), order: number[] = [], counts: number[] = [];
+  for (let k = 0; k < n; k++) {
+    const b = shel.bids[k];
+    let r = rank.get(b);
+    if (r === undefined) { rank.set(b, r = order.length); order.push(b); counts.push(0); }
+    counts[r]++;
+  }
+  const starts = new Array<number>(order.length);
+  let at = 0;
+  for (let r = 0; r < order.length; r++) { starts[r] = at; at += counts[r]; }
+  const next = starts.slice(), remap = new Uint32Array(n);
+  for (let k = 0; k < n; k++) remap[k] = next[rank.get(shel.bids[k])!]++;
+  const positions = new Float32Array(n * 3), walls = new Int16Array(n * 3), recs = new Uint16Array(n), wallKinds = new Uint8Array(n);
+  for (let k = 0; k < n; k++) {
+    const v = remap[k];
+    for (let c = 0; c < 3; c++) {
+      positions[v * 3 + c] = shel.positions[k * 3 + c];
+      const w = Math.round(shel.walls[k * 3 + c] / WALL_UV_UNIT_M);
+      walls[v * 3 + c] = Math.max(-32768, Math.min(32767, w));
+    }
+    recs[v] = shel.recs[k]; wallKinds[v] = shel.wallKinds[k];
+  }
+  const indices = n <= 65536 ? new Uint16Array(shel.indices.length) : new Uint32Array(shel.indices.length);
+  for (let k = 0; k < shel.indices.length; k++) indices[k] = remap[shel.indices[k]];
+  const ranges: BakedRange[] = order.map((b, r) => ({ id: b === NO_BID ? '' : ids[b] ?? '', start: starts[r], count: counts[r] }));
+  const q = quantised ? toGrid(positions) : null;
+  return { positions: q ?? positions, positionUnit: q ? BAKED_GRID_M : 1, walls, wallUnit: WALL_UV_UNIT_M, recs, wallKinds, indices, ranges, triangles: shel.indices.length / 3 };
 }
 
 /** Metres on the SHEL grid as Int16 grid steps; null when a coordinate does not fit (it then stays Float32). */

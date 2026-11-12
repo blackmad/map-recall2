@@ -204,3 +204,86 @@ test('shell bake: a cell takes its own ranges of a group chunk (allotment by its
   assert.deepEqual([...m.positions.subarray(0, 3)], [...chunk.positions.subarray(12, 15)]);
   assert.equal(mergeShellChunks([a]), a);
 });
+
+// --- SHEL level 3 (F1 S2, #380): the facade-record mesh, FREC and CROW, and the legacy files untouched ---------------
+import fs from 'node:fs';
+import path from 'node:path';
+import zlib from 'node:zlib';
+import { decodeShel3, encodeShel3, recordShellFromChunk, WALL_KINDS, WALL_UV_UNIT_M, SHEL_RECORD_LEVEL } from './shellMesh.js';
+import { decodeShellCell, encodeShellCell } from './cellFormat.js';
+import { CROWN_BYTES, decodeCrow, decodeFrec, encodeCrow, encodeFrec, quantiseCrown, type CrownEntry } from './facadeStreams.js';
+import { bakedRecordArrays } from './bakedCellArrays.js';
+import { FACADE_RECORD_VERSION, packFacadeRecordFor } from '../look/facadeRecord.js';
+
+const recordChunk = () => {
+  // Building a: one wall quad (front) and a roof triangle; building b: a party-wall quad and a quad split by a cut.
+  const positions = new Float32Array([1000.04, 2000.06, 0, 1010, 2000, 0, 1010, 2000, 9.96, 1000, 2000, 10, 1000, 2000, 10, 1010, 2000, 10, 1005, 2005, 13,
+    1200, 2100, 0, 1201, 2100, 0, 1201, 2100, 3, 1200, 2100, 3]);
+  const walls = new Float32Array([0, 0, 10.0, 10.0, 0, 10.0, 10.0, 9.96, 10.0, 0, 10, 10.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3.01, -0.5, 1, 4.01, -0.5, 1, 4.01, 2.5, 1, 3.01, 2.5, 1]);
+  const recs = Uint16Array.from([0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1]);
+  const wallKinds = Uint8Array.from([0, 0, 0, 0, 7, 7, 7, 3, 3, 3, 3]);
+  const indices = Uint32Array.from([0, 1, 2, 0, 2, 3, 4, 5, 6, 7, 8, 9, 7, 9, 10]);
+  return { positions, walls, recs, wallKinds, indices, ranges: [{ id: 'a', start: 0, count: 7 }, { id: 'b', start: 7, count: 4 }] };
+};
+
+test('SHEL level 3: wall metres, records and wall kinds round-trip exactly; quads take the quad code', () => {
+  const m = recordShellFromChunk(recordChunk(), [1000, 2000], id => ({ a: 0, b: 1 } as Record<string, number>)[id] ?? -1);
+  assert.equal(m.recs.length, 11);
+  assert.ok(Math.abs(m.walls[2 * 3 + 1] - 9.96) < 1e-5 && Number.isInteger(Math.round(m.walls[2 * 3 + 1] / WALL_UV_UNIT_M)));
+  const bytes = encodeShel3(m);
+  assert.equal(bytes[0], SHEL_RECORD_LEVEL);
+  const d = decodeShel3(new Reader(bytes, 't'));
+  assert.deepEqual(d, m);
+  assert.deepEqual([...d.wallKinds], [0, 0, 0, 0, 7, 7, 7, 3, 3, 3, 3]);
+  assert.equal(WALL_KINDS.roof, 7);
+  // The legacy decoder refuses level 3 (the flag-off path never reads a record shell).
+  assert.throws(() => decodeShel(new Reader(bytes, 't')), /SHEL level 3/);
+});
+
+test('SHEL level 3: random meshes round-trip (dup back-references, negative wall v, long runs)', () => {
+  let s = 7; const rnd = () => (s = (Math.imul(s, 1103515245) + 12345) >>> 0) / 4294967296;
+  const n = 300, positions = new Float32Array(n * 3), walls = new Float32Array(n * 3), recs = new Uint16Array(n), wallKinds = new Uint8Array(n);
+  for (let k = 0; k < n; k++) {
+    const dup = k > 2 && rnd() < 0.2; const src = dup ? k - 1 - Math.floor(rnd() * 2) : k;
+    for (let c = 0; c < 3; c++) { positions[k * 3 + c] = dup ? positions[src * 3 + c] : 900 + rnd() * 200; walls[k * 3 + c] = dup ? walls[src * 3 + c] : (rnd() - 0.2) * 40; }
+    recs[k] = dup ? recs[src] : Math.floor(rnd() * 3000); wallKinds[k] = dup ? wallKinds[src] : Math.floor(rnd() * 8);
+  }
+  const indices = Uint32Array.from({ length: n }, (_, k) => k);
+  const m = recordShellFromChunk({ positions, walls, recs, wallKinds, indices, ranges: [{ id: 'a', start: 0, count: n }] }, [1000, 1000], () => 5);
+  assert.deepEqual(decodeShel3(new Reader(encodeShel3(m), 't')), m);
+});
+
+test('FREC and CROW round-trip; a record shell file carries SHEL level 3 + FREC + CROW', () => {
+  const recs = [packFacadeRecordFor({ id: 'a', style: 'canal', wallHex: '#7a3e2c', heightM: 12 }), packFacadeRecordFor({ id: 'b', style: 'c19', wallHex: '#6a4a36', heightM: 15, eavesM: 13 })];
+  const bytes = new Uint8Array(128); bytes.set(recs[0], 0); bytes.set(recs[1], 64);
+  const set = { version: FACADE_RECORD_VERSION, count: 2, bytes };
+  assert.deepEqual(decodeFrec(new Reader(encodeFrec(set), 'f')), set);
+  const crown: CrownEntry = { x0: -12.34, y0: 998.76, x1: 4.5, y1: 1003.2, z: 11.37, rise: 4.21, neck: 0.4, capRise: 0.62, kind: 'neck', steps: 0, shoulder: 'ogee', cap: 'pediment', capSpan: 'medium', half: null, finial: true, depth: 0.3, rec: 1, rgb: [122, 62, 44] };
+  const q = quantiseCrown(crown);
+  assert.ok(Math.abs(q.x0 - crown.x0) <= 0.05 && Math.abs(q.z - crown.z) <= 0.005 && q.kind === 'neck' && q.shoulder === 'ogee' && q.cap === 'pediment' && q.finial);
+  const step: CrownEntry = { ...crown, kind: 'step', steps: 5, shoulder: null, cap: null, capSpan: null, half: 'left', finial: false };
+  assert.deepEqual(decodeCrow(new Reader(encodeCrow([crown, step]), 'c')), [q, quantiseCrown(step)]);
+  assert.equal(CROWN_BYTES, 24);
+  const rshel = recordShellFromChunk(recordChunk(), [1000, 2000], id => ({ a: 0, b: 1 } as Record<string, number>)[id] ?? -1);
+  const file = encodeShellCell({ i: 0, j: 2, rshel, records: set, crowns: [q] }).bytes;
+  const back = decodeShellCell(file, 'rec');
+  assert.deepEqual(back.rshel, rshel); assert.deepEqual(back.records, set); assert.deepEqual(back.crowns, [q]); assert.equal(back.shel, undefined);
+  assert.throws(() => encodeShellCell({ i: 0, j: 0, rshel, shel: shellFromChunk(quadChunk(), [1000, 2000], () => 0) }), /one SHEL/);
+  // The GPU layout: 18 B a vertex in the accounting (6 position + 6 wall + 2 rec + 1 kind + hidden/swap/pad 3).
+  const g = bakedRecordArrays(rshel, ['a', 'b'], true);
+  assert.equal(g.positions.BYTES_PER_ELEMENT * 3 + g.walls.BYTES_PER_ELEMENT * 3 + g.recs.BYTES_PER_ELEMENT + g.wallKinds.BYTES_PER_ELEMENT + 3, 18);
+  assert.deepEqual(g.ranges.map(r => [r.id, r.count]), [['a', 7], ['b', 4]]);
+  assert.equal(g.walls[2 * 3 + 1], Math.round(9.96 / WALL_UV_UNIT_M));
+});
+
+test('the published legacy shells re-encode byte for byte (F1 adds streams, changes none)', () => {
+  const dir = path.resolve(process.env.WORLD_CELLS_DIR || 'public/data/extracts/amsterdam/world-v1', 'shells');
+  if (!fs.existsSync(dir)) return;
+  const keys = fs.readdirSync(dir).filter(f => f.endsWith('.bin')).sort().slice(0, 6);
+  for (const f of keys) {
+    const raw = zlib.gunzipSync(fs.readFileSync(path.join(dir, f)));
+    const cell = decodeShellCell(raw, f);
+    assert.ok(cell.shel && !cell.rshel && !cell.records);
+    assert.ok(Buffer.from(encodeShellCell(cell).bytes).equals(raw), f);
+  }
+});

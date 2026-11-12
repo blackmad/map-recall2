@@ -13,7 +13,8 @@
  */
 import { decodeCell, decodeGlobalStrings, decodeShellCell, cellGlobalRef, GLOBAL_STRINGS_FILE, inflateCell, type GlobalStrings, rawFeature, styledFeature, WORLD_FORMAT_VERSIONS, type Cell, type Props, type Geometry } from './cellFormat.js';
 import { farCellArrays, type FarCellArrays } from './shellMesh.js';
-import { bakedCellArrays, type BakedCellArrays } from './bakedCellArrays.js';
+import { bakedCellArrays, bakedRecordArrays, type BakedCellArrays, type BakedRecordArrays } from './bakedCellArrays.js';
+import { frecCurrent, type CrownEntry, type FacadeRecordSet } from './facadeStreams.js';
 import { CellQueue, affinity, rankCells } from '../engine/worldStreamer.js';
 import { poolWorkerUrl, sharedWorkerPool, type WorkerPool } from '../engine/workerPool.js';
 import type { LngLat } from '../streamingLookAhead.js';
@@ -24,6 +25,10 @@ export type WorldIndex = { version: 1; format: number; compiler: string; tileCel
 export type FarCell = FarCellArrays & { key: string; gzBytes: number };
 /** A baked coarse cell (SHEL, lane R4-A #243) decoded in the worker: per-building contiguous ranges named by building id. */
 export type ShellCellData = BakedCellArrays & { key: string; gzBytes: number };
+/** A record shell (F1, `world-v1/facade/<key>.bin`): the level 3 mesh as uploaded, the cell's facade records and crowns. */
+export type RecordShellCellData = BakedRecordArrays & { key: string; gzBytes: number; records: FacadeRecordSet; crowns: CrownEntry[] };
+/** The record shell directory beside `shells/` (written by `world:compile --facade-records`). */
+export const FACADE_SHELL_DIR = 'facade';
 export type WorldFeature = { type: 'Feature'; properties: Props; geometry: Geometry };
 export type WorldTile = { features: WorldFeature[]; styled: Map<WorldFeature, WorldFeature> };
 
@@ -123,6 +128,20 @@ export class WorldCellReader {
     if (!decoded.shel) throw Error(`world shell ${key}: no SHEL stream`);
     const cell = await (this.cells.get(key) ?? this.cellUncached(key, signal));
     return { key, gzBytes: bytes.length, ...bakedCellArrays(decoded.shel, cell.buildings.map(b => b.id), !exact, compact) };
+  }
+  /**
+   * `<shellBase>/facade/<key>.bin` (F1 #380): SHEL level 3 + FREC + CROW, regrouped per building like `shell`. Throws on a
+   * missing file or a record version this build does not read: the caller then draws the legacy shell (design §2.2).
+   */
+  async recordShell(key: string, shellBase: string, signal?: AbortSignal, exact = false): Promise<RecordShellCellData> {
+    const response = await this.fetcher(`${shellBase.replace(/\/$/, '')}/${FACADE_SHELL_DIR}/${key}.bin`, { signal });
+    if (!response.ok) throw Error(`world record shell ${key}: HTTP ${response.status}`);
+    const bytes = new Uint8Array(await response.arrayBuffer());
+    const decoded = decodeShellCell(await inflateCell(bytes), `world record shell ${key}`);
+    if (!decoded.rshel || !decoded.records) throw Error(`world record shell ${key}: no SHEL level 3 or FREC stream`);
+    if (!frecCurrent(decoded.records)) throw Error(`world record shell ${key}: record version ${decoded.records.version}`);
+    const cell = await (this.cells.get(key) ?? this.cellUncached(key, signal));
+    return { key, gzBytes: bytes.length, ...bakedRecordArrays(decoded.rshel, cell.buildings.map(b => b.id), !exact), records: decoded.records, crowns: decoded.crowns ?? [] };
   }
   private async cellUncached(key: string, signal?: AbortSignal): Promise<Cell> {
     const response = await this.fetcher(`${this.baseUrl.replace(/\/$/, '')}/world-v1/cells/${key}.bin`, { signal });
