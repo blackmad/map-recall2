@@ -15,11 +15,12 @@ describe ──► preview ──► compare ──► stage ──► publish
 | §2 Preview in Node | H2 | landed |
 | §3 Stage and publish | H3 | landed |
 | §4 Describe at scale (crops → facts → spec) | H4 (§4a), H5 (§4b), H5h (§4c hand set) | landed on the AB07 pilot |
-| §5 The kit-gap queue | H6 | stub |
+| §5 The kit-gap queue | H6, F4 | the critic histogram ranks it (§9, `kit-gaps.ts`) |
 | §6 Worked example: the timed pilot (Nieuwmarkt, Bloemgracht, Nassaukade) | H7 | landed (staged batch `pilot-20261110`) |
 | §6b The standing acceptance set (easy houses) | H9 | landed |
 | §7 Review in the game (`house:frames`) | H10 | landed |
 | §8 Browser-free GLB passes | H12 | landed (gate: raster metrics; verdicts advisory, judgement ruling 2026-11-10) |
+| §9 Facade benchmark and blind critic (`house:critic`) | F4 | landed (round 0 = baseline) |
 
 ## §1 The record: HouseSpec
 
@@ -1599,6 +1600,9 @@ On the generic path the painted door is not raised, so the landing covers its lo
 
 Stub (lane H6): `kit-gaps.ts` aggregates `schemaLimits` by `component`; the horizon rule.
 
+Since lane F4 (#379) the queue is measured: `scripts/house-line/kit-gaps.ts` ranks the blind critic's gap histogram
+(§9) by severity sum, names the renderer feature that closes each gap, and says what the benchmark photos show for it.
+
 ## §6 Worked example: the H7 timed pilot (lane H7, #354, 2026-11-10)
 
 Three rows went crop → describe → preview → compare → stage, timed: Nieuwmarkt 6-22 (7 pands, AE03), Bloemgracht 121-197
@@ -2202,3 +2206,77 @@ walls city-wide flip. Cream entries (#e2d8d4, #dfd9d7, #ece8e1, #eae8e7) come fr
 **Frames not yet run** (house:frames on 12 pands and the Kinkerstraat / Bellamystraat / JP Heijestraat / Helmersbuurt street frames, v1 vs v2): the tile worker is
 loaded by URL, so a page query never reaches it; compare two scratch bundle builds (`BUNDLES_DIR`, three-buildings + worker) with the default constant flipped.
 Pairs of the measurement: screenshots repo `ui/2026-11-10-oudwest-palette/`.
+
+## §10 Facade benchmark and blind critic (`house:critic`, lane F4, #379)
+
+Acceptance for generic-path pands moves from per pand to per feature (docs/plans/facade-programme-20261112.md, F4): a
+fixed benchmark is framed in the game every round, a fresh critic names the single biggest gap per pair from a closed
+vocabulary, and the ranked gap histogram is the kit-gap queue (§5). Landmarks keep gallery-size review.
+
+| Piece | Where |
+|---|---|
+| Groups (contiguous blocks) | `scripts/house-line/benchmark/groups-v1.json` |
+| Pands from BAG addresses (PDOK locatieserver + verblijfsobject, cached) | `scripts/house-line/benchmark/select.ts` |
+| The benchmark: 199 pands, wall overrides, the photo each was read from, hand labels | `scripts/house-line/benchmark/benchmark-v1.json` (`build.ts` keeps labels when re-run) |
+| The house:frames list | `scripts/house-line/benchmark/benchmark-v1.frames.json` |
+| Reading convention, label type and validator | `scripts/house-line/benchmark/labels.md`, `src/canalRecall/houseSpec/critic/labels.ts` |
+| Labelling sheets, label merge (refuses a label read from a photo the pose no longer uses) | `label-sheets.ts`, `merge-labels.ts` |
+| Vocabulary, side shuffle, masks, parser/scorer/stop rule | `src/canalRecall/houseSpec/critic/{vocabulary,shuffle,mask,score}.ts`, `critic.test.ts` |
+| Round harness | `scripts/house-line/critic.ts` (`prepare`, `score`, `plot`) |
+| Queue | `scripts/house-line/kit-gaps.ts` |
+
+### Pose rule
+
+`--season winter --prefer-obliquity 30`: winter captures first; then captures whose pose fits the whole wall (no
+`clipped`); then obliquity under 30 deg, squarest first. Canal fronts (`kind` canal belt / kit standard) are framed with
+`maxDistM: 60` from the far quay: from the near quay (5 m) a 120 deg lens cannot hold a canal house's crown. With either
+flag house:frames drops a capture whose sight line to the wall (two of the middle and quarter points, 0.6 m out) crosses
+another footprint: without it 62 of 198 poses (Jordaan, Haarlemmer, Nieuwmarkt) stood on the next street with houses in
+between (the readers marked 36 of 37 Jordaan pands unreadable). Narrow streets have no square view: their poses are
+40-55 deg oblique. A pose flagged `otherBuilding` is re-picked with the entry's `notPanos`.
+
+### A round
+
+```sh
+# 1. frames (one run for the whole benchmark; house:frames takes its own browser slot: never wrap it in /tmp/canal-pw.sh)
+PW_PORT=<port> npm run house:frames -- --list scripts/house-line/benchmark/benchmark-v1.frames.json \
+  --season winter --prefer-obliquity 30 --label round-N --out artifacts/critic/frames-round-N [--query ...]
+# 2. masked, shuffled pairs; sheets of two pairs; one prompt per chunk; the key goes to artifacts/critic/keys/ (never to the critic)
+node --import tsx scripts/house-line/critic.ts prepare --frames artifacts/critic/frames-round-N --round N
+# 3. one FRESH Claude opus agent per chunk, prompt = artifacts/critic/round-N/prompts/chunk-K.md, nothing else
+#    (no specs, no labels, no history; Jev and Gemini may pre-sort pairs but are never the critic)
+# 4. parse and score: answers.json, histogram.json, fooled-rate.json; artifacts/critic/fooled-rate.{svg,png,json}
+node --import tsx scripts/house-line/critic.ts score --round N
+# 5. the queue
+node --import tsx scripts/house-line/kit-gaps.ts --round N --md artifacts/kit-gaps/critic-queue.md
+```
+
+Masks (identical on both halves): everything under 1.5 m above the wall foot is grey (cars, bikes, people, the street;
+stoops and stallrisers go with it); leaf pixels of either half, dilated 3 px, are grey on both; each half's own sky is
+painted one flat colour (a union would draw the photo's skyline into the game half, and the skyline is evidence). The
+wall outline is drawn on both. The fooled-rate is the share of answered pairs where the critic named the photo as the game
+(0.5 = cannot tell them apart). Stop rule: flat (|change| < 0.03) for two rounds, restart with a fresh critic (new seed,
+new chunking) before reading more into the curve. Archive every round's photo/game pairs to the source-data repo
+(`experiments/facade-benchmark/round-N/`): J3 could not re-run likeness because its render sources had been pruned.
+
+### Round 0 (2026-11-12, baseline before F1)
+
+Main at 659f8fc72 plus this lane's pose rule; default world; 193 of 199 pands posed (6 have no capture with a line of
+sight in 5-35 m, one is not in the building tiles), 193 framed in one run (12.2 min, 15.8 pairs/min); 157 generic, 23
+installed models, 13 spec recipes. Four fresh Opus critics, about 50 pairs each.
+
+- **Fooled-rate 0 of 193 (0.0 %).** The critic named the game every time (high 82, med 65, low 46): today's render is
+  told apart at a glance, so the curve has room. Rate per group and the full histogram: `artifacts/critic/round-0/`.
+- **The queue** (severity sum): wall colour/tone 87 pairs (153), crown/gable type 24 (55), window columns 15 (30),
+  brick vs render 11 (25), window kind 14 (21), white surrounds/bands 12 (18), roof/dormer 9 (16), storey count 7 (15),
+  wrong building 3, pane layout 2, blank wall 1, shopfront form 1; none 7. Wall colour leads on every group.
+- **Shopfronts are under-read**: the 1.5 m street band hides stallrisers, doors and most of the display glass, so
+  "shopfront present" was never named although 105 of 158 readable pands have one. Round 1 should drop the band to
+  ~0.9 m on the shop groups (or mask vehicles only) before reading the F2 gap.
+- Labels: 158 of 193 readable (canal fronts from the far quay read best; Nassaukade 506 is 2 of 7, branches in front
+  of the 2020 winter captures; narrow streets are 40-55 deg oblique).
+- Frames flags: otherBuilding 17 (re-pick with `notPanos` next round), roofOffset 46, wallColour 70; photo edge
+  alignment median 2.2 % (p90 5.1 %).
+
+Archive: source-data `experiments/facade-benchmark/round-0/` (frames, critic pairs and key, labels, queue). Sheets:
+map-recall2-screenshots `ui/2026-11-12-facade-benchmark/round-0/`.
