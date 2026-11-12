@@ -17,7 +17,7 @@ describe ──► preview ──► compare ──► stage ──► publish
 | §4 Describe at scale (crops → facts → spec) | H4 (§4a), H5 (§4b), H5h (§4c hand set) | landed on the AB07 pilot |
 | §5 The kit-gap queue | H6 | stub |
 | §6 Worked example: the timed pilot (Nieuwmarkt, Bloemgracht, Nassaukade) | H7 | landed (staged batch `pilot-20261110`) |
-| §6a Belt builder: the Nieuwmarkt (recipe-route designs per pand) | belt-nieuwmarkt | staged (batches 1-2) |
+| §6a Belt builder: the Nieuwmarkt (recipe-route designs per pand) | belt-nieuwmarkt | staged (batches 1-3, 50 specs) |
 | §6b The standing acceptance set (easy houses) | H9 | landed |
 | §7 Review in the game (`house:frames`) | H10 | landed |
 | §8 Browser-free GLB passes | H12 | landed (gate: raster metrics; verdicts advisory, judgement ruling 2026-11-10) |
@@ -1784,6 +1784,33 @@ What the row taught:
 - **`resolved.ts`** now removes the intent it wrote into a house directory that held only a hand `facts.json`.
 - **`house:frames` takes its own `/tmp/canal-pw.sh` slot.** Wrapping the command in `canal-pw.sh` again holds one slot
   while the inner run waits for a second: with three slots and other lanes doing the same, every run waits.
+- **Install gates before staging (the lane's own rehearsal).** `house:publish` step 3 installs every recipe-route spec and
+  a single gate failure stops the batch. Rehearse it: `house:publish --dry-run` writes the intents to
+  `artifacts/house-specs/work/<batch>/intents/`; copy each into `scripts/building-recipes/houses/spec-<pand>/intent.json`
+  (id `spec-<pand>`), run `facts.ts --house=spec-<pand> --pand=<pand> --street=<street> --no-photo`, then
+  `install.ts --house=spec-<pand> --dry` (gates only) and read `artifacts/building-recipes/spec-<pand>/report.json` `gates`.
+  The misses this lane met, and what fits them:
+  - `storey-height` (upper storeys 2.3-4.6 m under the 3DBAG eaves): crops read across a canal show storeys the eaves
+    cannot hold. One storey fewer, or explicit `storeyHeights` (`[1.3, 1, 1, ...]`, which also stops `diminishing` from
+    shrinking the top storey below 2.3 m); the dropped storey is a schemaLimit.
+  - `open-edges` (<= 2 m): a `dormers` + `dormerStyle: pediment` over a cornice front leaves 3.8 m a dormer, and a
+    `shopfront.sign` on one front left 3.3 m (21 edges). Both dropped and recorded; **kit bug for the integrator**.
+  - `triangle-budget` (<= 3000): arch rings/keystones on wide or two-front pands push it over; drop the window heads.
+  - `toRecipe` returns null (the spec stages as generic, silently) when `validateIntent` refuses the candidate:
+    `windowHead` together with `archedStoreys` is refused. Check with a one-off `validateIntent` over every spec.
+  - `toRecipe` `intentSources` now dedupes sources whose ids collide after slugging (receipt refs that share their first
+    60 characters made the install validator refuse the intent as "Duplicate observations").
+- **After frames need the scratch bundle.** The ordinary-building catalogue is compiled into
+  `signature-placement.bundle.js` (`landmarks/ordinaryModels.ts` imports `catalogue.json`), so a local install draws nothing
+  new in `?world=live` until that bundle is rebuilt. Build it outside the tree
+  (`esbuild src/canalRecall/landmarks/browser.ts --bundle --format=iife --global-name=CanalRecallSignatureLandmarks
+  --outfile=<scratch>/signature-placement.bundle.js --minify`) and run the after frames with `BUNDLES_DIR=<scratch>`; the
+  pose's `picks.drawnBy` names the model actually drawn (`generic` = the install did not reach the frame).
+- **Crops across a canal (Geldersekade, 2021-01-25).** Half the rectified wall is the far quay wall and its fence, so the
+  photo wall reading is the quay: `fill-colours.py` takes the crop reading only for brick fronts, not NO EVIDENCE verdicts,
+  not those captures, and applies the low-sun cast only to a sunlit wall (HSL lightness >= 0.3).
+- **Wall bearing from the crop.** `pand-crops/<pand>/front.json` `wall.normal` (RD x, y) gives the bearing
+  (`atan2(x, y)`) for `--wall` and for the frames list, so preview, crop and frame look at the same wall.
 
 ## §6b The standing acceptance set: the user's easy houses (lane H9)
 
