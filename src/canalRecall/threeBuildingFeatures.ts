@@ -19,7 +19,7 @@ import { BOX_MIN_M2, LIP_MIN_M2, flatRoofSurfaceEnabled, flatRoofSurfaceLayer } 
 import { isRoofSlot } from './roofs/roofFacts.js';
 import { largeTierSystem, plinthHex } from './largeBuildingTier.js';
 import type { Look, ShopKind } from './bayTextures.js';
-import { buildChunk, lookVariant, wallTopHeightM, type Chunk, type MeshBuilding } from './threeBuildingMesh.js';
+import { buildChunk, lookVariant, wallTopHeightM, type Chunk, type ChunkOptions, type MeshBuilding } from './threeBuildingMesh.js';
 import { FACADE_STYLES, footprintAreaM2, type FacadeStyle } from './genericFacades.js';
 import { profilesNearBuilding } from './streetFacadeRendering.js';
 import { bayVariantOpenings, proceduralOpenings } from './facadeOpenings.js';
@@ -387,7 +387,8 @@ export function shellRoofPlanFor(outer: readonly number[][], plan: RoofPlan, dim
 const SHELL_ROOF_KIND: Partial<Record<RoofPlan['kind'], RoofPlan['kind']>> = { mansard: 'hipped', mansardHip: 'hipped', school: 'hipped', halfHipped: 'hipped', sawtooth: 'pitched' };
 /** A parapet roof is flat behind its parapet: the shell's lid at the same height already draws it. */
 const shellRoofed = (plan: RoofPlan) => plan.kind !== 'parapet';
-export type FeatureChunkOptions = { /** Coarse/touch shells get their planned roof, low-poly (shellRoofPlan). */ shellRoofs?: boolean };
+export type FeatureChunkOptions = { /** Coarse/touch shells get their planned roof, low-poly (shellRoofPlan). */ shellRoofs?: boolean;
+  /** F1 (#380): the record-mode chunk (threeBuildingMesh ChunkOptions); absent, byte-identical. */ facadeRecord?: boolean; specFor?: ChunkOptions['specFor'] };
 
 /** A chunk for a group of streamed features in one look. */
 /** `streets`: flat street segments near the chunk, metres from ORIGIN (streetFronts.ts); doors then go only on the street side. */
@@ -435,8 +436,9 @@ export function buildFeatureChunk(features: readonly Feature[], look: BuildingLo
       building.streetAppearance = { profiles: localProfiles, look, sourceHeightM: Number(f.properties.height) || building.heightM, year: p.constructionYear == null || !Number.isFinite(Number(p.constructionYear)) ? null : Number(p.constructionYear), mappedWallHex, shopfront: shopfrontOf(p), periodWallHex: periodWallOf(p) };
     }
     return building;
-  }).filter((b): b is MeshBuilding => !!b).flatMap(b => b.setbackCrown ? withSetbackCrown(b, look) : [b]), ORIGIN, mode === 'coarse' ? 'walls' : mode, streets, contextFeatures.map(f=>{const roofed=(mode==='coarse'||mode==='shell')&&!!chunkOptions.shellRoofs&&!f.properties.gardenShed&&!f.properties.kitRoof;const b=meshBuildingFor(f,look,(mode==='coarse'||mode==='shell')&&!roofed);if(b){const binding=surveyedEnvelopes.get(b.id),g=f.geometry as {type?:string;coordinates?:number[][][]};if(binding&&binding.nativeParentId===b.id&&g.type==='Polygon'&&binding.installedFootprintFingerprint===envelopeFootprintFingerprint(g as {type:'Polygon';coordinates:number[][][]})&&binding.nativeMetadata.aggregateHeightM===Number(f.properties.height)&&binding.nativeMetadata.constructionYear===Number(f.properties.constructionYear)&&binding.meshOrigin.lng===ORIGIN.lng&&binding.meshOrigin.lat===ORIGIN.lat)b.surveyedEnvelope=binding;}if(b&&(mode==='coarse'||mode==='shell')&&!(roofed&&b.roof&&shellRoofed(b.roof.plan))){b.heightM=f.properties.kitRoof?wallTopHeightM(f.properties):Number(f.properties.height)||b.heightM;b.roof=undefined;}return b;}).filter((b):b is MeshBuilding=>!!b), hostOpenings);
-  if (!garden.length || mode === 'extras') return chunk;
+  }).filter((b): b is MeshBuilding => !!b).flatMap(b => b.setbackCrown ? withSetbackCrown(b, look) : [b]), ORIGIN, mode === 'coarse' ? 'walls' : mode, streets, contextFeatures.map(f=>{const roofed=(mode==='coarse'||mode==='shell')&&!!chunkOptions.shellRoofs&&!f.properties.gardenShed&&!f.properties.kitRoof;const b=meshBuildingFor(f,look,(mode==='coarse'||mode==='shell')&&!roofed);if(b){const binding=surveyedEnvelopes.get(b.id),g=f.geometry as {type?:string;coordinates?:number[][][]};if(binding&&binding.nativeParentId===b.id&&g.type==='Polygon'&&binding.installedFootprintFingerprint===envelopeFootprintFingerprint(g as {type:'Polygon';coordinates:number[][][]})&&binding.nativeMetadata.aggregateHeightM===Number(f.properties.height)&&binding.nativeMetadata.constructionYear===Number(f.properties.constructionYear)&&binding.meshOrigin.lng===ORIGIN.lng&&binding.meshOrigin.lat===ORIGIN.lat)b.surveyedEnvelope=binding;}if(b&&(mode==='coarse'||mode==='shell')&&!(roofed&&b.roof&&shellRoofed(b.roof.plan))){b.heightM=f.properties.kitRoof?wallTopHeightM(f.properties):Number(f.properties.height)||b.heightM;b.roof=undefined;}return b;}).filter((b):b is MeshBuilding=>!!b), hostOpenings, chunkOptions.facadeRecord ? { facadeRecord: true, ...(chunkOptions.specFor ? { specFor: chunkOptions.specFor } : {}) } : {});
+  // F1 record mode: allotment houses are appended in the legacy layout only (no record arrays for them yet).
+  if (!garden.length || mode === 'extras' || chunk.record) return chunk;
   const flatLayer = (cellSetOf(look) === 'procedural' ? CELL_LAYER_COUNT : BAY_LAYER_COUNT) + 3;
   return appendAllotmentHouses(chunk, garden, ORIGIN, flatLayer, mode === 'coarse' || mode === 'shell');
 }
