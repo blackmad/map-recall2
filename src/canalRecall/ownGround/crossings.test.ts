@@ -2,8 +2,9 @@
 // a record (spans, cuts, portals), byte-identical where no record lies.
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { CROSSING_FILES, CROSSINGS, crossingIndex, floorCaps, gameDefaults, validateFile, validateRecord, type CrossingRecord, type LngLat } from './crossings';
+import { CROSSINGS, crossingIndex, runtimeOf, floorCaps, gameDefaults, validateFile, validateRecord, type CrossingRecord, type LngLat } from './crossings';
 import type { Cut } from './tunnels';
+import { AUTHORED, CROSSING_FILES } from './crossingFiles';
 import type { Vec2 } from './surface';
 
 // A flat local frame: 1e-5 degrees = 1 m both ways around (4.85, 52.34).
@@ -42,7 +43,14 @@ test('register files: every record validates, ids are unique across files', () =
     assert.deepEqual(validateFile(f), [], f.area);
     for (const r of f.records) { assert.ok(!ids.has(r.id), `duplicate ${r.id}`); ids.add(r.id); }
   }
-  assert.equal(CROSSINGS.length, ids.size);
+  assert.equal(AUTHORED.length, ids.size);
+});
+
+test('the runtime extract is runtimeOf(the authored files) (regenerate: npx tsx scripts/crossings/compose.ts --runtime)', () => {
+  assert.deepEqual(CROSSINGS, runtimeOf(AUTHORED).records);
+  // Only what the game reads: no evidence, binds, piers or labels.
+  for (const r of CROSSINGS) for (const k of ['evidence', 'binds', 'label', 'disagreements']) assert.ok(!(k in r), `${r.id}.${k}`);
+  for (const r of CROSSINGS) assert.ok(!('piers' in r.plan) && !('walls' in r.plan) && !('tunnels' in r.plan), r.id);
 });
 
 test('validateRecord catches what a hand edit breaks', () => {
@@ -87,6 +95,17 @@ test('spans: a rail-over-road record replaces the inferred span with its rail de
   // A track crossing under the deck (the museum tram under the Kranenbergpad ring decks, north-south) gets none.
   assert.deepEqual(idx.spans([[0, -60], [0, 60]], [], false), []);
   assert.match(validateRecord(record({ plan: { decks: [{ ring: box(-15, -6, 15, 6), carries: 'rail' }] } })).join(), /axisDeg/);
+});
+
+test('spans: a track at street level under a rail deck gets no span (Kimpoweg tram under the Sloterdijk metro viaduct, #13)', () => {
+  const idx = crossingIndex([record()], project);
+  const track: Vec2[] = [[-60, 0], [60, 0]];
+  // record(): street 0.5, deck top 6.1 NAP; midway 3.3 NAP = scene 1.93. A bed at scene -0.9 (0.47 NAP) is the street's.
+  assert.deepEqual(idx.spans(track, [], false, () => -0.9), []);
+  // A bed at the deck (scene 4.7 = 6.07 NAP) is on it.
+  assert.equal(idx.spans(track, [], false, () => 4.7).length, 1);
+  // No level given: the deck alone decides (as before).
+  assert.equal(idx.spans(track, [], false).length, 1);
 });
 
 test('spans: a level record drops the inferred span and makes none', () => {

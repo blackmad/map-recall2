@@ -11,17 +11,30 @@
 import { existsSync, readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import type { CrossingFile, CrossingKind, CrossingPortal, CrossingRecord, LngLat } from '../../src/canalRecall/ownGround/crossings.ts';
-import { validateFile } from '../../src/canalRecall/ownGround/crossings.ts';
+import { runtimeOf, validateFile } from '../../src/canalRecall/ownGround/crossings.ts';
+import { RUNTIME_AREAS } from '../../src/canalRecall/ownGround/crossingFiles.ts';
 import { overpassWays } from './sources.ts';
 
 export const HELP = `crossings:compose — build data/crossings/<area>.json from review decisions and drafts.
 
   npx tsx scripts/crossings/compose.ts --area <id> [--drafts <dir>] [--review <dir>]
+  npx tsx scripts/crossings/compose.ts --runtime        (only rewrite the runtime extract)
 
 Input:  data/crossings/review/<area>.json  { area, description, reviewer, on, records: Decision[] }
         Decision: { id, label, kind, drafts: [draft ids], decks? (replace the drafts' decks), abutments?, at?, zone? (replaces the merged zone), zoneExtra? (polygon added),
                     portals?, game?, heights? (overrides), carries? ({draftId: carries}), verdict, notes, disagreements? }
-Output: data/crossings/<area>.json (validated; exit 1 on an invalid record).`;
+Output: data/crossings/<area>.json (validated; exit 1 on an invalid record), then data/crossings/runtime.json: the
+        compact extract the game reads (crossings.ts runtimeOf over every area in crossingFiles.ts RUNTIME_AREAS).`;
+
+/** Rewrite data/crossings/runtime.json from the authored area files; one record per line. Returns its size in bytes. */
+export function writeRuntime(): number {
+  const records = RUNTIME_AREAS.flatMap(a => (JSON.parse(readFileSync(join('data/crossings', `${a}.json`), 'utf8')) as CrossingFile).records);
+  const rt = runtimeOf(records);
+  const text = `{"version":1,"records":[\n${rt.records.map(r => JSON.stringify(r)).join(',\n')}\n]}\n`;
+  writeFileSync('data/crossings/runtime.json', text);
+  console.log(`wrote data/crossings/runtime.json: ${rt.records.length} records, ${text.length} bytes`);
+  return text.length;
+}
 
 const args = process.argv.slice(2);
 const argOf = (k: string) => { const i = args.indexOf(k); return i >= 0 ? args[i + 1] : undefined; };
@@ -67,6 +80,7 @@ async function railAxis(ring: LngLat[], ids: number[]): Promise<number | undefin
 
 async function main(): Promise<void> {
   if (args.includes('--help') || args.includes('-h')) { console.log(HELP); return; }
+  if (args.includes('--runtime')) { writeRuntime(); return; }
   const area = argOf('--area') ?? 'named', draftsDir = argOf('--drafts') ?? 'artifacts/crossings/drafts', reviewDir = argOf('--review') ?? 'artifacts/crossings/review';
   const review = JSON.parse(readFileSync(join('data/crossings/review', `${area}.json`), 'utf8')) as ReviewFile;
   const drafts = new Map((JSON.parse(readFileSync(join(draftsDir, `${area}.json`), 'utf8')) as CrossingFile).records.map(r => [r.id, r]));
@@ -126,7 +140,8 @@ async function main(): Promise<void> {
   for (const e of errors) console.log(`  INVALID ${e}`);
   writeFileSync(join('data/crossings', `${area}.json`), JSON.stringify(file, null, 1) + '\n');
   console.log(`wrote data/crossings/${area}.json: ${out.length} records, ${out.filter(r => r.reviewed).length} reviewed${errors.length ? `, ${errors.length} problems` : ''}`);
-  if (errors.length) process.exitCode = 1;
+  if (errors.length) { process.exitCode = 1; return; }
+  writeRuntime();
 }
 
 if (process.argv[1]?.endsWith('compose.ts')) await main();

@@ -30,7 +30,8 @@ import { bandCoverage, deckEndMisses, deckSlabOnLand, deckStreetTop, DECK_ENDS, 
 import { RoadIndex } from '../../src/canalRecall/ownGround/roadSurfaces.ts';
 import { RELIEF_SPOTS, RELIEF_STEPS, reliefSpread } from '../../src/canalRecall/ownGround/reliefRegressions.ts';
 import { RAIL_VIADUCTS } from '../../src/canalRecall/ownGround/railViaducts.ts';
-import { CROSSINGS, insideRing as inCrossingRing, type CrossingRecord } from '../../src/canalRecall/ownGround/crossings.ts';
+import { insideRing as inCrossingRing, type CrossingRecord } from '../../src/canalRecall/ownGround/crossings.ts';
+import { AUTHORED as CROSSINGS } from '../../src/canalRecall/ownGround/crossingFiles.ts';
 import { buriedShare, deckBreaks, RAIL_BRIDGE_SPOTS, RAIL_LEVEL_SPOTS, RAIL_SPOTS, stationLevels } from '../../src/canalRecall/ownGround/railRegressions.ts';
 import type { RailWay } from '../../src/canalRecall/ownGround/railTracks.ts';
 import { applyRailInfra, isRailInfraTable, pieceShare, RAIL_INFRA_FILE, RAIL_INFRA_SPOTS, type Vec2 as InfraVec2 } from '../../src/canalRecall/railInfraBuildings.ts';
@@ -124,13 +125,14 @@ async function reliefRegressions(): Promise<void> {
  *   road-over-*     no cut station and no dark mouth in the zone (the street runs on at grade under the deck)
  * Each pin also reports the before (`crossings: false`), so a pin that the before already passes is visible.
  */
-const noCrossings = new GroundStore(readExtract, { crossings: false });
+const noCrossings = new GroundStore(readExtract, { crossings: false }), withCrossings = new GroundStore(readExtract, { crossings: true });
 async function crossingRegressions(): Promise<void> {
   await noCrossings.init();
+  await withCrossings.init();
   const named = CROSSINGS.filter(r => r.area === 'named');
   check(named.length >= 8 && named.every(r => r.reviewed), `crossings: ${named.length} named-place records, ${named.filter(r => r.reviewed).length} reviewed (≥ 8, all reviewed)`);
   for (const r of CROSSINGS.filter(x => x.reviewed)) {
-    const after = await crossingState(store, r), before = await crossingState(noCrossings, r);
+    const after = await crossingState(withCrossings, r), before = await crossingState(noCrossings, r);
     const say = (s: CrossingState) => `spans on deck ${s.spansOnDeck}, spans off deck ${s.spansOffDeck}, cut stations ${s.cutStations}, dark mouths ${s.mouths} (unlisted ${s.unlistedMouths})`;
     console.log(`     ${r.id} before: ${say(before)}`);
     // A record's `game` override (cuts / portals 'keep') lets the inferred cuts or mouths stand; the rest still holds.
