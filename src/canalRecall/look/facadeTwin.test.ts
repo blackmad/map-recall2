@@ -54,7 +54,8 @@ test('a wider pixel footprint blends the frame edge (no aliasing step)', () => {
 });
 
 test('S6 coursing: mean 1 over the wall near, flat far; painted brick fainter; stucco smooth', () => {
-  const mean = (material: number, fw: number) => { let s = 0, n = 0; for (let y = 0; y < 2; y += 0.003) for (let x = 0; x < 2; x += 0.011) { s += frBrick([x, y], [fw, fw], material); n++; } return s / n; };
+  const mean = (material: number, fw: number) => { let s = 0, n = 0; for (let y = 0; y < 30; y += 0.0071) for (let x = 0; x < 30; x += 0.0731) { s += frBrick([x, y], [fw, fw], material); n++; } return s / n; };
+  // Brick patches (S6c) are 0.22 x 0.125 m at FR_MOTTLE: a 30 m square holds about 33k of them, so the mean is 1 within 0.01.
   assert.ok(Math.abs(mean(0, 0.004) - 1) < 0.02, `brick mean ${mean(0, 0.004)}`);
   assert.equal(frBrick([0.3, 0.3], [0.5, 0.5], 0), 1, 'far: the mean');
   const spread = (material: number) => { let lo = 9, hi = 0; for (let y = 0; y < 0.5; y += 0.003) { const b = frBrick([0.1, y], [0.004, 0.004], material); lo = Math.min(lo, b); hi = Math.max(hi, b); } return hi - lo; };
@@ -65,7 +66,7 @@ test('S6 coursing: mean 1 over the wall near, flat far; painted brick fainter; s
 test('S6 lookParity (reported, not a gate): the record wall mean is wallHex itself; the atlas reads ATLAS_WALL_MEAN of it', () => {
   const r = rec({ windowShare: 0, baysUpper: 1, baysGround: 1, storeys: 1, wallHcm: 2000 });
   let s = 0, n = 0;
-  for (let y = 0.02; y < 3; y += 0.0037) for (let x = 0.01; x < 3; x += 0.0131) { const c = px(r, x, y, 3, 6, 0.004).rgb; s += 0.299 * c[0] + 0.587 * c[1] + 0.114 * c[2]; n++; }
+  for (let y = 0.02; y < 19; y += 0.0097) for (let x = 0.01; x < 30; x += 0.0631) { const c = px(r, x, y, 3, 30, 0.004).rgb; s += 0.299 * c[0] + 0.587 * c[1] + 0.114 * c[2]; n++; }
   const hex = (0.299 * 120 + 0.587 * 70 + 0.114 * 50) / 255, atlas = hex * ATLAS_WALL_MEAN;
   console.log(`lookParity: record wall luma ${(s / n * 255).toFixed(1)}, atlas ${(atlas * 255).toFixed(1)} (${((s / n - atlas) * 255).toFixed(1)} luma)`);
   assert.ok(Math.abs(s / n - hex * FACADE_WALL_MEAN) * 255 <= 2, 'the coursing keeps the record wall at its own mean');
@@ -88,4 +89,21 @@ test('S6b: window kinds draw their glazing, a shop ground storey, the eaves corn
   assert.ok(differs(rec(), rec({ cornice: 2, accent: [240, 236, 226] }), 12, 13), 'cornice band');
   assert.ok(differs(rec({ windowRevealCm: 0 }), rec({ windowRevealCm: 11 })), 'reveal shadow');
   assert.ok(differs(rec({ bands: 0 }), rec({ bands: 1, bandSillCm: 16, band: [226, 217, 194] })), 'storey string course');
+});
+
+test('S6c brick patches: the wall keeps a brick texture at the benchmark distance (photo medians 0.066 / 0.131 / 0.147)', () => {
+  // brick-texture.ts's measure on the twin: detail (0.25 m running mean removed) std over the mean, pixel-centre samples down columns.
+  const texture = (ppm: number) => {
+    const step = 1 / ppm, half = Math.max(1, Math.round(0.125 / step));
+    let s = 0, s2 = 0, n = 0, m = 0;
+    for (let c = 0; c < 60; c++) {
+      const ys: number[] = [];
+      for (let k = 0; k < 8 * ppm; k++) ys.push(frBrick([0.37 + c * 0.913, 2.5 + k * step], [step, step], 0));
+      for (let k = half; k < ys.length - half; k++) { let a = 0; for (let j = k - half; j <= k + half; j++) a += ys[j]; const d = ys[k] - a / (2 * half + 1); s += d; s2 += d * d; n++; m += ys[k]; }
+    }
+    return Math.sqrt(s2 / n - (s / n) ** 2) / (m / n);
+  };
+  assert.ok(texture(20) > 0.04 && texture(20) < 0.09, `20 px/m: ${texture(20)}`);
+  assert.ok(texture(27) > 0.09 && texture(27) < 0.14, `27 px/m (the median pose; the coursing alone gives 0): ${texture(27)}`);
+  assert.ok(texture(50) > 0.12 && texture(50) < 0.17, `50 px/m: ${texture(50)}`);
 });

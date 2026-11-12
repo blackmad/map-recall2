@@ -161,7 +161,9 @@ export type BayWindowPreset = { archetype: string; shape: string; lintel?: strin
  */
 export function genericBayWindow(v: BayWindowPreset, upper?: { axes: readonly number[]; width: number; sill: number; head: number }): GenericBayWindow {
   const dressed = v.lintel !== 'none' && v.family !== 'punched' && v.archetype !== 'modern';
-  const kind = v.sash === 'transom' ? 'casement-toplight' : v.sash === 'paired-transom' ? 'casement-transom' : v.sash === 'plain' ? 'plain' : null;
+  // bayTextures.ts windowAt: 'transom' is one bar at 0.29 of the height over two lights, the Amsterdam T-window that the benchmark
+  // photos label on 11 of round 1's 25 window-kind pairs; 'paired-transom' adds the mullion through the top-light (a cross).
+  const kind = v.sash === 'transom' ? 't-window' : v.sash === 'paired-transom' ? 'cross-transom' : v.sash === 'plain' ? 'plain' : null;
   return { head: v.shape === 'segmental' ? 'segmental' : v.shape === 'arch' ? 'round' : 'flat', surround: !dressed ? 'none' : v.paleAccents ? 'full-frame' : 'stone-lintel', sills: dressed, kind, dark: v.frameTone === 'dark',
     ...(upper && upper.axes.length ? { share: Math.min(0.9, upper.width * upper.axes.length), height: Math.min(0.9, upper.head - upper.sill) } : {}) };
 }
