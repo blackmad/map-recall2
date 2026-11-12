@@ -725,11 +725,15 @@ export function bakeSurface(input: SurfaceBakeInput, opt: SurfaceBakeOptions): B
           if (d < bd) { bd = d; best = ei; bx = px; by = py; bp = x1; bq = x2; }
         }
         if (best < 0) return false;
-        const sx = Math.round(bx), sy = Math.round(by);
-        // Off the edge's ends by a few cm, and on the edge within the noding tolerance after rounding.
-        const ax = P[2 * bp], ay = P[2 * bp + 1], qx = P[2 * bq], qy = P[2 * bq + 1];
+        // Off the edge's ends by a few cm, and on the edge within the noding tolerance: the grid point nearest the line
+        // of the four around the projection (plain rounding lands up to 0.7 units off a diagonal edge, past the
+        // tolerance: a 16 m park strip on -4_-3 kept a 52 mm dip between its vertices through every round).
+        const ax = P[2 * bp], ay = P[2 * bp + 1], qx = P[2 * bq], qy = P[2 * bq + 1], el = Math.hypot(qx - ax, qy - ay);
+        const off = (x: number, y: number) => Math.abs((qx - ax) * (y - ay) - (qy - ay) * (x - ax)) / el;
+        let sx = Math.round(bx), sy = Math.round(by);
+        for (const x of [Math.floor(bx), Math.ceil(bx)]) for (const y of [Math.floor(by), Math.ceil(by)]) if (off(x, y) < off(sx, sy)) { sx = x; sy = y; }
         if (Math.hypot(sx - ax, sy - ay) * mPerU < 0.05 || Math.hypot(sx - qx, sy - qy) * mPerU < 0.05 || id.has(sx * 65536 + sy)) return false;
-        if (Math.abs((qx - ax) * (sy - ay) - (qy - ay) * (sx - ax)) / Math.hypot(qx - ax, qy - ay) > NODE_TOL_U) return false;
+        if (off(sx, sy) > NODE_TOL_U) return false;
         split.add(ekey(bp, bq)); const m = at(sx, sy); const [e0, e1] = E[best]; E[best] = [e0, m]; E.push([m, e1]); edgeSplits++;
         return true;
       };
