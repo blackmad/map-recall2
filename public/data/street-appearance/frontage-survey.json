@@ -16,7 +16,7 @@
     },
     {
       "file": "public/data/extracts/amsterdam/building-tiles/14/8413/5384.geojson.gz",
-      "sha256": "b0d3b128ac22de2a8e5c715d3ffef33328cf2ab08092a9c35382f798240a766b"
+      "sha256": "b430f80f15cb7f186a51f28287237f2417b73ce474c623824585c145105f9d97"
     },
     {
       "file": "public/data/extracts/amsterdam/building-facts/14/8413/5384.json.gz",
@@ -24,7 +24,7 @@
     },
     {
       "file": "public/data/extracts/amsterdam/building-tiles/14/8414/5383.geojson.gz",
-      "sha256": "e4d7dc88ae167a58d3781df19acfde4284c64c40f19da3bc6aef4c884b1cdef9"
+      "sha256": "e6759be769b54df595963a8e5552d807ab490a141b52e502fbe5fa9cbee0addc"
     },
     {
       "file": "public/data/extracts/amsterdam/building-facts/14/8414/5383.json.gz",
@@ -32,7 +32,7 @@
     },
     {
       "file": "public/data/extracts/amsterdam/building-tiles/14/8414/5384.geojson.gz",
-      "sha256": "24ef2dae42f3d4a4600d25990b848dd5465ac24958df1f536c8beec0c97a94a2"
+      "sha256": "2788b003dd13d22ace5e9217f4aa3e9d7621f922ea32179f210bbec3435de9af"
     },
     {
       "file": "public/data/extracts/amsterdam/building-facts/14/8414/5384.json.gz",
@@ -40,7 +40,7 @@
     },
     {
       "file": "public/data/extracts/amsterdam/building-tiles/14/8415/5384.geojson.gz",
-      "sha256": "e583cd50de5f5d533391c00b3fe9c2f72ffb44b24b28f2099a1466b265a1f37c"
+      "sha256": "a59ff57b7b14c693d93b9a9cb2d939ae11271bbb29c54dbbe286403c0e9b6f2a"
     },
     {
       "file": "public/data/extracts/amsterdam/building-facts/14/8415/5384.json.gz",
@@ -70,7 +70,7 @@
     },
     {
       "file": "src/canalRecall/threeBuildingFeatures.ts",
-      "sha256": "ce96dd36735cbb728e787b49e17272f7e52ee5f007511a3bfce31d818098d4ee"
+      "sha256": "945a793f127830b1408cfc0566f8f4735985f0dc0e7cb5694edaec57957c404b"
     },
     {
       "file": "src/canalRecall/threeBuildingMesh.ts",
